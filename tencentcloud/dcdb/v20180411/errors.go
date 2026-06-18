@@ -83,6 +83,9 @@ const (
 	// 更新安全组失败。
 	FAILEDOPERATION_SGCHANGEVIP = "FailedOperation.SGChangeVip"
 
+	// 安全组操作失败
+	FAILEDOPERATION_SGOPERATIONFAILED = "FailedOperation.SGOperationFailed"
+
 	// 设置规则失败。
 	FAILEDOPERATION_SETRULELOCATIONFAILED = "FailedOperation.SetRuleLocationFailed"
 

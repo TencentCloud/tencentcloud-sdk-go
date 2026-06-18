@@ -282,11 +282,6 @@ func (r *AddInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type AdvanceSettings struct {
-	// 子任务单机并发数限制，默认值为2
-	SubTaskConcurrency *int64 `json:"SubTaskConcurrency,omitnil,omitempty" name:"SubTaskConcurrency"`
-}
-
 type Affinity struct {
 	// 亲和性范围
 	Scope *string `json:"Scope,omitnil,omitempty" name:"Scope"`
@@ -424,6 +419,10 @@ type ApiDetailInfo struct {
 
 	// <p>禁用短路径访问开关原因</p>
 	PathMappingUnsupportedMsg *string `json:"PathMappingUnsupportedMsg,omitnil,omitempty" name:"PathMappingUnsupportedMsg"`
+
+	// <p>API在线状态</p><p>枚举值：</p><ul><li>ONLINE： 在线</li><li>OFFLINE： 离线</li><li>UNKNOWN： 未知</li><li>DELETED： 查询服务治理API不存在</li></ul>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApiOnlineStatus *string `json:"ApiOnlineStatus,omitnil,omitempty" name:"ApiOnlineStatus"`
 }
 
 type ApiDetailResponse struct {
@@ -551,6 +550,14 @@ type ApiInfo struct {
 
 	// api描述信息
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+type ApiParam struct {
+	// <p>接口Method</p>
+	Method *string `json:"Method,omitnil,omitempty" name:"Method"`
+
+	// <p>接口Path</p>
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 }
 
 type ApiRateLimitRule struct {
@@ -2393,63 +2400,6 @@ type ContainerInstanceResourceConfig struct {
 	// SSH 模式时，前端应该限制用户填的最高数量的 node 主机信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NodeNumLimitPerSetup *int64 `json:"NodeNumLimitPerSetup,omitnil,omitempty" name:"NodeNumLimitPerSetup"`
-}
-
-// Predefined struct for user
-type ContinueRunFailedTaskBatchRequestParams struct {
-	// 任务批次ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)页面点击任务ID进入执行记录页，第一列即为任务批次ID，在[任务执行记录](https://console.cloud.tencent.com/tsf/tct?rid=1&tab=task)页能查看所有任务批次ID。
-	BatchId *string `json:"BatchId,omitnil,omitempty" name:"BatchId"`
-}
-
-type ContinueRunFailedTaskBatchRequest struct {
-	*tchttp.BaseRequest
-	
-	// 任务批次ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)页面点击任务ID进入执行记录页，第一列即为任务批次ID，在[任务执行记录](https://console.cloud.tencent.com/tsf/tct?rid=1&tab=task)页能查看所有任务批次ID。
-	BatchId *string `json:"BatchId,omitnil,omitempty" name:"BatchId"`
-}
-
-func (r *ContinueRunFailedTaskBatchRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *ContinueRunFailedTaskBatchRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "BatchId")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ContinueRunFailedTaskBatchRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type ContinueRunFailedTaskBatchResponseParams struct {
-	// true：操作成功、false：操作失败
-	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type ContinueRunFailedTaskBatchResponse struct {
-	*tchttp.BaseResponse
-	Response *ContinueRunFailedTaskBatchResponseParams `json:"Response"`
-}
-
-func (r *ContinueRunFailedTaskBatchResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *ContinueRunFailedTaskBatchResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type CosCredentials struct {
@@ -4417,27 +4367,51 @@ func (r *CreateLaneRuleResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateMicroserviceRequestParams struct {
-	// 命名空间ID。该参数可以通过调用 [DescribeSimpleNamespaces](https://cloud.tencent.com/document/api/649/36096) 的返回值中的 NamespaceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource?tab=namespace)查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新的命名空间。
+	// <p>命名空间ID。该参数可以通过调用 <a href="https://cloud.tencent.com/document/api/649/36096">DescribeSimpleNamespaces</a> 的返回值中的 NamespaceId 字段来获取或通过登录<a href="https://console.cloud.tencent.com/tsf/resource?tab=namespace">控制台</a>查看；也可以调用<a href="https://cloud.tencent.com/document/product/649/36098">CreateNamespace</a>创建新的命名空间。</p>
 	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
 
-	// 微服务名称。该参数可以通过调用 [DescribeMicroservices](https://cloud.tencent.com/document/product/649/36084) 的返回值中的 MicroserviceName 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=service)查看；也可以调用[CreateMicroserviceWithDetailResp](https://cloud.tencent.com/document/product/649/85860)创建新的微服务。
+	// <p>微服务名称。该参数可以通过调用 <a href="https://cloud.tencent.com/document/product/649/36084">DescribeMicroservices</a> 的返回值中的 MicroserviceName 字段来获取或通过登录<a href="https://console.cloud.tencent.com/tse/tsf-consul?tab=service">控制台</a>查看；也可以调用<a href="https://cloud.tencent.com/document/product/649/85860">CreateMicroserviceWithDetailResp</a>创建新的微服务。</p>
 	MicroserviceName *string `json:"MicroserviceName,omitnil,omitempty" name:"MicroserviceName"`
 
-	// 微服务备注信息，最多支持200个字符。
+	// <p>微服务备注信息，最多支持200个字符。</p>
 	MicroserviceDesc *string `json:"MicroserviceDesc,omitnil,omitempty" name:"MicroserviceDesc"`
+
+	// <p>服务类型，默认SDK</p><p>枚举值：</p><ul><li>SDK： sdk服务</li><li>MESH_EXTERNAL： mesh外部服务</li></ul>
+	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
+
+	// <p>域名+端口，或者是纯域名方式，其他的不允许配置，不支持 IP</p>
+	ServiceUrl *string `json:"ServiceUrl,omitnil,omitempty" name:"ServiceUrl"`
+
+	// <p>协议类型</p>
+	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
+
+	// <p>服务发现方式</p><p>枚举值：</p><ul><li>DNS： DNS方式</li></ul>
+	ServiceDiscovery *string `json:"ServiceDiscovery,omitnil,omitempty" name:"ServiceDiscovery"`
 }
 
 type CreateMicroserviceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 命名空间ID。该参数可以通过调用 [DescribeSimpleNamespaces](https://cloud.tencent.com/document/api/649/36096) 的返回值中的 NamespaceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource?tab=namespace)查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新的命名空间。
+	// <p>命名空间ID。该参数可以通过调用 <a href="https://cloud.tencent.com/document/api/649/36096">DescribeSimpleNamespaces</a> 的返回值中的 NamespaceId 字段来获取或通过登录<a href="https://console.cloud.tencent.com/tsf/resource?tab=namespace">控制台</a>查看；也可以调用<a href="https://cloud.tencent.com/document/product/649/36098">CreateNamespace</a>创建新的命名空间。</p>
 	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
 
-	// 微服务名称。该参数可以通过调用 [DescribeMicroservices](https://cloud.tencent.com/document/product/649/36084) 的返回值中的 MicroserviceName 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=service)查看；也可以调用[CreateMicroserviceWithDetailResp](https://cloud.tencent.com/document/product/649/85860)创建新的微服务。
+	// <p>微服务名称。该参数可以通过调用 <a href="https://cloud.tencent.com/document/product/649/36084">DescribeMicroservices</a> 的返回值中的 MicroserviceName 字段来获取或通过登录<a href="https://console.cloud.tencent.com/tse/tsf-consul?tab=service">控制台</a>查看；也可以调用<a href="https://cloud.tencent.com/document/product/649/85860">CreateMicroserviceWithDetailResp</a>创建新的微服务。</p>
 	MicroserviceName *string `json:"MicroserviceName,omitnil,omitempty" name:"MicroserviceName"`
 
-	// 微服务备注信息，最多支持200个字符。
+	// <p>微服务备注信息，最多支持200个字符。</p>
 	MicroserviceDesc *string `json:"MicroserviceDesc,omitnil,omitempty" name:"MicroserviceDesc"`
+
+	// <p>服务类型，默认SDK</p><p>枚举值：</p><ul><li>SDK： sdk服务</li><li>MESH_EXTERNAL： mesh外部服务</li></ul>
+	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
+
+	// <p>域名+端口，或者是纯域名方式，其他的不允许配置，不支持 IP</p>
+	ServiceUrl *string `json:"ServiceUrl,omitnil,omitempty" name:"ServiceUrl"`
+
+	// <p>协议类型</p>
+	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
+
+	// <p>服务发现方式</p><p>枚举值：</p><ul><li>DNS： DNS方式</li></ul>
+	ServiceDiscovery *string `json:"ServiceDiscovery,omitnil,omitempty" name:"ServiceDiscovery"`
 }
 
 func (r *CreateMicroserviceRequest) ToJsonString() string {
@@ -4455,6 +4429,10 @@ func (r *CreateMicroserviceRequest) FromJsonString(s string) error {
 	delete(f, "NamespaceId")
 	delete(f, "MicroserviceName")
 	delete(f, "MicroserviceDesc")
+	delete(f, "ServiceType")
+	delete(f, "ServiceUrl")
+	delete(f, "Protocol")
+	delete(f, "ServiceDiscovery")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateMicroserviceRequest has unknown keys!", "")
 	}
@@ -4463,9 +4441,7 @@ func (r *CreateMicroserviceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateMicroserviceResponseParams struct {
-	// 新增结果。
-	// true：操作成功。
-	// false：操作失败。
+	// <p>新增结果。<br>true：操作成功。<br>false：操作失败。</p>
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4490,27 +4466,51 @@ func (r *CreateMicroserviceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateMicroserviceWithDetailRespRequestParams struct {
-	// 命名空间ID。该参数可以通过调用 [DescribeSimpleNamespaces](https://cloud.tencent.com/document/api/649/36096) 的返回值中的 NamespaceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource?tab=namespace)查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新的命名空间。
+	// <p>命名空间ID。该参数可以通过调用 <a href="https://cloud.tencent.com/document/api/649/36096">DescribeSimpleNamespaces</a> 的返回值中的 NamespaceId 字段来获取或通过登录<a href="https://console.cloud.tencent.com/tsf/resource?tab=namespace">控制台</a>查看；也可以调用<a href="https://cloud.tencent.com/document/product/649/36098">CreateNamespace</a>创建新的命名空间。</p>
 	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
 
-	// 微服务名称，最多支持128个字符。
+	// <p>微服务名称，最多支持128个字符。</p>
 	MicroserviceName *string `json:"MicroserviceName,omitnil,omitempty" name:"MicroserviceName"`
 
-	// 微服务描述信息，最多支持200个字符。
+	// <p>微服务描述信息，最多支持200个字符。</p>
 	MicroserviceDesc *string `json:"MicroserviceDesc,omitnil,omitempty" name:"MicroserviceDesc"`
+
+	// <p>服务类型，默认SDK</p><p>枚举值：</p><ul><li>SDK： sdk服务</li><li>MESH_EXTERNAL： mesh外部服务</li></ul>
+	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
+
+	// <p>域名+端口，或者是纯域名方式，其他的不允许配置，不支持 IP</p>
+	ServiceUrl *string `json:"ServiceUrl,omitnil,omitempty" name:"ServiceUrl"`
+
+	// <p>协议类型</p>
+	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
+
+	// <p>服务发现方式</p><p>枚举值：</p><ul><li>DNS： DNS方式</li></ul>
+	ServiceDiscovery *string `json:"ServiceDiscovery,omitnil,omitempty" name:"ServiceDiscovery"`
 }
 
 type CreateMicroserviceWithDetailRespRequest struct {
 	*tchttp.BaseRequest
 	
-	// 命名空间ID。该参数可以通过调用 [DescribeSimpleNamespaces](https://cloud.tencent.com/document/api/649/36096) 的返回值中的 NamespaceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tsf/resource?tab=namespace)查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新的命名空间。
+	// <p>命名空间ID。该参数可以通过调用 <a href="https://cloud.tencent.com/document/api/649/36096">DescribeSimpleNamespaces</a> 的返回值中的 NamespaceId 字段来获取或通过登录<a href="https://console.cloud.tencent.com/tsf/resource?tab=namespace">控制台</a>查看；也可以调用<a href="https://cloud.tencent.com/document/product/649/36098">CreateNamespace</a>创建新的命名空间。</p>
 	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
 
-	// 微服务名称，最多支持128个字符。
+	// <p>微服务名称，最多支持128个字符。</p>
 	MicroserviceName *string `json:"MicroserviceName,omitnil,omitempty" name:"MicroserviceName"`
 
-	// 微服务描述信息，最多支持200个字符。
+	// <p>微服务描述信息，最多支持200个字符。</p>
 	MicroserviceDesc *string `json:"MicroserviceDesc,omitnil,omitempty" name:"MicroserviceDesc"`
+
+	// <p>服务类型，默认SDK</p><p>枚举值：</p><ul><li>SDK： sdk服务</li><li>MESH_EXTERNAL： mesh外部服务</li></ul>
+	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
+
+	// <p>域名+端口，或者是纯域名方式，其他的不允许配置，不支持 IP</p>
+	ServiceUrl *string `json:"ServiceUrl,omitnil,omitempty" name:"ServiceUrl"`
+
+	// <p>协议类型</p>
+	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
+
+	// <p>服务发现方式</p><p>枚举值：</p><ul><li>DNS： DNS方式</li></ul>
+	ServiceDiscovery *string `json:"ServiceDiscovery,omitnil,omitempty" name:"ServiceDiscovery"`
 }
 
 func (r *CreateMicroserviceWithDetailRespRequest) ToJsonString() string {
@@ -4528,6 +4528,10 @@ func (r *CreateMicroserviceWithDetailRespRequest) FromJsonString(s string) error
 	delete(f, "NamespaceId")
 	delete(f, "MicroserviceName")
 	delete(f, "MicroserviceDesc")
+	delete(f, "ServiceType")
+	delete(f, "ServiceUrl")
+	delete(f, "Protocol")
+	delete(f, "ServiceDiscovery")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateMicroserviceWithDetailRespRequest has unknown keys!", "")
 	}
@@ -4536,7 +4540,7 @@ func (r *CreateMicroserviceWithDetailRespRequest) FromJsonString(s string) error
 
 // Predefined struct for user
 type CreateMicroserviceWithDetailRespResponseParams struct {
-	// 微服务ID。
+	// <p>微服务ID。</p>
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5161,253 +5165,6 @@ func (r *CreateRepositoryResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateRepositoryResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type CreateTaskFlowRequestParams struct {
-	// 工作流名称
-	FlowName *string `json:"FlowName,omitnil,omitempty" name:"FlowName"`
-
-	// 触发方式
-	TriggerRule *TaskRule `json:"TriggerRule,omitnil,omitempty" name:"TriggerRule"`
-
-	// 工作流任务节点列表
-	FlowEdges []*TaskFlowEdge `json:"FlowEdges,omitnil,omitempty" name:"FlowEdges"`
-
-	// 工作流执行超时时间，单位：毫秒
-	TimeOut *uint64 `json:"TimeOut,omitnil,omitempty" name:"TimeOut"`
-
-	// 数据集列表
-	ProgramIdList []*string `json:"ProgramIdList,omitnil,omitempty" name:"ProgramIdList"`
-}
-
-type CreateTaskFlowRequest struct {
-	*tchttp.BaseRequest
-	
-	// 工作流名称
-	FlowName *string `json:"FlowName,omitnil,omitempty" name:"FlowName"`
-
-	// 触发方式
-	TriggerRule *TaskRule `json:"TriggerRule,omitnil,omitempty" name:"TriggerRule"`
-
-	// 工作流任务节点列表
-	FlowEdges []*TaskFlowEdge `json:"FlowEdges,omitnil,omitempty" name:"FlowEdges"`
-
-	// 工作流执行超时时间，单位：毫秒
-	TimeOut *uint64 `json:"TimeOut,omitnil,omitempty" name:"TimeOut"`
-
-	// 数据集列表
-	ProgramIdList []*string `json:"ProgramIdList,omitnil,omitempty" name:"ProgramIdList"`
-}
-
-func (r *CreateTaskFlowRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *CreateTaskFlowRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "FlowName")
-	delete(f, "TriggerRule")
-	delete(f, "FlowEdges")
-	delete(f, "TimeOut")
-	delete(f, "ProgramIdList")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTaskFlowRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type CreateTaskFlowResponseParams struct {
-	// 工作流 ID
-	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type CreateTaskFlowResponse struct {
-	*tchttp.BaseResponse
-	Response *CreateTaskFlowResponseParams `json:"Response"`
-}
-
-func (r *CreateTaskFlowResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *CreateTaskFlowResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type CreateTaskRequestParams struct {
-	// 任务名称，任务长度64字符
-	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
-
-	// 任务内容，长度限制65536个字节
-	TaskContent *string `json:"TaskContent,omitnil,omitempty" name:"TaskContent"`
-
-	// 任务执行方式，unicast：随机单节点执行，broadcast：广播执行，shard：分片执行
-	ExecuteType *string `json:"ExecuteType,omitnil,omitempty" name:"ExecuteType"`
-
-	// 任务类型。当前只支持一种任务类型。枚举值，java：Java类任务
-	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
-
-	// 任务超时时间，取值大于0，单位：毫秒（ms）
-	TimeOut *uint64 `json:"TimeOut,omitnil,omitempty" name:"TimeOut"`
-
-	// 部署组ID。在[应用管理](https://console.cloud.tencent.com/tsf/app?rid=1)，点击应用ID进入应用部署页查看部署组ID。
-	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
-
-	// 触发规则
-	TaskRule *TaskRule `json:"TaskRule,omitnil,omitempty" name:"TaskRule"`
-
-	// 重试次数，0 <= RetryCount<= 10
-	RetryCount *uint64 `json:"RetryCount,omitnil,omitempty" name:"RetryCount"`
-
-	// 重试间隔， 0 <= RetryInterval <= 600000， 时间单位 ms
-	RetryInterval *uint64 `json:"RetryInterval,omitnil,omitempty" name:"RetryInterval"`
-
-	// 分片数量，仅当任务执行方式为分片执行时需要设置该值，取值范围2~1000
-	ShardCount *int64 `json:"ShardCount,omitnil,omitempty" name:"ShardCount"`
-
-	// 分片参数
-	ShardArguments []*ShardArgument `json:"ShardArguments,omitnil,omitempty" name:"ShardArguments"`
-
-	// 判断任务成功的操作符
-	SuccessOperator *string `json:"SuccessOperator,omitnil,omitempty" name:"SuccessOperator"`
-
-	// 判断任务成功率的阈值，如100
-	SuccessRatio *string `json:"SuccessRatio,omitnil,omitempty" name:"SuccessRatio"`
-
-	// 高级设置
-	AdvanceSettings *AdvanceSettings `json:"AdvanceSettings,omitnil,omitempty" name:"AdvanceSettings"`
-
-	// 任务参数，长度限制10000个字符
-	TaskArgument *string `json:"TaskArgument,omitnil,omitempty" name:"TaskArgument"`
-
-	// 数据集列表
-	ProgramIdList []*string `json:"ProgramIdList,omitnil,omitempty" name:"ProgramIdList"`
-}
-
-type CreateTaskRequest struct {
-	*tchttp.BaseRequest
-	
-	// 任务名称，任务长度64字符
-	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
-
-	// 任务内容，长度限制65536个字节
-	TaskContent *string `json:"TaskContent,omitnil,omitempty" name:"TaskContent"`
-
-	// 任务执行方式，unicast：随机单节点执行，broadcast：广播执行，shard：分片执行
-	ExecuteType *string `json:"ExecuteType,omitnil,omitempty" name:"ExecuteType"`
-
-	// 任务类型。当前只支持一种任务类型。枚举值，java：Java类任务
-	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
-
-	// 任务超时时间，取值大于0，单位：毫秒（ms）
-	TimeOut *uint64 `json:"TimeOut,omitnil,omitempty" name:"TimeOut"`
-
-	// 部署组ID。在[应用管理](https://console.cloud.tencent.com/tsf/app?rid=1)，点击应用ID进入应用部署页查看部署组ID。
-	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
-
-	// 触发规则
-	TaskRule *TaskRule `json:"TaskRule,omitnil,omitempty" name:"TaskRule"`
-
-	// 重试次数，0 <= RetryCount<= 10
-	RetryCount *uint64 `json:"RetryCount,omitnil,omitempty" name:"RetryCount"`
-
-	// 重试间隔， 0 <= RetryInterval <= 600000， 时间单位 ms
-	RetryInterval *uint64 `json:"RetryInterval,omitnil,omitempty" name:"RetryInterval"`
-
-	// 分片数量，仅当任务执行方式为分片执行时需要设置该值，取值范围2~1000
-	ShardCount *int64 `json:"ShardCount,omitnil,omitempty" name:"ShardCount"`
-
-	// 分片参数
-	ShardArguments []*ShardArgument `json:"ShardArguments,omitnil,omitempty" name:"ShardArguments"`
-
-	// 判断任务成功的操作符
-	SuccessOperator *string `json:"SuccessOperator,omitnil,omitempty" name:"SuccessOperator"`
-
-	// 判断任务成功率的阈值，如100
-	SuccessRatio *string `json:"SuccessRatio,omitnil,omitempty" name:"SuccessRatio"`
-
-	// 高级设置
-	AdvanceSettings *AdvanceSettings `json:"AdvanceSettings,omitnil,omitempty" name:"AdvanceSettings"`
-
-	// 任务参数，长度限制10000个字符
-	TaskArgument *string `json:"TaskArgument,omitnil,omitempty" name:"TaskArgument"`
-
-	// 数据集列表
-	ProgramIdList []*string `json:"ProgramIdList,omitnil,omitempty" name:"ProgramIdList"`
-}
-
-func (r *CreateTaskRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *CreateTaskRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "TaskName")
-	delete(f, "TaskContent")
-	delete(f, "ExecuteType")
-	delete(f, "TaskType")
-	delete(f, "TimeOut")
-	delete(f, "GroupId")
-	delete(f, "TaskRule")
-	delete(f, "RetryCount")
-	delete(f, "RetryInterval")
-	delete(f, "ShardCount")
-	delete(f, "ShardArguments")
-	delete(f, "SuccessOperator")
-	delete(f, "SuccessRatio")
-	delete(f, "AdvanceSettings")
-	delete(f, "TaskArgument")
-	delete(f, "ProgramIdList")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTaskRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type CreateTaskResponseParams struct {
-	// 任务ID
-	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type CreateTaskResponse struct {
-	*tchttp.BaseResponse
-	Response *CreateTaskResponseParams `json:"Response"`
-}
-
-func (r *CreateTaskResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *CreateTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6836,120 +6593,6 @@ func (r *DeleteRepositoryResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type DeleteServerlessGroupRequestParams struct {
-	// groupId，分组唯一标识
-	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
-}
-
-type DeleteServerlessGroupRequest struct {
-	*tchttp.BaseRequest
-	
-	// groupId，分组唯一标识
-	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
-}
-
-func (r *DeleteServerlessGroupRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DeleteServerlessGroupRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "GroupId")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteServerlessGroupRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DeleteServerlessGroupResponseParams struct {
-	// 结果true：成功；false：失败。
-	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DeleteServerlessGroupResponse struct {
-	*tchttp.BaseResponse
-	Response *DeleteServerlessGroupResponseParams `json:"Response"`
-}
-
-func (r *DeleteServerlessGroupResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DeleteServerlessGroupResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DeleteTaskRequestParams struct {
-	// 任务ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)列表页第一列和任务基本信息页查看任务ID。
-	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
-}
-
-type DeleteTaskRequest struct {
-	*tchttp.BaseRequest
-	
-	// 任务ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)列表页第一列和任务基本信息页查看任务ID。
-	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
-}
-
-func (r *DeleteTaskRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DeleteTaskRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "TaskId")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteTaskRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DeleteTaskResponseParams struct {
-	// true：删除成功，false：删除失败
-	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DeleteTaskResponse struct {
-	*tchttp.BaseResponse
-	Response *DeleteTaskResponseParams `json:"Response"`
-}
-
-func (r *DeleteTaskResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DeleteTaskResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type DeleteUnitNamespacesRequestParams struct {
 	// 网关实体ID
 	GatewayInstanceId *string `json:"GatewayInstanceId,omitnil,omitempty" name:"GatewayInstanceId"`
@@ -7155,381 +6798,387 @@ type DeliveryKafkaInfo struct {
 
 // Predefined struct for user
 type DeployContainerApplicationRequestParams struct {
-	// 应用ID
+	// <p>应用ID</p>
 	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 
-	// 可观测配置
+	// <p>可观测配置</p>
 	ObservabilityConfig *ContainerGroupObservabilityConfig `json:"ObservabilityConfig,omitnil,omitempty" name:"ObservabilityConfig"`
 
-	// 集群ID
+	// <p>集群ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 部署组ID，分组唯一标识
+	// <p>部署组ID，分组唯一标识</p>
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 业务容器的环境变量参数
+	// <p>业务容器的环境变量参数</p>
 	Envs []*Env `json:"Envs,omitnil,omitempty" name:"Envs"`
 
-	// 业务容器的挂载信息
+	// <p>业务容器的挂载信息</p>
 	VolumeMountInfoList []*VolumeMountInfo `json:"VolumeMountInfoList,omitnil,omitempty" name:"VolumeMountInfoList"`
 
-	// 业务主容器生命周期钩子列表
+	// <p>业务主容器生命周期钩子列表</p>
 	LifeCycleHookList []*LifeCycleHook `json:"LifeCycleHookList,omitnil,omitempty" name:"LifeCycleHookList"`
 
-	// 附属容器列表
+	// <p>附属容器列表</p>
 	AdditionalContainerList []*ContainerInfo `json:"AdditionalContainerList,omitnil,omitempty" name:"AdditionalContainerList"`
 
-	// 容器卷信息
+	// <p>容器卷信息</p>
 	VolumeInfoList []*VolumeInfo `json:"VolumeInfoList,omitnil,omitempty" name:"VolumeInfoList"`
 
-	// Service访问配置列表
+	// <p>Service访问配置列表</p>
 	ServiceSettingList []*ServiceSetting `json:"ServiceSettingList,omitnil,omitempty" name:"ServiceSettingList"`
 
-	// 备注
+	// <p>备注</p>
 	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
 
-	// 部署组名称
+	// <p>部署组名称</p>
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
-	// 标签列表
+	// <p>标签列表</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 容器类型
+	// <p>容器类型</p>
 	ContainerKind *string `json:"ContainerKind,omitnil,omitempty" name:"ContainerKind"`
 
-	// 业务容器的 镜像Server ccr.ccs.tencentyun.com
+	// <p>业务容器的 镜像Server ccr.ccs.tencentyun.com</p>
 	Server *string `json:"Server,omitnil,omitempty" name:"Server"`
 
-	// 业务容器的镜像名
+	// <p>业务容器的镜像名</p>
 	RepoName *string `json:"RepoName,omitnil,omitempty" name:"RepoName"`
 
-	// 仓库类型
+	// <p>仓库类型</p>
 	RepoType *string `json:"RepoType,omitnil,omitempty" name:"RepoType"`
 
-	// TCR仓库信息
+	// <p>TCR仓库信息</p>
 	TcrRepoInfo *TcrRepoInfo `json:"TcrRepoInfo,omitnil,omitempty" name:"TcrRepoInfo"`
 
-	// 容器访问凭证名称
+	// <p>容器访问凭证名称</p>
 	SecretName *string `json:"SecretName,omitnil,omitempty" name:"SecretName"`
 
-	// 业务容器的镜像版本号
+	// <p>业务容器的镜像版本号</p>
 	TagName *string `json:"TagName,omitnil,omitempty" name:"TagName"`
 
-	// 健康检查
+	// <p>健康检查</p>
 	HealthCheckSettings *HealthCheckSettings `json:"HealthCheckSettings,omitnil,omitempty" name:"HealthCheckSettings"`
 
-	// 业务容器的 cpu  request
+	// <p>业务容器的 cpu  request</p>
 	CpuRequest *string `json:"CpuRequest,omitnil,omitempty" name:"CpuRequest"`
 
-	// 业务容器的 cpu limit
+	// <p>业务容器的 cpu limit</p>
 	CpuLimit *string `json:"CpuLimit,omitnil,omitempty" name:"CpuLimit"`
 
-	// 业务容器的 mem request
+	// <p>业务容器的 mem request</p>
 	MemRequest *string `json:"MemRequest,omitnil,omitempty" name:"MemRequest"`
 
-	// 业务容器的 mem limit
+	// <p>业务容器的 mem limit</p>
 	MemLimit *string `json:"MemLimit,omitnil,omitempty" name:"MemLimit"`
 
-	// 业务容器的 jvm 参数
+	// <p>业务容器的 jvm 参数</p>
 	JvmOpts *string `json:"JvmOpts,omitnil,omitempty" name:"JvmOpts"`
 
-	// 是否为初始化容器 业务主容器不能为初始化容
+	// <p>是否为初始化容器 业务主容器不能为初始化容</p>
 	InitContainerEnable *bool `json:"InitContainerEnable,omitnil,omitempty" name:"InitContainerEnable"`
 
-	// 业务主容器是否为特权容器
+	// <p>业务主容器是否为特权容器</p>
 	PrivilegeContainerEnable *bool `json:"PrivilegeContainerEnable,omitnil,omitempty" name:"PrivilegeContainerEnable"`
 
-	// 业务主容器运行命令(转base64)
+	// <p>业务主容器运行命令(转base64)</p>
 	RunCommand *string `json:"RunCommand,omitnil,omitempty" name:"RunCommand"`
 
-	// 业务主容器运行参数(转base64)
+	// <p>业务主容器运行参数(转base64)</p>
 	RunArg *string `json:"RunArg,omitnil,omitempty" name:"RunArg"`
 
-	// 实例数量
+	// <p>实例数量</p>
 	InstanceNum *int64 `json:"InstanceNum,omitnil,omitempty" name:"InstanceNum"`
 
-	// 调度策略
+	// <p>调度策略</p>
 	SchedulingStrategy *SchedulingStrategy `json:"SchedulingStrategy,omitnil,omitempty" name:"SchedulingStrategy"`
 
-	// 重启策略
+	// <p>重启策略</p>
 	RestartPolicy *string `json:"RestartPolicy,omitnil,omitempty" name:"RestartPolicy"`
 
-	// 服务治理配置
+	// <p>服务治理配置</p>
 	ServiceSpecEncode *string `json:"ServiceSpecEncode,omitnil,omitempty" name:"ServiceSpecEncode"`
 
-	// istio容器的 mem Request
+	// <p>istio容器的 mem Request</p>
 	IstioMemRequest *string `json:"IstioMemRequest,omitnil,omitempty" name:"IstioMemRequest"`
 
-	//  istio容器的 cpu Request
+	// <p>istio容器的 cpu Request</p>
 	IstioCpuRequest *string `json:"IstioCpuRequest,omitnil,omitempty" name:"IstioCpuRequest"`
 
-	// istio容器的 mem Limit
+	// <p>istio容器的 mem Limit</p>
 	IstioMemLimit *string `json:"IstioMemLimit,omitnil,omitempty" name:"IstioMemLimit"`
 
-	// istio容器的 cpu Limit
+	// <p>istio容器的 cpu Limit</p>
 	IstioCpuLimit *string `json:"IstioCpuLimit,omitnil,omitempty" name:"IstioCpuLimit"`
 
-	// 服务治理配置
+	// <p>服务治理配置</p>
 	ServiceGovernanceConfig *ContainerGroupServiceGovernanceConfig `json:"ServiceGovernanceConfig,omitnil,omitempty" name:"ServiceGovernanceConfig"`
 
-	// agent容器的 mem Request
+	// <p>agent容器的 mem Request</p>
 	AgentMemRequest *string `json:"AgentMemRequest,omitnil,omitempty" name:"AgentMemRequest"`
 
-	// agent容器的 cpu Request
+	// <p>agent容器的 cpu Request</p>
 	AgentCpuRequest *string `json:"AgentCpuRequest,omitnil,omitempty" name:"AgentCpuRequest"`
 
-	// agent容器的 mem Limit
+	// <p>agent容器的 mem Limit</p>
 	AgentMemLimit *string `json:"AgentMemLimit,omitnil,omitempty" name:"AgentMemLimit"`
 
-	// agent容器的 cpu Limit
+	// <p>agent容器的 cpu Limit</p>
 	AgentCpuLimit *string `json:"AgentCpuLimit,omitnil,omitempty" name:"AgentCpuLimit"`
 
-	// 发布策略(0表示快速更新，1表示滚动更新。默认值为0)
+	// <p>发布策略(0表示快速更新，1表示滚动更新。默认值为0)</p>
 	UpdateType *int64 `json:"UpdateType,omitnil,omitempty" name:"UpdateType"`
 
-	// 更新间隔,单位秒
+	// <p>更新间隔,单位秒</p>
 	UpdateIvl *int64 `json:"UpdateIvl,omitnil,omitempty" name:"UpdateIvl"`
 
-	// 对应更新策略和策略配置参数
+	// <p>对应更新策略和策略配置参数</p>
 	MaxSurge *string `json:"MaxSurge,omitnil,omitempty" name:"MaxSurge"`
 
-	// 对应更新策略和策略配置参数
+	// <p>对应更新策略和策略配置参数</p>
 	MaxUnavailable *string `json:"MaxUnavailable,omitnil,omitempty" name:"MaxUnavailable"`
 
-	// 预热参数配置
+	// <p>预热参数配置</p>
 	WarmupSetting *WarmupSetting `json:"WarmupSetting,omitnil,omitempty" name:"WarmupSetting"`
 
-	// 配置模版ID
+	// <p>配置模版ID</p>
 	ConfigTemplateId *string `json:"ConfigTemplateId,omitnil,omitempty" name:"ConfigTemplateId"`
 
-	// 配置模版Version
+	// <p>配置模版Version</p>
 	ConfigTemplateVersion *int64 `json:"ConfigTemplateVersion,omitnil,omitempty" name:"ConfigTemplateVersion"`
 
-	// 是否清除数据卷信息
+	// <p>是否清除数据卷信息</p>
 	VolumeClean *bool `json:"VolumeClean,omitnil,omitempty" name:"VolumeClean"`
 
-	// 命名空间Id
+	// <p>命名空间Id</p>
 	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
 
-	// 是否部署agent容器
+	// <p>是否部署agent容器</p>
 	DeployAgent *bool `json:"DeployAgent,omitnil,omitempty" name:"DeployAgent"`
 
-	// javaagent信息: SERVICE_AGENT/OT_AGENT
+	// <p>javaagent信息: SERVICE_AGENT/OT_AGENT</p>
 	AgentProfileList []*AgentProfile `json:"AgentProfileList,omitnil,omitempty" name:"AgentProfileList"`
 
-	// 是否清除Service信息
+	// <p>是否清除Service信息</p>
 	ServiceClean *bool `json:"ServiceClean,omitnil,omitempty" name:"ServiceClean"`
 
-	// 是否清除Env信息
+	// <p>是否清除Env信息</p>
 	EnvClean *bool `json:"EnvClean,omitnil,omitempty" name:"EnvClean"`
 
-	// 本次部署的描述信息
+	// <p>本次部署的描述信息</p>
 	DeployDesc *string `json:"DeployDesc,omitnil,omitempty" name:"DeployDesc"`
 
-	// k8s命名空间名称
+	// <p>k8s命名空间名称</p>
 	K8sNamespaceName *string `json:"K8sNamespaceName,omitnil,omitempty" name:"K8sNamespaceName"`
 
-	// 是否启用静态IP
+	// <p>是否启用静态IP</p>
 	StaticIpEnabled *bool `json:"StaticIpEnabled,omitnil,omitempty" name:"StaticIpEnabled"`
 
-	// 启动策略[OrderedReady/Parallel]
+	// <p>启动策略[OrderedReady/Parallel]</p>
 	PodManagementPolicyType *string `json:"PodManagementPolicyType,omitnil,omitempty" name:"PodManagementPolicyType"`
 
-	// 滚动更新分区序号
+	// <p>滚动更新分区序号</p>
 	Partition *int64 `json:"Partition,omitnil,omitempty" name:"Partition"`
 
-	// 是否是增量部署，增量部署只运行增量覆盖一级参数，不支持对一级参数中的子参数进行增量更新，例如更新VolumeMountInfoList时必须传入VolumeMountInfoList更新后的全量参数
+	// <p>是否是增量部署，增量部署只运行增量覆盖一级参数，不支持对一级参数中的子参数进行增量更新，例如更新VolumeMountInfoList时必须传入VolumeMountInfoList更新后的全量参数</p>
 	IncrementalDeployment *bool `json:"IncrementalDeployment,omitnil,omitempty" name:"IncrementalDeployment"`
+
+	// <p>是否不立即启动</p>
+	DoNotStart *bool `json:"DoNotStart,omitnil,omitempty" name:"DoNotStart"`
 }
 
 type DeployContainerApplicationRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用ID
+	// <p>应用ID</p>
 	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 
-	// 可观测配置
+	// <p>可观测配置</p>
 	ObservabilityConfig *ContainerGroupObservabilityConfig `json:"ObservabilityConfig,omitnil,omitempty" name:"ObservabilityConfig"`
 
-	// 集群ID
+	// <p>集群ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 部署组ID，分组唯一标识
+	// <p>部署组ID，分组唯一标识</p>
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 业务容器的环境变量参数
+	// <p>业务容器的环境变量参数</p>
 	Envs []*Env `json:"Envs,omitnil,omitempty" name:"Envs"`
 
-	// 业务容器的挂载信息
+	// <p>业务容器的挂载信息</p>
 	VolumeMountInfoList []*VolumeMountInfo `json:"VolumeMountInfoList,omitnil,omitempty" name:"VolumeMountInfoList"`
 
-	// 业务主容器生命周期钩子列表
+	// <p>业务主容器生命周期钩子列表</p>
 	LifeCycleHookList []*LifeCycleHook `json:"LifeCycleHookList,omitnil,omitempty" name:"LifeCycleHookList"`
 
-	// 附属容器列表
+	// <p>附属容器列表</p>
 	AdditionalContainerList []*ContainerInfo `json:"AdditionalContainerList,omitnil,omitempty" name:"AdditionalContainerList"`
 
-	// 容器卷信息
+	// <p>容器卷信息</p>
 	VolumeInfoList []*VolumeInfo `json:"VolumeInfoList,omitnil,omitempty" name:"VolumeInfoList"`
 
-	// Service访问配置列表
+	// <p>Service访问配置列表</p>
 	ServiceSettingList []*ServiceSetting `json:"ServiceSettingList,omitnil,omitempty" name:"ServiceSettingList"`
 
-	// 备注
+	// <p>备注</p>
 	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
 
-	// 部署组名称
+	// <p>部署组名称</p>
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
-	// 标签列表
+	// <p>标签列表</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 容器类型
+	// <p>容器类型</p>
 	ContainerKind *string `json:"ContainerKind,omitnil,omitempty" name:"ContainerKind"`
 
-	// 业务容器的 镜像Server ccr.ccs.tencentyun.com
+	// <p>业务容器的 镜像Server ccr.ccs.tencentyun.com</p>
 	Server *string `json:"Server,omitnil,omitempty" name:"Server"`
 
-	// 业务容器的镜像名
+	// <p>业务容器的镜像名</p>
 	RepoName *string `json:"RepoName,omitnil,omitempty" name:"RepoName"`
 
-	// 仓库类型
+	// <p>仓库类型</p>
 	RepoType *string `json:"RepoType,omitnil,omitempty" name:"RepoType"`
 
-	// TCR仓库信息
+	// <p>TCR仓库信息</p>
 	TcrRepoInfo *TcrRepoInfo `json:"TcrRepoInfo,omitnil,omitempty" name:"TcrRepoInfo"`
 
-	// 容器访问凭证名称
+	// <p>容器访问凭证名称</p>
 	SecretName *string `json:"SecretName,omitnil,omitempty" name:"SecretName"`
 
-	// 业务容器的镜像版本号
+	// <p>业务容器的镜像版本号</p>
 	TagName *string `json:"TagName,omitnil,omitempty" name:"TagName"`
 
-	// 健康检查
+	// <p>健康检查</p>
 	HealthCheckSettings *HealthCheckSettings `json:"HealthCheckSettings,omitnil,omitempty" name:"HealthCheckSettings"`
 
-	// 业务容器的 cpu  request
+	// <p>业务容器的 cpu  request</p>
 	CpuRequest *string `json:"CpuRequest,omitnil,omitempty" name:"CpuRequest"`
 
-	// 业务容器的 cpu limit
+	// <p>业务容器的 cpu limit</p>
 	CpuLimit *string `json:"CpuLimit,omitnil,omitempty" name:"CpuLimit"`
 
-	// 业务容器的 mem request
+	// <p>业务容器的 mem request</p>
 	MemRequest *string `json:"MemRequest,omitnil,omitempty" name:"MemRequest"`
 
-	// 业务容器的 mem limit
+	// <p>业务容器的 mem limit</p>
 	MemLimit *string `json:"MemLimit,omitnil,omitempty" name:"MemLimit"`
 
-	// 业务容器的 jvm 参数
+	// <p>业务容器的 jvm 参数</p>
 	JvmOpts *string `json:"JvmOpts,omitnil,omitempty" name:"JvmOpts"`
 
-	// 是否为初始化容器 业务主容器不能为初始化容
+	// <p>是否为初始化容器 业务主容器不能为初始化容</p>
 	InitContainerEnable *bool `json:"InitContainerEnable,omitnil,omitempty" name:"InitContainerEnable"`
 
-	// 业务主容器是否为特权容器
+	// <p>业务主容器是否为特权容器</p>
 	PrivilegeContainerEnable *bool `json:"PrivilegeContainerEnable,omitnil,omitempty" name:"PrivilegeContainerEnable"`
 
-	// 业务主容器运行命令(转base64)
+	// <p>业务主容器运行命令(转base64)</p>
 	RunCommand *string `json:"RunCommand,omitnil,omitempty" name:"RunCommand"`
 
-	// 业务主容器运行参数(转base64)
+	// <p>业务主容器运行参数(转base64)</p>
 	RunArg *string `json:"RunArg,omitnil,omitempty" name:"RunArg"`
 
-	// 实例数量
+	// <p>实例数量</p>
 	InstanceNum *int64 `json:"InstanceNum,omitnil,omitempty" name:"InstanceNum"`
 
-	// 调度策略
+	// <p>调度策略</p>
 	SchedulingStrategy *SchedulingStrategy `json:"SchedulingStrategy,omitnil,omitempty" name:"SchedulingStrategy"`
 
-	// 重启策略
+	// <p>重启策略</p>
 	RestartPolicy *string `json:"RestartPolicy,omitnil,omitempty" name:"RestartPolicy"`
 
-	// 服务治理配置
+	// <p>服务治理配置</p>
 	ServiceSpecEncode *string `json:"ServiceSpecEncode,omitnil,omitempty" name:"ServiceSpecEncode"`
 
-	// istio容器的 mem Request
+	// <p>istio容器的 mem Request</p>
 	IstioMemRequest *string `json:"IstioMemRequest,omitnil,omitempty" name:"IstioMemRequest"`
 
-	//  istio容器的 cpu Request
+	// <p>istio容器的 cpu Request</p>
 	IstioCpuRequest *string `json:"IstioCpuRequest,omitnil,omitempty" name:"IstioCpuRequest"`
 
-	// istio容器的 mem Limit
+	// <p>istio容器的 mem Limit</p>
 	IstioMemLimit *string `json:"IstioMemLimit,omitnil,omitempty" name:"IstioMemLimit"`
 
-	// istio容器的 cpu Limit
+	// <p>istio容器的 cpu Limit</p>
 	IstioCpuLimit *string `json:"IstioCpuLimit,omitnil,omitempty" name:"IstioCpuLimit"`
 
-	// 服务治理配置
+	// <p>服务治理配置</p>
 	ServiceGovernanceConfig *ContainerGroupServiceGovernanceConfig `json:"ServiceGovernanceConfig,omitnil,omitempty" name:"ServiceGovernanceConfig"`
 
-	// agent容器的 mem Request
+	// <p>agent容器的 mem Request</p>
 	AgentMemRequest *string `json:"AgentMemRequest,omitnil,omitempty" name:"AgentMemRequest"`
 
-	// agent容器的 cpu Request
+	// <p>agent容器的 cpu Request</p>
 	AgentCpuRequest *string `json:"AgentCpuRequest,omitnil,omitempty" name:"AgentCpuRequest"`
 
-	// agent容器的 mem Limit
+	// <p>agent容器的 mem Limit</p>
 	AgentMemLimit *string `json:"AgentMemLimit,omitnil,omitempty" name:"AgentMemLimit"`
 
-	// agent容器的 cpu Limit
+	// <p>agent容器的 cpu Limit</p>
 	AgentCpuLimit *string `json:"AgentCpuLimit,omitnil,omitempty" name:"AgentCpuLimit"`
 
-	// 发布策略(0表示快速更新，1表示滚动更新。默认值为0)
+	// <p>发布策略(0表示快速更新，1表示滚动更新。默认值为0)</p>
 	UpdateType *int64 `json:"UpdateType,omitnil,omitempty" name:"UpdateType"`
 
-	// 更新间隔,单位秒
+	// <p>更新间隔,单位秒</p>
 	UpdateIvl *int64 `json:"UpdateIvl,omitnil,omitempty" name:"UpdateIvl"`
 
-	// 对应更新策略和策略配置参数
+	// <p>对应更新策略和策略配置参数</p>
 	MaxSurge *string `json:"MaxSurge,omitnil,omitempty" name:"MaxSurge"`
 
-	// 对应更新策略和策略配置参数
+	// <p>对应更新策略和策略配置参数</p>
 	MaxUnavailable *string `json:"MaxUnavailable,omitnil,omitempty" name:"MaxUnavailable"`
 
-	// 预热参数配置
+	// <p>预热参数配置</p>
 	WarmupSetting *WarmupSetting `json:"WarmupSetting,omitnil,omitempty" name:"WarmupSetting"`
 
-	// 配置模版ID
+	// <p>配置模版ID</p>
 	ConfigTemplateId *string `json:"ConfigTemplateId,omitnil,omitempty" name:"ConfigTemplateId"`
 
-	// 配置模版Version
+	// <p>配置模版Version</p>
 	ConfigTemplateVersion *int64 `json:"ConfigTemplateVersion,omitnil,omitempty" name:"ConfigTemplateVersion"`
 
-	// 是否清除数据卷信息
+	// <p>是否清除数据卷信息</p>
 	VolumeClean *bool `json:"VolumeClean,omitnil,omitempty" name:"VolumeClean"`
 
-	// 命名空间Id
+	// <p>命名空间Id</p>
 	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
 
-	// 是否部署agent容器
+	// <p>是否部署agent容器</p>
 	DeployAgent *bool `json:"DeployAgent,omitnil,omitempty" name:"DeployAgent"`
 
-	// javaagent信息: SERVICE_AGENT/OT_AGENT
+	// <p>javaagent信息: SERVICE_AGENT/OT_AGENT</p>
 	AgentProfileList []*AgentProfile `json:"AgentProfileList,omitnil,omitempty" name:"AgentProfileList"`
 
-	// 是否清除Service信息
+	// <p>是否清除Service信息</p>
 	ServiceClean *bool `json:"ServiceClean,omitnil,omitempty" name:"ServiceClean"`
 
-	// 是否清除Env信息
+	// <p>是否清除Env信息</p>
 	EnvClean *bool `json:"EnvClean,omitnil,omitempty" name:"EnvClean"`
 
-	// 本次部署的描述信息
+	// <p>本次部署的描述信息</p>
 	DeployDesc *string `json:"DeployDesc,omitnil,omitempty" name:"DeployDesc"`
 
-	// k8s命名空间名称
+	// <p>k8s命名空间名称</p>
 	K8sNamespaceName *string `json:"K8sNamespaceName,omitnil,omitempty" name:"K8sNamespaceName"`
 
-	// 是否启用静态IP
+	// <p>是否启用静态IP</p>
 	StaticIpEnabled *bool `json:"StaticIpEnabled,omitnil,omitempty" name:"StaticIpEnabled"`
 
-	// 启动策略[OrderedReady/Parallel]
+	// <p>启动策略[OrderedReady/Parallel]</p>
 	PodManagementPolicyType *string `json:"PodManagementPolicyType,omitnil,omitempty" name:"PodManagementPolicyType"`
 
-	// 滚动更新分区序号
+	// <p>滚动更新分区序号</p>
 	Partition *int64 `json:"Partition,omitnil,omitempty" name:"Partition"`
 
-	// 是否是增量部署，增量部署只运行增量覆盖一级参数，不支持对一级参数中的子参数进行增量更新，例如更新VolumeMountInfoList时必须传入VolumeMountInfoList更新后的全量参数
+	// <p>是否是增量部署，增量部署只运行增量覆盖一级参数，不支持对一级参数中的子参数进行增量更新，例如更新VolumeMountInfoList时必须传入VolumeMountInfoList更新后的全量参数</p>
 	IncrementalDeployment *bool `json:"IncrementalDeployment,omitnil,omitempty" name:"IncrementalDeployment"`
+
+	// <p>是否不立即启动</p>
+	DoNotStart *bool `json:"DoNotStart,omitnil,omitempty" name:"DoNotStart"`
 }
 
 func (r *DeployContainerApplicationRequest) ToJsonString() string {
@@ -7606,6 +7255,7 @@ func (r *DeployContainerApplicationRequest) FromJsonString(s string) error {
 	delete(f, "PodManagementPolicyType")
 	delete(f, "Partition")
 	delete(f, "IncrementalDeployment")
+	delete(f, "DoNotStart")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeployContainerApplicationRequest has unknown keys!", "")
 	}
@@ -7624,9 +7274,7 @@ type DeployContainerApplicationResp struct {
 
 // Predefined struct for user
 type DeployContainerApplicationResponseParams struct {
-	// 部署容器应用是否成功。
-	// true：成功。
-	// false：失败。
+	// <p>部署容器应用是否成功。<br>true：成功。<br>false：失败。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *DeployContainerApplicationResp `json:"Result,omitnil,omitempty" name:"Result"`
 
@@ -10113,57 +9761,63 @@ func (r *DescribeContainerGroupDetailResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeContainerGroupsRequestParams struct {
-	// 分组所属【应用ID】，可通过调用[DescribeApplications](https://cloud.tencent.com/document/product/649/36090)查询已创建的应用列表或登录[控制台](https://console.cloud.tencent.com/tsf/app?rid=1)进行查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/product/649/36094)创建新的应用。
+	// <p>分组所属【应用ID】，可通过调用<a href="https://cloud.tencent.com/document/product/649/36090">DescribeApplications</a>查询已创建的应用列表或登录<a href="https://console.cloud.tencent.com/tsf/app?rid=1">控制台</a>进行查看；也可以调用<a href="https://cloud.tencent.com/document/product/649/36094">CreateApplication</a>创建新的应用。</p>
 	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 
-	// 搜索字段，模糊搜索groupName字段
+	// <p>搜索字段，模糊搜索groupName字段</p>
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 
-	// 排序字段，默认为 createTime字段，支持id， name， createTime
+	// <p>排序字段，默认为 createTime字段，支持id， name， createTime</p>
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 排序方式，默认为1：倒序排序，0：正序，1：倒序
+	// <p>排序方式，默认为1：倒序排序，0：正序，1：倒序</p>
 	OrderType *int64 `json:"OrderType,omitnil,omitempty" name:"OrderType"`
 
-	// 偏移量，取值从0开始
+	// <p>偏移量，取值从0开始</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页个数，默认为20， 取值应为1~50
+	// <p>分页个数，默认为20， 取值应为1~50</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分组所属【集群ID】，可通过调用[DescribeClusters](https://cloud.tencent.com/document/product/649/85857)查询已创建的集群列表或登录[控制台](https://console.cloud.tencent.com/tsf/resource?rid=1&tab=docker)进行查看；也可以调用[CreateCluster](https://cloud.tencent.com/document/product/649/36049)创建新的集群。
+	// <p>分组所属【集群ID】，可通过调用<a href="https://cloud.tencent.com/document/product/649/85857">DescribeClusters</a>查询已创建的集群列表或登录<a href="https://console.cloud.tencent.com/tsf/resource?rid=1&amp;tab=docker">控制台</a>进行查看；也可以调用<a href="https://cloud.tencent.com/document/product/649/36049">CreateCluster</a>创建新的集群。</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 分组所属【命名空间 ID】，可通过调用[DescribeSimpleNamespaces](https://cloud.tencent.com/document/product/649/36096)查询已创建的命名空间列表或登录[控制台](https://console.cloud.tencent.com/tsf/resource?rid=1&tab=namespace)进行查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新的命名空间。
+	// <p>分组所属【命名空间 ID】，可通过调用<a href="https://cloud.tencent.com/document/product/649/36096">DescribeSimpleNamespaces</a>查询已创建的命名空间列表或登录<a href="https://console.cloud.tencent.com/tsf/resource?rid=1&amp;tab=namespace">控制台</a>进行查看；也可以调用<a href="https://cloud.tencent.com/document/product/649/36098">CreateNamespace</a>创建新的命名空间。</p>
 	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
+
+	// <p>部署组ID列表</p>
+	GroupIdList []*string `json:"GroupIdList,omitnil,omitempty" name:"GroupIdList"`
 }
 
 type DescribeContainerGroupsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 分组所属【应用ID】，可通过调用[DescribeApplications](https://cloud.tencent.com/document/product/649/36090)查询已创建的应用列表或登录[控制台](https://console.cloud.tencent.com/tsf/app?rid=1)进行查看；也可以调用[CreateApplication](https://cloud.tencent.com/document/product/649/36094)创建新的应用。
+	// <p>分组所属【应用ID】，可通过调用<a href="https://cloud.tencent.com/document/product/649/36090">DescribeApplications</a>查询已创建的应用列表或登录<a href="https://console.cloud.tencent.com/tsf/app?rid=1">控制台</a>进行查看；也可以调用<a href="https://cloud.tencent.com/document/product/649/36094">CreateApplication</a>创建新的应用。</p>
 	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 
-	// 搜索字段，模糊搜索groupName字段
+	// <p>搜索字段，模糊搜索groupName字段</p>
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 
-	// 排序字段，默认为 createTime字段，支持id， name， createTime
+	// <p>排序字段，默认为 createTime字段，支持id， name， createTime</p>
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 排序方式，默认为1：倒序排序，0：正序，1：倒序
+	// <p>排序方式，默认为1：倒序排序，0：正序，1：倒序</p>
 	OrderType *int64 `json:"OrderType,omitnil,omitempty" name:"OrderType"`
 
-	// 偏移量，取值从0开始
+	// <p>偏移量，取值从0开始</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页个数，默认为20， 取值应为1~50
+	// <p>分页个数，默认为20， 取值应为1~50</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分组所属【集群ID】，可通过调用[DescribeClusters](https://cloud.tencent.com/document/product/649/85857)查询已创建的集群列表或登录[控制台](https://console.cloud.tencent.com/tsf/resource?rid=1&tab=docker)进行查看；也可以调用[CreateCluster](https://cloud.tencent.com/document/product/649/36049)创建新的集群。
+	// <p>分组所属【集群ID】，可通过调用<a href="https://cloud.tencent.com/document/product/649/85857">DescribeClusters</a>查询已创建的集群列表或登录<a href="https://console.cloud.tencent.com/tsf/resource?rid=1&amp;tab=docker">控制台</a>进行查看；也可以调用<a href="https://cloud.tencent.com/document/product/649/36049">CreateCluster</a>创建新的集群。</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 分组所属【命名空间 ID】，可通过调用[DescribeSimpleNamespaces](https://cloud.tencent.com/document/product/649/36096)查询已创建的命名空间列表或登录[控制台](https://console.cloud.tencent.com/tsf/resource?rid=1&tab=namespace)进行查看；也可以调用[CreateNamespace](https://cloud.tencent.com/document/product/649/36098)创建新的命名空间。
+	// <p>分组所属【命名空间 ID】，可通过调用<a href="https://cloud.tencent.com/document/product/649/36096">DescribeSimpleNamespaces</a>查询已创建的命名空间列表或登录<a href="https://console.cloud.tencent.com/tsf/resource?rid=1&amp;tab=namespace">控制台</a>进行查看；也可以调用<a href="https://cloud.tencent.com/document/product/649/36098">CreateNamespace</a>创建新的命名空间。</p>
 	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
+
+	// <p>部署组ID列表</p>
+	GroupIdList []*string `json:"GroupIdList,omitnil,omitempty" name:"GroupIdList"`
 }
 
 func (r *DescribeContainerGroupsRequest) ToJsonString() string {
@@ -10186,6 +9840,7 @@ func (r *DescribeContainerGroupsRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "ClusterId")
 	delete(f, "NamespaceId")
+	delete(f, "GroupIdList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeContainerGroupsRequest has unknown keys!", "")
 	}
@@ -10194,7 +9849,7 @@ func (r *DescribeContainerGroupsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeContainerGroupsResponseParams struct {
-	// 查询的权限数据对象
+	// <p>查询的权限数据对象</p>
 	Result *ContainGroupResult `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -10831,63 +10486,6 @@ func (r *DescribeFileConfigsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type DescribeFlowLastBatchStateRequestParams struct {
-	// 工作流 ID。前往[工作流管理](https://console.cloud.tencent.com/tsf/tct?rid=1&tab=workflowManage)，在工作流列表第一列和工作流详情页查看工作流ID。
-	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
-}
-
-type DescribeFlowLastBatchStateRequest struct {
-	*tchttp.BaseRequest
-	
-	// 工作流 ID。前往[工作流管理](https://console.cloud.tencent.com/tsf/tct?rid=1&tab=workflowManage)，在工作流列表第一列和工作流详情页查看工作流ID。
-	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
-}
-
-func (r *DescribeFlowLastBatchStateRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeFlowLastBatchStateRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "FlowId")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFlowLastBatchStateRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeFlowLastBatchStateResponseParams struct {
-	// 工作流批次最新状态
-	Result *TaskFlowLastBatchState `json:"Result,omitnil,omitempty" name:"Result"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DescribeFlowLastBatchStateResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeFlowLastBatchStateResponseParams `json:"Response"`
-}
-
-func (r *DescribeFlowLastBatchStateResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeFlowLastBatchStateResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type DescribeGatewayAllGroupApisRequestParams struct {
 	// 网关部署组ID
 	GatewayDeployGroupId *string `json:"GatewayDeployGroupId,omitnil,omitempty" name:"GatewayDeployGroupId"`
@@ -10953,45 +10551,57 @@ func (r *DescribeGatewayAllGroupApisResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeGatewayApisRequestParams struct {
-	// 分组ID
+	// <p>分组ID</p>
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 翻页偏移量
+	// <p>翻页偏移量</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 每页的记录数
+	// <p>每页的记录数</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 搜索关键字，支持 API path
+	// <p>搜索关键字，支持 API path</p>
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 
-	// 部署组ID
+	// <p>部署组ID</p>
 	GatewayDeployGroupId *string `json:"GatewayDeployGroupId,omitnil,omitempty" name:"GatewayDeployGroupId"`
 
-	// 发布状态, drafted(未发布)/released(已发布)/releasing(发布中)/failed(发布失败)
+	// <p>发布状态, drafted(未发布)/released(已发布)/releasing(发布中)/failed(发布失败)</p>
 	ReleaseStatus *string `json:"ReleaseStatus,omitnil,omitempty" name:"ReleaseStatus"`
+
+	// <p>返回扩展出参字段名</p>
+	ExtendFieldList []*string `json:"ExtendFieldList,omitnil,omitempty" name:"ExtendFieldList"`
+
+	// <p>服务接口状态</p><p>枚举值：</p><ul><li>ONLINE： 在线状态</li><li>OFFLINE： 离线状态</li><li>UNKNOWN： 未知</li><li>DELETED： 查询MS API不存在</li></ul>
+	ApiOnlineStatus *string `json:"ApiOnlineStatus,omitnil,omitempty" name:"ApiOnlineStatus"`
 }
 
 type DescribeGatewayApisRequest struct {
 	*tchttp.BaseRequest
 	
-	// 分组ID
+	// <p>分组ID</p>
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 翻页偏移量
+	// <p>翻页偏移量</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 每页的记录数
+	// <p>每页的记录数</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 搜索关键字，支持 API path
+	// <p>搜索关键字，支持 API path</p>
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 
-	// 部署组ID
+	// <p>部署组ID</p>
 	GatewayDeployGroupId *string `json:"GatewayDeployGroupId,omitnil,omitempty" name:"GatewayDeployGroupId"`
 
-	// 发布状态, drafted(未发布)/released(已发布)/releasing(发布中)/failed(发布失败)
+	// <p>发布状态, drafted(未发布)/released(已发布)/releasing(发布中)/failed(发布失败)</p>
 	ReleaseStatus *string `json:"ReleaseStatus,omitnil,omitempty" name:"ReleaseStatus"`
+
+	// <p>返回扩展出参字段名</p>
+	ExtendFieldList []*string `json:"ExtendFieldList,omitnil,omitempty" name:"ExtendFieldList"`
+
+	// <p>服务接口状态</p><p>枚举值：</p><ul><li>ONLINE： 在线状态</li><li>OFFLINE： 离线状态</li><li>UNKNOWN： 未知</li><li>DELETED： 查询MS API不存在</li></ul>
+	ApiOnlineStatus *string `json:"ApiOnlineStatus,omitnil,omitempty" name:"ApiOnlineStatus"`
 }
 
 func (r *DescribeGatewayApisRequest) ToJsonString() string {
@@ -11012,6 +10622,8 @@ func (r *DescribeGatewayApisRequest) FromJsonString(s string) error {
 	delete(f, "SearchWord")
 	delete(f, "GatewayDeployGroupId")
 	delete(f, "ReleaseStatus")
+	delete(f, "ExtendFieldList")
+	delete(f, "ApiOnlineStatus")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeGatewayApisRequest has unknown keys!", "")
 	}
@@ -11020,7 +10632,7 @@ func (r *DescribeGatewayApisRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeGatewayApisResponseParams struct {
-	// 翻页结构
+	// <p>翻页结构</p>
 	Result *TsfPageApiDetailInfo `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -13238,33 +12850,39 @@ func (r *DescribeMicroservicesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeMsApiListRequestParams struct {
-	// 微服务ID。该参数可以通过调用 [DescribeMicroservices](https://cloud.tencent.com/document/product/649/36084) 的返回值中的 MicroserviceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=service)查看；也可以调用[CreateMicroserviceWithDetailResp](https://cloud.tencent.com/document/product/649/85860)创建新的微服务。
+	// <p>微服务ID。该参数可以通过调用 <a href="https://cloud.tencent.com/document/product/649/36084">DescribeMicroservices</a> 的返回值中的 MicroserviceId 字段来获取或通过登录<a href="https://console.cloud.tencent.com/tse/tsf-consul?tab=service">控制台</a>查看；也可以调用<a href="https://cloud.tencent.com/document/product/649/85860">CreateMicroserviceWithDetailResp</a>创建新的微服务。</p>
 	MicroserviceId *string `json:"MicroserviceId,omitnil,omitempty" name:"MicroserviceId"`
 
-	// 搜索关键字。
+	// <p>搜索关键字。</p>
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 
-	// 返回数量，默认为20，最大值为50。
+	// <p>返回数量，默认为20，最大值为50。</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量，默认为0。
+	// <p>偏移量，默认为0。</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>批量查询API参数</p>
+	BatchApiParamList []*ApiParam `json:"BatchApiParamList,omitnil,omitempty" name:"BatchApiParamList"`
 }
 
 type DescribeMsApiListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 微服务ID。该参数可以通过调用 [DescribeMicroservices](https://cloud.tencent.com/document/product/649/36084) 的返回值中的 MicroserviceId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=service)查看；也可以调用[CreateMicroserviceWithDetailResp](https://cloud.tencent.com/document/product/649/85860)创建新的微服务。
+	// <p>微服务ID。该参数可以通过调用 <a href="https://cloud.tencent.com/document/product/649/36084">DescribeMicroservices</a> 的返回值中的 MicroserviceId 字段来获取或通过登录<a href="https://console.cloud.tencent.com/tse/tsf-consul?tab=service">控制台</a>查看；也可以调用<a href="https://cloud.tencent.com/document/product/649/85860">CreateMicroserviceWithDetailResp</a>创建新的微服务。</p>
 	MicroserviceId *string `json:"MicroserviceId,omitnil,omitempty" name:"MicroserviceId"`
 
-	// 搜索关键字。
+	// <p>搜索关键字。</p>
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 
-	// 返回数量，默认为20，最大值为50。
+	// <p>返回数量，默认为20，最大值为50。</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量，默认为0。
+	// <p>偏移量，默认为0。</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>批量查询API参数</p>
+	BatchApiParamList []*ApiParam `json:"BatchApiParamList,omitnil,omitempty" name:"BatchApiParamList"`
 }
 
 func (r *DescribeMsApiListRequest) ToJsonString() string {
@@ -13283,6 +12901,7 @@ func (r *DescribeMsApiListRequest) FromJsonString(s string) error {
 	delete(f, "SearchWord")
 	delete(f, "Limit")
 	delete(f, "Offset")
+	delete(f, "BatchApiParamList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMsApiListRequest has unknown keys!", "")
 	}
@@ -13291,7 +12910,7 @@ func (r *DescribeMsApiListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeMsApiListResponseParams struct {
-	// 微服务API列表。
+	// <p>微服务API列表。</p>
 	Result *TsfApiListResponse `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -13835,27 +13454,33 @@ func (r *DescribePodInstancesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeProgramsRequestParams struct {
-	// 模糊查询数据集ID，数据集名称，不传入时查询全量
+	// <p>模糊查询数据集ID，数据集名称，不传入时查询全量</p>
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 
-	// 每页数量，默认值20
+	// <p>每页数量，默认值20</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 起始偏移量，默认值0
+	// <p>起始偏移量，默认值0</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>模糊查询，传递模糊查询字段和对应的值</p>
+	SearchFilters *SearchFiltersProgram `json:"SearchFilters,omitnil,omitempty" name:"SearchFilters"`
 }
 
 type DescribeProgramsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 模糊查询数据集ID，数据集名称，不传入时查询全量
+	// <p>模糊查询数据集ID，数据集名称，不传入时查询全量</p>
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 
-	// 每页数量，默认值20
+	// <p>每页数量，默认值20</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 起始偏移量，默认值0
+	// <p>起始偏移量，默认值0</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>模糊查询，传递模糊查询字段和对应的值</p>
+	SearchFilters *SearchFiltersProgram `json:"SearchFilters,omitnil,omitempty" name:"SearchFilters"`
 }
 
 func (r *DescribeProgramsRequest) ToJsonString() string {
@@ -13873,6 +13498,7 @@ func (r *DescribeProgramsRequest) FromJsonString(s string) error {
 	delete(f, "SearchWord")
 	delete(f, "Limit")
 	delete(f, "Offset")
+	delete(f, "SearchFilters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeProgramsRequest has unknown keys!", "")
 	}
@@ -13881,7 +13507,7 @@ func (r *DescribeProgramsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeProgramsResponseParams struct {
-	// 数据集列表
+	// <p>数据集列表</p>
 	Result *PagedProgram `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -15345,233 +14971,6 @@ func (r *DescribeStatisticsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type DescribeTaskDetailRequestParams struct {
-	// 任务ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)列表页第一列和任务基本信息页查看任务ID。
-	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
-
-	// 任务历史ID。查询任务列表 [DescribeTaskRecords](https://cloud.tencent.com/document/api/649/56136) 返回值字段 TaskLogId
-	TaskLogId *string `json:"TaskLogId,omitnil,omitempty" name:"TaskLogId"`
-}
-
-type DescribeTaskDetailRequest struct {
-	*tchttp.BaseRequest
-	
-	// 任务ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)列表页第一列和任务基本信息页查看任务ID。
-	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
-
-	// 任务历史ID。查询任务列表 [DescribeTaskRecords](https://cloud.tencent.com/document/api/649/56136) 返回值字段 TaskLogId
-	TaskLogId *string `json:"TaskLogId,omitnil,omitempty" name:"TaskLogId"`
-}
-
-func (r *DescribeTaskDetailRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeTaskDetailRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "TaskId")
-	delete(f, "TaskLogId")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTaskDetailRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeTaskDetailResponseParams struct {
-	// 任务详情
-	Result *TaskRecord `json:"Result,omitnil,omitempty" name:"Result"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DescribeTaskDetailResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeTaskDetailResponseParams `json:"Response"`
-}
-
-func (r *DescribeTaskDetailResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeTaskDetailResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeTaskLastStatusRequestParams struct {
-	// 任务ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)列表页第一列和任务基本信息页查看任务ID。
-	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
-}
-
-type DescribeTaskLastStatusRequest struct {
-	*tchttp.BaseRequest
-	
-	// 任务ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)列表页第一列和任务基本信息页查看任务ID。
-	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
-}
-
-func (r *DescribeTaskLastStatusRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeTaskLastStatusRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "TaskId")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTaskLastStatusRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeTaskLastStatusResponseParams struct {
-	// 任务上一次执行状态
-	Result *TaskLastExecuteStatus `json:"Result,omitnil,omitempty" name:"Result"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DescribeTaskLastStatusResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeTaskLastStatusResponseParams `json:"Response"`
-}
-
-func (r *DescribeTaskLastStatusResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeTaskLastStatusResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeTaskRecordsRequestParams struct {
-	// 翻页偏移量。默认值为0
-	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
-
-	// 翻页查询单页数量。默认值为 20，最大值为 1000
-	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-
-	// 模糊查询关键字，支持任务ID和任务名称。
-	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
-
-	// 任务启用状态。一共2种状态可选，ENABLED：启用，DISABLED：停用
-	TaskState *string `json:"TaskState,omitnil,omitempty" name:"TaskState"`
-
-	// 部署组ID。前往[应用管理](https://console.cloud.tencent.com/tsf/app?rid=1)点击应用ID进入应用部署列表页面获取部署组ID。
-	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
-
-	// 任务类型。当前只支持一种任务类型。枚举值，java：Java类任务
-	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
-
-	// 任务执行方式，unicast：随机单节点执行，broadcast：广播执行，shard：分片执行
-	ExecuteType *string `json:"ExecuteType,omitnil,omitempty" name:"ExecuteType"`
-
-	// 任务ID列表。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)列表页第一列查看任务ID。
-	Ids []*string `json:"Ids,omitnil,omitempty" name:"Ids"`
-}
-
-type DescribeTaskRecordsRequest struct {
-	*tchttp.BaseRequest
-	
-	// 翻页偏移量。默认值为0
-	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
-
-	// 翻页查询单页数量。默认值为 20，最大值为 1000
-	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-
-	// 模糊查询关键字，支持任务ID和任务名称。
-	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
-
-	// 任务启用状态。一共2种状态可选，ENABLED：启用，DISABLED：停用
-	TaskState *string `json:"TaskState,omitnil,omitempty" name:"TaskState"`
-
-	// 部署组ID。前往[应用管理](https://console.cloud.tencent.com/tsf/app?rid=1)点击应用ID进入应用部署列表页面获取部署组ID。
-	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
-
-	// 任务类型。当前只支持一种任务类型。枚举值，java：Java类任务
-	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
-
-	// 任务执行方式，unicast：随机单节点执行，broadcast：广播执行，shard：分片执行
-	ExecuteType *string `json:"ExecuteType,omitnil,omitempty" name:"ExecuteType"`
-
-	// 任务ID列表。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)列表页第一列查看任务ID。
-	Ids []*string `json:"Ids,omitnil,omitempty" name:"Ids"`
-}
-
-func (r *DescribeTaskRecordsRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeTaskRecordsRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "Offset")
-	delete(f, "Limit")
-	delete(f, "SearchWord")
-	delete(f, "TaskState")
-	delete(f, "GroupId")
-	delete(f, "TaskType")
-	delete(f, "ExecuteType")
-	delete(f, "Ids")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTaskRecordsRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeTaskRecordsResponseParams struct {
-	// 任务记录列表
-	Result *TaskRecordPage `json:"Result,omitnil,omitempty" name:"Result"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DescribeTaskRecordsResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeTaskRecordsResponseParams `json:"Response"`
-}
-
-func (r *DescribeTaskRecordsResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeTaskRecordsResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type DescribeUnitApiUseDetailRequestParams struct {
 	// 网关部署组ID
 	GatewayDeployGroupId *string `json:"GatewayDeployGroupId,omitnil,omitempty" name:"GatewayDeployGroupId"`
@@ -16219,120 +15618,6 @@ func (r *DisableLaneRuleResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type DisableTaskFlowRequestParams struct {
-	// 工作流 ID。[工作流管理](https://console.cloud.tencent.com/tsf/tct?rid=1&tab=workflowManage)列表页查看工作流ID。
-	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
-}
-
-type DisableTaskFlowRequest struct {
-	*tchttp.BaseRequest
-	
-	// 工作流 ID。[工作流管理](https://console.cloud.tencent.com/tsf/tct?rid=1&tab=workflowManage)列表页查看工作流ID。
-	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
-}
-
-func (r *DisableTaskFlowRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DisableTaskFlowRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "FlowId")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DisableTaskFlowRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DisableTaskFlowResponseParams struct {
-	// true成功，false: 失败
-	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DisableTaskFlowResponse struct {
-	*tchttp.BaseResponse
-	Response *DisableTaskFlowResponseParams `json:"Response"`
-}
-
-func (r *DisableTaskFlowResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DisableTaskFlowResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DisableTaskRequestParams struct {
-	// 任务ID。[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)列表页查看任务ID。
-	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
-}
-
-type DisableTaskRequest struct {
-	*tchttp.BaseRequest
-	
-	// 任务ID。[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)列表页查看任务ID。
-	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
-}
-
-func (r *DisableTaskRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DisableTaskRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "TaskId")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DisableTaskRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DisableTaskResponseParams struct {
-	// true：操作成功，false：操作失败
-	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DisableTaskResponse struct {
-	*tchttp.BaseResponse
-	Response *DisableTaskResponseParams `json:"Response"`
-}
-
-func (r *DisableTaskResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DisableTaskResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type DisableUnitRouteRequestParams struct {
 	// 网关实体ID
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
@@ -16713,120 +15998,6 @@ func (r *EnableLaneRuleResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type EnableTaskFlowRequestParams struct {
-	// 工作流 ID。[工作流管理](https://console.cloud.tencent.com/tsf/tct?rid=1&tab=workflowManage)列表页查看工作流ID。
-	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
-}
-
-type EnableTaskFlowRequest struct {
-	*tchttp.BaseRequest
-	
-	// 工作流 ID。[工作流管理](https://console.cloud.tencent.com/tsf/tct?rid=1&tab=workflowManage)列表页查看工作流ID。
-	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
-}
-
-func (r *EnableTaskFlowRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *EnableTaskFlowRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "FlowId")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EnableTaskFlowRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type EnableTaskFlowResponseParams struct {
-	// true成功，false: 失败
-	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type EnableTaskFlowResponse struct {
-	*tchttp.BaseResponse
-	Response *EnableTaskFlowResponseParams `json:"Response"`
-}
-
-func (r *EnableTaskFlowResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *EnableTaskFlowResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type EnableTaskRequestParams struct {
-	// 任务ID。[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)列表页查看任务ID。
-	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
-}
-
-type EnableTaskRequest struct {
-	*tchttp.BaseRequest
-	
-	// 任务ID。[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)列表页查看任务ID。
-	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
-}
-
-func (r *EnableTaskRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *EnableTaskRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "TaskId")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EnableTaskRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type EnableTaskResponseParams struct {
-	// true：操作成功，false：操作失败
-	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type EnableTaskResponse struct {
-	*tchttp.BaseResponse
-	Response *EnableTaskResponseParams `json:"Response"`
-}
-
-func (r *EnableTaskResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *EnableTaskResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type EnableUnitRouteRequestParams struct {
 	// 网关实体ID
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
@@ -16953,149 +16124,38 @@ type Env struct {
 }
 
 type ExclusiveInstance struct {
-	// 配置中心类型[注册中心Registration、配置中心Configuration]
+	// <p>配置中心类型[注册中心Registration、配置中心Configuration]</p>
 	CenterType *string `json:"CenterType,omitnil,omitempty" name:"CenterType"`
 
-	// 实例id，通过[北极星控制台](https://console.cloud.tencent.com/tse/governance)获取
+	// <p>实例id，通过<a href="https://console.cloud.tencent.com/tse/governance">北极星控制台</a>获取</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 实例类型，例如北极星Polaris
+	// <p>实例类型，例如北极星Polaris</p>
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
-	// 实例名称
+	// <p>实例名称</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 实例地域id，通过[北极星控制台](https://console.cloud.tencent.com/tse/governance)获取
+	// <p>实例地域id，通过<a href="https://console.cloud.tencent.com/tse/governance">北极星控制台</a>获取</p>
 	RegionId *string `json:"RegionId,omitnil,omitempty" name:"RegionId"`
 
-	// 实例命名空间ID，通过[北极星控制台](https://console.cloud.tencent.com/tse/governance)获取
+	// <p>实例命名空间ID，通过<a href="https://console.cloud.tencent.com/tse/governance">北极星控制台</a>获取</p>
 	InstanceNamespaceId *string `json:"InstanceNamespaceId,omitnil,omitempty" name:"InstanceNamespaceId"`
 
-	// 部署组Id
+	// <p>部署组Id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 更新时间
+	// <p>更新时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *uint64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
-}
 
-// Predefined struct for user
-type ExecuteTaskFlowRequestParams struct {
-	// 工作流 ID。[工作流管理](https://console.cloud.tencent.com/tsf/tct?rid=1&tab=workflowManage)列表页查看工作流ID。
-	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
-}
-
-type ExecuteTaskFlowRequest struct {
-	*tchttp.BaseRequest
-	
-	// 工作流 ID。[工作流管理](https://console.cloud.tencent.com/tsf/tct?rid=1&tab=workflowManage)列表页查看工作流ID。
-	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
-}
-
-func (r *ExecuteTaskFlowRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *ExecuteTaskFlowRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "FlowId")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ExecuteTaskFlowRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type ExecuteTaskFlowResponseParams struct {
-	// 操作成功返回工作流批次ID，操作失败返回空字符串。
-	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type ExecuteTaskFlowResponse struct {
-	*tchttp.BaseResponse
-	Response *ExecuteTaskFlowResponseParams `json:"Response"`
-}
-
-func (r *ExecuteTaskFlowResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *ExecuteTaskFlowResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type ExecuteTaskRequestParams struct {
-	// 任务ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)列表页查看任务ID。
-	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
-}
-
-type ExecuteTaskRequest struct {
-	*tchttp.BaseRequest
-	
-	// 任务ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)列表页查看任务ID。
-	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
-}
-
-func (r *ExecuteTaskRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *ExecuteTaskRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "TaskId")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ExecuteTaskRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type ExecuteTaskResponseParams struct {
-	// 操作成功返回任务批次ID，操作失败返回空字符串。
-	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type ExecuteTaskResponse struct {
-	*tchttp.BaseResponse
-	Response *ExecuteTaskResponseParams `json:"Response"`
-}
-
-func (r *ExecuteTaskResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *ExecuteTaskResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
+	// <p>文档ID</p>
+	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 }
 
 // Predefined struct for user
@@ -17386,39 +16446,42 @@ type GatewayGroupIds struct {
 }
 
 type GatewayPlugin struct {
-	// 网关插件id
+	// <p>网关插件id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 插件名称
+	// <p>插件名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 插件类型
+	// <p>插件类型</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 插件描述
+	// <p>插件描述</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
 
-	// 更新时间
+	// <p>更新时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdatedTime *string `json:"UpdatedTime,omitnil,omitempty" name:"UpdatedTime"`
 
-	// 发布状态
+	// <p>发布状态</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 是否禁用删除
+	// <p>是否禁用删除</p>
 	DeleteDisabled *bool `json:"DeleteDisabled,omitnil,omitempty" name:"DeleteDisabled"`
 
-	// 禁用原因
+	// <p>禁用原因</p>
 	DeleteDisabledReason *string `json:"DeleteDisabledReason,omitnil,omitempty" name:"DeleteDisabledReason"`
+
+	// <p>是否不可绑定</p><p>枚举值：</p><ul><li>true： 禁止绑定</li><li>false： 允许绑定</li></ul>
+	BindDisabled *bool `json:"BindDisabled,omitnil,omitempty" name:"BindDisabled"`
 }
 
 type GatewayPluginBoundParam struct {
@@ -19611,175 +18674,6 @@ func (r *ModifyProgramResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type ModifyTaskRequestParams struct {
-	// 任务ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)列表页查看任务ID。
-	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
-
-	// 任务名称，长度限制为64字符。在任务管理列表页面第一列或是任务基本信息页查看任务名称。
-	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
-
-	// 任务类型。当前只支持一种任务类型。枚举值，java：Java类任务
-	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
-
-	// 任务内容，长度限制为 65536 字节
-	TaskContent *string `json:"TaskContent,omitnil,omitempty" name:"TaskContent"`
-
-	// 任务执行方式，枚举值。unicast：随机单节点执行，broadcast：广播执行，shard：分片执行
-	ExecuteType *string `json:"ExecuteType,omitnil,omitempty" name:"ExecuteType"`
-
-	// 触发规则
-	TaskRule *TaskRule `json:"TaskRule,omitnil,omitempty" name:"TaskRule"`
-
-	// 超时时间，取值大于0，单位：毫秒（ms）
-	TimeOut *uint64 `json:"TimeOut,omitnil,omitempty" name:"TimeOut"`
-
-	// 部署组ID。在[应用管理](https://console.cloud.tencent.com/tsf/app?rid=1)，点击应用ID进入应用部署页查看部署组ID。
-	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
-
-	// 分片数量，取值范围2~1000
-	ShardCount *int64 `json:"ShardCount,omitnil,omitempty" name:"ShardCount"`
-
-	// 分片参数
-	ShardArguments []*ShardArgument `json:"ShardArguments,omitnil,omitempty" name:"ShardArguments"`
-
-	// 高级设置
-	AdvanceSettings *AdvanceSettings `json:"AdvanceSettings,omitnil,omitempty" name:"AdvanceSettings"`
-
-	// 判断任务成功的操作符 GT/GTE
-	SuccessOperator *string `json:"SuccessOperator,omitnil,omitempty" name:"SuccessOperator"`
-
-	// 判断任务成功率的阈值，取值范围：1-100，单位：百分比（%）
-	SuccessRatio *int64 `json:"SuccessRatio,omitnil,omitempty" name:"SuccessRatio"`
-
-	// 重试次数，取值范围 0 - 10，单位：次
-	RetryCount *uint64 `json:"RetryCount,omitnil,omitempty" name:"RetryCount"`
-
-	// 重试间隔，取值范围 0-600，单位：秒（s）
-	RetryInterval *uint64 `json:"RetryInterval,omitnil,omitempty" name:"RetryInterval"`
-
-	// 任务参数，长度限制10000个字符
-	TaskArgument *string `json:"TaskArgument,omitnil,omitempty" name:"TaskArgument"`
-
-	// 数据集列表。
-	ProgramIdList []*string `json:"ProgramIdList,omitnil,omitempty" name:"ProgramIdList"`
-}
-
-type ModifyTaskRequest struct {
-	*tchttp.BaseRequest
-	
-	// 任务ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)列表页查看任务ID。
-	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
-
-	// 任务名称，长度限制为64字符。在任务管理列表页面第一列或是任务基本信息页查看任务名称。
-	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
-
-	// 任务类型。当前只支持一种任务类型。枚举值，java：Java类任务
-	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
-
-	// 任务内容，长度限制为 65536 字节
-	TaskContent *string `json:"TaskContent,omitnil,omitempty" name:"TaskContent"`
-
-	// 任务执行方式，枚举值。unicast：随机单节点执行，broadcast：广播执行，shard：分片执行
-	ExecuteType *string `json:"ExecuteType,omitnil,omitempty" name:"ExecuteType"`
-
-	// 触发规则
-	TaskRule *TaskRule `json:"TaskRule,omitnil,omitempty" name:"TaskRule"`
-
-	// 超时时间，取值大于0，单位：毫秒（ms）
-	TimeOut *uint64 `json:"TimeOut,omitnil,omitempty" name:"TimeOut"`
-
-	// 部署组ID。在[应用管理](https://console.cloud.tencent.com/tsf/app?rid=1)，点击应用ID进入应用部署页查看部署组ID。
-	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
-
-	// 分片数量，取值范围2~1000
-	ShardCount *int64 `json:"ShardCount,omitnil,omitempty" name:"ShardCount"`
-
-	// 分片参数
-	ShardArguments []*ShardArgument `json:"ShardArguments,omitnil,omitempty" name:"ShardArguments"`
-
-	// 高级设置
-	AdvanceSettings *AdvanceSettings `json:"AdvanceSettings,omitnil,omitempty" name:"AdvanceSettings"`
-
-	// 判断任务成功的操作符 GT/GTE
-	SuccessOperator *string `json:"SuccessOperator,omitnil,omitempty" name:"SuccessOperator"`
-
-	// 判断任务成功率的阈值，取值范围：1-100，单位：百分比（%）
-	SuccessRatio *int64 `json:"SuccessRatio,omitnil,omitempty" name:"SuccessRatio"`
-
-	// 重试次数，取值范围 0 - 10，单位：次
-	RetryCount *uint64 `json:"RetryCount,omitnil,omitempty" name:"RetryCount"`
-
-	// 重试间隔，取值范围 0-600，单位：秒（s）
-	RetryInterval *uint64 `json:"RetryInterval,omitnil,omitempty" name:"RetryInterval"`
-
-	// 任务参数，长度限制10000个字符
-	TaskArgument *string `json:"TaskArgument,omitnil,omitempty" name:"TaskArgument"`
-
-	// 数据集列表。
-	ProgramIdList []*string `json:"ProgramIdList,omitnil,omitempty" name:"ProgramIdList"`
-}
-
-func (r *ModifyTaskRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *ModifyTaskRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "TaskId")
-	delete(f, "TaskName")
-	delete(f, "TaskType")
-	delete(f, "TaskContent")
-	delete(f, "ExecuteType")
-	delete(f, "TaskRule")
-	delete(f, "TimeOut")
-	delete(f, "GroupId")
-	delete(f, "ShardCount")
-	delete(f, "ShardArguments")
-	delete(f, "AdvanceSettings")
-	delete(f, "SuccessOperator")
-	delete(f, "SuccessRatio")
-	delete(f, "RetryCount")
-	delete(f, "RetryInterval")
-	delete(f, "TaskArgument")
-	delete(f, "ProgramIdList")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyTaskRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type ModifyTaskResponseParams struct {
-	// 更新是否成功。true：操作成功、false：操作失败
-	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type ModifyTaskResponse struct {
-	*tchttp.BaseResponse
-	Response *ModifyTaskResponseParams `json:"Response"`
-}
-
-func (r *ModifyTaskResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *ModifyTaskResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type ModifyUploadInfoRequestParams struct {
 	// 应用ID，通过调用DescribeApplications接口[获取应用列表](https://cloud.tencent.com/document/api/649/36090)从而获取应用ID，或登录[控制台](https://console.cloud.tencent.com/tsf/app?rid=1)进行查看，调用CreateApplication接口[创建应用](https://cloud.tencent.com/document/product/649/36094)时的返回值
 	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
@@ -19902,19 +18796,25 @@ type MonitorOverview struct {
 }
 
 type MsApiArray struct {
-	// API 请求路径
+	// <p>API 请求路径</p>
 	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 
-	// 请求方法
+	// <p>请求方法</p>
 	Method *string `json:"Method,omitnil,omitempty" name:"Method"`
 
-	// 方法描述
+	// <p>方法描述</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// API状态 0:离线 1:在线
+	// <p>API状态 0:离线 1:在线</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>API ID</p>
+	ApiId *string `json:"ApiId,omitnil,omitempty" name:"ApiId"`
+
+	// <p>API来源</p><p>枚举值：</p><ul><li>FROM_CONSUL： 服务注册</li><li>FROM_MANUAL： 手动录入</li></ul>
+	SrcTypeName *string `json:"SrcTypeName,omitnil,omitempty" name:"SrcTypeName"`
 }
 
 type MsInstance struct {
@@ -20491,255 +19391,6 @@ func (r *ReassociateBusinessLogConfigResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ReassociateBusinessLogConfigResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type RedoTaskBatchRequestParams struct {
-	// 任务ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)列表页查看任务ID。
-	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
-
-	// 任务批次ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)页面点击任务ID进入任务详情，进入执行记录列表页，第一列即为任务批次ID。
-	BatchId *string `json:"BatchId,omitnil,omitempty" name:"BatchId"`
-}
-
-type RedoTaskBatchRequest struct {
-	*tchttp.BaseRequest
-	
-	// 任务ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)列表页查看任务ID。
-	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
-
-	// 任务批次ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)页面点击任务ID进入任务详情，进入执行记录列表页，第一列即为任务批次ID。
-	BatchId *string `json:"BatchId,omitnil,omitempty" name:"BatchId"`
-}
-
-func (r *RedoTaskBatchRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *RedoTaskBatchRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "TaskId")
-	delete(f, "BatchId")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RedoTaskBatchRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type RedoTaskBatchResponseParams struct {
-	// 批次流水ID
-	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type RedoTaskBatchResponse struct {
-	*tchttp.BaseResponse
-	Response *RedoTaskBatchResponseParams `json:"Response"`
-}
-
-func (r *RedoTaskBatchResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *RedoTaskBatchResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type RedoTaskExecuteRequestParams struct {
-	// 任务批次ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)页面第一列点击任务ID进入任务详情，进入执行记录列表页，第一列内容即为任务批次ID。
-	BatchId *string `json:"BatchId,omitnil,omitempty" name:"BatchId"`
-
-	// 任务执行ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)页面第一列点击任务ID进入任务详情，进入执行记录页，点击批次ID进入执行详情列表页，第一列即为任务执行ID。
-	ExecuteId *string `json:"ExecuteId,omitnil,omitempty" name:"ExecuteId"`
-
-	// 任务ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)列表页查看任务ID。
-	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
-}
-
-type RedoTaskExecuteRequest struct {
-	*tchttp.BaseRequest
-	
-	// 任务批次ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)页面第一列点击任务ID进入任务详情，进入执行记录列表页，第一列内容即为任务批次ID。
-	BatchId *string `json:"BatchId,omitnil,omitempty" name:"BatchId"`
-
-	// 任务执行ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)页面第一列点击任务ID进入任务详情，进入执行记录页，点击批次ID进入执行详情列表页，第一列即为任务执行ID。
-	ExecuteId *string `json:"ExecuteId,omitnil,omitempty" name:"ExecuteId"`
-
-	// 任务ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)列表页查看任务ID。
-	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
-}
-
-func (r *RedoTaskExecuteRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *RedoTaskExecuteRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "BatchId")
-	delete(f, "ExecuteId")
-	delete(f, "TaskId")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RedoTaskExecuteRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type RedoTaskExecuteResponseParams struct {
-	// 成功返回执行批次流水ID。失败返回空字符串。
-	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type RedoTaskExecuteResponse struct {
-	*tchttp.BaseResponse
-	Response *RedoTaskExecuteResponseParams `json:"Response"`
-}
-
-func (r *RedoTaskExecuteResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *RedoTaskExecuteResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type RedoTaskFlowBatchRequestParams struct {
-	// 工作流批次 ID。在[工作流管理](https://console.cloud.tencent.com/tsf/tct?rid=1&tab=workflowManage)页面，点击第一列的工作流ID进入工作流执行记录列表页面，第一列的内容即为工作流批次ID。
-	FlowBatchId *string `json:"FlowBatchId,omitnil,omitempty" name:"FlowBatchId"`
-}
-
-type RedoTaskFlowBatchRequest struct {
-	*tchttp.BaseRequest
-	
-	// 工作流批次 ID。在[工作流管理](https://console.cloud.tencent.com/tsf/tct?rid=1&tab=workflowManage)页面，点击第一列的工作流ID进入工作流执行记录列表页面，第一列的内容即为工作流批次ID。
-	FlowBatchId *string `json:"FlowBatchId,omitnil,omitempty" name:"FlowBatchId"`
-}
-
-func (r *RedoTaskFlowBatchRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *RedoTaskFlowBatchRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "FlowBatchId")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RedoTaskFlowBatchRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type RedoTaskFlowBatchResponseParams struct {
-	// 工作流批次历史 ID。操作失败时不返回该字段，返回错误码。
-	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type RedoTaskFlowBatchResponse struct {
-	*tchttp.BaseResponse
-	Response *RedoTaskFlowBatchResponseParams `json:"Response"`
-}
-
-func (r *RedoTaskFlowBatchResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *RedoTaskFlowBatchResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type RedoTaskRequestParams struct {
-	// 任务ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)列表页查看任务ID。
-	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
-}
-
-type RedoTaskRequest struct {
-	*tchttp.BaseRequest
-	
-	// 任务ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)列表页查看任务ID。
-	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
-}
-
-func (r *RedoTaskRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *RedoTaskRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "TaskId")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RedoTaskRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type RedoTaskResponseParams struct {
-	// 操作成功任务批次ID。操作失败返回空字符串。
-	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type RedoTaskResponse struct {
-	*tchttp.BaseResponse
-	Response *RedoTaskResponseParams `json:"Response"`
-}
-
-func (r *RedoTaskResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *RedoTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -21709,6 +20360,14 @@ func (r *SearchBusinessLogResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type SearchFiltersProgram struct {
+	// <p>数据集ID</p>
+	ProgramId *string `json:"ProgramId,omitnil,omitempty" name:"ProgramId"`
+
+	// <p>数据集名称</p>
+	ProgramName *string `json:"ProgramName,omitnil,omitempty" name:"ProgramName"`
+}
+
 // Predefined struct for user
 type SearchStdoutLogRequestParams struct {
 	// 机器实例ID， 和 部署组 ID 二者必选其一，不能同时为空
@@ -22052,15 +20711,6 @@ type ServiceStatisticsResults struct {
 
 	// 条数
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
-}
-
-type ShardArgument struct {
-	// 分片参数 KEY，整形, 范围 [1,1000]
-	ShardKey *uint64 `json:"ShardKey,omitnil,omitempty" name:"ShardKey"`
-
-	// 分片参数 VALUE
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	ShardValue *string `json:"ShardValue,omitnil,omitempty" name:"ShardValue"`
 }
 
 // Predefined struct for user
@@ -22531,141 +21181,6 @@ func (r *StopGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-// Predefined struct for user
-type StopTaskBatchRequestParams struct {
-	// 任务批次ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)页面点击任务ID进入任务详情，进入执行记录列表页，第一列即为任务批次ID。
-	BatchId *string `json:"BatchId,omitnil,omitempty" name:"BatchId"`
-
-	// 任务ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)列表页面可以查看任务ID。
-	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
-}
-
-type StopTaskBatchRequest struct {
-	*tchttp.BaseRequest
-	
-	// 任务批次ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)页面点击任务ID进入任务详情，进入执行记录列表页，第一列即为任务批次ID。
-	BatchId *string `json:"BatchId,omitnil,omitempty" name:"BatchId"`
-
-	// 任务ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)列表页面可以查看任务ID。
-	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
-}
-
-func (r *StopTaskBatchRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *StopTaskBatchRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "BatchId")
-	delete(f, "TaskId")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopTaskBatchRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type StopTaskBatchResponseParams struct {
-	// 返回 true 或 false。true：操作成功，false：操作失败
-	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type StopTaskBatchResponse struct {
-	*tchttp.BaseResponse
-	Response *StopTaskBatchResponseParams `json:"Response"`
-}
-
-func (r *StopTaskBatchResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *StopTaskBatchResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type StopTaskExecuteRequestParams struct {
-	// 任务执行ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)页面点击任务ID进入任务详情，进入执行记录页，点击批次ID进入执行详情列表页，第一列即为任务执行ID。
-	ExecuteId *string `json:"ExecuteId,omitnil,omitempty" name:"ExecuteId"`
-
-	// 任务批次ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)页面点击任务ID进入任务详情，进入执行记录列表页，第一列即为任务批次ID。
-	BatchId *string `json:"BatchId,omitnil,omitempty" name:"BatchId"`
-
-	// 任务ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)列表页面可以查看任务ID。
-	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
-}
-
-type StopTaskExecuteRequest struct {
-	*tchttp.BaseRequest
-	
-	// 任务执行ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)页面点击任务ID进入任务详情，进入执行记录页，点击批次ID进入执行详情列表页，第一列即为任务执行ID。
-	ExecuteId *string `json:"ExecuteId,omitnil,omitempty" name:"ExecuteId"`
-
-	// 任务批次ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)页面点击任务ID进入任务详情，进入执行记录列表页，第一列即为任务批次ID。
-	BatchId *string `json:"BatchId,omitnil,omitempty" name:"BatchId"`
-
-	// 任务ID。在[任务管理](https://console.cloud.tencent.com/tsf/tct?rid=1)列表页面可以查看任务ID。
-	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
-}
-
-func (r *StopTaskExecuteRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *StopTaskExecuteRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "ExecuteId")
-	delete(f, "BatchId")
-	delete(f, "TaskId")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopTaskExecuteRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type StopTaskExecuteResponseParams struct {
-	// 返回 true 或 false。true：操作成功，false：操作失败
-	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type StopTaskExecuteResponse struct {
-	*tchttp.BaseResponse
-	Response *StopTaskExecuteResponseParams `json:"Response"`
-}
-
-func (r *StopTaskExecuteResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *StopTaskExecuteResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type Tag struct {
 	// 标签键
 	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
@@ -22674,151 +21189,9 @@ type Tag struct {
 	TagValue *string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
 }
 
-type TaskFlowEdge struct {
-	// 节点 ID，节点类型为任务时为任务ID，节点类型为逻辑节点"且"时为 AND，为逻辑节点"或"时为 OR，节点类型为头节点时为字符串"head"
-	NodeId *string `json:"NodeId,omitnil,omitempty" name:"NodeId"`
-
-	// 子节点 ID，节点类型为任务时为任务ID，节点类型为逻辑节点"且"时为 AND，为逻辑节点"或"时为 OR
-	ChildNodeId *string `json:"ChildNodeId,omitnil,omitempty" name:"ChildNodeId"`
-
-	// 是否核心任务,Y/N
-	CoreNode *string `json:"CoreNode,omitnil,omitempty" name:"CoreNode"`
-
-	// 边类型，上下游任务依赖触发关系。一共2个值，Y：成功触发，N：失败触发
-	EdgeType *string `json:"EdgeType,omitnil,omitempty" name:"EdgeType"`
-
-	// 任务节点类型，一共有4种类型，AND：逻辑节点且，OR：逻辑节点或，TASK：任务节点，START：头节点
-	NodeType *string `json:"NodeType,omitnil,omitempty" name:"NodeType"`
-
-	// X轴坐标位置
-	PositionX *string `json:"PositionX,omitnil,omitempty" name:"PositionX"`
-
-	// Y轴坐标位置
-	PositionY *string `json:"PositionY,omitnil,omitempty" name:"PositionY"`
-
-	// 图 ID，新建工作流时自动生成，不需要填写，查看工作流图时后端返回
-	GraphId *string `json:"GraphId,omitnil,omitempty" name:"GraphId"`
-
-	// 工作流 ID，新建工作流时自动生成，不需要填写，查看工作流图时后端返回
-	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
-
-	// 节点名称
-	NodeName *string `json:"NodeName,omitnil,omitempty" name:"NodeName"`
-
-	// 任务ID，新建工作流时不需要填写，查看工作流图时后端返回
-	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
-
-	// 任务历史ID，新建工作流时不需要填写，查看工作流图时后端返回
-	TaskLogId *string `json:"TaskLogId,omitnil,omitempty" name:"TaskLogId"`
-}
-
-type TaskFlowLastBatchState struct {
-	// 批次ID
-	FlowBatchId *string `json:"FlowBatchId,omitnil,omitempty" name:"FlowBatchId"`
-
-	// 批次历史ID
-	FlowBatchLogId *string `json:"FlowBatchLogId,omitnil,omitempty" name:"FlowBatchLogId"`
-
-	// 状态,WAITING/SUCCESS/FAILED/RUNNING/TERMINATING
-	State *string `json:"State,omitnil,omitempty" name:"State"`
-}
-
 type TaskId struct {
 	// 任务ID
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
-}
-
-type TaskLastExecuteStatus struct {
-	// 批次ID
-	BatchId *string `json:"BatchId,omitnil,omitempty" name:"BatchId"`
-
-	// 运行状态，RUNNING/SUCCESS/FAIL/HALF/TERMINATED
-	State *string `json:"State,omitnil,omitempty" name:"State"`
-
-	// 批次历史ID
-	BatchLogId *string `json:"BatchLogId,omitnil,omitempty" name:"BatchLogId"`
-}
-
-type TaskRecord struct {
-	// 任务名称
-	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
-
-	// 任务类型
-	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
-
-	// 任务执行方式，unicast：随机单节点执行，broadcast：广播执行，shard：分片执行
-	ExecuteType *string `json:"ExecuteType,omitnil,omitempty" name:"ExecuteType"`
-
-	// 任务内容，长度限制65535字节
-	TaskContent *string `json:"TaskContent,omitnil,omitempty" name:"TaskContent"`
-
-	// 分组ID
-	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
-
-	// 超时时间，单位：毫秒。
-	TimeOut *int64 `json:"TimeOut,omitnil,omitempty" name:"TimeOut"`
-
-	// 重试次数
-	RetryCount *int64 `json:"RetryCount,omitnil,omitempty" name:"RetryCount"`
-
-	// 重试间隔，单位：毫秒。
-	RetryInterval *int64 `json:"RetryInterval,omitnil,omitempty" name:"RetryInterval"`
-
-	// 触发规则
-	TaskRule *TaskRule `json:"TaskRule,omitnil,omitempty" name:"TaskRule"`
-
-	// 任务启用状态。一共2种状态可选，ENABLED：启用，DISABLED：停用
-	TaskState *string `json:"TaskState,omitnil,omitempty" name:"TaskState"`
-
-	// 任务ID
-	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
-
-	// 判断任务成功的操作符
-	SuccessOperator *string `json:"SuccessOperator,omitnil,omitempty" name:"SuccessOperator"`
-
-	// 判断任务成功的阈值
-	SuccessRatio *int64 `json:"SuccessRatio,omitnil,omitempty" name:"SuccessRatio"`
-
-	// 分片数量
-	ShardCount *int64 `json:"ShardCount,omitnil,omitempty" name:"ShardCount"`
-
-	// 高级设置
-	AdvanceSettings *AdvanceSettings `json:"AdvanceSettings,omitnil,omitempty" name:"AdvanceSettings"`
-
-	// 分片参数
-	ShardArguments []*ShardArgument `json:"ShardArguments,omitnil,omitempty" name:"ShardArguments"`
-
-	// 所属工作流ID
-	BelongFlowIds []*string `json:"BelongFlowIds,omitnil,omitempty" name:"BelongFlowIds"`
-
-	// 任务历史ID
-	TaskLogId *string `json:"TaskLogId,omitnil,omitempty" name:"TaskLogId"`
-
-	// 触发类型，一共3种类型，WorkFlow：工作流触发，Cron：定时触发，FixRate：周期触发
-	TriggerType *string `json:"TriggerType,omitnil,omitempty" name:"TriggerType"`
-
-	// 任务参数，长度限制10000个字符
-	TaskArgument *string `json:"TaskArgument,omitnil,omitempty" name:"TaskArgument"`
-}
-
-type TaskRecordPage struct {
-	// 总数量
-	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
-
-	// 任务记录列表
-	Content []*TaskRecord `json:"Content,omitnil,omitempty" name:"Content"`
-}
-
-type TaskRule struct {
-	// 触发规则类型，枚举值。一共3个值，Cron：定时触发，Repeat：周期触发，WorkFlow：工作流触发
-	RuleType *string `json:"RuleType,omitnil,omitempty" name:"RuleType"`
-
-	// Cron类型规则，cron表达式。
-	Expression *string `json:"Expression,omitnil,omitempty" name:"Expression"`
-
-	// 时间间隔， 单位毫秒
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	RepeatInterval *uint64 `json:"RepeatInterval,omitnil,omitempty" name:"RepeatInterval"`
 }
 
 type TcrRepoInfo struct {
@@ -22836,63 +21209,6 @@ type TcrRepoInfo struct {
 
 	// 仓库名
 	RepoName *string `json:"RepoName,omitnil,omitempty" name:"RepoName"`
-}
-
-// Predefined struct for user
-type TerminateTaskFlowBatchRequestParams struct {
-	// 工作流批次 ID，在[工作流执行记录](https://console.cloud.tencent.com/tsf/tct?rid=1&tab=taskflow)列表页第一列获取。
-	FlowBatchId *string `json:"FlowBatchId,omitnil,omitempty" name:"FlowBatchId"`
-}
-
-type TerminateTaskFlowBatchRequest struct {
-	*tchttp.BaseRequest
-	
-	// 工作流批次 ID，在[工作流执行记录](https://console.cloud.tencent.com/tsf/tct?rid=1&tab=taskflow)列表页第一列获取。
-	FlowBatchId *string `json:"FlowBatchId,omitnil,omitempty" name:"FlowBatchId"`
-}
-
-func (r *TerminateTaskFlowBatchRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *TerminateTaskFlowBatchRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "FlowBatchId")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TerminateTaskFlowBatchRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type TerminateTaskFlowBatchResponseParams struct {
-	// 是否停止成功，true：停止成功，false：停止失败
-	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type TerminateTaskFlowBatchResponse struct {
-	*tchttp.BaseResponse
-	Response *TerminateTaskFlowBatchResponseParams `json:"Response"`
-}
-
-func (r *TerminateTaskFlowBatchResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *TerminateTaskFlowBatchResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type ThreadPicture struct {
@@ -22997,20 +21313,23 @@ type TsfPageBusinessLogConfig struct {
 }
 
 type TsfPageBusinessLogV2 struct {
-	// 总条数
+	// <p>总条数</p>
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 业务日志列表
+	// <p>业务日志列表</p>
 	Content []*BusinessLogV2 `json:"Content,omitnil,omitempty" name:"Content"`
 
-	// 游标ID
+	// <p>游标ID</p>
 	ScrollId *string `json:"ScrollId,omitnil,omitempty" name:"ScrollId"`
 
-	// 查询状态，SUCCESS：查询成功完成，ERROR_RANGE_EXCEED：查询范围过大异常，ERROR_COMPLEX_CONDITION：查询条件复杂异常，ERROR_OTHER_CAUSE：其他异常
+	// <p>查询状态，SUCCESS：查询成功完成，ERROR_RANGE_EXCEED：查询范围过大异常，ERROR_COMPLEX_CONDITION：查询条件复杂异常，ERROR_OTHER_CAUSE：其他异常</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 查询es时，使用searchAfter返回的游标
+	// <p>查询es时，使用searchAfter返回的游标</p>
 	SearchAfter []*string `json:"SearchAfter,omitnil,omitempty" name:"SearchAfter"`
+
+	// <p>是否压缩</p>
+	Compressed *bool `json:"Compressed,omitnil,omitempty" name:"Compressed"`
 }
 
 type TsfPageCluster struct {
@@ -23918,27 +22237,33 @@ func (r *UpdateGatewayApiResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateHealthCheckSettingsRequestParams struct {
-	// 部署组ID，可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/api/649/36068)查询已创建的部署组列表或登录控制台进行查看；也可以调用[CreateContainGroup](https://cloud.tencent.com/document/api/649/36075)创建新的部署组。
+	// <p>部署组ID，可通过调用<a href="https://cloud.tencent.com/document/api/649/36068">DescribeContainerGroups</a>查询已创建的部署组列表或登录控制台进行查看；也可以调用<a href="https://cloud.tencent.com/document/api/649/36075">CreateContainGroup</a>创建新的部署组。</p>
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 是否开启健康检查
+	// <p>是否开启健康检查</p>
 	EnableHealthCheck *bool `json:"EnableHealthCheck,omitnil,omitempty" name:"EnableHealthCheck"`
 
-	// 健康检查配置
+	// <p>健康检查配置</p>
 	HealthCheckSettings *HealthCheckSettings `json:"HealthCheckSettings,omitnil,omitempty" name:"HealthCheckSettings"`
+
+	// <p>是否自动重启</p>
+	LivenessAutoRestart *bool `json:"LivenessAutoRestart,omitnil,omitempty" name:"LivenessAutoRestart"`
 }
 
 type UpdateHealthCheckSettingsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 部署组ID，可通过调用[DescribeContainerGroups](https://cloud.tencent.com/document/api/649/36068)查询已创建的部署组列表或登录控制台进行查看；也可以调用[CreateContainGroup](https://cloud.tencent.com/document/api/649/36075)创建新的部署组。
+	// <p>部署组ID，可通过调用<a href="https://cloud.tencent.com/document/api/649/36068">DescribeContainerGroups</a>查询已创建的部署组列表或登录控制台进行查看；也可以调用<a href="https://cloud.tencent.com/document/api/649/36075">CreateContainGroup</a>创建新的部署组。</p>
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 是否开启健康检查
+	// <p>是否开启健康检查</p>
 	EnableHealthCheck *bool `json:"EnableHealthCheck,omitnil,omitempty" name:"EnableHealthCheck"`
 
-	// 健康检查配置
+	// <p>健康检查配置</p>
 	HealthCheckSettings *HealthCheckSettings `json:"HealthCheckSettings,omitnil,omitempty" name:"HealthCheckSettings"`
+
+	// <p>是否自动重启</p>
+	LivenessAutoRestart *bool `json:"LivenessAutoRestart,omitnil,omitempty" name:"LivenessAutoRestart"`
 }
 
 func (r *UpdateHealthCheckSettingsRequest) ToJsonString() string {
@@ -23956,6 +22281,7 @@ func (r *UpdateHealthCheckSettingsRequest) FromJsonString(s string) error {
 	delete(f, "GroupId")
 	delete(f, "EnableHealthCheck")
 	delete(f, "HealthCheckSettings")
+	delete(f, "LivenessAutoRestart")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateHealthCheckSettingsRequest has unknown keys!", "")
 	}
@@ -23964,9 +22290,7 @@ func (r *UpdateHealthCheckSettingsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateHealthCheckSettingsResponseParams struct {
-	// 更新健康检查配置操作是否成功。
-	// true：操作成功。
-	// false：操作失败。
+	// <p>更新健康检查配置操作是否成功。<br>true：操作成功。<br>false：操作失败。</p>
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -24147,152 +22471,155 @@ type ValueFrom struct {
 }
 
 type VmGroup struct {
-	// 部署组ID
+	// <p>部署组ID</p>
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 部署组名称
+	// <p>部署组名称</p>
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
-	// 部署组状态
+	// <p>部署组状态</p>
 	GroupStatus *string `json:"GroupStatus,omitnil,omitempty" name:"GroupStatus"`
 
-	// 程序包ID
+	// <p>程序包ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PackageId *string `json:"PackageId,omitnil,omitempty" name:"PackageId"`
 
-	// 程序包名称
+	// <p>程序包名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PackageName *string `json:"PackageName,omitnil,omitempty" name:"PackageName"`
 
-	// 程序包版本号
+	// <p>程序包版本号</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PackageVersion *string `json:"PackageVersion,omitnil,omitempty" name:"PackageVersion"`
 
-	// 集群ID
+	// <p>集群ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 集群名称
+	// <p>集群名称</p>
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
-	// 命名空间ID
+	// <p>命名空间ID</p>
 	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
 
-	// 命名空间名称
+	// <p>命名空间名称</p>
 	NamespaceName *string `json:"NamespaceName,omitnil,omitempty" name:"NamespaceName"`
 
-	// 应用ID
+	// <p>应用ID</p>
 	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 
-	// 应用名称
+	// <p>应用名称</p>
 	ApplicationName *string `json:"ApplicationName,omitnil,omitempty" name:"ApplicationName"`
 
-	// 部署组机器数目
+	// <p>部署组机器数目</p>
 	InstanceCount *int64 `json:"InstanceCount,omitnil,omitempty" name:"InstanceCount"`
 
-	// 部署组运行中机器数目
+	// <p>部署组运行中机器数目</p>
 	RunInstanceCount *int64 `json:"RunInstanceCount,omitnil,omitempty" name:"RunInstanceCount"`
 
-	// 部署组启动参数信息
+	// <p>部署组启动参数信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartupParameters *string `json:"StartupParameters,omitnil,omitempty" name:"StartupParameters"`
 
-	// 部署组创建时间
+	// <p>部署组创建时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 部署组更新时间
+	// <p>部署组更新时间</p>
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 部署组停止机器数目
+	// <p>部署组停止机器数目</p>
 	OffInstanceCount *int64 `json:"OffInstanceCount,omitnil,omitempty" name:"OffInstanceCount"`
 
-	// 部署组描述信息
+	// <p>部署组描述信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupDesc *string `json:"GroupDesc,omitnil,omitempty" name:"GroupDesc"`
 
-	// 微服务类型
+	// <p>微服务类型</p>
 	MicroserviceType *string `json:"MicroserviceType,omitnil,omitempty" name:"MicroserviceType"`
 
-	// 应用类型
+	// <p>应用类型</p>
 	ApplicationType *string `json:"ApplicationType,omitnil,omitempty" name:"ApplicationType"`
 
-	// 部署组资源类型
+	// <p>部署组资源类型</p>
 	GroupResourceType *string `json:"GroupResourceType,omitnil,omitempty" name:"GroupResourceType"`
 
-	// 部署组更新时间戳
+	// <p>部署组更新时间戳</p>
 	UpdatedTime *int64 `json:"UpdatedTime,omitnil,omitempty" name:"UpdatedTime"`
 
-	// 部署应用描述信息
+	// <p>部署应用描述信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeployDesc *string `json:"DeployDesc,omitnil,omitempty" name:"DeployDesc"`
 
-	// 滚动发布的更新方式
+	// <p>滚动发布的更新方式</p>
 	UpdateType *uint64 `json:"UpdateType,omitnil,omitempty" name:"UpdateType"`
 
-	// 发布是否启用beta批次
+	// <p>发布是否启用beta批次</p>
 	DeployBetaEnable *bool `json:"DeployBetaEnable,omitnil,omitempty" name:"DeployBetaEnable"`
 
-	// 滚动发布的批次比例列表
+	// <p>滚动发布的批次比例列表</p>
 	DeployBatch []*float64 `json:"DeployBatch,omitnil,omitempty" name:"DeployBatch"`
 
-	// 滚动发布的批次执行方式
+	// <p>滚动发布的批次执行方式</p>
 	DeployExeMode *string `json:"DeployExeMode,omitnil,omitempty" name:"DeployExeMode"`
 
-	// 滚动发布的每个批次的等待时间
+	// <p>滚动发布的每个批次的等待时间</p>
 	DeployWaitTime *uint64 `json:"DeployWaitTime,omitnil,omitempty" name:"DeployWaitTime"`
 
-	// 是否开启了健康检查
+	// <p>是否开启了健康检查</p>
 	EnableHealthCheck *bool `json:"EnableHealthCheck,omitnil,omitempty" name:"EnableHealthCheck"`
 
-	// 健康检查配置
+	// <p>健康检查配置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HealthCheckSettings *HealthCheckSettings `json:"HealthCheckSettings,omitnil,omitempty" name:"HealthCheckSettings"`
 
-	// 程序包类型
+	// <p>程序包类型</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PackageType *string `json:"PackageType,omitnil,omitempty" name:"PackageType"`
 
-	// 启动脚本 base64编码
+	// <p>启动脚本 base64编码</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartScript *string `json:"StartScript,omitnil,omitempty" name:"StartScript"`
 
-	// 停止脚本 base64编码
+	// <p>停止脚本 base64编码</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StopScript *string `json:"StopScript,omitnil,omitempty" name:"StopScript"`
 
-	// 部署组备注
+	// <p>部署组备注</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
 
-	// javaagent信息
+	// <p>javaagent信息</p>
 	AgentProfileList []*AgentProfile `json:"AgentProfileList,omitnil,omitempty" name:"AgentProfileList"`
 
-	// 预热属性配置
+	// <p>预热属性配置</p>
 	WarmupSetting *WarmupSetting `json:"WarmupSetting,omitnil,omitempty" name:"WarmupSetting"`
 
-	// Envoy网关配置
+	// <p>Envoy网关配置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GatewayConfig *GatewayConfig `json:"GatewayConfig,omitnil,omitempty" name:"GatewayConfig"`
 
-	// 批次是否开启健康检查
+	// <p>批次是否开启健康检查</p>
 	EnableBatchHealthCheck *bool `json:"EnableBatchHealthCheck,omitnil,omitempty" name:"EnableBatchHealthCheck"`
 
-	// 是否开启cgroup控制内存cpu
+	// <p>是否开启cgroup控制内存cpu</p>
 	FilebeatCgroupEnable *bool `json:"FilebeatCgroupEnable,omitnil,omitempty" name:"FilebeatCgroupEnable"`
 
-	// filebeat使用cpu上限
+	// <p>filebeat使用cpu上限</p>
 	FilebeatMaxCpu *float64 `json:"FilebeatMaxCpu,omitnil,omitempty" name:"FilebeatMaxCpu"`
 
-	// filebeat使用内存上限
+	// <p>filebeat使用内存上限</p>
 	FilebeatMaxMem *int64 `json:"FilebeatMaxMem,omitnil,omitempty" name:"FilebeatMaxMem"`
 
-	// 仓库ID
+	// <p>仓库ID</p>
 	RepositoryId *string `json:"RepositoryId,omitnil,omitempty" name:"RepositoryId"`
 
-	// 仓库名称
+	// <p>仓库名称</p>
 	RepositoryName *string `json:"RepositoryName,omitnil,omitempty" name:"RepositoryName"`
 
-	// 仓库类型
+	// <p>仓库类型</p>
 	RepositoryType *string `json:"RepositoryType,omitnil,omitempty" name:"RepositoryType"`
+
+	// <p>是否自动重启</p>
+	LivenessAutoRestart *bool `json:"LivenessAutoRestart,omitnil,omitempty" name:"LivenessAutoRestart"`
 }
 
 type VmGroupOther struct {

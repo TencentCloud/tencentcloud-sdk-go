@@ -89,6 +89,9 @@ const (
 	// 正则参数格式错误。
 	INVALIDPARAMETER_REGEXRULEERROR = "InvalidParameter.RegexRuleError"
 
+	// 查询超时，后台仍然在处理中，需要再次查询请求
+	INVALIDPARAMETER_REQUESTTIMEOUT = "InvalidParameter.RequestTimeout"
+
 	// 进程名/目标IP/目标端口，不能同时为空。
 	INVALIDPARAMETER_REVERSHELLKEYFIELDALLEMPTY = "InvalidParameter.ReverShellKeyFieldAllEmpty"
 

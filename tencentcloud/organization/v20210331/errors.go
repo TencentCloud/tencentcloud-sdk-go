@@ -929,6 +929,9 @@ const (
 	// 成员不支持操作。
 	UNSUPPORTEDOPERATION_MEMBERUNSUPPORTEDOPERATION = "UnsupportedOperation.MemberUnsupportedOperation"
 
+	// 操作被禁止。
+	UNSUPPORTEDOPERATION_OPERATIONFORBIDDEN = "UnsupportedOperation.OperationForbidden"
+
 	// 存在在途订单。
 	UNSUPPORTEDOPERATION_ORDERINPROGRESSEXISTED = "UnsupportedOperation.OrderInProgressExisted"
 

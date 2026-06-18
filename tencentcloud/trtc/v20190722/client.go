@@ -2459,6 +2459,138 @@ func (c *Client) DescribeStreamIngestWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeTRTCAIRecognitionUsageRequest() (request *DescribeTRTCAIRecognitionUsageRequest) {
+    request = &DescribeTRTCAIRecognitionUsageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trtc", APIVersion, "DescribeTRTCAIRecognitionUsage")
+    
+    
+    return
+}
+
+func NewDescribeTRTCAIRecognitionUsageResponse() (response *DescribeTRTCAIRecognitionUsageResponse) {
+    response = &DescribeTRTCAIRecognitionUsageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTRTCAIRecognitionUsage
+// AI 智能识别与对话用量查询（AI对话/语音转文本/实时翻译/实时语音合成）
+//
+// - 查询时间小于等于1天时，返回每5分钟粒度的数据；查询时间大于1天时，返回按天汇总的数据。
+//
+// - 单次查询统计区间最多不能超过31天。
+//
+// - 若查询当天用量，由于统计延迟等原因，返回数据可能不够准确。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_THIRDPARTYCALLERROR = "InternalError.ThirdPartyCallError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_QUERYSCALEOVERSIZE = "InvalidParameter.QueryScaleOversize"
+func (c *Client) DescribeTRTCAIRecognitionUsage(request *DescribeTRTCAIRecognitionUsageRequest) (response *DescribeTRTCAIRecognitionUsageResponse, err error) {
+    return c.DescribeTRTCAIRecognitionUsageWithContext(context.Background(), request)
+}
+
+// DescribeTRTCAIRecognitionUsage
+// AI 智能识别与对话用量查询（AI对话/语音转文本/实时翻译/实时语音合成）
+//
+// - 查询时间小于等于1天时，返回每5分钟粒度的数据；查询时间大于1天时，返回按天汇总的数据。
+//
+// - 单次查询统计区间最多不能超过31天。
+//
+// - 若查询当天用量，由于统计延迟等原因，返回数据可能不够准确。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_THIRDPARTYCALLERROR = "InternalError.ThirdPartyCallError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_QUERYSCALEOVERSIZE = "InvalidParameter.QueryScaleOversize"
+func (c *Client) DescribeTRTCAIRecognitionUsageWithContext(ctx context.Context, request *DescribeTRTCAIRecognitionUsageRequest) (response *DescribeTRTCAIRecognitionUsageResponse, err error) {
+    if request == nil {
+        request = NewDescribeTRTCAIRecognitionUsageRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "DescribeTRTCAIRecognitionUsage")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTRTCAIRecognitionUsage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTRTCAIRecognitionUsageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTRTCDedicatedCloudAccUsageRequest() (request *DescribeTRTCDedicatedCloudAccUsageRequest) {
+    request = &DescribeTRTCDedicatedCloudAccUsageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trtc", APIVersion, "DescribeTRTCDedicatedCloudAccUsage")
+    
+    
+    return
+}
+
+func NewDescribeTRTCDedicatedCloudAccUsageResponse() (response *DescribeTRTCDedicatedCloudAccUsageResponse) {
+    response = &DescribeTRTCDedicatedCloudAccUsageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTRTCDedicatedCloudAccUsage
+// TRTC专属云网络加速用量查询
+//
+// - 查询时间小于等于1天时，返回每5分钟粒度的数据；查询时间大于1天时，返回按天汇总的数据。
+//
+// - 单次查询统计区间最多不能超过31天。
+//
+// - 若查询当天用量，由于统计延迟等原因，返回数据可能不够准确。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_THIRDPARTYCALLERROR = "InternalError.ThirdPartyCallError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_QUERYSCALEOVERSIZE = "InvalidParameter.QueryScaleOversize"
+func (c *Client) DescribeTRTCDedicatedCloudAccUsage(request *DescribeTRTCDedicatedCloudAccUsageRequest) (response *DescribeTRTCDedicatedCloudAccUsageResponse, err error) {
+    return c.DescribeTRTCDedicatedCloudAccUsageWithContext(context.Background(), request)
+}
+
+// DescribeTRTCDedicatedCloudAccUsage
+// TRTC专属云网络加速用量查询
+//
+// - 查询时间小于等于1天时，返回每5分钟粒度的数据；查询时间大于1天时，返回按天汇总的数据。
+//
+// - 单次查询统计区间最多不能超过31天。
+//
+// - 若查询当天用量，由于统计延迟等原因，返回数据可能不够准确。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_THIRDPARTYCALLERROR = "InternalError.ThirdPartyCallError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_QUERYSCALEOVERSIZE = "InvalidParameter.QueryScaleOversize"
+func (c *Client) DescribeTRTCDedicatedCloudAccUsageWithContext(ctx context.Context, request *DescribeTRTCDedicatedCloudAccUsageRequest) (response *DescribeTRTCDedicatedCloudAccUsageResponse, err error) {
+    if request == nil {
+        request = NewDescribeTRTCDedicatedCloudAccUsageRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "DescribeTRTCDedicatedCloudAccUsage")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTRTCDedicatedCloudAccUsage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTRTCDedicatedCloudAccUsageResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTRTCMarketQualityDataRequest() (request *DescribeTRTCMarketQualityDataRequest) {
     request = &DescribeTRTCMarketQualityDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2498,11 +2630,9 @@ func NewDescribeTRTCMarketQualityDataResponse() (response *DescribeTRTCMarketQua
 // 2.查询时间范围根据监控仪表盘功能版本而定，【基础版】可查近30天，【进阶版】可查近60天。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_QUERYTASKINFOFAILED = "FailedOperation.QueryTaskInfoFailed"
-//  INTERNALERROR_DBERROR = "InternalError.DBError"
-//  INVALIDPARAMETER_TASKID = "InvalidParameter.TaskId"
-//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
-//  MISSINGPARAMETER_TASKID = "MissingParameter.TaskId"
+//  INTERNALERROR_THIRDPARTYCALLERROR = "InternalError.ThirdPartyCallError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_QUERYSCALEOVERSIZE = "InvalidParameter.QueryScaleOversize"
 func (c *Client) DescribeTRTCMarketQualityData(request *DescribeTRTCMarketQualityDataRequest) (response *DescribeTRTCMarketQualityDataResponse, err error) {
     return c.DescribeTRTCMarketQualityDataWithContext(context.Background(), request)
 }
@@ -2527,11 +2657,9 @@ func (c *Client) DescribeTRTCMarketQualityData(request *DescribeTRTCMarketQualit
 // 2.查询时间范围根据监控仪表盘功能版本而定，【基础版】可查近30天，【进阶版】可查近60天。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_QUERYTASKINFOFAILED = "FailedOperation.QueryTaskInfoFailed"
-//  INTERNALERROR_DBERROR = "InternalError.DBError"
-//  INVALIDPARAMETER_TASKID = "InvalidParameter.TaskId"
-//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
-//  MISSINGPARAMETER_TASKID = "MissingParameter.TaskId"
+//  INTERNALERROR_THIRDPARTYCALLERROR = "InternalError.ThirdPartyCallError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_QUERYSCALEOVERSIZE = "InvalidParameter.QueryScaleOversize"
 func (c *Client) DescribeTRTCMarketQualityDataWithContext(ctx context.Context, request *DescribeTRTCMarketQualityDataRequest) (response *DescribeTRTCMarketQualityDataResponse, err error) {
     if request == nil {
         request = NewDescribeTRTCMarketQualityDataRequest()
@@ -2586,11 +2714,9 @@ func NewDescribeTRTCMarketScaleDataResponse() (response *DescribeTRTCMarketScale
 // 2.查询时间范围根据监控仪表盘功能版本而定，【基础版】可查近30天，【进阶版】可查近60天。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_QUERYTASKINFOFAILED = "FailedOperation.QueryTaskInfoFailed"
-//  INTERNALERROR_DBERROR = "InternalError.DBError"
-//  INVALIDPARAMETER_TASKID = "InvalidParameter.TaskId"
-//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
-//  MISSINGPARAMETER_TASKID = "MissingParameter.TaskId"
+//  INTERNALERROR_THIRDPARTYCALLERROR = "InternalError.ThirdPartyCallError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_QUERYSCALEOVERSIZE = "InvalidParameter.QueryScaleOversize"
 func (c *Client) DescribeTRTCMarketScaleData(request *DescribeTRTCMarketScaleDataRequest) (response *DescribeTRTCMarketScaleDataResponse, err error) {
     return c.DescribeTRTCMarketScaleDataWithContext(context.Background(), request)
 }
@@ -2613,11 +2739,9 @@ func (c *Client) DescribeTRTCMarketScaleData(request *DescribeTRTCMarketScaleDat
 // 2.查询时间范围根据监控仪表盘功能版本而定，【基础版】可查近30天，【进阶版】可查近60天。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_QUERYTASKINFOFAILED = "FailedOperation.QueryTaskInfoFailed"
-//  INTERNALERROR_DBERROR = "InternalError.DBError"
-//  INVALIDPARAMETER_TASKID = "InvalidParameter.TaskId"
-//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
-//  MISSINGPARAMETER_TASKID = "MissingParameter.TaskId"
+//  INTERNALERROR_THIRDPARTYCALLERROR = "InternalError.ThirdPartyCallError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_QUERYSCALEOVERSIZE = "InvalidParameter.QueryScaleOversize"
 func (c *Client) DescribeTRTCMarketScaleDataWithContext(ctx context.Context, request *DescribeTRTCMarketScaleDataRequest) (response *DescribeTRTCMarketScaleDataResponse, err error) {
     if request == nil {
         request = NewDescribeTRTCMarketScaleDataRequest()
@@ -2857,6 +2981,72 @@ func (c *Client) DescribeTRTCRealTimeScaleDataWithContext(ctx context.Context, r
     request.SetContext(ctx)
     
     response = NewDescribeTRTCRealTimeScaleDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTRTCSegmentModerationUsageRequest() (request *DescribeTRTCSegmentModerationUsageRequest) {
+    request = &DescribeTRTCSegmentModerationUsageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trtc", APIVersion, "DescribeTRTCSegmentModerationUsage")
+    
+    
+    return
+}
+
+func NewDescribeTRTCSegmentModerationUsageResponse() (response *DescribeTRTCSegmentModerationUsageResponse) {
+    response = &DescribeTRTCSegmentModerationUsageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTRTCSegmentModerationUsage
+// 切片截图与内容理解用量查询，支持查询音视频切片（云端切片场景）和 AI 内容理解（审核场景）两种业务类型
+//
+// - 查询时间小于等于1天时，返回每5分钟粒度的数据；查询时间大于1天时，返回按天汇总的数据。
+//
+// - 单次查询统计区间最多不能超过31天。
+//
+// - 若查询当天用量，由于统计延迟等原因，返回数据可能不够准确。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_THIRDPARTYCALLERROR = "InternalError.ThirdPartyCallError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_QUERYSCALEOVERSIZE = "InvalidParameter.QueryScaleOversize"
+func (c *Client) DescribeTRTCSegmentModerationUsage(request *DescribeTRTCSegmentModerationUsageRequest) (response *DescribeTRTCSegmentModerationUsageResponse, err error) {
+    return c.DescribeTRTCSegmentModerationUsageWithContext(context.Background(), request)
+}
+
+// DescribeTRTCSegmentModerationUsage
+// 切片截图与内容理解用量查询，支持查询音视频切片（云端切片场景）和 AI 内容理解（审核场景）两种业务类型
+//
+// - 查询时间小于等于1天时，返回每5分钟粒度的数据；查询时间大于1天时，返回按天汇总的数据。
+//
+// - 单次查询统计区间最多不能超过31天。
+//
+// - 若查询当天用量，由于统计延迟等原因，返回数据可能不够准确。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_THIRDPARTYCALLERROR = "InternalError.ThirdPartyCallError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_QUERYSCALEOVERSIZE = "InvalidParameter.QueryScaleOversize"
+func (c *Client) DescribeTRTCSegmentModerationUsageWithContext(ctx context.Context, request *DescribeTRTCSegmentModerationUsageRequest) (response *DescribeTRTCSegmentModerationUsageResponse, err error) {
+    if request == nil {
+        request = NewDescribeTRTCSegmentModerationUsageRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "DescribeTRTCSegmentModerationUsage")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTRTCSegmentModerationUsage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTRTCSegmentModerationUsageResponse()
     err = c.Send(request, response)
     return
 }
@@ -4691,6 +4881,8 @@ func NewStartPublishCdnStreamResponse() (response *StartPublishCdnStreamResponse
 //
 // 启动一个混流转推任务，将  TRTC 房间的多路音视频流混成一路音视频流，编码后推到直播 CDN 或者回推到 TRTC 房间。也支持不转码直接转推 TRTC 房间的单路流。启动成功后，会返回一个 SdkAppid 维度唯一的任务 Id（TaskId）。您需要保存该 TaskId，后续需要依赖此 TaskId 更新和结束任务。可以参考文档： [功能说明](https://cloud.tencent.com/document/product/647/84721#b9a855f4-e38c-4616-9b07-fc44e0e8282a) 和 [常见问题](https://cloud.tencent.com/document/product/647/62620)
 //
+// 需要注意的是，TaskId调用时效性是30天，从成功启动转推并获得任务ID后开始计算，超时后无法调用更新和停止等接口，但是转推任务不会停止。最终任务会等所有参与混流转推的主播离开TRTC房间或切换成观众，并且超过MaxIdleTime时长后，自动停止。
+//
 // 
 //
 // 注意：
@@ -4724,6 +4916,8 @@ func (c *Client) StartPublishCdnStream(request *StartPublishCdnStreamRequest) (r
 // 接口说明：  
 //
 // 启动一个混流转推任务，将  TRTC 房间的多路音视频流混成一路音视频流，编码后推到直播 CDN 或者回推到 TRTC 房间。也支持不转码直接转推 TRTC 房间的单路流。启动成功后，会返回一个 SdkAppid 维度唯一的任务 Id（TaskId）。您需要保存该 TaskId，后续需要依赖此 TaskId 更新和结束任务。可以参考文档： [功能说明](https://cloud.tencent.com/document/product/647/84721#b9a855f4-e38c-4616-9b07-fc44e0e8282a) 和 [常见问题](https://cloud.tencent.com/document/product/647/62620)
+//
+// 需要注意的是，TaskId调用时效性是30天，从成功启动转推并获得任务ID后开始计算，超时后无法调用更新和停止等接口，但是转推任务不会停止。最终任务会等所有参与混流转推的主播离开TRTC房间或切换成观众，并且超过MaxIdleTime时长后，自动停止。
 //
 // 
 //
@@ -5376,6 +5570,7 @@ func NewTextToSpeechResponse() (response *TextToSpeechResponse) {
 //  INVALIDPARAMETER_VOICEID = "InvalidParameter.VoiceId"
 //  INVALIDPARAMETER_VOLUME = "InvalidParameter.Volume"
 //  MISSINGPARAMETER_APIKEY = "MissingParameter.APIKey"
+//  MISSINGPARAMETER_TEXT = "MissingParameter.Text"
 //  UNSUPPORTEDOPERATION_INTERNALERROR = "UnsupportedOperation.InternalError"
 //  UNSUPPORTEDOPERATION_NOTALLOWED = "UnsupportedOperation.NotAllowed"
 func (c *Client) TextToSpeech(request *TextToSpeechRequest) (response *TextToSpeechResponse, err error) {
@@ -5394,6 +5589,7 @@ func (c *Client) TextToSpeech(request *TextToSpeechRequest) (response *TextToSpe
 //  INVALIDPARAMETER_VOICEID = "InvalidParameter.VoiceId"
 //  INVALIDPARAMETER_VOLUME = "InvalidParameter.Volume"
 //  MISSINGPARAMETER_APIKEY = "MissingParameter.APIKey"
+//  MISSINGPARAMETER_TEXT = "MissingParameter.Text"
 //  UNSUPPORTEDOPERATION_INTERNALERROR = "UnsupportedOperation.InternalError"
 //  UNSUPPORTEDOPERATION_NOTALLOWED = "UnsupportedOperation.NotAllowed"
 func (c *Client) TextToSpeechWithContext(ctx context.Context, request *TextToSpeechRequest) (response *TextToSpeechResponse, err error) {

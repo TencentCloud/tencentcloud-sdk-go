@@ -21,43 +21,43 @@ import (
 )
 
 type AbuseReport struct {
-	// 发送时间
+	// <p>发送时间</p>
 	DeliverTime *string `json:"DeliverTime,omitnil,omitempty" name:"DeliverTime"`
 
-	// 发信地址
+	// <p>发信地址</p>
 	OriginalMailFrom *string `json:"OriginalMailFrom,omitnil,omitempty" name:"OriginalMailFrom"`
 
-	// 收信地址
+	// <p>收信地址</p>
 	OriginalRcptTo *string `json:"OriginalRcptTo,omitnil,omitempty" name:"OriginalRcptTo"`
 
-	// 发信域名
+	// <p>发信域名</p>
 	FromDomain *string `json:"FromDomain,omitnil,omitempty" name:"FromDomain"`
 
-	// 投诉时间
+	// <p>投诉时间</p>
 	ComplainTime *string `json:"ComplainTime,omitnil,omitempty" name:"ComplainTime"`
 
-	// 收信域名
+	// <p>收信域名</p>
 	Mta *string `json:"Mta,omitnil,omitempty" name:"Mta"`
 
-	// 来源ip
+	// <p>来源ip</p>
 	SourceIp *string `json:"SourceIp,omitnil,omitempty" name:"SourceIp"`
 
-	// 数据时间
+	// <p>数据时间</p>
 	InsertTime *string `json:"InsertTime,omitnil,omitempty" name:"InsertTime"`
 
-	// 模板id
+	// <p>模板ID</p>
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
-	// bulkId
+	// <p>bulkId</p>
 	BulkId *string `json:"BulkId,omitnil,omitempty" name:"BulkId"`
 
-	// 邮件Message-Id
+	// <p>邮件Message-Id</p>
 	MessageId *string `json:"MessageId,omitnil,omitempty" name:"MessageId"`
 
-	// 投诉时间
+	// <p>投诉时间</p>
 	AbuseTime *string `json:"AbuseTime,omitnil,omitempty" name:"AbuseTime"`
 
-	// 邮件主题
+	// <p>邮件主题</p>
 	Subject *string `json:"Subject,omitnil,omitempty" name:"Subject"`
 }
 
@@ -3088,27 +3088,27 @@ func (r *UpdateEmailTemplateResponse) FromJsonString(s string) error {
 }
 
 type Volume struct {
-	// 日期
+	// <p>日期</p>
 	SendDate *string `json:"SendDate,omitnil,omitempty" name:"SendDate"`
 
-	// 邮件请求数量
+	// <p>邮件请求数量</p>
 	RequestCount *uint64 `json:"RequestCount,omitnil,omitempty" name:"RequestCount"`
 
-	// 腾讯云通过数量
+	// <p>腾讯云通过数量</p>
 	AcceptedCount *uint64 `json:"AcceptedCount,omitnil,omitempty" name:"AcceptedCount"`
 
-	// 送达数量
+	// <p>送达数量</p>
 	DeliveredCount *uint64 `json:"DeliveredCount,omitnil,omitempty" name:"DeliveredCount"`
 
-	// 打开邮件的用户数量，根据收件人去重
+	// <p>打开邮件总次数</p>
 	OpenedCount *uint64 `json:"OpenedCount,omitnil,omitempty" name:"OpenedCount"`
 
-	// 点击了邮件中的链接数量用户数量
+	// <p>点击了邮件中的链接数量用户数量</p>
 	ClickedCount *uint64 `json:"ClickedCount,omitnil,omitempty" name:"ClickedCount"`
 
-	// 退信数量
+	// <p>退信数量</p>
 	BounceCount *uint64 `json:"BounceCount,omitnil,omitempty" name:"BounceCount"`
 
-	// 取消订阅的用户数量
+	// <p>取消订阅的用户数量</p>
 	UnsubscribeCount *uint64 `json:"UnsubscribeCount,omitnil,omitempty" name:"UnsubscribeCount"`
 }

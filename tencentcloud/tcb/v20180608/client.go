@@ -115,6 +115,182 @@ func (c *Client) AddProviderWithContext(ctx context.Context, request *AddProvide
     return
 }
 
+func NewAllocateEnvRequest() (request *AllocateEnvRequest) {
+    request = &AllocateEnvRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "AllocateEnv")
+    
+    
+    return
+}
+
+func NewAllocateEnvResponse() (response *AllocateEnvResponse) {
+    response = &AllocateEnvResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// AllocateEnv
+// 从环境池里立即取出1个环境
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ALLOCATEIDRELEASED = "FailedOperation.AllocateIdReleased"
+//  INVALIDPARAMETER_CUSTOMERNOTCONFIGURED = "InvalidParameter.CustomerNotConfigured"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINSUFFICIENT_ENVPOOLEMPTY = "ResourceInsufficient.EnvPoolEmpty"
+func (c *Client) AllocateEnv(request *AllocateEnvRequest) (response *AllocateEnvResponse, err error) {
+    return c.AllocateEnvWithContext(context.Background(), request)
+}
+
+// AllocateEnv
+// 从环境池里立即取出1个环境
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ALLOCATEIDRELEASED = "FailedOperation.AllocateIdReleased"
+//  INVALIDPARAMETER_CUSTOMERNOTCONFIGURED = "InvalidParameter.CustomerNotConfigured"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINSUFFICIENT_ENVPOOLEMPTY = "ResourceInsufficient.EnvPoolEmpty"
+func (c *Client) AllocateEnvWithContext(ctx context.Context, request *AllocateEnvRequest) (response *AllocateEnvResponse, err error) {
+    if request == nil {
+        request = NewAllocateEnvRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "AllocateEnv")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AllocateEnv require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAllocateEnvResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewAssumeRoleForAllocatedEnvRequest() (request *AssumeRoleForAllocatedEnvRequest) {
+    request = &AssumeRoleForAllocatedEnvRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "AssumeRoleForAllocatedEnv")
+    
+    
+    return
+}
+
+func NewAssumeRoleForAllocatedEnvResponse() (response *AssumeRoleForAllocatedEnvResponse) {
+    response = &AssumeRoleForAllocatedEnvResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// AssumeRoleForAllocatedEnv
+// 白名单接口，申请Tcb角色临时凭证
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) AssumeRoleForAllocatedEnv(request *AssumeRoleForAllocatedEnvRequest) (response *AssumeRoleForAllocatedEnvResponse, err error) {
+    return c.AssumeRoleForAllocatedEnvWithContext(context.Background(), request)
+}
+
+// AssumeRoleForAllocatedEnv
+// 白名单接口，申请Tcb角色临时凭证
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) AssumeRoleForAllocatedEnvWithContext(ctx context.Context, request *AssumeRoleForAllocatedEnvRequest) (response *AssumeRoleForAllocatedEnvResponse, err error) {
+    if request == nil {
+        request = NewAssumeRoleForAllocatedEnvRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "AssumeRoleForAllocatedEnv")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AssumeRoleForAllocatedEnv require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAssumeRoleForAllocatedEnvResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewBindStorageSourceRequest() (request *BindStorageSourceRequest) {
+    request = &BindStorageSourceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "BindStorageSource")
+    
+    
+    return
+}
+
+func NewBindStorageSourceResponse() (response *BindStorageSourceResponse) {
+    response = &BindStorageSourceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// BindStorageSource
+// 为云存储绑定外部云存储源。
+//
+// 将一个用户自有的 COS桶 作为外部存储源绑定到指定云开发环境的云存储。绑定后，该环境的云存储文件操作将指向此桶，通过 BasePath 路径前缀实现与其他环境的数据隔离。
+//
+// 每个环境仅允许绑定 1 个外部云存储源。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OPERATIONCONFLICT = "FailedOperation.OperationConflict"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCENOTEXISTS = "InvalidParameter.ResourceNotExists"
+//  RESOURCENOTFOUND_USERNOTEXISTS = "ResourceNotFound.UserNotExists"
+func (c *Client) BindStorageSource(request *BindStorageSourceRequest) (response *BindStorageSourceResponse, err error) {
+    return c.BindStorageSourceWithContext(context.Background(), request)
+}
+
+// BindStorageSource
+// 为云存储绑定外部云存储源。
+//
+// 将一个用户自有的 COS桶 作为外部存储源绑定到指定云开发环境的云存储。绑定后，该环境的云存储文件操作将指向此桶，通过 BasePath 路径前缀实现与其他环境的数据隔离。
+//
+// 每个环境仅允许绑定 1 个外部云存储源。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OPERATIONCONFLICT = "FailedOperation.OperationConflict"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCENOTEXISTS = "InvalidParameter.ResourceNotExists"
+//  RESOURCENOTFOUND_USERNOTEXISTS = "ResourceNotFound.UserNotExists"
+func (c *Client) BindStorageSourceWithContext(ctx context.Context, request *BindStorageSourceRequest) (response *BindStorageSourceResponse, err error) {
+    if request == nil {
+        request = NewBindStorageSourceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "BindStorageSource")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BindStorageSource require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewBindStorageSourceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCheckTcbServiceRequest() (request *CheckTcbServiceRequest) {
     request = &CheckTcbServiceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -199,11 +375,11 @@ func NewCreateAIModelResponse() (response *CreateAIModelResponse) {
 //
 // 
 //
-// 注意：内置类型（builtin）分组由云开发平台统一创建和管理，不支持通过此接口创建。如需修改内置分组的模型列表或启用状态，请使用 [UpdateAIModel]() 接口。
+// 注意：内置类型（builtin）分组由云开发平台统一创建和管理，不支持通过此接口创建。如需修改内置分组的模型列表或启用状态，请使用 [UpdateAIModel](https://cloud.tencent.com/document/product/876/131316) 接口。
 //
 // 
 //
-// 创建成功后，可通过 [DescribeAIModelList]() 接口查询分组信息，并在云开发 AI+ 功能中使用所配置的模型。
+// 创建成功后，可通过 [DescribeAIModels](https://cloud.tencent.com/document/product/876/131318) 接口查询分组信息，并在云开发 AI+ 功能中使用所配置的模型。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -222,11 +398,11 @@ func (c *Client) CreateAIModel(request *CreateAIModelRequest) (response *CreateA
 //
 // 
 //
-// 注意：内置类型（builtin）分组由云开发平台统一创建和管理，不支持通过此接口创建。如需修改内置分组的模型列表或启用状态，请使用 [UpdateAIModel]() 接口。
+// 注意：内置类型（builtin）分组由云开发平台统一创建和管理，不支持通过此接口创建。如需修改内置分组的模型列表或启用状态，请使用 [UpdateAIModel](https://cloud.tencent.com/document/product/876/131316) 接口。
 //
 // 
 //
-// 创建成功后，可通过 [DescribeAIModelList]() 接口查询分组信息，并在云开发 AI+ 功能中使用所配置的模型。
+// 创建成功后，可通过 [DescribeAIModels](https://cloud.tencent.com/document/product/876/131318) 接口查询分组信息，并在云开发 AI+ 功能中使用所配置的模型。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -271,6 +447,12 @@ func NewCreateApiKeyResponse() (response *CreateApiKeyResponse) {
 // CreateApiKey
 // 创建云开发平台的API Key。在指定云开发环境下创建一个 API Key 访问凭证。支持两种类型：api_key（服务端管理员访问凭证，以管理员身份签发，可设置有效期，不设置有效期则永不过期，单个环境最多创建 5 个）和 publish_key（前端匿名访问凭证，固定有效期，每个环境仅保留一个）。创建成功后将返回 API Key 明文 Token，该值仅在创建时返回一次，请妥善保存。需要管理员权限。
 //
+// 权限范围与注意事项：
+//
+//  - api_key 是以"管理员身份"签发的访问凭证，持有该 Token 即拥有腾讯云云开发数据流（含数据库、云函数、云存储、托管等）资源的完整访问与操作权限。该凭证不区分子资源粒度，一旦泄露等同于环境管理员权限被泄露，请按"高敏感凭证"管理： 仅用于服务端调用、严禁下发到前端/客户端、严禁写入代码仓库或日志、定期轮换并回收闲置凭证。
+//
+//  - 在为子账号 / 协作者 / RAM 子用户授权该接口权限时，须先评估该子账号是否有资格获得该环境的管理员级数据流权限，能创建 api_key ≈ 能拥有环境管理员权限。
+//
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
@@ -288,6 +470,12 @@ func (c *Client) CreateApiKey(request *CreateApiKeyRequest) (response *CreateApi
 
 // CreateApiKey
 // 创建云开发平台的API Key。在指定云开发环境下创建一个 API Key 访问凭证。支持两种类型：api_key（服务端管理员访问凭证，以管理员身份签发，可设置有效期，不设置有效期则永不过期，单个环境最多创建 5 个）和 publish_key（前端匿名访问凭证，固定有效期，每个环境仅保留一个）。创建成功后将返回 API Key 明文 Token，该值仅在创建时返回一次，请妥善保存。需要管理员权限。
+//
+// 权限范围与注意事项：
+//
+//  - api_key 是以"管理员身份"签发的访问凭证，持有该 Token 即拥有腾讯云云开发数据流（含数据库、云函数、云存储、托管等）资源的完整访问与操作权限。该凭证不区分子资源粒度，一旦泄露等同于环境管理员权限被泄露，请按"高敏感凭证"管理： 仅用于服务端调用、严禁下发到前端/客户端、严禁写入代码仓库或日志、定期轮换并回收闲置凭证。
+//
+//  - 在为子账号 / 协作者 / RAM 子用户授权该接口权限时，须先评估该子账号是否有资格获得该环境的管理员级数据流权限，能创建 api_key ≈ 能拥有环境管理员权限。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -2003,7 +2191,9 @@ func NewDescribeBillingInfoResponse() (response *DescribeBillingInfoResponse) {
 }
 
 // DescribeBillingInfo
-// 获取计费相关信息
+// 获取云开发环境的计费相关信息。
+//
+// 包括环境的 状态、当前套餐、购买时间、到期时间 等。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -2016,7 +2206,9 @@ func (c *Client) DescribeBillingInfo(request *DescribeBillingInfoRequest) (respo
 }
 
 // DescribeBillingInfo
-// 获取计费相关信息
+// 获取云开发环境的计费相关信息。
+//
+// 包括环境的 状态、当前套餐、购买时间、到期时间 等。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -2101,6 +2293,62 @@ func (c *Client) DescribeClientWithContext(ctx context.Context, request *Describ
     request.SetContext(ctx)
     
     response = NewDescribeClientResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCloudAppListRequest() (request *DescribeCloudAppListRequest) {
+    request = &DescribeCloudAppListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeCloudAppList")
+    
+    
+    return
+}
+
+func NewDescribeCloudAppListResponse() (response *DescribeCloudAppListResponse) {
+    response = &DescribeCloudAppListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCloudAppList
+// 查询云应用服务列表信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeCloudAppList(request *DescribeCloudAppListRequest) (response *DescribeCloudAppListResponse, err error) {
+    return c.DescribeCloudAppListWithContext(context.Background(), request)
+}
+
+// DescribeCloudAppList
+// 查询云应用服务列表信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeCloudAppListWithContext(ctx context.Context, request *DescribeCloudAppListRequest) (response *DescribeCloudAppListResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudAppListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeCloudAppList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCloudAppList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCloudAppListResponse()
     err = c.Send(request, response)
     return
 }
@@ -2321,6 +2569,150 @@ func (c *Client) DescribeCreateMySQLResultWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewDescribeCreateMySQLResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCreditsUsageRequest() (request *DescribeCreditsUsageRequest) {
+    request = &DescribeCreditsUsageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeCreditsUsage")
+    
+    
+    return
+}
+
+func NewDescribeCreditsUsageResponse() (response *DescribeCreditsUsageResponse) {
+    response = &DescribeCreditsUsageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCreditsUsage
+// 查询资源点模式下的资源点用量
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SERVICENOTEXIST = "InvalidParameter.ServiceNotExist"
+//  LIMITEXCEEDED_ERRNAMESPACEMAXLIMIT = "LimitExceeded.ErrNamespaceMaxLimit"
+//  LIMITEXCEEDED_ERRREPOMAXLIMIT = "LimitExceeded.ErrRepoMaxLimit"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_SERVERNOTFOUND = "ResourceNotFound.ServerNotFound"
+//  RESOURCENOTFOUND_VERSIONNOTFOUND = "ResourceNotFound.VersionNotFound"
+//  RESOURCEUNAVAILABLE_RESOURCEBANNED = "ResourceUnavailable.ResourceBanned"
+//  RESOURCEUNAVAILABLE_RESOURCEFROZEN = "ResourceUnavailable.ResourceFrozen"
+//  RESOURCEUNAVAILABLE_RESOURCEISOLATED = "ResourceUnavailable.ResourceIsolated"
+func (c *Client) DescribeCreditsUsage(request *DescribeCreditsUsageRequest) (response *DescribeCreditsUsageResponse, err error) {
+    return c.DescribeCreditsUsageWithContext(context.Background(), request)
+}
+
+// DescribeCreditsUsage
+// 查询资源点模式下的资源点用量
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SERVICENOTEXIST = "InvalidParameter.ServiceNotExist"
+//  LIMITEXCEEDED_ERRNAMESPACEMAXLIMIT = "LimitExceeded.ErrNamespaceMaxLimit"
+//  LIMITEXCEEDED_ERRREPOMAXLIMIT = "LimitExceeded.ErrRepoMaxLimit"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_SERVERNOTFOUND = "ResourceNotFound.ServerNotFound"
+//  RESOURCENOTFOUND_VERSIONNOTFOUND = "ResourceNotFound.VersionNotFound"
+//  RESOURCEUNAVAILABLE_RESOURCEBANNED = "ResourceUnavailable.ResourceBanned"
+//  RESOURCEUNAVAILABLE_RESOURCEFROZEN = "ResourceUnavailable.ResourceFrozen"
+//  RESOURCEUNAVAILABLE_RESOURCEISOLATED = "ResourceUnavailable.ResourceIsolated"
+func (c *Client) DescribeCreditsUsageWithContext(ctx context.Context, request *DescribeCreditsUsageRequest) (response *DescribeCreditsUsageResponse, err error) {
+    if request == nil {
+        request = NewDescribeCreditsUsageRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeCreditsUsage")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCreditsUsage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCreditsUsageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCreditsUsageDetailRequest() (request *DescribeCreditsUsageDetailRequest) {
+    request = &DescribeCreditsUsageDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeCreditsUsageDetail")
+    
+    
+    return
+}
+
+func NewDescribeCreditsUsageDetailResponse() (response *DescribeCreditsUsageDetailResponse) {
+    response = &DescribeCreditsUsageDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCreditsUsageDetail
+// 查询资源点模式下的资源点用量及原始用量明细
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SERVICENOTEXIST = "InvalidParameter.ServiceNotExist"
+//  LIMITEXCEEDED_ERRNAMESPACEMAXLIMIT = "LimitExceeded.ErrNamespaceMaxLimit"
+//  LIMITEXCEEDED_ERRREPOMAXLIMIT = "LimitExceeded.ErrRepoMaxLimit"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_SERVERNOTFOUND = "ResourceNotFound.ServerNotFound"
+//  RESOURCENOTFOUND_VERSIONNOTFOUND = "ResourceNotFound.VersionNotFound"
+//  RESOURCEUNAVAILABLE_RESOURCEBANNED = "ResourceUnavailable.ResourceBanned"
+//  RESOURCEUNAVAILABLE_RESOURCEFROZEN = "ResourceUnavailable.ResourceFrozen"
+//  RESOURCEUNAVAILABLE_RESOURCEISOLATED = "ResourceUnavailable.ResourceIsolated"
+func (c *Client) DescribeCreditsUsageDetail(request *DescribeCreditsUsageDetailRequest) (response *DescribeCreditsUsageDetailResponse, err error) {
+    return c.DescribeCreditsUsageDetailWithContext(context.Background(), request)
+}
+
+// DescribeCreditsUsageDetail
+// 查询资源点模式下的资源点用量及原始用量明细
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SERVICENOTEXIST = "InvalidParameter.ServiceNotExist"
+//  LIMITEXCEEDED_ERRNAMESPACEMAXLIMIT = "LimitExceeded.ErrNamespaceMaxLimit"
+//  LIMITEXCEEDED_ERRREPOMAXLIMIT = "LimitExceeded.ErrRepoMaxLimit"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_SERVERNOTFOUND = "ResourceNotFound.ServerNotFound"
+//  RESOURCENOTFOUND_VERSIONNOTFOUND = "ResourceNotFound.VersionNotFound"
+//  RESOURCEUNAVAILABLE_RESOURCEBANNED = "ResourceUnavailable.ResourceBanned"
+//  RESOURCEUNAVAILABLE_RESOURCEFROZEN = "ResourceUnavailable.ResourceFrozen"
+//  RESOURCEUNAVAILABLE_RESOURCEISOLATED = "ResourceUnavailable.ResourceIsolated"
+func (c *Client) DescribeCreditsUsageDetailWithContext(ctx context.Context, request *DescribeCreditsUsageDetailRequest) (response *DescribeCreditsUsageDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeCreditsUsageDetailRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeCreditsUsageDetail")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCreditsUsageDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCreditsUsageDetailResponse()
     err = c.Send(request, response)
     return
 }
@@ -2925,7 +3317,7 @@ func NewDescribeManagedAIModelListResponse() (response *DescribeManagedAIModelLi
 //
 // 
 //
-// 开通托管模型前：通过本接口查询平台支持的托管模型及其规格，结合 [CreateAIModel]() 接口完成模型开通。
+// 开通托管模型前：通过本接口查询平台支持的托管模型及其规格，结合 [UpdateAIModel](https://cloud.tencent.com/document/product/876/131316) 接口完成模型配置。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -2948,7 +3340,7 @@ func (c *Client) DescribeManagedAIModelList(request *DescribeManagedAIModelListR
 //
 // 
 //
-// 开通托管模型前：通过本接口查询平台支持的托管模型及其规格，结合 [CreateAIModel]() 接口完成模型开通。
+// 开通托管模型前：通过本接口查询平台支持的托管模型及其规格，结合 [UpdateAIModel](https://cloud.tencent.com/document/product/876/131316) 接口完成模型配置。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -3079,6 +3471,58 @@ func (c *Client) DescribeMySQLTaskStatusWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribePGUserMigrationRequest() (request *DescribePGUserMigrationRequest) {
+    request = &DescribePGUserMigrationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribePGUserMigration")
+    
+    
+    return
+}
+
+func NewDescribePGUserMigrationResponse() (response *DescribePGUserMigrationResponse) {
+    response = &DescribePGUserMigrationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribePGUserMigration
+// 本接口（DescribePGUserMigration）用于查询目标环境指定 migration 详情。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYS_ERR = "InternalError.SYS_ERR"
+//  INVALIDPARAMETER_INVALID_PARAM = "InvalidParameter.INVALID_PARAM"
+func (c *Client) DescribePGUserMigration(request *DescribePGUserMigrationRequest) (response *DescribePGUserMigrationResponse, err error) {
+    return c.DescribePGUserMigrationWithContext(context.Background(), request)
+}
+
+// DescribePGUserMigration
+// 本接口（DescribePGUserMigration）用于查询目标环境指定 migration 详情。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYS_ERR = "InternalError.SYS_ERR"
+//  INVALIDPARAMETER_INVALID_PARAM = "InvalidParameter.INVALID_PARAM"
+func (c *Client) DescribePGUserMigrationWithContext(ctx context.Context, request *DescribePGUserMigrationRequest) (response *DescribePGUserMigrationResponse, err error) {
+    if request == nil {
+        request = NewDescribePGUserMigrationRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribePGUserMigration")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePGUserMigration require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePGUserMigrationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeQuotaDataRequest() (request *DescribeQuotaDataRequest) {
     request = &DescribeQuotaDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3137,6 +3581,76 @@ func (c *Client) DescribeQuotaDataWithContext(ctx context.Context, request *Desc
     request.SetContext(ctx)
     
     response = NewDescribeQuotaDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeResourcePermissionRequest() (request *DescribeResourcePermissionRequest) {
+    request = &DescribeResourcePermissionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeResourcePermission")
+    
+    
+    return
+}
+
+func NewDescribeResourcePermissionResponse() (response *DescribeResourcePermissionResponse) {
+    response = &DescribeResourcePermissionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeResourcePermission
+// 查询资源基础权限。
+//
+// 
+//
+// 查询云函数、云存储和数据库表的基础权限配置。支持单个资源查询和批量查询。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_RESOURCENOTEXIST = "ResourceNotFound.ResourceNotExist"
+func (c *Client) DescribeResourcePermission(request *DescribeResourcePermissionRequest) (response *DescribeResourcePermissionResponse, err error) {
+    return c.DescribeResourcePermissionWithContext(context.Background(), request)
+}
+
+// DescribeResourcePermission
+// 查询资源基础权限。
+//
+// 
+//
+// 查询云函数、云存储和数据库表的基础权限配置。支持单个资源查询和批量查询。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_RESOURCENOTEXIST = "ResourceNotFound.ResourceNotExist"
+func (c *Client) DescribeResourcePermissionWithContext(ctx context.Context, request *DescribeResourcePermissionRequest) (response *DescribeResourcePermissionResponse, err error) {
+    if request == nil {
+        request = NewDescribeResourcePermissionRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeResourcePermission")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeResourcePermission require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeResourcePermissionResponse()
     err = c.Send(request, response)
     return
 }
@@ -3967,6 +4481,58 @@ func (c *Client) InquireVmPriceWithContext(ctx context.Context, request *Inquire
     return
 }
 
+func NewListPGUserMigrationsRequest() (request *ListPGUserMigrationsRequest) {
+    request = &ListPGUserMigrationsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "ListPGUserMigrations")
+    
+    
+    return
+}
+
+func NewListPGUserMigrationsResponse() (response *ListPGUserMigrationsResponse) {
+    response = &ListPGUserMigrationsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListPGUserMigrations
+// 本接口（ListPGUserMigrations）用于查询目标环境已应用的用户 migration 列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYS_ERR = "InternalError.SYS_ERR"
+//  INVALIDPARAMETER_INVALID_PARAM = "InvalidParameter.INVALID_PARAM"
+func (c *Client) ListPGUserMigrations(request *ListPGUserMigrationsRequest) (response *ListPGUserMigrationsResponse, err error) {
+    return c.ListPGUserMigrationsWithContext(context.Background(), request)
+}
+
+// ListPGUserMigrations
+// 本接口（ListPGUserMigrations）用于查询目标环境已应用的用户 migration 列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYS_ERR = "InternalError.SYS_ERR"
+//  INVALIDPARAMETER_INVALID_PARAM = "InvalidParameter.INVALID_PARAM"
+func (c *Client) ListPGUserMigrationsWithContext(ctx context.Context, request *ListPGUserMigrationsRequest) (response *ListPGUserMigrationsResponse, err error) {
+    if request == nil {
+        request = NewListPGUserMigrationsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "ListPGUserMigrations")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListPGUserMigrations require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListPGUserMigrationsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewListTablesRequest() (request *ListTablesRequest) {
     request = &ListTablesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4561,6 +5127,76 @@ func (c *Client) ModifyProviderWithContext(ctx context.Context, request *ModifyP
     return
 }
 
+func NewModifyResourcePermissionRequest() (request *ModifyResourcePermissionRequest) {
+    request = &ModifyResourcePermissionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "ModifyResourcePermission")
+    
+    
+    return
+}
+
+func NewModifyResourcePermissionResponse() (response *ModifyResourcePermissionResponse) {
+    response = &ModifyResourcePermissionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyResourcePermission
+// 修改资源基础权限。
+//
+// 
+//
+// 修改云函数、云存储和数据库表的基础权限配置。支持预定义权限级别和自定义安全规则两种方式配置资源访问权限。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyResourcePermission(request *ModifyResourcePermissionRequest) (response *ModifyResourcePermissionResponse, err error) {
+    return c.ModifyResourcePermissionWithContext(context.Background(), request)
+}
+
+// ModifyResourcePermission
+// 修改资源基础权限。
+//
+// 
+//
+// 修改云函数、云存储和数据库表的基础权限配置。支持预定义权限级别和自定义安全规则两种方式配置资源访问权限。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyResourcePermissionWithContext(ctx context.Context, request *ModifyResourcePermissionRequest) (response *ModifyResourcePermissionResponse, err error) {
+    if request == nil {
+        request = NewModifyResourcePermissionRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "ModifyResourcePermission")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyResourcePermission require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyResourcePermissionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifySafeRuleRequest() (request *ModifySafeRuleRequest) {
     request = &ModifySafeRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4617,6 +5253,76 @@ func (c *Client) ModifySafeRuleWithContext(ctx context.Context, request *ModifyS
     request.SetContext(ctx)
     
     response = NewModifySafeRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyStorageSourceRequest() (request *ModifyStorageSourceRequest) {
+    request = &ModifyStorageSourceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "ModifyStorageSource")
+    
+    
+    return
+}
+
+func NewModifyStorageSourceResponse() (response *ModifyStorageSourceResponse) {
+    response = &ModifyStorageSourceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyStorageSource
+// 修改指定云开发环境已绑定的外部云存储源配置。
+//
+// 修改之后，大约3~5分钟生效。
+//
+// 
+//
+// 注意⚠️
+//
+// 本接口仅更新存储源绑定关系，不会迁移您的数据。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OPERATIONCONFLICT = "FailedOperation.OperationConflict"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCENOTEXISTS = "InvalidParameter.ResourceNotExists"
+func (c *Client) ModifyStorageSource(request *ModifyStorageSourceRequest) (response *ModifyStorageSourceResponse, err error) {
+    return c.ModifyStorageSourceWithContext(context.Background(), request)
+}
+
+// ModifyStorageSource
+// 修改指定云开发环境已绑定的外部云存储源配置。
+//
+// 修改之后，大约3~5分钟生效。
+//
+// 
+//
+// 注意⚠️
+//
+// 本接口仅更新存储源绑定关系，不会迁移您的数据。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OPERATIONCONFLICT = "FailedOperation.OperationConflict"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCENOTEXISTS = "InvalidParameter.ResourceNotExists"
+func (c *Client) ModifyStorageSourceWithContext(ctx context.Context, request *ModifyStorageSourceRequest) (response *ModifyStorageSourceResponse, err error) {
+    if request == nil {
+        request = NewModifyStorageSourceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "ModifyStorageSource")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyStorageSource require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyStorageSourceResponse()
     err = c.Send(request, response)
     return
 }
@@ -4691,6 +5397,162 @@ func (c *Client) ModifyUserWithContext(ctx context.Context, request *ModifyUserR
     return
 }
 
+func NewPreviewPGUserMigrationsRequest() (request *PreviewPGUserMigrationsRequest) {
+    request = &PreviewPGUserMigrationsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "PreviewPGUserMigrations")
+    
+    
+    return
+}
+
+func NewPreviewPGUserMigrationsResponse() (response *PreviewPGUserMigrationsResponse) {
+    response = &PreviewPGUserMigrationsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// PreviewPGUserMigrations
+// 本接口（PreviewPGUserMigrations）用于预览SQL migrations 在远端的执行计划，不实际执行SQL。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYS_ERR = "InternalError.SYS_ERR"
+//  INVALIDPARAMETER_INVALID_PARAM = "InvalidParameter.INVALID_PARAM"
+func (c *Client) PreviewPGUserMigrations(request *PreviewPGUserMigrationsRequest) (response *PreviewPGUserMigrationsResponse, err error) {
+    return c.PreviewPGUserMigrationsWithContext(context.Background(), request)
+}
+
+// PreviewPGUserMigrations
+// 本接口（PreviewPGUserMigrations）用于预览SQL migrations 在远端的执行计划，不实际执行SQL。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYS_ERR = "InternalError.SYS_ERR"
+//  INVALIDPARAMETER_INVALID_PARAM = "InvalidParameter.INVALID_PARAM"
+func (c *Client) PreviewPGUserMigrationsWithContext(ctx context.Context, request *PreviewPGUserMigrationsRequest) (response *PreviewPGUserMigrationsResponse, err error) {
+    if request == nil {
+        request = NewPreviewPGUserMigrationsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "PreviewPGUserMigrations")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("PreviewPGUserMigrations require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewPreviewPGUserMigrationsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewPushPGUserMigrationsRequest() (request *PushPGUserMigrationsRequest) {
+    request = &PushPGUserMigrationsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "PushPGUserMigrations")
+    
+    
+    return
+}
+
+func NewPushPGUserMigrationsResponse() (response *PushPGUserMigrationsResponse) {
+    response = &PushPGUserMigrationsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// PushPGUserMigrations
+// 本接口（PushPGUserMigrations）用于批量应用Migrations。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYS_ERR = "InternalError.SYS_ERR"
+//  INVALIDPARAMETER_INVALID_PARAM = "InvalidParameter.INVALID_PARAM"
+func (c *Client) PushPGUserMigrations(request *PushPGUserMigrationsRequest) (response *PushPGUserMigrationsResponse, err error) {
+    return c.PushPGUserMigrationsWithContext(context.Background(), request)
+}
+
+// PushPGUserMigrations
+// 本接口（PushPGUserMigrations）用于批量应用Migrations。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYS_ERR = "InternalError.SYS_ERR"
+//  INVALIDPARAMETER_INVALID_PARAM = "InvalidParameter.INVALID_PARAM"
+func (c *Client) PushPGUserMigrationsWithContext(ctx context.Context, request *PushPGUserMigrationsRequest) (response *PushPGUserMigrationsResponse, err error) {
+    if request == nil {
+        request = NewPushPGUserMigrationsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "PushPGUserMigrations")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("PushPGUserMigrations require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewPushPGUserMigrationsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewReleaseEnvRequest() (request *ReleaseEnvRequest) {
+    request = &ReleaseEnvRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "ReleaseEnv")
+    
+    
+    return
+}
+
+func NewReleaseEnvResponse() (response *ReleaseEnvResponse) {
+    response = &ReleaseEnvResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ReleaseEnv
+// 从环境池里立即取出1个环境
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_MISSINGIDENTIFIER = "InvalidParameter.MissingIdentifier"
+//  RESOURCENOTFOUND_ENVNOTEXIST = "ResourceNotFound.EnvNotExist"
+func (c *Client) ReleaseEnv(request *ReleaseEnvRequest) (response *ReleaseEnvResponse, err error) {
+    return c.ReleaseEnvWithContext(context.Background(), request)
+}
+
+// ReleaseEnv
+// 从环境池里立即取出1个环境
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_MISSINGIDENTIFIER = "InvalidParameter.MissingIdentifier"
+//  RESOURCENOTFOUND_ENVNOTEXIST = "ResourceNotFound.EnvNotExist"
+func (c *Client) ReleaseEnvWithContext(ctx context.Context, request *ReleaseEnvRequest) (response *ReleaseEnvResponse, err error) {
+    if request == nil {
+        request = NewReleaseEnvRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "ReleaseEnv")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ReleaseEnv require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewReleaseEnvResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRenewEnvRequest() (request *RenewEnvRequest) {
     request = &RenewEnvRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4747,6 +5609,110 @@ func (c *Client) RenewEnvWithContext(ctx context.Context, request *RenewEnvReque
     request.SetContext(ctx)
     
     response = NewRenewEnvResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRepairPGUserMigrationHistoryRequest() (request *RepairPGUserMigrationHistoryRequest) {
+    request = &RepairPGUserMigrationHistoryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "RepairPGUserMigrationHistory")
+    
+    
+    return
+}
+
+func NewRepairPGUserMigrationHistoryResponse() (response *RepairPGUserMigrationHistoryResponse) {
+    response = &RepairPGUserMigrationHistoryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RepairPGUserMigrationHistory
+// 本接口（RepairPGUserMigrationHistory）用于受控修复 history，只修改 user_schema_migrations，不执行 SQL。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYS_ERR = "InternalError.SYS_ERR"
+//  INVALIDPARAMETER_INVALID_PARAM = "InvalidParameter.INVALID_PARAM"
+func (c *Client) RepairPGUserMigrationHistory(request *RepairPGUserMigrationHistoryRequest) (response *RepairPGUserMigrationHistoryResponse, err error) {
+    return c.RepairPGUserMigrationHistoryWithContext(context.Background(), request)
+}
+
+// RepairPGUserMigrationHistory
+// 本接口（RepairPGUserMigrationHistory）用于受控修复 history，只修改 user_schema_migrations，不执行 SQL。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYS_ERR = "InternalError.SYS_ERR"
+//  INVALIDPARAMETER_INVALID_PARAM = "InvalidParameter.INVALID_PARAM"
+func (c *Client) RepairPGUserMigrationHistoryWithContext(ctx context.Context, request *RepairPGUserMigrationHistoryRequest) (response *RepairPGUserMigrationHistoryResponse, err error) {
+    if request == nil {
+        request = NewRepairPGUserMigrationHistoryRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "RepairPGUserMigrationHistory")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RepairPGUserMigrationHistory require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRepairPGUserMigrationHistoryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRollbackPGUserMigrationsRequest() (request *RollbackPGUserMigrationsRequest) {
+    request = &RollbackPGUserMigrationsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "RollbackPGUserMigrations")
+    
+    
+    return
+}
+
+func NewRollbackPGUserMigrationsResponse() (response *RollbackPGUserMigrationsResponse) {
+    response = &RollbackPGUserMigrationsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RollbackPGUserMigrations
+// 本接口（RollbackPGUserMigrations）用于按最近 N 条已应用 migration 倒序执行 rollback。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYS_ERR = "InternalError.SYS_ERR"
+//  INVALIDPARAMETER_INVALID_PARAM = "InvalidParameter.INVALID_PARAM"
+func (c *Client) RollbackPGUserMigrations(request *RollbackPGUserMigrationsRequest) (response *RollbackPGUserMigrationsResponse, err error) {
+    return c.RollbackPGUserMigrationsWithContext(context.Background(), request)
+}
+
+// RollbackPGUserMigrations
+// 本接口（RollbackPGUserMigrations）用于按最近 N 条已应用 migration 倒序执行 rollback。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYS_ERR = "InternalError.SYS_ERR"
+//  INVALIDPARAMETER_INVALID_PARAM = "InvalidParameter.INVALID_PARAM"
+func (c *Client) RollbackPGUserMigrationsWithContext(ctx context.Context, request *RollbackPGUserMigrationsRequest) (response *RollbackPGUserMigrationsResponse, err error) {
+    if request == nil {
+        request = NewRollbackPGUserMigrationsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "RollbackPGUserMigrations")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RollbackPGUserMigrations require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRollbackPGUserMigrationsResponse()
     err = c.Send(request, response)
     return
 }
@@ -4857,11 +5823,13 @@ func NewRunSqlResponse() (response *RunSqlResponse) {
 //  FAILEDOPERATION_DATABASECONNECTERROR = "FailedOperation.DatabaseConnectError"
 //  FAILEDOPERATION_DATABASEEXECSQLERROR = "FailedOperation.DatabaseExecSqlError"
 //  FAILEDOPERATION_DATABASESCHEMAERROR = "FailedOperation.DatabaseSchemaError"
+//  FAILEDOPERATION_DATABASESQLSYNTAXERROR = "FailedOperation.DatabaseSqlSyntaxError"
 //  FAILEDOPERATION_EMPTYDATABASEENDPOINT = "FailedOperation.EmptyDatabaseEndpoint"
 //  FAILEDOPERATION_TDSQLPAUSED = "FailedOperation.TdsqlPaused"
 //  INTERNALERROR_SYS_ERR = "InternalError.SYS_ERR"
 //  INVALIDPARAMETER_INVALID_PARAM = "InvalidParameter.INVALID_PARAM"
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_SCHEMANOTFOUND = "ResourceNotFound.SchemaNotFound"
 //  RESOURCENOTFOUND_TABLENOTFOUND = "ResourceNotFound.TableNotFound"
 //  UNSUPPORTEDOPERATION_TOOMANYTABLES = "UnsupportedOperation.TooManyTables"
 func (c *Client) RunSql(request *RunSqlRequest) (response *RunSqlResponse, err error) {
@@ -4883,11 +5851,13 @@ func (c *Client) RunSql(request *RunSqlRequest) (response *RunSqlResponse, err e
 //  FAILEDOPERATION_DATABASECONNECTERROR = "FailedOperation.DatabaseConnectError"
 //  FAILEDOPERATION_DATABASEEXECSQLERROR = "FailedOperation.DatabaseExecSqlError"
 //  FAILEDOPERATION_DATABASESCHEMAERROR = "FailedOperation.DatabaseSchemaError"
+//  FAILEDOPERATION_DATABASESQLSYNTAXERROR = "FailedOperation.DatabaseSqlSyntaxError"
 //  FAILEDOPERATION_EMPTYDATABASEENDPOINT = "FailedOperation.EmptyDatabaseEndpoint"
 //  FAILEDOPERATION_TDSQLPAUSED = "FailedOperation.TdsqlPaused"
 //  INTERNALERROR_SYS_ERR = "InternalError.SYS_ERR"
 //  INVALIDPARAMETER_INVALID_PARAM = "InvalidParameter.INVALID_PARAM"
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_SCHEMANOTFOUND = "ResourceNotFound.SchemaNotFound"
 //  RESOURCENOTFOUND_TABLENOTFOUND = "ResourceNotFound.TableNotFound"
 //  UNSUPPORTEDOPERATION_TOOMANYTABLES = "UnsupportedOperation.TooManyTables"
 func (c *Client) RunSqlWithContext(ctx context.Context, request *RunSqlRequest) (response *RunSqlResponse, err error) {
@@ -4975,6 +5945,74 @@ func (c *Client) SearchClsLogWithContext(ctx context.Context, request *SearchCls
     return
 }
 
+func NewUnbindStorageSourceRequest() (request *UnbindStorageSourceRequest) {
+    request = &UnbindStorageSourceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "UnbindStorageSource")
+    
+    
+    return
+}
+
+func NewUnbindStorageSourceResponse() (response *UnbindStorageSourceResponse) {
+    response = &UnbindStorageSourceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UnbindStorageSource
+// 从指定云开发环境中解绑已绑定的外部云存储源。解绑后，该环境将不再关联外部 存储源，云存储功能恢复为未绑定状态。
+//
+// 解绑操作仅移除 CloudBase 侧的绑定关系，不会删除桶本身及桶内数据，桶仍由用户自行管理。
+//
+// 
+//
+// 注意⚠️
+//
+// 解绑之后，会导致云存储不可用，请谨慎操作。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCENOTEXISTS = "InvalidParameter.ResourceNotExists"
+func (c *Client) UnbindStorageSource(request *UnbindStorageSourceRequest) (response *UnbindStorageSourceResponse, err error) {
+    return c.UnbindStorageSourceWithContext(context.Background(), request)
+}
+
+// UnbindStorageSource
+// 从指定云开发环境中解绑已绑定的外部云存储源。解绑后，该环境将不再关联外部 存储源，云存储功能恢复为未绑定状态。
+//
+// 解绑操作仅移除 CloudBase 侧的绑定关系，不会删除桶本身及桶内数据，桶仍由用户自行管理。
+//
+// 
+//
+// 注意⚠️
+//
+// 解绑之后，会导致云存储不可用，请谨慎操作。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCENOTEXISTS = "InvalidParameter.ResourceNotExists"
+func (c *Client) UnbindStorageSourceWithContext(ctx context.Context, request *UnbindStorageSourceRequest) (response *UnbindStorageSourceResponse, err error) {
+    if request == nil {
+        request = NewUnbindStorageSourceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "UnbindStorageSource")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UnbindStorageSource require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUnbindStorageSourceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUpdateAIModelRequest() (request *UpdateAIModelRequest) {
     request = &UpdateAIModelRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5021,11 +6059,11 @@ func NewUpdateAIModelResponse() (response *UpdateAIModelResponse) {
 //
 // 仅当分组的原始类型（OriginType）为 builtin 时，支持将分组恢复为内置托管类型。将 BaseUrl 传入固定值 http://default.tcb，且不传入 Secret，系统将自动将该分组转换回内置托管类型（Type = builtin），平台重新接管其服务地址和访问密钥。
 //
-// 若 OriginType 为 CUSTOM（即用户通过 CreateAIModel 接口自行创建的自定义分组），不支持恢复为内置托管类型。
+// 若 OriginType 为 CUSTOM（即用户通过 [CreateAIModel](https://cloud.tencent.com/document/product/876/131320) 接口自行创建的自定义分组），不支持恢复为内置托管类型。
 //
 // 
 //
-// 更新成功后，可通过 [DescribeAIModelList]() 接口查询最新分组配置。
+// 更新成功后，可通过 [DescribeAIModels](https://cloud.tencent.com/document/product/876/131318) 接口查询最新分组配置。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -5063,11 +6101,11 @@ func (c *Client) UpdateAIModel(request *UpdateAIModelRequest) (response *UpdateA
 //
 // 仅当分组的原始类型（OriginType）为 builtin 时，支持将分组恢复为内置托管类型。将 BaseUrl 传入固定值 http://default.tcb，且不传入 Secret，系统将自动将该分组转换回内置托管类型（Type = builtin），平台重新接管其服务地址和访问密钥。
 //
-// 若 OriginType 为 CUSTOM（即用户通过 CreateAIModel 接口自行创建的自定义分组），不支持恢复为内置托管类型。
+// 若 OriginType 为 CUSTOM（即用户通过 [CreateAIModel](https://cloud.tencent.com/document/product/876/131320) 接口自行创建的自定义分组），不支持恢复为内置托管类型。
 //
 // 
 //
-// 更新成功后，可通过 [DescribeAIModelList]() 接口查询最新分组配置。
+// 更新成功后，可通过 [DescribeAIModels](https://cloud.tencent.com/document/product/876/131318) 接口查询最新分组配置。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

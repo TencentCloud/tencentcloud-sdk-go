@@ -1897,6 +1897,58 @@ func (c *Client) DescribeDAGInfoWithContext(ctx context.Context, request *Descri
     return
 }
 
+func NewDescribeDynamicInstanceDetailRequest() (request *DescribeDynamicInstanceDetailRequest) {
+    request = &DescribeDynamicInstanceDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("emr", APIVersion, "DescribeDynamicInstanceDetail")
+    
+    
+    return
+}
+
+func NewDescribeDynamicInstanceDetailResponse() (response *DescribeDynamicInstanceDetailResponse) {
+    response = &DescribeDynamicInstanceDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDynamicInstanceDetail
+// 描述容器EMR-TKE集群DynamicInstance详情
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDCLUSTERID = "InvalidParameter.InvalidClusterId"
+//  UNAUTHORIZEDOPERATION_APPIDMISMATCHED = "UnauthorizedOperation.AppIdMismatched"
+func (c *Client) DescribeDynamicInstanceDetail(request *DescribeDynamicInstanceDetailRequest) (response *DescribeDynamicInstanceDetailResponse, err error) {
+    return c.DescribeDynamicInstanceDetailWithContext(context.Background(), request)
+}
+
+// DescribeDynamicInstanceDetail
+// 描述容器EMR-TKE集群DynamicInstance详情
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDCLUSTERID = "InvalidParameter.InvalidClusterId"
+//  UNAUTHORIZEDOPERATION_APPIDMISMATCHED = "UnauthorizedOperation.AppIdMismatched"
+func (c *Client) DescribeDynamicInstanceDetailWithContext(ctx context.Context, request *DescribeDynamicInstanceDetailRequest) (response *DescribeDynamicInstanceDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeDynamicInstanceDetailRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "DescribeDynamicInstanceDetail")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDynamicInstanceDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDynamicInstanceDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDynamicInstanceListRequest() (request *DescribeDynamicInstanceListRequest) {
     request = &DescribeDynamicInstanceListRequest{
         BaseRequest: &tchttp.BaseRequest{},

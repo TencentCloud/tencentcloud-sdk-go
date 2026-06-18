@@ -296,6 +296,7 @@ func NewCreateFolderResponse() (response *CreateFolderResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_DUPLICATEDFOLDERNAME = "InvalidParameter.DuplicatedFolderName"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
 func (c *Client) CreateFolder(request *CreateFolderRequest) (response *CreateFolderResponse, err error) {
@@ -308,6 +309,7 @@ func (c *Client) CreateFolder(request *CreateFolderRequest) (response *CreateFol
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_DUPLICATEDFOLDERNAME = "InvalidParameter.DuplicatedFolderName"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
 func (c *Client) CreateFolderWithContext(ctx context.Context, request *CreateFolderRequest) (response *CreateFolderResponse, err error) {
@@ -687,7 +689,7 @@ func NewCreateVariableResponse() (response *CreateVariableResponse) {
 }
 
 // CreateVariable
-// 创建变量 
+// 创建变量
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -705,7 +707,7 @@ func (c *Client) CreateVariable(request *CreateVariableRequest) (response *Creat
 }
 
 // CreateVariable
-// 创建变量 
+// 创建变量
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -2257,6 +2259,64 @@ func (c *Client) DescribeVariablesWithContext(ctx context.Context, request *Desc
     return
 }
 
+func NewDescribeWorkSpaceUsersRequest() (request *DescribeWorkSpaceUsersRequest) {
+    request = &DescribeWorkSpaceUsersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("oceanus", APIVersion, "DescribeWorkSpaceUsers")
+    
+    
+    return
+}
+
+func NewDescribeWorkSpaceUsersResponse() (response *DescribeWorkSpaceUsersResponse) {
+    response = &DescribeWorkSpaceUsersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeWorkSpaceUsers
+// 工作空间用户列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeWorkSpaceUsers(request *DescribeWorkSpaceUsersRequest) (response *DescribeWorkSpaceUsersResponse, err error) {
+    return c.DescribeWorkSpaceUsersWithContext(context.Background(), request)
+}
+
+// DescribeWorkSpaceUsers
+// 工作空间用户列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeWorkSpaceUsersWithContext(ctx context.Context, request *DescribeWorkSpaceUsersRequest) (response *DescribeWorkSpaceUsersResponse, err error) {
+    if request == nil {
+        request = NewDescribeWorkSpaceUsersRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "oceanus", APIVersion, "DescribeWorkSpaceUsers")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeWorkSpaceUsers require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeWorkSpaceUsersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeWorkSpacesRequest() (request *DescribeWorkSpacesRequest) {
     request = &DescribeWorkSpacesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2494,6 +2554,7 @@ func NewModifyFolderResponse() (response *ModifyFolderResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_DUPLICATEDFOLDERNAME = "InvalidParameter.DuplicatedFolderName"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
 func (c *Client) ModifyFolder(request *ModifyFolderRequest) (response *ModifyFolderResponse, err error) {
@@ -2506,6 +2567,7 @@ func (c *Client) ModifyFolder(request *ModifyFolderRequest) (response *ModifyFol
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_DUPLICATEDFOLDERNAME = "InvalidParameter.DuplicatedFolderName"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
 func (c *Client) ModifyFolderWithContext(ctx context.Context, request *ModifyFolderRequest) (response *ModifyFolderResponse, err error) {

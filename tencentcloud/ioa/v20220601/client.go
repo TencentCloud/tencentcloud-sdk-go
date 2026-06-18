@@ -45,6 +45,66 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewBindBusinessResourceConnectorGroupRequest() (request *BindBusinessResourceConnectorGroupRequest) {
+    request = &BindBusinessResourceConnectorGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ioa", APIVersion, "BindBusinessResourceConnectorGroup")
+    
+    
+    return
+}
+
+func NewBindBusinessResourceConnectorGroupResponse() (response *BindBusinessResourceConnectorGroupResponse) {
+    response = &BindBusinessResourceConnectorGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// BindBusinessResourceConnectorGroup
+// saas版本，创建/修改业务资源后，调用绑定连接器接口,私有化调用path为：capi/GatewayResource/BindBusinessResourceConnectorGroup
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INTERNALERROR_SERVICETYPEERROR = "InternalError.ServiceTypeError"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  RESOURCENOTFOUND_NORESOURCEDATA = "ResourceNotFound.NoResourceData"
+//  RESOURCENOTFOUND_NOTCONNECTORGROUPINFO = "ResourceNotFound.NotConnectorGroupInfo"
+//  UNAUTHORIZEDOPERATION_NORESOURCEPERMISSIONS = "UnauthorizedOperation.NoResourcePermissions"
+func (c *Client) BindBusinessResourceConnectorGroup(request *BindBusinessResourceConnectorGroupRequest) (response *BindBusinessResourceConnectorGroupResponse, err error) {
+    return c.BindBusinessResourceConnectorGroupWithContext(context.Background(), request)
+}
+
+// BindBusinessResourceConnectorGroup
+// saas版本，创建/修改业务资源后，调用绑定连接器接口,私有化调用path为：capi/GatewayResource/BindBusinessResourceConnectorGroup
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INTERNALERROR_SERVICETYPEERROR = "InternalError.ServiceTypeError"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  RESOURCENOTFOUND_NORESOURCEDATA = "ResourceNotFound.NoResourceData"
+//  RESOURCENOTFOUND_NOTCONNECTORGROUPINFO = "ResourceNotFound.NotConnectorGroupInfo"
+//  UNAUTHORIZEDOPERATION_NORESOURCEPERMISSIONS = "UnauthorizedOperation.NoResourcePermissions"
+func (c *Client) BindBusinessResourceConnectorGroupWithContext(ctx context.Context, request *BindBusinessResourceConnectorGroupRequest) (response *BindBusinessResourceConnectorGroupResponse, err error) {
+    if request == nil {
+        request = NewBindBusinessResourceConnectorGroupRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ioa", APIVersion, "BindBusinessResourceConnectorGroup")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BindBusinessResourceConnectorGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewBindBusinessResourceConnectorGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateBusinessResourceRequest() (request *CreateBusinessResourceRequest) {
     request = &CreateBusinessResourceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -119,6 +179,64 @@ func (c *Client) CreateBusinessResourceWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewCreateBusinessResourceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateCompanyDirectoryConfigRequest() (request *CreateCompanyDirectoryConfigRequest) {
+    request = &CreateCompanyDirectoryConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ioa", APIVersion, "CreateCompanyDirectoryConfig")
+    
+    
+    return
+}
+
+func NewCreateCompanyDirectoryConfigResponse() (response *CreateCompanyDirectoryConfigResponse) {
+    response = &CreateCompanyDirectoryConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateCompanyDirectoryConfig
+// 创建企业目录配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEQUERYFAILED = "InternalError.DatabaseQueryFailed"
+//  INTERNALERROR_DATABASEWRITEFAILED = "InternalError.DatabaseWriteFailed"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  INVALIDPARAMETER_SAMEACCOUNTGROUPNAME = "InvalidParameter.SameAccountGroupName"
+//  LIMITEXCEEDED_COMPANYDIRECTORYMAXLIMIT = "LimitExceeded.CompanyDirectoryMaxLimit"
+func (c *Client) CreateCompanyDirectoryConfig(request *CreateCompanyDirectoryConfigRequest) (response *CreateCompanyDirectoryConfigResponse, err error) {
+    return c.CreateCompanyDirectoryConfigWithContext(context.Background(), request)
+}
+
+// CreateCompanyDirectoryConfig
+// 创建企业目录配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEQUERYFAILED = "InternalError.DatabaseQueryFailed"
+//  INTERNALERROR_DATABASEWRITEFAILED = "InternalError.DatabaseWriteFailed"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  INVALIDPARAMETER_SAMEACCOUNTGROUPNAME = "InvalidParameter.SameAccountGroupName"
+//  LIMITEXCEEDED_COMPANYDIRECTORYMAXLIMIT = "LimitExceeded.CompanyDirectoryMaxLimit"
+func (c *Client) CreateCompanyDirectoryConfigWithContext(ctx context.Context, request *CreateCompanyDirectoryConfigRequest) (response *CreateCompanyDirectoryConfigResponse, err error) {
+    if request == nil {
+        request = NewCreateCompanyDirectoryConfigRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ioa", APIVersion, "CreateCompanyDirectoryConfig")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCompanyDirectoryConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateCompanyDirectoryConfigResponse()
     err = c.Send(request, response)
     return
 }
@@ -435,6 +553,70 @@ func (c *Client) CreatePrivilegeCodeWithContext(ctx context.Context, request *Cr
     return
 }
 
+func NewDeleteDeviceVirtualGroupRequest() (request *DeleteDeviceVirtualGroupRequest) {
+    request = &DeleteDeviceVirtualGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ioa", APIVersion, "DeleteDeviceVirtualGroup")
+    
+    
+    return
+}
+
+func NewDeleteDeviceVirtualGroupResponse() (response *DeleteDeviceVirtualGroupResponse) {
+    response = &DeleteDeviceVirtualGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteDeviceVirtualGroup
+// 删除终端自定义分组，私有化调用path为：/capi/Assets/Device/DeleteDeviceVirtualGroup
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYDATA = "FailedOperation.QueryData"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  MISSINGPARAMETER_COMMONPARAM = "MissingParameter.CommonParam"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+//  UNAUTHORIZEDOPERATION_NORESOURCEPERMISSIONS = "UnauthorizedOperation.NoResourcePermissions"
+func (c *Client) DeleteDeviceVirtualGroup(request *DeleteDeviceVirtualGroupRequest) (response *DeleteDeviceVirtualGroupResponse, err error) {
+    return c.DeleteDeviceVirtualGroupWithContext(context.Background(), request)
+}
+
+// DeleteDeviceVirtualGroup
+// 删除终端自定义分组，私有化调用path为：/capi/Assets/Device/DeleteDeviceVirtualGroup
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYDATA = "FailedOperation.QueryData"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  MISSINGPARAMETER_COMMONPARAM = "MissingParameter.CommonParam"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+//  UNAUTHORIZEDOPERATION_NORESOURCEPERMISSIONS = "UnauthorizedOperation.NoResourcePermissions"
+func (c *Client) DeleteDeviceVirtualGroupWithContext(ctx context.Context, request *DeleteDeviceVirtualGroupRequest) (response *DeleteDeviceVirtualGroupResponse, err error) {
+    if request == nil {
+        request = NewDeleteDeviceVirtualGroupRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ioa", APIVersion, "DeleteDeviceVirtualGroup")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteDeviceVirtualGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteDeviceVirtualGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAccountGroupsRequest() (request *DescribeAccountGroupsRequest) {
     request = &DescribeAccountGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -705,6 +887,58 @@ func (c *Client) DescribeBusinessResourcesWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewDescribeBusinessResourcesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCompanyDirectoryConfigRequest() (request *DescribeCompanyDirectoryConfigRequest) {
+    request = &DescribeCompanyDirectoryConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ioa", APIVersion, "DescribeCompanyDirectoryConfig")
+    
+    
+    return
+}
+
+func NewDescribeCompanyDirectoryConfigResponse() (response *DescribeCompanyDirectoryConfigResponse) {
+    response = &DescribeCompanyDirectoryConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCompanyDirectoryConfig
+// 获取企业目录配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEQUERYFAILED = "InternalError.DatabaseQueryFailed"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+func (c *Client) DescribeCompanyDirectoryConfig(request *DescribeCompanyDirectoryConfigRequest) (response *DescribeCompanyDirectoryConfigResponse, err error) {
+    return c.DescribeCompanyDirectoryConfigWithContext(context.Background(), request)
+}
+
+// DescribeCompanyDirectoryConfig
+// 获取企业目录配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEQUERYFAILED = "InternalError.DatabaseQueryFailed"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+func (c *Client) DescribeCompanyDirectoryConfigWithContext(ctx context.Context, request *DescribeCompanyDirectoryConfigRequest) (response *DescribeCompanyDirectoryConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribeCompanyDirectoryConfigRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ioa", APIVersion, "DescribeCompanyDirectoryConfig")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCompanyDirectoryConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCompanyDirectoryConfigResponse()
     err = c.Send(request, response)
     return
 }
@@ -1329,7 +1563,7 @@ func NewDescribeDirectAccountGroupResourcesResponse() (response *DescribeDirectA
 }
 
 // DescribeDirectAccountGroupResources
-// 列表账户组直接关联的资源，私有化调用path为：capi/Assets/DescribeDirectAccountGroupResources
+// 列表账户组直接关联的资源，私有化调用path为：capi/NGN/DescribeDirectAccountGroupResources
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
@@ -1339,7 +1573,7 @@ func (c *Client) DescribeDirectAccountGroupResources(request *DescribeDirectAcco
 }
 
 // DescribeDirectAccountGroupResources
-// 列表账户组直接关联的资源，私有化调用path为：capi/Assets/DescribeDirectAccountGroupResources
+// 列表账户组直接关联的资源，私有化调用path为：capi/NGN/DescribeDirectAccountGroupResources
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
@@ -2145,6 +2379,62 @@ func (c *Client) ModifyBusinessResourceWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewModifyBusinessResourceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyCompanyDirectoryConfigRequest() (request *ModifyCompanyDirectoryConfigRequest) {
+    request = &ModifyCompanyDirectoryConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ioa", APIVersion, "ModifyCompanyDirectoryConfig")
+    
+    
+    return
+}
+
+func NewModifyCompanyDirectoryConfigResponse() (response *ModifyCompanyDirectoryConfigResponse) {
+    response = &ModifyCompanyDirectoryConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyCompanyDirectoryConfig
+// 编辑企业目录配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEQUERYFAILED = "InternalError.DatabaseQueryFailed"
+//  INTERNALERROR_DATABASEWRITEFAILED = "InternalError.DatabaseWriteFailed"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  INVALIDPARAMETER_SAMEACCOUNTGROUPNAME = "InvalidParameter.SameAccountGroupName"
+func (c *Client) ModifyCompanyDirectoryConfig(request *ModifyCompanyDirectoryConfigRequest) (response *ModifyCompanyDirectoryConfigResponse, err error) {
+    return c.ModifyCompanyDirectoryConfigWithContext(context.Background(), request)
+}
+
+// ModifyCompanyDirectoryConfig
+// 编辑企业目录配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEQUERYFAILED = "InternalError.DatabaseQueryFailed"
+//  INTERNALERROR_DATABASEWRITEFAILED = "InternalError.DatabaseWriteFailed"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  INVALIDPARAMETER_SAMEACCOUNTGROUPNAME = "InvalidParameter.SameAccountGroupName"
+func (c *Client) ModifyCompanyDirectoryConfigWithContext(ctx context.Context, request *ModifyCompanyDirectoryConfigRequest) (response *ModifyCompanyDirectoryConfigResponse, err error) {
+    if request == nil {
+        request = NewModifyCompanyDirectoryConfigRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ioa", APIVersion, "ModifyCompanyDirectoryConfig")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyCompanyDirectoryConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyCompanyDirectoryConfigResponse()
     err = c.Send(request, response)
     return
 }

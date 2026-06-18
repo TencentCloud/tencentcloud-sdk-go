@@ -504,74 +504,74 @@ func (r *CreateBackupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateClusterRequestParams struct {
-	// 集群数据描述语言类型，如：`PROTO`，`TDR`或`MIX`
+	// <p>集群数据描述语言类型，统一填<code>MIX</code></p><p>枚举值：</p><ul><li>MIX： 同时支持<code>PROTO</code>，<code>TDR</code>表</li></ul>
 	IdlType *string `json:"IdlType,omitnil,omitempty" name:"IdlType"`
 
-	// 集群名称，可使用中文或英文字符，最大长度32个字符
+	// <p>集群名称，可使用中文或英文字符，最大长度32个字符</p>
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
-	// 集群所绑定的私有网络实例ID，形如：vpc-f49l6u0z
+	// <p>集群所绑定的私有网络实例ID，形如：vpc-f49l6u0z</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 集群所绑定的子网实例ID，形如：subnet-pxir56ns
+	// <p>集群所绑定的子网实例ID，形如：subnet-pxir56ns</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 集群访问密码，必须是a-zA-Z0-9的字符,且必须包含数字和大小写字母
+	// <p>集群访问密码，必须是a-zA-Z0-9的字符,且必须包含数字和大小写字母</p>
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
-	// 集群标签列表
+	// <p>集群标签列表</p>
 	ResourceTags []*TagInfoUnit `json:"ResourceTags,omitnil,omitempty" name:"ResourceTags"`
 
-	// 集群是否开启IPv6功能
+	// <p>集群是否开启IPv6功能</p>
 	Ipv6Enable *int64 `json:"Ipv6Enable,omitnil,omitempty" name:"Ipv6Enable"`
 
-	// 独占集群占用的svr机器
+	// <p>独占集群占用的svr机器</p>
 	ServerList []*MachineInfo `json:"ServerList,omitnil,omitempty" name:"ServerList"`
 
-	// 独占集群占用的proxy机器
+	// <p>独占集群占用的proxy机器</p>
 	ProxyList []*MachineInfo `json:"ProxyList,omitnil,omitempty" name:"ProxyList"`
 
-	// 集群类型1共享2独占
+	// <p>集群类型1共享2独占</p>
 	ClusterType *int64 `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 
-	// 密码认证类型，0 静态认证， 1 签名认证
+	// <p>密码认证类型，0 静态认证， 1 签名认证</p>
 	AuthType *int64 `json:"AuthType,omitnil,omitempty" name:"AuthType"`
 }
 
 type CreateClusterRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群数据描述语言类型，如：`PROTO`，`TDR`或`MIX`
+	// <p>集群数据描述语言类型，统一填<code>MIX</code></p><p>枚举值：</p><ul><li>MIX： 同时支持<code>PROTO</code>，<code>TDR</code>表</li></ul>
 	IdlType *string `json:"IdlType,omitnil,omitempty" name:"IdlType"`
 
-	// 集群名称，可使用中文或英文字符，最大长度32个字符
+	// <p>集群名称，可使用中文或英文字符，最大长度32个字符</p>
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
-	// 集群所绑定的私有网络实例ID，形如：vpc-f49l6u0z
+	// <p>集群所绑定的私有网络实例ID，形如：vpc-f49l6u0z</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 集群所绑定的子网实例ID，形如：subnet-pxir56ns
+	// <p>集群所绑定的子网实例ID，形如：subnet-pxir56ns</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 集群访问密码，必须是a-zA-Z0-9的字符,且必须包含数字和大小写字母
+	// <p>集群访问密码，必须是a-zA-Z0-9的字符,且必须包含数字和大小写字母</p>
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
-	// 集群标签列表
+	// <p>集群标签列表</p>
 	ResourceTags []*TagInfoUnit `json:"ResourceTags,omitnil,omitempty" name:"ResourceTags"`
 
-	// 集群是否开启IPv6功能
+	// <p>集群是否开启IPv6功能</p>
 	Ipv6Enable *int64 `json:"Ipv6Enable,omitnil,omitempty" name:"Ipv6Enable"`
 
-	// 独占集群占用的svr机器
+	// <p>独占集群占用的svr机器</p>
 	ServerList []*MachineInfo `json:"ServerList,omitnil,omitempty" name:"ServerList"`
 
-	// 独占集群占用的proxy机器
+	// <p>独占集群占用的proxy机器</p>
 	ProxyList []*MachineInfo `json:"ProxyList,omitnil,omitempty" name:"ProxyList"`
 
-	// 集群类型1共享2独占
+	// <p>集群类型1共享2独占</p>
 	ClusterType *int64 `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 
-	// 密码认证类型，0 静态认证， 1 签名认证
+	// <p>密码认证类型，0 静态认证， 1 签名认证</p>
 	AuthType *int64 `json:"AuthType,omitnil,omitempty" name:"AuthType"`
 }
 
@@ -606,7 +606,7 @@ func (r *CreateClusterRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateClusterResponseParams struct {
-	// 集群ID
+	// <p>集群ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

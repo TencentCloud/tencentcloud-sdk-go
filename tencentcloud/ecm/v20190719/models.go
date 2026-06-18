@@ -870,81 +870,6 @@ func (r *AssociateSecurityGroupsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type AttachDisksRequestParams struct {
-	// 云服务器实例ID。云盘将被挂载到此云服务器上，通过[DescribeInstances](/document/product/213/15728)接口查询。
-	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
-
-	// 将要被挂载的弹性云盘ID。通过[DescribeDisks](/document/product/362/16315)接口查询。单次最多可挂载10块弹性云盘。
-	DiskIds []*string `json:"DiskIds,omitnil,omitempty" name:"DiskIds"`
-
-	// 可选参数，不传该参数则仅执行挂载操作。传入`True`时，会在挂载成功后将云硬盘设置为随云主机销毁模式，仅对按量计费云硬盘有效。
-	DeleteWithInstance *bool `json:"DeleteWithInstance,omitnil,omitempty" name:"DeleteWithInstance"`
-
-	// 可选参数，用于控制云盘挂载时使用的挂载模式，目前仅对黑石裸金属机型有效。取值范围：<br><li>PF<br><li>VF
-	AttachMode *string `json:"AttachMode,omitnil,omitempty" name:"AttachMode"`
-}
-
-type AttachDisksRequest struct {
-	*tchttp.BaseRequest
-	
-	// 云服务器实例ID。云盘将被挂载到此云服务器上，通过[DescribeInstances](/document/product/213/15728)接口查询。
-	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
-
-	// 将要被挂载的弹性云盘ID。通过[DescribeDisks](/document/product/362/16315)接口查询。单次最多可挂载10块弹性云盘。
-	DiskIds []*string `json:"DiskIds,omitnil,omitempty" name:"DiskIds"`
-
-	// 可选参数，不传该参数则仅执行挂载操作。传入`True`时，会在挂载成功后将云硬盘设置为随云主机销毁模式，仅对按量计费云硬盘有效。
-	DeleteWithInstance *bool `json:"DeleteWithInstance,omitnil,omitempty" name:"DeleteWithInstance"`
-
-	// 可选参数，用于控制云盘挂载时使用的挂载模式，目前仅对黑石裸金属机型有效。取值范围：<br><li>PF<br><li>VF
-	AttachMode *string `json:"AttachMode,omitnil,omitempty" name:"AttachMode"`
-}
-
-func (r *AttachDisksRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *AttachDisksRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "InstanceId")
-	delete(f, "DiskIds")
-	delete(f, "DeleteWithInstance")
-	delete(f, "AttachMode")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AttachDisksRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type AttachDisksResponseParams struct {
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type AttachDisksResponse struct {
-	*tchttp.BaseResponse
-	Response *AttachDisksResponseParams `json:"Response"`
-}
-
-func (r *AttachDisksResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *AttachDisksResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type AttachNetworkInterfaceRequestParams struct {
 	// 弹性网卡实例ID，例如：eni-m6dyj72l。
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitnil,omitempty" name:"NetworkInterfaceId"`
@@ -1268,147 +1193,6 @@ type Country struct {
 
 	// 国家名称
 	CountryName *string `json:"CountryName,omitnil,omitempty" name:"CountryName"`
-}
-
-// Predefined struct for user
-type CreateDisksRequestParams struct {
-	// 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目。若不指定项目，将在默认项目下进行创建。
-	Placement *Placement `json:"Placement,omitnil,omitempty" name:"Placement"`
-
-	// 云硬盘计费类型。<br><li>PREPAID：预付费，即包年包月<br><li>POSTPAID_BY_HOUR：按小时后付费<br><li>CDCPAID：独享集群付费<br>各类型价格请参考云硬盘[价格总览](/document/product/362/2413)。
-	DiskChargeType *string `json:"DiskChargeType,omitnil,omitempty" name:"DiskChargeType"`
-
-	// 硬盘介质类型。取值范围：<br><li>CLOUD_BASIC：表示普通云硬盘<br><li>CLOUD_PREMIUM：表示高性能云硬盘<br><li>CLOUD_SSD：表示SSD云硬盘<br><li>CLOUD_HSSD：表示增强型SSD云硬盘<br><li>CLOUD_TSSD：表示极速型SSD云硬盘。
-	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
-
-	// 云盘显示名称。不传则默认为“未命名”。最大长度不能超60个字节。
-	DiskName *string `json:"DiskName,omitnil,omitempty" name:"DiskName"`
-
-	// 云盘绑定的标签。
-	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
-
-	// 预付费模式，即包年包月相关参数设置。通过该参数指定包年包月云盘的购买时长、是否设置自动续费等属性。<br>创建预付费云盘该参数必传，创建按小时后付费云盘无需传该参数。
-	DiskChargePrepaid *DiskChargePrepaid `json:"DiskChargePrepaid,omitnil,omitempty" name:"DiskChargePrepaid"`
-
-	// 创建云硬盘数量，不传则默认为1。单次请求最多可创建的云盘数有限制，具体参见[云硬盘使用限制](https://cloud.tencent.com/doc/product/362/5145)。
-	DiskCount *uint64 `json:"DiskCount,omitnil,omitempty" name:"DiskCount"`
-
-	// 可选参数。使用此参数可给云硬盘购买额外的性能。<br>当前仅支持极速型云盘（CLOUD_TSSD）和增强型SSD云硬盘（CLOUD_HSSD）
-	ThroughputPerformance *uint64 `json:"ThroughputPerformance,omitnil,omitempty" name:"ThroughputPerformance"`
-
-	// 云硬盘大小，单位为GB。<br><li>如果传入`SnapshotId`则可不传`DiskSize`，此时新建云盘的大小为快照大小<br><li>如果传入`SnapshotId`同时传入`DiskSize`，则云盘大小必须大于或等于快照大小<br><li>云盘大小取值范围参见云硬盘[产品分类](/document/product/362/2353)的说明。
-	DiskSize *uint64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
-
-	// 可选参数，默认为False。传入True时，云盘将创建为共享型云盘。
-	Shareable *bool `json:"Shareable,omitnil,omitempty" name:"Shareable"`
-
-	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
-	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
-
-	// 传入该参数用于创建加密云盘，取值固定为ENCRYPT。
-	Encrypt *string `json:"Encrypt,omitnil,omitempty" name:"Encrypt"`
-
-	// 快照ID，如果传入则根据此快照创建云硬盘，快照类型必须为数据盘快照，可通过[DescribeSnapshots](/document/product/362/15647)接口查询快照，见输出参数DiskUsage解释。
-	SnapshotId *string `json:"SnapshotId,omitnil,omitempty" name:"SnapshotId"`
-}
-
-type CreateDisksRequest struct {
-	*tchttp.BaseRequest
-	
-	// 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目。若不指定项目，将在默认项目下进行创建。
-	Placement *Placement `json:"Placement,omitnil,omitempty" name:"Placement"`
-
-	// 云硬盘计费类型。<br><li>PREPAID：预付费，即包年包月<br><li>POSTPAID_BY_HOUR：按小时后付费<br><li>CDCPAID：独享集群付费<br>各类型价格请参考云硬盘[价格总览](/document/product/362/2413)。
-	DiskChargeType *string `json:"DiskChargeType,omitnil,omitempty" name:"DiskChargeType"`
-
-	// 硬盘介质类型。取值范围：<br><li>CLOUD_BASIC：表示普通云硬盘<br><li>CLOUD_PREMIUM：表示高性能云硬盘<br><li>CLOUD_SSD：表示SSD云硬盘<br><li>CLOUD_HSSD：表示增强型SSD云硬盘<br><li>CLOUD_TSSD：表示极速型SSD云硬盘。
-	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
-
-	// 云盘显示名称。不传则默认为“未命名”。最大长度不能超60个字节。
-	DiskName *string `json:"DiskName,omitnil,omitempty" name:"DiskName"`
-
-	// 云盘绑定的标签。
-	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
-
-	// 预付费模式，即包年包月相关参数设置。通过该参数指定包年包月云盘的购买时长、是否设置自动续费等属性。<br>创建预付费云盘该参数必传，创建按小时后付费云盘无需传该参数。
-	DiskChargePrepaid *DiskChargePrepaid `json:"DiskChargePrepaid,omitnil,omitempty" name:"DiskChargePrepaid"`
-
-	// 创建云硬盘数量，不传则默认为1。单次请求最多可创建的云盘数有限制，具体参见[云硬盘使用限制](https://cloud.tencent.com/doc/product/362/5145)。
-	DiskCount *uint64 `json:"DiskCount,omitnil,omitempty" name:"DiskCount"`
-
-	// 可选参数。使用此参数可给云硬盘购买额外的性能。<br>当前仅支持极速型云盘（CLOUD_TSSD）和增强型SSD云硬盘（CLOUD_HSSD）
-	ThroughputPerformance *uint64 `json:"ThroughputPerformance,omitnil,omitempty" name:"ThroughputPerformance"`
-
-	// 云硬盘大小，单位为GB。<br><li>如果传入`SnapshotId`则可不传`DiskSize`，此时新建云盘的大小为快照大小<br><li>如果传入`SnapshotId`同时传入`DiskSize`，则云盘大小必须大于或等于快照大小<br><li>云盘大小取值范围参见云硬盘[产品分类](/document/product/362/2353)的说明。
-	DiskSize *uint64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
-
-	// 可选参数，默认为False。传入True时，云盘将创建为共享型云盘。
-	Shareable *bool `json:"Shareable,omitnil,omitempty" name:"Shareable"`
-
-	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
-	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
-
-	// 传入该参数用于创建加密云盘，取值固定为ENCRYPT。
-	Encrypt *string `json:"Encrypt,omitnil,omitempty" name:"Encrypt"`
-
-	// 快照ID，如果传入则根据此快照创建云硬盘，快照类型必须为数据盘快照，可通过[DescribeSnapshots](/document/product/362/15647)接口查询快照，见输出参数DiskUsage解释。
-	SnapshotId *string `json:"SnapshotId,omitnil,omitempty" name:"SnapshotId"`
-}
-
-func (r *CreateDisksRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *CreateDisksRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "Placement")
-	delete(f, "DiskChargeType")
-	delete(f, "DiskType")
-	delete(f, "DiskName")
-	delete(f, "Tags")
-	delete(f, "DiskChargePrepaid")
-	delete(f, "DiskCount")
-	delete(f, "ThroughputPerformance")
-	delete(f, "DiskSize")
-	delete(f, "Shareable")
-	delete(f, "ClientToken")
-	delete(f, "Encrypt")
-	delete(f, "SnapshotId")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDisksRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type CreateDisksResponseParams struct {
-	// 创建的云硬盘ID列表。
-	DiskIdSet []*string `json:"DiskIdSet,omitnil,omitempty" name:"DiskIdSet"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type CreateDisksResponse struct {
-	*tchttp.BaseResponse
-	Response *CreateDisksResponseParams `json:"Response"`
-}
-
-func (r *CreateDisksResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *CreateDisksResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -3258,67 +3042,6 @@ func (r *DeleteSecurityGroupResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type DeleteSnapshotsRequestParams struct {
-	// 要删除的快照ID列表，可通过[DescribeSnapshots](/document/product/362/15647)查询。
-	SnapshotIds []*string `json:"SnapshotIds,omitnil,omitempty" name:"SnapshotIds"`
-
-	// 是否强制删除快照关联的镜像
-	DeleteBindImages *bool `json:"DeleteBindImages,omitnil,omitempty" name:"DeleteBindImages"`
-}
-
-type DeleteSnapshotsRequest struct {
-	*tchttp.BaseRequest
-	
-	// 要删除的快照ID列表，可通过[DescribeSnapshots](/document/product/362/15647)查询。
-	SnapshotIds []*string `json:"SnapshotIds,omitnil,omitempty" name:"SnapshotIds"`
-
-	// 是否强制删除快照关联的镜像
-	DeleteBindImages *bool `json:"DeleteBindImages,omitnil,omitempty" name:"DeleteBindImages"`
-}
-
-func (r *DeleteSnapshotsRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DeleteSnapshotsRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "SnapshotIds")
-	delete(f, "DeleteBindImages")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteSnapshotsRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DeleteSnapshotsResponseParams struct {
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DeleteSnapshotsResponse struct {
-	*tchttp.BaseResponse
-	Response *DeleteSnapshotsResponseParams `json:"Response"`
-}
-
-func (r *DeleteSnapshotsResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DeleteSnapshotsResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type DeleteSubnetRequestParams struct {
 	// 子网实例ID。可通过DescribeSubnets接口返回值中的SubnetId获取。
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
@@ -3514,6 +3237,7 @@ type DescribeAddressesRequestParams struct {
 	// private-ip-address - String - 是否必填：否 - （过滤条件）按照 EIP 绑定的内网 IP 过滤。
 	// network-interface-id - String - 是否必填：否 - （过滤条件）按照 EIP 绑定的弹性网卡 ID 过滤。弹性网卡 ID 形如：eni-11112222。
 	// is-arrears - String - 是否必填：否 - （过滤条件）按照 EIP 是否欠费进行过滤。（TRUE：EIP 处于欠费状态|FALSE：EIP 费用状态正常）
+	// address-type - String - 是否必填：否 - （过滤条件）按照 IP类型 进行过滤。可选值：'WanIP'：普通公网 IP, 'EIP'：弹性公网 IP。默认值是'EIP'。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0。
@@ -3541,6 +3265,7 @@ type DescribeAddressesRequest struct {
 	// private-ip-address - String - 是否必填：否 - （过滤条件）按照 EIP 绑定的内网 IP 过滤。
 	// network-interface-id - String - 是否必填：否 - （过滤条件）按照 EIP 绑定的弹性网卡 ID 过滤。弹性网卡 ID 形如：eni-11112222。
 	// is-arrears - String - 是否必填：否 - （过滤条件）按照 EIP 是否欠费进行过滤。（TRUE：EIP 处于欠费状态|FALSE：EIP 费用状态正常）
+	// address-type - String - 是否必填：否 - （过滤条件）按照 IP类型 进行过滤。可选值：'WanIP'：普通公网 IP, 'EIP'：弹性公网 IP。默认值是'EIP'。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0。
@@ -3882,108 +3607,6 @@ func (r *DescribeDefaultSubnetResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeDefaultSubnetResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeDisksRequestParams struct {
-	// 过滤条件。参数不支持同时指定`DiskIds`和`Filters`。<br><li>disk-usage - Array of String - 是否必填：否 -（过滤条件）按云盘类型过滤。 (SYSTEM_DISK：表示系统盘 | DATA_DISK：表示数据盘)<br><li>disk-charge-type - Array of String - 是否必填：否 -（过滤条件）按照云硬盘计费模式过滤。 (PREPAID：表示预付费，即包年包月 | POSTPAID_BY_HOUR：表示后付费，即按量计费。)<br><li>portable - Array of String - 是否必填：否 -（过滤条件）按是否为弹性云盘过滤。 (TRUE：表示弹性云盘 | FALSE：表示非弹性云盘。)<br><li>project-id - Array of Integer - 是否必填：否 -（过滤条件）按云硬盘所属项目ID过滤。<br><li>disk-id - Array of String - 是否必填：否 -（过滤条件）按照云硬盘ID过滤。云盘ID形如：`disk-11112222`。<br><li>disk-name - Array of String - 是否必填：否 -（过滤条件）按照云盘名称过滤。<br><li>disk-type - Array of String - 是否必填：否 -（过滤条件）按照云盘介质类型过滤。(CLOUD_BASIC：表示普通云硬盘 | CLOUD_PREMIUM：表示高性能云硬盘。| CLOUD_SSD：表示SSD云硬盘 | CLOUD_HSSD：表示增强型SSD云硬盘。| CLOUD_TSSD：表示极速型云硬盘。)<br><li>disk-state - Array of String - 是否必填：否 -（过滤条件）按照云盘状态过滤。(UNATTACHED：未挂载 | ATTACHING：挂载中 | ATTACHED：已挂载 | DETACHING：解挂中 | EXPANDING：扩容中 | ROLLBACKING：回滚中 | TORECYCLE：待回收。)<br><li>instance-id - Array of String - 是否必填：否 -（过滤条件）按照云盘挂载的云主机实例ID过滤。可根据此参数查询挂载在指定云主机下的云硬盘。<br><li>zone - Array of String - 是否必填：否 -（过滤条件）按照[可用区](/document/product/213/15753#ZoneInfo)过滤。<br><li>instance-ip-address - Array of String - 是否必填：否 -（过滤条件）按云盘所挂载云主机的内网或外网IP过滤。<br><li>instance-name - Array of String - 是否必填：否 -（过滤条件）按云盘所挂载的实例名称过滤。<br><li>tag-key - Array of String - 是否必填：否 -（过滤条件）按照标签键进行过滤。<br><li>tag-value - Array of String - 是否必填：否 -（过滤条件）照标签值进行过滤。<br><li>tag:tag-key - Array of String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。
-	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
-
-	// 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](/document/product/362/15633)中的相关小节。
-	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-
-	// 云盘列表排序的依据字段。取值范围：<br><li>CREATE_TIME：依据云盘的创建时间排序<br><li>DEADLINE：依据云盘的到期时间排序<br>默认按云盘创建时间排序。
-	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
-
-	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考API[简介](/document/product/362/15633)中的相关小节。
-	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
-
-	// 云盘详情中是否需要返回云盘绑定的定期快照策略ID，TRUE表示需要返回，FALSE表示不返回。
-	ReturnBindAutoSnapshotPolicy *bool `json:"ReturnBindAutoSnapshotPolicy,omitnil,omitempty" name:"ReturnBindAutoSnapshotPolicy"`
-
-	// 按照一个或者多个云硬盘ID查询。云硬盘ID形如：`disk-11112222`，此参数的具体格式可参考API[简介](/document/product/362/15633)的ids.N一节）。参数不支持同时指定`DiskIds`和`Filters`。
-	DiskIds []*string `json:"DiskIds,omitnil,omitempty" name:"DiskIds"`
-
-	// 输出云盘列表的排列顺序。取值范围：<br><li>ASC：升序排列<br><li>DESC：降序排列。
-	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
-}
-
-type DescribeDisksRequest struct {
-	*tchttp.BaseRequest
-	
-	// 过滤条件。参数不支持同时指定`DiskIds`和`Filters`。<br><li>disk-usage - Array of String - 是否必填：否 -（过滤条件）按云盘类型过滤。 (SYSTEM_DISK：表示系统盘 | DATA_DISK：表示数据盘)<br><li>disk-charge-type - Array of String - 是否必填：否 -（过滤条件）按照云硬盘计费模式过滤。 (PREPAID：表示预付费，即包年包月 | POSTPAID_BY_HOUR：表示后付费，即按量计费。)<br><li>portable - Array of String - 是否必填：否 -（过滤条件）按是否为弹性云盘过滤。 (TRUE：表示弹性云盘 | FALSE：表示非弹性云盘。)<br><li>project-id - Array of Integer - 是否必填：否 -（过滤条件）按云硬盘所属项目ID过滤。<br><li>disk-id - Array of String - 是否必填：否 -（过滤条件）按照云硬盘ID过滤。云盘ID形如：`disk-11112222`。<br><li>disk-name - Array of String - 是否必填：否 -（过滤条件）按照云盘名称过滤。<br><li>disk-type - Array of String - 是否必填：否 -（过滤条件）按照云盘介质类型过滤。(CLOUD_BASIC：表示普通云硬盘 | CLOUD_PREMIUM：表示高性能云硬盘。| CLOUD_SSD：表示SSD云硬盘 | CLOUD_HSSD：表示增强型SSD云硬盘。| CLOUD_TSSD：表示极速型云硬盘。)<br><li>disk-state - Array of String - 是否必填：否 -（过滤条件）按照云盘状态过滤。(UNATTACHED：未挂载 | ATTACHING：挂载中 | ATTACHED：已挂载 | DETACHING：解挂中 | EXPANDING：扩容中 | ROLLBACKING：回滚中 | TORECYCLE：待回收。)<br><li>instance-id - Array of String - 是否必填：否 -（过滤条件）按照云盘挂载的云主机实例ID过滤。可根据此参数查询挂载在指定云主机下的云硬盘。<br><li>zone - Array of String - 是否必填：否 -（过滤条件）按照[可用区](/document/product/213/15753#ZoneInfo)过滤。<br><li>instance-ip-address - Array of String - 是否必填：否 -（过滤条件）按云盘所挂载云主机的内网或外网IP过滤。<br><li>instance-name - Array of String - 是否必填：否 -（过滤条件）按云盘所挂载的实例名称过滤。<br><li>tag-key - Array of String - 是否必填：否 -（过滤条件）按照标签键进行过滤。<br><li>tag-value - Array of String - 是否必填：否 -（过滤条件）照标签值进行过滤。<br><li>tag:tag-key - Array of String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。
-	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
-
-	// 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](/document/product/362/15633)中的相关小节。
-	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-
-	// 云盘列表排序的依据字段。取值范围：<br><li>CREATE_TIME：依据云盘的创建时间排序<br><li>DEADLINE：依据云盘的到期时间排序<br>默认按云盘创建时间排序。
-	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
-
-	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考API[简介](/document/product/362/15633)中的相关小节。
-	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
-
-	// 云盘详情中是否需要返回云盘绑定的定期快照策略ID，TRUE表示需要返回，FALSE表示不返回。
-	ReturnBindAutoSnapshotPolicy *bool `json:"ReturnBindAutoSnapshotPolicy,omitnil,omitempty" name:"ReturnBindAutoSnapshotPolicy"`
-
-	// 按照一个或者多个云硬盘ID查询。云硬盘ID形如：`disk-11112222`，此参数的具体格式可参考API[简介](/document/product/362/15633)的ids.N一节）。参数不支持同时指定`DiskIds`和`Filters`。
-	DiskIds []*string `json:"DiskIds,omitnil,omitempty" name:"DiskIds"`
-
-	// 输出云盘列表的排列顺序。取值范围：<br><li>ASC：升序排列<br><li>DESC：降序排列。
-	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
-}
-
-func (r *DescribeDisksRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeDisksRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "Filters")
-	delete(f, "Limit")
-	delete(f, "OrderField")
-	delete(f, "Offset")
-	delete(f, "ReturnBindAutoSnapshotPolicy")
-	delete(f, "DiskIds")
-	delete(f, "Order")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDisksRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeDisksResponseParams struct {
-	// 符合条件的云硬盘数量。
-	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
-
-	// 云硬盘的详细信息列表。
-	DiskSet []*Disk `json:"DiskSet,omitnil,omitempty" name:"DiskSet"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DescribeDisksResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeDisksResponseParams `json:"Response"`
-}
-
-func (r *DescribeDisksResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeDisksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6038,105 +5661,6 @@ func (r *DescribeSecurityGroupsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type DescribeSnapshotsRequestParams struct {
-	// 要查询快照的ID列表。参数不支持同时指定`SnapshotIds`和`Filters`。
-	SnapshotIds []*string `json:"SnapshotIds,omitnil,omitempty" name:"SnapshotIds"`
-
-	// 过滤条件。参数不支持同时指定`SnapshotIds`和`Filters`。<br><li>snapshot-id - Array of String - 是否必填：否 -（过滤条件）按照快照的ID过滤。快照ID形如：`snap-11112222`。<br><li>snapshot-name - Array of String - 是否必填：否 -（过滤条件）按照快照名称过滤。<br><li>snapshot-state - Array of String - 是否必填：否 -（过滤条件）按照快照状态过滤。 (NORMAL：正常 | CREATING：创建中 | ROLLBACKING：回滚中。)<br><li>disk-usage - Array of String - 是否必填：否 -（过滤条件）按创建快照的云盘类型过滤。 (SYSTEM_DISK：代表系统盘 | DATA_DISK：代表数据盘。)<br><li>project-id  - Array of String - 是否必填：否 -（过滤条件）按云硬盘所属项目ID过滤。<br><li>disk-id  - Array of String - 是否必填：否 -（过滤条件）按照创建快照的云硬盘ID过滤。<br><li>zone - Array of String - 是否必填：否 -（过滤条件）按照[可用区](/document/product/213/15753#ZoneInfo)过滤。<br><li>encrypt - Array of String - 是否必填：否 -（过滤条件）按是否加密盘快照过滤。 (TRUE：表示加密盘快照 | FALSE：表示非加密盘快照。)
-	// <li>snapshot-type- Array of String - 是否必填：否 -（过滤条件）根据snapshot-type指定的快照类型查询对应的快照。
-	// (SHARED_SNAPSHOT：表示共享过来的快照 | PRIVATE_SNAPSHOT：表示自己私有快照。)
-	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
-
-	// 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](/document/product/362/15633)中的相关小节。
-	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-
-	// 快照列表排序的依据字段。取值范围：<br><li>CREATE_TIME：依据快照的创建时间排序<br>默认按创建时间排序。
-	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
-
-	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考API[简介](/document/product/362/15633)中的相关小节。
-	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
-
-	// 输出云盘列表的排列顺序。取值范围：<br><li>ASC：升序排列<br><li>DESC：降序排列。
-	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
-}
-
-type DescribeSnapshotsRequest struct {
-	*tchttp.BaseRequest
-	
-	// 要查询快照的ID列表。参数不支持同时指定`SnapshotIds`和`Filters`。
-	SnapshotIds []*string `json:"SnapshotIds,omitnil,omitempty" name:"SnapshotIds"`
-
-	// 过滤条件。参数不支持同时指定`SnapshotIds`和`Filters`。<br><li>snapshot-id - Array of String - 是否必填：否 -（过滤条件）按照快照的ID过滤。快照ID形如：`snap-11112222`。<br><li>snapshot-name - Array of String - 是否必填：否 -（过滤条件）按照快照名称过滤。<br><li>snapshot-state - Array of String - 是否必填：否 -（过滤条件）按照快照状态过滤。 (NORMAL：正常 | CREATING：创建中 | ROLLBACKING：回滚中。)<br><li>disk-usage - Array of String - 是否必填：否 -（过滤条件）按创建快照的云盘类型过滤。 (SYSTEM_DISK：代表系统盘 | DATA_DISK：代表数据盘。)<br><li>project-id  - Array of String - 是否必填：否 -（过滤条件）按云硬盘所属项目ID过滤。<br><li>disk-id  - Array of String - 是否必填：否 -（过滤条件）按照创建快照的云硬盘ID过滤。<br><li>zone - Array of String - 是否必填：否 -（过滤条件）按照[可用区](/document/product/213/15753#ZoneInfo)过滤。<br><li>encrypt - Array of String - 是否必填：否 -（过滤条件）按是否加密盘快照过滤。 (TRUE：表示加密盘快照 | FALSE：表示非加密盘快照。)
-	// <li>snapshot-type- Array of String - 是否必填：否 -（过滤条件）根据snapshot-type指定的快照类型查询对应的快照。
-	// (SHARED_SNAPSHOT：表示共享过来的快照 | PRIVATE_SNAPSHOT：表示自己私有快照。)
-	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
-
-	// 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](/document/product/362/15633)中的相关小节。
-	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-
-	// 快照列表排序的依据字段。取值范围：<br><li>CREATE_TIME：依据快照的创建时间排序<br>默认按创建时间排序。
-	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
-
-	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考API[简介](/document/product/362/15633)中的相关小节。
-	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
-
-	// 输出云盘列表的排列顺序。取值范围：<br><li>ASC：升序排列<br><li>DESC：降序排列。
-	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
-}
-
-func (r *DescribeSnapshotsRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeSnapshotsRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "SnapshotIds")
-	delete(f, "Filters")
-	delete(f, "Limit")
-	delete(f, "OrderField")
-	delete(f, "Offset")
-	delete(f, "Order")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSnapshotsRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeSnapshotsResponseParams struct {
-	// 快照的数量。
-	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
-
-	// 快照的详情列表。
-	SnapshotSet []*Snapshot `json:"SnapshotSet,omitnil,omitempty" name:"SnapshotSet"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DescribeSnapshotsResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeSnapshotsResponseParams `json:"Response"`
-}
-
-func (r *DescribeSnapshotsResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeSnapshotsResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type DescribeSubnetsRequestParams struct {
 	// 子网实例ID查询。形如：subnet-pxir56ns。每次请求的实例的上限为100。参数不支持同时指定SubnetIds和Filters。
 	SubnetIds []*string `json:"SubnetIds,omitnil,omitempty" name:"SubnetIds"`
@@ -6624,67 +6148,6 @@ func (r *DescribeVpcsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type DetachDisksRequestParams struct {
-	// 将要卸载的云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询，单次请求最多可卸载10块弹性云盘。
-	DiskIds []*string `json:"DiskIds,omitnil,omitempty" name:"DiskIds"`
-
-	// 对于非共享型云盘，会忽略该参数；对于共享型云盘，该参数表示要从哪个CVM实例上卸载云盘。
-	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
-}
-
-type DetachDisksRequest struct {
-	*tchttp.BaseRequest
-	
-	// 将要卸载的云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询，单次请求最多可卸载10块弹性云盘。
-	DiskIds []*string `json:"DiskIds,omitnil,omitempty" name:"DiskIds"`
-
-	// 对于非共享型云盘，会忽略该参数；对于共享型云盘，该参数表示要从哪个CVM实例上卸载云盘。
-	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
-}
-
-func (r *DetachDisksRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DetachDisksRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "DiskIds")
-	delete(f, "InstanceId")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DetachDisksRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DetachDisksResponseParams struct {
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DetachDisksResponse struct {
-	*tchttp.BaseResponse
-	Response *DetachDisksResponseParams `json:"Response"`
-}
-
-func (r *DetachDisksResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DetachDisksResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type DetachNetworkInterfaceRequestParams struct {
 	// 弹性网卡实例ID，例如：eni-m6dyj72l。
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitnil,omitempty" name:"NetworkInterfaceId"`
@@ -7045,137 +6508,6 @@ func (r *DisassociateSecurityGroupsResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DisassociateSecurityGroupsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
-}
-
-type Disk struct {
-	// 云盘是否与挂载的实例一起销毁。<br><li>true:销毁实例时会同时销毁云盘，只支持按小时后付费云盘。<br><li>false：销毁实例时不销毁云盘。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	DeleteWithInstance *bool `json:"DeleteWithInstance,omitnil,omitempty" name:"DeleteWithInstance"`
-
-	// 自动续费标识。取值范围：<br><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费<br><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费<br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	RenewFlag *string `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
-
-	// 硬盘介质类型。取值范围：<br><li>CLOUD_BASIC：表示普通云硬盘<br><li>CLOUD_PREMIUM：表示高性能云硬盘<br><li>CLOUD_SSD：表示SSD云硬盘<br><li>CLOUD_HSSD：表示增强型SSD云硬盘<br><li>CLOUD_TSSD：表示极速型SSD云硬盘。
-	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
-
-	// 云盘状态。取值范围：<br><li>UNATTACHED：未挂载<br><li>ATTACHING：挂载中<br><li>ATTACHED：已挂载<br><li>DETACHING：解挂中<br><li>EXPANDING：扩容中<br><li>ROLLBACKING：回滚中<br><li>TORECYCLE：待回收<br><li>DUMPING：拷贝硬盘中。
-	DiskState *string `json:"DiskState,omitnil,omitempty" name:"DiskState"`
-
-	// 云盘拥有的快照总数。
-	SnapshotCount *int64 `json:"SnapshotCount,omitnil,omitempty" name:"SnapshotCount"`
-
-	// 云盘已挂载到子机，且子机与云盘都是包年包月。<br><li>true：子机设置了自动续费标识，但云盘未设置<br><li>false：云盘自动续费标识正常。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	AutoRenewFlagError *bool `json:"AutoRenewFlagError,omitnil,omitempty" name:"AutoRenewFlagError"`
-
-	// 云盘是否处于快照回滚状态。取值范围：<br><li>false:表示不处于快照回滚状态<br><li>true:表示处于快照回滚状态。
-	Rollbacking *bool `json:"Rollbacking,omitnil,omitempty" name:"Rollbacking"`
-
-	// 对于非共享型云盘，该参数为空数组。对于共享型云盘，则表示该云盘当前被挂载到的CVM实例InstanceId
-	InstanceIdList []*string `json:"InstanceIdList,omitnil,omitempty" name:"InstanceIdList"`
-
-	// 云盘是否为加密盘。取值范围：<br><li>false:表示非加密盘<br><li>true:表示加密盘。
-	Encrypt *bool `json:"Encrypt,omitnil,omitempty" name:"Encrypt"`
-
-	// 云硬盘名称。
-	DiskName *string `json:"DiskName,omitnil,omitempty" name:"DiskName"`
-
-	// 云硬盘因欠费销毁或者到期销毁时， 是否使用快照备份数据的标识。true表示销毁时创建快照进行数据备份。false表示直接销毁，不进行数据备份。
-	BackupDisk *bool `json:"BackupDisk,omitnil,omitempty" name:"BackupDisk"`
-
-	// 与云盘绑定的标签，云盘未绑定标签则取值为空。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
-
-	// 云硬盘挂载的云主机ID。
-	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
-
-	// 云盘关联的定期快照ID。只有在调用DescribeDisks接口时，入参ReturnBindAutoSnapshotPolicy取值为TRUE才会返回该参数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	AutoSnapshotPolicyIds []*string `json:"AutoSnapshotPolicyIds,omitnil,omitempty" name:"AutoSnapshotPolicyIds"`
-
-	// 云硬盘额外性能值，单位MB/s。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	ThroughputPerformance *uint64 `json:"ThroughputPerformance,omitnil,omitempty" name:"ThroughputPerformance"`
-
-	// 云盘是否处于类型变更中。取值范围：<br><li>false:表示云盘不处于类型变更中<br><li>true:表示云盘已发起类型变更，正处于迁移中。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Migrating *bool `json:"Migrating,omitnil,omitempty" name:"Migrating"`
-
-	// 云硬盘ID。
-	DiskId *string `json:"DiskId,omitnil,omitempty" name:"DiskId"`
-
-	// 云盘拥有的快照总容量，单位为MB。
-	SnapshotSize *uint64 `json:"SnapshotSize,omitnil,omitempty" name:"SnapshotSize"`
-
-	// 云硬盘所在的位置。
-	Placement *Placement `json:"Placement,omitnil,omitempty" name:"Placement"`
-
-	// 判断预付费的云盘是否支持主动退还。<br><li>true:支持主动退还<br><li>false:不支持主动退还。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsReturnable *bool `json:"IsReturnable,omitnil,omitempty" name:"IsReturnable"`
-
-	// 云盘是否挂载到云主机上。取值范围：<br><li>false:表示未挂载<br><li>true:表示已挂载。
-	Attached *bool `json:"Attached,omitnil,omitempty" name:"Attached"`
-
-	// 云硬盘大小，单位GB。
-	DiskSize *uint64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
-
-	// 云盘类型变更的迁移进度，取值0到100。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	MigratePercent *uint64 `json:"MigratePercent,omitnil,omitempty" name:"MigratePercent"`
-
-	// 云硬盘类型。取值范围：<br><li>SYSTEM_DISK：系统盘<br><li>DATA_DISK：数据盘。
-	DiskUsage *string `json:"DiskUsage,omitnil,omitempty" name:"DiskUsage"`
-
-	// 付费模式。取值范围：<br><li>PREPAID：预付费，即包年包月<br><li>POSTPAID_BY_HOUR：后付费，即按量计费。
-	DiskChargeType *string `json:"DiskChargeType,omitnil,omitempty" name:"DiskChargeType"`
-
-	// 是否为弹性云盘，false表示非弹性云盘，true表示弹性云盘。
-	Portable *bool `json:"Portable,omitnil,omitempty" name:"Portable"`
-
-	// 云盘是否具备创建快照的能力。取值范围：<br><li>false表示不具备<br><li>true表示具备。
-	SnapshotAbility *bool `json:"SnapshotAbility,omitnil,omitempty" name:"SnapshotAbility"`
-
-	// 在云盘已挂载到实例，且实例与云盘都是包年包月的条件下，此字段才有意义。<br><li>true:云盘到期时间早于实例。<br><li>false：云盘到期时间晚于实例。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	DeadlineError *bool `json:"DeadlineError,omitnil,omitempty" name:"DeadlineError"`
-
-	// 云盘快照回滚的进度。
-	RollbackPercent *uint64 `json:"RollbackPercent,omitnil,omitempty" name:"RollbackPercent"`
-
-	// 当前时间距离盘到期的天数（仅对预付费盘有意义）。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	DifferDaysOfDeadline *int64 `json:"DifferDaysOfDeadline,omitnil,omitempty" name:"DifferDaysOfDeadline"`
-
-	// 预付费云盘在不支持主动退还的情况下，该参数表明不支持主动退还的具体原因。取值范围：<br><li>1：云硬盘已经退还<br><li>2：云硬盘已过期<br><li>3：云盘不支持退还<br><li>8：超过可退还数量的限制。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	ReturnFailCode *int64 `json:"ReturnFailCode,omitnil,omitempty" name:"ReturnFailCode"`
-
-	// 云盘是否为共享型云盘。
-	Shareable *bool `json:"Shareable,omitnil,omitempty" name:"Shareable"`
-
-	// 云硬盘的创建时间。
-	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
-
-	// 云硬盘的到期时间。
-	DeadlineTime *string `json:"DeadlineTime,omitnil,omitempty" name:"DeadlineTime"`
-
-	// 云盘的挂载类型。取值范围：<br><li>PF: PF挂载<br><li>VF: VF挂载
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	AttachMode *string `json:"AttachMode,omitnil,omitempty" name:"AttachMode"`
-}
-
-type DiskChargePrepaid struct {
-	// 购买云盘的时长，默认单位为月，取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36。
-	Period *uint64 `json:"Period,omitnil,omitempty" name:"Period"`
-
-	// 自动续费标识。取值范围：<br><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费<br><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费<br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费<br><br>默认取值：NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费。
-	RenewFlag *string `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
-
-	// 需要将云盘的到期时间与挂载的子机对齐时，可传入该参数。该参数表示子机当前的到期时间，此时Period如果传入，则表示子机需要续费的时长，云盘会自动按对齐到子机续费后的到期时间续费，示例取值：2018-03-30 20:15:03。
-	CurInstanceDeadline *string `json:"CurInstanceDeadline,omitnil,omitempty" name:"CurInstanceDeadline"`
 }
 
 type DiskInfo struct {
@@ -10521,26 +9853,6 @@ type PhysicalPosition struct {
 	SwitchId *string `json:"SwitchId,omitnil,omitempty" name:"SwitchId"`
 }
 
-type Placement struct {
-	// 云硬盘所属的[可用区](/document/product/213/15753#ZoneInfo)。该参数也可以通过调用  [DescribeZones](/document/product/213/15707) 的返回值中的Zone字段来获取。
-	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
-
-	// 围笼Id。作为入参时，表示对指定的CageId的资源进行操作，可为空。 作为出参时，表示资源所属围笼ID，可为空。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	CageId *string `json:"CageId,omitnil,omitempty" name:"CageId"`
-
-	// 实例所属项目ID。该参数可以通过调用 [DescribeProject](/document/api/378/4400) 的返回值中的 projectId 字段来获取。不填为默认项目。
-	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
-
-	// 独享集群名字。作为入参时，忽略。作为出参时，表示云硬盘所属的独享集群名，可为空。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	CdcName *string `json:"CdcName,omitnil,omitempty" name:"CdcName"`
-
-	// 实例所属的独享集群ID。作为入参时，表示对指定的CdcId独享集群的资源进行操作，可为空。 作为出参时，表示资源所属的独享集群的ID，可为空。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	CdcId *string `json:"CdcId,omitnil,omitempty" name:"CdcId"`
-}
-
 type Position struct {
 	// 实例所在的Zone的信息。
 	ZoneInfo *ZoneInfo `json:"ZoneInfo,omitnil,omitempty" name:"ZoneInfo"`
@@ -12183,66 +11495,6 @@ type SimpleModule struct {
 	ModuleName *string `json:"ModuleName,omitnil,omitempty" name:"ModuleName"`
 }
 
-type Snapshot struct {
-	// 快照所在的位置。
-	Placement *Placement `json:"Placement,omitnil,omitempty" name:"Placement"`
-
-	// 是否为跨地域复制的快照。取值范围：<br><li>true：表示为跨地域复制的快照。<br><li>false:本地域的快照。
-	CopyFromRemote *bool `json:"CopyFromRemote,omitnil,omitempty" name:"CopyFromRemote"`
-
-	// 是否为永久快照。取值范围：<br><li>true：永久快照<br><li>false：非永久快照。
-	IsPermanent *bool `json:"IsPermanent,omitnil,omitempty" name:"IsPermanent"`
-
-	// 快照名称，用户自定义的快照别名。调用[ModifySnapshotAttribute](/document/product/362/15650)可修改此字段。
-	SnapshotName *string `json:"SnapshotName,omitnil,omitempty" name:"SnapshotName"`
-
-	// 快照创建进度百分比，快照创建成功后此字段恒为100。
-	Percent *uint64 `json:"Percent,omitnil,omitempty" name:"Percent"`
-
-	// 快照关联的镜像列表。
-	Images []*Image `json:"Images,omitnil,omitempty" name:"Images"`
-
-	// 快照当前被共享数。
-	ShareReference *uint64 `json:"ShareReference,omitnil,omitempty" name:"ShareReference"`
-
-	// 快照类型，目前该项取值可以为PRIVATE_SNAPSHOT或者SHARED_SNAPSHOT
-	SnapshotType *string `json:"SnapshotType,omitnil,omitempty" name:"SnapshotType"`
-
-	// 创建此快照的云硬盘大小，单位GB。
-	DiskSize *uint64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
-
-	// 创建此快照的云硬盘ID。
-	DiskId *string `json:"DiskId,omitnil,omitempty" name:"DiskId"`
-
-	// 快照正在跨地域复制的目的地域，默认取值为[]。
-	CopyingToRegions []*string `json:"CopyingToRegions,omitnil,omitempty" name:"CopyingToRegions"`
-
-	// 快照ID。
-	SnapshotId *string `json:"SnapshotId,omitnil,omitempty" name:"SnapshotId"`
-
-	// 创建此快照的云硬盘类型。取值范围：<br><li>SYSTEM_DISK：系统盘<br><li>DATA_DISK：数据盘。
-	DiskUsage *string `json:"DiskUsage,omitnil,omitempty" name:"DiskUsage"`
-
-	// 是否为加密盘创建的快照。取值范围：<br><li>true：该快照为加密盘创建的<br><li>false:非加密盘创建的快照。
-	Encrypt *bool `json:"Encrypt,omitnil,omitempty" name:"Encrypt"`
-
-	// 快照的创建时间。
-	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
-
-	// 快照关联的镜像个数。
-	ImageCount *uint64 `json:"ImageCount,omitnil,omitempty" name:"ImageCount"`
-
-	// 快照的状态。取值范围：<br><li>NORMAL：正常<br><li>CREATING：创建中<br><li>ROLLBACKING：回滚中<br><li>COPYING_FROM_REMOTE：跨地域复制中<br><li>CHECKING_COPIED：复制校验中<br><li>TORECYCLE：待回收。
-	SnapshotState *string `json:"SnapshotState,omitnil,omitempty" name:"SnapshotState"`
-
-	// 快照的到期时间。
-	DeadlineTime *string `json:"DeadlineTime,omitnil,omitempty" name:"DeadlineTime"`
-
-	// 快照开始共享的时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	TimeStartShare *string `json:"TimeStartShare,omitnil,omitempty" name:"TimeStartShare"`
-}
-
 type SrcImage struct {
 	// 镜像id
 	ImageId *string `json:"ImageId,omitnil,omitempty" name:"ImageId"`
@@ -12498,9 +11750,11 @@ type Tag struct {
 
 type TagInfo struct {
 	// 标签的键。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
 
 	// 标签的值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagValue *string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
 }
 
@@ -12585,60 +11839,6 @@ type TaskOutput struct {
 
 	// 操作名
 	Operation *string `json:"Operation,omitnil,omitempty" name:"Operation"`
-}
-
-// Predefined struct for user
-type TerminateDisksRequestParams struct {
-	// 需退还的云盘ID列表。
-	DiskIds []*string `json:"DiskIds,omitnil,omitempty" name:"DiskIds"`
-}
-
-type TerminateDisksRequest struct {
-	*tchttp.BaseRequest
-	
-	// 需退还的云盘ID列表。
-	DiskIds []*string `json:"DiskIds,omitnil,omitempty" name:"DiskIds"`
-}
-
-func (r *TerminateDisksRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *TerminateDisksRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "DiskIds")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TerminateDisksRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type TerminateDisksResponseParams struct {
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type TerminateDisksResponse struct {
-	*tchttp.BaseResponse
-	Response *TerminateDisksResponseParams `json:"Response"`
-}
-
-func (r *TerminateDisksResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *TerminateDisksResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

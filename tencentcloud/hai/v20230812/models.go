@@ -218,6 +218,9 @@ type CreateInferServiceByTemplateRequestParams struct {
 
 	// <p>网络设置</p>
 	NetworkSetting *NetworkSetting `json:"NetworkSetting,omitnil,omitempty" name:"NetworkSetting"`
+
+	// <p>推理服务安全类型</p><p>枚举值：</p><ul><li>STANDARD： 标准推理服务</li><li>CONFIDENTIAL： 可信推理服务</li></ul>
+	SecurityType *string `json:"SecurityType,omitnil,omitempty" name:"SecurityType"`
 }
 
 type CreateInferServiceByTemplateRequest struct {
@@ -240,6 +243,9 @@ type CreateInferServiceByTemplateRequest struct {
 
 	// <p>网络设置</p>
 	NetworkSetting *NetworkSetting `json:"NetworkSetting,omitnil,omitempty" name:"NetworkSetting"`
+
+	// <p>推理服务安全类型</p><p>枚举值：</p><ul><li>STANDARD： 标准推理服务</li><li>CONFIDENTIAL： 可信推理服务</li></ul>
+	SecurityType *string `json:"SecurityType,omitnil,omitempty" name:"SecurityType"`
 }
 
 func (r *CreateInferServiceByTemplateRequest) ToJsonString() string {
@@ -260,6 +266,7 @@ func (r *CreateInferServiceByTemplateRequest) FromJsonString(s string) error {
 	delete(f, "ServiceChargeType")
 	delete(f, "HyperParam")
 	delete(f, "NetworkSetting")
+	delete(f, "SecurityType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInferServiceByTemplateRequest has unknown keys!", "")
 	}
@@ -418,39 +425,45 @@ func (r *DeleteServiceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeployInferServiceRequestParams struct {
-	// 服务元数据信息，如服务名
+	// <p>服务元数据信息，如服务名</p>
 	ServiceMetaData *ServiceMetaData `json:"ServiceMetaData,omitnil,omitempty" name:"ServiceMetaData"`
 
-	// 资源相关信息
+	// <p>资源相关信息</p>
 	ComputeInfo *ComputeInfo `json:"ComputeInfo,omitnil,omitempty" name:"ComputeInfo"`
 
-	// 服务部署信息
+	// <p>服务部署信息</p>
 	DeploymentConfigs []*DeploymentConfig `json:"DeploymentConfigs,omitnil,omitempty" name:"DeploymentConfigs"`
 
-	// 服务超参数配置
+	// <p>服务超参数配置</p>
 	HyperParam *HyperParam `json:"HyperParam,omitnil,omitempty" name:"HyperParam"`
 
-	// 网络设置
+	// <p>网络设置</p>
 	NetworkSetting *NetworkSetting `json:"NetworkSetting,omitnil,omitempty" name:"NetworkSetting"`
+
+	// <p>安全类型</p><p>枚举值：</p><ul><li>STANDARD： 标准推理</li><li>CONFIDENTIAL： 可信推理</li></ul>
+	SecurityType *string `json:"SecurityType,omitnil,omitempty" name:"SecurityType"`
 }
 
 type DeployInferServiceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 服务元数据信息，如服务名
+	// <p>服务元数据信息，如服务名</p>
 	ServiceMetaData *ServiceMetaData `json:"ServiceMetaData,omitnil,omitempty" name:"ServiceMetaData"`
 
-	// 资源相关信息
+	// <p>资源相关信息</p>
 	ComputeInfo *ComputeInfo `json:"ComputeInfo,omitnil,omitempty" name:"ComputeInfo"`
 
-	// 服务部署信息
+	// <p>服务部署信息</p>
 	DeploymentConfigs []*DeploymentConfig `json:"DeploymentConfigs,omitnil,omitempty" name:"DeploymentConfigs"`
 
-	// 服务超参数配置
+	// <p>服务超参数配置</p>
 	HyperParam *HyperParam `json:"HyperParam,omitnil,omitempty" name:"HyperParam"`
 
-	// 网络设置
+	// <p>网络设置</p>
 	NetworkSetting *NetworkSetting `json:"NetworkSetting,omitnil,omitempty" name:"NetworkSetting"`
+
+	// <p>安全类型</p><p>枚举值：</p><ul><li>STANDARD： 标准推理</li><li>CONFIDENTIAL： 可信推理</li></ul>
+	SecurityType *string `json:"SecurityType,omitnil,omitempty" name:"SecurityType"`
 }
 
 func (r *DeployInferServiceRequest) ToJsonString() string {
@@ -470,6 +483,7 @@ func (r *DeployInferServiceRequest) FromJsonString(s string) error {
 	delete(f, "DeploymentConfigs")
 	delete(f, "HyperParam")
 	delete(f, "NetworkSetting")
+	delete(f, "SecurityType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeployInferServiceRequest has unknown keys!", "")
 	}
@@ -478,7 +492,7 @@ func (r *DeployInferServiceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeployInferServiceResponseParams struct {
-	// 服务ID
+	// <p>服务ID</p>
 	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -502,10 +516,10 @@ func (r *DeployInferServiceResponse) FromJsonString(s string) error {
 }
 
 type DeploymentConfig struct {
-	// 容器配置
+	// <p>容器配置</p>
 	Container *ContainerInfo `json:"Container,omitnil,omitempty" name:"Container"`
 
-	// 容器数量
+	// <p>容器数量</p>
 	ContainerCount *int64 `json:"ContainerCount,omitnil,omitempty" name:"ContainerCount"`
 }
 
@@ -1222,26 +1236,26 @@ func (r *DescribeServicesCallInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeServicesRequestParams struct {
-	// 服务列表
+	// <p>服务列表</p>
 	ServiceIds []*string `json:"ServiceIds,omitnil,omitempty" name:"ServiceIds"`
 
-	// 分页大小
+	// <p>分页大小</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量
+	// <p>偏移量</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 type DescribeServicesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 服务列表
+	// <p>服务列表</p>
 	ServiceIds []*string `json:"ServiceIds,omitnil,omitempty" name:"ServiceIds"`
 
-	// 分页大小
+	// <p>分页大小</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量
+	// <p>偏移量</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
@@ -1268,10 +1282,10 @@ func (r *DescribeServicesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeServicesResponseParams struct {
-	// 总数
+	// <p>总数</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 服务列表
+	// <p>服务列表</p>
 	ServiceInfoSet []*ServiceDetail `json:"ServiceInfoSet,omitnil,omitempty" name:"ServiceInfoSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2067,6 +2081,15 @@ type ServiceDetail struct {
 
 	// 服务超参数配置
 	HyperParam *HyperParam `json:"HyperParam,omitnil,omitempty" name:"HyperParam"`
+
+
+	SecurityType *string `json:"SecurityType,omitnil,omitempty" name:"SecurityType"`
+
+
+	RoleComputeSet []*ComputeDetail `json:"RoleComputeSet,omitnil,omitempty" name:"RoleComputeSet"`
+
+
+	TargetReplicas *uint64 `json:"TargetReplicas,omitnil,omitempty" name:"TargetReplicas"`
 }
 
 type ServiceMetaData struct {
@@ -2255,6 +2278,9 @@ type TemplateDetail struct {
 
 	// 当前部署模板所支持的增强功能
 	SupportFunc []*string `json:"SupportFunc,omitnil,omitempty" name:"SupportFunc"`
+
+
+	RoleComputeSet []*ComputeDetail `json:"RoleComputeSet,omitnil,omitempty" name:"RoleComputeSet"`
 }
 
 // Predefined struct for user

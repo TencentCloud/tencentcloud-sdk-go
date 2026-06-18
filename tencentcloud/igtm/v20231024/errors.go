@@ -149,6 +149,9 @@ const (
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
 
+	// 是否启用类型不合法
+	INVALIDPARAMETERVALUE_ISENABLEDINVALID = "InvalidParameterValue.IsEnabledInvalid"
+
 	// 地址池地址重复
 	INVALIDPARAMETERVALUE_POOLADDRDUPLICATED = "InvalidParameterValue.PoolAddrDuplicated"
 

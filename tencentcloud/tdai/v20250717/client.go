@@ -207,6 +207,58 @@ func (c *Client) CreateChatCompletionWithContext(ctx context.Context, request *C
     return
 }
 
+func NewCreateMemoryPlusSpaceRequest() (request *CreateMemoryPlusSpaceRequest) {
+    request = &CreateMemoryPlusSpaceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdai", APIVersion, "CreateMemoryPlusSpace")
+    
+    
+    return
+}
+
+func NewCreateMemoryPlusSpaceResponse() (response *CreateMemoryPlusSpaceResponse) {
+    response = &CreateMemoryPlusSpaceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateMemoryPlusSpace
+// 本接口（CreateMemoryPlusSpace）用于创建正式版 Memory 实例。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+func (c *Client) CreateMemoryPlusSpace(request *CreateMemoryPlusSpaceRequest) (response *CreateMemoryPlusSpaceResponse, err error) {
+    return c.CreateMemoryPlusSpaceWithContext(context.Background(), request)
+}
+
+// CreateMemoryPlusSpace
+// 本接口（CreateMemoryPlusSpace）用于创建正式版 Memory 实例。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+func (c *Client) CreateMemoryPlusSpaceWithContext(ctx context.Context, request *CreateMemoryPlusSpaceRequest) (response *CreateMemoryPlusSpaceResponse, err error) {
+    if request == nil {
+        request = NewCreateMemoryPlusSpaceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tdai", APIVersion, "CreateMemoryPlusSpace")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateMemoryPlusSpace require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateMemoryPlusSpaceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAgentDutyTaskDetailRequest() (request *DescribeAgentDutyTaskDetailRequest) {
     request = &DescribeAgentDutyTaskDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -595,6 +647,164 @@ func (c *Client) DescribeChatsWithContext(ctx context.Context, request *Describe
     return
 }
 
+func NewDescribeMemoryPlusRecordRequest() (request *DescribeMemoryPlusRecordRequest) {
+    request = &DescribeMemoryPlusRecordRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdai", APIVersion, "DescribeMemoryPlusRecord")
+    
+    
+    return
+}
+
+func NewDescribeMemoryPlusRecordResponse() (response *DescribeMemoryPlusRecordResponse) {
+    response = &DescribeMemoryPlusRecordResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMemoryPlusRecord
+// 本接口（DescribeMemoryPlusRecord）用于查询 Memory 实例的记忆数据。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeMemoryPlusRecord(request *DescribeMemoryPlusRecordRequest) (response *DescribeMemoryPlusRecordResponse, err error) {
+    return c.DescribeMemoryPlusRecordWithContext(context.Background(), request)
+}
+
+// DescribeMemoryPlusRecord
+// 本接口（DescribeMemoryPlusRecord）用于查询 Memory 实例的记忆数据。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeMemoryPlusRecordWithContext(ctx context.Context, request *DescribeMemoryPlusRecordRequest) (response *DescribeMemoryPlusRecordResponse, err error) {
+    if request == nil {
+        request = NewDescribeMemoryPlusRecordRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tdai", APIVersion, "DescribeMemoryPlusRecord")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMemoryPlusRecord require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMemoryPlusRecordResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeMemoryPlusSpaceRequest() (request *DescribeMemoryPlusSpaceRequest) {
+    request = &DescribeMemoryPlusSpaceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdai", APIVersion, "DescribeMemoryPlusSpace")
+    
+    
+    return
+}
+
+func NewDescribeMemoryPlusSpaceResponse() (response *DescribeMemoryPlusSpaceResponse) {
+    response = &DescribeMemoryPlusSpaceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMemoryPlusSpace
+// 本接口（DescribeMemoryPlusSpace）用于查询 Memory 正式版实例详情。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeMemoryPlusSpace(request *DescribeMemoryPlusSpaceRequest) (response *DescribeMemoryPlusSpaceResponse, err error) {
+    return c.DescribeMemoryPlusSpaceWithContext(context.Background(), request)
+}
+
+// DescribeMemoryPlusSpace
+// 本接口（DescribeMemoryPlusSpace）用于查询 Memory 正式版实例详情。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeMemoryPlusSpaceWithContext(ctx context.Context, request *DescribeMemoryPlusSpaceRequest) (response *DescribeMemoryPlusSpaceResponse, err error) {
+    if request == nil {
+        request = NewDescribeMemoryPlusSpaceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tdai", APIVersion, "DescribeMemoryPlusSpace")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMemoryPlusSpace require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMemoryPlusSpaceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeMemoryPlusSpacesRequest() (request *DescribeMemoryPlusSpacesRequest) {
+    request = &DescribeMemoryPlusSpacesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdai", APIVersion, "DescribeMemoryPlusSpaces")
+    
+    
+    return
+}
+
+func NewDescribeMemoryPlusSpacesResponse() (response *DescribeMemoryPlusSpacesResponse) {
+    response = &DescribeMemoryPlusSpacesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMemoryPlusSpaces
+// 本接口（DescribeMemoryPlusSpaces）用于查询 Memory正式版实例列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeMemoryPlusSpaces(request *DescribeMemoryPlusSpacesRequest) (response *DescribeMemoryPlusSpacesResponse, err error) {
+    return c.DescribeMemoryPlusSpacesWithContext(context.Background(), request)
+}
+
+// DescribeMemoryPlusSpaces
+// 本接口（DescribeMemoryPlusSpaces）用于查询 Memory正式版实例列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeMemoryPlusSpacesWithContext(ctx context.Context, request *DescribeMemoryPlusSpacesRequest) (response *DescribeMemoryPlusSpacesResponse, err error) {
+    if request == nil {
+        request = NewDescribeMemoryPlusSpacesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tdai", APIVersion, "DescribeMemoryPlusSpaces")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMemoryPlusSpaces require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMemoryPlusSpacesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeReportUrlRequest() (request *DescribeReportUrlRequest) {
     request = &DescribeReportUrlRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -645,6 +855,112 @@ func (c *Client) DescribeReportUrlWithContext(ctx context.Context, request *Desc
     request.SetContext(ctx)
     
     response = NewDescribeReportUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeServiceAccessKeyRequest() (request *DescribeServiceAccessKeyRequest) {
+    request = &DescribeServiceAccessKeyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdai", APIVersion, "DescribeServiceAccessKey")
+    
+    
+    return
+}
+
+func NewDescribeServiceAccessKeyResponse() (response *DescribeServiceAccessKeyResponse) {
+    response = &DescribeServiceAccessKeyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeServiceAccessKey
+// 本接口（DescribeServiceAccessKey）用于查询服务访问密钥。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeServiceAccessKey(request *DescribeServiceAccessKeyRequest) (response *DescribeServiceAccessKeyResponse, err error) {
+    return c.DescribeServiceAccessKeyWithContext(context.Background(), request)
+}
+
+// DescribeServiceAccessKey
+// 本接口（DescribeServiceAccessKey）用于查询服务访问密钥。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeServiceAccessKeyWithContext(ctx context.Context, request *DescribeServiceAccessKeyRequest) (response *DescribeServiceAccessKeyResponse, err error) {
+    if request == nil {
+        request = NewDescribeServiceAccessKeyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tdai", APIVersion, "DescribeServiceAccessKey")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeServiceAccessKey require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeServiceAccessKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDestroyMemoryPlusSpaceRequest() (request *DestroyMemoryPlusSpaceRequest) {
+    request = &DestroyMemoryPlusSpaceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdai", APIVersion, "DestroyMemoryPlusSpace")
+    
+    
+    return
+}
+
+func NewDestroyMemoryPlusSpaceResponse() (response *DestroyMemoryPlusSpaceResponse) {
+    response = &DestroyMemoryPlusSpaceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DestroyMemoryPlusSpace
+// 本接口（DestroyMemoryPlusSpace）用于从回收站彻底销毁 Memory 实例。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+func (c *Client) DestroyMemoryPlusSpace(request *DestroyMemoryPlusSpaceRequest) (response *DestroyMemoryPlusSpaceResponse, err error) {
+    return c.DestroyMemoryPlusSpaceWithContext(context.Background(), request)
+}
+
+// DestroyMemoryPlusSpace
+// 本接口（DestroyMemoryPlusSpace）用于从回收站彻底销毁 Memory 实例。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+func (c *Client) DestroyMemoryPlusSpaceWithContext(ctx context.Context, request *DestroyMemoryPlusSpaceRequest) (response *DestroyMemoryPlusSpaceResponse, err error) {
+    if request == nil {
+        request = NewDestroyMemoryPlusSpaceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tdai", APIVersion, "DestroyMemoryPlusSpace")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DestroyMemoryPlusSpace require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDestroyMemoryPlusSpaceResponse()
     err = c.Send(request, response)
     return
 }
@@ -701,6 +1017,58 @@ func (c *Client) IsolateAgentInstanceWithContext(ctx context.Context, request *I
     request.SetContext(ctx)
     
     response = NewIsolateAgentInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewIsolateMemoryPlusSpaceRequest() (request *IsolateMemoryPlusSpaceRequest) {
+    request = &IsolateMemoryPlusSpaceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdai", APIVersion, "IsolateMemoryPlusSpace")
+    
+    
+    return
+}
+
+func NewIsolateMemoryPlusSpaceResponse() (response *IsolateMemoryPlusSpaceResponse) {
+    response = &IsolateMemoryPlusSpaceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// IsolateMemoryPlusSpace
+// 本接口（IsolateMemoryPlusSpace）用于将正式版 Memory 实例放入回收站隔离。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+func (c *Client) IsolateMemoryPlusSpace(request *IsolateMemoryPlusSpaceRequest) (response *IsolateMemoryPlusSpaceResponse, err error) {
+    return c.IsolateMemoryPlusSpaceWithContext(context.Background(), request)
+}
+
+// IsolateMemoryPlusSpace
+// 本接口（IsolateMemoryPlusSpace）用于将正式版 Memory 实例放入回收站隔离。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+func (c *Client) IsolateMemoryPlusSpaceWithContext(ctx context.Context, request *IsolateMemoryPlusSpaceRequest) (response *IsolateMemoryPlusSpaceResponse, err error) {
+    if request == nil {
+        request = NewIsolateMemoryPlusSpaceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tdai", APIVersion, "IsolateMemoryPlusSpace")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("IsolateMemoryPlusSpace require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewIsolateMemoryPlusSpaceResponse()
     err = c.Send(request, response)
     return
 }
@@ -815,6 +1183,58 @@ func (c *Client) ModifyChatTitleWithContext(ctx context.Context, request *Modify
     return
 }
 
+func NewModifyMemoryPlusSpaceRequest() (request *ModifyMemoryPlusSpaceRequest) {
+    request = &ModifyMemoryPlusSpaceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdai", APIVersion, "ModifyMemoryPlusSpace")
+    
+    
+    return
+}
+
+func NewModifyMemoryPlusSpaceResponse() (response *ModifyMemoryPlusSpaceResponse) {
+    response = &ModifyMemoryPlusSpaceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyMemoryPlusSpace
+// 本接口（ModifyMemoryPlusSpace）用于修改正式版 Memory 实例，可修改实例名称与描述。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+func (c *Client) ModifyMemoryPlusSpace(request *ModifyMemoryPlusSpaceRequest) (response *ModifyMemoryPlusSpaceResponse, err error) {
+    return c.ModifyMemoryPlusSpaceWithContext(context.Background(), request)
+}
+
+// ModifyMemoryPlusSpace
+// 本接口（ModifyMemoryPlusSpace）用于修改正式版 Memory 实例，可修改实例名称与描述。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+func (c *Client) ModifyMemoryPlusSpaceWithContext(ctx context.Context, request *ModifyMemoryPlusSpaceRequest) (response *ModifyMemoryPlusSpaceResponse, err error) {
+    if request == nil {
+        request = NewModifyMemoryPlusSpaceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tdai", APIVersion, "ModifyMemoryPlusSpace")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyMemoryPlusSpace require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyMemoryPlusSpaceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewPauseAgentWorkRequest() (request *PauseAgentWorkRequest) {
     request = &PauseAgentWorkRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -923,6 +1343,58 @@ func (c *Client) RecoverAgentInstanceWithContext(ctx context.Context, request *R
     request.SetContext(ctx)
     
     response = NewRecoverAgentInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRecoverMemoryPlusSpaceRequest() (request *RecoverMemoryPlusSpaceRequest) {
+    request = &RecoverMemoryPlusSpaceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdai", APIVersion, "RecoverMemoryPlusSpace")
+    
+    
+    return
+}
+
+func NewRecoverMemoryPlusSpaceResponse() (response *RecoverMemoryPlusSpaceResponse) {
+    response = &RecoverMemoryPlusSpaceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RecoverMemoryPlusSpace
+// 本接口（RecoverMemoryPlusSpace）用于从回收站恢复 Memory 实例。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+func (c *Client) RecoverMemoryPlusSpace(request *RecoverMemoryPlusSpaceRequest) (response *RecoverMemoryPlusSpaceResponse, err error) {
+    return c.RecoverMemoryPlusSpaceWithContext(context.Background(), request)
+}
+
+// RecoverMemoryPlusSpace
+// 本接口（RecoverMemoryPlusSpace）用于从回收站恢复 Memory 实例。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+func (c *Client) RecoverMemoryPlusSpaceWithContext(ctx context.Context, request *RecoverMemoryPlusSpaceRequest) (response *RecoverMemoryPlusSpaceResponse, err error) {
+    if request == nil {
+        request = NewRecoverMemoryPlusSpaceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tdai", APIVersion, "RecoverMemoryPlusSpace")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RecoverMemoryPlusSpace require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRecoverMemoryPlusSpaceResponse()
     err = c.Send(request, response)
     return
 }

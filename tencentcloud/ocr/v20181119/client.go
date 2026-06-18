@@ -451,86 +451,6 @@ func (c *Client) BizLicenseOCRWithContext(ctx context.Context, request *BizLicen
     return
 }
 
-func NewBusInvoiceOCRRequest() (request *BusInvoiceOCRRequest) {
-    request = &BusInvoiceOCRRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("ocr", APIVersion, "BusInvoiceOCR")
-    
-    
-    return
-}
-
-func NewBusInvoiceOCRResponse() (response *BusInvoiceOCRResponse) {
-    response = &BusInvoiceOCRResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// BusInvoiceOCR
-// <b>此接口不再进行服务升级，建议您使用识别能力更强、服务性能更优的<a href="https://cloud.tencent.com/document/product/866/90802">通用票据识别（高级版）</a>。</b>
-//
-// 本接口支持识别公路汽车客票关键字段的识别，包括发票代码、发票号码、日期、票价、始发地、目的地、姓名、时间、发票消费类型、身份证号、省、市、开票日期、乘车地点、检票口、客票类型、车型、座位号、车次等。
-//
-// 
-//
-// 默认接口请求频率限制：5次/秒。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
-//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
-//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
-//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
-//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
-//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
-func (c *Client) BusInvoiceOCR(request *BusInvoiceOCRRequest) (response *BusInvoiceOCRResponse, err error) {
-    return c.BusInvoiceOCRWithContext(context.Background(), request)
-}
-
-// BusInvoiceOCR
-// <b>此接口不再进行服务升级，建议您使用识别能力更强、服务性能更优的<a href="https://cloud.tencent.com/document/product/866/90802">通用票据识别（高级版）</a>。</b>
-//
-// 本接口支持识别公路汽车客票关键字段的识别，包括发票代码、发票号码、日期、票价、始发地、目的地、姓名、时间、发票消费类型、身份证号、省、市、开票日期、乘车地点、检票口、客票类型、车型、座位号、车次等。
-//
-// 
-//
-// 默认接口请求频率限制：5次/秒。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
-//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
-//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
-//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
-//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
-//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
-func (c *Client) BusInvoiceOCRWithContext(ctx context.Context, request *BusInvoiceOCRRequest) (response *BusInvoiceOCRResponse, err error) {
-    if request == nil {
-        request = NewBusInvoiceOCRRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "ocr", APIVersion, "BusInvoiceOCR")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("BusInvoiceOCR require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewBusInvoiceOCRResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewBusinessCardOCRRequest() (request *BusinessCardOCRRequest) {
     request = &BusinessCardOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1201,86 +1121,6 @@ func (c *Client) DriverLicenseOCRWithContext(ctx context.Context, request *Drive
     return
 }
 
-func NewDutyPaidProofOCRRequest() (request *DutyPaidProofOCRRequest) {
-    request = &DutyPaidProofOCRRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("ocr", APIVersion, "DutyPaidProofOCR")
-    
-    
-    return
-}
-
-func NewDutyPaidProofOCRResponse() (response *DutyPaidProofOCRResponse) {
-    response = &DutyPaidProofOCRResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DutyPaidProofOCR
-// <b>此接口不再进行服务升级，建议您使用识别能力更强、服务性能更优的<a href="https://cloud.tencent.com/document/product/866/90802">通用票据识别（高级版）</a>。</b>
-//
-// 本接口支持对完税证明的税号、纳税人识别号、纳税人名称、金额合计大写、金额合计小写、填发日期、税务机关、填票人等关键字段的识别。
-//
-// 
-//
-// 默认接口请求频率限制：5次/秒。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
-//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
-//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
-//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
-//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
-//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
-func (c *Client) DutyPaidProofOCR(request *DutyPaidProofOCRRequest) (response *DutyPaidProofOCRResponse, err error) {
-    return c.DutyPaidProofOCRWithContext(context.Background(), request)
-}
-
-// DutyPaidProofOCR
-// <b>此接口不再进行服务升级，建议您使用识别能力更强、服务性能更优的<a href="https://cloud.tencent.com/document/product/866/90802">通用票据识别（高级版）</a>。</b>
-//
-// 本接口支持对完税证明的税号、纳税人识别号、纳税人名称、金额合计大写、金额合计小写、填发日期、税务机关、填票人等关键字段的识别。
-//
-// 
-//
-// 默认接口请求频率限制：5次/秒。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
-//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
-//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
-//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
-//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
-//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
-func (c *Client) DutyPaidProofOCRWithContext(ctx context.Context, request *DutyPaidProofOCRRequest) (response *DutyPaidProofOCRResponse, err error) {
-    if request == nil {
-        request = NewDutyPaidProofOCRRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "ocr", APIVersion, "DutyPaidProofOCR")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DutyPaidProofOCR require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDutyPaidProofOCRResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewEduPaperOCRRequest() (request *EduPaperOCRRequest) {
     request = &EduPaperOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1917,168 +1757,6 @@ func (c *Client) ExtractDocMultiProWithContext(ctx context.Context, request *Ext
     request.SetContext(ctx)
     
     response = NewExtractDocMultiProResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewFinanBillOCRRequest() (request *FinanBillOCRRequest) {
-    request = &FinanBillOCRRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("ocr", APIVersion, "FinanBillOCR")
-    
-    
-    return
-}
-
-func NewFinanBillOCRResponse() (response *FinanBillOCRResponse) {
-    response = &FinanBillOCRResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// FinanBillOCR
-// <b>此接口不再进行服务升级，建议您使用识别能力更强、服务性能更优的<a href="https://cloud.tencent.com/document/product/866/90802">通用票据识别（高级版）</a>。</b>
-//
-// 本接口支持常见银行票据的自动分类和识别。整单识别包括支票（含现金支票、普通支票、转账支票），承兑汇票（含银行承兑汇票、商业承兑汇票）以及进账单等，适用于中国人民银行印发的 2010 版银行票据凭证版式（银发[2010]299 号）。
-//
-// 
-//
-// 默认接口请求频率限制：5次/秒。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
-//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
-//  FAILEDOPERATION_IMAGESIZETOOLARGE = "FailedOperation.ImageSizeTooLarge"
-//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
-//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
-//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
-func (c *Client) FinanBillOCR(request *FinanBillOCRRequest) (response *FinanBillOCRResponse, err error) {
-    return c.FinanBillOCRWithContext(context.Background(), request)
-}
-
-// FinanBillOCR
-// <b>此接口不再进行服务升级，建议您使用识别能力更强、服务性能更优的<a href="https://cloud.tencent.com/document/product/866/90802">通用票据识别（高级版）</a>。</b>
-//
-// 本接口支持常见银行票据的自动分类和识别。整单识别包括支票（含现金支票、普通支票、转账支票），承兑汇票（含银行承兑汇票、商业承兑汇票）以及进账单等，适用于中国人民银行印发的 2010 版银行票据凭证版式（银发[2010]299 号）。
-//
-// 
-//
-// 默认接口请求频率限制：5次/秒。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
-//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
-//  FAILEDOPERATION_IMAGESIZETOOLARGE = "FailedOperation.ImageSizeTooLarge"
-//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
-//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
-//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
-func (c *Client) FinanBillOCRWithContext(ctx context.Context, request *FinanBillOCRRequest) (response *FinanBillOCRResponse, err error) {
-    if request == nil {
-        request = NewFinanBillOCRRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "ocr", APIVersion, "FinanBillOCR")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("FinanBillOCR require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewFinanBillOCRResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewFinanBillSliceOCRRequest() (request *FinanBillSliceOCRRequest) {
-    request = &FinanBillSliceOCRRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("ocr", APIVersion, "FinanBillSliceOCR")
-    
-    
-    return
-}
-
-func NewFinanBillSliceOCRResponse() (response *FinanBillSliceOCRResponse) {
-    response = &FinanBillSliceOCRResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// FinanBillSliceOCR
-// <b>此接口不再进行服务升级，建议您使用识别能力更强、服务性能更优的<a href="https://cloud.tencent.com/document/product/866/90802">通用票据识别（高级版）</a>。</b>
-//
-// 本接口支持常见银行票据的自动分类和识别。切片识别包括金融行业常见票据的重要切片字段识别，包括金额、账号、日期、凭证号码等。（金融票据切片：金融票据中待识别字段及其周围局部区域的裁剪图像。）
-//
-// 
-//
-// 默认接口请求频率限制：5次/秒。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
-//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
-//  FAILEDOPERATION_IMAGESIZETOOLARGE = "FailedOperation.ImageSizeTooLarge"
-//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
-//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
-//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
-//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
-func (c *Client) FinanBillSliceOCR(request *FinanBillSliceOCRRequest) (response *FinanBillSliceOCRResponse, err error) {
-    return c.FinanBillSliceOCRWithContext(context.Background(), request)
-}
-
-// FinanBillSliceOCR
-// <b>此接口不再进行服务升级，建议您使用识别能力更强、服务性能更优的<a href="https://cloud.tencent.com/document/product/866/90802">通用票据识别（高级版）</a>。</b>
-//
-// 本接口支持常见银行票据的自动分类和识别。切片识别包括金融行业常见票据的重要切片字段识别，包括金额、账号、日期、凭证号码等。（金融票据切片：金融票据中待识别字段及其周围局部区域的裁剪图像。）
-//
-// 
-//
-// 默认接口请求频率限制：5次/秒。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
-//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
-//  FAILEDOPERATION_IMAGESIZETOOLARGE = "FailedOperation.ImageSizeTooLarge"
-//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
-//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
-//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
-//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
-func (c *Client) FinanBillSliceOCRWithContext(ctx context.Context, request *FinanBillSliceOCRRequest) (response *FinanBillSliceOCRResponse, err error) {
-    if request == nil {
-        request = NewFinanBillSliceOCRRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "ocr", APIVersion, "FinanBillSliceOCR")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("FinanBillSliceOCR require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewFinanBillSliceOCRResponse()
     err = c.Send(request, response)
     return
 }
@@ -3621,88 +3299,6 @@ func (c *Client) HandwritingEssayOCRWithContext(ctx context.Context, request *Ha
     return
 }
 
-func NewHmtResidentPermitOCRRequest() (request *HmtResidentPermitOCRRequest) {
-    request = &HmtResidentPermitOCRRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("ocr", APIVersion, "HmtResidentPermitOCR")
-    
-    
-    return
-}
-
-func NewHmtResidentPermitOCRResponse() (response *HmtResidentPermitOCRResponse) {
-    response = &HmtResidentPermitOCRResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// HmtResidentPermitOCR
-// 港澳台居住证OCR支持港澳台居住证正反面全字段内容检测识别功能，包括姓名、性别、出生日期、地址、身份证号、签发机关、有效期限、签发次数、通行证号码关键字段识别。可以应用于港澳台居住证信息识别场景，例如银行开户、用户注册等。
-//
-// 
-//
-// 默认接口请求频率限制：20次/秒。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
-//  FAILEDOPERATION_EMPTYIMAGEERROR = "FailedOperation.EmptyImageError"
-//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
-//  FAILEDOPERATION_IMAGENOTEXT = "FailedOperation.ImageNoText"
-//  FAILEDOPERATION_NOTAPPOINTCARD = "FailedOperation.NotAppointCard"
-//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
-//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
-//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
-//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
-func (c *Client) HmtResidentPermitOCR(request *HmtResidentPermitOCRRequest) (response *HmtResidentPermitOCRResponse, err error) {
-    return c.HmtResidentPermitOCRWithContext(context.Background(), request)
-}
-
-// HmtResidentPermitOCR
-// 港澳台居住证OCR支持港澳台居住证正反面全字段内容检测识别功能，包括姓名、性别、出生日期、地址、身份证号、签发机关、有效期限、签发次数、通行证号码关键字段识别。可以应用于港澳台居住证信息识别场景，例如银行开户、用户注册等。
-//
-// 
-//
-// 默认接口请求频率限制：20次/秒。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
-//  FAILEDOPERATION_EMPTYIMAGEERROR = "FailedOperation.EmptyImageError"
-//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
-//  FAILEDOPERATION_IMAGENOTEXT = "FailedOperation.ImageNoText"
-//  FAILEDOPERATION_NOTAPPOINTCARD = "FailedOperation.NotAppointCard"
-//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
-//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
-//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
-//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
-func (c *Client) HmtResidentPermitOCRWithContext(ctx context.Context, request *HmtResidentPermitOCRRequest) (response *HmtResidentPermitOCRResponse, err error) {
-    if request == nil {
-        request = NewHmtResidentPermitOCRRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "ocr", APIVersion, "HmtResidentPermitOCR")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("HmtResidentPermitOCR require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewHmtResidentPermitOCRResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewIDCardOCRRequest() (request *IDCardOCRRequest) {
     request = &IDCardOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4151,86 +3747,6 @@ func (c *Client) InsuranceBillOCRWithContext(ctx context.Context, request *Insur
     request.SetContext(ctx)
     
     response = NewInsuranceBillOCRResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewInvoiceGeneralOCRRequest() (request *InvoiceGeneralOCRRequest) {
-    request = &InvoiceGeneralOCRRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("ocr", APIVersion, "InvoiceGeneralOCR")
-    
-    
-    return
-}
-
-func NewInvoiceGeneralOCRResponse() (response *InvoiceGeneralOCRResponse) {
-    response = &InvoiceGeneralOCRResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// InvoiceGeneralOCR
-// <b>此接口不再进行服务升级，建议您使用识别能力更强、服务性能更优的<a href="https://cloud.tencent.com/document/product/866/90802">通用票据识别（高级版）</a>。</b>
-//
-// 本接口支持对通用机打发票的发票代码、发票号码、日期、合计金额(小写)、合计金额(大写)、购买方识别号、销售方识别号、校验码、购买方名称、销售方名称、时间、种类、发票消费类型、省、市、是否有公司印章、发票名称、购买方地址、电话、销售方地址、电话、购买方开户行及账号、销售方开户行及账号、经办人取票用户、经办人支付信息、经办人商户号、经办人订单号、货物或应税劳务、服务名称、数量、单价、税率、税额、金额、单位、规格型号、合计税额、合计金额、备注、收款人、复核、开票人、密码区、行业分类等字段的识别。
-//
-// 
-//
-// 默认接口请求频率限制：5次/秒。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
-//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
-//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
-//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
-//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
-//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
-func (c *Client) InvoiceGeneralOCR(request *InvoiceGeneralOCRRequest) (response *InvoiceGeneralOCRResponse, err error) {
-    return c.InvoiceGeneralOCRWithContext(context.Background(), request)
-}
-
-// InvoiceGeneralOCR
-// <b>此接口不再进行服务升级，建议您使用识别能力更强、服务性能更优的<a href="https://cloud.tencent.com/document/product/866/90802">通用票据识别（高级版）</a>。</b>
-//
-// 本接口支持对通用机打发票的发票代码、发票号码、日期、合计金额(小写)、合计金额(大写)、购买方识别号、销售方识别号、校验码、购买方名称、销售方名称、时间、种类、发票消费类型、省、市、是否有公司印章、发票名称、购买方地址、电话、销售方地址、电话、购买方开户行及账号、销售方开户行及账号、经办人取票用户、经办人支付信息、经办人商户号、经办人订单号、货物或应税劳务、服务名称、数量、单价、税率、税额、金额、单位、规格型号、合计税额、合计金额、备注、收款人、复核、开票人、密码区、行业分类等字段的识别。
-//
-// 
-//
-// 默认接口请求频率限制：5次/秒。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
-//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
-//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
-//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
-//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
-//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
-func (c *Client) InvoiceGeneralOCRWithContext(ctx context.Context, request *InvoiceGeneralOCRRequest) (response *InvoiceGeneralOCRResponse, err error) {
-    if request == nil {
-        request = NewInvoiceGeneralOCRRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "ocr", APIVersion, "InvoiceGeneralOCR")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("InvoiceGeneralOCR require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewInvoiceGeneralOCRResponse()
     err = c.Send(request, response)
     return
 }
@@ -5173,86 +4689,6 @@ func (c *Client) QuestionSplitOCRWithContext(ctx context.Context, request *Quest
     request.SetContext(ctx)
     
     response = NewQuestionSplitOCRResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewQuotaInvoiceOCRRequest() (request *QuotaInvoiceOCRRequest) {
-    request = &QuotaInvoiceOCRRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("ocr", APIVersion, "QuotaInvoiceOCR")
-    
-    
-    return
-}
-
-func NewQuotaInvoiceOCRResponse() (response *QuotaInvoiceOCRResponse) {
-    response = &QuotaInvoiceOCRResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// QuotaInvoiceOCR
-// <b>此接口不再进行服务升级，建议您使用识别能力更强、服务性能更优的<a href="https://cloud.tencent.com/document/product/866/90802">通用票据识别（高级版）</a>。</b>
-//
-// 本接口支持定额发票的发票号码、发票代码、金额(大小写)、发票消费类型、地区及是否有公司印章等关键字段的识别。
-//
-// 
-//
-// 默认接口请求频率限制：5次/秒。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
-//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
-//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
-//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
-//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
-//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
-func (c *Client) QuotaInvoiceOCR(request *QuotaInvoiceOCRRequest) (response *QuotaInvoiceOCRResponse, err error) {
-    return c.QuotaInvoiceOCRWithContext(context.Background(), request)
-}
-
-// QuotaInvoiceOCR
-// <b>此接口不再进行服务升级，建议您使用识别能力更强、服务性能更优的<a href="https://cloud.tencent.com/document/product/866/90802">通用票据识别（高级版）</a>。</b>
-//
-// 本接口支持定额发票的发票号码、发票代码、金额(大小写)、发票消费类型、地区及是否有公司印章等关键字段的识别。
-//
-// 
-//
-// 默认接口请求频率限制：5次/秒。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
-//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
-//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
-//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
-//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
-//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
-func (c *Client) QuotaInvoiceOCRWithContext(ctx context.Context, request *QuotaInvoiceOCRRequest) (response *QuotaInvoiceOCRResponse, err error) {
-    if request == nil {
-        request = NewQuotaInvoiceOCRRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "ocr", APIVersion, "QuotaInvoiceOCR")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("QuotaInvoiceOCR require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewQuotaInvoiceOCRResponse()
     err = c.Send(request, response)
     return
 }
@@ -6759,92 +6195,6 @@ func (c *Client) RecognizeGeneralInvoiceWithContext(ctx context.Context, request
     return
 }
 
-func NewRecognizeHealthCodeOCRRequest() (request *RecognizeHealthCodeOCRRequest) {
-    request = &RecognizeHealthCodeOCRRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("ocr", APIVersion, "RecognizeHealthCodeOCR")
-    
-    
-    return
-}
-
-func NewRecognizeHealthCodeOCRResponse() (response *RecognizeHealthCodeOCRResponse) {
-    response = &RecognizeHealthCodeOCRResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// RecognizeHealthCodeOCR
-// 产品规划
-//
-// 
-//
-// 本接口支持北京、上海、广东、江苏、吉林、黑龙江、天津、辽宁、浙江、河南、四川、贵州、山东、安徽、福建、江西、湖北、湖南等省份健康码的识别，包括持码人姓名、持码人身份证号、健康码更新时间、健康码颜色、核酸检测结果、核酸检测间隔时长、核酸检测时间，疫苗接种信息，八个字段的识别结果输出。不同省市健康码显示的字段信息有所不同，上述字段的识别结果可能为空，以图片上具体展示的信息为准。
-//
-// 
-//
-// 默认接口请求频率限制：10次/秒。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
-//  FAILEDOPERATION_EMPTYIMAGEERROR = "FailedOperation.EmptyImageError"
-//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
-//  FAILEDOPERATION_IMAGENOTEXT = "FailedOperation.ImageNoText"
-//  FAILEDOPERATION_IMAGESIZETOOLARGE = "FailedOperation.ImageSizeTooLarge"
-//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
-//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
-//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
-func (c *Client) RecognizeHealthCodeOCR(request *RecognizeHealthCodeOCRRequest) (response *RecognizeHealthCodeOCRResponse, err error) {
-    return c.RecognizeHealthCodeOCRWithContext(context.Background(), request)
-}
-
-// RecognizeHealthCodeOCR
-// 产品规划
-//
-// 
-//
-// 本接口支持北京、上海、广东、江苏、吉林、黑龙江、天津、辽宁、浙江、河南、四川、贵州、山东、安徽、福建、江西、湖北、湖南等省份健康码的识别，包括持码人姓名、持码人身份证号、健康码更新时间、健康码颜色、核酸检测结果、核酸检测间隔时长、核酸检测时间，疫苗接种信息，八个字段的识别结果输出。不同省市健康码显示的字段信息有所不同，上述字段的识别结果可能为空，以图片上具体展示的信息为准。
-//
-// 
-//
-// 默认接口请求频率限制：10次/秒。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
-//  FAILEDOPERATION_EMPTYIMAGEERROR = "FailedOperation.EmptyImageError"
-//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
-//  FAILEDOPERATION_IMAGENOTEXT = "FailedOperation.ImageNoText"
-//  FAILEDOPERATION_IMAGESIZETOOLARGE = "FailedOperation.ImageSizeTooLarge"
-//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
-//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
-//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
-func (c *Client) RecognizeHealthCodeOCRWithContext(ctx context.Context, request *RecognizeHealthCodeOCRRequest) (response *RecognizeHealthCodeOCRResponse, err error) {
-    if request == nil {
-        request = NewRecognizeHealthCodeOCRRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "ocr", APIVersion, "RecognizeHealthCodeOCR")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("RecognizeHealthCodeOCR require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewRecognizeHealthCodeOCRResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewRecognizeMedicalInvoiceOCRRequest() (request *RecognizeMedicalInvoiceOCRRequest) {
     request = &RecognizeMedicalInvoiceOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6921,82 +6271,6 @@ func (c *Client) RecognizeMedicalInvoiceOCRWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewRecognizeMedicalInvoiceOCRResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewRecognizeOnlineTaxiItineraryOCRRequest() (request *RecognizeOnlineTaxiItineraryOCRRequest) {
-    request = &RecognizeOnlineTaxiItineraryOCRRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("ocr", APIVersion, "RecognizeOnlineTaxiItineraryOCR")
-    
-    
-    return
-}
-
-func NewRecognizeOnlineTaxiItineraryOCRResponse() (response *RecognizeOnlineTaxiItineraryOCRResponse) {
-    response = &RecognizeOnlineTaxiItineraryOCRResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// RecognizeOnlineTaxiItineraryOCR
-// 本接口支持网约车行程单关键字段的识别，包括行程起止日期、上车时间、起点、终点、里程、金额等字段。
-//
-// 
-//
-// 默认接口请求频率限制：20次/秒。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
-//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
-//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
-//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
-//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
-//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
-func (c *Client) RecognizeOnlineTaxiItineraryOCR(request *RecognizeOnlineTaxiItineraryOCRRequest) (response *RecognizeOnlineTaxiItineraryOCRResponse, err error) {
-    return c.RecognizeOnlineTaxiItineraryOCRWithContext(context.Background(), request)
-}
-
-// RecognizeOnlineTaxiItineraryOCR
-// 本接口支持网约车行程单关键字段的识别，包括行程起止日期、上车时间、起点、终点、里程、金额等字段。
-//
-// 
-//
-// 默认接口请求频率限制：20次/秒。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
-//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
-//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
-//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
-//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
-//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
-func (c *Client) RecognizeOnlineTaxiItineraryOCRWithContext(ctx context.Context, request *RecognizeOnlineTaxiItineraryOCRRequest) (response *RecognizeOnlineTaxiItineraryOCRResponse, err error) {
-    if request == nil {
-        request = NewRecognizeOnlineTaxiItineraryOCRRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "ocr", APIVersion, "RecognizeOnlineTaxiItineraryOCR")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("RecognizeOnlineTaxiItineraryOCR require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewRecognizeOnlineTaxiItineraryOCRResponse()
     err = c.Send(request, response)
     return
 }
@@ -7321,94 +6595,6 @@ func (c *Client) RecognizeThaiIDCardOCRWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewRecognizeThaiIDCardOCRResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewRecognizeTravelCardOCRRequest() (request *RecognizeTravelCardOCRRequest) {
-    request = &RecognizeTravelCardOCRRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("ocr", APIVersion, "RecognizeTravelCardOCR")
-    
-    
-    return
-}
-
-func NewRecognizeTravelCardOCRResponse() (response *RecognizeTravelCardOCRResponse) {
-    response = &RecognizeTravelCardOCRResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// RecognizeTravelCardOCR
-// 产品规划
-//
-// 
-//
-// 本接口支持通信大数据行程卡识别，包括行程卡颜色、更新时间、途经地、存在中高风险地区的城市、电话号码，五个字段的识别结果输出。
-//
-// 
-//
-// 默认接口请求频率限制：20次/秒。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
-//  FAILEDOPERATION_EMPTYIMAGEERROR = "FailedOperation.EmptyImageError"
-//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
-//  FAILEDOPERATION_IMAGENOTEXT = "FailedOperation.ImageNoText"
-//  FAILEDOPERATION_IMAGESIZETOOLARGE = "FailedOperation.ImageSizeTooLarge"
-//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
-//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
-//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
-func (c *Client) RecognizeTravelCardOCR(request *RecognizeTravelCardOCRRequest) (response *RecognizeTravelCardOCRResponse, err error) {
-    return c.RecognizeTravelCardOCRWithContext(context.Background(), request)
-}
-
-// RecognizeTravelCardOCR
-// 产品规划
-//
-// 
-//
-// 本接口支持通信大数据行程卡识别，包括行程卡颜色、更新时间、途经地、存在中高风险地区的城市、电话号码，五个字段的识别结果输出。
-//
-// 
-//
-// 默认接口请求频率限制：20次/秒。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
-//  FAILEDOPERATION_EMPTYIMAGEERROR = "FailedOperation.EmptyImageError"
-//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
-//  FAILEDOPERATION_IMAGENOTEXT = "FailedOperation.ImageNoText"
-//  FAILEDOPERATION_IMAGESIZETOOLARGE = "FailedOperation.ImageSizeTooLarge"
-//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
-//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
-//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
-func (c *Client) RecognizeTravelCardOCRWithContext(ctx context.Context, request *RecognizeTravelCardOCRRequest) (response *RecognizeTravelCardOCRResponse, err error) {
-    if request == nil {
-        request = NewRecognizeTravelCardOCRRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "ocr", APIVersion, "RecognizeTravelCardOCR")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("RecognizeTravelCardOCR require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewRecognizeTravelCardOCRResponse()
     err = c.Send(request, response)
     return
 }
@@ -7829,86 +7015,6 @@ func (c *Client) SealOCRWithContext(ctx context.Context, request *SealOCRRequest
     return
 }
 
-func NewShipInvoiceOCRRequest() (request *ShipInvoiceOCRRequest) {
-    request = &ShipInvoiceOCRRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("ocr", APIVersion, "ShipInvoiceOCR")
-    
-    
-    return
-}
-
-func NewShipInvoiceOCRResponse() (response *ShipInvoiceOCRResponse) {
-    response = &ShipInvoiceOCRResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// ShipInvoiceOCR
-// <b>此接口不再进行服务升级，建议您使用识别能力更强、服务性能更优的<a href="https://cloud.tencent.com/document/product/866/90802">通用票据识别（高级版）</a>。</b>
-//
-// 本接口支持识别轮船票的发票代码、发票号码、日期、姓名、票价、始发地、目的地、姓名、时间、发票消费类型、省、市、币种字段。
-//
-// 
-//
-// 默认接口请求频率限制：5次/秒。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
-//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
-//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
-//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
-//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
-//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
-func (c *Client) ShipInvoiceOCR(request *ShipInvoiceOCRRequest) (response *ShipInvoiceOCRResponse, err error) {
-    return c.ShipInvoiceOCRWithContext(context.Background(), request)
-}
-
-// ShipInvoiceOCR
-// <b>此接口不再进行服务升级，建议您使用识别能力更强、服务性能更优的<a href="https://cloud.tencent.com/document/product/866/90802">通用票据识别（高级版）</a>。</b>
-//
-// 本接口支持识别轮船票的发票代码、发票号码、日期、姓名、票价、始发地、目的地、姓名、时间、发票消费类型、省、市、币种字段。
-//
-// 
-//
-// 默认接口请求频率限制：5次/秒。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
-//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
-//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
-//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
-//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
-//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
-func (c *Client) ShipInvoiceOCRWithContext(ctx context.Context, request *ShipInvoiceOCRRequest) (response *ShipInvoiceOCRResponse, err error) {
-    if request == nil {
-        request = NewShipInvoiceOCRRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "ocr", APIVersion, "ShipInvoiceOCR")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("ShipInvoiceOCR require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewShipInvoiceOCRResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewSmartStructuralOCRRequest() (request *SmartStructuralOCRRequest) {
     request = &SmartStructuralOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -8313,82 +7419,6 @@ func (c *Client) TableOCRWithContext(ctx context.Context, request *TableOCRReque
     return
 }
 
-func NewTaxiInvoiceOCRRequest() (request *TaxiInvoiceOCRRequest) {
-    request = &TaxiInvoiceOCRRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("ocr", APIVersion, "TaxiInvoiceOCR")
-    
-    
-    return
-}
-
-func NewTaxiInvoiceOCRResponse() (response *TaxiInvoiceOCRResponse) {
-    response = &TaxiInvoiceOCRResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// TaxiInvoiceOCR
-// 本接口支持出租车发票关键字段的识别，包括发票号码、发票代码、金额、日期、上下车时间、里程、车牌号、发票类型及所属地区等字段。
-//
-// 
-//
-// 默认接口请求频率限制：5次/秒。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
-//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
-//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
-//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
-//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
-//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
-func (c *Client) TaxiInvoiceOCR(request *TaxiInvoiceOCRRequest) (response *TaxiInvoiceOCRResponse, err error) {
-    return c.TaxiInvoiceOCRWithContext(context.Background(), request)
-}
-
-// TaxiInvoiceOCR
-// 本接口支持出租车发票关键字段的识别，包括发票号码、发票代码、金额、日期、上下车时间、里程、车牌号、发票类型及所属地区等字段。
-//
-// 
-//
-// 默认接口请求频率限制：5次/秒。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
-//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
-//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
-//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
-//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
-//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
-func (c *Client) TaxiInvoiceOCRWithContext(ctx context.Context, request *TaxiInvoiceOCRRequest) (response *TaxiInvoiceOCRResponse, err error) {
-    if request == nil {
-        request = NewTaxiInvoiceOCRRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "ocr", APIVersion, "TaxiInvoiceOCR")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("TaxiInvoiceOCR require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewTaxiInvoiceOCRResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewTextDetectRequest() (request *TextDetectRequest) {
     request = &TextDetectRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -8463,86 +7493,6 @@ func (c *Client) TextDetectWithContext(ctx context.Context, request *TextDetectR
     request.SetContext(ctx)
     
     response = NewTextDetectResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewTollInvoiceOCRRequest() (request *TollInvoiceOCRRequest) {
-    request = &TollInvoiceOCRRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("ocr", APIVersion, "TollInvoiceOCR")
-    
-    
-    return
-}
-
-func NewTollInvoiceOCRResponse() (response *TollInvoiceOCRResponse) {
-    response = &TollInvoiceOCRResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// TollInvoiceOCR
-// <b>此接口不再进行服务升级，建议您使用识别能力更强、服务性能更优的<a href="https://cloud.tencent.com/document/product/866/90802">通用票据识别（高级版）</a>。</b>
-//
-// 本接口支持过路过桥费发票关键字段的识别，包括发票代码、发票号码、日期、金额、入口、出口、时间、发票消费类型、高速标志等。
-//
-// 
-//
-// 默认接口请求频率限制：5次/秒。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
-//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
-//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
-//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
-//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
-//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
-func (c *Client) TollInvoiceOCR(request *TollInvoiceOCRRequest) (response *TollInvoiceOCRResponse, err error) {
-    return c.TollInvoiceOCRWithContext(context.Background(), request)
-}
-
-// TollInvoiceOCR
-// <b>此接口不再进行服务升级，建议您使用识别能力更强、服务性能更优的<a href="https://cloud.tencent.com/document/product/866/90802">通用票据识别（高级版）</a>。</b>
-//
-// 本接口支持过路过桥费发票关键字段的识别，包括发票代码、发票号码、日期、金额、入口、出口、时间、发票消费类型、高速标志等。
-//
-// 
-//
-// 默认接口请求频率限制：5次/秒。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
-//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
-//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
-//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
-//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
-//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
-func (c *Client) TollInvoiceOCRWithContext(ctx context.Context, request *TollInvoiceOCRRequest) (response *TollInvoiceOCRResponse, err error) {
-    if request == nil {
-        request = NewTollInvoiceOCRRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "ocr", APIVersion, "TollInvoiceOCR")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("TollInvoiceOCR require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewTollInvoiceOCRResponse()
     err = c.Send(request, response)
     return
 }
@@ -8801,86 +7751,6 @@ func (c *Client) VatInvoiceVerifyNewWithContext(ctx context.Context, request *Va
     return
 }
 
-func NewVatRollInvoiceOCRRequest() (request *VatRollInvoiceOCRRequest) {
-    request = &VatRollInvoiceOCRRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("ocr", APIVersion, "VatRollInvoiceOCR")
-    
-    
-    return
-}
-
-func NewVatRollInvoiceOCRResponse() (response *VatRollInvoiceOCRResponse) {
-    response = &VatRollInvoiceOCRResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// VatRollInvoiceOCR
-// <b>此接口不再进行服务升级，建议您使用识别能力更强、服务性能更优的<a href="https://cloud.tencent.com/document/product/866/90802">通用票据识别（高级版）</a>。</b>
-//
-// 本接口支持对增值税发票（卷票）关键字段的识别，包括的发票代码、合计金额(小写)、合计金额(大写)、开票日期、发票号码、购买方识别号、销售方识别号、校验码、销售方名称、购买方名称、发票消费类型、省、市、是否有公司印章、单价、金额、数量、服务类型、品名、种类等。
-//
-// 
-//
-// 默认接口请求频率限制：5次/秒。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
-//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
-//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
-//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
-//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
-//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
-func (c *Client) VatRollInvoiceOCR(request *VatRollInvoiceOCRRequest) (response *VatRollInvoiceOCRResponse, err error) {
-    return c.VatRollInvoiceOCRWithContext(context.Background(), request)
-}
-
-// VatRollInvoiceOCR
-// <b>此接口不再进行服务升级，建议您使用识别能力更强、服务性能更优的<a href="https://cloud.tencent.com/document/product/866/90802">通用票据识别（高级版）</a>。</b>
-//
-// 本接口支持对增值税发票（卷票）关键字段的识别，包括的发票代码、合计金额(小写)、合计金额(大写)、开票日期、发票号码、购买方识别号、销售方识别号、校验码、销售方名称、购买方名称、发票消费类型、省、市、是否有公司印章、单价、金额、数量、服务类型、品名、种类等。
-//
-// 
-//
-// 默认接口请求频率限制：5次/秒。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
-//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
-//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
-//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
-//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
-//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
-func (c *Client) VatRollInvoiceOCRWithContext(ctx context.Context, request *VatRollInvoiceOCRRequest) (response *VatRollInvoiceOCRResponse, err error) {
-    if request == nil {
-        request = NewVatRollInvoiceOCRRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "ocr", APIVersion, "VatRollInvoiceOCR")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("VatRollInvoiceOCR require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewVatRollInvoiceOCRResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewVehicleLicenseOCRRequest() (request *VehicleLicenseOCRRequest) {
     request = &VehicleLicenseOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -9069,6 +7939,64 @@ func (c *Client) VehicleRegCertOCRWithContext(ctx context.Context, request *Vehi
     request.SetContext(ctx)
     
     response = NewVehicleRegCertOCRResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewVerifyBizLicenseEnterprise3Request() (request *VerifyBizLicenseEnterprise3Request) {
+    request = &VerifyBizLicenseEnterprise3Request{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ocr", APIVersion, "VerifyBizLicenseEnterprise3")
+    
+    
+    return
+}
+
+func NewVerifyBizLicenseEnterprise3Response() (response *VerifyBizLicenseEnterprise3Response) {
+    response = &VerifyBizLicenseEnterprise3Response{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// VerifyBizLicenseEnterprise3
+// 提供比对核验企业名称、统一社会信用代码、法人姓名一致性的服务，助力快速核验企业资质。
+//
+// 注意：核验准确率在99%以上，存在个别特殊情况下核验结果不准确，请选用前知悉。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ENGINERECOGNIZETIMEOUT = "FailedOperation.EngineRecognizeTimeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+func (c *Client) VerifyBizLicenseEnterprise3(request *VerifyBizLicenseEnterprise3Request) (response *VerifyBizLicenseEnterprise3Response, err error) {
+    return c.VerifyBizLicenseEnterprise3WithContext(context.Background(), request)
+}
+
+// VerifyBizLicenseEnterprise3
+// 提供比对核验企业名称、统一社会信用代码、法人姓名一致性的服务，助力快速核验企业资质。
+//
+// 注意：核验准确率在99%以上，存在个别特殊情况下核验结果不准确，请选用前知悉。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ENGINERECOGNIZETIMEOUT = "FailedOperation.EngineRecognizeTimeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+func (c *Client) VerifyBizLicenseEnterprise3WithContext(ctx context.Context, request *VerifyBizLicenseEnterprise3Request) (response *VerifyBizLicenseEnterprise3Response, err error) {
+    if request == nil {
+        request = NewVerifyBizLicenseEnterprise3Request()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ocr", APIVersion, "VerifyBizLicenseEnterprise3")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("VerifyBizLicenseEnterprise3 require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewVerifyBizLicenseEnterprise3Response()
     err = c.Send(request, response)
     return
 }

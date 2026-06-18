@@ -2463,10 +2463,10 @@ type EventInfo struct {
 	// 诊断类型。
 	DiagType *string `json:"DiagType,omitnil,omitempty" name:"DiagType"`
 
-	// 开始时间。
+	// 开始时间。格式: "yyyy-MM-dd'T'HH:mm:ssXXX"
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间。
+	// 结束时间。格式: "yyyy-MM-dd'T'HH:mm:ssXXX"
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 概要。

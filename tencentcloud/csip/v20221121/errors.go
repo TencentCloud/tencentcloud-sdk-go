@@ -26,6 +26,18 @@ const (
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
 
+	// FailedOperation.DasbAmountNotEnough
+	FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
+
+	// FailedOperation.DasbErrorCode
+	FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
+
+	// FailedOperation.DasbInvalidSecretId
+	FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
+
+	// FailedOperation.DasbInvalidSecretKey
+	FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
+
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 
@@ -38,8 +50,14 @@ const (
 	// Decrypt error
 	INVALIDPARAMETER_DECRYPTERROR = "InvalidParameter.DecryptError"
 
+	// InvalidParameter.ResourceId
+	INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
+
+	// SQL 查询失败
+	INVALIDPARAMETERVALUE_SQLQUERYFAILED = "InvalidParameterValue.SQLQueryFailed"
 
 	// 超过配额限制。
 	LIMITEXCEEDED = "LimitExceeded"
@@ -79,6 +97,9 @@ const (
 
 	// 未授权操作“对象存储”产品
 	UNAUTHORIZEDOPERATION_COS = "UnauthorizedOperation.Cos"
+
+	// UnauthorizedOperation.NoPermission
+	UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 
 	// 未知参数错误。
 	UNKNOWNPARAMETER = "UnknownParameter"

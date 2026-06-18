@@ -1292,6 +1292,7 @@ func NewCreateDeviceResponse() (response *CreateDeviceResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_DEVICEALREADYEXIST = "InvalidParameterValue.DeviceAlreadyExist"
 //  LIMITEXCEEDED_DEVICEEXCEEDLIMIT = "LimitExceeded.DeviceExceedLimit"
+//  LIMITEXCEEDED_DEVICELICENSELIMITEXCEEDED = "LimitExceeded.DeviceLicenseLimitExceeded"
 //  RESOURCENOTFOUND_INSTANCENOTEXIST = "ResourceNotFound.InstanceNotExist"
 //  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
 //  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
@@ -1320,6 +1321,7 @@ func (c *Client) CreateDevice(request *CreateDeviceRequest) (response *CreateDev
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_DEVICEALREADYEXIST = "InvalidParameterValue.DeviceAlreadyExist"
 //  LIMITEXCEEDED_DEVICEEXCEEDLIMIT = "LimitExceeded.DeviceExceedLimit"
+//  LIMITEXCEEDED_DEVICELICENSELIMITEXCEEDED = "LimitExceeded.DeviceLicenseLimitExceeded"
 //  RESOURCENOTFOUND_INSTANCENOTEXIST = "ResourceNotFound.InstanceNotExist"
 //  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
 //  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
@@ -1403,6 +1405,60 @@ func (c *Client) CreateDeviceChannelWithContext(ctx context.Context, request *Cr
     return
 }
 
+func NewCreateDevicePublishSDPAnswerRequest() (request *CreateDevicePublishSDPAnswerRequest) {
+    request = &CreateDevicePublishSDPAnswerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "CreateDevicePublishSDPAnswer")
+    
+    
+    return
+}
+
+func NewCreateDevicePublishSDPAnswerResponse() (response *CreateDevicePublishSDPAnswerResponse) {
+    response = &CreateDevicePublishSDPAnswerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateDevicePublishSDPAnswer
+// 创建设备推流SDP应答，此接口调用前需要先调用CreateDeviceSDPAnswer接口以保证设备处于拉流状态，接口返回是另外一路webrtc推流SDP信息，可以用来进行标准的WHIP推流
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateDevicePublishSDPAnswer(request *CreateDevicePublishSDPAnswerRequest) (response *CreateDevicePublishSDPAnswerResponse, err error) {
+    return c.CreateDevicePublishSDPAnswerWithContext(context.Background(), request)
+}
+
+// CreateDevicePublishSDPAnswer
+// 创建设备推流SDP应答，此接口调用前需要先调用CreateDeviceSDPAnswer接口以保证设备处于拉流状态，接口返回是另外一路webrtc推流SDP信息，可以用来进行标准的WHIP推流
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateDevicePublishSDPAnswerWithContext(ctx context.Context, request *CreateDevicePublishSDPAnswerRequest) (response *CreateDevicePublishSDPAnswerResponse, err error) {
+    if request == nil {
+        request = NewCreateDevicePublishSDPAnswerRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "CreateDevicePublishSDPAnswer")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDevicePublishSDPAnswer require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateDevicePublishSDPAnswerResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateDeviceSDPAnswerRequest() (request *CreateDeviceSDPAnswerRequest) {
     request = &CreateDeviceSDPAnswerRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1423,7 +1479,7 @@ func NewCreateDeviceSDPAnswerResponse() (response *CreateDeviceSDPAnswerResponse
 }
 
 // CreateDeviceSDPAnswer
-// 创建设备SDP应答
+// 创建设备SDP应答，调用此接口后，后台会对传入参数的设备进行拉流，并返回webrtc answer SDP返回，可以进行WHEP协议拉流。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1434,7 +1490,7 @@ func (c *Client) CreateDeviceSDPAnswer(request *CreateDeviceSDPAnswerRequest) (r
 }
 
 // CreateDeviceSDPAnswer
-// 创建设备SDP应答
+// 创建设备SDP应答，调用此接口后，后台会对传入参数的设备进行拉流，并返回webrtc answer SDP返回，可以进行WHEP协议拉流。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -2243,6 +2299,142 @@ func (c *Client) CreateTRTCSignaturesWithRoomIdWithContext(ctx context.Context, 
     return
 }
 
+func NewCreateTWeSeeCallbackRequest() (request *CreateTWeSeeCallbackRequest) {
+    request = &CreateTWeSeeCallbackRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "CreateTWeSeeCallback")
+    
+    
+    return
+}
+
+func NewCreateTWeSeeCallbackResponse() (response *CreateTWeSeeCallbackResponse) {
+    response = &CreateTWeSeeCallbackResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateTWeSeeCallback
+// 创建 TWeSee 回调目标
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDCALLBACKTOKEN = "InvalidParameterValue.InvalidCallbackToken"
+//  INVALIDPARAMETERVALUE_INVALIDURL = "InvalidParameterValue.InvalidURL"
+func (c *Client) CreateTWeSeeCallback(request *CreateTWeSeeCallbackRequest) (response *CreateTWeSeeCallbackResponse, err error) {
+    return c.CreateTWeSeeCallbackWithContext(context.Background(), request)
+}
+
+// CreateTWeSeeCallback
+// 创建 TWeSee 回调目标
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDCALLBACKTOKEN = "InvalidParameterValue.InvalidCallbackToken"
+//  INVALIDPARAMETERVALUE_INVALIDURL = "InvalidParameterValue.InvalidURL"
+func (c *Client) CreateTWeSeeCallbackWithContext(ctx context.Context, request *CreateTWeSeeCallbackRequest) (response *CreateTWeSeeCallbackResponse, err error) {
+    if request == nil {
+        request = NewCreateTWeSeeCallbackRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "CreateTWeSeeCallback")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateTWeSeeCallback require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateTWeSeeCallbackResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateTWeSeePostPaidServiceRequest() (request *CreateTWeSeePostPaidServiceRequest) {
+    request = &CreateTWeSeePostPaidServiceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "CreateTWeSeePostPaidService")
+    
+    
+    return
+}
+
+func NewCreateTWeSeePostPaidServiceResponse() (response *CreateTWeSeePostPaidServiceResponse) {
+    response = &CreateTWeSeePostPaidServiceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateTWeSeePostPaidService
+// 开通 TWeSee 后付费服务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ANOTHEROPERATIONISRUNNING = "FailedOperation.AnotherOperationIsRunning"
+//  FAILEDOPERATION_BALANCEINSUFFICIENT = "FailedOperation.BalanceInsufficient"
+//  FAILEDOPERATION_CREATEORDERFAILED = "FailedOperation.CreateOrderFailed"
+//  FAILEDOPERATION_SEEPOSTPAIDSERVICEALREADYEXISTS = "FailedOperation.SeePostPaidServiceAlreadyExists"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION_CERTIFICATIONNEEDUPGRADE = "UnauthorizedOperation.CertificationNeedUpgrade"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOPAY = "UnauthorizedOperation.NoPermissionToPay"
+//  UNAUTHORIZEDOPERATION_NOTCERTIFICATION = "UnauthorizedOperation.NotCertification"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_DOESNOTSELLINTHISREGION = "UnsupportedOperation.DoesNotSellInThisRegion"
+func (c *Client) CreateTWeSeePostPaidService(request *CreateTWeSeePostPaidServiceRequest) (response *CreateTWeSeePostPaidServiceResponse, err error) {
+    return c.CreateTWeSeePostPaidServiceWithContext(context.Background(), request)
+}
+
+// CreateTWeSeePostPaidService
+// 开通 TWeSee 后付费服务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ANOTHEROPERATIONISRUNNING = "FailedOperation.AnotherOperationIsRunning"
+//  FAILEDOPERATION_BALANCEINSUFFICIENT = "FailedOperation.BalanceInsufficient"
+//  FAILEDOPERATION_CREATEORDERFAILED = "FailedOperation.CreateOrderFailed"
+//  FAILEDOPERATION_SEEPOSTPAIDSERVICEALREADYEXISTS = "FailedOperation.SeePostPaidServiceAlreadyExists"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION_CERTIFICATIONNEEDUPGRADE = "UnauthorizedOperation.CertificationNeedUpgrade"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOPAY = "UnauthorizedOperation.NoPermissionToPay"
+//  UNAUTHORIZEDOPERATION_NOTCERTIFICATION = "UnauthorizedOperation.NotCertification"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_DOESNOTSELLINTHISREGION = "UnsupportedOperation.DoesNotSellInThisRegion"
+func (c *Client) CreateTWeSeePostPaidServiceWithContext(ctx context.Context, request *CreateTWeSeePostPaidServiceRequest) (response *CreateTWeSeePostPaidServiceResponse, err error) {
+    if request == nil {
+        request = NewCreateTWeSeePostPaidServiceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "CreateTWeSeePostPaidService")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateTWeSeePostPaidService require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateTWeSeePostPaidServiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateTWeSeeRecognitionTaskRequest() (request *CreateTWeSeeRecognitionTaskRequest) {
     request = &CreateTWeSeeRecognitionTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2417,6 +2609,94 @@ func (c *Client) CreateTWeSeeServiceWithContext(ctx context.Context, request *Cr
     request.SetContext(ctx)
     
     response = NewCreateTWeSeeServiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateTWeSeeSubscriptionRequest() (request *CreateTWeSeeSubscriptionRequest) {
+    request = &CreateTWeSeeSubscriptionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "CreateTWeSeeSubscription")
+    
+    
+    return
+}
+
+func NewCreateTWeSeeSubscriptionResponse() (response *CreateTWeSeeSubscriptionResponse) {
+    response = &CreateTWeSeeSubscriptionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateTWeSeeSubscription
+// 开通 TWeSee 预付费订阅
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ANOTHEROPERATIONISRUNNING = "FailedOperation.AnotherOperationIsRunning"
+//  FAILEDOPERATION_BALANCEINSUFFICIENT = "FailedOperation.BalanceInsufficient"
+//  FAILEDOPERATION_CLOUDSTORAGEPACKAGEREQUIRED = "FailedOperation.CloudStoragePackageRequired"
+//  FAILEDOPERATION_CREATEORDERFAILED = "FailedOperation.CreateOrderFailed"
+//  FAILEDOPERATION_CUSTOMORDERIDALREADYEXIST = "FailedOperation.CustomOrderIdAlreadyExist"
+//  FAILEDOPERATION_DELIVERORDERFAILED = "FailedOperation.DeliverOrderFailed"
+//  FAILEDOPERATION_SEEPREPAIDSUBSCRIPTIONALREADYEXISTS = "FailedOperation.SeePrePaidSubscriptionAlreadyExists"
+//  FAILEDOPERATION_SEEPREPAIDSUBSCRIPTIONCONFLICTS = "FailedOperation.SeePrePaidSubscriptionConflicts"
+//  FAILEDOPERATION_SEEPREPAIDSUBSCRIPTIONENDTIMEEXCEEDED = "FailedOperation.SeePrePaidSubscriptionEndTimeExceeded"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_DEVICECHANNELNOTEXIST = "ResourceNotFound.DeviceChannelNotExist"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  UNAUTHORIZEDOPERATION_CERTIFICATIONNEEDUPGRADE = "UnauthorizedOperation.CertificationNeedUpgrade"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOPAY = "UnauthorizedOperation.NoPermissionToPay"
+//  UNAUTHORIZEDOPERATION_NOTCERTIFICATION = "UnauthorizedOperation.NotCertification"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateTWeSeeSubscription(request *CreateTWeSeeSubscriptionRequest) (response *CreateTWeSeeSubscriptionResponse, err error) {
+    return c.CreateTWeSeeSubscriptionWithContext(context.Background(), request)
+}
+
+// CreateTWeSeeSubscription
+// 开通 TWeSee 预付费订阅
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ANOTHEROPERATIONISRUNNING = "FailedOperation.AnotherOperationIsRunning"
+//  FAILEDOPERATION_BALANCEINSUFFICIENT = "FailedOperation.BalanceInsufficient"
+//  FAILEDOPERATION_CLOUDSTORAGEPACKAGEREQUIRED = "FailedOperation.CloudStoragePackageRequired"
+//  FAILEDOPERATION_CREATEORDERFAILED = "FailedOperation.CreateOrderFailed"
+//  FAILEDOPERATION_CUSTOMORDERIDALREADYEXIST = "FailedOperation.CustomOrderIdAlreadyExist"
+//  FAILEDOPERATION_DELIVERORDERFAILED = "FailedOperation.DeliverOrderFailed"
+//  FAILEDOPERATION_SEEPREPAIDSUBSCRIPTIONALREADYEXISTS = "FailedOperation.SeePrePaidSubscriptionAlreadyExists"
+//  FAILEDOPERATION_SEEPREPAIDSUBSCRIPTIONCONFLICTS = "FailedOperation.SeePrePaidSubscriptionConflicts"
+//  FAILEDOPERATION_SEEPREPAIDSUBSCRIPTIONENDTIMEEXCEEDED = "FailedOperation.SeePrePaidSubscriptionEndTimeExceeded"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_DEVICECHANNELNOTEXIST = "ResourceNotFound.DeviceChannelNotExist"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  UNAUTHORIZEDOPERATION_CERTIFICATIONNEEDUPGRADE = "UnauthorizedOperation.CertificationNeedUpgrade"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOPAY = "UnauthorizedOperation.NoPermissionToPay"
+//  UNAUTHORIZEDOPERATION_NOTCERTIFICATION = "UnauthorizedOperation.NotCertification"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateTWeSeeSubscriptionWithContext(ctx context.Context, request *CreateTWeSeeSubscriptionRequest) (response *CreateTWeSeeSubscriptionResponse, err error) {
+    if request == nil {
+        request = NewCreateTWeSeeSubscriptionRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "CreateTWeSeeSubscription")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateTWeSeeSubscription require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateTWeSeeSubscriptionResponse()
     err = c.Send(request, response)
     return
 }
@@ -2863,6 +3143,60 @@ func (c *Client) DeleteDeviceWithContext(ctx context.Context, request *DeleteDev
     request.SetContext(ctx)
     
     response = NewDeleteDeviceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteDeviceSDPRequest() (request *DeleteDeviceSDPRequest) {
+    request = &DeleteDeviceSDPRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DeleteDeviceSDP")
+    
+    
+    return
+}
+
+func NewDeleteDeviceSDPResponse() (response *DeleteDeviceSDPResponse) {
+    response = &DeleteDeviceSDPResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteDeviceSDP
+// 删除设备SDP应答，此接口调用是手动结束设备后台推拉流信息，快速响应挂断需求。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteDeviceSDP(request *DeleteDeviceSDPRequest) (response *DeleteDeviceSDPResponse, err error) {
+    return c.DeleteDeviceSDPWithContext(context.Background(), request)
+}
+
+// DeleteDeviceSDP
+// 删除设备SDP应答，此接口调用是手动结束设备后台推拉流信息，快速响应挂断需求。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteDeviceSDPWithContext(ctx context.Context, request *DeleteDeviceSDPRequest) (response *DeleteDeviceSDPResponse, err error) {
+    if request == nil {
+        request = NewDeleteDeviceSDPRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "DeleteDeviceSDP")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteDeviceSDP require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteDeviceSDPResponse()
     err = c.Send(request, response)
     return
 }
@@ -3439,6 +3773,62 @@ func (c *Client) DeleteStudioProductWithContext(ctx context.Context, request *De
     request.SetContext(ctx)
     
     response = NewDeleteStudioProductResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteTWeSeeCallbackRequest() (request *DeleteTWeSeeCallbackRequest) {
+    request = &DeleteTWeSeeCallbackRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DeleteTWeSeeCallback")
+    
+    
+    return
+}
+
+func NewDeleteTWeSeeCallbackResponse() (response *DeleteTWeSeeCallbackResponse) {
+    response = &DeleteTWeSeeCallbackResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteTWeSeeCallback
+// 删除 TWeSee 回调目标
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_SEECALLBACKNOTEXIST = "ResourceNotFound.SeeCallbackNotExist"
+func (c *Client) DeleteTWeSeeCallback(request *DeleteTWeSeeCallbackRequest) (response *DeleteTWeSeeCallbackResponse, err error) {
+    return c.DeleteTWeSeeCallbackWithContext(context.Background(), request)
+}
+
+// DeleteTWeSeeCallback
+// 删除 TWeSee 回调目标
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_SEECALLBACKNOTEXIST = "ResourceNotFound.SeeCallbackNotExist"
+func (c *Client) DeleteTWeSeeCallbackWithContext(ctx context.Context, request *DeleteTWeSeeCallbackRequest) (response *DeleteTWeSeeCallbackResponse, err error) {
+    if request == nil {
+        request = NewDeleteTWeSeeCallbackRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "DeleteTWeSeeCallback")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteTWeSeeCallback require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteTWeSeeCallbackResponse()
     err = c.Send(request, response)
     return
 }
@@ -6204,6 +6594,7 @@ func NewDescribeInstanceResponse() (response *DescribeInstanceResponse) {
 //  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
 //  INTERNALERROR_INTERNALSERVEREXCEPTIONDB = "InternalError.InternalServerExceptionDB"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED_INSTANCENOTBELONGTOUSER = "OperationDenied.InstanceNotBelongToUser"
 //  RESOURCENOTFOUND_INSTANCENOTEXIST = "ResourceNotFound.InstanceNotExist"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOINSTANCE = "UnauthorizedOperation.NoPermissionToInstance"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOINSTANCE = "UnauthorizedOperation.NoPermissionToStudioInstance"
@@ -6221,6 +6612,7 @@ func (c *Client) DescribeInstance(request *DescribeInstanceRequest) (response *D
 //  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
 //  INTERNALERROR_INTERNALSERVEREXCEPTIONDB = "InternalError.InternalServerExceptionDB"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED_INSTANCENOTBELONGTOUSER = "OperationDenied.InstanceNotBelongToUser"
 //  RESOURCENOTFOUND_INSTANCENOTEXIST = "ResourceNotFound.InstanceNotExist"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOINSTANCE = "UnauthorizedOperation.NoPermissionToInstance"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOINSTANCE = "UnauthorizedOperation.NoPermissionToStudioInstance"
@@ -6239,6 +6631,72 @@ func (c *Client) DescribeInstanceWithContext(ctx context.Context, request *Descr
     request.SetContext(ctx)
     
     response = NewDescribeInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeLicenseOverviewRequest() (request *DescribeLicenseOverviewRequest) {
+    request = &DescribeLicenseOverviewRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeLicenseOverview")
+    
+    
+    return
+}
+
+func NewDescribeLicenseOverviewResponse() (response *DescribeLicenseOverviewResponse) {
+    response = &DescribeLicenseOverviewResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeLicenseOverview
+// 查询实例概览详情。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INTERNALERROR_INTERNALSERVEREXCEPTIONDB = "InternalError.InternalServerExceptionDB"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_INSTANCENOTEXIST = "ResourceNotFound.InstanceNotExist"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOINSTANCE = "UnauthorizedOperation.NoPermissionToInstance"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOINSTANCE = "UnauthorizedOperation.NoPermissionToStudioInstance"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+//  UNSUPPORTEDOPERATION_UNPAIDORDER = "UnsupportedOperation.UnpaidOrder"
+func (c *Client) DescribeLicenseOverview(request *DescribeLicenseOverviewRequest) (response *DescribeLicenseOverviewResponse, err error) {
+    return c.DescribeLicenseOverviewWithContext(context.Background(), request)
+}
+
+// DescribeLicenseOverview
+// 查询实例概览详情。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INTERNALERROR_INTERNALSERVEREXCEPTIONDB = "InternalError.InternalServerExceptionDB"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_INSTANCENOTEXIST = "ResourceNotFound.InstanceNotExist"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOINSTANCE = "UnauthorizedOperation.NoPermissionToInstance"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOINSTANCE = "UnauthorizedOperation.NoPermissionToStudioInstance"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+//  UNSUPPORTEDOPERATION_UNPAIDORDER = "UnsupportedOperation.UnpaidOrder"
+func (c *Client) DescribeLicenseOverviewWithContext(ctx context.Context, request *DescribeLicenseOverviewRequest) (response *DescribeLicenseOverviewResponse, err error) {
+    if request == nil {
+        request = NewDescribeLicenseOverviewRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "DescribeLicenseOverview")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLicenseOverview require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLicenseOverviewResponse()
     err = c.Send(request, response)
     return
 }
@@ -6983,6 +7441,64 @@ func (c *Client) DescribeSubscribedTopicPolicyWithContext(ctx context.Context, r
     return
 }
 
+func NewDescribeTWeSeeCallbackRequest() (request *DescribeTWeSeeCallbackRequest) {
+    request = &DescribeTWeSeeCallbackRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeTWeSeeCallback")
+    
+    
+    return
+}
+
+func NewDescribeTWeSeeCallbackResponse() (response *DescribeTWeSeeCallbackResponse) {
+    response = &DescribeTWeSeeCallbackResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTWeSeeCallback
+// 查询 TWeSee 回调目标详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_SEECALLBACKNOTEXIST = "ResourceNotFound.SeeCallbackNotExist"
+func (c *Client) DescribeTWeSeeCallback(request *DescribeTWeSeeCallbackRequest) (response *DescribeTWeSeeCallbackResponse, err error) {
+    return c.DescribeTWeSeeCallbackWithContext(context.Background(), request)
+}
+
+// DescribeTWeSeeCallback
+// 查询 TWeSee 回调目标详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_SEECALLBACKNOTEXIST = "ResourceNotFound.SeeCallbackNotExist"
+func (c *Client) DescribeTWeSeeCallbackWithContext(ctx context.Context, request *DescribeTWeSeeCallbackRequest) (response *DescribeTWeSeeCallbackResponse, err error) {
+    if request == nil {
+        request = NewDescribeTWeSeeCallbackRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "DescribeTWeSeeCallback")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTWeSeeCallback require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTWeSeeCallbackResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTWeSeeConfigRequest() (request *DescribeTWeSeeConfigRequest) {
     request = &DescribeTWeSeeConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -7047,6 +7563,64 @@ func (c *Client) DescribeTWeSeeConfigWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeTWeSeePostPaidServiceRequest() (request *DescribeTWeSeePostPaidServiceRequest) {
+    request = &DescribeTWeSeePostPaidServiceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeTWeSeePostPaidService")
+    
+    
+    return
+}
+
+func NewDescribeTWeSeePostPaidServiceResponse() (response *DescribeTWeSeePostPaidServiceResponse) {
+    response = &DescribeTWeSeePostPaidServiceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTWeSeePostPaidService
+// 查询 TWeSee 后付费服务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_SEEPOSTPAIDSERVICENOTEXIST = "ResourceNotFound.SeePostPaidServiceNotExist"
+func (c *Client) DescribeTWeSeePostPaidService(request *DescribeTWeSeePostPaidServiceRequest) (response *DescribeTWeSeePostPaidServiceResponse, err error) {
+    return c.DescribeTWeSeePostPaidServiceWithContext(context.Background(), request)
+}
+
+// DescribeTWeSeePostPaidService
+// 查询 TWeSee 后付费服务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_SEEPOSTPAIDSERVICENOTEXIST = "ResourceNotFound.SeePostPaidServiceNotExist"
+func (c *Client) DescribeTWeSeePostPaidServiceWithContext(ctx context.Context, request *DescribeTWeSeePostPaidServiceRequest) (response *DescribeTWeSeePostPaidServiceResponse, err error) {
+    if request == nil {
+        request = NewDescribeTWeSeePostPaidServiceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "DescribeTWeSeePostPaidService")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTWeSeePostPaidService require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTWeSeePostPaidServiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTWeSeeRecognitionTaskRequest() (request *DescribeTWeSeeRecognitionTaskRequest) {
     request = &DescribeTWeSeeRecognitionTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -7099,6 +7673,182 @@ func (c *Client) DescribeTWeSeeRecognitionTaskWithContext(ctx context.Context, r
     request.SetContext(ctx)
     
     response = NewDescribeTWeSeeRecognitionTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTWeSeeSubscriptionRequest() (request *DescribeTWeSeeSubscriptionRequest) {
+    request = &DescribeTWeSeeSubscriptionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeTWeSeeSubscription")
+    
+    
+    return
+}
+
+func NewDescribeTWeSeeSubscriptionResponse() (response *DescribeTWeSeeSubscriptionResponse) {
+    response = &DescribeTWeSeeSubscriptionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTWeSeeSubscription
+// 查询 TWeSee 预付费订阅
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_DEVICECHANNELNOTEXIST = "ResourceNotFound.DeviceChannelNotExist"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_SEEPREPAIDSUBSCRIPTIONNOTEXIST = "ResourceNotFound.SeePrePaidSubscriptionNotExist"
+func (c *Client) DescribeTWeSeeSubscription(request *DescribeTWeSeeSubscriptionRequest) (response *DescribeTWeSeeSubscriptionResponse, err error) {
+    return c.DescribeTWeSeeSubscriptionWithContext(context.Background(), request)
+}
+
+// DescribeTWeSeeSubscription
+// 查询 TWeSee 预付费订阅
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_DEVICECHANNELNOTEXIST = "ResourceNotFound.DeviceChannelNotExist"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_SEEPREPAIDSUBSCRIPTIONNOTEXIST = "ResourceNotFound.SeePrePaidSubscriptionNotExist"
+func (c *Client) DescribeTWeSeeSubscriptionWithContext(ctx context.Context, request *DescribeTWeSeeSubscriptionRequest) (response *DescribeTWeSeeSubscriptionResponse, err error) {
+    if request == nil {
+        request = NewDescribeTWeSeeSubscriptionRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "DescribeTWeSeeSubscription")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTWeSeeSubscription require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTWeSeeSubscriptionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTWeSeeTaskRequest() (request *DescribeTWeSeeTaskRequest) {
+    request = &DescribeTWeSeeTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeTWeSeeTask")
+    
+    
+    return
+}
+
+func NewDescribeTWeSeeTaskResponse() (response *DescribeTWeSeeTaskResponse) {
+    response = &DescribeTWeSeeTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTWeSeeTask
+// 查询 TWeSee 任务详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_SEETASKNOTEXIST = "ResourceNotFound.SeeTaskNotExist"
+func (c *Client) DescribeTWeSeeTask(request *DescribeTWeSeeTaskRequest) (response *DescribeTWeSeeTaskResponse, err error) {
+    return c.DescribeTWeSeeTaskWithContext(context.Background(), request)
+}
+
+// DescribeTWeSeeTask
+// 查询 TWeSee 任务详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_SEETASKNOTEXIST = "ResourceNotFound.SeeTaskNotExist"
+func (c *Client) DescribeTWeSeeTaskWithContext(ctx context.Context, request *DescribeTWeSeeTaskRequest) (response *DescribeTWeSeeTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeTWeSeeTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "DescribeTWeSeeTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTWeSeeTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTWeSeeTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTWeSeeTaskStatisticsRequest() (request *DescribeTWeSeeTaskStatisticsRequest) {
+    request = &DescribeTWeSeeTaskStatisticsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeTWeSeeTaskStatistics")
+    
+    
+    return
+}
+
+func NewDescribeTWeSeeTaskStatisticsResponse() (response *DescribeTWeSeeTaskStatisticsResponse) {
+    response = &DescribeTWeSeeTaskStatisticsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTWeSeeTaskStatistics
+// 获取 TWeSee 任务统计数据
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeTWeSeeTaskStatistics(request *DescribeTWeSeeTaskStatisticsRequest) (response *DescribeTWeSeeTaskStatisticsResponse, err error) {
+    return c.DescribeTWeSeeTaskStatisticsWithContext(context.Background(), request)
+}
+
+// DescribeTWeSeeTaskStatistics
+// 获取 TWeSee 任务统计数据
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeTWeSeeTaskStatisticsWithContext(ctx context.Context, request *DescribeTWeSeeTaskStatisticsRequest) (response *DescribeTWeSeeTaskStatisticsResponse, err error) {
+    if request == nil {
+        request = NewDescribeTWeSeeTaskStatisticsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "DescribeTWeSeeTaskStatistics")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTWeSeeTaskStatistics require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTWeSeeTaskStatisticsResponse()
     err = c.Send(request, response)
     return
 }
@@ -7495,6 +8245,10 @@ func NewDescribeVideoLicenseResponse() (response *DescribeVideoLicenseResponse) 
 }
 
 // DescribeVideoLicense
+// DescribeLicenseOverView代替
+//
+// 
+//
 // 用于查询视频激活码统计概览
 //
 // 可能返回的错误码:
@@ -7511,6 +8265,10 @@ func (c *Client) DescribeVideoLicense(request *DescribeVideoLicenseRequest) (res
 }
 
 // DescribeVideoLicense
+// DescribeLicenseOverView代替
+//
+// 
+//
 // 用于查询视频激活码统计概览
 //
 // 可能返回的错误码:
@@ -7535,6 +8293,76 @@ func (c *Client) DescribeVideoLicenseWithContext(ctx context.Context, request *D
     request.SetContext(ctx)
     
     response = NewDescribeVideoLicenseResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDestroyTWeSeeSubscriptionRequest() (request *DestroyTWeSeeSubscriptionRequest) {
+    request = &DestroyTWeSeeSubscriptionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DestroyTWeSeeSubscription")
+    
+    
+    return
+}
+
+func NewDestroyTWeSeeSubscriptionResponse() (response *DestroyTWeSeeSubscriptionResponse) {
+    response = &DestroyTWeSeeSubscriptionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DestroyTWeSeeSubscription
+// 销毁 TWeSee 预付费订阅
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ANOTHEROPERATIONISRUNNING = "FailedOperation.AnotherOperationIsRunning"
+//  FAILEDOPERATION_SEESUBSCRIPTIONNOTISOLATED = "FailedOperation.SeeSubscriptionNotIsolated"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_DEVICECHANNELNOTEXIST = "ResourceNotFound.DeviceChannelNotExist"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_SEEPREPAIDSUBSCRIPTIONNOTEXIST = "ResourceNotFound.SeePrePaidSubscriptionNotExist"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DestroyTWeSeeSubscription(request *DestroyTWeSeeSubscriptionRequest) (response *DestroyTWeSeeSubscriptionResponse, err error) {
+    return c.DestroyTWeSeeSubscriptionWithContext(context.Background(), request)
+}
+
+// DestroyTWeSeeSubscription
+// 销毁 TWeSee 预付费订阅
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ANOTHEROPERATIONISRUNNING = "FailedOperation.AnotherOperationIsRunning"
+//  FAILEDOPERATION_SEESUBSCRIPTIONNOTISOLATED = "FailedOperation.SeeSubscriptionNotIsolated"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_DEVICECHANNELNOTEXIST = "ResourceNotFound.DeviceChannelNotExist"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_SEEPREPAIDSUBSCRIPTIONNOTEXIST = "ResourceNotFound.SeePrePaidSubscriptionNotExist"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DestroyTWeSeeSubscriptionWithContext(ctx context.Context, request *DestroyTWeSeeSubscriptionRequest) (response *DestroyTWeSeeSubscriptionResponse, err error) {
+    if request == nil {
+        request = NewDestroyTWeSeeSubscriptionRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "DestroyTWeSeeSubscription")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DestroyTWeSeeSubscription require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDestroyTWeSeeSubscriptionResponse()
     err = c.Send(request, response)
     return
 }
@@ -9251,6 +10079,128 @@ func (c *Client) InheritCloudStorageUserWithContext(ctx context.Context, request
     return
 }
 
+func NewInquireTWeSeeSubscriptionCreatePriceRequest() (request *InquireTWeSeeSubscriptionCreatePriceRequest) {
+    request = &InquireTWeSeeSubscriptionCreatePriceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "InquireTWeSeeSubscriptionCreatePrice")
+    
+    
+    return
+}
+
+func NewInquireTWeSeeSubscriptionCreatePriceResponse() (response *InquireTWeSeeSubscriptionCreatePriceResponse) {
+    response = &InquireTWeSeeSubscriptionCreatePriceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// InquireTWeSeeSubscriptionCreatePrice
+// 查询 TWeSee 预付费新购价格
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) InquireTWeSeeSubscriptionCreatePrice(request *InquireTWeSeeSubscriptionCreatePriceRequest) (response *InquireTWeSeeSubscriptionCreatePriceResponse, err error) {
+    return c.InquireTWeSeeSubscriptionCreatePriceWithContext(context.Background(), request)
+}
+
+// InquireTWeSeeSubscriptionCreatePrice
+// 查询 TWeSee 预付费新购价格
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) InquireTWeSeeSubscriptionCreatePriceWithContext(ctx context.Context, request *InquireTWeSeeSubscriptionCreatePriceRequest) (response *InquireTWeSeeSubscriptionCreatePriceResponse, err error) {
+    if request == nil {
+        request = NewInquireTWeSeeSubscriptionCreatePriceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "InquireTWeSeeSubscriptionCreatePrice")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InquireTWeSeeSubscriptionCreatePrice require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewInquireTWeSeeSubscriptionCreatePriceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewInquireTWeSeeSubscriptionRenewPriceRequest() (request *InquireTWeSeeSubscriptionRenewPriceRequest) {
+    request = &InquireTWeSeeSubscriptionRenewPriceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "InquireTWeSeeSubscriptionRenewPrice")
+    
+    
+    return
+}
+
+func NewInquireTWeSeeSubscriptionRenewPriceResponse() (response *InquireTWeSeeSubscriptionRenewPriceResponse) {
+    response = &InquireTWeSeeSubscriptionRenewPriceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// InquireTWeSeeSubscriptionRenewPrice
+// 查询 TWeSee 预付费续费价格
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CLOUDSTORAGEPACKAGEREQUIRED = "FailedOperation.CloudStoragePackageRequired"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_DEVICECHANNELNOTEXIST = "ResourceNotFound.DeviceChannelNotExist"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_SEEPREPAIDSUBSCRIPTIONNOTEXIST = "ResourceNotFound.SeePrePaidSubscriptionNotExist"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) InquireTWeSeeSubscriptionRenewPrice(request *InquireTWeSeeSubscriptionRenewPriceRequest) (response *InquireTWeSeeSubscriptionRenewPriceResponse, err error) {
+    return c.InquireTWeSeeSubscriptionRenewPriceWithContext(context.Background(), request)
+}
+
+// InquireTWeSeeSubscriptionRenewPrice
+// 查询 TWeSee 预付费续费价格
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CLOUDSTORAGEPACKAGEREQUIRED = "FailedOperation.CloudStoragePackageRequired"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_DEVICECHANNELNOTEXIST = "ResourceNotFound.DeviceChannelNotExist"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_SEEPREPAIDSUBSCRIPTIONNOTEXIST = "ResourceNotFound.SeePrePaidSubscriptionNotExist"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) InquireTWeSeeSubscriptionRenewPriceWithContext(ctx context.Context, request *InquireTWeSeeSubscriptionRenewPriceRequest) (response *InquireTWeSeeSubscriptionRenewPriceResponse, err error) {
+    if request == nil {
+        request = NewInquireTWeSeeSubscriptionRenewPriceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "InquireTWeSeeSubscriptionRenewPrice")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InquireTWeSeeSubscriptionRenewPrice require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewInquireTWeSeeSubscriptionRenewPriceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewInvokeAISearchServiceRequest() (request *InvokeAISearchServiceRequest) {
     request = &InvokeAISearchServiceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -9433,6 +10383,76 @@ func (c *Client) InvokeExternalSourceAIServiceTaskWithContext(ctx context.Contex
     request.SetContext(ctx)
     
     response = NewInvokeExternalSourceAIServiceTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewInvokeTWeSeeComprehensionRequest() (request *InvokeTWeSeeComprehensionRequest) {
+    request = &InvokeTWeSeeComprehensionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "InvokeTWeSeeComprehension")
+    
+    
+    return
+}
+
+func NewInvokeTWeSeeComprehensionResponse() (response *InvokeTWeSeeComprehensionResponse) {
+    response = &InvokeTWeSeeComprehensionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// InvokeTWeSeeComprehension
+// 调用 TWeSee 视觉理解算法
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SEEPOSTPAIDSERVICEISOLATED = "FailedOperation.SeePostPaidServiceIsolated"
+//  FAILEDOPERATION_SEEPOSTPAIDSERVICEISOLATEDBYACCOUNT = "FailedOperation.SeePostPaidServiceIsolatedByAccount"
+//  FAILEDOPERATION_SEEPOSTPAIDSERVICENOTEXISTS = "FailedOperation.SeePostPaidServiceNotExists"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDURL = "InvalidParameterValue.InvalidURL"
+//  RESOURCENOTFOUND_SEECALLBACKNOTEXIST = "ResourceNotFound.SeeCallbackNotExist"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_CAPABILITYNOTSUPPORTEDINSEESERVICETYPE = "UnsupportedOperation.CapabilityNotSupportedInSeeServiceType"
+func (c *Client) InvokeTWeSeeComprehension(request *InvokeTWeSeeComprehensionRequest) (response *InvokeTWeSeeComprehensionResponse, err error) {
+    return c.InvokeTWeSeeComprehensionWithContext(context.Background(), request)
+}
+
+// InvokeTWeSeeComprehension
+// 调用 TWeSee 视觉理解算法
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SEEPOSTPAIDSERVICEISOLATED = "FailedOperation.SeePostPaidServiceIsolated"
+//  FAILEDOPERATION_SEEPOSTPAIDSERVICEISOLATEDBYACCOUNT = "FailedOperation.SeePostPaidServiceIsolatedByAccount"
+//  FAILEDOPERATION_SEEPOSTPAIDSERVICENOTEXISTS = "FailedOperation.SeePostPaidServiceNotExists"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDURL = "InvalidParameterValue.InvalidURL"
+//  RESOURCENOTFOUND_SEECALLBACKNOTEXIST = "ResourceNotFound.SeeCallbackNotExist"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_CAPABILITYNOTSUPPORTEDINSEESERVICETYPE = "UnsupportedOperation.CapabilityNotSupportedInSeeServiceType"
+func (c *Client) InvokeTWeSeeComprehensionWithContext(ctx context.Context, request *InvokeTWeSeeComprehensionRequest) (response *InvokeTWeSeeComprehensionResponse, err error) {
+    if request == nil {
+        request = NewInvokeTWeSeeComprehensionRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "InvokeTWeSeeComprehension")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InvokeTWeSeeComprehension require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewInvokeTWeSeeComprehensionResponse()
     err = c.Send(request, response)
     return
 }
@@ -9885,6 +10905,126 @@ func (c *Client) ListProductOtaModulesWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewListProductOtaModulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListTWeSeeCallbackRequest() (request *ListTWeSeeCallbackRequest) {
+    request = &ListTWeSeeCallbackRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "ListTWeSeeCallback")
+    
+    
+    return
+}
+
+func NewListTWeSeeCallbackResponse() (response *ListTWeSeeCallbackResponse) {
+    response = &ListTWeSeeCallbackResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListTWeSeeCallback
+// 查询 TWeSee 回调目标列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) ListTWeSeeCallback(request *ListTWeSeeCallbackRequest) (response *ListTWeSeeCallbackResponse, err error) {
+    return c.ListTWeSeeCallbackWithContext(context.Background(), request)
+}
+
+// ListTWeSeeCallback
+// 查询 TWeSee 回调目标列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) ListTWeSeeCallbackWithContext(ctx context.Context, request *ListTWeSeeCallbackRequest) (response *ListTWeSeeCallbackResponse, err error) {
+    if request == nil {
+        request = NewListTWeSeeCallbackRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "ListTWeSeeCallback")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListTWeSeeCallback require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListTWeSeeCallbackResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListTWeSeeTasksRequest() (request *ListTWeSeeTasksRequest) {
+    request = &ListTWeSeeTasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "ListTWeSeeTasks")
+    
+    
+    return
+}
+
+func NewListTWeSeeTasksResponse() (response *ListTWeSeeTasksResponse) {
+    response = &ListTWeSeeTasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListTWeSeeTasks
+// 短摘要列表查询
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PRODUCTIOTVIDEOSERVICENOTENABLED = "FailedOperation.ProductIotVideoServiceNotEnabled"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_DEVICECHANNELNOTEXIST = "ResourceNotFound.DeviceChannelNotExist"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+func (c *Client) ListTWeSeeTasks(request *ListTWeSeeTasksRequest) (response *ListTWeSeeTasksResponse, err error) {
+    return c.ListTWeSeeTasksWithContext(context.Background(), request)
+}
+
+// ListTWeSeeTasks
+// 短摘要列表查询
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PRODUCTIOTVIDEOSERVICENOTENABLED = "FailedOperation.ProductIotVideoServiceNotEnabled"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_DEVICECHANNELNOTEXIST = "ResourceNotFound.DeviceChannelNotExist"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+func (c *Client) ListTWeSeeTasksWithContext(ctx context.Context, request *ListTWeSeeTasksRequest) (response *ListTWeSeeTasksResponse, err error) {
+    if request == nil {
+        request = NewListTWeSeeTasksRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "ListTWeSeeTasks")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListTWeSeeTasks require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListTWeSeeTasksResponse()
     err = c.Send(request, response)
     return
 }
@@ -10937,6 +12077,68 @@ func (c *Client) ModifyStudioProductWithContext(ctx context.Context, request *Mo
     return
 }
 
+func NewModifyTWeSeeCallbackRequest() (request *ModifyTWeSeeCallbackRequest) {
+    request = &ModifyTWeSeeCallbackRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "ModifyTWeSeeCallback")
+    
+    
+    return
+}
+
+func NewModifyTWeSeeCallbackResponse() (response *ModifyTWeSeeCallbackResponse) {
+    response = &ModifyTWeSeeCallbackResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyTWeSeeCallback
+// 修改 TWeSee 回调目标
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDCALLBACKTOKEN = "InvalidParameterValue.InvalidCallbackToken"
+//  INVALIDPARAMETERVALUE_INVALIDURL = "InvalidParameterValue.InvalidURL"
+//  RESOURCENOTFOUND_SEECALLBACKNOTEXIST = "ResourceNotFound.SeeCallbackNotExist"
+func (c *Client) ModifyTWeSeeCallback(request *ModifyTWeSeeCallbackRequest) (response *ModifyTWeSeeCallbackResponse, err error) {
+    return c.ModifyTWeSeeCallbackWithContext(context.Background(), request)
+}
+
+// ModifyTWeSeeCallback
+// 修改 TWeSee 回调目标
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDCALLBACKTOKEN = "InvalidParameterValue.InvalidCallbackToken"
+//  INVALIDPARAMETERVALUE_INVALIDURL = "InvalidParameterValue.InvalidURL"
+//  RESOURCENOTFOUND_SEECALLBACKNOTEXIST = "ResourceNotFound.SeeCallbackNotExist"
+func (c *Client) ModifyTWeSeeCallbackWithContext(ctx context.Context, request *ModifyTWeSeeCallbackRequest) (response *ModifyTWeSeeCallbackResponse, err error) {
+    if request == nil {
+        request = NewModifyTWeSeeCallbackRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "ModifyTWeSeeCallback")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyTWeSeeCallback require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyTWeSeeCallbackResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyTWeSeeConfigRequest() (request *ModifyTWeSeeConfigRequest) {
     request = &ModifyTWeSeeConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -10999,6 +12201,144 @@ func (c *Client) ModifyTWeSeeConfigWithContext(ctx context.Context, request *Mod
     request.SetContext(ctx)
     
     response = NewModifyTWeSeeConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyTWeSeeSubscriptionRequest() (request *ModifyTWeSeeSubscriptionRequest) {
+    request = &ModifyTWeSeeSubscriptionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "ModifyTWeSeeSubscription")
+    
+    
+    return
+}
+
+func NewModifyTWeSeeSubscriptionResponse() (response *ModifyTWeSeeSubscriptionResponse) {
+    response = &ModifyTWeSeeSubscriptionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyTWeSeeSubscription
+// 修改 TWeSee 预付费订阅
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SEEPREPAIDSUBSCRIPTIONINVALIDSTATUS = "FailedOperation.SeePrePaidSubscriptionInvalidStatus"
+//  FAILEDOPERATION_SEEPREPAIDSUBSCRIPTIONISOLATED = "FailedOperation.SeePrePaidSubscriptionIsolated"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_DEVICECHANNELNOTEXIST = "ResourceNotFound.DeviceChannelNotExist"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_SEEPREPAIDSUBSCRIPTIONNOTEXIST = "ResourceNotFound.SeePrePaidSubscriptionNotExist"
+func (c *Client) ModifyTWeSeeSubscription(request *ModifyTWeSeeSubscriptionRequest) (response *ModifyTWeSeeSubscriptionResponse, err error) {
+    return c.ModifyTWeSeeSubscriptionWithContext(context.Background(), request)
+}
+
+// ModifyTWeSeeSubscription
+// 修改 TWeSee 预付费订阅
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SEEPREPAIDSUBSCRIPTIONINVALIDSTATUS = "FailedOperation.SeePrePaidSubscriptionInvalidStatus"
+//  FAILEDOPERATION_SEEPREPAIDSUBSCRIPTIONISOLATED = "FailedOperation.SeePrePaidSubscriptionIsolated"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_DEVICECHANNELNOTEXIST = "ResourceNotFound.DeviceChannelNotExist"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_SEEPREPAIDSUBSCRIPTIONNOTEXIST = "ResourceNotFound.SeePrePaidSubscriptionNotExist"
+func (c *Client) ModifyTWeSeeSubscriptionWithContext(ctx context.Context, request *ModifyTWeSeeSubscriptionRequest) (response *ModifyTWeSeeSubscriptionResponse, err error) {
+    if request == nil {
+        request = NewModifyTWeSeeSubscriptionRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "ModifyTWeSeeSubscription")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyTWeSeeSubscription require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyTWeSeeSubscriptionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyTWeSeeSubscriptionRenewFlagRequest() (request *ModifyTWeSeeSubscriptionRenewFlagRequest) {
+    request = &ModifyTWeSeeSubscriptionRenewFlagRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "ModifyTWeSeeSubscriptionRenewFlag")
+    
+    
+    return
+}
+
+func NewModifyTWeSeeSubscriptionRenewFlagResponse() (response *ModifyTWeSeeSubscriptionRenewFlagResponse) {
+    response = &ModifyTWeSeeSubscriptionRenewFlagResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyTWeSeeSubscriptionRenewFlag
+// 修改 TWeSee 预付费订阅续费标识
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ANOTHEROPERATIONISRUNNING = "FailedOperation.AnotherOperationIsRunning"
+//  FAILEDOPERATION_SEEPREPAIDSUBSCRIPTIONINVALIDSTATUS = "FailedOperation.SeePrePaidSubscriptionInvalidStatus"
+//  FAILEDOPERATION_SEEPREPAIDSUBSCRIPTIONISOLATED = "FailedOperation.SeePrePaidSubscriptionIsolated"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_DEVICECHANNELNOTEXIST = "ResourceNotFound.DeviceChannelNotExist"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_SEEPREPAIDSUBSCRIPTIONNOTEXIST = "ResourceNotFound.SeePrePaidSubscriptionNotExist"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyTWeSeeSubscriptionRenewFlag(request *ModifyTWeSeeSubscriptionRenewFlagRequest) (response *ModifyTWeSeeSubscriptionRenewFlagResponse, err error) {
+    return c.ModifyTWeSeeSubscriptionRenewFlagWithContext(context.Background(), request)
+}
+
+// ModifyTWeSeeSubscriptionRenewFlag
+// 修改 TWeSee 预付费订阅续费标识
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ANOTHEROPERATIONISRUNNING = "FailedOperation.AnotherOperationIsRunning"
+//  FAILEDOPERATION_SEEPREPAIDSUBSCRIPTIONINVALIDSTATUS = "FailedOperation.SeePrePaidSubscriptionInvalidStatus"
+//  FAILEDOPERATION_SEEPREPAIDSUBSCRIPTIONISOLATED = "FailedOperation.SeePrePaidSubscriptionIsolated"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_DEVICECHANNELNOTEXIST = "ResourceNotFound.DeviceChannelNotExist"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_SEEPREPAIDSUBSCRIPTIONNOTEXIST = "ResourceNotFound.SeePrePaidSubscriptionNotExist"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyTWeSeeSubscriptionRenewFlagWithContext(ctx context.Context, request *ModifyTWeSeeSubscriptionRenewFlagRequest) (response *ModifyTWeSeeSubscriptionRenewFlagResponse, err error) {
+    if request == nil {
+        request = NewModifyTWeSeeSubscriptionRenewFlagRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "ModifyTWeSeeSubscriptionRenewFlag")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyTWeSeeSubscriptionRenewFlag require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyTWeSeeSubscriptionRenewFlagResponse()
     err = c.Send(request, response)
     return
 }
@@ -11797,6 +13137,90 @@ func (c *Client) RemoveUserByRoomIdFromTRTCWithContext(ctx context.Context, requ
     return
 }
 
+func NewRenewTWeSeeSubscriptionRequest() (request *RenewTWeSeeSubscriptionRequest) {
+    request = &RenewTWeSeeSubscriptionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "RenewTWeSeeSubscription")
+    
+    
+    return
+}
+
+func NewRenewTWeSeeSubscriptionResponse() (response *RenewTWeSeeSubscriptionResponse) {
+    response = &RenewTWeSeeSubscriptionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RenewTWeSeeSubscription
+// 续费 TWeSee 预付费订阅
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ANOTHEROPERATIONISRUNNING = "FailedOperation.AnotherOperationIsRunning"
+//  FAILEDOPERATION_BALANCEINSUFFICIENT = "FailedOperation.BalanceInsufficient"
+//  FAILEDOPERATION_CREATEORDERFAILED = "FailedOperation.CreateOrderFailed"
+//  FAILEDOPERATION_CUSTOMORDERIDALREADYEXIST = "FailedOperation.CustomOrderIdAlreadyExist"
+//  FAILEDOPERATION_SEEPREPAIDSUBSCRIPTIONENDTIMEEXCEEDED = "FailedOperation.SeePrePaidSubscriptionEndTimeExceeded"
+//  FAILEDOPERATION_SEEPREPAIDSUBSCRIPTIONINVALIDSTATUS = "FailedOperation.SeePrePaidSubscriptionInvalidStatus"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_DEVICECHANNELNOTEXIST = "ResourceNotFound.DeviceChannelNotExist"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_SEEPREPAIDSUBSCRIPTIONNOTEXIST = "ResourceNotFound.SeePrePaidSubscriptionNotExist"
+//  UNAUTHORIZEDOPERATION_CERTIFICATIONNEEDUPGRADE = "UnauthorizedOperation.CertificationNeedUpgrade"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOPAY = "UnauthorizedOperation.NoPermissionToPay"
+//  UNAUTHORIZEDOPERATION_NOTCERTIFICATION = "UnauthorizedOperation.NotCertification"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) RenewTWeSeeSubscription(request *RenewTWeSeeSubscriptionRequest) (response *RenewTWeSeeSubscriptionResponse, err error) {
+    return c.RenewTWeSeeSubscriptionWithContext(context.Background(), request)
+}
+
+// RenewTWeSeeSubscription
+// 续费 TWeSee 预付费订阅
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ANOTHEROPERATIONISRUNNING = "FailedOperation.AnotherOperationIsRunning"
+//  FAILEDOPERATION_BALANCEINSUFFICIENT = "FailedOperation.BalanceInsufficient"
+//  FAILEDOPERATION_CREATEORDERFAILED = "FailedOperation.CreateOrderFailed"
+//  FAILEDOPERATION_CUSTOMORDERIDALREADYEXIST = "FailedOperation.CustomOrderIdAlreadyExist"
+//  FAILEDOPERATION_SEEPREPAIDSUBSCRIPTIONENDTIMEEXCEEDED = "FailedOperation.SeePrePaidSubscriptionEndTimeExceeded"
+//  FAILEDOPERATION_SEEPREPAIDSUBSCRIPTIONINVALIDSTATUS = "FailedOperation.SeePrePaidSubscriptionInvalidStatus"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_DEVICECHANNELNOTEXIST = "ResourceNotFound.DeviceChannelNotExist"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_SEEPREPAIDSUBSCRIPTIONNOTEXIST = "ResourceNotFound.SeePrePaidSubscriptionNotExist"
+//  UNAUTHORIZEDOPERATION_CERTIFICATIONNEEDUPGRADE = "UnauthorizedOperation.CertificationNeedUpgrade"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOPAY = "UnauthorizedOperation.NoPermissionToPay"
+//  UNAUTHORIZEDOPERATION_NOTCERTIFICATION = "UnauthorizedOperation.NotCertification"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) RenewTWeSeeSubscriptionWithContext(ctx context.Context, request *RenewTWeSeeSubscriptionRequest) (response *RenewTWeSeeSubscriptionResponse, err error) {
+    if request == nil {
+        request = NewRenewTWeSeeSubscriptionRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "RenewTWeSeeSubscription")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RenewTWeSeeSubscription require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRenewTWeSeeSubscriptionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewResetCloudStorageRequest() (request *ResetCloudStorageRequest) {
     request = &ResetCloudStorageRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -12239,6 +13663,78 @@ func (c *Client) SearchTopicRuleWithContext(ctx context.Context, request *Search
     request.SetContext(ctx)
     
     response = NewSearchTopicRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewTerminateTWeSeeSubscriptionRequest() (request *TerminateTWeSeeSubscriptionRequest) {
+    request = &TerminateTWeSeeSubscriptionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "TerminateTWeSeeSubscription")
+    
+    
+    return
+}
+
+func NewTerminateTWeSeeSubscriptionResponse() (response *TerminateTWeSeeSubscriptionResponse) {
+    response = &TerminateTWeSeeSubscriptionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// TerminateTWeSeeSubscription
+// 退订 TWeSee 预付费订阅
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ANOTHEROPERATIONISRUNNING = "FailedOperation.AnotherOperationIsRunning"
+//  FAILEDOPERATION_CREATEORDERFAILED = "FailedOperation.CreateOrderFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_RETURNRESOURCELIMITEXCEEDED = "LimitExceeded.ReturnResourceLimitExceeded"
+//  RESOURCENOTFOUND_DEVICECHANNELNOTEXIST = "ResourceNotFound.DeviceChannelNotExist"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_SEEPREPAIDSUBSCRIPTIONNOTEXIST = "ResourceNotFound.SeePrePaidSubscriptionNotExist"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) TerminateTWeSeeSubscription(request *TerminateTWeSeeSubscriptionRequest) (response *TerminateTWeSeeSubscriptionResponse, err error) {
+    return c.TerminateTWeSeeSubscriptionWithContext(context.Background(), request)
+}
+
+// TerminateTWeSeeSubscription
+// 退订 TWeSee 预付费订阅
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ANOTHEROPERATIONISRUNNING = "FailedOperation.AnotherOperationIsRunning"
+//  FAILEDOPERATION_CREATEORDERFAILED = "FailedOperation.CreateOrderFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_RETURNRESOURCELIMITEXCEEDED = "LimitExceeded.ReturnResourceLimitExceeded"
+//  RESOURCENOTFOUND_DEVICECHANNELNOTEXIST = "ResourceNotFound.DeviceChannelNotExist"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_SEEPREPAIDSUBSCRIPTIONNOTEXIST = "ResourceNotFound.SeePrePaidSubscriptionNotExist"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) TerminateTWeSeeSubscriptionWithContext(ctx context.Context, request *TerminateTWeSeeSubscriptionRequest) (response *TerminateTWeSeeSubscriptionResponse, err error) {
+    if request == nil {
+        request = NewTerminateTWeSeeSubscriptionRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "TerminateTWeSeeSubscription")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TerminateTWeSeeSubscription require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewTerminateTWeSeeSubscriptionResponse()
     err = c.Send(request, response)
     return
 }

@@ -777,6 +777,118 @@ func (c *Client) CreateAigcApiTokenWithContext(ctx context.Context, request *Cre
     return
 }
 
+func NewCreateAigcAudioCloneRequest() (request *CreateAigcAudioCloneRequest) {
+    request = &CreateAigcAudioCloneRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "CreateAigcAudioClone")
+    
+    
+    return
+}
+
+func NewCreateAigcAudioCloneResponse() (response *CreateAigcAudioCloneResponse) {
+    response = &CreateAigcAudioCloneResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateAigcAudioClone
+// 该接口用于创建 AIGC 音色复刻。注意，调用本接口会产生费用，请参考[计费文档](https://cloud.tencent.com/document/product/266/95125#96b3b59a-f9e1-49e9-966a-bedb70a4bf12)。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_FILEID = "InvalidParameterValue.FileId"
+//  INVALIDPARAMETERVALUE_SUBAPPID = "InvalidParameterValue.SubAppId"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateAigcAudioClone(request *CreateAigcAudioCloneRequest) (response *CreateAigcAudioCloneResponse, err error) {
+    return c.CreateAigcAudioCloneWithContext(context.Background(), request)
+}
+
+// CreateAigcAudioClone
+// 该接口用于创建 AIGC 音色复刻。注意，调用本接口会产生费用，请参考[计费文档](https://cloud.tencent.com/document/product/266/95125#96b3b59a-f9e1-49e9-966a-bedb70a4bf12)。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_FILEID = "InvalidParameterValue.FileId"
+//  INVALIDPARAMETERVALUE_SUBAPPID = "InvalidParameterValue.SubAppId"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateAigcAudioCloneWithContext(ctx context.Context, request *CreateAigcAudioCloneRequest) (response *CreateAigcAudioCloneResponse, err error) {
+    if request == nil {
+        request = NewCreateAigcAudioCloneRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vod", APIVersion, "CreateAigcAudioClone")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAigcAudioClone require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateAigcAudioCloneResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateAigcAudioTaskRequest() (request *CreateAigcAudioTaskRequest) {
+    request = &CreateAigcAudioTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "CreateAigcAudioTask")
+    
+    
+    return
+}
+
+func NewCreateAigcAudioTaskResponse() (response *CreateAigcAudioTaskResponse) {
+    response = &CreateAigcAudioTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateAigcAudioTask
+// 调用该接口，用于创建AI生音频任务。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_VIOLATIONCONTENT = "InvalidParameter.ViolationContent"
+func (c *Client) CreateAigcAudioTask(request *CreateAigcAudioTaskRequest) (response *CreateAigcAudioTaskResponse, err error) {
+    return c.CreateAigcAudioTaskWithContext(context.Background(), request)
+}
+
+// CreateAigcAudioTask
+// 调用该接口，用于创建AI生音频任务。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_VIOLATIONCONTENT = "InvalidParameter.ViolationContent"
+func (c *Client) CreateAigcAudioTaskWithContext(ctx context.Context, request *CreateAigcAudioTaskRequest) (response *CreateAigcAudioTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateAigcAudioTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vod", APIVersion, "CreateAigcAudioTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAigcAudioTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateAigcAudioTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAigcCustomElementRequest() (request *CreateAigcCustomElementRequest) {
     request = &CreateAigcCustomElementRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -800,10 +912,7 @@ func NewCreateAigcCustomElementResponse() (response *CreateAigcCustomElementResp
 // 调用该接口，针对指定模型进行主体创建。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+//  INVALIDPARAMETER_VIOLATIONCONTENT = "InvalidParameter.ViolationContent"
 func (c *Client) CreateAigcCustomElement(request *CreateAigcCustomElementRequest) (response *CreateAigcCustomElementResponse, err error) {
     return c.CreateAigcCustomElementWithContext(context.Background(), request)
 }
@@ -812,10 +921,7 @@ func (c *Client) CreateAigcCustomElement(request *CreateAigcCustomElementRequest
 // 调用该接口，针对指定模型进行主体创建。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+//  INVALIDPARAMETER_VIOLATIONCONTENT = "InvalidParameter.ViolationContent"
 func (c *Client) CreateAigcCustomElementWithContext(ctx context.Context, request *CreateAigcCustomElementRequest) (response *CreateAigcCustomElementResponse, err error) {
     if request == nil {
         request = NewCreateAigcCustomElementRequest()
@@ -853,7 +959,7 @@ func NewCreateAigcCustomVoiceResponse() (response *CreateAigcCustomVoiceResponse
 }
 
 // CreateAigcCustomVoice
-// 该接口用于创建 AIGC 自定义音色。
+// 该接口用于创建 AIGC 自定义音色。注意，调用本接口会产生创建自定义音色费用，请参考[计费文档](https://cloud.tencent.com/document/product/266/95125#5e5217e8-29fc-467e-ac2d-853648f988b7)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -870,7 +976,7 @@ func (c *Client) CreateAigcCustomVoice(request *CreateAigcCustomVoiceRequest) (r
 }
 
 // CreateAigcCustomVoice
-// 该接口用于创建 AIGC 自定义音色。
+// 该接口用于创建 AIGC 自定义音色。注意，调用本接口会产生创建自定义音色费用，请参考[计费文档](https://cloud.tencent.com/document/product/266/95125#5e5217e8-29fc-467e-ac2d-853648f988b7)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -919,7 +1025,7 @@ func NewCreateAigcImageTaskResponse() (response *CreateAigcImageTaskResponse) {
 }
 
 // CreateAigcImageTask
-// 该接口用于[生成 AIGC 图片](https://cloud.tencent.com/document/product/266/124473)。<b>接口处于内测阶段，如需使用请[联系我们](https://cloud.tencent.com/online-service?from=sales_sales&source=PRESALE)，接口调用会产生实际费用，</b>请参考点播 [AIGC 生图片计费文档](https://cloud.tencent.com/document/product/266/95125#9c4dc6ff-4b3f-4b25-bf2d-393889dfb9ac)。该功能结算模式为[后付费](https://cloud.tencent.com/document/product/266/2838)，日结客户当天使用将在第二天出账，月结客户将在次月1日统一出上月使用费用。
+// 该接口用于[生成 AIGC 图片](https://cloud.tencent.com/document/product/266/124473)。默认限制1个并发处理，接口调用会产生实际费用，请参考点播 [AIGC 生图片计费文档](https://cloud.tencent.com/document/product/266/95125#9c4dc6ff-4b3f-4b25-bf2d-393889dfb9ac)。该功能结算模式为[后付费](https://cloud.tencent.com/document/product/266/2838)，日结客户当天使用将在第二天出账，月结客户将在次月1日统一出上月使用费用。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -931,13 +1037,14 @@ func NewCreateAigcImageTaskResponse() (response *CreateAigcImageTaskResponse) {
 //  INVALIDPARAMETERVALUE_SESSIONID = "InvalidParameterValue.SessionId"
 //  INVALIDPARAMETERVALUE_SESSIONIDTOOLONG = "InvalidParameterValue.SessionIdTooLong"
 //  INVALIDPARAMETERVALUE_SUBAPPID = "InvalidParameterValue.SubAppId"
+//  LIMITEXCEEDED_QUOTA = "LimitExceeded.Quota"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateAigcImageTask(request *CreateAigcImageTaskRequest) (response *CreateAigcImageTaskResponse, err error) {
     return c.CreateAigcImageTaskWithContext(context.Background(), request)
 }
 
 // CreateAigcImageTask
-// 该接口用于[生成 AIGC 图片](https://cloud.tencent.com/document/product/266/124473)。<b>接口处于内测阶段，如需使用请[联系我们](https://cloud.tencent.com/online-service?from=sales_sales&source=PRESALE)，接口调用会产生实际费用，</b>请参考点播 [AIGC 生图片计费文档](https://cloud.tencent.com/document/product/266/95125#9c4dc6ff-4b3f-4b25-bf2d-393889dfb9ac)。该功能结算模式为[后付费](https://cloud.tencent.com/document/product/266/2838)，日结客户当天使用将在第二天出账，月结客户将在次月1日统一出上月使用费用。
+// 该接口用于[生成 AIGC 图片](https://cloud.tencent.com/document/product/266/124473)。默认限制1个并发处理，接口调用会产生实际费用，请参考点播 [AIGC 生图片计费文档](https://cloud.tencent.com/document/product/266/95125#9c4dc6ff-4b3f-4b25-bf2d-393889dfb9ac)。该功能结算模式为[后付费](https://cloud.tencent.com/document/product/266/2838)，日结客户当天使用将在第二天出账，月结客户将在次月1日统一出上月使用费用。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -949,6 +1056,7 @@ func (c *Client) CreateAigcImageTask(request *CreateAigcImageTaskRequest) (respo
 //  INVALIDPARAMETERVALUE_SESSIONID = "InvalidParameterValue.SessionId"
 //  INVALIDPARAMETERVALUE_SESSIONIDTOOLONG = "InvalidParameterValue.SessionIdTooLong"
 //  INVALIDPARAMETERVALUE_SUBAPPID = "InvalidParameterValue.SubAppId"
+//  LIMITEXCEEDED_QUOTA = "LimitExceeded.Quota"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateAigcImageTaskWithContext(ctx context.Context, request *CreateAigcImageTaskRequest) (response *CreateAigcImageTaskResponse, err error) {
     if request == nil {
@@ -1064,6 +1172,7 @@ func NewCreateAigcVideoRedrawTaskResponse() (response *CreateAigcVideoRedrawTask
 //  INVALIDPARAMETERVALUE_SESSIONCONTEXTTOOLONG = "InvalidParameterValue.SessionContextTooLong"
 //  INVALIDPARAMETERVALUE_SESSIONIDTOOLONG = "InvalidParameterValue.SessionIdTooLong"
 //  INVALIDPARAMETERVALUE_SUBAPPID = "InvalidParameterValue.SubAppId"
+//  LIMITEXCEEDED_QUOTA = "LimitExceeded.Quota"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateAigcVideoRedrawTask(request *CreateAigcVideoRedrawTaskRequest) (response *CreateAigcVideoRedrawTaskResponse, err error) {
     return c.CreateAigcVideoRedrawTaskWithContext(context.Background(), request)
@@ -1081,6 +1190,7 @@ func (c *Client) CreateAigcVideoRedrawTask(request *CreateAigcVideoRedrawTaskReq
 //  INVALIDPARAMETERVALUE_SESSIONCONTEXTTOOLONG = "InvalidParameterValue.SessionContextTooLong"
 //  INVALIDPARAMETERVALUE_SESSIONIDTOOLONG = "InvalidParameterValue.SessionIdTooLong"
 //  INVALIDPARAMETERVALUE_SUBAPPID = "InvalidParameterValue.SubAppId"
+//  LIMITEXCEEDED_QUOTA = "LimitExceeded.Quota"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateAigcVideoRedrawTaskWithContext(ctx context.Context, request *CreateAigcVideoRedrawTaskRequest) (response *CreateAigcVideoRedrawTaskResponse, err error) {
     if request == nil {
@@ -1119,7 +1229,7 @@ func NewCreateAigcVideoTaskResponse() (response *CreateAigcVideoTaskResponse) {
 }
 
 // CreateAigcVideoTask
-// 该接口用于[生成 AIGC 视频](https://cloud.tencent.com/document/product/266/124474)。<b>接口处于内测阶段，如需使用请[联系我们](https://cloud.tencent.com/online-service?from=sales_sales&source=PRESALE)，接口调用会产生实际费用</b>，请参考点播 [AIGC 生视频计费文档](https://cloud.tencent.com/document/product/266/95125#96b3b59a-f9e1-49e9-966a-bedb70a4bf12)。该功能结算模式为[后付费](https://cloud.tencent.com/document/product/266/2838)，日结客户当天使用将在第二天出账，月结客户将在次月1日统一出上月使用费用。
+// 该接口用于[生成 AIGC 视频](https://cloud.tencent.com/document/product/266/124474)。默认限制1个并发处理，接口调用会产生实际费用，请参考点播 [AIGC 生视频计费文档](https://cloud.tencent.com/document/product/266/95125#96b3b59a-f9e1-49e9-966a-bedb70a4bf12)。该功能结算模式为[后付费](https://cloud.tencent.com/document/product/266/2838)，日结客户当天使用将在第二天出账，月结客户将在次月1日统一出上月使用费用。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1130,13 +1240,14 @@ func NewCreateAigcVideoTaskResponse() (response *CreateAigcVideoTaskResponse) {
 //  INVALIDPARAMETERVALUE_SESSIONCONTEXTTOOLONG = "InvalidParameterValue.SessionContextTooLong"
 //  INVALIDPARAMETERVALUE_SESSIONIDTOOLONG = "InvalidParameterValue.SessionIdTooLong"
 //  INVALIDPARAMETERVALUE_SUBAPPID = "InvalidParameterValue.SubAppId"
+//  LIMITEXCEEDED_QUOTA = "LimitExceeded.Quota"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateAigcVideoTask(request *CreateAigcVideoTaskRequest) (response *CreateAigcVideoTaskResponse, err error) {
     return c.CreateAigcVideoTaskWithContext(context.Background(), request)
 }
 
 // CreateAigcVideoTask
-// 该接口用于[生成 AIGC 视频](https://cloud.tencent.com/document/product/266/124474)。<b>接口处于内测阶段，如需使用请[联系我们](https://cloud.tencent.com/online-service?from=sales_sales&source=PRESALE)，接口调用会产生实际费用</b>，请参考点播 [AIGC 生视频计费文档](https://cloud.tencent.com/document/product/266/95125#96b3b59a-f9e1-49e9-966a-bedb70a4bf12)。该功能结算模式为[后付费](https://cloud.tencent.com/document/product/266/2838)，日结客户当天使用将在第二天出账，月结客户将在次月1日统一出上月使用费用。
+// 该接口用于[生成 AIGC 视频](https://cloud.tencent.com/document/product/266/124474)。默认限制1个并发处理，接口调用会产生实际费用，请参考点播 [AIGC 生视频计费文档](https://cloud.tencent.com/document/product/266/95125#96b3b59a-f9e1-49e9-966a-bedb70a4bf12)。该功能结算模式为[后付费](https://cloud.tencent.com/document/product/266/2838)，日结客户当天使用将在第二天出账，月结客户将在次月1日统一出上月使用费用。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1147,6 +1258,7 @@ func (c *Client) CreateAigcVideoTask(request *CreateAigcVideoTaskRequest) (respo
 //  INVALIDPARAMETERVALUE_SESSIONCONTEXTTOOLONG = "InvalidParameterValue.SessionContextTooLong"
 //  INVALIDPARAMETERVALUE_SESSIONIDTOOLONG = "InvalidParameterValue.SessionIdTooLong"
 //  INVALIDPARAMETERVALUE_SUBAPPID = "InvalidParameterValue.SubAppId"
+//  LIMITEXCEEDED_QUOTA = "LimitExceeded.Quota"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateAigcVideoTaskWithContext(ctx context.Context, request *CreateAigcVideoTaskRequest) (response *CreateAigcVideoTaskResponse, err error) {
     if request == nil {
@@ -2815,6 +2927,7 @@ func NewCreateSceneAigcVideoTaskResponse() (response *CreateSceneAigcVideoTaskRe
 //  INVALIDPARAMETERVALUE_SESSIONID = "InvalidParameterValue.SessionId"
 //  INVALIDPARAMETERVALUE_SESSIONIDTOOLONG = "InvalidParameterValue.SessionIdTooLong"
 //  INVALIDPARAMETERVALUE_SUBAPPID = "InvalidParameterValue.SubAppId"
+//  LIMITEXCEEDED_QUOTA = "LimitExceeded.Quota"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateSceneAigcVideoTask(request *CreateSceneAigcVideoTaskRequest) (response *CreateSceneAigcVideoTaskResponse, err error) {
     return c.CreateSceneAigcVideoTaskWithContext(context.Background(), request)
@@ -2833,6 +2946,7 @@ func (c *Client) CreateSceneAigcVideoTask(request *CreateSceneAigcVideoTaskReque
 //  INVALIDPARAMETERVALUE_SESSIONID = "InvalidParameterValue.SessionId"
 //  INVALIDPARAMETERVALUE_SESSIONIDTOOLONG = "InvalidParameterValue.SessionIdTooLong"
 //  INVALIDPARAMETERVALUE_SUBAPPID = "InvalidParameterValue.SubAppId"
+//  LIMITEXCEEDED_QUOTA = "LimitExceeded.Quota"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateSceneAigcVideoTaskWithContext(ctx context.Context, request *CreateSceneAigcVideoTaskRequest) (response *CreateSceneAigcVideoTaskResponse, err error) {
     if request == nil {
@@ -3619,6 +3733,60 @@ func (c *Client) DeleteAdaptiveDynamicStreamingTemplateWithContext(ctx context.C
     request.SetContext(ctx)
     
     response = NewDeleteAdaptiveDynamicStreamingTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteAigcAdvancedCustomElementRequest() (request *DeleteAigcAdvancedCustomElementRequest) {
+    request = &DeleteAigcAdvancedCustomElementRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "DeleteAigcAdvancedCustomElement")
+    
+    
+    return
+}
+
+func NewDeleteAigcAdvancedCustomElementResponse() (response *DeleteAigcAdvancedCustomElementResponse) {
+    response = &DeleteAigcAdvancedCustomElementResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteAigcAdvancedCustomElement
+// 该接口用于删除 AIGC 高级自定义主体。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_SUBAPPID = "InvalidParameterValue.SubAppId"
+func (c *Client) DeleteAigcAdvancedCustomElement(request *DeleteAigcAdvancedCustomElementRequest) (response *DeleteAigcAdvancedCustomElementResponse, err error) {
+    return c.DeleteAigcAdvancedCustomElementWithContext(context.Background(), request)
+}
+
+// DeleteAigcAdvancedCustomElement
+// 该接口用于删除 AIGC 高级自定义主体。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_SUBAPPID = "InvalidParameterValue.SubAppId"
+func (c *Client) DeleteAigcAdvancedCustomElementWithContext(ctx context.Context, request *DeleteAigcAdvancedCustomElementRequest) (response *DeleteAigcAdvancedCustomElementResponse, err error) {
+    if request == nil {
+        request = NewDeleteAigcAdvancedCustomElementRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vod", APIVersion, "DeleteAigcAdvancedCustomElement")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAigcAdvancedCustomElement require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteAigcAdvancedCustomElementResponse()
     err = c.Send(request, response)
     return
 }
@@ -5459,6 +5627,60 @@ func (c *Client) DescribeAdaptiveDynamicStreamingTemplatesWithContext(ctx contex
     return
 }
 
+func NewDescribeAigcAdvancedCustomElementsRequest() (request *DescribeAigcAdvancedCustomElementsRequest) {
+    request = &DescribeAigcAdvancedCustomElementsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "DescribeAigcAdvancedCustomElements")
+    
+    
+    return
+}
+
+func NewDescribeAigcAdvancedCustomElementsResponse() (response *DescribeAigcAdvancedCustomElementsResponse) {
+    response = &DescribeAigcAdvancedCustomElementsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAigcAdvancedCustomElements
+// 该接口用于获取 AIGC 高级自定义主体。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_SUBAPPID = "InvalidParameterValue.SubAppId"
+func (c *Client) DescribeAigcAdvancedCustomElements(request *DescribeAigcAdvancedCustomElementsRequest) (response *DescribeAigcAdvancedCustomElementsResponse, err error) {
+    return c.DescribeAigcAdvancedCustomElementsWithContext(context.Background(), request)
+}
+
+// DescribeAigcAdvancedCustomElements
+// 该接口用于获取 AIGC 高级自定义主体。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_SUBAPPID = "InvalidParameterValue.SubAppId"
+func (c *Client) DescribeAigcAdvancedCustomElementsWithContext(ctx context.Context, request *DescribeAigcAdvancedCustomElementsRequest) (response *DescribeAigcAdvancedCustomElementsResponse, err error) {
+    if request == nil {
+        request = NewDescribeAigcAdvancedCustomElementsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vod", APIVersion, "DescribeAigcAdvancedCustomElements")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAigcAdvancedCustomElements require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAigcAdvancedCustomElementsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAigcApiTokensRequest() (request *DescribeAigcApiTokensRequest) {
     request = &DescribeAigcApiTokensRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5569,6 +5791,72 @@ func (c *Client) DescribeAigcFaceInfoWithContext(ctx context.Context, request *D
     request.SetContext(ctx)
     
     response = NewDescribeAigcFaceInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAigcFaceInfoAsyncRequest() (request *DescribeAigcFaceInfoAsyncRequest) {
+    request = &DescribeAigcFaceInfoAsyncRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "DescribeAigcFaceInfoAsync")
+    
+    
+    return
+}
+
+func NewDescribeAigcFaceInfoAsyncResponse() (response *DescribeAigcFaceInfoAsyncResponse) {
+    response = &DescribeAigcFaceInfoAsyncResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAigcFaceInfoAsync
+// 该接口用于异步获取 AIGC 人脸信息。注意，调用本接口会产生人脸识别费用，请参考[计费文档](https://cloud.tencent.com/document/product/266/95125#96b3b59a-f9e1-49e9-966a-bedb70a4bf12)。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_FILEID = "InvalidParameterValue.FileId"
+//  INVALIDPARAMETERVALUE_SESSIONCONTEXTTOOLONG = "InvalidParameterValue.SessionContextTooLong"
+//  INVALIDPARAMETERVALUE_SESSIONIDTOOLONG = "InvalidParameterValue.SessionIdTooLong"
+//  INVALIDPARAMETERVALUE_SUBAPPID = "InvalidParameterValue.SubAppId"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeAigcFaceInfoAsync(request *DescribeAigcFaceInfoAsyncRequest) (response *DescribeAigcFaceInfoAsyncResponse, err error) {
+    return c.DescribeAigcFaceInfoAsyncWithContext(context.Background(), request)
+}
+
+// DescribeAigcFaceInfoAsync
+// 该接口用于异步获取 AIGC 人脸信息。注意，调用本接口会产生人脸识别费用，请参考[计费文档](https://cloud.tencent.com/document/product/266/95125#96b3b59a-f9e1-49e9-966a-bedb70a4bf12)。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_FILEID = "InvalidParameterValue.FileId"
+//  INVALIDPARAMETERVALUE_SESSIONCONTEXTTOOLONG = "InvalidParameterValue.SessionContextTooLong"
+//  INVALIDPARAMETERVALUE_SESSIONIDTOOLONG = "InvalidParameterValue.SessionIdTooLong"
+//  INVALIDPARAMETERVALUE_SUBAPPID = "InvalidParameterValue.SubAppId"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeAigcFaceInfoAsyncWithContext(ctx context.Context, request *DescribeAigcFaceInfoAsyncRequest) (response *DescribeAigcFaceInfoAsyncResponse, err error) {
+    if request == nil {
+        request = NewDescribeAigcFaceInfoAsyncRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vod", APIVersion, "DescribeAigcFaceInfoAsync")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAigcFaceInfoAsync require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAigcFaceInfoAsyncResponse()
     err = c.Send(request, response)
     return
 }
@@ -6479,6 +6767,8 @@ func NewDescribeDailyMediaPlayStatResponse() (response *DescribeDailyMediaPlaySt
 //
 // * 播放统计仅针对 VOD 域名（即 EdgeOne 域名的分发不计入播放统计）。
 //
+// * 因数据存在延迟，建议您于第二天中午12点后查询前一天的用量数据。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETERVALUE_ENDDATE = "InvalidParameterValue.EndDate"
@@ -6496,6 +6786,8 @@ func (c *Client) DescribeDailyMediaPlayStat(request *DescribeDailyMediaPlayStatR
 // * 结束日期和起始日期的时间跨度最大为90天。
 //
 // * 播放统计仅针对 VOD 域名（即 EdgeOne 域名的分发不计入播放统计）。
+//
+// * 因数据存在延迟，建议您于第二天中午12点后查询前一天的用量数据。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -13099,17 +13391,15 @@ func NewProcessMediaByMPSResponse() (response *ProcessMediaByMPSResponse) {
 }
 
 // ProcessMediaByMPS
-// 使用媒体处理服务（MPS）的媒体处理能力，对点播中的视频发起媒体处理，任务发起时需将 MPS 相关参数以 JSON 格式填入 MPSProcessMediaParams 参数中。具体任务参数配置请参考[媒体处理 ProcessMedia 接口](https://cloud.tencent.com/document/api/862/37578)。 
+// 使用媒体处理服务（MPS）的媒体处理能力，对点播中的视频发起媒体处理。
 //
 // 当前支持的 MPS 功能：
 //
-// 1. [智能擦除](https://cloud.tencent.com/document/product/862/101530)：能够对视频画面中的 Logo、字幕、人脸和车牌等元素进行模糊、马赛克或无痕化处理，从而便于内容的传播和分享。该任务产生的新视频将生成新的 FileId 存储在点播平台的子应用中。
+// 1.智能字幕：该功能支持处理离线音频文件、视频文件及直播流，可通过 ASR 语音识别或 OCR 文本识别提取视频源语言字幕，并实现多语言翻译。详情查看[接入指南](https://cloud.tencent.com/document/product/266/131210)。
 //
-// 2. [音视频增强](https://cloud.tencent.com/document/product/862/118703)：该功能支持分布式实时画质增强，包含视频去毛刺、降噪、色彩增强、细节增强、人脸增强、SDR2HDR、大模型增强等功能，可大幅提升音视频质量，广泛应用于 OTT、电商、赛事等场景，有效实现 QoE 与 QoS 双维度提升，创造显著业务价值。
+// 2.智能擦除：能够对视频画面中的 Logo、字幕、人脸和车牌等元素进行模糊、马赛克或无痕化处理，从而便于内容的传播和分享。该任务产生的新视频将生成新的 FileId 存储在点播平台的子应用中。详情查看[接入指南](https://cloud.tencent.com/document/product/266/131211)。
 //
-// 3. [智能字幕](https://cloud.tencent.com/document/product/862/89091)：该功能支持处理离线音频文件、视频文件及直播流，可通过 ASR 语音识别或 OCR 文本识别提取视频源语言字幕，并实现多语言翻译。
-//
-// 4. [智能分析](https://cloud.tencent.com/document/product/862/113756)：该功能支持智能封面、智能高光、智能摘要、视频理解等功能。
+// 3.智能分析：该功能支持[一站式译制](https://cloud.tencent.com/document/product/266/131212)、[精彩集锦](https://cloud.tencent.com/document/product/266/131213)、[大模型视频摘要](https://cloud.tencent.com/document/product/266/131214)、[大模型音视频理解](https://cloud.tencent.com/document/product/266/131215)、[智能拆条](https://cloud.tencent.com/document/product/266/131216)、[智能横转竖](https://cloud.tencent.com/document/product/266/131217)、[视频去重](https://cloud.tencent.com/document/product/266/131218)等功能。
 //
 // 
 //
@@ -13119,9 +13409,7 @@ func NewProcessMediaByMPSResponse() (response *ProcessMediaByMPSResponse) {
 //
 // > 1. 任务状态及结果的查询仍在点播平台中完成，使用 [DescribeTaskDetail](https://cloud.tencent.com/document/product/266/33431) 或 [DescribeTasks](https://cloud.tencent.com/document/product/266/33430) 查询任务。
 //
-// > 2. 相关功能的用量及账单将在 MPS 平台给出，因此在使用该功能前，首先需要开通 MPS 服务。
-//
-// > 3. 该功能目前仍在内测中，如需测试体验，您可以联系我们获得支持。
+// > 2. 相关功能的用量及账单将在 MPS 平台给出，因此在使用该功能前，首先需要在控制台开通 MPS 服务。开通方式见接入文档的前置操作部分。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -13139,17 +13427,15 @@ func (c *Client) ProcessMediaByMPS(request *ProcessMediaByMPSRequest) (response 
 }
 
 // ProcessMediaByMPS
-// 使用媒体处理服务（MPS）的媒体处理能力，对点播中的视频发起媒体处理，任务发起时需将 MPS 相关参数以 JSON 格式填入 MPSProcessMediaParams 参数中。具体任务参数配置请参考[媒体处理 ProcessMedia 接口](https://cloud.tencent.com/document/api/862/37578)。 
+// 使用媒体处理服务（MPS）的媒体处理能力，对点播中的视频发起媒体处理。
 //
 // 当前支持的 MPS 功能：
 //
-// 1. [智能擦除](https://cloud.tencent.com/document/product/862/101530)：能够对视频画面中的 Logo、字幕、人脸和车牌等元素进行模糊、马赛克或无痕化处理，从而便于内容的传播和分享。该任务产生的新视频将生成新的 FileId 存储在点播平台的子应用中。
+// 1.智能字幕：该功能支持处理离线音频文件、视频文件及直播流，可通过 ASR 语音识别或 OCR 文本识别提取视频源语言字幕，并实现多语言翻译。详情查看[接入指南](https://cloud.tencent.com/document/product/266/131210)。
 //
-// 2. [音视频增强](https://cloud.tencent.com/document/product/862/118703)：该功能支持分布式实时画质增强，包含视频去毛刺、降噪、色彩增强、细节增强、人脸增强、SDR2HDR、大模型增强等功能，可大幅提升音视频质量，广泛应用于 OTT、电商、赛事等场景，有效实现 QoE 与 QoS 双维度提升，创造显著业务价值。
+// 2.智能擦除：能够对视频画面中的 Logo、字幕、人脸和车牌等元素进行模糊、马赛克或无痕化处理，从而便于内容的传播和分享。该任务产生的新视频将生成新的 FileId 存储在点播平台的子应用中。详情查看[接入指南](https://cloud.tencent.com/document/product/266/131211)。
 //
-// 3. [智能字幕](https://cloud.tencent.com/document/product/862/89091)：该功能支持处理离线音频文件、视频文件及直播流，可通过 ASR 语音识别或 OCR 文本识别提取视频源语言字幕，并实现多语言翻译。
-//
-// 4. [智能分析](https://cloud.tencent.com/document/product/862/113756)：该功能支持智能封面、智能高光、智能摘要、视频理解等功能。
+// 3.智能分析：该功能支持[一站式译制](https://cloud.tencent.com/document/product/266/131212)、[精彩集锦](https://cloud.tencent.com/document/product/266/131213)、[大模型视频摘要](https://cloud.tencent.com/document/product/266/131214)、[大模型音视频理解](https://cloud.tencent.com/document/product/266/131215)、[智能拆条](https://cloud.tencent.com/document/product/266/131216)、[智能横转竖](https://cloud.tencent.com/document/product/266/131217)、[视频去重](https://cloud.tencent.com/document/product/266/131218)等功能。
 //
 // 
 //
@@ -13159,9 +13445,7 @@ func (c *Client) ProcessMediaByMPS(request *ProcessMediaByMPSRequest) (response 
 //
 // > 1. 任务状态及结果的查询仍在点播平台中完成，使用 [DescribeTaskDetail](https://cloud.tencent.com/document/product/266/33431) 或 [DescribeTasks](https://cloud.tencent.com/document/product/266/33430) 查询任务。
 //
-// > 2. 相关功能的用量及账单将在 MPS 平台给出，因此在使用该功能前，首先需要开通 MPS 服务。
-//
-// > 3. 该功能目前仍在内测中，如需测试体验，您可以联系我们获得支持。
+// > 2. 相关功能的用量及账单将在 MPS 平台给出，因此在使用该功能前，首先需要在控制台开通 MPS 服务。开通方式见接入文档的前置操作部分。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -14931,7 +15215,7 @@ func NewWeChatMiniProgramPublishResponse() (response *WeChatMiniProgramPublishRe
 // WeChatMiniProgramPublish
 // 将点播视频发布到微信小程序，供微信小程序播放器播放。
 //
-// 本接口支持发布原始视频和转码后视频，暂不支持发布自适应码流。
+// 本接口支持发布原始视频和转码后视频。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -14953,7 +15237,7 @@ func (c *Client) WeChatMiniProgramPublish(request *WeChatMiniProgramPublishReque
 // WeChatMiniProgramPublish
 // 将点播视频发布到微信小程序，供微信小程序播放器播放。
 //
-// 本接口支持发布原始视频和转码后视频，暂不支持发布自适应码流。
+// 本接口支持发布原始视频和转码后视频。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

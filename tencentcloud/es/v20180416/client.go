@@ -181,6 +181,7 @@ func NewCreateClusterSnapshotResponse() (response *CreateClusterSnapshotResponse
 //  INVALIDPARAMETER_INVALIDESVERSION = "InvalidParameter.InvalidEsVersion"
 //  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
 //  RESOURCENOTFOUND_CLUSTERINFONOTFOUND = "ResourceNotFound.ClusterInfoNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_PLUGIN = "UnsupportedOperation.Plugin"
 func (c *Client) CreateClusterSnapshot(request *CreateClusterSnapshotRequest) (response *CreateClusterSnapshotResponse, err error) {
     return c.CreateClusterSnapshotWithContext(context.Background(), request)
@@ -195,6 +196,7 @@ func (c *Client) CreateClusterSnapshot(request *CreateClusterSnapshotRequest) (r
 //  INVALIDPARAMETER_INVALIDESVERSION = "InvalidParameter.InvalidEsVersion"
 //  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
 //  RESOURCENOTFOUND_CLUSTERINFONOTFOUND = "ResourceNotFound.ClusterInfoNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_PLUGIN = "UnsupportedOperation.Plugin"
 func (c *Client) CreateClusterSnapshotWithContext(ctx context.Context, request *CreateClusterSnapshotRequest) (response *CreateClusterSnapshotResponse, err error) {
     if request == nil {
@@ -1198,6 +1200,7 @@ func NewDeleteInstanceResponse() (response *DeleteInstanceResponse) {
 // 销毁集群实例
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_OPENDESTROYPROTECTION = "FailedOperation.OpenDestroyProtection"
 //  FAILEDOPERATION_REFUNDERROR = "FailedOperation.RefundError"
 //  INTERNALERROR = "InternalError"
@@ -1217,6 +1220,7 @@ func (c *Client) DeleteInstance(request *DeleteInstanceRequest) (response *Delet
 // 销毁集群实例
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_OPENDESTROYPROTECTION = "FailedOperation.OpenDestroyProtection"
 //  FAILEDOPERATION_REFUNDERROR = "FailedOperation.RefundError"
 //  INTERNALERROR = "InternalError"

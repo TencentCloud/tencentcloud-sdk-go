@@ -383,6 +383,7 @@ func NewCreateModelServiceResponse() (response *CreateModelServiceResponse) {
 //  OPERATIONDENIED_BALANCEINSUFFICIENT = "OperationDenied.BalanceInsufficient"
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEINSUFFICIENT_QUOTAINSUFFICIENT = "ResourceInsufficient.QuotaInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
@@ -415,6 +416,7 @@ func (c *Client) CreateModelService(request *CreateModelServiceRequest) (respons
 //  OPERATIONDENIED_BALANCEINSUFFICIENT = "OperationDenied.BalanceInsufficient"
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEINSUFFICIENT_QUOTAINSUFFICIENT = "ResourceInsufficient.QuotaInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
@@ -4379,6 +4381,68 @@ func (c *Client) DescribeTrainingTaskWithContext(ctx context.Context, request *D
     request.SetContext(ctx)
     
     response = NewDescribeTrainingTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTrainingTaskPodUrlRequest() (request *DescribeTrainingTaskPodUrlRequest) {
+    request = &DescribeTrainingTaskPodUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "DescribeTrainingTaskPodUrl")
+    
+    
+    return
+}
+
+func NewDescribeTrainingTaskPodUrlResponse() (response *DescribeTrainingTaskPodUrlResponse) {
+    response = &DescribeTrainingTaskPodUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTrainingTaskPodUrl
+// 获取单个训练任务实例的登录链接
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYRESOURCEGROUPNAMESFAILED = "FailedOperation.QueryResourceGroupNamesFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_NOPERMISSION = "InternalError.NoPermission"
+//  INTERNALERROR_QUERYRESOURCEGROUPNAMESFAILED = "InternalError.QueryResourceGroupNamesFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeTrainingTaskPodUrl(request *DescribeTrainingTaskPodUrlRequest) (response *DescribeTrainingTaskPodUrlResponse, err error) {
+    return c.DescribeTrainingTaskPodUrlWithContext(context.Background(), request)
+}
+
+// DescribeTrainingTaskPodUrl
+// 获取单个训练任务实例的登录链接
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYRESOURCEGROUPNAMESFAILED = "FailedOperation.QueryResourceGroupNamesFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_NOPERMISSION = "InternalError.NoPermission"
+//  INTERNALERROR_QUERYRESOURCEGROUPNAMESFAILED = "InternalError.QueryResourceGroupNamesFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeTrainingTaskPodUrlWithContext(ctx context.Context, request *DescribeTrainingTaskPodUrlRequest) (response *DescribeTrainingTaskPodUrlResponse, err error) {
+    if request == nil {
+        request = NewDescribeTrainingTaskPodUrlRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "DescribeTrainingTaskPodUrl")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTrainingTaskPodUrl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTrainingTaskPodUrlResponse()
     err = c.Send(request, response)
     return
 }

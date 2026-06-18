@@ -311,6 +311,12 @@ type CloudAttachInfo struct {
 
 	// 运营商链路是否有保护
 	BIapLinkProtected *bool `json:"BIapLinkProtected,omitnil,omitempty" name:"BIapLinkProtected"`
+
+	// 服务类型：SHARE-共享型，EXCLUSIVE-独占型
+	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
+
+	// VLAN范围
+	VlanRange *string `json:"VlanRange,omitnil,omitempty" name:"VlanRange"`
 }
 
 type Coordinate struct {
@@ -355,15 +361,21 @@ type CreateCasInput struct {
 
 // Predefined struct for user
 type CreateCloudAttachServiceRequestParams struct {
-	// 创建敏捷上云入参
+	// <p>创建敏捷上云入参</p>
 	Data *CreateCasInput `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// <p>标签</p>
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type CreateCloudAttachServiceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 创建敏捷上云入参
+	// <p>创建敏捷上云入参</p>
 	Data *CreateCasInput `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// <p>标签</p>
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 func (r *CreateCloudAttachServiceRequest) ToJsonString() string {
@@ -379,6 +391,7 @@ func (r *CreateCloudAttachServiceRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Data")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCloudAttachServiceRequest has unknown keys!", "")
 	}
@@ -387,7 +400,7 @@ func (r *CreateCloudAttachServiceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateCloudAttachServiceResponseParams struct {
-	// 敏捷上云服务详情
+	// <p>敏捷上云服务详情</p>
 	CloudAttach *CloudAttachInfo `json:"CloudAttach,omitnil,omitempty" name:"CloudAttach"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

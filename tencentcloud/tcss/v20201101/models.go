@@ -29,20 +29,20 @@ type ABTestConfig struct {
 }
 
 type AbnormalProcessChildRuleInfo struct {
+	// <p>进程路径</p>
+	ProcessPath *string `json:"ProcessPath,omitnil,omitempty" name:"ProcessPath"`
+
 	// <p>策略模式，   RULE_MODE_RELEASE: 放行<br>   RULE_MODE_ALERT: 告警<br>   RULE_MODE_HOLDUP:拦截</p>
 	RuleMode *string `json:"RuleMode,omitnil,omitempty" name:"RuleMode"`
 
-	// <p>进程路径</p>
-	ProcessPath *string `json:"ProcessPath,omitnil,omitempty" name:"ProcessPath"`
+	// <p>命令行参数</p>
+	CmdLine *string `json:"CmdLine,omitnil,omitempty" name:"CmdLine"`
 
 	// <p>子策略id</p>
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
 	// <p>威胁等级，HIGH:高，MIDDLE:中，LOW:低</p>
 	RuleLevel *string `json:"RuleLevel,omitnil,omitempty" name:"RuleLevel"`
-
-	// <p>命令行参数</p>
-	CmdLine *string `json:"CmdLine,omitnil,omitempty" name:"CmdLine"`
 }
 
 type AbnormalProcessEventDescription struct {
@@ -216,35 +216,76 @@ type AbnormalProcessEventTendencyInfo struct {
 	UserDefinedRuleEventCount *int64 `json:"UserDefinedRuleEventCount,omitnil,omitempty" name:"UserDefinedRuleEventCount"`
 }
 
-type AbnormalProcessRuleInfo struct {
-	// true:策略启用，false:策略禁用
+type AbnormalProcessRuleExtSetItem struct {
+	// 用户自定义策略子规则列表。IsDefault=false时有值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChildRules []*AbnormalProcessChildRuleInfo `json:"ChildRules,omitnil,omitempty" name:"ChildRules"`
+
+	// 编辑用户名称
+	EditUserName *string `json:"EditUserName,omitnil,omitempty" name:"EditUserName"`
+
+	// 策略生效镜像数量
+	EffectImageCount *uint64 `json:"EffectImageCount,omitnil,omitempty" name:"EffectImageCount"`
+
+	// true: 默认策略，false:自定义策略
+	IsDefault *bool `json:"IsDefault,omitnil,omitempty" name:"IsDefault"`
+
+	// 是否为全部镜像规则。true表示对所有镜像生效
+	IsGlobal *bool `json:"IsGlobal,omitnil,omitempty" name:"IsGlobal"`
+
+	// true: 策略启用，false：策略禁用
 	IsEnable *bool `json:"IsEnable,omitnil,omitempty" name:"IsEnable"`
+
+	// 规则组中所有执行动作的去重列表。RULE_MODE_ALERT:告警 RULE_MODE_HOLDUP:拦截
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleActions []*string `json:"RuleActions,omitnil,omitempty" name:"RuleActions"`
+
+	// 策略Id
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// 策略名字
+	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
+
+	// 系统策略子规则列表。IsDefault=true时有值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SystemChildRules []*AbnormalProcessSystemChildRuleInfo `json:"SystemChildRules,omitnil,omitempty" name:"SystemChildRules"`
+
+	// 策略更新时间, 存在为空的情况
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+}
+
+type AbnormalProcessRuleInfo struct {
+	// 用户策略的子策略数组
+	ChildRules []*AbnormalProcessChildRuleInfo `json:"ChildRules,omitnil,omitempty" name:"ChildRules"`
 
 	// 生效镜像id，空数组代表全部镜像
 	ImageIds []*string `json:"ImageIds,omitnil,omitempty" name:"ImageIds"`
 
-	// 用户策略的子策略数组
-	ChildRules []*AbnormalProcessChildRuleInfo `json:"ChildRules,omitnil,omitempty" name:"ChildRules"`
+	// true:策略启用，false:策略禁用
+	IsEnable *bool `json:"IsEnable,omitnil,omitempty" name:"IsEnable"`
 
 	// 策略名字
 	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
+
+	// 是否是系统默认策略
+	IsDefault *bool `json:"IsDefault,omitnil,omitempty" name:"IsDefault"`
+
+	// 是否为全部镜像规则。true表示对所有镜像生效
+	IsGlobal *bool `json:"IsGlobal,omitnil,omitempty" name:"IsGlobal"`
 
 	// 策略id
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
 	// 系统策略的子策略数组
 	SystemChildRules []*AbnormalProcessSystemChildRuleInfo `json:"SystemChildRules,omitnil,omitempty" name:"SystemChildRules"`
-
-	// 是否是系统默认策略
-	IsDefault *bool `json:"IsDefault,omitnil,omitempty" name:"IsDefault"`
 }
 
 type AbnormalProcessSystemChildRuleInfo struct {
-	// 子策略Id
-	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
-
 	// 子策略状态，true为开启，false为关闭
 	IsEnable *bool `json:"IsEnable,omitnil,omitempty" name:"IsEnable"`
+
+	// 子策略Id
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
 	// 策略模式,  RULE_MODE_RELEASE: 放行
 	//    RULE_MODE_ALERT: 告警
@@ -266,20 +307,20 @@ type AbnormalProcessSystemChildRuleInfo struct {
 }
 
 type AccessControlChildRuleInfo struct {
-	// <p>策略模式,  RULE_MODE_RELEASE: 放行<br>   RULE_MODE_ALERT: 告警<br>   RULE_MODE_HOLDUP:拦截</p>
-	RuleMode *string `json:"RuleMode,omitnil,omitempty" name:"RuleMode"`
-
 	// <p>进程路径</p>
 	ProcessPath *string `json:"ProcessPath,omitnil,omitempty" name:"ProcessPath"`
+
+	// <p>策略模式,  RULE_MODE_RELEASE: 放行<br>   RULE_MODE_ALERT: 告警<br>   RULE_MODE_HOLDUP:拦截</p>
+	RuleMode *string `json:"RuleMode,omitnil,omitempty" name:"RuleMode"`
 
 	// <p>被访问文件路径，仅仅在访问控制生效</p>
 	TargetFilePath *string `json:"TargetFilePath,omitnil,omitempty" name:"TargetFilePath"`
 
-	// <p>子策略id</p>
-	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
-
 	// <p>命令行参数</p>
 	CmdLine *string `json:"CmdLine,omitnil,omitempty" name:"CmdLine"`
+
+	// <p>子策略id</p>
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 }
 
 type AccessControlEventDescription struct {
@@ -424,30 +465,74 @@ type AccessControlEventInfo struct {
 	CmdLine *string `json:"CmdLine,omitnil,omitempty" name:"CmdLine"`
 }
 
-type AccessControlRuleInfo struct {
-	// 开关,true:开启，false:禁用
+type AccessControlRuleExtSetItem struct {
+	// 用户自定义策略子规则列表。IsDefault=false时有值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChildRules []*AccessControlChildRuleInfo `json:"ChildRules,omitnil,omitempty" name:"ChildRules"`
+
+	// 编辑用户名称
+	EditUserName *string `json:"EditUserName,omitnil,omitempty" name:"EditUserName"`
+
+	// 策略生效镜像数量
+	EffectImageCount *uint64 `json:"EffectImageCount,omitnil,omitempty" name:"EffectImageCount"`
+
+	// true: 默认策略，false:自定义策略
+	IsDefault *bool `json:"IsDefault,omitnil,omitempty" name:"IsDefault"`
+
+	// 是否为全部镜像规则。true表示对所有镜像生效
+	IsGlobal *bool `json:"IsGlobal,omitnil,omitempty" name:"IsGlobal"`
+
+	// true: 策略启用，false：策略禁用
 	IsEnable *bool `json:"IsEnable,omitnil,omitempty" name:"IsEnable"`
+
+	// 规则组中所有执行动作的去重列表。RULE_MODE_ALERT:告警 RULE_MODE_HOLDUP:拦截
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleActions []*string `json:"RuleActions,omitnil,omitempty" name:"RuleActions"`
+
+	// 策略Id
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// 策略名字
+	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
+
+	// 系统策略子规则列表。IsDefault=true时有值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SystemChildRules []*AccessControlSystemChildRuleInfo `json:"SystemChildRules,omitnil,omitempty" name:"SystemChildRules"`
+
+	// 策略更新时间, 存在为空的情况
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+}
+
+type AccessControlRuleInfo struct {
+	// 用户策略的子策略数组
+	ChildRules []*AccessControlChildRuleInfo `json:"ChildRules,omitnil,omitempty" name:"ChildRules"`
 
 	// 生效镜像id，空数组代表全部镜像
 	ImageIds []*string `json:"ImageIds,omitnil,omitempty" name:"ImageIds"`
 
-	// 用户策略的子策略数组
-	ChildRules []*AccessControlChildRuleInfo `json:"ChildRules,omitnil,omitempty" name:"ChildRules"`
+	// 开关,true:开启，false:禁用
+	IsEnable *bool `json:"IsEnable,omitnil,omitempty" name:"IsEnable"`
 
 	// 策略名字
 	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
+
+	// 是否是系统默认策略
+	IsDefault *bool `json:"IsDefault,omitnil,omitempty" name:"IsDefault"`
+
+	// true:全部镜像，false:指定镜像。IsGlobal=true时ImageIds返回空数组
+	IsGlobal *bool `json:"IsGlobal,omitnil,omitempty" name:"IsGlobal"`
 
 	// 策略id
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
 	// 系统策略的子策略数组
 	SystemChildRules []*AccessControlSystemChildRuleInfo `json:"SystemChildRules,omitnil,omitempty" name:"SystemChildRules"`
-
-	// 是否是系统默认策略
-	IsDefault *bool `json:"IsDefault,omitnil,omitempty" name:"IsDefault"`
 }
 
 type AccessControlSystemChildRuleInfo struct {
+	// 子策略状态，true为开启，false为关闭
+	IsEnable *bool `json:"IsEnable,omitnil,omitempty" name:"IsEnable"`
+
 	// 子策略Id
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
@@ -455,9 +540,6 @@ type AccessControlSystemChildRuleInfo struct {
 	//    RULE_MODE_ALERT: 告警
 	//    RULE_MODE_HOLDUP:拦截
 	RuleMode *string `json:"RuleMode,omitnil,omitempty" name:"RuleMode"`
-
-	// 子策略状态，true为开启，false为关闭
-	IsEnable *bool `json:"IsEnable,omitnil,omitempty" name:"IsEnable"`
 
 	// 子策略检测的入侵行为类型
 	// CHANGE_CRONTAB：篡改计划任务
@@ -2003,49 +2085,38 @@ type AffectedWorkloadItem struct {
 }
 
 type AssetClusterListItem struct {
-	// 集群ID
+	// <p>集群ID</p>
 	ClusterID *string `json:"ClusterID,omitnil,omitempty" name:"ClusterID"`
 
-	// 集群名称
+	// <p>集群名称</p>
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
-	// 集群状态
-	// CSR_RUNNING: 运行中
-	// CSR_EXCEPTION:异常
-	// CSR_DEL:已经删除
+	// <p>集群状态<br>CSR_RUNNING: 运行中<br>CSR_EXCEPTION:异常<br>CSR_DEL:已经删除</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 绑定规则名称
+	// <p>绑定的集群ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BindRuleID *string `json:"BindRuleID,omitnil,omitempty" name:"BindRuleID"`
+
+	// <p>绑定规则名称</p>
 	BindRuleName *string `json:"BindRuleName,omitnil,omitempty" name:"BindRuleName"`
 
-	// 集群类型:
-	// CT_TKE:TKE集群;
-	// CT_USER_CREATE:用户自建集群;
-	// CT_TKE_SERVERLESS:TKE Serverless集群;
+	// <p>集群类型:<br>CT_TKE:TKE集群;<br>CT_USER_CREATE:用户自建集群;<br>CT_TKE_SERVERLESS:TKE Serverless集群;</p>
 	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 
-	// 集群版本
+	// <p>集群版本</p>
 	ClusterVersion *string `json:"ClusterVersion,omitnil,omitempty" name:"ClusterVersion"`
 
-	// 内存量
+	// <p>内存量</p>
 	MemLimit *int64 `json:"MemLimit,omitnil,omitempty" name:"MemLimit"`
 
-	// cpu
+	// <p>cpu</p>
 	CpuLimit *int64 `json:"CpuLimit,omitnil,omitempty" name:"CpuLimit"`
 
-	// 集群审计开关状态：
-	// 已关闭Closed/关闭中Closing/关闭失败CloseFailed/已开启Opened/开启中Opening/开启失败OpenFailed
+	// <p>集群审计开关状态：<br>已关闭Closed/关闭中Closing/关闭失败CloseFailed/已开启Opened/开启中Opening/开启失败OpenFailed</p>
 	ClusterAuditStatus *string `json:"ClusterAuditStatus,omitnil,omitempty" name:"ClusterAuditStatus"`
 
-	// 接入状态:
-	// 未接入: AccessedNone
-	// 已防护: AccessedDefended
-	// 未防护: AccessedInstalled
-	// 部分防护: AccessedPartialDefence
-	// 接入异常: AccessedException
-	// 卸载异常: AccessedUninstallException
-	// 接入中: AccessedInstalling
-	// 卸载中: AccessedUninstalling
+	// <p>接入状态:<br>未接入: AccessedNone<br>已防护: AccessedDefended<br>未防护: AccessedInstalled<br>部分防护: AccessedPartialDefence<br>接入异常: AccessedException<br>卸载异常: AccessedUninstallException<br>接入中: AccessedInstalling<br>卸载中: AccessedUninstalling</p>
 	AccessedStatus *string `json:"AccessedStatus,omitnil,omitempty" name:"AccessedStatus"`
 }
 
@@ -3764,51 +3835,57 @@ func (r *CreateAssetImageRegistryScanTaskOneKeyResponse) FromJsonString(s string
 
 // Predefined struct for user
 type CreateAssetImageRegistryScanTaskRequestParams struct {
-	// 是否扫描全部镜像
+	// <p>是否扫描全部镜像</p>
 	All *bool `json:"All,omitnil,omitempty" name:"All"`
 
-	// 扫描的镜像列表
+	// <p>扫描的镜像列表</p>
 	Images []*ImageInfo `json:"Images,omitnil,omitempty" name:"Images"`
 
-	// 扫描类型数组
+	// <p>扫描类型数组</p>
 	ScanType []*string `json:"ScanType,omitnil,omitempty" name:"ScanType"`
 
-	// 扫描的镜像列表
+	// <p>扫描的镜像列表</p>
 	Id []*uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 过滤条件
+	// <p>过滤条件</p>
 	Filters []*AssetFilters `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 不需要扫描的镜像列表, 与Filters配合使用
+	// <p>不需要扫描的镜像列表, 与Filters配合使用</p>
 	ExcludeImageList []*uint64 `json:"ExcludeImageList,omitnil,omitempty" name:"ExcludeImageList"`
 
-	// 是否仅扫描各repository最新版的镜像, 与Filters配合使用
+	// <p>是否仅扫描各repository最新版的镜像, 与Filters配合使用</p>
 	OnlyScanLatest *bool `json:"OnlyScanLatest,omitnil,omitempty" name:"OnlyScanLatest"`
+
+	// <p>任务超时时长</p><p>单位：秒</p>
+	Timeout *uint64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
 }
 
 type CreateAssetImageRegistryScanTaskRequest struct {
 	*tchttp.BaseRequest
 	
-	// 是否扫描全部镜像
+	// <p>是否扫描全部镜像</p>
 	All *bool `json:"All,omitnil,omitempty" name:"All"`
 
-	// 扫描的镜像列表
+	// <p>扫描的镜像列表</p>
 	Images []*ImageInfo `json:"Images,omitnil,omitempty" name:"Images"`
 
-	// 扫描类型数组
+	// <p>扫描类型数组</p>
 	ScanType []*string `json:"ScanType,omitnil,omitempty" name:"ScanType"`
 
-	// 扫描的镜像列表
+	// <p>扫描的镜像列表</p>
 	Id []*uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 过滤条件
+	// <p>过滤条件</p>
 	Filters []*AssetFilters `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 不需要扫描的镜像列表, 与Filters配合使用
+	// <p>不需要扫描的镜像列表, 与Filters配合使用</p>
 	ExcludeImageList []*uint64 `json:"ExcludeImageList,omitnil,omitempty" name:"ExcludeImageList"`
 
-	// 是否仅扫描各repository最新版的镜像, 与Filters配合使用
+	// <p>是否仅扫描各repository最新版的镜像, 与Filters配合使用</p>
 	OnlyScanLatest *bool `json:"OnlyScanLatest,omitnil,omitempty" name:"OnlyScanLatest"`
+
+	// <p>任务超时时长</p><p>单位：秒</p>
+	Timeout *uint64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
 }
 
 func (r *CreateAssetImageRegistryScanTaskRequest) ToJsonString() string {
@@ -3830,6 +3907,7 @@ func (r *CreateAssetImageRegistryScanTaskRequest) FromJsonString(s string) error
 	delete(f, "Filters")
 	delete(f, "ExcludeImageList")
 	delete(f, "OnlyScanLatest")
+	delete(f, "Timeout")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAssetImageRegistryScanTaskRequest has unknown keys!", "")
 	}
@@ -3838,7 +3916,7 @@ func (r *CreateAssetImageRegistryScanTaskRequest) FromJsonString(s string) error
 
 // Predefined struct for user
 type CreateAssetImageRegistryScanTaskResponseParams struct {
-	// 返回的任务ID
+	// <p>返回的任务ID</p>
 	TaskID *uint64 `json:"TaskID,omitnil,omitempty" name:"TaskID"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3863,87 +3941,89 @@ func (r *CreateAssetImageRegistryScanTaskResponse) FromJsonString(s string) erro
 
 // Predefined struct for user
 type CreateAssetImageScanSettingRequestParams struct {
-	// 开关
+	// <p>开关</p>
 	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
 
-	// 扫描开始时间
-	// 01:00 时分
+	// <p>扫描开始时间<br>01:00 时分</p>
 	ScanTime *string `json:"ScanTime,omitnil,omitempty" name:"ScanTime"`
 
-	// 扫描周期
+	// <p>扫描周期</p>
 	ScanPeriod *uint64 `json:"ScanPeriod,omitnil,omitempty" name:"ScanPeriod"`
 
-	// 扫描木马
+	// <p>扫描木马</p>
 	ScanVirus *bool `json:"ScanVirus,omitnil,omitempty" name:"ScanVirus"`
 
-	// 扫描敏感信息
+	// <p>扫描敏感信息</p>
 	ScanRisk *bool `json:"ScanRisk,omitnil,omitempty" name:"ScanRisk"`
 
-	// 扫描漏洞
+	// <p>扫描漏洞</p>
 	ScanVul *bool `json:"ScanVul,omitnil,omitempty" name:"ScanVul"`
 
-	// 全部镜像
+	// <p>全部镜像</p>
 	//
 	// Deprecated: All is deprecated.
 	All *bool `json:"All,omitnil,omitempty" name:"All"`
 
-	// 自定义镜像
+	// <p>自定义镜像</p>
 	Images []*string `json:"Images,omitnil,omitempty" name:"Images"`
 
-	// 镜像是否存在运行中的容器
+	// <p>镜像是否存在运行中的容器</p>
 	ContainerRunning *bool `json:"ContainerRunning,omitnil,omitempty" name:"ContainerRunning"`
 
-	// 扫描范围 0 全部授权镜像，1自选镜像，2 推荐扫描
+	// <p>扫描范围 0 全部授权镜像，1自选镜像，2 推荐扫描 , 3:集群筛选扫描</p><p>取值范围：[0, 3]</p><p>默认值：0</p>
 	ScanScope *uint64 `json:"ScanScope,omitnil,omitempty" name:"ScanScope"`
 
-	// 扫描结束时间
-	// 02:00 时分
+	// <p>扫描结束时间<br>02:00 时分</p>
 	ScanEndTime *string `json:"ScanEndTime,omitnil,omitempty" name:"ScanEndTime"`
 
-	// 排除扫描的镜像
+	// <p>排除扫描的镜像</p>
 	ExcludeImages []*string `json:"ExcludeImages,omitnil,omitempty" name:"ExcludeImages"`
+
+	// <p>集群id</p>
+	ClusterIDs []*string `json:"ClusterIDs,omitnil,omitempty" name:"ClusterIDs"`
 }
 
 type CreateAssetImageScanSettingRequest struct {
 	*tchttp.BaseRequest
 	
-	// 开关
+	// <p>开关</p>
 	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
 
-	// 扫描开始时间
-	// 01:00 时分
+	// <p>扫描开始时间<br>01:00 时分</p>
 	ScanTime *string `json:"ScanTime,omitnil,omitempty" name:"ScanTime"`
 
-	// 扫描周期
+	// <p>扫描周期</p>
 	ScanPeriod *uint64 `json:"ScanPeriod,omitnil,omitempty" name:"ScanPeriod"`
 
-	// 扫描木马
+	// <p>扫描木马</p>
 	ScanVirus *bool `json:"ScanVirus,omitnil,omitempty" name:"ScanVirus"`
 
-	// 扫描敏感信息
+	// <p>扫描敏感信息</p>
 	ScanRisk *bool `json:"ScanRisk,omitnil,omitempty" name:"ScanRisk"`
 
-	// 扫描漏洞
+	// <p>扫描漏洞</p>
 	ScanVul *bool `json:"ScanVul,omitnil,omitempty" name:"ScanVul"`
 
-	// 全部镜像
+	// <p>全部镜像</p>
 	All *bool `json:"All,omitnil,omitempty" name:"All"`
 
-	// 自定义镜像
+	// <p>自定义镜像</p>
 	Images []*string `json:"Images,omitnil,omitempty" name:"Images"`
 
-	// 镜像是否存在运行中的容器
+	// <p>镜像是否存在运行中的容器</p>
 	ContainerRunning *bool `json:"ContainerRunning,omitnil,omitempty" name:"ContainerRunning"`
 
-	// 扫描范围 0 全部授权镜像，1自选镜像，2 推荐扫描
+	// <p>扫描范围 0 全部授权镜像，1自选镜像，2 推荐扫描 , 3:集群筛选扫描</p><p>取值范围：[0, 3]</p><p>默认值：0</p>
 	ScanScope *uint64 `json:"ScanScope,omitnil,omitempty" name:"ScanScope"`
 
-	// 扫描结束时间
-	// 02:00 时分
+	// <p>扫描结束时间<br>02:00 时分</p>
 	ScanEndTime *string `json:"ScanEndTime,omitnil,omitempty" name:"ScanEndTime"`
 
-	// 排除扫描的镜像
+	// <p>排除扫描的镜像</p>
 	ExcludeImages []*string `json:"ExcludeImages,omitnil,omitempty" name:"ExcludeImages"`
+
+	// <p>集群id</p>
+	ClusterIDs []*string `json:"ClusterIDs,omitnil,omitempty" name:"ClusterIDs"`
 }
 
 func (r *CreateAssetImageScanSettingRequest) ToJsonString() string {
@@ -3970,6 +4050,7 @@ func (r *CreateAssetImageScanSettingRequest) FromJsonString(s string) error {
 	delete(f, "ScanScope")
 	delete(f, "ScanEndTime")
 	delete(f, "ExcludeImages")
+	delete(f, "ClusterIDs")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAssetImageScanSettingRequest has unknown keys!", "")
 	}
@@ -4000,77 +4081,83 @@ func (r *CreateAssetImageScanSettingResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateAssetImageScanTaskRequestParams struct {
-	// 是否扫描全部镜像；全部镜像，镜像列表和根据过滤条件筛选三选一。
+	// <p>是否扫描全部镜像；全部镜像，镜像列表和根据过滤条件筛选三选一。</p>
 	//
 	// Deprecated: All is deprecated.
 	All *bool `json:"All,omitnil,omitempty" name:"All"`
 
-	// 需要扫描的镜像列表；全部镜像，镜像列表和根据过滤条件筛选三选一。
+	// <p>需要扫描的镜像列表；全部镜像，镜像列表和根据过滤条件筛选三选一。</p>
 	Images []*string `json:"Images,omitnil,omitempty" name:"Images"`
 
-	// 扫描漏洞；漏洞，木马和风险需选其一
+	// <p>扫描漏洞；漏洞，木马和风险需选其一</p>
 	ScanVul *bool `json:"ScanVul,omitnil,omitempty" name:"ScanVul"`
 
-	// 扫描木马；漏洞，木马和风险需选其一
+	// <p>扫描木马；漏洞，木马和风险需选其一</p>
 	ScanVirus *bool `json:"ScanVirus,omitnil,omitempty" name:"ScanVirus"`
 
-	// 扫描风险；漏洞，木马和风险需选其一
+	// <p>扫描风险；漏洞，木马和风险需选其一</p>
 	ScanRisk *bool `json:"ScanRisk,omitnil,omitempty" name:"ScanRisk"`
 
-	// 根据过滤条件筛选出镜像；全部镜像，镜像列表和根据过滤条件筛选三选一。
+	// <p>根据过滤条件筛选出镜像；全部镜像，镜像列表和根据过滤条件筛选三选一。</p>
 	Filters []*AssetFilters `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 根据过滤条件筛选出镜像，再排除个别镜像
+	// <p>根据过滤条件筛选出镜像，再排除个别镜像</p>
 	ExcludeImageIds []*string `json:"ExcludeImageIds,omitnil,omitempty" name:"ExcludeImageIds"`
 
-	// 镜像是否存在运行中的容器
+	// <p>镜像是否存在运行中的容器</p>
 	ContainerRunning *bool `json:"ContainerRunning,omitnil,omitempty" name:"ContainerRunning"`
 
-	// 扫描范围 0 全部授权镜像，1自选镜像，2 推荐扫描
+	// <p>扫描范围 0 全部授权镜像，1自选镜像，2 推荐扫描 3:集群扫描</p><p>取值范围：[0, 3]</p><p>默认值：0</p>
 	ScanScope *uint64 `json:"ScanScope,omitnil,omitempty" name:"ScanScope"`
 
-	// 任务超时时长单位秒，默认1小时
+	// <p>任务超时时长单位秒，默认1小时</p>
 	Timeout *uint64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
 
-	// 一键扫描任务。默认false表示非一键扫描，true一键扫描
+	// <p>一键扫描任务。默认false表示非一键扫描，true一键扫描</p>
 	IsOneClickScanningTask *bool `json:"IsOneClickScanningTask,omitnil,omitempty" name:"IsOneClickScanningTask"`
+
+	// <p>集群id</p>
+	ClusterIDs []*string `json:"ClusterIDs,omitnil,omitempty" name:"ClusterIDs"`
 }
 
 type CreateAssetImageScanTaskRequest struct {
 	*tchttp.BaseRequest
 	
-	// 是否扫描全部镜像；全部镜像，镜像列表和根据过滤条件筛选三选一。
+	// <p>是否扫描全部镜像；全部镜像，镜像列表和根据过滤条件筛选三选一。</p>
 	All *bool `json:"All,omitnil,omitempty" name:"All"`
 
-	// 需要扫描的镜像列表；全部镜像，镜像列表和根据过滤条件筛选三选一。
+	// <p>需要扫描的镜像列表；全部镜像，镜像列表和根据过滤条件筛选三选一。</p>
 	Images []*string `json:"Images,omitnil,omitempty" name:"Images"`
 
-	// 扫描漏洞；漏洞，木马和风险需选其一
+	// <p>扫描漏洞；漏洞，木马和风险需选其一</p>
 	ScanVul *bool `json:"ScanVul,omitnil,omitempty" name:"ScanVul"`
 
-	// 扫描木马；漏洞，木马和风险需选其一
+	// <p>扫描木马；漏洞，木马和风险需选其一</p>
 	ScanVirus *bool `json:"ScanVirus,omitnil,omitempty" name:"ScanVirus"`
 
-	// 扫描风险；漏洞，木马和风险需选其一
+	// <p>扫描风险；漏洞，木马和风险需选其一</p>
 	ScanRisk *bool `json:"ScanRisk,omitnil,omitempty" name:"ScanRisk"`
 
-	// 根据过滤条件筛选出镜像；全部镜像，镜像列表和根据过滤条件筛选三选一。
+	// <p>根据过滤条件筛选出镜像；全部镜像，镜像列表和根据过滤条件筛选三选一。</p>
 	Filters []*AssetFilters `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 根据过滤条件筛选出镜像，再排除个别镜像
+	// <p>根据过滤条件筛选出镜像，再排除个别镜像</p>
 	ExcludeImageIds []*string `json:"ExcludeImageIds,omitnil,omitempty" name:"ExcludeImageIds"`
 
-	// 镜像是否存在运行中的容器
+	// <p>镜像是否存在运行中的容器</p>
 	ContainerRunning *bool `json:"ContainerRunning,omitnil,omitempty" name:"ContainerRunning"`
 
-	// 扫描范围 0 全部授权镜像，1自选镜像，2 推荐扫描
+	// <p>扫描范围 0 全部授权镜像，1自选镜像，2 推荐扫描 3:集群扫描</p><p>取值范围：[0, 3]</p><p>默认值：0</p>
 	ScanScope *uint64 `json:"ScanScope,omitnil,omitempty" name:"ScanScope"`
 
-	// 任务超时时长单位秒，默认1小时
+	// <p>任务超时时长单位秒，默认1小时</p>
 	Timeout *uint64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
 
-	// 一键扫描任务。默认false表示非一键扫描，true一键扫描
+	// <p>一键扫描任务。默认false表示非一键扫描，true一键扫描</p>
 	IsOneClickScanningTask *bool `json:"IsOneClickScanningTask,omitnil,omitempty" name:"IsOneClickScanningTask"`
+
+	// <p>集群id</p>
+	ClusterIDs []*string `json:"ClusterIDs,omitnil,omitempty" name:"ClusterIDs"`
 }
 
 func (r *CreateAssetImageScanTaskRequest) ToJsonString() string {
@@ -4096,6 +4183,7 @@ func (r *CreateAssetImageScanTaskRequest) FromJsonString(s string) error {
 	delete(f, "ScanScope")
 	delete(f, "Timeout")
 	delete(f, "IsOneClickScanningTask")
+	delete(f, "ClusterIDs")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAssetImageScanTaskRequest has unknown keys!", "")
 	}
@@ -4104,7 +4192,7 @@ func (r *CreateAssetImageScanTaskRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateAssetImageScanTaskResponseParams struct {
-	// 任务id
+	// <p>任务id</p>
 	TaskID *string `json:"TaskID,omitnil,omitempty" name:"TaskID"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5427,7 +5515,7 @@ type CreateK8sApiAbnormalRuleInfoRequestParams struct {
 	// 拷贝规则ID(适用于复制规则场景)
 	CopySrcRuleID *string `json:"CopySrcRuleID,omitnil,omitempty" name:"CopySrcRuleID"`
 
-	// 事件ID(适用于事件加白场景)
+	// 事件ID(已废弃，保留兼容性。事件加白请使用白名单接口 ModifyK8sApiAbnormalWhitelist)
 	EventID *uint64 `json:"EventID,omitnil,omitempty" name:"EventID"`
 }
 
@@ -5440,7 +5528,7 @@ type CreateK8sApiAbnormalRuleInfoRequest struct {
 	// 拷贝规则ID(适用于复制规则场景)
 	CopySrcRuleID *string `json:"CopySrcRuleID,omitnil,omitempty" name:"CopySrcRuleID"`
 
-	// 事件ID(适用于事件加白场景)
+	// 事件ID(已废弃，保留兼容性。事件加白请使用白名单接口 ModifyK8sApiAbnormalWhitelist)
 	EventID *uint64 `json:"EventID,omitnil,omitempty" name:"EventID"`
 }
 
@@ -6923,63 +7011,81 @@ func (r *CreateVulImageExportJobResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateVulScanTaskRequestParams struct {
-	// 本地镜像扫描范围类型。ALL:全部本地镜像，NOT_SCAN：全部已授权未扫描本地镜像，IMAGEIDS:自选本地镜像ID
+	// <p>本地镜像扫描范围类型</p><p>枚举值：</p><ul><li>ALL： 全部本地镜像</li><li>NOT_SCAN： 全部已授权未扫描本地镜像</li><li>IMAGEIDS： 自选本地镜像ID</li><li>CLUSTER： 集群筛选</li></ul>
 	LocalImageScanType *string `json:"LocalImageScanType,omitnil,omitempty" name:"LocalImageScanType"`
 
-	// 根据已授权的本地镜像IDs扫描，优先权高于根据满足条件的已授权的本地镜像。
+	// <p>根据已授权的本地镜像IDs扫描，优先权高于根据满足条件的已授权的本地镜像。</p>
 	LocalImageIDs []*string `json:"LocalImageIDs,omitnil,omitempty" name:"LocalImageIDs"`
 
-	// 仓库镜像扫描范围类型。ALL:全部仓库镜像，NOT_SCAN：全部已授权未扫描仓库镜像，IMAGEIDS:自选仓库镜像ID
+	// <p>仓库镜像扫描范围类型。ALL:全部仓库镜像，NOT_SCAN：全部已授权未扫描仓库镜像，IMAGEIDS:自选仓库镜像ID</p>
 	RegistryImageScanType *string `json:"RegistryImageScanType,omitnil,omitempty" name:"RegistryImageScanType"`
 
-	// 根据已授权的仓库镜像IDs扫描，优先权高于根据满足条件的已授权的仓库镜像。
+	// <p>根据已授权的仓库镜像IDs扫描，优先权高于根据满足条件的已授权的仓库镜像。</p>
 	RegistryImageIDs []*uint64 `json:"RegistryImageIDs,omitnil,omitempty" name:"RegistryImageIDs"`
 
-	// 本地镜像重新漏洞扫描时的任务ID
+	// <p>本地镜像重新漏洞扫描时的任务ID</p>
 	LocalTaskID *int64 `json:"LocalTaskID,omitnil,omitempty" name:"LocalTaskID"`
 
-	// 仓库镜像重新漏洞扫描时的任务ID
+	// <p>仓库镜像重新漏洞扫描时的任务ID</p>
 	RegistryTaskID *int64 `json:"RegistryTaskID,omitnil,omitempty" name:"RegistryTaskID"`
 
-	// 本地镜像容器运行中
+	// <p>本地镜像容器运行中</p>
 	LocalImageContainerRunning *bool `json:"LocalImageContainerRunning,omitnil,omitempty" name:"LocalImageContainerRunning"`
 
-	// 仓库镜像容器运行中
+	// <p>仓库镜像容器运行中</p>
 	RegistryImageContainerRunning *bool `json:"RegistryImageContainerRunning,omitnil,omitempty" name:"RegistryImageContainerRunning"`
 
-	// 仓库镜像是否是最新
+	// <p>仓库镜像是否是最新</p>
 	IsLatest *bool `json:"IsLatest,omitnil,omitempty" name:"IsLatest"`
+
+	// <p>要剔除的本地镜像id</p>
+	ExcludeLocalImageIDs []*string `json:"ExcludeLocalImageIDs,omitnil,omitempty" name:"ExcludeLocalImageIDs"`
+
+	// <p>要剔除的仓库镜像id</p>
+	ExcludeRegistryImageIDs []*uint64 `json:"ExcludeRegistryImageIDs,omitnil,omitempty" name:"ExcludeRegistryImageIDs"`
+
+	// <p>集群id</p>
+	LocalClusterIDs []*string `json:"LocalClusterIDs,omitnil,omitempty" name:"LocalClusterIDs"`
 }
 
 type CreateVulScanTaskRequest struct {
 	*tchttp.BaseRequest
 	
-	// 本地镜像扫描范围类型。ALL:全部本地镜像，NOT_SCAN：全部已授权未扫描本地镜像，IMAGEIDS:自选本地镜像ID
+	// <p>本地镜像扫描范围类型</p><p>枚举值：</p><ul><li>ALL： 全部本地镜像</li><li>NOT_SCAN： 全部已授权未扫描本地镜像</li><li>IMAGEIDS： 自选本地镜像ID</li><li>CLUSTER： 集群筛选</li></ul>
 	LocalImageScanType *string `json:"LocalImageScanType,omitnil,omitempty" name:"LocalImageScanType"`
 
-	// 根据已授权的本地镜像IDs扫描，优先权高于根据满足条件的已授权的本地镜像。
+	// <p>根据已授权的本地镜像IDs扫描，优先权高于根据满足条件的已授权的本地镜像。</p>
 	LocalImageIDs []*string `json:"LocalImageIDs,omitnil,omitempty" name:"LocalImageIDs"`
 
-	// 仓库镜像扫描范围类型。ALL:全部仓库镜像，NOT_SCAN：全部已授权未扫描仓库镜像，IMAGEIDS:自选仓库镜像ID
+	// <p>仓库镜像扫描范围类型。ALL:全部仓库镜像，NOT_SCAN：全部已授权未扫描仓库镜像，IMAGEIDS:自选仓库镜像ID</p>
 	RegistryImageScanType *string `json:"RegistryImageScanType,omitnil,omitempty" name:"RegistryImageScanType"`
 
-	// 根据已授权的仓库镜像IDs扫描，优先权高于根据满足条件的已授权的仓库镜像。
+	// <p>根据已授权的仓库镜像IDs扫描，优先权高于根据满足条件的已授权的仓库镜像。</p>
 	RegistryImageIDs []*uint64 `json:"RegistryImageIDs,omitnil,omitempty" name:"RegistryImageIDs"`
 
-	// 本地镜像重新漏洞扫描时的任务ID
+	// <p>本地镜像重新漏洞扫描时的任务ID</p>
 	LocalTaskID *int64 `json:"LocalTaskID,omitnil,omitempty" name:"LocalTaskID"`
 
-	// 仓库镜像重新漏洞扫描时的任务ID
+	// <p>仓库镜像重新漏洞扫描时的任务ID</p>
 	RegistryTaskID *int64 `json:"RegistryTaskID,omitnil,omitempty" name:"RegistryTaskID"`
 
-	// 本地镜像容器运行中
+	// <p>本地镜像容器运行中</p>
 	LocalImageContainerRunning *bool `json:"LocalImageContainerRunning,omitnil,omitempty" name:"LocalImageContainerRunning"`
 
-	// 仓库镜像容器运行中
+	// <p>仓库镜像容器运行中</p>
 	RegistryImageContainerRunning *bool `json:"RegistryImageContainerRunning,omitnil,omitempty" name:"RegistryImageContainerRunning"`
 
-	// 仓库镜像是否是最新
+	// <p>仓库镜像是否是最新</p>
 	IsLatest *bool `json:"IsLatest,omitnil,omitempty" name:"IsLatest"`
+
+	// <p>要剔除的本地镜像id</p>
+	ExcludeLocalImageIDs []*string `json:"ExcludeLocalImageIDs,omitnil,omitempty" name:"ExcludeLocalImageIDs"`
+
+	// <p>要剔除的仓库镜像id</p>
+	ExcludeRegistryImageIDs []*uint64 `json:"ExcludeRegistryImageIDs,omitnil,omitempty" name:"ExcludeRegistryImageIDs"`
+
+	// <p>集群id</p>
+	LocalClusterIDs []*string `json:"LocalClusterIDs,omitnil,omitempty" name:"LocalClusterIDs"`
 }
 
 func (r *CreateVulScanTaskRequest) ToJsonString() string {
@@ -7003,6 +7109,9 @@ func (r *CreateVulScanTaskRequest) FromJsonString(s string) error {
 	delete(f, "LocalImageContainerRunning")
 	delete(f, "RegistryImageContainerRunning")
 	delete(f, "IsLatest")
+	delete(f, "ExcludeLocalImageIDs")
+	delete(f, "ExcludeRegistryImageIDs")
+	delete(f, "LocalClusterIDs")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateVulScanTaskRequest has unknown keys!", "")
 	}
@@ -7011,10 +7120,10 @@ func (r *CreateVulScanTaskRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateVulScanTaskResponseParams struct {
-	// 本地镜像重新漏洞扫描时的任务ID
+	// <p>本地镜像重新漏洞扫描时的任务ID</p>
 	LocalTaskID *int64 `json:"LocalTaskID,omitnil,omitempty" name:"LocalTaskID"`
 
-	// 仓库镜像重新漏洞扫描时的任务ID
+	// <p>仓库镜像重新漏洞扫描时的任务ID</p>
 	RegistryTaskID *int64 `json:"RegistryTaskID,omitnil,omitempty" name:"RegistryTaskID"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8451,9 +8560,6 @@ func (r *DescribeAbnormalProcessLevelSummaryResponse) FromJsonString(s string) e
 
 // Predefined struct for user
 type DescribeAbnormalProcessRuleDetailRequestParams struct {
-	// 策略唯一id
-	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
-
 	// 镜像id, 在添加白名单的时候使用
 	ImageId *string `json:"ImageId,omitnil,omitempty" name:"ImageId"`
 
@@ -8462,14 +8568,14 @@ type DescribeAbnormalProcessRuleDetailRequestParams struct {
 
 	// 偏移量，默认为0。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 策略唯一id
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 }
 
 type DescribeAbnormalProcessRuleDetailRequest struct {
 	*tchttp.BaseRequest
 	
-	// 策略唯一id
-	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
-
 	// 镜像id, 在添加白名单的时候使用
 	ImageId *string `json:"ImageId,omitnil,omitempty" name:"ImageId"`
 
@@ -8478,6 +8584,9 @@ type DescribeAbnormalProcessRuleDetailRequest struct {
 
 	// 偏移量，默认为0。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 策略唯一id
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 }
 
 func (r *DescribeAbnormalProcessRuleDetailRequest) ToJsonString() string {
@@ -8492,10 +8601,10 @@ func (r *DescribeAbnormalProcessRuleDetailRequest) FromJsonString(s string) erro
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "RuleId")
 	delete(f, "ImageId")
 	delete(f, "Limit")
 	delete(f, "Offset")
+	delete(f, "RuleId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAbnormalProcessRuleDetailRequest has unknown keys!", "")
 	}
@@ -8529,39 +8638,47 @@ func (r *DescribeAbnormalProcessRuleDetailResponse) FromJsonString(s string) err
 
 // Predefined struct for user
 type DescribeAbnormalProcessRulesRequestParams struct {
+	// 排序字段
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+
+	// 过滤参数,"Filters":[{"Name":"Status","Values":["2"]}]
+	// <li>ImageName- String - 是否必填：否 - 镜像名称，模糊查找绑定了该镜像的规则 </li>
+	// <li>ImageId- String - 是否必填：否 - 镜像ID，模糊查找绑定了该镜像的规则 </li>
+	// <li>RuleType- String - 是否必填：否 - 策略类型过滤，取值：system（系统策略）、user（用户策略） </li>
+	// <li>RuleAction- String - 是否必填：否 - 执行动作过滤，取值：RULE_MODE_ALERT（告警）、RULE_MODE_HOLDUP（拦截） </li>
+	Filters []*RunTimeFilters `json:"Filters,omitnil,omitempty" name:"Filters"`
+
 	// 需要返回的数量，默认为10，最大值为100
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量，默认为0。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 过滤参数,"Filters":[{"Name":"Status","Values":["2"]}]
-	Filters []*RunTimeFilters `json:"Filters,omitnil,omitempty" name:"Filters"`
-
 	// 升序降序,asc desc
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
-
-	// 排序字段
-	By *string `json:"By,omitnil,omitempty" name:"By"`
 }
 
 type DescribeAbnormalProcessRulesRequest struct {
 	*tchttp.BaseRequest
 	
+	// 排序字段
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+
+	// 过滤参数,"Filters":[{"Name":"Status","Values":["2"]}]
+	// <li>ImageName- String - 是否必填：否 - 镜像名称，模糊查找绑定了该镜像的规则 </li>
+	// <li>ImageId- String - 是否必填：否 - 镜像ID，模糊查找绑定了该镜像的规则 </li>
+	// <li>RuleType- String - 是否必填：否 - 策略类型过滤，取值：system（系统策略）、user（用户策略） </li>
+	// <li>RuleAction- String - 是否必填：否 - 执行动作过滤，取值：RULE_MODE_ALERT（告警）、RULE_MODE_HOLDUP（拦截） </li>
+	Filters []*RunTimeFilters `json:"Filters,omitnil,omitempty" name:"Filters"`
+
 	// 需要返回的数量，默认为10，最大值为100
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量，默认为0。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 过滤参数,"Filters":[{"Name":"Status","Values":["2"]}]
-	Filters []*RunTimeFilters `json:"Filters,omitnil,omitempty" name:"Filters"`
-
 	// 升序降序,asc desc
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
-
-	// 排序字段
-	By *string `json:"By,omitnil,omitempty" name:"By"`
 }
 
 func (r *DescribeAbnormalProcessRulesRequest) ToJsonString() string {
@@ -8576,11 +8693,11 @@ func (r *DescribeAbnormalProcessRulesRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "By")
+	delete(f, "Filters")
 	delete(f, "Limit")
 	delete(f, "Offset")
-	delete(f, "Filters")
 	delete(f, "Order")
-	delete(f, "By")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAbnormalProcessRulesRequest has unknown keys!", "")
 	}
@@ -8589,11 +8706,15 @@ func (r *DescribeAbnormalProcessRulesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAbnormalProcessRulesResponseParams struct {
-	// 事件总数量
-	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+	// 异常进程策略扩展信息列表（含子规则内容和执行动作）。新前端优先使用此字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleExtSet []*AbnormalProcessRuleExtSetItem `json:"RuleExtSet,omitnil,omitempty" name:"RuleExtSet"`
 
 	// 异常进程策略信息列表
 	RuleSet []*RuleBaseInfo `json:"RuleSet,omitnil,omitempty" name:"RuleSet"`
+
+	// 事件总数量
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -8878,9 +8999,6 @@ func (r *DescribeAccessControlEventsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAccessControlRuleDetailRequestParams struct {
-	// 策略唯一id
-	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
-
 	// 镜像id, 仅仅在事件加白的时候使用
 	ImageId *string `json:"ImageId,omitnil,omitempty" name:"ImageId"`
 
@@ -8889,14 +9007,14 @@ type DescribeAccessControlRuleDetailRequestParams struct {
 
 	// 偏移量，默认为0。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 策略唯一id
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 }
 
 type DescribeAccessControlRuleDetailRequest struct {
 	*tchttp.BaseRequest
 	
-	// 策略唯一id
-	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
-
 	// 镜像id, 仅仅在事件加白的时候使用
 	ImageId *string `json:"ImageId,omitnil,omitempty" name:"ImageId"`
 
@@ -8905,6 +9023,9 @@ type DescribeAccessControlRuleDetailRequest struct {
 
 	// 偏移量，默认为0。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 策略唯一id
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 }
 
 func (r *DescribeAccessControlRuleDetailRequest) ToJsonString() string {
@@ -8919,10 +9040,10 @@ func (r *DescribeAccessControlRuleDetailRequest) FromJsonString(s string) error 
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "RuleId")
 	delete(f, "ImageId")
 	delete(f, "Limit")
 	delete(f, "Offset")
+	delete(f, "RuleId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAccessControlRuleDetailRequest has unknown keys!", "")
 	}
@@ -8956,39 +9077,47 @@ func (r *DescribeAccessControlRuleDetailResponse) FromJsonString(s string) error
 
 // Predefined struct for user
 type DescribeAccessControlRulesRequestParams struct {
+	// 排序字段
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+
+	// 过滤参数,"Filters":[{"Name":"Status","Values":["2"]}]
+	// <li>ImageName- String - 是否必填：否 - 镜像名称，模糊查找绑定了该镜像的规则 </li>
+	// <li>ImageId- String - 是否必填：否 - 镜像ID，模糊查找绑定了该镜像的规则 </li>
+	// <li>RuleType- String - 是否必填：否 - 策略类型过滤，取值：system（系统策略）、user（用户策略） </li>
+	// <li>RuleAction- String - 是否必填：否 - 执行动作过滤，取值：RULE_MODE_ALERT（告警）、RULE_MODE_HOLDUP（拦截） </li>
+	Filters []*RunTimeFilters `json:"Filters,omitnil,omitempty" name:"Filters"`
+
 	// 需要返回的数量，默认为10，最大值为100
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量，默认为0。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 过滤参数,"Filters":[{"Name":"Status","Values":["2"]}]
-	Filters []*RunTimeFilters `json:"Filters,omitnil,omitempty" name:"Filters"`
-
 	// 升序降序,asc desc
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
-
-	// 排序字段
-	By *string `json:"By,omitnil,omitempty" name:"By"`
 }
 
 type DescribeAccessControlRulesRequest struct {
 	*tchttp.BaseRequest
 	
+	// 排序字段
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+
+	// 过滤参数,"Filters":[{"Name":"Status","Values":["2"]}]
+	// <li>ImageName- String - 是否必填：否 - 镜像名称，模糊查找绑定了该镜像的规则 </li>
+	// <li>ImageId- String - 是否必填：否 - 镜像ID，模糊查找绑定了该镜像的规则 </li>
+	// <li>RuleType- String - 是否必填：否 - 策略类型过滤，取值：system（系统策略）、user（用户策略） </li>
+	// <li>RuleAction- String - 是否必填：否 - 执行动作过滤，取值：RULE_MODE_ALERT（告警）、RULE_MODE_HOLDUP（拦截） </li>
+	Filters []*RunTimeFilters `json:"Filters,omitnil,omitempty" name:"Filters"`
+
 	// 需要返回的数量，默认为10，最大值为100
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量，默认为0。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 过滤参数,"Filters":[{"Name":"Status","Values":["2"]}]
-	Filters []*RunTimeFilters `json:"Filters,omitnil,omitempty" name:"Filters"`
-
 	// 升序降序,asc desc
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
-
-	// 排序字段
-	By *string `json:"By,omitnil,omitempty" name:"By"`
 }
 
 func (r *DescribeAccessControlRulesRequest) ToJsonString() string {
@@ -9003,11 +9132,11 @@ func (r *DescribeAccessControlRulesRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "By")
+	delete(f, "Filters")
 	delete(f, "Limit")
 	delete(f, "Offset")
-	delete(f, "Filters")
 	delete(f, "Order")
-	delete(f, "By")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAccessControlRulesRequest has unknown keys!", "")
 	}
@@ -9016,11 +9145,15 @@ func (r *DescribeAccessControlRulesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAccessControlRulesResponseParams struct {
-	// 事件总数量
-	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+	// 访问控制策略扩展信息列表（含子规则内容和执行动作）。新前端优先使用此字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleExtSet []*AccessControlRuleExtSetItem `json:"RuleExtSet,omitnil,omitempty" name:"RuleExtSet"`
 
 	// 访问控制策略信息列表
 	RuleSet []*RuleBaseInfo `json:"RuleSet,omitnil,omitempty" name:"RuleSet"`
+
+	// 事件总数量
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -11092,52 +11225,50 @@ func (r *DescribeAssetImageRegistryListExportResponse) FromJsonString(s string) 
 
 // Predefined struct for user
 type DescribeAssetImageRegistryListRequestParams struct {
-	// 需要返回的数量，默认为10，最大值为100
+	// <p>需要返回的数量，默认为10，最大值为100</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量，默认为0
+	// <p>偏移量，默认为0</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 过滤字段
-	// IsAuthorized是否授权，取值全部all，未授权0，已授权1
+	// <p>过滤字段<br>IsAuthorized是否授权，取值全部all，未授权0，已授权1</p>
 	Filters []*AssetFilters `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 排序字段
+	// <p>排序字段</p>
 	By *string `json:"By,omitnil,omitempty" name:"By"`
 
-	// 排序方式，asc，desc
+	// <p>排序方式，asc，desc</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 是否仅展示各repository最新的镜像, 默认为false
+	// <p>是否仅展示各repository最新的镜像, 默认为false</p>
 	OnlyShowLatest *bool `json:"OnlyShowLatest,omitnil,omitempty" name:"OnlyShowLatest"`
 
-	// 是否仅展示运行中容器镜像
+	// <p>是否仅展示运行中容器镜像</p>
 	IsRunning *bool `json:"IsRunning,omitnil,omitempty" name:"IsRunning"`
 }
 
 type DescribeAssetImageRegistryListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 需要返回的数量，默认为10，最大值为100
+	// <p>需要返回的数量，默认为10，最大值为100</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量，默认为0
+	// <p>偏移量，默认为0</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 过滤字段
-	// IsAuthorized是否授权，取值全部all，未授权0，已授权1
+	// <p>过滤字段<br>IsAuthorized是否授权，取值全部all，未授权0，已授权1</p>
 	Filters []*AssetFilters `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 排序字段
+	// <p>排序字段</p>
 	By *string `json:"By,omitnil,omitempty" name:"By"`
 
-	// 排序方式，asc，desc
+	// <p>排序方式，asc，desc</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 是否仅展示各repository最新的镜像, 默认为false
+	// <p>是否仅展示各repository最新的镜像, 默认为false</p>
 	OnlyShowLatest *bool `json:"OnlyShowLatest,omitnil,omitempty" name:"OnlyShowLatest"`
 
-	// 是否仅展示运行中容器镜像
+	// <p>是否仅展示运行中容器镜像</p>
 	IsRunning *bool `json:"IsRunning,omitnil,omitempty" name:"IsRunning"`
 }
 
@@ -11168,10 +11299,10 @@ func (r *DescribeAssetImageRegistryListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAssetImageRegistryListResponseParams struct {
-	// 镜像仓库列表
+	// <p>镜像仓库列表</p>
 	List []*ImageRepoInfo `json:"List,omitnil,omitempty" name:"List"`
 
-	// 总数量
+	// <p>总数量</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -12338,49 +12469,52 @@ func (r *DescribeAssetImageScanSettingRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAssetImageScanSettingResponseParams struct {
-	// 开关
+	// <p>开关</p>
 	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
 
-	// 扫描时刻(完整时间;后端按0时区解析时分秒)
+	// <p>扫描时刻(完整时间;后端按0时区解析时分秒)</p>
 	ScanTime *string `json:"ScanTime,omitnil,omitempty" name:"ScanTime"`
 
-	// 扫描间隔
+	// <p>扫描间隔</p>
 	ScanPeriod *uint64 `json:"ScanPeriod,omitnil,omitempty" name:"ScanPeriod"`
 
-	// 扫描木马
+	// <p>扫描木马</p>
 	ScanVirus *bool `json:"ScanVirus,omitnil,omitempty" name:"ScanVirus"`
 
-	// 扫描敏感信息
+	// <p>扫描敏感信息</p>
 	ScanRisk *bool `json:"ScanRisk,omitnil,omitempty" name:"ScanRisk"`
 
-	// 扫描漏洞
+	// <p>扫描漏洞</p>
 	ScanVul *bool `json:"ScanVul,omitnil,omitempty" name:"ScanVul"`
 
-	// 扫描全部镜像
+	// <p>扫描全部镜像</p>
 	//
 	// Deprecated: All is deprecated.
 	All *bool `json:"All,omitnil,omitempty" name:"All"`
 
-	// 自定义扫描镜像
+	// <p>自定义扫描镜像</p>
 	Images []*string `json:"Images,omitnil,omitempty" name:"Images"`
 
-	// 镜像是否存在运行中的容器
+	// <p>镜像是否存在运行中的容器</p>
 	ContainerRunning *bool `json:"ContainerRunning,omitnil,omitempty" name:"ContainerRunning"`
 
-	// 扫描范围 0 全部授权镜像，1自选镜像，2 推荐扫描
+	// <p>扫描范围 0 全部授权镜像，1自选镜像，2 推荐扫描 3:集群筛选扫描</p>
 	ScanScope *uint64 `json:"ScanScope,omitnil,omitempty" name:"ScanScope"`
 
-	// 扫描结束时间 02:00 时分
+	// <p>扫描结束时间 02:00 时分</p>
 	ScanEndTime *string `json:"ScanEndTime,omitnil,omitempty" name:"ScanEndTime"`
 
-	// 排除的扫描镜像
+	// <p>排除的扫描镜像</p>
 	ExcludeImages []*string `json:"ExcludeImages,omitnil,omitempty" name:"ExcludeImages"`
 
-	// 最后一次扫描时间
+	// <p>最后一次扫描时间</p>
 	LastScanTime *string `json:"LastScanTime,omitnil,omitempty" name:"LastScanTime"`
 
-	// 扫描结果(Success|InsufficientLicense|ImageNeedIsEmpty|InternalError)
+	// <p>扫描结果(Success|InsufficientLicense|ImageNeedIsEmpty|InternalError)</p>
 	ScanResult *string `json:"ScanResult,omitnil,omitempty" name:"ScanResult"`
+
+	// <p>集群id</p>
+	ClusterIDs []*string `json:"ClusterIDs,omitnil,omitempty" name:"ClusterIDs"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -17964,9 +18098,18 @@ func (r *DescribeK8sApiAbnormalRuleInfoResponse) FromJsonString(s string) error 
 
 // Predefined struct for user
 type DescribeK8sApiAbnormalRuleListRequestParams struct {
+	// 排序字段。
+	// <li>UpdateTime - string  - 是否必填: 否 -最后更新时间</li>
+	// <li>EffectClusterCount - string  - 是否必填: 否 -影响集群数</li>
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+
 	// 过滤条件。
 	// <li>RuleType - string  - 是否必填: 否 -规则类型</li>
 	// <li>Status - string  - 是否必填: 否 -状态</li>
+	// <li>RuleName - string  - 是否必填: 否 -规则名称(模糊查询)</li>
+	// <li>ClusterName - string  - 是否必填: 否 -集群名称，模糊查找绑定了该集群的规则（含全集群规则）</li>
+	// <li>ClusterID - string  - 是否必填: 否 -集群ID，模糊查找绑定了该集群的规则（含全集群规则）</li>
+	// <li>RuleAction - string  - 是否必填: 否 -执行动作过滤，取值：RULE_MODE_ALERT（告警）、RULE_MODE_HOLDUP（拦截）</li>
 	Filters []*RunTimeFilters `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 需要返回的数量，默认为10，最大值为100
@@ -17977,19 +18120,23 @@ type DescribeK8sApiAbnormalRuleListRequestParams struct {
 
 	// 排序方式
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
-
-	// 排序字段。
-	// <li>UpdateTime - string  - 是否必填: 否 -最后更新时间</li>
-	// <li>EffectClusterCount - string  - 是否必填: 否 -影响集群数</li>
-	By *string `json:"By,omitnil,omitempty" name:"By"`
 }
 
 type DescribeK8sApiAbnormalRuleListRequest struct {
 	*tchttp.BaseRequest
 	
+	// 排序字段。
+	// <li>UpdateTime - string  - 是否必填: 否 -最后更新时间</li>
+	// <li>EffectClusterCount - string  - 是否必填: 否 -影响集群数</li>
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+
 	// 过滤条件。
 	// <li>RuleType - string  - 是否必填: 否 -规则类型</li>
 	// <li>Status - string  - 是否必填: 否 -状态</li>
+	// <li>RuleName - string  - 是否必填: 否 -规则名称(模糊查询)</li>
+	// <li>ClusterName - string  - 是否必填: 否 -集群名称，模糊查找绑定了该集群的规则（含全集群规则）</li>
+	// <li>ClusterID - string  - 是否必填: 否 -集群ID，模糊查找绑定了该集群的规则（含全集群规则）</li>
+	// <li>RuleAction - string  - 是否必填: 否 -执行动作过滤，取值：RULE_MODE_ALERT（告警）、RULE_MODE_HOLDUP（拦截）</li>
 	Filters []*RunTimeFilters `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 需要返回的数量，默认为10，最大值为100
@@ -18000,11 +18147,6 @@ type DescribeK8sApiAbnormalRuleListRequest struct {
 
 	// 排序方式
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
-
-	// 排序字段。
-	// <li>UpdateTime - string  - 是否必填: 否 -最后更新时间</li>
-	// <li>EffectClusterCount - string  - 是否必填: 否 -影响集群数</li>
-	By *string `json:"By,omitnil,omitempty" name:"By"`
 }
 
 func (r *DescribeK8sApiAbnormalRuleListRequest) ToJsonString() string {
@@ -18019,11 +18161,11 @@ func (r *DescribeK8sApiAbnormalRuleListRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "By")
 	delete(f, "Filters")
 	delete(f, "Limit")
 	delete(f, "Offset")
 	delete(f, "Order")
-	delete(f, "By")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeK8sApiAbnormalRuleListRequest has unknown keys!", "")
 	}
@@ -28597,33 +28739,50 @@ type K8sApiAbnormalEventListItem struct {
 }
 
 type K8sApiAbnormalRuleInfo struct {
-	// 规则名称
-	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
+	// 是否所有集群生效
+	EffectAllCluster *bool `json:"EffectAllCluster,omitnil,omitempty" name:"EffectAllCluster"`
 
-	// 状态
-	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
+	// 生效集群IDSet
+	EffectClusterIDSet []*string `json:"EffectClusterIDSet,omitnil,omitempty" name:"EffectClusterIDSet"`
 
 	// 规则信息列表
 	RuleInfoList []*K8sApiAbnormalRuleScopeInfo `json:"RuleInfoList,omitnil,omitempty" name:"RuleInfoList"`
 
-	// 生效集群IDSet
-	EffectClusterIDSet []*string `json:"EffectClusterIDSet,omitnil,omitempty" name:"EffectClusterIDSet"`
+	// 规则名称
+	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
 
 	// 规则类型
 	// RT_SYSTEM 系统规则
 	// RT_USER 用户自定义
 	RuleType *string `json:"RuleType,omitnil,omitempty" name:"RuleType"`
 
-	// 是否所有集群生效
-	EffectAllCluster *bool `json:"EffectAllCluster,omitnil,omitempty" name:"EffectAllCluster"`
+	// 状态
+	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 规则ID
 	RuleID *string `json:"RuleID,omitnil,omitempty" name:"RuleID"`
 }
 
 type K8sApiAbnormalRuleListItem struct {
+	// 是否全部集群生效。true表示全部集群生效，false表示仅指定集群生效
+	EffectAllCluster *bool `json:"EffectAllCluster,omitnil,omitempty" name:"EffectAllCluster"`
+
+	// 受影响集群总数
+	EffectClusterCount *uint64 `json:"EffectClusterCount,omitnil,omitempty" name:"EffectClusterCount"`
+
+	// 编辑账号
+	OprUin *string `json:"OprUin,omitnil,omitempty" name:"OprUin"`
+
+	// 规则组中所有执行动作的去重列表。当前黑名单仅包含 RULE_MODE_ALERT（告警）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleActions []*string `json:"RuleActions,omitnil,omitempty" name:"RuleActions"`
+
 	// 规则ID
 	RuleID *string `json:"RuleID,omitnil,omitempty" name:"RuleID"`
+
+	// 子规则内容列表，从 rule_details JSON 反序列化
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleInfoList []*K8sApiAbnormalRuleScopeInfo `json:"RuleInfoList,omitnil,omitempty" name:"RuleInfoList"`
 
 	// 规则名称
 	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
@@ -28633,37 +28792,31 @@ type K8sApiAbnormalRuleListItem struct {
 	// RT_USER 用户自定义
 	RuleType *string `json:"RuleType,omitnil,omitempty" name:"RuleType"`
 
-	// 受影响集群总数
-	EffectClusterCount *uint64 `json:"EffectClusterCount,omitnil,omitempty" name:"EffectClusterCount"`
+	// 状态
+	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 更新时间
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
-
-	// 编辑账号
-	OprUin *string `json:"OprUin,omitnil,omitempty" name:"OprUin"`
-
-	// 状态
-	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 type K8sApiAbnormalRuleScopeInfo struct {
-	// <p>范围<br>系统事件:<br>ANONYMOUS_ACCESS: 匿名访问<br>ABNORMAL_UA_REQ: 异常UA请求<br>ANONYMOUS_ABNORMAL_PERMISSION: 匿名用户权限异动<br>GET_CREDENTIALS: 凭据信息获取<br>MOUNT_SENSITIVE_PATH: 敏感路径挂载<br>COMMAND_RUN: 命令执行<br>PRIVILEGE_CONTAINER: 特权容器<br>EXCEPTION_CRONTAB_TASK: 异常定时任务<br>STATICS_POD: 静态pod创建<br>ABNORMAL_CREATE_POD: 异常pod创建<br>USER_DEFINED: 用户自定义</p>
-	Scope *string `json:"Scope,omitnil,omitempty" name:"Scope"`
-
-	// <p>动作(RULE_MODE_ALERT: 告警 RULE_MODE_RELEASE:放行)</p>
+	// <p>执行动作。黑名单规则仅支持 RULE_MODE_ALERT（告警），不再支持 RULE_MODE_RELEASE/PASS（放行）。放行请使用白名单接口 ModifyK8sApiAbnormalWhitelist</p>
 	Action *string `json:"Action,omitnil,omitempty" name:"Action"`
 
-	// <p>威胁等级 HIGH:高级 MIDDLE: 中级 LOW:低级 NOTICE:提示</p>
-	RiskLevel *string `json:"RiskLevel,omitnil,omitempty" name:"RiskLevel"`
-
-	// <p>开关状态(true:开 false:关) 适用于系统规则</p>
-	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
+	// <p>范围<br>系统事件:<br>ANONYMOUS_ACCESS: 匿名访问<br>ABNORMAL_UA_REQ: 异常UA请求<br>ANONYMOUS_ABNORMAL_PERMISSION: 匿名用户权限异动<br>GET_CREDENTIALS: 凭据信息获取<br>MOUNT_SENSITIVE_PATH: 敏感路径挂载<br>COMMAND_RUN: 命令执行<br>PRIVILEGE_CONTAINER: 特权容器<br>EXCEPTION_CRONTAB_TASK: 异常定时任务<br>STATICS_POD: 静态pod创建<br>ABNORMAL_CREATE_POD: 异常pod创建<br>USER_DEFINED: 用户自定义</p>
+	Scope *string `json:"Scope,omitnil,omitempty" name:"Scope"`
 
 	// <p>是否被删除 适用于自定义规则入参</p>
 	IsDelete *bool `json:"IsDelete,omitnil,omitempty" name:"IsDelete"`
 
+	// <p>威胁等级 HIGH:高级 MIDDLE: 中级 LOW:低级 NOTICE:提示</p>
+	RiskLevel *string `json:"RiskLevel,omitnil,omitempty" name:"RiskLevel"`
+
 	// <p>规则类型对应中文</p>
 	RuleTypeZH *string `json:"RuleTypeZH,omitnil,omitempty" name:"RuleTypeZH"`
+
+	// <p>开关状态(true:开 false:关) 适用于系统规则</p>
+	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 type K8sApiAbnormalTendencyItem struct {
@@ -32819,26 +32972,29 @@ type RiskSyscallWhiteListInfo struct {
 }
 
 type RuleBaseInfo struct {
-	// true: 默认策略，false:自定义策略
-	IsDefault *bool `json:"IsDefault,omitnil,omitempty" name:"IsDefault"`
+	// 编辑用户名称
+	EditUserName *string `json:"EditUserName,omitnil,omitempty" name:"EditUserName"`
 
 	// 策略生效镜像数量
 	EffectImageCount *uint64 `json:"EffectImageCount,omitnil,omitempty" name:"EffectImageCount"`
 
+	// true: 默认策略，false:自定义策略
+	IsDefault *bool `json:"IsDefault,omitnil,omitempty" name:"IsDefault"`
+
+	// 是否为全部镜像规则。true表示对所有镜像生效
+	IsGlobal *bool `json:"IsGlobal,omitnil,omitempty" name:"IsGlobal"`
+
+	// true: 策略启用，false：策略禁用
+	IsEnable *bool `json:"IsEnable,omitnil,omitempty" name:"IsEnable"`
+
 	// 策略Id
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
-
-	// 策略更新时间, 存在为空的情况
-	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 策略名字
 	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
 
-	// 编辑用户名称
-	EditUserName *string `json:"EditUserName,omitnil,omitempty" name:"EditUserName"`
-
-	// true: 策略启用，false：策略禁用
-	IsEnable *bool `json:"IsEnable,omitnil,omitempty" name:"IsEnable"`
+	// 策略更新时间, 存在为空的情况
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
 type RunTimeEventBaseInfo struct {

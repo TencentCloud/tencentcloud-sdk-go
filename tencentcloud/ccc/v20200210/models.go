@@ -94,6 +94,37 @@ type AICallExtractResultInfo struct {
 	Number *float64 `json:"Number,omitnil,omitempty" name:"Number"`
 }
 
+type AICallInteractionRound struct {
+	// <p>本轮对话的唯一标识 Id</p>
+	RoundId *string `json:"RoundId,omitnil,omitempty" name:"RoundId"`
+
+	// <p>轮次</p>
+	RoundIndex *int64 `json:"RoundIndex,omitnil,omitempty" name:"RoundIndex"`
+
+	// <p>用户回复分类的标签， json序列化后的表示</p>
+	Tags *string `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>本轮涉及到的消息内容</p>
+	Messages []*AIRoundMessage `json:"Messages,omitnil,omitempty" name:"Messages"`
+
+	// <p>本轮对话在画布中经过的节点路径</p>
+	Paths []*AIRoundPath `json:"Paths,omitnil,omitempty" name:"Paths"`
+}
+
+type AICallLatencyMetrics struct {
+	// <p>asr时延（毫秒）</p><p>-1 表示无 asr时延</p>
+	AsrLatency *int64 `json:"AsrLatency,omitnil,omitempty" name:"AsrLatency"`
+
+	// <p>llm首token时延(毫秒)</p>
+	LLMFirstTokenLatency *int64 `json:"LLMFirstTokenLatency,omitnil,omitempty" name:"LLMFirstTokenLatency"`
+
+	// <p>tts时延（毫秒）</p><p>-1 表示无 tts时延</p>
+	TTSLatency *int64 `json:"TTSLatency,omitnil,omitempty" name:"TTSLatency"`
+
+	// <p>总时延</p>
+	TotalLatency *int64 `json:"TotalLatency,omitnil,omitempty" name:"TotalLatency"`
+}
+
 type AILatencyDetail struct {
 	// 对话ID
 	RoundId *string `json:"RoundId,omitnil,omitempty" name:"RoundId"`
@@ -137,6 +168,43 @@ type AILatencyStatisticsInfo struct {
 
 	// p90
 	P90Latency *int64 `json:"P90Latency,omitnil,omitempty" name:"P90Latency"`
+}
+
+type AIRoundMessage struct {
+	// <p>消息的毫秒级时间戳</p><p>单位：ms</p>
+	Timestamp *int64 `json:"Timestamp,omitnil,omitempty" name:"Timestamp"`
+
+	// <p>用户消息</p>
+	UserReply *UserReplyEvent `json:"UserReply,omitnil,omitempty" name:"UserReply"`
+
+	// <p>智能体响应消息</p>
+	AISpeak *AISpeakEvent `json:"AISpeak,omitnil,omitempty" name:"AISpeak"`
+}
+
+type AIRoundPath struct {
+	// <p>画布中的节点名称</p>
+	NodeName *string `json:"NodeName,omitnil,omitempty" name:"NodeName"`
+
+	// <p>画布中的节点类型</p><p>枚举值：</p><ul><li>DIALOGUE： 对话节点</li><li>API_CALL： 接口调用节点</li><li>TRANSFER： 转接节点</li><li>KEY_PRESS： 按键节点</li><li>END_CALL： 挂断节点</li></ul>
+	NodeType *string `json:"NodeType,omitnil,omitempty" name:"NodeType"`
+
+	// <p>经过当前节点的时间戳</p><p>单位：ms</p>
+	Timestamp *int64 `json:"Timestamp,omitnil,omitempty" name:"Timestamp"`
+}
+
+type AISpeakEvent struct {
+	// <p>本次话术是否允许被用户VAD打断</p>
+	CanBeInterrupted *bool `json:"CanBeInterrupted,omitnil,omitempty" name:"CanBeInterrupted"`
+
+	// <p>智能体播报的话术文本内容</p>
+	SpokenText *string `json:"SpokenText,omitnil,omitempty" name:"SpokenText"`
+
+	// <p>智能体发言类型</p><p>枚举值：</p><ul><li>Script： 智能体话术</li><li>KnowledgeBase： 知识库</li><li>LLMFallback： 大模型兜底</li><li>NoResponseTip： 无响应提示</li><li>智能追问： SmartFollowUp</li><li>FAQ： FAQ</li><li>转人工 - 排队等待音： TransferWaitingPrompt</li><li>无响应挂断前放音： PlayNoResponseEndPrompt</li><li>转人工 - 排队前放音： PlayQueuePrompt</li><li>转人工 - 接待前放音： PlayPromptBeforeReception</li><li>转人工 - 排队超时放音： PlayQueueTimeoutPrompt</li><li>转人工 - 转人工失败放音： PlayTransferFailPrompt</li><li>DTMF收号（按键用户输入）： Dtmf</li><li>按键节点 - 播放提示音： PlayDtmfPrompt</li><li>按键节点 - 输入错误提示音： PlayInvalidDtmfPrompt</li><li>按键节点 - 超时提示音： PlayDtmfTimeoutPrompt</li><li>其他类型： Other</li></ul>
+	SpokenType *string `json:"SpokenType,omitnil,omitempty" name:"SpokenType"`
+
+	// <p>本次响应生成的时延结果</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LatencyMetrics *AICallLatencyMetrics `json:"LatencyMetrics,omitnil,omitempty" name:"LatencyMetrics"`
 }
 
 type AITransferItem struct {
@@ -3561,6 +3629,70 @@ func (r *DescribeAICallExtractResultResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeAICallInteractionRecordsRequestParams struct {
+	// <p>应用 ID，可以查看 https://console.cloud.tencent.com/ccc。</p>
+	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// <p>查询的会话SessionID</p>
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+}
+
+type DescribeAICallInteractionRecordsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>应用 ID，可以查看 https://console.cloud.tencent.com/ccc。</p>
+	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// <p>查询的会话SessionID</p>
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+}
+
+func (r *DescribeAICallInteractionRecordsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAICallInteractionRecordsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "SessionId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAICallInteractionRecordsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAICallInteractionRecordsResponseParams struct {
+	// <p>返回的会话交互结果</p>
+	InteractionEventList []*AICallInteractionRound `json:"InteractionEventList,omitnil,omitempty" name:"InteractionEventList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAICallInteractionRecordsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAICallInteractionRecordsResponseParams `json:"Response"`
+}
+
+func (r *DescribeAICallInteractionRecordsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAICallInteractionRecordsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeAILatencyRequestParams struct {
 	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
@@ -5143,20 +5275,20 @@ func (r *DescribePSTNActiveSessionListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribePredictiveDialingCampaignRequestParams struct {
-	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	// <p>应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc</p>
 	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// 任务 ID
+	// <p>任务 ID</p>
 	CampaignId *int64 `json:"CampaignId,omitnil,omitempty" name:"CampaignId"`
 }
 
 type DescribePredictiveDialingCampaignRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	// <p>应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc</p>
 	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// 任务 ID
+	// <p>任务 ID</p>
 	CampaignId *int64 `json:"CampaignId,omitnil,omitempty" name:"CampaignId"`
 }
 
@@ -5182,38 +5314,50 @@ func (r *DescribePredictiveDialingCampaignRequest) FromJsonString(s string) erro
 
 // Predefined struct for user
 type DescribePredictiveDialingCampaignResponseParams struct {
-	// 任务 ID
+	// <p>任务 ID</p>
 	CampaignId *int64 `json:"CampaignId,omitnil,omitempty" name:"CampaignId"`
 
-	// 任务名称
+	// <p>任务名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 被叫呼叫顺序 0 随机 1 顺序
+	// <p>被叫呼叫顺序 0 随机 1 顺序</p>
 	CallOrder *int64 `json:"CallOrder,omitnil,omitempty" name:"CallOrder"`
 
-	// 使用的座席技能组 ID
+	// <p>使用的座席技能组 ID</p>
 	SkillGroupId *int64 `json:"SkillGroupId,omitnil,omitempty" name:"SkillGroupId"`
 
-	// 指定的 IVR ID
+	// <p>指定的 IVR ID</p>
 	IVRId *int64 `json:"IVRId,omitnil,omitempty" name:"IVRId"`
 
-	// 相同应用内多个任务运行优先级，从高到底 1 - 5
+	// <p>相同应用内多个任务运行优先级，从高到底 1 - 5</p>
 	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
 
-	// 预期呼损率，百分比，5 - 50
+	// <p>预期呼损率，百分比，5 - 50</p>
 	ExpectedAbandonRate *int64 `json:"ExpectedAbandonRate,omitnil,omitempty" name:"ExpectedAbandonRate"`
 
-	// 呼叫重试次数，0 - 2
+	// <p>呼叫重试次数，0 - 2</p>
 	RetryTimes *int64 `json:"RetryTimes,omitnil,omitempty" name:"RetryTimes"`
 
-	// 呼叫重试间隔时间，单位秒，60 - 86400
+	// <p>呼叫重试间隔时间，单位秒，60 - 86400</p>
 	RetryInterval *int64 `json:"RetryInterval,omitnil,omitempty" name:"RetryInterval"`
 
-	// 任务启动时间，Unix 时间戳，到此时间后会自动启动任务
+	// <p>任务启动时间，Unix 时间戳，到此时间后会自动启动任务</p>
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 任务结束时间，Unix 时间戳，到此时间后会自动终止任务
+	// <p>任务结束时间，Unix 时间戳，到此时间后会自动终止任务</p>
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>自定义变量</p>
+	Variables []*Variable `json:"Variables,omitnil,omitempty" name:"Variables"`
+
+	// <p>UUI</p>
+	UUI *string `json:"UUI,omitnil,omitempty" name:"UUI"`
+
+	// <p>任务状态</p><p>枚举值：</p><ul><li>0： 待开始 </li><li>1： 进行中</li><li>2： 已暂停</li><li>3： 已终止</li><li>4： 已完成</li></ul>
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>任务状态原因 0 正常 1 手动结束 2 超时结束</p>
+	StatusReason *int64 `json:"StatusReason,omitnil,omitempty" name:"StatusReason"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -5263,39 +5407,45 @@ type DescribePredictiveDialingCampaignsElement struct {
 
 // Predefined struct for user
 type DescribePredictiveDialingCampaignsRequestParams struct {
-	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	// <p>应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc</p>
 	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// 分页尺寸，最大为 100
+	// <p>分页尺寸，最大为 100</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 分页页码，从 0 开始
+	// <p>分页页码，从 0 开始</p>
 	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 查询任务列表名称关键字
+	// <p>查询任务列表名称关键字</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 查询任务列表技能组 ID
+	// <p>查询任务列表技能组 ID</p>
 	SkillGroupId *int64 `json:"SkillGroupId,omitnil,omitempty" name:"SkillGroupId"`
+
+	// <p>任务 ID</p>
+	CampaignId *int64 `json:"CampaignId,omitnil,omitempty" name:"CampaignId"`
 }
 
 type DescribePredictiveDialingCampaignsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	// <p>应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc</p>
 	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// 分页尺寸，最大为 100
+	// <p>分页尺寸，最大为 100</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 分页页码，从 0 开始
+	// <p>分页页码，从 0 开始</p>
 	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 查询任务列表名称关键字
+	// <p>查询任务列表名称关键字</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 查询任务列表技能组 ID
+	// <p>查询任务列表技能组 ID</p>
 	SkillGroupId *int64 `json:"SkillGroupId,omitnil,omitempty" name:"SkillGroupId"`
+
+	// <p>任务 ID</p>
+	CampaignId *int64 `json:"CampaignId,omitnil,omitempty" name:"CampaignId"`
 }
 
 func (r *DescribePredictiveDialingCampaignsRequest) ToJsonString() string {
@@ -5315,6 +5465,7 @@ func (r *DescribePredictiveDialingCampaignsRequest) FromJsonString(s string) err
 	delete(f, "PageNumber")
 	delete(f, "Name")
 	delete(f, "SkillGroupId")
+	delete(f, "CampaignId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePredictiveDialingCampaignsRequest has unknown keys!", "")
 	}
@@ -5323,10 +5474,10 @@ func (r *DescribePredictiveDialingCampaignsRequest) FromJsonString(s string) err
 
 // Predefined struct for user
 type DescribePredictiveDialingCampaignsResponseParams struct {
-	// 数据总量
+	// <p>数据总量</p>
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 数据
+	// <p>数据</p>
 	CampaignList []*DescribePredictiveDialingCampaignsElement `json:"CampaignList,omitnil,omitempty" name:"CampaignList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9211,6 +9362,20 @@ func (r *UploadIvrAudioResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *UploadIvrAudioResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type UserReplyEvent struct {
+	// <p>ASR语音识别引擎将用户语音转换成的原始文本结果</p>
+	ASRTranscript *string `json:"ASRTranscript,omitnil,omitempty" name:"ASRTranscript"`
+
+	// <p>命中画布中该对话节点配置的回复分类</p>
+	MatchedIntent *string `json:"MatchedIntent,omitnil,omitempty" name:"MatchedIntent"`
+
+	// <p>用户回复分类的标签， json序列化后的信息</p>
+	ExtractedSlots *string `json:"ExtractedSlots,omitnil,omitempty" name:"ExtractedSlots"`
+
+	// <p>用户回复命中的分支类型</p><p>枚举值：</p><ul><li>Intent： 用户意图</li><li>Fallback： 兜底分支</li><li>NoResponse： 无响应跳转分支</li><li>SlotCollectionSuccess： 词槽收集完成跳转分支</li><li>SlotCollectionFail： 词槽收集失败跳转分支</li><li>GlobalIntent： 全局节点意图</li><li>LogicAnd： 逻辑判断节点 and</li><li>LogicOr： 逻辑判断节点 or</li><li>DTMF成功： DTMFSuccess</li><li>DTMF失败： DTMFFail</li><li>DTMF导航： DTMFNavigation</li><li>DTMF分机： DTMFExtension</li><li>DTMF收号： DTMFCollection</li><li>转接智能体节点失败： TransferAgentFail</li></ul>
+	BranchType *string `json:"BranchType,omitnil,omitempty" name:"BranchType"`
 }
 
 type Variable struct {

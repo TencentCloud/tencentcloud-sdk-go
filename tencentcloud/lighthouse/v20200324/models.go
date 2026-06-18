@@ -213,6 +213,14 @@ type AssociateInstancesKeyPairsRequestParams struct {
 
 	// 实例 ID 列表。每次请求批量实例的上限为 100。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
+
+	// 绑定类型。可选值：
+	// ONLINE - 在线绑定，不需要关机。
+	// OFFLINE - 离线绑定，会对实例进行关机。
+	AssociateType *string `json:"AssociateType,omitnil,omitempty" name:"AssociateType"`
+
+	// 绑定的用户名。当 AssociateType 为 OFFLINE 时，不支持该参数。
+	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
 }
 
 type AssociateInstancesKeyPairsRequest struct {
@@ -223,6 +231,14 @@ type AssociateInstancesKeyPairsRequest struct {
 
 	// 实例 ID 列表。每次请求批量实例的上限为 100。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
+
+	// 绑定类型。可选值：
+	// ONLINE - 在线绑定，不需要关机。
+	// OFFLINE - 离线绑定，会对实例进行关机。
+	AssociateType *string `json:"AssociateType,omitnil,omitempty" name:"AssociateType"`
+
+	// 绑定的用户名。当 AssociateType 为 OFFLINE 时，不支持该参数。
+	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
 }
 
 func (r *AssociateInstancesKeyPairsRequest) ToJsonString() string {
@@ -239,6 +255,8 @@ func (r *AssociateInstancesKeyPairsRequest) FromJsonString(s string) error {
 	}
 	delete(f, "KeyIds")
 	delete(f, "InstanceIds")
+	delete(f, "AssociateType")
+	delete(f, "Username")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AssociateInstancesKeyPairsRequest has unknown keys!", "")
 	}
@@ -265,6 +283,14 @@ func (r *AssociateInstancesKeyPairsResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *AssociateInstancesKeyPairsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type AssociatedInstanceInfo struct {
+	// <p>实例ID。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>密钥对绑定的用户。</p>
+	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
 }
 
 // Predefined struct for user
@@ -516,6 +542,17 @@ type BlueprintPrice struct {
 
 	// 镜像折扣后总价。单位元。
 	DiscountPrice *float64 `json:"DiscountPrice,omitnil,omitempty" name:"DiscountPrice"`
+}
+
+type BlueprintShareAcrossAccountInfo struct {
+	// 镜像ID。
+	BlueprintId *string `json:"BlueprintId,omitnil,omitempty" name:"BlueprintId"`
+
+	// 镜像共享的账户ID。
+	AccountId *string `json:"AccountId,omitnil,omitempty" name:"AccountId"`
+
+	// 镜像共享时间。按照 ISO8601 标准表示，并且使用 UTC 时间。 格式为： YYYY-MM-DDThh:mm:ssZ。
+	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
 }
 
 type Bundle struct {
@@ -2304,6 +2341,95 @@ func (r *DescribeBlueprintsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeBlueprintsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBlueprintsShareAcrossAccountInfosRequestParams struct {
+	// 镜像 ID 列表。可以通过[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)接口返回的BlueprintId获取。
+	BlueprintIds []*string `json:"BlueprintIds,omitnil,omitempty" name:"BlueprintIds"`
+
+	// 偏移量，默认为 0。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回数量，默认为 20，最大值为 100。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 过滤器列表。
+	// <li>account-id</li>按照【[账号 ID](https://console.cloud.tencent.com/developer)】进行过滤。
+	// 类型：String
+	// 必选：否
+	// 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type DescribeBlueprintsShareAcrossAccountInfosRequest struct {
+	*tchttp.BaseRequest
+	
+	// 镜像 ID 列表。可以通过[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)接口返回的BlueprintId获取。
+	BlueprintIds []*string `json:"BlueprintIds,omitnil,omitempty" name:"BlueprintIds"`
+
+	// 偏移量，默认为 0。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回数量，默认为 20，最大值为 100。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 过滤器列表。
+	// <li>account-id</li>按照【[账号 ID](https://console.cloud.tencent.com/developer)】进行过滤。
+	// 类型：String
+	// 必选：否
+	// 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *DescribeBlueprintsShareAcrossAccountInfosRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBlueprintsShareAcrossAccountInfosRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BlueprintIds")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBlueprintsShareAcrossAccountInfosRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBlueprintsShareAcrossAccountInfosResponseParams struct {
+	// 符合条件的镜像共享信息数量。
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 镜像共享信息列表。
+	BlueprintShareAcrossAccountInfoSet []*BlueprintShareAcrossAccountInfo `json:"BlueprintShareAcrossAccountInfoSet,omitnil,omitempty" name:"BlueprintShareAcrossAccountInfoSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeBlueprintsShareAcrossAccountInfosResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBlueprintsShareAcrossAccountInfosResponseParams `json:"Response"`
+}
+
+func (r *DescribeBlueprintsShareAcrossAccountInfosResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBlueprintsShareAcrossAccountInfosResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5741,6 +5867,14 @@ type DisassociateInstancesKeyPairsRequestParams struct {
 
 	// 实例 ID 列表。每次请求批量实例的上限为 100。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
+
+	// 解绑定类型。可选值：
+	// ONLINE - 在线解绑定，不需要关机。
+	// OFFLINE - 离线解绑定，需要关机。
+	DisassociateType *string `json:"DisassociateType,omitnil,omitempty" name:"DisassociateType"`
+
+	// 解绑定的用户名。当 DisassociateType 为 OFFLINE 时，不支持该参数。
+	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
 }
 
 type DisassociateInstancesKeyPairsRequest struct {
@@ -5751,6 +5885,14 @@ type DisassociateInstancesKeyPairsRequest struct {
 
 	// 实例 ID 列表。每次请求批量实例的上限为 100。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
+
+	// 解绑定类型。可选值：
+	// ONLINE - 在线解绑定，不需要关机。
+	// OFFLINE - 离线解绑定，需要关机。
+	DisassociateType *string `json:"DisassociateType,omitnil,omitempty" name:"DisassociateType"`
+
+	// 解绑定的用户名。当 DisassociateType 为 OFFLINE 时，不支持该参数。
+	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
 }
 
 func (r *DisassociateInstancesKeyPairsRequest) ToJsonString() string {
@@ -5767,6 +5909,8 @@ func (r *DisassociateInstancesKeyPairsRequest) FromJsonString(s string) error {
 	}
 	delete(f, "KeyIds")
 	delete(f, "InstanceIds")
+	delete(f, "DisassociateType")
+	delete(f, "Username")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DisassociateInstancesKeyPairsRequest has unknown keys!", "")
 	}
@@ -7159,6 +7303,9 @@ type KeyPair struct {
 
 	// 密钥对关联的实例 ID 列表。
 	AssociatedInstanceIds []*string `json:"AssociatedInstanceIds,omitnil,omitempty" name:"AssociatedInstanceIds"`
+
+	// 密钥对关联的实例列表。
+	AssociatedInstanceSet []*AssociatedInstanceInfo `json:"AssociatedInstanceSet,omitnil,omitempty" name:"AssociatedInstanceSet"`
 
 	// 创建时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ
 	// 注意：此字段可能返回 null，表示取不到有效值。

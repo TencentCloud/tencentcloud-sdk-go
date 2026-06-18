@@ -605,7 +605,7 @@ const (
 	// 无效的回源Host。
 	INVALIDPARAMETER_INVALIDSERVERNAME = "InvalidParameter.InvalidServerName"
 
-	// 设置的匹配条件不支持EdgeOne Shield操作，请删除相关配置项或联系智能客服提交工单处理。
+	// 设置的匹配条件不支持 EdgeOne Shield 操作，请删除相关配置项。
 	INVALIDPARAMETER_INVALIDSHIELDUNSUPPORTED = "InvalidParameter.InvalidShieldUnsupported"
 
 	// 排序字段不合法。
@@ -977,7 +977,7 @@ const (
 	// DNS 代理域名源站错误。
 	INVALIDPARAMETERVALUE_INVALIDPROXYORIGIN = "InvalidParameterValue.InvalidProxyOrigin"
 
-	// 存在源站故障转移配置项配置在不支持的匹配条件下，请删除相关配置项或联系智能客服提交工单处理。
+	// 存在源站故障转移配置项配置在不支持的匹配条件下，请删除相关配置。
 	INVALIDPARAMETERVALUE_INVALIDSITEFAILOVERUNSUPPORTED = "InvalidParameterValue.InvalidSiteFailoverUnsupported"
 
 	// 标签值存在不合法字符。
@@ -1187,6 +1187,9 @@ const (
 	// 站点处于停用状态，请开启后重试。
 	OPERATIONDENIED_ERRZONEISALREADYPAUSED = "OperationDenied.ErrZoneIsAlreadyPaused"
 
+	// 待变更域名边缘HTTPS证书不一致，请确认变更域名证书一致后重试。
+	OPERATIONDENIED_HOSTSCERTIFICATEINCONSISTENCY = "OperationDenied.HostsCertificateInconsistency"
+
 	// 待变更域名边缘双向认证证书不一致，请确认变更域名证书一致后重试。
 	OPERATIONDENIED_HOSTSCLIENTCERTIFICATEINCONSISTENCY = "OperationDenied.HostsClientCertificateInconsistency"
 
@@ -1358,6 +1361,12 @@ const (
 	// 该实例地域无法开启固定IP。
 	OPERATIONDENIED_STATICIPAREACONFLICT = "OperationDenied.StaticIpAreaConflict"
 
+	// 当前域名在 CDN 与 EO 共同接入，暂不支持操作。
+	OPERATIONDENIED_SWITCHAREACDNPLATFORMREUSE = "OperationDenied.SwitchAreaCdnPlatformReuse"
+
+	// 源站防护配置正在部署中，请待部署完成后再切换加速区域。
+	OPERATIONDENIED_SWITCHAREAORIGINPROTECTIONDEPLOYING = "OperationDenied.SwitchAreaOriginProtectionDeploying"
+
 	// 当前并不支持关闭回源双向认证，如需关闭，请通过将边缘 HTTPS 证书更改为不配置来关闭。
 	OPERATIONDENIED_UNSUPPORTTOCLOSEUPSTREAMMTLS = "OperationDenied.UnSupportToCloseUpstreamMTLS"
 
@@ -1381,6 +1390,9 @@ const (
 
 	// 站点工作模式不属于版本管理模式。
 	OPERATIONDENIED_WORKMODENOTINVERSIONCONTROL = "OperationDenied.WorkModeNotInVersionControl"
+
+	// 修改加速区域时，如果站点下存在域名，则不允许同时修改其他信息。
+	OPERATIONDENIED_ZONEHASHOSTSMODIFYCONFLICT = "OperationDenied.ZoneHasHostsModifyConflict"
 
 	// 共享CNAME已被其他站点绑定，请先解绑才能删除站点
 	OPERATIONDENIED_ZONEISBINDINGSHAREDCNAME = "OperationDenied.ZoneIsBindingSharedCNAME"

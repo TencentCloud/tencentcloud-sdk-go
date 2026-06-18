@@ -225,6 +225,60 @@ type BackupCosInfo struct {
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 }
 
+type BackupScheduleInfo struct {
+	// 迁移类型：
+	// 1-远端集群迁移；2-COS迁移
+	BackupType *int64 `json:"BackupType,omitnil,omitempty" name:"BackupType"`
+
+	// 当前任务现存实例数
+	ExistCount *int64 `json:"ExistCount,omitnil,omitempty" name:"ExistCount"`
+
+	// cos信息
+	CosSourceInfo *string `json:"CosSourceInfo,omitnil,omitempty" name:"CosSourceInfo"`
+
+	// doris信息
+	DorisSourceInfo *string `json:"DorisSourceInfo,omitnil,omitempty" name:"DorisSourceInfo"`
+
+	// 恢复类型
+	RestoreType *int64 `json:"RestoreType,omitnil,omitempty" name:"RestoreType"`
+
+	// 快照保留策略
+	SnapshotRemainPolicy *SnapshotRemainPolicy `json:"SnapshotRemainPolicy,omitnil,omitempty" name:"SnapshotRemainPolicy"`
+
+	// 远程备份地域
+	DataRemoteRegion *string `json:"DataRemoteRegion,omitnil,omitempty" name:"DataRemoteRegion"`
+
+	// 是否在宽限期内
+	IsWithinGracePeriod *bool `json:"IsWithinGracePeriod,omitnil,omitempty" name:"IsWithinGracePeriod"`
+
+	// 宽限期（天数）
+	GracePeriod *int64 `json:"GracePeriod,omitnil,omitempty" name:"GracePeriod"`
+
+	// 宽限开始时间
+	GraceStartTime *string `json:"GraceStartTime,omitnil,omitempty" name:"GraceStartTime"`
+
+	// 托管桶类型：standard-标准，多可用区-MAZ
+	BucketType *string `json:"BucketType,omitnil,omitempty" name:"BucketType"`
+
+	// 是否开启安全锁：0-未开启，1-已开启
+	EnableSecurityLock *uint64 `json:"EnableSecurityLock,omitnil,omitempty" name:"EnableSecurityLock"`
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 实例名
+	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
+
+	// 实例状态
+	InstanceStatus *string `json:"InstanceStatus,omitnil,omitempty" name:"InstanceStatus"`
+
+	// 实例状态描述
+	InstanceStatusDesc *string `json:"InstanceStatusDesc,omitnil,omitempty" name:"InstanceStatusDesc"`
+
+	// 桶加密状态信息
+	BucketEncryption *BucketEncryptionInfo `json:"BucketEncryption,omitnil,omitempty" name:"BucketEncryption"`
+}
+
 type BackupStatus struct {
 	// 备份任务id
 	JobId *int64 `json:"JobId,omitnil,omitempty" name:"JobId"`
@@ -1507,62 +1561,80 @@ func (r *DescribeBackUpJobDetailResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBackUpJobRequestParams struct {
-	// 集群id
+	// <p>集群id</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 任务类型：
-	// 0-不限制，或使用TypeFilters过滤；
-	// 1-备份恢复（包括周期备份和一次性备份）；
-	// 2-数据迁移（包括跨集群迁移和cos迁移）	
+	// <p>任务类型：<br>0-不限制，或使用TypeFilters过滤；<br>1-备份恢复（包括周期备份和一次性备份）；<br>2-数据迁移（包括跨集群迁移和cos迁移）</p>
 	ApplicationType *int64 `json:"ApplicationType,omitnil,omitempty" name:"ApplicationType"`
 
-	// 分页大小
+	// <p>任务类型过滤器</p>
+	TypeFilters []*int64 `json:"TypeFilters,omitnil,omitempty" name:"TypeFilters"`
+
+	// <p>实例状态过滤器</p>
+	StatusFilters []*int64 `json:"StatusFilters,omitnil,omitempty" name:"StatusFilters"`
+
+	// <p>任务名称过滤器</p>
+	ScheduleNameFilters *string `json:"ScheduleNameFilters,omitnil,omitempty" name:"ScheduleNameFilters"`
+
+	// <p>按照快照生成时间排序，默认DESC：<br>ASC-升序<br>DESC-降序</p>
+	OrderType *string `json:"OrderType,omitnil,omitempty" name:"OrderType"`
+
+	// <p>分页大小</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 页号
+	// <p>页号</p>
 	PageNum *int64 `json:"PageNum,omitnil,omitempty" name:"PageNum"`
 
-	// 开始时间
+	// <p>开始时间</p>
 	BeginTime *string `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
 
-	// 结束时间
+	// <p>结束时间</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// jobid的string类型
+	// <p>jobid的string类型</p>
 	JobIdFiltersStr *string `json:"JobIdFiltersStr,omitnil,omitempty" name:"JobIdFiltersStr"`
 
-	// 0-未加密；1-已加密
+	// <p>0-未加密；1-已加密</p>
 	EncryptionFilters []*int64 `json:"EncryptionFilters,omitnil,omitempty" name:"EncryptionFilters"`
 }
 
 type DescribeBackUpJobRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群id
+	// <p>集群id</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 任务类型：
-	// 0-不限制，或使用TypeFilters过滤；
-	// 1-备份恢复（包括周期备份和一次性备份）；
-	// 2-数据迁移（包括跨集群迁移和cos迁移）	
+	// <p>任务类型：<br>0-不限制，或使用TypeFilters过滤；<br>1-备份恢复（包括周期备份和一次性备份）；<br>2-数据迁移（包括跨集群迁移和cos迁移）</p>
 	ApplicationType *int64 `json:"ApplicationType,omitnil,omitempty" name:"ApplicationType"`
 
-	// 分页大小
+	// <p>任务类型过滤器</p>
+	TypeFilters []*int64 `json:"TypeFilters,omitnil,omitempty" name:"TypeFilters"`
+
+	// <p>实例状态过滤器</p>
+	StatusFilters []*int64 `json:"StatusFilters,omitnil,omitempty" name:"StatusFilters"`
+
+	// <p>任务名称过滤器</p>
+	ScheduleNameFilters *string `json:"ScheduleNameFilters,omitnil,omitempty" name:"ScheduleNameFilters"`
+
+	// <p>按照快照生成时间排序，默认DESC：<br>ASC-升序<br>DESC-降序</p>
+	OrderType *string `json:"OrderType,omitnil,omitempty" name:"OrderType"`
+
+	// <p>分页大小</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 页号
+	// <p>页号</p>
 	PageNum *int64 `json:"PageNum,omitnil,omitempty" name:"PageNum"`
 
-	// 开始时间
+	// <p>开始时间</p>
 	BeginTime *string `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
 
-	// 结束时间
+	// <p>结束时间</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// jobid的string类型
+	// <p>jobid的string类型</p>
 	JobIdFiltersStr *string `json:"JobIdFiltersStr,omitnil,omitempty" name:"JobIdFiltersStr"`
 
-	// 0-未加密；1-已加密
+	// <p>0-未加密；1-已加密</p>
 	EncryptionFilters []*int64 `json:"EncryptionFilters,omitnil,omitempty" name:"EncryptionFilters"`
 }
 
@@ -1580,6 +1652,10 @@ func (r *DescribeBackUpJobRequest) FromJsonString(s string) error {
 	}
 	delete(f, "InstanceId")
 	delete(f, "ApplicationType")
+	delete(f, "TypeFilters")
+	delete(f, "StatusFilters")
+	delete(f, "ScheduleNameFilters")
+	delete(f, "OrderType")
 	delete(f, "PageSize")
 	delete(f, "PageNum")
 	delete(f, "BeginTime")
@@ -1594,16 +1670,16 @@ func (r *DescribeBackUpJobRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBackUpJobResponseParams struct {
-	// 任务列表
+	// <p>任务列表</p>
 	BackUpJobs []*BackUpJobDisplay `json:"BackUpJobs,omitnil,omitempty" name:"BackUpJobs"`
 
-	// 错误信息
+	// <p>错误信息</p>
 	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
 
-	// 总数
+	// <p>总数</p>
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 当前时间
+	// <p>当前时间</p>
 	CurrentTime *string `json:"CurrentTime,omitnil,omitempty" name:"CurrentTime"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1628,32 +1704,68 @@ func (r *DescribeBackUpJobResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBackUpSchedulesRequestParams struct {
-	// 任务类型
-	// 0-不限制，或使用TypeFilters过滤；
-	// 1-备份恢复（包括周期备份和一次性备份）；
-	// 2-数据迁移（包括跨集群迁移和cos迁移）
+	// <p>任务类型<br>0-不限制，或使用TypeFilters过滤；<br>1-备份恢复（包括周期备份和一次性备份）；<br>2-数据迁移（包括跨集群迁移和cos迁移）</p>
 	ApplicationType *int64 `json:"ApplicationType,omitnil,omitempty" name:"ApplicationType"`
 
-	// 0-未加密；1-已加密
+	// <p>创建人过滤器</p>
+	UsersFilters []*string `json:"UsersFilters,omitnil,omitempty" name:"UsersFilters"`
+
+	// <p>任务类型过滤器。<br>0-周期；<br>1-一次性；<br>2-数据迁移(即3和4的合集)；<br>3-远端集群迁移；<br>4-COS迁移</p>
+	TypeFilters []*int64 `json:"TypeFilters,omitnil,omitempty" name:"TypeFilters"`
+
+	// <p>任务状态过滤器</p>
+	StatusFilters []*int64 `json:"StatusFilters,omitnil,omitempty" name:"StatusFilters"`
+
+	// <p>排序：<br>DESC-降序<br>ASC-升序</p>
+	OrderType *string `json:"OrderType,omitnil,omitempty" name:"OrderType"`
+
+	// <p>任务名过滤器</p>
+	ScheduleNameFilters *string `json:"ScheduleNameFilters,omitnil,omitempty" name:"ScheduleNameFilters"`
+
+	// <p>分页大小</p>
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// <p>页号</p>
+	PageNum *int64 `json:"PageNum,omitnil,omitempty" name:"PageNum"`
+
+	// <p>0-未加密；1-已加密</p>
 	EncryptionFilters []*int64 `json:"EncryptionFilters,omitnil,omitempty" name:"EncryptionFilters"`
 
-	// 调度任务id过滤
+	// <p>调度任务id过滤</p>
 	ScheduleId *int64 `json:"ScheduleId,omitnil,omitempty" name:"ScheduleId"`
 }
 
 type DescribeBackUpSchedulesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 任务类型
-	// 0-不限制，或使用TypeFilters过滤；
-	// 1-备份恢复（包括周期备份和一次性备份）；
-	// 2-数据迁移（包括跨集群迁移和cos迁移）
+	// <p>任务类型<br>0-不限制，或使用TypeFilters过滤；<br>1-备份恢复（包括周期备份和一次性备份）；<br>2-数据迁移（包括跨集群迁移和cos迁移）</p>
 	ApplicationType *int64 `json:"ApplicationType,omitnil,omitempty" name:"ApplicationType"`
 
-	// 0-未加密；1-已加密
+	// <p>创建人过滤器</p>
+	UsersFilters []*string `json:"UsersFilters,omitnil,omitempty" name:"UsersFilters"`
+
+	// <p>任务类型过滤器。<br>0-周期；<br>1-一次性；<br>2-数据迁移(即3和4的合集)；<br>3-远端集群迁移；<br>4-COS迁移</p>
+	TypeFilters []*int64 `json:"TypeFilters,omitnil,omitempty" name:"TypeFilters"`
+
+	// <p>任务状态过滤器</p>
+	StatusFilters []*int64 `json:"StatusFilters,omitnil,omitempty" name:"StatusFilters"`
+
+	// <p>排序：<br>DESC-降序<br>ASC-升序</p>
+	OrderType *string `json:"OrderType,omitnil,omitempty" name:"OrderType"`
+
+	// <p>任务名过滤器</p>
+	ScheduleNameFilters *string `json:"ScheduleNameFilters,omitnil,omitempty" name:"ScheduleNameFilters"`
+
+	// <p>分页大小</p>
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// <p>页号</p>
+	PageNum *int64 `json:"PageNum,omitnil,omitempty" name:"PageNum"`
+
+	// <p>0-未加密；1-已加密</p>
 	EncryptionFilters []*int64 `json:"EncryptionFilters,omitnil,omitempty" name:"EncryptionFilters"`
 
-	// 调度任务id过滤
+	// <p>调度任务id过滤</p>
 	ScheduleId *int64 `json:"ScheduleId,omitnil,omitempty" name:"ScheduleId"`
 }
 
@@ -1670,6 +1782,13 @@ func (r *DescribeBackUpSchedulesRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "ApplicationType")
+	delete(f, "UsersFilters")
+	delete(f, "TypeFilters")
+	delete(f, "StatusFilters")
+	delete(f, "OrderType")
+	delete(f, "ScheduleNameFilters")
+	delete(f, "PageSize")
+	delete(f, "PageNum")
 	delete(f, "EncryptionFilters")
 	delete(f, "ScheduleId")
 	if len(f) > 0 {
@@ -1680,10 +1799,22 @@ func (r *DescribeBackUpSchedulesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBackUpSchedulesResponseParams struct {
-	// 当前系统时间
+	// <p>备份是否开启</p>
+	BackUpOpened *bool `json:"BackUpOpened,omitnil,omitempty" name:"BackUpOpened"`
+
+	// <p>备份桶</p>
+	CosBucketName *string `json:"CosBucketName,omitnil,omitempty" name:"CosBucketName"`
+
+	// <p>备份的状态</p>
+	BackUpStatus *int64 `json:"BackUpStatus,omitnil,omitempty" name:"BackUpStatus"`
+
+	// <p>备份、迁移任务信息</p>
+	BackupScheduleInfos []*BackupScheduleInfo `json:"BackupScheduleInfos,omitnil,omitempty" name:"BackupScheduleInfos"`
+
+	// <p>当前系统时间</p>
 	CurrentTime *string `json:"CurrentTime,omitnil,omitempty" name:"CurrentTime"`
 
-	// 桶加密状态信息
+	// <p>桶加密状态信息</p>
 	BucketEncryption *BucketEncryptionInfo `json:"BucketEncryption,omitnil,omitempty" name:"BucketEncryption"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

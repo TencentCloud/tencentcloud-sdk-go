@@ -4860,6 +4860,95 @@ func (r *CreateUserResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateUserRoleRequestParams struct {
+	// 角色Arn信息
+	Arn *string `json:"Arn,omitnil,omitempty" name:"Arn"`
+
+	// 角色描述信息
+	Desc *string `json:"Desc,omitnil,omitempty" name:"Desc"`
+
+	// 角色名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// cos授权路径列表
+	CosPermissionList []*CosPermission `json:"CosPermissionList,omitnil,omitempty" name:"CosPermissionList"`
+
+	// cam策略json
+	PermissionJson *string `json:"PermissionJson,omitnil,omitempty" name:"PermissionJson"`
+
+	// 是否设置为常驻：1非常驻（默认）、2常驻（仅能设置一个常驻）
+	IsDefault *int64 `json:"IsDefault,omitnil,omitempty" name:"IsDefault"`
+}
+
+type CreateUserRoleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 角色Arn信息
+	Arn *string `json:"Arn,omitnil,omitempty" name:"Arn"`
+
+	// 角色描述信息
+	Desc *string `json:"Desc,omitnil,omitempty" name:"Desc"`
+
+	// 角色名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// cos授权路径列表
+	CosPermissionList []*CosPermission `json:"CosPermissionList,omitnil,omitempty" name:"CosPermissionList"`
+
+	// cam策略json
+	PermissionJson *string `json:"PermissionJson,omitnil,omitempty" name:"PermissionJson"`
+
+	// 是否设置为常驻：1非常驻（默认）、2常驻（仅能设置一个常驻）
+	IsDefault *int64 `json:"IsDefault,omitnil,omitempty" name:"IsDefault"`
+}
+
+func (r *CreateUserRoleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateUserRoleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Arn")
+	delete(f, "Desc")
+	delete(f, "Name")
+	delete(f, "CosPermissionList")
+	delete(f, "PermissionJson")
+	delete(f, "IsDefault")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateUserRoleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateUserRoleResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateUserRoleResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateUserRoleResponseParams `json:"Response"`
+}
+
+func (r *CreateUserRoleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateUserRoleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateUserVpcConnectionRequestParams struct {
 	// 用户vpcid
 	UserVpcId *string `json:"UserVpcId,omitnil,omitempty" name:"UserVpcId"`
@@ -10708,6 +10797,60 @@ func (r *DescribeSubUserAccessPolicyResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeTCLakeMetaInstanceRequestParams struct {
+
+}
+
+type DescribeTCLakeMetaInstanceRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeTCLakeMetaInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTCLakeMetaInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTCLakeMetaInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTCLakeMetaInstanceResponseParams struct {
+	// <p>开通状态</p><p>枚举值：</p><ul><li>Running： 开通成功</li></ul>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeTCLakeMetaInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTCLakeMetaInstanceResponseParams `json:"Response"`
+}
+
+func (r *DescribeTCLakeMetaInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTCLakeMetaInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeTablePartitionsRequestParams struct {
 	// 数据目录名称
 	Catalog *string `json:"Catalog,omitnil,omitempty" name:"Catalog"`
@@ -11946,72 +12089,62 @@ func (r *DescribeTasksOverviewResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTasksRequestParams struct {
-	// 返回数量，默认为10，最大值为100。
+	// <p>返回数量，默认为10，最大值为100。</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量，默认为0。
+	// <p>偏移量，默认为0。</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 过滤条件，如下支持的过滤类型，传参Name应为以下其中一个,其中task-id支持最大50个过滤个数，其他过滤参数支持的总数不超过5个。
-	// task-id - String - （任务ID准确过滤）task-id取值形如：e386471f-139a-4e59-877f-50ece8135b99。
-	// task-state - String - （任务状态过滤）取值范围 0(初始化)， 1(运行中)， 2(成功)， -1(失败)。
-	// task-sql-keyword - String - （SQL语句关键字模糊过滤）取值形如：DROP TABLE。
-	// task-operator- string （子uin过滤）
-	// task-kind - string （任务类型过滤）
+	// <p>过滤条件，如下支持的过滤类型，传参Name应为以下其中一个,其中task-id支持最大50个过滤个数，其他过滤参数支持的总数不超过5个。<br>task-id - String - （任务ID准确过滤）task-id取值形如：e386471f-139a-4e59-877f-50ece8135b99。<br>task-state - String - （任务状态过滤）取值范围 0(初始化)， 1(运行中)， 2(成功)， -1(失败)。<br>task-sql-keyword - String - （SQL语句关键字模糊过滤）取值形如：DROP TABLE。<br>task-operator- string （子uin过滤）<br>task-kind - string （任务类型过滤）</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 排序字段，支持如下字段类型，create-time（创建时间，默认）、update-time（更新时间）
+	// <p>排序字段，支持如下字段类型，create-time（创建时间，默认）、update-time（更新时间）</p>
 	SortBy *string `json:"SortBy,omitnil,omitempty" name:"SortBy"`
 
-	// 排序方式，desc表示正序，asc表示反序， 默认为asc。
+	// <p>排序方式，desc表示正序，asc表示反序， 默认为asc。</p>
 	Sorting *string `json:"Sorting,omitnil,omitempty" name:"Sorting"`
 
-	// 起始时间点，格式为yyyy-mm-dd HH:MM:SS。默认为45天前的当前时刻
+	// <p>起始时间点，格式为yyyy-mm-dd HH:MM:SS。默认为45天前的当前时刻</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间点，格式为yyyy-mm-dd HH:MM:SS时间跨度在(0,30天]，支持最近45天数据查询。默认为当前时刻
+	// <p>结束时间点，格式为yyyy-mm-dd HH:MM:SS时间跨度在(0,30天]，支持最近45天数据查询。默认为当前时刻</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 数据引擎名称，用于筛选
+	// <p>数据引擎名称，用于筛选</p>
 	DataEngineName *string `json:"DataEngineName,omitnil,omitempty" name:"DataEngineName"`
 
-	// spark引擎资源组名称
+	// <p>spark引擎资源组名称</p>
 	ResourceGroupName *string `json:"ResourceGroupName,omitnil,omitempty" name:"ResourceGroupName"`
 }
 
 type DescribeTasksRequest struct {
 	*tchttp.BaseRequest
 	
-	// 返回数量，默认为10，最大值为100。
+	// <p>返回数量，默认为10，最大值为100。</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量，默认为0。
+	// <p>偏移量，默认为0。</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 过滤条件，如下支持的过滤类型，传参Name应为以下其中一个,其中task-id支持最大50个过滤个数，其他过滤参数支持的总数不超过5个。
-	// task-id - String - （任务ID准确过滤）task-id取值形如：e386471f-139a-4e59-877f-50ece8135b99。
-	// task-state - String - （任务状态过滤）取值范围 0(初始化)， 1(运行中)， 2(成功)， -1(失败)。
-	// task-sql-keyword - String - （SQL语句关键字模糊过滤）取值形如：DROP TABLE。
-	// task-operator- string （子uin过滤）
-	// task-kind - string （任务类型过滤）
+	// <p>过滤条件，如下支持的过滤类型，传参Name应为以下其中一个,其中task-id支持最大50个过滤个数，其他过滤参数支持的总数不超过5个。<br>task-id - String - （任务ID准确过滤）task-id取值形如：e386471f-139a-4e59-877f-50ece8135b99。<br>task-state - String - （任务状态过滤）取值范围 0(初始化)， 1(运行中)， 2(成功)， -1(失败)。<br>task-sql-keyword - String - （SQL语句关键字模糊过滤）取值形如：DROP TABLE。<br>task-operator- string （子uin过滤）<br>task-kind - string （任务类型过滤）</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 排序字段，支持如下字段类型，create-time（创建时间，默认）、update-time（更新时间）
+	// <p>排序字段，支持如下字段类型，create-time（创建时间，默认）、update-time（更新时间）</p>
 	SortBy *string `json:"SortBy,omitnil,omitempty" name:"SortBy"`
 
-	// 排序方式，desc表示正序，asc表示反序， 默认为asc。
+	// <p>排序方式，desc表示正序，asc表示反序， 默认为asc。</p>
 	Sorting *string `json:"Sorting,omitnil,omitempty" name:"Sorting"`
 
-	// 起始时间点，格式为yyyy-mm-dd HH:MM:SS。默认为45天前的当前时刻
+	// <p>起始时间点，格式为yyyy-mm-dd HH:MM:SS。默认为45天前的当前时刻</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间点，格式为yyyy-mm-dd HH:MM:SS时间跨度在(0,30天]，支持最近45天数据查询。默认为当前时刻
+	// <p>结束时间点，格式为yyyy-mm-dd HH:MM:SS时间跨度在(0,30天]，支持最近45天数据查询。默认为当前时刻</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 数据引擎名称，用于筛选
+	// <p>数据引擎名称，用于筛选</p>
 	DataEngineName *string `json:"DataEngineName,omitnil,omitempty" name:"DataEngineName"`
 
-	// spark引擎资源组名称
+	// <p>spark引擎资源组名称</p>
 	ResourceGroupName *string `json:"ResourceGroupName,omitnil,omitempty" name:"ResourceGroupName"`
 }
 
@@ -12044,13 +12177,13 @@ func (r *DescribeTasksRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTasksResponseParams struct {
-	// 任务对象列表。
+	// <p>任务对象列表。</p>
 	TaskList []*TaskResponseInfo `json:"TaskList,omitnil,omitempty" name:"TaskList"`
 
-	// 实例总数。
+	// <p>实例总数。</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 任务概览信息
+	// <p>任务概览信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TasksOverview *TasksOverview `json:"TasksOverview,omitnil,omitempty" name:"TasksOverview"`
 
@@ -14204,6 +14337,63 @@ type IcebergTablePartition struct {
 	Location *LocationInfo `json:"Location,omitnil,omitempty" name:"Location"`
 }
 
+// Predefined struct for user
+type InitializeTCLakeRequestParams struct {
+
+}
+
+type InitializeTCLakeRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *InitializeTCLakeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InitializeTCLakeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InitializeTCLakeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type InitializeTCLakeResponseParams struct {
+	// <p>实例Id</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>是否成功</p>
+	IsSuccess *bool `json:"IsSuccess,omitnil,omitempty" name:"IsSuccess"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type InitializeTCLakeResponse struct {
+	*tchttp.BaseResponse
+	Response *InitializeTCLakeResponseParams `json:"Response"`
+}
+
+func (r *InitializeTCLakeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InitializeTCLakeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type IpPortPair struct {
 	// ip信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -14237,10 +14427,10 @@ type JobLogResult struct {
 }
 
 type KVPair struct {
-	// 配置的key值
+	// <p>配置的key值</p>
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
-	// 配置的value值
+	// <p>配置的value值</p>
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
@@ -18024,6 +18214,9 @@ type TaskFullRespInfo struct {
 
 	// <p>活跃core</p>
 	ActiveCore *int64 `json:"ActiveCore,omitnil,omitempty" name:"ActiveCore"`
+
+	// <p>排队时间</p><p>单位：毫秒</p>
+	QueueTime *int64 `json:"QueueTime,omitnil,omitempty" name:"QueueTime"`
 }
 
 type TaskMonitorInfo struct {

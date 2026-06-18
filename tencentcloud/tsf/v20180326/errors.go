@@ -248,30 +248,6 @@ const (
 	// 请使用TAPM提供的Otel探针
 	FAILEDOPERATION_TAPMEXPIREDOTEL = "FailedOperation.TapmExpiredOtel"
 
-	// 任务创建异常。
-	FAILEDOPERATION_TASKCREATEERROR = "FailedOperation.TaskCreateError"
-
-	// 任务删除异常。
-	FAILEDOPERATION_TASKDELETEERROR = "FailedOperation.TaskDeleteError"
-
-	// 操作失败。
-	FAILEDOPERATION_TASKOPERATIONFAILED = "FailedOperation.TaskOperationFailed"
-
-	// 操作不允许。
-	FAILEDOPERATION_TASKOPERATIONFORBIDDEN = "FailedOperation.TaskOperationForbidden"
-
-	// 任务下发异常。
-	FAILEDOPERATION_TASKPUSHERROR = "FailedOperation.TaskPushError"
-
-	// 任务查询异常。
-	FAILEDOPERATION_TASKQUERYERROR = "FailedOperation.TaskQueryError"
-
-	// 停止任务失败。
-	FAILEDOPERATION_TASKTERMINATEFAILED = "FailedOperation.TaskTerminateFailed"
-
-	// 任务更新异常。
-	FAILEDOPERATION_TASKUPDATEERROR = "FailedOperation.TaskUpdateError"
-
 	// 示例：TKE 集群创建失败，插入数据库失败。
 	FAILEDOPERATION_TKECLUSTERCREATEFAILED = "FailedOperation.TkeClusterCreateFailed"
 
@@ -472,9 +448,6 @@ const (
 
 	// IN子句中超过1000个候选项。
 	INTERNALERROR_SQLTOOMANYINITEM = "InternalError.SqlTooManyInItem"
-
-	// 任务内部异常。
-	INTERNALERROR_TASKINTERNALERROR = "InternalError.TaskInternalError"
 
 	// 示例：调用 TKE 接口失败，具体报错信息。
 	INTERNALERROR_TKEAPIFAILEDOPERATION = "InternalError.TkeApiFailedOperation"
@@ -914,9 +887,6 @@ const (
 	// 删除分组，集群类型不匹配。
 	INVALIDPARAMETERVALUE_GROUPDELETECLUSTERTYPEMISMATCH = "InvalidParameterValue.GroupDeleteClusterTypeMismatch"
 
-	// 部署组ID不能为空。
-	INVALIDPARAMETERVALUE_GROUPIDNULL = "InvalidParameterValue.GroupIdNull"
-
 	// 部署组名称已存在，请更换其他名称。
 	INVALIDPARAMETERVALUE_GROUPNAMEEXIST = "InvalidParameterValue.GroupNameExist"
 
@@ -953,11 +923,11 @@ const (
 	// 示例：参数 Region 取值错误。
 	INVALIDPARAMETERVALUE_INVALIDPARAMETER = "InvalidParameterValue.InvalidParameter"
 
-	// 参数格式异常。
-	INVALIDPARAMETERVALUE_INVALIDPARAMETERFORMAT = "InvalidParameterValue.InvalidParameterFormat"
-
 	// 数据集名非法。
 	INVALIDPARAMETERVALUE_INVALIDPROGRAMNAME = "InvalidParameterValue.InvalidProgramName"
+
+	// 部署组不存在或已被删除[部署组ID]
+	INVALIDPARAMETERVALUE_LANEGROUPNOTEXIST = "InvalidParameterValue.LaneGroupNotExist"
 
 	// 该泳道已关联全链路灰度发布规则,请先从规则中移除后删除
 	INVALIDPARAMETERVALUE_LANEINFOALREADYUSED = "InvalidParameterValue.LaneInfoAlreadyUsed"
@@ -1082,9 +1052,6 @@ const (
 	// 无法获取微服务列表或无访问权限。
 	INVALIDPARAMETERVALUE_SERVICENOTEXISTSORPERMISSIONDENIED = "InvalidParameterValue.ServiceNotExistsOrPermissionDenied"
 
-	// 无效请求参数。
-	INVALIDPARAMETERVALUE_TASKPARAMETERINVALID = "InvalidParameterValue.TaskParameterInvalid"
-
 	// TSF应用性能管理业务日志搜索解析时间格式错误。
 	INVALIDPARAMETERVALUE_TSFAPMBUSILOGSEARCHPARSERSPDATEFORMATERROR = "InvalidParameterValue.TsfApmBusiLogSearchParseRspDateFormatError"
 
@@ -1187,9 +1154,6 @@ const (
 	// 示例：未指定language。
 	MISSINGPARAMETER_SYSTEMPARAMETERREQUIRED = "MissingParameter.SystemParameterRequired"
 
-	// 缺少必填参数。
-	MISSINGPARAMETER_TASKPARAMETERMISSED = "MissingParameter.TaskParameterMissed"
-
 	// 此应用下存在资源，无法执行删除操作。
 	RESOURCEINUSE_APPLICATIONCANNOTDELETE = "ResourceInUse.ApplicationCannotDelete"
 
@@ -1204,9 +1168,6 @@ const (
 
 	// 集群下存在分组。
 	RESOURCEINUSE_GROUPEXISTS = "ResourceInUse.GroupExists"
-
-	// 部署组在更新中 请稍后再执行该操作。
-	RESOURCEINUSE_GROUPINOPERATION = "ResourceInUse.GroupInOperation"
 
 	// 集群内有云主机,不允许删除集群。
 	RESOURCEINUSE_INSTANCEEXISTS = "ResourceInUse.InstanceExists"
@@ -1292,17 +1253,11 @@ const (
 	// 无法获取服务，无法执行该操作。
 	RESOURCENOTFOUND_SERVICENOTEXIST = "ResourceNotFound.ServiceNotExist"
 
-	// 资源不存在。
-	RESOURCENOTFOUND_TASKNOTFOUND = "ResourceNotFound.TaskNotFound"
-
 	// TKE 中不存在该集群。
 	RESOURCENOTFOUND_TKECLUSTERNOTEXISTS = "ResourceNotFound.TkeClusterNotExists"
 
 	// 示例：访问 CAM 系统出错，具体报错信息。
 	UNAUTHORIZEDOPERATION_CAMGENERALERROR = "UnauthorizedOperation.CamGeneralError"
-
-	// 协作者身份未授权，需要主账号授予协作者权限，参考 TSF 官网文档[子账号获取访问授权](https://cloud.tencent.com/document/product/649/55570)。
-	UNAUTHORIZEDOPERATION_CAMTSFROLENOPERMISSION = "UnauthorizedOperation.CamTsfRoleNoPermission"
 
 	// 当前主账号未创建TSF_QCSRole或未对子账号授予预设策略QcloudCamSubaccountsAuthorizeRoleFullAccess。请参考产品文档[主账号获取访问授权](https://cloud.tencent.com/document/product/649/16869)。
 	UNAUTHORIZEDOPERATION_CAMTSFROLENOTEXIST = "UnauthorizedOperation.CamTsfRoleNotExist"
@@ -1327,9 +1282,6 @@ const (
 
 	// 批量操作数量超过限制[长度]。
 	UNSUPPORTEDOPERATION_GATEWAYTOOMANYREQUESTPARAMETER = "UnsupportedOperation.GatewayTooManyRequestParameter"
-
-	// 操作不支持。
-	UNSUPPORTEDOPERATION_TASKNOTSUPPORTED = "UnsupportedOperation.TaskNotSupported"
 
 	// 不支持的ACTION。
 	UNSUPPORTEDOPERATION_UNSUPPORTACTION = "UnsupportedOperation.UnsupportAction"

@@ -103,6 +103,174 @@ func (c *Client) CancelIsolateDBInstancesWithContext(ctx context.Context, reques
     return
 }
 
+func NewCreateCloneInstanceRequest() (request *CreateCloneInstanceRequest) {
+    request = &CreateCloneInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmysql", APIVersion, "CreateCloneInstance")
+    
+    
+    return
+}
+
+func NewCreateCloneInstanceResponse() (response *CreateCloneInstanceResponse) {
+    response = &CreateCloneInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateCloneInstance
+// 本接口（CreateCloneInstance）提供创建克隆实例功能
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_CAMAUTHERROR = "AuthFailure.CamAuthError"
+//  AUTHFAILURE_CHECKCAMAUTHERROR = "AuthFailure.CheckCamAuthError"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION_ADDTAGDRYRUNERROR = "DryRunOperation.AddTagDryrunError"
+//  FAILEDOPERATION_CREATEFLOWERROR = "FailedOperation.CreateFlowError"
+//  FAILEDOPERATION_DBCREATEINSTANCEERROR = "FailedOperation.DBCreateInstanceError"
+//  FAILEDOPERATION_DESCRIBEFULLBACKUPLISTERROR = "FailedOperation.DescribeFullBackupListError"
+//  INVALIDPARAMETER_CREATEINSTANCEPARAMERROR = "InvalidParameter.CreateInstanceParamError"
+//  INVALIDPARAMETERVALUE_CHECKCLONEINSTANCEDISKERROR = "InvalidParameterValue.CheckCloneInstanceDiskError"
+//  INVALIDPARAMETERVALUE_CHECKDISKERROR = "InvalidParameterValue.CheckDiskError"
+//  INVALIDPARAMETERVALUE_CHECKINSTANCEVERSIONERROR = "InvalidParameterValue.CheckInstanceVersionError"
+//  INVALIDPARAMETERVALUE_CHECKNAMEERROR = "InvalidParameterValue.CheckNameError"
+//  INVALIDPARAMETERVALUE_CHECKSPECERROR = "InvalidParameterValue.CheckSpecError"
+//  INVALIDPARAMETERVALUE_CHECKVPCERROR = "InvalidParameterValue.CheckVpcError"
+//  INVALIDPARAMETERVALUE_NODEREPLICASINVALIDERROR = "InvalidParameterValue.NodeReplicasInvalidError"
+//  LIMITEXCEEDED_ADDTAGCOUNTERROR = "LimitExceeded.AddTagCountError"
+//  LIMITEXCEEDED_OUTOFINSTANCECNTLIMITERROR = "LimitExceeded.OutOfInstanceCntLimitError"
+//  LIMITEXCEEDED_OUTOFNODEREPLICASLIMITERROR = "LimitExceeded.OutOfNodeReplicasLimitError"
+//  LIMITEXCEEDED_OUTOFSPECLIMITERROR = "LimitExceeded.OutOfSpecLimitError"
+func (c *Client) CreateCloneInstance(request *CreateCloneInstanceRequest) (response *CreateCloneInstanceResponse, err error) {
+    return c.CreateCloneInstanceWithContext(context.Background(), request)
+}
+
+// CreateCloneInstance
+// 本接口（CreateCloneInstance）提供创建克隆实例功能
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_CAMAUTHERROR = "AuthFailure.CamAuthError"
+//  AUTHFAILURE_CHECKCAMAUTHERROR = "AuthFailure.CheckCamAuthError"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION_ADDTAGDRYRUNERROR = "DryRunOperation.AddTagDryrunError"
+//  FAILEDOPERATION_CREATEFLOWERROR = "FailedOperation.CreateFlowError"
+//  FAILEDOPERATION_DBCREATEINSTANCEERROR = "FailedOperation.DBCreateInstanceError"
+//  FAILEDOPERATION_DESCRIBEFULLBACKUPLISTERROR = "FailedOperation.DescribeFullBackupListError"
+//  INVALIDPARAMETER_CREATEINSTANCEPARAMERROR = "InvalidParameter.CreateInstanceParamError"
+//  INVALIDPARAMETERVALUE_CHECKCLONEINSTANCEDISKERROR = "InvalidParameterValue.CheckCloneInstanceDiskError"
+//  INVALIDPARAMETERVALUE_CHECKDISKERROR = "InvalidParameterValue.CheckDiskError"
+//  INVALIDPARAMETERVALUE_CHECKINSTANCEVERSIONERROR = "InvalidParameterValue.CheckInstanceVersionError"
+//  INVALIDPARAMETERVALUE_CHECKNAMEERROR = "InvalidParameterValue.CheckNameError"
+//  INVALIDPARAMETERVALUE_CHECKSPECERROR = "InvalidParameterValue.CheckSpecError"
+//  INVALIDPARAMETERVALUE_CHECKVPCERROR = "InvalidParameterValue.CheckVpcError"
+//  INVALIDPARAMETERVALUE_NODEREPLICASINVALIDERROR = "InvalidParameterValue.NodeReplicasInvalidError"
+//  LIMITEXCEEDED_ADDTAGCOUNTERROR = "LimitExceeded.AddTagCountError"
+//  LIMITEXCEEDED_OUTOFINSTANCECNTLIMITERROR = "LimitExceeded.OutOfInstanceCntLimitError"
+//  LIMITEXCEEDED_OUTOFNODEREPLICASLIMITERROR = "LimitExceeded.OutOfNodeReplicasLimitError"
+//  LIMITEXCEEDED_OUTOFSPECLIMITERROR = "LimitExceeded.OutOfSpecLimitError"
+func (c *Client) CreateCloneInstanceWithContext(ctx context.Context, request *CreateCloneInstanceRequest) (response *CreateCloneInstanceResponse, err error) {
+    if request == nil {
+        request = NewCreateCloneInstanceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tdmysql", APIVersion, "CreateCloneInstance")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCloneInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateCloneInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateDBInstancesRequest() (request *CreateDBInstancesRequest) {
+    request = &CreateDBInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmysql", APIVersion, "CreateDBInstances")
+    
+    
+    return
+}
+
+func NewCreateDBInstancesResponse() (response *CreateDBInstancesResponse) {
+    response = &CreateDBInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateDBInstances
+// 本接口（CreateDBInstances）提供批量创建实例功能
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_CAMAUTHERROR = "AuthFailure.CamAuthError"
+//  AUTHFAILURE_CHECKCAMAUTHERROR = "AuthFailure.CheckCamAuthError"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION_ADDTAGDRYRUNERROR = "DryRunOperation.AddTagDryrunError"
+//  FAILEDOPERATION_CREATEFLOWERROR = "FailedOperation.CreateFlowError"
+//  FAILEDOPERATION_DBCREATEINSTANCEERROR = "FailedOperation.DBCreateInstanceError"
+//  INVALIDPARAMETERVALUE_CHECKDISKERROR = "InvalidParameterValue.CheckDiskError"
+//  INVALIDPARAMETERVALUE_CHECKINSTANCEVERSIONERROR = "InvalidParameterValue.CheckInstanceVersionError"
+//  INVALIDPARAMETERVALUE_CHECKNAMEERROR = "InvalidParameterValue.CheckNameError"
+//  INVALIDPARAMETERVALUE_CHECKSPECERROR = "InvalidParameterValue.CheckSpecError"
+//  INVALIDPARAMETERVALUE_CHECKVPCERROR = "InvalidParameterValue.CheckVpcError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  INVALIDPARAMETERVALUE_NODEREPLICASINVALIDERROR = "InvalidParameterValue.NodeReplicasInvalidError"
+//  LIMITEXCEEDED_ADDTAGCOUNTERROR = "LimitExceeded.AddTagCountError"
+//  LIMITEXCEEDED_OUTOFINSTANCECNTLIMITERROR = "LimitExceeded.OutOfInstanceCntLimitError"
+//  LIMITEXCEEDED_OUTOFNODEREPLICASLIMITERROR = "LimitExceeded.OutOfNodeReplicasLimitError"
+//  LIMITEXCEEDED_OUTOFSPECLIMITERROR = "LimitExceeded.OutOfSpecLimitError"
+func (c *Client) CreateDBInstances(request *CreateDBInstancesRequest) (response *CreateDBInstancesResponse, err error) {
+    return c.CreateDBInstancesWithContext(context.Background(), request)
+}
+
+// CreateDBInstances
+// 本接口（CreateDBInstances）提供批量创建实例功能
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_CAMAUTHERROR = "AuthFailure.CamAuthError"
+//  AUTHFAILURE_CHECKCAMAUTHERROR = "AuthFailure.CheckCamAuthError"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION_ADDTAGDRYRUNERROR = "DryRunOperation.AddTagDryrunError"
+//  FAILEDOPERATION_CREATEFLOWERROR = "FailedOperation.CreateFlowError"
+//  FAILEDOPERATION_DBCREATEINSTANCEERROR = "FailedOperation.DBCreateInstanceError"
+//  INVALIDPARAMETERVALUE_CHECKDISKERROR = "InvalidParameterValue.CheckDiskError"
+//  INVALIDPARAMETERVALUE_CHECKINSTANCEVERSIONERROR = "InvalidParameterValue.CheckInstanceVersionError"
+//  INVALIDPARAMETERVALUE_CHECKNAMEERROR = "InvalidParameterValue.CheckNameError"
+//  INVALIDPARAMETERVALUE_CHECKSPECERROR = "InvalidParameterValue.CheckSpecError"
+//  INVALIDPARAMETERVALUE_CHECKVPCERROR = "InvalidParameterValue.CheckVpcError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  INVALIDPARAMETERVALUE_NODEREPLICASINVALIDERROR = "InvalidParameterValue.NodeReplicasInvalidError"
+//  LIMITEXCEEDED_ADDTAGCOUNTERROR = "LimitExceeded.AddTagCountError"
+//  LIMITEXCEEDED_OUTOFINSTANCECNTLIMITERROR = "LimitExceeded.OutOfInstanceCntLimitError"
+//  LIMITEXCEEDED_OUTOFNODEREPLICASLIMITERROR = "LimitExceeded.OutOfNodeReplicasLimitError"
+//  LIMITEXCEEDED_OUTOFSPECLIMITERROR = "LimitExceeded.OutOfSpecLimitError"
+func (c *Client) CreateDBInstancesWithContext(ctx context.Context, request *CreateDBInstancesRequest) (response *CreateDBInstancesResponse, err error) {
+    if request == nil {
+        request = NewCreateDBInstancesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tdmysql", APIVersion, "CreateDBInstances")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDBInstances require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateDBInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateDBSBackupRequest() (request *CreateDBSBackupRequest) {
     request = &CreateDBSBackupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -217,6 +385,122 @@ func (c *Client) DeleteDBSBackupSetsWithContext(ctx context.Context, request *De
     request.SetContext(ctx)
     
     response = NewDeleteDBSBackupSetsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDBInstanceDetailRequest() (request *DescribeDBInstanceDetailRequest) {
+    request = &DescribeDBInstanceDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmysql", APIVersion, "DescribeDBInstanceDetail")
+    
+    
+    return
+}
+
+func NewDescribeDBInstanceDetailResponse() (response *DescribeDBInstanceDetailResponse) {
+    response = &DescribeDBInstanceDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDBInstanceDetail
+// 本接口（DescribeDBInstanceDetail）提供查询实例详情功能
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_CAMAUTHERROR = "AuthFailure.CamAuthError"
+//  AUTHFAILURE_CHECKCAMAUTHERROR = "AuthFailure.CheckCamAuthError"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_DBQUERYINSTANCEERROR = "FailedOperation.DBQueryInstanceError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+func (c *Client) DescribeDBInstanceDetail(request *DescribeDBInstanceDetailRequest) (response *DescribeDBInstanceDetailResponse, err error) {
+    return c.DescribeDBInstanceDetailWithContext(context.Background(), request)
+}
+
+// DescribeDBInstanceDetail
+// 本接口（DescribeDBInstanceDetail）提供查询实例详情功能
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_CAMAUTHERROR = "AuthFailure.CamAuthError"
+//  AUTHFAILURE_CHECKCAMAUTHERROR = "AuthFailure.CheckCamAuthError"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_DBQUERYINSTANCEERROR = "FailedOperation.DBQueryInstanceError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+func (c *Client) DescribeDBInstanceDetailWithContext(ctx context.Context, request *DescribeDBInstanceDetailRequest) (response *DescribeDBInstanceDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeDBInstanceDetailRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tdmysql", APIVersion, "DescribeDBInstanceDetail")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDBInstanceDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDBInstanceDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDBInstancesRequest() (request *DescribeDBInstancesRequest) {
+    request = &DescribeDBInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmysql", APIVersion, "DescribeDBInstances")
+    
+    
+    return
+}
+
+func NewDescribeDBInstancesResponse() (response *DescribeDBInstancesResponse) {
+    response = &DescribeDBInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDBInstances
+// 本接口（DescribeDBInstances）提供查询实例列表功能
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_DBQUERYINSTANCEERROR = "FailedOperation.DBQueryInstanceError"
+//  FAILEDOPERATION_DBQUERYTAGERROR = "FailedOperation.DBQueryTagError"
+//  INVALIDPARAMETERVALUE_INSTANCEFILTERKEYERROR = "InvalidParameterValue.InstanceFilterKeyError"
+//  LIMITEXCEEDED_OUTOFINSTANCECOUNTLIMITERROR = "LimitExceeded.OutOfInstanceCountLimitError"
+func (c *Client) DescribeDBInstances(request *DescribeDBInstancesRequest) (response *DescribeDBInstancesResponse, err error) {
+    return c.DescribeDBInstancesWithContext(context.Background(), request)
+}
+
+// DescribeDBInstances
+// 本接口（DescribeDBInstances）提供查询实例列表功能
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_DBQUERYINSTANCEERROR = "FailedOperation.DBQueryInstanceError"
+//  FAILEDOPERATION_DBQUERYTAGERROR = "FailedOperation.DBQueryTagError"
+//  INVALIDPARAMETERVALUE_INSTANCEFILTERKEYERROR = "InvalidParameterValue.InstanceFilterKeyError"
+//  LIMITEXCEEDED_OUTOFINSTANCECOUNTLIMITERROR = "LimitExceeded.OutOfInstanceCountLimitError"
+func (c *Client) DescribeDBInstancesWithContext(ctx context.Context, request *DescribeDBInstancesRequest) (response *DescribeDBInstancesResponse, err error) {
+    if request == nil {
+        request = NewDescribeDBInstancesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tdmysql", APIVersion, "DescribeDBInstances")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDBInstances require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDBInstancesResponse()
     err = c.Send(request, response)
     return
 }
@@ -385,6 +669,220 @@ func (c *Client) DescribeDBSAvailableRecoveryTimeWithContext(ctx context.Context
     request.SetContext(ctx)
     
     response = NewDescribeDBSAvailableRecoveryTimeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDBSBackupPolicyRequest() (request *DescribeDBSBackupPolicyRequest) {
+    request = &DescribeDBSBackupPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmysql", APIVersion, "DescribeDBSBackupPolicy")
+    
+    
+    return
+}
+
+func NewDescribeDBSBackupPolicyResponse() (response *DescribeDBSBackupPolicyResponse) {
+    response = &DescribeDBSBackupPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDBSBackupPolicy
+// 查询实例备份策略 DescribeDBSBackupPolicy
+//
+// 可能返回的错误码:
+//  INTERNALERROR_ROUTERNOTFOUND = "InternalError.RouterNotFound"
+//  RESOURCENOTFOUND_BIZRESOURCENOTFOUNDERROR = "ResourceNotFound.BizResourceNotFoundError"
+func (c *Client) DescribeDBSBackupPolicy(request *DescribeDBSBackupPolicyRequest) (response *DescribeDBSBackupPolicyResponse, err error) {
+    return c.DescribeDBSBackupPolicyWithContext(context.Background(), request)
+}
+
+// DescribeDBSBackupPolicy
+// 查询实例备份策略 DescribeDBSBackupPolicy
+//
+// 可能返回的错误码:
+//  INTERNALERROR_ROUTERNOTFOUND = "InternalError.RouterNotFound"
+//  RESOURCENOTFOUND_BIZRESOURCENOTFOUNDERROR = "ResourceNotFound.BizResourceNotFoundError"
+func (c *Client) DescribeDBSBackupPolicyWithContext(ctx context.Context, request *DescribeDBSBackupPolicyRequest) (response *DescribeDBSBackupPolicyResponse, err error) {
+    if request == nil {
+        request = NewDescribeDBSBackupPolicyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tdmysql", APIVersion, "DescribeDBSBackupPolicy")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDBSBackupPolicy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDBSBackupPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDBSBackupSetsRequest() (request *DescribeDBSBackupSetsRequest) {
+    request = &DescribeDBSBackupSetsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmysql", APIVersion, "DescribeDBSBackupSets")
+    
+    
+    return
+}
+
+func NewDescribeDBSBackupSetsResponse() (response *DescribeDBSBackupSetsResponse) {
+    response = &DescribeDBSBackupSetsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDBSBackupSets
+// 查询实例备份集信息 DescribeDBSBackupSets
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_ROUTERNOTFOUND = "InternalError.RouterNotFound"
+//  RESOURCENOTFOUND_BIZRESOURCENOTFOUNDERROR = "ResourceNotFound.BizResourceNotFoundError"
+func (c *Client) DescribeDBSBackupSets(request *DescribeDBSBackupSetsRequest) (response *DescribeDBSBackupSetsResponse, err error) {
+    return c.DescribeDBSBackupSetsWithContext(context.Background(), request)
+}
+
+// DescribeDBSBackupSets
+// 查询实例备份集信息 DescribeDBSBackupSets
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_ROUTERNOTFOUND = "InternalError.RouterNotFound"
+//  RESOURCENOTFOUND_BIZRESOURCENOTFOUNDERROR = "ResourceNotFound.BizResourceNotFoundError"
+func (c *Client) DescribeDBSBackupSetsWithContext(ctx context.Context, request *DescribeDBSBackupSetsRequest) (response *DescribeDBSBackupSetsResponse, err error) {
+    if request == nil {
+        request = NewDescribeDBSBackupSetsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tdmysql", APIVersion, "DescribeDBSBackupSets")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDBSBackupSets require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDBSBackupSetsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDBSBackupStatisticsRequest() (request *DescribeDBSBackupStatisticsRequest) {
+    request = &DescribeDBSBackupStatisticsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmysql", APIVersion, "DescribeDBSBackupStatistics")
+    
+    
+    return
+}
+
+func NewDescribeDBSBackupStatisticsResponse() (response *DescribeDBSBackupStatisticsResponse) {
+    response = &DescribeDBSBackupStatisticsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDBSBackupStatistics
+// 查询实例备份空间概览 DescribeDBSBackupStatistics
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_ROUTERNOTFOUND = "InternalError.RouterNotFound"
+//  RESOURCENOTFOUND_BIZRESOURCENOTFOUNDERROR = "ResourceNotFound.BizResourceNotFoundError"
+func (c *Client) DescribeDBSBackupStatistics(request *DescribeDBSBackupStatisticsRequest) (response *DescribeDBSBackupStatisticsResponse, err error) {
+    return c.DescribeDBSBackupStatisticsWithContext(context.Background(), request)
+}
+
+// DescribeDBSBackupStatistics
+// 查询实例备份空间概览 DescribeDBSBackupStatistics
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_ROUTERNOTFOUND = "InternalError.RouterNotFound"
+//  RESOURCENOTFOUND_BIZRESOURCENOTFOUNDERROR = "ResourceNotFound.BizResourceNotFoundError"
+func (c *Client) DescribeDBSBackupStatisticsWithContext(ctx context.Context, request *DescribeDBSBackupStatisticsRequest) (response *DescribeDBSBackupStatisticsResponse, err error) {
+    if request == nil {
+        request = NewDescribeDBSBackupStatisticsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tdmysql", APIVersion, "DescribeDBSBackupStatistics")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDBSBackupStatistics require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDBSBackupStatisticsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDBSBackupStatisticsDetailRequest() (request *DescribeDBSBackupStatisticsDetailRequest) {
+    request = &DescribeDBSBackupStatisticsDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmysql", APIVersion, "DescribeDBSBackupStatisticsDetail")
+    
+    
+    return
+}
+
+func NewDescribeDBSBackupStatisticsDetailResponse() (response *DescribeDBSBackupStatisticsDetailResponse) {
+    response = &DescribeDBSBackupStatisticsDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDBSBackupStatisticsDetail
+// 查询备份集统计详情 DescribeDBSBackupStatisticsDetail
+//
+// 可能返回的错误码:
+//  INTERNALERROR_ROUTERNOTFOUND = "InternalError.RouterNotFound"
+//  RESOURCENOTFOUND_BIZRESOURCENOTFOUNDERROR = "ResourceNotFound.BizResourceNotFoundError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+func (c *Client) DescribeDBSBackupStatisticsDetail(request *DescribeDBSBackupStatisticsDetailRequest) (response *DescribeDBSBackupStatisticsDetailResponse, err error) {
+    return c.DescribeDBSBackupStatisticsDetailWithContext(context.Background(), request)
+}
+
+// DescribeDBSBackupStatisticsDetail
+// 查询备份集统计详情 DescribeDBSBackupStatisticsDetail
+//
+// 可能返回的错误码:
+//  INTERNALERROR_ROUTERNOTFOUND = "InternalError.RouterNotFound"
+//  RESOURCENOTFOUND_BIZRESOURCENOTFOUNDERROR = "ResourceNotFound.BizResourceNotFoundError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+func (c *Client) DescribeDBSBackupStatisticsDetailWithContext(ctx context.Context, request *DescribeDBSBackupStatisticsDetailRequest) (response *DescribeDBSBackupStatisticsDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeDBSBackupStatisticsDetailRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tdmysql", APIVersion, "DescribeDBSBackupStatisticsDetail")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDBSBackupStatisticsDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDBSBackupStatisticsDetailResponse()
     err = c.Send(request, response)
     return
 }
@@ -579,6 +1077,58 @@ func (c *Client) DescribeDatabaseObjectsWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeDatabasesRequest() (request *DescribeDatabasesRequest) {
+    request = &DescribeDatabasesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmysql", APIVersion, "DescribeDatabases")
+    
+    
+    return
+}
+
+func NewDescribeDatabasesResponse() (response *DescribeDatabasesResponse) {
+    response = &DescribeDatabasesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDatabases
+// 本接口（DescribeDatabases）用于查询云数据库实例的数据库列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBQUERYINSTANCEERROR = "FailedOperation.DBQueryInstanceError"
+//  FAILEDOPERATION_QUERYDBERROR = "FailedOperation.QueryDBError"
+func (c *Client) DescribeDatabases(request *DescribeDatabasesRequest) (response *DescribeDatabasesResponse, err error) {
+    return c.DescribeDatabasesWithContext(context.Background(), request)
+}
+
+// DescribeDatabases
+// 本接口（DescribeDatabases）用于查询云数据库实例的数据库列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBQUERYINSTANCEERROR = "FailedOperation.DBQueryInstanceError"
+//  FAILEDOPERATION_QUERYDBERROR = "FailedOperation.QueryDBError"
+func (c *Client) DescribeDatabasesWithContext(ctx context.Context, request *DescribeDatabasesRequest) (response *DescribeDatabasesResponse, err error) {
+    if request == nil {
+        request = NewDescribeDatabasesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tdmysql", APIVersion, "DescribeDatabases")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDatabases require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDatabasesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeFlowRequest() (request *DescribeFlowRequest) {
     request = &DescribeFlowRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -602,6 +1152,7 @@ func NewDescribeFlowResponse() (response *DescribeFlowResponse) {
 // 本接口（DescribeFlow）用于查询异步任务流程状态
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DBQUERYINSTANCEERROR = "FailedOperation.DBQueryInstanceError"
 //  FAILEDOPERATION_QUERYDBERROR = "FailedOperation.QueryDBError"
 func (c *Client) DescribeFlow(request *DescribeFlowRequest) (response *DescribeFlowResponse, err error) {
     return c.DescribeFlowWithContext(context.Background(), request)
@@ -611,6 +1162,7 @@ func (c *Client) DescribeFlow(request *DescribeFlowRequest) (response *DescribeF
 // 本接口（DescribeFlow）用于查询异步任务流程状态
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DBQUERYINSTANCEERROR = "FailedOperation.DBQueryInstanceError"
 //  FAILEDOPERATION_QUERYDBERROR = "FailedOperation.QueryDBError"
 func (c *Client) DescribeFlowWithContext(ctx context.Context, request *DescribeFlowRequest) (response *DescribeFlowResponse, err error) {
     if request == nil {
@@ -625,6 +1177,228 @@ func (c *Client) DescribeFlowWithContext(ctx context.Context, request *DescribeF
     request.SetContext(ctx)
     
     response = NewDescribeFlowResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSaleInfoRequest() (request *DescribeSaleInfoRequest) {
+    request = &DescribeSaleInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmysql", APIVersion, "DescribeSaleInfo")
+    
+    
+    return
+}
+
+func NewDescribeSaleInfoResponse() (response *DescribeSaleInfoResponse) {
+    response = &DescribeSaleInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSaleInfo
+// 本接口（DescribeSaleInfo）提供查询可用售卖地域功能
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBQUERYZONEERROR = "FailedOperation.DBQueryZoneError"
+func (c *Client) DescribeSaleInfo(request *DescribeSaleInfoRequest) (response *DescribeSaleInfoResponse, err error) {
+    return c.DescribeSaleInfoWithContext(context.Background(), request)
+}
+
+// DescribeSaleInfo
+// 本接口（DescribeSaleInfo）提供查询可用售卖地域功能
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBQUERYZONEERROR = "FailedOperation.DBQueryZoneError"
+func (c *Client) DescribeSaleInfoWithContext(ctx context.Context, request *DescribeSaleInfoRequest) (response *DescribeSaleInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeSaleInfoRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tdmysql", APIVersion, "DescribeSaleInfo")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSaleInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSaleInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSpecsRequest() (request *DescribeSpecsRequest) {
+    request = &DescribeSpecsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmysql", APIVersion, "DescribeSpecs")
+    
+    
+    return
+}
+
+func NewDescribeSpecsResponse() (response *DescribeSpecsResponse) {
+    response = &DescribeSpecsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSpecs
+// 本接口（DescribeSpecs）提供查询售卖规格功能
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UINWHITELISTCHECKERROR = "AuthFailure.UinWhiteListCheckError"
+//  FAILEDOPERATION_DBQUERYZONEERROR = "FailedOperation.DBQueryZoneError"
+//  UNSUPPORTEDOPERATION_GETMAXNODENUMERROR = "UnsupportedOperation.GetMaxNodeNumError"
+func (c *Client) DescribeSpecs(request *DescribeSpecsRequest) (response *DescribeSpecsResponse, err error) {
+    return c.DescribeSpecsWithContext(context.Background(), request)
+}
+
+// DescribeSpecs
+// 本接口（DescribeSpecs）提供查询售卖规格功能
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UINWHITELISTCHECKERROR = "AuthFailure.UinWhiteListCheckError"
+//  FAILEDOPERATION_DBQUERYZONEERROR = "FailedOperation.DBQueryZoneError"
+//  UNSUPPORTEDOPERATION_GETMAXNODENUMERROR = "UnsupportedOperation.GetMaxNodeNumError"
+func (c *Client) DescribeSpecsWithContext(ctx context.Context, request *DescribeSpecsRequest) (response *DescribeSpecsResponse, err error) {
+    if request == nil {
+        request = NewDescribeSpecsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tdmysql", APIVersion, "DescribeSpecs")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSpecs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSpecsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeUserPrivilegesRequest() (request *DescribeUserPrivilegesRequest) {
+    request = &DescribeUserPrivilegesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmysql", APIVersion, "DescribeUserPrivileges")
+    
+    
+    return
+}
+
+func NewDescribeUserPrivilegesResponse() (response *DescribeUserPrivilegesResponse) {
+    response = &DescribeUserPrivilegesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeUserPrivileges
+// 本接口（DescribeUserPrivileges）提供查询用户的权限功能
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBQUERYPRIVILEGESERROR = "FailedOperation.DBQueryPrivilegesError"
+//  INVALIDPARAMETERVALUE_CHECKHOSTERROR = "InvalidParameterValue.CheckHostError"
+//  INVALIDPARAMETERVALUE_CHECKNAMEERROR = "InvalidParameterValue.CheckNameError"
+//  OPERATIONDENIED_INSTANCESTATUSERROR = "OperationDenied.InstanceStatusError"
+func (c *Client) DescribeUserPrivileges(request *DescribeUserPrivilegesRequest) (response *DescribeUserPrivilegesResponse, err error) {
+    return c.DescribeUserPrivilegesWithContext(context.Background(), request)
+}
+
+// DescribeUserPrivileges
+// 本接口（DescribeUserPrivileges）提供查询用户的权限功能
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBQUERYPRIVILEGESERROR = "FailedOperation.DBQueryPrivilegesError"
+//  INVALIDPARAMETERVALUE_CHECKHOSTERROR = "InvalidParameterValue.CheckHostError"
+//  INVALIDPARAMETERVALUE_CHECKNAMEERROR = "InvalidParameterValue.CheckNameError"
+//  OPERATIONDENIED_INSTANCESTATUSERROR = "OperationDenied.InstanceStatusError"
+func (c *Client) DescribeUserPrivilegesWithContext(ctx context.Context, request *DescribeUserPrivilegesRequest) (response *DescribeUserPrivilegesResponse, err error) {
+    if request == nil {
+        request = NewDescribeUserPrivilegesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tdmysql", APIVersion, "DescribeUserPrivileges")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUserPrivileges require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeUserPrivilegesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeUsersRequest() (request *DescribeUsersRequest) {
+    request = &DescribeUsersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmysql", APIVersion, "DescribeUsers")
+    
+    
+    return
+}
+
+func NewDescribeUsersResponse() (response *DescribeUsersResponse) {
+    response = &DescribeUsersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeUsers
+// 本接口（DescribeUsers）提供查询用户列表功能
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_CAMAUTHERROR = "AuthFailure.CamAuthError"
+//  AUTHFAILURE_CHECKCAMAUTHERROR = "AuthFailure.CheckCamAuthError"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_DBQUERYINSTANCEERROR = "FailedOperation.DBQueryInstanceError"
+//  FAILEDOPERATION_DBQUERYUSERERROR = "FailedOperation.DBQueryUserError"
+//  FAILEDOPERATION_QUERYUSERERROR = "FailedOperation.QueryUserError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+func (c *Client) DescribeUsers(request *DescribeUsersRequest) (response *DescribeUsersResponse, err error) {
+    return c.DescribeUsersWithContext(context.Background(), request)
+}
+
+// DescribeUsers
+// 本接口（DescribeUsers）提供查询用户列表功能
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_CAMAUTHERROR = "AuthFailure.CamAuthError"
+//  AUTHFAILURE_CHECKCAMAUTHERROR = "AuthFailure.CheckCamAuthError"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_DBQUERYINSTANCEERROR = "FailedOperation.DBQueryInstanceError"
+//  FAILEDOPERATION_DBQUERYUSERERROR = "FailedOperation.DBQueryUserError"
+//  FAILEDOPERATION_QUERYUSERERROR = "FailedOperation.QueryUserError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+func (c *Client) DescribeUsersWithContext(ctx context.Context, request *DescribeUsersRequest) (response *DescribeUsersResponse, err error) {
+    if request == nil {
+        request = NewDescribeUsersRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tdmysql", APIVersion, "DescribeUsers")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUsers require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeUsersResponse()
     err = c.Send(request, response)
     return
 }
@@ -683,6 +1457,66 @@ func (c *Client) DestroyInstancesWithContext(ctx context.Context, request *Destr
     request.SetContext(ctx)
     
     response = NewDestroyInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewExpandInstanceRequest() (request *ExpandInstanceRequest) {
+    request = &ExpandInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmysql", APIVersion, "ExpandInstance")
+    
+    
+    return
+}
+
+func NewExpandInstanceResponse() (response *ExpandInstanceResponse) {
+    response = &ExpandInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ExpandInstance
+// 本接口（ExpandInstance）提供横向扩容实例功能
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_CAMAUTHERROR = "AuthFailure.CamAuthError"
+//  AUTHFAILURE_CHECKCAMAUTHERROR = "AuthFailure.CheckCamAuthError"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_EXPANDINSTANCEERROR = "FailedOperation.ExpandInstanceError"
+//  LIMITEXCEEDED_OUTOFLIMITERROR = "LimitExceeded.OutOfLimitError"
+//  LIMITEXCEEDED_OUTOFSPECLIMITERROR = "LimitExceeded.OutOfSpecLimitError"
+func (c *Client) ExpandInstance(request *ExpandInstanceRequest) (response *ExpandInstanceResponse, err error) {
+    return c.ExpandInstanceWithContext(context.Background(), request)
+}
+
+// ExpandInstance
+// 本接口（ExpandInstance）提供横向扩容实例功能
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_CAMAUTHERROR = "AuthFailure.CamAuthError"
+//  AUTHFAILURE_CHECKCAMAUTHERROR = "AuthFailure.CheckCamAuthError"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_EXPANDINSTANCEERROR = "FailedOperation.ExpandInstanceError"
+//  LIMITEXCEEDED_OUTOFLIMITERROR = "LimitExceeded.OutOfLimitError"
+//  LIMITEXCEEDED_OUTOFSPECLIMITERROR = "LimitExceeded.OutOfSpecLimitError"
+func (c *Client) ExpandInstanceWithContext(ctx context.Context, request *ExpandInstanceRequest) (response *ExpandInstanceResponse, err error) {
+    if request == nil {
+        request = NewExpandInstanceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tdmysql", APIVersion, "ExpandInstance")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ExpandInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewExpandInstanceResponse()
     err = c.Send(request, response)
     return
 }
@@ -1149,6 +1983,196 @@ func (c *Client) ModifyInstanceNameWithContext(ctx context.Context, request *Mod
     request.SetContext(ctx)
     
     response = NewModifyInstanceNameResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyUserPrivilegesRequest() (request *ModifyUserPrivilegesRequest) {
+    request = &ModifyUserPrivilegesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmysql", APIVersion, "ModifyUserPrivileges")
+    
+    
+    return
+}
+
+func NewModifyUserPrivilegesResponse() (response *ModifyUserPrivilegesResponse) {
+    response = &ModifyUserPrivilegesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyUserPrivileges
+// 本接口(ModifyPrivileges)修改用户权限
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBCOUNTLIMITERROR = "FailedOperation.DbCountLimitError"
+//  FAILEDOPERATION_QUERYDBERROR = "FailedOperation.QueryDBError"
+//  FAILEDOPERATION_TABLECOUNTLIMITERROR = "FailedOperation.TableCountLimitError"
+//  FAILEDOPERATION_UPDATEPRIVILEGESERROR = "FailedOperation.UpdatePrivilegesError"
+func (c *Client) ModifyUserPrivileges(request *ModifyUserPrivilegesRequest) (response *ModifyUserPrivilegesResponse, err error) {
+    return c.ModifyUserPrivilegesWithContext(context.Background(), request)
+}
+
+// ModifyUserPrivileges
+// 本接口(ModifyPrivileges)修改用户权限
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBCOUNTLIMITERROR = "FailedOperation.DbCountLimitError"
+//  FAILEDOPERATION_QUERYDBERROR = "FailedOperation.QueryDBError"
+//  FAILEDOPERATION_TABLECOUNTLIMITERROR = "FailedOperation.TableCountLimitError"
+//  FAILEDOPERATION_UPDATEPRIVILEGESERROR = "FailedOperation.UpdatePrivilegesError"
+func (c *Client) ModifyUserPrivilegesWithContext(ctx context.Context, request *ModifyUserPrivilegesRequest) (response *ModifyUserPrivilegesResponse, err error) {
+    if request == nil {
+        request = NewModifyUserPrivilegesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tdmysql", APIVersion, "ModifyUserPrivileges")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyUserPrivileges require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyUserPrivilegesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRestartDBInstancesRequest() (request *RestartDBInstancesRequest) {
+    request = &RestartDBInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmysql", APIVersion, "RestartDBInstances")
+    
+    
+    return
+}
+
+func NewRestartDBInstancesResponse() (response *RestartDBInstancesResponse) {
+    response = &RestartDBInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RestartDBInstances
+// 本接口（RestartDBInstances）用于重启数据库实例
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_CAMAUTHERROR = "AuthFailure.CamAuthError"
+//  AUTHFAILURE_CHECKCAMAUTHERROR = "AuthFailure.CheckCamAuthError"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_CHECKSUPPORTACTIONERROR = "FailedOperation.CheckSupportActionError"
+//  FAILEDOPERATION_CREATEFLOWERROR = "FailedOperation.CreateFlowError"
+//  FAILEDOPERATION_DBQUERYINSTANCEERROR = "FailedOperation.DBQueryInstanceError"
+//  FAILEDOPERATION_LOCKINSTANCEERROR = "FailedOperation.LockInstanceError"
+//  OPERATIONDENIED_INSTANCESTATUSERROR = "OperationDenied.InstanceStatusError"
+func (c *Client) RestartDBInstances(request *RestartDBInstancesRequest) (response *RestartDBInstancesResponse, err error) {
+    return c.RestartDBInstancesWithContext(context.Background(), request)
+}
+
+// RestartDBInstances
+// 本接口（RestartDBInstances）用于重启数据库实例
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_CAMAUTHERROR = "AuthFailure.CamAuthError"
+//  AUTHFAILURE_CHECKCAMAUTHERROR = "AuthFailure.CheckCamAuthError"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_CHECKSUPPORTACTIONERROR = "FailedOperation.CheckSupportActionError"
+//  FAILEDOPERATION_CREATEFLOWERROR = "FailedOperation.CreateFlowError"
+//  FAILEDOPERATION_DBQUERYINSTANCEERROR = "FailedOperation.DBQueryInstanceError"
+//  FAILEDOPERATION_LOCKINSTANCEERROR = "FailedOperation.LockInstanceError"
+//  OPERATIONDENIED_INSTANCESTATUSERROR = "OperationDenied.InstanceStatusError"
+func (c *Client) RestartDBInstancesWithContext(ctx context.Context, request *RestartDBInstancesRequest) (response *RestartDBInstancesResponse, err error) {
+    if request == nil {
+        request = NewRestartDBInstancesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tdmysql", APIVersion, "RestartDBInstances")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RestartDBInstances require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRestartDBInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpgradeInstanceRequest() (request *UpgradeInstanceRequest) {
+    request = &UpgradeInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmysql", APIVersion, "UpgradeInstance")
+    
+    
+    return
+}
+
+func NewUpgradeInstanceResponse() (response *UpgradeInstanceResponse) {
+    response = &UpgradeInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpgradeInstance
+// 本接口（UpgradeInstance）提供纵向扩容实例功能
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_CAMAUTHERROR = "AuthFailure.CamAuthError"
+//  AUTHFAILURE_CHECKCAMAUTHERROR = "AuthFailure.CheckCamAuthError"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_CHECKSUPPORTACTIONERROR = "FailedOperation.CheckSupportActionError"
+//  FAILEDOPERATION_CREATEFLOWERROR = "FailedOperation.CreateFlowError"
+//  FAILEDOPERATION_DBQUERYINSTANCEERROR = "FailedOperation.DBQueryInstanceError"
+//  FAILEDOPERATION_LOCKINSTANCEERROR = "FailedOperation.LockInstanceError"
+//  INVALIDPARAMETERVALUE_CHECKSPECERROR = "InvalidParameterValue.CheckSpecError"
+//  LIMITEXCEEDED_OUTOFSPECLIMITERROR = "LimitExceeded.OutOfSpecLimitError"
+//  OPERATIONDENIED_CHECKDECREASESPECERROR = "OperationDenied.CheckDecreaseSpecError"
+//  OPERATIONDENIED_INSTANCESTATUSERROR = "OperationDenied.InstanceStatusError"
+func (c *Client) UpgradeInstance(request *UpgradeInstanceRequest) (response *UpgradeInstanceResponse, err error) {
+    return c.UpgradeInstanceWithContext(context.Background(), request)
+}
+
+// UpgradeInstance
+// 本接口（UpgradeInstance）提供纵向扩容实例功能
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_CAMAUTHERROR = "AuthFailure.CamAuthError"
+//  AUTHFAILURE_CHECKCAMAUTHERROR = "AuthFailure.CheckCamAuthError"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_CHECKSUPPORTACTIONERROR = "FailedOperation.CheckSupportActionError"
+//  FAILEDOPERATION_CREATEFLOWERROR = "FailedOperation.CreateFlowError"
+//  FAILEDOPERATION_DBQUERYINSTANCEERROR = "FailedOperation.DBQueryInstanceError"
+//  FAILEDOPERATION_LOCKINSTANCEERROR = "FailedOperation.LockInstanceError"
+//  INVALIDPARAMETERVALUE_CHECKSPECERROR = "InvalidParameterValue.CheckSpecError"
+//  LIMITEXCEEDED_OUTOFSPECLIMITERROR = "LimitExceeded.OutOfSpecLimitError"
+//  OPERATIONDENIED_CHECKDECREASESPECERROR = "OperationDenied.CheckDecreaseSpecError"
+//  OPERATIONDENIED_INSTANCESTATUSERROR = "OperationDenied.InstanceStatusError"
+func (c *Client) UpgradeInstanceWithContext(ctx context.Context, request *UpgradeInstanceRequest) (response *UpgradeInstanceResponse, err error) {
+    if request == nil {
+        request = NewUpgradeInstanceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tdmysql", APIVersion, "UpgradeInstance")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpgradeInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpgradeInstanceResponse()
     err = c.Send(request, response)
     return
 }

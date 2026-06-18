@@ -359,6 +359,90 @@ func (c *Client) AddVpcAcRuleWithContext(ctx context.Context, request *AddVpcAcR
     return
 }
 
+func NewCloseClusterNatFwSwitchRequest() (request *CloseClusterNatFwSwitchRequest) {
+    request = &CloseClusterNatFwSwitchRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "CloseClusterNatFwSwitch")
+    
+    
+    return
+}
+
+func NewCloseClusterNatFwSwitchResponse() (response *CloseClusterNatFwSwitchResponse) {
+    response = &CloseClusterNatFwSwitchResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CloseClusterNatFwSwitch
+// 关闭NAT CCN集群模式防火墙开关
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CloseClusterNatFwSwitch(request *CloseClusterNatFwSwitchRequest) (response *CloseClusterNatFwSwitchResponse, err error) {
+    return c.CloseClusterNatFwSwitchWithContext(context.Background(), request)
+}
+
+// CloseClusterNatFwSwitch
+// 关闭NAT CCN集群模式防火墙开关
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CloseClusterNatFwSwitchWithContext(ctx context.Context, request *CloseClusterNatFwSwitchRequest) (response *CloseClusterNatFwSwitchResponse, err error) {
+    if request == nil {
+        request = NewCloseClusterNatFwSwitchRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "CloseClusterNatFwSwitch")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CloseClusterNatFwSwitch require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCloseClusterNatFwSwitchResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAcRulesRequest() (request *CreateAcRulesRequest) {
     request = &CreateAcRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2839,6 +2923,90 @@ func (c *Client) DescribeCfwInsStatusWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeClusterNatCcnFwSwitchListRequest() (request *DescribeClusterNatCcnFwSwitchListRequest) {
+    request = &DescribeClusterNatCcnFwSwitchListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "DescribeClusterNatCcnFwSwitchList")
+    
+    
+    return
+}
+
+func NewDescribeClusterNatCcnFwSwitchListResponse() (response *DescribeClusterNatCcnFwSwitchListResponse) {
+    response = &DescribeClusterNatCcnFwSwitchListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeClusterNatCcnFwSwitchList
+// 查询NAT CCN集群模式防火墙开关列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeClusterNatCcnFwSwitchList(request *DescribeClusterNatCcnFwSwitchListRequest) (response *DescribeClusterNatCcnFwSwitchListResponse, err error) {
+    return c.DescribeClusterNatCcnFwSwitchListWithContext(context.Background(), request)
+}
+
+// DescribeClusterNatCcnFwSwitchList
+// 查询NAT CCN集群模式防火墙开关列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeClusterNatCcnFwSwitchListWithContext(ctx context.Context, request *DescribeClusterNatCcnFwSwitchListRequest) (response *DescribeClusterNatCcnFwSwitchListResponse, err error) {
+    if request == nil {
+        request = NewDescribeClusterNatCcnFwSwitchListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeClusterNatCcnFwSwitchList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeClusterNatCcnFwSwitchList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeClusterNatCcnFwSwitchListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeClusterVpcFwSwitchsRequest() (request *DescribeClusterVpcFwSwitchsRequest) {
     request = &DescribeClusterVpcFwSwitchsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2949,6 +3117,64 @@ func (c *Client) DescribeDefenseSwitchWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewDescribeDefenseSwitchResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeEdgeIpSimpleRequest() (request *DescribeEdgeIpSimpleRequest) {
+    request = &DescribeEdgeIpSimpleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "DescribeEdgeIpSimple")
+    
+    
+    return
+}
+
+func NewDescribeEdgeIpSimpleResponse() (response *DescribeEdgeIpSimpleResponse) {
+    response = &DescribeEdgeIpSimpleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeEdgeIpSimple
+// 互联网边界防火墙开关列表(轻量)
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeEdgeIpSimple(request *DescribeEdgeIpSimpleRequest) (response *DescribeEdgeIpSimpleResponse, err error) {
+    return c.DescribeEdgeIpSimpleWithContext(context.Background(), request)
+}
+
+// DescribeEdgeIpSimple
+// 互联网边界防火墙开关列表(轻量)
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeEdgeIpSimpleWithContext(ctx context.Context, request *DescribeEdgeIpSimpleRequest) (response *DescribeEdgeIpSimpleResponse, err error) {
+    if request == nil {
+        request = NewDescribeEdgeIpSimpleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeEdgeIpSimple")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEdgeIpSimple require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeEdgeIpSimpleResponse()
     err = c.Send(request, response)
     return
 }
@@ -3877,6 +4103,174 @@ func (c *Client) DescribeNatAcRuleWithContext(ctx context.Context, request *Desc
     return
 }
 
+func NewDescribeNatCcnFwSwitchRequest() (request *DescribeNatCcnFwSwitchRequest) {
+    request = &DescribeNatCcnFwSwitchRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "DescribeNatCcnFwSwitch")
+    
+    
+    return
+}
+
+func NewDescribeNatCcnFwSwitchResponse() (response *DescribeNatCcnFwSwitchResponse) {
+    response = &DescribeNatCcnFwSwitchResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeNatCcnFwSwitch
+// 查询NAT CCN防火墙开关配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeNatCcnFwSwitch(request *DescribeNatCcnFwSwitchRequest) (response *DescribeNatCcnFwSwitchResponse, err error) {
+    return c.DescribeNatCcnFwSwitchWithContext(context.Background(), request)
+}
+
+// DescribeNatCcnFwSwitch
+// 查询NAT CCN防火墙开关配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeNatCcnFwSwitchWithContext(ctx context.Context, request *DescribeNatCcnFwSwitchRequest) (response *DescribeNatCcnFwSwitchResponse, err error) {
+    if request == nil {
+        request = NewDescribeNatCcnFwSwitchRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeNatCcnFwSwitch")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNatCcnFwSwitch require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeNatCcnFwSwitchResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeNatFwClusterRegionStatusRequest() (request *DescribeNatFwClusterRegionStatusRequest) {
+    request = &DescribeNatFwClusterRegionStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "DescribeNatFwClusterRegionStatus")
+    
+    
+    return
+}
+
+func NewDescribeNatFwClusterRegionStatusResponse() (response *DescribeNatFwClusterRegionStatusResponse) {
+    response = &DescribeNatFwClusterRegionStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeNatFwClusterRegionStatus
+// 查询指定NAT所在地域是否有NAT防火墙引流集群
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeNatFwClusterRegionStatus(request *DescribeNatFwClusterRegionStatusRequest) (response *DescribeNatFwClusterRegionStatusResponse, err error) {
+    return c.DescribeNatFwClusterRegionStatusWithContext(context.Background(), request)
+}
+
+// DescribeNatFwClusterRegionStatus
+// 查询指定NAT所在地域是否有NAT防火墙引流集群
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeNatFwClusterRegionStatusWithContext(ctx context.Context, request *DescribeNatFwClusterRegionStatusRequest) (response *DescribeNatFwClusterRegionStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeNatFwClusterRegionStatusRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeNatFwClusterRegionStatus")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNatFwClusterRegionStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeNatFwClusterRegionStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeNatFwDnatRuleRequest() (request *DescribeNatFwDnatRuleRequest) {
     request = &DescribeNatFwDnatRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4681,6 +5075,62 @@ func (c *Client) DescribeSecurityGroupListWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewDescribeSecurityGroupListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSerialRegionRequest() (request *DescribeSerialRegionRequest) {
+    request = &DescribeSerialRegionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "DescribeSerialRegion")
+    
+    
+    return
+}
+
+func NewDescribeSerialRegionResponse() (response *DescribeSerialRegionResponse) {
+    response = &DescribeSerialRegionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSerialRegion
+// 查询串行防火墙地域带宽分配信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeSerialRegion(request *DescribeSerialRegionRequest) (response *DescribeSerialRegionResponse, err error) {
+    return c.DescribeSerialRegionWithContext(context.Background(), request)
+}
+
+// DescribeSerialRegion
+// 查询串行防火墙地域带宽分配信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeSerialRegionWithContext(ctx context.Context, request *DescribeSerialRegionRequest) (response *DescribeSerialRegionResponse, err error) {
+    if request == nil {
+        request = NewDescribeSerialRegionRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeSerialRegion")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSerialRegion require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSerialRegionResponse()
     err = c.Send(request, response)
     return
 }
@@ -6133,6 +6583,174 @@ func (c *Client) ModifyBlockTopWithContext(ctx context.Context, request *ModifyB
     request.SetContext(ctx)
     
     response = NewModifyBlockTopResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyClusterFwBypassRequest() (request *ModifyClusterFwBypassRequest) {
+    request = &ModifyClusterFwBypassRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "ModifyClusterFwBypass")
+    
+    
+    return
+}
+
+func NewModifyClusterFwBypassResponse() (response *ModifyClusterFwBypassResponse) {
+    response = &ModifyClusterFwBypassResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyClusterFwBypass
+// 修改集群防火墙Bypass状态
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyClusterFwBypass(request *ModifyClusterFwBypassRequest) (response *ModifyClusterFwBypassResponse, err error) {
+    return c.ModifyClusterFwBypassWithContext(context.Background(), request)
+}
+
+// ModifyClusterFwBypass
+// 修改集群防火墙Bypass状态
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyClusterFwBypassWithContext(ctx context.Context, request *ModifyClusterFwBypassRequest) (response *ModifyClusterFwBypassResponse, err error) {
+    if request == nil {
+        request = NewModifyClusterFwBypassRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "ModifyClusterFwBypass")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyClusterFwBypass require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyClusterFwBypassResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyClusterNatFwSwitchRequest() (request *ModifyClusterNatFwSwitchRequest) {
+    request = &ModifyClusterNatFwSwitchRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "ModifyClusterNatFwSwitch")
+    
+    
+    return
+}
+
+func NewModifyClusterNatFwSwitchResponse() (response *ModifyClusterNatFwSwitchResponse) {
+    response = &ModifyClusterNatFwSwitchResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyClusterNatFwSwitch
+// 修改NAT CCN集群模式防火墙开关配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyClusterNatFwSwitch(request *ModifyClusterNatFwSwitchRequest) (response *ModifyClusterNatFwSwitchResponse, err error) {
+    return c.ModifyClusterNatFwSwitchWithContext(context.Background(), request)
+}
+
+// ModifyClusterNatFwSwitch
+// 修改NAT CCN集群模式防火墙开关配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyClusterNatFwSwitchWithContext(ctx context.Context, request *ModifyClusterNatFwSwitchRequest) (response *ModifyClusterNatFwSwitchResponse, err error) {
+    if request == nil {
+        request = NewModifyClusterNatFwSwitchRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "ModifyClusterNatFwSwitch")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyClusterNatFwSwitch require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyClusterNatFwSwitchResponse()
     err = c.Send(request, response)
     return
 }
@@ -7881,6 +8499,90 @@ func (c *Client) ModifyVpcFwSequenceRulesWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewModifyVpcFwSequenceRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewOpenClusterNatFwSwitchRequest() (request *OpenClusterNatFwSwitchRequest) {
+    request = &OpenClusterNatFwSwitchRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "OpenClusterNatFwSwitch")
+    
+    
+    return
+}
+
+func NewOpenClusterNatFwSwitchResponse() (response *OpenClusterNatFwSwitchResponse) {
+    response = &OpenClusterNatFwSwitchResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// OpenClusterNatFwSwitch
+// 开启NAT CCN集群模式防火墙开关
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) OpenClusterNatFwSwitch(request *OpenClusterNatFwSwitchRequest) (response *OpenClusterNatFwSwitchResponse, err error) {
+    return c.OpenClusterNatFwSwitchWithContext(context.Background(), request)
+}
+
+// OpenClusterNatFwSwitch
+// 开启NAT CCN集群模式防火墙开关
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) OpenClusterNatFwSwitchWithContext(ctx context.Context, request *OpenClusterNatFwSwitchRequest) (response *OpenClusterNatFwSwitchResponse, err error) {
+    if request == nil {
+        request = NewOpenClusterNatFwSwitchRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "OpenClusterNatFwSwitch")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("OpenClusterNatFwSwitch require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewOpenClusterNatFwSwitchResponse()
     err = c.Send(request, response)
     return
 }

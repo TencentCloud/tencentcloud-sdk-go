@@ -1667,6 +1667,7 @@ func NewInvokeCommandResponse() (response *InvokeCommandResponse) {
 //  UNAUTHORIZEDOPERATION_INVALIDTOKEN = "UnauthorizedOperation.InvalidToken"
 //  UNAUTHORIZEDOPERATION_MFAEXPIRED = "UnauthorizedOperation.MFAExpired"
 //  UNAUTHORIZEDOPERATION_MFANOTFOUND = "UnauthorizedOperation.MFANotFound"
+//  UNAUTHORIZEDOPERATION_NEEDAPPROVAL = "UnauthorizedOperation.NeedApproval"
 func (c *Client) InvokeCommand(request *InvokeCommandRequest) (response *InvokeCommandResponse, err error) {
     return c.InvokeCommandWithContext(context.Background(), request)
 }
@@ -1724,6 +1725,7 @@ func (c *Client) InvokeCommand(request *InvokeCommandRequest) (response *InvokeC
 //  UNAUTHORIZEDOPERATION_INVALIDTOKEN = "UnauthorizedOperation.InvalidToken"
 //  UNAUTHORIZEDOPERATION_MFAEXPIRED = "UnauthorizedOperation.MFAExpired"
 //  UNAUTHORIZEDOPERATION_MFANOTFOUND = "UnauthorizedOperation.MFANotFound"
+//  UNAUTHORIZEDOPERATION_NEEDAPPROVAL = "UnauthorizedOperation.NeedApproval"
 func (c *Client) InvokeCommandWithContext(ctx context.Context, request *InvokeCommandRequest) (response *InvokeCommandResponse, err error) {
     if request == nil {
         request = NewInvokeCommandRequest()

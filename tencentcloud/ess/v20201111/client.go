@@ -547,6 +547,114 @@ func (c *Client) CancelUserAutoSignEnableUrlWithContext(ctx context.Context, req
     return
 }
 
+func NewCreateArchiveFlowTaskRequest() (request *CreateArchiveFlowTaskRequest) {
+    request = &CreateArchiveFlowTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "CreateArchiveFlowTask")
+    
+    
+    return
+}
+
+func NewCreateArchiveFlowTaskResponse() (response *CreateArchiveFlowTaskResponse) {
+    response = &CreateArchiveFlowTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateArchiveFlowTask
+// 创建合同归档任务
+//
+// 
+//
+// 合同归档接口用于将外部系统生成的合同、线下签署完成的合同或历史存量合同归档至腾讯电子签系统，实现合同统一管理。
+//
+// 
+//
+// 调用方提交合同文件资源、合同基础信息、签署方信息等数据后，系统将异步创建归档任务进行处理。归档成功后，系统会生成唯一的归档合同 ID（ArchivedFlowId），用于后续合同查询和管理。
+//
+// 
+//
+// 合同归档流程：
+//
+// 
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/1c99715285540088b97a0435895736a1.png)
+//
+// 1. 使用<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles" target="_blank">UploadFiles</a> 上传文件返回resourceId
+//
+// 2. 根据resourceId调用CreateArchiveFlowTask创建合同归档任务返回任务id
+//
+// 3. 通过任务ID查询合同归档任务状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_MQ = "InternalError.Mq"
+//  INTERNALERROR_SERIALIZE = "InternalError.Serialize"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_SENSITIVE = "InvalidParameter.Sensitive"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) CreateArchiveFlowTask(request *CreateArchiveFlowTaskRequest) (response *CreateArchiveFlowTaskResponse, err error) {
+    return c.CreateArchiveFlowTaskWithContext(context.Background(), request)
+}
+
+// CreateArchiveFlowTask
+// 创建合同归档任务
+//
+// 
+//
+// 合同归档接口用于将外部系统生成的合同、线下签署完成的合同或历史存量合同归档至腾讯电子签系统，实现合同统一管理。
+//
+// 
+//
+// 调用方提交合同文件资源、合同基础信息、签署方信息等数据后，系统将异步创建归档任务进行处理。归档成功后，系统会生成唯一的归档合同 ID（ArchivedFlowId），用于后续合同查询和管理。
+//
+// 
+//
+// 合同归档流程：
+//
+// 
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/1c99715285540088b97a0435895736a1.png)
+//
+// 1. 使用<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles" target="_blank">UploadFiles</a> 上传文件返回resourceId
+//
+// 2. 根据resourceId调用CreateArchiveFlowTask创建合同归档任务返回任务id
+//
+// 3. 通过任务ID查询合同归档任务状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_MQ = "InternalError.Mq"
+//  INTERNALERROR_SERIALIZE = "InternalError.Serialize"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_SENSITIVE = "InvalidParameter.Sensitive"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) CreateArchiveFlowTaskWithContext(ctx context.Context, request *CreateArchiveFlowTaskRequest) (response *CreateArchiveFlowTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateArchiveFlowTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CreateArchiveFlowTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateArchiveFlowTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateArchiveFlowTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateBatchAdminChangeInvitationsRequest() (request *CreateBatchAdminChangeInvitationsRequest) {
     request = &CreateBatchAdminChangeInvitationsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3975,6 +4083,7 @@ func NewCreateFlowByFilesResponse() (response *CreateFlowByFilesResponse) {
 //  INVALIDPARAMETER_DATANOTFOUND = "InvalidParameter.DataNotFound"
 //  INVALIDPARAMETER_EMPTYPARAMS = "InvalidParameter.EmptyParams"
 //  INVALIDPARAMETER_ENDPOINT = "InvalidParameter.EndPoint"
+//  INVALIDPARAMETER_FLOWAPPROVERS = "InvalidParameter.FlowApprovers"
 //  INVALIDPARAMETER_FLOWCALLBACKURL = "InvalidParameter.FlowCallbackUrl"
 //  INVALIDPARAMETER_FLOWDEADLINE = "InvalidParameter.FlowDeadLine"
 //  INVALIDPARAMETER_FLOWDESCRIPTION = "InvalidParameter.FlowDescription"
@@ -4214,6 +4323,7 @@ func (c *Client) CreateFlowByFiles(request *CreateFlowByFilesRequest) (response 
 //  INVALIDPARAMETER_DATANOTFOUND = "InvalidParameter.DataNotFound"
 //  INVALIDPARAMETER_EMPTYPARAMS = "InvalidParameter.EmptyParams"
 //  INVALIDPARAMETER_ENDPOINT = "InvalidParameter.EndPoint"
+//  INVALIDPARAMETER_FLOWAPPROVERS = "InvalidParameter.FlowApprovers"
 //  INVALIDPARAMETER_FLOWCALLBACKURL = "InvalidParameter.FlowCallbackUrl"
 //  INVALIDPARAMETER_FLOWDEADLINE = "InvalidParameter.FlowDeadLine"
 //  INVALIDPARAMETER_FLOWDESCRIPTION = "InvalidParameter.FlowDescription"
@@ -5305,6 +5415,174 @@ func (c *Client) CreateFlowGroupByTemplatesWithContext(ctx context.Context, requ
     return
 }
 
+func NewCreateFlowGroupRemindsRequest() (request *CreateFlowGroupRemindsRequest) {
+    request = &CreateFlowGroupRemindsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "CreateFlowGroupReminds")
+    
+    
+    return
+}
+
+func NewCreateFlowGroupRemindsResponse() (response *CreateFlowGroupRemindsResponse) {
+    response = &CreateFlowGroupRemindsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateFlowGroupReminds
+// 指定需要批量催办的合同组签署流程ID，按合同组维度进行催办
+//
+// ##### 需要符合以下条件的合同才可被催办：
+//
+// 
+//
+// 1. 发起合同时，**设置了经办人通知方式**
+//
+// 2. 子合同中当前状态为 **待签署、待填写** 的签署人是催办的对象
+//
+// 3. **每个合同的每个签署方最多3次**
+//
+// 
+//
+// 
+//
+// **注意**
+//
+// - 催办结果会以签署方维度列出（不同公司下的同个员工会被视为两个不同的签署方，同一人分别作为个人签署方与企业签署方也会被视为两个不同的签署方）
+//
+// - 合同组只支持短信方式催办
+//
+// 
+//
+// ##### 催办的效果：
+//
+// 
+//
+// ###### 效果
+//
+// 
+//
+// 
+//
+// 
+//
+// 
+//
+// 
+//
+// <li>对方会收到如下的短信通知</li>
+//
+// 
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/3caf94b7f540fa5736270d38528d3a7b.png)
+//
+// 
+//
+// 
+//
+// 
+//
+// 注：`合同催办是白名单功能，请联系客户经理申请开白后使用`
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER_FLOWID = "MissingParameter.FlowId"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) CreateFlowGroupReminds(request *CreateFlowGroupRemindsRequest) (response *CreateFlowGroupRemindsResponse, err error) {
+    return c.CreateFlowGroupRemindsWithContext(context.Background(), request)
+}
+
+// CreateFlowGroupReminds
+// 指定需要批量催办的合同组签署流程ID，按合同组维度进行催办
+//
+// ##### 需要符合以下条件的合同才可被催办：
+//
+// 
+//
+// 1. 发起合同时，**设置了经办人通知方式**
+//
+// 2. 子合同中当前状态为 **待签署、待填写** 的签署人是催办的对象
+//
+// 3. **每个合同的每个签署方最多3次**
+//
+// 
+//
+// 
+//
+// **注意**
+//
+// - 催办结果会以签署方维度列出（不同公司下的同个员工会被视为两个不同的签署方，同一人分别作为个人签署方与企业签署方也会被视为两个不同的签署方）
+//
+// - 合同组只支持短信方式催办
+//
+// 
+//
+// ##### 催办的效果：
+//
+// 
+//
+// ###### 效果
+//
+// 
+//
+// 
+//
+// 
+//
+// 
+//
+// 
+//
+// <li>对方会收到如下的短信通知</li>
+//
+// 
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/3caf94b7f540fa5736270d38528d3a7b.png)
+//
+// 
+//
+// 
+//
+// 
+//
+// 注：`合同催办是白名单功能，请联系客户经理申请开白后使用`
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER_FLOWID = "MissingParameter.FlowId"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) CreateFlowGroupRemindsWithContext(ctx context.Context, request *CreateFlowGroupRemindsRequest) (response *CreateFlowGroupRemindsResponse, err error) {
+    if request == nil {
+        request = NewCreateFlowGroupRemindsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CreateFlowGroupReminds")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateFlowGroupReminds require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateFlowGroupRemindsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateFlowGroupSignReviewRequest() (request *CreateFlowGroupSignReviewRequest) {
     request = &CreateFlowGroupSignReviewRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5443,23 +5721,57 @@ func NewCreateFlowRemindsResponse() (response *CreateFlowRemindsResponse) {
 }
 
 // CreateFlowReminds
-// 指定需要批量催办的签署流程ID，批量催办合同，最多100个。需要符合以下条件的合同才可被催办：
+// 指定需要批量催办的签署流程ID，批量催办合同，最多100个
+//
+// ##### 需要符合以下条件的合同才可被催办：
+//
+// <ol>
+//
+// <li>发起合同时，**设置了签署人通知类型：SMS,EMAIL,ALL**</li>
+//
+// <li>合同中当前状态为 **待签署** 的签署人是催办的对象</li>
+//
+// <li>**每个合同的每个签署方最多3次*</li>
+//
+// </ol>
 //
 // 
 //
-// 1. 发起合同时，**签署人的NotifyType需设置为sms**
+// ##### 催办的规则和效果：
 //
-// 2. 合同中当前状态为 **待签署** 的签署人是催办的对象
-//
-// 3. **每个合同只能催办一次**
+// ###### 规则
 //
 // 
 //
-// **催办的效果**: 对方会收到如下的短信通知
+// - 指定RemindTypes，会触发符合签署人NotifyType的通知类型
+//
+//     -  这里EMAIL类型例外，如果指定了RemindEmailInfos，那么就会按照指定的email来通知，不管签署人NotifyType是否设置了EMAIL通知类型
+//
+//         - 如果指定了RemindEmailInfos，那么就会按照指定的email来通知
+//
+// - 若未指定RemindTypes，则按照发起合同时设置的签署人原始通知类型处理
+//
+// 
+//
+// ###### 效果
+//
+// 
+//
+// 
+//
+// <li>对方会收到如下的短信通知</li>
 //
 // 
 //
 // ![image](https://qcloudimg.tencent-cloud.cn/raw/3caf94b7f540fa5736270d38528d3a7b.png)
+//
+// 
+//
+// <li>对方会收到如下的邮件通知</li>
+//
+// 
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/0841ccbd8db9747760b17914dcc166c6.png)
 //
 // 
 //
@@ -5479,23 +5791,57 @@ func (c *Client) CreateFlowReminds(request *CreateFlowRemindsRequest) (response 
 }
 
 // CreateFlowReminds
-// 指定需要批量催办的签署流程ID，批量催办合同，最多100个。需要符合以下条件的合同才可被催办：
+// 指定需要批量催办的签署流程ID，批量催办合同，最多100个
+//
+// ##### 需要符合以下条件的合同才可被催办：
+//
+// <ol>
+//
+// <li>发起合同时，**设置了签署人通知类型：SMS,EMAIL,ALL**</li>
+//
+// <li>合同中当前状态为 **待签署** 的签署人是催办的对象</li>
+//
+// <li>**每个合同的每个签署方最多3次*</li>
+//
+// </ol>
 //
 // 
 //
-// 1. 发起合同时，**签署人的NotifyType需设置为sms**
+// ##### 催办的规则和效果：
 //
-// 2. 合同中当前状态为 **待签署** 的签署人是催办的对象
-//
-// 3. **每个合同只能催办一次**
+// ###### 规则
 //
 // 
 //
-// **催办的效果**: 对方会收到如下的短信通知
+// - 指定RemindTypes，会触发符合签署人NotifyType的通知类型
+//
+//     -  这里EMAIL类型例外，如果指定了RemindEmailInfos，那么就会按照指定的email来通知，不管签署人NotifyType是否设置了EMAIL通知类型
+//
+//         - 如果指定了RemindEmailInfos，那么就会按照指定的email来通知
+//
+// - 若未指定RemindTypes，则按照发起合同时设置的签署人原始通知类型处理
+//
+// 
+//
+// ###### 效果
+//
+// 
+//
+// 
+//
+// <li>对方会收到如下的短信通知</li>
 //
 // 
 //
 // ![image](https://qcloudimg.tencent-cloud.cn/raw/3caf94b7f540fa5736270d38528d3a7b.png)
+//
+// 
+//
+// <li>对方会收到如下的邮件通知</li>
+//
+// 
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/0841ccbd8db9747760b17914dcc166c6.png)
 //
 // 
 //
@@ -8603,7 +8949,7 @@ func NewCreateReleaseFlowResponse() (response *CreateReleaseFlowResponse) {
 // CreateReleaseFlow
 // 发起解除协议的主要应用场景为：基于一份已经签署的合同（签署流程），进行解除操作。
 //
-// 解除协议的模板是官方提供 ，经过提供法务审核，暂不支持自定义。具体用法可以参考文档[合同解除](https://qian.tencent.com/developers/company/flow_release)。
+// 解除协议的模板是官方提供 ，经过提供法务审核，暂不支持自定义，[点击查看解除协议模板示例PDF](https://qcloudimg.tencent-cloud.cn/raw/279b53002cf178ac89ba2c4f31b2dd8a.pdf)。具体用法可以参考文档[合同解除](https://qian.tencent.com/developers/company/flow_release)。
 //
 // 
 //
@@ -8709,7 +9055,7 @@ func (c *Client) CreateReleaseFlow(request *CreateReleaseFlowRequest) (response 
 // CreateReleaseFlow
 // 发起解除协议的主要应用场景为：基于一份已经签署的合同（签署流程），进行解除操作。
 //
-// 解除协议的模板是官方提供 ，经过提供法务审核，暂不支持自定义。具体用法可以参考文档[合同解除](https://qian.tencent.com/developers/company/flow_release)。
+// 解除协议的模板是官方提供 ，经过提供法务审核，暂不支持自定义，[点击查看解除协议模板示例PDF](https://qcloudimg.tencent-cloud.cn/raw/279b53002cf178ac89ba2c4f31b2dd8a.pdf)。具体用法可以参考文档[合同解除](https://qian.tencent.com/developers/company/flow_release)。
 //
 // 
 //
@@ -10315,6 +10661,64 @@ func (c *Client) DeleteSingleSignOnEmployeesWithContext(ctx context.Context, req
     request.SetContext(ctx)
     
     response = NewDeleteSingleSignOnEmployeesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeArchiveFlowTaskRequest() (request *DescribeArchiveFlowTaskRequest) {
+    request = &DescribeArchiveFlowTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "DescribeArchiveFlowTask")
+    
+    
+    return
+}
+
+func NewDescribeArchiveFlowTaskResponse() (response *DescribeArchiveFlowTaskResponse) {
+    response = &DescribeArchiveFlowTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeArchiveFlowTask
+// 查询归档任务的执行结果， 用于获取合同归档任务的当前处理状态及执行结果。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_SERIALIZE = "InternalError.Serialize"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeArchiveFlowTask(request *DescribeArchiveFlowTaskRequest) (response *DescribeArchiveFlowTaskResponse, err error) {
+    return c.DescribeArchiveFlowTaskWithContext(context.Background(), request)
+}
+
+// DescribeArchiveFlowTask
+// 查询归档任务的执行结果， 用于获取合同归档任务的当前处理状态及执行结果。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_SERIALIZE = "InternalError.Serialize"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeArchiveFlowTaskWithContext(ctx context.Context, request *DescribeArchiveFlowTaskRequest) (response *DescribeArchiveFlowTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeArchiveFlowTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "DescribeArchiveFlowTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeArchiveFlowTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeArchiveFlowTaskResponse()
     err = c.Send(request, response)
     return
 }

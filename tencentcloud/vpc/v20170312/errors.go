@@ -812,6 +812,9 @@ const (
 	// 资源不可用。
 	RESOURCEUNAVAILABLE = "ResourceUnavailable"
 
+	// 专线网关所在VPC未创建IPv6 CIDR，专线网关无法开启IPv6功能
+	RESOURCEUNAVAILABLE_DCGIPV6NEEDVPCCREATEIPV6CIDR = "ResourceUnavailable.DcgIpv6NeedVpcCreateIPv6Cidr"
+
 	// 获取CDC IDC VIP失败.
 	RESOURCEUNAVAILABLE_FAILEDGETCDCIDCVIP = "ResourceUnavailable.FailedGetCdcIdcVip"
 

@@ -3541,6 +3541,56 @@ func (c *Client) CreateUserWithContext(ctx context.Context, request *CreateUserR
     return
 }
 
+func NewCreateUserRoleRequest() (request *CreateUserRoleRequest) {
+    request = &CreateUserRoleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "CreateUserRole")
+    
+    
+    return
+}
+
+func NewCreateUserRoleResponse() (response *CreateUserRoleResponse) {
+    response = &CreateUserRoleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateUserRole
+// 创建用户角色
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) CreateUserRole(request *CreateUserRoleRequest) (response *CreateUserRoleResponse, err error) {
+    return c.CreateUserRoleWithContext(context.Background(), request)
+}
+
+// CreateUserRole
+// 创建用户角色
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) CreateUserRoleWithContext(ctx context.Context, request *CreateUserRoleRequest) (response *CreateUserRoleResponse, err error) {
+    if request == nil {
+        request = NewCreateUserRoleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "CreateUserRole")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateUserRole require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateUserRoleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateUserVpcConnectionRequest() (request *CreateUserVpcConnectionRequest) {
     request = &CreateUserVpcConnectionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -7373,6 +7423,60 @@ func (c *Client) DescribeSubUserAccessPolicyWithContext(ctx context.Context, req
     return
 }
 
+func NewDescribeTCLakeMetaInstanceRequest() (request *DescribeTCLakeMetaInstanceRequest) {
+    request = &DescribeTCLakeMetaInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeTCLakeMetaInstance")
+    
+    
+    return
+}
+
+func NewDescribeTCLakeMetaInstanceResponse() (response *DescribeTCLakeMetaInstanceResponse) {
+    response = &DescribeTCLakeMetaInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTCLakeMetaInstance
+// 是否成功开通TCLake
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeTCLakeMetaInstance(request *DescribeTCLakeMetaInstanceRequest) (response *DescribeTCLakeMetaInstanceResponse, err error) {
+    return c.DescribeTCLakeMetaInstanceWithContext(context.Background(), request)
+}
+
+// DescribeTCLakeMetaInstance
+// 是否成功开通TCLake
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeTCLakeMetaInstanceWithContext(ctx context.Context, request *DescribeTCLakeMetaInstanceRequest) (response *DescribeTCLakeMetaInstanceResponse, err error) {
+    if request == nil {
+        request = NewDescribeTCLakeMetaInstanceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "DescribeTCLakeMetaInstance")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTCLakeMetaInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTCLakeMetaInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTableRequest() (request *DescribeTableRequest) {
     request = &DescribeTableRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -9553,6 +9657,56 @@ func (c *Client) GrantDLCCatalogAccessWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewGrantDLCCatalogAccessResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewInitializeTCLakeRequest() (request *InitializeTCLakeRequest) {
+    request = &InitializeTCLakeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "InitializeTCLake")
+    
+    
+    return
+}
+
+func NewInitializeTCLakeResponse() (response *InitializeTCLakeResponse) {
+    response = &InitializeTCLakeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// InitializeTCLake
+// 开通TCLake
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) InitializeTCLake(request *InitializeTCLakeRequest) (response *InitializeTCLakeResponse, err error) {
+    return c.InitializeTCLakeWithContext(context.Background(), request)
+}
+
+// InitializeTCLake
+// 开通TCLake
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) InitializeTCLakeWithContext(ctx context.Context, request *InitializeTCLakeRequest) (response *InitializeTCLakeResponse, err error) {
+    if request == nil {
+        request = NewInitializeTCLakeRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "InitializeTCLake")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InitializeTCLake require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewInitializeTCLakeResponse()
     err = c.Send(request, response)
     return
 }

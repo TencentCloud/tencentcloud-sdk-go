@@ -2209,6 +2209,64 @@ func (c *Client) DescribeBlueprintsWithContext(ctx context.Context, request *Des
     return
 }
 
+func NewDescribeBlueprintsShareAcrossAccountInfosRequest() (request *DescribeBlueprintsShareAcrossAccountInfosRequest) {
+    request = &DescribeBlueprintsShareAcrossAccountInfosRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lighthouse", APIVersion, "DescribeBlueprintsShareAcrossAccountInfos")
+    
+    
+    return
+}
+
+func NewDescribeBlueprintsShareAcrossAccountInfosResponse() (response *DescribeBlueprintsShareAcrossAccountInfosResponse) {
+    response = &DescribeBlueprintsShareAcrossAccountInfosResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeBlueprintsShareAcrossAccountInfos
+// 本接口（DescribeBlueprintsShareAcrossAccountInfos）用于查询一个或多个镜像的跨账号共享信息。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_BLUEPRINTIDMALFORMED = "InvalidParameterValue.BlueprintIdMalformed"
+//  INVALIDPARAMETERVALUE_NEGATIVE = "InvalidParameterValue.Negative"
+//  INVALIDPARAMETERVALUE_OUTOFRANGE = "InvalidParameterValue.OutOfRange"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNAUTHORIZEDOPERATION_TOKENINVALID = "UnauthorizedOperation.TokenInvalid"
+func (c *Client) DescribeBlueprintsShareAcrossAccountInfos(request *DescribeBlueprintsShareAcrossAccountInfosRequest) (response *DescribeBlueprintsShareAcrossAccountInfosResponse, err error) {
+    return c.DescribeBlueprintsShareAcrossAccountInfosWithContext(context.Background(), request)
+}
+
+// DescribeBlueprintsShareAcrossAccountInfos
+// 本接口（DescribeBlueprintsShareAcrossAccountInfos）用于查询一个或多个镜像的跨账号共享信息。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_BLUEPRINTIDMALFORMED = "InvalidParameterValue.BlueprintIdMalformed"
+//  INVALIDPARAMETERVALUE_NEGATIVE = "InvalidParameterValue.Negative"
+//  INVALIDPARAMETERVALUE_OUTOFRANGE = "InvalidParameterValue.OutOfRange"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNAUTHORIZEDOPERATION_TOKENINVALID = "UnauthorizedOperation.TokenInvalid"
+func (c *Client) DescribeBlueprintsShareAcrossAccountInfosWithContext(ctx context.Context, request *DescribeBlueprintsShareAcrossAccountInfosRequest) (response *DescribeBlueprintsShareAcrossAccountInfosResponse, err error) {
+    if request == nil {
+        request = NewDescribeBlueprintsShareAcrossAccountInfosRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "lighthouse", APIVersion, "DescribeBlueprintsShareAcrossAccountInfos")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBlueprintsShareAcrossAccountInfos require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBlueprintsShareAcrossAccountInfosResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBundleDiscountRequest() (request *DescribeBundleDiscountRequest) {
     request = &DescribeBundleDiscountRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5107,6 +5165,7 @@ func NewDisassociateInstancesKeyPairsResponse() (response *DisassociateInstances
 //  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 //  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
 //  UNSUPPORTEDOPERATION_KEYPAIRNOTBOUNDTOINSTANCE = "UnsupportedOperation.KeyPairNotBoundToInstance"
+//  UNSUPPORTEDOPERATION_KEYPAIRUNBINDUSERNAMEMISMATCH = "UnsupportedOperation.KeyPairUnbindUsernameMismatch"
 //  UNSUPPORTEDOPERATION_LATESTOPERATIONUNFINISHED = "UnsupportedOperation.LatestOperationUnfinished"
 func (c *Client) DisassociateInstancesKeyPairs(request *DisassociateInstancesKeyPairsRequest) (response *DisassociateInstancesKeyPairsResponse, err error) {
     return c.DisassociateInstancesKeyPairsWithContext(context.Background(), request)
@@ -5143,6 +5202,7 @@ func (c *Client) DisassociateInstancesKeyPairs(request *DisassociateInstancesKey
 //  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 //  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
 //  UNSUPPORTEDOPERATION_KEYPAIRNOTBOUNDTOINSTANCE = "UnsupportedOperation.KeyPairNotBoundToInstance"
+//  UNSUPPORTEDOPERATION_KEYPAIRUNBINDUSERNAMEMISMATCH = "UnsupportedOperation.KeyPairUnbindUsernameMismatch"
 //  UNSUPPORTEDOPERATION_LATESTOPERATIONUNFINISHED = "UnsupportedOperation.LatestOperationUnfinished"
 func (c *Client) DisassociateInstancesKeyPairsWithContext(ctx context.Context, request *DisassociateInstancesKeyPairsRequest) (response *DisassociateInstancesKeyPairsResponse, err error) {
     if request == nil {

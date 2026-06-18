@@ -1132,48 +1132,43 @@ type AnalyseConditionDetail struct {
 }
 
 type AnalyseConditions struct {
-	// 产品名称代码
+	// <p>产品名称代码</p>
 	BusinessCodes *string `json:"BusinessCodes,omitnil,omitempty" name:"BusinessCodes"`
 
-	// 子产品名称代码
+	// <p>子产品名称代码</p>
 	ProductCodes *string `json:"ProductCodes,omitnil,omitempty" name:"ProductCodes"`
 
-	// 组件类型代码
+	// <p>组件类型代码</p>
 	ComponentCode *string `json:"ComponentCode,omitnil,omitempty" name:"ComponentCode"`
 
-	// 可用区ID：资源所属可用区ID
+	// <p>可用区ID：资源所属可用区ID</p>
 	ZoneIds *string `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
 
-	// 地域ID:资源所属地域ID
+	// <p>地域ID:资源所属地域ID</p>
 	RegionIds *string `json:"RegionIds,omitnil,omitempty" name:"RegionIds"`
 
-	// 项目ID:资源所属项目ID
+	// <p>项目ID:资源所属项目ID</p>
 	ProjectIds *string `json:"ProjectIds,omitnil,omitempty" name:"ProjectIds"`
 
-	// 计费模式 prePay(表示包年包月)/postPay(表示按量计费)
+	// <p>计费模式 prePay(表示包年包月)/postPay(表示按量计费)</p>
 	PayModes *string `json:"PayModes,omitnil,omitempty" name:"PayModes"`
 
-	// 交易类型，查询交易类型（请使用交易类型code入参）
+	// <p>交易类型，查询交易类型（请使用交易类型code入参）</p>
 	ActionTypes *string `json:"ActionTypes,omitnil,omitempty" name:"ActionTypes"`
 
-	// 分账标签键
+	// <p>分账标签</p>
 	Tags *string `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 费用类型，查询费用类型（请使用费用类型code入参)入参枚举如下：
-	// cashPayAmount:现金 
-	// incentivePayAmount:赠送金 
-	// voucherPayAmount:优惠券 
-	// tax:税金 
-	// costBeforeTax:税前价
+	// <p>费用类型，查询费用类型（请使用费用类型code入参)入参枚举如下：<br>cashPayAmount:现金<br>incentivePayAmount:赠送金<br>voucherPayAmount:优惠券<br>tax:税金<br>costBeforeTax:税前价</p>
 	FeeType *string `json:"FeeType,omitnil,omitempty" name:"FeeType"`
 
-	// 查询成本分析数据的用户UIN
+	// <p>查询成本分析数据的用户UIN</p>
 	PayerUins *string `json:"PayerUins,omitnil,omitempty" name:"PayerUins"`
 
-	// 使用资源的用户UIN
+	// <p>使用资源的用户UIN</p>
 	OwnerUins *string `json:"OwnerUins,omitnil,omitempty" name:"OwnerUins"`
 
-	// 消耗类型，查询消耗类型（请使用消耗类型code入参）
+	// <p>消耗类型，查询消耗类型（请使用消耗类型code入参）</p>
 	ConsumptionTypes *string `json:"ConsumptionTypes,omitnil,omitempty" name:"ConsumptionTypes"`
 }
 
@@ -2434,90 +2429,99 @@ type Conditions struct {
 }
 
 type ConsumptionBusinessSummaryDataItem struct {
-	// 产品名称代码
+	// <p>产品名称代码</p>
 	BusinessCode *string `json:"BusinessCode,omitnil,omitempty" name:"BusinessCode"`
 
-	// 产品名称
+	// <p>产品名称</p>
 	BusinessCodeName *string `json:"BusinessCodeName,omitnil,omitempty" name:"BusinessCodeName"`
 
-	// 折后总价
+	// <p>折后总价</p>
 	RealTotalCost *string `json:"RealTotalCost,omitnil,omitempty" name:"RealTotalCost"`
 
-	// 费用趋势
+	// <p>费用趋势</p>
 	Trend *ConsumptionSummaryTrend `json:"Trend,omitnil,omitempty" name:"Trend"`
 
-	// 现金
+	// <p>现金</p>
 	CashPayAmount *string `json:"CashPayAmount,omitnil,omitempty" name:"CashPayAmount"`
 
-	// 赠送金
+	// <p>赠送金</p>
 	IncentivePayAmount *string `json:"IncentivePayAmount,omitnil,omitempty" name:"IncentivePayAmount"`
 
-	// 代金券
+	// <p>代金券</p>
 	VoucherPayAmount *string `json:"VoucherPayAmount,omitnil,omitempty" name:"VoucherPayAmount"`
 
-	// 分成金
+	// <p>分成金</p>
 	TransferPayAmount *string `json:"TransferPayAmount,omitnil,omitempty" name:"TransferPayAmount"`
 
-	// 地域名称（仅在地域汇总总展示）
+	// <p>地域名称（仅在地域汇总中展示）</p>
 	RegionName *string `json:"RegionName,omitnil,omitempty" name:"RegionName"`
+
+	// <p>待分摊金额</p><p>剩余待分摊的折后总金额</p>
+	LeftRealTotalCost *string `json:"LeftRealTotalCost,omitnil,omitempty" name:"LeftRealTotalCost"`
 }
 
 type ConsumptionProjectSummaryDataItem struct {
-	// 项目ID
+	// <p>项目ID</p>
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 项目名称
+	// <p>项目名称</p>
 	ProjectName *string `json:"ProjectName,omitnil,omitempty" name:"ProjectName"`
 
-	// 折后总价
+	// <p>折后总价</p>
 	RealTotalCost *string `json:"RealTotalCost,omitnil,omitempty" name:"RealTotalCost"`
 
-	// 趋势
+	// <p>趋势</p>
 	Trend *ConsumptionSummaryTrend `json:"Trend,omitnil,omitempty" name:"Trend"`
 
-	// 产品消耗详情
+	// <p>产品消耗详情</p>
 	Business []*ConsumptionBusinessSummaryDataItem `json:"Business,omitnil,omitempty" name:"Business"`
 
-	// 现金
+	// <p>现金</p>
 	CashPayAmount *string `json:"CashPayAmount,omitnil,omitempty" name:"CashPayAmount"`
 
-	// 赠送金
+	// <p>赠送金</p>
 	IncentivePayAmount *string `json:"IncentivePayAmount,omitnil,omitempty" name:"IncentivePayAmount"`
 
-	// 代金券
+	// <p>代金券</p>
 	VoucherPayAmount *string `json:"VoucherPayAmount,omitnil,omitempty" name:"VoucherPayAmount"`
 
-	// 分成金
+	// <p>分成金</p>
 	TransferPayAmount *string `json:"TransferPayAmount,omitnil,omitempty" name:"TransferPayAmount"`
+
+	// <p>待分摊金额</p><p>剩余待分摊的折后总金额</p>
+	LeftRealTotalCost *string `json:"LeftRealTotalCost,omitnil,omitempty" name:"LeftRealTotalCost"`
 }
 
 type ConsumptionRegionSummaryDataItem struct {
-	// 地域ID
+	// <p>地域ID</p>
 	RegionId *string `json:"RegionId,omitnil,omitempty" name:"RegionId"`
 
-	// 地域名称
+	// <p>地域名称</p>
 	RegionName *string `json:"RegionName,omitnil,omitempty" name:"RegionName"`
 
-	// 折后总价
+	// <p>折后总价</p>
 	RealTotalCost *string `json:"RealTotalCost,omitnil,omitempty" name:"RealTotalCost"`
 
-	// 趋势
+	// <p>趋势</p>
 	Trend *ConsumptionSummaryTrend `json:"Trend,omitnil,omitempty" name:"Trend"`
 
-	// 产品消费详情
+	// <p>产品消费详情</p>
 	Business []*ConsumptionBusinessSummaryDataItem `json:"Business,omitnil,omitempty" name:"Business"`
 
-	// 现金
+	// <p>现金</p>
 	CashPayAmount *string `json:"CashPayAmount,omitnil,omitempty" name:"CashPayAmount"`
 
-	// 代金券
+	// <p>代金券</p>
 	VoucherPayAmount *string `json:"VoucherPayAmount,omitnil,omitempty" name:"VoucherPayAmount"`
 
-	// 赠送金
+	// <p>赠送金</p>
 	IncentivePayAmount *string `json:"IncentivePayAmount,omitnil,omitempty" name:"IncentivePayAmount"`
 
-	// 分成金
+	// <p>分成金</p>
 	TransferPayAmount *string `json:"TransferPayAmount,omitnil,omitempty" name:"TransferPayAmount"`
+
+	// <p>待分摊金额</p><p>剩余待分摊的折后总金额</p>
+	LeftRealTotalCost *string `json:"LeftRealTotalCost,omitnil,omitempty" name:"LeftRealTotalCost"`
 }
 
 type ConsumptionResourceSummaryConditionValue struct {
@@ -2535,125 +2539,128 @@ type ConsumptionResourceSummaryConditionValue struct {
 }
 
 type ConsumptionResourceSummaryDataItem struct {
-	// 资源ID
+	// <p>资源ID</p>
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
-	// 资源名称
+	// <p>资源名称</p>
 	ResourceName *string `json:"ResourceName,omitnil,omitempty" name:"ResourceName"`
 
-	// 折后总价
+	// <p>折后总价</p>
 	RealTotalCost *string `json:"RealTotalCost,omitnil,omitempty" name:"RealTotalCost"`
 
-	// 现金花费
+	// <p>现金花费</p>
 	CashPayAmount *string `json:"CashPayAmount,omitnil,omitempty" name:"CashPayAmount"`
 
-	// 项目ID
+	// <p>项目ID</p>
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 项目名称
+	// <p>项目名称</p>
 	ProjectName *string `json:"ProjectName,omitnil,omitempty" name:"ProjectName"`
 
-	// 地域ID
+	// <p>地域ID</p>
 	RegionId *string `json:"RegionId,omitnil,omitempty" name:"RegionId"`
 
-	// 地域名称
+	// <p>地域名称</p>
 	RegionName *string `json:"RegionName,omitnil,omitempty" name:"RegionName"`
 
-	// 付费模式
+	// <p>付费模式</p>
 	PayMode *string `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// 付费模式名称
+	// <p>付费模式名称</p>
 	PayModeName *string `json:"PayModeName,omitnil,omitempty" name:"PayModeName"`
 
-	// 产品名称代码
+	// <p>产品名称代码</p>
 	BusinessCode *string `json:"BusinessCode,omitnil,omitempty" name:"BusinessCode"`
 
-	// 产品名称
+	// <p>产品名称</p>
 	BusinessCodeName *string `json:"BusinessCodeName,omitnil,omitempty" name:"BusinessCodeName"`
 
-	// 消耗类型
+	// <p>消耗类型</p>
 	ConsumptionTypeName *string `json:"ConsumptionTypeName,omitnil,omitempty" name:"ConsumptionTypeName"`
 
-	// 折前价
+	// <p>折前价</p>
 	RealCost *string `json:"RealCost,omitnil,omitempty" name:"RealCost"`
 
-	// 费用起始时间
+	// <p>费用起始时间</p>
 	FeeBeginTime *string `json:"FeeBeginTime,omitnil,omitempty" name:"FeeBeginTime"`
 
-	// 费用结束时间
+	// <p>费用结束时间</p>
 	FeeEndTime *string `json:"FeeEndTime,omitnil,omitempty" name:"FeeEndTime"`
 
-	// 天数
+	// <p>天数</p>
 	DayDiff *string `json:"DayDiff,omitnil,omitempty" name:"DayDiff"`
 
-	// 每日消耗
+	// <p>每日消耗</p>
 	DailyTotalCost *string `json:"DailyTotalCost,omitnil,omitempty" name:"DailyTotalCost"`
 
-	// 订单号
+	// <p>订单号</p>
 	OrderId *string `json:"OrderId,omitnil,omitempty" name:"OrderId"`
 
-	// 代金券
+	// <p>代金券</p>
 	VoucherPayAmount *string `json:"VoucherPayAmount,omitnil,omitempty" name:"VoucherPayAmount"`
 
-	// 赠送金
+	// <p>赠送金</p>
 	IncentivePayAmount *string `json:"IncentivePayAmount,omitnil,omitempty" name:"IncentivePayAmount"`
 
-	// 分成金
+	// <p>分成金</p>
 	TransferPayAmount *string `json:"TransferPayAmount,omitnil,omitempty" name:"TransferPayAmount"`
 
-	// 支付者UIN：支付者的账号 ID，账号 ID 是用户在腾讯云的唯一账号标识
+	// <p>支付者UIN：支付者的账号 ID，账号 ID 是用户在腾讯云的唯一账号标识</p>
 	PayerUin *string `json:"PayerUin,omitnil,omitempty" name:"PayerUin"`
 
-	// 使用者UIN：实际使用资源的账号 ID
+	// <p>使用者UIN：实际使用资源的账号 ID</p>
 	OwnerUin *string `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
 
-	// 操作者UIN：操作者账号 ID（预付费资源下单或后付费操作开通资源账号的 ID 或者角色 ID ）
+	// <p>操作者UIN：操作者账号 ID（预付费资源下单或后付费操作开通资源账号的 ID 或者角色 ID ）</p>
 	OperateUin *string `json:"OperateUin,omitnil,omitempty" name:"OperateUin"`
 
-	// 子产品编码
+	// <p>子产品编码</p>
 	ProductCode *string `json:"ProductCode,omitnil,omitempty" name:"ProductCode"`
 
-	// 子产品名称：用户采购的具体产品细分类型，例如：云服务器 CVM-标准型 S1
+	// <p>子产品名称：用户采购的具体产品细分类型，例如：云服务器 CVM-标准型 S1</p>
 	ProductCodeName *string `json:"ProductCodeName,omitnil,omitempty" name:"ProductCodeName"`
 
-	// 地域类型
+	// <p>地域类型</p>
 	RegionType *string `json:"RegionType,omitnil,omitempty" name:"RegionType"`
 
-	// 地域类型名称
+	// <p>地域类型名称</p>
 	RegionTypeName *string `json:"RegionTypeName,omitnil,omitempty" name:"RegionTypeName"`
 
-	// 扩展字段1
+	// <p>扩展字段1</p>
 	Extend1 *string `json:"Extend1,omitnil,omitempty" name:"Extend1"`
 
-	// 扩展字段2
+	// <p>扩展字段2</p>
 	Extend2 *string `json:"Extend2,omitnil,omitempty" name:"Extend2"`
 
-	// 扩展字段3
+	// <p>扩展字段3</p>
 	Extend3 *string `json:"Extend3,omitnil,omitempty" name:"Extend3"`
 
-	// 扩展字段4
+	// <p>扩展字段4</p>
 	Extend4 *string `json:"Extend4,omitnil,omitempty" name:"Extend4"`
 
-	// 扩展字段5
+	// <p>扩展字段5</p>
 	Extend5 *string `json:"Extend5,omitnil,omitempty" name:"Extend5"`
 
-	// 实例类型
+	// <p>实例类型</p>
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
-	// 实例类型名称
+	// <p>实例类型名称</p>
 	InstanceTypeName *string `json:"InstanceTypeName,omitnil,omitempty" name:"InstanceTypeName"`
 
-	// 扣费时间：结算扣费时间
+	// <p>扣费时间：结算扣费时间</p>
 	PayTime *string `json:"PayTime,omitnil,omitempty" name:"PayTime"`
 
-	// 可用区：资源所属可用区，如广州三区
+	// <p>可用区：资源所属可用区，如广州三区</p>
 	ZoneName *string `json:"ZoneName,omitnil,omitempty" name:"ZoneName"`
 
-	// 配置描述
+	// <p>配置描述</p>
 	ComponentConfig *string `json:"ComponentConfig,omitnil,omitempty" name:"ComponentConfig"`
 
-	// 标签信息
+	// <p>标签信息</p>
 	Tags *string `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>待分摊金额</p><p>剩余待分摊的折后总金额</p>
+	LeftRealTotalCost *string `json:"LeftRealTotalCost,omitnil,omitempty" name:"LeftRealTotalCost"`
 }
 
 type ConsumptionSummaryTotal struct {
@@ -7625,100 +7632,74 @@ func (r *DescribeCostDetailResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCostExplorerSummaryRequestParams struct {
-	// 周期开始时间，格式为yyyy-mm-dd hh:ii:ss
+	// <p>周期开始时间，格式为yyyy-mm-dd hh:ii:ss</p>
 	BeginTime *string `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
 
-	// 周期结束时间，格式为yyyy-mm-dd hh:ii:ss
+	// <p>周期结束时间，格式为yyyy-mm-dd hh:ii:ss</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 账单类型：1-费用账单、2-消耗账单
+	// <p>账单类型：1-费用账单、2-消耗账单</p>
 	BillType *string `json:"BillType,omitnil,omitempty" name:"BillType"`
 
-	// 统计周期：日-day，月-month；
+	// <p>统计周期：日-day，月-month；</p>
 	PeriodType *string `json:"PeriodType,omitnil,omitempty" name:"PeriodType"`
 
-	// 分类维度（数据汇总维度），查询分类维度（请使用分类维度code入参）入参枚举值：
-	// default=仅总计
-	// feeType=费用类型
-	// billType=账单类型
-	// business=产品
-	// product=子产品
-	// region=地域
-	// zone=可用区
-	// actionType=交易类型
-	// payMode =计费模式
-	// tags=标签
-	// project =项目
-	// payerUin=支付者账号
-	// ownerUin=使用者账号
+	// <p>分类维度（数据汇总维度），查询分类维度（请使用分类维度code入参）入参枚举值：<br>default=仅总计<br>feeType=费用类型<br>billType=账单类型<br>business=产品<br>product=子产品<br>region=地域<br>zone=可用区<br>actionType=交易类型<br>payMode =计费模式<br>tags=标签<br>project =项目<br>payerUin=支付者账号<br>ownerUin=使用者账号</p>
 	Dimensions *string `json:"Dimensions,omitnil,omitempty" name:"Dimensions"`
 
-	// 费用类型：cost-折后总费用，totalCost-原价费用
+	// <p>费用类型：cost-折后总费用，totalCost-原价费用</p>
 	FeeType *string `json:"FeeType,omitnil,omitempty" name:"FeeType"`
 
-	// 数量，每页最大值为100
+	// <p>数量，每页最大值为100</p>
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 起始页，当PageNo=1表示第一页， PageNo=2表示第二页，依次类推。
+	// <p>起始页，当PageNo=1表示第一页， PageNo=2表示第二页，依次类推。</p>
 	PageNo *uint64 `json:"PageNo,omitnil,omitempty" name:"PageNo"`
 
-	// 分账标签值
+	// <p>分账标签键</p>
 	TagKeyStr *string `json:"TagKeyStr,omitnil,omitempty" name:"TagKeyStr"`
 
-	// 是否需要筛选框， 1-表示需要， 0-表示不需要，若不传默认不需要。
+	// <p>是否需要筛选框， 1-表示需要， 0-表示不需要，若不传默认不需要。</p>
 	NeedConditionValue *string `json:"NeedConditionValue,omitnil,omitempty" name:"NeedConditionValue"`
 
-	// 筛选参数
+	// <p>筛选参数</p>
 	Conditions *AnalyseConditions `json:"Conditions,omitnil,omitempty" name:"Conditions"`
 }
 
 type DescribeCostExplorerSummaryRequest struct {
 	*tchttp.BaseRequest
 	
-	// 周期开始时间，格式为yyyy-mm-dd hh:ii:ss
+	// <p>周期开始时间，格式为yyyy-mm-dd hh:ii:ss</p>
 	BeginTime *string `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
 
-	// 周期结束时间，格式为yyyy-mm-dd hh:ii:ss
+	// <p>周期结束时间，格式为yyyy-mm-dd hh:ii:ss</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 账单类型：1-费用账单、2-消耗账单
+	// <p>账单类型：1-费用账单、2-消耗账单</p>
 	BillType *string `json:"BillType,omitnil,omitempty" name:"BillType"`
 
-	// 统计周期：日-day，月-month；
+	// <p>统计周期：日-day，月-month；</p>
 	PeriodType *string `json:"PeriodType,omitnil,omitempty" name:"PeriodType"`
 
-	// 分类维度（数据汇总维度），查询分类维度（请使用分类维度code入参）入参枚举值：
-	// default=仅总计
-	// feeType=费用类型
-	// billType=账单类型
-	// business=产品
-	// product=子产品
-	// region=地域
-	// zone=可用区
-	// actionType=交易类型
-	// payMode =计费模式
-	// tags=标签
-	// project =项目
-	// payerUin=支付者账号
-	// ownerUin=使用者账号
+	// <p>分类维度（数据汇总维度），查询分类维度（请使用分类维度code入参）入参枚举值：<br>default=仅总计<br>feeType=费用类型<br>billType=账单类型<br>business=产品<br>product=子产品<br>region=地域<br>zone=可用区<br>actionType=交易类型<br>payMode =计费模式<br>tags=标签<br>project =项目<br>payerUin=支付者账号<br>ownerUin=使用者账号</p>
 	Dimensions *string `json:"Dimensions,omitnil,omitempty" name:"Dimensions"`
 
-	// 费用类型：cost-折后总费用，totalCost-原价费用
+	// <p>费用类型：cost-折后总费用，totalCost-原价费用</p>
 	FeeType *string `json:"FeeType,omitnil,omitempty" name:"FeeType"`
 
-	// 数量，每页最大值为100
+	// <p>数量，每页最大值为100</p>
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 起始页，当PageNo=1表示第一页， PageNo=2表示第二页，依次类推。
+	// <p>起始页，当PageNo=1表示第一页， PageNo=2表示第二页，依次类推。</p>
 	PageNo *uint64 `json:"PageNo,omitnil,omitempty" name:"PageNo"`
 
-	// 分账标签值
+	// <p>分账标签键</p>
 	TagKeyStr *string `json:"TagKeyStr,omitnil,omitempty" name:"TagKeyStr"`
 
-	// 是否需要筛选框， 1-表示需要， 0-表示不需要，若不传默认不需要。
+	// <p>是否需要筛选框， 1-表示需要， 0-表示不需要，若不传默认不需要。</p>
 	NeedConditionValue *string `json:"NeedConditionValue,omitnil,omitempty" name:"NeedConditionValue"`
 
-	// 筛选参数
+	// <p>筛选参数</p>
 	Conditions *AnalyseConditions `json:"Conditions,omitnil,omitempty" name:"Conditions"`
 }
 
@@ -7753,19 +7734,19 @@ func (r *DescribeCostExplorerSummaryRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCostExplorerSummaryResponseParams struct {
-	// 数据条数
+	// <p>数据条数</p>
 	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
 
-	// 表头信息
+	// <p>表头信息</p>
 	Header *AnalyseHeaderDetail `json:"Header,omitnil,omitempty" name:"Header"`
 
-	// 数据明细
+	// <p>数据明细</p>
 	Detail []*AnalyseDetail `json:"Detail,omitnil,omitempty" name:"Detail"`
 
-	// 数据总计
+	// <p>数据总计</p>
 	TotalDetail *AnalyseDetail `json:"TotalDetail,omitnil,omitempty" name:"TotalDetail"`
 
-	// 筛选框
+	// <p>筛选框</p>
 	ConditionValue *AnalyseConditionDetail `json:"ConditionValue,omitnil,omitempty" name:"ConditionValue"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9081,6 +9062,115 @@ func (r *DescribeGatherRuleDetailResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeGatherRuleDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeOrgMemberAccountBalanceData struct {
+	// <p>成员账号Uin</p>
+	MemberUin *string `json:"MemberUin,omitnil,omitempty" name:"MemberUin"`
+
+	// <p>成员名称</p>
+	MemberName *string `json:"MemberName,omitnil,omitempty" name:"MemberName"`
+
+	// <p>是否为信用账户</p>
+	IsCreditAccount *bool `json:"IsCreditAccount,omitnil,omitempty" name:"IsCreditAccount"`
+
+	// <p>当前真实可用余额</p><p>单位：分</p>
+	RealBalance *float64 `json:"RealBalance,omitnil,omitempty" name:"RealBalance"`
+
+	// <p>现金账户余额</p><p>单位：分</p>
+	CashAccountBalance *float64 `json:"CashAccountBalance,omitnil,omitempty" name:"CashAccountBalance"`
+
+	// <p>信用额度</p><p>单位：分</p><p>信用额度 = 基础信用额度 + 临时信用额度</p>
+	CreditAmount *float64 `json:"CreditAmount,omitnil,omitempty" name:"CreditAmount"`
+
+	// <p>临时信用额度</p><p>单位：分</p>
+	TempCredit *float64 `json:"TempCredit,omitnil,omitempty" name:"TempCredit"`
+
+	// <p>基础信用额度</p><p>单位：分</p>
+	BasicCreditAmount *float64 `json:"BasicCreditAmount,omitnil,omitempty" name:"BasicCreditAmount"`
+
+	// <p>欠费金额</p><p>单位：分</p>
+	OweAmount *float64 `json:"OweAmount,omitnil,omitempty" name:"OweAmount"`
+}
+
+// Predefined struct for user
+type DescribeOrgMemberAccountBalanceRequestParams struct {
+	// <p>页码</p><p>默认值：1</p><p>取值范围≥1</p>
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// <p>单页大小</p><p>取值范围：[1, 10]</p><p>默认值：10</p>
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// <p>成员uin列表</p><p>入参限制：元素必须为纯数字字符串，并且元素个数不能大于10</p><p>为空时返回当前组织内所有成员的账户余额信息，不为空时返回指定成员的账户余额信息</p>
+	MemberUins []*string `json:"MemberUins,omitnil,omitempty" name:"MemberUins"`
+}
+
+type DescribeOrgMemberAccountBalanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>页码</p><p>默认值：1</p><p>取值范围≥1</p>
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// <p>单页大小</p><p>取值范围：[1, 10]</p><p>默认值：10</p>
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// <p>成员uin列表</p><p>入参限制：元素必须为纯数字字符串，并且元素个数不能大于10</p><p>为空时返回当前组织内所有成员的账户余额信息，不为空时返回指定成员的账户余额信息</p>
+	MemberUins []*string `json:"MemberUins,omitnil,omitempty" name:"MemberUins"`
+}
+
+func (r *DescribeOrgMemberAccountBalanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOrgMemberAccountBalanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	delete(f, "MemberUins")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOrgMemberAccountBalanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeOrgMemberAccountBalanceResponseParams struct {
+	// <p>成员账户余额列表</p>
+	Data []*DescribeOrgMemberAccountBalanceData `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// <p>总记录数</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>当前页实际返回数量</p>
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// <p>当前页码</p>
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeOrgMemberAccountBalanceResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeOrgMemberAccountBalanceResponseParams `json:"Response"`
+}
+
+func (r *DescribeOrgMemberAccountBalanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOrgMemberAccountBalanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

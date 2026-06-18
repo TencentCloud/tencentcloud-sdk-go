@@ -138,6 +138,9 @@ type AgentInstance struct {
 
 	// <p>无</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>发货进度详情</p>
+	CreatingProgress *CreatingProgress `json:"CreatingProgress,omitnil,omitempty" name:"CreatingProgress"`
 }
 
 type ChatBrief struct {
@@ -409,20 +412,38 @@ func (r *CreateAgentInstanceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateChatCompletionRequestParams struct {
-	// 是否隐藏
+	// <p>输入内容</p>
+	InputContent *string `json:"InputContent,omitnil,omitempty" name:"InputContent"`
+
+	// <p>实例ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>对话窗口ID，空值表示新的会话</p>
+	ChatId *string `json:"ChatId,omitnil,omitempty" name:"ChatId"`
+
+	// <p>是否隐藏</p>
 	IsHidden *bool `json:"IsHidden,omitnil,omitempty" name:"IsHidden"`
 
-	// 是否隐藏会话
+	// <p>是否隐藏会话</p>
 	IsChatHidden *bool `json:"IsChatHidden,omitnil,omitempty" name:"IsChatHidden"`
 }
 
 type CreateChatCompletionRequest struct {
 	*tchttp.BaseRequest
 	
-	// 是否隐藏
+	// <p>输入内容</p>
+	InputContent *string `json:"InputContent,omitnil,omitempty" name:"InputContent"`
+
+	// <p>实例ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>对话窗口ID，空值表示新的会话</p>
+	ChatId *string `json:"ChatId,omitnil,omitempty" name:"ChatId"`
+
+	// <p>是否隐藏</p>
 	IsHidden *bool `json:"IsHidden,omitnil,omitempty" name:"IsHidden"`
 
-	// 是否隐藏会话
+	// <p>是否隐藏会话</p>
 	IsChatHidden *bool `json:"IsChatHidden,omitnil,omitempty" name:"IsChatHidden"`
 }
 
@@ -438,6 +459,9 @@ func (r *CreateChatCompletionRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "InputContent")
+	delete(f, "InstanceId")
+	delete(f, "ChatId")
 	delete(f, "IsHidden")
 	delete(f, "IsChatHidden")
 	if len(f) > 0 {
@@ -501,6 +525,112 @@ func (r *CreateChatCompletionResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *CreateChatCompletionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateMemoryPlusSpaceRequestParams struct {
+	// <p>Memory 实例的自定义名称，用于唯一标识和管理实例。支持 60 个字符内的中英文、数字、中划线（-）及下划线（_）。</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>emory 实例的简要描述，包括使用场景、用途或背景信息，便于日常运维识别。长度限制为 0-200 个字符。</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>以键值对（Key-Value）形式为 Memory 实例绑定的标签，用于项目管理、成本分摊、环境隔离等场景。</p>
+	ResourceTags []*ResourceTag `json:"ResourceTags,omitnil,omitempty" name:"ResourceTags"`
+
+	// <p>单次批量创建 Memory 实例的数量。取值范围为 1-50。</p>
+	GoodsNum *int64 `json:"GoodsNum,omitnil,omitempty" name:"GoodsNum"`
+}
+
+type CreateMemoryPlusSpaceRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>Memory 实例的自定义名称，用于唯一标识和管理实例。支持 60 个字符内的中英文、数字、中划线（-）及下划线（_）。</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>emory 实例的简要描述，包括使用场景、用途或背景信息，便于日常运维识别。长度限制为 0-200 个字符。</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>以键值对（Key-Value）形式为 Memory 实例绑定的标签，用于项目管理、成本分摊、环境隔离等场景。</p>
+	ResourceTags []*ResourceTag `json:"ResourceTags,omitnil,omitempty" name:"ResourceTags"`
+
+	// <p>单次批量创建 Memory 实例的数量。取值范围为 1-50。</p>
+	GoodsNum *int64 `json:"GoodsNum,omitnil,omitempty" name:"GoodsNum"`
+}
+
+func (r *CreateMemoryPlusSpaceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateMemoryPlusSpaceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "Description")
+	delete(f, "ResourceTags")
+	delete(f, "GoodsNum")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateMemoryPlusSpaceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateMemoryPlusSpaceResponseParams struct {
+	// <p>实例 ID 列表。</p>
+	SpaceIds []*string `json:"SpaceIds,omitnil,omitempty" name:"SpaceIds"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateMemoryPlusSpaceResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateMemoryPlusSpaceResponseParams `json:"Response"`
+}
+
+func (r *CreateMemoryPlusSpaceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateMemoryPlusSpaceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreatingProgress struct {
+	// <p>总步骤数</p>
+	TotalSteps *int64 `json:"TotalSteps,omitnil,omitempty" name:"TotalSteps"`
+
+	// <p>当前步骤</p>
+	CurrentStep *int64 `json:"CurrentStep,omitnil,omitempty" name:"CurrentStep"`
+
+	// <p>步骤详情</p>
+	Steps []*CreatingStepInfo `json:"Steps,omitnil,omitempty" name:"Steps"`
+}
+
+type CreatingStepInfo struct {
+	// <p>步骤名称</p>
+	StepName *string `json:"StepName,omitnil,omitempty" name:"StepName"`
+
+	// <p>步骤描述</p>
+	StepDesc *string `json:"StepDesc,omitnil,omitempty" name:"StepDesc"`
+
+	// <p>步骤状态</p>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>完成时间</p>
+	FinishTime *string `json:"FinishTime,omitnil,omitempty" name:"FinishTime"`
+
+	// <p>错误信息描述</p>
+	ErrMsg *string `json:"ErrMsg,omitnil,omitempty" name:"ErrMsg"`
 }
 
 // Predefined struct for user
@@ -1135,6 +1265,335 @@ func (r *DescribeChatsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeMemoryPlusRecordRequestParams struct {
+	// <p>查询的 Memory 实例 ID。</p>
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// <p>查询列表的起始位置（偏移量）。用于分页查询，指明从符合条件的第几条数据开始返回。</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>单次查询返回的记录数量上限（分页大小）。</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>查询的记忆类型。</p><ul><li>conversation：L0 原始对话。</li><li>memory：L1 原子记忆。</li><li>scene：L2 场景记忆。</li><li>persona：L3 个性化画像。</li><li>memory/persona：L1 原子记忆-画像型。</li><li>memory/episodic：L1 原子记忆-事件型。</li><li>memory/instruction：L1 原子记忆-指令型。</li></ul>
+	RecordType *string `json:"RecordType,omitnil,omitempty" name:"RecordType"`
+
+	// <p>指定返回记录中的特定字段。</p>
+	Output []*string `json:"Output,omitnil,omitempty" name:"Output"`
+
+	// <p>过滤条件，当前仅支持 <strong>RecordType</strong> 为 <strong>conversation</strong> 的 <strong>session_id</strong> 过滤。</p>
+	Filters []*VDBFieldMap `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>查询结果列表的排序规则。</p><ul><li>ASC：升序。</li><li>DESC：降序。</li></ul>
+	OrderDirection *string `json:"OrderDirection,omitnil,omitempty" name:"OrderDirection"`
+
+	// <p>查询时间范围的起始时间点。</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>查询时间范围的结束时间点。</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+}
+
+type DescribeMemoryPlusRecordRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>查询的 Memory 实例 ID。</p>
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// <p>查询列表的起始位置（偏移量）。用于分页查询，指明从符合条件的第几条数据开始返回。</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>单次查询返回的记录数量上限（分页大小）。</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>查询的记忆类型。</p><ul><li>conversation：L0 原始对话。</li><li>memory：L1 原子记忆。</li><li>scene：L2 场景记忆。</li><li>persona：L3 个性化画像。</li><li>memory/persona：L1 原子记忆-画像型。</li><li>memory/episodic：L1 原子记忆-事件型。</li><li>memory/instruction：L1 原子记忆-指令型。</li></ul>
+	RecordType *string `json:"RecordType,omitnil,omitempty" name:"RecordType"`
+
+	// <p>指定返回记录中的特定字段。</p>
+	Output []*string `json:"Output,omitnil,omitempty" name:"Output"`
+
+	// <p>过滤条件，当前仅支持 <strong>RecordType</strong> 为 <strong>conversation</strong> 的 <strong>session_id</strong> 过滤。</p>
+	Filters []*VDBFieldMap `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>查询结果列表的排序规则。</p><ul><li>ASC：升序。</li><li>DESC：降序。</li></ul>
+	OrderDirection *string `json:"OrderDirection,omitnil,omitempty" name:"OrderDirection"`
+
+	// <p>查询时间范围的起始时间点。</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>查询时间范围的结束时间点。</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+}
+
+func (r *DescribeMemoryPlusRecordRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMemoryPlusRecordRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SpaceId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "RecordType")
+	delete(f, "Output")
+	delete(f, "Filters")
+	delete(f, "OrderDirection")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMemoryPlusRecordRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMemoryPlusRecordResponseParams struct {
+	// <p>查询结果总数量。</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>查询的记忆数据。</p>
+	Documents []*VDBDocument `json:"Documents,omitnil,omitempty" name:"Documents"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeMemoryPlusRecordResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeMemoryPlusRecordResponseParams `json:"Response"`
+}
+
+func (r *DescribeMemoryPlusRecordResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMemoryPlusRecordResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMemoryPlusSpaceRequestParams struct {
+	// <p>指定查询的 Memory 实例 ID。</p>
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+}
+
+type DescribeMemoryPlusSpaceRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>指定查询的 Memory 实例 ID。</p>
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+}
+
+func (r *DescribeMemoryPlusSpaceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMemoryPlusSpaceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SpaceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMemoryPlusSpaceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMemoryPlusSpaceResponseParams struct {
+	// <p>Memory 实例 ID。</p>
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// <p>Memory 实例的自定义名称。</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>Memory 实例的简要描述，包括使用场景、用途或背景信息，便于日常运维识别。</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>腾讯云账号的 APPID。</p>
+	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>Memroy 实例所属地域。</p>
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// <p>Memory 实例的标签信息。</p>
+	ResourceTags []*ResourceTag `json:"ResourceTags,omitnil,omitempty" name:"ResourceTags"`
+
+	// <p>Memory 实例当前运行状态。</p><ul><li>1：运行中。</li><li>2：创建中。</li><li>3：销毁中。</li><li>4：已销毁。</li><li>5：隔离中。</li><li>6：已隔离。</li><li>7：恢复中。</li></ul>
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>Memory 实例计费模式。</p><ul><li>-1：免费体验。</li><li>0：包年包月。</li><li>1：按量计费。</li></ul>
+	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
+
+	// <p>Memory 版本信息：v1。</p>
+	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
+
+	// <p>Memory 当前已写入的记忆条数。</p>
+	MemoryUsage *int64 `json:"MemoryUsage,omitnil,omitempty" name:"MemoryUsage"`
+
+	// <p>Memory 实例记忆条数配额上限。</p>
+	MemoryLimit *int64 `json:"MemoryLimit,omitnil,omitempty" name:"MemoryLimit"`
+
+	// <p>Memory 实例当前 Credit 的使用数量。</p>
+	CreditUsage *float64 `json:"CreditUsage,omitnil,omitempty" name:"CreditUsage"`
+
+	// <p>Memory 实例 Credit 的最大使用数量。</p>
+	CreditLimit *float64 `json:"CreditLimit,omitnil,omitempty" name:"CreditLimit"`
+
+	// <p>Memory 实例的内网访问地址。</p>
+	AccessUrl *string `json:"AccessUrl,omitnil,omitempty" name:"AccessUrl"`
+
+	// <p>Memory 实例的外网访问地址。</p>
+	WanAccessUrl *string `json:"WanAccessUrl,omitnil,omitempty" name:"WanAccessUrl"`
+
+	// <p>Memory 实例的创建时间。</p>
+	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
+
+	// <p>Memory 实例的到期时间。</p>
+	ExpiredAt *string `json:"ExpiredAt,omitnil,omitempty" name:"ExpiredAt"`
+
+	// <p>Memory 实例的隔离时间。</p>
+	IsolatedAt *string `json:"IsolatedAt,omitnil,omitempty" name:"IsolatedAt"`
+
+	// <p>到期销毁时间</p>
+	DestroyAt *string `json:"DestroyAt,omitnil,omitempty" name:"DestroyAt"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeMemoryPlusSpaceResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeMemoryPlusSpaceResponseParams `json:"Response"`
+}
+
+func (r *DescribeMemoryPlusSpaceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMemoryPlusSpaceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMemoryPlusSpacesRequestParams struct {
+	// <p>查询列表的起始位置（偏移量）。用于分页查询，指明从符合条件的第几条数据开始返回。</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>单次查询返回的记录数量上限（分页大小）。</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>查询实例名称或者实例id</p>
+	SearchKeys []*string `json:"SearchKeys,omitnil,omitempty" name:"SearchKeys"`
+
+	// <p>实例状态</p><p>枚举值：</p><ul><li>1： 运行中</li><li>2： 创建中</li><li>3： 删除中</li><li>4： 已删除</li><li>5： 隔离中</li><li>6： 已隔离（进入回收站）</li><li>7： 恢复中（从回收站恢复）</li></ul>
+	Status []*int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>资源标签</p>
+	ResourceTags []*ResourceTag `json:"ResourceTags,omitnil,omitempty" name:"ResourceTags"`
+
+	// <p>排序字段</p>
+	Orderby *string `json:"Orderby,omitnil,omitempty" name:"Orderby"`
+
+	// <p>排序方向</p><p>枚举值：</p><ul><li>ASC： 升序</li><li>DESC： 降序</li></ul>
+	OrderDirection *string `json:"OrderDirection,omitnil,omitempty" name:"OrderDirection"`
+}
+
+type DescribeMemoryPlusSpacesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>查询列表的起始位置（偏移量）。用于分页查询，指明从符合条件的第几条数据开始返回。</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>单次查询返回的记录数量上限（分页大小）。</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>查询实例名称或者实例id</p>
+	SearchKeys []*string `json:"SearchKeys,omitnil,omitempty" name:"SearchKeys"`
+
+	// <p>实例状态</p><p>枚举值：</p><ul><li>1： 运行中</li><li>2： 创建中</li><li>3： 删除中</li><li>4： 已删除</li><li>5： 隔离中</li><li>6： 已隔离（进入回收站）</li><li>7： 恢复中（从回收站恢复）</li></ul>
+	Status []*int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>资源标签</p>
+	ResourceTags []*ResourceTag `json:"ResourceTags,omitnil,omitempty" name:"ResourceTags"`
+
+	// <p>排序字段</p>
+	Orderby *string `json:"Orderby,omitnil,omitempty" name:"Orderby"`
+
+	// <p>排序方向</p><p>枚举值：</p><ul><li>ASC： 升序</li><li>DESC： 降序</li></ul>
+	OrderDirection *string `json:"OrderDirection,omitnil,omitempty" name:"OrderDirection"`
+}
+
+func (r *DescribeMemoryPlusSpacesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMemoryPlusSpacesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "SearchKeys")
+	delete(f, "Status")
+	delete(f, "ResourceTags")
+	delete(f, "Orderby")
+	delete(f, "OrderDirection")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMemoryPlusSpacesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMemoryPlusSpacesResponseParams struct {
+	// <p>查询结果总数量。</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>实例列表信息</p>
+	Items []*MemoryPlusInfo `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeMemoryPlusSpacesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeMemoryPlusSpacesResponseParams `json:"Response"`
+}
+
+func (r *DescribeMemoryPlusSpacesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMemoryPlusSpacesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeReportUrlRequestParams struct {
 
 }
@@ -1185,6 +1644,117 @@ func (r *DescribeReportUrlResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeReportUrlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeServiceAccessKeyRequestParams struct {
+	// <p>指定 Memroy 实例 ID。</p>
+	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+}
+
+type DescribeServiceAccessKeyRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>指定 Memroy 实例 ID。</p>
+	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+}
+
+func (r *DescribeServiceAccessKeyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeServiceAccessKeyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ServiceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeServiceAccessKeyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeServiceAccessKeyResponseParams struct {
+	// <p>访问密钥。</p>
+	AuthKey *string `json:"AuthKey,omitnil,omitempty" name:"AuthKey"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeServiceAccessKeyResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeServiceAccessKeyResponseParams `json:"Response"`
+}
+
+func (r *DescribeServiceAccessKeyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeServiceAccessKeyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DestroyMemoryPlusSpaceRequestParams struct {
+	// <p>指定需要销毁的 Memory 实例 ID 列表。</p>
+	SpaceIds []*string `json:"SpaceIds,omitnil,omitempty" name:"SpaceIds"`
+}
+
+type DestroyMemoryPlusSpaceRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>指定需要销毁的 Memory 实例 ID 列表。</p>
+	SpaceIds []*string `json:"SpaceIds,omitnil,omitempty" name:"SpaceIds"`
+}
+
+func (r *DestroyMemoryPlusSpaceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DestroyMemoryPlusSpaceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SpaceIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DestroyMemoryPlusSpaceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DestroyMemoryPlusSpaceResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DestroyMemoryPlusSpaceResponse struct {
+	*tchttp.BaseResponse
+	Response *DestroyMemoryPlusSpaceResponseParams `json:"Response"`
+}
+
+func (r *DestroyMemoryPlusSpaceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DestroyMemoryPlusSpaceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1268,6 +1838,98 @@ func (r *IsolateAgentInstanceResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *IsolateAgentInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type IsolateMemoryPlusSpaceRequestParams struct {
+	// <p>指定需要放入回收站的 Memory 实例 ID 列表。</p>
+	SpaceIds []*string `json:"SpaceIds,omitnil,omitempty" name:"SpaceIds"`
+}
+
+type IsolateMemoryPlusSpaceRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>指定需要放入回收站的 Memory 实例 ID 列表。</p>
+	SpaceIds []*string `json:"SpaceIds,omitnil,omitempty" name:"SpaceIds"`
+}
+
+func (r *IsolateMemoryPlusSpaceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *IsolateMemoryPlusSpaceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SpaceIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "IsolateMemoryPlusSpaceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type IsolateMemoryPlusSpaceResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type IsolateMemoryPlusSpaceResponse struct {
+	*tchttp.BaseResponse
+	Response *IsolateMemoryPlusSpaceResponseParams `json:"Response"`
+}
+
+func (r *IsolateMemoryPlusSpaceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *IsolateMemoryPlusSpaceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type MemoryPlusInfo struct {
+	// <p>实例id</p>
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// <p>实例名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>实例状态</p>
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>地域</p>
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// <p>记忆条数</p>
+	MemoryUsage *int64 `json:"MemoryUsage,omitnil,omitempty" name:"MemoryUsage"`
+
+	// <p>当月积分数</p>
+	CreditUsage *float64 `json:"CreditUsage,omitnil,omitempty" name:"CreditUsage"`
+
+	// <p>资源标签</p>
+	ResourceTags []*ResourceTag `json:"ResourceTags,omitnil,omitempty" name:"ResourceTags"`
+
+	// <p>创建时间</p>
+	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
+
+	// <p>隔离时间</p>
+	IsolatedAt *string `json:"IsolatedAt,omitnil,omitempty" name:"IsolatedAt"`
+
+	// <p>到期时间</p>
+	ExpiredAt *string `json:"ExpiredAt,omitnil,omitempty" name:"ExpiredAt"`
+
+	// <p>到期销毁时间</p>
+	DestroyAt *string `json:"DestroyAt,omitnil,omitempty" name:"DestroyAt"`
 }
 
 // Predefined struct for user
@@ -1413,6 +2075,74 @@ func (r *ModifyChatTitleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyMemoryPlusSpaceRequestParams struct {
+	// <p>指定需要修改的 Memory 实例 ID。</p>
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// <p>指定修改后的实例名称。支持 60 个字符内 的中英文、数字、中划线（-）及下划线（_）。</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>指定修改后的实例描述。最多支持 200 个字符。</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+type ModifyMemoryPlusSpaceRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>指定需要修改的 Memory 实例 ID。</p>
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// <p>指定修改后的实例名称。支持 60 个字符内 的中英文、数字、中划线（-）及下划线（_）。</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>指定修改后的实例描述。最多支持 200 个字符。</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+func (r *ModifyMemoryPlusSpaceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyMemoryPlusSpaceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SpaceId")
+	delete(f, "Name")
+	delete(f, "Description")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyMemoryPlusSpaceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyMemoryPlusSpaceResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyMemoryPlusSpaceResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyMemoryPlusSpaceResponseParams `json:"Response"`
+}
+
+func (r *ModifyMemoryPlusSpaceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyMemoryPlusSpaceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Parameter struct {
 	// 参数键
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1543,6 +2273,60 @@ func (r *RecoverAgentInstanceResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type RecoverMemoryPlusSpaceRequestParams struct {
+	// <p>指定需要恢复的 Memory 实例 ID 列表。</p>
+	SpaceIds []*string `json:"SpaceIds,omitnil,omitempty" name:"SpaceIds"`
+}
+
+type RecoverMemoryPlusSpaceRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>指定需要恢复的 Memory 实例 ID 列表。</p>
+	SpaceIds []*string `json:"SpaceIds,omitnil,omitempty" name:"SpaceIds"`
+}
+
+func (r *RecoverMemoryPlusSpaceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RecoverMemoryPlusSpaceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SpaceIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RecoverMemoryPlusSpaceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RecoverMemoryPlusSpaceResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RecoverMemoryPlusSpaceResponse struct {
+	*tchttp.BaseResponse
+	Response *RecoverMemoryPlusSpaceResponseParams `json:"Response"`
+}
+
+func (r *RecoverMemoryPlusSpaceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RecoverMemoryPlusSpaceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type RemoveChatRequestParams struct {
 	// 智能体ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -1601,6 +2385,14 @@ func (r *RemoveChatResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *RemoveChatResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type ResourceTag struct {
+	// 标签键
+	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
+
+	// 标签值
+	TagValue *string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
 }
 
 type SqlAgentParameter struct {
@@ -1779,4 +2571,26 @@ type UploadDelta struct {
 
 	// 步骤详情
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+}
+
+type VDBDocument struct {
+	// <p>vdb document数据id</p>
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>vdb document数据标量字段</p>
+	Fields []*VDBFieldMap `json:"Fields,omitnil,omitempty" name:"Fields"`
+}
+
+type VDBFieldMap struct {
+	// <p>vdb document字段名</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>vdb document字段值</p>
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+
+	// <p>vdb document字段类型</p>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>字段描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }

@@ -1061,46 +1061,151 @@ func (r *CreateDataFlowResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type CreateLifecycleDataTaskRequestParams struct {
-	// 文件系统唯一 ID
+type CreateDataRetrievalRequestParams struct {
+	// <p>文件系统实例 ID，通过查询文件系统 DescribeCfsFileSystems 获取 示例值：cfs-xxxxxx</p>
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
-	// 生命周期任务类型；archive：沉降；restore：预热；release：数据释放；metaload：元数据加载
+	// <p>数据检索名称 示例值：DataDive</p>
+	DataRetrievalName *string `json:"DataRetrievalName,omitnil,omitempty" name:"DataRetrievalName"`
+
+	// <p>聚合检索条件 示例值：from entries|where size &gt;4096</p>
+	CompoundCondition *string `json:"CompoundCondition,omitnil,omitempty" name:"CompoundCondition"`
+
+	// <p>列表检索条件</p>
+	QueryCondition *string `json:"QueryCondition,omitnil,omitempty" name:"QueryCondition"`
+
+	// <p>数据检索按月重复，每月1-31号，选择一天，每月将在这一天自动创建快照；例如1 代表1号；与DayOfWeek二选一 示例值：1</p>
+	DayOfMonth *string `json:"DayOfMonth,omitnil,omitempty" name:"DayOfMonth"`
+
+	// <p>数据检索重复日期，星期一到星期日。 1代表星期一、7代表星期天，与DayOfMonth，二选一 示例值：2,3</p>
+	DayOfWeek *string `json:"DayOfWeek,omitnil,omitempty" name:"DayOfWeek"`
+
+	// <p>重复时间点,0-23，小时 示例值：1,3,5</p>
+	Hour *string `json:"Hour,omitnil,omitempty" name:"Hour"`
+}
+
+type CreateDataRetrievalRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>文件系统实例 ID，通过查询文件系统 DescribeCfsFileSystems 获取 示例值：cfs-xxxxxx</p>
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// <p>数据检索名称 示例值：DataDive</p>
+	DataRetrievalName *string `json:"DataRetrievalName,omitnil,omitempty" name:"DataRetrievalName"`
+
+	// <p>聚合检索条件 示例值：from entries|where size &gt;4096</p>
+	CompoundCondition *string `json:"CompoundCondition,omitnil,omitempty" name:"CompoundCondition"`
+
+	// <p>列表检索条件</p>
+	QueryCondition *string `json:"QueryCondition,omitnil,omitempty" name:"QueryCondition"`
+
+	// <p>数据检索按月重复，每月1-31号，选择一天，每月将在这一天自动创建快照；例如1 代表1号；与DayOfWeek二选一 示例值：1</p>
+	DayOfMonth *string `json:"DayOfMonth,omitnil,omitempty" name:"DayOfMonth"`
+
+	// <p>数据检索重复日期，星期一到星期日。 1代表星期一、7代表星期天，与DayOfMonth，二选一 示例值：2,3</p>
+	DayOfWeek *string `json:"DayOfWeek,omitnil,omitempty" name:"DayOfWeek"`
+
+	// <p>重复时间点,0-23，小时 示例值：1,3,5</p>
+	Hour *string `json:"Hour,omitnil,omitempty" name:"Hour"`
+}
+
+func (r *CreateDataRetrievalRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDataRetrievalRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileSystemId")
+	delete(f, "DataRetrievalName")
+	delete(f, "CompoundCondition")
+	delete(f, "QueryCondition")
+	delete(f, "DayOfMonth")
+	delete(f, "DayOfWeek")
+	delete(f, "Hour")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDataRetrievalRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateDataRetrievalResponseParams struct {
+	// <p>数据检索ID示例值：dataretrieval-123456</p>
+	DataRetrievalId *string `json:"DataRetrievalId,omitnil,omitempty" name:"DataRetrievalId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateDataRetrievalResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateDataRetrievalResponseParams `json:"Response"`
+}
+
+func (r *CreateDataRetrievalResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDataRetrievalResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateLifecycleDataTaskRequestParams struct {
+	// <p>文件系统唯一 ID</p>
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// <p>生命周期任务类型；archive：沉降；restore：预热；release：数据释放；metaload：元数据加载</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 需要沉降的路径或文件，仅支持传入1个路径，不允许为空。
-	TaskPath *string `json:"TaskPath,omitnil,omitempty" name:"TaskPath"`
-
-	// 任务名称
+	// <p>任务名称</p>
 	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
 
-	// 数据流动 ID ，该接口可以通过 DescribeDataFlow 查询
+	// <p>需要沉降的路径或文件，仅支持传入1个路径，不允许为空。</p>
+	TaskPath *string `json:"TaskPath,omitnil,omitempty" name:"TaskPath"`
+
+	// <p>数据流动 ID ，该接口可以通过 DescribeDataFlow 查询</p>
 	DataFlowId *string `json:"DataFlowId,omitnil,omitempty" name:"DataFlowId"`
 
-	// 	 当CFSTurbo内的文件和外置存储存在同名情况时，是否覆盖。  ture：覆盖  false：不覆盖（同时也不会释放热存数据）  为空时，默认为false
+	// <p>当CFSTurbo内的文件和外置存储存在同名情况时，是否覆盖。  ture：覆盖  false：不覆盖（同时也不会释放热存数据）  为空时，默认为false</p>
 	IsOverwrite *bool `json:"IsOverwrite,omitnil,omitempty" name:"IsOverwrite"`
+
+	// <p>【新增】数据清单文件路径，清单文件内每行一条待处理文件的完整路径。与 TaskPath 二选一。路径必须以 /cfs 开头，且必须为 CFS 文件系统内已存在的文件。示例值：/cfs/lists/archive_list.txt</p>
+	ListPath *string `json:"ListPath,omitnil,omitempty" name:"ListPath"`
 }
 
 type CreateLifecycleDataTaskRequest struct {
 	*tchttp.BaseRequest
 	
-	// 文件系统唯一 ID
+	// <p>文件系统唯一 ID</p>
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
-	// 生命周期任务类型；archive：沉降；restore：预热；release：数据释放；metaload：元数据加载
+	// <p>生命周期任务类型；archive：沉降；restore：预热；release：数据释放；metaload：元数据加载</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 需要沉降的路径或文件，仅支持传入1个路径，不允许为空。
-	TaskPath *string `json:"TaskPath,omitnil,omitempty" name:"TaskPath"`
-
-	// 任务名称
+	// <p>任务名称</p>
 	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
 
-	// 数据流动 ID ，该接口可以通过 DescribeDataFlow 查询
+	// <p>需要沉降的路径或文件，仅支持传入1个路径，不允许为空。</p>
+	TaskPath *string `json:"TaskPath,omitnil,omitempty" name:"TaskPath"`
+
+	// <p>数据流动 ID ，该接口可以通过 DescribeDataFlow 查询</p>
 	DataFlowId *string `json:"DataFlowId,omitnil,omitempty" name:"DataFlowId"`
 
-	// 	 当CFSTurbo内的文件和外置存储存在同名情况时，是否覆盖。  ture：覆盖  false：不覆盖（同时也不会释放热存数据）  为空时，默认为false
+	// <p>当CFSTurbo内的文件和外置存储存在同名情况时，是否覆盖。  ture：覆盖  false：不覆盖（同时也不会释放热存数据）  为空时，默认为false</p>
 	IsOverwrite *bool `json:"IsOverwrite,omitnil,omitempty" name:"IsOverwrite"`
+
+	// <p>【新增】数据清单文件路径，清单文件内每行一条待处理文件的完整路径。与 TaskPath 二选一。路径必须以 /cfs 开头，且必须为 CFS 文件系统内已存在的文件。示例值：/cfs/lists/archive_list.txt</p>
+	ListPath *string `json:"ListPath,omitnil,omitempty" name:"ListPath"`
 }
 
 func (r *CreateLifecycleDataTaskRequest) ToJsonString() string {
@@ -1117,10 +1222,11 @@ func (r *CreateLifecycleDataTaskRequest) FromJsonString(s string) error {
 	}
 	delete(f, "FileSystemId")
 	delete(f, "Type")
-	delete(f, "TaskPath")
 	delete(f, "TaskName")
+	delete(f, "TaskPath")
 	delete(f, "DataFlowId")
 	delete(f, "IsOverwrite")
+	delete(f, "ListPath")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLifecycleDataTaskRequest has unknown keys!", "")
 	}
@@ -1129,7 +1235,7 @@ func (r *CreateLifecycleDataTaskRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateLifecycleDataTaskResponseParams struct {
-	// 任务 ID
+	// <p>任务 ID</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1496,6 +1602,76 @@ type DataFlowInfo struct {
 	AutoRefreshTime *string `json:"AutoRefreshTime,omitnil,omitempty" name:"AutoRefreshTime"`
 }
 
+type DataRetrievalInfo struct {
+	// <p>数据检索策略名称</p>
+	DataRetrievalName *string `json:"DataRetrievalName,omitnil,omitempty" name:"DataRetrievalName"`
+
+	// <p>迁移任务id<br>示例值：migrate-001</p>
+	DataRetrievalId *string `json:"DataRetrievalId,omitnil,omitempty" name:"DataRetrievalId"`
+
+	// <p>文件系统实例 ID，通过查询文件系统 DescribeCfsFileSystems </p><p>获取示例值：cfs-xxxxxx</p>
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// <p>聚合检索条件</p>
+	CompoundCondition *string `json:"CompoundCondition,omitnil,omitempty" name:"CompoundCondition"`
+
+	// <p>创建时间<br>示例值：2023-01-09 15:03:57</p>
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>数据检索重复日期，星期一到星期日。 1代表星期一、7代表星期天，与DayOfMonth，二选一</p>
+	DayOfWeek *string `json:"DayOfWeek,omitnil,omitempty" name:"DayOfWeek"`
+
+	// <p>数据检索按月重复，每月1-31号，选择一天，每月将在这一天自动创建快照；例如1 代表1号；与DayOfWeek二选一</p>
+	DayOfMonth *string `json:"DayOfMonth,omitnil,omitempty" name:"DayOfMonth"`
+
+	// <p>重复时间点,0-23，小时</p>
+	Hour *string `json:"Hour,omitnil,omitempty" name:"Hour"`
+
+	// <p>列表检索条件</p>
+	QueryCondition *string `json:"QueryCondition,omitnil,omitempty" name:"QueryCondition"`
+
+	// <p>修改时间</p><p>参数格式：2023-01-10 15:03:57</p>
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+}
+
+type DataRetrievalTaskInfo struct {
+	// <p>数据检索任务ID<br>示例值：dataretrievaltask-123456</p>
+	DataRetrievalTaskID *string `json:"DataRetrievalTaskID,omitnil,omitempty" name:"DataRetrievalTaskID"`
+
+	// <p>迁移任务id<br>示例值：migrate-001</p>
+	DataRetrievalId *string `json:"DataRetrievalId,omitnil,omitempty" name:"DataRetrievalId"`
+
+	// <p>文件系统实例 ID，通过查询文件系统 DescribeCfsFileSystems 获取示例值：cfs-xxxxxx</p>
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// <p>聚合检索条件<br>示例值：from entries|where size &gt;4096</p>
+	CompoundCondition *string `json:"CompoundCondition,omitnil,omitempty" name:"CompoundCondition"`
+
+	// <p>列表检索条件</p>
+	QueryCondition *string `json:"QueryCondition,omitnil,omitempty" name:"QueryCondition"`
+
+	// <p>创建时间<br>示例值：2023-01-09 15:03:57</p>
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>任务状态<br>已完成：completed<br>排队中：waiting<br>进行中：running<br>失败：failed</p>
+	State *string `json:"State,omitnil,omitempty" name:"State"`
+
+	// <p>文件数量<br>示例：1000</p>
+	FileNum *uint64 `json:"FileNum,omitnil,omitempty" name:"FileNum"`
+
+	// <p>目录数量<br>示例：1000</p>
+	DirNum *uint64 `json:"DirNum,omitnil,omitempty" name:"DirNum"`
+
+	// <p>总文件大小，单位KiB<br>示例：1024</p>
+	Size *uint64 `json:"Size,omitnil,omitempty" name:"Size"`
+
+	// <p>文件清单下载地址<br>示例值：https://xx-12345.cos.ap-shanghai.myqcloud.com/list.csv</p>
+	FileList *string `json:"FileList,omitnil,omitempty" name:"FileList"`
+
+	// <p>检索错误提示。默认：Null，当Status为failed时，将提示信息展示给用户。</p>
+	ErrorInfo *string `json:"ErrorInfo,omitnil,omitempty" name:"ErrorInfo"`
+}
+
 // Predefined struct for user
 type DeleteAutoSnapshotPolicyRequestParams struct {
 	// 快照策略ID，查询快照策略接口获取,[DescribeAutoSnapshotPolicies](https://cloud.tencent.com/document/api/582/80208)
@@ -1858,6 +2034,60 @@ func (r *DeleteDataFlowResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteDataFlowResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteDataRetrievalRequestParams struct {
+	// <p>数据检索 ID。可通过 DescribeDataRetrieval 接口获取。</p>
+	DataRetrievalId *string `json:"DataRetrievalId,omitnil,omitempty" name:"DataRetrievalId"`
+}
+
+type DeleteDataRetrievalRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>数据检索 ID。可通过 DescribeDataRetrieval 接口获取。</p>
+	DataRetrievalId *string `json:"DataRetrievalId,omitnil,omitempty" name:"DataRetrievalId"`
+}
+
+func (r *DeleteDataRetrievalRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDataRetrievalRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DataRetrievalId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteDataRetrievalRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteDataRetrievalResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteDataRetrievalResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteDataRetrievalResponseParams `json:"Response"`
+}
+
+func (r *DeleteDataRetrievalResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDataRetrievalResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2863,6 +3093,175 @@ func (r *DescribeDataFlowResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeDataRetrievalRequestParams struct {
+	// <p>分页偏移量，默认值为 0。</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>分页单页限制数目，默认值为 20，最大值为 100。</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>过滤条件列表。支持的过滤字段：FileSystemId（文件系统 ID）、DataRetrievalId（数据检索 ID）、Name（数据检索名称，支持模糊搜索）。最多支持 10 个。</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type DescribeDataRetrievalRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>分页偏移量，默认值为 0。</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>分页单页限制数目，默认值为 20，最大值为 100。</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>过滤条件列表。支持的过滤字段：FileSystemId（文件系统 ID）、DataRetrievalId（数据检索 ID）、Name（数据检索名称，支持模糊搜索）。最多支持 10 个。</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *DescribeDataRetrievalRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataRetrievalRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDataRetrievalRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDataRetrievalResponseParams struct {
+	// <p>数据检索总数。</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>数据检索策略的详细信息</p>
+	DataRetrievals []*DataRetrievalInfo `json:"DataRetrievals,omitnil,omitempty" name:"DataRetrievals"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDataRetrievalResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDataRetrievalResponseParams `json:"Response"`
+}
+
+func (r *DescribeDataRetrievalResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataRetrievalResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDataRetrievalTaskRequestParams struct {
+	// <p>开始时间。须早于 EndTime ，仅支持查询最近3个月内的任务数据</p><p>参数格式：2024-11-19 10:15:37</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>结束时间。须晚于 StartTime ，仅支持查询最近3个月内的任务数据。</p><p>参数格式：2024-10-  19 10:15:37</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>数据检索ID示例值：dataretrieval-123456</p>
+	DataRetrievalId *string `json:"DataRetrievalId,omitnil,omitempty" name:"DataRetrievalId"`
+
+	// <p>分页的偏移量，默认值为0。 示例值：0</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>分页单页限制数目，默认值为20，最大值100。 示例值：20</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>DataRetrievalTaskID按照【数据检索任务id】进行过滤。类型：String</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type DescribeDataRetrievalTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>开始时间。须早于 EndTime ，仅支持查询最近3个月内的任务数据</p><p>参数格式：2024-11-19 10:15:37</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>结束时间。须晚于 StartTime ，仅支持查询最近3个月内的任务数据。</p><p>参数格式：2024-10-  19 10:15:37</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>数据检索ID示例值：dataretrieval-123456</p>
+	DataRetrievalId *string `json:"DataRetrievalId,omitnil,omitempty" name:"DataRetrievalId"`
+
+	// <p>分页的偏移量，默认值为0。 示例值：0</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>分页单页限制数目，默认值为20，最大值100。 示例值：20</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>DataRetrievalTaskID按照【数据检索任务id】进行过滤。类型：String</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *DescribeDataRetrievalTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataRetrievalTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "DataRetrievalId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDataRetrievalTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDataRetrievalTaskResponseParams struct {
+	// <p>数据检索任务总量 示例值：0</p>
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>检索任务详情</p>
+	DataRetrievalTasks []*DataRetrievalTaskInfo `json:"DataRetrievalTasks,omitnil,omitempty" name:"DataRetrievalTasks"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDataRetrievalTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDataRetrievalTaskResponseParams `json:"Response"`
+}
+
+func (r *DescribeDataRetrievalTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataRetrievalTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeLifecycleDataTaskRequestParams struct {
 	// 开始时间。须早于 EndTime ，仅支持查询最近3个月内的任务数据。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
@@ -3596,74 +3995,80 @@ type Filter struct {
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
+type InputPermissionGroupRules struct {
+	// 允许访问的客户端IP
+	AuthClientIp *string `json:"AuthClientIp,omitnil,omitempty" name:"AuthClientIp"`
+
+	// 读写权限, ro为只读，rw为读写
+	RWPermission *string `json:"RWPermission,omitnil,omitempty" name:"RWPermission"`
+
+	// 用户权限。其中all_squash为所有访问用户都会被映射为匿名用户或用户组；no_all_squash为访问用户会先与本机用户匹配，匹配失败后再映射为匿名用户或用户组；root_squash为将来访的root用户映射为匿名用户或用户组；no_root_squash为来访的root用户保持root帐号权限。
+	UserPermission *string `json:"UserPermission,omitnil,omitempty" name:"UserPermission"`
+
+	// 规则优先级，1-100。 其中 1 为最高，100为最低
+	Priority *uint64 `json:"Priority,omitnil,omitempty" name:"Priority"`
+}
+
 type LifecycleDataTaskInfo struct {
-	// 任务id
+	// <p>任务id</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 任务状态.
-	// init：未执行
-	// running：执行中，finished：已完成
-	// ,failed：失败
-	// ,stopping：停止中,stopped：已停止
+	// <p>任务状态.<br>init：未执行<br>running：执行中，finished：已完成<br>,failed：失败<br>,stopping：停止中,stopped：已停止</p>
 	TaskStatus *string `json:"TaskStatus,omitnil,omitempty" name:"TaskStatus"`
 
-	// 任务创建时间
+	// <p>任务创建时间</p>
 	CreationTime *string `json:"CreationTime,omitnil,omitempty" name:"CreationTime"`
 
-	// 任务结束时间
+	// <p>任务结束时间</p>
 	FinishTime *string `json:"FinishTime,omitnil,omitempty" name:"FinishTime"`
 
-	// 文件总数
+	// <p>文件总数</p>
 	FileTotalCount *uint64 `json:"FileTotalCount,omitnil,omitempty" name:"FileTotalCount"`
 
-	// 处理成功文件数量
+	// <p>处理成功文件数量</p>
 	FileSuccessedCount *uint64 `json:"FileSuccessedCount,omitnil,omitempty" name:"FileSuccessedCount"`
 
-	// 当前已经失败的文件数
+	// <p>当前已经失败的文件数</p>
 	FileFailedCount *uint64 `json:"FileFailedCount,omitnil,omitempty" name:"FileFailedCount"`
 
-	// 文件容量，单位Byte
-	// 
+	// <p>文件容量，单位Byte</p>
 	FileTotalSize *uint64 `json:"FileTotalSize,omitnil,omitempty" name:"FileTotalSize"`
 
-	// 已处理完成的文件容量，单位Byte
-	// 
+	// <p>已处理完成的文件容量，单位Byte</p>
 	FileSuccessedSize *uint64 `json:"FileSuccessedSize,omitnil,omitempty" name:"FileSuccessedSize"`
 
-	// 已处理失败文件容量，单位Byte
+	// <p>已处理失败文件容量，单位Byte</p>
 	FileFailedSize *uint64 `json:"FileFailedSize,omitnil,omitempty" name:"FileFailedSize"`
 
-	// 总文件列表
+	// <p>总文件列表</p>
 	FileTotalList *string `json:"FileTotalList,omitnil,omitempty" name:"FileTotalList"`
 
-	// 成功的文件列表
+	// <p>成功的文件列表</p>
 	FileSuccessedList *string `json:"FileSuccessedList,omitnil,omitempty" name:"FileSuccessedList"`
 
-	// 失败文件的列表
+	// <p>失败文件的列表</p>
 	FileFailedList *string `json:"FileFailedList,omitnil,omitempty" name:"FileFailedList"`
 
-	// FileSystemId
+	// <p>FileSystemId</p>
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
-	// 任务名称
+	// <p>任务名称</p>
 	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
 
-	// 任务路径
+	// <p>任务路径</p>
 	TaskPath *string `json:"TaskPath,omitnil,omitempty" name:"TaskPath"`
 
-	// 任务类型,archive:表示沉降任务，restore：表示拉取任务
+	// <p>任务类型,archive:表示沉降任务，restore：表示拉取任务</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 数据流动Id
+	// <p>数据流动Id</p>
 	DataFlowId *string `json:"DataFlowId,omitnil,omitempty" name:"DataFlowId"`
 
-	// 当CFSTurbo内的文件和外置存储存在同名情况时，是否覆盖。
-	// 
-	// ture：覆盖
-	// 
-	// false：不覆盖（同时也不会释放热存数据）
-	// 为空时，默认为false
+	// <p>当CFSTurbo内的文件和外置存储存在同名情况时，是否覆盖。</p><p>ture：覆盖</p><p>false：不覆盖（同时也不会释放热存数据）<br>为空时，默认为false</p>
 	IsOverwrite *bool `json:"IsOverwrite,omitnil,omitempty" name:"IsOverwrite"`
+
+	// <p>【新增】数据清单文件路径，清单文件内每行一条待处理文件的完整路径。与 TaskPath 二选一。路径必须以 /cfs 开头，且必须为 CFS 文件系统内已存在的文件。示例值：/cfs/lists/archive_list.txt</p>
+	ListPath *string `json:"ListPath,omitnil,omitempty" name:"ListPath"`
 }
 
 type LifecyclePolicy struct {
@@ -3928,6 +4333,102 @@ func (r *ModifyDataFlowResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyDataRetrievalRequestParams struct {
+	// <p>数据检索ID示例值：dataretrieval-123456</p>
+	DataRetrievalId *string `json:"DataRetrievalId,omitnil,omitempty" name:"DataRetrievalId"`
+
+	// <p>数据检索名称示例值：DataDive</p>
+	DataRetrievalName *string `json:"DataRetrievalName,omitnil,omitempty" name:"DataRetrievalName"`
+
+	// <p>聚合检索条件 示例值：from entries|where size &gt;4096</p>
+	CompoundCondition *string `json:"CompoundCondition,omitnil,omitempty" name:"CompoundCondition"`
+
+	// <p>列表检索条件</p>
+	QueryCondition *string `json:"QueryCondition,omitnil,omitempty" name:"QueryCondition"`
+
+	// <p>数据检索按月重复，每月1-31号，选择一天，每月将在这一天自动创建快照；例如1 代表1号；与DayOfWeek二选一</p>
+	DayOfMonth *string `json:"DayOfMonth,omitnil,omitempty" name:"DayOfMonth"`
+
+	// <p>数据检索重复日期，星期一到星期日。 1代表星期一、7代表星期天，与DayOfMonth，二选一</p>
+	DayOfWeek *string `json:"DayOfWeek,omitnil,omitempty" name:"DayOfWeek"`
+
+	// <p>重复时间点,0-23，小时</p>
+	Hour *string `json:"Hour,omitnil,omitempty" name:"Hour"`
+}
+
+type ModifyDataRetrievalRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>数据检索ID示例值：dataretrieval-123456</p>
+	DataRetrievalId *string `json:"DataRetrievalId,omitnil,omitempty" name:"DataRetrievalId"`
+
+	// <p>数据检索名称示例值：DataDive</p>
+	DataRetrievalName *string `json:"DataRetrievalName,omitnil,omitempty" name:"DataRetrievalName"`
+
+	// <p>聚合检索条件 示例值：from entries|where size &gt;4096</p>
+	CompoundCondition *string `json:"CompoundCondition,omitnil,omitempty" name:"CompoundCondition"`
+
+	// <p>列表检索条件</p>
+	QueryCondition *string `json:"QueryCondition,omitnil,omitempty" name:"QueryCondition"`
+
+	// <p>数据检索按月重复，每月1-31号，选择一天，每月将在这一天自动创建快照；例如1 代表1号；与DayOfWeek二选一</p>
+	DayOfMonth *string `json:"DayOfMonth,omitnil,omitempty" name:"DayOfMonth"`
+
+	// <p>数据检索重复日期，星期一到星期日。 1代表星期一、7代表星期天，与DayOfMonth，二选一</p>
+	DayOfWeek *string `json:"DayOfWeek,omitnil,omitempty" name:"DayOfWeek"`
+
+	// <p>重复时间点,0-23，小时</p>
+	Hour *string `json:"Hour,omitnil,omitempty" name:"Hour"`
+}
+
+func (r *ModifyDataRetrievalRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDataRetrievalRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DataRetrievalId")
+	delete(f, "DataRetrievalName")
+	delete(f, "CompoundCondition")
+	delete(f, "QueryCondition")
+	delete(f, "DayOfMonth")
+	delete(f, "DayOfWeek")
+	delete(f, "Hour")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDataRetrievalRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDataRetrievalResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyDataRetrievalResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyDataRetrievalResponseParams `json:"Response"`
+}
+
+func (r *ModifyDataRetrievalResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDataRetrievalResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyFileSystemAutoScaleUpRuleRequestParams struct {
 	// 文件系统 ID，通过查询文件系统列表获取；[DescribeCfsFileSystems](https://cloud.tencent.com/document/product/582/38170)
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
@@ -4125,6 +4626,70 @@ type MountInfo struct {
 	CidrBlock *string `json:"CidrBlock,omitnil,omitempty" name:"CidrBlock"`
 }
 
+// Predefined struct for user
+type OverrideCfsRulesRequestParams struct {
+	// 权限组 ID
+	PermissionGroupId *string `json:"PermissionGroupId,omitnil,omitempty" name:"PermissionGroupId"`
+
+	// 权限组规则列表
+	RuleList []*InputPermissionGroupRules `json:"RuleList,omitnil,omitempty" name:"RuleList"`
+}
+
+type OverrideCfsRulesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 权限组 ID
+	PermissionGroupId *string `json:"PermissionGroupId,omitnil,omitempty" name:"PermissionGroupId"`
+
+	// 权限组规则列表
+	RuleList []*InputPermissionGroupRules `json:"RuleList,omitnil,omitempty" name:"RuleList"`
+}
+
+func (r *OverrideCfsRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *OverrideCfsRulesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PermissionGroupId")
+	delete(f, "RuleList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "OverrideCfsRulesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type OverrideCfsRulesResponseParams struct {
+	// 权限组规则列表
+	RuleList []*PGroupRuleInfo `json:"RuleList,omitnil,omitempty" name:"RuleList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type OverrideCfsRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *OverrideCfsRulesResponseParams `json:"Response"`
+}
+
+func (r *OverrideCfsRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *OverrideCfsRulesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type PGroup struct {
 	// 权限组ID
 	PGroupId *string `json:"PGroupId,omitnil,omitempty" name:"PGroupId"`
@@ -4179,6 +4744,60 @@ type PathInfo struct {
 
 	// 数据流动Id
 	DataFlowId *string `json:"DataFlowId,omitnil,omitempty" name:"DataFlowId"`
+}
+
+// Predefined struct for user
+type RunDataRetrievalTaskRequestParams struct {
+
+}
+
+type RunDataRetrievalTaskRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *RunDataRetrievalTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RunDataRetrievalTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RunDataRetrievalTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RunDataRetrievalTaskResponseParams struct {
+	// <p>数据检索任务 ID。</p>
+	DataRetrievalTaskId *string `json:"DataRetrievalTaskId,omitnil,omitempty" name:"DataRetrievalTaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RunDataRetrievalTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *RunDataRetrievalTaskResponseParams `json:"Response"`
+}
+
+func (r *RunDataRetrievalTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RunDataRetrievalTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

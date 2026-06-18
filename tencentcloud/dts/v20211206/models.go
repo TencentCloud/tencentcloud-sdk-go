@@ -1053,56 +1053,56 @@ func (r *CreateMigrateCheckJobResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateMigrationServiceRequestParams struct {
-	// 源实例数据库类型，如mysql,redis,percona,mongodb,postgresql,sqlserver,mariadb,cynosdbmysql(表示TDSQL-C MySQL数据库)
+	// <p>源实例数据库类型，如mysql,redis,percona,mongodb,postgresql,sqlserver,mariadb,cynosdbmysql(表示TDSQL-C MySQL数据库)tdsqlmysql,keewidb,tdstore</p><p>枚举值：</p><ul><li>mysql： MySQL数据库</li></ul>
 	SrcDatabaseType *string `json:"SrcDatabaseType,omitnil,omitempty" name:"SrcDatabaseType"`
 
-	// 目标实例数据库类型，如mysql,redis,percona,mongodb,postgresql,sqlserver,mariadb,cynosdbmysql(表示TDSQL-C MySQL数据库)
+	// <p>目标实例数据库类型，如mysql,redis,percona,mongodb,postgresql,sqlserver,mariadb,cynosdbmysql(表示TDSQL-C MySQL数据库)tdsqlmysql,keewidb,tdstore,tendis</p><p>枚举值：</p><ul><li>mysql： MySQL数据库</li></ul>
 	DstDatabaseType *string `json:"DstDatabaseType,omitnil,omitempty" name:"DstDatabaseType"`
 
-	// 源实例地域，如：ap-guangzhou
+	// <p>源实例地域，如：ap-guangzhou</p>
 	SrcRegion *string `json:"SrcRegion,omitnil,omitempty" name:"SrcRegion"`
 
-	// 目标实例地域，如：ap-guangzhou。注意，目标地域必须和API请求地域保持一致。
+	// <p>目标实例地域，如：ap-guangzhou。注意，目标地域必须和API请求地域保持一致。</p>
 	DstRegion *string `json:"DstRegion,omitnil,omitempty" name:"DstRegion"`
 
-	// 实例规格，包括：small、medium、large、xlarge、2xlarge。当前未计费链路仅支持medium字段值。不同规格类型参考[计费概述](https://cloud.tencent.com/document/product/571/18736)
+	// <p>实例规格，包括：small、medium、large、xlarge、2xlarge。当前未计费链路仅支持medium字段值。不同规格类型参考<a href="https://cloud.tencent.com/document/product/571/18736">计费概述</a></p>
 	InstanceClass *string `json:"InstanceClass,omitnil,omitempty" name:"InstanceClass"`
 
-	// 购买数量，范围为[1,15]，默认为1
+	// <p>购买数量，范围为[1,15]，默认为1</p>
 	Count *uint64 `json:"Count,omitnil,omitempty" name:"Count"`
 
-	// 迁移服务名称，最大长度128
+	// <p>迁移服务名称，最大长度128</p>
 	JobName *string `json:"JobName,omitnil,omitempty" name:"JobName"`
 
-	// 标签信息
+	// <p>标签信息</p>
 	Tags []*TagItem `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type CreateMigrationServiceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 源实例数据库类型，如mysql,redis,percona,mongodb,postgresql,sqlserver,mariadb,cynosdbmysql(表示TDSQL-C MySQL数据库)
+	// <p>源实例数据库类型，如mysql,redis,percona,mongodb,postgresql,sqlserver,mariadb,cynosdbmysql(表示TDSQL-C MySQL数据库)tdsqlmysql,keewidb,tdstore</p><p>枚举值：</p><ul><li>mysql： MySQL数据库</li></ul>
 	SrcDatabaseType *string `json:"SrcDatabaseType,omitnil,omitempty" name:"SrcDatabaseType"`
 
-	// 目标实例数据库类型，如mysql,redis,percona,mongodb,postgresql,sqlserver,mariadb,cynosdbmysql(表示TDSQL-C MySQL数据库)
+	// <p>目标实例数据库类型，如mysql,redis,percona,mongodb,postgresql,sqlserver,mariadb,cynosdbmysql(表示TDSQL-C MySQL数据库)tdsqlmysql,keewidb,tdstore,tendis</p><p>枚举值：</p><ul><li>mysql： MySQL数据库</li></ul>
 	DstDatabaseType *string `json:"DstDatabaseType,omitnil,omitempty" name:"DstDatabaseType"`
 
-	// 源实例地域，如：ap-guangzhou
+	// <p>源实例地域，如：ap-guangzhou</p>
 	SrcRegion *string `json:"SrcRegion,omitnil,omitempty" name:"SrcRegion"`
 
-	// 目标实例地域，如：ap-guangzhou。注意，目标地域必须和API请求地域保持一致。
+	// <p>目标实例地域，如：ap-guangzhou。注意，目标地域必须和API请求地域保持一致。</p>
 	DstRegion *string `json:"DstRegion,omitnil,omitempty" name:"DstRegion"`
 
-	// 实例规格，包括：small、medium、large、xlarge、2xlarge。当前未计费链路仅支持medium字段值。不同规格类型参考[计费概述](https://cloud.tencent.com/document/product/571/18736)
+	// <p>实例规格，包括：small、medium、large、xlarge、2xlarge。当前未计费链路仅支持medium字段值。不同规格类型参考<a href="https://cloud.tencent.com/document/product/571/18736">计费概述</a></p>
 	InstanceClass *string `json:"InstanceClass,omitnil,omitempty" name:"InstanceClass"`
 
-	// 购买数量，范围为[1,15]，默认为1
+	// <p>购买数量，范围为[1,15]，默认为1</p>
 	Count *uint64 `json:"Count,omitnil,omitempty" name:"Count"`
 
-	// 迁移服务名称，最大长度128
+	// <p>迁移服务名称，最大长度128</p>
 	JobName *string `json:"JobName,omitnil,omitempty" name:"JobName"`
 
-	// 标签信息
+	// <p>标签信息</p>
 	Tags []*TagItem `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
@@ -1134,7 +1134,7 @@ func (r *CreateMigrationServiceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateMigrationServiceResponseParams struct {
-	// 下单成功随机生成的迁移任务id列表，形如：dts-c1f6rs21
+	// <p>下单成功随机生成的迁移任务id列表，形如：dts-c1f6rs21</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	JobIds []*string `json:"JobIds,omitnil,omitempty" name:"JobIds"`
 
@@ -4931,19 +4931,19 @@ type MigrateDBItem struct {
 }
 
 type MigrateDetailInfo struct {
-	// 总步骤数
+	// <p>总步骤数</p>
 	StepAll *uint64 `json:"StepAll,omitnil,omitempty" name:"StepAll"`
 
-	// 当前步骤
+	// <p>当前步骤</p>
 	StepNow *uint64 `json:"StepNow,omitnil,omitempty" name:"StepNow"`
 
-	// 主从差距，MB；只在任务正常，迁移或者同步的最后一步（追Binlog的阶段才有校），如果是非法值，返回-1
+	// <p>主从差距，MB；只在任务正常，迁移或者同步的最后一步（追Binlog的阶段才有校），如果是非法值，返回-1</p>
 	MasterSlaveDistance *int64 `json:"MasterSlaveDistance,omitnil,omitempty" name:"MasterSlaveDistance"`
 
-	// 主从差距，秒；只在任务正常，迁移或者同步的最后一步（追Binlog的阶段才有校），如果是非法值，返回-1
+	// <p>主从差距，秒；只在任务正常，迁移或者同步的最后一步（追Binlog的阶段才有校），如果是非法值，返回-1</p>
 	SecondsBehindMaster *int64 `json:"SecondsBehindMaster,omitnil,omitempty" name:"SecondsBehindMaster"`
 
-	// 步骤信息
+	// <p>步骤信息</p>
 	StepInfo []*StepDetailInfo `json:"StepInfo,omitnil,omitempty" name:"StepInfo"`
 }
 
@@ -6462,13 +6462,13 @@ type ProcessProgress struct {
 }
 
 type ProcessStepTip struct {
-	// 提示信息
+	// <p>提示信息</p>
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
-	// 解决方案
+	// <p>解决方案</p>
 	Solution *string `json:"Solution,omitnil,omitempty" name:"Solution"`
 
-	// 文档提示
+	// <p>文档提示</p>
 	HelpDoc *string `json:"HelpDoc,omitnil,omitempty" name:"HelpDoc"`
 }
 
@@ -7574,59 +7574,65 @@ func (r *StartSyncJobResponse) FromJsonString(s string) error {
 }
 
 type StepDetailInfo struct {
-	// 步骤序列
+	// <p>步骤序列</p>
 	StepNo *uint64 `json:"StepNo,omitnil,omitempty" name:"StepNo"`
 
-	// 步骤展现名称
+	// <p>步骤展现名称</p>
 	StepName *string `json:"StepName,omitnil,omitempty" name:"StepName"`
 
-	// 步骤英文标识
+	// <p>步骤英文标识</p>
 	StepId *string `json:"StepId,omitnil,omitempty" name:"StepId"`
 
-	// 步骤状态:success(成功)、failed(失败)、running(执行中)、notStarted(未执行)、默认为notStarted
+	// <p>步骤状态:success(成功)、failed(失败)、running(执行中)、notStarted(未执行)、默认为notStarted</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 当前步骤开始的时间，格式为"yyyy-mm-dd hh:mm:ss"，该字段不存在或者为空是无意义 注意：此字段可能返回 null，表示取不到有效值。
+	// <p>当前步骤开始的时间，格式为&quot;yyyy-mm-dd hh:mm:ss&quot;，该字段不存在或者为空是无意义 注意：此字段可能返回 null，表示取不到有效值。</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 步骤错误信息
+	// <p>完成时间</p>
+	FinishTime *string `json:"FinishTime,omitnil,omitempty" name:"FinishTime"`
+
+	// <p>步骤错误信息</p>
 	StepMessage *string `json:"StepMessage,omitnil,omitempty" name:"StepMessage"`
 
-	// 执行进度
+	// <p>执行进度</p>
 	Percent *uint64 `json:"Percent,omitnil,omitempty" name:"Percent"`
 
-	// 错误信息
+	// <p>错误信息</p>
 	Errors []*ProcessStepTip `json:"Errors,omitnil,omitempty" name:"Errors"`
 
-	// 告警提示
+	// <p>告警提示</p>
 	Warnings []*ProcessStepTip `json:"Warnings,omitnil,omitempty" name:"Warnings"`
 }
 
 type StepInfo struct {
-	// 步骤编号
+	// <p>步骤编号</p>
 	StepNo *uint64 `json:"StepNo,omitnil,omitempty" name:"StepNo"`
 
-	// 步骤名
+	// <p>步骤名</p>
 	StepName *string `json:"StepName,omitnil,omitempty" name:"StepName"`
 
-	// 步骤标号
+	// <p>步骤标号</p>
 	StepId *string `json:"StepId,omitnil,omitempty" name:"StepId"`
 
-	// 当前步骤状态,可能返回有 notStarted(未开始)、running(校验中)、failed(校验任务失败)、finished(完成)、skipped(跳过)、paused(暂停)
+	// <p>当前步骤状态,可能返回有 notStarted(未开始)、running(校验中)、failed(校验任务失败)、finished(完成)、skipped(跳过)、paused(暂停)</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 步骤开始时间，可能为空
+	// <p>步骤开始时间，可能为空</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 错误信息
+	// <p>完成时间</p>
+	FinishTime *string `json:"FinishTime,omitnil,omitempty" name:"FinishTime"`
+
+	// <p>错误信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Errors []*StepTip `json:"Errors,omitnil,omitempty" name:"Errors"`
 
-	// 警告信息
+	// <p>警告信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Warnings []*StepTip `json:"Warnings,omitnil,omitempty" name:"Warnings"`
 
-	// 当前步骤进度，范围为[0-100]，若为-1表示当前步骤不支持查看进度
+	// <p>当前步骤进度，范围为[0-100]，若为-1表示当前步骤不支持查看进度</p>
 	Progress *int64 `json:"Progress,omitnil,omitempty" name:"Progress"`
 }
 
@@ -8044,35 +8050,35 @@ type SyncDBEndpointInfos struct {
 }
 
 type SyncDetailInfo struct {
-	// 总步骤数
+	// <p>总步骤数</p>
 	StepAll *uint64 `json:"StepAll,omitnil,omitempty" name:"StepAll"`
 
-	// 当前步骤
+	// <p>当前步骤</p>
 	StepNow *uint64 `json:"StepNow,omitnil,omitempty" name:"StepNow"`
 
-	// 总体进度
+	// <p>总体进度</p>
 	Progress *int64 `json:"Progress,omitnil,omitempty" name:"Progress"`
 
-	// 当前步骤进度，范围为[0-100]，若为-1表示当前步骤不支持查看进度
+	// <p>当前步骤进度，范围为[0-100]，若为-1表示当前步骤不支持查看进度</p>
 	CurrentStepProgress *int64 `json:"CurrentStepProgress,omitnil,omitempty" name:"CurrentStepProgress"`
 
-	// 同步两端数据量差距
+	// <p>同步两端数据量差距</p>
 	MasterSlaveDistance *int64 `json:"MasterSlaveDistance,omitnil,omitempty" name:"MasterSlaveDistance"`
 
-	// 同步两端时间差距
+	// <p>同步两端时间差距</p>
 	SecondsBehindMaster *int64 `json:"SecondsBehindMaster,omitnil,omitempty" name:"SecondsBehindMaster"`
 
-	// 总体描述信息
+	// <p>总体描述信息</p>
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
-	// 详细步骤信息
+	// <p>详细步骤信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StepInfos []*StepInfo `json:"StepInfos,omitnil,omitempty" name:"StepInfos"`
 
-	// 不能发起内置校验的原因
+	// <p>不能发起内置校验的原因</p>
 	CauseOfCompareDisable *string `json:"CauseOfCompareDisable,omitnil,omitempty" name:"CauseOfCompareDisable"`
 
-	// 任务的错误和解决方案信息
+	// <p>任务的错误和解决方案信息</p>
 	ErrInfo *ErrInfo `json:"ErrInfo,omitnil,omitempty" name:"ErrInfo"`
 }
 

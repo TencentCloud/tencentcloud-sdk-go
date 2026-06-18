@@ -23,6 +23,7 @@ import (
 	aaiv20180522 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/aai/v20180522"
 	acav20210323 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/aca/v20210323"
 	acpv20220105 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/acp/v20220105"
+	adpv20260520 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/adp/v20260520"
 	advisorv20200721 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/advisor/v20200721"
 	afv20200226 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/af/v20200226"
 	afcv20200226 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/afc/v20200226"
@@ -271,6 +272,7 @@ import (
 	tmsv20200713 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tms/v20200713"
 	tmsv20201229 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tms/v20201229"
 	tmtv20180321 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tmt/v20180321"
+	tokenhubv20260322 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tokenhub/v20260322"
 	tourismv20230215 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tourism/v20230215"
 	trabbitv20230418 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/trabbit/v20230418"
 	trocketv20230308 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/trocket/v20230308"
@@ -346,6 +348,19 @@ func TestAcpv20220105Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf("fail to init acp_v20220105 client: %v", err)
+    }
+}
+
+func TestAdpv20260520Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := adpv20260520.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf("fail to init adp_v20260520 client: %v", err)
     }
 }
 
@@ -3570,6 +3585,19 @@ func TestTmtv20180321Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf("fail to init tmt_v20180321 client: %v", err)
+    }
+}
+
+func TestTokenhubv20260322Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := tokenhubv20260322.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf("fail to init tokenhub_v20260322 client: %v", err)
     }
 }
 

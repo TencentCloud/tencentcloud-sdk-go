@@ -62,6 +62,9 @@ const (
 	// 无效用户池。
 	FAILEDOPERATION_INVALIDUSERSTORE = "FailedOperation.InvalidUserStore"
 
+	// 组织机构不存在
+	FAILEDOPERATION_ORGNOTFOUND = "FailedOperation.OrgNotFound"
+
 	// 密码不能为空。
 	FAILEDOPERATION_PASSWORDISNULL = "FailedOperation.PasswordIsNull"
 

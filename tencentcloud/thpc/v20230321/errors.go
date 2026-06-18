@@ -56,6 +56,9 @@ const (
 	// 工作空间实例ID格式不符合规范。
 	INVALIDPARAMETERVALUE_INVALIDSPACEIDMALFORMED = "InvalidParameterValue.InvalidSpaceIdMalformed"
 
+	// 包销付费模式下，Period仅支持传入[12, 24, 36, 48, 60]中的某一个值。
+	INVALIDPARAMETERVALUE_INVALIDUNDERWRITEPERIOD = "InvalidParameterValue.InvalidUnderwritePeriod"
+
 	// The length of job description should less than `%(max_size)s`.
 	INVALIDPARAMETERVALUE_JOBDESCRIPTIONTOOLONG = "InvalidParameterValue.JobDescriptionTooLong"
 

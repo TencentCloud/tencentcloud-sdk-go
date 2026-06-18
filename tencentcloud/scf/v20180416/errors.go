@@ -320,9 +320,6 @@ const (
 	// Cdn传入错误。
 	INVALIDPARAMETERVALUE_CDN = "InvalidParameterValue.Cdn"
 
-	// CertConfig配置为空。
-	INVALIDPARAMETERVALUE_CERTCONFIG_EMPTY = "InvalidParameterValue.CertConfig.empty"
-
 	// CfsId参数异常。
 	INVALIDPARAMETERVALUE_CFSID = "InvalidParameterValue.CfsId"
 
@@ -562,9 +559,6 @@ const (
 
 	// InstanceConcurrencyConfig 参数传入错误。
 	INVALIDPARAMETERVALUE_INSTANCECONCURRENCYCONFIG = "InvalidParameterValue.InstanceConcurrencyConfig"
-
-	// 证书配置错误
-	INVALIDPARAMETERVALUE_INVALIDCERTCONFIG = "InvalidParameterValue.InvalidCertConfig"
 
 	// InvokeType取值与规范不符，请修正后再试。
 	INVALIDPARAMETERVALUE_INVOKETYPE = "InvalidParameterValue.InvokeType"

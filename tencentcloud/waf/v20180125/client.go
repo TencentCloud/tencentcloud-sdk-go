@@ -3881,6 +3881,108 @@ func (c *Client) DescribeApiListVersionTwoWithContext(ctx context.Context, reque
     return
 }
 
+func NewDescribeApiSecEventDetailRequest() (request *DescribeApiSecEventDetailRequest) {
+    request = &DescribeApiSecEventDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "DescribeApiSecEventDetail")
+    
+    
+    return
+}
+
+func NewDescribeApiSecEventDetailResponse() (response *DescribeApiSecEventDetailResponse) {
+    response = &DescribeApiSecEventDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeApiSecEventDetail
+// API安全事件详情查询接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_MONGOOPERATIONFAILED = "FailedOperation.MongoOperationFailed"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeApiSecEventDetail(request *DescribeApiSecEventDetailRequest) (response *DescribeApiSecEventDetailResponse, err error) {
+    return c.DescribeApiSecEventDetailWithContext(context.Background(), request)
+}
+
+// DescribeApiSecEventDetail
+// API安全事件详情查询接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_MONGOOPERATIONFAILED = "FailedOperation.MongoOperationFailed"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeApiSecEventDetailWithContext(ctx context.Context, request *DescribeApiSecEventDetailRequest) (response *DescribeApiSecEventDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeApiSecEventDetailRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeApiSecEventDetail")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeApiSecEventDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeApiSecEventDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeApiSecEventListRequest() (request *DescribeApiSecEventListRequest) {
+    request = &DescribeApiSecEventListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "DescribeApiSecEventList")
+    
+    
+    return
+}
+
+func NewDescribeApiSecEventListResponse() (response *DescribeApiSecEventListResponse) {
+    response = &DescribeApiSecEventListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeApiSecEventList
+// api安全事件列表
+//
+// 可能返回的错误码:
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeApiSecEventList(request *DescribeApiSecEventListRequest) (response *DescribeApiSecEventListResponse, err error) {
+    return c.DescribeApiSecEventListWithContext(context.Background(), request)
+}
+
+// DescribeApiSecEventList
+// api安全事件列表
+//
+// 可能返回的错误码:
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeApiSecEventListWithContext(ctx context.Context, request *DescribeApiSecEventListRequest) (response *DescribeApiSecEventListResponse, err error) {
+    if request == nil {
+        request = NewDescribeApiSecEventListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeApiSecEventList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeApiSecEventList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeApiSecEventListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeApiSecSensitiveRuleListRequest() (request *DescribeApiSecSensitiveRuleListRequest) {
     request = &DescribeApiSecSensitiveRuleListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6643,7 +6745,7 @@ func NewDescribeObjectsResponse() (response *DescribeObjectsResponse) {
 }
 
 // DescribeObjects
-// 查看防护对象列表
+// 查看CLB/TSE防护对象列表
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_MONGOOPERATIONFAILED = "FailedOperation.MongoOperationFailed"
@@ -6654,7 +6756,7 @@ func (c *Client) DescribeObjects(request *DescribeObjectsRequest) (response *Des
 }
 
 // DescribeObjects
-// 查看防护对象列表
+// 查看CLB/TSE防护对象列表
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_MONGOOPERATIONFAILED = "FailedOperation.MongoOperationFailed"
@@ -7471,6 +7573,62 @@ func (c *Client) DescribeProtectionModesWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeQClawContentSecCheckRequest() (request *DescribeQClawContentSecCheckRequest) {
+    request = &DescribeQClawContentSecCheckRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "DescribeQClawContentSecCheck")
+    
+    
+    return
+}
+
+func NewDescribeQClawContentSecCheckResponse() (response *DescribeQClawContentSecCheckResponse) {
+    response = &DescribeQClawContentSecCheckResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeQClawContentSecCheck
+// 大模型请求内容和响应内容审核接口
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_LLMCONTENTEMPTY = "InvalidParameter.LLMContentEmpty"
+//  INVALIDPARAMETER_LLMINTERNALERROR = "InvalidParameter.LLMInternalError"
+//  INVALIDPARAMETER_LLMINVALIDTYPE = "InvalidParameter.LLMInvalidType"
+//  INVALIDPARAMETER_LLMPARSEFAILED = "InvalidParameter.LLMParseFailed"
+func (c *Client) DescribeQClawContentSecCheck(request *DescribeQClawContentSecCheckRequest) (response *DescribeQClawContentSecCheckResponse, err error) {
+    return c.DescribeQClawContentSecCheckWithContext(context.Background(), request)
+}
+
+// DescribeQClawContentSecCheck
+// 大模型请求内容和响应内容审核接口
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_LLMCONTENTEMPTY = "InvalidParameter.LLMContentEmpty"
+//  INVALIDPARAMETER_LLMINTERNALERROR = "InvalidParameter.LLMInternalError"
+//  INVALIDPARAMETER_LLMINVALIDTYPE = "InvalidParameter.LLMInvalidType"
+//  INVALIDPARAMETER_LLMPARSEFAILED = "InvalidParameter.LLMParseFailed"
+func (c *Client) DescribeQClawContentSecCheckWithContext(ctx context.Context, request *DescribeQClawContentSecCheckRequest) (response *DescribeQClawContentSecCheckResponse, err error) {
+    if request == nil {
+        request = NewDescribeQClawContentSecCheckRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeQClawContentSecCheck")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeQClawContentSecCheck require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeQClawContentSecCheckResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRateLimitsV2Request() (request *DescribeRateLimitsV2Request) {
     request = &DescribeRateLimitsV2Request{
         BaseRequest: &tchttp.BaseRequest{},
@@ -7494,11 +7652,10 @@ func NewDescribeRateLimitsV2Response() (response *DescribeRateLimitsV2Response) 
 // 查询限流规则列表接口
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  INVALIDPARAMETER_LLMCONTENTEMPTY = "InvalidParameter.LLMContentEmpty"
+//  INVALIDPARAMETER_LLMINTERNALERROR = "InvalidParameter.LLMInternalError"
+//  INVALIDPARAMETER_LLMINVALIDTYPE = "InvalidParameter.LLMInvalidType"
+//  INVALIDPARAMETER_LLMPARSEFAILED = "InvalidParameter.LLMParseFailed"
 func (c *Client) DescribeRateLimitsV2(request *DescribeRateLimitsV2Request) (response *DescribeRateLimitsV2Response, err error) {
     return c.DescribeRateLimitsV2WithContext(context.Background(), request)
 }
@@ -7507,11 +7664,10 @@ func (c *Client) DescribeRateLimitsV2(request *DescribeRateLimitsV2Request) (res
 // 查询限流规则列表接口
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  INVALIDPARAMETER_LLMCONTENTEMPTY = "InvalidParameter.LLMContentEmpty"
+//  INVALIDPARAMETER_LLMINTERNALERROR = "InvalidParameter.LLMInternalError"
+//  INVALIDPARAMETER_LLMINVALIDTYPE = "InvalidParameter.LLMInvalidType"
+//  INVALIDPARAMETER_LLMPARSEFAILED = "InvalidParameter.LLMParseFailed"
 func (c *Client) DescribeRateLimitsV2WithContext(ctx context.Context, request *DescribeRateLimitsV2Request) (response *DescribeRateLimitsV2Response, err error) {
     if request == nil {
         request = NewDescribeRateLimitsV2Request()
@@ -7681,6 +7837,64 @@ func (c *Client) DescribeSessionWithContext(ctx context.Context, request *Descri
     request.SetContext(ctx)
     
     response = NewDescribeSessionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSkillSecScanResultRequest() (request *DescribeSkillSecScanResultRequest) {
+    request = &DescribeSkillSecScanResultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "DescribeSkillSecScanResult")
+    
+    
+    return
+}
+
+func NewDescribeSkillSecScanResultResponse() (response *DescribeSkillSecScanResultResponse) {
+    response = &DescribeSkillSecScanResultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSkillSecScanResult
+// 根据文件Hash查询Skill安全检测结果
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_SKILLSCANINVALIDPARAM = "InvalidParameter.SkillScanInvalidParam"
+//  INVALIDPARAMETER_SKILLSCANINVALIDREQUEST = "InvalidParameter.SkillScanInvalidRequest"
+//  INVALIDPARAMETER_SKILLSCANQUERYFAILED = "InvalidParameter.SkillScanQueryFailed"
+//  INVALIDPARAMETER_SKILLSCANSERVICEIDEMPTY = "InvalidParameter.SkillScanServiceIdEmpty"
+//  INVALIDPARAMETER_SKILLSCANSWITCHOFF = "InvalidParameter.SkillScanSwitchOff"
+func (c *Client) DescribeSkillSecScanResult(request *DescribeSkillSecScanResultRequest) (response *DescribeSkillSecScanResultResponse, err error) {
+    return c.DescribeSkillSecScanResultWithContext(context.Background(), request)
+}
+
+// DescribeSkillSecScanResult
+// 根据文件Hash查询Skill安全检测结果
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_SKILLSCANINVALIDPARAM = "InvalidParameter.SkillScanInvalidParam"
+//  INVALIDPARAMETER_SKILLSCANINVALIDREQUEST = "InvalidParameter.SkillScanInvalidRequest"
+//  INVALIDPARAMETER_SKILLSCANQUERYFAILED = "InvalidParameter.SkillScanQueryFailed"
+//  INVALIDPARAMETER_SKILLSCANSERVICEIDEMPTY = "InvalidParameter.SkillScanServiceIdEmpty"
+//  INVALIDPARAMETER_SKILLSCANSWITCHOFF = "InvalidParameter.SkillScanSwitchOff"
+func (c *Client) DescribeSkillSecScanResultWithContext(ctx context.Context, request *DescribeSkillSecScanResultRequest) (response *DescribeSkillSecScanResultResponse, err error) {
+    if request == nil {
+        request = NewDescribeSkillSecScanResultRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeSkillSecScanResult")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSkillSecScanResult require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSkillSecScanResultResponse()
     err = c.Send(request, response)
     return
 }
@@ -12431,6 +12645,70 @@ func (c *Client) ModifyObjectsWithContext(ctx context.Context, request *ModifyOb
     return
 }
 
+func NewModifyOwaspDomainUpdateStatusRequest() (request *ModifyOwaspDomainUpdateStatusRequest) {
+    request = &ModifyOwaspDomainUpdateStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "ModifyOwaspDomainUpdateStatus")
+    
+    
+    return
+}
+
+func NewModifyOwaspDomainUpdateStatusResponse() (response *ModifyOwaspDomainUpdateStatusResponse) {
+    response = &ModifyOwaspDomainUpdateStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyOwaspDomainUpdateStatus
+// 修改域名新规则状态
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_MYSQLDBOPERATIONFAILED = "FailedOperation.MysqlDBOperationFailed"
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
+//  INTERNALERROR_SSACALLFAILED = "InternalError.SsaCallFailed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyOwaspDomainUpdateStatus(request *ModifyOwaspDomainUpdateStatusRequest) (response *ModifyOwaspDomainUpdateStatusResponse, err error) {
+    return c.ModifyOwaspDomainUpdateStatusWithContext(context.Background(), request)
+}
+
+// ModifyOwaspDomainUpdateStatus
+// 修改域名新规则状态
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_MYSQLDBOPERATIONFAILED = "FailedOperation.MysqlDBOperationFailed"
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
+//  INTERNALERROR_SSACALLFAILED = "InternalError.SsaCallFailed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyOwaspDomainUpdateStatusWithContext(ctx context.Context, request *ModifyOwaspDomainUpdateStatusRequest) (response *ModifyOwaspDomainUpdateStatusResponse, err error) {
+    if request == nil {
+        request = NewModifyOwaspDomainUpdateStatusRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "ModifyOwaspDomainUpdateStatus")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyOwaspDomainUpdateStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyOwaspDomainUpdateStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyOwaspRuleStatusRequest() (request *ModifyOwaspRuleStatusRequest) {
     request = &ModifyOwaspRuleStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -14217,6 +14495,80 @@ func (c *Client) UpdateRateLimitV2WithContext(ctx context.Context, request *Upda
     request.SetContext(ctx)
     
     response = NewUpdateRateLimitV2Response()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUploadSkillSecScanRequest() (request *UploadSkillSecScanRequest) {
+    request = &UploadSkillSecScanRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "UploadSkillSecScan")
+    
+    
+    return
+}
+
+func NewUploadSkillSecScanResponse() (response *UploadSkillSecScanResponse) {
+    response = &UploadSkillSecScanResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UploadSkillSecScan
+// 上传Skill ZIP文件，触发异步安全检测
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_SKILLSCANAPIKEYDISABLED = "InvalidParameter.SkillScanApiKeyDisabled"
+//  INVALIDPARAMETER_SKILLSCANCREATESCANFAILED = "InvalidParameter.SkillScanCreateScanFailed"
+//  INVALIDPARAMETER_SKILLSCANINVALIDBASE64 = "InvalidParameter.SkillScanInvalidBase64"
+//  INVALIDPARAMETER_SKILLSCANINVALIDFILEFORMAT = "InvalidParameter.SkillScanInvalidFileFormat"
+//  INVALIDPARAMETER_SKILLSCANINVALIDPARAM = "InvalidParameter.SkillScanInvalidParam"
+//  INVALIDPARAMETER_SKILLSCANINVALIDREQUEST = "InvalidParameter.SkillScanInvalidRequest"
+//  INVALIDPARAMETER_SKILLSCANNOFILES = "InvalidParameter.SkillScanNoFiles"
+//  INVALIDPARAMETER_SKILLSCANQUERYFAILED = "InvalidParameter.SkillScanQueryFailed"
+//  INVALIDPARAMETER_SKILLSCANRATELIMITEXCEEDED = "InvalidParameter.SkillScanRateLimitExceeded"
+//  INVALIDPARAMETER_SKILLSCANSERVICEIDEMPTY = "InvalidParameter.SkillScanServiceIdEmpty"
+//  INVALIDPARAMETER_SKILLSCANSWITCHOFF = "InvalidParameter.SkillScanSwitchOff"
+//  INVALIDPARAMETER_SKILLSCANTRIGGERFAILED = "InvalidParameter.SkillScanTriggerFailed"
+//  INVALIDPARAMETER_SKILLSCANUNAUTHORIZED = "InvalidParameter.SkillScanUnauthorized"
+func (c *Client) UploadSkillSecScan(request *UploadSkillSecScanRequest) (response *UploadSkillSecScanResponse, err error) {
+    return c.UploadSkillSecScanWithContext(context.Background(), request)
+}
+
+// UploadSkillSecScan
+// 上传Skill ZIP文件，触发异步安全检测
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_SKILLSCANAPIKEYDISABLED = "InvalidParameter.SkillScanApiKeyDisabled"
+//  INVALIDPARAMETER_SKILLSCANCREATESCANFAILED = "InvalidParameter.SkillScanCreateScanFailed"
+//  INVALIDPARAMETER_SKILLSCANINVALIDBASE64 = "InvalidParameter.SkillScanInvalidBase64"
+//  INVALIDPARAMETER_SKILLSCANINVALIDFILEFORMAT = "InvalidParameter.SkillScanInvalidFileFormat"
+//  INVALIDPARAMETER_SKILLSCANINVALIDPARAM = "InvalidParameter.SkillScanInvalidParam"
+//  INVALIDPARAMETER_SKILLSCANINVALIDREQUEST = "InvalidParameter.SkillScanInvalidRequest"
+//  INVALIDPARAMETER_SKILLSCANNOFILES = "InvalidParameter.SkillScanNoFiles"
+//  INVALIDPARAMETER_SKILLSCANQUERYFAILED = "InvalidParameter.SkillScanQueryFailed"
+//  INVALIDPARAMETER_SKILLSCANRATELIMITEXCEEDED = "InvalidParameter.SkillScanRateLimitExceeded"
+//  INVALIDPARAMETER_SKILLSCANSERVICEIDEMPTY = "InvalidParameter.SkillScanServiceIdEmpty"
+//  INVALIDPARAMETER_SKILLSCANSWITCHOFF = "InvalidParameter.SkillScanSwitchOff"
+//  INVALIDPARAMETER_SKILLSCANTRIGGERFAILED = "InvalidParameter.SkillScanTriggerFailed"
+//  INVALIDPARAMETER_SKILLSCANUNAUTHORIZED = "InvalidParameter.SkillScanUnauthorized"
+func (c *Client) UploadSkillSecScanWithContext(ctx context.Context, request *UploadSkillSecScanRequest) (response *UploadSkillSecScanResponse, err error) {
+    if request == nil {
+        request = NewUploadSkillSecScanRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "UploadSkillSecScan")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UploadSkillSecScan require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUploadSkillSecScanResponse()
     err = c.Send(request, response)
     return
 }

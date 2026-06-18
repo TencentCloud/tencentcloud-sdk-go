@@ -2497,6 +2497,10 @@ func NewDescribeApiAppResponse() (response *DescribeApiAppResponse) {
 }
 
 // DescribeApiApp
+// 历史接口，已经无用户调用
+//
+// 
+//
 // 本接口（DescribeApiApp）用于根据应用ID搜索应用。此接口已下线，如需使用功能请使用DescribeApiAppsStatus接口。
 //
 // 可能返回的错误码:
@@ -2508,6 +2512,10 @@ func (c *Client) DescribeApiApp(request *DescribeApiAppRequest) (response *Descr
 }
 
 // DescribeApiApp
+// 历史接口，已经无用户调用
+//
+// 
+//
 // 本接口（DescribeApiApp）用于根据应用ID搜索应用。此接口已下线，如需使用功能请使用DescribeApiAppsStatus接口。
 //
 // 可能返回的错误码:

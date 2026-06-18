@@ -343,6 +343,21 @@ type AgentPluginInfo struct {
 
 	// <p>MCP类型</p><p>枚举值：</p><ul><li>0： SSE 模式</li><li>1： Streamable Http 模式</li></ul>
 	McpType *uint64 `json:"McpType,omitnil,omitempty" name:"McpType"`
+
+	// <p>OAuth授权主体</p><p>枚举值：</p><ul><li>0： 开发者授权</li><li>1： 使用者授权</li></ul>
+	AuthMode *int64 `json:"AuthMode,omitnil,omitempty" name:"AuthMode"`
+
+	// <p>授权方式</p><p>枚举值：</p><ul><li>0： 无鉴权</li><li>1： api key鉴权</li><li>2： 支持CAM授权</li><li>3： 支持Oauth2.0授权</li></ul>
+	AuthType *int64 `json:"AuthType,omitnil,omitempty" name:"AuthType"`
+
+	// <p>授权配置状态</p><p>枚举值：</p><ul><li>0： 不需要授权</li><li>1： 未配置</li><li>2： 已配置</li></ul>
+	AuthConfigStatus *int64 `json:"AuthConfigStatus,omitnil,omitempty" name:"AuthConfigStatus"`
+
+	// <p>插件用途类型</p><p>枚举值：</p><ul><li>0： 工具类</li><li>1： 连接器类</li></ul>
+	PluginClass *int64 `json:"PluginClass,omitnil,omitempty" name:"PluginClass"`
+
+	// <p>插件状态</p><p>枚举值：</p><ul><li>1： 成功</li><li>2： 不可用</li></ul>
+	PluginStatus *int64 `json:"PluginStatus,omitnil,omitempty" name:"PluginStatus"`
 }
 
 type AgentPluginQuery struct {
@@ -554,77 +569,81 @@ type AgentThought struct {
 }
 
 type AgentToolInfo struct {
-	// 插件id
+	// <p>插件id</p>
 	PluginId *string `json:"PluginId,omitnil,omitempty" name:"PluginId"`
 
-	// 插件名称
+	// <p>插件名称</p>
 	PluginName *string `json:"PluginName,omitnil,omitempty" name:"PluginName"`
 
-	// 插件图标url
+	// <p>插件图标url</p>
 	IconUrl *string `json:"IconUrl,omitnil,omitempty" name:"IconUrl"`
 
-	// 0 自定义插件
-	// 1 官方插件
-	// 2 第三方插件 目前用于第三方实现的mcp server
+	// <p>0 自定义插件<br>1 官方插件<br>2 第三方插件 目前用于第三方实现的mcp server</p>
 	PluginType *uint64 `json:"PluginType,omitnil,omitempty" name:"PluginType"`
 
-	// 工具id
+	// <p>工具id</p>
 	ToolId *string `json:"ToolId,omitnil,omitempty" name:"ToolId"`
 
-	// 工具名称
+	// <p>工具名称</p>
 	ToolName *string `json:"ToolName,omitnil,omitempty" name:"ToolName"`
 
-	// 工具描述
+	// <p>工具描述</p>
 	ToolDesc *string `json:"ToolDesc,omitnil,omitempty" name:"ToolDesc"`
 
-	// 输入参数
+	// <p>输入参数</p>
 	Inputs []*AgentToolReqParam `json:"Inputs,omitnil,omitempty" name:"Inputs"`
 
-	// 输出参数
+	// <p>输出参数</p>
 	Outputs []*AgentToolRspParam `json:"Outputs,omitnil,omitempty" name:"Outputs"`
 
-	// 创建方式，0:服务创建，1:代码创建，2:MCP创建	
+	// <p>创建方式，0:服务创建，1:代码创建，2:MCP创建</p>
 	CreateType *int64 `json:"CreateType,omitnil,omitempty" name:"CreateType"`
 
-	// MCP插件的配置信息
+	// <p>MCP插件的配置信息</p>
 	McpServer *AgentMCPServerInfo `json:"McpServer,omitnil,omitempty" name:"McpServer"`
 
-	// 该工具是否和知识库绑定
+	// <p>该工具是否和知识库绑定</p>
 	IsBindingKnowledge *bool `json:"IsBindingKnowledge,omitnil,omitempty" name:"IsBindingKnowledge"`
 
-	// 插件状态，1:可用，2:不可用	
+	// <p>插件状态，1:可用，2:不可用</p>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// header信息
+	// <p>header信息</p>
 	Headers []*AgentPluginHeader `json:"Headers,omitnil,omitempty" name:"Headers"`
 
-	// NON_STREAMING: 非流式  STREAMIN: 流式
+	// <p>NON_STREAMING: 非流式  STREAMIN: 流式</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CallingMethod *string `json:"CallingMethod,omitnil,omitempty" name:"CallingMethod"`
 
-	// query信息
+	// <p>query信息</p>
 	Query []*AgentPluginQuery `json:"Query,omitnil,omitempty" name:"Query"`
 
-	// 工具计费状态 0-不计费 1-可用 2-不可用（欠费、无资源等）
+	// <p>工具计费状态 0-不计费 1-可用 2-不可用（欠费、无资源等）</p>
 	FinanceStatus *int64 `json:"FinanceStatus,omitnil,omitempty" name:"FinanceStatus"`
 
-	// 工具来源: 0-来自插件，1-来自工作流
+	// <p>工具来源: 0-来自插件，1-来自工作流</p>
 	ToolSource *uint64 `json:"ToolSource,omitnil,omitempty" name:"ToolSource"`
 
-	// 计费状态；0-不计费，1-限时免费，2-官方收费
+	// <p>计费状态；0-不计费，1-限时免费，2-官方收费</p>
 	FinanceType *int64 `json:"FinanceType,omitnil,omitempty" name:"FinanceType"`
 
-	// 工具高级设置
+	// <p>工具高级设置</p>
 	ToolAdvanceConfig *ToolAdvanceConfig `json:"ToolAdvanceConfig,omitnil,omitempty" name:"ToolAdvanceConfig"`
 
-	// 授权模式； 0-开发者授权；1-使用者授权
+	// <p>授权模式； 0-开发者授权；1-使用者授权</p>
 	AuthMode *int64 `json:"AuthMode,omitnil,omitempty" name:"AuthMode"`
 
-	// 授权类型; 0-无鉴权；1-APIKey；2-CAM授权；3-Oauth2.0授权；
+	// <p>授权类型; 0-无鉴权；1-APIKey；2-CAM授权；3-Oauth2.0授权；</p>
 	AuthType *int64 `json:"AuthType,omitnil,omitempty" name:"AuthType"`
 
-	// 工具授权配置状态；0：不需要授权，1：需要授权-未配置，2：需要授权-已配置
+	// <p>工具授权配置状态；0：不需要授权，1：需要授权-未配置，2：需要授权-已配置</p>
 	AuthConfigStatus *int64 `json:"AuthConfigStatus,omitnil,omitempty" name:"AuthConfigStatus"`
+
+	// <p>连接器工具 API 类型</p><p>枚举值：</p><ul><li>1： 只读</li><li>2： 写/删除</li></ul>
+	ToolAccessMode *int64 `json:"ToolAccessMode,omitnil,omitempty" name:"ToolAccessMode"`
+
+	// <p>是否禁用该工具</p>
+	IsDisabled *bool `json:"IsDisabled,omitnil,omitempty" name:"IsDisabled"`
 }
 
 type AgentToolReqParam struct {
@@ -12500,333 +12519,147 @@ type SandboxContent struct {
 
 // Predefined struct for user
 type SaveDocRequestParams struct {
-	// 应用ID。应用ID 获取方法参看[如何获取   BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
-	// 导入知识库文档时，该参数填入知识库 ID。
+	// <p>应用ID。应用ID 获取方法参看<a href="https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa">如何获取   BotBizId</a><br>导入知识库文档时，该参数填入知识库 ID。</p>
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
-	// 文件名，需要包含文件扩展名
+	// <p>文件名，需要包含文件扩展名</p>
 	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
 
-	// 文档支持下面类型
-	// pdf、doc、docx、ppt、mhtml、pptx、wps、ppsx，单个文件不超过200MB；
-	// xlsx、xls、md、txt、csv、html，单个文件不超过20MB；
-	// 
-	// 图片支持下面类型：
-	// jpg、png、jpeg、tiff、bmp、gif，单个文件不超过50MB
+	// <p>文档支持下面类型<br>pdf、doc、docx、ppt、mhtml、pptx、wps、ppsx，单个文件不超过200MB；<br>xlsx、xls、md、txt、csv、html，单个文件不超过20MB；</p><p>图片支持下面类型：<br>jpg、png、jpeg、tiff、bmp、gif，单个文件不超过50MB</p>
 	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
 
-	// 平台cos路径，与DescribeStorageCredential接口查询UploadPath参数保持一致
+	// <p>平台cos路径，与DescribeStorageCredential接口查询UploadPath参数保持一致</p>
 	CosUrl *string `json:"CosUrl,omitnil,omitempty" name:"CosUrl"`
 
-	// ETag 全称为 Entity Tag，是对象被创建时标识对象内容的信息标签，可用于检查对象的内容是否发生变化 成功上传cos后，从返回头中获取
+	// <p>ETag 全称为 Entity Tag，是对象被创建时标识对象内容的信息标签，可用于检查对象的内容是否发生变化 成功上传cos后，从返回头中获取</p>
 	ETag *string `json:"ETag,omitnil,omitempty" name:"ETag"`
 
-	// cos_hash x-cos-hash-crc64ecma 头部中的 CRC64编码进行校验上传到云端的文件和本地文件的一致性  
-	// 成功上传cos后，从返回头中获取
-	// 
-	// 请注意：
-	// cos_hash为文档唯一性标识，与文件名无关 相同的cos_hash会被判定为重复文档
+	// <p>cos_hash x-cos-hash-crc64ecma 头部中的 CRC64编码进行校验上传到云端的文件和本地文件的一致性<br>成功上传cos后，从返回头中获取</p><p>请注意：<br>cos_hash为文档唯一性标识，与文件名无关 相同的cos_hash会被判定为重复文档</p>
 	CosHash *string `json:"CosHash,omitnil,omitempty" name:"CosHash"`
 
-	// 文件大小
+	// <p>文件大小</p>
 	Size *string `json:"Size,omitnil,omitempty" name:"Size"`
 
-	// 标签适用范围，1:全部，2:按条件。默认为1。
+	// <p>标签适用范围，1:全部，2:按条件。默认为1。</p>
 	AttrRange *uint64 `json:"AttrRange,omitnil,omitempty" name:"AttrRange"`
 
-	// 来源（0 从本地文档导入），默认值为0
+	// <p>来源（0 从本地文档导入），默认值为0</p>
 	Source *int64 `json:"Source,omitnil,omitempty" name:"Source"`
 
-	// 自定义链接地址, IsRefer为true的时候，该值才有意义
+	// <p>自定义链接地址, IsRefer为true的时候，该值才有意义</p>
 	WebUrl *string `json:"WebUrl,omitnil,omitempty" name:"WebUrl"`
 
-	// 标签引用
+	// <p>标签引用</p>
 	AttrLabels []*AttrLabelRefer `json:"AttrLabels,omitnil,omitempty" name:"AttrLabels"`
 
-	// 外部引用链接类型 0：系统链接 1：自定义链接
-	// 值为1时，WebUrl 字段不能为空，否则不生效。
+	// <p>外部引用链接类型 0：系统链接 1：自定义链接<br>值为1时，WebUrl 字段不能为空，否则不生效。</p>
 	ReferUrlType *uint64 `json:"ReferUrlType,omitnil,omitempty" name:"ReferUrlType"`
 
-	// 有效开始时间，unix秒级时间戳，默认为0
+	// <p>有效开始时间，unix秒级时间戳，默认为0</p>
 	ExpireStart *string `json:"ExpireStart,omitnil,omitempty" name:"ExpireStart"`
 
-	// 有效结束时间，unix秒级时间戳，默认为0代表永久有效
+	// <p>有效结束时间，unix秒级时间戳，默认为0代表永久有效</p>
 	ExpireEnd *string `json:"ExpireEnd,omitnil,omitempty" name:"ExpireEnd"`
 
-	// 是否显示引用的文档来源(false不显示 true显示）默认false
+	// <p>是否显示引用的文档来源(false不显示 true显示）默认false</p>
 	IsRefer *bool `json:"IsRefer,omitnil,omitempty" name:"IsRefer"`
 
-	// 文档操作类型：1：批量导入（批量导入问答对）；2:文档导入（正常导入单个文档） 默认为2 <br> 请注意，opt=1的时候请从腾讯云智能体开发平台页面下载excel模板
+	// <p>文档操作类型：1：批量导入（批量导入问答对）；2:文档导入（正常导入单个文档） 默认为2 <br> 请注意，opt=1的时候请从腾讯云智能体开发平台页面下载excel模板</p>
 	Opt *uint64 `json:"Opt,omitnil,omitempty" name:"Opt"`
 
-	// 分类ID
+	// <p>分类ID</p>
 	CateBizId *string `json:"CateBizId,omitnil,omitempty" name:"CateBizId"`
 
-	// 是否可下载，IsRefer为true并且ReferUrlType为0时，该值才有意义
+	// <p>是否可下载，IsRefer为true并且ReferUrlType为0时，该值才有意义</p>
 	IsDownload *bool `json:"IsDownload,omitnil,omitempty" name:"IsDownload"`
 
-	// 重复文档处理方式，按顺序匹配第一个满足条件的方式处理
+	// <p>重复文档处理方式，按顺序匹配第一个满足条件的方式处理</p>
 	DuplicateFileHandles []*DuplicateFileHandle `json:"DuplicateFileHandles,omitnil,omitempty" name:"DuplicateFileHandles"`
 
-	// 自定义切分规则
-	// 
-	// 请求参数为一个 **JSON Object**，具体格式可参见接口示例值。包含以下主要字段：
-	// 
-	// | 字段名             | 类型      | 说明                                   |
-	// |--------------------|--------|----------------------------------------|
-	// | `xlsx_splitter`    | Object   | **Excel（xlsx）文件切分策略配置**，仅当处理 Excel 文件时有效 |
-	// | `common_splitter`  | Object  | **通用文件（如 txt、pdf 等）切分策略配置**，按页或按标签切分 |
-	// | `table_style`      | String | 表格内容的输出格式，如 HTML 或 Markdown |
-	// 
-	// ---
-	// 
-	// ## `xlsx_splitter`（Excel 切分策略）
-	// 
-	// 用于配置 **表格文件的切分方式**。
-	// **类型：Object**
-	// 
-	// ```json
-	// "xlsx_splitter": {
-	//   "header_interval": [1, 2],
-	//   "content_start": 10,
-	//   "split_row": 2
-	// }
-	// ```
-	// 
-	// ### 字段说明：
-	// 
-	// | 字段名            | 类型   | 说明                                                                 |
-	// |-------------------|--------|----------------------------------------------------------------------|
-	// | `header_interval` | Array\<Number\>  | 表头所在的行区间，格式为 `[起始行, 结束行]`，**行号从 1 开始计数**。例如 `[1, 2]` 表示第 1~2 行为表头。 |
-	// | `content_start`   | Number  | **表格内容的起始行号（从 1 开始）**。 |
-	// | `split_row`       | Number   | **切分行数**。                   |
-	// 
-	// ---
-	// ## `common_splitter`（通用文件切分策略）
-	// 
-	// 用于配置 **非 Excel 文件（如 TXT、PDF、DOCX 等）的切分方式**，支持两种策略：**按页切分（page）** 或 **按标识符切分（tag）**。
-	// 
-	// **类型：Object**
-	// 
-	// ```json
-	// "common_splitter": {
-	//   "splitter": "page",
-	//   "page_splitter": {
-	//     "chunk_length": 1000,
-	//     "chunk_overlap_length": 100
-	//   }
-	// }
-	// ```
-	// 
-	// ### 字段说明：
-	// 
-	// | 字段名            | 类型     | 说明                                                                 |
-	// |-------------------|--------|---------------------------------------------------|
-	// | `splitter`        | String  | 切分策略类型，可选值为：`"page"`（按页切分） 或 `"tag"`（按标识符切分）。 |
-	// | `page_splitter`   | Object   | **按页切分的配置**。                                         |
-	// | `page_splitter.chunk_length`   | 1000    | **切片最大长度**。              |
-	// | `page_splitter.chunk_overlap_length`  | 100    | **切片重叠长度**。  |
-	// | `tag_splitter`             | Object          | **自定义切分配置**。             |
-	// | `tag_splitter.tag`         | Array\<String\>    | **切分标识符**。                             |
-	// | `tag_splitter.chunk_length`| Number       | **切片最大长度**。                                                               |
-	// | `tag_splitter.chunk_overlap_length` | Number    | **切块重叠长度**。                                                  |
-	// 
-	// 🔹 **补充说明：**
-	// 
-	// - `splitter` 字段的值可以是：
-	//   - `"page"`：只使用按页切分逻辑，此时只需要关心 `page_splitter` 相关字段。
-	//   - `"tag"`：只使用按标识符（如分号、换行等）切分逻辑，此时关注 `tag_splitter`。
-	// ---
-	// 
-	// ##  `table_style`（表格输出样式）
-	// 
-	// 用于指定 **表格类内容（比如从 Excel 或 CSV 中提取的表格）最终以何种格式返回**，方便前端展示或后续处理。
-	// 
-	// **类型：String**
-	// 
-	// ```json
-	// "table_style": "md"
-	// ```
-	// 
-	// ### 字段说明：
-	// 
-	// | 字段名       | 类型   | 说明                                                                 |
-	// |--------------|--------|----------------------------------------------------------------------|
-	// | `table_style` | String | 指定表格内容的输出格式。可用值：<br>• `"html"`：以 HTML 表格形式返回，适合网页展示。<br>• `"md"`：以 Markdown 表格语法返回，适合文档或 Markdown 渲染环境。|
+	// <p>自定义切分规则</p><p>请求参数为一个 <strong>JSON Object</strong>，具体格式可参见接口示例值。包含以下主要字段：</p><table><thead><tr><th>字段名</th><th>类型</th><th>说明</th></tr></thead><tbody><tr><td><code>xlsx_splitter</code></td><td>Object</td><td><strong>Excel（xlsx）文件切分策略配置</strong>，仅当处理 Excel 文件时有效</td></tr><tr><td><code>common_splitter</code></td><td>Object</td><td><strong>通用文件（如 txt、pdf 等）切分策略配置</strong>，按页或按标签切分</td></tr><tr><td><code>table_style</code></td><td>String</td><td>表格内容的输出格式，如 HTML 或 Markdown</td></tr></tbody></table><hr><h2 id=".3Cdx-inline-code-holder.3E.3C.2Fdx-inline-code-holder.3E.EF.BC.88Excel-.E5.88.87.E5.88.86.E7.AD.96.E7.95.A5.EF.BC.89"><code>xlsx_splitter</code>（Excel 切分策略）</h2><p>用于配置 <strong>表格文件的切分方式</strong>。<br><strong>类型：Object</strong></p><p><pre><code class="language-json"><span class="hljs-attr">&quot;xlsx_splitter&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>  <span class="hljs-attr">&quot;header_interval&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-number">1</span><span class="hljs-punctuation">,</span> <span class="hljs-number">2</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>  <span class="hljs-attr">&quot;content_start&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">10</span><span class="hljs-punctuation">,</span>  <span class="hljs-attr">&quot;split_row&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">2</span><span class="hljs-punctuation">}</span></code></pre></p><h3 id=".E5.AD.97.E6.AE.B5.E8.AF.B4.E6.98.8E.EF.BC.9A">字段说明：</h3><table><thead><tr><th>字段名</th><th>类型</th><th>说明</th></tr></thead><tbody><tr><td><code>header_interval</code></td><td>Array&lt;Number&gt;</td><td>表头所在的行区间，格式为 <code>[起始行, 结束行]</code>，<strong>行号从 1 开始计数</strong>。例如 <code>[1, 2]</code> 表示第 1~2 行为表头。</td></tr><tr><td><code>content_start</code></td><td>Number</td><td><strong>表格内容的起始行号（从 1 开始）</strong>。</td></tr><tr><td><code>split_row</code></td><td>Number</td><td><strong>切分行数</strong>。</td></tr></tbody></table><hr><h2 id=".3Cdx-inline-code-holder.3E.3C.2Fdx-inline-code-holder.3E.EF.BC.88.E9.80.9A.E7.94.A8.E6.96.87.E4.BB.B6.E5.88.87.E5.88.86.E7.AD.96.E7.95.A5.EF.BC.89"><code>common_splitter</code>（通用文件切分策略）</h2><p>用于配置 <strong>非 Excel 文件（如 TXT、PDF、DOCX 等）的切分方式</strong>，支持两种策略：<strong>按页切分（page）</strong> 或 <strong>按标识符切分（tag）</strong>。</p><p><strong>类型：Object</strong></p><p><pre><code class="language-json"><span class="hljs-attr">&quot;common_splitter&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>  <span class="hljs-attr">&quot;splitter&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;page&quot;</span><span class="hljs-punctuation">,</span>  <span class="hljs-attr">&quot;page_splitter&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>    <span class="hljs-attr">&quot;chunk_length&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1000</span><span class="hljs-punctuation">,</span>    <span class="hljs-attr">&quot;chunk_overlap_length&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">100</span>  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">}</span></code></pre></p><h3 id=".E5.AD.97.E6.AE.B5.E8.AF.B4.E6.98.8E.EF.BC.9A2">字段说明：</h3><table><thead><tr><th>字段名</th><th>类型</th><th>说明</th></tr></thead><tbody><tr><td><code>splitter</code></td><td>String</td><td>切分策略类型，可选值为：<code>&quot;page&quot;</code>（按页切分） 或 <code>&quot;tag&quot;</code>（按标识符切分）。</td></tr><tr><td><code>page_splitter</code></td><td>Object</td><td><strong>按页切分的配置</strong>。</td></tr><tr><td><code>page_splitter.chunk_length</code></td><td>1000</td><td><strong>切片最大长度</strong>。</td></tr><tr><td><code>page_splitter.chunk_overlap_length</code></td><td>100</td><td><strong>切片重叠长度</strong>。</td></tr><tr><td><code>tag_splitter</code></td><td>Object</td><td><strong>自定义切分配置</strong>。</td></tr><tr><td><code>tag_splitter.tag</code></td><td>Array&lt;String&gt;</td><td><strong>切分标识符</strong>。</td></tr><tr><td><code>tag_splitter.chunk_length</code></td><td>Number</td><td><strong>切片最大长度</strong>。</td></tr><tr><td><code>tag_splitter.chunk_overlap_length</code></td><td>Number</td><td><strong>切块重叠长度</strong>。</td></tr></tbody></table><p>???? <strong>补充说明：</strong></p><ul><li><code>splitter</code> 字段的值可以是：<ul><li><code>&quot;page&quot;</code>：只使用按页切分逻辑，此时只需要关心 <code>page_splitter</code> 相关字段。</li><li><code>&quot;tag&quot;</code>：只使用按标识符（如分号、换行等）切分逻辑，此时关注 <code>tag_splitter</code>。</li></ul></li></ul><hr><h2 id=".3Cdx-inline-code-holder.3E.3C.2Fdx-inline-code-holder.3E.EF.BC.88.E8.A1.A8.E6.A0.BC.E8.BE.93.E5.87.BA.E6.A0.B7.E5.BC.8F.EF.BC.89"><code>table_style</code>（表格输出样式）</h2><p>用于指定 <strong>表格类内容（比如从 Excel 或 CSV 中提取的表格）最终以何种格式返回</strong>，方便前端展示或后续处理。</p><p><strong>类型：String</strong></p><p><pre><code class="language-json"><span class="hljs-attr">&quot;table_style&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;md&quot;</span></code></pre></p><h3 id=".E5.AD.97.E6.AE.B5.E8.AF.B4.E6.98.8E.EF.BC.9A3">字段说明：</h3><table><thead><tr><th>字段名</th><th>类型</th><th>说明</th></tr></thead><tbody><tr><td><code>table_style</code></td><td>String</td><td>指定表格内容的输出格式。可用值：<br>• <code>&quot;html&quot;</code>：以 HTML 表格形式返回，适合网页展示。<br>• <code>&quot;md&quot;</code>：以 Markdown 表格语法返回，适合文档或 Markdown 渲染环境。</td></tr></tbody></table>
 	SplitRule *string `json:"SplitRule,omitnil,omitempty" name:"SplitRule"`
 
-	// 文档更新频率，默认值为0不更新
+	// <p>文档更新频率，默认值为0不更新</p>
 	UpdatePeriodInfo *UpdatePeriodInfo `json:"UpdatePeriodInfo,omitnil,omitempty" name:"UpdatePeriodInfo"`
 
-	// 文档生效域: 1-不生效；2-仅开发域生效；3-仅发布域生效；4-开发域和发布域均生效
-	// 默认值：应用内默认知识库为2，共享知识库为4。
+	// <p>文档生效域: 1-不生效；2-仅开发域生效；3-仅发布域生效；4-开发域和发布域均生效<br>默认值：应用内默认知识库为2，共享知识库为4。</p>
 	EnableScope *int64 `json:"EnableScope,omitnil,omitempty" name:"EnableScope"`
+
+	// <p>文件url 文件的 FileUrl、CosUrl必须提供一个，如果都提供，只使用CosUrl</p>
+	FileUrl *string `json:"FileUrl,omitnil,omitempty" name:"FileUrl"`
 }
 
 type SaveDocRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用ID。应用ID 获取方法参看[如何获取   BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
-	// 导入知识库文档时，该参数填入知识库 ID。
+	// <p>应用ID。应用ID 获取方法参看<a href="https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa">如何获取   BotBizId</a><br>导入知识库文档时，该参数填入知识库 ID。</p>
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
-	// 文件名，需要包含文件扩展名
+	// <p>文件名，需要包含文件扩展名</p>
 	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
 
-	// 文档支持下面类型
-	// pdf、doc、docx、ppt、mhtml、pptx、wps、ppsx，单个文件不超过200MB；
-	// xlsx、xls、md、txt、csv、html，单个文件不超过20MB；
-	// 
-	// 图片支持下面类型：
-	// jpg、png、jpeg、tiff、bmp、gif，单个文件不超过50MB
+	// <p>文档支持下面类型<br>pdf、doc、docx、ppt、mhtml、pptx、wps、ppsx，单个文件不超过200MB；<br>xlsx、xls、md、txt、csv、html，单个文件不超过20MB；</p><p>图片支持下面类型：<br>jpg、png、jpeg、tiff、bmp、gif，单个文件不超过50MB</p>
 	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
 
-	// 平台cos路径，与DescribeStorageCredential接口查询UploadPath参数保持一致
+	// <p>平台cos路径，与DescribeStorageCredential接口查询UploadPath参数保持一致</p>
 	CosUrl *string `json:"CosUrl,omitnil,omitempty" name:"CosUrl"`
 
-	// ETag 全称为 Entity Tag，是对象被创建时标识对象内容的信息标签，可用于检查对象的内容是否发生变化 成功上传cos后，从返回头中获取
+	// <p>ETag 全称为 Entity Tag，是对象被创建时标识对象内容的信息标签，可用于检查对象的内容是否发生变化 成功上传cos后，从返回头中获取</p>
 	ETag *string `json:"ETag,omitnil,omitempty" name:"ETag"`
 
-	// cos_hash x-cos-hash-crc64ecma 头部中的 CRC64编码进行校验上传到云端的文件和本地文件的一致性  
-	// 成功上传cos后，从返回头中获取
-	// 
-	// 请注意：
-	// cos_hash为文档唯一性标识，与文件名无关 相同的cos_hash会被判定为重复文档
+	// <p>cos_hash x-cos-hash-crc64ecma 头部中的 CRC64编码进行校验上传到云端的文件和本地文件的一致性<br>成功上传cos后，从返回头中获取</p><p>请注意：<br>cos_hash为文档唯一性标识，与文件名无关 相同的cos_hash会被判定为重复文档</p>
 	CosHash *string `json:"CosHash,omitnil,omitempty" name:"CosHash"`
 
-	// 文件大小
+	// <p>文件大小</p>
 	Size *string `json:"Size,omitnil,omitempty" name:"Size"`
 
-	// 标签适用范围，1:全部，2:按条件。默认为1。
+	// <p>标签适用范围，1:全部，2:按条件。默认为1。</p>
 	AttrRange *uint64 `json:"AttrRange,omitnil,omitempty" name:"AttrRange"`
 
-	// 来源（0 从本地文档导入），默认值为0
+	// <p>来源（0 从本地文档导入），默认值为0</p>
 	Source *int64 `json:"Source,omitnil,omitempty" name:"Source"`
 
-	// 自定义链接地址, IsRefer为true的时候，该值才有意义
+	// <p>自定义链接地址, IsRefer为true的时候，该值才有意义</p>
 	WebUrl *string `json:"WebUrl,omitnil,omitempty" name:"WebUrl"`
 
-	// 标签引用
+	// <p>标签引用</p>
 	AttrLabels []*AttrLabelRefer `json:"AttrLabels,omitnil,omitempty" name:"AttrLabels"`
 
-	// 外部引用链接类型 0：系统链接 1：自定义链接
-	// 值为1时，WebUrl 字段不能为空，否则不生效。
+	// <p>外部引用链接类型 0：系统链接 1：自定义链接<br>值为1时，WebUrl 字段不能为空，否则不生效。</p>
 	ReferUrlType *uint64 `json:"ReferUrlType,omitnil,omitempty" name:"ReferUrlType"`
 
-	// 有效开始时间，unix秒级时间戳，默认为0
+	// <p>有效开始时间，unix秒级时间戳，默认为0</p>
 	ExpireStart *string `json:"ExpireStart,omitnil,omitempty" name:"ExpireStart"`
 
-	// 有效结束时间，unix秒级时间戳，默认为0代表永久有效
+	// <p>有效结束时间，unix秒级时间戳，默认为0代表永久有效</p>
 	ExpireEnd *string `json:"ExpireEnd,omitnil,omitempty" name:"ExpireEnd"`
 
-	// 是否显示引用的文档来源(false不显示 true显示）默认false
+	// <p>是否显示引用的文档来源(false不显示 true显示）默认false</p>
 	IsRefer *bool `json:"IsRefer,omitnil,omitempty" name:"IsRefer"`
 
-	// 文档操作类型：1：批量导入（批量导入问答对）；2:文档导入（正常导入单个文档） 默认为2 <br> 请注意，opt=1的时候请从腾讯云智能体开发平台页面下载excel模板
+	// <p>文档操作类型：1：批量导入（批量导入问答对）；2:文档导入（正常导入单个文档） 默认为2 <br> 请注意，opt=1的时候请从腾讯云智能体开发平台页面下载excel模板</p>
 	Opt *uint64 `json:"Opt,omitnil,omitempty" name:"Opt"`
 
-	// 分类ID
+	// <p>分类ID</p>
 	CateBizId *string `json:"CateBizId,omitnil,omitempty" name:"CateBizId"`
 
-	// 是否可下载，IsRefer为true并且ReferUrlType为0时，该值才有意义
+	// <p>是否可下载，IsRefer为true并且ReferUrlType为0时，该值才有意义</p>
 	IsDownload *bool `json:"IsDownload,omitnil,omitempty" name:"IsDownload"`
 
-	// 重复文档处理方式，按顺序匹配第一个满足条件的方式处理
+	// <p>重复文档处理方式，按顺序匹配第一个满足条件的方式处理</p>
 	DuplicateFileHandles []*DuplicateFileHandle `json:"DuplicateFileHandles,omitnil,omitempty" name:"DuplicateFileHandles"`
 
-	// 自定义切分规则
-	// 
-	// 请求参数为一个 **JSON Object**，具体格式可参见接口示例值。包含以下主要字段：
-	// 
-	// | 字段名             | 类型      | 说明                                   |
-	// |--------------------|--------|----------------------------------------|
-	// | `xlsx_splitter`    | Object   | **Excel（xlsx）文件切分策略配置**，仅当处理 Excel 文件时有效 |
-	// | `common_splitter`  | Object  | **通用文件（如 txt、pdf 等）切分策略配置**，按页或按标签切分 |
-	// | `table_style`      | String | 表格内容的输出格式，如 HTML 或 Markdown |
-	// 
-	// ---
-	// 
-	// ## `xlsx_splitter`（Excel 切分策略）
-	// 
-	// 用于配置 **表格文件的切分方式**。
-	// **类型：Object**
-	// 
-	// ```json
-	// "xlsx_splitter": {
-	//   "header_interval": [1, 2],
-	//   "content_start": 10,
-	//   "split_row": 2
-	// }
-	// ```
-	// 
-	// ### 字段说明：
-	// 
-	// | 字段名            | 类型   | 说明                                                                 |
-	// |-------------------|--------|----------------------------------------------------------------------|
-	// | `header_interval` | Array\<Number\>  | 表头所在的行区间，格式为 `[起始行, 结束行]`，**行号从 1 开始计数**。例如 `[1, 2]` 表示第 1~2 行为表头。 |
-	// | `content_start`   | Number  | **表格内容的起始行号（从 1 开始）**。 |
-	// | `split_row`       | Number   | **切分行数**。                   |
-	// 
-	// ---
-	// ## `common_splitter`（通用文件切分策略）
-	// 
-	// 用于配置 **非 Excel 文件（如 TXT、PDF、DOCX 等）的切分方式**，支持两种策略：**按页切分（page）** 或 **按标识符切分（tag）**。
-	// 
-	// **类型：Object**
-	// 
-	// ```json
-	// "common_splitter": {
-	//   "splitter": "page",
-	//   "page_splitter": {
-	//     "chunk_length": 1000,
-	//     "chunk_overlap_length": 100
-	//   }
-	// }
-	// ```
-	// 
-	// ### 字段说明：
-	// 
-	// | 字段名            | 类型     | 说明                                                                 |
-	// |-------------------|--------|---------------------------------------------------|
-	// | `splitter`        | String  | 切分策略类型，可选值为：`"page"`（按页切分） 或 `"tag"`（按标识符切分）。 |
-	// | `page_splitter`   | Object   | **按页切分的配置**。                                         |
-	// | `page_splitter.chunk_length`   | 1000    | **切片最大长度**。              |
-	// | `page_splitter.chunk_overlap_length`  | 100    | **切片重叠长度**。  |
-	// | `tag_splitter`             | Object          | **自定义切分配置**。             |
-	// | `tag_splitter.tag`         | Array\<String\>    | **切分标识符**。                             |
-	// | `tag_splitter.chunk_length`| Number       | **切片最大长度**。                                                               |
-	// | `tag_splitter.chunk_overlap_length` | Number    | **切块重叠长度**。                                                  |
-	// 
-	// 🔹 **补充说明：**
-	// 
-	// - `splitter` 字段的值可以是：
-	//   - `"page"`：只使用按页切分逻辑，此时只需要关心 `page_splitter` 相关字段。
-	//   - `"tag"`：只使用按标识符（如分号、换行等）切分逻辑，此时关注 `tag_splitter`。
-	// ---
-	// 
-	// ##  `table_style`（表格输出样式）
-	// 
-	// 用于指定 **表格类内容（比如从 Excel 或 CSV 中提取的表格）最终以何种格式返回**，方便前端展示或后续处理。
-	// 
-	// **类型：String**
-	// 
-	// ```json
-	// "table_style": "md"
-	// ```
-	// 
-	// ### 字段说明：
-	// 
-	// | 字段名       | 类型   | 说明                                                                 |
-	// |--------------|--------|----------------------------------------------------------------------|
-	// | `table_style` | String | 指定表格内容的输出格式。可用值：<br>• `"html"`：以 HTML 表格形式返回，适合网页展示。<br>• `"md"`：以 Markdown 表格语法返回，适合文档或 Markdown 渲染环境。|
+	// <p>自定义切分规则</p><p>请求参数为一个 <strong>JSON Object</strong>，具体格式可参见接口示例值。包含以下主要字段：</p><table><thead><tr><th>字段名</th><th>类型</th><th>说明</th></tr></thead><tbody><tr><td><code>xlsx_splitter</code></td><td>Object</td><td><strong>Excel（xlsx）文件切分策略配置</strong>，仅当处理 Excel 文件时有效</td></tr><tr><td><code>common_splitter</code></td><td>Object</td><td><strong>通用文件（如 txt、pdf 等）切分策略配置</strong>，按页或按标签切分</td></tr><tr><td><code>table_style</code></td><td>String</td><td>表格内容的输出格式，如 HTML 或 Markdown</td></tr></tbody></table><hr><h2 id=".3Cdx-inline-code-holder.3E.3C.2Fdx-inline-code-holder.3E.EF.BC.88Excel-.E5.88.87.E5.88.86.E7.AD.96.E7.95.A5.EF.BC.89"><code>xlsx_splitter</code>（Excel 切分策略）</h2><p>用于配置 <strong>表格文件的切分方式</strong>。<br><strong>类型：Object</strong></p><p><pre><code class="language-json"><span class="hljs-attr">&quot;xlsx_splitter&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>  <span class="hljs-attr">&quot;header_interval&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-number">1</span><span class="hljs-punctuation">,</span> <span class="hljs-number">2</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>  <span class="hljs-attr">&quot;content_start&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">10</span><span class="hljs-punctuation">,</span>  <span class="hljs-attr">&quot;split_row&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">2</span><span class="hljs-punctuation">}</span></code></pre></p><h3 id=".E5.AD.97.E6.AE.B5.E8.AF.B4.E6.98.8E.EF.BC.9A">字段说明：</h3><table><thead><tr><th>字段名</th><th>类型</th><th>说明</th></tr></thead><tbody><tr><td><code>header_interval</code></td><td>Array&lt;Number&gt;</td><td>表头所在的行区间，格式为 <code>[起始行, 结束行]</code>，<strong>行号从 1 开始计数</strong>。例如 <code>[1, 2]</code> 表示第 1~2 行为表头。</td></tr><tr><td><code>content_start</code></td><td>Number</td><td><strong>表格内容的起始行号（从 1 开始）</strong>。</td></tr><tr><td><code>split_row</code></td><td>Number</td><td><strong>切分行数</strong>。</td></tr></tbody></table><hr><h2 id=".3Cdx-inline-code-holder.3E.3C.2Fdx-inline-code-holder.3E.EF.BC.88.E9.80.9A.E7.94.A8.E6.96.87.E4.BB.B6.E5.88.87.E5.88.86.E7.AD.96.E7.95.A5.EF.BC.89"><code>common_splitter</code>（通用文件切分策略）</h2><p>用于配置 <strong>非 Excel 文件（如 TXT、PDF、DOCX 等）的切分方式</strong>，支持两种策略：<strong>按页切分（page）</strong> 或 <strong>按标识符切分（tag）</strong>。</p><p><strong>类型：Object</strong></p><p><pre><code class="language-json"><span class="hljs-attr">&quot;common_splitter&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>  <span class="hljs-attr">&quot;splitter&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;page&quot;</span><span class="hljs-punctuation">,</span>  <span class="hljs-attr">&quot;page_splitter&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>    <span class="hljs-attr">&quot;chunk_length&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1000</span><span class="hljs-punctuation">,</span>    <span class="hljs-attr">&quot;chunk_overlap_length&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">100</span>  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">}</span></code></pre></p><h3 id=".E5.AD.97.E6.AE.B5.E8.AF.B4.E6.98.8E.EF.BC.9A2">字段说明：</h3><table><thead><tr><th>字段名</th><th>类型</th><th>说明</th></tr></thead><tbody><tr><td><code>splitter</code></td><td>String</td><td>切分策略类型，可选值为：<code>&quot;page&quot;</code>（按页切分） 或 <code>&quot;tag&quot;</code>（按标识符切分）。</td></tr><tr><td><code>page_splitter</code></td><td>Object</td><td><strong>按页切分的配置</strong>。</td></tr><tr><td><code>page_splitter.chunk_length</code></td><td>1000</td><td><strong>切片最大长度</strong>。</td></tr><tr><td><code>page_splitter.chunk_overlap_length</code></td><td>100</td><td><strong>切片重叠长度</strong>。</td></tr><tr><td><code>tag_splitter</code></td><td>Object</td><td><strong>自定义切分配置</strong>。</td></tr><tr><td><code>tag_splitter.tag</code></td><td>Array&lt;String&gt;</td><td><strong>切分标识符</strong>。</td></tr><tr><td><code>tag_splitter.chunk_length</code></td><td>Number</td><td><strong>切片最大长度</strong>。</td></tr><tr><td><code>tag_splitter.chunk_overlap_length</code></td><td>Number</td><td><strong>切块重叠长度</strong>。</td></tr></tbody></table><p>???? <strong>补充说明：</strong></p><ul><li><code>splitter</code> 字段的值可以是：<ul><li><code>&quot;page&quot;</code>：只使用按页切分逻辑，此时只需要关心 <code>page_splitter</code> 相关字段。</li><li><code>&quot;tag&quot;</code>：只使用按标识符（如分号、换行等）切分逻辑，此时关注 <code>tag_splitter</code>。</li></ul></li></ul><hr><h2 id=".3Cdx-inline-code-holder.3E.3C.2Fdx-inline-code-holder.3E.EF.BC.88.E8.A1.A8.E6.A0.BC.E8.BE.93.E5.87.BA.E6.A0.B7.E5.BC.8F.EF.BC.89"><code>table_style</code>（表格输出样式）</h2><p>用于指定 <strong>表格类内容（比如从 Excel 或 CSV 中提取的表格）最终以何种格式返回</strong>，方便前端展示或后续处理。</p><p><strong>类型：String</strong></p><p><pre><code class="language-json"><span class="hljs-attr">&quot;table_style&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;md&quot;</span></code></pre></p><h3 id=".E5.AD.97.E6.AE.B5.E8.AF.B4.E6.98.8E.EF.BC.9A3">字段说明：</h3><table><thead><tr><th>字段名</th><th>类型</th><th>说明</th></tr></thead><tbody><tr><td><code>table_style</code></td><td>String</td><td>指定表格内容的输出格式。可用值：<br>• <code>&quot;html&quot;</code>：以 HTML 表格形式返回，适合网页展示。<br>• <code>&quot;md&quot;</code>：以 Markdown 表格语法返回，适合文档或 Markdown 渲染环境。</td></tr></tbody></table>
 	SplitRule *string `json:"SplitRule,omitnil,omitempty" name:"SplitRule"`
 
-	// 文档更新频率，默认值为0不更新
+	// <p>文档更新频率，默认值为0不更新</p>
 	UpdatePeriodInfo *UpdatePeriodInfo `json:"UpdatePeriodInfo,omitnil,omitempty" name:"UpdatePeriodInfo"`
 
-	// 文档生效域: 1-不生效；2-仅开发域生效；3-仅发布域生效；4-开发域和发布域均生效
-	// 默认值：应用内默认知识库为2，共享知识库为4。
+	// <p>文档生效域: 1-不生效；2-仅开发域生效；3-仅发布域生效；4-开发域和发布域均生效<br>默认值：应用内默认知识库为2，共享知识库为4。</p>
 	EnableScope *int64 `json:"EnableScope,omitnil,omitempty" name:"EnableScope"`
+
+	// <p>文件url 文件的 FileUrl、CosUrl必须提供一个，如果都提供，只使用CosUrl</p>
+	FileUrl *string `json:"FileUrl,omitnil,omitempty" name:"FileUrl"`
 }
 
 func (r *SaveDocRequest) ToJsonString() string {
@@ -12863,6 +12696,7 @@ func (r *SaveDocRequest) FromJsonString(s string) error {
 	delete(f, "SplitRule")
 	delete(f, "UpdatePeriodInfo")
 	delete(f, "EnableScope")
+	delete(f, "FileUrl")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SaveDocRequest has unknown keys!", "")
 	}
@@ -12871,19 +12705,19 @@ func (r *SaveDocRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SaveDocResponseParams struct {
-	// 文档ID
+	// <p>文档ID</p>
 	DocBizId *string `json:"DocBizId,omitnil,omitempty" name:"DocBizId"`
 
-	// 导入错误信息
+	// <p>导入错误信息</p>
 	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
 
-	// 错误链接
+	// <p>错误链接</p>
 	ErrorLink *string `json:"ErrorLink,omitnil,omitempty" name:"ErrorLink"`
 
-	// 错误链接文本
+	// <p>错误链接文本</p>
 	ErrorLinkText *string `json:"ErrorLinkText,omitnil,omitempty" name:"ErrorLinkText"`
 
-	// 重复类型，0：未重复，其他取值请参考入参DuplicateFileHandle结构体的CheckType字段
+	// <p>重复类型，0：未重复，其他取值请参考入参DuplicateFileHandle结构体的CheckType字段</p>
 	DuplicateFileCheckType *uint64 `json:"DuplicateFileCheckType,omitnil,omitempty" name:"DuplicateFileCheckType"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -13387,6 +13221,9 @@ type UnsatisfiedReply struct {
 
 	// <p>自定义反馈</p>
 	FeedbackContent *string `json:"FeedbackContent,omitnil,omitempty" name:"FeedbackContent"`
+
+	// <p>用户</p>
+	Visitor *string `json:"Visitor,omitnil,omitempty" name:"Visitor"`
 }
 
 type UpdatePeriodInfo struct {
@@ -13864,19 +13701,19 @@ type WidgetAction struct {
 }
 
 type WidgetParam struct {
-	// 参数名称
+	// <p>参数名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 参数类型
+	// <p>参数类型</p><p>枚举值：</p><ul><li>0： string</li><li>1： int</li><li>2： float</li><li>3： bool</li><li>4： object</li><li>5： array_string</li><li>6： array_int</li><li>7： array_float</li><li>8： array_bool</li><li>9： array_object</li><li>20： array_array</li></ul>
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 子参数
+	// <p>子参数</p>
 	SubParams []*WidgetParam `json:"SubParams,omitnil,omitempty" name:"SubParams"`
 
-	// 默认值, Input未指定时，使用该值
+	// <p>默认值, Input未指定时，使用该值</p>
 	DefaultValue *string `json:"DefaultValue,omitnil,omitempty" name:"DefaultValue"`
 
-	// 输入的值
+	// <p>输入的值</p>
 	Input *AgentInput `json:"Input,omitnil,omitempty" name:"Input"`
 }
 

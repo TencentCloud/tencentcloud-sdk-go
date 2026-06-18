@@ -355,6 +355,67 @@ func (r *AttachDisksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type AttachRemoteDisksRequestParams struct {
+	// <p>指定待挂载单副本SSD硬盘的CVM实例。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>一个或多个待挂载的单副本SSD硬盘ID。</p>
+	RemoteDiskIds []*string `json:"RemoteDiskIds,omitnil,omitempty" name:"RemoteDiskIds"`
+}
+
+type AttachRemoteDisksRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>指定待挂载单副本SSD硬盘的CVM实例。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>一个或多个待挂载的单副本SSD硬盘ID。</p>
+	RemoteDiskIds []*string `json:"RemoteDiskIds,omitnil,omitempty" name:"RemoteDiskIds"`
+}
+
+func (r *AttachRemoteDisksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AttachRemoteDisksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "RemoteDiskIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AttachRemoteDisksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AttachRemoteDisksResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type AttachRemoteDisksResponse struct {
+	*tchttp.BaseResponse
+	Response *AttachRemoteDisksResponseParams `json:"Response"`
+}
+
+func (r *AttachRemoteDisksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AttachRemoteDisksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type AutoMountConfiguration struct {
 	// 要挂载到的实例ID。
 	InstanceId []*string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -1011,6 +1072,102 @@ func (r *CreateDisksResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateDisksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateRemoteDisksRequestParams struct {
+	// <p>单副本SSD硬盘计费类型。 </p><p>枚举值：</p><ul><li>PREPAID： 预付费，即包年包月</li><li>POSTPAID_BY_HOUR： 按小时后付费</li></ul>
+	DiskChargeType *string `json:"DiskChargeType,omitnil,omitempty" name:"DiskChargeType"`
+
+	// <p>单副本SSD硬盘大小，单位为GiB。</p><p>取值范围：[2000, 7000]</p>
+	DiskSize *uint64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
+
+	// <p>待挂载单副本SSD硬盘的CVM实例ID。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>实例所在的位置。通过该参数可以指定实例所属可用区，所属项目。若不指定项目，将在默认项目下进行创建。</p>
+	Placement *Placement `json:"Placement,omitnil,omitempty" name:"Placement"`
+
+	// <p>预付费模式，即包年包月相关参数设置。通过该参数指定包年包月单副本SSD硬盘的购买时长、是否设置自动续费等属性。 创建预付费单副本SSD硬盘该参数必传，创建按小时后付费单副本SSD硬盘无需传该参数。</p>
+	DiskChargePrepaid *RemoteDiskChargePrepaid `json:"DiskChargePrepaid,omitnil,omitempty" name:"DiskChargePrepaid"`
+
+	// <p>创建单副本SSD硬盘数量，不传则默认为1。</p>
+	DiskCount *uint64 `json:"DiskCount,omitnil,omitempty" name:"DiskCount"`
+
+	// <p>单副本SSD的显示名称。</p>
+	DiskName *string `json:"DiskName,omitnil,omitempty" name:"DiskName"`
+}
+
+type CreateRemoteDisksRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>单副本SSD硬盘计费类型。 </p><p>枚举值：</p><ul><li>PREPAID： 预付费，即包年包月</li><li>POSTPAID_BY_HOUR： 按小时后付费</li></ul>
+	DiskChargeType *string `json:"DiskChargeType,omitnil,omitempty" name:"DiskChargeType"`
+
+	// <p>单副本SSD硬盘大小，单位为GiB。</p><p>取值范围：[2000, 7000]</p>
+	DiskSize *uint64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
+
+	// <p>待挂载单副本SSD硬盘的CVM实例ID。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>实例所在的位置。通过该参数可以指定实例所属可用区，所属项目。若不指定项目，将在默认项目下进行创建。</p>
+	Placement *Placement `json:"Placement,omitnil,omitempty" name:"Placement"`
+
+	// <p>预付费模式，即包年包月相关参数设置。通过该参数指定包年包月单副本SSD硬盘的购买时长、是否设置自动续费等属性。 创建预付费单副本SSD硬盘该参数必传，创建按小时后付费单副本SSD硬盘无需传该参数。</p>
+	DiskChargePrepaid *RemoteDiskChargePrepaid `json:"DiskChargePrepaid,omitnil,omitempty" name:"DiskChargePrepaid"`
+
+	// <p>创建单副本SSD硬盘数量，不传则默认为1。</p>
+	DiskCount *uint64 `json:"DiskCount,omitnil,omitempty" name:"DiskCount"`
+
+	// <p>单副本SSD的显示名称。</p>
+	DiskName *string `json:"DiskName,omitnil,omitempty" name:"DiskName"`
+}
+
+func (r *CreateRemoteDisksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateRemoteDisksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DiskChargeType")
+	delete(f, "DiskSize")
+	delete(f, "InstanceId")
+	delete(f, "Placement")
+	delete(f, "DiskChargePrepaid")
+	delete(f, "DiskCount")
+	delete(f, "DiskName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRemoteDisksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateRemoteDisksResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateRemoteDisksResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateRemoteDisksResponseParams `json:"Response"`
+}
+
+func (r *CreateRemoteDisksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateRemoteDisksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1972,14 +2129,14 @@ func (r *DescribeDisksResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstancesDiskNumRequestParams struct {
-	// 云服务器实例ID，通过[DescribeInstances](/document/product/213/15728)接口查询。
+	// <p>云服务器实例ID，通过<a href="/document/product/213/15728">DescribeInstances</a>接口查询。</p>
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 }
 
 type DescribeInstancesDiskNumRequest struct {
 	*tchttp.BaseRequest
 	
-	// 云服务器实例ID，通过[DescribeInstances](/document/product/213/15728)接口查询。
+	// <p>云服务器实例ID，通过<a href="/document/product/213/15728">DescribeInstances</a>接口查询。</p>
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 }
 
@@ -2004,7 +2161,7 @@ func (r *DescribeInstancesDiskNumRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstancesDiskNumResponseParams struct {
-	// 各个云服务器已挂载和可挂载弹性云盘的数量。
+	// <p>各个云服务器已挂载和可挂载弹性云盘的数量。</p>
 	AttachDetail []*AttachDetail `json:"AttachDetail,omitnil,omitempty" name:"AttachDetail"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2024,6 +2181,168 @@ func (r *DescribeInstancesDiskNumResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeInstancesDiskNumResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRemoteDiskConfigQuotaRequestParams struct {
+	// <p>过滤条件。支持的过滤条件如下：</p><ul><li>instance-family：按照机型族过滤。</li><li>instance-type：按照机型规格过滤。</li><li>zone：按照可用区过滤。</li><li>instance-charge-type：按照付费方式过滤。取值范围：PREPAID、POSTPAID_BY_HOUR、SPOTPAID、UNDERWRITE。</li></ul>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type DescribeRemoteDiskConfigQuotaRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>过滤条件。支持的过滤条件如下：</p><ul><li>instance-family：按照机型族过滤。</li><li>instance-type：按照机型规格过滤。</li><li>zone：按照可用区过滤。</li><li>instance-charge-type：按照付费方式过滤。取值范围：PREPAID、POSTPAID_BY_HOUR、SPOTPAID、UNDERWRITE。</li></ul>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *DescribeRemoteDiskConfigQuotaRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRemoteDiskConfigQuotaRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRemoteDiskConfigQuotaRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRemoteDiskConfigQuotaResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeRemoteDiskConfigQuotaResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRemoteDiskConfigQuotaResponseParams `json:"Response"`
+}
+
+func (r *DescribeRemoteDiskConfigQuotaResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRemoteDiskConfigQuotaResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRemoteDisksDeniedActionsRequestParams struct {
+	// <p>单副本SSD硬盘ID列表。每次批量请求单副本SSD硬盘的上限为 100。</p>
+	RemoteDiskIds []*string `json:"RemoteDiskIds,omitnil,omitempty" name:"RemoteDiskIds"`
+}
+
+type DescribeRemoteDisksDeniedActionsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>单副本SSD硬盘ID列表。每次批量请求单副本SSD硬盘的上限为 100。</p>
+	RemoteDiskIds []*string `json:"RemoteDiskIds,omitnil,omitempty" name:"RemoteDiskIds"`
+}
+
+func (r *DescribeRemoteDisksDeniedActionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRemoteDisksDeniedActionsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RemoteDiskIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRemoteDisksDeniedActionsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRemoteDisksDeniedActionsResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeRemoteDisksDeniedActionsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRemoteDisksDeniedActionsResponseParams `json:"Response"`
+}
+
+func (r *DescribeRemoteDisksDeniedActionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRemoteDisksDeniedActionsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRemoteDisksRequestParams struct {
+	// <p>过滤条件。此参数不支持与 RemoteDiskIds 同时指定。</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type DescribeRemoteDisksRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>过滤条件。此参数不支持与 RemoteDiskIds 同时指定。</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *DescribeRemoteDisksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRemoteDisksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRemoteDisksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRemoteDisksResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeRemoteDisksResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRemoteDisksResponseParams `json:"Response"`
+}
+
+func (r *DescribeRemoteDisksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRemoteDisksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2393,48 +2712,116 @@ func (r *DetachDisksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DetachRemoteDisksRequestParams struct {
+	// <p>指定从特定CVM实例上卸载单副本SSD硬盘。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>一个或多个将要卸载的单副本SSD硬盘ID。</p>
+	RemoteDiskIds []*string `json:"RemoteDiskIds,omitnil,omitempty" name:"RemoteDiskIds"`
+
+	// <p>强制解挂，内部使用。</p>
+	ForceDetach *bool `json:"ForceDetach,omitnil,omitempty" name:"ForceDetach"`
+}
+
+type DetachRemoteDisksRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>指定从特定CVM实例上卸载单副本SSD硬盘。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>一个或多个将要卸载的单副本SSD硬盘ID。</p>
+	RemoteDiskIds []*string `json:"RemoteDiskIds,omitnil,omitempty" name:"RemoteDiskIds"`
+
+	// <p>强制解挂，内部使用。</p>
+	ForceDetach *bool `json:"ForceDetach,omitnil,omitempty" name:"ForceDetach"`
+}
+
+func (r *DetachRemoteDisksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DetachRemoteDisksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "RemoteDiskIds")
+	delete(f, "ForceDetach")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DetachRemoteDisksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DetachRemoteDisksResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DetachRemoteDisksResponse struct {
+	*tchttp.BaseResponse
+	Response *DetachRemoteDisksResponseParams `json:"Response"`
+}
+
+func (r *DetachRemoteDisksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DetachRemoteDisksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DetailPrice struct {
-	// 描述计费项目名称。
-	PriceTitle *string `json:"PriceTitle,omitnil,omitempty" name:"PriceTitle"`
-
-	// 描述计费项目显示名称，用户控制台展示。
-	PriceName *string `json:"PriceName,omitnil,omitempty" name:"PriceName"`
-
-	// 预付费云盘预支费用的原价，单位：元。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	OriginalPrice *float64 `json:"OriginalPrice,omitnil,omitempty" name:"OriginalPrice"`
-
-	// 预付费云盘预支费用的折扣价，单位：元。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	DiscountPrice *float64 `json:"DiscountPrice,omitnil,omitempty" name:"DiscountPrice"`
-
-	// 后付费云盘原单价，单位：元。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	UnitPrice *float64 `json:"UnitPrice,omitnil,omitempty" name:"UnitPrice"`
-
-	// 后付费云盘折扣单价，单位：元。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	UnitPriceDiscount *float64 `json:"UnitPriceDiscount,omitnil,omitempty" name:"UnitPriceDiscount"`
-
-	// 后付费云盘的计价单元，取值范围：HOUR：表示后付费云盘的计价单元是按小时计算。
+	// 后付费云硬盘的计价单元，取值范围：HOUR：表示后付费云硬盘的计价单元是按小时计算。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChargeUnit *string `json:"ChargeUnit,omitnil,omitempty" name:"ChargeUnit"`
 
-	// 高精度预付费云盘预支费用的原价，单位：元。
+	// 预付费云硬盘预支费用的折扣价，单位：元。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OriginalPriceHigh *string `json:"OriginalPriceHigh,omitnil,omitempty" name:"OriginalPriceHigh"`
+	DiscountPrice *float64 `json:"DiscountPrice,omitnil,omitempty" name:"DiscountPrice"`
 
-	// 高精度预付费云盘预支费用的折扣价，单位：元。
+	// 高精度预付费云硬盘预支费用的折扣价，单位：元。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiscountPriceHigh *string `json:"DiscountPriceHigh,omitnil,omitempty" name:"DiscountPriceHigh"`
 
-	// 高精度后付费云盘原单价，单位：元。
+	// 预付费云硬盘预支费用的原价，单位：元。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UnitPriceHigh *string `json:"UnitPriceHigh,omitnil,omitempty" name:"UnitPriceHigh"`
+	OriginalPrice *float64 `json:"OriginalPrice,omitnil,omitempty" name:"OriginalPrice"`
 
-	// 高精度后付费云盘折扣单价，单位：元。
+	// 高精度预付费云硬盘预支费用的原价，单位：元。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OriginalPriceHigh *string `json:"OriginalPriceHigh,omitnil,omitempty" name:"OriginalPriceHigh"`
+
+	// 描述计费项目名称
+	PriceName *string `json:"PriceName,omitnil,omitempty" name:"PriceName"`
+
+	// 描述计费项目显示名称，用户控制台展示
+	PriceTitle *string `json:"PriceTitle,omitnil,omitempty" name:"PriceTitle"`
+
+	// 后付费云硬盘原单价，单位：元。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UnitPrice *float64 `json:"UnitPrice,omitnil,omitempty" name:"UnitPrice"`
+
+	// 后付费云硬盘折扣单价，单位：元。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UnitPriceDiscount *float64 `json:"UnitPriceDiscount,omitnil,omitempty" name:"UnitPriceDiscount"`
+
+	// 高精度后付费云硬盘折扣单价，单位：元。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UnitPriceDiscountHigh *string `json:"UnitPriceDiscountHigh,omitnil,omitempty" name:"UnitPriceDiscountHigh"`
+
+	// 高精度后付费云硬盘原单价，单位：元。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UnitPriceHigh *string `json:"UnitPriceHigh,omitnil,omitempty" name:"UnitPriceHigh"`
 }
 
 type Disk struct {
@@ -2809,6 +3196,81 @@ func (r *InitializeDisksResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type InquirePriceCreateRemoteDisksRequestParams struct {
+	// <p>单副本SSD硬盘计费类型。</p><p>枚举值：</p><ul><li>PREPAID： 预付费，即包年包月</li><li>POSTPAID_BY_HOUR： 按小时后付费</li></ul>
+	DiskChargeType *string `json:"DiskChargeType,omitnil,omitempty" name:"DiskChargeType"`
+
+	// <p>单副本SSD硬盘大小，单位为GiB。</p><p>取值范围：[2000, 7000]</p>
+	DiskSize *uint64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
+
+	// <p>预付费模式，即包年包月相关参数设置。通过该参数指定包年包月云盘的购买时长、是否设置自动续费等属性。 创建预付费云盘该参数必传，创建按小时后付费云盘无需传该参数。</p>
+	DiskChargePrepaid *RemoteDiskChargePrepaid `json:"DiskChargePrepaid,omitnil,omitempty" name:"DiskChargePrepaid"`
+
+	// <p>购买单副本SSD硬盘的数量。不填则默认为1。</p>
+	DiskCount *uint64 `json:"DiskCount,omitnil,omitempty" name:"DiskCount"`
+}
+
+type InquirePriceCreateRemoteDisksRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>单副本SSD硬盘计费类型。</p><p>枚举值：</p><ul><li>PREPAID： 预付费，即包年包月</li><li>POSTPAID_BY_HOUR： 按小时后付费</li></ul>
+	DiskChargeType *string `json:"DiskChargeType,omitnil,omitempty" name:"DiskChargeType"`
+
+	// <p>单副本SSD硬盘大小，单位为GiB。</p><p>取值范围：[2000, 7000]</p>
+	DiskSize *uint64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
+
+	// <p>预付费模式，即包年包月相关参数设置。通过该参数指定包年包月云盘的购买时长、是否设置自动续费等属性。 创建预付费云盘该参数必传，创建按小时后付费云盘无需传该参数。</p>
+	DiskChargePrepaid *RemoteDiskChargePrepaid `json:"DiskChargePrepaid,omitnil,omitempty" name:"DiskChargePrepaid"`
+
+	// <p>购买单副本SSD硬盘的数量。不填则默认为1。</p>
+	DiskCount *uint64 `json:"DiskCount,omitnil,omitempty" name:"DiskCount"`
+}
+
+func (r *InquirePriceCreateRemoteDisksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InquirePriceCreateRemoteDisksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DiskChargeType")
+	delete(f, "DiskSize")
+	delete(f, "DiskChargePrepaid")
+	delete(f, "DiskCount")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InquirePriceCreateRemoteDisksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type InquirePriceCreateRemoteDisksResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type InquirePriceCreateRemoteDisksResponse struct {
+	*tchttp.BaseResponse
+	Response *InquirePriceCreateRemoteDisksResponseParams `json:"Response"`
+}
+
+func (r *InquirePriceCreateRemoteDisksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InquirePriceCreateRemoteDisksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type InquirePriceModifyDiskBackupQuotaRequestParams struct {
 	// 云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。
 	DiskId *string `json:"DiskId,omitnil,omitempty" name:"DiskId"`
@@ -2933,6 +3395,67 @@ func (r *InquirePriceModifyDiskExtraPerformanceResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *InquirePriceModifyDiskExtraPerformanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type InquirePriceRenewRemoteDisksRequestParams struct {
+	// <p>预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月云盘的购买时长。如果在该参数中指定CurInstanceDeadline，则会按对齐到子机到期时间来续费。如果是批量续费询价，该参数与Disks参数一一对应，元素数量需保持一致。</p>
+	DiskChargePrepaidSet []*RemoteDiskChargePrepaid `json:"DiskChargePrepaidSet,omitnil,omitempty" name:"DiskChargePrepaidSet"`
+
+	// <p>一个或多个单副本SSD硬盘ID。</p>
+	RemoteDiskIds []*string `json:"RemoteDiskIds,omitnil,omitempty" name:"RemoteDiskIds"`
+}
+
+type InquirePriceRenewRemoteDisksRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月云盘的购买时长。如果在该参数中指定CurInstanceDeadline，则会按对齐到子机到期时间来续费。如果是批量续费询价，该参数与Disks参数一一对应，元素数量需保持一致。</p>
+	DiskChargePrepaidSet []*RemoteDiskChargePrepaid `json:"DiskChargePrepaidSet,omitnil,omitempty" name:"DiskChargePrepaidSet"`
+
+	// <p>一个或多个单副本SSD硬盘ID。</p>
+	RemoteDiskIds []*string `json:"RemoteDiskIds,omitnil,omitempty" name:"RemoteDiskIds"`
+}
+
+func (r *InquirePriceRenewRemoteDisksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InquirePriceRenewRemoteDisksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DiskChargePrepaidSet")
+	delete(f, "RemoteDiskIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InquirePriceRenewRemoteDisksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type InquirePriceRenewRemoteDisksResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type InquirePriceRenewRemoteDisksResponse struct {
+	*tchttp.BaseResponse
+	Response *InquirePriceRenewRemoteDisksResponseParams `json:"Response"`
+}
+
+func (r *InquirePriceRenewRemoteDisksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InquirePriceRenewRemoteDisksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3648,6 +4171,74 @@ func (r *ModifyDisksRenewFlagResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyRemoteDiskAttributesRequestParams struct {
+	// <p>一个或多个待操作的单副本SSD硬盘ID。如果传入多个单副本SSD硬盘ID，只支持所有硬盘修改为同一属性。</p>
+	RemoteDiskIds []*string `json:"RemoteDiskIds,omitnil,omitempty" name:"RemoteDiskIds"`
+
+	// <p>新的单副本SSD硬盘名称</p>
+	DiskName *string `json:"DiskName,omitnil,omitempty" name:"DiskName"`
+
+	// <p>新的单副本SSD硬盘项目ID。</p>
+	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+}
+
+type ModifyRemoteDiskAttributesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>一个或多个待操作的单副本SSD硬盘ID。如果传入多个单副本SSD硬盘ID，只支持所有硬盘修改为同一属性。</p>
+	RemoteDiskIds []*string `json:"RemoteDiskIds,omitnil,omitempty" name:"RemoteDiskIds"`
+
+	// <p>新的单副本SSD硬盘名称</p>
+	DiskName *string `json:"DiskName,omitnil,omitempty" name:"DiskName"`
+
+	// <p>新的单副本SSD硬盘项目ID。</p>
+	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+}
+
+func (r *ModifyRemoteDiskAttributesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyRemoteDiskAttributesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RemoteDiskIds")
+	delete(f, "DiskName")
+	delete(f, "ProjectId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRemoteDiskAttributesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyRemoteDiskAttributesResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyRemoteDiskAttributesResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyRemoteDiskAttributesResponseParams `json:"Response"`
+}
+
+func (r *ModifyRemoteDiskAttributesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyRemoteDiskAttributesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifySnapshotAttributeRequestParams struct {
 	// 快照ID, 可通过[DescribeSnapshots](https://cloud.tencent.com/document/api/362/15647)查询。
 	SnapshotId *string `json:"SnapshotId,omitnil,omitempty" name:"SnapshotId"`
@@ -3798,23 +4389,23 @@ type Placement struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CageId *string `json:"CageId,omitnil,omitempty" name:"CageId"`
 
+	// 实例所属的独享集群ID。可通过 [DescribeDiskStoragePool](https://cloud.tencent.com/document/api/362/62143) 获取。作为入参时，表示对指定的CdcId独享集群的资源进行操作，可为空。 作为出参时，表示资源所属的独享集群的ID，可为空。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CdcId *string `json:"CdcId,omitnil,omitempty" name:"CdcId"`
+
+	// 独享集群名字。作为入参时，忽略。作为出参时，表示云硬盘所属的独享集群名，可为空。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CdcName *string `json:"CdcName,omitnil,omitempty" name:"CdcName"`
+
+	// 独享集群id。
+	DedicatedClusterId *string `json:"DedicatedClusterId,omitnil,omitempty" name:"DedicatedClusterId"`
+
 	// 实例所属项目ID，可通过DescribeProject获取。不填默认为0，表示默认项目。
 	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 实例所属项目名称，可通过[DescribeProject](/document/api/651/78725)获取。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectName *string `json:"ProjectName,omitnil,omitempty" name:"ProjectName"`
-
-	// 独享集群名字。作为入参时，忽略。作为出参时，表示云硬盘所属的独享集群名，可为空。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	CdcName *string `json:"CdcName,omitnil,omitempty" name:"CdcName"`
-
-	// 实例所属的独享集群ID。可通过 [DescribeDiskStoragePool](https://cloud.tencent.com/document/api/362/62143) 获取。作为入参时，表示对指定的CdcId独享集群的资源进行操作，可为空。 作为出参时，表示资源所属的独享集群的ID，可为空。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	CdcId *string `json:"CdcId,omitnil,omitempty" name:"CdcId"`
-
-	// 独享集群id。
-	DedicatedClusterId *string `json:"DedicatedClusterId,omitnil,omitempty" name:"DedicatedClusterId"`
 }
 
 type Policy struct {
@@ -3873,41 +4464,58 @@ type PrepayPrice struct {
 }
 
 type Price struct {
-	// 后付费云盘折扣单价，单位：元。
+	// 后付费云硬盘的计价单元，取值范围：HOUR：表示后付费云硬盘的计价单元是按小时计算。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UnitPriceDiscount *float64 `json:"UnitPriceDiscount,omitnil,omitempty" name:"UnitPriceDiscount"`
+	ChargeUnit *string `json:"ChargeUnit,omitnil,omitempty" name:"ChargeUnit"`
 
-	// 预付费云盘预支费用的折扣价，单位：元。
+	// 预付费云硬盘预支费用的折扣价，单位：元。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiscountPrice *float64 `json:"DiscountPrice,omitnil,omitempty" name:"DiscountPrice"`
 
-	// 后付费云盘原单价，单位：元。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	UnitPrice *float64 `json:"UnitPrice,omitnil,omitempty" name:"UnitPrice"`
-
-	// 高精度后付费云盘原单价, 单位：元
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	UnitPriceHigh *string `json:"UnitPriceHigh,omitnil,omitempty" name:"UnitPriceHigh"`
-
-	// 高精度预付费云盘预支费用的原价, 单位：元	。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	OriginalPriceHigh *string `json:"OriginalPriceHigh,omitnil,omitempty" name:"OriginalPriceHigh"`
-
-	// 预付费云盘预支费用的原价，单位：元。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	OriginalPrice *float64 `json:"OriginalPrice,omitnil,omitempty" name:"OriginalPrice"`
-
-	// 高精度预付费云盘预支费用的折扣价, 单位：元
+	// 高精度预付费云硬盘预支费用的折扣价，单位：元。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiscountPriceHigh *string `json:"DiscountPriceHigh,omitnil,omitempty" name:"DiscountPriceHigh"`
 
-	// 高精度后付费云盘折扣单价, 单位：元
+	// 预付费云硬盘预支费用的原价，单位：元。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OriginalPrice *float64 `json:"OriginalPrice,omitnil,omitempty" name:"OriginalPrice"`
+
+	// 高精度预付费云硬盘预支费用的原价，单位：元。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OriginalPriceHigh *string `json:"OriginalPriceHigh,omitnil,omitempty" name:"OriginalPriceHigh"`
+
+	// 后付费云硬盘原单价，单位：元。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UnitPrice *float64 `json:"UnitPrice,omitnil,omitempty" name:"UnitPrice"`
+
+	// 后付费云硬盘折扣单价，单位：元。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UnitPriceDiscount *float64 `json:"UnitPriceDiscount,omitnil,omitempty" name:"UnitPriceDiscount"`
+
+	// 高精度后付费云硬盘折扣单价，单位：元。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UnitPriceDiscountHigh *string `json:"UnitPriceDiscountHigh,omitnil,omitempty" name:"UnitPriceDiscountHigh"`
 
-	// 后付费云盘的计价单元，取值范围：<br><li>HOUR：表示后付费云盘的计价单元是按小时计算。</li>
+	// 高精度后付费云硬盘原单价，单位：元。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ChargeUnit *string `json:"ChargeUnit,omitnil,omitempty" name:"ChargeUnit"`
+	UnitPriceHigh *string `json:"UnitPriceHigh,omitnil,omitempty" name:"UnitPriceHigh"`
+}
+
+type RemoteDiskChargePrepaid struct {
+	// 购买单副本SSD硬盘的时长，默认单位为月，取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36。
+	Period *uint64 `json:"Period,omitnil,omitempty" name:"Period"`
+
+	// 需要将单副本SSD硬盘的到期时间与挂载的子机对齐时，可传入该参数。该参数表示子机当前的到期时间，此时Period如果传入，则表示子机需要续费的时长，单副本SSD硬盘会自动按对齐到子机续费后的到期时间续费。
+	CurInstanceDeadline *string `json:"CurInstanceDeadline,omitnil,omitempty" name:"CurInstanceDeadline"`
+
+	// 自动续费标识。取值范围：
+	// <ul>
+	//   <li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费</li>
+	//   <li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费</li>
+	//   <li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费</li>
+	// </ul>
+	// 默认取值：NOTIFY_AND_MANUAL_RENEW。
+	RenewFlag *string `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 }
 
 // Predefined struct for user
@@ -3972,21 +4580,82 @@ func (r *RenewDiskResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type RenewRemoteDiskRequestParams struct {
+	// <p>预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月单副本SSD硬盘的续费时长。 在云硬盘与挂载的实例一起续费的场景下，可以指定参数CurInstanceDeadline，此时单副本SSD硬盘会按对齐到实例续费后的到期时间来续费。</p>
+	DiskChargePrepaid *RemoteDiskChargePrepaid `json:"DiskChargePrepaid,omitnil,omitempty" name:"DiskChargePrepaid"`
+
+	// <p>单副本SSD硬盘ID。</p>
+	RemoteDiskId *string `json:"RemoteDiskId,omitnil,omitempty" name:"RemoteDiskId"`
+}
+
+type RenewRemoteDiskRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月单副本SSD硬盘的续费时长。 在云硬盘与挂载的实例一起续费的场景下，可以指定参数CurInstanceDeadline，此时单副本SSD硬盘会按对齐到实例续费后的到期时间来续费。</p>
+	DiskChargePrepaid *RemoteDiskChargePrepaid `json:"DiskChargePrepaid,omitnil,omitempty" name:"DiskChargePrepaid"`
+
+	// <p>单副本SSD硬盘ID。</p>
+	RemoteDiskId *string `json:"RemoteDiskId,omitnil,omitempty" name:"RemoteDiskId"`
+}
+
+func (r *RenewRemoteDiskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RenewRemoteDiskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DiskChargePrepaid")
+	delete(f, "RemoteDiskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RenewRemoteDiskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RenewRemoteDiskResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RenewRemoteDiskResponse struct {
+	*tchttp.BaseResponse
+	Response *RenewRemoteDiskResponseParams `json:"Response"`
+}
+
+func (r *RenewRemoteDiskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RenewRemoteDiskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ResizeDiskRequestParams struct {
-	// 云硬盘扩容后的大小，单位为GB，必须大于当前云硬盘大小。云盘大小取值范围参见云硬盘[产品分类](/document/product/362/2353)的说明。
+	// <p>云硬盘扩容后的大小，单位为GB，必须大于当前云硬盘大小。云盘大小取值范围参见云硬盘<a href="/document/product/362/2353">产品分类</a>的说明。</p>
 	DiskSize *uint64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
 
-	// 云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。该字段仅供单块云硬盘扩容时传入。
+	// <p>云硬盘ID， 通过<a href="/document/product/362/16315">DescribeDisks</a>接口查询。该字段仅供单块云硬盘扩容时传入。</p>
 	DiskId *string `json:"DiskId,omitnil,omitempty" name:"DiskId"`
 }
 
 type ResizeDiskRequest struct {
 	*tchttp.BaseRequest
 	
-	// 云硬盘扩容后的大小，单位为GB，必须大于当前云硬盘大小。云盘大小取值范围参见云硬盘[产品分类](/document/product/362/2353)的说明。
+	// <p>云硬盘扩容后的大小，单位为GB，必须大于当前云硬盘大小。云盘大小取值范围参见云硬盘<a href="/document/product/362/2353">产品分类</a>的说明。</p>
 	DiskSize *uint64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
 
-	// 云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。该字段仅供单块云硬盘扩容时传入。
+	// <p>云硬盘ID， 通过<a href="/document/product/362/16315">DescribeDisks</a>接口查询。该字段仅供单块云硬盘扩容时传入。</p>
 	DiskId *string `json:"DiskId,omitnil,omitempty" name:"DiskId"`
 }
 
@@ -4041,89 +4710,74 @@ type SharePermission struct {
 }
 
 type Snapshot struct {
-	// 快照所在的位置。
+	// <p>快照所在的位置。</p>
 	Placement *Placement `json:"Placement,omitnil,omitempty" name:"Placement"`
 
-	// 是否为跨地域复制的快照。取值范围：
-	// <ul>
-	//     <li>true：表示为跨地域复制的快照。</li>
-	//     <li>false：本地域的快照。</li>
-	// </ul>
+	// <p>是否为跨地域复制的快照。取值范围：</p><ul>    <li>true：表示为跨地域复制的快照。</li>    <li>false：本地域的快照。</li></ul>
 	CopyFromRemote *bool `json:"CopyFromRemote,omitnil,omitempty" name:"CopyFromRemote"`
 
-	// 快照的状态。取值范围：
-	// <ul>
-	//     <li>NORMAL：正常</li>
-	//     <li>CREATING：创建中</li>
-	//     <li>ROLLBACKING：回滚中</li>
-	//     <li>COPYING_FROM_REMOTE：跨地域复制中</li>
-	//     <li>CHECKING_COPIED：复制校验中</li>
-	//     <li>TORECYCLE：待回收</li>
-	// </ul>
+	// <p>快照的状态。取值范围：</p><ul>    <li>NORMAL：正常</li>    <li>CREATING：创建中</li>    <li>ROLLBACKING：回滚中</li>    <li>COPYING_FROM_REMOTE：跨地域复制中</li>    <li>CHECKING_COPIED：复制校验中</li>    <li>TORECYCLE：待回收</li></ul>
 	SnapshotState *string `json:"SnapshotState,omitnil,omitempty" name:"SnapshotState"`
 
-	// 是否为永久快照。取值范围：
-	// <ul>
-	//     <li>true：永久快照</li>
-	//     <li>false：非永久快照</li>
-	// </ul>
+	// <p>是否为永久快照。取值范围：</p><ul>    <li>true：永久快照</li>    <li>false：非永久快照</li></ul>
 	IsPermanent *bool `json:"IsPermanent,omitnil,omitempty" name:"IsPermanent"`
 
-	// 快照名称，用户自定义的快照别名。调用[ModifySnapshotAttribute](/document/product/362/15650)可修改此字段。
+	// <p>快照名称，用户自定义的快照别名。调用<a href="/document/product/362/15650">ModifySnapshotAttribute</a>可修改此字段。</p>
 	SnapshotName *string `json:"SnapshotName,omitnil,omitempty" name:"SnapshotName"`
 
-	// 快照到期时间。如果快照为永久保留，此字段为空。
+	// <p>快照到期时间。如果快照为永久保留，此字段为空。</p>
 	DeadlineTime *string `json:"DeadlineTime,omitnil,omitempty" name:"DeadlineTime"`
 
-	// 快照创建进度百分比，快照创建成功后此字段恒为100。
+	// <p>快照创建进度百分比，快照创建成功后此字段恒为100。</p>
 	Percent *uint64 `json:"Percent,omitnil,omitempty" name:"Percent"`
 
-	// 快照关联的镜像列表。
+	// <p>快照关联的镜像列表。</p>
 	Images []*Image `json:"Images,omitnil,omitempty" name:"Images"`
 
-	// 快照当前被共享数。
+	// <p>快照当前被共享数。</p>
 	ShareReference *uint64 `json:"ShareReference,omitnil,omitempty" name:"ShareReference"`
 
-	// 快照类型，目前该项取值可以为`PRIVATE_SNAPSHOT`（私有快照）或者`SHARED_SNAPSHOT`（共享快照）
+	// <p>快照类型，目前该项取值可以为<code>PRIVATE_SNAPSHOT</code>（私有快照）或者<code>SHARED_SNAPSHOT</code>（共享快照）</p>
 	SnapshotType *string `json:"SnapshotType,omitnil,omitempty" name:"SnapshotType"`
 
-	// 创建此快照的云硬盘大小，单位GiB。
+	// <p>创建此快照的云硬盘大小，单位GiB。</p>
 	DiskSize *uint64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
 
-	// 创建此快照的云硬盘ID。
+	// <p>创建此快照的云硬盘ID。</p>
 	DiskId *string `json:"DiskId,omitnil,omitempty" name:"DiskId"`
 
-	// 快照正在跨地域复制的目的地域，若没有则返回`[]`。
+	// <p>快照正在跨地域复制的目的地域，若没有则返回<code>[]</code>。</p>
 	CopyingToRegions []*string `json:"CopyingToRegions,omitnil,omitempty" name:"CopyingToRegions"`
 
-	// 是否为加密盘创建的快照。取值范围：
-	// <ul>
-	//     <li>true：该快照为加密盘创建的</li>
-	//     <li>false：非加密盘创建的快照</li>
-	// </ul>
+	// <p>是否为加密盘创建的快照。取值范围：</p><ul>    <li>true：该快照为加密盘创建的</li>    <li>false：非加密盘创建的快照</li></ul>
 	Encrypt *bool `json:"Encrypt,omitnil,omitempty" name:"Encrypt"`
 
-	// 快照的创建时间。
+	// <p>快照的创建时间。</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 快照关联的镜像个数。
+	// <p>快照关联的镜像个数。</p>
 	ImageCount *uint64 `json:"ImageCount,omitnil,omitempty" name:"ImageCount"`
 
-	// 创建此快照的云硬盘类型。取值范围：
-	// <ul>
-	//     <li>SYSTEM_DISK：系统盘</li>
-	//     <li>DATA_DISK：数据盘</li>
-	// </ul>
+	// <p>创建此快照的云硬盘类型。取值范围：</p><ul>    <li>SYSTEM_DISK：系统盘</li>    <li>DATA_DISK：数据盘</li></ul>
 	DiskUsage *string `json:"DiskUsage,omitnil,omitempty" name:"DiskUsage"`
 
-	// 快照ID。
+	// <p>快照ID。</p>
 	SnapshotId *string `json:"SnapshotId,omitnil,omitempty" name:"SnapshotId"`
 
-	// 快照开始共享的时间。
+	// <p>快照开始共享的时间。</p>
 	TimeStartShare *string `json:"TimeStartShare,omitnil,omitempty" name:"TimeStartShare"`
 
-	// 快照绑定的标签列表。
+	// <p>快照绑定的标签列表。</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>快照是否锁定。取值范围：</p><ul>    <li>true：已锁定</li>    <li>false：未锁定</li></ul>
+	IsLocked *bool `json:"IsLocked,omitnil,omitempty" name:"IsLocked"`
+
+	// <p>快照记录的最新修改时间</p>
+	LatestModifyTime *string `json:"LatestModifyTime,omitnil,omitempty" name:"LatestModifyTime"`
+
+	// <p>自动快照策略ID，仅当该快照由自动快照策略方式创建时才会返回。</p>
+	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitnil,omitempty" name:"AutoSnapshotPolicyId"`
 }
 
 type SnapshotCopyResult struct {
@@ -4188,6 +4842,111 @@ type SnapshotGroup struct {
 	// 来源自动快照策略ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitnil,omitempty" name:"AutoSnapshotPolicyId"`
+}
+
+// Predefined struct for user
+type SwitchParameterCreateRemoteDisksRequestParams struct {
+	// <p>实例所在的位置。通过该参数可以指定实例所属可用区、所属项目等属性。</p>
+	Placement *Placement `json:"Placement,omitnil,omitempty" name:"Placement"`
+}
+
+type SwitchParameterCreateRemoteDisksRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>实例所在的位置。通过该参数可以指定实例所属可用区、所属项目等属性。</p>
+	Placement *Placement `json:"Placement,omitnil,omitempty" name:"Placement"`
+}
+
+func (r *SwitchParameterCreateRemoteDisksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SwitchParameterCreateRemoteDisksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Placement")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SwitchParameterCreateRemoteDisksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SwitchParameterCreateRemoteDisksResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type SwitchParameterCreateRemoteDisksResponse struct {
+	*tchttp.BaseResponse
+	Response *SwitchParameterCreateRemoteDisksResponseParams `json:"Response"`
+}
+
+func (r *SwitchParameterCreateRemoteDisksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SwitchParameterCreateRemoteDisksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SwitchParameterRenewRemoteDisksRequestParams struct {
+
+}
+
+type SwitchParameterRenewRemoteDisksRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *SwitchParameterRenewRemoteDisksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SwitchParameterRenewRemoteDisksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SwitchParameterRenewRemoteDisksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SwitchParameterRenewRemoteDisksResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type SwitchParameterRenewRemoteDisksResponse struct {
+	*tchttp.BaseResponse
+	Response *SwitchParameterRenewRemoteDisksResponseParams `json:"Response"`
+}
+
+func (r *SwitchParameterRenewRemoteDisksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SwitchParameterRenewRemoteDisksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type Tag struct {
@@ -4256,6 +5015,60 @@ func (r *TerminateDisksResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *TerminateDisksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type TerminateRemoteDisksRequestParams struct {
+	// <p>一个或多个单副本SSD硬盘ID。</p>
+	RemoteDiskIds []*string `json:"RemoteDiskIds,omitnil,omitempty" name:"RemoteDiskIds"`
+}
+
+type TerminateRemoteDisksRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>一个或多个单副本SSD硬盘ID。</p>
+	RemoteDiskIds []*string `json:"RemoteDiskIds,omitnil,omitempty" name:"RemoteDiskIds"`
+}
+
+func (r *TerminateRemoteDisksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TerminateRemoteDisksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RemoteDiskIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TerminateRemoteDisksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type TerminateRemoteDisksResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type TerminateRemoteDisksResponse struct {
+	*tchttp.BaseResponse
+	Response *TerminateRemoteDisksResponseParams `json:"Response"`
+}
+
+func (r *TerminateRemoteDisksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TerminateRemoteDisksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

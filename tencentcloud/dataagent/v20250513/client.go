@@ -183,6 +183,74 @@ func (c *Client) AddSceneWithContext(ctx context.Context, request *AddSceneReque
     return
 }
 
+func NewAppendKnowledgeTaskRequest() (request *AppendKnowledgeTaskRequest) {
+    request = &AppendKnowledgeTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dataagent", APIVersion, "AppendKnowledgeTask")
+    
+    
+    return
+}
+
+func NewAppendKnowledgeTaskResponse() (response *AppendKnowledgeTaskResponse) {
+    response = &AppendKnowledgeTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// AppendKnowledgeTask
+// 追加文件
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALID = "InvalidParameter.Invalid"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) AppendKnowledgeTask(request *AppendKnowledgeTaskRequest) (response *AppendKnowledgeTaskResponse, err error) {
+    return c.AppendKnowledgeTaskWithContext(context.Background(), request)
+}
+
+// AppendKnowledgeTask
+// 追加文件
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALID = "InvalidParameter.Invalid"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) AppendKnowledgeTaskWithContext(ctx context.Context, request *AppendKnowledgeTaskRequest) (response *AppendKnowledgeTaskResponse, err error) {
+    if request == nil {
+        request = NewAppendKnowledgeTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dataagent", APIVersion, "AppendKnowledgeTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AppendKnowledgeTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAppendKnowledgeTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewChatAIRequest() (request *ChatAIRequest) {
     request = &ChatAIRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -851,6 +919,72 @@ func (c *Client) GetUploadJobDetailsWithContext(ctx context.Context, request *Ge
     return
 }
 
+func NewGetUserInstanceListRequest() (request *GetUserInstanceListRequest) {
+    request = &GetUserInstanceListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dataagent", APIVersion, "GetUserInstanceList")
+    
+    
+    return
+}
+
+func NewGetUserInstanceListResponse() (response *GetUserInstanceListResponse) {
+    response = &GetUserInstanceListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetUserInstanceList
+// 获取实例信息列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) GetUserInstanceList(request *GetUserInstanceListRequest) (response *GetUserInstanceListResponse, err error) {
+    return c.GetUserInstanceListWithContext(context.Background(), request)
+}
+
+// GetUserInstanceList
+// 获取实例信息列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) GetUserInstanceListWithContext(ctx context.Context, request *GetUserInstanceListRequest) (response *GetUserInstanceListResponse, err error) {
+    if request == nil {
+        request = NewGetUserInstanceListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dataagent", APIVersion, "GetUserInstanceList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetUserInstanceList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetUserInstanceListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyChunkRequest() (request *ModifyChunkRequest) {
     request = &ModifyChunkRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1123,6 +1257,74 @@ func (c *Client) QueryChunkListWithContext(ctx context.Context, request *QueryCh
     request.SetContext(ctx)
     
     response = NewQueryChunkListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryKnowledgeTaskRequest() (request *QueryKnowledgeTaskRequest) {
+    request = &QueryKnowledgeTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dataagent", APIVersion, "QueryKnowledgeTask")
+    
+    
+    return
+}
+
+func NewQueryKnowledgeTaskResponse() (response *QueryKnowledgeTaskResponse) {
+    response = &QueryKnowledgeTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// QueryKnowledgeTask
+// 查询文件任务状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALID = "InvalidParameter.Invalid"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) QueryKnowledgeTask(request *QueryKnowledgeTaskRequest) (response *QueryKnowledgeTaskResponse, err error) {
+    return c.QueryKnowledgeTaskWithContext(context.Background(), request)
+}
+
+// QueryKnowledgeTask
+// 查询文件任务状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALID = "InvalidParameter.Invalid"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) QueryKnowledgeTaskWithContext(ctx context.Context, request *QueryKnowledgeTaskRequest) (response *QueryKnowledgeTaskResponse, err error) {
+    if request == nil {
+        request = NewQueryKnowledgeTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dataagent", APIVersion, "QueryKnowledgeTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryKnowledgeTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryKnowledgeTaskResponse()
     err = c.Send(request, response)
     return
 }

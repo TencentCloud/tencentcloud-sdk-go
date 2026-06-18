@@ -1274,68 +1274,59 @@ type CasterDisplayInfo struct {
 }
 
 type CasterInfo struct {
-	// 导播台ID
+	// <p>导播台ID</p>
 	CasterId *uint64 `json:"CasterId,omitnil,omitempty" name:"CasterId"`
 
-	// 导播台名称
+	// <p>导播台名称</p>
 	CasterName *string `json:"CasterName,omitnil,omitempty" name:"CasterName"`
 
-	// 导播台上一次启动pgm的时间，值为unix时间戳。
+	// <p>导播台上一次启动pgm的时间，值为unix时间戳。</p>
 	StartLiveTime *uint64 `json:"StartLiveTime,omitnil,omitempty" name:"StartLiveTime"`
 
-	// 导播台的描述
+	// <p>导播台的描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 导播台创建时间，值为unix时间戳。
+	// <p>导播台创建时间，值为unix时间戳。</p>
 	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 导播台状态 
-	// 0：停止状态，无预监，无主监
-	// 1：无预监，有主监
-	// 2：有预监，无主监
-	// 3：有预监，有主监
+	// <p>导播台状态<br>0：停止状态，无预监，无主监<br>1：无预监，有主监<br>2：有预监，无主监<br>3：有预监，有主监</p>
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 导播台的过期时间戳。值为-1或unix时间戳。 
-	// 默认值为-1。 当值为-1时，表示该导播台永不过期。 
-	// 当值为正常unix时间戳时，导播台将在该时间过期。 
-	// 导播台过期后，预监与主监画面将自动停止，转推自动停止。 
-	// 点播、直播url将停止转拉，推流url需自行停止推流。
+	// <p>导播台的过期时间戳。值为-1或unix时间戳。<br>默认值为-1。 当值为-1时，表示该导播台永不过期。<br>当值为正常unix时间戳时，导播台将在该时间过期。<br>导播台过期后，预监与主监画面将自动停止，转推自动停止。<br>点播、直播url将停止转拉，推流url需自行停止推流。</p>
 	ExpireTime *int64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
-	// 导播台延时播放时间，单位为秒。 
+	// <p>导播台延时播放时间，单位为秒。</p>
 	DelayTime *uint64 `json:"DelayTime,omitnil,omitempty" name:"DelayTime"`
 
-	// 导播台主监输出的宽度，单位为像素。
+	// <p>导播台主监输出的宽度，单位为像素。</p>
 	PgmWidth *uint64 `json:"PgmWidth,omitnil,omitempty" name:"PgmWidth"`
 
-	// 导播台主监输出的高度，单位为像素。
+	// <p>导播台主监输出的高度，单位为像素。</p>
 	PgmHeight *uint64 `json:"PgmHeight,omitnil,omitempty" name:"PgmHeight"`
 
-	// 导播台主监输出的帧率。
+	// <p>导播台主监输出的帧率。</p>
 	PgmFps *uint64 `json:"PgmFps,omitnil,omitempty" name:"PgmFps"`
 
-	// 导播台主监输出的码率，单位为kbps
+	// <p>导播台主监输出的码率，单位为kbps</p>
 	PgmBitRate *uint64 `json:"PgmBitRate,omitnil,omitempty" name:"PgmBitRate"`
 
-	// 导播台主监输出的音频码率，单位为kbps。
+	// <p>导播台主监输出的音频码率，单位为kbps。</p>
 	PgmAudioBitRate *uint64 `json:"PgmAudioBitRate,omitnil,omitempty" name:"PgmAudioBitRate"`
 
-	// 导播台的计费类型。 
-	// 0 通用型 1 播单型。
-	// 注： 本参数暂无作用。
+	// <p>导播台的计费类型。<br>0 通用型 1 播单型。<br>注： 本参数暂无作用。</p>
 	FeeType *int64 `json:"FeeType,omitnil,omitempty" name:"FeeType"`
 
-	// 录制模板id。
+	// <p>录制模板id。</p>
 	RecordTemplateId *uint64 `json:"RecordTemplateId,omitnil,omitempty" name:"RecordTemplateId"`
 
-	// 录制状态。 
-	// 0：未录制 
-	// 1：录制中
+	// <p>录制状态。<br>0：未录制<br>1：录制中</p>
 	RecordStatus *uint64 `json:"RecordStatus,omitnil,omitempty" name:"RecordStatus"`
 
-	// 录制接口返回的taskid
+	// <p>录制接口返回的taskid</p>
 	RecordTaskId *string `json:"RecordTaskId,omitnil,omitempty" name:"RecordTaskId"`
+
+	// <p>导播台主监输出的编码方式</p><p>枚举值：</p><ul><li>h264： h264编码</li><li>h265： h265编码</li></ul><p>默认值：h264</p>
+	PgmVcodec *string `json:"PgmVcodec,omitnil,omitempty" name:"PgmVcodec"`
 }
 
 type CasterInputInfo struct {
@@ -2524,115 +2515,81 @@ func (r *CreateCasterPvwResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateCasterRequestParams struct {
-	// 导播台名称
+	// <p>导播台名称</p>
 	CasterName *string `json:"CasterName,omitnil,omitempty" name:"CasterName"`
 
-	// 导播台的描述
-	// 最大允许长度256
+	// <p>导播台的描述<br>最大允许长度256</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 导播台的过期时间戳。值为-1或unix时间戳。
-	// 默认值为-1。
-	// 当值为-1时，表示该导播台永不过期。
-	// 当值为正常unix时间戳时，导播台将在该时间过期。
-	// 导播台过期后，预监与主监画面将自动停止，转推自动停止。
-	// 点播、直播url将停止转拉，推流url需自行停止推流。
+	// <p>导播台的过期时间戳。值为-1或unix时间戳。<br>默认值为-1。<br>当值为-1时，表示该导播台永不过期。<br>当值为正常unix时间戳时，导播台将在该时间过期。<br>导播台过期后，预监与主监画面将自动停止，转推自动停止。<br>点播、直播url将停止转拉，推流url需自行停止推流。</p>
 	ExpireTime *int64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
-	// 导播台延时播放时间，单位为秒。
-	// 默认为0，最大支持300秒
+	// <p>导播台延时播放时间，单位为秒。<br>默认为0，最大支持300秒</p>
 	DelayTime *uint64 `json:"DelayTime,omitnil,omitempty" name:"DelayTime"`
 
-	// 导播台转场类型。
-	// 默认为空。
-	// 允许使用通过DescribeCasterTransitionTypes接口中查询到的转场类型。
+	// <p>导播台转场类型。<br>默认为空。<br>允许使用通过DescribeCasterTransitionTypes接口中查询到的转场类型。</p>
 	TransitionType *string `json:"TransitionType,omitnil,omitempty" name:"TransitionType"`
 
-	// 导播台主监输出的宽度，单位为像素。
-	// 默认为1280，最大允许4096。
+	// <p>导播台主监输出的宽度，单位为像素。<br>默认为1280，最大允许4096。</p>
 	PgmWidth *uint64 `json:"PgmWidth,omitnil,omitempty" name:"PgmWidth"`
 
-	// 导播台主监输出的高度，单位为像素。
-	// 默认为720，最大允许2160。
+	// <p>导播台主监输出的高度，单位为像素。<br>默认为720，最大允许2160。</p>
 	PgmHeight *uint64 `json:"PgmHeight,omitnil,omitempty" name:"PgmHeight"`
 
-	// 导播台主监输出的帧率。
-	// 默认为0，表示随源输出。
-	// 最大支持60。
+	// <p>导播台主监输出的帧率。<br>默认为0，表示随源输出。<br>最大支持60。</p>
 	PgmFps *uint64 `json:"PgmFps,omitnil,omitempty" name:"PgmFps"`
 
-	// 导播台主监输出的码率，单位为kbps。
-	// 默认为0，表示随源的码率输出。
-	// 最大允许10000kbps。
+	// <p>导播台主监输出的码率，单位为kbps。<br>默认为0，表示随源的码率输出。<br>最大允许10000kbps。</p>
 	PgmBitRate *uint64 `json:"PgmBitRate,omitnil,omitempty" name:"PgmBitRate"`
 
-	// 导播台的计费类型。
-	// 0 通用型 
-	// 1 播单型。
-	// 注： 本参数暂无作用。
+	// <p>导播台的计费类型。<br>0 通用型<br>1 播单型。<br>注： 本参数暂无作用。</p>
 	FeeType *int64 `json:"FeeType,omitnil,omitempty" name:"FeeType"`
 
-	// 导播台主监输出的音频码率，单位为kbps。
-	// 可选项：[0, 128, 192, 256]
-	// 默认值为0，表示随源的音频码率输出。
+	// <p>导播台主监输出的音频码率，单位为kbps。<br>可选项：[0, 128, 192, 256]<br>默认值为0，表示随源的音频码率输出。</p>
 	PgmAudioBitRate *uint64 `json:"PgmAudioBitRate,omitnil,omitempty" name:"PgmAudioBitRate"`
+
+	// <p>导播台主监输出的编码方式</p><p>枚举值：</p><ul><li>h264： h264编码</li><li>h265： h265编码</li></ul><p>默认值：h264</p>
+	PgmVcodec *string `json:"PgmVcodec,omitnil,omitempty" name:"PgmVcodec"`
 }
 
 type CreateCasterRequest struct {
 	*tchttp.BaseRequest
 	
-	// 导播台名称
+	// <p>导播台名称</p>
 	CasterName *string `json:"CasterName,omitnil,omitempty" name:"CasterName"`
 
-	// 导播台的描述
-	// 最大允许长度256
+	// <p>导播台的描述<br>最大允许长度256</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 导播台的过期时间戳。值为-1或unix时间戳。
-	// 默认值为-1。
-	// 当值为-1时，表示该导播台永不过期。
-	// 当值为正常unix时间戳时，导播台将在该时间过期。
-	// 导播台过期后，预监与主监画面将自动停止，转推自动停止。
-	// 点播、直播url将停止转拉，推流url需自行停止推流。
+	// <p>导播台的过期时间戳。值为-1或unix时间戳。<br>默认值为-1。<br>当值为-1时，表示该导播台永不过期。<br>当值为正常unix时间戳时，导播台将在该时间过期。<br>导播台过期后，预监与主监画面将自动停止，转推自动停止。<br>点播、直播url将停止转拉，推流url需自行停止推流。</p>
 	ExpireTime *int64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
-	// 导播台延时播放时间，单位为秒。
-	// 默认为0，最大支持300秒
+	// <p>导播台延时播放时间，单位为秒。<br>默认为0，最大支持300秒</p>
 	DelayTime *uint64 `json:"DelayTime,omitnil,omitempty" name:"DelayTime"`
 
-	// 导播台转场类型。
-	// 默认为空。
-	// 允许使用通过DescribeCasterTransitionTypes接口中查询到的转场类型。
+	// <p>导播台转场类型。<br>默认为空。<br>允许使用通过DescribeCasterTransitionTypes接口中查询到的转场类型。</p>
 	TransitionType *string `json:"TransitionType,omitnil,omitempty" name:"TransitionType"`
 
-	// 导播台主监输出的宽度，单位为像素。
-	// 默认为1280，最大允许4096。
+	// <p>导播台主监输出的宽度，单位为像素。<br>默认为1280，最大允许4096。</p>
 	PgmWidth *uint64 `json:"PgmWidth,omitnil,omitempty" name:"PgmWidth"`
 
-	// 导播台主监输出的高度，单位为像素。
-	// 默认为720，最大允许2160。
+	// <p>导播台主监输出的高度，单位为像素。<br>默认为720，最大允许2160。</p>
 	PgmHeight *uint64 `json:"PgmHeight,omitnil,omitempty" name:"PgmHeight"`
 
-	// 导播台主监输出的帧率。
-	// 默认为0，表示随源输出。
-	// 最大支持60。
+	// <p>导播台主监输出的帧率。<br>默认为0，表示随源输出。<br>最大支持60。</p>
 	PgmFps *uint64 `json:"PgmFps,omitnil,omitempty" name:"PgmFps"`
 
-	// 导播台主监输出的码率，单位为kbps。
-	// 默认为0，表示随源的码率输出。
-	// 最大允许10000kbps。
+	// <p>导播台主监输出的码率，单位为kbps。<br>默认为0，表示随源的码率输出。<br>最大允许10000kbps。</p>
 	PgmBitRate *uint64 `json:"PgmBitRate,omitnil,omitempty" name:"PgmBitRate"`
 
-	// 导播台的计费类型。
-	// 0 通用型 
-	// 1 播单型。
-	// 注： 本参数暂无作用。
+	// <p>导播台的计费类型。<br>0 通用型<br>1 播单型。<br>注： 本参数暂无作用。</p>
 	FeeType *int64 `json:"FeeType,omitnil,omitempty" name:"FeeType"`
 
-	// 导播台主监输出的音频码率，单位为kbps。
-	// 可选项：[0, 128, 192, 256]
-	// 默认值为0，表示随源的音频码率输出。
+	// <p>导播台主监输出的音频码率，单位为kbps。<br>可选项：[0, 128, 192, 256]<br>默认值为0，表示随源的音频码率输出。</p>
 	PgmAudioBitRate *uint64 `json:"PgmAudioBitRate,omitnil,omitempty" name:"PgmAudioBitRate"`
+
+	// <p>导播台主监输出的编码方式</p><p>枚举值：</p><ul><li>h264： h264编码</li><li>h265： h265编码</li></ul><p>默认值：h264</p>
+	PgmVcodec *string `json:"PgmVcodec,omitnil,omitempty" name:"PgmVcodec"`
 }
 
 func (r *CreateCasterRequest) ToJsonString() string {
@@ -2658,6 +2615,7 @@ func (r *CreateCasterRequest) FromJsonString(s string) error {
 	delete(f, "PgmBitRate")
 	delete(f, "FeeType")
 	delete(f, "PgmAudioBitRate")
+	delete(f, "PgmVcodec")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCasterRequest has unknown keys!", "")
 	}
@@ -2666,7 +2624,7 @@ func (r *CreateCasterRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateCasterResponseParams struct {
-	// 导播台ID
+	// <p>导播台ID</p>
 	CasterId *uint64 `json:"CasterId,omitnil,omitempty" name:"CasterId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5467,6 +5425,147 @@ func (r *CreateRecordTaskResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateRecordTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateSceneVideoTaskRequestParams struct {
+	// <p>模型名称。</p>
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
+	// <p>模型版本号。</p>
+	ModelVersion *string `json:"ModelVersion,omitnil,omitempty" name:"ModelVersion"`
+
+	// <p>场景化类型。</p><p>枚举值：</p><ul><li>template_effect： 模板特效。</li></ul>
+	SceneType *string `json:"SceneType,omitnil,omitempty" name:"SceneType"`
+
+	// <p>输入的Prompt。避免出现违规词汇，审核会进行拦截。</p>
+	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
+
+	// <p>指定输出的视频时长。</p><p>部分场景不支持指定时长。</p>
+	Duration *int64 `json:"Duration,omitnil,omitempty" name:"Duration"`
+
+	// <p>输入的首帧参考图片Url。需外网可访问。</p>
+	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
+
+	// <p>输入的尾帧参考图片Url。</p>
+	LastImageUrl *string `json:"LastImageUrl,omitnil,omitempty" name:"LastImageUrl"`
+
+	// <p>多图参考生视频时，通过该参数指定多张参考图。</p>
+	ImageInfos []*SceneVideoReferenceImageInfo `json:"ImageInfos,omitnil,omitempty" name:"ImageInfos"`
+
+	// <p>视频编辑时，指定参考视频信息。</p>
+	VideoInfos []*SceneVideoReferenceVideoInfo `json:"VideoInfos,omitnil,omitempty" name:"VideoInfos"`
+
+	// <p>常规扩展参数。</p>
+	ExtraParameters *SceneVideoExtraParam `json:"ExtraParameters,omitnil,omitempty" name:"ExtraParameters"`
+
+	// <p>模型扩展参数，用于透传到模型侧。</p>
+	AdditionalParameters *string `json:"AdditionalParameters,omitnil,omitempty" name:"AdditionalParameters"`
+
+	// <p>输出结果存储到私有cos，需授权响应角色权限。</p>
+	StoreCosParam *SceneStoreCosParam `json:"StoreCosParam,omitnil,omitempty" name:"StoreCosParam"`
+
+	// <p>操作者名称。</p>
+	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
+}
+
+type CreateSceneVideoTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>模型名称。</p>
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
+	// <p>模型版本号。</p>
+	ModelVersion *string `json:"ModelVersion,omitnil,omitempty" name:"ModelVersion"`
+
+	// <p>场景化类型。</p><p>枚举值：</p><ul><li>template_effect： 模板特效。</li></ul>
+	SceneType *string `json:"SceneType,omitnil,omitempty" name:"SceneType"`
+
+	// <p>输入的Prompt。避免出现违规词汇，审核会进行拦截。</p>
+	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
+
+	// <p>指定输出的视频时长。</p><p>部分场景不支持指定时长。</p>
+	Duration *int64 `json:"Duration,omitnil,omitempty" name:"Duration"`
+
+	// <p>输入的首帧参考图片Url。需外网可访问。</p>
+	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
+
+	// <p>输入的尾帧参考图片Url。</p>
+	LastImageUrl *string `json:"LastImageUrl,omitnil,omitempty" name:"LastImageUrl"`
+
+	// <p>多图参考生视频时，通过该参数指定多张参考图。</p>
+	ImageInfos []*SceneVideoReferenceImageInfo `json:"ImageInfos,omitnil,omitempty" name:"ImageInfos"`
+
+	// <p>视频编辑时，指定参考视频信息。</p>
+	VideoInfos []*SceneVideoReferenceVideoInfo `json:"VideoInfos,omitnil,omitempty" name:"VideoInfos"`
+
+	// <p>常规扩展参数。</p>
+	ExtraParameters *SceneVideoExtraParam `json:"ExtraParameters,omitnil,omitempty" name:"ExtraParameters"`
+
+	// <p>模型扩展参数，用于透传到模型侧。</p>
+	AdditionalParameters *string `json:"AdditionalParameters,omitnil,omitempty" name:"AdditionalParameters"`
+
+	// <p>输出结果存储到私有cos，需授权响应角色权限。</p>
+	StoreCosParam *SceneStoreCosParam `json:"StoreCosParam,omitnil,omitempty" name:"StoreCosParam"`
+
+	// <p>操作者名称。</p>
+	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
+}
+
+func (r *CreateSceneVideoTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSceneVideoTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ModelName")
+	delete(f, "ModelVersion")
+	delete(f, "SceneType")
+	delete(f, "Prompt")
+	delete(f, "Duration")
+	delete(f, "ImageUrl")
+	delete(f, "LastImageUrl")
+	delete(f, "ImageInfos")
+	delete(f, "VideoInfos")
+	delete(f, "ExtraParameters")
+	delete(f, "AdditionalParameters")
+	delete(f, "StoreCosParam")
+	delete(f, "Operator")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSceneVideoTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateSceneVideoTaskResponseParams struct {
+	// <p>输出的任务ID。</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateSceneVideoTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateSceneVideoTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateSceneVideoTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSceneVideoTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -14798,6 +14897,75 @@ func (r *DescribeRecordTaskResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeSceneVideoTaskRequestParams struct {
+	// <p>任务ID。</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type DescribeSceneVideoTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>任务ID。</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *DescribeSceneVideoTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSceneVideoTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSceneVideoTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSceneVideoTaskResponseParams struct {
+	// <p>一些特殊场景的返回信息。</p>
+	InfoList []*SceneVideoOutputInfo `json:"InfoList,omitnil,omitempty" name:"InfoList"`
+
+	// <p>任务状态。</p><p>枚举值：</p><ul><li>DONE： 任务结束。</li><li>RUN： 任务运行中。</li><li>WAIT： 任务准备中。</li><li>FAIL： 任务失败。</li></ul>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>输出视频的分辨率。示例：720x1280。</p>
+	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
+
+	// <p>错误信息。</p>
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// <p>输出的视频Url。默认过期时间:12小时，请尽快拉取并转存。也可以使用私有Cos桶长期存储。</p>
+	VideoUrls []*string `json:"VideoUrls,omitnil,omitempty" name:"VideoUrls"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeSceneVideoTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSceneVideoTaskResponseParams `json:"Response"`
+}
+
+func (r *DescribeSceneVideoTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSceneVideoTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeScreenShotSheetNumListRequestParams struct {
 	// 起始时间点，接口查询支持两种时间格式：
 	// 1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见IOS日期格式说明文档: https://cloud.tencent.com/document/product/266/11732#I
@@ -17289,6 +17457,9 @@ type ModifyCasterRequestParams struct {
 
 	// <p>导播台主监输出的音频码率，单位为kbps。<br>可选项：[0, 128, 192, 256]<br>默认值为0，表示随源的音频码率输出。</p>
 	PgmAudioBitRate *uint64 `json:"PgmAudioBitRate,omitnil,omitempty" name:"PgmAudioBitRate"`
+
+	// <p>导播台主监输出的编码方式</p><p>枚举值：</p><ul><li>h264： h264编码</li><li>h265： h265编码</li></ul><p>默认值：h264</p>
+	PgmVcodec *string `json:"PgmVcodec,omitnil,omitempty" name:"PgmVcodec"`
 }
 
 type ModifyCasterRequest struct {
@@ -17338,6 +17509,9 @@ type ModifyCasterRequest struct {
 
 	// <p>导播台主监输出的音频码率，单位为kbps。<br>可选项：[0, 128, 192, 256]<br>默认值为0，表示随源的音频码率输出。</p>
 	PgmAudioBitRate *uint64 `json:"PgmAudioBitRate,omitnil,omitempty" name:"PgmAudioBitRate"`
+
+	// <p>导播台主监输出的编码方式</p><p>枚举值：</p><ul><li>h264： h264编码</li><li>h265： h265编码</li></ul><p>默认值：h264</p>
+	PgmVcodec *string `json:"PgmVcodec,omitnil,omitempty" name:"PgmVcodec"`
 }
 
 func (r *ModifyCasterRequest) ToJsonString() string {
@@ -17367,6 +17541,7 @@ func (r *ModifyCasterRequest) FromJsonString(s string) error {
 	delete(f, "FeeType")
 	delete(f, "RecordTaskId")
 	delete(f, "PgmAudioBitRate")
+	delete(f, "PgmVcodec")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCasterRequest has unknown keys!", "")
 	}
@@ -20841,6 +21016,67 @@ type RuleInfo struct {
 
 	// 流名称。
 	StreamName *string `json:"StreamName,omitnil,omitempty" name:"StreamName"`
+}
+
+type SceneStoreCosParam struct {
+	// <p>Cos桶名称。</p>
+	CosBucketName *string `json:"CosBucketName,omitnil,omitempty" name:"CosBucketName"`
+
+	// <p>Cos桶地域。</p>
+	CosBucketRegion *string `json:"CosBucketRegion,omitnil,omitempty" name:"CosBucketRegion"`
+
+	// <p>存储路径。</p>
+	CosBucketPath *string `json:"CosBucketPath,omitnil,omitempty" name:"CosBucketPath"`
+}
+
+type SceneVideoExtraParam struct {
+	// <p>指定输出分辨率。选项:720P, 1080P, 2K, 4K。</p>
+	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
+
+	// <p>指定输出视频的宽高比，示例：16:9。</p>
+	AspectRatio *string `json:"AspectRatio,omitnil,omitempty" name:"AspectRatio"`
+
+	// <p>错峰模型，仅支持的模型可使用。</p>
+	OffPeak *bool `json:"OffPeak,omitnil,omitempty" name:"OffPeak"`
+
+	// <p>自动添加水印，默认左上角添加 &quot;AI生成&quot; 标识。</p>
+	LogoAdd *bool `json:"LogoAdd,omitnil,omitempty" name:"LogoAdd"`
+
+	// <p>使用音画同出。</p>
+	EnableAudio *bool `json:"EnableAudio,omitnil,omitempty" name:"EnableAudio"`
+
+	// <p>生成背景音乐。</p>
+	EnableBgm *bool `json:"EnableBgm,omitnil,omitempty" name:"EnableBgm"`
+
+	// <p>对输入的Prompt进行优化。</p>
+	EnablePromptEnhance *bool `json:"EnablePromptEnhance,omitnil,omitempty" name:"EnablePromptEnhance"`
+
+	// <p>回调URL。</p>
+	CallbackUrl *string `json:"CallbackUrl,omitnil,omitempty" name:"CallbackUrl"`
+}
+
+type SceneVideoOutputInfo struct {
+	// <p>输出信息。</p>
+	Info *string `json:"Info,omitnil,omitempty" name:"Info"`
+
+	// <p>输出类型。</p>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
+type SceneVideoReferenceImageInfo struct {
+	// <p>输入的参考图Url，需外网可访问。</p>
+	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
+
+	// <p>针对该参考图的Prompt描述，仅部分模型是支持。</p>
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+
+	// <p>参考类型。</p>
+	ReferenceType *string `json:"ReferenceType,omitnil,omitempty" name:"ReferenceType"`
+}
+
+type SceneVideoReferenceVideoInfo struct {
+	// <p>参考视频Url，需外网可访问。</p>
+	VideoUrl *string `json:"VideoUrl,omitnil,omitempty" name:"VideoUrl"`
 }
 
 type ScreenshotTask struct {

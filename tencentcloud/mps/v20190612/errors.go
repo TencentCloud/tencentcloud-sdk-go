@@ -98,6 +98,9 @@ const (
 	// InvalidParameter.Input
 	INVALIDPARAMETER_INPUT = "InvalidParameter.Input"
 
+	// 输入信息非法
+	INVALIDPARAMETER_INPUTINFO = "InvalidParameter.InputInfo"
+
 	// InvalidParameter.InputOutputId
 	INVALIDPARAMETER_INPUTOUTPUTID = "InvalidParameter.InputOutputId"
 
@@ -256,6 +259,9 @@ const (
 
 	// 水印文本重复
 	INVALIDPARAMETERVALUE_DUPLICATEDTEXTCONTENT = "InvalidParameterValue.DuplicatedTextContent"
+
+	// Duration 参数过大
+	INVALIDPARAMETERVALUE_DURATIONTOOLONG = "InvalidParameterValue.DurationTooLong"
 
 	// 模板开启的检测项为空。
 	INVALIDPARAMETERVALUE_EMPTYDETECTITEM = "InvalidParameterValue.EmptyDetectItem"
@@ -550,6 +556,9 @@ const (
 
 	// 资源不存在：Cos bucket 不存在。
 	RESOURCENOTFOUND_COSBUCKETNOTEXIST = "ResourceNotFound.CosBucketNotExist"
+
+	// 下载失败
+	RESOURCENOTFOUND_DOWNLOADERROR = "ResourceNotFound.DownloadError"
 
 	// 资源不存在：人物。
 	RESOURCENOTFOUND_PERSON = "ResourceNotFound.Person"

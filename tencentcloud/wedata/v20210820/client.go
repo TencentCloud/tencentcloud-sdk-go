@@ -12615,6 +12615,7 @@ func NewGetCosTokenResponse() (response *GetCosTokenResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_DATAENGINEINSTANCENOTEXISTS = "InvalidParameter.DataEngineInstanceNotExists"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) GetCosToken(request *GetCosTokenRequest) (response *GetCosTokenResponse, err error) {
     return c.GetCosTokenWithContext(context.Background(), request)
@@ -12629,6 +12630,7 @@ func (c *Client) GetCosToken(request *GetCosTokenRequest) (response *GetCosToken
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_DATAENGINEINSTANCENOTEXISTS = "InvalidParameter.DataEngineInstanceNotExists"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) GetCosTokenWithContext(ctx context.Context, request *GetCosTokenRequest) (response *GetCosTokenResponse, err error) {
     if request == nil {
@@ -16289,6 +16291,7 @@ func NewSubmitTaskTestRunResponse() (response *SubmitTaskTestRunResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_JOBSPLITLIMITEXCEEDCODE = "FailedOperation.JobSplitLimitExceedCode"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -16301,6 +16304,7 @@ func (c *Client) SubmitTaskTestRun(request *SubmitTaskTestRunRequest) (response 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_JOBSPLITLIMITEXCEEDCODE = "FailedOperation.JobSplitLimitExceedCode"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -16341,10 +16345,15 @@ func NewSubmitWorkflowResponse() (response *SubmitWorkflowResponse) {
 }
 
 // SubmitWorkflow
+// 接口已经废弃，调用会产生脏数据
+//
+// 
+//
 // 提交工作流。本接口已废弃，请使用接口BatchCreateTaskVersionAsync。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_JOBSPLITLIMITEXCEEDCODE = "FailedOperation.JobSplitLimitExceedCode"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -16353,10 +16362,15 @@ func (c *Client) SubmitWorkflow(request *SubmitWorkflowRequest) (response *Submi
 }
 
 // SubmitWorkflow
+// 接口已经废弃，调用会产生脏数据
+//
+// 
+//
 // 提交工作流。本接口已废弃，请使用接口BatchCreateTaskVersionAsync。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_JOBSPLITLIMITEXCEEDCODE = "FailedOperation.JobSplitLimitExceedCode"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"

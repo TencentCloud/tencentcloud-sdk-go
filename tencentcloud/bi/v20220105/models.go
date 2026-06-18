@@ -20,6 +20,80 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
+type ApiDatasourceConfig struct {
+	// API数据源解析结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FieldsJsonData *string `json:"FieldsJsonData,omitnil,omitempty" name:"FieldsJsonData"`
+
+	// 连接类型1:直连 2:抽取
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConnectionType *uint64 `json:"ConnectionType,omitnil,omitempty" name:"ConnectionType"`
+
+	// 抽取频率配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FrequencyConfig *FrequencyConfig `json:"FrequencyConfig,omitnil,omitempty" name:"FrequencyConfig"`
+
+	// 请求URL
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// 1:GET 2:POST
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RequestMethod *uint64 `json:"RequestMethod,omitnil,omitempty" name:"RequestMethod"`
+
+	// 请求头
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RequestHeader *string `json:"RequestHeader,omitnil,omitempty" name:"RequestHeader"`
+
+	// 请求参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RequestParams *string `json:"RequestParams,omitnil,omitempty" name:"RequestParams"`
+
+	// 请求体
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RequestBody *string `json:"RequestBody,omitnil,omitempty" name:"RequestBody"`
+
+	// 用户名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// 密码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+
+	// 1: 无鉴权 2:BASIC_AUTH
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AuthorizationType *uint64 `json:"AuthorizationType,omitnil,omitempty" name:"AuthorizationType"`
+
+	// 表id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableId *uint64 `json:"TableId,omitnil,omitempty" name:"TableId"`
+
+	// 路径DbName映射
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JsonPathDbNameMap *string `json:"JsonPathDbNameMap,omitnil,omitempty" name:"JsonPathDbNameMap"`
+
+	// 鉴权API
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AuthApi *string `json:"AuthApi,omitnil,omitempty" name:"AuthApi"`
+
+	// 应用Key
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppKey *string `json:"AppKey,omitnil,omitempty" name:"AppKey"`
+
+	// 应用密钥
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppSecret *string `json:"AppSecret,omitnil,omitempty" name:"AppSecret"`
+
+	// 数据密钥Key
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecretKey *string `json:"SecretKey,omitnil,omitempty" name:"SecretKey"`
+
+	// 数据密钥初始化向量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecretIv *string `json:"SecretIv,omitnil,omitempty" name:"SecretIv"`
+}
+
 type ApiKeyAuthApplyVO struct {
 	// <p>id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -403,153 +477,358 @@ func (r *CreateAuthApiKeyResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateDataTableRequestParams struct {
+	// 后端提供字典：数据表类型，1、数据库建表，2、SQL建表，3、Excel上传，4、API接入，5、腾讯文档，6、云数据库，7、手工输入，8、关联查询
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 数据表名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 无
+	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 所属文件夹
+	FoldId *uint64 `json:"FoldId,omitnil,omitempty" name:"FoldId"`
+
+	// 数据源Id
+	DatasourceId *string `json:"DatasourceId,omitnil,omitempty" name:"DatasourceId"`
+
+	// 物理表名
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// sql语句
+	Sql *string `json:"Sql,omitnil,omitempty" name:"Sql"`
+
+	// excel地址
+	ExcelUrl *string `json:"ExcelUrl,omitnil,omitempty" name:"ExcelUrl"`
+
+	// 字段配置
+	Fields []*TableField `json:"Fields,omitnil,omitempty" name:"Fields"`
+
+	// 多表关联使用: 1:数据源原表,2:本地表,3:Excel表,4:API表
+	TableNodeType *uint64 `json:"TableNodeType,omitnil,omitempty" name:"TableNodeType"`
+
+	// 多表关联的原始表信息
+	Tables []*JoinSourceTable `json:"Tables,omitnil,omitempty" name:"Tables"`
+
+	// 多表关联的关联信息
+	Joins []*JoinRelation `json:"Joins,omitnil,omitempty" name:"Joins"`
+
+	// 补充信息，如api数据源信息，腾讯文档接入信息等
+	ExtInfo *string `json:"ExtInfo,omitnil,omitempty" name:"ExtInfo"`
+
+	// 是否是异步
+	AsyncRequest *bool `json:"AsyncRequest,omitnil,omitempty" name:"AsyncRequest"`
+
+	// 依赖的异步事务id
+	ParentTranId *string `json:"ParentTranId,omitnil,omitempty" name:"ParentTranId"`
+
+	// API数据源配置
+	ApiDatasourceConfig *ApiDatasourceConfig `json:"ApiDatasourceConfig,omitnil,omitempty" name:"ApiDatasourceConfig"`
+
+	// 1
+	ParamList []*ParamCreateDTO `json:"ParamList,omitnil,omitempty" name:"ParamList"`
+
+	// dlc高级参数
+	DlcExtInfo *string `json:"DlcExtInfo,omitnil,omitempty" name:"DlcExtInfo"`
+
+	// 是否查询数据库
+	QueryDbData *string `json:"QueryDbData,omitnil,omitempty" name:"QueryDbData"`
+
+	// 数据表备注
+	TableComment *string `json:"TableComment,omitnil,omitempty" name:"TableComment"`
+
+	// 是否查询字段备注
+	QueryFieldRemark *int64 `json:"QueryFieldRemark,omitnil,omitempty" name:"QueryFieldRemark"`
+
+	// 字段备注列表
+	FieldRemarkList []*FieldRemarkDTO `json:"FieldRemarkList,omitnil,omitempty" name:"FieldRemarkList"`
+}
+
+type CreateDataTableRequest struct {
+	*tchttp.BaseRequest
+	
+	// 后端提供字典：数据表类型，1、数据库建表，2、SQL建表，3、Excel上传，4、API接入，5、腾讯文档，6、云数据库，7、手工输入，8、关联查询
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 数据表名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 无
+	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 所属文件夹
+	FoldId *uint64 `json:"FoldId,omitnil,omitempty" name:"FoldId"`
+
+	// 数据源Id
+	DatasourceId *string `json:"DatasourceId,omitnil,omitempty" name:"DatasourceId"`
+
+	// 物理表名
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// sql语句
+	Sql *string `json:"Sql,omitnil,omitempty" name:"Sql"`
+
+	// excel地址
+	ExcelUrl *string `json:"ExcelUrl,omitnil,omitempty" name:"ExcelUrl"`
+
+	// 字段配置
+	Fields []*TableField `json:"Fields,omitnil,omitempty" name:"Fields"`
+
+	// 多表关联使用: 1:数据源原表,2:本地表,3:Excel表,4:API表
+	TableNodeType *uint64 `json:"TableNodeType,omitnil,omitempty" name:"TableNodeType"`
+
+	// 多表关联的原始表信息
+	Tables []*JoinSourceTable `json:"Tables,omitnil,omitempty" name:"Tables"`
+
+	// 多表关联的关联信息
+	Joins []*JoinRelation `json:"Joins,omitnil,omitempty" name:"Joins"`
+
+	// 补充信息，如api数据源信息，腾讯文档接入信息等
+	ExtInfo *string `json:"ExtInfo,omitnil,omitempty" name:"ExtInfo"`
+
+	// 是否是异步
+	AsyncRequest *bool `json:"AsyncRequest,omitnil,omitempty" name:"AsyncRequest"`
+
+	// 依赖的异步事务id
+	ParentTranId *string `json:"ParentTranId,omitnil,omitempty" name:"ParentTranId"`
+
+	// API数据源配置
+	ApiDatasourceConfig *ApiDatasourceConfig `json:"ApiDatasourceConfig,omitnil,omitempty" name:"ApiDatasourceConfig"`
+
+	// 1
+	ParamList []*ParamCreateDTO `json:"ParamList,omitnil,omitempty" name:"ParamList"`
+
+	// dlc高级参数
+	DlcExtInfo *string `json:"DlcExtInfo,omitnil,omitempty" name:"DlcExtInfo"`
+
+	// 是否查询数据库
+	QueryDbData *string `json:"QueryDbData,omitnil,omitempty" name:"QueryDbData"`
+
+	// 数据表备注
+	TableComment *string `json:"TableComment,omitnil,omitempty" name:"TableComment"`
+
+	// 是否查询字段备注
+	QueryFieldRemark *int64 `json:"QueryFieldRemark,omitnil,omitempty" name:"QueryFieldRemark"`
+
+	// 字段备注列表
+	FieldRemarkList []*FieldRemarkDTO `json:"FieldRemarkList,omitnil,omitempty" name:"FieldRemarkList"`
+}
+
+func (r *CreateDataTableRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDataTableRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Type")
+	delete(f, "Name")
+	delete(f, "ProjectId")
+	delete(f, "FoldId")
+	delete(f, "DatasourceId")
+	delete(f, "TableName")
+	delete(f, "Sql")
+	delete(f, "ExcelUrl")
+	delete(f, "Fields")
+	delete(f, "TableNodeType")
+	delete(f, "Tables")
+	delete(f, "Joins")
+	delete(f, "ExtInfo")
+	delete(f, "AsyncRequest")
+	delete(f, "ParentTranId")
+	delete(f, "ApiDatasourceConfig")
+	delete(f, "ParamList")
+	delete(f, "DlcExtInfo")
+	delete(f, "QueryDbData")
+	delete(f, "TableComment")
+	delete(f, "QueryFieldRemark")
+	delete(f, "FieldRemarkList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDataTableRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateDataTableResponseParams struct {
+	// 自定义错误信息对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorInfo *ErrorInfo `json:"ErrorInfo,omitnil,omitempty" name:"ErrorInfo"`
+
+	// 成功返回数据表的id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *IdDTO `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 额外信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
+
+	// 错误提示
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateDataTableResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateDataTableResponseParams `json:"Response"`
+}
+
+func (r *CreateDataTableResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDataTableResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateDatasourceCloudRequestParams struct {
-	// 后端提供字典：域类型，1、腾讯云，2、本地
+	// <p>后端提供字典：域类型，1、腾讯云，2、本地</p>
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
-	// 驱动
-	// 取值范围：
-	// MYSQL：MySQL数据库
-	// PRESTO：PRESTO数据库
-	// POSTGRE：PostgreSQL数据库
-	// DLC：DLC数据库
-	// MSSQL：微软SQL Server数据库
+	// <p>驱动</p><p>枚举值：</p><ul><li>MYSQL： MySQL数据库</li><li>PRESTO： PRESTO数据库</li><li>POSTGRE： PostgreSQL数据库</li><li>DLC： DLC数据库</li><li>MSSQL： 微软SQL Server数据库</li></ul>
 	DbType *string `json:"DbType,omitnil,omitempty" name:"DbType"`
 
-	// 数据库编码
+	// <p>数据库编码</p>
 	Charset *string `json:"Charset,omitnil,omitempty" name:"Charset"`
 
-	// 用户名
+	// <p>用户名</p>
 	DbUser *string `json:"DbUser,omitnil,omitempty" name:"DbUser"`
 
-	// 密码
+	// <p>密码</p>
 	DbPwd *string `json:"DbPwd,omitnil,omitempty" name:"DbPwd"`
 
-	// 数据库名称
+	// <p>数据库名称</p>
 	DbName *string `json:"DbName,omitnil,omitempty" name:"DbName"`
 
-	// 数据库别名
+	// <p>数据库别名</p>
 	SourceName *string `json:"SourceName,omitnil,omitempty" name:"SourceName"`
 
-	// 项目ID
+	// <p>项目ID</p>
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 公有云内网ip
+	// <p>公有云内网ip</p>
 	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
 
-	// 公有云内网端口
+	// <p>公有云内网端口</p>
 	Vport *string `json:"Vport,omitnil,omitempty" name:"Vport"`
 
-	// vpc标识
+	// <p>vpc标识</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 统一vpc标识
+	// <p>统一vpc标识</p>
 	UniqVpcId *string `json:"UniqVpcId,omitnil,omitempty" name:"UniqVpcId"`
 
-	// 区域标识（gz,bj)
+	// <p>区域标识（gz,bj)</p>
 	RegionId *string `json:"RegionId,omitnil,omitempty" name:"RegionId"`
 
-	// 扩展参数
+	// <p>扩展参数</p>
 	ExtraParam *string `json:"ExtraParam,omitnil,omitempty" name:"ExtraParam"`
 
-	// 实例Id
+	// <p>实例Id</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 数据源产品名
+	// <p>数据源产品名</p>
 	ProdDbName *string `json:"ProdDbName,omitnil,omitempty" name:"ProdDbName"`
 
-	// 第三方数据源标识
+	// <p>第三方数据源标识</p>
 	DataOrigin *string `json:"DataOrigin,omitnil,omitempty" name:"DataOrigin"`
 
-	// 第三方项目id
+	// <p>第三方项目id</p>
 	DataOriginProjectId *string `json:"DataOriginProjectId,omitnil,omitempty" name:"DataOriginProjectId"`
 
-	// 第三方数据源id
+	// <p>第三方数据源id</p>
 	DataOriginDatasourceId *string `json:"DataOriginDatasourceId,omitnil,omitempty" name:"DataOriginDatasourceId"`
 
-	// 集群id
+	// <p>集群id</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 数据库schema
+	// <p>数据库schema</p>
 	Schema *string `json:"Schema,omitnil,omitempty" name:"Schema"`
 
-	// 数据库版本
+	// <p>数据库版本</p>
 	DbVersion *string `json:"DbVersion,omitnil,omitempty" name:"DbVersion"`
 }
 
 type CreateDatasourceCloudRequest struct {
 	*tchttp.BaseRequest
 	
-	// 后端提供字典：域类型，1、腾讯云，2、本地
+	// <p>后端提供字典：域类型，1、腾讯云，2、本地</p>
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
-	// 驱动
-	// 取值范围：
-	// MYSQL：MySQL数据库
-	// PRESTO：PRESTO数据库
-	// POSTGRE：PostgreSQL数据库
-	// DLC：DLC数据库
-	// MSSQL：微软SQL Server数据库
+	// <p>驱动</p><p>枚举值：</p><ul><li>MYSQL： MySQL数据库</li><li>PRESTO： PRESTO数据库</li><li>POSTGRE： PostgreSQL数据库</li><li>DLC： DLC数据库</li><li>MSSQL： 微软SQL Server数据库</li></ul>
 	DbType *string `json:"DbType,omitnil,omitempty" name:"DbType"`
 
-	// 数据库编码
+	// <p>数据库编码</p>
 	Charset *string `json:"Charset,omitnil,omitempty" name:"Charset"`
 
-	// 用户名
+	// <p>用户名</p>
 	DbUser *string `json:"DbUser,omitnil,omitempty" name:"DbUser"`
 
-	// 密码
+	// <p>密码</p>
 	DbPwd *string `json:"DbPwd,omitnil,omitempty" name:"DbPwd"`
 
-	// 数据库名称
+	// <p>数据库名称</p>
 	DbName *string `json:"DbName,omitnil,omitempty" name:"DbName"`
 
-	// 数据库别名
+	// <p>数据库别名</p>
 	SourceName *string `json:"SourceName,omitnil,omitempty" name:"SourceName"`
 
-	// 项目ID
+	// <p>项目ID</p>
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 公有云内网ip
+	// <p>公有云内网ip</p>
 	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
 
-	// 公有云内网端口
+	// <p>公有云内网端口</p>
 	Vport *string `json:"Vport,omitnil,omitempty" name:"Vport"`
 
-	// vpc标识
+	// <p>vpc标识</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 统一vpc标识
+	// <p>统一vpc标识</p>
 	UniqVpcId *string `json:"UniqVpcId,omitnil,omitempty" name:"UniqVpcId"`
 
-	// 区域标识（gz,bj)
+	// <p>区域标识（gz,bj)</p>
 	RegionId *string `json:"RegionId,omitnil,omitempty" name:"RegionId"`
 
-	// 扩展参数
+	// <p>扩展参数</p>
 	ExtraParam *string `json:"ExtraParam,omitnil,omitempty" name:"ExtraParam"`
 
-	// 实例Id
+	// <p>实例Id</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 数据源产品名
+	// <p>数据源产品名</p>
 	ProdDbName *string `json:"ProdDbName,omitnil,omitempty" name:"ProdDbName"`
 
-	// 第三方数据源标识
+	// <p>第三方数据源标识</p>
 	DataOrigin *string `json:"DataOrigin,omitnil,omitempty" name:"DataOrigin"`
 
-	// 第三方项目id
+	// <p>第三方项目id</p>
 	DataOriginProjectId *string `json:"DataOriginProjectId,omitnil,omitempty" name:"DataOriginProjectId"`
 
-	// 第三方数据源id
+	// <p>第三方数据源id</p>
 	DataOriginDatasourceId *string `json:"DataOriginDatasourceId,omitnil,omitempty" name:"DataOriginDatasourceId"`
 
-	// 集群id
+	// <p>集群id</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 数据库schema
+	// <p>数据库schema</p>
 	Schema *string `json:"Schema,omitnil,omitempty" name:"Schema"`
 
-	// 数据库版本
+	// <p>数据库版本</p>
 	DbVersion *string `json:"DbVersion,omitnil,omitempty" name:"DbVersion"`
 }
 
@@ -599,15 +878,15 @@ type CreateDatasourceCloudResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorInfo *ErrorInfo `json:"ErrorInfo,omitnil,omitempty" name:"ErrorInfo"`
 
-	// 成功无
+	// <p>成功无</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *IdDTO `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// 额外信息
+	// <p>额外信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
 
-	// 提示
+	// <p>提示</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
 
@@ -633,164 +912,152 @@ func (r *CreateDatasourceCloudResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateDatasourceRequestParams struct {
-	// HOST
+	// <p>HOST</p>
 	DbHost *string `json:"DbHost,omitnil,omitempty" name:"DbHost"`
 
-	// 端口
+	// <p>端口</p>
 	DbPort *uint64 `json:"DbPort,omitnil,omitempty" name:"DbPort"`
 
-	// 后端提供字典：域类型，1、腾讯云，2、本地
+	// <p>后端提供字典：域类型，1、腾讯云，2、本地</p>
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
-	// 驱动
-	// 取值范围：
-	// MYSQL：MySQL数据库
-	// PRESTO：PRESTO数据库
-	// POSTGRE：PostgreSQL数据库
-	// DLC：DLC数据库
-	// MSSQL：微软SQL Server数据库
+	// <p>驱动</p><p>枚举值：</p><ul><li>MYSQL： MySQL数据库</li><li>PRESTO： PRESTO数据库</li><li>POSTGRE： PostgreSQL数据库</li><li>DLC： DLC数据库</li><li>MSSQL： 微软SQL Server数据库</li></ul>
 	DbType *string `json:"DbType,omitnil,omitempty" name:"DbType"`
 
-	// 数据库编码
+	// <p>数据库编码</p>
 	Charset *string `json:"Charset,omitnil,omitempty" name:"Charset"`
 
-	// 用户名
+	// <p>用户名</p>
 	DbUser *string `json:"DbUser,omitnil,omitempty" name:"DbUser"`
 
-	// 密码
+	// <p>密码</p>
 	DbPwd *string `json:"DbPwd,omitnil,omitempty" name:"DbPwd"`
 
-	// 数据库名称
+	// <p>数据库名称</p>
 	DbName *string `json:"DbName,omitnil,omitempty" name:"DbName"`
 
-	// 数据库别名
+	// <p>数据库别名</p>
 	SourceName *string `json:"SourceName,omitnil,omitempty" name:"SourceName"`
 
-	// 项目id
+	// <p>项目id</p>
 	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// catalog值
+	// <p>catalog值</p>
 	Catalog *string `json:"Catalog,omitnil,omitempty" name:"Catalog"`
 
-	// 第三方数据源标识
+	// <p>第三方数据源标识</p>
 	DataOrigin *string `json:"DataOrigin,omitnil,omitempty" name:"DataOrigin"`
 
-	// 第三方项目id
+	// <p>第三方项目id</p>
 	DataOriginProjectId *string `json:"DataOriginProjectId,omitnil,omitempty" name:"DataOriginProjectId"`
 
-	// 第三方数据源id
+	// <p>第三方数据源id</p>
 	DataOriginDatasourceId *string `json:"DataOriginDatasourceId,omitnil,omitempty" name:"DataOriginDatasourceId"`
 
-	// 扩展参数
+	// <p>扩展参数</p>
 	ExtraParam *string `json:"ExtraParam,omitnil,omitempty" name:"ExtraParam"`
 
-	// 腾讯云私有网络统一标识
+	// <p>腾讯云私有网络统一标识</p>
 	UniqVpcId *string `json:"UniqVpcId,omitnil,omitempty" name:"UniqVpcId"`
 
-	// 私有网络ip
+	// <p>私有网络ip</p>
 	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
 
-	// 私有网络端口
+	// <p>私有网络端口</p>
 	Vport *string `json:"Vport,omitnil,omitempty" name:"Vport"`
 
-	// 腾讯云私有网络标识
+	// <p>腾讯云私有网络标识</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 操作权限限制
+	// <p>操作权限限制</p>
 	OperationAuthLimit []*string `json:"OperationAuthLimit,omitnil,omitempty" name:"OperationAuthLimit"`
 
-	// 开启vpc
+	// <p>开启vpc</p>
 	UseVPC *bool `json:"UseVPC,omitnil,omitempty" name:"UseVPC"`
 
-	// 地域
+	// <p>地域</p>
 	RegionId *string `json:"RegionId,omitnil,omitempty" name:"RegionId"`
 
-	// 数据库schema
+	// <p>数据库schema</p>
 	Schema *string `json:"Schema,omitnil,omitempty" name:"Schema"`
 
-	// 数据库版本
+	// <p>数据库版本</p>
 	DbVersion *string `json:"DbVersion,omitnil,omitempty" name:"DbVersion"`
 }
 
 type CreateDatasourceRequest struct {
 	*tchttp.BaseRequest
 	
-	// HOST
+	// <p>HOST</p>
 	DbHost *string `json:"DbHost,omitnil,omitempty" name:"DbHost"`
 
-	// 端口
+	// <p>端口</p>
 	DbPort *uint64 `json:"DbPort,omitnil,omitempty" name:"DbPort"`
 
-	// 后端提供字典：域类型，1、腾讯云，2、本地
+	// <p>后端提供字典：域类型，1、腾讯云，2、本地</p>
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
-	// 驱动
-	// 取值范围：
-	// MYSQL：MySQL数据库
-	// PRESTO：PRESTO数据库
-	// POSTGRE：PostgreSQL数据库
-	// DLC：DLC数据库
-	// MSSQL：微软SQL Server数据库
+	// <p>驱动</p><p>枚举值：</p><ul><li>MYSQL： MySQL数据库</li><li>PRESTO： PRESTO数据库</li><li>POSTGRE： PostgreSQL数据库</li><li>DLC： DLC数据库</li><li>MSSQL： 微软SQL Server数据库</li></ul>
 	DbType *string `json:"DbType,omitnil,omitempty" name:"DbType"`
 
-	// 数据库编码
+	// <p>数据库编码</p>
 	Charset *string `json:"Charset,omitnil,omitempty" name:"Charset"`
 
-	// 用户名
+	// <p>用户名</p>
 	DbUser *string `json:"DbUser,omitnil,omitempty" name:"DbUser"`
 
-	// 密码
+	// <p>密码</p>
 	DbPwd *string `json:"DbPwd,omitnil,omitempty" name:"DbPwd"`
 
-	// 数据库名称
+	// <p>数据库名称</p>
 	DbName *string `json:"DbName,omitnil,omitempty" name:"DbName"`
 
-	// 数据库别名
+	// <p>数据库别名</p>
 	SourceName *string `json:"SourceName,omitnil,omitempty" name:"SourceName"`
 
-	// 项目id
+	// <p>项目id</p>
 	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// catalog值
+	// <p>catalog值</p>
 	Catalog *string `json:"Catalog,omitnil,omitempty" name:"Catalog"`
 
-	// 第三方数据源标识
+	// <p>第三方数据源标识</p>
 	DataOrigin *string `json:"DataOrigin,omitnil,omitempty" name:"DataOrigin"`
 
-	// 第三方项目id
+	// <p>第三方项目id</p>
 	DataOriginProjectId *string `json:"DataOriginProjectId,omitnil,omitempty" name:"DataOriginProjectId"`
 
-	// 第三方数据源id
+	// <p>第三方数据源id</p>
 	DataOriginDatasourceId *string `json:"DataOriginDatasourceId,omitnil,omitempty" name:"DataOriginDatasourceId"`
 
-	// 扩展参数
+	// <p>扩展参数</p>
 	ExtraParam *string `json:"ExtraParam,omitnil,omitempty" name:"ExtraParam"`
 
-	// 腾讯云私有网络统一标识
+	// <p>腾讯云私有网络统一标识</p>
 	UniqVpcId *string `json:"UniqVpcId,omitnil,omitempty" name:"UniqVpcId"`
 
-	// 私有网络ip
+	// <p>私有网络ip</p>
 	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
 
-	// 私有网络端口
+	// <p>私有网络端口</p>
 	Vport *string `json:"Vport,omitnil,omitempty" name:"Vport"`
 
-	// 腾讯云私有网络标识
+	// <p>腾讯云私有网络标识</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 操作权限限制
+	// <p>操作权限限制</p>
 	OperationAuthLimit []*string `json:"OperationAuthLimit,omitnil,omitempty" name:"OperationAuthLimit"`
 
-	// 开启vpc
+	// <p>开启vpc</p>
 	UseVPC *bool `json:"UseVPC,omitnil,omitempty" name:"UseVPC"`
 
-	// 地域
+	// <p>地域</p>
 	RegionId *string `json:"RegionId,omitnil,omitempty" name:"RegionId"`
 
-	// 数据库schema
+	// <p>数据库schema</p>
 	Schema *string `json:"Schema,omitnil,omitempty" name:"Schema"`
 
-	// 数据库版本
+	// <p>数据库版本</p>
 	DbVersion *string `json:"DbVersion,omitnil,omitempty" name:"DbVersion"`
 }
 
@@ -842,15 +1109,15 @@ type CreateDatasourceResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorInfo *ErrorInfo `json:"ErrorInfo,omitnil,omitempty" name:"ErrorInfo"`
 
-	// 数据源id
+	// <p>数据源id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *IdDTO `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// 额外信息
+	// <p>额外信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
 
-	// 提示
+	// <p>提示</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
 
@@ -1110,118 +1377,62 @@ func (r *CreateEmbedTokenResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreatePermissionRanksRequestParams struct {
-	// 页数
+	// <p>页数</p>
 	TableId *int64 `json:"TableId,omitnil,omitempty" name:"TableId"`
 
-	// 模式。
-	// 取值范围：
-	// - ALL：全部
-	// - Specify：指定
-	// - TAG：标签
-	// 
-	// 默认值：ALL
-	// 示例值：ALL
+	// <p>模式</p><p>枚举值：</p><ul><li>ALL： 全部</li><li>Specify： 指定</li><li>TAG： 标签</li></ul><p>默认值：ALL</p>
 	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
 
-	// 角色类型。
-	// 取值范围：
-	// 
-	// - ROLES：按角色
-	// - Others：其它
-	// 
-	// 默认值：Others
-	// 示例值：Others
+	// <p>角色类型</p><p>枚举值：</p><ul><li>ROLES： 按角色</li><li>Others： 其它</li></ul><p>默认值：Others</p>
 	RoleType *string `json:"RoleType,omitnil,omitempty" name:"RoleType"`
 
-	// 所有页码
+	// <p>所有页码</p>
 	RoleId *int64 `json:"RoleId,omitnil,omitempty" name:"RoleId"`
 
-	// 规则信息
+	// <p>规则信息</p>
 	RulerInfo *string `json:"RulerInfo,omitnil,omitempty" name:"RulerInfo"`
 
-	// 类型。
-	// 取值范围：
-	// 
-	// - ROW：行权限
-	// - COLUMN：列权限
-	// 
-	// 默认值：ROW
-	// 示例值：ROW
+	// <p>类型</p><p>枚举值：</p><ul><li>ROW： 行权限</li><li>COLUMN： 列权限</li></ul><p>默认值：ROW</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 开启状态。
-	// 取值范围：
-	// 
-	// - Open：开启
-	// - Close：关闭
-	// 
-	// 默认值：Close
-	// 示例值：Close
+	// <p>开启状态</p><p>枚举值：</p><ul><li>Open： 开启</li><li>Close： 关闭</li></ul><p>默认值：Close</p>
 	OpenStatus *string `json:"OpenStatus,omitnil,omitempty" name:"OpenStatus"`
 
-	// 项目id
+	// <p>项目id</p>
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 行列权限配置
+	// <p>行列权限配置</p>
 	RowColumnConfigList []*RowColumnConfig `json:"RowColumnConfigList,omitnil,omitempty" name:"RowColumnConfigList"`
 }
 
 type CreatePermissionRanksRequest struct {
 	*tchttp.BaseRequest
 	
-	// 页数
+	// <p>页数</p>
 	TableId *int64 `json:"TableId,omitnil,omitempty" name:"TableId"`
 
-	// 模式。
-	// 取值范围：
-	// - ALL：全部
-	// - Specify：指定
-	// - TAG：标签
-	// 
-	// 默认值：ALL
-	// 示例值：ALL
+	// <p>模式</p><p>枚举值：</p><ul><li>ALL： 全部</li><li>Specify： 指定</li><li>TAG： 标签</li></ul><p>默认值：ALL</p>
 	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
 
-	// 角色类型。
-	// 取值范围：
-	// 
-	// - ROLES：按角色
-	// - Others：其它
-	// 
-	// 默认值：Others
-	// 示例值：Others
+	// <p>角色类型</p><p>枚举值：</p><ul><li>ROLES： 按角色</li><li>Others： 其它</li></ul><p>默认值：Others</p>
 	RoleType *string `json:"RoleType,omitnil,omitempty" name:"RoleType"`
 
-	// 所有页码
+	// <p>所有页码</p>
 	RoleId *int64 `json:"RoleId,omitnil,omitempty" name:"RoleId"`
 
-	// 规则信息
+	// <p>规则信息</p>
 	RulerInfo *string `json:"RulerInfo,omitnil,omitempty" name:"RulerInfo"`
 
-	// 类型。
-	// 取值范围：
-	// 
-	// - ROW：行权限
-	// - COLUMN：列权限
-	// 
-	// 默认值：ROW
-	// 示例值：ROW
+	// <p>类型</p><p>枚举值：</p><ul><li>ROW： 行权限</li><li>COLUMN： 列权限</li></ul><p>默认值：ROW</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 开启状态。
-	// 取值范围：
-	// 
-	// - Open：开启
-	// - Close：关闭
-	// 
-	// 默认值：Close
-	// 示例值：Close
+	// <p>开启状态</p><p>枚举值：</p><ul><li>Open： 开启</li><li>Close： 关闭</li></ul><p>默认值：Close</p>
 	OpenStatus *string `json:"OpenStatus,omitnil,omitempty" name:"OpenStatus"`
 
-	// 项目id
+	// <p>项目id</p>
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 行列权限配置
+	// <p>行列权限配置</p>
 	RowColumnConfigList []*RowColumnConfig `json:"RowColumnConfigList,omitnil,omitempty" name:"RowColumnConfigList"`
 }
 
@@ -1258,15 +1469,15 @@ type CreatePermissionRanksResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorInfo *ErrorInfo `json:"ErrorInfo,omitnil,omitempty" name:"ErrorInfo"`
 
-	// 消息
+	// <p>消息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
 
-	// 112
+	// <p>112</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
 
-	// 1
+	// <p>1</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
 
@@ -1292,56 +1503,50 @@ func (r *CreatePermissionRanksResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateProjectRequestParams struct {
-	// 项目名称
+	// <p>项目名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// logo底色
+	// <p>logo底色</p>
 	ColorCode *string `json:"ColorCode,omitnil,omitempty" name:"ColorCode"`
 
-	// 项目Logo
+	// <p>项目Logo</p>
 	Logo *string `json:"Logo,omitnil,omitempty" name:"Logo"`
 
-	// 备注
+	// <p>备注</p>
 	Mark *string `json:"Mark,omitnil,omitempty" name:"Mark"`
 
-	// 是否允许用户申请
+	// <p>是否允许用户申请</p>
 	IsApply *bool `json:"IsApply,omitnil,omitempty" name:"IsApply"`
 
-	// 默认看板
-	// 取值范围：
-	// 1：项目看板 
-	// 2：我的看板
+	// <p>默认看板</p><p>枚举值：</p><ul><li>1： 项目看板</li><li>2： 我的看板</li></ul>
 	DefaultPanelType *int64 `json:"DefaultPanelType,omitnil,omitempty" name:"DefaultPanelType"`
 
-	// 管理平台
+	// <p>管理平台</p>
 	ManagePlatform *string `json:"ManagePlatform,omitnil,omitempty" name:"ManagePlatform"`
 }
 
 type CreateProjectRequest struct {
 	*tchttp.BaseRequest
 	
-	// 项目名称
+	// <p>项目名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// logo底色
+	// <p>logo底色</p>
 	ColorCode *string `json:"ColorCode,omitnil,omitempty" name:"ColorCode"`
 
-	// 项目Logo
+	// <p>项目Logo</p>
 	Logo *string `json:"Logo,omitnil,omitempty" name:"Logo"`
 
-	// 备注
+	// <p>备注</p>
 	Mark *string `json:"Mark,omitnil,omitempty" name:"Mark"`
 
-	// 是否允许用户申请
+	// <p>是否允许用户申请</p>
 	IsApply *bool `json:"IsApply,omitnil,omitempty" name:"IsApply"`
 
-	// 默认看板
-	// 取值范围：
-	// 1：项目看板 
-	// 2：我的看板
+	// <p>默认看板</p><p>枚举值：</p><ul><li>1： 项目看板</li><li>2： 我的看板</li></ul>
 	DefaultPanelType *int64 `json:"DefaultPanelType,omitnil,omitempty" name:"DefaultPanelType"`
 
-	// 管理平台
+	// <p>管理平台</p>
 	ManagePlatform *string `json:"ManagePlatform,omitnil,omitempty" name:"ManagePlatform"`
 }
 
@@ -1376,13 +1581,13 @@ type CreateProjectResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorInfo *ErrorInfo `json:"ErrorInfo,omitnil,omitempty" name:"ErrorInfo"`
 
-	// 额外数据
+	// <p>额外数据</p>
 	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
 
-	// 数据
+	// <p>数据</p>
 	Data *Data `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// 返回信息
+	// <p>返回信息</p>
 	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1407,12 +1612,21 @@ func (r *CreateProjectResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateUserGroupMemberRequestParams struct {
+	// <p>用户组id</p>
+	GroupId *uint64 `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
+	// <p>用户id集合</p>
+	UserIdList []*string `json:"UserIdList,omitnil,omitempty" name:"UserIdList"`
 }
 
 type CreateUserGroupMemberRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>用户组id</p>
+	GroupId *uint64 `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// <p>用户id集合</p>
+	UserIdList []*string `json:"UserIdList,omitnil,omitempty" name:"UserIdList"`
 }
 
 func (r *CreateUserGroupMemberRequest) ToJsonString() string {
@@ -1427,7 +1641,8 @@ func (r *CreateUserGroupMemberRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "GroupId")
+	delete(f, "UserIdList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateUserGroupMemberRequest has unknown keys!", "")
 	}
@@ -1439,6 +1654,18 @@ type CreateUserGroupMemberResponseParams struct {
 	// 自定义错误信息对象
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorInfo *ErrorInfo `json:"ErrorInfo,omitnil,omitempty" name:"ErrorInfo"`
+
+	// <p>额外信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
+
+	// <p>结果信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
+
+	// <p>数据</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -1462,26 +1689,38 @@ func (r *CreateUserGroupMemberResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateUserGroupRequestParams struct {
-	// 用户组名称
+	// <p>组管理员</p>
+	AdminUserId *string `json:"AdminUserId,omitnil,omitempty" name:"AdminUserId"`
+
+	// <p>描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>用户组名称</p>
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
-	// 位置
+	// <p>位置</p>
 	Location *int64 `json:"Location,omitnil,omitempty" name:"Location"`
 
-	// 父用户组id
+	// <p>父用户组id</p>
 	ParentId *int64 `json:"ParentId,omitnil,omitempty" name:"ParentId"`
 }
 
 type CreateUserGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 用户组名称
+	// <p>组管理员</p>
+	AdminUserId *string `json:"AdminUserId,omitnil,omitempty" name:"AdminUserId"`
+
+	// <p>描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>用户组名称</p>
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
-	// 位置
+	// <p>位置</p>
 	Location *int64 `json:"Location,omitnil,omitempty" name:"Location"`
 
-	// 父用户组id
+	// <p>父用户组id</p>
 	ParentId *int64 `json:"ParentId,omitnil,omitempty" name:"ParentId"`
 }
 
@@ -1497,6 +1736,8 @@ func (r *CreateUserGroupRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "AdminUserId")
+	delete(f, "Description")
 	delete(f, "GroupName")
 	delete(f, "Location")
 	delete(f, "ParentId")
@@ -1511,6 +1752,18 @@ type CreateUserGroupResponseParams struct {
 	// 自定义错误信息对象
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorInfo *ErrorInfo `json:"ErrorInfo,omitnil,omitempty" name:"ErrorInfo"`
+
+	// <p>额外信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
+
+	// <p>结果信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
+
+	// <p>数据</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *UserGroupVO `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -1534,34 +1787,34 @@ func (r *CreateUserGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateUserRoleProjectRequestParams struct {
-	// 项目ID
+	// <p>项目ID</p>
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 角色ID列表
+	// <p>角色ID列表</p>
 	RoleIdList []*int64 `json:"RoleIdList,omitnil,omitempty" name:"RoleIdList"`
 
-	// 用户列表（废弃）
+	// <p>用户列表（废弃）</p>
 	//
 	// Deprecated: UserList is deprecated.
 	UserList []*UserIdAndUserName `json:"UserList,omitnil,omitempty" name:"UserList"`
 
-	// 用户列表（新）
+	// <p>用户列表（新）</p>
 	UserInfoList []*UserInfo `json:"UserInfoList,omitnil,omitempty" name:"UserInfoList"`
 }
 
 type CreateUserRoleProjectRequest struct {
 	*tchttp.BaseRequest
 	
-	// 项目ID
+	// <p>项目ID</p>
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 角色ID列表
+	// <p>角色ID列表</p>
 	RoleIdList []*int64 `json:"RoleIdList,omitnil,omitempty" name:"RoleIdList"`
 
-	// 用户列表（废弃）
+	// <p>用户列表（废弃）</p>
 	UserList []*UserIdAndUserName `json:"UserList,omitnil,omitempty" name:"UserList"`
 
-	// 用户列表（新）
+	// <p>用户列表（新）</p>
 	UserInfoList []*UserInfo `json:"UserInfoList,omitnil,omitempty" name:"UserInfoList"`
 }
 
@@ -1593,15 +1846,15 @@ type CreateUserRoleProjectResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorInfo *ErrorInfo `json:"ErrorInfo,omitnil,omitempty" name:"ErrorInfo"`
 
-	// 扩展
+	// <p>扩展</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
 
-	// 数据
+	// <p>数据</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *DataId `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// 消息
+	// <p>消息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
 
@@ -2050,32 +2303,26 @@ func (r *DeleteDatasourceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteProjectRequestParams struct {
-	// 项目ID
+	// <p>项目ID</p>
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 随机数
+	// <p>随机数</p>
 	Seed *string `json:"Seed,omitnil,omitempty" name:"Seed"`
 
-	// 默认看板
-	// 取值范围：
-	// 1：项目看板 
-	// 2：我的看板
+	// <p>默认看板</p><p>枚举值：</p><ul><li>1： 项目看板</li><li>2： 我的看板</li></ul>
 	DefaultPanelType *int64 `json:"DefaultPanelType,omitnil,omitempty" name:"DefaultPanelType"`
 }
 
 type DeleteProjectRequest struct {
 	*tchttp.BaseRequest
 	
-	// 项目ID
+	// <p>项目ID</p>
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 随机数
+	// <p>随机数</p>
 	Seed *string `json:"Seed,omitnil,omitempty" name:"Seed"`
 
-	// 默认看板
-	// 取值范围：
-	// 1：项目看板 
-	// 2：我的看板
+	// <p>默认看板</p><p>枚举值：</p><ul><li>1： 项目看板</li><li>2： 我的看板</li></ul>
 	DefaultPanelType *int64 `json:"DefaultPanelType,omitnil,omitempty" name:"DefaultPanelType"`
 }
 
@@ -2106,14 +2353,14 @@ type DeleteProjectResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorInfo *ErrorInfo `json:"ErrorInfo,omitnil,omitempty" name:"ErrorInfo"`
 
-	// ”“
+	// <p>”“</p>
 	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
 
-	// ""
+	// <p>&quot;&quot;</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// ""
+	// <p>&quot;&quot;</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
 
@@ -2139,20 +2386,20 @@ func (r *DeleteProjectResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteUserGroupMemberRequestParams struct {
-	// 用户组id
+	// <p>用户组id</p>
 	GroupId *uint64 `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 用户id集合
+	// <p>用户id集合</p>
 	UserIdList []*string `json:"UserIdList,omitnil,omitempty" name:"UserIdList"`
 }
 
 type DeleteUserGroupMemberRequest struct {
 	*tchttp.BaseRequest
 	
-	// 用户组id
+	// <p>用户组id</p>
 	GroupId *uint64 `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 用户id集合
+	// <p>用户id集合</p>
 	UserIdList []*string `json:"UserIdList,omitnil,omitempty" name:"UserIdList"`
 }
 
@@ -2182,6 +2429,18 @@ type DeleteUserGroupMemberResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorInfo *ErrorInfo `json:"ErrorInfo,omitnil,omitempty" name:"ErrorInfo"`
 
+	// <p>额外信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
+
+	// <p>结果信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
+
+	// <p>数据</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -2204,14 +2463,14 @@ func (r *DeleteUserGroupMemberResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteUserGroupRequestParams struct {
-	// 用户组id
+	// <p>用户组id</p>
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 }
 
 type DeleteUserGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 用户组id
+	// <p>用户组id</p>
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 }
 
@@ -2239,6 +2498,18 @@ type DeleteUserGroupResponseParams struct {
 	// 自定义错误信息对象
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorInfo *ErrorInfo `json:"ErrorInfo,omitnil,omitempty" name:"ErrorInfo"`
+
+	// <p>额外信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
+
+	// <p>结果信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
+
+	// <p>数据</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -2757,88 +3028,44 @@ func (r *DescribePageWidgetListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribePermissionRanksInfoRequestParams struct {
-	// 页数
+	// <p>页数</p>
 	TableId *int64 `json:"TableId,omitnil,omitempty" name:"TableId"`
 
-	// 模式。
-	// 取值范围：
-	// 
-	// - ALL：全部
-	// - Specify：指定
-	// - TAG：标签
-	// 
-	// 默认值：ALL
-	// 示例值：ALL
+	// <p>模式</p><p>枚举值：</p><ul><li>ALL： 全部</li><li>Specify： 指定</li><li>TAG： 标签</li></ul><p>默认值：ALL</p>
 	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
 
-	// 角色类型。
-	// 取值范围：
-	// 
-	// - ROLES：按角色
-	// - Others：其它
-	// 
-	// 默认值：Others
-	// 示例值：Others
+	// <p>角色类型</p><p>枚举值：</p><ul><li>ROLES： 按角色</li><li>Others： 其它</li></ul><p>默认值：Others</p>
 	RoleType *string `json:"RoleType,omitnil,omitempty" name:"RoleType"`
 
-	// 所有页码
+	// <p>所有页码</p>
 	RoleId *int64 `json:"RoleId,omitnil,omitempty" name:"RoleId"`
 
-	// 类型。
-	// 取值范围：
-	// 
-	// - ROW：行权限
-	// - COLUMN：列权限
-	// 
-	// 默认值：ROW
-	// 示例值：ROW
+	// <p>类型</p><p>枚举值：</p><ul><li>ROW： 行权限</li><li>COLUMN： 列权限</li></ul><p>默认值：ROW</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 项目id
+	// <p>项目id</p>
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 }
 
 type DescribePermissionRanksInfoRequest struct {
 	*tchttp.BaseRequest
 	
-	// 页数
+	// <p>页数</p>
 	TableId *int64 `json:"TableId,omitnil,omitempty" name:"TableId"`
 
-	// 模式。
-	// 取值范围：
-	// 
-	// - ALL：全部
-	// - Specify：指定
-	// - TAG：标签
-	// 
-	// 默认值：ALL
-	// 示例值：ALL
+	// <p>模式</p><p>枚举值：</p><ul><li>ALL： 全部</li><li>Specify： 指定</li><li>TAG： 标签</li></ul><p>默认值：ALL</p>
 	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
 
-	// 角色类型。
-	// 取值范围：
-	// 
-	// - ROLES：按角色
-	// - Others：其它
-	// 
-	// 默认值：Others
-	// 示例值：Others
+	// <p>角色类型</p><p>枚举值：</p><ul><li>ROLES： 按角色</li><li>Others： 其它</li></ul><p>默认值：Others</p>
 	RoleType *string `json:"RoleType,omitnil,omitempty" name:"RoleType"`
 
-	// 所有页码
+	// <p>所有页码</p>
 	RoleId *int64 `json:"RoleId,omitnil,omitempty" name:"RoleId"`
 
-	// 类型。
-	// 取值范围：
-	// 
-	// - ROW：行权限
-	// - COLUMN：列权限
-	// 
-	// 默认值：ROW
-	// 示例值：ROW
+	// <p>类型</p><p>枚举值：</p><ul><li>ROW： 行权限</li><li>COLUMN： 列权限</li></ul><p>默认值：ROW</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 项目id
+	// <p>项目id</p>
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 }
 
@@ -2872,15 +3099,15 @@ type DescribePermissionRanksInfoResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorInfo *ErrorInfo `json:"ErrorInfo,omitnil,omitempty" name:"ErrorInfo"`
 
-	// 消息
+	// <p>消息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
 
-	// 112
+	// <p>112</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
 
-	// 无
+	// <p>无</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *RankInfo `json:"Data,omitnil,omitempty" name:"Data"`
 
@@ -2997,40 +3224,26 @@ func (r *DescribePermissionRoleInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribePermissionStatusInfoRequestParams struct {
-	// 页数
+	// <p>页数</p>
 	TableId *int64 `json:"TableId,omitnil,omitempty" name:"TableId"`
 
-	// 类型。
-	// 取值范围：
-	// 
-	// - ROW：行权限
-	// - COLUMN：列权限
-	// 
-	// 默认值：ROW
-	// 示例值：ROW
+	// <p>类型</p><p>枚举值：</p><ul><li>ROW： 行权限</li><li>COLUMN： 列权限</li></ul><p>默认值：ROW</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 1
+	// <p>1</p>
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 }
 
 type DescribePermissionStatusInfoRequest struct {
 	*tchttp.BaseRequest
 	
-	// 页数
+	// <p>页数</p>
 	TableId *int64 `json:"TableId,omitnil,omitempty" name:"TableId"`
 
-	// 类型。
-	// 取值范围：
-	// 
-	// - ROW：行权限
-	// - COLUMN：列权限
-	// 
-	// 默认值：ROW
-	// 示例值：ROW
+	// <p>类型</p><p>枚举值：</p><ul><li>ROW： 行权限</li><li>COLUMN： 列权限</li></ul><p>默认值：ROW</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 1
+	// <p>1</p>
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 }
 
@@ -3061,15 +3274,15 @@ type DescribePermissionStatusInfoResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorInfo *ErrorInfo `json:"ErrorInfo,omitnil,omitempty" name:"ErrorInfo"`
 
-	// 消息
+	// <p>消息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
 
-	// 112
+	// <p>112</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
 
-	// 1
+	// <p>1</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *RowColumnStatus `json:"Data,omitnil,omitempty" name:"Data"`
 
@@ -3095,26 +3308,20 @@ func (r *DescribePermissionStatusInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeProjectInfoRequestParams struct {
-	// 项目Id
+	// <p>项目Id</p>
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 默认看板
-	// 取值范围：
-	// 1：项目看板 
-	// 2：我的看板
+	// <p>默认看板</p><p>枚举值：</p><ul><li>1： 项目看板</li><li>2： 我的看板</li></ul>
 	DefaultPanelType *int64 `json:"DefaultPanelType,omitnil,omitempty" name:"DefaultPanelType"`
 }
 
 type DescribeProjectInfoRequest struct {
 	*tchttp.BaseRequest
 	
-	// 项目Id
+	// <p>项目Id</p>
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 默认看板
-	// 取值范围：
-	// 1：项目看板 
-	// 2：我的看板
+	// <p>默认看板</p><p>枚举值：</p><ul><li>1： 项目看板</li><li>2： 我的看板</li></ul>
 	DefaultPanelType *int64 `json:"DefaultPanelType,omitnil,omitempty" name:"DefaultPanelType"`
 }
 
@@ -3144,15 +3351,15 @@ type DescribeProjectInfoResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorInfo *ErrorInfo `json:"ErrorInfo,omitnil,omitempty" name:"ErrorInfo"`
 
-	// ""
+	// <p>&quot;&quot;</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
 
-	// ""
+	// <p>&quot;&quot;</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
 
-	// 项目详情
+	// <p>项目详情</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *Project `json:"Data,omitnil,omitempty" name:"Data"`
 
@@ -3436,6 +3643,145 @@ func (r *DescribeResourceUserGroupPageListResponse) FromJsonString(s string) err
 }
 
 // Predefined struct for user
+type DescribeSourceFieldListRequestParams struct {
+	// 数据源Id
+	DataSourceId *int64 `json:"DataSourceId,omitnil,omitempty" name:"DataSourceId"`
+
+	// 表名
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// sql内容
+	Sql *string `json:"Sql,omitnil,omitempty" name:"Sql"`
+
+	// 项目id
+	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 是否是异步
+	AsyncRequest *bool `json:"AsyncRequest,omitnil,omitempty" name:"AsyncRequest"`
+
+	// 异步事务id
+	TranId *string `json:"TranId,omitnil,omitempty" name:"TranId"`
+
+	// 11
+	ParamList []*ParamCreateDTO `json:"ParamList,omitnil,omitempty" name:"ParamList"`
+
+	// DLC扩展参数
+	DlcExtInfo *string `json:"DlcExtInfo,omitnil,omitempty" name:"DlcExtInfo"`
+
+	// 是否查询数据库
+	QueryDbData *string `json:"QueryDbData,omitnil,omitempty" name:"QueryDbData"`
+
+	// 数据表 Id
+	TableId *string `json:"TableId,omitnil,omitempty" name:"TableId"`
+
+	// 后端提供字典：数据表类型，1、数据库建表，2、SQL建表，3、Excel上传，4、API接入，5、腾讯文档，6、云数据库，7、手工输入，8、关联查询
+	TableType *uint64 `json:"TableType,omitnil,omitempty" name:"TableType"`
+}
+
+type DescribeSourceFieldListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据源Id
+	DataSourceId *int64 `json:"DataSourceId,omitnil,omitempty" name:"DataSourceId"`
+
+	// 表名
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// sql内容
+	Sql *string `json:"Sql,omitnil,omitempty" name:"Sql"`
+
+	// 项目id
+	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 是否是异步
+	AsyncRequest *bool `json:"AsyncRequest,omitnil,omitempty" name:"AsyncRequest"`
+
+	// 异步事务id
+	TranId *string `json:"TranId,omitnil,omitempty" name:"TranId"`
+
+	// 11
+	ParamList []*ParamCreateDTO `json:"ParamList,omitnil,omitempty" name:"ParamList"`
+
+	// DLC扩展参数
+	DlcExtInfo *string `json:"DlcExtInfo,omitnil,omitempty" name:"DlcExtInfo"`
+
+	// 是否查询数据库
+	QueryDbData *string `json:"QueryDbData,omitnil,omitempty" name:"QueryDbData"`
+
+	// 数据表 Id
+	TableId *string `json:"TableId,omitnil,omitempty" name:"TableId"`
+
+	// 后端提供字典：数据表类型，1、数据库建表，2、SQL建表，3、Excel上传，4、API接入，5、腾讯文档，6、云数据库，7、手工输入，8、关联查询
+	TableType *uint64 `json:"TableType,omitnil,omitempty" name:"TableType"`
+}
+
+func (r *DescribeSourceFieldListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSourceFieldListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DataSourceId")
+	delete(f, "TableName")
+	delete(f, "Sql")
+	delete(f, "ProjectId")
+	delete(f, "AsyncRequest")
+	delete(f, "TranId")
+	delete(f, "ParamList")
+	delete(f, "DlcExtInfo")
+	delete(f, "QueryDbData")
+	delete(f, "TableId")
+	delete(f, "TableType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSourceFieldListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSourceFieldListResponseParams struct {
+	// 自定义错误信息对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorInfo *ErrorInfo `json:"ErrorInfo,omitnil,omitempty" name:"ErrorInfo"`
+
+	// 额外信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
+
+	// 信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
+
+	// 表中字段的列表
+	Data *TableColumnListData `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeSourceFieldListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSourceFieldListResponseParams `json:"Response"`
+}
+
+func (r *DescribeSourceFieldListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSourceFieldListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeUserGroupInfoRequestParams struct {
 	// 用户组id
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
@@ -3495,44 +3841,44 @@ func (r *DescribeUserGroupInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeUserGroupMemberListRequestParams struct {
-	// 用户组id集合
+	// <p>用户组id集合</p>
 	GroupIds []*int64 `json:"GroupIds,omitnil,omitempty" name:"GroupIds"`
 
-	// asc正序,desc倒序
+	// <p>asc正序,desc倒序</p>
 	CreatedOnOrder *string `json:"CreatedOnOrder,omitnil,omitempty" name:"CreatedOnOrder"`
 
-	// 搜索关键字
+	// <p>搜索关键字</p>
 	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
 
-	// 分页大小
+	// <p>分页大小</p>
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 分页页码
+	// <p>分页页码</p>
 	PageNo *uint64 `json:"PageNo,omitnil,omitempty" name:"PageNo"`
 
-	// 是否需要分页
+	// <p>是否需要分页</p>
 	AllPage *bool `json:"AllPage,omitnil,omitempty" name:"AllPage"`
 }
 
 type DescribeUserGroupMemberListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 用户组id集合
+	// <p>用户组id集合</p>
 	GroupIds []*int64 `json:"GroupIds,omitnil,omitempty" name:"GroupIds"`
 
-	// asc正序,desc倒序
+	// <p>asc正序,desc倒序</p>
 	CreatedOnOrder *string `json:"CreatedOnOrder,omitnil,omitempty" name:"CreatedOnOrder"`
 
-	// 搜索关键字
+	// <p>搜索关键字</p>
 	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
 
-	// 分页大小
+	// <p>分页大小</p>
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 分页页码
+	// <p>分页页码</p>
 	PageNo *uint64 `json:"PageNo,omitnil,omitempty" name:"PageNo"`
 
-	// 是否需要分页
+	// <p>是否需要分页</p>
 	AllPage *bool `json:"AllPage,omitnil,omitempty" name:"AllPage"`
 }
 
@@ -3566,6 +3912,18 @@ type DescribeUserGroupMemberListResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorInfo *ErrorInfo `json:"ErrorInfo,omitnil,omitempty" name:"ErrorInfo"`
 
+	// <p>额外信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
+
+	// <p>结果信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
+
+	// <p>数据</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *DescribeUserGroupMemberPageListContainer `json:"Data,omitnil,omitempty" name:"Data"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -3584,6 +3942,20 @@ func (r *DescribeUserGroupMemberListResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DescribeUserGroupMemberListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeUserGroupMemberPageListContainer struct {
+	// 列表数据集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	List []*UserGroupMemberVO `json:"List,omitnil,omitempty" name:"List"`
+
+	// 总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 总页数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalPages *int64 `json:"TotalPages,omitnil,omitempty" name:"TotalPages"`
 }
 
 // Predefined struct for user
@@ -3735,50 +4107,50 @@ func (r *DescribeUserGroupTreeListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeUserProjectListRequestParams struct {
-	// 项目ID
+	// <p>项目ID</p>
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 无
+	// <p>无</p>
 	AllPage *bool `json:"AllPage,omitnil,omitempty" name:"AllPage"`
 
-	// 无
+	// <p>无</p>
 	PageNo *int64 `json:"PageNo,omitnil,omitempty" name:"PageNo"`
 
-	// 无
+	// <p>无</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 是否过滤掉企业管理员
+	// <p>是否过滤掉企业管理员</p>
 	IsFilterPerAuthUser *bool `json:"IsFilterPerAuthUser,omitnil,omitempty" name:"IsFilterPerAuthUser"`
 
-	// 是否过滤掉当前用户
+	// <p>是否过滤掉当前用户</p>
 	IsFilterCurrentUser *bool `json:"IsFilterCurrentUser,omitnil,omitempty" name:"IsFilterCurrentUser"`
 
-	// 关键字
+	// <p>关键字</p>
 	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
 }
 
 type DescribeUserProjectListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 项目ID
+	// <p>项目ID</p>
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 无
+	// <p>无</p>
 	AllPage *bool `json:"AllPage,omitnil,omitempty" name:"AllPage"`
 
-	// 无
+	// <p>无</p>
 	PageNo *int64 `json:"PageNo,omitnil,omitempty" name:"PageNo"`
 
-	// 无
+	// <p>无</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 是否过滤掉企业管理员
+	// <p>是否过滤掉企业管理员</p>
 	IsFilterPerAuthUser *bool `json:"IsFilterPerAuthUser,omitnil,omitempty" name:"IsFilterPerAuthUser"`
 
-	// 是否过滤掉当前用户
+	// <p>是否过滤掉当前用户</p>
 	IsFilterCurrentUser *bool `json:"IsFilterCurrentUser,omitnil,omitempty" name:"IsFilterCurrentUser"`
 
-	// 关键字
+	// <p>关键字</p>
 	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
 }
 
@@ -3813,15 +4185,15 @@ type DescribeUserProjectListResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorInfo *ErrorInfo `json:"ErrorInfo,omitnil,omitempty" name:"ErrorInfo"`
 
-	// 数据
+	// <p>数据</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *CorpUserListData `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// 扩展
+	// <p>扩展</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
 
-	// 消息
+	// <p>消息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
 
@@ -4160,6 +4532,26 @@ type EmbedTokenInfo struct {
 	ConfigParam *string `json:"ConfigParam,omitnil,omitempty" name:"ConfigParam"`
 }
 
+type EmptyValue struct {
+	// 空值展示样式类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 空值展示样式类型对应具体的展示字符串
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Custom *string `json:"Custom,omitnil,omitempty" name:"Custom"`
+}
+
+type EmptyValueConfig struct {
+	// 数值类字段空值样式配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Number *EmptyValue `json:"Number,omitnil,omitempty" name:"Number"`
+
+	// 字符串字段空置样式配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	String *EmptyValue `json:"String,omitnil,omitempty" name:"String"`
+}
+
 type ErrorInfo struct {
 	// 错误说明字段
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -4301,30 +4693,136 @@ func (r *ExportScreenPageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type FieldRemarkDTO struct {
+	// 字段名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FieldName *string `json:"FieldName,omitnil,omitempty" name:"FieldName"`
+
+	// 字段备注列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Comment []*string `json:"Comment,omitnil,omitempty" name:"Comment"`
+}
+
+type FrequencyConfig struct {
+	// 周期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Frequency *string `json:"Frequency,omitnil,omitempty" name:"Frequency"`
+
+	// 日期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Dates []*int64 `json:"Dates,omitnil,omitempty" name:"Dates"`
+
+	// 时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Time *string `json:"Time,omitnil,omitempty" name:"Time"`
+
+	// 间隔时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IntervalTime *uint64 `json:"IntervalTime,omitnil,omitempty" name:"IntervalTime"`
+
+	// 1:SECOND,2:MINUTE,3:HOUR,4:DAY
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IntervalTimeUnit *uint64 `json:"IntervalTimeUnit,omitnil,omitempty" name:"IntervalTimeUnit"`
+
+	// 小时列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Hours []*int64 `json:"Hours,omitnil,omitempty" name:"Hours"`
+
+	// 分钟列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Minute []*int64 `json:"Minute,omitnil,omitempty" name:"Minute"`
+}
+
 type IdDTO struct {
-	// 请求id
+	// <p>请求id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// key
+	// <p>key</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccessKey *string `json:"AccessKey,omitnil,omitempty" name:"AccessKey"`
 
-	// id
+	// <p>id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 事务id
+	// <p>事务id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TranId *string `json:"TranId,omitnil,omitempty" name:"TranId"`
 
-	// 事务状态
-	// 取值范围：
-	// 1: 处理中
-	// 2: 处理成功
-	// 3: 处理失败
+	// <p>事务状态</p><p>枚举值：</p><ul><li>1： 处理中</li><li>2： 处理成功</li><li>3： 处理失败</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TranStatus *int64 `json:"TranStatus,omitnil,omitempty" name:"TranStatus"`
+}
+
+type JoinRelation struct {
+	// 表关联关系id,前端使用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JoinId *string `json:"JoinId,omitnil,omitempty" name:"JoinId"`
+
+	// 原表节点id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceTableNodeId *string `json:"SourceTableNodeId,omitnil,omitempty" name:"SourceTableNodeId"`
+
+	// 目标表节点id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetTableNodeId *string `json:"TargetTableNodeId,omitnil,omitempty" name:"TargetTableNodeId"`
+
+	// 多表关联的关联类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JoinType *string `json:"JoinType,omitnil,omitempty" name:"JoinType"`
+
+	// 多表关联的字段列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Fields []*JoinRelationField `json:"Fields,omitnil,omitempty" name:"Fields"`
+}
+
+type JoinRelationField struct {
+	// 字段关联关系id,前端使用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FieldJoinId *string `json:"FieldJoinId,omitnil,omitempty" name:"FieldJoinId"`
+
+	// 原表字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceField *TableField `json:"SourceField,omitnil,omitempty" name:"SourceField"`
+
+	// 目标表字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetField *TableField `json:"TargetField,omitnil,omitempty" name:"TargetField"`
+}
+
+type JoinSourceTable struct {
+	// 1:数据源原表,2:本地表,3:Excel表,4:API表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableNodeType *uint64 `json:"TableNodeType,omitnil,omitempty" name:"TableNodeType"`
+
+	// 原始表节点Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableNodeId *string `json:"TableNodeId,omitnil,omitempty" name:"TableNodeId"`
+
+	// 父节点id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParentId *string `json:"ParentId,omitnil,omitempty" name:"ParentId"`
+
+	// 非必填, 数据源原表没有ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableId *string `json:"TableId,omitnil,omitempty" name:"TableId"`
+
+	// 必填,数据源原表用原始表名, 其他类型用BI的逻辑表名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// 原始表需要展示的字段列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Fields []*TableField `json:"Fields,omitnil,omitempty" name:"Fields"`
+
+	// 数据源id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatasourceId *uint64 `json:"DatasourceId,omitnil,omitempty" name:"DatasourceId"`
+
+	// 非必填,前端展示的数据源别名,excel建表需要
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableAlias *string `json:"TableAlias,omitnil,omitempty" name:"TableAlias"`
 }
 
 // Predefined struct for user
@@ -4406,158 +4904,146 @@ func (r *ModifyAuthApiKeyResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyDatasourceCloudRequestParams struct {
-	// 后端提供字典：域类型，1、腾讯云，2、本地
+	// <p>后端提供字典：域类型，1、腾讯云，2、本地</p>
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
-	// 驱动
-	// 取值范围：
-	// MYSQL：MySQL数据库
-	// PRESTO：PRESTO数据库
-	// POSTGRE：PostgreSQL数据库
-	// DLC：DLC数据库
-	// MSSQL：微软SQL Server数据库
+	// <p>驱动</p><p>枚举值：</p><ul><li>MYSQL： MySQL数据库</li><li>PRESTO： PRESTO数据库</li><li>POSTGRE： PostgreSQL数据库</li><li>DLC： DLC数据库</li><li>MSSQL： 微软SQL Server数据库</li></ul>
 	DbType *string `json:"DbType,omitnil,omitempty" name:"DbType"`
 
-	// 数据库编码
+	// <p>数据库编码</p>
 	Charset *string `json:"Charset,omitnil,omitempty" name:"Charset"`
 
-	// 用户名
+	// <p>用户名</p>
 	DbUser *string `json:"DbUser,omitnil,omitempty" name:"DbUser"`
 
-	// 密码
+	// <p>密码</p>
 	DbPwd *string `json:"DbPwd,omitnil,omitempty" name:"DbPwd"`
 
-	// 数据库名称
+	// <p>数据库名称</p>
 	DbName *string `json:"DbName,omitnil,omitempty" name:"DbName"`
 
-	// 数据库别名
+	// <p>数据库别名</p>
 	SourceName *string `json:"SourceName,omitnil,omitempty" name:"SourceName"`
 
-	// 项目ID
+	// <p>项目ID</p>
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 住键
+	// <p>住键</p>
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 公有云内网ip
+	// <p>公有云内网ip</p>
 	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
 
-	// 公有云内网端口
+	// <p>公有云内网端口</p>
 	Vport *string `json:"Vport,omitnil,omitempty" name:"Vport"`
 
-	// vpc标识
+	// <p>vpc标识</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 统一vpc标识
+	// <p>统一vpc标识</p>
 	UniqVpcId *string `json:"UniqVpcId,omitnil,omitempty" name:"UniqVpcId"`
 
-	// 区域标识（gz,bj)
+	// <p>区域标识（gz,bj)</p>
 	RegionId *string `json:"RegionId,omitnil,omitempty" name:"RegionId"`
 
-	// 扩展参数
+	// <p>扩展参数</p>
 	ExtraParam *string `json:"ExtraParam,omitnil,omitempty" name:"ExtraParam"`
 
-	// 实例id
+	// <p>实例id</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 数据源产品名
+	// <p>数据源产品名</p>
 	ProdDbName *string `json:"ProdDbName,omitnil,omitempty" name:"ProdDbName"`
 
-	// 第三方数据源标识
+	// <p>第三方数据源标识</p>
 	DataOrigin *string `json:"DataOrigin,omitnil,omitempty" name:"DataOrigin"`
 
-	// 第三方项目id
+	// <p>第三方项目id</p>
 	DataOriginProjectId *string `json:"DataOriginProjectId,omitnil,omitempty" name:"DataOriginProjectId"`
 
-	// 第三方数据源id
+	// <p>第三方数据源id</p>
 	DataOriginDatasourceId *string `json:"DataOriginDatasourceId,omitnil,omitempty" name:"DataOriginDatasourceId"`
 
-	// 集群id
+	// <p>集群id</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 数据库schema
+	// <p>数据库schema</p>
 	Schema *string `json:"Schema,omitnil,omitempty" name:"Schema"`
 
-	// 数据库版本
+	// <p>数据库版本</p>
 	DbVersion *string `json:"DbVersion,omitnil,omitempty" name:"DbVersion"`
 }
 
 type ModifyDatasourceCloudRequest struct {
 	*tchttp.BaseRequest
 	
-	// 后端提供字典：域类型，1、腾讯云，2、本地
+	// <p>后端提供字典：域类型，1、腾讯云，2、本地</p>
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
-	// 驱动
-	// 取值范围：
-	// MYSQL：MySQL数据库
-	// PRESTO：PRESTO数据库
-	// POSTGRE：PostgreSQL数据库
-	// DLC：DLC数据库
-	// MSSQL：微软SQL Server数据库
+	// <p>驱动</p><p>枚举值：</p><ul><li>MYSQL： MySQL数据库</li><li>PRESTO： PRESTO数据库</li><li>POSTGRE： PostgreSQL数据库</li><li>DLC： DLC数据库</li><li>MSSQL： 微软SQL Server数据库</li></ul>
 	DbType *string `json:"DbType,omitnil,omitempty" name:"DbType"`
 
-	// 数据库编码
+	// <p>数据库编码</p>
 	Charset *string `json:"Charset,omitnil,omitempty" name:"Charset"`
 
-	// 用户名
+	// <p>用户名</p>
 	DbUser *string `json:"DbUser,omitnil,omitempty" name:"DbUser"`
 
-	// 密码
+	// <p>密码</p>
 	DbPwd *string `json:"DbPwd,omitnil,omitempty" name:"DbPwd"`
 
-	// 数据库名称
+	// <p>数据库名称</p>
 	DbName *string `json:"DbName,omitnil,omitempty" name:"DbName"`
 
-	// 数据库别名
+	// <p>数据库别名</p>
 	SourceName *string `json:"SourceName,omitnil,omitempty" name:"SourceName"`
 
-	// 项目ID
+	// <p>项目ID</p>
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 住键
+	// <p>住键</p>
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 公有云内网ip
+	// <p>公有云内网ip</p>
 	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
 
-	// 公有云内网端口
+	// <p>公有云内网端口</p>
 	Vport *string `json:"Vport,omitnil,omitempty" name:"Vport"`
 
-	// vpc标识
+	// <p>vpc标识</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 统一vpc标识
+	// <p>统一vpc标识</p>
 	UniqVpcId *string `json:"UniqVpcId,omitnil,omitempty" name:"UniqVpcId"`
 
-	// 区域标识（gz,bj)
+	// <p>区域标识（gz,bj)</p>
 	RegionId *string `json:"RegionId,omitnil,omitempty" name:"RegionId"`
 
-	// 扩展参数
+	// <p>扩展参数</p>
 	ExtraParam *string `json:"ExtraParam,omitnil,omitempty" name:"ExtraParam"`
 
-	// 实例id
+	// <p>实例id</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 数据源产品名
+	// <p>数据源产品名</p>
 	ProdDbName *string `json:"ProdDbName,omitnil,omitempty" name:"ProdDbName"`
 
-	// 第三方数据源标识
+	// <p>第三方数据源标识</p>
 	DataOrigin *string `json:"DataOrigin,omitnil,omitempty" name:"DataOrigin"`
 
-	// 第三方项目id
+	// <p>第三方项目id</p>
 	DataOriginProjectId *string `json:"DataOriginProjectId,omitnil,omitempty" name:"DataOriginProjectId"`
 
-	// 第三方数据源id
+	// <p>第三方数据源id</p>
 	DataOriginDatasourceId *string `json:"DataOriginDatasourceId,omitnil,omitempty" name:"DataOriginDatasourceId"`
 
-	// 集群id
+	// <p>集群id</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 数据库schema
+	// <p>数据库schema</p>
 	Schema *string `json:"Schema,omitnil,omitempty" name:"Schema"`
 
-	// 数据库版本
+	// <p>数据库版本</p>
 	DbVersion *string `json:"DbVersion,omitnil,omitempty" name:"DbVersion"`
 }
 
@@ -4608,15 +5094,15 @@ type ModifyDatasourceCloudResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorInfo *ErrorInfo `json:"ErrorInfo,omitnil,omitempty" name:"ErrorInfo"`
 
-	// 无
+	// <p>无</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// 额外信息
+	// <p>额外信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
 
-	// 提示
+	// <p>提示</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
 
@@ -4642,164 +5128,152 @@ func (r *ModifyDatasourceCloudResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyDatasourceRequestParams struct {
-	// HOST
+	// <p>HOST</p>
 	DbHost *string `json:"DbHost,omitnil,omitempty" name:"DbHost"`
 
-	// 端口
+	// <p>端口</p>
 	DbPort *uint64 `json:"DbPort,omitnil,omitempty" name:"DbPort"`
 
-	// 后端提供字典：域类型，1、腾讯云，2、本地
+	// <p>后端提供字典：域类型，1、腾讯云，2、本地</p>
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
-	// 驱动
-	// 取值范围：
-	// MYSQL：MySQL数据库
-	// PRESTO：PRESTO数据库
-	// POSTGRE：PostgreSQL数据库
-	// DLC：DLC数据库
-	// MSSQL：微软SQL Server数据库
+	// <p>驱动</p><p>枚举值：</p><ul><li>MYSQL： MySQL数据库</li><li>PRESTO： PRESTO数据库</li><li>POSTGRE： PostgreSQL数据库</li><li>DLC： DLC数据库</li><li>MSSQL： 微软SQL Server数据库</li></ul>
 	DbType *string `json:"DbType,omitnil,omitempty" name:"DbType"`
 
-	// 数据库编码
+	// <p>数据库编码</p>
 	Charset *string `json:"Charset,omitnil,omitempty" name:"Charset"`
 
-	// 用户名
+	// <p>用户名</p>
 	DbUser *string `json:"DbUser,omitnil,omitempty" name:"DbUser"`
 
-	// 密码
+	// <p>密码</p>
 	DbPwd *string `json:"DbPwd,omitnil,omitempty" name:"DbPwd"`
 
-	// 数据库名称
+	// <p>数据库名称</p>
 	DbName *string `json:"DbName,omitnil,omitempty" name:"DbName"`
 
-	// 数据库别名
+	// <p>数据库别名</p>
 	SourceName *string `json:"SourceName,omitnil,omitempty" name:"SourceName"`
 
-	// 数据源id
+	// <p>数据源id</p>
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 项目ID
+	// <p>项目ID</p>
 	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// catalog值
+	// <p>catalog值</p>
 	Catalog *string `json:"Catalog,omitnil,omitempty" name:"Catalog"`
 
-	// 第三方数据源标识
+	// <p>第三方数据源标识</p>
 	DataOrigin *string `json:"DataOrigin,omitnil,omitempty" name:"DataOrigin"`
 
-	// 第三方项目id
+	// <p>第三方项目id</p>
 	DataOriginProjectId *string `json:"DataOriginProjectId,omitnil,omitempty" name:"DataOriginProjectId"`
 
-	// 第三方数据源id
+	// <p>第三方数据源id</p>
 	DataOriginDatasourceId *string `json:"DataOriginDatasourceId,omitnil,omitempty" name:"DataOriginDatasourceId"`
 
-	// 扩展参数
+	// <p>扩展参数</p>
 	ExtraParam *string `json:"ExtraParam,omitnil,omitempty" name:"ExtraParam"`
 
-	// 腾讯云私有网络统一标识
+	// <p>腾讯云私有网络统一标识</p>
 	UniqVpcId *string `json:"UniqVpcId,omitnil,omitempty" name:"UniqVpcId"`
 
-	// 私有网络ip
+	// <p>私有网络ip</p>
 	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
 
-	// 私有网络端口
+	// <p>私有网络端口</p>
 	Vport *string `json:"Vport,omitnil,omitempty" name:"Vport"`
 
-	// 腾讯云私有网络标识
+	// <p>腾讯云私有网络标识</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 开启vpc	
+	// <p>开启vpc</p>
 	UseVPC *bool `json:"UseVPC,omitnil,omitempty" name:"UseVPC"`
 
-	// 地域
+	// <p>地域</p>
 	RegionId *string `json:"RegionId,omitnil,omitempty" name:"RegionId"`
 
-	// 数据库schema
+	// <p>数据库schema</p>
 	Schema *string `json:"Schema,omitnil,omitempty" name:"Schema"`
 
-	// 数据库版本
+	// <p>数据库版本</p>
 	DbVersion *string `json:"DbVersion,omitnil,omitempty" name:"DbVersion"`
 }
 
 type ModifyDatasourceRequest struct {
 	*tchttp.BaseRequest
 	
-	// HOST
+	// <p>HOST</p>
 	DbHost *string `json:"DbHost,omitnil,omitempty" name:"DbHost"`
 
-	// 端口
+	// <p>端口</p>
 	DbPort *uint64 `json:"DbPort,omitnil,omitempty" name:"DbPort"`
 
-	// 后端提供字典：域类型，1、腾讯云，2、本地
+	// <p>后端提供字典：域类型，1、腾讯云，2、本地</p>
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
-	// 驱动
-	// 取值范围：
-	// MYSQL：MySQL数据库
-	// PRESTO：PRESTO数据库
-	// POSTGRE：PostgreSQL数据库
-	// DLC：DLC数据库
-	// MSSQL：微软SQL Server数据库
+	// <p>驱动</p><p>枚举值：</p><ul><li>MYSQL： MySQL数据库</li><li>PRESTO： PRESTO数据库</li><li>POSTGRE： PostgreSQL数据库</li><li>DLC： DLC数据库</li><li>MSSQL： 微软SQL Server数据库</li></ul>
 	DbType *string `json:"DbType,omitnil,omitempty" name:"DbType"`
 
-	// 数据库编码
+	// <p>数据库编码</p>
 	Charset *string `json:"Charset,omitnil,omitempty" name:"Charset"`
 
-	// 用户名
+	// <p>用户名</p>
 	DbUser *string `json:"DbUser,omitnil,omitempty" name:"DbUser"`
 
-	// 密码
+	// <p>密码</p>
 	DbPwd *string `json:"DbPwd,omitnil,omitempty" name:"DbPwd"`
 
-	// 数据库名称
+	// <p>数据库名称</p>
 	DbName *string `json:"DbName,omitnil,omitempty" name:"DbName"`
 
-	// 数据库别名
+	// <p>数据库别名</p>
 	SourceName *string `json:"SourceName,omitnil,omitempty" name:"SourceName"`
 
-	// 数据源id
+	// <p>数据源id</p>
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 项目ID
+	// <p>项目ID</p>
 	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// catalog值
+	// <p>catalog值</p>
 	Catalog *string `json:"Catalog,omitnil,omitempty" name:"Catalog"`
 
-	// 第三方数据源标识
+	// <p>第三方数据源标识</p>
 	DataOrigin *string `json:"DataOrigin,omitnil,omitempty" name:"DataOrigin"`
 
-	// 第三方项目id
+	// <p>第三方项目id</p>
 	DataOriginProjectId *string `json:"DataOriginProjectId,omitnil,omitempty" name:"DataOriginProjectId"`
 
-	// 第三方数据源id
+	// <p>第三方数据源id</p>
 	DataOriginDatasourceId *string `json:"DataOriginDatasourceId,omitnil,omitempty" name:"DataOriginDatasourceId"`
 
-	// 扩展参数
+	// <p>扩展参数</p>
 	ExtraParam *string `json:"ExtraParam,omitnil,omitempty" name:"ExtraParam"`
 
-	// 腾讯云私有网络统一标识
+	// <p>腾讯云私有网络统一标识</p>
 	UniqVpcId *string `json:"UniqVpcId,omitnil,omitempty" name:"UniqVpcId"`
 
-	// 私有网络ip
+	// <p>私有网络ip</p>
 	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
 
-	// 私有网络端口
+	// <p>私有网络端口</p>
 	Vport *string `json:"Vport,omitnil,omitempty" name:"Vport"`
 
-	// 腾讯云私有网络标识
+	// <p>腾讯云私有网络标识</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 开启vpc	
+	// <p>开启vpc</p>
 	UseVPC *bool `json:"UseVPC,omitnil,omitempty" name:"UseVPC"`
 
-	// 地域
+	// <p>地域</p>
 	RegionId *string `json:"RegionId,omitnil,omitempty" name:"RegionId"`
 
-	// 数据库schema
+	// <p>数据库schema</p>
 	Schema *string `json:"Schema,omitnil,omitempty" name:"Schema"`
 
-	// 数据库版本
+	// <p>数据库版本</p>
 	DbVersion *string `json:"DbVersion,omitnil,omitempty" name:"DbVersion"`
 }
 
@@ -4851,15 +5325,15 @@ type ModifyDatasourceResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorInfo *ErrorInfo `json:"ErrorInfo,omitnil,omitempty" name:"ErrorInfo"`
 
-	// 无
+	// <p>无</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// 额外信息
+	// <p>额外信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
 
-	// 提示
+	// <p>提示</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
 
@@ -4885,74 +5359,68 @@ func (r *ModifyDatasourceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyProjectRequestParams struct {
-	// 项目Id
+	// <p>项目Id</p>
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 名字
+	// <p>名字</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 颜色值
+	// <p>颜色值</p>
 	ColorCode *string `json:"ColorCode,omitnil,omitempty" name:"ColorCode"`
 
-	// 图标
+	// <p>图标</p>
 	Logo *string `json:"Logo,omitnil,omitempty" name:"Logo"`
 
-	// 备注
+	// <p>备注</p>
 	Mark *string `json:"Mark,omitnil,omitempty" name:"Mark"`
 
-	// 可申请
+	// <p>可申请</p>
 	IsApply *bool `json:"IsApply,omitnil,omitempty" name:"IsApply"`
 
-	// 种子
+	// <p>种子</p>
 	Seed *string `json:"Seed,omitnil,omitempty" name:"Seed"`
 
-	// 默认看板
-	// 取值范围：
-	// 1：项目看板 
-	// 2：我的看板
+	// <p>默认看板</p><p>枚举值：</p><ul><li>1： 项目看板</li><li>2： 我的看板</li></ul>
 	DefaultPanelType *int64 `json:"DefaultPanelType,omitnil,omitempty" name:"DefaultPanelType"`
 
-	// 2
+	// <p>2</p>
 	PanelScope *string `json:"PanelScope,omitnil,omitempty" name:"PanelScope"`
 
-	// 项目管理平台
+	// <p>项目管理平台</p>
 	ManagePlatform *string `json:"ManagePlatform,omitnil,omitempty" name:"ManagePlatform"`
 }
 
 type ModifyProjectRequest struct {
 	*tchttp.BaseRequest
 	
-	// 项目Id
+	// <p>项目Id</p>
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 名字
+	// <p>名字</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 颜色值
+	// <p>颜色值</p>
 	ColorCode *string `json:"ColorCode,omitnil,omitempty" name:"ColorCode"`
 
-	// 图标
+	// <p>图标</p>
 	Logo *string `json:"Logo,omitnil,omitempty" name:"Logo"`
 
-	// 备注
+	// <p>备注</p>
 	Mark *string `json:"Mark,omitnil,omitempty" name:"Mark"`
 
-	// 可申请
+	// <p>可申请</p>
 	IsApply *bool `json:"IsApply,omitnil,omitempty" name:"IsApply"`
 
-	// 种子
+	// <p>种子</p>
 	Seed *string `json:"Seed,omitnil,omitempty" name:"Seed"`
 
-	// 默认看板
-	// 取值范围：
-	// 1：项目看板 
-	// 2：我的看板
+	// <p>默认看板</p><p>枚举值：</p><ul><li>1： 项目看板</li><li>2： 我的看板</li></ul>
 	DefaultPanelType *int64 `json:"DefaultPanelType,omitnil,omitempty" name:"DefaultPanelType"`
 
-	// 2
+	// <p>2</p>
 	PanelScope *string `json:"PanelScope,omitnil,omitempty" name:"PanelScope"`
 
-	// 项目管理平台
+	// <p>项目管理平台</p>
 	ManagePlatform *string `json:"ManagePlatform,omitnil,omitempty" name:"ManagePlatform"`
 }
 
@@ -4990,15 +5458,15 @@ type ModifyProjectResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorInfo *ErrorInfo `json:"ErrorInfo,omitnil,omitempty" name:"ErrorInfo"`
 
-	// 额外信息
+	// <p>额外信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
 
-	// 返回数据
+	// <p>返回数据</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// 结果
+	// <p>结果</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
 
@@ -5219,6 +5687,104 @@ func (r *ModifyResourceUserGroupResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyResourceUserRequestParams struct {
+	// 项目Id
+	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 用户id
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// 资源
+	Resource *UserResourceDTO `json:"Resource,omitnil,omitempty" name:"Resource"`
+
+	// 实体类
+	EntityIds []*int64 `json:"EntityIds,omitnil,omitempty" name:"EntityIds"`
+
+	// 资源类型
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+}
+
+type ModifyResourceUserRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目Id
+	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 用户id
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// 资源
+	Resource *UserResourceDTO `json:"Resource,omitnil,omitempty" name:"Resource"`
+
+	// 实体类
+	EntityIds []*int64 `json:"EntityIds,omitnil,omitempty" name:"EntityIds"`
+
+	// 资源类型
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+}
+
+func (r *ModifyResourceUserRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyResourceUserRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "UserId")
+	delete(f, "Resource")
+	delete(f, "EntityIds")
+	delete(f, "ResourceType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyResourceUserRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyResourceUserResponseParams struct {
+	// 自定义错误信息对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorInfo *ErrorInfo `json:"ErrorInfo,omitnil,omitempty" name:"ErrorInfo"`
+
+	// 扩展
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
+
+	// 消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
+
+	// 数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *int64 `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyResourceUserResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyResourceUserResponseParams `json:"Response"`
+}
+
+func (r *ModifyResourceUserResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyResourceUserResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyUserDetailInfoRequestParams struct {
 	// 用户ID
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
@@ -5367,14 +5933,14 @@ func (r *ModifyUserDetailInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyUserGroupRequestParams struct {
-	// 用户组更新list
+	// <p>用户组更新list</p>
 	UpdateList []*UserGroupUpdateDTO `json:"UpdateList,omitnil,omitempty" name:"UpdateList"`
 }
 
 type ModifyUserGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 用户组更新list
+	// <p>用户组更新list</p>
 	UpdateList []*UserGroupUpdateDTO `json:"UpdateList,omitnil,omitempty" name:"UpdateList"`
 }
 
@@ -5402,6 +5968,18 @@ type ModifyUserGroupResponseParams struct {
 	// 自定义错误信息对象
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorInfo *ErrorInfo `json:"ErrorInfo,omitnil,omitempty" name:"ErrorInfo"`
+
+	// <p>额外信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
+
+	// <p>结果信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
+
+	// <p>数据</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data []*UserGroupVO `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -5697,33 +6275,50 @@ type PageScreenVO struct {
 	WidgetId *string `json:"WidgetId,omitnil,omitempty" name:"WidgetId"`
 }
 
+type ParamCreateDTO struct {
+	// 参数名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParamName *string `json:"ParamName,omitnil,omitempty" name:"ParamName"`
+
+	// 默认值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DefaultValue *string `json:"DefaultValue,omitnil,omitempty" name:"DefaultValue"`
+
+	// 参数类型，string/datetime/number
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParamType *string `json:"ParamType,omitnil,omitempty" name:"ParamType"`
+
+	// 格式化类型，yyyy-MM-dd HH:mm:ss.SSS（只有时间必填）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FormatRule *string `json:"FormatRule,omitnil,omitempty" name:"FormatRule"`
+
+	// 复杂类型，格式化的另一种表达，例如YYYY-MM
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ComplexType *string `json:"ComplexType,omitnil,omitempty" name:"ComplexType"`
+
+	// 作用域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Scope *string `json:"Scope,omitnil,omitempty" name:"Scope"`
+}
+
 type PermissionComponent struct {
-	// 权限值
+	// <p>权限值</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModuleId *string `json:"ModuleId,omitnil,omitempty" name:"ModuleId"`
 
-	// 可用性。
-	// 取值范围：
-	// 
-	// - usable：可用
-	// - visible：可见
-	// - disabled：不可用
-	// - hidden：隐藏
-	// 
-	// 默认值：disabled
-	// 示例值：disabled
+	// <p>可用性</p><p>枚举值：</p><ul><li>usable： 可用</li><li>visible： 可见</li><li>disabled： 不可用</li><li>hidden： 隐藏</li></ul><p>默认值：disabled</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IncludeType *string `json:"IncludeType,omitnil,omitempty" name:"IncludeType"`
 
-	// 目标升级版本
+	// <p>目标升级版本</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpgradeVersionType *string `json:"UpgradeVersionType,omitnil,omitempty" name:"UpgradeVersionType"`
 
-	// 补充信息
+	// <p>补充信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tips *string `json:"Tips,omitnil,omitempty" name:"Tips"`
 
-	// 补充信息的key值
+	// <p>补充信息的key值</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TipsKey *string `json:"TipsKey,omitnil,omitempty" name:"TipsKey"`
 }
@@ -5862,24 +6457,15 @@ type ProjectConfigList struct {
 }
 
 type ProjectConfigResult struct {
-	// 配置名称
+	// <p>配置名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModuleId *string `json:"ModuleId,omitnil,omitempty" name:"ModuleId"`
 
-	// 配置方式。
-	// 取值范围：
-	// 
-	// - usable：可用
-	// - visible：可见
-	// - disabled：不可用
-	// - hidden：隐藏
-	// 
-	// 默认值：disabled
-	// 示例值：disabled
+	// <p>配置方式</p><p>枚举值：</p><ul><li>usable： 可用</li><li>visible： 可见</li><li>disabled： 不可用</li><li>hidden： 隐藏</li></ul><p>默认值：disabled</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IncludeType *string `json:"IncludeType,omitnil,omitempty" name:"IncludeType"`
 
-	// 额外参数
+	// <p>额外参数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Params *string `json:"Params,omitnil,omitempty" name:"Params"`
 }
@@ -5900,56 +6486,56 @@ type ProjectListData struct {
 
 // Predefined struct for user
 type QueryUserGroupMemberRequestParams struct {
-	// 用户组id集合
+	// <p>用户组id集合</p>
 	GroupIds []*int64 `json:"GroupIds,omitnil,omitempty" name:"GroupIds"`
 
-	// 搜索关键字
+	// <p>搜索关键字</p>
 	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
 
-	// 分页大小
+	// <p>分页大小</p>
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 分页页码
+	// <p>分页页码</p>
 	PageNo *uint64 `json:"PageNo,omitnil,omitempty" name:"PageNo"`
 
-	// 是否需要分页
+	// <p>是否需要分页</p>
 	AllPage *bool `json:"AllPage,omitnil,omitempty" name:"AllPage"`
 
-	// 用户组节点信息
+	// <p>用户组节点信息</p>
 	Nodes []*UserGroupTreeNodeDTO `json:"Nodes,omitnil,omitempty" name:"Nodes"`
 
-	// 标签值
+	// <p>标签值</p>
 	TagValueList []*ResourceTagValue `json:"TagValueList,omitnil,omitempty" name:"TagValueList"`
 
-	// 需要过滤的用户组
+	// <p>需要过滤的用户组</p>
 	FilterGroupIds []*int64 `json:"FilterGroupIds,omitnil,omitempty" name:"FilterGroupIds"`
 }
 
 type QueryUserGroupMemberRequest struct {
 	*tchttp.BaseRequest
 	
-	// 用户组id集合
+	// <p>用户组id集合</p>
 	GroupIds []*int64 `json:"GroupIds,omitnil,omitempty" name:"GroupIds"`
 
-	// 搜索关键字
+	// <p>搜索关键字</p>
 	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
 
-	// 分页大小
+	// <p>分页大小</p>
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 分页页码
+	// <p>分页页码</p>
 	PageNo *uint64 `json:"PageNo,omitnil,omitempty" name:"PageNo"`
 
-	// 是否需要分页
+	// <p>是否需要分页</p>
 	AllPage *bool `json:"AllPage,omitnil,omitempty" name:"AllPage"`
 
-	// 用户组节点信息
+	// <p>用户组节点信息</p>
 	Nodes []*UserGroupTreeNodeDTO `json:"Nodes,omitnil,omitempty" name:"Nodes"`
 
-	// 标签值
+	// <p>标签值</p>
 	TagValueList []*ResourceTagValue `json:"TagValueList,omitnil,omitempty" name:"TagValueList"`
 
-	// 需要过滤的用户组
+	// <p>需要过滤的用户组</p>
 	FilterGroupIds []*int64 `json:"FilterGroupIds,omitnil,omitempty" name:"FilterGroupIds"`
 }
 
@@ -5984,6 +6570,18 @@ type QueryUserGroupMemberResponseParams struct {
 	// 自定义错误信息对象
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorInfo *ErrorInfo `json:"ErrorInfo,omitnil,omitempty" name:"ErrorInfo"`
+
+	// <p>额外信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
+
+	// <p>结果信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
+
+	// <p>数据</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *DescribeUserGroupMemberPageListContainer `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -6194,6 +6792,204 @@ type RowColumnTagValue struct {
 	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
 }
 
+type TableColumn struct {
+	// 列名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DbName *string `json:"DbName,omitnil,omitempty" name:"DbName"`
+
+	// 列的别名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AliasName *string `json:"AliasName,omitnil,omitempty" name:"AliasName"`
+
+	// 列的类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DbType *string `json:"DbType,omitnil,omitempty" name:"DbType"`
+
+	// 段类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FieldType *string `json:"FieldType,omitnil,omitempty" name:"FieldType"`
+
+	// 备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Mark *string `json:"Mark,omitnil,omitempty" name:"Mark"`
+
+	// excel名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExcelName *string `json:"ExcelName,omitnil,omitempty" name:"ExcelName"`
+
+	// 关联的字典表Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DictId *int64 `json:"DictId,omitnil,omitempty" name:"DictId"`
+
+	// 关联的字典表表名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DictName *string `json:"DictName,omitnil,omitempty" name:"DictName"`
+
+	// 多表关联新增字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableNodeId *string `json:"TableNodeId,omitnil,omitempty" name:"TableNodeId"`
+
+	// 字段所属的表名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// 用户设置的带格式的目标复杂格式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FieldComplexType *string `json:"FieldComplexType,omitnil,omitempty" name:"FieldComplexType"`
+
+	// 格式规则
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FormatRule *string `json:"FormatRule,omitnil,omitempty" name:"FormatRule"`
+
+	// 数据字段是否过滤空值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsFilter *bool `json:"IsFilter,omitnil,omitempty" name:"IsFilter"`
+
+	// 计算字段类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CalcType *string `json:"CalcType,omitnil,omitempty" name:"CalcType"`
+
+	// 计算字段的公式内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CalcFormula *string `json:"CalcFormula,omitnil,omitempty" name:"CalcFormula"`
+
+	// 计算字段的中文公式内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CalcDesc *string `json:"CalcDesc,omitnil,omitempty" name:"CalcDesc"`
+
+	// Api数据源json路径名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JsonPathName *string `json:"JsonPathName,omitnil,omitempty" name:"JsonPathName"`
+
+	// 地理类型标识
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Granularity *string `json:"Granularity,omitnil,omitempty" name:"Granularity"`
+
+	// 自定义地图Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GeoJsonId *uint64 `json:"GeoJsonId,omitnil,omitempty" name:"GeoJsonId"`
+
+	// 空值展示样式配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EmptyValueConfig *EmptyValueConfig `json:"EmptyValueConfig,omitnil,omitempty" name:"EmptyValueConfig"`
+
+	// 原列名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DbFieldName *string `json:"DbFieldName,omitnil,omitempty" name:"DbFieldName"`
+
+	// 是否是复制字段操作
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsCopyOperation *bool `json:"IsCopyOperation,omitnil,omitempty" name:"IsCopyOperation"`
+
+	// 是否从普通字段复制
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsCopyFromNormal *bool `json:"IsCopyFromNormal,omitnil,omitempty" name:"IsCopyFromNormal"`
+}
+
+type TableColumnListData struct {
+	// 表中的列的列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	List []*TableColumn `json:"List,omitnil,omitempty" name:"List"`
+
+	// 异步事务id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TranId *string `json:"TranId,omitnil,omitempty" name:"TranId"`
+
+	// 异步事务状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TranStatus *int64 `json:"TranStatus,omitnil,omitempty" name:"TranStatus"`
+}
+
+type TableField struct {
+	// db里的字段column名
+	DbName *string `json:"DbName,omitnil,omitempty" name:"DbName"`
+
+	// bi展示名
+	AliasName *string `json:"AliasName,omitnil,omitempty" name:"AliasName"`
+
+	// db里的字段类型
+	DbType *string `json:"DbType,omitnil,omitempty" name:"DbType"`
+
+	// BI归类后的抽象字段类型,比如字符串,数字,时间
+	FieldType *string `json:"FieldType,omitnil,omitempty" name:"FieldType"`
+
+	// 字段组合计算公式后生成的复杂明细类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FieldComplexType *string `json:"FieldComplexType,omitnil,omitempty" name:"FieldComplexType"`
+
+	// 字段描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Mark *string `json:"Mark,omitnil,omitempty" name:"Mark"`
+
+	// 字段计算公式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FormatRule *string `json:"FormatRule,omitnil,omitempty" name:"FormatRule"`
+
+	// 数据字段是否过滤空值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsFilter *bool `json:"IsFilter,omitnil,omitempty" name:"IsFilter"`
+
+	// 计算字段类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CalcType *string `json:"CalcType,omitnil,omitempty" name:"CalcType"`
+
+	// 计算字段的公式内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CalcFormula *string `json:"CalcFormula,omitnil,omitempty" name:"CalcFormula"`
+
+	// 计算字段的中文公式内容, 前端展示使用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CalcDesc *string `json:"CalcDesc,omitnil,omitempty" name:"CalcDesc"`
+
+	// 关联字典表id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DictId *uint64 `json:"DictId,omitnil,omitempty" name:"DictId"`
+
+	// 关联字典表名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DictName *string `json:"DictName,omitnil,omitempty" name:"DictName"`
+
+	// 非必填, 多表关联新增字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableNodeId *string `json:"TableNodeId,omitnil,omitempty" name:"TableNodeId"`
+
+	// excel
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExcelName *string `json:"ExcelName,omitnil,omitempty" name:"ExcelName"`
+
+	// 非必填,多表关联新增字段,字段所属的表名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// api数据源路径名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JsonPathName *string `json:"JsonPathName,omitnil,omitempty" name:"JsonPathName"`
+
+	// 地理字段标识
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Granularity *string `json:"Granularity,omitnil,omitempty" name:"Granularity"`
+
+	// 地图id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GeoJsonId *uint64 `json:"GeoJsonId,omitnil,omitempty" name:"GeoJsonId"`
+
+	// 空值展示样式配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EmptyValueConfig *EmptyValueConfig `json:"EmptyValueConfig,omitnil,omitempty" name:"EmptyValueConfig"`
+
+	// 原列名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DbFieldName *string `json:"DbFieldName,omitnil,omitempty" name:"DbFieldName"`
+
+	// 是否是复制字段操作
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsCopyOperation *bool `json:"IsCopyOperation,omitnil,omitempty" name:"IsCopyOperation"`
+
+	// 是否从普通字段复制
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsCopyFromNormal *bool `json:"IsCopyFromNormal,omitnil,omitempty" name:"IsCopyFromNormal"`
+}
+
 type UserGroupDTO struct {
 	// id
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -6222,6 +7018,24 @@ type UserGroupDTO struct {
 	// 定位
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Location *int64 `json:"Location,omitnil,omitempty" name:"Location"`
+}
+
+type UserGroupMemberVO struct {
+	// 用户名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// 用户id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// 创建人
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatedBy *string `json:"CreatedBy,omitnil,omitempty" name:"CreatedBy"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatedOn *string `json:"CreatedOn,omitnil,omitempty" name:"CreatedOn"`
 }
 
 type UserGroupPageTreeVO struct {
@@ -6321,101 +7135,142 @@ type UserGroupUpdateDTO struct {
 	ParentName *string `json:"ParentName,omitnil,omitempty" name:"ParentName"`
 }
 
-type UserIdAndUserName struct {
-	// 用户ID
+type UserGroupUserInfoVO struct {
+	// 用户id
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
-	// 用户名
+	// 用户名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+}
+
+type UserGroupVO struct {
+	// 用户组id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 用户组名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
+
+	// 所属用户组id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParentId *int64 `json:"ParentId,omitnil,omitempty" name:"ParentId"`
+
+	// 所属用户组名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParentName *string `json:"ParentName,omitnil,omitempty" name:"ParentName"`
+
+	// 是否默认用户组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsDefault *int64 `json:"IsDefault,omitnil,omitempty" name:"IsDefault"`
+
+	// 用户组管理员
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AdminUserId *string `json:"AdminUserId,omitnil,omitempty" name:"AdminUserId"`
+
+	// 描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 排序位置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Location *int64 `json:"Location,omitnil,omitempty" name:"Location"`
+
+	// 用户信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserList []*UserGroupUserInfoVO `json:"UserList,omitnil,omitempty" name:"UserList"`
+}
+
+type UserIdAndUserName struct {
+	// <p>用户ID</p>
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// <p>用户名</p>
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
-	// 企业ID
+	// <p>企业ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CorpId *string `json:"CorpId,omitnil,omitempty" name:"CorpId"`
 
-	// 电子邮箱
+	// <p>电子邮箱</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
 
-	// 最后一次登录时间
+	// <p>最后一次登录时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastLogin *string `json:"LastLogin,omitnil,omitempty" name:"LastLogin"`
 
-	// 用户状态。
-	// 取值范围：
-	// 
-	// - 1：启用
-	// - 0：停用
-	// 
-	// 默认值：1
-	// 示例值：1
+	// <p>用户状态</p><p>枚举值：</p><ul><li>1： 启用</li><li>0： 停用</li></ul><p>默认值：1</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 首次登录是否修改密码
+	// <p>首次登录是否修改密码</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FirstModify *int64 `json:"FirstModify,omitnil,omitempty" name:"FirstModify"`
 
-	// 手机号码
+	// <p>手机号码</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PhoneNumber *string `json:"PhoneNumber,omitnil,omitempty" name:"PhoneNumber"`
 
-	// 手机区号
+	// <p>手机区号</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AreaCode *string `json:"AreaCode,omitnil,omitempty" name:"AreaCode"`
 
-	// 创建人
+	// <p>创建人</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatedUser *string `json:"CreatedUser,omitnil,omitempty" name:"CreatedUser"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
 
-	// 修改人
+	// <p>修改人</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdatedUser *string `json:"UpdatedUser,omitnil,omitempty" name:"UpdatedUser"`
 
-	// 更改时间
+	// <p>更改时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdatedAt *string `json:"UpdatedAt,omitnil,omitempty" name:"UpdatedAt"`
 
-	// 系统全局角色
+	// <p>系统全局角色</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GlobalUserName *string `json:"GlobalUserName,omitnil,omitempty" name:"GlobalUserName"`
 
-	// 系统全局角色编码
+	// <p>系统全局角色编码</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GlobalUserCode *string `json:"GlobalUserCode,omitnil,omitempty" name:"GlobalUserCode"`
 
-	// 手机号
+	// <p>手机号</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
 
-	// 1
+	// <p>1</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
 
-	// 1
+	// <p>1</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppUserId *string `json:"AppUserId,omitnil,omitempty" name:"AppUserId"`
 
-	// 1
+	// <p>1</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppUserAliasName *string `json:"AppUserAliasName,omitnil,omitempty" name:"AppUserAliasName"`
 
-	// 1
+	// <p>1</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppUserName *string `json:"AppUserName,omitnil,omitempty" name:"AppUserName"`
 
-	// 1
+	// <p>1</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InValidateAppRange *bool `json:"InValidateAppRange,omitnil,omitempty" name:"InValidateAppRange"`
 
-	// -1 免激活  0 未激活  1 已激活 空代表待绑定
+	// <p>-1 免激活  0 未激活  1 已激活 空代表待绑定</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EmailActivationStatus *int64 `json:"EmailActivationStatus,omitnil,omitempty" name:"EmailActivationStatus"`
 
-	// 1
+	// <p>1</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 }

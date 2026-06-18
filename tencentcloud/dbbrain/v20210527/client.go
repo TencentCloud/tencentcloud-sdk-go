@@ -2849,6 +2849,86 @@ func (c *Client) DescribeDBSpaceStatusWithContext(ctx context.Context, request *
     return
 }
 
+func NewDescribeDatabaseAutonomyStatusRequest() (request *DescribeDatabaseAutonomyStatusRequest) {
+    request = &DescribeDatabaseAutonomyStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dbbrain", APIVersion, "DescribeDatabaseAutonomyStatus")
+    
+    
+    return
+}
+
+func NewDescribeDatabaseAutonomyStatusResponse() (response *DescribeDatabaseAutonomyStatusResponse) {
+    response = &DescribeDatabaseAutonomyStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDatabaseAutonomyStatus
+// 查询数据库自治功能的开关状态。当前支持 MongoDB 的索引推荐（AutoIndexAdvice）功能状态查询。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDatabaseAutonomyStatus(request *DescribeDatabaseAutonomyStatusRequest) (response *DescribeDatabaseAutonomyStatusResponse, err error) {
+    return c.DescribeDatabaseAutonomyStatusWithContext(context.Background(), request)
+}
+
+// DescribeDatabaseAutonomyStatus
+// 查询数据库自治功能的开关状态。当前支持 MongoDB 的索引推荐（AutoIndexAdvice）功能状态查询。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDatabaseAutonomyStatusWithContext(ctx context.Context, request *DescribeDatabaseAutonomyStatusRequest) (response *DescribeDatabaseAutonomyStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeDatabaseAutonomyStatusRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "DescribeDatabaseAutonomyStatus")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDatabaseAutonomyStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDatabaseAutonomyStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDiagDBInstancesRequest() (request *DescribeDiagDBInstancesRequest) {
     request = &DescribeDiagDBInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5701,7 +5781,7 @@ func NewKillMySqlThreadsResponse() (response *KillMySqlThreadsResponse) {
 }
 
 // KillMySqlThreads
-// 根据会话ID中断当前会话，该接口分为两次提交：第一次为预提交阶段，Stage为"Prepare"，得到的返回值包含SqlExecId；第二次为确认提交， Stage为"Commit"， 将SqlExecId的值作为参数传入，最终终止会话进程。
+// 根据会话ID中断当前会话，该接口分为两次提交：第一次为预提交阶段，Stage为"Prepare"，得到的返回值包含SqlExecId；第二次为确认提交， Stage为"Commit"， 将SqlExecId的值作为参数传入，最终终止会话进程。注意：Prepare请求与Commit请求的间隔不能超过10秒，否则Prepare阶段生成的执行凭证（SqlExecId）将过期失效，Commit操作不会执行任何kill动作。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -5723,7 +5803,7 @@ func (c *Client) KillMySqlThreads(request *KillMySqlThreadsRequest) (response *K
 }
 
 // KillMySqlThreads
-// 根据会话ID中断当前会话，该接口分为两次提交：第一次为预提交阶段，Stage为"Prepare"，得到的返回值包含SqlExecId；第二次为确认提交， Stage为"Commit"， 将SqlExecId的值作为参数传入，最终终止会话进程。
+// 根据会话ID中断当前会话，该接口分为两次提交：第一次为预提交阶段，Stage为"Prepare"，得到的返回值包含SqlExecId；第二次为确认提交， Stage为"Commit"， 将SqlExecId的值作为参数传入，最终终止会话进程。注意：Prepare请求与Commit请求的间隔不能超过10秒，否则Prepare阶段生成的执行凭证（SqlExecId）将过期失效，Commit操作不会执行任何kill动作。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -6273,6 +6353,86 @@ func (c *Client) UpdateAgentSwitchWithContext(ctx context.Context, request *Upda
     return
 }
 
+func NewUpdateDatabaseAutonomyStatusRequest() (request *UpdateDatabaseAutonomyStatusRequest) {
+    request = &UpdateDatabaseAutonomyStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dbbrain", APIVersion, "UpdateDatabaseAutonomyStatus")
+    
+    
+    return
+}
+
+func NewUpdateDatabaseAutonomyStatusResponse() (response *UpdateDatabaseAutonomyStatusResponse) {
+    response = &UpdateDatabaseAutonomyStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateDatabaseAutonomyStatus
+// 设置数据库自治功能的开关状态。当前支持 MongoDB 的索引推荐（AutoIndexAdvice）功能的开启或关闭。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) UpdateDatabaseAutonomyStatus(request *UpdateDatabaseAutonomyStatusRequest) (response *UpdateDatabaseAutonomyStatusResponse, err error) {
+    return c.UpdateDatabaseAutonomyStatusWithContext(context.Background(), request)
+}
+
+// UpdateDatabaseAutonomyStatus
+// 设置数据库自治功能的开关状态。当前支持 MongoDB 的索引推荐（AutoIndexAdvice）功能的开启或关闭。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) UpdateDatabaseAutonomyStatusWithContext(ctx context.Context, request *UpdateDatabaseAutonomyStatusRequest) (response *UpdateDatabaseAutonomyStatusResponse, err error) {
+    if request == nil {
+        request = NewUpdateDatabaseAutonomyStatusRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "UpdateDatabaseAutonomyStatus")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateDatabaseAutonomyStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateDatabaseAutonomyStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUpdateMonitorSwitchRequest() (request *UpdateMonitorSwitchRequest) {
     request = &UpdateMonitorSwitchRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6298,7 +6458,6 @@ func NewUpdateMonitorSwitchResponse() (response *UpdateMonitorSwitchResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_PAASAUDITNOTOPENED = "FailedOperation.PaasAuditNotOpened"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -6306,7 +6465,10 @@ func NewUpdateMonitorSwitchResponse() (response *UpdateMonitorSwitchResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
@@ -6320,7 +6482,6 @@ func (c *Client) UpdateMonitorSwitch(request *UpdateMonitorSwitchRequest) (respo
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_PAASAUDITNOTOPENED = "FailedOperation.PaasAuditNotOpened"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -6328,7 +6489,10 @@ func (c *Client) UpdateMonitorSwitch(request *UpdateMonitorSwitchRequest) (respo
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"

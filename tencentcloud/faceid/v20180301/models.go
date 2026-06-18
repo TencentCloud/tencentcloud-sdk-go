@@ -21,7 +21,7 @@ import (
 )
 
 type AttackRiskDetail struct {
-	// <p>疑似的攻击痕迹类型SuspectedSpoofingAttack：翻拍攻击SuspectedSynthesisImage：疑似合成图片SuspectedSynthesisVideo：疑似合成视频SuspectedAnomalyAttack：人脸特征疑似非真人SuspectedAdversarialAttack：疑似对抗样本攻击SuspectedBlackIndustry：疑似黑产批量模板攻击SuspectedWatermark：疑似存在水印</p>
+	// <p>疑似的攻击痕迹类型，具体类型如下：<br>SuspectedSpoofingAttack：翻拍攻击<br>SuspectedSynthesisImage：疑似合成图片<br>SuspectedSynthesisVideo：疑似合成视频<br>SuspectedAnomalyAttack：人脸特征疑似非真人<br>SuspectedAdversarialAttack：疑似对抗样本攻击<br>SuspectedBlackIndustry：疑似黑产批量模板攻击<br>SuspectedWatermark：疑似存在水印</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
@@ -2827,6 +2827,60 @@ func (r *GetLiveCodeResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type GetNFCTokenRequestParams struct {
+
+}
+
+type GetNFCTokenRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *GetNFCTokenRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetNFCTokenRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetNFCTokenRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetNFCTokenResponseParams struct {
+	// NFCToken
+	Token *string `json:"Token,omitnil,omitempty" name:"Token"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetNFCTokenResponse struct {
+	*tchttp.BaseResponse
+	Response *GetNFCTokenResponseParams `json:"Response"`
+}
+
+func (r *GetNFCTokenResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetNFCTokenResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type GetWeChatBillDetailsRequestParams struct {
 	// 拉取的日期（YYYY-MM-DD）。
 	// - 最大可追溯到365天前。
@@ -2913,6 +2967,135 @@ func (r *GetWeChatBillDetailsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *GetWeChatBillDetailsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetWxNFCResultRequestParams struct {
+	// <p>前端 NFC SDK返回的唯一标识ID</p>
+	NFCToken *string `json:"NFCToken,omitnil,omitempty" name:"NFCToken"`
+}
+
+type GetWxNFCResultRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>前端 NFC SDK返回的唯一标识ID</p>
+	NFCToken *string `json:"NFCToken,omitnil,omitempty" name:"NFCToken"`
+}
+
+func (r *GetWxNFCResultRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetWxNFCResultRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "NFCToken")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetWxNFCResultRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetWxNFCResultResponseParams struct {
+	// <p>NFC计费结果码，NFC识读成功一次则计费一次（同一个NFC请求重复拉取结果不会重复计费）。计费结果码取值范围：<br>  0：识读成功，计费<br>-1：识读失败，不计费</p>
+	ResultCode *string `json:"ResultCode,omitnil,omitempty" name:"ResultCode"`
+
+	// <p>身份证号</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IdNum *string `json:"IdNum,omitnil,omitempty" name:"IdNum"`
+
+	// <p>姓名</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>证件中的人像照片</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Picture *string `json:"Picture,omitnil,omitempty" name:"Picture"`
+
+	// <p>身份类证件正面照片（人像面）</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IdCardFrontImg *string `json:"IdCardFrontImg,omitnil,omitempty" name:"IdCardFrontImg"`
+
+	// <p>身份类证件背面照片（国徽面）</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IdCardBackImg *string `json:"IdCardBackImg,omitnil,omitempty" name:"IdCardBackImg"`
+
+	// <p>出生日期</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BirthDate *string `json:"BirthDate,omitnil,omitempty" name:"BirthDate"`
+
+	// <p>有效期起始时间</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BeginTime *string `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
+
+	// <p>有效期结束时间</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>住址</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Address *string `json:"Address,omitnil,omitempty" name:"Address"`
+
+	// <p>民族</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Nation *string `json:"Nation,omitnil,omitempty" name:"Nation"`
+
+	// <p>性别</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Sex *string `json:"Sex,omitnil,omitempty" name:"Sex"`
+
+	// <p>证件类型</p><p>枚举值：</p><ul><li>01： 身份证</li><li>03： 中国护照</li><li>06： 港澳通行证</li><li>07： 台胞证</li><li>08： 外国护照</li><li>13： 外国人永久居留证</li><li>14： 港澳台居民居住证</li><li>15： 回乡证</li><li>16： 大陆居民来往台湾通行证</li><li>99： 其他证件</li></ul>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IdType *string `json:"IdType,omitnil,omitempty" name:"IdType"`
+
+	// <p>英文姓名</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnName *string `json:"EnName,omitnil,omitempty" name:"EnName"`
+
+	// <p>签发机关</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SigningOrganization *string `json:"SigningOrganization,omitnil,omitempty" name:"SigningOrganization"`
+
+	// <p>港澳台居民居住证，通行证号码</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OtherIdNum *string `json:"OtherIdNum,omitnil,omitempty" name:"OtherIdNum"`
+
+	// <p>旅行证件国籍</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Nationality *string `json:"Nationality,omitnil,omitempty" name:"Nationality"`
+
+	// <p>旅行证件机读区第二行 29~42 位</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PersonalNumber *string `json:"PersonalNumber,omitnil,omitempty" name:"PersonalNumber"`
+
+	// <p>证件的验真结果</p><ul><li>JSON格式如下： {&quot;result_issuer &quot;:&quot;签发者证书合法性验证结果 &quot;,&quot;result_paper&quot;:&quot;证件安全对象合法性验证结果 &quot;,&quot;result_data&quot; :&quot;防数据篡改验证结果 &quot;,&quot;result_chip&quot; :&quot;防证书件芯片被复制验证结果&quot;} 。 - 取值范围： 0:验证通过，1: 验证不通过，2: 未验证，3:部分通过，当4项核验结果都为0时，表示证件为真。</li></ul>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CheckMRTD *string `json:"CheckMRTD,omitnil,omitempty" name:"CheckMRTD"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetWxNFCResultResponse struct {
+	*tchttp.BaseResponse
+	Response *GetWxNFCResultResponseParams `json:"Response"`
+}
+
+func (r *GetWxNFCResultResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetWxNFCResultResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

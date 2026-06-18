@@ -611,6 +611,56 @@ func (c *Client) CreateAdaptiveDynamicStreamingTemplateWithContext(ctx context.C
     return
 }
 
+func NewCreateAigcAudioTaskRequest() (request *CreateAigcAudioTaskRequest) {
+    request = &CreateAigcAudioTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "CreateAigcAudioTask")
+    
+    
+    return
+}
+
+func NewCreateAigcAudioTaskResponse() (response *CreateAigcAudioTaskResponse) {
+    response = &CreateAigcAudioTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateAigcAudioTask
+// 调用该接口，用于创建AI生音频任务。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_VIOLATIONCONTENT = "InvalidParameter.ViolationContent"
+func (c *Client) CreateAigcAudioTask(request *CreateAigcAudioTaskRequest) (response *CreateAigcAudioTaskResponse, err error) {
+    return c.CreateAigcAudioTaskWithContext(context.Background(), request)
+}
+
+// CreateAigcAudioTask
+// 调用该接口，用于创建AI生音频任务。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_VIOLATIONCONTENT = "InvalidParameter.ViolationContent"
+func (c *Client) CreateAigcAudioTaskWithContext(ctx context.Context, request *CreateAigcAudioTaskRequest) (response *CreateAigcAudioTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateAigcAudioTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "CreateAigcAudioTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAigcAudioTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateAigcAudioTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAigcImageTaskRequest() (request *CreateAigcImageTaskRequest) {
     request = &CreateAigcImageTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4719,6 +4769,66 @@ func (c *Client) DeleteTranscodeTemplateWithContext(ctx context.Context, request
     return
 }
 
+func NewDeleteVoiceRequest() (request *DeleteVoiceRequest) {
+    request = &DeleteVoiceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "DeleteVoice")
+    
+    
+    return
+}
+
+func NewDeleteVoiceResponse() (response *DeleteVoiceResponse) {
+    response = &DeleteVoiceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteVoice
+// 删除音色（通过音色克隆或设计创建的）。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ACCESSDBERROR = "InternalError.AccessDBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DEFINITION = "InvalidParameterValue.Definition"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+func (c *Client) DeleteVoice(request *DeleteVoiceRequest) (response *DeleteVoiceResponse, err error) {
+    return c.DeleteVoiceWithContext(context.Background(), request)
+}
+
+// DeleteVoice
+// 删除音色（通过音色克隆或设计创建的）。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ACCESSDBERROR = "InternalError.AccessDBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DEFINITION = "InvalidParameterValue.Definition"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+func (c *Client) DeleteVoiceWithContext(ctx context.Context, request *DeleteVoiceRequest) (response *DeleteVoiceResponse, err error) {
+    if request == nil {
+        request = NewDeleteVoiceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DeleteVoice")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteVoice require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteVoiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteWatermarkTemplateRequest() (request *DeleteWatermarkTemplateRequest) {
     request = &DeleteWatermarkTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5059,6 +5169,66 @@ func (c *Client) DescribeAdaptiveDynamicStreamingTemplatesWithContext(ctx contex
     request.SetContext(ctx)
     
     response = NewDescribeAdaptiveDynamicStreamingTemplatesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAigcAudioTaskRequest() (request *DescribeAigcAudioTaskRequest) {
+    request = &DescribeAigcAudioTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "DescribeAigcAudioTask")
+    
+    
+    return
+}
+
+func NewDescribeAigcAudioTaskResponse() (response *DescribeAigcAudioTaskResponse) {
+    response = &DescribeAigcAudioTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAigcAudioTask
+// 调用该接口，用于查询AIGC生视频任务的进度以及获取生成结果。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_DEFINITIONS = "InvalidParameterValue.Definitions"
+//  INVALIDPARAMETERVALUE_LIMIT = "InvalidParameterValue.Limit"
+//  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeAigcAudioTask(request *DescribeAigcAudioTaskRequest) (response *DescribeAigcAudioTaskResponse, err error) {
+    return c.DescribeAigcAudioTaskWithContext(context.Background(), request)
+}
+
+// DescribeAigcAudioTask
+// 调用该接口，用于查询AIGC生视频任务的进度以及获取生成结果。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_DEFINITIONS = "InvalidParameterValue.Definitions"
+//  INVALIDPARAMETERVALUE_LIMIT = "InvalidParameterValue.Limit"
+//  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeAigcAudioTaskWithContext(ctx context.Context, request *DescribeAigcAudioTaskRequest) (response *DescribeAigcAudioTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeAigcAudioTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DescribeAigcAudioTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAigcAudioTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAigcAudioTaskResponse()
     err = c.Send(request, response)
     return
 }
@@ -8827,7 +8997,7 @@ func NewDesignVoiceAsyncResponse() (response *DesignVoiceAsyncResponse) {
 }
 
 // DesignVoiceAsync
-// 音色设计，根据prompt生成音色ID
+// 音色设计，根据prompt生成音色ID。克隆/设计音色数量上限默认100
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
@@ -8838,7 +9008,7 @@ func (c *Client) DesignVoiceAsync(request *DesignVoiceAsyncRequest) (response *D
 }
 
 // DesignVoiceAsync
-// 音色设计，根据prompt生成音色ID
+// 音色设计，根据prompt生成音色ID。克隆/设计音色数量上限默认100
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
@@ -8857,6 +9027,128 @@ func (c *Client) DesignVoiceAsyncWithContext(ctx context.Context, request *Desig
     request.SetContext(ctx)
     
     response = NewDesignVoiceAsyncResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDetectVideoSubtitleAreaRequest() (request *DetectVideoSubtitleAreaRequest) {
+    request = &DetectVideoSubtitleAreaRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "DetectVideoSubtitleArea")
+    
+    
+    return
+}
+
+func NewDetectVideoSubtitleAreaResponse() (response *DetectVideoSubtitleAreaResponse) {
+    response = &DetectVideoSubtitleAreaResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DetectVideoSubtitleArea
+// 快速探测视频文件的硬字幕区域
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_GENERATERESOURCE = "FailedOperation.GenerateResource"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_RECOGNITIONERROR = "InternalError.RecognitionError"
+//  INVALIDPARAMETER_INPUTINFO = "InvalidParameter.InputInfo"
+//  RESOURCENOTFOUND_DOWNLOADERROR = "ResourceNotFound.DownloadError"
+//  RESOURCENOTFOUND_USERUNREGISTER = "ResourceNotFound.UserUnregister"
+func (c *Client) DetectVideoSubtitleArea(request *DetectVideoSubtitleAreaRequest) (response *DetectVideoSubtitleAreaResponse, err error) {
+    return c.DetectVideoSubtitleAreaWithContext(context.Background(), request)
+}
+
+// DetectVideoSubtitleArea
+// 快速探测视频文件的硬字幕区域
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_GENERATERESOURCE = "FailedOperation.GenerateResource"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_RECOGNITIONERROR = "InternalError.RecognitionError"
+//  INVALIDPARAMETER_INPUTINFO = "InvalidParameter.InputInfo"
+//  RESOURCENOTFOUND_DOWNLOADERROR = "ResourceNotFound.DownloadError"
+//  RESOURCENOTFOUND_USERUNREGISTER = "ResourceNotFound.UserUnregister"
+func (c *Client) DetectVideoSubtitleAreaWithContext(ctx context.Context, request *DetectVideoSubtitleAreaRequest) (response *DetectVideoSubtitleAreaResponse, err error) {
+    if request == nil {
+        request = NewDetectVideoSubtitleAreaRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DetectVideoSubtitleArea")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DetectVideoSubtitleArea require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDetectVideoSubtitleAreaResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDetectVideoWatermarkRequest() (request *DetectVideoWatermarkRequest) {
+    request = &DetectVideoWatermarkRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "DetectVideoWatermark")
+    
+    
+    return
+}
+
+func NewDetectVideoWatermarkResponse() (response *DetectVideoWatermarkResponse) {
+    response = &DetectVideoWatermarkResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DetectVideoWatermark
+// 快速探测视频文件是否包含水印
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_GENERATERESOURCE = "FailedOperation.GenerateResource"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_RECOGNITIONERROR = "InternalError.RecognitionError"
+//  INVALIDPARAMETER_INPUTINFO = "InvalidParameter.InputInfo"
+//  INVALIDPARAMETERVALUE_DURATIONTOOLONG = "InvalidParameterValue.DurationTooLong"
+//  RESOURCENOTFOUND_DOWNLOADERROR = "ResourceNotFound.DownloadError"
+//  RESOURCENOTFOUND_USERUNREGISTER = "ResourceNotFound.UserUnregister"
+func (c *Client) DetectVideoWatermark(request *DetectVideoWatermarkRequest) (response *DetectVideoWatermarkResponse, err error) {
+    return c.DetectVideoWatermarkWithContext(context.Background(), request)
+}
+
+// DetectVideoWatermark
+// 快速探测视频文件是否包含水印
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_GENERATERESOURCE = "FailedOperation.GenerateResource"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_RECOGNITIONERROR = "InternalError.RecognitionError"
+//  INVALIDPARAMETER_INPUTINFO = "InvalidParameter.InputInfo"
+//  INVALIDPARAMETERVALUE_DURATIONTOOLONG = "InvalidParameterValue.DurationTooLong"
+//  RESOURCENOTFOUND_DOWNLOADERROR = "ResourceNotFound.DownloadError"
+//  RESOURCENOTFOUND_USERUNREGISTER = "ResourceNotFound.UserUnregister"
+func (c *Client) DetectVideoWatermarkWithContext(ctx context.Context, request *DetectVideoWatermarkRequest) (response *DetectVideoWatermarkResponse, err error) {
+    if request == nil {
+        request = NewDetectVideoWatermarkRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DetectVideoWatermark")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DetectVideoWatermark require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDetectVideoWatermarkResponse()
     err = c.Send(request, response)
     return
 }
@@ -12413,7 +12705,7 @@ func NewSyncDubbingResponse() (response *SyncDubbingResponse) {
 }
 
 // SyncDubbing
-// 同步接口，返回克隆音色Id或合成音频结果
+// 同步接口，返回克隆音色ID或合成音频结果。克隆/设计音色数量上限默认100
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -12426,7 +12718,7 @@ func (c *Client) SyncDubbing(request *SyncDubbingRequest) (response *SyncDubbing
 }
 
 // SyncDubbing
-// 同步接口，返回克隆音色Id或合成音频结果
+// 同步接口，返回克隆音色ID或合成音频结果。克隆/设计音色数量上限默认100
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -12619,6 +12911,60 @@ func (c *Client) UpdateProjectWithContext(ctx context.Context, request *UpdatePr
     request.SetContext(ctx)
     
     response = NewUpdateProjectResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateVoiceRequest() (request *UpdateVoiceRequest) {
+    request = &UpdateVoiceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "UpdateVoice")
+    
+    
+    return
+}
+
+func NewUpdateVoiceResponse() (response *UpdateVoiceResponse) {
+    response = &UpdateVoiceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateVoice
+// 更新音色信息
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_PROJECTNAMEDUPLICATE = "InvalidParameterValue.ProjectNameDuplicate"
+//  INVALIDPARAMETERVALUE_PROJECTNOTFOUND = "InvalidParameterValue.ProjectNotFound"
+//  INVALIDPARAMETERVALUE_USERUNREGISTER = "InvalidParameterValue.UserUnRegister"
+func (c *Client) UpdateVoice(request *UpdateVoiceRequest) (response *UpdateVoiceResponse, err error) {
+    return c.UpdateVoiceWithContext(context.Background(), request)
+}
+
+// UpdateVoice
+// 更新音色信息
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_PROJECTNAMEDUPLICATE = "InvalidParameterValue.ProjectNameDuplicate"
+//  INVALIDPARAMETERVALUE_PROJECTNOTFOUND = "InvalidParameterValue.ProjectNotFound"
+//  INVALIDPARAMETERVALUE_USERUNREGISTER = "InvalidParameterValue.UserUnRegister"
+func (c *Client) UpdateVoiceWithContext(ctx context.Context, request *UpdateVoiceRequest) (response *UpdateVoiceResponse, err error) {
+    if request == nil {
+        request = NewUpdateVoiceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "UpdateVoice")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateVoice require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateVoiceResponse()
     err = c.Send(request, response)
     return
 }

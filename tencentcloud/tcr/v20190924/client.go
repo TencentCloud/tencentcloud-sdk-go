@@ -1841,6 +1841,68 @@ func (c *Client) CreateWebhookTriggerWithContext(ctx context.Context, request *C
     return
 }
 
+func NewDeleteAIModelRequest() (request *DeleteAIModelRequest) {
+    request = &DeleteAIModelRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcr", APIVersion, "DeleteAIModel")
+    
+    
+    return
+}
+
+func NewDeleteAIModelResponse() (response *DeleteAIModelResponse) {
+    response = &DeleteAIModelResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteAIModel
+// 删除指定模型版本（通过 tag 或 digest 引用）。调用 Harbor v2 API 删除 artifact。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
+//  INTERNALERROR_ERRORTCRUNAUTHORIZED = "InternalError.ErrorTcrUnauthorized"
+//  INVALIDPARAMETER_ERRORTCRINVALIDPARAMETER = "InvalidParameter.ErrorTcrInvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TCRRESOURCENOTFOUND = "ResourceNotFound.TcrResourceNotFound"
+func (c *Client) DeleteAIModel(request *DeleteAIModelRequest) (response *DeleteAIModelResponse, err error) {
+    return c.DeleteAIModelWithContext(context.Background(), request)
+}
+
+// DeleteAIModel
+// 删除指定模型版本（通过 tag 或 digest 引用）。调用 Harbor v2 API 删除 artifact。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
+//  INTERNALERROR_ERRORTCRUNAUTHORIZED = "InternalError.ErrorTcrUnauthorized"
+//  INVALIDPARAMETER_ERRORTCRINVALIDPARAMETER = "InvalidParameter.ErrorTcrInvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TCRRESOURCENOTFOUND = "ResourceNotFound.TcrResourceNotFound"
+func (c *Client) DeleteAIModelWithContext(ctx context.Context, request *DeleteAIModelRequest) (response *DeleteAIModelResponse, err error) {
+    if request == nil {
+        request = NewDeleteAIModelRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcr", APIVersion, "DeleteAIModel")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAIModel require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteAIModelResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteApplicationTriggerPersonalRequest() (request *DeleteApplicationTriggerPersonalRequest) {
     request = &DeleteApplicationTriggerPersonalRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3237,6 +3299,86 @@ func (c *Client) DeleteSignaturePolicyWithContext(ctx context.Context, request *
     return
 }
 
+func NewDeleteSkillRequest() (request *DeleteSkillRequest) {
+    request = &DeleteSkillRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcr", APIVersion, "DeleteSkill")
+    
+    
+    return
+}
+
+func NewDeleteSkillResponse() (response *DeleteSkillResponse) {
+    response = &DeleteSkillResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteSkill
+// 删除指定 Skill
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ERRORGETDBDATAERROR = "FailedOperation.ErrorGetDBDataError"
+//  FAILEDOPERATION_ERRORTCRRESOURCECONFLICT = "FailedOperation.ErrorTcrResourceConflict"
+//  FAILEDOPERATION_ERRORTCRUNAUTHORIZED = "FailedOperation.ErrorTcrUnauthorized"
+//  FAILEDOPERATION_GETDBDATAERROR = "FailedOperation.GetDBDataError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
+//  INTERNALERROR_ERRORTCRINVALIDMEDIATYPE = "InternalError.ErrorTcrInvalidMediaType"
+//  INTERNALERROR_ERRORTCRRESOURCECONFLICT = "InternalError.ErrorTcrResourceConflict"
+//  INTERNALERROR_ERRORTCRUNAUTHORIZED = "InternalError.ErrorTcrUnauthorized"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TCRRESOURCENOTFOUND = "ResourceNotFound.TcrResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteSkill(request *DeleteSkillRequest) (response *DeleteSkillResponse, err error) {
+    return c.DeleteSkillWithContext(context.Background(), request)
+}
+
+// DeleteSkill
+// 删除指定 Skill
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ERRORGETDBDATAERROR = "FailedOperation.ErrorGetDBDataError"
+//  FAILEDOPERATION_ERRORTCRRESOURCECONFLICT = "FailedOperation.ErrorTcrResourceConflict"
+//  FAILEDOPERATION_ERRORTCRUNAUTHORIZED = "FailedOperation.ErrorTcrUnauthorized"
+//  FAILEDOPERATION_GETDBDATAERROR = "FailedOperation.GetDBDataError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
+//  INTERNALERROR_ERRORTCRINVALIDMEDIATYPE = "InternalError.ErrorTcrInvalidMediaType"
+//  INTERNALERROR_ERRORTCRRESOURCECONFLICT = "InternalError.ErrorTcrResourceConflict"
+//  INTERNALERROR_ERRORTCRUNAUTHORIZED = "InternalError.ErrorTcrUnauthorized"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TCRRESOURCENOTFOUND = "ResourceNotFound.TcrResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteSkillWithContext(ctx context.Context, request *DeleteSkillRequest) (response *DeleteSkillResponse, err error) {
+    if request == nil {
+        request = NewDeleteSkillRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcr", APIVersion, "DeleteSkill")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteSkill require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteSkillResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteTagRetentionRuleRequest() (request *DeleteTagRetentionRuleRequest) {
     request = &DeleteTagRetentionRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3375,6 +3517,72 @@ func (c *Client) DeleteWebhookTriggerWithContext(ctx context.Context, request *D
     request.SetContext(ctx)
     
     response = NewDeleteWebhookTriggerResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAIModelVersionDetailRequest() (request *DescribeAIModelVersionDetailRequest) {
+    request = &DescribeAIModelVersionDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcr", APIVersion, "DescribeAIModelVersionDetail")
+    
+    
+    return
+}
+
+func NewDescribeAIModelVersionDetailResponse() (response *DescribeAIModelVersionDetailResponse) {
+    response = &DescribeAIModelVersionDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAIModelVersionDetail
+// 查询模型详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DEPENDENCEERROR = "FailedOperation.DependenceError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ERRORTCRINVALIDPARAMETER = "InvalidParameter.ErrorTcrInvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TCRRESOURCENOTFOUND = "ResourceNotFound.TcrResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeAIModelVersionDetail(request *DescribeAIModelVersionDetailRequest) (response *DescribeAIModelVersionDetailResponse, err error) {
+    return c.DescribeAIModelVersionDetailWithContext(context.Background(), request)
+}
+
+// DescribeAIModelVersionDetail
+// 查询模型详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DEPENDENCEERROR = "FailedOperation.DependenceError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ERRORTCRINVALIDPARAMETER = "InvalidParameter.ErrorTcrInvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TCRRESOURCENOTFOUND = "ResourceNotFound.TcrResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeAIModelVersionDetailWithContext(ctx context.Context, request *DescribeAIModelVersionDetailRequest) (response *DescribeAIModelVersionDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeAIModelVersionDetailRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcr", APIVersion, "DescribeAIModelVersionDetail")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAIModelVersionDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAIModelVersionDetailResponse()
     err = c.Send(request, response)
     return
 }
@@ -5527,6 +5735,126 @@ func (c *Client) DescribeServiceAccountsWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeSkillDetailRequest() (request *DescribeSkillDetailRequest) {
+    request = &DescribeSkillDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcr", APIVersion, "DescribeSkillDetail")
+    
+    
+    return
+}
+
+func NewDescribeSkillDetailResponse() (response *DescribeSkillDetailResponse) {
+    response = &DescribeSkillDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSkillDetail
+// 查询单个 Skill 的完整详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DbError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeSkillDetail(request *DescribeSkillDetailRequest) (response *DescribeSkillDetailResponse, err error) {
+    return c.DescribeSkillDetailWithContext(context.Background(), request)
+}
+
+// DescribeSkillDetail
+// 查询单个 Skill 的完整详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DbError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeSkillDetailWithContext(ctx context.Context, request *DescribeSkillDetailRequest) (response *DescribeSkillDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeSkillDetailRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcr", APIVersion, "DescribeSkillDetail")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSkillDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSkillDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSkillDownloadInfoRequest() (request *DescribeSkillDownloadInfoRequest) {
+    request = &DescribeSkillDownloadInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcr", APIVersion, "DescribeSkillDownloadInfo")
+    
+    
+    return
+}
+
+func NewDescribeSkillDownloadInfoResponse() (response *DescribeSkillDownloadInfoResponse) {
+    response = &DescribeSkillDownloadInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSkillDownloadInfo
+// 返回 Skill 下载链接
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DbError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeSkillDownloadInfo(request *DescribeSkillDownloadInfoRequest) (response *DescribeSkillDownloadInfoResponse, err error) {
+    return c.DescribeSkillDownloadInfoWithContext(context.Background(), request)
+}
+
+// DescribeSkillDownloadInfo
+// 返回 Skill 下载链接
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DbError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeSkillDownloadInfoWithContext(ctx context.Context, request *DescribeSkillDownloadInfoRequest) (response *DescribeSkillDownloadInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeSkillDownloadInfoRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcr", APIVersion, "DescribeSkillDownloadInfo")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSkillDownloadInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSkillDownloadInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTagRetentionExecutionRequest() (request *DescribeTagRetentionExecutionRequest) {
     request = &DescribeTagRetentionExecutionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6127,6 +6455,230 @@ func (c *Client) DuplicateImagePersonalWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewDuplicateImagePersonalResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListAIModelVersionsRequest() (request *ListAIModelVersionsRequest) {
+    request = &ListAIModelVersionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcr", APIVersion, "ListAIModelVersions")
+    
+    
+    return
+}
+
+func NewListAIModelVersionsResponse() (response *ListAIModelVersionsResponse) {
+    response = &ListAIModelVersionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListAIModelVersions
+// 查询指定模型仓库的所有版本列表。调用 Harbor v2 API 获取 artifact 列表，从 extra_attrs 提取模型元数据（框架、任务类型、精度等），从 tags 判断是否为推荐版本。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ERRNSMISMATCH = "InvalidParameter.ErrNSMisMatch"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_ERRNOTAG = "ResourceNotFound.ErrNoTag"
+func (c *Client) ListAIModelVersions(request *ListAIModelVersionsRequest) (response *ListAIModelVersionsResponse, err error) {
+    return c.ListAIModelVersionsWithContext(context.Background(), request)
+}
+
+// ListAIModelVersions
+// 查询指定模型仓库的所有版本列表。调用 Harbor v2 API 获取 artifact 列表，从 extra_attrs 提取模型元数据（框架、任务类型、精度等），从 tags 判断是否为推荐版本。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ERRNSMISMATCH = "InvalidParameter.ErrNSMisMatch"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_ERRNOTAG = "ResourceNotFound.ErrNoTag"
+func (c *Client) ListAIModelVersionsWithContext(ctx context.Context, request *ListAIModelVersionsRequest) (response *ListAIModelVersionsResponse, err error) {
+    if request == nil {
+        request = NewListAIModelVersionsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcr", APIVersion, "ListAIModelVersions")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListAIModelVersions require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListAIModelVersionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListAIModelsRequest() (request *ListAIModelsRequest) {
+    request = &ListAIModelsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcr", APIVersion, "ListAIModels")
+    
+    
+    return
+}
+
+func NewListAIModelsResponse() (response *ListAIModelsResponse) {
+    response = &ListAIModelsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListAIModels
+// 查询指定实例下的 AI 模型列表。可按 namespace 和仓库名过滤。每条记录代表一个模型仓库，返回最新版本信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ERRNSMISMATCH = "InvalidParameter.ErrNSMisMatch"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_ERRNOTAG = "ResourceNotFound.ErrNoTag"
+func (c *Client) ListAIModels(request *ListAIModelsRequest) (response *ListAIModelsResponse, err error) {
+    return c.ListAIModelsWithContext(context.Background(), request)
+}
+
+// ListAIModels
+// 查询指定实例下的 AI 模型列表。可按 namespace 和仓库名过滤。每条记录代表一个模型仓库，返回最新版本信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ERRNSMISMATCH = "InvalidParameter.ErrNSMisMatch"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_ERRNOTAG = "ResourceNotFound.ErrNoTag"
+func (c *Client) ListAIModelsWithContext(ctx context.Context, request *ListAIModelsRequest) (response *ListAIModelsResponse, err error) {
+    if request == nil {
+        request = NewListAIModelsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcr", APIVersion, "ListAIModels")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListAIModels require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListAIModelsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListSkillVersionsRequest() (request *ListSkillVersionsRequest) {
+    request = &ListSkillVersionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcr", APIVersion, "ListSkillVersions")
+    
+    
+    return
+}
+
+func NewListSkillVersionsResponse() (response *ListSkillVersionsResponse) {
+    response = &ListSkillVersionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListSkillVersions
+// 查询指定 Skill 的版本历史列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ERRNSMISMATCH = "InvalidParameter.ErrNSMisMatch"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_ERRNOTAG = "ResourceNotFound.ErrNoTag"
+func (c *Client) ListSkillVersions(request *ListSkillVersionsRequest) (response *ListSkillVersionsResponse, err error) {
+    return c.ListSkillVersionsWithContext(context.Background(), request)
+}
+
+// ListSkillVersions
+// 查询指定 Skill 的版本历史列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ERRNSMISMATCH = "InvalidParameter.ErrNSMisMatch"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_ERRNOTAG = "ResourceNotFound.ErrNoTag"
+func (c *Client) ListSkillVersionsWithContext(ctx context.Context, request *ListSkillVersionsRequest) (response *ListSkillVersionsResponse, err error) {
+    if request == nil {
+        request = NewListSkillVersionsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcr", APIVersion, "ListSkillVersions")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListSkillVersions require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListSkillVersionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListSkillsRequest() (request *ListSkillsRequest) {
+    request = &ListSkillsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcr", APIVersion, "ListSkills")
+    
+    
+    return
+}
+
+func NewListSkillsResponse() (response *ListSkillsResponse) {
+    response = &ListSkillsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListSkills
+// 查询指定实例下的 AI Skill 列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ERRNSMISMATCH = "InvalidParameter.ErrNSMisMatch"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_ERRNOTAG = "ResourceNotFound.ErrNoTag"
+func (c *Client) ListSkills(request *ListSkillsRequest) (response *ListSkillsResponse, err error) {
+    return c.ListSkillsWithContext(context.Background(), request)
+}
+
+// ListSkills
+// 查询指定实例下的 AI Skill 列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ERRNSMISMATCH = "InvalidParameter.ErrNSMisMatch"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_ERRNOTAG = "ResourceNotFound.ErrNoTag"
+func (c *Client) ListSkillsWithContext(ctx context.Context, request *ListSkillsRequest) (response *ListSkillsResponse, err error) {
+    if request == nil {
+        request = NewListSkillsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcr", APIVersion, "ListSkills")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListSkills require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListSkillsResponse()
     err = c.Send(request, response)
     return
 }

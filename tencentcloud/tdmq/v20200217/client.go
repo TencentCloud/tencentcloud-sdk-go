@@ -735,6 +735,7 @@ func NewCreateRabbitMQUserResponse() (response *CreateRabbitMQUserResponse) {
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) CreateRabbitMQUser(request *CreateRabbitMQUserRequest) (response *CreateRabbitMQUserResponse, err error) {
     return c.CreateRabbitMQUserWithContext(context.Background(), request)
 }
@@ -746,6 +747,7 @@ func (c *Client) CreateRabbitMQUser(request *CreateRabbitMQUserRequest) (respons
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) CreateRabbitMQUserWithContext(ctx context.Context, request *CreateRabbitMQUserRequest) (response *CreateRabbitMQUserResponse, err error) {
     if request == nil {
         request = NewCreateRabbitMQUserRequest()
@@ -1353,6 +1355,58 @@ func (c *Client) CreateRocketMQRoleWithContext(ctx context.Context, request *Cre
     request.SetContext(ctx)
     
     response = NewCreateRocketMQRoleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateRocketMQRouterRuleRequest() (request *CreateRocketMQRouterRuleRequest) {
+    request = &CreateRocketMQRouterRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "CreateRocketMQRouterRule")
+    
+    
+    return
+}
+
+func NewCreateRocketMQRouterRuleResponse() (response *CreateRocketMQRouterRuleResponse) {
+    response = &CreateRocketMQRouterRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateRocketMQRouterRule
+// 创建RocketMQ Router规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ROLENOSYNCPERMISSION = "FailedOperation.RoleNoSyncPermission"
+//  FAILEDOPERATION_ROUTERRULE = "FailedOperation.RouterRule"
+func (c *Client) CreateRocketMQRouterRule(request *CreateRocketMQRouterRuleRequest) (response *CreateRocketMQRouterRuleResponse, err error) {
+    return c.CreateRocketMQRouterRuleWithContext(context.Background(), request)
+}
+
+// CreateRocketMQRouterRule
+// 创建RocketMQ Router规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ROLENOSYNCPERMISSION = "FailedOperation.RoleNoSyncPermission"
+//  FAILEDOPERATION_ROUTERRULE = "FailedOperation.RouterRule"
+func (c *Client) CreateRocketMQRouterRuleWithContext(ctx context.Context, request *CreateRocketMQRouterRuleRequest) (response *CreateRocketMQRouterRuleResponse, err error) {
+    if request == nil {
+        request = NewCreateRocketMQRouterRuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "CreateRocketMQRouterRule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateRocketMQRouterRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateRocketMQRouterRuleResponse()
     err = c.Send(request, response)
     return
 }
@@ -4942,11 +4996,7 @@ func NewDescribeRabbitMQVipInstancesResponse() (response *DescribeRabbitMQVipIns
 // 查询用户已购的 RabbitMQ 托管版实例列表
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR_ILLEGALMESSAGE = "InternalError.IllegalMessage"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  FAILEDOPERATION_GETTAGS = "FailedOperation.GetTags"
 func (c *Client) DescribeRabbitMQVipInstances(request *DescribeRabbitMQVipInstancesRequest) (response *DescribeRabbitMQVipInstancesResponse, err error) {
     return c.DescribeRabbitMQVipInstancesWithContext(context.Background(), request)
 }
@@ -4955,11 +5005,7 @@ func (c *Client) DescribeRabbitMQVipInstances(request *DescribeRabbitMQVipInstan
 // 查询用户已购的 RabbitMQ 托管版实例列表
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR_ILLEGALMESSAGE = "InternalError.IllegalMessage"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  FAILEDOPERATION_GETTAGS = "FailedOperation.GetTags"
 func (c *Client) DescribeRabbitMQVipInstancesWithContext(ctx context.Context, request *DescribeRabbitMQVipInstancesRequest) (response *DescribeRabbitMQVipInstancesResponse, err error) {
     if request == nil {
         request = NewDescribeRabbitMQVipInstancesRequest()
@@ -7737,6 +7783,7 @@ func NewModifyRabbitMQVipInstanceResponse() (response *ModifyRabbitMQVipInstance
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_GETTAGS = "FailedOperation.GetTags"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) ModifyRabbitMQVipInstance(request *ModifyRabbitMQVipInstanceRequest) (response *ModifyRabbitMQVipInstanceResponse, err error) {
@@ -7748,6 +7795,7 @@ func (c *Client) ModifyRabbitMQVipInstance(request *ModifyRabbitMQVipInstanceReq
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_GETTAGS = "FailedOperation.GetTags"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) ModifyRabbitMQVipInstanceWithContext(ctx context.Context, request *ModifyRabbitMQVipInstanceRequest) (response *ModifyRabbitMQVipInstanceResponse, err error) {

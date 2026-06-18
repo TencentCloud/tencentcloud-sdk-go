@@ -638,39 +638,33 @@ func (r *CreateAuditLogFileResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateBackupDBInstanceRequestParams struct {
-	// 实例 ID。例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
+	// <p>实例 ID。例如：cmgo-p8vn****。请登录 <a href="https://console.cloud.tencent.com/mongodb">MongoDB 控制台</a>在实例列表复制实例 ID。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 设置备份方式。
-	// - 0：逻辑备份。
-	// - 1：物理备份。
-	// - 3：快照备份。
-	// **说明**:
-	// 1. 通用版实例支持逻辑备份与物理备份。云盘版实例支持物理备份与快照备份，暂不支持逻辑备份。
-	// 2. 实例开通存储加密，则备份方式不能为物理备份。
+	// <p>设置备份方式。</p><ul><li>0：逻辑备份。</li><li>1：物理备份。</li><li>3：快照备份。<br><strong>说明</strong>:</li><li>通用版实例支持逻辑备份与物理备份。云盘版实例支持物理备份与快照备份，暂不支持逻辑备份。</li><li>实例开通存储加密，则备份方式不能为物理备份。</li></ul>
 	BackupMethod *int64 `json:"BackupMethod,omitnil,omitempty" name:"BackupMethod"`
 
-	// 备份备注信息。
+	// <p>备份备注信息。</p>
 	BackupRemark *string `json:"BackupRemark,omitnil,omitempty" name:"BackupRemark"`
+
+	// <p>保存天数，-2-永久保留（不定期保留），-1-跟随长期保留时长，0-按配置天数，1~7300-自定义天数（最长20年）</p><p>单位：天</p>
+	BackupRetentionDays *int64 `json:"BackupRetentionDays,omitnil,omitempty" name:"BackupRetentionDays"`
 }
 
 type CreateBackupDBInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID。例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
+	// <p>实例 ID。例如：cmgo-p8vn****。请登录 <a href="https://console.cloud.tencent.com/mongodb">MongoDB 控制台</a>在实例列表复制实例 ID。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 设置备份方式。
-	// - 0：逻辑备份。
-	// - 1：物理备份。
-	// - 3：快照备份。
-	// **说明**:
-	// 1. 通用版实例支持逻辑备份与物理备份。云盘版实例支持物理备份与快照备份，暂不支持逻辑备份。
-	// 2. 实例开通存储加密，则备份方式不能为物理备份。
+	// <p>设置备份方式。</p><ul><li>0：逻辑备份。</li><li>1：物理备份。</li><li>3：快照备份。<br><strong>说明</strong>:</li><li>通用版实例支持逻辑备份与物理备份。云盘版实例支持物理备份与快照备份，暂不支持逻辑备份。</li><li>实例开通存储加密，则备份方式不能为物理备份。</li></ul>
 	BackupMethod *int64 `json:"BackupMethod,omitnil,omitempty" name:"BackupMethod"`
 
-	// 备份备注信息。
+	// <p>备份备注信息。</p>
 	BackupRemark *string `json:"BackupRemark,omitnil,omitempty" name:"BackupRemark"`
+
+	// <p>保存天数，-2-永久保留（不定期保留），-1-跟随长期保留时长，0-按配置天数，1~7300-自定义天数（最长20年）</p><p>单位：天</p>
+	BackupRetentionDays *int64 `json:"BackupRetentionDays,omitnil,omitempty" name:"BackupRetentionDays"`
 }
 
 func (r *CreateBackupDBInstanceRequest) ToJsonString() string {
@@ -688,6 +682,7 @@ func (r *CreateBackupDBInstanceRequest) FromJsonString(s string) error {
 	delete(f, "InstanceId")
 	delete(f, "BackupMethod")
 	delete(f, "BackupRemark")
+	delete(f, "BackupRetentionDays")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBackupDBInstanceRequest has unknown keys!", "")
 	}
@@ -696,7 +691,7 @@ func (r *CreateBackupDBInstanceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateBackupDBInstanceResponseParams struct {
-	// 查询备份流程的状态。
+	// <p>查询备份流程的状态。</p>
 	AsyncRequestId *string `json:"AsyncRequestId,omitnil,omitempty" name:"AsyncRequestId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1542,6 +1537,91 @@ func (r *CreateLogDownloadTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateSlowLogPatternDownloadTaskRequestParams struct {
+	// <p>实例 ID。请登录 <a href="https://console.cloud.tencent.com/mongodb">MongoDB 控制台</a>在实例列表复制实例 ID。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>采集慢日志开始时间</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>采集慢日志结束时间</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>慢日志采集阈值</p>
+	ThresholdMs *int64 `json:"ThresholdMs,omitnil,omitempty" name:"ThresholdMs"`
+
+	// <p>慢日志类型</p>
+	Commands []*string `json:"Commands,omitnil,omitempty" name:"Commands"`
+}
+
+type CreateSlowLogPatternDownloadTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>实例 ID。请登录 <a href="https://console.cloud.tencent.com/mongodb">MongoDB 控制台</a>在实例列表复制实例 ID。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>采集慢日志开始时间</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>采集慢日志结束时间</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>慢日志采集阈值</p>
+	ThresholdMs *int64 `json:"ThresholdMs,omitnil,omitempty" name:"ThresholdMs"`
+
+	// <p>慢日志类型</p>
+	Commands []*string `json:"Commands,omitnil,omitempty" name:"Commands"`
+}
+
+func (r *CreateSlowLogPatternDownloadTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSlowLogPatternDownloadTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "ThresholdMs")
+	delete(f, "Commands")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSlowLogPatternDownloadTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateSlowLogPatternDownloadTaskResponseParams struct {
+	// <p>下载任务状态</p>
+	Status []*int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateSlowLogPatternDownloadTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateSlowLogPatternDownloadTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateSlowLogPatternDownloadTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSlowLogPatternDownloadTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CurrentOp struct {
 	// 操作序号。
 	OpId *int64 `json:"OpId,omitnil,omitempty" name:"OpId"`
@@ -1750,6 +1830,67 @@ func (r *DeleteAuditLogFileResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteAuditLogFileResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteDBBackupsRequestParams struct {
+	// 实例id,cmgo-xxxx
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 备份文件id列表
+	BackupIds []*int64 `json:"BackupIds,omitnil,omitempty" name:"BackupIds"`
+}
+
+type DeleteDBBackupsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例id,cmgo-xxxx
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 备份文件id列表
+	BackupIds []*int64 `json:"BackupIds,omitnil,omitempty" name:"BackupIds"`
+}
+
+func (r *DeleteDBBackupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDBBackupsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "BackupIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteDBBackupsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteDBBackupsResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteDBBackupsResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteDBBackupsResponseParams `json:"Response"`
+}
+
+func (r *DeleteDBBackupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDBBackupsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2953,6 +3094,76 @@ func (r *DescribeDBInstanceDealResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeDBInstanceLogToCLSRequestParams struct {
+	// <p>指定实例ID。例如：cmgo-p8vn****。请登录 MongoDB 控制台在实例列表复制实例 ID。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>CLS服务所在地域</p>
+	CLSRegion *string `json:"CLSRegion,omitnil,omitempty" name:"CLSRegion"`
+}
+
+type DescribeDBInstanceLogToCLSRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>指定实例ID。例如：cmgo-p8vn****。请登录 MongoDB 控制台在实例列表复制实例 ID。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>CLS服务所在地域</p>
+	CLSRegion *string `json:"CLSRegion,omitnil,omitempty" name:"CLSRegion"`
+}
+
+func (r *DescribeDBInstanceLogToCLSRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDBInstanceLogToCLSRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "CLSRegion")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDBInstanceLogToCLSRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDBInstanceLogToCLSResponseParams struct {
+	// <p>实例错误日志投递配置</p>
+	ErrorLog *LogToCLSConfig `json:"ErrorLog,omitnil,omitempty" name:"ErrorLog"`
+
+	// <p>实例慢日志投递配置</p>
+	SlowLog *LogToCLSConfig `json:"SlowLog,omitnil,omitempty" name:"SlowLog"`
+
+	// <p>实例操作日志投递配置</p>
+	OperationLog *LogToCLSConfig `json:"OperationLog,omitnil,omitempty" name:"OperationLog"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDBInstanceLogToCLSResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDBInstanceLogToCLSResponseParams `json:"Response"`
+}
+
+func (r *DescribeDBInstanceLogToCLSResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDBInstanceLogToCLSResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeDBInstanceNamespaceRequestParams struct {
 	// 指定查询数据库所属的实例 ID，支持批量查询。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -4103,6 +4314,57 @@ func (r *DescribeMongodbLogsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribePasswordRotationRequestParams struct {
+
+}
+
+type DescribePasswordRotationRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribePasswordRotationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePasswordRotationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePasswordRotationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePasswordRotationResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribePasswordRotationResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePasswordRotationResponseParams `json:"Response"`
+}
+
+func (r *DescribePasswordRotationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePasswordRotationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeSRVConnectionDomainRequestParams struct {
 	// 实例 ID，例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -4668,6 +4930,57 @@ func (r *DropDBInstanceParamTplResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type EnablePasswordRotationRequestParams struct {
+
+}
+
+type EnablePasswordRotationRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *EnablePasswordRotationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *EnablePasswordRotationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EnablePasswordRotationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type EnablePasswordRotationResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type EnablePasswordRotationResponse struct {
+	*tchttp.BaseResponse
+	Response *EnablePasswordRotationResponseParams `json:"Response"`
+}
+
+func (r *EnablePasswordRotationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *EnablePasswordRotationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type EnableSRVConnectionUrlRequestParams struct {
 	// 实例 ID，例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -5036,6 +5349,57 @@ func (r *FlushInstanceRouterConfigResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *FlushInstanceRouterConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type IncreaseDBInstanceConnectionLimitRequestParams struct {
+
+}
+
+type IncreaseDBInstanceConnectionLimitRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *IncreaseDBInstanceConnectionLimitRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *IncreaseDBInstanceConnectionLimitRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "IncreaseDBInstanceConnectionLimitRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type IncreaseDBInstanceConnectionLimitResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type IncreaseDBInstanceConnectionLimitResponse struct {
+	*tchttp.BaseResponse
+	Response *IncreaseDBInstanceConnectionLimitResponseParams `json:"Response"`
+}
+
+func (r *IncreaseDBInstanceConnectionLimitResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *IncreaseDBInstanceConnectionLimitResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6011,6 +6375,20 @@ type LogInfo struct {
 	LogId *string `json:"LogId,omitnil,omitempty" name:"LogId"`
 }
 
+type LogToCLSConfig struct {
+	// <p>CLS服务所在地域</p>
+	CLSRegion *string `json:"CLSRegion,omitnil,omitempty" name:"CLSRegion"`
+
+	// <p>投递状态打开或者关闭</p>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>CLS日志集ID</p>
+	LogSetId *string `json:"LogSetId,omitnil,omitempty" name:"LogSetId"`
+
+	// <p>日志主题ID</p>
+	LogTopicId *string `json:"LogTopicId,omitnil,omitempty" name:"LogTopicId"`
+}
+
 // Predefined struct for user
 type ModifyAuditServiceRequestParams struct {
 	// 实例ID，格式如：cmgo-xfts****，与云数据库控制台页面中显示的实例 ID 相同。
@@ -6083,6 +6461,180 @@ func (r *ModifyAuditServiceResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyAuditServiceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyBackupExpireTimeRequestParams struct {
+	// <p>实例ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>过期时间</p><p>参数格式：YYYY-MM-DD hh:mm:ss</p>
+	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// <p>备份ID</p>
+	BackupIds []*int64 `json:"BackupIds,omitnil,omitempty" name:"BackupIds"`
+}
+
+type ModifyBackupExpireTimeRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>实例ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>过期时间</p><p>参数格式：YYYY-MM-DD hh:mm:ss</p>
+	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// <p>备份ID</p>
+	BackupIds []*int64 `json:"BackupIds,omitnil,omitempty" name:"BackupIds"`
+}
+
+func (r *ModifyBackupExpireTimeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyBackupExpireTimeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "ExpireTime")
+	delete(f, "BackupIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyBackupExpireTimeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyBackupExpireTimeResponseParams struct {
+	// <p>失败的备份ID</p>
+	FailedBackups []*int64 `json:"FailedBackups,omitnil,omitempty" name:"FailedBackups"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyBackupExpireTimeResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyBackupExpireTimeResponseParams `json:"Response"`
+}
+
+func (r *ModifyBackupExpireTimeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyBackupExpireTimeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDBInstanceLogToCLSRequestParams struct {
+	// <p>指定实例ID。例如：cmgo-p8vn****。请登录 MongoDB 控制台在实例列表复制实例 ID。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>日志类型。MongoDB-ErrorLog：错误日志，MongoDB-SlowLog：慢日志，MongoDB-OperationLog：操作日志</p>
+	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
+
+	// <p>投递状态。ON：开启，OFF：关闭。</p>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>是否需要创建日志集。默认为 false。</p>
+	CreateLogset *bool `json:"CreateLogset,omitnil,omitempty" name:"CreateLogset"`
+
+	// <p>需要创建日志集时为日志集名称；选择已有日志集时，为日志集 ID。默认为空。 说明：1. 当参数 Status 的值为 ON 时，Logset 和 LogTopic 参数必须填一个。2.  当参数 CreateLogset 的值为 true 时，Logset 填日志集命名，例如 my_test，否则需要填日志集 id，例如 6adsaw-****。</p>
+	Logset *string `json:"Logset,omitnil,omitempty" name:"Logset"`
+
+	// <p>是否需要创建日志主题。默认为 false。</p>
+	CreateLogTopic *bool `json:"CreateLogTopic,omitnil,omitempty" name:"CreateLogTopic"`
+
+	// <p>需要创建日志主题时为日志主题名称；选择已有日志主题时，为日志主题 ID。默认为空。 说明：1. 当参数 Status 的值为 ON 时，Logset 和 LogTopic 参数必须填一个。2. 2.  当参数 CreateLogTopic 的值为 true 时，LogTopic 填日志主题命名，例如 my_test，否则需要填日志主题id，例如 6adsaw-****。</p>
+	LogTopic *string `json:"LogTopic,omitnil,omitempty" name:"LogTopic"`
+
+	// <p>CLS 所在地域，不填则默认为 Region 的参数值。</p>
+	CLSRegion *string `json:"CLSRegion,omitnil,omitempty" name:"CLSRegion"`
+}
+
+type ModifyDBInstanceLogToCLSRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>指定实例ID。例如：cmgo-p8vn****。请登录 MongoDB 控制台在实例列表复制实例 ID。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>日志类型。MongoDB-ErrorLog：错误日志，MongoDB-SlowLog：慢日志，MongoDB-OperationLog：操作日志</p>
+	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
+
+	// <p>投递状态。ON：开启，OFF：关闭。</p>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>是否需要创建日志集。默认为 false。</p>
+	CreateLogset *bool `json:"CreateLogset,omitnil,omitempty" name:"CreateLogset"`
+
+	// <p>需要创建日志集时为日志集名称；选择已有日志集时，为日志集 ID。默认为空。 说明：1. 当参数 Status 的值为 ON 时，Logset 和 LogTopic 参数必须填一个。2.  当参数 CreateLogset 的值为 true 时，Logset 填日志集命名，例如 my_test，否则需要填日志集 id，例如 6adsaw-****。</p>
+	Logset *string `json:"Logset,omitnil,omitempty" name:"Logset"`
+
+	// <p>是否需要创建日志主题。默认为 false。</p>
+	CreateLogTopic *bool `json:"CreateLogTopic,omitnil,omitempty" name:"CreateLogTopic"`
+
+	// <p>需要创建日志主题时为日志主题名称；选择已有日志主题时，为日志主题 ID。默认为空。 说明：1. 当参数 Status 的值为 ON 时，Logset 和 LogTopic 参数必须填一个。2. 2.  当参数 CreateLogTopic 的值为 true 时，LogTopic 填日志主题命名，例如 my_test，否则需要填日志主题id，例如 6adsaw-****。</p>
+	LogTopic *string `json:"LogTopic,omitnil,omitempty" name:"LogTopic"`
+
+	// <p>CLS 所在地域，不填则默认为 Region 的参数值。</p>
+	CLSRegion *string `json:"CLSRegion,omitnil,omitempty" name:"CLSRegion"`
+}
+
+func (r *ModifyDBInstanceLogToCLSRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDBInstanceLogToCLSRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "LogType")
+	delete(f, "Status")
+	delete(f, "CreateLogset")
+	delete(f, "Logset")
+	delete(f, "CreateLogTopic")
+	delete(f, "LogTopic")
+	delete(f, "CLSRegion")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDBInstanceLogToCLSRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDBInstanceLogToCLSResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyDBInstanceLogToCLSResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyDBInstanceLogToCLSResponseParams `json:"Response"`
+}
+
+func (r *ModifyDBInstanceLogToCLSResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDBInstanceLogToCLSResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6948,6 +7500,70 @@ type ParamType struct {
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
+// Predefined struct for user
+type PromoteDBInstanceToActiveRequestParams struct {
+	// 灾备实例id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 主实例id
+	MasterId *string `json:"MasterId,omitnil,omitempty" name:"MasterId"`
+}
+
+type PromoteDBInstanceToActiveRequest struct {
+	*tchttp.BaseRequest
+	
+	// 灾备实例id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 主实例id
+	MasterId *string `json:"MasterId,omitnil,omitempty" name:"MasterId"`
+}
+
+func (r *PromoteDBInstanceToActiveRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PromoteDBInstanceToActiveRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "MasterId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PromoteDBInstanceToActiveRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type PromoteDBInstanceToActiveResponseParams struct {
+	// 任务id
+	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type PromoteDBInstanceToActiveResponse struct {
+	*tchttp.BaseResponse
+	Response *PromoteDBInstanceToActiveResponseParams `json:"Response"`
+}
+
+func (r *PromoteDBInstanceToActiveResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PromoteDBInstanceToActiveResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type RemoveNodeList struct {
 	// 需要删除的节点角色。
 	// - SECONDARY：Mongod 从节点。
@@ -7669,31 +8285,33 @@ func (r *SetDBInstanceDeletionProtectionResponse) FromJsonString(s string) error
 
 // Predefined struct for user
 type SetInstanceMaintenanceRequestParams struct {
-	// 指定实例ID。例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
+	// <p>指定实例ID。例如：cmgo-p8vn****。请登录 <a href="https://console.cloud.tencent.com/mongodb">MongoDB 控制台</a>在实例列表复制实例 ID。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 维护时间窗开始时间。取值范围为"00:00-23:00"的任意整点或半点，如00:00或00:30。
+	// <p>维护时间窗开始时间。取值范围为&quot;00:00-23:00&quot;的任意整点或半点，如00:00或00:30。</p>
 	MaintenanceStart *string `json:"MaintenanceStart,omitnil,omitempty" name:"MaintenanceStart"`
 
-	// 维护时间窗结束时间。
-	// - 取值范围为"00:00-23:00"的任意整点或半点，维护时间持续时长最小为30分钟，最大为3小时。
-	// - 结束时间务必是基于开始时间向后的时间。
+	// <p>维护时间窗结束时间。</p><ul><li>取值范围为&quot;00:00-23:00&quot;的任意整点或半点，维护时间持续时长最小为30分钟，最大为3小时。</li><li>结束时间务必是基于开始时间向后的时间。</li></ul>
 	MaintenanceEnd *string `json:"MaintenanceEnd,omitnil,omitempty" name:"MaintenanceEnd"`
+
+	// <p>指定每周内维护时间窗口的具体日期。  格式：请输入 1-7 之间的数字代表周一到周日（例如：1 代表周一），多个日期请用英文逗号 , 分隔。 示例：输入 1,3,5 表示维护窗口周期在每周的周一、周三、周五。 默认值：不设置，则默认为全周期 (1,2,3,4,5,6,7)。</p>
+	MaintenanceDays *string `json:"MaintenanceDays,omitnil,omitempty" name:"MaintenanceDays"`
 }
 
 type SetInstanceMaintenanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 指定实例ID。例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
+	// <p>指定实例ID。例如：cmgo-p8vn****。请登录 <a href="https://console.cloud.tencent.com/mongodb">MongoDB 控制台</a>在实例列表复制实例 ID。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 维护时间窗开始时间。取值范围为"00:00-23:00"的任意整点或半点，如00:00或00:30。
+	// <p>维护时间窗开始时间。取值范围为&quot;00:00-23:00&quot;的任意整点或半点，如00:00或00:30。</p>
 	MaintenanceStart *string `json:"MaintenanceStart,omitnil,omitempty" name:"MaintenanceStart"`
 
-	// 维护时间窗结束时间。
-	// - 取值范围为"00:00-23:00"的任意整点或半点，维护时间持续时长最小为30分钟，最大为3小时。
-	// - 结束时间务必是基于开始时间向后的时间。
+	// <p>维护时间窗结束时间。</p><ul><li>取值范围为&quot;00:00-23:00&quot;的任意整点或半点，维护时间持续时长最小为30分钟，最大为3小时。</li><li>结束时间务必是基于开始时间向后的时间。</li></ul>
 	MaintenanceEnd *string `json:"MaintenanceEnd,omitnil,omitempty" name:"MaintenanceEnd"`
+
+	// <p>指定每周内维护时间窗口的具体日期。  格式：请输入 1-7 之间的数字代表周一到周日（例如：1 代表周一），多个日期请用英文逗号 , 分隔。 示例：输入 1,3,5 表示维护窗口周期在每周的周一、周三、周五。 默认值：不设置，则默认为全周期 (1,2,3,4,5,6,7)。</p>
+	MaintenanceDays *string `json:"MaintenanceDays,omitnil,omitempty" name:"MaintenanceDays"`
 }
 
 func (r *SetInstanceMaintenanceRequest) ToJsonString() string {
@@ -7711,6 +8329,7 @@ func (r *SetInstanceMaintenanceRequest) FromJsonString(s string) error {
 	delete(f, "InstanceId")
 	delete(f, "MaintenanceStart")
 	delete(f, "MaintenanceEnd")
+	delete(f, "MaintenanceDays")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SetInstanceMaintenanceRequest has unknown keys!", "")
 	}

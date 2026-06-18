@@ -1333,62 +1333,38 @@ func (r *DescribeVersionDetailResponse) FromJsonString(s string) error {
 }
 
 type DiffConfigItem struct {
-	// 配置项 Key
-	// MinNum 最小副本数
-	// MaxNum 最大副本数
-	// PolicyDetails 扩缩容策略
-	// AccessTypes 访问类型
-	// TimerScale 定时扩缩容
-	// InternalAccess 内网访问
-	// OperationMode 运行模式 noScale | condScale | alwaysScale | custom ｜ manualScale
-	// SessionAffinity 会话亲和性 open | close
-	// CpuSpecs cpu 规格
-	// MemSpecs mem规格
-	// EnvParam 环境变量
-	// LogPath 日志采集路径
-	// Port 端口
-	// Dockerfile dockerfile 文件名
-	// BuildDir 目标目录
-	// Tag 服务标签
-	// LogType 日志类型 none | default | custom 
-	// LogSetId 日志集Id
-	// LogTopicId 日志主题ID
-	// LogParseType 日志解析类型 json ｜ line
-	// EntryPoint entrypoint 命令
-	// Cmd cmd命令
-	// VpcConf 网络信息
+	// <p>配置项 Key<br>MinNum 最小副本数<br>MaxNum 最大副本数<br>PolicyDetails 扩缩容策略<br>AccessTypes 访问类型<br>TimerScale 定时扩缩容<br>InternalAccess 内网访问<br>OperationMode 运行模式 noScale | condScale | alwaysScale | custom ｜ manualScale<br>SessionAffinity 会话亲和性 open | close<br>CpuSpecs cpu 规格<br>MemSpecs mem规格<br>EnvParam 环境变量<br>LogPath 日志采集路径<br>Port 端口<br>Dockerfile dockerfile 文件名<br>BuildDir 目标目录<br>Tag 服务标签<br>LogType 日志类型 none | default | custom<br>LogSetId 日志集Id<br>LogTopicId 日志主题ID<br>LogParseType 日志解析类型 json ｜ line<br>EntryPoint entrypoint 命令<br>Cmd cmd命令<br>VpcConf 网络信息</p>
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
-	// 字符串类型配置项值
-	// InternalAccess、OperationMode、SessionAffinity、EnvParam、LogPath、Dockerfile、BuildDir、Tag、LogType、LogSetId、LogTopicId、LogParseType
+	// <p>字符串类型配置项值<br>InternalAccess、OperationMode、SessionAffinity、EnvParam、LogPath、Dockerfile、BuildDir、Tag、LogType、LogSetId、LogTopicId、LogParseType</p>
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 
-	// int 类型配置项值
-	// MinNum、MaxNum、Port
+	// <p>int 类型配置项值<br>MinNum、MaxNum、Port</p>
 	IntValue *int64 `json:"IntValue,omitnil,omitempty" name:"IntValue"`
 
-	// bool 类型配置项值
+	// <p>bool 类型配置项值</p>
 	BoolValue *bool `json:"BoolValue,omitnil,omitempty" name:"BoolValue"`
 
-	// 浮点型配置项值
-	// CpuSpecs、MemSpecs
+	// <p>浮点型配置项值<br>CpuSpecs、MemSpecs</p>
 	FloatValue *float64 `json:"FloatValue,omitnil,omitempty" name:"FloatValue"`
 
-	// 字符串数组配置项值
-	// AccessTypes，EntryPoint，Cmd
+	// <p>字符串数组配置项值<br>AccessTypes，EntryPoint，Cmd</p>
 	ArrayValue []*string `json:"ArrayValue,omitnil,omitempty" name:"ArrayValue"`
 
-	// 扩缩容策略配置项值
+	// <p>扩缩容策略配置项值</p>
 	PolicyDetails []*HpaPolicy `json:"PolicyDetails,omitnil,omitempty" name:"PolicyDetails"`
 
-	// 定时扩缩容配置项值
+	// <p>定时扩缩容配置项值</p>
 	TimerScale []*TimerScale `json:"TimerScale,omitnil,omitempty" name:"TimerScale"`
 
-	// 配置内网访问时网络信息
+	// <p>配置内网访问时网络信息</p>
 	VpcConf *VpcConf `json:"VpcConf,omitnil,omitempty" name:"VpcConf"`
 
-	// 存储配置信息
+	// <p>存储配置信息</p>
 	VolumesConf []*VolumeConf `json:"VolumesConf,omitnil,omitempty" name:"VolumesConf"`
+
+	// <p>公网访问配置</p>
+	PublicNetConf *PublicNetConf `json:"PublicNetConf,omitnil,omitempty" name:"PublicNetConf"`
 }
 
 type EnvBaseInfo struct {
@@ -1697,6 +1673,11 @@ func (r *OperateServerManageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type PublicNetConf struct {
+	// <p>是否开启公网访问</p><p>枚举值：</p><ul><li>ENABLE： 开启公网访问</li><li>DISABLE： 关闭公网访问</li></ul>
+	PublicNetStatus *string `json:"PublicNetStatus,omitnil,omitempty" name:"PublicNetStatus"`
+}
+
 // Predefined struct for user
 type ReleaseGrayRequestParams struct {
 	// 环境Id
@@ -1953,99 +1934,102 @@ func (r *SearchClsLogResponse) FromJsonString(s string) error {
 }
 
 type ServerBaseConfig struct {
-	// 环境 Id
+	// <p>环境 Id</p>
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 
-	// 服务名
+	// <p>服务名</p>
 	ServerName *string `json:"ServerName,omitnil,omitempty" name:"ServerName"`
 
-	// 是否开启公网访问
+	// <p>是否开启公网访问</p>
 	OpenAccessTypes []*string `json:"OpenAccessTypes,omitnil,omitempty" name:"OpenAccessTypes"`
 
-	// Cpu 规格
+	// <p>Cpu 规格</p>
 	Cpu *float64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 
-	// Mem 规格
+	// <p>Mem 规格</p>
 	Mem *float64 `json:"Mem,omitnil,omitempty" name:"Mem"`
 
-	// 最小副本数
+	// <p>最小副本数</p>
 	MinNum *uint64 `json:"MinNum,omitnil,omitempty" name:"MinNum"`
 
-	// 最大副本数
+	// <p>最大副本数</p>
 	MaxNum *uint64 `json:"MaxNum,omitnil,omitempty" name:"MaxNum"`
 
-	// 扩缩容配置
+	// <p>扩缩容配置</p>
 	PolicyDetails []*HpaPolicy `json:"PolicyDetails,omitnil,omitempty" name:"PolicyDetails"`
 
-	// 日志采集路径
+	// <p>日志采集路径</p>
 	CustomLogs *string `json:"CustomLogs,omitnil,omitempty" name:"CustomLogs"`
 
-	// 环境变量
+	// <p>环境变量</p>
 	EnvParams *string `json:"EnvParams,omitnil,omitempty" name:"EnvParams"`
 
-	// 延迟检测时间
+	// <p>延迟检测时间</p>
 	InitialDelaySeconds *uint64 `json:"InitialDelaySeconds,omitnil,omitempty" name:"InitialDelaySeconds"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 服务端口
+	// <p>服务端口</p>
 	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
 
-	// 是否有Dockerfile
+	// <p>是否有Dockerfile</p>
 	HasDockerfile *bool `json:"HasDockerfile,omitnil,omitempty" name:"HasDockerfile"`
 
-	// Dockerfile 文件名
+	// <p>Dockerfile 文件名</p>
 	Dockerfile *string `json:"Dockerfile,omitnil,omitempty" name:"Dockerfile"`
 
-	// 构建目录
+	// <p>构建目录</p>
 	BuildDir *string `json:"BuildDir,omitnil,omitempty" name:"BuildDir"`
 
-	// 日志类型: none | default | custom
+	// <p>日志类型: none | default | custom</p>
 	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
 
-	// cls setId
+	// <p>cls setId</p>
 	LogSetId *string `json:"LogSetId,omitnil,omitempty" name:"LogSetId"`
 
-	// cls 主题id
+	// <p>cls 主题id</p>
 	LogTopicId *string `json:"LogTopicId,omitnil,omitempty" name:"LogTopicId"`
 
-	// 解析类型：json ｜ line
+	// <p>解析类型：json ｜ line</p>
 	LogParseType *string `json:"LogParseType,omitnil,omitempty" name:"LogParseType"`
 
-	// 服务标签, function: 函数托管
+	// <p>服务标签, function: 函数托管</p>
 	Tag *string `json:"Tag,omitnil,omitempty" name:"Tag"`
 
-	// 内网访问开关 close | open
+	// <p>内网访问开关 close | open</p>
 	InternalAccess *string `json:"InternalAccess,omitnil,omitempty" name:"InternalAccess"`
 
-	// 内网域名
+	// <p>内网域名</p>
 	InternalDomain *string `json:"InternalDomain,omitnil,omitempty" name:"InternalDomain"`
 
-	// 运行模式
+	// <p>运行模式</p>
 	OperationMode *string `json:"OperationMode,omitnil,omitempty" name:"OperationMode"`
 
-	// 定时扩缩容配置
+	// <p>定时扩缩容配置</p>
 	TimerScale []*TimerScale `json:"TimerScale,omitnil,omitempty" name:"TimerScale"`
 
-	// Dockerfile EntryPoint 参数
+	// <p>Dockerfile EntryPoint 参数</p>
 	EntryPoint []*string `json:"EntryPoint,omitnil,omitempty" name:"EntryPoint"`
 
-	// Dockerfile Cmd 参数
+	// <p>Dockerfile Cmd 参数</p>
 	Cmd []*string `json:"Cmd,omitnil,omitempty" name:"Cmd"`
 
-	// 会话亲和性开关
+	// <p>会话亲和性开关</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SessionAffinity *string `json:"SessionAffinity,omitnil,omitempty" name:"SessionAffinity"`
 
-	// Vpc 配置参数
+	// <p>Vpc 配置参数</p>
 	VpcConf *VpcConf `json:"VpcConf,omitnil,omitempty" name:"VpcConf"`
 
-	// 存储配置信息
+	// <p>存储配置信息</p>
 	VolumesConf []*VolumeConf `json:"VolumesConf,omitnil,omitempty" name:"VolumesConf"`
 
-	// 关联镜像密钥
+	// <p>关联镜像密钥</p>
 	LinkImageRegistry *string `json:"LinkImageRegistry,omitnil,omitempty" name:"LinkImageRegistry"`
+
+	// <p>公网访问配置</p>
+	PublicNetConf *PublicNetConf `json:"PublicNetConf,omitnil,omitempty" name:"PublicNetConf"`
 }
 
 type ServerBaseInfo struct {
@@ -2642,23 +2626,32 @@ type VersionPodInstance struct {
 }
 
 type VolumeConf struct {
-	// 存储类型
+	// <p>存储类型</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 对象存储桶名称
+	// <p>对象存储桶名称</p>
 	BucketName *string `json:"BucketName,omitnil,omitempty" name:"BucketName"`
 
-	// 存储连接地址
+	// <p>存储连接地址</p>
 	Endpoint *string `json:"Endpoint,omitnil,omitempty" name:"Endpoint"`
 
-	// 存储连接用户密码
+	// <p>存储连接用户密码</p>
 	KeyID *string `json:"KeyID,omitnil,omitempty" name:"KeyID"`
 
-	// 存储挂载目的目录
+	// <p>存储挂载目的目录</p>
 	DstPath *string `json:"DstPath,omitnil,omitempty" name:"DstPath"`
 
-	// 存储挂载源目录
+	// <p>存储挂载源目录</p>
 	SrcPath *string `json:"SrcPath,omitnil,omitempty" name:"SrcPath"`
+
+	// <p>cfs 实例ip</p>
+	MountIP *string `json:"MountIP,omitnil,omitempty" name:"MountIP"`
+
+	// <p>默认读写</p>
+	ReadOnly *bool `json:"ReadOnly,omitnil,omitempty" name:"ReadOnly"`
+
+	// <p>CFS 实例 ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type VpcConf struct {

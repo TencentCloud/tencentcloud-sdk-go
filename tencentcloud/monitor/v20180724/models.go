@@ -1177,6 +1177,20 @@ type ConditionsTemp struct {
 	EventCondition *AlarmPolicyEventCondition `json:"EventCondition,omitnil,omitempty" name:"EventCondition"`
 }
 
+type CoverStaffInfo struct {
+	// 轮班人员id组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CoverStaffIDs []*string `json:"CoverStaffIDs,omitnil,omitempty" name:"CoverStaffIDs"`
+
+	// 轮班开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CoverStartTime *int64 `json:"CoverStartTime,omitnil,omitempty" name:"CoverStartTime"`
+
+	// 轮班结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CoverEndTime *int64 `json:"CoverEndTime,omitnil,omitempty" name:"CoverEndTime"`
+}
+
 // Predefined struct for user
 type CreateAlarmNoticeRequestParams struct {
 	// <p>模块名，这里填“monitor”</p>
@@ -2215,26 +2229,26 @@ func (r *CreateGrafanaInstanceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateGrafanaIntegrationRequestParams struct {
-	// Grafana 实例 ID，例如：grafana-abcdefgh
+	// <p>Grafana 实例 ID，例如：grafana-abcdefgh</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 集成类型(接口DescribeGrafanaIntegrationOverviews返回的集成信息中的Code字段)
+	// <p>集成类型(接口DescribeGrafanaIntegrationOverviews返回的集成信息中的Code字段)</p>
 	Kind *string `json:"Kind,omitnil,omitempty" name:"Kind"`
 
-	// 集成配置
+	// <p>集成配置</p>
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 }
 
 type CreateGrafanaIntegrationRequest struct {
 	*tchttp.BaseRequest
 	
-	// Grafana 实例 ID，例如：grafana-abcdefgh
+	// <p>Grafana 实例 ID，例如：grafana-abcdefgh</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 集成类型(接口DescribeGrafanaIntegrationOverviews返回的集成信息中的Code字段)
+	// <p>集成类型(接口DescribeGrafanaIntegrationOverviews返回的集成信息中的Code字段)</p>
 	Kind *string `json:"Kind,omitnil,omitempty" name:"Kind"`
 
-	// 集成配置
+	// <p>集成配置</p>
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 }
 
@@ -2261,7 +2275,7 @@ func (r *CreateGrafanaIntegrationRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateGrafanaIntegrationResponseParams struct {
-	// 集成 ID
+	// <p>集成 ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IntegrationId *string `json:"IntegrationId,omitnil,omitempty" name:"IntegrationId"`
 
@@ -2287,44 +2301,44 @@ func (r *CreateGrafanaIntegrationResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateGrafanaNotificationChannelRequestParams struct {
-	// Grafana 实例 ID，例如：grafana-abcdefgh
+	// <p>Grafana 实例 ID，例如：grafana-abcdefgh</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 告警通道名称，例如：test
+	// <p>告警通道名称，例如：my-channel</p>
 	ChannelName *string `json:"ChannelName,omitnil,omitempty" name:"ChannelName"`
 
-	// 接受告警通道 ID 数组，值为告警管理/基础配置/通知模板中的模板 ID 
+	// <p>接受告警通道 ID 数组，值为告警管理/基础配置/通知模板中的模板 ID</p>
 	Receivers []*string `json:"Receivers,omitnil,omitempty" name:"Receivers"`
 
-	// 默认为1，建议使用 OrganizationIds
+	// <p>默认为1，建议使用 OrganizationIds</p>
 	OrgId *int64 `json:"OrgId,omitnil,omitempty" name:"OrgId"`
 
-	// 额外组织 ID 数组，已废弃，请使用 OrganizationIds
+	// <p>额外组织 ID 数组，已废弃，请使用 OrganizationIds</p>
 	ExtraOrgIds []*string `json:"ExtraOrgIds,omitnil,omitempty" name:"ExtraOrgIds"`
 
-	// 生效的所有组织 ID 数组，默认为 ["1"]
+	// <p>生效的所有组织 ID 数组，默认为 [&quot;1&quot;]</p>
 	OrganizationIds []*string `json:"OrganizationIds,omitnil,omitempty" name:"OrganizationIds"`
 }
 
 type CreateGrafanaNotificationChannelRequest struct {
 	*tchttp.BaseRequest
 	
-	// Grafana 实例 ID，例如：grafana-abcdefgh
+	// <p>Grafana 实例 ID，例如：grafana-abcdefgh</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 告警通道名称，例如：test
+	// <p>告警通道名称，例如：my-channel</p>
 	ChannelName *string `json:"ChannelName,omitnil,omitempty" name:"ChannelName"`
 
-	// 接受告警通道 ID 数组，值为告警管理/基础配置/通知模板中的模板 ID 
+	// <p>接受告警通道 ID 数组，值为告警管理/基础配置/通知模板中的模板 ID</p>
 	Receivers []*string `json:"Receivers,omitnil,omitempty" name:"Receivers"`
 
-	// 默认为1，建议使用 OrganizationIds
+	// <p>默认为1，建议使用 OrganizationIds</p>
 	OrgId *int64 `json:"OrgId,omitnil,omitempty" name:"OrgId"`
 
-	// 额外组织 ID 数组，已废弃，请使用 OrganizationIds
+	// <p>额外组织 ID 数组，已废弃，请使用 OrganizationIds</p>
 	ExtraOrgIds []*string `json:"ExtraOrgIds,omitnil,omitempty" name:"ExtraOrgIds"`
 
-	// 生效的所有组织 ID 数组，默认为 ["1"]
+	// <p>生效的所有组织 ID 数组，默认为 [&quot;1&quot;]</p>
 	OrganizationIds []*string `json:"OrganizationIds,omitnil,omitempty" name:"OrganizationIds"`
 }
 
@@ -2354,7 +2368,7 @@ func (r *CreateGrafanaNotificationChannelRequest) FromJsonString(s string) error
 
 // Predefined struct for user
 type CreateGrafanaNotificationChannelResponseParams struct {
-	// 通道 ID
+	// <p>通道 ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChannelId *string `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
 
@@ -2375,6 +2389,133 @@ func (r *CreateGrafanaNotificationChannelResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateGrafanaNotificationChannelResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateOnCallFormRequestParams struct {
+	// 固定值，为"monitor"
+	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
+
+	// 值班表名称
+	OnCallFormName *string `json:"OnCallFormName,omitnil,omitempty" name:"OnCallFormName"`
+
+	// 值班人员id组
+	StaffInfos []*StaffInfo `json:"StaffInfos,omitnil,omitempty" name:"StaffInfos"`
+
+	// 轮转类型
+	RotationType *string `json:"RotationType,omitnil,omitempty" name:"RotationType"`
+
+	// 换班时间
+	ShiftTime *string `json:"ShiftTime,omitnil,omitempty" name:"ShiftTime"`
+
+	// 有效期开始时间，单位s
+	EffectiveStartTime *int64 `json:"EffectiveStartTime,omitnil,omitempty" name:"EffectiveStartTime"`
+
+	// 有效期结束时间，单位s
+	EffectiveEndTime *int64 `json:"EffectiveEndTime,omitnil,omitempty" name:"EffectiveEndTime"`
+
+	// 时区(-12 - 12)
+	TimeZone *float64 `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
+
+	// 值班表描述
+	OnCallFormDesc *string `json:"OnCallFormDesc,omitnil,omitempty" name:"OnCallFormDesc"`
+
+	// 轮班信息
+	CoverStaffInfos []*CoverStaffInfo `json:"CoverStaffInfos,omitnil,omitempty" name:"CoverStaffInfos"`
+
+	// 模板绑定的标签
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
+type CreateOnCallFormRequest struct {
+	*tchttp.BaseRequest
+	
+	// 固定值，为"monitor"
+	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
+
+	// 值班表名称
+	OnCallFormName *string `json:"OnCallFormName,omitnil,omitempty" name:"OnCallFormName"`
+
+	// 值班人员id组
+	StaffInfos []*StaffInfo `json:"StaffInfos,omitnil,omitempty" name:"StaffInfos"`
+
+	// 轮转类型
+	RotationType *string `json:"RotationType,omitnil,omitempty" name:"RotationType"`
+
+	// 换班时间
+	ShiftTime *string `json:"ShiftTime,omitnil,omitempty" name:"ShiftTime"`
+
+	// 有效期开始时间，单位s
+	EffectiveStartTime *int64 `json:"EffectiveStartTime,omitnil,omitempty" name:"EffectiveStartTime"`
+
+	// 有效期结束时间，单位s
+	EffectiveEndTime *int64 `json:"EffectiveEndTime,omitnil,omitempty" name:"EffectiveEndTime"`
+
+	// 时区(-12 - 12)
+	TimeZone *float64 `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
+
+	// 值班表描述
+	OnCallFormDesc *string `json:"OnCallFormDesc,omitnil,omitempty" name:"OnCallFormDesc"`
+
+	// 轮班信息
+	CoverStaffInfos []*CoverStaffInfo `json:"CoverStaffInfos,omitnil,omitempty" name:"CoverStaffInfos"`
+
+	// 模板绑定的标签
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
+func (r *CreateOnCallFormRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateOnCallFormRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Module")
+	delete(f, "OnCallFormName")
+	delete(f, "StaffInfos")
+	delete(f, "RotationType")
+	delete(f, "ShiftTime")
+	delete(f, "EffectiveStartTime")
+	delete(f, "EffectiveEndTime")
+	delete(f, "TimeZone")
+	delete(f, "OnCallFormDesc")
+	delete(f, "CoverStaffInfos")
+	delete(f, "Tags")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateOnCallFormRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateOnCallFormResponseParams struct {
+	// 值班表id
+	OnCallFormID *string `json:"OnCallFormID,omitnil,omitempty" name:"OnCallFormID"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateOnCallFormResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateOnCallFormResponseParams `json:"Response"`
+}
+
+func (r *CreateOnCallFormResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateOnCallFormResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3391,32 +3532,32 @@ func (r *CreateRecordingRuleResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateSSOAccountRequestParams struct {
-	// Grafana 实例 ID，例如：grafana-abcdefgh
+	// <p>Grafana 实例 ID，例如：grafana-abcdefgh</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 用户账号 ID ，例如：10000000
+	// <p>用户账号 ID ，例如：10000000</p>
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
-	// 权限(只取数组中的第一个，其中 Organization 暂未使用，可不填)
+	// <p>权限(只取数组中的第一个，其中 Organization 暂未使用，可不填)</p>
 	Role []*GrafanaAccountRole `json:"Role,omitnil,omitempty" name:"Role"`
 
-	// 备注
+	// <p>备注</p>
 	Notes *string `json:"Notes,omitnil,omitempty" name:"Notes"`
 }
 
 type CreateSSOAccountRequest struct {
 	*tchttp.BaseRequest
 	
-	// Grafana 实例 ID，例如：grafana-abcdefgh
+	// <p>Grafana 实例 ID，例如：grafana-abcdefgh</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 用户账号 ID ，例如：10000000
+	// <p>用户账号 ID ，例如：10000000</p>
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
-	// 权限(只取数组中的第一个，其中 Organization 暂未使用，可不填)
+	// <p>权限(只取数组中的第一个，其中 Organization 暂未使用，可不填)</p>
 	Role []*GrafanaAccountRole `json:"Role,omitnil,omitempty" name:"Role"`
 
-	// 备注
+	// <p>备注</p>
 	Notes *string `json:"Notes,omitnil,omitempty" name:"Notes"`
 }
 
@@ -3444,7 +3585,7 @@ func (r *CreateSSOAccountRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateSSOAccountResponseParams struct {
-	// 已添加的用户 UIN
+	// <p>已添加的用户 UIN</p>
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3464,99 +3605,6 @@ func (r *CreateSSOAccountResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateSSOAccountResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type CreateServiceDiscoveryRequestParams struct {
-	// Prometheus 实例 ID
-	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
-
-	// <li>类型为TKE：对应集成的腾讯云容器服务集群 ID</li>
-	KubeClusterId *string `json:"KubeClusterId,omitnil,omitempty" name:"KubeClusterId"`
-
-	// 用户 Kubernetes 集群类型：
-	// <li> 1 = 容器服务集群(TKE) </li>
-	KubeType *int64 `json:"KubeType,omitnil,omitempty" name:"KubeType"`
-
-	// 服务发现类型，取值如下：
-	// <li> 1 = ServiceMonitor</li>
-	// <li> 2 = PodMonitor</li>
-	// <li> 3 = JobMonitor</li>
-	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
-
-	// 服务发现配置信息，YAML 格式，[具体YAML参数内容请参考](https://cloud.tencent.com/document/product/1416/55995#service-monitor)
-	Yaml *string `json:"Yaml,omitnil,omitempty" name:"Yaml"`
-}
-
-type CreateServiceDiscoveryRequest struct {
-	*tchttp.BaseRequest
-	
-	// Prometheus 实例 ID
-	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
-
-	// <li>类型为TKE：对应集成的腾讯云容器服务集群 ID</li>
-	KubeClusterId *string `json:"KubeClusterId,omitnil,omitempty" name:"KubeClusterId"`
-
-	// 用户 Kubernetes 集群类型：
-	// <li> 1 = 容器服务集群(TKE) </li>
-	KubeType *int64 `json:"KubeType,omitnil,omitempty" name:"KubeType"`
-
-	// 服务发现类型，取值如下：
-	// <li> 1 = ServiceMonitor</li>
-	// <li> 2 = PodMonitor</li>
-	// <li> 3 = JobMonitor</li>
-	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
-
-	// 服务发现配置信息，YAML 格式，[具体YAML参数内容请参考](https://cloud.tencent.com/document/product/1416/55995#service-monitor)
-	Yaml *string `json:"Yaml,omitnil,omitempty" name:"Yaml"`
-}
-
-func (r *CreateServiceDiscoveryRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *CreateServiceDiscoveryRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "InstanceId")
-	delete(f, "KubeClusterId")
-	delete(f, "KubeType")
-	delete(f, "Type")
-	delete(f, "Yaml")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateServiceDiscoveryRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type CreateServiceDiscoveryResponseParams struct {
-	// 创建成功之后，返回对应服务发现信息
-	ServiceDiscovery *ServiceDiscoveryItem `json:"ServiceDiscovery,omitnil,omitempty" name:"ServiceDiscovery"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type CreateServiceDiscoveryResponse struct {
-	*tchttp.BaseResponse
-	Response *CreateServiceDiscoveryResponseParams `json:"Response"`
-}
-
-func (r *CreateServiceDiscoveryResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *CreateServiceDiscoveryResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4046,20 +4094,20 @@ func (r *DeleteGrafanaIntegrationResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteGrafanaNotificationChannelRequestParams struct {
-	// 通道 ID 数组。例如：nchannel-abcd1234，通过 DescribeGrafanaChannels 获取
+	// <p>通道 ID 数组。例如：nchannel-abcd1234，通过 DescribeGrafanaChannels 获取</p>
 	ChannelIDs []*string `json:"ChannelIDs,omitnil,omitempty" name:"ChannelIDs"`
 
-	// Grafana 实例 ID，例如：grafana-abcdefgh
+	// <p>Grafana 实例 ID，例如：grafana-abcdefgh</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type DeleteGrafanaNotificationChannelRequest struct {
 	*tchttp.BaseRequest
 	
-	// 通道 ID 数组。例如：nchannel-abcd1234，通过 DescribeGrafanaChannels 获取
+	// <p>通道 ID 数组。例如：nchannel-abcd1234，通过 DescribeGrafanaChannels 获取</p>
 	ChannelIDs []*string `json:"ChannelIDs,omitnil,omitempty" name:"ChannelIDs"`
 
-	// Grafana 实例 ID，例如：grafana-abcdefgh
+	// <p>Grafana 实例 ID，例如：grafana-abcdefgh</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
@@ -4102,6 +4150,73 @@ func (r *DeleteGrafanaNotificationChannelResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteGrafanaNotificationChannelResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteOnCallFormsRequestParams struct {
+	// 固定值，为"monitor"
+	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
+
+	// 要删除的值班表id
+	OnCallFormIDs []*string `json:"OnCallFormIDs,omitnil,omitempty" name:"OnCallFormIDs"`
+}
+
+type DeleteOnCallFormsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 固定值，为"monitor"
+	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
+
+	// 要删除的值班表id
+	OnCallFormIDs []*string `json:"OnCallFormIDs,omitnil,omitempty" name:"OnCallFormIDs"`
+}
+
+func (r *DeleteOnCallFormsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteOnCallFormsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Module")
+	delete(f, "OnCallFormIDs")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteOnCallFormsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteOnCallFormsResponseParams struct {
+	// 失败删除的排班id
+	FailedOnCallFormIDs []*string `json:"FailedOnCallFormIDs,omitnil,omitempty" name:"FailedOnCallFormIDs"`
+
+	// 成功删除的排班id
+	SuccessOnCallFormIDs []*string `json:"SuccessOnCallFormIDs,omitnil,omitempty" name:"SuccessOnCallFormIDs"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteOnCallFormsResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteOnCallFormsResponseParams `json:"Response"`
+}
+
+func (r *DeleteOnCallFormsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteOnCallFormsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6923,14 +7038,14 @@ func (r *DescribeConditionsTemplateListResponse) FromJsonString(s string) error 
 
 // Predefined struct for user
 type DescribeDNSConfigRequestParams struct {
-	// Grafana 实例 ID，例如：grafana-abcdefgh
+	// <p>Grafana 实例 ID，例如：grafana-abcdefgh</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type DescribeDNSConfigRequest struct {
 	*tchttp.BaseRequest
 	
-	// Grafana 实例 ID，例如：grafana-abcdefgh
+	// <p>Grafana 实例 ID，例如：grafana-abcdefgh</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
@@ -6955,7 +7070,7 @@ func (r *DescribeDNSConfigRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDNSConfigResponseParams struct {
-	// DNS 服务器数组
+	// <p>DNS 服务器数组</p>
 	NameServers []*string `json:"NameServers,omitnil,omitempty" name:"NameServers"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7199,44 +7314,44 @@ func (r *DescribeExternalClusterUninstallCommandResponse) FromJsonString(s strin
 
 // Predefined struct for user
 type DescribeGrafanaChannelsRequestParams struct {
-	// Grafana 实例 ID，例如：grafana-12345678
+	// <p>Grafana 实例 ID，例如：grafana-12345678</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 偏移量
+	// <p>偏移量</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 查询数量
+	// <p>查询数量</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 告警通道名称，例如：test
+	// <p>告警通道名称，例如：test</p>
 	ChannelName *string `json:"ChannelName,omitnil,omitempty" name:"ChannelName"`
 
-	// 告警通道 ID，例如：nchannel-abcd1234
+	// <p>告警通道 ID，例如：nchannel-abcd1234</p>
 	ChannelIds []*string `json:"ChannelIds,omitnil,omitempty" name:"ChannelIds"`
 
-	// 告警通道状态(不用填写，目前只有可用和删除状态，默认只能查询可用的告警通道)
+	// <p>告警通道状态(不用填写，目前只有可用和删除状态，默认只能查询可用的告警通道)</p>
 	ChannelState *int64 `json:"ChannelState,omitnil,omitempty" name:"ChannelState"`
 }
 
 type DescribeGrafanaChannelsRequest struct {
 	*tchttp.BaseRequest
 	
-	// Grafana 实例 ID，例如：grafana-12345678
+	// <p>Grafana 实例 ID，例如：grafana-12345678</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 偏移量
+	// <p>偏移量</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 查询数量
+	// <p>查询数量</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 告警通道名称，例如：test
+	// <p>告警通道名称，例如：test</p>
 	ChannelName *string `json:"ChannelName,omitnil,omitempty" name:"ChannelName"`
 
-	// 告警通道 ID，例如：nchannel-abcd1234
+	// <p>告警通道 ID，例如：nchannel-abcd1234</p>
 	ChannelIds []*string `json:"ChannelIds,omitnil,omitempty" name:"ChannelIds"`
 
-	// 告警通道状态(不用填写，目前只有可用和删除状态，默认只能查询可用的告警通道)
+	// <p>告警通道状态(不用填写，目前只有可用和删除状态，默认只能查询可用的告警通道)</p>
 	ChannelState *int64 `json:"ChannelState,omitnil,omitempty" name:"ChannelState"`
 }
 
@@ -7266,7 +7381,7 @@ func (r *DescribeGrafanaChannelsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeGrafanaChannelsResponseParams struct {
-	// 告警通道数组
+	// <p>告警通道数组</p>
 	NotificationChannelSet []*GrafanaChannel `json:"NotificationChannelSet,omitnil,omitempty" name:"NotificationChannelSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7503,26 +7618,26 @@ func (r *DescribeGrafanaInstancesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeGrafanaIntegrationsRequestParams struct {
-	// 实例 ID
+	// <p>实例 ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 集成 ID
+	// <p>集成 ID</p>
 	IntegrationId *string `json:"IntegrationId,omitnil,omitempty" name:"IntegrationId"`
 
-	// 类型
+	// <p>类型</p>
 	Kind *string `json:"Kind,omitnil,omitempty" name:"Kind"`
 }
 
 type DescribeGrafanaIntegrationsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID
+	// <p>实例 ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 集成 ID
+	// <p>集成 ID</p>
 	IntegrationId *string `json:"IntegrationId,omitnil,omitempty" name:"IntegrationId"`
 
-	// 类型
+	// <p>类型</p>
 	Kind *string `json:"Kind,omitnil,omitempty" name:"Kind"`
 }
 
@@ -7549,7 +7664,7 @@ func (r *DescribeGrafanaIntegrationsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeGrafanaIntegrationsResponseParams struct {
-	// 集成数组
+	// <p>集成数组</p>
 	IntegrationSet []*GrafanaIntegrationConfig `json:"IntegrationSet,omitnil,omitempty" name:"IntegrationSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7574,44 +7689,44 @@ func (r *DescribeGrafanaIntegrationsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeGrafanaNotificationChannelsRequestParams struct {
-	// Grafana 实例 ID，例如：grafana-12345678
+	// <p>Grafana 实例 ID，例如：grafana-12345678</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 偏移量
+	// <p>偏移量</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 查询数量
+	// <p>查询数量</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 告警通道名称，例如：test
+	// <p>告警通道名称，例如：test</p>
 	ChannelName *string `json:"ChannelName,omitnil,omitempty" name:"ChannelName"`
 
-	// 告警通道 ID，例如：nchannel-abcd1234
+	// <p>告警通道 ID，例如：nchannel-abcd1234</p>
 	ChannelIDs []*string `json:"ChannelIDs,omitnil,omitempty" name:"ChannelIDs"`
 
-	// 告警通道状态
+	// <p>告警通道状态</p>
 	ChannelState *int64 `json:"ChannelState,omitnil,omitempty" name:"ChannelState"`
 }
 
 type DescribeGrafanaNotificationChannelsRequest struct {
 	*tchttp.BaseRequest
 	
-	// Grafana 实例 ID，例如：grafana-12345678
+	// <p>Grafana 实例 ID，例如：grafana-12345678</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 偏移量
+	// <p>偏移量</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 查询数量
+	// <p>查询数量</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 告警通道名称，例如：test
+	// <p>告警通道名称，例如：test</p>
 	ChannelName *string `json:"ChannelName,omitnil,omitempty" name:"ChannelName"`
 
-	// 告警通道 ID，例如：nchannel-abcd1234
+	// <p>告警通道 ID，例如：nchannel-abcd1234</p>
 	ChannelIDs []*string `json:"ChannelIDs,omitnil,omitempty" name:"ChannelIDs"`
 
-	// 告警通道状态
+	// <p>告警通道状态</p>
 	ChannelState *int64 `json:"ChannelState,omitnil,omitempty" name:"ChannelState"`
 }
 
@@ -7641,7 +7756,7 @@ func (r *DescribeGrafanaNotificationChannelsRequest) FromJsonString(s string) er
 
 // Predefined struct for user
 type DescribeGrafanaNotificationChannelsResponseParams struct {
-	// 告警通道数组
+	// <p>告警通道数组</p>
 	NotificationChannelSet []*GrafanaNotificationChannel `json:"NotificationChannelSet,omitnil,omitempty" name:"NotificationChannelSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7666,14 +7781,14 @@ func (r *DescribeGrafanaNotificationChannelsResponse) FromJsonString(s string) e
 
 // Predefined struct for user
 type DescribeGrafanaWhiteListRequestParams struct {
-	// Grafana 实例 ID，例如：grafana-abcdefgh
+	// <p>Grafana 实例 ID，例如：grafana-abcdefgh</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type DescribeGrafanaWhiteListRequest struct {
 	*tchttp.BaseRequest
 	
-	// Grafana 实例 ID，例如：grafana-abcdefgh
+	// <p>Grafana 实例 ID，例如：grafana-abcdefgh</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
@@ -7698,7 +7813,7 @@ func (r *DescribeGrafanaWhiteListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeGrafanaWhiteListResponseParams struct {
-	// 数组
+	// <p>数组</p>
 	WhiteList []*string `json:"WhiteList,omitnil,omitempty" name:"WhiteList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7963,6 +8078,172 @@ func (r *DescribeNotificationContentTemplateSupportsResponse) ToJsonString() str
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeNotificationContentTemplateSupportsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeOnCallFormRequestParams struct {
+	// 固定值，为"monitor"
+	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
+
+	// 值班id
+	OnCallFormID *string `json:"OnCallFormID,omitnil,omitempty" name:"OnCallFormID"`
+}
+
+type DescribeOnCallFormRequest struct {
+	*tchttp.BaseRequest
+	
+	// 固定值，为"monitor"
+	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
+
+	// 值班id
+	OnCallFormID *string `json:"OnCallFormID,omitnil,omitempty" name:"OnCallFormID"`
+}
+
+func (r *DescribeOnCallFormRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOnCallFormRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Module")
+	delete(f, "OnCallFormID")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOnCallFormRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeOnCallFormResponseParams struct {
+	// 值班详情
+	OnCallForm *OneOnCallForm `json:"OnCallForm,omitnil,omitempty" name:"OnCallForm"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeOnCallFormResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeOnCallFormResponseParams `json:"Response"`
+}
+
+func (r *DescribeOnCallFormResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOnCallFormResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeOnCallFormsRequestParams struct {
+	// 固定值，为"monitor"
+	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
+
+	// 分页查询起始位
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页查询页数
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 支持userId进行检索
+	OnCallFormStaffIDs []*string `json:"OnCallFormStaffIDs,omitnil,omitempty" name:"OnCallFormStaffIDs"`
+
+	// 值班类型
+	RotationType *string `json:"RotationType,omitnil,omitempty" name:"RotationType"`
+
+	// 排序方式
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 支持id、name进行检索
+	OnCallFormName *string `json:"OnCallFormName,omitnil,omitempty" name:"OnCallFormName"`
+}
+
+type DescribeOnCallFormsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 固定值，为"monitor"
+	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
+
+	// 分页查询起始位
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页查询页数
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 支持userId进行检索
+	OnCallFormStaffIDs []*string `json:"OnCallFormStaffIDs,omitnil,omitempty" name:"OnCallFormStaffIDs"`
+
+	// 值班类型
+	RotationType *string `json:"RotationType,omitnil,omitempty" name:"RotationType"`
+
+	// 排序方式
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 支持id、name进行检索
+	OnCallFormName *string `json:"OnCallFormName,omitnil,omitempty" name:"OnCallFormName"`
+}
+
+func (r *DescribeOnCallFormsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOnCallFormsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Module")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "OnCallFormStaffIDs")
+	delete(f, "RotationType")
+	delete(f, "Order")
+	delete(f, "OnCallFormName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOnCallFormsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeOnCallFormsResponseParams struct {
+	// 排班信息
+	OnCallForms []*OnCallForm `json:"OnCallForms,omitnil,omitempty" name:"OnCallForms"`
+
+	// 总数
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeOnCallFormsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeOnCallFormsResponseParams `json:"Response"`
+}
+
+func (r *DescribeOnCallFormsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOnCallFormsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -9645,6 +9926,63 @@ func (r *DescribePrometheusAlertPolicyResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribePrometheusAlertmanagerConfigRequestParams struct {
+	// <p>Prometheus 实例 ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+type DescribePrometheusAlertmanagerConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>Prometheus 实例 ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribePrometheusAlertmanagerConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePrometheusAlertmanagerConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePrometheusAlertmanagerConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePrometheusAlertmanagerConfigResponseParams struct {
+	// <p>Alertmanager 配置</p>
+	AlertmanagerConfig *PrometheusAlertmanagerConfigV2 `json:"AlertmanagerConfig,omitnil,omitempty" name:"AlertmanagerConfig"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribePrometheusAlertmanagerConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePrometheusAlertmanagerConfigResponseParams `json:"Response"`
+}
+
+func (r *DescribePrometheusAlertmanagerConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePrometheusAlertmanagerConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribePrometheusClusterAgentsRequestParams struct {
 	// 实例id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -11141,50 +11479,44 @@ func (r *DescribePrometheusZonesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRecordingRulesRequestParams struct {
-	// Prometheus 实例 ID
+	// <p>Prometheus 实例 ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 返回数量，默认为 20，最大值为 100
+	// <p>返回数量，默认为 20，最大值为 100</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量，默认为 0
+	// <p>偏移量，默认为 0</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 规则 ID
+	// <p>规则 ID</p>
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
-	// 规则状态码，取值如下：
-	// <li>1=RuleDeleted</li>
-	// <li>2=RuleEnabled</li>
-	// <li>3=RuleDisabled</li>
+	// <p>规则状态码，取值如下：</p><li>1=RuleDeleted</li><li>2=RuleEnabled</li><li>3=RuleDisabled</li>
 	RuleState *int64 `json:"RuleState,omitnil,omitempty" name:"RuleState"`
 
-	// 规则名称
+	// <p>规则名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
 type DescribeRecordingRulesRequest struct {
 	*tchttp.BaseRequest
 	
-	// Prometheus 实例 ID
+	// <p>Prometheus 实例 ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 返回数量，默认为 20，最大值为 100
+	// <p>返回数量，默认为 20，最大值为 100</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量，默认为 0
+	// <p>偏移量，默认为 0</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 规则 ID
+	// <p>规则 ID</p>
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
-	// 规则状态码，取值如下：
-	// <li>1=RuleDeleted</li>
-	// <li>2=RuleEnabled</li>
-	// <li>3=RuleDisabled</li>
+	// <p>规则状态码，取值如下：</p><li>1=RuleDeleted</li><li>2=RuleEnabled</li><li>3=RuleDisabled</li>
 	RuleState *int64 `json:"RuleState,omitnil,omitempty" name:"RuleState"`
 
-	// 规则名称
+	// <p>规则名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
@@ -11214,12 +11546,15 @@ func (r *DescribeRecordingRulesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRecordingRulesResponseParams struct {
-	// 规则组数量
+	// <p>规则组数量</p>
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 规则组详情
+	// <p>规则组详情</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecordingRuleSet []*RecordingRuleSet `json:"RecordingRuleSet,omitnil,omitempty" name:"RecordingRuleSet"`
+
+	// <p>预聚合规则数</p>
+	TotalRuleCount *int64 `json:"TotalRuleCount,omitnil,omitempty" name:"TotalRuleCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -11381,20 +11716,20 @@ func (r *DescribeRemoteWritesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSSOAccountRequestParams struct {
-	// Grafana 实例 ID，例如：grafana-abcdefgh
+	// <p>Grafana 实例 ID，例如：grafana-abcdefgh</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 填写对应的账号 ID，将会按账号 ID 进行过滤，例如：10000
+	// <p>填写对应的账号 ID，将会按账号 ID 进行过滤，例如：10000</p>
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 }
 
 type DescribeSSOAccountRequest struct {
 	*tchttp.BaseRequest
 	
-	// Grafana 实例 ID，例如：grafana-abcdefgh
+	// <p>Grafana 实例 ID，例如：grafana-abcdefgh</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 填写对应的账号 ID，将会按账号 ID 进行过滤，例如：10000
+	// <p>填写对应的账号 ID，将会按账号 ID 进行过滤，例如：10000</p>
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 }
 
@@ -11420,7 +11755,7 @@ func (r *DescribeSSOAccountRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSSOAccountResponseParams struct {
-	// 授权账号列表
+	// <p>授权账号列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccountSet []*GrafanaAccountInfo `json:"AccountSet,omitnil,omitempty" name:"AccountSet"`
 
@@ -11441,80 +11776,6 @@ func (r *DescribeSSOAccountResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeSSOAccountResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeServiceDiscoveryRequestParams struct {
-	// Prometheus 实例 ID
-	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
-
-	// <li>类型是 TKE，为对应的腾讯云容器服务集群 ID</li>
-	KubeClusterId *string `json:"KubeClusterId,omitnil,omitempty" name:"KubeClusterId"`
-
-	// 用户 Kubernetes 集群类型：
-	// <li> 1 = 容器服务集群(TKE) </li>
-	KubeType *int64 `json:"KubeType,omitnil,omitempty" name:"KubeType"`
-}
-
-type DescribeServiceDiscoveryRequest struct {
-	*tchttp.BaseRequest
-	
-	// Prometheus 实例 ID
-	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
-
-	// <li>类型是 TKE，为对应的腾讯云容器服务集群 ID</li>
-	KubeClusterId *string `json:"KubeClusterId,omitnil,omitempty" name:"KubeClusterId"`
-
-	// 用户 Kubernetes 集群类型：
-	// <li> 1 = 容器服务集群(TKE) </li>
-	KubeType *int64 `json:"KubeType,omitnil,omitempty" name:"KubeType"`
-}
-
-func (r *DescribeServiceDiscoveryRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeServiceDiscoveryRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "InstanceId")
-	delete(f, "KubeClusterId")
-	delete(f, "KubeType")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeServiceDiscoveryRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeServiceDiscoveryResponseParams struct {
-	// 返回服务发现列表信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	ServiceDiscoverySet []*ServiceDiscoveryItem `json:"ServiceDiscoverySet,omitnil,omitempty" name:"ServiceDiscoverySet"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DescribeServiceDiscoveryResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeServiceDiscoveryResponseParams `json:"Response"`
-}
-
-func (r *DescribeServiceDiscoveryResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeServiceDiscoveryResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -11959,44 +12220,44 @@ type EventCondition struct {
 
 // Predefined struct for user
 type ExportPrometheusReadOnlyDynamicAPIRequestParams struct {
-	// Prometheus 实例 ID
+	// <p>Prometheus 实例 ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// HTTP 方法名 GET/POST/PUT/DELETE 等
+	// <p>HTTP 方法名 GET/POST/PUT/DELETE 等</p>
 	Method *string `json:"Method,omitnil,omitempty" name:"Method"`
 
-	// HTTP 路径（包括 query string）
+	// <p>HTTP 路径（包括 query string）</p>
 	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 
-	// HTTP 请求体，任何数据
+	// <p>HTTP 请求体，任何数据</p>
 	RequestBody *string `json:"RequestBody,omitnil,omitempty" name:"RequestBody"`
 
-	// HTTP 请求头
+	// <p>HTTP 请求头</p>
 	Headers []*PrometheusStringKeyValuePair `json:"Headers,omitnil,omitempty" name:"Headers"`
 
-	// 是否请求自监控数据。自监控仅支持 /api/v1/query 与 /api/v1/query_range 接口。
+	// <p>是否请求自监控数据。自监控仅支持 /api/v1/query 与 /api/v1/query_range 接口。</p>
 	SelfMonitor *bool `json:"SelfMonitor,omitnil,omitempty" name:"SelfMonitor"`
 }
 
 type ExportPrometheusReadOnlyDynamicAPIRequest struct {
 	*tchttp.BaseRequest
 	
-	// Prometheus 实例 ID
+	// <p>Prometheus 实例 ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// HTTP 方法名 GET/POST/PUT/DELETE 等
+	// <p>HTTP 方法名 GET/POST/PUT/DELETE 等</p>
 	Method *string `json:"Method,omitnil,omitempty" name:"Method"`
 
-	// HTTP 路径（包括 query string）
+	// <p>HTTP 路径（包括 query string）</p>
 	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 
-	// HTTP 请求体，任何数据
+	// <p>HTTP 请求体，任何数据</p>
 	RequestBody *string `json:"RequestBody,omitnil,omitempty" name:"RequestBody"`
 
-	// HTTP 请求头
+	// <p>HTTP 请求头</p>
 	Headers []*PrometheusStringKeyValuePair `json:"Headers,omitnil,omitempty" name:"Headers"`
 
-	// 是否请求自监控数据。自监控仅支持 /api/v1/query 与 /api/v1/query_range 接口。
+	// <p>是否请求自监控数据。自监控仅支持 /api/v1/query 与 /api/v1/query_range 接口。</p>
 	SelfMonitor *bool `json:"SelfMonitor,omitnil,omitempty" name:"SelfMonitor"`
 }
 
@@ -12026,7 +12287,7 @@ func (r *ExportPrometheusReadOnlyDynamicAPIRequest) FromJsonString(s string) err
 
 // Predefined struct for user
 type ExportPrometheusReadOnlyDynamicAPIResponseParams struct {
-	// HTTP 响应数据
+	// <p>HTTP 响应数据</p>
 	HTTP *PrometheusDynamicAPIResponseHTTP `json:"HTTP,omitnil,omitempty" name:"HTTP"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -12385,22 +12646,22 @@ type GrafanaAccountRole struct {
 }
 
 type GrafanaChannel struct {
-	// 渠道 ID
+	// <p>渠道 ID</p>
 	ChannelId *string `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
 
-	// 渠道名
+	// <p>渠道名</p>
 	ChannelName *string `json:"ChannelName,omitnil,omitempty" name:"ChannelName"`
 
-	// 告警通道模板 ID 数组
+	// <p>告警通道模板 ID 数组</p>
 	Receivers []*string `json:"Receivers,omitnil,omitempty" name:"Receivers"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
 
-	// 更新时间
+	// <p>更新时间</p>
 	UpdatedAt *string `json:"UpdatedAt,omitnil,omitempty" name:"UpdatedAt"`
 
-	// 告警渠道的所有生效组织
+	// <p>告警渠道的所有生效组织</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OrganizationIds []*string `json:"OrganizationIds,omitnil,omitempty" name:"OrganizationIds"`
 }
@@ -12516,10 +12777,10 @@ type GrafanaNotificationChannel struct {
 }
 
 type GrafanaPlugin struct {
-	// Grafana 插件 ID
+	// <p>Grafana 插件 ID</p>
 	PluginId *string `json:"PluginId,omitnil,omitempty" name:"PluginId"`
 
-	// Grafana 插件版本
+	// <p>Grafana 插件版本</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
 }
@@ -13528,20 +13789,20 @@ type ModifyConditionsTemplateRequestEventCondition struct {
 
 // Predefined struct for user
 type ModifyGrafanaInstanceRequestParams struct {
-	// Grafana 实例 ID，例如：grafana-abcdefgh
+	// <p>Grafana 实例 ID，例如：grafana-abcdefgh</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// Grafana 实例名称，例如：test
+	// <p>Grafana 实例名称，例如：test</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 }
 
 type ModifyGrafanaInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// Grafana 实例 ID，例如：grafana-abcdefgh
+	// <p>Grafana 实例 ID，例如：grafana-abcdefgh</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// Grafana 实例名称，例如：test
+	// <p>Grafana 实例名称，例如：test</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 }
 
@@ -14345,6 +14606,94 @@ type NotificationContentTemplateSupportDetail struct {
 	Example *string `json:"Example,omitnil,omitempty" name:"Example"`
 }
 
+type OnCallForm struct {
+	// 排班id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OnCallFormID *string `json:"OnCallFormID,omitnil,omitempty" name:"OnCallFormID"`
+
+	// 排班名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OnCallFormName *string `json:"OnCallFormName,omitnil,omitempty" name:"OnCallFormName"`
+
+	// 排班描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OnCallFormDesc *string `json:"OnCallFormDesc,omitnil,omitempty" name:"OnCallFormDesc"`
+
+	// 轮值类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RotationType *string `json:"RotationType,omitnil,omitempty" name:"RotationType"`
+
+	// 换班时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShiftTime *string `json:"ShiftTime,omitnil,omitempty" name:"ShiftTime"`
+
+	// 有效期开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EffectiveStartTime *int64 `json:"EffectiveStartTime,omitnil,omitempty" name:"EffectiveStartTime"`
+
+	// 有效期结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EffectiveEndTime *int64 `json:"EffectiveEndTime,omitnil,omitempty" name:"EffectiveEndTime"`
+
+	// 时区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimeZone *float64 `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
+
+	// 当前值班人员
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CurrOnCallStaffs []*string `json:"CurrOnCallStaffs,omitnil,omitempty" name:"CurrOnCallStaffs"`
+
+	// 模板绑定的标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
+type OneOnCallForm struct {
+	// 值班id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OnCallFormID *string `json:"OnCallFormID,omitnil,omitempty" name:"OnCallFormID"`
+
+	// 值班名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OnCallFormName *string `json:"OnCallFormName,omitnil,omitempty" name:"OnCallFormName"`
+
+	// 值班描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OnCallFormDesc *string `json:"OnCallFormDesc,omitnil,omitempty" name:"OnCallFormDesc"`
+
+	// 值班人员
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StaffInfos []*StaffInfo `json:"StaffInfos,omitnil,omitempty" name:"StaffInfos"`
+
+	// 轮班类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RotationType *string `json:"RotationType,omitnil,omitempty" name:"RotationType"`
+
+	// 换班时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShiftTime *string `json:"ShiftTime,omitnil,omitempty" name:"ShiftTime"`
+
+	// 值班有效期开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EffectiveStartTime *int64 `json:"EffectiveStartTime,omitnil,omitempty" name:"EffectiveStartTime"`
+
+	// 值班有效期结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EffectiveEndTime *int64 `json:"EffectiveEndTime,omitnil,omitempty" name:"EffectiveEndTime"`
+
+	// 时区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimeZone *float64 `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
+
+	// 替班信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CoverStaffInfos []*CoverStaffInfo `json:"CoverStaffInfos,omitnil,omitempty" name:"CoverStaffInfos"`
+
+	// 模板绑定的标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
 type Operator struct {
 	// 运算符标识
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
@@ -14520,13 +14869,13 @@ type PrometheusAgent struct {
 }
 
 type PrometheusAgentInfo struct {
-	// 集群类型。可填入tke、eks、tkeedge、tdcc、external，分别代表标准集群、弹性集群、边缘集群、注册集群、外部集群
+	// <p>集群类型。可填入tke、eks、tkeedge、tdcc、external，分别代表标准集群、弹性集群、边缘集群、注册集群、外部集群</p>
 	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 
-	// 集成容器服务中关联的集群ID
+	// <p>集成容器服务中关联的集群ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 该参数未使用，不需要填写
+	// <p>该参数未使用，不需要填写</p>
 	Describe *string `json:"Describe,omitnil,omitempty" name:"Describe"`
 }
 
@@ -14750,6 +15099,26 @@ type PrometheusAlertRule struct {
 	// 告警规则状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleState *int64 `json:"RuleState,omitnil,omitempty" name:"RuleState"`
+}
+
+type PrometheusAlertmanagerConfigInhibitRule struct {
+	// Source 告警的标签匹配规则，比如 "a=b"、"a!=c" 等
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceMatchers []*string `json:"SourceMatchers,omitnil,omitempty" name:"SourceMatchers"`
+
+	// Target 告警的标签匹配规则，比如 "a=b"、"a!=c" 等
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetMatchers []*string `json:"TargetMatchers,omitnil,omitempty" name:"TargetMatchers"`
+
+	// Source 和 Target 告警都必须有的一组标签名，比如 alertname、cluster 等
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Equal []*string `json:"Equal,omitnil,omitempty" name:"Equal"`
+}
+
+type PrometheusAlertmanagerConfigV2 struct {
+	// Prometheus Alertmanger 抑制规则组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InhibitRules []*PrometheusAlertmanagerConfigInhibitRule `json:"InhibitRules,omitnil,omitempty" name:"InhibitRules"`
 }
 
 type PrometheusClusterAgentBasic struct {
@@ -15608,6 +15977,67 @@ type RemoteWriteHeader struct {
 }
 
 // Predefined struct for user
+type ReplacePrometheusAlertmanagerConfigRequestParams struct {
+	// <p>Prometheus 实例 ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>Alertmanager 配置</p>
+	AlertmanagerConfig *PrometheusAlertmanagerConfigV2 `json:"AlertmanagerConfig,omitnil,omitempty" name:"AlertmanagerConfig"`
+}
+
+type ReplacePrometheusAlertmanagerConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>Prometheus 实例 ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>Alertmanager 配置</p>
+	AlertmanagerConfig *PrometheusAlertmanagerConfigV2 `json:"AlertmanagerConfig,omitnil,omitempty" name:"AlertmanagerConfig"`
+}
+
+func (r *ReplacePrometheusAlertmanagerConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ReplacePrometheusAlertmanagerConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "AlertmanagerConfig")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ReplacePrometheusAlertmanagerConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ReplacePrometheusAlertmanagerConfigResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ReplacePrometheusAlertmanagerConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *ReplacePrometheusAlertmanagerConfigResponseParams `json:"Response"`
+}
+
+func (r *ReplacePrometheusAlertmanagerConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ReplacePrometheusAlertmanagerConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ResumeGrafanaInstanceRequestParams struct {
 	// Grafana 实例 ID，例如：grafana-12345678
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -15658,6 +16088,91 @@ func (r *ResumeGrafanaInstanceResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ResumeGrafanaInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RoutePrometheusDynamicAPIRequestParams struct {
+	// <p>Prometheus 实例 ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>HTTP 方法名 GET/POST/PUT/DELETE 等</p>
+	Method *string `json:"Method,omitnil,omitempty" name:"Method"`
+
+	// <p>HTTP 路径（包括 query string）</p>
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
+
+	// <p>HTTP 请求体，任何数据</p>
+	RequestBody *string `json:"RequestBody,omitnil,omitempty" name:"RequestBody"`
+
+	// <p>HTTP 请求头</p>
+	Headers []*PrometheusStringKeyValuePair `json:"Headers,omitnil,omitempty" name:"Headers"`
+}
+
+type RoutePrometheusDynamicAPIRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>Prometheus 实例 ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>HTTP 方法名 GET/POST/PUT/DELETE 等</p>
+	Method *string `json:"Method,omitnil,omitempty" name:"Method"`
+
+	// <p>HTTP 路径（包括 query string）</p>
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
+
+	// <p>HTTP 请求体，任何数据</p>
+	RequestBody *string `json:"RequestBody,omitnil,omitempty" name:"RequestBody"`
+
+	// <p>HTTP 请求头</p>
+	Headers []*PrometheusStringKeyValuePair `json:"Headers,omitnil,omitempty" name:"Headers"`
+}
+
+func (r *RoutePrometheusDynamicAPIRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RoutePrometheusDynamicAPIRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Method")
+	delete(f, "Path")
+	delete(f, "RequestBody")
+	delete(f, "Headers")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RoutePrometheusDynamicAPIRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RoutePrometheusDynamicAPIResponseParams struct {
+	// <p>HTTP 响应数据</p>
+	HTTP *PrometheusDynamicAPIResponseHTTP `json:"HTTP,omitnil,omitempty" name:"HTTP"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RoutePrometheusDynamicAPIResponse struct {
+	*tchttp.BaseResponse
+	Response *RoutePrometheusDynamicAPIResponseParams `json:"Response"`
+}
+
+func (r *RoutePrometheusDynamicAPIResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RoutePrometheusDynamicAPIResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -15825,6 +16340,12 @@ type SingleOrderedDataPoint struct {
 	// 排序序号
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Order *uint64 `json:"Order,omitnil,omitempty" name:"Order"`
+}
+
+type StaffInfo struct {
+	// 值班人员id组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StaffIDs []*string `json:"StaffIDs,omitnil,omitempty" name:"StaffIDs"`
 }
 
 // Predefined struct for user
@@ -16860,20 +17381,20 @@ func (r *UpdateExporterIntegrationResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateGrafanaConfigRequestParams struct {
-	// 实例 ID
+	// <p>实例 ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// JSON 编码后的字符串，如 "{"server":{"root_url":"http://custom.domain"}}"
+	// <p>JSON 编码后的字符串，如 &quot;{&quot;server&quot;:{&quot;root_url&quot;:&quot;http://custom.domain&quot;}}&quot;</p>
 	Config *string `json:"Config,omitnil,omitempty" name:"Config"`
 }
 
 type UpdateGrafanaConfigRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID
+	// <p>实例 ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// JSON 编码后的字符串，如 "{"server":{"root_url":"http://custom.domain"}}"
+	// <p>JSON 编码后的字符串，如 &quot;{&quot;server&quot;:{&quot;root_url&quot;:&quot;http://custom.domain&quot;}}&quot;</p>
 	Config *string `json:"Config,omitnil,omitempty" name:"Config"`
 }
 
@@ -17204,6 +17725,133 @@ func (r *UpdateGrafanaWhiteListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UpdateGrafanaWhiteListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateOnCallFormRequestParams struct {
+	// 固定值，为"monitor"
+	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
+
+	// 值班表id
+	OnCallFormID *string `json:"OnCallFormID,omitnil,omitempty" name:"OnCallFormID"`
+
+	// 值班表名称
+	OnCallFormName *string `json:"OnCallFormName,omitnil,omitempty" name:"OnCallFormName"`
+
+	// 值班人员id组
+	StaffInfos []*StaffInfo `json:"StaffInfos,omitnil,omitempty" name:"StaffInfos"`
+
+	// 轮转类型
+	RotationType *string `json:"RotationType,omitnil,omitempty" name:"RotationType"`
+
+	// 换班时间
+	ShiftTime *string `json:"ShiftTime,omitnil,omitempty" name:"ShiftTime"`
+
+	// 有效期开始时间，单位s
+	EffectiveStartTime *int64 `json:"EffectiveStartTime,omitnil,omitempty" name:"EffectiveStartTime"`
+
+	// 有效期结束时间，单位s
+	EffectiveEndTime *int64 `json:"EffectiveEndTime,omitnil,omitempty" name:"EffectiveEndTime"`
+
+	// 时区(-12 - 12)
+	TimeZone *float64 `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
+
+	// 值班表描述
+	OnCallFormDesc *string `json:"OnCallFormDesc,omitnil,omitempty" name:"OnCallFormDesc"`
+
+	// 轮班信息
+	CoverStaffInfos []*CoverStaffInfo `json:"CoverStaffInfos,omitnil,omitempty" name:"CoverStaffInfos"`
+}
+
+type UpdateOnCallFormRequest struct {
+	*tchttp.BaseRequest
+	
+	// 固定值，为"monitor"
+	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
+
+	// 值班表id
+	OnCallFormID *string `json:"OnCallFormID,omitnil,omitempty" name:"OnCallFormID"`
+
+	// 值班表名称
+	OnCallFormName *string `json:"OnCallFormName,omitnil,omitempty" name:"OnCallFormName"`
+
+	// 值班人员id组
+	StaffInfos []*StaffInfo `json:"StaffInfos,omitnil,omitempty" name:"StaffInfos"`
+
+	// 轮转类型
+	RotationType *string `json:"RotationType,omitnil,omitempty" name:"RotationType"`
+
+	// 换班时间
+	ShiftTime *string `json:"ShiftTime,omitnil,omitempty" name:"ShiftTime"`
+
+	// 有效期开始时间，单位s
+	EffectiveStartTime *int64 `json:"EffectiveStartTime,omitnil,omitempty" name:"EffectiveStartTime"`
+
+	// 有效期结束时间，单位s
+	EffectiveEndTime *int64 `json:"EffectiveEndTime,omitnil,omitempty" name:"EffectiveEndTime"`
+
+	// 时区(-12 - 12)
+	TimeZone *float64 `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
+
+	// 值班表描述
+	OnCallFormDesc *string `json:"OnCallFormDesc,omitnil,omitempty" name:"OnCallFormDesc"`
+
+	// 轮班信息
+	CoverStaffInfos []*CoverStaffInfo `json:"CoverStaffInfos,omitnil,omitempty" name:"CoverStaffInfos"`
+}
+
+func (r *UpdateOnCallFormRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateOnCallFormRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Module")
+	delete(f, "OnCallFormID")
+	delete(f, "OnCallFormName")
+	delete(f, "StaffInfos")
+	delete(f, "RotationType")
+	delete(f, "ShiftTime")
+	delete(f, "EffectiveStartTime")
+	delete(f, "EffectiveEndTime")
+	delete(f, "TimeZone")
+	delete(f, "OnCallFormDesc")
+	delete(f, "CoverStaffInfos")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateOnCallFormRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateOnCallFormResponseParams struct {
+	// 值班表id
+	OnCallFormID *string `json:"OnCallFormID,omitnil,omitempty" name:"OnCallFormID"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateOnCallFormResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateOnCallFormResponseParams `json:"Response"`
+}
+
+func (r *UpdateOnCallFormResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateOnCallFormResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

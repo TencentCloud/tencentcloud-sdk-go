@@ -827,6 +827,56 @@ func (c *Client) CreateDataFlowWithContext(ctx context.Context, request *CreateD
     return
 }
 
+func NewCreateDataRetrievalRequest() (request *CreateDataRetrievalRequest) {
+    request = &CreateDataRetrievalRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfs", APIVersion, "CreateDataRetrieval")
+    
+    
+    return
+}
+
+func NewCreateDataRetrievalResponse() (response *CreateDataRetrievalResponse) {
+    response = &CreateDataRetrievalResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateDataRetrieval
+// 创建数据检索
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_DATARETRIEVALSCHEDULECONFLICT = "InvalidParameterValue.DataRetrievalScheduleConflict"
+func (c *Client) CreateDataRetrieval(request *CreateDataRetrievalRequest) (response *CreateDataRetrievalResponse, err error) {
+    return c.CreateDataRetrievalWithContext(context.Background(), request)
+}
+
+// CreateDataRetrieval
+// 创建数据检索
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_DATARETRIEVALSCHEDULECONFLICT = "InvalidParameterValue.DataRetrievalScheduleConflict"
+func (c *Client) CreateDataRetrievalWithContext(ctx context.Context, request *CreateDataRetrievalRequest) (response *CreateDataRetrievalResponse, err error) {
+    if request == nil {
+        request = NewCreateDataRetrievalRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "CreateDataRetrieval")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDataRetrieval require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateDataRetrievalResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateLifecycleDataTaskRequest() (request *CreateLifecycleDataTaskRequest) {
     request = &CreateLifecycleDataTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -850,12 +900,16 @@ func NewCreateLifecycleDataTaskResponse() (response *CreateLifecycleDataTaskResp
 // 支持主动沉降/预热接口
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_LISTPATHANDTASKPATHCONFLICT = "InvalidParameter.ListPathAndTaskPathConflict"
+//  INVALIDPARAMETER_LISTPATHINVALIDPREFIX = "InvalidParameter.ListPathInvalidPrefix"
 //  INVALIDPARAMETERVALUE_INVALIDDATAFLOWID = "InvalidParameterValue.InvalidDataFlowId"
 //  INVALIDPARAMETERVALUE_INVALIDDATAFLOWSOURCESTORAGETYPE = "InvalidParameterValue.InvalidDataFlowSourceStorageType"
 //  INVALIDPARAMETERVALUE_INVALIDDATAFLOWTARGETPATH = "InvalidParameterValue.InvalidDataFlowTargetPath"
 //  INVALIDPARAMETERVALUE_INVALIDFILESYSTEMID = "InvalidParameterValue.InvalidFileSystemId"
 //  INVALIDPARAMETERVALUE_INVALIDFSSTATUS = "InvalidParameterValue.InvalidFsStatus"
 //  INVALIDPARAMETERVALUE_INVALIDLIFECYCLEDATATASKTYPE = "InvalidParameterValue.InvalidLifecycleDataTaskType"
+//  INVALIDPARAMETERVALUE_LISTPATHFILEINVALID = "InvalidParameterValue.ListPathFileInvalid"
+//  INVALIDPARAMETERVALUE_LISTPATHFILENOTFOUND = "InvalidParameterValue.ListPathFileNotFound"
 //  INVALIDPARAMETERVALUE_WAITINGTASKLIMITEXCEEDED = "InvalidParameterValue.WaitingTaskLimitExceeded"
 func (c *Client) CreateLifecycleDataTask(request *CreateLifecycleDataTaskRequest) (response *CreateLifecycleDataTaskResponse, err error) {
     return c.CreateLifecycleDataTaskWithContext(context.Background(), request)
@@ -865,12 +919,16 @@ func (c *Client) CreateLifecycleDataTask(request *CreateLifecycleDataTaskRequest
 // 支持主动沉降/预热接口
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_LISTPATHANDTASKPATHCONFLICT = "InvalidParameter.ListPathAndTaskPathConflict"
+//  INVALIDPARAMETER_LISTPATHINVALIDPREFIX = "InvalidParameter.ListPathInvalidPrefix"
 //  INVALIDPARAMETERVALUE_INVALIDDATAFLOWID = "InvalidParameterValue.InvalidDataFlowId"
 //  INVALIDPARAMETERVALUE_INVALIDDATAFLOWSOURCESTORAGETYPE = "InvalidParameterValue.InvalidDataFlowSourceStorageType"
 //  INVALIDPARAMETERVALUE_INVALIDDATAFLOWTARGETPATH = "InvalidParameterValue.InvalidDataFlowTargetPath"
 //  INVALIDPARAMETERVALUE_INVALIDFILESYSTEMID = "InvalidParameterValue.InvalidFileSystemId"
 //  INVALIDPARAMETERVALUE_INVALIDFSSTATUS = "InvalidParameterValue.InvalidFsStatus"
 //  INVALIDPARAMETERVALUE_INVALIDLIFECYCLEDATATASKTYPE = "InvalidParameterValue.InvalidLifecycleDataTaskType"
+//  INVALIDPARAMETERVALUE_LISTPATHFILEINVALID = "InvalidParameterValue.ListPathFileInvalid"
+//  INVALIDPARAMETERVALUE_LISTPATHFILENOTFOUND = "InvalidParameterValue.ListPathFileNotFound"
 //  INVALIDPARAMETERVALUE_WAITINGTASKLIMITEXCEEDED = "InvalidParameterValue.WaitingTaskLimitExceeded"
 func (c *Client) CreateLifecycleDataTaskWithContext(ctx context.Context, request *CreateLifecycleDataTaskRequest) (response *CreateLifecycleDataTaskResponse, err error) {
     if request == nil {
@@ -1489,6 +1547,78 @@ func (c *Client) DeleteDataFlowWithContext(ctx context.Context, request *DeleteD
     return
 }
 
+func NewDeleteDataRetrievalRequest() (request *DeleteDataRetrievalRequest) {
+    request = &DeleteDataRetrievalRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfs", APIVersion, "DeleteDataRetrieval")
+    
+    
+    return
+}
+
+func NewDeleteDataRetrievalResponse() (response *DeleteDataRetrievalResponse) {
+    response = &DeleteDataRetrievalResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteDataRetrieval
+// 删除数据检索。
+//
+// 
+//
+// 删除指定的数据检索配置，不允许在存在关联任务时删除。调用接口后，若通过 DescribeDataRetrieval 接口查询不到对应的数据检索，则表示删除成功。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+//  RESOURCEINUSE_DATARETRIEVALHASTASK = "ResourceInUse.DataRetrievalHasTask"
+//  RESOURCEINUSE_DATARETRIEVALTASKRUNNING = "ResourceInUse.DataRetrievalTaskRunning"
+//  RESOURCENOTFOUND_DATARETRIEVALNOTFOUND = "ResourceNotFound.DataRetrievalNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) DeleteDataRetrieval(request *DeleteDataRetrievalRequest) (response *DeleteDataRetrievalResponse, err error) {
+    return c.DeleteDataRetrievalWithContext(context.Background(), request)
+}
+
+// DeleteDataRetrieval
+// 删除数据检索。
+//
+// 
+//
+// 删除指定的数据检索配置，不允许在存在关联任务时删除。调用接口后，若通过 DescribeDataRetrieval 接口查询不到对应的数据检索，则表示删除成功。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+//  RESOURCEINUSE_DATARETRIEVALHASTASK = "ResourceInUse.DataRetrievalHasTask"
+//  RESOURCEINUSE_DATARETRIEVALTASKRUNNING = "ResourceInUse.DataRetrievalTaskRunning"
+//  RESOURCENOTFOUND_DATARETRIEVALNOTFOUND = "ResourceNotFound.DataRetrievalNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) DeleteDataRetrievalWithContext(ctx context.Context, request *DeleteDataRetrievalRequest) (response *DeleteDataRetrievalResponse, err error) {
+    if request == nil {
+        request = NewDeleteDataRetrievalRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "DeleteDataRetrieval")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteDataRetrieval require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteDataRetrievalResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteLifecyclePolicyRequest() (request *DeleteLifecyclePolicyRequest) {
     request = &DeleteLifecyclePolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1512,11 +1642,14 @@ func NewDeleteLifecyclePolicyResponse() (response *DeleteLifecyclePolicyResponse
 // 删除生命周期管理策略
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETERVALUE_INVALIDDATAFLOWID = "InvalidParameterValue.InvalidDataFlowId"
-//  INVALIDPARAMETERVALUE_INVALIDFSSTATUS = "InvalidParameterValue.InvalidFsStatus"
-//  INVALIDPARAMETERVALUE_MISSINGFILESYSTEMID = "InvalidParameterValue.MissingFileSystemId"
-//  RESOURCENOTFOUND_FILESYSTEMNOTFOUND = "ResourceNotFound.FileSystemNotFound"
-//  UNSUPPORTEDOPERATION_INVALIDLIFECYCLEDATATASKSTATUS = "UnsupportedOperation.InvalidLifecycleDataTaskStatus"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+//  RESOURCEINUSE_DATARETRIEVALHASTASK = "ResourceInUse.DataRetrievalHasTask"
+//  RESOURCEINUSE_DATARETRIEVALTASKRUNNING = "ResourceInUse.DataRetrievalTaskRunning"
+//  RESOURCENOTFOUND_DATARETRIEVALNOTFOUND = "ResourceNotFound.DataRetrievalNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) DeleteLifecyclePolicy(request *DeleteLifecyclePolicyRequest) (response *DeleteLifecyclePolicyResponse, err error) {
     return c.DeleteLifecyclePolicyWithContext(context.Background(), request)
 }
@@ -1525,11 +1658,14 @@ func (c *Client) DeleteLifecyclePolicy(request *DeleteLifecyclePolicyRequest) (r
 // 删除生命周期管理策略
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETERVALUE_INVALIDDATAFLOWID = "InvalidParameterValue.InvalidDataFlowId"
-//  INVALIDPARAMETERVALUE_INVALIDFSSTATUS = "InvalidParameterValue.InvalidFsStatus"
-//  INVALIDPARAMETERVALUE_MISSINGFILESYSTEMID = "InvalidParameterValue.MissingFileSystemId"
-//  RESOURCENOTFOUND_FILESYSTEMNOTFOUND = "ResourceNotFound.FileSystemNotFound"
-//  UNSUPPORTEDOPERATION_INVALIDLIFECYCLEDATATASKSTATUS = "UnsupportedOperation.InvalidLifecycleDataTaskStatus"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+//  RESOURCEINUSE_DATARETRIEVALHASTASK = "ResourceInUse.DataRetrievalHasTask"
+//  RESOURCEINUSE_DATARETRIEVALTASKRUNNING = "ResourceInUse.DataRetrievalTaskRunning"
+//  RESOURCENOTFOUND_DATARETRIEVALNOTFOUND = "ResourceNotFound.DataRetrievalNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) DeleteLifecyclePolicyWithContext(ctx context.Context, request *DeleteLifecyclePolicyRequest) (response *DeleteLifecyclePolicyResponse, err error) {
     if request == nil {
         request = NewDeleteLifecyclePolicyRequest()
@@ -2327,6 +2463,124 @@ func (c *Client) DescribeDataFlowWithContext(ctx context.Context, request *Descr
     return
 }
 
+func NewDescribeDataRetrievalRequest() (request *DescribeDataRetrievalRequest) {
+    request = &DescribeDataRetrievalRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfs", APIVersion, "DescribeDataRetrieval")
+    
+    
+    return
+}
+
+func NewDescribeDataRetrievalResponse() (response *DescribeDataRetrievalResponse) {
+    response = &DescribeDataRetrievalResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDataRetrieval
+// 查询数据检索。
+//
+// 
+//
+// 查询数据检索列表，支持按文件系统 ID、数据检索 ID、名称等条件筛选。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_DATARETRIEVALSCHEDULECONFLICT = "InvalidParameterValue.DataRetrievalScheduleConflict"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) DescribeDataRetrieval(request *DescribeDataRetrievalRequest) (response *DescribeDataRetrievalResponse, err error) {
+    return c.DescribeDataRetrievalWithContext(context.Background(), request)
+}
+
+// DescribeDataRetrieval
+// 查询数据检索。
+//
+// 
+//
+// 查询数据检索列表，支持按文件系统 ID、数据检索 ID、名称等条件筛选。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_DATARETRIEVALSCHEDULECONFLICT = "InvalidParameterValue.DataRetrievalScheduleConflict"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) DescribeDataRetrievalWithContext(ctx context.Context, request *DescribeDataRetrievalRequest) (response *DescribeDataRetrievalResponse, err error) {
+    if request == nil {
+        request = NewDescribeDataRetrievalRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "DescribeDataRetrieval")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDataRetrieval require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDataRetrievalResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDataRetrievalTaskRequest() (request *DescribeDataRetrievalTaskRequest) {
+    request = &DescribeDataRetrievalTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfs", APIVersion, "DescribeDataRetrievalTask")
+    
+    
+    return
+}
+
+func NewDescribeDataRetrievalTaskResponse() (response *DescribeDataRetrievalTaskResponse) {
+    response = &DescribeDataRetrievalTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDataRetrievalTask
+// 查询数据检索任务
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDDATARETRIEVALID = "InvalidParameterValue.InvalidDataRetrievalId"
+func (c *Client) DescribeDataRetrievalTask(request *DescribeDataRetrievalTaskRequest) (response *DescribeDataRetrievalTaskResponse, err error) {
+    return c.DescribeDataRetrievalTaskWithContext(context.Background(), request)
+}
+
+// DescribeDataRetrievalTask
+// 查询数据检索任务
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDDATARETRIEVALID = "InvalidParameterValue.InvalidDataRetrievalId"
+func (c *Client) DescribeDataRetrievalTaskWithContext(ctx context.Context, request *DescribeDataRetrievalTaskRequest) (response *DescribeDataRetrievalTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeDataRetrievalTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "DescribeDataRetrievalTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDataRetrievalTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDataRetrievalTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLifecycleDataTaskRequest() (request *DescribeLifecycleDataTaskRequest) {
     request = &DescribeLifecycleDataTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2775,6 +3029,58 @@ func (c *Client) ModifyDataFlowWithContext(ctx context.Context, request *ModifyD
     return
 }
 
+func NewModifyDataRetrievalRequest() (request *ModifyDataRetrievalRequest) {
+    request = &ModifyDataRetrievalRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfs", APIVersion, "ModifyDataRetrieval")
+    
+    
+    return
+}
+
+func NewModifyDataRetrievalResponse() (response *ModifyDataRetrievalResponse) {
+    response = &ModifyDataRetrievalResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyDataRetrieval
+// 修改数据检索
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_DATARETRIEVALSCHEDULECONFLICT = "InvalidParameterValue.DataRetrievalScheduleConflict"
+//  INVALIDPARAMETERVALUE_INVALIDDATARETRIEVALID = "InvalidParameterValue.InvalidDataRetrievalId"
+func (c *Client) ModifyDataRetrieval(request *ModifyDataRetrievalRequest) (response *ModifyDataRetrievalResponse, err error) {
+    return c.ModifyDataRetrievalWithContext(context.Background(), request)
+}
+
+// ModifyDataRetrieval
+// 修改数据检索
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_DATARETRIEVALSCHEDULECONFLICT = "InvalidParameterValue.DataRetrievalScheduleConflict"
+//  INVALIDPARAMETERVALUE_INVALIDDATARETRIEVALID = "InvalidParameterValue.InvalidDataRetrievalId"
+func (c *Client) ModifyDataRetrievalWithContext(ctx context.Context, request *ModifyDataRetrievalRequest) (response *ModifyDataRetrievalResponse, err error) {
+    if request == nil {
+        request = NewModifyDataRetrievalRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "ModifyDataRetrieval")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDataRetrieval require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDataRetrievalResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyFileSystemAutoScaleUpRuleRequest() (request *ModifyFileSystemAutoScaleUpRuleRequest) {
     request = &ModifyFileSystemAutoScaleUpRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2887,6 +3193,156 @@ func (c *Client) ModifyLifecyclePolicyWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewModifyLifecyclePolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewOverrideCfsRulesRequest() (request *OverrideCfsRulesRequest) {
+    request = &OverrideCfsRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfs", APIVersion, "OverrideCfsRules")
+    
+    
+    return
+}
+
+func NewOverrideCfsRulesResponse() (response *OverrideCfsRulesResponse) {
+    response = &OverrideCfsRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// OverrideCfsRules
+// 本接口（OverrideCfsRules）用于批量覆盖式创建权限组规则。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PGROUPINUSE = "FailedOperation.PgroupInUse"
+//  FAILEDOPERATION_PGROUPISUPDATING = "FailedOperation.PgroupIsUpdating"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GETACCOUNTSTATUSFAILED = "InternalError.GetAccountStatusFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_DUPLICATEDRULEAUTHCLIENTIP = "InvalidParameterValue.DuplicatedRuleAuthClientIp"
+//  INVALIDPARAMETERVALUE_INVALIDAUTHCLIENTIP = "InvalidParameterValue.InvalidAuthClientIp"
+//  INVALIDPARAMETERVALUE_INVALIDPGROUP = "InvalidParameterValue.InvalidPgroup"
+//  INVALIDPARAMETERVALUE_INVALIDPRIORITY = "InvalidParameterValue.InvalidPriority"
+//  INVALIDPARAMETERVALUE_INVALIDRWPERMISSION = "InvalidParameterValue.InvalidRwPermission"
+//  INVALIDPARAMETERVALUE_INVALIDUSERPERMISSION = "InvalidParameterValue.InvalidUserPermission"
+//  RESOURCEINSUFFICIENT_RULELIMITEXCEEDED = "ResourceInsufficient.RuleLimitExceeded"
+//  RESOURCENOTFOUND_PGROUPNOTFOUND = "ResourceNotFound.PgroupNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_OUTOFSERVICE = "UnsupportedOperation.OutOfService"
+//  UNSUPPORTEDOPERATION_UNVERIFIEDUSER = "UnsupportedOperation.UnverifiedUser"
+func (c *Client) OverrideCfsRules(request *OverrideCfsRulesRequest) (response *OverrideCfsRulesResponse, err error) {
+    return c.OverrideCfsRulesWithContext(context.Background(), request)
+}
+
+// OverrideCfsRules
+// 本接口（OverrideCfsRules）用于批量覆盖式创建权限组规则。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PGROUPINUSE = "FailedOperation.PgroupInUse"
+//  FAILEDOPERATION_PGROUPISUPDATING = "FailedOperation.PgroupIsUpdating"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GETACCOUNTSTATUSFAILED = "InternalError.GetAccountStatusFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_DUPLICATEDRULEAUTHCLIENTIP = "InvalidParameterValue.DuplicatedRuleAuthClientIp"
+//  INVALIDPARAMETERVALUE_INVALIDAUTHCLIENTIP = "InvalidParameterValue.InvalidAuthClientIp"
+//  INVALIDPARAMETERVALUE_INVALIDPGROUP = "InvalidParameterValue.InvalidPgroup"
+//  INVALIDPARAMETERVALUE_INVALIDPRIORITY = "InvalidParameterValue.InvalidPriority"
+//  INVALIDPARAMETERVALUE_INVALIDRWPERMISSION = "InvalidParameterValue.InvalidRwPermission"
+//  INVALIDPARAMETERVALUE_INVALIDUSERPERMISSION = "InvalidParameterValue.InvalidUserPermission"
+//  RESOURCEINSUFFICIENT_RULELIMITEXCEEDED = "ResourceInsufficient.RuleLimitExceeded"
+//  RESOURCENOTFOUND_PGROUPNOTFOUND = "ResourceNotFound.PgroupNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_OUTOFSERVICE = "UnsupportedOperation.OutOfService"
+//  UNSUPPORTEDOPERATION_UNVERIFIEDUSER = "UnsupportedOperation.UnverifiedUser"
+func (c *Client) OverrideCfsRulesWithContext(ctx context.Context, request *OverrideCfsRulesRequest) (response *OverrideCfsRulesResponse, err error) {
+    if request == nil {
+        request = NewOverrideCfsRulesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "OverrideCfsRules")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("OverrideCfsRules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewOverrideCfsRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRunDataRetrievalTaskRequest() (request *RunDataRetrievalTaskRequest) {
+    request = &RunDataRetrievalTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfs", APIVersion, "RunDataRetrievalTask")
+    
+    
+    return
+}
+
+func NewRunDataRetrievalTaskResponse() (response *RunDataRetrievalTaskResponse) {
+    response = &RunDataRetrievalTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RunDataRetrievalTask
+// 执行数据检索任务。
+//
+// 
+//
+// 手动触发指定数据检索的执行，创建一个新的数据检索任务。单个文件系统同时执行的任务数不超过 20 个。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDDATARETRIEVALID = "InvalidParameterValue.InvalidDataRetrievalId"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) RunDataRetrievalTask(request *RunDataRetrievalTaskRequest) (response *RunDataRetrievalTaskResponse, err error) {
+    return c.RunDataRetrievalTaskWithContext(context.Background(), request)
+}
+
+// RunDataRetrievalTask
+// 执行数据检索任务。
+//
+// 
+//
+// 手动触发指定数据检索的执行，创建一个新的数据检索任务。单个文件系统同时执行的任务数不超过 20 个。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDDATARETRIEVALID = "InvalidParameterValue.InvalidDataRetrievalId"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) RunDataRetrievalTaskWithContext(ctx context.Context, request *RunDataRetrievalTaskRequest) (response *RunDataRetrievalTaskResponse, err error) {
+    if request == nil {
+        request = NewRunDataRetrievalTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "RunDataRetrievalTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RunDataRetrievalTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRunDataRetrievalTaskResponse()
     err = c.Send(request, response)
     return
 }

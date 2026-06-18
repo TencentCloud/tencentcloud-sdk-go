@@ -939,6 +939,56 @@ func (c *Client) CreateGrafanaNotificationChannelWithContext(ctx context.Context
     return
 }
 
+func NewCreateOnCallFormRequest() (request *CreateOnCallFormRequest) {
+    request = &CreateOnCallFormRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("monitor", APIVersion, "CreateOnCallForm")
+    
+    
+    return
+}
+
+func NewCreateOnCallFormResponse() (response *CreateOnCallFormResponse) {
+    response = &CreateOnCallFormResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateOnCallForm
+// 创建值班表
+//
+// 可能返回的错误码:
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateOnCallForm(request *CreateOnCallFormRequest) (response *CreateOnCallFormResponse, err error) {
+    return c.CreateOnCallFormWithContext(context.Background(), request)
+}
+
+// CreateOnCallForm
+// 创建值班表
+//
+// 可能返回的错误码:
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateOnCallFormWithContext(ctx context.Context, request *CreateOnCallFormRequest) (response *CreateOnCallFormResponse, err error) {
+    if request == nil {
+        request = NewCreateOnCallFormRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "monitor", APIVersion, "CreateOnCallForm")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateOnCallForm require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateOnCallFormResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreatePolicyGroupRequest() (request *CreatePolicyGroupRequest) {
     request = &CreatePolicyGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1835,84 +1885,6 @@ func (c *Client) CreateSSOAccountWithContext(ctx context.Context, request *Creat
     return
 }
 
-func NewCreateServiceDiscoveryRequest() (request *CreateServiceDiscoveryRequest) {
-    request = &CreateServiceDiscoveryRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("monitor", APIVersion, "CreateServiceDiscovery")
-    
-    
-    return
-}
-
-func NewCreateServiceDiscoveryResponse() (response *CreateServiceDiscoveryResponse) {
-    response = &CreateServiceDiscoveryResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// CreateServiceDiscovery
-// 在腾讯云容器服务下创建 Prometheus 服务发现。
-//
-// <p>注意：前提条件，已经通过 Prometheus 控制台集成了对应的腾讯云容器服务，具体请参考
-//
-// <a href="https://cloud.tencent.com/document/product/248/48859" target="_blank">Agent 安装</a>。</p>
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_ACCESSSTSFAIL = "FailedOperation.AccessSTSFail"
-//  FAILEDOPERATION_ACCESSTKEFAIL = "FailedOperation.AccessTKEFail"
-//  FAILEDOPERATION_AGENTVERSIONNOTSUPPORTED = "FailedOperation.AgentVersionNotSupported"
-//  FAILEDOPERATION_BADYAMLFORMAT = "FailedOperation.BadYamlFormat"
-//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
-//  FAILEDOPERATION_TKECLIENTAUTHFAIL = "FailedOperation.TKEClientAuthFail"
-//  FAILEDOPERATION_TKEENDPOINTSTATUSERROR = "FailedOperation.TKEEndpointStatusError"
-//  FAILEDOPERATION_TKERESOURCECONFLICT = "FailedOperation.TKEResourceConflict"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-func (c *Client) CreateServiceDiscovery(request *CreateServiceDiscoveryRequest) (response *CreateServiceDiscoveryResponse, err error) {
-    return c.CreateServiceDiscoveryWithContext(context.Background(), request)
-}
-
-// CreateServiceDiscovery
-// 在腾讯云容器服务下创建 Prometheus 服务发现。
-//
-// <p>注意：前提条件，已经通过 Prometheus 控制台集成了对应的腾讯云容器服务，具体请参考
-//
-// <a href="https://cloud.tencent.com/document/product/248/48859" target="_blank">Agent 安装</a>。</p>
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_ACCESSSTSFAIL = "FailedOperation.AccessSTSFail"
-//  FAILEDOPERATION_ACCESSTKEFAIL = "FailedOperation.AccessTKEFail"
-//  FAILEDOPERATION_AGENTVERSIONNOTSUPPORTED = "FailedOperation.AgentVersionNotSupported"
-//  FAILEDOPERATION_BADYAMLFORMAT = "FailedOperation.BadYamlFormat"
-//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
-//  FAILEDOPERATION_TKECLIENTAUTHFAIL = "FailedOperation.TKEClientAuthFail"
-//  FAILEDOPERATION_TKEENDPOINTSTATUSERROR = "FailedOperation.TKEEndpointStatusError"
-//  FAILEDOPERATION_TKERESOURCECONFLICT = "FailedOperation.TKEResourceConflict"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-func (c *Client) CreateServiceDiscoveryWithContext(ctx context.Context, request *CreateServiceDiscoveryRequest) (response *CreateServiceDiscoveryResponse, err error) {
-    if request == nil {
-        request = NewCreateServiceDiscoveryRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "monitor", APIVersion, "CreateServiceDiscovery")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("CreateServiceDiscovery require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewCreateServiceDiscoveryResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDeleteAlarmNoticesRequest() (request *DeleteAlarmNoticesRequest) {
     request = &DeleteAlarmNoticesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2405,6 +2377,56 @@ func (c *Client) DeleteGrafanaNotificationChannelWithContext(ctx context.Context
     request.SetContext(ctx)
     
     response = NewDeleteGrafanaNotificationChannelResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteOnCallFormsRequest() (request *DeleteOnCallFormsRequest) {
+    request = &DeleteOnCallFormsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("monitor", APIVersion, "DeleteOnCallForms")
+    
+    
+    return
+}
+
+func NewDeleteOnCallFormsResponse() (response *DeleteOnCallFormsResponse) {
+    response = &DeleteOnCallFormsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteOnCallForms
+// 删除值班表接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOTRPCTRANSFERFAILED = "FailedOperation.DoTRPCTransferFailed"
+func (c *Client) DeleteOnCallForms(request *DeleteOnCallFormsRequest) (response *DeleteOnCallFormsResponse, err error) {
+    return c.DeleteOnCallFormsWithContext(context.Background(), request)
+}
+
+// DeleteOnCallForms
+// 删除值班表接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOTRPCTRANSFERFAILED = "FailedOperation.DoTRPCTransferFailed"
+func (c *Client) DeleteOnCallFormsWithContext(ctx context.Context, request *DeleteOnCallFormsRequest) (response *DeleteOnCallFormsResponse, err error) {
+    if request == nil {
+        request = NewDeleteOnCallFormsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "monitor", APIVersion, "DeleteOnCallForms")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteOnCallForms require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteOnCallFormsResponse()
     err = c.Send(request, response)
     return
 }
@@ -4519,7 +4541,7 @@ func NewDescribeDNSConfigResponse() (response *DescribeDNSConfigResponse) {
 }
 
 // DescribeDNSConfig
-// 列出 Grafana DNS 配置
+// 列出 Grafana DNS 配置。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4528,7 +4550,7 @@ func (c *Client) DescribeDNSConfig(request *DescribeDNSConfigRequest) (response 
 }
 
 // DescribeDNSConfig
-// 列出 Grafana DNS 配置
+// 列出 Grafana DNS 配置。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4741,7 +4763,7 @@ func NewDescribeGrafanaChannelsResponse() (response *DescribeGrafanaChannelsResp
 }
 
 // DescribeGrafanaChannels
-// 列出 Grafana 所有告警通道
+// 列出 Grafana 所有告警通道。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4750,7 +4772,7 @@ func (c *Client) DescribeGrafanaChannels(request *DescribeGrafanaChannelsRequest
 }
 
 // DescribeGrafanaChannels
-// 列出 Grafana 所有告警通道
+// 列出 Grafana 所有告警通道。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -5281,6 +5303,106 @@ func (c *Client) DescribeNotificationContentTemplateSupportsWithContext(ctx cont
     request.SetContext(ctx)
     
     response = NewDescribeNotificationContentTemplateSupportsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeOnCallFormRequest() (request *DescribeOnCallFormRequest) {
+    request = &DescribeOnCallFormRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("monitor", APIVersion, "DescribeOnCallForm")
+    
+    
+    return
+}
+
+func NewDescribeOnCallFormResponse() (response *DescribeOnCallFormResponse) {
+    response = &DescribeOnCallFormResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeOnCallForm
+// 查询值班表详情
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeOnCallForm(request *DescribeOnCallFormRequest) (response *DescribeOnCallFormResponse, err error) {
+    return c.DescribeOnCallFormWithContext(context.Background(), request)
+}
+
+// DescribeOnCallForm
+// 查询值班表详情
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeOnCallFormWithContext(ctx context.Context, request *DescribeOnCallFormRequest) (response *DescribeOnCallFormResponse, err error) {
+    if request == nil {
+        request = NewDescribeOnCallFormRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "monitor", APIVersion, "DescribeOnCallForm")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeOnCallForm require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeOnCallFormResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeOnCallFormsRequest() (request *DescribeOnCallFormsRequest) {
+    request = &DescribeOnCallFormsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("monitor", APIVersion, "DescribeOnCallForms")
+    
+    
+    return
+}
+
+func NewDescribeOnCallFormsResponse() (response *DescribeOnCallFormsResponse) {
+    response = &DescribeOnCallFormsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeOnCallForms
+// 查询值班列表
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeOnCallForms(request *DescribeOnCallFormsRequest) (response *DescribeOnCallFormsResponse, err error) {
+    return c.DescribeOnCallFormsWithContext(context.Background(), request)
+}
+
+// DescribeOnCallForms
+// 查询值班列表
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeOnCallFormsWithContext(ctx context.Context, request *DescribeOnCallFormsRequest) (response *DescribeOnCallFormsResponse, err error) {
+    if request == nil {
+        request = NewDescribeOnCallFormsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "monitor", APIVersion, "DescribeOnCallForms")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeOnCallForms require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeOnCallFormsResponse()
     err = c.Send(request, response)
     return
 }
@@ -6231,6 +6353,72 @@ func (c *Client) DescribePrometheusAlertPolicyWithContext(ctx context.Context, r
     request.SetContext(ctx)
     
     response = NewDescribePrometheusAlertPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePrometheusAlertmanagerConfigRequest() (request *DescribePrometheusAlertmanagerConfigRequest) {
+    request = &DescribePrometheusAlertmanagerConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("monitor", APIVersion, "DescribePrometheusAlertmanagerConfig")
+    
+    
+    return
+}
+
+func NewDescribePrometheusAlertmanagerConfigResponse() (response *DescribePrometheusAlertmanagerConfigResponse) {
+    response = &DescribePrometheusAlertmanagerConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribePrometheusAlertmanagerConfig
+// 获取 Prometheus Alertmanager 配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  FAILEDOPERATION_DBRECORDCREATEFAILED = "FailedOperation.DbRecordCreateFailed"
+//  FAILEDOPERATION_DBRECORDDELETEFAILED = "FailedOperation.DbRecordDeleteFailed"
+//  FAILEDOPERATION_DBRECORDUPDATEFAILED = "FailedOperation.DbRecordUpdateFailed"
+//  FAILEDOPERATION_RESOURCEEXIST = "FailedOperation.ResourceExist"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribePrometheusAlertmanagerConfig(request *DescribePrometheusAlertmanagerConfigRequest) (response *DescribePrometheusAlertmanagerConfigResponse, err error) {
+    return c.DescribePrometheusAlertmanagerConfigWithContext(context.Background(), request)
+}
+
+// DescribePrometheusAlertmanagerConfig
+// 获取 Prometheus Alertmanager 配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  FAILEDOPERATION_DBRECORDCREATEFAILED = "FailedOperation.DbRecordCreateFailed"
+//  FAILEDOPERATION_DBRECORDDELETEFAILED = "FailedOperation.DbRecordDeleteFailed"
+//  FAILEDOPERATION_DBRECORDUPDATEFAILED = "FailedOperation.DbRecordUpdateFailed"
+//  FAILEDOPERATION_RESOURCEEXIST = "FailedOperation.ResourceExist"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribePrometheusAlertmanagerConfigWithContext(ctx context.Context, request *DescribePrometheusAlertmanagerConfigRequest) (response *DescribePrometheusAlertmanagerConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribePrometheusAlertmanagerConfigRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "monitor", APIVersion, "DescribePrometheusAlertmanagerConfig")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePrometheusAlertmanagerConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePrometheusAlertmanagerConfigResponse()
     err = c.Send(request, response)
     return
 }
@@ -7673,7 +7861,7 @@ func NewDescribeSSOAccountResponse() (response *DescribeSSOAccountResponse) {
 }
 
 // DescribeSSOAccount
-// 列出当前grafana实例的所有授权账号
+// 列出当前grafana实例的所有授权账号.
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -7682,7 +7870,7 @@ func (c *Client) DescribeSSOAccount(request *DescribeSSOAccountRequest) (respons
 }
 
 // DescribeSSOAccount
-// 列出当前grafana实例的所有授权账号
+// 列出当前grafana实例的所有授权账号.
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -7699,80 +7887,6 @@ func (c *Client) DescribeSSOAccountWithContext(ctx context.Context, request *Des
     request.SetContext(ctx)
     
     response = NewDescribeSSOAccountResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeServiceDiscoveryRequest() (request *DescribeServiceDiscoveryRequest) {
-    request = &DescribeServiceDiscoveryRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("monitor", APIVersion, "DescribeServiceDiscovery")
-    
-    
-    return
-}
-
-func NewDescribeServiceDiscoveryResponse() (response *DescribeServiceDiscoveryResponse) {
-    response = &DescribeServiceDiscoveryResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeServiceDiscovery
-// 列出在腾讯云容器服务下创建的 Prometheus 服务发现。
-//
-// <p>注意：前提条件，已经通过 Prometheus 控制台集成了对应的腾讯云容器服务，具体请参考
-//
-// <a href="https://cloud.tencent.com/document/product/248/48859" target="_blank">Agent 安装</a>。</p>
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_ACCESSSTSFAIL = "FailedOperation.AccessSTSFail"
-//  FAILEDOPERATION_ACCESSTKEFAIL = "FailedOperation.AccessTKEFail"
-//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
-//  FAILEDOPERATION_INSTANCENOTRUNNING = "FailedOperation.InstanceNotRunning"
-//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
-//  FAILEDOPERATION_TKEENDPOINTSTATUSERROR = "FailedOperation.TKEEndpointStatusError"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-func (c *Client) DescribeServiceDiscovery(request *DescribeServiceDiscoveryRequest) (response *DescribeServiceDiscoveryResponse, err error) {
-    return c.DescribeServiceDiscoveryWithContext(context.Background(), request)
-}
-
-// DescribeServiceDiscovery
-// 列出在腾讯云容器服务下创建的 Prometheus 服务发现。
-//
-// <p>注意：前提条件，已经通过 Prometheus 控制台集成了对应的腾讯云容器服务，具体请参考
-//
-// <a href="https://cloud.tencent.com/document/product/248/48859" target="_blank">Agent 安装</a>。</p>
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_ACCESSSTSFAIL = "FailedOperation.AccessSTSFail"
-//  FAILEDOPERATION_ACCESSTKEFAIL = "FailedOperation.AccessTKEFail"
-//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
-//  FAILEDOPERATION_INSTANCENOTRUNNING = "FailedOperation.InstanceNotRunning"
-//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
-//  FAILEDOPERATION_TKEENDPOINTSTATUSERROR = "FailedOperation.TKEEndpointStatusError"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-func (c *Client) DescribeServiceDiscoveryWithContext(ctx context.Context, request *DescribeServiceDiscoveryRequest) (response *DescribeServiceDiscoveryResponse, err error) {
-    if request == nil {
-        request = NewDescribeServiceDiscoveryRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "monitor", APIVersion, "DescribeServiceDiscovery")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeServiceDiscovery require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeServiceDiscoveryResponse()
     err = c.Send(request, response)
     return
 }
@@ -8151,7 +8265,35 @@ func NewExportPrometheusReadOnlyDynamicAPIResponse() (response *ExportPrometheus
 }
 
 // ExportPrometheusReadOnlyDynamicAPI
-// Prometheus 内部动态 api 代理，仅内部使用
+// Prometheus 内部只读动态 api 代理，支持以云api形式访问prometheus原生api
+//
+// 支持以下api:
+//
+// 
+//
+// | path | method | 用途 |
+//
+// | - | - | - |
+//
+// | /api/v1/query | GET, POST | 点查询 |
+//
+// | /api/v1/query_range | GET, POST |  范围查询 |
+//
+// | /api/v1/series | GET, POST | series列表查询 |
+//
+// | /api/v1/labels | GET, POST | label名查询 |
+//
+// | /api/v1/label/{label_name}/values | GET | label值查询 |
+//
+// | /api/v1/rules | GET | 告警，预聚合规则查询 |
+//
+// | /api/v1/user_limits | GET | prometheus实例限制查询 |
+//
+// | /alertmanager/api/v2/alerts/groups | GET | 当前告警信息查询 | 
+//
+// | /alertmanager/api/v2/silences | GET | 告警静默查询 |
+//
+// | /alertmanager/api/v2/silence/{id} | GET | 告警静默详情查询 |
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -8191,7 +8333,35 @@ func (c *Client) ExportPrometheusReadOnlyDynamicAPI(request *ExportPrometheusRea
 }
 
 // ExportPrometheusReadOnlyDynamicAPI
-// Prometheus 内部动态 api 代理，仅内部使用
+// Prometheus 内部只读动态 api 代理，支持以云api形式访问prometheus原生api
+//
+// 支持以下api:
+//
+// 
+//
+// | path | method | 用途 |
+//
+// | - | - | - |
+//
+// | /api/v1/query | GET, POST | 点查询 |
+//
+// | /api/v1/query_range | GET, POST |  范围查询 |
+//
+// | /api/v1/series | GET, POST | series列表查询 |
+//
+// | /api/v1/labels | GET, POST | label名查询 |
+//
+// | /api/v1/label/{label_name}/values | GET | label值查询 |
+//
+// | /api/v1/rules | GET | 告警，预聚合规则查询 |
+//
+// | /api/v1/user_limits | GET | prometheus实例限制查询 |
+//
+// | /alertmanager/api/v2/alerts/groups | GET | 当前告警信息查询 | 
+//
+// | /alertmanager/api/v2/silences | GET | 告警静默查询 |
+//
+// | /alertmanager/api/v2/silence/{id} | GET | 告警静默详情查询 |
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -9595,6 +9765,72 @@ func (c *Client) ModifyRemoteURLsWithContext(ctx context.Context, request *Modif
     return
 }
 
+func NewReplacePrometheusAlertmanagerConfigRequest() (request *ReplacePrometheusAlertmanagerConfigRequest) {
+    request = &ReplacePrometheusAlertmanagerConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("monitor", APIVersion, "ReplacePrometheusAlertmanagerConfig")
+    
+    
+    return
+}
+
+func NewReplacePrometheusAlertmanagerConfigResponse() (response *ReplacePrometheusAlertmanagerConfigResponse) {
+    response = &ReplacePrometheusAlertmanagerConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ReplacePrometheusAlertmanagerConfig
+// 替换 Prometheus Alertmanager 配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  FAILEDOPERATION_DBRECORDCREATEFAILED = "FailedOperation.DbRecordCreateFailed"
+//  FAILEDOPERATION_DBRECORDDELETEFAILED = "FailedOperation.DbRecordDeleteFailed"
+//  FAILEDOPERATION_DBRECORDUPDATEFAILED = "FailedOperation.DbRecordUpdateFailed"
+//  FAILEDOPERATION_RESOURCEEXIST = "FailedOperation.ResourceExist"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ReplacePrometheusAlertmanagerConfig(request *ReplacePrometheusAlertmanagerConfigRequest) (response *ReplacePrometheusAlertmanagerConfigResponse, err error) {
+    return c.ReplacePrometheusAlertmanagerConfigWithContext(context.Background(), request)
+}
+
+// ReplacePrometheusAlertmanagerConfig
+// 替换 Prometheus Alertmanager 配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  FAILEDOPERATION_DBRECORDCREATEFAILED = "FailedOperation.DbRecordCreateFailed"
+//  FAILEDOPERATION_DBRECORDDELETEFAILED = "FailedOperation.DbRecordDeleteFailed"
+//  FAILEDOPERATION_DBRECORDUPDATEFAILED = "FailedOperation.DbRecordUpdateFailed"
+//  FAILEDOPERATION_RESOURCEEXIST = "FailedOperation.ResourceExist"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ReplacePrometheusAlertmanagerConfigWithContext(ctx context.Context, request *ReplacePrometheusAlertmanagerConfigRequest) (response *ReplacePrometheusAlertmanagerConfigResponse, err error) {
+    if request == nil {
+        request = NewReplacePrometheusAlertmanagerConfigRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "monitor", APIVersion, "ReplacePrometheusAlertmanagerConfig")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ReplacePrometheusAlertmanagerConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewReplacePrometheusAlertmanagerConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewResumeGrafanaInstanceRequest() (request *ResumeGrafanaInstanceRequest) {
     request = &ResumeGrafanaInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -9618,10 +9854,15 @@ func NewResumeGrafanaInstanceResponse() (response *ResumeGrafanaInstanceResponse
 // 本接口（ResumeGrafanaInstance）用于 Grafana 包年包月实例的停服续费，调用后按原版本续费一个月。仍在运行中的实例无法使用该接口进行续费。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_COMPONENTCLIENTCOMMON = "FailedOperation.ComponentClientCommon"
-//  FAILEDOPERATION_RESOURCECONFLICT = "FailedOperation.ResourceConflict"
-//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
-//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  FAILEDOPERATION_DBRECORDCREATEFAILED = "FailedOperation.DbRecordCreateFailed"
+//  FAILEDOPERATION_DBRECORDDELETEFAILED = "FailedOperation.DbRecordDeleteFailed"
+//  FAILEDOPERATION_DBRECORDUPDATEFAILED = "FailedOperation.DbRecordUpdateFailed"
+//  FAILEDOPERATION_RESOURCEEXIST = "FailedOperation.ResourceExist"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) ResumeGrafanaInstance(request *ResumeGrafanaInstanceRequest) (response *ResumeGrafanaInstanceResponse, err error) {
     return c.ResumeGrafanaInstanceWithContext(context.Background(), request)
 }
@@ -9630,10 +9871,15 @@ func (c *Client) ResumeGrafanaInstance(request *ResumeGrafanaInstanceRequest) (r
 // 本接口（ResumeGrafanaInstance）用于 Grafana 包年包月实例的停服续费，调用后按原版本续费一个月。仍在运行中的实例无法使用该接口进行续费。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_COMPONENTCLIENTCOMMON = "FailedOperation.ComponentClientCommon"
-//  FAILEDOPERATION_RESOURCECONFLICT = "FailedOperation.ResourceConflict"
-//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
-//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  FAILEDOPERATION_DBRECORDCREATEFAILED = "FailedOperation.DbRecordCreateFailed"
+//  FAILEDOPERATION_DBRECORDDELETEFAILED = "FailedOperation.DbRecordDeleteFailed"
+//  FAILEDOPERATION_DBRECORDUPDATEFAILED = "FailedOperation.DbRecordUpdateFailed"
+//  FAILEDOPERATION_RESOURCEEXIST = "FailedOperation.ResourceExist"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) ResumeGrafanaInstanceWithContext(ctx context.Context, request *ResumeGrafanaInstanceRequest) (response *ResumeGrafanaInstanceResponse, err error) {
     if request == nil {
         request = NewResumeGrafanaInstanceRequest()
@@ -9647,6 +9893,182 @@ func (c *Client) ResumeGrafanaInstanceWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewResumeGrafanaInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRoutePrometheusDynamicAPIRequest() (request *RoutePrometheusDynamicAPIRequest) {
+    request = &RoutePrometheusDynamicAPIRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("monitor", APIVersion, "RoutePrometheusDynamicAPI")
+    
+    
+    return
+}
+
+func NewRoutePrometheusDynamicAPIResponse() (response *RoutePrometheusDynamicAPIResponse) {
+    response = &RoutePrometheusDynamicAPIResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RoutePrometheusDynamicAPI
+// Prometheus 内部动态 api 代理，支持以云api形式访问prometheus原生api
+//
+// 支持以下api:
+//
+//  
+//
+// >! 读接口建议使用ExportPrometheusReadOnlyDynamicAPI调用，支持更长的查询时延与响应大小。同时便于权限管理
+//
+// 
+//
+// | path | method | 用途 |
+//
+// | - | - | - |
+//
+// | /api/v1/query | GET, POST | 点查询 |
+//
+// | /api/v1/query_range | GET, POST |  范围查询 |
+//
+// | /api/v1/series | GET, POST | series列表查询 |
+//
+// | /api/v1/labels | GET, POST | label名查询 |
+//
+// | /api/v1/label/{label_name}/values | GET | label值查询 |
+//
+// | /api/v1/rules | GET | 告警，预聚合规则查询 |
+//
+// | /api/v1/user_limits | GET | prometheus实例限制查询 |
+//
+// | /alertmanager/api/v2/alerts/groups | GET | 当前告警信息查询 | 
+//
+// | /alertmanager/api/v2/silences | GET, POST | 告警静默查询/创建/修改 |
+//
+// | /alertmanager/api/v2/silence/{id} | GET, DELETE | 告警静默详情查询/删除 |
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_ACCESSCAMFAIL = "AuthFailure.AccessCAMFail"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATACOLUMNNOTFOUND = "FailedOperation.DataColumnNotFound"
+//  FAILEDOPERATION_DATAQUERYFAILED = "FailedOperation.DataQueryFailed"
+//  FAILEDOPERATION_DATATABLENOTFOUND = "FailedOperation.DataTableNotFound"
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  FAILEDOPERATION_DBRECORDCREATEFAILED = "FailedOperation.DbRecordCreateFailed"
+//  FAILEDOPERATION_DBRECORDDELETEFAILED = "FailedOperation.DbRecordDeleteFailed"
+//  FAILEDOPERATION_DBRECORDUPDATEFAILED = "FailedOperation.DbRecordUpdateFailed"
+//  FAILEDOPERATION_DBTRANSACTIONBEGINFAILED = "FailedOperation.DbTransactionBeginFailed"
+//  FAILEDOPERATION_DBTRANSACTIONCOMMITFAILED = "FailedOperation.DbTransactionCommitFailed"
+//  FAILEDOPERATION_INSTANCENOTFOUND = "FailedOperation.InstanceNotFound"
+//  FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETER_INVALIDPARAMETERPARAM = "InvalidParameter.InvalidParameterParam"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) RoutePrometheusDynamicAPI(request *RoutePrometheusDynamicAPIRequest) (response *RoutePrometheusDynamicAPIResponse, err error) {
+    return c.RoutePrometheusDynamicAPIWithContext(context.Background(), request)
+}
+
+// RoutePrometheusDynamicAPI
+// Prometheus 内部动态 api 代理，支持以云api形式访问prometheus原生api
+//
+// 支持以下api:
+//
+//  
+//
+// >! 读接口建议使用ExportPrometheusReadOnlyDynamicAPI调用，支持更长的查询时延与响应大小。同时便于权限管理
+//
+// 
+//
+// | path | method | 用途 |
+//
+// | - | - | - |
+//
+// | /api/v1/query | GET, POST | 点查询 |
+//
+// | /api/v1/query_range | GET, POST |  范围查询 |
+//
+// | /api/v1/series | GET, POST | series列表查询 |
+//
+// | /api/v1/labels | GET, POST | label名查询 |
+//
+// | /api/v1/label/{label_name}/values | GET | label值查询 |
+//
+// | /api/v1/rules | GET | 告警，预聚合规则查询 |
+//
+// | /api/v1/user_limits | GET | prometheus实例限制查询 |
+//
+// | /alertmanager/api/v2/alerts/groups | GET | 当前告警信息查询 | 
+//
+// | /alertmanager/api/v2/silences | GET, POST | 告警静默查询/创建/修改 |
+//
+// | /alertmanager/api/v2/silence/{id} | GET, DELETE | 告警静默详情查询/删除 |
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_ACCESSCAMFAIL = "AuthFailure.AccessCAMFail"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATACOLUMNNOTFOUND = "FailedOperation.DataColumnNotFound"
+//  FAILEDOPERATION_DATAQUERYFAILED = "FailedOperation.DataQueryFailed"
+//  FAILEDOPERATION_DATATABLENOTFOUND = "FailedOperation.DataTableNotFound"
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  FAILEDOPERATION_DBRECORDCREATEFAILED = "FailedOperation.DbRecordCreateFailed"
+//  FAILEDOPERATION_DBRECORDDELETEFAILED = "FailedOperation.DbRecordDeleteFailed"
+//  FAILEDOPERATION_DBRECORDUPDATEFAILED = "FailedOperation.DbRecordUpdateFailed"
+//  FAILEDOPERATION_DBTRANSACTIONBEGINFAILED = "FailedOperation.DbTransactionBeginFailed"
+//  FAILEDOPERATION_DBTRANSACTIONCOMMITFAILED = "FailedOperation.DbTransactionCommitFailed"
+//  FAILEDOPERATION_INSTANCENOTFOUND = "FailedOperation.InstanceNotFound"
+//  FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETER_INVALIDPARAMETERPARAM = "InvalidParameter.InvalidParameterParam"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) RoutePrometheusDynamicAPIWithContext(ctx context.Context, request *RoutePrometheusDynamicAPIRequest) (response *RoutePrometheusDynamicAPIResponse, err error) {
+    if request == nil {
+        request = NewRoutePrometheusDynamicAPIRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "monitor", APIVersion, "RoutePrometheusDynamicAPI")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RoutePrometheusDynamicAPI require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRoutePrometheusDynamicAPIResponse()
     err = c.Send(request, response)
     return
 }
@@ -10865,6 +11287,56 @@ func (c *Client) UpdateGrafanaWhiteListWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewUpdateGrafanaWhiteListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateOnCallFormRequest() (request *UpdateOnCallFormRequest) {
+    request = &UpdateOnCallFormRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("monitor", APIVersion, "UpdateOnCallForm")
+    
+    
+    return
+}
+
+func NewUpdateOnCallFormResponse() (response *UpdateOnCallFormResponse) {
+    response = &UpdateOnCallFormResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateOnCallForm
+// 修改值班表
+//
+// 可能返回的错误码:
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) UpdateOnCallForm(request *UpdateOnCallFormRequest) (response *UpdateOnCallFormResponse, err error) {
+    return c.UpdateOnCallFormWithContext(context.Background(), request)
+}
+
+// UpdateOnCallForm
+// 修改值班表
+//
+// 可能返回的错误码:
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) UpdateOnCallFormWithContext(ctx context.Context, request *UpdateOnCallFormRequest) (response *UpdateOnCallFormResponse, err error) {
+    if request == nil {
+        request = NewUpdateOnCallFormRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "monitor", APIVersion, "UpdateOnCallForm")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateOnCallForm require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateOnCallFormResponse()
     err = c.Send(request, response)
     return
 }

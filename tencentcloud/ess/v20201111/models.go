@@ -119,13 +119,13 @@ type ApproverInfo struct {
 	// <p>【在用文件发起合同场景下才有效，模板发起场景下需要在模板中配置】合同中的该名签署方的签署控件列表，列表中可支持下列多种签署控件,控件的详细定义参考开发者中心的Component结构体</p><ul><li> 个人签名/印章</li><li> 企业印章</li><li> 骑缝章等签署控件</li></ul><p><img src="https://qcloudimg.tencent-cloud.cn/raw/91757a7f9188ccf3057a4a8979cf3f93.png" alt="image"></p>
 	SignComponents []*Component `json:"SignComponents,omitnil,omitempty" name:"SignComponents"`
 
-	// <p>签署方经办人的证件类型，支持以下类型，样式可以参考<a href="https://qian.tencent.com/developers/partner/id_card_support/" target="_blank">常见个人证件类型介绍</a></p><ul><li>ID_CARD 中国大陆居民身份证  (默认值)</li><li>HONGKONG_AND_MACAO 港澳居民来往内地通行证</li><li>HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)</li><li>OTHER_CARD_TYPE 其他证件</li></ul><p>注: </p><ol><li><b>其他证件类型为白名单功能</b>，使用前请联系对接的客户经理沟通。</li><li>港澳居民来往内地通行证 和  港澳台居民居住证 类型的签署人<b>至少要过一次大陆的海关</b>才能使用。</li></ol>
+	// <p>签署方经办人的证件类型，支持以下类型，样式可以参考<a href="https://qian.tencent.com/developers/partner/id_card_support/" target="_blank">常见个人证件类型介绍</a><br>&lt;ul&gt;<li>ID_CARD 中国大陆居民身份证  (默认值)</li></p><li>HONGKONG_AND_MACAO 港澳居民来往内地通行证</li><li>HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)</li><p>注:  港澳居民来往内地通行证 和  港澳台居民居住证 类型的签署人<b>至少要过一次大陆的海关</b>才能使用。</p>
 	ApproverIdCardType *string `json:"ApproverIdCardType,omitnil,omitempty" name:"ApproverIdCardType"`
 
 	// <p>签署方经办人的证件号码，应符合以下规则</p><ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li><li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li><li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
 	ApproverIdCardNumber *string `json:"ApproverIdCardNumber,omitnil,omitempty" name:"ApproverIdCardNumber"`
 
-	// <p>通知签署方经办人的方式,  有以下途径:</p><ul><li>  **sms**  :  (默认)短信</li><li>  **email**  :  邮箱</li><li>  **all**  :  短信+邮箱</li><li>   **none**   : 不通知</li></ul><p>注意：<br><code>如果使用的是通过文件发起合同（CreateFlowByFiles），NotifyType必须 是 sms 才会发送短信</code></p><p>枚举值：</p><ul><li>sms： 短信通知</li><li>email： 邮件通知</li><li>all： 短信+邮件通知</li><li>none： 不做任何形式的通知</li></ul>
+	// <p>通知签署方经办人的方式,  有以下途径:</p><ul><li>  **SMS**  :  (默认)短信</li><li>  **EMAIL**  :  邮箱</li><li>  **ALL**  :  短信+邮箱</li><li>   **NONE**   : 不通知</li></ul><p>注意：<br><code>如果使用的是通过文件发起合同（CreateFlowByFiles），NotifyType必须 是 sms 才会发送短信</code></p><p>枚举值：</p><ul><li>SMS： 短信通知</li><li>EMAIL： 邮件通知</li><li>ALL： 短信+邮件通知</li><li>NONE： 不做任何形式的通知</li></ul>
 	NotifyType *string `json:"NotifyType,omitnil,omitempty" name:"NotifyType"`
 
 	// <p>收据场景设置签署人角色类型, 可以设置如下<b>类型</b>:</p><ul><li> **1**  :收款人</li><li>   **2**   :开具人</li><li>   **3** :见证人</li></ul>注: <code>收据场景为白名单功能，使用前请联系对接的客户经理沟通。</code>
@@ -328,23 +328,66 @@ func (r *ArchiveDynamicFlowResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ArchiveFlowApproverInfo struct {
+	// <p>个人签署人姓名，如果传入，必须是证件上的真实中文名；中文名最长 25 个字符；</p>
+	ApproverName *string `json:"ApproverName,omitnil,omitempty" name:"ApproverName"`
+
+	// <p>参与者类型，用于区分个人或企业，可选类型如下:<br><strong>0</strong>：企业<br><strong>1</strong>：个人</p>
+	ApproverType *int64 `json:"ApproverType,omitnil,omitempty" name:"ApproverType"`
+
+	// <p>企业签署方名称。长度不超过 200 个字符。<br>如果名称中包含英文括号()，请使用中文括号（）代替。<br>如果签署方是企业签署方(approverType = 0 )， 则企业名称必填。</p>
+	OrganizationName *string `json:"OrganizationName,omitnil,omitempty" name:"OrganizationName"`
+
+	// <p>签署人手机号，必须是合法手机号。</p>
+	ApproverMobile *string `json:"ApproverMobile,omitnil,omitempty" name:"ApproverMobile"`
+
+	// <p>签署人邮箱， 必须是合法邮箱格式。</p>
+	ApproverEmail *string `json:"ApproverEmail,omitnil,omitempty" name:"ApproverEmail"`
+
+	// <p>签署方经办人的证件类型，支持以下类型，样式可以参考<a href="https://qian.tencent.com/developers/partner/id_card_support/" target="_blank">常见个人证件类型介绍</a></p><ul><li>ID_CARD 中国大陆居民身份证  (默认值)</li><li>HONGKONG_AND_MACAO 港澳居民来往内地通行证</li><li>HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)</li><li>OTHER_CARD_TYPE 其他证件</li></ul>
+	ApproverIdCardType *string `json:"ApproverIdCardType,omitnil,omitempty" name:"ApproverIdCardType"`
+
+	// <p>签署方经办人的证件号码，应符合以下规则</p><ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li><li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li><li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
+	ApproverIdCardNumber *string `json:"ApproverIdCardNumber,omitnil,omitempty" name:"ApproverIdCardNumber"`
+
+	// <p>当前参与者的签署时间，Unix 秒级时间戳。</p>
+	ApproveTime *int64 `json:"ApproveTime,omitnil,omitempty" name:"ApproveTime"`
+}
+
+type ArchiveFlowResult struct {
+	// <p>归档合同id</p>
+	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+
+	// <p>合同处理结果</p><p>枚举值：</p><ul><li>0： 成功</li><li>1： 失败</li></ul>
+	ArchiveFlowStatus *int64 `json:"ArchiveFlowStatus,omitnil,omitempty" name:"ArchiveFlowStatus"`
+
+	// <p>业务自定义id</p>
+	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
+
+	// <p>资源ID列表</p>
+	ResourceIdList []*string `json:"ResourceIdList,omitnil,omitempty" name:"ResourceIdList"`
+
+	// <p>错误信息</p>
+	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
+}
+
 type AuthInfoDetail struct {
-	// 扩展服务类型，和入参一致
+	// <p>扩展服务类型，和入参一致</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 扩展服务名称
+	// <p>扩展服务名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 授权员工列表
+	// <p>授权员工列表</p>
 	HasAuthUserList []*HasAuthUser `json:"HasAuthUserList,omitnil,omitempty" name:"HasAuthUserList"`
 
-	// 授权企业列表（企业自动签时，该字段有值）
+	// <p>授权企业列表（企业自动签时，该字段有值）</p>
 	HasAuthOrganizationList []*HasAuthOrganization `json:"HasAuthOrganizationList,omitnil,omitempty" name:"HasAuthOrganizationList"`
 
-	// 授权员工列表总数
+	// <p>授权员工列表总数</p>
 	AuthUserTotal *int64 `json:"AuthUserTotal,omitnil,omitempty" name:"AuthUserTotal"`
 
-	// 授权企业列表总数
+	// <p>授权企业列表总数</p>
 	AuthOrganizationTotal *int64 `json:"AuthOrganizationTotal,omitnil,omitempty" name:"AuthOrganizationTotal"`
 }
 
@@ -922,28 +965,23 @@ func (r *CancelUserAutoSignEnableUrlResponse) FromJsonString(s string) error {
 }
 
 type CcInfo struct {
-	// 被抄送方手机号码， 支持中国大陆手机号11位数字(无需加+86前缀或其他字符)。
-	// 请确认手机号所有方为此业务通知方。
+	// <p>被抄送方手机号码， 支持中国大陆手机号11位数字(无需加+86前缀或其他字符)。<br>请确认手机号所有方为此业务通知方。</p>
 	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
 
-	// 被抄送方姓名。
-	// 抄送方的姓名将用于身份认证，请确保填写的姓名为抄送方的真实姓名，而非昵称等代名。
+	// <p>被抄送方姓名。<br>抄送方的姓名将用于身份认证，请确保填写的姓名为抄送方的真实姓名，而非昵称等代名。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 被抄送方类型, 可设置以下类型:
-	// <ul><li> **0** :个人抄送方</li>
-	// <li> **1** :企业员工抄送方</li></ul>
+	// <p>被抄送方类型, 可设置以下类型:</p><ul><li> **0** :个人抄送方</li><li> **1** :企业员工抄送方</li></ul>
 	CcType *int64 `json:"CcType,omitnil,omitempty" name:"CcType"`
 
-	// 被抄送方权限, 可设置如下权限:
-	// <ul><li> **0** :可查看合同内容</li>
-	// <li> **1** :可查看合同内容也可下载原文</li></ul>
+	// <p>被抄送方权限, 可设置如下权限:</p><ul><li> **0** :可查看合同内容</li><li> **1** :可查看合同内容也可下载原文</li></ul>
 	CcPermission *int64 `json:"CcPermission,omitnil,omitempty" name:"CcPermission"`
 
-	// 通知签署方经办人的方式,  有以下途径:
-	// <ul><li> **sms** :  (默认)短信</li>
-	// <li> **none** : 不通知</li></ul>
+	// <p>通知签署方经办人的方式,  有以下途径:</p><ul><li> **sms** :  (默认)短信</li><li> **none** : 不通知</li></ul>
 	NotifyType *string `json:"NotifyType,omitnil,omitempty" name:"NotifyType"`
+
+	// <p>被抄送方企业名称。<br>请确认该名称与企业营业执照中注册的名称一致。<br>如果名称中包含英文括号()，请使用中文括号（）代替。</p><p>注意:<br><font color="red">此为白名单功能，需要联系客户经理，开通白名单后才能使用。</font><br>使用文档 <a href="https://qian.tencent.com/developers/company/enterprise_inbox">签署方/抄送方仅指定企业名称发起合同</a></p>
+	OrganizationName *string `json:"OrganizationName,omitnil,omitempty" name:"OrganizationName"`
 }
 
 type Checklist struct {
@@ -1438,6 +1476,105 @@ type ContractSummaryInfo struct {
 	// 主体信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Identity *Identity `json:"Identity,omitnil,omitempty" name:"Identity"`
+}
+
+type CreateArchiveFlow struct {
+	// <p>合同文件的资源id，使用<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles" target="_blank">UploadFiles</a> 上传文件返回resourceId，目前一个合同只能支持一个资源ID。</p>
+	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
+
+	// <p>合同名称，不传时系统会使用合同资源文件名作为合同名称；最终合同名称不能为空；长度不能超过200，只能由中文、字母、数字和下划线组成。</p>
+	FlowName *string `json:"FlowName,omitnil,omitempty" name:"FlowName"`
+
+	// <p>合同类型，自定义文本字符串，长度不能超过200。</p>
+	FlowType *string `json:"FlowType,omitnil,omitempty" name:"FlowType"`
+
+	// <p>调用方业务系统中的合同业务编号，可以用于外部系统和归档合同做关联，长度不超过 128 字节</p>
+	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
+
+	// <p>合同发起方/创建人名称，用于归档合同展示和检索，长度不超过 32 字符</p>
+	CreatorName *string `json:"CreatorName,omitnil,omitempty" name:"CreatorName"`
+
+	// <p>签署人信息列表，用于记录合同由哪些个人或企业签署，最多 50 个参与者。</p>
+	ApproverInfo []*ArchiveFlowApproverInfo `json:"ApproverInfo,omitnil,omitempty" name:"ApproverInfo"`
+
+	// <p>关注人信息列表，用于记录合同关注对象，最多 50 个关注者。</p>
+	CcInfo []*ArchiveFlowApproverInfo `json:"CcInfo,omitnil,omitempty" name:"CcInfo"`
+
+	// <p>调用方自定义透传数据，可用于保存业务扩展信息，长度不超过 20480 字节。</p>
+	UserData *string `json:"UserData,omitnil,omitempty" name:"UserData"`
+
+	// <p>合同描述/备注信息，长度不超过 1000 个字符</p>
+	FlowDescription *string `json:"FlowDescription,omitnil,omitempty" name:"FlowDescription"`
+
+	// <p>合同签署完成时间，Unix 秒级时间戳</p>
+	ApproveTime *int64 `json:"ApproveTime,omitnil,omitempty" name:"ApproveTime"`
+
+	// <p>合同发起时间/合同原始创建时间，Unix 秒级时间戳</p>
+	CustomCreatedOn *int64 `json:"CustomCreatedOn,omitnil,omitempty" name:"CustomCreatedOn"`
+}
+
+// Predefined struct for user
+type CreateArchiveFlowTaskRequestParams struct {
+	// <p>执行本接口操作的员工信息。注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// <p>归档合同列表，一次最多支持50个合同</p>
+	ArchiveFlows []*CreateArchiveFlow `json:"ArchiveFlows,omitnil,omitempty" name:"ArchiveFlows"`
+}
+
+type CreateArchiveFlowTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>执行本接口操作的员工信息。注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// <p>归档合同列表，一次最多支持50个合同</p>
+	ArchiveFlows []*CreateArchiveFlow `json:"ArchiveFlows,omitnil,omitempty" name:"ArchiveFlows"`
+}
+
+func (r *CreateArchiveFlowTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateArchiveFlowTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "ArchiveFlows")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateArchiveFlowTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateArchiveFlowTaskResponseParams struct {
+	// <p>归档任务ID，后续使用 <a href="">查询归档任务状态</a>接口获取归档任务执行结果</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateArchiveFlowTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateArchiveFlowTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateArchiveFlowTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateArchiveFlowTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -2451,7 +2588,7 @@ type CreateBatchQuickSignUrlRequestParams struct {
 	// <p>是否允许此链接中签署方批量确认已读文件。 <ul><li>false (默认): 不允许批量确认已读文件。</li> <li>true : 允许批量确认已读文件。</li></ul>注：<code>1. 此功能为白名单功能，使用前请联系对应客户经理进行开通。2. 若批量签署的合同中第一份待签署合同所选择的印章或者签名无法完全覆盖后续合同要求，或者当前签署人没有指定印章使用权限，则无法使用此功能，会自动退化为逐份确认。</code></p>
 	CanSkipReadFlow *bool `json:"CanSkipReadFlow,omitnil,omitempty" name:"CanSkipReadFlow"`
 
-	// <p>链接的有效时间，单位为秒。取值范围为 30分钟（1800）-90天（7776000）。如果不传，默认有效期为30分钟。 </p><p>注意： </p><ol><li><code>出于安全性考虑，若有效期大于30分钟，同设备24小时内点击链接查看合同需要进行手机验证码校验。</code> </li><li><code>动态签署方链接暂不支持修改过期时间。</code></li></ol>
+	// <p>链接的有效时间，单位为秒。取值范围为 30分钟（1800）-90天（7776000）。如果不传，默认有效期为30分钟。 </p><p>注意： </p><ol><li><code>出于安全性考虑，若有效期大于30分钟，同设备24小时内点击链接查看合同需要进行手机验证码校验。此校验将会扣除短信份额，不建议通过设置此值来缓存签署链接，建议在用户需要签署的时候临时生成链接。</code></li><li><code>动态签署方链接暂不支持修改过期时间。</code></li></ol>
 	ExpiredOn *int64 `json:"ExpiredOn,omitnil,omitempty" name:"ExpiredOn"`
 }
 
@@ -2506,7 +2643,7 @@ type CreateBatchQuickSignUrlRequest struct {
 	// <p>是否允许此链接中签署方批量确认已读文件。 <ul><li>false (默认): 不允许批量确认已读文件。</li> <li>true : 允许批量确认已读文件。</li></ul>注：<code>1. 此功能为白名单功能，使用前请联系对应客户经理进行开通。2. 若批量签署的合同中第一份待签署合同所选择的印章或者签名无法完全覆盖后续合同要求，或者当前签署人没有指定印章使用权限，则无法使用此功能，会自动退化为逐份确认。</code></p>
 	CanSkipReadFlow *bool `json:"CanSkipReadFlow,omitnil,omitempty" name:"CanSkipReadFlow"`
 
-	// <p>链接的有效时间，单位为秒。取值范围为 30分钟（1800）-90天（7776000）。如果不传，默认有效期为30分钟。 </p><p>注意： </p><ol><li><code>出于安全性考虑，若有效期大于30分钟，同设备24小时内点击链接查看合同需要进行手机验证码校验。</code> </li><li><code>动态签署方链接暂不支持修改过期时间。</code></li></ol>
+	// <p>链接的有效时间，单位为秒。取值范围为 30分钟（1800）-90天（7776000）。如果不传，默认有效期为30分钟。 </p><p>注意： </p><ol><li><code>出于安全性考虑，若有效期大于30分钟，同设备24小时内点击链接查看合同需要进行手机验证码校验。此校验将会扣除短信份额，不建议通过设置此值来缓存签署链接，建议在用户需要签署的时候临时生成链接。</code></li><li><code>动态签署方链接暂不支持修改过期时间。</code></li></ol>
 	ExpiredOn *int64 `json:"ExpiredOn,omitnil,omitempty" name:"ExpiredOn"`
 }
 
@@ -5342,6 +5479,77 @@ func (r *CreateFlowGroupByTemplatesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateFlowGroupRemindsRequestParams struct {
+	// <p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// <p>合同(流程)组的合同组Id</p>
+	FlowGroupId *string `json:"FlowGroupId,omitnil,omitempty" name:"FlowGroupId"`
+
+	// <p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+}
+
+type CreateFlowGroupRemindsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// <p>合同(流程)组的合同组Id</p>
+	FlowGroupId *string `json:"FlowGroupId,omitnil,omitempty" name:"FlowGroupId"`
+
+	// <p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+}
+
+func (r *CreateFlowGroupRemindsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateFlowGroupRemindsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "FlowGroupId")
+	delete(f, "Agent")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFlowGroupRemindsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateFlowGroupRemindsResponseParams struct {
+	// <p>合同组催办接口返回的详细信息。</p>
+	RemindFlowGroupRecords []*RemindFlowGroupRecord `json:"RemindFlowGroupRecords,omitnil,omitempty" name:"RemindFlowGroupRecords"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateFlowGroupRemindsResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateFlowGroupRemindsResponseParams `json:"Response"`
+}
+
+func (r *CreateFlowGroupRemindsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateFlowGroupRemindsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateFlowGroupSignReviewRequestParams struct {
 	// 执行本接口操作的员工信息。
 	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
@@ -6172,7 +6380,7 @@ type CreateFlowSignUrlRequestParams struct {
 	// <p>链接类型支持以下指定类型：</p><ul><li><b>0</b>: 签署链接（默认值），进入后可以填写或签署合同。</li><li><b>1 </b>: 预览链接，进入后可以预览合同当前的样子。</li></ul><p>注：</p><ol><li>当指定链接类型为1时，链接为预览链接，打开链接后无法进行签署操作，仅支持预览和查看当前合同状态。</li><li>如需生成发起方预览链接，则签署方信息应传空，即FlowApproverInfos传空或者不传。</li></ol>
 	UrlType *int64 `json:"UrlType,omitnil,omitempty" name:"UrlType"`
 
-	// <p>链接的有效时间，单位为秒。取值范围为 30分钟（1800）-90天（7776000）。如果不传，默认有效期为30分钟。</p><p>注意：</p><ol><li><code>出于安全性考虑，若有效期大于30分钟，同设备24小时内点击链接查看合同需要进行手机验证码校验。</code></li><li><code>若生成合同发起方预览链接，有效期大于30分钟，则需要进行验证码校验的手机号为发起方账号绑定的手机号。</code></li></ol>
+	// <p>链接的有效时间，单位为秒。取值范围为 30分钟（1800）-90天（7776000）。如果不传，默认有效期为30分钟。</p><p>注意：</p><ol><li><code>出于安全性考虑，若有效期大于30分钟，同设备24小时内点击链接查看合同需要进行手机验证码校验。此校验将会扣除短信份额，不建议通过设置此值来缓存签署链接，建议在用户需要签署的时候临时生成链接。</code></li><li><code>若生成合同发起方预览链接，有效期大于30分钟，则需要进行验证码校验的手机号为发起方账号绑定的手机号。</code></li></ol>
 	ExpiredOn *int64 `json:"ExpiredOn,omitnil,omitempty" name:"ExpiredOn"`
 }
 
@@ -6203,7 +6411,7 @@ type CreateFlowSignUrlRequest struct {
 	// <p>链接类型支持以下指定类型：</p><ul><li><b>0</b>: 签署链接（默认值），进入后可以填写或签署合同。</li><li><b>1 </b>: 预览链接，进入后可以预览合同当前的样子。</li></ul><p>注：</p><ol><li>当指定链接类型为1时，链接为预览链接，打开链接后无法进行签署操作，仅支持预览和查看当前合同状态。</li><li>如需生成发起方预览链接，则签署方信息应传空，即FlowApproverInfos传空或者不传。</li></ol>
 	UrlType *int64 `json:"UrlType,omitnil,omitempty" name:"UrlType"`
 
-	// <p>链接的有效时间，单位为秒。取值范围为 30分钟（1800）-90天（7776000）。如果不传，默认有效期为30分钟。</p><p>注意：</p><ol><li><code>出于安全性考虑，若有效期大于30分钟，同设备24小时内点击链接查看合同需要进行手机验证码校验。</code></li><li><code>若生成合同发起方预览链接，有效期大于30分钟，则需要进行验证码校验的手机号为发起方账号绑定的手机号。</code></li></ol>
+	// <p>链接的有效时间，单位为秒。取值范围为 30分钟（1800）-90天（7776000）。如果不传，默认有效期为30分钟。</p><p>注意：</p><ol><li><code>出于安全性考虑，若有效期大于30分钟，同设备24小时内点击链接查看合同需要进行手机验证码校验。此校验将会扣除短信份额，不建议通过设置此值来缓存签署链接，建议在用户需要签署的时候临时生成链接。</code></li><li><code>若生成合同发起方预览链接，有效期大于30分钟，则需要进行验证码校验的手机号为发起方账号绑定的手机号。</code></li></ol>
 	ExpiredOn *int64 `json:"ExpiredOn,omitnil,omitempty" name:"ExpiredOn"`
 }
 
@@ -7646,6 +7854,9 @@ type CreateOrganizationAuthUrlRequestParams struct {
 
 	// <p>指定企业认证的授权方式 支持多选:</p><ul><li><strong>1</strong>: 上传营业执照</li><li><strong>2</strong>: 腾讯云快速认证</li><li><strong>3</strong>: 腾讯商户号授权<font color="red">（仅支持小程序端）</font></li></ul><p>注意：<br>1.如果没有指定，则默认是1,仅有上传营业执照。<br>2.H5 仅支持上传营业执照。</p>
 	AuthorizationMethod []*uint64 `json:"AuthorizationMethod,omitnil,omitempty" name:"AuthorizationMethod"`
+
+	// <p>企业认证页面隐藏上传营业执照<br><img src="https://qcloudimg.tencent-cloud.cn/raw/cf827ce0e2043d8cc85e0735c9cfa3fc.png" alt="image"><br><img src="https://qcloudimg.tencent-cloud.cn/raw/f908cabe71238c78ee8fafc70888a344.png" alt="image"></p>
+	HideBizLicense *bool `json:"HideBizLicense,omitnil,omitempty" name:"HideBizLicense"`
 }
 
 type CreateOrganizationAuthUrlRequest struct {
@@ -7734,6 +7945,9 @@ type CreateOrganizationAuthUrlRequest struct {
 
 	// <p>指定企业认证的授权方式 支持多选:</p><ul><li><strong>1</strong>: 上传营业执照</li><li><strong>2</strong>: 腾讯云快速认证</li><li><strong>3</strong>: 腾讯商户号授权<font color="red">（仅支持小程序端）</font></li></ul><p>注意：<br>1.如果没有指定，则默认是1,仅有上传营业执照。<br>2.H5 仅支持上传营业执照。</p>
 	AuthorizationMethod []*uint64 `json:"AuthorizationMethod,omitnil,omitempty" name:"AuthorizationMethod"`
+
+	// <p>企业认证页面隐藏上传营业执照<br><img src="https://qcloudimg.tencent-cloud.cn/raw/cf827ce0e2043d8cc85e0735c9cfa3fc.png" alt="image"><br><img src="https://qcloudimg.tencent-cloud.cn/raw/f908cabe71238c78ee8fafc70888a344.png" alt="image"></p>
+	HideBizLicense *bool `json:"HideBizLicense,omitnil,omitempty" name:"HideBizLicense"`
 }
 
 func (r *CreateOrganizationAuthUrlRequest) ToJsonString() string {
@@ -7776,6 +7990,7 @@ func (r *CreateOrganizationAuthUrlRequest) FromJsonString(s string) error {
 	delete(f, "OrganizationIdCardType")
 	delete(f, "OrganizationIdCardTypeSame")
 	delete(f, "AuthorizationMethod")
+	delete(f, "HideBizLicense")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateOrganizationAuthUrlRequest has unknown keys!", "")
 	}
@@ -7812,94 +8027,68 @@ func (r *CreateOrganizationAuthUrlResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateOrganizationBatchSignUrlRequestParams struct {
-	// 执行本接口操作的员工信息。使用此接口时，必须填写userId。
-	// 支持填入集团子公司经办人 userId 代发合同。
-	// 
-	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	// <p>执行本接口操作的员工信息。使用此接口时，必须填写userId。<br>支持填入集团子公司经办人 userId 代发合同。</p><p>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 请指定需执行批量签署的流程ID，数量范围为1-100。您可登录腾讯电子签控制台，浏览 "合同"->"合同中心" 以查阅某一合同的FlowId（在页面中显示为合同ID）。用户将利用链接对这些合同实施批量操作。  注：生成动态签署方领取时此参数必传。 
+	// <p>请指定需执行批量签署的流程ID，数量范围为1-100。您可登录腾讯电子签控制台，浏览 &quot;合同&quot;-&gt;&quot;合同中心&quot; 以查阅某一合同的FlowId（在页面中显示为合同ID）。用户将利用链接对这些合同实施批量操作。  注：生成动态签署方领取时此参数必传。</p>
 	FlowIds []*string `json:"FlowIds,omitnil,omitempty" name:"FlowIds"`
 
-	// 代理企业和员工的信息。
-	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	// <p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
-	// 员工在腾讯电子签平台的独特身份标识，为32位字符串。
-	// 您可登录腾讯电子签控制台，在 "更多能力"->"组织管理" 中查阅某位员工的UserId（在页面中显示为用户ID）。
-	// UserId必须是传入合同（FlowId）中的签署人。
-	// 
-	// <ul>
-	// <li>1. 若UserId为空，Name和Mobile 必须提供。</li>
-	// <li>2. 若UserId 与 Name，Mobile均存在，将优先采用UserId对应的员工。</li>
-	// </ul>
+	// <p>员工在腾讯电子签平台的独特身份标识，为32位字符串。<br>您可登录腾讯电子签控制台，在 &quot;更多能力&quot;-&gt;&quot;组织管理&quot; 中查阅某位员工的UserId（在页面中显示为用户ID）。<br>UserId必须是传入合同（FlowId）中的签署人。</p><ul><li>1. 若UserId为空，Name和Mobile 必须提供。</li><li>2. 若UserId 与 Name，Mobile均存在，将优先采用UserId对应的员工。</li></ul>
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
-	// 员工姓名，必须与手机号码一起使用。
-	// 如果UserId为空，则此字段不能为空。同时，姓名和手机号码必须与传入合同（FlowId）中的签署人信息一致。
+	// <p>员工姓名，必须与手机号码一起使用。<br>如果UserId为空，则此字段不能为空。同时，姓名和手机号码必须与传入合同（FlowId）中的签署人信息一致。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 员工手机号，必须与姓名一起使用。
-	//  如果UserId为空，则此字段不能为空。同时，姓名和手机号码必须与传入合同（FlowId）中的签署人信息一致。
+	// <p>员工手机号，必须与姓名一起使用。<br> 如果UserId为空，则此字段不能为空。同时，姓名和手机号码必须与传入合同（FlowId）中的签署人信息一致。</p>
 	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
 
-	// 为签署方经办人在签署合同中的参与方ID，必须与参数FlowIds数组一一对应。您可以通过查询合同接口（DescribeFlowInfo）查询此参数。若传了此参数，则可以不传 UserId, Name, Mobile等参数  注：生成动态签署方领取时此参数必传。
+	// <p>为签署方经办人在签署合同中的参与方ID，必须与参数FlowIds数组一一对应。您可以通过查询合同接口（DescribeFlowInfo）查询此参数。若传了此参数，则可以不传 UserId, Name, Mobile等参数  注：生成动态签署方领取时此参数必传。</p>
 	RecipientIds []*string `json:"RecipientIds,omitnil,omitempty" name:"RecipientIds"`
 
-	// 合同组Id，传入此参数则可以不传FlowIds
+	// <p>合同组Id，传入此参数则可以不传FlowIds</p>
 	FlowGroupId *string `json:"FlowGroupId,omitnil,omitempty" name:"FlowGroupId"`
 
-	// 是否允许此链接中签署方批量拒签。 <ul><li>false (默认): 不允许批量拒签</li> <li>true : 允许批量拒签。</li></ul>注：`当前合同组不支持批量拒签功能。请对合同组中的每个子合同逐一执行拒签操作，以达到拒签整个合同组的效果。`
+	// <p>是否允许此链接中签署方批量拒签。 <ul><li>false (默认): 不允许批量拒签</li> <li>true : 允许批量拒签。</li></ul></p>
 	CanBatchReject *bool `json:"CanBatchReject,omitnil,omitempty" name:"CanBatchReject"`
 
-	// 动态签署方领取链接配置。
+	// <p>动态签署方领取链接配置。</p>
 	DynamicSignOption *DynamicSignOption `json:"DynamicSignOption,omitnil,omitempty" name:"DynamicSignOption"`
 }
 
 type CreateOrganizationBatchSignUrlRequest struct {
 	*tchttp.BaseRequest
 	
-	// 执行本接口操作的员工信息。使用此接口时，必须填写userId。
-	// 支持填入集团子公司经办人 userId 代发合同。
-	// 
-	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	// <p>执行本接口操作的员工信息。使用此接口时，必须填写userId。<br>支持填入集团子公司经办人 userId 代发合同。</p><p>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 请指定需执行批量签署的流程ID，数量范围为1-100。您可登录腾讯电子签控制台，浏览 "合同"->"合同中心" 以查阅某一合同的FlowId（在页面中显示为合同ID）。用户将利用链接对这些合同实施批量操作。  注：生成动态签署方领取时此参数必传。 
+	// <p>请指定需执行批量签署的流程ID，数量范围为1-100。您可登录腾讯电子签控制台，浏览 &quot;合同&quot;-&gt;&quot;合同中心&quot; 以查阅某一合同的FlowId（在页面中显示为合同ID）。用户将利用链接对这些合同实施批量操作。  注：生成动态签署方领取时此参数必传。</p>
 	FlowIds []*string `json:"FlowIds,omitnil,omitempty" name:"FlowIds"`
 
-	// 代理企业和员工的信息。
-	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	// <p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
-	// 员工在腾讯电子签平台的独特身份标识，为32位字符串。
-	// 您可登录腾讯电子签控制台，在 "更多能力"->"组织管理" 中查阅某位员工的UserId（在页面中显示为用户ID）。
-	// UserId必须是传入合同（FlowId）中的签署人。
-	// 
-	// <ul>
-	// <li>1. 若UserId为空，Name和Mobile 必须提供。</li>
-	// <li>2. 若UserId 与 Name，Mobile均存在，将优先采用UserId对应的员工。</li>
-	// </ul>
+	// <p>员工在腾讯电子签平台的独特身份标识，为32位字符串。<br>您可登录腾讯电子签控制台，在 &quot;更多能力&quot;-&gt;&quot;组织管理&quot; 中查阅某位员工的UserId（在页面中显示为用户ID）。<br>UserId必须是传入合同（FlowId）中的签署人。</p><ul><li>1. 若UserId为空，Name和Mobile 必须提供。</li><li>2. 若UserId 与 Name，Mobile均存在，将优先采用UserId对应的员工。</li></ul>
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
-	// 员工姓名，必须与手机号码一起使用。
-	// 如果UserId为空，则此字段不能为空。同时，姓名和手机号码必须与传入合同（FlowId）中的签署人信息一致。
+	// <p>员工姓名，必须与手机号码一起使用。<br>如果UserId为空，则此字段不能为空。同时，姓名和手机号码必须与传入合同（FlowId）中的签署人信息一致。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 员工手机号，必须与姓名一起使用。
-	//  如果UserId为空，则此字段不能为空。同时，姓名和手机号码必须与传入合同（FlowId）中的签署人信息一致。
+	// <p>员工手机号，必须与姓名一起使用。<br> 如果UserId为空，则此字段不能为空。同时，姓名和手机号码必须与传入合同（FlowId）中的签署人信息一致。</p>
 	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
 
-	// 为签署方经办人在签署合同中的参与方ID，必须与参数FlowIds数组一一对应。您可以通过查询合同接口（DescribeFlowInfo）查询此参数。若传了此参数，则可以不传 UserId, Name, Mobile等参数  注：生成动态签署方领取时此参数必传。
+	// <p>为签署方经办人在签署合同中的参与方ID，必须与参数FlowIds数组一一对应。您可以通过查询合同接口（DescribeFlowInfo）查询此参数。若传了此参数，则可以不传 UserId, Name, Mobile等参数  注：生成动态签署方领取时此参数必传。</p>
 	RecipientIds []*string `json:"RecipientIds,omitnil,omitempty" name:"RecipientIds"`
 
-	// 合同组Id，传入此参数则可以不传FlowIds
+	// <p>合同组Id，传入此参数则可以不传FlowIds</p>
 	FlowGroupId *string `json:"FlowGroupId,omitnil,omitempty" name:"FlowGroupId"`
 
-	// 是否允许此链接中签署方批量拒签。 <ul><li>false (默认): 不允许批量拒签</li> <li>true : 允许批量拒签。</li></ul>注：`当前合同组不支持批量拒签功能。请对合同组中的每个子合同逐一执行拒签操作，以达到拒签整个合同组的效果。`
+	// <p>是否允许此链接中签署方批量拒签。 <ul><li>false (默认): 不允许批量拒签</li> <li>true : 允许批量拒签。</li></ul></p>
 	CanBatchReject *bool `json:"CanBatchReject,omitnil,omitempty" name:"CanBatchReject"`
 
-	// 动态签署方领取链接配置。
+	// <p>动态签署方领取链接配置。</p>
 	DynamicSignOption *DynamicSignOption `json:"DynamicSignOption,omitnil,omitempty" name:"DynamicSignOption"`
 }
 
@@ -7933,10 +8122,10 @@ func (r *CreateOrganizationBatchSignUrlRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateOrganizationBatchSignUrlResponseParams struct {
-	// 批量签署入口链接，用户可使用这个链接跳转到控制台页面对合同进行签署操作。
+	// <p>批量签署入口链接，用户可使用这个链接跳转到控制台页面对合同进行签署操作。</p>
 	SignUrl *string `json:"SignUrl,omitnil,omitempty" name:"SignUrl"`
 
-	// 链接过期截止时间，格式为Unix标准时间戳（秒），默认为7天后截止。
+	// <p>链接过期截止时间，格式为Unix标准时间戳（秒），默认为7天后截止。</p>
 	ExpiredTime *int64 `json:"ExpiredTime,omitnil,omitempty" name:"ExpiredTime"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9730,170 +9919,122 @@ func (r *CreateSealPolicyResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateSealRequestParams struct {
-	// 执行本接口操作的员工信息。
-	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	// <p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 电子印章名字，1-50个中文字符
-	// 注:`同一企业下电子印章名字不能相同`
+	// <p>电子印章名字，1-50个中文字符<br>注:<code>同一企业下电子印章名字不能相同</code></p>
 	SealName *string `json:"SealName,omitnil,omitempty" name:"SealName"`
 
-	// 代理企业和员工的信息。
-	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	// <p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
-	// 电子印章生成方式
-	// <ul>
-	// <li><strong>空值</strong>:(默认)使用上传的图片生成印章, 此时需要上传SealImage图片</li>
-	// <li><strong>SealGenerateSourceSystem</strong>: 系统生成印章, 无需上传SealImage图片</li>
-	// </ul>
+	// <p>电子印章生成方式</p><ul><li><strong>空值</strong>:(默认)使用上传的图片生成印章, 此时需要上传SealImage图片</li><li><strong>SealGenerateSourceSystem</strong>: 系统生成印章, 无需上传SealImage图片</li></ul>
 	GenerateSource *string `json:"GenerateSource,omitnil,omitempty" name:"GenerateSource"`
 
-	// 电子印章类型 , 可选类型如下: <ul><li>**OFFICIAL**: (默认)公章</li><li>**CONTRACT**: 合同专用章;</li><li>**FINANCE**: 财务专用章;</li><li>**PERSONNEL**: 人事专用章</li><li>**INVOICE**: 发票专用章</li><li>**OTHER**: 其他</li></ul>注: 同企业下只能有<font color="red">一个</font>公章, 重复创建会报错
+	// <p>电子印章类型 , 可选类型如下: <ul><li><strong>OFFICIAL</strong>: (默认)公章</li><li><strong>CONTRACT</strong>: 合同专用章;</li><li><strong>FINANCE</strong>: 财务专用章;</li><li><strong>PERSONNEL</strong>: 人事专用章</li><li><strong>INVOICE</strong>: 发票专用章</li><li><strong>OTHER</strong>: 其他</li></ul>注: 同企业下只能有<font color="red">一个</font>公章, 重复创建会报错</p>
 	SealType *string `json:"SealType,omitnil,omitempty" name:"SealType"`
 
-	// 电子印章图片文件名称，1-50个中文字符。
+	// <p>电子印章图片文件名称，1-50个中文字符。</p>
 	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
 
-	// 电子印章图片base64编码，大小不超过10M（原始图片不超过5M），只支持PNG或JPG图片格式
-	// 
-	// 注: `通过图片创建的电子印章，需电子签平台人工审核`
-	// 
+	// <p>电子印章图片base64编码，大小不超过10M（原始图片不超过5M），只支持PNG或JPG图片格式</p><p>注: <code>通过图片创建的电子印章，需电子签平台人工审核</code></p>
 	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
 
-	// 电子印章宽度,单位px
-	// 参数不再启用，系统会设置印章大小为标准尺寸。
+	// <p>电子印章宽度,单位px<br>参数不再启用，系统会设置印章大小为标准尺寸。</p>
 	Width *int64 `json:"Width,omitnil,omitempty" name:"Width"`
 
-	// 电子印章高度,单位px
-	// 参数不再启用，系统会设置印章大小为标准尺寸。
+	// <p>电子印章高度,单位px<br>参数不再启用，系统会设置印章大小为标准尺寸。</p>
 	Height *int64 `json:"Height,omitnil,omitempty" name:"Height"`
 
-	// 电子印章印章颜色(默认红色RED),RED-红色
-	// 
-	// 系统目前只支持红色印章创建。
+	// <p>电子印章印章颜色(默认红色RED),RED-红色</p><p>系统目前只支持红色印章创建。</p>
 	Color *string `json:"Color,omitnil,omitempty" name:"Color"`
 
-	// 企业印章横向文字，最多可填15个汉字  (若超过印章最大宽度，优先压缩字间距，其次缩小字号)
-	// 横向文字的位置如下图中的"印章横向文字在这里"
-	// 
-	// ![image](https://dyn.ess.tencent.cn/guide/capi/CreateSealByImage2.png)
+	// <p>企业印章横向文字，最多可填15个汉字  (若超过印章最大宽度，优先压缩字间距，其次缩小字号)<br>横向文字的位置如下图中的&quot;印章横向文字在这里&quot;</p><p><img src="https://dyn.ess.tencent.cn/guide/capi/CreateSealByImage2.png" alt="image"></p>
 	SealHorizontalText *string `json:"SealHorizontalText,omitnil,omitempty" name:"SealHorizontalText"`
 
-	// 暂时不支持下弦文字设置
+	// <p>暂时不支持下弦文字设置</p>
 	SealChordText *string `json:"SealChordText,omitnil,omitempty" name:"SealChordText"`
 
-	// 系统生成的印章只支持STAR
+	// <p>系统生成的印章只支持：STAR</p>
 	SealCentralType *string `json:"SealCentralType,omitnil,omitempty" name:"SealCentralType"`
 
-	// 通过文件上传时，服务端生成的电子印章上传图片的token
+	// <p>通过文件上传时，服务端生成的电子印章上传图片的token</p>
 	FileToken *string `json:"FileToken,omitnil,omitempty" name:"FileToken"`
 
-	// 印章样式, 可以选择的样式如下: 
-	// <ul><li>**circle**:(默认)圆形印章</li>
-	// <li>**ellipse**:椭圆印章</li></ul>
+	// <p>印章样式, 可以选择的样式如下: </p><ul><li>**circle**:(默认)圆形印章</li><li>**ellipse**:椭圆印章</li></ul>
 	SealStyle *string `json:"SealStyle,omitnil,omitempty" name:"SealStyle"`
 
-	// 印章尺寸取值描述, 可以选择的尺寸如下: <ul><li> **38_38**: 圆形企业公章直径38mm, 当SealStyle是圆形的时候才有效</li> <li> **40_40**: 圆形企业公章直径40mm, 当SealStyle是圆形的时候才有效</li> <li> **42_42**（默认）: 圆形企业公章直径42mm, 当SealStyle是圆形的时候才有效</li> <li> **45_45**: 圆形企业印章直径45mm, 当SealStyle是圆形的时候才有效</li> <li> **50_50**: 圆形企业印章直径50mm, 当SealStyle是圆形的时候才有效</li> <li> **58_58**: 圆形企业印章直径58mm, 当SealStyle是圆形的时候才有效</li>  <li> **40_30**: 椭圆形印章40mm x 30mm, 当SealStyle是椭圆的时候才有效</li> <li> **45_30**: 椭圆形印章45mm x 30mm, 当SealStyle是椭圆的时候才有效</li> </ul>
+	// <p>印章尺寸取值描述, 可以选择的尺寸如下: <ul><li> <strong>38_38</strong>: 圆形企业公章直径38mm, 当SealStyle是圆形的时候才有效</li> <li> <strong>40_40</strong>: 圆形企业公章直径40mm, 当SealStyle是圆形的时候才有效</li> <li> <strong>42_42</strong>（默认）: 圆形企业公章直径42mm, 当SealStyle是圆形的时候才有效</li> <li> <strong>45_45</strong>: 圆形企业印章直径45mm, 当SealStyle是圆形的时候才有效</li> <li> <strong>50_50</strong>: 圆形企业印章直径50mm, 当SealStyle是圆形的时候才有效</li> <li> <strong>58_58</strong>: 圆形企业印章直径58mm, 当SealStyle是圆形的时候才有效</li>  <li> <strong>40_30</strong>: 椭圆形印章40mm x 30mm, 当SealStyle是椭圆的时候才有效</li> <li> <strong>45_30</strong>: 椭圆形印章45mm x 30mm, 当SealStyle是椭圆的时候才有效</li> </ul></p>
 	SealSize *string `json:"SealSize,omitnil,omitempty" name:"SealSize"`
 
-	// 企业税号
-	// 注:
-	// <ul>
-	// <li>1.印章类型SealType是INVOICE类型时，此参数才会生效</li>
-	// <li>2.印章类型SealType是INVOICE类型，且该字段没有传入值或传入空时，会取该企业对应的统一社会信用代码作为默认的企业税号（<font color="red">如果是通过授权书授权方式认证的企业，此参数必传不能为空</font>）</li>
-	// </ul>
+	// <p>企业税号<br>注:</p><ul><li>1.印章类型SealType是INVOICE类型时，此参数才会生效</li><li>2.印章类型SealType是INVOICE类型，且该字段没有传入值或传入空时，会取该企业对应的统一社会信用代码作为默认的企业税号（<font color="red">如果是通过授权书授权方式认证的企业，此参数必传不能为空</font>）</li></ul>
 	TaxIdentifyCode *string `json:"TaxIdentifyCode,omitnil,omitempty" name:"TaxIdentifyCode"`
 
-	// 印章描述内容
+	// <p>印章描述内容</p>
 	SealDescription *string `json:"SealDescription,omitnil,omitempty" name:"SealDescription"`
 
-	// 个性化配置字段，默认不传。
+	// <p>个性化配置字段，默认不传。</p>
 	Options []*Option `json:"Options,omitnil,omitempty" name:"Options"`
 }
 
 type CreateSealRequest struct {
 	*tchttp.BaseRequest
 	
-	// 执行本接口操作的员工信息。
-	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	// <p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 电子印章名字，1-50个中文字符
-	// 注:`同一企业下电子印章名字不能相同`
+	// <p>电子印章名字，1-50个中文字符<br>注:<code>同一企业下电子印章名字不能相同</code></p>
 	SealName *string `json:"SealName,omitnil,omitempty" name:"SealName"`
 
-	// 代理企业和员工的信息。
-	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	// <p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
-	// 电子印章生成方式
-	// <ul>
-	// <li><strong>空值</strong>:(默认)使用上传的图片生成印章, 此时需要上传SealImage图片</li>
-	// <li><strong>SealGenerateSourceSystem</strong>: 系统生成印章, 无需上传SealImage图片</li>
-	// </ul>
+	// <p>电子印章生成方式</p><ul><li><strong>空值</strong>:(默认)使用上传的图片生成印章, 此时需要上传SealImage图片</li><li><strong>SealGenerateSourceSystem</strong>: 系统生成印章, 无需上传SealImage图片</li></ul>
 	GenerateSource *string `json:"GenerateSource,omitnil,omitempty" name:"GenerateSource"`
 
-	// 电子印章类型 , 可选类型如下: <ul><li>**OFFICIAL**: (默认)公章</li><li>**CONTRACT**: 合同专用章;</li><li>**FINANCE**: 财务专用章;</li><li>**PERSONNEL**: 人事专用章</li><li>**INVOICE**: 发票专用章</li><li>**OTHER**: 其他</li></ul>注: 同企业下只能有<font color="red">一个</font>公章, 重复创建会报错
+	// <p>电子印章类型 , 可选类型如下: <ul><li><strong>OFFICIAL</strong>: (默认)公章</li><li><strong>CONTRACT</strong>: 合同专用章;</li><li><strong>FINANCE</strong>: 财务专用章;</li><li><strong>PERSONNEL</strong>: 人事专用章</li><li><strong>INVOICE</strong>: 发票专用章</li><li><strong>OTHER</strong>: 其他</li></ul>注: 同企业下只能有<font color="red">一个</font>公章, 重复创建会报错</p>
 	SealType *string `json:"SealType,omitnil,omitempty" name:"SealType"`
 
-	// 电子印章图片文件名称，1-50个中文字符。
+	// <p>电子印章图片文件名称，1-50个中文字符。</p>
 	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
 
-	// 电子印章图片base64编码，大小不超过10M（原始图片不超过5M），只支持PNG或JPG图片格式
-	// 
-	// 注: `通过图片创建的电子印章，需电子签平台人工审核`
-	// 
+	// <p>电子印章图片base64编码，大小不超过10M（原始图片不超过5M），只支持PNG或JPG图片格式</p><p>注: <code>通过图片创建的电子印章，需电子签平台人工审核</code></p>
 	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
 
-	// 电子印章宽度,单位px
-	// 参数不再启用，系统会设置印章大小为标准尺寸。
+	// <p>电子印章宽度,单位px<br>参数不再启用，系统会设置印章大小为标准尺寸。</p>
 	Width *int64 `json:"Width,omitnil,omitempty" name:"Width"`
 
-	// 电子印章高度,单位px
-	// 参数不再启用，系统会设置印章大小为标准尺寸。
+	// <p>电子印章高度,单位px<br>参数不再启用，系统会设置印章大小为标准尺寸。</p>
 	Height *int64 `json:"Height,omitnil,omitempty" name:"Height"`
 
-	// 电子印章印章颜色(默认红色RED),RED-红色
-	// 
-	// 系统目前只支持红色印章创建。
+	// <p>电子印章印章颜色(默认红色RED),RED-红色</p><p>系统目前只支持红色印章创建。</p>
 	Color *string `json:"Color,omitnil,omitempty" name:"Color"`
 
-	// 企业印章横向文字，最多可填15个汉字  (若超过印章最大宽度，优先压缩字间距，其次缩小字号)
-	// 横向文字的位置如下图中的"印章横向文字在这里"
-	// 
-	// ![image](https://dyn.ess.tencent.cn/guide/capi/CreateSealByImage2.png)
+	// <p>企业印章横向文字，最多可填15个汉字  (若超过印章最大宽度，优先压缩字间距，其次缩小字号)<br>横向文字的位置如下图中的&quot;印章横向文字在这里&quot;</p><p><img src="https://dyn.ess.tencent.cn/guide/capi/CreateSealByImage2.png" alt="image"></p>
 	SealHorizontalText *string `json:"SealHorizontalText,omitnil,omitempty" name:"SealHorizontalText"`
 
-	// 暂时不支持下弦文字设置
+	// <p>暂时不支持下弦文字设置</p>
 	SealChordText *string `json:"SealChordText,omitnil,omitempty" name:"SealChordText"`
 
-	// 系统生成的印章只支持STAR
+	// <p>系统生成的印章只支持：STAR</p>
 	SealCentralType *string `json:"SealCentralType,omitnil,omitempty" name:"SealCentralType"`
 
-	// 通过文件上传时，服务端生成的电子印章上传图片的token
+	// <p>通过文件上传时，服务端生成的电子印章上传图片的token</p>
 	FileToken *string `json:"FileToken,omitnil,omitempty" name:"FileToken"`
 
-	// 印章样式, 可以选择的样式如下: 
-	// <ul><li>**circle**:(默认)圆形印章</li>
-	// <li>**ellipse**:椭圆印章</li></ul>
+	// <p>印章样式, 可以选择的样式如下: </p><ul><li>**circle**:(默认)圆形印章</li><li>**ellipse**:椭圆印章</li></ul>
 	SealStyle *string `json:"SealStyle,omitnil,omitempty" name:"SealStyle"`
 
-	// 印章尺寸取值描述, 可以选择的尺寸如下: <ul><li> **38_38**: 圆形企业公章直径38mm, 当SealStyle是圆形的时候才有效</li> <li> **40_40**: 圆形企业公章直径40mm, 当SealStyle是圆形的时候才有效</li> <li> **42_42**（默认）: 圆形企业公章直径42mm, 当SealStyle是圆形的时候才有效</li> <li> **45_45**: 圆形企业印章直径45mm, 当SealStyle是圆形的时候才有效</li> <li> **50_50**: 圆形企业印章直径50mm, 当SealStyle是圆形的时候才有效</li> <li> **58_58**: 圆形企业印章直径58mm, 当SealStyle是圆形的时候才有效</li>  <li> **40_30**: 椭圆形印章40mm x 30mm, 当SealStyle是椭圆的时候才有效</li> <li> **45_30**: 椭圆形印章45mm x 30mm, 当SealStyle是椭圆的时候才有效</li> </ul>
+	// <p>印章尺寸取值描述, 可以选择的尺寸如下: <ul><li> <strong>38_38</strong>: 圆形企业公章直径38mm, 当SealStyle是圆形的时候才有效</li> <li> <strong>40_40</strong>: 圆形企业公章直径40mm, 当SealStyle是圆形的时候才有效</li> <li> <strong>42_42</strong>（默认）: 圆形企业公章直径42mm, 当SealStyle是圆形的时候才有效</li> <li> <strong>45_45</strong>: 圆形企业印章直径45mm, 当SealStyle是圆形的时候才有效</li> <li> <strong>50_50</strong>: 圆形企业印章直径50mm, 当SealStyle是圆形的时候才有效</li> <li> <strong>58_58</strong>: 圆形企业印章直径58mm, 当SealStyle是圆形的时候才有效</li>  <li> <strong>40_30</strong>: 椭圆形印章40mm x 30mm, 当SealStyle是椭圆的时候才有效</li> <li> <strong>45_30</strong>: 椭圆形印章45mm x 30mm, 当SealStyle是椭圆的时候才有效</li> </ul></p>
 	SealSize *string `json:"SealSize,omitnil,omitempty" name:"SealSize"`
 
-	// 企业税号
-	// 注:
-	// <ul>
-	// <li>1.印章类型SealType是INVOICE类型时，此参数才会生效</li>
-	// <li>2.印章类型SealType是INVOICE类型，且该字段没有传入值或传入空时，会取该企业对应的统一社会信用代码作为默认的企业税号（<font color="red">如果是通过授权书授权方式认证的企业，此参数必传不能为空</font>）</li>
-	// </ul>
+	// <p>企业税号<br>注:</p><ul><li>1.印章类型SealType是INVOICE类型时，此参数才会生效</li><li>2.印章类型SealType是INVOICE类型，且该字段没有传入值或传入空时，会取该企业对应的统一社会信用代码作为默认的企业税号（<font color="red">如果是通过授权书授权方式认证的企业，此参数必传不能为空</font>）</li></ul>
 	TaxIdentifyCode *string `json:"TaxIdentifyCode,omitnil,omitempty" name:"TaxIdentifyCode"`
 
-	// 印章描述内容
+	// <p>印章描述内容</p>
 	SealDescription *string `json:"SealDescription,omitnil,omitempty" name:"SealDescription"`
 
-	// 个性化配置字段，默认不传。
+	// <p>个性化配置字段，默认不传。</p>
 	Options []*Option `json:"Options,omitnil,omitempty" name:"Options"`
 }
 
@@ -9936,16 +10077,23 @@ func (r *CreateSealRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateSealResponseParams struct {
-	// 电子印章ID，为32位字符串。
-	// 建议开发者保留此印章ID，后续指定签署区印章或者操作印章需此印章ID。
-	// 可登录腾讯电子签控制台，在 "印章"->"印章中心"选择查看的印章，在"印章详情" 中查看某个印章的SealId(在页面中展示为印章ID)。
+	// <p>电子印章ID，为32位字符串。<br>建议开发者保留此印章ID，后续指定签署区印章或者操作印章需此印章ID。<br>可登录腾讯电子签控制台，在 &quot;印章&quot;-&gt;&quot;印章中心&quot;选择查看的印章，在&quot;印章详情&quot; 中查看某个印章的SealId(在页面中展示为印章ID)。</p>
 	SealId *string `json:"SealId,omitnil,omitempty" name:"SealId"`
 
-	// 人脸验证操作人链接，用法可以参考"[跳转电子签小程序配置](https://qian.tencent.com/developers/company/openwxminiprogram/)"，默认为空。
+	// <p>电子印章预览链接地址，地址默认失效时间为24小时。</p>
+	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
+
+	// <p>人脸验证操作人链接，用法可以参考&quot;<a href="https://qian.tencent.com/developers/company/openwxminiprogram/">跳转电子签小程序配置</a>&quot;，默认为空。</p>
 	SealOperatorVerifyPath *string `json:"SealOperatorVerifyPath,omitnil,omitempty" name:"SealOperatorVerifyPath"`
 
-	// 人脸验证操作人二维码链接，扫码后会跳转到腾讯电子签小程序进行人脸验证，默认为空。
+	// <p>人脸验证操作人二维码链接，扫码后会跳转到腾讯电子签小程序进行人脸验证，默认为空。</p>
 	SealOperatorVerifyQrcodeUrl *string `json:"SealOperatorVerifyQrcodeUrl,omitnil,omitempty" name:"SealOperatorVerifyQrcodeUrl"`
+
+	// <p>创建印章预览逻辑，返回的是印章加盖在示例文件上的效果图片链接。链接有效期为90天。</p>
+	PreviewFileUrl *string `json:"PreviewFileUrl,omitnil,omitempty" name:"PreviewFileUrl"`
+
+	// <p>创建印章预览逻辑，返回的是印章加盖在示例文件上的效果PDF文件链接。链接有效期为90天。</p>
+	PreviewPdfUrl *string `json:"PreviewPdfUrl,omitnil,omitempty" name:"PreviewPdfUrl"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -11516,6 +11664,73 @@ type Department struct {
 }
 
 // Predefined struct for user
+type DescribeArchiveFlowTaskRequestParams struct {
+	// <p>执行本接口操作的员工信息。注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// <p>任务id，<a href="">创建归档任务</a>时返回</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type DescribeArchiveFlowTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>执行本接口操作的员工信息。注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// <p>任务id，<a href="">创建归档任务</a>时返回</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *DescribeArchiveFlowTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeArchiveFlowTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeArchiveFlowTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeArchiveFlowTaskResponseParams struct {
+	// <p>任务状态</p><p>枚举值：</p><ul><li>0： 待处理</li><li>1： 处理中</li><li>2： 任务完成</li><li>3： 任务完成(存在失败)</li></ul>
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>每条合同的处理结果，与创建任务的archive_flows列表顺序一致</p>
+	ArchiveFlowResults []*ArchiveFlowResult `json:"ArchiveFlowResults,omitnil,omitempty" name:"ArchiveFlowResults"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeArchiveFlowTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeArchiveFlowTaskResponseParams `json:"Response"`
+}
+
+func (r *DescribeArchiveFlowTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeArchiveFlowTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeBatchOrganizationRegistrationTasksRequestParams struct {
 	// 执行本接口操作的员工信息。
 	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
@@ -12939,51 +13154,45 @@ func (r *DescribeEnterpriseContractReviewChecklistsResponse) FromJsonString(s st
 
 // Predefined struct for user
 type DescribeExtendedServiceAuthDetailRequestParams struct {
-	// 执行本接口操作的员工信息。
-	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	// <p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 要查询的扩展服务类型。
-	// 如下所示：
-	// <ul><li>OPEN_SERVER_SIGN：企业静默签署</li>
-	// <li>BATCH_SIGN：批量签署</li>
-	// </ul>
+	// <p>要查询的扩展服务类型。<br>如下所示：</p><ul><li>OPEN_SERVER_SIGN：企业静默签署</li><li>BATCH_SIGN：批量签署</li></ul>
 	ExtendServiceType *string `json:"ExtendServiceType,omitnil,omitempty" name:"ExtendServiceType"`
 
-	// 代理企业和员工的信息。
-	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	// <p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
-	// 指定每页返回的数据条数，和Offset参数配合使用。 注：`1.默认值为20，单页做大值为200。`	
+	// <p>指定每页返回的数据条数，和Offset参数配合使用。 注：<code>1.默认值为20，单页做大值为200。</code></p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 查询结果分页返回，指定从第几页返回数据，和Limit参数配合使用。 注：`1.offset从0开始，即第一页为0。` `2.默认从第一页返回。`	
+	// <p>查询结果分页返回，指定从第几页返回数据，和Limit参数配合使用。 注：<code>1.offset从0开始，即第一页为0。</code> <code>2.默认从第一页返回。</code></p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>查询指定的合作方企业的授权信息，当ExtendServiceType=OPEN_SERVER_SIGN：企业静默签署时有效</p>
+	PartnerOrganizationName *string `json:"PartnerOrganizationName,omitnil,omitempty" name:"PartnerOrganizationName"`
 }
 
 type DescribeExtendedServiceAuthDetailRequest struct {
 	*tchttp.BaseRequest
 	
-	// 执行本接口操作的员工信息。
-	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	// <p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 要查询的扩展服务类型。
-	// 如下所示：
-	// <ul><li>OPEN_SERVER_SIGN：企业静默签署</li>
-	// <li>BATCH_SIGN：批量签署</li>
-	// </ul>
+	// <p>要查询的扩展服务类型。<br>如下所示：</p><ul><li>OPEN_SERVER_SIGN：企业静默签署</li><li>BATCH_SIGN：批量签署</li></ul>
 	ExtendServiceType *string `json:"ExtendServiceType,omitnil,omitempty" name:"ExtendServiceType"`
 
-	// 代理企业和员工的信息。
-	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	// <p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
-	// 指定每页返回的数据条数，和Offset参数配合使用。 注：`1.默认值为20，单页做大值为200。`	
+	// <p>指定每页返回的数据条数，和Offset参数配合使用。 注：<code>1.默认值为20，单页做大值为200。</code></p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 查询结果分页返回，指定从第几页返回数据，和Limit参数配合使用。 注：`1.offset从0开始，即第一页为0。` `2.默认从第一页返回。`	
+	// <p>查询结果分页返回，指定从第几页返回数据，和Limit参数配合使用。 注：<code>1.offset从0开始，即第一页为0。</code> <code>2.默认从第一页返回。</code></p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>查询指定的合作方企业的授权信息，当ExtendServiceType=OPEN_SERVER_SIGN：企业静默签署时有效</p>
+	PartnerOrganizationName *string `json:"PartnerOrganizationName,omitnil,omitempty" name:"PartnerOrganizationName"`
 }
 
 func (r *DescribeExtendedServiceAuthDetailRequest) ToJsonString() string {
@@ -13003,6 +13212,7 @@ func (r *DescribeExtendedServiceAuthDetailRequest) FromJsonString(s string) erro
 	delete(f, "Agent")
 	delete(f, "Limit")
 	delete(f, "Offset")
+	delete(f, "PartnerOrganizationName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeExtendedServiceAuthDetailRequest has unknown keys!", "")
 	}
@@ -13011,7 +13221,7 @@ func (r *DescribeExtendedServiceAuthDetailRequest) FromJsonString(s string) erro
 
 // Predefined struct for user
 type DescribeExtendedServiceAuthDetailResponseParams struct {
-	// 服务授权的信息列表，根据查询类型返回特定扩展服务的授权状况。
+	// <p>服务授权的信息列表，根据查询类型返回特定扩展服务的授权状况。</p>
 	AuthInfoDetail *AuthInfoDetail `json:"AuthInfoDetail,omitnil,omitempty" name:"AuthInfoDetail"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -13232,92 +13442,78 @@ func (r *DescribeFileCounterSignResultResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeFileUrlsRequestParams struct {
-	// 执行本接口操作的员工信息。
-	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	// <p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 文件对应的业务类型，目前支持：<ul><li>**FLOW ** : <font color="red">如需下载合同文件请选择此项</font></li><li>**TEMPLATE ** : 如需下载模板文件请选择此项</li><li>**DOCUMENT  **: 如需下载文档文件请选择此项</li><li>**SEAL  **: 如需下载印章图片请选择此项</li><li>**DIGITFILE**: 如需下载加签文件请选择此项</li></ul>
+	// <p>文件对应的业务类型，目前支持：<ul><li><strong>FLOW</strong> : <font color="red">如需下载合同文件请选择此项</font></li><li><strong>TEMPLATE</strong> : 如需下载模板文件请选择此项</li><li><strong>DOCUMENT</strong>: 如需下载文档文件请选择此项</li><li><strong>SEAL</strong>: 如需下载印章图片请选择此项</li><li><strong>DIGITFILE</strong>: 如需下载加签文件请选择此项</li><li><strong>ARCHIVE</strong>: 如需下载合同归档文件请选择此项</li></ul></p><p>枚举值：</p><ul><li>FLOW： 如需下载合同文件请选择此项</li><li>TEMPLATE： 如需下载模板文件请选择此项</li><li>DOCUMENT： 如需下载文档文件请选择此项</li><li>SEAL： 如需下载印章图片请选择此项</li><li>DIGITFILE： 如需下载加签文件请选择此项</li><li>ARCHIVE： 如需下载合同归档文件请选择此项</li></ul>
 	BusinessType *string `json:"BusinessType,omitnil,omitempty" name:"BusinessType"`
 
-	// 业务编号的数组，取值如下：<ul><li>流程编号</li><li>模板编号</li><li>文档编号</li><li>印章编号</li><li>加签文件编号</li><li>如需下载合同文件请传入FlowId，最大支持20个资源</li></ul>
+	// <p>业务编号的数组，取值如下：<ul><li>流程编号</li><li>模板编号</li><li>文档编号</li><li>印章编号</li><li>加签文件编号</li><li>如需下载合同文件请传入FlowId，最大支持20个资源</li></ul></p>
 	BusinessIds []*string `json:"BusinessIds,omitnil,omitempty" name:"BusinessIds"`
 
-	// 下载后的文件命名，只有FileType为zip的时候生效
+	// <p>下载后的文件命名，只有FileType为zip的时候生效</p>
 	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
 
-	// 要下载的文件类型，取值如下：
-	// <ul>
-	// <li>JPG</li>
-	// <li>PDF</li>
-	// <li>ZIP</li>
-	// </ul>
+	// <p>要下载的文件类型，取值如下：</p><ul><li>JPG</li><li>PDF</li><li>ZIP</li></ul>
 	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
 
-	// 指定分页返回第几页的数据，如果不传默认返回第一页，页码从 0 开始，即首页为 0，最大 1000。
+	// <p>指定分页返回第几页的数据，如果不传默认返回第一页，页码从 0 开始，即首页为 0，最大 1000。</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 指定分页每页返回的数据条数，如果不传默认为 20，单页最大支持 100。
+	// <p>指定分页每页返回的数据条数，如果不传默认为 20，单页最大支持 100。</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 下载url过期时间，单位秒。0: 按默认值5分钟，允许范围：1s~24x60x60s(1天)
+	// <p>下载url过期时间，单位秒。0: 按默认值5分钟，允许范围：1s~24x60x60s(1天)</p>
 	UrlTtl *int64 `json:"UrlTtl,omitnil,omitempty" name:"UrlTtl"`
 
-	// 暂不开放
+	// <p>暂不开放</p>
 	//
 	// Deprecated: CcToken is deprecated.
 	CcToken *string `json:"CcToken,omitnil,omitempty" name:"CcToken"`
 
-	// 暂不开放
+	// <p>暂不开放</p>
 	//
 	// Deprecated: Scene is deprecated.
 	Scene *string `json:"Scene,omitnil,omitempty" name:"Scene"`
 
-	// 代理企业和员工的信息。
-	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	// <p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 }
 
 type DescribeFileUrlsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 执行本接口操作的员工信息。
-	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	// <p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 文件对应的业务类型，目前支持：<ul><li>**FLOW ** : <font color="red">如需下载合同文件请选择此项</font></li><li>**TEMPLATE ** : 如需下载模板文件请选择此项</li><li>**DOCUMENT  **: 如需下载文档文件请选择此项</li><li>**SEAL  **: 如需下载印章图片请选择此项</li><li>**DIGITFILE**: 如需下载加签文件请选择此项</li></ul>
+	// <p>文件对应的业务类型，目前支持：<ul><li><strong>FLOW</strong> : <font color="red">如需下载合同文件请选择此项</font></li><li><strong>TEMPLATE</strong> : 如需下载模板文件请选择此项</li><li><strong>DOCUMENT</strong>: 如需下载文档文件请选择此项</li><li><strong>SEAL</strong>: 如需下载印章图片请选择此项</li><li><strong>DIGITFILE</strong>: 如需下载加签文件请选择此项</li><li><strong>ARCHIVE</strong>: 如需下载合同归档文件请选择此项</li></ul></p><p>枚举值：</p><ul><li>FLOW： 如需下载合同文件请选择此项</li><li>TEMPLATE： 如需下载模板文件请选择此项</li><li>DOCUMENT： 如需下载文档文件请选择此项</li><li>SEAL： 如需下载印章图片请选择此项</li><li>DIGITFILE： 如需下载加签文件请选择此项</li><li>ARCHIVE： 如需下载合同归档文件请选择此项</li></ul>
 	BusinessType *string `json:"BusinessType,omitnil,omitempty" name:"BusinessType"`
 
-	// 业务编号的数组，取值如下：<ul><li>流程编号</li><li>模板编号</li><li>文档编号</li><li>印章编号</li><li>加签文件编号</li><li>如需下载合同文件请传入FlowId，最大支持20个资源</li></ul>
+	// <p>业务编号的数组，取值如下：<ul><li>流程编号</li><li>模板编号</li><li>文档编号</li><li>印章编号</li><li>加签文件编号</li><li>如需下载合同文件请传入FlowId，最大支持20个资源</li></ul></p>
 	BusinessIds []*string `json:"BusinessIds,omitnil,omitempty" name:"BusinessIds"`
 
-	// 下载后的文件命名，只有FileType为zip的时候生效
+	// <p>下载后的文件命名，只有FileType为zip的时候生效</p>
 	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
 
-	// 要下载的文件类型，取值如下：
-	// <ul>
-	// <li>JPG</li>
-	// <li>PDF</li>
-	// <li>ZIP</li>
-	// </ul>
+	// <p>要下载的文件类型，取值如下：</p><ul><li>JPG</li><li>PDF</li><li>ZIP</li></ul>
 	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
 
-	// 指定分页返回第几页的数据，如果不传默认返回第一页，页码从 0 开始，即首页为 0，最大 1000。
+	// <p>指定分页返回第几页的数据，如果不传默认返回第一页，页码从 0 开始，即首页为 0，最大 1000。</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 指定分页每页返回的数据条数，如果不传默认为 20，单页最大支持 100。
+	// <p>指定分页每页返回的数据条数，如果不传默认为 20，单页最大支持 100。</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 下载url过期时间，单位秒。0: 按默认值5分钟，允许范围：1s~24x60x60s(1天)
+	// <p>下载url过期时间，单位秒。0: 按默认值5分钟，允许范围：1s~24x60x60s(1天)</p>
 	UrlTtl *int64 `json:"UrlTtl,omitnil,omitempty" name:"UrlTtl"`
 
-	// 暂不开放
+	// <p>暂不开放</p>
 	CcToken *string `json:"CcToken,omitnil,omitempty" name:"CcToken"`
 
-	// 暂不开放
+	// <p>暂不开放</p>
 	Scene *string `json:"Scene,omitnil,omitempty" name:"Scene"`
 
-	// 代理企业和员工的信息。
-	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	// <p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 }
 
@@ -13352,11 +13548,10 @@ func (r *DescribeFileUrlsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeFileUrlsResponseParams struct {
-	// 文件URL信息；
-	// 链接不是永久链接,  过期时间受UrlTtl入参的影响,  默认有效期5分钟后,  到期后链接失效。
+	// <p>文件URL信息；<br>链接不是永久链接,  过期时间受UrlTtl入参的影响,  默认有效期5分钟后,  到期后链接失效。</p>
 	FileUrls []*FileUrl `json:"FileUrls,omitnil,omitempty" name:"FileUrls"`
 
-	// URL数量
+	// <p>URL数量</p>
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -16273,66 +16468,34 @@ type FileUrl struct {
 }
 
 type FillApproverInfo struct {
-	// 签署方经办人在模板中配置的参与方ID，与控件绑定，是控件的归属方，ID为32位字符串。
-	// 模板发起合同时，该参数为必填项。
-	// 文件发起合同时，该参数无需传值。
-	// 如果开发者后序用合同模板发起合同，建议保存此值，在用合同模板发起合同中需此值绑定对应的签署经办人 。
+	// <p>签署方经办人在模板中配置的参与方ID，与控件绑定，是控件的归属方，ID为32位字符串。<br>模板发起合同时，该参数为必填项。<br>文件发起合同时，该参数无需传值。<br>如果开发者后序用合同模板发起合同，建议保存此值，在用合同模板发起合同中需此值绑定对应的签署经办人 。</p>
 	RecipientId *string `json:"RecipientId,omitnil,omitempty" name:"RecipientId"`
 
-	// 签署人来源
-	// WEWORKAPP: 企业微信
-	// <br/>仅【企微或签】时指定WEWORKAPP
+	// <p>签署人来源<br>WEWORKAPP: 企业微信<br><br>仅【企微或签】时指定WEWORKAPP</p>
 	ApproverSource *string `json:"ApproverSource,omitnil,omitempty" name:"ApproverSource"`
 
-	// 企业微信UserId
-	// <br/>当ApproverSource为WEWORKAPP的企微或签场景下，必须指企业自有应用获取企业微信的UserId
+	// <p>企业微信UserId<br><br>当ApproverSource为WEWORKAPP的企微或签场景下，必须指企业自有应用获取企业微信的UserId</p>
 	CustomUserId *string `json:"CustomUserId,omitnil,omitempty" name:"CustomUserId"`
 
-	// 企业签署人的员工姓名。除企业微信应用场景（ApproverSource设置为WEWORKAPP）外，本字段为必填。
+	// <p>企业签署人的员工姓名。除企业微信应用场景（ApproverSource设置为WEWORKAPP）外，本字段为必填。</p>
 	ApproverName *string `json:"ApproverName,omitnil,omitempty" name:"ApproverName"`
 
-	// 补充企业签署人员工手机号
-	// <ul>
-	// <li>ApproverSource!=WEWORKAPP时，必传</li>
-	// </ul>
+	// <p>补充企业签署人员工手机号</p><ul><li>ApproverSource!=WEWORKAPP时，必传</li></ul>
 	ApproverMobile *string `json:"ApproverMobile,omitnil,omitempty" name:"ApproverMobile"`
 
-	// 补充企业动态签署人时，需要指定对应企业名称
+	// <p>补充企业动态签署人时，需要指定对应企业名称</p>
 	OrganizationName *string `json:"OrganizationName,omitnil,omitempty" name:"OrganizationName"`
 
-	// 签署方经办人的证件类型，支持以下类型
-	// <ul><li>ID_CARD 中国大陆居民身份证</li>
-	// <li>HONGKONG_AND_MACAO 中国港澳居民来往内地通行证</li>
-	// <li>HONGKONG_MACAO_AND_TAIWAN 中国港澳台居民居住证(格式同中国大陆居民身份证)</li>
-	// <li>OTHER_CARD_TYPE 其他证件</li></ul>
-	// 
-	// 注: `1.其他证件类型为白名单功能，使用前请联系对接的客户经理沟通。`
-	// `2.补充个人签署方时，若该用户已在电子签完成实名则可通过指定姓名和证件类型、证件号码完成补充。`
+	// <p>签署方经办人的证件类型，支持以下类型</p><ul><li>ID_CARD 中国大陆居民身份证</li><li>HONGKONG_AND_MACAO 中国港澳居民来往内地通行证</li><li>HONGKONG_MACAO_AND_TAIWAN 中国港澳台居民居住证(格式同中国大陆居民身份证)</li></ul><p>注: 补充个人签署方时，若该用户已在电子签完成实名则可通过指定姓名和证件类型、证件号码完成补充。</p>
 	ApproverIdCardType *string `json:"ApproverIdCardType,omitnil,omitempty" name:"ApproverIdCardType"`
 
-	// 签署方经办人的证件号码，应符合以下规则
-	// <ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
-	// <li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字</li>
-	// <li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串</li></ul>
-	// 
-	// 注：`补充个人签署方时，若该用户已在电子签完成实名则可通过指定姓名和证件类型、证件号码完成补充。`
+	// <p>签署方经办人的证件号码，应符合以下规则</p><ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li><li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字</li><li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串</li></ul><p>注：<code>补充个人签署方时，若该用户已在电子签完成实名则可通过指定姓名和证件类型、证件号码完成补充。</code></p>
 	ApproverIdCardNumber *string `json:"ApproverIdCardNumber,omitnil,omitempty" name:"ApproverIdCardNumber"`
 
-	// 合同流程ID
-	// - 补充合同组子合同动态签署人时必传。
-	// - 补充普通合同时，请阅读：<a href="https://qian.tencent.com/developers/companyApis/operateFlows/CreateFlowApprovers/" target="_blank">补充签署人接口</a>的接口使用说明
+	// <p>合同流程ID</p><ul><li>补充合同组子合同动态签署人时必传。</li><li>补充普通合同时，请阅读：<a href="https://qian.tencent.com/developers/companyApis/operateFlows/CreateFlowApprovers/" target="_blank">补充签署人接口</a>的接口使用说明</li></ul>
 	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
-	// 通知类型：
-	// <li>当FillApproverType =0，或签场景补充签署人时，指定是否发送或签领取短信</li>
-	// 
-	// <li>SMS：开启或签领取短信通知</li>
-	// 
-	// <li>NONE：关闭或签领取短信通知</li>
-	// 
-	// <li>当NotifyType=NONE时，可调用<a href="https://qian.tencent.com/developers/companyApis/startFlows/CreateSchemeUrl" target="_blank" rel="noopener noreferrer">获取跳转至腾讯电子签小程序的签署链接</a>接口生成签署链接来完成或签领取</li>
-	// 
-	// 
+	// <p>通知类型：</p><li>当FillApproverType =0，或签场景补充签署人时，指定是否发送或签领取短信</li><li>SMS：开启或签领取短信通知</li><li>NONE：关闭或签领取短信通知</li><li>当NotifyType=NONE时，可调用<a href="https://qian.tencent.com/developers/companyApis/startFlows/CreateSchemeUrl" target="_blank" rel="noopener noreferrer">获取跳转至腾讯电子签小程序的签署链接</a>接口生成签署链接来完成或签领取</li>
 	NotifyType *string `json:"NotifyType,omitnil,omitempty" name:"NotifyType"`
 }
 
@@ -16556,7 +16719,7 @@ type FlowCreateApprover struct {
 	// <p>签署意愿确认渠道，默认为WEIXINAPP:人脸识别</p><p>注: &lt;font color=&quot;red&quot;&gt;不再使用, <code>用ApproverSignTypes签署人签署合同时的认证方式代替, 新客户可请用ApproverSignTypes来设置</code></p>
 	VerifyChannel []*string `json:"VerifyChannel,omitnil,omitempty" name:"VerifyChannel"`
 
-	// <p>通知签署方经办人的方式,  有以下途径:</p><ul><li>  **sms**  :  (默认)短信</li><li>  **email**  :  邮件</li><li>  **all**  :  邮件+短信</li><li>   **none**   : 不通知</li></ul><p>注: <code>既是发起方又是签署方时，不给此签署方发送短信</code></p><p>枚举值：</p><ul><li>sms： 短信通知</li><li>email： 邮件通知</li><li>all： 邮件通知+短信通知</li><li>none： 不做任何形式的通知</li></ul>
+	// <p>通知签署方经办人的方式,  有以下途径:</p><ul><li>  **SMS**  :  (默认)短信</li><li>  **EMAIL**  :  邮件</li><li>  **ALL**  :  邮件+短信</li><li>   **NONE**   : 不通知</li></ul><p>注: <code>既是发起方又是签署方时，不给此签署方发送短信</code></p><p>枚举值：</p><ul><li>SMS： 短信通知</li><li>EMAIL： 邮件通知</li><li>ALL： 邮件通知+短信通知</li><li>NONE： 不做任何形式的通知</li></ul>
 	NotifyType *string `json:"NotifyType,omitnil,omitempty" name:"NotifyType"`
 
 	// <p>合同强制需要阅读全文，无需传此参数</p>
@@ -16989,25 +17152,25 @@ type GroupOrganization struct {
 }
 
 type HasAuthOrganization struct {
-	// 授权企业id
+	// <p>授权企业id</p>
 	OrganizationId *string `json:"OrganizationId,omitnil,omitempty" name:"OrganizationId"`
 
-	// 授权企业名称
+	// <p>授权企业名称</p>
 	OrganizationName *string `json:"OrganizationName,omitnil,omitempty" name:"OrganizationName"`
 
-	// 被授权企业id
+	// <p>被授权企业id</p>
 	AuthorizedOrganizationId *string `json:"AuthorizedOrganizationId,omitnil,omitempty" name:"AuthorizedOrganizationId"`
 
-	// 被授权企业名称
+	// <p>被授权企业名称</p>
 	AuthorizedOrganizationName *string `json:"AuthorizedOrganizationName,omitnil,omitempty" name:"AuthorizedOrganizationName"`
 
-	// 授权模板id（仅当授权方式为模板授权时有值）
+	// <p>授权模板id（仅当授权方式为模板授权时有值）</p>
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
-	// 授权模板名称（仅当授权方式为模板授权时有值）
+	// <p>授权模板名称（仅当授权方式为模板授权时有值）</p>
 	TemplateName *string `json:"TemplateName,omitnil,omitempty" name:"TemplateName"`
 
-	// 授权时间，格式为时间戳，单位s
+	// <p>授权时间，格式为时间戳，单位s</p>
 	AuthorizeTime *int64 `json:"AuthorizeTime,omitnil,omitempty" name:"AuthorizeTime"`
 }
 
@@ -18183,36 +18346,22 @@ func (r *ModifySingleSignOnEmployeesResponse) FromJsonString(s string) error {
 }
 
 type NeedReviewApproverInfo struct {
-	// 签署方经办人的类型，支持以下类型
-	// <ul><li> ORGANIZATION 企业（含企业自动签）</li>
-	// <li>PERSON 个人（含个人自动签）</li></ul>
+	// <p>签署方经办人的类型，支持以下类型</p><ul><li> ORGANIZATION 企业（含企业自动签）</li><li>PERSON 个人（含个人自动签）</li></ul>
 	ApproverType *string `json:"ApproverType,omitnil,omitempty" name:"ApproverType"`
 
-	// 签署方经办人的姓名。 经办人的姓名将用于身份认证和电子签名，请确保填写的姓名为签署方的真实姓名，而非昵称等代名。
+	// <p>签署方经办人的姓名。 经办人的姓名将用于身份认证和电子签名，请确保填写的姓名为签署方的真实姓名，而非昵称等代名。</p>
 	ApproverName *string `json:"ApproverName,omitnil,omitempty" name:"ApproverName"`
 
-	// 签署方经办人手机号码， 支持中国大陆手机号11位数字(无需加+86前缀或其他字符)。 请确认手机号所有方为此合同签署方。
+	// <p>签署方经办人手机号码， 支持中国大陆手机号11位数字(无需加+86前缀或其他字符)。 请确认手机号所有方为此合同签署方。</p>
 	ApproverMobile *string `json:"ApproverMobile,omitnil,omitempty" name:"ApproverMobile"`
 
-	// 签署方经办人的证件类型，支持以下类型
-	// <ul><li>ID_CARD 中国大陆居民身份证  (默认值)</li>
-	// <li>HONGKONG_AND_MACAO 中国港澳居民来往内地通行证</li>
-	// <li>HONGKONG_MACAO_AND_TAIWAN 中国港澳台居民居住证(格式同居民身份证)</li>
-	// <li>OTHER_CARD_TYPE 其他证件</li></ul>
-	// 
-	// 注: `其他证件类型为白名单功能，使用前请联系对接的客户经理沟通。`
+	// <p>签署方经办人的证件类型，支持以下类型</p><ul><li>ID_CARD 中国大陆居民身份证  (默认值)</li><li>HONGKONG_AND_MACAO 中国港澳居民来往内地通行证</li><li>HONGKONG_MACAO_AND_TAIWAN 中国港澳台居民居住证(格式同居民身份证)</li></ul>
 	ApproverIdCardType *string `json:"ApproverIdCardType,omitnil,omitempty" name:"ApproverIdCardType"`
 
-	// 签署方经办人的证件号码，应符合以下规则
-	// <ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
-	// <li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
-	// <li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
+	// <p>签署方经办人的证件号码，应符合以下规则</p><ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li><li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li><li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
 	ApproverIdCardNumber *string `json:"ApproverIdCardNumber,omitnil,omitempty" name:"ApproverIdCardNumber"`
 
-	// 组织机构名称。
-	// 请确认该名称与企业营业执照中注册的名称一致。
-	// 如果名称中包含英文括号()，请使用中文括号（）代替。
-	// 如果签署方是企业签署方(approverType = 0 或者 approverType = 3)， 则企业名称必填。
+	// <p>组织机构名称。<br>请确认该名称与企业营业执照中注册的名称一致。<br>如果名称中包含英文括号()，请使用中文括号（）代替。<br>如果签署方是企业签署方(approverType = 0 或者 approverType = 3)， 则企业名称必填。</p>
 	OrganizationName *string `json:"OrganizationName,omitnil,omitempty" name:"OrganizationName"`
 }
 
@@ -19258,6 +19407,38 @@ type RemindEmailInfo struct {
 	ApproverEmail *string `json:"ApproverEmail,omitnil,omitempty" name:"ApproverEmail"`
 }
 
+type RemindFlowGroupDetail struct {
+	// <p>该签署人在合同中的签署顺序</p>
+	ApproverOrder *int64 `json:"ApproverOrder,omitnil,omitempty" name:"ApproverOrder"`
+
+	// <p>签署人对应的签署id</p>
+	SignId *string `json:"SignId,omitnil,omitempty" name:"SignId"`
+
+	// <p>催办状态</p><p>枚举值：</p><ul><li>0： 成功</li><li>2： 无需催办</li><li>5： 超过次数限制</li></ul>
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>描述当前催办结果的原因</p>
+	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
+}
+
+type RemindFlowGroupRecord struct {
+	// <p>对应签署人出现的合同列表</p>
+	FlowIds []*string `json:"FlowIds,omitnil,omitempty" name:"FlowIds"`
+
+	// <p>对应签署人出现的合同名</p>
+	FlowNames []*string `json:"FlowNames,omitnil,omitempty" name:"FlowNames"`
+
+	// <p>签署人姓名</p>
+	ApproverName *string `json:"ApproverName,omitnil,omitempty" name:"ApproverName"`
+
+	// <p>签署人手机号</p>
+	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
+
+	// <p>催办合同组下签署人维度详细信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RemindMessageList []*RemindFlowGroupDetail `json:"RemindMessageList,omitnil,omitempty" name:"RemindMessageList"`
+}
+
 type RemindFlowRecords struct {
 	// 合同流程是否可以催办：
 	// true - 可以，false - 不可以。
@@ -20097,96 +20278,58 @@ type UploadFile struct {
 
 // Predefined struct for user
 type UploadFilesRequestParams struct {
-	// 文件对应业务类型,可以选择的类型如下<ul><li> **TEMPLATE** : 此上传的文件用户生成合同模板，文件类型支持.pdf/.doc/.docx/.html格式，如果非pdf文件需要通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务</a>转换后才能使用</li><li> **DOCUMENT** : 此文件用来发起合同流程，文件类型支持.pdf/.doc/.docx/.jpg/.png/.xls.xlsx/.html。如果上传的是非pdf文件，用来发起流程，还需要通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务</a>转换后得到的pdf文件才能用于发起合同接口。如果上传的文件不是用来发起合同，直接上传后使用返回的文件资源Id即可</li><li> **SEAL** : 此文件用于印章的生成，文件类型支持.jpg/.jpeg/.png</li></ul>   ["yDRSRUUgygj6rq2wUuO4zjEyBZ2NHiyT"]
+	// <p>文件对应业务类型,可以选择的类型如下<ul><li> <strong>TEMPLATE</strong> : 此上传的文件用户生成合同模板，文件类型支持.pdf/.doc/.docx/.html格式，如果非pdf文件需要通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务</a>转换后才能使用</li><li> <strong>DOCUMENT</strong> : 此文件用来发起合同流程，文件类型支持.pdf/.doc/.docx/.jpg/.png/.xls.xlsx/.html。如果上传的是非pdf文件，用来发起流程，还需要通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务</a>转换后得到的pdf文件才能用于发起合同接口。如果上传的文件不是用来发起合同，直接上传后使用返回的文件资源Id即可</li><li> <strong>SEAL</strong> : 此文件用于印章的生成，文件类型支持.jpg/.jpeg/.png</li><li> <strong>ARCHIVE</strong> : 此文件用于归档文件夹，文件类型支持.pdf/.zip格式</li></ul>   [&quot;yDRSRUUgygj6rq2wUuO4zjEyBZ2NHiyT&quot;]</p><p>枚举值：</p><ul><li>TEMPLATE： 此上传的文件用户生成合同模板</li><li>DOCUMENT： 此文件用来发起合同流程</li><li>SEAL： 此文件用于印章的生成</li><li>ARCHIVE： 此文件用于归档文件夹</li></ul>
 	BusinessType *string `json:"BusinessType,omitnil,omitempty" name:"BusinessType"`
 
-	// 执行本接口操作的员工信息。其中OperatorId为必填字段，即用户的UserId。
-	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	// <p>执行本接口操作的员工信息。其中OperatorId为必填字段，即用户的UserId。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
 	Caller *Caller `json:"Caller,omitnil,omitempty" name:"Caller"`
 
-	// 请上传文件内容数组，最多可上传20个文件。
-	// 
-	// <b>所有文件必须符合<font color="red">FileType</font>指定的文件类型。</b>
+	// <p>请上传文件内容数组，最多可上传20个文件。</p><p><b>所有文件必须符合<font color="red">FileType</font>指定的文件类型。</b></p>
 	FileInfos []*UploadFile `json:"FileInfos,omitnil,omitempty" name:"FileInfos"`
 
-	// 文件类型， 默认通过文件内容和文件后缀一起解析得到文件类型，调用接口时可以显示的指定上传文件的类型。
-	// 可支持的指定类型如下:
-	// <ul><li>pdf</li>
-	// <li>doc</li>
-	// <li>docx</li>
-	// <li>xls</li>
-	// <li>xlsx</li>
-	// <li>html</li>
-	// <li>jpg</li>
-	// <li>jpeg</li>
-	// <li>png</li></ul>
-	// 如：pdf 表示上传的文件 张三入职合同.pdf的文件类型是 pdf
+	// <p>文件类型， 默认通过文件内容和文件后缀一起解析得到文件类型，调用接口时可以显示的指定上传文件的类型。<br>可支持的指定类型如下:</p><ul><li>pdf</li><li>doc</li><li>docx</li><li>xls</li><li>xlsx</li><li>html</li><li>jpg</li><li>jpeg</li><li>png</li></ul>如：pdf 表示上传的文件 张三入职合同.pdf的文件类型是 pdf
 	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
 
-	// 此参数仅对上传的PDF文件有效。其主要作用是确定是否将PDF中的灰色矩阵置为白色。
-	// <ul><li>**true**：将灰色矩阵置为白色。</li>
-	// <li>**false**：无需处理，不会将灰色矩阵置为白色（默认）。</li></ul>
-	// 
-	// 注: `该参数仅在关键字定位时，需要去除关键字所在的灰框场景下使用。`
+	// <p>此参数仅对上传的PDF文件有效。其主要作用是确定是否将PDF中的灰色矩阵置为白色。</p><ul><li>**true**：将灰色矩阵置为白色。</li><li>**false**：无需处理，不会将灰色矩阵置为白色（默认）。</li></ul><p>注: <code>该参数仅在关键字定位时，需要去除关键字所在的灰框场景下使用。</code></p>
 	CoverRect *bool `json:"CoverRect,omitnil,omitempty" name:"CoverRect"`
 
-	// 该字段已不再使用
+	// <p>该字段已不再使用</p>
 	CustomIds []*string `json:"CustomIds,omitnil,omitempty" name:"CustomIds"`
 
-	// 不再使用，上传文件链接数组，最多支持20个URL
+	// <p>不再使用，上传文件链接数组，最多支持20个URL</p>
 	//
 	// Deprecated: FileUrls is deprecated.
 	FileUrls *string `json:"FileUrls,omitnil,omitempty" name:"FileUrls"`
 
-	// 代理企业和员工的信息。
-	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	// <p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 }
 
 type UploadFilesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 文件对应业务类型,可以选择的类型如下<ul><li> **TEMPLATE** : 此上传的文件用户生成合同模板，文件类型支持.pdf/.doc/.docx/.html格式，如果非pdf文件需要通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务</a>转换后才能使用</li><li> **DOCUMENT** : 此文件用来发起合同流程，文件类型支持.pdf/.doc/.docx/.jpg/.png/.xls.xlsx/.html。如果上传的是非pdf文件，用来发起流程，还需要通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务</a>转换后得到的pdf文件才能用于发起合同接口。如果上传的文件不是用来发起合同，直接上传后使用返回的文件资源Id即可</li><li> **SEAL** : 此文件用于印章的生成，文件类型支持.jpg/.jpeg/.png</li></ul>   ["yDRSRUUgygj6rq2wUuO4zjEyBZ2NHiyT"]
+	// <p>文件对应业务类型,可以选择的类型如下<ul><li> <strong>TEMPLATE</strong> : 此上传的文件用户生成合同模板，文件类型支持.pdf/.doc/.docx/.html格式，如果非pdf文件需要通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务</a>转换后才能使用</li><li> <strong>DOCUMENT</strong> : 此文件用来发起合同流程，文件类型支持.pdf/.doc/.docx/.jpg/.png/.xls.xlsx/.html。如果上传的是非pdf文件，用来发起流程，还需要通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务</a>转换后得到的pdf文件才能用于发起合同接口。如果上传的文件不是用来发起合同，直接上传后使用返回的文件资源Id即可</li><li> <strong>SEAL</strong> : 此文件用于印章的生成，文件类型支持.jpg/.jpeg/.png</li><li> <strong>ARCHIVE</strong> : 此文件用于归档文件夹，文件类型支持.pdf/.zip格式</li></ul>   [&quot;yDRSRUUgygj6rq2wUuO4zjEyBZ2NHiyT&quot;]</p><p>枚举值：</p><ul><li>TEMPLATE： 此上传的文件用户生成合同模板</li><li>DOCUMENT： 此文件用来发起合同流程</li><li>SEAL： 此文件用于印章的生成</li><li>ARCHIVE： 此文件用于归档文件夹</li></ul>
 	BusinessType *string `json:"BusinessType,omitnil,omitempty" name:"BusinessType"`
 
-	// 执行本接口操作的员工信息。其中OperatorId为必填字段，即用户的UserId。
-	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	// <p>执行本接口操作的员工信息。其中OperatorId为必填字段，即用户的UserId。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
 	Caller *Caller `json:"Caller,omitnil,omitempty" name:"Caller"`
 
-	// 请上传文件内容数组，最多可上传20个文件。
-	// 
-	// <b>所有文件必须符合<font color="red">FileType</font>指定的文件类型。</b>
+	// <p>请上传文件内容数组，最多可上传20个文件。</p><p><b>所有文件必须符合<font color="red">FileType</font>指定的文件类型。</b></p>
 	FileInfos []*UploadFile `json:"FileInfos,omitnil,omitempty" name:"FileInfos"`
 
-	// 文件类型， 默认通过文件内容和文件后缀一起解析得到文件类型，调用接口时可以显示的指定上传文件的类型。
-	// 可支持的指定类型如下:
-	// <ul><li>pdf</li>
-	// <li>doc</li>
-	// <li>docx</li>
-	// <li>xls</li>
-	// <li>xlsx</li>
-	// <li>html</li>
-	// <li>jpg</li>
-	// <li>jpeg</li>
-	// <li>png</li></ul>
-	// 如：pdf 表示上传的文件 张三入职合同.pdf的文件类型是 pdf
+	// <p>文件类型， 默认通过文件内容和文件后缀一起解析得到文件类型，调用接口时可以显示的指定上传文件的类型。<br>可支持的指定类型如下:</p><ul><li>pdf</li><li>doc</li><li>docx</li><li>xls</li><li>xlsx</li><li>html</li><li>jpg</li><li>jpeg</li><li>png</li></ul>如：pdf 表示上传的文件 张三入职合同.pdf的文件类型是 pdf
 	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
 
-	// 此参数仅对上传的PDF文件有效。其主要作用是确定是否将PDF中的灰色矩阵置为白色。
-	// <ul><li>**true**：将灰色矩阵置为白色。</li>
-	// <li>**false**：无需处理，不会将灰色矩阵置为白色（默认）。</li></ul>
-	// 
-	// 注: `该参数仅在关键字定位时，需要去除关键字所在的灰框场景下使用。`
+	// <p>此参数仅对上传的PDF文件有效。其主要作用是确定是否将PDF中的灰色矩阵置为白色。</p><ul><li>**true**：将灰色矩阵置为白色。</li><li>**false**：无需处理，不会将灰色矩阵置为白色（默认）。</li></ul><p>注: <code>该参数仅在关键字定位时，需要去除关键字所在的灰框场景下使用。</code></p>
 	CoverRect *bool `json:"CoverRect,omitnil,omitempty" name:"CoverRect"`
 
-	// 该字段已不再使用
+	// <p>该字段已不再使用</p>
 	CustomIds []*string `json:"CustomIds,omitnil,omitempty" name:"CustomIds"`
 
-	// 不再使用，上传文件链接数组，最多支持20个URL
+	// <p>不再使用，上传文件链接数组，最多支持20个URL</p>
 	FileUrls *string `json:"FileUrls,omitnil,omitempty" name:"FileUrls"`
 
-	// 代理企业和员工的信息。
-	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	// <p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 }
 
@@ -20218,12 +20361,10 @@ func (r *UploadFilesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UploadFilesResponseParams struct {
-	// 文件资源ID数组，每个文件资源ID为32位字符串。
-	// 建议开发者保存此资源ID，后续创建合同或创建合同流程需此资源ID。
-	// 注:`有效期一个小时（超过一小时后系统不定期清理，会有部分时间差）, 有效期内此文件id可以反复使用, 超过有效期无法使用`
+	// <p>文件资源ID数组，每个文件资源ID为32位字符串。<br>建议开发者保存此资源ID，后续创建合同或创建合同流程需此资源ID。<br>注:<code>有效期一个小时（超过一小时后系统不定期清理，会有部分时间差）, 有效期内此文件id可以反复使用, 超过有效期无法使用</code></p>
 	FileIds []*string `json:"FileIds,omitnil,omitempty" name:"FileIds"`
 
-	// 上传成功文件数量
+	// <p>上传成功文件数量</p>
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

@@ -1561,6 +1561,384 @@ func (c *Client) DescribeCustomRulesWithContext(ctx context.Context, request *De
     return
 }
 
+func NewDescribeFlavorKingCycleBrandImportantCityScanAnalysisRequest() (request *DescribeFlavorKingCycleBrandImportantCityScanAnalysisRequest) {
+    request = &DescribeFlavorKingCycleBrandImportantCityScanAnalysisRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trp", APIVersion, "DescribeFlavorKingCycleBrandImportantCityScanAnalysis")
+    
+    
+    return
+}
+
+func NewDescribeFlavorKingCycleBrandImportantCityScanAnalysisResponse() (response *DescribeFlavorKingCycleBrandImportantCityScanAnalysisResponse) {
+    response = &DescribeFlavorKingCycleBrandImportantCityScanAnalysisResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeFlavorKingCycleBrandImportantCityScanAnalysis
+// 统计用户次数
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeFlavorKingCycleBrandImportantCityScanAnalysis(request *DescribeFlavorKingCycleBrandImportantCityScanAnalysisRequest) (response *DescribeFlavorKingCycleBrandImportantCityScanAnalysisResponse, err error) {
+    return c.DescribeFlavorKingCycleBrandImportantCityScanAnalysisWithContext(context.Background(), request)
+}
+
+// DescribeFlavorKingCycleBrandImportantCityScanAnalysis
+// 统计用户次数
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeFlavorKingCycleBrandImportantCityScanAnalysisWithContext(ctx context.Context, request *DescribeFlavorKingCycleBrandImportantCityScanAnalysisRequest) (response *DescribeFlavorKingCycleBrandImportantCityScanAnalysisResponse, err error) {
+    if request == nil {
+        request = NewDescribeFlavorKingCycleBrandImportantCityScanAnalysisRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "trp", APIVersion, "DescribeFlavorKingCycleBrandImportantCityScanAnalysis")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFlavorKingCycleBrandImportantCityScanAnalysis require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeFlavorKingCycleBrandImportantCityScanAnalysisResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeFlavorKingCycleBrandImportantProvinceScanAnalysisRequest() (request *DescribeFlavorKingCycleBrandImportantProvinceScanAnalysisRequest) {
+    request = &DescribeFlavorKingCycleBrandImportantProvinceScanAnalysisRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trp", APIVersion, "DescribeFlavorKingCycleBrandImportantProvinceScanAnalysis")
+    
+    
+    return
+}
+
+func NewDescribeFlavorKingCycleBrandImportantProvinceScanAnalysisResponse() (response *DescribeFlavorKingCycleBrandImportantProvinceScanAnalysisResponse) {
+    response = &DescribeFlavorKingCycleBrandImportantProvinceScanAnalysisResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeFlavorKingCycleBrandImportantProvinceScanAnalysis
+// 统计用户次数
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeFlavorKingCycleBrandImportantProvinceScanAnalysis(request *DescribeFlavorKingCycleBrandImportantProvinceScanAnalysisRequest) (response *DescribeFlavorKingCycleBrandImportantProvinceScanAnalysisResponse, err error) {
+    return c.DescribeFlavorKingCycleBrandImportantProvinceScanAnalysisWithContext(context.Background(), request)
+}
+
+// DescribeFlavorKingCycleBrandImportantProvinceScanAnalysis
+// 统计用户次数
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeFlavorKingCycleBrandImportantProvinceScanAnalysisWithContext(ctx context.Context, request *DescribeFlavorKingCycleBrandImportantProvinceScanAnalysisRequest) (response *DescribeFlavorKingCycleBrandImportantProvinceScanAnalysisResponse, err error) {
+    if request == nil {
+        request = NewDescribeFlavorKingCycleBrandImportantProvinceScanAnalysisRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "trp", APIVersion, "DescribeFlavorKingCycleBrandImportantProvinceScanAnalysis")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFlavorKingCycleBrandImportantProvinceScanAnalysis require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeFlavorKingCycleBrandImportantProvinceScanAnalysisResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeFlavorKingCycleBrandImportantProvinceUserAnalysisRequest() (request *DescribeFlavorKingCycleBrandImportantProvinceUserAnalysisRequest) {
+    request = &DescribeFlavorKingCycleBrandImportantProvinceUserAnalysisRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trp", APIVersion, "DescribeFlavorKingCycleBrandImportantProvinceUserAnalysis")
+    
+    
+    return
+}
+
+func NewDescribeFlavorKingCycleBrandImportantProvinceUserAnalysisResponse() (response *DescribeFlavorKingCycleBrandImportantProvinceUserAnalysisResponse) {
+    response = &DescribeFlavorKingCycleBrandImportantProvinceUserAnalysisResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeFlavorKingCycleBrandImportantProvinceUserAnalysis
+// 统计用户次数
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeFlavorKingCycleBrandImportantProvinceUserAnalysis(request *DescribeFlavorKingCycleBrandImportantProvinceUserAnalysisRequest) (response *DescribeFlavorKingCycleBrandImportantProvinceUserAnalysisResponse, err error) {
+    return c.DescribeFlavorKingCycleBrandImportantProvinceUserAnalysisWithContext(context.Background(), request)
+}
+
+// DescribeFlavorKingCycleBrandImportantProvinceUserAnalysis
+// 统计用户次数
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeFlavorKingCycleBrandImportantProvinceUserAnalysisWithContext(ctx context.Context, request *DescribeFlavorKingCycleBrandImportantProvinceUserAnalysisRequest) (response *DescribeFlavorKingCycleBrandImportantProvinceUserAnalysisResponse, err error) {
+    if request == nil {
+        request = NewDescribeFlavorKingCycleBrandImportantProvinceUserAnalysisRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "trp", APIVersion, "DescribeFlavorKingCycleBrandImportantProvinceUserAnalysis")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFlavorKingCycleBrandImportantProvinceUserAnalysis require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeFlavorKingCycleBrandImportantProvinceUserAnalysisResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeFlavorKingCycleBrandProvinceCityScanAnalysisRequest() (request *DescribeFlavorKingCycleBrandProvinceCityScanAnalysisRequest) {
+    request = &DescribeFlavorKingCycleBrandProvinceCityScanAnalysisRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trp", APIVersion, "DescribeFlavorKingCycleBrandProvinceCityScanAnalysis")
+    
+    
+    return
+}
+
+func NewDescribeFlavorKingCycleBrandProvinceCityScanAnalysisResponse() (response *DescribeFlavorKingCycleBrandProvinceCityScanAnalysisResponse) {
+    response = &DescribeFlavorKingCycleBrandProvinceCityScanAnalysisResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeFlavorKingCycleBrandProvinceCityScanAnalysis
+// 统计用户次数
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeFlavorKingCycleBrandProvinceCityScanAnalysis(request *DescribeFlavorKingCycleBrandProvinceCityScanAnalysisRequest) (response *DescribeFlavorKingCycleBrandProvinceCityScanAnalysisResponse, err error) {
+    return c.DescribeFlavorKingCycleBrandProvinceCityScanAnalysisWithContext(context.Background(), request)
+}
+
+// DescribeFlavorKingCycleBrandProvinceCityScanAnalysis
+// 统计用户次数
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeFlavorKingCycleBrandProvinceCityScanAnalysisWithContext(ctx context.Context, request *DescribeFlavorKingCycleBrandProvinceCityScanAnalysisRequest) (response *DescribeFlavorKingCycleBrandProvinceCityScanAnalysisResponse, err error) {
+    if request == nil {
+        request = NewDescribeFlavorKingCycleBrandProvinceCityScanAnalysisRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "trp", APIVersion, "DescribeFlavorKingCycleBrandProvinceCityScanAnalysis")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFlavorKingCycleBrandProvinceCityScanAnalysis require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeFlavorKingCycleBrandProvinceCityScanAnalysisResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeFlavorKingCycleBrandProvinceScanAnalysisRequest() (request *DescribeFlavorKingCycleBrandProvinceScanAnalysisRequest) {
+    request = &DescribeFlavorKingCycleBrandProvinceScanAnalysisRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trp", APIVersion, "DescribeFlavorKingCycleBrandProvinceScanAnalysis")
+    
+    
+    return
+}
+
+func NewDescribeFlavorKingCycleBrandProvinceScanAnalysisResponse() (response *DescribeFlavorKingCycleBrandProvinceScanAnalysisResponse) {
+    response = &DescribeFlavorKingCycleBrandProvinceScanAnalysisResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeFlavorKingCycleBrandProvinceScanAnalysis
+// 统计用户次数
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeFlavorKingCycleBrandProvinceScanAnalysis(request *DescribeFlavorKingCycleBrandProvinceScanAnalysisRequest) (response *DescribeFlavorKingCycleBrandProvinceScanAnalysisResponse, err error) {
+    return c.DescribeFlavorKingCycleBrandProvinceScanAnalysisWithContext(context.Background(), request)
+}
+
+// DescribeFlavorKingCycleBrandProvinceScanAnalysis
+// 统计用户次数
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeFlavorKingCycleBrandProvinceScanAnalysisWithContext(ctx context.Context, request *DescribeFlavorKingCycleBrandProvinceScanAnalysisRequest) (response *DescribeFlavorKingCycleBrandProvinceScanAnalysisResponse, err error) {
+    if request == nil {
+        request = NewDescribeFlavorKingCycleBrandProvinceScanAnalysisRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "trp", APIVersion, "DescribeFlavorKingCycleBrandProvinceScanAnalysis")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFlavorKingCycleBrandProvinceScanAnalysis require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeFlavorKingCycleBrandProvinceScanAnalysisResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeFlavorKingCycleBrandScanAnalysisRequest() (request *DescribeFlavorKingCycleBrandScanAnalysisRequest) {
+    request = &DescribeFlavorKingCycleBrandScanAnalysisRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trp", APIVersion, "DescribeFlavorKingCycleBrandScanAnalysis")
+    
+    
+    return
+}
+
+func NewDescribeFlavorKingCycleBrandScanAnalysisResponse() (response *DescribeFlavorKingCycleBrandScanAnalysisResponse) {
+    response = &DescribeFlavorKingCycleBrandScanAnalysisResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeFlavorKingCycleBrandScanAnalysis
+// 统计扫码次数
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeFlavorKingCycleBrandScanAnalysis(request *DescribeFlavorKingCycleBrandScanAnalysisRequest) (response *DescribeFlavorKingCycleBrandScanAnalysisResponse, err error) {
+    return c.DescribeFlavorKingCycleBrandScanAnalysisWithContext(context.Background(), request)
+}
+
+// DescribeFlavorKingCycleBrandScanAnalysis
+// 统计扫码次数
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeFlavorKingCycleBrandScanAnalysisWithContext(ctx context.Context, request *DescribeFlavorKingCycleBrandScanAnalysisRequest) (response *DescribeFlavorKingCycleBrandScanAnalysisResponse, err error) {
+    if request == nil {
+        request = NewDescribeFlavorKingCycleBrandScanAnalysisRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "trp", APIVersion, "DescribeFlavorKingCycleBrandScanAnalysis")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFlavorKingCycleBrandScanAnalysis require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeFlavorKingCycleBrandScanAnalysisResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeFlavorKingCycleBrandScanMetricsRequest() (request *DescribeFlavorKingCycleBrandScanMetricsRequest) {
+    request = &DescribeFlavorKingCycleBrandScanMetricsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trp", APIVersion, "DescribeFlavorKingCycleBrandScanMetrics")
+    
+    
+    return
+}
+
+func NewDescribeFlavorKingCycleBrandScanMetricsResponse() (response *DescribeFlavorKingCycleBrandScanMetricsResponse) {
+    response = &DescribeFlavorKingCycleBrandScanMetricsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeFlavorKingCycleBrandScanMetrics
+// 统计用户次数
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeFlavorKingCycleBrandScanMetrics(request *DescribeFlavorKingCycleBrandScanMetricsRequest) (response *DescribeFlavorKingCycleBrandScanMetricsResponse, err error) {
+    return c.DescribeFlavorKingCycleBrandScanMetricsWithContext(context.Background(), request)
+}
+
+// DescribeFlavorKingCycleBrandScanMetrics
+// 统计用户次数
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeFlavorKingCycleBrandScanMetricsWithContext(ctx context.Context, request *DescribeFlavorKingCycleBrandScanMetricsRequest) (response *DescribeFlavorKingCycleBrandScanMetricsResponse, err error) {
+    if request == nil {
+        request = NewDescribeFlavorKingCycleBrandScanMetricsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "trp", APIVersion, "DescribeFlavorKingCycleBrandScanMetrics")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFlavorKingCycleBrandScanMetrics require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeFlavorKingCycleBrandScanMetricsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeJobFileUrlRequest() (request *DescribeJobFileUrlRequest) {
     request = &DescribeJobFileUrlRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2397,6 +2775,60 @@ func (c *Client) DescribeTraceDataListWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewDescribeTraceDataListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDownloadGEORequest() (request *DownloadGEORequest) {
+    request = &DownloadGEORequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trp", APIVersion, "DownloadGEO")
+    
+    
+    return
+}
+
+func NewDownloadGEOResponse() (response *DownloadGEOResponse) {
+    response = &DownloadGEOResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DownloadGEO
+// 地理位置信息下载
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DownloadGEO(request *DownloadGEORequest) (response *DownloadGEOResponse, err error) {
+    return c.DownloadGEOWithContext(context.Background(), request)
+}
+
+// DownloadGEO
+// 地理位置信息下载
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DownloadGEOWithContext(ctx context.Context, request *DownloadGEORequest) (response *DownloadGEOResponse, err error) {
+    if request == nil {
+        request = NewDownloadGEORequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "trp", APIVersion, "DownloadGEO")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DownloadGEO require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDownloadGEOResponse()
     err = c.Send(request, response)
     return
 }

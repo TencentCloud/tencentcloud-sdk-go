@@ -140,6 +140,9 @@ const (
 	// 不支持的方法。
 	INTERNALERROR_METHODERR = "InternalError.MethodErr"
 
+	// 第三方调用错误。
+	INTERNALERROR_THIRDPARTYCALLERROR = "InternalError.ThirdPartyCallError"
+
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
 
@@ -409,6 +412,9 @@ const (
 
 	// 缺少TaskId参数。
 	MISSINGPARAMETER_TASKID = "MissingParameter.TaskId"
+
+	// 缺失Text字段
+	MISSINGPARAMETER_TEXT = "MissingParameter.Text"
 
 	// 缺少转录参数TranscriptionParam。
 	MISSINGPARAMETER_TRANSCRIPTIONPARAM = "MissingParameter.TranscriptionParam"

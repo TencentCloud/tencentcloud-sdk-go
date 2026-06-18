@@ -130,6 +130,7 @@ func NewCreateInferServiceByTemplateResponse() (response *CreateInferServiceByTe
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_COMPUTESETCANNOTBENONE = "InvalidParameterValue.ComputeSetCannotBeNone"
 //  INVALIDPARAMETERVALUE_INVALIDCHARGETYPE = "InvalidParameterValue.InvalidChargeType"
+//  INVALIDPARAMETERVALUE_INVALIDSECURITYTYPE = "InvalidParameterValue.InvalidSecurityType"
 //  INVALIDPARAMETERVALUE_INVALIDSUBNETIDISNONE = "InvalidParameterValue.InvalidSubnetIdIsNone"
 //  INVALIDPARAMETERVALUE_INVALIDSUBNETIDMALFORMED = "InvalidParameterValue.InvalidSubnetIdMalformed"
 //  INVALIDPARAMETERVALUE_INVALIDVPCIDISNONE = "InvalidParameterValue.InvalidVpcIdIsNone"
@@ -149,6 +150,7 @@ func (c *Client) CreateInferServiceByTemplate(request *CreateInferServiceByTempl
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_COMPUTESETCANNOTBENONE = "InvalidParameterValue.ComputeSetCannotBeNone"
 //  INVALIDPARAMETERVALUE_INVALIDCHARGETYPE = "InvalidParameterValue.InvalidChargeType"
+//  INVALIDPARAMETERVALUE_INVALIDSECURITYTYPE = "InvalidParameterValue.InvalidSecurityType"
 //  INVALIDPARAMETERVALUE_INVALIDSUBNETIDISNONE = "InvalidParameterValue.InvalidSubnetIdIsNone"
 //  INVALIDPARAMETERVALUE_INVALIDSUBNETIDMALFORMED = "InvalidParameterValue.InvalidSubnetIdMalformed"
 //  INVALIDPARAMETERVALUE_INVALIDVPCIDISNONE = "InvalidParameterValue.InvalidVpcIdIsNone"
@@ -314,6 +316,7 @@ func NewDeployInferServiceResponse() (response *DeployInferServiceResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_INVALIDCHARGETYPE = "InvalidParameterValue.InvalidChargeType"
+//  INVALIDPARAMETERVALUE_INVALIDSECURITYTYPE = "InvalidParameterValue.InvalidSecurityType"
 //  INVALIDPARAMETERVALUE_INVALIDSUBNETIDISNONE = "InvalidParameterValue.InvalidSubnetIdIsNone"
 //  INVALIDPARAMETERVALUE_INVALIDSUBNETIDMALFORMED = "InvalidParameterValue.InvalidSubnetIdMalformed"
 //  INVALIDPARAMETERVALUE_INVALIDVPCIDISNONE = "InvalidParameterValue.InvalidVpcIdIsNone"
@@ -330,6 +333,7 @@ func (c *Client) DeployInferService(request *DeployInferServiceRequest) (respons
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_INVALIDCHARGETYPE = "InvalidParameterValue.InvalidChargeType"
+//  INVALIDPARAMETERVALUE_INVALIDSECURITYTYPE = "InvalidParameterValue.InvalidSecurityType"
 //  INVALIDPARAMETERVALUE_INVALIDSUBNETIDISNONE = "InvalidParameterValue.InvalidSubnetIdIsNone"
 //  INVALIDPARAMETERVALUE_INVALIDSUBNETIDMALFORMED = "InvalidParameterValue.InvalidSubnetIdMalformed"
 //  INVALIDPARAMETERVALUE_INVALIDVPCIDISNONE = "InvalidParameterValue.InvalidVpcIdIsNone"

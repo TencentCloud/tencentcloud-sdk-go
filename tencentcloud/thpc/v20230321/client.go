@@ -446,17 +446,7 @@ func NewCreateWorkspacesResponse() (response *CreateWorkspacesResponse) {
 // 本接口 (CreateWorkspaces) 用于创建工作空间。
 //
 // 可能返回的错误码:
-//  INTERNALERROR_CALLCAM = "InternalError.CallCAM"
-//  INTERNALERROR_CALLCVM = "InternalError.CallCvm"
-//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_NOTSUPPORTED = "InvalidParameterValue.NotSupported"
-//  INVALIDPARAMETERVALUE_PARAMETERSNOTSUPPORTED = "InvalidParameterValue.ParametersNotSupported"
-//  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
-//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
-//  INVALIDPARAMETERVALUE_TOOSHORT = "InvalidParameterValue.TooShort"
-//  INVALIDPARAMETERVALUE_TOOSMALL = "InvalidParameterValue.TooSmall"
-//  RESOURCENOTFOUND_IMAGEID = "ResourceNotFound.ImageId"
+//  INVALIDPARAMETERVALUE_INVALIDUNDERWRITEPERIOD = "InvalidParameterValue.InvalidUnderwritePeriod"
 func (c *Client) CreateWorkspaces(request *CreateWorkspacesRequest) (response *CreateWorkspacesResponse, err error) {
     return c.CreateWorkspacesWithContext(context.Background(), request)
 }
@@ -465,17 +455,7 @@ func (c *Client) CreateWorkspaces(request *CreateWorkspacesRequest) (response *C
 // 本接口 (CreateWorkspaces) 用于创建工作空间。
 //
 // 可能返回的错误码:
-//  INTERNALERROR_CALLCAM = "InternalError.CallCAM"
-//  INTERNALERROR_CALLCVM = "InternalError.CallCvm"
-//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_NOTSUPPORTED = "InvalidParameterValue.NotSupported"
-//  INVALIDPARAMETERVALUE_PARAMETERSNOTSUPPORTED = "InvalidParameterValue.ParametersNotSupported"
-//  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
-//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
-//  INVALIDPARAMETERVALUE_TOOSHORT = "InvalidParameterValue.TooShort"
-//  INVALIDPARAMETERVALUE_TOOSMALL = "InvalidParameterValue.TooSmall"
-//  RESOURCENOTFOUND_IMAGEID = "ResourceNotFound.ImageId"
+//  INVALIDPARAMETERVALUE_INVALIDUNDERWRITEPERIOD = "InvalidParameterValue.InvalidUnderwritePeriod"
 func (c *Client) CreateWorkspacesWithContext(ctx context.Context, request *CreateWorkspacesRequest) (response *CreateWorkspacesResponse, err error) {
     if request == nil {
         request = NewCreateWorkspacesRequest()

@@ -389,6 +389,7 @@ func NewCreateAIAgentCallResponse() (response *CreateAIAgentCallResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_AILICENSEHASEXPIRED = "FailedOperation.AILicenseHasExpired"
+//  FAILEDOPERATION_ACQUIREQUOTA = "FailedOperation.AcquireQuota"
 //  FAILEDOPERATION_CALLOUTFAILED = "FailedOperation.CallOutFailed"
 //  FAILEDOPERATION_CALLEEISBLACKUSER = "FailedOperation.CalleeIsBlackUser"
 //  FAILEDOPERATION_CALLEROVERFREQUENCY = "FailedOperation.CallerOverFrequency"
@@ -415,6 +416,7 @@ func (c *Client) CreateAIAgentCall(request *CreateAIAgentCallRequest) (response 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_AILICENSEHASEXPIRED = "FailedOperation.AILicenseHasExpired"
+//  FAILEDOPERATION_ACQUIREQUOTA = "FailedOperation.AcquireQuota"
 //  FAILEDOPERATION_CALLOUTFAILED = "FailedOperation.CallOutFailed"
 //  FAILEDOPERATION_CALLEEISBLACKUSER = "FailedOperation.CalleeIsBlackUser"
 //  FAILEDOPERATION_CALLEROVERFREQUENCY = "FailedOperation.CallerOverFrequency"
@@ -1805,6 +1807,62 @@ func (c *Client) DescribeAICallExtractResultWithContext(ctx context.Context, req
     request.SetContext(ctx)
     
     response = NewDescribeAICallExtractResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAICallInteractionRecordsRequest() (request *DescribeAICallInteractionRecordsRequest) {
+    request = &DescribeAICallInteractionRecordsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ccc", APIVersion, "DescribeAICallInteractionRecords")
+    
+    
+    return
+}
+
+func NewDescribeAICallInteractionRecordsResponse() (response *DescribeAICallInteractionRecordsResponse) {
+    response = &DescribeAICallInteractionRecordsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAICallInteractionRecords
+// 获取AI 会话交互事件流
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SESSIONNOTEXISTS = "FailedOperation.SessionNotExists"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeAICallInteractionRecords(request *DescribeAICallInteractionRecordsRequest) (response *DescribeAICallInteractionRecordsResponse, err error) {
+    return c.DescribeAICallInteractionRecordsWithContext(context.Background(), request)
+}
+
+// DescribeAICallInteractionRecords
+// 获取AI 会话交互事件流
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SESSIONNOTEXISTS = "FailedOperation.SessionNotExists"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeAICallInteractionRecordsWithContext(ctx context.Context, request *DescribeAICallInteractionRecordsRequest) (response *DescribeAICallInteractionRecordsResponse, err error) {
+    if request == nil {
+        request = NewDescribeAICallInteractionRecordsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ccc", APIVersion, "DescribeAICallInteractionRecords")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAICallInteractionRecords require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAICallInteractionRecordsResponse()
     err = c.Send(request, response)
     return
 }

@@ -3015,30 +3015,30 @@ type GroupExDescriptionInfo struct {
 }
 
 type GroupInfo struct {
-	// 人员库名称。
+	// <p>人员库名称。</p>
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
-	// 人员库ID。
+	// <p>人员库ID。</p>
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 人员库自定义描述字段。
+	// <p>人员库自定义描述字段。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupExDescriptions []*string `json:"GroupExDescriptions,omitnil,omitempty" name:"GroupExDescriptions"`
 
-	// 人员库信息备注。
+	// <p>人员库信息备注。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tag *string `json:"Tag,omitnil,omitempty" name:"Tag"`
 
-	// 人脸识别所用的算法模型版本。
+	// <p>人脸识别所用的算法模型版本。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FaceModelVersion *string `json:"FaceModelVersion,omitnil,omitempty" name:"FaceModelVersion"`
 
-	// Group的创建时间和日期 CreationTimestamp。
-	// - CreationTimestamp 的值是自 Unix 纪元时间到Group创建时间的毫秒数。 
-	// - Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 00:00:00。
-	// - 有关更多信息，请参阅 Unix 时间。
+	// <p>Group的创建时间和日期 CreationTimestamp。</p><ul><li>CreationTimestamp 的值是自 Unix 纪元时间到Group创建时间的毫秒数。 </li><li>Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 00:00:00。</li><li>有关更多信息，请参阅 Unix 时间。</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreationTimestamp *uint64 `json:"CreationTimestamp,omitnil,omitempty" name:"CreationTimestamp"`
+
+	// <p>Group的更新时间和日期 UpdateTimestamp。<br>UpdateTimestamp 的值是自 Unix 纪元时间到Group更新时间的毫秒数。<br>Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 00:00:00。<br>有关更多信息，请参阅 Unix 时间。</p>
+	UpdateTimestamp *uint64 `json:"UpdateTimestamp,omitnil,omitempty" name:"UpdateTimestamp"`
 }
 
 type Hair struct {

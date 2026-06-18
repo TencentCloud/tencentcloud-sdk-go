@@ -1206,381 +1206,327 @@ func (r *AddDomainWhiteRuleResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AddSpartaProtectionRequestParams struct {
-	// 需要防护的域名
+	// <p>需要防护的域名</p>
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 证书类型。
-	// 0：仅配置HTTP监听端口，没有证书
-	// 1：证书来源为自有证书
-	// 2：证书来源为托管证书
+	// <p>证书类型。<br>0：仅配置HTTP监听端口，没有证书<br>1：证书来源为自有证书<br>2：证书来源为托管证书</p>
 	CertType *int64 `json:"CertType,omitnil,omitempty" name:"CertType"`
 
-	// waf前是否部署有七层代理服务。
-	// 0：没有部署代理服务
-	// 1：有部署代理服务，waf将使用XFF获取客户端IP
-	// 2：有部署代理服务，waf将使用remote_addr获取客户端IP
-	// 3：有部署代理服务，waf将使用ip_headers中的自定义header获取客户端IP
+	// <p>waf前是否部署有七层代理服务。<br>0：没有部署代理服务<br>1：有部署代理服务，waf将使用XFF获取客户端IP<br>2：有部署代理服务，waf将使用remote_addr获取客户端IP<br>3：有部署代理服务，waf将使用ip_headers中的自定义header获取客户端IP</p>
 	IsCdn *int64 `json:"IsCdn,omitnil,omitempty" name:"IsCdn"`
 
-	// 回源类型。
-	// 0：通过IP回源
-	// 1：通过域名回源
+	// <p>回源类型。<br>0：通过IP回源<br>1：通过域名回源</p>
 	UpstreamType *int64 `json:"UpstreamType,omitnil,omitempty" name:"UpstreamType"`
 
-	// 是否开启WebSocket支持。
-	// 0：关闭
-	// 1：开启
+	// <p>是否开启WebSocket支持。<br>0：关闭<br>1：开启</p>
 	IsWebsocket *int64 `json:"IsWebsocket,omitnil,omitempty" name:"IsWebsocket"`
 
-	// 回源负载均衡策略。
-	// 0：轮询
-	// 1：IP hash
-	// 2：加权轮询
+	// <p>回源负载均衡策略。<br>0：轮询<br>1：IP hash<br>2：加权轮询</p>
 	LoadBalance *string `json:"LoadBalance,omitnil,omitempty" name:"LoadBalance"`
 
-	// 服务端口列表配置。
-	// NginxServerId：新增域名时填'0'
-	// Port：监听端口号
-	// Protocol：端口协议
-	// UpstreamPort：与Port相同
-	// UpstreamProtocol：与Protocol相同
+	// <p>服务端口列表配置。<br>NginxServerId：新增域名时填&#39;0&#39;<br>Port：监听端口号<br>Protocol：端口协议<br>UpstreamPort：与Port相同<br>UpstreamProtocol：与Protocol相同</p>
 	Ports []*PortItem `json:"Ports,omitnil,omitempty" name:"Ports"`
 
-	// 必填项，是否开启长连接。
-	// 0： 短连接
-	// 1： 长连接
+	// <p>必填项，是否开启长连接。<br>0： 短连接<br>1： 长连接</p>
 	IsKeepAlive *string `json:"IsKeepAlive,omitnil,omitempty" name:"IsKeepAlive"`
 
-	// 必填项，域名所属实例id
+	// <p>必填项，域名所属实例id</p>
 	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
 
-	// 是否开启HTTP强制跳转到HTTPS。0：不强制跳转1：开启强制跳转
+	// <p>是否开启HTTP强制跳转到HTTPS。0：不强制跳转1：开启强制跳转</p>
 	HttpsRewrite *int64 `json:"HttpsRewrite,omitnil,omitempty" name:"HttpsRewrite"`
 
-	// 是否开启HTTP2，需要开启HTTPS协议支持。0：关闭1：开启
+	// <p>是否开启HTTP2，需要开启HTTPS协议支持。0：关闭1：开启</p>
 	IsHttp2 *int64 `json:"IsHttp2,omitnil,omitempty" name:"IsHttp2"`
 
-	// 是否开启主动健康检测。0：不开启1：开启
+	// <p>是否开启主动健康检测。0：不开启1：开启</p>
 	ActiveCheck *int64 `json:"ActiveCheck,omitnil,omitempty" name:"ActiveCheck"`
 
-	// 加密套件模板。0：不支持选择，使用默认模板  1：通用型模板 2：安全型模板3：自定义模板
+	// <p>加密套件模板。0：不支持选择，使用默认模板  1：通用型模板 2：安全型模板3：自定义模板</p>
 	CipherTemplate *int64 `json:"CipherTemplate,omitnil,omitempty" name:"CipherTemplate"`
 
-	// CertType为1时，需要填充此参数，表示自有证书的证书链
+	// <p>CertType为1时，需要填充此参数，表示自有证书的证书链</p>
 	Cert *string `json:"Cert,omitnil,omitempty" name:"Cert"`
 
-	// CertType为1时，需要填充此参数，表示自有证书的私钥
+	// <p>CertType为1时，需要填充此参数，表示自有证书的私钥</p>
 	PrivateKey *string `json:"PrivateKey,omitnil,omitempty" name:"PrivateKey"`
 
-	// CertType为2时，需要填充此参数，表示腾讯云SSL平台托管的证书id
+	// <p>CertType为2时，需要填充此参数，表示腾讯云SSL平台托管的证书id</p>
 	SSLId *string `json:"SSLId,omitnil,omitempty" name:"SSLId"`
 
-	// Waf的资源ID。
+	// <p>Waf的资源ID。</p>
 	//
 	// Deprecated: ResourceId is deprecated.
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
-	// IsCdn为3时，需要填此参数，表示自定义header
+	// <p>IsCdn为3时，需要填此参数，表示自定义header</p>
 	IpHeaders []*string `json:"IpHeaders,omitnil,omitempty" name:"IpHeaders"`
 
-	// 服务配置有HTTPS端口时，HTTPS的回源协议。
-	// http：使用http协议回源，和HttpsUpstreamPort配合使用
-	// https：使用https协议回源
+	// <p>服务配置有HTTPS端口时，HTTPS的回源协议。<br>http：使用http协议回源，和HttpsUpstreamPort配合使用<br>https：使用https协议回源</p>
 	UpstreamScheme *string `json:"UpstreamScheme,omitnil,omitempty" name:"UpstreamScheme"`
 
-	// HTTPS回源端口,仅UpstreamScheme为http时需要填当前字段
+	// <p>HTTPS回源端口,仅UpstreamScheme为http时需要填当前字段</p>
 	//
 	// Deprecated: HttpsUpstreamPort is deprecated.
 	HttpsUpstreamPort *string `json:"HttpsUpstreamPort,omitnil,omitempty" name:"HttpsUpstreamPort"`
 
-	// 是否开启灰度，0表示不开启灰度。
+	// <p>是否开启灰度，0表示不开启灰度。</p>
 	//
 	// Deprecated: IsGray is deprecated.
 	IsGray *int64 `json:"IsGray,omitnil,omitempty" name:"IsGray"`
 
-	// 灰度的地区
+	// <p>灰度的地区</p>
 	//
 	// Deprecated: GrayAreas is deprecated.
 	GrayAreas []*string `json:"GrayAreas,omitnil,omitempty" name:"GrayAreas"`
 
-	// 域名回源时的回源域名。UpstreamType为1时，需要填充此字段
+	// <p>域名回源时的回源域名。UpstreamType为1时，需要填充此字段</p>
 	UpstreamDomain *string `json:"UpstreamDomain,omitnil,omitempty" name:"UpstreamDomain"`
 
-	// IP回源时的回源IP列表。UpstreamType为0时，需要填充此字段
+	// <p>IP回源时的回源IP列表。UpstreamType为0时，需要填充此字段</p>
 	SrcList []*string `json:"SrcList,omitnil,omitempty" name:"SrcList"`
 
-	// WAF实例类型。
-	// sparta-waf：SAAS型WAF
-	// clb-waf：负载均衡型WAF
-	// cdn-waf：CDN上的Web防护能力
+	// <p>WAF实例类型。<br>sparta-waf：SAAS型WAF<br>clb-waf：负载均衡型WAF<br>cdn-waf：CDN上的Web防护能力</p>
 	//
 	// Deprecated: Edition is deprecated.
 	Edition *string `json:"Edition,omitnil,omitempty" name:"Edition"`
 
-	// 目前填0即可。anycast IP类型开关： 0 普通IP 1 Anycast IP
+	// <p>目前填0即可。anycast IP类型开关： 0 普通IP 1 Anycast IP</p>
 	//
 	// Deprecated: Anycast is deprecated.
 	Anycast *int64 `json:"Anycast,omitnil,omitempty" name:"Anycast"`
 
-	// 回源IP列表各IP的权重，和SrcList一一对应。当且仅当UpstreamType为0，并且SrcList有多个IP，并且LoadBalance为2时需要填写，否则填 []
+	// <p>回源IP列表各IP的权重，和SrcList一一对应。当且仅当UpstreamType为0，并且SrcList有多个IP，并且LoadBalance为2时需要填写，否则填 []</p>
 	Weights []*int64 `json:"Weights,omitnil,omitempty" name:"Weights"`
 
-	// TLS版本信息
+	// <p>TLS版本信息</p>
 	TLSVersion *int64 `json:"TLSVersion,omitnil,omitempty" name:"TLSVersion"`
 
-	// 自定义的加密套件列表。CipherTemplate为3时需要填此字段，表示自定义的加密套件，值通过DescribeCiphersDetail接口获取。
+	// <p>自定义的加密套件列表。CipherTemplate为3时需要填此字段，表示自定义的加密套件，值通过DescribeCiphersDetail接口获取。</p>
 	Ciphers []*int64 `json:"Ciphers,omitnil,omitempty" name:"Ciphers"`
 
-	// WAF与源站的连接超时，默认10s。
+	// <p>WAF与源站的连接超时，默认10s。</p>
 	ProxyConnectTimeout *int64 `json:"ProxyConnectTimeout,omitnil,omitempty" name:"ProxyConnectTimeout"`
 
-	// WAF与源站的读超时时间，默认300s。
+	// <p>WAF与源站的读超时时间，默认300s。</p>
 	ProxyReadTimeout *int64 `json:"ProxyReadTimeout,omitnil,omitempty" name:"ProxyReadTimeout"`
 
-	// WAF与源站的写超时时间，默认300s。
+	// <p>WAF与源站的写超时时间，默认300s。</p>
 	ProxySendTimeout *int64 `json:"ProxySendTimeout,omitnil,omitempty" name:"ProxySendTimeout"`
 
-	// WAF回源时的SNI类型。
-	// 0：关闭SNI，不配置client_hello中的server_name
-	// 1：开启SNI，client_hello中的server_name为防护域名
-	// 2：开启SNI，SNI为域名回源时的源站域名
-	// 3：开启SNI，SNI为自定义域名
+	// <p>WAF回源时的SNI类型。<br>0：关闭SNI，不配置client_hello中的server_name<br>1：开启SNI，client_hello中的server_name为防护域名<br>2：开启SNI，SNI为域名回源时的源站域名<br>3：开启SNI，SNI为自定义域名</p>
 	SniType *int64 `json:"SniType,omitnil,omitempty" name:"SniType"`
 
-	// SniType为3时，需要填此参数，表示自定义的SNI；
+	// <p>SniType为3时，需要填此参数，表示自定义的SNI；</p>
 	SniHost *string `json:"SniHost,omitnil,omitempty" name:"SniHost"`
 
-	// 是否开启XFF重置。0：关闭 1：开启
+	// <p>是否开启XFF重置。0：关闭 1：开启</p>
 	XFFReset *int64 `json:"XFFReset,omitnil,omitempty" name:"XFFReset"`
 
-	// 域名备注信息
+	// <p>域名备注信息</p>
 	Note *string `json:"Note,omitnil,omitempty" name:"Note"`
 
-	// 自定义回源Host。默认为空字符串，表示使用防护域名作为回源Host。
+	// <p>自定义回源Host。默认为空字符串，表示使用防护域名作为回源Host。</p>
 	UpstreamHost *string `json:"UpstreamHost,omitnil,omitempty" name:"UpstreamHost"`
 
-	// 是否开启缓存。 0：关闭 1：开启
+	// <p>是否开启缓存。 0：关闭 1：开启</p>
 	ProxyBuffer *int64 `json:"ProxyBuffer,omitnil,omitempty" name:"ProxyBuffer"`
 
-	// 是否开启拨测。 0: 禁用拨测  1: 启用拨测。默认启用拨测
+	// <p>是否开启拨测。 0: 禁用拨测  1: 启用拨测。默认启用拨测</p>
 	ProbeStatus *int64 `json:"ProbeStatus,omitnil,omitempty" name:"ProbeStatus"`
 
-	// 国密选项。0：不开启国密 1：在原有TLS选项的基础上追加支持国密 2：开启国密并仅支持国密客户端访问
+	// <p>国密选项。0：不开启国密 1：在原有TLS选项的基础上追加支持国密 2：开启国密并仅支持国密客户端访问</p>
 	GmType *int64 `json:"GmType,omitnil,omitempty" name:"GmType"`
 
-	// 国密证书类型。0：无国密证书 1：证书来源为自有国密证书 2：证书来源为托管国密证书
+	// <p>国密证书类型。0：无国密证书 1：证书来源为自有国密证书 2：证书来源为托管国密证书</p>
 	GmCertType *int64 `json:"GmCertType,omitnil,omitempty" name:"GmCertType"`
 
-	// GmCertType为1时，需要填充此参数，表示自有国密证书的证书链
+	// <p>GmCertType为1时，需要填充此参数，表示自有国密证书的证书链</p>
 	GmCert *string `json:"GmCert,omitnil,omitempty" name:"GmCert"`
 
-	// GmCertType为1时，需要填充此参数，表示自有国密证书的私钥
+	// <p>GmCertType为1时，需要填充此参数，表示自有国密证书的私钥</p>
 	GmPrivateKey *string `json:"GmPrivateKey,omitnil,omitempty" name:"GmPrivateKey"`
 
-	// GmCertType为1时，需要填充此参数，表示自有国密证书的加密证书
+	// <p>GmCertType为1时，需要填充此参数，表示自有国密证书的加密证书</p>
 	GmEncCert *string `json:"GmEncCert,omitnil,omitempty" name:"GmEncCert"`
 
-	// GmCertType为1时，需要填充此参数，表示自有国密证书的加密证书的私钥
+	// <p>GmCertType为1时，需要填充此参数，表示自有国密证书的加密证书的私钥</p>
 	GmEncPrivateKey *string `json:"GmEncPrivateKey,omitnil,omitempty" name:"GmEncPrivateKey"`
 
-	// GmCertType为2时，需要填充此参数，表示腾讯云SSL平台托管的证书id
+	// <p>GmCertType为2时，需要填充此参数，表示腾讯云SSL平台托管的证书id</p>
 	GmSSLId *string `json:"GmSSLId,omitnil,omitempty" name:"GmSSLId"`
 
-	// 回源策略，支持负载均衡回源和分流回源两种方式。0：默认值，负载均衡回源；1：分流回源
+	// <p>回源策略，支持负载均衡回源和分流回源两种方式。0：默认值，负载均衡回源；1：分流回源</p>
 	UpstreamPolicy *int64 `json:"UpstreamPolicy,omitnil,omitempty" name:"UpstreamPolicy"`
 
-	// 分流回源时生效，分流回源的规则。
+	// <p>分流回源时生效，分流回源的规则。</p>
 	UpstreamRules []*UpstreamRule `json:"UpstreamRules,omitnil,omitempty" name:"UpstreamRules"`
 
-	// 业务场景。0：默认值，表示常规业务场景 1：大模型业务场景
+	// <p>业务场景。0：默认值，表示常规业务场景 1：大模型业务场景</p>
 	UseCase *int64 `json:"UseCase,omitnil,omitempty" name:"UseCase"`
 
-	// gzip开关。0：关闭 1：默认值，打开。
+	// <p>gzip开关。0：关闭 1：默认值，打开。</p>
 	Gzip *int64 `json:"Gzip,omitnil,omitempty" name:"Gzip"`
+
+	// <p>标签信息</p>
+	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type AddSpartaProtectionRequest struct {
 	*tchttp.BaseRequest
 	
-	// 需要防护的域名
+	// <p>需要防护的域名</p>
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 证书类型。
-	// 0：仅配置HTTP监听端口，没有证书
-	// 1：证书来源为自有证书
-	// 2：证书来源为托管证书
+	// <p>证书类型。<br>0：仅配置HTTP监听端口，没有证书<br>1：证书来源为自有证书<br>2：证书来源为托管证书</p>
 	CertType *int64 `json:"CertType,omitnil,omitempty" name:"CertType"`
 
-	// waf前是否部署有七层代理服务。
-	// 0：没有部署代理服务
-	// 1：有部署代理服务，waf将使用XFF获取客户端IP
-	// 2：有部署代理服务，waf将使用remote_addr获取客户端IP
-	// 3：有部署代理服务，waf将使用ip_headers中的自定义header获取客户端IP
+	// <p>waf前是否部署有七层代理服务。<br>0：没有部署代理服务<br>1：有部署代理服务，waf将使用XFF获取客户端IP<br>2：有部署代理服务，waf将使用remote_addr获取客户端IP<br>3：有部署代理服务，waf将使用ip_headers中的自定义header获取客户端IP</p>
 	IsCdn *int64 `json:"IsCdn,omitnil,omitempty" name:"IsCdn"`
 
-	// 回源类型。
-	// 0：通过IP回源
-	// 1：通过域名回源
+	// <p>回源类型。<br>0：通过IP回源<br>1：通过域名回源</p>
 	UpstreamType *int64 `json:"UpstreamType,omitnil,omitempty" name:"UpstreamType"`
 
-	// 是否开启WebSocket支持。
-	// 0：关闭
-	// 1：开启
+	// <p>是否开启WebSocket支持。<br>0：关闭<br>1：开启</p>
 	IsWebsocket *int64 `json:"IsWebsocket,omitnil,omitempty" name:"IsWebsocket"`
 
-	// 回源负载均衡策略。
-	// 0：轮询
-	// 1：IP hash
-	// 2：加权轮询
+	// <p>回源负载均衡策略。<br>0：轮询<br>1：IP hash<br>2：加权轮询</p>
 	LoadBalance *string `json:"LoadBalance,omitnil,omitempty" name:"LoadBalance"`
 
-	// 服务端口列表配置。
-	// NginxServerId：新增域名时填'0'
-	// Port：监听端口号
-	// Protocol：端口协议
-	// UpstreamPort：与Port相同
-	// UpstreamProtocol：与Protocol相同
+	// <p>服务端口列表配置。<br>NginxServerId：新增域名时填&#39;0&#39;<br>Port：监听端口号<br>Protocol：端口协议<br>UpstreamPort：与Port相同<br>UpstreamProtocol：与Protocol相同</p>
 	Ports []*PortItem `json:"Ports,omitnil,omitempty" name:"Ports"`
 
-	// 必填项，是否开启长连接。
-	// 0： 短连接
-	// 1： 长连接
+	// <p>必填项，是否开启长连接。<br>0： 短连接<br>1： 长连接</p>
 	IsKeepAlive *string `json:"IsKeepAlive,omitnil,omitempty" name:"IsKeepAlive"`
 
-	// 必填项，域名所属实例id
+	// <p>必填项，域名所属实例id</p>
 	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
 
-	// 是否开启HTTP强制跳转到HTTPS。0：不强制跳转1：开启强制跳转
+	// <p>是否开启HTTP强制跳转到HTTPS。0：不强制跳转1：开启强制跳转</p>
 	HttpsRewrite *int64 `json:"HttpsRewrite,omitnil,omitempty" name:"HttpsRewrite"`
 
-	// 是否开启HTTP2，需要开启HTTPS协议支持。0：关闭1：开启
+	// <p>是否开启HTTP2，需要开启HTTPS协议支持。0：关闭1：开启</p>
 	IsHttp2 *int64 `json:"IsHttp2,omitnil,omitempty" name:"IsHttp2"`
 
-	// 是否开启主动健康检测。0：不开启1：开启
+	// <p>是否开启主动健康检测。0：不开启1：开启</p>
 	ActiveCheck *int64 `json:"ActiveCheck,omitnil,omitempty" name:"ActiveCheck"`
 
-	// 加密套件模板。0：不支持选择，使用默认模板  1：通用型模板 2：安全型模板3：自定义模板
+	// <p>加密套件模板。0：不支持选择，使用默认模板  1：通用型模板 2：安全型模板3：自定义模板</p>
 	CipherTemplate *int64 `json:"CipherTemplate,omitnil,omitempty" name:"CipherTemplate"`
 
-	// CertType为1时，需要填充此参数，表示自有证书的证书链
+	// <p>CertType为1时，需要填充此参数，表示自有证书的证书链</p>
 	Cert *string `json:"Cert,omitnil,omitempty" name:"Cert"`
 
-	// CertType为1时，需要填充此参数，表示自有证书的私钥
+	// <p>CertType为1时，需要填充此参数，表示自有证书的私钥</p>
 	PrivateKey *string `json:"PrivateKey,omitnil,omitempty" name:"PrivateKey"`
 
-	// CertType为2时，需要填充此参数，表示腾讯云SSL平台托管的证书id
+	// <p>CertType为2时，需要填充此参数，表示腾讯云SSL平台托管的证书id</p>
 	SSLId *string `json:"SSLId,omitnil,omitempty" name:"SSLId"`
 
-	// Waf的资源ID。
+	// <p>Waf的资源ID。</p>
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
-	// IsCdn为3时，需要填此参数，表示自定义header
+	// <p>IsCdn为3时，需要填此参数，表示自定义header</p>
 	IpHeaders []*string `json:"IpHeaders,omitnil,omitempty" name:"IpHeaders"`
 
-	// 服务配置有HTTPS端口时，HTTPS的回源协议。
-	// http：使用http协议回源，和HttpsUpstreamPort配合使用
-	// https：使用https协议回源
+	// <p>服务配置有HTTPS端口时，HTTPS的回源协议。<br>http：使用http协议回源，和HttpsUpstreamPort配合使用<br>https：使用https协议回源</p>
 	UpstreamScheme *string `json:"UpstreamScheme,omitnil,omitempty" name:"UpstreamScheme"`
 
-	// HTTPS回源端口,仅UpstreamScheme为http时需要填当前字段
+	// <p>HTTPS回源端口,仅UpstreamScheme为http时需要填当前字段</p>
 	HttpsUpstreamPort *string `json:"HttpsUpstreamPort,omitnil,omitempty" name:"HttpsUpstreamPort"`
 
-	// 是否开启灰度，0表示不开启灰度。
+	// <p>是否开启灰度，0表示不开启灰度。</p>
 	IsGray *int64 `json:"IsGray,omitnil,omitempty" name:"IsGray"`
 
-	// 灰度的地区
+	// <p>灰度的地区</p>
 	GrayAreas []*string `json:"GrayAreas,omitnil,omitempty" name:"GrayAreas"`
 
-	// 域名回源时的回源域名。UpstreamType为1时，需要填充此字段
+	// <p>域名回源时的回源域名。UpstreamType为1时，需要填充此字段</p>
 	UpstreamDomain *string `json:"UpstreamDomain,omitnil,omitempty" name:"UpstreamDomain"`
 
-	// IP回源时的回源IP列表。UpstreamType为0时，需要填充此字段
+	// <p>IP回源时的回源IP列表。UpstreamType为0时，需要填充此字段</p>
 	SrcList []*string `json:"SrcList,omitnil,omitempty" name:"SrcList"`
 
-	// WAF实例类型。
-	// sparta-waf：SAAS型WAF
-	// clb-waf：负载均衡型WAF
-	// cdn-waf：CDN上的Web防护能力
+	// <p>WAF实例类型。<br>sparta-waf：SAAS型WAF<br>clb-waf：负载均衡型WAF<br>cdn-waf：CDN上的Web防护能力</p>
 	Edition *string `json:"Edition,omitnil,omitempty" name:"Edition"`
 
-	// 目前填0即可。anycast IP类型开关： 0 普通IP 1 Anycast IP
+	// <p>目前填0即可。anycast IP类型开关： 0 普通IP 1 Anycast IP</p>
 	Anycast *int64 `json:"Anycast,omitnil,omitempty" name:"Anycast"`
 
-	// 回源IP列表各IP的权重，和SrcList一一对应。当且仅当UpstreamType为0，并且SrcList有多个IP，并且LoadBalance为2时需要填写，否则填 []
+	// <p>回源IP列表各IP的权重，和SrcList一一对应。当且仅当UpstreamType为0，并且SrcList有多个IP，并且LoadBalance为2时需要填写，否则填 []</p>
 	Weights []*int64 `json:"Weights,omitnil,omitempty" name:"Weights"`
 
-	// TLS版本信息
+	// <p>TLS版本信息</p>
 	TLSVersion *int64 `json:"TLSVersion,omitnil,omitempty" name:"TLSVersion"`
 
-	// 自定义的加密套件列表。CipherTemplate为3时需要填此字段，表示自定义的加密套件，值通过DescribeCiphersDetail接口获取。
+	// <p>自定义的加密套件列表。CipherTemplate为3时需要填此字段，表示自定义的加密套件，值通过DescribeCiphersDetail接口获取。</p>
 	Ciphers []*int64 `json:"Ciphers,omitnil,omitempty" name:"Ciphers"`
 
-	// WAF与源站的连接超时，默认10s。
+	// <p>WAF与源站的连接超时，默认10s。</p>
 	ProxyConnectTimeout *int64 `json:"ProxyConnectTimeout,omitnil,omitempty" name:"ProxyConnectTimeout"`
 
-	// WAF与源站的读超时时间，默认300s。
+	// <p>WAF与源站的读超时时间，默认300s。</p>
 	ProxyReadTimeout *int64 `json:"ProxyReadTimeout,omitnil,omitempty" name:"ProxyReadTimeout"`
 
-	// WAF与源站的写超时时间，默认300s。
+	// <p>WAF与源站的写超时时间，默认300s。</p>
 	ProxySendTimeout *int64 `json:"ProxySendTimeout,omitnil,omitempty" name:"ProxySendTimeout"`
 
-	// WAF回源时的SNI类型。
-	// 0：关闭SNI，不配置client_hello中的server_name
-	// 1：开启SNI，client_hello中的server_name为防护域名
-	// 2：开启SNI，SNI为域名回源时的源站域名
-	// 3：开启SNI，SNI为自定义域名
+	// <p>WAF回源时的SNI类型。<br>0：关闭SNI，不配置client_hello中的server_name<br>1：开启SNI，client_hello中的server_name为防护域名<br>2：开启SNI，SNI为域名回源时的源站域名<br>3：开启SNI，SNI为自定义域名</p>
 	SniType *int64 `json:"SniType,omitnil,omitempty" name:"SniType"`
 
-	// SniType为3时，需要填此参数，表示自定义的SNI；
+	// <p>SniType为3时，需要填此参数，表示自定义的SNI；</p>
 	SniHost *string `json:"SniHost,omitnil,omitempty" name:"SniHost"`
 
-	// 是否开启XFF重置。0：关闭 1：开启
+	// <p>是否开启XFF重置。0：关闭 1：开启</p>
 	XFFReset *int64 `json:"XFFReset,omitnil,omitempty" name:"XFFReset"`
 
-	// 域名备注信息
+	// <p>域名备注信息</p>
 	Note *string `json:"Note,omitnil,omitempty" name:"Note"`
 
-	// 自定义回源Host。默认为空字符串，表示使用防护域名作为回源Host。
+	// <p>自定义回源Host。默认为空字符串，表示使用防护域名作为回源Host。</p>
 	UpstreamHost *string `json:"UpstreamHost,omitnil,omitempty" name:"UpstreamHost"`
 
-	// 是否开启缓存。 0：关闭 1：开启
+	// <p>是否开启缓存。 0：关闭 1：开启</p>
 	ProxyBuffer *int64 `json:"ProxyBuffer,omitnil,omitempty" name:"ProxyBuffer"`
 
-	// 是否开启拨测。 0: 禁用拨测  1: 启用拨测。默认启用拨测
+	// <p>是否开启拨测。 0: 禁用拨测  1: 启用拨测。默认启用拨测</p>
 	ProbeStatus *int64 `json:"ProbeStatus,omitnil,omitempty" name:"ProbeStatus"`
 
-	// 国密选项。0：不开启国密 1：在原有TLS选项的基础上追加支持国密 2：开启国密并仅支持国密客户端访问
+	// <p>国密选项。0：不开启国密 1：在原有TLS选项的基础上追加支持国密 2：开启国密并仅支持国密客户端访问</p>
 	GmType *int64 `json:"GmType,omitnil,omitempty" name:"GmType"`
 
-	// 国密证书类型。0：无国密证书 1：证书来源为自有国密证书 2：证书来源为托管国密证书
+	// <p>国密证书类型。0：无国密证书 1：证书来源为自有国密证书 2：证书来源为托管国密证书</p>
 	GmCertType *int64 `json:"GmCertType,omitnil,omitempty" name:"GmCertType"`
 
-	// GmCertType为1时，需要填充此参数，表示自有国密证书的证书链
+	// <p>GmCertType为1时，需要填充此参数，表示自有国密证书的证书链</p>
 	GmCert *string `json:"GmCert,omitnil,omitempty" name:"GmCert"`
 
-	// GmCertType为1时，需要填充此参数，表示自有国密证书的私钥
+	// <p>GmCertType为1时，需要填充此参数，表示自有国密证书的私钥</p>
 	GmPrivateKey *string `json:"GmPrivateKey,omitnil,omitempty" name:"GmPrivateKey"`
 
-	// GmCertType为1时，需要填充此参数，表示自有国密证书的加密证书
+	// <p>GmCertType为1时，需要填充此参数，表示自有国密证书的加密证书</p>
 	GmEncCert *string `json:"GmEncCert,omitnil,omitempty" name:"GmEncCert"`
 
-	// GmCertType为1时，需要填充此参数，表示自有国密证书的加密证书的私钥
+	// <p>GmCertType为1时，需要填充此参数，表示自有国密证书的加密证书的私钥</p>
 	GmEncPrivateKey *string `json:"GmEncPrivateKey,omitnil,omitempty" name:"GmEncPrivateKey"`
 
-	// GmCertType为2时，需要填充此参数，表示腾讯云SSL平台托管的证书id
+	// <p>GmCertType为2时，需要填充此参数，表示腾讯云SSL平台托管的证书id</p>
 	GmSSLId *string `json:"GmSSLId,omitnil,omitempty" name:"GmSSLId"`
 
-	// 回源策略，支持负载均衡回源和分流回源两种方式。0：默认值，负载均衡回源；1：分流回源
+	// <p>回源策略，支持负载均衡回源和分流回源两种方式。0：默认值，负载均衡回源；1：分流回源</p>
 	UpstreamPolicy *int64 `json:"UpstreamPolicy,omitnil,omitempty" name:"UpstreamPolicy"`
 
-	// 分流回源时生效，分流回源的规则。
+	// <p>分流回源时生效，分流回源的规则。</p>
 	UpstreamRules []*UpstreamRule `json:"UpstreamRules,omitnil,omitempty" name:"UpstreamRules"`
 
-	// 业务场景。0：默认值，表示常规业务场景 1：大模型业务场景
+	// <p>业务场景。0：默认值，表示常规业务场景 1：大模型业务场景</p>
 	UseCase *int64 `json:"UseCase,omitnil,omitempty" name:"UseCase"`
 
-	// gzip开关。0：关闭 1：默认值，打开。
+	// <p>gzip开关。0：关闭 1：默认值，打开。</p>
 	Gzip *int64 `json:"Gzip,omitnil,omitempty" name:"Gzip"`
+
+	// <p>标签信息</p>
+	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 func (r *AddSpartaProtectionRequest) ToJsonString() string {
@@ -1645,6 +1591,7 @@ func (r *AddSpartaProtectionRequest) FromJsonString(s string) error {
 	delete(f, "UpstreamRules")
 	delete(f, "UseCase")
 	delete(f, "Gzip")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddSpartaProtectionRequest has unknown keys!", "")
 	}
@@ -1759,6 +1706,43 @@ type ApiDetailSampleHistory struct {
 	FullReqLog *string `json:"FullReqLog,omitnil,omitempty" name:"FullReqLog"`
 }
 
+type ApiEvent struct {
+	// 事件id
+	EventId *string `json:"EventId,omitnil,omitempty" name:"EventId"`
+
+	// 事件类型
+	EventType *string `json:"EventType,omitnil,omitempty" name:"EventType"`
+
+	// 事件等级，100,200,300对应低中高
+	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
+
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 处置状态，1:新发现，2，确认中，3，已确认，4，已下线，5，已忽略
+	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
+
+	// 发现时间
+	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 更新时间
+	UpdateTime *uint64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 关联的api
+	ApiName *string `json:"ApiName,omitnil,omitempty" name:"ApiName"`
+
+	// 请求方式
+	Method *string `json:"Method,omitnil,omitempty" name:"Method"`
+
+	// 事件来源，custom标识自定义
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+}
+
+type ApiGuardContent struct {
+	// <p>prompt</p>
+	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
+}
+
 type ApiNameMethod struct {
 	// api名称
 	ApiName *string `json:"ApiName,omitnil,omitempty" name:"ApiName"`
@@ -1845,6 +1829,41 @@ type ApiPkg struct {
 	IsAPISecurityTrial *int64 `json:"IsAPISecurityTrial,omitnil,omitempty" name:"IsAPISecurityTrial"`
 }
 
+type ApiSecAttackSource struct {
+	// 攻击来源ip
+	SrcIp *string `json:"SrcIp,omitnil,omitempty" name:"SrcIp"`
+
+	// 威胁等级
+	EventLevel *string `json:"EventLevel,omitnil,omitempty" name:"EventLevel"`
+
+	// BOT标签
+	BotLabel *string `json:"BotLabel,omitnil,omitempty" name:"BotLabel"`
+
+	// 变更时间
+	Timestamp *uint64 `json:"Timestamp,omitnil,omitempty" name:"Timestamp"`
+
+	// 地理位置
+	City *string `json:"City,omitnil,omitempty" name:"City"`
+
+	// 开始时间
+	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 关联事件数量
+	EventCount *int64 `json:"EventCount,omitnil,omitempty" name:"EventCount"`
+
+	// 攻击数量
+	AttackCount *int64 `json:"AttackCount,omitnil,omitempty" name:"AttackCount"`
+
+	// 缺失参数名，当事件类型是缺失参数名，缺失参数名和密码时，返回此字段
+	MissUserName *string `json:"MissUserName,omitnil,omitempty" name:"MissUserName"`
+
+	// 当是水平越权和垂直越权时，返回此字段
+	AttackDetail []*string `json:"AttackDetail,omitnil,omitempty" name:"AttackDetail"`
+
+	// 缺失密码参数，当事件类型是缺失参数名，缺失参数名和密码时，返回此字段
+	MissPassword *string `json:"MissPassword,omitnil,omitempty" name:"MissPassword"`
+}
+
 type ApiSecCustomEventRule struct {
 	// 规则名称
 	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
@@ -1895,6 +1914,20 @@ type ApiSecCustomSensitiveRule struct {
 
 	// 规则是否泛化，默认0表示不泛化
 	IsPan *int64 `json:"IsPan,omitnil,omitempty" name:"IsPan"`
+}
+
+type ApiSecEventChange struct {
+	// 变更人
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// 变更的状态
+	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
+
+	// 时间戳
+	Timestamp *uint64 `json:"Timestamp,omitnil,omitempty" name:"Timestamp"`
+
+	// 备注
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 }
 
 type ApiSecExcludeRule struct {
@@ -2027,6 +2060,40 @@ type ApiSecSensitiveRule struct {
 
 	// 是否泛化 0:不泛化，1:泛化
 	IsPan *int64 `json:"IsPan,omitnil,omitempty" name:"IsPan"`
+}
+
+type ApiSecSensitiveWhiteField struct {
+	// <p>字段名称</p>
+	FieldName *string `json:"FieldName,omitnil,omitempty" name:"FieldName"`
+
+	// <p>字段位置</p>
+	FieldType *string `json:"FieldType,omitnil,omitempty" name:"FieldType"`
+
+	// <p>敏感数据类型列表</p>
+	SensitiveTypes []*string `json:"SensitiveTypes,omitnil,omitempty" name:"SensitiveTypes"`
+}
+
+type ApiSecSensitiveWhiteRule struct {
+	// <p>白名单规则名称</p>
+	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
+
+	// <p>加白对象配置</p>
+	ApiNameOp []*ApiNameOp `json:"ApiNameOp,omitnil,omitempty" name:"ApiNameOp"`
+
+	// <p>加白模式</p><p>枚举值：</p><ul><li>1： 对整个API加白</li><li>2： 对指定字段加白</li></ul>
+	WhiteMode *int64 `json:"WhiteMode,omitnil,omitempty" name:"WhiteMode"`
+
+	// <p>加白字段配置列表</p>
+	WhiteFields []*ApiSecSensitiveWhiteField `json:"WhiteFields,omitnil,omitempty" name:"WhiteFields"`
+
+	// <p>规则开关</p><p>枚举值：</p><ul><li>0： 关</li><li>1： 开</li></ul>
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>规则描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>修改时间</p><p>单位：s</p>
+	UpdateTime *int64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
 type Area struct {
@@ -3054,140 +3121,166 @@ type CdcRegion struct {
 	Clusters []*CdcCluster `json:"Clusters,omitnil,omitempty" name:"Clusters"`
 }
 
+type ClawRiskItem struct {
+	// 风险类别
+	RiskType *string `json:"RiskType,omitnil,omitempty" name:"RiskType"`
+
+	// 规则id
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// 规则名称
+	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
+
+	// 分数
+	Score *float64 `json:"Score,omitnil,omitempty" name:"Score"`
+}
+
 type ClbDomainsInfo struct {
-	// 域名
+	// <p>域名</p>
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 域名唯一ID
+	// <p>域名唯一ID</p>
 	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`
 
-	// 域名所属实例ID
+	// <p>域名所属实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 域名所属实例名
+	// <p>域名所属实例名</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 域名所属实例类型
+	// <p>域名所属实例类型</p>
 	Edition *string `json:"Edition,omitnil,omitempty" name:"Edition"`
 
-	// waf前是否部署有七层代理服务。 0：没有部署代理服务 1：有部署代理服务，waf将使用XFF获取客户端IP 2：有部署代理服务，waf将使用remote_addr获取客户端IP 3：有部署代理服务，waf将使用ip_headers中的自定义header获取客户端IP
+	// <p>waf前是否部署有七层代理服务。 0：没有部署代理服务 1：有部署代理服务，waf将使用XFF获取客户端IP 2：有部署代理服务，waf将使用remote_addr获取客户端IP 3：有部署代理服务，waf将使用ip_headers中的自定义header获取客户端IP</p>
 	IsCdn *uint64 `json:"IsCdn,omitnil,omitempty" name:"IsCdn"`
 
-	// 负载均衡类型为clb时，对应的负载均衡器信息
+	// <p>负载均衡类型为clb时，对应的负载均衡器信息</p>
 	LoadBalancerSet []*LoadBalancerPackageNew `json:"LoadBalancerSet,omitnil,omitempty" name:"LoadBalancerSet"`
 
-	// 负载均衡型WAF的流量模式，1：清洗模式，0：镜像模式
+	// <p>负载均衡型WAF的流量模式，1：清洗模式，0：镜像模式</p>
 	FlowMode *uint64 `json:"FlowMode,omitnil,omitempty" name:"FlowMode"`
 
-	// 域名绑定负载均衡器状态
+	// <p>域名绑定负载均衡器状态</p>
 	State *int64 `json:"State,omitnil,omitempty" name:"State"`
 
-	// 负载均衡类型，clb或者apisix
+	// <p>负载均衡类型，clb或者apisix</p>
 	AlbType *string `json:"AlbType,omitnil,omitempty" name:"AlbType"`
 
-	// IsCdn=3时，表示自定义header
+	// <p>IsCdn=3时，表示自定义header</p>
 	IpHeaders []*string `json:"IpHeaders,omitnil,omitempty" name:"IpHeaders"`
 
-	// cdc-clb-waf类型WAF的CDC集群信息
+	// <p>cdc-clb-waf类型WAF的CDC集群信息</p>
 	CdcClusters *string `json:"CdcClusters,omitnil,omitempty" name:"CdcClusters"`
 
-	// 云类型:public:公有云；private:私有云;hybrid:混合云
+	// <p>云类型:public:公有云；private:私有云;hybrid:混合云</p>
 	CloudType *string `json:"CloudType,omitnil,omitempty" name:"CloudType"`
 
-	// 域名备注信息
+	// <p>域名备注信息</p>
 	Note *string `json:"Note,omitnil,omitempty" name:"Note"`
 
-	// 域名标签
+	// <p>域名标签</p>
 	Labels []*string `json:"Labels,omitnil,omitempty" name:"Labels"`
 
-	// clbwaf接入状态，0代表“尚无流量接入”，1代表“流量接入”，2代表“CLB监听器已注销”，3代表“配置生效中”，4代表“配置下发失败中”
+	// <p>clbwaf接入状态，0代表“尚无流量接入”，1代表“流量接入”，2代表“CLB监听器已注销”，3代表“配置生效中”，4代表“配置下发失败中”</p>
 	AccessStatus *int64 `json:"AccessStatus,omitnil,omitempty" name:"AccessStatus"`
+
+	// <p>标签信息</p>
+	TagInfos []*TagInfo `json:"TagInfos,omitnil,omitempty" name:"TagInfos"`
 }
 
 type ClbObject struct {
-	// 对象ID
+	// <p>对象ID</p>
 	ObjectId *string `json:"ObjectId,omitnil,omitempty" name:"ObjectId"`
 
-	// 实例ID
+	// <p>实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 实例名称
+	// <p>实例名称</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 精准域名列表
+	// <p>精准域名列表</p>
 	PreciseDomains []*string `json:"PreciseDomains,omitnil,omitempty" name:"PreciseDomains"`
 
-	// WAF功能开关状态，0关闭1开启
+	// <p>WAF功能开关状态，0关闭1开启</p>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// WAF日志开关状态，0关闭1开启
+	// <p>WAF日志开关状态，0关闭1开启</p>
 	ClsStatus *int64 `json:"ClsStatus,omitnil,omitempty" name:"ClsStatus"`
 
-	// CLB对象对应的虚拟域名
+	// <p>CLB对象对应的虚拟域名</p>
 	VirtualDomain *string `json:"VirtualDomain,omitnil,omitempty" name:"VirtualDomain"`
 
-	// 对象名称
+	// <p>对象名称</p>
 	ObjectName *string `json:"ObjectName,omitnil,omitempty" name:"ObjectName"`
 
-	// 公网地址
+	// <p>公网地址</p>
 	PublicIp []*string `json:"PublicIp,omitnil,omitempty" name:"PublicIp"`
 
-	// 内网地址
+	// <p>内网地址</p>
 	PrivateIp []*string `json:"PrivateIp,omitnil,omitempty" name:"PrivateIp"`
 
-	// VPC名称
+	// <p>VPC名称</p>
 	VpcName *string `json:"VpcName,omitnil,omitempty" name:"VpcName"`
 
-	// VPC ID
+	// <p>VPC ID</p>
 	Vpc *string `json:"Vpc,omitnil,omitempty" name:"Vpc"`
 
-	// waf实例等级，如果未绑定实例为0
+	// <p>waf实例等级，如果未绑定实例为0</p>
 	InstanceLevel *int64 `json:"InstanceLevel,omitnil,omitempty" name:"InstanceLevel"`
 
-	// clb投递开关
+	// <p>clb投递开关</p>
 	PostCLSStatus *int64 `json:"PostCLSStatus,omitnil,omitempty" name:"PostCLSStatus"`
 
-	// kafka投递开关
+	// <p>kafka投递开关</p>
 	PostCKafkaStatus *int64 `json:"PostCKafkaStatus,omitnil,omitempty" name:"PostCKafkaStatus"`
 
-	// 对象类型：CLB:负载均衡器，TSE:云原生网关
+	// <p>对象类型：CLB:负载均衡器，TSE:云原生网关</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 对象地域
+	// <p>对象地域</p>
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 代理状态: 0:不开启,1:以XFF的第一个IP地址作为客户端IP,2:以remote_addr作为客户端IP,3:从指定的头部字段获取客户端IP，字段通过IpHeaders字段给出
+	// <p>代理状态: 0:不开启,1:以XFF的第一个IP地址作为客户端IP,2:以remote_addr作为客户端IP,3:从指定的头部字段获取客户端IP，字段通过IpHeaders字段给出</p>
 	Proxy *uint64 `json:"Proxy,omitnil,omitempty" name:"Proxy"`
 
-	// 指定获取客户端IP的头部字段列表。IsCdn为3时有效
+	// <p>指定获取客户端IP的头部字段列表。IsCdn为3时有效</p>
 	IpHeaders []*string `json:"IpHeaders,omitnil,omitempty" name:"IpHeaders"`
 
-	// bot防护开关
+	// <p>bot防护开关</p>
 	BotStatus *int64 `json:"BotStatus,omitnil,omitempty" name:"BotStatus"`
 
-	// api防护开关
+	// <p>api防护开关</p>
 	ApiStatus *int64 `json:"ApiStatus,omitnil,omitempty" name:"ApiStatus"`
 
-	// 对象接入模式，0表示镜像模式，1表示清洗模式，2表示体检模式，默认为清洗模式
+	// <p>对象接入模式，0表示镜像模式，1表示清洗模式，2表示体检模式，默认为清洗模式</p>
 	ObjectFlowMode *int64 `json:"ObjectFlowMode,omitnil,omitempty" name:"ObjectFlowMode"`
 
-	// 数值形式的私有网络 ID
+	// <p>数值形式的私有网络 ID</p>
 	NumericalVpcId *int64 `json:"NumericalVpcId,omitnil,omitempty" name:"NumericalVpcId"`
 
-	// 修改时间
+	// <p>修改时间</p>
 	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	AddTime *string `json:"AddTime,omitnil,omitempty" name:"AddTime"`
 
-	// 跨账号时，表示成员账号的appid
+	// <p>跨账号时，表示成员账号的appid</p>
 	MemberAppId *uint64 `json:"MemberAppId,omitnil,omitempty" name:"MemberAppId"`
 
-	// 跨账号时，表示成员账号的uin
+	// <p>跨账号时，表示成员账号的uin</p>
 	MemberUin *string `json:"MemberUin,omitnil,omitempty" name:"MemberUin"`
 
-	// 跨账号时，表示成员账号的昵称
+	// <p>跨账号时，表示成员账号的昵称</p>
 	MemberNickName *string `json:"MemberNickName,omitnil,omitempty" name:"MemberNickName"`
+
+	// <p>标签信息</p>
+	TagInfos []*TagInfo `json:"TagInfos,omitnil,omitempty" name:"TagInfos"`
+
+	// <p>精准域名信息</p>
+	PreciseDomainDetails []*DomainInfo `json:"PreciseDomainDetails,omitnil,omitempty" name:"PreciseDomainDetails"`
+
+	// <p>waf接入状态</p>
+	WafAccessStatus *int64 `json:"WafAccessStatus,omitnil,omitempty" name:"WafAccessStatus"`
 }
 
 type ClbWafRegionItem struct {
@@ -3798,21 +3891,27 @@ func (r *CreateExportResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateHostRequestParams struct {
-	// 防护域名配置信息。内网负载均衡器必须携带对应的NumericalVpcId。
+	// <p>防护域名配置信息。内网负载均衡器必须携带对应的NumericalVpcId。</p>
 	Host *HostRecord `json:"Host,omitnil,omitempty" name:"Host"`
 
-	// 实例id
+	// <p>实例id</p>
 	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
+
+	// <p>标签信息</p>
+	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type CreateHostRequest struct {
 	*tchttp.BaseRequest
 	
-	// 防护域名配置信息。内网负载均衡器必须携带对应的NumericalVpcId。
+	// <p>防护域名配置信息。内网负载均衡器必须携带对应的NumericalVpcId。</p>
 	Host *HostRecord `json:"Host,omitnil,omitempty" name:"Host"`
 
-	// 实例id
+	// <p>实例id</p>
 	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
+
+	// <p>标签信息</p>
+	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 func (r *CreateHostRequest) ToJsonString() string {
@@ -3829,6 +3928,7 @@ func (r *CreateHostRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Host")
 	delete(f, "InstanceID")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateHostRequest has unknown keys!", "")
 	}
@@ -3837,7 +3937,7 @@ func (r *CreateHostRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateHostResponseParams struct {
-	// 新增防护域名ID
+	// <p>新增防护域名ID</p>
 	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4312,27 +4412,33 @@ func (r *CreatePostCLSFlowResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateProtectGroupRequestParams struct {
-	// 防护对象组名称
+	// <p>防护对象组名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 防护对象组的应用范围
+	// <p>防护对象组的应用范围</p>
 	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
 
-	// 防护对象组备注
+	// <p>防护对象组备注</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// <p>标签信息</p>
+	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type CreateProtectGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 防护对象组名称
+	// <p>防护对象组名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 防护对象组的应用范围
+	// <p>防护对象组的应用范围</p>
 	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
 
-	// 防护对象组备注
+	// <p>防护对象组备注</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// <p>标签信息</p>
+	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 func (r *CreateProtectGroupRequest) ToJsonString() string {
@@ -4350,6 +4456,7 @@ func (r *CreateProtectGroupRequest) FromJsonString(s string) error {
 	delete(f, "Name")
 	delete(f, "Domains")
 	delete(f, "Remark")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateProtectGroupRequest has unknown keys!", "")
 	}
@@ -4358,7 +4465,7 @@ func (r *CreateProtectGroupRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateProtectGroupResponseParams struct {
-	// 防护对象组的ID
+	// <p>防护对象组的ID</p>
 	GroupId *uint64 `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7106,52 +7213,242 @@ func (r *DescribeApiListVersionTwoResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type DescribeApiSecSensitiveRuleListRequestParams struct {
+type DescribeApiSecEventDetailRequestParams struct {
+	// <p>域名</p>
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// <p>API安全事件ID</p>
+	EventId *string `json:"EventId,omitnil,omitempty" name:"EventId"`
+}
+
+type DescribeApiSecEventDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>域名</p>
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// <p>API安全事件ID</p>
+	EventId *string `json:"EventId,omitnil,omitempty" name:"EventId"`
+}
+
+func (r *DescribeApiSecEventDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeApiSecEventDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "EventId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeApiSecEventDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeApiSecEventDetailResponseParams struct {
+	// <p>事件描述信息</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>事件基本信息</p>
+	EventInfo *ApiEvent `json:"EventInfo,omitnil,omitempty" name:"EventInfo"`
+
+	// <p>攻击源详情</p>
+	AttackSource []*ApiSecAttackSource `json:"AttackSource,omitnil,omitempty" name:"AttackSource"`
+
+	// <p>变更历史</p>
+	ChangeHistory []*ApiSecEventChange `json:"ChangeHistory,omitnil,omitempty" name:"ChangeHistory"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeApiSecEventDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeApiSecEventDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeApiSecEventDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeApiSecEventDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeApiSecEventListRequestParams struct {
 	// 域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 是否查询api提取规则策略，true表示查询
-	IsQueryApiExtractRule *bool `json:"IsQueryApiExtractRule,omitnil,omitempty" name:"IsQueryApiExtractRule"`
+	// 是否查询数量，默认不查询，为true则进行查询
+	NeedTotalCount *bool `json:"NeedTotalCount,omitnil,omitempty" name:"NeedTotalCount"`
 
-	// 是否查询api鉴权规则
-	IsQueryApiPrivilegeRule *bool `json:"IsQueryApiPrivilegeRule,omitnil,omitempty" name:"IsQueryApiPrivilegeRule"`
+	// 过滤条件
+	Filters []*ApiDataFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 是否查询api场景规则
-	IsQueryApiSceneRule *bool `json:"IsQueryApiSceneRule,omitnil,omitempty" name:"IsQueryApiSceneRule"`
+	// 查询当前的页
+	PageIndex *uint64 `json:"PageIndex,omitnil,omitempty" name:"PageIndex"`
 
-	// 查询鉴权配置的时候，该rule只返回鉴权配置的规则
-	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
+	// 每一页显示多少条数据
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 是否查询api自定义事件规则
-	IsQueryApiCustomEventRule *bool `json:"IsQueryApiCustomEventRule,omitnil,omitempty" name:"IsQueryApiCustomEventRule"`
+	// 排序，第一个元素为排序的key，第二个元素为排序规则，其中1 为升序排列，而-1 是用于降序排列
+	Sort []*string `json:"Sort,omitnil,omitempty" name:"Sort"`
 
-	// 是否查询无效api排除策略
-	IsQueryApiExcludeRule *bool `json:"IsQueryApiExcludeRule,omitnil,omitempty" name:"IsQueryApiExcludeRule"`
+	// 查询开始时间
+	StartTs *uint64 `json:"StartTs,omitnil,omitempty" name:"StartTs"`
+
+	// 查询结束时间
+	EndTs *uint64 `json:"EndTs,omitnil,omitempty" name:"EndTs"`
 }
 
-type DescribeApiSecSensitiveRuleListRequest struct {
+type DescribeApiSecEventListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 是否查询api提取规则策略，true表示查询
+	// 是否查询数量，默认不查询，为true则进行查询
+	NeedTotalCount *bool `json:"NeedTotalCount,omitnil,omitempty" name:"NeedTotalCount"`
+
+	// 过滤条件
+	Filters []*ApiDataFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 查询当前的页
+	PageIndex *uint64 `json:"PageIndex,omitnil,omitempty" name:"PageIndex"`
+
+	// 每一页显示多少条数据
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 排序，第一个元素为排序的key，第二个元素为排序规则，其中1 为升序排列，而-1 是用于降序排列
+	Sort []*string `json:"Sort,omitnil,omitempty" name:"Sort"`
+
+	// 查询开始时间
+	StartTs *uint64 `json:"StartTs,omitnil,omitempty" name:"StartTs"`
+
+	// 查询结束时间
+	EndTs *uint64 `json:"EndTs,omitnil,omitempty" name:"EndTs"`
+}
+
+func (r *DescribeApiSecEventListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeApiSecEventListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "NeedTotalCount")
+	delete(f, "Filters")
+	delete(f, "PageIndex")
+	delete(f, "PageSize")
+	delete(f, "Sort")
+	delete(f, "StartTs")
+	delete(f, "EndTs")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeApiSecEventListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeApiSecEventListResponseParams struct {
+	// 事件列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data []*ApiEvent `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 事件总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeApiSecEventListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeApiSecEventListResponseParams `json:"Response"`
+}
+
+func (r *DescribeApiSecEventListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeApiSecEventListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeApiSecSensitiveRuleListRequestParams struct {
+	// <p>域名</p>
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// <p>是否查询api提取规则策略，true表示查询</p>
 	IsQueryApiExtractRule *bool `json:"IsQueryApiExtractRule,omitnil,omitempty" name:"IsQueryApiExtractRule"`
 
-	// 是否查询api鉴权规则
+	// <p>是否查询api鉴权规则</p>
 	IsQueryApiPrivilegeRule *bool `json:"IsQueryApiPrivilegeRule,omitnil,omitempty" name:"IsQueryApiPrivilegeRule"`
 
-	// 是否查询api场景规则
+	// <p>是否查询api场景规则</p>
 	IsQueryApiSceneRule *bool `json:"IsQueryApiSceneRule,omitnil,omitempty" name:"IsQueryApiSceneRule"`
 
-	// 查询鉴权配置的时候，该rule只返回鉴权配置的规则
+	// <p>查询鉴权配置的时候，该rule只返回鉴权配置的规则</p>
 	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
 
-	// 是否查询api自定义事件规则
+	// <p>是否查询api自定义事件规则</p>
 	IsQueryApiCustomEventRule *bool `json:"IsQueryApiCustomEventRule,omitnil,omitempty" name:"IsQueryApiCustomEventRule"`
 
-	// 是否查询无效api排除策略
+	// <p>是否查询无效api排除策略</p>
 	IsQueryApiExcludeRule *bool `json:"IsQueryApiExcludeRule,omitnil,omitempty" name:"IsQueryApiExcludeRule"`
+
+	// <p>是否查询敏感数据加白规则</p>
+	IsQueryApiSensitiveWhiteRule *bool `json:"IsQueryApiSensitiveWhiteRule,omitnil,omitempty" name:"IsQueryApiSensitiveWhiteRule"`
+}
+
+type DescribeApiSecSensitiveRuleListRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>域名</p>
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// <p>是否查询api提取规则策略，true表示查询</p>
+	IsQueryApiExtractRule *bool `json:"IsQueryApiExtractRule,omitnil,omitempty" name:"IsQueryApiExtractRule"`
+
+	// <p>是否查询api鉴权规则</p>
+	IsQueryApiPrivilegeRule *bool `json:"IsQueryApiPrivilegeRule,omitnil,omitempty" name:"IsQueryApiPrivilegeRule"`
+
+	// <p>是否查询api场景规则</p>
+	IsQueryApiSceneRule *bool `json:"IsQueryApiSceneRule,omitnil,omitempty" name:"IsQueryApiSceneRule"`
+
+	// <p>查询鉴权配置的时候，该rule只返回鉴权配置的规则</p>
+	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
+
+	// <p>是否查询api自定义事件规则</p>
+	IsQueryApiCustomEventRule *bool `json:"IsQueryApiCustomEventRule,omitnil,omitempty" name:"IsQueryApiCustomEventRule"`
+
+	// <p>是否查询无效api排除策略</p>
+	IsQueryApiExcludeRule *bool `json:"IsQueryApiExcludeRule,omitnil,omitempty" name:"IsQueryApiExcludeRule"`
+
+	// <p>是否查询敏感数据加白规则</p>
+	IsQueryApiSensitiveWhiteRule *bool `json:"IsQueryApiSensitiveWhiteRule,omitnil,omitempty" name:"IsQueryApiSensitiveWhiteRule"`
 }
 
 func (r *DescribeApiSecSensitiveRuleListRequest) ToJsonString() string {
@@ -7173,6 +7470,7 @@ func (r *DescribeApiSecSensitiveRuleListRequest) FromJsonString(s string) error 
 	delete(f, "RuleName")
 	delete(f, "IsQueryApiCustomEventRule")
 	delete(f, "IsQueryApiExcludeRule")
+	delete(f, "IsQueryApiSensitiveWhiteRule")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeApiSecSensitiveRuleListRequest has unknown keys!", "")
 	}
@@ -7181,40 +7479,43 @@ func (r *DescribeApiSecSensitiveRuleListRequest) FromJsonString(s string) error 
 
 // Predefined struct for user
 type DescribeApiSecSensitiveRuleListResponseParams struct {
-	// api敏感规则列表
+	// <p>api敏感规则列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data []*ApiSecSensitiveRule `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// 规则数量
+	// <p>规则数量</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
 
-	// 自定义敏感检测规则总开关
+	// <p>自定义敏感检测规则总开关</p>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 非内置规则的rulename列表
+	// <p>非内置规则的rulename列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleNameList []*string `json:"RuleNameList,omitnil,omitempty" name:"RuleNameList"`
 
-	// api提取规则列表
+	// <p>api提取规则列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApiExtractRule []*ApiSecExtractRule `json:"ApiExtractRule,omitnil,omitempty" name:"ApiExtractRule"`
 
-	// api鉴权规则列表
+	// <p>api鉴权规则列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApiSecPrivilegeRule []*ApiSecPrivilegeRule `json:"ApiSecPrivilegeRule,omitnil,omitempty" name:"ApiSecPrivilegeRule"`
 
-	// api场景规则列表
+	// <p>api场景规则列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApiSecSceneRule []*ApiSecSceneRule `json:"ApiSecSceneRule,omitnil,omitempty" name:"ApiSecSceneRule"`
 
-	// 自定义事件规则
+	// <p>自定义事件规则</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApiSecCustomEventRule []*ApiSecCustomEventRule `json:"ApiSecCustomEventRule,omitnil,omitempty" name:"ApiSecCustomEventRule"`
 
-	// 无效api排除规则列表
+	// <p>无效api排除规则列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApiExcludeRule []*ApiSecExcludeRule `json:"ApiExcludeRule,omitnil,omitempty" name:"ApiExcludeRule"`
+
+	// <p>敏感数据加白规则列表</p>
+	ApiSecSensitiveWhiteRule []*ApiSecSensitiveWhiteRule `json:"ApiSecSensitiveWhiteRule,omitnil,omitempty" name:"ApiSecSensitiveWhiteRule"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -9699,26 +10000,26 @@ func (r *DescribeDomainWhiteRulesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDomainsRequestParams struct {
-	// 分页偏移量，取Limit整数倍。最小值为0，最大值= Total/Limit向上取整
+	// <p>分页偏移量，取Limit整数倍。最小值为0，最大值= Total/Limit向上取整</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回域名的数量
+	// <p>返回域名的数量</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 过滤数组，过滤字段包括：Edition：实例版本，sparta-waf或clb-waf Domain：域名 DomainId：域名ID InstanceName：实例名称 InstanceId：实例ID FlowMode：流量接入模式，仅支持CLBWAF FlowCheckMode：流量体检模式，仅支持CLBWAF ClsStatus：日志开关 Status：WAF开关BotStatus：BOT开关 ApiStatus：API安全开关 Engine：引擎模式 UpstreamIP：源站IP，仅支持SAAS型WAF UpstreamDomain：源站域名，仅支持SAAS型WAF DomainState：域名状态，仅支持SAAS型WAF SgState：安全组状态，仅支持SAAS型WAF Label：分组标签，同时仅支持一种标签过滤
+	// <p>过滤数组，过滤字段包括：Edition：实例版本，sparta-waf或clb-waf AlbType：七层接入类型细分，clb或tsegw或apisix或scf Domain：域名 DomainId：域名ID InstanceName：实例名称 InstanceId：实例ID FlowMode：流量接入模式，仅支持CLBWAF FlowCheckMode：流量体检模式，仅支持CLBWAF ClsStatus：日志开关 Status：WAF开关BotStatus：BOT开关 ApiStatus：API安全开关 Engine：引擎模式 UpstreamIP：源站IP，仅支持SAAS型WAF UpstreamDomain：源站域名，仅支持SAAS型WAF DomainState：域名状态，仅支持SAAS型WAF SgState：安全组状态，仅支持SAAS型WAF Label：分组标签，同时仅支持一种标签过滤</p>
 	Filters []*FiltersItemNew `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeDomainsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 分页偏移量，取Limit整数倍。最小值为0，最大值= Total/Limit向上取整
+	// <p>分页偏移量，取Limit整数倍。最小值为0，最大值= Total/Limit向上取整</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回域名的数量
+	// <p>返回域名的数量</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 过滤数组，过滤字段包括：Edition：实例版本，sparta-waf或clb-waf Domain：域名 DomainId：域名ID InstanceName：实例名称 InstanceId：实例ID FlowMode：流量接入模式，仅支持CLBWAF FlowCheckMode：流量体检模式，仅支持CLBWAF ClsStatus：日志开关 Status：WAF开关BotStatus：BOT开关 ApiStatus：API安全开关 Engine：引擎模式 UpstreamIP：源站IP，仅支持SAAS型WAF UpstreamDomain：源站域名，仅支持SAAS型WAF DomainState：域名状态，仅支持SAAS型WAF SgState：安全组状态，仅支持SAAS型WAF Label：分组标签，同时仅支持一种标签过滤
+	// <p>过滤数组，过滤字段包括：Edition：实例版本，sparta-waf或clb-waf AlbType：七层接入类型细分，clb或tsegw或apisix或scf Domain：域名 DomainId：域名ID InstanceName：实例名称 InstanceId：实例ID FlowMode：流量接入模式，仅支持CLBWAF FlowCheckMode：流量体检模式，仅支持CLBWAF ClsStatus：日志开关 Status：WAF开关BotStatus：BOT开关 ApiStatus：API安全开关 Engine：引擎模式 UpstreamIP：源站IP，仅支持SAAS型WAF UpstreamDomain：源站域名，仅支持SAAS型WAF DomainState：域名状态，仅支持SAAS型WAF SgState：安全组状态，仅支持SAAS型WAF Label：分组标签，同时仅支持一种标签过滤</p>
 	Filters []*FiltersItemNew `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -9745,10 +10046,10 @@ func (r *DescribeDomainsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDomainsResponseParams struct {
-	// 总数
+	// <p>总数</p>
 	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
 
-	// domain列表
+	// <p>domain列表</p>
 	Domains []*DomainInfo `json:"Domains,omitnil,omitempty" name:"Domains"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -10430,115 +10731,121 @@ func (r *DescribeInstancesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeIpAccessControlRequestParams struct {
-	// 域名，当操作对象为全局规则时，Domain参数应填写为"global"
+	// <p>域名，当操作对象为全局规则时，Domain参数应填写为&quot;global&quot;</p>
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 计数标识
+	// <p>计数标识</p>
 	Count *uint64 `json:"Count,omitnil,omitempty" name:"Count"`
 
-	// 动作，40表示查询白名单，42表示查询黑名单
+	// <p>动作，40表示查询白名单，42表示查询黑名单</p>
 	ActionType *uint64 `json:"ActionType,omitnil,omitempty" name:"ActionType"`
 
-	// 最小有效时间的时间戳
+	// <p>最小有效时间的时间戳</p>
 	//
 	// Deprecated: VtsMin is deprecated.
 	VtsMin *uint64 `json:"VtsMin,omitnil,omitempty" name:"VtsMin"`
 
-	// 最大有效时间的时间戳
+	// <p>最大有效时间的时间戳</p>
 	//
 	// Deprecated: VtsMax is deprecated.
 	VtsMax *uint64 `json:"VtsMax,omitnil,omitempty" name:"VtsMax"`
 
-	// 最小创建时间的时间戳
+	// <p>最小创建时间的时间戳</p>
 	CtsMin *uint64 `json:"CtsMin,omitnil,omitempty" name:"CtsMin"`
 
-	// 最大创建时间的时间戳
+	// <p>最大创建时间的时间戳</p>
 	CtsMax *uint64 `json:"CtsMax,omitnil,omitempty" name:"CtsMax"`
 
-	// 分页偏移量，取Limit整数倍。最小值为0，最大值= Total/Limit向上取整
+	// <p>分页偏移量，取Limit整数倍。最小值为0，最大值= Total/Limit向上取整</p>
 	OffSet *uint64 `json:"OffSet,omitnil,omitempty" name:"OffSet"`
 
-	// 每页返回的数量，默认为20
+	// <p>每页返回的数量，默认为20</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 用于按数据来源过滤黑白名单记录，非必填（默认为空字符串，表示不过滤/查询全部）。 "" (空字符串)	，不按来源过滤，返回所有记录（默认值） custom（自定义），用户在控制台手动添加的黑白名单规则 cc（CC 防护	），由 CC 防护模块自动添加的 IP 黑白名单 bot（Bot 防护），由 Bot 防护模块自动添加的 IP 黑白名单 batch（批量域名防护），批量域名维度添加的黑白名单规则 batch-group（防护对象组），防护对象组维度添加的黑白名单规则
+	// <p>用于按数据来源过滤黑白名单记录，非必填（默认为空字符串，表示不过滤/查询全部）。 &quot;&quot; (空字符串)    ，不按来源过滤，返回所有记录（默认值） custom（自定义），用户在控制台手动添加的黑白名单规则 cc（CC 防护    ），由 CC 防护模块自动添加的 IP 黑白名单 bot（Bot 防护），由 Bot 防护模块自动添加的 IP 黑白名单 batch（批量域名防护），批量域名维度添加的黑白名单规则 batch-group（防护对象组），防护对象组维度添加的黑白名单规则</p>
 	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 
-	// 排序参数
+	// <p>排序参数</p>
 	Sort *string `json:"Sort,omitnil,omitempty" name:"Sort"`
 
-	// IP
+	// <p>IP</p>
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
-	// 生效状态，1表示生效中，2表示过期，0表示全部
+	// <p>生效状态，1表示生效中，2表示过期，0表示全部</p>
 	ValidStatus *int64 `json:"ValidStatus,omitnil,omitempty" name:"ValidStatus"`
 
-	// 最小有效时间的时间戳
+	// <p>最小有效时间的时间戳</p>
 	ValidTimeStampMin *string `json:"ValidTimeStampMin,omitnil,omitempty" name:"ValidTimeStampMin"`
 
-	// 最大有效时间的时间戳
+	// <p>最大有效时间的时间戳</p>
 	ValidTimeStampMax *string `json:"ValidTimeStampMax,omitnil,omitempty" name:"ValidTimeStampMax"`
 
-	// 规则ID
+	// <p>规则ID</p>
 	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
-	// 0表示全部，1表示永久生效，2表示定时生效，3表示周粒度生效，4表示月粒度生效
+	// <p>0表示全部，1表示永久生效，2表示定时生效，3表示周粒度生效，4表示月粒度生效</p>
 	TimerType *int64 `json:"TimerType,omitnil,omitempty" name:"TimerType"`
+
+	// <p>查询的ip列表</p>
+	IpList []*string `json:"IpList,omitnil,omitempty" name:"IpList"`
 }
 
 type DescribeIpAccessControlRequest struct {
 	*tchttp.BaseRequest
 	
-	// 域名，当操作对象为全局规则时，Domain参数应填写为"global"
+	// <p>域名，当操作对象为全局规则时，Domain参数应填写为&quot;global&quot;</p>
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 计数标识
+	// <p>计数标识</p>
 	Count *uint64 `json:"Count,omitnil,omitempty" name:"Count"`
 
-	// 动作，40表示查询白名单，42表示查询黑名单
+	// <p>动作，40表示查询白名单，42表示查询黑名单</p>
 	ActionType *uint64 `json:"ActionType,omitnil,omitempty" name:"ActionType"`
 
-	// 最小有效时间的时间戳
+	// <p>最小有效时间的时间戳</p>
 	VtsMin *uint64 `json:"VtsMin,omitnil,omitempty" name:"VtsMin"`
 
-	// 最大有效时间的时间戳
+	// <p>最大有效时间的时间戳</p>
 	VtsMax *uint64 `json:"VtsMax,omitnil,omitempty" name:"VtsMax"`
 
-	// 最小创建时间的时间戳
+	// <p>最小创建时间的时间戳</p>
 	CtsMin *uint64 `json:"CtsMin,omitnil,omitempty" name:"CtsMin"`
 
-	// 最大创建时间的时间戳
+	// <p>最大创建时间的时间戳</p>
 	CtsMax *uint64 `json:"CtsMax,omitnil,omitempty" name:"CtsMax"`
 
-	// 分页偏移量，取Limit整数倍。最小值为0，最大值= Total/Limit向上取整
+	// <p>分页偏移量，取Limit整数倍。最小值为0，最大值= Total/Limit向上取整</p>
 	OffSet *uint64 `json:"OffSet,omitnil,omitempty" name:"OffSet"`
 
-	// 每页返回的数量，默认为20
+	// <p>每页返回的数量，默认为20</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 用于按数据来源过滤黑白名单记录，非必填（默认为空字符串，表示不过滤/查询全部）。 "" (空字符串)	，不按来源过滤，返回所有记录（默认值） custom（自定义），用户在控制台手动添加的黑白名单规则 cc（CC 防护	），由 CC 防护模块自动添加的 IP 黑白名单 bot（Bot 防护），由 Bot 防护模块自动添加的 IP 黑白名单 batch（批量域名防护），批量域名维度添加的黑白名单规则 batch-group（防护对象组），防护对象组维度添加的黑白名单规则
+	// <p>用于按数据来源过滤黑白名单记录，非必填（默认为空字符串，表示不过滤/查询全部）。 &quot;&quot; (空字符串)    ，不按来源过滤，返回所有记录（默认值） custom（自定义），用户在控制台手动添加的黑白名单规则 cc（CC 防护    ），由 CC 防护模块自动添加的 IP 黑白名单 bot（Bot 防护），由 Bot 防护模块自动添加的 IP 黑白名单 batch（批量域名防护），批量域名维度添加的黑白名单规则 batch-group（防护对象组），防护对象组维度添加的黑白名单规则</p>
 	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 
-	// 排序参数
+	// <p>排序参数</p>
 	Sort *string `json:"Sort,omitnil,omitempty" name:"Sort"`
 
-	// IP
+	// <p>IP</p>
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
-	// 生效状态，1表示生效中，2表示过期，0表示全部
+	// <p>生效状态，1表示生效中，2表示过期，0表示全部</p>
 	ValidStatus *int64 `json:"ValidStatus,omitnil,omitempty" name:"ValidStatus"`
 
-	// 最小有效时间的时间戳
+	// <p>最小有效时间的时间戳</p>
 	ValidTimeStampMin *string `json:"ValidTimeStampMin,omitnil,omitempty" name:"ValidTimeStampMin"`
 
-	// 最大有效时间的时间戳
+	// <p>最大有效时间的时间戳</p>
 	ValidTimeStampMax *string `json:"ValidTimeStampMax,omitnil,omitempty" name:"ValidTimeStampMax"`
 
-	// 规则ID
+	// <p>规则ID</p>
 	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
-	// 0表示全部，1表示永久生效，2表示定时生效，3表示周粒度生效，4表示月粒度生效
+	// <p>0表示全部，1表示永久生效，2表示定时生效，3表示周粒度生效，4表示月粒度生效</p>
 	TimerType *int64 `json:"TimerType,omitnil,omitempty" name:"TimerType"`
+
+	// <p>查询的ip列表</p>
+	IpList []*string `json:"IpList,omitnil,omitempty" name:"IpList"`
 }
 
 func (r *DescribeIpAccessControlRequest) ToJsonString() string {
@@ -10570,6 +10877,7 @@ func (r *DescribeIpAccessControlRequest) FromJsonString(s string) error {
 	delete(f, "ValidTimeStampMax")
 	delete(f, "RuleId")
 	delete(f, "TimerType")
+	delete(f, "IpList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeIpAccessControlRequest has unknown keys!", "")
 	}
@@ -10578,10 +10886,10 @@ func (r *DescribeIpAccessControlRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeIpAccessControlResponseParams struct {
-	// 输出
+	// <p>输出</p>
 	Data *IpAccessControlData `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// 已经使用的IP黑白名单的IP总数
+	// <p>已经使用的IP黑白名单的IP总数</p>
 	UsedTotal *uint64 `json:"UsedTotal,omitnil,omitempty" name:"UsedTotal"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -10781,6 +11089,12 @@ type DescribeLLMContentSecCheckRequestParams struct {
 
 	// <p>图片base64编码后的数据,body大小最大支持10M</p>
 	ImageEncode *string `json:"ImageEncode,omitnil,omitempty" name:"ImageEncode"`
+
+	// <p>tool_call 场景工具名称</p>
+	ToolName *string `json:"ToolName,omitnil,omitempty" name:"ToolName"`
+
+	// <p>tool_call 场景工具参数</p>
+	ToolArgs *string `json:"ToolArgs,omitnil,omitempty" name:"ToolArgs"`
 }
 
 type DescribeLLMContentSecCheckRequest struct {
@@ -10809,6 +11123,12 @@ type DescribeLLMContentSecCheckRequest struct {
 
 	// <p>图片base64编码后的数据,body大小最大支持10M</p>
 	ImageEncode *string `json:"ImageEncode,omitnil,omitempty" name:"ImageEncode"`
+
+	// <p>tool_call 场景工具名称</p>
+	ToolName *string `json:"ToolName,omitnil,omitempty" name:"ToolName"`
+
+	// <p>tool_call 场景工具参数</p>
+	ToolArgs *string `json:"ToolArgs,omitnil,omitempty" name:"ToolArgs"`
 }
 
 func (r *DescribeLLMContentSecCheckRequest) ToJsonString() string {
@@ -10831,6 +11151,8 @@ func (r *DescribeLLMContentSecCheckRequest) FromJsonString(s string) error {
 	delete(f, "UserId")
 	delete(f, "TokenUsage")
 	delete(f, "ImageEncode")
+	delete(f, "ToolName")
+	delete(f, "ToolArgs")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLLMContentSecCheckRequest has unknown keys!", "")
 	}
@@ -12029,6 +12351,98 @@ func (r *DescribeProtectionModesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeQClawContentSecCheckRequestParams struct {
+	// <p>服务id,使用哪一套防护策略，就需要传哪一套服务id，模型会检测该服务id下的所有规则</p>
+	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+
+	// <p>要审核的内容</p>
+	Content *ApiGuardContent `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// <p>标识用户的id，限速使用，不填，则限速会不生效</p>
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// <p>会话id</p>
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// <p>toolcall工具名称</p>
+	ToolName *string `json:"ToolName,omitnil,omitempty" name:"ToolName"`
+
+	// <p>toolcall工具执行的参数</p>
+	ToolArgs *string `json:"ToolArgs,omitnil,omitempty" name:"ToolArgs"`
+}
+
+type DescribeQClawContentSecCheckRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>服务id,使用哪一套防护策略，就需要传哪一套服务id，模型会检测该服务id下的所有规则</p>
+	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+
+	// <p>要审核的内容</p>
+	Content *ApiGuardContent `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// <p>标识用户的id，限速使用，不填，则限速会不生效</p>
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// <p>会话id</p>
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// <p>toolcall工具名称</p>
+	ToolName *string `json:"ToolName,omitnil,omitempty" name:"ToolName"`
+
+	// <p>toolcall工具执行的参数</p>
+	ToolArgs *string `json:"ToolArgs,omitnil,omitempty" name:"ToolArgs"`
+}
+
+func (r *DescribeQClawContentSecCheckRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeQClawContentSecCheckRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ServiceId")
+	delete(f, "Content")
+	delete(f, "UserId")
+	delete(f, "SessionId")
+	delete(f, "ToolName")
+	delete(f, "ToolArgs")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeQClawContentSecCheckRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeQClawContentSecCheckResponseParams struct {
+	// <p>检测结果</p>
+	Data *LLMRisks `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeQClawContentSecCheckResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeQClawContentSecCheckResponseParams `json:"Response"`
+}
+
+func (r *DescribeQClawContentSecCheckResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeQClawContentSecCheckResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeRateLimitsV2RequestParams struct {
 	// 域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
@@ -12374,6 +12788,77 @@ func (r *DescribeSessionResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeSessionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSkillSecScanResultRequestParams struct {
+	// <p>服务ID</p>
+	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+
+	// <p>ZIP 文件的 SHA256 哈希值，格式为 sha256:hex_digest，请严格遵循文档中的zip打包规范</p>
+	ContentHash *string `json:"ContentHash,omitnil,omitempty" name:"ContentHash"`
+
+	// <p>返回语言。支持 zh / en，默认 zh</p>
+	Lang *string `json:"Lang,omitnil,omitempty" name:"Lang"`
+}
+
+type DescribeSkillSecScanResultRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>服务ID</p>
+	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+
+	// <p>ZIP 文件的 SHA256 哈希值，格式为 sha256:hex_digest，请严格遵循文档中的zip打包规范</p>
+	ContentHash *string `json:"ContentHash,omitnil,omitempty" name:"ContentHash"`
+
+	// <p>返回语言。支持 zh / en，默认 zh</p>
+	Lang *string `json:"Lang,omitnil,omitempty" name:"Lang"`
+}
+
+func (r *DescribeSkillSecScanResultRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSkillSecScanResultRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ServiceId")
+	delete(f, "ContentHash")
+	delete(f, "Lang")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSkillSecScanResultRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSkillSecScanResultResponseParams struct {
+	// <p>检测结果</p>
+	Data *SkillScanQueryData `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeSkillSecScanResultResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSkillSecScanResultResponseParams `json:"Response"`
+}
+
+func (r *DescribeSkillSecScanResultResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSkillSecScanResultResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -13667,207 +14152,131 @@ func (r *DestroyPostCLSFlowResponse) FromJsonString(s string) error {
 }
 
 type DomainInfo struct {
-	// 域名
+	// <p>域名</p>
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 域名ID
+	// <p>域名ID</p>
 	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`
 
-	// 实例ID
+	// <p>实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// cname地址
+	// <p>cname地址</p>
 	Cname *string `json:"Cname,omitnil,omitempty" name:"Cname"`
 
-	// 域名所属实例类型。
-	// sparta-waf：SaaS型WAF实例
-	// clb-waf：负载均衡型WAF实例
-	// cdc-clb-waf：CDC环境下负载均衡型WAF实例
+	// <p>域名所属实例类型。<br>sparta-waf：SaaS型WAF实例<br>clb-waf：负载均衡型WAF实例<br>cdc-clb-waf：CDC环境下负载均衡型WAF实例</p>
 	Edition *string `json:"Edition,omitnil,omitempty" name:"Edition"`
 
-	// 地域。
-	// "多伦多": "ca"
-	// "广州": "gz"
-	// "成都": "cd"
-	// "福州": "fzec"
-	// "深圳": "szx"
-	// "印度": "in"
-	// "济南": "jnec"
-	// "重庆": "cq"
-	// "天津": "tsn"
-	// "欧洲东北": "ru"
-	// "南京": "nj"
-	// "美国硅谷": "usw"
-	// "泰国": "th"
-	// "广州Open": "gzopen"
-	// "深圳金融": "szjr"
-	// "法兰克福": "de"
-	// "日本": "jp"
-	// "弗吉尼亚": "use"
-	// "北京": "bj"
-	// "中国香港": "hk"
-	// "杭州": "hzec"
-	// "北京金融": "bjjr"
-	// "上海金融": "shjr"
-	// "台北": "tpe"
-	// "首尔": "kr"
-	// "上海": "sh"
-	// "新加坡": "sg"
-	// "清远": "qy"
+	// <p>地域。<br>&quot;多伦多&quot;: &quot;ca&quot;<br>&quot;广州&quot;: &quot;gz&quot;<br>&quot;成都&quot;: &quot;cd&quot;<br>&quot;福州&quot;: &quot;fzec&quot;<br>&quot;深圳&quot;: &quot;szx&quot;<br>&quot;印度&quot;: &quot;in&quot;<br>&quot;济南&quot;: &quot;jnec&quot;<br>&quot;重庆&quot;: &quot;cq&quot;<br>&quot;天津&quot;: &quot;tsn&quot;<br>&quot;欧洲东北&quot;: &quot;ru&quot;<br>&quot;南京&quot;: &quot;nj&quot;<br>&quot;美国硅谷&quot;: &quot;usw&quot;<br>&quot;泰国&quot;: &quot;th&quot;<br>&quot;广州Open&quot;: &quot;gzopen&quot;<br>&quot;深圳金融&quot;: &quot;szjr&quot;<br>&quot;法兰克福&quot;: &quot;de&quot;<br>&quot;日本&quot;: &quot;jp&quot;<br>&quot;弗吉尼亚&quot;: &quot;use&quot;<br>&quot;北京&quot;: &quot;bj&quot;<br>&quot;中国香港&quot;: &quot;hk&quot;<br>&quot;杭州&quot;: &quot;hzec&quot;<br>&quot;北京金融&quot;: &quot;bjjr&quot;<br>&quot;上海金融&quot;: &quot;shjr&quot;<br>&quot;台北&quot;: &quot;tpe&quot;<br>&quot;首尔&quot;: &quot;kr&quot;<br>&quot;上海&quot;: &quot;sh&quot;<br>&quot;新加坡&quot;: &quot;sg&quot;<br>&quot;清远&quot;: &quot;qy&quot;</p>
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 实例名
+	// <p>实例名</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 访问日志开关状态。
-	// 0：关闭
-	// 1：开启
+	// <p>访问日志开关状态。<br>0：关闭<br>1：开启</p>
 	ClsStatus *uint64 `json:"ClsStatus,omitnil,omitempty" name:"ClsStatus"`
 
-	// 负载均衡型WAF使用模式。
-	// 0：镜像模式 
-	// 1：清洗模式
+	// <p>负载均衡型WAF使用模式。<br>0：镜像模式<br>1：清洗模式</p>
 	FlowMode *uint64 `json:"FlowMode,omitnil,omitempty" name:"FlowMode"`
 
-	// waf开关状态。
-	// 0：关闭 
-	// 1：开启
+	// <p>waf开关状态。<br>0：关闭<br>1：开启</p>
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 规则引擎防护模式。
-	// 0：观察模式 
-	// 1：拦截模式
+	// <p>规则引擎防护模式。<br>0：观察模式<br>1：拦截模式</p>
 	Mode *uint64 `json:"Mode,omitnil,omitempty" name:"Mode"`
 
-	// 规则引擎和AI引擎防护模式联合状态。
-	// 1:初始状态,规则引擎拦截&&AI引擎未操作开关状态
-	// 10：规则引擎观察&&AI引擎关闭模式 
-	// 11：规则引擎观察&&AI引擎观察模式 
-	// 12：规则引擎观察&&AI引擎拦截模式 
-	// 20：规则引擎拦截&&AI引擎关闭模式 
-	// 21：规则引擎拦截&&AI引擎观察模式 
-	// 22：规则引擎拦截&&AI引擎拦截模式
+	// <p>规则引擎和AI引擎防护模式联合状态。<br>1:初始状态,规则引擎拦截&amp;&amp;AI引擎未操作开关状态<br>10：规则引擎观察&amp;&amp;AI引擎关闭模式<br>11：规则引擎观察&amp;&amp;AI引擎观察模式<br>12：规则引擎观察&amp;&amp;AI引擎拦截模式<br>20：规则引擎拦截&amp;&amp;AI引擎关闭模式<br>21：规则引擎拦截&amp;&amp;AI引擎观察模式<br>22：规则引擎拦截&amp;&amp;AI引擎拦截模式</p>
 	Engine *uint64 `json:"Engine,omitnil,omitempty" name:"Engine"`
 
-	// 沙箱集群回源出口IP列表
+	// <p>沙箱集群回源出口IP列表</p>
 	CCList []*string `json:"CCList,omitnil,omitempty" name:"CCList"`
 
-	// 生产集群回源出口IP列表
+	// <p>生产集群回源出口IP列表</p>
 	RsList []*string `json:"RsList,omitnil,omitempty" name:"RsList"`
 
-	// 服务端口配置
+	// <p>服务端口配置</p>
 	Ports []*PortInfo `json:"Ports,omitnil,omitempty" name:"Ports"`
 
-	// 负载均衡器相关配置
+	// <p>负载均衡器相关配置</p>
 	LoadBalancerSet []*LoadBalancerPackageNew `json:"LoadBalancerSet,omitnil,omitempty" name:"LoadBalancerSet"`
 
-	// 用户id
+	// <p>用户id</p>
 	AppId *uint64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 
-	// SAAS型WAF域名状态：
-	// -2：配置下发失败
-	// -1：配置下发中
-	// 0：DNS解析中
-	// 1：无DNS解析记录，请接入WAF
-	// 10：DNS解析未知，域名启用了代理
-	// 11：DNS解析异常，使用A记录接入WAF IP
-	// 200：检测源站不可达
-	// 220：源站不支持长连接
-	// 311：证书过期
-	// 312：证书即将过期
-	// 310：证书异常
-	// 316：备案异常
-	// 5：WAF回源已变更
-	// 负载均衡型WAF域名LB监听器状态：
-	// 0：操作成功 
-	// 4：正在绑定LB 
-	// 6：正在解绑LB 
-	// 7：解绑LB失败 
-	// 8：绑定LB失败 
-	// 10：内部错误
+	// <p>SAAS型WAF域名状态：<br>-2：配置下发失败<br>-1：配置下发中<br>0：DNS解析中<br>1：无DNS解析记录，请接入WAF<br>10：DNS解析未知，域名启用了代理<br>11：DNS解析异常，使用A记录接入WAF IP<br>200：检测源站不可达<br>220：源站不支持长连接<br>311：证书过期<br>312：证书即将过期<br>310：证书异常<br>316：备案异常<br>5：WAF回源已变更<br>负载均衡型WAF域名LB监听器状态：<br>0：操作成功<br>4：正在绑定LB<br>6：正在解绑LB<br>7：解绑LB失败<br>8：绑定LB失败<br>10：内部错误</p>
 	State *int64 `json:"State,omitnil,omitempty" name:"State"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// Ipv6开关状态。
-	// 0：关闭 
-	// 1：开启
+	// <p>编辑时间</p>
+	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
+
+	// <p>Ipv6开关状态。<br>0：关闭<br>1：开启</p>
 	Ipv6Status *int64 `json:"Ipv6Status,omitnil,omitempty" name:"Ipv6Status"`
 
-	// BOT开关状态。
-	// 0：关闭 
-	// 1：关闭
-	// 2：开启
-	// 3：开启
+	// <p>BOT开关状态。<br>0：关闭<br>1：关闭<br>2：开启<br>3：开启</p>
 	BotStatus *int64 `json:"BotStatus,omitnil,omitempty" name:"BotStatus"`
 
-	// 实例版本信息。
-	// 101：小微敏捷版 
-	// 102：小微超轻版
-	// 2：高级版
-	// 3：企业版
-	// 4：旗舰版
-	// 6：独享版
+	// <p>实例版本信息。<br>101：小微敏捷版<br>102：小微超轻版<br>2：高级版<br>3：企业版<br>4：旗舰版<br>6：独享版</p>
 	Level *int64 `json:"Level,omitnil,omitempty" name:"Level"`
 
-	// 投递CLS状态。
-	// 0：关闭 
-	// 1：开启
+	// <p>投递CLS状态。<br>0：关闭<br>1：开启</p>
 	PostCLSStatus *int64 `json:"PostCLSStatus,omitnil,omitempty" name:"PostCLSStatus"`
 
-	// 投递CKafka状态。
-	// 0：关闭 
-	// 1：开启
+	// <p>投递CKafka状态。<br>0：关闭<br>1：开启</p>
 	PostCKafkaStatus *int64 `json:"PostCKafkaStatus,omitnil,omitempty" name:"PostCKafkaStatus"`
 
-	// cdc实例域名接入的集群信息,非cdc实例忽略。
+	// <p>cdc实例域名接入的集群信息,非cdc实例忽略。</p>
 	CdcClusters *string `json:"CdcClusters,omitnil,omitempty" name:"CdcClusters"`
 
-	// api安全开关状态。
-	// 0：关闭 
-	// 1：开启
+	// <p>api安全开关状态。<br>0：关闭<br>1：开启</p>
 	ApiStatus *int64 `json:"ApiStatus,omitnil,omitempty" name:"ApiStatus"`
 
-	// 应用型负载均衡类型，默认clb。
-	// clb：七层负载均衡器类型
-	// apisix：apisix网关型
+	// <p>应用型负载均衡类型，默认clb。<br>clb：七层负载均衡器类型<br>apisix：apisix网关型</p>
 	AlbType *string `json:"AlbType,omitnil,omitempty" name:"AlbType"`
 
-	// 安全组状态。
-	// 0：不展示
-	// 1：非腾讯云源站
-	// 2：安全组绑定失败
-	// 3：安全组发生变更
+	// <p>安全组状态。<br>0：不展示<br>1：非腾讯云源站<br>2：安全组绑定失败<br>3：安全组发生变更</p>
 	SgState *int64 `json:"SgState,omitnil,omitempty" name:"SgState"`
 
-	// 安全组状态的详细解释
+	// <p>安全组状态的详细解释</p>
 	SgDetail *string `json:"SgDetail,omitnil,omitempty" name:"SgDetail"`
 
-	// 域名云环境。hybrid：混合云域名
-	// public：公有云域名
+	// <p>域名云环境。hybrid：混合云域名<br>public：公有云域名</p>
 	CloudType *string `json:"CloudType,omitnil,omitempty" name:"CloudType"`
 
-	// 域名备注信息
+	// <p>域名备注信息</p>
 	Note *string `json:"Note,omitnil,omitempty" name:"Note"`
 
-	// SAASWAF源站IP列表
+	// <p>SAASWAF源站IP列表</p>
 	SrcList []*string `json:"SrcList,omitnil,omitempty" name:"SrcList"`
 
-	// SAASWAF源站域名列表
+	// <p>SAASWAF源站域名列表</p>
 	UpstreamDomainList []*string `json:"UpstreamDomainList,omitnil,omitempty" name:"UpstreamDomainList"`
 
-	// 安全组ID
+	// <p>安全组ID</p>
 	SgID *string `json:"SgID,omitnil,omitempty" name:"SgID"`
 
-	// clbwaf接入状态，0代表“尚无流量接入”，1代表“流量接入”，2代表“CLB监听器已注销”，3代表“配置生效中”，4代表“配置下发失败中”
+	// <p>clbwaf接入状态，0代表“尚无流量接入”，1代表“流量接入”，2代表“CLB监听器已注销”，3代表“配置生效中”，4代表“配置下发失败中”</p>
 	AccessStatus *int64 `json:"AccessStatus,omitnil,omitempty" name:"AccessStatus"`
 
-	// 域名标签
+	// <p>域名标签</p>
 	Labels []*string `json:"Labels,omitnil,omitempty" name:"Labels"`
 
-	// saaswaf独享ip状态，0是关闭，1是开启，2是开启中
+	// <p>saaswaf独享ip状态，0是关闭，1是开启，2是开启中</p>
 	PrivateVipStatus *int64 `json:"PrivateVipStatus,omitnil,omitempty" name:"PrivateVipStatus"`
+
+	// <p>代表是否是四层clbwaf域名</p>
+	IsREIP *int64 `json:"IsREIP,omitnil,omitempty" name:"IsREIP"`
+
+	// <p>四层关联的对象ID</p>
+	REIPObjectId *string `json:"REIPObjectId,omitnil,omitempty" name:"REIPObjectId"`
+
+	// <p>标签结构体</p>
+	TagInfos []*TagInfo `json:"TagInfos,omitnil,omitempty" name:"TagInfos"`
+
+	// <p>大模型开关</p><p>枚举值：</p><ul><li>0： 大模型开关关闭状态</li><li>1： 大模型开关开启状态</li></ul>
+	LLMStatus *int64 `json:"LLMStatus,omitnil,omitempty" name:"LLMStatus"`
 }
 
 type DomainPackageNew struct {
@@ -13907,248 +14316,190 @@ type DomainURI struct {
 }
 
 type DomainsPartInfo struct {
-	// 域名
+	// <p>域名</p>
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 域名唯一ID
+	// <p>域名唯一ID</p>
 	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`
 
-	// 域名所属实例唯一ID
+	// <p>域名所属实例唯一ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 域名所属实例类型
+	// <p>域名所属实例类型</p>
 	Edition *string `json:"Edition,omitnil,omitempty" name:"Edition"`
 
-	// 域名所属实例名
+	// <p>域名所属实例名</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 证书
+	// <p>证书</p>
 	Cert *string `json:"Cert,omitnil,omitempty" name:"Cert"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 规则引擎和AI引擎防护模式联合状态。
-	// 1:初始状态,规则引擎拦截&&AI引擎未操作开关状态
-	// 10：规则引擎观察&&AI引擎关闭模式 
-	// 11：规则引擎观察&&AI引擎观察模式 
-	// 12：规则引擎观察&&AI引擎拦截模式 
-	// 20：规则引擎拦截&&AI引擎关闭模式 
-	// 21：规则引擎拦截&&AI引擎观察模式 
-	// 22：规则引擎拦截&&AI引擎拦截模式
+	// <p>更新时间</p>
+	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
+
+	// <p>规则引擎和AI引擎防护模式联合状态。<br>1:初始状态,规则引擎拦截&amp;&amp;AI引擎未操作开关状态<br>10：规则引擎观察&amp;&amp;AI引擎关闭模式<br>11：规则引擎观察&amp;&amp;AI引擎观察模式<br>12：规则引擎观察&amp;&amp;AI引擎拦截模式<br>20：规则引擎拦截&amp;&amp;AI引擎关闭模式<br>21：规则引擎拦截&amp;&amp;AI引擎观察模式<br>22：规则引擎拦截&amp;&amp;AI引擎拦截模式</p>
 	Engine *uint64 `json:"Engine,omitnil,omitempty" name:"Engine"`
 
-	// 是否开启HTTP强制跳转到HTTPS。
-	// 0：不强制跳转
-	// 1：开启强制跳转
+	// <p>是否开启HTTP强制跳转到HTTPS。<br>0：不强制跳转<br>1：开启强制跳转</p>
 	HttpsRewrite *uint64 `json:"HttpsRewrite,omitnil,omitempty" name:"HttpsRewrite"`
 
-	// HTTPS回源端口
+	// <p>HTTPS回源端口</p>
 	HttpsUpstreamPort *string `json:"HttpsUpstreamPort,omitnil,omitempty" name:"HttpsUpstreamPort"`
 
-	// waf前是否部署有七层代理服务。
-	// 0：没有部署代理服务
-	// 1：有部署代理服务，waf将使用XFF获取客户端IP
-	// 2：有部署代理服务，waf将使用remote_addr获取客户端IP
-	// 3：有部署代理服务，waf将使用ip_headers中的自定义header获取客户端IP
+	// <p>waf前是否部署有七层代理服务。<br>0：没有部署代理服务<br>1：有部署代理服务，waf将使用XFF获取客户端IP<br>2：有部署代理服务，waf将使用remote_addr获取客户端IP<br>3：有部署代理服务，waf将使用ip_headers中的自定义header获取客户端IP</p>
 	IsCdn *uint64 `json:"IsCdn,omitnil,omitempty" name:"IsCdn"`
 
-	// 是否开启灰度。
+	// <p>是否开启灰度。</p>
 	//
 	// Deprecated: IsGray is deprecated.
 	IsGray *uint64 `json:"IsGray,omitnil,omitempty" name:"IsGray"`
 
-	// 是否开启HTTP2，需要开启HTTPS协议支持。
-	// 0：关闭
-	// 1：开启
+	// <p>是否开启HTTP2，需要开启HTTPS协议支持。<br>0：关闭<br>1：开启</p>
 	IsHttp2 *uint64 `json:"IsHttp2,omitnil,omitempty" name:"IsHttp2"`
 
-	// 是否开启WebSocket支持。
-	// 0：关闭
-	// 1：开启
+	// <p>是否开启WebSocket支持。<br>0：关闭<br>1：开启</p>
 	IsWebsocket *uint64 `json:"IsWebsocket,omitnil,omitempty" name:"IsWebsocket"`
 
-	// 回源负载均衡策略。
-	// 0：轮询
-	// 1：IP hash
-	// 2：加权轮询
+	// <p>回源负载均衡策略。<br>0：轮询<br>1：IP hash<br>2：加权轮询</p>
 	LoadBalance *uint64 `json:"LoadBalance,omitnil,omitempty" name:"LoadBalance"`
 
-	// 防护模式。
-	// 0：观察模式
-	// 1：拦截模式
+	// <p>防护模式。<br>0：观察模式<br>1：拦截模式</p>
 	Mode *uint64 `json:"Mode,omitnil,omitempty" name:"Mode"`
 
-	// 自有证书的私钥
+	// <p>自有证书的私钥</p>
 	PrivateKey *string `json:"PrivateKey,omitnil,omitempty" name:"PrivateKey"`
 
-	// CertType为2时，需要填充此参数，表示腾讯云SSL平台托管的证书id
+	// <p>CertType为2时，需要填充此参数，表示腾讯云SSL平台托管的证书id</p>
 	SSLId *string `json:"SSLId,omitnil,omitempty" name:"SSLId"`
 
-	// 域名回源时的回源域名。UpstreamType为1时，需要填充此字段
+	// <p>域名回源时的回源域名。UpstreamType为1时，需要填充此字段</p>
 	UpstreamDomain *string `json:"UpstreamDomain,omitnil,omitempty" name:"UpstreamDomain"`
 
-	// 回源类型。
-	// 0：通过IP回源
-	// 1：通过域名回源
+	// <p>回源类型。<br>0：通过IP回源<br>1：通过域名回源</p>
 	UpstreamType *uint64 `json:"UpstreamType,omitnil,omitempty" name:"UpstreamType"`
 
-	// IP回源时的回源IP列表。UpstreamType为0时，需要填充此字段
+	// <p>IP回源时的回源IP列表。UpstreamType为0时，需要填充此字段</p>
 	SrcList []*string `json:"SrcList,omitnil,omitempty" name:"SrcList"`
 
-	// 域名端口配置
+	// <p>域名端口配置</p>
 	Ports []*PortInfo `json:"Ports,omitnil,omitempty" name:"Ports"`
 
-	// 证书类型。
-	// 0：仅配置HTTP监听端口，没有证书
-	// 1：证书来源为自有证书
-	// 2：证书来源为托管证书
+	// <p>证书类型。<br>0：仅配置HTTP监听端口，没有证书<br>1：证书来源为自有证书<br>2：证书来源为托管证书</p>
 	CertType *uint64 `json:"CertType,omitnil,omitempty" name:"CertType"`
 
-	// 服务配置有HTTPS端口时，HTTPS的回源协议。
-	// http：使用http协议回源，和HttpsUpstreamPort配合使用
-	// https：使用https协议回源
+	// <p>服务配置有HTTPS端口时，HTTPS的回源协议。<br>http：使用http协议回源，和HttpsUpstreamPort配合使用<br>https：使用https协议回源</p>
 	UpstreamScheme *string `json:"UpstreamScheme,omitnil,omitempty" name:"UpstreamScheme"`
 
-	// 日志包是否开启。
-	// 0：关闭
-	// 1：开启
+	// <p>日志包是否开启。<br>0：关闭<br>1：开启</p>
 	Cls *uint64 `json:"Cls,omitnil,omitempty" name:"Cls"`
 
-	// 接入Cname，SaaS型域名使用此Cname进行接入
+	// <p>接入Cname，SaaS型域名使用此Cname进行接入</p>
 	Cname *string `json:"Cname,omitnil,omitempty" name:"Cname"`
 
-	// 是否开启长连接。
-	// 0： 短连接
-	// 1： 长连接
+	// <p>是否开启长连接。<br>0： 短连接<br>1： 长连接</p>
 	IsKeepAlive *uint64 `json:"IsKeepAlive,omitnil,omitempty" name:"IsKeepAlive"`
 
-	// 是否开启主动健康检测。
-	// 0：不开启
-	// 1：开启
+	// <p>是否开启主动健康检测。<br>0：不开启<br>1：开启</p>
 	ActiveCheck *uint64 `json:"ActiveCheck,omitnil,omitempty" name:"ActiveCheck"`
 
-	// TLS版本信息
+	// <p>TLS版本信息</p>
 	TLSVersion *int64 `json:"TLSVersion,omitnil,omitempty" name:"TLSVersion"`
 
-	// 自定义的加密套件列表。CipherTemplate为3时需要填此字段，表示自定义的加密套件，值通过DescribeCiphersDetail接口获取。
+	// <p>自定义的加密套件列表。CipherTemplate为3时需要填此字段，表示自定义的加密套件，值通过DescribeCiphersDetail接口获取。</p>
 	Ciphers []*int64 `json:"Ciphers,omitnil,omitempty" name:"Ciphers"`
 
-	// 加密套件模板。
-	// 0：不支持选择，使用默认模板  
-	// 1：通用型模板 
-	// 2：安全型模板
-	// 3：自定义模板
+	// <p>加密套件模板。<br>0：不支持选择，使用默认模板<br>1：通用型模板<br>2：安全型模板<br>3：自定义模板</p>
 	CipherTemplate *int64 `json:"CipherTemplate,omitnil,omitempty" name:"CipherTemplate"`
 
-	// WAF与源站的连接超时，默认10s。
+	// <p>WAF与源站的连接超时，默认10s。</p>
 	ProxyConnectTimeout *int64 `json:"ProxyConnectTimeout,omitnil,omitempty" name:"ProxyConnectTimeout"`
 
-	// WAF与源站的读超时时间，默认300s。
+	// <p>WAF与源站的读超时时间，默认300s。</p>
 	ProxyReadTimeout *int64 `json:"ProxyReadTimeout,omitnil,omitempty" name:"ProxyReadTimeout"`
 
-	// WAF与源站的写超时时间，默认300s。
+	// <p>WAF与源站的写超时时间，默认300s。</p>
 	ProxySendTimeout *int64 `json:"ProxySendTimeout,omitnil,omitempty" name:"ProxySendTimeout"`
 
-	// WAF回源时的SNI类型。
-	// 0：关闭SNI，不配置client_hello中的server_name
-	// 1：开启SNI，client_hello中的server_name为防护域名
-	// 2：开启SNI，SNI为域名回源时的源站域名
-	// 3：开启SNI，SNI为自定义域名
+	// <p>WAF回源时的SNI类型。<br>0：关闭SNI，不配置client_hello中的server_name<br>1：开启SNI，client_hello中的server_name为防护域名<br>2：开启SNI，SNI为域名回源时的源站域名<br>3：开启SNI，SNI为自定义域名</p>
 	SniType *int64 `json:"SniType,omitnil,omitempty" name:"SniType"`
 
-	// SniType为3时，需要填此参数，表示自定义的SNI；
+	// <p>SniType为3时，需要填此参数，表示自定义的SNI；</p>
 	SniHost *string `json:"SniHost,omitnil,omitempty" name:"SniHost"`
 
-	// 回源IP权重
+	// <p>回源IP权重</p>
 	Weights []*string `json:"Weights,omitnil,omitempty" name:"Weights"`
 
-	// IsCdn=3时，表示自定义header
+	// <p>IsCdn=3时，表示自定义header</p>
 	IpHeaders []*string `json:"IpHeaders,omitnil,omitempty" name:"IpHeaders"`
 
-	// 是否开启XFF重置。
-	// 0：关闭
-	// 1：开启
+	// <p>是否开启XFF重置。<br>0：关闭<br>1：开启</p>
 	XFFReset *int64 `json:"XFFReset,omitnil,omitempty" name:"XFFReset"`
 
-	// 域名备注信息
+	// <p>域名备注信息</p>
 	Note *string `json:"Note,omitnil,omitempty" name:"Note"`
 
-	// 自定义回源Host。默认为空字符串，表示使用防护域名作为回源Host。
+	// <p>自定义回源Host。默认为空字符串，表示使用防护域名作为回源Host。</p>
 	UpstreamHost *string `json:"UpstreamHost,omitnil,omitempty" name:"UpstreamHost"`
 
-	// 防护规则
+	// <p>防护规则</p>
 	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
 
-	// 是否开启缓存 0-关闭 1-开启
+	// <p>是否开启缓存 0-关闭 1-开启</p>
 	ProxyBuffer *int64 `json:"ProxyBuffer,omitnil,omitempty" name:"ProxyBuffer"`
 
-	// 国密选项。0：不开启国密 1：在原有TLS选项的基础上追加支持国密 2：开启国密并仅支持国密客户端访问
+	// <p>国密选项。0：不开启国密 1：在原有TLS选项的基础上追加支持国密 2：开启国密并仅支持国密客户端访问</p>
 	GmType *int64 `json:"GmType,omitnil,omitempty" name:"GmType"`
 
-	// 国密证书类型。0：无国密证书 1：证书来源为自有国密证书 2：证书来源为托管国密证书
+	// <p>国密证书类型。0：无国密证书 1：证书来源为自有国密证书 2：证书来源为托管国密证书</p>
 	GmCertType *int64 `json:"GmCertType,omitnil,omitempty" name:"GmCertType"`
 
-	// GmCertType为1时，需要填充此参数，表示自有国密证书的证书链
+	// <p>GmCertType为1时，需要填充此参数，表示自有国密证书的证书链</p>
 	GmCert *string `json:"GmCert,omitnil,omitempty" name:"GmCert"`
 
-	// GmCertType为1时，需要填充此参数，表示自有国密证书的私钥
+	// <p>GmCertType为1时，需要填充此参数，表示自有国密证书的私钥</p>
 	GmPrivateKey *string `json:"GmPrivateKey,omitnil,omitempty" name:"GmPrivateKey"`
 
-	// GmCertType为1时，需要填充此参数，表示自有国密证书的加密证书
+	// <p>GmCertType为1时，需要填充此参数，表示自有国密证书的加密证书</p>
 	GmEncCert *string `json:"GmEncCert,omitnil,omitempty" name:"GmEncCert"`
 
-	// GmCertType为1时，需要填充此参数，表示自有国密证书的加密证书的私钥
+	// <p>GmCertType为1时，需要填充此参数，表示自有国密证书的加密证书的私钥</p>
 	GmEncPrivateKey *string `json:"GmEncPrivateKey,omitnil,omitempty" name:"GmEncPrivateKey"`
 
-	// GmCertType为2时，需要填充此参数，表示腾讯云SSL平台托管的证书id
+	// <p>GmCertType为2时，需要填充此参数，表示腾讯云SSL平台托管的证书id</p>
 	GmSSLId *string `json:"GmSSLId,omitnil,omitempty" name:"GmSSLId"`
 
-	// 域名标签
+	// <p>域名标签</p>
 	Labels []*string `json:"Labels,omitnil,omitempty" name:"Labels"`
 
-	// 拨测状态。 0: 禁用拨测, 1: 启用拨测
+	// <p>拨测状态。 0: 禁用拨测, 1: 启用拨测</p>
 	ProbeStatus *int64 `json:"ProbeStatus,omitnil,omitempty" name:"ProbeStatus"`
 
-	// 回源策略。
-	// 0：负载均衡回源
-	// 1：分流回源
+	// <p>回源策略。<br>0：负载均衡回源<br>1：分流回源</p>
 	UpstreamPolicy *int64 `json:"UpstreamPolicy,omitnil,omitempty" name:"UpstreamPolicy"`
 
-	// 分流回源策略
+	// <p>分流回源策略</p>
 	UpstreamRules []*UpstreamRule `json:"UpstreamRules,omitnil,omitempty" name:"UpstreamRules"`
 
-	// 业务场景。0：默认值，表示常规业务场景 1：大模型业务场景
+	// <p>业务场景。0：默认值，表示常规业务场景 1：大模型业务场景</p>
 	UseCase *int64 `json:"UseCase,omitnil,omitempty" name:"UseCase"`
 
-	// gzip开关。0：关闭 1：默认值，打开。
+	// <p>gzip开关。0：关闭 1：默认值，打开。</p>
 	Gzip *int64 `json:"Gzip,omitnil,omitempty" name:"Gzip"`
 
-	// SAAS型WAF域名状态：
-	// -2：配置下发失败
-	// -1：配置下发中
-	// 0：DNS解析中
-	// 1：无DNS解析记录，请接入WAF
-	// 10：DNS解析未知，域名启用了代理
-	// 11：DNS解析异常，使用A记录接入WAF IP
-	// 200：检测源站不可达
-	// 220：源站不支持长连接
-	// 311：证书过期
-	// 312：证书即将过期
-	// 310：证书异常
-	// 316：备案异常
-	// 5：WAF回源已变更
-	// 负载均衡型WAF域名LB监听器状态：
-	// 0：操作成功 
-	// 4：正在绑定LB 
-	// 6：正在解绑LB 
-	// 7：解绑LB失败 
-	// 8：绑定LB失败 
-	// 10：内部错误
+	// <p>SAAS型WAF域名状态：<br>-2：配置下发失败<br>-1：配置下发中<br>0：DNS解析中<br>1：无DNS解析记录，请接入WAF<br>10：DNS解析未知，域名启用了代理<br>11：DNS解析异常，使用A记录接入WAF IP<br>200：检测源站不可达<br>220：源站不支持长连接<br>311：证书过期<br>312：证书即将过期<br>310：证书异常<br>316：备案异常<br>5：WAF回源已变更<br>负载均衡型WAF域名LB监听器状态：<br>0：操作成功<br>4：正在绑定LB<br>6：正在解绑LB<br>7：解绑LB失败<br>8：绑定LB失败<br>10：内部错误</p>
 	State *int64 `json:"State,omitnil,omitempty" name:"State"`
 
-	// saaswaf独享ip状态，0是关闭状态，1是开启状态，2是开启中
+	// <p>saaswaf独享ip状态，0是关闭状态，1是开启状态，2是开启中</p>
 	PrivateVipStatus *int64 `json:"PrivateVipStatus,omitnil,omitempty" name:"PrivateVipStatus"`
+
+	// <p>标签结构体</p>
+	TagInfos []*TagInfo `json:"TagInfos,omitnil,omitempty" name:"TagInfos"`
+
+	// <p>ipv6开启状态</p><p>枚举值：</p><ul><li>1： ipv6开关打开</li><li>0： ipv6开关关闭</li></ul>
+	Ipv6Status *int64 `json:"Ipv6Status,omitnil,omitempty" name:"Ipv6Status"`
 }
 
 type DownloadAttackRecordInfo struct {
@@ -14934,7 +15285,7 @@ func (r *GetOrganizationRoleRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetOrganizationRoleResponseParams struct {
-	// Admin:集团账号创建，DelegatedAdmin:委派管理员，Member：成员，NoMember：非集团账号成员
+	// <p>Admin:集团账号创建，DelegatedAdmin:委派管理员，Member：成员，NoMember：非集团账号成员</p>
 	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -15517,184 +15868,176 @@ type InstanceBriefInfo struct {
 }
 
 type InstanceInfo struct {
-	// 实例唯一ID
+	// <p>实例唯一ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 实例名称
+	// <p>实例名称</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 实例对应资源ID，计费使用
+	// <p>实例对应资源ID，计费使用</p>
 	ResourceIds *string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
 
-	// 实例所属地域
+	// <p>实例所属地域</p>
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 付费模式
+	// <p>付费模式</p>
 	PayMode *uint64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// 自动续费标识。
-	// 0：关闭
-	// 1：开启
+	// <p>自动续费标识。<br>0：关闭<br>1：开启</p>
 	RenewFlag *uint64 `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 
-	// 弹性计费开关。
-	// 0：关闭
-	// 1：开启
+	// <p>弹性计费开关。<br>0：关闭<br>1：开启</p>
 	Mode *uint64 `json:"Mode,omitnil,omitempty" name:"Mode"`
 
-	// 实例套餐版本。
-	// 101：小微版
-	// 102：超轻版
-	// 2：高级版
-	// 3：企业版
-	// 4：旗舰版
-	// 6：独享版
+	// <p>实例套餐版本。<br>101：小微版<br>102：超轻版<br>2：高级版<br>3：企业版<br>4：旗舰版<br>6：独享版</p>
 	Level *uint64 `json:"Level,omitnil,omitempty" name:"Level"`
 
-	// 实例过期时间
+	// <p>实例过期时间</p>
 	ValidTime *string `json:"ValidTime,omitnil,omitempty" name:"ValidTime"`
 
-	// 实例开始时间
+	// <p>实例开始时间</p>
 	BeginTime *string `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
 
-	// 已配置域名个数
+	// <p>已配置域名个数</p>
 	DomainCount *uint64 `json:"DomainCount,omitnil,omitempty" name:"DomainCount"`
 
-	// 域名数量上限
+	// <p>域名数量上限</p>
 	SubDomainLimit *uint64 `json:"SubDomainLimit,omitnil,omitempty" name:"SubDomainLimit"`
 
-	// 已配置主域名个数
+	// <p>已配置主域名个数</p>
 	MainDomainCount *uint64 `json:"MainDomainCount,omitnil,omitempty" name:"MainDomainCount"`
 
-	// 主域名数量上限
+	// <p>主域名数量上限</p>
 	MainDomainLimit *uint64 `json:"MainDomainLimit,omitnil,omitempty" name:"MainDomainLimit"`
 
-	// 实例30天内QPS峰值
+	// <p>实例30天内QPS峰值</p>
 	MaxQPS *uint64 `json:"MaxQPS,omitnil,omitempty" name:"MaxQPS"`
 
-	// qps扩展包信息
+	// <p>qps扩展包信息</p>
 	QPS *QPSPackageNew `json:"QPS,omitnil,omitempty" name:"QPS"`
 
-	// 域名扩展包信息
+	// <p>域名扩展包信息</p>
 	DomainPkg *DomainPackageNew `json:"DomainPkg,omitnil,omitempty" name:"DomainPkg"`
 
-	// 用户appid
+	// <p>用户appid</p>
 	AppId *uint64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 
-	// clb或saas
+	// <p>clb或saas</p>
 	Edition *string `json:"Edition,omitnil,omitempty" name:"Edition"`
 
-	// 业务安全包
+	// <p>业务安全包</p>
 	FraudPkg *FraudPkg `json:"FraudPkg,omitnil,omitempty" name:"FraudPkg"`
 
-	// Bot资源包
+	// <p>Bot资源包</p>
 	BotPkg *BotPkg `json:"BotPkg,omitnil,omitempty" name:"BotPkg"`
 
-	// bot的qps详情
+	// <p>bot的qps详情</p>
 	BotQPS *BotQPS `json:"BotQPS,omitnil,omitempty" name:"BotQPS"`
 
-	// qps弹性计费上限
+	// <p>qps弹性计费上限</p>
 	ElasticBilling *uint64 `json:"ElasticBilling,omitnil,omitempty" name:"ElasticBilling"`
 
-	// 攻击日志投递开关
+	// <p>攻击日志投递开关</p>
 	AttackLogPost *int64 `json:"AttackLogPost,omitnil,omitempty" name:"AttackLogPost"`
 
-	// 带宽峰值，单位为B/s(字节每秒)
+	// <p>带宽峰值，单位为B/s(字节每秒)</p>
 	MaxBandwidth *uint64 `json:"MaxBandwidth,omitnil,omitempty" name:"MaxBandwidth"`
 
-	// api安全是否购买
+	// <p>api安全是否购买</p>
 	APISecurity *uint64 `json:"APISecurity,omitnil,omitempty" name:"APISecurity"`
 
-	// 购买的qps规格
+	// <p>购买的qps规格</p>
 	QpsStandard *uint64 `json:"QpsStandard,omitnil,omitempty" name:"QpsStandard"`
 
-	// 购买的带宽规格
+	// <p>购买的带宽规格</p>
 	BandwidthStandard *uint64 `json:"BandwidthStandard,omitnil,omitempty" name:"BandwidthStandard"`
 
-	// 实例状态
+	// <p>实例状态</p>
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 实例沙箱qps值
+	// <p>实例沙箱qps值</p>
 	SandboxQps *uint64 `json:"SandboxQps,omitnil,omitempty" name:"SandboxQps"`
 
-	// 是否api 安全试用
+	// <p>是否api 安全试用</p>
 	IsAPISecurityTrial *uint64 `json:"IsAPISecurityTrial,omitnil,omitempty" name:"IsAPISecurityTrial"`
 
-	// 重保包
+	// <p>重保包</p>
 	MajorEventsPkg *MajorEventsPkg `json:"MajorEventsPkg,omitnil,omitempty" name:"MajorEventsPkg"`
 
-	// 混合云子节点包
+	// <p>混合云子节点包</p>
 	HybridPkg *HybridPkg `json:"HybridPkg,omitnil,omitempty" name:"HybridPkg"`
 
-	// API安全资源包
+	// <p>API安全资源包</p>
 	ApiPkg *ApiPkg `json:"ApiPkg,omitnil,omitempty" name:"ApiPkg"`
 
-	// 小程序安全加速包
+	// <p>小程序安全加速包</p>
 	MiniPkg *MiniPkg `json:"MiniPkg,omitnil,omitempty" name:"MiniPkg"`
 
-	// 小程序qps规格
+	// <p>小程序qps规格</p>
 	MiniQpsStandard *uint64 `json:"MiniQpsStandard,omitnil,omitempty" name:"MiniQpsStandard"`
 
-	// 小程序qps峰值
+	// <p>小程序qps峰值</p>
 	MiniMaxQPS *uint64 `json:"MiniMaxQPS,omitnil,omitempty" name:"MiniMaxQPS"`
 
-	// 最近一次超量时间
+	// <p>最近一次超量时间</p>
 	LastQpsExceedTime *string `json:"LastQpsExceedTime,omitnil,omitempty" name:"LastQpsExceedTime"`
 
-	// 小程序安全接入ID数量扩张包
+	// <p>小程序安全接入ID数量扩张包</p>
 	MiniExtendPkg *MiniExtendPkg `json:"MiniExtendPkg,omitnil,omitempty" name:"MiniExtendPkg"`
 
-	// 计费项
+	// <p>计费项</p>
 	BillingItem *string `json:"BillingItem,omitnil,omitempty" name:"BillingItem"`
 
-	// 实例延期释放标识
+	// <p>实例延期释放标识</p>
 	FreeDelayFlag *uint64 `json:"FreeDelayFlag,omitnil,omitempty" name:"FreeDelayFlag"`
 
-	// 最近3天最大qps
+	// <p>最近3天最大qps</p>
 	Last3MaxQPS *uint64 `json:"Last3MaxQPS,omitnil,omitempty" name:"Last3MaxQPS"`
 
-	// 最近3天最大带宽
+	// <p>最近3天最大带宽</p>
 	Last3MaxBandwidth *uint64 `json:"Last3MaxBandwidth,omitnil,omitempty" name:"Last3MaxBandwidth"`
 
-	// 重保增强包
+	// <p>重保增强包</p>
 	MajorEventsProPkg *MajorEventsProPkg `json:"MajorEventsProPkg,omitnil,omitempty" name:"MajorEventsProPkg"`
 
-	// 1是基础2025版本；0不是
+	// <p>1是基础2025版本；0不是</p>
 	BasicFlag *uint64 `json:"BasicFlag,omitnil,omitempty" name:"BasicFlag"`
 
-	// 实例的网络配置
+	// <p>实例的网络配置</p>
 	NetworkConfig *NetworkConfig `json:"NetworkConfig,omitnil,omitempty" name:"NetworkConfig"`
 
-	// RCE设备安全信息包
+	// <p>RCE设备安全信息包</p>
 	RCEPkg *RCEPkg `json:"RCEPkg,omitnil,omitempty" name:"RCEPkg"`
 
-	// 超量策略。0：超量沙箱
-	// 1：超量限流
+	// <p>超量策略。0：超量沙箱<br>1：超量限流</p>
 	ExceedPolicy *int64 `json:"ExceedPolicy,omitnil,omitempty" name:"ExceedPolicy"`
 
-	// 大模型安全信息包
+	// <p>大模型安全信息包</p>
 	LLMPkg *LLMPkg `json:"LLMPkg,omitnil,omitempty" name:"LLMPkg"`
 
-	// 弹性资源Id
+	// <p>弹性资源Id</p>
 	ElasticResourceId *string `json:"ElasticResourceId,omitnil,omitempty" name:"ElasticResourceId"`
 
-	// 预付费大模型安全信息包
+	// <p>预付费大模型安全信息包</p>
 	LLMMonPkg *LLMMonPkg `json:"LLMMonPkg,omitnil,omitempty" name:"LLMMonPkg"`
 
-	// 地域id
+	// <p>地域id</p>
 	RegionId *uint64 `json:"RegionId,omitnil,omitempty" name:"RegionId"`
 
-	// BOT安全护航信息
+	// <p>BOT安全护航信息</p>
 	BotSecurityPkg *BotSecurityPkg `json:"BotSecurityPkg,omitnil,omitempty" name:"BotSecurityPkg"`
 
-	// BOT安全监测资源信息
+	// <p>BOT安全监测资源信息</p>
 	BotMonitorPkg *BotMonitorPkg `json:"BotMonitorPkg,omitnil,omitempty" name:"BotMonitorPkg"`
 
-	// 独享ip资源信息
+	// <p>独享ip资源信息</p>
 	DedicatedIPPkg *DedicatedIPPkg `json:"DedicatedIPPkg,omitnil,omitempty" name:"DedicatedIPPkg"`
 
-	// 已经配置独享ip的数量
+	// <p>已经配置独享ip的数量</p>
 	DedicatedIPCount *int64 `json:"DedicatedIPCount,omitnil,omitempty" name:"DedicatedIPCount"`
+
+	// <p>标签结构体</p>
+	TagInfos []*TagInfo `json:"TagInfos,omitnil,omitempty" name:"TagInfos"`
 }
 
 type IpAccessControlData struct {
@@ -15865,6 +16208,9 @@ type LLMDetectResult struct {
 
 	// <p>要代答的消息id，此消息id用于作为GenerateLLMSecAnswer接口的入参</p>
 	MsgID *string `json:"MsgID,omitnil,omitempty" name:"MsgID"`
+
+	// <p>toolcall的检测结果</p>
+	ToolCallResult *ToolCallResult `json:"ToolCallResult,omitnil,omitempty" name:"ToolCallResult"`
 }
 
 type LLMMonPkg struct {
@@ -15915,6 +16261,11 @@ type LLMPkg struct {
 
 	// 计费项
 	InquireKey *string `json:"InquireKey,omitnil,omitempty" name:"InquireKey"`
+}
+
+type LLMRisks struct {
+	// 分数
+	Risks []*ClawRiskItem `json:"Risks,omitnil,omitempty" name:"Risks"`
 }
 
 type LLMSensitiveValueLevel struct {
@@ -16860,99 +17211,111 @@ func (r *ModifyApiSecEventChangeResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyApiSecSensitiveRuleRequestParams struct {
-	// 域名
+	// <p>域名</p>
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 1表示开，0表示关，3表示删除
+	// <p>1表示开，0表示关，3表示删除</p>
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 规则名称
+	// <p>规则名称</p>
 	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
 
-	// 客户自定义配置
-	CustomRule *ApiSecCustomSensitiveRule `json:"CustomRule,omitnil,omitempty" name:"CustomRule"`
-
-	// rulename列表，批量操作的时候填改值
+	// <p>rulename列表，批量操作的时候填改值</p>
 	RuleNameList []*string `json:"RuleNameList,omitnil,omitempty" name:"RuleNameList"`
 
-	// api提取规则内容
-	CustomApiExtractRule *ApiSecExtractRule `json:"CustomApiExtractRule,omitnil,omitempty" name:"CustomApiExtractRule"`
+	// <p>客户自定义配置</p>
+	CustomRule *ApiSecCustomSensitiveRule `json:"CustomRule,omitnil,omitempty" name:"CustomRule"`
 
-	// 批量操作的时候的api提取规则
+	// <p>批量操作的时候的api提取规则</p>
 	ApiExtractRuleName []*string `json:"ApiExtractRuleName,omitnil,omitempty" name:"ApiExtractRuleName"`
 
-	// 自定义api鉴权规则
-	ApiSecPrivilegeRule *ApiSecPrivilegeRule `json:"ApiSecPrivilegeRule,omitnil,omitempty" name:"ApiSecPrivilegeRule"`
+	// <p>api提取规则内容</p>
+	CustomApiExtractRule *ApiSecExtractRule `json:"CustomApiExtractRule,omitnil,omitempty" name:"CustomApiExtractRule"`
 
-	// 匹配操作时候的api鉴权规则
+	// <p>匹配操作时候的api鉴权规则</p>
 	ApiSecPrivilegeRuleName []*string `json:"ApiSecPrivilegeRuleName,omitnil,omitempty" name:"ApiSecPrivilegeRuleName"`
 
-	// 批量操作的时候的自定义场景列表
+	// <p>自定义api鉴权规则</p>
+	ApiSecPrivilegeRule *ApiSecPrivilegeRule `json:"ApiSecPrivilegeRule,omitnil,omitempty" name:"ApiSecPrivilegeRule"`
+
+	// <p>批量操作的时候的自定义场景列表</p>
 	ApiSecSceneRuleNameList []*string `json:"ApiSecSceneRuleNameList,omitnil,omitempty" name:"ApiSecSceneRuleNameList"`
 
-	// 单条自定义api场景规则
+	// <p>单条自定义api场景规则</p>
 	ApiSecSceneRule *ApiSecSceneRule `json:"ApiSecSceneRule,omitnil,omitempty" name:"ApiSecSceneRule"`
 
-	// 批量操作的时候的自定义事件规则列表
+	// <p>批量操作的时候的自定义事件规则列表</p>
 	ApiSecCustomEventRuleNameList []*string `json:"ApiSecCustomEventRuleNameList,omitnil,omitempty" name:"ApiSecCustomEventRuleNameList"`
 
-	// 自定义事件规则
+	// <p>自定义事件规则</p>
 	ApiSecCustomEventRuleRule *ApiSecCustomEventRule `json:"ApiSecCustomEventRuleRule,omitnil,omitempty" name:"ApiSecCustomEventRuleRule"`
 
-	// 无效api排除规则
+	// <p>批量操作的时候的无效api排除规则</p>
+	ApiExcludeRuleName []*string `json:"ApiExcludeRuleName,omitnil,omitempty" name:"ApiExcludeRuleName"`
+
+	// <p>无效api排除规则</p>
 	CustomApiExcludeRule *ApiSecExcludeRule `json:"CustomApiExcludeRule,omitnil,omitempty" name:"CustomApiExcludeRule"`
 
-	// 批量操作的时候的无效api排除规则
-	ApiExcludeRuleName []*string `json:"ApiExcludeRuleName,omitnil,omitempty" name:"ApiExcludeRuleName"`
+	// <p>批量操作时的敏感数据加白规则名称列表</p>
+	ApiSecSensitiveWhiteRuleNameList []*string `json:"ApiSecSensitiveWhiteRuleNameList,omitnil,omitempty" name:"ApiSecSensitiveWhiteRuleNameList"`
+
+	// <p>敏感数据加白规则</p>
+	ApiSecSensitiveWhiteRuleRule *ApiSecSensitiveWhiteRule `json:"ApiSecSensitiveWhiteRuleRule,omitnil,omitempty" name:"ApiSecSensitiveWhiteRuleRule"`
 }
 
 type ModifyApiSecSensitiveRuleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 域名
+	// <p>域名</p>
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 1表示开，0表示关，3表示删除
+	// <p>1表示开，0表示关，3表示删除</p>
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 规则名称
+	// <p>规则名称</p>
 	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
 
-	// 客户自定义配置
-	CustomRule *ApiSecCustomSensitiveRule `json:"CustomRule,omitnil,omitempty" name:"CustomRule"`
-
-	// rulename列表，批量操作的时候填改值
+	// <p>rulename列表，批量操作的时候填改值</p>
 	RuleNameList []*string `json:"RuleNameList,omitnil,omitempty" name:"RuleNameList"`
 
-	// api提取规则内容
-	CustomApiExtractRule *ApiSecExtractRule `json:"CustomApiExtractRule,omitnil,omitempty" name:"CustomApiExtractRule"`
+	// <p>客户自定义配置</p>
+	CustomRule *ApiSecCustomSensitiveRule `json:"CustomRule,omitnil,omitempty" name:"CustomRule"`
 
-	// 批量操作的时候的api提取规则
+	// <p>批量操作的时候的api提取规则</p>
 	ApiExtractRuleName []*string `json:"ApiExtractRuleName,omitnil,omitempty" name:"ApiExtractRuleName"`
 
-	// 自定义api鉴权规则
-	ApiSecPrivilegeRule *ApiSecPrivilegeRule `json:"ApiSecPrivilegeRule,omitnil,omitempty" name:"ApiSecPrivilegeRule"`
+	// <p>api提取规则内容</p>
+	CustomApiExtractRule *ApiSecExtractRule `json:"CustomApiExtractRule,omitnil,omitempty" name:"CustomApiExtractRule"`
 
-	// 匹配操作时候的api鉴权规则
+	// <p>匹配操作时候的api鉴权规则</p>
 	ApiSecPrivilegeRuleName []*string `json:"ApiSecPrivilegeRuleName,omitnil,omitempty" name:"ApiSecPrivilegeRuleName"`
 
-	// 批量操作的时候的自定义场景列表
+	// <p>自定义api鉴权规则</p>
+	ApiSecPrivilegeRule *ApiSecPrivilegeRule `json:"ApiSecPrivilegeRule,omitnil,omitempty" name:"ApiSecPrivilegeRule"`
+
+	// <p>批量操作的时候的自定义场景列表</p>
 	ApiSecSceneRuleNameList []*string `json:"ApiSecSceneRuleNameList,omitnil,omitempty" name:"ApiSecSceneRuleNameList"`
 
-	// 单条自定义api场景规则
+	// <p>单条自定义api场景规则</p>
 	ApiSecSceneRule *ApiSecSceneRule `json:"ApiSecSceneRule,omitnil,omitempty" name:"ApiSecSceneRule"`
 
-	// 批量操作的时候的自定义事件规则列表
+	// <p>批量操作的时候的自定义事件规则列表</p>
 	ApiSecCustomEventRuleNameList []*string `json:"ApiSecCustomEventRuleNameList,omitnil,omitempty" name:"ApiSecCustomEventRuleNameList"`
 
-	// 自定义事件规则
+	// <p>自定义事件规则</p>
 	ApiSecCustomEventRuleRule *ApiSecCustomEventRule `json:"ApiSecCustomEventRuleRule,omitnil,omitempty" name:"ApiSecCustomEventRuleRule"`
 
-	// 无效api排除规则
+	// <p>批量操作的时候的无效api排除规则</p>
+	ApiExcludeRuleName []*string `json:"ApiExcludeRuleName,omitnil,omitempty" name:"ApiExcludeRuleName"`
+
+	// <p>无效api排除规则</p>
 	CustomApiExcludeRule *ApiSecExcludeRule `json:"CustomApiExcludeRule,omitnil,omitempty" name:"CustomApiExcludeRule"`
 
-	// 批量操作的时候的无效api排除规则
-	ApiExcludeRuleName []*string `json:"ApiExcludeRuleName,omitnil,omitempty" name:"ApiExcludeRuleName"`
+	// <p>批量操作时的敏感数据加白规则名称列表</p>
+	ApiSecSensitiveWhiteRuleNameList []*string `json:"ApiSecSensitiveWhiteRuleNameList,omitnil,omitempty" name:"ApiSecSensitiveWhiteRuleNameList"`
+
+	// <p>敏感数据加白规则</p>
+	ApiSecSensitiveWhiteRuleRule *ApiSecSensitiveWhiteRule `json:"ApiSecSensitiveWhiteRuleRule,omitnil,omitempty" name:"ApiSecSensitiveWhiteRuleRule"`
 }
 
 func (r *ModifyApiSecSensitiveRuleRequest) ToJsonString() string {
@@ -16970,18 +17333,20 @@ func (r *ModifyApiSecSensitiveRuleRequest) FromJsonString(s string) error {
 	delete(f, "Domain")
 	delete(f, "Status")
 	delete(f, "RuleName")
-	delete(f, "CustomRule")
 	delete(f, "RuleNameList")
-	delete(f, "CustomApiExtractRule")
+	delete(f, "CustomRule")
 	delete(f, "ApiExtractRuleName")
-	delete(f, "ApiSecPrivilegeRule")
+	delete(f, "CustomApiExtractRule")
 	delete(f, "ApiSecPrivilegeRuleName")
+	delete(f, "ApiSecPrivilegeRule")
 	delete(f, "ApiSecSceneRuleNameList")
 	delete(f, "ApiSecSceneRule")
 	delete(f, "ApiSecCustomEventRuleNameList")
 	delete(f, "ApiSecCustomEventRuleRule")
-	delete(f, "CustomApiExcludeRule")
 	delete(f, "ApiExcludeRuleName")
+	delete(f, "CustomApiExcludeRule")
+	delete(f, "ApiSecSensitiveWhiteRuleNameList")
+	delete(f, "ApiSecSensitiveWhiteRuleRule")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyApiSecSensitiveRuleRequest has unknown keys!", "")
 	}
@@ -19212,20 +19577,20 @@ func (r *ModifyHostModeResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyHostRequestParams struct {
-	// 编辑的域名配置信息
+	// <p>编辑的域名配置信息</p>
 	Host *HostRecord `json:"Host,omitnil,omitempty" name:"Host"`
 
-	// 实例唯一ID
+	// <p>实例唯一ID</p>
 	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
 }
 
 type ModifyHostRequest struct {
 	*tchttp.BaseRequest
 	
-	// 编辑的域名配置信息
+	// <p>编辑的域名配置信息</p>
 	Host *HostRecord `json:"Host,omitnil,omitempty" name:"Host"`
 
-	// 实例唯一ID
+	// <p>实例唯一ID</p>
 	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
 }
 
@@ -19251,7 +19616,7 @@ func (r *ModifyHostRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyHostResponseParams struct {
-	// 编辑的域名ID
+	// <p>编辑的域名ID</p>
 	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -19886,57 +20251,63 @@ func (r *ModifyModuleStatusResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyObjectRequestParams struct {
-	// 修改对象标识
+	// <p>修改对象标识</p>
 	ObjectId *string `json:"ObjectId,omitnil,omitempty" name:"ObjectId"`
 
-	// 改动作类型:Status修改开关，InstanceId绑定实例, Proxy设置代理状态
+	// <p>改动作类型:Status修改开关，InstanceId绑定实例, Proxy设置代理状态</p>
 	OpType *string `json:"OpType,omitnil,omitempty" name:"OpType"`
 
-	// 新的Waf开关状态，如果和已有状态相同认为修改成功。状态可以为0或1
+	// <p>新的Waf开关状态，如果和已有状态相同认为修改成功。状态可以为0或1</p>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 新的实例ID，如果和已绑定的实例相同认为修改成功
+	// <p>新的实例ID，如果和已绑定的实例相同认为修改成功</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 是否开启代理，0:不开启,1:以XFF的第一个IP地址作为客户端IP,2:以remote_addr作为客户端IP,3:从指定的头部字段获取客户端IP，字段通过IpHeaders字段给出(OpType为Status或Proxy时，该值有效)
+	// <p>是否开启代理，0:不开启,1:以XFF的第一个IP地址作为客户端IP,2:以remote_addr作为客户端IP,3:从指定的头部字段获取客户端IP，字段通过IpHeaders字段给出(OpType为Status或Proxy时，该值有效)</p>
 	Proxy *uint64 `json:"Proxy,omitnil,omitempty" name:"Proxy"`
 
-	// IsCdn=3时，需要填此参数，表示自定义header(OpType为Status或Proxy时，该值有效)
+	// <p>IsCdn=3时，需要填此参数，表示自定义header(OpType为Status或Proxy时，该值有效)</p>
 	IpHeaders []*string `json:"IpHeaders,omitnil,omitempty" name:"IpHeaders"`
 
-	// 对象所属集团成员appid
+	// <p>对象所属集团成员appid</p>
 	MemberAppId *uint64 `json:"MemberAppId,omitnil,omitempty" name:"MemberAppId"`
 
-	// 对象所属集团成员uin
+	// <p>对象所属集团成员uin</p>
 	MemberUin *string `json:"MemberUin,omitnil,omitempty" name:"MemberUin"`
+
+	// <p>标签信息</p>
+	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type ModifyObjectRequest struct {
 	*tchttp.BaseRequest
 	
-	// 修改对象标识
+	// <p>修改对象标识</p>
 	ObjectId *string `json:"ObjectId,omitnil,omitempty" name:"ObjectId"`
 
-	// 改动作类型:Status修改开关，InstanceId绑定实例, Proxy设置代理状态
+	// <p>改动作类型:Status修改开关，InstanceId绑定实例, Proxy设置代理状态</p>
 	OpType *string `json:"OpType,omitnil,omitempty" name:"OpType"`
 
-	// 新的Waf开关状态，如果和已有状态相同认为修改成功。状态可以为0或1
+	// <p>新的Waf开关状态，如果和已有状态相同认为修改成功。状态可以为0或1</p>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 新的实例ID，如果和已绑定的实例相同认为修改成功
+	// <p>新的实例ID，如果和已绑定的实例相同认为修改成功</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 是否开启代理，0:不开启,1:以XFF的第一个IP地址作为客户端IP,2:以remote_addr作为客户端IP,3:从指定的头部字段获取客户端IP，字段通过IpHeaders字段给出(OpType为Status或Proxy时，该值有效)
+	// <p>是否开启代理，0:不开启,1:以XFF的第一个IP地址作为客户端IP,2:以remote_addr作为客户端IP,3:从指定的头部字段获取客户端IP，字段通过IpHeaders字段给出(OpType为Status或Proxy时，该值有效)</p>
 	Proxy *uint64 `json:"Proxy,omitnil,omitempty" name:"Proxy"`
 
-	// IsCdn=3时，需要填此参数，表示自定义header(OpType为Status或Proxy时，该值有效)
+	// <p>IsCdn=3时，需要填此参数，表示自定义header(OpType为Status或Proxy时，该值有效)</p>
 	IpHeaders []*string `json:"IpHeaders,omitnil,omitempty" name:"IpHeaders"`
 
-	// 对象所属集团成员appid
+	// <p>对象所属集团成员appid</p>
 	MemberAppId *uint64 `json:"MemberAppId,omitnil,omitempty" name:"MemberAppId"`
 
-	// 对象所属集团成员uin
+	// <p>对象所属集团成员uin</p>
 	MemberUin *string `json:"MemberUin,omitnil,omitempty" name:"MemberUin"`
+
+	// <p>标签信息</p>
+	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 func (r *ModifyObjectRequest) ToJsonString() string {
@@ -19959,6 +20330,7 @@ func (r *ModifyObjectRequest) FromJsonString(s string) error {
 	delete(f, "IpHeaders")
 	delete(f, "MemberAppId")
 	delete(f, "MemberUin")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyObjectRequest has unknown keys!", "")
 	}
@@ -20059,6 +20431,67 @@ func (r *ModifyObjectsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyObjectsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyOwaspDomainUpdateStatusRequestParams struct {
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 新规则状态，0为关闭，1为开启，2为仅观察
+	UpdateStatus *int64 `json:"UpdateStatus,omitnil,omitempty" name:"UpdateStatus"`
+}
+
+type ModifyOwaspDomainUpdateStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 新规则状态，0为关闭，1为开启，2为仅观察
+	UpdateStatus *int64 `json:"UpdateStatus,omitnil,omitempty" name:"UpdateStatus"`
+}
+
+func (r *ModifyOwaspDomainUpdateStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyOwaspDomainUpdateStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "UpdateStatus")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyOwaspDomainUpdateStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyOwaspDomainUpdateStatusResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyOwaspDomainUpdateStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyOwaspDomainUpdateStatusResponseParams `json:"Response"`
+}
+
+func (r *ModifyOwaspDomainUpdateStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyOwaspDomainUpdateStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -22111,11 +22544,14 @@ type ProductInfo struct {
 }
 
 type PromptDetectResult struct {
-	// 检测结果
+	// <p>检测结果</p>
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 置信度
+	// <p>置信度</p>
 	Confidence *uint64 `json:"Confidence,omitnil,omitempty" name:"Confidence"`
+
+	// <p>检出类别</p>
+	Category []*string `json:"Category,omitnil,omitempty" name:"Category"`
 }
 
 type ProtectGroupDomainInfo struct {
@@ -22127,26 +22563,33 @@ type ProtectGroupDomainInfo struct {
 }
 
 type ProtectGroupInfo struct {
-	// 防护对象组ID
+	// <p>防护对象组ID</p>
 	ID *uint64 `json:"ID,omitnil,omitempty" name:"ID"`
 
-	// 防护对象组名称
+	// <p>防护对象组名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 防护对象组备注
+	// <p>防护对象组备注</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 防护对象组中绑定的域名详情
+	// <p>防护对象组中绑定的域名详情</p>
 	Domains []*ProtectGroupDomainInfo `json:"Domains,omitnil,omitempty" name:"Domains"`
 
-	// 关联的批量规则数
+	// <p>关联的批量规则数</p>
 	RuleNum *uint64 `json:"RuleNum,omitnil,omitempty" name:"RuleNum"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 更新时间
+	// <p>更新时间</p>
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// <p>标签信息</p>
+	TagInfos []*TagInfo `json:"TagInfos,omitnil,omitempty" name:"TagInfos"`
+
+	// <p>是否绑定了模板</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BoundTemplate *bool `json:"BoundTemplate,omitnil,omitempty" name:"BoundTemplate"`
 }
 
 type QPSPackageNew struct {
@@ -22170,20 +22613,23 @@ type QPSPackageNew struct {
 }
 
 type QpsData struct {
-	// 弹性qps默认值
+	// <p>弹性qps默认值</p>
 	ElasticBillingDefault *uint64 `json:"ElasticBillingDefault,omitnil,omitempty" name:"ElasticBillingDefault"`
 
-	// 弹性qps最小值
+	// <p>弹性qps最小值</p>
 	ElasticBillingMin *uint64 `json:"ElasticBillingMin,omitnil,omitempty" name:"ElasticBillingMin"`
 
-	// 弹性qps最大值
+	// <p>弹性qps最大值</p>
 	ElasticBillingMax *uint64 `json:"ElasticBillingMax,omitnil,omitempty" name:"ElasticBillingMax"`
 
-	// 业务扩展包最大qps
+	// <p>业务扩展包最大qps</p>
 	QPSExtendMax *uint64 `json:"QPSExtendMax,omitnil,omitempty" name:"QPSExtendMax"`
 
-	// 境外业务扩展包最大qps
+	// <p>境外业务扩展包最大qps</p>
 	QPSExtendIntlMax *uint64 `json:"QPSExtendIntlMax,omitnil,omitempty" name:"QPSExtendIntlMax"`
+
+	// <p>预付费/后付费QPS扩容比</p>
+	ElasticPrepaidRatio *float64 `json:"ElasticPrepaidRatio,omitnil,omitempty" name:"ElasticPrepaidRatio"`
 }
 
 // Predefined struct for user
@@ -23050,6 +23496,99 @@ type SessionItem struct {
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 }
 
+type SkillRuleCatalogItem struct {
+	// <p>规则分类标识（如 static_analysis、ai_analysis）</p>
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// <p>规则分类中文名称</p>
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type SkillScanCapabilityTag struct {
+	// <p>标签唯一ID</p>
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>标签名称（如 network_access、file_system 等）</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+}
+
+type SkillScanItem struct {
+	// <p>子引擎类型：AI（AI 分析）/ STATIC（静态分析）</p>
+	ScanType *string `json:"ScanType,omitnil,omitempty" name:"ScanType"`
+
+	// <p>该引擎命中的规则列表</p>
+	RuleList []*SkillScanRuleHit `json:"RuleList,omitnil,omitempty" name:"RuleList"`
+}
+
+type SkillScanQueryData struct {
+	// <p>检测状态：success（检测完成，有结果）、scanning（检测进行中）、not_found（无记录）、failed（检测失败）</p><p>枚举值：</p><ul><li>success： 检测完成，有结果</li><li>scanning： 检测进行中</li><li>not_found： 无记录</li><li>failed： 检测失败</li></ul>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>Skill 名称，用于页面展示、结果列表呈现和人工研判</p>
+	SkillName *string `json:"SkillName,omitnil,omitempty" name:"SkillName"`
+
+	// <p>Skill 描述，通常来自 Skill 元数据或说明信息，用于帮助调用方理解 Skill 的用途</p>
+	SkillDescription *string `json:"SkillDescription,omitnil,omitempty" name:"SkillDescription"`
+
+	// <p>ZIP 文件的 SHA256 哈希值，格式为 sha256:hex_digest</p>
+	ContentHash *string `json:"ContentHash,omitnil,omitempty" name:"ContentHash"`
+
+	// <p>风险等级：malicious（恶意）、suspicious（可疑）、benign（可信）</p>
+	RiskLevel *string `json:"RiskLevel,omitnil,omitempty" name:"RiskLevel"`
+
+	// <p>综合处置建议字段，位于 data 顶层，用于给出本次检测结果的总体修复、缓解或人工处置建议</p>
+	Mitigation *string `json:"Mitigation,omitnil,omitempty" name:"Mitigation"`
+
+	// <p>安全评分（0-100，分数越高越安全）</p><p>取值范围：[0, 100]</p>
+	SecurityScore *uint64 `json:"SecurityScore,omitnil,omitempty" name:"SecurityScore"`
+
+	// <p>本次扫描使用的引擎版本号</p>
+	EngineVersion *uint64 `json:"EngineVersion,omitnil,omitempty" name:"EngineVersion"`
+
+	// <p>Skill 的能力标签列表，对外固定返回格式为 [{id,name}]。该字段用于描述 Skill 具备的能力特征或适用场景，便于调用方做检索、展示或分类；不等同于风险标签，也不表示风险高低或命中规则结果。当 lang=en 时，仅 name 会切换为英文，id 保持不变</p>
+	CapabilityTags []*SkillScanCapabilityTag `json:"CapabilityTags,omitnil,omitempty" name:"CapabilityTags"`
+
+	// <p>融合规则目录全集，key 为融合 rule_id（9xxxx），value 为风险类别名称；包含所有融合规则类别，调用方可据此展示分类标签，无需本地维护映射表。传 lang=en 时返回英文名称。该对象是名称映射表，不表达主标签优先级</p>
+	RuleCatalog []*SkillRuleCatalogItem `json:"RuleCatalog,omitnil,omitempty" name:"RuleCatalog"`
+
+	// <p>扫描结果详情，按子引擎分组，每个元素包含 scan_type（引擎类型）和 rule_list（命中的规则列表）；规则中的 rule_id 使用融合编码（9xxxx），可与 rule_catalog 交叉引用。传 lang=en 时，description 返回英文文本</p>
+	ScanItems []*SkillScanItem `json:"ScanItems,omitnil,omitempty" name:"ScanItems"`
+
+	// <p>综合安全审计报告地址。调用方可通过 report_url_expire_hours 指定有效期，不传时默认返回 1 年有效期地址</p>
+	ReportUrl *string `json:"ReportUrl,omitnil,omitempty" name:"ReportUrl"`
+
+	// <p>扫描完成时间</p>
+	ScannedAt *string `json:"ScannedAt,omitnil,omitempty" name:"ScannedAt"`
+
+	// <p>任务创建时间</p>
+	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
+
+	// <p>失败时间</p>
+	FailedAt *string `json:"FailedAt,omitnil,omitempty" name:"FailedAt"`
+
+	// <p>失败原因描述</p>
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+}
+
+type SkillScanRuleHit struct {
+	// <p>规则唯一ID</p>
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// <p>规则描述（命中原因说明）</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+type SkillScanUploadData struct {
+	// <p>文件的 SHA256 Hash，用于轮询查询接口</p>
+	ContentHash *string `json:"ContentHash,omitnil,omitempty" name:"ContentHash"`
+
+	// <p>固定为 scanning，表示任务已接收</p>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>可读的操作结果描述</p>
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+}
+
 type SpartaProtectionPort struct {
 	// 分配的服务器id。首次接入的域名和端口该参数填0，已接入的域名和端口分配的id可以通过DescribeDomainDetailsSaas或DescribeDomains接口获取。
 	NginxServerId *uint64 `json:"NginxServerId,omitnil,omitempty" name:"NginxServerId"`
@@ -23311,6 +23850,14 @@ type Tag struct {
 
 }
 
+type TagInfo struct {
+	// <p>标签键</p>
+	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
+
+	// <p>标签值</p>
+	TagValue *string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
+}
+
 type TargetEntity struct {
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -23390,6 +23937,17 @@ type TokenVerifyRule struct {
 
 	// 其他会话有效性校验方式(contains、length、regex)的校验规则
 	GeneralRule *TokenRuleEntry `json:"GeneralRule,omitnil,omitempty" name:"GeneralRule"`
+}
+
+type ToolCallResult struct {
+	// <p>命中规则名称</p>
+	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
+
+	// <p>规则动作</p>
+	Action *string `json:"Action,omitnil,omitempty" name:"Action"`
+
+	// <p>风险等级</p><p>枚举值：</p><ul><li>critical： 严重</li><li>high： 高危    </li><li>medium： 中危    </li><li>low： 低危</li></ul>
+	Severity *string `json:"Severity,omitnil,omitempty" name:"Severity"`
 }
 
 type TopicExtendInfo struct {
@@ -23805,6 +24363,77 @@ func (r *UpdateRateLimitV2Response) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UpdateRateLimitV2Response) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UploadSkillSecScanRequestParams struct {
+	// <p>服务ID</p>
+	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+
+	// <p>zip压缩包base64编码后的数据</p>
+	FileData *string `json:"FileData,omitnil,omitempty" name:"FileData"`
+
+	// <p>skills文件压缩之后的文件名，.zip结尾</p>
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
+}
+
+type UploadSkillSecScanRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>服务ID</p>
+	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+
+	// <p>zip压缩包base64编码后的数据</p>
+	FileData *string `json:"FileData,omitnil,omitempty" name:"FileData"`
+
+	// <p>skills文件压缩之后的文件名，.zip结尾</p>
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
+}
+
+func (r *UploadSkillSecScanRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UploadSkillSecScanRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ServiceId")
+	delete(f, "FileData")
+	delete(f, "FileName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UploadSkillSecScanRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UploadSkillSecScanResponseParams struct {
+	// <p>上传结果</p>
+	Data *SkillScanUploadData `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UploadSkillSecScanResponse struct {
+	*tchttp.BaseResponse
+	Response *UploadSkillSecScanResponseParams `json:"Response"`
+}
+
+func (r *UploadSkillSecScanResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UploadSkillSecScanResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -24382,44 +25011,47 @@ type UpstreamRule struct {
 }
 
 type UserDomainInfo struct {
-	// 用户id
+	// <p>用户id</p>
 	Appid *uint64 `json:"Appid,omitnil,omitempty" name:"Appid"`
 
-	// 域名
+	// <p>域名</p>
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 域名id
+	// <p>域名id</p>
 	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`
 
-	// 实例id
+	// <p>实例id</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 实例名
+	// <p>实例名</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// waf类型
+	// <p>waf类型</p>
 	Edition *string `json:"Edition,omitnil,omitempty" name:"Edition"`
 
-	// 版本
+	// <p>版本</p>
 	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
 
-	// 指定域名访问日志字段的开关
+	// <p>指定域名访问日志字段的开关</p>
 	WriteConfig *string `json:"WriteConfig,omitnil,omitempty" name:"WriteConfig"`
 
-	// 指定域名是否写cls的开关 1:写 0:不写
+	// <p>指定域名是否写cls的开关 1:写 0:不写</p>
 	Cls *uint64 `json:"Cls,omitnil,omitempty" name:"Cls"`
 
-	// 标记是否是混合云接入。hybrid表示混合云接入域名
+	// <p>标记是否是混合云接入。hybrid表示混合云接入域名</p>
 	CloudType *string `json:"CloudType,omitnil,omitempty" name:"CloudType"`
 
-	// 标记clbwaf类型
+	// <p>标记clbwaf类型</p>
 	AlbType *string `json:"AlbType,omitnil,omitempty" name:"AlbType"`
 
-	// BOT开关状态
+	// <p>BOT开关状态</p>
 	BotStatus *int64 `json:"BotStatus,omitnil,omitempty" name:"BotStatus"`
 
-	// API开关状态
+	// <p>API开关状态</p>
 	ApiStatus *int64 `json:"ApiStatus,omitnil,omitempty" name:"ApiStatus"`
+
+	// <p>是否是四层clbwaf域名</p>
+	IsREIP *int64 `json:"IsREIP,omitnil,omitempty" name:"IsREIP"`
 }
 
 type UserSignatureRule struct {

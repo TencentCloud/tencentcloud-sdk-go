@@ -53,6 +53,15 @@ const (
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
 
+	// 查询结束时间晚于当前时间
+	INVALIDPARAMETERVALUE_TIMEFUTURE = "InvalidParameterValue.TimeFuture"
+
+	// 查询时间跨度超过7天
+	INVALIDPARAMETERVALUE_TIMESPANEXCEEDED = "InvalidParameterValue.TimeSpanExceeded"
+
+	// 起始时间早于30天前
+	INVALIDPARAMETERVALUE_TIMETOOEARLY = "InvalidParameterValue.TimeTooEarly"
+
 	// 超过配额限制。
 	LIMITEXCEEDED = "LimitExceeded"
 

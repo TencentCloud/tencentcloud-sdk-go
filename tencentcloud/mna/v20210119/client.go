@@ -661,6 +661,60 @@ func (c *Client) DeleteL3ConnWithContext(ctx context.Context, request *DeleteL3C
     return
 }
 
+func NewDescribeAccessRegionsRequest() (request *DescribeAccessRegionsRequest) {
+    request = &DescribeAccessRegionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mna", APIVersion, "DescribeAccessRegions")
+    
+    
+    return
+}
+
+func NewDescribeAccessRegionsResponse() (response *DescribeAccessRegionsResponse) {
+    response = &DescribeAccessRegionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAccessRegions
+// 查询可接入地域列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeAccessRegions(request *DescribeAccessRegionsRequest) (response *DescribeAccessRegionsResponse, err error) {
+    return c.DescribeAccessRegionsWithContext(context.Background(), request)
+}
+
+// DescribeAccessRegions
+// 查询可接入地域列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeAccessRegionsWithContext(ctx context.Context, request *DescribeAccessRegionsRequest) (response *DescribeAccessRegionsResponse, err error) {
+    if request == nil {
+        request = NewDescribeAccessRegionsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mna", APIVersion, "DescribeAccessRegions")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAccessRegions require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAccessRegionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDownloadActiveDeviceCountRequest() (request *DownloadActiveDeviceCountRequest) {
     request = &DownloadActiveDeviceCountRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1487,6 +1541,62 @@ func (c *Client) GetGroupListWithContext(ctx context.Context, request *GetGroupL
     return
 }
 
+func NewGetHardwareInfoRequest() (request *GetHardwareInfoRequest) {
+    request = &GetHardwareInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mna", APIVersion, "GetHardwareInfo")
+    
+    
+    return
+}
+
+func NewGetHardwareInfoResponse() (response *GetHardwareInfoResponse) {
+    response = &GetHardwareInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetHardwareInfo
+// 获取硬件设备信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED_HARDWARENOTEXIST = "OperationDenied.HardwareNotExist"
+func (c *Client) GetHardwareInfo(request *GetHardwareInfoRequest) (response *GetHardwareInfoResponse, err error) {
+    return c.GetHardwareInfoWithContext(context.Background(), request)
+}
+
+// GetHardwareInfo
+// 获取硬件设备信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED_HARDWARENOTEXIST = "OperationDenied.HardwareNotExist"
+func (c *Client) GetHardwareInfoWithContext(ctx context.Context, request *GetHardwareInfoRequest) (response *GetHardwareInfoResponse, err error) {
+    if request == nil {
+        request = NewGetHardwareInfoRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mna", APIVersion, "GetHardwareInfo")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetHardwareInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetHardwareInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetHardwareListRequest() (request *GetHardwareListRequest) {
     request = &GetHardwareListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1738,6 +1848,9 @@ func NewGetNetMonitorResponse() (response *GetNetMonitorResponse) {
 //  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
 //  INTERNALERROR_NETWORKINFOREQUESTERROR = "InternalError.NetworkInfoRequestError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TIMEFUTURE = "InvalidParameterValue.TimeFuture"
+//  INVALIDPARAMETERVALUE_TIMESPANEXCEEDED = "InvalidParameterValue.TimeSpanExceeded"
+//  INVALIDPARAMETERVALUE_TIMETOOEARLY = "InvalidParameterValue.TimeTooEarly"
 func (c *Client) GetNetMonitor(request *GetNetMonitorRequest) (response *GetNetMonitorResponse, err error) {
     return c.GetNetMonitorWithContext(context.Background(), request)
 }
@@ -1750,6 +1863,9 @@ func (c *Client) GetNetMonitor(request *GetNetMonitorRequest) (response *GetNetM
 //  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
 //  INTERNALERROR_NETWORKINFOREQUESTERROR = "InternalError.NetworkInfoRequestError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TIMEFUTURE = "InvalidParameterValue.TimeFuture"
+//  INVALIDPARAMETERVALUE_TIMESPANEXCEEDED = "InvalidParameterValue.TimeSpanExceeded"
+//  INVALIDPARAMETERVALUE_TIMETOOEARLY = "InvalidParameterValue.TimeTooEarly"
 func (c *Client) GetNetMonitorWithContext(ctx context.Context, request *GetNetMonitorRequest) (response *GetNetMonitorResponse, err error) {
     if request == nil {
         request = NewGetNetMonitorRequest()
@@ -1794,6 +1910,9 @@ func NewGetNetMonitorByNameResponse() (response *GetNetMonitorByNameResponse) {
 //  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
 //  INTERNALERROR_NETWORKINFOREQUESTERROR = "InternalError.NetworkInfoRequestError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TIMEFUTURE = "InvalidParameterValue.TimeFuture"
+//  INVALIDPARAMETERVALUE_TIMESPANEXCEEDED = "InvalidParameterValue.TimeSpanExceeded"
+//  INVALIDPARAMETERVALUE_TIMETOOEARLY = "InvalidParameterValue.TimeTooEarly"
 func (c *Client) GetNetMonitorByName(request *GetNetMonitorByNameRequest) (response *GetNetMonitorByNameResponse, err error) {
     return c.GetNetMonitorByNameWithContext(context.Background(), request)
 }
@@ -1806,6 +1925,9 @@ func (c *Client) GetNetMonitorByName(request *GetNetMonitorByNameRequest) (respo
 //  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
 //  INTERNALERROR_NETWORKINFOREQUESTERROR = "InternalError.NetworkInfoRequestError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TIMEFUTURE = "InvalidParameterValue.TimeFuture"
+//  INVALIDPARAMETERVALUE_TIMESPANEXCEEDED = "InvalidParameterValue.TimeSpanExceeded"
+//  INVALIDPARAMETERVALUE_TIMETOOEARLY = "InvalidParameterValue.TimeTooEarly"
 func (c *Client) GetNetMonitorByNameWithContext(ctx context.Context, request *GetNetMonitorByNameRequest) (response *GetNetMonitorByNameResponse, err error) {
     if request == nil {
         request = NewGetNetMonitorByNameRequest()
@@ -2157,6 +2279,60 @@ func (c *Client) GroupDeleteDeviceWithContext(ctx context.Context, request *Grou
     return
 }
 
+func NewModifyDeviceAccessRegionsRequest() (request *ModifyDeviceAccessRegionsRequest) {
+    request = &ModifyDeviceAccessRegionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mna", APIVersion, "ModifyDeviceAccessRegions")
+    
+    
+    return
+}
+
+func NewModifyDeviceAccessRegionsResponse() (response *ModifyDeviceAccessRegionsResponse) {
+    response = &ModifyDeviceAccessRegionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyDeviceAccessRegions
+// 修改设备接入地域。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) ModifyDeviceAccessRegions(request *ModifyDeviceAccessRegionsRequest) (response *ModifyDeviceAccessRegionsResponse, err error) {
+    return c.ModifyDeviceAccessRegionsWithContext(context.Background(), request)
+}
+
+// ModifyDeviceAccessRegions
+// 修改设备接入地域。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) ModifyDeviceAccessRegionsWithContext(ctx context.Context, request *ModifyDeviceAccessRegionsRequest) (response *ModifyDeviceAccessRegionsResponse, err error) {
+    if request == nil {
+        request = NewModifyDeviceAccessRegionsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mna", APIVersion, "ModifyDeviceAccessRegions")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDeviceAccessRegions require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDeviceAccessRegionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyPackageRenewFlagRequest() (request *ModifyPackageRenewFlagRequest) {
     request = &ModifyPackageRenewFlagRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2383,7 +2559,7 @@ func NewReportOrderResponse() (response *ReportOrderResponse) {
 }
 
 // ReportOrder
-// 用户上报自定义的订单信息，多网聚合加速服务将相关信息进行保存
+// 用户上报自定义的订单信息，多网聚合加速（腾讯云聚通）服务将相关信息进行保存
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_TRANSACTIONEXCEPTION = "FailedOperation.TransactionException"
@@ -2402,7 +2578,7 @@ func (c *Client) ReportOrder(request *ReportOrderRequest) (response *ReportOrder
 }
 
 // ReportOrder
-// 用户上报自定义的订单信息，多网聚合加速服务将相关信息进行保存
+// 用户上报自定义的订单信息，多网聚合加速（腾讯云聚通）服务将相关信息进行保存
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_TRANSACTIONEXCEPTION = "FailedOperation.TransactionException"

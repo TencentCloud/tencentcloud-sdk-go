@@ -2445,6 +2445,60 @@ func (c *Client) DescribeProductSKUListWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribeSharedSubscriptionClientRequest() (request *DescribeSharedSubscriptionClientRequest) {
+    request = &DescribeSharedSubscriptionClientRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mqtt", APIVersion, "DescribeSharedSubscriptionClient")
+    
+    
+    return
+}
+
+func NewDescribeSharedSubscriptionClientResponse() (response *DescribeSharedSubscriptionClientResponse) {
+    response = &DescribeSharedSubscriptionClientResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSharedSubscriptionClient
+// 查询共享订阅组详情信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DescribeSharedSubscriptionClient(request *DescribeSharedSubscriptionClientRequest) (response *DescribeSharedSubscriptionClientResponse, err error) {
+    return c.DescribeSharedSubscriptionClientWithContext(context.Background(), request)
+}
+
+// DescribeSharedSubscriptionClient
+// 查询共享订阅组详情信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DescribeSharedSubscriptionClientWithContext(ctx context.Context, request *DescribeSharedSubscriptionClientRequest) (response *DescribeSharedSubscriptionClientResponse, err error) {
+    if request == nil {
+        request = NewDescribeSharedSubscriptionClientRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "DescribeSharedSubscriptionClient")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSharedSubscriptionClient require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSharedSubscriptionClientResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSharedSubscriptionGroupsRequest() (request *DescribeSharedSubscriptionGroupsRequest) {
     request = &DescribeSharedSubscriptionGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2499,6 +2553,60 @@ func (c *Client) DescribeSharedSubscriptionGroupsWithContext(ctx context.Context
     return
 }
 
+func NewDescribeSharedSubscriptionGroupsWithSubscriptionsRequest() (request *DescribeSharedSubscriptionGroupsWithSubscriptionsRequest) {
+    request = &DescribeSharedSubscriptionGroupsWithSubscriptionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mqtt", APIVersion, "DescribeSharedSubscriptionGroupsWithSubscriptions")
+    
+    
+    return
+}
+
+func NewDescribeSharedSubscriptionGroupsWithSubscriptionsResponse() (response *DescribeSharedSubscriptionGroupsWithSubscriptionsResponse) {
+    response = &DescribeSharedSubscriptionGroupsWithSubscriptionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSharedSubscriptionGroupsWithSubscriptions
+// 查询集群下共享订阅组列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DescribeSharedSubscriptionGroupsWithSubscriptions(request *DescribeSharedSubscriptionGroupsWithSubscriptionsRequest) (response *DescribeSharedSubscriptionGroupsWithSubscriptionsResponse, err error) {
+    return c.DescribeSharedSubscriptionGroupsWithSubscriptionsWithContext(context.Background(), request)
+}
+
+// DescribeSharedSubscriptionGroupsWithSubscriptions
+// 查询集群下共享订阅组列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DescribeSharedSubscriptionGroupsWithSubscriptionsWithContext(ctx context.Context, request *DescribeSharedSubscriptionGroupsWithSubscriptionsRequest) (response *DescribeSharedSubscriptionGroupsWithSubscriptionsResponse, err error) {
+    if request == nil {
+        request = NewDescribeSharedSubscriptionGroupsWithSubscriptionsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "DescribeSharedSubscriptionGroupsWithSubscriptions")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSharedSubscriptionGroupsWithSubscriptions require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSharedSubscriptionGroupsWithSubscriptionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSharedSubscriptionLagRequest() (request *DescribeSharedSubscriptionLagRequest) {
     request = &DescribeSharedSubscriptionLagRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2547,6 +2655,60 @@ func (c *Client) DescribeSharedSubscriptionLagWithContext(ctx context.Context, r
     request.SetContext(ctx)
     
     response = NewDescribeSharedSubscriptionLagResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSharedSubscriptionsRequest() (request *DescribeSharedSubscriptionsRequest) {
+    request = &DescribeSharedSubscriptionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mqtt", APIVersion, "DescribeSharedSubscriptions")
+    
+    
+    return
+}
+
+func NewDescribeSharedSubscriptionsResponse() (response *DescribeSharedSubscriptionsResponse) {
+    response = &DescribeSharedSubscriptionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSharedSubscriptions
+// 查询共享订阅组订阅列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DescribeSharedSubscriptions(request *DescribeSharedSubscriptionsRequest) (response *DescribeSharedSubscriptionsResponse, err error) {
+    return c.DescribeSharedSubscriptionsWithContext(context.Background(), request)
+}
+
+// DescribeSharedSubscriptions
+// 查询共享订阅组订阅列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DescribeSharedSubscriptionsWithContext(ctx context.Context, request *DescribeSharedSubscriptionsRequest) (response *DescribeSharedSubscriptionsResponse, err error) {
+    if request == nil {
+        request = NewDescribeSharedSubscriptionsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "DescribeSharedSubscriptions")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSharedSubscriptions require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSharedSubscriptionsResponse()
     err = c.Send(request, response)
     return
 }
@@ -3355,6 +3517,56 @@ func (c *Client) ModifyUserWithContext(ctx context.Context, request *ModifyUserR
     return
 }
 
+func NewModifyX509ConfigRequest() (request *ModifyX509ConfigRequest) {
+    request = &ModifyX509ConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mqtt", APIVersion, "ModifyX509Config")
+    
+    
+    return
+}
+
+func NewModifyX509ConfigResponse() (response *ModifyX509ConfigResponse) {
+    response = &ModifyX509ConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyX509Config
+// 修改集群X509配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+func (c *Client) ModifyX509Config(request *ModifyX509ConfigRequest) (response *ModifyX509ConfigResponse, err error) {
+    return c.ModifyX509ConfigWithContext(context.Background(), request)
+}
+
+// ModifyX509Config
+// 修改集群X509配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+func (c *Client) ModifyX509ConfigWithContext(ctx context.Context, request *ModifyX509ConfigRequest) (response *ModifyX509ConfigResponse, err error) {
+    if request == nil {
+        request = NewModifyX509ConfigRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "ModifyX509Config")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyX509Config require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyX509ConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewPublishMessageRequest() (request *PublishMessageRequest) {
     request = &PublishMessageRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3378,7 +3590,7 @@ func NewPublishMessageResponse() (response *PublishMessageResponse) {
 // 发布 MQTT 消息到消息主题或客户端
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
 func (c *Client) PublishMessage(request *PublishMessageRequest) (response *PublishMessageResponse, err error) {
     return c.PublishMessageWithContext(context.Background(), request)
 }
@@ -3387,7 +3599,7 @@ func (c *Client) PublishMessage(request *PublishMessageRequest) (response *Publi
 // 发布 MQTT 消息到消息主题或客户端
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
 func (c *Client) PublishMessageWithContext(ctx context.Context, request *PublishMessageRequest) (response *PublishMessageResponse, err error) {
     if request == nil {
         request = NewPublishMessageRequest()

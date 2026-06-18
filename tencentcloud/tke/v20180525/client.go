@@ -1918,6 +1918,8 @@ func NewCreateClusterVirtualNodePoolResponse() (response *CreateClusterVirtualNo
 // 可能返回的错误码:
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  INVALIDPARAMETER_SUBNETALLOCATIONPOLICYCONFLICT = "InvalidParameter.SubnetAllocationPolicyConflict"
+//  INVALIDPARAMETER_SUBNETALLOCATIONPOLICYINVALID = "InvalidParameter.SubnetAllocationPolicyInvalid"
 //  INVALIDPARAMETER_SUBNETINVALIDERROR = "InvalidParameter.SubnetInvalidError"
 //  INVALIDPARAMETER_SUBNETNOTEXIST = "InvalidParameter.SubnetNotExist"
 //  RESOURCEINUSE_SUBNETALREADYEXIST = "ResourceInUse.SubnetAlreadyExist"
@@ -1935,6 +1937,8 @@ func (c *Client) CreateClusterVirtualNodePool(request *CreateClusterVirtualNodeP
 // 可能返回的错误码:
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  INVALIDPARAMETER_SUBNETALLOCATIONPOLICYCONFLICT = "InvalidParameter.SubnetAllocationPolicyConflict"
+//  INVALIDPARAMETER_SUBNETALLOCATIONPOLICYINVALID = "InvalidParameter.SubnetAllocationPolicyInvalid"
 //  INVALIDPARAMETER_SUBNETINVALIDERROR = "InvalidParameter.SubnetInvalidError"
 //  INVALIDPARAMETER_SUBNETNOTEXIST = "InvalidParameter.SubnetNotExist"
 //  RESOURCEINUSE_SUBNETALREADYEXIST = "ResourceInUse.SubnetAlreadyExist"
@@ -5871,6 +5875,10 @@ func NewDescribeAvailableTKEEdgeVersionResponse() (response *DescribeAvailableTK
 }
 
 // DescribeAvailableTKEEdgeVersion
+// edge-dashboard 接口，当前edge产品已完成下线周知，同时edge-dashboard功能已经全部转移至edge-gw，申请将edge-dashboard所有接口先下线
+//
+// 
+//
 // 边缘计算支持版本和k8s版本
 //
 // 可能返回的错误码:
@@ -5889,6 +5897,10 @@ func (c *Client) DescribeAvailableTKEEdgeVersion(request *DescribeAvailableTKEEd
 }
 
 // DescribeAvailableTKEEdgeVersion
+// edge-dashboard 接口，当前edge产品已完成下线周知，同时edge-dashboard功能已经全部转移至edge-gw，申请将edge-dashboard所有接口先下线
+//
+// 
+//
 // 边缘计算支持版本和k8s版本
 //
 // 可能返回的错误码:
@@ -8009,7 +8021,7 @@ func NewDescribeClusterVirtualNodeResponse() (response *DescribeClusterVirtualNo
 }
 
 // DescribeClusterVirtualNode
-// 查看超级节点列表
+// 查看超级节点列表，仅支持TKE标准集群
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_KUBERNETESLISTOPERATIONERROR = "FailedOperation.KubernetesListOperationError"
@@ -8023,7 +8035,7 @@ func (c *Client) DescribeClusterVirtualNode(request *DescribeClusterVirtualNodeR
 }
 
 // DescribeClusterVirtualNode
-// 查看超级节点列表
+// 查看超级节点列表，仅支持TKE标准集群
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_KUBERNETESLISTOPERATIONERROR = "FailedOperation.KubernetesListOperationError"
@@ -8669,6 +8681,10 @@ func NewDescribeEdgeAvailableExtraArgsResponse() (response *DescribeEdgeAvailabl
 }
 
 // DescribeEdgeAvailableExtraArgs
+// edge-dashboard 接口，当前edge产品已完成下线周知，同时edge-dashboard功能已经全部转移至edge-gw，申请将edge-dashboard所有接口先下线
+//
+// 
+//
 // 查询边缘容器集群可用的自定义参数
 //
 // 可能返回的错误码:
@@ -8679,6 +8695,10 @@ func (c *Client) DescribeEdgeAvailableExtraArgs(request *DescribeEdgeAvailableEx
 }
 
 // DescribeEdgeAvailableExtraArgs
+// edge-dashboard 接口，当前edge产品已完成下线周知，同时edge-dashboard功能已经全部转移至edge-gw，申请将edge-dashboard所有接口先下线
+//
+// 
+//
 // 查询边缘容器集群可用的自定义参数
 //
 // 可能返回的错误码:
@@ -12291,6 +12311,10 @@ func NewDescribeTKEEdgeExternalKubeconfigResponse() (response *DescribeTKEEdgeEx
 }
 
 // DescribeTKEEdgeExternalKubeconfig
+// edge-dashboard 接口，当前edge产品已完成下线周知，同时edge-dashboard功能已经全部转移至edge-gw，申请将edge-dashboard所有接口先下线
+//
+// 
+//
 // 获取边缘计算外部访问的kubeconfig
 //
 // 可能返回的错误码:
@@ -12310,6 +12334,10 @@ func (c *Client) DescribeTKEEdgeExternalKubeconfig(request *DescribeTKEEdgeExter
 }
 
 // DescribeTKEEdgeExternalKubeconfig
+// edge-dashboard 接口，当前edge产品已完成下线周知，同时edge-dashboard功能已经全部转移至edge-gw，申请将edge-dashboard所有接口先下线
+//
+// 
+//
 // 获取边缘计算外部访问的kubeconfig
 //
 // 可能返回的错误码:
@@ -12361,6 +12389,10 @@ func NewDescribeTKEEdgeScriptResponse() (response *DescribeTKEEdgeScriptResponse
 }
 
 // DescribeTKEEdgeScript
+// edge-dashboard 接口，当前edge产品已完成下线周知，同时edge-dashboard功能已经全部转移至edge-gw，申请将edge-dashboard所有接口先下线
+//
+// 
+//
 // 获取边缘脚本链接，此接口用于添加第三方节点，通过下载脚本从而将节点添加到边缘集群。
 //
 // 可能返回的错误码:
@@ -12380,6 +12412,10 @@ func (c *Client) DescribeTKEEdgeScript(request *DescribeTKEEdgeScriptRequest) (r
 }
 
 // DescribeTKEEdgeScript
+// edge-dashboard 接口，当前edge产品已完成下线周知，同时edge-dashboard功能已经全部转移至edge-gw，申请将edge-dashboard所有接口先下线
+//
+// 
+//
 // 获取边缘脚本链接，此接口用于添加第三方节点，通过下载脚本从而将节点添加到边缘集群。
 //
 // 可能返回的错误码:

@@ -407,6 +407,148 @@ func (c *Client) AddInstancesWithContext(ctx context.Context, request *AddInstan
     return
 }
 
+func NewAddLibraDBInstancesRequest() (request *AddLibraDBInstancesRequest) {
+    request = &AddLibraDBInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "AddLibraDBInstances")
+    
+    
+    return
+}
+
+func NewAddLibraDBInstancesResponse() (response *AddLibraDBInstancesResponse) {
+    response = &AddLibraDBInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// AddLibraDBInstances
+// 本接口（AddLibraDBInstances）用于集群添加只读分析引擎
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  FAILEDOPERATION_TRADECREATEORDERERROR = "FailedOperation.TradeCreateOrderError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_GETSUBNETFAILED = "InternalError.GetSubnetFailed"
+//  INTERNALERROR_GETVPCFAILED = "InternalError.GetVpcFailed"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_DBTYPENOTFOUND = "InvalidParameterValue.DBTypeNotFound"
+//  INVALIDPARAMETERVALUE_ILLEGALPASSWORD = "InvalidParameterValue.IllegalPassword"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  INVALIDPARAMETERVALUE_INVALIDSPEC = "InvalidParameterValue.InvalidSpec"
+//  INVALIDPARAMETERVALUE_PARAMERROR = "InvalidParameterValue.ParamError"
+//  INVALIDPARAMETERVALUE_REGIONZONEUNAVAILABLE = "InvalidParameterValue.RegionZoneUnavailable"
+//  INVALIDPARAMETERVALUE_SUBNETNOTFOUND = "InvalidParameterValue.SubnetNotFound"
+//  INVALIDPARAMETERVALUE_VPCNOTFOUND = "InvalidParameterValue.VpcNotFound"
+//  LIMITEXCEEDED_USERINSTANCELIMIT = "LimitExceeded.UserInstanceLimit"
+//  OPERATIONDENIED_CLUSTEROPNOTALLOWEDERROR = "OperationDenied.ClusterOpNotAllowedError"
+//  OPERATIONDENIED_CLUSTERSTATUSDENIEDERROR = "OperationDenied.ClusterStatusDeniedError"
+//  OPERATIONDENIED_INSUFFICIENTBALANCEERROR = "OperationDenied.InsufficientBalanceError"
+//  OPERATIONDENIED_USERNOTAUTHENTICATEDERROR = "OperationDenied.UserNotAuthenticatedError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) AddLibraDBInstances(request *AddLibraDBInstancesRequest) (response *AddLibraDBInstancesResponse, err error) {
+    return c.AddLibraDBInstancesWithContext(context.Background(), request)
+}
+
+// AddLibraDBInstances
+// 本接口（AddLibraDBInstances）用于集群添加只读分析引擎
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  FAILEDOPERATION_TRADECREATEORDERERROR = "FailedOperation.TradeCreateOrderError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_GETSUBNETFAILED = "InternalError.GetSubnetFailed"
+//  INTERNALERROR_GETVPCFAILED = "InternalError.GetVpcFailed"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_DBTYPENOTFOUND = "InvalidParameterValue.DBTypeNotFound"
+//  INVALIDPARAMETERVALUE_ILLEGALPASSWORD = "InvalidParameterValue.IllegalPassword"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  INVALIDPARAMETERVALUE_INVALIDSPEC = "InvalidParameterValue.InvalidSpec"
+//  INVALIDPARAMETERVALUE_PARAMERROR = "InvalidParameterValue.ParamError"
+//  INVALIDPARAMETERVALUE_REGIONZONEUNAVAILABLE = "InvalidParameterValue.RegionZoneUnavailable"
+//  INVALIDPARAMETERVALUE_SUBNETNOTFOUND = "InvalidParameterValue.SubnetNotFound"
+//  INVALIDPARAMETERVALUE_VPCNOTFOUND = "InvalidParameterValue.VpcNotFound"
+//  LIMITEXCEEDED_USERINSTANCELIMIT = "LimitExceeded.UserInstanceLimit"
+//  OPERATIONDENIED_CLUSTEROPNOTALLOWEDERROR = "OperationDenied.ClusterOpNotAllowedError"
+//  OPERATIONDENIED_CLUSTERSTATUSDENIEDERROR = "OperationDenied.ClusterStatusDeniedError"
+//  OPERATIONDENIED_INSUFFICIENTBALANCEERROR = "OperationDenied.InsufficientBalanceError"
+//  OPERATIONDENIED_USERNOTAUTHENTICATEDERROR = "OperationDenied.UserNotAuthenticatedError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) AddLibraDBInstancesWithContext(ctx context.Context, request *AddLibraDBInstancesRequest) (response *AddLibraDBInstancesResponse, err error) {
+    if request == nil {
+        request = NewAddLibraDBInstancesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "AddLibraDBInstances")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddLibraDBInstances require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAddLibraDBInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewAddServerlessRoInstancesRequest() (request *AddServerlessRoInstancesRequest) {
+    request = &AddServerlessRoInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "AddServerlessRoInstances")
+    
+    
+    return
+}
+
+func NewAddServerlessRoInstancesResponse() (response *AddServerlessRoInstancesResponse) {
+    response = &AddServerlessRoInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// AddServerlessRoInstances
+// 添加serverless集群只读实例
+//
+// 可能返回的错误码:
+//  OPERATIONDENIED_CAMDENIEDERROR = "OperationDenied.CamDeniedError"
+func (c *Client) AddServerlessRoInstances(request *AddServerlessRoInstancesRequest) (response *AddServerlessRoInstancesResponse, err error) {
+    return c.AddServerlessRoInstancesWithContext(context.Background(), request)
+}
+
+// AddServerlessRoInstances
+// 添加serverless集群只读实例
+//
+// 可能返回的错误码:
+//  OPERATIONDENIED_CAMDENIEDERROR = "OperationDenied.CamDeniedError"
+func (c *Client) AddServerlessRoInstancesWithContext(ctx context.Context, request *AddServerlessRoInstancesRequest) (response *AddServerlessRoInstancesResponse, err error) {
+    if request == nil {
+        request = NewAddServerlessRoInstancesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "AddServerlessRoInstances")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddServerlessRoInstances require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAddServerlessRoInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAssociateSecurityGroupsRequest() (request *AssociateSecurityGroupsRequest) {
     request = &AssociateSecurityGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -597,6 +739,72 @@ func (c *Client) CalculateBackupSaveSecExpiresWithContext(ctx context.Context, r
     request.SetContext(ctx)
     
     response = NewCalculateBackupSaveSecExpiresResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCancelClusterServerlessScalePlanRequest() (request *CancelClusterServerlessScalePlanRequest) {
+    request = &CancelClusterServerlessScalePlanRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "CancelClusterServerlessScalePlan")
+    
+    
+    return
+}
+
+func NewCancelClusterServerlessScalePlanResponse() (response *CancelClusterServerlessScalePlanResponse) {
+    response = &CancelClusterServerlessScalePlanResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CancelClusterServerlessScalePlan
+// 取消Serverless集群的弹性计划
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BINDSOURCEPACKAGEERROR = "FailedOperation.BindSourcePackageError"
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  FAILEDOPERATION_QUERYSOURCEPACKAGEERROR = "FailedOperation.QuerySourcePackageError"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) CancelClusterServerlessScalePlan(request *CancelClusterServerlessScalePlanRequest) (response *CancelClusterServerlessScalePlanResponse, err error) {
+    return c.CancelClusterServerlessScalePlanWithContext(context.Background(), request)
+}
+
+// CancelClusterServerlessScalePlan
+// 取消Serverless集群的弹性计划
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BINDSOURCEPACKAGEERROR = "FailedOperation.BindSourcePackageError"
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  FAILEDOPERATION_QUERYSOURCEPACKAGEERROR = "FailedOperation.QuerySourcePackageError"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) CancelClusterServerlessScalePlanWithContext(ctx context.Context, request *CancelClusterServerlessScalePlanRequest) (response *CancelClusterServerlessScalePlanResponse, err error) {
+    if request == nil {
+        request = NewCancelClusterServerlessScalePlanRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "CancelClusterServerlessScalePlan")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CancelClusterServerlessScalePlan require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCancelClusterServerlessScalePlanResponse()
     err = c.Send(request, response)
     return
 }
@@ -1699,6 +1907,62 @@ func (c *Client) CreateClusterDatabaseWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewCreateClusterDatabaseResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateClusterPeriodScalePolicyRequest() (request *CreateClusterPeriodScalePolicyRequest) {
+    request = &CreateClusterPeriodScalePolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "CreateClusterPeriodScalePolicy")
+    
+    
+    return
+}
+
+func NewCreateClusterPeriodScalePolicyResponse() (response *CreateClusterPeriodScalePolicyResponse) {
+    response = &CreateClusterPeriodScalePolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateClusterPeriodScalePolicy
+// 创建集群的周期弹性策略
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) CreateClusterPeriodScalePolicy(request *CreateClusterPeriodScalePolicyRequest) (response *CreateClusterPeriodScalePolicyResponse, err error) {
+    return c.CreateClusterPeriodScalePolicyWithContext(context.Background(), request)
+}
+
+// CreateClusterPeriodScalePolicy
+// 创建集群的周期弹性策略
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) CreateClusterPeriodScalePolicyWithContext(ctx context.Context, request *CreateClusterPeriodScalePolicyRequest) (response *CreateClusterPeriodScalePolicyResponse, err error) {
+    if request == nil {
+        request = NewCreateClusterPeriodScalePolicyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "CreateClusterPeriodScalePolicy")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateClusterPeriodScalePolicy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateClusterPeriodScalePolicyResponse()
     err = c.Send(request, response)
     return
 }
@@ -2883,6 +3147,64 @@ func (c *Client) DeleteClusterDatabaseWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewDeleteClusterDatabaseResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteClusterPeriodScalePolicyRequest() (request *DeleteClusterPeriodScalePolicyRequest) {
+    request = &DeleteClusterPeriodScalePolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "DeleteClusterPeriodScalePolicy")
+    
+    
+    return
+}
+
+func NewDeleteClusterPeriodScalePolicyResponse() (response *DeleteClusterPeriodScalePolicyResponse) {
+    response = &DeleteClusterPeriodScalePolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteClusterPeriodScalePolicy
+// 删除周期弹性策略
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  OPERATIONDENIED_INSTANCESTATUSDENIEDERROR = "OperationDenied.InstanceStatusDeniedError"
+//  OPERATIONDENIED_SERVERLESSINSTANCESTATUSDENIED = "OperationDenied.ServerlessInstanceStatusDenied"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DeleteClusterPeriodScalePolicy(request *DeleteClusterPeriodScalePolicyRequest) (response *DeleteClusterPeriodScalePolicyResponse, err error) {
+    return c.DeleteClusterPeriodScalePolicyWithContext(context.Background(), request)
+}
+
+// DeleteClusterPeriodScalePolicy
+// 删除周期弹性策略
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  OPERATIONDENIED_INSTANCESTATUSDENIEDERROR = "OperationDenied.InstanceStatusDeniedError"
+//  OPERATIONDENIED_SERVERLESSINSTANCESTATUSDENIED = "OperationDenied.ServerlessInstanceStatusDenied"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DeleteClusterPeriodScalePolicyWithContext(ctx context.Context, request *DeleteClusterPeriodScalePolicyRequest) (response *DeleteClusterPeriodScalePolicyResponse, err error) {
+    if request == nil {
+        request = NewDeleteClusterPeriodScalePolicyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DeleteClusterPeriodScalePolicy")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteClusterPeriodScalePolicy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteClusterPeriodScalePolicyResponse()
     err = c.Send(request, response)
     return
 }
@@ -5225,6 +5547,72 @@ func (c *Client) DescribeClusterPasswordComplexityWithContext(ctx context.Contex
     return
 }
 
+func NewDescribeClusterPeriodScalePolicyRequest() (request *DescribeClusterPeriodScalePolicyRequest) {
+    request = &DescribeClusterPeriodScalePolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeClusterPeriodScalePolicy")
+    
+    
+    return
+}
+
+func NewDescribeClusterPeriodScalePolicyResponse() (response *DescribeClusterPeriodScalePolicyResponse) {
+    response = &DescribeClusterPeriodScalePolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeClusterPeriodScalePolicy
+// 查询集群内所有的周期弹性策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_GETOSSINFOERROR = "FailedOperation.GetOssInfoError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  OPERATIONDENIED_CLUSTEROPNOTALLOWEDERROR = "OperationDenied.ClusterOpNotAllowedError"
+//  OPERATIONDENIED_INSTANCESTATUSDENIEDERROR = "OperationDenied.InstanceStatusDeniedError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  RESOURCEUNAVAILABLE_INSTANCELOCKFAIL = "ResourceUnavailable.InstanceLockFail"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeClusterPeriodScalePolicy(request *DescribeClusterPeriodScalePolicyRequest) (response *DescribeClusterPeriodScalePolicyResponse, err error) {
+    return c.DescribeClusterPeriodScalePolicyWithContext(context.Background(), request)
+}
+
+// DescribeClusterPeriodScalePolicy
+// 查询集群内所有的周期弹性策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_GETOSSINFOERROR = "FailedOperation.GetOssInfoError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  OPERATIONDENIED_CLUSTEROPNOTALLOWEDERROR = "OperationDenied.ClusterOpNotAllowedError"
+//  OPERATIONDENIED_INSTANCESTATUSDENIEDERROR = "OperationDenied.InstanceStatusDeniedError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  RESOURCEUNAVAILABLE_INSTANCELOCKFAIL = "ResourceUnavailable.InstanceLockFail"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeClusterPeriodScalePolicyWithContext(ctx context.Context, request *DescribeClusterPeriodScalePolicyRequest) (response *DescribeClusterPeriodScalePolicyResponse, err error) {
+    if request == nil {
+        request = NewDescribeClusterPeriodScalePolicyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeClusterPeriodScalePolicy")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeClusterPeriodScalePolicy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeClusterPeriodScalePolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeClusterReadOnlyRequest() (request *DescribeClusterReadOnlyRequest) {
     request = &DescribeClusterReadOnlyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5293,6 +5681,78 @@ func (c *Client) DescribeClusterReadOnlyWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewDescribeClusterReadOnlyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeClusterServerlessScalePlansRequest() (request *DescribeClusterServerlessScalePlansRequest) {
+    request = &DescribeClusterServerlessScalePlansRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeClusterServerlessScalePlans")
+    
+    
+    return
+}
+
+func NewDescribeClusterServerlessScalePlansResponse() (response *DescribeClusterServerlessScalePlansResponse) {
+    response = &DescribeClusterServerlessScalePlansResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeClusterServerlessScalePlans
+// 查询Serverless弹性扩容计划
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INSTANCENOTFOUND = "InvalidParameterValue.InstanceNotFound"
+//  OPERATIONDENIED_CLUSTEROPNOTALLOWEDERROR = "OperationDenied.ClusterOpNotAllowedError"
+//  OPERATIONDENIED_SERVERLESSCLUSTERSTATUSDENIED = "OperationDenied.ServerlessClusterStatusDenied"
+//  OPERATIONDENIED_SERVERLESSINSTANCESTATUSDENIED = "OperationDenied.ServerlessInstanceStatusDenied"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeClusterServerlessScalePlans(request *DescribeClusterServerlessScalePlansRequest) (response *DescribeClusterServerlessScalePlansResponse, err error) {
+    return c.DescribeClusterServerlessScalePlansWithContext(context.Background(), request)
+}
+
+// DescribeClusterServerlessScalePlans
+// 查询Serverless弹性扩容计划
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INSTANCENOTFOUND = "InvalidParameterValue.InstanceNotFound"
+//  OPERATIONDENIED_CLUSTEROPNOTALLOWEDERROR = "OperationDenied.ClusterOpNotAllowedError"
+//  OPERATIONDENIED_SERVERLESSCLUSTERSTATUSDENIED = "OperationDenied.ServerlessClusterStatusDenied"
+//  OPERATIONDENIED_SERVERLESSINSTANCESTATUSDENIED = "OperationDenied.ServerlessInstanceStatusDenied"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeClusterServerlessScalePlansWithContext(ctx context.Context, request *DescribeClusterServerlessScalePlansRequest) (response *DescribeClusterServerlessScalePlansResponse, err error) {
+    if request == nil {
+        request = NewDescribeClusterServerlessScalePlansRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeClusterServerlessScalePlans")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeClusterServerlessScalePlans require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeClusterServerlessScalePlansResponse()
     err = c.Send(request, response)
     return
 }
@@ -5831,7 +6291,7 @@ func NewDescribeInstanceSlowQueriesResponse() (response *DescribeInstanceSlowQue
 }
 
 // DescribeInstanceSlowQueries
-// 此接口（DescribeInstanceSlowQueries）用于查询实例慢日志详情。
+// 此接口（DescribeInstanceSlowQueries）用于查询实例慢日志详情。受到平台返回大小限制，当返回结果过大时，可能会对超过限制的内容进行截断。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
@@ -5844,7 +6304,7 @@ func (c *Client) DescribeInstanceSlowQueries(request *DescribeInstanceSlowQuerie
 }
 
 // DescribeInstanceSlowQueries
-// 此接口（DescribeInstanceSlowQueries）用于查询实例慢日志详情。
+// 此接口（DescribeInstanceSlowQueries）用于查询实例慢日志详情。受到平台返回大小限制，当返回结果过大时，可能会对超过限制的内容进行截断。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
@@ -8067,6 +8527,70 @@ func (c *Client) DescribeRollbackTimeRangeWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewDescribeRollbackTimeRangeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSQLExecutionPlanRequest() (request *DescribeSQLExecutionPlanRequest) {
+    request = &DescribeSQLExecutionPlanRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeSQLExecutionPlan")
+    
+    
+    return
+}
+
+func NewDescribeSQLExecutionPlanResponse() (response *DescribeSQLExecutionPlanResponse) {
+    response = &DescribeSQLExecutionPlanResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSQLExecutionPlan
+// 本接口(DescribeSQLExecutionPlan)用于查询执行计划详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INVALIDPARAMETERVALUE_INSTANCENOTFOUND = "InvalidParameterValue.InstanceNotFound"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED_CLUSTEROPNOTALLOWEDERROR = "OperationDenied.ClusterOpNotAllowedError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+//  RESOURCENOTFOUND_RESOURCEERROR = "ResourceNotFound.ResourceError"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeSQLExecutionPlan(request *DescribeSQLExecutionPlanRequest) (response *DescribeSQLExecutionPlanResponse, err error) {
+    return c.DescribeSQLExecutionPlanWithContext(context.Background(), request)
+}
+
+// DescribeSQLExecutionPlan
+// 本接口(DescribeSQLExecutionPlan)用于查询执行计划详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INVALIDPARAMETERVALUE_INSTANCENOTFOUND = "InvalidParameterValue.InstanceNotFound"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED_CLUSTEROPNOTALLOWEDERROR = "OperationDenied.ClusterOpNotAllowedError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+//  RESOURCENOTFOUND_RESOURCEERROR = "ResourceNotFound.ResourceError"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeSQLExecutionPlanWithContext(ctx context.Context, request *DescribeSQLExecutionPlanRequest) (response *DescribeSQLExecutionPlanResponse, err error) {
+    if request == nil {
+        request = NewDescribeSQLExecutionPlanRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeSQLExecutionPlan")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSQLExecutionPlan require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSQLExecutionPlanResponse()
     err = c.Send(request, response)
     return
 }
@@ -10917,6 +11441,70 @@ func (c *Client) ModifyClusterPasswordComplexityWithContext(ctx context.Context,
     return
 }
 
+func NewModifyClusterPeriodScalePolicyRequest() (request *ModifyClusterPeriodScalePolicyRequest) {
+    request = &ModifyClusterPeriodScalePolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "ModifyClusterPeriodScalePolicy")
+    
+    
+    return
+}
+
+func NewModifyClusterPeriodScalePolicyResponse() (response *ModifyClusterPeriodScalePolicyResponse) {
+    response = &ModifyClusterPeriodScalePolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyClusterPeriodScalePolicy
+// 更新集群的周期弹性策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED_SERVERLESSCLUSTERSTATUSDENIED = "OperationDenied.ServerlessClusterStatusDenied"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  RESOURCEUNAVAILABLE_INSTANCELOCKFAIL = "ResourceUnavailable.InstanceLockFail"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) ModifyClusterPeriodScalePolicy(request *ModifyClusterPeriodScalePolicyRequest) (response *ModifyClusterPeriodScalePolicyResponse, err error) {
+    return c.ModifyClusterPeriodScalePolicyWithContext(context.Background(), request)
+}
+
+// ModifyClusterPeriodScalePolicy
+// 更新集群的周期弹性策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED_SERVERLESSCLUSTERSTATUSDENIED = "OperationDenied.ServerlessClusterStatusDenied"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  RESOURCEUNAVAILABLE_INSTANCELOCKFAIL = "ResourceUnavailable.InstanceLockFail"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) ModifyClusterPeriodScalePolicyWithContext(ctx context.Context, request *ModifyClusterPeriodScalePolicyRequest) (response *ModifyClusterPeriodScalePolicyResponse, err error) {
+    if request == nil {
+        request = NewModifyClusterPeriodScalePolicyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "ModifyClusterPeriodScalePolicy")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyClusterPeriodScalePolicy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyClusterPeriodScalePolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyClusterReadOnlyRequest() (request *ModifyClusterReadOnlyRequest) {
     request = &ModifyClusterReadOnlyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -12905,6 +13493,72 @@ func (c *Client) OfflineLibraDBInstanceWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewOfflineLibraDBInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewOpenAIOptimizerRequest() (request *OpenAIOptimizerRequest) {
+    request = &OpenAIOptimizerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "OpenAIOptimizer")
+    
+    
+    return
+}
+
+func NewOpenAIOptimizerResponse() (response *OpenAIOptimizerResponse) {
+    response = &OpenAIOptimizerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// OpenAIOptimizer
+// 本接口(OpenAIOptimizer)用于开启实例的AI优化器开关。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INVALIDPARAMETERVALUE_INSTANCENOTFOUND = "InvalidParameterValue.InstanceNotFound"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED_CLUSTEROPNOTALLOWEDERROR = "OperationDenied.ClusterOpNotAllowedError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+//  RESOURCENOTFOUND_RESOURCEERROR = "ResourceNotFound.ResourceError"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) OpenAIOptimizer(request *OpenAIOptimizerRequest) (response *OpenAIOptimizerResponse, err error) {
+    return c.OpenAIOptimizerWithContext(context.Background(), request)
+}
+
+// OpenAIOptimizer
+// 本接口(OpenAIOptimizer)用于开启实例的AI优化器开关。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INVALIDPARAMETERVALUE_INSTANCENOTFOUND = "InvalidParameterValue.InstanceNotFound"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED_CLUSTEROPNOTALLOWEDERROR = "OperationDenied.ClusterOpNotAllowedError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+//  RESOURCENOTFOUND_RESOURCEERROR = "ResourceNotFound.ResourceError"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) OpenAIOptimizerWithContext(ctx context.Context, request *OpenAIOptimizerRequest) (response *OpenAIOptimizerResponse, err error) {
+    if request == nil {
+        request = NewOpenAIOptimizerRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "OpenAIOptimizer")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("OpenAIOptimizer require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewOpenAIOptimizerResponse()
     err = c.Send(request, response)
     return
 }
