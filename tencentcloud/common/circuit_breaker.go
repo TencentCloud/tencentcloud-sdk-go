@@ -7,15 +7,16 @@ import (
 	"strings"
 	"sync"
 	"time"
+
+	tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
 )
 
 const (
-	defaultBackupEndpoint       = "ap-guangzhou.tencentcloudapi.com"
-	defaultMaxFailNum           = 5
-	defaultMaxFailPercentage    = 75
-	defaultWindowLength         = 1 * 60 * time.Second
-	defaultTimeout              = 60 * time.Second
-	defaultHalfOpenMaxRequests  = 1
+	defaultBackupEndpoint    = "ap-guangzhou.tencentcloudapi.com"
+	defaultMaxFailNum        = 5
+	defaultMaxFailPercentage = 75
+	defaultWindowLength      = 1 * 60 * time.Second
+	defaultTimeout           = 60 * time.Second
 )
 
 var (
@@ -122,14 +123,14 @@ func defaultRegionBreaker() *circuitBreaker {
 		maxFailPercentage: defaultMaxFailPercentage,
 		windowInterval:    defaultWindowLength,
 		timeout:           defaultTimeout,
-		maxRequests:       defaultHalfOpenMaxRequests,
 	}
 	return newRegionBreaker(defaultSet)
 }
 
 // currentState return the current state.
-//  if in StateClosed and now is over expiry time, it will turn to a new generation.
-//  if in StateOpen and now is over expiry time, it will turn to StateHalfOpen
+//
+//	if in StateClosed and now is over expiry time, it will turn to a new generation.
+//	if in StateOpen and now is over expiry time, it will turn to StateHalfOpen
 func (s *circuitBreaker) currentState(now time.Time) (state, uint64) {
 	switch s.state {
 	case StateClosed:
@@ -259,4 +260,37 @@ func renewUrl(oldDomain, region string) string {
 	}
 	newDomain := strings.Join(ss, ".")
 	return newDomain
+}
+
+// isBreakerSuccess decides whether a sendWithSignature result counts as a
+// success for the regional circuit breaker.
+//
+// The breaker tracks region health, not per-call business outcome. So:
+//   - nil err: the request round-tripped and parsed cleanly → region healthy.
+//   - *TencentCloudSDKError with a RequestId: the region answered with a
+//     structured error (e.g. AuthFailure). The user's call failed but the
+//     region is up → success for breaker accounting. The single exception is
+//     "InternalError", which the API uses to signal a region-side fault.
+//   - Anything else (transport errors, locally-fabricated errors with no
+//     RequestId): the region did not answer → failure.
+//
+// This helper exists because of the bug fixed in report/feature_4_bug.md
+// Bug 1, where the previous inline logic defaulted to false and silently
+// classified every successful call as a failure, opening the breaker after
+// 5 successes and routing traffic to the backup endpoint.
+func isBreakerSuccess(err error) bool {
+	if err == nil {
+		return true
+	}
+	e, ok := err.(*tcerr.TencentCloudSDKError)
+	if !ok {
+		return false
+	}
+	if e.GetRequestId() == "" {
+		return false
+	}
+	if e.GetCode() == "InternalError" {
+		return false
+	}
+	return true
 }
