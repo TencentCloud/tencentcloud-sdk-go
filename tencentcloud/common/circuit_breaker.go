@@ -10,11 +10,12 @@ import (
 )
 
 const (
-	defaultBackupEndpoint    = "ap-guangzhou.tencentcloudapi.com"
-	defaultMaxFailNum        = 5
-	defaultMaxFailPercentage = 75
-	defaultWindowLength      = 1 * 60 * time.Second
-	defaultTimeout           = 60 * time.Second
+	defaultBackupEndpoint       = "ap-guangzhou.tencentcloudapi.com"
+	defaultMaxFailNum           = 5
+	defaultMaxFailPercentage    = 75
+	defaultWindowLength         = 1 * 60 * time.Second
+	defaultTimeout              = 60 * time.Second
+	defaultHalfOpenMaxRequests  = 1
 )
 
 var (
@@ -121,6 +122,7 @@ func defaultRegionBreaker() *circuitBreaker {
 		maxFailPercentage: defaultMaxFailPercentage,
 		windowInterval:    defaultWindowLength,
 		timeout:           defaultTimeout,
+		maxRequests:       defaultHalfOpenMaxRequests,
 	}
 	return newRegionBreaker(defaultSet)
 }

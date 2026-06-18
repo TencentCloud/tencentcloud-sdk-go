@@ -16,8 +16,6 @@ import (
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
 )
 
-const defaultHalfOpenMaxRequests = 1
-
 // EndpointFailover manages per-host circuit breakers for endpoint failover.
 type EndpointFailover struct {
 	mu                   sync.Mutex
@@ -55,13 +53,7 @@ func (f *EndpointFailover) breakerFor(host string) *circuitBreaker {
 	if b, ok := f.breakers[host]; ok {
 		return b
 	}
-	b := newRegionBreaker(breakerSetting{
-		maxFailNum:        defaultMaxFailNum,
-		maxFailPercentage: defaultMaxFailPercentage,
-		windowInterval:    defaultWindowLength,
-		timeout:           defaultTimeout,
-		maxRequests:       defaultHalfOpenMaxRequests,
-	})
+	b := defaultRegionBreaker()
 	f.breakers[host] = b
 	return b
 }
