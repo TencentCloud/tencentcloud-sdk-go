@@ -16,242 +16,92 @@ import (
 )
 
 // =====================================================================
-// Pure host classification
+// Domain families — matching Java's Family model
 // =====================================================================
 
-func Test_tldMatchOf_plainCom(t *testing.T) {
-	m := defaultEndpointFailover.tldMatchOf("cvm.tencentcloudapi.com")
-	if m == nil {
-		t.Fatal("expected non-nil match")
-	}
-	if m.familyIdx != 2 || m.tldIdx != 0 || m.fullPrefix != "cvm" {
-		t.Fatalf("got %+v, want familyIdx=2 tldIdx=0 fullPrefix=cvm", m)
-	}
+type family struct {
+	name           string
+	originHost     string
+	firstFailover  string
+	secondFailover string
+	allTldHosts    []string
 }
 
-func Test_tldMatchOf_plainCn(t *testing.T) {
-	m := defaultEndpointFailover.tldMatchOf("cvm.tencentcloudapi.cn")
-	if m == nil || m.tldIdx != 1 {
-		t.Fatalf("got %+v, want tldIdx=1", m)
+var (
+	fNormal = family{
+		name: "Normal", originHost: "cvm.tencentcloudapi.com",
+		firstFailover: "cvm.tencentcloudapi.cn", secondFailover: "cvm.tencentcloudapi.com.cn",
+		allTldHosts: []string{"cvm.tencentcloudapi.com", "cvm.tencentcloudapi.cn", "cvm.tencentcloudapi.com.cn"},
 	}
-}
-
-func Test_tldMatchOf_plainComCn(t *testing.T) {
-	m := defaultEndpointFailover.tldMatchOf("cvm.tencentcloudapi.com.cn")
-	if m == nil || m.tldIdx != 2 {
-		t.Fatalf("got %+v, want tldIdx=2", m)
+	fAI = family{
+		name: "AI", originHost: "hunyuan.ai.tencentcloudapi.com",
+		firstFailover: "hunyuan.ai.tencentcloudapi.cn", secondFailover: "hunyuan.ai.tencentcloudapi.com.cn",
+		allTldHosts: []string{"hunyuan.ai.tencentcloudapi.com", "hunyuan.ai.tencentcloudapi.cn", "hunyuan.ai.tencentcloudapi.com.cn"},
 	}
-}
-
-func Test_tldMatchOf_aiFamily(t *testing.T) {
-	m := defaultEndpointFailover.tldMatchOf("hunyuan.ai.tencentcloudapi.com")
-	if m == nil || m.familyIdx != 0 || m.tldIdx != 0 || m.fullPrefix != "hunyuan" {
-		t.Fatalf("got %+v, want familyIdx=0 tldIdx=0 fullPrefix=hunyuan", m)
+	fInternal = family{
+		name: "Internal", originHost: "cvm.internal.tencentcloudapi.com",
+		firstFailover: "cvm.internal.tencentcloudapi.cn", secondFailover: "cvm.internal.tencentcloudapi.com.cn",
+		allTldHosts: []string{"cvm.internal.tencentcloudapi.com", "cvm.internal.tencentcloudapi.cn", "cvm.internal.tencentcloudapi.com.cn"},
 	}
-}
-
-func Test_tldMatchOf_internalFamily(t *testing.T) {
-	m := defaultEndpointFailover.tldMatchOf("cvm.internal.tencentcloudapi.com")
-	if m == nil || m.familyIdx != 1 || m.fullPrefix != "cvm" {
-		t.Fatalf("got %+v, want familyIdx=1 fullPrefix=cvm", m)
-	}
-}
-
-func Test_tldMatchOf_regionPinned(t *testing.T) {
-	m := defaultEndpointFailover.tldMatchOf("cvm.ap-guangzhou.tencentcloudapi.com")
-	if m == nil {
-		t.Fatal("expected non-nil match for region-pinned host")
-	}
-	// fullPrefix must preserve the region label
-	if m.fullPrefix != "cvm.ap-guangzhou" {
-		t.Fatalf("got fullPrefix=%q, want cvm.ap-guangzhou", m.fullPrefix)
-	}
-	if m.tldIdx != 0 {
-		t.Fatalf("got tldIdx=%d, want 0 (.com)", m.tldIdx)
-	}
-}
-
-func Test_tldMatchOf_unknownHost(t *testing.T) {
-	if m := defaultEndpointFailover.tldMatchOf("example.com"); m != nil {
-		t.Fatalf("expected nil for example.com, got %+v", m)
-	}
-}
-
-func Test_tldMatchOf_emptyHost(t *testing.T) {
-	if m := defaultEndpointFailover.tldMatchOf(""); m != nil {
-		t.Fatalf("expected nil for empty host, got %+v", m)
-	}
-}
-
-func Test_tldMatchOf_woaSuffixIsUnknown(t *testing.T) {
-	if m := defaultEndpointFailover.tldMatchOf("cvm.tencentcloudapi.woa.com"); m != nil {
-		t.Fatalf("expected nil for non-Tencent suffix, got %+v", m)
-	}
-}
-
-func Test_tldMatchOf_doubleDotIsRejected(t *testing.T) {
-	// Malformed hostnames with ".." in the prefix must not match.
-	if m := defaultEndpointFailover.tldMatchOf("cvm..tencentcloudapi.com"); m != nil {
-		t.Fatalf("expected nil for double-dot host, got %+v", m)
-	}
-}
+	families = []family{fNormal, fAI, fInternal}
+)
 
 // =====================================================================
-// Plan generation
-// =====================================================================
-
-func newFailoverEnabledClient() *Client {
-	resetBreakers()
-	cpf := profile.NewClientProfile()
-	cpf.DisableRegionBreaker = false
-	return NewCommonClient(NewCredential("AKIDTEST", "SKTEST"), regions.Guangzhou, cpf)
-}
-
-func Test_candidateFor_backupEndpointOriginAllowed(t *testing.T) {
-	c := newFailoverEnabledClient()
-	c.profile.BackupEndpoint = "ap-guangzhou.tencentcloudapi.com"
-
-	cand := defaultEndpointFailover.candidateFor(c.profile, "cvm.ap-shanghai.tencentcloudapi.com")
-	if cand == nil {
-		t.Fatal("expected origin candidate when breakers are healthy")
-	}
-	if cand.host != "cvm.ap-shanghai.tencentcloudapi.com" {
-		t.Fatalf("got %s, want origin", cand.host)
-	}
-}
-
-func Test_candidateFor_backupEndpointOriginOpenReturnsBackup(t *testing.T) {
-	c := newFailoverEnabledClient()
-	c.profile.BackupEndpoint = "ap-guangzhou.tencentcloudapi.com"
-	tripBreakerForTest(defaultEndpointFailover.breakerFor("cvm.ap-shanghai.tencentcloudapi.com"))
-
-	cand := defaultEndpointFailover.candidateFor(c.profile, "cvm.ap-shanghai.tencentcloudapi.com")
-	if cand == nil {
-		t.Fatal("expected backup candidate when origin breaker is open")
-	}
-	if cand.host != "cvm.ap-guangzhou.tencentcloudapi.com" {
-		t.Fatalf("got %s, want backup", cand.host)
-	}
-}
-
-func Test_candidateFor_plainHostReturnsOrigin(t *testing.T) {
-	c := newFailoverEnabledClient()
-	cand := defaultEndpointFailover.candidateFor(c.profile, "cvm.tencentcloudapi.com")
-	if cand == nil {
-		t.Fatal("expected origin candidate")
-	}
-	if cand.host != "cvm.tencentcloudapi.com" {
-		t.Fatalf("got %s, want cvm.tencentcloudapi.com", cand.host)
-	}
-}
-
-func Test_candidateFor_aiFamilyStaysInFamily(t *testing.T) {
-	c := newFailoverEnabledClient()
-	cand := defaultEndpointFailover.candidateFor(c.profile, "hunyuan.ai.tencentcloudapi.com")
-	if cand == nil {
-		t.Fatal("expected candidate in ai. family")
-	}
-	if !strings.Contains(cand.host, ".ai.") {
-		t.Fatalf("candidate %s leaked outside ai. family", cand.host)
-	}
-}
-
-func Test_candidateFor_internalFamilyStaysInFamily(t *testing.T) {
-	c := newFailoverEnabledClient()
-	cand := defaultEndpointFailover.candidateFor(c.profile, "cvm.internal.tencentcloudapi.com")
-	if cand == nil {
-		t.Fatal("expected candidate in internal. family")
-	}
-	if !strings.Contains(cand.host, ".internal.") {
-		t.Fatalf("candidate %s leaked outside internal. family", cand.host)
-	}
-}
-
-func Test_candidateFor_regionPinnedOrigin(t *testing.T) {
-	c := newFailoverEnabledClient()
-	cand := defaultEndpointFailover.candidateFor(c.profile, "cvm.ap-guangzhou.tencentcloudapi.com")
-	if cand == nil {
-		t.Fatal("expected candidate for region-pinned host")
-	}
-	if cand.host != "cvm.ap-guangzhou.tencentcloudapi.com" {
-		t.Fatalf("got %s, want origin", cand.host)
-	}
-}
-
-func Test_candidateFor_regionPinnedAiFamily(t *testing.T) {
-	c := newFailoverEnabledClient()
-	cand := defaultEndpointFailover.candidateFor(c.profile, "hunyuan.ap-guangzhou.ai.tencentcloudapi.com")
-	if cand == nil {
-		t.Fatal("expected candidate for region-pinned ai host")
-	}
-	if !strings.Contains(cand.host, ".ai.") {
-		t.Fatalf("candidate %s leaked outside ai. family", cand.host)
-	}
-}
-
-func Test_candidateFor_unknownHostReturnsNil(t *testing.T) {
-	c := newFailoverEnabledClient()
-	if cand := defaultEndpointFailover.candidateFor(c.profile, "example.com"); cand != nil {
-		t.Fatalf("unknown host should return nil, got %+v", cand)
-	}
-}
-
-// =====================================================================
-// End-to-end with mock RoundTripper
+// TransportStub — matching Java's TransportStub interceptor
 // =====================================================================
 
 const failoverSuccessResp = `{"Response": {"RequestId": "req-ok"}}`
 
-// scriptedRT is a programmable RoundTripper. Each call pops the next
-// outcome from the queue and either returns a programmed response or fails
-// with a programmed error. Records every request's URL host and the
-// Authorization header for inspection.
-type scriptedRT struct {
+type transportStub struct {
 	mu        sync.Mutex
-	outcomes  []rtOutcome
+	outcomes  []stubOutcome
 	hostsSeen []string
 	authsSeen []string
 }
 
-type rtOutcome struct {
+type stubOutcome struct {
 	err         error
 	code        int
 	body        string
-	contentType string // empty → use default "application/json"
+	contentType string
 }
 
-func (r *scriptedRT) programOk() {
-	r.outcomes = append(r.outcomes, rtOutcome{code: 200, body: failoverSuccessResp})
+func (s *transportStub) programOk() {
+	s.outcomes = append(s.outcomes, stubOutcome{code: 200, body: failoverSuccessResp})
 }
 
-func (r *scriptedRT) programResponse(code int, body string) {
-	r.outcomes = append(r.outcomes, rtOutcome{code: code, body: body})
+func (s *transportStub) programJsonOk(json string) {
+	s.outcomes = append(s.outcomes, stubOutcome{code: 200, body: json, contentType: "application/json"})
 }
 
-func (r *scriptedRT) programResponseWithCt(code int, body, contentType string) {
-	r.outcomes = append(r.outcomes, rtOutcome{code: code, body: body, contentType: contentType})
+func (s *transportStub) programFailure(err error) {
+	s.outcomes = append(s.outcomes, stubOutcome{err: err})
 }
 
-func (r *scriptedRT) programErr(err error) {
-	r.outcomes = append(r.outcomes, rtOutcome{err: err})
+func (s *transportStub) programResponse(code int, body string) {
+	s.outcomes = append(s.outcomes, stubOutcome{code: code, body: body, contentType: "application/json"})
 }
 
-func (r *scriptedRT) RoundTrip(req *http.Request) (*http.Response, error) {
-	r.mu.Lock()
-	defer r.mu.Unlock()
+func (s *transportStub) programResponseWithCt(code int, body, contentType string) {
+	s.outcomes = append(s.outcomes, stubOutcome{code: code, body: body, contentType: contentType})
+}
+
+func (s *transportStub) RoundTrip(req *http.Request) (*http.Response, error) {
+	s.mu.Lock()
+	defer s.mu.Unlock()
 
 	host := req.Host
 	if host == "" {
 		host = req.URL.Host
 	}
-	r.hostsSeen = append(r.hostsSeen, host)
-	r.authsSeen = append(r.authsSeen, req.Header.Get("Authorization"))
+	s.hostsSeen = append(s.hostsSeen, host)
+	s.authsSeen = append(s.authsSeen, req.Header.Get("Authorization"))
 
-	if len(r.outcomes) == 0 {
-		return nil, errors.New("scriptedRT exhausted: no programmed outcome left")
+	if len(s.outcomes) == 0 {
+		return nil, errors.New("transportStub exhausted: no programmed outcome left")
 	}
-	o := r.outcomes[0]
-	r.outcomes = r.outcomes[1:]
+	o := s.outcomes[0]
+	s.outcomes = s.outcomes[1:]
 	if o.err != nil {
 		return nil, o.err
 	}
@@ -271,8 +121,10 @@ func (r *scriptedRT) RoundTrip(req *http.Request) (*http.Response, error) {
 	}, nil
 }
 
-// dnsErr satisfies isBreakerSuccess(false): a non-SDK error has no RequestId
-// so it counts as a breaker failure and triggers the next candidate.
+// =====================================================================
+// Error types for transport failures
+// =====================================================================
+
 type dnsErr struct{ msg string }
 
 func (e dnsErr) Error() string { return e.msg }
@@ -289,8 +141,50 @@ type timeoutErr struct{ msg string }
 
 func (e timeoutErr) Error() string { return e.msg }
 
+// =====================================================================
+// Helpers
+// =====================================================================
+
 func newCvmRequest() *requestWithClientToken {
 	return newTestRequest()
+}
+
+func newClient(f family) *Client {
+	resetBreakers()
+	cpf := profile.NewClientProfile()
+	cpf.DisableRegionBreaker = false
+	cpf.HttpProfile.Endpoint = f.originHost
+	return NewCommonClient(NewCredential("AKIDTEST", "SKTEST"), regions.Guangzhou, cpf)
+}
+
+func installStub(c *Client) *transportStub {
+	s := &transportStub{}
+	c.WithHttpTransport(s)
+	return s
+}
+
+func tripBreakerFor(host string, timeoutMs time.Duration) {
+	b := defaultEndpointFailover.breakerFor(host)
+	tripBreaker(b, timeoutMs)
+}
+
+func tripAllBreakersFor(f family, timeoutMs time.Duration) {
+	for _, h := range f.allTldHosts {
+		tripBreakerFor(h, timeoutMs)
+	}
+}
+
+func tripBreaker(b *circuitBreaker, timeoutMs time.Duration) {
+	b.mu.Lock()
+	b.state = StateOpen
+	b.expiry = time.Now().Add(timeoutMs)
+	b.mu.Unlock()
+}
+
+func resetBreakers() {
+	defaultEndpointFailover.mu.Lock()
+	defaultEndpointFailover.breakers = map[string]*circuitBreaker{}
+	defaultEndpointFailover.mu.Unlock()
 }
 
 func runFailoverClient(rt http.RoundTripper) *Client {
@@ -302,162 +196,869 @@ func runFailoverClient(rt http.RoundTripper) *Client {
 	return c
 }
 
-// DNS miss → error, breaker records failure. Next request picks .cn.
-func Test_failover_dnsMissOnComRecordsFailureNextRequestUsesCn(t *testing.T) {
-	rt := &scriptedRT{}
-	c := runFailoverClient(rt)
+// =====================================================================
+// M1: isKnownTencentCloudHost — host classification
+// =====================================================================
 
-	// 5 failures to open the .com breaker.
-	for i := 0; i < 5; i++ {
-		rt.programErr(dnsErr{"dns miss"})
-		_ = c.Send(newCvmRequest(), tchttp.NewCommonResponse())
+func Test_isKnownTencentCloudHost(t *testing.T) {
+	known := []string{
+		"cvm.tencentcloudapi.com", "cvm.tencentcloudapi.cn", "cvm.tencentcloudapi.com.cn",
+		"cvm.intl.tencentcloudapi.com",
+		"cvm.ap-shanghai.tencentcloudapi.com", "cvm.ap-shanghai.tencentcloudapi.cn", "cvm.ap-shanghai.tencentcloudapi.com.cn",
+		"hunyuan.ai.tencentcloudapi.com", "hunyuan.ai.tencentcloudapi.cn", "hunyuan.ai.tencentcloudapi.com.cn",
+		"hunyuan.ap-guangzhou.ai.tencentcloudapi.com",
+		"cvm.internal.tencentcloudapi.com", "cvm.internal.tencentcloudapi.cn", "cvm.internal.tencentcloudapi.com.cn",
+		"cvm.ap-guangzhou.internal.tencentcloudapi.com",
 	}
-
-	// 6th request: .com open → .cn.
-	rt.programOk()
-	if err := c.Send(newCvmRequest(), tchttp.NewCommonResponse()); err != nil {
-		t.Fatalf("6th request should succeed on .cn: %v", err)
-	}
-	if rt.hostsSeen[5] != "cvm.tencentcloudapi.cn" {
-		t.Fatalf("6th host = %s, want .cn", rt.hostsSeen[5])
-	}
-}
-
-// Cyclic rotation: .cn origin, breaker open → next request picks .com.cn
-func Test_failover_cyclicRotationFromCn(t *testing.T) {
-	resetBreakers()
-	cpf := profile.NewClientProfile()
-	cpf.DisableRegionBreaker = false
-	cpf.HttpProfile.Endpoint = "cvm.tencentcloudapi.cn"
-	c := NewCommonClient(NewCredential("AKIDTEST", "SKTEST"), regions.Guangzhou, cpf)
-
-	tripBreakerForTest(defaultEndpointFailover.breakerFor("cvm.tencentcloudapi.cn"))
-
-	rt := &scriptedRT{}
-	rt.programOk()
-	c.WithHttpTransport(rt)
-
-	if err := c.Send(newCvmRequest(), tchttp.NewCommonResponse()); err != nil {
-		t.Fatalf("expected success on .com.cn: %v", err)
-	}
-	if rt.hostsSeen[0] != "cvm.tencentcloudapi.com.cn" {
-		t.Fatalf("host = %s, want .com.cn", rt.hostsSeen[0])
-	}
-}
-
-// Cyclic rotation: .com.cn origin, breaker open → next request picks .com
-func Test_failover_cyclicRotationFromComCn(t *testing.T) {
-	resetBreakers()
-	cpf := profile.NewClientProfile()
-	cpf.DisableRegionBreaker = false
-	cpf.HttpProfile.Endpoint = "cvm.tencentcloudapi.com.cn"
-	c := NewCommonClient(NewCredential("AKIDTEST", "SKTEST"), regions.Guangzhou, cpf)
-
-	tripBreakerForTest(defaultEndpointFailover.breakerFor("cvm.tencentcloudapi.com.cn"))
-
-	rt := &scriptedRT{}
-	rt.programOk()
-	c.WithHttpTransport(rt)
-
-	if err := c.Send(newCvmRequest(), tchttp.NewCommonResponse()); err != nil {
-		t.Fatalf("expected success on .com: %v", err)
-	}
-	if rt.hostsSeen[0] != "cvm.tencentcloudapi.com" {
-		t.Fatalf("host = %s, want .com", rt.hostsSeen[0])
-	}
-}
-
-// All TLDs fail across successive requests.
-func Test_failover_allTldsFailAcrossRequests(t *testing.T) {
-	rt := &scriptedRT{}
-	rt.programErr(dnsErr{"com fail"})
-	rt.programErr(dnsErr{"cn fail"})
-	rt.programErr(dnsErr{"comcn fail"})
-	c := runFailoverClient(rt)
-
-	// Three requests, each hits a different TLD (cyclic rotation).
-	for i := 0; i < 3; i++ {
-		err := c.Send(newCvmRequest(), tchttp.NewCommonResponse())
-		if err == nil {
-			t.Fatalf("request %d should fail", i)
+	for _, h := range known {
+		if defaultEndpointFailover.tldMatchOf(h) == nil {
+			t.Errorf("expected %q to be known", h)
 		}
 	}
-	if len(rt.hostsSeen) != 3 {
-		t.Fatalf("expected 3 attempts across 3 requests, got %d", len(rt.hostsSeen))
+
+	unknown := []string{
+		"tencentcloudapi.com", "tencentcloudapi.cn", "tencentcloudapi.com.cn",
+		".tencentcloudapi.com", ".foo.tencentcloudapi.com", "foo..tencentcloudapi.com",
+		"example.com", "cvm.tencentcloudapi.woa.com", "proxy.internal", "192.168.0.1",
+	}
+	for _, h := range unknown {
+		if defaultEndpointFailover.tldMatchOf(h) != nil {
+			t.Errorf("expected %q to be unknown", h)
+		}
+	}
+	if defaultEndpointFailover.tldMatchOf("") != nil {
+		t.Error("expected nil for empty host")
 	}
 }
 
-// Business error AuthFailure → no failover, breaker not tripped.
-func Test_failover_businessErrorPropagatesImmediately(t *testing.T) {
-	rt := &scriptedRT{}
-	rt.programResponse(200, `{"Response":{"Error":{"Code":"AuthFailure.SignatureExpire","Message":"expired"},"RequestId":"req-123"}}`)
-	c := runFailoverClient(rt)
+// =====================================================================
+// M2: hostWithTld — utility helpers
+// =====================================================================
 
-	err := c.Send(newCvmRequest(), tchttp.NewCommonResponse())
-	if err == nil {
-		t.Fatal("expected SDK error")
+func Test_hostWithTldBuildsCorrectHosts(t *testing.T) {
+	c := newClient(fNormal)
+
+	// Verify each TLD index via candidateFor on a tripped breaker.
+	tripBreakerFor("cvm.tencentcloudapi.com", time.Hour)
+	cand := defaultEndpointFailover.candidateFor(c.profile, "cvm.tencentcloudapi.com")
+	if cand == nil || cand.host != "cvm.tencentcloudapi.cn" {
+		t.Fatalf("got %v, want .cn", cand)
 	}
-	if len(rt.hostsSeen) != 1 {
-		t.Fatalf("business error must not trigger failover, attempts = %d", len(rt.hostsSeen))
+
+	tripBreakerFor("cvm.tencentcloudapi.cn", time.Hour)
+	cand = defaultEndpointFailover.candidateFor(c.profile, "cvm.tencentcloudapi.com")
+	if cand == nil || cand.host != "cvm.tencentcloudapi.com.cn" {
+		t.Fatalf("got %v, want .com.cn", cand)
 	}
 }
 
-// Non-200 → breaker failure. 5 failures open breaker → next picks .cn.
-func Test_failover_non200RecordsFailureNextRequestUsesCn(t *testing.T) {
-	rt := &scriptedRT{}
-	c := runFailoverClient(rt)
-
-	for i := 0; i < 5; i++ {
-		rt.programResponse(503, `{"Response":{"Error":{}}}`)
-		_ = c.Send(newCvmRequest(), tchttp.NewCommonResponse())
+func Test_hostWithTldFromCnAndComCnOrigins(t *testing.T) {
+	c := newClient(fNormal)
+	c.profile.HttpProfile.Endpoint = "cvm.tencentcloudapi.cn"
+	tripBreakerFor("cvm.tencentcloudapi.cn", time.Hour)
+	cand := defaultEndpointFailover.candidateFor(c.profile, "cvm.tencentcloudapi.cn")
+	if cand == nil || cand.host != "cvm.tencentcloudapi.com.cn" {
+		t.Fatalf("cn origin: got %v, want .com.cn", cand)
 	}
 
-	rt.programOk()
+	c.profile.HttpProfile.Endpoint = "cvm.tencentcloudapi.com.cn"
+	tripBreakerFor("cvm.tencentcloudapi.com.cn", time.Hour)
+	cand = defaultEndpointFailover.candidateFor(c.profile, "cvm.tencentcloudapi.com.cn")
+	if cand == nil || cand.host != "cvm.tencentcloudapi.com" {
+		t.Fatalf("com.cn origin: got %v, want .com", cand)
+	}
+}
+
+func Test_hostWithTldPreservesRegionInPrefix(t *testing.T) {
+	c := newClient(fNormal)
+
+	tripBreakerFor("cvm.ap-guangzhou.tencentcloudapi.com", time.Hour)
+	cand := defaultEndpointFailover.candidateFor(c.profile, "cvm.ap-guangzhou.tencentcloudapi.com")
+	if cand == nil || cand.host != "cvm.ap-guangzhou.tencentcloudapi.cn" {
+		t.Fatalf("got %v, want cvm.ap-guangzhou.tencentcloudapi.cn", cand)
+	}
+}
+
+// =====================================================================
+// M3: Non-TencentCloud host — passthrough
+// =====================================================================
+
+func Test_passthroughNonTencentCloudHost(t *testing.T) {
+	for _, f := range families {
+		c := newClient(f)
+		s := installStub(c)
+		s.programOk()
+
+		if err := c.Send(newCvmRequest(), tchttp.NewCommonResponse()); err != nil {
+			t.Fatalf("%s: unexpected error: %v", f.name, err)
+		}
+		if len(s.hostsSeen) != 1 {
+			t.Fatalf("%s: expected 1 attempt, got %d", f.name, len(s.hostsSeen))
+		}
+		if s.hostsSeen[0] != f.originHost {
+			t.Fatalf("%s: host = %s, want %s", f.name, s.hostsSeen[0], f.originHost)
+		}
+	}
+}
+
+func Test_nonTencentHostDnsMissPropagatesWithoutRetry(t *testing.T) {
+	for _, f := range families {
+		c := newClient(f)
+		s := installStub(c)
+		s.programFailure(dnsErr{"proxy dns miss"})
+
+		err := c.Send(newCvmRequest(), tchttp.NewCommonResponse())
+		if err == nil {
+			t.Fatalf("%s: expected error", f.name)
+		}
+		if len(s.hostsSeen) != 1 {
+			t.Fatalf("%s: expected 1 attempt, got %d", f.name, len(s.hostsSeen))
+		}
+	}
+}
+
+// =====================================================================
+// M4-M6: Failover triggers — IOException types
+// =====================================================================
+
+func Test_failoverOnTransportErrors(t *testing.T) {
+	for _, f := range families {
+		c := newClient(f)
+		s := installStub(c)
+		s.programFailure(dnsErr{"dns miss"})
+
+		err := c.Send(newCvmRequest(), tchttp.NewCommonResponse())
+		if err == nil {
+			t.Fatalf("%s: expected error", f.name)
+		}
+		if len(s.hostsSeen) != 1 {
+			t.Fatalf("%s: expected 1 attempt, got %d", f.name, len(s.hostsSeen))
+		}
+		if s.hostsSeen[0] != f.originHost {
+			t.Fatalf("%s: host = %s, want %s", f.name, s.hostsSeen[0], f.originHost)
+		}
+	}
+}
+
+func Test_failoverOnTlsErrors(t *testing.T) {
+	for _, f := range families {
+		c := newClient(f)
+		s := installStub(c)
+		s.programFailure(tlsErr{"tls fail"})
+
+		err := c.Send(newCvmRequest(), tchttp.NewCommonResponse())
+		if err == nil {
+			t.Fatalf("%s: expected error", f.name)
+		}
+		if len(s.hostsSeen) != 1 {
+			t.Fatalf("%s: expected 1 attempt, got %d", f.name, len(s.hostsSeen))
+		}
+		if s.hostsSeen[0] != f.originHost {
+			t.Fatalf("%s: host = %s, want %s", f.name, s.hostsSeen[0], f.originHost)
+		}
+	}
+}
+
+// =====================================================================
+// M14-M16: Protocol-level failover
+// =====================================================================
+
+func Test_non200ResponseRecordsFailureWithoutRetry(t *testing.T) {
+	for _, f := range families {
+		c := newClient(f)
+		s := installStub(c)
+		s.programResponse(503, `{"Response":{"Error":{}}}`)
+
+		err := c.Send(newCvmRequest(), tchttp.NewCommonResponse())
+		if err == nil {
+			t.Fatalf("%s: expected error", f.name)
+		}
+		if len(s.hostsSeen) != 1 {
+			t.Fatalf("%s: expected 1 attempt, got %d", f.name, len(s.hostsSeen))
+		}
+		if s.hostsSeen[0] != f.originHost {
+			t.Fatalf("%s: host = %s, want %s", f.name, s.hostsSeen[0], f.originHost)
+		}
+	}
+}
+
+func Test_invalidJsonBodyRecordsFailure(t *testing.T) {
+	for _, f := range families {
+		c := newClient(f)
+		s := installStub(c)
+		s.programResponse(200, "not json at all")
+
+		err := c.Send(newCvmRequest(), tchttp.NewCommonResponse())
+		if err == nil {
+			t.Fatalf("%s: expected error", f.name)
+		}
+		if len(s.hostsSeen) != 1 {
+			t.Fatalf("%s: expected 1 attempt, got %d", f.name, len(s.hostsSeen))
+		}
+		if s.hostsSeen[0] != f.originHost {
+			t.Fatalf("%s: host = %s, want %s", f.name, s.hostsSeen[0], f.originHost)
+		}
+	}
+}
+
+func Test_emptyBodyRecordsFailure(t *testing.T) {
+	for _, f := range families {
+		c := newClient(f)
+		s := installStub(c)
+		s.programResponseWithCt(200, "", "application/json")
+
+		err := c.Send(newCvmRequest(), tchttp.NewCommonResponse())
+		if err == nil {
+			t.Fatalf("%s: expected error", f.name)
+		}
+		if len(s.hostsSeen) != 1 {
+			t.Fatalf("%s: expected 1 attempt, got %d", f.name, len(s.hostsSeen))
+		}
+	}
+}
+
+// =====================================================================
+// M16a-M16b: TLD family rotation
+// =====================================================================
+
+func Test_aiFamilyRotationStaysWithinFamily(t *testing.T) {
+	c := newClient(fAI)
+	tripBreakerFor(fAI.originHost, time.Hour)
+	s := installStub(c)
+	s.programOk()
+
 	if err := c.Send(newCvmRequest(), tchttp.NewCommonResponse()); err != nil {
-		t.Fatalf("6th request should succeed on .cn: %v", err)
+		t.Fatalf("expected success: %v", err)
 	}
-	if rt.hostsSeen[5] != "cvm.tencentcloudapi.cn" {
-		t.Fatalf("6th host = %s, want .cn", rt.hostsSeen[5])
+	if len(s.hostsSeen) != 1 {
+		t.Fatalf("expected 1 attempt, got %d", len(s.hostsSeen))
 	}
-}
-
-// Invalid JSON 200: breaker sees 200 → healthy → no failover.
-func Test_failover_invalidJsonDoesNotTriggerFailover(t *testing.T) {
-	rt := &scriptedRT{}
-	rt.programResponse(200, `<html>blocked</html>`)
-	c := runFailoverClient(rt)
-
-	_ = c.Send(newCvmRequest(), tchttp.NewCommonResponse())
-	if len(rt.hostsSeen) != 1 {
-		t.Fatalf("200 = healthy, expected 1 attempt, got %d", len(rt.hostsSeen))
+	if s.hostsSeen[0] != fAI.firstFailover {
+		t.Fatalf("host = %s, want %s", s.hostsSeen[0], fAI.firstFailover)
+	}
+	if !strings.Contains(s.hostsSeen[0], "ai.tencentcloudapi") {
+		t.Fatal("must stay within ai.tencentcloudapi family")
 	}
 }
 
-// Breaker open on .com → next request picks .cn.
-func Test_failover_breakerOpenOnComShortCircuits(t *testing.T) {
+func Test_internalFamilyRotationStaysWithinFamily(t *testing.T) {
+	c := newClient(fInternal)
+	tripBreakerFor(fInternal.originHost, time.Hour)
+	s := installStub(c)
+	s.programOk()
+
+	if err := c.Send(newCvmRequest(), tchttp.NewCommonResponse()); err != nil {
+		t.Fatalf("expected success: %v", err)
+	}
+	if len(s.hostsSeen) != 1 {
+		t.Fatalf("expected 1 attempt, got %d", len(s.hostsSeen))
+	}
+	if s.hostsSeen[0] != fInternal.firstFailover {
+		t.Fatalf("host = %s, want %s", s.hostsSeen[0], fInternal.firstFailover)
+	}
+	if !strings.Contains(s.hostsSeen[0], "internal.tencentcloudapi") {
+		t.Fatal("must stay within internal.tencentcloudapi family")
+	}
+}
+
+func Test_regionPinnedHostFailoverPreservesPrefix(t *testing.T) {
 	cpf := profile.NewClientProfile()
 	cpf.DisableRegionBreaker = false
+	cpf.HttpProfile.Endpoint = "cvm.ap-guangzhou.tencentcloudapi.com"
 	c := NewCommonClient(NewCredential("AKIDTEST", "SKTEST"), regions.Guangzhou, cpf)
-	rt := &scriptedRT{}
-	c.WithHttpTransport(rt)
+	tripBreakerFor("cvm.ap-guangzhou.tencentcloudapi.com", time.Hour)
+	s := installStub(c)
+	s.programOk()
 
-	tripBreakerForTest(defaultEndpointFailover.breakerFor("cvm.tencentcloudapi.com"))
-
-	rt.programOk()
 	if err := c.Send(newCvmRequest(), tchttp.NewCommonResponse()); err != nil {
-		t.Fatalf("expected success on .cn: %v", err)
+		t.Fatalf("expected success: %v", err)
 	}
-	if len(rt.hostsSeen) != 1 {
-		t.Fatalf("expected 1 attempt, got %d", len(rt.hostsSeen))
+	if len(s.hostsSeen) != 1 {
+		t.Fatalf("expected 1 attempt, got %d", len(s.hostsSeen))
 	}
-	if rt.hostsSeen[0] != "cvm.tencentcloudapi.cn" {
-		t.Fatalf("host = %s, want .cn", rt.hostsSeen[0])
+	if s.hostsSeen[0] != "cvm.ap-guangzhou.tencentcloudapi.cn" {
+		t.Fatalf("host = %s, want cvm.ap-guangzhou.tencentcloudapi.cn", s.hostsSeen[0])
+	}
+	if !strings.HasPrefix(s.hostsSeen[0], "cvm.ap-guangzhou.") {
+		t.Fatal("region prefix must be preserved")
 	}
 }
 
-// Happy path: single request, single attempt.
-func Test_failover_happyPathOneAttempt(t *testing.T) {
-	rt := &scriptedRT{}
+// =====================================================================
+// M17: API response delivered after failover
+// =====================================================================
+
+func Test_apiResponseDeliveredAfterFailover(t *testing.T) {
+	for _, f := range families {
+		c := newClient(f)
+		tripBreakerFor(f.originHost, time.Hour)
+		s := installStub(c)
+		s.programJsonOk(`{"Response":{"TotalCount":42,"InstanceSet":[],"RequestId":"req-xyz"}}`)
+
+		resp := tchttp.NewCommonResponse()
+		if err := c.Send(newCvmRequest(), resp); err != nil {
+			t.Fatalf("%s: expected success: %v", f.name, err)
+		}
+		if len(s.hostsSeen) != 1 {
+			t.Fatalf("%s: expected 1 attempt, got %d", f.name, len(s.hostsSeen))
+		}
+		if s.hostsSeen[0] != f.firstFailover {
+			t.Fatalf("%s: host = %s, want %s", f.name, s.hostsSeen[0], f.firstFailover)
+		}
+	}
+}
+
+// =====================================================================
+// M18: Sustained failure opens breaker
+// =====================================================================
+
+func Test_breakerOpensAfterSustainedFailure(t *testing.T) {
+	for _, f := range families {
+		c := newClient(f)
+		s := installStub(c)
+
+		for i := 0; i < 5; i++ {
+			s.programFailure(dnsErr{"fail"})
+			err := c.Send(newCvmRequest(), tchttp.NewCommonResponse())
+			if err == nil {
+				t.Fatalf("%s: expected error on iteration %d", f.name, i)
+			}
+		}
+		if len(s.hostsSeen) != 5 {
+			t.Fatalf("%s: expected 5 attempts, got %d", f.name, len(s.hostsSeen))
+		}
+
+		// Origin breaker should be Open.
+		if _, err := defaultEndpointFailover.breakerFor(f.originHost).beforeRequest(); err == nil {
+			t.Fatalf("%s: origin breaker should be Open", f.name)
+		}
+
+		// Next request short-circuits origin, goes to first failover.
+		s.hostsSeen = nil
+		s.programOk()
+		if err := c.Send(newCvmRequest(), tchttp.NewCommonResponse()); err != nil {
+			t.Fatalf("%s: expected success: %v", f.name, err)
+		}
+		if len(s.hostsSeen) != 1 {
+			t.Fatalf("%s: expected 1 attempt, got %d", f.name, len(s.hostsSeen))
+		}
+		if s.hostsSeen[0] != f.firstFailover {
+			t.Fatalf("%s: host = %s, want %s", f.name, s.hostsSeen[0], f.firstFailover)
+		}
+	}
+}
+
+// =====================================================================
+// M19: Open breaker short-circuits host
+// =====================================================================
+
+func Test_openBreakerShortCircuitsHost(t *testing.T) {
+	for _, f := range families {
+		c := newClient(f)
+		tripBreakerFor(f.originHost, time.Hour)
+		s := installStub(c)
+		s.programOk()
+
+		if err := c.Send(newCvmRequest(), tchttp.NewCommonResponse()); err != nil {
+			t.Fatalf("%s: expected success: %v", f.name, err)
+		}
+		if len(s.hostsSeen) != 1 {
+			t.Fatalf("%s: expected 1 attempt, got %d", f.name, len(s.hostsSeen))
+		}
+		if s.hostsSeen[0] != f.firstFailover {
+			t.Fatalf("%s: should skip origin, hit %s, got %s", f.name, f.firstFailover, s.hostsSeen[0])
+		}
+	}
+}
+
+// =====================================================================
+// M20: Open → HalfOpen after cooldown
+// =====================================================================
+
+func Test_breakerTransitionsOpenToHalfOpenAfterCooldown(t *testing.T) {
+	shortTimeout := 100 * time.Millisecond
+	for _, f := range families {
+		resetBreakers()
+		b := defaultEndpointFailover.breakerFor(f.originHost)
+		b.mu.Lock()
+		b.state = StateOpen
+		b.expiry = time.Now().Add(shortTimeout)
+		b.mu.Unlock()
+
+		if _, err := b.beforeRequest(); err == nil {
+			t.Fatalf("%s: breaker should be Open", f.name)
+		}
+
+		time.Sleep(shortTimeout + 50*time.Millisecond)
+		if _, err := b.beforeRequest(); err != nil {
+			t.Fatalf("%s: should permit HalfOpen probe: %v", f.name, err)
+		}
+	}
+}
+
+// =====================================================================
+// M21: HalfOpen probe success → Closed
+// =====================================================================
+
+func Test_breakerReClosesAfterHalfOpenSuccess(t *testing.T) {
+	shortTimeout := 100 * time.Millisecond
+	for _, f := range families {
+		resetBreakers()
+		c := newClient(f)
+		b := defaultEndpointFailover.breakerFor(f.originHost)
+		b.mu.Lock()
+		b.state = StateOpen
+		b.expiry = time.Now().Add(shortTimeout)
+		b.mu.Unlock()
+
+		time.Sleep(shortTimeout + 50*time.Millisecond)
+
+		s := installStub(c)
+		s.programOk()
+		if err := c.Send(newCvmRequest(), tchttp.NewCommonResponse()); err != nil {
+			t.Fatalf("%s: expected success: %v", f.name, err)
+		}
+		if len(s.hostsSeen) != 1 {
+			t.Fatalf("%s: expected 1 attempt, got %d", f.name, len(s.hostsSeen))
+		}
+		if s.hostsSeen[0] != f.originHost {
+			t.Fatalf("%s: host = %s, want %s", f.name, s.hostsSeen[0], f.originHost)
+		}
+
+		// Should be Closed now.
+		for i := 0; i < 10; i++ {
+			if _, err := b.beforeRequest(); err != nil {
+				t.Fatalf("%s: should be Closed after HalfOpen success: %v", f.name, err)
+			}
+		}
+	}
+}
+
+// =====================================================================
+// M22: HalfOpen probe failure → re-Open
+// =====================================================================
+
+func Test_breakerReOpensWhenHalfOpenProbeFails(t *testing.T) {
+	shortTimeout := 100 * time.Millisecond
+	for _, f := range families {
+		resetBreakers()
+		c := newClient(f)
+		b := defaultEndpointFailover.breakerFor(f.originHost)
+		b.mu.Lock()
+		b.state = StateOpen
+		b.expiry = time.Now().Add(shortTimeout)
+		b.mu.Unlock()
+
+		time.Sleep(shortTimeout + 50*time.Millisecond)
+
+		s := installStub(c)
+		s.programFailure(dnsErr{"still down"})
+		err := c.Send(newCvmRequest(), tchttp.NewCommonResponse())
+		if err == nil {
+			t.Fatalf("%s: expected error", f.name)
+		}
+		if len(s.hostsSeen) != 1 {
+			t.Fatalf("%s: expected 1 attempt, got %d", f.name, len(s.hostsSeen))
+		}
+		if s.hostsSeen[0] != f.originHost {
+			t.Fatalf("%s: host = %s, want %s", f.name, s.hostsSeen[0], f.originHost)
+		}
+
+		if _, err := b.beforeRequest(); err == nil {
+			t.Fatalf("%s: should re-Open after HalfOpen failure", f.name)
+		}
+
+		// Next request short-circuits origin again.
+		s.hostsSeen = nil
+		s.programOk()
+		if err := c.Send(newCvmRequest(), tchttp.NewCommonResponse()); err != nil {
+			t.Fatalf("%s: expected success: %v", f.name, err)
+		}
+		if len(s.hostsSeen) != 1 {
+			t.Fatalf("%s: expected 1 attempt, got %d", f.name, len(s.hostsSeen))
+		}
+		if s.hostsSeen[0] != f.firstFailover {
+			t.Fatalf("%s: host = %s, want %s", f.name, s.hostsSeen[0], f.firstFailover)
+		}
+	}
+}
+
+// =====================================================================
+// M23: All breakers open → fallback to origin host
+// =====================================================================
+
+func Test_allBreakersOpenFallsBackToOriginHost(t *testing.T) {
+	for _, f := range families {
+		c := newClient(f)
+		tripAllBreakersFor(f, time.Hour)
+		s := installStub(c)
+		s.programOk()
+
+		if err := c.Send(newCvmRequest(), tchttp.NewCommonResponse()); err != nil {
+			t.Fatalf("%s: expected success: %v", f.name, err)
+		}
+		if len(s.hostsSeen) != 1 {
+			t.Fatalf("%s: expected 1 attempt, got %d", f.name, len(s.hostsSeen))
+		}
+		if s.hostsSeen[0] != f.originHost {
+			t.Fatalf("%s: host = %s, want %s", f.name, s.hostsSeen[0], f.originHost)
+		}
+	}
+}
+
+// =====================================================================
+// M24: One transport attempt per request
+// =====================================================================
+
+func Test_endpointFailureSurfacesAttemptFailure(t *testing.T) {
+	for _, f := range families {
+		c := newClient(f)
+		s := installStub(c)
+		s.programFailure(dnsErr{"dns miss " + f.name})
+
+		err := c.Send(newCvmRequest(), tchttp.NewCommonResponse())
+		if err == nil {
+			t.Fatalf("%s: expected error", f.name)
+		}
+		if !strings.Contains(err.Error(), "dns miss") {
+			t.Fatalf("%s: error should contain failure message, got: %v", f.name, err)
+		}
+		if len(s.hostsSeen) != 1 {
+			t.Fatalf("%s: expected 1 attempt, got %d", f.name, len(s.hostsSeen))
+		}
+	}
+}
+
+// =====================================================================
+// M25: Failure preserves original exception type
+// =====================================================================
+
+func Test_failurePreservesAttemptCauseType(t *testing.T) {
+	for _, f := range families {
+		c := newClient(f)
+		s := installStub(c)
+		s.programFailure(connectErr{"connect fail " + f.name})
+
+		err := c.Send(newCvmRequest(), tchttp.NewCommonResponse())
+		if err == nil {
+			t.Fatalf("%s: expected error", f.name)
+		}
+		if len(s.hostsSeen) != 1 {
+			t.Fatalf("%s: expected 1 attempt, got %d", f.name, len(s.hostsSeen))
+		}
+		if s.hostsSeen[0] != f.originHost {
+			t.Fatalf("%s: host = %s, want %s", f.name, s.hostsSeen[0], f.originHost)
+		}
+	}
+}
+
+// =====================================================================
+// M26: Breaker skip mixed with real failure
+// =====================================================================
+
+func Test_failureMixesPriorBreakerSkipsWithRealFailure(t *testing.T) {
+	for _, f := range families {
+		c := newClient(f)
+		tripBreakerFor(f.originHost, time.Hour)
+		s := installStub(c)
+		s.programFailure(tlsErr{"tls fail"})
+
+		err := c.Send(newCvmRequest(), tchttp.NewCommonResponse())
+		if err == nil {
+			t.Fatalf("%s: expected error", f.name)
+		}
+		if len(s.hostsSeen) != 1 {
+			t.Fatalf("%s: expected 1 attempt, got %d", f.name, len(s.hostsSeen))
+		}
+		if s.hostsSeen[0] != f.firstFailover {
+			t.Fatalf("%s: origin skipped, should hit %s, got %s", f.name, f.firstFailover, s.hostsSeen[0])
+		}
+	}
+}
+
+// =====================================================================
+// M27: Failure does not pollute next request
+// =====================================================================
+
+func Test_failoverDoesNotPolluteNextRequest(t *testing.T) {
+	for _, f := range families {
+		c := newClient(f)
+		s := installStub(c)
+
+		s.programFailure(dnsErr{"run1 " + f.name})
+		_ = c.Send(newCvmRequest(), tchttp.NewCommonResponse())
+		s.hostsSeen = nil
+
+		s.programFailure(dnsErr{"run2 " + f.name})
+		err := c.Send(newCvmRequest(), tchttp.NewCommonResponse())
+		if err == nil {
+			t.Fatalf("%s: expected error", f.name)
+		}
+		msg := err.Error()
+		if !strings.Contains(msg, "run2") {
+			t.Fatalf("%s: error should contain run2, got: %v", f.name, msg)
+		}
+		if strings.Contains(msg, "run1") {
+			t.Fatalf("%s: error should not contain run1, got: %v", f.name, msg)
+		}
+	}
+}
+
+// =====================================================================
+// M28: Breaker state isolated across origin hosts
+// =====================================================================
+
+func Test_breakerStateIsolatedAcrossOriginHosts(t *testing.T) {
+	pairs := [][2]family{{fNormal, fAI}, {fNormal, fInternal}}
+	for _, pair := range pairs {
+		a, b := pair[0], pair[1]
+
+		_ = newClient(a)
+		tripBreakerFor(a.originHost, time.Hour)
+
+		cB := newClient(b)
+		sB := installStub(cB)
+		sB.programOk()
+		if err := cB.Send(newCvmRequest(), tchttp.NewCommonResponse()); err != nil {
+			t.Fatalf("%s should be unaffected by %s: %v", b.name, a.name, err)
+		}
+		if len(sB.hostsSeen) != 1 {
+			t.Fatalf("%s: expected 1 attempt, got %d", b.name, len(sB.hostsSeen))
+		}
+		if sB.hostsSeen[0] != b.originHost {
+			t.Fatalf("%s: host = %s, want %s", b.name, sB.hostsSeen[0], b.originHost)
+		}
+	}
+}
+
+// =====================================================================
+// M35: SSE — no failover
+// =====================================================================
+
+func Test_sseStreamResponseIsNotJsonValidated(t *testing.T) {
+	for _, f := range families {
+		c := newClient(f)
+		s := installStub(c)
+		s.programResponseWithCt(200, "data: hello\n\n", "text/event-stream")
+
+		_ = c.Send(newCvmRequest(), tchttp.NewCommonResponse())
+		if len(s.hostsSeen) != 1 {
+			t.Fatalf("%s: expected 1 attempt, got %d", f.name, len(s.hostsSeen))
+		}
+	}
+}
+
+// =====================================================================
+// M36: No Content-Type — no failover
+// =====================================================================
+
+func Test_responseWithoutContentTypeIsNotJsonValidated(t *testing.T) {
+	for _, f := range families {
+		c := newClient(f)
+		s := installStub(c)
+		s.programResponseWithCt(200, "<html>oops</html>", "none")
+
+		_ = c.Send(newCvmRequest(), tchttp.NewCommonResponse())
+		if len(s.hostsSeen) != 1 {
+			t.Fatalf("%s: expected 1 attempt, got %d", f.name, len(s.hostsSeen))
+		}
+	}
+}
+
+// =====================================================================
+// M37: 200 + JSON business error — no failover
+// =====================================================================
+
+func Test_businessSdkErrorDoesNotTriggerFailover(t *testing.T) {
+	for _, f := range families {
+		c := newClient(f)
+		s := installStub(c)
+		s.programJsonOk(`{"Response":{"RequestId":"req-bad","Error":{"Code":"AuthFailure.SignatureFailure","Message":"signature wrong"}}}`)
+
+		err := c.Send(newCvmRequest(), tchttp.NewCommonResponse())
+		if err == nil {
+			t.Fatalf("%s: expected business SDK error", f.name)
+		}
+		if len(s.hostsSeen) != 1 {
+			t.Fatalf("%s: expected 1 attempt, got %d", f.name, len(s.hostsSeen))
+		}
+	}
+}
+
+// =====================================================================
+// M38: backupEndpoint failover behavior
+// =====================================================================
+
+func Test_backupEndpointFailover(t *testing.T) {
+	for _, f := range families {
+		resetBreakers()
+		cpf := profile.NewClientProfile()
+		cpf.DisableRegionBreaker = false
+		cpf.HttpProfile.Endpoint = f.originHost
+		cpf.BackupEndpoint = "backup.example.com"
+		c := NewCommonClient(NewCredential("AKIDTEST", "SKTEST"), regions.Guangzhou, cpf)
+		s := installStub(c)
+
+		// Origin succeeds.
+		s.programOk()
+		if err := c.Send(newCvmRequest(), tchttp.NewCommonResponse()); err != nil {
+			t.Fatalf("%s origin: expected success: %v", f.name, err)
+		}
+		if len(s.hostsSeen) != 1 {
+			t.Fatalf("%s origin: expected 1 attempt, got %d", f.name, len(s.hostsSeen))
+		}
+		if s.hostsSeen[0] != f.originHost {
+			t.Fatalf("%s origin: host = %s, want %s", f.name, s.hostsSeen[0], f.originHost)
+		}
+
+		// Trip origin breaker, backup should be used.
+		tripBreakerFor(f.originHost, time.Hour)
+		s.hostsSeen = nil
+		s.programOk()
+		if err := c.Send(newCvmRequest(), tchttp.NewCommonResponse()); err != nil {
+			t.Fatalf("%s backup: expected success: %v", f.name, err)
+		}
+		if len(s.hostsSeen) != 1 {
+			t.Fatalf("%s backup: expected 1 attempt, got %d", f.name, len(s.hostsSeen))
+		}
+		servicePrefix := f.originHost[:strings.IndexByte(f.originHost, '.')]
+		backupHost := servicePrefix + ".backup.example.com"
+		if s.hostsSeen[0] != backupHost {
+			t.Fatalf("%s backup: host = %s, want %s", f.name, s.hostsSeen[0], backupHost)
+		}
+	}
+}
+
+// =====================================================================
+// M38a-M38d: backupEndpoint detail scenarios
+// =====================================================================
+
+func Test_backupEndpointOriginDnsMissDoesNotRetrySameRequest(t *testing.T) {
+	for _, f := range families {
+		resetBreakers()
+		cpf := profile.NewClientProfile()
+		cpf.DisableRegionBreaker = false
+		cpf.HttpProfile.Endpoint = f.originHost
+		cpf.BackupEndpoint = "backup.example.com"
+		c := NewCommonClient(NewCredential("AKIDTEST", "SKTEST"), regions.Guangzhou, cpf)
+		s := installStub(c)
+		s.programFailure(dnsErr{"origin dns miss"})
+
+		err := c.Send(newCvmRequest(), tchttp.NewCommonResponse())
+		if err == nil {
+			t.Fatalf("%s: expected error", f.name)
+		}
+		if len(s.hostsSeen) != 1 {
+			t.Fatalf("%s: no same-request retry to backup, got %d attempts", f.name, len(s.hostsSeen))
+		}
+		if s.hostsSeen[0] != f.originHost {
+			t.Fatalf("%s: host = %s, want %s", f.name, s.hostsSeen[0], f.originHost)
+		}
+	}
+}
+
+func Test_backupEndpointNonFailoverErrorPropagates(t *testing.T) {
+	for _, f := range families {
+		resetBreakers()
+		cpf := profile.NewClientProfile()
+		cpf.DisableRegionBreaker = false
+		cpf.HttpProfile.Endpoint = f.originHost
+		cpf.BackupEndpoint = "backup.example.com"
+		c := NewCommonClient(NewCredential("AKIDTEST", "SKTEST"), regions.Guangzhou, cpf)
+		s := installStub(c)
+		s.programFailure(errors.New("generic I/O error"))
+
+		err := c.Send(newCvmRequest(), tchttp.NewCommonResponse())
+		if err == nil {
+			t.Fatalf("%s: expected error", f.name)
+		}
+		if len(s.hostsSeen) != 1 {
+			t.Fatalf("%s: expected 1 attempt, got %d", f.name, len(s.hostsSeen))
+		}
+		if s.hostsSeen[0] != f.originHost {
+			t.Fatalf("%s: host = %s, want %s", f.name, s.hostsSeen[0], f.originHost)
+		}
+	}
+}
+
+func Test_noBackupEndpointDnsMissDoesNotRetrySameRequest(t *testing.T) {
+	for _, f := range families {
+		c := newClient(f)
+		s := installStub(c)
+		s.programFailure(dnsErr{"dns miss"})
+
+		err := c.Send(newCvmRequest(), tchttp.NewCommonResponse())
+		if err == nil {
+			t.Fatalf("%s: expected error", f.name)
+		}
+		if len(s.hostsSeen) != 1 {
+			t.Fatalf("%s: no same-request retry, got %d attempts", f.name, len(s.hostsSeen))
+		}
+		if s.hostsSeen[0] != f.originHost {
+			t.Fatalf("%s: host = %s, want %s", f.name, s.hostsSeen[0], f.originHost)
+		}
+	}
+}
+
+// =====================================================================
+// Endpoint eligibility
+// =====================================================================
+
+func Test_cnOriginIsEligibleForFailover(t *testing.T) {
+	for _, f := range families {
+		c := newClient(f)
+		s := installStub(c)
+		s.programFailure(dnsErr{"cn dns miss"})
+
+		err := c.Send(newCvmRequest(), tchttp.NewCommonResponse())
+		if err == nil {
+			t.Fatalf("%s: expected error", f.name)
+		}
+		if len(s.hostsSeen) != 1 {
+			t.Fatalf("%s: expected 1 attempt, got %d", f.name, len(s.hostsSeen))
+		}
+		if s.hostsSeen[0] != f.originHost {
+			t.Fatalf("%s: host = %s, want %s", f.name, s.hostsSeen[0], f.originHost)
+		}
+	}
+}
+
+func Test_regionPinnedHostIsEligibleForFailover(t *testing.T) {
+	regionFamilies := []family{
+		{name: "Normal-R", originHost: "cvm.ap-guangzhou.tencentcloudapi.com",
+			firstFailover: "cvm.ap-guangzhou.tencentcloudapi.cn", secondFailover: "cvm.ap-guangzhou.tencentcloudapi.com.cn",
+			allTldHosts: []string{"cvm.ap-guangzhou.tencentcloudapi.com", "cvm.ap-guangzhou.tencentcloudapi.cn", "cvm.ap-guangzhou.tencentcloudapi.com.cn"}},
+		{name: "AI-R", originHost: "hunyuan.ap-guangzhou.ai.tencentcloudapi.com",
+			firstFailover: "hunyuan.ap-guangzhou.ai.tencentcloudapi.cn", secondFailover: "hunyuan.ap-guangzhou.ai.tencentcloudapi.com.cn",
+			allTldHosts: []string{"hunyuan.ap-guangzhou.ai.tencentcloudapi.com", "hunyuan.ap-guangzhou.ai.tencentcloudapi.cn", "hunyuan.ap-guangzhou.ai.tencentcloudapi.com.cn"}},
+		{name: "Internal-R", originHost: "cvm.ap-guangzhou.internal.tencentcloudapi.com",
+			firstFailover: "cvm.ap-guangzhou.internal.tencentcloudapi.cn", secondFailover: "cvm.ap-guangzhou.internal.tencentcloudapi.com.cn",
+			allTldHosts: []string{"cvm.ap-guangzhou.internal.tencentcloudapi.com", "cvm.ap-guangzhou.internal.tencentcloudapi.cn", "cvm.ap-guangzhou.internal.tencentcloudapi.com.cn"}},
+	}
+	for _, f := range regionFamilies {
+		c := newClient(f)
+		s := installStub(c)
+		s.programFailure(dnsErr{"region dns miss"})
+
+		err := c.Send(newCvmRequest(), tchttp.NewCommonResponse())
+		if err == nil {
+			t.Fatalf("%s: expected error", f.name)
+		}
+		if len(s.hostsSeen) != 1 {
+			t.Fatalf("%s: expected 1 attempt, got %d", f.name, len(s.hostsSeen))
+		}
+		if s.hostsSeen[0] != f.originHost {
+			t.Fatalf("%s: host = %s, want %s", f.name, s.hostsSeen[0], f.originHost)
+		}
+	}
+}
+
+// =====================================================================
+// Happy path & disabled
+// =====================================================================
+
+func Test_happyPathOneAttempt(t *testing.T) {
+	rt := &transportStub{}
 	rt.programOk()
 	c := runFailoverClient(rt)
 
@@ -469,13 +1070,12 @@ func Test_failover_happyPathOneAttempt(t *testing.T) {
 	}
 }
 
-// Failover disabled → pass through.
-func Test_failover_disabled_goesThrough(t *testing.T) {
+func Test_disabledFailoverGoesThrough(t *testing.T) {
 	cpf := profile.NewClientProfile()
 	cpf.DisableRegionBreaker = true
 	c := NewCommonClient(NewCredential("AKIDTEST", "SKTEST"), regions.Guangzhou, cpf)
-	rt := &scriptedRT{}
-	rt.programErr(dnsErr{"dns miss"})
+	rt := &transportStub{}
+	rt.programFailure(dnsErr{"dns miss"})
 	c.WithHttpTransport(rt)
 
 	if err := c.Send(newCvmRequest(), tchttp.NewCommonResponse()); err == nil {
@@ -484,529 +1084,4 @@ func Test_failover_disabled_goesThrough(t *testing.T) {
 	if len(rt.hostsSeen) != 1 {
 		t.Fatalf("expected 1 attempt, got %d", len(rt.hostsSeen))
 	}
-}
-
-// Sustained failure opens breaker, next request picks .cn.
-func Test_failover_breakerOpensAfterSustainedFailure(t *testing.T) {
-	rt := &scriptedRT{}
-	c := runFailoverClient(rt)
-
-	// 5 failures on .com open its breaker.
-	for i := 0; i < 5; i++ {
-		rt.programErr(dnsErr{"dns miss"})
-		err := c.Send(newCvmRequest(), tchttp.NewCommonResponse())
-		if err == nil {
-			t.Fatal("expected error")
-		}
-	}
-
-	// 6th request: .com open → .cn.
-	rt.programOk()
-	if err := c.Send(newCvmRequest(), tchttp.NewCommonResponse()); err != nil {
-		t.Fatalf("6th request should succeed on .cn: %v", err)
-	}
-	if len(rt.hostsSeen) != 6 {
-		t.Fatalf("expected 6 total attempts, got %d", len(rt.hostsSeen))
-	}
-}
-
-// Unknown host → pass through.
-func Test_failover_passThroughForUnknownHost(t *testing.T) {
-	rt := &scriptedRT{}
-	rt.programOk()
-	cpf := profile.NewClientProfile()
-	cpf.DisableRegionBreaker = false
-	cpf.HttpProfile.Endpoint = "example.com"
-	c := NewCommonClient(NewCredential("AKIDTEST", "SKTEST"), regions.Guangzhou, cpf)
-	c.WithHttpTransport(rt)
-
-	if err := c.Send(newCvmRequest(), tchttp.NewCommonResponse()); err != nil {
-		t.Fatalf("unexpected error: %v", err)
-	}
-	if len(rt.hostsSeen) != 1 {
-		t.Fatalf("expected 1 attempt, got %d", len(rt.hostsSeen))
-	}
-}
-
-// Non-Tencent host → pass through.
-func Test_failover_nonTencentHostWithoutBackupDoesNotFailOver(t *testing.T) {
-	rt := &scriptedRT{}
-	rt.programErr(dnsErr{"dns miss"})
-	cpf := profile.NewClientProfile()
-	cpf.DisableRegionBreaker = false
-	cpf.HttpProfile.Endpoint = "proxy.example.com"
-	c := NewCommonClient(NewCredential("AKIDTEST", "SKTEST"), regions.Guangzhou, cpf)
-	c.WithHttpTransport(rt)
-
-	if err := c.Send(newCvmRequest(), tchttp.NewCommonResponse()); err == nil {
-		t.Fatal("expected error")
-	}
-	if len(rt.hostsSeen) != 1 {
-		t.Fatalf("expected 1 attempt, got %d", len(rt.hostsSeen))
-	}
-}
-
-// .com / .cn / .com.cn origins: each DNS miss → 1 attempt.
-func Test_failover_allEndpointsDnsMissOneAttempt(t *testing.T) {
-	for _, endpoint := range []string{
-		"cvm.tencentcloudapi.com",
-		"cvm.tencentcloudapi.cn",
-		"cvm.tencentcloudapi.com.cn",
-	} {
-		rt := &scriptedRT{}
-		rt.programErr(dnsErr{"dns miss"})
-		cpf := profile.NewClientProfile()
-		cpf.DisableRegionBreaker = false
-		cpf.HttpProfile.Endpoint = endpoint
-		c := NewCommonClient(NewCredential("AKIDTEST", "SKTEST"), regions.Guangzhou, cpf)
-		c.WithHttpTransport(rt)
-
-		err := c.Send(newCvmRequest(), tchttp.NewCommonResponse())
-		if err == nil {
-			t.Fatalf("%s: expected error", endpoint)
-		}
-		if len(rt.hostsSeen) != 1 {
-			t.Fatalf("%s: expected 1 attempt, got %d", endpoint, len(rt.hostsSeen))
-		}
-	}
-}
-
-// Region-pinned host DNS miss → 1 attempt, breaker records failure.
-func Test_failover_regionPinnedHostDnsMissOneAttempt(t *testing.T) {
-	rt := &scriptedRT{}
-	rt.programErr(dnsErr{"dns miss"})
-	cpf := profile.NewClientProfile()
-	cpf.DisableRegionBreaker = false
-	cpf.HttpProfile.Endpoint = "cvm.ap-guangzhou.tencentcloudapi.com"
-	c := NewCommonClient(NewCredential("AKIDTEST", "SKTEST"), regions.Guangzhou, cpf)
-	c.WithHttpTransport(rt)
-
-	err := c.Send(newCvmRequest(), tchttp.NewCommonResponse())
-	if err == nil {
-		t.Fatal("expected error")
-	}
-	if len(rt.hostsSeen) != 1 {
-		t.Fatalf("expected 1 attempt, got %d", len(rt.hostsSeen))
-	}
-}
-
-// AI family: breaker open → next request stays in ai. family.
-func Test_failover_openBreakerUsesNextAiFamilyHost(t *testing.T) {
-	cpf := profile.NewClientProfile()
-	cpf.DisableRegionBreaker = false
-	cpf.HttpProfile.Endpoint = "hunyuan.ai.tencentcloudapi.com"
-	c := NewCommonClient(NewCredential("AKIDTEST", "SKTEST"), regions.Guangzhou, cpf)
-
-	tripBreakerForTest(defaultEndpointFailover.breakerFor("hunyuan.ai.tencentcloudapi.com"))
-
-	rt := &scriptedRT{}
-	rt.programOk()
-	c.WithHttpTransport(rt)
-
-	if err := c.Send(newCvmRequest(), tchttp.NewCommonResponse()); err != nil {
-		t.Fatalf("expected success: %v", err)
-	}
-	if rt.hostsSeen[0] != "hunyuan.ai.tencentcloudapi.cn" {
-		t.Fatalf("host = %s, want ai. family .cn", rt.hostsSeen[0])
-	}
-}
-
-// Internal family: breaker open → stays in internal. family.
-func Test_failover_openBreakerUsesNextInternalFamilyHost(t *testing.T) {
-	cpf := profile.NewClientProfile()
-	cpf.DisableRegionBreaker = false
-	cpf.HttpProfile.Endpoint = "cvm.internal.tencentcloudapi.com"
-	c := NewCommonClient(NewCredential("AKIDTEST", "SKTEST"), regions.Guangzhou, cpf)
-
-	tripBreakerForTest(defaultEndpointFailover.breakerFor("cvm.internal.tencentcloudapi.com"))
-
-	rt := &scriptedRT{}
-	rt.programOk()
-	c.WithHttpTransport(rt)
-
-	if err := c.Send(newCvmRequest(), tchttp.NewCommonResponse()); err != nil {
-		t.Fatalf("expected success: %v", err)
-	}
-	if rt.hostsSeen[0] != "cvm.internal.tencentcloudapi.cn" {
-		t.Fatalf("host = %s, want internal. family .cn", rt.hostsSeen[0])
-	}
-}
-
-// Transport errors → breaker failure, 1 attempt.
-func Test_failover_transportErrorsOneAttempt(t *testing.T) {
-	errors := []error{
-		tlsErr{"tls handshake failed"},
-		connectErr{"connection refused"},
-		timeoutErr{"read timed out"},
-	}
-	for _, e := range errors {
-		rt := &scriptedRT{}
-		rt.programErr(e)
-		c := runFailoverClient(rt)
-
-		err := c.Send(newCvmRequest(), tchttp.NewCommonResponse())
-		if err == nil {
-			t.Fatalf("expected error for %v", e)
-		}
-		if len(rt.hostsSeen) != 1 {
-			t.Fatalf("expected 1 attempt for %v, got %d", e, len(rt.hostsSeen))
-		}
-	}
-}
-
-// Response delivered after breaker selects alternate host.
-func Test_failover_apiResponseDeliveredAfterSelectingAlternateHost(t *testing.T) {
-	cpf := profile.NewClientProfile()
-	cpf.DisableRegionBreaker = false
-	c := NewCommonClient(NewCredential("AKIDTEST", "SKTEST"), regions.Guangzhou, cpf)
-	tripBreakerForTest(defaultEndpointFailover.breakerFor("cvm.tencentcloudapi.com"))
-
-	rt := &scriptedRT{}
-	rt.programResponse(200, `{"Response":{"RequestId":"req-xyz"}}`)
-	c.WithHttpTransport(rt)
-
-	resp := tchttp.NewCommonResponse()
-	if err := c.Send(newCvmRequest(), resp); err != nil {
-		t.Fatalf("expected success: %v", err)
-	}
-	if rt.hostsSeen[0] != "cvm.tencentcloudapi.cn" {
-		t.Fatalf("expected .cn host, got %s", rt.hostsSeen[0])
-	}
-}
-
-// Non-200 → 1 attempt, breaker records failure.
-func Test_failover_non200OneAttempt(t *testing.T) {
-	rt := &scriptedRT{}
-	rt.programResponse(503, `{"Response":{"Error":{}}}`)
-	c := runFailoverClient(rt)
-
-	err := c.Send(newCvmRequest(), tchttp.NewCommonResponse())
-	if err == nil {
-		t.Fatal("expected error")
-	}
-	if len(rt.hostsSeen) != 1 {
-		t.Fatalf("expected 1 attempt, got %d", len(rt.hostsSeen))
-	}
-}
-
-// Non-200 error message contains status.
-func Test_failover_non200ResponsePropagatesOriginalError(t *testing.T) {
-	rt := &scriptedRT{}
-	rt.programResponse(502, `{}`)
-	c := runFailoverClient(rt)
-
-	err := c.Send(newCvmRequest(), tchttp.NewCommonResponse())
-	if err == nil {
-		t.Fatal("expected error")
-	}
-	if !strings.Contains(err.Error(), "502") && !strings.Contains(err.Error(), "Bad Gateway") {
-		t.Fatalf("error should mention 502 or Bad Gateway, got: %v", err)
-	}
-}
-
-// SSE 200 → no failover.
-func Test_failover_sseStreamResponseIsNotFailoverTriggered(t *testing.T) {
-	rt := &scriptedRT{}
-	rt.programResponseWithCt(200, "data: hello\n\n", "text/event-stream")
-	c := runFailoverClient(rt)
-
-	_ = c.Send(newCvmRequest(), tchttp.NewCommonResponse())
-	if len(rt.hostsSeen) != 1 {
-		t.Fatalf("SSE 200 should not trigger failover, got %d attempts", len(rt.hostsSeen))
-	}
-}
-
-// Business SDK error → no failover.
-func Test_failover_businessSdkErrorDoesNotTriggerFailover(t *testing.T) {
-	rt := &scriptedRT{}
-	rt.programResponse(200, `{"Response":{"RequestId":"req-bad","Error":{"Code":"AuthFailure.SignatureFailure","Message":"signature wrong"}}}`)
-	c := runFailoverClient(rt)
-
-	err := c.Send(newCvmRequest(), tchttp.NewCommonResponse())
-	if err == nil {
-		t.Fatal("expected business SDK error")
-	}
-	if len(rt.hostsSeen) != 1 {
-		t.Fatalf("business error must not trigger failover, got %d attempts", len(rt.hostsSeen))
-	}
-}
-
-// Error message contains failure details.
-func Test_failover_endpointFailureSurfacesAttemptFailure(t *testing.T) {
-	rt := &scriptedRT{}
-	rt.programErr(dnsErr{"first dns miss"})
-	c := runFailoverClient(rt)
-
-	err := c.Send(newCvmRequest(), tchttp.NewCommonResponse())
-	if err == nil {
-		t.Fatal("expected error")
-	}
-	if !strings.Contains(err.Error(), "first dns miss") {
-		t.Fatalf("error should contain original message, got: %v", err)
-	}
-}
-
-// .com open + .cn fails → only .cn attempted (single candidate per request).
-func Test_failover_breakerSkipPlusCandidateFailure(t *testing.T) {
-	cpf := profile.NewClientProfile()
-	cpf.DisableRegionBreaker = false
-	c := NewCommonClient(NewCredential("AKIDTEST", "SKTEST"), regions.Guangzhou, cpf)
-	tripBreakerForTest(defaultEndpointFailover.breakerFor("cvm.tencentcloudapi.com"))
-
-	rt := &scriptedRT{}
-	rt.programErr(tlsErr{"cn tls fail"})
-	c.WithHttpTransport(rt)
-
-	err := c.Send(newCvmRequest(), tchttp.NewCommonResponse())
-	if err == nil {
-		t.Fatal("expected error")
-	}
-	if len(rt.hostsSeen) != 1 {
-		t.Fatalf("expected 1 attempt, got %d", len(rt.hostsSeen))
-	}
-	if rt.hostsSeen[0] != "cvm.tencentcloudapi.cn" {
-		t.Fatalf("host = %s, want .cn", rt.hostsSeen[0])
-	}
-}
-
-// All breakers open → pass through to origin (candidateFor returns nil).
-func Test_failover_allBreakersOpenFallsThroughToOrigin(t *testing.T) {
-	cpf := profile.NewClientProfile()
-	cpf.DisableRegionBreaker = false
-	c := NewCommonClient(NewCredential("AKIDTEST", "SKTEST"), regions.Guangzhou, cpf)
-
-	for _, h := range []string{"cvm.tencentcloudapi.com", "cvm.tencentcloudapi.cn", "cvm.tencentcloudapi.com.cn"} {
-		tripBreakerForTest(defaultEndpointFailover.breakerFor(h))
-	}
-
-	rt := &scriptedRT{}
-	rt.programOk()
-	c.WithHttpTransport(rt)
-
-	if err := c.Send(newCvmRequest(), tchttp.NewCommonResponse()); err != nil {
-		t.Fatalf("expected success on origin pass-through: %v", err)
-	}
-	if rt.hostsSeen[0] != "cvm.tencentcloudapi.com" {
-		t.Fatalf("host = %s, want origin", rt.hostsSeen[0])
-	}
-}
-
-// Error from run2 does not contain run1 messages.
-func Test_failover_failureDoesNotPolluteNextRequestErrors(t *testing.T) {
-	rt := &scriptedRT{}
-	c := runFailoverClient(rt)
-
-	rt.programErr(dnsErr{"run1 fail"})
-	_ = c.Send(newCvmRequest(), tchttp.NewCommonResponse())
-
-	rt.programErr(dnsErr{"run2 fail"})
-	err := c.Send(newCvmRequest(), tchttp.NewCommonResponse())
-	if err == nil {
-		t.Fatal("expected error")
-	}
-	msg := err.Error()
-	if strings.Contains(msg, "run1") {
-		t.Fatalf("error from run2 must not contain run1 messages, got: %v", msg)
-	}
-	if !strings.Contains(msg, "run2") {
-		t.Fatalf("error from run2 must mention run2, got: %v", msg)
-	}
-}
-
-// Breaker Open → HalfOpen after cooldown.
-func Test_failover_breakerTransitionsOpenToHalfOpenAfterCooldown(t *testing.T) {
-	b := defaultEndpointFailover.breakerFor("test-cooldown.tencentcloudapi.com")
-	b.mu.Lock()
-	b.state = StateOpen
-	b.expiry = time.Now().Add(50 * time.Millisecond)
-	b.mu.Unlock()
-
-	_, err := b.beforeRequest()
-	if err == nil {
-		t.Fatal("breaker should be Open")
-	}
-
-	time.Sleep(100 * time.Millisecond)
-	_, err = b.beforeRequest()
-	if err != nil {
-		t.Fatalf("breaker should permit probe after cooldown: %v", err)
-	}
-}
-
-// HalfOpen success → Closed.
-func Test_failover_breakerReClosesAfterHalfOpenSuccess(t *testing.T) {
-	b := defaultEndpointFailover.breakerFor("test-close.tencentcloudapi.com")
-	b.mu.Lock()
-	b.state = StateOpen
-	b.expiry = time.Now().Add(50 * time.Millisecond)
-	b.mu.Unlock()
-
-	time.Sleep(100 * time.Millisecond)
-
-	gen, err := b.beforeRequest()
-	if err != nil {
-		t.Fatalf("probe should be allowed: %v", err)
-	}
-	b.afterRequest(gen, true)
-
-	if _, err := b.beforeRequest(); err != nil {
-		t.Fatalf("breaker should be Closed after HalfOpen success: %v", err)
-	}
-}
-
-// HalfOpen failure → Open.
-func Test_failover_breakerReOpensWhenHalfOpenProbeFails(t *testing.T) {
-	b := defaultEndpointFailover.breakerFor("test-reopen.tencentcloudapi.com")
-	b.mu.Lock()
-	b.state = StateOpen
-	b.expiry = time.Now().Add(50 * time.Millisecond)
-	b.mu.Unlock()
-
-	time.Sleep(100 * time.Millisecond)
-
-	gen, err := b.beforeRequest()
-	if err != nil {
-		t.Fatalf("probe should be allowed: %v", err)
-	}
-	b.afterRequest(gen, false)
-
-	if _, err := b.beforeRequest(); err == nil {
-		t.Fatal("HalfOpen failure must re-Open the breaker")
-	}
-}
-
-// Breaker state isolated across hosts.
-func Test_failover_breakerStateIsolatedAcrossOriginHosts(t *testing.T) {
-	tripBreakerForTest(defaultEndpointFailover.breakerFor("cvm.tencentcloudapi.com"))
-
-	cpf := profile.NewClientProfile()
-	cpf.DisableRegionBreaker = false
-	cpf.HttpProfile.Endpoint = "cls.tencentcloudapi.com"
-	c := NewCommonClient(NewCredential("AKIDTEST", "SKTEST"), regions.Guangzhou, cpf)
-	rt := &scriptedRT{}
-	rt.programOk()
-	c.WithHttpTransport(rt)
-
-	if err := c.Send(newCvmRequest(), tchttp.NewCommonResponse()); err != nil {
-		t.Fatalf("cls request should succeed: %v", err)
-	}
-	if rt.hostsSeen[0] != "cls.tencentcloudapi.com" {
-		t.Fatalf("host = %s, want cls.tencentcloudapi.com", rt.hostsSeen[0])
-	}
-}
-
-// Backup endpoint: origin succeeds → uses origin.
-func Test_failover_backupEndpoint_originSucceeds_usesOrigin(t *testing.T) {
-	resetBreakers()
-	rt := &scriptedRT{}
-	rt.programOk()
-	cpf := profile.NewClientProfile()
-	cpf.DisableRegionBreaker = false
-	cpf.BackupEndpoint = "ap-guangzhou.tencentcloudapi.com"
-	c := NewCommonClient(NewCredential("AKIDTEST", "SKTEST"), regions.Guangzhou, cpf)
-	c.WithHttpTransport(rt)
-
-	if err := c.Send(newCvmRequest(), tchttp.NewCommonResponse()); err != nil {
-		t.Fatalf("expected success: %v", err)
-	}
-	if rt.hostsSeen[0] != "cvm.tencentcloudapi.com" {
-		t.Fatalf("host = %s, want origin", rt.hostsSeen[0])
-	}
-}
-
-// Backup endpoint: origin DNS miss → 1 attempt, breaker records failure.
-func Test_failover_backupEndpoint_originDnsMissOneAttempt(t *testing.T) {
-	resetBreakers()
-	rt := &scriptedRT{}
-	rt.programErr(dnsErr{"cvm.tencentcloudapi.com dns miss"})
-	cpf := profile.NewClientProfile()
-	cpf.DisableRegionBreaker = false
-	cpf.BackupEndpoint = "ap-guangzhou.tencentcloudapi.com"
-	c := NewCommonClient(NewCredential("AKIDTEST", "SKTEST"), regions.Guangzhou, cpf)
-	c.WithHttpTransport(rt)
-
-	err := c.Send(newCvmRequest(), tchttp.NewCommonResponse())
-	if err == nil {
-		t.Fatal("expected error")
-	}
-	if len(rt.hostsSeen) != 1 {
-		t.Fatalf("expected 1 attempt, got %d", len(rt.hostsSeen))
-	}
-}
-
-// Backup endpoint: origin open → backup selected.
-func Test_failover_backupEndpoint_breakerOpen_skipsOriginGoesToBackup(t *testing.T) {
-	resetBreakers()
-	cpf := profile.NewClientProfile()
-	cpf.DisableRegionBreaker = false
-	cpf.BackupEndpoint = "ap-guangzhou.tencentcloudapi.com"
-	c := NewCommonClient(NewCredential("AKIDTEST", "SKTEST"), regions.Guangzhou, cpf)
-	tripBreakerForTest(defaultEndpointFailover.breakerFor("cvm.tencentcloudapi.com"))
-
-	rt := &scriptedRT{}
-	rt.programOk()
-	c.WithHttpTransport(rt)
-
-	if err := c.Send(newCvmRequest(), tchttp.NewCommonResponse()); err != nil {
-		t.Fatalf("expected success on backup: %v", err)
-	}
-	if rt.hostsSeen[0] != "cvm.ap-guangzhou.tencentcloudapi.com" {
-		t.Fatalf("host = %s, want backup", rt.hostsSeen[0])
-	}
-}
-
-// No backup, DNS miss → 1 attempt.
-func Test_failover_noBackupEndpoint_dnsMissOneAttempt(t *testing.T) {
-	resetBreakers()
-	rt := &scriptedRT{}
-	rt.programErr(dnsErr{"cvm.tencentcloudapi.com"})
-	c := runFailoverClient(rt)
-
-	err := c.Send(newCvmRequest(), tchttp.NewCommonResponse())
-	if err == nil {
-		t.Fatal("expected error")
-	}
-	if len(rt.hostsSeen) != 1 {
-		t.Fatalf("expected 1 attempt, got %d", len(rt.hostsSeen))
-	}
-}
-
-// Region-pinned: breaker open → rotates to .cn.
-func Test_failover_regionPinnedBreakerOpenRotatesToCn(t *testing.T) {
-	resetBreakers()
-	cpf := profile.NewClientProfile()
-	cpf.DisableRegionBreaker = false
-	cpf.HttpProfile.Endpoint = "cvm.ap-guangzhou.tencentcloudapi.com"
-	c := NewCommonClient(NewCredential("AKIDTEST", "SKTEST"), regions.Guangzhou, cpf)
-	tripBreakerForTest(defaultEndpointFailover.breakerFor("cvm.ap-guangzhou.tencentcloudapi.com"))
-
-	rt := &scriptedRT{}
-	rt.programOk()
-	c.WithHttpTransport(rt)
-
-	if err := c.Send(newCvmRequest(), tchttp.NewCommonResponse()); err != nil {
-		t.Fatalf("expected success on .cn: %v", err)
-	}
-	if rt.hostsSeen[0] != "cvm.ap-guangzhou.tencentcloudapi.cn" {
-		t.Fatalf("host = %s, want .cn with prefix", rt.hostsSeen[0])
-	}
-}
-
-// =====================================================================
-// Helpers
-// =====================================================================
-
-// tripBreakerForTest drives the breaker's internal counters until it is Open.
-// Using direct state manipulation is faster than running 6 real loops.
-func tripBreakerForTest(b *circuitBreaker) {
-	b.mu.Lock()
-	b.state = StateOpen
-	b.expiry = time.Now().Add(time.Hour)
-	b.mu.Unlock()
-}
-
-func resetBreakers() {
-	defaultEndpointFailover.mu.Lock()
-	defaultEndpointFailover.breakers = map[string]*circuitBreaker{}
-	defaultEndpointFailover.mu.Unlock()
 }
