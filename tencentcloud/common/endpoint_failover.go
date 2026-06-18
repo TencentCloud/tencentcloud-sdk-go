@@ -72,7 +72,7 @@ func (f *EndpointFailover) tldMatchOf(host string) *tldMatch {
 				continue
 			}
 			prefix := host[:len(host)-len(suffix)-1]
-			if prefix == "" || hasEmptyLabel(prefix) {
+			if prefix == "" || f.hasEmptyLabel(prefix) {
 				return nil
 			}
 			return &tldMatch{
@@ -86,14 +86,14 @@ func (f *EndpointFailover) tldMatchOf(host string) *tldMatch {
 	return nil
 }
 
-func hasEmptyLabel(prefix string) bool {
+func (f *EndpointFailover) hasEmptyLabel(prefix string) bool {
 	if strings.HasPrefix(prefix, ".") || strings.HasSuffix(prefix, ".") {
 		return true
 	}
 	return strings.Contains(prefix, "..")
 }
 
-func serviceOf(host string) string {
+func (f *EndpointFailover) serviceOf(host string) string {
 	if i := strings.IndexByte(host, '.'); i >= 0 {
 		return host[:i]
 	}
@@ -111,7 +111,7 @@ func (f *EndpointFailover) candidateFor(profile *profile.ClientProfile, originHo
 		if err == nil {
 			return &candidate{host: originHost, breaker: b, gen: gen}
 		}
-		backupHost := serviceOf(originHost) + "." + backupEP
+		backupHost := f.serviceOf(originHost) + "." + backupEP
 		b = f.breakerFor(backupHost)
 		gen, err = b.beforeRequest()
 		if err == nil {
