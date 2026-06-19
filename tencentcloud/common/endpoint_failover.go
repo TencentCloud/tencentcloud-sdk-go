@@ -7,13 +7,13 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
+	"io/ioutil"
 	"net/http"
 	"sort"
 	"strings"
 	"sync"
 	"time"
 
-	tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
 )
 
@@ -126,41 +126,6 @@ func (f *EndpointFailover) selectHost(req *http.Request, c *Client) candidate {
 	return urlCand
 }
 
-// candidateFor selects a candidate host based on profile and originHost,
-// checking circuit breakers. Used by tests and for direct host selection.
-func (f *EndpointFailover) candidateFor(profile *profile.ClientProfile, originHost string) *candidate {
-	if backupEP := f.backupEndpointOf(profile); backupEP != "" {
-		b := f.breakerFor(originHost)
-		gen, err := b.beforeRequest()
-		if err == nil {
-			return &candidate{host: originHost, breaker: b, gen: gen}
-		}
-		backupHost := f.serviceOf(originHost) + "." + backupEP
-		b = f.breakerFor(backupHost)
-		gen, err = b.beforeRequest()
-		if err == nil {
-			return &candidate{host: backupHost, breaker: b, gen: gen}
-		}
-		return nil
-	}
-
-	m := f.tldMatchOf(originHost)
-	if m == nil {
-		return nil
-	}
-
-	for i := 0; i < len(m.family); i++ {
-		t := (m.tldIdx + i) % len(m.family)
-		host := m.fullPrefix + "." + m.family[t]
-		b := f.breakerFor(host)
-		gen, err := b.beforeRequest()
-		if err == nil {
-			return &candidate{host: host, breaker: b, gen: gen}
-		}
-	}
-	return nil
-}
-
 func (f *EndpointFailover) buildCandidateHosts(urlHost, headerHost string, p *profile.ClientProfile, ctx context.Context) []string {
 	hosts := []string{urlHost}
 
@@ -219,7 +184,7 @@ func (f *EndpointFailover) isResponseHealthy(resp *http.Response, err error) boo
 	if resp.Body == nil {
 		return false
 	}
-	bodyBytes, readErr := io.ReadAll(resp.Body)
+	bodyBytes, readErr := ioutil.ReadAll(resp.Body)
 	resp.Body.Close()
 	if readErr != nil {
 		return false
@@ -227,7 +192,7 @@ func (f *EndpointFailover) isResponseHealthy(resp *http.Response, err error) boo
 	if !f.isValidJson(bodyBytes) {
 		return false
 	}
-	resp.Body = io.NopCloser(bytes.NewReader(bodyBytes))
+	resp.Body = ioutil.NopCloser(bytes.NewReader(bodyBytes))
 	return true
 }
 
@@ -256,7 +221,7 @@ func (f *EndpointFailover) resignForHost(orig *http.Request, originHost, targetH
 }
 
 func (f *EndpointFailover) rewriteHost(orig *http.Request, targetHost string) *http.Request {
-	req := orig.Clone(orig.Context())
+	req := cloneRequest(orig)
 	req.Host = targetHost
 	req.URL.Host = targetHost
 	return req
@@ -308,7 +273,7 @@ func (f *EndpointFailover) resignV3(orig *http.Request, targetHost string, cred 
 	authorization := fmt.Sprintf("TC3-HMAC-SHA256 Credential=%s/%s, SignedHeaders=%s, Signature=%s",
 		secId, credentialScope, signedHeaders, signature)
 
-	req := orig.Clone(orig.Context())
+	req := cloneRequest(orig)
 	req.Host = targetHost
 	req.URL.Host = targetHost
 	req.Header.Set("Host", targetHost)
@@ -371,7 +336,7 @@ func (f *EndpointFailover) resignV1(orig *http.Request, originHost, targetHost s
 		newURL := *orig.URL
 		newURL.Host = targetHost
 		newURL.RawQuery = strings.Join(qs, "&")
-		req := orig.Clone(orig.Context())
+		req := cloneRequest(orig)
 		req.URL = &newURL
 		req.Host = targetHost
 		return req
@@ -389,14 +354,14 @@ func (f *EndpointFailover) resignV1(orig *http.Request, originHost, targetHost s
 
 	newURL := *orig.URL
 	newURL.Host = targetHost
-	req := orig.Clone(orig.Context())
+	req := cloneRequest(orig)
 	req.URL = &newURL
 	req.Host = targetHost
 	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
-	req.Body = io.NopCloser(bytes.NewReader(bodyBuf.Bytes()))
+	req.Body = ioutil.NopCloser(bytes.NewReader(bodyBuf.Bytes()))
 	req.ContentLength = int64(bodyBuf.Len())
 	req.GetBody = func() (io.ReadCloser, error) {
-		return io.NopCloser(bytes.NewReader(bodyBuf.Bytes())), nil
+		return ioutil.NopCloser(bytes.NewReader(bodyBuf.Bytes())), nil
 	}
 	return req
 }
@@ -405,9 +370,9 @@ func (f *EndpointFailover) readBody(req *http.Request) []byte {
 	if req.Body == nil {
 		return nil
 	}
-	b, _ := io.ReadAll(req.Body)
+	b, _ := ioutil.ReadAll(req.Body)
 	req.Body.Close()
-	req.Body = io.NopCloser(bytes.NewReader(b))
+	req.Body = ioutil.NopCloser(bytes.NewReader(b))
 	return b
 }
 
@@ -442,6 +407,24 @@ func (f *EndpointFailover) parseFormParams(body string) map[string]string {
 	return m
 }
 
+// cloneRequest creates a shallow copy of an http.Request with a deep-copied
+// URL and Header. Compatible with Go 1.11+ (http.Request.Clone requires 1.13).
+func cloneRequest(orig *http.Request) *http.Request {
+	req := new(http.Request)
+	*req = *orig
+	// Deep copy URL.
+	u := *orig.URL
+	req.URL = &u
+	// Deep copy Header.
+	req.Header = make(http.Header, len(orig.Header))
+	for k, v := range orig.Header {
+		v2 := make([]string, len(v))
+		copy(v2, v)
+		req.Header[k] = v2
+	}
+	return req
+}
+
 // ----------------------------------------------------------------------
 // Client integration
 // ----------------------------------------------------------------------
@@ -451,22 +434,4 @@ func (c *Client) sendWithEndpointFailover(req *http.Request) (*http.Response, er
 		return c.sendHttp(req)
 	}
 	return defaultEndpointFailover.send(req, c)
-}
-
-// isBreakerSuccess is used by circuit_breaker_test.go.
-func (f *EndpointFailover) isBreakerSuccess(err error) bool {
-	if err == nil {
-		return true
-	}
-	e, ok := err.(*tcerr.TencentCloudSDKError)
-	if !ok {
-		return false
-	}
-	if e.GetRequestId() == "" {
-		return false
-	}
-	if e.GetCode() == "InternalError" {
-		return false
-	}
-	return true
 }

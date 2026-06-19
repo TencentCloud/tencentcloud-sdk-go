@@ -5,6 +5,7 @@ import (
 	"errors"
 	"io/ioutil"
 	"net/http"
+	"net/url"
 	"strings"
 	"sync"
 	"testing"
@@ -323,6 +324,13 @@ func tripBreaker(b *circuitBreaker, timeoutMs time.Duration) {
 	b.mu.Unlock()
 }
 
+func newReq(host string) *http.Request {
+	return &http.Request{
+		URL:    &url.URL{Host: host},
+		Header: http.Header{},
+	}
+}
+
 func resetBreakers() {
 	defaultEndpointFailover.mu.Lock()
 	defaultEndpointFailover.breakers = map[string]*circuitBreaker{}
@@ -392,16 +400,16 @@ func Test_isKnownTencentCloudHost(t *testing.T) {
 func Test_hostWithTldBuildsCorrectHosts(t *testing.T) {
 	c := newClient(n1)
 
-	// Verify each TLD index via candidateFor on a tripped breaker.
+	// Verify each TLD index via selectHost on a tripped breaker.
 	tripBreakerFor("cvm.tencentcloudapi.com", time.Hour)
-	cand := defaultEndpointFailover.candidateFor(c.profile, "cvm.tencentcloudapi.com")
-	if cand == nil || cand.host != "cvm.tencentcloudapi.cn" {
+	cand := defaultEndpointFailover.selectHost(newReq("cvm.tencentcloudapi.com"), c)
+	if cand.host != "cvm.tencentcloudapi.cn" {
 		t.Fatalf("got %v, want .cn", cand)
 	}
 
 	tripBreakerFor("cvm.tencentcloudapi.cn", time.Hour)
-	cand = defaultEndpointFailover.candidateFor(c.profile, "cvm.tencentcloudapi.com")
-	if cand == nil || cand.host != "cvm.tencentcloudapi.com.cn" {
+	cand = defaultEndpointFailover.selectHost(newReq("cvm.tencentcloudapi.com"), c)
+	if cand.host != "cvm.tencentcloudapi.com.cn" {
 		t.Fatalf("got %v, want .com.cn", cand)
 	}
 }
@@ -414,15 +422,15 @@ func Test_hostWithTldFromCnAndComCnOrigins(t *testing.T) {
 	c := newClient(n1)
 	c.profile.HttpProfile.Endpoint = "cvm.tencentcloudapi.cn"
 	tripBreakerFor("cvm.tencentcloudapi.cn", time.Hour)
-	cand := defaultEndpointFailover.candidateFor(c.profile, "cvm.tencentcloudapi.cn")
-	if cand == nil || cand.host != "cvm.tencentcloudapi.com.cn" {
+	cand := defaultEndpointFailover.selectHost(newReq("cvm.tencentcloudapi.cn"), c)
+	if cand.host != "cvm.tencentcloudapi.com.cn" {
 		t.Fatalf("cn origin: got %v, want .com.cn", cand)
 	}
 
 	c.profile.HttpProfile.Endpoint = "cvm.tencentcloudapi.com.cn"
 	tripBreakerFor("cvm.tencentcloudapi.com.cn", time.Hour)
-	cand = defaultEndpointFailover.candidateFor(c.profile, "cvm.tencentcloudapi.com.cn")
-	if cand == nil || cand.host != "cvm.tencentcloudapi.com" {
+	cand = defaultEndpointFailover.selectHost(newReq("cvm.tencentcloudapi.com.cn"), c)
+	if cand.host != "cvm.tencentcloudapi.com" {
 		t.Fatalf("com.cn origin: got %v, want .com", cand)
 	}
 }
@@ -431,8 +439,8 @@ func Test_hostWithTldPreservesRegionInPrefix(t *testing.T) {
 	c := newClient(n1)
 
 	tripBreakerFor("cvm.ap-guangzhou.tencentcloudapi.com", time.Hour)
-	cand := defaultEndpointFailover.candidateFor(c.profile, "cvm.ap-guangzhou.tencentcloudapi.com")
-	if cand == nil || cand.host != "cvm.ap-guangzhou.tencentcloudapi.cn" {
+	cand := defaultEndpointFailover.selectHost(newReq("cvm.ap-guangzhou.tencentcloudapi.com"), c)
+	if cand.host != "cvm.ap-guangzhou.tencentcloudapi.cn" {
 		t.Fatalf("got %v, want cvm.ap-guangzhou.tencentcloudapi.cn", cand)
 	}
 }
@@ -1007,6 +1015,27 @@ func Test_sseStreamResponseIsNotJsonValidated(t *testing.T) {
 		if len(s.hostsSeen) != 1 {
 			t.Fatalf("%s: expected 1 attempt, got %d", f.name, len(s.hostsSeen))
 		}
+	}
+}
+
+// Test_sseBodyIsNotConsumedByFailover verifies that SSE response bodies are
+// not read/buffered by isResponseHealthy, so the stream remains intact for
+// the caller.
+func Test_sseBodyIsNotConsumedByFailover(t *testing.T) {
+	const sseBody = "data: hello\n\ndata: world\n\n"
+	resp := &http.Response{
+		StatusCode: 200,
+		Header:     http.Header{"Content-Type": []string{"text/event-stream"}},
+		Body:       ioutil.NopCloser(bytes.NewBufferString(sseBody)),
+	}
+	healthy := defaultEndpointFailover.isResponseHealthy(resp, nil)
+	if !healthy {
+		t.Fatal("SSE 200 should be healthy")
+	}
+	// Body must still be readable — not consumed by isResponseHealthy.
+	got, _ := ioutil.ReadAll(resp.Body)
+	if string(got) != sseBody {
+		t.Fatalf("body was consumed: got %q, want %q", got, sseBody)
 	}
 }
 
