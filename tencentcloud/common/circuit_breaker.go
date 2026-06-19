@@ -7,6 +7,8 @@ import (
 	"strings"
 	"sync"
 	"time"
+
+	tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
 )
 
 const (
@@ -50,13 +52,14 @@ func (c *counter) onFailure() {
 	c.all++
 	c.failures++
 	c.consecutiveSuccesses = 0
-	c.consecutiveSuccesses = 0
+	c.consecutiveFailures++
 }
 
 func (c *counter) clear() {
 	c.all = 0
 	c.failures = 0
 	c.consecutiveSuccesses = 0
+	c.consecutiveFailures = 0
 }
 
 // State is a type that represents a state of CircuitBreaker.
@@ -256,4 +259,37 @@ func renewUrl(oldDomain, region string) string {
 	}
 	newDomain := strings.Join(ss, ".")
 	return newDomain
+}
+
+// isBreakerSuccess decides whether a sendWithSignature result counts as a
+// success for the regional circuit breaker.
+//
+// The breaker tracks region health, not per-call business outcome. So:
+//   - nil err: the request round-tripped and parsed cleanly → region healthy.
+//   - *TencentCloudSDKError with a RequestId: the region answered with a
+//     structured error (e.g. AuthFailure). The user's call failed but the
+//     region is up → success for breaker accounting. The single exception is
+//     "InternalError", which the API uses to signal a region-side fault.
+//   - Anything else (transport errors, locally-fabricated errors with no
+//     RequestId): the region did not answer → failure.
+//
+// This helper exists because of the bug fixed in report/feature_4_bug.md
+// Bug 1, where the previous inline logic defaulted to false and silently
+// classified every successful call as a failure, opening the breaker after
+// 5 successes and routing traffic to the backup endpoint.
+func isBreakerSuccess(err error) bool {
+	if err == nil {
+		return true
+	}
+	e, ok := err.(*tcerr.TencentCloudSDKError)
+	if !ok {
+		return false
+	}
+	if e.GetRequestId() == "" {
+		return false
+	}
+	if e.GetCode() == "InternalError" {
+		return false
+	}
+	return true
 }
