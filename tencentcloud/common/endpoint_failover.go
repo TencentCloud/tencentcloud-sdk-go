@@ -2,6 +2,7 @@ package common
 
 import (
 	"bytes"
+	"context"
 	"encoding/hex"
 	"encoding/json"
 	"fmt"
@@ -103,6 +104,30 @@ func (f *EndpointFailover) serviceOf(host string) string {
 // Candidate selection
 // ----------------------------------------------------------------------
 
+func (f *EndpointFailover) selectHost(req *http.Request, c *Client) candidate {
+	urlHost := req.URL.Host
+	headerHost := req.Host
+
+	candidateHosts := f.buildCandidateHosts(urlHost, headerHost, c.profile, req.Context())
+	// Track the urlHost breaker result from the first iteration so we can
+	// reuse it in the fallback without calling beforeRequest a second time.
+	var urlCand candidate
+	for i, host := range candidateHosts {
+		b := f.breakerFor(host)
+		gen, err := b.beforeRequest()
+		if i == 0 {
+			urlCand = candidate{host: host, breaker: b, gen: gen}
+		}
+		if err == nil {
+			return candidate{host: host, breaker: b, gen: gen}
+		}
+	}
+	// All breakers open: fall back to urlHost using the gen already recorded.
+	return urlCand
+}
+
+// candidateFor selects a candidate host based on profile and originHost,
+// checking circuit breakers. Used by tests and for direct host selection.
 func (f *EndpointFailover) candidateFor(profile *profile.ClientProfile, originHost string) *candidate {
 	if backupEP := f.backupEndpointOf(profile); backupEP != "" {
 		b := f.breakerFor(originHost)
@@ -136,6 +161,27 @@ func (f *EndpointFailover) candidateFor(profile *profile.ClientProfile, originHo
 	return nil
 }
 
+func (f *EndpointFailover) buildCandidateHosts(urlHost, headerHost string, p *profile.ClientProfile, ctx context.Context) []string {
+	hosts := []string{urlHost}
+
+	// 1. backup endpoint
+	if backupEp := f.backupEndpointOf(p); backupEp != "" && headerHost != "" {
+		hosts = append(hosts, f.serviceOf(headerHost)+"."+backupEp)
+		return hosts
+	}
+
+	// 2. TLD-based failover
+	m := f.tldMatchOf(urlHost)
+	if m == nil {
+		return hosts
+	}
+	for i := 1; i < len(m.family); i++ {
+		t := (m.tldIdx + i) % len(m.family)
+		hosts = append(hosts, m.fullPrefix+"."+m.family[t])
+	}
+	return hosts
+}
+
 func (f *EndpointFailover) backupEndpointOf(p *profile.ClientProfile) string {
 	if p == nil {
 		return ""
@@ -150,59 +196,39 @@ func (f *EndpointFailover) backupEndpointOf(p *profile.ClientProfile) string {
 // Execution
 // ----------------------------------------------------------------------
 
-func (f *EndpointFailover) send(req *http.Request, profile *profile.ClientProfile, cred CredentialIface, signMethod string, unsignedPayload bool, sendHttp func(*http.Request) (*http.Response, error)) (*http.Response, error) {
-	originHost := req.Host
-	if originHost == "" {
-		originHost = req.URL.Host
-	}
+func (f *EndpointFailover) send(req *http.Request, c *Client) (*http.Response, error) {
+	cand := f.selectHost(req, c)
 
-	cand := f.candidateFor(profile, originHost)
-	if cand == nil {
-		return sendHttp(req)
+	urlHost := req.URL.Host
+	if cand.host != urlHost {
+		req = f.resignForHost(req, urlHost, cand.host, c.credential, c.signMethod, c.unsignedPayload)
 	}
-
-	if cand.host != originHost {
-		req = f.resignForHost(req, originHost, cand.host, cred, signMethod, unsignedPayload)
-	} else {
-		req.Host = cand.host
-		req.URL.Host = cand.host
-	}
-	resp, err := sendHttp(req)
-	if !f.isResponseHealthy(resp, err) {
-		cand.breaker.afterRequest(cand.gen, false)
-		return resp, err
-	}
-	cand.breaker.afterRequest(cand.gen, true)
-
-	buf, bodyErr := f.bufferResponseBody(resp)
-	if bodyErr != nil {
-		cand.breaker.afterRequest(cand.gen, false)
-		return nil, bodyErr
-	}
-	return buf, nil
+	resp, err := c.sendHttp(req)
+	healthy := f.isResponseHealthy(resp, err)
+	cand.breaker.afterRequest(cand.gen, healthy)
+	return resp, err
 }
 
 func (f *EndpointFailover) isResponseHealthy(resp *http.Response, err error) bool {
-	if err != nil || resp == nil {
+	if err != nil || resp == nil || resp.StatusCode != 200 {
 		return false
 	}
-	return resp.StatusCode == 200
-}
-
-func (f *EndpointFailover) bufferResponseBody(resp *http.Response) (*http.Response, error) {
+	if !f.isJsonContentType(resp) {
+		return true
+	}
 	if resp.Body == nil {
-		return nil, fmt.Errorf("response has no body")
+		return false
 	}
-	bodyBytes, err := io.ReadAll(resp.Body)
+	bodyBytes, readErr := io.ReadAll(resp.Body)
 	resp.Body.Close()
-	if err != nil {
-		return nil, fmt.Errorf("failed to read response body: %v", err)
+	if readErr != nil {
+		return false
 	}
-	if f.isJsonContentType(resp) && !f.isValidJson(bodyBytes) {
-		return nil, fmt.Errorf("response body is not valid JSON")
+	if !f.isValidJson(bodyBytes) {
+		return false
 	}
 	resp.Body = io.NopCloser(bytes.NewReader(bodyBytes))
-	return resp, nil
+	return true
 }
 
 func (f *EndpointFailover) isJsonContentType(resp *http.Response) bool {
@@ -264,9 +290,9 @@ func (f *EndpointFailover) resignV3(orig *http.Request, targetHost string, cred 
 		orig.Method, canonicalURI, canonicalQueryString,
 		canonicalHeaders, signedHeaders, hashedPayload)
 
-	timestamp := fmt.Sprintf("%d", time.Now().Unix())
-	t, _ := time.Parse("2006-01-02", time.Now().UTC().Format("2006-01-02"))
-	date := t.Format("2006-01-02")
+	now := time.Now()
+	timestamp := fmt.Sprintf("%d", now.Unix())
+	date := now.UTC().Format("2006-01-02")
 	service := strings.SplitN(targetHost, ".", 2)[0]
 	credentialScope := fmt.Sprintf("%s/%s/tc3_request", date, service)
 	hashedCanonicalRequest := sha256hex(canonicalRequest)
@@ -424,7 +450,7 @@ func (c *Client) sendWithEndpointFailover(req *http.Request) (*http.Response, er
 	if c.profile.DisableRegionBreaker {
 		return c.sendHttp(req)
 	}
-	return defaultEndpointFailover.send(req, c.profile, c.credential, c.signMethod, c.unsignedPayload, c.sendHttp)
+	return defaultEndpointFailover.send(req, c)
 }
 
 // isBreakerSuccess is used by circuit_breaker_test.go.
