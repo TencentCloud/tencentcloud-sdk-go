@@ -8,7 +8,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
+	tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
 	tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -36,7 +36,6 @@ func (c *Client) sendWithRateLimitRetry(req *http.Request, retryable bool) (resp
 		if err != nil {
 			return
 		}
-
 		err = decompressBodyReader(resp)
 		if err != nil {
 			return resp, err
@@ -44,7 +43,7 @@ func (c *Client) sendWithRateLimitRetry(req *http.Request, retryable bool) (resp
 
 		err = tchttp.TryReadErr(resp)
 		// should not sleep on last request
-		if err, ok := err.(*errors.TencentCloudSDKError); ok && err.Code == codeLimitExceeded && idx < maxRetries {
+		if err, ok := err.(*tcerr.TencentCloudSDKError); ok && err.Code == codeLimitExceeded && idx < maxRetries {
 			duration := durationFunc(idx)
 			if c.debug {
 				c.logger.Printf(tplRateLimitRetry, idx, maxRetries, duration.Seconds(), err.Error())
