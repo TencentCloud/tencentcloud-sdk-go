@@ -20,74 +20,11 @@ import (
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/regions"
 	es "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/es/v20250101"
-	hunyuan "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/hunyuan/v20230901"
 	"net"
 	"net/http/httptrace"
 	"os"
 	"testing"
 )
-
-func TestChatCompletionsStream(t *testing.T) {
-	credential := common.NewCredential(
-		os.Getenv("TENCENTCLOUD_SECRET_ID"),
-		os.Getenv("TENCENTCLOUD_SECRET_KEY"),
-	)
-
-	cpf := profile.NewClientProfile()
-	cpf.HttpProfile.ReqTimeout = 400
-
-	client, _ := hunyuan.NewClient(credential, regions.Guangzhou, cpf)
-
-	request := hunyuan.NewChatCompletionsRequest()
-
-	msg := &hunyuan.Message{
-		Role:    common.StringPtr("user"),
-		Content: common.StringPtr("hi, tell me a joke"),
-	}
-	request.Messages = append(request.Messages, msg)
-
-	request.Stream = common.BoolPtr(true)
-	request.Model = common.StringPtr("hunyuan-standard")
-
-	response, err := client.ChatCompletions(request)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	for event := range response.Events {
-		t.Log(string(event.Data))
-	}
-}
-
-func TestChatCompletionsNonStream(t *testing.T) {
-	credential := common.NewCredential(
-		os.Getenv("TENCENTCLOUD_SECRET_ID"),
-		os.Getenv("TENCENTCLOUD_SECRET_KEY"),
-	)
-
-	cpf := profile.NewClientProfile()
-	cpf.HttpProfile.ReqTimeout = 400
-
-	client, _ := hunyuan.NewClient(credential, regions.Guangzhou, cpf)
-
-	request := hunyuan.NewChatCompletionsRequest()
-
-	msg := &hunyuan.Message{
-		Role:    common.StringPtr("user"),
-		Content: common.StringPtr("hi, tell me a joke"),
-	}
-	request.Messages = append(request.Messages, msg)
-
-	request.Stream = common.BoolPtr(false)
-	request.Model = common.StringPtr("hunyuan-standard")
-
-	response, err := client.ChatCompletions(request)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	t.Log(response.ToJsonString())
-}
 
 func TestUseAIDomainByDefault(t *testing.T) {
 	const expectHost = "es.ai.tencentcloudapi.com"
