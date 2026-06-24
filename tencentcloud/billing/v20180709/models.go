@@ -2700,41 +2700,47 @@ type CosDetailSets struct {
 }
 
 type CostComponentSet struct {
-	// 组件类型名称
+	// <p>组件类型名称</p>
 	ComponentCodeName *string `json:"ComponentCodeName,omitnil,omitempty" name:"ComponentCodeName"`
 
-	// 组件名称
+	// <p>组件名称</p>
 	ItemCodeName *string `json:"ItemCodeName,omitnil,omitempty" name:"ItemCodeName"`
 
-	// 刊例价
+	// <p>刊例价</p>
 	SinglePrice *string `json:"SinglePrice,omitnil,omitempty" name:"SinglePrice"`
 
-	// 刊例价单位
+	// <p>刊例价单位</p>
 	PriceUnit *string `json:"PriceUnit,omitnil,omitempty" name:"PriceUnit"`
 
-	// 用量
+	// <p>用量</p>
 	UsedAmount *string `json:"UsedAmount,omitnil,omitempty" name:"UsedAmount"`
 
-	// 用量单位
+	// <p>用量单位</p>
 	UsedAmountUnit *string `json:"UsedAmountUnit,omitnil,omitempty" name:"UsedAmountUnit"`
 
-	// 原价
+	// <p>原价</p>
 	Cost *string `json:"Cost,omitnil,omitempty" name:"Cost"`
 
-	// 折扣
+	// <p>折扣</p>
 	Discount *string `json:"Discount,omitnil,omitempty" name:"Discount"`
 
-	// 折后价
+	// <p>折后价</p>
 	RealCost *string `json:"RealCost,omitnil,omitempty" name:"RealCost"`
 
-	// 代金券支付金额
+	// <p>代金券支付金额</p>
 	VoucherPayAmount *string `json:"VoucherPayAmount,omitnil,omitempty" name:"VoucherPayAmount"`
 
-	// 现金支付金额
+	// <p>现金支付金额</p>
 	CashPayAmount *string `json:"CashPayAmount,omitnil,omitempty" name:"CashPayAmount"`
 
-	// 赠送金支付金额
+	// <p>赠送金支付金额</p>
 	IncentivePayAmount *string `json:"IncentivePayAmount,omitnil,omitempty" name:"IncentivePayAmount"`
+
+	// <p>组件类型code</p>
+	ComponentCode *string `json:"ComponentCode,omitnil,omitempty" name:"ComponentCode"`
+
+	// <p>组件名称code</p>
+	ItemCode *string `json:"ItemCode,omitnil,omitempty" name:"ItemCode"`
 }
 
 type CostDetail struct {
@@ -2797,6 +2803,9 @@ type CostDetail struct {
 
 	// <p>扣费时间：结算扣费时间</p>
 	PayTime *string `json:"PayTime,omitnil,omitempty" name:"PayTime"`
+
+	// <p>产品名称code</p>
+	BusinessCode *string `json:"BusinessCode,omitnil,omitempty" name:"BusinessCode"`
 }
 
 // Predefined struct for user
@@ -3778,14 +3787,14 @@ func (r *DeleteGatherRuleResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAccountBalanceRequestParams struct {
-	// 是否查询临时额度
+	// <p>是否查询临时额度</p>
 	TempCredit *bool `json:"TempCredit,omitnil,omitempty" name:"TempCredit"`
 }
 
 type DescribeAccountBalanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 是否查询临时额度
+	// <p>是否查询临时额度</p>
 	TempCredit *bool `json:"TempCredit,omitnil,omitempty" name:"TempCredit"`
 }
 
@@ -3810,53 +3819,53 @@ func (r *DescribeAccountBalanceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAccountBalanceResponseParams struct {
-	// 接口做过变更,为兼容老接口,本字段与RealBalance相同,为当前真实可用余额,单位 分
+	// <p>接口做过变更,为兼容老接口,本字段与RealBalance相同,为当前真实可用余额,单位 分</p>
 	Balance *int64 `json:"Balance,omitnil,omitempty" name:"Balance"`
 
-	// 查询的用户Uin
+	// <p>查询的用户Uin</p>
 	Uin *uint64 `json:"Uin,omitnil,omitempty" name:"Uin"`
 
-	// 当前真实可用余额,单位 分
+	// <p>当前真实可用余额,单位 分。RealBalance=CashAccountBalance+IncomeIntoAccountBalance+PresentAccountBalance-FreezeAmount-OweAmount</p><p>单位：分</p>
 	RealBalance *float64 `json:"RealBalance,omitnil,omitempty" name:"RealBalance"`
 
-	// 现金账户余额,单位 分
+	// <p>现金账户余额,单位 分</p>
 	CashAccountBalance *float64 `json:"CashAccountBalance,omitnil,omitempty" name:"CashAccountBalance"`
 
-	// 收益转入账户余额,单位 分
+	// <p>收益转入账户余额,单位 分</p>
 	IncomeIntoAccountBalance *float64 `json:"IncomeIntoAccountBalance,omitnil,omitempty" name:"IncomeIntoAccountBalance"`
 
-	// 赠送账户余额,单位 分
+	// <p>赠送账户余额,单位 分</p>
 	PresentAccountBalance *float64 `json:"PresentAccountBalance,omitnil,omitempty" name:"PresentAccountBalance"`
 
-	// 冻结金额,单位 分
+	// <p>冻结金额,单位 分</p>
 	FreezeAmount *float64 `json:"FreezeAmount,omitnil,omitempty" name:"FreezeAmount"`
 
-	// 欠费金额,单位 分
+	// <p>欠费金额,单位 分</p>
 	OweAmount *float64 `json:"OweAmount,omitnil,omitempty" name:"OweAmount"`
 
-	// 是否允许欠费消费
+	// <p>是否允许欠费消费</p>
 	//
 	// Deprecated: IsAllowArrears is deprecated.
 	IsAllowArrears *bool `json:"IsAllowArrears,omitnil,omitempty" name:"IsAllowArrears"`
 
-	// 是否限制信用额度
+	// <p>是否限制信用额度</p>
 	//
 	// Deprecated: IsCreditLimited is deprecated.
 	IsCreditLimited *bool `json:"IsCreditLimited,omitnil,omitempty" name:"IsCreditLimited"`
 
-	// 信用额度,单位 分
+	// <p>信用额度,单位 分</p>
 	CreditAmount *float64 `json:"CreditAmount,omitnil,omitempty" name:"CreditAmount"`
 
-	// 可用信用额度,单位 分
+	// <p>可用信用额度,单位 分。CreditBalance=CashAccountBalance+IncomeIntoAccountBalance+PresentAccountBalance+CreditAmount-OweAmount</p><p>单位：分</p>
 	CreditBalance *float64 `json:"CreditBalance,omitnil,omitempty" name:"CreditBalance"`
 
-	// 真实可用信用额度,单位 分
+	// <p>真实可用信用额度,单位 分。RealCreditBalance=CreditBalance-FreezeAmount</p><p>单位：分</p>
 	RealCreditBalance *float64 `json:"RealCreditBalance,omitnil,omitempty" name:"RealCreditBalance"`
 
-	// 临时额度，单位 分
+	// <p>临时额度，单位 分</p>
 	TempCredit *float64 `json:"TempCredit,omitnil,omitempty" name:"TempCredit"`
 
-	// 临时额度详情
+	// <p>临时额度详情</p>
 	TempAmountInfoList []*UinTempAmountModel `json:"TempAmountInfoList,omitnil,omitempty" name:"TempAmountInfoList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

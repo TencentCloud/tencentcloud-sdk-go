@@ -19548,29 +19548,33 @@ func (r *ModifyClusterSchedulerPolicyResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyClusterTagsRequestParams struct {
-	// 集群ID
+	// <p>集群ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 集群标签:
-	// [{"TagKey":"env","TagValue":"dev"}]}]
+	// <p>集群标签:<br>[{&quot;TagKey&quot;:&quot;env&quot;,&quot;TagValue&quot;:&quot;dev&quot;}]}]</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 是否同步集群内子资源标签
+	// <p>是否同步集群内子资源标签</p>
 	SyncSubresource *bool `json:"SyncSubresource,omitnil,omitempty" name:"SyncSubresource"`
+
+	// <p>是否同步节点池标签</p>
+	SyncNodePoolTags *bool `json:"SyncNodePoolTags,omitnil,omitempty" name:"SyncNodePoolTags"`
 }
 
 type ModifyClusterTagsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群ID
+	// <p>集群ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 集群标签:
-	// [{"TagKey":"env","TagValue":"dev"}]}]
+	// <p>集群标签:<br>[{&quot;TagKey&quot;:&quot;env&quot;,&quot;TagValue&quot;:&quot;dev&quot;}]}]</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 是否同步集群内子资源标签
+	// <p>是否同步集群内子资源标签</p>
 	SyncSubresource *bool `json:"SyncSubresource,omitnil,omitempty" name:"SyncSubresource"`
+
+	// <p>是否同步节点池标签</p>
+	SyncNodePoolTags *bool `json:"SyncNodePoolTags,omitnil,omitempty" name:"SyncNodePoolTags"`
 }
 
 func (r *ModifyClusterTagsRequest) ToJsonString() string {
@@ -19588,6 +19592,7 @@ func (r *ModifyClusterTagsRequest) FromJsonString(s string) error {
 	delete(f, "ClusterId")
 	delete(f, "Tags")
 	delete(f, "SyncSubresource")
+	delete(f, "SyncNodePoolTags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyClusterTagsRequest has unknown keys!", "")
 	}
@@ -19596,7 +19601,7 @@ func (r *ModifyClusterTagsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyClusterTagsResponseParams struct {
-	// 集群标签
+	// <p>集群标签</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 

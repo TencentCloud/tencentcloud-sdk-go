@@ -11066,7 +11066,7 @@ func (r *DescribeIpHitItemsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeLLMContentSecCheckRequestParams struct {
-	// <p>服务id,使用哪一套防护策略，就需要传哪一套服务id，模型会检测该服务id下的所有规则</p>
+	// <p>服务id，使用哪一套防护策略，就需要传哪一套服务id，模型会检测该服务id下的所有规则</p>
 	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
 
 	// <p>流量类型，是入向流量还是出向流量，入向：1，出向：2；入向和出向必填</p>
@@ -11078,7 +11078,7 @@ type DescribeLLMContentSecCheckRequestParams struct {
 	// <p>要审核的内容</p>
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 
-	// <p>对话的id</p>
+	// <p>一问一答的对话的id</p>
 	ChatId *string `json:"ChatId,omitnil,omitempty" name:"ChatId"`
 
 	// <p>标识用户的id，限速使用，不填，则限速会不生效</p>
@@ -11095,12 +11095,18 @@ type DescribeLLMContentSecCheckRequestParams struct {
 
 	// <p>tool_call 场景工具参数</p>
 	ToolArgs *string `json:"ToolArgs,omitnil,omitempty" name:"ToolArgs"`
+
+	// <p>多轮对话的id</p>
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// <p>意图检测请求内容</p>
+	IntentContent *IntentContent `json:"IntentContent,omitnil,omitempty" name:"IntentContent"`
 }
 
 type DescribeLLMContentSecCheckRequest struct {
 	*tchttp.BaseRequest
 	
-	// <p>服务id,使用哪一套防护策略，就需要传哪一套服务id，模型会检测该服务id下的所有规则</p>
+	// <p>服务id，使用哪一套防护策略，就需要传哪一套服务id，模型会检测该服务id下的所有规则</p>
 	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
 
 	// <p>流量类型，是入向流量还是出向流量，入向：1，出向：2；入向和出向必填</p>
@@ -11112,7 +11118,7 @@ type DescribeLLMContentSecCheckRequest struct {
 	// <p>要审核的内容</p>
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 
-	// <p>对话的id</p>
+	// <p>一问一答的对话的id</p>
 	ChatId *string `json:"ChatId,omitnil,omitempty" name:"ChatId"`
 
 	// <p>标识用户的id，限速使用，不填，则限速会不生效</p>
@@ -11129,6 +11135,12 @@ type DescribeLLMContentSecCheckRequest struct {
 
 	// <p>tool_call 场景工具参数</p>
 	ToolArgs *string `json:"ToolArgs,omitnil,omitempty" name:"ToolArgs"`
+
+	// <p>多轮对话的id</p>
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// <p>意图检测请求内容</p>
+	IntentContent *IntentContent `json:"IntentContent,omitnil,omitempty" name:"IntentContent"`
 }
 
 func (r *DescribeLLMContentSecCheckRequest) ToJsonString() string {
@@ -11153,6 +11165,8 @@ func (r *DescribeLLMContentSecCheckRequest) FromJsonString(s string) error {
 	delete(f, "ImageEncode")
 	delete(f, "ToolName")
 	delete(f, "ToolArgs")
+	delete(f, "SessionId")
+	delete(f, "IntentContent")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLLMContentSecCheckRequest has unknown keys!", "")
 	}
@@ -16040,6 +16054,16 @@ type InstanceInfo struct {
 	TagInfos []*TagInfo `json:"TagInfos,omitnil,omitempty" name:"TagInfos"`
 }
 
+type IntentContent struct {
+	// <p>agent的轨迹内容，参考用例</p>
+	AgentTrace *string `json:"AgentTrace,omitnil,omitempty" name:"AgentTrace"`
+}
+
+type IntentDetectResult struct {
+	// <p>是否恶意意图</p><p>枚举值：</p><ul><li>1： 恶意</li><li>0： 正常</li></ul>
+	IsUnSafe *uint64 `json:"IsUnSafe,omitnil,omitempty" name:"IsUnSafe"`
+}
+
 type IpAccessControlData struct {
 	// ip黑白名单
 	Res []*IpAccessControlItem `json:"Res,omitnil,omitempty" name:"Res"`
@@ -16211,6 +16235,9 @@ type LLMDetectResult struct {
 
 	// <p>toolcall的检测结果</p>
 	ToolCallResult *ToolCallResult `json:"ToolCallResult,omitnil,omitempty" name:"ToolCallResult"`
+
+	// <p>意图检测结果</p>
+	IntentDetectResult *IntentDetectResult `json:"IntentDetectResult,omitnil,omitempty" name:"IntentDetectResult"`
 }
 
 type LLMMonPkg struct {

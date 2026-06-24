@@ -83,251 +83,221 @@ func (r *AssociateSecurityGroupsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateInstanceRequestParams struct {
-	// 私有网络 ID。
+	// <p>私有网络 ID。</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 私有网络 VPC 的子网 ID。
+	// <p>私有网络 VPC 的子网 ID。</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 指定实例计费方式。
-	// - 0：按量付费。
-	// - 1：包年包月。
+	// <p>指定实例计费方式。</p><ul><li>0：按量付费。</li><li>1：包年包月。</li></ul>
 	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// 设置实例名称。仅支持长度不超过 60 的中文/英文/数字/-/_。
+	// <p>设置实例名称。仅支持长度不超过 60 的中文/英文/数字/-/_。</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 安全组 ID。
+	// <p>安全组 ID。</p>
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
 
-	// 若计费方式为包年包月，指定包年包月续费的时长。
-	// - 单位：月。
-	// - 取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36。默认为1。
+	// <p>若计费方式为包年包月，指定包年包月续费的时长。</p><ul><li>单位：月。</li><li>取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36。默认为1。</li></ul>
 	PayPeriod *int64 `json:"PayPeriod,omitnil,omitempty" name:"PayPeriod"`
 
-	// 若为包年包月计费，需指定是否开启自动续费。
-	// - 0：不开启自动续费。
-	// - 1：开启自动续费。
+	// <p>若为包年包月计费，需指定是否开启自动续费。</p><ul><li>0：不开启自动续费。</li><li>1：开启自动续费。</li></ul>
 	AutoRenew *int64 `json:"AutoRenew,omitnil,omitempty" name:"AutoRenew"`
 
-	// 实例额外参数，通过json提交。
+	// <p>实例额外参数，通过json提交。</p>
 	Params *string `json:"Params,omitnil,omitempty" name:"Params"`
 
-	// 以数组形式列出标签信息。
+	// <p>以数组形式列出标签信息。</p>
 	ResourceTags []*Tag `json:"ResourceTags,omitnil,omitempty" name:"ResourceTags"`
 
-	// 指定实例所属项目 ID。
+	// <p>指定实例所属项目 ID。</p>
 	//
 	// Deprecated: Project is deprecated.
 	Project *string `json:"Project,omitnil,omitempty" name:"Project"`
 
-	// 产品版本，0-标准版，1-容量增强版
+	// <p>产品版本，0-标准版，1-容量增强版</p>
 	ProductType *int64 `json:"ProductType,omitnil,omitempty" name:"ProductType"`
 
-	// 实例类型。
-	// - base：免费测试版。
-	// - single：单机版。
-	// - cluster：高可用版。
+	// <p>实例类型。</p><ul><li>base：免费测试版。</li><li>single：单机版。</li><li>cluster：高可用版。</li></ul>
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
-	// 实例类型为高可用版，需指定可用区选项。
-	// - two：两可用区。
-	// - three：三可用区。
+	// <p>实例类型为高可用版，需指定可用区选项。</p><ul><li>two：两可用区。</li><li>three：三可用区。</li></ul>
 	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
 
-	// 购买实例数量。
+	// <p>购买实例数量。</p>
 	GoodsNum *int64 `json:"GoodsNum,omitnil,omitempty" name:"GoodsNum"`
 
-	// 网络类型。
-	// VPC或TCS
+	// <p>网络类型。<br>VPC或TCS</p>
 	//
 	// Deprecated: NetworkType is deprecated.
 	NetworkType *string `json:"NetworkType,omitnil,omitempty" name:"NetworkType"`
 
-	// 实例所应用的参数模板 ID。
+	// <p>实例所应用的参数模板 ID。</p>
 	//
 	// Deprecated: TemplateId is deprecated.
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
-	// 组件具体设置列表。
+	// <p>组件具体设置列表。</p>
 	//
 	// Deprecated: Components is deprecated.
 	Components []*CreateInstancesComponent `json:"Components,omitnil,omitempty" name:"Components"`
 
-	// 实例类型为高可用版，通过该参数指定主可用区。
+	// <p>实例类型为高可用版，通过该参数指定主可用区。</p>
 	//
 	// Deprecated: Zone is deprecated.
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 实例类型为高可用版，通过该参数指定备可用区。
+	// <p>实例类型为高可用版，通过该参数指定备可用区。</p>
 	//
 	// Deprecated: SlaveZones is deprecated.
 	SlaveZones []*string `json:"SlaveZones,omitnil,omitempty" name:"SlaveZones"`
 
-	// 是否长期有效
+	// <p>是否长期有效</p>
 	//
 	// Deprecated: IsNoExpired is deprecated.
 	IsNoExpired *bool `json:"IsNoExpired,omitnil,omitempty" name:"IsNoExpired"`
 
-	// 引擎名称，业务自定义。
+	// <p>引擎名称，业务自定义。</p>
 	//
 	// Deprecated: EngineName is deprecated.
 	EngineName *string `json:"EngineName,omitnil,omitempty" name:"EngineName"`
 
-	// 引擎版本，业务自定义。
+	// <p>引擎版本，业务自定义。</p>
 	//
 	// Deprecated: EngineVersion is deprecated.
 	EngineVersion *string `json:"EngineVersion,omitnil,omitempty" name:"EngineVersion"`
 
-	// 实例描述。
+	// <p>实例描述。</p>
 	//
 	// Deprecated: Brief is deprecated.
 	Brief *string `json:"Brief,omitnil,omitempty" name:"Brief"`
 
-	// 负责人信息。
+	// <p>负责人信息。</p>
 	//
 	// Deprecated: Chief is deprecated.
 	Chief *string `json:"Chief,omitnil,omitempty" name:"Chief"`
 
-	// DBA人员信息
+	// <p>DBA人员信息</p>
 	//
 	// Deprecated: DBA is deprecated.
 	DBA *string `json:"DBA,omitnil,omitempty" name:"DBA"`
 
-	// 指定实例的节点类型。具体信息，请参见[选择节点类型](https://cloud.tencent.com/document/product/1709/113399)。
-	// - compute：计费型。
-	// - normal：标准型。
-	// - store：存储型。
+	// <p>指定实例的节点类型。具体信息，请参见<a href="https://cloud.tencent.com/document/product/1709/113399">选择节点类型</a>。</p><ul><li>compute：计费型。</li><li>normal：标准型。</li><li>store：存储型。</li></ul>
 	//
 	// Deprecated: NodeType is deprecated.
 	NodeType *string `json:"NodeType,omitnil,omitempty" name:"NodeType"`
 
-	// 指定实例所需的 CPU 核数。实例类型不同，支持的 CPU 核数存在差异。
-	// - 计算型： 1、2、4、8、16、24、32。
-	// - 标准型： 1、2、4、8、12、16。
-	// - 存储型： 1、2、4、6、8。
+	// <p>指定实例所需的 CPU 核数。实例类型不同，支持的 CPU 核数存在差异。</p><ul><li>计算型： 1、2、4、8、16、24、32。</li><li>标准型： 1、2、4、8、12、16。</li><li>存储型： 1、2、4、6、8。</li></ul>
 	Cpu *uint64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 
-	// 指定实例所需的内存大小。单位：GB。选择具体规格，请参见[配置规格（选型）](https://cloud.tencent.com/document/product/1709/113399)。
+	// <p>指定实例所需的内存大小。单位：GB。选择具体规格，请参见<a href="https://cloud.tencent.com/document/product/1709/113399">配置规格（选型）</a>。</p>
 	Memory *uint64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
-	// 指定实例所需的磁盘大小，单位：GB。选择具体规格，请参见[配置规格（选型）](https://cloud.tencent.com/document/product/1709/113399)。
+	// <p>指定实例所需的磁盘大小，单位：GB。选择具体规格，请参见<a href="https://cloud.tencent.com/document/product/1709/113399">配置规格（选型）</a>。</p>
 	DiskSize *uint64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
 
-	// 指定实例所需配置的节点数量。选择方法，请参见[配置规格（选型）](https://cloud.tencent.com/document/product/1709/113399)。
+	// <p>指定实例所需配置的节点数量。选择方法，请参见<a href="https://cloud.tencent.com/document/product/1709/113399">配置规格（选型）</a>。</p>
 	WorkerNodeNum *uint64 `json:"WorkerNodeNum,omitnil,omitempty" name:"WorkerNodeNum"`
+
+	// <p>是否开启磁盘数据存储加密（仅 CBS 数据盘生效，需落在 VECTORDB_DISK_ENCRYPT_REGION 白名单地域，默认 false 不开启）</p><p>默认值：true</p>
+	EnableEncryption *bool `json:"EnableEncryption,omitnil,omitempty" name:"EnableEncryption"`
 }
 
 type CreateInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 私有网络 ID。
+	// <p>私有网络 ID。</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 私有网络 VPC 的子网 ID。
+	// <p>私有网络 VPC 的子网 ID。</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 指定实例计费方式。
-	// - 0：按量付费。
-	// - 1：包年包月。
+	// <p>指定实例计费方式。</p><ul><li>0：按量付费。</li><li>1：包年包月。</li></ul>
 	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// 设置实例名称。仅支持长度不超过 60 的中文/英文/数字/-/_。
+	// <p>设置实例名称。仅支持长度不超过 60 的中文/英文/数字/-/_。</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 安全组 ID。
+	// <p>安全组 ID。</p>
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
 
-	// 若计费方式为包年包月，指定包年包月续费的时长。
-	// - 单位：月。
-	// - 取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36。默认为1。
+	// <p>若计费方式为包年包月，指定包年包月续费的时长。</p><ul><li>单位：月。</li><li>取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36。默认为1。</li></ul>
 	PayPeriod *int64 `json:"PayPeriod,omitnil,omitempty" name:"PayPeriod"`
 
-	// 若为包年包月计费，需指定是否开启自动续费。
-	// - 0：不开启自动续费。
-	// - 1：开启自动续费。
+	// <p>若为包年包月计费，需指定是否开启自动续费。</p><ul><li>0：不开启自动续费。</li><li>1：开启自动续费。</li></ul>
 	AutoRenew *int64 `json:"AutoRenew,omitnil,omitempty" name:"AutoRenew"`
 
-	// 实例额外参数，通过json提交。
+	// <p>实例额外参数，通过json提交。</p>
 	Params *string `json:"Params,omitnil,omitempty" name:"Params"`
 
-	// 以数组形式列出标签信息。
+	// <p>以数组形式列出标签信息。</p>
 	ResourceTags []*Tag `json:"ResourceTags,omitnil,omitempty" name:"ResourceTags"`
 
-	// 指定实例所属项目 ID。
+	// <p>指定实例所属项目 ID。</p>
 	Project *string `json:"Project,omitnil,omitempty" name:"Project"`
 
-	// 产品版本，0-标准版，1-容量增强版
+	// <p>产品版本，0-标准版，1-容量增强版</p>
 	ProductType *int64 `json:"ProductType,omitnil,omitempty" name:"ProductType"`
 
-	// 实例类型。
-	// - base：免费测试版。
-	// - single：单机版。
-	// - cluster：高可用版。
+	// <p>实例类型。</p><ul><li>base：免费测试版。</li><li>single：单机版。</li><li>cluster：高可用版。</li></ul>
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
-	// 实例类型为高可用版，需指定可用区选项。
-	// - two：两可用区。
-	// - three：三可用区。
+	// <p>实例类型为高可用版，需指定可用区选项。</p><ul><li>two：两可用区。</li><li>three：三可用区。</li></ul>
 	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
 
-	// 购买实例数量。
+	// <p>购买实例数量。</p>
 	GoodsNum *int64 `json:"GoodsNum,omitnil,omitempty" name:"GoodsNum"`
 
-	// 网络类型。
-	// VPC或TCS
+	// <p>网络类型。<br>VPC或TCS</p>
 	NetworkType *string `json:"NetworkType,omitnil,omitempty" name:"NetworkType"`
 
-	// 实例所应用的参数模板 ID。
+	// <p>实例所应用的参数模板 ID。</p>
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
-	// 组件具体设置列表。
+	// <p>组件具体设置列表。</p>
 	Components []*CreateInstancesComponent `json:"Components,omitnil,omitempty" name:"Components"`
 
-	// 实例类型为高可用版，通过该参数指定主可用区。
+	// <p>实例类型为高可用版，通过该参数指定主可用区。</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 实例类型为高可用版，通过该参数指定备可用区。
+	// <p>实例类型为高可用版，通过该参数指定备可用区。</p>
 	SlaveZones []*string `json:"SlaveZones,omitnil,omitempty" name:"SlaveZones"`
 
-	// 是否长期有效
+	// <p>是否长期有效</p>
 	IsNoExpired *bool `json:"IsNoExpired,omitnil,omitempty" name:"IsNoExpired"`
 
-	// 引擎名称，业务自定义。
+	// <p>引擎名称，业务自定义。</p>
 	EngineName *string `json:"EngineName,omitnil,omitempty" name:"EngineName"`
 
-	// 引擎版本，业务自定义。
+	// <p>引擎版本，业务自定义。</p>
 	EngineVersion *string `json:"EngineVersion,omitnil,omitempty" name:"EngineVersion"`
 
-	// 实例描述。
+	// <p>实例描述。</p>
 	Brief *string `json:"Brief,omitnil,omitempty" name:"Brief"`
 
-	// 负责人信息。
+	// <p>负责人信息。</p>
 	Chief *string `json:"Chief,omitnil,omitempty" name:"Chief"`
 
-	// DBA人员信息
+	// <p>DBA人员信息</p>
 	DBA *string `json:"DBA,omitnil,omitempty" name:"DBA"`
 
-	// 指定实例的节点类型。具体信息，请参见[选择节点类型](https://cloud.tencent.com/document/product/1709/113399)。
-	// - compute：计费型。
-	// - normal：标准型。
-	// - store：存储型。
+	// <p>指定实例的节点类型。具体信息，请参见<a href="https://cloud.tencent.com/document/product/1709/113399">选择节点类型</a>。</p><ul><li>compute：计费型。</li><li>normal：标准型。</li><li>store：存储型。</li></ul>
 	NodeType *string `json:"NodeType,omitnil,omitempty" name:"NodeType"`
 
-	// 指定实例所需的 CPU 核数。实例类型不同，支持的 CPU 核数存在差异。
-	// - 计算型： 1、2、4、8、16、24、32。
-	// - 标准型： 1、2、4、8、12、16。
-	// - 存储型： 1、2、4、6、8。
+	// <p>指定实例所需的 CPU 核数。实例类型不同，支持的 CPU 核数存在差异。</p><ul><li>计算型： 1、2、4、8、16、24、32。</li><li>标准型： 1、2、4、8、12、16。</li><li>存储型： 1、2、4、6、8。</li></ul>
 	Cpu *uint64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 
-	// 指定实例所需的内存大小。单位：GB。选择具体规格，请参见[配置规格（选型）](https://cloud.tencent.com/document/product/1709/113399)。
+	// <p>指定实例所需的内存大小。单位：GB。选择具体规格，请参见<a href="https://cloud.tencent.com/document/product/1709/113399">配置规格（选型）</a>。</p>
 	Memory *uint64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
-	// 指定实例所需的磁盘大小，单位：GB。选择具体规格，请参见[配置规格（选型）](https://cloud.tencent.com/document/product/1709/113399)。
+	// <p>指定实例所需的磁盘大小，单位：GB。选择具体规格，请参见<a href="https://cloud.tencent.com/document/product/1709/113399">配置规格（选型）</a>。</p>
 	DiskSize *uint64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
 
-	// 指定实例所需配置的节点数量。选择方法，请参见[配置规格（选型）](https://cloud.tencent.com/document/product/1709/113399)。
+	// <p>指定实例所需配置的节点数量。选择方法，请参见<a href="https://cloud.tencent.com/document/product/1709/113399">配置规格（选型）</a>。</p>
 	WorkerNodeNum *uint64 `json:"WorkerNodeNum,omitnil,omitempty" name:"WorkerNodeNum"`
+
+	// <p>是否开启磁盘数据存储加密（仅 CBS 数据盘生效，需落在 VECTORDB_DISK_ENCRYPT_REGION 白名单地域，默认 false 不开启）</p><p>默认值：true</p>
+	EnableEncryption *bool `json:"EnableEncryption,omitnil,omitempty" name:"EnableEncryption"`
 }
 
 func (r *CreateInstanceRequest) ToJsonString() string {
@@ -372,6 +342,7 @@ func (r *CreateInstanceRequest) FromJsonString(s string) error {
 	delete(f, "Memory")
 	delete(f, "DiskSize")
 	delete(f, "WorkerNodeNum")
+	delete(f, "EnableEncryption")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInstanceRequest has unknown keys!", "")
 	}
@@ -380,7 +351,7 @@ func (r *CreateInstanceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateInstanceResponseParams struct {
-	// 实例 ID。
+	// <p>实例 ID。</p>
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

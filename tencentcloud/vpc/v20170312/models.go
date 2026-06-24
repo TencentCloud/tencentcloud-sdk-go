@@ -2928,29 +2928,35 @@ type CcnPolicyBasedRoutingNextHop struct {
 }
 
 type CcnPolicyBasedRoutingRule struct {
-	// 策略路由下一跳ID
+	// <p>策略路由下一跳ID</p>
 	PolicyBasedRoutingNextHopId *string `json:"PolicyBasedRoutingNextHopId,omitnil,omitempty" name:"PolicyBasedRoutingNextHopId"`
 
-	// 实例类型[VPC,DIRECTCONNECT,VPNGW]
+	// <p>实例类型[VPC,DIRECTCONNECT,VPNGW]</p>
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
-	// 实例ID
+	// <p>实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 源地址CIDR
+	// <p>源地址CIDR</p>
 	SourceCidrBlock *string `json:"SourceCidrBlock,omitnil,omitempty" name:"SourceCidrBlock"`
 
-	// 目的地址CIDR
+	// <p>目的地址CIDR</p>
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitnil,omitempty" name:"DestinationCidrBlock"`
 
-	// 优先级
+	// <p>优先级</p>
 	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
 
-	// 描述
+	// <p>描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 策略路由匹配策略ID
+	// <p>策略路由匹配策略ID</p>
 	PolicyBasedRoutingRuleId *string `json:"PolicyBasedRoutingRuleId,omitnil,omitempty" name:"PolicyBasedRoutingRuleId"`
+
+	// <p>目的端实例ID</p><p>枚举值：</p><ul><li>VPC： 私有网络</li></ul>
+	DestinationInstanceType *string `json:"DestinationInstanceType,omitnil,omitempty" name:"DestinationInstanceType"`
+
+	// <p>目的端实例ID</p>
+	DestinationInstanceId *string `json:"DestinationInstanceId,omitnil,omitempty" name:"DestinationInstanceId"`
 }
 
 type CcnRegionBandwidthLimit struct {

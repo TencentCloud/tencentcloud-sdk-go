@@ -52,6 +52,9 @@ type ImageTranslateLLMRequestParams struct {
 
 	// <p>输入图 Url。 使用Url的时候，Data参数需要传入&quot;&quot;。 图片限制：小于 10MB，分辨率建议600*800以上，格式支持 jpg、jpeg、png。</p>
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// <p>调用模式。</p><p>枚举值：</p><ul><li>0： 端到端图片翻译大模型pro版</li><li>1： 端到端图片翻译大模型lite版</li></ul><p>默认值：0</p>
+	Mode *int64 `json:"Mode,omitnil,omitempty" name:"Mode"`
 }
 
 type ImageTranslateLLMRequest struct {
@@ -65,6 +68,9 @@ type ImageTranslateLLMRequest struct {
 
 	// <p>输入图 Url。 使用Url的时候，Data参数需要传入&quot;&quot;。 图片限制：小于 10MB，分辨率建议600*800以上，格式支持 jpg、jpeg、png。</p>
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// <p>调用模式。</p><p>枚举值：</p><ul><li>0： 端到端图片翻译大模型pro版</li><li>1： 端到端图片翻译大模型lite版</li></ul><p>默认值：0</p>
+	Mode *int64 `json:"Mode,omitnil,omitempty" name:"Mode"`
 }
 
 func (r *ImageTranslateLLMRequest) ToJsonString() string {
@@ -82,6 +88,7 @@ func (r *ImageTranslateLLMRequest) FromJsonString(s string) error {
 	delete(f, "Data")
 	delete(f, "Target")
 	delete(f, "Url")
+	delete(f, "Mode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ImageTranslateLLMRequest has unknown keys!", "")
 	}

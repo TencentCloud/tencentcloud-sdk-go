@@ -509,14 +509,14 @@ type InputFile3D struct {
 
 // Predefined struct for user
 type QueryHunyuan3DPartJobRequestParams struct {
-	// 任务ID。
+	// <p>任务ID。</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 }
 
 type QueryHunyuan3DPartJobRequest struct {
 	*tchttp.BaseRequest
 	
-	// 任务ID。
+	// <p>任务ID。</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 }
 
@@ -541,17 +541,20 @@ func (r *QueryHunyuan3DPartJobRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type QueryHunyuan3DPartJobResponseParams struct {
-	// 任务状态。WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功 示例值：RUN。
+	// <p>任务状态。WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功 示例值：RUN。</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 错误码。
+	// <p>错误码。</p>
 	ErrorCode *string `json:"ErrorCode,omitnil,omitempty" name:"ErrorCode"`
 
-	// 错误信息。
+	// <p>错误信息。</p>
 	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
 
-	// 生成文件的URL地址，有效期1天。
+	// <p>生成文件的URL地址，有效期1天。</p>
 	ResultFile3Ds []*File3D `json:"ResultFile3Ds,omitnil,omitempty" name:"ResultFile3Ds"`
+
+	// <p>是否分步骤进行组件生成；<br>开启后，输入原始模型后，可生成带分割信息的模型以及分割数据，可对此信息编辑后再传入带有分割信息的模型和分割数据进行编辑后的组件生成；<br>此参数默认关闭。</p>
+	PartSegmentationInfo *string `json:"PartSegmentationInfo,omitnil,omitempty" name:"PartSegmentationInfo"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -782,6 +785,12 @@ type SubmitHunyuan3DPartJobRequestParams struct {
 
 	// <p>组件生成模型版本，默认为1.5</p><p>枚举值：</p><ul><li>1.5： 1.5模型</li></ul><p>默认值：1.5</p>
 	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+
+	// <p>是否分步骤进行组件生成；<br>开启后，输入原始模型后，可生成带分割信息的模型以及分割数据，可对此信息编辑后再传入带有分割信息的模型和分割数据进行编辑后的组件生成；<br>此参数默认关闭。</p>
+	PartSegmentationInfo *string `json:"PartSegmentationInfo,omitnil,omitempty" name:"PartSegmentationInfo"`
+
+	// <p>是否开启后处理，开启后将只输出一个模型链接，默认关闭。 （开启此接口后，需额外增加20积分）</p>
+	EnableStagedGeneration *bool `json:"EnableStagedGeneration,omitnil,omitempty" name:"EnableStagedGeneration"`
 }
 
 type SubmitHunyuan3DPartJobRequest struct {
@@ -792,6 +801,12 @@ type SubmitHunyuan3DPartJobRequest struct {
 
 	// <p>组件生成模型版本，默认为1.5</p><p>枚举值：</p><ul><li>1.5： 1.5模型</li></ul><p>默认值：1.5</p>
 	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+
+	// <p>是否分步骤进行组件生成；<br>开启后，输入原始模型后，可生成带分割信息的模型以及分割数据，可对此信息编辑后再传入带有分割信息的模型和分割数据进行编辑后的组件生成；<br>此参数默认关闭。</p>
+	PartSegmentationInfo *string `json:"PartSegmentationInfo,omitnil,omitempty" name:"PartSegmentationInfo"`
+
+	// <p>是否开启后处理，开启后将只输出一个模型链接，默认关闭。 （开启此接口后，需额外增加20积分）</p>
+	EnableStagedGeneration *bool `json:"EnableStagedGeneration,omitnil,omitempty" name:"EnableStagedGeneration"`
 }
 
 func (r *SubmitHunyuan3DPartJobRequest) ToJsonString() string {
@@ -808,6 +823,8 @@ func (r *SubmitHunyuan3DPartJobRequest) FromJsonString(s string) error {
 	}
 	delete(f, "File")
 	delete(f, "Model")
+	delete(f, "PartSegmentationInfo")
+	delete(f, "EnableStagedGeneration")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitHunyuan3DPartJobRequest has unknown keys!", "")
 	}

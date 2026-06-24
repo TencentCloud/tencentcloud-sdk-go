@@ -2463,132 +2463,128 @@ func (r *CreateBackupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateCdbProxyAddressRequestParams struct {
-	// 代理组 ID。可通过 [DescribeCdbProxyInfo](https://cloud.tencent.com/document/api/236/90585) 接口获取。
+	// <p>代理组 ID。可通过 <a href="https://cloud.tencent.com/document/api/236/90585">DescribeCdbProxyInfo</a> 接口获取。</p>
 	ProxyGroupId *string `json:"ProxyGroupId,omitnil,omitempty" name:"ProxyGroupId"`
 
-	// 权重分配模式，
-	// 系统自动分配："system"， 自定义："custom"
+	// <p>权重分配模式，<br>系统自动分配：&quot;system&quot;， 自定义：&quot;custom&quot;</p>
 	WeightMode *string `json:"WeightMode,omitnil,omitempty" name:"WeightMode"`
 
-	// 是否开启延迟剔除，取值："true" | "false"
+	// <p>是否开启延迟剔除，取值：&quot;true&quot; | &quot;false&quot;</p>
 	IsKickOut *bool `json:"IsKickOut,omitnil,omitempty" name:"IsKickOut"`
 
-	// 最小保留数量，最小取值：0
+	// <p>最小保留数量，最小取值：0</p>
 	MinCount *uint64 `json:"MinCount,omitnil,omitempty" name:"MinCount"`
 
-	// 延迟剔除阈值，最小取值：1，范围：1 - 10000，整数。
+	// <p>延迟剔除阈值，最小取值：1，范围：1 - 10000，整数。</p>
 	MaxDelay *uint64 `json:"MaxDelay,omitnil,omitempty" name:"MaxDelay"`
 
-	// 是否开启故障转移，取值："true" | "false"
+	// <p>是否开启故障转移，取值：&quot;true&quot; | &quot;false&quot;</p>
 	FailOver *bool `json:"FailOver,omitnil,omitempty" name:"FailOver"`
 
-	// 是否自动添加RO，取值："true" | "false"
+	// <p>是否自动添加RO，取值：&quot;true&quot; | &quot;false&quot;</p>
 	AutoAddRo *bool `json:"AutoAddRo,omitnil,omitempty" name:"AutoAddRo"`
 
-	// 是否是只读，取值："true" | "false"
+	// <p>是否是只读，取值：&quot;true&quot; | &quot;false&quot;</p>
 	ReadOnly *bool `json:"ReadOnly,omitnil,omitempty" name:"ReadOnly"`
 
-	// 是否开启事务分离，取值："true" | "false"
+	// <p>是否开启事务分离，取值：&quot;true&quot; | &quot;false&quot;</p>
 	TransSplit *bool `json:"TransSplit,omitnil,omitempty" name:"TransSplit"`
 
-	// 读写权重分配
+	// <p>读写权重分配</p>
 	ProxyAllocation []*ProxyAllocation `json:"ProxyAllocation,omitnil,omitempty" name:"ProxyAllocation"`
 
-	// 私有网络 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
+	// <p>私有网络 ID。可通过 <a href="https://cloud.tencent.com/document/product/236/15872">DescribeDBInstances</a> 接口获取。</p>
 	UniqVpcId *string `json:"UniqVpcId,omitnil,omitempty" name:"UniqVpcId"`
 
-	// 私有子网 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
+	// <p>私有子网 ID。可通过 <a href="https://cloud.tencent.com/document/product/236/15872">DescribeDBInstances</a> 接口获取。</p>
 	UniqSubnetId *string `json:"UniqSubnetId,omitnil,omitempty" name:"UniqSubnetId"`
 
-	// 是否开启连接池。默认关闭。
-	// 注意：如需使用数据库代理连接池能力，MySQL 8.0 主实例的内核小版本要大于等于 MySQL 8.0 20230630。
+	// <p>是否开启连接池。默认关闭。<br>注意：如需使用数据库代理连接池能力，MySQL 8.0 主实例的内核小版本要大于等于 MySQL 8.0 20230630。</p>
 	ConnectionPool *bool `json:"ConnectionPool,omitnil,omitempty" name:"ConnectionPool"`
 
-	// 描述
+	// <p>描述</p>
 	Desc *string `json:"Desc,omitnil,omitempty" name:"Desc"`
 
-	// IP 地址。不填则默认为所选 VPC 下支持的随机一个 IP。
+	// <p>IP 地址。不填则默认为所选 VPC 下支持的随机一个 IP。</p>
 	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
 
-	// 端口。默认值3306。
+	// <p>端口。默认值3306。</p>
 	VPort *uint64 `json:"VPort,omitnil,omitempty" name:"VPort"`
 
-	// 安全组
+	// <p>安全组</p>
 	SecurityGroup []*string `json:"SecurityGroup,omitnil,omitempty" name:"SecurityGroup"`
 
-	// 连接池类型。可选值 transaction（事务级别连接池），connection（会话级别连接池），ConnectionPool 为 true 时生效。默认值：connection。
+	// <p>连接池类型。可选值 transaction（事务级别连接池），connection（会话级别连接池），ConnectionPool 为 true 时生效。默认值：connection。</p>
 	ConnectionPoolType *string `json:"ConnectionPoolType,omitnil,omitempty" name:"ConnectionPoolType"`
 
-	// 是否开启自适应负载均衡。默认关闭。
+	// <p>是否开启自适应负载均衡。默认关闭。</p>
 	AutoLoadBalance *bool `json:"AutoLoadBalance,omitnil,omitempty" name:"AutoLoadBalance"`
 
-	// 接入模式。nearBy - 就近访问，balance - 均衡分配，默认值：nearBy。
+	// <p>接入模式。nearBy - 就近访问，balance - 均衡分配，默认值：nearBy。</p>
 	AccessMode *string `json:"AccessMode,omitnil,omitempty" name:"AccessMode"`
 }
 
 type CreateCdbProxyAddressRequest struct {
 	*tchttp.BaseRequest
 	
-	// 代理组 ID。可通过 [DescribeCdbProxyInfo](https://cloud.tencent.com/document/api/236/90585) 接口获取。
+	// <p>代理组 ID。可通过 <a href="https://cloud.tencent.com/document/api/236/90585">DescribeCdbProxyInfo</a> 接口获取。</p>
 	ProxyGroupId *string `json:"ProxyGroupId,omitnil,omitempty" name:"ProxyGroupId"`
 
-	// 权重分配模式，
-	// 系统自动分配："system"， 自定义："custom"
+	// <p>权重分配模式，<br>系统自动分配：&quot;system&quot;， 自定义：&quot;custom&quot;</p>
 	WeightMode *string `json:"WeightMode,omitnil,omitempty" name:"WeightMode"`
 
-	// 是否开启延迟剔除，取值："true" | "false"
+	// <p>是否开启延迟剔除，取值：&quot;true&quot; | &quot;false&quot;</p>
 	IsKickOut *bool `json:"IsKickOut,omitnil,omitempty" name:"IsKickOut"`
 
-	// 最小保留数量，最小取值：0
+	// <p>最小保留数量，最小取值：0</p>
 	MinCount *uint64 `json:"MinCount,omitnil,omitempty" name:"MinCount"`
 
-	// 延迟剔除阈值，最小取值：1，范围：1 - 10000，整数。
+	// <p>延迟剔除阈值，最小取值：1，范围：1 - 10000，整数。</p>
 	MaxDelay *uint64 `json:"MaxDelay,omitnil,omitempty" name:"MaxDelay"`
 
-	// 是否开启故障转移，取值："true" | "false"
+	// <p>是否开启故障转移，取值：&quot;true&quot; | &quot;false&quot;</p>
 	FailOver *bool `json:"FailOver,omitnil,omitempty" name:"FailOver"`
 
-	// 是否自动添加RO，取值："true" | "false"
+	// <p>是否自动添加RO，取值：&quot;true&quot; | &quot;false&quot;</p>
 	AutoAddRo *bool `json:"AutoAddRo,omitnil,omitempty" name:"AutoAddRo"`
 
-	// 是否是只读，取值："true" | "false"
+	// <p>是否是只读，取值：&quot;true&quot; | &quot;false&quot;</p>
 	ReadOnly *bool `json:"ReadOnly,omitnil,omitempty" name:"ReadOnly"`
 
-	// 是否开启事务分离，取值："true" | "false"
+	// <p>是否开启事务分离，取值：&quot;true&quot; | &quot;false&quot;</p>
 	TransSplit *bool `json:"TransSplit,omitnil,omitempty" name:"TransSplit"`
 
-	// 读写权重分配
+	// <p>读写权重分配</p>
 	ProxyAllocation []*ProxyAllocation `json:"ProxyAllocation,omitnil,omitempty" name:"ProxyAllocation"`
 
-	// 私有网络 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
+	// <p>私有网络 ID。可通过 <a href="https://cloud.tencent.com/document/product/236/15872">DescribeDBInstances</a> 接口获取。</p>
 	UniqVpcId *string `json:"UniqVpcId,omitnil,omitempty" name:"UniqVpcId"`
 
-	// 私有子网 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
+	// <p>私有子网 ID。可通过 <a href="https://cloud.tencent.com/document/product/236/15872">DescribeDBInstances</a> 接口获取。</p>
 	UniqSubnetId *string `json:"UniqSubnetId,omitnil,omitempty" name:"UniqSubnetId"`
 
-	// 是否开启连接池。默认关闭。
-	// 注意：如需使用数据库代理连接池能力，MySQL 8.0 主实例的内核小版本要大于等于 MySQL 8.0 20230630。
+	// <p>是否开启连接池。默认关闭。<br>注意：如需使用数据库代理连接池能力，MySQL 8.0 主实例的内核小版本要大于等于 MySQL 8.0 20230630。</p>
 	ConnectionPool *bool `json:"ConnectionPool,omitnil,omitempty" name:"ConnectionPool"`
 
-	// 描述
+	// <p>描述</p>
 	Desc *string `json:"Desc,omitnil,omitempty" name:"Desc"`
 
-	// IP 地址。不填则默认为所选 VPC 下支持的随机一个 IP。
+	// <p>IP 地址。不填则默认为所选 VPC 下支持的随机一个 IP。</p>
 	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
 
-	// 端口。默认值3306。
+	// <p>端口。默认值3306。</p>
 	VPort *uint64 `json:"VPort,omitnil,omitempty" name:"VPort"`
 
-	// 安全组
+	// <p>安全组</p>
 	SecurityGroup []*string `json:"SecurityGroup,omitnil,omitempty" name:"SecurityGroup"`
 
-	// 连接池类型。可选值 transaction（事务级别连接池），connection（会话级别连接池），ConnectionPool 为 true 时生效。默认值：connection。
+	// <p>连接池类型。可选值 transaction（事务级别连接池），connection（会话级别连接池），ConnectionPool 为 true 时生效。默认值：connection。</p>
 	ConnectionPoolType *string `json:"ConnectionPoolType,omitnil,omitempty" name:"ConnectionPoolType"`
 
-	// 是否开启自适应负载均衡。默认关闭。
+	// <p>是否开启自适应负载均衡。默认关闭。</p>
 	AutoLoadBalance *bool `json:"AutoLoadBalance,omitnil,omitempty" name:"AutoLoadBalance"`
 
-	// 接入模式。nearBy - 就近访问，balance - 均衡分配，默认值：nearBy。
+	// <p>接入模式。nearBy - 就近访问，balance - 均衡分配，默认值：nearBy。</p>
 	AccessMode *string `json:"AccessMode,omitnil,omitempty" name:"AccessMode"`
 }
 
@@ -2632,7 +2628,7 @@ func (r *CreateCdbProxyAddressRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateCdbProxyAddressResponseParams struct {
-	// 异步任务ID
+	// <p>异步任务ID</p>
 	AsyncRequestId *string `json:"AsyncRequestId,omitnil,omitempty" name:"AsyncRequestId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

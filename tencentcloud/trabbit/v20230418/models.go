@@ -22,45 +22,51 @@ import (
 
 // Predefined struct for user
 type CreateRabbitMQServerlessBindingRequestParams struct {
-	// 实例Id
+	// <p>实例Id</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// Vhost参数
+	// <p>Vhost参数</p>
 	VirtualHost *string `json:"VirtualHost,omitnil,omitempty" name:"VirtualHost"`
 
-	// 源exchange
+	// <p>源exchange</p>
 	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 
-	// 目标类型,取值queue或exchange
+	// <p>目标类型,取值queue或exchange</p>
 	DestinationType *string `json:"DestinationType,omitnil,omitempty" name:"DestinationType"`
 
-	// 目标队列或者交换机
+	// <p>目标队列或者交换机</p>
 	Destination *string `json:"Destination,omitnil,omitempty" name:"Destination"`
 
-	// 绑定key
+	// <p>绑定key</p>
 	RoutingKey *string `json:"RoutingKey,omitnil,omitempty" name:"RoutingKey"`
+
+	// <p>创建 Header 类型 Exchange 的 Binding 时，可以传入参数。其它类型 Exchange 无需传入</p>
+	Arguments []*RabbitMQServerlessKeyValuePair `json:"Arguments,omitnil,omitempty" name:"Arguments"`
 }
 
 type CreateRabbitMQServerlessBindingRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例Id
+	// <p>实例Id</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// Vhost参数
+	// <p>Vhost参数</p>
 	VirtualHost *string `json:"VirtualHost,omitnil,omitempty" name:"VirtualHost"`
 
-	// 源exchange
+	// <p>源exchange</p>
 	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 
-	// 目标类型,取值queue或exchange
+	// <p>目标类型,取值queue或exchange</p>
 	DestinationType *string `json:"DestinationType,omitnil,omitempty" name:"DestinationType"`
 
-	// 目标队列或者交换机
+	// <p>目标队列或者交换机</p>
 	Destination *string `json:"Destination,omitnil,omitempty" name:"Destination"`
 
-	// 绑定key
+	// <p>绑定key</p>
 	RoutingKey *string `json:"RoutingKey,omitnil,omitempty" name:"RoutingKey"`
+
+	// <p>创建 Header 类型 Exchange 的 Binding 时，可以传入参数。其它类型 Exchange 无需传入</p>
+	Arguments []*RabbitMQServerlessKeyValuePair `json:"Arguments,omitnil,omitempty" name:"Arguments"`
 }
 
 func (r *CreateRabbitMQServerlessBindingRequest) ToJsonString() string {
@@ -81,6 +87,7 @@ func (r *CreateRabbitMQServerlessBindingRequest) FromJsonString(s string) error 
 	delete(f, "DestinationType")
 	delete(f, "Destination")
 	delete(f, "RoutingKey")
+	delete(f, "Arguments")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRabbitMQServerlessBindingRequest has unknown keys!", "")
 	}
@@ -89,13 +96,13 @@ func (r *CreateRabbitMQServerlessBindingRequest) FromJsonString(s string) error 
 
 // Predefined struct for user
 type CreateRabbitMQServerlessBindingResponseParams struct {
-	// 队列名称
+	// <p>队列名称</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// vhost参数
+	// <p>vhost参数</p>
 	VirtualHost *string `json:"VirtualHost,omitnil,omitempty" name:"VirtualHost"`
 
-	// 路由关系Id
+	// <p>路由关系Id</p>
 	BindingId *int64 `json:"BindingId,omitnil,omitempty" name:"BindingId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1922,66 +1929,56 @@ func (r *DescribeRabbitMQServerlessQueueDetailResponse) FromJsonString(s string)
 
 // Predefined struct for user
 type DescribeRabbitMQServerlessQueuesRequestParams struct {
-	// 实例Id
+	// <p>实例Id</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// Vhost参数
+	// <p>Vhost参数</p>
 	VirtualHost *string `json:"VirtualHost,omitnil,omitempty" name:"VirtualHost"`
 
-	// 分页Offset
+	// <p>分页Offset</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页Limit
+	// <p>分页Limit</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 搜索关键词
+	// <p>搜索关键词</p>
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 
-	// 队列类型筛选，不填或 "all"：classic 和 quorum 队列；"classic"：筛选 classic 队列；"quorum"：筛选 quorum 队列
+	// <p>队列类型筛选，不填或 &quot;all&quot;：classic 和 quorum 队列；&quot;classic&quot;：筛选 classic 队列；&quot;quorum&quot;：筛选 quorum 队列</p>
 	QueueType *string `json:"QueueType,omitnil,omitempty" name:"QueueType"`
 
-	// 排序依据的字段：
-	// ConsumerNumber - 在线消费者数量；
-	// MessageHeapCount - 消息堆积数；
-	// MessageRateInOut - 生产消费速率之和；
-	// MessageRateIn - 生产速率；
-	// MessageRateOut - 消费速率；
+	// <p>排序依据的字段：<br>messages_ready - 消息堆积数；<br>publish - 生产速率；<br>deliver - 消费速率；<br>consumers - 在线消费者数量；</p>
 	SortElement *string `json:"SortElement,omitnil,omitempty" name:"SortElement"`
 
-	// 排序顺序，ascend 或 descend
+	// <p>排序顺序，asc 或 desc</p>
 	SortOrder *string `json:"SortOrder,omitnil,omitempty" name:"SortOrder"`
 }
 
 type DescribeRabbitMQServerlessQueuesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例Id
+	// <p>实例Id</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// Vhost参数
+	// <p>Vhost参数</p>
 	VirtualHost *string `json:"VirtualHost,omitnil,omitempty" name:"VirtualHost"`
 
-	// 分页Offset
+	// <p>分页Offset</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页Limit
+	// <p>分页Limit</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 搜索关键词
+	// <p>搜索关键词</p>
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 
-	// 队列类型筛选，不填或 "all"：classic 和 quorum 队列；"classic"：筛选 classic 队列；"quorum"：筛选 quorum 队列
+	// <p>队列类型筛选，不填或 &quot;all&quot;：classic 和 quorum 队列；&quot;classic&quot;：筛选 classic 队列；&quot;quorum&quot;：筛选 quorum 队列</p>
 	QueueType *string `json:"QueueType,omitnil,omitempty" name:"QueueType"`
 
-	// 排序依据的字段：
-	// ConsumerNumber - 在线消费者数量；
-	// MessageHeapCount - 消息堆积数；
-	// MessageRateInOut - 生产消费速率之和；
-	// MessageRateIn - 生产速率；
-	// MessageRateOut - 消费速率；
+	// <p>排序依据的字段：<br>messages_ready - 消息堆积数；<br>publish - 生产速率；<br>deliver - 消费速率；<br>consumers - 在线消费者数量；</p>
 	SortElement *string `json:"SortElement,omitnil,omitempty" name:"SortElement"`
 
-	// 排序顺序，ascend 或 descend
+	// <p>排序顺序，asc 或 desc</p>
 	SortOrder *string `json:"SortOrder,omitnil,omitempty" name:"SortOrder"`
 }
 
@@ -2013,10 +2010,10 @@ func (r *DescribeRabbitMQServerlessQueuesRequest) FromJsonString(s string) error
 
 // Predefined struct for user
 type DescribeRabbitMQServerlessQueuesResponseParams struct {
-	// 队列列表信息
+	// <p>队列列表信息</p>
 	QueueInfoList []*RabbitMQQueueListInfo `json:"QueueInfoList,omitnil,omitempty" name:"QueueInfoList"`
 
-	// 数量
+	// <p>数量</p>
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2886,32 +2883,35 @@ type QueueQuota struct {
 }
 
 type RabbitMQBindingListInfo struct {
-	// 路由关系id
+	// <p>路由关系id</p>
 	BindingId *int64 `json:"BindingId,omitnil,omitempty" name:"BindingId"`
 
-	// Vhost参数
+	// <p>Vhost参数</p>
 	VirtualHost *string `json:"VirtualHost,omitnil,omitempty" name:"VirtualHost"`
 
-	// 源exchange名称
+	// <p>源exchange名称</p>
 	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 
-	// 目标类型,queue或exchange
+	// <p>目标类型,queue或exchange</p>
 	DestinationType *string `json:"DestinationType,omitnil,omitempty" name:"DestinationType"`
 
-	// 目标资源名称
+	// <p>目标资源名称</p>
 	Destination *string `json:"Destination,omitnil,omitempty" name:"Destination"`
 
-	// 绑定key
+	// <p>绑定key</p>
 	RoutingKey *string `json:"RoutingKey,omitnil,omitempty" name:"RoutingKey"`
 
-	// 源exchange类型
+	// <p>源exchange类型</p>
 	SourceExchangeType *string `json:"SourceExchangeType,omitnil,omitempty" name:"SourceExchangeType"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 修改时间
+	// <p>修改时间</p>
 	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
+
+	// <p>绑定参数，header类型的Exchange绑定时，可以传入参数。其它类型 Exchange 无需传入</p>
+	Arguments []*RabbitMQServerlessKeyValuePair `json:"Arguments,omitnil,omitempty" name:"Arguments"`
 }
 
 type RabbitMQClusterInfo struct {
@@ -3345,6 +3345,14 @@ type RabbitMQServerlessInstance struct {
 
 	// 实例标签列表
 	Tags []*RabbitMQServerlessTag `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
+type RabbitMQServerlessKeyValuePair struct {
+	// 键
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 值
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 type RabbitMQServerlessTag struct {

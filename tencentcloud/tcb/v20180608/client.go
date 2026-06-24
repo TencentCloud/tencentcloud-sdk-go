@@ -382,6 +382,7 @@ func NewCreateAIModelResponse() (response *CreateAIModelResponse) {
 // 创建成功后，可通过 [DescribeAIModels](https://cloud.tencent.com/document/product/876/131318) 接口查询分组信息，并在云开发 AI+ 功能中使用所配置的模型。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_PACKAGEUNSUPPORTED = "FailedOperation.PackageUnsupported"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_ENVID = "InvalidParameter.EnvId"
@@ -405,6 +406,7 @@ func (c *Client) CreateAIModel(request *CreateAIModelRequest) (response *CreateA
 // 创建成功后，可通过 [DescribeAIModels](https://cloud.tencent.com/document/product/876/131318) 接口查询分组信息，并在云开发 AI+ 功能中使用所配置的模型。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_PACKAGEUNSUPPORTED = "FailedOperation.PackageUnsupported"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_ENVID = "InvalidParameter.EnvId"
@@ -6066,6 +6068,7 @@ func NewUpdateAIModelResponse() (response *UpdateAIModelResponse) {
 // 更新成功后，可通过 [DescribeAIModels](https://cloud.tencent.com/document/product/876/131318) 接口查询最新分组配置。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_PACKAGEUNSUPPORTED = "FailedOperation.PackageUnsupported"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_ENVID = "InvalidParameter.EnvId"
@@ -6108,6 +6111,7 @@ func (c *Client) UpdateAIModel(request *UpdateAIModelRequest) (response *UpdateA
 // 更新成功后，可通过 [DescribeAIModels](https://cloud.tencent.com/document/product/876/131318) 接口查询最新分组配置。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_PACKAGEUNSUPPORTED = "FailedOperation.PackageUnsupported"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_ENVID = "InvalidParameter.EnvId"

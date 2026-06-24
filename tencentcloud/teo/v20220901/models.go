@@ -392,6 +392,11 @@ type AdvancedFilter struct {
 	Fuzzy *bool `json:"Fuzzy,omitnil,omitempty" name:"Fuzzy"`
 }
 
+type AdvancedOriginRoutingParameters struct {
+	// <p>回源优化方向，取值有：</p><li>MainlandChinaAndGlobalAdaptive：自适应。域名需同时开启「智能加速」后生效，EdgeOne将根据客户端与源站的实际地理位置，自动匹配最优回源优化方向，无需手动指定。例如 www.example.com 开启「高级回源优化」，但「智能加速」关闭或仅部分匹配条件开启时，「高级回源优化」将不生效。</li>
+	Direction *string `json:"Direction,omitnil,omitempty" name:"Direction"`
+}
+
 type AiRule struct {
 	// AI规则引擎状态，取值有：
 	// <li> smart_status_close：关闭；</li>
@@ -22689,205 +22694,168 @@ type RuleCondition struct {
 }
 
 type RuleEngineAction struct {
-	// 操作名称。名称需要与参数结构体对应，例如 Name=Cache，则 CacheParameters 必填。
-	// <li>Cache：节点缓存 TTL；</li>
-	// <li>CacheKey：自定义 Cache Key；</li>
-	// <li>CachePrefresh：缓存预刷新；</li>
-	// <li>AccessURLRedirect：访问 URL 重定向；</li>
-	// <li>UpstreamURLRewrite：回源 URL 重写；</li>
-	// <li>QUIC：QUIC；</li>
-	// <li>WebSocket：WebSocket；</li>
-	// <li>Authentication：Token 鉴权；</li>
-	// <li>MaxAge：浏览器缓存 TTL；</li>
-	// <li>StatusCodeCache：状态码缓存 TTL；</li>
-	// <li>OfflineCache：离线缓存；</li>
-	// <li>SmartRouting：智能加速；</li>
-	// <li>RangeOriginPull：分片回源 ；</li>
-	// <li>UpstreamHTTP2：HTTP2 回源；</li>
-	// <li>HostHeader：Host Header 重写；</li>
-	// <li>ForceRedirectHTTPS：访问协议强制 HTTPS 跳转配置；</li>
-	// <li>OriginPullProtocol：回源 HTTPS；</li>
-	// <li>Compression：智能压缩配置；</li>
-	// <li>HSTS：HSTS；</li>
-	// <li>ClientIPHeader：存储客户端请求 IP 的头部信息配置；</li>
-	// <li>OCSPStapling：OCSP 装订；</li>
-	// <li>HTTP2：HTTP2 接入；</li>
-	// <li>PostMaxSize：POST 请求上传文件流式传输最大限制配置；</li>
-	// <li>ClientIPCountry：回源时携带客户端 IP 所属地域信息；</li>
-	// <li>UpstreamFollowRedirect：回源跟随重定向参数配置；</li>
-	// <li>UpstreamRequest：回源请求参数；</li>
-	// <li>Shield：源站卸载配置；</li>
-	// <li>TLSConfig：SSL/TLS 安全；</li>
-	// <li>ModifyOrigin：修改源站；</li>
-	// <li> SiteFailover：源站故障转移；</li>
-	// <li>HTTPUpstreamTimeout：七层回源超时配置；</li>
-	// <li>HttpResponse：HTTP 应答；</li>
-	// <li>ErrorPage：自定义错误页面；</li>
-	// <li>ModifyResponseHeader：修改 HTTP 节点响应头；</li>
-	// <li>ModifyRequestHeader：修改 HTTP 节点请求头；</li>
-	// <li>ResponseSpeedLimit：单连接下载限速；</li>
-	// <li>SetContentIdentifier：设置内容标识符；</li>
-	// <li>Vary：Vary 特性配置；</li>
-	// <li>ContentCompression：内容压缩配置；</li>
-	// <li>OriginAuthentication：回源鉴权配置。</li>
+	// <p>操作名称。名称需要与参数结构体对应，例如 Name=Cache，则 CacheParameters 必填。</p><li>Cache：节点缓存 TTL；</li><li>CacheKey：自定义 Cache Key；</li><li>CachePrefresh：缓存预刷新；</li><li>AccessURLRedirect：访问 URL 重定向；</li><li>UpstreamURLRewrite：回源 URL 重写；</li><li>QUIC：QUIC；</li><li>WebSocket：WebSocket；</li><li>Authentication：Token 鉴权；</li><li>MaxAge：浏览器缓存 TTL；</li><li>StatusCodeCache：状态码缓存 TTL；</li><li>OfflineCache：离线缓存；</li><li>SmartRouting：智能加速；</li><li>AdvancedOriginRouting：高级回源优化；</li><li>RangeOriginPull：分片回源 ；</li><li>UpstreamHTTP2：HTTP2 回源；</li><li>HostHeader：Host Header 重写；</li><li>ForceRedirectHTTPS：访问协议强制 HTTPS 跳转配置；</li><li>OriginPullProtocol：回源 HTTPS；</li><li>Compression：智能压缩配置；</li><li>HSTS：HSTS；</li><li>ClientIPHeader：存储客户端请求 IP 的头部信息配置；</li><li>OCSPStapling：OCSP 装订；</li><li>HTTP2：HTTP2 接入；</li><li>PostMaxSize：POST 请求上传文件流式传输最大限制配置；</li><li>ClientIPCountry：回源时携带客户端 IP 所属地域信息；</li><li>UpstreamFollowRedirect：回源跟随重定向参数配置；</li><li>UpstreamRequest：回源请求参数；</li><li>Shield：源站卸载配置；</li><li>TLSConfig：SSL/TLS 安全；</li><li>ModifyOrigin：修改源站；</li><li> SiteFailover：源站故障转移；</li><li>HTTPUpstreamTimeout：七层回源超时配置；</li><li>HttpResponse：HTTP 应答；</li><li>ErrorPage：自定义错误页面；</li><li>ModifyResponseHeader：修改 HTTP 节点响应头；</li><li>ModifyRequestHeader：修改 HTTP 节点请求头；</li><li>ResponseSpeedLimit：单连接下载限速；</li><li>SetContentIdentifier：设置内容标识符；</li><li>Vary：Vary 特性配置；</li><li>ContentCompression：内容压缩配置；</li><li>OriginAuthentication：回源鉴权配置。</li>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 节点缓存 TTL 配置参数，当 Name 取值为 Cache 时，该参数必填。
+	// <p>节点缓存 TTL 配置参数，当 Name 取值为 Cache 时，该参数必填。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CacheParameters *CacheParameters `json:"CacheParameters,omitnil,omitempty" name:"CacheParameters"`
 
-	// 自定义 Cache Key 配置参数，当 Name 取值为 CacheKey 时，该参数必填。
+	// <p>自定义 Cache Key 配置参数，当 Name 取值为 CacheKey 时，该参数必填。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CacheKeyParameters *CacheKeyParameters `json:"CacheKeyParameters,omitnil,omitempty" name:"CacheKeyParameters"`
 
-	// 缓存预刷新配置参数，当 Name 取值为 CachePrefresh 时，该参数必填。
+	// <p>缓存预刷新配置参数，当 Name 取值为 CachePrefresh 时，该参数必填。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CachePrefreshParameters *CachePrefreshParameters `json:"CachePrefreshParameters,omitnil,omitempty" name:"CachePrefreshParameters"`
 
-	// 访问 URL 重定向配置参数，当 Name 取值为 AccessURLRedirect 时，该参数必填。
+	// <p>访问 URL 重定向配置参数，当 Name 取值为 AccessURLRedirect 时，该参数必填。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccessURLRedirectParameters *AccessURLRedirectParameters `json:"AccessURLRedirectParameters,omitnil,omitempty" name:"AccessURLRedirectParameters"`
 
-	// 回源 URL 重写配置参数，当 Name 取值为 UpstreamURLRewrite 时，该参数必填。
+	// <p>回源 URL 重写配置参数，当 Name 取值为 UpstreamURLRewrite 时，该参数必填。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpstreamURLRewriteParameters *UpstreamURLRewriteParameters `json:"UpstreamURLRewriteParameters,omitnil,omitempty" name:"UpstreamURLRewriteParameters"`
 
-	// QUIC 配置参数，当 Name 取值为 QUIC 时，该参数必填。
+	// <p>QUIC 配置参数，当 Name 取值为 QUIC 时，该参数必填。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	QUICParameters *QUICParameters `json:"QUICParameters,omitnil,omitempty" name:"QUICParameters"`
 
-	// WebSocket 配置参数，当 Name 取值为 WebSocket 时，该参数必填。
+	// <p>WebSocket 配置参数，当 Name 取值为 WebSocket 时，该参数必填。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WebSocketParameters *WebSocketParameters `json:"WebSocketParameters,omitnil,omitempty" name:"WebSocketParameters"`
 
-	// Token 鉴权配置参数，当 Name 取值为 Authentication 时，该参数必填。
+	// <p>Token 鉴权配置参数，当 Name 取值为 Authentication 时，该参数必填。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AuthenticationParameters *AuthenticationParameters `json:"AuthenticationParameters,omitnil,omitempty" name:"AuthenticationParameters"`
 
-	// 浏览器缓存 TTL 配置参数，当 Name 取值为 MaxAge 时，该参数必填。
+	// <p>浏览器缓存 TTL 配置参数，当 Name 取值为 MaxAge 时，该参数必填。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxAgeParameters *MaxAgeParameters `json:"MaxAgeParameters,omitnil,omitempty" name:"MaxAgeParameters"`
 
-	// 状态码缓存 TTL 配置参数，当 Name 取值为 StatusCodeCache 时，该参数必填。
+	// <p>状态码缓存 TTL 配置参数，当 Name 取值为 StatusCodeCache 时，该参数必填。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StatusCodeCacheParameters *StatusCodeCacheParameters `json:"StatusCodeCacheParameters,omitnil,omitempty" name:"StatusCodeCacheParameters"`
 
-	// 离线缓存配置参数，当 Name 取值为 OfflineCache 时，该参数必填。
+	// <p>离线缓存配置参数，当 Name 取值为 OfflineCache 时，该参数必填。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OfflineCacheParameters *OfflineCacheParameters `json:"OfflineCacheParameters,omitnil,omitempty" name:"OfflineCacheParameters"`
 
-	// 智能加速配置参数，当 Name 取值为 SmartRouting 时，该参数必填。
+	// <p>智能加速配置参数，当 Name 取值为 SmartRouting 时，该参数必填。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SmartRoutingParameters *SmartRoutingParameters `json:"SmartRoutingParameters,omitnil,omitempty" name:"SmartRoutingParameters"`
 
-	// 分片回源配置参数，当 Name 取值为 RangeOriginPull 时，该参数必填。
+	// <p>高级回源优化配置参数，当 Name 取值为 AdvancedOriginRouting 时，该参数必填。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AdvancedOriginRoutingParameters *AdvancedOriginRoutingParameters `json:"AdvancedOriginRoutingParameters,omitnil,omitempty" name:"AdvancedOriginRoutingParameters"`
+
+	// <p>分片回源配置参数，当 Name 取值为 RangeOriginPull 时，该参数必填。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RangeOriginPullParameters *RangeOriginPullParameters `json:"RangeOriginPullParameters,omitnil,omitempty" name:"RangeOriginPullParameters"`
 
-	// HTTP2 回源配置参数，当 Name 取值为 UpstreamHTTP2 时，该参数必填。
+	// <p>HTTP2 回源配置参数，当 Name 取值为 UpstreamHTTP2 时，该参数必填。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpstreamHTTP2Parameters *UpstreamHTTP2Parameters `json:"UpstreamHTTP2Parameters,omitnil,omitempty" name:"UpstreamHTTP2Parameters"`
 
-	// Host Header 重写配置参数，当 Name 取值为 HostHeader 时，该参数必填。
+	// <p>Host Header 重写配置参数，当 Name 取值为 HostHeader 时，该参数必填。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HostHeaderParameters *HostHeaderParameters `json:"HostHeaderParameters,omitnil,omitempty" name:"HostHeaderParameters"`
 
-	// 访问协议强制 HTTPS 跳转配置，当 Name 取值为 ForceRedirectHTTPS 时，该参数必填。
+	// <p>访问协议强制 HTTPS 跳转配置，当 Name 取值为 ForceRedirectHTTPS 时，该参数必填。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ForceRedirectHTTPSParameters *ForceRedirectHTTPSParameters `json:"ForceRedirectHTTPSParameters,omitnil,omitempty" name:"ForceRedirectHTTPSParameters"`
 
-	// 回源 HTTPS 配置参数，当 Name 取值为 OriginPullProtocol 时，该参数必填。
+	// <p>回源 HTTPS 配置参数，当 Name 取值为 OriginPullProtocol 时，该参数必填。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OriginPullProtocolParameters *OriginPullProtocolParameters `json:"OriginPullProtocolParameters,omitnil,omitempty" name:"OriginPullProtocolParameters"`
 
-	// 智能压缩配置，当 Name 取值为 Compression 时，该参数必填。
+	// <p>智能压缩配置，当 Name 取值为 Compression 时，该参数必填。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CompressionParameters *CompressionParameters `json:"CompressionParameters,omitnil,omitempty" name:"CompressionParameters"`
 
-	// HSTS 配置参数，当 Name 取值为 HSTS 时，该参数必填。
+	// <p>HSTS 配置参数，当 Name 取值为 HSTS 时，该参数必填。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HSTSParameters *HSTSParameters `json:"HSTSParameters,omitnil,omitempty" name:"HSTSParameters"`
 
-	// 存储客户端请求 IP 的头部信息配置，当 Name 取值为 ClientIPHeader 时，该参数必填。
+	// <p>存储客户端请求 IP 的头部信息配置，当 Name 取值为 ClientIPHeader 时，该参数必填。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClientIPHeaderParameters *ClientIPHeaderParameters `json:"ClientIPHeaderParameters,omitnil,omitempty" name:"ClientIPHeaderParameters"`
 
-	// OCSP 装订配置参数，当 Name 取值为 OCSPStapling 时，该参数必填。
+	// <p>OCSP 装订配置参数，当 Name 取值为 OCSPStapling 时，该参数必填。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OCSPStaplingParameters *OCSPStaplingParameters `json:"OCSPStaplingParameters,omitnil,omitempty" name:"OCSPStaplingParameters"`
 
-	// HTTP2 接入配置参数，当 Name 取值为 HTTP2 时，该参数必填。
+	// <p>HTTP2 接入配置参数，当 Name 取值为 HTTP2 时，该参数必填。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HTTP2Parameters *HTTP2Parameters `json:"HTTP2Parameters,omitnil,omitempty" name:"HTTP2Parameters"`
 
-	// POST 请求上传文件流式传输最大限制配置，当 Name 取值为 PostMaxSize 时，该参数必填。
+	// <p>POST 请求上传文件流式传输最大限制配置，当 Name 取值为 PostMaxSize 时，该参数必填。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PostMaxSizeParameters *PostMaxSizeParameters `json:"PostMaxSizeParameters,omitnil,omitempty" name:"PostMaxSizeParameters"`
 
-	// 回源时携带客户端 IP 所属地域信息配置参数，当 Name 取值为 ClientIPCountry 时，该参数必填。
+	// <p>回源时携带客户端 IP 所属地域信息配置参数，当 Name 取值为 ClientIPCountry 时，该参数必填。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClientIPCountryParameters *ClientIPCountryParameters `json:"ClientIPCountryParameters,omitnil,omitempty" name:"ClientIPCountryParameters"`
 
-	// 回源跟随重定向参数配置，当 Name 取值为 UpstreamFollowRedirect 时，该参数必填。
+	// <p>回源跟随重定向参数配置，当 Name 取值为 UpstreamFollowRedirect 时，该参数必填。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpstreamFollowRedirectParameters *UpstreamFollowRedirectParameters `json:"UpstreamFollowRedirectParameters,omitnil,omitempty" name:"UpstreamFollowRedirectParameters"`
 
-	// 回源请求参数配置参数，当 Name 取值为 UpstreamRequest 时，该参数必填。
+	// <p>回源请求参数配置参数，当 Name 取值为 UpstreamRequest 时，该参数必填。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpstreamRequestParameters *UpstreamRequestParameters `json:"UpstreamRequestParameters,omitnil,omitempty" name:"UpstreamRequestParameters"`
 
-	// 源站卸载配置参数，当 Name 取值为 Shield 时，该参数必填。
+	// <p>源站卸载配置参数，当 Name 取值为 Shield 时，该参数必填。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ShieldParameters *ShieldParameters `json:"ShieldParameters,omitnil,omitempty" name:"ShieldParameters"`
 
-	// SSL/TLS 安全配置参数，当 Name 取值为 TLSConfig 时，该参数必填。
+	// <p>SSL/TLS 安全配置参数，当 Name 取值为 TLSConfig 时，该参数必填。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TLSConfigParameters *TLSConfigParameters `json:"TLSConfigParameters,omitnil,omitempty" name:"TLSConfigParameters"`
 
-	// 修改源站配置参数，当 Name 取值为 ModifyOrigin 时，该参数必填。
+	// <p>修改源站配置参数，当 Name 取值为 ModifyOrigin 时，该参数必填。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModifyOriginParameters *ModifyOriginParameters `json:"ModifyOriginParameters,omitnil,omitempty" name:"ModifyOriginParameters"`
 
-	// 源站故障转移配置参数，当 Name 取值为 SiteFailover 时，该参数必填。
+	// <p>源站故障转移配置参数，当 Name 取值为 SiteFailover 时，该参数必填。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SiteFailoverParameters *SiteFailoverParameters `json:"SiteFailoverParameters,omitnil,omitempty" name:"SiteFailoverParameters"`
 
-	// 七层回源超时配置，当 Name 取值为 HTTPUpstreamTimeout 时，该参数必填。
+	// <p>七层回源超时配置，当 Name 取值为 HTTPUpstreamTimeout 时，该参数必填。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HTTPUpstreamTimeoutParameters *HTTPUpstreamTimeoutParameters `json:"HTTPUpstreamTimeoutParameters,omitnil,omitempty" name:"HTTPUpstreamTimeoutParameters"`
 
-	// HTTP 应答配置参数，当 Name 取值为 HttpResponse 时，该参数必填。
+	// <p>HTTP 应答配置参数，当 Name 取值为 HttpResponse 时，该参数必填。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HttpResponseParameters *HTTPResponseParameters `json:"HttpResponseParameters,omitnil,omitempty" name:"HttpResponseParameters"`
 
-	// 自定义错误页面配置参数，当 Name 取值为 ErrorPage 时，该参数必填。
+	// <p>自定义错误页面配置参数，当 Name 取值为 ErrorPage 时，该参数必填。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorPageParameters *ErrorPageParameters `json:"ErrorPageParameters,omitnil,omitempty" name:"ErrorPageParameters"`
 
-	// 修改 HTTP 节点响应头配置参数，当 Name 取值为 ModifyResponseHeader 时，该参数必填。
+	// <p>修改 HTTP 节点响应头配置参数，当 Name 取值为 ModifyResponseHeader 时，该参数必填。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModifyResponseHeaderParameters *ModifyResponseHeaderParameters `json:"ModifyResponseHeaderParameters,omitnil,omitempty" name:"ModifyResponseHeaderParameters"`
 
-	// 修改 HTTP 节点请求头配置参数，当 Name 取值为 ModifyRequestHeader 时，该参数必填。
+	// <p>修改 HTTP 节点请求头配置参数，当 Name 取值为 ModifyRequestHeader 时，该参数必填。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModifyRequestHeaderParameters *ModifyRequestHeaderParameters `json:"ModifyRequestHeaderParameters,omitnil,omitempty" name:"ModifyRequestHeaderParameters"`
 
-	// 单连接下载限速配置参数，当 Name 取值为 ResponseSpeedLimit 时，该参数必填。
+	// <p>单连接下载限速配置参数，当 Name 取值为 ResponseSpeedLimit 时，该参数必填。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResponseSpeedLimitParameters *ResponseSpeedLimitParameters `json:"ResponseSpeedLimitParameters,omitnil,omitempty" name:"ResponseSpeedLimitParameters"`
 
-	// 内容标识配置参数，当 Name 取值为 SetContentIdentifier 时，该参数必填。
-	// 
+	// <p>内容标识配置参数，当 Name 取值为 SetContentIdentifier 时，该参数必填。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SetContentIdentifierParameters *SetContentIdentifierParameters `json:"SetContentIdentifierParameters,omitnil,omitempty" name:"SetContentIdentifierParameters"`
 
-	// Vary 特性配置参数，当 Name 取值为 Vary 时，该参数必填。
+	// <p>Vary 特性配置参数，当 Name 取值为 Vary 时，该参数必填。</p>
 	VaryParameters *VaryParameters `json:"VaryParameters,omitnil,omitempty" name:"VaryParameters"`
 
-	// 内容压缩配置参数，当 Name 取值为 ContentCompression 时，该参数必填。该参数为白名单功能，如有需要，请联系腾讯云工程师处理。
+	// <p>内容压缩配置参数，当 Name 取值为 ContentCompression 时，该参数必填。该参数为白名单功能，如有需要，请联系腾讯云工程师处理。</p>
 	ContentCompressionParameters *ContentCompressionParameters `json:"ContentCompressionParameters,omitnil,omitempty" name:"ContentCompressionParameters"`
 
-	// 回源鉴权配置参数，当 Name 取值为 OriginAuthentication 时，该参数必填。该参数为白名单功能，如有需要，请联系腾讯云工程师处理。
+	// <p>回源鉴权配置参数，当 Name 取值为 OriginAuthentication 时，该参数必填。该参数为白名单功能，如有需要，请联系腾讯云工程师处理。</p>
 	OriginAuthenticationParameters *OriginAuthenticationParameters `json:"OriginAuthenticationParameters,omitnil,omitempty" name:"OriginAuthenticationParameters"`
 }
 

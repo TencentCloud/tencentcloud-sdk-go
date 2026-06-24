@@ -205,6 +205,9 @@ type AISpeakEvent struct {
 	// <p>本次响应生成的时延结果</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LatencyMetrics *AICallLatencyMetrics `json:"LatencyMetrics,omitnil,omitempty" name:"LatencyMetrics"`
+
+	// <p>节点跳转的原因，仅画布为灵活模式时有值</p>
+	TraverseReason *string `json:"TraverseReason,omitnil,omitempty" name:"TraverseReason"`
 }
 
 type AITransferItem struct {

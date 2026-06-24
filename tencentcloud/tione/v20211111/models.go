@@ -3236,6 +3236,9 @@ func (r *DescribeAnnotatedTaskListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBillingResourceGroupAttachedWorkspacesRequestParams struct {
+	// <p>资源组ID</p>
+	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
+
 	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
 	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 }
@@ -3243,6 +3246,9 @@ type DescribeBillingResourceGroupAttachedWorkspacesRequestParams struct {
 type DescribeBillingResourceGroupAttachedWorkspacesRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>资源组ID</p>
+	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
+
 	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
 	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 }
@@ -3259,6 +3265,7 @@ func (r *DescribeBillingResourceGroupAttachedWorkspacesRequest) FromJsonString(s
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "ResourceGroupId")
 	delete(f, "TiProjectId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBillingResourceGroupAttachedWorkspacesRequest has unknown keys!", "")
@@ -6745,6 +6752,35 @@ type Instance struct {
 	// <p>部署失败错误信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrMsg *string `json:"ErrMsg,omitnil,omitempty" name:"ErrMsg"`
+
+	// <p>节点可用资源</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AvailableResource *ResourceInfo `json:"AvailableResource,omitnil,omitempty" name:"AvailableResource"`
+
+	// <p>资源组节点的IP</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceIP *string `json:"InstanceIP,omitnil,omitempty" name:"InstanceIP"`
+
+	// <p>资源组节点的名称</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
+
+	// <p>cvm机型</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CvmInstanceType *string `json:"CvmInstanceType,omitnil,omitempty" name:"CvmInstanceType"`
+
+	// <p>是否自动续买</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AutoRenew *bool `json:"AutoRenew,omitnil,omitempty" name:"AutoRenew"`
+
+	// <p>是否被隔离</p>
+	Isolated *bool `json:"Isolated,omitnil,omitempty" name:"Isolated"`
+
+	// <p>维修任务信息</p>
+	RepairTaskInfo *RepairTaskInfo `json:"RepairTaskInfo,omitnil,omitempty" name:"RepairTaskInfo"`
+
+	// <p>节点可用区名称</p>
+	ZoneName *string `json:"ZoneName,omitnil,omitempty" name:"ZoneName"`
 }
 
 type IntranetCallInfo struct {
@@ -8007,7 +8043,7 @@ func (r *ModifyServiceGroupWeightsResponse) FromJsonString(s string) error {
 }
 
 type MountConfigureInfo struct {
-	// 数据源的相对路径，支持<@subaccount>这样的占位符
+	// <p>数据源的相对路径，支持&lt;@subaccount&gt;这样的占位符</p>
 	WorkDir *string `json:"WorkDir,omitnil,omitempty" name:"WorkDir"`
 }
 
@@ -8791,6 +8827,26 @@ type RDMAConfig struct {
 	// 是否开启RDMA
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
+}
+
+type RepairTaskInfo struct {
+	// <p>维修任务ID</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>任务类型ID<br>// - <code>101</code>：实例运行隐患<br>    // - <code>102</code>：实例运行异常<br>    // - <code>103</code>：实例硬盘异常<br>    // - <code>104</code>：实例网络连接异常<br>    // - <code>105</code>：实例运行预警<br>    // - <code>106</code>：实例硬盘预警<br>    // - <code>107</code>：实例维护升级</p>
+	TaskTypeId *uint64 `json:"TaskTypeId,omitnil,omitempty" name:"TaskTypeId"`
+
+	// <p>任务类型中文名</p>
+	TaskTypeName *string `json:"TaskTypeName,omitnil,omitempty" name:"TaskTypeName"`
+
+	// <p>任务创建时间</p>
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>任务详情</p>
+	TaskDetail *string `json:"TaskDetail,omitnil,omitempty" name:"TaskDetail"`
+
+	// <p>产品类型，支持取值：<br>    //<br>    // - <code>CVM</code>：云服务器<br>    // - <code>CDH</code>：专用宿主机<br>    // - <code>CPM2.0</code>：裸金属云服务器</p>
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 }
 
 type ResourceConf struct {

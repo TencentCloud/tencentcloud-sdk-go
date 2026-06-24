@@ -772,56 +772,44 @@ func (r *DescribeNodesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeProbeMetricDataRequestParams struct {
-	// 分析任务类型，支持以下几种类型：
-	// AnalyzeTaskType_Network：网络质量
-	// AnalyzeTaskType_Browse：页面性能
-	// AnalyzeTaskType_Transport：端口性能
-	// AnalyzeTaskType_UploadDownload：文件传输
-	// AnalyzeTaskType_MediaStream：音视频体验
+	// <p>分析任务类型，支持以下几种类型：<br>AnalyzeTaskType_Network：网络质量<br>AnalyzeTaskType_Browse：页面性能<br>AnalyzeTaskType_Transport：端口性能<br>AnalyzeTaskType_UploadDownload：文件传输<br>AnalyzeTaskType_MediaStream：音视频体验</p>
 	AnalyzeTaskType *string `json:"AnalyzeTaskType,omitnil,omitempty" name:"AnalyzeTaskType"`
 
-	// 指标类型（counter、gauge以及histogram），指标查询默认传gauge
+	// <p>指标类型（counter、gauge以及histogram），指标查询默认传gauge</p>
 	MetricType *string `json:"MetricType,omitnil,omitempty" name:"MetricType"`
 
-	// 指标详细字段，可以传递传具体的指标也可以对指标进行聚合查询例如："avg(ping_time)"代表整体时延(ms)；不同的任务类型支持不同的field查询，以及聚合规则，详情可见https://cloud.tencent.com/document/product/248/87584。
+	// <p>指标详细字段，可以传递传具体的指标也可以对指标进行聚合查询例如：&quot;avg(ping_time)&quot;代表整体时延(ms)；不同的任务类型支持不同的field查询，以及聚合规则，详情可见https://cloud.tencent.com/document/product/248/87584。</p>
 	Field *string `json:"Field,omitnil,omitempty" name:"Field"`
 
-	// 过滤条件可以传单个过滤条件也可以拼接多个参数
+	// <p>过滤条件可以传单个过滤条件也可以拼接多个参数</p>
 	Filter *string `json:"Filter,omitnil,omitempty" name:"Filter"`
 
-	// 聚合时间, 1m、1d、30d 等等
+	// <p>聚合时间, 1m、1d、30d 等等</p>
 	GroupBy *string `json:"GroupBy,omitnil,omitempty" name:"GroupBy"`
 
-	// 多条件过滤，支持多个过滤条件组合查询
-	// 例如：[""host" = 'www.test.com'", "time >= now()-1h"]
+	// <p>多条件过滤，支持多个过滤条件组合查询<br>例如：[&quot;&quot;host&quot; = &#39;www.test.com&#39;&quot;, &quot;time &gt;= now()-1h&quot;]</p>
 	Filters []*string `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeProbeMetricDataRequest struct {
 	*tchttp.BaseRequest
 	
-	// 分析任务类型，支持以下几种类型：
-	// AnalyzeTaskType_Network：网络质量
-	// AnalyzeTaskType_Browse：页面性能
-	// AnalyzeTaskType_Transport：端口性能
-	// AnalyzeTaskType_UploadDownload：文件传输
-	// AnalyzeTaskType_MediaStream：音视频体验
+	// <p>分析任务类型，支持以下几种类型：<br>AnalyzeTaskType_Network：网络质量<br>AnalyzeTaskType_Browse：页面性能<br>AnalyzeTaskType_Transport：端口性能<br>AnalyzeTaskType_UploadDownload：文件传输<br>AnalyzeTaskType_MediaStream：音视频体验</p>
 	AnalyzeTaskType *string `json:"AnalyzeTaskType,omitnil,omitempty" name:"AnalyzeTaskType"`
 
-	// 指标类型（counter、gauge以及histogram），指标查询默认传gauge
+	// <p>指标类型（counter、gauge以及histogram），指标查询默认传gauge</p>
 	MetricType *string `json:"MetricType,omitnil,omitempty" name:"MetricType"`
 
-	// 指标详细字段，可以传递传具体的指标也可以对指标进行聚合查询例如："avg(ping_time)"代表整体时延(ms)；不同的任务类型支持不同的field查询，以及聚合规则，详情可见https://cloud.tencent.com/document/product/248/87584。
+	// <p>指标详细字段，可以传递传具体的指标也可以对指标进行聚合查询例如：&quot;avg(ping_time)&quot;代表整体时延(ms)；不同的任务类型支持不同的field查询，以及聚合规则，详情可见https://cloud.tencent.com/document/product/248/87584。</p>
 	Field *string `json:"Field,omitnil,omitempty" name:"Field"`
 
-	// 过滤条件可以传单个过滤条件也可以拼接多个参数
+	// <p>过滤条件可以传单个过滤条件也可以拼接多个参数</p>
 	Filter *string `json:"Filter,omitnil,omitempty" name:"Filter"`
 
-	// 聚合时间, 1m、1d、30d 等等
+	// <p>聚合时间, 1m、1d、30d 等等</p>
 	GroupBy *string `json:"GroupBy,omitnil,omitempty" name:"GroupBy"`
 
-	// 多条件过滤，支持多个过滤条件组合查询
-	// 例如：[""host" = 'www.test.com'", "time >= now()-1h"]
+	// <p>多条件过滤，支持多个过滤条件组合查询<br>例如：[&quot;&quot;host&quot; = &#39;www.test.com&#39;&quot;, &quot;time &gt;= now()-1h&quot;]</p>
 	Filters []*string `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -851,7 +839,7 @@ func (r *DescribeProbeMetricDataRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeProbeMetricDataResponseParams struct {
-	//  返回指标 JSON 序列化后的字符串，具体如下所示："[{\"name\":\"task_navigate_request_gauge\",\"columns\":[\"time\",\"avg(first_screen_time) / 1000\"],\"values\":[[1641571200,6.756600000000001]],\"tags\":null}]"
+	// <p>返回指标 JSON 序列化后的字符串，具体如下所示：&quot;[{"name":"task_navigate_request_gauge","columns":["time","avg(first_screen_time) / 1000"],"values":[[1641571200,6.756600000000001]],"tags":null}]&quot;</p>
 	MetricSet *string `json:"MetricSet,omitnil,omitempty" name:"MetricSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

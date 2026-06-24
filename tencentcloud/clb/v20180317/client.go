@@ -6301,8 +6301,6 @@ func NewSetLoadBalancerStartStatusResponse() (response *SetLoadBalancerStartStat
 //
 // 本接口为异步接口，接口返回成功后，需以得到的 RequestID 为入参，调用  [DescribeTaskStatus](https://cloud.tencent.com/document/product/214/30683)  接口查询本次任务是否成功。
 //
-// 该功能正在内测中，如需使用，请通过[工单申请](https://console.cloud.tencent.com/workorder/category?level1_id=6&level2_id=163&source=0&data_title=%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%20LB&step=1)。
-//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_NOLISTENERINLB = "FailedOperation.NoListenerInLB"
@@ -6322,8 +6320,6 @@ func (c *Client) SetLoadBalancerStartStatus(request *SetLoadBalancerStartStatusR
 // 启停负载均衡实例或者监听器。
 //
 // 本接口为异步接口，接口返回成功后，需以得到的 RequestID 为入参，调用  [DescribeTaskStatus](https://cloud.tencent.com/document/product/214/30683)  接口查询本次任务是否成功。
-//
-// 该功能正在内测中，如需使用，请通过[工单申请](https://console.cloud.tencent.com/workorder/category?level1_id=6&level2_id=163&source=0&data_title=%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%20LB&step=1)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

@@ -957,26 +957,23 @@ type ReconstructDocumentFailedPage struct {
 }
 
 type ReconstructDocumentSSEConfig struct {
-	// Markdown文件中表格返回的形式
-	// 0，表格以MD形式返回
-	// 1，表格以HTML形式返回
-	// 默认为0
+	// <p>Markdown文件中表格返回的形式<br>0，表格以MD形式返回<br>1，表格以HTML形式返回<br>默认为0</p>
 	TableResultType *string `json:"TableResultType,omitnil,omitempty" name:"TableResultType"`
 
-	// Markdown文件中图片返回的形式
-	// 0:markdown中图片以链接形式返回
-	// 1:markdown中图片只返回图片中提取的文本内容
-	// 默认是0
+	// <p>Markdown文件中图片返回的形式<br>0:markdown中图片以链接形式返回<br>1:markdown中图片只返回图片中提取的文本内容<br>默认是0</p>
 	MarkdownImageResponseType *string `json:"MarkdownImageResponseType,omitnil,omitempty" name:"MarkdownImageResponseType"`
 
-	// Markdown文件中是否包含页码信息
+	// <p>Markdown文件中是否包含页码信息</p>
 	ReturnPageFormat *bool `json:"ReturnPageFormat,omitnil,omitempty" name:"ReturnPageFormat"`
 
-	// 自定义输出页码样式,{{p}}为页码占位符，开启ReturnPageFormat生效。未填默认样式:<page_num>page {{p}}</page_num>
+	// <p>自定义输出页码样式,{{p}}为页码占位符，开启ReturnPageFormat生效。未填默认样式:<page_num>page {{p}}</page_num></p>
 	PageFormat *string `json:"PageFormat,omitnil,omitempty" name:"PageFormat"`
 
-	// 是否忽略失败页，返回已成功的页数据
+	// <p>是否忽略失败页，返回已成功的页数据</p>
 	IgnoreFailedPage *bool `json:"IgnoreFailedPage,omitnil,omitempty" name:"IgnoreFailedPage"`
+
+	// <p>智能文档解析返回结果的格式</p><p>枚举值：</p><ul><li>0： 只返回全文MD</li><li>1： 只返回每一页的OCR原始Json</li><li>2： 只返回每一页的MD</li><li>3： 返回全文MD + 每一页的OCR原始Json</li><li>4： 返回全文MD + 每一页的MD</li><li>5： 返回全文md，每一页ocr原始json，每一页md</li></ul><p>默认值：3</p>
+	ResultType *string `json:"ResultType,omitnil,omitempty" name:"ResultType"`
 }
 
 // Predefined struct for user

@@ -4217,6 +4217,115 @@ func (r *ListAccessKeysResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ListAccountsRequestParams struct {
+	// <p>返回结果的条数，当返回结果达到 MaxItems 限制被截断时，返回参数IsTruncated将等于true。</p><p>取值范围：[1, 100]</p>
+	MaxItems *int64 `json:"MaxItems,omitnil,omitempty" name:"MaxItems"`
+
+	// <p>当请求的返回结果被截断时，可以使用Marker获取从当前截断位置之后的内容。</p>
+	Marker *string `json:"Marker,omitnil,omitempty" name:"Marker"`
+
+	// <p>用户类型</p><p>枚举值：</p><ul><li>Owner： 主账号</li><li>SubUser： 普通子用户</li><li>CICUser： CIC 子用户</li><li>WechatCorpUser： 企业微信子用户</li><li>AgentIdentity： AgentIdentity子用户</li><li>Collaborator： 协作者</li><li>MessageReceiver： 消息接收者</li></ul>
+	UserType *string `json:"UserType,omitnil,omitempty" name:"UserType"`
+}
+
+type ListAccountsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>返回结果的条数，当返回结果达到 MaxItems 限制被截断时，返回参数IsTruncated将等于true。</p><p>取值范围：[1, 100]</p>
+	MaxItems *int64 `json:"MaxItems,omitnil,omitempty" name:"MaxItems"`
+
+	// <p>当请求的返回结果被截断时，可以使用Marker获取从当前截断位置之后的内容。</p>
+	Marker *string `json:"Marker,omitnil,omitempty" name:"Marker"`
+
+	// <p>用户类型</p><p>枚举值：</p><ul><li>Owner： 主账号</li><li>SubUser： 普通子用户</li><li>CICUser： CIC 子用户</li><li>WechatCorpUser： 企业微信子用户</li><li>AgentIdentity： AgentIdentity子用户</li><li>Collaborator： 协作者</li><li>MessageReceiver： 消息接收者</li></ul>
+	UserType *string `json:"UserType,omitnil,omitempty" name:"UserType"`
+}
+
+func (r *ListAccountsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListAccountsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MaxItems")
+	delete(f, "Marker")
+	delete(f, "UserType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListAccountsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListAccountsResponseParams struct {
+	// <p>子账号列表。</p>
+	Users []*ListAllUser `json:"Users,omitnil,omitempty" name:"Users"`
+
+	// <p>当IsTruncated为true时才有此字段，当返回true时，需要继续调用此接口，并且使用Marker获取截断后的内容 。</p>
+	Marker *string `json:"Marker,omitnil,omitempty" name:"Marker"`
+
+	// <p>请求返回结果是否被截断。</p>
+	IsTruncated *bool `json:"IsTruncated,omitnil,omitempty" name:"IsTruncated"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListAccountsResponse struct {
+	*tchttp.BaseResponse
+	Response *ListAccountsResponseParams `json:"Response"`
+}
+
+func (r *ListAccountsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListAccountsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListAllUser struct {
+	// <p>子账号账号ID。</p>
+	Uin *int64 `json:"Uin,omitnil,omitempty" name:"Uin"`
+
+	// <p>子账号用户名。</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>子账号 UID。</p>
+	Uid *int64 `json:"Uid,omitnil,omitempty" name:"Uid"`
+
+	// <p>子账号备注。</p>
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// <p>子账号能否登录控制台。</p>
+	ConsoleLogin *int64 `json:"ConsoleLogin,omitnil,omitempty" name:"ConsoleLogin"`
+
+	// <p>手机号。</p>
+	PhoneNum *string `json:"PhoneNum,omitnil,omitempty" name:"PhoneNum"`
+
+	// <p>区号。</p>
+	CountryCode *string `json:"CountryCode,omitnil,omitempty" name:"CountryCode"`
+
+	// <p>邮箱。</p>
+	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
+
+	// <p>创建时间。</p><p>参数格式：YYYY-MM-DD hh:mm:ss</p>
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>账号类型</p><p>枚举值：</p><ul><li>Owner： 主账号</li><li>SubUser： 子用户</li><li>CICUser： CIC 用户</li><li>WechatCorpUser： 企业微信子用户</li><li>AgentIdentity： AgentIdentity用户</li><li>Collaborator： 协作者</li><li>MessageReceiver： 消息接收者</li><li>Unknown： 未知</li></ul>
+	UserType *string `json:"UserType,omitnil,omitempty" name:"UserType"`
+}
+
+// Predefined struct for user
 type ListAttachedGroupPoliciesRequestParams struct {
 	// 用户组ID
 	TargetGroupId *uint64 `json:"TargetGroupId,omitnil,omitempty" name:"TargetGroupId"`

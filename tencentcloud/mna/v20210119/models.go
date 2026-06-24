@@ -1798,56 +1798,56 @@ func (r *GetFlowPackagesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetFlowStatisticByGroupRequestParams struct {
-	// 分组ID
+	// <p>分组ID</p>
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 开始查找时间
+	// <p>开始查找时间</p>
 	BeginTime *int64 `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
 
-	// 截止时间
+	// <p>截止时间</p>
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 流量种类（1：上行流量，2：下行流量， 3: 上下行总和）
+	// <p>流量种类（1：上行流量，2：下行流量， 3: 上下行总和）</p>
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 时间粒度（1：按小时统计，2：按天统计）
+	// <p>时间粒度</p><p>枚举值：</p><ul><li>1： 按小时统计</li><li>2： 按天统计</li><li>3： 按分钟统计</li><li>4： 按5分钟统计</li></ul>
 	TimeGranularity *int64 `json:"TimeGranularity,omitnil,omitempty" name:"TimeGranularity"`
 
-	// 接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。
+	// <p>接入区域。取值范围：[&#39;MC&#39;,&#39;AP&#39;,&#39;EU&#39;,&#39;AM&#39;] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。</p>
 	AccessRegion *string `json:"AccessRegion,omitnil,omitempty" name:"AccessRegion"`
 
-	// 网关类型。0：公有云网关；1：自有网关。不传默认为0。
+	// <p>网关类型。0：公有云网关；1：自有网关。不传默认为0。</p>
 	GatewayType *int64 `json:"GatewayType,omitnil,omitempty" name:"GatewayType"`
 
-	// 应用ID, 查询分组流量时无需使用。 查询应用流量时该字段为应用ID，GroupId 填写 "-1"
+	// <p>应用ID, 查询分组流量时无需使用。 查询应用流量时该字段为应用ID，GroupId 填写 &quot;-1&quot;</p>
 	MpApplicationId *string `json:"MpApplicationId,omitnil,omitempty" name:"MpApplicationId"`
 }
 
 type GetFlowStatisticByGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 分组ID
+	// <p>分组ID</p>
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 开始查找时间
+	// <p>开始查找时间</p>
 	BeginTime *int64 `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
 
-	// 截止时间
+	// <p>截止时间</p>
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 流量种类（1：上行流量，2：下行流量， 3: 上下行总和）
+	// <p>流量种类（1：上行流量，2：下行流量， 3: 上下行总和）</p>
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 时间粒度（1：按小时统计，2：按天统计）
+	// <p>时间粒度</p><p>枚举值：</p><ul><li>1： 按小时统计</li><li>2： 按天统计</li><li>3： 按分钟统计</li><li>4： 按5分钟统计</li></ul>
 	TimeGranularity *int64 `json:"TimeGranularity,omitnil,omitempty" name:"TimeGranularity"`
 
-	// 接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。
+	// <p>接入区域。取值范围：[&#39;MC&#39;,&#39;AP&#39;,&#39;EU&#39;,&#39;AM&#39;] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。</p>
 	AccessRegion *string `json:"AccessRegion,omitnil,omitempty" name:"AccessRegion"`
 
-	// 网关类型。0：公有云网关；1：自有网关。不传默认为0。
+	// <p>网关类型。0：公有云网关；1：自有网关。不传默认为0。</p>
 	GatewayType *int64 `json:"GatewayType,omitnil,omitempty" name:"GatewayType"`
 
-	// 应用ID, 查询分组流量时无需使用。 查询应用流量时该字段为应用ID，GroupId 填写 "-1"
+	// <p>应用ID, 查询分组流量时无需使用。 查询应用流量时该字段为应用ID，GroupId 填写 &quot;-1&quot;</p>
 	MpApplicationId *string `json:"MpApplicationId,omitnil,omitempty" name:"MpApplicationId"`
 }
 
@@ -1879,16 +1879,16 @@ func (r *GetFlowStatisticByGroupRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetFlowStatisticByGroupResponseParams struct {
-	// 流量详细信息
+	// <p>流量详细信息</p>
 	NetDetails []*NetDetails `json:"NetDetails,omitnil,omitempty" name:"NetDetails"`
 
-	// 查找时间段流量使用最大值（单位：byte）
+	// <p>查找时间段流量使用最大值（单位：byte）</p>
 	MaxValue *float64 `json:"MaxValue,omitnil,omitempty" name:"MaxValue"`
 
-	// 查找时间段流量使用平均值（单位：byte）
+	// <p>查找时间段流量使用平均值（单位：byte）</p>
 	AvgValue *float64 `json:"AvgValue,omitnil,omitempty" name:"AvgValue"`
 
-	// 查找时间段流量使用总量（单位：byte）
+	// <p>查找时间段流量使用总量（单位：byte）</p>
 	TotalValue *float64 `json:"TotalValue,omitnil,omitempty" name:"TotalValue"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1913,56 +1913,56 @@ func (r *GetFlowStatisticByGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetFlowStatisticByNameRequestParams struct {
-	// 设备名称
+	// <p>设备名称</p>
 	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
 
-	// 开始查找时间
+	// <p>开始查找时间</p>
 	BeginTime *int64 `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
 
-	// 截止时间
+	// <p>截止时间</p>
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 流量种类（1：上行流量，2：下行流量，3：上下行总和）
+	// <p>流量种类（1：上行流量，2：下行流量，3：上下行总和）</p>
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 时间粒度（1：按小时统计，2：按天统计）
+	// <p>时间粒度</p><p>枚举值：</p><ul><li>1： 按小时统计</li><li>2： 按天统计</li><li>3： 按分钟统计</li><li>4： 按5分钟统计</li></ul>
 	TimeGranularity *int64 `json:"TimeGranularity,omitnil,omitempty" name:"TimeGranularity"`
 
-	// 接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。
+	// <p>接入区域。取值范围：[&#39;MC&#39;,&#39;AP&#39;,&#39;EU&#39;,&#39;AM&#39;] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。</p>
 	AccessRegion *string `json:"AccessRegion,omitnil,omitempty" name:"AccessRegion"`
 
-	// 网关类型。0：公有云网关；1：自有网关。不传默认为0。
+	// <p>网关类型。0：公有云网关；1：自有网关。不传默认为0。</p>
 	GatewayType *int64 `json:"GatewayType,omitnil,omitempty" name:"GatewayType"`
 
-	// 设备名列表，用于查询多设备流量，该字段启用时DeviceId可传"-1"
+	// <p>设备名列表，用于查询多设备流量，该字段启用时DeviceId可传&quot;-1&quot;</p>
 	DeviceList []*string `json:"DeviceList,omitnil,omitempty" name:"DeviceList"`
 }
 
 type GetFlowStatisticByNameRequest struct {
 	*tchttp.BaseRequest
 	
-	// 设备名称
+	// <p>设备名称</p>
 	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
 
-	// 开始查找时间
+	// <p>开始查找时间</p>
 	BeginTime *int64 `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
 
-	// 截止时间
+	// <p>截止时间</p>
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 流量种类（1：上行流量，2：下行流量，3：上下行总和）
+	// <p>流量种类（1：上行流量，2：下行流量，3：上下行总和）</p>
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 时间粒度（1：按小时统计，2：按天统计）
+	// <p>时间粒度</p><p>枚举值：</p><ul><li>1： 按小时统计</li><li>2： 按天统计</li><li>3： 按分钟统计</li><li>4： 按5分钟统计</li></ul>
 	TimeGranularity *int64 `json:"TimeGranularity,omitnil,omitempty" name:"TimeGranularity"`
 
-	// 接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。
+	// <p>接入区域。取值范围：[&#39;MC&#39;,&#39;AP&#39;,&#39;EU&#39;,&#39;AM&#39;] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。</p>
 	AccessRegion *string `json:"AccessRegion,omitnil,omitempty" name:"AccessRegion"`
 
-	// 网关类型。0：公有云网关；1：自有网关。不传默认为0。
+	// <p>网关类型。0：公有云网关；1：自有网关。不传默认为0。</p>
 	GatewayType *int64 `json:"GatewayType,omitnil,omitempty" name:"GatewayType"`
 
-	// 设备名列表，用于查询多设备流量，该字段启用时DeviceId可传"-1"
+	// <p>设备名列表，用于查询多设备流量，该字段启用时DeviceId可传&quot;-1&quot;</p>
 	DeviceList []*string `json:"DeviceList,omitnil,omitempty" name:"DeviceList"`
 }
 
@@ -1994,16 +1994,16 @@ func (r *GetFlowStatisticByNameRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetFlowStatisticByNameResponseParams struct {
-	// 流量详细信息
+	// <p>流量详细信息</p>
 	NetDetails []*NetDetails `json:"NetDetails,omitnil,omitempty" name:"NetDetails"`
 
-	// 查找时间段流量使用最大值（单位：byte）
+	// <p>查找时间段流量使用最大值（单位：byte）</p>
 	MaxValue *float64 `json:"MaxValue,omitnil,omitempty" name:"MaxValue"`
 
-	// 查找时间段流量使用平均值（单位：byte）
+	// <p>查找时间段流量使用平均值（单位：byte）</p>
 	AvgValue *float64 `json:"AvgValue,omitnil,omitempty" name:"AvgValue"`
 
-	// 查找时间段流量使用总量（单位：byte）
+	// <p>查找时间段流量使用总量（单位：byte）</p>
 	TotalValue *float64 `json:"TotalValue,omitnil,omitempty" name:"TotalValue"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2028,44 +2028,44 @@ func (r *GetFlowStatisticByNameResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetFlowStatisticByRegionRequestParams struct {
-	// 开始查找时间
+	// <p>开始查找时间</p>
 	BeginTime *int64 `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
 
-	// 截止时间
+	// <p>截止时间</p>
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 流量种类（1：上行流量，2：下行流量， 3: 上下行总和）
+	// <p>流量种类（1：上行流量，2：下行流量， 3: 上下行总和）</p>
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 时间粒度（1：按小时统计，2：按天统计）
+	// <p>时间粒度</p><p>枚举值：</p><ul><li>1： 按小时统计</li><li>2： 按天统计</li><li>3： 按分钟统计</li><li>4： 按5分钟统计</li></ul>
 	TimeGranularity *int64 `json:"TimeGranularity,omitnil,omitempty" name:"TimeGranularity"`
 
-	// 网关类型。0：公有云网关；1：自有网关。 
+	// <p>网关类型。0：公有云网关；1：自有网关。</p>
 	GatewayType *int64 `json:"GatewayType,omitnil,omitempty" name:"GatewayType"`
 
-	// 接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。
+	// <p>接入区域。取值范围：[&#39;MC&#39;,&#39;AP&#39;,&#39;EU&#39;,&#39;AM&#39;] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。</p>
 	AccessRegion *string `json:"AccessRegion,omitnil,omitempty" name:"AccessRegion"`
 }
 
 type GetFlowStatisticByRegionRequest struct {
 	*tchttp.BaseRequest
 	
-	// 开始查找时间
+	// <p>开始查找时间</p>
 	BeginTime *int64 `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
 
-	// 截止时间
+	// <p>截止时间</p>
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 流量种类（1：上行流量，2：下行流量， 3: 上下行总和）
+	// <p>流量种类（1：上行流量，2：下行流量， 3: 上下行总和）</p>
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 时间粒度（1：按小时统计，2：按天统计）
+	// <p>时间粒度</p><p>枚举值：</p><ul><li>1： 按小时统计</li><li>2： 按天统计</li><li>3： 按分钟统计</li><li>4： 按5分钟统计</li></ul>
 	TimeGranularity *int64 `json:"TimeGranularity,omitnil,omitempty" name:"TimeGranularity"`
 
-	// 网关类型。0：公有云网关；1：自有网关。 
+	// <p>网关类型。0：公有云网关；1：自有网关。</p>
 	GatewayType *int64 `json:"GatewayType,omitnil,omitempty" name:"GatewayType"`
 
-	// 接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。
+	// <p>接入区域。取值范围：[&#39;MC&#39;,&#39;AP&#39;,&#39;EU&#39;,&#39;AM&#39;] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。</p>
 	AccessRegion *string `json:"AccessRegion,omitnil,omitempty" name:"AccessRegion"`
 }
 
@@ -2095,16 +2095,16 @@ func (r *GetFlowStatisticByRegionRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetFlowStatisticByRegionResponseParams struct {
-	// 流量详细信息
+	// <p>流量详细信息</p>
 	NetDetails []*NetDetails `json:"NetDetails,omitnil,omitempty" name:"NetDetails"`
 
-	// 查找时间段流量使用最大值（单位：byte）
+	// <p>查找时间段流量使用最大值（单位：byte）</p>
 	MaxValue *float64 `json:"MaxValue,omitnil,omitempty" name:"MaxValue"`
 
-	// 查找时间段流量使用平均值（单位：byte）
+	// <p>查找时间段流量使用平均值（单位：byte）</p>
 	AvgValue *float64 `json:"AvgValue,omitnil,omitempty" name:"AvgValue"`
 
-	// 查找时间段流量使用总量（单位：byte）
+	// <p>查找时间段流量使用总量（单位：byte）</p>
 	TotalValue *float64 `json:"TotalValue,omitnil,omitempty" name:"TotalValue"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2129,56 +2129,56 @@ func (r *GetFlowStatisticByRegionResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetFlowStatisticRequestParams struct {
-	// 设备ID
+	// <p>设备ID</p>
 	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
 
-	// 开始查找时间
+	// <p>开始查找时间</p>
 	BeginTime *int64 `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
 
-	// 截止时间
+	// <p>截止时间</p>
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 流量种类（1：上行流量，2：下行流量，3：上下行总和）
+	// <p>流量种类（1：上行流量，2：下行流量，3：上下行总和）</p>
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 时间粒度（1：按小时统计，2：按天统计）
+	// <p>时间粒度</p><p>枚举值：</p><ul><li>1： 按小时统计</li><li>2： 按天统计</li><li>3： 按分钟统计</li><li>4： 按5分钟统计</li></ul>
 	TimeGranularity *int64 `json:"TimeGranularity,omitnil,omitempty" name:"TimeGranularity"`
 
-	// 接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。
+	// <p>接入区域。取值范围：[&#39;MC&#39;,&#39;AP&#39;,&#39;EU&#39;,&#39;AM&#39;] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。</p>
 	AccessRegion *string `json:"AccessRegion,omitnil,omitempty" name:"AccessRegion"`
 
-	// 网关类型。0：公有云网关；1：自有网关。不传默认为0。
+	// <p>网关类型。0：公有云网关；1：自有网关。不传默认为0。</p>
 	GatewayType *int64 `json:"GatewayType,omitnil,omitempty" name:"GatewayType"`
 
-	// 设备ID列表，用于查询多设备流量，该字段启用时DeviceId可传"-1"
+	// <p>设备ID列表，用于查询多设备流量，该字段启用时DeviceId可传&quot;-1&quot;</p>
 	DeviceList []*string `json:"DeviceList,omitnil,omitempty" name:"DeviceList"`
 }
 
 type GetFlowStatisticRequest struct {
 	*tchttp.BaseRequest
 	
-	// 设备ID
+	// <p>设备ID</p>
 	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
 
-	// 开始查找时间
+	// <p>开始查找时间</p>
 	BeginTime *int64 `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
 
-	// 截止时间
+	// <p>截止时间</p>
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 流量种类（1：上行流量，2：下行流量，3：上下行总和）
+	// <p>流量种类（1：上行流量，2：下行流量，3：上下行总和）</p>
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 时间粒度（1：按小时统计，2：按天统计）
+	// <p>时间粒度</p><p>枚举值：</p><ul><li>1： 按小时统计</li><li>2： 按天统计</li><li>3： 按分钟统计</li><li>4： 按5分钟统计</li></ul>
 	TimeGranularity *int64 `json:"TimeGranularity,omitnil,omitempty" name:"TimeGranularity"`
 
-	// 接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。
+	// <p>接入区域。取值范围：[&#39;MC&#39;,&#39;AP&#39;,&#39;EU&#39;,&#39;AM&#39;] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。</p>
 	AccessRegion *string `json:"AccessRegion,omitnil,omitempty" name:"AccessRegion"`
 
-	// 网关类型。0：公有云网关；1：自有网关。不传默认为0。
+	// <p>网关类型。0：公有云网关；1：自有网关。不传默认为0。</p>
 	GatewayType *int64 `json:"GatewayType,omitnil,omitempty" name:"GatewayType"`
 
-	// 设备ID列表，用于查询多设备流量，该字段启用时DeviceId可传"-1"
+	// <p>设备ID列表，用于查询多设备流量，该字段启用时DeviceId可传&quot;-1&quot;</p>
 	DeviceList []*string `json:"DeviceList,omitnil,omitempty" name:"DeviceList"`
 }
 
@@ -2210,16 +2210,16 @@ func (r *GetFlowStatisticRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetFlowStatisticResponseParams struct {
-	// 流量详细信息
+	// <p>流量详细信息</p>
 	NetDetails []*NetDetails `json:"NetDetails,omitnil,omitempty" name:"NetDetails"`
 
-	// 查找时间段流量使用最大值（单位：byte）
+	// <p>查找时间段流量使用最大值（单位：byte）</p>
 	MaxValue *float64 `json:"MaxValue,omitnil,omitempty" name:"MaxValue"`
 
-	// 查找时间段流量使用平均值（单位：byte）
+	// <p>查找时间段流量使用平均值（单位：byte）</p>
 	AvgValue *float64 `json:"AvgValue,omitnil,omitempty" name:"AvgValue"`
 
-	// 查找时间段流量使用总量（单位：byte）
+	// <p>查找时间段流量使用总量（单位：byte）</p>
 	TotalValue *float64 `json:"TotalValue,omitnil,omitempty" name:"TotalValue"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2724,50 +2724,50 @@ func (r *GetMonitorDataByNameResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetMultiFlowStatisticRequestParams struct {
-	// 设备id列表，单次最多请求10个设备
+	// <p>设备id列表，单次最多请求10个设备</p>
 	DeviceIds []*string `json:"DeviceIds,omitnil,omitempty" name:"DeviceIds"`
 
-	// 1659514436
+	// <p>1659514436</p>
 	BeginTime *int64 `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
 
-	// 1659515000
+	// <p>1659515000</p>
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 统计流量类型（1：上行流量，2：下行流量， 3: 上下行总和）
+	// <p>统计流量类型（1：上行流量，2：下行流量， 3: 上下行总和）</p>
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 统计时间粒度（1：按小时统计，2：按天统计）
+	// <p>统计时间粒度</p><p>枚举值：</p><ul><li>1： 按小时统计</li><li>2： 按天统计</li><li>3： 按分钟统计</li><li>4： 按5分钟统计</li></ul>
 	TimeGranularity *int64 `json:"TimeGranularity,omitnil,omitempty" name:"TimeGranularity"`
 
-	// 接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。
+	// <p>接入区域。取值范围：[&#39;MC&#39;,&#39;AP&#39;,&#39;EU&#39;,&#39;AM&#39;] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。</p>
 	AccessRegion *string `json:"AccessRegion,omitnil,omitempty" name:"AccessRegion"`
 
-	// 网关类型。0：公有云网关；1：自有网关。不传默认为0。
+	// <p>网关类型。0：公有云网关；1：自有网关。不传默认为0。</p>
 	GatewayType *int64 `json:"GatewayType,omitnil,omitempty" name:"GatewayType"`
 }
 
 type GetMultiFlowStatisticRequest struct {
 	*tchttp.BaseRequest
 	
-	// 设备id列表，单次最多请求10个设备
+	// <p>设备id列表，单次最多请求10个设备</p>
 	DeviceIds []*string `json:"DeviceIds,omitnil,omitempty" name:"DeviceIds"`
 
-	// 1659514436
+	// <p>1659514436</p>
 	BeginTime *int64 `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
 
-	// 1659515000
+	// <p>1659515000</p>
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 统计流量类型（1：上行流量，2：下行流量， 3: 上下行总和）
+	// <p>统计流量类型（1：上行流量，2：下行流量， 3: 上下行总和）</p>
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 统计时间粒度（1：按小时统计，2：按天统计）
+	// <p>统计时间粒度</p><p>枚举值：</p><ul><li>1： 按小时统计</li><li>2： 按天统计</li><li>3： 按分钟统计</li><li>4： 按5分钟统计</li></ul>
 	TimeGranularity *int64 `json:"TimeGranularity,omitnil,omitempty" name:"TimeGranularity"`
 
-	// 接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。
+	// <p>接入区域。取值范围：[&#39;MC&#39;,&#39;AP&#39;,&#39;EU&#39;,&#39;AM&#39;] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。</p>
 	AccessRegion *string `json:"AccessRegion,omitnil,omitempty" name:"AccessRegion"`
 
-	// 网关类型。0：公有云网关；1：自有网关。不传默认为0。
+	// <p>网关类型。0：公有云网关；1：自有网关。不传默认为0。</p>
 	GatewayType *int64 `json:"GatewayType,omitnil,omitempty" name:"GatewayType"`
 }
 
@@ -2798,7 +2798,7 @@ func (r *GetMultiFlowStatisticRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetMultiFlowStatisticResponseParams struct {
-	// 批量设备流量信息
+	// <p>批量设备流量信息</p>
 	FlowDetails []*FlowDetails `json:"FlowDetails,omitnil,omitempty" name:"FlowDetails"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3057,66 +3057,62 @@ func (r *GetPublicKeyResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetStatisticDataByNameRequestParams struct {
-	// 设备名。若不指定设备，可传"-1"
+	// <p>设备名。若不指定设备，可传&quot;-1&quot;</p>
 	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
 
-	// 统计开始时间，单位：s
+	// <p>统计开始时间，单位：s</p>
 	BeginTime *int64 `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
 
-	// 统计结束时间，单位：s
+	// <p>统计结束时间，单位：s</p>
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 聚合粒度：
-	// 1:按小时统计
-	// 2:按天统计
+	// <p>时间粒度</p><p>枚举值：</p><ul><li>1： 按小时统计</li><li>2： 按天统计</li><li>3： 按分钟统计</li><li>4： 按5分钟统计</li></ul>
 	TimeGranularity *int64 `json:"TimeGranularity,omitnil,omitempty" name:"TimeGranularity"`
 
-	// 接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。
+	// <p>接入区域。取值范围：[&#39;MC&#39;,&#39;AP&#39;,&#39;EU&#39;,&#39;AM&#39;] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。</p>
 	AccessRegion *string `json:"AccessRegion,omitnil,omitempty" name:"AccessRegion"`
 
-	// 网关类型。0：公有云网关；1：自有网关。不传默认为0。
+	// <p>网关类型。0：公有云网关；1：自有网关。不传默认为0。</p>
 	GatewayType *int64 `json:"GatewayType,omitnil,omitempty" name:"GatewayType"`
 
-	// 设备名列表，最多10个设备，下载多个设备流量时使用，此时DeviceName可传"-1"
+	// <p>设备名列表，最多10个设备，下载多个设备流量时使用，此时DeviceName可传&quot;-1&quot;</p>
 	DeviceList []*string `json:"DeviceList,omitnil,omitempty" name:"DeviceList"`
 
-	// 设备分组ID，若不指定分组则不传，按分组下载数据时使用
+	// <p>设备分组ID，若不指定分组则不传，按分组下载数据时使用</p>
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 应用ID，若不指定应用不填，按应用下载数据时使用
+	// <p>应用ID，若不指定应用不填，按应用下载数据时使用</p>
 	MpApplicationId *string `json:"MpApplicationId,omitnil,omitempty" name:"MpApplicationId"`
 }
 
 type GetStatisticDataByNameRequest struct {
 	*tchttp.BaseRequest
 	
-	// 设备名。若不指定设备，可传"-1"
+	// <p>设备名。若不指定设备，可传&quot;-1&quot;</p>
 	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
 
-	// 统计开始时间，单位：s
+	// <p>统计开始时间，单位：s</p>
 	BeginTime *int64 `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
 
-	// 统计结束时间，单位：s
+	// <p>统计结束时间，单位：s</p>
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 聚合粒度：
-	// 1:按小时统计
-	// 2:按天统计
+	// <p>时间粒度</p><p>枚举值：</p><ul><li>1： 按小时统计</li><li>2： 按天统计</li><li>3： 按分钟统计</li><li>4： 按5分钟统计</li></ul>
 	TimeGranularity *int64 `json:"TimeGranularity,omitnil,omitempty" name:"TimeGranularity"`
 
-	// 接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。
+	// <p>接入区域。取值范围：[&#39;MC&#39;,&#39;AP&#39;,&#39;EU&#39;,&#39;AM&#39;] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。</p>
 	AccessRegion *string `json:"AccessRegion,omitnil,omitempty" name:"AccessRegion"`
 
-	// 网关类型。0：公有云网关；1：自有网关。不传默认为0。
+	// <p>网关类型。0：公有云网关；1：自有网关。不传默认为0。</p>
 	GatewayType *int64 `json:"GatewayType,omitnil,omitempty" name:"GatewayType"`
 
-	// 设备名列表，最多10个设备，下载多个设备流量时使用，此时DeviceName可传"-1"
+	// <p>设备名列表，最多10个设备，下载多个设备流量时使用，此时DeviceName可传&quot;-1&quot;</p>
 	DeviceList []*string `json:"DeviceList,omitnil,omitempty" name:"DeviceList"`
 
-	// 设备分组ID，若不指定分组则不传，按分组下载数据时使用
+	// <p>设备分组ID，若不指定分组则不传，按分组下载数据时使用</p>
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 应用ID，若不指定应用不填，按应用下载数据时使用
+	// <p>应用ID，若不指定应用不填，按应用下载数据时使用</p>
 	MpApplicationId *string `json:"MpApplicationId,omitnil,omitempty" name:"MpApplicationId"`
 }
 
@@ -3149,7 +3145,7 @@ func (r *GetStatisticDataByNameRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetStatisticDataByNameResponseParams struct {
-	// 文件地址url
+	// <p>文件地址url</p>
 	FilePath *string `json:"FilePath,omitnil,omitempty" name:"FilePath"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3174,60 +3170,56 @@ func (r *GetStatisticDataByNameResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetStatisticDataRequestParams struct {
-	// 设备ID。若不指定设备，可传"-1"
+	// <p>设备ID。若不指定设备，可传&quot;-1&quot;</p>
 	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
 
-	// 统计开始时间，单位：s
+	// <p>统计开始时间，单位：s</p>
 	BeginTime *int64 `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
 
-	// 统计结束时间，单位：s
+	// <p>统计结束时间，单位：s</p>
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 聚合粒度：
-	// 1:按小时统计
-	// 2:按天统计
+	// <p>时间粒度</p><p>枚举值：</p><ul><li>1： 按小时统计</li><li>2： 按天统计</li><li>3： 按分钟统计</li><li>4： 按5分钟统计</li></ul>
 	TimeGranularity *int64 `json:"TimeGranularity,omitnil,omitempty" name:"TimeGranularity"`
 
-	// 接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。
+	// <p>接入区域。取值范围：[&#39;MC&#39;,&#39;AP&#39;,&#39;EU&#39;,&#39;AM&#39;] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。</p>
 	AccessRegion *string `json:"AccessRegion,omitnil,omitempty" name:"AccessRegion"`
 
-	// 网关类型。0：公有云网关；1：自有网关。不传默认为0。
+	// <p>网关类型。0：公有云网关；1：自有网关。不传默认为0。</p>
 	GatewayType *int64 `json:"GatewayType,omitnil,omitempty" name:"GatewayType"`
 
-	// 设备ID列表，最多10个设备，下载多个设备流量和时使用，此时DeviceId可传"-1"
+	// <p>设备ID列表，最多10个设备，下载多个设备流量和时使用，此时DeviceId可传&quot;-1&quot;</p>
 	DeviceList []*string `json:"DeviceList,omitnil,omitempty" name:"DeviceList"`
 
-	// 设备分组ID，若不指定分组则不传，按分组下载数据时使用
+	// <p>设备分组ID，若不指定分组则不传，按分组下载数据时使用</p>
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 }
 
 type GetStatisticDataRequest struct {
 	*tchttp.BaseRequest
 	
-	// 设备ID。若不指定设备，可传"-1"
+	// <p>设备ID。若不指定设备，可传&quot;-1&quot;</p>
 	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
 
-	// 统计开始时间，单位：s
+	// <p>统计开始时间，单位：s</p>
 	BeginTime *int64 `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
 
-	// 统计结束时间，单位：s
+	// <p>统计结束时间，单位：s</p>
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 聚合粒度：
-	// 1:按小时统计
-	// 2:按天统计
+	// <p>时间粒度</p><p>枚举值：</p><ul><li>1： 按小时统计</li><li>2： 按天统计</li><li>3： 按分钟统计</li><li>4： 按5分钟统计</li></ul>
 	TimeGranularity *int64 `json:"TimeGranularity,omitnil,omitempty" name:"TimeGranularity"`
 
-	// 接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。
+	// <p>接入区域。取值范围：[&#39;MC&#39;,&#39;AP&#39;,&#39;EU&#39;,&#39;AM&#39;] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。</p>
 	AccessRegion *string `json:"AccessRegion,omitnil,omitempty" name:"AccessRegion"`
 
-	// 网关类型。0：公有云网关；1：自有网关。不传默认为0。
+	// <p>网关类型。0：公有云网关；1：自有网关。不传默认为0。</p>
 	GatewayType *int64 `json:"GatewayType,omitnil,omitempty" name:"GatewayType"`
 
-	// 设备ID列表，最多10个设备，下载多个设备流量和时使用，此时DeviceId可传"-1"
+	// <p>设备ID列表，最多10个设备，下载多个设备流量和时使用，此时DeviceId可传&quot;-1&quot;</p>
 	DeviceList []*string `json:"DeviceList,omitnil,omitempty" name:"DeviceList"`
 
-	// 设备分组ID，若不指定分组则不传，按分组下载数据时使用
+	// <p>设备分组ID，若不指定分组则不传，按分组下载数据时使用</p>
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 }
 
@@ -3259,7 +3251,7 @@ func (r *GetStatisticDataRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetStatisticDataResponseParams struct {
-	// 文件地址url
+	// <p>文件地址url</p>
 	FilePath *string `json:"FilePath,omitnil,omitempty" name:"FilePath"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

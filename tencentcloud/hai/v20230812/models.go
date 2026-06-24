@@ -1783,6 +1783,9 @@ type ProbeConfig struct {
 
 	// <p>探测失败后，Kubernetes的重试次数</p>
 	FailureThreshold *int64 `json:"FailureThreshold,omitnil,omitempty" name:"FailureThreshold"`
+
+	// <p>TCP Socket请求进行健康检查</p>
+	TcpSocket *TcpSocketConfig `json:"TcpSocket,omitnil,omitempty" name:"TcpSocket"`
 }
 
 type ProbeInfo struct {
@@ -2261,6 +2264,11 @@ type SystemDisk struct {
 
 	// 系统盘分区盘符
 	DiskName *string `json:"DiskName,omitnil,omitempty" name:"DiskName"`
+}
+
+type TcpSocketConfig struct {
+
+	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
 }
 
 type TemplateDetail struct {

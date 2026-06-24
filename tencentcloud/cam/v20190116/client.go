@@ -3619,6 +3619,58 @@ func (c *Client) ListAccessKeysWithContext(ctx context.Context, request *ListAcc
     return
 }
 
+func NewListAccountsRequest() (request *ListAccountsRequest) {
+    request = &ListAccountsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cam", APIVersion, "ListAccounts")
+    
+    
+    return
+}
+
+func NewListAccountsResponse() (response *ListAccountsResponse) {
+    response = &ListAccountsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListAccounts
+// 查询所有账号列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PAGINATIONTOKENINVALID = "InvalidParameter.PaginationTokenInvalid"
+func (c *Client) ListAccounts(request *ListAccountsRequest) (response *ListAccountsResponse, err error) {
+    return c.ListAccountsWithContext(context.Background(), request)
+}
+
+// ListAccounts
+// 查询所有账号列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PAGINATIONTOKENINVALID = "InvalidParameter.PaginationTokenInvalid"
+func (c *Client) ListAccountsWithContext(ctx context.Context, request *ListAccountsRequest) (response *ListAccountsResponse, err error) {
+    if request == nil {
+        request = NewListAccountsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cam", APIVersion, "ListAccounts")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListAccounts require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListAccountsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewListAttachedGroupPoliciesRequest() (request *ListAttachedGroupPoliciesRequest) {
     request = &ListAttachedGroupPoliciesRequest{
         BaseRequest: &tchttp.BaseRequest{},

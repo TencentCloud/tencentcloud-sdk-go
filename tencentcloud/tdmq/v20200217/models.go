@@ -8725,71 +8725,77 @@ func (r *DescribeRocketMQMigratingTopicListResponse) FromJsonString(s string) er
 
 // Predefined struct for user
 type DescribeRocketMQMsgRequestParams struct {
-	// 集群id
+	// <p>集群id</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 命名空间，4.x 通用集群命名空间固定为: tdmq_default
+	// <p>命名空间，4.x 通用集群命名空间固定为: tdmq_default</p>
 	EnvironmentId *string `json:"EnvironmentId,omitnil,omitempty" name:"EnvironmentId"`
 
-	// 主题，查询死信时传groupId
+	// <p>主题，查询死信时传groupId</p>
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
-	// 消息id
+	// <p>消息id</p>
 	MsgId *string `json:"MsgId,omitnil,omitempty" name:"MsgId"`
 
-	// pulsar消息id
+	// <p>pulsar消息id</p>
 	PulsarMsgId *string `json:"PulsarMsgId,omitnil,omitempty" name:"PulsarMsgId"`
 
-	// 查询死信时该值为true，只对Rocketmq有效
+	// <p>查询死信时该值为true，只对Rocketmq有效</p>
 	//
 	// Deprecated: QueryDlqMsg is deprecated.
 	QueryDlqMsg *bool `json:"QueryDlqMsg,omitnil,omitempty" name:"QueryDlqMsg"`
 
-	// 查询死信时该值为true，只对Rocketmq有效
+	// <p>查询死信时该值为true，只对Rocketmq有效</p>
 	QueryDeadLetterMessage *bool `json:"QueryDeadLetterMessage,omitnil,omitempty" name:"QueryDeadLetterMessage"`
 
-	// 分页Offset
+	// <p>分页Offset</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页Limit
+	// <p>分页Limit</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 根据消费组名称过滤消费详情
+	// <p>根据消费组名称过滤消费详情</p>
 	FilterTrackGroup *string `json:"FilterTrackGroup,omitnil,omitempty" name:"FilterTrackGroup"`
+
+	// <p>查询延迟消息或定时消息时，该值为true</p>
+	QueryDelayMessage *bool `json:"QueryDelayMessage,omitnil,omitempty" name:"QueryDelayMessage"`
 }
 
 type DescribeRocketMQMsgRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群id
+	// <p>集群id</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 命名空间，4.x 通用集群命名空间固定为: tdmq_default
+	// <p>命名空间，4.x 通用集群命名空间固定为: tdmq_default</p>
 	EnvironmentId *string `json:"EnvironmentId,omitnil,omitempty" name:"EnvironmentId"`
 
-	// 主题，查询死信时传groupId
+	// <p>主题，查询死信时传groupId</p>
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
-	// 消息id
+	// <p>消息id</p>
 	MsgId *string `json:"MsgId,omitnil,omitempty" name:"MsgId"`
 
-	// pulsar消息id
+	// <p>pulsar消息id</p>
 	PulsarMsgId *string `json:"PulsarMsgId,omitnil,omitempty" name:"PulsarMsgId"`
 
-	// 查询死信时该值为true，只对Rocketmq有效
+	// <p>查询死信时该值为true，只对Rocketmq有效</p>
 	QueryDlqMsg *bool `json:"QueryDlqMsg,omitnil,omitempty" name:"QueryDlqMsg"`
 
-	// 查询死信时该值为true，只对Rocketmq有效
+	// <p>查询死信时该值为true，只对Rocketmq有效</p>
 	QueryDeadLetterMessage *bool `json:"QueryDeadLetterMessage,omitnil,omitempty" name:"QueryDeadLetterMessage"`
 
-	// 分页Offset
+	// <p>分页Offset</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页Limit
+	// <p>分页Limit</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 根据消费组名称过滤消费详情
+	// <p>根据消费组名称过滤消费详情</p>
 	FilterTrackGroup *string `json:"FilterTrackGroup,omitnil,omitempty" name:"FilterTrackGroup"`
+
+	// <p>查询延迟消息或定时消息时，该值为true</p>
+	QueryDelayMessage *bool `json:"QueryDelayMessage,omitnil,omitempty" name:"QueryDelayMessage"`
 }
 
 func (r *DescribeRocketMQMsgRequest) ToJsonString() string {
@@ -8814,6 +8820,7 @@ func (r *DescribeRocketMQMsgRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "FilterTrackGroup")
+	delete(f, "QueryDelayMessage")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRocketMQMsgRequest has unknown keys!", "")
 	}
@@ -8822,30 +8829,30 @@ func (r *DescribeRocketMQMsgRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRocketMQMsgResponseParams struct {
-	// 消息体
+	// <p>消息体</p>
 	Body *string `json:"Body,omitnil,omitempty" name:"Body"`
 
-	// 详情参数
+	// <p>详情参数</p>
 	Properties *string `json:"Properties,omitnil,omitempty" name:"Properties"`
 
-	// 生产时间
+	// <p>生产时间</p>
 	ProduceTime *string `json:"ProduceTime,omitnil,omitempty" name:"ProduceTime"`
 
-	// 消息id
+	// <p>消息id</p>
 	MsgId *string `json:"MsgId,omitnil,omitempty" name:"MsgId"`
 
-	// 生产者地址
+	// <p>生产者地址</p>
 	ProducerAddr *string `json:"ProducerAddr,omitnil,omitempty" name:"ProducerAddr"`
 
-	// 消费组消费情况列表
+	// <p>消费组消费情况列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MessageTracks []*RocketMQMessageTrack `json:"MessageTracks,omitnil,omitempty" name:"MessageTracks"`
 
-	// 详情页展示的topic名称
+	// <p>详情页展示的topic名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ShowTopicName *string `json:"ShowTopicName,omitnil,omitempty" name:"ShowTopicName"`
 
-	// 消费组消费情况列表总数
+	// <p>消费组消费情况列表总数</p>
 	MessageTracksCount *int64 `json:"MessageTracksCount,omitnil,omitempty" name:"MessageTracksCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -12810,45 +12817,51 @@ func (r *ModifyRocketMQGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyRocketMQInstanceRequestParams struct {
-	// 专享实例ID
+	// <p>专享实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 实例名称
+	// <p>实例名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 实例备注信息
+	// <p>实例备注信息</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 实例消息保留时间，小时为单位
+	// <p>实例消息保留时间，小时为单位</p>
 	MessageRetention *int64 `json:"MessageRetention,omitnil,omitempty" name:"MessageRetention"`
 
-	// 是否开启删除保护
+	// <p>是否开启删除保护</p>
 	EnableDeletionProtection *bool `json:"EnableDeletionProtection,omitnil,omitempty" name:"EnableDeletionProtection"`
 
-	// 控制生产和消费消息的 TPS 占比，取值范围0～1，默认值为0.5
+	// <p>控制生产和消费消息的 TPS 占比，取值范围0～1，默认值为0.5</p>
 	SendReceiveRatio *float64 `json:"SendReceiveRatio,omitnil,omitempty" name:"SendReceiveRatio"`
+
+	// <p>是否开启ACL</p>
+	AclEnabled *bool `json:"AclEnabled,omitnil,omitempty" name:"AclEnabled"`
 }
 
 type ModifyRocketMQInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 专享实例ID
+	// <p>专享实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 实例名称
+	// <p>实例名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 实例备注信息
+	// <p>实例备注信息</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 实例消息保留时间，小时为单位
+	// <p>实例消息保留时间，小时为单位</p>
 	MessageRetention *int64 `json:"MessageRetention,omitnil,omitempty" name:"MessageRetention"`
 
-	// 是否开启删除保护
+	// <p>是否开启删除保护</p>
 	EnableDeletionProtection *bool `json:"EnableDeletionProtection,omitnil,omitempty" name:"EnableDeletionProtection"`
 
-	// 控制生产和消费消息的 TPS 占比，取值范围0～1，默认值为0.5
+	// <p>控制生产和消费消息的 TPS 占比，取值范围0～1，默认值为0.5</p>
 	SendReceiveRatio *float64 `json:"SendReceiveRatio,omitnil,omitempty" name:"SendReceiveRatio"`
+
+	// <p>是否开启ACL</p>
+	AclEnabled *bool `json:"AclEnabled,omitnil,omitempty" name:"AclEnabled"`
 }
 
 func (r *ModifyRocketMQInstanceRequest) ToJsonString() string {
@@ -12869,6 +12882,7 @@ func (r *ModifyRocketMQInstanceRequest) FromJsonString(s string) error {
 	delete(f, "MessageRetention")
 	delete(f, "EnableDeletionProtection")
 	delete(f, "SendReceiveRatio")
+	delete(f, "AclEnabled")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRocketMQInstanceRequest has unknown keys!", "")
 	}
@@ -15102,119 +15116,123 @@ type RocketMQClusterDetail struct {
 }
 
 type RocketMQClusterInfo struct {
-	// 集群ID
+	// <p>集群ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 集群名称
+	// <p>集群名称</p>
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
-	// 地域信息
+	// <p>地域信息</p>
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 创建时间，毫秒为单位
+	// <p>创建时间，毫秒为单位</p>
 	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 集群说明信息
+	// <p>集群说明信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 公网接入地址
+	// <p>公网接入地址</p>
 	PublicEndPoint *string `json:"PublicEndPoint,omitnil,omitempty" name:"PublicEndPoint"`
 
-	// VPC接入地址
+	// <p>VPC接入地址</p>
 	VpcEndPoint *string `json:"VpcEndPoint,omitnil,omitempty" name:"VpcEndPoint"`
 
-	// 是否支持命名空间接入点
+	// <p>是否支持命名空间接入点</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SupportNamespaceEndpoint *bool `json:"SupportNamespaceEndpoint,omitnil,omitempty" name:"SupportNamespaceEndpoint"`
 
-	// VPC信息
+	// <p>VPC信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Vpcs []*VpcConfig `json:"Vpcs,omitnil,omitempty" name:"Vpcs"`
 
-	// 是否为专享实例
+	// <p>是否为专享实例</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsVip *bool `json:"IsVip,omitnil,omitempty" name:"IsVip"`
 
-	// Rocketmq集群标识
+	// <p>Rocketmq集群标识</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RocketMQFlag *bool `json:"RocketMQFlag,omitnil,omitempty" name:"RocketMQFlag"`
 
-	// 计费状态，1表示正常，2表示已停服，3表示已销毁
+	// <p>计费状态，1表示正常，2表示已停服，3表示已销毁</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 欠费停服时间，毫秒为单位
+	// <p>欠费停服时间，毫秒为单位</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsolateTime *int64 `json:"IsolateTime,omitnil,omitempty" name:"IsolateTime"`
 
-	// HTTP协议公网接入地址
+	// <p>HTTP协议公网接入地址</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HttpPublicEndpoint *string `json:"HttpPublicEndpoint,omitnil,omitempty" name:"HttpPublicEndpoint"`
 
-	// HTTP协议VPC接入地址
+	// <p>HTTP协议VPC接入地址</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HttpVpcEndpoint *string `json:"HttpVpcEndpoint,omitnil,omitempty" name:"HttpVpcEndpoint"`
 
-	// TCP内部接入地址
+	// <p>TCP内部接入地址</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InternalEndpoint *string `json:"InternalEndpoint,omitnil,omitempty" name:"InternalEndpoint"`
 
-	// HTTP协议内部接入地址
+	// <p>HTTP协议内部接入地址</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HttpInternalEndpoint *string `json:"HttpInternalEndpoint,omitnil,omitempty" name:"HttpInternalEndpoint"`
 
-	// 是否开启ACL鉴权，专享实例支持关闭
+	// <p>是否开启ACL鉴权，专享实例支持关闭</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AclEnabled *bool `json:"AclEnabled,omitnil,omitempty" name:"AclEnabled"`
 
-	// 公网CLB实例ID
+	// <p>公网CLB实例ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PublicClbId *string `json:"PublicClbId,omitnil,omitempty" name:"PublicClbId"`
 
-	// vip
+	// <p>vip</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
 
-	// 所属VPC
+	// <p>所属VPC</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 是否支持迁移
+	// <p>是否支持迁移</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SupportMigration *bool `json:"SupportMigration,omitnil,omitempty" name:"SupportMigration"`
 
-	// 实例状态，0表示创建中，1表示正常，2表示隔离中，3表示已销毁，4 - 异常, 5 - 发货失败，6 - 变配中，7 - 变配失败
+	// <p>实例状态，0表示创建中，1表示正常，2表示隔离中，3表示已销毁，4 - 异常, 5 - 发货失败，6 - 变配中，7 - 变配失败</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceStatus *int64 `json:"InstanceStatus,omitnil,omitempty" name:"InstanceStatus"`
 
-	// 集群所属可用区，表明集群归属的可用区
+	// <p>集群所属可用区，表明集群归属的可用区</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ZoneId *int64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 集群节点所在的可用区，若该集群为跨可用区集群，则包含该集群节点所在的多个可用区。
+	// <p>集群节点所在的可用区，若该集群为跨可用区集群，则包含该集群节点所在的多个可用区。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ZoneIds []*int64 `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
 
-	// 是否已冻结
+	// <p>是否已冻结</p>
 	IsFrozen *bool `json:"IsFrozen,omitnil,omitempty" name:"IsFrozen"`
 
-	// 是否开启自动创建主题
+	// <p>是否开启自动创建主题</p>
 	AutoCreateTopicEnabled *bool `json:"AutoCreateTopicEnabled,omitnil,omitempty" name:"AutoCreateTopicEnabled"`
 
-	// 是否开启集群Admin能力
+	// <p>是否开启集群Admin能力</p>
 	AdminFeatureEnabled *bool `json:"AdminFeatureEnabled,omitnil,omitempty" name:"AdminFeatureEnabled"`
 
-	// Admin AK
+	// <p>Admin AK</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AdminAccessKey *string `json:"AdminAccessKey,omitnil,omitempty" name:"AdminAccessKey"`
 
-	// Admin SK
+	// <p>Admin SK</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AdminSecretKey *string `json:"AdminSecretKey,omitnil,omitempty" name:"AdminSecretKey"`
 
-	// 是否开启删除保护
+	// <p>是否开启删除保护</p>
 	EnableDeletionProtection *bool `json:"EnableDeletionProtection,omitnil,omitempty" name:"EnableDeletionProtection"`
+
+	// <p>是否开启自动创建消费组</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AutoCreateConsumeGroupEnabled *bool `json:"AutoCreateConsumeGroupEnabled,omitnil,omitempty" name:"AutoCreateConsumeGroupEnabled"`
 }
 
 type RocketMQClusterRecentStats struct {
@@ -15749,61 +15767,61 @@ type RocketMQTopicDistribution struct {
 }
 
 type RocketMQVipInstance struct {
-	// 实例id
+	// <p>实例id</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 实例名称
+	// <p>实例名称</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 实例版本
+	// <p>实例版本</p>
 	InstanceVersion *string `json:"InstanceVersion,omitnil,omitempty" name:"InstanceVersion"`
 
-	// 实例状态，0表示创建中，1表示正常，2表示隔离中，3表示已销毁，4 - 异常, 5 - 发货失败，6 - 变配中，7 - 变配失败
+	// <p>实例状态，0表示创建中，1表示正常，2表示隔离中，3表示已销毁，4 - 异常, 5 - 发货失败，6 - 变配中，7 - 变配失败</p>
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 节点数量
+	// <p>节点数量</p>
 	NodeCount *uint64 `json:"NodeCount,omitnil,omitempty" name:"NodeCount"`
 
-	// 实例配置规格名称
+	// <p>实例配置规格名称</p>
 	ConfigDisplay *string `json:"ConfigDisplay,omitnil,omitempty" name:"ConfigDisplay"`
 
-	// 峰值TPS
+	// <p>峰值TPS</p>
 	MaxTps *uint64 `json:"MaxTps,omitnil,omitempty" name:"MaxTps"`
 
-	// 峰值带宽，Mbps为单位
+	// <p>峰值带宽，Mbps为单位</p>
 	MaxBandWidth *uint64 `json:"MaxBandWidth,omitnil,omitempty" name:"MaxBandWidth"`
 
-	// 存储容量，GB为单位
+	// <p>存储容量，GB为单位</p>
 	MaxStorage *uint64 `json:"MaxStorage,omitnil,omitempty" name:"MaxStorage"`
 
-	// 实例到期时间，毫秒为单位
+	// <p>实例到期时间，毫秒为单位</p>
 	ExpireTime *uint64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
-	// 自动续费标记，0表示默认状态(用户未设置，即初始状态即手动续费)， 1表示自动续费，2表示明确不自动续费(用户设置)
+	// <p>自动续费标记，0表示默认状态(用户未设置，即初始状态即手动续费)， 1表示自动续费，2表示明确不自动续费(用户设置)</p>
 	AutoRenewFlag *uint64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 
-	// 0-后付费，1-预付费
+	// <p>0-后付费，1-预付费</p>
 	PayMode *uint64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// 备注信息
+	// <p>备注信息</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 实例配置ID
+	// <p>实例规格</p><p>枚举值：</p><ul><li>rocket-vip-basic-0： 通用集群</li><li>rocket-vip-basic-1： 专享集群-基础型</li><li>rocket-vip-basic-2： 专享集群-标准型</li><li>rocket-vip-basic-3： 专享集群-高阶I型</li><li>rocket-vip-basic-4： 专享集群-高阶II型</li></ul>
 	SpecName *string `json:"SpecName,omitnil,omitempty" name:"SpecName"`
 
-	// 最大可设置消息保留时间，小时为单位
+	// <p>最大可设置消息保留时间，小时为单位</p>
 	MaxRetention *int64 `json:"MaxRetention,omitnil,omitempty" name:"MaxRetention"`
 
-	// 最小可设置消息保留时间，小时为单位
+	// <p>最小可设置消息保留时间，小时为单位</p>
 	MinRetention *int64 `json:"MinRetention,omitnil,omitempty" name:"MinRetention"`
 
-	// 实例消息保留时间，小时为单位
+	// <p>实例消息保留时间，小时为单位</p>
 	Retention *int64 `json:"Retention,omitnil,omitempty" name:"Retention"`
 
-	// 是否开启ACL鉴权
+	// <p>是否开启ACL鉴权</p>
 	AclEnabled *bool `json:"AclEnabled,omitnil,omitempty" name:"AclEnabled"`
 
-	// 销毁时间
+	// <p>销毁时间</p>
 	DestroyTime *uint64 `json:"DestroyTime,omitnil,omitempty" name:"DestroyTime"`
 }
 

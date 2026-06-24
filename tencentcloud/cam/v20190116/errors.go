@@ -179,6 +179,9 @@ const (
 	// 当前角色仅支持企业管理员操作，如需修改，请联系企业管理员。
 	INVALIDPARAMETER_ORGANIZATIONROLEOPERATEERROR = "InvalidParameter.OrganizationRoleOperateError"
 
+	// 无效的pageToken
+	INVALIDPARAMETER_PAGINATIONTOKENINVALID = "InvalidParameter.PaginationTokenInvalid"
+
 	// 非法入参。
 	INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 

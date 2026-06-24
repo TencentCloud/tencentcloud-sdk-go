@@ -8093,6 +8093,7 @@ func NewModifyRocketMQInstanceResponse() (response *ModifyRocketMQInstanceRespon
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyRocketMQInstance(request *ModifyRocketMQInstanceRequest) (response *ModifyRocketMQInstanceResponse, err error) {
     return c.ModifyRocketMQInstanceWithContext(context.Background(), request)
 }
@@ -8104,6 +8105,7 @@ func (c *Client) ModifyRocketMQInstance(request *ModifyRocketMQInstanceRequest) 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyRocketMQInstanceWithContext(ctx context.Context, request *ModifyRocketMQInstanceRequest) (response *ModifyRocketMQInstanceResponse, err error) {
     if request == nil {
         request = NewModifyRocketMQInstanceRequest()

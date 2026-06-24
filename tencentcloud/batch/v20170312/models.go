@@ -3012,31 +3012,27 @@ func (r *SubmitJobResponse) FromJsonString(s string) error {
 }
 
 type SystemDisk struct {
-	// 系统盘类型。系统盘类型限制详见[存储概述](https://cloud.tencent.com/document/product/213/4952)。取值范围：<br>
-	// <li>LOCAL_BASIC：本地硬盘</li>
-	// <li>LOCAL_SSD：本地SSD硬盘</li>
-	// <li>CLOUD_BASIC：普通云硬盘</li>
-	// <li>CLOUD_SSD：SSD云硬盘</li>
-	// <li>CLOUD_PREMIUM：高性能云硬盘</li>
-	// <li>CLOUD_BSSD：通用型SSD云硬盘</li>
-	// <li>CLOUD_HSSD：增强型SSD云硬盘</li>
-	// <li>CLOUD_TSSD：极速型SSD云硬盘</li><br>
-	// 默认取值：当前有库存的硬盘类型。
+	// <p>系统盘类型。系统盘类型限制详见<a href="https://cloud.tencent.com/document/product/213/4952">存储概述</a>。取值范围：<br></p><li>LOCAL_BASIC：本地硬盘</li><li>LOCAL_SSD：本地SSD硬盘</li><li>CLOUD_BASIC：普通云硬盘</li><li>CLOUD_SSD：SSD云硬盘</li><li>CLOUD_PREMIUM：高性能云硬盘</li><li>CLOUD_BSSD：通用型SSD云硬盘</li><li>CLOUD_HSSD：增强型SSD云硬盘</li><li>CLOUD_TSSD：极速型SSD云硬盘</li><br>默认取值：当前有库存的硬盘类型。
 	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
 
-	// 系统盘ID。
-	// 该参数目前仅用于 [DescribeInstances](https://cloud.tencent.com/document/product/213/15728) 等查询类接口的返回参数，不可用于 [RunInstances](https://cloud.tencent.com/document/product/213/15730) 等写接口的入参。
+	// <p>系统盘ID。<br>该参数目前仅用于 <a href="https://cloud.tencent.com/document/product/213/15728">DescribeInstances</a> 等查询类接口的返回参数，不可用于 <a href="https://cloud.tencent.com/document/product/213/15730">RunInstances</a> 等写接口的入参。</p>
 	DiskId *string `json:"DiskId,omitnil,omitempty" name:"DiskId"`
 
-	// 系统盘大小，单位：GiB。默认值为 50
+	// <p>系统盘大小，单位：GiB。默认值为 50</p>
 	DiskSize *int64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
 
-	// 所属的独享集群ID。
+	// <p>所属的独享集群ID。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CdcId *string `json:"CdcId,omitnil,omitempty" name:"CdcId"`
 
-	// 磁盘名称，长度不超过128 个字符。
+	// <p>磁盘名称，长度不超过128 个字符。</p>
 	DiskName *string `json:"DiskName,omitnil,omitempty" name:"DiskName"`
+
+	// <p>系统盘是否加密。取值范围：true：加密false：不加密默认取值：false该参数目前仅用于 RunInstances 接口。当前参数灰度中。</p>
+	Encrypt *bool `json:"Encrypt,omitnil,omitempty" name:"Encrypt"`
+
+	// <p>自定义CMK对应的ID，取值为UUID或者类似kms-abcd1234。用于加密云盘。该参数目前仅用于 RunInstances 接口。当前参数灰度中。</p>
+	KmsKeyId *string `json:"KmsKeyId,omitnil,omitempty" name:"KmsKeyId"`
 }
 
 type Tag struct {

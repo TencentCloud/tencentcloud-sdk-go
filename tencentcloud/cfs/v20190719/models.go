@@ -4013,7 +4013,7 @@ type LifecycleDataTaskInfo struct {
 	// <p>任务id</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// <p>任务状态.<br>init：未执行<br>running：执行中，finished：已完成<br>,failed：失败<br>,stopping：停止中,stopped：已停止</p>
+	// <p>任务状态</p><p>枚举值：</p><ul><li>init： 排队中</li><li>running： 执行中</li><li>finished： 已完成</li><li>failed： 失败</li><li>stopping： 停止中</li><li>stopped： 已停止</li></ul>
 	TaskStatus *string `json:"TaskStatus,omitnil,omitempty" name:"TaskStatus"`
 
 	// <p>任务创建时间</p>
