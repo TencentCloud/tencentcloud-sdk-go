@@ -7228,21 +7228,27 @@ func (r *ModifyEnvPlanResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyEnvRequestParams struct {
-	// 环境ID
+	// <p>环境ID</p>
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 
-	// 环境备注名，要以a-z开头，不能包含 a-zA-z0-9- 以外的字符
+	// <p>环境备注名，要以a-z开头，不能包含 a-zA-z0-9- 以外的字符</p>
 	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
+
+	// <p>按量计费QPS上限，大于套餐配额时生效。-1表示关闭QPS按量计费。</p>
+	CustomQps *int64 `json:"CustomQps,omitnil,omitempty" name:"CustomQps"`
 }
 
 type ModifyEnvRequest struct {
 	*tchttp.BaseRequest
 	
-	// 环境ID
+	// <p>环境ID</p>
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 
-	// 环境备注名，要以a-z开头，不能包含 a-zA-z0-9- 以外的字符
+	// <p>环境备注名，要以a-z开头，不能包含 a-zA-z0-9- 以外的字符</p>
 	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
+
+	// <p>按量计费QPS上限，大于套餐配额时生效。-1表示关闭QPS按量计费。</p>
+	CustomQps *int64 `json:"CustomQps,omitnil,omitempty" name:"CustomQps"`
 }
 
 func (r *ModifyEnvRequest) ToJsonString() string {
@@ -7259,6 +7265,7 @@ func (r *ModifyEnvRequest) FromJsonString(s string) error {
 	}
 	delete(f, "EnvId")
 	delete(f, "Alias")
+	delete(f, "CustomQps")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyEnvRequest has unknown keys!", "")
 	}

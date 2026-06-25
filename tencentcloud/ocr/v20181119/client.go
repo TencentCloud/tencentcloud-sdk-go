@@ -4219,6 +4219,88 @@ func (c *Client) MixedInvoiceOCRWithContext(ctx context.Context, request *MixedI
     return
 }
 
+func NewMultimodalDocParseRequest() (request *MultimodalDocParseRequest) {
+    request = &MultimodalDocParseRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ocr", APIVersion, "MultimodalDocParse")
+    
+    
+    return
+}
+
+func NewMultimodalDocParseResponse() (response *MultimodalDocParseResponse) {
+    response = &MultimodalDocParseResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// MultimodalDocParse
+// 本接口支持解析多种类型的文档文件（PDF、Word、PPT、Excel、Markdown、TXT、图片、WPS），返回解析后的结果文件下载地址（zip压缩包，包含markdown、json和图片）。
+//
+// 
+//
+// 支持的文件大小：PDF/Word/PPT支持150M且300页以内、Excel支持10M以内、TXT支持10M以内、图片文件支持70M以内。
+//
+// 
+//
+// 默认接口请求频率限制：5 并发。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) MultimodalDocParse(request *MultimodalDocParseRequest) (response *MultimodalDocParseResponse, err error) {
+    return c.MultimodalDocParseWithContext(context.Background(), request)
+}
+
+// MultimodalDocParse
+// 本接口支持解析多种类型的文档文件（PDF、Word、PPT、Excel、Markdown、TXT、图片、WPS），返回解析后的结果文件下载地址（zip压缩包，包含markdown、json和图片）。
+//
+// 
+//
+// 支持的文件大小：PDF/Word/PPT支持150M且300页以内、Excel支持10M以内、TXT支持10M以内、图片文件支持70M以内。
+//
+// 
+//
+// 默认接口请求频率限制：5 并发。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) MultimodalDocParseWithContext(ctx context.Context, request *MultimodalDocParseRequest) (response *MultimodalDocParseResponse, err error) {
+    if request == nil {
+        request = NewMultimodalDocParseRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ocr", APIVersion, "MultimodalDocParse")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("MultimodalDocParse require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewMultimodalDocParseResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewPassportOCRRequest() (request *PassportOCRRequest) {
     request = &PassportOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},

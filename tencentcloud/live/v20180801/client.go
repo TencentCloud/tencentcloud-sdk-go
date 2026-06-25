@@ -6181,6 +6181,7 @@ func NewDescribeAIGCTaskStatusResponse() (response *DescribeAIGCTaskStatusRespon
 //  FAILEDOPERATION_QUERYAIGCTASKFAILED = "FailedOperation.QueryAIGCTaskFailed"
 //  INVALIDPARAMETER_INVALIDTASKID = "InvalidParameter.InvalidTaskId"
 //  INVALIDPARAMETER_INVALIDURL = "InvalidParameter.InvalidUrl"
+//  RESOURCENOTFOUND_TASKNOTFOUND = "ResourceNotFound.TaskNotFound"
 func (c *Client) DescribeAIGCTaskStatus(request *DescribeAIGCTaskStatusRequest) (response *DescribeAIGCTaskStatusResponse, err error) {
     return c.DescribeAIGCTaskStatusWithContext(context.Background(), request)
 }
@@ -6192,6 +6193,7 @@ func (c *Client) DescribeAIGCTaskStatus(request *DescribeAIGCTaskStatusRequest) 
 //  FAILEDOPERATION_QUERYAIGCTASKFAILED = "FailedOperation.QueryAIGCTaskFailed"
 //  INVALIDPARAMETER_INVALIDTASKID = "InvalidParameter.InvalidTaskId"
 //  INVALIDPARAMETER_INVALIDURL = "InvalidParameter.InvalidUrl"
+//  RESOURCENOTFOUND_TASKNOTFOUND = "ResourceNotFound.TaskNotFound"
 func (c *Client) DescribeAIGCTaskStatusWithContext(ctx context.Context, request *DescribeAIGCTaskStatusRequest) (response *DescribeAIGCTaskStatusResponse, err error) {
     if request == nil {
         request = NewDescribeAIGCTaskStatusRequest()

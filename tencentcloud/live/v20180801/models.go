@@ -7697,6 +7697,12 @@ type DescribeAIGCTaskStatusResponseParams struct {
 	// <p>任务返回错误信息</p>
 	TaskResultMsg *string `json:"TaskResultMsg,omitnil,omitempty" name:"TaskResultMsg"`
 
+	// <p>请求参数</p>
+	RequestBody *string `json:"RequestBody,omitnil,omitempty" name:"RequestBody"`
+
+	// <p>任务类型</p>
+	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }

@@ -118,17 +118,23 @@ type AgentParams struct {
 }
 
 type AlignmentItem struct {
-	// 字幕对应的时间起点
+	// <p>字幕文本</p>
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+
+	// <p>字幕对应的时间起点</p>
 	TimeBeginMs *uint64 `json:"TimeBeginMs,omitnil,omitempty" name:"TimeBeginMs"`
 
-	// 字幕对应的时间尾点
+	// <p>字幕对应的时间尾点</p>
 	TimeEndMs *uint64 `json:"TimeEndMs,omitnil,omitempty" name:"TimeEndMs"`
 
-	// 字幕对应的文本索引起点
+	// <p>字幕对应的文本索引起点</p>
 	TextBegin *uint64 `json:"TextBegin,omitnil,omitempty" name:"TextBegin"`
 
-	// 字幕对应的文本索引尾点
+	// <p>字幕对应的文本索引尾点</p>
 	TextEnd *uint64 `json:"TextEnd,omitnil,omitempty" name:"TextEnd"`
+
+	// <p>词级别时间戳</p>
+	Words []*WordItem `json:"Words,omitnil,omitempty" name:"Words"`
 }
 
 type AmbientSound struct {
@@ -4632,84 +4638,70 @@ type McuFeedBackRoomParams struct {
 }
 
 type McuLayout struct {
-	// 用户媒体流参数。不填时腾讯云后台按照上行主播的进房顺序自动填充。
+	// <p>用户媒体流参数。不填时腾讯云后台按照上行主播的进房顺序自动填充。</p>
 	UserMediaStream *UserMediaStream `json:"UserMediaStream,omitnil,omitempty" name:"UserMediaStream"`
 
-	// 子画面在输出时的宽度，单位为像素值，不填默认为0。
+	// <p>子画面在输出时的宽度，单位为像素值，不填默认为0。</p>
 	ImageWidth *uint64 `json:"ImageWidth,omitnil,omitempty" name:"ImageWidth"`
 
-	// 子画面在输出时的高度，单位为像素值，不填默认为0。
+	// <p>子画面在输出时的高度，单位为像素值，不填默认为0。</p>
 	ImageHeight *uint64 `json:"ImageHeight,omitnil,omitempty" name:"ImageHeight"`
 
-	// 子画面在输出时的X偏移，单位为像素值，LocationX与ImageWidth之和不能超过混流输出的总宽度，不填默认为0。
+	// <p>子画面在输出时的X偏移，单位为像素值，LocationX与ImageWidth之和不能超过混流输出的总宽度，不填默认为0。</p>
 	LocationX *uint64 `json:"LocationX,omitnil,omitempty" name:"LocationX"`
 
-	// 子画面在输出时的Y偏移，单位为像素值，LocationY与ImageHeight之和不能超过混流输出的总高度，不填默认为0。
+	// <p>子画面在输出时的Y偏移，单位为像素值，LocationY与ImageHeight之和不能超过混流输出的总高度，不填默认为0。</p>
 	LocationY *uint64 `json:"LocationY,omitnil,omitempty" name:"LocationY"`
 
-	// 子画面在输出时的层级，不填默认为0。
+	// <p>子画面在输出时的层级，不填默认为0。</p>
 	ZOrder *uint64 `json:"ZOrder,omitnil,omitempty" name:"ZOrder"`
 
-	// 子画面在输出时的显示模式：0为裁剪，1为缩放并显示背景，2为缩放并显示黑底。不填默认为0。
+	// <p>子画面在输出时的显示模式：0为裁剪，1为缩放并显示背景，2为缩放并显示黑底。不填默认为0。</p>
 	RenderMode *uint64 `json:"RenderMode,omitnil,omitempty" name:"RenderMode"`
 
-	// 【此参数配置无效，暂不支持】子画面的背景颜色，常用的颜色有：
-	// 红色：0xcc0033。
-	// 黄色：0xcc9900。
-	// 绿色：0xcccc33。
-	// 蓝色：0x99CCFF。
-	// 黑色：0x000000。
-	// 白色：0xFFFFFF。
-	// 灰色：0x999999。
+	// <p>【此参数配置无效，暂不支持】子画面的背景颜色，常用的颜色有：<br>红色：0xcc0033。<br>黄色：0xcc9900。<br>绿色：0xcccc33。<br>蓝色：0x99CCFF。<br>黑色：0x000000。<br>白色：0xFFFFFF。<br>灰色：0x999999。</p>
 	BackGroundColor *string `json:"BackGroundColor,omitnil,omitempty" name:"BackGroundColor"`
 
-	// 子画面的占位图片url，填写该参数，当用户关闭摄像头或未进入TRTC房间时，会在布局位置填充为指定图片。若指定图片与布局位置尺寸比例不一致，则会对图片进行拉伸处理，优先级高于BackGroundColor。支持png、jpg、jpeg、bmp、gif、webm格式。图片分辨率限制不超过2K，图片大小限制不超过5MB。
-	// 注：
-	// 1，您需要确保图片链接的可访问性，后台单次下载超时时间为10秒，最多重试3次，若最终图片下载失败，占位图片将不会生效。
-	// 2，url可支持字符集：【'0-9','a-z','A-Z','-', '.', '_', '~', ':', '/', '?', '#', '[', ']','@', '!', '&', '(', ')', '*', '+', ',', '%', '=', ';', '|'】，您需要确保url字符在可支持字符集内，若存在可支持字符集外的字符，占位图片将不会生效。
+	// <p>子画面的占位图片url，填写该参数，当用户关闭摄像头或未进入TRTC房间时，会在布局位置填充为指定图片。若指定图片与布局位置尺寸比例不一致，则会对图片进行拉伸处理，优先级高于BackGroundColor。支持png、jpg、jpeg、bmp、gif、webm格式。图片分辨率限制不超过2K，图片大小限制不超过5MB。<br>注：<br>1，您需要确保图片链接的可访问性，后台单次下载超时时间为10秒，最多重试3次，若最终图片下载失败，占位图片将不会生效。<br>2，url可支持字符集：【&#39;0-9&#39;,&#39;a-z&#39;,&#39;A-Z&#39;,&#39;-&#39;, &#39;.&#39;, &#39;_&#39;, &#39;~&#39;, &#39;:&#39;, &#39;/&#39;, &#39;?&#39;, &#39;#&#39;, &#39;[&#39;, &#39;]&#39;,&#39;@&#39;, &#39;!&#39;, &#39;&amp;&#39;, &#39;(&#39;, &#39;)&#39;, &#39;*&#39;, &#39;+&#39;, &#39;,&#39;, &#39;%&#39;, &#39;=&#39;, &#39;;&#39;, &#39;|&#39;】，您需要确保url字符在可支持字符集内，若存在可支持字符集外的字符，占位图片将不会生效。</p>
 	BackgroundImageUrl *string `json:"BackgroundImageUrl,omitnil,omitempty" name:"BackgroundImageUrl"`
 
-	// 客户自定义裁剪，针对原始输入流裁剪
+	// <p>客户自定义裁剪，针对原始输入流裁剪</p>
 	CustomCrop *McuCustomCrop `json:"CustomCrop,omitnil,omitempty" name:"CustomCrop"`
 
-	// 子背景图在输出时的显示模式：0为裁剪，1为缩放并显示背景，2为缩放并显示黑底，3为变比例伸缩，4为自定义渲染。不填默认为3。
+	// <p>子背景图在输出时的显示模式：0为裁剪，1为缩放并显示背景，2为缩放并显示黑底，3为变比例伸缩，4为自定义渲染。不填默认为3。</p>
 	BackgroundRenderMode *uint64 `json:"BackgroundRenderMode,omitnil,omitempty" name:"BackgroundRenderMode"`
 
-	// 子画面的透明模版url，指向一张包含透明通道的模板图片。填写该参数，后台混流时会提取该模板图片的透明通道，将其缩放作为目标画面的透明通道，再和其他画面进行混合。您可以通过透明模版实现目标画面的半透明效果和任意形状裁剪（如圆角、星形、心形等）。 支持png格式。图片分辨率限制不超过2K，图片大小限制不超过5MB。
-	// 注：
-	// 1，模板图片宽高比应接近目标画面宽高比，以避免缩放适配目标画面时出现模板效果变形；2，透明模版只有RenderMode为0（裁剪）时才生效；3，您需要确保图片链接的可访问性，后台单次下载超时时间为10秒，最多重试3次，若最终图片下载失败，透明模板将不会生效。
-	// 2，url可支持字符集：【'0-9','a-z','A-Z','-', '.', '_', '~', ':', '/', '?', '#', '[', ']','@', '!', '&', '(', ')', '*', '+', ',', '%', '=', ';', '|'】，您需要确保url字符在可支持字符集内，若存在可支持字符集外的字符，透明模版将不会生效。
+	// <p>子画面的透明模版url，指向一张包含透明通道的模板图片。填写该参数，后台混流时会提取该模板图片的透明通道，将其缩放作为目标画面的透明通道，再和其他画面进行混合。您可以通过透明模版实现目标画面的半透明效果和任意形状裁剪（如圆角、星形、心形等）。 支持png格式。图片分辨率限制不超过2K，图片大小限制不超过5MB。<br>注：<br>1，模板图片宽高比应接近目标画面宽高比，以避免缩放适配目标画面时出现模板效果变形；2，透明模版只有RenderMode为0（裁剪）时才生效；3，您需要确保图片链接的可访问性，后台单次下载超时时间为10秒，最多重试3次，若最终图片下载失败，透明模板将不会生效。<br>2，url可支持字符集：【&#39;0-9&#39;,&#39;a-z&#39;,&#39;A-Z&#39;,&#39;-&#39;, &#39;.&#39;, &#39;_&#39;, &#39;~&#39;, &#39;:&#39;, &#39;/&#39;, &#39;?&#39;, &#39;#&#39;, &#39;[&#39;, &#39;]&#39;,&#39;@&#39;, &#39;!&#39;, &#39;&amp;&#39;, &#39;(&#39;, &#39;)&#39;, &#39;*&#39;, &#39;+&#39;, &#39;,&#39;, &#39;%&#39;, &#39;=&#39;, &#39;;&#39;, &#39;|&#39;】，您需要确保url字符在可支持字符集内，若存在可支持字符集外的字符，透明模版将不会生效。</p>
 	TransparentUrl *string `json:"TransparentUrl,omitnil,omitempty" name:"TransparentUrl"`
 
-	// 子背景图的自定义渲染参数，当BackgroundRenderMode为4时必须配置。
+	// <p>子背景图的自定义渲染参数，当BackgroundRenderMode为4时必须配置。</p>
 	BackgroundCustomRender *McuBackgroundCustomRender `json:"BackgroundCustomRender,omitnil,omitempty" name:"BackgroundCustomRender"`
 
-	// 子背景色生效模式，默认值为0表示均不生效。
-	// bit0:占位图缩放是否生效。
-	// bit1:上行流缩放是否生效。
-	// 您可以将相应bit位置1启动生效，例如：
-	// 0(00)表示子背景色不生效。
-	// 1(01)表示子背景色只在占位图缩放时生效。
-	// 2(10)表示子背景色只在上行流缩放时生效。
-	// 3(11)表示子背景色在占位图缩放和上行流缩放时均生效。
+	// <p>子背景色生效模式，默认值为0表示均不生效。<br>bit0:占位图缩放是否生效。<br>bit1:上行流缩放是否生效。<br>您可以将相应bit位置1启动生效，例如：<br>0(00)表示子背景色不生效。<br>1(01)表示子背景色只在占位图缩放时生效。<br>2(10)表示子背景色只在上行流缩放时生效。<br>3(11)表示子背景色在占位图缩放和上行流缩放时均生效。</p>
 	BackGroundColorMode *uint64 `json:"BackGroundColorMode,omitnil,omitempty" name:"BackGroundColorMode"`
+
+	// <p>是否保留上行SEI，1：保留 0：不保留</p><p>取值范围：[0, 1]</p><p>默认值：1</p>
+	EnableStreamSEI *uint64 `json:"EnableStreamSEI,omitnil,omitempty" name:"EnableStreamSEI"`
 }
 
 type McuLayoutParams struct {
-	// 布局模式：动态布局（1：悬浮布局（默认），2：屏幕分享布局，3：九宫格布局），静态布局（4：自定义布局）。最多支持混入16路音视频流，如果用户只上行音频，也会被算作一路；自定义布局中，如果子画面只设置占位图，也被算作一路。
+	// <p>布局模式：动态布局（1：悬浮布局（默认），2：屏幕分享布局，3：九宫格布局），静态布局（4：自定义布局）。最多支持混入16路音视频流，如果用户只上行音频，也会被算作一路；自定义布局中，如果子画面只设置占位图，也被算作一路。</p>
 	MixLayoutMode *uint64 `json:"MixLayoutMode,omitnil,omitempty" name:"MixLayoutMode"`
 
-	// 纯音频上行是否占布局位置，只在动态布局中有效。0表示纯音频不占布局位置，1表示纯音频占布局位置，不填默认为0。
+	// <p>纯音频上行是否占布局位置，只在动态布局中有效。0表示纯音频不占布局位置，1表示纯音频占布局位置，不填默认为0。</p>
 	PureAudioHoldPlaceMode *uint64 `json:"PureAudioHoldPlaceMode,omitnil,omitempty" name:"PureAudioHoldPlaceMode"`
 
-	// 自定义模板中有效，指定用户视频在混合画面中的位置，最多支持设置16个输入流。
+	// <p>自定义模板中有效，指定用户视频在混合画面中的位置，最多支持设置16个输入流。</p>
 	MixLayoutList []*McuLayout `json:"MixLayoutList,omitnil,omitempty" name:"MixLayoutList"`
 
-	// 指定动态布局中悬浮布局和屏幕分享布局的大画面信息，只在悬浮布局和屏幕分享布局有效。
+	// <p>指定动态布局中悬浮布局和屏幕分享布局的大画面信息，只在悬浮布局和屏幕分享布局有效。</p>
 	MaxVideoUser *MaxVideoUser `json:"MaxVideoUser,omitnil,omitempty" name:"MaxVideoUser"`
 
-	// 屏幕分享模板、悬浮模板、九宫格模版有效，画面在输出时的显示模式：0为裁剪，1为缩放，2为缩放并显示黑底
+	// <p>屏幕分享模板、悬浮模板、九宫格模版有效，画面在输出时的显示模式：0为裁剪，1为缩放，2为缩放并显示黑底</p>
 	RenderMode *uint64 `json:"RenderMode,omitnil,omitempty" name:"RenderMode"`
+
+	// <p>是否保留上行sei，1：保留 0：不保留，只对动态布局生效，自定义布局不生效</p><p>取值范围：[0, 1]</p><p>默认值：1</p>
+	EnableStreamSEI *uint64 `json:"EnableStreamSEI,omitnil,omitempty" name:"EnableStreamSEI"`
 }
 
 type McuLayoutVolume struct {
@@ -7658,7 +7650,7 @@ type TextToSpeechRequestParams struct {
 	// <p>多音字/生僻字发音纠正词典条目。指定特定词语在本次请求中使用的发音。</p>
 	PronunciationDict []*PronunciationDict `json:"PronunciationDict,omitnil,omitempty" name:"PronunciationDict"`
 
-	// <p>默认为0，0表示不生成字幕，1表示生成字幕</p>
+	// <p>字幕级别</p><p>枚举值：</p><ul><li>0： 无字幕</li><li>1： 句子级别字幕</li><li>2： 词级别字幕，目前只有flow_01_ex支持词级别字幕</li></ul><p>默认值：0</p>
 	AlignmentMode *uint64 `json:"AlignmentMode,omitnil,omitempty" name:"AlignmentMode"`
 
 	// <p>json字符串，用于拓展用法</p>
@@ -7692,7 +7684,7 @@ type TextToSpeechRequest struct {
 	// <p>多音字/生僻字发音纠正词典条目。指定特定词语在本次请求中使用的发音。</p>
 	PronunciationDict []*PronunciationDict `json:"PronunciationDict,omitnil,omitempty" name:"PronunciationDict"`
 
-	// <p>默认为0，0表示不生成字幕，1表示生成字幕</p>
+	// <p>字幕级别</p><p>枚举值：</p><ul><li>0： 无字幕</li><li>1： 句子级别字幕</li><li>2： 词级别字幕，目前只有flow_01_ex支持词级别字幕</li></ul><p>默认值：0</p>
 	AlignmentMode *uint64 `json:"AlignmentMode,omitnil,omitempty" name:"AlignmentMode"`
 
 	// <p>json字符串，用于拓展用法</p>
@@ -7786,7 +7778,7 @@ type TextToSpeechSSERequestParams struct {
 	// <p>多音字/生僻字发音纠正词典条目。指定特定词语在本次请求中使用的发音。</p>
 	PronunciationDict []*PronunciationDict `json:"PronunciationDict,omitnil,omitempty" name:"PronunciationDict"`
 
-	// <p>默认为0，0表示不生成字幕，1表示生成字幕</p>
+	// <p>字幕级别</p><p>枚举值：</p><ul><li>0： 无字幕</li><li>1： 句子级别字幕</li><li>2： 词级别字幕，目前只有flow_01_ex支持</li></ul><p>默认值：0</p>
 	AlignmentMode *uint64 `json:"AlignmentMode,omitnil,omitempty" name:"AlignmentMode"`
 
 	// <p>json字符串，用于拓展用法</p>
@@ -7820,7 +7812,7 @@ type TextToSpeechSSERequest struct {
 	// <p>多音字/生僻字发音纠正词典条目。指定特定词语在本次请求中使用的发音。</p>
 	PronunciationDict []*PronunciationDict `json:"PronunciationDict,omitnil,omitempty" name:"PronunciationDict"`
 
-	// <p>默认为0，0表示不生成字幕，1表示生成字幕</p>
+	// <p>字幕级别</p><p>枚举值：</p><ul><li>0： 无字幕</li><li>1： 句子级别字幕</li><li>2： 词级别字幕，目前只有flow_01_ex支持</li></ul><p>默认值：0</p>
 	AlignmentMode *uint64 `json:"AlignmentMode,omitnil,omitempty" name:"AlignmentMode"`
 
 	// <p>json字符串，用于拓展用法</p>
@@ -8749,4 +8741,21 @@ type WebRecordVideoParams struct {
 	// Hls 格式录制此参数不生效。
 	// 示例值：1440
 	MaxMediaFileDuration *int64 `json:"MaxMediaFileDuration,omitnil,omitempty" name:"MaxMediaFileDuration"`
+}
+
+type WordItem struct {
+	// <p>词对应的文本</p>
+	Word *string `json:"Word,omitnil,omitempty" name:"Word"`
+
+	// <p>词对应的时间起点</p>
+	TimeBeginMs *uint64 `json:"TimeBeginMs,omitnil,omitempty" name:"TimeBeginMs"`
+
+	// <p>词对应的时间尾点</p>
+	TimeEndMs *uint64 `json:"TimeEndMs,omitnil,omitempty" name:"TimeEndMs"`
+
+	// <p>词的索引起点</p>
+	WordBegin *uint64 `json:"WordBegin,omitnil,omitempty" name:"WordBegin"`
+
+	// <p>词的索引尾点</p>
+	WordEnd *uint64 `json:"WordEnd,omitnil,omitempty" name:"WordEnd"`
 }

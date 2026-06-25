@@ -21,6 +21,67 @@ import (
 )
 
 // Predefined struct for user
+type AssociateBudgetRequestParams struct {
+	// <p>Budget ID。</p>
+	BudgetId *string `json:"BudgetId,omitnil,omitempty" name:"BudgetId"`
+
+	// <p>要关联的资源列表。</p><p>仅支持企业型模型路由实例和企业型实例下的Key。同一请求内不允许重复资源；资源已关联其他Budget时将替换为新的Budget。</p>
+	Resources []*BudgetResource `json:"Resources,omitnil,omitempty" name:"Resources"`
+}
+
+type AssociateBudgetRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>Budget ID。</p>
+	BudgetId *string `json:"BudgetId,omitnil,omitempty" name:"BudgetId"`
+
+	// <p>要关联的资源列表。</p><p>仅支持企业型模型路由实例和企业型实例下的Key。同一请求内不允许重复资源；资源已关联其他Budget时将替换为新的Budget。</p>
+	Resources []*BudgetResource `json:"Resources,omitnil,omitempty" name:"Resources"`
+}
+
+func (r *AssociateBudgetRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AssociateBudgetRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BudgetId")
+	delete(f, "Resources")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AssociateBudgetRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AssociateBudgetResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type AssociateBudgetResponse struct {
+	*tchttp.BaseResponse
+	Response *AssociateBudgetResponseParams `json:"Response"`
+}
+
+func (r *AssociateBudgetResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AssociateBudgetResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type AssociateCustomizedConfigRequestParams struct {
 	// 配置ID
 	UconfigId *string `json:"UconfigId,omitnil,omitempty" name:"UconfigId"`
@@ -655,6 +716,94 @@ type BlockedIP struct {
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 }
 
+type BudgetAssociation struct {
+	// <p>Budget ID。</p>
+	BudgetId *string `json:"BudgetId,omitnil,omitempty" name:"BudgetId"`
+
+	// <p>关联创建时间。</p>
+	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
+
+	// <p>Key ID。仅当Type为Key时返回。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KeyId *string `json:"KeyId,omitnil,omitempty" name:"KeyId"`
+
+	// <p>模型路由实例ID。</p><p>当Type为ModelRouter时表示关联资源本身；当Type为Key时表示Key所属实例。</p>
+	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
+
+	// <p>关联资源类型。</p><p>枚举值：</p><ul><li>ModelRouter：模型路由实例</li><li>Key：模型路由Key</li></ul>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>关联关系的状态</p><p>枚举值：</p><ul><li>Active： 已生效</li><li>Configuring： 配置中</li><li>ConfigureFailed： 配置失败</li></ul>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+type BudgetConfig struct {
+	// <p>预算刷新周期。</p><p>枚举值：</p><ul><li>1d：按天刷新</li><li>7d：按周刷新</li><li>30d：按月刷新</li></ul><p>不传时默认30d。同一个Budget下每种刷新周期最多配置一次。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BudgetDuration *string `json:"BudgetDuration,omitnil,omitempty" name:"BudgetDuration"`
+
+	// <p>下一次刷新的时间</p>
+	BudgetResetAt *string `json:"BudgetResetAt,omitnil,omitempty" name:"BudgetResetAt"`
+
+	// <p>最大预算。</p><p>单位：credit。取值需大于0且不超过10000000000；不传时默认100000。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxBudget *float64 `json:"MaxBudget,omitnil,omitempty" name:"MaxBudget"`
+}
+
+type BudgetConfigInput struct {
+	// <p>预算刷新周期。</p><p>支持取值：</p><ul><li>1d：按天刷新</li><li>7d：按周刷新</li><li>30d：按月刷新</li></ul><p>不传时默认使用30d。同一个Budget下每种刷新周期最多配置一次。</p>
+	BudgetDuration *string `json:"BudgetDuration,omitnil,omitempty" name:"BudgetDuration"`
+
+	// <p>最大预算。</p><p>单位：credit。取值需大于0且不超过10000000000；不传时默认100000。</p>
+	MaxBudget *float64 `json:"MaxBudget,omitnil,omitempty" name:"MaxBudget"`
+}
+
+type BudgetInfo struct {
+	// <p>关联的key数量</p>
+	AssociationKeyCount *uint64 `json:"AssociationKeyCount,omitnil,omitempty" name:"AssociationKeyCount"`
+
+	// <p>关联的模型路由数量</p>
+	AssociationModelRouterCount *uint64 `json:"AssociationModelRouterCount,omitnil,omitempty" name:"AssociationModelRouterCount"`
+
+	// <p>关联的用户组数量</p>
+	AssociationUserGroupCount *uint64 `json:"AssociationUserGroupCount,omitnil,omitempty" name:"AssociationUserGroupCount"`
+
+	// <p>Budget预算配置数组。</p><p>最多返回3个元素，每种刷新周期（1d/7d/30d）各一个。</p>
+	BudgetConfigs []*BudgetConfig `json:"BudgetConfigs,omitnil,omitempty" name:"BudgetConfigs"`
+
+	// <p>Budget ID。</p>
+	BudgetId *string `json:"BudgetId,omitnil,omitempty" name:"BudgetId"`
+
+	// <p>Budget名称。</p>
+	BudgetName *string `json:"BudgetName,omitnil,omitempty" name:"BudgetName"`
+
+	// <p>创建时间。</p>
+	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
+
+	// <p>修改时间。</p>
+	ModifiedTime *string `json:"ModifiedTime,omitnil,omitempty" name:"ModifiedTime"`
+
+	// <p>Budget限速信息。</p>
+	RateLimitConfig *RateLimitConfigForBudget `json:"RateLimitConfig,omitnil,omitempty" name:"RateLimitConfig"`
+
+	// <p>Budget状态。</p><p>枚举值：</p><ul><li>Provisioning：创建中</li><li>Active：运行中</li><li>Configuring：变配中</li><li>Deleting：删除中</li><li>ProvisionFailed：创建失败</li><li>ConfigureFailed：变配失败</li><li>DeletionFailed：删除失败</li></ul>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+type BudgetResource struct {
+	// <p>模型路由实例ID。</p><p>当Type为ModelRouter时表示要关联的实例；当Type为Key时表示Key所属实例。</p>
+	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
+
+	// <p>资源类型。</p><p>枚举值：</p><ul><li>ModelRouter：模型路由实例</li><li>Key：模型路由Key</li><li>UserGroup：用户组（Type 为 UserGroup 时需传 UserGroupId）</li></ul>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>Key ID。</p><p>字段本身选填；当Type为Key时必填，当Type为ModelRouter时不传。</p>
+	KeyId *string `json:"KeyId,omitnil,omitempty" name:"KeyId"`
+
+	// <p>用户组ID</p>
+	UserGroupId *string `json:"UserGroupId,omitnil,omitempty" name:"UserGroupId"`
+}
+
 type CertIdRelatedWithLoadBalancers struct {
 	// 证书ID
 	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
@@ -1119,6 +1268,14 @@ type Cluster struct {
 	Tag []*TagInfo `json:"Tag,omitnil,omitempty" name:"Tag"`
 }
 
+type ClusterInfo struct {
+	// <p>独占集群ID</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// <p>集群类型</p><p>枚举值：</p><ul><li>Public： 公有云集群</li><li>Exclusive： 独占集群</li></ul><p>默认值：Public</p>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
 type ClusterItem struct {
 	// 集群唯一ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
@@ -1184,6 +1341,84 @@ type ConfigListItem struct {
 	// 配置的修改时间。
 	// 格式：YYYY-MM-DD HH:mm:ss
 	UpdateTimestamp *string `json:"UpdateTimestamp,omitnil,omitempty" name:"UpdateTimestamp"`
+}
+
+// Predefined struct for user
+type CreateBudgetRequestParams struct {
+	// <p>预算配置数组。</p><p>数组长度最大为1。BudgetResetAt不支持作为入参设置。</p>
+	BudgetConfigs []*BudgetConfigInput `json:"BudgetConfigs,omitnil,omitempty" name:"BudgetConfigs"`
+
+	// <p>Budget名称。</p><p>不传默认为空字符串。</p>
+	BudgetName *string `json:"BudgetName,omitnil,omitempty" name:"BudgetName"`
+
+	// <p>Budget限速配置。</p>
+	RateLimitConfig *RateLimitConfigForBudget `json:"RateLimitConfig,omitnil,omitempty" name:"RateLimitConfig"`
+
+	// <p>创建Budget时同时关联的资源列表。</p><p>仅支持企业型模型路由实例和企业型实例下的Key。如果资源不存在或不可关联，创建请求失败；资源已关联其他Budget时将替换为新创建的Budget。</p>
+	Resources []*BudgetResource `json:"Resources,omitnil,omitempty" name:"Resources"`
+}
+
+type CreateBudgetRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>预算配置数组。</p><p>数组长度最大为1。BudgetResetAt不支持作为入参设置。</p>
+	BudgetConfigs []*BudgetConfigInput `json:"BudgetConfigs,omitnil,omitempty" name:"BudgetConfigs"`
+
+	// <p>Budget名称。</p><p>不传默认为空字符串。</p>
+	BudgetName *string `json:"BudgetName,omitnil,omitempty" name:"BudgetName"`
+
+	// <p>Budget限速配置。</p>
+	RateLimitConfig *RateLimitConfigForBudget `json:"RateLimitConfig,omitnil,omitempty" name:"RateLimitConfig"`
+
+	// <p>创建Budget时同时关联的资源列表。</p><p>仅支持企业型模型路由实例和企业型实例下的Key。如果资源不存在或不可关联，创建请求失败；资源已关联其他Budget时将替换为新创建的Budget。</p>
+	Resources []*BudgetResource `json:"Resources,omitnil,omitempty" name:"Resources"`
+}
+
+func (r *CreateBudgetRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBudgetRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BudgetConfigs")
+	delete(f, "BudgetName")
+	delete(f, "RateLimitConfig")
+	delete(f, "Resources")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBudgetRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateBudgetResponseParams struct {
+	// <p>Budget ID。</p><p>创建请求提交后返回，可通过DescribeBudgets查询状态。</p>
+	BudgetId *string `json:"BudgetId,omitnil,omitempty" name:"BudgetId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateBudgetResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateBudgetResponseParams `json:"Response"`
+}
+
+func (r *CreateBudgetResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBudgetResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -1256,6 +1491,200 @@ func (r *CreateClsLogSetResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateClsLogSetResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateKeyRequestParams struct {
+	// <p>模型路由实例ID</p>
+	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
+
+	// <p>Key名称</p>
+	KeyName *string `json:"KeyName,omitnil,omitempty" name:"KeyName"`
+
+	// <p>限速配置</p>
+	RateLimitConfig *RateLimitConfigForKey `json:"RateLimitConfig,omitnil,omitempty" name:"RateLimitConfig"`
+
+	// <p>关联的积分预算ID</p>
+	BudgetId *string `json:"BudgetId,omitnil,omitempty" name:"BudgetId"`
+
+	// <p>需要关联的用户组ID</p>
+	UserGroupId *string `json:"UserGroupId,omitnil,omitempty" name:"UserGroupId"`
+
+	// <p>标签</p>
+	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
+type CreateKeyRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>模型路由实例ID</p>
+	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
+
+	// <p>Key名称</p>
+	KeyName *string `json:"KeyName,omitnil,omitempty" name:"KeyName"`
+
+	// <p>限速配置</p>
+	RateLimitConfig *RateLimitConfigForKey `json:"RateLimitConfig,omitnil,omitempty" name:"RateLimitConfig"`
+
+	// <p>关联的积分预算ID</p>
+	BudgetId *string `json:"BudgetId,omitnil,omitempty" name:"BudgetId"`
+
+	// <p>需要关联的用户组ID</p>
+	UserGroupId *string `json:"UserGroupId,omitnil,omitempty" name:"UserGroupId"`
+
+	// <p>标签</p>
+	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
+func (r *CreateKeyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateKeyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ModelRouterId")
+	delete(f, "KeyName")
+	delete(f, "RateLimitConfig")
+	delete(f, "BudgetId")
+	delete(f, "UserGroupId")
+	delete(f, "Tags")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateKeyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateKeyResponseParams struct {
+	// <p>Key的ID</p>
+	KeyId *string `json:"KeyId,omitnil,omitempty" name:"KeyId"`
+
+	// <p>返回的真实Key</p>
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateKeyResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateKeyResponseParams `json:"Response"`
+}
+
+func (r *CreateKeyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateKeyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateKeysRequestParams struct {
+	// <p>模型路由ID</p>
+	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
+
+	// <p>需要绑定的预算信息，所有Key共用</p>
+	BudgetId *string `json:"BudgetId,omitnil,omitempty" name:"BudgetId"`
+
+	// <p>Key列表</p>
+	Keys []*InputKeyInfo `json:"Keys,omitnil,omitempty" name:"Keys"`
+
+	// <p>批量创建Key的模式</p><p>枚举值：</p><ul><li>Generate： 平台生成Key</li><li>Import： 导入自带Key</li></ul><p>默认值：Generate</p>
+	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
+
+	// <p>限速信息，所有Key共用</p>
+	RateLimitConfig *RateLimitConfigForKey `json:"RateLimitConfig,omitnil,omitempty" name:"RateLimitConfig"`
+
+	// <p>标签。所有Key都会绑定该标签。</p>
+	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>需要关联的用户组ID</p>
+	UserGroupId *string `json:"UserGroupId,omitnil,omitempty" name:"UserGroupId"`
+}
+
+type CreateKeysRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>模型路由ID</p>
+	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
+
+	// <p>需要绑定的预算信息，所有Key共用</p>
+	BudgetId *string `json:"BudgetId,omitnil,omitempty" name:"BudgetId"`
+
+	// <p>Key列表</p>
+	Keys []*InputKeyInfo `json:"Keys,omitnil,omitempty" name:"Keys"`
+
+	// <p>批量创建Key的模式</p><p>枚举值：</p><ul><li>Generate： 平台生成Key</li><li>Import： 导入自带Key</li></ul><p>默认值：Generate</p>
+	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
+
+	// <p>限速信息，所有Key共用</p>
+	RateLimitConfig *RateLimitConfigForKey `json:"RateLimitConfig,omitnil,omitempty" name:"RateLimitConfig"`
+
+	// <p>标签。所有Key都会绑定该标签。</p>
+	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>需要关联的用户组ID</p>
+	UserGroupId *string `json:"UserGroupId,omitnil,omitempty" name:"UserGroupId"`
+}
+
+func (r *CreateKeysRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateKeysRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ModelRouterId")
+	delete(f, "BudgetId")
+	delete(f, "Keys")
+	delete(f, "Mode")
+	delete(f, "RateLimitConfig")
+	delete(f, "Tags")
+	delete(f, "UserGroupId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateKeysRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateKeysResponseParams struct {
+	// <p>创建的Key的信息</p>
+	CreatedKeys []*CreatedKey `json:"CreatedKeys,omitnil,omitempty" name:"CreatedKeys"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateKeysResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateKeysResponseParams `json:"Response"`
+}
+
+func (r *CreateKeysResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateKeysResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1860,6 +2289,147 @@ func (r *CreateLoadBalancerSnatIpsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateModelRouterRequestParams struct {
+	// <p>模型路由类型</p><p>枚举值：</p><ul><li>Shared： 共享型</li><li>Enterprise： 企业级</li></ul>
+	ModelRouterType *string `json:"ModelRouterType,omitnil,omitempty" name:"ModelRouterType"`
+
+	// <p>模型路由实例名称</p><p>默认值：-</p>
+	ModelRouterName *string `json:"ModelRouterName,omitnil,omitempty" name:"ModelRouterName"`
+
+	// <p>模型路由实例的网络协议</p><p>枚举值：</p><ul><li>HTTP： HTTP协议</li><li>HTTPS： HTTPS协议</li></ul>
+	Schema *string `json:"Schema,omitnil,omitempty" name:"Schema"`
+
+	// <p>模型路由的监听端口</p><p>取值范围：[1, 65535]</p>
+	Port *uint64 `json:"Port,omitnil,omitempty" name:"Port"`
+
+	// <p>证书ID</p><p>入参限制：当Scheme为HTTPS时，该参数必传</p>
+	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
+
+	// <p>网络类型</p><p>枚举值：</p><ul><li>Internet： 公网</li><li>Intranet： 内网</li></ul>
+	NetworkType *string `json:"NetworkType,omitnil,omitempty" name:"NetworkType"`
+
+	// <p>模型路由实例所属VPC的ID</p>
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// <p>模型路由实例所属子网的ID</p>
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// <p>关联的积分预算ID</p>
+	BudgetId *string `json:"BudgetId,omitnil,omitempty" name:"BudgetId"`
+
+	// <p>限速配置</p>
+	RateLimitConfig *RateLimitConfigForModelRouter `json:"RateLimitConfig,omitnil,omitempty" name:"RateLimitConfig"`
+
+	// <p>路由配置</p>
+	RouterSetting *RouterSettingWithoutFallBack `json:"RouterSetting,omitnil,omitempty" name:"RouterSetting"`
+
+	// <p>标签</p>
+	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>集群信息</p>
+	ClusterInfo *ClusterInfo `json:"ClusterInfo,omitnil,omitempty" name:"ClusterInfo"`
+}
+
+type CreateModelRouterRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>模型路由类型</p><p>枚举值：</p><ul><li>Shared： 共享型</li><li>Enterprise： 企业级</li></ul>
+	ModelRouterType *string `json:"ModelRouterType,omitnil,omitempty" name:"ModelRouterType"`
+
+	// <p>模型路由实例名称</p><p>默认值：-</p>
+	ModelRouterName *string `json:"ModelRouterName,omitnil,omitempty" name:"ModelRouterName"`
+
+	// <p>模型路由实例的网络协议</p><p>枚举值：</p><ul><li>HTTP： HTTP协议</li><li>HTTPS： HTTPS协议</li></ul>
+	Schema *string `json:"Schema,omitnil,omitempty" name:"Schema"`
+
+	// <p>模型路由的监听端口</p><p>取值范围：[1, 65535]</p>
+	Port *uint64 `json:"Port,omitnil,omitempty" name:"Port"`
+
+	// <p>证书ID</p><p>入参限制：当Scheme为HTTPS时，该参数必传</p>
+	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
+
+	// <p>网络类型</p><p>枚举值：</p><ul><li>Internet： 公网</li><li>Intranet： 内网</li></ul>
+	NetworkType *string `json:"NetworkType,omitnil,omitempty" name:"NetworkType"`
+
+	// <p>模型路由实例所属VPC的ID</p>
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// <p>模型路由实例所属子网的ID</p>
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// <p>关联的积分预算ID</p>
+	BudgetId *string `json:"BudgetId,omitnil,omitempty" name:"BudgetId"`
+
+	// <p>限速配置</p>
+	RateLimitConfig *RateLimitConfigForModelRouter `json:"RateLimitConfig,omitnil,omitempty" name:"RateLimitConfig"`
+
+	// <p>路由配置</p>
+	RouterSetting *RouterSettingWithoutFallBack `json:"RouterSetting,omitnil,omitempty" name:"RouterSetting"`
+
+	// <p>标签</p>
+	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>集群信息</p>
+	ClusterInfo *ClusterInfo `json:"ClusterInfo,omitnil,omitempty" name:"ClusterInfo"`
+}
+
+func (r *CreateModelRouterRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateModelRouterRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ModelRouterType")
+	delete(f, "ModelRouterName")
+	delete(f, "Schema")
+	delete(f, "Port")
+	delete(f, "CertId")
+	delete(f, "NetworkType")
+	delete(f, "VpcId")
+	delete(f, "SubnetId")
+	delete(f, "BudgetId")
+	delete(f, "RateLimitConfig")
+	delete(f, "RouterSetting")
+	delete(f, "Tags")
+	delete(f, "ClusterInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateModelRouterRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateModelRouterResponseParams struct {
+	// <p>模型路由实例ID</p>
+	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateModelRouterResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateModelRouterResponseParams `json:"Response"`
+}
+
+func (r *CreateModelRouterResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateModelRouterResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateRuleRequestParams struct {
 	// 负载均衡实例 ID，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/214/30685) 接口获取
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
@@ -2174,6 +2744,133 @@ func (r *CreateTopicResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateUserGroupRequestParams struct {
+	// <p>模型路由实例ID。用户组将创建在该实例下。</p>
+	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
+
+	// <p>用户组名称。必填。同一模型路由实例下名称唯一，长度不超过255个字符。</p>
+	UserGroupName *string `json:"UserGroupName,omitnil,omitempty" name:"UserGroupName"`
+
+	// <p>建组时直接关联的预算 ID（须为已存在的 Budget）。关联后由该 Budget 统一管理本组的消费上限与限速。不传表示不关联预算，可建组后再用 AssociateBudget 关联。</p>
+	BudgetId *string `json:"BudgetId,omitnil,omitempty" name:"BudgetId"`
+
+	// <p>用户组意图路由白名单（ir-xxx）。每一项须为该实例已创建的意图路由名。命中意图路由名时其内部真实模型自动豁免白名单。为空表示不授权任何意图路由。</p>
+	IntentRouters []*string `json:"IntentRouters,omitnil,omitempty" name:"IntentRouters"`
+
+	// <p>建组时同时绑定的已有 Key ID 列表，最多100个。每个 Key 须属于同一模型路由实例。建组与绑定为一个原子异步任务，任一 Key 失败则整组创建回滚。不传表示建空组。</p>
+	KeyIds []*string `json:"KeyIds,omitnil,omitempty" name:"KeyIds"`
+
+	// <p>用户组真实模型白名单。每一项须为该实例已关联的模型名。为空表示不在用户组层限制真实模型（按实例层白名单生效）。</p>
+	Models []*string `json:"Models,omitnil,omitempty" name:"Models"`
+
+	// <p>标签列表，最多50个。</p>
+	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
+type CreateUserGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>模型路由实例ID。用户组将创建在该实例下。</p>
+	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
+
+	// <p>用户组名称。必填。同一模型路由实例下名称唯一，长度不超过255个字符。</p>
+	UserGroupName *string `json:"UserGroupName,omitnil,omitempty" name:"UserGroupName"`
+
+	// <p>建组时直接关联的预算 ID（须为已存在的 Budget）。关联后由该 Budget 统一管理本组的消费上限与限速。不传表示不关联预算，可建组后再用 AssociateBudget 关联。</p>
+	BudgetId *string `json:"BudgetId,omitnil,omitempty" name:"BudgetId"`
+
+	// <p>用户组意图路由白名单（ir-xxx）。每一项须为该实例已创建的意图路由名。命中意图路由名时其内部真实模型自动豁免白名单。为空表示不授权任何意图路由。</p>
+	IntentRouters []*string `json:"IntentRouters,omitnil,omitempty" name:"IntentRouters"`
+
+	// <p>建组时同时绑定的已有 Key ID 列表，最多100个。每个 Key 须属于同一模型路由实例。建组与绑定为一个原子异步任务，任一 Key 失败则整组创建回滚。不传表示建空组。</p>
+	KeyIds []*string `json:"KeyIds,omitnil,omitempty" name:"KeyIds"`
+
+	// <p>用户组真实模型白名单。每一项须为该实例已关联的模型名。为空表示不在用户组层限制真实模型（按实例层白名单生效）。</p>
+	Models []*string `json:"Models,omitnil,omitempty" name:"Models"`
+
+	// <p>标签列表，最多50个。</p>
+	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
+func (r *CreateUserGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateUserGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ModelRouterId")
+	delete(f, "UserGroupName")
+	delete(f, "BudgetId")
+	delete(f, "IntentRouters")
+	delete(f, "KeyIds")
+	delete(f, "Models")
+	delete(f, "Tags")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateUserGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateUserGroupResponseParams struct {
+	// <p>新建用户组的ID。</p>
+	UserGroupId *string `json:"UserGroupId,omitnil,omitempty" name:"UserGroupId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateUserGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateUserGroupResponseParams `json:"Response"`
+}
+
+func (r *CreateUserGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateUserGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreatedKey struct {
+	// <p>明文Key</p>
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// <p>Key的ID</p>
+	KeyId *string `json:"KeyId,omitnil,omitempty" name:"KeyId"`
+
+	// <p>Key的名称</p>
+	KeyName *string `json:"KeyName,omitnil,omitempty" name:"KeyName"`
+}
+
+type CreditUsage struct {
+	// <p>Budget刷新周期。</p><p>枚举值：</p><ul><li>1d：按天刷新</li><li>7d：按周刷新</li><li>30d：按月刷新</li></ul><p>仅在 CreditUsageSet 数组元素中返回。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BudgetDuration *string `json:"BudgetDuration,omitnil,omitempty" name:"BudgetDuration"`
+
+	// <p>下次刷新时间。</p><p>用户组关联Budget且Budget设置重置周期时返回；未关联Budget或未设置重置周期时为空。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BudgetResetAt *string `json:"BudgetResetAt,omitnil,omitempty" name:"BudgetResetAt"`
+
+	// <p>Credit上限。</p><p>用户组关联Budget且Budget设置最大预算时返回；未设置最大预算时为空。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Limit *float64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>用户组已使用的Credit数量。</p>
+	Used *float64 `json:"Used,omitnil,omitempty" name:"Used"`
+}
+
 type CrossTargets struct {
 	// 本地私有网络ID，即负载均衡的VpcId。
 	LocalVpcId *string `json:"LocalVpcId,omitnil,omitempty" name:"LocalVpcId"`
@@ -2198,6 +2895,121 @@ type CrossTargets struct {
 
 	// 子机或者网卡所属的地域。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+}
+
+// Predefined struct for user
+type DeleteBudgetsRequestParams struct {
+	// <p>要删除的Budget ID列表。</p>
+	BudgetIds []*string `json:"BudgetIds,omitnil,omitempty" name:"BudgetIds"`
+}
+
+type DeleteBudgetsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>要删除的Budget ID列表。</p>
+	BudgetIds []*string `json:"BudgetIds,omitnil,omitempty" name:"BudgetIds"`
+}
+
+func (r *DeleteBudgetsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteBudgetsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BudgetIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteBudgetsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteBudgetsResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteBudgetsResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteBudgetsResponseParams `json:"Response"`
+}
+
+func (r *DeleteBudgetsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteBudgetsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteKeysRequestParams struct {
+	// <p>模型路由ID</p>
+	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
+
+	// <p>key的ID列表</p>
+	KeyIds []*string `json:"KeyIds,omitnil,omitempty" name:"KeyIds"`
+}
+
+type DeleteKeysRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>模型路由ID</p>
+	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
+
+	// <p>key的ID列表</p>
+	KeyIds []*string `json:"KeyIds,omitnil,omitempty" name:"KeyIds"`
+}
+
+func (r *DeleteKeysRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteKeysRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ModelRouterId")
+	delete(f, "KeyIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteKeysRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteKeysResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteKeysResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteKeysResponseParams `json:"Response"`
+}
+
+func (r *DeleteKeysResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteKeysResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -2455,6 +3267,60 @@ func (r *DeleteLoadBalancerSnatIpsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteModelRoutersRequestParams struct {
+	// <p>模型路由实例ID列表</p>
+	ModelRouterIds []*string `json:"ModelRouterIds,omitnil,omitempty" name:"ModelRouterIds"`
+}
+
+type DeleteModelRoutersRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>模型路由实例ID列表</p>
+	ModelRouterIds []*string `json:"ModelRouterIds,omitnil,omitempty" name:"ModelRouterIds"`
+}
+
+func (r *DeleteModelRoutersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteModelRoutersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ModelRouterIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteModelRoutersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteModelRoutersResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteModelRoutersResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteModelRoutersResponseParams `json:"Response"`
+}
+
+func (r *DeleteModelRoutersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteModelRoutersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteRewriteRequestParams struct {
 	// 负载均衡实例ID。
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
@@ -2669,6 +3535,67 @@ func (r *DeleteTargetGroupsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteTargetGroupsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteUserGroupsRequestParams struct {
+	// <p>模型路由实例ID。</p>
+	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
+
+	// <p>待删除的用户组ID列表，单次1-100个。不可包含「未分组」虚拟分组 ugrp-ungrouped。组内仍有 Key 时将拒绝删除，需先将 Key 移出或迁移到其他组。</p>
+	UserGroupIds []*string `json:"UserGroupIds,omitnil,omitempty" name:"UserGroupIds"`
+}
+
+type DeleteUserGroupsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>模型路由实例ID。</p>
+	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
+
+	// <p>待删除的用户组ID列表，单次1-100个。不可包含「未分组」虚拟分组 ugrp-ungrouped。组内仍有 Key 时将拒绝删除，需先将 Key 移出或迁移到其他组。</p>
+	UserGroupIds []*string `json:"UserGroupIds,omitnil,omitempty" name:"UserGroupIds"`
+}
+
+func (r *DeleteUserGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteUserGroupsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ModelRouterId")
+	delete(f, "UserGroupIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteUserGroupsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteUserGroupsResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteUserGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteUserGroupsResponseParams `json:"Response"`
+}
+
+func (r *DeleteUserGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteUserGroupsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2975,6 +3902,86 @@ func (r *DeregisterTargetsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeAsyncJobsRequestParams struct {
+	// <p>请求ID列表</p>
+	RequestIds []*string `json:"RequestIds,omitnil,omitempty" name:"RequestIds"`
+
+	// <p>分页游标</p>
+	NextToken *string `json:"NextToken,omitnil,omitempty" name:"NextToken"`
+
+	// <p>本次查询最大数量</p><p>取值范围：[1, 100]</p><p>默认值：20</p>
+	MaxResults *uint64 `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
+}
+
+type DescribeAsyncJobsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>请求ID列表</p>
+	RequestIds []*string `json:"RequestIds,omitnil,omitempty" name:"RequestIds"`
+
+	// <p>分页游标</p>
+	NextToken *string `json:"NextToken,omitnil,omitempty" name:"NextToken"`
+
+	// <p>本次查询最大数量</p><p>取值范围：[1, 100]</p><p>默认值：20</p>
+	MaxResults *uint64 `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
+}
+
+func (r *DescribeAsyncJobsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAsyncJobsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RequestIds")
+	delete(f, "NextToken")
+	delete(f, "MaxResults")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAsyncJobsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAsyncJobsResponseParams struct {
+	// <p>异步任务列表</p>
+	Jobs []*Job `json:"Jobs,omitnil,omitempty" name:"Jobs"`
+
+	// <p>分页游标</p>
+	NextToken *string `json:"NextToken,omitnil,omitempty" name:"NextToken"`
+
+	// <p>本次查询最大数量</p>
+	MaxResults *uint64 `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
+
+	// <p>本次查询总数</p>
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAsyncJobsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAsyncJobsResponseParams `json:"Response"`
+}
+
+func (r *DescribeAsyncJobsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAsyncJobsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeBlockIPListRequestParams struct {
 	// 负载均衡实例 ID。
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
@@ -3105,6 +4112,168 @@ func (r *DescribeBlockIPTaskResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeBlockIPTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBudgetAssociationsRequestParams struct {
+	// <p>Budget ID。</p><p>一次只允许查询一个Budget。</p>
+	BudgetId *string `json:"BudgetId,omitnil,omitempty" name:"BudgetId"`
+
+	// <p>资源类型。</p><p>枚举值：</p><ul><li>ModelRouter：模型路由实例</li><li>Key：模型路由Key</li></ul><p>不传时返回全部资源类型。</p>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>本次查询偏移量</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>本次查询限制的数量</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeBudgetAssociationsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>Budget ID。</p><p>一次只允许查询一个Budget。</p>
+	BudgetId *string `json:"BudgetId,omitnil,omitempty" name:"BudgetId"`
+
+	// <p>资源类型。</p><p>枚举值：</p><ul><li>ModelRouter：模型路由实例</li><li>Key：模型路由Key</li></ul><p>不传时返回全部资源类型。</p>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>本次查询偏移量</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>本次查询限制的数量</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeBudgetAssociationsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBudgetAssociationsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BudgetId")
+	delete(f, "Type")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBudgetAssociationsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBudgetAssociationsResponseParams struct {
+	// <p>Budget关联资源列表。</p>
+	AssociationSet []*BudgetAssociation `json:"AssociationSet,omitnil,omitempty" name:"AssociationSet"`
+
+	// <p>符合条件的总数。</p>
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeBudgetAssociationsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBudgetAssociationsResponseParams `json:"Response"`
+}
+
+func (r *DescribeBudgetAssociationsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBudgetAssociationsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBudgetsRequestParams struct {
+	// <p>Budget ID列表。</p>
+	BudgetIds []*string `json:"BudgetIds,omitnil,omitempty" name:"BudgetIds"`
+
+	// <p>过滤列表。</p><p>支持：BudgetId、BudgetName、Status。</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>本次查询限制的数量。</p><p>取值范围：[1, 100]</p><p>默认值：20。</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>本次查询偏移量。</p><p>默认值：0。</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+type DescribeBudgetsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>Budget ID列表。</p>
+	BudgetIds []*string `json:"BudgetIds,omitnil,omitempty" name:"BudgetIds"`
+
+	// <p>过滤列表。</p><p>支持：BudgetId、BudgetName、Status。</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>本次查询限制的数量。</p><p>取值范围：[1, 100]</p><p>默认值：20。</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>本次查询偏移量。</p><p>默认值：0。</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+func (r *DescribeBudgetsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBudgetsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BudgetIds")
+	delete(f, "Filters")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBudgetsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBudgetsResponseParams struct {
+	// <p>Budget列表。</p>
+	BudgetSet []*BudgetInfo `json:"BudgetSet,omitnil,omitempty" name:"BudgetSet"`
+
+	// <p>符合条件的总数。</p>
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeBudgetsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBudgetsResponseParams `json:"Response"`
+}
+
+func (r *DescribeBudgetsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBudgetsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4816,6 +5985,215 @@ func (r *DescribeLoadBalancersResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeModelRouterDetailRequestParams struct {
+	// <p>模型路由实例ID</p>
+	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
+}
+
+type DescribeModelRouterDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>模型路由实例ID</p>
+	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
+}
+
+func (r *DescribeModelRouterDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeModelRouterDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ModelRouterId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeModelRouterDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeModelRouterDetailResponseParams struct {
+	// <p>模型路由实例详情</p>
+	ModelRouter *ModelRouterDetail `json:"ModelRouter,omitnil,omitempty" name:"ModelRouter"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeModelRouterDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeModelRouterDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeModelRouterDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeModelRouterDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeModelRouterQuotaRequestParams struct {
+	// <p>配额类型</p>
+	QuotaTypes []*string `json:"QuotaTypes,omitnil,omitempty" name:"QuotaTypes"`
+
+	// <p>要查询的资源ID</p>
+	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
+
+	// <p>需要展示的字段</p><p>枚举值：</p><ul><li>Used： 已使用的配额数量</li><li>Available： 剩余的配额数量</li></ul>
+	DisplayFields []*string `json:"DisplayFields,omitnil,omitempty" name:"DisplayFields"`
+}
+
+type DescribeModelRouterQuotaRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>配额类型</p>
+	QuotaTypes []*string `json:"QuotaTypes,omitnil,omitempty" name:"QuotaTypes"`
+
+	// <p>要查询的资源ID</p>
+	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
+
+	// <p>需要展示的字段</p><p>枚举值：</p><ul><li>Used： 已使用的配额数量</li><li>Available： 剩余的配额数量</li></ul>
+	DisplayFields []*string `json:"DisplayFields,omitnil,omitempty" name:"DisplayFields"`
+}
+
+func (r *DescribeModelRouterQuotaRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeModelRouterQuotaRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "QuotaTypes")
+	delete(f, "ResourceIds")
+	delete(f, "DisplayFields")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeModelRouterQuotaRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeModelRouterQuotaResponseParams struct {
+	// <p>配额信息</p>
+	Quotas []*ModelRouterQuota `json:"Quotas,omitnil,omitempty" name:"Quotas"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeModelRouterQuotaResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeModelRouterQuotaResponseParams `json:"Response"`
+}
+
+func (r *DescribeModelRouterQuotaResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeModelRouterQuotaResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeModelRoutersRequestParams struct {
+	// <p>过滤条件</p><p>支持：ModelRouterName、ModelRouterType、Status、BudgetId、tag-key、tag:&lt;tag-key&gt;。</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>每页数量，1-100，默认 20</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>模型路由实例ID列表</p>
+	ModelRouterIds []*string `json:"ModelRouterIds,omitnil,omitempty" name:"ModelRouterIds"`
+
+	// <p>分页偏移量，默认 0</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+type DescribeModelRoutersRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>过滤条件</p><p>支持：ModelRouterName、ModelRouterType、Status、BudgetId、tag-key、tag:&lt;tag-key&gt;。</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>每页数量，1-100，默认 20</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>模型路由实例ID列表</p>
+	ModelRouterIds []*string `json:"ModelRouterIds,omitnil,omitempty" name:"ModelRouterIds"`
+
+	// <p>分页偏移量，默认 0</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+func (r *DescribeModelRoutersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeModelRoutersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "Limit")
+	delete(f, "ModelRouterIds")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeModelRoutersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeModelRoutersResponseParams struct {
+	// <p>模型路由实例列表</p>
+	ModelRouterSet []*ModelRouterSet `json:"ModelRouterSet,omitnil,omitempty" name:"ModelRouterSet"`
+
+	// <p>符合条件的总数</p>
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeModelRoutersResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeModelRoutersResponseParams `json:"Response"`
+}
+
+func (r *DescribeModelRoutersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeModelRoutersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeQuotaRequestParams struct {
 
 }
@@ -5582,6 +6960,155 @@ func (r *DescribeTaskStatusResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeUserGroupsRequestParams struct {
+	// <p>模型路由实例ID。</p>
+	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
+
+	// <p>用户组ID列表，用于按ID过滤，单次最多100个；可包含「未分组」虚拟分组 ugrp-ungrouped。</p>
+	UserGroupIds []*string `json:"UserGroupIds,omitnil,omitempty" name:"UserGroupIds"`
+
+	// <p>过滤列表。支持：UserGroupName、Status、tag-key、tag:&lt;tag-key&gt;。</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>本次查询限制的数量</p><p>取值范围：[1, 100]</p><p>默认值：20</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>本次查询偏移量</p><p>默认值：0</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+type DescribeUserGroupsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>模型路由实例ID。</p>
+	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
+
+	// <p>用户组ID列表，用于按ID过滤，单次最多100个；可包含「未分组」虚拟分组 ugrp-ungrouped。</p>
+	UserGroupIds []*string `json:"UserGroupIds,omitnil,omitempty" name:"UserGroupIds"`
+
+	// <p>过滤列表。支持：UserGroupName、Status、tag-key、tag:&lt;tag-key&gt;。</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>本次查询限制的数量</p><p>取值范围：[1, 100]</p><p>默认值：20</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>本次查询偏移量</p><p>默认值：0</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+func (r *DescribeUserGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUserGroupsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ModelRouterId")
+	delete(f, "UserGroupIds")
+	delete(f, "Filters")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUserGroupsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeUserGroupsResponseParams struct {
+	// <p>用户组列表。</p>
+	UserGroups []*UserGroupInfo `json:"UserGroups,omitnil,omitempty" name:"UserGroups"`
+
+	// <p>符合条件的总数（含「未分组」逻辑组 ugrp-ungrouped：当其未被过滤条件排除时计入，即 TotalCount = 真实用户组数 + 1）。</p>
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeUserGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeUserGroupsResponseParams `json:"Response"`
+}
+
+func (r *DescribeUserGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUserGroupsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DisassociateBudgetRequestParams struct {
+	// <p>Budget ID。</p>
+	BudgetId *string `json:"BudgetId,omitnil,omitempty" name:"BudgetId"`
+
+	// <p>要解除关联的资源列表。</p>
+	Resources []*BudgetResource `json:"Resources,omitnil,omitempty" name:"Resources"`
+}
+
+type DisassociateBudgetRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>Budget ID。</p>
+	BudgetId *string `json:"BudgetId,omitnil,omitempty" name:"BudgetId"`
+
+	// <p>要解除关联的资源列表。</p>
+	Resources []*BudgetResource `json:"Resources,omitnil,omitempty" name:"Resources"`
+}
+
+func (r *DisassociateBudgetRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DisassociateBudgetRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BudgetId")
+	delete(f, "Resources")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DisassociateBudgetRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DisassociateBudgetResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DisassociateBudgetResponse struct {
+	*tchttp.BaseResponse
+	Response *DisassociateBudgetResponseParams `json:"Response"`
+}
+
+func (r *DisassociateBudgetResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DisassociateBudgetResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DisassociateCustomizedConfigRequestParams struct {
 	// 配置ID
 	UconfigId *string `json:"UconfigId,omitnil,omitempty" name:"UconfigId"`
@@ -5718,6 +7245,11 @@ type ExtraInfo struct {
 	TgwGroupName *string `json:"TgwGroupName,omitnil,omitempty" name:"TgwGroupName"`
 }
 
+type FallBackItem struct {
+	// <p>默认回退模型列表</p>
+	DefaultFallBackModels []*string `json:"DefaultFallBackModels,omitnil,omitempty" name:"DefaultFallBackModels"`
+}
+
 type Filter struct {
 	// <p>过滤器的名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
@@ -5840,6 +7372,14 @@ type IdleLoadBalancer struct {
 
 	// 负载均衡域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+}
+
+type InputKeyInfo struct {
+	// <p>Key的名称</p>
+	KeyName *string `json:"KeyName,omitnil,omitempty" name:"KeyName"`
+
+	// <p>导入的明文Key</p><p>仅允许导入Key模式下输入</p>
+	PlainKey *string `json:"PlainKey,omitnil,omitempty" name:"PlainKey"`
 }
 
 // Predefined struct for user
@@ -6192,6 +7732,20 @@ type ItemPrice struct {
 	// 折扣，如20.0代表2折。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Discount *float64 `json:"Discount,omitnil,omitempty" name:"Discount"`
+}
+
+type Job struct {
+	// <p>接口名称</p>
+	ApiName *string `json:"ApiName,omitnil,omitempty" name:"ApiName"`
+
+	// <p>请求ID</p>
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+
+	// <p>异步任务状态</p><p>枚举值：</p><ul><li>Processing： 进行中</li><li>Succeeded： 成功</li><li>Failed： 失败</li></ul>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>资源ID</p>
+	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
 }
 
 type LBChargePrepaid struct {
@@ -6985,6 +8539,158 @@ func (r *MigrateClassicalLoadBalancersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ModelRouterDetail struct {
+	// <p>创建时间</p>
+	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
+
+	// <p>模型路由实例域名</p>
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// <p>模型路由ID</p>
+	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
+
+	// <p>模型路由名称</p><p>默认值：-</p>
+	ModelRouterName *string `json:"ModelRouterName,omitnil,omitempty" name:"ModelRouterName"`
+
+	// <p>模型路由类型</p><p>枚举值：</p><ul><li>Shared： 共享型</li><li>Enterprise： 企业级</li></ul>
+	ModelRouterType *string `json:"ModelRouterType,omitnil,omitempty" name:"ModelRouterType"`
+
+	// <p>修改时间</p>
+	ModifiedTime *string `json:"ModifiedTime,omitnil,omitempty" name:"ModifiedTime"`
+
+	// <p>模型路由实例网络类型</p><p>枚举值：</p><ul><li>Internet： 公网</li><li>Intranet： 内网</li></ul>
+	NetworkType *string `json:"NetworkType,omitnil,omitempty" name:"NetworkType"`
+
+	// <p>模型路由限速信息</p>
+	RateLimitConfig *RateLimitConfigForModelRouter `json:"RateLimitConfig,omitnil,omitempty" name:"RateLimitConfig"`
+
+	// <p>模型路由的路由配置</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RouterSetting *RouterSettingWithFallBack `json:"RouterSetting,omitnil,omitempty" name:"RouterSetting"`
+
+	// <p>模型路由实例的安全状态</p><p>枚举值：</p><ul><li>Normal： 正常</li><li>Banned： 已封禁</li><li>Frozen： 已冻结</li></ul>
+	SecurityStatus *string `json:"SecurityStatus,omitnil,omitempty" name:"SecurityStatus"`
+
+	// <p>模型路由网络配置列表</p>
+	ServiceEndPoints []*ServiceEndPoints `json:"ServiceEndPoints,omitnil,omitempty" name:"ServiceEndPoints"`
+
+	// <p>模型路由实例状态</p><p>枚举值：</p><ul><li>Active： 运行中</li><li>Provisioning： 创建中</li><li>Configuring： 变配中</li></ul>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>模型路由实例所属子网的ID</p>
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// <p>标签</p>
+	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>模型路由实例的计费状态</p><p>枚举值：</p><ul><li>Normal： 正常</li><li>Isolated： 已隔离</li></ul>
+	TradeStatus *string `json:"TradeStatus,omitnil,omitempty" name:"TradeStatus"`
+
+	// <p>模型路由实例VIP</p>
+	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
+
+	// <p>模型路由实例所属VPC的ID</p>
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// <p>模型路由实例关联的Budget ID。</p><p>未关联Budget时返回空字符串。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BudgetId *string `json:"BudgetId,omitnil,omitempty" name:"BudgetId"`
+
+	// <p>模型路由实例关联的Budget名称。</p><p>未关联Budget时返回空字符串。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BudgetName *string `json:"BudgetName,omitnil,omitempty" name:"BudgetName"`
+
+	// <p>模型路由实例的Credit使用情况。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreditUsage *CreditUsage `json:"CreditUsage,omitnil,omitempty" name:"CreditUsage"`
+
+	// <p>模型路由实例按Budget刷新周期划分的Credit使用情况。</p><p>当关联Budget配置多个刷新周期时，按1d、7d、30d顺序返回各周期用量；未关联Budget时返回空数组。</p>
+	CreditUsageSet []*CreditUsage `json:"CreditUsageSet,omitnil,omitempty" name:"CreditUsageSet"`
+
+	// <p>安全组ID列表</p>
+	SecurityGroups []*string `json:"SecurityGroups,omitnil,omitempty" name:"SecurityGroups"`
+
+	// <p>集群信息</p>
+	ClusterInfo *ClusterInfo `json:"ClusterInfo,omitnil,omitempty" name:"ClusterInfo"`
+}
+
+type ModelRouterQuota struct {
+	// <p>配额名称</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QuotaType *string `json:"QuotaType,omitnil,omitempty" name:"QuotaType"`
+
+	// <p>资源ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// <p>配额上限</p><p>单位：个</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>已使用配额数量</p><p>单位：个</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Used *uint64 `json:"Used,omitnil,omitempty" name:"Used"`
+
+	// <p>剩余配额数量</p><p>单位：个</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Available *uint64 `json:"Available,omitnil,omitempty" name:"Available"`
+}
+
+type ModelRouterSet struct {
+	// <p>模型路由实例关联的Budget ID。</p><p>未关联Budget时返回空字符串。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BudgetId *string `json:"BudgetId,omitnil,omitempty" name:"BudgetId"`
+
+	// <p>模型路由实例关联的Budget名称。</p><p>未关联Budget时返回空字符串。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BudgetName *string `json:"BudgetName,omitnil,omitempty" name:"BudgetName"`
+
+	// <p>集群信息</p>
+	ClusterInfo *ClusterInfo `json:"ClusterInfo,omitnil,omitempty" name:"ClusterInfo"`
+
+	// <p>创建时间</p>
+	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
+
+	// <p>模型路由实例按Budget刷新周期划分的Credit使用情况。</p><p>当关联Budget配置多个刷新周期时，按1d、7d、30d顺序返回各周期用量；未关联Budget时返回空数组。</p>
+	CreditUsageSet []*CreditUsage `json:"CreditUsageSet,omitnil,omitempty" name:"CreditUsageSet"`
+
+	// <p>模型路由实例域名</p>
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// <p>模型路由ID</p>
+	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
+
+	// <p>模型路由名称</p><p>默认值：-</p>
+	ModelRouterName *string `json:"ModelRouterName,omitnil,omitempty" name:"ModelRouterName"`
+
+	// <p>模型路由类型</p><p>枚举值：</p><ul><li>Shared： 共享型</li><li>Enterprise： 企业级</li></ul>
+	ModelRouterType *string `json:"ModelRouterType,omitnil,omitempty" name:"ModelRouterType"`
+
+	// <p>修改时间</p>
+	ModifiedTime *string `json:"ModifiedTime,omitnil,omitempty" name:"ModifiedTime"`
+
+	// <p>模型路由实例网络类型</p><p>枚举值：</p><ul><li>Internet： 公网</li><li>Intranet： 内网</li></ul>
+	NetworkType *string `json:"NetworkType,omitnil,omitempty" name:"NetworkType"`
+
+	// <p>模型路由实例的安全状态</p><p>枚举值：</p><ul><li>Normal： 正常</li><li>Banned： 已封禁</li><li>Frozen： 已冻结</li></ul>
+	SecurityStatus *string `json:"SecurityStatus,omitnil,omitempty" name:"SecurityStatus"`
+
+	// <p>模型路由实例状态</p><p>枚举值：</p><ul><li>Active： 运行中</li><li>Provisioning： 创建中</li><li>Configuring： 变配中</li></ul>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>标签</p>
+	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>模型路由实例的计费状态</p><p>枚举值：</p><ul><li>Normal： 正常</li><li>Isolated： 已隔离</li></ul>
+	TradeStatus *string `json:"TradeStatus,omitnil,omitempty" name:"TradeStatus"`
+
+	// <p>模型路由实例VIP</p>
+	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
+
+	// <p>模型路由实例所属VPC的ID</p>
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+}
+
 // Predefined struct for user
 type ModifyBlockIPListRequestParams struct {
 	// 负载均衡实例ID
@@ -7086,6 +8792,81 @@ func (r *ModifyBlockIPListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyBlockIPListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyBudgetAttributesRequestParams struct {
+	// <p>Budget ID。</p>
+	BudgetId *string `json:"BudgetId,omitnil,omitempty" name:"BudgetId"`
+
+	// <p>预算配置数组。</p><p>数组长度最大为1。BudgetResetAt不支持作为入参设置。</p>
+	BudgetConfigs []*BudgetConfigInput `json:"BudgetConfigs,omitnil,omitempty" name:"BudgetConfigs"`
+
+	// <p>Budget名称。</p>
+	BudgetName *string `json:"BudgetName,omitnil,omitempty" name:"BudgetName"`
+
+	// <p>Budget限速配置。</p>
+	RateLimitConfig *RateLimitConfigForBudget `json:"RateLimitConfig,omitnil,omitempty" name:"RateLimitConfig"`
+}
+
+type ModifyBudgetAttributesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>Budget ID。</p>
+	BudgetId *string `json:"BudgetId,omitnil,omitempty" name:"BudgetId"`
+
+	// <p>预算配置数组。</p><p>数组长度最大为1。BudgetResetAt不支持作为入参设置。</p>
+	BudgetConfigs []*BudgetConfigInput `json:"BudgetConfigs,omitnil,omitempty" name:"BudgetConfigs"`
+
+	// <p>Budget名称。</p>
+	BudgetName *string `json:"BudgetName,omitnil,omitempty" name:"BudgetName"`
+
+	// <p>Budget限速配置。</p>
+	RateLimitConfig *RateLimitConfigForBudget `json:"RateLimitConfig,omitnil,omitempty" name:"RateLimitConfig"`
+}
+
+func (r *ModifyBudgetAttributesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyBudgetAttributesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BudgetId")
+	delete(f, "BudgetConfigs")
+	delete(f, "BudgetName")
+	delete(f, "RateLimitConfig")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyBudgetAttributesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyBudgetAttributesResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyBudgetAttributesResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyBudgetAttributesResponseParams `json:"Response"`
+}
+
+func (r *ModifyBudgetAttributesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyBudgetAttributesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -7380,6 +9161,217 @@ func (r *ModifyFunctionTargetsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyFunctionTargetsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyKeyAttributesRequestParams struct {
+	// <p>模型路由实例ID</p>
+	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
+
+	// <p>API Key的ID</p>
+	KeyId *string `json:"KeyId,omitnil,omitempty" name:"KeyId"`
+
+	// <p>Key的名称</p>
+	KeyName *string `json:"KeyName,omitnil,omitempty" name:"KeyName"`
+
+	// <p>限速配置</p>
+	RateLimitConfig *RateLimitConfigForKey `json:"RateLimitConfig,omitnil,omitempty" name:"RateLimitConfig"`
+}
+
+type ModifyKeyAttributesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>模型路由实例ID</p>
+	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
+
+	// <p>API Key的ID</p>
+	KeyId *string `json:"KeyId,omitnil,omitempty" name:"KeyId"`
+
+	// <p>Key的名称</p>
+	KeyName *string `json:"KeyName,omitnil,omitempty" name:"KeyName"`
+
+	// <p>限速配置</p>
+	RateLimitConfig *RateLimitConfigForKey `json:"RateLimitConfig,omitnil,omitempty" name:"RateLimitConfig"`
+}
+
+func (r *ModifyKeyAttributesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyKeyAttributesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ModelRouterId")
+	delete(f, "KeyId")
+	delete(f, "KeyName")
+	delete(f, "RateLimitConfig")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyKeyAttributesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyKeyAttributesResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyKeyAttributesResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyKeyAttributesResponseParams `json:"Response"`
+}
+
+func (r *ModifyKeyAttributesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyKeyAttributesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyKeysBlockStatusRequestParams struct {
+	// <p>模型路由实例ID</p>
+	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
+
+	// <p>是否停止使用</p>
+	Blocked *bool `json:"Blocked,omitnil,omitempty" name:"Blocked"`
+
+	// <p>需要修改的Key的ID列表</p>
+	KeyIds []*string `json:"KeyIds,omitnil,omitempty" name:"KeyIds"`
+}
+
+type ModifyKeysBlockStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>模型路由实例ID</p>
+	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
+
+	// <p>是否停止使用</p>
+	Blocked *bool `json:"Blocked,omitnil,omitempty" name:"Blocked"`
+
+	// <p>需要修改的Key的ID列表</p>
+	KeyIds []*string `json:"KeyIds,omitnil,omitempty" name:"KeyIds"`
+}
+
+func (r *ModifyKeysBlockStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyKeysBlockStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ModelRouterId")
+	delete(f, "Blocked")
+	delete(f, "KeyIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyKeysBlockStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyKeysBlockStatusResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyKeysBlockStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyKeysBlockStatusResponseParams `json:"Response"`
+}
+
+func (r *ModifyKeysBlockStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyKeysBlockStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyKeysUserGroupRequestParams struct {
+	// <p>模型路由实例ID。</p>
+	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
+
+	// <p>目标归属用户组ID。传真实用户组ID表示批量入组或跨组移动（Key 已属其它组则改为目标组）；传 ugrp-ungrouped 表示批量移出到未分组。</p>
+	UserGroupId *string `json:"UserGroupId,omitnil,omitempty" name:"UserGroupId"`
+
+	// <p>待变更归属的 Key ID 列表，单次1-100个。</p>
+	KeyIds []*string `json:"KeyIds,omitnil,omitempty" name:"KeyIds"`
+}
+
+type ModifyKeysUserGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>模型路由实例ID。</p>
+	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
+
+	// <p>目标归属用户组ID。传真实用户组ID表示批量入组或跨组移动（Key 已属其它组则改为目标组）；传 ugrp-ungrouped 表示批量移出到未分组。</p>
+	UserGroupId *string `json:"UserGroupId,omitnil,omitempty" name:"UserGroupId"`
+
+	// <p>待变更归属的 Key ID 列表，单次1-100个。</p>
+	KeyIds []*string `json:"KeyIds,omitnil,omitempty" name:"KeyIds"`
+}
+
+func (r *ModifyKeysUserGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyKeysUserGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ModelRouterId")
+	delete(f, "UserGroupId")
+	delete(f, "KeyIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyKeysUserGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyKeysUserGroupResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyKeysUserGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyKeysUserGroupResponseParams `json:"Response"`
+}
+
+func (r *ModifyKeysUserGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyKeysUserGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -7906,6 +9898,88 @@ func (r *ModifyLoadBalancersProjectResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyLoadBalancersProjectResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyModelRouterAttributesRequestParams struct {
+	// <p>模型路由ID</p>
+	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
+
+	// <p>模型路由名称</p>
+	ModelRouterName *string `json:"ModelRouterName,omitnil,omitempty" name:"ModelRouterName"`
+
+	// <p>限速配置</p>
+	RateLimitConfig *RateLimitConfigForModelRouter `json:"RateLimitConfig,omitnil,omitempty" name:"RateLimitConfig"`
+
+	// <p>路由配置</p>
+	RouterSetting *RouterSettingWithFallBack `json:"RouterSetting,omitnil,omitempty" name:"RouterSetting"`
+
+	// <p>新的 HTTPS 证书ID，用于替换实例 HTTPS 服务端点当前绑定的证书。常用于证书到期前的更换场景。</p><p>使用限制：</p><ul><li>仅企业型（Enterprise）且服务端点协议为 HTTPS 的实例支持修改证书。</li><li>证书须为 SSL 证书控制台中状态为“已签发”（可用）且未过期的服务器证书（SVR 类型）。可在 <a href="https://console.cloud.tencent.com/ssl">SSL 证书控制台</a> 查看证书ID。</li><li>替换后新证书立即生效，过程中不会中断业务流量。</li><li>若传入的证书与当前绑定的证书相同，接口直接返回成功，不做任何变更。</li></ul><p>不传则证书保持不变。可通过 <code>DescribeModelRouterDetail</code> 接口的 <code>ServiceEndPoints.CertId</code> 字段查询当前绑定的证书。</p>
+	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
+}
+
+type ModifyModelRouterAttributesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>模型路由ID</p>
+	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
+
+	// <p>模型路由名称</p>
+	ModelRouterName *string `json:"ModelRouterName,omitnil,omitempty" name:"ModelRouterName"`
+
+	// <p>限速配置</p>
+	RateLimitConfig *RateLimitConfigForModelRouter `json:"RateLimitConfig,omitnil,omitempty" name:"RateLimitConfig"`
+
+	// <p>路由配置</p>
+	RouterSetting *RouterSettingWithFallBack `json:"RouterSetting,omitnil,omitempty" name:"RouterSetting"`
+
+	// <p>新的 HTTPS 证书ID，用于替换实例 HTTPS 服务端点当前绑定的证书。常用于证书到期前的更换场景。</p><p>使用限制：</p><ul><li>仅企业型（Enterprise）且服务端点协议为 HTTPS 的实例支持修改证书。</li><li>证书须为 SSL 证书控制台中状态为“已签发”（可用）且未过期的服务器证书（SVR 类型）。可在 <a href="https://console.cloud.tencent.com/ssl">SSL 证书控制台</a> 查看证书ID。</li><li>替换后新证书立即生效，过程中不会中断业务流量。</li><li>若传入的证书与当前绑定的证书相同，接口直接返回成功，不做任何变更。</li></ul><p>不传则证书保持不变。可通过 <code>DescribeModelRouterDetail</code> 接口的 <code>ServiceEndPoints.CertId</code> 字段查询当前绑定的证书。</p>
+	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
+}
+
+func (r *ModifyModelRouterAttributesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyModelRouterAttributesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ModelRouterId")
+	delete(f, "ModelRouterName")
+	delete(f, "RateLimitConfig")
+	delete(f, "RouterSetting")
+	delete(f, "CertId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyModelRouterAttributesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyModelRouterAttributesResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyModelRouterAttributesResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyModelRouterAttributesResponseParams `json:"Response"`
+}
+
+func (r *ModifyModelRouterAttributesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyModelRouterAttributesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -8468,6 +10542,95 @@ func (r *ModifyTargetWeightResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyUserGroupAttributesRequestParams struct {
+	// <p>模型路由实例ID。</p>
+	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
+
+	// <p>待修改的用户组ID。不可为「未分组」虚拟分组 ugrp-ungrouped。</p>
+	UserGroupId *string `json:"UserGroupId,omitnil,omitempty" name:"UserGroupId"`
+
+	// <p>用户组关联的预算ID。不传则不修改预算关联；传入有效 budget-xxx 则将该用户组关联到此预算（若已关联其它预算则替换为本预算）。仅支持关联/替换，不支持解绑——解绑请用 DisassociateBudget。预算与组内 Key、所属实例的预算各自独立判定。</p>
+	BudgetId *string `json:"BudgetId,omitnil,omitempty" name:"BudgetId"`
+
+	// <p>用户组意图路由白名单（ir-xxx）。每一项须为该实例已创建的意图路由名。不传则不修改；传入即整体覆盖。</p>
+	IntentRouters []*string `json:"IntentRouters,omitnil,omitempty" name:"IntentRouters"`
+
+	// <p>用户组真实模型白名单。每一项须为该实例已关联的模型名。不传则不修改；传入即整体覆盖。</p>
+	Models []*string `json:"Models,omitnil,omitempty" name:"Models"`
+
+	// <p>用户组名称。不传则不修改；传入时长度不超过255个字符、同实例下唯一。</p>
+	UserGroupName *string `json:"UserGroupName,omitnil,omitempty" name:"UserGroupName"`
+}
+
+type ModifyUserGroupAttributesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>模型路由实例ID。</p>
+	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
+
+	// <p>待修改的用户组ID。不可为「未分组」虚拟分组 ugrp-ungrouped。</p>
+	UserGroupId *string `json:"UserGroupId,omitnil,omitempty" name:"UserGroupId"`
+
+	// <p>用户组关联的预算ID。不传则不修改预算关联；传入有效 budget-xxx 则将该用户组关联到此预算（若已关联其它预算则替换为本预算）。仅支持关联/替换，不支持解绑——解绑请用 DisassociateBudget。预算与组内 Key、所属实例的预算各自独立判定。</p>
+	BudgetId *string `json:"BudgetId,omitnil,omitempty" name:"BudgetId"`
+
+	// <p>用户组意图路由白名单（ir-xxx）。每一项须为该实例已创建的意图路由名。不传则不修改；传入即整体覆盖。</p>
+	IntentRouters []*string `json:"IntentRouters,omitnil,omitempty" name:"IntentRouters"`
+
+	// <p>用户组真实模型白名单。每一项须为该实例已关联的模型名。不传则不修改；传入即整体覆盖。</p>
+	Models []*string `json:"Models,omitnil,omitempty" name:"Models"`
+
+	// <p>用户组名称。不传则不修改；传入时长度不超过255个字符、同实例下唯一。</p>
+	UserGroupName *string `json:"UserGroupName,omitnil,omitempty" name:"UserGroupName"`
+}
+
+func (r *ModifyUserGroupAttributesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyUserGroupAttributesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ModelRouterId")
+	delete(f, "UserGroupId")
+	delete(f, "BudgetId")
+	delete(f, "IntentRouters")
+	delete(f, "Models")
+	delete(f, "UserGroupName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyUserGroupAttributesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyUserGroupAttributesResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyUserGroupAttributesResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyUserGroupAttributesResponseParams `json:"Response"`
+}
+
+func (r *ModifyUserGroupAttributesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyUserGroupAttributesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type MultiCertInfo struct {
 	// 认证类型，UNIDIRECTIONAL：单向认证，MUTUAL：双向认证
 	SSLMode *string `json:"SSLMode,omitnil,omitempty" name:"SSLMode"`
@@ -8524,6 +10687,108 @@ type Quota struct {
 
 	// 配额数量。
 	QuotaLimit *int64 `json:"QuotaLimit,omitnil,omitempty" name:"QuotaLimit"`
+}
+
+type RateLimitConfigForBudget struct {
+	// <p>每分钟限制的请求数量。</p><p>单位：次/分钟。</p>
+	RPM *uint64 `json:"RPM,omitnil,omitempty" name:"RPM"`
+
+	// <p>每分钟限制的Token数量。</p><p>单位：个/分钟。</p>
+	TPM *uint64 `json:"TPM,omitnil,omitempty" name:"TPM"`
+}
+
+type RateLimitConfigForKey struct {
+	// <p>最大并发请求数量</p><p>单位：次</p>
+	MaxParallelRequest *uint64 `json:"MaxParallelRequest,omitnil,omitempty" name:"MaxParallelRequest"`
+
+	// <p>每分钟限制的请求数量</p><p>单位：次/分钟</p>
+	RPM *uint64 `json:"RPM,omitnil,omitempty" name:"RPM"`
+
+	// <p>每分钟限制的Token数量</p><p>单位：个/分钟</p>
+	TPM *uint64 `json:"TPM,omitnil,omitempty" name:"TPM"`
+}
+
+type RateLimitConfigForModelRouter struct {
+	// <p>每分钟限制的请求数量</p><p>单位：次/分钟</p>
+	RPM *uint64 `json:"RPM,omitnil,omitempty" name:"RPM"`
+
+	// <p>每分钟限制的Token数量</p><p>单位：个/分钟</p>
+	TPM *uint64 `json:"TPM,omitnil,omitempty" name:"TPM"`
+}
+
+// Predefined struct for user
+type RegenerateKeysRequestParams struct {
+	// <p>模型路由实例ID</p>
+	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
+
+	// <p>Key的ID列表</p>
+	KeyIds []*string `json:"KeyIds,omitnil,omitempty" name:"KeyIds"`
+}
+
+type RegenerateKeysRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>模型路由实例ID</p>
+	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
+
+	// <p>Key的ID列表</p>
+	KeyIds []*string `json:"KeyIds,omitnil,omitempty" name:"KeyIds"`
+}
+
+func (r *RegenerateKeysRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RegenerateKeysRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ModelRouterId")
+	delete(f, "KeyIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RegenerateKeysRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RegenerateKeysResponseParams struct {
+	// <p>重新生成后的Key的信息</p>
+	RegeneratedKeys []*RegeneratedKey `json:"RegeneratedKeys,omitnil,omitempty" name:"RegeneratedKeys"`
+
+	// <p>重新生成失败的Key的ID列表</p>
+	FailedKeyIds []*string `json:"FailedKeyIds,omitnil,omitempty" name:"FailedKeyIds"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RegenerateKeysResponse struct {
+	*tchttp.BaseResponse
+	Response *RegenerateKeysResponseParams `json:"Response"`
+}
+
+func (r *RegenerateKeysResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RegenerateKeysResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type RegeneratedKey struct {
+	// <p>Key的ID</p>
+	KeyId *string `json:"KeyId,omitnil,omitempty" name:"KeyId"`
+
+	// <p>重新生成的明文Key</p>
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 }
 
 // Predefined struct for user
@@ -9009,6 +11274,25 @@ type RewriteTarget struct {
 	RewriteType *string `json:"RewriteType,omitnil,omitempty" name:"RewriteType"`
 }
 
+type RouterSettingWithFallBack struct {
+	// <p>回退策略</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FallBack *FallBackItem `json:"FallBack,omitnil,omitempty" name:"FallBack"`
+
+	// <p>模型内路由策略</p><p>枚举值：</p><ul><li>SimpleShuffle： 简单随机路由</li><li>LeastBusy： 最低繁忙路由</li><li>LatencyBasedRouting： 最低延迟路由</li><li>UsageBasedRouting： 用量均衡路由</li><li>CostBasedRouting： 最低积分路由</li></ul>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RoutingStrategy *string `json:"RoutingStrategy,omitnil,omitempty" name:"RoutingStrategy"`
+
+	// <p>模型间路由策略。</p><p>枚举值：</p><ul><li>SimpleShuffle： 简单随机路由</li><li>CostBasedRouting： 最低积分路由</li></ul>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CrossModelGroupRoutingStrategy *string `json:"CrossModelGroupRoutingStrategy,omitnil,omitempty" name:"CrossModelGroupRoutingStrategy"`
+}
+
+type RouterSettingWithoutFallBack struct {
+	// <p>路由策略</p><p>枚举值：</p><ul><li>SimpleShuffle： 简单随机路由</li><li>LeastBusy： 最低繁忙路由</li><li>LatencyBasedRouting： 最低延迟路由</li><li>UsageBasedRouting： 用量均衡路由</li><li>CostBasedRouting： 最低积分路由</li></ul>
+	RoutingStrategy *string `json:"RoutingStrategy,omitnil,omitempty" name:"RoutingStrategy"`
+}
+
 type RsTagRule struct {
 	// <p>负载均衡监听器 ID。</p>
 	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
@@ -9229,6 +11513,17 @@ type RulesItems struct {
 	Targets []*LbRsTargets `json:"Targets,omitnil,omitempty" name:"Targets"`
 }
 
+type ServiceEndPoints struct {
+	// <p>证书ID</p>
+	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
+
+	// <p>监听端口</p>
+	Port *uint64 `json:"Port,omitnil,omitempty" name:"Port"`
+
+	// <p>网络协议</p>
+	Schema *string `json:"Schema,omitnil,omitempty" name:"Schema"`
+}
+
 // Predefined struct for user
 type SetCustomizedConfigForLoadBalancerRequestParams struct {
 	// 操作类型。
@@ -9252,6 +11547,9 @@ type SetCustomizedConfigForLoadBalancerRequestParams struct {
 	// 负载均衡实例ID。绑定解绑时，必传此字段。
 	// 可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/1108/48459) 接口查询。
 	LoadBalancerIds []*string `json:"LoadBalancerIds,omitnil,omitempty" name:"LoadBalancerIds"`
+
+	// 标签
+	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type SetCustomizedConfigForLoadBalancerRequest struct {
@@ -9278,6 +11576,9 @@ type SetCustomizedConfigForLoadBalancerRequest struct {
 	// 负载均衡实例ID。绑定解绑时，必传此字段。
 	// 可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/1108/48459) 接口查询。
 	LoadBalancerIds []*string `json:"LoadBalancerIds,omitnil,omitempty" name:"LoadBalancerIds"`
+
+	// 标签
+	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 func (r *SetCustomizedConfigForLoadBalancerRequest) ToJsonString() string {
@@ -9297,6 +11598,7 @@ func (r *SetCustomizedConfigForLoadBalancerRequest) FromJsonString(s string) err
 	delete(f, "ConfigContent")
 	delete(f, "ConfigName")
 	delete(f, "LoadBalancerIds")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SetCustomizedConfigForLoadBalancerRequest has unknown keys!", "")
 	}
@@ -9952,6 +12254,49 @@ type TypeInfo struct {
 
 	// 规格可用性
 	SpecAvailabilitySet []*SpecAvailability `json:"SpecAvailabilitySet,omitnil,omitempty" name:"SpecAvailabilitySet"`
+}
+
+type UserGroupInfo struct {
+	// <p>用户组ID。「未分组」虚拟分组固定为 ugrp-ungrouped。</p>
+	UserGroupId *string `json:"UserGroupId,omitnil,omitempty" name:"UserGroupId"`
+
+	// <p>用户组名称。「未分组」虚拟分组固定为 ungrouped。</p>
+	UserGroupName *string `json:"UserGroupName,omitnil,omitempty" name:"UserGroupName"`
+
+	// <p>所属模型路由实例ID。</p>
+	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
+
+	// <p>用户组状态。</p><p>枚举值：</p><ul><li>Creating：创建中</li><li>Active：正常</li><li>Configuring：配置中</li><li>Deleting：删除中</li></ul><p>「未分组」虚拟分组（ugrp-ungrouped）恒为 Active。</p>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>用户组真实模型白名单。「未分组」虚拟分组为空数组。</p>
+	Models []*string `json:"Models,omitnil,omitempty" name:"Models"`
+
+	// <p>用户组意图路由白名单（ir-xxx）。「未分组」虚拟分组为空数组。</p>
+	IntentRouters []*string `json:"IntentRouters,omitnil,omitempty" name:"IntentRouters"`
+
+	// <p>关联的Budget ID。</p><p>未关联时为空；「未分组」虚拟分组恒为空。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BudgetId *string `json:"BudgetId,omitnil,omitempty" name:"BudgetId"`
+
+	// <p>关联的Budget名称。</p><p>未关联时为空；「未分组」虚拟分组恒为空。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BudgetName *string `json:"BudgetName,omitnil,omitempty" name:"BudgetName"`
+
+	// <p>用户组多刷新周期 Credit 使用情况。</p><p>无多周期预算时为空数组。</p>
+	CreditUsageSet []*CreditUsage `json:"CreditUsageSet,omitnil,omitempty" name:"CreditUsageSet"`
+
+	// <p>用户组当前包含的 Key 数量。「未分组」虚拟分组（ugrp-ungrouped）返回该模型路由实例下未归属任何用户组的 Key 数量。</p>
+	KeyCount *int64 `json:"KeyCount,omitnil,omitempty" name:"KeyCount"`
+
+	// <p>标签列表。「未分组」虚拟分组为空数组。</p>
+	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>创建时间。「未分组」虚拟分组不返回此字段。</p>
+	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
+
+	// <p>修改时间。「未分组」虚拟分组不返回此字段。</p>
+	ModifiedTime *string `json:"ModifiedTime,omitnil,omitempty" name:"ModifiedTime"`
 }
 
 type ZoneInfo struct {

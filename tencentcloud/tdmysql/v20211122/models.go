@@ -4817,6 +4817,20 @@ type ParamDesc struct {
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
+type ResetUserPasswordInfo struct {
+	// <p>用户名</p>
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// <p>host</p>
+	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
+
+	// <p>明文密码</p>
+	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+
+	// <p>加密密码</p>
+	EncryptedPassword *string `json:"EncryptedPassword,omitnil,omitempty" name:"EncryptedPassword"`
+}
+
 // Predefined struct for user
 type ResetUserPasswordRequestParams struct {
 	// 用户名
@@ -4896,6 +4910,70 @@ func (r *ResetUserPasswordResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ResetUserPasswordResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ResetUsersPasswordRequestParams struct {
+	// <p>实例id</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>重置用户密码列表</p>
+	Users []*ResetUserPasswordInfo `json:"Users,omitnil,omitempty" name:"Users"`
+}
+
+type ResetUsersPasswordRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>实例id</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>重置用户密码列表</p>
+	Users []*ResetUserPasswordInfo `json:"Users,omitnil,omitempty" name:"Users"`
+}
+
+func (r *ResetUsersPasswordRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResetUsersPasswordRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Users")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ResetUsersPasswordRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ResetUsersPasswordResponseParams struct {
+	// <p>任务id</p>
+	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ResetUsersPasswordResponse struct {
+	*tchttp.BaseResponse
+	Response *ResetUsersPasswordResponseParams `json:"Response"`
+}
+
+func (r *ResetUsersPasswordResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResetUsersPasswordResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

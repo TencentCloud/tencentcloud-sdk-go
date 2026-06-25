@@ -2477,68 +2477,6 @@ func (c *Client) DescribeApiWithContext(ctx context.Context, request *DescribeAp
     return
 }
 
-func NewDescribeApiAppRequest() (request *DescribeApiAppRequest) {
-    request = &DescribeApiAppRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("apigateway", APIVersion, "DescribeApiApp")
-    
-    
-    return
-}
-
-func NewDescribeApiAppResponse() (response *DescribeApiAppResponse) {
-    response = &DescribeApiAppResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeApiApp
-// 历史接口，已经无用户调用
-//
-// 
-//
-// 本接口（DescribeApiApp）用于根据应用ID搜索应用。此接口已下线，如需使用功能请使用DescribeApiAppsStatus接口。
-//
-// 可能返回的错误码:
-//  INTERNALERROR_APIGWEXCEPTION = "InternalError.ApigwException"
-//  INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
-//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
-func (c *Client) DescribeApiApp(request *DescribeApiAppRequest) (response *DescribeApiAppResponse, err error) {
-    return c.DescribeApiAppWithContext(context.Background(), request)
-}
-
-// DescribeApiApp
-// 历史接口，已经无用户调用
-//
-// 
-//
-// 本接口（DescribeApiApp）用于根据应用ID搜索应用。此接口已下线，如需使用功能请使用DescribeApiAppsStatus接口。
-//
-// 可能返回的错误码:
-//  INTERNALERROR_APIGWEXCEPTION = "InternalError.ApigwException"
-//  INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
-//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
-func (c *Client) DescribeApiAppWithContext(ctx context.Context, request *DescribeApiAppRequest) (response *DescribeApiAppResponse, err error) {
-    if request == nil {
-        request = NewDescribeApiAppRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "apigateway", APIVersion, "DescribeApiApp")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeApiApp require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeApiAppResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeApiAppBindApisStatusRequest() (request *DescribeApiAppBindApisStatusRequest) {
     request = &DescribeApiAppBindApisStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2907,7 +2845,7 @@ func NewDescribeApiKeysStatusResponse() (response *DescribeApiKeysStatusResponse
 // DescribeApiKeysStatus
 // 本接口（DescribeApiKeysStatus）用于查询密钥列表。
 //
-// 当用户创建了多个密钥对时，可使用本接口查询一个或多个 API 密钥信息。
+// 当用户创建了多个密钥对时，可使用本接口查询一个或多个 API 密钥信息1。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CAMEXCEPTION = "FailedOperation.CamException"
@@ -2921,7 +2859,7 @@ func (c *Client) DescribeApiKeysStatus(request *DescribeApiKeysStatusRequest) (r
 // DescribeApiKeysStatus
 // 本接口（DescribeApiKeysStatus）用于查询密钥列表。
 //
-// 当用户创建了多个密钥对时，可使用本接口查询一个或多个 API 密钥信息。
+// 当用户创建了多个密钥对时，可使用本接口查询一个或多个 API 密钥信息1。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CAMEXCEPTION = "FailedOperation.CamException"

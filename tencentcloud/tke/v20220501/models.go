@@ -209,6 +209,9 @@ type CreateNativeNodePoolParam struct {
 	// <p>期望节点数</p>
 	Replicas *int64 `json:"Replicas,omitnil,omitempty" name:"Replicas"`
 
+	// <p>机型和GPU配置相关信息</p>
+	GPUConfigs []*GPUConfig `json:"GPUConfigs,omitnil,omitempty" name:"GPUConfigs"`
+
 	// <p>公网带宽设置</p>
 	InternetAccessible *InternetAccessible `json:"InternetAccessible,omitnil,omitempty" name:"InternetAccessible"`
 
@@ -1271,6 +1274,57 @@ func (r *DescribeHealthCheckTemplateResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeHealthCheckTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeNodePoolsElasticityStrengthRequestParams struct {
+
+}
+
+type DescribeNodePoolsElasticityStrengthRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeNodePoolsElasticityStrengthRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNodePoolsElasticityStrengthRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNodePoolsElasticityStrengthRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeNodePoolsElasticityStrengthResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeNodePoolsElasticityStrengthResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeNodePoolsElasticityStrengthResponseParams `json:"Response"`
+}
+
+func (r *DescribeNodePoolsElasticityStrengthResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNodePoolsElasticityStrengthResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

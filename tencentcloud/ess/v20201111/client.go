@@ -475,6 +475,122 @@ func (c *Client) CancelMultiFlowSignQRCodeWithContext(ctx context.Context, reque
     return
 }
 
+func NewCancelOrganizationFlowsRequest() (request *CancelOrganizationFlowsRequest) {
+    request = &CancelOrganizationFlowsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "CancelOrganizationFlows")
+    
+    
+    return
+}
+
+func NewCancelOrganizationFlowsResponse() (response *CancelOrganizationFlowsResponse) {
+    response = &CancelOrganizationFlowsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CancelOrganizationFlows
+// 全量撤销企业所有签署中的合同，单次任务最多支持撤销3000份合同。
+//
+// 
+//
+// 适用场景：在企业信息变更场景下，签署中的合同需要全部撤销，全部重新发起，则可通过该接口取消签署中的合同流程，<font color='red'>需注意：该接口会将企业下签署中的合同都进行撤销操作，谨慎使用此接口。</font>
+//
+// 
+//
+// - **可撤回合同状态**：未全部签署完成
+//
+// - **不撤回合同状态**：已全部签署完成、已拒签、已过期、已撤回、拒绝填写、已解除等合同状态。
+//
+// 
+//
+// 批量撤销结果可以通过接口返回的TaskId关联[批量撤销任务结果回调](https://qian.tencent.com/developers/partner/callback_types_contracts_sign#%E4%B9%9D-%E6%89%B9%E9%87%8F%E6%92%A4%E9%94%80%E7%BB%93%E6%9E%9C%E5%9B%9E%E8%B0%83)或通过接口[查询批量撤销合同结果](https://qian.tencent.com/developers/partnerApis/operateFlows/DescribeCancelFlowsTask)主动查询。
+//
+// 
+//
+// 
+//
+// 注:
+//
+// - 有对应合同撤销权限的人:  <font color='red'>**发起人所在企业的超管、法人**</font>
+//
+// - 签署完毕的合同需要双方走解除流程将合同作废，可以参考<a href="https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateReleaseFlow" target="_blank">发起解除合同流程接口</a>
+//
+// - <font color='red'>只有撤销没有参与方签署过或只有自动签署签署过的合同，才会返还合同额度。</font>
+//
+// - 撤销后可以看合同PDF内容的人员： 发起方的超管， 发起方自己，发起方撤销合同的操作人员，已经签署合同、已经填写合同、邀请填写已经补充信息的参与人员， 其他参与人员看不到合同的内容。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) CancelOrganizationFlows(request *CancelOrganizationFlowsRequest) (response *CancelOrganizationFlowsResponse, err error) {
+    return c.CancelOrganizationFlowsWithContext(context.Background(), request)
+}
+
+// CancelOrganizationFlows
+// 全量撤销企业所有签署中的合同，单次任务最多支持撤销3000份合同。
+//
+// 
+//
+// 适用场景：在企业信息变更场景下，签署中的合同需要全部撤销，全部重新发起，则可通过该接口取消签署中的合同流程，<font color='red'>需注意：该接口会将企业下签署中的合同都进行撤销操作，谨慎使用此接口。</font>
+//
+// 
+//
+// - **可撤回合同状态**：未全部签署完成
+//
+// - **不撤回合同状态**：已全部签署完成、已拒签、已过期、已撤回、拒绝填写、已解除等合同状态。
+//
+// 
+//
+// 批量撤销结果可以通过接口返回的TaskId关联[批量撤销任务结果回调](https://qian.tencent.com/developers/partner/callback_types_contracts_sign#%E4%B9%9D-%E6%89%B9%E9%87%8F%E6%92%A4%E9%94%80%E7%BB%93%E6%9E%9C%E5%9B%9E%E8%B0%83)或通过接口[查询批量撤销合同结果](https://qian.tencent.com/developers/partnerApis/operateFlows/DescribeCancelFlowsTask)主动查询。
+//
+// 
+//
+// 
+//
+// 注:
+//
+// - 有对应合同撤销权限的人:  <font color='red'>**发起人所在企业的超管、法人**</font>
+//
+// - 签署完毕的合同需要双方走解除流程将合同作废，可以参考<a href="https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateReleaseFlow" target="_blank">发起解除合同流程接口</a>
+//
+// - <font color='red'>只有撤销没有参与方签署过或只有自动签署签署过的合同，才会返还合同额度。</font>
+//
+// - 撤销后可以看合同PDF内容的人员： 发起方的超管， 发起方自己，发起方撤销合同的操作人员，已经签署合同、已经填写合同、邀请填写已经补充信息的参与人员， 其他参与人员看不到合同的内容。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) CancelOrganizationFlowsWithContext(ctx context.Context, request *CancelOrganizationFlowsRequest) (response *CancelOrganizationFlowsResponse, err error) {
+    if request == nil {
+        request = NewCancelOrganizationFlowsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CancelOrganizationFlows")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CancelOrganizationFlows require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCancelOrganizationFlowsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCancelUserAutoSignEnableUrlRequest() (request *CancelUserAutoSignEnableUrlRequest) {
     request = &CancelUserAutoSignEnableUrlRequest{
         BaseRequest: &tchttp.BaseRequest{},

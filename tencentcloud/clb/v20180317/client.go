@@ -45,6 +45,50 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewAssociateBudgetRequest() (request *AssociateBudgetRequest) {
+    request = &AssociateBudgetRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("clb", APIVersion, "AssociateBudget")
+    
+    
+    return
+}
+
+func NewAssociateBudgetResponse() (response *AssociateBudgetResponse) {
+    response = &AssociateBudgetResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// AssociateBudget
+// 将Budget关联到企业型模型路由实例或企业型实例下的Key。资源已关联其他Budget时，本次请求会替换为新的Budget。
+func (c *Client) AssociateBudget(request *AssociateBudgetRequest) (response *AssociateBudgetResponse, err error) {
+    return c.AssociateBudgetWithContext(context.Background(), request)
+}
+
+// AssociateBudget
+// 将Budget关联到企业型模型路由实例或企业型实例下的Key。资源已关联其他Budget时，本次请求会替换为新的Budget。
+func (c *Client) AssociateBudgetWithContext(ctx context.Context, request *AssociateBudgetRequest) (response *AssociateBudgetResponse, err error) {
+    if request == nil {
+        request = NewAssociateBudgetRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "AssociateBudget")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AssociateBudget require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAssociateBudgetResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAssociateCustomizedConfigRequest() (request *AssociateCustomizedConfigRequest) {
     request = &AssociateCustomizedConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -733,6 +777,96 @@ func (c *Client) CloneLoadBalancerWithContext(ctx context.Context, request *Clon
     return
 }
 
+func NewCreateBudgetRequest() (request *CreateBudgetRequest) {
+    request = &CreateBudgetRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("clb", APIVersion, "CreateBudget")
+    
+    
+    return
+}
+
+func NewCreateBudgetResponse() (response *CreateBudgetResponse) {
+    response = &CreateBudgetResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateBudget
+// 创建Budget对象。可在创建时通过Resources同时关联已存在的企业型模型路由实例或企业型实例下的Key。创建请求提交后，可通过DescribeBudgets查询状态。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDLBSTATUS = "FailedOperation.InvalidLBStatus"
+//  FAILEDOPERATION_RESOURCEINOPERATING = "FailedOperation.ResourceInOperating"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETER_LBIDNOTFOUND = "InvalidParameter.LBIdNotFound"
+//  INVALIDPARAMETER_LISTENERIDNOTFOUND = "InvalidParameter.ListenerIdNotFound"
+//  INVALIDPARAMETER_LOCATIONNOTFOUND = "InvalidParameter.LocationNotFound"
+//  INVALIDPARAMETER_PORTCHECKFAILED = "InvalidParameter.PortCheckFailed"
+//  INVALIDPARAMETER_PROTOCOLCHECKFAILED = "InvalidParameter.ProtocolCheckFailed"
+//  INVALIDPARAMETER_REGIONNOTFOUND = "InvalidParameter.RegionNotFound"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+func (c *Client) CreateBudget(request *CreateBudgetRequest) (response *CreateBudgetResponse, err error) {
+    return c.CreateBudgetWithContext(context.Background(), request)
+}
+
+// CreateBudget
+// 创建Budget对象。可在创建时通过Resources同时关联已存在的企业型模型路由实例或企业型实例下的Key。创建请求提交后，可通过DescribeBudgets查询状态。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDLBSTATUS = "FailedOperation.InvalidLBStatus"
+//  FAILEDOPERATION_RESOURCEINOPERATING = "FailedOperation.ResourceInOperating"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETER_LBIDNOTFOUND = "InvalidParameter.LBIdNotFound"
+//  INVALIDPARAMETER_LISTENERIDNOTFOUND = "InvalidParameter.ListenerIdNotFound"
+//  INVALIDPARAMETER_LOCATIONNOTFOUND = "InvalidParameter.LocationNotFound"
+//  INVALIDPARAMETER_PORTCHECKFAILED = "InvalidParameter.PortCheckFailed"
+//  INVALIDPARAMETER_PROTOCOLCHECKFAILED = "InvalidParameter.ProtocolCheckFailed"
+//  INVALIDPARAMETER_REGIONNOTFOUND = "InvalidParameter.RegionNotFound"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+func (c *Client) CreateBudgetWithContext(ctx context.Context, request *CreateBudgetRequest) (response *CreateBudgetResponse, err error) {
+    if request == nil {
+        request = NewCreateBudgetRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "CreateBudget")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateBudget require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateBudgetResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateClsLogSetRequest() (request *CreateClsLogSetRequest) {
     request = &CreateClsLogSetRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -795,6 +929,138 @@ func (c *Client) CreateClsLogSetWithContext(ctx context.Context, request *Create
     request.SetContext(ctx)
     
     response = NewCreateClsLogSetResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateKeyRequest() (request *CreateKeyRequest) {
+    request = &CreateKeyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("clb", APIVersion, "CreateKey")
+    
+    
+    return
+}
+
+func NewCreateKeyResponse() (response *CreateKeyResponse) {
+    response = &CreateKeyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateKey
+// 创建 API Key
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateKey(request *CreateKeyRequest) (response *CreateKeyResponse, err error) {
+    return c.CreateKeyWithContext(context.Background(), request)
+}
+
+// CreateKey
+// 创建 API Key
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateKeyWithContext(ctx context.Context, request *CreateKeyRequest) (response *CreateKeyResponse, err error) {
+    if request == nil {
+        request = NewCreateKeyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "CreateKey")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateKey require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateKeysRequest() (request *CreateKeysRequest) {
+    request = &CreateKeysRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("clb", APIVersion, "CreateKeys")
+    
+    
+    return
+}
+
+func NewCreateKeysResponse() (response *CreateKeysResponse) {
+    response = &CreateKeysResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateKeys
+// 批量创建Key
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateKeys(request *CreateKeysRequest) (response *CreateKeysResponse, err error) {
+    return c.CreateKeysWithContext(context.Background(), request)
+}
+
+// CreateKeys
+// 批量创建Key
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateKeysWithContext(ctx context.Context, request *CreateKeysRequest) (response *CreateKeysResponse, err error) {
+    if request == nil {
+        request = NewCreateKeysRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "CreateKeys")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateKeys require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateKeysResponse()
     err = c.Send(request, response)
     return
 }
@@ -1029,6 +1295,74 @@ func (c *Client) CreateLoadBalancerSnatIpsWithContext(ctx context.Context, reque
     return
 }
 
+func NewCreateModelRouterRequest() (request *CreateModelRouterRequest) {
+    request = &CreateModelRouterRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("clb", APIVersion, "CreateModelRouter")
+    
+    
+    return
+}
+
+func NewCreateModelRouterResponse() (response *CreateModelRouterResponse) {
+    response = &CreateModelRouterResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateModelRouter
+// 创建模型路由实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCEINOPERATING = "FailedOperation.ResourceInOperating"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETER_LBIDNOTFOUND = "InvalidParameter.LBIdNotFound"
+//  INVALIDPARAMETER_REGIONNOTFOUND = "InvalidParameter.RegionNotFound"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
+//  LIMITEXCEEDED = "LimitExceeded"
+func (c *Client) CreateModelRouter(request *CreateModelRouterRequest) (response *CreateModelRouterResponse, err error) {
+    return c.CreateModelRouterWithContext(context.Background(), request)
+}
+
+// CreateModelRouter
+// 创建模型路由实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCEINOPERATING = "FailedOperation.ResourceInOperating"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETER_LBIDNOTFOUND = "InvalidParameter.LBIdNotFound"
+//  INVALIDPARAMETER_REGIONNOTFOUND = "InvalidParameter.RegionNotFound"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
+//  LIMITEXCEEDED = "LimitExceeded"
+func (c *Client) CreateModelRouterWithContext(ctx context.Context, request *CreateModelRouterRequest) (response *CreateModelRouterResponse, err error) {
+    if request == nil {
+        request = NewCreateModelRouterRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "CreateModelRouter")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateModelRouter require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateModelRouterResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateRuleRequest() (request *CreateRuleRequest) {
     request = &CreateRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1233,6 +1567,222 @@ func (c *Client) CreateTopicWithContext(ctx context.Context, request *CreateTopi
     request.SetContext(ctx)
     
     response = NewCreateTopicResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateUserGroupRequest() (request *CreateUserGroupRequest) {
+    request = &CreateUserGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("clb", APIVersion, "CreateUserGroup")
+    
+    
+    return
+}
+
+func NewCreateUserGroupResponse() (response *CreateUserGroupResponse) {
+    response = &CreateUserGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateUserGroup
+// 在指定模型路由实例下创建一个用户组。用户组是介于模型路由实例与 Key 之间的一层可选分组，可为组内 Key 统一配置模型白名单，并通过关联 Budget 统一管理额度。创建为异步操作，接口会同步返回用户组ID，可凭返回的 RequestId 调用 DescribeAsyncJobs 查询创建进度。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
+//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateUserGroup(request *CreateUserGroupRequest) (response *CreateUserGroupResponse, err error) {
+    return c.CreateUserGroupWithContext(context.Background(), request)
+}
+
+// CreateUserGroup
+// 在指定模型路由实例下创建一个用户组。用户组是介于模型路由实例与 Key 之间的一层可选分组，可为组内 Key 统一配置模型白名单，并通过关联 Budget 统一管理额度。创建为异步操作，接口会同步返回用户组ID，可凭返回的 RequestId 调用 DescribeAsyncJobs 查询创建进度。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
+//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateUserGroupWithContext(ctx context.Context, request *CreateUserGroupRequest) (response *CreateUserGroupResponse, err error) {
+    if request == nil {
+        request = NewCreateUserGroupRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "CreateUserGroup")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateUserGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateUserGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteBudgetsRequest() (request *DeleteBudgetsRequest) {
+    request = &DeleteBudgetsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("clb", APIVersion, "DeleteBudgets")
+    
+    
+    return
+}
+
+func NewDeleteBudgetsResponse() (response *DeleteBudgetsResponse) {
+    response = &DeleteBudgetsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteBudgets
+// 删除Budget对象。Budget存在任何关联资源时不允许删除，需要先调用DisassociateBudget解除关联。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
+//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DeleteBudgets(request *DeleteBudgetsRequest) (response *DeleteBudgetsResponse, err error) {
+    return c.DeleteBudgetsWithContext(context.Background(), request)
+}
+
+// DeleteBudgets
+// 删除Budget对象。Budget存在任何关联资源时不允许删除，需要先调用DisassociateBudget解除关联。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
+//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DeleteBudgetsWithContext(ctx context.Context, request *DeleteBudgetsRequest) (response *DeleteBudgetsResponse, err error) {
+    if request == nil {
+        request = NewDeleteBudgetsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "DeleteBudgets")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteBudgets require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteBudgetsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteKeysRequest() (request *DeleteKeysRequest) {
+    request = &DeleteKeysRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("clb", APIVersion, "DeleteKeys")
+    
+    
+    return
+}
+
+func NewDeleteKeysResponse() (response *DeleteKeysResponse) {
+    response = &DeleteKeysResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteKeys
+// 批量删除 API Key。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
+//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DeleteKeys(request *DeleteKeysRequest) (response *DeleteKeysResponse, err error) {
+    return c.DeleteKeysWithContext(context.Background(), request)
+}
+
+// DeleteKeys
+// 批量删除 API Key。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
+//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DeleteKeysWithContext(ctx context.Context, request *DeleteKeysRequest) (response *DeleteKeysResponse, err error) {
+    if request == nil {
+        request = NewDeleteKeysRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "DeleteKeys")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteKeys require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteKeysResponse()
     err = c.Send(request, response)
     return
 }
@@ -1521,6 +2071,70 @@ func (c *Client) DeleteLoadBalancerSnatIpsWithContext(ctx context.Context, reque
     return
 }
 
+func NewDeleteModelRoutersRequest() (request *DeleteModelRoutersRequest) {
+    request = &DeleteModelRoutersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("clb", APIVersion, "DeleteModelRouters")
+    
+    
+    return
+}
+
+func NewDeleteModelRoutersResponse() (response *DeleteModelRoutersResponse) {
+    response = &DeleteModelRoutersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteModelRouters
+// 删除模型路由实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCEINOPERATING = "FailedOperation.ResourceInOperating"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETER_LBIDNOTFOUND = "InvalidParameter.LBIdNotFound"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+func (c *Client) DeleteModelRouters(request *DeleteModelRoutersRequest) (response *DeleteModelRoutersResponse, err error) {
+    return c.DeleteModelRoutersWithContext(context.Background(), request)
+}
+
+// DeleteModelRouters
+// 删除模型路由实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCEINOPERATING = "FailedOperation.ResourceInOperating"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETER_LBIDNOTFOUND = "InvalidParameter.LBIdNotFound"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+func (c *Client) DeleteModelRoutersWithContext(ctx context.Context, request *DeleteModelRoutersRequest) (response *DeleteModelRoutersResponse, err error) {
+    if request == nil {
+        request = NewDeleteModelRoutersRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "DeleteModelRouters")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteModelRouters require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteModelRoutersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteRewriteRequest() (request *DeleteRewriteRequest) {
     request = &DeleteRewriteRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1719,6 +2333,64 @@ func (c *Client) DeleteTargetGroupsWithContext(ctx context.Context, request *Del
     request.SetContext(ctx)
     
     response = NewDeleteTargetGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteUserGroupsRequest() (request *DeleteUserGroupsRequest) {
+    request = &DeleteUserGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("clb", APIVersion, "DeleteUserGroups")
+    
+    
+    return
+}
+
+func NewDeleteUserGroupsResponse() (response *DeleteUserGroupsResponse) {
+    response = &DeleteUserGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteUserGroups
+// 批量删除用户组。组内若仍存在 Key，将拒绝删除（错误码 ResourceInUse），需先将 Key 移出或迁移到其他组。删除为异步操作，可凭返回的 RequestId 调用 DescribeAsyncJobs 查询进度。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DeleteUserGroups(request *DeleteUserGroupsRequest) (response *DeleteUserGroupsResponse, err error) {
+    return c.DeleteUserGroupsWithContext(context.Background(), request)
+}
+
+// DeleteUserGroups
+// 批量删除用户组。组内若仍存在 Key，将拒绝删除（错误码 ResourceInUse），需先将 Key 移出或迁移到其他组。删除为异步操作，可凭返回的 RequestId 调用 DescribeAsyncJobs 查询进度。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DeleteUserGroupsWithContext(ctx context.Context, request *DeleteUserGroupsRequest) (response *DeleteUserGroupsResponse, err error) {
+    if request == nil {
+        request = NewDeleteUserGroupsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "DeleteUserGroups")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteUserGroups require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteUserGroupsResponse()
     err = c.Send(request, response)
     return
 }
@@ -2037,6 +2709,72 @@ func (c *Client) DeregisterTargetsFromClassicalLBWithContext(ctx context.Context
     return
 }
 
+func NewDescribeAsyncJobsRequest() (request *DescribeAsyncJobsRequest) {
+    request = &DescribeAsyncJobsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("clb", APIVersion, "DescribeAsyncJobs")
+    
+    
+    return
+}
+
+func NewDescribeAsyncJobsResponse() (response *DescribeAsyncJobsResponse) {
+    response = &DescribeAsyncJobsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAsyncJobs
+// 查询异步任务信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeAsyncJobs(request *DescribeAsyncJobsRequest) (response *DescribeAsyncJobsResponse, err error) {
+    return c.DescribeAsyncJobsWithContext(context.Background(), request)
+}
+
+// DescribeAsyncJobs
+// 查询异步任务信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeAsyncJobsWithContext(ctx context.Context, request *DescribeAsyncJobsRequest) (response *DescribeAsyncJobsResponse, err error) {
+    if request == nil {
+        request = NewDescribeAsyncJobsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "DescribeAsyncJobs")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAsyncJobs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAsyncJobsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBlockIPListRequest() (request *DescribeBlockIPListRequest) {
     request = &DescribeBlockIPListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2149,6 +2887,114 @@ func (c *Client) DescribeBlockIPTaskWithContext(ctx context.Context, request *De
     request.SetContext(ctx)
     
     response = NewDescribeBlockIPTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBudgetAssociationsRequest() (request *DescribeBudgetAssociationsRequest) {
+    request = &DescribeBudgetAssociationsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("clb", APIVersion, "DescribeBudgetAssociations")
+    
+    
+    return
+}
+
+func NewDescribeBudgetAssociationsResponse() (response *DescribeBudgetAssociationsResponse) {
+    response = &DescribeBudgetAssociationsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeBudgetAssociations
+// 查询指定Budget关联的资源列表。支持按资源类型过滤。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeBudgetAssociations(request *DescribeBudgetAssociationsRequest) (response *DescribeBudgetAssociationsResponse, err error) {
+    return c.DescribeBudgetAssociationsWithContext(context.Background(), request)
+}
+
+// DescribeBudgetAssociations
+// 查询指定Budget关联的资源列表。支持按资源类型过滤。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeBudgetAssociationsWithContext(ctx context.Context, request *DescribeBudgetAssociationsRequest) (response *DescribeBudgetAssociationsResponse, err error) {
+    if request == nil {
+        request = NewDescribeBudgetAssociationsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "DescribeBudgetAssociations")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBudgetAssociations require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBudgetAssociationsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBudgetsRequest() (request *DescribeBudgetsRequest) {
+    request = &DescribeBudgetsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("clb", APIVersion, "DescribeBudgets")
+    
+    
+    return
+}
+
+func NewDescribeBudgetsResponse() (response *DescribeBudgetsResponse) {
+    response = &DescribeBudgetsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeBudgets
+// 查询Budget列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeBudgets(request *DescribeBudgetsRequest) (response *DescribeBudgetsResponse, err error) {
+    return c.DescribeBudgetsWithContext(context.Background(), request)
+}
+
+// DescribeBudgets
+// 查询Budget列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeBudgetsWithContext(ctx context.Context, request *DescribeBudgetsRequest) (response *DescribeBudgetsResponse, err error) {
+    if request == nil {
+        request = NewDescribeBudgetsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "DescribeBudgets")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBudgets require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBudgetsResponse()
     err = c.Send(request, response)
     return
 }
@@ -3419,6 +4265,204 @@ func (c *Client) DescribeLoadBalancersDetailWithContext(ctx context.Context, req
     return
 }
 
+func NewDescribeModelRouterDetailRequest() (request *DescribeModelRouterDetailRequest) {
+    request = &DescribeModelRouterDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("clb", APIVersion, "DescribeModelRouterDetail")
+    
+    
+    return
+}
+
+func NewDescribeModelRouterDetailResponse() (response *DescribeModelRouterDetailResponse) {
+    response = &DescribeModelRouterDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeModelRouterDetail
+// 查询模型路由详细信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeModelRouterDetail(request *DescribeModelRouterDetailRequest) (response *DescribeModelRouterDetailResponse, err error) {
+    return c.DescribeModelRouterDetailWithContext(context.Background(), request)
+}
+
+// DescribeModelRouterDetail
+// 查询模型路由详细信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeModelRouterDetailWithContext(ctx context.Context, request *DescribeModelRouterDetailRequest) (response *DescribeModelRouterDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeModelRouterDetailRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "DescribeModelRouterDetail")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeModelRouterDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeModelRouterDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeModelRouterQuotaRequest() (request *DescribeModelRouterQuotaRequest) {
+    request = &DescribeModelRouterQuotaRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("clb", APIVersion, "DescribeModelRouterQuota")
+    
+    
+    return
+}
+
+func NewDescribeModelRouterQuotaResponse() (response *DescribeModelRouterQuotaResponse) {
+    response = &DescribeModelRouterQuotaResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeModelRouterQuota
+// 查询用户配额信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeModelRouterQuota(request *DescribeModelRouterQuotaRequest) (response *DescribeModelRouterQuotaResponse, err error) {
+    return c.DescribeModelRouterQuotaWithContext(context.Background(), request)
+}
+
+// DescribeModelRouterQuota
+// 查询用户配额信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeModelRouterQuotaWithContext(ctx context.Context, request *DescribeModelRouterQuotaRequest) (response *DescribeModelRouterQuotaResponse, err error) {
+    if request == nil {
+        request = NewDescribeModelRouterQuotaRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "DescribeModelRouterQuota")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeModelRouterQuota require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeModelRouterQuotaResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeModelRoutersRequest() (request *DescribeModelRoutersRequest) {
+    request = &DescribeModelRoutersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("clb", APIVersion, "DescribeModelRouters")
+    
+    
+    return
+}
+
+func NewDescribeModelRoutersResponse() (response *DescribeModelRoutersResponse) {
+    response = &DescribeModelRoutersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeModelRouters
+// 查询模型路由列表页
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeModelRouters(request *DescribeModelRoutersRequest) (response *DescribeModelRoutersResponse, err error) {
+    return c.DescribeModelRoutersWithContext(context.Background(), request)
+}
+
+// DescribeModelRouters
+// 查询模型路由列表页
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeModelRoutersWithContext(ctx context.Context, request *DescribeModelRoutersRequest) (response *DescribeModelRoutersResponse, err error) {
+    if request == nil {
+        request = NewDescribeModelRoutersRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "DescribeModelRouters")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeModelRouters require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeModelRoutersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeQuotaRequest() (request *DescribeQuotaRequest) {
     request = &DescribeQuotaRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4041,6 +5085,118 @@ func (c *Client) DescribeTaskStatusWithContext(ctx context.Context, request *Des
     return
 }
 
+func NewDescribeUserGroupsRequest() (request *DescribeUserGroupsRequest) {
+    request = &DescribeUserGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("clb", APIVersion, "DescribeUserGroups")
+    
+    
+    return
+}
+
+func NewDescribeUserGroupsResponse() (response *DescribeUserGroupsResponse) {
+    response = &DescribeUserGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeUserGroups
+// 查询指定模型路由实例下的用户组列表或详情，支持按ID、名称、状态、标签过滤及分页。真实用户组按名称字典序升序返回；返回列表末尾恒追加一个「未分组」虚拟分组（UserGroupId 固定为 ugrp-ungrouped、UserGroupName 固定为 ungrouped），它并非用户真实创建的用户组，而是代表该实例下所有未归属任何用户组的 Key（其 KeyCount 为无组 Key 数，不计入 TotalCount，不可修改或删除）。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_REGIONNOTFOUND = "InvalidParameter.RegionNotFound"
+func (c *Client) DescribeUserGroups(request *DescribeUserGroupsRequest) (response *DescribeUserGroupsResponse, err error) {
+    return c.DescribeUserGroupsWithContext(context.Background(), request)
+}
+
+// DescribeUserGroups
+// 查询指定模型路由实例下的用户组列表或详情，支持按ID、名称、状态、标签过滤及分页。真实用户组按名称字典序升序返回；返回列表末尾恒追加一个「未分组」虚拟分组（UserGroupId 固定为 ugrp-ungrouped、UserGroupName 固定为 ungrouped），它并非用户真实创建的用户组，而是代表该实例下所有未归属任何用户组的 Key（其 KeyCount 为无组 Key 数，不计入 TotalCount，不可修改或删除）。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_REGIONNOTFOUND = "InvalidParameter.RegionNotFound"
+func (c *Client) DescribeUserGroupsWithContext(ctx context.Context, request *DescribeUserGroupsRequest) (response *DescribeUserGroupsResponse, err error) {
+    if request == nil {
+        request = NewDescribeUserGroupsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "DescribeUserGroups")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUserGroups require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeUserGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDisassociateBudgetRequest() (request *DisassociateBudgetRequest) {
+    request = &DisassociateBudgetRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("clb", APIVersion, "DisassociateBudget")
+    
+    
+    return
+}
+
+func NewDisassociateBudgetResponse() (response *DisassociateBudgetResponse) {
+    response = &DisassociateBudgetResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DisassociateBudget
+// 解除Budget与模型路由实例或Key的关联。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_REGIONNOTFOUND = "InvalidParameter.RegionNotFound"
+func (c *Client) DisassociateBudget(request *DisassociateBudgetRequest) (response *DisassociateBudgetResponse, err error) {
+    return c.DisassociateBudgetWithContext(context.Background(), request)
+}
+
+// DisassociateBudget
+// 解除Budget与模型路由实例或Key的关联。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_REGIONNOTFOUND = "InvalidParameter.RegionNotFound"
+func (c *Client) DisassociateBudgetWithContext(ctx context.Context, request *DisassociateBudgetRequest) (response *DisassociateBudgetResponse, err error) {
+    if request == nil {
+        request = NewDisassociateBudgetRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "DisassociateBudget")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DisassociateBudget require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDisassociateBudgetResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDisassociateCustomizedConfigRequest() (request *DisassociateCustomizedConfigRequest) {
     request = &DisassociateCustomizedConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4623,6 +5779,70 @@ func (c *Client) ModifyBlockIPListWithContext(ctx context.Context, request *Modi
     return
 }
 
+func NewModifyBudgetAttributesRequest() (request *ModifyBudgetAttributesRequest) {
+    request = &ModifyBudgetAttributesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("clb", APIVersion, "ModifyBudgetAttributes")
+    
+    
+    return
+}
+
+func NewModifyBudgetAttributesResponse() (response *ModifyBudgetAttributesResponse) {
+    response = &ModifyBudgetAttributesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyBudgetAttributes
+// 修改Budget属性。BudgetResetAt不支持作为入参设置。修改请求提交后，可通过DescribeBudgets查询状态。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyBudgetAttributes(request *ModifyBudgetAttributesRequest) (response *ModifyBudgetAttributesResponse, err error) {
+    return c.ModifyBudgetAttributesWithContext(context.Background(), request)
+}
+
+// ModifyBudgetAttributes
+// 修改Budget属性。BudgetResetAt不支持作为入参设置。修改请求提交后，可通过DescribeBudgets查询状态。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyBudgetAttributesWithContext(ctx context.Context, request *ModifyBudgetAttributesRequest) (response *ModifyBudgetAttributesResponse, err error) {
+    if request == nil {
+        request = NewModifyBudgetAttributesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "ModifyBudgetAttributes")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyBudgetAttributes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyBudgetAttributesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyDomainRequest() (request *ModifyDomainRequest) {
     request = &ModifyDomainRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4835,6 +6055,210 @@ func (c *Client) ModifyFunctionTargetsWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewModifyFunctionTargetsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyKeyAttributesRequest() (request *ModifyKeyAttributesRequest) {
+    request = &ModifyKeyAttributesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("clb", APIVersion, "ModifyKeyAttributes")
+    
+    
+    return
+}
+
+func NewModifyKeyAttributesResponse() (response *ModifyKeyAttributesResponse) {
+    response = &ModifyKeyAttributesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyKeyAttributes
+// 修改 API Key 的属性
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCEINOPERATING = "FailedOperation.ResourceInOperating"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyKeyAttributes(request *ModifyKeyAttributesRequest) (response *ModifyKeyAttributesResponse, err error) {
+    return c.ModifyKeyAttributesWithContext(context.Background(), request)
+}
+
+// ModifyKeyAttributes
+// 修改 API Key 的属性
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCEINOPERATING = "FailedOperation.ResourceInOperating"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyKeyAttributesWithContext(ctx context.Context, request *ModifyKeyAttributesRequest) (response *ModifyKeyAttributesResponse, err error) {
+    if request == nil {
+        request = NewModifyKeyAttributesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "ModifyKeyAttributes")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyKeyAttributes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyKeyAttributesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyKeysBlockStatusRequest() (request *ModifyKeysBlockStatusRequest) {
+    request = &ModifyKeysBlockStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("clb", APIVersion, "ModifyKeysBlockStatus")
+    
+    
+    return
+}
+
+func NewModifyKeysBlockStatusResponse() (response *ModifyKeysBlockStatusResponse) {
+    response = &ModifyKeysBlockStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyKeysBlockStatus
+// 禁用/启用Key
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCEINOPERATING = "FailedOperation.ResourceInOperating"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyKeysBlockStatus(request *ModifyKeysBlockStatusRequest) (response *ModifyKeysBlockStatusResponse, err error) {
+    return c.ModifyKeysBlockStatusWithContext(context.Background(), request)
+}
+
+// ModifyKeysBlockStatus
+// 禁用/启用Key
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCEINOPERATING = "FailedOperation.ResourceInOperating"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyKeysBlockStatusWithContext(ctx context.Context, request *ModifyKeysBlockStatusRequest) (response *ModifyKeysBlockStatusResponse, err error) {
+    if request == nil {
+        request = NewModifyKeysBlockStatusRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "ModifyKeysBlockStatus")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyKeysBlockStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyKeysBlockStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyKeysUserGroupRequest() (request *ModifyKeysUserGroupRequest) {
+    request = &ModifyKeysUserGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("clb", APIVersion, "ModifyKeysUserGroup")
+    
+    
+    return
+}
+
+func NewModifyKeysUserGroupResponse() (response *ModifyKeysUserGroupResponse) {
+    response = &ModifyKeysUserGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyKeysUserGroup
+// 批量变更 Key 的用户组归属：UserGroupId 传真实用户组ID表示批量入组/跨组移动，传 ugrp-ungrouped 表示批量移出到未分组。变更为异步操作，可凭返回的 RequestId 调用 DescribeAsyncJobs 查询进度。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCEINOPERATING = "FailedOperation.ResourceInOperating"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyKeysUserGroup(request *ModifyKeysUserGroupRequest) (response *ModifyKeysUserGroupResponse, err error) {
+    return c.ModifyKeysUserGroupWithContext(context.Background(), request)
+}
+
+// ModifyKeysUserGroup
+// 批量变更 Key 的用户组归属：UserGroupId 传真实用户组ID表示批量入组/跨组移动，传 ugrp-ungrouped 表示批量移出到未分组。变更为异步操作，可凭返回的 RequestId 调用 DescribeAsyncJobs 查询进度。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCEINOPERATING = "FailedOperation.ResourceInOperating"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyKeysUserGroupWithContext(ctx context.Context, request *ModifyKeysUserGroupRequest) (response *ModifyKeysUserGroupResponse, err error) {
+    if request == nil {
+        request = NewModifyKeysUserGroupRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "ModifyKeysUserGroup")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyKeysUserGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyKeysUserGroupResponse()
     err = c.Send(request, response)
     return
 }
@@ -5201,6 +6625,72 @@ func (c *Client) ModifyLoadBalancersProjectWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewModifyLoadBalancersProjectResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyModelRouterAttributesRequest() (request *ModifyModelRouterAttributesRequest) {
+    request = &ModifyModelRouterAttributesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("clb", APIVersion, "ModifyModelRouterAttributes")
+    
+    
+    return
+}
+
+func NewModifyModelRouterAttributesResponse() (response *ModifyModelRouterAttributesResponse) {
+    response = &ModifyModelRouterAttributesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyModelRouterAttributes
+// 修改模型路由属性。支持修改实例名称、限速配置、路由配置，以及替换企业型实例 HTTPS 服务端点绑定的证书（CertId）。每次调用至少传入一个待修改的属性字段，未传入的字段保持原值不变。其中证书替换在请求内同步完成，成功返回即已生效；其余属性修改异步生效，可通过 DescribeModelRouterDetail 接口查询修改结果。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCEINOPERATING = "FailedOperation.ResourceInOperating"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETER_LBIDNOTFOUND = "InvalidParameter.LBIdNotFound"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyModelRouterAttributes(request *ModifyModelRouterAttributesRequest) (response *ModifyModelRouterAttributesResponse, err error) {
+    return c.ModifyModelRouterAttributesWithContext(context.Background(), request)
+}
+
+// ModifyModelRouterAttributes
+// 修改模型路由属性。支持修改实例名称、限速配置、路由配置，以及替换企业型实例 HTTPS 服务端点绑定的证书（CertId）。每次调用至少传入一个待修改的属性字段，未传入的字段保持原值不变。其中证书替换在请求内同步完成，成功返回即已生效；其余属性修改异步生效，可通过 DescribeModelRouterDetail 接口查询修改结果。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCEINOPERATING = "FailedOperation.ResourceInOperating"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETER_LBIDNOTFOUND = "InvalidParameter.LBIdNotFound"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyModelRouterAttributesWithContext(ctx context.Context, request *ModifyModelRouterAttributesRequest) (response *ModifyModelRouterAttributesResponse, err error) {
+    if request == nil {
+        request = NewModifyModelRouterAttributesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "ModifyModelRouterAttributes")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyModelRouterAttributes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyModelRouterAttributesResponse()
     err = c.Send(request, response)
     return
 }
@@ -5599,6 +7089,138 @@ func (c *Client) ModifyTargetWeightWithContext(ctx context.Context, request *Mod
     request.SetContext(ctx)
     
     response = NewModifyTargetWeightResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyUserGroupAttributesRequest() (request *ModifyUserGroupAttributesRequest) {
+    request = &ModifyUserGroupAttributesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("clb", APIVersion, "ModifyUserGroupAttributes")
+    
+    
+    return
+}
+
+func NewModifyUserGroupAttributesResponse() (response *ModifyUserGroupAttributesResponse) {
+    response = &ModifyUserGroupAttributesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyUserGroupAttributes
+// 修改用户组的名称、模型白名单或关联预算。仅修改传入的字段；其中数组类字段（Models）传入即整体覆盖。BudgetId 传入即关联/替换该组预算（不支持解绑，解绑用 DisassociateBudget）。修改为异步操作，可凭返回的 RequestId 调用 DescribeAsyncJobs 查询进度。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCEINOPERATING = "FailedOperation.ResourceInOperating"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyUserGroupAttributes(request *ModifyUserGroupAttributesRequest) (response *ModifyUserGroupAttributesResponse, err error) {
+    return c.ModifyUserGroupAttributesWithContext(context.Background(), request)
+}
+
+// ModifyUserGroupAttributes
+// 修改用户组的名称、模型白名单或关联预算。仅修改传入的字段；其中数组类字段（Models）传入即整体覆盖。BudgetId 传入即关联/替换该组预算（不支持解绑，解绑用 DisassociateBudget）。修改为异步操作，可凭返回的 RequestId 调用 DescribeAsyncJobs 查询进度。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCEINOPERATING = "FailedOperation.ResourceInOperating"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyUserGroupAttributesWithContext(ctx context.Context, request *ModifyUserGroupAttributesRequest) (response *ModifyUserGroupAttributesResponse, err error) {
+    if request == nil {
+        request = NewModifyUserGroupAttributesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "ModifyUserGroupAttributes")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyUserGroupAttributes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyUserGroupAttributesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRegenerateKeysRequest() (request *RegenerateKeysRequest) {
+    request = &RegenerateKeysRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("clb", APIVersion, "RegenerateKeys")
+    
+    
+    return
+}
+
+func NewRegenerateKeysResponse() (response *RegenerateKeysResponse) {
+    response = &RegenerateKeysResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RegenerateKeys
+// 批量重新生成Key
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCEINOPERATING = "FailedOperation.ResourceInOperating"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) RegenerateKeys(request *RegenerateKeysRequest) (response *RegenerateKeysResponse, err error) {
+    return c.RegenerateKeysWithContext(context.Background(), request)
+}
+
+// RegenerateKeys
+// 批量重新生成Key
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCEINOPERATING = "FailedOperation.ResourceInOperating"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) RegenerateKeysWithContext(ctx context.Context, request *RegenerateKeysRequest) (response *RegenerateKeysResponse, err error) {
+    if request == nil {
+        request = NewRegenerateKeysRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "clb", APIVersion, "RegenerateKeys")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RegenerateKeys require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRegenerateKeysResponse()
     err = c.Send(request, response)
     return
 }

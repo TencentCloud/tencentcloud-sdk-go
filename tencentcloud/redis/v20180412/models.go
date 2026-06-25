@@ -1061,15 +1061,21 @@ func (r *CloseLogResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CloseSSLRequestParams struct {
-	// 实例 ID。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
+	// <p>实例 ID。请登录<a href="https://console.cloud.tencent.com/redis">Redis控制台</a>在实例列表复制实例 ID。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>SSL地址类型。</p><p>枚举值：</p><ul><li>0：  不限。</li><li>1： 内网IPv4。</li><li>2：  内网IPv6。</li><li>3： 外网。</li><li>-1： 未指定。</li></ul><p>默认值：0</p>
+	AddressType *int64 `json:"AddressType,omitnil,omitempty" name:"AddressType"`
 }
 
 type CloseSSLRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
+	// <p>实例 ID。请登录<a href="https://console.cloud.tencent.com/redis">Redis控制台</a>在实例列表复制实例 ID。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>SSL地址类型。</p><p>枚举值：</p><ul><li>0：  不限。</li><li>1： 内网IPv4。</li><li>2：  内网IPv6。</li><li>3： 外网。</li><li>-1： 未指定。</li></ul><p>默认值：0</p>
+	AddressType *int64 `json:"AddressType,omitnil,omitempty" name:"AddressType"`
 }
 
 func (r *CloseSSLRequest) ToJsonString() string {
@@ -1085,6 +1091,7 @@ func (r *CloseSSLRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "InstanceId")
+	delete(f, "AddressType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CloseSSLRequest has unknown keys!", "")
 	}
@@ -1093,7 +1100,7 @@ func (r *CloseSSLRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CloseSSLResponseParams struct {
-	// 任务ID。
+	// <p>任务ID。</p>
 	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

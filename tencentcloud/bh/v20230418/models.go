@@ -2258,45 +2258,57 @@ func (r *CreateSyncUserTaskResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateUserDirectoryRequestParams struct {
-	// 目录id
+	// <p>目录id</p>
 	DirId *uint64 `json:"DirId,omitnil,omitempty" name:"DirId"`
 
-	// 目录名称
+	// <p>目录名称</p>
 	DirName *string `json:"DirName,omitnil,omitempty" name:"DirName"`
 
-	// ioa分组信息
+	// <p>ioa分组信息</p>
 	UserOrgSet []*UserOrg `json:"UserOrgSet,omitnil,omitempty" name:"UserOrgSet"`
 
-	// ioa关联用户源类型
+	// <p>ioa关联用户源类型</p>
 	Source *uint64 `json:"Source,omitnil,omitempty" name:"Source"`
 
-	// ioa关联用户源名称
+	// <p>ioa关联用户源名称</p>
 	SourceName *string `json:"SourceName,omitnil,omitempty" name:"SourceName"`
 
-	// 目录包含用户数
+	// <p>目录包含用户数</p>
 	UserCount *uint64 `json:"UserCount,omitnil,omitempty" name:"UserCount"`
+
+	// <p>是否开启自动同步</p>
+	AutoSync *bool `json:"AutoSync,omitnil,omitempty" name:"AutoSync"`
+
+	// <p>同步周期（5段式 crontab 表达式）</p>
+	SyncCron *string `json:"SyncCron,omitnil,omitempty" name:"SyncCron"`
 }
 
 type CreateUserDirectoryRequest struct {
 	*tchttp.BaseRequest
 	
-	// 目录id
+	// <p>目录id</p>
 	DirId *uint64 `json:"DirId,omitnil,omitempty" name:"DirId"`
 
-	// 目录名称
+	// <p>目录名称</p>
 	DirName *string `json:"DirName,omitnil,omitempty" name:"DirName"`
 
-	// ioa分组信息
+	// <p>ioa分组信息</p>
 	UserOrgSet []*UserOrg `json:"UserOrgSet,omitnil,omitempty" name:"UserOrgSet"`
 
-	// ioa关联用户源类型
+	// <p>ioa关联用户源类型</p>
 	Source *uint64 `json:"Source,omitnil,omitempty" name:"Source"`
 
-	// ioa关联用户源名称
+	// <p>ioa关联用户源名称</p>
 	SourceName *string `json:"SourceName,omitnil,omitempty" name:"SourceName"`
 
-	// 目录包含用户数
+	// <p>目录包含用户数</p>
 	UserCount *uint64 `json:"UserCount,omitnil,omitempty" name:"UserCount"`
+
+	// <p>是否开启自动同步</p>
+	AutoSync *bool `json:"AutoSync,omitnil,omitempty" name:"AutoSync"`
+
+	// <p>同步周期（5段式 crontab 表达式）</p>
+	SyncCron *string `json:"SyncCron,omitnil,omitempty" name:"SyncCron"`
 }
 
 func (r *CreateUserDirectoryRequest) ToJsonString() string {
@@ -2317,6 +2329,8 @@ func (r *CreateUserDirectoryRequest) FromJsonString(s string) error {
 	delete(f, "Source")
 	delete(f, "SourceName")
 	delete(f, "UserCount")
+	delete(f, "AutoSync")
+	delete(f, "SyncCron")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateUserDirectoryRequest has unknown keys!", "")
 	}
@@ -2325,7 +2339,7 @@ func (r *CreateUserDirectoryRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateUserDirectoryResponseParams struct {
-	// 目录Id
+	// <p>目录Id</p>
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5557,20 +5571,20 @@ func (r *DescribeSourceTypesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeUserDirectoryRequestParams struct {
-	// 分页大小
+	// <p>分页大小</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页偏移
+	// <p>分页偏移</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 type DescribeUserDirectoryRequest struct {
 	*tchttp.BaseRequest
 	
-	// 分页大小
+	// <p>分页大小</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页偏移
+	// <p>分页偏移</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
@@ -5596,10 +5610,10 @@ func (r *DescribeUserDirectoryRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeUserDirectoryResponseParams struct {
-	// 用户目录集
+	// <p>用户目录集</p>
 	UserDirSet []*UserDirectory `json:"UserDirSet,omitnil,omitempty" name:"UserDirSet"`
 
-	// 用户目录集总数
+	// <p>用户目录集总数</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6716,20 +6730,23 @@ type Group struct {
 }
 
 type IOAUserGroup struct {
-	// ioa用户组织id
+	// <p>ioa用户组织id</p>
 	OrgId *uint64 `json:"OrgId,omitnil,omitempty" name:"OrgId"`
 
-	// ioa用户组织名称
+	// <p>ioa用户组织名称</p>
 	OrgName *string `json:"OrgName,omitnil,omitempty" name:"OrgName"`
 
-	// ioa用户组织id路径	
+	// <p>ioa用户组织id路径</p>
 	OrgIdPath *string `json:"OrgIdPath,omitnil,omitempty" name:"OrgIdPath"`
 
-	// ioa用户组织名称路径	
+	// <p>ioa用户组织名称路径</p>
 	OrgNamePath *string `json:"OrgNamePath,omitnil,omitempty" name:"OrgNamePath"`
 
-	// ioa关联用户源类型
+	// <p>ioa关联用户源类型</p>
 	Source *uint64 `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// <p>用户所属目录</p>
+	UserDirName *string `json:"UserDirName,omitnil,omitempty" name:"UserDirName"`
 }
 
 // Predefined struct for user
@@ -8467,21 +8484,33 @@ func (r *ModifyResourceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyUserDirectoryRequestParams struct {
-	// 目录id
+	// <p>目录id</p>
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// ioa分组信息
+	// <p>ioa分组信息</p>
 	UserOrgSet []*UserOrg `json:"UserOrgSet,omitnil,omitempty" name:"UserOrgSet"`
+
+	// <p>是否开启自动同步</p>
+	AutoSync *bool `json:"AutoSync,omitnil,omitempty" name:"AutoSync"`
+
+	// <p>同步周期（5段式 crontab 表达式）</p>
+	SyncCron *string `json:"SyncCron,omitnil,omitempty" name:"SyncCron"`
 }
 
 type ModifyUserDirectoryRequest struct {
 	*tchttp.BaseRequest
 	
-	// 目录id
+	// <p>目录id</p>
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// ioa分组信息
+	// <p>ioa分组信息</p>
 	UserOrgSet []*UserOrg `json:"UserOrgSet,omitnil,omitempty" name:"UserOrgSet"`
+
+	// <p>是否开启自动同步</p>
+	AutoSync *bool `json:"AutoSync,omitnil,omitempty" name:"AutoSync"`
+
+	// <p>同步周期（5段式 crontab 表达式）</p>
+	SyncCron *string `json:"SyncCron,omitnil,omitempty" name:"SyncCron"`
 }
 
 func (r *ModifyUserDirectoryRequest) ToJsonString() string {
@@ -8498,6 +8527,8 @@ func (r *ModifyUserDirectoryRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Id")
 	delete(f, "UserOrgSet")
+	delete(f, "AutoSync")
+	delete(f, "SyncCron")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyUserDirectoryRequest has unknown keys!", "")
 	}
@@ -11137,44 +11168,56 @@ type User struct {
 }
 
 type UserDirectory struct {
-	// 目录id
+	// <p>目录id</p>
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// ioa目录id
+	// <p>ioa目录id</p>
 	DirId *uint64 `json:"DirId,omitnil,omitempty" name:"DirId"`
 
-	// ioa目录名称
+	// <p>ioa目录名称</p>
 	DirName *string `json:"DirName,omitnil,omitempty" name:"DirName"`
 
-	// ioa关联用户源类型
+	// <p>ioa关联用户源类型</p>
 	Source *uint64 `json:"Source,omitnil,omitempty" name:"Source"`
 
-	// ioa关联用户源名称
+	// <p>ioa关联用户源名称</p>
 	SourceName *string `json:"SourceName,omitnil,omitempty" name:"SourceName"`
 
-	// 目录包含用户数
+	// <p>目录包含用户数</p>
 	UserTotal *uint64 `json:"UserTotal,omitnil,omitempty" name:"UserTotal"`
 
-	// 目录接入时间
+	// <p>目录接入时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 目录下的组织细节信息
+	// <p>目录下的组织细节信息</p>
 	UserOrgSet []*UserOrg `json:"UserOrgSet,omitnil,omitempty" name:"UserOrgSet"`
+
+	// <p>是否开启自动同步</p>
+	AutoSync *bool `json:"AutoSync,omitnil,omitempty" name:"AutoSync"`
+
+	// <p>同步周期（5段式 crontab 表达式）</p>
+	SyncCron *string `json:"SyncCron,omitnil,omitempty" name:"SyncCron"`
+
+	// <p>下次同步时间</p><p>参数格式：2026-06-05T11:30:00+08:00</p>
+	NextSyncTime *string `json:"NextSyncTime,omitnil,omitempty" name:"NextSyncTime"`
 }
 
 type UserOrg struct {
-	// ioa用户组织id
+	// <p>ioa用户组织id</p>
 	OrgId *uint64 `json:"OrgId,omitnil,omitempty" name:"OrgId"`
 
-	// ioa用户组织名称
+	// <p>ioa用户组织名称</p>
 	OrgName *string `json:"OrgName,omitnil,omitempty" name:"OrgName"`
 
-	// ioa用户组织id路径
+	// <p>ioa用户组织id路径</p>
 	OrgIdPath *string `json:"OrgIdPath,omitnil,omitempty" name:"OrgIdPath"`
 
-	// ioa用户组织名称路径
+	// <p>ioa用户组织名称路径</p>
 	OrgNamePath *string `json:"OrgNamePath,omitnil,omitempty" name:"OrgNamePath"`
 
-	// ioa用户组织id下的用户数
+	// <p>ioa用户组织id下的用户数</p>
 	UserTotal *uint64 `json:"UserTotal,omitnil,omitempty" name:"UserTotal"`
+
+	// <p>组织绑定的用户组 id 列表</p>
+	BindGroupIds []*uint64 `json:"BindGroupIds,omitnil,omitempty" name:"BindGroupIds"`
 }

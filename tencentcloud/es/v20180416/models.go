@@ -1077,6 +1077,9 @@ type CreateInstanceRequestParams struct {
 	// <p>是否开启智能巡检</p>
 	EnableDiagnose *bool `json:"EnableDiagnose,omitnil,omitempty" name:"EnableDiagnose"`
 
+	// <p>是否开启自动备份</p>
+	EnableCosBackup *bool `json:"EnableCosBackup,omitnil,omitempty" name:"EnableCosBackup"`
+
 	// <p>cdcId，使用cdc子网时传递</p>
 	CdcId *string `json:"CdcId,omitnil,omitempty" name:"CdcId"`
 
@@ -1210,6 +1213,9 @@ type CreateInstanceRequest struct {
 	// <p>是否开启智能巡检</p>
 	EnableDiagnose *bool `json:"EnableDiagnose,omitnil,omitempty" name:"EnableDiagnose"`
 
+	// <p>是否开启自动备份</p>
+	EnableCosBackup *bool `json:"EnableCosBackup,omitnil,omitempty" name:"EnableCosBackup"`
+
 	// <p>cdcId，使用cdc子网时传递</p>
 	CdcId *string `json:"CdcId,omitnil,omitempty" name:"CdcId"`
 
@@ -1284,6 +1290,7 @@ func (r *CreateInstanceRequest) FromJsonString(s string) error {
 	delete(f, "EnableHybridStorage")
 	delete(f, "DiskEnhance")
 	delete(f, "EnableDiagnose")
+	delete(f, "EnableCosBackup")
 	delete(f, "CdcId")
 	delete(f, "DisasterRecoverGroupAffinity")
 	delete(f, "SubProductCode")

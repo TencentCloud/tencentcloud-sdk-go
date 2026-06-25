@@ -38,6 +38,9 @@ const (
 	// 资源正在创建中。
 	FAILEDOPERATION_CLIENTTOKENINUSE = "FailedOperation.ClientTokenInUse"
 
+	// 操作失败：目标 COS Bucket 未开启多版本，`IsSyncDelete` 或 `IsOverwrite` 无法生效，请前往对象存储控制台开启多版本后重试
+	FAILEDOPERATION_COSMULTIVERSIONDISABLED = "FailedOperation.CosMultiVersionDisabled"
+
 	// 文件系统存在挂载点。
 	FAILEDOPERATION_MOUNTTARGETEXISTS = "FailedOperation.MountTargetExists"
 
@@ -217,6 +220,15 @@ const (
 
 	// IntervalDays 参数值错误
 	INVALIDPARAMETERVALUE_INVALIDPARAMINTERVALDAYS = "InvalidParameterValue.InvalidParamIntervalDays"
+
+	// `IsCreateRealTimeSync` 必须为布尔值，且仅当 `StorageType=ExternalStorage` 时允许设置 `true`
+	INVALIDPARAMETERVALUE_INVALIDPARAMISCREATEREALTIMESYNC = "InvalidParameterValue.InvalidParamIsCreateRealTimeSync"
+
+	// 参数值错误：`IsModifyRealTimeSync` 必须为布尔值，且仅当 `StorageType=ExternalStorage` 时允许设置 `true`
+	INVALIDPARAMETERVALUE_INVALIDPARAMISMODIFYREALTIMESYNC = "InvalidParameterValue.InvalidParamIsModifyRealTimeSync"
+
+	// 参数值错误：`IsSyncDelete` 必须为布尔值，且仅当 `StorageType=ExternalStorage` 时允许设置 `true`
+	INVALIDPARAMETERVALUE_INVALIDPARAMISSYNCDELETE = "InvalidParameterValue.InvalidParamIsSyncDelete"
 
 	// InvalidParameterValue.InvalidParameterValue
 	INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
@@ -514,6 +526,9 @@ const (
 
 	// 该可用区不支持基础网络。
 	UNSUPPORTEDOPERATION_BASICNETINTERFACENOTSUPPORTED = "UnsupportedOperation.BasicNetInterfaceNotSupported"
+
+	// `IsCreateRealTimeSync` / `IsModifyRealTimeSync` / `IsSyncDelete` / `IsOverwrite` 仅在 `StorageType=ExternalStorage` 时支持设置为 `true`
+	UNSUPPORTEDOPERATION_FIELDONLYFOREXTERNALSTORAGE = "UnsupportedOperation.FieldOnlyForExternalStorage"
 
 	// 该文件系统版本不支持当前操作
 	UNSUPPORTEDOPERATION_INVALIDCFSVERSION = "UnsupportedOperation.InvalidCfsVersion"

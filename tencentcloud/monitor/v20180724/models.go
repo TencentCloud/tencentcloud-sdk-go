@@ -3891,44 +3891,38 @@ func (r *DeleteAlertRulesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteExporterIntegrationRequestParams struct {
-	// 实例 ID
+	// <p>实例 ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 类型(可通过 DescribeExporterIntegrations获取)
+	// <p>类型(可通过 DescribeExporterIntegrations获取)</p>
 	Kind *string `json:"Kind,omitnil,omitempty" name:"Kind"`
 
-	// 名字
+	// <p>名字</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// Kubernetes 集群类型，取值如下：
-	// <li> 1= 容器集群(TKE) </li>
-	// <li> 2=弹性集群(EKS) </li>
-	// <li> 3= Prometheus管理的弹性集群(MEKS) </li>
+	// <p>Kubernetes 集群类型，取值如下：</p><li> 1= 容器集群(TKE) </li><li> 2=弹性集群(EKS) </li><li> 3= Prometheus管理的弹性集群(MEKS) </li>
 	KubeType *int64 `json:"KubeType,omitnil,omitempty" name:"KubeType"`
 
-	// 集群 ID，可不填
+	// <p>集群 ID，可不填</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 }
 
 type DeleteExporterIntegrationRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID
+	// <p>实例 ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 类型(可通过 DescribeExporterIntegrations获取)
+	// <p>类型(可通过 DescribeExporterIntegrations获取)</p>
 	Kind *string `json:"Kind,omitnil,omitempty" name:"Kind"`
 
-	// 名字
+	// <p>名字</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// Kubernetes 集群类型，取值如下：
-	// <li> 1= 容器集群(TKE) </li>
-	// <li> 2=弹性集群(EKS) </li>
-	// <li> 3= Prometheus管理的弹性集群(MEKS) </li>
+	// <p>Kubernetes 集群类型，取值如下：</p><li> 1= 容器集群(TKE) </li><li> 2=弹性集群(EKS) </li><li> 3= Prometheus管理的弹性集群(MEKS) </li>
 	KubeType *int64 `json:"KubeType,omitnil,omitempty" name:"KubeType"`
 
-	// 集群 ID，可不填
+	// <p>集群 ID，可不填</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 }
 

@@ -833,6 +833,56 @@ func (c *Client) DescribeNodePoolsWithContext(ctx context.Context, request *Desc
     return
 }
 
+func NewDescribeNodePoolsElasticityStrengthRequest() (request *DescribeNodePoolsElasticityStrengthRequest) {
+    request = &DescribeNodePoolsElasticityStrengthRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "DescribeNodePoolsElasticityStrength")
+    
+    
+    return
+}
+
+func NewDescribeNodePoolsElasticityStrengthResponse() (response *DescribeNodePoolsElasticityStrengthResponse) {
+    response = &DescribeNodePoolsElasticityStrengthResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeNodePoolsElasticityStrength
+// 查询节点池健康度相关信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeNodePoolsElasticityStrength(request *DescribeNodePoolsElasticityStrengthRequest) (response *DescribeNodePoolsElasticityStrengthResponse, err error) {
+    return c.DescribeNodePoolsElasticityStrengthWithContext(context.Background(), request)
+}
+
+// DescribeNodePoolsElasticityStrength
+// 查询节点池健康度相关信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeNodePoolsElasticityStrengthWithContext(ctx context.Context, request *DescribeNodePoolsElasticityStrengthRequest) (response *DescribeNodePoolsElasticityStrengthResponse, err error) {
+    if request == nil {
+        request = NewDescribeNodePoolsElasticityStrengthRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeNodePoolsElasticityStrength")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNodePoolsElasticityStrength require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeNodePoolsElasticityStrengthResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeZoneInstanceConfigInfosRequest() (request *DescribeZoneInstanceConfigInfosRequest) {
     request = &DescribeZoneInstanceConfigInfosRequest{
         BaseRequest: &tchttp.BaseRequest{},

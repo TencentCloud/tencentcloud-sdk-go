@@ -321,37 +321,40 @@ type BackupDownloadRestriction struct {
 }
 
 type BackupPlan struct {
-	// 备份周期
+	// <p>备份周期</p>
 	BackupPeriod *string `json:"BackupPeriod,omitnil,omitempty" name:"BackupPeriod"`
 
-	// 数据备份保留时长。单位：天
+	// <p>数据备份保留时长。单位：天</p>
 	BaseBackupRetentionPeriod *uint64 `json:"BaseBackupRetentionPeriod,omitnil,omitempty" name:"BaseBackupRetentionPeriod"`
 
-	// 开始备份的最早时间
+	// <p>开始备份的最早时间</p>
 	MinBackupStartTime *string `json:"MinBackupStartTime,omitnil,omitempty" name:"MinBackupStartTime"`
 
-	// 开始备份的最晚时间
+	// <p>开始备份的最晚时间</p>
 	MaxBackupStartTime *string `json:"MaxBackupStartTime,omitnil,omitempty" name:"MaxBackupStartTime"`
 
-	// 备份计划ID
+	// <p>备份类型</p><p>枚举值：</p><ul><li>physical： 物理备份</li><li>logical： 逻辑备份</li><li>snapshot： 快照备份</li></ul>
+	BackupMethod *string `json:"BackupMethod,omitnil,omitempty" name:"BackupMethod"`
+
+	// <p>备份计划ID</p>
 	PlanId *string `json:"PlanId,omitnil,omitempty" name:"PlanId"`
 
-	// 备份计划自定义名称。
+	// <p>备份计划自定义名称。</p>
 	PlanName *string `json:"PlanName,omitnil,omitempty" name:"PlanName"`
 
-	// 日志备份保留时长。单位：天
+	// <p>日志备份保留时长。单位：天</p>
 	LogBackupRetentionPeriod *uint64 `json:"LogBackupRetentionPeriod,omitnil,omitempty" name:"LogBackupRetentionPeriod"`
 
-	// 创建时间。
+	// <p>创建时间。</p>
 	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
 
-	// 最近一次的修改时间。
+	// <p>最近一次的修改时间。</p>
 	UpdatedTime *string `json:"UpdatedTime,omitnil,omitempty" name:"UpdatedTime"`
 
-	// 备份计划类型。系统默认创建的为default，自定义的为custom。
+	// <p>备份计划类型。系统默认创建的为default，自定义的为custom。</p>
 	PlanType *string `json:"PlanType,omitnil,omitempty" name:"PlanType"`
 
-	// 备份周期类型。当前支持week、month。
+	// <p>备份周期类型。当前支持week、month。</p>
 	BackupPeriodType *string `json:"BackupPeriodType,omitnil,omitempty" name:"BackupPeriodType"`
 }
 

@@ -2717,33 +2717,45 @@ func (r *EstateCertOCRResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ExtractDocAgentRequestParams struct {
-	// 图片/PDF的 Base64 值。 要求图片/PDF经Base64编码后不超过 10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。 图片支持的像素范围：需介于20-10000px之间。 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	// <p>图片/PDF的 Base64 值。 要求图片/PDF经Base64编码后不超过 10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。 图片支持的像素范围：需介于20-10000px之间。 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。</p>
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
 
-	// 图片/PDF的 Url 地址。 要求图片/PDF经Base64编码后不超过 10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。 图片支持的像素范围：需介于20-10000px之间。 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	// <p>图片/PDF的 Url 地址。 要求图片/PDF经Base64编码后不超过 10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。 图片支持的像素范围：需介于20-10000px之间。 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。</p>
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 
-	// 自定义抽取需要的字段名称、字段类型、字段提示词。
+	// <p>自定义抽取需要的字段名称、字段类型、字段提示词。</p>
 	ItemNames []*ItemNames `json:"ItemNames,omitnil,omitempty" name:"ItemNames"`
 
-	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF时有效。
+	// <p>需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF时有效。</p>
 	PdfPageNumber *int64 `json:"PdfPageNumber,omitnil,omitempty" name:"PdfPageNumber"`
+
+	// <p>是否需要返回坐标</p><p>默认值：false</p>
+	EnableCoord *bool `json:"EnableCoord,omitnil,omitempty" name:"EnableCoord"`
+
+	// <p>是否需要开启审核逻辑(支持对字段配置比对内容和比对的语意规则)</p><p>默认值：false</p>
+	EnableAudit *bool `json:"EnableAudit,omitnil,omitempty" name:"EnableAudit"`
 }
 
 type ExtractDocAgentRequest struct {
 	*tchttp.BaseRequest
 	
-	// 图片/PDF的 Base64 值。 要求图片/PDF经Base64编码后不超过 10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。 图片支持的像素范围：需介于20-10000px之间。 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	// <p>图片/PDF的 Base64 值。 要求图片/PDF经Base64编码后不超过 10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。 图片支持的像素范围：需介于20-10000px之间。 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。</p>
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
 
-	// 图片/PDF的 Url 地址。 要求图片/PDF经Base64编码后不超过 10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。 图片支持的像素范围：需介于20-10000px之间。 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	// <p>图片/PDF的 Url 地址。 要求图片/PDF经Base64编码后不超过 10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。 图片支持的像素范围：需介于20-10000px之间。 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。</p>
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 
-	// 自定义抽取需要的字段名称、字段类型、字段提示词。
+	// <p>自定义抽取需要的字段名称、字段类型、字段提示词。</p>
 	ItemNames []*ItemNames `json:"ItemNames,omitnil,omitempty" name:"ItemNames"`
 
-	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF时有效。
+	// <p>需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF时有效。</p>
 	PdfPageNumber *int64 `json:"PdfPageNumber,omitnil,omitempty" name:"PdfPageNumber"`
+
+	// <p>是否需要返回坐标</p><p>默认值：false</p>
+	EnableCoord *bool `json:"EnableCoord,omitnil,omitempty" name:"EnableCoord"`
+
+	// <p>是否需要开启审核逻辑(支持对字段配置比对内容和比对的语意规则)</p><p>默认值：false</p>
+	EnableAudit *bool `json:"EnableAudit,omitnil,omitempty" name:"EnableAudit"`
 }
 
 func (r *ExtractDocAgentRequest) ToJsonString() string {
@@ -2762,6 +2774,8 @@ func (r *ExtractDocAgentRequest) FromJsonString(s string) error {
 	delete(f, "ImageUrl")
 	delete(f, "ItemNames")
 	delete(f, "PdfPageNumber")
+	delete(f, "EnableCoord")
+	delete(f, "EnableAudit")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ExtractDocAgentRequest has unknown keys!", "")
 	}
@@ -2770,16 +2784,16 @@ func (r *ExtractDocAgentRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ExtractDocAgentResponseParams struct {
-	// 图片旋转角度(角度制)，文本的水平方向为 0；顺时针为正，逆时针为负。
+	// <p>图片旋转角度(角度制)，文本的水平方向为 0；顺时针为正，逆时针为负。</p>
 	Angle *float64 `json:"Angle,omitnil,omitempty" name:"Angle"`
 
-	// 配置结构化文本信息。
+	// <p>配置结构化文本信息。</p>
 	StructuralList []*GroupInfo `json:"StructuralList,omitnil,omitempty" name:"StructuralList"`
 
-	// 任务执行错误码。当任务状态不为 FAIL 时，该值为""。
+	// <p>任务执行错误码。当任务状态不为 FAIL 时，该值为&quot;&quot;。</p>
 	ErrorCode *string `json:"ErrorCode,omitnil,omitempty" name:"ErrorCode"`
 
-	// 任务执行错误信息。当任务状态不为 FAIL 时，该值为""。
+	// <p>任务执行错误信息。当任务状态不为 FAIL 时，该值为&quot;&quot;。</p>
 	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6410,6 +6424,91 @@ type MotorVehicleSaleInvoice struct {
 
 	// 是否存在二维码（1：有，0：无）
 	QRCodeMark *int64 `json:"QRCodeMark,omitnil,omitempty" name:"QRCodeMark"`
+}
+
+// Predefined struct for user
+type MultimodalDocParseRequestParams struct {
+	// <p>文件的 Url 地址，支持FileType参数对应的文件格式及大小。文件下载时间不超过3秒。文件存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议文件存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。</p>
+	FileUrl *string `json:"FileUrl,omitnil,omitempty" name:"FileUrl"`
+
+	// <p>支持解析的文件类型。</p><p>1：PDF 文档；</p><p>2：Word 文档（.doc / .docx）；</p><p>3：PPT 演示文稿（.ppt / .pptx）；</p><p>4：Excel 表格（.xls / .xlsx）；</p><p>5：Markdown 文档（.md）；</p><p>6：纯文本文件（.txt）；</p><p>7：图片文件（.png / .jpg / .jpeg 等）；</p><p>8：WPS 文档；</p><p>0：未知文件类型。</p><p></p><p>支持的文件大小：</p><p>PDF/WORD/PPT支持150M且300页以内、EXCEL支持10M以内、TXT支持10M以内、图片文件支持70M以内。</p><p></p><p>默认值：1</p>
+	FileType *int64 `json:"FileType,omitnil,omitempty" name:"FileType"`
+
+	// <p>输出格式。</p><p>1：json格式</p><p>2：markdown格式</p><p>3：xml格式</p><p>9：json+markdown+xml格式</p><p></p><p>默认值：9</p>
+	ResultType *int64 `json:"ResultType,omitnil,omitempty" name:"ResultType"`
+
+	// <p>是否支持子图解析。</p><p></p><p>默认值：false</p>
+	EnableSubImg *bool `json:"EnableSubImg,omitnil,omitempty" name:"EnableSubImg"`
+
+	// <p>需要识别的页码范围，单次调用最多支持300页。</p><p>参数格式：1-10</p>
+	PageRange *string `json:"PageRange,omitnil,omitempty" name:"PageRange"`
+}
+
+type MultimodalDocParseRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>文件的 Url 地址，支持FileType参数对应的文件格式及大小。文件下载时间不超过3秒。文件存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议文件存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。</p>
+	FileUrl *string `json:"FileUrl,omitnil,omitempty" name:"FileUrl"`
+
+	// <p>支持解析的文件类型。</p><p>1：PDF 文档；</p><p>2：Word 文档（.doc / .docx）；</p><p>3：PPT 演示文稿（.ppt / .pptx）；</p><p>4：Excel 表格（.xls / .xlsx）；</p><p>5：Markdown 文档（.md）；</p><p>6：纯文本文件（.txt）；</p><p>7：图片文件（.png / .jpg / .jpeg 等）；</p><p>8：WPS 文档；</p><p>0：未知文件类型。</p><p></p><p>支持的文件大小：</p><p>PDF/WORD/PPT支持150M且300页以内、EXCEL支持10M以内、TXT支持10M以内、图片文件支持70M以内。</p><p></p><p>默认值：1</p>
+	FileType *int64 `json:"FileType,omitnil,omitempty" name:"FileType"`
+
+	// <p>输出格式。</p><p>1：json格式</p><p>2：markdown格式</p><p>3：xml格式</p><p>9：json+markdown+xml格式</p><p></p><p>默认值：9</p>
+	ResultType *int64 `json:"ResultType,omitnil,omitempty" name:"ResultType"`
+
+	// <p>是否支持子图解析。</p><p></p><p>默认值：false</p>
+	EnableSubImg *bool `json:"EnableSubImg,omitnil,omitempty" name:"EnableSubImg"`
+
+	// <p>需要识别的页码范围，单次调用最多支持300页。</p><p>参数格式：1-10</p>
+	PageRange *string `json:"PageRange,omitnil,omitempty" name:"PageRange"`
+}
+
+func (r *MultimodalDocParseRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *MultimodalDocParseRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileUrl")
+	delete(f, "FileType")
+	delete(f, "ResultType")
+	delete(f, "EnableSubImg")
+	delete(f, "PageRange")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "MultimodalDocParseRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type MultimodalDocParseResponseParams struct {
+	// <p>结果的临时下载地址。文件类型为zip压缩包，下载链接有效期30分钟。压缩包内包含*.md、*.json以及images文件夹。</p>
+	ResultUrl *string `json:"ResultUrl,omitnil,omitempty" name:"ResultUrl"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type MultimodalDocParseResponse struct {
+	*tchttp.BaseResponse
+	Response *MultimodalDocParseResponseParams `json:"Response"`
+}
+
+func (r *MultimodalDocParseResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *MultimodalDocParseResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type NonTaxIncomeBill struct {

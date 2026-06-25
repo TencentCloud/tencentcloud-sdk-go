@@ -4451,7 +4451,7 @@ func (r *CreateAdaptiveDynamicStreamingTemplateResponse) FromJsonString(s string
 
 // Predefined struct for user
 type CreateAigcAudioTaskRequestParams struct {
-	// <p>模型名称。生音乐当前支持的模型: GL、MinimaxMusic。</p>
+	// <p>模型名称。生音乐当前支持的模型: GL、MiniMaxMusic。</p>
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
 	// <p>指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。<br>模型GL支持的版本号：2.0、3.0-clip、3.0-pro。<br>模型MinimaxMusic支持的版本号：2.0、2.5、2.6。</p>
@@ -4488,7 +4488,7 @@ type CreateAigcAudioTaskRequestParams struct {
 type CreateAigcAudioTaskRequest struct {
 	*tchttp.BaseRequest
 	
-	// <p>模型名称。生音乐当前支持的模型: GL、MinimaxMusic。</p>
+	// <p>模型名称。生音乐当前支持的模型: GL、MiniMaxMusic。</p>
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
 	// <p>指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。<br>模型GL支持的版本号：2.0、3.0-clip、3.0-pro。<br>模型MinimaxMusic支持的版本号：2.0、2.5、2.6。</p>

@@ -2651,6 +2651,72 @@ func (c *Client) ResetUserPasswordWithContext(ctx context.Context, request *Rese
     return
 }
 
+func NewResetUsersPasswordRequest() (request *ResetUsersPasswordRequest) {
+    request = &ResetUsersPasswordRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmysql", APIVersion, "ResetUsersPassword")
+    
+    
+    return
+}
+
+func NewResetUsersPasswordResponse() (response *ResetUsersPasswordResponse) {
+    response = &ResetUsersPasswordResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ResetUsersPassword
+// 本接口（ResetUsersPassword）用于批量重置用户密码
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_CAMAUTHERROR = "AuthFailure.CamAuthError"
+//  AUTHFAILURE_CHECKCAMAUTHERROR = "AuthFailure.CheckCamAuthError"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_DBQUERYUSERERROR = "FailedOperation.DBQueryUserError"
+//  FAILEDOPERATION_DBUPDATEUSERERROR = "FailedOperation.DBUpdateUserError"
+//  FAILEDOPERATION_QUERYUSERERROR = "FailedOperation.QueryUserError"
+//  INVALIDPARAMETERVALUE_CHECKPASSWDERROR = "InvalidParameterValue.CheckPasswdError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED_RESETUSERPASSWORDERROR = "OperationDenied.ResetUserPasswordError"
+func (c *Client) ResetUsersPassword(request *ResetUsersPasswordRequest) (response *ResetUsersPasswordResponse, err error) {
+    return c.ResetUsersPasswordWithContext(context.Background(), request)
+}
+
+// ResetUsersPassword
+// 本接口（ResetUsersPassword）用于批量重置用户密码
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_CAMAUTHERROR = "AuthFailure.CamAuthError"
+//  AUTHFAILURE_CHECKCAMAUTHERROR = "AuthFailure.CheckCamAuthError"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_DBQUERYUSERERROR = "FailedOperation.DBQueryUserError"
+//  FAILEDOPERATION_DBUPDATEUSERERROR = "FailedOperation.DBUpdateUserError"
+//  FAILEDOPERATION_QUERYUSERERROR = "FailedOperation.QueryUserError"
+//  INVALIDPARAMETERVALUE_CHECKPASSWDERROR = "InvalidParameterValue.CheckPasswdError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED_RESETUSERPASSWORDERROR = "OperationDenied.ResetUserPasswordError"
+func (c *Client) ResetUsersPasswordWithContext(ctx context.Context, request *ResetUsersPasswordRequest) (response *ResetUsersPasswordResponse, err error) {
+    if request == nil {
+        request = NewResetUsersPasswordRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tdmysql", APIVersion, "ResetUsersPassword")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ResetUsersPassword require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewResetUsersPasswordResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRestartDBInstancesRequest() (request *RestartDBInstancesRequest) {
     request = &RestartDBInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},

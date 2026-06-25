@@ -8549,32 +8549,38 @@ type NodeMainInfo struct {
 }
 
 type NotAllowReason struct {
-	// 是否创建的成员。true-是、false-否；成员不是创建的成员不允许删除
+	// <p>是否创建的成员。true-是、false-否；成员不是创建的成员不允许删除</p>
 	IsCreateMember *bool `json:"IsCreateMember,omitnil,omitempty" name:"IsCreateMember"`
 
-	// 成员删除许可。true-开启、false-关闭；成员删除许可关闭时不允许删除
+	// <p>成员删除许可。true-开启、false-关闭；成员删除许可关闭时不允许删除</p>
 	DeletionPermission *bool `json:"DeletionPermission,omitnil,omitempty" name:"DeletionPermission"`
 
-	// 是否可信服务委派管理员。true-是、false-否；成员是可信服务委派管理员不允许删除
+	// <p>是否可信服务委派管理员。true-是、false-否；成员是可信服务委派管理员不允许删除</p>
 	IsAssignManager *bool `json:"IsAssignManager,omitnil,omitempty" name:"IsAssignManager"`
 
-	// 是否主体管理员。true-是、false-否；成员是主体管理员不允许删除
+	// <p>是否主体管理员。true-是、false-否；成员是主体管理员不允许删除</p>
 	IsAuthManager *bool `json:"IsAuthManager,omitnil,omitempty" name:"IsAuthManager"`
 
-	// 是否共享资源管理员。true-是、false-否；成员是共享资源管理员不允许删除
+	// <p>是否共享资源管理员。true-是、false-否；成员是共享资源管理员不允许删除</p>
 	IsShareManager *bool `json:"IsShareManager,omitnil,omitempty" name:"IsShareManager"`
 
-	// 成员是否设置了操作审批。true-是、false-否；成员设置了操作审批时不允许删除
+	// <p>成员是否设置了操作审批。true-是、false-否；成员设置了操作审批时不允许删除</p>
 	OperateProcess *bool `json:"OperateProcess,omitnil,omitempty" name:"OperateProcess"`
 
-	// 是否允许解除成员财务权限。true-是、false-否；成员不能解除财务权限时不允许删除
+	// <p>是否允许解除成员财务权限。true-是、false-否；成员不能解除财务权限时不允许删除</p>
 	BillingPermission *bool `json:"BillingPermission,omitnil,omitempty" name:"BillingPermission"`
 
-	// 存在的资源列表。账号存在资源时不允许删除
+	// <p>存在的资源列表。账号存在资源时不允许删除</p>
 	ExistResources []*string `json:"ExistResources,omitnil,omitempty" name:"ExistResources"`
 
-	// 检测失败的资源列表。账号有资源检测失败时不允许删除。
+	// <p>检测失败的资源列表。账号有资源检测失败时不允许删除。</p>
 	DetectFailedResources []*string `json:"DetectFailedResources,omitnil,omitempty" name:"DetectFailedResources"`
+
+	// <p>是否部署身份中心权限。部署权限不允许删除</p><p>枚举值：</p><ul><li>true： 是</li><li>false： 否</li></ul>
+	CICRoleConfig *bool `json:"CICRoleConfig,omitnil,omitempty" name:"CICRoleConfig"`
+
+	// <p>是否同步身份中心用户。同步用户不允许删除</p><p>枚举值：</p><ul><li>true： 是</li><li>false： 否</li></ul>
+	CICUserConfig *bool `json:"CICUserConfig,omitnil,omitempty" name:"CICUserConfig"`
 }
 
 // Predefined struct for user

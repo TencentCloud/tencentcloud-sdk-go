@@ -3774,64 +3774,6 @@ func (r *DescribeApiAppBindApisStatusResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type DescribeApiAppRequestParams struct {
-	// 应用ID。
-	ApiAppId *string `json:"ApiAppId,omitnil,omitempty" name:"ApiAppId"`
-}
-
-type DescribeApiAppRequest struct {
-	*tchttp.BaseRequest
-	
-	// 应用ID。
-	ApiAppId *string `json:"ApiAppId,omitnil,omitempty" name:"ApiAppId"`
-}
-
-func (r *DescribeApiAppRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeApiAppRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "ApiAppId")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeApiAppRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeApiAppResponseParams struct {
-	// 应用详情。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result *ApiAppInfos `json:"Result,omitnil,omitempty" name:"Result"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DescribeApiAppResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeApiAppResponseParams `json:"Response"`
-}
-
-func (r *DescribeApiAppResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeApiAppResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type DescribeApiAppsStatusRequestParams struct {
 	// 返回数量，默认为 20，最大值为 100。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
