@@ -3941,6 +3941,130 @@ func (c *Client) DescribeCVMAssetsWithContext(ctx context.Context, request *Desc
     return
 }
 
+func NewDescribeCWPMachineDetailRequest() (request *DescribeCWPMachineDetailRequest) {
+    request = &DescribeCWPMachineDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeCWPMachineDetail")
+    
+    
+    return
+}
+
+func NewDescribeCWPMachineDetailResponse() (response *DescribeCWPMachineDetailResponse) {
+    response = &DescribeCWPMachineDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCWPMachineDetail
+// 主机详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEINUSE = "ResourceInUse"
+func (c *Client) DescribeCWPMachineDetail(request *DescribeCWPMachineDetailRequest) (response *DescribeCWPMachineDetailResponse, err error) {
+    return c.DescribeCWPMachineDetailWithContext(context.Background(), request)
+}
+
+// DescribeCWPMachineDetail
+// 主机详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEINUSE = "ResourceInUse"
+func (c *Client) DescribeCWPMachineDetailWithContext(ctx context.Context, request *DescribeCWPMachineDetailRequest) (response *DescribeCWPMachineDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeCWPMachineDetailRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeCWPMachineDetail")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCWPMachineDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCWPMachineDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCWPMachinesRequest() (request *DescribeCWPMachinesRequest) {
+    request = &DescribeCWPMachinesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeCWPMachines")
+    
+    
+    return
+}
+
+func NewDescribeCWPMachinesResponse() (response *DescribeCWPMachinesResponse) {
+    response = &DescribeCWPMachinesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCWPMachines
+// 主机列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEINUSE = "ResourceInUse"
+func (c *Client) DescribeCWPMachines(request *DescribeCWPMachinesRequest) (response *DescribeCWPMachinesResponse, err error) {
+    return c.DescribeCWPMachinesWithContext(context.Background(), request)
+}
+
+// DescribeCWPMachines
+// 主机列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEINUSE = "ResourceInUse"
+func (c *Client) DescribeCWPMachinesWithContext(ctx context.Context, request *DescribeCWPMachinesRequest) (response *DescribeCWPMachinesResponse, err error) {
+    if request == nil {
+        request = NewDescribeCWPMachinesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeCWPMachines")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCWPMachines require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCWPMachinesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCallRecordRequest() (request *DescribeCallRecordRequest) {
     request = &DescribeCallRecordRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -14759,6 +14883,60 @@ func (c *Client) ModifyIaCTokenPeriodWithContext(ctx context.Context, request *M
     request.SetContext(ctx)
     
     response = NewModifyIaCTokenPeriodResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyMachineRemarkRequest() (request *ModifyMachineRemarkRequest) {
+    request = &ModifyMachineRemarkRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "ModifyMachineRemark")
+    
+    
+    return
+}
+
+func NewModifyMachineRemarkResponse() (response *ModifyMachineRemarkResponse) {
+    response = &ModifyMachineRemarkResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyMachineRemark
+// 修改主机资产备注信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyMachineRemark(request *ModifyMachineRemarkRequest) (response *ModifyMachineRemarkResponse, err error) {
+    return c.ModifyMachineRemarkWithContext(context.Background(), request)
+}
+
+// ModifyMachineRemark
+// 修改主机资产备注信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyMachineRemarkWithContext(ctx context.Context, request *ModifyMachineRemarkRequest) (response *ModifyMachineRemarkResponse, err error) {
+    if request == nil {
+        request = NewModifyMachineRemarkRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "ModifyMachineRemark")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyMachineRemark require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyMachineRemarkResponse()
     err = c.Send(request, response)
     return
 }

@@ -3997,6 +3997,63 @@ func (r *DescribeEnvLimitResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeEnvPlansRequestParams struct {
+	// <p>套餐英文标识，不指定则返回所有可售卖套餐</p><p>枚举值：</p><ul><li>baas_integration： 集成版</li><li>baas_personal： 个人版</li><li>baas_pf_standard： 标准版</li><li>baas_pf_enterprise： 企业版</li><li>baas_pf_enterprise_senior： 企业高级版</li></ul>
+	PackageId *string `json:"PackageId,omitnil,omitempty" name:"PackageId"`
+}
+
+type DescribeEnvPlansRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>套餐英文标识，不指定则返回所有可售卖套餐</p><p>枚举值：</p><ul><li>baas_integration： 集成版</li><li>baas_personal： 个人版</li><li>baas_pf_standard： 标准版</li><li>baas_pf_enterprise： 企业版</li><li>baas_pf_enterprise_senior： 企业高级版</li></ul>
+	PackageId *string `json:"PackageId,omitnil,omitempty" name:"PackageId"`
+}
+
+func (r *DescribeEnvPlansRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEnvPlansRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PackageId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEnvPlansRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeEnvPlansResponseParams struct {
+	// <p>云开发新套餐详情</p>
+	PlanList []*PlanInfo `json:"PlanList,omitnil,omitempty" name:"PlanList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeEnvPlansResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeEnvPlansResponseParams `json:"Response"`
+}
+
+func (r *DescribeEnvPlansResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEnvPlansResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeEnvsRequestParams struct {
 	// <p>环境ID，如果传了这个参数则只返回该环境的相关信息</p>
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
@@ -8095,6 +8152,26 @@ type PermissionInfo struct {
 
 	// 自定义规则
 	Rule *string `json:"Rule,omitnil,omitempty" name:"Rule"`
+}
+
+type PlanInfo struct {
+	// <p>套餐标识</p>
+	PackageId *string `json:"PackageId,omitnil,omitempty" name:"PackageId"`
+
+	// <p>套餐中文名称</p>
+	PackageTitle *string `json:"PackageTitle,omitnil,omitempty" name:"PackageTitle"`
+
+	// <p>套餐描述</p>
+	PackageDescription *string `json:"PackageDescription,omitnil,omitempty" name:"PackageDescription"`
+
+	// <p>单位原价</p>
+	UnitPrice *string `json:"UnitPrice,omitnil,omitempty" name:"UnitPrice"`
+
+	// <p>套餐类型</p>
+	PackageType *string `json:"PackageType,omitnil,omitempty" name:"PackageType"`
+
+	// <p>json格式化用户资源限制</p>
+	ResourceLimit *string `json:"ResourceLimit,omitnil,omitempty" name:"ResourceLimit"`
 }
 
 type PostgreSQLInfo struct {

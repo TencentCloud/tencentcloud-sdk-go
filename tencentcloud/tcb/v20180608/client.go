@@ -2987,6 +2987,62 @@ func (c *Client) DescribeEnvLimitWithContext(ctx context.Context, request *Descr
     return
 }
 
+func NewDescribeEnvPlansRequest() (request *DescribeEnvPlansRequest) {
+    request = &DescribeEnvPlansRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeEnvPlans")
+    
+    
+    return
+}
+
+func NewDescribeEnvPlansResponse() (response *DescribeEnvPlansResponse) {
+    response = &DescribeEnvPlansResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeEnvPlans
+// 获取可售卖的新套餐列表，含详情，如果传了PackageId，则只获取指定套餐详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
+func (c *Client) DescribeEnvPlans(request *DescribeEnvPlansRequest) (response *DescribeEnvPlansResponse, err error) {
+    return c.DescribeEnvPlansWithContext(context.Background(), request)
+}
+
+// DescribeEnvPlans
+// 获取可售卖的新套餐列表，含详情，如果传了PackageId，则只获取指定套餐详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
+func (c *Client) DescribeEnvPlansWithContext(ctx context.Context, request *DescribeEnvPlansRequest) (response *DescribeEnvPlansResponse, err error) {
+    if request == nil {
+        request = NewDescribeEnvPlansRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeEnvPlans")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEnvPlans require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeEnvPlansResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeEnvsRequest() (request *DescribeEnvsRequest) {
     request = &DescribeEnvsRequest{
         BaseRequest: &tchttp.BaseRequest{},

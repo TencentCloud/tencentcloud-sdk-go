@@ -3390,6 +3390,112 @@ func (r *DescribeDomainListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeDomainLogFilterFileRequestParams struct {
+	// 要获取操作日志的域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 要获取操作日志的域名 Id，如果传了 DomainId，系统将会忽略 Domain 参数。 可以通过接口 DescribeDomainList 查到所有的 Domain 以及 DomainId
+	DomainId *uint64 `json:"DomainId,omitnil,omitempty" name:"DomainId"`
+
+	// 通过关键字搜索，支持搜索字段：账户 UIN、操作 IP、操作内容
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+
+	// 操作时间范围起始时间(仅支持近6个月的日志查询)
+	OperateBegin *string `json:"OperateBegin,omitnil,omitempty" name:"OperateBegin"`
+
+	// 操作时间范围截止时间(仅支持近6个月的日志查询)
+	OperateEnd *string `json:"OperateEnd,omitnil,omitempty" name:"OperateEnd"`
+
+	// 操作账号 UIN 精确匹配
+	OperateUin *uint64 `json:"OperateUin,omitnil,omitempty" name:"OperateUin"`
+
+	// 操作 IP 精确匹配
+	OperateClientIP *string `json:"OperateClientIP,omitnil,omitempty" name:"OperateClientIP"`
+
+	// 操作内容 模糊匹配
+	OperateContent *string `json:"OperateContent,omitnil,omitempty" name:"OperateContent"`
+}
+
+type DescribeDomainLogFilterFileRequest struct {
+	*tchttp.BaseRequest
+	
+	// 要获取操作日志的域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 要获取操作日志的域名 Id，如果传了 DomainId，系统将会忽略 Domain 参数。 可以通过接口 DescribeDomainList 查到所有的 Domain 以及 DomainId
+	DomainId *uint64 `json:"DomainId,omitnil,omitempty" name:"DomainId"`
+
+	// 通过关键字搜索，支持搜索字段：账户 UIN、操作 IP、操作内容
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+
+	// 操作时间范围起始时间(仅支持近6个月的日志查询)
+	OperateBegin *string `json:"OperateBegin,omitnil,omitempty" name:"OperateBegin"`
+
+	// 操作时间范围截止时间(仅支持近6个月的日志查询)
+	OperateEnd *string `json:"OperateEnd,omitnil,omitempty" name:"OperateEnd"`
+
+	// 操作账号 UIN 精确匹配
+	OperateUin *uint64 `json:"OperateUin,omitnil,omitempty" name:"OperateUin"`
+
+	// 操作 IP 精确匹配
+	OperateClientIP *string `json:"OperateClientIP,omitnil,omitempty" name:"OperateClientIP"`
+
+	// 操作内容 模糊匹配
+	OperateContent *string `json:"OperateContent,omitnil,omitempty" name:"OperateContent"`
+}
+
+func (r *DescribeDomainLogFilterFileRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDomainLogFilterFileRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "DomainId")
+	delete(f, "Keyword")
+	delete(f, "OperateBegin")
+	delete(f, "OperateEnd")
+	delete(f, "OperateUin")
+	delete(f, "OperateClientIP")
+	delete(f, "OperateContent")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDomainLogFilterFileRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDomainLogFilterFileResponseParams struct {
+	// 文件下载地址。
+	DownloadURL *string `json:"DownloadURL,omitnil,omitempty" name:"DownloadURL"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDomainLogFilterFileResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDomainLogFilterFileResponseParams `json:"Response"`
+}
+
+func (r *DescribeDomainLogFilterFileResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDomainLogFilterFileResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeDomainLogListRequestParams struct {
 	// 域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`

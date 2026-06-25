@@ -1294,6 +1294,20 @@ type AssetTag struct {
 	TagValue *string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
 }
 
+type AssetTagModifyAssetItem struct {
+	// <p>appid</p>
+	AppID *uint64 `json:"AppID,omitnil,omitempty" name:"AppID"`
+
+	// <p>资产类型</p>
+	AssetType *string `json:"AssetType,omitnil,omitempty" name:"AssetType"`
+
+	// <p>实例ID</p>
+	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
+
+	// <p>云厂商</p>
+	Provider *string `json:"Provider,omitnil,omitempty" name:"Provider"`
+}
+
 type AssetViewCFGRisk struct {
 	// 唯一id
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
@@ -2440,6 +2454,20 @@ type CloudCountDesc struct {
 type CommandPluginState struct {
 	// <p>插件安装状态（上层聚合）<br>枚举值：<br>NONE：未安装<br>INSTALLING：安装中<br>INSTALLED：已安装<br>INSTALL_FAIL：安装失败</p>
 	InstallStatus *string `json:"InstallStatus,omitnil,omitempty" name:"InstallStatus"`
+}
+
+type ContainerEnvInfo struct {
+	// <p>节点类型</p>
+	NodeType *string `json:"NodeType,omitnil,omitempty" name:"NodeType"`
+
+	// <p>docker版本</p>
+	DockerVersion *string `json:"DockerVersion,omitnil,omitempty" name:"DockerVersion"`
+
+	// <p>containerd版本</p>
+	ContainerdVersion *string `json:"ContainerdVersion,omitnil,omitempty" name:"ContainerdVersion"`
+
+	// <p>文件系统类型</p>
+	FileSystemType *string `json:"FileSystemType,omitnil,omitempty" name:"FileSystemType"`
 }
 
 type CosAccessInfo struct {
@@ -7712,6 +7740,158 @@ func (r *DescribeCVMAssetsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCVMAssetsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCWPMachineDetailRequestParams struct {
+	// <p>实例ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+type DescribeCWPMachineDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>实例ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+func (r *DescribeCWPMachineDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCWPMachineDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "MemberId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCWPMachineDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCWPMachineDetailResponseParams struct {
+	// <p>主机详情</p>
+	MachineDetail *MachineDetail `json:"MachineDetail,omitnil,omitempty" name:"MachineDetail"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeCWPMachineDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCWPMachineDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeCWPMachineDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCWPMachineDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCWPMachinesRequestParams struct {
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>一、主表字段筛选（需要指定 OperatorType）<br>MachineName：主机名称，支持 OperatorType 9(模糊)、7(IN)，Values示例：[&quot;test-server&quot;]<br>MachineIp：内网IP，支持 OperatorType 9(模糊)、7(IN)，Values示例：[&quot;10.0.0.1&quot;]<br>MachineWanIp：外网IP，支持 OperatorType 9(模糊)、7(IN)，Values示例：[&quot;1.2.3.4&quot;]<br>InstanceID：实例ID，支持 OperatorType 9(模糊)、7(IN)，Values示例：[&quot;ins-xxxxx&quot;]<br>MachineStatus / InstanceStatus：实例状态，支持 OperatorType 7(IN)、1(等于)，Values示例：[&quot;RUNNING&quot;]，可选值：RUNNING/STOPPED/EXPIRED<br>MachineOs：操作系统类型，支持 OperatorType 7(IN)，Values示例：[&quot;1&quot;]，值为数字编码，见下方OsType说明<br>VpcId：VPC ID，支持 OperatorType 7(IN)、1(等于)，Values示例：[&quot;vpc-xxxxx&quot;]<br>CloudFromEnum：云服务商，支持 OperatorType 7(IN)、1(等于)，Values示例：[&quot;0&quot;]，值为数字编码，见下方CloudFrom说明<br>Region ：地域，支持 OperatorType 7(IN)、1(等于)，Values示例：[&quot;ap-guangzhou&quot;]<br>AppId：账号AppId，支持 OperatorType 7(IN)、1(等于)，Values示例：[&quot;1234567890&quot;]<br>ProjectId：项目ID，支持 OperatorType 7(IN)、1(等于)，Values示例：[&quot;0&quot;]</p><p>二、预筛选字段（不需要指定 OperatorType）<br>AgentStatus：Agent状态，单选，Values示例：[&quot;ONLINE&quot;]，可选值：ONLINE/OFFLINE/UNINSTALL<br>ProtectType：防护类型（综合），Values示例：[&quot;ULTIMATE&quot;]，可选值：BASIC/PRO/ULTIMATE/NONE<br>CsipProtectType：CSIP防护类型，Values示例：[&quot;ULTIMATE&quot;]，可选值：BASIC/PRO/ULTIMATE/NONE<br>CloudTags：云标签，Values示例：[&quot;tagKey$tagValue&quot;]，格式：tagKey$tagValue 或 tagKey（只匹配key），最多5个值<br>Tags：资产标签，Values示例：[&quot;123&quot;]，值为标签ID<br>ExposedStatus：暴露状态，单选，Values示例：[&quot;EXPOSED&quot;]，可选值：NOT_APPLICABLE/EXPOSED/UNEXPOSED</p><p>三、特殊筛选字段（不需要指定 OperatorType）<br>NetworkType：网络类型，单选，Values示例：[&quot;1&quot;]，1=VPC网络, 2=基础网络, 3=非腾讯云网络<br>MachineType：机器类型，可多选，Values示例：[&quot;CVM&quot;]，可选值：CVM/BM/ECM/LH/EKS-NATIVE/ECS/EC2/VMS<br>Common：通用搜索，单选，Values示例：[&quot;关键词&quot;]，同时对内网IP、外网IP、主机名称、实例ID做模糊匹配</p>
+	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
+
+	// <p>是否需要tat状态信息</p>
+	NeedTatStatus *bool `json:"NeedTatStatus,omitnil,omitempty" name:"NeedTatStatus"`
+
+	// <p>是否需要额外信息，如安全中心标签、腾讯云标签</p>
+	MoreInformation *bool `json:"MoreInformation,omitnil,omitempty" name:"MoreInformation"`
+
+	// <p>是否需要容器信息，如容器数、核数、容器防护状态</p>
+	NeedContainerInfo *bool `json:"NeedContainerInfo,omitnil,omitempty" name:"NeedContainerInfo"`
+}
+
+type DescribeCWPMachinesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>一、主表字段筛选（需要指定 OperatorType）<br>MachineName：主机名称，支持 OperatorType 9(模糊)、7(IN)，Values示例：[&quot;test-server&quot;]<br>MachineIp：内网IP，支持 OperatorType 9(模糊)、7(IN)，Values示例：[&quot;10.0.0.1&quot;]<br>MachineWanIp：外网IP，支持 OperatorType 9(模糊)、7(IN)，Values示例：[&quot;1.2.3.4&quot;]<br>InstanceID：实例ID，支持 OperatorType 9(模糊)、7(IN)，Values示例：[&quot;ins-xxxxx&quot;]<br>MachineStatus / InstanceStatus：实例状态，支持 OperatorType 7(IN)、1(等于)，Values示例：[&quot;RUNNING&quot;]，可选值：RUNNING/STOPPED/EXPIRED<br>MachineOs：操作系统类型，支持 OperatorType 7(IN)，Values示例：[&quot;1&quot;]，值为数字编码，见下方OsType说明<br>VpcId：VPC ID，支持 OperatorType 7(IN)、1(等于)，Values示例：[&quot;vpc-xxxxx&quot;]<br>CloudFromEnum：云服务商，支持 OperatorType 7(IN)、1(等于)，Values示例：[&quot;0&quot;]，值为数字编码，见下方CloudFrom说明<br>Region ：地域，支持 OperatorType 7(IN)、1(等于)，Values示例：[&quot;ap-guangzhou&quot;]<br>AppId：账号AppId，支持 OperatorType 7(IN)、1(等于)，Values示例：[&quot;1234567890&quot;]<br>ProjectId：项目ID，支持 OperatorType 7(IN)、1(等于)，Values示例：[&quot;0&quot;]</p><p>二、预筛选字段（不需要指定 OperatorType）<br>AgentStatus：Agent状态，单选，Values示例：[&quot;ONLINE&quot;]，可选值：ONLINE/OFFLINE/UNINSTALL<br>ProtectType：防护类型（综合），Values示例：[&quot;ULTIMATE&quot;]，可选值：BASIC/PRO/ULTIMATE/NONE<br>CsipProtectType：CSIP防护类型，Values示例：[&quot;ULTIMATE&quot;]，可选值：BASIC/PRO/ULTIMATE/NONE<br>CloudTags：云标签，Values示例：[&quot;tagKey$tagValue&quot;]，格式：tagKey$tagValue 或 tagKey（只匹配key），最多5个值<br>Tags：资产标签，Values示例：[&quot;123&quot;]，值为标签ID<br>ExposedStatus：暴露状态，单选，Values示例：[&quot;EXPOSED&quot;]，可选值：NOT_APPLICABLE/EXPOSED/UNEXPOSED</p><p>三、特殊筛选字段（不需要指定 OperatorType）<br>NetworkType：网络类型，单选，Values示例：[&quot;1&quot;]，1=VPC网络, 2=基础网络, 3=非腾讯云网络<br>MachineType：机器类型，可多选，Values示例：[&quot;CVM&quot;]，可选值：CVM/BM/ECM/LH/EKS-NATIVE/ECS/EC2/VMS<br>Common：通用搜索，单选，Values示例：[&quot;关键词&quot;]，同时对内网IP、外网IP、主机名称、实例ID做模糊匹配</p>
+	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
+
+	// <p>是否需要tat状态信息</p>
+	NeedTatStatus *bool `json:"NeedTatStatus,omitnil,omitempty" name:"NeedTatStatus"`
+
+	// <p>是否需要额外信息，如安全中心标签、腾讯云标签</p>
+	MoreInformation *bool `json:"MoreInformation,omitnil,omitempty" name:"MoreInformation"`
+
+	// <p>是否需要容器信息，如容器数、核数、容器防护状态</p>
+	NeedContainerInfo *bool `json:"NeedContainerInfo,omitnil,omitempty" name:"NeedContainerInfo"`
+}
+
+func (r *DescribeCWPMachinesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCWPMachinesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MemberId")
+	delete(f, "Filter")
+	delete(f, "NeedTatStatus")
+	delete(f, "MoreInformation")
+	delete(f, "NeedContainerInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCWPMachinesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCWPMachinesResponseParams struct {
+	// <p>主机列表</p>
+	Machines []*Machine `json:"Machines,omitnil,omitempty" name:"Machines"`
+
+	// <p>总数</p>
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeCWPMachinesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCWPMachinesResponseParams `json:"Response"`
+}
+
+func (r *DescribeCWPMachinesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCWPMachinesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -18256,6 +18436,26 @@ func (r *DescribeVulViewVulRiskListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DiskPartitionInfo struct {
+	// <p>分区名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>挂载路径</p>
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
+
+	// <p>使用百分比</p>
+	Percent *float64 `json:"Percent,omitnil,omitempty" name:"Percent"`
+
+	// <p>分区大小(MB)</p>
+	Size *uint64 `json:"Size,omitnil,omitempty" name:"Size"`
+
+	// <p>分区类型</p>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>已使用(MB)</p>
+	Used *uint64 `json:"Used,omitnil,omitempty" name:"Used"`
+}
+
 type DomainAssetVO struct {
 	// 资产id
 	AssetId []*string `json:"AssetId,omitnil,omitempty" name:"AssetId"`
@@ -20369,6 +20569,282 @@ type Location struct {
 	City *string `json:"City,omitnil,omitempty" name:"City"`
 }
 
+type Machine struct {
+	// <p>Agent状态，取值：ONLINE-在线，OFFLINE-离线，UNINSTALL-未安装</p>
+	AgentStatus *string `json:"AgentStatus,omitnil,omitempty" name:"AgentStatus"`
+
+	// <p>Agent版本</p>
+	AgentVersion *string `json:"AgentVersion,omitnil,omitempty" name:"AgentVersion"`
+
+	// <p>账号AppId</p>
+	AppId *uint64 `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>云服务商</p>
+	CloudFromEnum *string `json:"CloudFromEnum,omitnil,omitempty" name:"CloudFromEnum"`
+
+	// <p>云标签列表</p>
+	CloudTags []*Tag `json:"CloudTags,omitnil,omitempty" name:"CloudTags"`
+
+	// <p>CSIP防护类型，取值：BASIC-基础版，PRO-专业版，ULTIMATE-旗舰版</p>
+	CsipProtectType *string `json:"CsipProtectType,omitnil,omitempty" name:"CsipProtectType"`
+
+	// <p>暴露状态</p>
+	ExposedStatus *string `json:"ExposedStatus,omitnil,omitempty" name:"ExposedStatus"`
+
+	// <p>实例ID</p>
+	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
+
+	// <p>实例状态，取值：RUNNING-运行中，STOPPED-已关机，EXPIRED-待回收</p>
+	InstanceStatus *string `json:"InstanceStatus,omitnil,omitempty" name:"InstanceStatus"`
+
+	// <p>网卡IP列表</p>
+	IpList []*string `json:"IpList,omitnil,omitempty" name:"IpList"`
+
+	// <p>是否为新增主机（15天内新增）</p>
+	IsNew *bool `json:"IsNew,omitnil,omitempty" name:"IsNew"`
+
+	// <p>内核版本</p>
+	KernelVersion *string `json:"KernelVersion,omitnil,omitempty" name:"KernelVersion"`
+
+	// <p>最近一次离线时间（Unix时间戳）</p>
+	LatestOfflineTime *int64 `json:"LatestOfflineTime,omitnil,omitempty" name:"LatestOfflineTime"`
+
+	// <p>内网IP</p>
+	MachineIp *string `json:"MachineIp,omitnil,omitempty" name:"MachineIp"`
+
+	// <p>主机名称</p>
+	MachineName *string `json:"MachineName,omitnil,omitempty" name:"MachineName"`
+
+	// <p>操作系统</p>
+	MachineOs *string `json:"MachineOs,omitnil,omitempty" name:"MachineOs"`
+
+	// <p>外网IP</p>
+	MachineWanIp *string `json:"MachineWanIp,omitnil,omitempty" name:"MachineWanIp"`
+
+	// <p>付费模式，取值：PREPAID-预付费，POSTPAID-后付费</p>
+	PayMode *string `json:"PayMode,omitnil,omitempty" name:"PayMode"`
+
+	// <p>项目ID</p>
+	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// <p>防护类型，取值：NONE-无防护，BASIC-基础版，PRO-专业版，ULTIMATE-旗舰版，PRO_LH-轻量版</p>
+	ProtectType *string `json:"ProtectType,omitnil,omitempty" name:"ProtectType"`
+
+	// <p>主机唯一标识</p>
+	Quuid *string `json:"Quuid,omitnil,omitempty" name:"Quuid"`
+
+	// <p>地域信息</p>
+	RegionInfo *RegionInfo `json:"RegionInfo,omitnil,omitempty" name:"RegionInfo"`
+
+	// <p>备注</p>
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// <p>资产标签列表</p>
+	TagItems []*MiniTagItem `json:"TagItems,omitnil,omitempty" name:"TagItems"`
+
+	// <p>标签修改信息</p>
+	TagModifyInfo *AssetTagModifyAssetItem `json:"TagModifyInfo,omitnil,omitempty" name:"TagModifyInfo"`
+
+	// <p>TAT状态，取值：ONLINE-在线，OFFLINE-离线</p>
+	TatStatus *string `json:"TatStatus,omitnil,omitempty" name:"TatStatus"`
+
+	// <p>Agent唯一标识</p>
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
+
+	// <p>VPC ID</p>
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// <p>主机节点类型</p><p>枚举值：</p><ul><li>NONE： 主机节点</li><li>CLUSTER： 集群节点</li><li>CONTAINER： 容器节点</li></ul>
+	NodeType *string `json:"NodeType,omitnil,omitempty" name:"NodeType"`
+
+	// <p>容器防护状态</p><p>枚举值：</p><ul><li>Enabled： 开启防护</li><li>Disabled： 关闭防护</li><li>Unknown： 未知</li></ul>
+	ContainerDefendStatus *string `json:"ContainerDefendStatus,omitnil,omitempty" name:"ContainerDefendStatus"`
+
+	// <p>容器数量</p>
+	ContainerCount *uint64 `json:"ContainerCount,omitnil,omitempty" name:"ContainerCount"`
+
+	// <p>核数</p>
+	CpuCoreCount *uint64 `json:"CpuCoreCount,omitnil,omitempty" name:"CpuCoreCount"`
+}
+
+type MachineDetail struct {
+	// <p>Agent状态</p>
+	AgentStatus *string `json:"AgentStatus,omitnil,omitempty" name:"AgentStatus"`
+
+	// <p>Agent版本</p>
+	AgentVersion *string `json:"AgentVersion,omitnil,omitempty" name:"AgentVersion"`
+
+	// <p>账号AppId</p>
+	AppId *uint64 `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>资产类型名称</p>
+	AssetTypeName *string `json:"AssetTypeName,omitnil,omitempty" name:"AssetTypeName"`
+
+	// <p>系统启动时间（Unix时间戳）</p>
+	BootTime *int64 `json:"BootTime,omitnil,omitempty" name:"BootTime"`
+
+	// <p>购买时间（Unix时间戳）</p>
+	BuyTime *int64 `json:"BuyTime,omitnil,omitempty" name:"BuyTime"`
+
+	// <p>云服务商</p>
+	CloudFromEnum *string `json:"CloudFromEnum,omitnil,omitempty" name:"CloudFromEnum"`
+
+	// <p>云标签列表</p>
+	CloudTags []*Tags `json:"CloudTags,omitnil,omitempty" name:"CloudTags"`
+
+	// <p>内核版本</p>
+	CoreVersion *string `json:"CoreVersion,omitnil,omitempty" name:"CoreVersion"`
+
+	// <p>CPU信息</p>
+	Cpu *string `json:"Cpu,omitnil,omitempty" name:"Cpu"`
+
+	// <p>CPU负载</p>
+	CpuLoad *string `json:"CpuLoad,omitnil,omitempty" name:"CpuLoad"`
+
+	// <p>CPU核数</p>
+	CpuSize *uint64 `json:"CpuSize,omitnil,omitempty" name:"CpuSize"`
+
+	// <p>设备型号</p>
+	DeviceVersion *string `json:"DeviceVersion,omitnil,omitempty" name:"DeviceVersion"`
+
+	// <p>磁盘分区信息</p>
+	Disks []*DiskPartitionInfo `json:"Disks,omitnil,omitempty" name:"Disks"`
+
+	// <p>到期时间（Unix时间戳）</p>
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>暴露状态</p>
+	ExposedStatus *string `json:"ExposedStatus,omitnil,omitempty" name:"ExposedStatus"`
+
+	// <p>安装时间（Unix时间戳）</p>
+	InstallTime *int64 `json:"InstallTime,omitnil,omitempty" name:"InstallTime"`
+
+	// <p>实例ID</p>
+	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
+
+	// <p>实例状态</p>
+	InstanceStatus *string `json:"InstanceStatus,omitnil,omitempty" name:"InstanceStatus"`
+
+	// <p>内核版本</p>
+	KernelVersion *string `json:"KernelVersion,omitnil,omitempty" name:"KernelVersion"`
+
+	// <p>最近一次在线时间（Unix时间戳）</p>
+	LatestLiveTime *int64 `json:"LatestLiveTime,omitnil,omitempty" name:"LatestLiveTime"`
+
+	// <p>最近一次离线时间（Unix时间戳）</p>
+	LatestOfflineTime *int64 `json:"LatestOfflineTime,omitnil,omitempty" name:"LatestOfflineTime"`
+
+	// <p>内网IP</p>
+	MachineIp *string `json:"MachineIp,omitnil,omitempty" name:"MachineIp"`
+
+	// <p>主机名称</p>
+	MachineName *string `json:"MachineName,omitnil,omitempty" name:"MachineName"`
+
+	// <p>操作系统（云采集）</p>
+	MachineOs *string `json:"MachineOs,omitnil,omitempty" name:"MachineOs"`
+
+	// <p>主机状态</p>
+	MachineStatus *string `json:"MachineStatus,omitnil,omitempty" name:"MachineStatus"`
+
+	// <p>外网IP</p>
+	MachineWanIp *string `json:"MachineWanIp,omitnil,omitempty" name:"MachineWanIp"`
+
+	// <p>内存大小(MB)</p>
+	MemSize *uint64 `json:"MemSize,omitnil,omitempty" name:"MemSize"`
+
+	// <p>内存使用率</p>
+	MemoryLoad *string `json:"MemoryLoad,omitnil,omitempty" name:"MemoryLoad"`
+
+	// <p>网卡信息</p>
+	NetCards []*NetworkCardInfo `json:"NetCards,omitnil,omitempty" name:"NetCards"`
+
+	// <p>操作系统（端采集）</p>
+	OsByAgent *string `json:"OsByAgent,omitnil,omitempty" name:"OsByAgent"`
+
+	// <p>付费模式</p>
+	PayMode *string `json:"PayMode,omitnil,omitempty" name:"PayMode"`
+
+	// <p>项目ID</p>
+	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// <p>已防护天数</p>
+	ProtectDays *uint64 `json:"ProtectDays,omitnil,omitempty" name:"ProtectDays"`
+
+	// <p>防护类型</p>
+	ProtectType *string `json:"ProtectType,omitnil,omitempty" name:"ProtectType"`
+
+	// <p>主机唯一标识</p>
+	Quuid *string `json:"Quuid,omitnil,omitempty" name:"Quuid"`
+
+	// <p>地域信息</p>
+	RegionInfo *RegionInfo `json:"RegionInfo,omitnil,omitempty" name:"RegionInfo"`
+
+	// <p>备注</p>
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// <p>序列号</p>
+	SerialNumber *string `json:"SerialNumber,omitnil,omitempty" name:"SerialNumber"`
+
+	// <p>资产标签列表</p>
+	TagItems []*MiniTagItem `json:"TagItems,omitnil,omitempty" name:"TagItems"`
+
+	// <p>标签修改信息</p>
+	TagModifyInfo *AssetTagModifyAssetItem `json:"TagModifyInfo,omitnil,omitempty" name:"TagModifyInfo"`
+
+	// <p>Agent唯一标识</p>
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
+
+	// <p>VPC CIDR</p>
+	VpcCidrBlock *string `json:"VpcCidrBlock,omitnil,omitempty" name:"VpcCidrBlock"`
+
+	// <p>VPC ID</p>
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// <p>VPC名称</p>
+	VpcName *string `json:"VpcName,omitnil,omitempty" name:"VpcName"`
+
+	// <p>主机节点类型</p><p>枚举值：</p><ul><li>NONE： 主机节点</li><li>CLUSTER： 集群节点</li><li>CONTAINER： 容器节点</li></ul>
+	NodeType *string `json:"NodeType,omitnil,omitempty" name:"NodeType"`
+
+	// <p>容器防护状态</p><p>枚举值：</p><ul><li>Enabled： 开启防护</li><li>Disabled： 关闭防护</li><li>Unknown： 未知</li></ul>
+	ContainerDefendStatus *string `json:"ContainerDefendStatus,omitnil,omitempty" name:"ContainerDefendStatus"`
+
+	// <p>集群签证md5</p>
+	ClusterCaMd5 *string `json:"ClusterCaMd5,omitnil,omitempty" name:"ClusterCaMd5"`
+
+	// <p>容器环境信息</p>
+	ContainerEnvInfo *ContainerEnvInfo `json:"ContainerEnvInfo,omitnil,omitempty" name:"ContainerEnvInfo"`
+
+	// <p>集群id</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// <p>集群名称</p>
+	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
+}
+
+type MiniTagItem struct {
+	// <p>标签颜色</p>
+	Color *string `json:"Color,omitnil,omitempty" name:"Color"`
+
+	// <p>描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>标签ID</p>
+	ID *uint64 `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// <p>标签键</p>
+	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
+
+	// <p>标签值</p>
+	TagValue *string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
+
+	// <p>标签键英文</p>
+	TagKeyEn *string `json:"TagKeyEn,omitnil,omitempty" name:"TagKeyEn"`
+
+	// <p>标签值英文</p>
+	TagValueEn *string `json:"TagValueEn,omitnil,omitempty" name:"TagValueEn"`
+}
+
 // Predefined struct for user
 type ModifyAlarmRiskStatusRequestParams struct {
 	// 告警或者风险id
@@ -21756,6 +22232,74 @@ func (r *ModifyIaCTokenPeriodResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyMachineRemarkRequestParams struct {
+	// <p>实例ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>备注信息</p>
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+type ModifyMachineRemarkRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>实例ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>备注信息</p>
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+func (r *ModifyMachineRemarkRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyMachineRemarkRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Remark")
+	delete(f, "MemberId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyMachineRemarkRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyMachineRemarkResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyMachineRemarkResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyMachineRemarkResponseParams `json:"Response"`
+}
+
+func (r *ModifyMachineRemarkResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyMachineRemarkResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyOrganizationAccountStatusRequestParams struct {
 	// 修改集团账号状态，1 开启， 0关闭
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
@@ -22246,6 +22790,26 @@ type NICAsset struct {
 	IsNewAsset *uint64 `json:"IsNewAsset,omitnil,omitempty" name:"IsNewAsset"`
 }
 
+type NetworkCardInfo struct {
+	// <p>DNS服务器</p>
+	DnsServer *string `json:"DnsServer,omitnil,omitempty" name:"DnsServer"`
+
+	// <p>网关</p>
+	Gateway *string `json:"Gateway,omitnil,omitempty" name:"Gateway"`
+
+	// <p>IP地址</p>
+	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
+
+	// <p>IPv6地址</p>
+	Ipv6 *string `json:"Ipv6,omitnil,omitempty" name:"Ipv6"`
+
+	// <p>MAC地址</p>
+	Mac *string `json:"Mac,omitnil,omitempty" name:"Mac"`
+
+	// <p>网卡名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+}
+
 type NewAlertKey struct {
 	// 需要更改的用户appid
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
@@ -22551,6 +23115,23 @@ type RegionConfig struct {
 
 	// <p>地域英文</p>
 	RegionNameEN *string `json:"RegionNameEN,omitnil,omitempty" name:"RegionNameEN"`
+}
+
+type RegionInfo struct {
+	// <p>地域</p>
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// <p>地域编码</p>
+	RegionCode *string `json:"RegionCode,omitnil,omitempty" name:"RegionCode"`
+
+	// <p>地域ID</p>
+	RegionId *uint64 `json:"RegionId,omitnil,omitempty" name:"RegionId"`
+
+	// <p>地域名称</p>
+	RegionName *string `json:"RegionName,omitnil,omitempty" name:"RegionName"`
+
+	// <p>地域英文名称</p>
+	RegionNameEn *string `json:"RegionNameEn,omitnil,omitempty" name:"RegionNameEn"`
 }
 
 type RelatedEvent struct {

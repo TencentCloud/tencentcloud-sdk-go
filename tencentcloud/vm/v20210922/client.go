@@ -169,7 +169,7 @@ func NewCreateVideoModerationTaskResponse() (response *CreateVideoModerationTask
 //
 //         - 当并发任务达到上限时，新任务进入队列等待处理;
 //
-//         - 支持通过`Priority`字段配置任务优先级（数值越大优先级越高），默认情况下新送审任务优先处理，旧任务往后排;
+//         - 支持通过`Priority`字段配置任务优先级（数值越大优先级越高），默认情况下，系统将优先处理较早推送的审核任务，新提交的任务将按时间顺序依次排列处理;
 //
 // - **直播视频（异步审核）**
 //
@@ -213,7 +213,7 @@ func NewCreateVideoModerationTaskResponse() (response *CreateVideoModerationTask
 //
 // - 视频文件分辨率支持：**最佳分辨率为1920x1080 (1080p)**，如果视频文件小于300MB，则分辨率可以大于1080p，分辨率最大支持4K，更大视频可以调用[云转码服务](https://cloud.tencent.com/product/mps/details)转码后再送审；
 //
-// - 视频文件支持格式：flv、mkv 、mp4 、rmvb 、avi 、wmv、3gp、ts、mov、rm、mpeg、wmf等。
+// - 视频文件支持格式：flv、mkv 、mp4 、rmvb 、avi 、wmv、3gp、ts、mov、rm、mpeg等。
 //
 // - 视频文件支持的访问方式：链接地址（支持HTTP/HTTPS）、腾讯云COS存储；
 //
@@ -295,7 +295,7 @@ func (c *Client) CreateVideoModerationTask(request *CreateVideoModerationTaskReq
 //
 //         - 当并发任务达到上限时，新任务进入队列等待处理;
 //
-//         - 支持通过`Priority`字段配置任务优先级（数值越大优先级越高），默认情况下新送审任务优先处理，旧任务往后排;
+//         - 支持通过`Priority`字段配置任务优先级（数值越大优先级越高），默认情况下，系统将优先处理较早推送的审核任务，新提交的任务将按时间顺序依次排列处理;
 //
 // - **直播视频（异步审核）**
 //
@@ -339,7 +339,7 @@ func (c *Client) CreateVideoModerationTask(request *CreateVideoModerationTaskReq
 //
 // - 视频文件分辨率支持：**最佳分辨率为1920x1080 (1080p)**，如果视频文件小于300MB，则分辨率可以大于1080p，分辨率最大支持4K，更大视频可以调用[云转码服务](https://cloud.tencent.com/product/mps/details)转码后再送审；
 //
-// - 视频文件支持格式：flv、mkv 、mp4 、rmvb 、avi 、wmv、3gp、ts、mov、rm、mpeg、wmf等。
+// - 视频文件支持格式：flv、mkv 、mp4 、rmvb 、avi 、wmv、3gp、ts、mov、rm、mpeg等。
 //
 // - 视频文件支持的访问方式：链接地址（支持HTTP/HTTPS）、腾讯云COS存储；
 //

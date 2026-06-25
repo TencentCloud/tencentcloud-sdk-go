@@ -1433,6 +1433,60 @@ func (c *Client) GetFlowStatisticByRegionWithContext(ctx context.Context, reques
     return
 }
 
+func NewGetGatewayListRequest() (request *GetGatewayListRequest) {
+    request = &GetGatewayListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mna", APIVersion, "GetGatewayList")
+    
+    
+    return
+}
+
+func NewGetGatewayListResponse() (response *GetGatewayListResponse) {
+    response = &GetGatewayListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetGatewayList
+// 支持网关列表查询。包含网关名称、创建时间和网关状态（正常/异常）。支持基于网关名称的查询。默认按照创建时间倒序排列。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) GetGatewayList(request *GetGatewayListRequest) (response *GetGatewayListResponse, err error) {
+    return c.GetGatewayListWithContext(context.Background(), request)
+}
+
+// GetGatewayList
+// 支持网关列表查询。包含网关名称、创建时间和网关状态（正常/异常）。支持基于网关名称的查询。默认按照创建时间倒序排列。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) GetGatewayListWithContext(ctx context.Context, request *GetGatewayListRequest) (response *GetGatewayListResponse, err error) {
+    if request == nil {
+        request = NewGetGatewayListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mna", APIVersion, "GetGatewayList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetGatewayList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetGatewayListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetGroupDetailRequest() (request *GetGroupDetailRequest) {
     request = &GetGroupDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},

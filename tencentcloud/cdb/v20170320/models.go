@@ -21,13 +21,10 @@ import (
 )
 
 type Account struct {
-	// 账号名，可输入1 - 32个字符。
+	// <p>账号名，可输入1 - 32个字符。</p>
 	User *string `json:"User,omitnil,omitempty" name:"User"`
 
-	// 账号的主机。
-	// 说明：
-	// 1. IP 形式，支持填入%。
-	// 2. 多个主机以分隔符分隔，分隔符支持;,|换行符和空格。
+	// <p>账号的主机。</p><p>IP 形式，支持填入%。</p>
 	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
 }
 
@@ -1920,46 +1917,38 @@ type CommonTimeWindow struct {
 
 // Predefined struct for user
 type CreateAccountsRequestParams struct {
-	// 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+	// <p>实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 云数据库账号。
+	// <p>云数据库账号。</p>
 	Accounts []*Account `json:"Accounts,omitnil,omitempty" name:"Accounts"`
 
-	// 新账户的密码。
-	// 说明：
-	// 1. 在8 ～ 64位字符数以内（推荐12位以上）。
-	// 2. 至少包含其中两项：小写字母 a ~ z 或 大写字母 A ～ Z。数字0 ～ 9。_+-,&=!@#$%^*().|。
-	// 3. 不能包含非法字符。
+	// <p>新账户的密码。<br>说明：</p><ol><li>在8 ～ 64位字符数以内（推荐12位以上）。</li><li>至少包含其中两项：小写字母 a ~ z 或 大写字母 A ～ Z。数字0 ～ 9。_+-,&amp;=!@#$%^*().|。</li><li>不能包含非法字符。</li></ol>
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
-	// 备注信息。最多支持输入255个字符。
+	// <p>备注信息。最多支持输入255个字符。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 新账户最大可用连接数，默认值为10240，最大可设置值为10240。
+	// <p>新账户最大可用连接数，默认值为10240，最大可设置值为10240。</p>
 	MaxUserConnections *int64 `json:"MaxUserConnections,omitnil,omitempty" name:"MaxUserConnections"`
 }
 
 type CreateAccountsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+	// <p>实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 云数据库账号。
+	// <p>云数据库账号。</p>
 	Accounts []*Account `json:"Accounts,omitnil,omitempty" name:"Accounts"`
 
-	// 新账户的密码。
-	// 说明：
-	// 1. 在8 ～ 64位字符数以内（推荐12位以上）。
-	// 2. 至少包含其中两项：小写字母 a ~ z 或 大写字母 A ～ Z。数字0 ～ 9。_+-,&=!@#$%^*().|。
-	// 3. 不能包含非法字符。
+	// <p>新账户的密码。<br>说明：</p><ol><li>在8 ～ 64位字符数以内（推荐12位以上）。</li><li>至少包含其中两项：小写字母 a ~ z 或 大写字母 A ～ Z。数字0 ～ 9。_+-,&amp;=!@#$%^*().|。</li><li>不能包含非法字符。</li></ol>
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
-	// 备注信息。最多支持输入255个字符。
+	// <p>备注信息。最多支持输入255个字符。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 新账户最大可用连接数，默认值为10240，最大可设置值为10240。
+	// <p>新账户最大可用连接数，默认值为10240，最大可设置值为10240。</p>
 	MaxUserConnections *int64 `json:"MaxUserConnections,omitnil,omitempty" name:"MaxUserConnections"`
 }
 
@@ -1988,7 +1977,7 @@ func (r *CreateAccountsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateAccountsResponseParams struct {
-	// 异步任务的请求 ID，可使用此 ID 查询异步任务的执行结果。
+	// <p>异步任务的请求 ID，可使用此 ID 查询异步任务的执行结果。</p>
 	AsyncRequestId *string `json:"AsyncRequestId,omitnil,omitempty" name:"AsyncRequestId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

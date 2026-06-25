@@ -1190,6 +1190,23 @@ type FlowPackageInfo struct {
 	CapacityRemainPrecise *uint64 `json:"CapacityRemainPrecise,omitnil,omitempty" name:"CapacityRemainPrecise"`
 }
 
+type GatewayInfo struct {
+	// <p>网关ID</p>
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// <p>网关名称</p>
+	GatewayName *string `json:"GatewayName,omitnil,omitempty" name:"GatewayName"`
+
+	// <p>创建时间，单位：秒</p>
+	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>网关状态。0：正常，1：异常</p>
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>网关实例数</p>
+	InstanceSize *int64 `json:"InstanceSize,omitnil,omitempty" name:"InstanceSize"`
+}
+
 // Predefined struct for user
 type GetActiveDeviceCountRequestParams struct {
 	// 查询粒度。0:day, 1:week, 2:month, 不传默认为day
@@ -2239,6 +2256,80 @@ func (r *GetFlowStatisticResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *GetFlowStatisticResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetGatewayListRequestParams struct {
+	// 页码，从1开始
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 每页个数
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 网关名称
+	GatewayName *string `json:"GatewayName,omitnil,omitempty" name:"GatewayName"`
+}
+
+type GetGatewayListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 页码，从1开始
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 每页个数
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 网关名称
+	GatewayName *string `json:"GatewayName,omitnil,omitempty" name:"GatewayName"`
+}
+
+func (r *GetGatewayListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetGatewayListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	delete(f, "GatewayName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetGatewayListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetGatewayListResponseParams struct {
+	// 网关列表
+	GatewayList []*GatewayInfo `json:"GatewayList,omitnil,omitempty" name:"GatewayList"`
+
+	// 总个数
+	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetGatewayListResponse struct {
+	*tchttp.BaseResponse
+	Response *GetGatewayListResponseParams `json:"Response"`
+}
+
+func (r *GetGatewayListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetGatewayListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

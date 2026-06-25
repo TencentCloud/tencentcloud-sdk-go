@@ -1289,32 +1289,32 @@ func (r *DescribeCrossBorderSettlementResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeEndpointGroupsRequestParams struct {
-	// 全球加速实例ID。
+	// <p>全球加速实例ID。</p>
 	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
 
-	// 偏移量，默认为0。
+	// <p>偏移量，默认为0。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，默认为20，最大值为100。
+	// <p>返回数量，默认为10，最大值为10。</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 过滤条件。  endpoint-group-id- String -（过滤条件）终端节点组实例ID。endpoint-group-type- String -（过滤条件）终端节点组实例类型。
+	// <p>过滤条件。  endpoint-group-id- String -（过滤条件）终端节点组实例ID。endpoint-group-type- String -（过滤条件）终端节点组实例类型。</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeEndpointGroupsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 全球加速实例ID。
+	// <p>全球加速实例ID。</p>
 	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
 
-	// 偏移量，默认为0。
+	// <p>偏移量，默认为0。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，默认为20，最大值为100。
+	// <p>返回数量，默认为10，最大值为10。</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 过滤条件。  endpoint-group-id- String -（过滤条件）终端节点组实例ID。endpoint-group-type- String -（过滤条件）终端节点组实例类型。
+	// <p>过滤条件。  endpoint-group-id- String -（过滤条件）终端节点组实例ID。endpoint-group-type- String -（过滤条件）终端节点组实例类型。</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -1342,10 +1342,10 @@ func (r *DescribeEndpointGroupsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeEndpointGroupsResponseParams struct {
-	// 符合条件的终端节点组。
+	// <p>符合条件的终端节点组。</p>
 	EndpointGroupConfigurationSet []*EndpointGroupConfigurationSet `json:"EndpointGroupConfigurationSet,omitnil,omitempty" name:"EndpointGroupConfigurationSet"`
 
-	// 符合条件的实例个数。
+	// <p>符合条件的实例个数。</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

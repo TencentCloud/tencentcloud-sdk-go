@@ -2107,6 +2107,84 @@ func (c *Client) DescribeAuditLogFilesWithContext(ctx context.Context, request *
     return
 }
 
+func NewDescribeDBAuditLogTopSqlsRequest() (request *DescribeDBAuditLogTopSqlsRequest) {
+    request = &DescribeDBAuditLogTopSqlsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dbbrain", APIVersion, "DescribeDBAuditLogTopSqls")
+    
+    
+    return
+}
+
+func NewDescribeDBAuditLogTopSqlsResponse() (response *DescribeDBAuditLogTopSqlsResponse) {
+    response = &DescribeDBAuditLogTopSqlsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDBAuditLogTopSqls
+// 按照Sql模板+schema的聚合方式，统计排序指定时间段内的top慢sql。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AUDITNOTOPENED = "FailedOperation.AuditNotOpened"
+//  FAILEDOPERATION_SEGMENTLOADING = "FailedOperation.SegmentLoading"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDBAuditLogTopSqls(request *DescribeDBAuditLogTopSqlsRequest) (response *DescribeDBAuditLogTopSqlsResponse, err error) {
+    return c.DescribeDBAuditLogTopSqlsWithContext(context.Background(), request)
+}
+
+// DescribeDBAuditLogTopSqls
+// 按照Sql模板+schema的聚合方式，统计排序指定时间段内的top慢sql。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AUDITNOTOPENED = "FailedOperation.AuditNotOpened"
+//  FAILEDOPERATION_SEGMENTLOADING = "FailedOperation.SegmentLoading"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDBAuditLogTopSqlsWithContext(ctx context.Context, request *DescribeDBAuditLogTopSqlsRequest) (response *DescribeDBAuditLogTopSqlsResponse, err error) {
+    if request == nil {
+        request = NewDescribeDBAuditLogTopSqlsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "DescribeDBAuditLogTopSqls")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDBAuditLogTopSqls require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDBAuditLogTopSqlsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDBAutonomyActionRequest() (request *DescribeDBAutonomyActionRequest) {
     request = &DescribeDBAutonomyActionRequest{
         BaseRequest: &tchttp.BaseRequest{},

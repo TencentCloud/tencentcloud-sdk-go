@@ -4092,44 +4092,47 @@ type LifecyclePolicy struct {
 }
 
 type LifecycleRule struct {
-	// 数据转储后的存储类型。其中：InfrequentAccess：低频介质存储；ColdStorage：冷存储。
+	// <p>数据转储后的存储类型。其中：InfrequentAccess：低频介质存储；ColdStorage：冷存储。</p>
 	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
 
-	// 数据转储文件类型。其中，BIG_FILE：超大文件；STD_FILE：普通文件；SMALL_FILE：小文件；ALL：所有文件。
+	// <p>数据转储文件类型。其中，BIG_FILE：超大文件；STD_FILE：普通文件；SMALL_FILE：小文件；ALL：所有文件。</p>
 	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
 
-	// 数据转储行为。其中，Archive：沉降；Noarchive：不沉降。
+	// <p>数据转储行为。其中，Archive：沉降；Noarchive：不沉降。</p>
 	Action *string `json:"Action,omitnil,omitempty" name:"Action"`
 
-	// 数据转储触发时间。由“DEFAULT_ATIME_”与“数字”组成，单位为天。当 Action 为 Noarchive，请保持为空。
+	// <p>数据转储触发时间。由“DEFAULT_ATIME_”与“数字”组成，单位为天。当 Action 为 Noarchive，请保持为空。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Interval *string `json:"Interval,omitnil,omitempty" name:"Interval"`
 
-	// 数据转储文件最大规格。其数值需使用“数字+单位”格式进行表示，单位支持K（KiB）、M（MiB）、G（GiB）。
+	// <p>数据转储文件最大规格。其数值需使用“数字+单位”格式进行表示，单位支持K（KiB）、M（MiB）、G（GiB）。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileMaxSize *string `json:"FileMaxSize,omitnil,omitempty" name:"FileMaxSize"`
 
-	// 数据转储文件最小规格。其数值需使用“数字+单位”格式进行表示，单位支持K（KiB）、M（MiB）、G（GiB）。
+	// <p>数据转储文件最小规格。其数值需使用“数字+单位”格式进行表示，单位支持K（KiB）、M（MiB）、G（GiB）。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileMinSize *string `json:"FileMinSize,omitnil,omitempty" name:"FileMinSize"`
 
-	// 策略类型
+	// <p>策略类型</p>
 	PolicyType *string `json:"PolicyType,omitnil,omitempty" name:"PolicyType"`
 
-	// 阈值范围[10-90]
+	// <p>阈值范围[10-90]</p>
 	ExpireThreshold *uint64 `json:"ExpireThreshold,omitnil,omitempty" name:"ExpireThreshold"`
 
-	// 阈值范围[10-90]
+	// <p>阈值范围[10-90]</p>
 	TargetThreshold *uint64 `json:"TargetThreshold,omitnil,omitempty" name:"TargetThreshold"`
 
-	// 当CFSTurbo内的文件和外置存储存在同名情况时，是否覆盖。
-	// 
-	// ture：覆盖
-	// 
-	// false：不覆盖（同时也不会释放热存数据）
-	// 
-	// 为空时，默认为false
+	// <p>当CFSTurbo内的文件和外置存储存在同名情况时，是否覆盖。</p><p>ture：覆盖</p><p>false：不覆盖（同时也不会释放热存数据）</p><p>为空时，默认为false</p>
 	IsOverwrite *bool `json:"IsOverwrite,omitnil,omitempty" name:"IsOverwrite"`
+
+	// <p>新建文件是否近实时同步至 S3。true：近实时同步（30 秒内）/ false：基于策略配置时间同步。默认 false。仅当 StorageType=ExternalStorage 时生效</p>
+	IsCreateRealTimeSync *bool `json:"IsCreateRealTimeSync,omitnil,omitempty" name:"IsCreateRealTimeSync"`
+
+	// <p>修改文件是否近实时同步至 S3。true：近实时同步（30 秒内）/ false：基于策略配置时间同步。默认 false。仅当 StorageType=ExternalStorage 时生效。与 IsOverwrite 独立</p>
+	IsModifyRealTimeSync *bool `json:"IsModifyRealTimeSync,omitnil,omitempty" name:"IsModifyRealTimeSync"`
+
+	// <p>删除文件是否同步至 S3。true：同步删除（30 秒内）/ false：不同步删除。默认 false。为 true 时要求目标 COS Bucket 已开启多版本。仅当 StorageType=ExternalStorage 时生效</p>
+	IsSyncDelete *bool `json:"IsSyncDelete,omitnil,omitempty" name:"IsSyncDelete"`
 }
 
 type MigrationTaskInfo struct {

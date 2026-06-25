@@ -5045,7 +5045,7 @@ func NewImportOpenApiResponse() (response *ImportOpenApiResponse) {
 }
 
 // ImportOpenApi
-// 本接口（ImportOpenApi）用于将OpenAPI规范定义的API导入到API网关。 
+// 本接口（ImportOpenApi）用于将OpenAPI规范定义的API导入到API网关。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -5067,7 +5067,7 @@ func (c *Client) ImportOpenApi(request *ImportOpenApiRequest) (response *ImportO
 }
 
 // ImportOpenApi
-// 本接口（ImportOpenApi）用于将OpenAPI规范定义的API导入到API网关。 
+// 本接口（ImportOpenApi）用于将OpenAPI规范定义的API导入到API网关。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

@@ -2597,6 +2597,150 @@ func (r *DescribeAuditLogFilesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeDBAuditLogTopSqlsRequestParams struct {
+	// <p>开始时间，如“2019-09-10 12:13:14”。</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>截止时间，如“2019-09-11 10:13:14”，截止时间与开始时间的间隔小于7天。</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>服务产品类型，支持值包括： &quot;mysql&quot; - 云数据库 MySQL， &quot;cynosdb&quot; - 云数据库 CynosDB  for MySQL，默认为&quot;mysql&quot;。</p>
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// <p>实例 ID 。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>排序键，目前支持 QueryTime,ExecTimes,RowsSent,LockTime以及RowsExamined 等排序键，默认为QueryTime。</p>
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
+
+	// <p>排序方式，支持ASC（升序）以及DESC（降序），默认为DESC。</p>
+	OrderByDirection *string `json:"OrderByDirection,omitnil,omitempty" name:"OrderByDirection"`
+
+	// <p>返回数量，默认为20，最大值为100。</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>偏移量，默认为0。</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>表名</p>
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// <p>Hosts名</p>
+	Hosts []*string `json:"Hosts,omitnil,omitempty" name:"Hosts"`
+
+	// <p>sql codes</p>
+	SqlCodes []*string `json:"SqlCodes,omitnil,omitempty" name:"SqlCodes"`
+
+	// <p>sql语句</p>
+	SqlSample *string `json:"SqlSample,omitnil,omitempty" name:"SqlSample"`
+
+	// <p>用户名列表</p>
+	Users []*string `json:"Users,omitnil,omitempty" name:"Users"`
+}
+
+type DescribeDBAuditLogTopSqlsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>开始时间，如“2019-09-10 12:13:14”。</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>截止时间，如“2019-09-11 10:13:14”，截止时间与开始时间的间隔小于7天。</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>服务产品类型，支持值包括： &quot;mysql&quot; - 云数据库 MySQL， &quot;cynosdb&quot; - 云数据库 CynosDB  for MySQL，默认为&quot;mysql&quot;。</p>
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// <p>实例 ID 。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>排序键，目前支持 QueryTime,ExecTimes,RowsSent,LockTime以及RowsExamined 等排序键，默认为QueryTime。</p>
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
+
+	// <p>排序方式，支持ASC（升序）以及DESC（降序），默认为DESC。</p>
+	OrderByDirection *string `json:"OrderByDirection,omitnil,omitempty" name:"OrderByDirection"`
+
+	// <p>返回数量，默认为20，最大值为100。</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>偏移量，默认为0。</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>表名</p>
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// <p>Hosts名</p>
+	Hosts []*string `json:"Hosts,omitnil,omitempty" name:"Hosts"`
+
+	// <p>sql codes</p>
+	SqlCodes []*string `json:"SqlCodes,omitnil,omitempty" name:"SqlCodes"`
+
+	// <p>sql语句</p>
+	SqlSample *string `json:"SqlSample,omitnil,omitempty" name:"SqlSample"`
+
+	// <p>用户名列表</p>
+	Users []*string `json:"Users,omitnil,omitempty" name:"Users"`
+}
+
+func (r *DescribeDBAuditLogTopSqlsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDBAuditLogTopSqlsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Product")
+	delete(f, "InstanceId")
+	delete(f, "OrderBy")
+	delete(f, "OrderByDirection")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "TableName")
+	delete(f, "Hosts")
+	delete(f, "SqlCodes")
+	delete(f, "SqlSample")
+	delete(f, "Users")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDBAuditLogTopSqlsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDBAuditLogTopSqlsResponseParams struct {
+	// <p>符合条件的记录总数。</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>top sql 列表</p>
+	TopSqls []*TopSqlTpl `json:"TopSqls,omitnil,omitempty" name:"TopSqls"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDBAuditLogTopSqlsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDBAuditLogTopSqlsResponseParams `json:"Response"`
+}
+
+func (r *DescribeDBAuditLogTopSqlsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDBAuditLogTopSqlsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeDBAutonomyActionRequestParams struct {
 	// 自治任务ID。可通过 [DescribeDBAutonomyActions](https://cloud.tencent.com/document/product/1130/116974) 接口获取。
 	ActionId *int64 `json:"ActionId,omitnil,omitempty" name:"ActionId"`
@@ -9129,6 +9273,136 @@ type TopHotKeys struct {
 
 	// 数据类型。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
+type TopSqlTpl struct {
+	// <p>执行次数</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecTimes *int64 `json:"ExecTimes,omitnil,omitempty" name:"ExecTimes"`
+
+	// <p>SQL模板Id，数据类型Long。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SqlTemplateId *string `json:"SqlTemplateId,omitnil,omitempty" name:"SqlTemplateId"`
+
+	// <p>最小影响行数</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AffectRowsMin *int64 `json:"AffectRowsMin,omitnil,omitempty" name:"AffectRowsMin"`
+
+	// <p>sql模板</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SqlTemplate *string `json:"SqlTemplate,omitnil,omitempty" name:"SqlTemplate"`
+
+	// <p>表名</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// <p>最大影响行数</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AffectRowsMax *int64 `json:"AffectRowsMax,omitnil,omitempty" name:"AffectRowsMax"`
+
+	// <p>sql类型</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SqlType *string `json:"SqlType,omitnil,omitempty" name:"SqlType"`
+
+	// <p>影响行数</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AffectRows *int64 `json:"AffectRows,omitnil,omitempty" name:"AffectRows"`
+
+	// <p>DB名</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DB *string `json:"DB,omitnil,omitempty" name:"DB"`
+
+	// <p>最小锁等待时间</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LockWaitTimeMin *float64 `json:"LockWaitTimeMin,omitnil,omitempty" name:"LockWaitTimeMin"`
+
+	// <p>cpu时间</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CpuTime *float64 `json:"CpuTime,omitnil,omitempty" name:"CpuTime"`
+
+	// <p>最大io等待时间，单位秒</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IoWaitTimeMax *float64 `json:"IoWaitTimeMax,omitnil,omitempty" name:"IoWaitTimeMax"`
+
+	// <p>最大锁等待时间，单位秒</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LockWaitTimeMax *float64 `json:"LockWaitTimeMax,omitnil,omitempty" name:"LockWaitTimeMax"`
+
+	// <p>最小检查行数</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CheckRowsMin *int64 `json:"CheckRowsMin,omitnil,omitempty" name:"CheckRowsMin"`
+
+	// <p>检查行数</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CheckRows *int64 `json:"CheckRows,omitnil,omitempty" name:"CheckRows"`
+
+	// <p>最大cpu时间，单位秒</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CpuTimeMax *float64 `json:"CpuTimeMax,omitnil,omitempty" name:"CpuTimeMax"`
+
+	// <p>最小io等待时间，单位秒</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IoWaitTimeMin *int64 `json:"IoWaitTimeMin,omitnil,omitempty" name:"IoWaitTimeMin"`
+
+	// <p>最大执行时间，单位秒</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LatencyMax *float64 `json:"LatencyMax,omitnil,omitempty" name:"LatencyMax"`
+
+	// <p>io等待时间，单位秒</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IoWaitTime *float64 `json:"IoWaitTime,omitnil,omitempty" name:"IoWaitTime"`
+
+	// <p>最大检查行数</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CheckRowsMax *int64 `json:"CheckRowsMax,omitnil,omitempty" name:"CheckRowsMax"`
+
+	// <p>最小cpu时间，单位秒</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CpuTimeMin *float64 `json:"CpuTimeMin,omitnil,omitempty" name:"CpuTimeMin"`
+
+	// <p>sql详情</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SqlText *string `json:"SqlText,omitnil,omitempty" name:"SqlText"`
+
+	// <p>锁等待时间，单位秒</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LockWaitTime *float64 `json:"LockWaitTime,omitnil,omitempty" name:"LockWaitTime"`
+
+	// <p>最小执行时间，单位秒</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LatencyMin *float64 `json:"LatencyMin,omitnil,omitempty" name:"LatencyMin"`
+
+	// <p>执行时间，单位秒</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Latency *float64 `json:"Latency,omitnil,omitempty" name:"Latency"`
+
+	// <p>queryTime 占比，单位%</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QueryTimeRatio *string `json:"QueryTimeRatio,omitnil,omitempty" name:"QueryTimeRatio"`
+
+	// <p>平均扫描行数</p>
+	CheckRowsAvg *int64 `json:"CheckRowsAvg,omitnil,omitempty" name:"CheckRowsAvg"`
+
+	// <p>平均cpu时间</p>
+	CpuTimeAvg *float64 `json:"CpuTimeAvg,omitnil,omitempty" name:"CpuTimeAvg"`
+
+	// <p>平均io等待时间</p>
+	IoWaitTimeAvg *float64 `json:"IoWaitTimeAvg,omitnil,omitempty" name:"IoWaitTimeAvg"`
+
+	// <p>平均执行时间</p>
+	LatencyAvg *float64 `json:"LatencyAvg,omitnil,omitempty" name:"LatencyAvg"`
+
+	// <p>平均锁等待时长</p>
+	LockWaitTimeAvg *float64 `json:"LockWaitTimeAvg,omitnil,omitempty" name:"LockWaitTimeAvg"`
+
+	// <p>发送行数</p>
+	SentRows *int64 `json:"SentRows,omitnil,omitempty" name:"SentRows"`
+
+	// <p>平均发送行数</p>
+	SentRowsAvg *int64 `json:"SentRowsAvg,omitnil,omitempty" name:"SentRowsAvg"`
+
+	// <p>平均影响行数</p>
+	AffectRowsAvg *int64 `json:"AffectRowsAvg,omitnil,omitempty" name:"AffectRowsAvg"`
 }
 
 // Predefined struct for user

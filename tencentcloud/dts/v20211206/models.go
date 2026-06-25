@@ -4878,19 +4878,19 @@ type JobItem struct {
 }
 
 type KafkaOption struct {
-	// 投递到kafka的数据类型，如Avro,Json,canal-pb,canal-json,debezium
+	// <p>投递到kafka的数据类型，如Avro,Json,canal-pb,canal-json,debezium</p>
 	DataType *string `json:"DataType,omitnil,omitempty" name:"DataType"`
 
-	// 同步topic策略，如Single（集中投递到单topic）,Multi (自定义topic名称)
+	// <p>同步topic策略，如Single（集中投递到单topic）,Multi (自定义topic名称)</p>
 	TopicType *string `json:"TopicType,omitnil,omitempty" name:"TopicType"`
 
-	// 用于存储ddl的topic
+	// <p>用于存储ddl的topic</p>
 	DDLTopicName *string `json:"DDLTopicName,omitnil,omitempty" name:"DDLTopicName"`
 
-	// 单topic和自定义topic的描述
+	// <p>单topic和自定义topic的描述</p>
 	TopicRules []*TopicRule `json:"TopicRules,omitnil,omitempty" name:"TopicRules"`
 
-	// 其他附加信息，对于特定数据类型可设置额外参数，比如针对Canal兼容的功能支持："canalOfficialFormat":"on"表示打开Canal兼容功能，默认不带。
+	// <p>其他附加信息，对于特定数据类型可设置额外参数。比如针对Canal兼容的功能支持：&quot;canalOfficialFormat&quot;:&quot;on&quot;表示打开Canal兼容功能，默认不带。针对大消息跳过的功能支持：&quot;skipLargeMessage&quot;:&quot;on&quot;表示开启跳过大消息，默认不带；开启时需同时设置&quot;maxMessageSizeMB&quot;为1~100的正整数字符串，表示最大消息大小阈值（MB），超过该大小的消息将被跳过，默认不带。</p>
 	DataOption []*KeyValuePairOption `json:"DataOption,omitnil,omitempty" name:"DataOption"`
 }
 

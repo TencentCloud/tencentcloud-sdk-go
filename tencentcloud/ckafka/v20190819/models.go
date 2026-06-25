@@ -1796,7 +1796,7 @@ type CreateInstancePreRequestParams struct {
 	// <p>可用区。当购买多可用区实例时，当前参数为主可用区。  <a href="https://cloud.tencent.com/document/product/597/55246">查看可用区</a></p>
 	ZoneId *int64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// <p>预付费购买时长，例如 "1m",就是一个月,取值范围 1m~36m</p>
+	// <p>预付费购买时长，例如 &quot;1m&quot;,就是一个月,取值范围 1m~36m</p>
 	Period *string `json:"Period,omitnil,omitempty" name:"Period"`
 
 	// <p>国际站标准版实例规格。目前只有国际站标准版使用当前字段区分规格，国内站标准版使用峰值带宽区分规格。除了国际站标准版外的所有实例填写 1 即可。国际站标准版实例：入门型(general)]填写1；[标准型(standard)]填写2；[进阶型(advanced)]填写3；[容量型(capacity)]填写4；[高阶型1(specialized-1)]填写5；[高阶型2(specialized-2)]填写6；[高阶型3(specialized-3)]填写7；[高阶型4(specialized-4)]填写8。</p>
@@ -1820,7 +1820,7 @@ type CreateInstancePreRequestParams struct {
 	// <p>CKafka版本号[2.4.1, 2.4.2, 2.8.1, 3.2.3], 默认取值是2.4.1。2.4.1 与 2.4.2 属于同一个版本，传任意一个均可。</p>
 	KafkaVersion *string `json:"KafkaVersion,omitnil,omitempty" name:"KafkaVersion"`
 
-	// <p>实例类型: [标准版实例]填写 "standard" (默认), [专业版实例]填写 "profession",[高级版实例]填写"premium"</p>
+	// <p>实例类型: [标准版实例]填写 &quot;standard&quot; (默认), [专业版实例]填写 &quot;profession&quot;,[高级版实例]填写&quot;premium&quot;</p>
 	SpecificationsType *string `json:"SpecificationsType,omitnil,omitempty" name:"SpecificationsType"`
 
 	// <p>磁盘大小，如果跟控制台规格配比不相符，则无法创建成功。默认取值为500，步长设置为100。可以通过以下链接查看计费规格：https://cloud.tencent.com/document/product/597/122562</p>
@@ -1835,7 +1835,7 @@ type CreateInstancePreRequestParams struct {
 	// <p>标签</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// <p>专业版/高级版实例磁盘类型，标准版实例不需要填写。"CLOUD_SSD"：SSD云硬盘；"CLOUD_BASIC"：高性能云硬盘。不传默认为 "CLOUD_BASIC"</p>
+	// <p>专业版/高级版实例磁盘类型，标准版实例不需要填写。&quot;CLOUD_SSD&quot;：SSD云硬盘；&quot;CLOUD_BASIC&quot;：高性能云硬盘。不传默认为 &quot;CLOUD_BASIC&quot;</p>
 	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
 
 	// <p>是否创建跨可用区实例，当前参数为 true 时，zoneIds必填</p>
@@ -1858,6 +1858,9 @@ type CreateInstancePreRequestParams struct {
 
 	// <p>自定义证书Id,仅当SpecificationsType为profession时生效,支持自定义证书能力</p><p>可通过<a href="https://cloud.tencent.com/document/product/400/41673">DescribeCertificateDetail</a>接口获取</p>
 	CustomSSLCertId *string `json:"CustomSSLCertId,omitnil,omitempty" name:"CustomSSLCertId"`
+
+	// <p>弹性存储开关</p><p>枚举值：</p><ul><li>0： 关闭</li><li>1： 开启</li></ul><p>默认值：0</p>
+	StoreQuantityType *int64 `json:"StoreQuantityType,omitnil,omitempty" name:"StoreQuantityType"`
 }
 
 type CreateInstancePreRequest struct {
@@ -1869,7 +1872,7 @@ type CreateInstancePreRequest struct {
 	// <p>可用区。当购买多可用区实例时，当前参数为主可用区。  <a href="https://cloud.tencent.com/document/product/597/55246">查看可用区</a></p>
 	ZoneId *int64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// <p>预付费购买时长，例如 "1m",就是一个月,取值范围 1m~36m</p>
+	// <p>预付费购买时长，例如 &quot;1m&quot;,就是一个月,取值范围 1m~36m</p>
 	Period *string `json:"Period,omitnil,omitempty" name:"Period"`
 
 	// <p>国际站标准版实例规格。目前只有国际站标准版使用当前字段区分规格，国内站标准版使用峰值带宽区分规格。除了国际站标准版外的所有实例填写 1 即可。国际站标准版实例：入门型(general)]填写1；[标准型(standard)]填写2；[进阶型(advanced)]填写3；[容量型(capacity)]填写4；[高阶型1(specialized-1)]填写5；[高阶型2(specialized-2)]填写6；[高阶型3(specialized-3)]填写7；[高阶型4(specialized-4)]填写8。</p>
@@ -1893,7 +1896,7 @@ type CreateInstancePreRequest struct {
 	// <p>CKafka版本号[2.4.1, 2.4.2, 2.8.1, 3.2.3], 默认取值是2.4.1。2.4.1 与 2.4.2 属于同一个版本，传任意一个均可。</p>
 	KafkaVersion *string `json:"KafkaVersion,omitnil,omitempty" name:"KafkaVersion"`
 
-	// <p>实例类型: [标准版实例]填写 "standard" (默认), [专业版实例]填写 "profession",[高级版实例]填写"premium"</p>
+	// <p>实例类型: [标准版实例]填写 &quot;standard&quot; (默认), [专业版实例]填写 &quot;profession&quot;,[高级版实例]填写&quot;premium&quot;</p>
 	SpecificationsType *string `json:"SpecificationsType,omitnil,omitempty" name:"SpecificationsType"`
 
 	// <p>磁盘大小，如果跟控制台规格配比不相符，则无法创建成功。默认取值为500，步长设置为100。可以通过以下链接查看计费规格：https://cloud.tencent.com/document/product/597/122562</p>
@@ -1908,7 +1911,7 @@ type CreateInstancePreRequest struct {
 	// <p>标签</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// <p>专业版/高级版实例磁盘类型，标准版实例不需要填写。"CLOUD_SSD"：SSD云硬盘；"CLOUD_BASIC"：高性能云硬盘。不传默认为 "CLOUD_BASIC"</p>
+	// <p>专业版/高级版实例磁盘类型，标准版实例不需要填写。&quot;CLOUD_SSD&quot;：SSD云硬盘；&quot;CLOUD_BASIC&quot;：高性能云硬盘。不传默认为 &quot;CLOUD_BASIC&quot;</p>
 	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
 
 	// <p>是否创建跨可用区实例，当前参数为 true 时，zoneIds必填</p>
@@ -1931,6 +1934,9 @@ type CreateInstancePreRequest struct {
 
 	// <p>自定义证书Id,仅当SpecificationsType为profession时生效,支持自定义证书能力</p><p>可通过<a href="https://cloud.tencent.com/document/product/400/41673">DescribeCertificateDetail</a>接口获取</p>
 	CustomSSLCertId *string `json:"CustomSSLCertId,omitnil,omitempty" name:"CustomSSLCertId"`
+
+	// <p>弹性存储开关</p><p>枚举值：</p><ul><li>0： 关闭</li><li>1： 开启</li></ul><p>默认值：0</p>
+	StoreQuantityType *int64 `json:"StoreQuantityType,omitnil,omitempty" name:"StoreQuantityType"`
 }
 
 func (r *CreateInstancePreRequest) ToJsonString() string {
@@ -1968,6 +1974,7 @@ func (r *CreateInstancePreRequest) FromJsonString(s string) error {
 	delete(f, "AutoVoucher")
 	delete(f, "ElasticBandwidthSwitch")
 	delete(f, "CustomSSLCertId")
+	delete(f, "StoreQuantityType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInstancePreRequest has unknown keys!", "")
 	}
@@ -2476,6 +2483,9 @@ type CreatePostPaidInstanceRequestParams struct {
 
 	// <p>自定义证书Id,仅当SpecificationsType为profession时生效,支持自定义证书能力</p><p>可通过<a href="https://cloud.tencent.com/document/product/400/41673">DescribeCertificateDetail</a>接口获取</p>
 	CustomSSLCertId *string `json:"CustomSSLCertId,omitnil,omitempty" name:"CustomSSLCertId"`
+
+	// <p>弹性存储开关</p><p>枚举值：</p><ul><li>0： 关闭</li><li>1： 开启</li></ul><p>默认值：0</p>
+	StoreQuantityType *int64 `json:"StoreQuantityType,omitnil,omitempty" name:"StoreQuantityType"`
 }
 
 type CreatePostPaidInstanceRequest struct {
@@ -2543,6 +2553,9 @@ type CreatePostPaidInstanceRequest struct {
 
 	// <p>自定义证书Id,仅当SpecificationsType为profession时生效,支持自定义证书能力</p><p>可通过<a href="https://cloud.tencent.com/document/product/400/41673">DescribeCertificateDetail</a>接口获取</p>
 	CustomSSLCertId *string `json:"CustomSSLCertId,omitnil,omitempty" name:"CustomSSLCertId"`
+
+	// <p>弹性存储开关</p><p>枚举值：</p><ul><li>0： 关闭</li><li>1： 开启</li></ul><p>默认值：0</p>
+	StoreQuantityType *int64 `json:"StoreQuantityType,omitnil,omitempty" name:"StoreQuantityType"`
 }
 
 func (r *CreatePostPaidInstanceRequest) ToJsonString() string {
@@ -2578,6 +2591,7 @@ func (r *CreatePostPaidInstanceRequest) FromJsonString(s string) error {
 	delete(f, "Tags")
 	delete(f, "ElasticBandwidthSwitch")
 	delete(f, "CustomSSLCertId")
+	delete(f, "StoreQuantityType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePostPaidInstanceRequest has unknown keys!", "")
 	}
@@ -10573,41 +10587,44 @@ type MqttConnectParam struct {
 }
 
 type MqttParam struct {
-	// 需要同步的MQTT Topic列表, CSV格式
+	// <p>需要同步的MQTT Topic列表, CSV格式</p>
 	Topics *string `json:"Topics,omitnil,omitempty" name:"Topics"`
 
-	// 用于控制会话的持久性。cleanSession 为true时，连接时会创建一个全新的会话。 cleanSession = false时，连接时会恢复之前的会话。
+	// <p>用于控制会话的持久性。cleanSession 为true时，连接时会创建一个全新的会话。 cleanSession = false时，连接时会恢复之前的会话。</p>
 	CleanSession *bool `json:"CleanSession,omitnil,omitempty" name:"CleanSession"`
 
-	// MQTT instance-id
+	// <p>MQTT instance-id</p>
 	Resource *string `json:"Resource,omitnil,omitempty" name:"Resource"`
 
-	// MQTT实例VIP
+	// <p>MQTT实例VIP</p>
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
-	// MQTT VIP 端口
+	// <p>MQTT VIP 端口</p>
 	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
 
-	// MQTT实例用户名
+	// <p>MQTT实例用户名</p>
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
-	// MQTT实例内账户密码
+	// <p>MQTT实例内账户密码</p>
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
-	// QoS
+	// <p>QoS</p>
 	Qos *int64 `json:"Qos,omitnil,omitempty" name:"Qos"`
 
-	// tasks.max 订阅Topic的并发Task个数, 默认为1; 当设置大于1时, 使用Shared Subscription
+	// <p>tasks.max 订阅Topic的并发Task个数, 默认为1; 当设置大于1时, 使用Shared Subscription</p>
 	MaxTasks *int64 `json:"MaxTasks,omitnil,omitempty" name:"MaxTasks"`
 
-	// MQTT 实例的Service VIP
+	// <p>MQTT 实例的Service VIP</p>
 	ServiceVip *string `json:"ServiceVip,omitnil,omitempty" name:"ServiceVip"`
 
-	// MQTT实例的VPC ID
+	// <p>MQTT实例的VPC ID</p>
 	UniqVpcId *string `json:"UniqVpcId,omitnil,omitempty" name:"UniqVpcId"`
 
-	// 是否为自建集群, MQTT只支持非自建集群
+	// <p>是否为自建集群, MQTT只支持非自建集群</p>
 	SelfBuilt *bool `json:"SelfBuilt,omitnil,omitempty" name:"SelfBuilt"`
+
+	// <p>MQTT消息过滤sql语句</p>
+	SqlFilter *string `json:"SqlFilter,omitnil,omitempty" name:"SqlFilter"`
 }
 
 type MySQLConnectParam struct {

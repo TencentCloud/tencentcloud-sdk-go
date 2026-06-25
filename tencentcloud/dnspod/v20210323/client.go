@@ -3607,6 +3607,70 @@ func (c *Client) DescribeDomainListWithContext(ctx context.Context, request *Des
     return
 }
 
+func NewDescribeDomainLogFilterFileRequest() (request *DescribeDomainLogFilterFileRequest) {
+    request = &DescribeDomainLogFilterFileRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dnspod", APIVersion, "DescribeDomainLogFilterFile")
+    
+    
+    return
+}
+
+func NewDescribeDomainLogFilterFileResponse() (response *DescribeDomainLogFilterFileResponse) {
+    response = &DescribeDomainLogFilterFileResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDomainLogFilterFile
+// 获取域名操作日志导出文件下载地址
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
+//  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
+//  OPERATIONDENIED_ACCESSDENIED = "OperationDenied.AccessDenied"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+//  OPERATIONDENIED_NOPERMISSIONTOOPERATEDOMAIN = "OperationDenied.NoPermissionToOperateDomain"
+func (c *Client) DescribeDomainLogFilterFile(request *DescribeDomainLogFilterFileRequest) (response *DescribeDomainLogFilterFileResponse, err error) {
+    return c.DescribeDomainLogFilterFileWithContext(context.Background(), request)
+}
+
+// DescribeDomainLogFilterFile
+// 获取域名操作日志导出文件下载地址
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
+//  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
+//  OPERATIONDENIED_ACCESSDENIED = "OperationDenied.AccessDenied"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+//  OPERATIONDENIED_NOPERMISSIONTOOPERATEDOMAIN = "OperationDenied.NoPermissionToOperateDomain"
+func (c *Client) DescribeDomainLogFilterFileWithContext(ctx context.Context, request *DescribeDomainLogFilterFileRequest) (response *DescribeDomainLogFilterFileResponse, err error) {
+    if request == nil {
+        request = NewDescribeDomainLogFilterFileRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dnspod", APIVersion, "DescribeDomainLogFilterFile")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDomainLogFilterFile require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDomainLogFilterFileResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDomainLogListRequest() (request *DescribeDomainLogListRequest) {
     request = &DescribeDomainLogListRequest{
         BaseRequest: &tchttp.BaseRequest{},

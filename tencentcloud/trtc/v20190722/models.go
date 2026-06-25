@@ -6912,64 +6912,62 @@ func (r *StartStreamIngestResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type StartWebRecordRequestParams struct {
-	// 【必填】需要录制的网页URL
+	// <p>【必填】需要录制的网页URL</p>
 	RecordUrl *string `json:"RecordUrl,omitnil,omitempty" name:"RecordUrl"`
 
-	// 【必填】云存储相关的参数，目前支持腾讯云对象存储以及腾讯云云点播VOD，不支持第三方云存储；输出文件的存储格式仅支持hls或mp4
+	// <p>【必填】云存储相关的参数，目前支持腾讯云对象存储以及腾讯云云点播VOD，不支持第三方云存储；输出文件的存储格式仅支持hls或mp4</p>
 	StorageParams *StorageParams `json:"StorageParams,omitnil,omitempty" name:"StorageParams"`
 
-	// 【必填】TRTC的SdkAppId
+	// <p>【必填】TRTC的SdkAppId</p>
 	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// 录制最大时长限制， 单位 s, 合法取值范围[1800, 86400], 默认 86400s(24 小时)
+	// <p>录制最大时长限制， 单位 s, 合法取值范围[1800, 86400], 默认 86400s(24 小时)</p>
 	MaxDurationLimit *uint64 `json:"MaxDurationLimit,omitnil,omitempty" name:"MaxDurationLimit"`
 
-	// 页面录制视频参数
+	// <p>页面录制视频参数</p>
 	WebRecordVideoParams *WebRecordVideoParams `json:"WebRecordVideoParams,omitnil,omitempty" name:"WebRecordVideoParams"`
 
-	// 当对重复任务敏感时，请关注此值： 为了避免任务在短时间内重复发起，导致任务重复
-	// 传入录制RecordId来标识此次任务， 小于32字节，若携带RecordId发起两次以上的开始录制请求，任务只会启动一个，第二个报错FailedOperation.TaskExist。注意StartWebRecord调用失败时而非FailedOperation.TaskExist错误，请更换RecordId重新发起。
+	// <p>当对重复任务敏感时，请关注此值： 为了避免任务在短时间内重复发起，导致任务重复<br>传入录制RecordId来标识此次任务， 小于32字节，若携带RecordId发起两次以上的开始录制请求，任务只会启动一个，第二个报错FailedOperation.TaskExist。注意StartWebRecord调用失败时而非FailedOperation.TaskExist错误，请更换RecordId重新发起。</p>
 	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
 
-	// 若您想要推流到CDN，可以使用PublishCdnParams.N参数设置，支持最多同时推流到10个CDN地址。若转推地址是腾讯云CDN时，请将IsTencentCdn明确设置为1
+	// <p>若您想要推流到CDN，可以使用PublishCdnParams.N参数设置，支持最多同时推流到10个CDN地址。若转推地址是腾讯云CDN时，请将IsTencentCdn明确设置为1</p>
 	PublishCdnParams []*McuPublishCdnParam `json:"PublishCdnParams,omitnil,omitempty" name:"PublishCdnParams"`
 
-	// 录制页面资源加载的超时时间，单位：秒。默认值为 0 秒，该值需大于等于 0秒，且小于等于 60秒。录制页面未启用页面加载超时检测时，请勿设置此参数。
+	// <p>录制页面资源加载的超时时间，单位：秒。默认值为 0 秒，该值需大于等于 0秒，且小于等于 60秒。录制页面未启用页面加载超时检测时，请勿设置此参数。</p>
 	ReadyTimeout *uint64 `json:"ReadyTimeout,omitnil,omitempty" name:"ReadyTimeout"`
 
-	// 渲染移动模式参数；不准备渲染移动模式页面时，请勿设置此参数。
+	// <p>渲染移动模式参数；不准备渲染移动模式页面时，请勿设置此参数。</p>
 	EmulateMobileParams *EmulateMobileParams `json:"EmulateMobileParams,omitnil,omitempty" name:"EmulateMobileParams"`
 }
 
 type StartWebRecordRequest struct {
 	*tchttp.BaseRequest
 	
-	// 【必填】需要录制的网页URL
+	// <p>【必填】需要录制的网页URL</p>
 	RecordUrl *string `json:"RecordUrl,omitnil,omitempty" name:"RecordUrl"`
 
-	// 【必填】云存储相关的参数，目前支持腾讯云对象存储以及腾讯云云点播VOD，不支持第三方云存储；输出文件的存储格式仅支持hls或mp4
+	// <p>【必填】云存储相关的参数，目前支持腾讯云对象存储以及腾讯云云点播VOD，不支持第三方云存储；输出文件的存储格式仅支持hls或mp4</p>
 	StorageParams *StorageParams `json:"StorageParams,omitnil,omitempty" name:"StorageParams"`
 
-	// 【必填】TRTC的SdkAppId
+	// <p>【必填】TRTC的SdkAppId</p>
 	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// 录制最大时长限制， 单位 s, 合法取值范围[1800, 86400], 默认 86400s(24 小时)
+	// <p>录制最大时长限制， 单位 s, 合法取值范围[1800, 86400], 默认 86400s(24 小时)</p>
 	MaxDurationLimit *uint64 `json:"MaxDurationLimit,omitnil,omitempty" name:"MaxDurationLimit"`
 
-	// 页面录制视频参数
+	// <p>页面录制视频参数</p>
 	WebRecordVideoParams *WebRecordVideoParams `json:"WebRecordVideoParams,omitnil,omitempty" name:"WebRecordVideoParams"`
 
-	// 当对重复任务敏感时，请关注此值： 为了避免任务在短时间内重复发起，导致任务重复
-	// 传入录制RecordId来标识此次任务， 小于32字节，若携带RecordId发起两次以上的开始录制请求，任务只会启动一个，第二个报错FailedOperation.TaskExist。注意StartWebRecord调用失败时而非FailedOperation.TaskExist错误，请更换RecordId重新发起。
+	// <p>当对重复任务敏感时，请关注此值： 为了避免任务在短时间内重复发起，导致任务重复<br>传入录制RecordId来标识此次任务， 小于32字节，若携带RecordId发起两次以上的开始录制请求，任务只会启动一个，第二个报错FailedOperation.TaskExist。注意StartWebRecord调用失败时而非FailedOperation.TaskExist错误，请更换RecordId重新发起。</p>
 	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
 
-	// 若您想要推流到CDN，可以使用PublishCdnParams.N参数设置，支持最多同时推流到10个CDN地址。若转推地址是腾讯云CDN时，请将IsTencentCdn明确设置为1
+	// <p>若您想要推流到CDN，可以使用PublishCdnParams.N参数设置，支持最多同时推流到10个CDN地址。若转推地址是腾讯云CDN时，请将IsTencentCdn明确设置为1</p>
 	PublishCdnParams []*McuPublishCdnParam `json:"PublishCdnParams,omitnil,omitempty" name:"PublishCdnParams"`
 
-	// 录制页面资源加载的超时时间，单位：秒。默认值为 0 秒，该值需大于等于 0秒，且小于等于 60秒。录制页面未启用页面加载超时检测时，请勿设置此参数。
+	// <p>录制页面资源加载的超时时间，单位：秒。默认值为 0 秒，该值需大于等于 0秒，且小于等于 60秒。录制页面未启用页面加载超时检测时，请勿设置此参数。</p>
 	ReadyTimeout *uint64 `json:"ReadyTimeout,omitnil,omitempty" name:"ReadyTimeout"`
 
-	// 渲染移动模式参数；不准备渲染移动模式页面时，请勿设置此参数。
+	// <p>渲染移动模式参数；不准备渲染移动模式页面时，请勿设置此参数。</p>
 	EmulateMobileParams *EmulateMobileParams `json:"EmulateMobileParams,omitnil,omitempty" name:"EmulateMobileParams"`
 }
 
@@ -7002,7 +7000,7 @@ func (r *StartWebRecordRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type StartWebRecordResponseParams struct {
-	// 录制任务的唯一Id
+	// <p>录制任务的唯一Id</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
