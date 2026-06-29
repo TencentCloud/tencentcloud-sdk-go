@@ -107,6 +107,60 @@ func (r *AddLoginWhiteListsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type AddVulIgnoreRuleRequestParams struct {
+	// 忽略规则集合
+	RuleDetailList []*VulIgnoreRule `json:"RuleDetailList,omitnil,omitempty" name:"RuleDetailList"`
+}
+
+type AddVulIgnoreRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 忽略规则集合
+	RuleDetailList []*VulIgnoreRule `json:"RuleDetailList,omitnil,omitempty" name:"RuleDetailList"`
+}
+
+func (r *AddVulIgnoreRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddVulIgnoreRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RuleDetailList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddVulIgnoreRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AddVulIgnoreRuleResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type AddVulIgnoreRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *AddVulIgnoreRuleResponseParams `json:"Response"`
+}
+
+func (r *AddVulIgnoreRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddVulIgnoreRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type AlarmInfo struct {
 	// 该节点关联的告警，告警的table_name+id（t1:id1,t2:id2,...)
 	AlarmId *string `json:"AlarmId,omitnil,omitempty" name:"AlarmId"`
@@ -49671,6 +49725,39 @@ type VulHostTopInfo struct {
 
 	// top评分
 	Score *uint64 `json:"Score,omitnil,omitempty" name:"Score"`
+}
+
+type VulIgnoreRule struct {
+	// 漏洞规则ID
+	VulID *uint64 `json:"VulID,omitnil,omitempty" name:"VulID"`
+
+	// <li>0:全部主机</li>
+	// <li>1:自选主机</li>
+	AssetScopeType *uint64 `json:"AssetScopeType,omitnil,omitempty" name:"AssetScopeType"`
+
+	// 自选主机情况下自选主机quuid列表
+	IncludeQuuidList []*string `json:"IncludeQuuidList,omitnil,omitempty" name:"IncludeQuuidList"`
+
+	// 全部主机情况下排出的主机
+	ExcludeQuuidList []*string `json:"ExcludeQuuidList,omitnil,omitempty" name:"ExcludeQuuidList"`
+
+	// 忽略的原因
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 配置主机数
+	ConfigHostCount *uint64 `json:"ConfigHostCount,omitnil,omitempty" name:"ConfigHostCount"`
+
+	// 实际受影响主机数
+	AffectedHostCount *uint64 `json:"AffectedHostCount,omitnil,omitempty" name:"AffectedHostCount"`
+
+	// 漏洞名字
+	VulName *string `json:"VulName,omitnil,omitempty" name:"VulName"`
+
+	// 忽略规则ID
+	RuleID *uint64 `json:"RuleID,omitnil,omitempty" name:"RuleID"`
+
+	// 最近更新时间
+	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 }
 
 type VulInfoByCveId struct {

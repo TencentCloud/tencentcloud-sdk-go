@@ -3174,6 +3174,7 @@ func NewHKIDCardOCRResponse() (response *HKIDCardOCRResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
 //  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGENOSPECIFIEDCARD = "FailedOperation.ImageNoSpecifiedCard"
 //  FAILEDOPERATION_NOHKIDCARD = "FailedOperation.NoHKIDCard"
 //  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
 //  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
@@ -3197,6 +3198,7 @@ func (c *Client) HKIDCardOCR(request *HKIDCardOCRRequest) (response *HKIDCardOCR
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
 //  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGENOSPECIFIEDCARD = "FailedOperation.ImageNoSpecifiedCard"
 //  FAILEDOPERATION_NOHKIDCARD = "FailedOperation.NoHKIDCard"
 //  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
 //  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
@@ -4024,6 +4026,7 @@ func NewMainlandPermitOCRResponse() (response *MainlandPermitOCRResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
 //  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGENOSPECIFIEDCARD = "FailedOperation.ImageNoSpecifiedCard"
 //  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
 //  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
@@ -4045,6 +4048,7 @@ func (c *Client) MainlandPermitOCR(request *MainlandPermitOCRRequest) (response 
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
 //  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGENOSPECIFIEDCARD = "FailedOperation.ImageNoSpecifiedCard"
 //  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
 //  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
@@ -4416,6 +4420,7 @@ func NewPermitOCRResponse() (response *PermitOCRResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
 //  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGENOSPECIFIEDCARD = "FailedOperation.ImageNoSpecifiedCard"
 //  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
 //  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
@@ -4437,6 +4442,7 @@ func (c *Client) PermitOCR(request *PermitOCRRequest) (response *PermitOCRRespon
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
 //  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGENOSPECIFIEDCARD = "FailedOperation.ImageNoSpecifiedCard"
 //  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
 //  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"

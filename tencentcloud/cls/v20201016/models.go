@@ -15217,6 +15217,20 @@ type InstanceData struct {
 	ErrMsg *string `json:"ErrMsg,omitnil,omitempty" name:"ErrMsg"`
 }
 
+type JsonExpandInfo struct {
+	// <p>是否开启JSON嵌套展开功能。开启后将对指定JSON字段进行扁平化展开处理</p><p>默认值：无（必选参数）</p>
+	Switch *bool `json:"Switch,omitnil,omitempty" name:"Switch"`
+
+	// <p>待展开的JSON字段名列表，支持1~3个字段，字段名不可为空串且不可重复 </p><p>入参限制：1. 字段数量：1~3个2. 每个字段名长度不超过128个字符3. 字段名不可为空字符串4. 字段名之间不可重复</p><p>默认值：无（必选参数）</p><p>取值参考：取值：message；描述：示例字段名</p><p>示例：[&quot;message&quot;, &quot;data&quot;, &quot;content&quot;]</p>
+	Fields []*string `json:"Fields,omitnil,omitempty" name:"Fields"`
+
+	// <p>展开后是否丢弃原始的嵌套字段。true: 丢弃原始字段只保留展开后的平铺字段; false: 保留原始字段同时增加展开后的平铺字段</p><p>枚举值：</p><ul><li>true / false： 丢弃原字段 / 保留原字段</li></ul><p>默认值：true</p><p>非必选，不传时默认为true</p>
+	DropOriginal *bool `json:"DropOriginal,omitnil,omitempty" name:"DropOriginal"`
+
+	// <p>展开后的字段与已有字段发生冲突时的处理策略</p><p>枚举值：</p><ul><li>keep_outer / keep_inner： 保留外层(已存在)字段 / 保留内层(新展开)字段</li></ul><p>默认值：keep_outer</p><p>非必选，不传时默认为keep_outer</p>
+	ConflictPolicy *string `json:"ConflictPolicy,omitnil,omitempty" name:"ConflictPolicy"`
+}
+
 type JsonInfo struct {
 	// 启用标志
 	EnableTag *bool `json:"EnableTag,omitnil,omitempty" name:"EnableTag"`
@@ -15479,141 +15493,56 @@ type LogItems struct {
 }
 
 type LogRechargeRuleInfo struct {
-	// 导入类型，支持json_log：json格式日志，minimalist_log: 单行全文，fullregex_log: 单行完全正则
+	// <p>导入类型，支持json_log：json格式日志，minimalist_log: 单行全文，fullregex_log: 单行完全正则</p>
 	RechargeType *string `json:"RechargeType,omitnil,omitempty" name:"RechargeType"`
 
-	// 解析编码格式，0: UTF-8（默认值），1: GBK
+	// <p>解析编码格式，0: UTF-8（默认值），1: GBK</p>
 	EncodingFormat *uint64 `json:"EncodingFormat,omitnil,omitempty" name:"EncodingFormat"`
 
-	// 使用默认时间状态。true：开启后将使用系统当前时间或 Kafka 消息时间戳作为日志时间戳；false：关闭将使用日志中的时间字段作为日志时间戳。 默认：true
+	// <p>使用默认时间状态。true：开启后将使用系统当前时间或 Kafka 消息时间戳作为日志时间戳；false：关闭将使用日志中的时间字段作为日志时间戳。 默认：true</p>
 	DefaultTimeSwitch *bool `json:"DefaultTimeSwitch,omitnil,omitempty" name:"DefaultTimeSwitch"`
 
-	// 整条日志匹配规则，只有RechargeType为fullregex_log时有效
+	// <p>整条日志匹配规则，只有RechargeType为fullregex_log时有效</p>
 	LogRegex *string `json:"LogRegex,omitnil,omitempty" name:"LogRegex"`
 
-	// 解析失败日志是否上传，true表示上传，false表示不上传
+	// <p>解析失败日志是否上传，true表示上传，false表示不上传</p>
 	UnMatchLogSwitch *bool `json:"UnMatchLogSwitch,omitnil,omitempty" name:"UnMatchLogSwitch"`
 
-	// 解析失败日志的键名称
+	// <p>解析失败日志的键名称</p>
 	UnMatchLogKey *string `json:"UnMatchLogKey,omitnil,omitempty" name:"UnMatchLogKey"`
 
-	// 解析失败日志时间来源，0: 系统当前时间，1: Kafka消息时间戳
+	// <p>解析失败日志时间来源，0: 系统当前时间，1: Kafka消息时间戳</p>
 	UnMatchLogTimeSrc *uint64 `json:"UnMatchLogTimeSrc,omitnil,omitempty" name:"UnMatchLogTimeSrc"`
 
-	// 默认时间来源，0: 系统当前时间，1: Kafka消息时间戳
+	// <p>默认时间来源，0: 系统当前时间，1: Kafka消息时间戳</p>
 	DefaultTimeSrc *uint64 `json:"DefaultTimeSrc,omitnil,omitempty" name:"DefaultTimeSrc"`
 
-	// 时间字段，日志中代表时间的字段名。
-	// 
-	// - 当DefaultTimeSwitch为false，且RechargeType数据提取模式为 `json_log` JSON-文件日志 或 `fullregex_log` 单行完全正则-文件日志时， TimeKey不能为空。
+	// <p>时间字段，日志中代表时间的字段名。</p><ul><li>当DefaultTimeSwitch为false，且RechargeType数据提取模式为 <code>json_log</code> JSON-文件日志 或 <code>fullregex_log</code> 单行完全正则-文件日志时， TimeKey不能为空。</li></ul>
 	TimeKey *string `json:"TimeKey,omitnil,omitempty" name:"TimeKey"`
 
-	// 时间提取正则表达式。
-	// - 当DefaultTimeSwitch为false，且RechargeType数据提取模式为 `minimalist_log` 单行全文-文件日志时， TimeRegex不能为空。
-	// - 仅需输入日志中代表时间的字段的正则表达式即可；若匹配到多个字段，将使用第一个。
-	//    例：日志原文为：message with time 2022-08-08 14:20:20，则您可以设置提取时间正则为\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d
+	// <p>时间提取正则表达式。</p><ul><li>当DefaultTimeSwitch为false，且RechargeType数据提取模式为 <code>minimalist_log</code> 单行全文-文件日志时， TimeRegex不能为空。</li><li>仅需输入日志中代表时间的字段的正则表达式即可；若匹配到多个字段，将使用第一个。<br> 例：日志原文为：message with time 2022-08-08 14:20:20，则您可以设置提取时间正则为\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d</li></ul>
 	TimeRegex *string `json:"TimeRegex,omitnil,omitempty" name:"TimeRegex"`
 
-	// 时间字段格式。
-	// - 当DefaultTimeSwitch为false时， TimeFormat不能为空。
+	// <p>时间字段格式。</p><ul><li>当DefaultTimeSwitch为false时， TimeFormat不能为空。</li></ul>
 	TimeFormat *string `json:"TimeFormat,omitnil,omitempty" name:"TimeFormat"`
 
-	// 时间字段时区。
-	// - 当DefaultTimeSwitch为false时， TimeZone不能为空。
-	// - 时区格式规则
-	// ​前缀​：使用 GMT 或 UTC 作为时区基准
-	// ​偏移量​：
-	//     - `-` 表示西时区（比基准时间晚）
-	//     - `+` 表示东时区（比基准时间早）
-	//     -  格式为 ±HH:MM（小时:分钟）
-	// 
-	// - 当前支持：
-	// ```
-	// "GMT-12:00" 
-	// "GMT-11:00" 
-	// "GMT-10:00" 
-	// "GMT-09:30" 
-	// "GMT-09:00" 
-	// "GMT-08:00" 
-	// "GMT-07:00" 
-	// "GMT-06:00" 
-	// "GMT-05:00" 
-	// "GMT-04:00" 
-	// "GMT-03:30" 
-	// "GMT-03:00" 
-	// "GMT-02:00" 
-	// "GMT-01:00" 
-	// "GMT+00:00"
-	// "GMT+01:00"
-	// "GMT+02:00"
-	// "GMT+03:30"
-	// "GMT+04:00"
-	// "GMT+04:30"
-	// "GMT+05:00"
-	// "GMT+05:30"
-	// "GMT+05:45"
-	// "GMT+06:00"
-	// "GMT+06:30"
-	// "GMT+07:00"
-	// "GMT+08:00"
-	// "GMT+09:00"
-	// "GMT+09:30"
-	// "GMT+10:00"
-	// "GMT+10:30"
-	// "GMT+11:00"
-	// "GMT+11:30"
-	// "GMT+12:00"
-	// "GMT+12:45"
-	// "GMT+13:00"
-	// "GMT+14:00"
-	// "UTC-11:00"
-	// "UTC-10:00"
-	// "UTC-09:00"
-	// "UTC-08:00"
-	// "UTC-12:00"
-	// "UTC-07:00"
-	// "UTC-06:00"
-	// "UTC-05:00"
-	// "UTC-04:30"
-	// "UTC-04:00"
-	// "UTC-03:30"
-	// "UTC-03:00"
-	// "UTC-02:00"
-	// "UTC-01:00"
-	// "UTC+00:00"
-	// "UTC+01:00"
-	// "UTC+02:00"
-	// "UTC+03:00"
-	// "UTC+03:30"
-	// "UTC+04:00"
-	// "UTC+04:30"
-	// "UTC+05:00"
-	// "UTC+05:45"
-	// "UTC+06:00"
-	// "UTC+06:30"
-	// "UTC+07:00"
-	// "UTC+08:00"
-	// "UTC+09:00"
-	// "UTC+09:30"
-	// "UTC+10:00"
-	// "UTC+11:00"
-	// "UTC+12:00"
-	// "UTC+13:00"
-	// ```
+	// <p>时间字段时区。</p><ul><li><p>当DefaultTimeSwitch为false时， TimeZone不能为空。</p></li><li><p>时区格式规则<br>前缀：使用 GMT 或 UTC 作为时区基准<br>偏移量：</p><ul><li><code>-</code> 表示西时区（比基准时间晚）</li><li><code>+</code> 表示东时区（比基准时间早）</li><li>格式为 ±HH:MM（小时:分钟）</li></ul></li><li><p>当前支持：<br><pre><code>&quot;GMT-12:00&quot; &quot;GMT-11:00&quot; &quot;GMT-10:00&quot; &quot;GMT-09:30&quot; &quot;GMT-09:00&quot; &quot;GMT-08:00&quot; &quot;GMT-07:00&quot; &quot;GMT-06:00&quot; &quot;GMT-05:00&quot; &quot;GMT-04:00&quot; &quot;GMT-03:30&quot; &quot;GMT-03:00&quot; &quot;GMT-02:00&quot; &quot;GMT-01:00&quot; &quot;GMT+00:00&quot;&quot;GMT+01:00&quot;&quot;GMT+02:00&quot;&quot;GMT+03:30&quot;&quot;GMT+04:00&quot;&quot;GMT+04:30&quot;&quot;GMT+05:00&quot;&quot;GMT+05:30&quot;&quot;GMT+05:45&quot;&quot;GMT+06:00&quot;&quot;GMT+06:30&quot;&quot;GMT+07:00&quot;&quot;GMT+08:00&quot;&quot;GMT+09:00&quot;&quot;GMT+09:30&quot;&quot;GMT+10:00&quot;&quot;GMT+10:30&quot;&quot;GMT+11:00&quot;&quot;GMT+11:30&quot;&quot;GMT+12:00&quot;&quot;GMT+12:45&quot;&quot;GMT+13:00&quot;&quot;GMT+14:00&quot;&quot;UTC-11:00&quot;&quot;UTC-10:00&quot;&quot;UTC-09:00&quot;&quot;UTC-08:00&quot;&quot;UTC-12:00&quot;&quot;UTC-07:00&quot;&quot;UTC-06:00&quot;&quot;UTC-05:00&quot;&quot;UTC-04:30&quot;&quot;UTC-04:00&quot;&quot;UTC-03:30&quot;&quot;UTC-03:00&quot;&quot;UTC-02:00&quot;&quot;UTC-01:00&quot;&quot;UTC+00:00&quot;&quot;UTC+01:00&quot;&quot;UTC+02:00&quot;&quot;UTC+03:00&quot;&quot;UTC+03:30&quot;&quot;UTC+04:00&quot;&quot;UTC+04:30&quot;&quot;UTC+05:00&quot;&quot;UTC+05:45&quot;&quot;UTC+06:00&quot;&quot;UTC+06:30&quot;&quot;UTC+07:00&quot;&quot;UTC+08:00&quot;&quot;UTC+09:00&quot;&quot;UTC+09:30&quot;&quot;UTC+10:00&quot;&quot;UTC+11:00&quot;&quot;UTC+12:00&quot;&quot;UTC+13:00&quot;</code></pre></p></li></ul>
 	TimeZone *string `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
 
-	// 元数据信息，Kafka导入支持kafka_topic,kafka_partition,kafka_offset,kafka_timestamp
+	// <p>元数据信息，Kafka导入支持kafka_topic,kafka_partition,kafka_offset,kafka_timestamp</p>
 	Metadata []*string `json:"Metadata,omitnil,omitempty" name:"Metadata"`
 
-	// 日志Key列表，RechargeType为full_regex_log、delimiter_log时必填
+	// <p>日志Key列表，RechargeType为full_regex_log、delimiter_log时必填</p>
 	Keys []*string `json:"Keys,omitnil,omitempty" name:"Keys"`
 
-	// json解析模式，开启首层数据解析
+	// <p>json解析模式，开启首层数据解析</p>
 	ParseArray *bool `json:"ParseArray,omitnil,omitempty" name:"ParseArray"`
 
-	// 分隔符解析模式-分隔符
-	// 当解析格式为分隔符提取时，该字段必填
+	// <p>分隔符解析模式-分隔符<br>当解析格式为分隔符提取时，该字段必填</p>
 	Delimiter *string `json:"Delimiter,omitnil,omitempty" name:"Delimiter"`
+
+	// <p>JSON嵌套展开配置。仅RechargeType为json_log时生效，不传表示不开启。</p>
+	JsonExpand *JsonExpandInfo `json:"JsonExpand,omitnil,omitempty" name:"JsonExpand"`
 }
 
 type LogsetInfo struct {

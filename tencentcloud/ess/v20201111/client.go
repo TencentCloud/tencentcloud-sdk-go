@@ -509,7 +509,7 @@ func NewCancelOrganizationFlowsResponse() (response *CancelOrganizationFlowsResp
 //
 // 
 //
-// 批量撤销结果可以通过接口返回的TaskId关联[批量撤销任务结果回调](https://qian.tencent.com/developers/partner/callback_types_contracts_sign#%E4%B9%9D-%E6%89%B9%E9%87%8F%E6%92%A4%E9%94%80%E7%BB%93%E6%9E%9C%E5%9B%9E%E8%B0%83)或通过接口[查询批量撤销合同结果](https://qian.tencent.com/developers/partnerApis/operateFlows/DescribeCancelFlowsTask)主动查询。
+// 批量撤销结果可以通过接口返回的TaskId关联[批量撤销任务结果回调](https://qian.tencent.com/developers/company/callback_types_contracts_sign/#%E5%8D%81%E4%BA%8C-%E5%85%A8%E9%87%8F%E6%92%A4%E9%94%80%E7%BB%93%E6%9E%9C%E5%9B%9E%E8%B0%83)或通过接口[查询批量撤销合同结果](dbOrm := beego.GetBOrmFlows())主动查询。
 //
 // 
 //
@@ -519,7 +519,7 @@ func NewCancelOrganizationFlowsResponse() (response *CancelOrganizationFlowsResp
 //
 // - 有对应合同撤销权限的人:  <font color='red'>**发起人所在企业的超管、法人**</font>
 //
-// - 签署完毕的合同需要双方走解除流程将合同作废，可以参考<a href="https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateReleaseFlow" target="_blank">发起解除合同流程接口</a>
+// - 签署完毕的合同需要双方走解除流程将合同作废，可以参考<a href="https://qian.tencent.com/developers/companyApis/operateFlows/CreateReleaseFlow" target="_blank">发起解除合同流程接口</a>
 //
 // - <font color='red'>只有撤销没有参与方签署过或只有自动签署签署过的合同，才会返还合同额度。</font>
 //
@@ -551,7 +551,7 @@ func (c *Client) CancelOrganizationFlows(request *CancelOrganizationFlowsRequest
 //
 // 
 //
-// 批量撤销结果可以通过接口返回的TaskId关联[批量撤销任务结果回调](https://qian.tencent.com/developers/partner/callback_types_contracts_sign#%E4%B9%9D-%E6%89%B9%E9%87%8F%E6%92%A4%E9%94%80%E7%BB%93%E6%9E%9C%E5%9B%9E%E8%B0%83)或通过接口[查询批量撤销合同结果](https://qian.tencent.com/developers/partnerApis/operateFlows/DescribeCancelFlowsTask)主动查询。
+// 批量撤销结果可以通过接口返回的TaskId关联[批量撤销任务结果回调](https://qian.tencent.com/developers/company/callback_types_contracts_sign/#%E5%8D%81%E4%BA%8C-%E5%85%A8%E9%87%8F%E6%92%A4%E9%94%80%E7%BB%93%E6%9E%9C%E5%9B%9E%E8%B0%83)或通过接口[查询批量撤销合同结果](dbOrm := beego.GetBOrmFlows())主动查询。
 //
 // 
 //
@@ -561,7 +561,7 @@ func (c *Client) CancelOrganizationFlows(request *CancelOrganizationFlowsRequest
 //
 // - 有对应合同撤销权限的人:  <font color='red'>**发起人所在企业的超管、法人**</font>
 //
-// - 签署完毕的合同需要双方走解除流程将合同作废，可以参考<a href="https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateReleaseFlow" target="_blank">发起解除合同流程接口</a>
+// - 签署完毕的合同需要双方走解除流程将合同作废，可以参考<a href="https://qian.tencent.com/developers/companyApis/operateFlows/CreateReleaseFlow" target="_blank">发起解除合同流程接口</a>
 //
 // - <font color='red'>只有撤销没有参与方签署过或只有自动签署签署过的合同，才会返还合同额度。</font>
 //

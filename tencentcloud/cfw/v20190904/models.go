@@ -5735,6 +5735,83 @@ func (r *DescribeLogsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeNDRAssetIdentificationCursorListRequestParams struct {
+	// <p>每页条数</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>分页游标</p><p>前一页返回的NextCursor</p>
+	Cursor *string `json:"Cursor,omitnil,omitempty" name:"Cursor"`
+
+	// <p>查询过滤条件，多个条件之间为AND的关系</p>
+	Filters []*OperatorFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type DescribeNDRAssetIdentificationCursorListRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>每页条数</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>分页游标</p><p>前一页返回的NextCursor</p>
+	Cursor *string `json:"Cursor,omitnil,omitempty" name:"Cursor"`
+
+	// <p>查询过滤条件，多个条件之间为AND的关系</p>
+	Filters []*OperatorFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *DescribeNDRAssetIdentificationCursorListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNDRAssetIdentificationCursorListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Cursor")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNDRAssetIdentificationCursorListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeNDRAssetIdentificationCursorListResponseParams struct {
+	// <p>查询结果列表</p>
+	Data []*NDRAssetServiceInfo `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// <p>下一页游标</p>
+	NextCursor *string `json:"NextCursor,omitnil,omitempty" name:"NextCursor"`
+
+	// <p>是否存在更多数据</p>
+	HasMore *bool `json:"HasMore,omitnil,omitempty" name:"HasMore"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeNDRAssetIdentificationCursorListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeNDRAssetIdentificationCursorListResponseParams `json:"Response"`
+}
+
+func (r *DescribeNDRAssetIdentificationCursorListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNDRAssetIdentificationCursorListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeNDRAssetIdentificationListRequestParams struct {
 	// 每页条数
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`

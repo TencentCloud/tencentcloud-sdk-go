@@ -3755,6 +3755,226 @@ func (c *Client) DescribeCFWAssetStatisticsWithContext(ctx context.Context, requ
     return
 }
 
+func NewDescribeCLSLogIndexV3Request() (request *DescribeCLSLogIndexV3Request) {
+    request = &DescribeCLSLogIndexV3Request{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeCLSLogIndexV3")
+    
+    
+    return
+}
+
+func NewDescribeCLSLogIndexV3Response() (response *DescribeCLSLogIndexV3Response) {
+    response = &DescribeCLSLogIndexV3Response{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCLSLogIndexV3
+// 获取日志索引信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
+//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
+//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
+//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DECRYPTERROR = "InvalidParameter.DecryptError"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_SQLQUERYFAILED = "InvalidParameterValue.SQLQueryFailed"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEINSUFFICIENT_LOGANALYSISQUANTITYINSUFFICIENT = "ResourceInsufficient.LogAnalysisQuantityInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_CLOUDAUDIT = "UnauthorizedOperation.CloudAudit"
+//  UNAUTHORIZEDOPERATION_COS = "UnauthorizedOperation.Cos"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCLSLogIndexV3(request *DescribeCLSLogIndexV3Request) (response *DescribeCLSLogIndexV3Response, err error) {
+    return c.DescribeCLSLogIndexV3WithContext(context.Background(), request)
+}
+
+// DescribeCLSLogIndexV3
+// 获取日志索引信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
+//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
+//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
+//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DECRYPTERROR = "InvalidParameter.DecryptError"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_SQLQUERYFAILED = "InvalidParameterValue.SQLQueryFailed"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEINSUFFICIENT_LOGANALYSISQUANTITYINSUFFICIENT = "ResourceInsufficient.LogAnalysisQuantityInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_CLOUDAUDIT = "UnauthorizedOperation.CloudAudit"
+//  UNAUTHORIZEDOPERATION_COS = "UnauthorizedOperation.Cos"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCLSLogIndexV3WithContext(ctx context.Context, request *DescribeCLSLogIndexV3Request) (response *DescribeCLSLogIndexV3Response, err error) {
+    if request == nil {
+        request = NewDescribeCLSLogIndexV3Request()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeCLSLogIndexV3")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCLSLogIndexV3 require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCLSLogIndexV3Response()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCLSLogListV3Request() (request *DescribeCLSLogListV3Request) {
+    request = &DescribeCLSLogListV3Request{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeCLSLogListV3")
+    
+    
+    return
+}
+
+func NewDescribeCLSLogListV3Response() (response *DescribeCLSLogListV3Response) {
+    response = &DescribeCLSLogListV3Response{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCLSLogListV3
+// 日志分析检索接口v3
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
+//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
+//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
+//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DECRYPTERROR = "InvalidParameter.DecryptError"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_SQLQUERYFAILED = "InvalidParameterValue.SQLQueryFailed"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEINSUFFICIENT_LOGANALYSISQUANTITYINSUFFICIENT = "ResourceInsufficient.LogAnalysisQuantityInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_CLOUDAUDIT = "UnauthorizedOperation.CloudAudit"
+//  UNAUTHORIZEDOPERATION_COS = "UnauthorizedOperation.Cos"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCLSLogListV3(request *DescribeCLSLogListV3Request) (response *DescribeCLSLogListV3Response, err error) {
+    return c.DescribeCLSLogListV3WithContext(context.Background(), request)
+}
+
+// DescribeCLSLogListV3
+// 日志分析检索接口v3
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
+//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
+//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
+//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DECRYPTERROR = "InvalidParameter.DecryptError"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_SQLQUERYFAILED = "InvalidParameterValue.SQLQueryFailed"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEINSUFFICIENT_LOGANALYSISQUANTITYINSUFFICIENT = "ResourceInsufficient.LogAnalysisQuantityInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_CLOUDAUDIT = "UnauthorizedOperation.CloudAudit"
+//  UNAUTHORIZEDOPERATION_COS = "UnauthorizedOperation.Cos"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCLSLogListV3WithContext(ctx context.Context, request *DescribeCLSLogListV3Request) (response *DescribeCLSLogListV3Response, err error) {
+    if request == nil {
+        request = NewDescribeCLSLogListV3Request()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeCLSLogListV3")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCLSLogListV3 require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCLSLogListV3Response()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCSIPRiskStatisticsRequest() (request *DescribeCSIPRiskStatisticsRequest) {
     request = &DescribeCSIPRiskStatisticsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3778,13 +3998,37 @@ func NewDescribeCSIPRiskStatisticsResponse() (response *DescribeCSIPRiskStatisti
 // 获取风险中心风险概况示例
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
+//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
+//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
+//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
 //  INTERNALERROR = "InternalError"
 //  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DECRYPTERROR = "InvalidParameter.DecryptError"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_SQLQUERYFAILED = "InvalidParameterValue.SQLQueryFailed"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEINSUFFICIENT_LOGANALYSISQUANTITYINSUFFICIENT = "ResourceInsufficient.LogAnalysisQuantityInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_CLOUDAUDIT = "UnauthorizedOperation.CloudAudit"
+//  UNAUTHORIZEDOPERATION_COS = "UnauthorizedOperation.Cos"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCSIPRiskStatistics(request *DescribeCSIPRiskStatisticsRequest) (response *DescribeCSIPRiskStatisticsResponse, err error) {
     return c.DescribeCSIPRiskStatisticsWithContext(context.Background(), request)
 }
@@ -3793,13 +4037,37 @@ func (c *Client) DescribeCSIPRiskStatistics(request *DescribeCSIPRiskStatisticsR
 // 获取风险中心风险概况示例
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
+//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
+//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
+//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
 //  INTERNALERROR = "InternalError"
 //  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DECRYPTERROR = "InvalidParameter.DecryptError"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_SQLQUERYFAILED = "InvalidParameterValue.SQLQueryFailed"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEINSUFFICIENT_LOGANALYSISQUANTITYINSUFFICIENT = "ResourceInsufficient.LogAnalysisQuantityInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_CLOUDAUDIT = "UnauthorizedOperation.CloudAudit"
+//  UNAUTHORIZEDOPERATION_COS = "UnauthorizedOperation.Cos"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCSIPRiskStatisticsWithContext(ctx context.Context, request *DescribeCSIPRiskStatisticsRequest) (response *DescribeCSIPRiskStatisticsResponse, err error) {
     if request == nil {
         request = NewDescribeCSIPRiskStatisticsRequest()
@@ -3840,13 +4108,37 @@ func NewDescribeCVMAssetInfoResponse() (response *DescribeCVMAssetInfoResponse) 
 // cvm详情
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
+//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
+//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
+//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
 //  INTERNALERROR = "InternalError"
 //  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DECRYPTERROR = "InvalidParameter.DecryptError"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_SQLQUERYFAILED = "InvalidParameterValue.SQLQueryFailed"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEINSUFFICIENT_LOGANALYSISQUANTITYINSUFFICIENT = "ResourceInsufficient.LogAnalysisQuantityInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_CLOUDAUDIT = "UnauthorizedOperation.CloudAudit"
+//  UNAUTHORIZEDOPERATION_COS = "UnauthorizedOperation.Cos"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCVMAssetInfo(request *DescribeCVMAssetInfoRequest) (response *DescribeCVMAssetInfoResponse, err error) {
     return c.DescribeCVMAssetInfoWithContext(context.Background(), request)
 }
@@ -3855,13 +4147,37 @@ func (c *Client) DescribeCVMAssetInfo(request *DescribeCVMAssetInfoRequest) (res
 // cvm详情
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
+//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
+//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
+//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
 //  INTERNALERROR = "InternalError"
 //  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DECRYPTERROR = "InvalidParameter.DecryptError"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_SQLQUERYFAILED = "InvalidParameterValue.SQLQueryFailed"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEINSUFFICIENT_LOGANALYSISQUANTITYINSUFFICIENT = "ResourceInsufficient.LogAnalysisQuantityInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_CLOUDAUDIT = "UnauthorizedOperation.CloudAudit"
+//  UNAUTHORIZEDOPERATION_COS = "UnauthorizedOperation.Cos"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCVMAssetInfoWithContext(ctx context.Context, request *DescribeCVMAssetInfoRequest) (response *DescribeCVMAssetInfoResponse, err error) {
     if request == nil {
         request = NewDescribeCVMAssetInfoRequest()
@@ -3902,13 +4218,37 @@ func NewDescribeCVMAssetsResponse() (response *DescribeCVMAssetsResponse) {
 // 获取cvm列表
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
+//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
+//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
+//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
 //  INTERNALERROR = "InternalError"
 //  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DECRYPTERROR = "InvalidParameter.DecryptError"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_SQLQUERYFAILED = "InvalidParameterValue.SQLQueryFailed"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEINSUFFICIENT_LOGANALYSISQUANTITYINSUFFICIENT = "ResourceInsufficient.LogAnalysisQuantityInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_CLOUDAUDIT = "UnauthorizedOperation.CloudAudit"
+//  UNAUTHORIZEDOPERATION_COS = "UnauthorizedOperation.Cos"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCVMAssets(request *DescribeCVMAssetsRequest) (response *DescribeCVMAssetsResponse, err error) {
     return c.DescribeCVMAssetsWithContext(context.Background(), request)
 }
@@ -3917,13 +4257,37 @@ func (c *Client) DescribeCVMAssets(request *DescribeCVMAssetsRequest) (response 
 // 获取cvm列表
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
+//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
+//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
+//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
 //  INTERNALERROR = "InternalError"
 //  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DECRYPTERROR = "InvalidParameter.DecryptError"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_SQLQUERYFAILED = "InvalidParameterValue.SQLQueryFailed"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEINSUFFICIENT_LOGANALYSISQUANTITYINSUFFICIENT = "ResourceInsufficient.LogAnalysisQuantityInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_CLOUDAUDIT = "UnauthorizedOperation.CloudAudit"
+//  UNAUTHORIZEDOPERATION_COS = "UnauthorizedOperation.Cos"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCVMAssetsWithContext(ctx context.Context, request *DescribeCVMAssetsRequest) (response *DescribeCVMAssetsResponse, err error) {
     if request == nil {
         request = NewDescribeCVMAssetsRequest()
@@ -3964,13 +4328,37 @@ func NewDescribeCWPMachineDetailResponse() (response *DescribeCWPMachineDetailRe
 // 主机详情
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
+//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
+//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
+//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
 //  INTERNALERROR = "InternalError"
 //  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DECRYPTERROR = "InvalidParameter.DecryptError"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_SQLQUERYFAILED = "InvalidParameterValue.SQLQueryFailed"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEINSUFFICIENT_LOGANALYSISQUANTITYINSUFFICIENT = "ResourceInsufficient.LogAnalysisQuantityInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_CLOUDAUDIT = "UnauthorizedOperation.CloudAudit"
+//  UNAUTHORIZEDOPERATION_COS = "UnauthorizedOperation.Cos"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCWPMachineDetail(request *DescribeCWPMachineDetailRequest) (response *DescribeCWPMachineDetailResponse, err error) {
     return c.DescribeCWPMachineDetailWithContext(context.Background(), request)
 }
@@ -3979,13 +4367,37 @@ func (c *Client) DescribeCWPMachineDetail(request *DescribeCWPMachineDetailReque
 // 主机详情
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
+//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
+//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
+//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
 //  INTERNALERROR = "InternalError"
 //  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DECRYPTERROR = "InvalidParameter.DecryptError"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_SQLQUERYFAILED = "InvalidParameterValue.SQLQueryFailed"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEINSUFFICIENT_LOGANALYSISQUANTITYINSUFFICIENT = "ResourceInsufficient.LogAnalysisQuantityInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_CLOUDAUDIT = "UnauthorizedOperation.CloudAudit"
+//  UNAUTHORIZEDOPERATION_COS = "UnauthorizedOperation.Cos"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCWPMachineDetailWithContext(ctx context.Context, request *DescribeCWPMachineDetailRequest) (response *DescribeCWPMachineDetailResponse, err error) {
     if request == nil {
         request = NewDescribeCWPMachineDetailRequest()
@@ -4026,13 +4438,37 @@ func NewDescribeCWPMachinesResponse() (response *DescribeCWPMachinesResponse) {
 // 主机列表
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
+//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
+//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
+//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
 //  INTERNALERROR = "InternalError"
 //  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DECRYPTERROR = "InvalidParameter.DecryptError"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_SQLQUERYFAILED = "InvalidParameterValue.SQLQueryFailed"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEINSUFFICIENT_LOGANALYSISQUANTITYINSUFFICIENT = "ResourceInsufficient.LogAnalysisQuantityInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_CLOUDAUDIT = "UnauthorizedOperation.CloudAudit"
+//  UNAUTHORIZEDOPERATION_COS = "UnauthorizedOperation.Cos"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCWPMachines(request *DescribeCWPMachinesRequest) (response *DescribeCWPMachinesResponse, err error) {
     return c.DescribeCWPMachinesWithContext(context.Background(), request)
 }
@@ -4041,13 +4477,37 @@ func (c *Client) DescribeCWPMachines(request *DescribeCWPMachinesRequest) (respo
 // 主机列表
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
+//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
+//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
+//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
 //  INTERNALERROR = "InternalError"
 //  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DECRYPTERROR = "InvalidParameter.DecryptError"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_SQLQUERYFAILED = "InvalidParameterValue.SQLQueryFailed"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEINSUFFICIENT_LOGANALYSISQUANTITYINSUFFICIENT = "ResourceInsufficient.LogAnalysisQuantityInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_CLOUDAUDIT = "UnauthorizedOperation.CloudAudit"
+//  UNAUTHORIZEDOPERATION_COS = "UnauthorizedOperation.Cos"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCWPMachinesWithContext(ctx context.Context, request *DescribeCWPMachinesRequest) (response *DescribeCWPMachinesResponse, err error) {
     if request == nil {
         request = NewDescribeCWPMachinesRequest()
@@ -4088,13 +4548,37 @@ func NewDescribeCallRecordResponse() (response *DescribeCallRecordResponse) {
 // 获取调用记录列表
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
+//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
+//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
+//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
 //  INTERNALERROR = "InternalError"
 //  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DECRYPTERROR = "InvalidParameter.DecryptError"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_SQLQUERYFAILED = "InvalidParameterValue.SQLQueryFailed"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEINSUFFICIENT_LOGANALYSISQUANTITYINSUFFICIENT = "ResourceInsufficient.LogAnalysisQuantityInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_CLOUDAUDIT = "UnauthorizedOperation.CloudAudit"
+//  UNAUTHORIZEDOPERATION_COS = "UnauthorizedOperation.Cos"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCallRecord(request *DescribeCallRecordRequest) (response *DescribeCallRecordResponse, err error) {
     return c.DescribeCallRecordWithContext(context.Background(), request)
 }
@@ -4103,13 +4587,37 @@ func (c *Client) DescribeCallRecord(request *DescribeCallRecordRequest) (respons
 // 获取调用记录列表
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
+//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
+//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
+//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
 //  INTERNALERROR = "InternalError"
 //  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DECRYPTERROR = "InvalidParameter.DecryptError"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_SQLQUERYFAILED = "InvalidParameterValue.SQLQueryFailed"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEINSUFFICIENT_LOGANALYSISQUANTITYINSUFFICIENT = "ResourceInsufficient.LogAnalysisQuantityInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_CLOUDAUDIT = "UnauthorizedOperation.CloudAudit"
+//  UNAUTHORIZEDOPERATION_COS = "UnauthorizedOperation.Cos"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCallRecordWithContext(ctx context.Context, request *DescribeCallRecordRequest) (response *DescribeCallRecordResponse, err error) {
     if request == nil {
         request = NewDescribeCallRecordRequest()
@@ -4150,13 +4658,37 @@ func NewDescribeCheckViewRisksResponse() (response *DescribeCheckViewRisksRespon
 // 检查视角下云资源配置风险列表
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
+//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
+//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
+//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
 //  INTERNALERROR = "InternalError"
 //  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DECRYPTERROR = "InvalidParameter.DecryptError"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_SQLQUERYFAILED = "InvalidParameterValue.SQLQueryFailed"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEINSUFFICIENT_LOGANALYSISQUANTITYINSUFFICIENT = "ResourceInsufficient.LogAnalysisQuantityInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_CLOUDAUDIT = "UnauthorizedOperation.CloudAudit"
+//  UNAUTHORIZEDOPERATION_COS = "UnauthorizedOperation.Cos"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCheckViewRisks(request *DescribeCheckViewRisksRequest) (response *DescribeCheckViewRisksResponse, err error) {
     return c.DescribeCheckViewRisksWithContext(context.Background(), request)
 }
@@ -4165,13 +4697,37 @@ func (c *Client) DescribeCheckViewRisks(request *DescribeCheckViewRisksRequest) 
 // 检查视角下云资源配置风险列表
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
+//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
+//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
+//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
 //  INTERNALERROR = "InternalError"
 //  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DECRYPTERROR = "InvalidParameter.DecryptError"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_SQLQUERYFAILED = "InvalidParameterValue.SQLQueryFailed"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEINSUFFICIENT_LOGANALYSISQUANTITYINSUFFICIENT = "ResourceInsufficient.LogAnalysisQuantityInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_CLOUDAUDIT = "UnauthorizedOperation.CloudAudit"
+//  UNAUTHORIZEDOPERATION_COS = "UnauthorizedOperation.Cos"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCheckViewRisksWithContext(ctx context.Context, request *DescribeCheckViewRisksRequest) (response *DescribeCheckViewRisksResponse, err error) {
     if request == nil {
         request = NewDescribeCheckViewRisksRequest()
@@ -4212,13 +4768,37 @@ func NewDescribeClusterAssetsResponse() (response *DescribeClusterAssetsResponse
 // 集群列表
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
+//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
+//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
+//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
 //  INTERNALERROR = "InternalError"
 //  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DECRYPTERROR = "InvalidParameter.DecryptError"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_SQLQUERYFAILED = "InvalidParameterValue.SQLQueryFailed"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEINSUFFICIENT_LOGANALYSISQUANTITYINSUFFICIENT = "ResourceInsufficient.LogAnalysisQuantityInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_CLOUDAUDIT = "UnauthorizedOperation.CloudAudit"
+//  UNAUTHORIZEDOPERATION_COS = "UnauthorizedOperation.Cos"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeClusterAssets(request *DescribeClusterAssetsRequest) (response *DescribeClusterAssetsResponse, err error) {
     return c.DescribeClusterAssetsWithContext(context.Background(), request)
 }
@@ -4227,13 +4807,37 @@ func (c *Client) DescribeClusterAssets(request *DescribeClusterAssetsRequest) (r
 // 集群列表
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
+//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
+//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
+//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
 //  INTERNALERROR = "InternalError"
 //  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DECRYPTERROR = "InvalidParameter.DecryptError"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_SQLQUERYFAILED = "InvalidParameterValue.SQLQueryFailed"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEINSUFFICIENT_LOGANALYSISQUANTITYINSUFFICIENT = "ResourceInsufficient.LogAnalysisQuantityInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_CLOUDAUDIT = "UnauthorizedOperation.CloudAudit"
+//  UNAUTHORIZEDOPERATION_COS = "UnauthorizedOperation.Cos"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeClusterAssetsWithContext(ctx context.Context, request *DescribeClusterAssetsRequest) (response *DescribeClusterAssetsResponse, err error) {
     if request == nil {
         request = NewDescribeClusterAssetsRequest()
@@ -4274,13 +4878,37 @@ func NewDescribeClusterPodAssetsResponse() (response *DescribeClusterPodAssetsRe
 // 集群pod列表
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
+//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
+//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
+//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
 //  INTERNALERROR = "InternalError"
 //  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DECRYPTERROR = "InvalidParameter.DecryptError"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_SQLQUERYFAILED = "InvalidParameterValue.SQLQueryFailed"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEINSUFFICIENT_LOGANALYSISQUANTITYINSUFFICIENT = "ResourceInsufficient.LogAnalysisQuantityInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_CLOUDAUDIT = "UnauthorizedOperation.CloudAudit"
+//  UNAUTHORIZEDOPERATION_COS = "UnauthorizedOperation.Cos"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeClusterPodAssets(request *DescribeClusterPodAssetsRequest) (response *DescribeClusterPodAssetsResponse, err error) {
     return c.DescribeClusterPodAssetsWithContext(context.Background(), request)
 }
@@ -4289,13 +4917,37 @@ func (c *Client) DescribeClusterPodAssets(request *DescribeClusterPodAssetsReque
 // 集群pod列表
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
+//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
+//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
+//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
 //  INTERNALERROR = "InternalError"
 //  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DECRYPTERROR = "InvalidParameter.DecryptError"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_SQLQUERYFAILED = "InvalidParameterValue.SQLQueryFailed"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEINSUFFICIENT_LOGANALYSISQUANTITYINSUFFICIENT = "ResourceInsufficient.LogAnalysisQuantityInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_CLOUDAUDIT = "UnauthorizedOperation.CloudAudit"
+//  UNAUTHORIZEDOPERATION_COS = "UnauthorizedOperation.Cos"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeClusterPodAssetsWithContext(ctx context.Context, request *DescribeClusterPodAssetsRequest) (response *DescribeClusterPodAssetsResponse, err error) {
     if request == nil {
         request = NewDescribeClusterPodAssetsRequest()
@@ -4336,13 +4988,37 @@ func NewDescribeConfigCheckRulesResponse() (response *DescribeConfigCheckRulesRe
 // 云资源配置风险规则列表示例
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
+//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
+//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
+//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
 //  INTERNALERROR = "InternalError"
 //  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DECRYPTERROR = "InvalidParameter.DecryptError"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_SQLQUERYFAILED = "InvalidParameterValue.SQLQueryFailed"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEINSUFFICIENT_LOGANALYSISQUANTITYINSUFFICIENT = "ResourceInsufficient.LogAnalysisQuantityInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_CLOUDAUDIT = "UnauthorizedOperation.CloudAudit"
+//  UNAUTHORIZEDOPERATION_COS = "UnauthorizedOperation.Cos"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeConfigCheckRules(request *DescribeConfigCheckRulesRequest) (response *DescribeConfigCheckRulesResponse, err error) {
     return c.DescribeConfigCheckRulesWithContext(context.Background(), request)
 }
@@ -4351,13 +5027,37 @@ func (c *Client) DescribeConfigCheckRules(request *DescribeConfigCheckRulesReque
 // 云资源配置风险规则列表示例
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
+//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
+//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
+//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
 //  INTERNALERROR = "InternalError"
 //  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DECRYPTERROR = "InvalidParameter.DecryptError"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_SQLQUERYFAILED = "InvalidParameterValue.SQLQueryFailed"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEINSUFFICIENT_LOGANALYSISQUANTITYINSUFFICIENT = "ResourceInsufficient.LogAnalysisQuantityInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_CLOUDAUDIT = "UnauthorizedOperation.CloudAudit"
+//  UNAUTHORIZEDOPERATION_COS = "UnauthorizedOperation.Cos"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeConfigCheckRulesWithContext(ctx context.Context, request *DescribeConfigCheckRulesRequest) (response *DescribeConfigCheckRulesResponse, err error) {
     if request == nil {
         request = NewDescribeConfigCheckRulesRequest()

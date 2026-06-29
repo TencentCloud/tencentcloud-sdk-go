@@ -9844,27 +9844,33 @@ func (r *DescribeReleaseFileSignResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeReleaseFilesRequestParams struct {
-	// 项目 id
+	// <p>项目 id</p>
 	ProjectID *int64 `json:"ProjectID,omitnil,omitempty" name:"ProjectID"`
 
-	// 文件版本
+	// <p>文件版本</p>
 	FileVersion *string `json:"FileVersion,omitnil,omitempty" name:"FileVersion"`
 
-	// 查询过滤条件（根据sourcemap的文件名模糊匹配）
+	// <p>查询过滤条件（根据sourcemap的文件名模糊匹配）</p>
 	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
+
+	// <p>false/不传=保留「最近 3 个月」约束（旧行为）；true=绕过时间窗口</p>
+	IgnoreDefaultTimeRange *bool `json:"IgnoreDefaultTimeRange,omitnil,omitempty" name:"IgnoreDefaultTimeRange"`
 }
 
 type DescribeReleaseFilesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 项目 id
+	// <p>项目 id</p>
 	ProjectID *int64 `json:"ProjectID,omitnil,omitempty" name:"ProjectID"`
 
-	// 文件版本
+	// <p>文件版本</p>
 	FileVersion *string `json:"FileVersion,omitnil,omitempty" name:"FileVersion"`
 
-	// 查询过滤条件（根据sourcemap的文件名模糊匹配）
+	// <p>查询过滤条件（根据sourcemap的文件名模糊匹配）</p>
 	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
+
+	// <p>false/不传=保留「最近 3 个月」约束（旧行为）；true=绕过时间窗口</p>
+	IgnoreDefaultTimeRange *bool `json:"IgnoreDefaultTimeRange,omitnil,omitempty" name:"IgnoreDefaultTimeRange"`
 }
 
 func (r *DescribeReleaseFilesRequest) ToJsonString() string {
@@ -9882,6 +9888,7 @@ func (r *DescribeReleaseFilesRequest) FromJsonString(s string) error {
 	delete(f, "ProjectID")
 	delete(f, "FileVersion")
 	delete(f, "FileName")
+	delete(f, "IgnoreDefaultTimeRange")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeReleaseFilesRequest has unknown keys!", "")
 	}
@@ -9890,7 +9897,7 @@ func (r *DescribeReleaseFilesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeReleaseFilesResponseParams struct {
-	// 文件信息列表
+	// <p>文件信息列表</p>
 	Files []*ReleaseFile `json:"Files,omitnil,omitempty" name:"Files"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -12058,20 +12065,23 @@ type ProjectLimit struct {
 }
 
 type ReleaseFile struct {
-	// 文件版本
+	// <p>文件版本</p>
 	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
 
-	// 文件唯一 key
+	// <p>文件唯一 key</p>
 	FileKey *string `json:"FileKey,omitnil,omitempty" name:"FileKey"`
 
-	// 文件名
+	// <p>文件名</p>
 	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
 
-	// 文件哈希值
+	// <p>文件哈希值</p>
 	FileHash *string `json:"FileHash,omitnil,omitempty" name:"FileHash"`
 
-	// 文件 id
+	// <p>文件 id</p>
 	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// <p>创建时间</p>
+	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
 }
 
 // Predefined struct for user

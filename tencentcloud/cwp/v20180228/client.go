@@ -109,6 +109,68 @@ func (c *Client) AddLoginWhiteListsWithContext(ctx context.Context, request *Add
     return
 }
 
+func NewAddVulIgnoreRuleRequest() (request *AddVulIgnoreRuleRequest) {
+    request = &AddVulIgnoreRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "AddVulIgnoreRule")
+    
+    
+    return
+}
+
+func NewAddVulIgnoreRuleResponse() (response *AddVulIgnoreRuleResponse) {
+    response = &AddVulIgnoreRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// AddVulIgnoreRule
+// 添加漏洞忽略规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) AddVulIgnoreRule(request *AddVulIgnoreRuleRequest) (response *AddVulIgnoreRuleResponse, err error) {
+    return c.AddVulIgnoreRuleWithContext(context.Background(), request)
+}
+
+// AddVulIgnoreRule
+// 添加漏洞忽略规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) AddVulIgnoreRuleWithContext(ctx context.Context, request *AddVulIgnoreRuleRequest) (response *AddVulIgnoreRuleResponse, err error) {
+    if request == nil {
+        request = NewAddVulIgnoreRuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cwp", APIVersion, "AddVulIgnoreRule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddVulIgnoreRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAddVulIgnoreRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewChangeRuleEventsIgnoreStatusRequest() (request *ChangeRuleEventsIgnoreStatusRequest) {
     request = &ChangeRuleEventsIgnoreStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},

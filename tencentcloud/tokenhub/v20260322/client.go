@@ -1253,11 +1253,27 @@ func NewDescribeUsageRankListResponse() (response *DescribeUsageRankListResponse
 //
 // 
 //
-// 按 apikey、endpoint、model 三个维度统计指定时间窗内的用量排行，返回顶部数据卡所需的 PageStats/TotalStats、左侧 Top 列表（含每对象整段累计值）、右侧色块趋势图所需的逐点曲线。前端通过 Offset 翻页、ShowAll 切换 CSV 全量导出模式。
+// 指标族（MetricType）
+//
+// - `tokens`（默认）：Token 用量统计。支持 Dimension = apikey / endpoint / model。
+//
+//   返回指标：TotalToken（总）/ InputTotalToken（输入）/ OutputTotalToken（输出）/ CacheTotalToken（读缓存）。
+//
+// - `search`：【待上线】联网搜索用量统计。支持 Dimension = apikey / endpoint / model。
+//
+//   返回指标：SearchRequestCount（搜索请求数）/ SearchCount（搜索引擎调用次数）。
 //
 // 
 //
-// MetricType 字段用于切换指标族，本期支持 tokens；接口预留以支持后续指标族扩展。响应回显 MetricType 与 MetricKeys（实际参与渲染的 metric key 列表，顺序固定 [Total, Input, Output]），前端按此渲染顶部数据卡与趋势图，无需硬编码 key 名。
+// 响应内容
+//
+// - MetricType 字段用于切换指标族，响应回显 MetricType 与 MetricKeys。
+//
+// - TotalStats：时间窗内全部对象的整段聚合值。
+//
+// - PageStats：当前翻页内对象的整段聚合值。
+//
+// - TopList：按MetricKeys[0]降序的对象列表，含整段聚合值与逐时间点曲线。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_BARADERROR = "InternalError.BaradError"
@@ -1277,11 +1293,27 @@ func (c *Client) DescribeUsageRankList(request *DescribeUsageRankListRequest) (r
 //
 // 
 //
-// 按 apikey、endpoint、model 三个维度统计指定时间窗内的用量排行，返回顶部数据卡所需的 PageStats/TotalStats、左侧 Top 列表（含每对象整段累计值）、右侧色块趋势图所需的逐点曲线。前端通过 Offset 翻页、ShowAll 切换 CSV 全量导出模式。
+// 指标族（MetricType）
+//
+// - `tokens`（默认）：Token 用量统计。支持 Dimension = apikey / endpoint / model。
+//
+//   返回指标：TotalToken（总）/ InputTotalToken（输入）/ OutputTotalToken（输出）/ CacheTotalToken（读缓存）。
+//
+// - `search`：【待上线】联网搜索用量统计。支持 Dimension = apikey / endpoint / model。
+//
+//   返回指标：SearchRequestCount（搜索请求数）/ SearchCount（搜索引擎调用次数）。
 //
 // 
 //
-// MetricType 字段用于切换指标族，本期支持 tokens；接口预留以支持后续指标族扩展。响应回显 MetricType 与 MetricKeys（实际参与渲染的 metric key 列表，顺序固定 [Total, Input, Output]），前端按此渲染顶部数据卡与趋势图，无需硬编码 key 名。
+// 响应内容
+//
+// - MetricType 字段用于切换指标族，响应回显 MetricType 与 MetricKeys。
+//
+// - TotalStats：时间窗内全部对象的整段聚合值。
+//
+// - PageStats：当前翻页内对象的整段聚合值。
+//
+// - TopList：按MetricKeys[0]降序的对象列表，含整段聚合值与逐时间点曲线。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_BARADERROR = "InternalError.BaradError"

@@ -7520,6 +7520,276 @@ func (r *DescribeCFWAssetStatisticsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeCLSLogIndexV3RequestParams struct {
+	// <p>过滤条件</p>
+	Filters []*LogCLSFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>limit限制</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>offset</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+type DescribeCLSLogIndexV3Request struct {
+	*tchttp.BaseRequest
+	
+	// <p>过滤条件</p>
+	Filters []*LogCLSFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>limit限制</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>offset</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+func (r *DescribeCLSLogIndexV3Request) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCLSLogIndexV3Request) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "MemberId")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCLSLogIndexV3Request has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCLSLogIndexV3ResponseParams struct {
+	// <p>主题信息</p>
+	TopicIndexInfos []*LogTopicIndexInfo `json:"TopicIndexInfos,omitnil,omitempty" name:"TopicIndexInfos"`
+
+	// <p>总数</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeCLSLogIndexV3Response struct {
+	*tchttp.BaseResponse
+	Response *DescribeCLSLogIndexV3ResponseParams `json:"Response"`
+}
+
+func (r *DescribeCLSLogIndexV3Response) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCLSLogIndexV3Response) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCLSLogListV3RequestParams struct {
+	// <p>开始时间</p>
+	From *int64 `json:"From,omitnil,omitempty" name:"From"`
+
+	// <p>结束时间</p>
+	To *int64 `json:"To,omitnil,omitempty" name:"To"`
+
+	// <p>查询条件</p>
+	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
+
+	// <p>语法</p>
+	SyntaxRule *int64 `json:"SyntaxRule,omitnil,omitempty" name:"SyntaxRule"`
+
+	// <p>主题</p>
+	Topics []*LogContextInfo `json:"Topics,omitnil,omitempty" name:"Topics"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>排序</p>
+	Sort *string `json:"Sort,omitnil,omitempty" name:"Sort"`
+
+	// <p>limit</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>offset</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>采样</p>
+	SamplingRate *float64 `json:"SamplingRate,omitnil,omitempty" name:"SamplingRate"`
+
+	// <p>是否高亮</p>
+	HighLight *bool `json:"HighLight,omitnil,omitempty" name:"HighLight"`
+
+	// <p>是否采用新分析</p>
+	UseNewAnalysis *bool `json:"UseNewAnalysis,omitnil,omitempty" name:"UseNewAnalysis"`
+
+	// <p>查询优化</p>
+	QueryOptimize *int64 `json:"QueryOptimize,omitnil,omitempty" name:"QueryOptimize"`
+
+	// <p>主题id</p>
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// <p>上下文信息</p>
+	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
+
+	// <p>查询类型</p>
+	SubQueryTypes []*string `json:"SubQueryTypes,omitnil,omitempty" name:"SubQueryTypes"`
+}
+
+type DescribeCLSLogListV3Request struct {
+	*tchttp.BaseRequest
+	
+	// <p>开始时间</p>
+	From *int64 `json:"From,omitnil,omitempty" name:"From"`
+
+	// <p>结束时间</p>
+	To *int64 `json:"To,omitnil,omitempty" name:"To"`
+
+	// <p>查询条件</p>
+	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
+
+	// <p>语法</p>
+	SyntaxRule *int64 `json:"SyntaxRule,omitnil,omitempty" name:"SyntaxRule"`
+
+	// <p>主题</p>
+	Topics []*LogContextInfo `json:"Topics,omitnil,omitempty" name:"Topics"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>排序</p>
+	Sort *string `json:"Sort,omitnil,omitempty" name:"Sort"`
+
+	// <p>limit</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>offset</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>采样</p>
+	SamplingRate *float64 `json:"SamplingRate,omitnil,omitempty" name:"SamplingRate"`
+
+	// <p>是否高亮</p>
+	HighLight *bool `json:"HighLight,omitnil,omitempty" name:"HighLight"`
+
+	// <p>是否采用新分析</p>
+	UseNewAnalysis *bool `json:"UseNewAnalysis,omitnil,omitempty" name:"UseNewAnalysis"`
+
+	// <p>查询优化</p>
+	QueryOptimize *int64 `json:"QueryOptimize,omitnil,omitempty" name:"QueryOptimize"`
+
+	// <p>主题id</p>
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// <p>上下文信息</p>
+	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
+
+	// <p>查询类型</p>
+	SubQueryTypes []*string `json:"SubQueryTypes,omitnil,omitempty" name:"SubQueryTypes"`
+}
+
+func (r *DescribeCLSLogListV3Request) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCLSLogListV3Request) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "From")
+	delete(f, "To")
+	delete(f, "Query")
+	delete(f, "SyntaxRule")
+	delete(f, "Topics")
+	delete(f, "MemberId")
+	delete(f, "Sort")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "SamplingRate")
+	delete(f, "HighLight")
+	delete(f, "UseNewAnalysis")
+	delete(f, "QueryOptimize")
+	delete(f, "TopicId")
+	delete(f, "Context")
+	delete(f, "SubQueryTypes")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCLSLogListV3Request has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCLSLogListV3ResponseParams struct {
+	// <p>上下文</p>
+	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
+
+	// <p>listover</p>
+	ListOver *bool `json:"ListOver,omitnil,omitempty" name:"ListOver"`
+
+	// <p>是否采用分析</p>
+	Analysis *bool `json:"Analysis,omitnil,omitempty" name:"Analysis"`
+
+	// <p>结果</p>
+	Results []*LogSearchResult `json:"Results,omitnil,omitempty" name:"Results"`
+
+	// <p>列名</p>
+	ColNames []*string `json:"ColNames,omitnil,omitempty" name:"ColNames"`
+
+	// <p>分析结果</p>
+	AnalysisResults []*LogItems `json:"AnalysisResults,omitnil,omitempty" name:"AnalysisResults"`
+
+	// <p>分析记录</p>
+	AnalysisRecords []*string `json:"AnalysisRecords,omitnil,omitempty" name:"AnalysisRecords"`
+
+	// <p>列名</p>
+	Columns []*LogColumn `json:"Columns,omitnil,omitempty" name:"Columns"`
+
+	// <p>采样</p>
+	SamplingRate *float64 `json:"SamplingRate,omitnil,omitempty" name:"SamplingRate"`
+
+	// <p>主题信息</p>
+	Topics *LogSearchTopics `json:"Topics,omitnil,omitempty" name:"Topics"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeCLSLogListV3Response struct {
+	*tchttp.BaseResponse
+	Response *DescribeCLSLogListV3ResponseParams `json:"Response"`
+}
+
+func (r *DescribeCLSLogListV3Response) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCLSLogListV3Response) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeCSIPRiskStatisticsRequestParams struct {
 	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
@@ -20567,6 +20837,202 @@ type Location struct {
 
 	// 城市
 	City *string `json:"City,omitnil,omitempty" name:"City"`
+}
+
+type LogCLSFilter struct {
+	// <p>键</p>
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// <p>值</p>
+	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
+}
+
+type LogColumn struct {
+	// <p>名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>类型</p>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
+type LogContextInfo struct {
+	// <p>主题id</p>
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// <p>上下文</p>
+	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
+}
+
+type LogDynamicIndex struct {
+	// <p>状态</p>
+	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+type LogFullTextInfo struct {
+	// <p>大小写敏感</p>
+	CaseSensitive *bool `json:"CaseSensitive,omitnil,omitempty" name:"CaseSensitive"`
+
+	// <p>token</p>
+	Tokenizer *string `json:"Tokenizer,omitnil,omitempty" name:"Tokenizer"`
+
+	// <p>包含中文</p>
+	ContainZH *bool `json:"ContainZH,omitnil,omitempty" name:"ContainZH"`
+}
+
+type LogHighLightItem struct {
+	// <p>键</p>
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// <p>值</p>
+	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
+}
+
+type LogIndexRuleInfo struct {
+	// <p>全文索引</p>
+	FullText *LogFullTextInfo `json:"FullText,omitnil,omitempty" name:"FullText"`
+
+	// <p>键值索引</p>
+	KeyValue *LogRuleKeyValueInfo `json:"KeyValue,omitnil,omitempty" name:"KeyValue"`
+
+	// <p>标签</p>
+	Tag *LogRuleKeyValueInfo `json:"Tag,omitnil,omitempty" name:"Tag"`
+
+	// <p>动态索引</p>
+	DynamicIndex *LogDynamicIndex `json:"DynamicIndex,omitnil,omitempty" name:"DynamicIndex"`
+}
+
+type LogItem struct {
+	// <p>键</p>
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// <p>值</p>
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type LogItems struct {
+	// <p>数值</p>
+	Data []*LogItem `json:"Data,omitnil,omitempty" name:"Data"`
+}
+
+type LogKeyValueInfo struct {
+	// <p>键</p>
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// <p>值</p>
+	Value *LogValueInfo `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type LogRuleKeyValueInfo struct {
+	// <p>大小写敏感</p>
+	CaseSensitive *bool `json:"CaseSensitive,omitnil,omitempty" name:"CaseSensitive"`
+
+	// <p>键值索引信息</p>
+	KeyValues []*LogKeyValueInfo `json:"KeyValues,omitnil,omitempty" name:"KeyValues"`
+}
+
+type LogSearchErrors struct {
+	// <p>主题</p>
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// <p>错误信息</p>
+	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
+
+	// <p>错误信息</p>
+	ErrorCodeStr *string `json:"ErrorCodeStr,omitnil,omitempty" name:"ErrorCodeStr"`
+}
+
+type LogSearchInfos struct {
+	// <p>主题</p>
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// <p>时间间隔</p>
+	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
+
+	// <p>上下文</p>
+	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
+}
+
+type LogSearchResult struct {
+	// <p>时间</p>
+	Time *int64 `json:"Time,omitnil,omitempty" name:"Time"`
+
+	// <p>主题</p>
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// <p>主题名</p>
+	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
+
+	// <p>源</p>
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// <p>文件名</p>
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
+
+	// <p>pkgid</p>
+	PkgId *string `json:"PkgId,omitnil,omitempty" name:"PkgId"`
+
+	// <p>pkglogid</p>
+	PkgLogId *string `json:"PkgLogId,omitnil,omitempty" name:"PkgLogId"`
+
+	// <p>json数据</p>
+	LogJson *string `json:"LogJson,omitnil,omitempty" name:"LogJson"`
+
+	// <p>主机名</p>
+	HostName *string `json:"HostName,omitnil,omitempty" name:"HostName"`
+
+	// <p>log信息</p>
+	RawLog *string `json:"RawLog,omitnil,omitempty" name:"RawLog"`
+
+	// <p>索引状态</p>
+	IndexStatus *string `json:"IndexStatus,omitnil,omitempty" name:"IndexStatus"`
+
+	// <p>高亮信息</p>
+	HighLights []*LogHighLightItem `json:"HighLights,omitnil,omitempty" name:"HighLights"`
+}
+
+type LogSearchTopics struct {
+	// <p>错误信息</p>
+	Errors []*LogSearchErrors `json:"Errors,omitnil,omitempty" name:"Errors"`
+
+	// <p>正常信息</p>
+	Infos []*LogSearchInfos `json:"Infos,omitnil,omitempty" name:"Infos"`
+}
+
+type LogTopicIndexInfo struct {
+	// <p>主题</p>
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// <p>状态</p>
+	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>规则</p>
+	Rule *LogIndexRuleInfo `json:"Rule,omitnil,omitempty" name:"Rule"`
+
+	// <p>修改时间</p>
+	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
+
+	// <p>是否包含</p>
+	IncludeInternalFields *bool `json:"IncludeInternalFields,omitnil,omitempty" name:"IncludeInternalFields"`
+
+	// <p>元数据标签</p>
+	MetadataFlag *int64 `json:"MetadataFlag,omitnil,omitempty" name:"MetadataFlag"`
+}
+
+type LogValueInfo struct {
+	// <p>类型</p>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>标签</p>
+	Tokenizer *string `json:"Tokenizer,omitnil,omitempty" name:"Tokenizer"`
+
+	// <p>sql标签</p>
+	SqlFlag *bool `json:"SqlFlag,omitnil,omitempty" name:"SqlFlag"`
+
+	// <p>包含中文</p>
+	ContainZH *bool `json:"ContainZH,omitnil,omitempty" name:"ContainZH"`
+
+	// <p>别名</p>
+	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
 }
 
 type Machine struct {

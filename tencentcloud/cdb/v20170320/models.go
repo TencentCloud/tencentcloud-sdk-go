@@ -29,30 +29,30 @@ type Account struct {
 }
 
 type AccountInfo struct {
-	// 账号备注信息
+	// <p>账号备注信息</p>
 	Notes *string `json:"Notes,omitnil,omitempty" name:"Notes"`
 
-	// 账号的域名
+	// <p>账号的域名</p>
 	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
 
-	// 账号的名称
+	// <p>账号的名称</p>
 	User *string `json:"User,omitnil,omitempty" name:"User"`
 
-	// 账号信息修改时间
+	// <p>账号信息修改时间</p>
 	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 
-	// 修改密码的时间
+	// <p>修改密码的时间</p>
 	ModifyPasswordTime *string `json:"ModifyPasswordTime,omitnil,omitempty" name:"ModifyPasswordTime"`
 
-	// 该值已废弃
+	// <p>该值已废弃</p>
 	//
 	// Deprecated: CreateTime is deprecated.
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 用户最大可用实例连接数
+	// <p>用户最大可用实例连接数</p>
 	MaxUserConnections *int64 `json:"MaxUserConnections,omitnil,omitempty" name:"MaxUserConnections"`
 
-	// 用户账号是否开启了密码轮转
+	// <p>用户账号是否开启了密码轮转</p>
 	OpenCam *bool `json:"OpenCam,omitnil,omitempty" name:"OpenCam"`
 }
 

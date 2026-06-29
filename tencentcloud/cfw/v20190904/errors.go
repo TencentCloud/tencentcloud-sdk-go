@@ -38,6 +38,9 @@ const (
 	// FailedOperation.SyntaxError
 	FAILEDOPERATION_SYNTAXERROR = "FailedOperation.SyntaxError"
 
+	// FailedOperation.TagQpsLimit
+	FAILEDOPERATION_TAGQPSLIMIT = "FailedOperation.TagQpsLimit"
+
 	// FailedOperation.Timeout
 	FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
 
@@ -46,6 +49,9 @@ const (
 
 	// 内部错误。
 	INTERNALERROR = "InternalError"
+
+	// InternalError.DatabaseException
+	INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
 
 	// InternalError.SearchError
 	INTERNALERROR_SEARCHERROR = "InternalError.SearchError"
@@ -56,8 +62,20 @@ const (
 	// InternalError.ServerBusy
 	INTERNALERROR_SERVERBUSY = "InternalError.ServerBusy"
 
+	// InternalError.Unknown
+	INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+
+	// 无效的过滤器
+	INVALIDFILTER = "InvalidFilter"
+
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
+
+	// InvalidParameter.RequestParam
+	INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+
+	// 无效参数组合
+	INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
 
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -77,8 +95,14 @@ const (
 	// 缺少参数错误。
 	MISSINGPARAMETER = "MissingParameter"
 
+	// MissingParameter.CommonParam
+	MISSINGPARAMETER_COMMONPARAM = "MissingParameter.CommonParam"
+
 	// 操作被拒绝。
 	OPERATIONDENIED = "OperationDenied"
+
+	// OperationDenied.ACLFailed
+	OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
 
 	// OperationDenied.AccountDestroy
 	OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
@@ -89,11 +113,17 @@ const (
 	// OperationDenied.AccountNotExists
 	OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
 
+	// OperationDenied.AnalysisSwitchClose
+	OPERATIONDENIED_ANALYSISSWITCHCLOSE = "OperationDenied.AnalysisSwitchClose"
+
 	// OperationDenied.NewSyntaxNotSupported
 	OPERATIONDENIED_NEWSYNTAXNOTSUPPORTED = "OperationDenied.NewSyntaxNotSupported"
 
 	// OperationDenied.OperationNotSupportInSearchLow
 	OPERATIONDENIED_OPERATIONNOTSUPPORTINSEARCHLOW = "OperationDenied.OperationNotSupportInSearchLow"
+
+	// 地域错误
+	REGIONERROR = "RegionError"
 
 	// 请求的次数超过了频率限制。
 	REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
@@ -107,6 +137,18 @@ const (
 	// 资源不存在。
 	RESOURCENOTFOUND = "ResourceNotFound"
 
+	// ResourceNotFound.AlarmNotExist
+	RESOURCENOTFOUND_ALARMNOTEXIST = "ResourceNotFound.AlarmNotExist"
+
+	// ResourceNotFound.IndexNotExist
+	RESOURCENOTFOUND_INDEXNOTEXIST = "ResourceNotFound.IndexNotExist"
+
+	// ResourceNotFound.LogsetNotExist
+	RESOURCENOTFOUND_LOGSETNOTEXIST = "ResourceNotFound.LogsetNotExist"
+
+	// ResourceNotFound.NotFound
+	RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+
 	// ResourceNotFound.TopicNotExist
 	RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
 
@@ -118,6 +160,9 @@ const (
 
 	// 未授权操作。
 	UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+
+	// UnauthorizedOperation.PermissionDenied
+	UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 
 	// 未知参数错误。
 	UNKNOWNPARAMETER = "UnknownParameter"

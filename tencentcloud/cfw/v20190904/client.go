@@ -3995,6 +3995,156 @@ func (c *Client) DescribeLogsWithContext(ctx context.Context, request *DescribeL
     return
 }
 
+func NewDescribeNDRAssetIdentificationCursorListRequest() (request *DescribeNDRAssetIdentificationCursorListRequest) {
+    request = &DescribeNDRAssetIdentificationCursorListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "DescribeNDRAssetIdentificationCursorList")
+    
+    
+    return
+}
+
+func NewDescribeNDRAssetIdentificationCursorListResponse() (response *DescribeNDRAssetIdentificationCursorListResponse) {
+    response = &DescribeNDRAssetIdentificationCursorListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeNDRAssetIdentificationCursorList
+// DescribeNDRAssetIdentificationCursorList - 游标获取NDR资产识别结果列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDCONTEXT = "FailedOperation.InvalidContext"
+//  FAILEDOPERATION_QUERYERROR = "FailedOperation.QueryError"
+//  FAILEDOPERATION_SEARCHTIMEOUT = "FailedOperation.SearchTimeout"
+//  FAILEDOPERATION_SYNTAXERROR = "FailedOperation.SyntaxError"
+//  FAILEDOPERATION_TAGQPSLIMIT = "FailedOperation.TagQpsLimit"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  FAILEDOPERATION_TOPICISOLATED = "FailedOperation.TopicIsolated"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INTERNALERROR_SEARCHERROR = "InternalError.SearchError"
+//  INTERNALERROR_SEARCHFAILED = "InternalError.SearchFailed"
+//  INTERNALERROR_SERVERBUSY = "InternalError.ServerBusy"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_LOGSEARCH = "LimitExceeded.LogSearch"
+//  LIMITEXCEEDED_SEARCHRESOURCES = "LimitExceeded.SearchResources"
+//  LIMITEXCEEDED_SEARCHRESULTTOOLARGE = "LimitExceeded.SearchResultTooLarge"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_COMMONPARAM = "MissingParameter.CommonParam"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  OPERATIONDENIED_ANALYSISSWITCHCLOSE = "OperationDenied.AnalysisSwitchClose"
+//  OPERATIONDENIED_NEWSYNTAXNOTSUPPORTED = "OperationDenied.NewSyntaxNotSupported"
+//  OPERATIONDENIED_OPERATIONNOTSUPPORTINSEARCHLOW = "OperationDenied.OperationNotSupportInSearchLow"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_ALARMNOTEXIST = "ResourceNotFound.AlarmNotExist"
+//  RESOURCENOTFOUND_INDEXNOTEXIST = "ResourceNotFound.IndexNotExist"
+//  RESOURCENOTFOUND_LOGSETNOTEXIST = "ResourceNotFound.LogsetNotExist"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeNDRAssetIdentificationCursorList(request *DescribeNDRAssetIdentificationCursorListRequest) (response *DescribeNDRAssetIdentificationCursorListResponse, err error) {
+    return c.DescribeNDRAssetIdentificationCursorListWithContext(context.Background(), request)
+}
+
+// DescribeNDRAssetIdentificationCursorList
+// DescribeNDRAssetIdentificationCursorList - 游标获取NDR资产识别结果列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDCONTEXT = "FailedOperation.InvalidContext"
+//  FAILEDOPERATION_QUERYERROR = "FailedOperation.QueryError"
+//  FAILEDOPERATION_SEARCHTIMEOUT = "FailedOperation.SearchTimeout"
+//  FAILEDOPERATION_SYNTAXERROR = "FailedOperation.SyntaxError"
+//  FAILEDOPERATION_TAGQPSLIMIT = "FailedOperation.TagQpsLimit"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  FAILEDOPERATION_TOPICISOLATED = "FailedOperation.TopicIsolated"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INTERNALERROR_SEARCHERROR = "InternalError.SearchError"
+//  INTERNALERROR_SEARCHFAILED = "InternalError.SearchFailed"
+//  INTERNALERROR_SERVERBUSY = "InternalError.ServerBusy"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_LOGSEARCH = "LimitExceeded.LogSearch"
+//  LIMITEXCEEDED_SEARCHRESOURCES = "LimitExceeded.SearchResources"
+//  LIMITEXCEEDED_SEARCHRESULTTOOLARGE = "LimitExceeded.SearchResultTooLarge"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_COMMONPARAM = "MissingParameter.CommonParam"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  OPERATIONDENIED_ANALYSISSWITCHCLOSE = "OperationDenied.AnalysisSwitchClose"
+//  OPERATIONDENIED_NEWSYNTAXNOTSUPPORTED = "OperationDenied.NewSyntaxNotSupported"
+//  OPERATIONDENIED_OPERATIONNOTSUPPORTINSEARCHLOW = "OperationDenied.OperationNotSupportInSearchLow"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_ALARMNOTEXIST = "ResourceNotFound.AlarmNotExist"
+//  RESOURCENOTFOUND_INDEXNOTEXIST = "ResourceNotFound.IndexNotExist"
+//  RESOURCENOTFOUND_LOGSETNOTEXIST = "ResourceNotFound.LogsetNotExist"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeNDRAssetIdentificationCursorListWithContext(ctx context.Context, request *DescribeNDRAssetIdentificationCursorListRequest) (response *DescribeNDRAssetIdentificationCursorListResponse, err error) {
+    if request == nil {
+        request = NewDescribeNDRAssetIdentificationCursorListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeNDRAssetIdentificationCursorList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNDRAssetIdentificationCursorList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeNDRAssetIdentificationCursorListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeNDRAssetIdentificationListRequest() (request *DescribeNDRAssetIdentificationListRequest) {
     request = &DescribeNDRAssetIdentificationListRequest{
         BaseRequest: &tchttp.BaseRequest{},

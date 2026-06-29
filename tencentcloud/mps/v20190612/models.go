@@ -1425,6 +1425,32 @@ type AiParagraphInfo struct {
 	EndTimeOffset *float64 `json:"EndTimeOffset,omitnil,omitempty" name:"EndTimeOffset"`
 }
 
+type AiPosterSuiteConfig struct {
+	// <p>出图模式</p><p>枚举值：</p><ul><li>auto： 全自动模式。此模式下支持CustomVariables传入。</li><li>modify： 修改模式。此模式下需要在AddOnParameter.ExtPrompt字段提供对应描述。此模式下禁止CustomVariables传入。</li></ul><p>默认值：auto</p>
+	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
+
+	// <p>电商平台视觉模板id</p><p>如需个性化定制视觉模板，请提交工单。</p>
+	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// <p>子图配置。</p>
+	Recipe []*RecipeItem `json:"Recipe,omitnil,omitempty" name:"Recipe"`
+
+	// <p>子图文案语言。</p><p>枚举值：</p><ul><li>zh-CN： 简体中文</li><li>en-US： 美式英语</li></ul><p>默认值：zh-CN</p><p>如需支持更多语言输出，请提交工单。</p>
+	Language *string `json:"Language,omitnil,omitempty" name:"Language"`
+
+	// <p>子图比例。</p><p>枚举值：</p><ul><li>1:1： 1:1</li><li>3:4： 3:4</li><li>4:3： 4:3</li><li>9:16： 9:16</li><li>16:9： 16:9</li></ul><p>默认值：1:1</p>
+	PanelRatio *string `json:"PanelRatio,omitnil,omitempty" name:"PanelRatio"`
+
+	// <p>子图分辨率</p><p>枚举值：</p><ul><li>720： 720</li><li>1K： 1K</li><li>2K： 2K</li><li>4K： 4K</li></ul><p>默认值：1K</p>
+	PanelResolution *string `json:"PanelResolution,omitnil,omitempty" name:"PanelResolution"`
+
+	// <p>用户自定义变量。</p>
+	CustomVariables []*CustomVariable `json:"CustomVariables,omitnil,omitempty" name:"CustomVariables"`
+
+	// <p>模型名称。</p><p>枚举值：</p><ul><li>WAND-suite-1.0-flash： WAND-suite-1.0-flash</li></ul>
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+}
+
 type AiQualityControlTaskInput struct {
 	// 媒体质检模板 ID 。
 	// 可以直接使用预设模板，也可以在控制台自定义模板。预设模板如下：
@@ -8311,6 +8337,14 @@ func (r *CreateWorkflowResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *CreateWorkflowResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type CustomVariable struct {
+	// <p>用户自定义变量类型。</p><p>参数格式：PascalCase格式。</p><p>不能为UserPrompt。默认平台模板未适配自定义内容，如需适配需提交工单。</p>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>自定义变量描述。</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 type DashManifestInfo struct {
@@ -18622,6 +18656,9 @@ type ImageTaskInput struct {
 
 	// <p>Ai 换装配置。</p>
 	AiTryOnConfig *AiTryOnConfig `json:"AiTryOnConfig,omitnil,omitempty" name:"AiTryOnConfig"`
+
+	// <p>Ai套图配置。</p>
+	AiPosterSuiteConfig *AiPosterSuiteConfig `json:"AiPosterSuiteConfig,omitnil,omitempty" name:"AiPosterSuiteConfig"`
 }
 
 type ImageTransformConfig struct {
@@ -25508,6 +25545,14 @@ type RawWatermarkParameter struct {
 
 	// 图片水印模板，当 Type 为 image，该字段必填。当 Type 为 text，该字段无效。
 	ImageTemplate *RawImageWatermarkInput `json:"ImageTemplate,omitnil,omitempty" name:"ImageTemplate"`
+}
+
+type RecipeItem struct {
+	// <p>子图类型</p><p>枚举值：</p><ul><li>hero： 商品主图</li><li>detail： 商品细节图</li><li>selling： 核心卖点图</li><li>atmosphere： 场景氛围图</li><li>angles： 多角度图</li><li>scene： 使用场景图</li></ul>
+	Theme *string `json:"Theme,omitnil,omitempty" name:"Theme"`
+
+	// <p>对应子图数量。</p><p>取值范围：[1, 4]</p><p>单位：张</p><p>单种子图最多4张，子图总数必须在4-12张范围内。</p>
+	Num *int64 `json:"Num,omitnil,omitempty" name:"Num"`
 }
 
 // Predefined struct for user

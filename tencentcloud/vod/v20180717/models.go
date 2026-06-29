@@ -19966,9 +19966,28 @@ type JustInTimeTranscodeTemplate struct {
 	WatermarkConfigure *WatermarkConfigureData `json:"WatermarkConfigure,omitnil,omitempty" name:"WatermarkConfigure"`
 }
 
+type KnowledgeAnalysisInfo struct {
+	// <p>大模型解析模板号</p>
+	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// <p>大模型解析结果</p>
+	AnalysisResults []*KnowledgeAnalysisResult `json:"AnalysisResults,omitnil,omitempty" name:"AnalysisResults"`
+}
+
+type KnowledgeAnalysisResult struct {
+	// <p>处理任务类型</p><p>枚举值：</p><ul><li>AiAnalysis.DescriptionTask： 智能摘要任务</li><li>AiAnalysis.VideoComprehensionTask： 视频理解任务</li><li>SmartSubtitle.AsrFullTextTask： 智能语音全文识别任务</li></ul>
+	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+
+	// <p>任务输出文件集合</p>
+	File *MPSOutputFileInfo `json:"File,omitnil,omitempty" name:"File"`
+}
+
 type KnowledgeBasesInfo struct {
 	// <p>当前媒资当导入的知识库列表</p>
 	Bases []*string `json:"Bases,omitnil,omitempty" name:"Bases"`
+
+	// <p>知识库中媒体分析信息</p>
+	KnowledgeAnalysisInfos []*KnowledgeAnalysisInfo `json:"KnowledgeAnalysisInfos,omitnil,omitempty" name:"KnowledgeAnalysisInfos"`
 }
 
 type LLMComprehendAsr struct {

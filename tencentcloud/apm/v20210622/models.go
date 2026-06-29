@@ -279,6 +279,18 @@ type ApmAppConfig struct {
 
 	// <p>是否默认使用探针自带熔断阈值</p>
 	UseDefaultFuseConfig *bool `json:"UseDefaultFuseConfig,omitnil,omitempty" name:"UseDefaultFuseConfig"`
+
+	// <p>是否开启自动分析</p>
+	AnalysisAutoEnable *bool `json:"AnalysisAutoEnable,omitnil,omitempty" name:"AnalysisAutoEnable"`
+
+	// <p>头采样开关</p>
+	EnableHeadSampler *bool `json:"EnableHeadSampler,omitnil,omitempty" name:"EnableHeadSampler"`
+
+	// <p>头采样类型</p><p>枚举值：</p><ul><li>parentbased_traceidratio： 跟随父类型</li></ul>
+	HeadSamplerType *string `json:"HeadSamplerType,omitnil,omitempty" name:"HeadSamplerType"`
+
+	// <p>采样阈值，100等于关闭采样，0表示全采样</p>
+	HeadSamplerArg *int64 `json:"HeadSamplerArg,omitnil,omitempty" name:"HeadSamplerArg"`
 }
 
 type ApmApplicationConfigView struct {
@@ -3538,6 +3550,15 @@ type ModifyApmApplicationConfigRequestParams struct {
 
 	// <p>是否使用探针默认熔断阈值</p>
 	UseDefaultFuseConfig *bool `json:"UseDefaultFuseConfig,omitnil,omitempty" name:"UseDefaultFuseConfig"`
+
+	// <p>是否开启探针头采样</p>
+	EnableHeadSampler *bool `json:"EnableHeadSampler,omitnil,omitempty" name:"EnableHeadSampler"`
+
+	// <p>头采样类型</p><p>枚举值：</p><ul><li>parentbased_traceidratio： 跟随parent</li></ul>
+	HeadSamplerType *string `json:"HeadSamplerType,omitnil,omitempty" name:"HeadSamplerType"`
+
+	// <p>采样率</p><p>取值范围：[0, 100]</p><p>默认值：100</p>
+	HeadSamplerArg *int64 `json:"HeadSamplerArg,omitnil,omitempty" name:"HeadSamplerArg"`
 }
 
 type ModifyApmApplicationConfigRequest struct {
@@ -3719,6 +3740,15 @@ type ModifyApmApplicationConfigRequest struct {
 
 	// <p>是否使用探针默认熔断阈值</p>
 	UseDefaultFuseConfig *bool `json:"UseDefaultFuseConfig,omitnil,omitempty" name:"UseDefaultFuseConfig"`
+
+	// <p>是否开启探针头采样</p>
+	EnableHeadSampler *bool `json:"EnableHeadSampler,omitnil,omitempty" name:"EnableHeadSampler"`
+
+	// <p>头采样类型</p><p>枚举值：</p><ul><li>parentbased_traceidratio： 跟随parent</li></ul>
+	HeadSamplerType *string `json:"HeadSamplerType,omitnil,omitempty" name:"HeadSamplerType"`
+
+	// <p>采样率</p><p>取值范围：[0, 100]</p><p>默认值：100</p>
+	HeadSamplerArg *int64 `json:"HeadSamplerArg,omitnil,omitempty" name:"HeadSamplerArg"`
 }
 
 func (r *ModifyApmApplicationConfigRequest) ToJsonString() string {
@@ -3792,6 +3822,9 @@ func (r *ModifyApmApplicationConfigRequest) FromJsonString(s string) error {
 	delete(f, "ErrRateThreshold")
 	delete(f, "ResponseDurationWarningThreshold")
 	delete(f, "UseDefaultFuseConfig")
+	delete(f, "EnableHeadSampler")
+	delete(f, "HeadSamplerType")
+	delete(f, "HeadSamplerArg")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyApmApplicationConfigRequest has unknown keys!", "")
 	}

@@ -2585,72 +2585,6 @@ func (c *Client) ModifyUserPrivilegesWithContext(ctx context.Context, request *M
     return
 }
 
-func NewResetUserPasswordRequest() (request *ResetUserPasswordRequest) {
-    request = &ResetUserPasswordRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("tdmysql", APIVersion, "ResetUserPassword")
-    
-    
-    return
-}
-
-func NewResetUserPasswordResponse() (response *ResetUserPasswordResponse) {
-    response = &ResetUserPasswordResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// ResetUserPassword
-// 本接口（ResetUserPassword）提供重置用户密码功能
-//
-// 可能返回的错误码:
-//  AUTHFAILURE_CAMAUTHERROR = "AuthFailure.CamAuthError"
-//  AUTHFAILURE_CHECKCAMAUTHERROR = "AuthFailure.CheckCamAuthError"
-//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
-//  FAILEDOPERATION_DBQUERYUSERERROR = "FailedOperation.DBQueryUserError"
-//  FAILEDOPERATION_DBUPDATEUSERERROR = "FailedOperation.DBUpdateUserError"
-//  FAILEDOPERATION_QUERYUSERERROR = "FailedOperation.QueryUserError"
-//  INVALIDPARAMETERVALUE_CHECKPASSWDERROR = "InvalidParameterValue.CheckPasswdError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
-//  OPERATIONDENIED_RESETUSERPASSWORDERROR = "OperationDenied.ResetUserPasswordError"
-func (c *Client) ResetUserPassword(request *ResetUserPasswordRequest) (response *ResetUserPasswordResponse, err error) {
-    return c.ResetUserPasswordWithContext(context.Background(), request)
-}
-
-// ResetUserPassword
-// 本接口（ResetUserPassword）提供重置用户密码功能
-//
-// 可能返回的错误码:
-//  AUTHFAILURE_CAMAUTHERROR = "AuthFailure.CamAuthError"
-//  AUTHFAILURE_CHECKCAMAUTHERROR = "AuthFailure.CheckCamAuthError"
-//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
-//  FAILEDOPERATION_DBQUERYUSERERROR = "FailedOperation.DBQueryUserError"
-//  FAILEDOPERATION_DBUPDATEUSERERROR = "FailedOperation.DBUpdateUserError"
-//  FAILEDOPERATION_QUERYUSERERROR = "FailedOperation.QueryUserError"
-//  INVALIDPARAMETERVALUE_CHECKPASSWDERROR = "InvalidParameterValue.CheckPasswdError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
-//  OPERATIONDENIED_RESETUSERPASSWORDERROR = "OperationDenied.ResetUserPasswordError"
-func (c *Client) ResetUserPasswordWithContext(ctx context.Context, request *ResetUserPasswordRequest) (response *ResetUserPasswordResponse, err error) {
-    if request == nil {
-        request = NewResetUserPasswordRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "tdmysql", APIVersion, "ResetUserPassword")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("ResetUserPassword require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewResetUserPasswordResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewResetUsersPasswordRequest() (request *ResetUsersPasswordRequest) {
     request = &ResetUsersPasswordRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2674,15 +2608,10 @@ func NewResetUsersPasswordResponse() (response *ResetUsersPasswordResponse) {
 // 本接口（ResetUsersPassword）用于批量重置用户密码
 //
 // 可能返回的错误码:
-//  AUTHFAILURE_CAMAUTHERROR = "AuthFailure.CamAuthError"
-//  AUTHFAILURE_CHECKCAMAUTHERROR = "AuthFailure.CheckCamAuthError"
-//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
-//  FAILEDOPERATION_DBQUERYUSERERROR = "FailedOperation.DBQueryUserError"
-//  FAILEDOPERATION_DBUPDATEUSERERROR = "FailedOperation.DBUpdateUserError"
-//  FAILEDOPERATION_QUERYUSERERROR = "FailedOperation.QueryUserError"
-//  INVALIDPARAMETERVALUE_CHECKPASSWDERROR = "InvalidParameterValue.CheckPasswdError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
-//  OPERATIONDENIED_RESETUSERPASSWORDERROR = "OperationDenied.ResetUserPasswordError"
+//  FAILEDOPERATION_DBCOUNTLIMITERROR = "FailedOperation.DbCountLimitError"
+//  FAILEDOPERATION_QUERYDBERROR = "FailedOperation.QueryDBError"
+//  FAILEDOPERATION_TABLECOUNTLIMITERROR = "FailedOperation.TableCountLimitError"
+//  FAILEDOPERATION_UPDATEPRIVILEGESERROR = "FailedOperation.UpdatePrivilegesError"
 func (c *Client) ResetUsersPassword(request *ResetUsersPasswordRequest) (response *ResetUsersPasswordResponse, err error) {
     return c.ResetUsersPasswordWithContext(context.Background(), request)
 }
@@ -2691,15 +2620,10 @@ func (c *Client) ResetUsersPassword(request *ResetUsersPasswordRequest) (respons
 // 本接口（ResetUsersPassword）用于批量重置用户密码
 //
 // 可能返回的错误码:
-//  AUTHFAILURE_CAMAUTHERROR = "AuthFailure.CamAuthError"
-//  AUTHFAILURE_CHECKCAMAUTHERROR = "AuthFailure.CheckCamAuthError"
-//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
-//  FAILEDOPERATION_DBQUERYUSERERROR = "FailedOperation.DBQueryUserError"
-//  FAILEDOPERATION_DBUPDATEUSERERROR = "FailedOperation.DBUpdateUserError"
-//  FAILEDOPERATION_QUERYUSERERROR = "FailedOperation.QueryUserError"
-//  INVALIDPARAMETERVALUE_CHECKPASSWDERROR = "InvalidParameterValue.CheckPasswdError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
-//  OPERATIONDENIED_RESETUSERPASSWORDERROR = "OperationDenied.ResetUserPasswordError"
+//  FAILEDOPERATION_DBCOUNTLIMITERROR = "FailedOperation.DbCountLimitError"
+//  FAILEDOPERATION_QUERYDBERROR = "FailedOperation.QueryDBError"
+//  FAILEDOPERATION_TABLECOUNTLIMITERROR = "FailedOperation.TableCountLimitError"
+//  FAILEDOPERATION_UPDATEPRIVILEGESERROR = "FailedOperation.UpdatePrivilegesError"
 func (c *Client) ResetUsersPasswordWithContext(ctx context.Context, request *ResetUsersPasswordRequest) (response *ResetUsersPasswordResponse, err error) {
     if request == nil {
         request = NewResetUsersPasswordRequest()

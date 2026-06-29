@@ -6583,6 +6583,74 @@ func (c *Client) DescribePrometheusConfigWithContext(ctx context.Context, reques
     return
 }
 
+func NewDescribePrometheusCreateInstanceQuotaRequest() (request *DescribePrometheusCreateInstanceQuotaRequest) {
+    request = &DescribePrometheusCreateInstanceQuotaRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("monitor", APIVersion, "DescribePrometheusCreateInstanceQuota")
+    
+    
+    return
+}
+
+func NewDescribePrometheusCreateInstanceQuotaResponse() (response *DescribePrometheusCreateInstanceQuotaResponse) {
+    response = &DescribePrometheusCreateInstanceQuotaResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribePrometheusCreateInstanceQuota
+// 查询Prometheus实例创建配额
+//
+// 
+//
+// 配额不分地域，可从任意支持地域请求
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_COMPONENTCLIENTUNPACK = "FailedOperation.ComponentClientUnpack"
+//  FAILEDOPERATION_DOTRPCTRANSFERFAILED = "FailedOperation.DoTRPCTransferFailed"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) DescribePrometheusCreateInstanceQuota(request *DescribePrometheusCreateInstanceQuotaRequest) (response *DescribePrometheusCreateInstanceQuotaResponse, err error) {
+    return c.DescribePrometheusCreateInstanceQuotaWithContext(context.Background(), request)
+}
+
+// DescribePrometheusCreateInstanceQuota
+// 查询Prometheus实例创建配额
+//
+// 
+//
+// 配额不分地域，可从任意支持地域请求
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_COMPONENTCLIENTUNPACK = "FailedOperation.ComponentClientUnpack"
+//  FAILEDOPERATION_DOTRPCTRANSFERFAILED = "FailedOperation.DoTRPCTransferFailed"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) DescribePrometheusCreateInstanceQuotaWithContext(ctx context.Context, request *DescribePrometheusCreateInstanceQuotaRequest) (response *DescribePrometheusCreateInstanceQuotaResponse, err error) {
+    if request == nil {
+        request = NewDescribePrometheusCreateInstanceQuotaRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "monitor", APIVersion, "DescribePrometheusCreateInstanceQuota")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePrometheusCreateInstanceQuota require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePrometheusCreateInstanceQuotaResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePrometheusGlobalConfigRequest() (request *DescribePrometheusGlobalConfigRequest) {
     request = &DescribePrometheusGlobalConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
