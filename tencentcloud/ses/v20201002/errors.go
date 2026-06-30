@@ -26,6 +26,9 @@ const (
 	// 附件太大，请参考单个附件以及附件总量大小限制。
 	FAILEDOPERATION_ATTACHCONTENTTOOLARGE = "FailedOperation.AttachContentToolarge"
 
+	// DKIM没有创建，需要提前创建
+	FAILEDOPERATION_DKIMNOTAPPLIED = "FailedOperation.DKIMNotApplied"
+
 	// 邮件地址在黑名单中。
 	FAILEDOPERATION_EMAILADDRINBLACKLIST = "FailedOperation.EmailAddrInBlacklist"
 

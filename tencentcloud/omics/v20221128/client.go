@@ -1319,6 +1319,74 @@ func (c *Client) GetRunCallsWithContext(ctx context.Context, request *GetRunCall
     return
 }
 
+func NewGetRunJobLogRequest() (request *GetRunJobLogRequest) {
+    request = &GetRunJobLogRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("omics", APIVersion, "GetRunJobLog")
+    
+    
+    return
+}
+
+func NewGetRunJobLogResponse() (response *GetRunJobLogResponse) {
+    response = &GetRunJobLogResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetRunJobLog
+// 获取任务详情文件。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDCOSKEY = "InvalidParameterValue.InvalidCosKey"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_COSOBJECTNOTEXIST = "ResourceNotFound.CosObjectNotExist"
+//  RESOURCENOTFOUND_ENVIRONMENTNOTEXIST = "ResourceNotFound.EnvironmentNotExist"
+//  RESOURCENOTFOUND_RUNNOTEXIST = "ResourceNotFound.RunNotExist"
+func (c *Client) GetRunJobLog(request *GetRunJobLogRequest) (response *GetRunJobLogResponse, err error) {
+    return c.GetRunJobLogWithContext(context.Background(), request)
+}
+
+// GetRunJobLog
+// 获取任务详情文件。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDCOSKEY = "InvalidParameterValue.InvalidCosKey"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_COSOBJECTNOTEXIST = "ResourceNotFound.CosObjectNotExist"
+//  RESOURCENOTFOUND_ENVIRONMENTNOTEXIST = "ResourceNotFound.EnvironmentNotExist"
+//  RESOURCENOTFOUND_RUNNOTEXIST = "ResourceNotFound.RunNotExist"
+func (c *Client) GetRunJobLogWithContext(ctx context.Context, request *GetRunJobLogRequest) (response *GetRunJobLogResponse, err error) {
+    if request == nil {
+        request = NewGetRunJobLogRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "omics", APIVersion, "GetRunJobLog")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetRunJobLog require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetRunJobLogResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetRunMetadataFileRequest() (request *GetRunMetadataFileRequest) {
     request = &GetRunMetadataFileRequest{
         BaseRequest: &tchttp.BaseRequest{},

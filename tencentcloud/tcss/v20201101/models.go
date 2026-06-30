@@ -11327,14 +11327,14 @@ func (r *DescribeAssetImageRegistryListResponse) FromJsonString(s string) error 
 
 // Predefined struct for user
 type DescribeAssetImageRegistryRegistryDetailRequestParams struct {
-	// 仓库唯一id
+	// <p>仓库唯一id</p>
 	RegistryId *int64 `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
 }
 
 type DescribeAssetImageRegistryRegistryDetailRequest struct {
 	*tchttp.BaseRequest
 	
-	// 仓库唯一id
+	// <p>仓库唯一id</p>
 	RegistryId *int64 `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
 }
 
@@ -11359,52 +11359,52 @@ func (r *DescribeAssetImageRegistryRegistryDetailRequest) FromJsonString(s strin
 
 // Predefined struct for user
 type DescribeAssetImageRegistryRegistryDetailResponseParams struct {
-	// 仓库名
+	// <p>仓库名</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 用户名
+	// <p>用户名</p>
 	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
 
-	// 密码
+	// <p>密码</p>
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
-	// 仓库url
+	// <p>仓库url</p>
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
-	// 仓库类型，列表：harbor
+	// <p>仓库类型，列表：harbor</p>
 	RegistryType *string `json:"RegistryType,omitnil,omitempty" name:"RegistryType"`
 
-	// 仓库版本
+	// <p>仓库版本</p>
 	RegistryVersion *string `json:"RegistryVersion,omitnil,omitempty" name:"RegistryVersion"`
 
-	// 网络类型，列表：public（公网）,private（私网）
+	// <p>网络类型，列表：public（公网）,private（私网）</p>
 	NetType *string `json:"NetType,omitnil,omitempty" name:"NetType"`
 
-	// 区域，列表:default（默认）
+	// <p>区域，列表:default（默认）</p>
 	RegistryRegion *string `json:"RegistryRegion,omitnil,omitempty" name:"RegistryRegion"`
 
-	// 限速
+	// <p>限速</p>
 	SpeedLimit *uint64 `json:"SpeedLimit,omitnil,omitempty" name:"SpeedLimit"`
 
-	// 安全模式（证书校验）：0（默认） 非安全模式（跳过证书校验）：1
+	// <p>安全模式（证书校验）：0（默认） 非安全模式（跳过证书校验）：1</p>
 	Insecure *uint64 `json:"Insecure,omitnil,omitempty" name:"Insecure"`
 
-	// 联通性检测结果详情
+	// <p>联通性检测结果详情</p>
 	ConnDetectDetail []*RegistryConnDetectResult `json:"ConnDetectDetail,omitnil,omitempty" name:"ConnDetectDetail"`
 
-	// tcr情况下instance_id
+	// <p>tcr情况下instance_id</p>
 	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
 
-	// 同步方式，0全量同步，1增量同步
+	// <p>同步方式，0全量同步，1增量同步</p>
 	SyncMode *uint64 `json:"SyncMode,omitnil,omitempty" name:"SyncMode"`
 
-	// 是否自动授权&扫描，选择全量同步时只针对最新版本镜像，增量同步时则包含所有新增镜像
+	// <p>是否自动授权&amp;扫描，选择全量同步时只针对最新版本镜像，增量同步时则包含所有新增镜像</p>
 	NeedScan *bool `json:"NeedScan,omitnil,omitempty" name:"NeedScan"`
 
-	// webhook接入地址
+	// <p>webhook接入地址</p>
 	WebhookUrl *string `json:"WebhookUrl,omitnil,omitempty" name:"WebhookUrl"`
 
-	// webhook接入token	
+	// <p>webhook接入token</p>
 	WebhookToken *string `json:"WebhookToken,omitnil,omitempty" name:"WebhookToken"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -32305,14 +32305,14 @@ type RegistryConnDetectResult struct {
 
 // Predefined struct for user
 type RemoveAssetImageRegistryRegistryDetailRequestParams struct {
-	// 仓库唯一id
+	// <p>仓库唯一id</p>
 	RegistryId *int64 `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
 }
 
 type RemoveAssetImageRegistryRegistryDetailRequest struct {
 	*tchttp.BaseRequest
 	
-	// 仓库唯一id
+	// <p>仓库唯一id</p>
 	RegistryId *int64 `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
 }
 

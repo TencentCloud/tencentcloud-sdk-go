@@ -2021,6 +2021,62 @@ func (c *Client) DescribeMigrateDBInstancesWithContext(ctx context.Context, requ
     return
 }
 
+func NewDescribeMigrateGtidCompareReportRequest() (request *DescribeMigrateGtidCompareReportRequest) {
+    request = &DescribeMigrateGtidCompareReportRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dts", APIVersion, "DescribeMigrateGtidCompareReport")
+    
+    
+    return
+}
+
+func NewDescribeMigrateGtidCompareReportResponse() (response *DescribeMigrateGtidCompareReportResponse) {
+    response = &DescribeMigrateGtidCompareReportResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMigrateGtidCompareReport
+// gtid校验
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_INTERNALERRORERROR = "InternalError.InternalErrorError"
+//  INTERNALERROR_PARSEBINLOGERROR = "InternalError.ParseBinlogError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+func (c *Client) DescribeMigrateGtidCompareReport(request *DescribeMigrateGtidCompareReportRequest) (response *DescribeMigrateGtidCompareReportResponse, err error) {
+    return c.DescribeMigrateGtidCompareReportWithContext(context.Background(), request)
+}
+
+// DescribeMigrateGtidCompareReport
+// gtid校验
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_INTERNALERRORERROR = "InternalError.InternalErrorError"
+//  INTERNALERROR_PARSEBINLOGERROR = "InternalError.ParseBinlogError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+func (c *Client) DescribeMigrateGtidCompareReportWithContext(ctx context.Context, request *DescribeMigrateGtidCompareReportRequest) (response *DescribeMigrateGtidCompareReportResponse, err error) {
+    if request == nil {
+        request = NewDescribeMigrateGtidCompareReportRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "DescribeMigrateGtidCompareReport")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMigrateGtidCompareReport require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMigrateGtidCompareReportResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeMigrationCheckJobRequest() (request *DescribeMigrationCheckJobRequest) {
     request = &DescribeMigrationCheckJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2989,6 +3045,62 @@ func (c *Client) DescribeSyncCompareTasksWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewDescribeSyncCompareTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSyncGtidCompareReportRequest() (request *DescribeSyncGtidCompareReportRequest) {
+    request = &DescribeSyncGtidCompareReportRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dts", APIVersion, "DescribeSyncGtidCompareReport")
+    
+    
+    return
+}
+
+func NewDescribeSyncGtidCompareReportResponse() (response *DescribeSyncGtidCompareReportResponse) {
+    response = &DescribeSyncGtidCompareReportResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSyncGtidCompareReport
+// gtid校验
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_INTERNALERRORERROR = "InternalError.InternalErrorError"
+//  INTERNALERROR_PARSEBINLOGERROR = "InternalError.ParseBinlogError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeSyncGtidCompareReport(request *DescribeSyncGtidCompareReportRequest) (response *DescribeSyncGtidCompareReportResponse, err error) {
+    return c.DescribeSyncGtidCompareReportWithContext(context.Background(), request)
+}
+
+// DescribeSyncGtidCompareReport
+// gtid校验
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_INTERNALERRORERROR = "InternalError.InternalErrorError"
+//  INTERNALERROR_PARSEBINLOGERROR = "InternalError.ParseBinlogError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeSyncGtidCompareReportWithContext(ctx context.Context, request *DescribeSyncGtidCompareReportRequest) (response *DescribeSyncGtidCompareReportResponse, err error) {
+    if request == nil {
+        request = NewDescribeSyncGtidCompareReportRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "DescribeSyncGtidCompareReport")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSyncGtidCompareReport require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSyncGtidCompareReportResponse()
     err = c.Send(request, response)
     return
 }

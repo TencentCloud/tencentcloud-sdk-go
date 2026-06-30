@@ -452,26 +452,26 @@ func (r *CreateEmailAddressResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateEmailIdentityRequestParams struct {
-	// 您的发信域名，建议使用三级以上域名。例如：mail.qcloud.com。
+	// <p>您的发信域名，建议使用三级以上域名。例如：mail.qcloud.com。</p>
 	EmailIdentity *string `json:"EmailIdentity,omitnil,omitempty" name:"EmailIdentity"`
 
-	// 生成的dkim密钥长度。0:1024，1:2048
+	// <p>生成的dkim密钥长度。0:1024，1:2048</p>
 	DKIMOption *uint64 `json:"DKIMOption,omitnil,omitempty" name:"DKIMOption"`
 
-	// tag 标签
+	// <p>tag 标签</p>
 	TagList []*TagList `json:"TagList,omitnil,omitempty" name:"TagList"`
 }
 
 type CreateEmailIdentityRequest struct {
 	*tchttp.BaseRequest
 	
-	// 您的发信域名，建议使用三级以上域名。例如：mail.qcloud.com。
+	// <p>您的发信域名，建议使用三级以上域名。例如：mail.qcloud.com。</p>
 	EmailIdentity *string `json:"EmailIdentity,omitnil,omitempty" name:"EmailIdentity"`
 
-	// 生成的dkim密钥长度。0:1024，1:2048
+	// <p>生成的dkim密钥长度。0:1024，1:2048</p>
 	DKIMOption *uint64 `json:"DKIMOption,omitnil,omitempty" name:"DKIMOption"`
 
-	// tag 标签
+	// <p>tag 标签</p>
 	TagList []*TagList `json:"TagList,omitnil,omitempty" name:"TagList"`
 }
 
@@ -498,14 +498,17 @@ func (r *CreateEmailIdentityRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateEmailIdentityResponseParams struct {
-	// 验证类型。固定值：DOMAIN
+	// <p>验证类型。固定值：DOMAIN</p>
 	IdentityType *string `json:"IdentityType,omitnil,omitempty" name:"IdentityType"`
 
-	// 是否已通过验证
+	// <p>是否已通过验证</p>
 	VerifiedForSendingStatus *bool `json:"VerifiedForSendingStatus,omitnil,omitempty" name:"VerifiedForSendingStatus"`
 
-	// 需要配置的DNS信息
+	// <p>需要配置的DNS信息</p>
 	Attributes []*DNSAttributes `json:"Attributes,omitnil,omitempty" name:"Attributes"`
+
+	// <p>dkim位数</p><p>枚举值：</p><ul><li>0： 1024</li><li>1： 2048</li><li>2： 双签</li></ul>
+	DKIMOption *uint64 `json:"DKIMOption,omitnil,omitempty" name:"DKIMOption"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -1214,26 +1217,29 @@ func (r *DeleteReceiverResponse) FromJsonString(s string) error {
 }
 
 type EmailIdentity struct {
-	// 发信域名
+	// <p>发信域名</p>
 	IdentityName *string `json:"IdentityName,omitnil,omitempty" name:"IdentityName"`
 
-	// 验证类型，固定为DOMAIN
+	// <p>验证类型，固定为DOMAIN</p>
 	IdentityType *string `json:"IdentityType,omitnil,omitempty" name:"IdentityType"`
 
-	// 是否已通过验证
+	// <p>是否已通过验证</p>
 	SendingEnabled *bool `json:"SendingEnabled,omitnil,omitempty" name:"SendingEnabled"`
 
-	// 当前信誉等级
+	// <p>当前信誉等级</p>
 	CurrentReputationLevel *uint64 `json:"CurrentReputationLevel,omitnil,omitempty" name:"CurrentReputationLevel"`
 
-	// 当日最高发信量
+	// <p>当日最高发信量</p>
 	DailyQuota *uint64 `json:"DailyQuota,omitnil,omitempty" name:"DailyQuota"`
 
-	// 域名配置的独立ip
+	// <p>域名配置的独立ip</p>
 	SendIp []*string `json:"SendIp,omitnil,omitempty" name:"SendIp"`
 
-	// tag 标签
+	// <p>tag 标签</p>
 	TagList []*TagList `json:"TagList,omitnil,omitempty" name:"TagList"`
+
+	// <p>dkim位数</p><p>枚举值：</p><ul><li>0： 1024</li><li>1： 2048</li><li>2： 双签</li></ul><p>默认值：0</p>
+	DKIMOption *uint64 `json:"DKIMOption,omitnil,omitempty" name:"DKIMOption"`
 }
 
 type EmailSender struct {
@@ -1368,14 +1374,14 @@ func (r *GetAbuseReportResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetEmailIdentityRequestParams struct {
-	// 发信域名
+	// <p>发信域名</p>
 	EmailIdentity *string `json:"EmailIdentity,omitnil,omitempty" name:"EmailIdentity"`
 }
 
 type GetEmailIdentityRequest struct {
 	*tchttp.BaseRequest
 	
-	// 发信域名
+	// <p>发信域名</p>
 	EmailIdentity *string `json:"EmailIdentity,omitnil,omitempty" name:"EmailIdentity"`
 }
 
@@ -1400,14 +1406,17 @@ func (r *GetEmailIdentityRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetEmailIdentityResponseParams struct {
-	// 验证类型。固定值：DOMAIN
+	// <p>验证类型。固定值：DOMAIN</p>
 	IdentityType *string `json:"IdentityType,omitnil,omitempty" name:"IdentityType"`
 
-	// 是否已通过验证
+	// <p>是否已通过验证</p>
 	VerifiedForSendingStatus *bool `json:"VerifiedForSendingStatus,omitnil,omitempty" name:"VerifiedForSendingStatus"`
 
-	// DNS配置详情
+	// <p>DNS配置详情</p>
 	Attributes []*DNSAttributes `json:"Attributes,omitnil,omitempty" name:"Attributes"`
+
+	// <p>dkim密钥长度</p><p>枚举值：</p><ul><li>0： 1024</li><li>1： 2048</li><li>2： both</li></ul>
+	DKIMOption *uint64 `json:"DKIMOption,omitnil,omitempty" name:"DKIMOption"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -2897,15 +2906,27 @@ func (r *UpdateCustomBlackListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateEmailIdentityRequestParams struct {
-	// 请求验证的域名
+	// <p>请求验证的域名</p>
 	EmailIdentity *string `json:"EmailIdentity,omitnil,omitempty" name:"EmailIdentity"`
+
+	// <p>匹分控制台新老API</p>
+	NewAPI *bool `json:"NewAPI,omitnil,omitempty" name:"NewAPI"`
+
+	// <p>dkim位数</p><p>枚举值：</p><ul><li>0： 1024</li><li>1： 2048</li><li>2： 双签</li></ul>
+	DKIMOption *uint64 `json:"DKIMOption,omitnil,omitempty" name:"DKIMOption"`
 }
 
 type UpdateEmailIdentityRequest struct {
 	*tchttp.BaseRequest
 	
-	// 请求验证的域名
+	// <p>请求验证的域名</p>
 	EmailIdentity *string `json:"EmailIdentity,omitnil,omitempty" name:"EmailIdentity"`
+
+	// <p>匹分控制台新老API</p>
+	NewAPI *bool `json:"NewAPI,omitnil,omitempty" name:"NewAPI"`
+
+	// <p>dkim位数</p><p>枚举值：</p><ul><li>0： 1024</li><li>1： 2048</li><li>2： 双签</li></ul>
+	DKIMOption *uint64 `json:"DKIMOption,omitnil,omitempty" name:"DKIMOption"`
 }
 
 func (r *UpdateEmailIdentityRequest) ToJsonString() string {
@@ -2921,6 +2942,8 @@ func (r *UpdateEmailIdentityRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "EmailIdentity")
+	delete(f, "NewAPI")
+	delete(f, "DKIMOption")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateEmailIdentityRequest has unknown keys!", "")
 	}
@@ -2929,14 +2952,17 @@ func (r *UpdateEmailIdentityRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateEmailIdentityResponseParams struct {
-	// 验证类型。固定值：DOMAIN
+	// <p>验证类型。固定值：DOMAIN</p>
 	IdentityType *string `json:"IdentityType,omitnil,omitempty" name:"IdentityType"`
 
-	// 是否已通过验证
+	// <p>是否已通过验证</p>
 	VerifiedForSendingStatus *bool `json:"VerifiedForSendingStatus,omitnil,omitempty" name:"VerifiedForSendingStatus"`
 
-	// 需要配置的DNS信息
+	// <p>需要配置的DNS信息</p>
 	Attributes []*DNSAttributes `json:"Attributes,omitnil,omitempty" name:"Attributes"`
+
+	// <p>dkim位数</p><p>枚举值：</p><ul><li>0： 1024</li><li>1： 2048</li><li>2： 双签</li></ul>
+	DKIMOption *uint64 `json:"DKIMOption,omitnil,omitempty" name:"DKIMOption"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

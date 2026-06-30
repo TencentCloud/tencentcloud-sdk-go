@@ -37119,23 +37119,41 @@ type TrafficPackage struct {
 }
 
 type TrafficQosPolicySet struct {
-	// CCN实例ID。形如：ccn-f49l6u0z。
+	// <p>CCN实例ID。形如：ccn-f49l6u0z。</p>
 	CcnId *string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
 
-	// qos id。
+	// <p>qos id。</p>
 	QosId *uint64 `json:"QosId,omitnil,omitempty" name:"QosId"`
 
-	// 描述。
+	// <p>描述。</p>
 	QosPolicyDescription *string `json:"QosPolicyDescription,omitnil,omitempty" name:"QosPolicyDescription"`
 
-	// 名称。
+	// <p>名称。</p>
 	QosPolicyName *string `json:"QosPolicyName,omitnil,omitempty" name:"QosPolicyName"`
 
-	// 带宽。
+	// <p>带宽。</p>
 	Bandwidth *uint64 `json:"Bandwidth,omitnil,omitempty" name:"Bandwidth"`
 
-	// 流量调度策略ID。
+	// <p>流量调度策略ID。</p>
 	QosPolicyId *string `json:"QosPolicyId,omitnil,omitempty" name:"QosPolicyId"`
+
+	// <p>服务等级信息</p>
+	QosLevel *string `json:"QosLevel,omitnil,omitempty" name:"QosLevel"`
+
+	// <p>服务等级信息</p>
+	ServiceLevel *string `json:"ServiceLevel,omitnil,omitempty" name:"ServiceLevel"`
+
+	// <p>带宽ID</p><p>参数格式：fcr-xxx</p>
+	RegionFlowControlId *string `json:"RegionFlowControlId,omitnil,omitempty" name:"RegionFlowControlId"`
+
+	// <p>源地域</p><p>参数格式：ap-xxx</p>
+	LocalRegion *string `json:"LocalRegion,omitnil,omitempty" name:"LocalRegion"`
+
+	// <p>目的地域</p><p>参数格式：ap-xxx</p>
+	RemoteRegion *string `json:"RemoteRegion,omitnil,omitempty" name:"RemoteRegion"`
+
+	// <p>流量匹配策略ID</p>
+	TrafficMatchPolicyId *string `json:"TrafficMatchPolicyId,omitnil,omitempty" name:"TrafficMatchPolicyId"`
 }
 
 // Predefined struct for user

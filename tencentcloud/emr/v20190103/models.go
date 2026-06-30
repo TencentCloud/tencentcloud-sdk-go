@@ -9376,6 +9376,9 @@ type InstallSoftwareRequestParams struct {
 
 	// <p>额外容器相关配置</p>
 	ContainerExtraConf *ContainerExtraConf `json:"ContainerExtraConf,omitnil,omitempty" name:"ContainerExtraConf"`
+
+	// <p>是否强制检查自定义组件的合理性，目前仅提供给tf侧使用</p>
+	CheckServiceDeployInfo *bool `json:"CheckServiceDeployInfo,omitnil,omitempty" name:"CheckServiceDeployInfo"`
 }
 
 type InstallSoftwareRequest struct {
@@ -9419,6 +9422,9 @@ type InstallSoftwareRequest struct {
 
 	// <p>额外容器相关配置</p>
 	ContainerExtraConf *ContainerExtraConf `json:"ContainerExtraConf,omitnil,omitempty" name:"ContainerExtraConf"`
+
+	// <p>是否强制检查自定义组件的合理性，目前仅提供给tf侧使用</p>
+	CheckServiceDeployInfo *bool `json:"CheckServiceDeployInfo,omitnil,omitempty" name:"CheckServiceDeployInfo"`
 }
 
 func (r *InstallSoftwareRequest) ToJsonString() string {
@@ -9446,6 +9452,7 @@ func (r *InstallSoftwareRequest) FromJsonString(s string) error {
 	delete(f, "DefaultMetaVersion")
 	delete(f, "NeedCdbAudit")
 	delete(f, "ContainerExtraConf")
+	delete(f, "CheckServiceDeployInfo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InstallSoftwareRequest has unknown keys!", "")
 	}

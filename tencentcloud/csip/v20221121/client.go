@@ -10851,6 +10851,162 @@ func (c *Client) DescribeNICAssetsWithContext(ctx context.Context, request *Desc
     return
 }
 
+func NewDescribeNotifyAssetConfigRequest() (request *DescribeNotifyAssetConfigRequest) {
+    request = &DescribeNotifyAssetConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeNotifyAssetConfig")
+    
+    
+    return
+}
+
+func NewDescribeNotifyAssetConfigResponse() (response *DescribeNotifyAssetConfigResponse) {
+    response = &DescribeNotifyAssetConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeNotifyAssetConfig
+// 获取通知资产范围配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeNotifyAssetConfig(request *DescribeNotifyAssetConfigRequest) (response *DescribeNotifyAssetConfigResponse, err error) {
+    return c.DescribeNotifyAssetConfigWithContext(context.Background(), request)
+}
+
+// DescribeNotifyAssetConfig
+// 获取通知资产范围配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeNotifyAssetConfigWithContext(ctx context.Context, request *DescribeNotifyAssetConfigRequest) (response *DescribeNotifyAssetConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribeNotifyAssetConfigRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeNotifyAssetConfig")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNotifyAssetConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeNotifyAssetConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeNotifySettingRequest() (request *DescribeNotifySettingRequest) {
+    request = &DescribeNotifySettingRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeNotifySetting")
+    
+    
+    return
+}
+
+func NewDescribeNotifySettingResponse() (response *DescribeNotifySettingResponse) {
+    response = &DescribeNotifySettingResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeNotifySetting
+// 获取通知设置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeNotifySetting(request *DescribeNotifySettingRequest) (response *DescribeNotifySettingResponse, err error) {
+    return c.DescribeNotifySettingWithContext(context.Background(), request)
+}
+
+// DescribeNotifySetting
+// 获取通知设置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeNotifySettingWithContext(ctx context.Context, request *DescribeNotifySettingRequest) (response *DescribeNotifySettingResponse, err error) {
+    if request == nil {
+        request = NewDescribeNotifySettingRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeNotifySetting")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNotifySetting require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeNotifySettingResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeNotifySettingAlertRequest() (request *DescribeNotifySettingAlertRequest) {
+    request = &DescribeNotifySettingAlertRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeNotifySettingAlert")
+    
+    
+    return
+}
+
+func NewDescribeNotifySettingAlertResponse() (response *DescribeNotifySettingAlertResponse) {
+    response = &DescribeNotifySettingAlertResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeNotifySettingAlert
+// 获取告警中心通知高级配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeNotifySettingAlert(request *DescribeNotifySettingAlertRequest) (response *DescribeNotifySettingAlertResponse, err error) {
+    return c.DescribeNotifySettingAlertWithContext(context.Background(), request)
+}
+
+// DescribeNotifySettingAlert
+// 获取告警中心通知高级配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeNotifySettingAlertWithContext(ctx context.Context, request *DescribeNotifySettingAlertRequest) (response *DescribeNotifySettingAlertResponse, err error) {
+    if request == nil {
+        request = NewDescribeNotifySettingAlertRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeNotifySettingAlert")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNotifySettingAlert require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeNotifySettingAlertResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeOrganizationInfoRequest() (request *DescribeOrganizationInfoRequest) {
     request = &DescribeOrganizationInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -10874,15 +11030,8 @@ func NewDescribeOrganizationInfoResponse() (response *DescribeOrganizationInfoRe
 // 查询集团账号详情
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
-//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeOrganizationInfo(request *DescribeOrganizationInfoRequest) (response *DescribeOrganizationInfoResponse, err error) {
     return c.DescribeOrganizationInfoWithContext(context.Background(), request)
 }
@@ -10891,15 +11040,8 @@ func (c *Client) DescribeOrganizationInfo(request *DescribeOrganizationInfoReque
 // 查询集团账号详情
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
-//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeOrganizationInfoWithContext(ctx context.Context, request *DescribeOrganizationInfoRequest) (response *DescribeOrganizationInfoResponse, err error) {
     if request == nil {
         request = NewDescribeOrganizationInfoRequest()
@@ -10940,15 +11082,8 @@ func NewDescribeOrganizationUserInfoResponse() (response *DescribeOrganizationUs
 // 查询集团账号用户列表
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
-//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeOrganizationUserInfo(request *DescribeOrganizationUserInfoRequest) (response *DescribeOrganizationUserInfoResponse, err error) {
     return c.DescribeOrganizationUserInfoWithContext(context.Background(), request)
 }
@@ -10957,15 +11092,8 @@ func (c *Client) DescribeOrganizationUserInfo(request *DescribeOrganizationUserI
 // 查询集团账号用户列表
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
-//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeOrganizationUserInfoWithContext(ctx context.Context, request *DescribeOrganizationUserInfoRequest) (response *DescribeOrganizationUserInfoResponse, err error) {
     if request == nil {
         request = NewDescribeOrganizationUserInfoRequest()
@@ -11006,15 +11134,8 @@ func NewDescribeOtherCloudAssetsResponse() (response *DescribeOtherCloudAssetsRe
 // 资产列表
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
-//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeOtherCloudAssets(request *DescribeOtherCloudAssetsRequest) (response *DescribeOtherCloudAssetsResponse, err error) {
     return c.DescribeOtherCloudAssetsWithContext(context.Background(), request)
 }
@@ -11023,15 +11144,8 @@ func (c *Client) DescribeOtherCloudAssets(request *DescribeOtherCloudAssetsReque
 // 资产列表
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
-//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeOtherCloudAssetsWithContext(ctx context.Context, request *DescribeOtherCloudAssetsRequest) (response *DescribeOtherCloudAssetsResponse, err error) {
     if request == nil {
         request = NewDescribeOtherCloudAssetsRequest()
@@ -15641,6 +15755,162 @@ func (c *Client) ModifyMachineRemarkWithContext(ctx context.Context, request *Mo
     return
 }
 
+func NewModifyNotifyAssetConfigRequest() (request *ModifyNotifyAssetConfigRequest) {
+    request = &ModifyNotifyAssetConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "ModifyNotifyAssetConfig")
+    
+    
+    return
+}
+
+func NewModifyNotifyAssetConfigResponse() (response *ModifyNotifyAssetConfigResponse) {
+    response = &ModifyNotifyAssetConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyNotifyAssetConfig
+// 修改通知资产范围配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyNotifyAssetConfig(request *ModifyNotifyAssetConfigRequest) (response *ModifyNotifyAssetConfigResponse, err error) {
+    return c.ModifyNotifyAssetConfigWithContext(context.Background(), request)
+}
+
+// ModifyNotifyAssetConfig
+// 修改通知资产范围配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyNotifyAssetConfigWithContext(ctx context.Context, request *ModifyNotifyAssetConfigRequest) (response *ModifyNotifyAssetConfigResponse, err error) {
+    if request == nil {
+        request = NewModifyNotifyAssetConfigRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "ModifyNotifyAssetConfig")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyNotifyAssetConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyNotifyAssetConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyNotifySettingRequest() (request *ModifyNotifySettingRequest) {
+    request = &ModifyNotifySettingRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "ModifyNotifySetting")
+    
+    
+    return
+}
+
+func NewModifyNotifySettingResponse() (response *ModifyNotifySettingResponse) {
+    response = &ModifyNotifySettingResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyNotifySetting
+// 修改通知设置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyNotifySetting(request *ModifyNotifySettingRequest) (response *ModifyNotifySettingResponse, err error) {
+    return c.ModifyNotifySettingWithContext(context.Background(), request)
+}
+
+// ModifyNotifySetting
+// 修改通知设置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyNotifySettingWithContext(ctx context.Context, request *ModifyNotifySettingRequest) (response *ModifyNotifySettingResponse, err error) {
+    if request == nil {
+        request = NewModifyNotifySettingRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "ModifyNotifySetting")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyNotifySetting require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyNotifySettingResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyNotifySettingAlertRequest() (request *ModifyNotifySettingAlertRequest) {
+    request = &ModifyNotifySettingAlertRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "ModifyNotifySettingAlert")
+    
+    
+    return
+}
+
+func NewModifyNotifySettingAlertResponse() (response *ModifyNotifySettingAlertResponse) {
+    response = &ModifyNotifySettingAlertResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyNotifySettingAlert
+// 修改告警中心通知高级配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyNotifySettingAlert(request *ModifyNotifySettingAlertRequest) (response *ModifyNotifySettingAlertResponse, err error) {
+    return c.ModifyNotifySettingAlertWithContext(context.Background(), request)
+}
+
+// ModifyNotifySettingAlert
+// 修改告警中心通知高级配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyNotifySettingAlertWithContext(ctx context.Context, request *ModifyNotifySettingAlertRequest) (response *ModifyNotifySettingAlertResponse, err error) {
+    if request == nil {
+        request = NewModifyNotifySettingAlertRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "ModifyNotifySettingAlert")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyNotifySettingAlert require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyNotifySettingAlertResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyOrganizationAccountStatusRequest() (request *ModifyOrganizationAccountStatusRequest) {
     request = &ModifyOrganizationAccountStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -15666,7 +15936,6 @@ func NewModifyOrganizationAccountStatusResponse() (response *ModifyOrganizationA
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyOrganizationAccountStatus(request *ModifyOrganizationAccountStatusRequest) (response *ModifyOrganizationAccountStatusResponse, err error) {
     return c.ModifyOrganizationAccountStatusWithContext(context.Background(), request)
 }
@@ -15677,7 +15946,6 @@ func (c *Client) ModifyOrganizationAccountStatus(request *ModifyOrganizationAcco
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyOrganizationAccountStatusWithContext(ctx context.Context, request *ModifyOrganizationAccountStatusRequest) (response *ModifyOrganizationAccountStatusResponse, err error) {
     if request == nil {
         request = NewModifyOrganizationAccountStatusRequest()

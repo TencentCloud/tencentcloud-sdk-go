@@ -7754,34 +7754,54 @@ type UserIdAndUserName struct {
 	// <p>1</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>飞书应用ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LarkAppId *string `json:"LarkAppId,omitnil,omitempty" name:"LarkAppId"`
+
+	// <p>飞书UserId</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LarkUserId *string `json:"LarkUserId,omitnil,omitempty" name:"LarkUserId"`
+
+	// <p>飞书OpenId</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LarkOpenId *string `json:"LarkOpenId,omitnil,omitempty" name:"LarkOpenId"`
+
+	// <p>飞书UserName</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LarkUserName *string `json:"LarkUserName,omitnil,omitempty" name:"LarkUserName"`
 }
 
 type UserInfo struct {
-	// 用户ID
+	// <p>用户ID</p>
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
-	// 用户名
+	// <p>用户名</p>
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
-	// 邮箱
+	// <p>邮箱</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
 
-	// 手机号
+	// <p>手机号</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PhoneNumber *string `json:"PhoneNumber,omitnil,omitempty" name:"PhoneNumber"`
 
-	// 手机号区号
+	// <p>手机号区号</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AreaCode *string `json:"AreaCode,omitnil,omitempty" name:"AreaCode"`
 
-	// 企微账号id
+	// <p>企微账号id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppUserId *string `json:"AppUserId,omitnil,omitempty" name:"AppUserId"`
 
-	// 企微账号名称
+	// <p>企微账号名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppUserName *string `json:"AppUserName,omitnil,omitempty" name:"AppUserName"`
+
+	// <p>飞书OpenId</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LarkOpenId *string `json:"LarkOpenId,omitnil,omitempty" name:"LarkOpenId"`
 }
 
 type UserResourceDTO struct {

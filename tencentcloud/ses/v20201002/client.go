@@ -2325,6 +2325,7 @@ func NewUpdateEmailIdentityResponse() (response *UpdateEmailIdentityResponse) {
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_DKIMNOTAPPLIED = "FailedOperation.DKIMNotApplied"
 //  FAILEDOPERATION_SERVICENOTAVAILABLE = "FailedOperation.ServiceNotAvailable"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -2343,6 +2344,7 @@ func (c *Client) UpdateEmailIdentity(request *UpdateEmailIdentityRequest) (respo
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_DKIMNOTAPPLIED = "FailedOperation.DKIMNotApplied"
 //  FAILEDOPERATION_SERVICENOTAVAILABLE = "FailedOperation.ServiceNotAvailable"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"

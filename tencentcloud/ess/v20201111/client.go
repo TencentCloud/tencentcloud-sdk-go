@@ -509,7 +509,7 @@ func NewCancelOrganizationFlowsResponse() (response *CancelOrganizationFlowsResp
 //
 // 
 //
-// 批量撤销结果可以通过接口返回的TaskId关联[批量撤销任务结果回调](https://qian.tencent.com/developers/company/callback_types_contracts_sign/#%E5%8D%81%E4%BA%8C-%E5%85%A8%E9%87%8F%E6%92%A4%E9%94%80%E7%BB%93%E6%9E%9C%E5%9B%9E%E8%B0%83)或通过接口[查询批量撤销合同结果](dbOrm := beego.GetBOrmFlows())主动查询。
+// 批量撤销结果可以通过接口返回的TaskId关联[批量撤销任务结果回调](https://qian.tencent.com/developers/company/callback_types_contracts_sign/#%E5%8D%81%E4%B8%80-%E5%85%A8%E9%87%8F%E6%92%A4%E9%94%80%E7%BB%93%E6%9E%9C%E5%9B%9E%E8%B0%83)或通过接口[查询批量撤销合同结果](https://qian.tencent.com/developers/companyApis/operateFlows/DescribeCancelFlowsTask)主动查询。
 //
 // 
 //
@@ -551,7 +551,7 @@ func (c *Client) CancelOrganizationFlows(request *CancelOrganizationFlowsRequest
 //
 // 
 //
-// 批量撤销结果可以通过接口返回的TaskId关联[批量撤销任务结果回调](https://qian.tencent.com/developers/company/callback_types_contracts_sign/#%E5%8D%81%E4%BA%8C-%E5%85%A8%E9%87%8F%E6%92%A4%E9%94%80%E7%BB%93%E6%9E%9C%E5%9B%9E%E8%B0%83)或通过接口[查询批量撤销合同结果](dbOrm := beego.GetBOrmFlows())主动查询。
+// 批量撤销结果可以通过接口返回的TaskId关联[批量撤销任务结果回调](https://qian.tencent.com/developers/company/callback_types_contracts_sign/#%E5%8D%81%E4%B8%80-%E5%85%A8%E9%87%8F%E6%92%A4%E9%94%80%E7%BB%93%E6%9E%9C%E5%9B%9E%E8%B0%83)或通过接口[查询批量撤销合同结果](https://qian.tencent.com/developers/companyApis/operateFlows/DescribeCancelFlowsTask)主动查询。
 //
 // 
 //

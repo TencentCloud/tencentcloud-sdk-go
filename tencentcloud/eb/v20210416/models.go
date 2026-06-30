@@ -337,32 +337,32 @@ func (r *CreateConnectionResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateEventBusRequestParams struct {
-	// 事件集名称，只能包含字母、中文、数字、下划线、连字符，以字母/中文开头，以数字、字母或中文结尾，2~60个字符
+	// <p>事件集名称，只能包含字母、中文、数字、下划线、连字符，以字母/中文开头，以数字、字母或中文结尾，2~60个字符</p>
 	EventBusName *string `json:"EventBusName,omitnil,omitempty" name:"EventBusName"`
 
-	// 事件集描述，只能包含数字、中英文及常用标点符号，不超过200个字符
+	// <p>事件集描述，只能包含数字、中英文及常用标点符号，不超过200个字符</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// EB存储时长
+	// <p>事件存储时长</p><p>单位：day</p>
 	SaveDays *int64 `json:"SaveDays,omitnil,omitempty" name:"SaveDays"`
 
-	// EB是否开启存储
+	// <p>是否开启事件存储</p>
 	EnableStore *bool `json:"EnableStore,omitnil,omitempty" name:"EnableStore"`
 }
 
 type CreateEventBusRequest struct {
 	*tchttp.BaseRequest
 	
-	// 事件集名称，只能包含字母、中文、数字、下划线、连字符，以字母/中文开头，以数字、字母或中文结尾，2~60个字符
+	// <p>事件集名称，只能包含字母、中文、数字、下划线、连字符，以字母/中文开头，以数字、字母或中文结尾，2~60个字符</p>
 	EventBusName *string `json:"EventBusName,omitnil,omitempty" name:"EventBusName"`
 
-	// 事件集描述，只能包含数字、中英文及常用标点符号，不超过200个字符
+	// <p>事件集描述，只能包含数字、中英文及常用标点符号，不超过200个字符</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// EB存储时长
+	// <p>事件存储时长</p><p>单位：day</p>
 	SaveDays *int64 `json:"SaveDays,omitnil,omitempty" name:"SaveDays"`
 
-	// EB是否开启存储
+	// <p>是否开启事件存储</p>
 	EnableStore *bool `json:"EnableStore,omitnil,omitempty" name:"EnableStore"`
 }
 
@@ -390,7 +390,7 @@ func (r *CreateEventBusRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateEventBusResponseParams struct {
-	// 事件集ID
+	// <p>事件集ID</p>
 	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1021,50 +1021,50 @@ func (r *DeleteTransformationResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeLogTagValueRequestParams struct {
-	// 起始时间
+	// <p>起始时间</p>
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间
+	// <p>结束时间</p>
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 事件集ID
+	// <p>事件集ID</p>
 	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 
-	// 聚合字段,取值范围如下：Source(事件源),RuleIds(命中规则),Subject(实例ID),Region(地域)
+	// <p>聚合字段,取值范围如下：Source(事件源),RuleIds(命中规则),Subject(实例ID),Region(地域)</p>
 	GroupField *string `json:"GroupField,omitnil,omitempty" name:"GroupField"`
 
-	// 页数
+	// <p>页数</p>
 	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
 
-	// 每页数据大小
+	// <p>每页数据大小</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 筛选条件
+	// <p>筛选条件</p>
 	Filter []*LogFilter `json:"Filter,omitnil,omitempty" name:"Filter"`
 }
 
 type DescribeLogTagValueRequest struct {
 	*tchttp.BaseRequest
 	
-	// 起始时间
+	// <p>起始时间</p>
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间
+	// <p>结束时间</p>
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 事件集ID
+	// <p>事件集ID</p>
 	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 
-	// 聚合字段,取值范围如下：Source(事件源),RuleIds(命中规则),Subject(实例ID),Region(地域)
+	// <p>聚合字段,取值范围如下：Source(事件源),RuleIds(命中规则),Subject(实例ID),Region(地域)</p>
 	GroupField *string `json:"GroupField,omitnil,omitempty" name:"GroupField"`
 
-	// 页数
+	// <p>页数</p>
 	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
 
-	// 每页数据大小
+	// <p>每页数据大小</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 筛选条件
+	// <p>筛选条件</p>
 	Filter []*LogFilter `json:"Filter,omitnil,omitempty" name:"Filter"`
 }
 
@@ -1095,7 +1095,7 @@ func (r *DescribeLogTagValueRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeLogTagValueResponseParams struct {
-	// 事件查询维度值结果
+	// <p>事件查询维度值结果</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Results []*string `json:"Results,omitnil,omitempty" name:"Results"`
 
@@ -1120,27 +1120,27 @@ func (r *DescribeLogTagValueResponse) FromJsonString(s string) error {
 }
 
 type ESTargetParams struct {
-	// 网络连接类型
+	// <p>网络连接类型</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NetMode *string `json:"NetMode,omitnil,omitempty" name:"NetMode"`
 
-	// 索引前缀
+	// <p>索引前缀</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IndexPrefix *string `json:"IndexPrefix,omitnil,omitempty" name:"IndexPrefix"`
 
-	// es日志轮换粒度
+	// <p>es日志轮换粒度</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RotationInterval *string `json:"RotationInterval,omitnil,omitempty" name:"RotationInterval"`
 
-	// DTS事件配置
+	// <p>DTS事件配置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OutputMode *string `json:"OutputMode,omitnil,omitempty" name:"OutputMode"`
 
-	// DTS索引配置
+	// <p>DTS索引配置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IndexSuffixMode *string `json:"IndexSuffixMode,omitnil,omitempty" name:"IndexSuffixMode"`
 
-	// es模版类型
+	// <p>es模版类型</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IndexTemplateType *string `json:"IndexTemplateType,omitnil,omitempty" name:"IndexTemplateType"`
 }
@@ -1234,14 +1234,14 @@ type Filter struct {
 
 // Predefined struct for user
 type GetEventBusRequestParams struct {
-	// 事件集ID
+	// <p>事件集ID</p>
 	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 }
 
 type GetEventBusRequest struct {
 	*tchttp.BaseRequest
 	
-	// 事件集ID
+	// <p>事件集ID</p>
 	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 }
 
@@ -1266,46 +1266,46 @@ func (r *GetEventBusRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetEventBusResponseParams struct {
-	// 更新时间
+	// <p>更新时间</p>
 	ModTime *string `json:"ModTime,omitnil,omitempty" name:"ModTime"`
 
-	// 事件集描述
+	// <p>事件集描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 日志主题ID
+	// <p>日志主题ID</p>
 	ClsTopicId *string `json:"ClsTopicId,omitnil,omitempty" name:"ClsTopicId"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	AddTime *string `json:"AddTime,omitnil,omitempty" name:"AddTime"`
 
-	// 日志集ID
+	// <p>日志集ID</p>
 	ClsLogsetId *string `json:"ClsLogsetId,omitnil,omitempty" name:"ClsLogsetId"`
 
-	// 事件集名称
+	// <p>事件集名称</p>
 	EventBusName *string `json:"EventBusName,omitnil,omitempty" name:"EventBusName"`
 
-	// 事件集ID
+	// <p>事件集ID</p>
 	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 
-	// （已废弃）事件集类型
+	// <p>事件集类型</p><p>枚举值：</p><ul><li>Cloud： 云服务事件集</li><li>Platform： 平台事件集</li><li>Custom： 自定义事件集</li></ul>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 计费模式
+	// <p>计费模式</p>
 	PayMode *string `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// EB日志存储时长
+	// <p>EB日志存储时长</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SaveDays *int64 `json:"SaveDays,omitnil,omitempty" name:"SaveDays"`
 
-	// EB日志主题ID
+	// <p>EB日志主题ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogTopicId *string `json:"LogTopicId,omitnil,omitempty" name:"LogTopicId"`
 
-	// 是否开启存储
+	// <p>是否开启存储</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnableStore *bool `json:"EnableStore,omitnil,omitempty" name:"EnableStore"`
 
-	// 消息序列，是否有序
+	// <p>消息序列，是否有序</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LinkMode *string `json:"LinkMode,omitnil,omitempty" name:"LinkMode"`
 
@@ -1331,14 +1331,14 @@ func (r *GetEventBusResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetPlatformEventTemplateRequestParams struct {
-	// 平台产品事件类型
+	// <p>平台产品事件类型</p>
 	EventType *string `json:"EventType,omitnil,omitempty" name:"EventType"`
 }
 
 type GetPlatformEventTemplateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 平台产品事件类型
+	// <p>平台产品事件类型</p>
 	EventType *string `json:"EventType,omitnil,omitempty" name:"EventType"`
 }
 
@@ -1363,7 +1363,7 @@ func (r *GetPlatformEventTemplateRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetPlatformEventTemplateResponseParams struct {
-	// 平台产品事件模板
+	// <p>平台产品事件模板</p>
 	EventTemplate *string `json:"EventTemplate,omitnil,omitempty" name:"EventTemplate"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1388,20 +1388,20 @@ func (r *GetPlatformEventTemplateResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetRuleRequestParams struct {
-	// 事件集ID
+	// <p>事件集ID</p>
 	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 
-	// 事件规则ID
+	// <p>事件规则ID</p>
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 }
 
 type GetRuleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 事件集ID
+	// <p>事件集ID</p>
 	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 
-	// 事件规则ID
+	// <p>事件规则ID</p>
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 }
 
@@ -1427,31 +1427,31 @@ func (r *GetRuleRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetRuleResponseParams struct {
-	// 事件集id
+	// <p>事件集id</p>
 	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 
-	// 事件规则id
+	// <p>事件规则id</p>
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
-	// 事件规则名称
+	// <p>事件规则名称</p>
 	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
 
-	// 事件规则状态
+	// <p>事件规则状态</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 使能开关
+	// <p>使能开关</p>
 	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
 
-	// 事件规则描述
+	// <p>事件规则描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 事件模式
+	// <p>事件模式</p>
 	EventPattern *string `json:"EventPattern,omitnil,omitempty" name:"EventPattern"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	AddTime *string `json:"AddTime,omitnil,omitempty" name:"AddTime"`
 
-	// 更新时间
+	// <p>更新时间</p>
 	ModTime *string `json:"ModTime,omitnil,omitempty" name:"ModTime"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1979,44 +1979,44 @@ func (r *ListRulesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListTargetsRequestParams struct {
-	// 事件集ID
+	// <p>事件集ID</p>
 	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 
-	// 事件规则ID
+	// <p>事件规则ID</p>
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
-	// 根据哪个字段进行返回结果排序,支持以下字段：AddTime（创建时间）, ModTime（修改时间）
+	// <p>根据哪个字段进行返回结果排序,支持以下字段：AddTime（创建时间）, ModTime（修改时间）</p>
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 返回数量，默认为20，最大值为100。
+	// <p>返回数量，默认为20，最大值为100。</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页偏移量，默认为0。
+	// <p>分页偏移量，默认为0。</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 以升序还是降序的方式返回结果，可选值 ASC（升序） 和 DESC（降序）
+	// <p>以升序还是降序的方式返回结果，可选值 ASC（升序） 和 DESC（降序）</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 }
 
 type ListTargetsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 事件集ID
+	// <p>事件集ID</p>
 	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 
-	// 事件规则ID
+	// <p>事件规则ID</p>
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
-	// 根据哪个字段进行返回结果排序,支持以下字段：AddTime（创建时间）, ModTime（修改时间）
+	// <p>根据哪个字段进行返回结果排序,支持以下字段：AddTime（创建时间）, ModTime（修改时间）</p>
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 返回数量，默认为20，最大值为100。
+	// <p>返回数量，默认为20，最大值为100。</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页偏移量，默认为0。
+	// <p>分页偏移量，默认为0。</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 以升序还是降序的方式返回结果，可选值 ASC（升序） 和 DESC（降序）
+	// <p>以升序还是降序的方式返回结果，可选值 ASC（升序） 和 DESC（降序）</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 }
 
@@ -2046,10 +2046,10 @@ func (r *ListTargetsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListTargetsResponseParams struct {
-	// 目标总数
+	// <p>目标总数</p>
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 目标信息
+	// <p>目标信息</p>
 	Targets []*Target `json:"Targets,omitnil,omitempty" name:"Targets"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2112,30 +2112,30 @@ type OutputStructParam struct {
 }
 
 type PlatformEventDetail struct {
-	// 事件名称
+	// <p>事件名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EventName *string `json:"EventName,omitnil,omitempty" name:"EventName"`
 
-	// 事件类型
+	// <p>事件类型</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EventType *string `json:"EventType,omitnil,omitempty" name:"EventType"`
 }
 
 type PlatformEventSummary struct {
-	// 平台事件名称
+	// <p>平台事件名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EventName *string `json:"EventName,omitnil,omitempty" name:"EventName"`
 
-	// 平台事件匹配规则
+	// <p>平台事件匹配规则</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EventPattern *string `json:"EventPattern,omitnil,omitempty" name:"EventPattern"`
 }
 
 type PlatformProduct struct {
-	// 平台产品名称
+	// <p>平台产品名称</p>
 	ProductName *string `json:"ProductName,omitnil,omitempty" name:"ProductName"`
 
-	// 平台产品类型
+	// <p>平台产品类型</p>
 	ProductType *string `json:"ProductType,omitnil,omitempty" name:"ProductType"`
 }
 
@@ -2319,56 +2319,56 @@ type SCFParams struct {
 
 // Predefined struct for user
 type SearchLogRequestParams struct {
-	// 起始时间unix 毫秒时间戳
+	// <p>起始时间unix 毫秒时间戳</p>
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间unix 毫秒时间戳
+	// <p>结束时间unix 毫秒时间戳</p>
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 事件集ID
+	// <p>事件集ID</p>
 	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 
-	// 页码
+	// <p>页码</p>
 	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
 
-	// 每页数据大小
+	// <p>每页数据大小</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 事件查询筛选条件；示例如下：[{"key":"host","operator":"eq","value":"106.53.106.243"},{"type":"AND","filters":[{"key":"region","operator":"like","value":"*guangzhou*"},{"key":"type","operator":"eq","value":"cvm:ErrorEvent:GuestReboot"}]},{"type":"OR","filters":[{"key":"field1","operator":"like","value":"*access*"},{"key":"field2","operator":"eq","value":"custorm"}]}]
+	// <p>事件查询筛选条件；示例如下：[{&quot;key&quot;:&quot;host&quot;,&quot;operator&quot;:&quot;eq&quot;,&quot;value&quot;:&quot;106.53.106.243&quot;},{&quot;type&quot;:&quot;AND&quot;,&quot;filters&quot;:[{&quot;key&quot;:&quot;region&quot;,&quot;operator&quot;:&quot;like&quot;,&quot;value&quot;:&quot;<em>guangzhou</em>&quot;},{&quot;key&quot;:&quot;type&quot;,&quot;operator&quot;:&quot;eq&quot;,&quot;value&quot;:&quot;cvm:ErrorEvent:GuestReboot&quot;}]},{&quot;type&quot;:&quot;OR&quot;,&quot;filters&quot;:[{&quot;key&quot;:&quot;field1&quot;,&quot;operator&quot;:&quot;like&quot;,&quot;value&quot;:&quot;<em>access</em>&quot;},{&quot;key&quot;:&quot;field2&quot;,&quot;operator&quot;:&quot;eq&quot;,&quot;value&quot;:&quot;custom&quot;}]}]</p>
 	Filter []*LogFilter `json:"Filter,omitnil,omitempty" name:"Filter"`
 
-	// 事件查询结果排序，["timestamp","subject"]
+	// <p>事件查询结果排序，[&quot;timestamp&quot;,&quot;subject&quot;]</p>
 	OrderFields []*string `json:"OrderFields,omitnil,omitempty" name:"OrderFields"`
 
-	// 排序方式，asc 从旧到新，desc 从新到旧
+	// <p>排序方式，asc 从旧到新，desc 从新到旧</p>
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 }
 
 type SearchLogRequest struct {
 	*tchttp.BaseRequest
 	
-	// 起始时间unix 毫秒时间戳
+	// <p>起始时间unix 毫秒时间戳</p>
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间unix 毫秒时间戳
+	// <p>结束时间unix 毫秒时间戳</p>
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 事件集ID
+	// <p>事件集ID</p>
 	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 
-	// 页码
+	// <p>页码</p>
 	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
 
-	// 每页数据大小
+	// <p>每页数据大小</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 事件查询筛选条件；示例如下：[{"key":"host","operator":"eq","value":"106.53.106.243"},{"type":"AND","filters":[{"key":"region","operator":"like","value":"*guangzhou*"},{"key":"type","operator":"eq","value":"cvm:ErrorEvent:GuestReboot"}]},{"type":"OR","filters":[{"key":"field1","operator":"like","value":"*access*"},{"key":"field2","operator":"eq","value":"custorm"}]}]
+	// <p>事件查询筛选条件；示例如下：[{&quot;key&quot;:&quot;host&quot;,&quot;operator&quot;:&quot;eq&quot;,&quot;value&quot;:&quot;106.53.106.243&quot;},{&quot;type&quot;:&quot;AND&quot;,&quot;filters&quot;:[{&quot;key&quot;:&quot;region&quot;,&quot;operator&quot;:&quot;like&quot;,&quot;value&quot;:&quot;<em>guangzhou</em>&quot;},{&quot;key&quot;:&quot;type&quot;,&quot;operator&quot;:&quot;eq&quot;,&quot;value&quot;:&quot;cvm:ErrorEvent:GuestReboot&quot;}]},{&quot;type&quot;:&quot;OR&quot;,&quot;filters&quot;:[{&quot;key&quot;:&quot;field1&quot;,&quot;operator&quot;:&quot;like&quot;,&quot;value&quot;:&quot;<em>access</em>&quot;},{&quot;key&quot;:&quot;field2&quot;,&quot;operator&quot;:&quot;eq&quot;,&quot;value&quot;:&quot;custom&quot;}]}]</p>
 	Filter []*LogFilter `json:"Filter,omitnil,omitempty" name:"Filter"`
 
-	// 事件查询结果排序，["timestamp","subject"]
+	// <p>事件查询结果排序，[&quot;timestamp&quot;,&quot;subject&quot;]</p>
 	OrderFields []*string `json:"OrderFields,omitnil,omitempty" name:"OrderFields"`
 
-	// 排序方式，asc 从旧到新，desc 从新到旧
+	// <p>排序方式，asc 从旧到新，desc 从新到旧</p>
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 }
 
@@ -2400,19 +2400,19 @@ func (r *SearchLogRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SearchLogResponseParams struct {
-	// 事件总数
+	// <p>事件总数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
-	// 每页事件条数
+	// <p>每页事件条数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 页码
+	// <p>页码</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
 
-	// 事件查询结果
+	// <p>事件查询结果</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Results []*SearchLogResult `json:"Results,omitnil,omitempty" name:"Results"`
 
@@ -2437,45 +2437,45 @@ func (r *SearchLogResponse) FromJsonString(s string) error {
 }
 
 type SearchLogResult struct {
-	// 单条日志上报时间
+	// <p>单条日志上报时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Timestamp *string `json:"Timestamp,omitnil,omitempty" name:"Timestamp"`
 
-	// 日志内容详情
+	// <p>日志内容详情</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
-	// 事件来源
+	// <p>事件来源</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 
-	// 事件类型
+	// <p>事件类型</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 事件匹配规则
+	// <p>事件匹配规则</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleIds *string `json:"RuleIds,omitnil,omitempty" name:"RuleIds"`
 
-	// 实例ID
+	// <p>实例ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Subject *string `json:"Subject,omitnil,omitempty" name:"Subject"`
 
-	// 地域
+	// <p>地域</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 事件状态
+	// <p>事件状态</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 type TDMQParams struct {
-	// 集群类型
+	// <p>集群类型</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 
-	// 集群支撑网接入点
+	// <p>集群支撑网接入点</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterEndPoint *string `json:"ClusterEndPoint,omitnil,omitempty" name:"ClusterEndPoint"`
 }
@@ -2489,30 +2489,30 @@ type Tag struct {
 }
 
 type Target struct {
-	// 目标类型
+	// <p>目标类型</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 事件集ID
+	// <p>事件集ID</p>
 	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 
-	// 目标ID
+	// <p>目标ID</p>
 	TargetId *string `json:"TargetId,omitnil,omitempty" name:"TargetId"`
 
-	// 目标描述
+	// <p>目标描述</p>
 	TargetDescription *TargetDescription `json:"TargetDescription,omitnil,omitempty" name:"TargetDescription"`
 
-	// 事件规则ID
+	// <p>事件规则ID</p>
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
-	// 开启批量投递使能
+	// <p>开启批量投递使能</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnableBatchDelivery *bool `json:"EnableBatchDelivery,omitnil,omitempty" name:"EnableBatchDelivery"`
 
-	// 批量投递最长等待时间
+	// <p>批量投递最长等待时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BatchTimeout *int64 `json:"BatchTimeout,omitnil,omitempty" name:"BatchTimeout"`
 
-	// 批量投递最大事件条数
+	// <p>批量投递最大事件条数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BatchEventCount *int64 `json:"BatchEventCount,omitnil,omitempty" name:"BatchEventCount"`
 }
@@ -2652,44 +2652,44 @@ func (r *UpdateConnectionResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateEventBusRequestParams struct {
-	// 事件集ID
+	// <p>事件集ID</p>
 	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 
-	// 事件集描述，不限字符类型，200字符描述以内
+	// <p>事件集描述，不限字符类型，200字符描述以内</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 事件集名称，只能包含字母、数字、下划线、连字符，以字母开头，以数字或字母结尾，2~60个字符
+	// <p>事件集名称，只能包含字母、数字、下划线、连字符，以字母开头，以数字或字母结尾，2~60个字符</p>
 	EventBusName *string `json:"EventBusName,omitnil,omitempty" name:"EventBusName"`
 
-	// EB日志存储时长
+	// <p>事件存储时长</p><p>单位：day</p>
 	SaveDays *int64 `json:"SaveDays,omitnil,omitempty" name:"SaveDays"`
 
-	// EB日志主题ID
+	// <p>事件存储主题ID</p>
 	LogTopicId *string `json:"LogTopicId,omitnil,omitempty" name:"LogTopicId"`
 
-	// 是否开启存储
+	// <p>是否开启存储</p>
 	EnableStore *bool `json:"EnableStore,omitnil,omitempty" name:"EnableStore"`
 }
 
 type UpdateEventBusRequest struct {
 	*tchttp.BaseRequest
 	
-	// 事件集ID
+	// <p>事件集ID</p>
 	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 
-	// 事件集描述，不限字符类型，200字符描述以内
+	// <p>事件集描述，不限字符类型，200字符描述以内</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 事件集名称，只能包含字母、数字、下划线、连字符，以字母开头，以数字或字母结尾，2~60个字符
+	// <p>事件集名称，只能包含字母、数字、下划线、连字符，以字母开头，以数字或字母结尾，2~60个字符</p>
 	EventBusName *string `json:"EventBusName,omitnil,omitempty" name:"EventBusName"`
 
-	// EB日志存储时长
+	// <p>事件存储时长</p><p>单位：day</p>
 	SaveDays *int64 `json:"SaveDays,omitnil,omitempty" name:"SaveDays"`
 
-	// EB日志主题ID
+	// <p>事件存储主题ID</p>
 	LogTopicId *string `json:"LogTopicId,omitnil,omitempty" name:"LogTopicId"`
 
-	// 是否开启存储
+	// <p>是否开启存储</p>
 	EnableStore *bool `json:"EnableStore,omitnil,omitempty" name:"EnableStore"`
 }
 

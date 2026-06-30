@@ -5562,26 +5562,29 @@ func (r *ListWeChatWorkSubAccountsResponse) FromJsonString(s string) error {
 }
 
 type LoginActionFlag struct {
-	// 0: 非安全手机校验 1: 安全手机校验。
+	// <p>0: 非安全手机校验 1: 安全手机校验。</p>
 	Phone *uint64 `json:"Phone,omitnil,omitempty" name:"Phone"`
 
-	// 0: 非硬token校验 1: 硬token校验。
+	// <p>0: 非硬token校验 1: 硬token校验。</p>
 	Token *uint64 `json:"Token,omitnil,omitempty" name:"Token"`
 
-	// 0: 非软token校验 1: 软token校验
+	// <p>0: 非软token校验 1: 软token校验</p>
 	Stoken *uint64 `json:"Stoken,omitnil,omitempty" name:"Stoken"`
 
-	// 0: 非微信校验 1: 微信校验
+	// <p>0: 非微信校验 1: 微信校验</p>
 	Wechat *uint64 `json:"Wechat,omitnil,omitempty" name:"Wechat"`
 
-	// 0: 非自定义校验 1: 自定义校验
+	// <p>0: 非自定义校验 1: 自定义校验</p>
 	Custom *uint64 `json:"Custom,omitnil,omitempty" name:"Custom"`
 
-	// 0: 非邮箱校验 1: 邮箱校验
+	// <p>0: 非邮箱校验 1: 邮箱校验</p>
 	Mail *uint64 `json:"Mail,omitnil,omitempty" name:"Mail"`
 
-	// 0: 非u2f硬件token 1: u2f硬件token
+	// <p>0: 非u2f硬件token 1: u2f硬件token</p>
 	U2FToken *uint64 `json:"U2FToken,omitnil,omitempty" name:"U2FToken"`
+
+	// <p>0: 非passkey 校验 1: passkey校验</p>
+	Passkey *uint64 `json:"Passkey,omitnil,omitempty" name:"Passkey"`
 }
 
 type LoginActionFlagIntl struct {

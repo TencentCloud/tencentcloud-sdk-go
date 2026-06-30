@@ -15226,6 +15226,174 @@ func (r *DescribeNICAssetsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeNotifyAssetConfigRequestParams struct {
+	// <p>模块名</p>
+	Modules []*string `json:"Modules,omitnil,omitempty" name:"Modules"`
+}
+
+type DescribeNotifyAssetConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>模块名</p>
+	Modules []*string `json:"Modules,omitnil,omitempty" name:"Modules"`
+}
+
+func (r *DescribeNotifyAssetConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNotifyAssetConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Modules")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNotifyAssetConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeNotifyAssetConfigResponseParams struct {
+	// <p>资产范围配置</p>
+	Items []*NotifyAssetConfigItem `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeNotifyAssetConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeNotifyAssetConfigResponseParams `json:"Response"`
+}
+
+func (r *DescribeNotifyAssetConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNotifyAssetConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeNotifySettingAlertRequestParams struct {
+
+}
+
+type DescribeNotifySettingAlertRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeNotifySettingAlertRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNotifySettingAlertRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNotifySettingAlertRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeNotifySettingAlertResponseParams struct {
+	// <p>通知配置</p>
+	Settings []*NotifySetting `json:"Settings,omitnil,omitempty" name:"Settings"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeNotifySettingAlertResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeNotifySettingAlertResponseParams `json:"Response"`
+}
+
+func (r *DescribeNotifySettingAlertResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNotifySettingAlertResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeNotifySettingRequestParams struct {
+
+}
+
+type DescribeNotifySettingRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeNotifySettingRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNotifySettingRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNotifySettingRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeNotifySettingResponseParams struct {
+	// <p>通知设置列表</p>
+	List []*NotifySetting `json:"List,omitnil,omitempty" name:"List"`
+
+	// <p>成员账号Id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeNotifySettingResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeNotifySettingResponseParams `json:"Response"`
+}
+
+func (r *DescribeNotifySettingResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNotifySettingResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeOrganizationInfoRequestParams struct {
 	// 集团账号的成员id
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
@@ -22766,6 +22934,203 @@ func (r *ModifyMachineRemarkResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyNotifyAssetConfigRequestParams struct {
+	// <p>资产范围配置</p>
+	Items []*NotifyAssetConfigItem `json:"Items,omitnil,omitempty" name:"Items"`
+}
+
+type ModifyNotifyAssetConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>资产范围配置</p>
+	Items []*NotifyAssetConfigItem `json:"Items,omitnil,omitempty" name:"Items"`
+}
+
+func (r *ModifyNotifyAssetConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyNotifyAssetConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Items")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyNotifyAssetConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyNotifyAssetConfigResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyNotifyAssetConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyNotifyAssetConfigResponseParams `json:"Response"`
+}
+
+func (r *ModifyNotifyAssetConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyNotifyAssetConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyNotifySettingAlertRequestParams struct {
+	// <p>通知配置</p>
+	Settings []*NotifySetting `json:"Settings,omitnil,omitempty" name:"Settings"`
+}
+
+type ModifyNotifySettingAlertRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>通知配置</p>
+	Settings []*NotifySetting `json:"Settings,omitnil,omitempty" name:"Settings"`
+}
+
+func (r *ModifyNotifySettingAlertRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyNotifySettingAlertRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Settings")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyNotifySettingAlertRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyNotifySettingAlertResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyNotifySettingAlertResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyNotifySettingAlertResponseParams `json:"Response"`
+}
+
+func (r *ModifyNotifySettingAlertResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyNotifySettingAlertResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyNotifySettingRequestParams struct {
+	// <p>通知模块</p><p>枚举值：</p><ul><li>AkSk： 云API风险治理</li><li>Alert： 告警中心</li><li>Agent： 客户端</li></ul>
+	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
+
+	// <p>通知设置模式</p><p>枚举值：</p><ul><li>0： 标准模式</li><li>1： 高级模式</li></ul>
+	Mode *int64 `json:"Mode,omitnil,omitempty" name:"Mode"`
+
+	// <p>通知状态</p><p>枚举值：</p><ul><li>0： 通知关闭</li><li>1： 通知开启</li></ul>
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>通知开始时间</p><p>参数格式：hh:mm:ss</p>
+	BeginTime *string `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
+
+	// <p>通知结束时间</p><p>参数格式：hh:mm:ss</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>通知选项</p><p>枚举值：</p><ul><li>CRITICAL： 告警等级：严重</li><li>HIGH： 告警等级：高危</li><li>MEDIUM： 告警等级：中危</li><li>LOW： 告警等级：低危</li><li>INFO： 告警等级：提醒</li><li>AGENT_UNINSTALL： 客户端卸载</li><li>AGENT_OFFLINE： 客户端离线</li></ul>
+	Option []*string `json:"Option,omitnil,omitempty" name:"Option"`
+}
+
+type ModifyNotifySettingRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>通知模块</p><p>枚举值：</p><ul><li>AkSk： 云API风险治理</li><li>Alert： 告警中心</li><li>Agent： 客户端</li></ul>
+	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
+
+	// <p>通知设置模式</p><p>枚举值：</p><ul><li>0： 标准模式</li><li>1： 高级模式</li></ul>
+	Mode *int64 `json:"Mode,omitnil,omitempty" name:"Mode"`
+
+	// <p>通知状态</p><p>枚举值：</p><ul><li>0： 通知关闭</li><li>1： 通知开启</li></ul>
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>通知开始时间</p><p>参数格式：hh:mm:ss</p>
+	BeginTime *string `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
+
+	// <p>通知结束时间</p><p>参数格式：hh:mm:ss</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>通知选项</p><p>枚举值：</p><ul><li>CRITICAL： 告警等级：严重</li><li>HIGH： 告警等级：高危</li><li>MEDIUM： 告警等级：中危</li><li>LOW： 告警等级：低危</li><li>INFO： 告警等级：提醒</li><li>AGENT_UNINSTALL： 客户端卸载</li><li>AGENT_OFFLINE： 客户端离线</li></ul>
+	Option []*string `json:"Option,omitnil,omitempty" name:"Option"`
+}
+
+func (r *ModifyNotifySettingRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyNotifySettingRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Module")
+	delete(f, "Mode")
+	delete(f, "Status")
+	delete(f, "BeginTime")
+	delete(f, "EndTime")
+	delete(f, "Option")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyNotifySettingRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyNotifySettingResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyNotifySettingResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyNotifySettingResponseParams `json:"Response"`
+}
+
+func (r *ModifyNotifySettingResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyNotifySettingResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyOrganizationAccountStatusRequestParams struct {
 	// 修改集团账号状态，1 开启， 0关闭
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
@@ -23300,6 +23665,61 @@ type NewAlertKey struct {
 
 	// 状态
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+type NotifyAssetConfigItem struct {
+	// <p>模块名</p>
+	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
+
+	// <p>子模块</p>
+	SubModule *string `json:"SubModule,omitnil,omitempty" name:"SubModule"`
+
+	// <p>资产范围</p><p>枚举值：</p><ul><li>0： 无含义</li><li>1： 全部</li><li>2： 自选</li><li>3： 按标签</li></ul>
+	AssetRange *int64 `json:"AssetRange,omitnil,omitempty" name:"AssetRange"`
+
+	// <p>选中的实例ID</p>
+	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
+
+	// <p>剔除的实例ID</p>
+	ExcludedInstanceIds []*string `json:"ExcludedInstanceIds,omitnil,omitempty" name:"ExcludedInstanceIds"`
+
+	// <p>标签ID</p>
+	TagIds []*int64 `json:"TagIds,omitnil,omitempty" name:"TagIds"`
+
+	// <p>云标签</p>
+	CloudTags []*string `json:"CloudTags,omitnil,omitempty" name:"CloudTags"`
+
+	// <p>总数</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+}
+
+type NotifySetting struct {
+	// <p>通知模块</p><p>枚举值：</p><ul><li>AkSk： 云API风险治理</li><li>Alert： 告警中心</li><li>Agent： 客户端</li></ul>
+	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
+
+	// <p>通知设置模式</p><p>枚举值：</p><ul><li>0： 标准模式</li><li>1： 高级模式</li></ul>
+	Mode *int64 `json:"Mode,omitnil,omitempty" name:"Mode"`
+
+	// <p>通知状态</p><p>枚举值：</p><ul><li>0： 通知关闭</li><li>1： 通知开启</li></ul>
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>通知开始时间</p><p>参数格式：hh:mm:ss</p>
+	BeginTime *string `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
+
+	// <p>通知结束时间</p><p>参数格式：hh:mm:ss</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>资产范围</p><p>枚举值：</p><ul><li>1： 全部主机</li><li>2： 自选主机</li><li>3： 按标签选择</li></ul>
+	AssetRange *int64 `json:"AssetRange,omitnil,omitempty" name:"AssetRange"`
+
+	// <p>通知选项</p><p>枚举值：</p><ul><li>CRITICAL： 告警等级：严重</li><li>HIGH： 告警等级：高危</li><li>MEDIUM： 告警等级：中危</li><li>LOW： 告警等级：低危</li><li>INFO： 告警等级：提醒</li><li>AGENT_UNINSTALL： 客户端卸载</li><li>AGENT_OFFLINE： 客户端离线</li></ul>
+	Option []*string `json:"Option,omitnil,omitempty" name:"Option"`
+
+	// <p>通知模块（二级模块）</p>
+	SubModule *string `json:"SubModule,omitnil,omitempty" name:"SubModule"`
+
+	// <p>处置状态等</p>
+	Item []*string `json:"Item,omitnil,omitempty" name:"Item"`
 }
 
 type OrganizationInfo struct {

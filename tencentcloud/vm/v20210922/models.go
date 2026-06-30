@@ -333,6 +333,11 @@ func (r *CreateVideoModerationTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DecodeParams struct {
+	// <p>视频截帧参数</p><p>取值范围：[0, 30]</p>
+	ImageFrequency *uint64 `json:"ImageFrequency,omitnil,omitempty" name:"ImageFrequency"`
+}
+
 // Predefined struct for user
 type DescribeTaskDetailRequestParams struct {
 	// <p>任务ID，创建任务后返回的TaskId字段</p>
@@ -729,6 +734,9 @@ type InputInfo struct {
 
 	// <p>大模型审核场景下，base64编码的审核要求内容</p>
 	TextContent *string `json:"TextContent,omitnil,omitempty" name:"TextContent"`
+
+	// <p>文章标题</p>
+	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
 }
 
 type LabelResult struct {
@@ -859,6 +867,9 @@ type StorageInfo struct {
 
 	// <p>大模型审核场景下，base64编码的审核要求内容</p>
 	TextContent *string `json:"TextContent,omitnil,omitempty" name:"TextContent"`
+
+	// <p>文章标题</p>
+	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
 }
 
 type Tag struct {
@@ -930,14 +941,17 @@ type TaskFilter struct {
 }
 
 type TaskInput struct {
-	// 数据ID
+	// <p>数据ID</p>
 	DataId *string `json:"DataId,omitnil,omitempty" name:"DataId"`
 
-	// 任务名
+	// <p>任务名</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 任务输入
+	// <p>任务输入</p>
 	Input *StorageInfo `json:"Input,omitnil,omitempty" name:"Input"`
+
+	// <p>视频解码参数</p>
+	DecodeParams *DecodeParams `json:"DecodeParams,omitnil,omitempty" name:"DecodeParams"`
 }
 
 type TaskLabel struct {

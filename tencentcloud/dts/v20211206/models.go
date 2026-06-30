@@ -2644,6 +2644,86 @@ func (r *DescribeMigrateDBInstancesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeMigrateGtidCompareReportRequestParams struct {
+	// 任务id
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// 创建的校验任务id
+	CompareTaskId *string `json:"CompareTaskId,omitnil,omitempty" name:"CompareTaskId"`
+
+	// 是否需要展示不一致详情
+	NeedDiffDetail *bool `json:"NeedDiffDetail,omitnil,omitempty" name:"NeedDiffDetail"`
+}
+
+type DescribeMigrateGtidCompareReportRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务id
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// 创建的校验任务id
+	CompareTaskId *string `json:"CompareTaskId,omitnil,omitempty" name:"CompareTaskId"`
+
+	// 是否需要展示不一致详情
+	NeedDiffDetail *bool `json:"NeedDiffDetail,omitnil,omitempty" name:"NeedDiffDetail"`
+}
+
+func (r *DescribeMigrateGtidCompareReportRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMigrateGtidCompareReportRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	delete(f, "CompareTaskId")
+	delete(f, "NeedDiffDetail")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMigrateGtidCompareReportRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMigrateGtidCompareReportResponseParams struct {
+	// 校验结论
+	Conclusion *string `json:"Conclusion,omitnil,omitempty" name:"Conclusion"`
+
+	// 校验状态
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 校验类型
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 不一致详情
+	Detail []*DifferenceDetails `json:"Detail,omitnil,omitempty" name:"Detail"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeMigrateGtidCompareReportResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeMigrateGtidCompareReportResponseParams `json:"Response"`
+}
+
+func (r *DescribeMigrateGtidCompareReportResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMigrateGtidCompareReportResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeMigrationCheckJobRequestParams struct {
 	// 任务id，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
@@ -3891,6 +3971,86 @@ func (r *DescribeSyncCompareTasksResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeSyncGtidCompareReportRequestParams struct {
+	// 任务id
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// 创建的校验任务id
+	CompareTaskId *string `json:"CompareTaskId,omitnil,omitempty" name:"CompareTaskId"`
+
+	// 是否需要展示不一致详情
+	NeedDiffDetail *bool `json:"NeedDiffDetail,omitnil,omitempty" name:"NeedDiffDetail"`
+}
+
+type DescribeSyncGtidCompareReportRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务id
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// 创建的校验任务id
+	CompareTaskId *string `json:"CompareTaskId,omitnil,omitempty" name:"CompareTaskId"`
+
+	// 是否需要展示不一致详情
+	NeedDiffDetail *bool `json:"NeedDiffDetail,omitnil,omitempty" name:"NeedDiffDetail"`
+}
+
+func (r *DescribeSyncGtidCompareReportRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSyncGtidCompareReportRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	delete(f, "CompareTaskId")
+	delete(f, "NeedDiffDetail")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSyncGtidCompareReportRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSyncGtidCompareReportResponseParams struct {
+	// 校验结论
+	Conclusion *string `json:"Conclusion,omitnil,omitempty" name:"Conclusion"`
+
+	// 校验状态
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 校验类型
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 不一致详情
+	Detail []*DifferenceDetails `json:"Detail,omitnil,omitempty" name:"Detail"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeSyncGtidCompareReportResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSyncGtidCompareReportResponseParams `json:"Response"`
+}
+
+func (r *DescribeSyncGtidCompareReportResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSyncGtidCompareReportResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeSyncJobsRequestParams struct {
 	// 同步任务id，如sync-werwfs23，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
@@ -4321,6 +4481,35 @@ type DifferenceDetail struct {
 	// 校验不一致的表详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Items []*DifferenceItem `json:"Items,omitnil,omitempty" name:"Items"`
+}
+
+type DifferenceDetails struct {
+	// 校验结果
+	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 源库gtid set
+	SrcGtidSets *string `json:"SrcGtidSets,omitnil,omitempty" name:"SrcGtidSets"`
+
+	// 目标库gtid set
+	DstGtidSets *string `json:"DstGtidSets,omitnil,omitempty" name:"DstGtidSets"`
+
+	// 源库差异的gtid set
+	DiffSrc *string `json:"DiffSrc,omitnil,omitempty" name:"DiffSrc"`
+
+	// 源库中不一致的表
+	DiffSrcTables []*string `json:"DiffSrcTables,omitnil,omitempty" name:"DiffSrcTables"`
+
+	// 目标库差异的gtid set
+	DiffDst *string `json:"DiffDst,omitnil,omitempty" name:"DiffDst"`
+
+	// 校验结束时间
+	CompareTimestamp *string `json:"CompareTimestamp,omitnil,omitempty" name:"CompareTimestamp"`
+
+	// 同步范围内的不一致表
+	DiffSrcTablesNeedSync []*string `json:"DiffSrcTablesNeedSync,omitnil,omitempty" name:"DiffSrcTablesNeedSync"`
+
+	// 同步范围内是否存在不一致的表
+	DiffSrcIsNeedSync *bool `json:"DiffSrcIsNeedSync,omitnil,omitempty" name:"DiffSrcIsNeedSync"`
 }
 
 type DifferenceItem struct {

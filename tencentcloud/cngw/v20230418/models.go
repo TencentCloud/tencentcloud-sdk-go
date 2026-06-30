@@ -578,6 +578,155 @@ func (r *AddCloudNativeAPIGatewayConsumerGroupAuthResponse) FromJsonString(s str
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type AddCloudNativeAPIGatewayConsumerInGroupRequestParams struct {
+	// 网关实例id
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// <p>消费者组 ID（以 cg- 开头）。</p>
+	ConsumerGroupId *string `json:"ConsumerGroupId,omitnil,omitempty" name:"ConsumerGroupId"`
+
+	// <p>消费者 ID 列表，长度 1-10。</p>
+	ConsumerIds []*string `json:"ConsumerIds,omitnil,omitempty" name:"ConsumerIds"`
+}
+
+type AddCloudNativeAPIGatewayConsumerInGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 网关实例id
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// <p>消费者组 ID（以 cg- 开头）。</p>
+	ConsumerGroupId *string `json:"ConsumerGroupId,omitnil,omitempty" name:"ConsumerGroupId"`
+
+	// <p>消费者 ID 列表，长度 1-10。</p>
+	ConsumerIds []*string `json:"ConsumerIds,omitnil,omitempty" name:"ConsumerIds"`
+}
+
+func (r *AddCloudNativeAPIGatewayConsumerInGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddCloudNativeAPIGatewayConsumerInGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GatewayId")
+	delete(f, "ConsumerGroupId")
+	delete(f, "ConsumerIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddCloudNativeAPIGatewayConsumerInGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AddCloudNativeAPIGatewayConsumerInGroupResponseParams struct {
+	// <p>是否成功。</p>
+	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type AddCloudNativeAPIGatewayConsumerInGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *AddCloudNativeAPIGatewayConsumerInGroupResponseParams `json:"Response"`
+}
+
+func (r *AddCloudNativeAPIGatewayConsumerInGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddCloudNativeAPIGatewayConsumerInGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BindCloudNativeAPIGatewaySecretKeyRequestParams struct {
+	// 网关实例id
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// 资源类型
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// 资源ID，当前最多支持一个
+	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
+
+	// 密钥id
+	SecretKeyId *string `json:"SecretKeyId,omitnil,omitempty" name:"SecretKeyId"`
+}
+
+type BindCloudNativeAPIGatewaySecretKeyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 网关实例id
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// 资源类型
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// 资源ID，当前最多支持一个
+	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
+
+	// 密钥id
+	SecretKeyId *string `json:"SecretKeyId,omitnil,omitempty" name:"SecretKeyId"`
+}
+
+func (r *BindCloudNativeAPIGatewaySecretKeyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BindCloudNativeAPIGatewaySecretKeyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GatewayId")
+	delete(f, "ResourceType")
+	delete(f, "ResourceIds")
+	delete(f, "SecretKeyId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BindCloudNativeAPIGatewaySecretKeyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BindCloudNativeAPIGatewaySecretKeyResponseParams struct {
+	// 结果
+	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type BindCloudNativeAPIGatewaySecretKeyResponse struct {
+	*tchttp.BaseResponse
+	Response *BindCloudNativeAPIGatewaySecretKeyResponseParams `json:"Response"`
+}
+
+func (r *BindCloudNativeAPIGatewaySecretKeyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BindCloudNativeAPIGatewaySecretKeyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CNAPIGwConsumer struct {
 	// <p>消费者 ID。</p>
 	ConsumerId *string `json:"ConsumerId,omitnil,omitempty" name:"ConsumerId"`
@@ -4760,5 +4909,148 @@ func (r *RemoveCloudNativeAPIGatewayConsumerGroupAuthResponse) ToJsonString() st
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *RemoveCloudNativeAPIGatewayConsumerGroupAuthResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RemoveCloudNativeAPIGatewayConsumerInGroupRequestParams struct {
+	// 网关实例id
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// <p>消费者组 ID（以 cg- 开头）。</p>
+	ConsumerGroupId *string `json:"ConsumerGroupId,omitnil,omitempty" name:"ConsumerGroupId"`
+
+	// <p>消费者 ID 列表，长度 1-10。</p>
+	ConsumerIds []*string `json:"ConsumerIds,omitnil,omitempty" name:"ConsumerIds"`
+}
+
+type RemoveCloudNativeAPIGatewayConsumerInGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 网关实例id
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// <p>消费者组 ID（以 cg- 开头）。</p>
+	ConsumerGroupId *string `json:"ConsumerGroupId,omitnil,omitempty" name:"ConsumerGroupId"`
+
+	// <p>消费者 ID 列表，长度 1-10。</p>
+	ConsumerIds []*string `json:"ConsumerIds,omitnil,omitempty" name:"ConsumerIds"`
+}
+
+func (r *RemoveCloudNativeAPIGatewayConsumerInGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RemoveCloudNativeAPIGatewayConsumerInGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GatewayId")
+	delete(f, "ConsumerGroupId")
+	delete(f, "ConsumerIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RemoveCloudNativeAPIGatewayConsumerInGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RemoveCloudNativeAPIGatewayConsumerInGroupResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RemoveCloudNativeAPIGatewayConsumerInGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *RemoveCloudNativeAPIGatewayConsumerInGroupResponseParams `json:"Response"`
+}
+
+func (r *RemoveCloudNativeAPIGatewayConsumerInGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RemoveCloudNativeAPIGatewayConsumerInGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UnbindCloudNativeAPIGatewaySecretKeyRequestParams struct {
+	// 网关实例id
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// 资源类型
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// 资源ID，当前最多支持一个
+	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
+
+	// 密钥id
+	SecretKeyId *string `json:"SecretKeyId,omitnil,omitempty" name:"SecretKeyId"`
+}
+
+type UnbindCloudNativeAPIGatewaySecretKeyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 网关实例id
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// 资源类型
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// 资源ID，当前最多支持一个
+	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
+
+	// 密钥id
+	SecretKeyId *string `json:"SecretKeyId,omitnil,omitempty" name:"SecretKeyId"`
+}
+
+func (r *UnbindCloudNativeAPIGatewaySecretKeyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UnbindCloudNativeAPIGatewaySecretKeyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GatewayId")
+	delete(f, "ResourceType")
+	delete(f, "ResourceIds")
+	delete(f, "SecretKeyId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UnbindCloudNativeAPIGatewaySecretKeyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UnbindCloudNativeAPIGatewaySecretKeyResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UnbindCloudNativeAPIGatewaySecretKeyResponse struct {
+	*tchttp.BaseResponse
+	Response *UnbindCloudNativeAPIGatewaySecretKeyResponseParams `json:"Response"`
+}
+
+func (r *UnbindCloudNativeAPIGatewaySecretKeyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UnbindCloudNativeAPIGatewaySecretKeyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }

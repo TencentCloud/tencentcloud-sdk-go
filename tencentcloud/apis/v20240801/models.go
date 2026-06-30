@@ -1010,6 +1010,9 @@ type CreateModelServiceRequestParams struct {
 
 	// <p>模型协议</p>
 	ModelProtocol *string `json:"ModelProtocol,omitnil,omitempty" name:"ModelProtocol"`
+
+	// <p>自定义模型协议配置</p>
+	RawCustomModelProtocolConfig *string `json:"RawCustomModelProtocolConfig,omitnil,omitempty" name:"RawCustomModelProtocolConfig"`
 }
 
 type CreateModelServiceRequest struct {
@@ -1095,6 +1098,9 @@ type CreateModelServiceRequest struct {
 
 	// <p>模型协议</p>
 	ModelProtocol *string `json:"ModelProtocol,omitnil,omitempty" name:"ModelProtocol"`
+
+	// <p>自定义模型协议配置</p>
+	RawCustomModelProtocolConfig *string `json:"RawCustomModelProtocolConfig,omitnil,omitempty" name:"RawCustomModelProtocolConfig"`
 }
 
 func (r *CreateModelServiceRequest) ToJsonString() string {
@@ -1136,6 +1142,7 @@ func (r *CreateModelServiceRequest) FromJsonString(s string) error {
 	delete(f, "FallbackStatus")
 	delete(f, "FallbackModels")
 	delete(f, "ModelProtocol")
+	delete(f, "RawCustomModelProtocolConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateModelServiceRequest has unknown keys!", "")
 	}
@@ -3157,6 +3164,9 @@ type DescribeModelServiceResponseVO struct {
 	// <p>模型类型</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModelProtocol *string `json:"ModelProtocol,omitnil,omitempty" name:"ModelProtocol"`
+
+	// <p>自定义模型协议配置</p>
+	RawCustomModelProtocolConfig *string `json:"RawCustomModelProtocolConfig,omitnil,omitempty" name:"RawCustomModelProtocolConfig"`
 }
 
 // Predefined struct for user
@@ -4412,6 +4422,9 @@ type ModifyModelServiceRequestParams struct {
 
 	// <p>模型类型</p>
 	ModelProtocol *string `json:"ModelProtocol,omitnil,omitempty" name:"ModelProtocol"`
+
+	// <p>自定义模型协议配置</p>
+	RawCustomModelProtocolConfig *string `json:"RawCustomModelProtocolConfig,omitnil,omitempty" name:"RawCustomModelProtocolConfig"`
 }
 
 type ModifyModelServiceRequest struct {
@@ -4497,6 +4510,9 @@ type ModifyModelServiceRequest struct {
 
 	// <p>模型类型</p>
 	ModelProtocol *string `json:"ModelProtocol,omitnil,omitempty" name:"ModelProtocol"`
+
+	// <p>自定义模型协议配置</p>
+	RawCustomModelProtocolConfig *string `json:"RawCustomModelProtocolConfig,omitnil,omitempty" name:"RawCustomModelProtocolConfig"`
 }
 
 func (r *ModifyModelServiceRequest) ToJsonString() string {
@@ -4538,6 +4554,7 @@ func (r *ModifyModelServiceRequest) FromJsonString(s string) error {
 	delete(f, "FallbackStatus")
 	delete(f, "FallbackModels")
 	delete(f, "ModelProtocol")
+	delete(f, "RawCustomModelProtocolConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyModelServiceRequest has unknown keys!", "")
 	}

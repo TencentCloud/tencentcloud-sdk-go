@@ -218,10 +218,10 @@ type Charge struct {
 	// 计费类型，“PREPAID” 预付费，“POSTPAID_BY_HOUR” 后付费
 	ChargeType *string `json:"ChargeType,omitnil,omitempty" name:"ChargeType"`
 
-	// PREPAID需要传递，是否自动续费，1表示自动续费开启
+	// ChargeType为PREPAID时，必传，表示是否自动续费，1表示自动续费开启
 	RenewFlag *int64 `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 
-	// 预付费需要传递，计费时间长度，多少个月
+	// ChargeType为PREPAID时，必传，表示计费时间长度，多少个月
 	TimeSpan *int64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
 }
 
@@ -433,115 +433,119 @@ func (r *CreateBackUpScheduleResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateInstanceNewRequestParams struct {
-	// 可用区
+	// <p>可用区</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 是否高可用
+	// <p>是否高可用</p>
 	HaFlag *bool `json:"HaFlag,omitnil,omitempty" name:"HaFlag"`
 
-	// 私有网络
+	// <p>私有网络</p>
 	UserVPCId *string `json:"UserVPCId,omitnil,omitempty" name:"UserVPCId"`
 
-	// 子网
+	// <p>子网</p>
 	UserSubnetId *string `json:"UserSubnetId,omitnil,omitempty" name:"UserSubnetId"`
 
-	// 系统版本
+	// <p>系统版本</p>
 	ProductVersion *string `json:"ProductVersion,omitnil,omitempty" name:"ProductVersion"`
 
-	// 计费方式
+	// <p>计费方式</p>
 	ChargeProperties *Charge `json:"ChargeProperties,omitnil,omitempty" name:"ChargeProperties"`
 
-	// 实例名称
+	// <p>实例名称</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 数据节点
-	// SpecName从DescribeSpec接口中返回的DataSpec.Name获取
+	// <p>数据节点<br>SpecName从DescribeSpec接口中返回的DataSpec.Name获取</p>
 	DataSpec *NodeSpec `json:"DataSpec,omitnil,omitempty" name:"DataSpec"`
 
-	// 标签列表（废弃）
+	// <p>标签列表（废弃）</p>
 	//
 	// Deprecated: Tags is deprecated.
 	Tags *Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 日志主题ID
+	// <p>日志主题ID</p>
 	ClsLogSetId *string `json:"ClsLogSetId,omitnil,omitempty" name:"ClsLogSetId"`
 
-	// COS桶名称
+	// <p>COS桶名称</p>
 	CosBucketName *string `json:"CosBucketName,omitnil,omitempty" name:"CosBucketName"`
 
-	// 是否是裸盘挂载，默认值 0 为 未挂载，1 为挂载。
+	// <p>是否是裸盘挂载，默认值 0 为 未挂载，1 为挂载。</p>
 	MountDiskType *int64 `json:"MountDiskType,omitnil,omitempty" name:"MountDiskType"`
 
-	// 是否是ZK高可用
+	// <p>是否是ZK高可用</p>
 	HAZk *bool `json:"HAZk,omitnil,omitempty" name:"HAZk"`
 
-	// ZK节点SpecName从DescribeSpec接口中返回的CommonSpec结构体的Name（ZK节点）获取
+	// <p>ZK节点SpecName从DescribeSpec接口中返回的CommonSpec结构体的Name（ZK节点）获取</p>
 	CommonSpec *NodeSpec `json:"CommonSpec,omitnil,omitempty" name:"CommonSpec"`
 
-	// 标签列表
+	// <p>标签列表</p>
 	TagItems []*Tag `json:"TagItems,omitnil,omitempty" name:"TagItems"`
 
-	// 副可用区信息
+	// <p>副可用区信息</p>
 	SecondaryZoneInfo []*SecondaryZoneInfo `json:"SecondaryZoneInfo,omitnil,omitempty" name:"SecondaryZoneInfo"`
 
-	// default账号登陆实例的密码。8-16个字符，至少包含大写字母、小写字母、数字和特殊字符!@#%^*中的三种，第一个字符不能为特殊字符
+	// <p>default账号登录实例的密码。8-16个字符，至少包含大写字母、小写字母、数字和特殊字符!@#%^*中的三种，第一个字符不能为特殊字符</p>
 	CkDefaultUserPwd *string `json:"CkDefaultUserPwd,omitnil,omitempty" name:"CkDefaultUserPwd"`
+
+	// <p>集群类型</p>
+	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 }
 
 type CreateInstanceNewRequest struct {
 	*tchttp.BaseRequest
 	
-	// 可用区
+	// <p>可用区</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 是否高可用
+	// <p>是否高可用</p>
 	HaFlag *bool `json:"HaFlag,omitnil,omitempty" name:"HaFlag"`
 
-	// 私有网络
+	// <p>私有网络</p>
 	UserVPCId *string `json:"UserVPCId,omitnil,omitempty" name:"UserVPCId"`
 
-	// 子网
+	// <p>子网</p>
 	UserSubnetId *string `json:"UserSubnetId,omitnil,omitempty" name:"UserSubnetId"`
 
-	// 系统版本
+	// <p>系统版本</p>
 	ProductVersion *string `json:"ProductVersion,omitnil,omitempty" name:"ProductVersion"`
 
-	// 计费方式
+	// <p>计费方式</p>
 	ChargeProperties *Charge `json:"ChargeProperties,omitnil,omitempty" name:"ChargeProperties"`
 
-	// 实例名称
+	// <p>实例名称</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 数据节点
-	// SpecName从DescribeSpec接口中返回的DataSpec.Name获取
+	// <p>数据节点<br>SpecName从DescribeSpec接口中返回的DataSpec.Name获取</p>
 	DataSpec *NodeSpec `json:"DataSpec,omitnil,omitempty" name:"DataSpec"`
 
-	// 标签列表（废弃）
+	// <p>标签列表（废弃）</p>
 	Tags *Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 日志主题ID
+	// <p>日志主题ID</p>
 	ClsLogSetId *string `json:"ClsLogSetId,omitnil,omitempty" name:"ClsLogSetId"`
 
-	// COS桶名称
+	// <p>COS桶名称</p>
 	CosBucketName *string `json:"CosBucketName,omitnil,omitempty" name:"CosBucketName"`
 
-	// 是否是裸盘挂载，默认值 0 为 未挂载，1 为挂载。
+	// <p>是否是裸盘挂载，默认值 0 为 未挂载，1 为挂载。</p>
 	MountDiskType *int64 `json:"MountDiskType,omitnil,omitempty" name:"MountDiskType"`
 
-	// 是否是ZK高可用
+	// <p>是否是ZK高可用</p>
 	HAZk *bool `json:"HAZk,omitnil,omitempty" name:"HAZk"`
 
-	// ZK节点SpecName从DescribeSpec接口中返回的CommonSpec结构体的Name（ZK节点）获取
+	// <p>ZK节点SpecName从DescribeSpec接口中返回的CommonSpec结构体的Name（ZK节点）获取</p>
 	CommonSpec *NodeSpec `json:"CommonSpec,omitnil,omitempty" name:"CommonSpec"`
 
-	// 标签列表
+	// <p>标签列表</p>
 	TagItems []*Tag `json:"TagItems,omitnil,omitempty" name:"TagItems"`
 
-	// 副可用区信息
+	// <p>副可用区信息</p>
 	SecondaryZoneInfo []*SecondaryZoneInfo `json:"SecondaryZoneInfo,omitnil,omitempty" name:"SecondaryZoneInfo"`
 
-	// default账号登陆实例的密码。8-16个字符，至少包含大写字母、小写字母、数字和特殊字符!@#%^*中的三种，第一个字符不能为特殊字符
+	// <p>default账号登录实例的密码。8-16个字符，至少包含大写字母、小写字母、数字和特殊字符!@#%^*中的三种，第一个字符不能为特殊字符</p>
 	CkDefaultUserPwd *string `json:"CkDefaultUserPwd,omitnil,omitempty" name:"CkDefaultUserPwd"`
+
+	// <p>集群类型</p>
+	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 }
 
 func (r *CreateInstanceNewRequest) ToJsonString() string {
@@ -573,6 +577,7 @@ func (r *CreateInstanceNewRequest) FromJsonString(s string) error {
 	delete(f, "TagItems")
 	delete(f, "SecondaryZoneInfo")
 	delete(f, "CkDefaultUserPwd")
+	delete(f, "ClusterType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInstanceNewRequest has unknown keys!", "")
 	}
@@ -581,13 +586,13 @@ func (r *CreateInstanceNewRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateInstanceNewResponseParams struct {
-	// 流程ID
+	// <p>流程ID</p>
 	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
-	// 实例ID
+	// <p>实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 错误信息
+	// <p>错误信息</p>
 	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

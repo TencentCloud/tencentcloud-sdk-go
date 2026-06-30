@@ -174,32 +174,32 @@ type ChannelsReceivers struct {
 
 // Predefined struct for user
 type CreateNoticeContentTmplRequestParams struct {
-	// 模板名称
+	// <p>模板名称</p>
 	TmplName *string `json:"TmplName,omitnil,omitempty" name:"TmplName"`
 
-	// 监控类型
+	// <p>监控类型</p>
 	MonitorType *string `json:"MonitorType,omitnil,omitempty" name:"MonitorType"`
 
-	// 模板内容
+	// <p>模板内容</p>
 	TmplContents *NoticeContentTmplItem `json:"TmplContents,omitnil,omitempty" name:"TmplContents"`
 
-	// 模板语言 en/zh
+	// <p>模板语言 en/zh</p>
 	TmplLanguage *string `json:"TmplLanguage,omitnil,omitempty" name:"TmplLanguage"`
 }
 
 type CreateNoticeContentTmplRequest struct {
 	*tchttp.BaseRequest
 	
-	// 模板名称
+	// <p>模板名称</p>
 	TmplName *string `json:"TmplName,omitnil,omitempty" name:"TmplName"`
 
-	// 监控类型
+	// <p>监控类型</p>
 	MonitorType *string `json:"MonitorType,omitnil,omitempty" name:"MonitorType"`
 
-	// 模板内容
+	// <p>模板内容</p>
 	TmplContents *NoticeContentTmplItem `json:"TmplContents,omitnil,omitempty" name:"TmplContents"`
 
-	// 模板语言 en/zh
+	// <p>模板语言 en/zh</p>
 	TmplLanguage *string `json:"TmplLanguage,omitnil,omitempty" name:"TmplLanguage"`
 }
 
@@ -227,7 +227,7 @@ func (r *CreateNoticeContentTmplRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateNoticeContentTmplResponseParams struct {
-	// 自定义内容模板ID
+	// <p>自定义内容模板ID</p>
 	TmplID *string `json:"TmplID,omitnil,omitempty" name:"TmplID"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -252,14 +252,14 @@ func (r *CreateNoticeContentTmplResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteNoticeContentTmplsRequestParams struct {
-	// 要删除的模板id
+	// <p>要删除的模板id</p>
 	TmplIDs []*string `json:"TmplIDs,omitnil,omitempty" name:"TmplIDs"`
 }
 
 type DeleteNoticeContentTmplsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 要删除的模板id
+	// <p>要删除的模板id</p>
 	TmplIDs []*string `json:"TmplIDs,omitnil,omitempty" name:"TmplIDs"`
 }
 
@@ -843,38 +843,38 @@ func (r *ModifyNoticeContentTmplResponse) FromJsonString(s string) error {
 }
 
 type NoticeContentTmpl struct {
-	// 自定义通知内容模板id，唯一id
+	// <p>自定义通知内容模板id，唯一id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TmplID *string `json:"TmplID,omitnil,omitempty" name:"TmplID"`
 
-	// 自定义通知内容模板名
+	// <p>自定义通知内容模板名</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TmplName *string `json:"TmplName,omitnil,omitempty" name:"TmplName"`
 
-	// 通知内容
+	// <p>通知内容</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TmplContents *NoticeContentTmplItem `json:"TmplContents,omitnil,omitempty" name:"TmplContents"`
 
-	// Unix时间戳，秒
+	// <p>Unix时间戳，秒</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *int64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// Unix时间戳，秒
+	// <p>Unix时间戳，秒</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *int64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 最后修改人
+	// <p>最后修改人</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastModifier *string `json:"LastModifier,omitnil,omitempty" name:"LastModifier"`
 
-	// 创建人
+	// <p>创建人</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Creator *string `json:"Creator,omitnil,omitempty" name:"Creator"`
 
-	// 监控类型
+	// <p>监控类型</p>
 	MonitorType *string `json:"MonitorType,omitnil,omitempty" name:"MonitorType"`
 
-	// 模板语言 en/zh
+	// <p>模板语言 en/zh</p>
 	TmplLanguage *string `json:"TmplLanguage,omitnil,omitempty" name:"TmplLanguage"`
 }
 

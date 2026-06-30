@@ -943,147 +943,153 @@ func (r *CreateBackupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateBasicDBInstancesRequestParams struct {
-	// 实例可用区，类似ap-guangzhou-1（广州一区）；实例可售卖区域可以通过接口DescribeZones获取
+	// <p>实例可用区，类似ap-guangzhou-1（广州一区）；实例可售卖区域可以通过接口DescribeZones获取</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 实例的CPU核心数
+	// <p>实例的CPU核心数</p>
 	Cpu *uint64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 
-	// 实例内存大小，单位GB
+	// <p>实例内存大小，单位GB</p>
 	Memory *uint64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
-	// 实例磁盘大小，单位GB
+	// <p>实例磁盘大小，单位GB</p>
 	Storage *uint64 `json:"Storage,omitnil,omitempty" name:"Storage"`
 
-	// VPC子网ID，形如subnet-bdoe83fa
+	// <p>VPC子网ID，形如subnet-bdoe83fa</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// VPC网络ID，形如vpc-dsp338hz
+	// <p>VPC网络ID，形如vpc-dsp338hz</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 购买实例的宿主机类型，CLOUD_PREMIUM-虚拟机高性能云硬盘，CLOUD_SSD-虚拟机SSD云硬盘,CLOUD_HSSD-虚拟机增强型SSD云硬盘，CLOUD_BSSD-虚拟机通用型SSD云盘
+	// <p>购买实例的宿主机类型，CLOUD_PREMIUM-虚拟机高性能云硬盘，CLOUD_SSD-虚拟机SSD云硬盘,CLOUD_HSSD-虚拟机增强型SSD云硬盘，CLOUD_BSSD-虚拟机通用型SSD云盘</p>
 	MachineType *string `json:"MachineType,omitnil,omitempty" name:"MachineType"`
 
-	// 付费模式，取值支持 PREPAID（预付费），POSTPAID（后付费）。
+	// <p>付费模式，取值支持 PREPAID（预付费），POSTPAID（后付费）。</p>
 	InstanceChargeType *string `json:"InstanceChargeType,omitnil,omitempty" name:"InstanceChargeType"`
 
-	// 项目ID
+	// <p>项目ID</p>
 	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 本次购买几个实例，默认值为1。取值不超过10
+	// <p>本次购买几个实例，默认值为1。取值不超过10</p>
 	GoodsNum *uint64 `json:"GoodsNum,omitnil,omitempty" name:"GoodsNum"`
 
-	// sqlserver版本，目前所有支持的版本有：2008R2 (SQL Server 2008 R2 Enterprise)，2012SP3 (SQL Server 2012 Enterprise)，201202 (SQL Server 2012 Standard)，2014SP2 (SQL Server 2014 Enterprise)，201402 (SQL Server 2014 Standard)，2016SP1 (SQL Server 2016 Enterprise)，201602 (SQL Server 2016 Standard)，2017 (SQL Server 2017 Enterprise)，201702 (SQL Server 2017 Standard)，2019 (SQL Server 2019 Enterprise)，201902 (SQL Server 2019 Standard)。每个地域支持售卖的版本不同，可通过DescribeProductConfig接口来拉取每个地域可售卖的版本信息。不填，默认为版本2008R2。
+	// <p>sqlserver版本，目前所有支持的版本有：2008R2 (SQL Server 2008 R2 Enterprise)，2012SP3 (SQL Server 2012 Enterprise)，201202 (SQL Server 2012 Standard)，2014SP2 (SQL Server 2014 Enterprise)，201402 (SQL Server 2014 Standard)，2016SP1 (SQL Server 2016 Enterprise)，201602 (SQL Server 2016 Standard)，2017 (SQL Server 2017 Enterprise)，201702 (SQL Server 2017 Standard)，2019 (SQL Server 2019 Enterprise)，201902 (SQL Server 2019 Standard)。每个地域支持售卖的版本不同，可通过DescribeProductConfig接口来拉取每个地域可售卖的版本信息。不填，默认为版本2008R2。</p>
 	DBVersion *string `json:"DBVersion,omitnil,omitempty" name:"DBVersion"`
 
-	// 购买实例周期，默认取值为1，表示一个月。取值不超过48
+	// <p>购买实例周期，默认取值为1，表示一个月。取值不超过48</p>
 	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
 
-	// 安全组列表，填写形如sg-xxx的安全组ID
+	// <p>安全组列表，填写形如sg-xxx的安全组ID</p>
 	SecurityGroupList []*string `json:"SecurityGroupList,omitnil,omitempty" name:"SecurityGroupList"`
 
-	// 自动续费标志：0-正常续费  1-自动续费，默认为1自动续费。只在购买预付费实例时有效。
+	// <p>自动续费标志：0-正常续费  1-自动续费，默认为1自动续费。只在购买预付费实例时有效。</p>
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 
-	// 是否自动使用代金券；1 - 是，0 - 否，默认不使用
+	// <p>是否自动使用代金券；1 - 是，0 - 否，默认不使用</p>
 	AutoVoucher *int64 `json:"AutoVoucher,omitnil,omitempty" name:"AutoVoucher"`
 
-	// 代金券ID数组，目前单个订单只能使用一张
+	// <p>代金券ID数组，目前单个订单只能使用一张</p>
 	VoucherIds []*string `json:"VoucherIds,omitnil,omitempty" name:"VoucherIds"`
 
-	// 可维护时间窗配置，以周为单位，表示周几允许维护，1-7分别代表周一到周末
+	// <p>可维护时间窗配置，以周为单位，表示周几允许维护，1-7分别代表周一到周末</p>
 	Weekly []*int64 `json:"Weekly,omitnil,omitempty" name:"Weekly"`
 
-	// 可维护时间窗配置，每天可维护的开始时间
+	// <p>可维护时间窗配置，每天可维护的开始时间</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 可维护时间窗配置，持续时间，单位：小时
+	// <p>可维护时间窗配置，持续时间，单位：小时</p>
 	Span *int64 `json:"Span,omitnil,omitempty" name:"Span"`
 
-	// 新建实例绑定的标签集合
+	// <p>新建实例绑定的标签集合</p>
 	ResourceTags []*ResourceTag `json:"ResourceTags,omitnil,omitempty" name:"ResourceTags"`
 
-	// 系统字符集排序规则，默认：Chinese_PRC_CI_AS
+	// <p>系统字符集排序规则，默认：Chinese_PRC_CI_AS</p>
 	Collation *string `json:"Collation,omitnil,omitempty" name:"Collation"`
 
-	// 系统时区，默认：China Standard Time
+	// <p>系统时区，默认：China Standard Time</p>
 	TimeZone *string `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
 
-	// 磁盘加密标识，0-不加密，1-加密
+	// <p>磁盘加密标识，0-不加密，1-加密</p>
 	DiskEncryptFlag *int64 `json:"DiskEncryptFlag,omitnil,omitempty" name:"DiskEncryptFlag"`
+
+	// <p>额外磁盘 IO 吞吐量，仅 CLOUD_HSSD 支持</p><p>取值范围：[0, 650]</p><p>单位：MB/s</p>
+	ThroughputPerformance *uint64 `json:"ThroughputPerformance,omitnil,omitempty" name:"ThroughputPerformance"`
 }
 
 type CreateBasicDBInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例可用区，类似ap-guangzhou-1（广州一区）；实例可售卖区域可以通过接口DescribeZones获取
+	// <p>实例可用区，类似ap-guangzhou-1（广州一区）；实例可售卖区域可以通过接口DescribeZones获取</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 实例的CPU核心数
+	// <p>实例的CPU核心数</p>
 	Cpu *uint64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 
-	// 实例内存大小，单位GB
+	// <p>实例内存大小，单位GB</p>
 	Memory *uint64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
-	// 实例磁盘大小，单位GB
+	// <p>实例磁盘大小，单位GB</p>
 	Storage *uint64 `json:"Storage,omitnil,omitempty" name:"Storage"`
 
-	// VPC子网ID，形如subnet-bdoe83fa
+	// <p>VPC子网ID，形如subnet-bdoe83fa</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// VPC网络ID，形如vpc-dsp338hz
+	// <p>VPC网络ID，形如vpc-dsp338hz</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 购买实例的宿主机类型，CLOUD_PREMIUM-虚拟机高性能云硬盘，CLOUD_SSD-虚拟机SSD云硬盘,CLOUD_HSSD-虚拟机增强型SSD云硬盘，CLOUD_BSSD-虚拟机通用型SSD云盘
+	// <p>购买实例的宿主机类型，CLOUD_PREMIUM-虚拟机高性能云硬盘，CLOUD_SSD-虚拟机SSD云硬盘,CLOUD_HSSD-虚拟机增强型SSD云硬盘，CLOUD_BSSD-虚拟机通用型SSD云盘</p>
 	MachineType *string `json:"MachineType,omitnil,omitempty" name:"MachineType"`
 
-	// 付费模式，取值支持 PREPAID（预付费），POSTPAID（后付费）。
+	// <p>付费模式，取值支持 PREPAID（预付费），POSTPAID（后付费）。</p>
 	InstanceChargeType *string `json:"InstanceChargeType,omitnil,omitempty" name:"InstanceChargeType"`
 
-	// 项目ID
+	// <p>项目ID</p>
 	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 本次购买几个实例，默认值为1。取值不超过10
+	// <p>本次购买几个实例，默认值为1。取值不超过10</p>
 	GoodsNum *uint64 `json:"GoodsNum,omitnil,omitempty" name:"GoodsNum"`
 
-	// sqlserver版本，目前所有支持的版本有：2008R2 (SQL Server 2008 R2 Enterprise)，2012SP3 (SQL Server 2012 Enterprise)，201202 (SQL Server 2012 Standard)，2014SP2 (SQL Server 2014 Enterprise)，201402 (SQL Server 2014 Standard)，2016SP1 (SQL Server 2016 Enterprise)，201602 (SQL Server 2016 Standard)，2017 (SQL Server 2017 Enterprise)，201702 (SQL Server 2017 Standard)，2019 (SQL Server 2019 Enterprise)，201902 (SQL Server 2019 Standard)。每个地域支持售卖的版本不同，可通过DescribeProductConfig接口来拉取每个地域可售卖的版本信息。不填，默认为版本2008R2。
+	// <p>sqlserver版本，目前所有支持的版本有：2008R2 (SQL Server 2008 R2 Enterprise)，2012SP3 (SQL Server 2012 Enterprise)，201202 (SQL Server 2012 Standard)，2014SP2 (SQL Server 2014 Enterprise)，201402 (SQL Server 2014 Standard)，2016SP1 (SQL Server 2016 Enterprise)，201602 (SQL Server 2016 Standard)，2017 (SQL Server 2017 Enterprise)，201702 (SQL Server 2017 Standard)，2019 (SQL Server 2019 Enterprise)，201902 (SQL Server 2019 Standard)。每个地域支持售卖的版本不同，可通过DescribeProductConfig接口来拉取每个地域可售卖的版本信息。不填，默认为版本2008R2。</p>
 	DBVersion *string `json:"DBVersion,omitnil,omitempty" name:"DBVersion"`
 
-	// 购买实例周期，默认取值为1，表示一个月。取值不超过48
+	// <p>购买实例周期，默认取值为1，表示一个月。取值不超过48</p>
 	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
 
-	// 安全组列表，填写形如sg-xxx的安全组ID
+	// <p>安全组列表，填写形如sg-xxx的安全组ID</p>
 	SecurityGroupList []*string `json:"SecurityGroupList,omitnil,omitempty" name:"SecurityGroupList"`
 
-	// 自动续费标志：0-正常续费  1-自动续费，默认为1自动续费。只在购买预付费实例时有效。
+	// <p>自动续费标志：0-正常续费  1-自动续费，默认为1自动续费。只在购买预付费实例时有效。</p>
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 
-	// 是否自动使用代金券；1 - 是，0 - 否，默认不使用
+	// <p>是否自动使用代金券；1 - 是，0 - 否，默认不使用</p>
 	AutoVoucher *int64 `json:"AutoVoucher,omitnil,omitempty" name:"AutoVoucher"`
 
-	// 代金券ID数组，目前单个订单只能使用一张
+	// <p>代金券ID数组，目前单个订单只能使用一张</p>
 	VoucherIds []*string `json:"VoucherIds,omitnil,omitempty" name:"VoucherIds"`
 
-	// 可维护时间窗配置，以周为单位，表示周几允许维护，1-7分别代表周一到周末
+	// <p>可维护时间窗配置，以周为单位，表示周几允许维护，1-7分别代表周一到周末</p>
 	Weekly []*int64 `json:"Weekly,omitnil,omitempty" name:"Weekly"`
 
-	// 可维护时间窗配置，每天可维护的开始时间
+	// <p>可维护时间窗配置，每天可维护的开始时间</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 可维护时间窗配置，持续时间，单位：小时
+	// <p>可维护时间窗配置，持续时间，单位：小时</p>
 	Span *int64 `json:"Span,omitnil,omitempty" name:"Span"`
 
-	// 新建实例绑定的标签集合
+	// <p>新建实例绑定的标签集合</p>
 	ResourceTags []*ResourceTag `json:"ResourceTags,omitnil,omitempty" name:"ResourceTags"`
 
-	// 系统字符集排序规则，默认：Chinese_PRC_CI_AS
+	// <p>系统字符集排序规则，默认：Chinese_PRC_CI_AS</p>
 	Collation *string `json:"Collation,omitnil,omitempty" name:"Collation"`
 
-	// 系统时区，默认：China Standard Time
+	// <p>系统时区，默认：China Standard Time</p>
 	TimeZone *string `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
 
-	// 磁盘加密标识，0-不加密，1-加密
+	// <p>磁盘加密标识，0-不加密，1-加密</p>
 	DiskEncryptFlag *int64 `json:"DiskEncryptFlag,omitnil,omitempty" name:"DiskEncryptFlag"`
+
+	// <p>额外磁盘 IO 吞吐量，仅 CLOUD_HSSD 支持</p><p>取值范围：[0, 650]</p><p>单位：MB/s</p>
+	ThroughputPerformance *uint64 `json:"ThroughputPerformance,omitnil,omitempty" name:"ThroughputPerformance"`
 }
 
 func (r *CreateBasicDBInstancesRequest) ToJsonString() string {
@@ -1121,6 +1127,7 @@ func (r *CreateBasicDBInstancesRequest) FromJsonString(s string) error {
 	delete(f, "Collation")
 	delete(f, "TimeZone")
 	delete(f, "DiskEncryptFlag")
+	delete(f, "ThroughputPerformance")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBasicDBInstancesRequest has unknown keys!", "")
 	}
@@ -1129,7 +1136,7 @@ func (r *CreateBasicDBInstancesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateBasicDBInstancesResponseParams struct {
-	// 订单名称
+	// <p>订单名称</p>
 	DealName *string `json:"DealName,omitnil,omitempty" name:"DealName"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1393,165 +1400,177 @@ func (r *CreateBusinessIntelligenceFileResponse) FromJsonString(s string) error 
 
 // Predefined struct for user
 type CreateCloudDBInstancesRequestParams struct {
-	// 实例可用区，类似ap-guangzhou-1（广州一区）；实例可售卖区域可以通过接口DescribeZones获取
+	// <p>实例可用区，类似ap-guangzhou-1（广州一区）；实例可售卖区域可以通过接口DescribeZones获取</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 实例内存大小，单位GB
+	// <p>实例内存大小，单位GB</p>
 	Memory *int64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
-	// 实例磁盘大小，单位GB
+	// <p>实例磁盘大小，单位GB</p>
 	Storage *int64 `json:"Storage,omitnil,omitempty" name:"Storage"`
 
-	// 实例核心数
+	// <p>实例核心数</p>
 	Cpu *uint64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 
-	// 购买实例的宿主机磁盘类型,CLOUD_HSSD-虚拟机加强型SSD云盘，CLOUD_TSSD-虚拟机极速型SSD云盘，CLOUD_BSSD-虚拟机通用型SSD云盘
+	// <p>购买实例的宿主机磁盘类型,CLOUD_HSSD-虚拟机加强型SSD云盘，CLOUD_TSSD-虚拟机极速型SSD云盘，CLOUD_BSSD-虚拟机通用型SSD云盘</p>
 	MachineType *string `json:"MachineType,omitnil,omitempty" name:"MachineType"`
 
-	// 付费模式，取值支持 PREPAID（预付费），POSTPAID（后付费）。
+	// <p>付费模式，取值支持 PREPAID（预付费），POSTPAID（后付费）。</p>
 	InstanceChargeType *string `json:"InstanceChargeType,omitnil,omitempty" name:"InstanceChargeType"`
 
-	// 项目ID
+	// <p>项目ID</p>
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 本次购买几个实例，默认值为1。取值不超过10
+	// <p>本次购买几个实例，默认值为1。取值不超过10</p>
 	GoodsNum *int64 `json:"GoodsNum,omitnil,omitempty" name:"GoodsNum"`
 
-	// VPC子网ID，形如subnet-bdoe83fa；SubnetId和VpcId需同时设置或者同时不设置
+	// <p>VPC子网ID，形如subnet-bdoe83fa；SubnetId和VpcId需同时设置或者同时不设置</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// VPC网络ID，形如vpc-dsp338hz；SubnetId和VpcId需同时设置或者同时不设置
+	// <p>VPC网络ID，形如vpc-dsp338hz；SubnetId和VpcId需同时设置或者同时不设置</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 购买实例周期，默认取值为1，表示一个月。取值不超过48
+	// <p>购买实例周期，默认取值为1，表示一个月。取值不超过48</p>
 	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
 
-	// 是否自动使用代金券；1 - 是，0 - 否，默认不使用
+	// <p>是否自动使用代金券；1 - 是，0 - 否，默认不使用</p>
 	AutoVoucher *int64 `json:"AutoVoucher,omitnil,omitempty" name:"AutoVoucher"`
 
-	// 代金券ID数组，目前单个订单只能使用一张
+	// <p>代金券ID数组，目前单个订单只能使用一张</p>
 	VoucherIds []*string `json:"VoucherIds,omitnil,omitempty" name:"VoucherIds"`
 
-	// sqlserver版本，目前所有支持的版本有：2008R2 (SQL Server 2008 R2 Enterprise)，2012SP3 (SQL Server 2012 Enterprise)，201202 (SQL Server 2012 Standard)，2014SP2 (SQL Server 2014 Enterprise)，201402 (SQL Server 2014 Standard)，2016SP1 (SQL Server 2016 Enterprise)，201602 (SQL Server 2016 Standard)，2017 (SQL Server 2017 Enterprise)，201702 (SQL Server 2017 Standard)，2019 (SQL Server 2019 Enterprise)，201902 (SQL Server 2019 Standard)。每个地域支持售卖的版本不同，可通过DescribeProductConfig接口来拉取每个地域可售卖的版本信息。不填，默认为版本2008R2。
+	// <p>sqlserver版本，目前所有支持的版本有：2008R2 (SQL Server 2008 R2 Enterprise)，2012SP3 (SQL Server 2012 Enterprise)，201202 (SQL Server 2012 Standard)，2014SP2 (SQL Server 2014 Enterprise)，201402 (SQL Server 2014 Standard)，2016SP1 (SQL Server 2016 Enterprise)，201602 (SQL Server 2016 Standard)，2017 (SQL Server 2017 Enterprise)，201702 (SQL Server 2017 Standard)，2019 (SQL Server 2019 Enterprise)，201902 (SQL Server 2019 Standard)。每个地域支持售卖的版本不同，可通过DescribeProductConfig接口来拉取每个地域可售卖的版本信息。不填，默认为版本2017。</p>
 	DBVersion *string `json:"DBVersion,omitnil,omitempty" name:"DBVersion"`
 
-	// 自动续费标志：0-正常续费  1-自动续费，默认为1自动续费。只在购买预付费实例时有效。
+	// <p>自动续费标志：0-正常续费  1-自动续费，默认为1自动续费。只在购买预付费实例时有效。</p>
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 
-	// 安全组列表，填写形如sg-xxx的安全组ID
+	// <p>安全组列表，填写形如sg-xxx的安全组ID</p>
 	SecurityGroupList []*string `json:"SecurityGroupList,omitnil,omitempty" name:"SecurityGroupList"`
 
-	// 可维护时间窗配置，以周为单位，表示周几允许维护，1-7分别代表周一到周末
+	// <p>可维护时间窗配置，以周为单位，表示周几允许维护，1-7分别代表周一到周末</p>
 	Weekly []*int64 `json:"Weekly,omitnil,omitempty" name:"Weekly"`
 
-	// 可维护时间窗配置，每天可维护的开始时间
+	// <p>可维护时间窗配置，每天可维护的开始时间</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 可维护时间窗配置，持续时间，单位：小时
+	// <p>可维护时间窗配置，持续时间，单位：小时</p>
 	Span *int64 `json:"Span,omitnil,omitempty" name:"Span"`
 
-	// 是否跨可用区部署，默认值为false
+	// <p>是否跨可用区部署，默认值为false</p>
 	MultiZones *bool `json:"MultiZones,omitnil,omitempty" name:"MultiZones"`
 
-	// 新建实例绑定的标签集合
+	// <p>新建实例绑定的标签集合</p>
 	ResourceTags []*ResourceTag `json:"ResourceTags,omitnil,omitempty" name:"ResourceTags"`
 
-	// 系统字符集排序规则，默认：Chinese_PRC_CI_AS
+	// <p>系统字符集排序规则，默认：Chinese_PRC_CI_AS</p>
 	Collation *string `json:"Collation,omitnil,omitempty" name:"Collation"`
 
-	// 系统时区，默认：China Standard Time
+	// <p>系统时区，默认：China Standard Time</p>
 	TimeZone *string `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
 
-	// 是否多节点架构实例，默认值为false。当MultiNodes = true时，参数MultiZones必须取值为true。
+	// <p>是否多节点架构实例，默认值为false。当MultiNodes = true时，参数MultiZones必须取值为true。</p>
 	MultiNodes *bool `json:"MultiNodes,omitnil,omitempty" name:"MultiNodes"`
 
-	// 备节点可用区，默认为空。当MultiNodes = true时，主节点和备节点可用区不能全部相同。备机可用区集合最小为2个，最大不超过5个。
+	// <p>备节点可用区，默认为空。当MultiNodes = true时，主节点和备节点可用区不能全部相同。备机可用区集合最小为2个，最大不超过5个。</p>
 	DrZones []*string `json:"DrZones,omitnil,omitempty" name:"DrZones"`
 
-	// 磁盘加密标识，0-不加密，1-加密
+	// <p>磁盘加密标识，0-不加密，1-加密</p>
 	DiskEncryptFlag *int64 `json:"DiskEncryptFlag,omitnil,omitempty" name:"DiskEncryptFlag"`
+
+	// <p>额外磁盘 IO 性能，仅 CLOUD_HSSD 支持</p><p>取值范围：[0, 650]</p><p>单位：MB/s</p>
+	ThroughputPerformance *uint64 `json:"ThroughputPerformance,omitnil,omitempty" name:"ThroughputPerformance"`
+
+	// <p>可用性策略</p><p>枚举值：</p><ul><li>Async： 可用性优先（异步传输）</li><li>Sync： 可靠性优先（同步传输）</li></ul><p>默认值：Async</p><p>仅 AlwaysOn 双节点架构生效，单节点/多节点/MIRROR 架构忽略此参数</p>
+	AvailabilityStrategy *string `json:"AvailabilityStrategy,omitnil,omitempty" name:"AvailabilityStrategy"`
 }
 
 type CreateCloudDBInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例可用区，类似ap-guangzhou-1（广州一区）；实例可售卖区域可以通过接口DescribeZones获取
+	// <p>实例可用区，类似ap-guangzhou-1（广州一区）；实例可售卖区域可以通过接口DescribeZones获取</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 实例内存大小，单位GB
+	// <p>实例内存大小，单位GB</p>
 	Memory *int64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
-	// 实例磁盘大小，单位GB
+	// <p>实例磁盘大小，单位GB</p>
 	Storage *int64 `json:"Storage,omitnil,omitempty" name:"Storage"`
 
-	// 实例核心数
+	// <p>实例核心数</p>
 	Cpu *uint64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 
-	// 购买实例的宿主机磁盘类型,CLOUD_HSSD-虚拟机加强型SSD云盘，CLOUD_TSSD-虚拟机极速型SSD云盘，CLOUD_BSSD-虚拟机通用型SSD云盘
+	// <p>购买实例的宿主机磁盘类型,CLOUD_HSSD-虚拟机加强型SSD云盘，CLOUD_TSSD-虚拟机极速型SSD云盘，CLOUD_BSSD-虚拟机通用型SSD云盘</p>
 	MachineType *string `json:"MachineType,omitnil,omitempty" name:"MachineType"`
 
-	// 付费模式，取值支持 PREPAID（预付费），POSTPAID（后付费）。
+	// <p>付费模式，取值支持 PREPAID（预付费），POSTPAID（后付费）。</p>
 	InstanceChargeType *string `json:"InstanceChargeType,omitnil,omitempty" name:"InstanceChargeType"`
 
-	// 项目ID
+	// <p>项目ID</p>
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 本次购买几个实例，默认值为1。取值不超过10
+	// <p>本次购买几个实例，默认值为1。取值不超过10</p>
 	GoodsNum *int64 `json:"GoodsNum,omitnil,omitempty" name:"GoodsNum"`
 
-	// VPC子网ID，形如subnet-bdoe83fa；SubnetId和VpcId需同时设置或者同时不设置
+	// <p>VPC子网ID，形如subnet-bdoe83fa；SubnetId和VpcId需同时设置或者同时不设置</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// VPC网络ID，形如vpc-dsp338hz；SubnetId和VpcId需同时设置或者同时不设置
+	// <p>VPC网络ID，形如vpc-dsp338hz；SubnetId和VpcId需同时设置或者同时不设置</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 购买实例周期，默认取值为1，表示一个月。取值不超过48
+	// <p>购买实例周期，默认取值为1，表示一个月。取值不超过48</p>
 	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
 
-	// 是否自动使用代金券；1 - 是，0 - 否，默认不使用
+	// <p>是否自动使用代金券；1 - 是，0 - 否，默认不使用</p>
 	AutoVoucher *int64 `json:"AutoVoucher,omitnil,omitempty" name:"AutoVoucher"`
 
-	// 代金券ID数组，目前单个订单只能使用一张
+	// <p>代金券ID数组，目前单个订单只能使用一张</p>
 	VoucherIds []*string `json:"VoucherIds,omitnil,omitempty" name:"VoucherIds"`
 
-	// sqlserver版本，目前所有支持的版本有：2008R2 (SQL Server 2008 R2 Enterprise)，2012SP3 (SQL Server 2012 Enterprise)，201202 (SQL Server 2012 Standard)，2014SP2 (SQL Server 2014 Enterprise)，201402 (SQL Server 2014 Standard)，2016SP1 (SQL Server 2016 Enterprise)，201602 (SQL Server 2016 Standard)，2017 (SQL Server 2017 Enterprise)，201702 (SQL Server 2017 Standard)，2019 (SQL Server 2019 Enterprise)，201902 (SQL Server 2019 Standard)。每个地域支持售卖的版本不同，可通过DescribeProductConfig接口来拉取每个地域可售卖的版本信息。不填，默认为版本2008R2。
+	// <p>sqlserver版本，目前所有支持的版本有：2008R2 (SQL Server 2008 R2 Enterprise)，2012SP3 (SQL Server 2012 Enterprise)，201202 (SQL Server 2012 Standard)，2014SP2 (SQL Server 2014 Enterprise)，201402 (SQL Server 2014 Standard)，2016SP1 (SQL Server 2016 Enterprise)，201602 (SQL Server 2016 Standard)，2017 (SQL Server 2017 Enterprise)，201702 (SQL Server 2017 Standard)，2019 (SQL Server 2019 Enterprise)，201902 (SQL Server 2019 Standard)。每个地域支持售卖的版本不同，可通过DescribeProductConfig接口来拉取每个地域可售卖的版本信息。不填，默认为版本2017。</p>
 	DBVersion *string `json:"DBVersion,omitnil,omitempty" name:"DBVersion"`
 
-	// 自动续费标志：0-正常续费  1-自动续费，默认为1自动续费。只在购买预付费实例时有效。
+	// <p>自动续费标志：0-正常续费  1-自动续费，默认为1自动续费。只在购买预付费实例时有效。</p>
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 
-	// 安全组列表，填写形如sg-xxx的安全组ID
+	// <p>安全组列表，填写形如sg-xxx的安全组ID</p>
 	SecurityGroupList []*string `json:"SecurityGroupList,omitnil,omitempty" name:"SecurityGroupList"`
 
-	// 可维护时间窗配置，以周为单位，表示周几允许维护，1-7分别代表周一到周末
+	// <p>可维护时间窗配置，以周为单位，表示周几允许维护，1-7分别代表周一到周末</p>
 	Weekly []*int64 `json:"Weekly,omitnil,omitempty" name:"Weekly"`
 
-	// 可维护时间窗配置，每天可维护的开始时间
+	// <p>可维护时间窗配置，每天可维护的开始时间</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 可维护时间窗配置，持续时间，单位：小时
+	// <p>可维护时间窗配置，持续时间，单位：小时</p>
 	Span *int64 `json:"Span,omitnil,omitempty" name:"Span"`
 
-	// 是否跨可用区部署，默认值为false
+	// <p>是否跨可用区部署，默认值为false</p>
 	MultiZones *bool `json:"MultiZones,omitnil,omitempty" name:"MultiZones"`
 
-	// 新建实例绑定的标签集合
+	// <p>新建实例绑定的标签集合</p>
 	ResourceTags []*ResourceTag `json:"ResourceTags,omitnil,omitempty" name:"ResourceTags"`
 
-	// 系统字符集排序规则，默认：Chinese_PRC_CI_AS
+	// <p>系统字符集排序规则，默认：Chinese_PRC_CI_AS</p>
 	Collation *string `json:"Collation,omitnil,omitempty" name:"Collation"`
 
-	// 系统时区，默认：China Standard Time
+	// <p>系统时区，默认：China Standard Time</p>
 	TimeZone *string `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
 
-	// 是否多节点架构实例，默认值为false。当MultiNodes = true时，参数MultiZones必须取值为true。
+	// <p>是否多节点架构实例，默认值为false。当MultiNodes = true时，参数MultiZones必须取值为true。</p>
 	MultiNodes *bool `json:"MultiNodes,omitnil,omitempty" name:"MultiNodes"`
 
-	// 备节点可用区，默认为空。当MultiNodes = true时，主节点和备节点可用区不能全部相同。备机可用区集合最小为2个，最大不超过5个。
+	// <p>备节点可用区，默认为空。当MultiNodes = true时，主节点和备节点可用区不能全部相同。备机可用区集合最小为2个，最大不超过5个。</p>
 	DrZones []*string `json:"DrZones,omitnil,omitempty" name:"DrZones"`
 
-	// 磁盘加密标识，0-不加密，1-加密
+	// <p>磁盘加密标识，0-不加密，1-加密</p>
 	DiskEncryptFlag *int64 `json:"DiskEncryptFlag,omitnil,omitempty" name:"DiskEncryptFlag"`
+
+	// <p>额外磁盘 IO 性能，仅 CLOUD_HSSD 支持</p><p>取值范围：[0, 650]</p><p>单位：MB/s</p>
+	ThroughputPerformance *uint64 `json:"ThroughputPerformance,omitnil,omitempty" name:"ThroughputPerformance"`
+
+	// <p>可用性策略</p><p>枚举值：</p><ul><li>Async： 可用性优先（异步传输）</li><li>Sync： 可靠性优先（同步传输）</li></ul><p>默认值：Async</p><p>仅 AlwaysOn 双节点架构生效，单节点/多节点/MIRROR 架构忽略此参数</p>
+	AvailabilityStrategy *string `json:"AvailabilityStrategy,omitnil,omitempty" name:"AvailabilityStrategy"`
 }
 
 func (r *CreateCloudDBInstancesRequest) ToJsonString() string {
@@ -1592,6 +1611,8 @@ func (r *CreateCloudDBInstancesRequest) FromJsonString(s string) error {
 	delete(f, "MultiNodes")
 	delete(f, "DrZones")
 	delete(f, "DiskEncryptFlag")
+	delete(f, "ThroughputPerformance")
+	delete(f, "AvailabilityStrategy")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCloudDBInstancesRequest has unknown keys!", "")
 	}
@@ -1600,7 +1621,7 @@ func (r *CreateCloudDBInstancesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateCloudDBInstancesResponseParams struct {
-	// 订单名称
+	// <p>订单名称</p>
 	DealName *string `json:"DealName,omitnil,omitempty" name:"DealName"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1625,159 +1646,165 @@ func (r *CreateCloudDBInstancesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateCloudReadOnlyDBInstancesRequestParams struct {
-	// 主实例ID，格式如：mssql-3l3fgqn7
+	// <p>主实例ID，格式如：mssql-3l3fgqn7</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 实例可用区，类似ap-guangzhou-1（广州一区）；实例可售卖区域可以通过接口DescribeZones获取
+	// <p>实例可用区，类似ap-guangzhou-1（广州一区）；实例可售卖区域可以通过接口DescribeZones获取</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 只读组类型选项，1-按照一个实例一个只读组的方式发货，2-新建只读组后发货，所有实例都在这个只读组下面， 3-发货的所有实例都在已有的只读组下面
+	// <p>只读组类型选项，1-按照一个实例一个只读组的方式发货，2-新建只读组后发货，所有实例都在这个只读组下面， 3-发货的所有实例都在已有的只读组下面</p>
 	ReadOnlyGroupType *int64 `json:"ReadOnlyGroupType,omitnil,omitempty" name:"ReadOnlyGroupType"`
 
-	// 实例内存大小，单位GB
+	// <p>实例内存大小，单位GB</p>
 	Memory *int64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
-	// 实例磁盘大小，单位GB
+	// <p>实例磁盘大小，单位GB</p>
 	Storage *int64 `json:"Storage,omitnil,omitempty" name:"Storage"`
 
-	// 实例核心数
+	// <p>实例核心数</p>
 	Cpu *uint64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 
-	// 购买实例的宿主机磁盘类型,CLOUD_HSSD-虚拟机加强型SSD云盘，CLOUD_TSSD-虚拟机极速型SSD云盘，CLOUD_BSSD-虚拟机通用型SSD云盘
+	// <p>购买实例的宿主机磁盘类型,CLOUD_HSSD-虚拟机加强型SSD云盘，CLOUD_TSSD-虚拟机极速型SSD云盘，CLOUD_BSSD-虚拟机通用型SSD云盘</p>
 	MachineType *string `json:"MachineType,omitnil,omitempty" name:"MachineType"`
 
-	// 0-默认不升级主实例，1-强制升级主实例完成ro部署；主实例为非集群版时需要填1，强制升级为集群版。填1 说明您已同意将主实例升级到集群版实例。
+	// <p>0-默认不升级主实例，1-强制升级主实例完成ro部署；主实例为非集群版时需要填1，强制升级为集群版。填1 说明您已同意将主实例升级到集群版实例。</p>
 	ReadOnlyGroupForcedUpgrade *int64 `json:"ReadOnlyGroupForcedUpgrade,omitnil,omitempty" name:"ReadOnlyGroupForcedUpgrade"`
 
-	// ReadOnlyGroupType=3时必填,已存在的只读组ID
+	// <p>ReadOnlyGroupType=3时必填,已存在的只读组ID</p>
 	ReadOnlyGroupId *string `json:"ReadOnlyGroupId,omitnil,omitempty" name:"ReadOnlyGroupId"`
 
-	// ReadOnlyGroupType=2时必填，新建的只读组名称
+	// <p>ReadOnlyGroupType=2时必填，新建的只读组名称</p>
 	ReadOnlyGroupName *string `json:"ReadOnlyGroupName,omitnil,omitempty" name:"ReadOnlyGroupName"`
 
-	// ReadOnlyGroupType=2时必填，新建的只读组是否开启延迟剔除功能，1-开启，0-关闭。当只读副本与主实例延迟大于阈值后，自动剔除。
+	// <p>ReadOnlyGroupType=2时必填，新建的只读组是否开启延迟剔除功能，1-开启，0-关闭。当只读副本与主实例延迟大于阈值后，自动剔除。</p>
 	ReadOnlyGroupIsOfflineDelay *int64 `json:"ReadOnlyGroupIsOfflineDelay,omitnil,omitempty" name:"ReadOnlyGroupIsOfflineDelay"`
 
-	// ReadOnlyGroupType=2 且 ReadOnlyGroupIsOfflineDelay=1时必填，新建的只读组延迟剔除的阈值。
+	// <p>ReadOnlyGroupType=2 且 ReadOnlyGroupIsOfflineDelay=1时必填，新建的只读组延迟剔除的阈值。</p>
 	ReadOnlyGroupMaxDelayTime *int64 `json:"ReadOnlyGroupMaxDelayTime,omitnil,omitempty" name:"ReadOnlyGroupMaxDelayTime"`
 
-	// ReadOnlyGroupType=2 且 ReadOnlyGroupIsOfflineDelay=1时必填，新建的只读组延迟剔除后至少保留只读副本的个数。
+	// <p>ReadOnlyGroupType=2 且 ReadOnlyGroupIsOfflineDelay=1时必填，新建的只读组延迟剔除后至少保留只读副本的个数。</p>
 	ReadOnlyGroupMinInGroup *int64 `json:"ReadOnlyGroupMinInGroup,omitnil,omitempty" name:"ReadOnlyGroupMinInGroup"`
 
-	// 付费模式，取值支持 PREPAID（预付费），POSTPAID（后付费）。
+	// <p>付费模式，取值支持 PREPAID（预付费），POSTPAID（后付费）。</p>
 	InstanceChargeType *string `json:"InstanceChargeType,omitnil,omitempty" name:"InstanceChargeType"`
 
-	// 本次即将购买的实例数量，默认取值2。
+	// <p>本次即将购买的实例数量，默认取值2。</p>
 	GoodsNum *int64 `json:"GoodsNum,omitnil,omitempty" name:"GoodsNum"`
 
-	// VPC子网ID，形如subnet-bdoe83fa；SubnetId和VpcId需同时设置或者同时不设置
+	// <p>VPC子网ID，形如subnet-bdoe83fa；SubnetId和VpcId需同时设置或者同时不设置</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// VPC网络ID，形如vpc-dsp338hz；SubnetId和VpcId需同时设置或者同时不设置
+	// <p>VPC网络ID，形如vpc-dsp338hz；SubnetId和VpcId需同时设置或者同时不设置</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 购买实例周期，默认取值为1，表示一个月。取值不超过48
+	// <p>购买实例周期，默认取值为1，表示一个月。取值不超过48</p>
 	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
 
-	// 安全组列表，填写形如sg-xxx的安全组ID
+	// <p>安全组列表，填写形如sg-xxx的安全组ID</p>
 	SecurityGroupList []*string `json:"SecurityGroupList,omitnil,omitempty" name:"SecurityGroupList"`
 
-	// 是否自动使用代金券；1 - 是，0 - 否，默认不使用
+	// <p>是否自动使用代金券；1 - 是，0 - 否，默认不使用</p>
 	AutoVoucher *int64 `json:"AutoVoucher,omitnil,omitempty" name:"AutoVoucher"`
 
-	// 代金券ID数组，目前单个订单只能使用一张
+	// <p>代金券ID数组，目前单个订单只能使用一张</p>
 	VoucherIds []*string `json:"VoucherIds,omitnil,omitempty" name:"VoucherIds"`
 
-	// 新建实例绑定的标签集合
+	// <p>新建实例绑定的标签集合</p>
 	ResourceTags []*ResourceTag `json:"ResourceTags,omitnil,omitempty" name:"ResourceTags"`
 
-	// 系统字符集排序规则，默认：Chinese_PRC_CI_AS
+	// <p>系统字符集排序规则，默认：Chinese_PRC_CI_AS</p>
 	Collation *string `json:"Collation,omitnil,omitempty" name:"Collation"`
 
-	// 系统时区，默认：China Standard Time
+	// <p>系统时区，默认：China Standard Time</p>
 	TimeZone *string `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
 
-	// 磁盘加密标识，0-不加密，1-加密
+	// <p>磁盘加密标识，0-不加密，1-加密</p>
 	DiskEncryptFlag *int64 `json:"DiskEncryptFlag,omitnil,omitempty" name:"DiskEncryptFlag"`
+
+	// <p>额外磁盘 IO 吞吐量，仅 CLOUD_HSSD 支持</p><p>取值范围：[0, 650]</p><p>单位：MB/s</p>
+	ThroughputPerformance *uint64 `json:"ThroughputPerformance,omitnil,omitempty" name:"ThroughputPerformance"`
 }
 
 type CreateCloudReadOnlyDBInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 主实例ID，格式如：mssql-3l3fgqn7
+	// <p>主实例ID，格式如：mssql-3l3fgqn7</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 实例可用区，类似ap-guangzhou-1（广州一区）；实例可售卖区域可以通过接口DescribeZones获取
+	// <p>实例可用区，类似ap-guangzhou-1（广州一区）；实例可售卖区域可以通过接口DescribeZones获取</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 只读组类型选项，1-按照一个实例一个只读组的方式发货，2-新建只读组后发货，所有实例都在这个只读组下面， 3-发货的所有实例都在已有的只读组下面
+	// <p>只读组类型选项，1-按照一个实例一个只读组的方式发货，2-新建只读组后发货，所有实例都在这个只读组下面， 3-发货的所有实例都在已有的只读组下面</p>
 	ReadOnlyGroupType *int64 `json:"ReadOnlyGroupType,omitnil,omitempty" name:"ReadOnlyGroupType"`
 
-	// 实例内存大小，单位GB
+	// <p>实例内存大小，单位GB</p>
 	Memory *int64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
-	// 实例磁盘大小，单位GB
+	// <p>实例磁盘大小，单位GB</p>
 	Storage *int64 `json:"Storage,omitnil,omitempty" name:"Storage"`
 
-	// 实例核心数
+	// <p>实例核心数</p>
 	Cpu *uint64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 
-	// 购买实例的宿主机磁盘类型,CLOUD_HSSD-虚拟机加强型SSD云盘，CLOUD_TSSD-虚拟机极速型SSD云盘，CLOUD_BSSD-虚拟机通用型SSD云盘
+	// <p>购买实例的宿主机磁盘类型,CLOUD_HSSD-虚拟机加强型SSD云盘，CLOUD_TSSD-虚拟机极速型SSD云盘，CLOUD_BSSD-虚拟机通用型SSD云盘</p>
 	MachineType *string `json:"MachineType,omitnil,omitempty" name:"MachineType"`
 
-	// 0-默认不升级主实例，1-强制升级主实例完成ro部署；主实例为非集群版时需要填1，强制升级为集群版。填1 说明您已同意将主实例升级到集群版实例。
+	// <p>0-默认不升级主实例，1-强制升级主实例完成ro部署；主实例为非集群版时需要填1，强制升级为集群版。填1 说明您已同意将主实例升级到集群版实例。</p>
 	ReadOnlyGroupForcedUpgrade *int64 `json:"ReadOnlyGroupForcedUpgrade,omitnil,omitempty" name:"ReadOnlyGroupForcedUpgrade"`
 
-	// ReadOnlyGroupType=3时必填,已存在的只读组ID
+	// <p>ReadOnlyGroupType=3时必填,已存在的只读组ID</p>
 	ReadOnlyGroupId *string `json:"ReadOnlyGroupId,omitnil,omitempty" name:"ReadOnlyGroupId"`
 
-	// ReadOnlyGroupType=2时必填，新建的只读组名称
+	// <p>ReadOnlyGroupType=2时必填，新建的只读组名称</p>
 	ReadOnlyGroupName *string `json:"ReadOnlyGroupName,omitnil,omitempty" name:"ReadOnlyGroupName"`
 
-	// ReadOnlyGroupType=2时必填，新建的只读组是否开启延迟剔除功能，1-开启，0-关闭。当只读副本与主实例延迟大于阈值后，自动剔除。
+	// <p>ReadOnlyGroupType=2时必填，新建的只读组是否开启延迟剔除功能，1-开启，0-关闭。当只读副本与主实例延迟大于阈值后，自动剔除。</p>
 	ReadOnlyGroupIsOfflineDelay *int64 `json:"ReadOnlyGroupIsOfflineDelay,omitnil,omitempty" name:"ReadOnlyGroupIsOfflineDelay"`
 
-	// ReadOnlyGroupType=2 且 ReadOnlyGroupIsOfflineDelay=1时必填，新建的只读组延迟剔除的阈值。
+	// <p>ReadOnlyGroupType=2 且 ReadOnlyGroupIsOfflineDelay=1时必填，新建的只读组延迟剔除的阈值。</p>
 	ReadOnlyGroupMaxDelayTime *int64 `json:"ReadOnlyGroupMaxDelayTime,omitnil,omitempty" name:"ReadOnlyGroupMaxDelayTime"`
 
-	// ReadOnlyGroupType=2 且 ReadOnlyGroupIsOfflineDelay=1时必填，新建的只读组延迟剔除后至少保留只读副本的个数。
+	// <p>ReadOnlyGroupType=2 且 ReadOnlyGroupIsOfflineDelay=1时必填，新建的只读组延迟剔除后至少保留只读副本的个数。</p>
 	ReadOnlyGroupMinInGroup *int64 `json:"ReadOnlyGroupMinInGroup,omitnil,omitempty" name:"ReadOnlyGroupMinInGroup"`
 
-	// 付费模式，取值支持 PREPAID（预付费），POSTPAID（后付费）。
+	// <p>付费模式，取值支持 PREPAID（预付费），POSTPAID（后付费）。</p>
 	InstanceChargeType *string `json:"InstanceChargeType,omitnil,omitempty" name:"InstanceChargeType"`
 
-	// 本次即将购买的实例数量，默认取值2。
+	// <p>本次即将购买的实例数量，默认取值2。</p>
 	GoodsNum *int64 `json:"GoodsNum,omitnil,omitempty" name:"GoodsNum"`
 
-	// VPC子网ID，形如subnet-bdoe83fa；SubnetId和VpcId需同时设置或者同时不设置
+	// <p>VPC子网ID，形如subnet-bdoe83fa；SubnetId和VpcId需同时设置或者同时不设置</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// VPC网络ID，形如vpc-dsp338hz；SubnetId和VpcId需同时设置或者同时不设置
+	// <p>VPC网络ID，形如vpc-dsp338hz；SubnetId和VpcId需同时设置或者同时不设置</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 购买实例周期，默认取值为1，表示一个月。取值不超过48
+	// <p>购买实例周期，默认取值为1，表示一个月。取值不超过48</p>
 	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
 
-	// 安全组列表，填写形如sg-xxx的安全组ID
+	// <p>安全组列表，填写形如sg-xxx的安全组ID</p>
 	SecurityGroupList []*string `json:"SecurityGroupList,omitnil,omitempty" name:"SecurityGroupList"`
 
-	// 是否自动使用代金券；1 - 是，0 - 否，默认不使用
+	// <p>是否自动使用代金券；1 - 是，0 - 否，默认不使用</p>
 	AutoVoucher *int64 `json:"AutoVoucher,omitnil,omitempty" name:"AutoVoucher"`
 
-	// 代金券ID数组，目前单个订单只能使用一张
+	// <p>代金券ID数组，目前单个订单只能使用一张</p>
 	VoucherIds []*string `json:"VoucherIds,omitnil,omitempty" name:"VoucherIds"`
 
-	// 新建实例绑定的标签集合
+	// <p>新建实例绑定的标签集合</p>
 	ResourceTags []*ResourceTag `json:"ResourceTags,omitnil,omitempty" name:"ResourceTags"`
 
-	// 系统字符集排序规则，默认：Chinese_PRC_CI_AS
+	// <p>系统字符集排序规则，默认：Chinese_PRC_CI_AS</p>
 	Collation *string `json:"Collation,omitnil,omitempty" name:"Collation"`
 
-	// 系统时区，默认：China Standard Time
+	// <p>系统时区，默认：China Standard Time</p>
 	TimeZone *string `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
 
-	// 磁盘加密标识，0-不加密，1-加密
+	// <p>磁盘加密标识，0-不加密，1-加密</p>
 	DiskEncryptFlag *int64 `json:"DiskEncryptFlag,omitnil,omitempty" name:"DiskEncryptFlag"`
+
+	// <p>额外磁盘 IO 吞吐量，仅 CLOUD_HSSD 支持</p><p>取值范围：[0, 650]</p><p>单位：MB/s</p>
+	ThroughputPerformance *uint64 `json:"ThroughputPerformance,omitnil,omitempty" name:"ThroughputPerformance"`
 }
 
 func (r *CreateCloudReadOnlyDBInstancesRequest) ToJsonString() string {
@@ -1817,6 +1844,7 @@ func (r *CreateCloudReadOnlyDBInstancesRequest) FromJsonString(s string) error {
 	delete(f, "Collation")
 	delete(f, "TimeZone")
 	delete(f, "DiskEncryptFlag")
+	delete(f, "ThroughputPerformance")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCloudReadOnlyDBInstancesRequest has unknown keys!", "")
 	}
@@ -1825,7 +1853,7 @@ func (r *CreateCloudReadOnlyDBInstancesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateCloudReadOnlyDBInstancesResponseParams struct {
-	// 订单名称数组
+	// <p>订单名称数组</p>
 	DealNames []*string `json:"DealNames,omitnil,omitempty" name:"DealNames"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1850,153 +1878,159 @@ func (r *CreateCloudReadOnlyDBInstancesResponse) FromJsonString(s string) error 
 
 // Predefined struct for user
 type CreateDBInstancesRequestParams struct {
-	// 实例可用区，类似ap-guangzhou-1（广州一区）；实例可售卖区域可以通过接口DescribeZones获取
+	// <p>实例可用区，类似ap-guangzhou-1（广州一区）；实例可售卖区域可以通过接口DescribeZones获取</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 实例内存大小，单位GB
+	// <p>实例内存大小，单位GB</p>
 	Memory *int64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
-	// 实例磁盘大小，单位GB
+	// <p>实例磁盘大小，单位GB</p>
 	Storage *int64 `json:"Storage,omitnil,omitempty" name:"Storage"`
 
-	// 付费模式，取值支持 PREPAID（预付费），POSTPAID（后付费）。
+	// <p>付费模式，取值支持 PREPAID（预付费），POSTPAID（后付费）。</p>
 	InstanceChargeType *string `json:"InstanceChargeType,omitnil,omitempty" name:"InstanceChargeType"`
 
-	// 项目ID
+	// <p>项目ID</p>
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 本次购买几个实例，默认值为1。取值不超过10
+	// <p>本次购买几个实例，默认值为1。取值不超过10</p>
 	GoodsNum *int64 `json:"GoodsNum,omitnil,omitempty" name:"GoodsNum"`
 
-	// VPC子网ID，形如subnet-bdoe83fa；SubnetId和VpcId需同时设置或者同时不设置
+	// <p>VPC子网ID，形如subnet-bdoe83fa；SubnetId和VpcId需同时设置或者同时不设置</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// VPC网络ID，形如vpc-dsp338hz；SubnetId和VpcId需同时设置或者同时不设置
+	// <p>VPC网络ID，形如vpc-dsp338hz；SubnetId和VpcId需同时设置或者同时不设置</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 购买实例周期，默认取值为1，表示一个月。取值不超过48
+	// <p>购买实例周期，默认取值为1，表示一个月。取值不超过48</p>
 	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
 
-	// 是否自动使用代金券；1 - 是，0 - 否，默认不使用
+	// <p>是否自动使用代金券；1 - 是，0 - 否，默认不使用</p>
 	AutoVoucher *int64 `json:"AutoVoucher,omitnil,omitempty" name:"AutoVoucher"`
 
-	// 代金券ID数组，目前单个订单只能使用一张
+	// <p>代金券ID数组，目前单个订单只能使用一张</p>
 	VoucherIds []*string `json:"VoucherIds,omitnil,omitempty" name:"VoucherIds"`
 
-	// sqlserver版本，目前所有支持的版本有：2008R2 (SQL Server 2008 R2 Enterprise)，2012SP3 (SQL Server 2012 Enterprise)，201202 (SQL Server 2012 Standard)，2014SP2 (SQL Server 2014 Enterprise)，201402 (SQL Server 2014 Standard)，2016SP1 (SQL Server 2016 Enterprise)，201602 (SQL Server 2016 Standard)，2017 (SQL Server 2017 Enterprise)，201702 (SQL Server 2017 Standard)，2019 (SQL Server 2019 Enterprise)，201902 (SQL Server 2019 Standard)。每个地域支持售卖的版本不同，可通过DescribeProductConfig接口来拉取每个地域可售卖的版本信息。不填，默认为版本2008R2。
+	// <p>sqlserver版本，目前所有支持的版本有：2008R2 (SQL Server 2008 R2 Enterprise)，2012SP3 (SQL Server 2012 Enterprise)，201202 (SQL Server 2012 Standard)，2014SP2 (SQL Server 2014 Enterprise)，201402 (SQL Server 2014 Standard)，2016SP1 (SQL Server 2016 Enterprise)，201602 (SQL Server 2016 Standard)，2017 (SQL Server 2017 Enterprise)，201702 (SQL Server 2017 Standard)，2019 (SQL Server 2019 Enterprise)，201902 (SQL Server 2019 Standard)。每个地域支持售卖的版本不同，可通过DescribeProductConfig接口来拉取每个地域可售卖的版本信息。不填，默认为版本2008R2。</p>
 	DBVersion *string `json:"DBVersion,omitnil,omitempty" name:"DBVersion"`
 
-	// 自动续费标志：0-正常续费  1-自动续费，默认为1自动续费。只在购买预付费实例时有效。
+	// <p>自动续费标志：0-正常续费  1-自动续费，默认为1自动续费。只在购买预付费实例时有效。</p>
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 
-	// 安全组列表，填写形如sg-xxx的安全组ID
+	// <p>安全组列表，填写形如sg-xxx的安全组ID</p>
 	SecurityGroupList []*string `json:"SecurityGroupList,omitnil,omitempty" name:"SecurityGroupList"`
 
-	// 可维护时间窗配置，以周为单位，表示周几允许维护，1-7分别代表周一到周末
+	// <p>可维护时间窗配置，以周为单位，表示周几允许维护，1-7分别代表周一到周末</p>
 	Weekly []*int64 `json:"Weekly,omitnil,omitempty" name:"Weekly"`
 
-	// 可维护时间窗配置，每天可维护的开始时间
+	// <p>可维护时间窗配置，每天可维护的开始时间</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 可维护时间窗配置，持续时间，单位：小时
+	// <p>可维护时间窗配置，持续时间，单位：小时</p>
 	Span *int64 `json:"Span,omitnil,omitempty" name:"Span"`
 
-	// 购买高可用实例的类型：DUAL-双机高可用  CLUSTER-集群，默认值为DUAL
+	// <p>购买高可用实例的类型：DUAL-双机高可用  CLUSTER-集群，默认值为DUAL</p>
 	HAType *string `json:"HAType,omitnil,omitempty" name:"HAType"`
 
-	// 是否跨可用区部署，默认值为false
+	// <p>是否跨可用区部署，默认值为false</p>
 	MultiZones *bool `json:"MultiZones,omitnil,omitempty" name:"MultiZones"`
 
-	// 新建实例绑定的标签集合
+	// <p>新建实例绑定的标签集合</p>
 	ResourceTags []*ResourceTag `json:"ResourceTags,omitnil,omitempty" name:"ResourceTags"`
 
-	// 系统字符集排序规则，默认：Chinese_PRC_CI_AS
+	// <p>系统字符集排序规则，默认：Chinese_PRC_CI_AS</p>
 	Collation *string `json:"Collation,omitnil,omitempty" name:"Collation"`
 
-	// 系统时区，默认：China Standard Time
+	// <p>系统时区，默认：China Standard Time</p>
 	TimeZone *string `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
 
-	// 是否多节点架构实例，默认值为false。当MultiNodes = true时，参数MultiZones必须取值为true。
+	// <p>是否多节点架构实例，默认值为false。当MultiNodes = true时，参数MultiZones必须取值为true。</p>
 	MultiNodes *bool `json:"MultiNodes,omitnil,omitempty" name:"MultiNodes"`
 
-	// 备节点可用区，默认为空。当MultiNodes = true时，主节点和备节点可用区不能全部相同。备机可用区集合最小为2个，最大不超过5个。
+	// <p>备节点可用区，默认为空。当MultiNodes = true时，主节点和备节点可用区不能全部相同。备机可用区集合最小为2个，最大不超过5个。</p>
 	DrZones []*string `json:"DrZones,omitnil,omitempty" name:"DrZones"`
+
+	// <p>可用性策略</p><p>枚举值：</p><ul><li>Async： 可用性优先（异步传输）</li><li>Sync： 可靠性优先（同步传输）</li></ul><p>默认值：Async</p><p>仅 AlwaysOn 双节点架构生效，单节点/多节点/MIRROR 架构忽略此参数</p>
+	AvailabilityStrategy *string `json:"AvailabilityStrategy,omitnil,omitempty" name:"AvailabilityStrategy"`
 }
 
 type CreateDBInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例可用区，类似ap-guangzhou-1（广州一区）；实例可售卖区域可以通过接口DescribeZones获取
+	// <p>实例可用区，类似ap-guangzhou-1（广州一区）；实例可售卖区域可以通过接口DescribeZones获取</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 实例内存大小，单位GB
+	// <p>实例内存大小，单位GB</p>
 	Memory *int64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
-	// 实例磁盘大小，单位GB
+	// <p>实例磁盘大小，单位GB</p>
 	Storage *int64 `json:"Storage,omitnil,omitempty" name:"Storage"`
 
-	// 付费模式，取值支持 PREPAID（预付费），POSTPAID（后付费）。
+	// <p>付费模式，取值支持 PREPAID（预付费），POSTPAID（后付费）。</p>
 	InstanceChargeType *string `json:"InstanceChargeType,omitnil,omitempty" name:"InstanceChargeType"`
 
-	// 项目ID
+	// <p>项目ID</p>
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 本次购买几个实例，默认值为1。取值不超过10
+	// <p>本次购买几个实例，默认值为1。取值不超过10</p>
 	GoodsNum *int64 `json:"GoodsNum,omitnil,omitempty" name:"GoodsNum"`
 
-	// VPC子网ID，形如subnet-bdoe83fa；SubnetId和VpcId需同时设置或者同时不设置
+	// <p>VPC子网ID，形如subnet-bdoe83fa；SubnetId和VpcId需同时设置或者同时不设置</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// VPC网络ID，形如vpc-dsp338hz；SubnetId和VpcId需同时设置或者同时不设置
+	// <p>VPC网络ID，形如vpc-dsp338hz；SubnetId和VpcId需同时设置或者同时不设置</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 购买实例周期，默认取值为1，表示一个月。取值不超过48
+	// <p>购买实例周期，默认取值为1，表示一个月。取值不超过48</p>
 	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
 
-	// 是否自动使用代金券；1 - 是，0 - 否，默认不使用
+	// <p>是否自动使用代金券；1 - 是，0 - 否，默认不使用</p>
 	AutoVoucher *int64 `json:"AutoVoucher,omitnil,omitempty" name:"AutoVoucher"`
 
-	// 代金券ID数组，目前单个订单只能使用一张
+	// <p>代金券ID数组，目前单个订单只能使用一张</p>
 	VoucherIds []*string `json:"VoucherIds,omitnil,omitempty" name:"VoucherIds"`
 
-	// sqlserver版本，目前所有支持的版本有：2008R2 (SQL Server 2008 R2 Enterprise)，2012SP3 (SQL Server 2012 Enterprise)，201202 (SQL Server 2012 Standard)，2014SP2 (SQL Server 2014 Enterprise)，201402 (SQL Server 2014 Standard)，2016SP1 (SQL Server 2016 Enterprise)，201602 (SQL Server 2016 Standard)，2017 (SQL Server 2017 Enterprise)，201702 (SQL Server 2017 Standard)，2019 (SQL Server 2019 Enterprise)，201902 (SQL Server 2019 Standard)。每个地域支持售卖的版本不同，可通过DescribeProductConfig接口来拉取每个地域可售卖的版本信息。不填，默认为版本2008R2。
+	// <p>sqlserver版本，目前所有支持的版本有：2008R2 (SQL Server 2008 R2 Enterprise)，2012SP3 (SQL Server 2012 Enterprise)，201202 (SQL Server 2012 Standard)，2014SP2 (SQL Server 2014 Enterprise)，201402 (SQL Server 2014 Standard)，2016SP1 (SQL Server 2016 Enterprise)，201602 (SQL Server 2016 Standard)，2017 (SQL Server 2017 Enterprise)，201702 (SQL Server 2017 Standard)，2019 (SQL Server 2019 Enterprise)，201902 (SQL Server 2019 Standard)。每个地域支持售卖的版本不同，可通过DescribeProductConfig接口来拉取每个地域可售卖的版本信息。不填，默认为版本2008R2。</p>
 	DBVersion *string `json:"DBVersion,omitnil,omitempty" name:"DBVersion"`
 
-	// 自动续费标志：0-正常续费  1-自动续费，默认为1自动续费。只在购买预付费实例时有效。
+	// <p>自动续费标志：0-正常续费  1-自动续费，默认为1自动续费。只在购买预付费实例时有效。</p>
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 
-	// 安全组列表，填写形如sg-xxx的安全组ID
+	// <p>安全组列表，填写形如sg-xxx的安全组ID</p>
 	SecurityGroupList []*string `json:"SecurityGroupList,omitnil,omitempty" name:"SecurityGroupList"`
 
-	// 可维护时间窗配置，以周为单位，表示周几允许维护，1-7分别代表周一到周末
+	// <p>可维护时间窗配置，以周为单位，表示周几允许维护，1-7分别代表周一到周末</p>
 	Weekly []*int64 `json:"Weekly,omitnil,omitempty" name:"Weekly"`
 
-	// 可维护时间窗配置，每天可维护的开始时间
+	// <p>可维护时间窗配置，每天可维护的开始时间</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 可维护时间窗配置，持续时间，单位：小时
+	// <p>可维护时间窗配置，持续时间，单位：小时</p>
 	Span *int64 `json:"Span,omitnil,omitempty" name:"Span"`
 
-	// 购买高可用实例的类型：DUAL-双机高可用  CLUSTER-集群，默认值为DUAL
+	// <p>购买高可用实例的类型：DUAL-双机高可用  CLUSTER-集群，默认值为DUAL</p>
 	HAType *string `json:"HAType,omitnil,omitempty" name:"HAType"`
 
-	// 是否跨可用区部署，默认值为false
+	// <p>是否跨可用区部署，默认值为false</p>
 	MultiZones *bool `json:"MultiZones,omitnil,omitempty" name:"MultiZones"`
 
-	// 新建实例绑定的标签集合
+	// <p>新建实例绑定的标签集合</p>
 	ResourceTags []*ResourceTag `json:"ResourceTags,omitnil,omitempty" name:"ResourceTags"`
 
-	// 系统字符集排序规则，默认：Chinese_PRC_CI_AS
+	// <p>系统字符集排序规则，默认：Chinese_PRC_CI_AS</p>
 	Collation *string `json:"Collation,omitnil,omitempty" name:"Collation"`
 
-	// 系统时区，默认：China Standard Time
+	// <p>系统时区，默认：China Standard Time</p>
 	TimeZone *string `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
 
-	// 是否多节点架构实例，默认值为false。当MultiNodes = true时，参数MultiZones必须取值为true。
+	// <p>是否多节点架构实例，默认值为false。当MultiNodes = true时，参数MultiZones必须取值为true。</p>
 	MultiNodes *bool `json:"MultiNodes,omitnil,omitempty" name:"MultiNodes"`
 
-	// 备节点可用区，默认为空。当MultiNodes = true时，主节点和备节点可用区不能全部相同。备机可用区集合最小为2个，最大不超过5个。
+	// <p>备节点可用区，默认为空。当MultiNodes = true时，主节点和备节点可用区不能全部相同。备机可用区集合最小为2个，最大不超过5个。</p>
 	DrZones []*string `json:"DrZones,omitnil,omitempty" name:"DrZones"`
+
+	// <p>可用性策略</p><p>枚举值：</p><ul><li>Async： 可用性优先（异步传输）</li><li>Sync： 可靠性优先（同步传输）</li></ul><p>默认值：Async</p><p>仅 AlwaysOn 双节点架构生效，单节点/多节点/MIRROR 架构忽略此参数</p>
+	AvailabilityStrategy *string `json:"AvailabilityStrategy,omitnil,omitempty" name:"AvailabilityStrategy"`
 }
 
 func (r *CreateDBInstancesRequest) ToJsonString() string {
@@ -2035,6 +2069,7 @@ func (r *CreateDBInstancesRequest) FromJsonString(s string) error {
 	delete(f, "TimeZone")
 	delete(f, "MultiNodes")
 	delete(f, "DrZones")
+	delete(f, "AvailabilityStrategy")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDBInstancesRequest has unknown keys!", "")
 	}
@@ -2043,10 +2078,10 @@ func (r *CreateDBInstancesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateDBInstancesResponseParams struct {
-	// 订单名称
+	// <p>订单名称</p>
 	DealName *string `json:"DealName,omitnil,omitempty" name:"DealName"`
 
-	// 订单名称数组
+	// <p>订单名称数组</p>
 	DealNames []*string `json:"DealNames,omitnil,omitempty" name:"DealNames"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2839,171 +2874,175 @@ type DBDetail struct {
 }
 
 type DBInstance struct {
-	// 实例ID
+	// <p>实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 实例名称
+	// <p>实例名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 实例所在项目ID
+	// <p>实例所在项目ID</p>
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 实例所在地域ID
+	// <p>实例所在地域ID</p>
 	RegionId *int64 `json:"RegionId,omitnil,omitempty" name:"RegionId"`
 
-	// 实例所在可用区ID
+	// <p>实例所在可用区ID</p>
 	ZoneId *int64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 实例所在私有网络ID，基础网络时为 0
+	// <p>实例所在私有网络ID，基础网络时为 0</p>
 	VpcId *int64 `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 实例所在私有网络子网ID，基础网络时为 0
+	// <p>实例所在私有网络子网ID，基础网络时为 0</p>
 	SubnetId *int64 `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 实例状态。取值范围： <li>1：申请中</li> <li>2：运行中</li> <li>3：受限运行中 (主备切换中)</li> <li>4：已隔离</li> <li>5：回收中</li> <li>6：已回收</li> <li>7：任务执行中 (实例做备份、回档等操作)</li> <li>8：已下线</li> <li>9：实例扩容中</li> <li>10：实例迁移中</li> <li>11：只读</li> <li>12：重启中</li>  <li>13：实例修改中且待切换</li> <li>14：订阅发布创建中</li> <li>15：订阅发布修改中</li> <li>16：实例修改中且切换中</li> <li>17：创建RO副本中</li>
+	// <p>实例状态。取值范围： <li>1：申请中</li> <li>2：运行中</li> <li>3：受限运行中 (主备切换中)</li> <li>4：已隔离</li> <li>5：回收中</li> <li>6：已回收</li> <li>7：任务执行中 (实例做备份、回档等操作)</li> <li>8：已下线</li> <li>9：实例扩容中</li> <li>10：实例迁移中</li> <li>11：只读</li> <li>12：重启中</li>  <li>13：实例修改中且待切换</li> <li>14：订阅发布创建中</li> <li>15：订阅发布修改中</li> <li>16：实例修改中且切换中</li> <li>17：创建RO副本中</li></p>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 实例访问IP
+	// <p>实例访问IP</p>
 	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
 
-	// 实例访问端口
+	// <p>实例访问端口</p>
 	Vport *int64 `json:"Vport,omitnil,omitempty" name:"Vport"`
 
-	// 实例创建时间
+	// <p>实例创建时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 实例更新时间
+	// <p>实例更新时间</p>
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 实例计费开始时间
+	// <p>实例计费开始时间</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 实例计费结束时间
+	// <p>实例计费结束时间</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 实例隔离时间
+	// <p>实例隔离时间</p>
 	IsolateTime *string `json:"IsolateTime,omitnil,omitempty" name:"IsolateTime"`
 
-	// 实例内存大小，单位G
+	// <p>实例内存大小，单位G</p>
 	Memory *int64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
-	// 实例已经使用存储空间大小，单位G
+	// <p>实例已经使用存储空间大小，单位G</p>
 	UsedStorage *int64 `json:"UsedStorage,omitnil,omitempty" name:"UsedStorage"`
 
-	// 实例存储空间大小，单位G
+	// <p>实例存储空间大小，单位G</p>
 	Storage *int64 `json:"Storage,omitnil,omitempty" name:"Storage"`
 
-	// 实例版本
+	// <p>实例版本</p>
 	VersionName *string `json:"VersionName,omitnil,omitempty" name:"VersionName"`
 
-	// 实例续费标记，0-正常续费，1-自动续费，2-到期不续费
+	// <p>实例续费标记，0-正常续费，1-自动续费，2-到期不续费</p>
 	RenewFlag *int64 `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 
-	// 实例高可用， 1-双机高可用，2-单机，3-跨可用区，4-集群跨可用区，5-集群，6-多节点集群，7-多节点集群跨可用区，9-自研机房
+	// <p>实例高可用， 1-双机高可用，2-单机，3-跨可用区，4-集群跨可用区，5-集群，6-多节点集群，7-多节点集群跨可用区，9-自研机房</p>
 	Model *int64 `json:"Model,omitnil,omitempty" name:"Model"`
 
-	// 实例所在地域名称，如 ap-guangzhou
+	// <p>实例所在地域名称，如 ap-guangzhou</p>
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 实例所在可用区名称，如 ap-guangzhou-1
+	// <p>实例所在可用区名称，如 ap-guangzhou-1</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 备份时间点
+	// <p>备份时间点</p>
 	BackupTime *string `json:"BackupTime,omitnil,omitempty" name:"BackupTime"`
 
-	// 实例付费模式， 0-按量计费，1-包年包月
+	// <p>实例付费模式， 0-按量计费，1-包年包月</p>
 	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// 实例唯一UID
+	// <p>实例唯一UID</p>
 	Uid *string `json:"Uid,omitnil,omitempty" name:"Uid"`
 
-	// 实例cpu核心数
+	// <p>实例cpu核心数</p>
 	Cpu *int64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 
-	// 实例版本代号
+	// <p>实例版本代号</p>
 	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
 
-	// 实例类型代号："TS85"-物理机，本地SSD硬盘；"Z3"-物理机早期版本，本地SSD硬盘；"CLOUD_BASIC"-虚拟机，普通云硬盘；"CLOUD_PREMIUM"-虚拟机，高性能云硬盘；"CLOUD_SSD"-虚拟机，云SSD硬盘；"CLOUD_HSSD"-虚拟机，增强型SSD云硬盘；"CLOUD_TSSD"-虚拟机，极速型SSD云硬盘；"CLOUD_BSSD"-虚拟机，通用型SSD云硬盘
+	// <p>实例类型代号：&quot;TS85&quot;-物理机，本地SSD硬盘；&quot;Z3&quot;-物理机早期版本，本地SSD硬盘；&quot;CLOUD_BASIC&quot;-虚拟机，普通云硬盘；&quot;CLOUD_PREMIUM&quot;-虚拟机，高性能云硬盘；&quot;CLOUD_SSD&quot;-虚拟机，云SSD硬盘；&quot;CLOUD_HSSD&quot;-虚拟机，增强型SSD云硬盘；&quot;CLOUD_TSSD&quot;-虚拟机，极速型SSD云硬盘；&quot;CLOUD_BSSD&quot;-虚拟机，通用型SSD云硬盘</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 计费ID
+	// <p>计费ID</p>
 	Pid *int64 `json:"Pid,omitnil,omitempty" name:"Pid"`
 
-	// 实例所属VPC的唯一字符串ID，格式如：vpc-xxx，基础网络时为空字符串
+	// <p>实例所属VPC的唯一字符串ID，格式如：vpc-xxx，基础网络时为空字符串</p>
 	UniqVpcId *string `json:"UniqVpcId,omitnil,omitempty" name:"UniqVpcId"`
 
-	// 实例所属子网的唯一字符串ID，格式如： subnet-xxx，基础网络时为空字符串
+	// <p>实例所属子网的唯一字符串ID，格式如： subnet-xxx，基础网络时为空字符串</p>
 	UniqSubnetId *string `json:"UniqSubnetId,omitnil,omitempty" name:"UniqSubnetId"`
 
-	// 实例隔离操作
+	// <p>实例隔离操作</p>
 	IsolateOperator *string `json:"IsolateOperator,omitnil,omitempty" name:"IsolateOperator"`
 
-	// 发布订阅标识，SUB-订阅实例，PUB-发布实例，空值-没有发布订阅的普通实例
+	// <p>发布订阅标识，SUB-订阅实例，PUB-发布实例，空值-没有发布订阅的普通实例</p>
 	SubFlag *string `json:"SubFlag,omitnil,omitempty" name:"SubFlag"`
 
-	// 只读标识，RO-只读实例，MASTER-有RO实例的主实例，空值-没有只读组的非RO实例
+	// <p>只读标识，RO-只读实例，MASTER-有RO实例的主实例，空值-没有只读组的非RO实例</p>
 	ROFlag *string `json:"ROFlag,omitnil,omitempty" name:"ROFlag"`
 
-	// 容灾类型，MIRROR-镜像，ALWAYSON-AlwaysOn, SINGLE-单例
+	// <p>容灾类型，MIRROR-镜像，ALWAYSON-AlwaysOn, SINGLE-单例</p>
 	HAFlag *string `json:"HAFlag,omitnil,omitempty" name:"HAFlag"`
 
-	// 实例绑定的标签列表
+	// <p>实例绑定的标签列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceTags []*ResourceTag `json:"ResourceTags,omitnil,omitempty" name:"ResourceTags"`
 
-	// 备份模式，master_pkg-主节点打包备份(默认) ；master_no_pkg-主节点不打包备份；slave_pkg-从节点打包备份(always on集群有效)；slave_no_pkg-从节点不打包备份(always on集群有效)；只读副本对该值无效。
+	// <p>备份模式，master_pkg-主节点打包备份(默认) ；master_no_pkg-主节点不打包备份；slave_pkg-从节点打包备份(always on集群有效)；slave_no_pkg-从节点不打包备份(always on集群有效)；只读副本对该值无效。</p>
 	BackupModel *string `json:"BackupModel,omitnil,omitempty" name:"BackupModel"`
 
-	// 实例备份信息
+	// <p>实例备份信息</p>
 	InstanceNote *string `json:"InstanceNote,omitnil,omitempty" name:"InstanceNote"`
 
-	// 备份周期
+	// <p>备份周期</p>
 	BackupCycle []*int64 `json:"BackupCycle,omitnil,omitempty" name:"BackupCycle"`
 
-	// 备份周期类型，[daily、weekly、monthly]
+	// <p>备份周期类型，[daily、weekly、monthly]</p>
 	BackupCycleType *string `json:"BackupCycleType,omitnil,omitempty" name:"BackupCycleType"`
 
-	// 数据(日志)备份保留时间
+	// <p>数据(日志)备份保留时间</p>
 	BackupSaveDays *int64 `json:"BackupSaveDays,omitnil,omitempty" name:"BackupSaveDays"`
 
-	// 实例类型 HA-高可用，RO-只读实例，SI-基础版，BI-商业智能服务，cvmHA-云盘高可用，cvmRO-云盘只读实例，MultiHA-多节点，cvmMultiHA-云盘多节点
+	// <p>实例类型 HA-高可用，RO-只读实例，SI-基础版，BI-商业智能服务，cvmHA-云盘高可用，cvmRO-云盘只读实例，MultiHA-多节点，cvmMultiHA-云盘多节点</p>
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
-	// 跨地域备份目的地域，如果为空，则表示未开启跨地域备份
+	// <p>跨地域备份目的地域，如果为空，则表示未开启跨地域备份</p>
 	CrossRegions []*string `json:"CrossRegions,omitnil,omitempty" name:"CrossRegions"`
 
-	// 跨地域备份状态 enable-开启，disable-关闭
+	// <p>跨地域备份状态 enable-开启，disable-关闭</p>
 	CrossBackupEnabled *string `json:"CrossBackupEnabled,omitnil,omitempty" name:"CrossBackupEnabled"`
 
-	// 跨地域备份保留天数，则默认7天
+	// <p>跨地域备份保留天数，则默认7天</p>
 	CrossBackupSaveDays *uint64 `json:"CrossBackupSaveDays,omitnil,omitempty" name:"CrossBackupSaveDays"`
 
-	// 外网地址域名
+	// <p>外网地址域名</p>
 	DnsPodDomain *string `json:"DnsPodDomain,omitnil,omitempty" name:"DnsPodDomain"`
 
-	// 外网端口号
+	// <p>外网端口号</p>
 	TgwWanVPort *int64 `json:"TgwWanVPort,omitnil,omitempty" name:"TgwWanVPort"`
 
-	// 系统字符集排序规则，默认：Chinese_PRC_CI_AS
+	// <p>系统字符集排序规则，默认：Chinese_PRC_CI_AS</p>
 	Collation *string `json:"Collation,omitnil,omitempty" name:"Collation"`
 
-	// 系统时区，默认：China Standard Time
+	// <p>系统时区，默认：China Standard Time</p>
 	TimeZone *string `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
 
-	// 是否跨AZ
+	// <p>是否跨AZ</p>
 	IsDrZone *bool `json:"IsDrZone,omitnil,omitempty" name:"IsDrZone"`
 
-	// 双节点实例备可用区信息
+	// <p>双节点实例备可用区信息</p>
 	SlaveZones *SlaveZones `json:"SlaveZones,omitnil,omitempty" name:"SlaveZones"`
 
-	// 架构标识，SINGLE-单节点 DOUBLE-双节点
+	// <p>架构标识，SINGLE-单节点 DOUBLE-双节点</p>
 	Architecture *string `json:"Architecture,omitnil,omitempty" name:"Architecture"`
 
-	// 类型标识，EXCLUSIVE-独享型，SHARED-共享型
+	// <p>类型标识，EXCLUSIVE-独享型，SHARED-共享型</p>
 	Style *string `json:"Style,omitnil,omitempty" name:"Style"`
 
-	// 多节点实例备可用区信息
+	// <p>多节点实例备可用区信息</p>
 	MultiSlaveZones []*SlaveZones `json:"MultiSlaveZones,omitnil,omitempty" name:"MultiSlaveZones"`
+
+	// <p>额外IO吞吐量</p><p>单位：MB/s</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ThroughputPerformance *int64 `json:"ThroughputPerformance,omitnil,omitempty" name:"ThroughputPerformance"`
 }
 
 type DBPrivilege struct {
@@ -9260,57 +9299,63 @@ func (r *DescribeSpecSellStatusResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeUpgradeInstanceCheckRequestParams struct {
-	// 数据库实例ID，形如mssql-njj2mtpl
+	// <p>数据库实例ID，形如mssql-njj2mtpl</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 实例变配后的CPU核心数，不填则不修改
+	// <p>实例变配后的CPU核心数，不填则不修改</p>
 	Cpu *int64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 
-	// 实例变配后内存大小，单位GB，不填则不修改
+	// <p>实例变配后内存大小，单位GB，不填则不修改</p>
 	Memory *int64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
-	// 实例变配后磁盘大小，单位GB，不填则不修改
+	// <p>实例变配后磁盘大小，单位GB，不填则不修改</p>
 	Storage *int64 `json:"Storage,omitnil,omitempty" name:"Storage"`
 
-	// 实例版本，不填则不修改
+	// <p>实例版本，不填则不修改</p>
 	DBVersion *string `json:"DBVersion,omitnil,omitempty" name:"DBVersion"`
 
-	// 实例变配后的类型，可选值：CLUSTER-集群，不填则不修改
+	// <p>实例变配后的类型，可选值：CLUSTER-集群，不填则不修改</p>
 	HAType *string `json:"HAType,omitnil,omitempty" name:"HAType"`
 
-	// 实例变配后的跨可用区类型，可选值： SameZones-修改为同可用区 MultiZones-修改为跨可用区，不填则不修改
+	// <p>实例变配后的跨可用区类型，可选值： SameZones-修改为同可用区 MultiZones-修改为跨可用区，不填则不修改</p>
 	MultiZones *string `json:"MultiZones,omitnil,omitempty" name:"MultiZones"`
 
-	// 多节点架构实例的备节点可用区，默认为空。如果需要在变配的同时修改指定备节点的可用区时必传，当MultiZones = MultiZones时主节点和备节点可用区不能全部相同。备机可用区集合最小为2个，最大不超过5个。
+	// <p>多节点架构实例的备节点可用区，默认为空。如果需要在变配的同时修改指定备节点的可用区时必传，当MultiZones = MultiZones时主节点和备节点可用区不能全部相同。备机可用区集合最小为2个，最大不超过5个。</p>
 	DrZones []*DrZoneInfo `json:"DrZones,omitnil,omitempty" name:"DrZones"`
+
+	// <p>额外磁盘IO吞吐量</p><p>取值范围：[0, 650]</p><p>单位：MB/s</p><p>不传-保持原值不变；0-取消额外IO；&gt;0-设为新值</p>
+	ThroughputPerformance *int64 `json:"ThroughputPerformance,omitnil,omitempty" name:"ThroughputPerformance"`
 }
 
 type DescribeUpgradeInstanceCheckRequest struct {
 	*tchttp.BaseRequest
 	
-	// 数据库实例ID，形如mssql-njj2mtpl
+	// <p>数据库实例ID，形如mssql-njj2mtpl</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 实例变配后的CPU核心数，不填则不修改
+	// <p>实例变配后的CPU核心数，不填则不修改</p>
 	Cpu *int64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 
-	// 实例变配后内存大小，单位GB，不填则不修改
+	// <p>实例变配后内存大小，单位GB，不填则不修改</p>
 	Memory *int64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
-	// 实例变配后磁盘大小，单位GB，不填则不修改
+	// <p>实例变配后磁盘大小，单位GB，不填则不修改</p>
 	Storage *int64 `json:"Storage,omitnil,omitempty" name:"Storage"`
 
-	// 实例版本，不填则不修改
+	// <p>实例版本，不填则不修改</p>
 	DBVersion *string `json:"DBVersion,omitnil,omitempty" name:"DBVersion"`
 
-	// 实例变配后的类型，可选值：CLUSTER-集群，不填则不修改
+	// <p>实例变配后的类型，可选值：CLUSTER-集群，不填则不修改</p>
 	HAType *string `json:"HAType,omitnil,omitempty" name:"HAType"`
 
-	// 实例变配后的跨可用区类型，可选值： SameZones-修改为同可用区 MultiZones-修改为跨可用区，不填则不修改
+	// <p>实例变配后的跨可用区类型，可选值： SameZones-修改为同可用区 MultiZones-修改为跨可用区，不填则不修改</p>
 	MultiZones *string `json:"MultiZones,omitnil,omitempty" name:"MultiZones"`
 
-	// 多节点架构实例的备节点可用区，默认为空。如果需要在变配的同时修改指定备节点的可用区时必传，当MultiZones = MultiZones时主节点和备节点可用区不能全部相同。备机可用区集合最小为2个，最大不超过5个。
+	// <p>多节点架构实例的备节点可用区，默认为空。如果需要在变配的同时修改指定备节点的可用区时必传，当MultiZones = MultiZones时主节点和备节点可用区不能全部相同。备机可用区集合最小为2个，最大不超过5个。</p>
 	DrZones []*DrZoneInfo `json:"DrZones,omitnil,omitempty" name:"DrZones"`
+
+	// <p>额外磁盘IO吞吐量</p><p>取值范围：[0, 650]</p><p>单位：MB/s</p><p>不传-保持原值不变；0-取消额外IO；&gt;0-设为新值</p>
+	ThroughputPerformance *int64 `json:"ThroughputPerformance,omitnil,omitempty" name:"ThroughputPerformance"`
 }
 
 func (r *DescribeUpgradeInstanceCheckRequest) ToJsonString() string {
@@ -9333,6 +9378,7 @@ func (r *DescribeUpgradeInstanceCheckRequest) FromJsonString(s string) error {
 	delete(f, "HAType")
 	delete(f, "MultiZones")
 	delete(f, "DrZones")
+	delete(f, "ThroughputPerformance")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUpgradeInstanceCheckRequest has unknown keys!", "")
 	}
@@ -9341,16 +9387,16 @@ func (r *DescribeUpgradeInstanceCheckRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeUpgradeInstanceCheckResponseParams struct {
-	// 本变配是否对实例有影响，0-没有影响 1-有影响
+	// <p>本变配是否对实例有影响，0-没有影响 1-有影响</p>
 	IsAffect *int64 `json:"IsAffect,omitnil,omitempty" name:"IsAffect"`
 
-	// 本变配是否可以执行 0-不通过，不能变配 1-通过，可以变配
+	// <p>本变配是否可以执行 0-不通过，不能变配 1-通过，可以变配</p>
 	Passed *int64 `json:"Passed,omitnil,omitempty" name:"Passed"`
 
-	// 本变配是升配还是降配，down-降配 up-升配
+	// <p>本变配是升配还是降配，down-降配 up-升配</p>
 	ModifyMode *string `json:"ModifyMode,omitnil,omitempty" name:"ModifyMode"`
 
-	// 检查项列表
+	// <p>检查项列表</p>
 	CheckItems []*CheckItem `json:"CheckItems,omitnil,omitempty" name:"CheckItems"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9933,77 +9979,81 @@ type Filter struct {
 
 // Predefined struct for user
 type InquiryPriceCreateDBInstancesRequestParams struct {
-	// 可用区ID。该参数可以通过调用 DescribeZones 接口的返回值中的Zone字段来获取。
+	// <p>可用区ID。该参数可以通过调用 DescribeZones 接口的返回值中的Zone字段来获取。</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 内存大小，单位：GB
+	// <p>内存大小，单位：GB</p>
 	Memory *int64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
-	// 实例容量大小，单位：GB。
+	// <p>实例容量大小，单位：GB。</p>
 	Storage *int64 `json:"Storage,omitnil,omitempty" name:"Storage"`
 
-	// 计费类型，取值支持 PREPAID，POSTPAID。
+	// <p>计费类型，取值支持 PREPAID，POSTPAID。</p>
 	InstanceChargeType *string `json:"InstanceChargeType,omitnil,omitempty" name:"InstanceChargeType"`
 
-	// 购买时长，单位：月。取值为1到48，默认为1
+	// <p>购买时长，单位：月。取值为1到48，默认为1</p>
 	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
 
-	// 一次性购买的实例数量。取值1-100，默认取值为1
+	// <p>一次性购买的实例数量。取值1-100，默认取值为1</p>
 	GoodsNum *int64 `json:"GoodsNum,omitnil,omitempty" name:"GoodsNum"`
 
-	// sqlserver版本，目前所有支持的版本有：2008R2 (SQL Server 2008 R2 Enterprise)，2012SP3 (SQL Server 2012 Enterprise)，201202 (SQL Server 2012 Standard)，2014SP2 (SQL Server 2014 Enterprise)，201402 (SQL Server 2014 Standard)，2016SP1 (SQL Server 2016 Enterprise)，201602 (SQL Server 2016 Standard)，2017 (SQL Server 2017 Enterprise)，201702 (SQL Server 2017 Standard)，2019 (SQL Server 2019 Enterprise)，201902 (SQL Server 2019 Standard)。每个地域支持售卖的版本不同，可通过DescribeProductConfig接口来拉取每个地域可售卖的版本信息。不填，默认为版本2008R2。
+	// <p>sqlserver版本，目前所有支持的版本有：2008R2 (SQL Server 2008 R2 Enterprise)，2012SP3 (SQL Server 2012 Enterprise)，201202 (SQL Server 2012 Standard)，2014SP2 (SQL Server 2014 Enterprise)，201402 (SQL Server 2014 Standard)，2016SP1 (SQL Server 2016 Enterprise)，201602 (SQL Server 2016 Standard)，2017 (SQL Server 2017 Enterprise)，201702 (SQL Server 2017 Standard)，2019 (SQL Server 2019 Enterprise)，201902 (SQL Server 2019 Standard)。每个地域支持售卖的版本不同，可通过DescribeProductConfig接口来拉取每个地域可售卖的版本信息。不填，默认为版本2008R2。</p>
 	DBVersion *string `json:"DBVersion,omitnil,omitempty" name:"DBVersion"`
 
-	// 预购买实例的CPU核心数
+	// <p>预购买实例的CPU核心数</p>
 	Cpu *int64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 
-	// 购买实例的类型 HA-高可用型(包括双机高可用，alwaysOn集群)，RO-只读副本型，SI-单节点型,cvmHA-虚拟机双机高可用,cvmRO-虚拟机只读，MultiHA-多节点，cvmMultiHA-云盘
+	// <p>购买实例的类型 HA-高可用型(包括双机高可用，alwaysOn集群)，RO-只读副本型，SI-单节点型,cvmHA-虚拟机双机高可用,cvmRO-虚拟机只读，MultiHA-多节点，cvmMultiHA-云盘</p>
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
-	// 购买实例的宿主机类型，PM-物理机, CLOUD_PREMIUM-虚拟机高性能云盘，CLOUD_SSD-虚拟机SSD云盘,
-	// CLOUD_HSSD-虚拟机加强型SSD云盘，CLOUD_TSSD-虚拟机极速型SSD云盘，CLOUD_BSSD-虚拟机通用型SSD云盘
+	// <p>购买实例的宿主机类型，PM-物理机, CLOUD_PREMIUM-虚拟机高性能云盘，CLOUD_SSD-虚拟机SSD云盘,<br>CLOUD_HSSD-虚拟机加强型SSD云盘，CLOUD_TSSD-虚拟机极速型SSD云盘，CLOUD_BSSD-虚拟机通用型SSD云盘</p>
 	MachineType *string `json:"MachineType,omitnil,omitempty" name:"MachineType"`
 
-	// 备节点可用区，默认为空。如果是多节点架构时必传，并且备机可用区集合最小为2个，最大不超过5个。
+	// <p>备节点可用区，默认为空。如果是多节点架构时必传，并且备机可用区集合最小为2个，最大不超过5个。</p>
 	DrZones []*string `json:"DrZones,omitnil,omitempty" name:"DrZones"`
+
+	// <p>额外磁盘 IO 吞吐量，仅 CLOUD_HSSD 支持</p><p>取值范围：[0, 650]</p><p>单位：MB/s</p>
+	ThroughputPerformance *uint64 `json:"ThroughputPerformance,omitnil,omitempty" name:"ThroughputPerformance"`
 }
 
 type InquiryPriceCreateDBInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 可用区ID。该参数可以通过调用 DescribeZones 接口的返回值中的Zone字段来获取。
+	// <p>可用区ID。该参数可以通过调用 DescribeZones 接口的返回值中的Zone字段来获取。</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 内存大小，单位：GB
+	// <p>内存大小，单位：GB</p>
 	Memory *int64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
-	// 实例容量大小，单位：GB。
+	// <p>实例容量大小，单位：GB。</p>
 	Storage *int64 `json:"Storage,omitnil,omitempty" name:"Storage"`
 
-	// 计费类型，取值支持 PREPAID，POSTPAID。
+	// <p>计费类型，取值支持 PREPAID，POSTPAID。</p>
 	InstanceChargeType *string `json:"InstanceChargeType,omitnil,omitempty" name:"InstanceChargeType"`
 
-	// 购买时长，单位：月。取值为1到48，默认为1
+	// <p>购买时长，单位：月。取值为1到48，默认为1</p>
 	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
 
-	// 一次性购买的实例数量。取值1-100，默认取值为1
+	// <p>一次性购买的实例数量。取值1-100，默认取值为1</p>
 	GoodsNum *int64 `json:"GoodsNum,omitnil,omitempty" name:"GoodsNum"`
 
-	// sqlserver版本，目前所有支持的版本有：2008R2 (SQL Server 2008 R2 Enterprise)，2012SP3 (SQL Server 2012 Enterprise)，201202 (SQL Server 2012 Standard)，2014SP2 (SQL Server 2014 Enterprise)，201402 (SQL Server 2014 Standard)，2016SP1 (SQL Server 2016 Enterprise)，201602 (SQL Server 2016 Standard)，2017 (SQL Server 2017 Enterprise)，201702 (SQL Server 2017 Standard)，2019 (SQL Server 2019 Enterprise)，201902 (SQL Server 2019 Standard)。每个地域支持售卖的版本不同，可通过DescribeProductConfig接口来拉取每个地域可售卖的版本信息。不填，默认为版本2008R2。
+	// <p>sqlserver版本，目前所有支持的版本有：2008R2 (SQL Server 2008 R2 Enterprise)，2012SP3 (SQL Server 2012 Enterprise)，201202 (SQL Server 2012 Standard)，2014SP2 (SQL Server 2014 Enterprise)，201402 (SQL Server 2014 Standard)，2016SP1 (SQL Server 2016 Enterprise)，201602 (SQL Server 2016 Standard)，2017 (SQL Server 2017 Enterprise)，201702 (SQL Server 2017 Standard)，2019 (SQL Server 2019 Enterprise)，201902 (SQL Server 2019 Standard)。每个地域支持售卖的版本不同，可通过DescribeProductConfig接口来拉取每个地域可售卖的版本信息。不填，默认为版本2008R2。</p>
 	DBVersion *string `json:"DBVersion,omitnil,omitempty" name:"DBVersion"`
 
-	// 预购买实例的CPU核心数
+	// <p>预购买实例的CPU核心数</p>
 	Cpu *int64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 
-	// 购买实例的类型 HA-高可用型(包括双机高可用，alwaysOn集群)，RO-只读副本型，SI-单节点型,cvmHA-虚拟机双机高可用,cvmRO-虚拟机只读，MultiHA-多节点，cvmMultiHA-云盘
+	// <p>购买实例的类型 HA-高可用型(包括双机高可用，alwaysOn集群)，RO-只读副本型，SI-单节点型,cvmHA-虚拟机双机高可用,cvmRO-虚拟机只读，MultiHA-多节点，cvmMultiHA-云盘</p>
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
-	// 购买实例的宿主机类型，PM-物理机, CLOUD_PREMIUM-虚拟机高性能云盘，CLOUD_SSD-虚拟机SSD云盘,
-	// CLOUD_HSSD-虚拟机加强型SSD云盘，CLOUD_TSSD-虚拟机极速型SSD云盘，CLOUD_BSSD-虚拟机通用型SSD云盘
+	// <p>购买实例的宿主机类型，PM-物理机, CLOUD_PREMIUM-虚拟机高性能云盘，CLOUD_SSD-虚拟机SSD云盘,<br>CLOUD_HSSD-虚拟机加强型SSD云盘，CLOUD_TSSD-虚拟机极速型SSD云盘，CLOUD_BSSD-虚拟机通用型SSD云盘</p>
 	MachineType *string `json:"MachineType,omitnil,omitempty" name:"MachineType"`
 
-	// 备节点可用区，默认为空。如果是多节点架构时必传，并且备机可用区集合最小为2个，最大不超过5个。
+	// <p>备节点可用区，默认为空。如果是多节点架构时必传，并且备机可用区集合最小为2个，最大不超过5个。</p>
 	DrZones []*string `json:"DrZones,omitnil,omitempty" name:"DrZones"`
+
+	// <p>额外磁盘 IO 吞吐量，仅 CLOUD_HSSD 支持</p><p>取值范围：[0, 650]</p><p>单位：MB/s</p>
+	ThroughputPerformance *uint64 `json:"ThroughputPerformance,omitnil,omitempty" name:"ThroughputPerformance"`
 }
 
 func (r *InquiryPriceCreateDBInstancesRequest) ToJsonString() string {
@@ -10029,6 +10079,7 @@ func (r *InquiryPriceCreateDBInstancesRequest) FromJsonString(s string) error {
 	delete(f, "InstanceType")
 	delete(f, "MachineType")
 	delete(f, "DrZones")
+	delete(f, "ThroughputPerformance")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InquiryPriceCreateDBInstancesRequest has unknown keys!", "")
 	}
@@ -10037,16 +10088,10 @@ func (r *InquiryPriceCreateDBInstancesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type InquiryPriceCreateDBInstancesResponseParams struct {
-	// 未打折前价格，其值除以100表示最终的价格。
-	// InstanceChargeType=PREPAID时，单位是"每月"。
-	// InstanceChargeType=POSTPAID时，单位是"每小时"。
-	// 例如10010，在InstanceChargeType=PREPAID情况下，表示每月100.10元。
+	// <p>未打折前价格，其值除以100表示最终的价格。<br>InstanceChargeType=PREPAID时，单位是&quot;每月&quot;。<br>InstanceChargeType=POSTPAID时，单位是&quot;每小时&quot;。<br>例如10010，在InstanceChargeType=PREPAID情况下，表示每月100.10元。</p>
 	OriginalPrice *int64 `json:"OriginalPrice,omitnil,omitempty" name:"OriginalPrice"`
 
-	// 实际需要支付的价格，其值除以100表示最终的价格。
-	// InstanceChargeType=PREPAID时，单位是"每月"。
-	// InstanceChargeType=POSTPAID时，单位是"每小时"。
-	// 例如10010，在InstanceChargeType=PREPAID情况下，表示每月100.10元。
+	// <p>实际需要支付的价格，其值除以100表示最终的价格。<br>InstanceChargeType=PREPAID时，单位是&quot;每月&quot;。<br>InstanceChargeType=POSTPAID时，单位是&quot;每小时&quot;。<br>例如10010，在InstanceChargeType=PREPAID情况下，表示每月100.10元。</p>
 	Price *int64 `json:"Price,omitnil,omitempty" name:"Price"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -10145,33 +10190,39 @@ func (r *InquiryPriceRenewDBInstanceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type InquiryPriceUpgradeDBInstanceRequestParams struct {
-	// 实例ID，形如mssql-njj2mtpl
+	// <p>实例ID，形如mssql-njj2mtpl</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 实例升级后的内存大小，单位GB，其值不能比当前实例内存小
+	// <p>实例升级后的内存大小，单位GB，其值不能比当前实例内存小</p>
 	Memory *int64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
-	// 实例升级后的磁盘大小，单位GB，其值不能比当前实例磁盘小
+	// <p>实例升级后的磁盘大小，单位GB，其值不能比当前实例磁盘小</p>
 	Storage *int64 `json:"Storage,omitnil,omitempty" name:"Storage"`
 
-	// 实例升级后的CPU核心数，其值不能比当前实例CPU小
+	// <p>实例升级后的CPU核心数，其值不能比当前实例CPU小</p>
 	Cpu *int64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
+
+	// <p>额外磁盘 IO 吞吐量</p><p>取值范围：[0, 650]</p><p>单位：MB/s</p>
+	ThroughputPerformance *uint64 `json:"ThroughputPerformance,omitnil,omitempty" name:"ThroughputPerformance"`
 }
 
 type InquiryPriceUpgradeDBInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID，形如mssql-njj2mtpl
+	// <p>实例ID，形如mssql-njj2mtpl</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 实例升级后的内存大小，单位GB，其值不能比当前实例内存小
+	// <p>实例升级后的内存大小，单位GB，其值不能比当前实例内存小</p>
 	Memory *int64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
-	// 实例升级后的磁盘大小，单位GB，其值不能比当前实例磁盘小
+	// <p>实例升级后的磁盘大小，单位GB，其值不能比当前实例磁盘小</p>
 	Storage *int64 `json:"Storage,omitnil,omitempty" name:"Storage"`
 
-	// 实例升级后的CPU核心数，其值不能比当前实例CPU小
+	// <p>实例升级后的CPU核心数，其值不能比当前实例CPU小</p>
 	Cpu *int64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
+
+	// <p>额外磁盘 IO 吞吐量</p><p>取值范围：[0, 650]</p><p>单位：MB/s</p>
+	ThroughputPerformance *uint64 `json:"ThroughputPerformance,omitnil,omitempty" name:"ThroughputPerformance"`
 }
 
 func (r *InquiryPriceUpgradeDBInstanceRequest) ToJsonString() string {
@@ -10190,6 +10241,7 @@ func (r *InquiryPriceUpgradeDBInstanceRequest) FromJsonString(s string) error {
 	delete(f, "Memory")
 	delete(f, "Storage")
 	delete(f, "Cpu")
+	delete(f, "ThroughputPerformance")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InquiryPriceUpgradeDBInstanceRequest has unknown keys!", "")
 	}
@@ -10198,10 +10250,10 @@ func (r *InquiryPriceUpgradeDBInstanceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type InquiryPriceUpgradeDBInstanceResponseParams struct {
-	// 未打折的原价，其值除以100表示最终的价格。例如10094表示100.94元
+	// <p>未打折的原价，其值除以100表示最终的价格。例如10094表示100.94元</p>
 	OriginalPrice *int64 `json:"OriginalPrice,omitnil,omitempty" name:"OriginalPrice"`
 
-	// 实际需要支付价格，其值除以100表示最终的价格。例如10094表示100.94元
+	// <p>实际需要支付价格，其值除以100表示最终的价格。例如10094表示100.94元</p>
 	Price *int64 `json:"Price,omitnil,omitempty" name:"Price"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -14725,90 +14777,130 @@ type SlowlogInfo struct {
 }
 
 type SpecInfo struct {
-	// 实例规格ID，利用DescribeZones返回的SpecId，结合DescribeProductConfig返回的可售卖规格信息，可获悉某个可用区下可购买什么规格的实例
+	// <p>实例规格ID，利用DescribeZones返回的SpecId，结合DescribeProductConfig返回的可售卖规格信息，可获悉某个可用区下可购买什么规格的实例</p>
 	SpecId *int64 `json:"SpecId,omitnil,omitempty" name:"SpecId"`
 
-	// 机型ID
+	// <p>机型ID</p>
 	MachineType *string `json:"MachineType,omitnil,omitempty" name:"MachineType"`
 
-	// 机型中文名称
+	// <p>机型中文名称</p>
 	MachineTypeName *string `json:"MachineTypeName,omitnil,omitempty" name:"MachineTypeName"`
 
-	// 数据库版本信息。取值为2008R2（表示SQL Server 2008 R2），2012SP3（表示SQL Server 2012），2016SP1（表示SQL Server 2016 SP1）
+	// <p>数据库版本信息。取值为2008R2（表示SQL Server 2008 R2），2012SP3（表示SQL Server 2012），2016SP1（表示SQL Server 2016 SP1）</p>
 	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
 
-	// Version字段对应的版本名称
+	// <p>Version字段对应的版本名称</p>
 	VersionName *string `json:"VersionName,omitnil,omitempty" name:"VersionName"`
 
-	// 内存大小，单位GB
+	// <p>内存大小，单位GB</p>
 	Memory *int64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
-	// CPU核数
+	// <p>CPU核数</p>
 	CPU *int64 `json:"CPU,omitnil,omitempty" name:"CPU"`
 
-	// 此规格下最小的磁盘大小，单位GB
+	// <p>此规格下最小的磁盘大小，单位GB</p>
 	MinStorage *int64 `json:"MinStorage,omitnil,omitempty" name:"MinStorage"`
 
-	// 此规格下最大的磁盘大小，单位GB
+	// <p>此规格下最大的磁盘大小，单位GB</p>
 	MaxStorage *int64 `json:"MaxStorage,omitnil,omitempty" name:"MaxStorage"`
 
-	// 此规格对应的QPS大小
+	// <p>此规格对应的QPS大小</p>
 	QPS *int64 `json:"QPS,omitnil,omitempty" name:"QPS"`
 
-	// 此规格的中文描述信息
+	// <p>此规格的中文描述信息</p>
 	SuitInfo *string `json:"SuitInfo,omitnil,omitempty" name:"SuitInfo"`
 
-	// 此规格对应的包年包月Pid
+	// <p>此规格对应的包年包月Pid</p>
 	Pid *int64 `json:"Pid,omitnil,omitempty" name:"Pid"`
 
-	// 此规格对应的按量计费Pid列表
+	// <p>此规格对应的按量计费Pid列表</p>
 	PostPid []*int64 `json:"PostPid,omitnil,omitempty" name:"PostPid"`
 
-	// 此规格下支持的付费模式，POST-仅支持按量计费 PRE-仅支持包年包月 ALL-支持所有
+	// <p>此规格下支持的付费模式，POST-仅支持按量计费 PRE-仅支持包年包月 ALL-支持所有</p>
 	PayModeStatus *string `json:"PayModeStatus,omitnil,omitempty" name:"PayModeStatus"`
 
-	// 购买实例的类型 HA-本地盘高可用(包括双机高可用，alwaysOn集群)，RO-本地盘只读副本，SI-云盘版单节点,BI-商业智能服务，cvmHA-云盘版高可用，cvmRO-云盘版只读副本，MultiHA-多节点，cvmMultiHA-云盘多节点
-	// 示例值：HA
+	// <p>购买实例的类型 HA-本地盘高可用(包括双机高可用，alwaysOn集群)，RO-本地盘只读副本，SI-云盘版单节点,BI-商业智能服务，cvmHA-云盘版高可用，cvmRO-云盘版只读副本，MultiHA-多节点，cvmMultiHA-云盘多节点<br>示例值：HA</p>
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
-	// 跨可用区类型，MultiZones-只支持跨可用区，SameZones-只支持同可用区，ALL-支持所有
+	// <p>跨可用区类型，MultiZones-只支持跨可用区，SameZones-只支持同可用区，ALL-支持所有</p>
 	MultiZonesStatus *string `json:"MultiZonesStatus,omitnil,omitempty" name:"MultiZonesStatus"`
+
+	// <p>最小磁盘容量时的基准</p><p>单位：IOPS</p>
+	MinBaselineIOPS *uint64 `json:"MinBaselineIOPS,omitnil,omitempty" name:"MinBaselineIOPS"`
+
+	// <p>最大磁盘容量时的基准</p><p>单位：IOPS</p>
+	MaxBaselineIOPS *uint64 `json:"MaxBaselineIOPS,omitnil,omitempty" name:"MaxBaselineIOPS"`
+
+	// <p>最小磁盘容量时的基准吞吐量</p><p>单位：MB/s</p>
+	MinBaselineThroughput *uint64 `json:"MinBaselineThroughput,omitnil,omitempty" name:"MinBaselineThroughput"`
+
+	// <p>最大磁盘容量时的基准吞吐量</p><p>单位：MB/s</p>
+	MaxBaselineThroughput *uint64 `json:"MaxBaselineThroughput,omitnil,omitempty" name:"MaxBaselineThroughput"`
+
+	// <p>是否支持额外 IO 性能</p><p>枚举值：</p><ul><li>TRUE： 支持额外 IO 性能</li><li>FALSE： 不支持额外 IO 性能</li></ul>
+	ExtraIOSupported *bool `json:"ExtraIOSupported,omitnil,omitempty" name:"ExtraIOSupported"`
+
+	// <p>额外 IO 最大吞吐量</p><p>单位：MB/s</p>
+	MaxExtraThroughput *uint64 `json:"MaxExtraThroughput,omitnil,omitempty" name:"MaxExtraThroughput"`
+
+	// <p>支持额外 IO 的最小磁盘容量</p><p>单位： GB</p><p>默认值：460</p>
+	MinDiskSizeForExtraIO *uint64 `json:"MinDiskSizeForExtraIO,omitnil,omitempty" name:"MinDiskSizeForExtraIO"`
 }
 
 type SpecSellStatus struct {
-	// 可售卖的规格唯一ID
+	// <p>可售卖的规格唯一ID</p>
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 实例规格ID
+	// <p>实例规格ID</p>
 	SpecId *uint64 `json:"SpecId,omitnil,omitempty" name:"SpecId"`
 
-	// 此规格下支持的付费模式，POST-仅支持按量计费 PRE-仅支持包年包月 ALL-支持所有
+	// <p>此规格下支持的付费模式，POST-仅支持按量计费 PRE-仅支持包年包月 ALL-支持所有</p>
 	PayModeStatus *string `json:"PayModeStatus,omitnil,omitempty" name:"PayModeStatus"`
 
-	// 产品类型，购买实例的类型 HA-本地盘高可用(包括双机高可用，alwaysOn集群)，RO-本地盘只读副本，SI-云盘版单节点,BI-商业智能服务，cvmHA-云盘版高可用，cvmRO-云盘版只读副本，MultiHA-多节点，cvmMultiHA-云盘多节点
+	// <p>产品类型，购买实例的类型 HA-本地盘高可用(包括双机高可用，alwaysOn集群)，RO-本地盘只读副本，SI-云盘版单节点,BI-商业智能服务，cvmHA-云盘版高可用，cvmRO-云盘版只读副本，MultiHA-多节点，cvmMultiHA-云盘多节点</p>
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
-	// 该规格支持的是否跨可用去，MultiZones-只支持跨可用区，SameZones-只支持同可用区，ALL-支持所有
+	// <p>该规格支持的是否跨可用去，MultiZones-只支持跨可用区，SameZones-只支持同可用区，ALL-支持所有</p>
 	MultiZonesStatus *string `json:"MultiZonesStatus,omitnil,omitempty" name:"MultiZonesStatus"`
 
-	// 架构标识，SINGLE-单节点 DOUBLE-双节点 TRIPLE-三节点 MULTI-多节点
-	// 示例值：SINGLE
+	// <p>架构标识，SINGLE-单节点 DOUBLE-双节点 TRIPLE-三节点 MULTI-多节点<br>示例值：SINGLE</p>
 	Architecture *string `json:"Architecture,omitnil,omitempty" name:"Architecture"`
 
-	// 类型标识，EXCLUSIVE-独享型，SHARED-共享型
+	// <p>类型标识，EXCLUSIVE-独享型，SHARED-共享型</p>
 	Style *string `json:"Style,omitnil,omitempty" name:"Style"`
 
-	// 数据库版本信息
+	// <p>数据库版本信息</p>
 	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
 
-	// 每个可用区的售卖状态集合
+	// <p>每个可用区的售卖状态集合</p>
 	ZoneStatusSet []*ZoneStatus `json:"ZoneStatusSet,omitnil,omitempty" name:"ZoneStatusSet"`
 
-	// 规格的参考价格，实际价格以询价接口为准
+	// <p>规格的参考价格，实际价格以询价接口为准</p>
 	Price *Price `json:"Price,omitnil,omitempty" name:"Price"`
 
-	// 规格售卖状态 1-正常 2-关闭售卖但是可以升级 3-完全关闭售卖
+	// <p>规格售卖状态 1-正常 2-关闭售卖但是可以升级 3-完全关闭售卖</p>
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>最小磁盘容量时的基准 </p><p>单位：IOPS</p>
+	MinBaselineIOPS *uint64 `json:"MinBaselineIOPS,omitnil,omitempty" name:"MinBaselineIOPS"`
+
+	// <p>最大磁盘容量时的基准 </p><p>单位：IOPS</p>
+	MaxBaselineIOPS *uint64 `json:"MaxBaselineIOPS,omitnil,omitempty" name:"MaxBaselineIOPS"`
+
+	// <p>最小磁盘容量时的基准吞吐量 </p><p>单位：MB/s</p>
+	MinBaselineThroughput *uint64 `json:"MinBaselineThroughput,omitnil,omitempty" name:"MinBaselineThroughput"`
+
+	// <p>最大磁盘容量时的基准吞吐量 </p><p>单位：MB/s</p>
+	MaxBaselineThroughput *uint64 `json:"MaxBaselineThroughput,omitnil,omitempty" name:"MaxBaselineThroughput"`
+
+	// <p>是否支持额外 IO 性能</p><p>枚举值：</p><ul><li>TRUE： 支持额外 IO 性能</li><li>FALSE： 不支持额外 IO 性能</li></ul>
+	ExtraIOSupported *bool `json:"ExtraIOSupported,omitnil,omitempty" name:"ExtraIOSupported"`
+
+	// <p>额外 IO 最大吞吐量 </p><p>单位：MB/s</p>
+	MaxExtraThroughput *uint64 `json:"MaxExtraThroughput,omitnil,omitempty" name:"MaxExtraThroughput"`
+
+	// <p>支持额外 IO 的最小磁盘容量</p><p>单位：GB</p><p>默认值：460</p>
+	MinDiskSizeForExtraIO *uint64 `json:"MinDiskSizeForExtraIO,omitnil,omitempty" name:"MinDiskSizeForExtraIO"`
 }
 
 // Predefined struct for user
@@ -15338,81 +15430,87 @@ func (r *TerminateDBInstanceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpgradeDBInstanceRequestParams struct {
-	// 实例ID，形如mssql-j8kv137v
+	// <p>实例ID，形如mssql-j8kv137v</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 实例升级后内存大小，单位GB，其值不能小于当前实例内存大小
+	// <p>实例升级后内存大小，单位GB，其值不能小于当前实例内存大小</p>
 	Memory *int64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
-	// 实例升级后磁盘大小，单位GB，其值不能小于当前实例磁盘大小
+	// <p>实例升级后磁盘大小，单位GB，其值不能小于当前实例磁盘大小</p>
 	Storage *int64 `json:"Storage,omitnil,omitempty" name:"Storage"`
 
-	// 是否自动使用代金券，0 - 不使用；1 - 默认使用。取值默认为0
+	// <p>是否自动使用代金券，0 - 不使用；1 - 默认使用。取值默认为0</p>
 	AutoVoucher *int64 `json:"AutoVoucher,omitnil,omitempty" name:"AutoVoucher"`
 
-	// 代金券ID，目前单个订单只能使用一张代金券
+	// <p>代金券ID，目前单个订单只能使用一张代金券</p>
 	VoucherIds []*string `json:"VoucherIds,omitnil,omitempty" name:"VoucherIds"`
 
-	// 实例升级后的CPU核心数
+	// <p>实例升级后的CPU核心数</p>
 	Cpu *int64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 
-	// 升级sqlserver的版本，目前支持：2008R2（SQL Server 2008 Enterprise），2012SP3（SQL Server 2012 Enterprise）版本等。每个地域支持售卖的版本不同，可通过DescribeProductConfig接口来拉取每个地域可售卖的版本信息，版本不支持降级，不填则不修改版本
+	// <p>升级sqlserver的版本，目前支持：2008R2（SQL Server 2008 Enterprise），2012SP3（SQL Server 2012 Enterprise）版本等。每个地域支持售卖的版本不同，可通过DescribeProductConfig接口来拉取每个地域可售卖的版本信息，版本不支持降级，不填则不修改版本</p>
 	DBVersion *string `json:"DBVersion,omitnil,omitempty" name:"DBVersion"`
 
-	// 升级sqlserver的高可用架构,从镜像容灾升级到always on集群容灾，仅支持2017及以上版本且支持always on高可用的实例，不支持降级到镜像方式容灾，CLUSTER-升级为always on容灾，不填则不修改高可用架构
+	// <p>升级sqlserver的高可用架构,从镜像容灾升级到always on集群容灾，仅支持2017及以上版本且支持always on高可用的实例，不支持降级到镜像方式容灾，CLUSTER-升级为always on容灾，不填则不修改高可用架构</p>
 	HAType *string `json:"HAType,omitnil,omitempty" name:"HAType"`
 
-	// 修改实例是否为跨可用区容灾，SameZones-修改为同可用区 MultiZones-修改为跨可用区
+	// <p>修改实例是否为跨可用区容灾，SameZones-修改为同可用区 MultiZones-修改为跨可用区</p>
 	MultiZones *string `json:"MultiZones,omitnil,omitempty" name:"MultiZones"`
 
-	// 执行变配的方式，默认为 1。支持值包括：0 - 立刻执行，1 - 维护时间窗执行
+	// <p>执行变配的方式，默认为 1。支持值包括：0 - 立刻执行，1 - 维护时间窗执行</p>
 	WaitSwitch *int64 `json:"WaitSwitch,omitnil,omitempty" name:"WaitSwitch"`
 
-	// 多节点架构实例的备节点可用区，默认为空。如果需要在变配的同时修改指定备节点的可用区时必传，当MultiZones = MultiZones时主节点和备节点可用区不能全部相同。备机可用区集合最小为2个，最大不超过5个。
+	// <p>多节点架构实例的备节点可用区，默认为空。如果需要在变配的同时修改指定备节点的可用区时必传，当MultiZones = MultiZones时主节点和备节点可用区不能全部相同。备机可用区集合最小为2个，最大不超过5个。</p>
 	DrZones []*DrZoneInfo `json:"DrZones,omitnil,omitempty" name:"DrZones"`
 
-	// 是否自动升级数据库的兼容性级别，默认0。0-否，1-是
+	// <p>是否自动升级数据库的兼容性级别，默认0。0-否，1-是</p>
 	UpgradeCompatLevel *int64 `json:"UpgradeCompatLevel,omitnil,omitempty" name:"UpgradeCompatLevel"`
+
+	// <p>额外磁盘 IO 吞吐量，仅 CLOUD_HSSD 支持</p><p>取值范围：[0, 650]</p><p>单位：MB/s</p>
+	ThroughputPerformance *uint64 `json:"ThroughputPerformance,omitnil,omitempty" name:"ThroughputPerformance"`
 }
 
 type UpgradeDBInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID，形如mssql-j8kv137v
+	// <p>实例ID，形如mssql-j8kv137v</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 实例升级后内存大小，单位GB，其值不能小于当前实例内存大小
+	// <p>实例升级后内存大小，单位GB，其值不能小于当前实例内存大小</p>
 	Memory *int64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
-	// 实例升级后磁盘大小，单位GB，其值不能小于当前实例磁盘大小
+	// <p>实例升级后磁盘大小，单位GB，其值不能小于当前实例磁盘大小</p>
 	Storage *int64 `json:"Storage,omitnil,omitempty" name:"Storage"`
 
-	// 是否自动使用代金券，0 - 不使用；1 - 默认使用。取值默认为0
+	// <p>是否自动使用代金券，0 - 不使用；1 - 默认使用。取值默认为0</p>
 	AutoVoucher *int64 `json:"AutoVoucher,omitnil,omitempty" name:"AutoVoucher"`
 
-	// 代金券ID，目前单个订单只能使用一张代金券
+	// <p>代金券ID，目前单个订单只能使用一张代金券</p>
 	VoucherIds []*string `json:"VoucherIds,omitnil,omitempty" name:"VoucherIds"`
 
-	// 实例升级后的CPU核心数
+	// <p>实例升级后的CPU核心数</p>
 	Cpu *int64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 
-	// 升级sqlserver的版本，目前支持：2008R2（SQL Server 2008 Enterprise），2012SP3（SQL Server 2012 Enterprise）版本等。每个地域支持售卖的版本不同，可通过DescribeProductConfig接口来拉取每个地域可售卖的版本信息，版本不支持降级，不填则不修改版本
+	// <p>升级sqlserver的版本，目前支持：2008R2（SQL Server 2008 Enterprise），2012SP3（SQL Server 2012 Enterprise）版本等。每个地域支持售卖的版本不同，可通过DescribeProductConfig接口来拉取每个地域可售卖的版本信息，版本不支持降级，不填则不修改版本</p>
 	DBVersion *string `json:"DBVersion,omitnil,omitempty" name:"DBVersion"`
 
-	// 升级sqlserver的高可用架构,从镜像容灾升级到always on集群容灾，仅支持2017及以上版本且支持always on高可用的实例，不支持降级到镜像方式容灾，CLUSTER-升级为always on容灾，不填则不修改高可用架构
+	// <p>升级sqlserver的高可用架构,从镜像容灾升级到always on集群容灾，仅支持2017及以上版本且支持always on高可用的实例，不支持降级到镜像方式容灾，CLUSTER-升级为always on容灾，不填则不修改高可用架构</p>
 	HAType *string `json:"HAType,omitnil,omitempty" name:"HAType"`
 
-	// 修改实例是否为跨可用区容灾，SameZones-修改为同可用区 MultiZones-修改为跨可用区
+	// <p>修改实例是否为跨可用区容灾，SameZones-修改为同可用区 MultiZones-修改为跨可用区</p>
 	MultiZones *string `json:"MultiZones,omitnil,omitempty" name:"MultiZones"`
 
-	// 执行变配的方式，默认为 1。支持值包括：0 - 立刻执行，1 - 维护时间窗执行
+	// <p>执行变配的方式，默认为 1。支持值包括：0 - 立刻执行，1 - 维护时间窗执行</p>
 	WaitSwitch *int64 `json:"WaitSwitch,omitnil,omitempty" name:"WaitSwitch"`
 
-	// 多节点架构实例的备节点可用区，默认为空。如果需要在变配的同时修改指定备节点的可用区时必传，当MultiZones = MultiZones时主节点和备节点可用区不能全部相同。备机可用区集合最小为2个，最大不超过5个。
+	// <p>多节点架构实例的备节点可用区，默认为空。如果需要在变配的同时修改指定备节点的可用区时必传，当MultiZones = MultiZones时主节点和备节点可用区不能全部相同。备机可用区集合最小为2个，最大不超过5个。</p>
 	DrZones []*DrZoneInfo `json:"DrZones,omitnil,omitempty" name:"DrZones"`
 
-	// 是否自动升级数据库的兼容性级别，默认0。0-否，1-是
+	// <p>是否自动升级数据库的兼容性级别，默认0。0-否，1-是</p>
 	UpgradeCompatLevel *int64 `json:"UpgradeCompatLevel,omitnil,omitempty" name:"UpgradeCompatLevel"`
+
+	// <p>额外磁盘 IO 吞吐量，仅 CLOUD_HSSD 支持</p><p>取值范围：[0, 650]</p><p>单位：MB/s</p>
+	ThroughputPerformance *uint64 `json:"ThroughputPerformance,omitnil,omitempty" name:"ThroughputPerformance"`
 }
 
 func (r *UpgradeDBInstanceRequest) ToJsonString() string {
@@ -15439,6 +15537,7 @@ func (r *UpgradeDBInstanceRequest) FromJsonString(s string) error {
 	delete(f, "WaitSwitch")
 	delete(f, "DrZones")
 	delete(f, "UpgradeCompatLevel")
+	delete(f, "ThroughputPerformance")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpgradeDBInstanceRequest has unknown keys!", "")
 	}
@@ -15447,7 +15546,7 @@ func (r *UpgradeDBInstanceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpgradeDBInstanceResponseParams struct {
-	// 订单名称
+	// <p>订单名称</p>
 	DealName *string `json:"DealName,omitnil,omitempty" name:"DealName"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

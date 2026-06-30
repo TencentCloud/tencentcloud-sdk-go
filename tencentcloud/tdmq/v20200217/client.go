@@ -5603,6 +5603,10 @@ func NewDescribeRocketMQMigratingTopicListResponse() (response *DescribeRocketMQ
 }
 
 // DescribeRocketMQMigratingTopicList
+// 历史接口，对应接口已迁移到trocket
+//
+// 
+//
 // 查询Topic迁移状态列表，源集群和目标集群客户端数量信息需要配合DescribeRocketMQSmoothMigrationTaskTopicInsNum接口查询
 //
 // 可能返回的错误码:
@@ -5618,6 +5622,10 @@ func (c *Client) DescribeRocketMQMigratingTopicList(request *DescribeRocketMQMig
 }
 
 // DescribeRocketMQMigratingTopicList
+// 历史接口，对应接口已迁移到trocket
+//
+// 
+//
 // 查询Topic迁移状态列表，源集群和目标集群客户端数量信息需要配合DescribeRocketMQSmoothMigrationTaskTopicInsNum接口查询
 //
 // 可能返回的错误码:
@@ -6075,6 +6083,10 @@ func NewDescribeRocketMQSmoothMigrationTaskResponse() (response *DescribeRocketM
 }
 
 // DescribeRocketMQSmoothMigrationTask
+// 历史接口，对应接口已迁移到trocket
+//
+// 
+//
 // 用于获取RocketMQ平滑迁移任务详情
 //
 // 可能返回的错误码:
@@ -6084,6 +6096,10 @@ func (c *Client) DescribeRocketMQSmoothMigrationTask(request *DescribeRocketMQSm
 }
 
 // DescribeRocketMQSmoothMigrationTask
+// 历史接口，对应接口已迁移到trocket
+//
+// 
+//
 // 用于获取RocketMQ平滑迁移任务详情
 //
 // 可能返回的错误码:
@@ -7109,6 +7125,10 @@ func NewImportRocketMQConsumerGroupsResponse() (response *ImportRocketMQConsumer
 }
 
 // ImportRocketMQConsumerGroups
+// 历史接口，对应接口已迁移到trocket
+//
+// 
+//
 // 输入迁移任务id和要导入的Group，导入后台
 //
 // 可能返回的错误码:
@@ -7126,6 +7146,10 @@ func (c *Client) ImportRocketMQConsumerGroups(request *ImportRocketMQConsumerGro
 }
 
 // ImportRocketMQConsumerGroups
+// 历史接口，对应接口已迁移到trocket
+//
+// 
+//
 // 输入迁移任务id和要导入的Group，导入后台
 //
 // 可能返回的错误码:
@@ -7175,6 +7199,10 @@ func NewImportRocketMQTopicsResponse() (response *ImportRocketMQTopicsResponse) 
 }
 
 // ImportRocketMQTopics
+// 历史接口，对应接口已迁移到trocket
+//
+// 
+//
 // 导入topic列表
 //
 // 可能返回的错误码:
@@ -7192,6 +7220,10 @@ func (c *Client) ImportRocketMQTopics(request *ImportRocketMQTopicsRequest) (res
 }
 
 // ImportRocketMQTopics
+// 历史接口，对应接口已迁移到trocket
+//
+// 
+//
 // 导入topic列表
 //
 // 可能返回的错误码:

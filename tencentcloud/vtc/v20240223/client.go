@@ -199,6 +199,10 @@ func NewSubmitVideoTranslateJobResponse() (response *SubmitVideoTranslateJobResp
 }
 
 // SubmitVideoTranslateJob
+// 视频转译业务整体下线
+//
+// 
+//
 // ###### 支持音色种别列表
 //
 // | 音色名称                 | 性别 | 目标语言         | 音色ID |
@@ -328,6 +332,10 @@ func (c *Client) SubmitVideoTranslateJob(request *SubmitVideoTranslateJobRequest
 }
 
 // SubmitVideoTranslateJob
+// 视频转译业务整体下线
+//
+// 
+//
 // ###### 支持音色种别列表
 //
 // | 音色名称                 | 性别 | 目标语言         | 音色ID |

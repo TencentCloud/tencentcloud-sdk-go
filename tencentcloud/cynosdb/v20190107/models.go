@@ -954,6 +954,8 @@ type AssociateSecurityGroupsRequestParams struct {
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
 
 	// 可用区
+	//
+	// Deprecated: Zone is deprecated.
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 }
 
@@ -14016,6 +14018,8 @@ type DisassociateSecurityGroupsRequestParams struct {
 
 	// 可用区。
 	// 说明：请正确输入集群所在的主可用区，若输入非集群所在的主可用区可能显示调用成功，但实际执行会失败。
+	//
+	// Deprecated: Zone is deprecated.
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 }
 
