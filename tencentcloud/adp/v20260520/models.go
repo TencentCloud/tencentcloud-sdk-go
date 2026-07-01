@@ -1138,6 +1138,77 @@ type ConversationWorkspace struct {
 }
 
 // Predefined struct for user
+type CopyAgentFromAppRequestParams struct {
+	// <p>应用Id</p>
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>目标应用ID，kind=0时需传入</p>
+	TargetAppId *string `json:"TargetAppId,omitnil,omitempty" name:"TargetAppId"`
+
+	// <p>Agent 类型，区分 B 端配置态 Agent 与 C 端用户态 Agent</p><p>枚举值：</p><ul><li>0：  配置端Agent </li><li>1：  用户态 Agent</li></ul>
+	Kind *int64 `json:"Kind,omitnil,omitempty" name:"Kind"`
+}
+
+type CopyAgentFromAppRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>应用Id</p>
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>目标应用ID，kind=0时需传入</p>
+	TargetAppId *string `json:"TargetAppId,omitnil,omitempty" name:"TargetAppId"`
+
+	// <p>Agent 类型，区分 B 端配置态 Agent 与 C 端用户态 Agent</p><p>枚举值：</p><ul><li>0：  配置端Agent </li><li>1：  用户态 Agent</li></ul>
+	Kind *int64 `json:"Kind,omitnil,omitempty" name:"Kind"`
+}
+
+func (r *CopyAgentFromAppRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CopyAgentFromAppRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AppId")
+	delete(f, "TargetAppId")
+	delete(f, "Kind")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CopyAgentFromAppRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CopyAgentFromAppResponseParams struct {
+	// <p>主 Agent Id</p>
+	ParentAgentId *string `json:"ParentAgentId,omitnil,omitempty" name:"ParentAgentId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CopyAgentFromAppResponse struct {
+	*tchttp.BaseResponse
+	Response *CopyAgentFromAppResponseParams `json:"Response"`
+}
+
+func (r *CopyAgentFromAppResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CopyAgentFromAppResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CopyAppRequestParams struct {
 	// app_id
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`

@@ -69,8 +69,10 @@ func NewCreateLibraryResponse() (response *CreateLibraryResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_BILLINGREQUESTFAIL = "InternalError.BillingRequestFail"
 //  INTERNALERROR_POSTPAIDFAIL = "InternalError.PostpaidFail"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ADVANCEDSEARCHOPTION = "InvalidParameterValue.AdvancedSearchOption"
 //  INVALIDPARAMETERVALUE_BUCKETNAMEINVALID = "InvalidParameterValue.BucketNameInvalid"
 //  INVALIDPARAMETERVALUE_BUCKETNAMENOTBELONGYOU = "InvalidParameterValue.BucketNameNotBelongYou"
 //  INVALIDPARAMETERVALUE_BUCKETNOTFOUND = "InvalidParameterValue.BucketNotFound"
@@ -78,7 +80,10 @@ func NewCreateLibraryResponse() (response *CreateLibraryResponse) {
 //  INVALIDPARAMETERVALUE_BUCKETREGIONINVALID = "InvalidParameterValue.BucketRegionInvalid"
 //  INVALIDPARAMETERVALUE_COSSTORAGECLASS = "InvalidParameterValue.CosStorageClass"
 //  INVALIDPARAMETERVALUE_COSSTORAGECLASSINTELLIGENTTIERING = "InvalidParameterValue.CosStorageClassIntelligentTiering"
+//  INVALIDPARAMETERVALUE_LIBRARYQUOTAREQUIRED = "InvalidParameterValue.LibraryQuotaRequired"
+//  INVALIDPARAMETERVALUE_LIBRARYQUOTAREQUIRESMULTISPACE = "InvalidParameterValue.LibraryQuotaRequiresMultiSpace"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_PREPAIDINSTANCE = "ResourceNotFound.PrepaidInstance"
 //  UNAUTHORIZEDOPERATION_PASSROLE = "UnauthorizedOperation.PassRole"
 //  UNAUTHORIZEDOPERATION_SERVICELINKEDROLE = "UnauthorizedOperation.ServiceLinkedRole"
 //  UNSUPPORTEDOPERATION_BALANCELESS = "UnsupportedOperation.BalanceLess"
@@ -91,8 +96,10 @@ func (c *Client) CreateLibrary(request *CreateLibraryRequest) (response *CreateL
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_BILLINGREQUESTFAIL = "InternalError.BillingRequestFail"
 //  INTERNALERROR_POSTPAIDFAIL = "InternalError.PostpaidFail"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ADVANCEDSEARCHOPTION = "InvalidParameterValue.AdvancedSearchOption"
 //  INVALIDPARAMETERVALUE_BUCKETNAMEINVALID = "InvalidParameterValue.BucketNameInvalid"
 //  INVALIDPARAMETERVALUE_BUCKETNAMENOTBELONGYOU = "InvalidParameterValue.BucketNameNotBelongYou"
 //  INVALIDPARAMETERVALUE_BUCKETNOTFOUND = "InvalidParameterValue.BucketNotFound"
@@ -100,7 +107,10 @@ func (c *Client) CreateLibrary(request *CreateLibraryRequest) (response *CreateL
 //  INVALIDPARAMETERVALUE_BUCKETREGIONINVALID = "InvalidParameterValue.BucketRegionInvalid"
 //  INVALIDPARAMETERVALUE_COSSTORAGECLASS = "InvalidParameterValue.CosStorageClass"
 //  INVALIDPARAMETERVALUE_COSSTORAGECLASSINTELLIGENTTIERING = "InvalidParameterValue.CosStorageClassIntelligentTiering"
+//  INVALIDPARAMETERVALUE_LIBRARYQUOTAREQUIRED = "InvalidParameterValue.LibraryQuotaRequired"
+//  INVALIDPARAMETERVALUE_LIBRARYQUOTAREQUIRESMULTISPACE = "InvalidParameterValue.LibraryQuotaRequiresMultiSpace"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_PREPAIDINSTANCE = "ResourceNotFound.PrepaidInstance"
 //  UNAUTHORIZEDOPERATION_PASSROLE = "UnauthorizedOperation.PassRole"
 //  UNAUTHORIZEDOPERATION_SERVICELINKEDROLE = "UnauthorizedOperation.ServiceLinkedRole"
 //  UNSUPPORTEDOPERATION_BALANCELESS = "UnsupportedOperation.BalanceLess"

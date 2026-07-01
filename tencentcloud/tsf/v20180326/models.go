@@ -6986,6 +6986,9 @@ type DeployContainerApplicationRequestParams struct {
 
 	// <p>是否不立即启动</p>
 	DoNotStart *bool `json:"DoNotStart,omitnil,omitempty" name:"DoNotStart"`
+
+	// <p>镜像Secret列表</p>
+	ImagePullSecretList []*string `json:"ImagePullSecretList,omitnil,omitempty" name:"ImagePullSecretList"`
 }
 
 type DeployContainerApplicationRequest struct {
@@ -7179,6 +7182,9 @@ type DeployContainerApplicationRequest struct {
 
 	// <p>是否不立即启动</p>
 	DoNotStart *bool `json:"DoNotStart,omitnil,omitempty" name:"DoNotStart"`
+
+	// <p>镜像Secret列表</p>
+	ImagePullSecretList []*string `json:"ImagePullSecretList,omitnil,omitempty" name:"ImagePullSecretList"`
 }
 
 func (r *DeployContainerApplicationRequest) ToJsonString() string {
@@ -7256,6 +7262,7 @@ func (r *DeployContainerApplicationRequest) FromJsonString(s string) error {
 	delete(f, "Partition")
 	delete(f, "IncrementalDeployment")
 	delete(f, "DoNotStart")
+	delete(f, "ImagePullSecretList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeployContainerApplicationRequest has unknown keys!", "")
 	}

@@ -8954,26 +8954,26 @@ func (r *DescribeCloudNativeAPIGatewayUpstreamResponse) FromJsonString(s string)
 
 // Predefined struct for user
 type DescribeCloudNativeAPIGatewaysRequestParams struct {
-	// 返回数量，默认为 20，最大值为 100。
+	// <p>返回数量，默认为 20，最大值为 100。</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量，默认为 0。
+	// <p>偏移量，默认为 0。</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 请求过滤参数，支持按照实例名称、ID和标签键值（Name、GatewayId、Tag）筛选
+	// <p>请求过滤参数，支持按照实例名称、ID和标签键值（Name、GatewayId、Tag）筛选</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeCloudNativeAPIGatewaysRequest struct {
 	*tchttp.BaseRequest
 	
-	// 返回数量，默认为 20，最大值为 100。
+	// <p>返回数量，默认为 20，最大值为 100。</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量，默认为 0。
+	// <p>偏移量，默认为 0。</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 请求过滤参数，支持按照实例名称、ID和标签键值（Name、GatewayId、Tag）筛选
+	// <p>请求过滤参数，支持按照实例名称、ID和标签键值（Name、GatewayId、Tag）筛选</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -9000,7 +9000,7 @@ func (r *DescribeCloudNativeAPIGatewaysRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCloudNativeAPIGatewaysResponseParams struct {
-	// 获取云原生API网关实例列表响应结果。
+	// <p>获取云原生API网关实例列表响应结果。</p>
 	Result *ListCloudNativeAPIGatewayResult `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

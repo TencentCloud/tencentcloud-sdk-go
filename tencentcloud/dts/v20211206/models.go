@@ -5161,6 +5161,9 @@ type MigrateOption struct {
 
 	// <p>pgsql迁移分类：logical(逻辑迁移)、physical(物理迁移)</p>
 	MigrateWay *string `json:"MigrateWay,omitnil,omitempty" name:"MigrateWay"`
+
+	// <p>迁移配置阶段限速相关参数</p>
+	RateLimit *RateLimit `json:"RateLimit,omitnil,omitempty" name:"RateLimit"`
 }
 
 type ModifiedSubscribeObject struct {
@@ -6659,6 +6662,23 @@ type ProcessStepTip struct {
 
 	// <p>文档提示</p>
 	HelpDoc *string `json:"HelpDoc,omitnil,omitempty" name:"HelpDoc"`
+}
+
+type RateLimit struct {
+	// <p>全量导出线程数，如果不设置或设置为0则表示保持当前值，最大值为16</p>
+	DumpThread *int64 `json:"DumpThread,omitnil,omitempty" name:"DumpThread"`
+
+	// <p>全量导出Rps，如果不设置或设置为0则表示保持当前值，最大值为50000000</p>
+	DumpRps *int64 `json:"DumpRps,omitnil,omitempty" name:"DumpRps"`
+
+	// <p>全量导入线程数，如果不设置或设置为0则表示保持当前值，最大值为16</p>
+	LoadThread *int64 `json:"LoadThread,omitnil,omitempty" name:"LoadThread"`
+
+	// <p>全量导入Rps，如果不设置或设置为0则表示保持当前值，最大值为50000000</p>
+	LoadRps *int64 `json:"LoadRps,omitnil,omitempty" name:"LoadRps"`
+
+	// <p>增量导入线程数，如果不设置或设置为0则表示保持当前值，最大值为128</p>
+	SinkerThread *int64 `json:"SinkerThread,omitnil,omitempty" name:"SinkerThread"`
 }
 
 type RateLimitOption struct {

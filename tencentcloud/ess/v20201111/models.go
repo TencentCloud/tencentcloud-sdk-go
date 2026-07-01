@@ -2429,7 +2429,7 @@ type CreateBatchQuickSignUrlRequestParams struct {
 	// <p>是否允许此链接中签署方批量拒签。<br> <ul><li>false (默认): 不允许批量拒签</li> <li>true : 允许批量拒签。</li></ul></p><p>注：<code>当前合同组不支持批量拒签功能。请对合同组中的每个子合同逐一执行拒签操作，以达到拒签整个合同组的效果。</code></p>
 	CanBatchReject *bool `json:"CanBatchReject,omitnil,omitempty" name:"CanBatchReject"`
 
-	// <p>预设的动态签署方的补充信息，仅匹配对应信息的签署方才能领取合同。暂时仅对个人参与方生效。</p>
+	// <p>预设的动态签署方的补充信息，仅匹配对应信息的签署方才能领取合同。暂时仅对个人参与方生效。若为个人动态签署方，支持预设姓名、证件、手机号。若为企业员工动态签署方，仅支持预设企业名称。</p>
 	PresetApproverInfo *PresetApproverInfo `json:"PresetApproverInfo,omitnil,omitempty" name:"PresetApproverInfo"`
 
 	// <p>是否允许此链接中签署方批量确认已读文件。 <ul><li>false (默认): 不允许批量确认已读文件。</li> <li>true : 允许批量确认已读文件。</li></ul>注：<code>1. 此功能为白名单功能，使用前请联系对应客户经理进行开通。2. 若批量签署的合同中第一份待签署合同所选择的印章或者签名无法完全覆盖后续合同要求，或者当前签署人没有指定印章使用权限，则无法使用此功能，会自动退化为逐份确认。</code></p>
@@ -2484,7 +2484,7 @@ type CreateBatchQuickSignUrlRequest struct {
 	// <p>是否允许此链接中签署方批量拒签。<br> <ul><li>false (默认): 不允许批量拒签</li> <li>true : 允许批量拒签。</li></ul></p><p>注：<code>当前合同组不支持批量拒签功能。请对合同组中的每个子合同逐一执行拒签操作，以达到拒签整个合同组的效果。</code></p>
 	CanBatchReject *bool `json:"CanBatchReject,omitnil,omitempty" name:"CanBatchReject"`
 
-	// <p>预设的动态签署方的补充信息，仅匹配对应信息的签署方才能领取合同。暂时仅对个人参与方生效。</p>
+	// <p>预设的动态签署方的补充信息，仅匹配对应信息的签署方才能领取合同。暂时仅对个人参与方生效。若为个人动态签署方，支持预设姓名、证件、手机号。若为企业员工动态签署方，仅支持预设企业名称。</p>
 	PresetApproverInfo *PresetApproverInfo `json:"PresetApproverInfo,omitnil,omitempty" name:"PresetApproverInfo"`
 
 	// <p>是否允许此链接中签署方批量确认已读文件。 <ul><li>false (默认): 不允许批量确认已读文件。</li> <li>true : 允许批量确认已读文件。</li></ul>注：<code>1. 此功能为白名单功能，使用前请联系对应客户经理进行开通。2. 若批量签署的合同中第一份待签署合同所选择的印章或者签名无法完全覆盖后续合同要求，或者当前签署人没有指定印章使用权限，则无法使用此功能，会自动退化为逐份确认。</code></p>
@@ -18881,23 +18881,20 @@ type PositionInfo struct {
 }
 
 type PresetApproverInfo struct {
-	// 预设参与方姓名。
+	// <p>预设参与方姓名。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 预设参与方手机号。
+	// <p>预设参与方手机号。</p>
 	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
 
-	// 预设参与方证件号，需要和IdCardType同时传入。
-	// 
-	// 证件号码，应符合以下规则
-	// <ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成(如存在X，请大写)。</li></ul>
+	// <p>预设参与方证件号，需要和IdCardType同时传入。</p><p>证件号码，应符合以下规则</p><ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成(如存在X，请大写)。</li></ul>
 	IdCardNumber *string `json:"IdCardNumber,omitnil,omitempty" name:"IdCardNumber"`
 
-	// 预设参与方的证件类型，需要与IdCardNumber同时传入。
-	// 
-	// 证件类型，支持以下类型
-	// <ul><li><b>ID_CARD</b>: 居民身份证</li></ul>
+	// <p>预设参与方的证件类型，需要与IdCardNumber同时传入。</p><p>证件类型，支持以下类型</p><ul><li><b>ID_CARD</b>: 居民身份证</li></ul>
 	IdCardType *string `json:"IdCardType,omitnil,omitempty" name:"IdCardType"`
+
+	// <p>企业用户动态签署方场景指定预设企业名称。</p><p><code>注意：1. 若为企业动态签署方场景，此参数必须要指定。2. 企业动态签署方场景暂不支持指定姓名证件手机号等参数，仅支持指定企业名称。</code></p>
+	OrganizationName *string `json:"OrganizationName,omitnil,omitempty" name:"OrganizationName"`
 }
 
 type ProxyOrganizationInfo struct {

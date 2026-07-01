@@ -690,6 +690,19 @@ type CreateHttpAuthenticatorRequestParams struct {
 
 	// 转发请求body
 	Body []*BodyItem `json:"Body,omitnil,omitempty" name:"Body"`
+
+	// 连接UserProperty作为Header转发，默认false
+	IncludingUserProperties *bool `json:"IncludingUserProperties,omitnil,omitempty" name:"IncludingUserProperties"`
+
+	// vpcsvcId
+	// HTTP认证需要通过vpc网络访问时需要配置
+	VpcSvcId *string `json:"VpcSvcId,omitnil,omitempty" name:"VpcSvcId"`
+
+	// 网络连接类型
+	// vpc：vpc网络
+	// public：公网
+	// 通过vpc网络连接需要设置VpcSvcId参数
+	NetworkType *string `json:"NetworkType,omitnil,omitempty" name:"NetworkType"`
 }
 
 type CreateHttpAuthenticatorRequest struct {
@@ -724,6 +737,19 @@ type CreateHttpAuthenticatorRequest struct {
 
 	// 转发请求body
 	Body []*BodyItem `json:"Body,omitnil,omitempty" name:"Body"`
+
+	// 连接UserProperty作为Header转发，默认false
+	IncludingUserProperties *bool `json:"IncludingUserProperties,omitnil,omitempty" name:"IncludingUserProperties"`
+
+	// vpcsvcId
+	// HTTP认证需要通过vpc网络访问时需要配置
+	VpcSvcId *string `json:"VpcSvcId,omitnil,omitempty" name:"VpcSvcId"`
+
+	// 网络连接类型
+	// vpc：vpc网络
+	// public：公网
+	// 通过vpc网络连接需要设置VpcSvcId参数
+	NetworkType *string `json:"NetworkType,omitnil,omitempty" name:"NetworkType"`
 }
 
 func (r *CreateHttpAuthenticatorRequest) ToJsonString() string {
@@ -748,6 +774,9 @@ func (r *CreateHttpAuthenticatorRequest) FromJsonString(s string) error {
 	delete(f, "ReadTimeout")
 	delete(f, "Header")
 	delete(f, "Body")
+	delete(f, "IncludingUserProperties")
+	delete(f, "VpcSvcId")
+	delete(f, "NetworkType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateHttpAuthenticatorRequest has unknown keys!", "")
 	}
@@ -2542,6 +2571,15 @@ type DescribeClientListRequestParams struct {
 
 	// 客户端数量限制,最大1024，默认1024
 	Number *string `json:"Number,omitnil,omitempty" name:"Number"`
+
+	// 0:查询在线和离线客户端（默认值）
+	// 1:查询在线客户端
+	// 2:查询离线客户端
+	OnlineStatus *int64 `json:"OnlineStatus,omitnil,omitempty" name:"OnlineStatus"`
+
+	// 在线连接：表示最后的连接时间
+	// 离线连接：表示最后的断开连接时间
+	MaxTimestamp *int64 `json:"MaxTimestamp,omitnil,omitempty" name:"MaxTimestamp"`
 }
 
 type DescribeClientListRequest struct {
@@ -2555,6 +2593,15 @@ type DescribeClientListRequest struct {
 
 	// 客户端数量限制,最大1024，默认1024
 	Number *string `json:"Number,omitnil,omitempty" name:"Number"`
+
+	// 0:查询在线和离线客户端（默认值）
+	// 1:查询在线客户端
+	// 2:查询离线客户端
+	OnlineStatus *int64 `json:"OnlineStatus,omitnil,omitempty" name:"OnlineStatus"`
+
+	// 在线连接：表示最后的连接时间
+	// 离线连接：表示最后的断开连接时间
+	MaxTimestamp *int64 `json:"MaxTimestamp,omitnil,omitempty" name:"MaxTimestamp"`
 }
 
 func (r *DescribeClientListRequest) ToJsonString() string {
@@ -2572,6 +2619,8 @@ func (r *DescribeClientListRequest) FromJsonString(s string) error {
 	delete(f, "InstanceId")
 	delete(f, "ClientId")
 	delete(f, "Number")
+	delete(f, "OnlineStatus")
+	delete(f, "MaxTimestamp")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeClientListRequest has unknown keys!", "")
 	}
@@ -3114,40 +3163,32 @@ func (r *DescribeInsVPCEndpointsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstanceListRequestParams struct {
-	// 查询条件列表,支持以下字段
-	// InstanceName：集群名模糊搜索
-	// InstanceId：集群id精确搜索
-	// InstanceStatus：集群状态搜索（RUNNING-运行中，CREATING-创建中，MODIFYING-变配中，DELETING-删除中）
-	// 注意：配置TagFilters时该查询条件不生效。
+	// <p>查询条件列表,支持以下字段<br>InstanceName：集群名模糊搜索<br>InstanceId：集群id精确搜索<br>InstanceStatus：集群状态搜索（RUNNING-运行中，CREATING-创建中，MODIFYING-变配中，DELETING-删除中）<br>PayMode：付费模式搜索（PREPAID-包年包月，POSTPAID-按小时计费）<br>ExpiredBefore：按过期时间过滤：仅筛选包年包月（PREPAID）集群<br>注意：配置TagFilters时该查询条件不生效。</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 查询起始位置，默认0
+	// <p>查询起始位置，默认0</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 查询结果限制数量，默认20，最大100
+	// <p>查询结果限制数量，默认20，最大100</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 标签过滤器
+	// <p>标签过滤器</p>
 	TagFilters []*TagFilter `json:"TagFilters,omitnil,omitempty" name:"TagFilters"`
 }
 
 type DescribeInstanceListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 查询条件列表,支持以下字段
-	// InstanceName：集群名模糊搜索
-	// InstanceId：集群id精确搜索
-	// InstanceStatus：集群状态搜索（RUNNING-运行中，CREATING-创建中，MODIFYING-变配中，DELETING-删除中）
-	// 注意：配置TagFilters时该查询条件不生效。
+	// <p>查询条件列表,支持以下字段<br>InstanceName：集群名模糊搜索<br>InstanceId：集群id精确搜索<br>InstanceStatus：集群状态搜索（RUNNING-运行中，CREATING-创建中，MODIFYING-变配中，DELETING-删除中）<br>PayMode：付费模式搜索（PREPAID-包年包月，POSTPAID-按小时计费）<br>ExpiredBefore：按过期时间过滤：仅筛选包年包月（PREPAID）集群<br>注意：配置TagFilters时该查询条件不生效。</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 查询起始位置，默认0
+	// <p>查询起始位置，默认0</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 查询结果限制数量，默认20，最大100
+	// <p>查询结果限制数量，默认20，最大100</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 标签过滤器
+	// <p>标签过滤器</p>
 	TagFilters []*TagFilter `json:"TagFilters,omitnil,omitempty" name:"TagFilters"`
 }
 
@@ -3175,10 +3216,10 @@ func (r *DescribeInstanceListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstanceListResponseParams struct {
-	// 查询总数
+	// <p>查询总数</p>
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 实例列表
+	// <p>实例列表</p>
 	Data []*MQTTInstanceItem `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3344,6 +3385,15 @@ type DescribeInstanceResponseParams struct {
 
 	// <p>封禁规则最大数量</p>
 	BlockRuleLimit *int64 `json:"BlockRuleLimit,omitnil,omitempty" name:"BlockRuleLimit"`
+
+	// <p>删除保护开关</p>
+	DeleteProtect *bool `json:"DeleteProtect,omitnil,omitempty" name:"DeleteProtect"`
+
+	// <p>集群客户端事件格式</p><p>枚举值：</p><ul><li>V1： 详见官网文档</li><li>V2： 详见官网文档</li><li>V3： 详见官网文档</li></ul><p>默认值：V3</p>
+	EventDialect *string `json:"EventDialect,omitnil,omitempty" name:"EventDialect"`
+
+	// <p>消息HASH策略</p><p>枚举值：</p><ul><li>TOPIC_NAME： 按主题名</li><li>CLIENT_ID： 按客户端ID</li></ul><p>默认值：TOPIC_NAME</p>
+	HashMessagePolicy *string `json:"HashMessagePolicy,omitnil,omitempty" name:"HashMessagePolicy"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -4471,6 +4521,9 @@ type KickOutClientRequestParams struct {
 
 	// 客户端id
 	ClientId *string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
+
+	// 是否清理session，默认false
+	DeleteSession *bool `json:"DeleteSession,omitnil,omitempty" name:"DeleteSession"`
 }
 
 type KickOutClientRequest struct {
@@ -4481,6 +4534,9 @@ type KickOutClientRequest struct {
 
 	// 客户端id
 	ClientId *string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
+
+	// 是否清理session，默认false
+	DeleteSession *bool `json:"DeleteSession,omitnil,omitempty" name:"DeleteSession"`
 }
 
 func (r *KickOutClientRequest) ToJsonString() string {
@@ -4497,6 +4553,7 @@ func (r *KickOutClientRequest) FromJsonString(s string) error {
 	}
 	delete(f, "InstanceId")
 	delete(f, "ClientId")
+	delete(f, "DeleteSession")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "KickOutClientRequest has unknown keys!", "")
 	}
@@ -4606,6 +4663,12 @@ type MQTTClientInfo struct {
 
 	// 客户端的订阅列表
 	MQTTClientSubscriptions []*MQTTClientSubscription `json:"MQTTClientSubscriptions,omitnil,omitempty" name:"MQTTClientSubscriptions"`
+
+	// clean-session标志，在客户端使用mqtt5协议时，该字段即clean-start
+	CleanSession *bool `json:"CleanSession,omitnil,omitempty" name:"CleanSession"`
+
+	// MQTT5协议：expireIntervalInSeconds
+	ExpireIntervalInSeconds *int64 `json:"ExpireIntervalInSeconds,omitnil,omitempty" name:"ExpireIntervalInSeconds"`
 }
 
 type MQTTClientSubscription struct {
@@ -4730,6 +4793,8 @@ type MQTTInstanceItem struct {
 	SharedSubscriptionGroupLimit *int64 `json:"SharedSubscriptionGroupLimit,omitnil,omitempty" name:"SharedSubscriptionGroupLimit"`
 
 	// 单个共享订阅组TopicFilter数限制
+	//
+	// Deprecated: MaxTopicFilterPerSharedSubscriptionGroup is deprecated.
 	MaxTopicFilterPerSharedSubscriptionGroup *int64 `json:"MaxTopicFilterPerSharedSubscriptionGroup,omitnil,omitempty" name:"MaxTopicFilterPerSharedSubscriptionGroup"`
 
 	// 自动订阅规则条数限制
@@ -4737,6 +4802,9 @@ type MQTTInstanceItem struct {
 
 	// 单条自动订阅规则TopicFilter数限制
 	MaxTopicFilterPerAutoSubscriptionPolicy *int64 `json:"MaxTopicFilterPerAutoSubscriptionPolicy,omitnil,omitempty" name:"MaxTopicFilterPerAutoSubscriptionPolicy"`
+
+	// 集群删除保护开关
+	DeleteProtect *bool `json:"DeleteProtect,omitnil,omitempty" name:"DeleteProtect"`
 }
 
 type MQTTMessage struct {

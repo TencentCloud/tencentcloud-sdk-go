@@ -133,32 +133,32 @@ func (r *CreateAccelerateAreasResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateEndpointGroupRequestParams struct {
-	// 全球加速实例ID。
+	// <p>全球加速实例ID。</p>
 	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
 
-	// 监听器ID。
+	// <p>监听器ID。</p>
 	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
 
-	// 终端节点组类型。支持VIRTUAL，DEFAULT。
+	// <p>终端节点组类型。</p><p>枚举值：</p><ul><li>VIRTUAL： 自定义终端节点组</li><li>DEFAULT： 默认终端节点组</li></ul>
 	EndpointGroupType *string `json:"EndpointGroupType,omitnil,omitempty" name:"EndpointGroupType"`
 
-	// 终端节点组配置。
+	// <p>终端节点组配置。</p>
 	EndpointGroupConfiguration *EndpointGroupConfiguration `json:"EndpointGroupConfiguration,omitnil,omitempty" name:"EndpointGroupConfiguration"`
 }
 
 type CreateEndpointGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 全球加速实例ID。
+	// <p>全球加速实例ID。</p>
 	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
 
-	// 监听器ID。
+	// <p>监听器ID。</p>
 	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
 
-	// 终端节点组类型。支持VIRTUAL，DEFAULT。
+	// <p>终端节点组类型。</p><p>枚举值：</p><ul><li>VIRTUAL： 自定义终端节点组</li><li>DEFAULT： 默认终端节点组</li></ul>
 	EndpointGroupType *string `json:"EndpointGroupType,omitnil,omitempty" name:"EndpointGroupType"`
 
-	// 终端节点组配置。
+	// <p>终端节点组配置。</p>
 	EndpointGroupConfiguration *EndpointGroupConfiguration `json:"EndpointGroupConfiguration,omitnil,omitempty" name:"EndpointGroupConfiguration"`
 }
 
@@ -186,10 +186,10 @@ func (r *CreateEndpointGroupRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateEndpointGroupResponseParams struct {
-	// 任务ID。
+	// <p>任务ID。</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 终端节点组实例ID。
+	// <p>终端节点组实例ID。</p>
 	EndpointGroupId *string `json:"EndpointGroupId,omitnil,omitempty" name:"EndpointGroupId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -214,26 +214,26 @@ func (r *CreateEndpointGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateForwardingPolicyRequestParams struct {
-	// 全球加速实例ID。
+	// <p>全球加速实例ID。</p>
 	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
 
-	// 监听器ID。
+	// <p>监听器ID。</p>
 	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
 
-	// 域名。
+	// <p>域名。</p><p>参数格式：格式，必须满足正则表达式：^(<a href="?:[a-z0-9-]{0,61}[a-z0-9]">a-z0-9</a>?.)+[a-z]{2,}$</p><p>入参限制：长度范围是1-80。</p>
 	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
 }
 
 type CreateForwardingPolicyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 全球加速实例ID。
+	// <p>全球加速实例ID。</p>
 	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
 
-	// 监听器ID。
+	// <p>监听器ID。</p>
 	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
 
-	// 域名。
+	// <p>域名。</p><p>参数格式：格式，必须满足正则表达式：^(<a href="?:[a-z0-9-]{0,61}[a-z0-9]">a-z0-9</a>?.)+[a-z]{2,}$</p><p>入参限制：长度范围是1-80。</p>
 	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
 }
 
@@ -260,10 +260,10 @@ func (r *CreateForwardingPolicyRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateForwardingPolicyResponseParams struct {
-	// 异步任务ID。
+	// <p>异步任务ID。</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 七层转发策略ID。
+	// <p>七层转发策略ID。</p>
 	ForwardingPolicyId *string `json:"ForwardingPolicyId,omitnil,omitempty" name:"ForwardingPolicyId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -297,28 +297,28 @@ type CreateForwardingRuleRequestParams struct {
 	// <p>策略ID。</p>
 	ForwardingPolicyId *string `json:"ForwardingPolicyId,omitnil,omitempty" name:"ForwardingPolicyId"`
 
-	// <p>七层转发规则条件信息。</p>
+	// <p>七层转发规则条件信息。</p><p>数组长度最大不能超过1。</p>
 	RuleConditions []*RuleCondition `json:"RuleConditions,omitnil,omitempty" name:"RuleConditions"`
 
-	// <p>七层转发规则行为信息。</p>
+	// <p>七层转发规则行为信息。</p><p>数组长度最大不能超过1。</p>
 	RuleActions []*RuleAction `json:"RuleActions,omitnil,omitempty" name:"RuleActions"`
 
-	// <p>回源Header信息。</p>
+	// <p>回源Header信息。</p><p>数组长度最大不能超过5。当RuleActions.RuleActionType是ForwardGroup时，此字段必传。</p>
 	OriginHeaders []*OriginHeader `json:"OriginHeaders,omitnil,omitempty" name:"OriginHeaders"`
 
-	// <p>是否开启回源sni。</p>
+	// <p>是否开启回源sni。</p><p>默认值：False</p><p>当RuleActions.RuleActionType是ForwardGroup时，此字段必传。</p>
 	EnableOriginSni *bool `json:"EnableOriginSni,omitnil,omitempty" name:"EnableOriginSni"`
 
-	// <p>回源sni。</p>
+	// <p>回源sni。</p><p>入参限制：长度不能超过80。</p><p>当EnableOriginSni为True时，此字段必传。当RuleActions.RuleActionType是ForwardGroup时，此字段必传。</p>
 	OriginSni *string `json:"OriginSni,omitnil,omitempty" name:"OriginSni"`
 
-	// <p>回源host。</p>
+	// <p>回源host。</p><p>入参限制：长度不超过80。</p><p>当RuleActions.RuleActionType是ForwardGroup时，此字段必传。</p>
 	OriginHost *string `json:"OriginHost,omitnil,omitempty" name:"OriginHost"`
 
-	// <p>源站响应头</p>
+	// <p>源站响应头</p><p>数组长度不超过5。可以传空数组，代表清空配置。</p>
 	ResponseHeaders []*ResponseHeaders `json:"ResponseHeaders,omitnil,omitempty" name:"ResponseHeaders"`
 
-	// <p>删除源站响应头</p>
+	// <p>删除源站响应头</p><p>数组长度不超过5。可以传空数组，代表清空配置。</p>
 	HideResponseHeaders []*HideResponseHeaders `json:"HideResponseHeaders,omitnil,omitempty" name:"HideResponseHeaders"`
 }
 
@@ -334,28 +334,28 @@ type CreateForwardingRuleRequest struct {
 	// <p>策略ID。</p>
 	ForwardingPolicyId *string `json:"ForwardingPolicyId,omitnil,omitempty" name:"ForwardingPolicyId"`
 
-	// <p>七层转发规则条件信息。</p>
+	// <p>七层转发规则条件信息。</p><p>数组长度最大不能超过1。</p>
 	RuleConditions []*RuleCondition `json:"RuleConditions,omitnil,omitempty" name:"RuleConditions"`
 
-	// <p>七层转发规则行为信息。</p>
+	// <p>七层转发规则行为信息。</p><p>数组长度最大不能超过1。</p>
 	RuleActions []*RuleAction `json:"RuleActions,omitnil,omitempty" name:"RuleActions"`
 
-	// <p>回源Header信息。</p>
+	// <p>回源Header信息。</p><p>数组长度最大不能超过5。当RuleActions.RuleActionType是ForwardGroup时，此字段必传。</p>
 	OriginHeaders []*OriginHeader `json:"OriginHeaders,omitnil,omitempty" name:"OriginHeaders"`
 
-	// <p>是否开启回源sni。</p>
+	// <p>是否开启回源sni。</p><p>默认值：False</p><p>当RuleActions.RuleActionType是ForwardGroup时，此字段必传。</p>
 	EnableOriginSni *bool `json:"EnableOriginSni,omitnil,omitempty" name:"EnableOriginSni"`
 
-	// <p>回源sni。</p>
+	// <p>回源sni。</p><p>入参限制：长度不能超过80。</p><p>当EnableOriginSni为True时，此字段必传。当RuleActions.RuleActionType是ForwardGroup时，此字段必传。</p>
 	OriginSni *string `json:"OriginSni,omitnil,omitempty" name:"OriginSni"`
 
-	// <p>回源host。</p>
+	// <p>回源host。</p><p>入参限制：长度不超过80。</p><p>当RuleActions.RuleActionType是ForwardGroup时，此字段必传。</p>
 	OriginHost *string `json:"OriginHost,omitnil,omitempty" name:"OriginHost"`
 
-	// <p>源站响应头</p>
+	// <p>源站响应头</p><p>数组长度不超过5。可以传空数组，代表清空配置。</p>
 	ResponseHeaders []*ResponseHeaders `json:"ResponseHeaders,omitnil,omitempty" name:"ResponseHeaders"`
 
-	// <p>删除源站响应头</p>
+	// <p>删除源站响应头</p><p>数组长度不超过5。可以传空数组，代表清空配置。</p>
 	HideResponseHeaders []*HideResponseHeaders `json:"HideResponseHeaders,omitnil,omitempty" name:"HideResponseHeaders"`
 }
 
@@ -525,37 +525,37 @@ type CreateListenerRequestParams struct {
 	// <p>描述信息，最大长度不能超过100个字节。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// <p>监听类型，默认为智能路由。</p>
+	// <p>监听类型，默认为智能路由。</p><p>枚举值：</p><ul><li>Standard： 智能路由。</li></ul>
 	ListenerType *string `json:"ListenerType,omitnil,omitempty" name:"ListenerType"`
 
-	// <p>协议，默认为TCP。</p>
+	// <p>协议，默认为TCP。支持配置&#39;TCP&#39;, &#39;UDP&#39;, &#39;HTTP&#39;, &#39;HTTPS&#39;。</p>
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
-	// <p>连接空闲等待时间。</p>
+	// <p>连接空闲等待时间。</p><p>1、HTTP/HTTPS监听器，默认值为15，支持范围为1-60；<br>2、TCP监听器，默认值为900，支持范围为10-900；<br>3、UDP监听器，默认值为20，支持范围为10-20；</p>
 	IdleTimeout *uint64 `json:"IdleTimeout,omitnil,omitempty" name:"IdleTimeout"`
 
-	// <p>四层获取源IP方式，支持&#39;TOA&#39;, &#39;ProxyProtocol&#39;。</p>
+	// <p>四层获取源IP方式，支持&#39;TOA&#39;, &#39;ProxyProtocol&#39;, &#39;ProxyProtocolV2&#39;。</p><p>需要开启四层获取源IP方式，才填写此参数。</p>
 	GetRealIpType *string `json:"GetRealIpType,omitnil,omitempty" name:"GetRealIpType"`
 
-	// <p>是否开启会话保持。</p>
+	// <p>是否开启会话保持。支持配置&#39;Open&#39;, &#39;Close&#39;。</p><p>枚举值：</p><ul><li>Open： 开启。</li><li>Close： 关闭。</li></ul>
 	ClientAffinity *string `json:"ClientAffinity,omitnil,omitempty" name:"ClientAffinity"`
 
-	// <p>请求超时时间。</p>
+	// <p>请求超时时间。</p><p>取值范围：[1, 180]</p><p>默认值：60</p><p>当HTTPS监听器时才可配置此参数。</p>
 	RequestTimeout *uint64 `json:"RequestTimeout,omitnil,omitempty" name:"RequestTimeout"`
 
 	// <p>是否打开七层获取源IP方式。</p>
 	XForwardedForRealIp *bool `json:"XForwardedForRealIp,omitnil,omitempty" name:"XForwardedForRealIp"`
 
-	// <p>解析方式。UNIDIRECTIONAL：双向。MUTUAL：单向。</p>
+	// <p>解析方式。</p><p>枚举值：</p><ul><li>UNIDIRECTIONAL： 双向。</li><li>U： 单向。</li></ul><p>HTTPS监听器，此字段必传。</p>
 	CertificationType *string `json:"CertificationType,omitnil,omitempty" name:"CertificationType"`
 
-	// <p>加密算法套件。</p>
+	// <p>加密算法套件。支持配置&#39;tls_policy_1.0-2&#39;, &#39;tls_policy_1.1-2&#39;, &#39;tls_policy_1.2&#39;, &#39;tls_policy_1.2_strict&#39;, &#39;tls_policy_1.2_strict-1.3&#39;。</p>
 	CipherPolicyId *string `json:"CipherPolicyId,omitnil,omitempty" name:"CipherPolicyId"`
 
-	// <p>服务器证书。</p>
+	// <p>服务器证书。</p><p>当是HTTPS监听器时，此字段必传。</p>
 	ServerCertificates []*string `json:"ServerCertificates,omitnil,omitempty" name:"ServerCertificates"`
 
-	// <p>客户端证书。</p>
+	// <p>客户端证书。</p><p>当时HTTPS监听器且开启双向认证时，此字段必传。</p>
 	ClientCaCertificates []*string `json:"ClientCaCertificates,omitnil,omitempty" name:"ClientCaCertificates"`
 
 	// <p>HTTPS监听器支持选择版本</p><p>枚举值：</p><ul><li>HTTP/1.1： HTTP/1.1</li><li>HTTP/2： HTTP/2</li></ul>
@@ -577,37 +577,37 @@ type CreateListenerRequest struct {
 	// <p>描述信息，最大长度不能超过100个字节。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// <p>监听类型，默认为智能路由。</p>
+	// <p>监听类型，默认为智能路由。</p><p>枚举值：</p><ul><li>Standard： 智能路由。</li></ul>
 	ListenerType *string `json:"ListenerType,omitnil,omitempty" name:"ListenerType"`
 
-	// <p>协议，默认为TCP。</p>
+	// <p>协议，默认为TCP。支持配置&#39;TCP&#39;, &#39;UDP&#39;, &#39;HTTP&#39;, &#39;HTTPS&#39;。</p>
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
-	// <p>连接空闲等待时间。</p>
+	// <p>连接空闲等待时间。</p><p>1、HTTP/HTTPS监听器，默认值为15，支持范围为1-60；<br>2、TCP监听器，默认值为900，支持范围为10-900；<br>3、UDP监听器，默认值为20，支持范围为10-20；</p>
 	IdleTimeout *uint64 `json:"IdleTimeout,omitnil,omitempty" name:"IdleTimeout"`
 
-	// <p>四层获取源IP方式，支持&#39;TOA&#39;, &#39;ProxyProtocol&#39;。</p>
+	// <p>四层获取源IP方式，支持&#39;TOA&#39;, &#39;ProxyProtocol&#39;, &#39;ProxyProtocolV2&#39;。</p><p>需要开启四层获取源IP方式，才填写此参数。</p>
 	GetRealIpType *string `json:"GetRealIpType,omitnil,omitempty" name:"GetRealIpType"`
 
-	// <p>是否开启会话保持。</p>
+	// <p>是否开启会话保持。支持配置&#39;Open&#39;, &#39;Close&#39;。</p><p>枚举值：</p><ul><li>Open： 开启。</li><li>Close： 关闭。</li></ul>
 	ClientAffinity *string `json:"ClientAffinity,omitnil,omitempty" name:"ClientAffinity"`
 
-	// <p>请求超时时间。</p>
+	// <p>请求超时时间。</p><p>取值范围：[1, 180]</p><p>默认值：60</p><p>当HTTPS监听器时才可配置此参数。</p>
 	RequestTimeout *uint64 `json:"RequestTimeout,omitnil,omitempty" name:"RequestTimeout"`
 
 	// <p>是否打开七层获取源IP方式。</p>
 	XForwardedForRealIp *bool `json:"XForwardedForRealIp,omitnil,omitempty" name:"XForwardedForRealIp"`
 
-	// <p>解析方式。UNIDIRECTIONAL：双向。MUTUAL：单向。</p>
+	// <p>解析方式。</p><p>枚举值：</p><ul><li>UNIDIRECTIONAL： 双向。</li><li>U： 单向。</li></ul><p>HTTPS监听器，此字段必传。</p>
 	CertificationType *string `json:"CertificationType,omitnil,omitempty" name:"CertificationType"`
 
-	// <p>加密算法套件。</p>
+	// <p>加密算法套件。支持配置&#39;tls_policy_1.0-2&#39;, &#39;tls_policy_1.1-2&#39;, &#39;tls_policy_1.2&#39;, &#39;tls_policy_1.2_strict&#39;, &#39;tls_policy_1.2_strict-1.3&#39;。</p>
 	CipherPolicyId *string `json:"CipherPolicyId,omitnil,omitempty" name:"CipherPolicyId"`
 
-	// <p>服务器证书。</p>
+	// <p>服务器证书。</p><p>当是HTTPS监听器时，此字段必传。</p>
 	ServerCertificates []*string `json:"ServerCertificates,omitnil,omitempty" name:"ServerCertificates"`
 
-	// <p>客户端证书。</p>
+	// <p>客户端证书。</p><p>当时HTTPS监听器且开启双向认证时，此字段必传。</p>
 	ClientCaCertificates []*string `json:"ClientCaCertificates,omitnil,omitempty" name:"ClientCaCertificates"`
 
 	// <p>HTTPS监听器支持选择版本</p><p>枚举值：</p><ul><li>HTTP/1.1： HTTP/1.1</li><li>HTTP/2： HTTP/2</li></ul>
@@ -1539,26 +1539,26 @@ func (r *DescribeForwardingRuleResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeGlobalAcceleratorsRequestParams struct {
-	// 偏移量，默认为0。
+	// <p>偏移量，默认为0。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，默认为20，最大值为100。
+	// <p>返回数量。</p><p>取值范围：[1, 200]</p><p>默认值：20</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 过滤条件。<li>global-accelerator-id - String -（过滤条件）全球加速实例ID。</li> <li>global-accelerator-state - String -（过滤条件）全球加速实例状态。</li>
+	// <p>过滤条件。<li>global-accelerator-id - String -（过滤条件）全球加速实例ID。</li> <li>global-accelerator-state - String -（过滤条件）全球加速实例状态。</li></p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeGlobalAcceleratorsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 偏移量，默认为0。
+	// <p>偏移量，默认为0。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，默认为20，最大值为100。
+	// <p>返回数量。</p><p>取值范围：[1, 200]</p><p>默认值：20</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 过滤条件。<li>global-accelerator-id - String -（过滤条件）全球加速实例ID。</li> <li>global-accelerator-state - String -（过滤条件）全球加速实例状态。</li>
+	// <p>过滤条件。<li>global-accelerator-id - String -（过滤条件）全球加速实例ID。</li> <li>global-accelerator-state - String -（过滤条件）全球加速实例状态。</li></p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -1585,10 +1585,10 @@ func (r *DescribeGlobalAcceleratorsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeGlobalAcceleratorsResponseParams struct {
-	// 符合条件的全球加速实例。
+	// <p>符合条件的全球加速实例。</p>
 	GlobalAcceleratorSet []*GlobalAcceleratorSet `json:"GlobalAcceleratorSet,omitnil,omitempty" name:"GlobalAcceleratorSet"`
 
-	// 符合条件的实例个数。
+	// <p>符合条件的实例个数。</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1764,73 +1764,73 @@ type EndpointConfigurations struct {
 }
 
 type EndpointGroupConfiguration struct {
-	// <p>名称，最大长度不能超过60个字节。</p>
+	// <p>终端节点组名称。</p><p>最大长度不能超过128个字节。必须以字母（a-z, A-Z）或中文字符开头。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// <p>地域。</p>
+	// <p>终端节点组所在地域。</p>
 	EndpointGroupRegion *string `json:"EndpointGroupRegion,omitnil,omitempty" name:"EndpointGroupRegion"`
 
 	// <p>终端节点配置。</p>
 	EndpointConfigurations []*EndpointConfigurations `json:"EndpointConfigurations,omitnil,omitempty" name:"EndpointConfigurations"`
 
-	// <p>检查协议。支持&#39;TCP&#39;, &#39;HTTP&#39;, &#39;HTTPS&#39;, &#39;PING&#39;, &#39;CUSTOM&#39;。</p>
+	// <p>检查协议。支持配置&#39;TCP&#39;, &#39;HTTP&#39;, &#39;PING&#39;, &#39;CUSTOM&#39;。</p><p>枚举值：</p><ul><li>TCP： 当终端节点组所在监听器协议是TCP时，可以选择检查协议为TCP。</li><li>HTTP： 当终端节点组所在监听器协议是HTTP或HTTPS时，可以选择检查协议为HTTP。</li><li>PING： 当终端节点组所在监听器协议是UDP时，可以选择检查协议为PING。</li><li>CUSTOM： 当终端节点组所在监听器协议是UDP或TCP时，可以选择检查协议为CUSTOM。</li></ul><p>当开启健康检查时此字段必传。</p>
 	CheckType *string `json:"CheckType,omitnil,omitempty" name:"CheckType"`
 
-	// <p>描述信息，最大长度不能超过100个字节。</p>
+	// <p>描述信息。</p><p>默认值：默认值为空，代表不配置描述信息。</p><p>最大长度不能超过100个字节。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// <p>检查端口。</p>
+	// <p>检查端口。</p><p>入参限制：范围是1-65535。</p><p>当CheckType为CUSTOM时候，此字段必传。</p>
 	CheckPort *string `json:"CheckPort,omitnil,omitempty" name:"CheckPort"`
 
-	// <p>检查内容。</p>
+	// <p>检查内容。支持配置&#39;TEXT&#39;。</p><p>枚举值：</p><ul><li>TEXT： 文本内容。</li></ul><p>当CheckType为CUSTOM时候，此字段必传。</p>
 	ContextType *string `json:"ContextType,omitnil,omitempty" name:"ContextType"`
 
-	// <p>检查请求。</p>
+	// <p>检查请求。</p><p>入参限制：字节长度要在1-500范围内。</p><p>当CheckType为CUSTOM时候，此字段必传。</p>
 	CheckSendContext *string `json:"CheckSendContext,omitnil,omitempty" name:"CheckSendContext"`
 
-	// <p>检查返回结果。</p>
+	// <p>检查返回结果。</p><p>入参限制：字节长度要在1-500范围内。</p><p>当CheckType为CUSTOM时候，此字段必传。</p>
 	CheckRecvContext *string `json:"CheckRecvContext,omitnil,omitempty" name:"CheckRecvContext"`
 
-	// <p>是否开启健康检查。</p>
+	// <p>是否开启健康检查。</p><p>默认值：False</p>
 	EnableHealthCheck *bool `json:"EnableHealthCheck,omitnil,omitempty" name:"EnableHealthCheck"`
 
-	// <p>响应超时时间。</p>
+	// <p>响应超时时间。</p><p>取值范围：[1, 100]</p><p>默认值：2</p><p>开启健康检查时，此字段必传。</p>
 	ConnectTimeout *uint64 `json:"ConnectTimeout,omitnil,omitempty" name:"ConnectTimeout"`
 
-	// <p>健康检查间隔。</p>
+	// <p>健康检查间隔。</p><p>取值范围：[5, 300]</p><p>默认值：30</p><p>开启健康检查，此字段必传。</p>
 	HealthCheckInterval *uint64 `json:"HealthCheckInterval,omitnil,omitempty" name:"HealthCheckInterval"`
 
-	// <p>不健康阀值。</p>
+	// <p>不健康阀值。</p><p>取值范围：[1, 10]</p><p>默认值：3</p><p>开启健康检查，此字段必传。</p>
 	UnhealthyThreshold *uint64 `json:"UnhealthyThreshold,omitnil,omitempty" name:"UnhealthyThreshold"`
 
-	// <p>健康阈值。</p>
+	// <p>健康阈值。</p><p>取值范围：[1, 10]</p><p>默认值：3</p><p>开启健康检查，此字段必传。</p>
 	HealthyThreshold *uint64 `json:"HealthyThreshold,omitnil,omitempty" name:"HealthyThreshold"`
 
-	// <p>回源协议。</p>
+	// <p>回源协议。支持配置&#39;HTTP&#39;, &#39;HTTPS&#39;。</p><p>枚举值：</p><ul><li>HTTP： HTTP回源；当终端节点组所在监听器协议是HTTP或HTTPS时可以配置HTTP。</li><li>HTTPS： HTTPS回源；当终端节点组所在监听器协议是HTTPS时可以配置HTTPS。</li></ul><p>当终端节点组所在监听器协议为HTTP或HTTPS时候，此字段必传。</p>
 	ForwardProtocol *string `json:"ForwardProtocol,omitnil,omitempty" name:"ForwardProtocol"`
 
-	// <p>检查域名。</p>
+	// <p>检查域名。</p><p>入参限制：字节长度范围是3-80。</p><p>当CheckType是HTTP时，此字段必传。</p>
 	CheckDomain *string `json:"CheckDomain,omitnil,omitempty" name:"CheckDomain"`
 
-	// <p>检查URL。</p>
+	// <p>检查URL。</p><p>参数格式：必须满足正则：^[a-zA-Z0-9_.\-\/]{1,80}$</p><p>当CheckType是HTTP时，此字段必传。</p>
 	CheckPath *string `json:"CheckPath,omitnil,omitempty" name:"CheckPath"`
 
-	// <p>请求方式。</p>
+	// <p>请求方式。支持配置&#39;GET&#39;, &#39;HEAD&#39;。</p><p>枚举值：</p><ul><li>GET： 请求方式为GET。</li><li>HEAD： 请求方式为HEAD。</li></ul><p>当CheckType是HTTP时，此字段必传。</p>
 	CheckMethod *string `json:"CheckMethod,omitnil,omitempty" name:"CheckMethod"`
 
-	// <p>状态检测码。</p>
+	// <p>状态检测码。支持配置&#39;http_2xx&#39;, &#39;http_3xx&#39;, &#39;http_4xx&#39;, &#39;http_5xx&#39;。</p><p>枚举值：</p><ul><li>http_2xx： 2开头的http code。</li><li>http_3xx： 3开头的http code。</li><li>http_4xx： 4开头的http code。</li><li>http_5xx： 5开头的http code。</li></ul><p>当CheckType是HTTP时，此字段必传。</p>
 	StatusMask []*string `json:"StatusMask,omitnil,omitempty" name:"StatusMask"`
 
-	// <p>端口映射。</p>
+	// <p>端口映射。</p><p>入参限制：七层支持1个端口映射，四层支持最多30个端口映射。</p>
 	PortOverrides []*PortOverride `json:"PortOverrides,omitnil,omitempty" name:"PortOverrides"`
 
-	// <p>运用商类型。</p>
+	// <p>运营商类型。支持配置&#39;CMCC&#39;, &#39;CTCC&#39;, &#39;CUCC&#39;。</p><p>枚举值：</p><ul><li>CMCC： 中国移动</li><li>CUCC： 中国联通</li><li>CTCC： 中国电信</li></ul><p>当终端节点组地域为三网地域时，此字段必传。</p>
 	IspType *string `json:"IspType,omitnil,omitempty" name:"IspType"`
 
-	// <p>HPPTS加密算法套件</p>
+	// <p>HPPTS加密算法套件；支持配置&#39;tls_policy_1.0-2&#39;, &#39;tls_policy_1.1-2&#39;, &#39;tls_policy_1.2&#39;, &#39;tls_policy_1.2_strict&#39;, &#39;tls_policy_1.2_strict-1.3&#39;；</p><p>枚举值：</p><ul><li>tls_policy_1.0-2： 加密算法套件。</li><li>tls_policy_1.1-2： 加密算法套件。</li><li>tls_policy_1.2： 加密算法套件。</li><li>tls_policy_1.2_strict： 加密算法套件。</li><li>tls_policy_1.2_strict-1.3： 加密算法套件。</li></ul><p>当回源协议为HTTPS，此字段必传。</p>
 	CipherPolicyId *string `json:"CipherPolicyId,omitnil,omitempty" name:"CipherPolicyId"`
 
-	// <p>HTTPS回源协议支持选择[&#39;HTTP/1.1&#39;, &#39;HTTP/2&#39;]</p><p>枚举值：</p><ul><li>HTTP/1.1： 版本HTTP/1.1</li><li>HTTP/2： 版本HTTP/2</li></ul>
+	// <p>回源协议。支持配置&#39;HTTP/1.1&#39;, &#39;HTTP/2&#39;。</p><p>枚举值：</p><ul><li>HTTP/1.1： 版本HTTP/1.1</li><li>HTTP/2： 版本HTTP/2</li></ul><p>当回源协议为HTTPS时，此字段必传。</p>
 	HttpVersion *string `json:"HttpVersion,omitnil,omitempty" name:"HttpVersion"`
 }
 
@@ -2023,10 +2023,10 @@ type GlobalAcceleratorSet struct {
 }
 
 type HideResponseHeaders struct {
-	// <p>key</p>
+	// <p>key</p><p>入参限制：长度不能超过128</p><p>如果字符串包含$，那仅能配置&#39;$remote_addr&#39;, &#39;$remote_port&#39;，否则不支持。</p>
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
-	// <p>value</p>
+	// <p>value</p><p>当前传&#39;&#39;值即可。</p>
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
@@ -2181,61 +2181,61 @@ type ModifyEndpointGroupRequestParams struct {
 	// <p>终端节点配置。</p>
 	EndpointConfigurations []*EndpointConfigurations `json:"EndpointConfigurations,omitnil,omitempty" name:"EndpointConfigurations"`
 
-	// <p>名称，最大长度不能超过60个字节。</p>
+	// <p>名称。</p><p>入参限制：最大长度不能超过128个字节。</p><p>以大小写字母或中文开头。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// <p>描述信息，最大长度不能超过100个字节。</p>
+	// <p>描述信息。</p><p>入参限制：最大长度不能超过100个字节。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// <p>是否开启健康检查。</p>
 	EnableHealthCheck *bool `json:"EnableHealthCheck,omitnil,omitempty" name:"EnableHealthCheck"`
 
-	// <p>响应超时时间。</p>
+	// <p>响应超时时间。</p><p>取值范围：[1, 100]</p><p>当开启健康检查时候，此参数必传。</p>
 	ConnectTimeout *uint64 `json:"ConnectTimeout,omitnil,omitempty" name:"ConnectTimeout"`
 
-	// <p>健康检查间隔。</p>
+	// <p>健康检查间隔。</p><p>取值范围：[5, 300]</p><p>当开启健康检查时，此参数必传。</p>
 	HealthCheckInterval *uint64 `json:"HealthCheckInterval,omitnil,omitempty" name:"HealthCheckInterval"`
 
-	// <p>不健康阀值。</p>
+	// <p>不健康阀值。</p><p>取值范围：[1, 10]</p><p>当开启健康检查时，此字段必传。</p>
 	UnhealthyThreshold *uint64 `json:"UnhealthyThreshold,omitnil,omitempty" name:"UnhealthyThreshold"`
 
-	// <p>健康阀值。</p>
+	// <p>健康阀值。</p><p>取值范围：[1, 10]</p><p>当开启健康检查时，此字段必传。</p>
 	HealthyThreshold *uint64 `json:"HealthyThreshold,omitnil,omitempty" name:"HealthyThreshold"`
 
-	// <p>检查协议。</p>
+	// <p>检查协议。</p><p>入参限制：支持填写：&#39;TCP&#39;, &#39;HTTP&#39;, &#39;PING&#39;, &#39;CUSTOM&#39;。</p><p>1、当监听器是TCP时，可以选CUSTOM+TCP。<br>2、当监听器是UDP时，可以选PING+CUSTOM。<br>3、当监听器是HTTP或HTTPS时，可以选HTTP。</p>
 	CheckType *string `json:"CheckType,omitnil,omitempty" name:"CheckType"`
 
-	// <p>检查端口。</p>
+	// <p>检查端口。</p><p>取值范围：[1, 65535]</p><p>当CheckType是CUSTOM时，此字段必传。</p>
 	CheckPort *uint64 `json:"CheckPort,omitnil,omitempty" name:"CheckPort"`
 
-	// <p>检查内容。</p>
+	// <p>检查内容。</p><p>入参限制：仅支持TEXT。</p><p>当CheckType是CUSTOM时，此字段必传。</p>
 	ContextType *string `json:"ContextType,omitnil,omitempty" name:"ContextType"`
 
-	// <p>检查请求。</p>
+	// <p>检查请求。</p><p>入参限制：长度范围在1-500。</p><p>当CheckType是CUSTOM时，此字段必传。</p>
 	CheckSendContext *string `json:"CheckSendContext,omitnil,omitempty" name:"CheckSendContext"`
 
-	// <p>检查返回结果。</p>
+	// <p>检查返回结果。</p><p>入参限制：长度范围在1-500。</p><p>当CheckType是CUSTOM时，此字段必传。</p>
 	CheckRecvContext *string `json:"CheckRecvContext,omitnil,omitempty" name:"CheckRecvContext"`
 
-	// <p>检查域名。</p>
+	// <p>检查域名。</p><p>入参限制：长度范围在3-80。</p><p>当CheckType是HTTP时，此字段必传。</p>
 	CheckDomain *string `json:"CheckDomain,omitnil,omitempty" name:"CheckDomain"`
 
-	// <p>检查URL。</p>
+	// <p>检查URL。</p><p>入参限制：长度范围在3-80。</p><p>当CheckType是HTTP时，此字段必传。</p>
 	CheckPath *string `json:"CheckPath,omitnil,omitempty" name:"CheckPath"`
 
-	// <p>请求方式。</p>
+	// <p>请求方式。</p><p>入参限制：支持填写 &#39;GET&#39;, &#39;HEAD&#39;。</p><p>当CheckType是HTTP时，此字段必传。</p>
 	CheckMethod *string `json:"CheckMethod,omitnil,omitempty" name:"CheckMethod"`
 
-	// <p>状态检测码。</p>
+	// <p>状态检测码。</p><p>入参限制：支持选择&#39;http_2xx&#39;, &#39;http_3xx&#39;, &#39;http_4xx&#39;, &#39;http_5xx&#39;。</p><p>当CheckType是HTTP时，此字段必传。</p>
 	StatusMask []*string `json:"StatusMask,omitnil,omitempty" name:"StatusMask"`
 
-	// <p>回源协议。</p>
+	// <p>回源协议。</p><p>入参限制：支持选择：&#39;HTTP&#39;, &#39;HTTPS&#39;。</p><p>当监听器协议是HTTP时只能配置HTTP，是HTTPS时能配HTTP或HTTPS。</p>
 	ForwardProtocol *string `json:"ForwardProtocol,omitnil,omitempty" name:"ForwardProtocol"`
 
-	// <p>端口映射。</p>
+	// <p>端口映射。</p><p>当监听器协议是HTTP或HTTPS支持配置一对。当监听器协议是UDP或TCP支持配置最多30对。</p>
 	PortOverrides []*PortOverride `json:"PortOverrides,omitnil,omitempty" name:"PortOverrides"`
 
-	// <p>HPPTS加密算法套件</p>
+	// <p>HPPTS加密算法套件</p><p>入参限制：支持选择&#39;tls_policy_1.0-2&#39;, &#39;tls_policy_1.1-2&#39;, &#39;tls_policy_1.2&#39;, &#39;tls_policy_1.2_strict&#39;, &#39;tls_policy_1.2_strict-1.3&#39;。</p><p>当监听器协议是HTTPS时，才支持修改此参数。</p>
 	CipherPolicyId *string `json:"CipherPolicyId,omitnil,omitempty" name:"CipherPolicyId"`
 
 	// <p>仅HTTPS回源协议支持选择[&#39;HTTP/1.1&#39;, &#39;HTTP/2&#39;]</p><p>枚举值：</p><ul><li>HTTP/1.1： 版本HTTP/1.1</li><li>HTTP/2： 版本HTTP/2</li></ul>
@@ -2257,61 +2257,61 @@ type ModifyEndpointGroupRequest struct {
 	// <p>终端节点配置。</p>
 	EndpointConfigurations []*EndpointConfigurations `json:"EndpointConfigurations,omitnil,omitempty" name:"EndpointConfigurations"`
 
-	// <p>名称，最大长度不能超过60个字节。</p>
+	// <p>名称。</p><p>入参限制：最大长度不能超过128个字节。</p><p>以大小写字母或中文开头。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// <p>描述信息，最大长度不能超过100个字节。</p>
+	// <p>描述信息。</p><p>入参限制：最大长度不能超过100个字节。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// <p>是否开启健康检查。</p>
 	EnableHealthCheck *bool `json:"EnableHealthCheck,omitnil,omitempty" name:"EnableHealthCheck"`
 
-	// <p>响应超时时间。</p>
+	// <p>响应超时时间。</p><p>取值范围：[1, 100]</p><p>当开启健康检查时候，此参数必传。</p>
 	ConnectTimeout *uint64 `json:"ConnectTimeout,omitnil,omitempty" name:"ConnectTimeout"`
 
-	// <p>健康检查间隔。</p>
+	// <p>健康检查间隔。</p><p>取值范围：[5, 300]</p><p>当开启健康检查时，此参数必传。</p>
 	HealthCheckInterval *uint64 `json:"HealthCheckInterval,omitnil,omitempty" name:"HealthCheckInterval"`
 
-	// <p>不健康阀值。</p>
+	// <p>不健康阀值。</p><p>取值范围：[1, 10]</p><p>当开启健康检查时，此字段必传。</p>
 	UnhealthyThreshold *uint64 `json:"UnhealthyThreshold,omitnil,omitempty" name:"UnhealthyThreshold"`
 
-	// <p>健康阀值。</p>
+	// <p>健康阀值。</p><p>取值范围：[1, 10]</p><p>当开启健康检查时，此字段必传。</p>
 	HealthyThreshold *uint64 `json:"HealthyThreshold,omitnil,omitempty" name:"HealthyThreshold"`
 
-	// <p>检查协议。</p>
+	// <p>检查协议。</p><p>入参限制：支持填写：&#39;TCP&#39;, &#39;HTTP&#39;, &#39;PING&#39;, &#39;CUSTOM&#39;。</p><p>1、当监听器是TCP时，可以选CUSTOM+TCP。<br>2、当监听器是UDP时，可以选PING+CUSTOM。<br>3、当监听器是HTTP或HTTPS时，可以选HTTP。</p>
 	CheckType *string `json:"CheckType,omitnil,omitempty" name:"CheckType"`
 
-	// <p>检查端口。</p>
+	// <p>检查端口。</p><p>取值范围：[1, 65535]</p><p>当CheckType是CUSTOM时，此字段必传。</p>
 	CheckPort *uint64 `json:"CheckPort,omitnil,omitempty" name:"CheckPort"`
 
-	// <p>检查内容。</p>
+	// <p>检查内容。</p><p>入参限制：仅支持TEXT。</p><p>当CheckType是CUSTOM时，此字段必传。</p>
 	ContextType *string `json:"ContextType,omitnil,omitempty" name:"ContextType"`
 
-	// <p>检查请求。</p>
+	// <p>检查请求。</p><p>入参限制：长度范围在1-500。</p><p>当CheckType是CUSTOM时，此字段必传。</p>
 	CheckSendContext *string `json:"CheckSendContext,omitnil,omitempty" name:"CheckSendContext"`
 
-	// <p>检查返回结果。</p>
+	// <p>检查返回结果。</p><p>入参限制：长度范围在1-500。</p><p>当CheckType是CUSTOM时，此字段必传。</p>
 	CheckRecvContext *string `json:"CheckRecvContext,omitnil,omitempty" name:"CheckRecvContext"`
 
-	// <p>检查域名。</p>
+	// <p>检查域名。</p><p>入参限制：长度范围在3-80。</p><p>当CheckType是HTTP时，此字段必传。</p>
 	CheckDomain *string `json:"CheckDomain,omitnil,omitempty" name:"CheckDomain"`
 
-	// <p>检查URL。</p>
+	// <p>检查URL。</p><p>入参限制：长度范围在3-80。</p><p>当CheckType是HTTP时，此字段必传。</p>
 	CheckPath *string `json:"CheckPath,omitnil,omitempty" name:"CheckPath"`
 
-	// <p>请求方式。</p>
+	// <p>请求方式。</p><p>入参限制：支持填写 &#39;GET&#39;, &#39;HEAD&#39;。</p><p>当CheckType是HTTP时，此字段必传。</p>
 	CheckMethod *string `json:"CheckMethod,omitnil,omitempty" name:"CheckMethod"`
 
-	// <p>状态检测码。</p>
+	// <p>状态检测码。</p><p>入参限制：支持选择&#39;http_2xx&#39;, &#39;http_3xx&#39;, &#39;http_4xx&#39;, &#39;http_5xx&#39;。</p><p>当CheckType是HTTP时，此字段必传。</p>
 	StatusMask []*string `json:"StatusMask,omitnil,omitempty" name:"StatusMask"`
 
-	// <p>回源协议。</p>
+	// <p>回源协议。</p><p>入参限制：支持选择：&#39;HTTP&#39;, &#39;HTTPS&#39;。</p><p>当监听器协议是HTTP时只能配置HTTP，是HTTPS时能配HTTP或HTTPS。</p>
 	ForwardProtocol *string `json:"ForwardProtocol,omitnil,omitempty" name:"ForwardProtocol"`
 
-	// <p>端口映射。</p>
+	// <p>端口映射。</p><p>当监听器协议是HTTP或HTTPS支持配置一对。当监听器协议是UDP或TCP支持配置最多30对。</p>
 	PortOverrides []*PortOverride `json:"PortOverrides,omitnil,omitempty" name:"PortOverrides"`
 
-	// <p>HPPTS加密算法套件</p>
+	// <p>HPPTS加密算法套件</p><p>入参限制：支持选择&#39;tls_policy_1.0-2&#39;, &#39;tls_policy_1.1-2&#39;, &#39;tls_policy_1.2&#39;, &#39;tls_policy_1.2_strict&#39;, &#39;tls_policy_1.2_strict-1.3&#39;。</p><p>当监听器协议是HTTPS时，才支持修改此参数。</p>
 	CipherPolicyId *string `json:"CipherPolicyId,omitnil,omitempty" name:"CipherPolicyId"`
 
 	// <p>仅HTTPS回源协议支持选择[&#39;HTTP/1.1&#39;, &#39;HTTP/2&#39;]</p><p>枚举值：</p><ul><li>HTTP/1.1： 版本HTTP/1.1</li><li>HTTP/2： 版本HTTP/2</li></ul>
@@ -2387,32 +2387,32 @@ func (r *ModifyEndpointGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyForwardingPolicyRequestParams struct {
-	// 全球加速实例ID。
+	// <p>全球加速实例ID。</p>
 	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
 
-	// 监听器ID。
+	// <p>监听器ID。</p>
 	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
 
-	// 策略ID。
+	// <p>策略ID。</p>
 	ForwardingPolicyId *string `json:"ForwardingPolicyId,omitnil,omitempty" name:"ForwardingPolicyId"`
 
-	// 域名。
+	// <p>域名。</p><p>入参限制：长度范围在1-80。</p><p>格式必须满足正则表达式：^(<a href="?:[a-z0-9-]{0,61}[a-z0-9]">a-z0-9</a>?.)+[a-z]{2,}$</p>
 	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
 }
 
 type ModifyForwardingPolicyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 全球加速实例ID。
+	// <p>全球加速实例ID。</p>
 	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
 
-	// 监听器ID。
+	// <p>监听器ID。</p>
 	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
 
-	// 策略ID。
+	// <p>策略ID。</p>
 	ForwardingPolicyId *string `json:"ForwardingPolicyId,omitnil,omitempty" name:"ForwardingPolicyId"`
 
-	// 域名。
+	// <p>域名。</p><p>入参限制：长度范围在1-80。</p><p>格式必须满足正则表达式：^(<a href="?:[a-z0-9-]{0,61}[a-z0-9]">a-z0-9</a>?.)+[a-z]{2,}$</p>
 	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
 }
 
@@ -2440,7 +2440,7 @@ func (r *ModifyForwardingPolicyRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyForwardingPolicyResponseParams struct {
-	// 异步任务ID。
+	// <p>异步任务ID。</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2477,28 +2477,28 @@ type ModifyForwardingRuleRequestParams struct {
 	// <p>七层转发规则ID。</p>
 	ForwardingRuleId *string `json:"ForwardingRuleId,omitnil,omitempty" name:"ForwardingRuleId"`
 
-	// <p>七层转发规则条件信息。</p>
+	// <p>七层转发规则条件信息。</p><p>入参限制：数组长度不能超过1。</p>
 	RuleConditions []*RuleCondition `json:"RuleConditions,omitnil,omitempty" name:"RuleConditions"`
 
-	// <p>七层转发规则行为信息。</p>
+	// <p>七层转发规则行为信息。</p><p>入参限制：数组长度不能超过1。</p>
 	RuleActions []*RuleAction `json:"RuleActions,omitnil,omitempty" name:"RuleActions"`
 
-	// <p>回源Header信息。</p>
+	// <p>回源Header信息。</p><p>入参限制：数组长度在1-5。</p>
 	OriginHeaders []*OriginHeader `json:"OriginHeaders,omitnil,omitempty" name:"OriginHeaders"`
 
 	// <p>是否开启回源sni。</p>
 	EnableOriginSni *bool `json:"EnableOriginSni,omitnil,omitempty" name:"EnableOriginSni"`
 
-	// <p>回源sni。</p>
+	// <p>回源sni。</p><p>入参限制：长度不能超过80。</p><p>当开启回源sni时，此字段必传。</p>
 	OriginSni *string `json:"OriginSni,omitnil,omitempty" name:"OriginSni"`
 
-	// <p>回源host。</p>
+	// <p>回源host。</p><p>入参限制：长度不能超过80。</p><p>当开启回源sni时，此字段必传。</p>
 	OriginHost *string `json:"OriginHost,omitnil,omitempty" name:"OriginHost"`
 
-	// <p>源站响应头</p>
+	// <p>源站响应头</p><p>入参限制：数组长度不能超过5。</p>
 	ResponseHeaders []*ResponseHeaders `json:"ResponseHeaders,omitnil,omitempty" name:"ResponseHeaders"`
 
-	// <p>删除源站响应头</p>
+	// <p>删除源站响应头</p><p>入参限制：数组长度不能超过5。</p>
 	HideResponseHeaders []*HideResponseHeaders `json:"HideResponseHeaders,omitnil,omitempty" name:"HideResponseHeaders"`
 }
 
@@ -2517,28 +2517,28 @@ type ModifyForwardingRuleRequest struct {
 	// <p>七层转发规则ID。</p>
 	ForwardingRuleId *string `json:"ForwardingRuleId,omitnil,omitempty" name:"ForwardingRuleId"`
 
-	// <p>七层转发规则条件信息。</p>
+	// <p>七层转发规则条件信息。</p><p>入参限制：数组长度不能超过1。</p>
 	RuleConditions []*RuleCondition `json:"RuleConditions,omitnil,omitempty" name:"RuleConditions"`
 
-	// <p>七层转发规则行为信息。</p>
+	// <p>七层转发规则行为信息。</p><p>入参限制：数组长度不能超过1。</p>
 	RuleActions []*RuleAction `json:"RuleActions,omitnil,omitempty" name:"RuleActions"`
 
-	// <p>回源Header信息。</p>
+	// <p>回源Header信息。</p><p>入参限制：数组长度在1-5。</p>
 	OriginHeaders []*OriginHeader `json:"OriginHeaders,omitnil,omitempty" name:"OriginHeaders"`
 
 	// <p>是否开启回源sni。</p>
 	EnableOriginSni *bool `json:"EnableOriginSni,omitnil,omitempty" name:"EnableOriginSni"`
 
-	// <p>回源sni。</p>
+	// <p>回源sni。</p><p>入参限制：长度不能超过80。</p><p>当开启回源sni时，此字段必传。</p>
 	OriginSni *string `json:"OriginSni,omitnil,omitempty" name:"OriginSni"`
 
-	// <p>回源host。</p>
+	// <p>回源host。</p><p>入参限制：长度不能超过80。</p><p>当开启回源sni时，此字段必传。</p>
 	OriginHost *string `json:"OriginHost,omitnil,omitempty" name:"OriginHost"`
 
-	// <p>源站响应头</p>
+	// <p>源站响应头</p><p>入参限制：数组长度不能超过5。</p>
 	ResponseHeaders []*ResponseHeaders `json:"ResponseHeaders,omitnil,omitempty" name:"ResponseHeaders"`
 
-	// <p>删除源站响应头</p>
+	// <p>删除源站响应头</p><p>入参限制：数组长度不能超过5。</p>
 	HideResponseHeaders []*HideResponseHeaders `json:"HideResponseHeaders,omitnil,omitempty" name:"HideResponseHeaders"`
 }
 
@@ -2599,38 +2599,38 @@ func (r *ModifyForwardingRuleResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyGlobalAcceleratorRequestParams struct {
-	// 全球加速实例ID。
+	// <p>全球加速实例ID。</p>
 	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
 
-	// 名称，最大长度不能超过60个字节。
+	// <p>名称，最大长度不能超过60个字节。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 描述信息，最大长度不能超过100个字节。
+	// <p>描述信息，最大长度不能超过100个字节。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 跨境类型。
+	// <p>跨境类型。</p><p>枚举值：</p><ul><li>HighQuality： 精品跨境。</li><li>Unicom： 联通跨境。</li></ul>
 	CrossBorderType *string `json:"CrossBorderType,omitnil,omitempty" name:"CrossBorderType"`
 
-	// 代表是否跨境服务承诺。
+	// <p>代表是否填写跨境服务承诺书。</p><p>当CrossBorderType传入时，此字段必须填ture，代表填写跨境承诺书。</p>
 	CrossBorderPromiseFlag *bool `json:"CrossBorderPromiseFlag,omitnil,omitempty" name:"CrossBorderPromiseFlag"`
 }
 
 type ModifyGlobalAcceleratorRequest struct {
 	*tchttp.BaseRequest
 	
-	// 全球加速实例ID。
+	// <p>全球加速实例ID。</p>
 	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
 
-	// 名称，最大长度不能超过60个字节。
+	// <p>名称，最大长度不能超过60个字节。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 描述信息，最大长度不能超过100个字节。
+	// <p>描述信息，最大长度不能超过100个字节。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 跨境类型。
+	// <p>跨境类型。</p><p>枚举值：</p><ul><li>HighQuality： 精品跨境。</li><li>Unicom： 联通跨境。</li></ul>
 	CrossBorderType *string `json:"CrossBorderType,omitnil,omitempty" name:"CrossBorderType"`
 
-	// 代表是否跨境服务承诺。
+	// <p>代表是否填写跨境服务承诺书。</p><p>当CrossBorderType传入时，此字段必须填ture，代表填写跨境承诺书。</p>
 	CrossBorderPromiseFlag *bool `json:"CrossBorderPromiseFlag,omitnil,omitempty" name:"CrossBorderPromiseFlag"`
 }
 
@@ -2659,7 +2659,7 @@ func (r *ModifyGlobalAcceleratorRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyGlobalAcceleratorResponseParams struct {
-	// 异步任务ID。
+	// <p>异步任务ID。</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2696,34 +2696,34 @@ type ModifyListenerRequestParams struct {
 	// <p>描述信息，最大长度不能超过100个字节。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// <p>连接空闲等待时间。</p>
+	// <p>连接空闲等待时间。</p><p>1、HTTP/HTTPS监听器，支持范围为1-60；2、TCP监听器，支持范围为10-900；3、UDP监听器，支持范围为10-20；</p>
 	IdleTimeout *uint64 `json:"IdleTimeout,omitnil,omitempty" name:"IdleTimeout"`
 
-	// <p>是否开启会话保持。</p>
+	// <p>是否开启会话保持。</p><p>枚举值：</p><ul><li>Open： 打开。</li><li>Close： 关闭。</li></ul><p>TCP/UDP监听器支持修改此参数。</p>
 	ClientAffinity *string `json:"ClientAffinity,omitnil,omitempty" name:"ClientAffinity"`
 
-	// <p>会话保持时间。</p>
+	// <p>会话保持时间。</p><p>取值范围：[60, 3600]</p>
 	ClientAffinityTime *uint64 `json:"ClientAffinityTime,omitnil,omitempty" name:"ClientAffinityTime"`
 
-	// <p>请求超时时间。</p>
+	// <p>请求超时时间。</p><p>取值范围：[1, 180]</p><p>HTTPS监听器才支持此参数修改。</p>
 	RequestTimeout *uint64 `json:"RequestTimeout,omitnil,omitempty" name:"RequestTimeout"`
 
-	// <p>是否打开七层获取源IP方式。</p>
+	// <p>是否打开七层获取源IP方式。</p><p>HTTPS/HTTP监听器才支持此参数修改。</p>
 	XForwardedForRealIp *bool `json:"XForwardedForRealIp,omitnil,omitempty" name:"XForwardedForRealIp"`
 
-	// <p>解析方式。UNIDIRECTIONAL：双向。MUTUAL：单向。</p>
+	// <p>解析方式。</p><p>枚举值：</p><ul><li>UNIDIRECTIONAL： 双向。</li><li>MUTUAL： 单向。</li></ul><p>HTTPS/HTTP监听器才支持修改此参数。</p>
 	CertificationType *string `json:"CertificationType,omitnil,omitempty" name:"CertificationType"`
 
-	// <p>加密算法套件。</p>
+	// <p>加密算法套件。</p><p>入参限制：支持选择tls_policy_1.0-2&#39;, &#39;tls_policy_1.1-2&#39;, &#39;tls_policy_1.2&#39;, &#39;tls_policy_1.2_strict&#39;, &#39;tls_policy_1.2_strict-1.3&#39;。</p><p>HTTPS监听器才支持此参数修改。</p>
 	CipherPolicyId *string `json:"CipherPolicyId,omitnil,omitempty" name:"CipherPolicyId"`
 
-	// <p>服务器证书。</p>
+	// <p>服务器证书。</p><p>HTTPS监听器才支持此参数修改。</p>
 	ServerCertificates []*string `json:"ServerCertificates,omitnil,omitempty" name:"ServerCertificates"`
 
-	// <p>客户端证书。</p>
+	// <p>客户端证书。</p><p>HTTPS监听器才支持此参数修改，并且开启双向认证。</p>
 	ClientCaCertificates []*string `json:"ClientCaCertificates,omitnil,omitempty" name:"ClientCaCertificates"`
 
-	// <p>四层获取源IP方式。</p>
+	// <p>获取源IP方式。</p><p>入参限制：支持选择&#39;ProxyProtocol&#39;, &#39;Close&#39;, &#39;ProxyProtocolV2&#39;, &#39;TOA&#39;。</p><p>TCP监听器才支持此参数修改。</p>
 	GetRealIpType *string `json:"GetRealIpType,omitnil,omitempty" name:"GetRealIpType"`
 }
 
@@ -2742,34 +2742,34 @@ type ModifyListenerRequest struct {
 	// <p>描述信息，最大长度不能超过100个字节。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// <p>连接空闲等待时间。</p>
+	// <p>连接空闲等待时间。</p><p>1、HTTP/HTTPS监听器，支持范围为1-60；2、TCP监听器，支持范围为10-900；3、UDP监听器，支持范围为10-20；</p>
 	IdleTimeout *uint64 `json:"IdleTimeout,omitnil,omitempty" name:"IdleTimeout"`
 
-	// <p>是否开启会话保持。</p>
+	// <p>是否开启会话保持。</p><p>枚举值：</p><ul><li>Open： 打开。</li><li>Close： 关闭。</li></ul><p>TCP/UDP监听器支持修改此参数。</p>
 	ClientAffinity *string `json:"ClientAffinity,omitnil,omitempty" name:"ClientAffinity"`
 
-	// <p>会话保持时间。</p>
+	// <p>会话保持时间。</p><p>取值范围：[60, 3600]</p>
 	ClientAffinityTime *uint64 `json:"ClientAffinityTime,omitnil,omitempty" name:"ClientAffinityTime"`
 
-	// <p>请求超时时间。</p>
+	// <p>请求超时时间。</p><p>取值范围：[1, 180]</p><p>HTTPS监听器才支持此参数修改。</p>
 	RequestTimeout *uint64 `json:"RequestTimeout,omitnil,omitempty" name:"RequestTimeout"`
 
-	// <p>是否打开七层获取源IP方式。</p>
+	// <p>是否打开七层获取源IP方式。</p><p>HTTPS/HTTP监听器才支持此参数修改。</p>
 	XForwardedForRealIp *bool `json:"XForwardedForRealIp,omitnil,omitempty" name:"XForwardedForRealIp"`
 
-	// <p>解析方式。UNIDIRECTIONAL：双向。MUTUAL：单向。</p>
+	// <p>解析方式。</p><p>枚举值：</p><ul><li>UNIDIRECTIONAL： 双向。</li><li>MUTUAL： 单向。</li></ul><p>HTTPS/HTTP监听器才支持修改此参数。</p>
 	CertificationType *string `json:"CertificationType,omitnil,omitempty" name:"CertificationType"`
 
-	// <p>加密算法套件。</p>
+	// <p>加密算法套件。</p><p>入参限制：支持选择tls_policy_1.0-2&#39;, &#39;tls_policy_1.1-2&#39;, &#39;tls_policy_1.2&#39;, &#39;tls_policy_1.2_strict&#39;, &#39;tls_policy_1.2_strict-1.3&#39;。</p><p>HTTPS监听器才支持此参数修改。</p>
 	CipherPolicyId *string `json:"CipherPolicyId,omitnil,omitempty" name:"CipherPolicyId"`
 
-	// <p>服务器证书。</p>
+	// <p>服务器证书。</p><p>HTTPS监听器才支持此参数修改。</p>
 	ServerCertificates []*string `json:"ServerCertificates,omitnil,omitempty" name:"ServerCertificates"`
 
-	// <p>客户端证书。</p>
+	// <p>客户端证书。</p><p>HTTPS监听器才支持此参数修改，并且开启双向认证。</p>
 	ClientCaCertificates []*string `json:"ClientCaCertificates,omitnil,omitempty" name:"ClientCaCertificates"`
 
-	// <p>四层获取源IP方式。</p>
+	// <p>获取源IP方式。</p><p>入参限制：支持选择&#39;ProxyProtocol&#39;, &#39;Close&#39;, &#39;ProxyProtocolV2&#39;, &#39;TOA&#39;。</p><p>TCP监听器才支持此参数修改。</p>
 	GetRealIpType *string `json:"GetRealIpType,omitnil,omitempty" name:"GetRealIpType"`
 }
 
@@ -2831,11 +2831,11 @@ func (r *ModifyListenerResponse) FromJsonString(s string) error {
 }
 
 type OriginHeader struct {
-	// 键。
+	// <p>键。</p><p>参数格式：1、字符串只包含可打印的ASCII字符 2、不能包含这些字符()&lt;&gt;@,;:\&quot;/[ ]?={ }</p><p>入参限制：长度在1-40。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
-	// 值。
+	// <p>值。</p><p>入参限制：长度不能超过128</p><p>如果字符串包含$，那仅能配置&#39;$remote_addr&#39;, &#39;$remote_port&#39;，否则不支持。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
@@ -2861,29 +2861,29 @@ type PortRanges struct {
 }
 
 type ResponseHeaders struct {
-	// <p>key</p>
+	// <p>key</p><p>参数格式：1、字符串只包含可打印的ASCII字符 2、不能包含这些字符()&lt;&gt;@,;:\&quot;/[ ]?={ }</p><p>入参限制：长度在1-40。</p>
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
-	// <p>value</p>
+	// <p>value</p><p>入参限制：长度不能超过128</p><p>如果字符串包含$，那仅能配置&#39;$remote_addr&#39;, &#39;$remote_port&#39;，否则不支持。</p>
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 type RuleAction struct {
-	// 七层转发规则行为类型
+	// <p>七层转发规则行为类型</p><p>枚举值：</p><ul><li>ForwardGroup： 转发策略为转发至终端节点组。</li><li>Drop： 转发策略为丢弃。</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleActionType *string `json:"RuleActionType,omitnil,omitempty" name:"RuleActionType"`
 
-	// 七层转发规则行为值
+	// <p>七层转发规则行为值</p><p>当RuleActionType是Drop时，此字段不用传；当RuleActionType是ForwardGroup时，此字段必传，需要填写的是自定义终端节点组ID， 不支持配置默认终端节点组。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleActionValue *string `json:"RuleActionValue,omitnil,omitempty" name:"RuleActionValue"`
 }
 
 type RuleCondition struct {
-	// 七层转发规则条件类型
+	// <p>七层转发规则条件类型</p><p>枚举值：</p><ul><li>Path： Path</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleConditionType *string `json:"RuleConditionType,omitnil,omitempty" name:"RuleConditionType"`
 
-	// 七层转发规则条件值
+	// <p>七层转发规则条件值</p><p>参数格式：格式必须满足正则表达：^[a-zA-Z0-9_.-/]{1,80}$</p><p>数组长度不能超过1。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleConditionValue []*string `json:"RuleConditionValue,omitnil,omitempty" name:"RuleConditionValue"`
 }

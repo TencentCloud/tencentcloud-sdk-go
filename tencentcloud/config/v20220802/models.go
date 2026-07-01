@@ -851,14 +851,14 @@ func (r *CloseConfigRecorderResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CloseConfigRuleRequestParams struct {
-	// 规则ID
+	// <p>规则ID</p>
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 }
 
 type CloseConfigRuleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 规则ID
+	// <p>规则ID</p>
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 }
 
@@ -1526,14 +1526,14 @@ func (r *DeleteAlarmPolicyResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteCompliancePackRequestParams struct {
-	// 合规包ID
+	// <p>合规包ID</p>
 	CompliancePackId *string `json:"CompliancePackId,omitnil,omitempty" name:"CompliancePackId"`
 }
 
 type DeleteCompliancePackRequest struct {
 	*tchttp.BaseRequest
 	
-	// 合规包ID
+	// <p>合规包ID</p>
 	CompliancePackId *string `json:"CompliancePackId,omitnil,omitempty" name:"CompliancePackId"`
 }
 
@@ -1580,14 +1580,14 @@ func (r *DeleteCompliancePackResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteConfigRuleRequestParams struct {
-	// 规则ID
+	// <p>规则ID</p>
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 }
 
 type DeleteConfigRuleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 规则ID
+	// <p>规则ID</p>
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 }
 
@@ -2680,20 +2680,20 @@ func (r *DetachAggregateConfigRuleToCompliancePackResponse) FromJsonString(s str
 
 // Predefined struct for user
 type DetachConfigRuleToCompliancePackRequestParams struct {
-	// 合规包ID
+	// <p>合规包ID</p>
 	CompliancePackId *string `json:"CompliancePackId,omitnil,omitempty" name:"CompliancePackId"`
 
-	// 规则ID
+	// <p>规则ID</p>
 	ConfigRuleId *string `json:"ConfigRuleId,omitnil,omitempty" name:"ConfigRuleId"`
 }
 
 type DetachConfigRuleToCompliancePackRequest struct {
 	*tchttp.BaseRequest
 	
-	// 合规包ID
+	// <p>合规包ID</p>
 	CompliancePackId *string `json:"CompliancePackId,omitnil,omitempty" name:"CompliancePackId"`
 
-	// 规则ID
+	// <p>规则ID</p>
 	ConfigRuleId *string `json:"ConfigRuleId,omitnil,omitempty" name:"ConfigRuleId"`
 }
 
@@ -3194,44 +3194,44 @@ func (r *ListAggregateConfigRulesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListAggregateDiscoveredResourcesRequestParams struct {
-	// 每页显示数量
+	// <p>每页显示数量</p>
 	MaxResults *uint64 `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
 
-	// 账号组ID
+	// <p>账号组ID</p>
 	AccountGroupId *string `json:"AccountGroupId,omitnil,omitempty" name:"AccountGroupId"`
 
-	// resourceName：资源名  resourceId ：资源ID resourceType：资源类型
+	// <p>resourceName：资源名  resourceId ：资源ID resourceType：资源类型</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 标签
+	// <p>标签</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 下一页token
+	// <p>下一页token</p>
 	NextToken *string `json:"NextToken,omitnil,omitempty" name:"NextToken"`
 
-	// 排序方式 asc、desc
+	// <p>排序方式 asc、desc</p>
 	OrderType *string `json:"OrderType,omitnil,omitempty" name:"OrderType"`
 }
 
 type ListAggregateDiscoveredResourcesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 每页显示数量
+	// <p>每页显示数量</p>
 	MaxResults *uint64 `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
 
-	// 账号组ID
+	// <p>账号组ID</p>
 	AccountGroupId *string `json:"AccountGroupId,omitnil,omitempty" name:"AccountGroupId"`
 
-	// resourceName：资源名  resourceId ：资源ID resourceType：资源类型
+	// <p>resourceName：资源名  resourceId ：资源ID resourceType：资源类型</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 标签
+	// <p>标签</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 下一页token
+	// <p>下一页token</p>
 	NextToken *string `json:"NextToken,omitnil,omitempty" name:"NextToken"`
 
-	// 排序方式 asc、desc
+	// <p>排序方式 asc、desc</p>
 	OrderType *string `json:"OrderType,omitnil,omitempty" name:"OrderType"`
 }
 
@@ -3261,12 +3261,15 @@ func (r *ListAggregateDiscoveredResourcesRequest) FromJsonString(s string) error
 
 // Predefined struct for user
 type ListAggregateDiscoveredResourcesResponseParams struct {
-	// 详情
+	// <p>详情</p>
 	Items []*AggregateResourceInfo `json:"Items,omitnil,omitempty" name:"Items"`
 
-	// 下一页
+	// <p>下一页</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NextToken *string `json:"NextToken,omitnil,omitempty" name:"NextToken"`
+
+	// <p>总数</p>
+	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -3424,59 +3427,57 @@ func (r *ListAlarmPolicyResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListCompliancePacksRequestParams struct {
-	// 数量
+	// <p>数量</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量
+	// <p>偏移量</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 合规包名称
+	// <p>合规包名称</p>
 	CompliancePackName *string `json:"CompliancePackName,omitnil,omitempty" name:"CompliancePackName"`
 
-	// 风险等级
-	// 1：高风险。
-	// 2：中风险。
-	// 3：低风险。
+	// <p>风险等级<br>1：高风险。<br>2：中风险。<br>3：低风险。</p>
 	RiskLevel []*uint64 `json:"RiskLevel,omitnil,omitempty" name:"RiskLevel"`
 
-	// 合规包状态 ACTIVE、NO_ACTIVE
+	// <p>合规包状态 ACTIVE、NO_ACTIVE</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 评估状态合规： 'COMPLIANT'
-	// 不合规： 'NON_COMPLIANT'
+	// <p>评估状态合规： &#39;COMPLIANT&#39;<br>不合规： &#39;NON_COMPLIANT&#39;</p>
 	ComplianceResult []*string `json:"ComplianceResult,omitnil,omitempty" name:"ComplianceResult"`
 
-	// 排序类型, 倒序：desc，顺序：asc
+	// <p>排序类型, 倒序：desc，顺序：asc</p>
 	OrderType *string `json:"OrderType,omitnil,omitempty" name:"OrderType"`
+
+	// <p>包含合规包规则统计信息</p><p>枚举值：</p><ul><li>1： 是</li></ul>
+	IncludeCompliancePackRuleResult *string `json:"IncludeCompliancePackRuleResult,omitnil,omitempty" name:"IncludeCompliancePackRuleResult"`
 }
 
 type ListCompliancePacksRequest struct {
 	*tchttp.BaseRequest
 	
-	// 数量
+	// <p>数量</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量
+	// <p>偏移量</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 合规包名称
+	// <p>合规包名称</p>
 	CompliancePackName *string `json:"CompliancePackName,omitnil,omitempty" name:"CompliancePackName"`
 
-	// 风险等级
-	// 1：高风险。
-	// 2：中风险。
-	// 3：低风险。
+	// <p>风险等级<br>1：高风险。<br>2：中风险。<br>3：低风险。</p>
 	RiskLevel []*uint64 `json:"RiskLevel,omitnil,omitempty" name:"RiskLevel"`
 
-	// 合规包状态 ACTIVE、NO_ACTIVE
+	// <p>合规包状态 ACTIVE、NO_ACTIVE</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 评估状态合规： 'COMPLIANT'
-	// 不合规： 'NON_COMPLIANT'
+	// <p>评估状态合规： &#39;COMPLIANT&#39;<br>不合规： &#39;NON_COMPLIANT&#39;</p>
 	ComplianceResult []*string `json:"ComplianceResult,omitnil,omitempty" name:"ComplianceResult"`
 
-	// 排序类型, 倒序：desc，顺序：asc
+	// <p>排序类型, 倒序：desc，顺序：asc</p>
 	OrderType *string `json:"OrderType,omitnil,omitempty" name:"OrderType"`
+
+	// <p>包含合规包规则统计信息</p><p>枚举值：</p><ul><li>1： 是</li></ul>
+	IncludeCompliancePackRuleResult *string `json:"IncludeCompliancePackRuleResult,omitnil,omitempty" name:"IncludeCompliancePackRuleResult"`
 }
 
 func (r *ListCompliancePacksRequest) ToJsonString() string {
@@ -3498,6 +3499,7 @@ func (r *ListCompliancePacksRequest) FromJsonString(s string) error {
 	delete(f, "Status")
 	delete(f, "ComplianceResult")
 	delete(f, "OrderType")
+	delete(f, "IncludeCompliancePackRuleResult")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListCompliancePacksRequest has unknown keys!", "")
 	}
@@ -3506,10 +3508,10 @@ func (r *ListCompliancePacksRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListCompliancePacksResponseParams struct {
-	// 总数
+	// <p>总数</p>
 	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
 
-	// 详情
+	// <p>详情</p>
 	Items []*ConfigCompliancePack `json:"Items,omitnil,omitempty" name:"Items"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3746,38 +3748,38 @@ func (r *ListConfigRulesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListDiscoveredResourcesRequestParams struct {
-	// 每页显示数量
+	// <p>每页显示数量</p>
 	MaxResults *uint64 `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
 
-	// resourceName：资源名  resourceId ：资源ID
+	// <p>resourceName：资源名  resourceId ：资源ID</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 标签
+	// <p>标签</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 下一页token
+	// <p>下一页token</p>
 	NextToken *string `json:"NextToken,omitnil,omitempty" name:"NextToken"`
 
-	// 排序方式 asc、desc
+	// <p>排序方式 asc、desc</p>
 	OrderType *string `json:"OrderType,omitnil,omitempty" name:"OrderType"`
 }
 
 type ListDiscoveredResourcesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 每页显示数量
+	// <p>每页显示数量</p>
 	MaxResults *uint64 `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
 
-	// resourceName：资源名  resourceId ：资源ID
+	// <p>resourceName：资源名  resourceId ：资源ID</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 标签
+	// <p>标签</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 下一页token
+	// <p>下一页token</p>
 	NextToken *string `json:"NextToken,omitnil,omitempty" name:"NextToken"`
 
-	// 排序方式 asc、desc
+	// <p>排序方式 asc、desc</p>
 	OrderType *string `json:"OrderType,omitnil,omitempty" name:"OrderType"`
 }
 
@@ -3806,12 +3808,15 @@ func (r *ListDiscoveredResourcesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListDiscoveredResourcesResponseParams struct {
-	// 详情
+	// <p>详情</p>
 	Items []*ResourceListInfo `json:"Items,omitnil,omitempty" name:"Items"`
 
-	// 下一页
+	// <p>下一页</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NextToken *string `json:"NextToken,omitnil,omitempty" name:"NextToken"`
+
+	// <p>总数</p>
+	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -4299,14 +4304,14 @@ func (r *OpenConfigRecorderResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type OpenConfigRuleRequestParams struct {
-	// 规则ID
+	// <p>规则ID</p>
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 }
 
 type OpenConfigRuleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 规则ID
+	// <p>规则ID</p>
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 }
 
@@ -5292,38 +5297,38 @@ func (r *UpdateAlarmPolicyResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateCompliancePackRequestParams struct {
-	// 合规包名称
+	// <p>合规包名称</p>
 	CompliancePackName *string `json:"CompliancePackName,omitnil,omitempty" name:"CompliancePackName"`
 
-	// 风险等级
+	// <p>风险等级</p>
 	RiskLevel *uint64 `json:"RiskLevel,omitnil,omitempty" name:"RiskLevel"`
 
-	// 合规包ID
+	// <p>合规包ID</p>
 	CompliancePackId *string `json:"CompliancePackId,omitnil,omitempty" name:"CompliancePackId"`
 
-	// 合规包规则
+	// <p>合规包规则</p>
 	ConfigRules []*CompliancePackRule `json:"ConfigRules,omitnil,omitempty" name:"ConfigRules"`
 
-	// 描述
+	// <p>描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 type UpdateCompliancePackRequest struct {
 	*tchttp.BaseRequest
 	
-	// 合规包名称
+	// <p>合规包名称</p>
 	CompliancePackName *string `json:"CompliancePackName,omitnil,omitempty" name:"CompliancePackName"`
 
-	// 风险等级
+	// <p>风险等级</p>
 	RiskLevel *uint64 `json:"RiskLevel,omitnil,omitempty" name:"RiskLevel"`
 
-	// 合规包ID
+	// <p>合规包ID</p>
 	CompliancePackId *string `json:"CompliancePackId,omitnil,omitempty" name:"CompliancePackId"`
 
-	// 合规包规则
+	// <p>合规包规则</p>
 	ConfigRules []*CompliancePackRule `json:"ConfigRules,omitnil,omitempty" name:"ConfigRules"`
 
-	// 描述
+	// <p>描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
@@ -5374,22 +5379,20 @@ func (r *UpdateCompliancePackResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateCompliancePackStatusRequestParams struct {
-	// 合规包ID
+	// <p>合规包ID</p>
 	CompliancePackId *string `json:"CompliancePackId,omitnil,omitempty" name:"CompliancePackId"`
 
-	// ACTIVE：启用
-	// UN_ACTIVE ：停用
+	// <p>ACTIVE：启用<br>UN_ACTIVE ：停用</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 type UpdateCompliancePackStatusRequest struct {
 	*tchttp.BaseRequest
 	
-	// 合规包ID
+	// <p>合规包ID</p>
 	CompliancePackId *string `json:"CompliancePackId,omitnil,omitempty" name:"CompliancePackId"`
 
-	// ACTIVE：启用
-	// UN_ACTIVE ：停用
+	// <p>ACTIVE：启用<br>UN_ACTIVE ：停用</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
@@ -5586,70 +5589,62 @@ func (r *UpdateConfigRecorderResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateConfigRuleRequestParams struct {
-	// 触发类型，最多支持两种
+	// <p>触发类型，最多支持两种</p>
 	TriggerType []*TriggerType `json:"TriggerType,omitnil,omitempty" name:"TriggerType"`
 
-	// 风险等级
-	// 1：高风险。
-	// 2：中风险。
-	// 3：低风险。
+	// <p>风险等级<br>1：高风险。<br>2：中风险。<br>3：低风险。</p>
 	RiskLevel *uint64 `json:"RiskLevel,omitnil,omitempty" name:"RiskLevel"`
 
-	// 规则ID
+	// <p>规则ID</p>
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
-	// 规则名称
+	// <p>规则名称</p>
 	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
 
-	// 入参
+	// <p>入参</p>
 	InputParameter []*InputParameter `json:"InputParameter,omitnil,omitempty" name:"InputParameter"`
 
-	// 描述
+	// <p>描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 规则评估地域范围，规则仅对指定地域中的资源生效。
-	// 支持的地域范围config:ListResourceRegions返回的地域
+	// <p>规则评估地域范围，规则仅对指定地域中的资源生效。<br>支持的地域范围config:ListResourceRegions返回的地域</p>
 	RegionsScope []*string `json:"RegionsScope,omitnil,omitempty" name:"RegionsScope"`
 
-	// 规则评估标签范围，规则仅对绑定指定标签的资源生效。
+	// <p>规则评估标签范围，规则仅对绑定指定标签的资源生效。</p>
 	TagsScope []*Tag `json:"TagsScope,omitnil,omitempty" name:"TagsScope"`
 
-	// 规则对指定资源ID无效，即不对该资源执行评估。
+	// <p>规则对指定资源ID无效，即不对该资源执行评估。</p>
 	ExcludeResourceIdsScope []*string `json:"ExcludeResourceIdsScope,omitnil,omitempty" name:"ExcludeResourceIdsScope"`
 }
 
 type UpdateConfigRuleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 触发类型，最多支持两种
+	// <p>触发类型，最多支持两种</p>
 	TriggerType []*TriggerType `json:"TriggerType,omitnil,omitempty" name:"TriggerType"`
 
-	// 风险等级
-	// 1：高风险。
-	// 2：中风险。
-	// 3：低风险。
+	// <p>风险等级<br>1：高风险。<br>2：中风险。<br>3：低风险。</p>
 	RiskLevel *uint64 `json:"RiskLevel,omitnil,omitempty" name:"RiskLevel"`
 
-	// 规则ID
+	// <p>规则ID</p>
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
-	// 规则名称
+	// <p>规则名称</p>
 	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
 
-	// 入参
+	// <p>入参</p>
 	InputParameter []*InputParameter `json:"InputParameter,omitnil,omitempty" name:"InputParameter"`
 
-	// 描述
+	// <p>描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 规则评估地域范围，规则仅对指定地域中的资源生效。
-	// 支持的地域范围config:ListResourceRegions返回的地域
+	// <p>规则评估地域范围，规则仅对指定地域中的资源生效。<br>支持的地域范围config:ListResourceRegions返回的地域</p>
 	RegionsScope []*string `json:"RegionsScope,omitnil,omitempty" name:"RegionsScope"`
 
-	// 规则评估标签范围，规则仅对绑定指定标签的资源生效。
+	// <p>规则评估标签范围，规则仅对绑定指定标签的资源生效。</p>
 	TagsScope []*Tag `json:"TagsScope,omitnil,omitempty" name:"TagsScope"`
 
-	// 规则对指定资源ID无效，即不对该资源执行评估。
+	// <p>规则对指定资源ID无效，即不对该资源执行评估。</p>
 	ExcludeResourceIdsScope []*string `json:"ExcludeResourceIdsScope,omitnil,omitempty" name:"ExcludeResourceIdsScope"`
 }
 

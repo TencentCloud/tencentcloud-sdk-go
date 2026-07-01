@@ -1075,6 +1075,76 @@ func (c *Client) CreateAigcImageTaskWithContext(ctx context.Context, request *Cr
     return
 }
 
+func NewCreateAigcQuotaRequest() (request *CreateAigcQuotaRequest) {
+    request = &CreateAigcQuotaRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "CreateAigcQuota")
+    
+    
+    return
+}
+
+func NewCreateAigcQuotaResponse() (response *CreateAigcQuotaResponse) {
+    response = &CreateAigcQuotaResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateAigcQuota
+// 用于创建并启用 AIGC 配额配置，配额用量从启用配额功能时开始累计，达到限额后将无法继续使用 AIGC 功能。
+//
+// 
+//
+// 如果删除配额后重新启用，用量将清零并重新计算。
+//
+// 
+//
+// 由于AGC内客生成为异步任务，无法获取实时用量数据，因此配额限制存在一定误差，无法实现与设置额度完全精准的控制。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) CreateAigcQuota(request *CreateAigcQuotaRequest) (response *CreateAigcQuotaResponse, err error) {
+    return c.CreateAigcQuotaWithContext(context.Background(), request)
+}
+
+// CreateAigcQuota
+// 用于创建并启用 AIGC 配额配置，配额用量从启用配额功能时开始累计，达到限额后将无法继续使用 AIGC 功能。
+//
+// 
+//
+// 如果删除配额后重新启用，用量将清零并重新计算。
+//
+// 
+//
+// 由于AGC内客生成为异步任务，无法获取实时用量数据，因此配额限制存在一定误差，无法实现与设置额度完全精准的控制。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) CreateAigcQuotaWithContext(ctx context.Context, request *CreateAigcQuotaRequest) (response *CreateAigcQuotaResponse, err error) {
+    if request == nil {
+        request = NewCreateAigcQuotaRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vod", APIVersion, "CreateAigcQuota")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAigcQuota require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateAigcQuotaResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAigcSubjectRequest() (request *CreateAigcSubjectRequest) {
     request = &CreateAigcSubjectRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3845,6 +3915,68 @@ func (c *Client) DeleteAigcApiTokenWithContext(ctx context.Context, request *Del
     return
 }
 
+func NewDeleteAigcQuotaRequest() (request *DeleteAigcQuotaRequest) {
+    request = &DeleteAigcQuotaRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "DeleteAigcQuota")
+    
+    
+    return
+}
+
+func NewDeleteAigcQuotaResponse() (response *DeleteAigcQuotaResponse) {
+    response = &DeleteAigcQuotaResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteAigcQuota
+// 用于删除 AIGC 配额配置，删除后，将不再限制 AIGC 任务的发起。
+//
+// 
+//
+// 如果删除配额后重新启用，用量将清零并重新计算。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) DeleteAigcQuota(request *DeleteAigcQuotaRequest) (response *DeleteAigcQuotaResponse, err error) {
+    return c.DeleteAigcQuotaWithContext(context.Background(), request)
+}
+
+// DeleteAigcQuota
+// 用于删除 AIGC 配额配置，删除后，将不再限制 AIGC 任务的发起。
+//
+// 
+//
+// 如果删除配额后重新启用，用量将清零并重新计算。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) DeleteAigcQuotaWithContext(ctx context.Context, request *DeleteAigcQuotaRequest) (response *DeleteAigcQuotaResponse, err error) {
+    if request == nil {
+        request = NewDeleteAigcQuotaRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vod", APIVersion, "DeleteAigcQuota")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAigcQuota require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteAigcQuotaResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteAnimatedGraphicsTemplateRequest() (request *DeleteAnimatedGraphicsTemplateRequest) {
     request = &DeleteAnimatedGraphicsTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5857,6 +5989,60 @@ func (c *Client) DescribeAigcFaceInfoAsyncWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewDescribeAigcFaceInfoAsyncResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAigcQuotasRequest() (request *DescribeAigcQuotasRequest) {
+    request = &DescribeAigcQuotasRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "DescribeAigcQuotas")
+    
+    
+    return
+}
+
+func NewDescribeAigcQuotasResponse() (response *DescribeAigcQuotasResponse) {
+    response = &DescribeAigcQuotasResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAigcQuotas
+// 用于查询 AIGC 配额配置。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) DescribeAigcQuotas(request *DescribeAigcQuotasRequest) (response *DescribeAigcQuotasResponse, err error) {
+    return c.DescribeAigcQuotasWithContext(context.Background(), request)
+}
+
+// DescribeAigcQuotas
+// 用于查询 AIGC 配额配置。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) DescribeAigcQuotasWithContext(ctx context.Context, request *DescribeAigcQuotasRequest) (response *DescribeAigcQuotasResponse, err error) {
+    if request == nil {
+        request = NewDescribeAigcQuotasRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vod", APIVersion, "DescribeAigcQuotas")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAigcQuotas require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAigcQuotasResponse()
     err = c.Send(request, response)
     return
 }
@@ -10889,6 +11075,68 @@ func (c *Client) ModifyAdaptiveDynamicStreamingTemplateWithContext(ctx context.C
     request.SetContext(ctx)
     
     response = NewModifyAdaptiveDynamicStreamingTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyAigcQuotaRequest() (request *ModifyAigcQuotaRequest) {
+    request = &ModifyAigcQuotaRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "ModifyAigcQuota")
+    
+    
+    return
+}
+
+func NewModifyAigcQuotaResponse() (response *ModifyAigcQuotaResponse) {
+    response = &ModifyAigcQuotaResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyAigcQuota
+// 用于编辑 AIGC 配额配置，配额用量从启用配额功能时开始累计，达到限额后将无法继续使用 AIGC 功能。
+//
+// 
+//
+// 由于AGC内客生成为异步任务，无法获取实时用量数据，因此配额限制存在一定误差，无法实现与设置额度完全精准的控制。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) ModifyAigcQuota(request *ModifyAigcQuotaRequest) (response *ModifyAigcQuotaResponse, err error) {
+    return c.ModifyAigcQuotaWithContext(context.Background(), request)
+}
+
+// ModifyAigcQuota
+// 用于编辑 AIGC 配额配置，配额用量从启用配额功能时开始累计，达到限额后将无法继续使用 AIGC 功能。
+//
+// 
+//
+// 由于AGC内客生成为异步任务，无法获取实时用量数据，因此配额限制存在一定误差，无法实现与设置额度完全精准的控制。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) ModifyAigcQuotaWithContext(ctx context.Context, request *ModifyAigcQuotaRequest) (response *ModifyAigcQuotaResponse, err error) {
+    if request == nil {
+        request = NewModifyAigcQuotaRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vod", APIVersion, "ModifyAigcQuota")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAigcQuota require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyAigcQuotaResponse()
     err = c.Send(request, response)
     return
 }

@@ -2473,6 +2473,58 @@ func (c *Client) DescribeAIAgentAssetListWithContext(ctx context.Context, reques
     return
 }
 
+func NewDescribeAILinkSettingRequest() (request *DescribeAILinkSettingRequest) {
+    request = &DescribeAILinkSettingRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeAILinkSetting")
+    
+    
+    return
+}
+
+func NewDescribeAILinkSettingResponse() (response *DescribeAILinkSettingResponse) {
+    response = &DescribeAILinkSettingResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAILinkSetting
+// 查询AI-Link智链引擎配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeAILinkSetting(request *DescribeAILinkSettingRequest) (response *DescribeAILinkSettingResponse, err error) {
+    return c.DescribeAILinkSettingWithContext(context.Background(), request)
+}
+
+// DescribeAILinkSetting
+// 查询AI-Link智链引擎配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeAILinkSettingWithContext(ctx context.Context, request *DescribeAILinkSettingRequest) (response *DescribeAILinkSettingResponse, err error) {
+    if request == nil {
+        request = NewDescribeAILinkSettingRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeAILinkSetting")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAILinkSetting require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAILinkSettingResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAKAnalysisDetailRequest() (request *DescribeAKAnalysisDetailRequest) {
     request = &DescribeAKAnalysisDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2496,24 +2548,8 @@ func NewDescribeAKAnalysisDetailResponse() (response *DescribeAKAnalysisDetailRe
 // 访问密钥告警记录AI分析结果详情
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeAKAnalysisDetail(request *DescribeAKAnalysisDetailRequest) (response *DescribeAKAnalysisDetailResponse, err error) {
     return c.DescribeAKAnalysisDetailWithContext(context.Background(), request)
 }
@@ -2522,24 +2558,8 @@ func (c *Client) DescribeAKAnalysisDetail(request *DescribeAKAnalysisDetailReque
 // 访问密钥告警记录AI分析结果详情
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeAKAnalysisDetailWithContext(ctx context.Context, request *DescribeAKAnalysisDetailRequest) (response *DescribeAKAnalysisDetailResponse, err error) {
     if request == nil {
         request = NewDescribeAKAnalysisDetailRequest()
@@ -2580,24 +2600,8 @@ func NewDescribeAbnormalCallRecordResponse() (response *DescribeAbnormalCallReco
 // 获取调用记录列表
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeAbnormalCallRecord(request *DescribeAbnormalCallRecordRequest) (response *DescribeAbnormalCallRecordResponse, err error) {
     return c.DescribeAbnormalCallRecordWithContext(context.Background(), request)
 }
@@ -2606,24 +2610,8 @@ func (c *Client) DescribeAbnormalCallRecord(request *DescribeAbnormalCallRecordR
 // 获取调用记录列表
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeAbnormalCallRecordWithContext(ctx context.Context, request *DescribeAbnormalCallRecordRequest) (response *DescribeAbnormalCallRecordResponse, err error) {
     if request == nil {
         request = NewDescribeAbnormalCallRecordRequest()
@@ -2664,24 +2652,8 @@ func NewDescribeAccessKeyAlarmResponse() (response *DescribeAccessKeyAlarmRespon
 // 访问密钥告警记录列表
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeAccessKeyAlarm(request *DescribeAccessKeyAlarmRequest) (response *DescribeAccessKeyAlarmResponse, err error) {
     return c.DescribeAccessKeyAlarmWithContext(context.Background(), request)
 }
@@ -2690,24 +2662,8 @@ func (c *Client) DescribeAccessKeyAlarm(request *DescribeAccessKeyAlarmRequest) 
 // 访问密钥告警记录列表
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeAccessKeyAlarmWithContext(ctx context.Context, request *DescribeAccessKeyAlarmRequest) (response *DescribeAccessKeyAlarmResponse, err error) {
     if request == nil {
         request = NewDescribeAccessKeyAlarmRequest()
@@ -2748,24 +2704,8 @@ func NewDescribeAccessKeyAlarmDetailResponse() (response *DescribeAccessKeyAlarm
 // 访问密钥告警记录详情
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeAccessKeyAlarmDetail(request *DescribeAccessKeyAlarmDetailRequest) (response *DescribeAccessKeyAlarmDetailResponse, err error) {
     return c.DescribeAccessKeyAlarmDetailWithContext(context.Background(), request)
 }
@@ -2774,24 +2714,8 @@ func (c *Client) DescribeAccessKeyAlarmDetail(request *DescribeAccessKeyAlarmDet
 // 访问密钥告警记录详情
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeAccessKeyAlarmDetailWithContext(ctx context.Context, request *DescribeAccessKeyAlarmDetailRequest) (response *DescribeAccessKeyAlarmDetailResponse, err error) {
     if request == nil {
         request = NewDescribeAccessKeyAlarmDetailRequest()
@@ -2832,24 +2756,8 @@ func NewDescribeAccessKeyAssetResponse() (response *DescribeAccessKeyAssetRespon
 // 获取用户访问密钥资产列表
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeAccessKeyAsset(request *DescribeAccessKeyAssetRequest) (response *DescribeAccessKeyAssetResponse, err error) {
     return c.DescribeAccessKeyAssetWithContext(context.Background(), request)
 }
@@ -2858,24 +2766,8 @@ func (c *Client) DescribeAccessKeyAsset(request *DescribeAccessKeyAssetRequest) 
 // 获取用户访问密钥资产列表
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeAccessKeyAssetWithContext(ctx context.Context, request *DescribeAccessKeyAssetRequest) (response *DescribeAccessKeyAssetResponse, err error) {
     if request == nil {
         request = NewDescribeAccessKeyAssetRequest()
@@ -2916,24 +2808,8 @@ func NewDescribeAccessKeyRiskResponse() (response *DescribeAccessKeyRiskResponse
 // 访问密钥风险记录列表
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeAccessKeyRisk(request *DescribeAccessKeyRiskRequest) (response *DescribeAccessKeyRiskResponse, err error) {
     return c.DescribeAccessKeyRiskWithContext(context.Background(), request)
 }
@@ -2942,24 +2818,8 @@ func (c *Client) DescribeAccessKeyRisk(request *DescribeAccessKeyRiskRequest) (r
 // 访问密钥风险记录列表
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeAccessKeyRiskWithContext(ctx context.Context, request *DescribeAccessKeyRiskRequest) (response *DescribeAccessKeyRiskResponse, err error) {
     if request == nil {
         request = NewDescribeAccessKeyRiskRequest()
@@ -3000,24 +2860,8 @@ func NewDescribeAccessKeyRiskDetailResponse() (response *DescribeAccessKeyRiskDe
 // 访问密钥风险记录详情
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeAccessKeyRiskDetail(request *DescribeAccessKeyRiskDetailRequest) (response *DescribeAccessKeyRiskDetailResponse, err error) {
     return c.DescribeAccessKeyRiskDetailWithContext(context.Background(), request)
 }
@@ -3026,24 +2870,8 @@ func (c *Client) DescribeAccessKeyRiskDetail(request *DescribeAccessKeyRiskDetai
 // 访问密钥风险记录详情
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeAccessKeyRiskDetailWithContext(ctx context.Context, request *DescribeAccessKeyRiskDetailRequest) (response *DescribeAccessKeyRiskDetailResponse, err error) {
     if request == nil {
         request = NewDescribeAccessKeyRiskDetailRequest()
@@ -3084,24 +2912,8 @@ func NewDescribeAccessKeyUserDetailResponse() (response *DescribeAccessKeyUserDe
 // 查询用户的账号详情
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeAccessKeyUserDetail(request *DescribeAccessKeyUserDetailRequest) (response *DescribeAccessKeyUserDetailResponse, err error) {
     return c.DescribeAccessKeyUserDetailWithContext(context.Background(), request)
 }
@@ -3110,24 +2922,8 @@ func (c *Client) DescribeAccessKeyUserDetail(request *DescribeAccessKeyUserDetai
 // 查询用户的账号详情
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeAccessKeyUserDetailWithContext(ctx context.Context, request *DescribeAccessKeyUserDetailRequest) (response *DescribeAccessKeyUserDetailResponse, err error) {
     if request == nil {
         request = NewDescribeAccessKeyUserDetailRequest()
@@ -3168,24 +2964,8 @@ func NewDescribeAccessKeyUserListResponse() (response *DescribeAccessKeyUserList
 // 查询用户的账号列表
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeAccessKeyUserList(request *DescribeAccessKeyUserListRequest) (response *DescribeAccessKeyUserListResponse, err error) {
     return c.DescribeAccessKeyUserListWithContext(context.Background(), request)
 }
@@ -3194,24 +2974,8 @@ func (c *Client) DescribeAccessKeyUserList(request *DescribeAccessKeyUserListReq
 // 查询用户的账号列表
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeAccessKeyUserListWithContext(ctx context.Context, request *DescribeAccessKeyUserListRequest) (response *DescribeAccessKeyUserListResponse, err error) {
     if request == nil {
         request = NewDescribeAccessKeyUserListRequest()
@@ -3252,24 +3016,8 @@ func NewDescribeAlertListResponse() (response *DescribeAlertListResponse) {
 // 告警中心全量告警列表接口
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeAlertList(request *DescribeAlertListRequest) (response *DescribeAlertListResponse, err error) {
     return c.DescribeAlertListWithContext(context.Background(), request)
 }
@@ -3278,24 +3026,8 @@ func (c *Client) DescribeAlertList(request *DescribeAlertListRequest) (response 
 // 告警中心全量告警列表接口
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeAlertListWithContext(ctx context.Context, request *DescribeAlertListRequest) (response *DescribeAlertListResponse, err error) {
     if request == nil {
         request = NewDescribeAlertListRequest()
@@ -3336,24 +3068,8 @@ func NewDescribeAssetProcessListResponse() (response *DescribeAssetProcessListRe
 // 查询云边界分析-暴露路径下主机节点的进程列表
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeAssetProcessList(request *DescribeAssetProcessListRequest) (response *DescribeAssetProcessListResponse, err error) {
     return c.DescribeAssetProcessListWithContext(context.Background(), request)
 }
@@ -3362,24 +3078,8 @@ func (c *Client) DescribeAssetProcessList(request *DescribeAssetProcessListReque
 // 查询云边界分析-暴露路径下主机节点的进程列表
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeAssetProcessListWithContext(ctx context.Context, request *DescribeAssetProcessListRequest) (response *DescribeAssetProcessListResponse, err error) {
     if request == nil {
         request = NewDescribeAssetProcessListRequest()
@@ -3420,24 +3120,8 @@ func NewDescribeAssetRiskListResponse() (response *DescribeAssetRiskListResponse
 // 资产视角下云资源配置风险列表
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeAssetRiskList(request *DescribeAssetRiskListRequest) (response *DescribeAssetRiskListResponse, err error) {
     return c.DescribeAssetRiskListWithContext(context.Background(), request)
 }
@@ -3446,24 +3130,8 @@ func (c *Client) DescribeAssetRiskList(request *DescribeAssetRiskListRequest) (r
 // 资产视角下云资源配置风险列表
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeAssetRiskListWithContext(ctx context.Context, request *DescribeAssetRiskListRequest) (response *DescribeAssetRiskListResponse, err error) {
     if request == nil {
         request = NewDescribeAssetRiskListRequest()
@@ -3504,24 +3172,8 @@ func NewDescribeAssetViewVulRiskListResponse() (response *DescribeAssetViewVulRi
 // 获取资产视角的漏洞风险列表
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeAssetViewVulRiskList(request *DescribeAssetViewVulRiskListRequest) (response *DescribeAssetViewVulRiskListResponse, err error) {
     return c.DescribeAssetViewVulRiskListWithContext(context.Background(), request)
 }
@@ -3530,24 +3182,8 @@ func (c *Client) DescribeAssetViewVulRiskList(request *DescribeAssetViewVulRiskL
 // 获取资产视角的漏洞风险列表
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeAssetViewVulRiskListWithContext(ctx context.Context, request *DescribeAssetViewVulRiskListRequest) (response *DescribeAssetViewVulRiskListResponse, err error) {
     if request == nil {
         request = NewDescribeAssetViewVulRiskListRequest()
@@ -9953,6 +9589,168 @@ func (c *Client) DescribeDspmWhitelistStrategyWithContext(ctx context.Context, r
     return
 }
 
+func NewDescribeEDRRuleListRequest() (request *DescribeEDRRuleListRequest) {
+    request = &DescribeEDRRuleListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeEDRRuleList")
+    
+    
+    return
+}
+
+func NewDescribeEDRRuleListResponse() (response *DescribeEDRRuleListResponse) {
+    response = &DescribeEDRRuleListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeEDRRuleList
+// 获取EDR策略列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeEDRRuleList(request *DescribeEDRRuleListRequest) (response *DescribeEDRRuleListResponse, err error) {
+    return c.DescribeEDRRuleListWithContext(context.Background(), request)
+}
+
+// DescribeEDRRuleList
+// 获取EDR策略列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeEDRRuleListWithContext(ctx context.Context, request *DescribeEDRRuleListRequest) (response *DescribeEDRRuleListResponse, err error) {
+    if request == nil {
+        request = NewDescribeEDRRuleListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeEDRRuleList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEDRRuleList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeEDRRuleListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeEdrAlertInfoRequest() (request *DescribeEdrAlertInfoRequest) {
+    request = &DescribeEdrAlertInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeEdrAlertInfo")
+    
+    
+    return
+}
+
+func NewDescribeEdrAlertInfoResponse() (response *DescribeEdrAlertInfoResponse) {
+    response = &DescribeEdrAlertInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeEdrAlertInfo
+// 获取EDR告警详情，包含告警内容JSON、资产富化、情报富化等完整信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeEdrAlertInfo(request *DescribeEdrAlertInfoRequest) (response *DescribeEdrAlertInfoResponse, err error) {
+    return c.DescribeEdrAlertInfoWithContext(context.Background(), request)
+}
+
+// DescribeEdrAlertInfo
+// 获取EDR告警详情，包含告警内容JSON、资产富化、情报富化等完整信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeEdrAlertInfoWithContext(ctx context.Context, request *DescribeEdrAlertInfoRequest) (response *DescribeEdrAlertInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeEdrAlertInfoRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeEdrAlertInfo")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEdrAlertInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeEdrAlertInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeEdrAlertListRequest() (request *DescribeEdrAlertListRequest) {
+    request = &DescribeEdrAlertListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeEdrAlertList")
+    
+    
+    return
+}
+
+func NewDescribeEdrAlertListResponse() (response *DescribeEdrAlertListResponse) {
+    response = &DescribeEdrAlertListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeEdrAlertList
+// 获取EDR告警列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeEdrAlertList(request *DescribeEdrAlertListRequest) (response *DescribeEdrAlertListResponse, err error) {
+    return c.DescribeEdrAlertListWithContext(context.Background(), request)
+}
+
+// DescribeEdrAlertList
+// 获取EDR告警列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeEdrAlertListWithContext(ctx context.Context, request *DescribeEdrAlertListRequest) (response *DescribeEdrAlertListResponse, err error) {
+    if request == nil {
+        request = NewDescribeEdrAlertListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeEdrAlertList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEdrAlertList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeEdrAlertListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeExposeAssetCategoryRequest() (request *DescribeExposeAssetCategoryRequest) {
     request = &DescribeExposeAssetCategoryRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -9976,11 +9774,9 @@ func NewDescribeExposeAssetCategoryResponse() (response *DescribeExposeAssetCate
 // 云边界分析资产分类
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
-//  OPERATIONDENIED = "OperationDenied"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeExposeAssetCategory(request *DescribeExposeAssetCategoryRequest) (response *DescribeExposeAssetCategoryResponse, err error) {
     return c.DescribeExposeAssetCategoryWithContext(context.Background(), request)
 }
@@ -9989,11 +9785,9 @@ func (c *Client) DescribeExposeAssetCategory(request *DescribeExposeAssetCategor
 // 云边界分析资产分类
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
-//  OPERATIONDENIED = "OperationDenied"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeExposeAssetCategoryWithContext(ctx context.Context, request *DescribeExposeAssetCategoryRequest) (response *DescribeExposeAssetCategoryResponse, err error) {
     if request == nil {
         request = NewDescribeExposeAssetCategoryRequest()
@@ -10034,11 +9828,9 @@ func NewDescribeExposePathResponse() (response *DescribeExposePathResponse) {
 // 查询云边界分析路径节点
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
-//  OPERATIONDENIED = "OperationDenied"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeExposePath(request *DescribeExposePathRequest) (response *DescribeExposePathResponse, err error) {
     return c.DescribeExposePathWithContext(context.Background(), request)
 }
@@ -10047,11 +9839,9 @@ func (c *Client) DescribeExposePath(request *DescribeExposePathRequest) (respons
 // 查询云边界分析路径节点
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
-//  OPERATIONDENIED = "OperationDenied"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeExposePathWithContext(ctx context.Context, request *DescribeExposePathRequest) (response *DescribeExposePathResponse, err error) {
     if request == nil {
         request = NewDescribeExposePathRequest()
@@ -10092,11 +9882,9 @@ func NewDescribeExposuresResponse() (response *DescribeExposuresResponse) {
 // 云边界分析资产列表
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
-//  OPERATIONDENIED = "OperationDenied"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeExposures(request *DescribeExposuresRequest) (response *DescribeExposuresResponse, err error) {
     return c.DescribeExposuresWithContext(context.Background(), request)
 }
@@ -10105,11 +9893,9 @@ func (c *Client) DescribeExposures(request *DescribeExposuresRequest) (response 
 // 云边界分析资产列表
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
-//  OPERATIONDENIED = "OperationDenied"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeExposuresWithContext(ctx context.Context, request *DescribeExposuresRequest) (response *DescribeExposuresResponse, err error) {
     if request == nil {
         request = NewDescribeExposuresRequest()
@@ -10150,11 +9936,9 @@ func NewDescribeGatewayAssetsResponse() (response *DescribeGatewayAssetsResponse
 // 获取网关列表
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
-//  OPERATIONDENIED = "OperationDenied"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeGatewayAssets(request *DescribeGatewayAssetsRequest) (response *DescribeGatewayAssetsResponse, err error) {
     return c.DescribeGatewayAssetsWithContext(context.Background(), request)
 }
@@ -10163,11 +9947,9 @@ func (c *Client) DescribeGatewayAssets(request *DescribeGatewayAssetsRequest) (r
 // 获取网关列表
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
-//  OPERATIONDENIED = "OperationDenied"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeGatewayAssetsWithContext(ctx context.Context, request *DescribeGatewayAssetsRequest) (response *DescribeGatewayAssetsResponse, err error) {
     if request == nil {
         request = NewDescribeGatewayAssetsRequest()
@@ -10208,11 +9990,9 @@ func NewDescribeHighBaseLineRiskListResponse() (response *DescribeHighBaseLineRi
 // 查询云边界分析-暴露路径下主机节点的高危基线风险列表
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
-//  OPERATIONDENIED = "OperationDenied"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeHighBaseLineRiskList(request *DescribeHighBaseLineRiskListRequest) (response *DescribeHighBaseLineRiskListResponse, err error) {
     return c.DescribeHighBaseLineRiskListWithContext(context.Background(), request)
 }
@@ -10221,11 +10001,9 @@ func (c *Client) DescribeHighBaseLineRiskList(request *DescribeHighBaseLineRiskL
 // 查询云边界分析-暴露路径下主机节点的高危基线风险列表
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
-//  OPERATIONDENIED = "OperationDenied"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeHighBaseLineRiskListWithContext(ctx context.Context, request *DescribeHighBaseLineRiskListRequest) (response *DescribeHighBaseLineRiskListResponse, err error) {
     if request == nil {
         request = NewDescribeHighBaseLineRiskListRequest()
@@ -14505,6 +14283,58 @@ func (c *Client) DownloadDspmExportLogWithContext(ctx context.Context, request *
     return
 }
 
+func NewModifyAILinkSettingRequest() (request *ModifyAILinkSettingRequest) {
+    request = &ModifyAILinkSettingRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "ModifyAILinkSetting")
+    
+    
+    return
+}
+
+func NewModifyAILinkSettingResponse() (response *ModifyAILinkSettingResponse) {
+    response = &ModifyAILinkSettingResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyAILinkSetting
+// 修改AI-Link智链引擎配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyAILinkSetting(request *ModifyAILinkSettingRequest) (response *ModifyAILinkSettingResponse, err error) {
+    return c.ModifyAILinkSettingWithContext(context.Background(), request)
+}
+
+// ModifyAILinkSetting
+// 修改AI-Link智链引擎配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyAILinkSettingWithContext(ctx context.Context, request *ModifyAILinkSettingRequest) (response *ModifyAILinkSettingResponse, err error) {
+    if request == nil {
+        request = NewModifyAILinkSettingRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "ModifyAILinkSetting")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAILinkSetting require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyAILinkSettingResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyAlarmRiskStatusRequest() (request *ModifyAlarmRiskStatusRequest) {
     request = &ModifyAlarmRiskStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -15643,6 +15473,114 @@ func (c *Client) ModifyDspmWhitelistStrategyWithContext(ctx context.Context, req
     request.SetContext(ctx)
     
     response = NewModifyDspmWhitelistStrategyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyEDRRuleRequest() (request *ModifyEDRRuleRequest) {
+    request = &ModifyEDRRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "ModifyEDRRule")
+    
+    
+    return
+}
+
+func NewModifyEDRRuleResponse() (response *ModifyEDRRuleResponse) {
+    response = &ModifyEDRRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyEDRRule
+// 编辑或者创建EDR策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyEDRRule(request *ModifyEDRRuleRequest) (response *ModifyEDRRuleResponse, err error) {
+    return c.ModifyEDRRuleWithContext(context.Background(), request)
+}
+
+// ModifyEDRRule
+// 编辑或者创建EDR策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyEDRRuleWithContext(ctx context.Context, request *ModifyEDRRuleRequest) (response *ModifyEDRRuleResponse, err error) {
+    if request == nil {
+        request = NewModifyEDRRuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "ModifyEDRRule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyEDRRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyEDRRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyEdrAlertPermanentIgnoreRequest() (request *ModifyEdrAlertPermanentIgnoreRequest) {
+    request = &ModifyEdrAlertPermanentIgnoreRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "ModifyEdrAlertPermanentIgnore")
+    
+    
+    return
+}
+
+func NewModifyEdrAlertPermanentIgnoreResponse() (response *ModifyEdrAlertPermanentIgnoreResponse) {
+    response = &ModifyEdrAlertPermanentIgnoreResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyEdrAlertPermanentIgnore
+// 永久忽略EDR多行为告警，将告警对应的主机+规则加入AI-Link永久忽略白名单，后续同类告警将自动丢弃
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyEdrAlertPermanentIgnore(request *ModifyEdrAlertPermanentIgnoreRequest) (response *ModifyEdrAlertPermanentIgnoreResponse, err error) {
+    return c.ModifyEdrAlertPermanentIgnoreWithContext(context.Background(), request)
+}
+
+// ModifyEdrAlertPermanentIgnore
+// 永久忽略EDR多行为告警，将告警对应的主机+规则加入AI-Link永久忽略白名单，后续同类告警将自动丢弃
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyEdrAlertPermanentIgnoreWithContext(ctx context.Context, request *ModifyEdrAlertPermanentIgnoreRequest) (response *ModifyEdrAlertPermanentIgnoreResponse, err error) {
+    if request == nil {
+        request = NewModifyEdrAlertPermanentIgnoreRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "ModifyEdrAlertPermanentIgnore")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyEdrAlertPermanentIgnore require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyEdrAlertPermanentIgnoreResponse()
     err = c.Send(request, response)
     return
 }

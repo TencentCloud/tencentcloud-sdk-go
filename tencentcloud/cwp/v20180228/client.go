@@ -12689,7 +12689,7 @@ func NewDescribeLoginTypeGlobalConfResponse() (response *DescribeLoginTypeGlobal
 }
 
 // DescribeLoginTypeGlobalConf
-// 获取防卸载全局配置
+// 获取扫码登录全局配置
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -12698,7 +12698,7 @@ func (c *Client) DescribeLoginTypeGlobalConf(request *DescribeLoginTypeGlobalCon
 }
 
 // DescribeLoginTypeGlobalConf
-// 获取防卸载全局配置
+// 获取扫码登录全局配置
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

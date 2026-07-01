@@ -3305,6 +3305,94 @@ func (r *DescribeTopicResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeTopicStatsRequestParams struct {
+	// 主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
+	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
+
+	// 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>消费组ID，可通过DescribeConsumerGroupList接口返回的ConsumerGroup字段或控制台查询</p>
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// 查询起始位置，默认为0。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 查询结果限制数量，默认20。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeTopicStatsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
+	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
+
+	// 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>消费组ID，可通过DescribeConsumerGroupList接口返回的ConsumerGroup字段或控制台查询</p>
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// 查询起始位置，默认为0。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 查询结果限制数量，默认20。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeTopicStatsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTopicStatsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Topic")
+	delete(f, "InstanceId")
+	delete(f, "GroupId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTopicStatsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTopicStatsResponseParams struct {
+	// 查询总数
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>队列级别的消费详情</p>
+	Data []*TopicStatsDetail `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeTopicStatsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTopicStatsResponseParams `json:"Response"`
+}
+
+func (r *DescribeTopicStatsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTopicStatsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DetailedRolePerm struct {
 	// 权限对应的资源
 	// 可以是主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
@@ -5311,6 +5399,32 @@ type TopicStageChangeResult struct {
 
 	// 命名空间，仅4.x有效
 	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+}
+
+type TopicStatsDetail struct {
+	// <p>Broker节点名称</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BrokerName *string `json:"BrokerName,omitnil,omitempty" name:"BrokerName"`
+
+	// <p>队列编号</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QueueId *int64 `json:"QueueId,omitnil,omitempty" name:"QueueId"`
+
+	// <p>生产消息位点</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BrokerOffset *int64 `json:"BrokerOffset,omitnil,omitempty" name:"BrokerOffset"`
+
+	// <p>最新消费位点</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CommitOffset *int64 `json:"CommitOffset,omitnil,omitempty" name:"CommitOffset"`
+
+	// <p>堆积总数</p><p>单位：条</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MessageCount *int64 `json:"MessageCount,omitnil,omitempty" name:"MessageCount"`
+
+	// <p>最后消费时间</p><p>单位：毫秒</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastUpdateTimestamp *int64 `json:"LastUpdateTimestamp,omitnil,omitempty" name:"LastUpdateTimestamp"`
 }
 
 // Predefined struct for user

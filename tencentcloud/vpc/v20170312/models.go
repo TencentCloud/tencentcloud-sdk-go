@@ -37663,50 +37663,50 @@ func (r *UnlockCcnsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateTrafficMirrorAllFilterRequestParams struct {
-	// 流量镜像实例ID
+	// <p>流量镜像实例ID</p>
 	TrafficMirrorId *string `json:"TrafficMirrorId,omitnil,omitempty" name:"TrafficMirrorId"`
 
-	// 流量镜像采集方向
+	// <p>流量镜像采集方向</p>
 	Direction *string `json:"Direction,omitnil,omitempty" name:"Direction"`
 
-	// 流量镜像采集对象
+	// <p>流量镜像采集对象</p>
 	CollectorSrcs []*string `json:"CollectorSrcs,omitnil,omitempty" name:"CollectorSrcs"`
 
-	// 流量镜像需要过滤的natgw实例
+	// <p>流量镜像需要过滤的natgw实例</p>
 	NatId *string `json:"NatId,omitnil,omitempty" name:"NatId"`
 
-	// 流量镜像需要过滤的五元组规则
+	// <p>流量镜像需要过滤的五元组规则</p>
 	CollectorNormalFilters []*TrafficMirrorFilter `json:"CollectorNormalFilters,omitnil,omitempty" name:"CollectorNormalFilters"`
 
-	// 流量镜像入站过滤规则。
+	// <p>流量镜像入站过滤规则。</p>
 	IngressFilterRules []*TrafficMirrorFilter `json:"IngressFilterRules,omitnil,omitempty" name:"IngressFilterRules"`
 
-	// 流量镜像出站过滤规则。
+	// <p>流量镜像出站过滤规则。</p>
 	EgressFilterRules []*TrafficMirrorFilter `json:"EgressFilterRules,omitnil,omitempty" name:"EgressFilterRules"`
 }
 
 type UpdateTrafficMirrorAllFilterRequest struct {
 	*tchttp.BaseRequest
 	
-	// 流量镜像实例ID
+	// <p>流量镜像实例ID</p>
 	TrafficMirrorId *string `json:"TrafficMirrorId,omitnil,omitempty" name:"TrafficMirrorId"`
 
-	// 流量镜像采集方向
+	// <p>流量镜像采集方向</p>
 	Direction *string `json:"Direction,omitnil,omitempty" name:"Direction"`
 
-	// 流量镜像采集对象
+	// <p>流量镜像采集对象</p>
 	CollectorSrcs []*string `json:"CollectorSrcs,omitnil,omitempty" name:"CollectorSrcs"`
 
-	// 流量镜像需要过滤的natgw实例
+	// <p>流量镜像需要过滤的natgw实例</p>
 	NatId *string `json:"NatId,omitnil,omitempty" name:"NatId"`
 
-	// 流量镜像需要过滤的五元组规则
+	// <p>流量镜像需要过滤的五元组规则</p>
 	CollectorNormalFilters []*TrafficMirrorFilter `json:"CollectorNormalFilters,omitnil,omitempty" name:"CollectorNormalFilters"`
 
-	// 流量镜像入站过滤规则。
+	// <p>流量镜像入站过滤规则。</p>
 	IngressFilterRules []*TrafficMirrorFilter `json:"IngressFilterRules,omitnil,omitempty" name:"IngressFilterRules"`
 
-	// 流量镜像出站过滤规则。
+	// <p>流量镜像出站过滤规则。</p>
 	EgressFilterRules []*TrafficMirrorFilter `json:"EgressFilterRules,omitnil,omitempty" name:"EgressFilterRules"`
 }
 

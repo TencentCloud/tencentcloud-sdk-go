@@ -4856,198 +4856,194 @@ func (r *DescribeDataPvUrlStatisticsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDataPvUrlStatisticsV2RequestParams struct {
-	// 开始时间
+	// <p>开始时间</p>
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// allcount：性能视图，day：14天数据，vp：性能，ckuv：uv，ckpv：pv，condition：条件列表，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图/ext1视图等
+	// <p>allcount：性能视图，day：14天数据，vp：性能，ckuv：uv，ckpv：pv，condition：条件列表，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图/ext1视图等</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 结束时间
+	// <p>结束时间</p>
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 项目ID
+	// <p>项目ID</p>
 	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
 
-	// 自定义2
+	// <p>自定义2</p>
 	ExtSecond *string `json:"ExtSecond,omitnil,omitempty" name:"ExtSecond"`
 
-	// 浏览器引擎
+	// <p>浏览器引擎</p>
 	Engine *string `json:"Engine,omitnil,omitempty" name:"Engine"`
 
-	// 运营商
+	// <p>运营商</p>
 	Isp *string `json:"Isp,omitnil,omitempty" name:"Isp"`
 
-	// 来源页面
+	// <p>来源页面， 可多选，用 “,” 隔开的 String</p>
 	From *string `json:"From,omitnil,omitempty" name:"From"`
 
-	// 日志等级
+	// <p>日志等级</p>
 	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
 
-	// 品牌
+	// <p>品牌</p>
 	Brand *string `json:"Brand,omitnil,omitempty" name:"Brand"`
 
-	// 地区
+	// <p>地区</p>
 	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
 
-	// 版本
+	// <p>版本</p>
 	VersionNum *string `json:"VersionNum,omitnil,omitempty" name:"VersionNum"`
 
-	// 平台
+	// <p>平台</p>
 	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
 
-	// 自定义3
+	// <p>自定义3</p>
 	ExtThird *string `json:"ExtThird,omitnil,omitempty" name:"ExtThird"`
 
-	// 自定义1
+	// <p>自定义1</p>
 	ExtFirst *string `json:"ExtFirst,omitnil,omitempty" name:"ExtFirst"`
 
-	// 网络类型（1,2,3,4,5,100），1表示WIFI, 2表示2G, 3表示3G, 4表示4G, 5表示5G, 6表示6G, 100表示未知
+	// <p>网络类型（1,2,3,4,5,100），1表示WIFI, 2表示2G, 3表示3G, 4表示4G, 5表示5G, 6表示6G, 100表示未知</p>
 	NetType *string `json:"NetType,omitnil,omitempty" name:"NetType"`
 
-	// 机型
+	// <p>机型</p>
 	Device *string `json:"Device,omitnil,omitempty" name:"Device"`
 
-	// 显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。
+	// <p>显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。</p>
 	IsAbroad *string `json:"IsAbroad,omitnil,omitempty" name:"IsAbroad"`
 
-	// 操作系统
+	// <p>操作系统</p>
 	Os *string `json:"Os,omitnil,omitempty" name:"Os"`
 
-	// 浏览器
+	// <p>浏览器</p>
 	Browser *string `json:"Browser,omitnil,omitempty" name:"Browser"`
 
-	// 环境
+	// <p>环境</p>
 	Env *string `json:"Env,omitnil,omitempty" name:"Env"`
 
-	// group by 参数值枚举1:1m  2:5m  3:30m  4:1h 
-	//  5:1d
+	// <p>group by 参数值枚举1:1m  2:5m  3:30m  4:1h<br> 5:1d</p>
 	GroupByType *int64 `json:"GroupByType,omitnil,omitempty" name:"GroupByType"`
 
-	// 1: 查询智研
-	// 0: 走旧逻辑，已下线，勿使用
+	// <p>1: 查询智研<br>0: 走旧逻辑，已下线，勿使用</p>
 	IsNewData *int64 `json:"IsNewData,omitnil,omitempty" name:"IsNewData"`
 
-	// 自定义4
+	// <p>自定义4</p>
 	ExtFourth *string `json:"ExtFourth,omitnil,omitempty" name:"ExtFourth"`
 
-	// 自定义5
+	// <p>自定义5</p>
 	ExtFifth *string `json:"ExtFifth,omitnil,omitempty" name:"ExtFifth"`
 
-	// 自定义6
+	// <p>自定义6</p>
 	ExtSixth *string `json:"ExtSixth,omitnil,omitempty" name:"ExtSixth"`
 
-	// 自定义7
+	// <p>自定义7</p>
 	ExtSeventh *string `json:"ExtSeventh,omitnil,omitempty" name:"ExtSeventh"`
 
-	// 自定义8
+	// <p>自定义8</p>
 	ExtEighth *string `json:"ExtEighth,omitnil,omitempty" name:"ExtEighth"`
 
-	// 自定义9
+	// <p>自定义9</p>
 	ExtNinth *string `json:"ExtNinth,omitnil,omitempty" name:"ExtNinth"`
 
-	// 自定义10
+	// <p>自定义10</p>
 	ExtTenth *string `json:"ExtTenth,omitnil,omitempty" name:"ExtTenth"`
 
-	// 时间段
+	// <p>时间段</p>
 	Granularity *string `json:"Granularity,omitnil,omitempty" name:"Granularity"`
 }
 
 type DescribeDataPvUrlStatisticsV2Request struct {
 	*tchttp.BaseRequest
 	
-	// 开始时间
+	// <p>开始时间</p>
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// allcount：性能视图，day：14天数据，vp：性能，ckuv：uv，ckpv：pv，condition：条件列表，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图/ext1视图等
+	// <p>allcount：性能视图，day：14天数据，vp：性能，ckuv：uv，ckpv：pv，condition：条件列表，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图/ext1视图等</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 结束时间
+	// <p>结束时间</p>
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 项目ID
+	// <p>项目ID</p>
 	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
 
-	// 自定义2
+	// <p>自定义2</p>
 	ExtSecond *string `json:"ExtSecond,omitnil,omitempty" name:"ExtSecond"`
 
-	// 浏览器引擎
+	// <p>浏览器引擎</p>
 	Engine *string `json:"Engine,omitnil,omitempty" name:"Engine"`
 
-	// 运营商
+	// <p>运营商</p>
 	Isp *string `json:"Isp,omitnil,omitempty" name:"Isp"`
 
-	// 来源页面
+	// <p>来源页面， 可多选，用 “,” 隔开的 String</p>
 	From *string `json:"From,omitnil,omitempty" name:"From"`
 
-	// 日志等级
+	// <p>日志等级</p>
 	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
 
-	// 品牌
+	// <p>品牌</p>
 	Brand *string `json:"Brand,omitnil,omitempty" name:"Brand"`
 
-	// 地区
+	// <p>地区</p>
 	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
 
-	// 版本
+	// <p>版本</p>
 	VersionNum *string `json:"VersionNum,omitnil,omitempty" name:"VersionNum"`
 
-	// 平台
+	// <p>平台</p>
 	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
 
-	// 自定义3
+	// <p>自定义3</p>
 	ExtThird *string `json:"ExtThird,omitnil,omitempty" name:"ExtThird"`
 
-	// 自定义1
+	// <p>自定义1</p>
 	ExtFirst *string `json:"ExtFirst,omitnil,omitempty" name:"ExtFirst"`
 
-	// 网络类型（1,2,3,4,5,100），1表示WIFI, 2表示2G, 3表示3G, 4表示4G, 5表示5G, 6表示6G, 100表示未知
+	// <p>网络类型（1,2,3,4,5,100），1表示WIFI, 2表示2G, 3表示3G, 4表示4G, 5表示5G, 6表示6G, 100表示未知</p>
 	NetType *string `json:"NetType,omitnil,omitempty" name:"NetType"`
 
-	// 机型
+	// <p>机型</p>
 	Device *string `json:"Device,omitnil,omitempty" name:"Device"`
 
-	// 显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。
+	// <p>显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。</p>
 	IsAbroad *string `json:"IsAbroad,omitnil,omitempty" name:"IsAbroad"`
 
-	// 操作系统
+	// <p>操作系统</p>
 	Os *string `json:"Os,omitnil,omitempty" name:"Os"`
 
-	// 浏览器
+	// <p>浏览器</p>
 	Browser *string `json:"Browser,omitnil,omitempty" name:"Browser"`
 
-	// 环境
+	// <p>环境</p>
 	Env *string `json:"Env,omitnil,omitempty" name:"Env"`
 
-	// group by 参数值枚举1:1m  2:5m  3:30m  4:1h 
-	//  5:1d
+	// <p>group by 参数值枚举1:1m  2:5m  3:30m  4:1h<br> 5:1d</p>
 	GroupByType *int64 `json:"GroupByType,omitnil,omitempty" name:"GroupByType"`
 
-	// 1: 查询智研
-	// 0: 走旧逻辑，已下线，勿使用
+	// <p>1: 查询智研<br>0: 走旧逻辑，已下线，勿使用</p>
 	IsNewData *int64 `json:"IsNewData,omitnil,omitempty" name:"IsNewData"`
 
-	// 自定义4
+	// <p>自定义4</p>
 	ExtFourth *string `json:"ExtFourth,omitnil,omitempty" name:"ExtFourth"`
 
-	// 自定义5
+	// <p>自定义5</p>
 	ExtFifth *string `json:"ExtFifth,omitnil,omitempty" name:"ExtFifth"`
 
-	// 自定义6
+	// <p>自定义6</p>
 	ExtSixth *string `json:"ExtSixth,omitnil,omitempty" name:"ExtSixth"`
 
-	// 自定义7
+	// <p>自定义7</p>
 	ExtSeventh *string `json:"ExtSeventh,omitnil,omitempty" name:"ExtSeventh"`
 
-	// 自定义8
+	// <p>自定义8</p>
 	ExtEighth *string `json:"ExtEighth,omitnil,omitempty" name:"ExtEighth"`
 
-	// 自定义9
+	// <p>自定义9</p>
 	ExtNinth *string `json:"ExtNinth,omitnil,omitempty" name:"ExtNinth"`
 
-	// 自定义10
+	// <p>自定义10</p>
 	ExtTenth *string `json:"ExtTenth,omitnil,omitempty" name:"ExtTenth"`
 
-	// 时间段
+	// <p>时间段</p>
 	Granularity *string `json:"Granularity,omitnil,omitempty" name:"Granularity"`
 }
 
@@ -5102,7 +5098,7 @@ func (r *DescribeDataPvUrlStatisticsV2Request) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDataPvUrlStatisticsV2ResponseParams struct {
-	// 返回值
+	// <p>返回值</p>
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

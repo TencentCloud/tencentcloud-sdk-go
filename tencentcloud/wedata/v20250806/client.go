@@ -6785,7 +6785,7 @@ func NewListSQLFolderContentsResponse() (response *ListSQLFolderContentsResponse
 }
 
 // ListSQLFolderContents
-// 查询数据探索文件夹树，包括文件夹下的脚本
+// 查询SQL文件夹树，包括文件夹下的脚本
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -6794,7 +6794,7 @@ func (c *Client) ListSQLFolderContents(request *ListSQLFolderContentsRequest) (r
 }
 
 // ListSQLFolderContents
-// 查询数据探索文件夹树，包括文件夹下的脚本
+// 查询SQL文件夹树，包括文件夹下的脚本
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

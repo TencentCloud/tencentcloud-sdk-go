@@ -18433,8 +18433,11 @@ type ImageProcessOutputConfig struct {
 }
 
 type ImageProcessPrompt struct {
-	// 图片处理相关的prompt。
+	// <p>图片处理相关的prompt。</p>
 	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
+
+	// <p>prompt 对应的 role。</p>
+	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
 }
 
 type ImageProcessTaskOutput struct {

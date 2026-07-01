@@ -3395,6 +3395,151 @@ func (r *CreateTWeSeeCallbackResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateTWeSeeDirectUploadCredentialRequestParams struct {
+	// <p>产品 ID</p><p>非 IoT 设备可传 <code>default</code></p>
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// <p>设备名称</p>
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// <p>算法类型</p><p>枚举值：</p><ul><li>VID_COMP： 视频理解（支持视频文件或多帧图片）</li><li>IMG_COMP： 图片理解（单帧图片）</li></ul>
+	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
+
+	// <p>通道 ID</p><p>默认值：0</p>
+	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// <p>回调目标 ID</p>
+	CallbackId *string `json:"CallbackId,omitnil,omitempty" name:"CallbackId"`
+
+	// <p>视觉理解配置项</p>
+	ComprehensionConfig *SeeComprehensionConfig `json:"ComprehensionConfig,omitnil,omitempty" name:"ComprehensionConfig"`
+
+	// <p>自定义事件 ID，会透传到任务元数据与回调中</p>
+	CustomId *string `json:"CustomId,omitnil,omitempty" name:"CustomId"`
+
+	// <p>临时密钥有效期，单位：秒。默认 300 秒，取值范围 5 到 86400。</p>
+	DurationSeconds *int64 `json:"DurationSeconds,omitnil,omitempty" name:"DurationSeconds"`
+
+	// <p>该直传凭据最多可触发的分析次数</p><p>取值范围：[1, 10000]</p><p>默认值：1</p>
+	MaxInvokeCount *int64 `json:"MaxInvokeCount,omitnil,omitempty" name:"MaxInvokeCount"`
+
+	// <p>上传 COS 存储桶所在地域。不填时使用默认地域。</p>
+	StorageRegion *string `json:"StorageRegion,omitnil,omitempty" name:"StorageRegion"`
+
+	// <p>上传方式</p><p>枚举值：</p><ul><li>single： 单文件上传</li><li>manifest： 上传源文件与 Manifest（先上传多个源文件，然后上传 Manifest JSON 触发分析）</li></ul><p>默认值：single</p>
+	UploadMethod *string `json:"UploadMethod,omitnil,omitempty" name:"UploadMethod"`
+}
+
+type CreateTWeSeeDirectUploadCredentialRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>产品 ID</p><p>非 IoT 设备可传 <code>default</code></p>
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// <p>设备名称</p>
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// <p>算法类型</p><p>枚举值：</p><ul><li>VID_COMP： 视频理解（支持视频文件或多帧图片）</li><li>IMG_COMP： 图片理解（单帧图片）</li></ul>
+	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
+
+	// <p>通道 ID</p><p>默认值：0</p>
+	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// <p>回调目标 ID</p>
+	CallbackId *string `json:"CallbackId,omitnil,omitempty" name:"CallbackId"`
+
+	// <p>视觉理解配置项</p>
+	ComprehensionConfig *SeeComprehensionConfig `json:"ComprehensionConfig,omitnil,omitempty" name:"ComprehensionConfig"`
+
+	// <p>自定义事件 ID，会透传到任务元数据与回调中</p>
+	CustomId *string `json:"CustomId,omitnil,omitempty" name:"CustomId"`
+
+	// <p>临时密钥有效期，单位：秒。默认 300 秒，取值范围 5 到 86400。</p>
+	DurationSeconds *int64 `json:"DurationSeconds,omitnil,omitempty" name:"DurationSeconds"`
+
+	// <p>该直传凭据最多可触发的分析次数</p><p>取值范围：[1, 10000]</p><p>默认值：1</p>
+	MaxInvokeCount *int64 `json:"MaxInvokeCount,omitnil,omitempty" name:"MaxInvokeCount"`
+
+	// <p>上传 COS 存储桶所在地域。不填时使用默认地域。</p>
+	StorageRegion *string `json:"StorageRegion,omitnil,omitempty" name:"StorageRegion"`
+
+	// <p>上传方式</p><p>枚举值：</p><ul><li>single： 单文件上传</li><li>manifest： 上传源文件与 Manifest（先上传多个源文件，然后上传 Manifest JSON 触发分析）</li></ul><p>默认值：single</p>
+	UploadMethod *string `json:"UploadMethod,omitnil,omitempty" name:"UploadMethod"`
+}
+
+func (r *CreateTWeSeeDirectUploadCredentialRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateTWeSeeDirectUploadCredentialRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	delete(f, "ServiceType")
+	delete(f, "ChannelId")
+	delete(f, "CallbackId")
+	delete(f, "ComprehensionConfig")
+	delete(f, "CustomId")
+	delete(f, "DurationSeconds")
+	delete(f, "MaxInvokeCount")
+	delete(f, "StorageRegion")
+	delete(f, "UploadMethod")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTWeSeeDirectUploadCredentialRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateTWeSeeDirectUploadCredentialResponseParams struct {
+	// <p>访问 COS 的临时密钥过期时间（秒级 UNIX 时间戳）</p>
+	ExpiredTime *int64 `json:"ExpiredTime,omitnil,omitempty" name:"ExpiredTime"`
+
+	// <p>访问 COS 的临时密钥 SecretId</p>
+	SecretId *string `json:"SecretId,omitnil,omitempty" name:"SecretId"`
+
+	// <p>访问 COS 的临时密钥 SecretKey</p>
+	SecretKey *string `json:"SecretKey,omitnil,omitempty" name:"SecretKey"`
+
+	// <p>COS 存储桶名称</p>
+	StorageBucket *string `json:"StorageBucket,omitnil,omitempty" name:"StorageBucket"`
+
+	// <p>COS 对象 Key 前缀。返回的临时凭据仅允许上传到此前缀下，格式为 Direct/{Uin}/{SessionId}/。</p>
+	StoragePath *string `json:"StoragePath,omitnil,omitempty" name:"StoragePath"`
+
+	// <p>COS 存储桶所在地域</p>
+	StorageRegion *string `json:"StorageRegion,omitnil,omitempty" name:"StorageRegion"`
+
+	// <p>访问 COS 的临时密钥 Token</p>
+	Token *string `json:"Token,omitnil,omitempty" name:"Token"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateTWeSeeDirectUploadCredentialResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateTWeSeeDirectUploadCredentialResponseParams `json:"Response"`
+}
+
+func (r *CreateTWeSeeDirectUploadCredentialResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateTWeSeeDirectUploadCredentialResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateTWeSeePostPaidServiceRequestParams struct {
 	// 算法类型。可选值：
 	// 
@@ -14028,6 +14173,9 @@ type InvokeAISearchServiceRequestParams struct {
 
 	// <p>搜索结果的排序方式，可选值：</p><ul><li><code>CORRELATION</code>：按相关性（默认）</li><li><code>TIME_ASC</code>：按时间升序</li><li><code>TIME_DESC</code>：按时间降序</li></ul>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// <p>是否输出原始任务信息</p>
+	WithTaskInfo *bool `json:"WithTaskInfo,omitnil,omitempty" name:"WithTaskInfo"`
 }
 
 type InvokeAISearchServiceRequest struct {
@@ -14074,6 +14222,9 @@ type InvokeAISearchServiceRequest struct {
 
 	// <p>搜索结果的排序方式，可选值：</p><ul><li><code>CORRELATION</code>：按相关性（默认）</li><li><code>TIME_ASC</code>：按时间升序</li><li><code>TIME_DESC</code>：按时间降序</li></ul>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// <p>是否输出原始任务信息</p>
+	WithTaskInfo *bool `json:"WithTaskInfo,omitnil,omitempty" name:"WithTaskInfo"`
 }
 
 func (r *InvokeAISearchServiceRequest) ToJsonString() string {
@@ -14102,6 +14253,7 @@ func (r *InvokeAISearchServiceRequest) FromJsonString(s string) error {
 	delete(f, "VectorSearchRadius")
 	delete(f, "VectorSearchTopK")
 	delete(f, "Order")
+	delete(f, "WithTaskInfo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InvokeAISearchServiceRequest has unknown keys!", "")
 	}

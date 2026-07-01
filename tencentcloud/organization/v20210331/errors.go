@@ -83,6 +83,9 @@ const (
 	// 解码元数据文档失败。
 	FAILEDOPERATION_DECODEMETADATADOCUMENTFAILED = "FailedOperation.DecodeMetadataDocumentFailed"
 
+	// 委派管理员不能操作策略（添加、编辑、删除）
+	FAILEDOPERATION_DELEGATEDADMINCANNOTMODIFYPOLICY = "FailedOperation.DelegatedAdminCannotModifyPolicy"
+
 	// 用户组还存在用户，不允许删除用户
 	FAILEDOPERATION_DELETEGROUPNOTALLOWEXISTUSER = "FailedOperation.DeleteGroupNotAllowExistUser"
 

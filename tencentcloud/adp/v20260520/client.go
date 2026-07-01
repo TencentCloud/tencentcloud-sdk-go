@@ -45,6 +45,50 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewCopyAgentFromAppRequest() (request *CopyAgentFromAppRequest) {
+    request = &CopyAgentFromAppRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "CopyAgentFromApp")
+    
+    
+    return
+}
+
+func NewCopyAgentFromAppResponse() (response *CopyAgentFromAppResponse) {
+    response = &CopyAgentFromAppResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CopyAgentFromApp
+// 创建Agent
+func (c *Client) CopyAgentFromApp(request *CopyAgentFromAppRequest) (response *CopyAgentFromAppResponse, err error) {
+    return c.CopyAgentFromAppWithContext(context.Background(), request)
+}
+
+// CopyAgentFromApp
+// 创建Agent
+func (c *Client) CopyAgentFromAppWithContext(ctx context.Context, request *CopyAgentFromAppRequest) (response *CopyAgentFromAppResponse, err error) {
+    if request == nil {
+        request = NewCopyAgentFromAppRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "CopyAgentFromApp")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CopyAgentFromApp require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCopyAgentFromAppResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCopyAppRequest() (request *CopyAppRequest) {
     request = &CopyAppRequest{
         BaseRequest: &tchttp.BaseRequest{},

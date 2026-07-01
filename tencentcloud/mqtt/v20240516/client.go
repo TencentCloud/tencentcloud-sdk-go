@@ -1321,6 +1321,7 @@ func NewDeleteInstanceResponse() (response *DeleteInstanceResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DELETEPROTECT = "FailedOperation.DeleteProtect"
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
 func (c *Client) DeleteInstance(request *DeleteInstanceRequest) (response *DeleteInstanceResponse, err error) {
@@ -1332,6 +1333,7 @@ func (c *Client) DeleteInstance(request *DeleteInstanceRequest) (response *Delet
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DELETEPROTECT = "FailedOperation.DeleteProtect"
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
 func (c *Client) DeleteInstanceWithContext(ctx context.Context, request *DeleteInstanceRequest) (response *DeleteInstanceResponse, err error) {

@@ -20,6 +20,9 @@ const (
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 
+	// 调用计费系统失败
+	INTERNALERROR_BILLINGREQUESTFAIL = "InternalError.BillingRequestFail"
+
 	// 媒体库资源删除失败
 	INTERNALERROR_MODIFYRESOURCESTATUSFAIL = "InternalError.ModifyResourceStatusFail"
 
@@ -31,6 +34,9 @@ const (
 
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
+
+	// 后端没有默认开启高级多模态检索能力或用户没在白名单中
+	INVALIDPARAMETERVALUE_ADVANCEDSEARCHOPTION = "InvalidParameterValue.AdvancedSearchOption"
 
 	// 存储桶名称无效。
 	INVALIDPARAMETERVALUE_BUCKETNAMEINVALID = "InvalidParameterValue.BucketNameInvalid"
@@ -55,6 +61,12 @@ const (
 
 	// 指定的国家代码无效。
 	INVALIDPARAMETERVALUE_COUNTRYCODE = "InvalidParameterValue.CountryCode"
+
+	// 开启媒体库配额时需要指定配额大小
+	INVALIDPARAMETERVALUE_LIBRARYQUOTAREQUIRED = "InvalidParameterValue.LibraryQuotaRequired"
+
+	// 仅多租户媒体库支持开启媒体库配额
+	INVALIDPARAMETERVALUE_LIBRARYQUOTAREQUIRESMULTISPACE = "InvalidParameterValue.LibraryQuotaRequiresMultiSpace"
 
 	// 参数值数量或字符数超过限制。
 	INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
@@ -85,6 +97,9 @@ const (
 
 	// 官方云盘实例不存在或不属于当前账号。
 	RESOURCENOTFOUND_OFFICIALINSTANCE = "ResourceNotFound.OfficialInstance"
+
+	// 同 (LibraryId, AccountUserId) 下不存在非销毁状态的预付费实例（可能从未购买，或已被退订销毁）
+	RESOURCENOTFOUND_PREPAIDINSTANCE = "ResourceNotFound.PrepaidInstance"
 
 	// 未授予 cam:PassRole 权限。
 	UNAUTHORIZEDOPERATION_PASSROLE = "UnauthorizedOperation.PassRole"

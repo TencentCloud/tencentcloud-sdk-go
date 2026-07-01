@@ -2304,6 +2304,20 @@ type AigcImageTaskOutputFileInfo struct {
 	MetaData *MediaMetaData `json:"MetaData,omitnil,omitempty" name:"MetaData"`
 }
 
+type AigcQuotaItem struct {
+	// <p>配额类型</p><p>枚举值：</p><ul><li>Image： AIGC 生图任务</li><li>Video： AIGC 生视频任务</li><li>Text： AIGC 生文任务</li></ul>
+	QuotaType *string `json:"QuotaType,omitnil,omitempty" name:"QuotaType"`
+
+	// <p>仅当QuotaLimit=Text时有效，用于选择需要进行配额限制ApiToken</p>
+	ApiToken *string `json:"ApiToken,omitnil,omitempty" name:"ApiToken"`
+
+	// <p>任务的配额数</p><p>单位：</p><ul><li>当QuotaLimit=Image时，单位为张</li><li>当QuotaLimit=Video时，单位为秒</li><li>当QuotaLimit=Text时，单位为token</li></ul>
+	QuotaLimit *uint64 `json:"QuotaLimit,omitnil,omitempty" name:"QuotaLimit"`
+
+	// <p>已经使用的用量数</p><p>单位：</p><ul><li>当QuotaLimit=Image时，单位为张</li><li>当QuotaLimit=Video时，单位为秒</li><li>当QuotaLimit=Text时，单位为token</li></ul>
+	Usage *uint64 `json:"Usage,omitnil,omitempty" name:"Usage"`
+}
+
 type AigcUsageDataItem struct {
 	// <p>AIGC规格。<br>取值有：</p><li>Qwen2.0</li><li>Hunyuan3.0_1K</li><li>Hunyuan3.0_2K</li><li>Hunyuan3.0_4K</li><li>Mingmou1.0_1K</li><li>Mingmou1.0_2K</li><li>Mingmou1.0_4K</li><li>ViduQ2_T2i_1080P</li><li>ViduQ2_T2i_2K</li><li>ViduQ2_T2i_4K</li><li>ViduQ2_I2i_1080P</li><li>ViduQ2_I2i_2K</li><li>ViduQ2_I2i_4K</li><li>ViduQ2_Refer2i_1080P</li><li>ViduQ2_Refer2i_2K</li><li>ViduQ2_Refer2i_4K</li><li>Kling2.1_T2i_1K2K</li><li>Kling2.1_T2i_4K</li><li>Kling2.1_Refer2i_1K</li><li>Kling2.1_Refer2i_2K</li><li>Kling2.1_Refer2i_4K</li><li>Veo3.1Standard</li><li>Veo3.1Fast</li><li>Kling2.0&amp;2.1std_720P</li><li>Kling2.0&amp;2.1pro_1080P</li><li>Kling2.5pro_720P</li><li>Kling2.5pro_1080P</li><li>KlingO1_720P</li><li>KlingO1_1080P</li><li>KlingO1_NoVideo_720P</li><li>KlingO1_NoVideo_1080P</li><li>Kling2.6</li><li>Kling2.6Sound</li><li>Kling2.6MotionControl_720P</li><li>Kling2.6MotionControl_1080P</li><li>Kling3.0_720P</li><li>Kling3.0Sound_720P</li><li>Kling3.0CustomVoice_720P</li><li>Kling3.0_1080P</li><li>Kling3.0Sound_1080P</li><li>Kling3.0CustomVoice_1080P</li><li>Kling3.0CustomVoice_2K</li><li>Kling3.0CustomVoice_4K</li><li>Kling3.0MotionControl_720P</li><li>Kling3.0MotionControl_1080P</li><li>Kling3.0MotionControl_2K</li><li>Kling3.0MotionControl_4K</li><li>Kling_Avatar_I2v_720P</li><li>Kling_Avatar_I2v_1080P</li><li>Kling_Identifyface</li><li>Hailuo02&amp;2.3_768P</li><li>Hailuo02&amp;2.3_1080P</li><li>Hailuo2.3fast_768P</li><li>Hailuo2.3fast_1080P</li><li>ViduQ2_720P</li><li>ViduQ2_720P_OffPeak</li><li>ViduQ2_1080P</li><li>ViduQ2_1080P_OffPeak</li><li>ViduQ2_Refer_540P</li><li>ViduQ2_Refer_540P_OffPeak</li><li>ViduQ2_Refer_720P</li><li>ViduQ2_Refer_720P_OffPeak</li><li>ViduQ2_Refer_1080P</li><li>ViduQ2_Refer_1080P_OffPeak</li><li>ViduQ2pro_720P</li><li>ViduQ2pro_720P_OffPeak</li><li>ViduQ2pro_1080P</li><li>ViduQ2pro_1080P_OffPeak</li><li>ViduQ2pro_Refer_720P</li><li>ViduQ2pro_Refer_720P_OffPeak</li><li>ViduQ2pro_Refer_720P</li><li>ViduQ2pro_Refer_720P_OffPeak</li><li>ViduQ2pro_Refer_1080P</li><li>ViduQ2pro_Refer_1080P_OffPeak</li><li>ViduQ2turbo_720P</li><li>ViduQ2turbo_720P_OffPeak</li><li>ViduQ2turbo_1080P</li><li>ViduQ2turbo_1080P_OffPeak</li><li>ViduQ3_Refer_720P</li><li>ViduQ3_Refer_720P_OffPeak</li><li>ViduQ3_Refer_1080P</li><li>ViduQ3_Refer_1080P_OffPeak</li><li>ViduQ3_Refer_2K</li><li>ViduQ3_Refer_2K_OffPeak</li><li>ViduQ3_Refer_4K</li><li>ViduQ3_Refer_4K_OffPeak</li><li>ViduQ3pro_540P</li><li>ViduQ3pro_540P_OffPeak</li><li>ViduQ3pro_720P</li><li>ViduQ3pro_720P_OffPeak</li><li>ViduQ3pro_1080P</li><li>ViduQ3pro_1080P_OffPeak</li><li>ViduQ3turbo_540P</li><li>ViduQ3turbo_540P_OffPeak</li><li>ViduQ3turbo_720P</li><li>ViduQ3turbo_720P_OffPeak</li><li>ViduQ3turbo_1080P</li><li>ViduQ3turbo_1080P_OffPeak</li><li>ViduQ3turbo_2K</li><li>ViduQ3turbo_2K_OffPeak</li><li>ViduQ3turbo_4K</li><li>ViduQ3turbo_4K_OffPeak</li><li>Vidu_TemplateEffect</li><li>Hunyuan1.5_720P</li><li>Hunyuan1.5_1080P</li><li>Mingmou1.0_720P</li><li>Mingmou1.0_1080P</li><li>ImageProductImage</li><li>ImageChangeClothes</li><li>VideoProductShowcase</li><li>ImageOutPainting</li><li>FaceInfo</li><li>CustomVoice</li><li>Subject</li><li>unknown</li>
 	Specification *string `json:"Specification,omitnil,omitempty" name:"Specification"`
@@ -5622,6 +5636,81 @@ func (r *CreateAigcImageTaskResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateAigcImageTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAigcQuotaRequestParams struct {
+	// <p><strong>点播应用 ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</strong></p>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+
+	// <p>配额类型</p><p>枚举值：</p><ul><li>Image： AIGC 生图任务</li><li>Video： AIGC 生视频任务</li><li>Text： AIGC 生文任务</li></ul>
+	QuotaType *string `json:"QuotaType,omitnil,omitempty" name:"QuotaType"`
+
+	// <p>任务的配额数</p><p>单位：</p><ul><li>当QuotaLimit=Image时，单位为张</li><li>当QuotaLimit=Video时，单位为秒</li><li>当QuotaLimit=Text时，单位为token</li></ul>
+	QuotaLimit *uint64 `json:"QuotaLimit,omitnil,omitempty" name:"QuotaLimit"`
+
+	// <p>仅当QuotaLimit=Text时有效，用于选择需要进行配额限制ApiToken</p>
+	ApiToken *string `json:"ApiToken,omitnil,omitempty" name:"ApiToken"`
+}
+
+type CreateAigcQuotaRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p><strong>点播应用 ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</strong></p>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+
+	// <p>配额类型</p><p>枚举值：</p><ul><li>Image： AIGC 生图任务</li><li>Video： AIGC 生视频任务</li><li>Text： AIGC 生文任务</li></ul>
+	QuotaType *string `json:"QuotaType,omitnil,omitempty" name:"QuotaType"`
+
+	// <p>任务的配额数</p><p>单位：</p><ul><li>当QuotaLimit=Image时，单位为张</li><li>当QuotaLimit=Video时，单位为秒</li><li>当QuotaLimit=Text时，单位为token</li></ul>
+	QuotaLimit *uint64 `json:"QuotaLimit,omitnil,omitempty" name:"QuotaLimit"`
+
+	// <p>仅当QuotaLimit=Text时有效，用于选择需要进行配额限制ApiToken</p>
+	ApiToken *string `json:"ApiToken,omitnil,omitempty" name:"ApiToken"`
+}
+
+func (r *CreateAigcQuotaRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAigcQuotaRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SubAppId")
+	delete(f, "QuotaType")
+	delete(f, "QuotaLimit")
+	delete(f, "ApiToken")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAigcQuotaRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAigcQuotaResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateAigcQuotaResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateAigcQuotaResponseParams `json:"Response"`
+}
+
+func (r *CreateAigcQuotaResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAigcQuotaResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -10003,6 +10092,74 @@ func (r *DeleteAigcApiTokenResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteAigcQuotaRequestParams struct {
+	// <p><strong>点播应用 ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</strong></p>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+
+	// <p>配额类型</p><p>枚举值：</p><ul><li>Image： AIGC 生图任务</li><li>Video： AIGC 生视频任务</li><li>Text： AIGC 生文任务</li></ul>
+	QuotaType *string `json:"QuotaType,omitnil,omitempty" name:"QuotaType"`
+
+	// <p>仅当QuotaLimit=Text时有效，用于选择需要进行配额限制ApiToken</p>
+	ApiToken *string `json:"ApiToken,omitnil,omitempty" name:"ApiToken"`
+}
+
+type DeleteAigcQuotaRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p><strong>点播应用 ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</strong></p>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+
+	// <p>配额类型</p><p>枚举值：</p><ul><li>Image： AIGC 生图任务</li><li>Video： AIGC 生视频任务</li><li>Text： AIGC 生文任务</li></ul>
+	QuotaType *string `json:"QuotaType,omitnil,omitempty" name:"QuotaType"`
+
+	// <p>仅当QuotaLimit=Text时有效，用于选择需要进行配额限制ApiToken</p>
+	ApiToken *string `json:"ApiToken,omitnil,omitempty" name:"ApiToken"`
+}
+
+func (r *DeleteAigcQuotaRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAigcQuotaRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SubAppId")
+	delete(f, "QuotaType")
+	delete(f, "ApiToken")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAigcQuotaRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAigcQuotaResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteAigcQuotaResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteAigcQuotaResponseParams `json:"Response"`
+}
+
+func (r *DeleteAigcQuotaResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAigcQuotaResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteAnimatedGraphicsTemplateRequestParams struct {
 	// 转动图模板唯一标识。
 	Definition *uint64 `json:"Definition,omitnil,omitempty" name:"Definition"`
@@ -12251,6 +12408,94 @@ func (r *DescribeAigcFaceInfoResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAigcFaceInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAigcQuotasRequestParams struct {
+	// <p><strong>点播应用 ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</strong></p>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+
+	// <p>配额类型</p><p>枚举值：</p><ul><li>Image： AIGC 生图任务</li><li>Video： AIGC 生视频任务</li><li>Text： AIGC 生文任务</li></ul>
+	QuotaType *string `json:"QuotaType,omitnil,omitempty" name:"QuotaType"`
+
+	// <p>仅当QuotaLimit=Text时有效，用于选择需要进行配额限制ApiToken</p>
+	ApiToken *string `json:"ApiToken,omitnil,omitempty" name:"ApiToken"`
+
+	// <p>分页返回的记录条数，将返回第 Offset 到第 Offset+Limit-1 条。</p><p>取值范围：[1, 100]</p><p>默认值：10</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>分页返回的起始偏移量，默认值：0。将返回第 Offset 到第 Offset+Limit-1 条。</p><p>默认值：0</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+type DescribeAigcQuotasRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p><strong>点播应用 ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</strong></p>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+
+	// <p>配额类型</p><p>枚举值：</p><ul><li>Image： AIGC 生图任务</li><li>Video： AIGC 生视频任务</li><li>Text： AIGC 生文任务</li></ul>
+	QuotaType *string `json:"QuotaType,omitnil,omitempty" name:"QuotaType"`
+
+	// <p>仅当QuotaLimit=Text时有效，用于选择需要进行配额限制ApiToken</p>
+	ApiToken *string `json:"ApiToken,omitnil,omitempty" name:"ApiToken"`
+
+	// <p>分页返回的记录条数，将返回第 Offset 到第 Offset+Limit-1 条。</p><p>取值范围：[1, 100]</p><p>默认值：10</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>分页返回的起始偏移量，默认值：0。将返回第 Offset 到第 Offset+Limit-1 条。</p><p>默认值：0</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+func (r *DescribeAigcQuotasRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAigcQuotasRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SubAppId")
+	delete(f, "QuotaType")
+	delete(f, "ApiToken")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAigcQuotasRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAigcQuotasResponseParams struct {
+	// <p>配额列表</p>
+	QuotaSet []*AigcQuotaItem `json:"QuotaSet,omitnil,omitempty" name:"QuotaSet"`
+
+	// <p>总条数</p>
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAigcQuotasResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAigcQuotasResponseParams `json:"Response"`
+}
+
+func (r *DescribeAigcQuotasResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAigcQuotasResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -22620,6 +22865,81 @@ func (r *ModifyAdaptiveDynamicStreamingTemplateResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyAdaptiveDynamicStreamingTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAigcQuotaRequestParams struct {
+	// <p><strong>点播应用 ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</strong></p>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+
+	// <p>配额类型</p><p>枚举值：</p><ul><li>Image： AIGC 生图任务</li><li>Video： AIGC 生视频任务</li><li>Text： AIGC 生文任务</li></ul>
+	QuotaType *string `json:"QuotaType,omitnil,omitempty" name:"QuotaType"`
+
+	// <p>任务的配额数</p><p>单位：</p><ul><li>当QuotaLimit=Image时，单位为张</li><li>当QuotaLimit=Video时，单位为秒</li><li>当QuotaLimit=Text时，单位为token</li></ul>
+	QuotaLimit *uint64 `json:"QuotaLimit,omitnil,omitempty" name:"QuotaLimit"`
+
+	// <p>仅当QuotaLimit=Text时有效，用于选择需要进行配额限制ApiToken</p>
+	ApiToken *string `json:"ApiToken,omitnil,omitempty" name:"ApiToken"`
+}
+
+type ModifyAigcQuotaRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p><strong>点播应用 ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</strong></p>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+
+	// <p>配额类型</p><p>枚举值：</p><ul><li>Image： AIGC 生图任务</li><li>Video： AIGC 生视频任务</li><li>Text： AIGC 生文任务</li></ul>
+	QuotaType *string `json:"QuotaType,omitnil,omitempty" name:"QuotaType"`
+
+	// <p>任务的配额数</p><p>单位：</p><ul><li>当QuotaLimit=Image时，单位为张</li><li>当QuotaLimit=Video时，单位为秒</li><li>当QuotaLimit=Text时，单位为token</li></ul>
+	QuotaLimit *uint64 `json:"QuotaLimit,omitnil,omitempty" name:"QuotaLimit"`
+
+	// <p>仅当QuotaLimit=Text时有效，用于选择需要进行配额限制ApiToken</p>
+	ApiToken *string `json:"ApiToken,omitnil,omitempty" name:"ApiToken"`
+}
+
+func (r *ModifyAigcQuotaRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAigcQuotaRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SubAppId")
+	delete(f, "QuotaType")
+	delete(f, "QuotaLimit")
+	delete(f, "ApiToken")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAigcQuotaRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAigcQuotaResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyAigcQuotaResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyAigcQuotaResponseParams `json:"Response"`
+}
+
+func (r *ModifyAigcQuotaResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAigcQuotaResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

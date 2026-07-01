@@ -338,6 +338,7 @@ func NewAddPermissionPolicyToRoleConfigurationResponse() (response *AddPermissio
 // 可能返回的错误码:
 //  FAILEDOPERATION_CUSTOMPOLICYOVERUPPERLIMIT = "FailedOperation.CustomPolicyOverUpperLimit"
 //  FAILEDOPERATION_DBOPERATIONERROR = "FailedOperation.DBOperationError"
+//  FAILEDOPERATION_DELEGATEDADMINCANNOTMODIFYPOLICY = "FailedOperation.DelegatedAdminCannotModifyPolicy"
 //  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
 //  FAILEDOPERATION_SYSTEMPOLICYOVERUPPERLIMIT = "FailedOperation.SystemPolicyOverUpperLimit"
 //  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
@@ -357,6 +358,7 @@ func (c *Client) AddPermissionPolicyToRoleConfiguration(request *AddPermissionPo
 // 可能返回的错误码:
 //  FAILEDOPERATION_CUSTOMPOLICYOVERUPPERLIMIT = "FailedOperation.CustomPolicyOverUpperLimit"
 //  FAILEDOPERATION_DBOPERATIONERROR = "FailedOperation.DBOperationError"
+//  FAILEDOPERATION_DELEGATEDADMINCANNOTMODIFYPOLICY = "FailedOperation.DelegatedAdminCannotModifyPolicy"
 //  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
 //  FAILEDOPERATION_SYSTEMPOLICYOVERUPPERLIMIT = "FailedOperation.SystemPolicyOverUpperLimit"
 //  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"

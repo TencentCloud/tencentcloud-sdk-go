@@ -456,6 +456,7 @@ func NewCloseConfigRuleResponse() (response *CloseConfigRuleResponse) {
 // 关闭规则
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_NOTALLOWOPERATECONTROLCENTERGOVERNANCEPACKAGERULE = "FailedOperation.NotAllowOperateControlCenterGovernancePackageRule"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND_RULEISNOTEXIST = "ResourceNotFound.RuleIsNotExist"
 func (c *Client) CloseConfigRule(request *CloseConfigRuleRequest) (response *CloseConfigRuleResponse, err error) {
@@ -466,6 +467,7 @@ func (c *Client) CloseConfigRule(request *CloseConfigRuleRequest) (response *Clo
 // 关闭规则
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_NOTALLOWOPERATECONTROLCENTERGOVERNANCEPACKAGERULE = "FailedOperation.NotAllowOperateControlCenterGovernancePackageRule"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND_RULEISNOTEXIST = "ResourceNotFound.RuleIsNotExist"
 func (c *Client) CloseConfigRuleWithContext(ctx context.Context, request *CloseConfigRuleRequest) (response *CloseConfigRuleResponse, err error) {
@@ -792,6 +794,7 @@ func NewDeleteCompliancePackResponse() (response *DeleteCompliancePackResponse) 
 // 可能返回的错误码:
 //  FAILEDOPERATION_COMPLIANCEPACKISNOTEXIST = "FailedOperation.CompliancePackIsNotExist"
 //  FAILEDOPERATION_COMPLIANCEPACKISNOTSTOP = "FailedOperation.CompliancePackIsNotStop"
+//  FAILEDOPERATION_NOTALLOWOPERATECONTROLCENTERGOVERNANCEPACKAGE = "FailedOperation.NotAllowOperateControlCenterGovernancePackage"
 //  FAILEDOPERATION_RULEISNOTSTOP = "FailedOperation.RuleIsNotStop"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND_COMPLIANCEPACKISNOTEXIST = "ResourceNotFound.CompliancePackIsNotExist"
@@ -805,6 +808,7 @@ func (c *Client) DeleteCompliancePack(request *DeleteCompliancePackRequest) (res
 // 可能返回的错误码:
 //  FAILEDOPERATION_COMPLIANCEPACKISNOTEXIST = "FailedOperation.CompliancePackIsNotExist"
 //  FAILEDOPERATION_COMPLIANCEPACKISNOTSTOP = "FailedOperation.CompliancePackIsNotStop"
+//  FAILEDOPERATION_NOTALLOWOPERATECONTROLCENTERGOVERNANCEPACKAGE = "FailedOperation.NotAllowOperateControlCenterGovernancePackage"
 //  FAILEDOPERATION_RULEISNOTSTOP = "FailedOperation.RuleIsNotStop"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND_COMPLIANCEPACKISNOTEXIST = "ResourceNotFound.CompliancePackIsNotExist"
@@ -848,6 +852,7 @@ func NewDeleteConfigRuleResponse() (response *DeleteConfigRuleResponse) {
 // 删除规则
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_NOTALLOWOPERATECONTROLCENTERGOVERNANCEPACKAGERULE = "FailedOperation.NotAllowOperateControlCenterGovernancePackageRule"
 //  FAILEDOPERATION_RULEISNOTSTOP = "FailedOperation.RuleIsNotStop"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND_RULEISNOTEXIST = "ResourceNotFound.RuleIsNotExist"
@@ -859,6 +864,7 @@ func (c *Client) DeleteConfigRule(request *DeleteConfigRuleRequest) (response *D
 // 删除规则
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_NOTALLOWOPERATECONTROLCENTERGOVERNANCEPACKAGERULE = "FailedOperation.NotAllowOperateControlCenterGovernancePackageRule"
 //  FAILEDOPERATION_RULEISNOTSTOP = "FailedOperation.RuleIsNotStop"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND_RULEISNOTEXIST = "ResourceNotFound.RuleIsNotExist"
@@ -1649,6 +1655,7 @@ func NewDetachConfigRuleToCompliancePackResponse() (response *DetachConfigRuleTo
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_COMPLIANCEPACKISNOTEXIST = "FailedOperation.CompliancePackIsNotExist"
+//  FAILEDOPERATION_NOTALLOWOPERATECONTROLCENTERGOVERNANCEPACKAGE = "FailedOperation.NotAllowOperateControlCenterGovernancePackage"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND_COMPLIANCEPACKISNOTEXIST = "ResourceNotFound.CompliancePackIsNotExist"
 //  RESOURCENOTFOUND_RULEISNOTEXIST = "ResourceNotFound.RuleIsNotExist"
@@ -1661,6 +1668,7 @@ func (c *Client) DetachConfigRuleToCompliancePack(request *DetachConfigRuleToCom
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_COMPLIANCEPACKISNOTEXIST = "FailedOperation.CompliancePackIsNotExist"
+//  FAILEDOPERATION_NOTALLOWOPERATECONTROLCENTERGOVERNANCEPACKAGE = "FailedOperation.NotAllowOperateControlCenterGovernancePackage"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND_COMPLIANCEPACKISNOTEXIST = "ResourceNotFound.CompliancePackIsNotExist"
 //  RESOURCENOTFOUND_RULEISNOTEXIST = "ResourceNotFound.RuleIsNotExist"
@@ -2588,6 +2596,7 @@ func NewOpenConfigRuleResponse() (response *OpenConfigRuleResponse) {
 // 开启规则
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_NOTALLOWOPERATECONTROLCENTERGOVERNANCEPACKAGERULE = "FailedOperation.NotAllowOperateControlCenterGovernancePackageRule"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND_RULEISNOTEXIST = "ResourceNotFound.RuleIsNotExist"
 func (c *Client) OpenConfigRule(request *OpenConfigRuleRequest) (response *OpenConfigRuleResponse, err error) {
@@ -2598,6 +2607,7 @@ func (c *Client) OpenConfigRule(request *OpenConfigRuleRequest) (response *OpenC
 // 开启规则
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_NOTALLOWOPERATECONTROLCENTERGOVERNANCEPACKAGERULE = "FailedOperation.NotAllowOperateControlCenterGovernancePackageRule"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND_RULEISNOTEXIST = "ResourceNotFound.RuleIsNotExist"
 func (c *Client) OpenConfigRuleWithContext(ctx context.Context, request *OpenConfigRuleRequest) (response *OpenConfigRuleResponse, err error) {
@@ -3139,6 +3149,7 @@ func NewUpdateCompliancePackResponse() (response *UpdateCompliancePackResponse) 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_COMPLIANCEPACKISNOTEXIST = "FailedOperation.CompliancePackIsNotExist"
+//  FAILEDOPERATION_NOTALLOWOPERATECONTROLCENTERGOVERNANCEPACKAGE = "FailedOperation.NotAllowOperateControlCenterGovernancePackage"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND_COMPLIANCEPACKISNOTEXIST = "ResourceNotFound.CompliancePackIsNotExist"
 //  RESOURCENOTFOUND_RULEISNOTEXIST = "ResourceNotFound.RuleIsNotExist"
@@ -3151,6 +3162,7 @@ func (c *Client) UpdateCompliancePack(request *UpdateCompliancePackRequest) (res
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_COMPLIANCEPACKISNOTEXIST = "FailedOperation.CompliancePackIsNotExist"
+//  FAILEDOPERATION_NOTALLOWOPERATECONTROLCENTERGOVERNANCEPACKAGE = "FailedOperation.NotAllowOperateControlCenterGovernancePackage"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND_COMPLIANCEPACKISNOTEXIST = "ResourceNotFound.CompliancePackIsNotExist"
 //  RESOURCENOTFOUND_RULEISNOTEXIST = "ResourceNotFound.RuleIsNotExist"
@@ -3195,6 +3207,7 @@ func NewUpdateCompliancePackStatusResponse() (response *UpdateCompliancePackStat
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_COMPLIANCEPACKISNOTEXIST = "FailedOperation.CompliancePackIsNotExist"
+//  FAILEDOPERATION_NOTALLOWOPERATECONTROLCENTERGOVERNANCEPACKAGE = "FailedOperation.NotAllowOperateControlCenterGovernancePackage"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND_COMPLIANCEPACKISNOTEXIST = "ResourceNotFound.CompliancePackIsNotExist"
 func (c *Client) UpdateCompliancePackStatus(request *UpdateCompliancePackStatusRequest) (response *UpdateCompliancePackStatusResponse, err error) {
@@ -3206,6 +3219,7 @@ func (c *Client) UpdateCompliancePackStatus(request *UpdateCompliancePackStatusR
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_COMPLIANCEPACKISNOTEXIST = "FailedOperation.CompliancePackIsNotExist"
+//  FAILEDOPERATION_NOTALLOWOPERATECONTROLCENTERGOVERNANCEPACKAGE = "FailedOperation.NotAllowOperateControlCenterGovernancePackage"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND_COMPLIANCEPACKISNOTEXIST = "ResourceNotFound.CompliancePackIsNotExist"
 func (c *Client) UpdateCompliancePackStatusWithContext(ctx context.Context, request *UpdateCompliancePackStatusRequest) (response *UpdateCompliancePackStatusResponse, err error) {
@@ -3356,6 +3370,7 @@ func NewUpdateConfigRuleResponse() (response *UpdateConfigRuleResponse) {
 // 编辑规则
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_NOTALLOWOPERATECONTROLCENTERGOVERNANCEPACKAGERULE = "FailedOperation.NotAllowOperateControlCenterGovernancePackageRule"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND_RULEISNOTEXIST = "ResourceNotFound.RuleIsNotExist"
 func (c *Client) UpdateConfigRule(request *UpdateConfigRuleRequest) (response *UpdateConfigRuleResponse, err error) {
@@ -3366,6 +3381,7 @@ func (c *Client) UpdateConfigRule(request *UpdateConfigRuleRequest) (response *U
 // 编辑规则
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_NOTALLOWOPERATECONTROLCENTERGOVERNANCEPACKAGERULE = "FailedOperation.NotAllowOperateControlCenterGovernancePackageRule"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND_RULEISNOTEXIST = "ResourceNotFound.RuleIsNotExist"
 func (c *Client) UpdateConfigRuleWithContext(ctx context.Context, request *UpdateConfigRuleRequest) (response *UpdateConfigRuleResponse, err error) {

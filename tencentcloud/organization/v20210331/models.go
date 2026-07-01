@@ -296,51 +296,57 @@ func (r *AddOrganizationNodeResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AddPermissionPolicyToRoleConfigurationRequestParams struct {
-	// 空间 ID
+	// <p>空间 ID</p>
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 权限配置 ID
+	// <p>权限配置 ID</p>
 	RoleConfigurationId *string `json:"RoleConfigurationId,omitnil,omitempty" name:"RoleConfigurationId"`
 
-	// 权限策略类型。取值：  System：系统策略。复用 CAM 的系统策略。 Custom: 自定义策略。按照 CAM 权限策略语法和结构编写的自定义策略。 
+	// <p>权限策略类型。取值：  System：系统策略。复用 CAM 的系统策略。 Custom: 自定义策略。按照 CAM 权限策略语法和结构编写的自定义策略。</p>
 	RolePolicyType *string `json:"RolePolicyType,omitnil,omitempty" name:"RolePolicyType"`
 
-	// 权限策略名称，长度最大为 20策略，每个策略长度最大32个字符。如果要添加系统策略，建议使用RolePolicies参数。自定义策略时，数组长度最大为1。
+	// <p>权限策略名称，长度最大为 20策略，每个策略长度最大32个字符。如果要添加系统策略，建议使用RolePolicies参数。自定义策略时，数组长度最大为1。</p>
 	RolePolicyNames []*string `json:"RolePolicyNames,omitnil,omitempty" name:"RolePolicyNames"`
 
-	// 添加的系统策略详情。
+	// <p>添加的系统策略详情。</p>
 	RolePolicies []*PolicyDetail `json:"RolePolicies,omitnil,omitempty" name:"RolePolicies"`
 
-	// 自定义策略内容。长度：最大 4096 个字符。当RolePolicyType为Inline时，该参数必须配置。关于权限策略的语法和结构，请参见权限策略语法和结构。
+	// <p>自定义策略内容。长度：最大 4096 个字符。当RolePolicyType为Inline时，该参数必须配置。关于权限策略的语法和结构，请参见权限策略语法和结构。</p>
 	CustomPolicyDocument *string `json:"CustomPolicyDocument,omitnil,omitempty" name:"CustomPolicyDocument"`
 
-	// 自定义策略内容列表（跟RolePolicyNames一一对应）
+	// <p>自定义策略内容列表（跟RolePolicyNames一一对应）</p>
 	CustomPolicyDocuments []*string `json:"CustomPolicyDocuments,omitnil,omitempty" name:"CustomPolicyDocuments"`
+
+	// <p>是否公共策略</p><p>枚举值：</p><ul><li>1： 是</li><li>0： 不是</li></ul><p>默认值：1</p>
+	PolicyType *int64 `json:"PolicyType,omitnil,omitempty" name:"PolicyType"`
 }
 
 type AddPermissionPolicyToRoleConfigurationRequest struct {
 	*tchttp.BaseRequest
 	
-	// 空间 ID
+	// <p>空间 ID</p>
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 权限配置 ID
+	// <p>权限配置 ID</p>
 	RoleConfigurationId *string `json:"RoleConfigurationId,omitnil,omitempty" name:"RoleConfigurationId"`
 
-	// 权限策略类型。取值：  System：系统策略。复用 CAM 的系统策略。 Custom: 自定义策略。按照 CAM 权限策略语法和结构编写的自定义策略。 
+	// <p>权限策略类型。取值：  System：系统策略。复用 CAM 的系统策略。 Custom: 自定义策略。按照 CAM 权限策略语法和结构编写的自定义策略。</p>
 	RolePolicyType *string `json:"RolePolicyType,omitnil,omitempty" name:"RolePolicyType"`
 
-	// 权限策略名称，长度最大为 20策略，每个策略长度最大32个字符。如果要添加系统策略，建议使用RolePolicies参数。自定义策略时，数组长度最大为1。
+	// <p>权限策略名称，长度最大为 20策略，每个策略长度最大32个字符。如果要添加系统策略，建议使用RolePolicies参数。自定义策略时，数组长度最大为1。</p>
 	RolePolicyNames []*string `json:"RolePolicyNames,omitnil,omitempty" name:"RolePolicyNames"`
 
-	// 添加的系统策略详情。
+	// <p>添加的系统策略详情。</p>
 	RolePolicies []*PolicyDetail `json:"RolePolicies,omitnil,omitempty" name:"RolePolicies"`
 
-	// 自定义策略内容。长度：最大 4096 个字符。当RolePolicyType为Inline时，该参数必须配置。关于权限策略的语法和结构，请参见权限策略语法和结构。
+	// <p>自定义策略内容。长度：最大 4096 个字符。当RolePolicyType为Inline时，该参数必须配置。关于权限策略的语法和结构，请参见权限策略语法和结构。</p>
 	CustomPolicyDocument *string `json:"CustomPolicyDocument,omitnil,omitempty" name:"CustomPolicyDocument"`
 
-	// 自定义策略内容列表（跟RolePolicyNames一一对应）
+	// <p>自定义策略内容列表（跟RolePolicyNames一一对应）</p>
 	CustomPolicyDocuments []*string `json:"CustomPolicyDocuments,omitnil,omitempty" name:"CustomPolicyDocuments"`
+
+	// <p>是否公共策略</p><p>枚举值：</p><ul><li>1： 是</li><li>0： 不是</li></ul><p>默认值：1</p>
+	PolicyType *int64 `json:"PolicyType,omitnil,omitempty" name:"PolicyType"`
 }
 
 func (r *AddPermissionPolicyToRoleConfigurationRequest) ToJsonString() string {
@@ -362,6 +368,7 @@ func (r *AddPermissionPolicyToRoleConfigurationRequest) FromJsonString(s string)
 	delete(f, "RolePolicies")
 	delete(f, "CustomPolicyDocument")
 	delete(f, "CustomPolicyDocuments")
+	delete(f, "PolicyType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddPermissionPolicyToRoleConfigurationRequest has unknown keys!", "")
 	}

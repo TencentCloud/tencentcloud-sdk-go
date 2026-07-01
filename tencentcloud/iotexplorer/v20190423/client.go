@@ -2359,6 +2359,72 @@ func (c *Client) CreateTWeSeeCallbackWithContext(ctx context.Context, request *C
     return
 }
 
+func NewCreateTWeSeeDirectUploadCredentialRequest() (request *CreateTWeSeeDirectUploadCredentialRequest) {
+    request = &CreateTWeSeeDirectUploadCredentialRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "CreateTWeSeeDirectUploadCredential")
+    
+    
+    return
+}
+
+func NewCreateTWeSeeDirectUploadCredentialResponse() (response *CreateTWeSeeDirectUploadCredentialResponse) {
+    response = &CreateTWeSeeDirectUploadCredentialResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateTWeSeeDirectUploadCredential
+// 创建 TWeSee COS 直传凭据。调用方获取临时密钥后，可将视频 / 图片上传到返回的 StoragePath 前缀下；对象上传成功后由 COS 事件触发 TWeSee 任务创建。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SEEPOSTPAIDSERVICEISOLATED = "FailedOperation.SeePostPaidServiceIsolated"
+//  FAILEDOPERATION_SEEPOSTPAIDSERVICEISOLATEDBYACCOUNT = "FailedOperation.SeePostPaidServiceIsolatedByAccount"
+//  FAILEDOPERATION_SEEPOSTPAIDSERVICENOTEXISTS = "FailedOperation.SeePostPaidServiceNotExists"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_SEECALLBACKNOTEXIST = "ResourceNotFound.SeeCallbackNotExist"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateTWeSeeDirectUploadCredential(request *CreateTWeSeeDirectUploadCredentialRequest) (response *CreateTWeSeeDirectUploadCredentialResponse, err error) {
+    return c.CreateTWeSeeDirectUploadCredentialWithContext(context.Background(), request)
+}
+
+// CreateTWeSeeDirectUploadCredential
+// 创建 TWeSee COS 直传凭据。调用方获取临时密钥后，可将视频 / 图片上传到返回的 StoragePath 前缀下；对象上传成功后由 COS 事件触发 TWeSee 任务创建。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SEEPOSTPAIDSERVICEISOLATED = "FailedOperation.SeePostPaidServiceIsolated"
+//  FAILEDOPERATION_SEEPOSTPAIDSERVICEISOLATEDBYACCOUNT = "FailedOperation.SeePostPaidServiceIsolatedByAccount"
+//  FAILEDOPERATION_SEEPOSTPAIDSERVICENOTEXISTS = "FailedOperation.SeePostPaidServiceNotExists"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_SEECALLBACKNOTEXIST = "ResourceNotFound.SeeCallbackNotExist"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateTWeSeeDirectUploadCredentialWithContext(ctx context.Context, request *CreateTWeSeeDirectUploadCredentialRequest) (response *CreateTWeSeeDirectUploadCredentialResponse, err error) {
+    if request == nil {
+        request = NewCreateTWeSeeDirectUploadCredentialRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "CreateTWeSeeDirectUploadCredential")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateTWeSeeDirectUploadCredential require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateTWeSeeDirectUploadCredentialResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateTWeSeePostPaidServiceRequest() (request *CreateTWeSeePostPaidServiceRequest) {
     request = &CreateTWeSeePostPaidServiceRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -1732,6 +1732,14 @@ type AssetViewWeakPassRisk struct {
 	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
 }
 
+type AttackStageCount struct {
+	// <p>攻击阶段</p>
+	AttackStage *string `json:"AttackStage,omitnil,omitempty" name:"AttackStage"`
+
+	// <p>策略数量</p>
+	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
+}
+
 type AttributeOptionSet struct {
 	// cvm实例类型
 	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
@@ -2053,6 +2061,20 @@ type CICDToken struct {
 
 	// <p>最近扫描时间</p>
 	LastScanTime *string `json:"LastScanTime,omitnil,omitempty" name:"LastScanTime"`
+}
+
+type CSIPTag struct {
+	// <p>标签颜色</p>
+	TagColor *string `json:"TagColor,omitnil,omitempty" name:"TagColor"`
+
+	// <p>标签ID</p>
+	TagID *uint64 `json:"TagID,omitnil,omitempty" name:"TagID"`
+
+	// <p>标签键（根据语言环境返回中文或英文）</p>
+	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
+
+	// <p>标签值（根据语言环境返回中文或英文）</p>
+	TagValue *string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
 }
 
 type CVMAssetVO struct {
@@ -6227,6 +6249,84 @@ func (r *DescribeAIAgentAssetListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAIAgentAssetListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAILinkSettingRequestParams struct {
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+type DescribeAILinkSettingRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+func (r *DescribeAILinkSettingRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAILinkSettingRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MemberId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAILinkSettingRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAILinkSettingResponseParams struct {
+	// <p>0 关闭AI-Link智链引擎，1 开启AI-Link智链引擎</p>
+	AILinkEnable *uint64 `json:"AILinkEnable,omitnil,omitempty" name:"AILinkEnable"`
+
+	// <p>深度模式 0-关闭 1-开启</p>
+	RuleScopeDeep *uint64 `json:"RuleScopeDeep,omitnil,omitempty" name:"RuleScopeDeep"`
+
+	// <p>均衡模式 0-关闭 1-开启</p>
+	RuleScopeBalanced *uint64 `json:"RuleScopeBalanced,omitnil,omitempty" name:"RuleScopeBalanced"`
+
+	// <p>精准模式 0-关闭 1-开启</p>
+	RuleScopePrecise *uint64 `json:"RuleScopePrecise,omitnil,omitempty" name:"RuleScopePrecise"`
+
+	// <p>1 全部专业/旗舰版主机，0 Quuids列表主机</p>
+	Scope *uint64 `json:"Scope,omitnil,omitempty" name:"Scope"`
+
+	// <p>自选主机Quuid列表</p>
+	Quuids []*string `json:"Quuids,omitnil,omitempty" name:"Quuids"`
+
+	// <p>排除主机Quuid列表</p>
+	ExcludeQuuids []*string `json:"ExcludeQuuids,omitnil,omitempty" name:"ExcludeQuuids"`
+
+	// <p>新增资产自动包含 0 不包含 1包含</p>
+	AutoInclude *uint64 `json:"AutoInclude,omitnil,omitempty" name:"AutoInclude"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAILinkSettingResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAILinkSettingResponseParams `json:"Response"`
+}
+
+func (r *DescribeAILinkSettingResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAILinkSettingResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -14095,6 +14195,272 @@ func (r *DescribeDspmWhitelistStrategyResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeEDRRuleListRequestParams struct {
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>PolicyType - int - 是否必填：否 - 策略类型<br>PolicyName - string - 是否必填：否 - 策略名称<br>Domain - string - 是否必填：否 - 域名(先对域名做urlencode,再base64)<br>PolicyAction- int - 是否必填：否 - 策略动作<br>IsEnabled - int - 是否必填：否 - 是否生效</p>
+	Filters []*EDRFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>限制条数,默认10,最大100</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>偏移量,默认0</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>排序方式: [ASC:升序|DESC:降序]</p>
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// <p>可选排序列: [ModifyTime]</p>
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+}
+
+type DescribeEDRRuleListRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>PolicyType - int - 是否必填：否 - 策略类型<br>PolicyName - string - 是否必填：否 - 策略名称<br>Domain - string - 是否必填：否 - 域名(先对域名做urlencode,再base64)<br>PolicyAction- int - 是否必填：否 - 策略动作<br>IsEnabled - int - 是否必填：否 - 是否生效</p>
+	Filters []*EDRFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>限制条数,默认10,最大100</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>偏移量,默认0</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>排序方式: [ASC:升序|DESC:降序]</p>
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// <p>可选排序列: [ModifyTime]</p>
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+}
+
+func (r *DescribeEDRRuleListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEDRRuleListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MemberId")
+	delete(f, "Filters")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Order")
+	delete(f, "By")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEDRRuleListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeEDRRuleListResponseParams struct {
+	// <p>总数</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>列表</p>
+	List []*EDRRule `json:"List,omitnil,omitempty" name:"List"`
+
+	// <p>攻击阶段对应的策略数量</p>
+	AttackStageCounts []*AttackStageCount `json:"AttackStageCounts,omitnil,omitempty" name:"AttackStageCounts"`
+
+	// <p>检测方式对应的策略数量</p>
+	DetectTypeCounts []*DetectTypeCount `json:"DetectTypeCounts,omitnil,omitempty" name:"DetectTypeCounts"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeEDRRuleListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeEDRRuleListResponseParams `json:"Response"`
+}
+
+func (r *DescribeEDRRuleListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEDRRuleListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeEdrAlertInfoRequestParams struct {
+	// <p>告警定位信息（含跨账号AppID）</p>
+	Target *EdrAlertTarget `json:"Target,omitnil,omitempty" name:"Target"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+type DescribeEdrAlertInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>告警定位信息（含跨账号AppID）</p>
+	Target *EdrAlertTarget `json:"Target,omitnil,omitempty" name:"Target"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+func (r *DescribeEdrAlertInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEdrAlertInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Target")
+	delete(f, "MemberId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEdrAlertInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeEdrAlertInfoResponseParams struct {
+	// <p>告警详情</p>
+	Alert *EdrAlertDetail `json:"Alert,omitnil,omitempty" name:"Alert"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeEdrAlertInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeEdrAlertInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeEdrAlertInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEdrAlertInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeEdrAlertListRequestParams struct {
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>PolicyType - int - 是否必填：否 - 策略类型PolicyName - string - 是否必填：否 - 策略名称Domain - string - 是否必填：否 - 域名(先对域名做urlencode,再base64)PolicyAction- int - 是否必填：否 - 策略动作IsEnabled - int - 是否必填：否 - 是否生效</p>
+	Filters []*EDRFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>限制条数,默认10,最大100</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>偏移量,默认0</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>排序方式: [ASC:升序|DESC:降序]</p>
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// <p>可选排序列: [LatestDetectTime]</p>
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+}
+
+type DescribeEdrAlertListRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>PolicyType - int - 是否必填：否 - 策略类型PolicyName - string - 是否必填：否 - 策略名称Domain - string - 是否必填：否 - 域名(先对域名做urlencode,再base64)PolicyAction- int - 是否必填：否 - 策略动作IsEnabled - int - 是否必填：否 - 是否生效</p>
+	Filters []*EDRFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>限制条数,默认10,最大100</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>偏移量,默认0</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>排序方式: [ASC:升序|DESC:降序]</p>
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// <p>可选排序列: [LatestDetectTime]</p>
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+}
+
+func (r *DescribeEdrAlertListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEdrAlertListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MemberId")
+	delete(f, "Filters")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Order")
+	delete(f, "By")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEdrAlertListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeEdrAlertListResponseParams struct {
+	// <p>总数</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>列表</p>
+	List []*EdrAlertItem `json:"List,omitnil,omitempty" name:"List"`
+
+	// <p>攻击阶段对应的策略数量</p>
+	AttackStageCounts []*AttackStageCount `json:"AttackStageCounts,omitnil,omitempty" name:"AttackStageCounts"`
+
+	// <p>告警大类统计（随筛选变化，排除 AlertCategory filter）</p>
+	AlertCategoryCounts []*EdrAlertCategoryCount `json:"AlertCategoryCounts,omitnil,omitempty" name:"AlertCategoryCounts"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeEdrAlertListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeEdrAlertListResponseParams `json:"Response"`
+}
+
+func (r *DescribeEdrAlertListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEdrAlertListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeExposeAssetCategoryRequestParams struct {
 	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
@@ -18874,6 +19240,14 @@ func (r *DescribeVulViewVulRiskListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DetectTypeCount struct {
+	// <p>检测方式，0：主机检测，1：网络检测</p>
+	DetectType *int64 `json:"DetectType,omitnil,omitempty" name:"DetectType"`
+
+	// <p>策略数量</p>
+	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
+}
+
 type DiskPartitionInfo struct {
 	// <p>分区名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
@@ -19011,6 +19385,17 @@ type DomainAssetVO struct {
 
 	// bot访问数量
 	BotAccessCount *int64 `json:"BotAccessCount,omitnil,omitempty" name:"BotAccessCount"`
+}
+
+type DomainInfo struct {
+	// <p>域名</p>
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// <p>分析时间</p>
+	AnalysisTime *string `json:"AnalysisTime,omitnil,omitempty" name:"AnalysisTime"`
+
+	// <p>标签</p>
+	Tags []*string `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 // Predefined struct for user
@@ -20426,6 +20811,392 @@ type DspmWhitelistStrategy struct {
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 }
 
+type EDRFilter struct {
+	// <p>过滤键的名称。</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>一个或者多个过滤值。</p>
+	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
+
+	// <p>模糊搜索</p>
+	ExactMatch *bool `json:"ExactMatch,omitnil,omitempty" name:"ExactMatch"`
+}
+
+type EDRRule struct {
+	// <p>策略ID</p>
+	RuleID *string `json:"RuleID,omitnil,omitempty" name:"RuleID"`
+
+	// <p>策略类型，0-系统策略/System Rule, 1-自定义策略/Custom Rule</p>
+	RuleType *int64 `json:"RuleType,omitnil,omitempty" name:"RuleType"`
+
+	// <p>策略名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>策略描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>内容类型 / Content Type: md5-文件MD5/File MD5, cmdline-命令行/Command Line, dns-DNS, ip_inbound-入站IP/Inbound IP, ip_outbound-出站IP/Outbound IP, custom_file-自定义文件/Custom File, process_network-进程网络/Process Network</p>
+	ContentType *string `json:"ContentType,omitnil,omitempty" name:"ContentType"`
+
+	// <p>执行动作 / Action: 0-告警/Alert, 1-放行/Allow, 2-告警并拦截/Alert and Block</p>
+	Action *int64 `json:"Action,omitnil,omitempty" name:"Action"`
+
+	// <p>告警等级 / Alert Level: 0-无/None, 1-高危/High, 2-中危/Medium, 3-低危/Low, 4-提示/Reminder</p>
+	Level *int64 `json:"Level,omitnil,omitempty" name:"Level"`
+
+	// <p>检测模式 / Detect Mode: 0-精准/Precise, 1-均衡/Balanced, 2-深度/Deep</p>
+	DetectMode *int64 `json:"DetectMode,omitnil,omitempty" name:"DetectMode"`
+
+	// <p>检测方式 / Detect Type: 0-主机检测/Host Detection, 1-网络检测/Network Detection</p>
+	DetectType *int64 `json:"DetectType,omitnil,omitempty" name:"DetectType"`
+
+	// <p>攻击阶段</p>
+	AttackStage *string `json:"AttackStage,omitnil,omitempty" name:"AttackStage"`
+
+	// <p>主机生效资产范围 / Effective Scope: 0-指定主机/Specified Hosts, 1-全部主机/All Hosts, 2-专业版/Professional, 3-旗舰版/Flagship, 4-专业版+旗舰版/Professional+Flagship</p>
+	CWPScope *int64 `json:"CWPScope,omitnil,omitempty" name:"CWPScope"`
+
+	// <p>主机运行时的自选主机</p>
+	QUUIDS []*string `json:"QUUIDS,omitnil,omitempty" name:"QUUIDS"`
+
+	// <p>状态 / Status: 0-开启/Enabled, 1-关闭/Disabled</p>
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>创建时间</p>
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>修改时间</p>
+	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
+
+	// <p>是否支持拦截 / Support Block: 0-不支持/Not Supported, 1-支持/Supported</p>
+	SupportBlock *int64 `json:"SupportBlock,omitnil,omitempty" name:"SupportBlock"`
+
+	// <p>MD5列表,ContentType=md5 时填充</p>
+	Md5List []*string `json:"Md5List,omitnil,omitempty" name:"Md5List"`
+
+	// <p>文件名列表,ContentType=custom_file 时填充</p>
+	FileName []*string `json:"FileName,omitnil,omitempty" name:"FileName"`
+
+	// <p>文件目录列表,ContentType=custom_file 时填充</p>
+	FileDirectory []*string `json:"FileDirectory,omitnil,omitempty" name:"FileDirectory"`
+
+	// <p>域名列表,ContentType=dns 时填充</p>
+	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
+
+	// <p>出站IP列表,ContentType=ip_outbound 时填充</p>
+	OutboundIP []*string `json:"OutboundIP,omitnil,omitempty" name:"OutboundIP"`
+
+	// <p>入站IP列表,ContentType=ip_inbound 时填充</p>
+	InboundIP []*string `json:"InboundIP,omitnil,omitempty" name:"InboundIP"`
+
+	// <p>命令行规则,ContentType=cmdline 时填充</p>
+	CmdLineRules *RuleContentCmdLine `json:"CmdLineRules,omitnil,omitempty" name:"CmdLineRules"`
+
+	// <p>容器生效镜像范围 / Container Image Scope: 0-指定镜像/Specified Images, 1-全部镜像/All Images</p>
+	TCSSScope *int64 `json:"TCSSScope,omitnil,omitempty" name:"TCSSScope"`
+
+	// <p>生效镜像ID列表 / Image IDs (when TCSSScope=0)</p>
+	ImageIDs []*string `json:"ImageIDs,omitnil,omitempty" name:"ImageIDs"`
+
+	// <p>镜像名正则表达式 / Image Names Regex</p>
+	ImageNamesRegex *string `json:"ImageNamesRegex,omitnil,omitempty" name:"ImageNamesRegex"`
+
+	// <p>置信度 / Confidence: 0-低/Low, 1-中/Medium, 2-高/High</p>
+	Confidence *int64 `json:"Confidence,omitnil,omitempty" name:"Confidence"`
+
+	// <p>排除的主机列表 / Excluded Host QUUIDS</p>
+	ExcludeQUUIDS []*string `json:"ExcludeQUUIDS,omitnil,omitempty" name:"ExcludeQUUIDS"`
+
+	// <p>排除的镜像ID列表 / Excluded Image IDs</p>
+	ExcludeImageIDs []*string `json:"ExcludeImageIDs,omitnil,omitempty" name:"ExcludeImageIDs"`
+
+	// <p>进程网络规则 / Process network rules</p>
+	ProcessNetworkRules *RuleContentProcessNetwork `json:"ProcessNetworkRules,omitnil,omitempty" name:"ProcessNetworkRules"`
+
+	// <p>策略对应APPID</p>
+	AppID *int64 `json:"AppID,omitnil,omitempty" name:"AppID"`
+
+	// <p>自选实例ID范围</p>
+	InstanceIDs []*string `json:"InstanceIDs,omitnil,omitempty" name:"InstanceIDs"`
+
+	// <p>排除实例ID</p>
+	ExcludeInstanceIDs []*string `json:"ExcludeInstanceIDs,omitnil,omitempty" name:"ExcludeInstanceIDs"`
+}
+
+type EdrAlertCategoryCount struct {
+	// <p>告警大类</p>
+	AlertCategory *string `json:"AlertCategory,omitnil,omitempty" name:"AlertCategory"`
+
+	// <p>告警数量</p>
+	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
+}
+
+type EdrAlertDetail struct {
+	// <p>主键ID</p>
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>租户ID</p>
+	AppId *uint64 `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>告警唯一标识</p>
+	AlertId *string `json:"AlertId,omitnil,omitempty" name:"AlertId"`
+
+	// <p>告警大类（英文枚举：VIRUS_TROJAN/ABNORMAL_LOGIN/HOST_BEHAVIOR/NETWORK_BEHAVIOR/LINK_ENGINE）</p>
+	AlertCategory *string `json:"AlertCategory,omitnil,omitempty" name:"AlertCategory"`
+
+	// <p>告警子类型（英文枚举：MALWARE_FILE/MALWARE_PROCESS/RISK_LOGIN/BRUTE_FORCE/DNS/BASH/PRIV_ESCALATION/REVERSE_SHELL/NET_ATTACK/VUL_DEFENCE/MEMORY_SHELL_INJECT/MEMORY_SHELL_SCAN/MULTI_BEHAVIOR_ATTACK）</p>
+	AlertSubType *string `json:"AlertSubType,omitnil,omitempty" name:"AlertSubType"`
+
+	// <p>关联规则ID</p>
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// <p>规则类型: 0-系统规则 1-用户自定义</p>
+	RuleType *int64 `json:"RuleType,omitnil,omitempty" name:"RuleType"`
+
+	// <p>告警等级（英文枚举：CRITICAL/HIGH/MEDIUM/LOW/INFO）</p>
+	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
+
+	// <p>处理状态（英文枚举：PENDING/PROCESSED/WHITELISTED/ISOLATED/CLEANED/IGNORED/ISOLATING/RESTORING/BLOCKED/DELETED）</p>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>ATT&amp;CK攻击阶段</p>
+	AttackStage *string `json:"AttackStage,omitnil,omitempty" name:"AttackStage"`
+
+	// <p>检测模式（英文枚举：PRECISE/BALANCED/DEEP）</p>
+	DetectMode *string `json:"DetectMode,omitnil,omitempty" name:"DetectMode"`
+
+	// <p>实例ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>主机UUID</p>
+	Quuid *string `json:"Quuid,omitnil,omitempty" name:"Quuid"`
+
+	// <p>聚合事件数</p>
+	EventCount *int64 `json:"EventCount,omitnil,omitempty" name:"EventCount"`
+
+	// <p>是否付费版</p>
+	IsProVersion *int64 `json:"IsProVersion,omitnil,omitempty" name:"IsProVersion"`
+
+	// <p>告警来源（英文枚举：HOST/CONTAINER/K8S/CSIP）</p>
+	AlertSource *string `json:"AlertSource,omitnil,omitempty" name:"AlertSource"`
+
+	// <p>容器镜像ID（保留字段，恒为空串）</p>
+	ImageId *string `json:"ImageId,omitnil,omitempty" name:"ImageId"`
+
+	// <p>容器ID（保留字段，恒为空串）</p>
+	ContainerId *string `json:"ContainerId,omitnil,omitempty" name:"ContainerId"`
+
+	// <p>集群ID（保留字段，恒为空串）</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// <p>首次发现时间</p>
+	FirstDetectTime *string `json:"FirstDetectTime,omitnil,omitempty" name:"FirstDetectTime"`
+
+	// <p>最近发现时间</p>
+	LatestDetectTime *string `json:"LatestDetectTime,omitnil,omitempty" name:"LatestDetectTime"`
+
+	// <p>规则名称（规则富化）</p>
+	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
+
+	// <p>内容类型: md5/cmdline/dns/ip_inbound/ip_outbound/custom_file/process_network</p>
+	ContentType *string `json:"ContentType,omitnil,omitempty" name:"ContentType"`
+
+	// <p>实例名（资产富化）</p>
+	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
+
+	// <p>公网IP（资产富化）</p>
+	PublicIp *string `json:"PublicIp,omitnil,omitempty" name:"PublicIp"`
+
+	// <p>内网IP（资产富化）</p>
+	PrivateIp *string `json:"PrivateIp,omitnil,omitempty" name:"PrivateIp"`
+
+	// <p>告警详情JSON字符串（前端通过JSON.parse解析，空值为&quot;{}&quot;）</p>
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// <p>告警名称（子类型中英文名）</p>
+	AlertName *string `json:"AlertName,omitnil,omitempty" name:"AlertName"`
+
+	// <p>安全中心标签</p>
+	CSIPTags []*CSIPTag `json:"CSIPTags,omitnil,omitempty" name:"CSIPTags"`
+
+	// <p>危害描述（统一字段，合并原各子类型独立字段）</p>
+	HarmDesc *string `json:"HarmDesc,omitnil,omitempty" name:"HarmDesc"`
+
+	// <p>修复建议（统一字段）</p>
+	SuggestScheme *string `json:"SuggestScheme,omitnil,omitempty" name:"SuggestScheme"`
+
+	// <p>数据来源: vuldb/vdc/intel/default</p>
+	HarmDescSource *string `json:"HarmDescSource,omitnil,omitempty" name:"HarmDescSource"`
+
+	// <p>统一威胁情报标签（按子类型路由不同情报源）</p>
+	ThreatTags []*string `json:"ThreatTags,omitnil,omitempty" name:"ThreatTags"`
+
+	// <p>Base64解码后的命令（高危命令子类型独有）</p>
+	BashCmdDecoded *string `json:"BashCmdDecoded,omitnil,omitempty" name:"BashCmdDecoded"`
+
+	// <p>漏洞名称（网络攻击子类型独有）</p>
+	NetVulName *string `json:"NetVulName,omitnil,omitempty" name:"NetVulName"`
+
+	// <p>CVE编号（网络攻击子类型独有）</p>
+	NetCVEId *string `json:"NetCVEId,omitnil,omitempty" name:"NetCVEId"`
+
+	// <p>异常行为（网络攻击子类型独有）</p>
+	NetAbnormalAction *string `json:"NetAbnormalAction,omitnil,omitempty" name:"NetAbnormalAction"`
+
+	// <p>IP情报信息（为空时不返回）</p>
+	IPIntel *IPIntelInfo `json:"IPIntel,omitnil,omitempty" name:"IPIntel"`
+
+	// <p>多行为攻击规则类型分类: sequence/threshold/command</p>
+	MultiBehaviorDetectionMode *string `json:"MultiBehaviorDetectionMode,omitnil,omitempty" name:"MultiBehaviorDetectionMode"`
+
+	// <p>告警来源描述（按子类型派生，描述哪个引擎/规则检出）</p>
+	SourceDesc *string `json:"SourceDesc,omitnil,omitempty" name:"SourceDesc"`
+
+	// <p>处理时间参数格式：2026-05-26 19:45:48</p>
+	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
+
+	// <p>情报富化结果来源（标识本次详情是否成功命中外部情报）；取值 &quot;VDC&quot; / &quot;IPAnalysis&quot; / &quot;BreakingTI&quot; / 空串</p>
+	IntelSource *string `json:"IntelSource,omitnil,omitempty" name:"IntelSource"`
+
+	// <p>综合研判，中英文已翻译，中：恶意/安全/未知；英：Malicious/Safe/Unknown</p>
+	Verdict *string `json:"Verdict,omitnil,omitempty" name:"Verdict"`
+
+	// <p>研判依据</p>
+	VerdictBasis *string `json:"VerdictBasis,omitnil,omitempty" name:"VerdictBasis"`
+
+	// <p>病毒名称</p>
+	VirusName *string `json:"VirusName,omitnil,omitempty" name:"VirusName"`
+
+	// <p>病毒家族</p>
+	VirusFamily *string `json:"VirusFamily,omitnil,omitempty" name:"VirusFamily"`
+
+	// <p>NetResponsePayload 响应数据包（base64 编码后的字符串）</p>
+	NetResponsePayload *string `json:"NetResponsePayload,omitnil,omitempty" name:"NetResponsePayload"`
+
+	// <p>服务进程信息（base64 编码后的 JSON 字符串）</p>
+	NetSvcPs *string `json:"NetSvcPs,omitnil,omitempty" name:"NetSvcPs"`
+}
+
+type EdrAlertItem struct {
+	// <p>告警表id</p>
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>APPID</p>
+	AppId *uint64 `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>告警ID</p>
+	AlertId *string `json:"AlertId,omitnil,omitempty" name:"AlertId"`
+
+	// <p>告警大类</p>
+	AlertCategory *string `json:"AlertCategory,omitnil,omitempty" name:"AlertCategory"`
+
+	// <p>告警子类</p>
+	AlertSubType *string `json:"AlertSubType,omitnil,omitempty" name:"AlertSubType"`
+
+	// <p>策略ID</p>
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// <p>策略类型</p>
+	RuleType *int64 `json:"RuleType,omitnil,omitempty" name:"RuleType"`
+
+	// <p>告警等级</p>
+	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
+
+	// <p>告警状态</p>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>攻击阶段</p>
+	AttackStage *string `json:"AttackStage,omitnil,omitempty" name:"AttackStage"`
+
+	// <p>检测模式</p>
+	DetectMode *string `json:"DetectMode,omitnil,omitempty" name:"DetectMode"`
+
+	// <p>实例ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>QUUID</p>
+	Quuid *string `json:"Quuid,omitnil,omitempty" name:"Quuid"`
+
+	// <p>是否付费</p>
+	IsProVersion *int64 `json:"IsProVersion,omitnil,omitempty" name:"IsProVersion"`
+
+	// <p>告警来源</p>
+	AlertSource *string `json:"AlertSource,omitnil,omitempty" name:"AlertSource"`
+
+	// <p>镜像ID</p>
+	ImageId *string `json:"ImageId,omitnil,omitempty" name:"ImageId"`
+
+	// <p>容器id</p>
+	ContainerId *string `json:"ContainerId,omitnil,omitempty" name:"ContainerId"`
+
+	// <p>集群ID</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// <p>告警数量</p>
+	EventCount *int64 `json:"EventCount,omitnil,omitempty" name:"EventCount"`
+
+	// <p>最初发现时间</p>
+	FirstDetectTime *string `json:"FirstDetectTime,omitnil,omitempty" name:"FirstDetectTime"`
+
+	// <p>最近发现时间</p>
+	LatestDetectTime *string `json:"LatestDetectTime,omitnil,omitempty" name:"LatestDetectTime"`
+
+	// <p>规则名</p>
+	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
+
+	// <p>策略类型</p>
+	ContentType *string `json:"ContentType,omitnil,omitempty" name:"ContentType"`
+
+	// <p>实例名</p>
+	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
+
+	// <p>公共IP</p>
+	PublicIp *string `json:"PublicIp,omitnil,omitempty" name:"PublicIp"`
+
+	// <p>内网IP</p>
+	PrivateIp *string `json:"PrivateIp,omitnil,omitempty" name:"PrivateIp"`
+
+	// <p>该机器是否开启应用防护</p>
+	RaspOpen *bool `json:"RaspOpen,omitnil,omitempty" name:"RaspOpen"`
+}
+
+type EdrAlertTarget struct {
+	// <p>告警主键ID</p>
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>告警所属账号ID（跨账号，前端必传）</p>
+	AppId *uint64 `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>告警唯一标识</p>
+	AlertId *string `json:"AlertId,omitnil,omitempty" name:"AlertId"`
+
+	// <p>主机UUID（可选，由列表带回透传）</p>
+	Quuid *string `json:"Quuid,omitnil,omitempty" name:"Quuid"`
+
+	// <p>实例ID（可选，由列表带回透传，用于安全中心标签富化）</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>告警子类型</p>
+	AlertSubType *string `json:"AlertSubType,omitnil,omitempty" name:"AlertSubType"`
+}
+
+type EdrAlertTargetForIgnore struct {
+	// <p>告警主键ID</p>
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>告警所属账号ID（跨账号，前端必传）</p>
+	AppId *uint64 `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>告警唯一标识</p>
+	AlertId *string `json:"AlertId,omitnil,omitempty" name:"AlertId"`
+
+	// <p>主机UUID（可选）</p>
+	Quuid *string `json:"Quuid,omitnil,omitempty" name:"Quuid"`
+
+	// <p>实例ID（可选，用于白名单写入）</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
 type Element struct {
 	// 统计类型
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
@@ -20785,6 +21556,29 @@ type HitRules struct {
 	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
 }
 
+type IPIntelInfo struct {
+	// <p>情报标签（如常规木马、漏洞软件、窃密木马）</p>
+	Tags []*string `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>研判依据</p>
+	Basis *string `json:"Basis,omitnil,omitempty" name:"Basis"`
+
+	// <p>所属运营商</p>
+	ISP *string `json:"ISP,omitnil,omitempty" name:"ISP"`
+
+	// <p>地理位置</p>
+	Location *string `json:"Location,omitnil,omitempty" name:"Location"`
+
+	// <p>家族团伙</p>
+	Characteristic *string `json:"Characteristic,omitnil,omitempty" name:"Characteristic"`
+
+	// <p>IP画像</p>
+	Purpose *string `json:"Purpose,omitnil,omitempty" name:"Purpose"`
+
+	// <p>反查域名列表</p>
+	Referer []*DomainInfo `json:"Referer,omitnil,omitempty" name:"Referer"`
+}
+
 type IaCFile struct {
 	// <p>ID</p>
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
@@ -20846,6 +21640,14 @@ type InquireInfo struct {
 
 	// 购买量
 	Value *uint64 `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type InstanceIDWithAppIdItem struct {
+	// <p>APPID</p>
+	AppId *uint64 `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>实例ID</p>
+	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
 }
 
 type IpAssetListVO struct {
@@ -21477,6 +22279,116 @@ type MiniTagItem struct {
 
 	// <p>标签值英文</p>
 	TagValueEn *string `json:"TagValueEn,omitnil,omitempty" name:"TagValueEn"`
+}
+
+// Predefined struct for user
+type ModifyAILinkSettingRequestParams struct {
+	// <p>0 关闭AI-Link智链引擎，1 开启AI-Link智链引擎</p>
+	AILinkEnable *uint64 `json:"AILinkEnable,omitnil,omitempty" name:"AILinkEnable"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>深度模式 0-关闭 1-开启</p>
+	RuleScopeDeep *uint64 `json:"RuleScopeDeep,omitnil,omitempty" name:"RuleScopeDeep"`
+
+	// <p>均衡模式 0-关闭 1-开启</p>
+	RuleScopeBalanced *uint64 `json:"RuleScopeBalanced,omitnil,omitempty" name:"RuleScopeBalanced"`
+
+	// <p>精准模式 0-关闭 1-开启</p>
+	RuleScopePrecise *uint64 `json:"RuleScopePrecise,omitnil,omitempty" name:"RuleScopePrecise"`
+
+	// <p>1 全部专业/旗舰版主机，0 自选主机列表</p>
+	Scope *uint64 `json:"Scope,omitnil,omitempty" name:"Scope"`
+
+	// <p>自选主机Quuid列表（Scope=0时必填）</p>
+	Quuids []*string `json:"Quuids,omitnil,omitempty" name:"Quuids"`
+
+	// <p>排除主机Quuid列表（Scope=1时生效）</p>
+	ExcludeQuuids []*string `json:"ExcludeQuuids,omitnil,omitempty" name:"ExcludeQuuids"`
+
+	// <p>新增资产自动包含 0 不包含 1包含</p>
+	AutoInclude *uint64 `json:"AutoInclude,omitnil,omitempty" name:"AutoInclude"`
+}
+
+type ModifyAILinkSettingRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>0 关闭AI-Link智链引擎，1 开启AI-Link智链引擎</p>
+	AILinkEnable *uint64 `json:"AILinkEnable,omitnil,omitempty" name:"AILinkEnable"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>深度模式 0-关闭 1-开启</p>
+	RuleScopeDeep *uint64 `json:"RuleScopeDeep,omitnil,omitempty" name:"RuleScopeDeep"`
+
+	// <p>均衡模式 0-关闭 1-开启</p>
+	RuleScopeBalanced *uint64 `json:"RuleScopeBalanced,omitnil,omitempty" name:"RuleScopeBalanced"`
+
+	// <p>精准模式 0-关闭 1-开启</p>
+	RuleScopePrecise *uint64 `json:"RuleScopePrecise,omitnil,omitempty" name:"RuleScopePrecise"`
+
+	// <p>1 全部专业/旗舰版主机，0 自选主机列表</p>
+	Scope *uint64 `json:"Scope,omitnil,omitempty" name:"Scope"`
+
+	// <p>自选主机Quuid列表（Scope=0时必填）</p>
+	Quuids []*string `json:"Quuids,omitnil,omitempty" name:"Quuids"`
+
+	// <p>排除主机Quuid列表（Scope=1时生效）</p>
+	ExcludeQuuids []*string `json:"ExcludeQuuids,omitnil,omitempty" name:"ExcludeQuuids"`
+
+	// <p>新增资产自动包含 0 不包含 1包含</p>
+	AutoInclude *uint64 `json:"AutoInclude,omitnil,omitempty" name:"AutoInclude"`
+}
+
+func (r *ModifyAILinkSettingRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAILinkSettingRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AILinkEnable")
+	delete(f, "MemberId")
+	delete(f, "RuleScopeDeep")
+	delete(f, "RuleScopeBalanced")
+	delete(f, "RuleScopePrecise")
+	delete(f, "Scope")
+	delete(f, "Quuids")
+	delete(f, "ExcludeQuuids")
+	delete(f, "AutoInclude")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAILinkSettingRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAILinkSettingResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyAILinkSettingResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyAILinkSettingResponseParams `json:"Response"`
+}
+
+func (r *ModifyAILinkSettingResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAILinkSettingResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -22801,6 +23713,306 @@ func (r *ModifyDspmWhitelistStrategyResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyDspmWhitelistStrategyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyEDRRuleRequestParams struct {
+	// <p>策略类型 / Rule Type: 0-系统策略/System Rule, 1-自定义策略/Custom Rule</p>
+	RuleType *int64 `json:"RuleType,omitnil,omitempty" name:"RuleType"`
+
+	// <p>执行动作 / Action: 0-告警/Alert, 1-放行/Allow, 2-告警并拦截/Alert and Block</p>
+	AlertAction *int64 `json:"AlertAction,omitnil,omitempty" name:"AlertAction"`
+
+	// <p>生效资产 / Effective Scope: 0-指定主机/Specified Hosts, 1-全部主机/All Hosts, 2-专业版/Professional, 3-旗舰版/Flagship, 4-专业版+旗舰版/Professional+Flagship     QUUIDS        []string json:&quot;QUUIDS&quot;                                      // 主机列表 / Host QUUIDS (when Scope=0)</p>
+	CWPScope *int64 `json:"CWPScope,omitnil,omitempty" name:"CWPScope"`
+
+	// <p>容器生效镜像范围 / Container Image Scope: 0-指定镜像/Specified Images, 1-全部镜像/All Images</p>
+	TCSSScope *int64 `json:"TCSSScope,omitnil,omitempty" name:"TCSSScope"`
+
+	// <p>开关 / Status: 0-开启/Enabled, 1-关闭/Disabled</p>
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>策略名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>内容类型 / Content Type: md5-文件MD5/File MD5, cmdline-命令行/Command Line, dns-DNS, ip_inbound-入站IP/Inbound IP, ip_outbound-出站IP/Outbound IP, custom_file-自定义文件/Custom File, process_network-进程网络/Process Network</p>
+	ContentType *string `json:"ContentType,omitnil,omitempty" name:"ContentType"`
+
+	// <p>告警等级 / Alert Level: 1-高危/High, 2-中危/Medium, 3-低危/Low, 4-提示/Reminder</p>
+	Level *int64 `json:"Level,omitnil,omitempty" name:"Level"`
+
+	// <p>检测模式 / Detect Mode: 0-精准/Precise, 1-均衡/Balanced, 2-深度/Deep</p>
+	DetectMode *int64 `json:"DetectMode,omitnil,omitempty" name:"DetectMode"`
+
+	// <p>攻击阶段</p>
+	AttackStage *string `json:"AttackStage,omitnil,omitempty" name:"AttackStage"`
+
+	// <p>策略</p>
+	RuleID *string `json:"RuleID,omitnil,omitempty" name:"RuleID"`
+
+	// <p>策略描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>处理历史告警 / Handle Old Events: 0-否/No, 1-是/Yes</p>
+	DealOldEvents *int64 `json:"DealOldEvents,omitnil,omitempty" name:"DealOldEvents"`
+
+	// <p>ContentType=md5 时传入的 MD5 列表</p>
+	Md5List []*string `json:"Md5List,omitnil,omitempty" name:"Md5List"`
+
+	// <p>ContentType=custom_file 时传入的文件名列表(Base64编码)</p>
+	FileName []*string `json:"FileName,omitnil,omitempty" name:"FileName"`
+
+	// <p>ContentType=custom_file 时传入的文件目录列表(Base64编码)</p>
+	FileDirectory []*string `json:"FileDirectory,omitnil,omitempty" name:"FileDirectory"`
+
+	// <p>ContentType=cmdline 时传入的命令行规则，Process/PProcess/AProcess 的 Exe/Cmdline 字段需要 Base64 编码</p>
+	CmdLineRules *RuleContentCmdLine `json:"CmdLineRules,omitnil,omitempty" name:"CmdLineRules"`
+
+	// <p>ContentType=dns 时传入的域名列表(Base64编码)</p>
+	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
+
+	// <p>ContentType=ip_outbound 时传入的出站IP列表(Base64编码)</p>
+	OutboundIP []*string `json:"OutboundIP,omitnil,omitempty" name:"OutboundIP"`
+
+	// <p>ContentType=ip_inbound 时传入的入站IP列表(Base64编码)</p>
+	InboundIP []*string `json:"InboundIP,omitnil,omitempty" name:"InboundIP"`
+
+	// <p>镜像ID列表 / Image IDs (when TCSSScope=0)</p>
+	ImageIDs []*string `json:"ImageIDs,omitnil,omitempty" name:"ImageIDs"`
+
+	// <p>ContentType=process_network 时传入的进程网络规则</p>
+	ProcessNetworkRules *RuleContentProcessNetwork `json:"ProcessNetworkRules,omitnil,omitempty" name:"ProcessNetworkRules"`
+
+	// <p>选择的多账号的APPID</p>
+	TargetAppIDs []*uint64 `json:"TargetAppIDs,omitnil,omitempty" name:"TargetAppIDs"`
+
+	// <p>告警的加白目标机器信息</p>
+	Target *EdrAlertTarget `json:"Target,omitnil,omitempty" name:"Target"`
+
+	// <p>自选资产对应的实例ID和APPID</p>
+	InstanceIDsWithAppId []*InstanceIDWithAppIdItem `json:"InstanceIDsWithAppId,omitnil,omitempty" name:"InstanceIDsWithAppId"`
+
+	// <p>全选资产排除的实例ID和APPID</p>
+	ExcludeInstanceIDsWithAppId []*InstanceIDWithAppIdItem `json:"ExcludeInstanceIDsWithAppId,omitnil,omitempty" name:"ExcludeInstanceIDsWithAppId"`
+}
+
+type ModifyEDRRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>策略类型 / Rule Type: 0-系统策略/System Rule, 1-自定义策略/Custom Rule</p>
+	RuleType *int64 `json:"RuleType,omitnil,omitempty" name:"RuleType"`
+
+	// <p>执行动作 / Action: 0-告警/Alert, 1-放行/Allow, 2-告警并拦截/Alert and Block</p>
+	AlertAction *int64 `json:"AlertAction,omitnil,omitempty" name:"AlertAction"`
+
+	// <p>生效资产 / Effective Scope: 0-指定主机/Specified Hosts, 1-全部主机/All Hosts, 2-专业版/Professional, 3-旗舰版/Flagship, 4-专业版+旗舰版/Professional+Flagship     QUUIDS        []string json:&quot;QUUIDS&quot;                                      // 主机列表 / Host QUUIDS (when Scope=0)</p>
+	CWPScope *int64 `json:"CWPScope,omitnil,omitempty" name:"CWPScope"`
+
+	// <p>容器生效镜像范围 / Container Image Scope: 0-指定镜像/Specified Images, 1-全部镜像/All Images</p>
+	TCSSScope *int64 `json:"TCSSScope,omitnil,omitempty" name:"TCSSScope"`
+
+	// <p>开关 / Status: 0-开启/Enabled, 1-关闭/Disabled</p>
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>策略名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>内容类型 / Content Type: md5-文件MD5/File MD5, cmdline-命令行/Command Line, dns-DNS, ip_inbound-入站IP/Inbound IP, ip_outbound-出站IP/Outbound IP, custom_file-自定义文件/Custom File, process_network-进程网络/Process Network</p>
+	ContentType *string `json:"ContentType,omitnil,omitempty" name:"ContentType"`
+
+	// <p>告警等级 / Alert Level: 1-高危/High, 2-中危/Medium, 3-低危/Low, 4-提示/Reminder</p>
+	Level *int64 `json:"Level,omitnil,omitempty" name:"Level"`
+
+	// <p>检测模式 / Detect Mode: 0-精准/Precise, 1-均衡/Balanced, 2-深度/Deep</p>
+	DetectMode *int64 `json:"DetectMode,omitnil,omitempty" name:"DetectMode"`
+
+	// <p>攻击阶段</p>
+	AttackStage *string `json:"AttackStage,omitnil,omitempty" name:"AttackStage"`
+
+	// <p>策略</p>
+	RuleID *string `json:"RuleID,omitnil,omitempty" name:"RuleID"`
+
+	// <p>策略描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>处理历史告警 / Handle Old Events: 0-否/No, 1-是/Yes</p>
+	DealOldEvents *int64 `json:"DealOldEvents,omitnil,omitempty" name:"DealOldEvents"`
+
+	// <p>ContentType=md5 时传入的 MD5 列表</p>
+	Md5List []*string `json:"Md5List,omitnil,omitempty" name:"Md5List"`
+
+	// <p>ContentType=custom_file 时传入的文件名列表(Base64编码)</p>
+	FileName []*string `json:"FileName,omitnil,omitempty" name:"FileName"`
+
+	// <p>ContentType=custom_file 时传入的文件目录列表(Base64编码)</p>
+	FileDirectory []*string `json:"FileDirectory,omitnil,omitempty" name:"FileDirectory"`
+
+	// <p>ContentType=cmdline 时传入的命令行规则，Process/PProcess/AProcess 的 Exe/Cmdline 字段需要 Base64 编码</p>
+	CmdLineRules *RuleContentCmdLine `json:"CmdLineRules,omitnil,omitempty" name:"CmdLineRules"`
+
+	// <p>ContentType=dns 时传入的域名列表(Base64编码)</p>
+	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
+
+	// <p>ContentType=ip_outbound 时传入的出站IP列表(Base64编码)</p>
+	OutboundIP []*string `json:"OutboundIP,omitnil,omitempty" name:"OutboundIP"`
+
+	// <p>ContentType=ip_inbound 时传入的入站IP列表(Base64编码)</p>
+	InboundIP []*string `json:"InboundIP,omitnil,omitempty" name:"InboundIP"`
+
+	// <p>镜像ID列表 / Image IDs (when TCSSScope=0)</p>
+	ImageIDs []*string `json:"ImageIDs,omitnil,omitempty" name:"ImageIDs"`
+
+	// <p>ContentType=process_network 时传入的进程网络规则</p>
+	ProcessNetworkRules *RuleContentProcessNetwork `json:"ProcessNetworkRules,omitnil,omitempty" name:"ProcessNetworkRules"`
+
+	// <p>选择的多账号的APPID</p>
+	TargetAppIDs []*uint64 `json:"TargetAppIDs,omitnil,omitempty" name:"TargetAppIDs"`
+
+	// <p>告警的加白目标机器信息</p>
+	Target *EdrAlertTarget `json:"Target,omitnil,omitempty" name:"Target"`
+
+	// <p>自选资产对应的实例ID和APPID</p>
+	InstanceIDsWithAppId []*InstanceIDWithAppIdItem `json:"InstanceIDsWithAppId,omitnil,omitempty" name:"InstanceIDsWithAppId"`
+
+	// <p>全选资产排除的实例ID和APPID</p>
+	ExcludeInstanceIDsWithAppId []*InstanceIDWithAppIdItem `json:"ExcludeInstanceIDsWithAppId,omitnil,omitempty" name:"ExcludeInstanceIDsWithAppId"`
+}
+
+func (r *ModifyEDRRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyEDRRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RuleType")
+	delete(f, "AlertAction")
+	delete(f, "CWPScope")
+	delete(f, "TCSSScope")
+	delete(f, "Status")
+	delete(f, "MemberId")
+	delete(f, "Name")
+	delete(f, "ContentType")
+	delete(f, "Level")
+	delete(f, "DetectMode")
+	delete(f, "AttackStage")
+	delete(f, "RuleID")
+	delete(f, "Description")
+	delete(f, "DealOldEvents")
+	delete(f, "Md5List")
+	delete(f, "FileName")
+	delete(f, "FileDirectory")
+	delete(f, "CmdLineRules")
+	delete(f, "Domains")
+	delete(f, "OutboundIP")
+	delete(f, "InboundIP")
+	delete(f, "ImageIDs")
+	delete(f, "ProcessNetworkRules")
+	delete(f, "TargetAppIDs")
+	delete(f, "Target")
+	delete(f, "InstanceIDsWithAppId")
+	delete(f, "ExcludeInstanceIDsWithAppId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyEDRRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyEDRRuleResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyEDRRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyEDRRuleResponseParams `json:"Response"`
+}
+
+func (r *ModifyEDRRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyEDRRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyEdrAlertPermanentIgnoreRequestParams struct {
+	// <p>告警定位列表（支持跨账号），最多500条</p>
+	Targets []*EdrAlertTargetForIgnore `json:"Targets,omitnil,omitempty" name:"Targets"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+type ModifyEdrAlertPermanentIgnoreRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>告警定位列表（支持跨账号），最多500条</p>
+	Targets []*EdrAlertTargetForIgnore `json:"Targets,omitnil,omitempty" name:"Targets"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+func (r *ModifyEdrAlertPermanentIgnoreRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyEdrAlertPermanentIgnoreRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Targets")
+	delete(f, "MemberId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyEdrAlertPermanentIgnoreRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyEdrAlertPermanentIgnoreResponseParams struct {
+	// <p>成功忽略的告警数</p>
+	IgnoredCount *int64 `json:"IgnoredCount,omitnil,omitempty" name:"IgnoredCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyEdrAlertPermanentIgnoreResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyEdrAlertPermanentIgnoreResponseParams `json:"Response"`
+}
+
+func (r *ModifyEdrAlertPermanentIgnoreResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyEdrAlertPermanentIgnoreResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -24536,6 +25748,39 @@ type RoleInfo struct {
 
 	// 容器ID
 	ContainerID *string `json:"ContainerID,omitnil,omitempty" name:"ContainerID"`
+}
+
+type RuleContentCmdLine struct {
+	// <p>进程命令行信息</p>
+	Process *RuleContentProcessInfo `json:"Process,omitnil,omitempty" name:"Process"`
+
+	// <p>父进程命令行信息</p>
+	ParentProcess *RuleContentProcessInfo `json:"ParentProcess,omitnil,omitempty" name:"ParentProcess"`
+
+	// <p>祖先进程命令行信息</p>
+	AncestorProcess *RuleContentProcessInfo `json:"AncestorProcess,omitnil,omitempty" name:"AncestorProcess"`
+}
+
+type RuleContentProcessInfo struct {
+	// <p>进程文件路径</p>
+	Exe *string `json:"Exe,omitnil,omitempty" name:"Exe"`
+
+	// <p>进程命令行</p>
+	CmdLine *string `json:"CmdLine,omitnil,omitempty" name:"CmdLine"`
+}
+
+type RuleContentProcessNetwork struct {
+	// <p>当前进程</p>
+	Process *RuleContentProcessInfo `json:"Process,omitnil,omitempty" name:"Process"`
+
+	// <p>目标IP（必填）: 支持单个IP/IP范围/CIDR, 支持IPv4和IPv6</p>
+	DstIP *string `json:"DstIP,omitnil,omitempty" name:"DstIP"`
+
+	// <p>父进程</p>
+	ParentProcess *RuleContentProcessInfo `json:"ParentProcess,omitnil,omitempty" name:"ParentProcess"`
+
+	// <p>目标端口列表（可选）: 支持1-65535, 为空表示不限端口</p>
+	DstPorts []*uint64 `json:"DstPorts,omitnil,omitempty" name:"DstPorts"`
 }
 
 type STSCredentialOutput struct {

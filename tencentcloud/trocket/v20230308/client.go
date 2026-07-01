@@ -2343,6 +2343,64 @@ func (c *Client) DescribeTopicListByGroupWithContext(ctx context.Context, reques
     return
 }
 
+func NewDescribeTopicStatsRequest() (request *DescribeTopicStatsRequest) {
+    request = &DescribeTopicStatsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "DescribeTopicStats")
+    
+    
+    return
+}
+
+func NewDescribeTopicStatsResponse() (response *DescribeTopicStatsResponse) {
+    response = &DescribeTopicStatsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTopicStats
+// 获取主题队列级别的消费详情
+//
+// 当前 API 适用集群：5.x 铂金版集群
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeTopicStats(request *DescribeTopicStatsRequest) (response *DescribeTopicStatsResponse, err error) {
+    return c.DescribeTopicStatsWithContext(context.Background(), request)
+}
+
+// DescribeTopicStats
+// 获取主题队列级别的消费详情
+//
+// 当前 API 适用集群：5.x 铂金版集群
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeTopicStatsWithContext(ctx context.Context, request *DescribeTopicStatsRequest) (response *DescribeTopicStatsResponse, err error) {
+    if request == nil {
+        request = NewDescribeTopicStatsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "DescribeTopicStats")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTopicStats require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTopicStatsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDoHealthCheckOnMigratingTopicRequest() (request *DoHealthCheckOnMigratingTopicRequest) {
     request = &DoHealthCheckOnMigratingTopicRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2367,6 +2425,8 @@ func NewDoHealthCheckOnMigratingTopicResponse() (response *DoHealthCheckOnMigrat
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DoHealthCheckOnMigratingTopic(request *DoHealthCheckOnMigratingTopicRequest) (response *DoHealthCheckOnMigratingTopicResponse, err error) {
     return c.DoHealthCheckOnMigratingTopicWithContext(context.Background(), request)
 }
@@ -2376,6 +2436,8 @@ func (c *Client) DoHealthCheckOnMigratingTopic(request *DoHealthCheckOnMigrating
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DoHealthCheckOnMigratingTopicWithContext(ctx context.Context, request *DoHealthCheckOnMigratingTopicRequest) (response *DoHealthCheckOnMigratingTopicResponse, err error) {
     if request == nil {
         request = NewDoHealthCheckOnMigratingTopicRequest()
@@ -2417,6 +2479,8 @@ func NewImportSourceClusterConsumerGroupsResponse() (response *ImportSourceClust
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ImportSourceClusterConsumerGroups(request *ImportSourceClusterConsumerGroupsRequest) (response *ImportSourceClusterConsumerGroupsResponse, err error) {
     return c.ImportSourceClusterConsumerGroupsWithContext(context.Background(), request)
 }
@@ -2426,6 +2490,8 @@ func (c *Client) ImportSourceClusterConsumerGroups(request *ImportSourceClusterC
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ImportSourceClusterConsumerGroupsWithContext(ctx context.Context, request *ImportSourceClusterConsumerGroupsRequest) (response *ImportSourceClusterConsumerGroupsResponse, err error) {
     if request == nil {
         request = NewImportSourceClusterConsumerGroupsRequest()
@@ -2467,6 +2533,8 @@ func NewImportSourceClusterTopicsResponse() (response *ImportSourceClusterTopics
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ImportSourceClusterTopics(request *ImportSourceClusterTopicsRequest) (response *ImportSourceClusterTopicsResponse, err error) {
     return c.ImportSourceClusterTopicsWithContext(context.Background(), request)
 }
@@ -2476,6 +2544,8 @@ func (c *Client) ImportSourceClusterTopics(request *ImportSourceClusterTopicsReq
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ImportSourceClusterTopicsWithContext(ctx context.Context, request *ImportSourceClusterTopicsRequest) (response *ImportSourceClusterTopicsResponse, err error) {
     if request == nil {
         request = NewImportSourceClusterTopicsRequest()
@@ -2519,6 +2589,8 @@ func NewModifyConsumerGroupResponse() (response *ModifyConsumerGroupResponse) {
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyConsumerGroup(request *ModifyConsumerGroupRequest) (response *ModifyConsumerGroupResponse, err error) {
     return c.ModifyConsumerGroupWithContext(context.Background(), request)
 }
@@ -2530,6 +2602,8 @@ func (c *Client) ModifyConsumerGroup(request *ModifyConsumerGroupRequest) (respo
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyConsumerGroupWithContext(ctx context.Context, request *ModifyConsumerGroupRequest) (response *ModifyConsumerGroupResponse, err error) {
     if request == nil {
         request = NewModifyConsumerGroupRequest()
