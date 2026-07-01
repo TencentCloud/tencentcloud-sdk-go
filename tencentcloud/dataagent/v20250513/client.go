@@ -583,6 +583,144 @@ func (c *Client) DeleteSceneWithContext(ctx context.Context, request *DeleteScen
     return
 }
 
+func NewExecuteAgentApiRequest() (request *ExecuteAgentApiRequest) {
+    request = &ExecuteAgentApiRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dataagent", APIVersion, "ExecuteAgentApi")
+    
+    
+    return
+}
+
+func NewExecuteAgentApiResponse() (response *ExecuteAgentApiResponse) {
+    response = &ExecuteAgentApiResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ExecuteAgentApi
+// 执行datateam相关的命令行请求
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALID = "InvalidParameter.Invalid"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ExecuteAgentApi(request *ExecuteAgentApiRequest) (response *ExecuteAgentApiResponse, err error) {
+    return c.ExecuteAgentApiWithContext(context.Background(), request)
+}
+
+// ExecuteAgentApi
+// 执行datateam相关的命令行请求
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALID = "InvalidParameter.Invalid"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ExecuteAgentApiWithContext(ctx context.Context, request *ExecuteAgentApiRequest) (response *ExecuteAgentApiResponse, err error) {
+    if request == nil {
+        request = NewExecuteAgentApiRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dataagent", APIVersion, "ExecuteAgentApi")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ExecuteAgentApi require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewExecuteAgentApiResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewExecuteAgentApiV1Request() (request *ExecuteAgentApiV1Request) {
+    request = &ExecuteAgentApiV1Request{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dataagent", APIVersion, "ExecuteAgentApiV1")
+    
+    
+    return
+}
+
+func NewExecuteAgentApiV1Response() (response *ExecuteAgentApiV1Response) {
+    response = &ExecuteAgentApiV1Response{} 
+    return
+
+}
+
+// ExecuteAgentApiV1
+// 执行datateam相关的命令行请求
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALID = "InvalidParameter.Invalid"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ExecuteAgentApiV1(request *ExecuteAgentApiV1Request) (response *ExecuteAgentApiV1Response, err error) {
+    return c.ExecuteAgentApiV1WithContext(context.Background(), request)
+}
+
+// ExecuteAgentApiV1
+// 执行datateam相关的命令行请求
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALID = "InvalidParameter.Invalid"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ExecuteAgentApiV1WithContext(ctx context.Context, request *ExecuteAgentApiV1Request) (response *ExecuteAgentApiV1Response, err error) {
+    if request == nil {
+        request = NewExecuteAgentApiV1Request()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dataagent", APIVersion, "ExecuteAgentApiV1")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ExecuteAgentApiV1 require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewExecuteAgentApiV1Response()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetJobsByKnowledgeBaseIdRequest() (request *GetJobsByKnowledgeBaseIdRequest) {
     request = &GetJobsByKnowledgeBaseIdRequest{
         BaseRequest: &tchttp.BaseRequest{},

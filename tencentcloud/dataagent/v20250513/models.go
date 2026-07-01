@@ -735,6 +735,144 @@ type ExampleQA struct {
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
+// Predefined struct for user
+type ExecuteAgentApiRequestParams struct {
+	// <p>参数路径</p>
+	RequestPath *string `json:"RequestPath,omitnil,omitempty" name:"RequestPath"`
+
+	// <p>参数值</p>
+	RequestData *string `json:"RequestData,omitnil,omitempty" name:"RequestData"`
+
+	// <p>post还是get</p><p>枚举值：</p><ul><li>post： post请求</li><li>get： get请求</li></ul>
+	RequestType *string `json:"RequestType,omitnil,omitempty" name:"RequestType"`
+}
+
+type ExecuteAgentApiRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>参数路径</p>
+	RequestPath *string `json:"RequestPath,omitnil,omitempty" name:"RequestPath"`
+
+	// <p>参数值</p>
+	RequestData *string `json:"RequestData,omitnil,omitempty" name:"RequestData"`
+
+	// <p>post还是get</p><p>枚举值：</p><ul><li>post： post请求</li><li>get： get请求</li></ul>
+	RequestType *string `json:"RequestType,omitnil,omitempty" name:"RequestType"`
+}
+
+func (r *ExecuteAgentApiRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ExecuteAgentApiRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RequestPath")
+	delete(f, "RequestData")
+	delete(f, "RequestType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ExecuteAgentApiRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ExecuteAgentApiResponseParams struct {
+	// <p>请求路径</p>
+	RequestPath *string `json:"RequestPath,omitnil,omitempty" name:"RequestPath"`
+
+	// <p>返回的具体指</p>
+	AgentData *string `json:"AgentData,omitnil,omitempty" name:"AgentData"`
+
+	// <p>错误码信息</p>
+	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ExecuteAgentApiResponse struct {
+	*tchttp.BaseResponse
+	Response *ExecuteAgentApiResponseParams `json:"Response"`
+}
+
+func (r *ExecuteAgentApiResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ExecuteAgentApiResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ExecuteAgentApiV1RequestParams struct {
+	// <p>参数路径</p>
+	RequestPath *string `json:"RequestPath,omitnil,omitempty" name:"RequestPath"`
+
+	// <p>post还是get</p><p>枚举值：</p><ul><li>post： post请求</li><li>get： get请求</li></ul>
+	RequestType *string `json:"RequestType,omitnil,omitempty" name:"RequestType"`
+}
+
+type ExecuteAgentApiV1Request struct {
+	*tchttp.BaseRequest
+	
+	// <p>参数路径</p>
+	RequestPath *string `json:"RequestPath,omitnil,omitempty" name:"RequestPath"`
+
+	// <p>post还是get</p><p>枚举值：</p><ul><li>post： post请求</li><li>get： get请求</li></ul>
+	RequestType *string `json:"RequestType,omitnil,omitempty" name:"RequestType"`
+}
+
+func (r *ExecuteAgentApiV1Request) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ExecuteAgentApiV1Request) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RequestPath")
+	delete(f, "RequestType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ExecuteAgentApiV1Request has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ExecuteAgentApiV1ResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ExecuteAgentApiV1Response struct {
+	tchttp.BaseSSEResponse `json:"-"`
+	Response *ExecuteAgentApiV1ResponseParams `json:"Response"`
+}
+
+func (r *ExecuteAgentApiV1Response) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ExecuteAgentApiV1Response) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type FileInfo struct {
 	// <p>文件名称</p>
 	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`

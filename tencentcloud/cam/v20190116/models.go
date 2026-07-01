@@ -916,39 +916,45 @@ func (r *CreateMessageReceiverResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateOIDCConfigRequestParams struct {
-	// 身份提供商URL
+	// <p>身份提供商URL</p>
 	IdentityUrl *string `json:"IdentityUrl,omitnil,omitempty" name:"IdentityUrl"`
 
-	// 客户端ID
+	// <p>客户端ID</p>
 	ClientId []*string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
 
-	// 名称
+	// <p>名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 签名公钥，需要base64
+	// <p>签名公钥，需要base64</p>
 	IdentityKey *string `json:"IdentityKey,omitnil,omitempty" name:"IdentityKey"`
 
-	// 描述
+	// <p>描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>OIDC公钥自动轮转开关</p><p>枚举值：</p><ul><li>0： 关闭</li><li>1： 开启</li></ul><p>默认值：0</p>
+	AutoRotateKey *uint64 `json:"AutoRotateKey,omitnil,omitempty" name:"AutoRotateKey"`
 }
 
 type CreateOIDCConfigRequest struct {
 	*tchttp.BaseRequest
 	
-	// 身份提供商URL
+	// <p>身份提供商URL</p>
 	IdentityUrl *string `json:"IdentityUrl,omitnil,omitempty" name:"IdentityUrl"`
 
-	// 客户端ID
+	// <p>客户端ID</p>
 	ClientId []*string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
 
-	// 名称
+	// <p>名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 签名公钥，需要base64
+	// <p>签名公钥，需要base64</p>
 	IdentityKey *string `json:"IdentityKey,omitnil,omitempty" name:"IdentityKey"`
 
-	// 描述
+	// <p>描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>OIDC公钥自动轮转开关</p><p>枚举值：</p><ul><li>0： 关闭</li><li>1： 开启</li></ul><p>默认值：0</p>
+	AutoRotateKey *uint64 `json:"AutoRotateKey,omitnil,omitempty" name:"AutoRotateKey"`
 }
 
 func (r *CreateOIDCConfigRequest) ToJsonString() string {
@@ -968,6 +974,7 @@ func (r *CreateOIDCConfigRequest) FromJsonString(s string) error {
 	delete(f, "Name")
 	delete(f, "IdentityKey")
 	delete(f, "Description")
+	delete(f, "AutoRotateKey")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateOIDCConfigRequest has unknown keys!", "")
 	}
@@ -2338,14 +2345,14 @@ func (r *DeleteUserResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeOIDCConfigRequestParams struct {
-	// 名称
+	// <p>名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
 type DescribeOIDCConfigRequest struct {
 	*tchttp.BaseRequest
 	
-	// 名称
+	// <p>名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
@@ -2370,26 +2377,29 @@ func (r *DescribeOIDCConfigRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeOIDCConfigResponseParams struct {
-	// 身份提供商类型 11角色身份提供商
+	// <p>身份提供商类型 11角色身份提供商</p>
 	ProviderType *uint64 `json:"ProviderType,omitnil,omitempty" name:"ProviderType"`
 
-	// 身份提供商URL
+	// <p>身份提供商URL</p>
 	IdentityUrl *string `json:"IdentityUrl,omitnil,omitempty" name:"IdentityUrl"`
 
-	// 签名公钥
+	// <p>签名公钥</p>
 	IdentityKey *string `json:"IdentityKey,omitnil,omitempty" name:"IdentityKey"`
 
-	// 客户端id
+	// <p>客户端id</p>
 	ClientId []*string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
 
-	// 状态：0:未设置，11:已开启，2:已禁用
+	// <p>状态：0:未设置，11:已开启，2:已禁用</p>
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 描述
+	// <p>描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 名称
+	// <p>名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>OIDC公钥自动轮转开关</p><p>枚举值：</p><ul><li>0： 关闭</li><li>1： 开启</li></ul><p>默认值：0</p>
+	AutoRotateKey *uint64 `json:"AutoRotateKey,omitnil,omitempty" name:"AutoRotateKey"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -6588,39 +6598,45 @@ func (r *UpdateGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateOIDCConfigRequestParams struct {
-	// 身份提供商URL
+	// <p>身份提供商URL</p>
 	IdentityUrl *string `json:"IdentityUrl,omitnil,omitempty" name:"IdentityUrl"`
 
-	// 客户端ID
+	// <p>客户端ID</p>
 	ClientId []*string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
 
-	// 名称
+	// <p>名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 签名公钥，需要base64
+	// <p>签名公钥，需要base64</p>
 	IdentityKey *string `json:"IdentityKey,omitnil,omitempty" name:"IdentityKey"`
 
-	// 描述
+	// <p>描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>OIDC公钥自动轮转开关</p><p>枚举值：</p><ul><li>0： 关闭</li><li>1： 开启</li></ul><p>默认值：0</p>
+	AutoRotateKey *uint64 `json:"AutoRotateKey,omitnil,omitempty" name:"AutoRotateKey"`
 }
 
 type UpdateOIDCConfigRequest struct {
 	*tchttp.BaseRequest
 	
-	// 身份提供商URL
+	// <p>身份提供商URL</p>
 	IdentityUrl *string `json:"IdentityUrl,omitnil,omitempty" name:"IdentityUrl"`
 
-	// 客户端ID
+	// <p>客户端ID</p>
 	ClientId []*string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
 
-	// 名称
+	// <p>名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 签名公钥，需要base64
+	// <p>签名公钥，需要base64</p>
 	IdentityKey *string `json:"IdentityKey,omitnil,omitempty" name:"IdentityKey"`
 
-	// 描述
+	// <p>描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>OIDC公钥自动轮转开关</p><p>枚举值：</p><ul><li>0： 关闭</li><li>1： 开启</li></ul><p>默认值：0</p>
+	AutoRotateKey *uint64 `json:"AutoRotateKey,omitnil,omitempty" name:"AutoRotateKey"`
 }
 
 func (r *UpdateOIDCConfigRequest) ToJsonString() string {
@@ -6640,6 +6656,7 @@ func (r *UpdateOIDCConfigRequest) FromJsonString(s string) error {
 	delete(f, "Name")
 	delete(f, "IdentityKey")
 	delete(f, "Description")
+	delete(f, "AutoRotateKey")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateOIDCConfigRequest has unknown keys!", "")
 	}

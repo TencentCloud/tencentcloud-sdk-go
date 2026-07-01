@@ -3928,32 +3928,32 @@ func (r *CreateBaselineStrategyResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateBuyBindTaskRequestParams struct {
-	// 订单号
+	// <p>订单号</p>
 	DealName *string `json:"DealName,omitnil,omitempty" name:"DealName"`
 
-	// 可选参数: 1专业版-包年包月 , 2 旗舰版-包年包月
+	// <p>授权类型</p><p>枚举值：</p><ul><li>1： 专业版-包年包月</li><li>2： 旗舰版-包年包月</li></ul>
 	LicenseType *uint64 `json:"LicenseType,omitnil,omitempty" name:"LicenseType"`
 
-	// 机器列表
+	// <p>机器列表</p>
 	QuuidList []*string `json:"QuuidList,omitnil,omitempty" name:"QuuidList"`
 
-	// 是否全选机器
+	// <p>是否全选机器</p>
 	IsAll *bool `json:"IsAll,omitnil,omitempty" name:"IsAll"`
 }
 
 type CreateBuyBindTaskRequest struct {
 	*tchttp.BaseRequest
 	
-	// 订单号
+	// <p>订单号</p>
 	DealName *string `json:"DealName,omitnil,omitempty" name:"DealName"`
 
-	// 可选参数: 1专业版-包年包月 , 2 旗舰版-包年包月
+	// <p>授权类型</p><p>枚举值：</p><ul><li>1： 专业版-包年包月</li><li>2： 旗舰版-包年包月</li></ul>
 	LicenseType *uint64 `json:"LicenseType,omitnil,omitempty" name:"LicenseType"`
 
-	// 机器列表
+	// <p>机器列表</p>
 	QuuidList []*string `json:"QuuidList,omitnil,omitempty" name:"QuuidList"`
 
-	// 是否全选机器
+	// <p>是否全选机器</p>
 	IsAll *bool `json:"IsAll,omitnil,omitempty" name:"IsAll"`
 }
 
@@ -22587,14 +22587,14 @@ func (r *DescribeProVersionInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeProVersionStatusRequestParams struct {
-	// 主机安全客户端UUID、填写"all"表示所有主机。
+	// <p>主机安全客户端UUID、填写&quot;all&quot;表示所有主机。</p>
 	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 }
 
 type DescribeProVersionStatusRequest struct {
 	*tchttp.BaseRequest
 	
-	// 主机安全客户端UUID、填写"all"表示所有主机。
+	// <p>主机安全客户端UUID、填写&quot;all&quot;表示所有主机。</p>
 	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 }
 
@@ -22619,6 +22619,9 @@ func (r *DescribeProVersionStatusRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeProVersionStatusResponseParams struct {
+	// <p>开通状态。</p><li>UNOPENED：未开通专业版</li><li>OPENED：已开通专业版</li>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -24782,6 +24785,9 @@ func (r *DescribeRecommendedProtectCpuRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRecommendedProtectCpuResponseParams struct {
+	// <p>推荐购买数</p>
+	Number *int64 `json:"Number,omitnil,omitempty" name:"Number"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -25794,6 +25800,30 @@ func (r *DescribeSafeInfoRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSafeInfoResponseParams struct {
+	// <p>文本内容</p>
+	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
+
+	// <p>标题</p>
+	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
+
+	// <p>超链接地址</p>
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// <p>受影响机器数</p>
+	EffectHostCount *uint64 `json:"EffectHostCount,omitnil,omitempty" name:"EffectHostCount"`
+
+	// <p>受影响事件名称</p>
+	EventName *string `json:"EventName,omitnil,omitempty" name:"EventName"`
+
+	// <p>受影响事件类型 0 无 1 木马 2 漏洞 3基线</p>
+	EventCategory *uint64 `json:"EventCategory,omitnil,omitempty" name:"EventCategory"`
+
+	// <p>是否展示通知</p>
+	IsShow *bool `json:"IsShow,omitnil,omitempty" name:"IsShow"`
+
+	// <p>Id值</p>
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -28163,6 +28193,54 @@ func (r *DescribeTrialReportRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTrialReportResponseParams struct {
+	// <p>是否展示</p>
+	IsShow *bool `json:"IsShow,omitnil,omitempty" name:"IsShow"`
+
+	// <p>新增机器数</p>
+	AddMachineCnt *int64 `json:"AddMachineCnt,omitnil,omitempty" name:"AddMachineCnt"`
+
+	// <p>基线风险数(检测项)</p>
+	BaselineRiskCnt *int64 `json:"BaselineRiskCnt,omitnil,omitempty" name:"BaselineRiskCnt"`
+
+	// <p>漏洞数</p>
+	VulCnt *int64 `json:"VulCnt,omitnil,omitempty" name:"VulCnt"`
+
+	// <p>木马告警成功数</p>
+	MalwareAlarmCnt *int64 `json:"MalwareAlarmCnt,omitnil,omitempty" name:"MalwareAlarmCnt"`
+
+	// <p>爆破告警成功数</p>
+	BruteAlarmCnt *int64 `json:"BruteAlarmCnt,omitnil,omitempty" name:"BruteAlarmCnt"`
+
+	// <p>自动隔离木马数(成功)</p>
+	AutoIsolateMalwareCnt *int64 `json:"AutoIsolateMalwareCnt,omitnil,omitempty" name:"AutoIsolateMalwareCnt"`
+
+	// <p>自动阻断数(成功)</p>
+	AutoBlockBruteCnt *int64 `json:"AutoBlockBruteCnt,omitnil,omitempty" name:"AutoBlockBruteCnt"`
+
+	// <p>自动防御漏洞数(成功)</p>
+	AutoDefenceCnt *int64 `json:"AutoDefenceCnt,omitnil,omitempty" name:"AutoDefenceCnt"`
+
+	// <p>漏洞自动修复数</p>
+	AutoVulFixCnt *int64 `json:"AutoVulFixCnt,omitnil,omitempty" name:"AutoVulFixCnt"`
+
+	// <p>java内存码告警数</p>
+	JavaShellCnt *int64 `json:"JavaShellCnt,omitnil,omitempty" name:"JavaShellCnt"`
+
+	// <p>核心文件监控告警数</p>
+	FileTamperCnt *int64 `json:"FileTamperCnt,omitnil,omitempty" name:"FileTamperCnt"`
+
+	// <p>事件调查数</p>
+	EventCnt *int64 `json:"EventCnt,omitnil,omitempty" name:"EventCnt"`
+
+	// <p>恶意请求事件数</p>
+	DnsCnt *int64 `json:"DnsCnt,omitnil,omitempty" name:"DnsCnt"`
+
+	// <p>高危命令事件数</p>
+	BashCnt *int64 `json:"BashCnt,omitnil,omitempty" name:"BashCnt"`
+
+	// <p>云服务器厂商类型</p>
+	CloudFrom []*CloudFromCnt `json:"CloudFrom,omitnil,omitempty" name:"CloudFrom"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -40535,32 +40613,32 @@ func (r *ModifyJavaMemShellsStatusResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyLicenseBindsRequestParams struct {
-	// 资源ID
+	// <p>资源ID</p>
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
-	// 授权类型
+	// <p>授权类型</p><p>枚举值：</p><ul><li>1： 专业版-包年包月</li><li>2： 旗舰版-包年包月</li></ul>
 	LicenseType *uint64 `json:"LicenseType,omitnil,omitempty" name:"LicenseType"`
 
-	// 是否全部机器(当全部机器数大于当前订单可用授权数时,多余机器会被跳过)
+	// <p>是否全部机器(当全部机器数大于当前订单可用授权数时,多余机器会被跳过)</p>
 	IsAll *bool `json:"IsAll,omitnil,omitempty" name:"IsAll"`
 
-	// 需要绑定的机器quuid列表, 当IsAll = false 时必填,反之忽略该参数. 最大长度=2000
+	// <p>需要绑定的机器quuid列表, 当IsAll = false 时必填,反之忽略该参数. 最大长度=2000</p>
 	QuuidList []*string `json:"QuuidList,omitnil,omitempty" name:"QuuidList"`
 }
 
 type ModifyLicenseBindsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 资源ID
+	// <p>资源ID</p>
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
-	// 授权类型
+	// <p>授权类型</p><p>枚举值：</p><ul><li>1： 专业版-包年包月</li><li>2： 旗舰版-包年包月</li></ul>
 	LicenseType *uint64 `json:"LicenseType,omitnil,omitempty" name:"LicenseType"`
 
-	// 是否全部机器(当全部机器数大于当前订单可用授权数时,多余机器会被跳过)
+	// <p>是否全部机器(当全部机器数大于当前订单可用授权数时,多余机器会被跳过)</p>
 	IsAll *bool `json:"IsAll,omitnil,omitempty" name:"IsAll"`
 
-	// 需要绑定的机器quuid列表, 当IsAll = false 时必填,反之忽略该参数. 最大长度=2000
+	// <p>需要绑定的机器quuid列表, 当IsAll = false 时必填,反之忽略该参数. 最大长度=2000</p>
 	QuuidList []*string `json:"QuuidList,omitnil,omitempty" name:"QuuidList"`
 }
 
@@ -40588,7 +40666,7 @@ func (r *ModifyLicenseBindsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyLicenseBindsResponseParams struct {
-	// 任务ID
+	// <p>任务ID</p>
 	TaskId *uint64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -40694,42 +40772,32 @@ func (r *ModifyLicenseOrderResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyLicenseUnBindsRequestParams struct {
-	// 资源ID
+	// <p>资源ID</p>
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
-	// 授权类型
-	// - 0 按量付费-专业版
-	// - 1 包年包月-专业版
-	// - 2 包年包月-旗舰版
-	// - 3 包年包月-轻量版
+	// <p>授权类型</p><p>枚举值：</p><ul><li>1： 专业版-包年包月</li><li>2： 旗舰版-包年包月</li></ul>
 	LicenseType *uint64 `json:"LicenseType,omitnil,omitempty" name:"LicenseType"`
 
-	// 是否全部机器(当全部机器数大于当前订单可用授权数时,多余机器会被跳过)
+	// <p>是否全部机器(当全部机器数大于当前订单可用授权数时,多余机器会被跳过)</p>
 	IsAll *bool `json:"IsAll,omitnil,omitempty" name:"IsAll"`
 
-	// 需要绑定的机器quuid列表, 当IsAll = false 时必填,反之忽略该参数.
-	// 最大长度=100
+	// <p>需要绑定的机器quuid列表, 当IsAll = false 时必填,反之忽略该参数.<br>最大长度=100</p>
 	QuuidList []*string `json:"QuuidList,omitnil,omitempty" name:"QuuidList"`
 }
 
 type ModifyLicenseUnBindsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 资源ID
+	// <p>资源ID</p>
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
-	// 授权类型
-	// - 0 按量付费-专业版
-	// - 1 包年包月-专业版
-	// - 2 包年包月-旗舰版
-	// - 3 包年包月-轻量版
+	// <p>授权类型</p><p>枚举值：</p><ul><li>1： 专业版-包年包月</li><li>2： 旗舰版-包年包月</li></ul>
 	LicenseType *uint64 `json:"LicenseType,omitnil,omitempty" name:"LicenseType"`
 
-	// 是否全部机器(当全部机器数大于当前订单可用授权数时,多余机器会被跳过)
+	// <p>是否全部机器(当全部机器数大于当前订单可用授权数时,多余机器会被跳过)</p>
 	IsAll *bool `json:"IsAll,omitnil,omitempty" name:"IsAll"`
 
-	// 需要绑定的机器quuid列表, 当IsAll = false 时必填,反之忽略该参数.
-	// 最大长度=100
+	// <p>需要绑定的机器quuid列表, 当IsAll = false 时必填,反之忽略该参数.<br>最大长度=100</p>
 	QuuidList []*string `json:"QuuidList,omitnil,omitempty" name:"QuuidList"`
 }
 
@@ -40757,7 +40825,7 @@ func (r *ModifyLicenseUnBindsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyLicenseUnBindsResponseParams struct {
-	// 只有解绑失败的才有该值.
+	// <p>只有解绑失败的才有该值.</p>
 	ErrMsg []*LicenseUnBindRsp `json:"ErrMsg,omitnil,omitempty" name:"ErrMsg"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

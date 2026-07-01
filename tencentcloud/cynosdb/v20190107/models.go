@@ -21595,32 +21595,38 @@ type ProxyEndPointConfigInfo struct {
 }
 
 type ProxyGroup struct {
-	// 数据库代理组ID
+	// <p>数据库代理组ID</p>
 	ProxyGroupId *string `json:"ProxyGroupId,omitnil,omitempty" name:"ProxyGroupId"`
 
-	// 数据库代理组节点个数
+	// <p>数据库代理组节点个数</p>
 	ProxyNodeCount *int64 `json:"ProxyNodeCount,omitnil,omitempty" name:"ProxyNodeCount"`
 
-	// 数据库代理组状态
+	// <p>数据库代理组状态</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 地域
+	// <p>地域</p>
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 可用区
+	// <p>可用区</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 当前代理版本
+	// <p>当前代理版本</p>
 	CurrentProxyVersion *string `json:"CurrentProxyVersion,omitnil,omitempty" name:"CurrentProxyVersion"`
 
-	// 集群ID
+	// <p>集群ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 用户AppId
+	// <p>用户AppId</p>
 	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 
-	// 读写节点开通数据库代理
+	// <p>读写节点开通数据库代理</p>
 	OpenRw *string `json:"OpenRw,omitnil,omitempty" name:"OpenRw"`
+
+	// <p>创建时间</p>
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>更新时间</p>
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
 type ProxyGroupInfo struct {
@@ -21695,38 +21701,44 @@ type ProxyInstanceWeight struct {
 }
 
 type ProxyNodeInfo struct {
-	// 数据库代理节点ID
+	// <p>数据库代理节点ID</p>
 	ProxyNodeId *string `json:"ProxyNodeId,omitnil,omitempty" name:"ProxyNodeId"`
 
-	// 节点当前连接数, DescribeProxyNodes接口此字段值不返回
+	// <p>节点当前连接数, DescribeProxyNodes接口此字段值不返回</p>
 	ProxyNodeConnections *int64 `json:"ProxyNodeConnections,omitnil,omitempty" name:"ProxyNodeConnections"`
 
-	// 数据库代理节点cpu
+	// <p>数据库代理节点cpu</p>
 	Cpu *int64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 
-	// 数据库代理节点内存
+	// <p>数据库代理节点内存</p>
 	Mem *int64 `json:"Mem,omitnil,omitempty" name:"Mem"`
 
-	// 数据库代理节点状态
+	// <p>数据库代理节点状态</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 数据库代理组ID
+	// <p>数据库代理组ID</p>
 	ProxyGroupId *string `json:"ProxyGroupId,omitnil,omitempty" name:"ProxyGroupId"`
 
-	// 集群ID
+	// <p>集群ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 用户AppID
+	// <p>用户AppID</p>
 	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 
-	// 地域
+	// <p>地域</p>
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 可用区
+	// <p>可用区</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 数据库代理节点名字
+	// <p>数据库代理节点名字</p>
 	OssProxyNodeName *string `json:"OssProxyNodeName,omitnil,omitempty" name:"OssProxyNodeName"`
+
+	// <p>创建时间</p>
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>更新时间</p>
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
 type ProxySpec struct {

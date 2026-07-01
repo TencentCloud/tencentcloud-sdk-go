@@ -24407,6 +24407,9 @@ type RiskDetailItem struct {
 
 	// <p>资产类型</p>
 	AssetType *string `json:"AssetType,omitnil,omitempty" name:"AssetType"`
+
+	// <p>风险忽略原因</p>
+	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
 }
 
 type RiskRuleInfo struct {

@@ -5108,20 +5108,23 @@ type SearchResourceStatusInfo struct {
 }
 
 type SingleWorkflowConfig struct {
-	// 是否开启异步工作流
+	// <p>是否开启异步工作流</p>
 	AsyncWorkflow *bool `json:"AsyncWorkflow,omitnil,omitempty" name:"AsyncWorkflow"`
 
-	// 状态 发布状态(UNPUBLISHED: 待发布 PUBLISHING: 发布中 PUBLISHED: 已发布 PUBLISHED_FAIL:发布失败；DRAFT：待调试)
+	// <p>状态 发布状态(UNPUBLISHED: 待发布 PUBLISHING: 发布中 PUBLISHED: 已发布 PUBLISHED_FAIL:发布失败；DRAFT：待调试)</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 工作流描述
+	// <p>工作流描述</p>
 	WorkflowDescription *string `json:"WorkflowDescription,omitnil,omitempty" name:"WorkflowDescription"`
 
-	// 工作流Id
+	// <p>工作流Id</p>
 	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
 
-	// 工作流名称
+	// <p>工作流名称</p>
 	WorkflowName *string `json:"WorkflowName,omitnil,omitempty" name:"WorkflowName"`
+
+	// <p>工作流是否启用</p>
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
 }
 
 type SkillAnalysisInfo struct {

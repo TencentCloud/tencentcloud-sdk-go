@@ -1044,6 +1044,7 @@ func NewCreateHostingDomainResponse() (response *CreateHostingDomainResponse) {
 //  OPERATIONDENIED_RESOURCEFROZEN = "OperationDenied.ResourceFrozen"
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) CreateHostingDomain(request *CreateHostingDomainRequest) (response *CreateHostingDomainResponse, err error) {
     return c.CreateHostingDomainWithContext(context.Background(), request)
 }
@@ -1060,6 +1061,7 @@ func (c *Client) CreateHostingDomain(request *CreateHostingDomainRequest) (respo
 //  OPERATIONDENIED_RESOURCEFROZEN = "OperationDenied.ResourceFrozen"
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) CreateHostingDomainWithContext(ctx context.Context, request *CreateHostingDomainRequest) (response *CreateHostingDomainResponse, err error) {
     if request == nil {
         request = NewCreateHostingDomainRequest()

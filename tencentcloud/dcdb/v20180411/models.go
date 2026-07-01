@@ -89,14 +89,17 @@ func (r *ActiveHourDCDBInstanceResponse) FromJsonString(s string) error {
 }
 
 type AddShardConfig struct {
-	// 新增分片的数量
+	// <p>新增分片的数量</p>
 	ShardCount *int64 `json:"ShardCount,omitnil,omitempty" name:"ShardCount"`
 
-	// 分片内存大小，单位 GB
+	// <p>分片内存大小，单位 GB</p>
 	ShardMemory *int64 `json:"ShardMemory,omitnil,omitempty" name:"ShardMemory"`
 
-	// 分片存储大小，单位 GB
+	// <p>分片存储大小，单位 GB</p>
 	ShardStorage *int64 `json:"ShardStorage,omitnil,omitempty" name:"ShardStorage"`
+
+	// <p>DCN实例的规格</p>
+	DcnInsShardConfigs []*DcnInsShardConfig `json:"DcnInsShardConfigs,omitnil,omitempty" name:"DcnInsShardConfigs"`
 }
 
 // Predefined struct for user
@@ -2071,6 +2074,17 @@ type DcnDetailItem struct {
 
 	// 是否支持DCN切换
 	IsDcnSwitchSupported *int64 `json:"IsDcnSwitchSupported,omitnil,omitempty" name:"IsDcnSwitchSupported"`
+}
+
+type DcnInsShardConfig struct {
+	// <p>实例ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>内存大小</p>
+	Memory *int64 `json:"Memory,omitnil,omitempty" name:"Memory"`
+
+	// <p>磁盘大小</p>
+	Storage *int64 `json:"Storage,omitnil,omitempty" name:"Storage"`
 }
 
 type Deal struct {

@@ -7047,20 +7047,20 @@ type QrcodeImgSize struct {
 
 // Predefined struct for user
 type QrcodeOCRRequestParams struct {
-	// 图片的 Base64 值。要求图片经Base64编码后不超过 10M，支持PNG、JPG、JPEG格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	// <p>图片的 Base64 值。要求图片经Base64编码后不超过 10M，支持PNG、JPG、JPEG、PDF格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。</p>
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
 
-	// 图片的 Url 地址。要求图片经Base64编码后不超过 10M，支持PNG、JPG、JPEG格式。建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
+	// <p>图片的 Url 地址。要求图片经Base64编码后不超过 10M，支持PNG、JPG、JPEG、PDF格式。建议图片存储于腾讯云，可保障更高的下载速度和稳定性。</p>
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 }
 
 type QrcodeOCRRequest struct {
 	*tchttp.BaseRequest
 	
-	// 图片的 Base64 值。要求图片经Base64编码后不超过 10M，支持PNG、JPG、JPEG格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	// <p>图片的 Base64 值。要求图片经Base64编码后不超过 10M，支持PNG、JPG、JPEG、PDF格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。</p>
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
 
-	// 图片的 Url 地址。要求图片经Base64编码后不超过 10M，支持PNG、JPG、JPEG格式。建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
+	// <p>图片的 Url 地址。要求图片经Base64编码后不超过 10M，支持PNG、JPG、JPEG、PDF格式。建议图片存储于腾讯云，可保障更高的下载速度和稳定性。</p>
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 }
 
@@ -7086,10 +7086,10 @@ func (r *QrcodeOCRRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type QrcodeOCRResponseParams struct {
-	// 二维码/条形码识别结果信息，具体内容请点击左侧链接。
+	// <p>二维码/条形码识别结果信息，具体内容请点击左侧链接。</p>
 	CodeResults []*QrcodeResultsInfo `json:"CodeResults,omitnil,omitempty" name:"CodeResults"`
 
-	// 图片大小，具体内容请点击左侧链接。
+	// <p>图片大小，具体内容请点击左侧链接。</p>
 	ImgSize *QrcodeImgSize `json:"ImgSize,omitnil,omitempty" name:"ImgSize"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
