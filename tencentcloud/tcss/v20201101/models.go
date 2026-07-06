@@ -2493,115 +2493,106 @@ type ClusterCustomParameters struct {
 }
 
 type ClusterInfoItem struct {
-	// 集群id
+	// <p>集群id</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 集群名字
+	// <p>集群ca证书md5值</p>
+	ClusterCAMD5 *string `json:"ClusterCAMD5,omitnil,omitempty" name:"ClusterCAMD5"`
+
+	// <p>集群名字</p>
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
-	// 集群版本
+	// <p>集群版本</p>
 	ClusterVersion *string `json:"ClusterVersion,omitnil,omitempty" name:"ClusterVersion"`
 
-	// 集群操作系统
+	// <p>集群操作系统</p>
 	ClusterOs *string `json:"ClusterOs,omitnil,omitempty" name:"ClusterOs"`
 
-	// 集群类型
+	// <p>集群类型</p>
 	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 
-	// 集群节点数
+	// <p>集群节点数</p>
 	ClusterNodeNum *uint64 `json:"ClusterNodeNum,omitnil,omitempty" name:"ClusterNodeNum"`
 
-	// 集群区域
+	// <p>集群区域</p>
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 防护状态: 
-	// 已防护: Defended 
-	// 未防护: UnDefended
-	// 部分防护: PartDefened
+	// <p>防护状态:<br>已防护: Defended<br>未防护: UnDefended<br>部分防护: PartDefened</p>
 	DefenderStatus *string `json:"DefenderStatus,omitnil,omitempty" name:"DefenderStatus"`
 
-	// 集群状态
+	// <p>集群状态</p>
 	ClusterStatus *string `json:"ClusterStatus,omitnil,omitempty" name:"ClusterStatus"`
 
-	// 集群运行子状态
+	// <p>集群运行子状态</p>
 	ClusterSubStatus *string `json:"ClusterSubStatus,omitnil,omitempty" name:"ClusterSubStatus"`
 
-	// 集群的检测模式，为Cluster_Normal或者Cluster_Actived.
+	// <p>集群的检测模式，为Cluster_Normal或者Cluster_Actived.</p>
 	ClusterCheckMode *string `json:"ClusterCheckMode,omitnil,omitempty" name:"ClusterCheckMode"`
 
-	// 是否自动定期检测
+	// <p>是否自动定期检测</p>
 	ClusterAutoCheck *bool `json:"ClusterAutoCheck,omitnil,omitempty" name:"ClusterAutoCheck"`
 
-	// 防护容器部署失败原因，为UserDaemonSetNotReady时,和UnreadyNodeNum转成"N个节点防御容器为就绪"，其他错误直接展示
+	// <p>防护容器部署失败原因，为UserDaemonSetNotReady时,和UnreadyNodeNum转成&quot;N个节点防御容器为就绪&quot;，其他错误直接展示</p>
 	DefenderErrorReason *string `json:"DefenderErrorReason,omitnil,omitempty" name:"DefenderErrorReason"`
 
-	// 防御容器没有ready状态的节点数量
+	// <p>防御容器没有ready状态的节点数量</p>
 	UnreadyNodeNum *uint64 `json:"UnreadyNodeNum,omitnil,omitempty" name:"UnreadyNodeNum"`
 
-	// 严重风险检查项的数量
+	// <p>严重风险检查项的数量</p>
 	SeriousRiskCount *int64 `json:"SeriousRiskCount,omitnil,omitempty" name:"SeriousRiskCount"`
 
-	// 高风险检查项的数量
+	// <p>高风险检查项的数量</p>
 	HighRiskCount *int64 `json:"HighRiskCount,omitnil,omitempty" name:"HighRiskCount"`
 
-	// 中风险检查项的数量
+	// <p>中风险检查项的数量</p>
 	MiddleRiskCount *int64 `json:"MiddleRiskCount,omitnil,omitempty" name:"MiddleRiskCount"`
 
-	// 提示风险检查项的数量
+	// <p>提示风险检查项的数量</p>
 	HintRiskCount *int64 `json:"HintRiskCount,omitnil,omitempty" name:"HintRiskCount"`
 
-	// 检查失败原因
+	// <p>检查失败原因</p>
 	CheckFailReason *string `json:"CheckFailReason,omitnil,omitempty" name:"CheckFailReason"`
 
-	// 检查状态,为Task_Running, NoRisk, HasRisk, Uncheck, Task_Error
+	// <p>检查状态,为Task_Running, NoRisk, HasRisk, Uncheck, Task_Error</p>
 	CheckStatus *string `json:"CheckStatus,omitnil,omitempty" name:"CheckStatus"`
 
-	// 任务创建时间,检查时间
+	// <p>任务创建时间,检查时间</p>
 	TaskCreateTime *string `json:"TaskCreateTime,omitnil,omitempty" name:"TaskCreateTime"`
 
-	// 接入状态:
-	// 未接入: AccessedNone
-	// 已防护: AccessedDefended
-	// 未防护: AccessedInstalled
-	// 部分防护: AccessedPartialDefence
-	// 接入异常: AccessedException
-	// 卸载异常: AccessedUninstallException
-	// 接入中: AccessedInstalling
-	// 卸载中: AccessedUninstalling
+	// <p>接入状态:<br>未接入: AccessedNone<br>已防护: AccessedDefended<br>未防护: AccessedInstalled<br>部分防护: AccessedPartialDefence<br>接入异常: AccessedException<br>卸载异常: AccessedUninstallException<br>接入中: AccessedInstalling<br>卸载中: AccessedUninstalling</p>
 	AccessedStatus *string `json:"AccessedStatus,omitnil,omitempty" name:"AccessedStatus"`
 
-	// 接入失败原因
+	// <p>接入失败原因</p>
 	AccessedSubStatus *string `json:"AccessedSubStatus,omitnil,omitempty" name:"AccessedSubStatus"`
 
-	// 接入/卸载失败原因
+	// <p>接入/卸载失败原因</p>
 	AccessedErrorReason *string `json:"AccessedErrorReason,omitnil,omitempty" name:"AccessedErrorReason"`
 
-	// 节点总数
+	// <p>节点总数</p>
 	NodeCount *uint64 `json:"NodeCount,omitnil,omitempty" name:"NodeCount"`
 
-	// 离线节点数
+	// <p>离线节点数</p>
 	OffLineNodeCount *uint64 `json:"OffLineNodeCount,omitnil,omitempty" name:"OffLineNodeCount"`
 
-	// 未安装agent节点数
+	// <p>未安装agent节点数</p>
 	UnInstallAgentNodeCount *uint64 `json:"UnInstallAgentNodeCount,omitnil,omitempty" name:"UnInstallAgentNodeCount"`
 
-	// 计费核数(弹性计费核数+普通计费核数)
+	// <p>计费核数(弹性计费核数+普通计费核数)</p>
 	ChargeCoresCnt *uint64 `json:"ChargeCoresCnt,omitnil,omitempty" name:"ChargeCoresCnt"`
 
-	// master 地址列表
+	// <p>master 地址列表</p>
 	MasterAddresses []*string `json:"MasterAddresses,omitnil,omitempty" name:"MasterAddresses"`
 
-	// 核数
+	// <p>核数</p>
 	CoresCnt *uint64 `json:"CoresCnt,omitnil,omitempty" name:"CoresCnt"`
 
-	// 集群审计开关状态：
-	// 已关闭Closed/关闭中Closing/关闭失败CloseFailed/已开启Opened/开启中Opening/开启失败OpenFailed
+	// <p>集群审计开关状态：<br>已关闭Closed/关闭中Closing/关闭失败CloseFailed/已开启Opened/开启中Opening/开启失败OpenFailed</p>
 	ClusterAuditStatus *string `json:"ClusterAuditStatus,omitnil,omitempty" name:"ClusterAuditStatus"`
 
-	// 集群审计开关失败信息
+	// <p>集群审计开关失败信息</p>
 	ClusterAuditFailedInfo *string `json:"ClusterAuditFailedInfo,omitnil,omitempty" name:"ClusterAuditFailedInfo"`
 
-	// 所有者名称
+	// <p>所有者名称</p>
 	OwnerName *string `json:"OwnerName,omitnil,omitempty" name:"OwnerName"`
 }
 
@@ -19922,69 +19913,71 @@ func (r *DescribePurchaseStateInfoRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribePurchaseStateInfoResponseParams struct {
-	// 0：可申请试用可购买；1：只可购买(含试用审核不通过和试用过期)；2：试用生效中；3：专业版生效中；4：专业版过期
+	// <p>0：可申请试用可购买；1：只可购买(含试用审核不通过和试用过期)；2：试用生效中；3：专业版生效中；4：专业版过期</p>
 	State *int64 `json:"State,omitnil,omitempty" name:"State"`
 
-	// 总资源核数 = 总防护核数 + 未防护核数
+	// <p>总资源核数 = 总防护核数 + 未防护核数</p>
 	AllCoresCnt *uint64 `json:"AllCoresCnt,omitnil,omitempty" name:"AllCoresCnt"`
 
-	// 总防护核数 =已购核数+ 试用赠送核数 +弹性计费核数
+	// <p>总防护核数 =已购核数+ 试用赠送核数 +弹性计费核数</p>
 	CoresCnt *uint64 `json:"CoresCnt,omitnil,omitempty" name:"CoresCnt"`
 
-	// 未防护核数(未开启防护资源核数)
+	// <p>未防护核数(未开启防护资源核数)</p>
 	UndefendCoresCnt *uint64 `json:"UndefendCoresCnt,omitnil,omitempty" name:"UndefendCoresCnt"`
 
-	// 已购买核数
+	// <p>已购买核数</p>
 	AuthorizedCoresCnt *uint64 `json:"AuthorizedCoresCnt,omitnil,omitempty" name:"AuthorizedCoresCnt"`
 
-	// 试用赠送专业版核心数
+	// <p>试用赠送专业版核心数</p>
 	GivenAuthorizedCoresCnt *int64 `json:"GivenAuthorizedCoresCnt,omitnil,omitempty" name:"GivenAuthorizedCoresCnt"`
 
-	// 当前弹性计费核数数量
+	// <p>当前弹性计费核数数量</p>
 	CurrentFlexibleCoresCnt *uint64 `json:"CurrentFlexibleCoresCnt,omitnil,omitempty" name:"CurrentFlexibleCoresCnt"`
 
-	// 镜像数
+	// <p>镜像数</p>
 	ImageCnt *uint64 `json:"ImageCnt,omitnil,omitempty" name:"ImageCnt"`
 
-	// 已授权镜像数
+	// <p>已授权镜像数</p>
 	AuthorizedImageCnt *uint64 `json:"AuthorizedImageCnt,omitnil,omitempty" name:"AuthorizedImageCnt"`
 
-	// 过期时间
+	// <p>过期时间</p>
 	ExpirationTime *string `json:"ExpirationTime,omitnil,omitempty" name:"ExpirationTime"`
 
-	// 已购买镜像授权数
+	// <p>已购买镜像授权数</p>
 	PurchasedAuthorizedCnt *uint64 `json:"PurchasedAuthorizedCnt,omitnil,omitempty" name:"PurchasedAuthorizedCnt"`
 
-	// 0表示默认状态(用户未设置，即初始状态)， 1表示自动续费，2表示明确不自动续费(用户设置)
+	// <p>0表示默认状态(用户未设置，即初始状态)， 1表示自动续费，2表示明确不自动续费(用户设置)</p>
 	AutomaticRenewal *int64 `json:"AutomaticRenewal,omitnil,omitempty" name:"AutomaticRenewal"`
 
-	// 试用期间赠送镜像授权数，可能会过期
+	// <p>试用期间赠送镜像授权数，可能会过期</p>
 	GivenAuthorizedCnt *uint64 `json:"GivenAuthorizedCnt,omitnil,omitempty" name:"GivenAuthorizedCnt"`
 
-	// 起始时间
+	// <p>起始时间</p>
 	BeginTime *string `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
 
-	// 子状态(具体意义依据State字段而定)
-	// State为4时，有效值为: ISOLATE(隔离) DESTROED(已销毁)
+	// <p>子状态(具体意义依据State字段而定)<br>State为4时，有效值为: ISOLATE(隔离) DESTROED(已销毁)</p>
 	SubState *string `json:"SubState,omitnil,omitempty" name:"SubState"`
 
-	// 计费key
+	// <p>计费key</p>
 	InquireKey *string `json:"InquireKey,omitnil,omitempty" name:"InquireKey"`
 
-	// 防护策略
+	// <p>防护策略</p>
 	DefendPolicy *string `json:"DefendPolicy,omitnil,omitempty" name:"DefendPolicy"`
 
-	// 弹性计费核数上限
+	// <p>弹性计费核数上限</p>
 	FlexibleCoresLimit *uint64 `json:"FlexibleCoresLimit,omitnil,omitempty" name:"FlexibleCoresLimit"`
 
-	// 已防护集群核数
+	// <p>已防护集群核数</p>
 	DefendClusterCoresCnt *uint64 `json:"DefendClusterCoresCnt,omitnil,omitempty" name:"DefendClusterCoresCnt"`
 
-	// 已防护主机核数
+	// <p>已防护主机核数</p>
 	DefendHostCoresCnt *uint64 `json:"DefendHostCoresCnt,omitnil,omitempty" name:"DefendHostCoresCnt"`
 
-	// 试用的专业版核数
+	// <p>试用的专业版核数</p>
 	TrialCoresCnt *uint64 `json:"TrialCoresCnt,omitnil,omitempty" name:"TrialCoresCnt"`
+
+	// <p>无容器核数</p>
+	NoContainerCoresCnt *uint64 `json:"NoContainerCoresCnt,omitnil,omitempty" name:"NoContainerCoresCnt"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

@@ -23,20 +23,8 @@ const (
 	// 音频解码失败。
 	FAILEDOPERATION_AUDIODECODEFAILED = "FailedOperation.AudioDecodeFailed"
 
-	// 人体关键点检测失败。
-	FAILEDOPERATION_BODYJOINTSFAIL = "FailedOperation.BodyJointsFail"
-
-	// 下载视频出错。
-	FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownloadError"
-
 	// 驱动失败
 	FAILEDOPERATION_DRIVERFAILED = "FailedOperation.DriverFailed"
-
-	// 人脸框太小，无法识别使用。
-	FAILEDOPERATION_FACESIZETOOSMALL = "FailedOperation.FaceSizeTooSmall"
-
-	// 图片身体部位有遮挡或不全，请重新上传图片
-	FAILEDOPERATION_IMAGEBODYJOINSUNDETECTED = "FailedOperation.ImageBodyJoinsUndetected"
 
 	// 输入图身体（头顶到脚踝）高度占比不到图片高度的二分之一
 	FAILEDOPERATION_IMAGEBODYSMALL = "FailedOperation.ImageBodySmall"
@@ -65,12 +53,6 @@ const (
 	// 输入图高宽比未在1.2～2.0范围内
 	FAILEDOPERATION_IMAGERADIOEXCCEED = "FailedOperation.ImageRadioExcceed"
 
-	// 图片高宽比超过限制。
-	FAILEDOPERATION_IMAGERATIOEXCCEED = "FailedOperation.ImageRatioExcceed"
-
-	// 图片分辨率过大。
-	FAILEDOPERATION_IMAGERESOLUTIONEXCEED = "FailedOperation.ImageResolutionExceed"
-
 	// base64编码后的图片数据过大。
 	FAILEDOPERATION_IMAGESIZEEXCEED = "FailedOperation.ImageSizeExceed"
 
@@ -82,9 +64,6 @@ const (
 
 	// 任务不存在。
 	FAILEDOPERATION_JOBNOTFOUND = "FailedOperation.JobNotFound"
-
-	// 任务队列已满，请稍后重试。
-	FAILEDOPERATION_JOBQUEUEFULL = "FailedOperation.JobQueueFull"
 
 	// 核心关节点未检测到
 	FAILEDOPERATION_KEYPOINTUNDETECTED = "FailedOperation.KeyPointUndetected"
@@ -107,20 +86,11 @@ const (
 	// 请求声伴分离失败，请重试。
 	FAILEDOPERATION_SUBMITASSPFAILED = "FailedOperation.SubmitAsspFailed"
 
-	// 任务不存在。
-	FAILEDOPERATION_TASKNOTEXIST = "FailedOperation.TaskNotExist"
-
-	// 任务状态异常。
-	FAILEDOPERATION_TASKSTATUSERROR = "FailedOperation.TaskStatusError"
-
 	// 模板视频首帧未检测到人脸
 	FAILEDOPERATION_TEMPLATEFIRSTFRAMENOTDETECTFACE = "FailedOperation.TemplateFirstFrameNotDetectFace"
 
 	// 模板视频存在未检测到人体的帧
 	FAILEDOPERATION_TEMPLATENOTDETECTBODY = "FailedOperation.TemplateNotDetectBody"
-
-	// 视频解码失败。
-	FAILEDOPERATION_VIDEODECODEFAILED = "FailedOperation.VideoDecodeFailed"
 
 	// 内部错误。
 	INTERNALERROR = "InternalError"
@@ -130,9 +100,6 @@ const (
 
 	// 参数不合法。
 	INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
-
-	// 模板不存在
-	INVALIDPARAMETER_TEMPLATENOTEXISTED = "InvalidParameter.TemplateNotExisted"
 
 	// 参数VideoUrl格式不合法。
 	INVALIDPARAMETER_VIDEOURLINVALID = "InvalidParameter.VideoUrlInvalid"
@@ -161,32 +128,8 @@ const (
 	// 不支持的模型。
 	INVALIDPARAMETERVALUE_INVALIDMODEL = "InvalidParameterValue.InvalidModel"
 
-	// 不支持的视频宽高比。
-	INVALIDPARAMETERVALUE_INVALIDVIDEOASPECTRATIO = "InvalidParameterValue.InvalidVideoAspectRatio"
-
-	// 视频时长超过限制。
-	INVALIDPARAMETERVALUE_INVALIDVIDEODURATION = "InvalidParameterValue.InvalidVideoDuration"
-
-	// 不支持的视频FPS。
-	INVALIDPARAMETERVALUE_INVALIDVIDEOFPS = "InvalidParameterValue.InvalidVideoFPS"
-
-	// 不支持的视频格式。
-	INVALIDPARAMETERVALUE_INVALIDVIDEOFORMAT = "InvalidParameterValue.InvalidVideoFormat"
-
-	// 不支持的分辨率。
-	INVALIDPARAMETERVALUE_INVALIDVIDEORESOLUTION = "InvalidParameterValue.InvalidVideoResolution"
-
 	// 图片中没有人脸。
 	INVALIDPARAMETERVALUE_NOFACEINPHOTO = "InvalidParameterValue.NoFaceInPhoto"
-
-	// 参数字段或者值有误。
-	INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
-
-	// 风格不存在。
-	INVALIDPARAMETERVALUE_STYLENOTEXIST = "InvalidParameterValue.StyleNotExist"
-
-	// 风格化强度参数不存在。
-	INVALIDPARAMETERVALUE_STYLESTRENGTHNOTEXIST = "InvalidParameterValue.StyleStrengthNotExist"
 
 	// 人脸角度过大。
 	INVALIDPARAMETERVALUE_TOOLARGEFACEANGLE = "InvalidParameterValue.TooLargeFaceAngle"
@@ -206,17 +149,8 @@ const (
 	// URL格式不合法。
 	INVALIDPARAMETERVALUE_URLILLEGAL = "InvalidParameterValue.UrlIllegal"
 
-	// 视频大小超过限制。
-	INVALIDPARAMETERVALUE_VIDEOSIZEEXCEED = "InvalidParameterValue.VideoSizeExceed"
-
-	// 超过配额限制。
-	LIMITEXCEEDED = "LimitExceeded"
-
 	// 缺少参数错误。
 	MISSINGPARAMETER = "MissingParameter"
-
-	// 操作被拒绝。
-	OPERATIONDENIED = "OperationDenied"
 
 	// 请求的次数超过了频率限制。
 	REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
@@ -226,9 +160,6 @@ const (
 
 	// 资源不足。
 	RESOURCEINSUFFICIENT = "ResourceInsufficient"
-
-	// 资源不存在。
-	RESOURCENOTFOUND = "ResourceNotFound"
 
 	// 服务正在开通中，请稍等。
 	RESOURCEUNAVAILABLE_ISOPENING = "ResourceUnavailable.IsOpening"
@@ -241,7 +172,4 @@ const (
 
 	// 未授权操作。
 	UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-
-	// 操作不支持。
-	UNSUPPORTEDOPERATION = "UnsupportedOperation"
 )

@@ -739,38 +739,50 @@ type CpuTopology struct {
 
 // Predefined struct for user
 type CreateDisasterRecoverGroupRequestParams struct {
-	// 分散置放群组名称，长度1-60个字符，支持中、英文。
+	// <p>分散置放群组名称，长度1-60个字符，支持中、英文。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 分散置放群组类型，取值范围：<br><li>HOST：物理机</li><li>SW：交换机</li><li>RACK：机架</li>
+	// <p>分散置放群组类型，取值范围：<br><li>HOST：物理机</li><li>SW：交换机</li><li>RACK：机架</li></p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。<br>更多详细信息请参阅：如何保证幂等性。
+	// <p>用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。<br>更多详细信息请参阅：如何保证幂等性。</p>
 	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
 
-	// 置放群组的亲和度，在置放群组的实例会按该亲和度分布，亲和度的取值范围是：1-10，默认为1
+	// <p>置放群组的亲和度，在置放群组的实例会按该亲和度分布，亲和度的取值范围是：1-10，默认为1</p>
 	Affinity *int64 `json:"Affinity,omitnil,omitempty" name:"Affinity"`
 
-	// 标签描述列表。通过指定该参数可以绑定标签到置放群组。
+	// <p>置放群组类型，当前支持两种，分散置放群组和分区置放群组(灰度中)，取值范围：PARTITION：分区置放群组，SPREAD：分散置放群组，不传该值默认是分散置放群组。</p>
+	Strategy *string `json:"Strategy,omitnil,omitempty" name:"Strategy"`
+
+	// <p>分区置放群组的分区数量，取值范围：2-30，当置放群组类型是分区置放群组时传入(分区置放群组功能灰度中)。</p>
+	PartitionCount *int64 `json:"PartitionCount,omitnil,omitempty" name:"PartitionCount"`
+
+	// <p>标签描述列表。通过指定该参数可以绑定标签到置放群组。</p>
 	TagSpecification []*TagSpecification `json:"TagSpecification,omitnil,omitempty" name:"TagSpecification"`
 }
 
 type CreateDisasterRecoverGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 分散置放群组名称，长度1-60个字符，支持中、英文。
+	// <p>分散置放群组名称，长度1-60个字符，支持中、英文。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 分散置放群组类型，取值范围：<br><li>HOST：物理机</li><li>SW：交换机</li><li>RACK：机架</li>
+	// <p>分散置放群组类型，取值范围：<br><li>HOST：物理机</li><li>SW：交换机</li><li>RACK：机架</li></p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。<br>更多详细信息请参阅：如何保证幂等性。
+	// <p>用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。<br>更多详细信息请参阅：如何保证幂等性。</p>
 	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
 
-	// 置放群组的亲和度，在置放群组的实例会按该亲和度分布，亲和度的取值范围是：1-10，默认为1
+	// <p>置放群组的亲和度，在置放群组的实例会按该亲和度分布，亲和度的取值范围是：1-10，默认为1</p>
 	Affinity *int64 `json:"Affinity,omitnil,omitempty" name:"Affinity"`
 
-	// 标签描述列表。通过指定该参数可以绑定标签到置放群组。
+	// <p>置放群组类型，当前支持两种，分散置放群组和分区置放群组(灰度中)，取值范围：PARTITION：分区置放群组，SPREAD：分散置放群组，不传该值默认是分散置放群组。</p>
+	Strategy *string `json:"Strategy,omitnil,omitempty" name:"Strategy"`
+
+	// <p>分区置放群组的分区数量，取值范围：2-30，当置放群组类型是分区置放群组时传入(分区置放群组功能灰度中)。</p>
+	PartitionCount *int64 `json:"PartitionCount,omitnil,omitempty" name:"PartitionCount"`
+
+	// <p>标签描述列表。通过指定该参数可以绑定标签到置放群组。</p>
 	TagSpecification []*TagSpecification `json:"TagSpecification,omitnil,omitempty" name:"TagSpecification"`
 }
 
@@ -790,6 +802,8 @@ func (r *CreateDisasterRecoverGroupRequest) FromJsonString(s string) error {
 	delete(f, "Type")
 	delete(f, "ClientToken")
 	delete(f, "Affinity")
+	delete(f, "Strategy")
+	delete(f, "PartitionCount")
 	delete(f, "TagSpecification")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDisasterRecoverGroupRequest has unknown keys!", "")
@@ -799,23 +813,29 @@ func (r *CreateDisasterRecoverGroupRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateDisasterRecoverGroupResponseParams struct {
-	// 分散置放群组ID列表。
+	// <p>分散置放群组ID列表。</p>
 	DisasterRecoverGroupId *string `json:"DisasterRecoverGroupId,omitnil,omitempty" name:"DisasterRecoverGroupId"`
 
-	// 分散置放群组类型，取值范围：<br><li>HOST：物理机</li><li>SW：交换机</li><li>RACK：机架</li>
+	// <p>分散置放群组类型，取值范围：<br><li>HOST：物理机</li><li>SW：交换机</li><li>RACK：机架</li></p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 分散置放群组名称，长度1-60个字符，支持中、英文。
+	// <p>分散置放群组名称，长度1-60个字符，支持中、英文。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 置放群组内可容纳的云服务器数量。
+	// <p>置放群组内可容纳的云服务器数量。</p>
 	CvmQuotaTotal *int64 `json:"CvmQuotaTotal,omitnil,omitempty" name:"CvmQuotaTotal"`
 
-	// 置放群组内已有的云服务器数量。
+	// <p>置放群组内已有的云服务器数量。</p>
 	CurrentNum *int64 `json:"CurrentNum,omitnil,omitempty" name:"CurrentNum"`
 
-	// 分散置放群组创建时间。按照ISO8601标准表示，并且使用UTC时间。格式为：YYYY-MM-DDThh:mm:ssZ。
+	// <p>分散置放群组创建时间。按照ISO8601标准表示，并且使用UTC时间。格式为：YYYY-MM-DDThh:mm:ssZ。</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>置放群组类型，当前支持两种，分散置放群组和分区置放群组(功能灰度中)，取值范围：PARTITION：分区置放群组，SPREAD：分散置放群组，默认是分散置放群组。</p>
+	Strategy *string `json:"Strategy,omitnil,omitempty" name:"Strategy"`
+
+	// <p>分区置放群组的分区数量，取值范围：2-30，当置放群组类型是分区置放群组时，才有该值(分区置放群组功能灰度中)。</p>
+	PartitionCount *int64 `json:"PartitionCount,omitnil,omitempty" name:"PartitionCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

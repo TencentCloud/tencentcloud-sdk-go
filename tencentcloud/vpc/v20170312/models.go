@@ -4157,6 +4157,9 @@ type CreateBandwidthPackageRequestParams struct {
 
 	// 网络出口，默认值：center_egress1，其它可选值：center_egress2、center_egress3。
 	Egress *string `json:"Egress,omitnil,omitempty" name:"Egress"`
+
+	// 仅用于申请特殊可用区带宽包，如：TEZ/EZ边缘可用区，CDZ专属可用区。具体可选可用区信息，请参考[DescribeDesignatedZones](https://cloud.tencent.com/document/product/215/128830)接口查询结果。
+	DesignatedZone *string `json:"DesignatedZone,omitnil,omitempty" name:"DesignatedZone"`
 }
 
 type CreateBandwidthPackageRequest struct {
@@ -4200,6 +4203,9 @@ type CreateBandwidthPackageRequest struct {
 
 	// 网络出口，默认值：center_egress1，其它可选值：center_egress2、center_egress3。
 	Egress *string `json:"Egress,omitnil,omitempty" name:"Egress"`
+
+	// 仅用于申请特殊可用区带宽包，如：TEZ/EZ边缘可用区，CDZ专属可用区。具体可选可用区信息，请参考[DescribeDesignatedZones](https://cloud.tencent.com/document/product/215/128830)接口查询结果。
+	DesignatedZone *string `json:"DesignatedZone,omitnil,omitempty" name:"DesignatedZone"`
 }
 
 func (r *CreateBandwidthPackageRequest) ToJsonString() string {
@@ -4223,6 +4229,7 @@ func (r *CreateBandwidthPackageRequest) FromJsonString(s string) error {
 	delete(f, "Protocol")
 	delete(f, "TimeSpan")
 	delete(f, "Egress")
+	delete(f, "DesignatedZone")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBandwidthPackageRequest has unknown keys!", "")
 	}
@@ -18967,54 +18974,32 @@ func (r *DescribeProductQuotaResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeReserveIpAddressesRequestParams struct {
-	// 内网保留IP唯一ID 列表
+	// <p>内网保留IP唯一ID 列表</p>
 	ReserveIpIds []*string `json:"ReserveIpIds,omitnil,omitempty" name:"ReserveIpIds"`
 
-	// 过滤条件，参数不支持同时指定ReserveIpIds和Filters。
-	// 
-	// reserve-ip-id  - String - （过滤条件）内网保留 IP唯一 ID，形如：rsvip-pvqgv9vi。
-	// vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。
-	// subnet-id - String - （过滤条件）所属子网实例ID，形如：subnet-f49l6u0z。
-	// address-ip - String - （过滤条件）内网保留 IP 地址，形如：192.168.0.10。
-	// ip-type - String - （过滤条件）业务类型 ipType，0。
-	// name - String - （过滤条件）名称。
-	// state - String - （过滤条件）状态，可选值：Bind， UnBind。
-	// resource-id - String - （过滤条件）绑定的实例资源，形如：eni-059qmnif。
-	// tag-key - String -（过滤条件）按照标签键进行过滤。
-	// tag:tag-key - String - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。
+	// <p>过滤条件，参数不支持同时指定ReserveIpIds和Filters。</p><p>reserve-ip-id  - String - （过滤条件）内网保留 IP唯一 ID，形如：rsvip-pvqgv9vi。<br>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。<br>subnet-id - String - （过滤条件）所属子网实例ID，形如：subnet-f49l6u0z。<br>reserve-address-ip - String - （过滤条件）内网保留 IP 地址，形如：192.168.0.10。<br>ip-type - String - （过滤条件）业务类型 ipType，0。<br>name - String - （过滤条件）名称。<br>state - String - （过滤条件）状态，可选值：Bind， UnBind。<br>resource-id - String - （过滤条件）绑定的实例资源，形如：eni-059qmnif。<br>tag-key - String -（过滤条件）按照标签键进行过滤。<br>tag:tag-key - String - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 偏移量。
+	// <p>偏移量。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 请求对象个数。
+	// <p>请求对象个数。</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeReserveIpAddressesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 内网保留IP唯一ID 列表
+	// <p>内网保留IP唯一ID 列表</p>
 	ReserveIpIds []*string `json:"ReserveIpIds,omitnil,omitempty" name:"ReserveIpIds"`
 
-	// 过滤条件，参数不支持同时指定ReserveIpIds和Filters。
-	// 
-	// reserve-ip-id  - String - （过滤条件）内网保留 IP唯一 ID，形如：rsvip-pvqgv9vi。
-	// vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。
-	// subnet-id - String - （过滤条件）所属子网实例ID，形如：subnet-f49l6u0z。
-	// address-ip - String - （过滤条件）内网保留 IP 地址，形如：192.168.0.10。
-	// ip-type - String - （过滤条件）业务类型 ipType，0。
-	// name - String - （过滤条件）名称。
-	// state - String - （过滤条件）状态，可选值：Bind， UnBind。
-	// resource-id - String - （过滤条件）绑定的实例资源，形如：eni-059qmnif。
-	// tag-key - String -（过滤条件）按照标签键进行过滤。
-	// tag:tag-key - String - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。
+	// <p>过滤条件，参数不支持同时指定ReserveIpIds和Filters。</p><p>reserve-ip-id  - String - （过滤条件）内网保留 IP唯一 ID，形如：rsvip-pvqgv9vi。<br>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。<br>subnet-id - String - （过滤条件）所属子网实例ID，形如：subnet-f49l6u0z。<br>reserve-address-ip - String - （过滤条件）内网保留 IP 地址，形如：192.168.0.10。<br>ip-type - String - （过滤条件）业务类型 ipType，0。<br>name - String - （过滤条件）名称。<br>state - String - （过滤条件）状态，可选值：Bind， UnBind。<br>resource-id - String - （过滤条件）绑定的实例资源，形如：eni-059qmnif。<br>tag-key - String -（过滤条件）按照标签键进行过滤。<br>tag:tag-key - String - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 偏移量。
+	// <p>偏移量。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 请求对象个数。
+	// <p>请求对象个数。</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
@@ -19042,10 +19027,10 @@ func (r *DescribeReserveIpAddressesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeReserveIpAddressesResponseParams struct {
-	// 内网保留 IP返回信息。
+	// <p>内网保留 IP返回信息。</p>
 	ReserveIpAddressSet []*ReserveIpAddressInfo `json:"ReserveIpAddressSet,omitnil,omitempty" name:"ReserveIpAddressSet"`
 
-	// 返回内网保留IP的个数。
+	// <p>返回内网保留IP的个数。</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

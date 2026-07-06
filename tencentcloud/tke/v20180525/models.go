@@ -15415,20 +15415,20 @@ func (r *DescribeVpcCniPodLimitsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DisableClusterAuditRequestParams struct {
-	// 集群ID
+	// <p>集群ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 取值为true代表关闭集群审计时删除默认创建的日志集和主题，false代表不删除
+	// <p>取值为true代表关闭集群审计时删除默认创建的日志集和主题，false代表不删除</p>
 	DeleteLogSetAndTopic *bool `json:"DeleteLogSetAndTopic,omitnil,omitempty" name:"DeleteLogSetAndTopic"`
 }
 
 type DisableClusterAuditRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群ID
+	// <p>集群ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 取值为true代表关闭集群审计时删除默认创建的日志集和主题，false代表不删除
+	// <p>取值为true代表关闭集群审计时删除默认创建的日志集和主题，false代表不删除</p>
 	DeleteLogSetAndTopic *bool `json:"DeleteLogSetAndTopic,omitnil,omitempty" name:"DeleteLogSetAndTopic"`
 }
 
@@ -15659,21 +15659,27 @@ func (r *DisableEncryptionProtectionResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DisableEventPersistenceRequestParams struct {
-	// 集群ID
+	// <p>集群ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 取值为true代表关闭集群审计时删除默认创建的日志集和主题，false代表不删除
+	// <p>取值为true代表关闭集群审计时删除默认创建的日志集和主题，false代表不删除</p>
 	DeleteLogSetAndTopic *bool `json:"DeleteLogSetAndTopic,omitnil,omitempty" name:"DeleteLogSetAndTopic"`
+
+	// <p>集群类型 tke/eks</p><p>默认值：tke</p>
+	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 }
 
 type DisableEventPersistenceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群ID
+	// <p>集群ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 取值为true代表关闭集群审计时删除默认创建的日志集和主题，false代表不删除
+	// <p>取值为true代表关闭集群审计时删除默认创建的日志集和主题，false代表不删除</p>
 	DeleteLogSetAndTopic *bool `json:"DeleteLogSetAndTopic,omitnil,omitempty" name:"DeleteLogSetAndTopic"`
+
+	// <p>集群类型 tke/eks</p><p>默认值：tke</p>
+	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 }
 
 func (r *DisableEventPersistenceRequest) ToJsonString() string {
@@ -15690,6 +15696,7 @@ func (r *DisableEventPersistenceRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ClusterId")
 	delete(f, "DeleteLogSetAndTopic")
+	delete(f, "ClusterType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DisableEventPersistenceRequest has unknown keys!", "")
 	}
@@ -16229,33 +16236,39 @@ type EksCluster struct {
 
 // Predefined struct for user
 type EnableClusterAuditRequestParams struct {
-	// 集群ID
+	// <p>集群ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// CLS日志集ID，可以通过cls接口或者控制台获取
+	// <p>CLS日志集ID，可以通过cls接口或者控制台获取</p>
 	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
 
-	// CLS日志主题ID，可以通过cls接口或者控制台获取
+	// <p>CLS日志主题ID，可以通过cls接口或者控制台获取</p>
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// topic所在region，默认为集群当前region
+	// <p>topic所在region，默认为集群当前region</p>
 	TopicRegion *string `json:"TopicRegion,omitnil,omitempty" name:"TopicRegion"`
+
+	// <p>集群类型 tke/eks</p><p>默认值：tke</p>
+	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 }
 
 type EnableClusterAuditRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群ID
+	// <p>集群ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// CLS日志集ID，可以通过cls接口或者控制台获取
+	// <p>CLS日志集ID，可以通过cls接口或者控制台获取</p>
 	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
 
-	// CLS日志主题ID，可以通过cls接口或者控制台获取
+	// <p>CLS日志主题ID，可以通过cls接口或者控制台获取</p>
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// topic所在region，默认为集群当前region
+	// <p>topic所在region，默认为集群当前region</p>
 	TopicRegion *string `json:"TopicRegion,omitnil,omitempty" name:"TopicRegion"`
+
+	// <p>集群类型 tke/eks</p><p>默认值：tke</p>
+	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 }
 
 func (r *EnableClusterAuditRequest) ToJsonString() string {
@@ -16274,6 +16287,7 @@ func (r *EnableClusterAuditRequest) FromJsonString(s string) error {
 	delete(f, "LogsetId")
 	delete(f, "TopicId")
 	delete(f, "TopicRegion")
+	delete(f, "ClusterType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EnableClusterAuditRequest has unknown keys!", "")
 	}
@@ -16562,33 +16576,39 @@ func (r *EnableEncryptionProtectionResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type EnableEventPersistenceRequestParams struct {
-	// 集群ID
+	// <p>集群ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// cls服务的logsetID，通过cls接口或者控制台获取
+	// <p>cls服务的logsetID，通过cls接口或者控制台获取</p>
 	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
 
-	// cls服务的topicID，通过cls接口或者控制台获取
+	// <p>cls服务的topicID，通过cls接口或者控制台获取</p>
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// topic所在地域，默认为集群所在地域
+	// <p>topic所在地域，默认为集群所在地域</p>
 	TopicRegion *string `json:"TopicRegion,omitnil,omitempty" name:"TopicRegion"`
+
+	// <p>集群类型 tke/eks</p><p>默认值：tke</p>
+	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 }
 
 type EnableEventPersistenceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群ID
+	// <p>集群ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// cls服务的logsetID，通过cls接口或者控制台获取
+	// <p>cls服务的logsetID，通过cls接口或者控制台获取</p>
 	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
 
-	// cls服务的topicID，通过cls接口或者控制台获取
+	// <p>cls服务的topicID，通过cls接口或者控制台获取</p>
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// topic所在地域，默认为集群所在地域
+	// <p>topic所在地域，默认为集群所在地域</p>
 	TopicRegion *string `json:"TopicRegion,omitnil,omitempty" name:"TopicRegion"`
+
+	// <p>集群类型 tke/eks</p><p>默认值：tke</p>
+	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 }
 
 func (r *EnableEventPersistenceRequest) ToJsonString() string {
@@ -16607,6 +16627,7 @@ func (r *EnableEventPersistenceRequest) FromJsonString(s string) error {
 	delete(f, "LogsetId")
 	delete(f, "TopicId")
 	delete(f, "TopicRegion")
+	delete(f, "ClusterType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EnableEventPersistenceRequest has unknown keys!", "")
 	}
@@ -22825,6 +22846,57 @@ func (r *RollbackClusterReleaseResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type RotateClusterTokenRequestParams struct {
+
+}
+
+type RotateClusterTokenRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *RotateClusterTokenRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RotateClusterTokenRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RotateClusterTokenRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RotateClusterTokenResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RotateClusterTokenResponse struct {
+	*tchttp.BaseResponse
+	Response *RotateClusterTokenResponseParams `json:"Response"`
+}
+
+func (r *RotateClusterTokenResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RotateClusterTokenResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type RouteInfo struct {
 	// 路由表名称。
 	RouteTableName *string `json:"RouteTableName,omitnil,omitempty" name:"RouteTableName"`
@@ -23854,15 +23926,21 @@ func (r *UninstallEdgeLogAgentResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UninstallLogAgentRequestParams struct {
-	// 集群ID
+	// <p>集群ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// <p>集群类型tke/eks</p><p>默认值：tke</p>
+	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 }
 
 type UninstallLogAgentRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群ID
+	// <p>集群ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// <p>集群类型tke/eks</p><p>默认值：tke</p>
+	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 }
 
 func (r *UninstallLogAgentRequest) ToJsonString() string {
@@ -23878,6 +23956,7 @@ func (r *UninstallLogAgentRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "ClusterId")
+	delete(f, "ClusterType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UninstallLogAgentRequest has unknown keys!", "")
 	}

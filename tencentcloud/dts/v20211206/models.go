@@ -129,26 +129,32 @@ type CompareColumnItem struct {
 }
 
 type CompareDetailInfo struct {
-	// 数据不一致的表详情
+	// <p>数据不一致的表详情</p>
 	Difference *DifferenceDetail `json:"Difference,omitnil,omitempty" name:"Difference"`
 
-	// 跳过校验的表详情
+	// <p>跳过校验的表详情</p>
 	Skipped *SkippedDetail `json:"Skipped,omitnil,omitempty" name:"Skipped"`
 
-	// 数据库不一致的详情，mongodb业务用到
+	// <p>数据库不一致的详情，mongodb业务用到</p>
 	DifferenceAdvancedObjects *DifferenceAdvancedObjectsDetail `json:"DifferenceAdvancedObjects,omitnil,omitempty" name:"DifferenceAdvancedObjects"`
 
-	// 数据不一致的详情，mongodb业务用到
+	// <p>数据不一致的详情，mongodb业务用到</p>
 	DifferenceData *DifferenceDataDetail `json:"DifferenceData,omitnil,omitempty" name:"DifferenceData"`
 
-	// 数据行不一致的详情，mongodb业务用到
+	// <p>数据行不一致的详情，mongodb业务用到</p>
 	DifferenceRow *DifferenceRowDetail `json:"DifferenceRow,omitnil,omitempty" name:"DifferenceRow"`
 
-	// 表结构不一致详情，pg用
+	// <p>表结构不一致详情，pg用</p>
 	DifferenceSchema *DifferenceSchemaDetail `json:"DifferenceSchema,omitnil,omitempty" name:"DifferenceSchema"`
 
-	// 对象owner不一致详情，pg用
+	// <p>对象owner不一致详情，pg用</p>
 	DifferenceOwner *DifferenceOwnerDetail `json:"DifferenceOwner,omitnil,omitempty" name:"DifferenceOwner"`
+
+	// <p>全量阶段表的校验进度。该字段后续逐步取代Difference</p>
+	FullProgress *CompareTableInfo `json:"FullProgress,omitnil,omitempty" name:"FullProgress"`
+
+	// <p>增量阶段表的校验进度</p>
+	IncDifference *CompareTableInfo `json:"IncDifference,omitnil,omitempty" name:"IncDifference"`
 }
 
 type CompareObject struct {
@@ -211,6 +217,15 @@ type CompareOptions struct {
 	ReCheckInterval *int64 `json:"ReCheckInterval,omitnil,omitempty" name:"ReCheckInterval"`
 }
 
+type CompareTableInfo struct {
+	// 不一致表的数量
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 不一致的表的校验结果详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*CompareTableResult `json:"Items,omitnil,omitempty" name:"Items"`
+}
+
 type CompareTableItem struct {
 	// 表名称
 	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
@@ -226,6 +241,44 @@ type CompareTableItem struct {
 
 	// 时区选择。如 "+08:00", "-08:00", "+00:00"（空值等价于"+00:00"）	
 	FilterTimeZone *string `json:"FilterTimeZone,omitnil,omitempty" name:"FilterTimeZone"`
+}
+
+type CompareTableResult struct {
+	// 库名
+	Db *string `json:"Db,omitnil,omitempty" name:"Db"`
+
+	// schema名
+	Schema *string `json:"Schema,omitnil,omitempty" name:"Schema"`
+
+	// 表名
+	Table *string `json:"Table,omitnil,omitempty" name:"Table"`
+
+	// 校验结果
+	Conclusion *string `json:"Conclusion,omitnil,omitempty" name:"Conclusion"`
+
+	// 校验状态。仅全量阶段有意义
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 校验进度。仅全量阶段有意义
+	Progress *int64 `json:"Progress,omitnil,omitempty" name:"Progress"`
+
+	// 不一致行数
+	RowCount *int64 `json:"RowCount,omitnil,omitempty" name:"RowCount"`
+
+	// 该表开始校验的时间
+	StartedAt *string `json:"StartedAt,omitnil,omitempty" name:"StartedAt"`
+
+	// 该表校验结束的时间
+	FinishedAt *string `json:"FinishedAt,omitnil,omitempty" name:"FinishedAt"`
+
+	// 预计该表校验结束的时间
+	ExpectedAt *string `json:"ExpectedAt,omitnil,omitempty" name:"ExpectedAt"`
+
+	// 源端行数，如果是行数校验此值有意义
+	SrcItem *string `json:"SrcItem,omitnil,omitempty" name:"SrcItem"`
+
+	// 目标端行数，如果是行数校验此值有意义
+	DstItem *string `json:"DstItem,omitnil,omitempty" name:"DstItem"`
 }
 
 type CompareTaskInfo struct {
@@ -2237,68 +2290,68 @@ func (r *DescribeCompareDiffItemsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCompareReportRequestParams struct {
-	// 迁移任务 Id，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
+	// <p>迁移任务 Id，可通过<a href="https://cloud.tencent.com/document/product/571/82084">DescribeMigrationJobs</a>接口获取。</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
-	// 校验任务 Id，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
+	// <p>校验任务 Id，可通过<a href="https://cloud.tencent.com/document/product/571/82084">DescribeMigrationJobs</a>接口获取。</p>
 	CompareTaskId *string `json:"CompareTaskId,omitnil,omitempty" name:"CompareTaskId"`
 
-	// 校验不一致结果的 limit
+	// <p>校验不一致结果的 limit</p>
 	DifferenceLimit *uint64 `json:"DifferenceLimit,omitnil,omitempty" name:"DifferenceLimit"`
 
-	// 不一致的 Offset
+	// <p>不一致的 Offset</p>
 	DifferenceOffset *uint64 `json:"DifferenceOffset,omitnil,omitempty" name:"DifferenceOffset"`
 
-	// 搜索条件，不一致的库名
+	// <p>搜索条件，不一致的库名</p>
 	DifferenceDB *string `json:"DifferenceDB,omitnil,omitempty" name:"DifferenceDB"`
 
-	// 搜索条件，不一致的表名
+	// <p>搜索条件，不一致的表名</p>
 	DifferenceTable *string `json:"DifferenceTable,omitnil,omitempty" name:"DifferenceTable"`
 
-	// 未校验的 Limit
+	// <p>未校验的 Limit</p>
 	SkippedLimit *uint64 `json:"SkippedLimit,omitnil,omitempty" name:"SkippedLimit"`
 
-	// 未校验的 Offset
+	// <p>未校验的 Offset</p>
 	SkippedOffset *uint64 `json:"SkippedOffset,omitnil,omitempty" name:"SkippedOffset"`
 
-	// 搜索条件，未校验的库名
+	// <p>搜索条件，未校验的库名</p>
 	SkippedDB *string `json:"SkippedDB,omitnil,omitempty" name:"SkippedDB"`
 
-	// 搜索条件，未校验的表名
+	// <p>搜索条件，未校验的表名</p>
 	SkippedTable *string `json:"SkippedTable,omitnil,omitempty" name:"SkippedTable"`
 }
 
 type DescribeCompareReportRequest struct {
 	*tchttp.BaseRequest
 	
-	// 迁移任务 Id，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
+	// <p>迁移任务 Id，可通过<a href="https://cloud.tencent.com/document/product/571/82084">DescribeMigrationJobs</a>接口获取。</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
-	// 校验任务 Id，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
+	// <p>校验任务 Id，可通过<a href="https://cloud.tencent.com/document/product/571/82084">DescribeMigrationJobs</a>接口获取。</p>
 	CompareTaskId *string `json:"CompareTaskId,omitnil,omitempty" name:"CompareTaskId"`
 
-	// 校验不一致结果的 limit
+	// <p>校验不一致结果的 limit</p>
 	DifferenceLimit *uint64 `json:"DifferenceLimit,omitnil,omitempty" name:"DifferenceLimit"`
 
-	// 不一致的 Offset
+	// <p>不一致的 Offset</p>
 	DifferenceOffset *uint64 `json:"DifferenceOffset,omitnil,omitempty" name:"DifferenceOffset"`
 
-	// 搜索条件，不一致的库名
+	// <p>搜索条件，不一致的库名</p>
 	DifferenceDB *string `json:"DifferenceDB,omitnil,omitempty" name:"DifferenceDB"`
 
-	// 搜索条件，不一致的表名
+	// <p>搜索条件，不一致的表名</p>
 	DifferenceTable *string `json:"DifferenceTable,omitnil,omitempty" name:"DifferenceTable"`
 
-	// 未校验的 Limit
+	// <p>未校验的 Limit</p>
 	SkippedLimit *uint64 `json:"SkippedLimit,omitnil,omitempty" name:"SkippedLimit"`
 
-	// 未校验的 Offset
+	// <p>未校验的 Offset</p>
 	SkippedOffset *uint64 `json:"SkippedOffset,omitnil,omitempty" name:"SkippedOffset"`
 
-	// 搜索条件，未校验的库名
+	// <p>搜索条件，未校验的库名</p>
 	SkippedDB *string `json:"SkippedDB,omitnil,omitempty" name:"SkippedDB"`
 
-	// 搜索条件，未校验的表名
+	// <p>搜索条件，未校验的表名</p>
 	SkippedTable *string `json:"SkippedTable,omitnil,omitempty" name:"SkippedTable"`
 }
 
@@ -2332,10 +2385,10 @@ func (r *DescribeCompareReportRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCompareReportResponseParams struct {
-	// 一致性校验摘要信息
+	// <p>一致性校验摘要信息</p>
 	Abstract *CompareAbstractInfo `json:"Abstract,omitnil,omitempty" name:"Abstract"`
 
-	// 一致性校验详细信息
+	// <p>一致性校验详细信息</p>
 	Detail *CompareDetailInfo `json:"Detail,omitnil,omitempty" name:"Detail"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3754,68 +3807,68 @@ func (r *DescribeSyncCompareDiffItemsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSyncCompareReportRequestParams struct {
-	// 任务 Id
+	// <p>任务 Id</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
-	// 校验任务 Id
+	// <p>校验任务 Id</p>
 	CompareTaskId *string `json:"CompareTaskId,omitnil,omitempty" name:"CompareTaskId"`
 
-	// 校验不一致结果的 limit
+	// <p>校验不一致结果的 limit</p>
 	DifferenceLimit *uint64 `json:"DifferenceLimit,omitnil,omitempty" name:"DifferenceLimit"`
 
-	// 不一致的 Offset
+	// <p>不一致的 Offset</p>
 	DifferenceOffset *uint64 `json:"DifferenceOffset,omitnil,omitempty" name:"DifferenceOffset"`
 
-	// 搜索条件，不一致的库名
+	// <p>搜索条件，不一致的库名</p>
 	DifferenceDB *string `json:"DifferenceDB,omitnil,omitempty" name:"DifferenceDB"`
 
-	// 搜索条件，不一致的表名
+	// <p>搜索条件，不一致的表名</p>
 	DifferenceTable *string `json:"DifferenceTable,omitnil,omitempty" name:"DifferenceTable"`
 
-	// 未校验的 Limit
+	// <p>未校验的 Limit</p>
 	SkippedLimit *uint64 `json:"SkippedLimit,omitnil,omitempty" name:"SkippedLimit"`
 
-	// 未校验的 Offset
+	// <p>未校验的 Offset</p>
 	SkippedOffset *uint64 `json:"SkippedOffset,omitnil,omitempty" name:"SkippedOffset"`
 
-	// 搜索条件，未校验的库名
+	// <p>搜索条件，未校验的库名</p>
 	SkippedDB *string `json:"SkippedDB,omitnil,omitempty" name:"SkippedDB"`
 
-	// 搜索条件，未校验的表名
+	// <p>搜索条件，未校验的表名</p>
 	SkippedTable *string `json:"SkippedTable,omitnil,omitempty" name:"SkippedTable"`
 }
 
 type DescribeSyncCompareReportRequest struct {
 	*tchttp.BaseRequest
 	
-	// 任务 Id
+	// <p>任务 Id</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
-	// 校验任务 Id
+	// <p>校验任务 Id</p>
 	CompareTaskId *string `json:"CompareTaskId,omitnil,omitempty" name:"CompareTaskId"`
 
-	// 校验不一致结果的 limit
+	// <p>校验不一致结果的 limit</p>
 	DifferenceLimit *uint64 `json:"DifferenceLimit,omitnil,omitempty" name:"DifferenceLimit"`
 
-	// 不一致的 Offset
+	// <p>不一致的 Offset</p>
 	DifferenceOffset *uint64 `json:"DifferenceOffset,omitnil,omitempty" name:"DifferenceOffset"`
 
-	// 搜索条件，不一致的库名
+	// <p>搜索条件，不一致的库名</p>
 	DifferenceDB *string `json:"DifferenceDB,omitnil,omitempty" name:"DifferenceDB"`
 
-	// 搜索条件，不一致的表名
+	// <p>搜索条件，不一致的表名</p>
 	DifferenceTable *string `json:"DifferenceTable,omitnil,omitempty" name:"DifferenceTable"`
 
-	// 未校验的 Limit
+	// <p>未校验的 Limit</p>
 	SkippedLimit *uint64 `json:"SkippedLimit,omitnil,omitempty" name:"SkippedLimit"`
 
-	// 未校验的 Offset
+	// <p>未校验的 Offset</p>
 	SkippedOffset *uint64 `json:"SkippedOffset,omitnil,omitempty" name:"SkippedOffset"`
 
-	// 搜索条件，未校验的库名
+	// <p>搜索条件，未校验的库名</p>
 	SkippedDB *string `json:"SkippedDB,omitnil,omitempty" name:"SkippedDB"`
 
-	// 搜索条件，未校验的表名
+	// <p>搜索条件，未校验的表名</p>
 	SkippedTable *string `json:"SkippedTable,omitnil,omitempty" name:"SkippedTable"`
 }
 
@@ -3849,15 +3902,15 @@ func (r *DescribeSyncCompareReportRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSyncCompareReportResponseParams struct {
-	// 一致性校验摘要信息
+	// <p>一致性校验摘要信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Abstract *CompareAbstractInfo `json:"Abstract,omitnil,omitempty" name:"Abstract"`
 
-	// 一致性校验详细信息
+	// <p>一致性校验详细信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Detail *CompareDetailInfo `json:"Detail,omitnil,omitempty" name:"Detail"`
 
-	// 增量校验阶段的摘要
+	// <p>增量校验阶段的摘要</p>
 	IncAbstract *IncCompareAbstractInfo `json:"IncAbstract,omitnil,omitempty" name:"IncAbstract"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

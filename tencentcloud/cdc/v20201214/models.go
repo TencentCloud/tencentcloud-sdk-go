@@ -764,20 +764,20 @@ type DedicatedClusterTypeInfo struct {
 
 // Predefined struct for user
 type DeleteDedicatedClusterImageCacheRequestParams struct {
-	// 集群id
+	// <p>集群id</p>
 	DedicatedClusterId *string `json:"DedicatedClusterId,omitnil,omitempty" name:"DedicatedClusterId"`
 
-	// 镜像id
+	// <p>镜像id</p>
 	ImageId *string `json:"ImageId,omitnil,omitempty" name:"ImageId"`
 }
 
 type DeleteDedicatedClusterImageCacheRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群id
+	// <p>集群id</p>
 	DedicatedClusterId *string `json:"DedicatedClusterId,omitnil,omitempty" name:"DedicatedClusterId"`
 
-	// 镜像id
+	// <p>镜像id</p>
 	ImageId *string `json:"ImageId,omitnil,omitempty" name:"ImageId"`
 }
 

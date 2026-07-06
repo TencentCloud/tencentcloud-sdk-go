@@ -5224,6 +5224,9 @@ type ModifyHttpAuthenticatorRequestParams struct {
 
 	// 请求body
 	Body []*BodyItem `json:"Body,omitnil,omitempty" name:"Body"`
+
+	// 连接UserProperty作为Header转发，默认false
+	IncludingUserProperties *bool `json:"IncludingUserProperties,omitnil,omitempty" name:"IncludingUserProperties"`
 }
 
 type ModifyHttpAuthenticatorRequest struct {
@@ -5258,6 +5261,9 @@ type ModifyHttpAuthenticatorRequest struct {
 
 	// 请求body
 	Body []*BodyItem `json:"Body,omitnil,omitempty" name:"Body"`
+
+	// 连接UserProperty作为Header转发，默认false
+	IncludingUserProperties *bool `json:"IncludingUserProperties,omitnil,omitempty" name:"IncludingUserProperties"`
 }
 
 func (r *ModifyHttpAuthenticatorRequest) ToJsonString() string {
@@ -5282,6 +5288,7 @@ func (r *ModifyHttpAuthenticatorRequest) FromJsonString(s string) error {
 	delete(f, "Method")
 	delete(f, "Header")
 	delete(f, "Body")
+	delete(f, "IncludingUserProperties")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyHttpAuthenticatorRequest has unknown keys!", "")
 	}

@@ -1412,6 +1412,9 @@ const (
 	// SSL客户端状态不可用，不支持下载
 	UNSUPPORTEDOPERATION_SSLCLIENTCERTDISABLEUNSUPPORTEDDOWNLOADSSLCLIENTCERT = "UnsupportedOperation.SSLClientCertDisableUnsupportedDownloadSSLClientCert"
 
+	// 服务在当前地域不支持。
+	UNSUPPORTEDOPERATION_SERVICEUNSUPPORTEDREGION = "UnsupportedOperation.ServiceUnsupportedRegion"
+
 	// 安全组展开后的规则已达到上限。
 	UNSUPPORTEDOPERATION_SGNUMEXCEEDLIMIT = "UnsupportedOperation.SgNumExceedLimit"
 

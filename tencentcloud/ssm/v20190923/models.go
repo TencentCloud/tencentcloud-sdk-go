@@ -1314,36 +1314,38 @@ func (r *GetServiceStatusRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetServiceStatusResponseParams struct {
-	// true表示服务已开通，false 表示服务尚未开通。
+	// <p>true表示服务已开通，false 表示服务尚未开通。</p>
 	ServiceEnabled *bool `json:"ServiceEnabled,omitnil,omitempty" name:"ServiceEnabled"`
 
-	// 服务不可用类型： 0-未购买，1-正常， 2-欠费停服， 3-资源释放。
+	// <p>服务不可用类型： 0-未购买，1-正常， 2-欠费停服， 3-资源释放。</p>
 	InvalidType *int64 `json:"InvalidType,omitnil,omitempty" name:"InvalidType"`
 
-	// true表示用户已经可以使用密钥安全托管功能，
-	// false表示用户暂时不能使用密钥安全托管功能。
+	// <p>true表示用户已经可以使用密钥安全托管功能，<br>false表示用户暂时不能使用密钥安全托管功能。</p>
 	AccessKeyEscrowEnabled *bool `json:"AccessKeyEscrowEnabled,omitnil,omitempty" name:"AccessKeyEscrowEnabled"`
 
-	// 过期时间
+	// <p>过期时间</p>
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
-	// 计算性能限制
+	// <p>计算性能限制</p>
 	QPSLimit *int64 `json:"QPSLimit,omitnil,omitempty" name:"QPSLimit"`
 
-	// 凭据个数限制
+	// <p>凭据个数限制</p>
 	SecretLimit *int64 `json:"SecretLimit,omitnil,omitempty" name:"SecretLimit"`
 
-	// 付费模式
+	// <p>付费模式</p>
 	PayModel *string `json:"PayModel,omitnil,omitempty" name:"PayModel"`
 
-	// 自动续费标识，0:手动续费 1:自动续费 2:到期不续
+	// <p>自动续费标识，0:手动续费 1:自动续费 2:到期不续</p>
 	RenewFlag *int64 `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 
-	// 资源id
+	// <p>资源id</p>
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
-	// 已托管凭据个数
+	// <p>已托管凭据个数</p>
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>预付费购买 SSM 资源的地域 ID</p>
+	ResourceRegion *int64 `json:"ResourceRegion,omitnil,omitempty" name:"ResourceRegion"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

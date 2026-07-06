@@ -11735,26 +11735,26 @@ func (r *DescribeDspmAssetAccountsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDspmAssetDatabaseListRequestParams struct {
-	// 资产实例id
+	// <p>资产实例id</p>
 	AssetId *string `json:"AssetId,omitnil,omitempty" name:"AssetId"`
 
-	// 集团账号的成员id
+	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
-	// 筛选项
+	// <p>筛选项</p>
 	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
 }
 
 type DescribeDspmAssetDatabaseListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 资产实例id
+	// <p>资产实例id</p>
 	AssetId *string `json:"AssetId,omitnil,omitempty" name:"AssetId"`
 
-	// 集团账号的成员id
+	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
-	// 筛选项
+	// <p>筛选项</p>
 	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
 }
 
@@ -11781,10 +11781,10 @@ func (r *DescribeDspmAssetDatabaseListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDspmAssetDatabaseListResponseParams struct {
-	// 总数
+	// <p>总数</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 结果集
+	// <p>结果集</p>
 	DataSet []*DspmAssetDatabaseInfo `json:"DataSet,omitnil,omitempty" name:"DataSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -11875,7 +11875,7 @@ type DescribeDspmAssetFieldListRequestParams struct {
 	// 表名
 	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
 
-	// 集团账号的成员id
+	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
 	// 筛选项
@@ -11894,7 +11894,7 @@ type DescribeDspmAssetFieldListRequest struct {
 	// 表名
 	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
 
-	// 集团账号的成员id
+	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
 	// 筛选项
@@ -12240,7 +12240,7 @@ type DescribeDspmAssetTableListRequestParams struct {
 	// 数据库名称
 	DbName *string `json:"DbName,omitnil,omitempty" name:"DbName"`
 
-	// 集团账号的成员id
+	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
 	// 筛选项
@@ -12256,7 +12256,7 @@ type DescribeDspmAssetTableListRequest struct {
 	// 数据库名称
 	DbName *string `json:"DbName,omitnil,omitempty" name:"DbName"`
 
-	// 集团账号的成员id
+	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
 	// 筛选项
@@ -12573,20 +12573,26 @@ func (r *DescribeDspmBackupSettingResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDspmDictionaryListRequestParams struct {
-	// 字典类型（RootCategory：一级分类，IdentifyRule:敏感识别数据项）
+	// <p>字典类型（RootCategory：一级分类，IdentifyRule:敏感识别数据项）</p>
 	DictType *string `json:"DictType,omitnil,omitempty" name:"DictType"`
 
-	// 筛选条件
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>筛选条件</p>
 	Filters []*WhereFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeDspmDictionaryListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 字典类型（RootCategory：一级分类，IdentifyRule:敏感识别数据项）
+	// <p>字典类型（RootCategory：一级分类，IdentifyRule:敏感识别数据项）</p>
 	DictType *string `json:"DictType,omitnil,omitempty" name:"DictType"`
 
-	// 筛选条件
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>筛选条件</p>
 	Filters []*WhereFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -12603,6 +12609,7 @@ func (r *DescribeDspmDictionaryListRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "DictType")
+	delete(f, "MemberId")
 	delete(f, "Filters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDspmDictionaryListRequest has unknown keys!", "")
@@ -12612,7 +12619,7 @@ func (r *DescribeDspmDictionaryListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDspmDictionaryListResponseParams struct {
-	// 结果集
+	// <p>结果集</p>
 	DataSet []*DspmDictionary `json:"DataSet,omitnil,omitempty" name:"DataSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -13220,14 +13227,14 @@ func (r *DescribeDspmLogListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDspmPayInfoRequestParams struct {
-	// 集团账号的成员id
+	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 }
 
 type DescribeDspmPayInfoRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集团账号的成员id
+	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 }
 
@@ -13895,15 +13902,21 @@ func (r *DescribeDspmRiskTendencyResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDspmStatisticsRequestParams struct {
-	// 集团账号的成员id
+	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>按照资产类型过滤</p><p>枚举值：</p><ul><li>cdb： cdb</li><li>mariadb： mariadb</li><li>cynosdb： cynosdb</li></ul><p>默认值：默认值为空，即不按照资产类型过滤，返回所有资产信息</p>
+	AssetType []*string `json:"AssetType,omitnil,omitempty" name:"AssetType"`
 }
 
 type DescribeDspmStatisticsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集团账号的成员id
+	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>按照资产类型过滤</p><p>枚举值：</p><ul><li>cdb： cdb</li><li>mariadb： mariadb</li><li>cynosdb： cynosdb</li></ul><p>默认值：默认值为空，即不按照资产类型过滤，返回所有资产信息</p>
+	AssetType []*string `json:"AssetType,omitnil,omitempty" name:"AssetType"`
 }
 
 func (r *DescribeDspmStatisticsRequest) ToJsonString() string {
@@ -13919,6 +13932,7 @@ func (r *DescribeDspmStatisticsRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "MemberId")
+	delete(f, "AssetType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDspmStatisticsRequest has unknown keys!", "")
 	}
@@ -13927,19 +13941,19 @@ func (r *DescribeDspmStatisticsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDspmStatisticsResponseParams struct {
-	// 资产统计信息
+	// <p>资产统计信息</p>
 	AssetCount *DspmAssetCount `json:"AssetCount,omitnil,omitempty" name:"AssetCount"`
 
-	// 访问Ip统计信息
+	// <p>访问Ip统计信息</p>
 	IpCount *DspmIpCount `json:"IpCount,omitnil,omitempty" name:"IpCount"`
 
-	// 用户账号统计信息
+	// <p>用户账号统计信息</p>
 	UserCount *DspmAccountCount `json:"UserCount,omitnil,omitempty" name:"UserCount"`
 
-	// 风险统计信息
+	// <p>风险统计信息</p>
 	RiskCount *DspmRiskCount `json:"RiskCount,omitnil,omitempty" name:"RiskCount"`
 
-	// 资产安全分析统计信息
+	// <p>资产安全分析统计信息</p>
 	AnalyseAssetStatusCount *DspmSecurityAnalyseStatusCount `json:"AnalyseAssetStatusCount,omitnil,omitempty" name:"AnalyseAssetStatusCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -18647,7 +18661,7 @@ func (r *DescribeUserCallRecordResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeUserDspmInfoListRequestParams struct {
-	// 集团账号的成员id
+	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
 	// 过滤条件
@@ -18657,7 +18671,7 @@ type DescribeUserDspmInfoListRequestParams struct {
 type DescribeUserDspmInfoListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集团账号的成员id
+	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
 	// 过滤条件
@@ -19848,63 +19862,66 @@ type DspmAssetCount struct {
 }
 
 type DspmAssetDataScanDetail struct {
-	// 识别任务状态 0:未识别 1:识别中 2:识别终止 3:识别成功 4:识别失败
+	// <p>识别任务状态 0:未识别 1:识别中 2:识别终止 3:识别成功 4:识别失败</p>
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 识别任务状态 0:未识别 1:识别中 2:识别终止 3:识别成功 4:识别失败
+	// <p>识别任务状态 0:未识别 1:识别中 2:识别终止 3:识别成功 4:识别失败</p>
 	StatusInfo *string `json:"StatusInfo,omitnil,omitempty" name:"StatusInfo"`
 
-	// 识别进度
+	// <p>识别进度</p>
 	Progress *float64 `json:"Progress,omitnil,omitempty" name:"Progress"`
 
-	// 最近扫描时间
+	// <p>最近扫描时间</p>
 	LatestScanTime *string `json:"LatestScanTime,omitnil,omitempty" name:"LatestScanTime"`
 
-	// 识别失败信息
+	// <p>识别失败信息</p>
 	ErrorInfo *string `json:"ErrorInfo,omitnil,omitempty" name:"ErrorInfo"`
 
-	// 数据库数量
+	// <p>数据库数量</p>
 	DbCount *uint64 `json:"DbCount,omitnil,omitempty" name:"DbCount"`
 
-	// 分类id集合
+	// <p>分类id集合</p>
 	CategoryIds []*uint64 `json:"CategoryIds,omitnil,omitempty" name:"CategoryIds"`
 
-	// 分类名称集合
+	// <p>分类名称集合</p>
 	CategoryNames []*string `json:"CategoryNames,omitnil,omitempty" name:"CategoryNames"`
 
-	// 扫描任务配置
+	// <p>扫描任务配置</p>
 	TaskConfig *DspmSensitiveScanTaskConfig `json:"TaskConfig,omitnil,omitempty" name:"TaskConfig"`
 
-	// 识别结果分类详情
+	// <p>识别结果分类详情</p>
 	CategoryDetails []*DspmIdentifyCategoryDetail `json:"CategoryDetails,omitnil,omitempty" name:"CategoryDetails"`
+
+	// <p>任务ID</p>
+	TaskId *uint64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
 type DspmAssetDatabaseInfo struct {
-	// 资产实例id
+	// <p>资产实例id</p>
 	AssetId *string `json:"AssetId,omitnil,omitempty" name:"AssetId"`
 
-	// 数据库名称
+	// <p>数据库名称</p>
 	DbName *string `json:"DbName,omitnil,omitempty" name:"DbName"`
 
-	// 总表数
+	// <p>总表数</p>
 	TableCount *uint64 `json:"TableCount,omitnil,omitempty" name:"TableCount"`
 
-	// 敏感表数
+	// <p>敏感表数</p>
 	SensitiveTableCount *uint64 `json:"SensitiveTableCount,omitnil,omitempty" name:"SensitiveTableCount"`
 
-	// 数据项id集合
+	// <p>数据项id集合</p>
 	RuleIds []*uint64 `json:"RuleIds,omitnil,omitempty" name:"RuleIds"`
 
-	// 数据项名称集合
+	// <p>数据项名称集合</p>
 	RuleNames []*string `json:"RuleNames,omitnil,omitempty" name:"RuleNames"`
 
-	// 分类id集合
+	// <p>分类id集合</p>
 	CategoryIds []*uint64 `json:"CategoryIds,omitnil,omitempty" name:"CategoryIds"`
 
-	// 分类名称集合
+	// <p>分类名称集合</p>
 	CategoryNames []*string `json:"CategoryNames,omitnil,omitempty" name:"CategoryNames"`
 
-	// 分类详情
+	// <p>分类详情</p>
 	CategoryDetails []*DspmIdentifyCategoryDetail `json:"CategoryDetails,omitnil,omitempty" name:"CategoryDetails"`
 }
 
@@ -20197,6 +20214,9 @@ type DspmDbAsset struct {
 	// 实例类型
 	InstanceType *int64 `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
+	// 集群类型（MongoDB），与云接口 DescribeDBInstances 的 ClusterType 一致：0-副本集 1-分片；非 MongoDB 资产固定 0
+	ClusterType *int64 `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
+
 	// 是否支持敏感数据识别。0 不支持；1 支持
 	IdentifyScanSupported *int64 `json:"IdentifyScanSupported,omitnil,omitempty" name:"IdentifyScanSupported"`
 }
@@ -20345,19 +20365,19 @@ type DspmIdentifyInfoItem struct {
 }
 
 type DspmIdentifyRuleDetail struct {
-	// 数据项id
+	// <p>数据项id</p>
 	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
-	// 数据项名称
+	// <p>数据项名称</p>
 	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
 
-	// 敏感级别id
+	// <p>敏感级别id</p>
 	LevelId *uint64 `json:"LevelId,omitnil,omitempty" name:"LevelId"`
 
-	// 敏感级别名称
+	// <p>敏感级别名称</p>
 	LevelName *string `json:"LevelName,omitnil,omitempty" name:"LevelName"`
 
-	// 敏感程度
+	// <p>敏感程度</p>
 	LevelScore *uint64 `json:"LevelScore,omitnil,omitempty" name:"LevelScore"`
 }
 
@@ -22259,25 +22279,25 @@ type MachineDetail struct {
 }
 
 type MiniTagItem struct {
-	// <p>标签颜色</p>
+	// 标签展示颜色。
 	Color *string `json:"Color,omitnil,omitempty" name:"Color"`
 
-	// <p>描述</p>
+	// 标签描述。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// <p>标签ID</p>
+	// 标签 ID。
 	ID *uint64 `json:"ID,omitnil,omitempty" name:"ID"`
 
-	// <p>标签键</p>
+	// 标签键（中文）。
 	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
 
-	// <p>标签值</p>
+	// 标签值（中文）。
 	TagValue *string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
 
-	// <p>标签键英文</p>
+	// 标签键（英文）。
 	TagKeyEn *string `json:"TagKeyEn,omitnil,omitempty" name:"TagKeyEn"`
 
-	// <p>标签值英文</p>
+	// 标签值（英文）。
 	TagValueEn *string `json:"TagValueEn,omitnil,omitempty" name:"TagValueEn"`
 }
 
@@ -22923,7 +22943,7 @@ type ModifyDspmAssetDataScanTaskRequestParams struct {
 	// 是否立即执行
 	IsRunAtOnce *bool `json:"IsRunAtOnce,omitnil,omitempty" name:"IsRunAtOnce"`
 
-	// 集团账号的成员id
+	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
 	// 调度周期配置
@@ -22945,7 +22965,7 @@ type ModifyDspmAssetDataScanTaskRequest struct {
 	// 是否立即执行
 	IsRunAtOnce *bool `json:"IsRunAtOnce,omitnil,omitempty" name:"IsRunAtOnce"`
 
-	// 集团账号的成员id
+	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
 	// 调度周期配置
@@ -26665,10 +26685,10 @@ type TableField struct {
 }
 
 type Tag struct {
-	// 标签名称
+	// 标签键。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 标签内容
+	// 标签值。
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 

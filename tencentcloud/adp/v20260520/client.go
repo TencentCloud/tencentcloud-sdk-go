@@ -265,6 +265,50 @@ func (c *Client) CreateConversationWithContext(ctx context.Context, request *Cre
     return
 }
 
+func NewCreatePluginRequest() (request *CreatePluginRequest) {
+    request = &CreatePluginRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "CreatePlugin")
+    
+    
+    return
+}
+
+func NewCreatePluginResponse() (response *CreatePluginResponse) {
+    response = &CreatePluginResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreatePlugin
+// 获取插件详情
+func (c *Client) CreatePlugin(request *CreatePluginRequest) (response *CreatePluginResponse, err error) {
+    return c.CreatePluginWithContext(context.Background(), request)
+}
+
+// CreatePlugin
+// 获取插件详情
+func (c *Client) CreatePluginWithContext(ctx context.Context, request *CreatePluginRequest) (response *CreatePluginResponse, err error) {
+    if request == nil {
+        request = NewCreatePluginRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "CreatePlugin")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreatePlugin require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreatePluginResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateReleaseRequest() (request *CreateReleaseRequest) {
     request = &CreateReleaseRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -305,6 +349,94 @@ func (c *Client) CreateReleaseWithContext(ctx context.Context, request *CreateRe
     request.SetContext(ctx)
     
     response = NewCreateReleaseResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateSkillRequest() (request *CreateSkillRequest) {
+    request = &CreateSkillRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "CreateSkill")
+    
+    
+    return
+}
+
+func NewCreateSkillResponse() (response *CreateSkillResponse) {
+    response = &CreateSkillResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateSkill
+// 创建skill
+func (c *Client) CreateSkill(request *CreateSkillRequest) (response *CreateSkillResponse, err error) {
+    return c.CreateSkillWithContext(context.Background(), request)
+}
+
+// CreateSkill
+// 创建skill
+func (c *Client) CreateSkillWithContext(ctx context.Context, request *CreateSkillRequest) (response *CreateSkillResponse, err error) {
+    if request == nil {
+        request = NewCreateSkillRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "CreateSkill")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateSkill require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateSkillResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateSkillShareRequest() (request *CreateSkillShareRequest) {
+    request = &CreateSkillShareRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "CreateSkillShare")
+    
+    
+    return
+}
+
+func NewCreateSkillShareResponse() (response *CreateSkillShareResponse) {
+    response = &CreateSkillShareResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateSkillShare
+// 提交自定义Skill至企业级共享审批（两段式：提交→审批→回调创建共享任务）
+func (c *Client) CreateSkillShare(request *CreateSkillShareRequest) (response *CreateSkillShareResponse, err error) {
+    return c.CreateSkillShareWithContext(context.Background(), request)
+}
+
+// CreateSkillShare
+// 提交自定义Skill至企业级共享审批（两段式：提交→审批→回调创建共享任务）
+func (c *Client) CreateSkillShareWithContext(ctx context.Context, request *CreateSkillShareRequest) (response *CreateSkillShareResponse, err error) {
+    if request == nil {
+        request = NewCreateSkillShareRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "CreateSkillShare")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateSkillShare require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateSkillShareResponse()
     err = c.Send(request, response)
     return
 }
@@ -509,6 +641,56 @@ func (c *Client) CreateWorkspaceCredentialWithContext(ctx context.Context, reque
     return
 }
 
+func NewDeleteAgentRequest() (request *DeleteAgentRequest) {
+    request = &DeleteAgentRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "DeleteAgent")
+    
+    
+    return
+}
+
+func NewDeleteAgentResponse() (response *DeleteAgentResponse) {
+    response = &DeleteAgentResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteAgent
+// 删除Agent
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DeleteAgent(request *DeleteAgentRequest) (response *DeleteAgentResponse, err error) {
+    return c.DeleteAgentWithContext(context.Background(), request)
+}
+
+// DeleteAgent
+// 删除Agent
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DeleteAgentWithContext(ctx context.Context, request *DeleteAgentRequest) (response *DeleteAgentResponse, err error) {
+    if request == nil {
+        request = NewDeleteAgentRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "DeleteAgent")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAgent require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteAgentResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteAppRequest() (request *DeleteAppRequest) {
     request = &DeleteAppRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -605,6 +787,156 @@ func (c *Client) DeleteConversationWithContext(ctx context.Context, request *Del
     request.SetContext(ctx)
     
     response = NewDeleteConversationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeletePluginRequest() (request *DeletePluginRequest) {
+    request = &DeletePluginRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "DeletePlugin")
+    
+    
+    return
+}
+
+func NewDeletePluginResponse() (response *DeletePluginResponse) {
+    response = &DeletePluginResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeletePlugin
+// 修改插件
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DeletePlugin(request *DeletePluginRequest) (response *DeletePluginResponse, err error) {
+    return c.DeletePluginWithContext(context.Background(), request)
+}
+
+// DeletePlugin
+// 修改插件
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DeletePluginWithContext(ctx context.Context, request *DeletePluginRequest) (response *DeletePluginResponse, err error) {
+    if request == nil {
+        request = NewDeletePluginRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "DeletePlugin")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeletePlugin require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeletePluginResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteSkillRequest() (request *DeleteSkillRequest) {
+    request = &DeleteSkillRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "DeleteSkill")
+    
+    
+    return
+}
+
+func NewDeleteSkillResponse() (response *DeleteSkillResponse) {
+    response = &DeleteSkillResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteSkill
+// 删除自定义 Skill  鉴权：创建者 ∨ (编辑权限 ∧ 删除权限） 拒绝场景：非 Custom 类型 / 已共享 / 安全检测中 / 上架审批中 / 下架审批中
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DeleteSkill(request *DeleteSkillRequest) (response *DeleteSkillResponse, err error) {
+    return c.DeleteSkillWithContext(context.Background(), request)
+}
+
+// DeleteSkill
+// 删除自定义 Skill  鉴权：创建者 ∨ (编辑权限 ∧ 删除权限） 拒绝场景：非 Custom 类型 / 已共享 / 安全检测中 / 上架审批中 / 下架审批中
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DeleteSkillWithContext(ctx context.Context, request *DeleteSkillRequest) (response *DeleteSkillResponse, err error) {
+    if request == nil {
+        request = NewDeleteSkillRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "DeleteSkill")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteSkill require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteSkillResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteSkillShareRequest() (request *DeleteSkillShareRequest) {
+    request = &DeleteSkillShareRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "DeleteSkillShare")
+    
+    
+    return
+}
+
+func NewDeleteSkillShareResponse() (response *DeleteSkillShareResponse) {
+    response = &DeleteSkillShareResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteSkillShare
+// 提交共享 Skill 下架审批（v2，两段式：提交→审批→回调下架共享 Skill） 鉴权：删除权 拒绝场景：未共享 / 上架审批中 / 下架审批中
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DeleteSkillShare(request *DeleteSkillShareRequest) (response *DeleteSkillShareResponse, err error) {
+    return c.DeleteSkillShareWithContext(context.Background(), request)
+}
+
+// DeleteSkillShare
+// 提交共享 Skill 下架审批（v2，两段式：提交→审批→回调下架共享 Skill） 鉴权：删除权 拒绝场景：未共享 / 上架审批中 / 下架审批中
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DeleteSkillShareWithContext(ctx context.Context, request *DeleteSkillShareRequest) (response *DeleteSkillShareResponse, err error) {
+    if request == nil {
+        request = NewDeleteSkillShareRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "DeleteSkillShare")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteSkillShare require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteSkillShareResponse()
     err = c.Send(request, response)
     return
 }
@@ -809,6 +1141,60 @@ func (c *Client) DescribeAgentReleasePreviewListWithContext(ctx context.Context,
     request.SetContext(ctx)
     
     response = NewDescribeAgentReleasePreviewListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAgentSummaryListRequest() (request *DescribeAgentSummaryListRequest) {
+    request = &DescribeAgentSummaryListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "DescribeAgentSummaryList")
+    
+    
+    return
+}
+
+func NewDescribeAgentSummaryListResponse() (response *DescribeAgentSummaryListResponse) {
+    response = &DescribeAgentSummaryListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAgentSummaryList
+// 查询 Agent 摘要信息列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeAgentSummaryList(request *DescribeAgentSummaryListRequest) (response *DescribeAgentSummaryListResponse, err error) {
+    return c.DescribeAgentSummaryListWithContext(context.Background(), request)
+}
+
+// DescribeAgentSummaryList
+// 查询 Agent 摘要信息列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeAgentSummaryListWithContext(ctx context.Context, request *DescribeAgentSummaryListRequest) (response *DescribeAgentSummaryListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAgentSummaryListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "DescribeAgentSummaryList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAgentSummaryList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAgentSummaryListResponse()
     err = c.Send(request, response)
     return
 }
@@ -1461,6 +1847,114 @@ func (c *Client) DescribeSkillCategoryListWithContext(ctx context.Context, reque
     return
 }
 
+func NewDescribeSkillDetailRequest() (request *DescribeSkillDetailRequest) {
+    request = &DescribeSkillDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "DescribeSkillDetail")
+    
+    
+    return
+}
+
+func NewDescribeSkillDetailResponse() (response *DescribeSkillDetailResponse) {
+    response = &DescribeSkillDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSkillDetail
+// 查询skill详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeSkillDetail(request *DescribeSkillDetailRequest) (response *DescribeSkillDetailResponse, err error) {
+    return c.DescribeSkillDetailWithContext(context.Background(), request)
+}
+
+// DescribeSkillDetail
+// 查询skill详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeSkillDetailWithContext(ctx context.Context, request *DescribeSkillDetailRequest) (response *DescribeSkillDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeSkillDetailRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "DescribeSkillDetail")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSkillDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSkillDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSkillReferenceListRequest() (request *DescribeSkillReferenceListRequest) {
+    request = &DescribeSkillReferenceListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "DescribeSkillReferenceList")
+    
+    
+    return
+}
+
+func NewDescribeSkillReferenceListResponse() (response *DescribeSkillReferenceListResponse) {
+    response = &DescribeSkillReferenceListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSkillReferenceList
+// 查询某个 Skill 被引用的详情列表（按 SkillRefType 分组：OpenClaw / cloud agent / 企业助手 agent） 鉴权：同 DescribeSkillDetail（能看该 Skill 即可查）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeSkillReferenceList(request *DescribeSkillReferenceListRequest) (response *DescribeSkillReferenceListResponse, err error) {
+    return c.DescribeSkillReferenceListWithContext(context.Background(), request)
+}
+
+// DescribeSkillReferenceList
+// 查询某个 Skill 被引用的详情列表（按 SkillRefType 分组：OpenClaw / cloud agent / 企业助手 agent） 鉴权：同 DescribeSkillDetail（能看该 Skill 即可查）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeSkillReferenceListWithContext(ctx context.Context, request *DescribeSkillReferenceListRequest) (response *DescribeSkillReferenceListResponse, err error) {
+    if request == nil {
+        request = NewDescribeSkillReferenceListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "DescribeSkillReferenceList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSkillReferenceList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSkillReferenceListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSkillSummaryListRequest() (request *DescribeSkillSummaryListRequest) {
     request = &DescribeSkillSummaryListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1715,6 +2209,106 @@ func (c *Client) DescribeVariableListWithContext(ctx context.Context, request *D
     return
 }
 
+func NewFavoritePluginRequest() (request *FavoritePluginRequest) {
+    request = &FavoritePluginRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "FavoritePlugin")
+    
+    
+    return
+}
+
+func NewFavoritePluginResponse() (response *FavoritePluginResponse) {
+    response = &FavoritePluginResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// FavoritePlugin
+// 收藏插件
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) FavoritePlugin(request *FavoritePluginRequest) (response *FavoritePluginResponse, err error) {
+    return c.FavoritePluginWithContext(context.Background(), request)
+}
+
+// FavoritePlugin
+// 收藏插件
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) FavoritePluginWithContext(ctx context.Context, request *FavoritePluginRequest) (response *FavoritePluginResponse, err error) {
+    if request == nil {
+        request = NewFavoritePluginRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "FavoritePlugin")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("FavoritePlugin require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewFavoritePluginResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewFavoriteSkillRequest() (request *FavoriteSkillRequest) {
+    request = &FavoriteSkillRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "FavoriteSkill")
+    
+    
+    return
+}
+
+func NewFavoriteSkillResponse() (response *FavoriteSkillResponse) {
+    response = &FavoriteSkillResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// FavoriteSkill
+// 收藏skill
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) FavoriteSkill(request *FavoriteSkillRequest) (response *FavoriteSkillResponse, err error) {
+    return c.FavoriteSkillWithContext(context.Background(), request)
+}
+
+// FavoriteSkill
+// 收藏skill
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) FavoriteSkillWithContext(ctx context.Context, request *FavoriteSkillRequest) (response *FavoriteSkillResponse, err error) {
+    if request == nil {
+        request = NewFavoriteSkillRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "FavoriteSkill")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("FavoriteSkill require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewFavoriteSkillResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyAgentRequest() (request *ModifyAgentRequest) {
     request = &ModifyAgentRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1865,6 +2459,106 @@ func (c *Client) ModifyConversationWithContext(ctx context.Context, request *Mod
     return
 }
 
+func NewModifyPluginRequest() (request *ModifyPluginRequest) {
+    request = &ModifyPluginRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "ModifyPlugin")
+    
+    
+    return
+}
+
+func NewModifyPluginResponse() (response *ModifyPluginResponse) {
+    response = &ModifyPluginResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyPlugin
+// 修改插件
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) ModifyPlugin(request *ModifyPluginRequest) (response *ModifyPluginResponse, err error) {
+    return c.ModifyPluginWithContext(context.Background(), request)
+}
+
+// ModifyPlugin
+// 修改插件
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) ModifyPluginWithContext(ctx context.Context, request *ModifyPluginRequest) (response *ModifyPluginResponse, err error) {
+    if request == nil {
+        request = NewModifyPluginRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "ModifyPlugin")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyPlugin require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyPluginResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifySkillRequest() (request *ModifySkillRequest) {
+    request = &ModifySkillRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "ModifySkill")
+    
+    
+    return
+}
+
+func NewModifySkillResponse() (response *ModifySkillResponse) {
+    response = &ModifySkillResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifySkill
+// Skill修改
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) ModifySkill(request *ModifySkillRequest) (response *ModifySkillResponse, err error) {
+    return c.ModifySkillWithContext(context.Background(), request)
+}
+
+// ModifySkill
+// Skill修改
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) ModifySkillWithContext(ctx context.Context, request *ModifySkillRequest) (response *ModifySkillResponse, err error) {
+    if request == nil {
+        request = NewModifySkillRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "ModifySkill")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifySkill require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifySkillResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifySpaceRequest() (request *ModifySpaceRequest) {
     request = &ModifySpaceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1961,6 +2655,56 @@ func (c *Client) ModifyVariableWithContext(ctx context.Context, request *ModifyV
     request.SetContext(ctx)
     
     response = NewModifyVariableResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewReleaseSkillRequest() (request *ReleaseSkillRequest) {
+    request = &ReleaseSkillRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "ReleaseSkill")
+    
+    
+    return
+}
+
+func NewReleaseSkillResponse() (response *ReleaseSkillResponse) {
+    response = &ReleaseSkillResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ReleaseSkill
+// 上架skill
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) ReleaseSkill(request *ReleaseSkillRequest) (response *ReleaseSkillResponse, err error) {
+    return c.ReleaseSkillWithContext(context.Background(), request)
+}
+
+// ReleaseSkill
+// 上架skill
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) ReleaseSkillWithContext(ctx context.Context, request *ReleaseSkillRequest) (response *ReleaseSkillResponse, err error) {
+    if request == nil {
+        request = NewReleaseSkillRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "ReleaseSkill")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ReleaseSkill require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewReleaseSkillResponse()
     err = c.Send(request, response)
     return
 }
@@ -2111,6 +2855,106 @@ func (c *Client) RollbackReleaseWithContext(ctx context.Context, request *Rollba
     request.SetContext(ctx)
     
     response = NewRollbackReleaseResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUnfavoritePluginRequest() (request *UnfavoritePluginRequest) {
+    request = &UnfavoritePluginRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "UnfavoritePlugin")
+    
+    
+    return
+}
+
+func NewUnfavoritePluginResponse() (response *UnfavoritePluginResponse) {
+    response = &UnfavoritePluginResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UnfavoritePlugin
+// 取消收藏插件
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) UnfavoritePlugin(request *UnfavoritePluginRequest) (response *UnfavoritePluginResponse, err error) {
+    return c.UnfavoritePluginWithContext(context.Background(), request)
+}
+
+// UnfavoritePlugin
+// 取消收藏插件
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) UnfavoritePluginWithContext(ctx context.Context, request *UnfavoritePluginRequest) (response *UnfavoritePluginResponse, err error) {
+    if request == nil {
+        request = NewUnfavoritePluginRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "UnfavoritePlugin")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UnfavoritePlugin require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUnfavoritePluginResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUnfavoriteSkillRequest() (request *UnfavoriteSkillRequest) {
+    request = &UnfavoriteSkillRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "UnfavoriteSkill")
+    
+    
+    return
+}
+
+func NewUnfavoriteSkillResponse() (response *UnfavoriteSkillResponse) {
+    response = &UnfavoriteSkillResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UnfavoriteSkill
+// 取消收藏skill
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) UnfavoriteSkill(request *UnfavoriteSkillRequest) (response *UnfavoriteSkillResponse, err error) {
+    return c.UnfavoriteSkillWithContext(context.Background(), request)
+}
+
+// UnfavoriteSkill
+// 取消收藏skill
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) UnfavoriteSkillWithContext(ctx context.Context, request *UnfavoriteSkillRequest) (response *UnfavoriteSkillResponse, err error) {
+    if request == nil {
+        request = NewUnfavoriteSkillRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "UnfavoriteSkill")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UnfavoriteSkill require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUnfavoriteSkillResponse()
     err = c.Send(request, response)
     return
 }

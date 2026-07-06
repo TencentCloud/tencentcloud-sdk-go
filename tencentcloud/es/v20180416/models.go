@@ -5436,6 +5436,10 @@ type InstanceInfo struct {
 	// <p>License类型<li>oss：开源版</li><li>basic：基础版</li><li>platinum：白金版</li>默认值platinum</p>
 	LicenseType *string `json:"LicenseType,omitnil,omitempty" name:"LicenseType"`
 
+	// <p>License类型<li>oss：开源版</li><li>basic：基础版</li><li>platinum：白金版</li><li>enterprise：企业版</li>默认值platinum</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RealLicenseType *string `json:"RealLicenseType,omitnil,omitempty" name:"RealLicenseType"`
+
 	// <p>是否为冷热集群<li>true: 冷热集群</li><li>false: 非冷热集群</li></p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnableHotWarmMode *bool `json:"EnableHotWarmMode,omitnil,omitempty" name:"EnableHotWarmMode"`
@@ -5647,7 +5651,7 @@ type InstanceInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DisasterRecoverGroupAffinity *uint64 `json:"DisasterRecoverGroupAffinity,omitnil,omitempty" name:"DisasterRecoverGroupAffinity"`
 
-	// <p>子产品ID枚举值： 开源版：&quot;sp_es_io2&quot;， 基础版：&quot;sp_es_basic&quot;，白金版：&quot;sp_es_platinum&quot;，企业版：&quot;sp_es_enterprise&quot;，CDC白金版：&quot;sp_es_cdc_platinum&quot;，日志增强版：&quot;sp_es_enlogging&quot;，tsearch：&quot;sp_tsearch_io2&quot;，logstash：&quot;sp_es_logstash&quot; ，可以为空，为空的时候后台取LicenseType映射该字段</p>
+	// <p>子产品ID枚举值： 开源版：&quot;sp_es_io2&quot;， 基础版：&quot;sp_es_basic&quot;，白金版：&quot;sp_es_platinum&quot;，AI搜索增强版：&quot;sp_es_aisearch&quot;，企业版：&quot;sp_es_enterprise&quot;，CDC白金版：&quot;sp_es_cdc_platinum&quot;，日志增强版：&quot;sp_es_enlogging&quot;，tsearch：&quot;sp_tsearch_io2&quot;，logstash：&quot;sp_es_logstash&quot; ，可以为空，为空的时候后台取LicenseType映射该字段</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubProductCode *string `json:"SubProductCode,omitnil,omitempty" name:"SubProductCode"`
 
@@ -5691,6 +5695,15 @@ type InstanceInfo struct {
 
 	// <p>延迟销毁的时间</p><p>单位：天</p>
 	DelayDestroyInterval *int64 `json:"DelayDestroyInterval,omitnil,omitempty" name:"DelayDestroyInterval"`
+
+	// <p>开启异常节点自动替换，0关闭，1开启</p>
+	EnableAutoReplace *int64 `json:"EnableAutoReplace,omitnil,omitempty" name:"EnableAutoReplace"`
+
+	// <p>开启mtls，0关闭，1开启</p>
+	OpenMTLS *uint64 `json:"OpenMTLS,omitnil,omitempty" name:"OpenMTLS"`
+
+	// <p>证书类型</p>
+	ServerCertSource *string `json:"ServerCertSource,omitnil,omitempty" name:"ServerCertSource"`
 }
 
 type InstanceLog struct {

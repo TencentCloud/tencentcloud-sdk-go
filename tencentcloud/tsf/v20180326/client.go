@@ -903,6 +903,7 @@ func NewCreateConfigResponse() (response *CreateConfigResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CONFIGCREATEFAILED = "FailedOperation.ConfigCreateFailed"
+//  FAILEDOPERATION_CREATEOPERATIONTOOFREQUENTLY = "FailedOperation.CreateOperationTooFrequently"
 //  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
 //  INVALIDPARAMETERVALUE_APPLICATIONNOTEXISTS = "InvalidParameterValue.ApplicationNotExists"
 //  INVALIDPARAMETERVALUE_CONFIGEXISTS = "InvalidParameterValue.ConfigExists"
@@ -927,6 +928,7 @@ func (c *Client) CreateConfig(request *CreateConfigRequest) (response *CreateCon
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CONFIGCREATEFAILED = "FailedOperation.ConfigCreateFailed"
+//  FAILEDOPERATION_CREATEOPERATIONTOOFREQUENTLY = "FailedOperation.CreateOperationTooFrequently"
 //  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
 //  INVALIDPARAMETERVALUE_APPLICATIONNOTEXISTS = "InvalidParameterValue.ApplicationNotExists"
 //  INVALIDPARAMETERVALUE_CONFIGEXISTS = "InvalidParameterValue.ConfigExists"
@@ -1135,6 +1137,7 @@ func NewCreateConfigWithDetailRespResponse() (response *CreateConfigWithDetailRe
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CONFIGCREATEFAILED = "FailedOperation.ConfigCreateFailed"
+//  FAILEDOPERATION_CREATEOPERATIONTOOFREQUENTLY = "FailedOperation.CreateOperationTooFrequently"
 //  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
 //  INVALIDPARAMETERVALUE_APPLICATIONNOTEXISTS = "InvalidParameterValue.ApplicationNotExists"
 //  INVALIDPARAMETERVALUE_CONFIGEXISTS = "InvalidParameterValue.ConfigExists"
@@ -1159,6 +1162,7 @@ func (c *Client) CreateConfigWithDetailResp(request *CreateConfigWithDetailRespR
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CONFIGCREATEFAILED = "FailedOperation.ConfigCreateFailed"
+//  FAILEDOPERATION_CREATEOPERATIONTOOFREQUENTLY = "FailedOperation.CreateOperationTooFrequently"
 //  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
 //  INVALIDPARAMETERVALUE_APPLICATIONNOTEXISTS = "InvalidParameterValue.ApplicationNotExists"
 //  INVALIDPARAMETERVALUE_CONFIGEXISTS = "InvalidParameterValue.ConfigExists"
@@ -1307,6 +1311,7 @@ func NewCreateFileConfigResponse() (response *CreateFileConfigResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CONFIGCREATEFAILED = "FailedOperation.ConfigCreateFailed"
+//  FAILEDOPERATION_CREATEOPERATIONTOOFREQUENTLY = "FailedOperation.CreateOperationTooFrequently"
 //  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
 //  INVALIDPARAMETERVALUE_APPLICATIONNOTEXISTS = "InvalidParameterValue.ApplicationNotExists"
 //  INVALIDPARAMETERVALUE_CONFIGEXISTS = "InvalidParameterValue.ConfigExists"
@@ -1332,6 +1337,7 @@ func (c *Client) CreateFileConfig(request *CreateFileConfigRequest) (response *C
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CONFIGCREATEFAILED = "FailedOperation.ConfigCreateFailed"
+//  FAILEDOPERATION_CREATEOPERATIONTOOFREQUENTLY = "FailedOperation.CreateOperationTooFrequently"
 //  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
 //  INVALIDPARAMETERVALUE_APPLICATIONNOTEXISTS = "InvalidParameterValue.ApplicationNotExists"
 //  INVALIDPARAMETERVALUE_CONFIGEXISTS = "InvalidParameterValue.ConfigExists"
@@ -1389,6 +1395,7 @@ func NewCreateFileConfigWithDetailRespResponse() (response *CreateFileConfigWith
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CONFIGCREATEFAILED = "FailedOperation.ConfigCreateFailed"
+//  FAILEDOPERATION_CREATEOPERATIONTOOFREQUENTLY = "FailedOperation.CreateOperationTooFrequently"
 //  INVALIDPARAMETERVALUE_APPLICATIONNOTEXISTS = "InvalidParameterValue.ApplicationNotExists"
 //  INVALIDPARAMETERVALUE_CONFIGEXISTS = "InvalidParameterValue.ConfigExists"
 //  INVALIDPARAMETERVALUE_FILECONFIGEXISTS = "InvalidParameterValue.FileConfigExists"
@@ -1410,6 +1417,7 @@ func (c *Client) CreateFileConfigWithDetailResp(request *CreateFileConfigWithDet
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CONFIGCREATEFAILED = "FailedOperation.ConfigCreateFailed"
+//  FAILEDOPERATION_CREATEOPERATIONTOOFREQUENTLY = "FailedOperation.CreateOperationTooFrequently"
 //  INVALIDPARAMETERVALUE_APPLICATIONNOTEXISTS = "InvalidParameterValue.ApplicationNotExists"
 //  INVALIDPARAMETERVALUE_CONFIGEXISTS = "InvalidParameterValue.ConfigExists"
 //  INVALIDPARAMETERVALUE_FILECONFIGEXISTS = "InvalidParameterValue.FileConfigExists"
@@ -2242,6 +2250,7 @@ func NewCreatePublicConfigResponse() (response *CreatePublicConfigResponse) {
 // 创建公共配置项
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CREATEOPERATIONTOOFREQUENTLY = "FailedOperation.CreateOperationTooFrequently"
 //  INVALIDPARAMETERVALUE_CONFIGEXISTS = "InvalidParameterValue.ConfigExists"
 //  INVALIDPARAMETERVALUE_CONFIGVALUEFORMATINVALID = "InvalidParameterValue.ConfigValueFormatInvalid"
 //  INVALIDPARAMETERVALUE_CONFIGVERSIONINVALID = "InvalidParameterValue.ConfigVersionInvalid"
@@ -2255,6 +2264,7 @@ func (c *Client) CreatePublicConfig(request *CreatePublicConfigRequest) (respons
 // 创建公共配置项
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CREATEOPERATIONTOOFREQUENTLY = "FailedOperation.CreateOperationTooFrequently"
 //  INVALIDPARAMETERVALUE_CONFIGEXISTS = "InvalidParameterValue.ConfigExists"
 //  INVALIDPARAMETERVALUE_CONFIGVALUEFORMATINVALID = "InvalidParameterValue.ConfigValueFormatInvalid"
 //  INVALIDPARAMETERVALUE_CONFIGVERSIONINVALID = "InvalidParameterValue.ConfigVersionInvalid"
@@ -2300,6 +2310,7 @@ func NewCreatePublicConfigWithDetailRespResponse() (response *CreatePublicConfig
 // 创建公共配置项，并返回配置项详细信息。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CREATEOPERATIONTOOFREQUENTLY = "FailedOperation.CreateOperationTooFrequently"
 //  INVALIDPARAMETERVALUE_CONFIGEXISTS = "InvalidParameterValue.ConfigExists"
 //  INVALIDPARAMETERVALUE_CONFIGVALUEFORMATINVALID = "InvalidParameterValue.ConfigValueFormatInvalid"
 //  INVALIDPARAMETERVALUE_CONFIGVERSIONINVALID = "InvalidParameterValue.ConfigVersionInvalid"
@@ -2313,6 +2324,7 @@ func (c *Client) CreatePublicConfigWithDetailResp(request *CreatePublicConfigWit
 // 创建公共配置项，并返回配置项详细信息。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CREATEOPERATIONTOOFREQUENTLY = "FailedOperation.CreateOperationTooFrequently"
 //  INVALIDPARAMETERVALUE_CONFIGEXISTS = "InvalidParameterValue.ConfigExists"
 //  INVALIDPARAMETERVALUE_CONFIGVALUEFORMATINVALID = "InvalidParameterValue.ConfigValueFormatInvalid"
 //  INVALIDPARAMETERVALUE_CONFIGVERSIONINVALID = "InvalidParameterValue.ConfigVersionInvalid"
@@ -12094,6 +12106,7 @@ func NewReleaseConfigResponse() (response *ReleaseConfigResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_CONFIGGROUPQUERYFAILED = "FailedOperation.ConfigGroupQueryFailed"
 //  FAILEDOPERATION_CONFIGRELEASELOGCREATEFAILED = "FailedOperation.ConfigReleaseLogCreateFailed"
+//  FAILEDOPERATION_RELEASEOPERATIONTOOFREQUENTLY = "FailedOperation.ReleaseOperationTooFrequently"
 //  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
 //  INTERNALERROR_CANNOTCONNCONSULSERVER = "InternalError.CanNotConnConsulServer"
 //  INTERNALERROR_CONSULSERVERERROR = "InternalError.ConsulServerError"
@@ -12117,6 +12130,7 @@ func (c *Client) ReleaseConfig(request *ReleaseConfigRequest) (response *Release
 // 可能返回的错误码:
 //  FAILEDOPERATION_CONFIGGROUPQUERYFAILED = "FailedOperation.ConfigGroupQueryFailed"
 //  FAILEDOPERATION_CONFIGRELEASELOGCREATEFAILED = "FailedOperation.ConfigReleaseLogCreateFailed"
+//  FAILEDOPERATION_RELEASEOPERATIONTOOFREQUENTLY = "FailedOperation.ReleaseOperationTooFrequently"
 //  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
 //  INTERNALERROR_CANNOTCONNCONSULSERVER = "InternalError.CanNotConnConsulServer"
 //  INTERNALERROR_CONSULSERVERERROR = "InternalError.ConsulServerError"
@@ -12172,6 +12186,7 @@ func NewReleaseConfigWithDetailRespResponse() (response *ReleaseConfigWithDetail
 // 可能返回的错误码:
 //  FAILEDOPERATION_CONFIGGROUPQUERYFAILED = "FailedOperation.ConfigGroupQueryFailed"
 //  FAILEDOPERATION_CONFIGRELEASELOGCREATEFAILED = "FailedOperation.ConfigReleaseLogCreateFailed"
+//  FAILEDOPERATION_RELEASEOPERATIONTOOFREQUENTLY = "FailedOperation.ReleaseOperationTooFrequently"
 //  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
 //  INTERNALERROR_CANNOTCONNCONSULSERVER = "InternalError.CanNotConnConsulServer"
 //  INTERNALERROR_CONSULSERVERERROR = "InternalError.ConsulServerError"
@@ -12195,6 +12210,7 @@ func (c *Client) ReleaseConfigWithDetailResp(request *ReleaseConfigWithDetailRes
 // 可能返回的错误码:
 //  FAILEDOPERATION_CONFIGGROUPQUERYFAILED = "FailedOperation.ConfigGroupQueryFailed"
 //  FAILEDOPERATION_CONFIGRELEASELOGCREATEFAILED = "FailedOperation.ConfigReleaseLogCreateFailed"
+//  FAILEDOPERATION_RELEASEOPERATIONTOOFREQUENTLY = "FailedOperation.ReleaseOperationTooFrequently"
 //  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
 //  INTERNALERROR_CANNOTCONNCONSULSERVER = "InternalError.CanNotConnConsulServer"
 //  INTERNALERROR_CONSULSERVERERROR = "InternalError.ConsulServerError"
@@ -12249,6 +12265,7 @@ func NewReleaseFileConfigResponse() (response *ReleaseFileConfigResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CONFIGGROUPQUERYFAILED = "FailedOperation.ConfigGroupQueryFailed"
+//  FAILEDOPERATION_RELEASEOPERATIONTOOFREQUENTLY = "FailedOperation.ReleaseOperationTooFrequently"
 //  INTERNALERROR_CONSULSERVERERROR = "InternalError.ConsulServerError"
 //  INVALIDPARAMETERVALUE_FILECONFIGALREADYRELEASED = "InvalidParameterValue.FileConfigAlreadyReleased"
 //  INVALIDPARAMETERVALUE_FILECONFIGGROUPAPPLICATIONIDNOTMATCH = "InvalidParameterValue.FileConfigGroupApplicationIdNotMatch"
@@ -12265,6 +12282,7 @@ func (c *Client) ReleaseFileConfig(request *ReleaseFileConfigRequest) (response 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CONFIGGROUPQUERYFAILED = "FailedOperation.ConfigGroupQueryFailed"
+//  FAILEDOPERATION_RELEASEOPERATIONTOOFREQUENTLY = "FailedOperation.ReleaseOperationTooFrequently"
 //  INTERNALERROR_CONSULSERVERERROR = "InternalError.ConsulServerError"
 //  INVALIDPARAMETERVALUE_FILECONFIGALREADYRELEASED = "InvalidParameterValue.FileConfigAlreadyReleased"
 //  INVALIDPARAMETERVALUE_FILECONFIGGROUPAPPLICATIONIDNOTMATCH = "InvalidParameterValue.FileConfigGroupApplicationIdNotMatch"
@@ -12313,6 +12331,7 @@ func NewReleasePublicConfigResponse() (response *ReleasePublicConfigResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CONFIGNAMESPACEQUERYFAILED = "FailedOperation.ConfigNamespaceQueryFailed"
+//  FAILEDOPERATION_RELEASEOPERATIONTOOFREQUENTLY = "FailedOperation.ReleaseOperationTooFrequently"
 //  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
 //  INTERNALERROR_CONSULSERVERERROR = "InternalError.ConsulServerError"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
@@ -12330,6 +12349,7 @@ func (c *Client) ReleasePublicConfig(request *ReleasePublicConfigRequest) (respo
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CONFIGNAMESPACEQUERYFAILED = "FailedOperation.ConfigNamespaceQueryFailed"
+//  FAILEDOPERATION_RELEASEOPERATIONTOOFREQUENTLY = "FailedOperation.ReleaseOperationTooFrequently"
 //  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
 //  INTERNALERROR_CONSULSERVERERROR = "InternalError.ConsulServerError"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"

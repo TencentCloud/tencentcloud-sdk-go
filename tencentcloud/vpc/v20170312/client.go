@@ -3548,13 +3548,7 @@ func NewCreateCdcNetPlanesResponse() (response *CreateCdcNetPlanesResponse) {
 // 创建虚拟连接，用于支持 CDC 多租户模式
 //
 // 可能返回的错误码:
-//  INTERNALERROR_MODULEERROR = "InternalError.ModuleError"
-//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
-//  INVALIDPARAMETERVALUE_RESOURCENOTFOUND = "InvalidParameterValue.ResourceNotFound"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  MISSINGPARAMETER_MULTIMISSINGPARAMETER = "MissingParameter.MultiMissingParameter"
-//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_SERVICEUNSUPPORTEDREGION = "UnsupportedOperation.ServiceUnsupportedRegion"
 func (c *Client) CreateCdcNetPlanes(request *CreateCdcNetPlanesRequest) (response *CreateCdcNetPlanesResponse, err error) {
     return c.CreateCdcNetPlanesWithContext(context.Background(), request)
 }
@@ -3563,13 +3557,7 @@ func (c *Client) CreateCdcNetPlanes(request *CreateCdcNetPlanesRequest) (respons
 // 创建虚拟连接，用于支持 CDC 多租户模式
 //
 // 可能返回的错误码:
-//  INTERNALERROR_MODULEERROR = "InternalError.ModuleError"
-//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
-//  INVALIDPARAMETERVALUE_RESOURCENOTFOUND = "InvalidParameterValue.ResourceNotFound"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  MISSINGPARAMETER_MULTIMISSINGPARAMETER = "MissingParameter.MultiMissingParameter"
-//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_SERVICEUNSUPPORTEDREGION = "UnsupportedOperation.ServiceUnsupportedRegion"
 func (c *Client) CreateCdcNetPlanesWithContext(ctx context.Context, request *CreateCdcNetPlanesRequest) (response *CreateCdcNetPlanesResponse, err error) {
     if request == nil {
         request = NewCreateCdcNetPlanesRequest()
@@ -8700,14 +8688,7 @@ func NewDeleteCdcLDCXListResponse() (response *DeleteCdcLDCXListResponse) {
 // 删除 IDC通道
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNSUPPORTEDOPERATION_CCNROUTETABLENOTEXIST = "UnsupportedOperation.CcnRouteTableNotExist"
-//  UNSUPPORTEDOPERATION_DELDEFAULTROUTE = "UnsupportedOperation.DelDefaultRoute"
-//  UNSUPPORTEDOPERATION_NOTSUPPORTDELETEDEFAULTCCNROUTETABLE = "UnsupportedOperation.NotSupportDeleteDefaultCcnRouteTable"
-//  UNSUPPORTEDOPERATION_ROUTETABLECANNOTDELETE = "UnsupportedOperation.RouteTableCanNotDelete"
+//  UNSUPPORTEDOPERATION_SERVICEUNSUPPORTEDREGION = "UnsupportedOperation.ServiceUnsupportedRegion"
 func (c *Client) DeleteCdcLDCXList(request *DeleteCdcLDCXListRequest) (response *DeleteCdcLDCXListResponse, err error) {
     return c.DeleteCdcLDCXListWithContext(context.Background(), request)
 }
@@ -8716,14 +8697,7 @@ func (c *Client) DeleteCdcLDCXList(request *DeleteCdcLDCXListRequest) (response 
 // 删除 IDC通道
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNSUPPORTEDOPERATION_CCNROUTETABLENOTEXIST = "UnsupportedOperation.CcnRouteTableNotExist"
-//  UNSUPPORTEDOPERATION_DELDEFAULTROUTE = "UnsupportedOperation.DelDefaultRoute"
-//  UNSUPPORTEDOPERATION_NOTSUPPORTDELETEDEFAULTCCNROUTETABLE = "UnsupportedOperation.NotSupportDeleteDefaultCcnRouteTable"
-//  UNSUPPORTEDOPERATION_ROUTETABLECANNOTDELETE = "UnsupportedOperation.RouteTableCanNotDelete"
+//  UNSUPPORTEDOPERATION_SERVICEUNSUPPORTEDREGION = "UnsupportedOperation.ServiceUnsupportedRegion"
 func (c *Client) DeleteCdcLDCXListWithContext(ctx context.Context, request *DeleteCdcLDCXListRequest) (response *DeleteCdcLDCXListResponse, err error) {
     if request == nil {
         request = NewDeleteCdcLDCXListRequest()

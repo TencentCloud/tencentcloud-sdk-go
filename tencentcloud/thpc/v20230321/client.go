@@ -447,6 +447,7 @@ func NewCreateWorkspacesResponse() (response *CreateWorkspacesResponse) {
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_INVALIDUNDERWRITEPERIOD = "InvalidParameterValue.InvalidUnderwritePeriod"
+//  INVALIDPARAMETERVALUE_SPACETYPENOTAVAILABLE = "InvalidParameterValue.SpaceTypeNotAvailable"
 func (c *Client) CreateWorkspaces(request *CreateWorkspacesRequest) (response *CreateWorkspacesResponse, err error) {
     return c.CreateWorkspacesWithContext(context.Background(), request)
 }
@@ -456,6 +457,7 @@ func (c *Client) CreateWorkspaces(request *CreateWorkspacesRequest) (response *C
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_INVALIDUNDERWRITEPERIOD = "InvalidParameterValue.InvalidUnderwritePeriod"
+//  INVALIDPARAMETERVALUE_SPACETYPENOTAVAILABLE = "InvalidParameterValue.SpaceTypeNotAvailable"
 func (c *Client) CreateWorkspacesWithContext(ctx context.Context, request *CreateWorkspacesRequest) (response *CreateWorkspacesResponse, err error) {
     if request == nil {
         request = NewCreateWorkspacesRequest()

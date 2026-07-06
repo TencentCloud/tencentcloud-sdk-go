@@ -2318,6 +2318,67 @@ type AigcQuotaItem struct {
 	Usage *uint64 `json:"Usage,omitnil,omitempty" name:"Usage"`
 }
 
+type AigcTextDetail struct {
+	// <p>每页条数</p>
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// <p>上一页响应中返回的 scroll_token,用于翻下一页</p>
+	ScrollToken *string `json:"ScrollToken,omitnil,omitempty" name:"ScrollToken"`
+
+	// <p>生文详细数据</p>
+	Data []*AigcTextDetailData `json:"Data,omitnil,omitempty" name:"Data"`
+}
+
+type AigcTextDetailData struct {
+	// <p>请求开始时间(RFC3339)</p>
+	Timestamp *string `json:"Timestamp,omitnil,omitempty" name:"Timestamp"`
+
+	// <p>网关层请求 ID</p>
+	ReqId *string `json:"ReqId,omitnil,omitempty" name:"ReqId"`
+
+	// <p>后端模型返回的对话 ID</p>
+	ChatId *string `json:"ChatId,omitnil,omitempty" name:"ChatId"`
+
+	// <p>返回给客户端的 HTTP 状态码</p>
+	StatusCode *uint64 `json:"StatusCode,omitnil,omitempty" name:"StatusCode"`
+
+	// <p>模型名</p>
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+
+	// <p>应用ID</p>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+
+	// <p>脱敏后的 api_key:前 8 位 + ****(长度 ≤ 8 时原样返回)</p>
+	ApiKey *string `json:"ApiKey,omitnil,omitempty" name:"ApiKey"`
+
+	// <p>是否流式返回</p>
+	Stream *bool `json:"Stream,omitnil,omitempty" name:"Stream"`
+
+	// <p>输入 token 数</p>
+	InputTokens *int64 `json:"InputTokens,omitnil,omitempty" name:"InputTokens"`
+
+	// <p>输出 token 数</p>
+	OutputTokens *int64 `json:"OutputTokens,omitnil,omitempty" name:"OutputTokens"`
+
+	// <p>命中 prompt 缓存的 token 数</p>
+	CacheInputTokens *int64 `json:"CacheInputTokens,omitnil,omitempty" name:"CacheInputTokens"`
+
+	// <p>总 token 数</p>
+	TotalTokens *int64 `json:"TotalTokens,omitnil,omitempty" name:"TotalTokens"`
+
+	// <p>生成阶段的tokens/秒</p>
+	TPS *float64 `json:"TPS,omitnil,omitempty" name:"TPS"`
+
+	// <p>首字延迟(Time To First Token)</p><p>单位：秒</p>
+	TTFT *float64 `json:"TTFT,omitnil,omitempty" name:"TTFT"`
+
+	// <p>端到端总耗时</p><p>单位：秒</p>
+	Total *float64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// <p>入口协议:completions / responses / anthropic</p>
+	ApiType *string `json:"ApiType,omitnil,omitempty" name:"ApiType"`
+}
+
 type AigcUsageDataItem struct {
 	// <p>AIGC规格。<br>取值有：</p><li>Qwen2.0</li><li>Hunyuan3.0_1K</li><li>Hunyuan3.0_2K</li><li>Hunyuan3.0_4K</li><li>Mingmou1.0_1K</li><li>Mingmou1.0_2K</li><li>Mingmou1.0_4K</li><li>ViduQ2_T2i_1080P</li><li>ViduQ2_T2i_2K</li><li>ViduQ2_T2i_4K</li><li>ViduQ2_I2i_1080P</li><li>ViduQ2_I2i_2K</li><li>ViduQ2_I2i_4K</li><li>ViduQ2_Refer2i_1080P</li><li>ViduQ2_Refer2i_2K</li><li>ViduQ2_Refer2i_4K</li><li>Kling2.1_T2i_1K2K</li><li>Kling2.1_T2i_4K</li><li>Kling2.1_Refer2i_1K</li><li>Kling2.1_Refer2i_2K</li><li>Kling2.1_Refer2i_4K</li><li>Veo3.1Standard</li><li>Veo3.1Fast</li><li>Kling2.0&amp;2.1std_720P</li><li>Kling2.0&amp;2.1pro_1080P</li><li>Kling2.5pro_720P</li><li>Kling2.5pro_1080P</li><li>KlingO1_720P</li><li>KlingO1_1080P</li><li>KlingO1_NoVideo_720P</li><li>KlingO1_NoVideo_1080P</li><li>Kling2.6</li><li>Kling2.6Sound</li><li>Kling2.6MotionControl_720P</li><li>Kling2.6MotionControl_1080P</li><li>Kling3.0_720P</li><li>Kling3.0Sound_720P</li><li>Kling3.0CustomVoice_720P</li><li>Kling3.0_1080P</li><li>Kling3.0Sound_1080P</li><li>Kling3.0CustomVoice_1080P</li><li>Kling3.0CustomVoice_2K</li><li>Kling3.0CustomVoice_4K</li><li>Kling3.0MotionControl_720P</li><li>Kling3.0MotionControl_1080P</li><li>Kling3.0MotionControl_2K</li><li>Kling3.0MotionControl_4K</li><li>Kling_Avatar_I2v_720P</li><li>Kling_Avatar_I2v_1080P</li><li>Kling_Identifyface</li><li>Hailuo02&amp;2.3_768P</li><li>Hailuo02&amp;2.3_1080P</li><li>Hailuo2.3fast_768P</li><li>Hailuo2.3fast_1080P</li><li>ViduQ2_720P</li><li>ViduQ2_720P_OffPeak</li><li>ViduQ2_1080P</li><li>ViduQ2_1080P_OffPeak</li><li>ViduQ2_Refer_540P</li><li>ViduQ2_Refer_540P_OffPeak</li><li>ViduQ2_Refer_720P</li><li>ViduQ2_Refer_720P_OffPeak</li><li>ViduQ2_Refer_1080P</li><li>ViduQ2_Refer_1080P_OffPeak</li><li>ViduQ2pro_720P</li><li>ViduQ2pro_720P_OffPeak</li><li>ViduQ2pro_1080P</li><li>ViduQ2pro_1080P_OffPeak</li><li>ViduQ2pro_Refer_720P</li><li>ViduQ2pro_Refer_720P_OffPeak</li><li>ViduQ2pro_Refer_720P</li><li>ViduQ2pro_Refer_720P_OffPeak</li><li>ViduQ2pro_Refer_1080P</li><li>ViduQ2pro_Refer_1080P_OffPeak</li><li>ViduQ2turbo_720P</li><li>ViduQ2turbo_720P_OffPeak</li><li>ViduQ2turbo_1080P</li><li>ViduQ2turbo_1080P_OffPeak</li><li>ViduQ3_Refer_720P</li><li>ViduQ3_Refer_720P_OffPeak</li><li>ViduQ3_Refer_1080P</li><li>ViduQ3_Refer_1080P_OffPeak</li><li>ViduQ3_Refer_2K</li><li>ViduQ3_Refer_2K_OffPeak</li><li>ViduQ3_Refer_4K</li><li>ViduQ3_Refer_4K_OffPeak</li><li>ViduQ3pro_540P</li><li>ViduQ3pro_540P_OffPeak</li><li>ViduQ3pro_720P</li><li>ViduQ3pro_720P_OffPeak</li><li>ViduQ3pro_1080P</li><li>ViduQ3pro_1080P_OffPeak</li><li>ViduQ3turbo_540P</li><li>ViduQ3turbo_540P_OffPeak</li><li>ViduQ3turbo_720P</li><li>ViduQ3turbo_720P_OffPeak</li><li>ViduQ3turbo_1080P</li><li>ViduQ3turbo_1080P_OffPeak</li><li>ViduQ3turbo_2K</li><li>ViduQ3turbo_2K_OffPeak</li><li>ViduQ3turbo_4K</li><li>ViduQ3turbo_4K_OffPeak</li><li>Vidu_TemplateEffect</li><li>Hunyuan1.5_720P</li><li>Hunyuan1.5_1080P</li><li>Mingmou1.0_720P</li><li>Mingmou1.0_1080P</li><li>ImageProductImage</li><li>ImageChangeClothes</li><li>VideoProductShowcase</li><li>ImageOutPainting</li><li>FaceInfo</li><li>CustomVoice</li><li>Subject</li><li>unknown</li>
 	Specification *string `json:"Specification,omitnil,omitempty" name:"Specification"`
@@ -12507,7 +12568,7 @@ type DescribeAigcUsageDataRequestParams struct {
 	// <p>结束日期，需大于等于起始日期。使用 <a href="https://cloud.tencent.com/document/product/266/11732#52">ISO 日期格式</a>。</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// <p>AIGC类型。</p><p>枚举值：</p><ul><li>Video： 视频</li><li>Image： 图片</li><li>Text： 文本</li><li>Audio： 音频</li><li>SceneAigcVideo： 场景化视频处理</li><li>SceneAigcImage： 场景化图片处理</li><li>SceneAigcTime： 场景化处理次数</li></ul>
+	// <p>AIGC类型。</p><p>枚举值：</p><ul><li>Video： 视频</li><li>Image： 图片</li><li>Text： 文本</li><li>Audio： 音频</li><li>SceneAigcVideo： 场景化视频处理</li><li>SceneAigcImage： 场景化图片处理</li><li>SceneAigcTime： 场景化处理次数</li><li>TextDetail： 文本详细记录</li></ul>
 	AigcType *string `json:"AigcType,omitnil,omitempty" name:"AigcType"`
 
 	// <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
@@ -12518,6 +12579,15 @@ type DescribeAigcUsageDataRequestParams struct {
 
 	// <p>API Key</p>
 	APIKeys []*string `json:"APIKeys,omitnil,omitempty" name:"APIKeys"`
+
+	// <p>查询游标</p>
+	ScrollToken *string `json:"ScrollToken,omitnil,omitempty" name:"ScrollToken"`
+
+	// <p>每页大小，最大 200，超出会被截断为 200</p>
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// <p>生文RequestId，当AigcType为TextDetail时有效。</p>
+	ReqId *string `json:"ReqId,omitnil,omitempty" name:"ReqId"`
 }
 
 type DescribeAigcUsageDataRequest struct {
@@ -12529,7 +12599,7 @@ type DescribeAigcUsageDataRequest struct {
 	// <p>结束日期，需大于等于起始日期。使用 <a href="https://cloud.tencent.com/document/product/266/11732#52">ISO 日期格式</a>。</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// <p>AIGC类型。</p><p>枚举值：</p><ul><li>Video： 视频</li><li>Image： 图片</li><li>Text： 文本</li><li>Audio： 音频</li><li>SceneAigcVideo： 场景化视频处理</li><li>SceneAigcImage： 场景化图片处理</li><li>SceneAigcTime： 场景化处理次数</li></ul>
+	// <p>AIGC类型。</p><p>枚举值：</p><ul><li>Video： 视频</li><li>Image： 图片</li><li>Text： 文本</li><li>Audio： 音频</li><li>SceneAigcVideo： 场景化视频处理</li><li>SceneAigcImage： 场景化图片处理</li><li>SceneAigcTime： 场景化处理次数</li><li>TextDetail： 文本详细记录</li></ul>
 	AigcType *string `json:"AigcType,omitnil,omitempty" name:"AigcType"`
 
 	// <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
@@ -12540,6 +12610,15 @@ type DescribeAigcUsageDataRequest struct {
 
 	// <p>API Key</p>
 	APIKeys []*string `json:"APIKeys,omitnil,omitempty" name:"APIKeys"`
+
+	// <p>查询游标</p>
+	ScrollToken *string `json:"ScrollToken,omitnil,omitempty" name:"ScrollToken"`
+
+	// <p>每页大小，最大 200，超出会被截断为 200</p>
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// <p>生文RequestId，当AigcType为TextDetail时有效。</p>
+	ReqId *string `json:"ReqId,omitnil,omitempty" name:"ReqId"`
 }
 
 func (r *DescribeAigcUsageDataRequest) ToJsonString() string {
@@ -12560,6 +12639,9 @@ func (r *DescribeAigcUsageDataRequest) FromJsonString(s string) error {
 	delete(f, "SubAppId")
 	delete(f, "APIKey")
 	delete(f, "APIKeys")
+	delete(f, "ScrollToken")
+	delete(f, "PageSize")
+	delete(f, "ReqId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAigcUsageDataRequest has unknown keys!", "")
 	}
@@ -12570,6 +12652,10 @@ func (r *DescribeAigcUsageDataRequest) FromJsonString(s string) error {
 type DescribeAigcUsageDataResponseParams struct {
 	// <p>AIGC统计数据。</p>
 	AigcUsageDataSet []*AigcUsageDataItem `json:"AigcUsageDataSet,omitnil,omitempty" name:"AigcUsageDataSet"`
+
+	// <p>生文详细日志</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AigcTextDetails *AigcTextDetail `json:"AigcTextDetails,omitnil,omitempty" name:"AigcTextDetails"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

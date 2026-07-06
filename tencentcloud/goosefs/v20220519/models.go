@@ -531,26 +531,29 @@ type ClientClusterManagerNodeInfo struct {
 }
 
 type ClientNodeAttribute struct {
-	// 客户端节点IP
+	// <p>客户端节点IP</p>
 	ClientNodeIp *string `json:"ClientNodeIp,omitnil,omitempty" name:"ClientNodeIp"`
 
-	// 客户端节点服务状态, Active(运行中), Adding(添加中), Destroying(销毁中), Down(已停止)
+	// <p>客户端节点服务状态, Active(运行中), Adding(添加中), Destroying(销毁中), Down(已停止)</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 客户端节点类型，extend(扩展节点)，manager(管理节点)
+	// <p>客户端节点类型，extend(扩展节点)，manager(管理节点)</p>
 	ClientType *string `json:"ClientType,omitnil,omitempty" name:"ClientType"`
 
-	// 节点所属vpcid	
+	// <p>节点所属vpcid</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 节点所属子网id
+	// <p>节点所属子网id</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// cvmId
+	// <p>cvmId</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 自定义挂载点
+	// <p>自定义挂载点</p>
 	MountPoint *string `json:"MountPoint,omitnil,omitempty" name:"MountPoint"`
+
+	// <p>客户端集群id</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 }
 
 type ClientToken struct {
@@ -582,63 +585,85 @@ type ClusterMountAttr struct {
 
 // Predefined struct for user
 type CreateDataRepositoryTaskRequestParams struct {
-	// 数据流通任务类型, FS_TO_COS(文件系统到COS Bucket),或者COS_TO_FS(COS Bucket到文件系统)
+	// <p>数据流通任务类型, FS_TO_COS(文件系统到COS Bucket),或者COS_TO_FS(COS Bucket到文件系统)</p>
 	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
-	// COS存储桶名
+	// <p>COS存储桶名</p>
 	Bucket *string `json:"Bucket,omitnil,omitempty" name:"Bucket"`
 
-	// 文件系统ID
+	// <p>文件系统ID</p>
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
-	// 对于FS_TO_COS, TaskPath是Bucket映射目录的相对路径, 对于COS_TO_FS是COS上的路径。如果置为空, 则表示全部数据
+	// <p>对于FS_TO_COS, TaskPath是Bucket映射目录的相对路径, 对于COS_TO_FS是COS上的路径。如果置为空, 则表示全部数据</p>
 	TaskPath *string `json:"TaskPath,omitnil,omitempty" name:"TaskPath"`
 
-	// 任务名称
+	// <p>任务名称</p>
 	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
 
-	// 数据流通方式 MSP_AFM 手动加载  RAW_AFM 按需加载
+	// <p>任务路径是否表示绝对路径（暂时仅支持沉降使用）</p>
+	IsTaskPathAbsolute *bool `json:"IsTaskPathAbsolute,omitnil,omitempty" name:"IsTaskPathAbsolute"`
+
+	// <p>数据流通方式 MSP_AFM 手动加载  RAW_AFM 按需加载</p>
 	RepositoryType *string `json:"RepositoryType,omitnil,omitempty" name:"RepositoryType"`
 
-	// 文件列表下载地址，以http开头
+	// <p>文件列表下载地址，以http开头</p>
 	TextLocation *string `json:"TextLocation,omitnil,omitempty" name:"TextLocation"`
 
-	// 是否开启自定义路径(暂时仅供预热使用)
+	// <p>是否开启自定义路径(暂时仅供预热使用)</p>
+	//
+	// Deprecated: EnableDataFlowSubPath is deprecated.
 	EnableDataFlowSubPath *bool `json:"EnableDataFlowSubPath,omitnil,omitempty" name:"EnableDataFlowSubPath"`
 
-	// 自定义路径(暂时仅供预热使用)
+	// <p>自定义路径(暂时仅供预热使用)</p>
+	//
+	// Deprecated: DataFlowSubPath is deprecated.
 	DataFlowSubPath *string `json:"DataFlowSubPath,omitnil,omitempty" name:"DataFlowSubPath"`
+
+	// <p>是否开启自定义目的路径（预热任务表示本地路径，沉降任务表示COS桶前缀）</p>
+	EnableCustomDestPath *bool `json:"EnableCustomDestPath,omitnil,omitempty" name:"EnableCustomDestPath"`
+
+	// <p>自定义目的路径（预热任务表示本地路径，沉降任务表示COS桶前缀）</p>
+	CustomDestPath *string `json:"CustomDestPath,omitnil,omitempty" name:"CustomDestPath"`
 }
 
 type CreateDataRepositoryTaskRequest struct {
 	*tchttp.BaseRequest
 	
-	// 数据流通任务类型, FS_TO_COS(文件系统到COS Bucket),或者COS_TO_FS(COS Bucket到文件系统)
+	// <p>数据流通任务类型, FS_TO_COS(文件系统到COS Bucket),或者COS_TO_FS(COS Bucket到文件系统)</p>
 	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
-	// COS存储桶名
+	// <p>COS存储桶名</p>
 	Bucket *string `json:"Bucket,omitnil,omitempty" name:"Bucket"`
 
-	// 文件系统ID
+	// <p>文件系统ID</p>
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
-	// 对于FS_TO_COS, TaskPath是Bucket映射目录的相对路径, 对于COS_TO_FS是COS上的路径。如果置为空, 则表示全部数据
+	// <p>对于FS_TO_COS, TaskPath是Bucket映射目录的相对路径, 对于COS_TO_FS是COS上的路径。如果置为空, 则表示全部数据</p>
 	TaskPath *string `json:"TaskPath,omitnil,omitempty" name:"TaskPath"`
 
-	// 任务名称
+	// <p>任务名称</p>
 	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
 
-	// 数据流通方式 MSP_AFM 手动加载  RAW_AFM 按需加载
+	// <p>任务路径是否表示绝对路径（暂时仅支持沉降使用）</p>
+	IsTaskPathAbsolute *bool `json:"IsTaskPathAbsolute,omitnil,omitempty" name:"IsTaskPathAbsolute"`
+
+	// <p>数据流通方式 MSP_AFM 手动加载  RAW_AFM 按需加载</p>
 	RepositoryType *string `json:"RepositoryType,omitnil,omitempty" name:"RepositoryType"`
 
-	// 文件列表下载地址，以http开头
+	// <p>文件列表下载地址，以http开头</p>
 	TextLocation *string `json:"TextLocation,omitnil,omitempty" name:"TextLocation"`
 
-	// 是否开启自定义路径(暂时仅供预热使用)
+	// <p>是否开启自定义路径(暂时仅供预热使用)</p>
 	EnableDataFlowSubPath *bool `json:"EnableDataFlowSubPath,omitnil,omitempty" name:"EnableDataFlowSubPath"`
 
-	// 自定义路径(暂时仅供预热使用)
+	// <p>自定义路径(暂时仅供预热使用)</p>
 	DataFlowSubPath *string `json:"DataFlowSubPath,omitnil,omitempty" name:"DataFlowSubPath"`
+
+	// <p>是否开启自定义目的路径（预热任务表示本地路径，沉降任务表示COS桶前缀）</p>
+	EnableCustomDestPath *bool `json:"EnableCustomDestPath,omitnil,omitempty" name:"EnableCustomDestPath"`
+
+	// <p>自定义目的路径（预热任务表示本地路径，沉降任务表示COS桶前缀）</p>
+	CustomDestPath *string `json:"CustomDestPath,omitnil,omitempty" name:"CustomDestPath"`
 }
 
 func (r *CreateDataRepositoryTaskRequest) ToJsonString() string {
@@ -658,10 +683,13 @@ func (r *CreateDataRepositoryTaskRequest) FromJsonString(s string) error {
 	delete(f, "FileSystemId")
 	delete(f, "TaskPath")
 	delete(f, "TaskName")
+	delete(f, "IsTaskPathAbsolute")
 	delete(f, "RepositoryType")
 	delete(f, "TextLocation")
 	delete(f, "EnableDataFlowSubPath")
 	delete(f, "DataFlowSubPath")
+	delete(f, "EnableCustomDestPath")
+	delete(f, "CustomDestPath")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDataRepositoryTaskRequest has unknown keys!", "")
 	}
@@ -670,7 +698,7 @@ func (r *CreateDataRepositoryTaskRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateDataRepositoryTaskResponseParams struct {
-	// 任务ID
+	// <p>任务ID</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

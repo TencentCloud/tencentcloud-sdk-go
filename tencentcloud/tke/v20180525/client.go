@@ -16885,6 +16885,78 @@ func (c *Client) RollbackClusterReleaseWithContext(ctx context.Context, request 
     return
 }
 
+func NewRotateClusterTokenRequest() (request *RotateClusterTokenRequest) {
+    request = &RotateClusterTokenRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "RotateClusterToken")
+    
+    
+    return
+}
+
+func NewRotateClusterTokenResponse() (response *RotateClusterTokenResponse) {
+    response = &RotateClusterTokenResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RotateClusterToken
+// 轮转集群的token
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_MARKETGETAUTHFAILED = "FailedOperation.MarketGetAuthFailed"
+//  FAILEDOPERATION_MARKETRELEASEOPERATION = "FailedOperation.MarketReleaseOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MARKETGETAUTHFAILED = "InternalError.MarketGetAuthFailed"
+//  INTERNALERROR_MARKETINTERNALSERVERERROR = "InternalError.MarketInternalServerError"
+//  INTERNALERROR_MARKETRELEASEOPERATION = "InternalError.MarketReleaseOperation"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) RotateClusterToken(request *RotateClusterTokenRequest) (response *RotateClusterTokenResponse, err error) {
+    return c.RotateClusterTokenWithContext(context.Background(), request)
+}
+
+// RotateClusterToken
+// 轮转集群的token
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_MARKETGETAUTHFAILED = "FailedOperation.MarketGetAuthFailed"
+//  FAILEDOPERATION_MARKETRELEASEOPERATION = "FailedOperation.MarketReleaseOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MARKETGETAUTHFAILED = "InternalError.MarketGetAuthFailed"
+//  INTERNALERROR_MARKETINTERNALSERVERERROR = "InternalError.MarketInternalServerError"
+//  INTERNALERROR_MARKETRELEASEOPERATION = "InternalError.MarketReleaseOperation"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) RotateClusterTokenWithContext(ctx context.Context, request *RotateClusterTokenRequest) (response *RotateClusterTokenResponse, err error) {
+    if request == nil {
+        request = NewRotateClusterTokenRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "RotateClusterToken")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RotateClusterToken require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRotateClusterTokenResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRunPrometheusInstanceRequest() (request *RunPrometheusInstanceRequest) {
     request = &RunPrometheusInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},

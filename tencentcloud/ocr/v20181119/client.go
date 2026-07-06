@@ -1861,6 +1861,10 @@ func NewFormulaOCRResponse() (response *FormulaOCRResponse) {
 }
 
 // FormulaOCR
+// 接口下线
+//
+// 
+//
 // 本接口支持识别主流初高中数学符号和公式，返回公式的 Latex 格式文本。
 //
 // 
@@ -1885,6 +1889,10 @@ func (c *Client) FormulaOCR(request *FormulaOCRRequest) (response *FormulaOCRRes
 }
 
 // FormulaOCR
+// 接口下线
+//
+// 
+//
 // 本接口支持识别主流初高中数学符号和公式，返回公式的 Latex 格式文本。
 //
 // 
@@ -5179,6 +5187,10 @@ func NewRecognizeFormulaOCRResponse() (response *RecognizeFormulaOCRResponse) {
 }
 
 // RecognizeFormulaOCR
+// 接口下线
+//
+// 
+//
 // 公式识别是教育的基础OCR识别能力，可支持理科（数学、物理、化学、生物）的印刷体和手写体的公式识别。
 //
 // 
@@ -5201,6 +5213,10 @@ func (c *Client) RecognizeFormulaOCR(request *RecognizeFormulaOCRRequest) (respo
 }
 
 // RecognizeFormulaOCR
+// 接口下线
+//
+// 
+//
 // 公式识别是教育的基础OCR识别能力，可支持理科（数学、物理、化学、生物）的印刷体和手写体的公式识别。
 //
 // 

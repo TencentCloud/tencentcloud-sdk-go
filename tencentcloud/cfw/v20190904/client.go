@@ -3953,7 +3953,7 @@ func NewDescribeLogsResponse() (response *DescribeLogsResponse) {
 }
 
 // DescribeLogs
-// 日志审计日志查询
+// 请使用 [日志分析SearchLog接口](https://cloud.tencent.com/document/product/1132/118363)
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -3968,7 +3968,7 @@ func (c *Client) DescribeLogs(request *DescribeLogsRequest) (response *DescribeL
 }
 
 // DescribeLogs
-// 日志审计日志查询
+// 请使用 [日志分析SearchLog接口](https://cloud.tencent.com/document/product/1132/118363)
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -4945,6 +4945,174 @@ func (c *Client) DescribeNatFwVpcDnsLstWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewDescribeNatFwVpcDnsLstResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeOfflineExportTaskRequest() (request *DescribeOfflineExportTaskRequest) {
+    request = &DescribeOfflineExportTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "DescribeOfflineExportTask")
+    
+    
+    return
+}
+
+func NewDescribeOfflineExportTaskResponse() (response *DescribeOfflineExportTaskResponse) {
+    response = &DescribeOfflineExportTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeOfflineExportTask
+// 获取日志离线导出任务列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeOfflineExportTask(request *DescribeOfflineExportTaskRequest) (response *DescribeOfflineExportTaskResponse, err error) {
+    return c.DescribeOfflineExportTaskWithContext(context.Background(), request)
+}
+
+// DescribeOfflineExportTask
+// 获取日志离线导出任务列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeOfflineExportTaskWithContext(ctx context.Context, request *DescribeOfflineExportTaskRequest) (response *DescribeOfflineExportTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeOfflineExportTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeOfflineExportTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeOfflineExportTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeOfflineExportTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeOfflineExportTemporaryCredentialsRequest() (request *DescribeOfflineExportTemporaryCredentialsRequest) {
+    request = &DescribeOfflineExportTemporaryCredentialsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "DescribeOfflineExportTemporaryCredentials")
+    
+    
+    return
+}
+
+func NewDescribeOfflineExportTemporaryCredentialsResponse() (response *DescribeOfflineExportTemporaryCredentialsResponse) {
+    response = &DescribeOfflineExportTemporaryCredentialsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeOfflineExportTemporaryCredentials
+// 获取日志离线导出任务文件下载临时凭证
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeOfflineExportTemporaryCredentials(request *DescribeOfflineExportTemporaryCredentialsRequest) (response *DescribeOfflineExportTemporaryCredentialsResponse, err error) {
+    return c.DescribeOfflineExportTemporaryCredentialsWithContext(context.Background(), request)
+}
+
+// DescribeOfflineExportTemporaryCredentials
+// 获取日志离线导出任务文件下载临时凭证
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeOfflineExportTemporaryCredentialsWithContext(ctx context.Context, request *DescribeOfflineExportTemporaryCredentialsRequest) (response *DescribeOfflineExportTemporaryCredentialsResponse, err error) {
+    if request == nil {
+        request = NewDescribeOfflineExportTemporaryCredentialsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeOfflineExportTemporaryCredentials")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeOfflineExportTemporaryCredentials require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeOfflineExportTemporaryCredentialsResponse()
     err = c.Send(request, response)
     return
 }
@@ -6051,6 +6219,90 @@ func (c *Client) ExpandCfwVerticalWithContext(ctx context.Context, request *Expa
     request.SetContext(ctx)
     
     response = NewExpandCfwVerticalResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewExportLogsOfflineRequest() (request *ExportLogsOfflineRequest) {
+    request = &ExportLogsOfflineRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "ExportLogsOffline")
+    
+    
+    return
+}
+
+func NewExportLogsOfflineResponse() (response *ExportLogsOfflineResponse) {
+    response = &ExportLogsOfflineResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ExportLogsOffline
+// 日志审计日志离线导出
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ExportLogsOffline(request *ExportLogsOfflineRequest) (response *ExportLogsOfflineResponse, err error) {
+    return c.ExportLogsOfflineWithContext(context.Background(), request)
+}
+
+// ExportLogsOffline
+// 日志审计日志离线导出
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ExportLogsOfflineWithContext(ctx context.Context, request *ExportLogsOfflineRequest) (response *ExportLogsOfflineResponse, err error) {
+    if request == nil {
+        request = NewExportLogsOfflineRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "ExportLogsOffline")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ExportLogsOffline require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewExportLogsOfflineResponse()
     err = c.Send(request, response)
     return
 }
@@ -9069,6 +9321,90 @@ func (c *Client) RemoveNatAcRuleWithContext(ctx context.Context, request *Remove
     request.SetContext(ctx)
     
     response = NewRemoveNatAcRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRemoveOfflineExportTaskRequest() (request *RemoveOfflineExportTaskRequest) {
+    request = &RemoveOfflineExportTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "RemoveOfflineExportTask")
+    
+    
+    return
+}
+
+func NewRemoveOfflineExportTaskResponse() (response *RemoveOfflineExportTaskResponse) {
+    response = &RemoveOfflineExportTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RemoveOfflineExportTask
+// 删除日志离线导出任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) RemoveOfflineExportTask(request *RemoveOfflineExportTaskRequest) (response *RemoveOfflineExportTaskResponse, err error) {
+    return c.RemoveOfflineExportTaskWithContext(context.Background(), request)
+}
+
+// RemoveOfflineExportTask
+// 删除日志离线导出任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) RemoveOfflineExportTaskWithContext(ctx context.Context, request *RemoveOfflineExportTaskRequest) (response *RemoveOfflineExportTaskResponse, err error) {
+    if request == nil {
+        request = NewRemoveOfflineExportTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "RemoveOfflineExportTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RemoveOfflineExportTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRemoveOfflineExportTaskResponse()
     err = c.Send(request, response)
     return
 }

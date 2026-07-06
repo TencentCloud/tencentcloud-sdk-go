@@ -179,44 +179,44 @@ func (r *AddAclRuleResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AddEnterpriseSecurityGroupRulesRequestParams struct {
-	// 创建规则数据
+	// <p>创建规则数据</p>
 	Data []*SecurityGroupRule `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// 添加类型，0：添加到最后，1：添加到最前；2：中间插入；默认0添加到最后
+	// <p>添加类型，0：添加到最后，1：添加到最前；2：中间插入；默认0添加到最后</p>
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。ClientToken只支持ASCII字符，且不能超过64个字符。
+	// <p>保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。ClientToken只支持ASCII字符，且不能超过64个字符。</p>
 	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
 
-	// （IsDelay为老版参数，新版无需输入）是否延迟下发，1则延迟下发，否则立即下发
+	// <p>（IsDelay为老版参数，新版无需输入）是否延迟下发，1则延迟下发，否则立即下发</p>
 	IsDelay *uint64 `json:"IsDelay,omitnil,omitempty" name:"IsDelay"`
 
-	// 来源 默认空 覆盖导入是 batch_import_cover
+	// <p>来源 默认空 覆盖导入是 batch_import_cover</p>
 	From *string `json:"From,omitnil,omitempty" name:"From"`
 
-	// 是否复用rule id，1为是，默认不需要
+	// <p>是否复用rule id，1为是，默认不需要</p>
 	IsUseId *int64 `json:"IsUseId,omitnil,omitempty" name:"IsUseId"`
 }
 
 type AddEnterpriseSecurityGroupRulesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 创建规则数据
+	// <p>创建规则数据</p>
 	Data []*SecurityGroupRule `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// 添加类型，0：添加到最后，1：添加到最前；2：中间插入；默认0添加到最后
+	// <p>添加类型，0：添加到最后，1：添加到最前；2：中间插入；默认0添加到最后</p>
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。ClientToken只支持ASCII字符，且不能超过64个字符。
+	// <p>保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。ClientToken只支持ASCII字符，且不能超过64个字符。</p>
 	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
 
-	// （IsDelay为老版参数，新版无需输入）是否延迟下发，1则延迟下发，否则立即下发
+	// <p>（IsDelay为老版参数，新版无需输入）是否延迟下发，1则延迟下发，否则立即下发</p>
 	IsDelay *uint64 `json:"IsDelay,omitnil,omitempty" name:"IsDelay"`
 
-	// 来源 默认空 覆盖导入是 batch_import_cover
+	// <p>来源 默认空 覆盖导入是 batch_import_cover</p>
 	From *string `json:"From,omitnil,omitempty" name:"From"`
 
-	// 是否复用rule id，1为是，默认不需要
+	// <p>是否复用rule id，1为是，默认不需要</p>
 	IsUseId *int64 `json:"IsUseId,omitnil,omitempty" name:"IsUseId"`
 }
 
@@ -246,10 +246,10 @@ func (r *AddEnterpriseSecurityGroupRulesRequest) FromJsonString(s string) error 
 
 // Predefined struct for user
 type AddEnterpriseSecurityGroupRulesResponseParams struct {
-	// 状态值，0：添加成功，非0：添加失败
+	// <p>状态值，0：添加成功，非0：添加失败</p>
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 添加成功的规则详情
+	// <p>添加成功的规则详情</p>
 	Rules []*SecurityGroupSimplifyRule `json:"Rules,omitnil,omitempty" name:"Rules"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -722,6 +722,38 @@ func (r *CloseClusterNatFwSwitchResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ClusterFwPreAccessCheckResult struct {
+	// 检查状态，0：进行中，1：通过，2：失败
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 当前/最后所处检查项。Status=1（通过）时为 done，Status=2（失败）时为失败的检查项 key，Status=0（进行中）时为正在执行的检查项 key
+	CurrentStage *string `json:"CurrentStage,omitnil,omitempty" name:"CurrentStage"`
+
+	// 逐条检查项结果列表，按执行顺序追加
+	Stages []*ClusterFwPreAccessCheckStage `json:"Stages,omitnil,omitempty" name:"Stages"`
+
+	// 策略路由配额核算报告，仅在 Status=1（通过）时非空
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PolicyRouteReport *PolicyRoutePreCheckReport `json:"PolicyRouteReport,omitnil,omitempty" name:"PolicyRouteReport"`
+
+	// 最近一次更新时间，格式：YYYY-MM-DD HH:MM:SS
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+}
+
+type ClusterFwPreAccessCheckStage struct {
+	// 检查项 key，与发起检查接口返回的 CheckItems[].Stage 一一对应
+	Stage *string `json:"Stage,omitnil,omitempty" name:"Stage"`
+
+	// 该检查项状态，0：进行中，1：通过，2：失败
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 失败时的错误码（仅 Status=2 时有值）
+	ErrorCode *string `json:"ErrorCode,omitnil,omitempty" name:"ErrorCode"`
+
+	// 失败时的具体错误信息（仅 Status=2 时有值）
+	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
+}
+
 type ClusterSwitchDetail struct {
 	// <p>实例对象可以是ccnid类型:ccn-ad21xuds形式;nat网关类型:nat-da12daxd形式;ip类型:1.1.1.1形式等</p>
 	InsObj *string `json:"InsObj,omitnil,omitempty" name:"InsObj"`
@@ -784,6 +816,9 @@ type ClusterSwitchDetail struct {
 
 	// <p>防火墙开关操作时的进度状态：</p><p>// 开启 — 自动模式（3步）<br>&quot;AUTO_OPEN_ORCHESTRATING&quot; // 步骤1: 预编排策略路由<br>&quot;AUTO_OPEN_CREATING_RESOURCES&quot; // 步骤2: 创建引流网络和资源<br>&quot;AUTO_OPEN_PUSHING_ROUTES&quot; // 步骤3: 创建策略路由</p><p>// 开启 — 手动模式（1步）<br>&quot;MANUAL_OPEN_CREATING_RESOURCES&quot; // 步骤1: 创建引流网络和资源</p><p>// 关闭 — 自动模式（2步）<br>&quot;AUTO_CLOSE_DELETING_ROUTES&quot; // 步骤1: 删除策略路由<br>&quot;AUTO_CLOSE_DELETING_RESOURCES&quot; // 步骤2: 删除引流网络和资源<br>// 关闭 — 手动模式（1步）<br>&quot;MANUAL_CLOSE_DELETING_RESOURCES&quot; // 步骤1: 删除引流网络和资源</p><p>// 修改 — 自动模式（3步）<br>&quot;AUTO_MODIFY_ORCHESTRATING&quot; // 步骤1: 预编排策略路由<br>&quot;AUTO_MODIFY_DELETING_ROUTES&quot; // 步骤2: 删除旧策略路由<br>&quot;AUTO_MODIFY_PUSHING_ROUTES&quot; // 步骤3: 创建新策略路由</p><p>// 修改 — 手动模式（1步，仅 VPC 防火墙存在手动模式修改）<br>&quot;MANUAL_MODIFY_UPDATING_RESOURCES&quot; // 步骤1: 更新引流网络和资源</p>
 	Progress *string `json:"Progress,omitnil,omitempty" name:"Progress"`
+
+	// <p>预检查项的结果</p>
+	CheckResult *ClusterFwPreAccessCheckResult `json:"CheckResult,omitnil,omitempty" name:"CheckResult"`
 }
 
 type Column struct {
@@ -5522,12 +5557,21 @@ func (r *DescribeIpsModeSwitchResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeLogStorageStatisticRequestParams struct {
+	// <p>开始时间</p><p>参数格式：2026-07-01 15:02:01</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
+	// <p>结束时间</p><p>参数格式：2026-07-01 15:02:01</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
 type DescribeLogStorageStatisticRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>开始时间</p><p>参数格式：2026-07-01 15:02:01</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>结束时间</p><p>参数格式：2026-07-01 15:02:01</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
 func (r *DescribeLogStorageStatisticRequest) ToJsonString() string {
@@ -5542,7 +5586,8 @@ func (r *DescribeLogStorageStatisticRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "StartTime")
+	delete(f, "EndTime")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLogStorageStatisticRequest has unknown keys!", "")
 	}
@@ -5551,55 +5596,55 @@ func (r *DescribeLogStorageStatisticRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeLogStorageStatisticResponseParams struct {
-	// 返回状态码 0 成功 非0不成功
+	// <p>返回状态码 0 成功 非0不成功</p>
 	ReturnCode *int64 `json:"ReturnCode,omitnil,omitempty" name:"ReturnCode"`
 
-	// 返回信息  success 成功 其他 不成功
+	// <p>返回信息  success 成功 其他 不成功</p>
 	ReturnMsg *string `json:"ReturnMsg,omitnil,omitempty" name:"ReturnMsg"`
 
-	// 已使用存储量，单位B
+	// <p>已使用存储量，单位B</p>
 	UsedSize *int64 `json:"UsedSize,omitnil,omitempty" name:"UsedSize"`
 
-	// 配额存储总量，单位B
+	// <p>配额存储总量，单位B</p>
 	TotalSize *int64 `json:"TotalSize,omitnil,omitempty" name:"TotalSize"`
 
-	// 存储天数
+	// <p>存储天数</p>
 	StorageDay *int64 `json:"StorageDay,omitnil,omitempty" name:"StorageDay"`
 
-	// 访问控制日志存储量，单位B
+	// <p>访问控制日志存储量，单位B</p>
 	AclSize *int64 `json:"AclSize,omitnil,omitempty" name:"AclSize"`
 
-	// 入侵防御日志存储量，单位B
+	// <p>入侵防御日志存储量，单位B</p>
 	IdsSize *int64 `json:"IdsSize,omitnil,omitempty" name:"IdsSize"`
 
-	// 流量日志存储量，单位B
+	// <p>流量日志存储量，单位B</p>
 	NetFlowSize *int64 `json:"NetFlowSize,omitnil,omitempty" name:"NetFlowSize"`
 
-	// 操作日志存储量，单位B
+	// <p>操作日志存储量，单位B</p>
 	OperateSize *int64 `json:"OperateSize,omitnil,omitempty" name:"OperateSize"`
 
-	// 剩余存储量，单位B
+	// <p>剩余存储量，单位B</p>
 	LeftSize *int64 `json:"LeftSize,omitnil,omitempty" name:"LeftSize"`
 
-	// 计费模式，0后付费，1预付费
+	// <p>计费模式，0后付费，1预付费</p>
 	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// 每日增加日志存储量柱状图
+	// <p>每日增加日志存储量柱状图</p>
 	TimeHistogram []*StorageHistogram `json:"TimeHistogram,omitnil,omitempty" name:"TimeHistogram"`
 
-	// 柱形图格式数据
+	// <p>柱形图格式数据</p>
 	TimeHistogramShow *StorageHistogramShow `json:"TimeHistogramShow,omitnil,omitempty" name:"TimeHistogramShow"`
 
-	// 后付费模式存储状态，0正常，1欠费停止写入
+	// <p>后付费模式存储状态，0正常，1欠费停止写入</p>
 	ArrearsStopWriting *int64 `json:"ArrearsStopWriting,omitnil,omitempty" name:"ArrearsStopWriting"`
 
-	// NDR流量日志存储量，单位B
+	// <p>NDR流量日志存储量，单位B</p>
 	NDRNetFlowSize *int64 `json:"NDRNetFlowSize,omitnil,omitempty" name:"NDRNetFlowSize"`
 
-	// NDR风险日志存储量，单位B
+	// <p>NDR风险日志存储量，单位B</p>
 	NDRRiskSize *int64 `json:"NDRRiskSize,omitnil,omitempty" name:"NDRRiskSize"`
 
-	// NDR日志存储天数
+	// <p>NDR日志存储天数</p>
 	NDRStorageDay *int64 `json:"NDRStorageDay,omitnil,omitempty" name:"NDRStorageDay"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6728,6 +6773,155 @@ func (r *DescribeNatFwVpcDnsLstResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeOfflineExportTaskRequestParams struct {
+	// <p>分页参数</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>分页参数</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>任务ID/任务名称</p>
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+}
+
+type DescribeOfflineExportTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>分页参数</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>分页参数</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>任务ID/任务名称</p>
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+}
+
+func (r *DescribeOfflineExportTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOfflineExportTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "TaskName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOfflineExportTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeOfflineExportTaskResponseParams struct {
+	// <p>返回状态码 0 成功 非0不成功</p>
+	ReturnCode *int64 `json:"ReturnCode,omitnil,omitempty" name:"ReturnCode"`
+
+	// <p>返回信息  success 成功 其他 不成功</p>
+	ReturnMsg *string `json:"ReturnMsg,omitnil,omitempty" name:"ReturnMsg"`
+
+	// <p>离线导出任务列表</p>
+	Data []*OfflineExportTask `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// <p>任务数量</p>
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// <p>剩余导出文件配额，单位B</p>
+	ExportRemainQuota *int64 `json:"ExportRemainQuota,omitnil,omitempty" name:"ExportRemainQuota"`
+
+	// <p>导出文件配额，单位B</p>
+	ExportQuota *int64 `json:"ExportQuota,omitnil,omitempty" name:"ExportQuota"`
+
+	// <p>导出数据限制</p>
+	ExportLimit *int64 `json:"ExportLimit,omitnil,omitempty" name:"ExportLimit"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeOfflineExportTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeOfflineExportTaskResponseParams `json:"Response"`
+}
+
+func (r *DescribeOfflineExportTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOfflineExportTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeOfflineExportTemporaryCredentialsRequestParams struct {
+	// <p>任务ID</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type DescribeOfflineExportTemporaryCredentialsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>任务ID</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *DescribeOfflineExportTemporaryCredentialsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOfflineExportTemporaryCredentialsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOfflineExportTemporaryCredentialsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeOfflineExportTemporaryCredentialsResponseParams struct {
+	// <p>返回状态码 0 成功 非0不成功</p>
+	ReturnCode *int64 `json:"ReturnCode,omitnil,omitempty" name:"ReturnCode"`
+
+	// <p>返回信息  success 成功 其他 不成功</p>
+	ReturnMsg *string `json:"ReturnMsg,omitnil,omitempty" name:"ReturnMsg"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeOfflineExportTemporaryCredentialsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeOfflineExportTemporaryCredentialsResponseParams `json:"Response"`
+}
+
+func (r *DescribeOfflineExportTemporaryCredentialsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOfflineExportTemporaryCredentialsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeResourceGroupNewRequestParams struct {
 	// 查询类型 网络结构-vpc，业务识别-resource ，资源标签-tag
 	QueryType *string `json:"QueryType,omitnil,omitempty" name:"QueryType"`
@@ -7086,25 +7280,40 @@ func (r *DescribeSerialRegionRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSerialRegionResponseParams struct {
-	// 串行地域带宽分配
+	// <p>串行地域带宽分配</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SerialRegionLst []*SerialRegionInfo `json:"SerialRegionLst,omitnil,omitempty" name:"SerialRegionLst"`
 
-	// 剩余可分配通用带宽 单位M
+	// <p>剩余可分配通用带宽 单位M</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UnUsedWidth *int64 `json:"UnUsedWidth,omitnil,omitempty" name:"UnUsedWidth"`
 
-	// 可配置实例个数
+	// <p>可配置实例个数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UnUsedQuota *int64 `json:"UnUsedQuota,omitnil,omitempty" name:"UnUsedQuota"`
 
-	// 旁路带宽数据
+	// <p>旁路带宽数据</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BypassWidth *int64 `json:"BypassWidth,omitnil,omitempty" name:"BypassWidth"`
 
-	// 赠送的旁路带宽数据
+	// <p>赠送的旁路带宽数据</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SendBypassWidth *int64 `json:"SendBypassWidth,omitnil,omitempty" name:"SendBypassWidth"`
+
+	// <p>互联网边界防火墙总带宽</p>
+	EdgeWidth *int64 `json:"EdgeWidth,omitnil,omitempty" name:"EdgeWidth"`
+
+	// <p>互联网边界弹性开关</p>
+	EdgeElasticSwitch *int64 `json:"EdgeElasticSwitch,omitnil,omitempty" name:"EdgeElasticSwitch"`
+
+	// <p>互联网边界弹性带宽值</p>
+	EdgeElasticBandwidth *int64 `json:"EdgeElasticBandwidth,omitnil,omitempty" name:"EdgeElasticBandwidth"`
+
+	// <p>互联网边界弹性带宽上限</p>
+	EdgeElasticBandwidthLimit *int64 `json:"EdgeElasticBandwidthLimit,omitnil,omitempty" name:"EdgeElasticBandwidthLimit"`
+
+	// <p>互联网边界防火墙计量开关</p><p>枚举值：</p><ul><li>0： 关闭</li><li>1： 打开</li></ul>
+	EdgeElasticTrafficSwitch *int64 `json:"EdgeElasticTrafficSwitch,omitnil,omitempty" name:"EdgeElasticTrafficSwitch"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -8403,6 +8612,157 @@ func (r *ExpandCfwVerticalResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ExportLogsOfflineRequestParams struct {
+	// <p>日志类型标识</p><p>枚举值：</p><ul><li>cfw_netflow_border： 流量日志-互联网边界</li><li>cfw_netflow_vpc： 流量日志-VPC边界</li><li>cfw_netflow_nat： 流量日志-NAT边界</li><li>cfw_rule_acl： 访问控制-互联网边界</li><li>cfw_rule_vpc_acl： 访问控制-VPC边界</li><li>cfw_rule_nat_acl： 访问控制-NAT边界</li><li>cfw_rule_threatinfo： 入侵防御-入侵防御</li><li>cfw_netflow_nta： 全流量检测与响应-流量分析</li><li>cfw_ndr_subject_risk： 全流量检测与响应-流量风险</li><li>cfw_ndr_ai_audit： 全流量检测与响应-AI流量风险</li><li>operate_log_all： 操作日志</li></ul>
+	Index *string `json:"Index,omitnil,omitempty" name:"Index"`
+
+	// <p>筛选开始时间</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>筛选结束时间</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>任务名称</p>
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// <p>数据格式</p><p>枚举值：</p><ul><li>.json： JSON格式</li><li>.csv： CSV格式</li></ul>
+	DataFormat *string `json:"DataFormat,omitnil,omitempty" name:"DataFormat"`
+
+	// <p>压缩方式，.zip、.tar.gz、.tar.zst、.tar.lz4、传空不压缩</p>
+	CompressionFormat *string `json:"CompressionFormat,omitnil,omitempty" name:"CompressionFormat"`
+
+	// <p>日志排序，desc时间降序，asc时间升序</p>
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// <p>日志数量，传0按单次上限导出</p>
+	Length *int64 `json:"Length,omitnil,omitempty" name:"Length"`
+
+	// <p>过滤条件组合</p>
+	Filters []*CommonFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>COS存储桶名称</p>
+	BucketName *string `json:"BucketName,omitnil,omitempty" name:"BucketName"`
+
+	// <p>COS存储桶地域</p>
+	BucketRegion *string `json:"BucketRegion,omitnil,omitempty" name:"BucketRegion"`
+
+	// <p>文件过期时长，1一天，7七天，-1永久</p>
+	StorageDays *int64 `json:"StorageDays,omitnil,omitempty" name:"StorageDays"`
+
+	// <p>日志分析查询语句，Query和Filters不能同时使用，在一次请求中有且只能选择一个</p>
+	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
+
+	// <p>导出任务类型，LogAnalysis日志分析导出，LogSearch日志审计导出</p>
+	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+}
+
+type ExportLogsOfflineRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>日志类型标识</p><p>枚举值：</p><ul><li>cfw_netflow_border： 流量日志-互联网边界</li><li>cfw_netflow_vpc： 流量日志-VPC边界</li><li>cfw_netflow_nat： 流量日志-NAT边界</li><li>cfw_rule_acl： 访问控制-互联网边界</li><li>cfw_rule_vpc_acl： 访问控制-VPC边界</li><li>cfw_rule_nat_acl： 访问控制-NAT边界</li><li>cfw_rule_threatinfo： 入侵防御-入侵防御</li><li>cfw_netflow_nta： 全流量检测与响应-流量分析</li><li>cfw_ndr_subject_risk： 全流量检测与响应-流量风险</li><li>cfw_ndr_ai_audit： 全流量检测与响应-AI流量风险</li><li>operate_log_all： 操作日志</li></ul>
+	Index *string `json:"Index,omitnil,omitempty" name:"Index"`
+
+	// <p>筛选开始时间</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>筛选结束时间</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>任务名称</p>
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// <p>数据格式</p><p>枚举值：</p><ul><li>.json： JSON格式</li><li>.csv： CSV格式</li></ul>
+	DataFormat *string `json:"DataFormat,omitnil,omitempty" name:"DataFormat"`
+
+	// <p>压缩方式，.zip、.tar.gz、.tar.zst、.tar.lz4、传空不压缩</p>
+	CompressionFormat *string `json:"CompressionFormat,omitnil,omitempty" name:"CompressionFormat"`
+
+	// <p>日志排序，desc时间降序，asc时间升序</p>
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// <p>日志数量，传0按单次上限导出</p>
+	Length *int64 `json:"Length,omitnil,omitempty" name:"Length"`
+
+	// <p>过滤条件组合</p>
+	Filters []*CommonFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>COS存储桶名称</p>
+	BucketName *string `json:"BucketName,omitnil,omitempty" name:"BucketName"`
+
+	// <p>COS存储桶地域</p>
+	BucketRegion *string `json:"BucketRegion,omitnil,omitempty" name:"BucketRegion"`
+
+	// <p>文件过期时长，1一天，7七天，-1永久</p>
+	StorageDays *int64 `json:"StorageDays,omitnil,omitempty" name:"StorageDays"`
+
+	// <p>日志分析查询语句，Query和Filters不能同时使用，在一次请求中有且只能选择一个</p>
+	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
+
+	// <p>导出任务类型，LogAnalysis日志分析导出，LogSearch日志审计导出</p>
+	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+}
+
+func (r *ExportLogsOfflineRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ExportLogsOfflineRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Index")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "TaskName")
+	delete(f, "DataFormat")
+	delete(f, "CompressionFormat")
+	delete(f, "Order")
+	delete(f, "Length")
+	delete(f, "Filters")
+	delete(f, "BucketName")
+	delete(f, "BucketRegion")
+	delete(f, "StorageDays")
+	delete(f, "Query")
+	delete(f, "TaskType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ExportLogsOfflineRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ExportLogsOfflineResponseParams struct {
+	// <p>返回状态码 0 成功 非0不成功</p>
+	ReturnCode *int64 `json:"ReturnCode,omitnil,omitempty" name:"ReturnCode"`
+
+	// <p>返回信息  success 成功 其他 不成功</p>
+	ReturnMsg *string `json:"ReturnMsg,omitnil,omitempty" name:"ReturnMsg"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ExportLogsOfflineResponse struct {
+	*tchttp.BaseResponse
+	Response *ExportLogsOfflineResponseParams `json:"Response"`
+}
+
+func (r *ExportLogsOfflineResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ExportLogsOfflineResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type FieldOption struct {
 	// 字段展示值
 	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
@@ -9268,39 +9628,45 @@ func (r *ModifyAssetSyncResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyBlockIgnoreListRequestParams struct {
-	// 1封禁列表 2 放通列表
+	// <p>1封禁列表 2 放通列表</p>
 	RuleType *int64 `json:"RuleType,omitnil,omitempty" name:"RuleType"`
 
-	// IP、Domain二选一（注：封禁列表，只能填写IP），不能同时为空
+	// <p>IP、Domain二选一（注：封禁列表，只能填写IP），不能同时为空</p>
 	IOC []*IocListData `json:"IOC,omitnil,omitempty" name:"IOC"`
 
-	// 可选值：delete（删除）、edit（编辑）、add（添加）  其他值无效
+	// <p>可选值：delete（删除）、edit（编辑）、add（添加）  其他值无效</p>
 	IocAction *string `json:"IocAction,omitnil,omitempty" name:"IocAction"`
 
-	// 时间格式：yyyy-MM-dd HH:mm:ss，IocAction 为edit或add时必填
+	// <p>时间格式：yyyy-MM-dd HH:mm:ss，IocAction 为edit或add时必填</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 时间格式：yyyy-MM-dd HH:mm:ss，IocAction 为edit或add时必填，必须大于当前时间且大于StartTime
+	// <p>时间格式：yyyy-MM-dd HH:mm:ss，IocAction 为edit或add时必填，必须大于当前时间且大于StartTime</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>是否来自微信</p><p>取值范围：[0, 1]</p>
+	IsFromWeChat *int64 `json:"IsFromWeChat,omitnil,omitempty" name:"IsFromWeChat"`
 }
 
 type ModifyBlockIgnoreListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 1封禁列表 2 放通列表
+	// <p>1封禁列表 2 放通列表</p>
 	RuleType *int64 `json:"RuleType,omitnil,omitempty" name:"RuleType"`
 
-	// IP、Domain二选一（注：封禁列表，只能填写IP），不能同时为空
+	// <p>IP、Domain二选一（注：封禁列表，只能填写IP），不能同时为空</p>
 	IOC []*IocListData `json:"IOC,omitnil,omitempty" name:"IOC"`
 
-	// 可选值：delete（删除）、edit（编辑）、add（添加）  其他值无效
+	// <p>可选值：delete（删除）、edit（编辑）、add（添加）  其他值无效</p>
 	IocAction *string `json:"IocAction,omitnil,omitempty" name:"IocAction"`
 
-	// 时间格式：yyyy-MM-dd HH:mm:ss，IocAction 为edit或add时必填
+	// <p>时间格式：yyyy-MM-dd HH:mm:ss，IocAction 为edit或add时必填</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 时间格式：yyyy-MM-dd HH:mm:ss，IocAction 为edit或add时必填，必须大于当前时间且大于StartTime
+	// <p>时间格式：yyyy-MM-dd HH:mm:ss，IocAction 为edit或add时必填，必须大于当前时间且大于StartTime</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>是否来自微信</p><p>取值范围：[0, 1]</p>
+	IsFromWeChat *int64 `json:"IsFromWeChat,omitnil,omitempty" name:"IsFromWeChat"`
 }
 
 func (r *ModifyBlockIgnoreListRequest) ToJsonString() string {
@@ -9320,6 +9686,7 @@ func (r *ModifyBlockIgnoreListRequest) FromJsonString(s string) error {
 	delete(f, "IocAction")
 	delete(f, "StartTime")
 	delete(f, "EndTime")
+	delete(f, "IsFromWeChat")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyBlockIgnoreListRequest has unknown keys!", "")
 	}
@@ -9328,10 +9695,10 @@ func (r *ModifyBlockIgnoreListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyBlockIgnoreListResponseParams struct {
-	// 接口返回信息
+	// <p>接口返回信息</p>
 	ReturnMsg *string `json:"ReturnMsg,omitnil,omitempty" name:"ReturnMsg"`
 
-	// 接口返回错误码，0请求成功  非0失败
+	// <p>接口返回错误码，0请求成功  非0失败</p>
 	ReturnCode *uint64 `json:"ReturnCode,omitnil,omitempty" name:"ReturnCode"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9614,14 +9981,14 @@ func (r *ModifyClusterFwBypassResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyClusterNatFwSwitchRequestParams struct {
-	// NAT CCN防火墙开关配置
+	// <p>NAT CCN防火墙开关配置</p>
 	NatCcnSwitch *NatCcnSwitchConfig `json:"NatCcnSwitch,omitnil,omitempty" name:"NatCcnSwitch"`
 }
 
 type ModifyClusterNatFwSwitchRequest struct {
 	*tchttp.BaseRequest
 	
-	// NAT CCN防火墙开关配置
+	// <p>NAT CCN防火墙开关配置</p>
 	NatCcnSwitch *NatCcnSwitchConfig `json:"NatCcnSwitch,omitnil,omitempty" name:"NatCcnSwitch"`
 }
 
@@ -11627,6 +11994,9 @@ type NatFwSwitchDetailS struct {
 
 	// <p>防火墙开关操作时的进度状态：</p><p>// 开启 — 自动模式（3步）<br>&quot;AUTO_OPEN_ORCHESTRATING&quot;      // 步骤1: 预编排策略路由<br>&quot;AUTO_OPEN_CREATING_RESOURCES&quot; // 步骤2: 创建引流网络和资源<br>&quot;AUTO_OPEN_PUSHING_ROUTES&quot;     // 步骤3: 创建策略路由</p><p>// 开启 — 手动模式（1步）<br>&quot;MANUAL_OPEN_CREATING_RESOURCES&quot; // 步骤1: 创建引流网络和资源</p><p>// 关闭 — 自动模式（2步）<br>&quot;AUTO_CLOSE_DELETING_ROUTES&quot;    // 步骤1: 删除策略路由<br>&quot;AUTO_CLOSE_DELETING_RESOURCES&quot; // 步骤2: 删除引流网络和资源<br>// 关闭 — 手动模式（1步）<br>&quot;MANUAL_CLOSE_DELETING_RESOURCES&quot; // 步骤1: 删除引流网络和资源</p><p>// 修改 — 自动模式（3步）<br>&quot;AUTO_MODIFY_ORCHESTRATING&quot;   // 步骤1: 预编排策略路由<br>&quot;AUTO_MODIFY_DELETING_ROUTES&quot; // 步骤2: 删除旧策略路由<br>&quot;AUTO_MODIFY_PUSHING_ROUTES&quot;  // 步骤3: 创建新策略路由</p><p>// 修改 — 手动模式（1步，仅 VPC 防火墙存在手动模式修改）<br>&quot;MANUAL_MODIFY_UPDATING_RESOURCES&quot; // 步骤1: 更新引流网络和资源</p>
 	Progress *string `json:"Progress,omitnil,omitempty" name:"Progress"`
+
+	// <p>预接入检查结果</p>
+	CheckResult *ClusterFwPreAccessCheckResult `json:"CheckResult,omitnil,omitempty" name:"CheckResult"`
 }
 
 type NatInstanceInfo struct {
@@ -11827,6 +12197,37 @@ type NewModeItems struct {
 	AddCount *int64 `json:"AddCount,omitnil,omitempty" name:"AddCount"`
 }
 
+type OfflineExportTask struct {
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 任务名称
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 日志总数
+	DataLength *uint64 `json:"DataLength,omitnil,omitempty" name:"DataLength"`
+
+	// 任务状态，0等待下载，1下载中，2下载完成，3下载失败，4文件过期
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 文件过期时间
+	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 下载进度
+	Progress *float64 `json:"Progress,omitnil,omitempty" name:"Progress"`
+
+	// 导出失败信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorInfo *string `json:"ErrorInfo,omitnil,omitempty" name:"ErrorInfo"`
+
+	// 是否使用Cos
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UseUserCos *int64 `json:"UseUserCos,omitnil,omitempty" name:"UseUserCos"`
+}
+
 // Predefined struct for user
 type OpenClusterNatFwSwitchRequestParams struct {
 	// NAT CCN防火墙开关配置
@@ -11902,6 +12303,32 @@ type OperatorFilter struct {
 	// 14：按位与 field & value = value
 	// 15：between and field between value1 and value2
 	OperatorType *uint64 `json:"OperatorType,omitnil,omitempty" name:"OperatorType"`
+}
+
+type PolicyRoutePreCheckReport struct {
+	// 本次编排生成的下一跳数量
+	NextHopCount *int64 `json:"NextHopCount,omitnil,omitempty" name:"NextHopCount"`
+
+	// 下一跳上限
+	NextHopLimit *int64 `json:"NextHopLimit,omitnil,omitempty" name:"NextHopLimit"`
+
+	// 本次编排生成的匹配规则数
+	MatchRuleCount *int64 `json:"MatchRuleCount,omitnil,omitempty" name:"MatchRuleCount"`
+
+	// 匹配规则上限
+	MatchRuleLimit *int64 `json:"MatchRuleLimit,omitnil,omitempty" name:"MatchRuleLimit"`
+
+	// 云上已有匹配规则数（其他防火墙类型占用）
+	CloudExistingRuleCount *int64 `json:"CloudExistingRuleCount,omitnil,omitempty" name:"CloudExistingRuleCount"`
+
+	// 云上已有下一跳数（其他防火墙类型占用）
+	CloudExistingNextHopCount *int64 `json:"CloudExistingNextHopCount,omitnil,omitempty" name:"CloudExistingNextHopCount"`
+
+	// 可用匹配规则配额 = MatchRuleLimit - CloudExistingRuleCount - MatchRuleCount
+	AvailableRuleQuota *int64 `json:"AvailableRuleQuota,omitnil,omitempty" name:"AvailableRuleQuota"`
+
+	// 可用下一跳配额 = NextHopLimit - CloudExistingNextHopCount - NextHopCount
+	AvailableNextHopQuota *int64 `json:"AvailableNextHopQuota,omitnil,omitempty" name:"AvailableNextHopQuota"`
 }
 
 type RegionCidrConfig struct {
@@ -12188,6 +12615,73 @@ func (r *RemoveNatAcRuleResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type RemoveOfflineExportTaskRequestParams struct {
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 是否保留文件，1保留，非1删除
+	KeepFile *int64 `json:"KeepFile,omitnil,omitempty" name:"KeepFile"`
+}
+
+type RemoveOfflineExportTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 是否保留文件，1保留，非1删除
+	KeepFile *int64 `json:"KeepFile,omitnil,omitempty" name:"KeepFile"`
+}
+
+func (r *RemoveOfflineExportTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RemoveOfflineExportTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "KeepFile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RemoveOfflineExportTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RemoveOfflineExportTaskResponseParams struct {
+	// 返回状态码 0 成功 非0不成功
+	ReturnCode *int64 `json:"ReturnCode,omitnil,omitempty" name:"ReturnCode"`
+
+	// 返回信息  success 成功 其他 不成功
+	ReturnMsg *string `json:"ReturnMsg,omitnil,omitempty" name:"ReturnMsg"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RemoveOfflineExportTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *RemoveOfflineExportTaskResponseParams `json:"Response"`
+}
+
+func (r *RemoveOfflineExportTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RemoveOfflineExportTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type RemoveVpcAcRuleRequestParams struct {
 	// 规则的uuid列表，可通过查询规则列表获取，注意：如果传入的是[-1]将删除所有规则
 	RuleUuids []*int64 `json:"RuleUuids,omitnil,omitempty" name:"RuleUuids"`
@@ -12383,186 +12877,80 @@ type SearchLogInfos struct {
 
 // Predefined struct for user
 type SearchLogRequestParams struct {
-	// 要检索分析的日志的起始时间，Unix时间戳（毫秒）
+	// <p>要检索分析的日志的起始时间，Unix时间戳（毫秒）</p>
 	From *int64 `json:"From,omitnil,omitempty" name:"From"`
 
-	// 要检索分析的日志的结束时间，Unix时间戳（毫秒）
+	// <p>要检索分析的日志的结束时间，Unix时间戳（毫秒）</p>
 	To *int64 `json:"To,omitnil,omitempty" name:"To"`
 
-	// 检索分析语句，最大长度为12KB
-	// 语句由 <a href="https://cloud.tencent.com/document/product/614/47044" target="_blank">[检索条件]</a> | <a href="https://cloud.tencent.com/document/product/614/44061" target="_blank">[SQL语句]</a>构成，无需对日志进行统计分析时，可省略其中的管道符<code> | </code>及SQL语句
-	// 使用*或空字符串可查询所有日志
+	// <p>检索分析语句，最大长度为12KB<br>语句由 <a href="https://cloud.tencent.com/document/product/614/47044" target="_blank">[检索条件]</a> | <a href="https://cloud.tencent.com/document/product/614/44061" target="_blank">[SQL语句]</a>构成，无需对日志进行统计分析时，可省略其中的管道符<code> | </code>及SQL语句<br>使用*或空字符串可查询所有日志</p>
 	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 
-	// 检索语法规则，默认值为0，推荐使用1 。
-	// 
-	// - 0：Lucene语法
-	// - 1：CQL语法（日志服务专用检索语法，控制台默认也使用该语法规则）。
-	// 
-	// 详细说明参见<a href="https://cloud.tencent.com/document/product/614/47044#RetrievesConditionalRules" target="_blank">检索条件语法规则</a>
+	// <p>检索语法规则，默认值为0，推荐使用1 。</p><ul><li>0：Lucene语法</li><li>1：CQL语法（日志服务专用检索语法，控制台默认也使用该语法规则）。</li></ul><p>详细说明参见<a href="https://cloud.tencent.com/document/product/614/47044#RetrievesConditionalRules" target="_blank">检索条件语法规则</a></p>
 	SyntaxRule *uint64 `json:"SyntaxRule,omitnil,omitempty" name:"SyntaxRule"`
 
-	// - 要检索分析的日志主题ID，仅能指定一个日志主题。
-	// - 如需同时检索多个日志主题，请使用Topics参数。
-	// - TopicId 和 Topics 不能同时使用，在一次请求中有且只能选择一个。
-	// 各日志主题ID如下
-	// 访问控制-互联网边界 cfw_rule_acl
-	// 访问控制-NAT边界 cfw_rule_nat_acl
-	// 访问控制-VPC边界 cfw_rule_vpc_acl
-	// 访问控制-DNS开关 cfw_rule_dns_acl
-	// 入侵防御 cfw_rule_threatinfo
-	// 全流量检测与响应日志-流量分析 cfw_netflow_nta
-	// 全流量检测与响应日志-流量告警 cfw_rule_ndr_threatinfo
-	// 零信任运维-数据库登录 cfw_operate_db
-	// 零信任运维-服务器访问 operate_remote_om
-	// 零信任运维-Web服务访问 operate_web_access
-	// 零信任运维-行为审计 remoteom_commands
-	// 流量日志-互联网边界 cfw_netflow_border
-	// 流量日志-NAT边界 cfw_netflow_nat
-	// 流量日志-VPC边界 cfw_netflow_vpc
-	// 流量日志-DNS开关 cfw_netflow_dns
-	// 流量日志-内网流量 cfw_netflow_fl
-	// 操作日志 operate_log_all
+	// <ul><li>要检索分析的日志主题ID，仅能指定一个日志主题。</li><li>如需同时检索多个日志主题，请使用Topics参数。</li><li>TopicId 和 Topics 不能同时使用，在一次请求中有且只能选择一个。<br>各日志主题ID如下<br>访问控制-互联网边界 cfw_rule_acl<br>访问控制-NAT边界 cfw_rule_nat_acl<br>访问控制-VPC边界 cfw_rule_vpc_acl<br>访问控制-DNS开关 cfw_rule_dns_acl<br>入侵防御 cfw_rule_threatinfo<br>全流量检测与响应日志-流量分析 cfw_netflow_nta<br>全流量检测与响应日志-流量告警 cfw_rule_ndr_threatinfo<br>零信任运维-数据库登录 cfw_operate_db<br>零信任运维-服务器访问 operate_remote_om<br>零信任运维-Web服务访问 operate_web_access<br>零信任运维-行为审计 remoteom_commands<br>流量日志-互联网边界 cfw_netflow_border<br>流量日志-NAT边界 cfw_netflow_nat<br>流量日志-VPC边界 cfw_netflow_vpc<br>流量日志-DNS开关 cfw_netflow_dns<br>流量日志-内网流量 cfw_netflow_fl<br>操作日志 operate_log_all</li></ul>
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// - 要检索分析的日志主题列表，最大支持50个日志主题。
-	// - 检索单个日志主题时请使用TopicId。
-	// - TopicId 和 Topics 不能同时使用，在一次请求中有且只能选择一个。
+	// <ul><li>要检索分析的日志主题列表，最大支持50个日志主题。</li><li>检索单个日志主题时请使用TopicId。</li><li>TopicId 和 Topics 不能同时使用，在一次请求中有且只能选择一个。</li></ul>
 	Topics []*MultiTopicSearchInformation `json:"Topics,omitnil,omitempty" name:"Topics"`
 
-	// 原始日志是否按时间排序返回；可选值：asc(升序)、desc(降序)，默认为 desc
-	// 注意：
-	// * 仅当检索分析语句(Query)不包含SQL时有效
-	// * SQL结果排序方式参考<a href="https://cloud.tencent.com/document/product/614/58978" target="_blank">SQL ORDER BY语法</a>
+	// <p>原始日志是否按时间排序返回；可选值：asc(升序)、desc(降序)，默认为 desc<br>注意：</p><ul><li>仅当检索分析语句(Query)不包含SQL时有效</li><li>SQL结果排序方式参考<a href="https://cloud.tencent.com/document/product/614/58978" target="_blank">SQL ORDER BY语法</a></li></ul>
 	Sort *string `json:"Sort,omitnil,omitempty" name:"Sort"`
 
-	// 表示单次查询返回的原始日志条数，默认为100，最大值为1000。
-	// 注意：
-	// * 仅当检索分析语句(Query)不包含SQL时有效
-	// * SQL结果条数指定方式参考<a href="https://cloud.tencent.com/document/product/614/58977" target="_blank">SQL LIMIT语法</a>
-	// 
-	// 可通过两种方式获取后续更多日志：
-	// * Context:透传上次接口返回的Context值，获取后续更多日志，总计最多可获取1万条原始日志
-	// * Offset:偏移量，表示从第几行开始返回原始日志，无日志条数限制
+	// <p>表示单次查询返回的原始日志条数，默认为100，最大值为1000。<br>注意：</p><ul><li>仅当检索分析语句(Query)不包含SQL时有效</li><li>SQL结果条数指定方式参考<a href="https://cloud.tencent.com/document/product/614/58977" target="_blank">SQL LIMIT语法</a></li></ul><p>可通过两种方式获取后续更多日志：</p><ul><li>Context:透传上次接口返回的Context值，获取后续更多日志，总计最多可获取1万条原始日志</li><li>Offset:偏移量，表示从第几行开始返回原始日志，无日志条数限制</li></ul>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 查询原始日志的偏移量，表示从第几行开始返回原始日志，默认为0。 
-	// 注意：
-	// * 仅当检索分析语句(Query)不包含SQL时有效
-	// * 不能与Context参数同时使用
-	// * 仅适用于单日志主题检索
+	// <p>查询原始日志的偏移量，表示从第几行开始返回原始日志，默认为0。<br>注意：</p><ul><li>仅当检索分析语句(Query)不包含SQL时有效</li><li>不能与Context参数同时使用</li><li>仅适用于单日志主题检索</li></ul>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 透传上次接口返回的Context值，可获取后续更多日志，总计最多可获取1万条原始日志，过期时间1小时。
-	// 注意：
-	// * 透传该参数时，请勿修改除该参数外的其它参数
-	// * 仅适用于单日志主题检索，检索多个日志主题时，请使用Topics中的Context
-	// * 仅当检索分析语句(Query)不包含SQL时有效，SQL获取后续结果参考<a href="https://cloud.tencent.com/document/product/614/58977" target="_blank">SQL LIMIT语法</a>
+	// <p>透传上次接口返回的Context值，可获取后续更多日志，总计最多可获取1万条原始日志，过期时间1小时。<br>注意：</p><ul><li>透传该参数时，请勿修改除该参数外的其它参数</li><li>仅适用于单日志主题检索，检索多个日志主题时，请使用Topics中的Context</li><li>仅当检索分析语句(Query)不包含SQL时有效，SQL获取后续结果参考<a href="https://cloud.tencent.com/document/product/614/58977" target="_blank">SQL LIMIT语法</a></li></ul>
 	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
 
-	// 执行统计分析（Query中包含SQL）时，是否对原始日志先进行采样，再进行统计分析。
-	// 0：自动采样;
-	// 0～1：按指定采样率采样，例如0.02;
-	// 1：不采样，即精确分析
-	// 默认值为1
+	// <p>执行统计分析（Query中包含SQL）时，是否对原始日志先进行采样，再进行统计分析。<br>0：自动采样;<br>0～1：按指定采样率采样，例如0.02;<br>1：不采样，即精确分析<br>默认值为1</p>
 	SamplingRate *float64 `json:"SamplingRate,omitnil,omitempty" name:"SamplingRate"`
 
-	// 为true代表使用新的检索结果返回方式，输出参数AnalysisRecords和Columns有效
-	// 为false时代表使用老的检索结果返回方式, 输出AnalysisResults和ColNames有效
-	// 两种返回方式在编码格式上有少量区别，建议使用true
+	// <p>为true代表使用新的检索结果返回方式，输出参数AnalysisRecords和Columns有效<br>为false时代表使用老的检索结果返回方式, 输出AnalysisResults和ColNames有效<br>两种返回方式在编码格式上有少量区别，建议使用true</p>
 	UseNewAnalysis *bool `json:"UseNewAnalysis,omitnil,omitempty" name:"UseNewAnalysis"`
 }
 
 type SearchLogRequest struct {
 	*tchttp.BaseRequest
 	
-	// 要检索分析的日志的起始时间，Unix时间戳（毫秒）
+	// <p>要检索分析的日志的起始时间，Unix时间戳（毫秒）</p>
 	From *int64 `json:"From,omitnil,omitempty" name:"From"`
 
-	// 要检索分析的日志的结束时间，Unix时间戳（毫秒）
+	// <p>要检索分析的日志的结束时间，Unix时间戳（毫秒）</p>
 	To *int64 `json:"To,omitnil,omitempty" name:"To"`
 
-	// 检索分析语句，最大长度为12KB
-	// 语句由 <a href="https://cloud.tencent.com/document/product/614/47044" target="_blank">[检索条件]</a> | <a href="https://cloud.tencent.com/document/product/614/44061" target="_blank">[SQL语句]</a>构成，无需对日志进行统计分析时，可省略其中的管道符<code> | </code>及SQL语句
-	// 使用*或空字符串可查询所有日志
+	// <p>检索分析语句，最大长度为12KB<br>语句由 <a href="https://cloud.tencent.com/document/product/614/47044" target="_blank">[检索条件]</a> | <a href="https://cloud.tencent.com/document/product/614/44061" target="_blank">[SQL语句]</a>构成，无需对日志进行统计分析时，可省略其中的管道符<code> | </code>及SQL语句<br>使用*或空字符串可查询所有日志</p>
 	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 
-	// 检索语法规则，默认值为0，推荐使用1 。
-	// 
-	// - 0：Lucene语法
-	// - 1：CQL语法（日志服务专用检索语法，控制台默认也使用该语法规则）。
-	// 
-	// 详细说明参见<a href="https://cloud.tencent.com/document/product/614/47044#RetrievesConditionalRules" target="_blank">检索条件语法规则</a>
+	// <p>检索语法规则，默认值为0，推荐使用1 。</p><ul><li>0：Lucene语法</li><li>1：CQL语法（日志服务专用检索语法，控制台默认也使用该语法规则）。</li></ul><p>详细说明参见<a href="https://cloud.tencent.com/document/product/614/47044#RetrievesConditionalRules" target="_blank">检索条件语法规则</a></p>
 	SyntaxRule *uint64 `json:"SyntaxRule,omitnil,omitempty" name:"SyntaxRule"`
 
-	// - 要检索分析的日志主题ID，仅能指定一个日志主题。
-	// - 如需同时检索多个日志主题，请使用Topics参数。
-	// - TopicId 和 Topics 不能同时使用，在一次请求中有且只能选择一个。
-	// 各日志主题ID如下
-	// 访问控制-互联网边界 cfw_rule_acl
-	// 访问控制-NAT边界 cfw_rule_nat_acl
-	// 访问控制-VPC边界 cfw_rule_vpc_acl
-	// 访问控制-DNS开关 cfw_rule_dns_acl
-	// 入侵防御 cfw_rule_threatinfo
-	// 全流量检测与响应日志-流量分析 cfw_netflow_nta
-	// 全流量检测与响应日志-流量告警 cfw_rule_ndr_threatinfo
-	// 零信任运维-数据库登录 cfw_operate_db
-	// 零信任运维-服务器访问 operate_remote_om
-	// 零信任运维-Web服务访问 operate_web_access
-	// 零信任运维-行为审计 remoteom_commands
-	// 流量日志-互联网边界 cfw_netflow_border
-	// 流量日志-NAT边界 cfw_netflow_nat
-	// 流量日志-VPC边界 cfw_netflow_vpc
-	// 流量日志-DNS开关 cfw_netflow_dns
-	// 流量日志-内网流量 cfw_netflow_fl
-	// 操作日志 operate_log_all
+	// <ul><li>要检索分析的日志主题ID，仅能指定一个日志主题。</li><li>如需同时检索多个日志主题，请使用Topics参数。</li><li>TopicId 和 Topics 不能同时使用，在一次请求中有且只能选择一个。<br>各日志主题ID如下<br>访问控制-互联网边界 cfw_rule_acl<br>访问控制-NAT边界 cfw_rule_nat_acl<br>访问控制-VPC边界 cfw_rule_vpc_acl<br>访问控制-DNS开关 cfw_rule_dns_acl<br>入侵防御 cfw_rule_threatinfo<br>全流量检测与响应日志-流量分析 cfw_netflow_nta<br>全流量检测与响应日志-流量告警 cfw_rule_ndr_threatinfo<br>零信任运维-数据库登录 cfw_operate_db<br>零信任运维-服务器访问 operate_remote_om<br>零信任运维-Web服务访问 operate_web_access<br>零信任运维-行为审计 remoteom_commands<br>流量日志-互联网边界 cfw_netflow_border<br>流量日志-NAT边界 cfw_netflow_nat<br>流量日志-VPC边界 cfw_netflow_vpc<br>流量日志-DNS开关 cfw_netflow_dns<br>流量日志-内网流量 cfw_netflow_fl<br>操作日志 operate_log_all</li></ul>
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// - 要检索分析的日志主题列表，最大支持50个日志主题。
-	// - 检索单个日志主题时请使用TopicId。
-	// - TopicId 和 Topics 不能同时使用，在一次请求中有且只能选择一个。
+	// <ul><li>要检索分析的日志主题列表，最大支持50个日志主题。</li><li>检索单个日志主题时请使用TopicId。</li><li>TopicId 和 Topics 不能同时使用，在一次请求中有且只能选择一个。</li></ul>
 	Topics []*MultiTopicSearchInformation `json:"Topics,omitnil,omitempty" name:"Topics"`
 
-	// 原始日志是否按时间排序返回；可选值：asc(升序)、desc(降序)，默认为 desc
-	// 注意：
-	// * 仅当检索分析语句(Query)不包含SQL时有效
-	// * SQL结果排序方式参考<a href="https://cloud.tencent.com/document/product/614/58978" target="_blank">SQL ORDER BY语法</a>
+	// <p>原始日志是否按时间排序返回；可选值：asc(升序)、desc(降序)，默认为 desc<br>注意：</p><ul><li>仅当检索分析语句(Query)不包含SQL时有效</li><li>SQL结果排序方式参考<a href="https://cloud.tencent.com/document/product/614/58978" target="_blank">SQL ORDER BY语法</a></li></ul>
 	Sort *string `json:"Sort,omitnil,omitempty" name:"Sort"`
 
-	// 表示单次查询返回的原始日志条数，默认为100，最大值为1000。
-	// 注意：
-	// * 仅当检索分析语句(Query)不包含SQL时有效
-	// * SQL结果条数指定方式参考<a href="https://cloud.tencent.com/document/product/614/58977" target="_blank">SQL LIMIT语法</a>
-	// 
-	// 可通过两种方式获取后续更多日志：
-	// * Context:透传上次接口返回的Context值，获取后续更多日志，总计最多可获取1万条原始日志
-	// * Offset:偏移量，表示从第几行开始返回原始日志，无日志条数限制
+	// <p>表示单次查询返回的原始日志条数，默认为100，最大值为1000。<br>注意：</p><ul><li>仅当检索分析语句(Query)不包含SQL时有效</li><li>SQL结果条数指定方式参考<a href="https://cloud.tencent.com/document/product/614/58977" target="_blank">SQL LIMIT语法</a></li></ul><p>可通过两种方式获取后续更多日志：</p><ul><li>Context:透传上次接口返回的Context值，获取后续更多日志，总计最多可获取1万条原始日志</li><li>Offset:偏移量，表示从第几行开始返回原始日志，无日志条数限制</li></ul>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 查询原始日志的偏移量，表示从第几行开始返回原始日志，默认为0。 
-	// 注意：
-	// * 仅当检索分析语句(Query)不包含SQL时有效
-	// * 不能与Context参数同时使用
-	// * 仅适用于单日志主题检索
+	// <p>查询原始日志的偏移量，表示从第几行开始返回原始日志，默认为0。<br>注意：</p><ul><li>仅当检索分析语句(Query)不包含SQL时有效</li><li>不能与Context参数同时使用</li><li>仅适用于单日志主题检索</li></ul>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 透传上次接口返回的Context值，可获取后续更多日志，总计最多可获取1万条原始日志，过期时间1小时。
-	// 注意：
-	// * 透传该参数时，请勿修改除该参数外的其它参数
-	// * 仅适用于单日志主题检索，检索多个日志主题时，请使用Topics中的Context
-	// * 仅当检索分析语句(Query)不包含SQL时有效，SQL获取后续结果参考<a href="https://cloud.tencent.com/document/product/614/58977" target="_blank">SQL LIMIT语法</a>
+	// <p>透传上次接口返回的Context值，可获取后续更多日志，总计最多可获取1万条原始日志，过期时间1小时。<br>注意：</p><ul><li>透传该参数时，请勿修改除该参数外的其它参数</li><li>仅适用于单日志主题检索，检索多个日志主题时，请使用Topics中的Context</li><li>仅当检索分析语句(Query)不包含SQL时有效，SQL获取后续结果参考<a href="https://cloud.tencent.com/document/product/614/58977" target="_blank">SQL LIMIT语法</a></li></ul>
 	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
 
-	// 执行统计分析（Query中包含SQL）时，是否对原始日志先进行采样，再进行统计分析。
-	// 0：自动采样;
-	// 0～1：按指定采样率采样，例如0.02;
-	// 1：不采样，即精确分析
-	// 默认值为1
+	// <p>执行统计分析（Query中包含SQL）时，是否对原始日志先进行采样，再进行统计分析。<br>0：自动采样;<br>0～1：按指定采样率采样，例如0.02;<br>1：不采样，即精确分析<br>默认值为1</p>
 	SamplingRate *float64 `json:"SamplingRate,omitnil,omitempty" name:"SamplingRate"`
 
-	// 为true代表使用新的检索结果返回方式，输出参数AnalysisRecords和Columns有效
-	// 为false时代表使用老的检索结果返回方式, 输出AnalysisResults和ColNames有效
-	// 两种返回方式在编码格式上有少量区别，建议使用true
+	// <p>为true代表使用新的检索结果返回方式，输出参数AnalysisRecords和Columns有效<br>为false时代表使用老的检索结果返回方式, 输出AnalysisResults和ColNames有效<br>两种返回方式在编码格式上有少量区别，建议使用true</p>
 	UseNewAnalysis *bool `json:"UseNewAnalysis,omitnil,omitempty" name:"UseNewAnalysis"`
 }
 
@@ -12598,47 +12986,40 @@ func (r *SearchLogRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SearchLogResponseParams struct {
-	// 透传本次接口返回的Context值，可获取后续更多日志，过期时间1小时。
-	// 注意：
-	// * 仅适用于单日志主题检索，检索多个日志主题时，请使用Topics中的Context
+	// <p>透传本次接口返回的Context值，可获取后续更多日志，过期时间1小时。<br>注意：</p><ul><li>仅适用于单日志主题检索，检索多个日志主题时，请使用Topics中的Context</li></ul>
 	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
 
-	// 符合检索条件的日志是否已全部返回，如未全部返回可使用Context参数获取后续更多日志
-	// 注意：仅当检索分析语句(Query)不包含SQL时有效
+	// <p>符合检索条件的日志是否已全部返回，如未全部返回可使用Context参数获取后续更多日志<br>注意：仅当检索分析语句(Query)不包含SQL时有效</p>
 	ListOver *bool `json:"ListOver,omitnil,omitempty" name:"ListOver"`
 
-	// 返回的是否为统计分析（即SQL）结果
+	// <p>返回的是否为统计分析（即SQL）结果</p>
 	Analysis *bool `json:"Analysis,omitnil,omitempty" name:"Analysis"`
 
-	// 匹配检索条件的原始日志
+	// <p>匹配检索条件的原始日志</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Results []*LogInfo `json:"Results,omitnil,omitempty" name:"Results"`
 
-	// 日志统计分析结果的列名
-	// 当UseNewAnalysis为false时生效
+	// <p>日志统计分析结果的列名<br>当UseNewAnalysis为false时生效</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ColNames []*string `json:"ColNames,omitnil,omitempty" name:"ColNames"`
 
-	// 日志统计分析结果
-	// 当UseNewAnalysis为false时生效
+	// <p>日志统计分析结果<br>当UseNewAnalysis为false时生效</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AnalysisResults []*LogItems `json:"AnalysisResults,omitnil,omitempty" name:"AnalysisResults"`
 
-	// 日志统计分析结果
-	// 当UseNewAnalysis为true时生效
+	// <p>日志统计分析结果<br>当UseNewAnalysis为true时生效</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AnalysisRecords []*string `json:"AnalysisRecords,omitnil,omitempty" name:"AnalysisRecords"`
 
-	// 日志统计分析结果的列属性
-	// 当UseNewAnalysis为true时生效
+	// <p>日志统计分析结果的列属性<br>当UseNewAnalysis为true时生效</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Columns []*Column `json:"Columns,omitnil,omitempty" name:"Columns"`
 
-	// 本次统计分析使用的采样率
+	// <p>本次统计分析使用的采样率</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SamplingRate *float64 `json:"SamplingRate,omitnil,omitempty" name:"SamplingRate"`
 
-	// 使用多日志主题检索时，各个日志主题的基本信息，例如报错信息。
+	// <p>使用多日志主题检索时，各个日志主题的基本信息，例如报错信息。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Topics *SearchLogTopics `json:"Topics,omitnil,omitempty" name:"Topics"`
 
@@ -13479,14 +13860,14 @@ type UnHandleEventDetail struct {
 
 // Predefined struct for user
 type UpdateCheckCcnNonDirectFlagRequestParams struct {
-	// 云联网ID
+	// <p>云联网ID</p>
 	CcnId *string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
 }
 
 type UpdateCheckCcnNonDirectFlagRequest struct {
 	*tchttp.BaseRequest
 	
-	// 云联网ID
+	// <p>云联网ID</p>
 	CcnId *string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
 }
 
@@ -13511,9 +13892,7 @@ func (r *UpdateCheckCcnNonDirectFlagRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateCheckCcnNonDirectFlagResponseParams struct {
-	// 检测更新状态
-	// "Checked"：重新检测完成
-	// "Checking": 正在重新检测中，请稍后刷新状态查看
+	// <p>检测更新状态<br>&quot;Checked&quot;：重新检测完成<br>&quot;Checking&quot;: 正在重新检测中，请稍后刷新状态查看</p>
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -13538,14 +13917,14 @@ func (r *UpdateCheckCcnNonDirectFlagResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateClusterVpcFwRequestParams struct {
-	// ccn防火墙开关配置信息
+	// <p>ccn防火墙开关配置信息</p>
 	CcnSwitch *CcnSwitchInfo `json:"CcnSwitch,omitnil,omitempty" name:"CcnSwitch"`
 }
 
 type UpdateClusterVpcFwRequest struct {
 	*tchttp.BaseRequest
 	
-	// ccn防火墙开关配置信息
+	// <p>ccn防火墙开关配置信息</p>
 	CcnSwitch *CcnSwitchInfo `json:"CcnSwitch,omitnil,omitempty" name:"CcnSwitch"`
 }
 

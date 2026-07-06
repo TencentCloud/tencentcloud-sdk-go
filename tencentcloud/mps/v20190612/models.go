@@ -408,59 +408,53 @@ type AdaptiveDynamicStreamingInfoItem struct {
 }
 
 type AdaptiveDynamicStreamingTaskInput struct {
-	// 转自适应码流模板 ID。
+	// <p>转自适应码流模板 ID。</p>
 	Definition *uint64 `json:"Definition,omitnil,omitempty" name:"Definition"`
 
-	// 水印列表，支持多张图片或文字水印，最大可支持 10 张。
+	// <p>水印列表，支持多张图片或文字水印，最大可支持 10 张。</p>
 	WatermarkSet []*WatermarkInput `json:"WatermarkSet,omitnil,omitempty" name:"WatermarkSet"`
 
-	// 数字水印参数	
+	// <p>数字水印参数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BlindWatermark *BlindWatermarkInput `json:"BlindWatermark,omitnil,omitempty" name:"BlindWatermark"`
 
-	// 转自适应码流后文件的目标存储，不填则继承上层的 OutputStorage 值。
+	// <p>转自适应码流后文件的目标存储，不填则继承上层的 OutputStorage 值。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitnil,omitempty" name:"OutputStorage"`
 
-	// 转自适应码流后，manifest 文件的输出路径，可以为相对路径或者绝对路径。
-	// 若需定义输出路径，路径需以`.{format}`结尾。变量名请参考 [文件名变量说明](https://cloud.tencent.com/document/product/862/37039)。
-	// 相对路径示例：
-	// <li>文件名_{变量名}.{format}</li>
-	// <li>文件名.{format}</li>
-	// 绝对路径示例：
-	// <li>/自定义路径/文件名_{变量名}.{format}</li>
-	// 如果不填，则默认为相对路径：{inputName}_adaptiveDynamicStreaming_{definition}.{format}。
+	// <p>转自适应码流后，manifest 文件的输出路径，可以为相对路径或者绝对路径。<br>若需定义输出路径，路径需以<code>.{format}</code>结尾。变量名请参考 <a href="https://cloud.tencent.com/document/product/862/37039">文件名变量说明</a>。<br>相对路径示例：</p><li>文件名_{变量名}.{format}</li><li>文件名.{format}</li>绝对路径示例：<li>/自定义路径/文件名_{变量名}.{format}</li>如果不填，则默认为相对路径：{inputName}_adaptiveDynamicStreaming_{definition}.{format}。
 	OutputObjectPath *string `json:"OutputObjectPath,omitnil,omitempty" name:"OutputObjectPath"`
 
-	// 转自适应码流后，子流文件的输出路径，只能为相对路径。如果不填，则默认为相对路径：`{inputName}_adaptiveDynamicStreaming_{definition}_{subStreamNumber}.{format}`。
+	// <p>转自适应码流后，子流文件的输出路径，只能为相对路径。如果不填，则默认为相对路径：<code>{inputName}_adaptiveDynamicStreaming_{definition}_{subStreamNumber}.{format}</code>。</p>
 	SubStreamObjectName *string `json:"SubStreamObjectName,omitnil,omitempty" name:"SubStreamObjectName"`
 
-	// 转自适应码流（仅 HLS）后，分片文件的输出路径，只能为相对路径。如果不填，则默认为相对路径：`{inputName}_adaptiveDynamicStreaming_{definition}_{subStreamNumber}_{segmentNumber}.{format}`。
+	// <p>转自适应码流（仅 HLS）后，分片文件的输出路径，只能为相对路径。如果不填，则默认为相对路径：<code>{inputName}_adaptiveDynamicStreaming_{definition}_{subStreamNumber}_{segmentNumber}.{format}</code>。</p>
 	SegmentObjectName *string `json:"SegmentObjectName,omitnil,omitempty" name:"SegmentObjectName"`
 
-	// 外挂字幕功能，指定要插入的字幕文件。
+	// <p>外挂字幕功能，指定要插入的字幕文件。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AddOnSubtitles []*AddOnSubtitle `json:"AddOnSubtitles,omitnil,omitempty" name:"AddOnSubtitles"`
 
-	// Drm信息。
+	// <p>Drm信息。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DrmInfo *DrmInfo `json:"DrmInfo,omitnil,omitempty" name:"DrmInfo"`
 
-	// 自适应转码模板类型：
-	// Common：音视频类型
-	// PureAudio：纯音频类型
+	// <p>自适应转码模板类型：<br>Common：音视频类型<br>PureAudio：纯音频类型</p>
 	DefinitionType *string `json:"DefinitionType,omitnil,omitempty" name:"DefinitionType"`
 
-	// 硬字幕（压制字幕）功能，指定字幕来源、字体大小、位置等字幕参数。
+	// <p>硬字幕（压制字幕）功能，指定字幕来源、字体大小、位置等字幕参数。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubtitleTemplate *SubtitleTemplate `json:"SubtitleTemplate,omitnil,omitempty" name:"SubtitleTemplate"`
 
-	// 转码参数扩展字段
+	// <p>转码参数扩展字段</p>
 	StdExtInfo *string `json:"StdExtInfo,omitnil,omitempty" name:"StdExtInfo"`
 
-	// 指定pts时间的帧设为关键帧，并切片。单位毫秒（允许相对偏差<=1ms）。当同时指定gop和切片时长时，会共同作用。注意需开启RawPts，保持帧率随源，并确保传入的pts时间在源中是有对应帧的。
+	// <p>指定pts时间的帧设为关键帧，并切片。单位毫秒（允许相对偏差&lt;=1ms）。当同时指定gop和切片时长时，会共同作用。注意需开启RawPts，保持帧率随源，并确保传入的pts时间在源中是有对应帧的。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	KeyPTSList []*int64 `json:"KeyPTSList,omitnil,omitempty" name:"KeyPTSList"`
+
+	// <p>外挂音频功能，指定要插入的音频文件。</p>
+	AddOnAudios []*AddOnAudio `json:"AddOnAudios,omitnil,omitempty" name:"AddOnAudios"`
 }
 
 type AdaptiveDynamicStreamingTemplate struct {
@@ -556,6 +550,20 @@ type AddBlindWatermarkConfig struct {
 	EmbedInfo *BlindWatermarkEmbedInfo `json:"EmbedInfo,omitnil,omitempty" name:"EmbedInfo"`
 }
 
+type AddOnAudio struct {
+	// <p>音频文件输入信息。注意：（1）音频流的编码格式支持：aac、ac3、eac3、flac、opus和mp3；（2）当转自适应码流模板中设置的切片类型为ts的时候，音频流的编码格式不能为flac。</p>
+	InputInfo *MediaInputInfo `json:"InputInfo,omitnil,omitempty" name:"InputInfo"`
+
+	// <p>音轨名称，如：中文、English。注意：仅支持中文、英文、数字、空格、下划线(_)、短横线(-)、句点(.)和中英文括号，长度不能超过64个字符。</p>
+	AudioName *string `json:"AudioName,omitnil,omitempty" name:"AudioName"`
+
+	// <p>音轨语言，如：chi、eng，遵循 ISO 639-2</p>
+	AudioLanguage *string `json:"AudioLanguage,omitnil,omitempty" name:"AudioLanguage"`
+
+	// <p>默认音频轨道。为true时指定当前音频为默认音频轨道，最多可指定1条默认音频轨道。</p><p>默认值：false</p>
+	DefaultTrack *bool `json:"DefaultTrack,omitnil,omitempty" name:"DefaultTrack"`
+}
+
 type AddOnImageInput struct {
 	// <p>图片类型。</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
@@ -576,28 +584,25 @@ type AddOnParameter struct {
 }
 
 type AddOnSubtitle struct {
-	// 插入形式，可选值：
-	// <li>subtitle-stream：插入字幕轨道</li>
-	// <li>close-caption-708：CEA-708字幕编码到SEI帧</li>
-	// <li>close-caption-608：CEA-608字幕编码到SEI帧</li>
+	// <p>插入形式，可选值：</p><li>subtitle-stream：插入字幕轨道</li><li>close-caption-708：CEA-708字幕编码到SEI帧</li><li>close-caption-608：CEA-608字幕编码到SEI帧</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 字幕文件。
+	// <p>字幕文件。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Subtitle *MediaInputInfo `json:"Subtitle,omitnil,omitempty" name:"Subtitle"`
 
-	// 字幕名称	。
-	// 注意：仅支持中文、英文、数字、空格、下划线(_)、短横线(-)、句点(.)和中英文括号，长度不能超过64个字符。
+	// <p>字幕名称    。<br>注意：仅支持中文、英文、数字、空格、下划线(_)、短横线(-)、句点(.)和中英文括号，长度不能超过64个字符。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubtitleName *string `json:"SubtitleName,omitnil,omitempty" name:"SubtitleName"`
 
-	// 字幕输出格式。取值{"WebVTT","TTML"}。
-	// 默认值："WebVTT"
+	// <p>字幕语言，比如：eng</p>
+	SubtitleLanguage *string `json:"SubtitleLanguage,omitnil,omitempty" name:"SubtitleLanguage"`
+
+	// <p>字幕输出格式。取值{&quot;WebVTT&quot;,&quot;TTML&quot;}。<br>默认值：&quot;WebVTT&quot;</p>
 	OutputFormat *string `json:"OutputFormat,omitnil,omitempty" name:"OutputFormat"`
 
-	// 默认字幕轨道。为true时指定当前字幕为默认字幕轨道，最多可指定1条默认字幕轨道。
-	// 默认值：false
+	// <p>默认字幕轨道。为true时指定当前字幕为默认字幕轨道，最多可指定1条默认字幕轨道。<br>默认值：false</p>
 	DefaultTrack *bool `json:"DefaultTrack,omitnil,omitempty" name:"DefaultTrack"`
 }
 
@@ -2908,6 +2913,15 @@ type AudioTemplateInfo struct {
 	// <p>合并音轨信息。<br>注意：此字段只是自适应转码生效，</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TrackChannelInfo *AudioTrackChannelInfo `json:"TrackChannelInfo,omitnil,omitempty" name:"TrackChannelInfo"`
+
+	// <p>音频轨道语言，比如：chi、eng  注意：（1）遵循 ISO 639-2；（2）仅适用于自适应码流模板；（3）值为 source 表示保留源language</p>
+	AudioLanguage *string `json:"AudioLanguage,omitnil,omitempty" name:"AudioLanguage"`
+
+	// <p>音频轨道名称，比如：中文、English  注意：（1）仅支持中文、英文、数字、空格、下划线(_)、短横线(-)、句点(.)和中英文括号，长度不能超过64个字符；（2）仅适用于自适应码流模板；（3）值为source表示保留源name</p>
+	AudioName *string `json:"AudioName,omitnil,omitempty" name:"AudioName"`
+
+	// <p>默认音频轨道。为true时指定当前音轨为默认音轨轨道，最多可指定1条默认轨道。  </p><p>默认值：false</p>
+	DefaultTrack *bool `json:"DefaultTrack,omitnil,omitempty" name:"DefaultTrack"`
 }
 
 type AudioTemplateInfoForUpdate struct {

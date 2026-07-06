@@ -252,6 +252,12 @@ type AllocateEnvRequestParams struct {
 
 	// <p>客户平台的应用标识，如果没有则不传</p>
 	ExternalAppId *string `json:"ExternalAppId,omitnil,omitempty" name:"ExternalAppId"`
+
+	// <p>自定义标签</p><p>参数格式：逗号分隔的 key=value 对，key/value 仅允许字母、数字、下划线。k1=v1,k2=v2</p>
+	ExternalTag *string `json:"ExternalTag,omitnil,omitempty" name:"ExternalTag"`
+
+	// <p>是否需要云函数</p><p>默认值：false</p>
+	RequireFunction *bool `json:"RequireFunction,omitnil,omitempty" name:"RequireFunction"`
 }
 
 type AllocateEnvRequest struct {
@@ -262,6 +268,12 @@ type AllocateEnvRequest struct {
 
 	// <p>客户平台的应用标识，如果没有则不传</p>
 	ExternalAppId *string `json:"ExternalAppId,omitnil,omitempty" name:"ExternalAppId"`
+
+	// <p>自定义标签</p><p>参数格式：逗号分隔的 key=value 对，key/value 仅允许字母、数字、下划线。k1=v1,k2=v2</p>
+	ExternalTag *string `json:"ExternalTag,omitnil,omitempty" name:"ExternalTag"`
+
+	// <p>是否需要云函数</p><p>默认值：false</p>
+	RequireFunction *bool `json:"RequireFunction,omitnil,omitempty" name:"RequireFunction"`
 }
 
 func (r *AllocateEnvRequest) ToJsonString() string {
@@ -278,6 +290,8 @@ func (r *AllocateEnvRequest) FromJsonString(s string) error {
 	}
 	delete(f, "AllocateId")
 	delete(f, "ExternalAppId")
+	delete(f, "ExternalTag")
+	delete(f, "RequireFunction")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AllocateEnvRequest has unknown keys!", "")
 	}

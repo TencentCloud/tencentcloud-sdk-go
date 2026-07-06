@@ -295,6 +295,17 @@ type AgentSpec struct {
 	AdvancedConfig *AgentAdvancedConfig `json:"AdvancedConfig,omitnil,omitempty" name:"AdvancedConfig"`
 }
 
+type AgentSummary struct {
+	// <p>AgentId</p>
+	AgentId *string `json:"AgentId,omitnil,omitempty" name:"AgentId"`
+
+	// <p>Agent 身份画像</p>
+	Profile *AgentProfile `json:"Profile,omitnil,omitempty" name:"Profile"`
+
+	// <p>高级设置;scope=0 时返回</p>
+	AdvancedConfig *AgentAdvancedConfig `json:"AdvancedConfig,omitnil,omitempty" name:"AdvancedConfig"`
+}
+
 type AgentSystemVariable struct {
 	// <p>系统参数名</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
@@ -1535,6 +1546,84 @@ func (r *CreateConversationResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreatePluginRequestParams struct {
+	// <p>插件基础资料</p>
+	Profile *PluginProfile `json:"Profile,omitnil,omitempty" name:"Profile"`
+
+	// <p>插件类型配置</p>
+	Config *PluginConfig `json:"Config,omitnil,omitempty" name:"Config"`
+
+	// <p>当前空间id</p>
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// <p>插件的工具列表</p>
+	ToolList *Tool `json:"ToolList,omitnil,omitempty" name:"ToolList"`
+}
+
+type CreatePluginRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>插件基础资料</p>
+	Profile *PluginProfile `json:"Profile,omitnil,omitempty" name:"Profile"`
+
+	// <p>插件类型配置</p>
+	Config *PluginConfig `json:"Config,omitnil,omitempty" name:"Config"`
+
+	// <p>当前空间id</p>
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// <p>插件的工具列表</p>
+	ToolList *Tool `json:"ToolList,omitnil,omitempty" name:"ToolList"`
+}
+
+func (r *CreatePluginRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePluginRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Profile")
+	delete(f, "Config")
+	delete(f, "SpaceId")
+	delete(f, "ToolList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePluginRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreatePluginResponseParams struct {
+	// <p>插件id</p>
+	PluginId *string `json:"PluginId,omitnil,omitempty" name:"PluginId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreatePluginResponse struct {
+	*tchttp.BaseResponse
+	Response *CreatePluginResponseParams `json:"Response"`
+}
+
+func (r *CreatePluginResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePluginResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateReleaseRequestParams struct {
 	// 应用ID
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
@@ -1619,6 +1708,200 @@ func (r *CreateReleaseResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateReleaseResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateSkillRequestParams struct {
+	// <p>Skill 创建方式，必填；仅允许</p><p>枚举值：</p><ul><li>1： FILE_UPLOAD（文件上传）</li><li>3： AIGC（AIGC生成）</li></ul>
+	CreateType *int64 `json:"CreateType,omitnil,omitempty" name:"CreateType"`
+
+	// <p>skill包文件地址（zip）；FILE_UPLOAD / AIGC 均必填</p>
+	FileUrl *string `json:"FileUrl,omitnil,omitempty" name:"FileUrl"`
+
+	// <p>空间ID</p>
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// <p>skill展示描述</p>
+	DisplayDescription *string `json:"DisplayDescription,omitnil,omitempty" name:"DisplayDescription"`
+
+	// <p>skill展示名称</p>
+	DisplayName *string `json:"DisplayName,omitnil,omitempty" name:"DisplayName"`
+
+	// <p>图标地址</p>
+	IconUrl *string `json:"IconUrl,omitnil,omitempty" name:"IconUrl"`
+
+	// <p>skill业务唯一标识名（同企业下唯一）；未传时从skill包解析</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>版本号</p>
+	SkillVersion *string `json:"SkillVersion,omitnil,omitempty" name:"SkillVersion"`
+
+	// <p>版本变更说明</p>
+	UpdateDescription *string `json:"UpdateDescription,omitnil,omitempty" name:"UpdateDescription"`
+}
+
+type CreateSkillRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>Skill 创建方式，必填；仅允许</p><p>枚举值：</p><ul><li>1： FILE_UPLOAD（文件上传）</li><li>3： AIGC（AIGC生成）</li></ul>
+	CreateType *int64 `json:"CreateType,omitnil,omitempty" name:"CreateType"`
+
+	// <p>skill包文件地址（zip）；FILE_UPLOAD / AIGC 均必填</p>
+	FileUrl *string `json:"FileUrl,omitnil,omitempty" name:"FileUrl"`
+
+	// <p>空间ID</p>
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// <p>skill展示描述</p>
+	DisplayDescription *string `json:"DisplayDescription,omitnil,omitempty" name:"DisplayDescription"`
+
+	// <p>skill展示名称</p>
+	DisplayName *string `json:"DisplayName,omitnil,omitempty" name:"DisplayName"`
+
+	// <p>图标地址</p>
+	IconUrl *string `json:"IconUrl,omitnil,omitempty" name:"IconUrl"`
+
+	// <p>skill业务唯一标识名（同企业下唯一）；未传时从skill包解析</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>版本号</p>
+	SkillVersion *string `json:"SkillVersion,omitnil,omitempty" name:"SkillVersion"`
+
+	// <p>版本变更说明</p>
+	UpdateDescription *string `json:"UpdateDescription,omitnil,omitempty" name:"UpdateDescription"`
+}
+
+func (r *CreateSkillRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSkillRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CreateType")
+	delete(f, "FileUrl")
+	delete(f, "SpaceId")
+	delete(f, "DisplayDescription")
+	delete(f, "DisplayName")
+	delete(f, "IconUrl")
+	delete(f, "Name")
+	delete(f, "SkillVersion")
+	delete(f, "UpdateDescription")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSkillRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateSkillResponseParams struct {
+	// <p>创建成功后的skillID</p>
+	SkillId *string `json:"SkillId,omitnil,omitempty" name:"SkillId"`
+
+	// <p>创建成功后的版本ID</p>
+	VersionId *string `json:"VersionId,omitnil,omitempty" name:"VersionId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateSkillResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateSkillResponseParams `json:"Response"`
+}
+
+func (r *CreateSkillResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSkillResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateSkillShareRequestParams struct {
+	// <p>必填，申请备注（弹窗&quot;申请备注&quot;）</p>
+	ApplyRemark *string `json:"ApplyRemark,omitnil,omitempty" name:"ApplyRemark"`
+
+	// <p>必填，原skill_id</p>
+	SkillId *string `json:"SkillId,omitnil,omitempty" name:"SkillId"`
+
+	// <p>空间ID，必填</p>
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// <p>必填，被共享的版本id（必须高于已共享版本）</p>
+	VersionId *string `json:"VersionId,omitnil,omitempty" name:"VersionId"`
+}
+
+type CreateSkillShareRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>必填，申请备注（弹窗&quot;申请备注&quot;）</p>
+	ApplyRemark *string `json:"ApplyRemark,omitnil,omitempty" name:"ApplyRemark"`
+
+	// <p>必填，原skill_id</p>
+	SkillId *string `json:"SkillId,omitnil,omitempty" name:"SkillId"`
+
+	// <p>空间ID，必填</p>
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// <p>必填，被共享的版本id（必须高于已共享版本）</p>
+	VersionId *string `json:"VersionId,omitnil,omitempty" name:"VersionId"`
+}
+
+func (r *CreateSkillShareRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSkillShareRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ApplyRemark")
+	delete(f, "SkillId")
+	delete(f, "SpaceId")
+	delete(f, "VersionId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSkillShareRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateSkillShareResponseParams struct {
+	// <p>是否走了审批流（false表示无需审批已直接创建共享任务）</p>
+	NeedApproval *bool `json:"NeedApproval,omitnil,omitempty" name:"NeedApproval"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateSkillShareResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateSkillShareResponseParams `json:"Response"`
+}
+
+func (r *CreateSkillShareResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSkillShareResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1963,6 +2246,74 @@ func (r *CreateWorkspaceCredentialResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteAgentRequestParams struct {
+	// <p>应用Id</p>
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>待删除AgentId</p>
+	AgentId *string `json:"AgentId,omitnil,omitempty" name:"AgentId"`
+
+	// 协作模式；0-Claw模式；1-Multi-Agent模式
+	CollaborationMode *int64 `json:"CollaborationMode,omitnil,omitempty" name:"CollaborationMode"`
+}
+
+type DeleteAgentRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>应用Id</p>
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>待删除AgentId</p>
+	AgentId *string `json:"AgentId,omitnil,omitempty" name:"AgentId"`
+
+	// 协作模式；0-Claw模式；1-Multi-Agent模式
+	CollaborationMode *int64 `json:"CollaborationMode,omitnil,omitempty" name:"CollaborationMode"`
+}
+
+func (r *DeleteAgentRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAgentRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AppId")
+	delete(f, "AgentId")
+	delete(f, "CollaborationMode")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAgentRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAgentResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteAgentResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteAgentResponseParams `json:"Response"`
+}
+
+func (r *DeleteAgentResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAgentResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteAppRequestParams struct {
 	// app_id
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
@@ -2102,6 +2453,199 @@ func (r *DeleteConversationResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteConversationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeletePluginRequestParams struct {
+	// <p>插件id</p>
+	PluginId *string `json:"PluginId,omitnil,omitempty" name:"PluginId"`
+}
+
+type DeletePluginRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>插件id</p>
+	PluginId *string `json:"PluginId,omitnil,omitempty" name:"PluginId"`
+}
+
+func (r *DeletePluginRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeletePluginRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PluginId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeletePluginRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeletePluginResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeletePluginResponse struct {
+	*tchttp.BaseResponse
+	Response *DeletePluginResponseParams `json:"Response"`
+}
+
+func (r *DeletePluginResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeletePluginResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteSkillRequestParams struct {
+	// <p>Skill ID，必填</p>
+	SkillId *string `json:"SkillId,omitnil,omitempty" name:"SkillId"`
+
+	// <p>空间ID，必填</p>
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+}
+
+type DeleteSkillRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>Skill ID，必填</p>
+	SkillId *string `json:"SkillId,omitnil,omitempty" name:"SkillId"`
+
+	// <p>空间ID，必填</p>
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+}
+
+func (r *DeleteSkillRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteSkillRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SkillId")
+	delete(f, "SpaceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteSkillRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteSkillResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteSkillResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteSkillResponseParams `json:"Response"`
+}
+
+func (r *DeleteSkillResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteSkillResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteSkillShareRequestParams struct {
+	// <p>申请备注，必填（弹窗&quot;申请备注&quot;）</p>
+	ApplyRemark *string `json:"ApplyRemark,omitnil,omitempty" name:"ApplyRemark"`
+
+	// <p>原 Skill ID，必填（前端无须感知 _shared 后缀）</p>
+	SkillId *string `json:"SkillId,omitnil,omitempty" name:"SkillId"`
+
+	// <p>空间ID，必填</p>
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// <p>原版本 ID，必填（与 CreateSkillShare 上架时传的同一 version_id）</p>
+	VersionId *string `json:"VersionId,omitnil,omitempty" name:"VersionId"`
+}
+
+type DeleteSkillShareRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>申请备注，必填（弹窗&quot;申请备注&quot;）</p>
+	ApplyRemark *string `json:"ApplyRemark,omitnil,omitempty" name:"ApplyRemark"`
+
+	// <p>原 Skill ID，必填（前端无须感知 _shared 后缀）</p>
+	SkillId *string `json:"SkillId,omitnil,omitempty" name:"SkillId"`
+
+	// <p>空间ID，必填</p>
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// <p>原版本 ID，必填（与 CreateSkillShare 上架时传的同一 version_id）</p>
+	VersionId *string `json:"VersionId,omitnil,omitempty" name:"VersionId"`
+}
+
+func (r *DeleteSkillShareRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteSkillShareRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ApplyRemark")
+	delete(f, "SkillId")
+	delete(f, "SpaceId")
+	delete(f, "VersionId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteSkillShareRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteSkillShareResponseParams struct {
+	// <p>是否走审批流（false 表示无需审批已直接执行下架）</p>
+	NeedApproval *bool `json:"NeedApproval,omitnil,omitempty" name:"NeedApproval"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteSkillShareResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteSkillShareResponseParams `json:"Response"`
+}
+
+func (r *DeleteSkillShareResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteSkillShareResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2376,6 +2920,94 @@ func (r *DescribeAgentReleasePreviewListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAgentReleasePreviewListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAgentSummaryListRequestParams struct {
+	// <p>查询范围；0-单应用查询；1-跨应用查询</p>
+	Scope *int64 `json:"Scope,omitnil,omitempty" name:"Scope"`
+
+	// <p>应用Id，Scope=0 时为目标应用ID（必填）；scope=1 时无需填写</p>
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>过滤条件（name: "SearchWord", "SpaceId", "AgentSource", "AppId"）</p>
+	FilterList []*Filter `json:"FilterList,omitnil,omitempty" name:"FilterList"`
+
+	// <p>每页数目</p>
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// <p>页码</p>
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+}
+
+type DescribeAgentSummaryListRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>查询范围；0-单应用查询；1-跨应用查询</p>
+	Scope *int64 `json:"Scope,omitnil,omitempty" name:"Scope"`
+
+	// <p>应用Id，Scope=0 时为目标应用ID（必填）；scope=1 时无需填写</p>
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>过滤条件（name: "SearchWord", "SpaceId", "AgentSource", "AppId"）</p>
+	FilterList []*Filter `json:"FilterList,omitnil,omitempty" name:"FilterList"`
+
+	// <p>每页数目</p>
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// <p>页码</p>
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+}
+
+func (r *DescribeAgentSummaryListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAgentSummaryListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Scope")
+	delete(f, "AppId")
+	delete(f, "FilterList")
+	delete(f, "PageSize")
+	delete(f, "PageNumber")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAgentSummaryListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAgentSummaryListResponseParams struct {
+	// <p>总数</p>
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>Agent摘要信息</p>
+	AgentList []*AgentSummary `json:"AgentList,omitnil,omitempty" name:"AgentList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAgentSummaryListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAgentSummaryListResponseParams `json:"Response"`
+}
+
+func (r *DescribeAgentSummaryListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAgentSummaryListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3462,6 +4094,141 @@ func (r *DescribeSkillCategoryListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeSkillDetailRequestParams struct {
+	// skillID
+	SkillId *string `json:"SkillId,omitnil,omitempty" name:"SkillId"`
+
+	// 空间ID
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// 版本过滤条件(多个Filter之间为AND关系,同一Filter的多个Values为OR关系): - Perspective: 视角枚举,字符串单值,Values 长度必须为 1,多值视为非法;仅作用于详情返回的 version_list 裁剪,不决定接口本身可见性;不传默认 USER (USER=使用者视角,version_list 仅返回已上线版本 / EDITOR=编辑者视角,version_list 返回全部存活版本 / ALL=全量视角,同 EDITOR)
+	VersionFilterList []*Filter `json:"VersionFilterList,omitnil,omitempty" name:"VersionFilterList"`
+}
+
+type DescribeSkillDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// skillID
+	SkillId *string `json:"SkillId,omitnil,omitempty" name:"SkillId"`
+
+	// 空间ID
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// 版本过滤条件(多个Filter之间为AND关系,同一Filter的多个Values为OR关系): - Perspective: 视角枚举,字符串单值,Values 长度必须为 1,多值视为非法;仅作用于详情返回的 version_list 裁剪,不决定接口本身可见性;不传默认 USER (USER=使用者视角,version_list 仅返回已上线版本 / EDITOR=编辑者视角,version_list 返回全部存活版本 / ALL=全量视角,同 EDITOR)
+	VersionFilterList []*Filter `json:"VersionFilterList,omitnil,omitempty" name:"VersionFilterList"`
+}
+
+func (r *DescribeSkillDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSkillDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SkillId")
+	delete(f, "SpaceId")
+	delete(f, "VersionFilterList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSkillDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSkillDetailResponseParams struct {
+	// skill详情
+	SkillDetail *SkillDetail `json:"SkillDetail,omitnil,omitempty" name:"SkillDetail"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeSkillDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSkillDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeSkillDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSkillDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSkillReferenceListRequestParams struct {
+	// <p>Skill ID，必填</p>
+	SkillId *string `json:"SkillId,omitnil,omitempty" name:"SkillId"`
+
+	// <p>空间ID，必填</p>
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+}
+
+type DescribeSkillReferenceListRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>Skill ID，必填</p>
+	SkillId *string `json:"SkillId,omitnil,omitempty" name:"SkillId"`
+
+	// <p>空间ID，必填</p>
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+}
+
+func (r *DescribeSkillReferenceListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSkillReferenceListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SkillId")
+	delete(f, "SpaceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSkillReferenceListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSkillReferenceListResponseParams struct {
+	// <p>按 SkillRefType 分组的引用汇总：某类型 total_count = 0 时不入组（不返回空占位） 本期同时落 OPENCLAW / AGENT / CORP_ASSISTANT 三路</p>
+	ReferenceList []*SkillReferenceGroup `json:"ReferenceList,omitnil,omitempty" name:"ReferenceList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeSkillReferenceListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSkillReferenceListResponseParams `json:"Response"`
+}
+
+func (r *DescribeSkillReferenceListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSkillReferenceListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeSkillSummaryListRequestParams struct {
 	// 空间ID，必填
 	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
@@ -3909,6 +4676,128 @@ type DuplexBilling struct {
 
 	// <p>输出pu价格</p><p>单位：pu</p>
 	OutputPuPrice *float64 `json:"OutputPuPrice,omitnil,omitempty" name:"OutputPuPrice"`
+}
+
+// Predefined struct for user
+type FavoritePluginRequestParams struct {
+	// <p>插件id</p>
+	PluginId *string `json:"PluginId,omitnil,omitempty" name:"PluginId"`
+
+	// <p>当前空间id</p>
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+}
+
+type FavoritePluginRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>插件id</p>
+	PluginId *string `json:"PluginId,omitnil,omitempty" name:"PluginId"`
+
+	// <p>当前空间id</p>
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+}
+
+func (r *FavoritePluginRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *FavoritePluginRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PluginId")
+	delete(f, "SpaceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "FavoritePluginRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type FavoritePluginResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type FavoritePluginResponse struct {
+	*tchttp.BaseResponse
+	Response *FavoritePluginResponseParams `json:"Response"`
+}
+
+func (r *FavoritePluginResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *FavoritePluginResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type FavoriteSkillRequestParams struct {
+	// <p>SkillId</p>
+	SkillId *string `json:"SkillId,omitnil,omitempty" name:"SkillId"`
+
+	// <p>空间ID</p>
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+}
+
+type FavoriteSkillRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>SkillId</p>
+	SkillId *string `json:"SkillId,omitnil,omitempty" name:"SkillId"`
+
+	// <p>空间ID</p>
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+}
+
+func (r *FavoriteSkillRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *FavoriteSkillRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SkillId")
+	delete(f, "SpaceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "FavoriteSkillRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type FavoriteSkillResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type FavoriteSkillResponse struct {
+	*tchttp.BaseResponse
+	Response *FavoriteSkillResponseParams `json:"Response"`
+}
+
+func (r *FavoriteSkillResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *FavoriteSkillResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type FieldMask struct {
@@ -4524,6 +5413,198 @@ func (r *ModifyConversationResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyPluginRequestParams struct {
+	// <p>插件id</p>
+	PluginId *string `json:"PluginId,omitnil,omitempty" name:"PluginId"`
+
+	// <p>插件版本号</p>
+	PluginVersion *int64 `json:"PluginVersion,omitnil,omitempty" name:"PluginVersion"`
+
+	// <p>插件基础资料</p>
+	Profile *PluginProfile `json:"Profile,omitnil,omitempty" name:"Profile"`
+
+	// <p>插件类型配置</p>
+	Config *PluginConfig `json:"Config,omitnil,omitempty" name:"Config"`
+
+	// <p>指定需要更新的字段，避免全量覆盖</p>
+	UpdateMask *FieldMask `json:"UpdateMask,omitnil,omitempty" name:"UpdateMask"`
+
+	// <p>插件的工具列表，mcp插件不传</p>
+	ToolList []*Tool `json:"ToolList,omitnil,omitempty" name:"ToolList"`
+}
+
+type ModifyPluginRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>插件id</p>
+	PluginId *string `json:"PluginId,omitnil,omitempty" name:"PluginId"`
+
+	// <p>插件版本号</p>
+	PluginVersion *int64 `json:"PluginVersion,omitnil,omitempty" name:"PluginVersion"`
+
+	// <p>插件基础资料</p>
+	Profile *PluginProfile `json:"Profile,omitnil,omitempty" name:"Profile"`
+
+	// <p>插件类型配置</p>
+	Config *PluginConfig `json:"Config,omitnil,omitempty" name:"Config"`
+
+	// <p>指定需要更新的字段，避免全量覆盖</p>
+	UpdateMask *FieldMask `json:"UpdateMask,omitnil,omitempty" name:"UpdateMask"`
+
+	// <p>插件的工具列表，mcp插件不传</p>
+	ToolList []*Tool `json:"ToolList,omitnil,omitempty" name:"ToolList"`
+}
+
+func (r *ModifyPluginRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyPluginRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PluginId")
+	delete(f, "PluginVersion")
+	delete(f, "Profile")
+	delete(f, "Config")
+	delete(f, "UpdateMask")
+	delete(f, "ToolList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyPluginRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyPluginResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyPluginResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyPluginResponseParams `json:"Response"`
+}
+
+func (r *ModifyPluginResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyPluginResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifySkillRequestParams struct {
+	// <p>SkillId</p>
+	SkillId *string `json:"SkillId,omitnil,omitempty" name:"SkillId"`
+
+	// <p>空间ID</p>
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// <p>skill描述</p>
+	DisplayDescription *string `json:"DisplayDescription,omitnil,omitempty" name:"DisplayDescription"`
+
+	// <p>skill名称</p>
+	DisplayName *string `json:"DisplayName,omitnil,omitempty" name:"DisplayName"`
+
+	// <p>skill包文件地址（zip）；传入则触发新版本生成，需与SkillVersion、UpdateDescription配套传入</p>
+	FileUrl *string `json:"FileUrl,omitnil,omitempty" name:"FileUrl"`
+
+	// <p>图标地址</p>
+	IconUrl *string `json:"IconUrl,omitnil,omitempty" name:"IconUrl"`
+
+	// <p>skill版本号（与FileUrl配套传入）</p>
+	SkillVersion *string `json:"SkillVersion,omitnil,omitempty" name:"SkillVersion"`
+
+	// <p>版本变更说明（与FileUrl配套传入）</p>
+	UpdateDescription *string `json:"UpdateDescription,omitnil,omitempty" name:"UpdateDescription"`
+}
+
+type ModifySkillRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>SkillId</p>
+	SkillId *string `json:"SkillId,omitnil,omitempty" name:"SkillId"`
+
+	// <p>空间ID</p>
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// <p>skill描述</p>
+	DisplayDescription *string `json:"DisplayDescription,omitnil,omitempty" name:"DisplayDescription"`
+
+	// <p>skill名称</p>
+	DisplayName *string `json:"DisplayName,omitnil,omitempty" name:"DisplayName"`
+
+	// <p>skill包文件地址（zip）；传入则触发新版本生成，需与SkillVersion、UpdateDescription配套传入</p>
+	FileUrl *string `json:"FileUrl,omitnil,omitempty" name:"FileUrl"`
+
+	// <p>图标地址</p>
+	IconUrl *string `json:"IconUrl,omitnil,omitempty" name:"IconUrl"`
+
+	// <p>skill版本号（与FileUrl配套传入）</p>
+	SkillVersion *string `json:"SkillVersion,omitnil,omitempty" name:"SkillVersion"`
+
+	// <p>版本变更说明（与FileUrl配套传入）</p>
+	UpdateDescription *string `json:"UpdateDescription,omitnil,omitempty" name:"UpdateDescription"`
+}
+
+func (r *ModifySkillRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifySkillRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SkillId")
+	delete(f, "SpaceId")
+	delete(f, "DisplayDescription")
+	delete(f, "DisplayName")
+	delete(f, "FileUrl")
+	delete(f, "IconUrl")
+	delete(f, "SkillVersion")
+	delete(f, "UpdateDescription")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifySkillRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifySkillResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifySkillResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifySkillResponseParams `json:"Response"`
+}
+
+func (r *ModifySkillResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifySkillResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifySpaceRequestParams struct {
 	// 工作空间名称,长度最大30个字符
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
@@ -4882,6 +5963,74 @@ type ReleaseRecord struct {
 
 	// 发布人
 	Updater *string `json:"Updater,omitnil,omitempty" name:"Updater"`
+}
+
+// Predefined struct for user
+type ReleaseSkillRequestParams struct {
+	// <p>SkillId</p>
+	SkillId *string `json:"SkillId,omitnil,omitempty" name:"SkillId"`
+
+	// <p>空间ID</p>
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// <p>版本ID</p>
+	VersionId *string `json:"VersionId,omitnil,omitempty" name:"VersionId"`
+}
+
+type ReleaseSkillRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>SkillId</p>
+	SkillId *string `json:"SkillId,omitnil,omitempty" name:"SkillId"`
+
+	// <p>空间ID</p>
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// <p>版本ID</p>
+	VersionId *string `json:"VersionId,omitnil,omitempty" name:"VersionId"`
+}
+
+func (r *ReleaseSkillRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ReleaseSkillRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SkillId")
+	delete(f, "SpaceId")
+	delete(f, "VersionId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ReleaseSkillRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ReleaseSkillResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ReleaseSkillResponse struct {
+	*tchttp.BaseResponse
+	Response *ReleaseSkillResponseParams `json:"Response"`
+}
+
+func (r *ReleaseSkillResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ReleaseSkillResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ReleaseSummary struct {
@@ -5290,6 +6439,17 @@ type SkillClassification struct {
 	SourceLink *string `json:"SourceLink,omitnil,omitempty" name:"SourceLink"`
 }
 
+type SkillDetail struct {
+	// 调用情况摘要
+	ReferenceSummaryList []*SkillReferenceSummary `json:"ReferenceSummaryList,omitnil,omitempty" name:"ReferenceSummaryList"`
+
+	// Skill 摘要
+	SkillSummary *SkillSummary `json:"SkillSummary,omitnil,omitempty" name:"SkillSummary"`
+
+	// 版本列表
+	VersionList []*SkillVersion `json:"VersionList,omitnil,omitempty" name:"VersionList"`
+}
+
 type SkillNotice struct {
 	// 通知级别
 	// 
@@ -5343,6 +6503,37 @@ type SkillProfile struct {
 
 	// 更新时间（Unix秒）
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+}
+
+type SkillReferenceGroup struct {
+	// <p>该类型下的引用详情列表</p>
+	ReferenceSummaryList []*SkillReferenceSummary `json:"ReferenceSummaryList,omitnil,omitempty" name:"ReferenceSummaryList"`
+
+	// <table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>SKILL_REF_UNKNOWN</td><td>0</td><td>占位</td></tr><tr><td>SKILL_REF_OPENCLAW</td><td>1</td><td>openclaw</td></tr><tr><td>SKILL_REF_AGENT</td><td>2</td><td>agent</td></tr><tr><td>SKILL_REF_CORP_ASSISTANT</td><td>3</td><td>企业助手</td></tr></tbody></table>
+	ReferenceType *int64 `json:"ReferenceType,omitnil,omitempty" name:"ReferenceType"`
+
+	// <p>该类型下的引用总数</p>
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+}
+
+type SkillReferenceSummary struct {
+	// <p>关联ID</p>
+	ReferenceId *string `json:"ReferenceId,omitnil,omitempty" name:"ReferenceId"`
+
+	// <p>关联名称</p>
+	ReferenceName *string `json:"ReferenceName,omitnil,omitempty" name:"ReferenceName"`
+
+	// <p>关联类型</p><p>枚举值:<br>| uint | 描述 |<br>| --- | --- |<br>| 0 | 占位 |<br>| 1 | ClawPro |<br>| 2 | agent |</p>
+	ReferenceType *int64 `json:"ReferenceType,omitnil,omitempty" name:"ReferenceType"`
+
+	// <p>空间ID</p>
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// <p>空间名称</p>
+	SpaceName *string `json:"SpaceName,omitnil,omitempty" name:"SpaceName"`
+
+	// <p>Reference实例拥有者</p>
+	Owner *string `json:"Owner,omitnil,omitempty" name:"Owner"`
 }
 
 type SkillShare struct {
@@ -5554,6 +6745,128 @@ type ToolExample struct {
 
 	// <p>响应参数</p>
 	Response *string `json:"Response,omitnil,omitempty" name:"Response"`
+}
+
+// Predefined struct for user
+type UnfavoritePluginRequestParams struct {
+	// <p>插件id</p>
+	PluginId *string `json:"PluginId,omitnil,omitempty" name:"PluginId"`
+
+	// <p>当前空间id</p>
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+}
+
+type UnfavoritePluginRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>插件id</p>
+	PluginId *string `json:"PluginId,omitnil,omitempty" name:"PluginId"`
+
+	// <p>当前空间id</p>
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+}
+
+func (r *UnfavoritePluginRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UnfavoritePluginRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PluginId")
+	delete(f, "SpaceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UnfavoritePluginRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UnfavoritePluginResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UnfavoritePluginResponse struct {
+	*tchttp.BaseResponse
+	Response *UnfavoritePluginResponseParams `json:"Response"`
+}
+
+func (r *UnfavoritePluginResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UnfavoritePluginResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UnfavoriteSkillRequestParams struct {
+	// <p>SkillId</p>
+	SkillId *string `json:"SkillId,omitnil,omitempty" name:"SkillId"`
+
+	// <p>空间ID</p>
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+}
+
+type UnfavoriteSkillRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>SkillId</p>
+	SkillId *string `json:"SkillId,omitnil,omitempty" name:"SkillId"`
+
+	// <p>空间ID</p>
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+}
+
+func (r *UnfavoriteSkillRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UnfavoriteSkillRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SkillId")
+	delete(f, "SpaceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UnfavoriteSkillRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UnfavoriteSkillResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UnfavoriteSkillResponse struct {
+	*tchttp.BaseResponse
+	Response *UnfavoriteSkillResponseParams `json:"Response"`
+}
+
+func (r *UnfavoriteSkillResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UnfavoriteSkillResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type Variable struct {

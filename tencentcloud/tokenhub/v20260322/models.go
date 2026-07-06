@@ -1028,6 +1028,12 @@ func (r *DescribeModelListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeModelListResponseParams struct {
+	// <p>模型列表。</p>
+	ModelSet []*Model `json:"ModelSet,omitnil,omitempty" name:"ModelSet"`
+
+	// <p>符合条件的模型总数。</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -1749,6 +1755,151 @@ type GlossaryItem struct {
 
 	// 更新时间。
 	UpdatedTime *string `json:"UpdatedTime,omitnil,omitempty" name:"UpdatedTime"`
+}
+
+type Model struct {
+	// <p>模型名称</p>
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
+	// <p>模型 ID。</p>
+	ModelId *string `json:"ModelId,omitnil,omitempty" name:"ModelId"`
+
+	// <p>模型显示名称。</p>
+	DisplayName *string `json:"DisplayName,omitnil,omitempty" name:"DisplayName"`
+
+	// <p>模型描述。</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>模型概要。</p>
+	Summary *string `json:"Summary,omitnil,omitempty" name:"Summary"`
+
+	// <p>模型类型。取值：Text（文本）、Vision（视觉）、Multimodal（多模态）、Speech（语音）、Embedding（向量）。</p><p>枚举值：</p><ul><li>Text： 语言模型</li><li>Vision： 视觉模型</li><li>Multimodal： 多模态模型</li></ul>
+	ModelType *string `json:"ModelType,omitnil,omitempty" name:"ModelType"`
+
+	// <p>模型品牌。</p>
+	Brand *string `json:"Brand,omitnil,omitempty" name:"Brand"`
+
+	// <p>模型图标。</p>
+	ModelImage *ModelImage `json:"ModelImage,omitnil,omitempty" name:"ModelImage"`
+
+	// <p>模型供应商。</p>
+	Provider *string `json:"Provider,omitnil,omitempty" name:"Provider"`
+
+	// <p>模型状态。取值：online（上线）、offline（下线）。</p><p>枚举值：</p><ul><li>online ： 上线</li><li>pre-offline： 预下线</li></ul>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>标签列表。</p>
+	Tags []*string `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>计费信息列表。</p>
+	ModelChargingInfo []*ModelChargingInfo `json:"ModelChargingInfo,omitnil,omitempty" name:"ModelChargingInfo"`
+
+	// <p>模型规格。</p>
+	ModelSpec *ModelSpec `json:"ModelSpec,omitnil,omitempty" name:"ModelSpec"`
+
+	// <p>发布时间。</p>
+	ReleaseAt *string `json:"ReleaseAt,omitnil,omitempty" name:"ReleaseAt"`
+
+	// <p>推荐顺序，值越小排序越靠前。</p>
+	RecommendWeight *int64 `json:"RecommendWeight,omitnil,omitempty" name:"RecommendWeight"`
+
+	// <p>模型访问信息。包含模型在各站点和地域的可用性配置。为空时表示未配置地域信息，模型不可用。</p>
+	ModelAccessInfo *ModelAccessInfo `json:"ModelAccessInfo,omitnil,omitempty" name:"ModelAccessInfo"`
+
+	// <p>体验包信息。</p>
+	FreeTrialInfo *ModelFreeTrialInfo `json:"FreeTrialInfo,omitnil,omitempty" name:"FreeTrialInfo"`
+
+	// <p>模型下线时间，Status=pre-offline 时，会配置模型下线时间</p>
+	OfflineAt *string `json:"OfflineAt,omitnil,omitempty" name:"OfflineAt"`
+}
+
+type ModelAccessInfo struct {
+	// 各站点的地域可用性列表。为空时表示未配置地域信息，模型不可用。
+	ModelSiteRegions []*ModelSiteRegion `json:"ModelSiteRegions,omitnil,omitempty" name:"ModelSiteRegions"`
+}
+
+type ModelChargingInfo struct {
+	// 计费类型。取值：Uniform（统一计费）、Tiered（阶梯计费）。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 计费名称，阶梯计费时表示区间标识，统一计费为空。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 计费场景，用于区分同一产品不同功能的计费。
+	Scenario *string `json:"Scenario,omitnil,omitempty" name:"Scenario"`
+
+	// 计费条目列表，顺序即前端展示顺序。
+	ChargingItems []*ModelChargingItem `json:"ChargingItems,omitnil,omitempty" name:"ChargingItems"`
+
+	// 计费单位。取值：TOKEN（词元）、COUNT（次）、CREDIT（积分）、PICTURE（张）。
+	ChargeUnit *string `json:"ChargeUnit,omitnil,omitempty" name:"ChargeUnit"`
+
+	// 计费参考链接。
+	Reference *string `json:"Reference,omitnil,omitempty" name:"Reference"`
+}
+
+type ModelChargingItem struct {
+	// 价格维度标识。取值：Input（输入）、Output（输出）、Cache（缓存命中）、Thinking（思考）、BatchInput（批量输入）、BatchOutput（批量输出）、BatchCache（批量缓存命中）、ImageInput（输入图片）、ImageOutput（输出图片）、Search（搜索调用）。
+	PriceName *string `json:"PriceName,omitnil,omitempty" name:"PriceName"`
+
+	// 价格维度展示名，后端直接提供当前语言文本（如 输入、Input），前端无需翻译。
+	DisplayName *string `json:"DisplayName,omitnil,omitempty" name:"DisplayName"`
+
+	// 价格数值。
+	Price *string `json:"Price,omitnil,omitempty" name:"Price"`
+
+	// 价格单位，后端直接提供当前语言文本（如 元/百万tokens、元/张、积分/次）。
+	PriceUnit *string `json:"PriceUnit,omitnil,omitempty" name:"PriceUnit"`
+}
+
+type ModelFreeTrialInfo struct {
+	// 推荐顺序，值越小排序越靠前。为空表示使用模型默认权重。
+	RecommendWeight *int64 `json:"RecommendWeight,omitnil,omitempty" name:"RecommendWeight"`
+
+	// 体验包容量大小。
+	CapacitySize *int64 `json:"CapacitySize,omitnil,omitempty" name:"CapacitySize"`
+
+	// 容量单位。取值：token。
+	Unit *string `json:"Unit,omitnil,omitempty" name:"Unit"`
+
+	// 有效期天数（如90天）。为空表示不限期。
+	ValidityDays *int64 `json:"ValidityDays,omitnil,omitempty" name:"ValidityDays"`
+}
+
+type ModelImage struct {
+	// 图标 URL。
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+}
+
+type ModelSiteRegion struct {
+	// 站点标识。取值：domestic（国内站）、international（国际站）。
+	Site *string `json:"Site,omitnil,omitempty" name:"Site"`
+
+	// 该站点下可用的地域列表，遵循腾讯云标准地域编码（如 ap-guangzhou、ap-beijing、ap-singapore、na-siliconvalley 等）。为空数组时表示该站点无可用地域。
+	Regions []*string `json:"Regions,omitnil,omitempty" name:"Regions"`
+}
+
+type ModelSpec struct {
+	// 每分钟处理 Token 数（Tokens Per Minute）。
+	TPM *string `json:"TPM,omitnil,omitempty" name:"TPM"`
+
+	// 每分钟请求数（Queries Per Minute）。
+	QPM *string `json:"QPM,omitnil,omitempty" name:"QPM"`
+
+	// 最大输入 Token 长度。
+	MaxInputToken *string `json:"MaxInputToken,omitnil,omitempty" name:"MaxInputToken"`
+
+	// 最大输出 Token 长度。
+	MaxOutputToken *string `json:"MaxOutputToken,omitnil,omitempty" name:"MaxOutputToken"`
+
+	// 上下文窗口长度。
+	ContextLength *string `json:"ContextLength,omitnil,omitempty" name:"ContextLength"`
+
+	// 并发数。
+	Concurrency *string `json:"Concurrency,omitnil,omitempty" name:"Concurrency"`
+
+	// 输入要求描述。
+	InputDescription *string `json:"InputDescription,omitnil,omitempty" name:"InputDescription"`
 }
 
 // Predefined struct for user

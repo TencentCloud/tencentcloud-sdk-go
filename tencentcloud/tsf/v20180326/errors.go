@@ -125,6 +125,9 @@ const (
 	// 容器平台集群当前不可用
 	FAILEDOPERATION_CPCLUSTERUNAVAILABLE = "FailedOperation.CpClusterUnavailable"
 
+	// 创建操作过于频繁,请稍候重试
+	FAILEDOPERATION_CREATEOPERATIONTOOFREQUENTLY = "FailedOperation.CreateOperationTooFrequently"
+
 	// 健康检查配置失败。
 	FAILEDOPERATION_CVMCAEMASTERHEALTHCHECKCONFIGERROR = "FailedOperation.CvmCaeMasterHealthCheckConfigError"
 
@@ -223,6 +226,9 @@ const (
 
 	// 调用 Mesh API Server 失败。
 	FAILEDOPERATION_RATELIMITMESHAPISERVICEERROR = "FailedOperation.RatelimitMeshApiServiceError"
+
+	// 发布操作过于频繁,请稍候重试
+	FAILEDOPERATION_RELEASEOPERATIONTOOFREQUENTLY = "FailedOperation.ReleaseOperationTooFrequently"
 
 	// 资源操作失败。
 	FAILEDOPERATION_RESOURCEOPFAILED = "FailedOperation.ResourceOpFailed"

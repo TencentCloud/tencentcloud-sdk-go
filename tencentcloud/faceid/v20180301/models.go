@@ -1143,68 +1143,59 @@ func (r *DetectAuthResponse) FromJsonString(s string) error {
 }
 
 type DetectDetail struct {
-	// 请求时间戳。
+	// <p>请求时间戳。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReqTime *string `json:"ReqTime,omitnil,omitempty" name:"ReqTime"`
 
-	// 本次活体一比一请求的唯一标记。
+	// <p>本次活体一比一请求的唯一标记。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Seq *string `json:"Seq,omitnil,omitempty" name:"Seq"`
 
-	// 参与本次活体一比一的身份证号。
+	// <p>参与本次活体一比一的身份证号。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Idcard *string `json:"Idcard,omitnil,omitempty" name:"Idcard"`
 
-	// 参与本次活体一比一的姓名。
+	// <p>参与本次活体一比一的姓名。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 本次活体一比一的相似度。
+	// <p>本次活体一比一的相似度。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Sim *string `json:"Sim,omitnil,omitempty" name:"Sim"`
 
-	// 本次活体一比一是否收费
+	// <p>本次活体一比一是否收费</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsNeedCharge *bool `json:"IsNeedCharge,omitnil,omitempty" name:"IsNeedCharge"`
 
-	// 本次活体一比一最终结果。0为成功
+	// <p>本次活体一比一最终结果。0为成功</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Errcode *int64 `json:"Errcode,omitnil,omitempty" name:"Errcode"`
 
-	// 本次活体一比一最终结果描述。（仅描述用，文案更新时不会通知。）
+	// <p>本次活体一比一最终结果描述。（仅描述用，文案更新时不会通知。）</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Errmsg *string `json:"Errmsg,omitnil,omitempty" name:"Errmsg"`
 
-	// 本次活体结果。0为成功
+	// <p>本次活体结果。0为成功</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Livestatus *int64 `json:"Livestatus,omitnil,omitempty" name:"Livestatus"`
 
-	// 本次活体结果描述。（仅描述用，文案更新时不会通知。）
+	// <p>本次活体结果描述。（仅描述用，文案更新时不会通知。）</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Livemsg *string `json:"Livemsg,omitnil,omitempty" name:"Livemsg"`
 
-	// 本次一比一结果。0为成功
+	// <p>本次一比一结果。0为成功</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Comparestatus *int64 `json:"Comparestatus,omitnil,omitempty" name:"Comparestatus"`
 
-	// 本次一比一结果描述。（仅描述用，文案更新时不会通知。）
+	// <p>本次一比一结果描述。（仅描述用，文案更新时不会通知。）</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Comparemsg *string `json:"Comparemsg,omitnil,omitempty" name:"Comparemsg"`
 
-	// 比对库源类型。包括：
-	// 公安商业库；
-	// 业务方自有库（用户上传照片、客户的混合库、混合部署库）；
-	// 二次验证库；
-	// 人工审核库；
+	// <p>比对库源类型。包括：商业库；业务方自有库（用户上传照片、客户的混合库、混合部署库）；二次验证库；人工审核库；</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CompareLibType *string `json:"CompareLibType,omitnil,omitempty" name:"CompareLibType"`
 
-	// 枚举活体检测类型：
-	// 0：未知
-	// 1：数字活体
-	// 2：动作活体
-	// 3：静默活体
-	// 4：一闪活体（动作+光线）
+	// <p>枚举活体检测类型：<br>0：未知<br>1：数字活体<br>2：动作活体<br>3：静默活体<br>4：一闪活体（动作+光线）</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LivenessMode *uint64 `json:"LivenessMode,omitnil,omitempty" name:"LivenessMode"`
 }

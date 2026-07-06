@@ -5510,87 +5510,99 @@ func (r *CreateRecordingRuleYamlTaskResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateScheduledSqlRequestParams struct {
-	// 源日志主题ID- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+	// <p>源日志主题ID- 通过<a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取日志主题Id。</p>
 	SrcTopicId *string `json:"SrcTopicId,omitnil,omitempty" name:"SrcTopicId"`
 
-	// 任务名称，0~255字符
+	// <p>任务名称，0~255字符</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 任务启动状态.  1开启,  2关闭
+	// <p>任务启动状态.  1开启,  2关闭</p>
 	EnableFlag *int64 `json:"EnableFlag,omitnil,omitempty" name:"EnableFlag"`
 
-	// 定时SQL分析目标日志主题
+	// <p>定时SQL分析目标日志主题</p>
 	DstResource *ScheduledSqlResouceInfo `json:"DstResource,omitnil,omitempty" name:"DstResource"`
 
-	// 查询语句
+	// <p>查询语句</p>
 	ScheduledSqlContent *string `json:"ScheduledSqlContent,omitnil,omitempty" name:"ScheduledSqlContent"`
 
-	// 调度开始时间,Unix时间戳，单位ms
+	// <p>调度开始时间,Unix时间戳，单位ms</p>
 	ProcessStartTime *uint64 `json:"ProcessStartTime,omitnil,omitempty" name:"ProcessStartTime"`
 
-	// 调度类型，1:持续运行 2:指定时间范围
+	// <p>调度类型，1:持续运行 2:指定时间范围</p>
 	ProcessType *int64 `json:"ProcessType,omitnil,omitempty" name:"ProcessType"`
 
-	// 调度周期(分钟)，1~1440分钟
+	// <p>调度周期(分钟)，1~1440分钟</p>
 	ProcessPeriod *int64 `json:"ProcessPeriod,omitnil,omitempty" name:"ProcessPeriod"`
 
-	// 单次查询的时间窗口,如果您的目标主题为指标主题，建议该参数的大小不超过30分钟，否则可能转指标失败。 
+	// <p>单次查询的时间窗口,如果您的目标主题为指标主题，建议该参数的大小不超过30分钟，否则可能转指标失败。</p>
 	ProcessTimeWindow *string `json:"ProcessTimeWindow,omitnil,omitempty" name:"ProcessTimeWindow"`
 
-	// 执行延迟(秒)，0~120秒，默认60秒
+	// <p>执行延迟(秒)，0~120秒，默认60秒</p>
 	ProcessDelay *int64 `json:"ProcessDelay,omitnil,omitempty" name:"ProcessDelay"`
 
-	// 源topicId的地域信息,支持地域见 [地域列表](https://cloud.tencent.com/document/api/614/56474#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8) 文档
+	// <p>源topicId的地域信息,支持地域见 <a href="https://cloud.tencent.com/document/api/614/56474#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8">地域列表</a> 文档</p>
 	SrcTopicRegion *string `json:"SrcTopicRegion,omitnil,omitempty" name:"SrcTopicRegion"`
 
-	// 调度结束时间，当ProcessType=2时为必传字段, Unix时间戳，单位ms
+	// <p>调度结束时间，当ProcessType=2时为必传字段, Unix时间戳，单位ms</p>
 	ProcessEndTime *uint64 `json:"ProcessEndTime,omitnil,omitempty" name:"ProcessEndTime"`
 
-	// 查询语法规则。 默认值为0。0：Lucene语法，1：CQL语法  
+	// <p>查询语法规则。 默认值为0。0：Lucene语法，1：CQL语法</p>
 	SyntaxRule *uint64 `json:"SyntaxRule,omitnil,omitempty" name:"SyntaxRule"`
+
+	// <p>是否开启投递服务日志。1：关闭，2：开启。</p>
+	HasServicesLog *uint64 `json:"HasServicesLog,omitnil,omitempty" name:"HasServicesLog"`
+
+	// <p>全文检索标记。1：关闭，2：打开。默认：1</p>
+	FullQuery *uint64 `json:"FullQuery,omitnil,omitempty" name:"FullQuery"`
 }
 
 type CreateScheduledSqlRequest struct {
 	*tchttp.BaseRequest
 	
-	// 源日志主题ID- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+	// <p>源日志主题ID- 通过<a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取日志主题Id。</p>
 	SrcTopicId *string `json:"SrcTopicId,omitnil,omitempty" name:"SrcTopicId"`
 
-	// 任务名称，0~255字符
+	// <p>任务名称，0~255字符</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 任务启动状态.  1开启,  2关闭
+	// <p>任务启动状态.  1开启,  2关闭</p>
 	EnableFlag *int64 `json:"EnableFlag,omitnil,omitempty" name:"EnableFlag"`
 
-	// 定时SQL分析目标日志主题
+	// <p>定时SQL分析目标日志主题</p>
 	DstResource *ScheduledSqlResouceInfo `json:"DstResource,omitnil,omitempty" name:"DstResource"`
 
-	// 查询语句
+	// <p>查询语句</p>
 	ScheduledSqlContent *string `json:"ScheduledSqlContent,omitnil,omitempty" name:"ScheduledSqlContent"`
 
-	// 调度开始时间,Unix时间戳，单位ms
+	// <p>调度开始时间,Unix时间戳，单位ms</p>
 	ProcessStartTime *uint64 `json:"ProcessStartTime,omitnil,omitempty" name:"ProcessStartTime"`
 
-	// 调度类型，1:持续运行 2:指定时间范围
+	// <p>调度类型，1:持续运行 2:指定时间范围</p>
 	ProcessType *int64 `json:"ProcessType,omitnil,omitempty" name:"ProcessType"`
 
-	// 调度周期(分钟)，1~1440分钟
+	// <p>调度周期(分钟)，1~1440分钟</p>
 	ProcessPeriod *int64 `json:"ProcessPeriod,omitnil,omitempty" name:"ProcessPeriod"`
 
-	// 单次查询的时间窗口,如果您的目标主题为指标主题，建议该参数的大小不超过30分钟，否则可能转指标失败。 
+	// <p>单次查询的时间窗口,如果您的目标主题为指标主题，建议该参数的大小不超过30分钟，否则可能转指标失败。</p>
 	ProcessTimeWindow *string `json:"ProcessTimeWindow,omitnil,omitempty" name:"ProcessTimeWindow"`
 
-	// 执行延迟(秒)，0~120秒，默认60秒
+	// <p>执行延迟(秒)，0~120秒，默认60秒</p>
 	ProcessDelay *int64 `json:"ProcessDelay,omitnil,omitempty" name:"ProcessDelay"`
 
-	// 源topicId的地域信息,支持地域见 [地域列表](https://cloud.tencent.com/document/api/614/56474#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8) 文档
+	// <p>源topicId的地域信息,支持地域见 <a href="https://cloud.tencent.com/document/api/614/56474#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8">地域列表</a> 文档</p>
 	SrcTopicRegion *string `json:"SrcTopicRegion,omitnil,omitempty" name:"SrcTopicRegion"`
 
-	// 调度结束时间，当ProcessType=2时为必传字段, Unix时间戳，单位ms
+	// <p>调度结束时间，当ProcessType=2时为必传字段, Unix时间戳，单位ms</p>
 	ProcessEndTime *uint64 `json:"ProcessEndTime,omitnil,omitempty" name:"ProcessEndTime"`
 
-	// 查询语法规则。 默认值为0。0：Lucene语法，1：CQL语法  
+	// <p>查询语法规则。 默认值为0。0：Lucene语法，1：CQL语法</p>
 	SyntaxRule *uint64 `json:"SyntaxRule,omitnil,omitempty" name:"SyntaxRule"`
+
+	// <p>是否开启投递服务日志。1：关闭，2：开启。</p>
+	HasServicesLog *uint64 `json:"HasServicesLog,omitnil,omitempty" name:"HasServicesLog"`
+
+	// <p>全文检索标记。1：关闭，2：打开。默认：1</p>
+	FullQuery *uint64 `json:"FullQuery,omitnil,omitempty" name:"FullQuery"`
 }
 
 func (r *CreateScheduledSqlRequest) ToJsonString() string {
@@ -5618,6 +5630,8 @@ func (r *CreateScheduledSqlRequest) FromJsonString(s string) error {
 	delete(f, "SrcTopicRegion")
 	delete(f, "ProcessEndTime")
 	delete(f, "SyntaxRule")
+	delete(f, "HasServicesLog")
+	delete(f, "FullQuery")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateScheduledSqlRequest has unknown keys!", "")
 	}
@@ -5626,7 +5640,7 @@ func (r *CreateScheduledSqlRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateScheduledSqlResponseParams struct {
-	// 任务id
+	// <p>任务id</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -19416,75 +19430,87 @@ func (r *ModifyRecordingRuleYamlTaskResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyScheduledSqlRequestParams struct {
-	// 任务ID，通过[获取定时SQL分析任务列表](https://cloud.tencent.com/document/product/614/95519)获取
+	// <p>任务ID，通过<a href="https://cloud.tencent.com/document/product/614/95519">获取定时SQL分析任务列表</a>获取</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 源日志主题，通过[获取定时SQL分析任务列表](https://cloud.tencent.com/document/product/614/95519)获取
+	// <p>源日志主题，通过<a href="https://cloud.tencent.com/document/product/614/95519">获取定时SQL分析任务列表</a>获取</p>
 	SrcTopicId *string `json:"SrcTopicId,omitnil,omitempty" name:"SrcTopicId"`
 
-	// 任务启动状态.   1开启,  2关闭
+	// <p>任务启动状态.   1开启,  2关闭</p>
 	EnableFlag *int64 `json:"EnableFlag,omitnil,omitempty" name:"EnableFlag"`
 
-	// 定时SQL分析的目标日志主题
+	// <p>定时SQL分析的目标日志主题</p>
 	DstResource *ScheduledSqlResouceInfo `json:"DstResource,omitnil,omitempty" name:"DstResource"`
 
-	// 查询语句
+	// <p>查询语句</p>
 	ScheduledSqlContent *string `json:"ScheduledSqlContent,omitnil,omitempty" name:"ScheduledSqlContent"`
 
-	// 调度周期(分钟)，1~1440分钟
+	// <p>调度周期(分钟)，1~1440分钟</p>
 	ProcessPeriod *int64 `json:"ProcessPeriod,omitnil,omitempty" name:"ProcessPeriod"`
 
-	// 单次查询的时间窗口. 例子中为近15分钟
+	// <p>单次查询的时间窗口. 例子中为近15分钟</p>
 	ProcessTimeWindow *string `json:"ProcessTimeWindow,omitnil,omitempty" name:"ProcessTimeWindow"`
 
-	// 执行延迟(秒)，0~120秒，默认60秒
+	// <p>执行延迟(秒)，0~120秒，默认60秒</p>
 	ProcessDelay *int64 `json:"ProcessDelay,omitnil,omitempty" name:"ProcessDelay"`
 
-	// 源topicId的地域信息,支持地域见 [地域列表](https://cloud.tencent.com/document/api/614/56474#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8) 文档
+	// <p>源topicId的地域信息,支持地域见 <a href="https://cloud.tencent.com/document/api/614/56474#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8">地域列表</a> 文档</p>
 	SrcTopicRegion *string `json:"SrcTopicRegion,omitnil,omitempty" name:"SrcTopicRegion"`
 
-	// 任务名称，0~255字符
+	// <p>任务名称，0~255字符</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 语法规则。 默认值为0。 0：Lucene语法，1：CQL语法
+	// <p>语法规则。 默认值为0。 0：Lucene语法，1：CQL语法</p>
 	SyntaxRule *uint64 `json:"SyntaxRule,omitnil,omitempty" name:"SyntaxRule"`
+
+	// <p>是否开启投递服务日志。1：关闭，2：开启。</p>
+	HasServicesLog *uint64 `json:"HasServicesLog,omitnil,omitempty" name:"HasServicesLog"`
+
+	// <p>全文检索查询标记。1：关闭，2：打开。</p>
+	FullQuery *uint64 `json:"FullQuery,omitnil,omitempty" name:"FullQuery"`
 }
 
 type ModifyScheduledSqlRequest struct {
 	*tchttp.BaseRequest
 	
-	// 任务ID，通过[获取定时SQL分析任务列表](https://cloud.tencent.com/document/product/614/95519)获取
+	// <p>任务ID，通过<a href="https://cloud.tencent.com/document/product/614/95519">获取定时SQL分析任务列表</a>获取</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 源日志主题，通过[获取定时SQL分析任务列表](https://cloud.tencent.com/document/product/614/95519)获取
+	// <p>源日志主题，通过<a href="https://cloud.tencent.com/document/product/614/95519">获取定时SQL分析任务列表</a>获取</p>
 	SrcTopicId *string `json:"SrcTopicId,omitnil,omitempty" name:"SrcTopicId"`
 
-	// 任务启动状态.   1开启,  2关闭
+	// <p>任务启动状态.   1开启,  2关闭</p>
 	EnableFlag *int64 `json:"EnableFlag,omitnil,omitempty" name:"EnableFlag"`
 
-	// 定时SQL分析的目标日志主题
+	// <p>定时SQL分析的目标日志主题</p>
 	DstResource *ScheduledSqlResouceInfo `json:"DstResource,omitnil,omitempty" name:"DstResource"`
 
-	// 查询语句
+	// <p>查询语句</p>
 	ScheduledSqlContent *string `json:"ScheduledSqlContent,omitnil,omitempty" name:"ScheduledSqlContent"`
 
-	// 调度周期(分钟)，1~1440分钟
+	// <p>调度周期(分钟)，1~1440分钟</p>
 	ProcessPeriod *int64 `json:"ProcessPeriod,omitnil,omitempty" name:"ProcessPeriod"`
 
-	// 单次查询的时间窗口. 例子中为近15分钟
+	// <p>单次查询的时间窗口. 例子中为近15分钟</p>
 	ProcessTimeWindow *string `json:"ProcessTimeWindow,omitnil,omitempty" name:"ProcessTimeWindow"`
 
-	// 执行延迟(秒)，0~120秒，默认60秒
+	// <p>执行延迟(秒)，0~120秒，默认60秒</p>
 	ProcessDelay *int64 `json:"ProcessDelay,omitnil,omitempty" name:"ProcessDelay"`
 
-	// 源topicId的地域信息,支持地域见 [地域列表](https://cloud.tencent.com/document/api/614/56474#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8) 文档
+	// <p>源topicId的地域信息,支持地域见 <a href="https://cloud.tencent.com/document/api/614/56474#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8">地域列表</a> 文档</p>
 	SrcTopicRegion *string `json:"SrcTopicRegion,omitnil,omitempty" name:"SrcTopicRegion"`
 
-	// 任务名称，0~255字符
+	// <p>任务名称，0~255字符</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 语法规则。 默认值为0。 0：Lucene语法，1：CQL语法
+	// <p>语法规则。 默认值为0。 0：Lucene语法，1：CQL语法</p>
 	SyntaxRule *uint64 `json:"SyntaxRule,omitnil,omitempty" name:"SyntaxRule"`
+
+	// <p>是否开启投递服务日志。1：关闭，2：开启。</p>
+	HasServicesLog *uint64 `json:"HasServicesLog,omitnil,omitempty" name:"HasServicesLog"`
+
+	// <p>全文检索查询标记。1：关闭，2：打开。</p>
+	FullQuery *uint64 `json:"FullQuery,omitnil,omitempty" name:"FullQuery"`
 }
 
 func (r *ModifyScheduledSqlRequest) ToJsonString() string {
@@ -19510,6 +19536,8 @@ func (r *ModifyScheduledSqlRequest) FromJsonString(s string) error {
 	delete(f, "SrcTopicRegion")
 	delete(f, "Name")
 	delete(f, "SyntaxRule")
+	delete(f, "HasServicesLog")
+	delete(f, "FullQuery")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyScheduledSqlRequest has unknown keys!", "")
 	}

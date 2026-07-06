@@ -1513,122 +1513,122 @@ func (r *CreateAlarmPolicyResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateAlarmShieldRequestParams struct {
-	// 模块名，这里填“monitor”
+	// <p>模块名，这里填“monitor”</p>
 	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
 
-	// 屏蔽策略名称
+	// <p>屏蔽策略名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 监控类型
+	// <p>监控类型</p>
 	MonitorType *string `json:"MonitorType,omitnil,omitempty" name:"MonitorType"`
 
-	// 命名空间即策略类型
+	// <p>命名空间即策略类型</p>
 	NameSpace *string `json:"NameSpace,omitnil,omitempty" name:"NameSpace"`
 
-	// 屏蔽时间类型 FOREVER_SHIELD:永久屏蔽 PERIOD_SHIELD:绝对时间范围屏蔽 LOOP_SHIELD:相对时间范围屏蔽
+	// <p>屏蔽时间类型 FOREVER_SHIELD:永久屏蔽 PERIOD_SHIELD:绝对时间范围屏蔽 LOOP_SHIELD:相对时间范围屏蔽</p>
 	ShieldTimeType *string `json:"ShieldTimeType,omitnil,omitempty" name:"ShieldTimeType"`
 
-	// 屏蔽对象
+	// <p>屏蔽对象</p>
 	ShieldObject []*string `json:"ShieldObject,omitnil,omitempty" name:"ShieldObject"`
 
-	// 屏蔽指标 为空则为全部指标
+	// <p>屏蔽指标 为空则为全部指标</p>
 	ShieldMetric []*string `json:"ShieldMetric,omitnil,omitempty" name:"ShieldMetric"`
 
-	// 开始时间 相对时间范围:36000 绝对时间范围:1648742400 缺省:0
+	// <p>开始时间 相对时间范围:36000 绝对时间范围:1648742400 缺省:0</p>
 	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间 相对时间范围:72000 绝对时间范围:1649088000 缺省:0
+	// <p>结束时间 相对时间范围:72000 绝对时间范围:1649088000 缺省:0</p>
 	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 循环开始日期 2022/04/01 缺省:0
+	// <p>循环开始日期 2022/04/01 缺省:0</p>
 	LoopStartDate *uint64 `json:"LoopStartDate,omitnil,omitempty" name:"LoopStartDate"`
 
-	// 循环结束日期 2022/04/05 缺省:0
+	// <p>循环结束日期 2022/04/05 缺省:0</p>
 	LoopEndDate *uint64 `json:"LoopEndDate,omitnil,omitempty" name:"LoopEndDate"`
 
-	// 需要屏蔽的策略ID
+	// <p>需要屏蔽的策略ID</p>
 	ShieldPolicyId *string `json:"ShieldPolicyId,omitnil,omitempty" name:"ShieldPolicyId"`
 
-	// 需要屏蔽的告警等级，取值范围Warn,Remind,Serious
+	// <p>需要屏蔽的告警等级，取值范围Warn,Remind,Serious</p>
 	ShieldAlarmLevel []*string `json:"ShieldAlarmLevel,omitnil,omitempty" name:"ShieldAlarmLevel"`
 
-	// 屏蔽类型，为OBJNAME是老版本实例名屏蔽，为POLICY是新版本维度匹配
+	// <p>屏蔽类型，为OBJNAME是实例屏蔽，为POLICY是策略屏蔽</p>
 	VersionTag *string `json:"VersionTag,omitnil,omitempty" name:"VersionTag"`
 
-	// 屏蔽规则的描述
+	// <p>屏蔽规则的描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	//  时区，东八区+8，西八区减8，以此类推
+	// <p>时区，东八区+8，西八区减8，以此类推</p>
 	TimeZone *float64 `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
 
-	// 屏蔽事件 为空则为全部指标
+	// <p>屏蔽事件 为空则为全部指标</p>
 	ShieldEvent []*string `json:"ShieldEvent,omitnil,omitempty" name:"ShieldEvent"`
 
-	// 是否对指标屏蔽 1=是 0=否
+	// <p>是否对指标屏蔽 1=是 0=否</p>
 	ShieldMetricFlag *int64 `json:"ShieldMetricFlag,omitnil,omitempty" name:"ShieldMetricFlag"`
 
-	// 是否对事件屏蔽 1=是 0=否
+	// <p>是否对事件屏蔽 1=是 0=否</p>
 	ShieldEventFlag *int64 `json:"ShieldEventFlag,omitnil,omitempty" name:"ShieldEventFlag"`
 }
 
 type CreateAlarmShieldRequest struct {
 	*tchttp.BaseRequest
 	
-	// 模块名，这里填“monitor”
+	// <p>模块名，这里填“monitor”</p>
 	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
 
-	// 屏蔽策略名称
+	// <p>屏蔽策略名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 监控类型
+	// <p>监控类型</p>
 	MonitorType *string `json:"MonitorType,omitnil,omitempty" name:"MonitorType"`
 
-	// 命名空间即策略类型
+	// <p>命名空间即策略类型</p>
 	NameSpace *string `json:"NameSpace,omitnil,omitempty" name:"NameSpace"`
 
-	// 屏蔽时间类型 FOREVER_SHIELD:永久屏蔽 PERIOD_SHIELD:绝对时间范围屏蔽 LOOP_SHIELD:相对时间范围屏蔽
+	// <p>屏蔽时间类型 FOREVER_SHIELD:永久屏蔽 PERIOD_SHIELD:绝对时间范围屏蔽 LOOP_SHIELD:相对时间范围屏蔽</p>
 	ShieldTimeType *string `json:"ShieldTimeType,omitnil,omitempty" name:"ShieldTimeType"`
 
-	// 屏蔽对象
+	// <p>屏蔽对象</p>
 	ShieldObject []*string `json:"ShieldObject,omitnil,omitempty" name:"ShieldObject"`
 
-	// 屏蔽指标 为空则为全部指标
+	// <p>屏蔽指标 为空则为全部指标</p>
 	ShieldMetric []*string `json:"ShieldMetric,omitnil,omitempty" name:"ShieldMetric"`
 
-	// 开始时间 相对时间范围:36000 绝对时间范围:1648742400 缺省:0
+	// <p>开始时间 相对时间范围:36000 绝对时间范围:1648742400 缺省:0</p>
 	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间 相对时间范围:72000 绝对时间范围:1649088000 缺省:0
+	// <p>结束时间 相对时间范围:72000 绝对时间范围:1649088000 缺省:0</p>
 	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 循环开始日期 2022/04/01 缺省:0
+	// <p>循环开始日期 2022/04/01 缺省:0</p>
 	LoopStartDate *uint64 `json:"LoopStartDate,omitnil,omitempty" name:"LoopStartDate"`
 
-	// 循环结束日期 2022/04/05 缺省:0
+	// <p>循环结束日期 2022/04/05 缺省:0</p>
 	LoopEndDate *uint64 `json:"LoopEndDate,omitnil,omitempty" name:"LoopEndDate"`
 
-	// 需要屏蔽的策略ID
+	// <p>需要屏蔽的策略ID</p>
 	ShieldPolicyId *string `json:"ShieldPolicyId,omitnil,omitempty" name:"ShieldPolicyId"`
 
-	// 需要屏蔽的告警等级，取值范围Warn,Remind,Serious
+	// <p>需要屏蔽的告警等级，取值范围Warn,Remind,Serious</p>
 	ShieldAlarmLevel []*string `json:"ShieldAlarmLevel,omitnil,omitempty" name:"ShieldAlarmLevel"`
 
-	// 屏蔽类型，为OBJNAME是老版本实例名屏蔽，为POLICY是新版本维度匹配
+	// <p>屏蔽类型，为OBJNAME是实例屏蔽，为POLICY是策略屏蔽</p>
 	VersionTag *string `json:"VersionTag,omitnil,omitempty" name:"VersionTag"`
 
-	// 屏蔽规则的描述
+	// <p>屏蔽规则的描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	//  时区，东八区+8，西八区减8，以此类推
+	// <p>时区，东八区+8，西八区减8，以此类推</p>
 	TimeZone *float64 `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
 
-	// 屏蔽事件 为空则为全部指标
+	// <p>屏蔽事件 为空则为全部指标</p>
 	ShieldEvent []*string `json:"ShieldEvent,omitnil,omitempty" name:"ShieldEvent"`
 
-	// 是否对指标屏蔽 1=是 0=否
+	// <p>是否对指标屏蔽 1=是 0=否</p>
 	ShieldMetricFlag *int64 `json:"ShieldMetricFlag,omitnil,omitempty" name:"ShieldMetricFlag"`
 
-	// 是否对事件屏蔽 1=是 0=否
+	// <p>是否对事件屏蔽 1=是 0=否</p>
 	ShieldEventFlag *int64 `json:"ShieldEventFlag,omitnil,omitempty" name:"ShieldEventFlag"`
 }
 
@@ -1671,7 +1671,7 @@ func (r *CreateAlarmShieldRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateAlarmShieldResponseParams struct {
-	// 屏蔽规则的Id
+	// <p>屏蔽规则的Id</p>
 	ShieldId *string `json:"ShieldId,omitnil,omitempty" name:"ShieldId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

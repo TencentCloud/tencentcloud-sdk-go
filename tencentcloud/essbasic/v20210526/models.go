@@ -1238,254 +1238,116 @@ func (r *ChannelCreateBatchQuickSignUrlResponse) FromJsonString(s string) error 
 
 // Predefined struct for user
 type ChannelCreateBatchSignUrlRequestParams struct {
-	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
-	// 
-	// 此接口下面信息必填。
-	// <ul>
-	// <li>渠道应用标识:  Agent.AppId</li>
-	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
-	// <li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId</li>
-	// </ul>
-	// 第三方平台子客企业和员工必须已经过实名认证
+	// <p>关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。</p><p>此接口下面信息必填。</p><ul><li>渠道应用标识:  Agent.AppId</li><li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li><li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId</li></ul>第三方平台子客企业和员工必须已经过实名认证
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
-	// 签署方经办人的姓名。
-	// 经办人的姓名将用于身份认证和电子签名，请确保填写的姓名为签署方的真实姓名，而非昵称等代名。
-	// 
-	// 注：
-	// <ul>
-	// <li>请确保和合同中填入的一致。</li>
-	// <li>在动态签署人补充链接场景中，可以通过传入这个值，对补充的个人参与方信息进行限制。仅匹配传入姓名的参与方才能补充合同。此参数预设信息功能暂时仅支持个人动态参与方。</li>
-	// </ul>
+	// <p>签署方经办人的姓名。<br>经办人的姓名将用于身份认证和电子签名，请确保填写的姓名为签署方的真实姓名，而非昵称等代名。</p><p>注：</p><ul><li>请确保和合同中填入的一致。</li><li>在动态签署人补充链接场景中，可以通过传入这个值，对补充的个人参与方信息进行限制。仅匹配传入姓名的参与方才能补充合同。此参数预设信息功能暂时仅支持个人动态参与方。</li></ul>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 手机号码， 支持国内手机号11位数字(无需加+86前缀或其他字符)。
-	// 请确认手机号所有方为此业务通知方。
-	// 
-	// 注：
-	// <ul>
-	// <li>请确保和合同中填入的一致,  若无法保持一致，请确保在发起和生成批量签署链接时传入相同的参与方证件信息。</li><li>在生成动态签署人补充链接场景中，可以通过传入此值，对补充的个人参与方信息进行限制。仅匹配传入手机号的参与方才能补充合同。此参数预设信息功能暂时仅支持个人动态参与方。 </li>
-	// </ul>
+	// <p>手机号码， 支持国内手机号11位数字(无需加+86前缀或其他字符)。<br>请确认手机号所有方为此业务通知方。</p><p>注：</p><ul><li>请确保和合同中填入的一致,  若无法保持一致，请确保在发起和生成批量签署链接时传入相同的参与方证件信息。</li><li>在生成动态签署人补充链接场景中，可以通过传入此值，对补充的个人参与方信息进行限制。仅匹配传入手机号的参与方才能补充合同。此参数预设信息功能暂时仅支持个人动态参与方。 </li></ul>
 	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
 
-	// 执行本接口操作的员工信息。
-	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	// <p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 证件类型，支持以下类型
-	// <ul><li>**ID_CARD** : 中国大陆居民身份证 (默认值)</li>
-	// <li>**HONGKONG_AND_MACAO** : 中国港澳居民来往内地通行证</li>
-	// <li>**HONGKONG_MACAO_AND_TAIWAN** : 中国港澳台居民居住证(格式同中国大陆居民身份证)</li></ul>
-	// 
-	// 注：
-	// 1. `请确保和合同中填入的一致`。
-	// 2. `在生成动态签署人补充链接场景中，可以通过传入此值，对补充的个人参与方信息进行限制。仅匹配传入证件类型的参与方才能补充合同。此参数预设信息功能暂时仅支持个人动态参与方，且需要和证件号参数一同传递，不能单独进行限制。`
+	// <p>证件类型，支持以下类型</p><ul><li>**ID_CARD** : 中国大陆居民身份证 (默认值)</li><li>**HONGKONG_AND_MACAO** : 中国港澳居民来往内地通行证</li><li>**HONGKONG_MACAO_AND_TAIWAN** : 中国港澳台居民居住证(格式同中国大陆居民身份证)</li></ul><p>注：</p><ol><li><code>请确保和合同中填入的一致</code>。</li><li><code>在生成动态签署人补充链接场景中，可以通过传入此值，对补充的个人参与方信息进行限制。仅匹配传入证件类型的参与方才能补充合同。此参数预设信息功能暂时仅支持个人动态参与方，且需要和证件号参数一同传递，不能单独进行限制。</code></li></ol>
 	IdCardType *string `json:"IdCardType,omitnil,omitempty" name:"IdCardType"`
 
-	// 证件号码，应符合以下规则
-	// <ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
-	// <li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
-	// <li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
-	// 
-	// 注：
-	// 1. `请确保和合同中填入的一致`。
-	// 2. `在生成动态签署人补充链接场景中，可以通过传入此值，对补充的个人参与方信息进行限制。仅匹配传入证件号的参与方才能补充合同。此参数预设信息功能暂时仅支持个人动态参与方。`
+	// <p>证件号码，应符合以下规则</p><ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li><li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li><li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul><p>注：</p><ol><li><code>请确保和合同中填入的一致</code>。</li><li><code>在生成动态签署人补充链接场景中，可以通过传入此值，对补充的个人参与方信息进行限制。仅匹配传入证件号的参与方才能补充合同。此参数预设信息功能暂时仅支持个人动态参与方。</code></li></ol>
 	IdCardNumber *string `json:"IdCardNumber,omitnil,omitempty" name:"IdCardNumber"`
 
-	// 通知用户方式：
-	// <ul>
-	// <li>**NONE** : 不通知（默认）</li>
-	// <li>**SMS** : 短信通知（发送短信通知到Mobile参数所传的手机号）</li>
-	// </ul>
+	// <p>通知用户方式：</p><ul><li>**NONE** : 不通知（默认）</li><li>**SMS** : 短信通知（发送短信通知到Mobile参数所传的手机号）</li></ul>
 	NotifyType *string `json:"NotifyType,omitnil,omitempty" name:"NotifyType"`
 
-	// 批量签署的合同流程ID数组。<font color="red">此参数必传。</font>
-	// 注: `在调用此接口时，请确保合同流程均为本企业发起，且合同数量不超过100个。`
+	// <p>批量签署的合同流程ID数组。<font color="red">此参数必传。</font><br>注: <code>在调用此接口时，请确保合同流程均为本企业发起，且合同数量不超过100个。</code></p>
 	FlowIds []*string `json:"FlowIds,omitnil,omitempty" name:"FlowIds"`
 
-	// SaaS平台企业员工签署方的企业名称。目标签署人如果为saas应用企业员工身份，此参数必填。
-	// 
-	// 注：
-	// <ul>
-	// <li>请确认该名称与企业营业执照中注册的名称一致。</li>
-	// <li>如果名称中包含英文括号()，请使用中文括号（）代替。</li>
-	// <li>请确保此企业已完成腾讯电子签企业认证。</li>
-	// <li>**若为子客企业员工，请使用OpenId，OrganizationOpenId参数。如果此子客企业未认证，则此参数需要传子客企业名称**</li>
-	// </ul>
+	// <p>SaaS平台企业员工签署方的企业名称。目标签署人如果为saas应用企业员工身份，此参数必填。</p><p>注：</p><ul><li>请确认该名称与企业营业执照中注册的名称一致。</li><li>如果名称中包含英文括号()，请使用中文括号（）代替。</li><li>请确保此企业已完成腾讯电子签企业认证。</li><li>**若为子客企业员工，请使用OpenId，OrganizationOpenId参数。如果此子客企业未认证，则此参数需要传子客企业名称**</li></ul>
 	OrganizationName *string `json:"OrganizationName,omitnil,omitempty" name:"OrganizationName"`
 
-	// 指定批量签署合同的签名类型，可传递以下值：<ul><li>**0**：手写签名</li><li>**1**：OCR楷体</li><li>**2**：姓名印章</li><li>**3**：图片印章</li><li>**4**：系统签名</li><li>**5**：长效手写签名（包含手写签名）</li></ul>注：<ul><li>不传值的情况则计算所有合同中个人签署区的签名类型，规则如下：<ul><li>1.如果所有合同中所有的个人签署区方式包含多种则是手写</li><li>2.如果所有合同中所有个人签名区签名类型仅为一种则就是那一种签名方式（例如合同1有多个签署区都是指定OCR楷体，合同2中也是多个签署区都是指定OCR楷体...则使用OCR楷体）</li></ul></li><li>该参数会覆盖您合同中的签名类型，若您在发起合同时限定了签名类型(赋值签名类型给ComponentTypeLimit)，请将这些签名类型赋予此参数</li></ul>
+	// <p>指定批量签署合同的签名类型，可传递以下值：<ul><li><strong>0</strong>：手写签名</li><li><strong>1</strong>：OCR楷体</li><li><strong>2</strong>：姓名印章</li><li><strong>3</strong>：图片印章</li><li><strong>4</strong>：系统签名</li><li><strong>5</strong>：长效手写签名（包含手写签名）</li></ul>注：<ul><li>不传值的情况则计算所有合同中个人签署区的签名类型，规则如下：<ul><li>1.如果所有合同中所有的个人签署区方式包含多种则是手写</li><li>2.如果所有合同中所有个人签名区签名类型仅为一种则就是那一种签名方式（例如合同1有多个签署区都是指定OCR楷体，合同2中也是多个签署区都是指定OCR楷体...则使用OCR楷体）</li></ul></li><li>该参数会覆盖您合同中的签名类型，若您在发起合同时限定了签名类型(赋值签名类型给ComponentTypeLimit)，请将这些签名类型赋予此参数</li></ul></p>
 	SignatureTypes []*int64 `json:"SignatureTypes,omitnil,omitempty" name:"SignatureTypes"`
 
-	// 是否直接跳转至合同内容页面进行签署
-	// <ul>
-	// <li>**false**: 会跳转至批量合同流程的列表,  点击需要批量签署合同后进入合同内容页面进行签署(默认)</li>
-	// <li>**true**: 跳过合同流程列表, 直接进入合同内容页面进行签署</li>
-	// </ul>
+	// <p>是否直接跳转至合同内容页面进行签署</p><ul><li>**false**: 会跳转至批量合同流程的列表,  点击需要批量签署合同后进入合同内容页面进行签署(默认)</li><li>**true**: 跳过合同流程列表, 直接进入合同内容页面进行签署</li></ul>
 	JumpToDetail *bool `json:"JumpToDetail,omitnil,omitempty" name:"JumpToDetail"`
 
-	// 批量签署合同相关信息，指定合同和签署方的信息，用于补充动态签署人。	
+	// <p>批量签署合同相关信息，指定合同和签署方的信息，用于补充动态签署人。</p>
 	FlowBatchUrlInfo *FlowBatchUrlInfo `json:"FlowBatchUrlInfo,omitnil,omitempty" name:"FlowBatchUrlInfo"`
 
-	// 第三方平台子客企业员工的标识OpenId，批签合同经办人为子客员工的情况下为必填。
-	// 
-	// 注：
-	// <ul>
-	// <li>传入的OpenId对应员工在此子客企业下必须已经实名</li>
-	// <li>传递了此参数可以无需传递Name，Mobile，IdCardNumber，IdCardType参数。系统会根据员工OpenId自动拉取实名信息。</li>
-	// </ul>
+	// <p>第三方平台子客企业员工的标识OpenId，批签合同经办人为子客员工的情况下为必填。</p><p>注：</p><ul><li>传入的OpenId对应员工在此子客企业下必须已经实名</li><li>传递了此参数可以无需传递Name，Mobile，IdCardNumber，IdCardType参数。系统会根据员工OpenId自动拉取实名信息。</li></ul>
 	OpenId *string `json:"OpenId,omitnil,omitempty" name:"OpenId"`
 
-	// 第三方平台子客企业的企业的标识, 即OrganizationOpenId，批签合同经办人为子客企业员工是为必填。
+	// <p>第三方平台子客企业的企业的标识, 即OrganizationOpenId，批签合同经办人为子客企业员工是为必填。</p>
 	OrganizationOpenId *string `json:"OrganizationOpenId,omitnil,omitempty" name:"OrganizationOpenId"`
 
-	// 签署完成后是否自动回跳
-	// <ul><li>false：否, 签署完成不会自动跳转回来(默认)</li><li>true：是, 签署完成会自动跳转回来</li></ul>
-	// 
-	// 注: 
-	// 1. 该参数<font color="red">只针对APP类型（电子签小程序跳转贵方小程序）场景</font> 的签署链接有效
-	// 2. <font color="red">手机应用APP 或 微信小程序需要监控界面的返回走后序逻辑</font>, 微信小程序的文档可以参考[这个](https://developers.weixin.qq.com/miniprogram/dev/reference/api/App.html#onShow-Object-object)
-	// 3. <font color="red">电子签小程序跳转贵方APP，不支持自动跳转，必需用户手动点击完成按钮（微信的限制）</font> 
+	// <p>签署完成后是否自动回跳</p><ul><li>false：否, 签署完成不会自动跳转回来(默认)</li><li>true：是, 签署完成会自动跳转回来</li></ul><p>注: </p><ol><li>该参数<font color="red">只针对APP类型（电子签小程序跳转贵方小程序）场景</font> 的签署链接有效</li><li><font color="red">手机应用APP 或 微信小程序需要监控界面的返回走后序逻辑</font>, 微信小程序的文档可以参考<a href="https://developers.weixin.qq.com/miniprogram/dev/reference/api/App.html#onShow-Object-object">这个</a></li><li><font color="red">电子签小程序跳转贵方APP，不支持自动跳转，必需用户手动点击完成按钮（微信的限制）</font></li></ol>
 	AutoJumpBack *bool `json:"AutoJumpBack,omitnil,omitempty" name:"AutoJumpBack"`
 
-	// <font color="red">仅公众号 H5 跳转电子签小程序时</font>，如需签署完成的“返回应用”功能，在获取签署链接接口的 UrlUseEnv 参数需设置为 **WeChatOfficialAccounts**，小程序签署成功的结果页面中才会出现“返回应用”按钮。在用户点击“返回应用”按钮之后，会返回到公众号 H5。 
-	// 
-	// 参考 [公众号 H5 跳转电子签小程序](https://qian.tencent.com/developers/company/openwxminiprogram/#23-%E5%85%AC%E4%BC%97%E5%8F%B7-h5-%E4%B8%AD%E8%B7%B3%E8%BD%AC)。
+	// <p><font color="red">仅公众号 H5 跳转电子签小程序时</font>，如需签署完成的“返回应用”功能，在获取签署链接接口的 UrlUseEnv 参数需设置为 <strong>WeChatOfficialAccounts</strong>，小程序签署成功的结果页面中才会出现“返回应用”按钮。在用户点击“返回应用”按钮之后，会返回到公众号 H5。 </p><p>参考 <a href="https://qian.tencent.com/developers/company/openwxminiprogram/#23-%E5%85%AC%E4%BC%97%E5%8F%B7-h5-%E4%B8%AD%E8%B7%B3%E8%BD%AC">公众号 H5 跳转电子签小程序</a>。</p>
 	UrlUseEnv *string `json:"UrlUseEnv,omitnil,omitempty" name:"UrlUseEnv"`
 
-	// 是否允许此链接中签署方批量拒签。 <ul><li>false (默认): 不允许批量拒签</li> <li>true : 允许批量拒签。</li></ul>
-	// 注：`1. 当前合同组不支持批量拒签功能。请对合同组中的每个子合同逐一执行拒签操作，以达到拒签整个合同组的效果。2. 如果是链接直接跳转至详情页（JumpToDetail参数为true），也不支持批量拒签功能`
+	// <p>是否允许此链接中签署方批量拒签。 <ul><li>false (默认): 不允许批量拒签</li> <li>true : 允许批量拒签。</li></ul><br>注：<code>1. 当前合同组不支持批量拒签功能。请对合同组中的每个子合同逐一执行拒签操作，以达到拒签整个合同组的效果。2. 如果是链接直接跳转至详情页（JumpToDetail参数为true），也不支持批量拒签功能</code></p>
 	CanBatchReject *bool `json:"CanBatchReject,omitnil,omitempty" name:"CanBatchReject"`
 
-	// 是否允许此链接中签署方批量确认已读文件。 <ul><li>false (默认): 不允许批量确认已读文件。</li> <li>true : 允许批量确认已读文件。</li></ul>
-	// 注：`1. 此功能为白名单功能，使用前请联系对应客户经理进行开通。2. 使用此功能时，FlowIds参数必传。3. 对于企业签署方，如果对印章/签名控件有限制要求，需要保证所有印章/签名控件的限制要求(印章id或印章/签名类型限制)一致，否则无法使用此功能。`
+	// <p>是否允许此链接中签署方批量确认已读文件。 <ul><li>false (默认): 不允许批量确认已读文件。</li> <li>true : 允许批量确认已读文件。</li></ul><br>注：<code>1. 此功能为白名单功能，使用前请联系对应客户经理进行开通。2. 使用此功能时，FlowIds参数必传。3. 对于企业签署方，如果对印章/签名控件有限制要求，需要保证所有印章/签名控件的限制要求(印章id或印章/签名类型限制)一致，否则无法使用此功能。</code></p>
 	CanSkipReadFlow *bool `json:"CanSkipReadFlow,omitnil,omitempty" name:"CanSkipReadFlow"`
 }
 
 type ChannelCreateBatchSignUrlRequest struct {
 	*tchttp.BaseRequest
 	
-	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
-	// 
-	// 此接口下面信息必填。
-	// <ul>
-	// <li>渠道应用标识:  Agent.AppId</li>
-	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
-	// <li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId</li>
-	// </ul>
-	// 第三方平台子客企业和员工必须已经过实名认证
+	// <p>关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。</p><p>此接口下面信息必填。</p><ul><li>渠道应用标识:  Agent.AppId</li><li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li><li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId</li></ul>第三方平台子客企业和员工必须已经过实名认证
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
-	// 签署方经办人的姓名。
-	// 经办人的姓名将用于身份认证和电子签名，请确保填写的姓名为签署方的真实姓名，而非昵称等代名。
-	// 
-	// 注：
-	// <ul>
-	// <li>请确保和合同中填入的一致。</li>
-	// <li>在动态签署人补充链接场景中，可以通过传入这个值，对补充的个人参与方信息进行限制。仅匹配传入姓名的参与方才能补充合同。此参数预设信息功能暂时仅支持个人动态参与方。</li>
-	// </ul>
+	// <p>签署方经办人的姓名。<br>经办人的姓名将用于身份认证和电子签名，请确保填写的姓名为签署方的真实姓名，而非昵称等代名。</p><p>注：</p><ul><li>请确保和合同中填入的一致。</li><li>在动态签署人补充链接场景中，可以通过传入这个值，对补充的个人参与方信息进行限制。仅匹配传入姓名的参与方才能补充合同。此参数预设信息功能暂时仅支持个人动态参与方。</li></ul>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 手机号码， 支持国内手机号11位数字(无需加+86前缀或其他字符)。
-	// 请确认手机号所有方为此业务通知方。
-	// 
-	// 注：
-	// <ul>
-	// <li>请确保和合同中填入的一致,  若无法保持一致，请确保在发起和生成批量签署链接时传入相同的参与方证件信息。</li><li>在生成动态签署人补充链接场景中，可以通过传入此值，对补充的个人参与方信息进行限制。仅匹配传入手机号的参与方才能补充合同。此参数预设信息功能暂时仅支持个人动态参与方。 </li>
-	// </ul>
+	// <p>手机号码， 支持国内手机号11位数字(无需加+86前缀或其他字符)。<br>请确认手机号所有方为此业务通知方。</p><p>注：</p><ul><li>请确保和合同中填入的一致,  若无法保持一致，请确保在发起和生成批量签署链接时传入相同的参与方证件信息。</li><li>在生成动态签署人补充链接场景中，可以通过传入此值，对补充的个人参与方信息进行限制。仅匹配传入手机号的参与方才能补充合同。此参数预设信息功能暂时仅支持个人动态参与方。 </li></ul>
 	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
 
-	// 执行本接口操作的员工信息。
-	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	// <p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 证件类型，支持以下类型
-	// <ul><li>**ID_CARD** : 中国大陆居民身份证 (默认值)</li>
-	// <li>**HONGKONG_AND_MACAO** : 中国港澳居民来往内地通行证</li>
-	// <li>**HONGKONG_MACAO_AND_TAIWAN** : 中国港澳台居民居住证(格式同中国大陆居民身份证)</li></ul>
-	// 
-	// 注：
-	// 1. `请确保和合同中填入的一致`。
-	// 2. `在生成动态签署人补充链接场景中，可以通过传入此值，对补充的个人参与方信息进行限制。仅匹配传入证件类型的参与方才能补充合同。此参数预设信息功能暂时仅支持个人动态参与方，且需要和证件号参数一同传递，不能单独进行限制。`
+	// <p>证件类型，支持以下类型</p><ul><li>**ID_CARD** : 中国大陆居民身份证 (默认值)</li><li>**HONGKONG_AND_MACAO** : 中国港澳居民来往内地通行证</li><li>**HONGKONG_MACAO_AND_TAIWAN** : 中国港澳台居民居住证(格式同中国大陆居民身份证)</li></ul><p>注：</p><ol><li><code>请确保和合同中填入的一致</code>。</li><li><code>在生成动态签署人补充链接场景中，可以通过传入此值，对补充的个人参与方信息进行限制。仅匹配传入证件类型的参与方才能补充合同。此参数预设信息功能暂时仅支持个人动态参与方，且需要和证件号参数一同传递，不能单独进行限制。</code></li></ol>
 	IdCardType *string `json:"IdCardType,omitnil,omitempty" name:"IdCardType"`
 
-	// 证件号码，应符合以下规则
-	// <ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
-	// <li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
-	// <li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
-	// 
-	// 注：
-	// 1. `请确保和合同中填入的一致`。
-	// 2. `在生成动态签署人补充链接场景中，可以通过传入此值，对补充的个人参与方信息进行限制。仅匹配传入证件号的参与方才能补充合同。此参数预设信息功能暂时仅支持个人动态参与方。`
+	// <p>证件号码，应符合以下规则</p><ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li><li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li><li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul><p>注：</p><ol><li><code>请确保和合同中填入的一致</code>。</li><li><code>在生成动态签署人补充链接场景中，可以通过传入此值，对补充的个人参与方信息进行限制。仅匹配传入证件号的参与方才能补充合同。此参数预设信息功能暂时仅支持个人动态参与方。</code></li></ol>
 	IdCardNumber *string `json:"IdCardNumber,omitnil,omitempty" name:"IdCardNumber"`
 
-	// 通知用户方式：
-	// <ul>
-	// <li>**NONE** : 不通知（默认）</li>
-	// <li>**SMS** : 短信通知（发送短信通知到Mobile参数所传的手机号）</li>
-	// </ul>
+	// <p>通知用户方式：</p><ul><li>**NONE** : 不通知（默认）</li><li>**SMS** : 短信通知（发送短信通知到Mobile参数所传的手机号）</li></ul>
 	NotifyType *string `json:"NotifyType,omitnil,omitempty" name:"NotifyType"`
 
-	// 批量签署的合同流程ID数组。<font color="red">此参数必传。</font>
-	// 注: `在调用此接口时，请确保合同流程均为本企业发起，且合同数量不超过100个。`
+	// <p>批量签署的合同流程ID数组。<font color="red">此参数必传。</font><br>注: <code>在调用此接口时，请确保合同流程均为本企业发起，且合同数量不超过100个。</code></p>
 	FlowIds []*string `json:"FlowIds,omitnil,omitempty" name:"FlowIds"`
 
-	// SaaS平台企业员工签署方的企业名称。目标签署人如果为saas应用企业员工身份，此参数必填。
-	// 
-	// 注：
-	// <ul>
-	// <li>请确认该名称与企业营业执照中注册的名称一致。</li>
-	// <li>如果名称中包含英文括号()，请使用中文括号（）代替。</li>
-	// <li>请确保此企业已完成腾讯电子签企业认证。</li>
-	// <li>**若为子客企业员工，请使用OpenId，OrganizationOpenId参数。如果此子客企业未认证，则此参数需要传子客企业名称**</li>
-	// </ul>
+	// <p>SaaS平台企业员工签署方的企业名称。目标签署人如果为saas应用企业员工身份，此参数必填。</p><p>注：</p><ul><li>请确认该名称与企业营业执照中注册的名称一致。</li><li>如果名称中包含英文括号()，请使用中文括号（）代替。</li><li>请确保此企业已完成腾讯电子签企业认证。</li><li>**若为子客企业员工，请使用OpenId，OrganizationOpenId参数。如果此子客企业未认证，则此参数需要传子客企业名称**</li></ul>
 	OrganizationName *string `json:"OrganizationName,omitnil,omitempty" name:"OrganizationName"`
 
-	// 指定批量签署合同的签名类型，可传递以下值：<ul><li>**0**：手写签名</li><li>**1**：OCR楷体</li><li>**2**：姓名印章</li><li>**3**：图片印章</li><li>**4**：系统签名</li><li>**5**：长效手写签名（包含手写签名）</li></ul>注：<ul><li>不传值的情况则计算所有合同中个人签署区的签名类型，规则如下：<ul><li>1.如果所有合同中所有的个人签署区方式包含多种则是手写</li><li>2.如果所有合同中所有个人签名区签名类型仅为一种则就是那一种签名方式（例如合同1有多个签署区都是指定OCR楷体，合同2中也是多个签署区都是指定OCR楷体...则使用OCR楷体）</li></ul></li><li>该参数会覆盖您合同中的签名类型，若您在发起合同时限定了签名类型(赋值签名类型给ComponentTypeLimit)，请将这些签名类型赋予此参数</li></ul>
+	// <p>指定批量签署合同的签名类型，可传递以下值：<ul><li><strong>0</strong>：手写签名</li><li><strong>1</strong>：OCR楷体</li><li><strong>2</strong>：姓名印章</li><li><strong>3</strong>：图片印章</li><li><strong>4</strong>：系统签名</li><li><strong>5</strong>：长效手写签名（包含手写签名）</li></ul>注：<ul><li>不传值的情况则计算所有合同中个人签署区的签名类型，规则如下：<ul><li>1.如果所有合同中所有的个人签署区方式包含多种则是手写</li><li>2.如果所有合同中所有个人签名区签名类型仅为一种则就是那一种签名方式（例如合同1有多个签署区都是指定OCR楷体，合同2中也是多个签署区都是指定OCR楷体...则使用OCR楷体）</li></ul></li><li>该参数会覆盖您合同中的签名类型，若您在发起合同时限定了签名类型(赋值签名类型给ComponentTypeLimit)，请将这些签名类型赋予此参数</li></ul></p>
 	SignatureTypes []*int64 `json:"SignatureTypes,omitnil,omitempty" name:"SignatureTypes"`
 
-	// 是否直接跳转至合同内容页面进行签署
-	// <ul>
-	// <li>**false**: 会跳转至批量合同流程的列表,  点击需要批量签署合同后进入合同内容页面进行签署(默认)</li>
-	// <li>**true**: 跳过合同流程列表, 直接进入合同内容页面进行签署</li>
-	// </ul>
+	// <p>是否直接跳转至合同内容页面进行签署</p><ul><li>**false**: 会跳转至批量合同流程的列表,  点击需要批量签署合同后进入合同内容页面进行签署(默认)</li><li>**true**: 跳过合同流程列表, 直接进入合同内容页面进行签署</li></ul>
 	JumpToDetail *bool `json:"JumpToDetail,omitnil,omitempty" name:"JumpToDetail"`
 
-	// 批量签署合同相关信息，指定合同和签署方的信息，用于补充动态签署人。	
+	// <p>批量签署合同相关信息，指定合同和签署方的信息，用于补充动态签署人。</p>
 	FlowBatchUrlInfo *FlowBatchUrlInfo `json:"FlowBatchUrlInfo,omitnil,omitempty" name:"FlowBatchUrlInfo"`
 
-	// 第三方平台子客企业员工的标识OpenId，批签合同经办人为子客员工的情况下为必填。
-	// 
-	// 注：
-	// <ul>
-	// <li>传入的OpenId对应员工在此子客企业下必须已经实名</li>
-	// <li>传递了此参数可以无需传递Name，Mobile，IdCardNumber，IdCardType参数。系统会根据员工OpenId自动拉取实名信息。</li>
-	// </ul>
+	// <p>第三方平台子客企业员工的标识OpenId，批签合同经办人为子客员工的情况下为必填。</p><p>注：</p><ul><li>传入的OpenId对应员工在此子客企业下必须已经实名</li><li>传递了此参数可以无需传递Name，Mobile，IdCardNumber，IdCardType参数。系统会根据员工OpenId自动拉取实名信息。</li></ul>
 	OpenId *string `json:"OpenId,omitnil,omitempty" name:"OpenId"`
 
-	// 第三方平台子客企业的企业的标识, 即OrganizationOpenId，批签合同经办人为子客企业员工是为必填。
+	// <p>第三方平台子客企业的企业的标识, 即OrganizationOpenId，批签合同经办人为子客企业员工是为必填。</p>
 	OrganizationOpenId *string `json:"OrganizationOpenId,omitnil,omitempty" name:"OrganizationOpenId"`
 
-	// 签署完成后是否自动回跳
-	// <ul><li>false：否, 签署完成不会自动跳转回来(默认)</li><li>true：是, 签署完成会自动跳转回来</li></ul>
-	// 
-	// 注: 
-	// 1. 该参数<font color="red">只针对APP类型（电子签小程序跳转贵方小程序）场景</font> 的签署链接有效
-	// 2. <font color="red">手机应用APP 或 微信小程序需要监控界面的返回走后序逻辑</font>, 微信小程序的文档可以参考[这个](https://developers.weixin.qq.com/miniprogram/dev/reference/api/App.html#onShow-Object-object)
-	// 3. <font color="red">电子签小程序跳转贵方APP，不支持自动跳转，必需用户手动点击完成按钮（微信的限制）</font> 
+	// <p>签署完成后是否自动回跳</p><ul><li>false：否, 签署完成不会自动跳转回来(默认)</li><li>true：是, 签署完成会自动跳转回来</li></ul><p>注: </p><ol><li>该参数<font color="red">只针对APP类型（电子签小程序跳转贵方小程序）场景</font> 的签署链接有效</li><li><font color="red">手机应用APP 或 微信小程序需要监控界面的返回走后序逻辑</font>, 微信小程序的文档可以参考<a href="https://developers.weixin.qq.com/miniprogram/dev/reference/api/App.html#onShow-Object-object">这个</a></li><li><font color="red">电子签小程序跳转贵方APP，不支持自动跳转，必需用户手动点击完成按钮（微信的限制）</font></li></ol>
 	AutoJumpBack *bool `json:"AutoJumpBack,omitnil,omitempty" name:"AutoJumpBack"`
 
-	// <font color="red">仅公众号 H5 跳转电子签小程序时</font>，如需签署完成的“返回应用”功能，在获取签署链接接口的 UrlUseEnv 参数需设置为 **WeChatOfficialAccounts**，小程序签署成功的结果页面中才会出现“返回应用”按钮。在用户点击“返回应用”按钮之后，会返回到公众号 H5。 
-	// 
-	// 参考 [公众号 H5 跳转电子签小程序](https://qian.tencent.com/developers/company/openwxminiprogram/#23-%E5%85%AC%E4%BC%97%E5%8F%B7-h5-%E4%B8%AD%E8%B7%B3%E8%BD%AC)。
+	// <p><font color="red">仅公众号 H5 跳转电子签小程序时</font>，如需签署完成的“返回应用”功能，在获取签署链接接口的 UrlUseEnv 参数需设置为 <strong>WeChatOfficialAccounts</strong>，小程序签署成功的结果页面中才会出现“返回应用”按钮。在用户点击“返回应用”按钮之后，会返回到公众号 H5。 </p><p>参考 <a href="https://qian.tencent.com/developers/company/openwxminiprogram/#23-%E5%85%AC%E4%BC%97%E5%8F%B7-h5-%E4%B8%AD%E8%B7%B3%E8%BD%AC">公众号 H5 跳转电子签小程序</a>。</p>
 	UrlUseEnv *string `json:"UrlUseEnv,omitnil,omitempty" name:"UrlUseEnv"`
 
-	// 是否允许此链接中签署方批量拒签。 <ul><li>false (默认): 不允许批量拒签</li> <li>true : 允许批量拒签。</li></ul>
-	// 注：`1. 当前合同组不支持批量拒签功能。请对合同组中的每个子合同逐一执行拒签操作，以达到拒签整个合同组的效果。2. 如果是链接直接跳转至详情页（JumpToDetail参数为true），也不支持批量拒签功能`
+	// <p>是否允许此链接中签署方批量拒签。 <ul><li>false (默认): 不允许批量拒签</li> <li>true : 允许批量拒签。</li></ul><br>注：<code>1. 当前合同组不支持批量拒签功能。请对合同组中的每个子合同逐一执行拒签操作，以达到拒签整个合同组的效果。2. 如果是链接直接跳转至详情页（JumpToDetail参数为true），也不支持批量拒签功能</code></p>
 	CanBatchReject *bool `json:"CanBatchReject,omitnil,omitempty" name:"CanBatchReject"`
 
-	// 是否允许此链接中签署方批量确认已读文件。 <ul><li>false (默认): 不允许批量确认已读文件。</li> <li>true : 允许批量确认已读文件。</li></ul>
-	// 注：`1. 此功能为白名单功能，使用前请联系对应客户经理进行开通。2. 使用此功能时，FlowIds参数必传。3. 对于企业签署方，如果对印章/签名控件有限制要求，需要保证所有印章/签名控件的限制要求(印章id或印章/签名类型限制)一致，否则无法使用此功能。`
+	// <p>是否允许此链接中签署方批量确认已读文件。 <ul><li>false (默认): 不允许批量确认已读文件。</li> <li>true : 允许批量确认已读文件。</li></ul><br>注：<code>1. 此功能为白名单功能，使用前请联系对应客户经理进行开通。2. 使用此功能时，FlowIds参数必传。3. 对于企业签署方，如果对印章/签名控件有限制要求，需要保证所有印章/签名控件的限制要求(印章id或印章/签名类型限制)一致，否则无法使用此功能。</code></p>
 	CanSkipReadFlow *bool `json:"CanSkipReadFlow,omitnil,omitempty" name:"CanSkipReadFlow"`
 }
 
@@ -1527,21 +1389,13 @@ func (r *ChannelCreateBatchSignUrlRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ChannelCreateBatchSignUrlResponseParams struct {
-	// 批量签署链接，以短链形式返回，短链的有效期参考回参中的 ExpiredTime。
-	// 
-	// 注: 
-	// 1. 非小程序和APP集成使用
-	// 2. <font color="red">生成的链路后面不能再增加参数</font>（会出现覆盖链接中已有参数导致错误）
+	// <p>批量签署链接，以短链形式返回，短链的有效期参考回参中的 ExpiredTime。</p><p>注: </p><ol><li>非小程序和APP集成使用</li><li><font color="red">生成的链路后面不能再增加参数</font>（会出现覆盖链接中已有参数导致错误）</li></ol>
 	SignUrl *string `json:"SignUrl,omitnil,omitempty" name:"SignUrl"`
 
-	// 链接过期时间以 Unix 时间戳格式表示，从生成链接时间起，往后7天有效期。过期后短链将失效，无法打开。
+	// <p>链接过期时间以 Unix 时间戳格式表示，从生成链接时间起，往后7天有效期。过期后短链将失效，无法打开。</p>
 	ExpiredTime *int64 `json:"ExpiredTime,omitnil,omitempty" name:"ExpiredTime"`
 
-	// 从客户小程序或者客户APP跳转至腾讯电子签小程序进行批量签署的跳转路径
-	// 
-	// 注: 
-	// 1. 小程序和APP集成使用
-	// 2. <font color="red">生成的链路后面不能再增加参数</font>（会出现覆盖链接中已有参数导致错误）
+	// <p>从客户小程序或者客户APP跳转至腾讯电子签小程序进行批量签署的跳转路径</p><p>注: </p><ol><li>小程序和APP集成使用</li><li><font color="red">生成的链路后面不能再增加参数</font>（会出现覆盖链接中已有参数导致错误）</li></ol>
 	MiniAppPath *string `json:"MiniAppPath,omitnil,omitempty" name:"MiniAppPath"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3541,110 +3395,88 @@ func (r *ChannelCreatePrepareFlowResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ChannelCreatePreparedPersonalEsignRequestParams struct {
-	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// <p>关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。</p>
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
-	// 个人用户姓名
+	// <p>个人用户姓名</p>
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
-	// 证件号码, 应符合以下规则
-	// <ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
-	// <li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
-	// <li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
+	// <p>证件号码, 应符合以下规则</p><ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li><li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li><li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
 	IdCardNumber *string `json:"IdCardNumber,omitnil,omitempty" name:"IdCardNumber"`
 
-	// 电子印章名字，1-50个中文字符
-	// 注:`同一企业下电子印章名字不能相同`
+	// <p>电子印章名字，1-50个中文字符<br>注:<code>同一企业下电子印章名字不能相同</code></p>
 	SealName *string `json:"SealName,omitnil,omitempty" name:"SealName"`
 
-	// 电子印章图片base64编码，大小不超过10M（原始图片不超过5M），只支持PNG或JPG图片格式。
-	// 
+	// <p>电子印章图片base64编码，大小不超过10M（原始图片不超过5M），只支持PNG或JPG图片格式。</p>
 	SealImage *string `json:"SealImage,omitnil,omitempty" name:"SealImage"`
 
-	// 执行本接口操作的员工信息。
-	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	// <p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 证件类型，支持以下类型
-	// <ul><li>ID_CARD : 中国大陆居民身份证 (默认值)</li>
-	// <li>HONGKONG_AND_MACAO : 中国港澳居民来往内地通行证</li>
-	// <li>HONGKONG_MACAO_AND_TAIWAN : 中国港澳台居民居住证(格式同中国大陆居民身份证)</li>
-	// <li>OTHER_CARD_TYPE : 其他</li></ul>
-	// 
-	// 注: `其他证件类型为白名单功能，使用前请联系对接的客户经理沟通。`
+	// <p>证件类型，支持以下类型</p><ul><li>ID_CARD : 中国大陆居民身份证 (默认值)</li><li>HONGKONG_AND_MACAO : 中国港澳居民来往内地通行证</li><li>HONGKONG_MACAO_AND_TAIWAN : 中国港澳台居民居住证(格式同中国大陆居民身份证)</li><li>OTHER_CARD_TYPE : 其他</li></ul><p>注: <code>其他证件类型为白名单功能，使用前请联系对接的客户经理沟通。</code></p>
 	IdCardType *string `json:"IdCardType,omitnil,omitempty" name:"IdCardType"`
 
-	// 是否开启印章图片压缩处理，默认不开启，如需开启请设置为 true。当印章超过 2M 时建议开启，开启后图片的 hash 将发生变化。
+	// <p>是否开启印章图片压缩处理，默认不开启，如需开启请设置为 true。当印章超过 2M 时建议开启，开启后图片的 hash 将发生变化。</p>
 	SealImageCompress *bool `json:"SealImageCompress,omitnil,omitempty" name:"SealImageCompress"`
 
-	// 手机号码；当需要开通自动签时，该参数必传
+	// <p>手机号码；当需要开通自动签时，该参数必传</p>
 	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
 
-	// 该字段已不再使用
+	// <p>该字段已不再使用</p>
+	//
+	// Deprecated: EnableAutoSign is deprecated.
 	EnableAutoSign *bool `json:"EnableAutoSign,omitnil,omitempty" name:"EnableAutoSign"`
 
-	// 设置用户开通自动签时是否绑定个人自动签账号许可。一旦绑定后，将扣减购买的个人自动签账号许可一次（1年有效期），不可解绑释放。不传默认为绑定自动签账号许可。 0-绑定个人自动签账号许可，开通后将扣减购买的个人自动签账号许可一次 1-不绑定，发起合同时将按标准合同套餐进行扣减	
+	// <p>设置用户开通自动签时是否绑定个人自动签账号许可。一旦绑定后，将扣减购买的个人自动签账号许可一次（1年有效期），不可解绑释放。不传默认为绑定自动签账号许可。 0-绑定个人自动签账号许可，开通后将扣减购买的个人自动签账号许可一次 1-不绑定，发起合同时将按标准合同套餐进行扣减</p>
 	LicenseType *int64 `json:"LicenseType,omitnil,omitempty" name:"LicenseType"`
 
 	// <ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
 	SceneKey *string `json:"SceneKey,omitnil,omitempty" name:"SceneKey"`
 
-	// 印章图片文件 id取值：填写的FileId通过UploadFiles接口上传文件获取。
+	// <p>印章图片文件 id取值：填写的FileId通过UploadFiles接口上传文件获取。</p>
 	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
 }
 
 type ChannelCreatePreparedPersonalEsignRequest struct {
 	*tchttp.BaseRequest
 	
-	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// <p>关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。</p>
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
-	// 个人用户姓名
+	// <p>个人用户姓名</p>
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
-	// 证件号码, 应符合以下规则
-	// <ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
-	// <li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
-	// <li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
+	// <p>证件号码, 应符合以下规则</p><ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li><li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li><li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
 	IdCardNumber *string `json:"IdCardNumber,omitnil,omitempty" name:"IdCardNumber"`
 
-	// 电子印章名字，1-50个中文字符
-	// 注:`同一企业下电子印章名字不能相同`
+	// <p>电子印章名字，1-50个中文字符<br>注:<code>同一企业下电子印章名字不能相同</code></p>
 	SealName *string `json:"SealName,omitnil,omitempty" name:"SealName"`
 
-	// 电子印章图片base64编码，大小不超过10M（原始图片不超过5M），只支持PNG或JPG图片格式。
-	// 
+	// <p>电子印章图片base64编码，大小不超过10M（原始图片不超过5M），只支持PNG或JPG图片格式。</p>
 	SealImage *string `json:"SealImage,omitnil,omitempty" name:"SealImage"`
 
-	// 执行本接口操作的员工信息。
-	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	// <p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 证件类型，支持以下类型
-	// <ul><li>ID_CARD : 中国大陆居民身份证 (默认值)</li>
-	// <li>HONGKONG_AND_MACAO : 中国港澳居民来往内地通行证</li>
-	// <li>HONGKONG_MACAO_AND_TAIWAN : 中国港澳台居民居住证(格式同中国大陆居民身份证)</li>
-	// <li>OTHER_CARD_TYPE : 其他</li></ul>
-	// 
-	// 注: `其他证件类型为白名单功能，使用前请联系对接的客户经理沟通。`
+	// <p>证件类型，支持以下类型</p><ul><li>ID_CARD : 中国大陆居民身份证 (默认值)</li><li>HONGKONG_AND_MACAO : 中国港澳居民来往内地通行证</li><li>HONGKONG_MACAO_AND_TAIWAN : 中国港澳台居民居住证(格式同中国大陆居民身份证)</li><li>OTHER_CARD_TYPE : 其他</li></ul><p>注: <code>其他证件类型为白名单功能，使用前请联系对接的客户经理沟通。</code></p>
 	IdCardType *string `json:"IdCardType,omitnil,omitempty" name:"IdCardType"`
 
-	// 是否开启印章图片压缩处理，默认不开启，如需开启请设置为 true。当印章超过 2M 时建议开启，开启后图片的 hash 将发生变化。
+	// <p>是否开启印章图片压缩处理，默认不开启，如需开启请设置为 true。当印章超过 2M 时建议开启，开启后图片的 hash 将发生变化。</p>
 	SealImageCompress *bool `json:"SealImageCompress,omitnil,omitempty" name:"SealImageCompress"`
 
-	// 手机号码；当需要开通自动签时，该参数必传
+	// <p>手机号码；当需要开通自动签时，该参数必传</p>
 	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
 
-	// 该字段已不再使用
+	// <p>该字段已不再使用</p>
 	EnableAutoSign *bool `json:"EnableAutoSign,omitnil,omitempty" name:"EnableAutoSign"`
 
-	// 设置用户开通自动签时是否绑定个人自动签账号许可。一旦绑定后，将扣减购买的个人自动签账号许可一次（1年有效期），不可解绑释放。不传默认为绑定自动签账号许可。 0-绑定个人自动签账号许可，开通后将扣减购买的个人自动签账号许可一次 1-不绑定，发起合同时将按标准合同套餐进行扣减	
+	// <p>设置用户开通自动签时是否绑定个人自动签账号许可。一旦绑定后，将扣减购买的个人自动签账号许可一次（1年有效期），不可解绑释放。不传默认为绑定自动签账号许可。 0-绑定个人自动签账号许可，开通后将扣减购买的个人自动签账号许可一次 1-不绑定，发起合同时将按标准合同套餐进行扣减</p>
 	LicenseType *int64 `json:"LicenseType,omitnil,omitempty" name:"LicenseType"`
 
 	// <ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
 	SceneKey *string `json:"SceneKey,omitnil,omitempty" name:"SceneKey"`
 
-	// 印章图片文件 id取值：填写的FileId通过UploadFiles接口上传文件获取。
+	// <p>印章图片文件 id取值：填写的FileId通过UploadFiles接口上传文件获取。</p>
 	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
 }
 
@@ -3681,9 +3513,7 @@ func (r *ChannelCreatePreparedPersonalEsignRequest) FromJsonString(s string) err
 
 // Predefined struct for user
 type ChannelCreatePreparedPersonalEsignResponseParams struct {
-	// 电子印章ID，为32位字符串。
-	// 建议开发者保留此印章ID，后续指定签署区印章或者操作印章需此印章ID。
-	// 可登录腾讯电子签控制台，在 "印章"->"印章中心"选择查看的印章，在"印章详情" 中查看某个印章的SealId(在页面中展示为印章ID)。
+	// <p>电子印章ID，为32位字符串。<br>建议开发者保留此印章ID，后续指定签署区印章或者操作印章需此印章ID。<br>可登录腾讯电子签控制台，在 &quot;印章&quot;-&gt;&quot;印章中心&quot;选择查看的印章，在&quot;印章详情&quot; 中查看某个印章的SealId(在页面中展示为印章ID)。</p>
 	SealId *string `json:"SealId,omitnil,omitempty" name:"SealId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7459,42 +7289,26 @@ func (r *CreateConsoleLoginUrlResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateEmployeeChangeUrlRequestParams struct {
-	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
-	// 
-	// 此接口下面信息必填。
-	// <ul>
-	// <li>渠道应用标识:  Agent.AppId</li>
-	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
-	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
-	// </ul>
-	// 第三方平台子客企业和员工必须已经经过实名认证
+	// <p>关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。</p><p>此接口下面信息必填。</p><ul><li>渠道应用标识:  Agent.AppId</li><li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li><li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li></ul>第三方平台子客企业和员工必须已经经过实名认证
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
-	// 待修改的员工OpenId
+	// <p>待修改的员工OpenId</p>
 	OpenId *string `json:"OpenId,omitnil,omitempty" name:"OpenId"`
 
-	// 待修改的员工手机号，支持海外格式
+	// <p>待修改的员工手机号，支持海外格式</p>
 	NewMobile *string `json:"NewMobile,omitnil,omitempty" name:"NewMobile"`
 }
 
 type CreateEmployeeChangeUrlRequest struct {
 	*tchttp.BaseRequest
 	
-	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
-	// 
-	// 此接口下面信息必填。
-	// <ul>
-	// <li>渠道应用标识:  Agent.AppId</li>
-	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
-	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
-	// </ul>
-	// 第三方平台子客企业和员工必须已经经过实名认证
+	// <p>关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。</p><p>此接口下面信息必填。</p><ul><li>渠道应用标识:  Agent.AppId</li><li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li><li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li></ul>第三方平台子客企业和员工必须已经经过实名认证
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
-	// 待修改的员工OpenId
+	// <p>待修改的员工OpenId</p>
 	OpenId *string `json:"OpenId,omitnil,omitempty" name:"OpenId"`
 
-	// 待修改的员工手机号，支持海外格式
+	// <p>待修改的员工手机号，支持海外格式</p>
 	NewMobile *string `json:"NewMobile,omitnil,omitempty" name:"NewMobile"`
 }
 
@@ -7521,11 +7335,16 @@ func (r *CreateEmployeeChangeUrlRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateEmployeeChangeUrlResponseParams struct {
-	// 修改员工信息的小程序链接<br>跳转到腾讯电子签小程序的实现可以参考微信的官方文档:<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/launchApp.html" target="_blank">开放能力/打开 App</a> 
+	// <p>修改员工信息的小程序链接<br>跳转到腾讯电子签小程序的实现可以参考微信的官方文档:<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/launchApp.html" target="_blank">开放能力/打开 App</a></p>
 	MiniAppPath *string `json:"MiniAppPath,omitnil,omitempty" name:"MiniAppPath"`
 
-	// 链接过期时间以 Unix 时间戳格式表示，从生成链接时间起，往后7天有效期。过期后短链将失效，无法打开。
-	// 
+	// <p>H5跳转到电子签小程序链接, 一般用于发送短信中带的链接, 打开后进入腾讯电子签小程序</p>
+	LongUrl *string `json:"LongUrl,omitnil,omitempty" name:"LongUrl"`
+
+	// <p>H5跳转到电子签小程序链接的短链形式, 一般用于发送短信中带的链接, 打开后进入腾讯电子签小程序</p>
+	ShortUrl *string `json:"ShortUrl,omitnil,omitempty" name:"ShortUrl"`
+
+	// <p>链接过期时间以 Unix 时间戳格式表示，从生成链接时间起，往后7天有效期。过期后短链将失效，无法打开。</p>
 	ExpireTime *int64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7620,6 +7439,84 @@ func (r *CreateEmployeeQualificationSealQrCodeResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateEmployeeQualificationSealQrCodeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateFileConvertTaskRequestParams struct {
+	// <p>关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。</p><p>此接口下面信息必填。</p><ul><li>渠道应用标识:  Agent.AppId</li><li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li><li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li></ul>第三方平台子客企业和员工必须已经经过实名认证
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// <p>需要进行转换的资源文件类型<br>支持的文件类型如下：</p><p>枚举值：</p><ul><li>doc： doc</li><li>docx： docx</li><li>xls： xls</li><li>xlsx： xlsx</li><li>jpg： jpg</li><li>jpeg： jpeg</li><li>png： png</li><li>bmp： bmp</li><li>html： html</li><li>txt： txt</li></ul>
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// <p>需要进行转换操作的文件资源名称，带资源后缀名。</p><p>注:  <code>资源名称长度限制为256个字符</code></p>
+	ResourceName *string `json:"ResourceName,omitnil,omitempty" name:"ResourceName"`
+
+	// <p>需要进行转换操作的文件资源Id，通过<a href="https://qian.tencent.com/developers/partnerApis/files/UploadFiles" target="_blank">UploadFiles</a>接口获取文件资源Id。</p><p>注:  <code>目前，此接口仅支持单个文件进行转换。</code></p>
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+}
+
+type CreateFileConvertTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。</p><p>此接口下面信息必填。</p><ul><li>渠道应用标识:  Agent.AppId</li><li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li><li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li></ul>第三方平台子客企业和员工必须已经经过实名认证
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// <p>需要进行转换的资源文件类型<br>支持的文件类型如下：</p><p>枚举值：</p><ul><li>doc： doc</li><li>docx： docx</li><li>xls： xls</li><li>xlsx： xlsx</li><li>jpg： jpg</li><li>jpeg： jpeg</li><li>png： png</li><li>bmp： bmp</li><li>html： html</li><li>txt： txt</li></ul>
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// <p>需要进行转换操作的文件资源名称，带资源后缀名。</p><p>注:  <code>资源名称长度限制为256个字符</code></p>
+	ResourceName *string `json:"ResourceName,omitnil,omitempty" name:"ResourceName"`
+
+	// <p>需要进行转换操作的文件资源Id，通过<a href="https://qian.tencent.com/developers/partnerApis/files/UploadFiles" target="_blank">UploadFiles</a>接口获取文件资源Id。</p><p>注:  <code>目前，此接口仅支持单个文件进行转换。</code></p>
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+}
+
+func (r *CreateFileConvertTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateFileConvertTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Agent")
+	delete(f, "ResourceType")
+	delete(f, "ResourceName")
+	delete(f, "ResourceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFileConvertTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateFileConvertTaskResponseParams struct {
+	// <p>接口返回的文件转换任务Id，可以调用接口<a href="https://qian.tencent.com/developers/partnerApis/files/DescribeFileConvertTask" target="_blank">查询转换任务状态</a>获取转换任务的状态和转换后的文件资源Id。</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateFileConvertTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateFileConvertTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateFileConvertTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateFileConvertTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -9952,6 +9849,79 @@ func (r *DescribeExtendedServiceAuthInfoResponse) FromJsonString(s string) error
 }
 
 // Predefined struct for user
+type DescribeFileConvertTaskRequestParams struct {
+	// <p>转换任务Id，通过接口<a href="https://qian.tencent.com/developers/partnerApis/files/CreateFileConvertTask" target="_blank">创建文件转换任务接口</a>得到的转换任务id</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。</p><p>此接口下面信息必填。</p><ul><li>渠道应用标识:  Agent.AppId</li><li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li><li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li></ul>第三方平台子客企业和员工必须已经经过实名认证
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+}
+
+type DescribeFileConvertTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>转换任务Id，通过接口<a href="https://qian.tencent.com/developers/partnerApis/files/CreateFileConvertTask" target="_blank">创建文件转换任务接口</a>得到的转换任务id</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。</p><p>此接口下面信息必填。</p><ul><li>渠道应用标识:  Agent.AppId</li><li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li><li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li></ul>第三方平台子客企业和员工必须已经经过实名认证
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+}
+
+func (r *DescribeFileConvertTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFileConvertTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "Agent")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFileConvertTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeFileConvertTaskResponseParams struct {
+	// <p>任务Id</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>任务状态，需要关注的状态</p><p>枚举值：</p><ul><li>0： NeedTranform - 任务已提交</li><li>4： Processing - 文档转换中</li><li>8： TaskEnd - 任务处理完成</li><li>-2： DownloadFailed - 下载失败</li><li>-6： ProcessFailed - 转换失败</li><li>-13： ProcessTimeout - 转换文件超时</li></ul>
+	TaskStatus *int64 `json:"TaskStatus,omitnil,omitempty" name:"TaskStatus"`
+
+	// <p>状态描述，需要关注的状态</p><ul><li> **NeedTranform** : 任务已提交</li><li> **Processing** : 文档转换中</li><li> **TaskEnd** : 任务处理完成</li><li> **DownloadFailed** : 下载失败</li><li> **ProcessFailed** : 转换失败</li><li> **ProcessTimeout** : 转换文件超时</li></ul>
+	TaskMessage *string `json:"TaskMessage,omitnil,omitempty" name:"TaskMessage"`
+
+	// <p>资源Id（即FileId），用于<a href="https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateFlowByFiles">用PDF文件创建签署流程</a></p>
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeFileConvertTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeFileConvertTaskResponseParams `json:"Response"`
+}
+
+func (r *DescribeFileConvertTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFileConvertTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeFlowDetailInfoRequestParams struct {
 	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 	// 
@@ -12095,60 +12065,32 @@ func (r *OperateChannelTemplateResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type OperateTemplateRequestParams struct {
-	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
-	// 
-	// 此接口下面信息必填。
-	// <ul>
-	// <li>渠道应用标识:  Agent.AppId</li>
-	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId（模板的归属企业）</li>
-	// <li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId （操作人）</li>
-	// </ul>
+	// <p>关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。</p><p>此接口下面信息必填。</p><ul><li>渠道应用标识:  Agent.AppId</li><li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId（模板的归属企业）</li><li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId （操作人）</li></ul>
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
-	// 模板ID，为32位字符串。
+	// <p>模板ID，为32位字符串。</p>
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
-	// 操作类型，可取值如下:
-	// <ul>
-	// <li>DELETE:  删除</li>
-	// <li>ENABLE: 启用</li>
-	// <li>DISABLE: 停用</li>
-	// <li>COPY: 复制新建</li>
-	// </ul>
+	// <p>操作类型，可取值如下:</p><ul><li>DELETE:  删除</li><li>ENABLE: 启用</li><li>DISABLE: 停用</li><li>COPY: 复制新建</li></ul>
 	OperateType *string `json:"OperateType,omitnil,omitempty" name:"OperateType"`
 
-	// 模板名称，长度不超过64字符。<br>
-	// 模板复制时指定有效，若为空，则复制后模板名称为 **原模板名称_副本**。
+	// <p>模板名称，长度不超过64字符。<br><br>模板复制时指定有效，若为空，则复制后模板名称为 <strong>原模板名称_副本</strong>。</p>
 	TemplateName *string `json:"TemplateName,omitnil,omitempty" name:"TemplateName"`
 }
 
 type OperateTemplateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
-	// 
-	// 此接口下面信息必填。
-	// <ul>
-	// <li>渠道应用标识:  Agent.AppId</li>
-	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId（模板的归属企业）</li>
-	// <li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId （操作人）</li>
-	// </ul>
+	// <p>关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。</p><p>此接口下面信息必填。</p><ul><li>渠道应用标识:  Agent.AppId</li><li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId（模板的归属企业）</li><li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId （操作人）</li></ul>
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
-	// 模板ID，为32位字符串。
+	// <p>模板ID，为32位字符串。</p>
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
-	// 操作类型，可取值如下:
-	// <ul>
-	// <li>DELETE:  删除</li>
-	// <li>ENABLE: 启用</li>
-	// <li>DISABLE: 停用</li>
-	// <li>COPY: 复制新建</li>
-	// </ul>
+	// <p>操作类型，可取值如下:</p><ul><li>DELETE:  删除</li><li>ENABLE: 启用</li><li>DISABLE: 停用</li><li>COPY: 复制新建</li></ul>
 	OperateType *string `json:"OperateType,omitnil,omitempty" name:"OperateType"`
 
-	// 模板名称，长度不超过64字符。<br>
-	// 模板复制时指定有效，若为空，则复制后模板名称为 **原模板名称_副本**。
+	// <p>模板名称，长度不超过64字符。<br><br>模板复制时指定有效，若为空，则复制后模板名称为 <strong>原模板名称_副本</strong>。</p>
 	TemplateName *string `json:"TemplateName,omitnil,omitempty" name:"TemplateName"`
 }
 
@@ -12176,10 +12118,10 @@ func (r *OperateTemplateRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type OperateTemplateResponseParams struct {
-	// 模板ID，为32位字符串，模板复制新建时返回
+	// <p>模板ID，为32位字符串，模板复制新建时返回</p>
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
-	// 模板名称，模板复制新建时返回
+	// <p>模板名称，模板复制新建时返回</p>
 	TemplateName *string `json:"TemplateName,omitnil,omitempty" name:"TemplateName"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

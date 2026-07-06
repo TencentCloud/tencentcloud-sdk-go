@@ -5969,6 +5969,10 @@ func NewDescribeProductEventListResponse() (response *DescribeProductEventListRe
 }
 
 // DescribeProductEventList
+// 已不再使用
+//
+// 
+//
 // 分页获取产品事件的列表
 //
 // 可能返回的错误码:
@@ -5986,6 +5990,10 @@ func (c *Client) DescribeProductEventList(request *DescribeProductEventListReque
 }
 
 // DescribeProductEventList
+// 已不再使用
+//
+// 
+//
 // 分页获取产品事件的列表
 //
 // 可能返回的错误码:

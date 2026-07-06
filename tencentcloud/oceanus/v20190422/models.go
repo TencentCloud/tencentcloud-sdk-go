@@ -2574,45 +2574,57 @@ func (r *DescribeJobConfigsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeJobEventsRequestParams struct {
-	// 作业的 ID
+	// <p>作业的 ID</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
-	// 筛选条件：起始 Unix 时间戳（秒）
+	// <p>筛选条件：起始 Unix 时间戳（秒）</p>
 	StartTimestamp *uint64 `json:"StartTimestamp,omitnil,omitempty" name:"StartTimestamp"`
 
-	// 筛选条件：结束 Unix 时间戳（秒）
+	// <p>筛选条件：结束 Unix 时间戳（秒）</p>
 	EndTimestamp *uint64 `json:"EndTimestamp,omitnil,omitempty" name:"EndTimestamp"`
 
-	// 事件类型。如果不传则返回所有类型的数据
+	// <p>事件类型。如果不传则返回所有类型的数据</p>
 	Types []*string `json:"Types,omitnil,omitempty" name:"Types"`
 
-	// 运行实例 ID 数组
+	// <p>运行实例 ID 数组</p>
 	RunningOrderIds []*uint64 `json:"RunningOrderIds,omitnil,omitempty" name:"RunningOrderIds"`
 
-	// 工作空间 SerialId
+	// <p>工作空间 SerialId</p>
 	WorkSpaceId *string `json:"WorkSpaceId,omitnil,omitempty" name:"WorkSpaceId"`
+
+	// <p>返回条数</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>起始偏移个数</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 type DescribeJobEventsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 作业的 ID
+	// <p>作业的 ID</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
-	// 筛选条件：起始 Unix 时间戳（秒）
+	// <p>筛选条件：起始 Unix 时间戳（秒）</p>
 	StartTimestamp *uint64 `json:"StartTimestamp,omitnil,omitempty" name:"StartTimestamp"`
 
-	// 筛选条件：结束 Unix 时间戳（秒）
+	// <p>筛选条件：结束 Unix 时间戳（秒）</p>
 	EndTimestamp *uint64 `json:"EndTimestamp,omitnil,omitempty" name:"EndTimestamp"`
 
-	// 事件类型。如果不传则返回所有类型的数据
+	// <p>事件类型。如果不传则返回所有类型的数据</p>
 	Types []*string `json:"Types,omitnil,omitempty" name:"Types"`
 
-	// 运行实例 ID 数组
+	// <p>运行实例 ID 数组</p>
 	RunningOrderIds []*uint64 `json:"RunningOrderIds,omitnil,omitempty" name:"RunningOrderIds"`
 
-	// 工作空间 SerialId
+	// <p>工作空间 SerialId</p>
 	WorkSpaceId *string `json:"WorkSpaceId,omitnil,omitempty" name:"WorkSpaceId"`
+
+	// <p>返回条数</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>起始偏移个数</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 func (r *DescribeJobEventsRequest) ToJsonString() string {
@@ -2633,6 +2645,8 @@ func (r *DescribeJobEventsRequest) FromJsonString(s string) error {
 	delete(f, "Types")
 	delete(f, "RunningOrderIds")
 	delete(f, "WorkSpaceId")
+	delete(f, "Limit")
+	delete(f, "Offset")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeJobEventsRequest has unknown keys!", "")
 	}
@@ -2641,19 +2655,19 @@ func (r *DescribeJobEventsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeJobEventsResponseParams struct {
-	// 该作业指定范围内的事件列表
+	// <p>该作业指定范围内的事件列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Events []*JobEvent `json:"Events,omitnil,omitempty" name:"Events"`
 
-	// 该作业指定范围内运行实例 ID 数组，仅当入参没有传入 RunningOrderIds 参数时才会返回。倒序输出
+	// <p>该作业指定范围内运行实例 ID 数组，仅当入参没有传入 RunningOrderIds 参数时才会返回。倒序输出</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RunningOrderIds []*uint64 `json:"RunningOrderIds,omitnil,omitempty" name:"RunningOrderIds"`
 
-	// 事件的总数
+	// <p>事件的总数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 实例对应的版本
+	// <p>实例对应的版本</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Versions []*uint64 `json:"Versions,omitnil,omitempty" name:"Versions"`
 
@@ -4406,26 +4420,32 @@ type JobConfig struct {
 }
 
 type JobEvent struct {
-	// 内部定义的事件类型
+	// <p>内部定义的事件类型</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 事件类型的说明文字
+	// <p>事件类型的说明文字</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 事件发生的 Unix 时间戳（秒）
+	// <p>事件发生的 Unix 时间戳（秒）</p>
 	Timestamp *uint64 `json:"Timestamp,omitnil,omitempty" name:"Timestamp"`
 
-	// 事件发生时的运行 ID
+	// <p>事件发生时的运行 ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RunningOrderId *uint64 `json:"RunningOrderId,omitnil,omitempty" name:"RunningOrderId"`
 
-	// 事件的一些可选说明
+	// <p>事件的一些可选说明</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
-	// 异常事件的排查手册链接
+	// <p>异常事件的排查手册链接</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SolutionLink *string `json:"SolutionLink,omitnil,omitempty" name:"SolutionLink"`
+
+	// <p>异常事件原因分析</p>
+	CauseAnalysis *string `json:"CauseAnalysis,omitnil,omitempty" name:"CauseAnalysis"`
+
+	// <p>异常事件处理的参考方案</p>
+	Solution *string `json:"Solution,omitnil,omitempty" name:"Solution"`
 }
 
 type JobEventInfo struct {

@@ -19542,6 +19542,9 @@ type SeeComprehensionConfig struct {
 
 	// <p>是否生成关键词</p><p>默认值：false</p>
 	EnableKeywords *bool `json:"EnableKeywords,omitnil,omitempty" name:"EnableKeywords"`
+
+	// <p>自定义摘要提示词</p>
+	SummaryPrompt *string `json:"SummaryPrompt,omitnil,omitempty" name:"SummaryPrompt"`
 }
 
 type SeeComprehensionResult struct {

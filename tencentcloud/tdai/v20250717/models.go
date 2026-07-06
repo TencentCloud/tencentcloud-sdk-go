@@ -540,6 +540,15 @@ type CreateMemoryPlusSpaceRequestParams struct {
 
 	// <p>单次批量创建 Memory 实例的数量。取值范围为 1-50。</p>
 	GoodsNum *int64 `json:"GoodsNum,omitnil,omitempty" name:"GoodsNum"`
+
+	// <p>计费模式。</p><p>枚举值：</p><ul><li>0： 按量计费。</li><li>1： 包年包月。</li></ul>
+	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
+
+	// <p>包年包月周期</p>
+	PayPeriod *int64 `json:"PayPeriod,omitnil,omitempty" name:"PayPeriod"`
+
+	// <p>是否自动续费</p>
+	AutoRenew *int64 `json:"AutoRenew,omitnil,omitempty" name:"AutoRenew"`
 }
 
 type CreateMemoryPlusSpaceRequest struct {
@@ -556,6 +565,15 @@ type CreateMemoryPlusSpaceRequest struct {
 
 	// <p>单次批量创建 Memory 实例的数量。取值范围为 1-50。</p>
 	GoodsNum *int64 `json:"GoodsNum,omitnil,omitempty" name:"GoodsNum"`
+
+	// <p>计费模式。</p><p>枚举值：</p><ul><li>0： 按量计费。</li><li>1： 包年包月。</li></ul>
+	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
+
+	// <p>包年包月周期</p>
+	PayPeriod *int64 `json:"PayPeriod,omitnil,omitempty" name:"PayPeriod"`
+
+	// <p>是否自动续费</p>
+	AutoRenew *int64 `json:"AutoRenew,omitnil,omitempty" name:"AutoRenew"`
 }
 
 func (r *CreateMemoryPlusSpaceRequest) ToJsonString() string {
@@ -574,6 +592,9 @@ func (r *CreateMemoryPlusSpaceRequest) FromJsonString(s string) error {
 	delete(f, "Description")
 	delete(f, "ResourceTags")
 	delete(f, "GoodsNum")
+	delete(f, "PayMode")
+	delete(f, "PayPeriod")
+	delete(f, "AutoRenew")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateMemoryPlusSpaceRequest has unknown keys!", "")
 	}
@@ -1438,6 +1459,9 @@ type DescribeMemoryPlusSpaceResponseParams struct {
 	// <p>Memory 实例计费模式。</p><ul><li>-1：免费体验。</li><li>0：包年包月。</li><li>1：按量计费。</li></ul>
 	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
+	// <p>是否自动续费</p><p>枚举值：</p><ul><li>0： 不自动续费</li><li>1： 自动续费</li></ul>
+	AutoRenew *int64 `json:"AutoRenew,omitnil,omitempty" name:"AutoRenew"`
+
 	// <p>Memory 版本信息：v1。</p>
 	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
 
@@ -2276,6 +2300,9 @@ func (r *RecoverAgentInstanceResponse) FromJsonString(s string) error {
 type RecoverMemoryPlusSpaceRequestParams struct {
 	// <p>指定需要恢复的 Memory 实例 ID 列表。</p>
 	SpaceIds []*string `json:"SpaceIds,omitnil,omitempty" name:"SpaceIds"`
+
+	// <p>包年包月续费周期</p><p>单位：月</p>
+	PayPeriod *int64 `json:"PayPeriod,omitnil,omitempty" name:"PayPeriod"`
 }
 
 type RecoverMemoryPlusSpaceRequest struct {
@@ -2283,6 +2310,9 @@ type RecoverMemoryPlusSpaceRequest struct {
 	
 	// <p>指定需要恢复的 Memory 实例 ID 列表。</p>
 	SpaceIds []*string `json:"SpaceIds,omitnil,omitempty" name:"SpaceIds"`
+
+	// <p>包年包月续费周期</p><p>单位：月</p>
+	PayPeriod *int64 `json:"PayPeriod,omitnil,omitempty" name:"PayPeriod"`
 }
 
 func (r *RecoverMemoryPlusSpaceRequest) ToJsonString() string {
@@ -2298,6 +2328,7 @@ func (r *RecoverMemoryPlusSpaceRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "SpaceIds")
+	delete(f, "PayPeriod")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RecoverMemoryPlusSpaceRequest has unknown keys!", "")
 	}

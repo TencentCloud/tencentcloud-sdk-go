@@ -2197,6 +2197,8 @@ func NewCreateConvertTaskApiResponse() (response *CreateConvertTaskApiResponse) 
 //
 // 转换文件是一个耗时操作，若想查看转换任务是否完成，可以通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/GetTaskResultApi" target="_blank">查询转换任务状态</a>接口获取任务状态。<br />
 //
+// <font color="red">此接口于 2026 年 12月 31 日下线</font>，请使用新接口: <a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateFileConvertTask" target="_blank">新建文件转换任务（CreateFileConvertTask）</a><br />
+//
 // 注: 
 //
 // 1. `支持的文件类型有doc、docx、xls、xlsx、html、jpg、jpeg、png、bmp、txt`
@@ -2226,6 +2228,8 @@ func (c *Client) CreateConvertTaskApi(request *CreateConvertTaskApiRequest) (res
 // 适用场景2：已经上传了一个jpg图片文件，希望将该图片文件转换成pdf文件后发起合同<br />
 //
 // 转换文件是一个耗时操作，若想查看转换任务是否完成，可以通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/GetTaskResultApi" target="_blank">查询转换任务状态</a>接口获取任务状态。<br />
+//
+// <font color="red">此接口于 2026 年 12月 31 日下线</font>，请使用新接口: <a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateFileConvertTask" target="_blank">新建文件转换任务（CreateFileConvertTask）</a><br />
 //
 // 注: 
 //
@@ -3155,6 +3159,102 @@ func (c *Client) CreateExtendedServiceAuthInfosWithContext(ctx context.Context, 
     request.SetContext(ctx)
     
     response = NewCreateExtendedServiceAuthInfosResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateFileConvertTaskRequest() (request *CreateFileConvertTaskRequest) {
+    request = &CreateFileConvertTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "CreateFileConvertTask")
+    
+    
+    return
+}
+
+func NewCreateFileConvertTaskResponse() (response *CreateFileConvertTaskResponse) {
+    response = &CreateFileConvertTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateFileConvertTask
+// 此接口（CreateFileConvertTask）用来将word、excel、html、图片、txt类型文件转换为PDF文件。<br />
+//
+// <font color="red">原功能接口: </font><a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务（CreateConvertTaskApi）</a><br />
+//
+// 前提条件：源文件已经通过 <a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles" target="_blank">文件上传接口</a>完成上传，并得到了源文件的资源Id。<br />
+//
+// 适用场景1：已经上传了一个word文件，希望将该word文件转换成pdf文件后发起合同
+//
+// 适用场景2：已经上传了一个jpg图片文件，希望将该图片文件转换成pdf文件后发起合同<br />
+//
+// 转换文件是一个耗时操作，若想查看转换任务是否完成，可以通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/DescribeFileConvertTask" target="_blank">查询转换任务状态</a>接口获取任务状态。<br />
+//
+// 注: 
+//
+// 1. `支持的文件类型有doc、docx、xls、xlsx、html、jpg、jpeg、png、bmp、txt`
+//
+// 2. `可通过发起合同时设置预览来检查转换文件是否达到预期效果`
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INVALIDPARAMETER_INVALIDID = "InvalidParameter.InvalidId"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_RESOURCETYPE = "InvalidParameter.ResourceType"
+//  MISSINGPARAMETER_RESOURCENAME = "MissingParameter.ResourceName"
+//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) CreateFileConvertTask(request *CreateFileConvertTaskRequest) (response *CreateFileConvertTaskResponse, err error) {
+    return c.CreateFileConvertTaskWithContext(context.Background(), request)
+}
+
+// CreateFileConvertTask
+// 此接口（CreateFileConvertTask）用来将word、excel、html、图片、txt类型文件转换为PDF文件。<br />
+//
+// <font color="red">原功能接口: </font><a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务（CreateConvertTaskApi）</a><br />
+//
+// 前提条件：源文件已经通过 <a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles" target="_blank">文件上传接口</a>完成上传，并得到了源文件的资源Id。<br />
+//
+// 适用场景1：已经上传了一个word文件，希望将该word文件转换成pdf文件后发起合同
+//
+// 适用场景2：已经上传了一个jpg图片文件，希望将该图片文件转换成pdf文件后发起合同<br />
+//
+// 转换文件是一个耗时操作，若想查看转换任务是否完成，可以通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/DescribeFileConvertTask" target="_blank">查询转换任务状态</a>接口获取任务状态。<br />
+//
+// 注: 
+//
+// 1. `支持的文件类型有doc、docx、xls、xlsx、html、jpg、jpeg、png、bmp、txt`
+//
+// 2. `可通过发起合同时设置预览来检查转换文件是否达到预期效果`
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INVALIDPARAMETER_INVALIDID = "InvalidParameter.InvalidId"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_RESOURCETYPE = "InvalidParameter.ResourceType"
+//  MISSINGPARAMETER_RESOURCENAME = "MissingParameter.ResourceName"
+//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) CreateFileConvertTaskWithContext(ctx context.Context, request *CreateFileConvertTaskRequest) (response *CreateFileConvertTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateFileConvertTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CreateFileConvertTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateFileConvertTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateFileConvertTaskResponse()
     err = c.Send(request, response)
     return
 }
@@ -12151,6 +12251,94 @@ func (c *Client) DescribeExtendedServiceAuthInfosWithContext(ctx context.Context
     return
 }
 
+func NewDescribeFileConvertTaskRequest() (request *DescribeFileConvertTaskRequest) {
+    request = &DescribeFileConvertTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "DescribeFileConvertTask")
+    
+    
+    return
+}
+
+func NewDescribeFileConvertTaskResponse() (response *DescribeFileConvertTaskResponse) {
+    response = &DescribeFileConvertTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeFileConvertTask
+// 此接口（DescribeFileConvertTask）用来查询转换任务的状态。如需发起转换任务，请使用<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateFileConvertTask" target="_blank">创建文件转换任务接口</a>进行资源文件的转换操作<br />
+//
+// <font color="red">原功能接口: </font><a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/GetTaskResultApi" target="_blank">查询转换任务状态（GetTaskResultApi）</a><br />
+//
+// 前提条件：已调用 <a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateFileConvertTask" target="_blank">创建文件转换任务接口</a>进行文件转换，并得到了返回的转换任务Id。<br />
+//
+// 
+//
+// 适用场景：已创建一个文件转换任务，想查询该文件转换任务的状态，或获取转换后的文件资源Id。<br />
+//
+// 注：
+//
+// 1. `大文件转换所需的时间可能会比较长`
+//
+// 2.  `本接口返回的文件资源ID就是PDF资源ID，可以直接用于【用PDF文件创建签署流程】接口发起合同。`
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_RESOURCETYPE = "InvalidParameter.ResourceType"
+//  MISSINGPARAMETER_RESOURCENAME = "MissingParameter.ResourceName"
+//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) DescribeFileConvertTask(request *DescribeFileConvertTaskRequest) (response *DescribeFileConvertTaskResponse, err error) {
+    return c.DescribeFileConvertTaskWithContext(context.Background(), request)
+}
+
+// DescribeFileConvertTask
+// 此接口（DescribeFileConvertTask）用来查询转换任务的状态。如需发起转换任务，请使用<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateFileConvertTask" target="_blank">创建文件转换任务接口</a>进行资源文件的转换操作<br />
+//
+// <font color="red">原功能接口: </font><a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/GetTaskResultApi" target="_blank">查询转换任务状态（GetTaskResultApi）</a><br />
+//
+// 前提条件：已调用 <a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateFileConvertTask" target="_blank">创建文件转换任务接口</a>进行文件转换，并得到了返回的转换任务Id。<br />
+//
+// 
+//
+// 适用场景：已创建一个文件转换任务，想查询该文件转换任务的状态，或获取转换后的文件资源Id。<br />
+//
+// 注：
+//
+// 1. `大文件转换所需的时间可能会比较长`
+//
+// 2.  `本接口返回的文件资源ID就是PDF资源ID，可以直接用于【用PDF文件创建签署流程】接口发起合同。`
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_RESOURCETYPE = "InvalidParameter.ResourceType"
+//  MISSINGPARAMETER_RESOURCENAME = "MissingParameter.ResourceName"
+//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) DescribeFileConvertTaskWithContext(ctx context.Context, request *DescribeFileConvertTaskRequest) (response *DescribeFileConvertTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeFileConvertTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "DescribeFileConvertTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFileConvertTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeFileConvertTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeFileCounterSignResultRequest() (request *DescribeFileCounterSignResultRequest) {
     request = &DescribeFileCounterSignResultRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -14653,6 +14841,8 @@ func NewGetTaskResultApiResponse() (response *GetTaskResultApiResponse) {
 //
 // 适用场景：已创建一个文件转换任务，想查询该文件转换任务的状态，或获取转换后的文件资源Id。<br />
 //
+// <font color="red">此接口于 2026 年 12月 31 日下线</font>，请使用新接口: <a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/DescribeFileConvertTask" target="_blank">查询文件转换任务状态（DescribeFileConvertTask）</a><br />
+//
 // 注：
 //
 // 1. `大文件转换所需的时间可能会比较长`
@@ -14678,6 +14868,8 @@ func (c *Client) GetTaskResultApi(request *GetTaskResultApiRequest) (response *G
 // 
 //
 // 适用场景：已创建一个文件转换任务，想查询该文件转换任务的状态，或获取转换后的文件资源Id。<br />
+//
+// <font color="red">此接口于 2026 年 12月 31 日下线</font>，请使用新接口: <a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/DescribeFileConvertTask" target="_blank">查询文件转换任务状态（DescribeFileConvertTask）</a><br />
 //
 // 注：
 //
