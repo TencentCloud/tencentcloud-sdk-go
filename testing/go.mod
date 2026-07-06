@@ -78,7 +78,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cmq v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cms v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cngw v0.0.0
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.3.128
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.3.129
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/config v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/controlcenter v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cpdp v0.0.0
@@ -120,6 +120,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/faceid v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/fmu v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ft v0.0.0
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/fwm v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ga2 v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/gaap v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/gme v0.0.0
@@ -379,6 +380,7 @@ replace (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/faceid => ../tencentcloud/faceid
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/fmu => ../tencentcloud/fmu
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ft => ../tencentcloud/ft
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/fwm => ../tencentcloud/fwm
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ga2 => ../tencentcloud/ga2
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/gaap => ../tencentcloud/gaap
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/gme => ../tencentcloud/gme

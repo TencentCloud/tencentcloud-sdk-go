@@ -147,6 +147,7 @@ import (
 	faceidv20180301 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/faceid/v20180301"
 	fmuv20191213 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/fmu/v20191213"
 	ftv20200304 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ft/v20200304"
+	fwmv20250611 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/fwm/v20250611"
 	ga2v20250115 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ga2/v20250115"
 	gaapv20180529 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/gaap/v20180529"
 	gmev20180711 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/gme/v20180711"
@@ -1961,6 +1962,19 @@ func TestFtv20200304Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf("fail to init ft_v20200304 client: %v", err)
+    }
+}
+
+func TestFwmv20250611Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := fwmv20250611.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf("fail to init fwm_v20250611 client: %v", err)
     }
 }
 

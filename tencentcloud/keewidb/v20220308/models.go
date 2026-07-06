@@ -385,13 +385,13 @@ func (r *CreateBackupManuallyResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateInstancesRequestParams struct {
-	// <p>产品版本。14：极速版。</p>
+	// <p>实例版本类型。</p><p>枚举值：</p><ul><li>11： 存储版标准架构。</li><li>12： 存储版集群架构。</li><li>13： 极速版标准架构。</li><li>14： 极速版集群架构。</li></ul>
 	TypeId *uint64 `json:"TypeId,omitnil,omitempty" name:"TypeId"`
 
-	// <p>私有网络唯一ID。请登录控制台在私有网络列表查询，如：vpc-azlk3***。</p>
+	// <p>私有网络唯一ID。<br>请登录控制台在私有网络列表查询，如：vpc-azlk3***。</p>
 	UniqVpcId *string `json:"UniqVpcId,omitnil,omitempty" name:"UniqVpcId"`
 
-	// <p>私有网络所属子网唯一ID。请登录控制台在私有网络列表查询，如：subnet-8abje***。</p>
+	// <p>私有网络所属子网唯一ID。<br>请登录控制台在私有网络列表查询，如：subnet-8abje***。</p>
 	UniqSubnetId *string `json:"UniqSubnetId,omitnil,omitempty" name:"UniqSubnetId"`
 
 	// <p>计费模式。<ul><li>0：按量计费。</li><li>1：包年包月。</li></ul></p>
@@ -409,7 +409,7 @@ type CreateInstancesRequestParams struct {
 	// <p>副本数。当前仅支持设置1个副本节点，即每一个分片仅包含1个主节点与1个副本节点，数据主从实时热备。</p>
 	ReplicasNum *int64 `json:"ReplicasNum,omitnil,omitempty" name:"ReplicasNum"`
 
-	// <p>实例内存容量，单位：GB。KeeWiDB 内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为固定搭配，即2GB内存，固定分配8GB的持久内存，不可选择。具体信息，请参见<a href="https://cloud.tencent.com/document/product/1520/80808">产品规格</a>。</p>
+	// <p>实例内存容量，单位：GB。<br>极速版内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为固定搭配，即2GB内存，固定分配8GB的持久内存，不可选择。具体信息，请参见<a href="https://cloud.tencent.com/document/product/1520/80808">产品规格</a>。</p><p>单位：GB</p>
 	MachineMemory *int64 `json:"MachineMemory,omitnil,omitempty" name:"MachineMemory"`
 
 	// <p>实例所属的可用区ID。<ul><li>具体取值，请参见<a href="https://cloud.tencent.com/document/product/239/4106">地域和可用区</a>获取。</li><li>参数<b>ZoneId</b>和<b>ZoneName</b>至少配置其中一个。</li></ul></p>
@@ -418,13 +418,13 @@ type CreateInstancesRequestParams struct {
 	// <p>实例所属的可用区名称。<ul><li>具体取值，请参见<a href="https://cloud.tencent.com/document/product/239/4106">地域和可用区</a>获取。</li><li>参数<b>ZoneId</b>和<b>ZoneName</b>至少配置其中一个。</li></ul></p>
 	ZoneName *string `json:"ZoneName,omitnil,omitempty" name:"ZoneName"`
 
-	// <p>创建实例的名称。仅支持长度小于60的中文、英文或者数字，短划线"-"、下划线"_"。</p>
+	// <p>创建实例的名称。<br>仅支持长度小于60的中文、英文或者数字，短划线&quot;-&quot;、下划线&quot;_&quot;。</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
 	// <p>指明创建的实例是否需要支持免密访问。<ul><li>true：免密实例。</li><li>false：非免密实例，默认为非免密实例。此时，需要设置访问密码。</li></ul></p>
 	NoAuth *bool `json:"NoAuth,omitnil,omitempty" name:"NoAuth"`
 
-	// <p>实例访问密码。<ul><li>当参数<b>NoAuth</b>为<b>true</b>时，Password为无需设置，否则Password为必填参数。</li><li>密码复杂度要求：<ul><li>8-30个字符。</li><li>至少包含小写字母、大写字母、数字和字符 ()`~!@#$%^&amp;*-+=_|{}[]:;&lt;&gt;,.?/ 中的2种。</li><li>不能以"/"开头。</li></ul></li></ul></p>
+	// <p>实例访问密码。<ul><li>当参数<b>NoAuth</b>为<b>true</b>时，Password为无需设置，否则Password为必填参数。</li></p><li>密码复杂度要求：<ul><li>8-30个字符。</li><li>至少包含小写字母、大写字母、数字和字符 ()`~!@#$%^&amp;*-+=_|{}[]:;&lt;&gt;,.?/ 中的2种。</li><li>不能以"/"开头。</li></ul></li></ul>
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
 	// <p>自定义端口。默认为6379，范围[1024,65535]。</p>
@@ -439,13 +439,13 @@ type CreateInstancesRequestParams struct {
 	// <p>给实例绑定标签。</p>
 	ResourceTags []*ResourceTag `json:"ResourceTags,omitnil,omitempty" name:"ResourceTags"`
 
-	// <p>极速版，单分片持久化内存容量。KeeWiDB 内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为固定搭配，即2GB内存，固定分配8GB的持久内存，不可选择。具体信息，请参见<a href="https://cloud.tencent.com/document/product/1520/80808">产品规格</a>。</p>单位：GB。
+	// <p>极速版，单分片持久化内存容量。<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为固定搭配，即2GB内存，固定分配8GB的持久内存，不可选择。具体信息，请参见<a href="https://cloud.tencent.com/document/product/1520/80808">产品规格</a>。</p><p>单位：GB。</p>
 	MemSize *int64 `json:"MemSize,omitnil,omitempty" name:"MemSize"`
 
-	// <p>每个分片硬盘的容量。单位：GB。每一缓存分片容量，对应的磁盘容量范围不同。具体信息，请参见<a href="https://cloud.tencent.com/document/product/1520/80808">产品规格</a>。</p>
+	// <p>每个分片硬盘的容量。单位：GB。<br>每一缓存分片容量，对应的磁盘容量范围不同。具体信息，请参见<a href="https://cloud.tencent.com/document/product/1520/80808">产品规格</a>。</p>
 	DiskSize *int64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
 
-	// <p>计算 CPU 核数，可忽略不传。CPU 核数与内存为固定搭配，具体信息，请参见<a href="https://cloud.tencent.com/document/product/1520/80808">产品规格</a>。</p>
+	// <p>计算 CPU 核数。CPU 核数与内存为固定搭配，具体信息，请参见<a href="https://cloud.tencent.com/document/product/1520/80808">产品规格</a>。</p>
 	MachineCpu *int64 `json:"MachineCpu,omitnil,omitempty" name:"MachineCpu"`
 
 	// <p>项目id，取值以用户账户&gt;用户账户相关接口查询&gt;项目列表返回的projectId为准。</p>
@@ -458,13 +458,13 @@ type CreateInstancesRequestParams struct {
 type CreateInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// <p>产品版本。14：极速版。</p>
+	// <p>实例版本类型。</p><p>枚举值：</p><ul><li>11： 存储版标准架构。</li><li>12： 存储版集群架构。</li><li>13： 极速版标准架构。</li><li>14： 极速版集群架构。</li></ul>
 	TypeId *uint64 `json:"TypeId,omitnil,omitempty" name:"TypeId"`
 
-	// <p>私有网络唯一ID。请登录控制台在私有网络列表查询，如：vpc-azlk3***。</p>
+	// <p>私有网络唯一ID。<br>请登录控制台在私有网络列表查询，如：vpc-azlk3***。</p>
 	UniqVpcId *string `json:"UniqVpcId,omitnil,omitempty" name:"UniqVpcId"`
 
-	// <p>私有网络所属子网唯一ID。请登录控制台在私有网络列表查询，如：subnet-8abje***。</p>
+	// <p>私有网络所属子网唯一ID。<br>请登录控制台在私有网络列表查询，如：subnet-8abje***。</p>
 	UniqSubnetId *string `json:"UniqSubnetId,omitnil,omitempty" name:"UniqSubnetId"`
 
 	// <p>计费模式。<ul><li>0：按量计费。</li><li>1：包年包月。</li></ul></p>
@@ -482,7 +482,7 @@ type CreateInstancesRequest struct {
 	// <p>副本数。当前仅支持设置1个副本节点，即每一个分片仅包含1个主节点与1个副本节点，数据主从实时热备。</p>
 	ReplicasNum *int64 `json:"ReplicasNum,omitnil,omitempty" name:"ReplicasNum"`
 
-	// <p>实例内存容量，单位：GB。KeeWiDB 内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为固定搭配，即2GB内存，固定分配8GB的持久内存，不可选择。具体信息，请参见<a href="https://cloud.tencent.com/document/product/1520/80808">产品规格</a>。</p>
+	// <p>实例内存容量，单位：GB。<br>极速版内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为固定搭配，即2GB内存，固定分配8GB的持久内存，不可选择。具体信息，请参见<a href="https://cloud.tencent.com/document/product/1520/80808">产品规格</a>。</p><p>单位：GB</p>
 	MachineMemory *int64 `json:"MachineMemory,omitnil,omitempty" name:"MachineMemory"`
 
 	// <p>实例所属的可用区ID。<ul><li>具体取值，请参见<a href="https://cloud.tencent.com/document/product/239/4106">地域和可用区</a>获取。</li><li>参数<b>ZoneId</b>和<b>ZoneName</b>至少配置其中一个。</li></ul></p>
@@ -491,13 +491,13 @@ type CreateInstancesRequest struct {
 	// <p>实例所属的可用区名称。<ul><li>具体取值，请参见<a href="https://cloud.tencent.com/document/product/239/4106">地域和可用区</a>获取。</li><li>参数<b>ZoneId</b>和<b>ZoneName</b>至少配置其中一个。</li></ul></p>
 	ZoneName *string `json:"ZoneName,omitnil,omitempty" name:"ZoneName"`
 
-	// <p>创建实例的名称。仅支持长度小于60的中文、英文或者数字，短划线"-"、下划线"_"。</p>
+	// <p>创建实例的名称。<br>仅支持长度小于60的中文、英文或者数字，短划线&quot;-&quot;、下划线&quot;_&quot;。</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
 	// <p>指明创建的实例是否需要支持免密访问。<ul><li>true：免密实例。</li><li>false：非免密实例，默认为非免密实例。此时，需要设置访问密码。</li></ul></p>
 	NoAuth *bool `json:"NoAuth,omitnil,omitempty" name:"NoAuth"`
 
-	// <p>实例访问密码。<ul><li>当参数<b>NoAuth</b>为<b>true</b>时，Password为无需设置，否则Password为必填参数。</li><li>密码复杂度要求：<ul><li>8-30个字符。</li><li>至少包含小写字母、大写字母、数字和字符 ()`~!@#$%^&amp;*-+=_|{}[]:;&lt;&gt;,.?/ 中的2种。</li><li>不能以"/"开头。</li></ul></li></ul></p>
+	// <p>实例访问密码。<ul><li>当参数<b>NoAuth</b>为<b>true</b>时，Password为无需设置，否则Password为必填参数。</li></p><li>密码复杂度要求：<ul><li>8-30个字符。</li><li>至少包含小写字母、大写字母、数字和字符 ()`~!@#$%^&amp;*-+=_|{}[]:;&lt;&gt;,.?/ 中的2种。</li><li>不能以"/"开头。</li></ul></li></ul>
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
 	// <p>自定义端口。默认为6379，范围[1024,65535]。</p>
@@ -512,13 +512,13 @@ type CreateInstancesRequest struct {
 	// <p>给实例绑定标签。</p>
 	ResourceTags []*ResourceTag `json:"ResourceTags,omitnil,omitempty" name:"ResourceTags"`
 
-	// <p>极速版，单分片持久化内存容量。KeeWiDB 内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为固定搭配，即2GB内存，固定分配8GB的持久内存，不可选择。具体信息，请参见<a href="https://cloud.tencent.com/document/product/1520/80808">产品规格</a>。</p>单位：GB。
+	// <p>极速版，单分片持久化内存容量。<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为固定搭配，即2GB内存，固定分配8GB的持久内存，不可选择。具体信息，请参见<a href="https://cloud.tencent.com/document/product/1520/80808">产品规格</a>。</p><p>单位：GB。</p>
 	MemSize *int64 `json:"MemSize,omitnil,omitempty" name:"MemSize"`
 
-	// <p>每个分片硬盘的容量。单位：GB。每一缓存分片容量，对应的磁盘容量范围不同。具体信息，请参见<a href="https://cloud.tencent.com/document/product/1520/80808">产品规格</a>。</p>
+	// <p>每个分片硬盘的容量。单位：GB。<br>每一缓存分片容量，对应的磁盘容量范围不同。具体信息，请参见<a href="https://cloud.tencent.com/document/product/1520/80808">产品规格</a>。</p>
 	DiskSize *int64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
 
-	// <p>计算 CPU 核数，可忽略不传。CPU 核数与内存为固定搭配，具体信息，请参见<a href="https://cloud.tencent.com/document/product/1520/80808">产品规格</a>。</p>
+	// <p>计算 CPU 核数。CPU 核数与内存为固定搭配，具体信息，请参见<a href="https://cloud.tencent.com/document/product/1520/80808">产品规格</a>。</p>
 	MachineCpu *int64 `json:"MachineCpu,omitnil,omitempty" name:"MachineCpu"`
 
 	// <p>项目id，取值以用户账户&gt;用户账户相关接口查询&gt;项目列表返回的projectId为准。</p>
@@ -579,7 +579,7 @@ type CreateInstancesResponseParams struct {
 	// <p>实例 ID 。</p>
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// <p>订单号。    </p>
+	// <p>订单号。</p>
 	DealName *string `json:"DealName,omitnil,omitempty" name:"DealName"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1360,144 +1360,142 @@ func (r *DescribeInstanceReplicasResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstancesRequestParams struct {
-	// 每页输出的实例列表的大小，即每页输出的实例数量，默认值20，取值范围为[1,1000]。
+	// <p>每页输出的实例列表的大小，即每页输出的实例数量，默认值20，取值范围为[1,1000]。</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页偏移量，取Limit整数倍。
-	// 计算公式为offset=limit*(页码-1)。例如 limit=10，第1页offset就为0，第2页offset就为10，依次类推。
+	// <p>分页偏移量，取Limit整数倍。<br>计算公式为offset=limit*(页码-1)。例如 limit=10，第1页offset就为0，第2页offset就为10，依次类推。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 实例 ID，如：kee-6ubh****。
+	// <p>实例 ID，如：kee-6ubh****。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 排序依据。枚举范围如下所示。 <ul><li>projectId：实例按照项目ID排序。</li><li>createtime：实例按照创建时间排序。</li><li>instancename：实例按照实例名称排序。</li><li>type：实例按照类型排序。</li><li>curDeadline：实例按照到期时间排序。</li></ul>
+	// <p>排序依据。枚举范围如下所示。 <ul><li>projectId：实例按照项目ID排序。</li><li>createtime：实例按照创建时间排序。</li><li>instancename：实例按照实例名称排序。</li><li>type：实例按照类型排序。</li><li>curDeadline：实例按照到期时间排序。</li></ul></p>
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 排序方式。<ul><li>1：倒序。默认为倒序。</li><li>0：顺序。</li></ul>
+	// <p>排序方式。<ul><li>1：倒序。默认为倒序。</li><li>0：顺序。</li></ul></p>
 	OrderType *int64 `json:"OrderType,omitnil,omitempty" name:"OrderType"`
 
-	// 私有网络ID数组。数组下标从0开始，如果不传则默认选择基础网络，如：47525
+	// <p>私有网络ID数组。数组下标从0开始，如果不传则默认选择基础网络，如：47525</p>
 	VpcIds []*string `json:"VpcIds,omitnil,omitempty" name:"VpcIds"`
 
-	// 子网ID数组，数组下标从0开始，如：56854
+	// <p>子网ID数组，数组下标从0开始，如：56854</p>
 	SubnetIds []*string `json:"SubnetIds,omitnil,omitempty" name:"SubnetIds"`
 
-	// 项目ID 组成的数组，数组下标从0开始
+	// <p>项目ID 组成的数组，数组下标从0开始</p>
 	ProjectIds []*int64 `json:"ProjectIds,omitnil,omitempty" name:"ProjectIds"`
 
-	// 查找关键字，可输入实例的ID或者实例名称。
+	// <p>查找关键字，可输入实例的ID或者实例名称。</p>
 	SearchKey *string `json:"SearchKey,omitnil,omitempty" name:"SearchKey"`
 
-	// 实例名称。
+	// <p>实例名称。</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 私有网络ID数组，数组下标从0开始，如果不传则默认选择基础网络，如：vpc-sad23jfdfk
+	// <p>私有网络ID数组，数组下标从0开始，如果不传则默认选择基础网络，如：vpc-sad23jfdfk</p>
 	UniqVpcIds []*string `json:"UniqVpcIds,omitnil,omitempty" name:"UniqVpcIds"`
 
-	// 子网ID数组，数组下标从0开始，如：subnet-fdj24n34j2
+	// <p>子网ID数组，数组下标从0开始，如：subnet-fdj24n34j2</p>
 	UniqSubnetIds []*string `json:"UniqSubnetIds,omitnil,omitempty" name:"UniqSubnetIds"`
 
-	// 实例状态。<ul><li>0：待初始化。</li><li>1：流程中。</li><li>2：运行中。</li><li>-2：已隔离。</li><li>-3：待删除。</li></ul>
+	// <p>实例状态。<ul><li>0：待初始化。</li><li>1：流程中。</li><li>2：运行中。</li><li>-2：已隔离。</li><li>-3：待删除。</li></ul></p>
 	Status []*int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 续费模式。- 0：手动续费。- 1：自动续费。- 2：到期不再续费。
+	// <p>续费模式。- 0：手动续费。- 1：自动续费。- 2：到期不再续费。</p>
 	AutoRenew []*int64 `json:"AutoRenew,omitnil,omitempty" name:"AutoRenew"`
 
-	// 计费模式。<ul><li>postpaid：按量计费。</li><li>prepaid：包年包月。</li></ul>
+	// <p>计费模式。<ul><li>postpaid：按量计费。</li><li>prepaid：包年包月。</li></ul></p>
 	BillingMode *string `json:"BillingMode,omitnil,omitempty" name:"BillingMode"`
 
-	// 实例类型。<ul><li>13：标准版。</li><li>14：集群版。</li></ul>
+	// <p>实例类型。</p><p>枚举值：</p><ul><li>11： 存储版标准架构。</li><li>12： 存储版集群架构。</li><li>13： 极速版标准架构。</li><li>14： 极速版集群架构。</li></ul>
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 搜索关键词：支持实例 ID、实例名称、私有网络IP地址。
+	// <p>搜索关键词：支持实例 ID、实例名称、私有网络IP地址。</p>
 	SearchKeys []*string `json:"SearchKeys,omitnil,omitempty" name:"SearchKeys"`
 
-	// 内部参数，用户可忽略。
+	// <p>内部参数，用户可忽略。</p>
 	TypeList []*int64 `json:"TypeList,omitnil,omitempty" name:"TypeList"`
 
-	// 内部参数，用户可忽略。
+	// <p>内部参数，用户可忽略。</p>
 	MonitorVersion *string `json:"MonitorVersion,omitnil,omitempty" name:"MonitorVersion"`
 
-	// 废弃字段。请使用TagList传参。
+	// <p>废弃字段。请使用TagList传参。</p>
 	//
 	// Deprecated: InstanceTags is deprecated.
 	InstanceTags *InstanceTagInfo `json:"InstanceTags,omitnil,omitempty" name:"InstanceTags"`
 
-	// 根据标签的 Key 筛选资源，该参数不配置或者数组设置为空值，则不根据标签Key进行过滤。
+	// <p>根据标签的 Key 筛选资源，该参数不配置或者数组设置为空值，则不根据标签Key进行过滤。</p>
 	TagKeys []*string `json:"TagKeys,omitnil,omitempty" name:"TagKeys"`
 
-	// 根据标签的 Key 和 Value 筛选资源。该参数不配置或者数组设置为空值，则不根据标签进行过滤。
+	// <p>根据标签的 Key 和 Value 筛选资源。该参数不配置或者数组设置为空值，则不根据标签进行过滤。</p>
 	TagList []*InstanceTagInfo `json:"TagList,omitnil,omitempty" name:"TagList"`
 }
 
 type DescribeInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 每页输出的实例列表的大小，即每页输出的实例数量，默认值20，取值范围为[1,1000]。
+	// <p>每页输出的实例列表的大小，即每页输出的实例数量，默认值20，取值范围为[1,1000]。</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页偏移量，取Limit整数倍。
-	// 计算公式为offset=limit*(页码-1)。例如 limit=10，第1页offset就为0，第2页offset就为10，依次类推。
+	// <p>分页偏移量，取Limit整数倍。<br>计算公式为offset=limit*(页码-1)。例如 limit=10，第1页offset就为0，第2页offset就为10，依次类推。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 实例 ID，如：kee-6ubh****。
+	// <p>实例 ID，如：kee-6ubh****。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 排序依据。枚举范围如下所示。 <ul><li>projectId：实例按照项目ID排序。</li><li>createtime：实例按照创建时间排序。</li><li>instancename：实例按照实例名称排序。</li><li>type：实例按照类型排序。</li><li>curDeadline：实例按照到期时间排序。</li></ul>
+	// <p>排序依据。枚举范围如下所示。 <ul><li>projectId：实例按照项目ID排序。</li><li>createtime：实例按照创建时间排序。</li><li>instancename：实例按照实例名称排序。</li><li>type：实例按照类型排序。</li><li>curDeadline：实例按照到期时间排序。</li></ul></p>
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 排序方式。<ul><li>1：倒序。默认为倒序。</li><li>0：顺序。</li></ul>
+	// <p>排序方式。<ul><li>1：倒序。默认为倒序。</li><li>0：顺序。</li></ul></p>
 	OrderType *int64 `json:"OrderType,omitnil,omitempty" name:"OrderType"`
 
-	// 私有网络ID数组。数组下标从0开始，如果不传则默认选择基础网络，如：47525
+	// <p>私有网络ID数组。数组下标从0开始，如果不传则默认选择基础网络，如：47525</p>
 	VpcIds []*string `json:"VpcIds,omitnil,omitempty" name:"VpcIds"`
 
-	// 子网ID数组，数组下标从0开始，如：56854
+	// <p>子网ID数组，数组下标从0开始，如：56854</p>
 	SubnetIds []*string `json:"SubnetIds,omitnil,omitempty" name:"SubnetIds"`
 
-	// 项目ID 组成的数组，数组下标从0开始
+	// <p>项目ID 组成的数组，数组下标从0开始</p>
 	ProjectIds []*int64 `json:"ProjectIds,omitnil,omitempty" name:"ProjectIds"`
 
-	// 查找关键字，可输入实例的ID或者实例名称。
+	// <p>查找关键字，可输入实例的ID或者实例名称。</p>
 	SearchKey *string `json:"SearchKey,omitnil,omitempty" name:"SearchKey"`
 
-	// 实例名称。
+	// <p>实例名称。</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 私有网络ID数组，数组下标从0开始，如果不传则默认选择基础网络，如：vpc-sad23jfdfk
+	// <p>私有网络ID数组，数组下标从0开始，如果不传则默认选择基础网络，如：vpc-sad23jfdfk</p>
 	UniqVpcIds []*string `json:"UniqVpcIds,omitnil,omitempty" name:"UniqVpcIds"`
 
-	// 子网ID数组，数组下标从0开始，如：subnet-fdj24n34j2
+	// <p>子网ID数组，数组下标从0开始，如：subnet-fdj24n34j2</p>
 	UniqSubnetIds []*string `json:"UniqSubnetIds,omitnil,omitempty" name:"UniqSubnetIds"`
 
-	// 实例状态。<ul><li>0：待初始化。</li><li>1：流程中。</li><li>2：运行中。</li><li>-2：已隔离。</li><li>-3：待删除。</li></ul>
+	// <p>实例状态。<ul><li>0：待初始化。</li><li>1：流程中。</li><li>2：运行中。</li><li>-2：已隔离。</li><li>-3：待删除。</li></ul></p>
 	Status []*int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 续费模式。- 0：手动续费。- 1：自动续费。- 2：到期不再续费。
+	// <p>续费模式。- 0：手动续费。- 1：自动续费。- 2：到期不再续费。</p>
 	AutoRenew []*int64 `json:"AutoRenew,omitnil,omitempty" name:"AutoRenew"`
 
-	// 计费模式。<ul><li>postpaid：按量计费。</li><li>prepaid：包年包月。</li></ul>
+	// <p>计费模式。<ul><li>postpaid：按量计费。</li><li>prepaid：包年包月。</li></ul></p>
 	BillingMode *string `json:"BillingMode,omitnil,omitempty" name:"BillingMode"`
 
-	// 实例类型。<ul><li>13：标准版。</li><li>14：集群版。</li></ul>
+	// <p>实例类型。</p><p>枚举值：</p><ul><li>11： 存储版标准架构。</li><li>12： 存储版集群架构。</li><li>13： 极速版标准架构。</li><li>14： 极速版集群架构。</li></ul>
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 搜索关键词：支持实例 ID、实例名称、私有网络IP地址。
+	// <p>搜索关键词：支持实例 ID、实例名称、私有网络IP地址。</p>
 	SearchKeys []*string `json:"SearchKeys,omitnil,omitempty" name:"SearchKeys"`
 
-	// 内部参数，用户可忽略。
+	// <p>内部参数，用户可忽略。</p>
 	TypeList []*int64 `json:"TypeList,omitnil,omitempty" name:"TypeList"`
 
-	// 内部参数，用户可忽略。
+	// <p>内部参数，用户可忽略。</p>
 	MonitorVersion *string `json:"MonitorVersion,omitnil,omitempty" name:"MonitorVersion"`
 
-	// 废弃字段。请使用TagList传参。
+	// <p>废弃字段。请使用TagList传参。</p>
 	InstanceTags *InstanceTagInfo `json:"InstanceTags,omitnil,omitempty" name:"InstanceTags"`
 
-	// 根据标签的 Key 筛选资源，该参数不配置或者数组设置为空值，则不根据标签Key进行过滤。
+	// <p>根据标签的 Key 筛选资源，该参数不配置或者数组设置为空值，则不根据标签Key进行过滤。</p>
 	TagKeys []*string `json:"TagKeys,omitnil,omitempty" name:"TagKeys"`
 
-	// 根据标签的 Key 和 Value 筛选资源。该参数不配置或者数组设置为空值，则不根据标签进行过滤。
+	// <p>根据标签的 Key 和 Value 筛选资源。该参数不配置或者数组设置为空值，则不根据标签进行过滤。</p>
 	TagList []*InstanceTagInfo `json:"TagList,omitnil,omitempty" name:"TagList"`
 }
 
@@ -1543,10 +1541,10 @@ func (r *DescribeInstancesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstancesResponseParams struct {
-	// 实例数
+	// <p>实例数</p>
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 实例详细信息列表
+	// <p>实例详细信息列表</p>
 	InstanceSet []*InstanceInfo `json:"InstanceSet,omitnil,omitempty" name:"InstanceSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2388,160 +2386,160 @@ type InstanceEnumParam struct {
 }
 
 type InstanceInfo struct {
-	// 实例名称。
+	// <p>实例名称。</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 实例 ID。
+	// <p>实例 ID。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 用户的Appid。
+	// <p>用户的Appid。</p>
 	Appid *int64 `json:"Appid,omitnil,omitempty" name:"Appid"`
 
-	// 项目 ID。
+	// <p>项目 ID。</p>
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 地域ID。<ul><li>1：广州。</li><li>4：上海。</li><li>8：北京。</li></ul>
+	// <p>地域ID。<ul><li>1：广州。</li><li>4：上海。</li><li>8：北京。</li></ul></p>
 	RegionId *int64 `json:"RegionId,omitnil,omitempty" name:"RegionId"`
 
-	// 可用区 ID。
+	// <p>可用区 ID。</p>
 	ZoneId *int64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// VPC 网络 ID， 如：75101。该参数当前暂保留，可忽略。
+	// <p>VPC 网络 ID， 如：75101。该参数当前暂保留，可忽略。</p>
 	VpcId *int64 `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 实例当前状态。<ul><li>0：待初始化。</li><li>1：实例在流程中。</li><li>2：实例运行中。</li><li>-2：实例已隔离。</li><li>-3：实例待删除。</li></ul>
+	// <p>实例当前状态。<ul><li>0：待初始化。</li><li>1：实例在流程中。</li><li>2：实例运行中。</li><li>-2：实例已隔离。</li><li>-3：实例待删除。</li></ul></p>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// VPC 网络下子网 ID， 如：46315。该参数当前暂保留，可忽略。
+	// <p>VPC 网络下子网 ID， 如：46315。该参数当前暂保留，可忽略。</p>
 	SubnetId *int64 `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 实例 VIP。
+	// <p>实例 VIP。</p>
 	WanIp *string `json:"WanIp,omitnil,omitempty" name:"WanIp"`
 
-	// 实例端口号。
+	// <p>实例端口号。</p>
 	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
 
-	// 实例创建时间。
+	// <p>实例创建时间。</p>
 	Createtime *string `json:"Createtime,omitnil,omitempty" name:"Createtime"`
 
-	// 实例持久内存总容量大小，单位：MB。
+	// <p>实例持久内存总容量大小，单位：MB。</p>
 	Size *float64 `json:"Size,omitnil,omitempty" name:"Size"`
 
-	// 实例类型。<ul><li>13：标准版。</li><li>14：集群版。</li></ul>
+	// <p>实例类型。</p><p>枚举值：</p><ul><li>11： 存储版标准架构。</li><li>12： 存储版集群架构。</li><li>13： 极速版标准架构。</li><li>14： 极速版集群架构。</li></ul>
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 实例是否设置自动续费标识。<ul><li>1：设置自动续费。</li><li>0：未设置自动续费。</li></ul>
+	// <p>实例是否设置自动续费标识。<ul><li>1：设置自动续费。</li><li>0：未设置自动续费。</li></ul></p>
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 
-	// 实例到期时间。
+	// <p>实例到期时间。</p>
 	DeadlineTime *string `json:"DeadlineTime,omitnil,omitempty" name:"DeadlineTime"`
 
-	// 存储引擎。
+	// <p>存储引擎。</p>
 	Engine *string `json:"Engine,omitnil,omitempty" name:"Engine"`
 
-	// 产品类型。<ul><li>standalone ：标准版。</li><li>cluster ：集群版。</li></ul>
+	// <p>产品类型。<ul><li>standalone ：标准版。</li><li>cluster ：集群版。</li></ul></p>
 	ProductType *string `json:"ProductType,omitnil,omitempty" name:"ProductType"`
 
-	// VPC 网络 ID， 如：vpc-fk33jsf4****。
+	// <p>VPC 网络 ID， 如：vpc-fk33jsf4****。</p>
 	UniqVpcId *string `json:"UniqVpcId,omitnil,omitempty" name:"UniqVpcId"`
 
-	// VPC 网络下子网 ID，如：subnet-fd3j6l3****。
+	// <p>VPC 网络下子网 ID，如：subnet-fd3j6l3****。</p>
 	UniqSubnetId *string `json:"UniqSubnetId,omitnil,omitempty" name:"UniqSubnetId"`
 
-	// 计费模式。<ul><li>0：按量计费。</li><li>1：包年包月。</li></ul>
+	// <p>计费模式。<ul><li>0：按量计费。</li><li>1：包年包月。</li></ul></p>
 	BillingMode *int64 `json:"BillingMode,omitnil,omitempty" name:"BillingMode"`
 
-	// 实例运行状态描述：如”实例运行中“。
+	// <p>实例运行状态描述：如”实例运行中“。</p>
 	InstanceTitle *string `json:"InstanceTitle,omitnil,omitempty" name:"InstanceTitle"`
 
-	// 计划下线时间。
+	// <p>计划下线时间。</p>
 	OfflineTime *string `json:"OfflineTime,omitnil,omitempty" name:"OfflineTime"`
 
-	// 流程中的实例，返回子状态。
+	// <p>流程中的实例，返回子状态。</p>
 	SubStatus *int64 `json:"SubStatus,omitnil,omitempty" name:"SubStatus"`
 
-	// 反亲和性标签
+	// <p>反亲和性标签</p>
 	Tags []*string `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 分片大小。
+	// <p>分片大小。</p>
 	RedisShardSize *int64 `json:"RedisShardSize,omitnil,omitempty" name:"RedisShardSize"`
 
-	// 分片数量。
+	// <p>分片数量。</p>
 	RedisShardNum *int64 `json:"RedisShardNum,omitnil,omitempty" name:"RedisShardNum"`
 
-	// 副本数量。
+	// <p>副本数量。</p>
 	RedisReplicasNum *int64 `json:"RedisReplicasNum,omitnil,omitempty" name:"RedisReplicasNum"`
 
-	// 计费 ID。
+	// <p>计费 ID。</p>
 	PriceId *int64 `json:"PriceId,omitnil,omitempty" name:"PriceId"`
 
-	// 隔离时间。
+	// <p>隔离时间。</p>
 	CloseTime *string `json:"CloseTime,omitnil,omitempty" name:"CloseTime"`
 
-	// 从节点读取权重。
+	// <p>从节点读取权重。</p>
 	SlaveReadWeight *int64 `json:"SlaveReadWeight,omitnil,omitempty" name:"SlaveReadWeight"`
 
-	// 实例关联的标签信息。
+	// <p>实例关联的标签信息。</p>
 	InstanceTags []*InstanceTagInfo `json:"InstanceTags,omitnil,omitempty" name:"InstanceTags"`
 
-	// 项目名称。
+	// <p>项目名称。</p>
 	ProjectName *string `json:"ProjectName,omitnil,omitempty" name:"ProjectName"`
 
-	// 是否为免密实例；<ul><li>true：免密实例。</li><li>false：非免密实例。</li></ul>
+	// <p>是否为免密实例；<ul><li>true：免密实例。</li><li>false：非免密实例。</li></ul></p>
 	NoAuth *bool `json:"NoAuth,omitnil,omitempty" name:"NoAuth"`
 
-	// 客户端连接数。
+	// <p>客户端连接数。</p>
 	ClientLimit *int64 `json:"ClientLimit,omitnil,omitempty" name:"ClientLimit"`
 
-	// DTS状态（内部参数，用户可忽略）。
+	// <p>DTS状态（内部参数，用户可忽略）。</p>
 	DtsStatus *int64 `json:"DtsStatus,omitnil,omitempty" name:"DtsStatus"`
 
-	// 分片带宽上限，单位 MB。
+	// <p>分片带宽上限，单位 MB。</p>
 	NetLimit *int64 `json:"NetLimit,omitnil,omitempty" name:"NetLimit"`
 
-	// 免密实例标识（内部参数，用户可忽略）。
+	// <p>免密实例标识（内部参数，用户可忽略）。</p>
 	PasswordFree *int64 `json:"PasswordFree,omitnil,omitempty" name:"PasswordFree"`
 
-	// 实例只读标识（内部参数，用户可忽略）。
+	// <p>实例只读标识（内部参数，用户可忽略）。</p>
 	ReadOnly *int64 `json:"ReadOnly,omitnil,omitempty" name:"ReadOnly"`
 
-	// 内部参数，用户可忽略。
+	// <p>内部参数，用户可忽略。</p>
 	Vip6 *string `json:"Vip6,omitnil,omitempty" name:"Vip6"`
 
-	// 内部参数，用户可忽略。
+	// <p>内部参数，用户可忽略。</p>
 	RemainBandwidthDuration *string `json:"RemainBandwidthDuration,omitnil,omitempty" name:"RemainBandwidthDuration"`
 
-	// 实例的磁盘容量大小。
+	// <p>实例的磁盘容量大小。</p>
 	DiskSize *int64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
 
-	// 监控版本。<ul><li>1m：分钟粒度监控。</li><li>5s：5秒粒度监控。</li></ul>
+	// <p>监控版本。<ul><li>1m：分钟粒度监控。</li><li>5s：5秒粒度监控。</li></ul></p>
 	MonitorVersion *string `json:"MonitorVersion,omitnil,omitempty" name:"MonitorVersion"`
 
-	// 客户端最大连接数可设置的最小值。
+	// <p>客户端最大连接数可设置的最小值。</p>
 	ClientLimitMin *int64 `json:"ClientLimitMin,omitnil,omitempty" name:"ClientLimitMin"`
 
-	// 客户端最大连接数可设置的最大值。
+	// <p>客户端最大连接数可设置的最大值。</p>
 	ClientLimitMax *int64 `json:"ClientLimitMax,omitnil,omitempty" name:"ClientLimitMax"`
 
-	// 实例的节点详细信息。
+	// <p>实例的节点详细信息。</p>
 	NodeSet []*NodeInfo `json:"NodeSet,omitnil,omitempty" name:"NodeSet"`
 
-	// 实例所在的地域信息，比如ap-guangzhou。
+	// <p>实例所在的地域信息，比如ap-guangzhou。</p>
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 实例内存容量，单位：GB。KeeWiDB 内存容量
+	// <p>实例内存容量，单位：GB。KeeWiDB 内存容量</p>
 	MachineMemory *int64 `json:"MachineMemory,omitnil,omitempty" name:"MachineMemory"`
 
-	// 单分片磁盘大小，单位：MB
+	// <p>单分片磁盘大小，单位：MB</p>
 	DiskShardSize *int64 `json:"DiskShardSize,omitnil,omitempty" name:"DiskShardSize"`
 
-	// 3
+	// <p>分片数量</p>
 	DiskShardNum *int64 `json:"DiskShardNum,omitnil,omitempty" name:"DiskShardNum"`
 
-	// 1
+	// <p>副本数量</p>
 	DiskReplicasNum *int64 `json:"DiskReplicasNum,omitnil,omitempty" name:"DiskReplicasNum"`
 
-	// 数据压缩开关。<ul><li>ON：开启。</li><li>OFF：关闭。</li></ul>
+	// <p>数据压缩开关。<ul><li>ON：开启。</li><li>OFF：关闭。</li></ul></p>
 	Compression *string `json:"Compression,omitnil,omitempty" name:"Compression"`
 }
 
@@ -2609,6 +2607,9 @@ type InstanceNodeInfo struct {
 
 	// 节点角色
 	NodeRole *string `json:"NodeRole,omitnil,omitempty" name:"NodeRole"`
+
+	// 可用区ID
+	ZoneId *int64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 }
 
 type InstanceParam struct {
@@ -3329,6 +3330,9 @@ type ProductConf struct {
 type ProxyNodeInfo struct {
 	// 节点ID
 	NodeId *string `json:"NodeId,omitnil,omitempty" name:"NodeId"`
+
+	// 可用区ID
+	ZoneId *int64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 }
 
 type RedisNodeInfo struct {

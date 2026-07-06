@@ -290,6 +290,9 @@ const (
 	// 不允许删除正在运行的备份任务
 	OPERATIONDENIED_DELETERUNNINGBACKUPTASKERR = "OperationDenied.DeleteRunningBackupTaskErr"
 
+	// 实例暂不支持此操作。
+	OPERATIONDENIED_INSTANCEOPERATIONNOTALLOWEDERROR = "OperationDenied.InstanceOperationNotAllowedError"
+
 	// 实例状态错误。
 	OPERATIONDENIED_INSTANCESTATUSERROR = "OperationDenied.InstanceStatusError"
 

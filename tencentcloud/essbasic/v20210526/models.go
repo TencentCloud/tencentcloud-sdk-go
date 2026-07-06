@@ -7295,7 +7295,7 @@ type CreateEmployeeChangeUrlRequestParams struct {
 	// <p>待修改的员工OpenId</p>
 	OpenId *string `json:"OpenId,omitnil,omitempty" name:"OpenId"`
 
-	// <p>待修改的员工手机号，支持海外格式</p>
+	// <p>待修改的员工手机号，支持海外格式</p><p>参数格式：<br><br>国内：+86 1825195xxxx 或者 1825195xxxx <br><br>海外：+12 12345xxx</p>
 	NewMobile *string `json:"NewMobile,omitnil,omitempty" name:"NewMobile"`
 }
 
@@ -7308,7 +7308,7 @@ type CreateEmployeeChangeUrlRequest struct {
 	// <p>待修改的员工OpenId</p>
 	OpenId *string `json:"OpenId,omitnil,omitempty" name:"OpenId"`
 
-	// <p>待修改的员工手机号，支持海外格式</p>
+	// <p>待修改的员工手机号，支持海外格式</p><p>参数格式：<br><br>国内：+86 1825195xxxx 或者 1825195xxxx <br><br>海外：+12 12345xxx</p>
 	NewMobile *string `json:"NewMobile,omitnil,omitempty" name:"NewMobile"`
 }
 

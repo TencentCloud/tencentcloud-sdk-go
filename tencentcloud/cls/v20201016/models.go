@@ -1144,26 +1144,32 @@ func (r *CloseKafkaConsumerResponse) FromJsonString(s string) error {
 }
 
 type CloudProductLogTaskInfo struct {
-	// 日志服务地域
+	// <p>日志服务地域</p>
 	ClsRegion *string `json:"ClsRegion,omitnil,omitempty" name:"ClsRegion"`
 
-	// 实例ID
+	// <p>实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 日志集ID
+	// <p>日志集ID</p>
 	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
 
-	// 日志主题ID
+	// <p>日志主题ID</p>
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// 日志配置拓展信息， 一般用于存储额外的日志投递配置
+	// <p>日志配置拓展信息， 一般用于存储额外的日志投递配置</p>
 	Extend *string `json:"Extend,omitnil,omitempty" name:"Extend"`
 
-	// 日志类型，支持枚举：CDS-AUDIT、CDS-RISK、CDB-AUDIT、TDSQL-C-AUDIT、MongoDB-AUDIT、MongoDB-SlowLog、MongoDB-ErrorLog、TDMYSQL-SLOW、DCDB-AUDIT、DCDB-SLOW、DCDB-ERROR、MariaDB-AUDIT、MariaDB-SLOW、MariaDB-ERROR、PostgreSQL-SLOW、PostgreSQL-ERROR、PostgreSQL-AUDIT、BH-FILELOG、BH-COMMANDLOG、APIS-ACCESS
+	// <p>日志类型，支持枚举：CDS-AUDIT、CDS-RISK、CDB-AUDIT、TDSQL-C-AUDIT、MongoDB-AUDIT、MongoDB-SlowLog、MongoDB-ErrorLog、TDMYSQL-SLOW、DCDB-AUDIT、DCDB-SLOW、DCDB-ERROR、MariaDB-AUDIT、MariaDB-SLOW、MariaDB-ERROR、PostgreSQL-SLOW、PostgreSQL-ERROR、PostgreSQL-AUDIT、BH-FILELOG、BH-COMMANDLOG、APIS-ACCESS</p>
 	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
 
-	// 任务状态， 0创建中 1创建完成 2 删除中 
+	// <p>任务状态， 0创建中 1创建完成 2 删除中</p>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>投递任务关联topic的标签信息</p>
+	TopicTags []*Tag `json:"TopicTags,omitnil,omitempty" name:"TopicTags"`
+
+	// <p>投递任务关联logset的标签信息</p>
+	LogsetTags []*Tag `json:"LogsetTags,omitnil,omitempty" name:"LogsetTags"`
 }
 
 type CollectConfig struct {
@@ -9316,6 +9322,9 @@ type DescribeCloudProductLogTasksRequestParams struct {
 
 	// <ul><li>assumerName<ul><li>按照【云产品标识】进行过滤。</li><li>类型：String</li><li>必选：否</li><li>枚举：CDS、CWP、CDB、TDSQL-C、MongoDB、TDStore、DCDB、MariaDB、PostgreSQL、BH、APIS</li></ul></li><li>logType<ul><li>按照【日志类型】进行过滤。</li><li>类型：String</li><li>必选：否</li><li>枚举：CDS-AUDIT、CDS-RISK、CDB-AUDIT、TDSQL-C-AUDIT、MongoDB-AUDIT、MongoDB-SlowLog、MongoDB-ErrorLog、TDMYSQL-SLOW、DCDB-AUDIT、DCDB-SLOW、DCDB-ERROR、MariaDB-AUDIT、MariaDB-SLOW、MariaDB-ERROR、PostgreSQL-SLOW、PostgreSQL-ERROR、PostgreSQL-AUDIT、BH-FILELOG、BH-COMMANDLOG、APIS-ACCESS</li></ul></li><li>instanceId<ul><li>按照【实例ID】进行过滤。</li><li>类型：String</li><li>必选：否</li></ul></li></ul>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>是否携带topic和logset的标签信息</p>
+	WithTags *bool `json:"WithTags,omitnil,omitempty" name:"WithTags"`
 }
 
 type DescribeCloudProductLogTasksRequest struct {
@@ -9329,6 +9338,9 @@ type DescribeCloudProductLogTasksRequest struct {
 
 	// <ul><li>assumerName<ul><li>按照【云产品标识】进行过滤。</li><li>类型：String</li><li>必选：否</li><li>枚举：CDS、CWP、CDB、TDSQL-C、MongoDB、TDStore、DCDB、MariaDB、PostgreSQL、BH、APIS</li></ul></li><li>logType<ul><li>按照【日志类型】进行过滤。</li><li>类型：String</li><li>必选：否</li><li>枚举：CDS-AUDIT、CDS-RISK、CDB-AUDIT、TDSQL-C-AUDIT、MongoDB-AUDIT、MongoDB-SlowLog、MongoDB-ErrorLog、TDMYSQL-SLOW、DCDB-AUDIT、DCDB-SLOW、DCDB-ERROR、MariaDB-AUDIT、MariaDB-SLOW、MariaDB-ERROR、PostgreSQL-SLOW、PostgreSQL-ERROR、PostgreSQL-AUDIT、BH-FILELOG、BH-COMMANDLOG、APIS-ACCESS</li></ul></li><li>instanceId<ul><li>按照【实例ID】进行过滤。</li><li>类型：String</li><li>必选：否</li></ul></li></ul>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>是否携带topic和logset的标签信息</p>
+	WithTags *bool `json:"WithTags,omitnil,omitempty" name:"WithTags"`
 }
 
 func (r *DescribeCloudProductLogTasksRequest) ToJsonString() string {
@@ -9346,6 +9358,7 @@ func (r *DescribeCloudProductLogTasksRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "Filters")
+	delete(f, "WithTags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCloudProductLogTasksRequest has unknown keys!", "")
 	}
@@ -9359,6 +9372,9 @@ type DescribeCloudProductLogTasksResponseParams struct {
 
 	// <p>日志配置总数</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>额外信息。如查询topic、logset标签信息错误</p>
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -14255,53 +14271,78 @@ type Dimension struct {
 }
 
 type DlcDeliverInfo struct {
-	// 任务id。
+	// <p>任务id。</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 账号id。
+	// <p>账号id。</p>
 	Uin *uint64 `json:"Uin,omitnil,omitempty" name:"Uin"`
 
-	// 日志主题id。
+	// <p>日志主题id。</p>
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// 任务名称。
+	// <p>任务名称。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 投递类型，0：实时投递，1：历史投递
+	// <p>投递类型，0：实时投递，1：历史投递</p>
 	DeliverType *uint64 `json:"DeliverType,omitnil,omitempty" name:"DeliverType"`
 
-	// 投递文件大小，单位MB
+	// <p>投递文件大小，单位MB</p>
 	MaxSize *uint64 `json:"MaxSize,omitnil,omitempty" name:"MaxSize"`
 
-	// 投递间隔 单位秒
+	// <p>投递间隔 单位秒</p>
 	Interval *uint64 `json:"Interval,omitnil,omitempty" name:"Interval"`
 
-	// 投递时间范围的开始时间
+	// <p>投递时间范围的开始时间</p>
 	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 投递时间范围的结束时间
+	// <p>投递时间范围的结束时间</p>
 	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// dlc配置信息
+	// <p>dlc配置信息</p>
 	DlcInfo *DlcInfo `json:"DlcInfo,omitnil,omitempty" name:"DlcInfo"`
 
-	// 是否开启投递服务日志。1关闭，2开启
+	// <p>是否开启投递服务日志。1关闭，2开启</p>
 	HasServicesLog *uint64 `json:"HasServicesLog,omitnil,omitempty" name:"HasServicesLog"`
 
-	// 任务状态。
+	// <p>任务状态。</p>
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 任务进度。历史投递任务生效。
+	// <p>任务进度。历史投递任务生效。</p>
 	Progress *uint64 `json:"Progress,omitnil,omitempty" name:"Progress"`
 
-	// 日志主题类型。0:标准主题，1:指标主题
+	// <p>日志主题类型。0:标准主题，1:指标主题</p>
 	BizType *uint64 `json:"BizType,omitnil,omitempty" name:"BizType"`
 
-	// 任务创建时间。
+	// <p>任务创建时间。</p>
 	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 任务修改时间。
+	// <p>任务修改时间。</p>
 	UpdateTime *uint64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// <p>自动创建dlc字段</p><p>默认值：false</p><p>当您的日志中有新增字段时，系统自动将其投递至DLC</p>
+	AutoCreateField *bool `json:"AutoCreateField,omitnil,omitempty" name:"AutoCreateField"`
+
+	// <p>将投递失败的日志存储至DLC表</p>
+	DlcFailHandle *DlcFailHandle `json:"DlcFailHandle,omitnil,omitempty" name:"DlcFailHandle"`
+
+	// <p>日志预过滤-数据写入 Splunk 的原始数据进行预过滤处理</p>
+	DSLFilter *string `json:"DSLFilter,omitnil,omitempty" name:"DSLFilter"`
+}
+
+type DlcFailHandle struct {
+	// <p>是否存储到DLC</p><p>默认值：false</p><p>用于控制是否开启投递失败的日志存储至DLC表</p>
+	StoreToDlc *bool `json:"StoreToDlc,omitnil,omitempty" name:"StoreToDlc"`
+
+	// <p>DLC表信息</p>
+	DlcFailTableInfo *DlcFailTableInfo `json:"DlcFailTableInfo,omitnil,omitempty" name:"DlcFailTableInfo"`
+}
+
+type DlcFailTableInfo struct {
+	// <p>DLC的表名称</p>
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// <p>表中的字段名称</p><p>字段类型必须是String类型</p>
+	FieldName *string `json:"FieldName,omitnil,omitempty" name:"FieldName"`
 }
 
 type DlcFiledInfo struct {
@@ -16474,63 +16515,45 @@ func (r *ModifyAlarmShieldResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyCloudProductLogCollectionRequestParams struct {
-	// 实例ID
+	// <p>实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 云产品标识，支持枚举：CDS、CWP、CDB、TDSQL-C、MongoDB、TDStore、DCDB、MariaDB、PostgreSQL、BH、APIS
+	// <p>云产品标识，支持枚举：CDS、CWP、CDB、TDSQL-C、MongoDB、TDStore、DCDB、MariaDB、PostgreSQL、BH、APIS</p>
 	AssumerName *string `json:"AssumerName,omitnil,omitempty" name:"AssumerName"`
 
-	// 日志类型，支持枚举：CDS-AUDIT、CDS-RISK、CDB-AUDIT、TDSQL-C-AUDIT、MongoDB-AUDIT、MongoDB-SlowLog、MongoDB-ErrorLog、TDMYSQL-SLOW、DCDB-AUDIT、DCDB-SLOW、DCDB-ERROR、MariaDB-AUDIT、MariaDB-SLOW、MariaDB-ERROR、PostgreSQL-SLOW、PostgreSQL-ERROR、PostgreSQL-AUDIT、BH-FILELOG、BH-COMMANDLOG、APIS-ACCESS
+	// <p>日志类型，支持枚举：CDS-AUDIT、CDS-RISK、CDB-AUDIT、TDSQL-C-AUDIT、MongoDB-AUDIT、MongoDB-SlowLog、MongoDB-ErrorLog、TDMYSQL-SLOW、DCDB-AUDIT、DCDB-SLOW、DCDB-ERROR、MariaDB-AUDIT、MariaDB-SLOW、MariaDB-ERROR、PostgreSQL-SLOW、PostgreSQL-ERROR、PostgreSQL-AUDIT、BH-FILELOG、BH-COMMANDLOG、APIS-ACCESS</p>
 	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
 
-	// 云产品地域。 不同日志类型(LogType)地域入參格式存在差异， 请参考如下示例：
-	// - CDS所有日志类型：ap-guangzhou
-	// - CDB-AUDIT: gz
-	// - TDSQL-C-AUDIT: gz
-	// - MongoDB-AUDIT: gz
-	// - MongoDB-SlowLog：ap-guangzhou
-	// - MongoDB-ErrorLog：ap-guangzhou
-	// - TDMYSQL-SLOW：gz
-	// - DCDB所有日志类型：gz
-	// - MariaDB所有日志类型：gz
-	// - PostgreSQL所有日志类型：gz
-	// - BH所有日志类型：overseas-polaris(中国香港地区和其他)/fsi-polaris(金融区)/general-polaris(普通区)/intl-sg-prod(国际站)
-	// - APIS所有日志类型：gz
+	// <p>云产品地域。 不同日志类型(LogType)地域入參格式存在差异， 请参考如下示例：</p><ul><li>CDS所有日志类型：ap-guangzhou</li><li>CDB-AUDIT: gz</li><li>TDSQL-C-AUDIT: gz</li><li>MongoDB-AUDIT: gz</li><li>MongoDB-SlowLog：ap-guangzhou</li><li>MongoDB-ErrorLog：ap-guangzhou</li><li>TDMYSQL-SLOW：gz</li><li>DCDB所有日志类型：gz</li><li>MariaDB所有日志类型：gz</li><li>PostgreSQL所有日志类型：gz</li><li>BH所有日志类型：overseas-polaris(中国香港地区和其他)/fsi-polaris(金融区)/general-polaris(普通区)/intl-sg-prod(国际站)</li><li>APIS所有日志类型：gz</li></ul>
 	CloudProductRegion *string `json:"CloudProductRegion,omitnil,omitempty" name:"CloudProductRegion"`
 
-	// 日志配置拓展信息， 一般用于存储额外的日志投递配置
+	// <p>日志配置拓展信息， 一般用于存储额外的日志投递配置</p>
 	Extend *string `json:"Extend,omitnil,omitempty" name:"Extend"`
+
+	// <p>标签描述列表，通过指定该参数可以同时绑定标签到相应的logset和topic。最大支持10个标签键值对，同一个资源只能绑定到同一个标签键下。</p>
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type ModifyCloudProductLogCollectionRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// <p>实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 云产品标识，支持枚举：CDS、CWP、CDB、TDSQL-C、MongoDB、TDStore、DCDB、MariaDB、PostgreSQL、BH、APIS
+	// <p>云产品标识，支持枚举：CDS、CWP、CDB、TDSQL-C、MongoDB、TDStore、DCDB、MariaDB、PostgreSQL、BH、APIS</p>
 	AssumerName *string `json:"AssumerName,omitnil,omitempty" name:"AssumerName"`
 
-	// 日志类型，支持枚举：CDS-AUDIT、CDS-RISK、CDB-AUDIT、TDSQL-C-AUDIT、MongoDB-AUDIT、MongoDB-SlowLog、MongoDB-ErrorLog、TDMYSQL-SLOW、DCDB-AUDIT、DCDB-SLOW、DCDB-ERROR、MariaDB-AUDIT、MariaDB-SLOW、MariaDB-ERROR、PostgreSQL-SLOW、PostgreSQL-ERROR、PostgreSQL-AUDIT、BH-FILELOG、BH-COMMANDLOG、APIS-ACCESS
+	// <p>日志类型，支持枚举：CDS-AUDIT、CDS-RISK、CDB-AUDIT、TDSQL-C-AUDIT、MongoDB-AUDIT、MongoDB-SlowLog、MongoDB-ErrorLog、TDMYSQL-SLOW、DCDB-AUDIT、DCDB-SLOW、DCDB-ERROR、MariaDB-AUDIT、MariaDB-SLOW、MariaDB-ERROR、PostgreSQL-SLOW、PostgreSQL-ERROR、PostgreSQL-AUDIT、BH-FILELOG、BH-COMMANDLOG、APIS-ACCESS</p>
 	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
 
-	// 云产品地域。 不同日志类型(LogType)地域入參格式存在差异， 请参考如下示例：
-	// - CDS所有日志类型：ap-guangzhou
-	// - CDB-AUDIT: gz
-	// - TDSQL-C-AUDIT: gz
-	// - MongoDB-AUDIT: gz
-	// - MongoDB-SlowLog：ap-guangzhou
-	// - MongoDB-ErrorLog：ap-guangzhou
-	// - TDMYSQL-SLOW：gz
-	// - DCDB所有日志类型：gz
-	// - MariaDB所有日志类型：gz
-	// - PostgreSQL所有日志类型：gz
-	// - BH所有日志类型：overseas-polaris(中国香港地区和其他)/fsi-polaris(金融区)/general-polaris(普通区)/intl-sg-prod(国际站)
-	// - APIS所有日志类型：gz
+	// <p>云产品地域。 不同日志类型(LogType)地域入參格式存在差异， 请参考如下示例：</p><ul><li>CDS所有日志类型：ap-guangzhou</li><li>CDB-AUDIT: gz</li><li>TDSQL-C-AUDIT: gz</li><li>MongoDB-AUDIT: gz</li><li>MongoDB-SlowLog：ap-guangzhou</li><li>MongoDB-ErrorLog：ap-guangzhou</li><li>TDMYSQL-SLOW：gz</li><li>DCDB所有日志类型：gz</li><li>MariaDB所有日志类型：gz</li><li>PostgreSQL所有日志类型：gz</li><li>BH所有日志类型：overseas-polaris(中国香港地区和其他)/fsi-polaris(金融区)/general-polaris(普通区)/intl-sg-prod(国际站)</li><li>APIS所有日志类型：gz</li></ul>
 	CloudProductRegion *string `json:"CloudProductRegion,omitnil,omitempty" name:"CloudProductRegion"`
 
-	// 日志配置拓展信息， 一般用于存储额外的日志投递配置
+	// <p>日志配置拓展信息， 一般用于存储额外的日志投递配置</p>
 	Extend *string `json:"Extend,omitnil,omitempty" name:"Extend"`
+
+	// <p>标签描述列表，通过指定该参数可以同时绑定标签到相应的logset和topic。最大支持10个标签键值对，同一个资源只能绑定到同一个标签键下。</p>
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 func (r *ModifyCloudProductLogCollectionRequest) ToJsonString() string {
@@ -16550,6 +16573,7 @@ func (r *ModifyCloudProductLogCollectionRequest) FromJsonString(s string) error 
 	delete(f, "LogType")
 	delete(f, "CloudProductRegion")
 	delete(f, "Extend")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCloudProductLogCollectionRequest has unknown keys!", "")
 	}
@@ -16558,6 +16582,9 @@ func (r *ModifyCloudProductLogCollectionRequest) FromJsonString(s string) error 
 
 // Predefined struct for user
 type ModifyCloudProductLogCollectionResponseParams struct {
+	// <p>额外信息。如修改topic、logset标签失败。</p>
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }

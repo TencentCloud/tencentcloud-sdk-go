@@ -184,6 +184,17 @@ type ConsumerClient struct {
 	ChannelProtocol *string `json:"ChannelProtocol,omitnil,omitempty" name:"ChannelProtocol"`
 }
 
+type ConsumerLabel struct {
+	// <p>标签</p>
+	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
+
+	// <p>标签状态</p><p>枚举值：</p><ul><li>ACTIVE： 生效中</li><li>DELETING： 删除中</li><li>UNKNOWN： 未知</li></ul>
+	State *string `json:"State,omitnil,omitempty" name:"State"`
+
+	// <p>更新时间</p><p>单位：毫秒(ms)</p>
+	UpdatedAt *int64 `json:"UpdatedAt,omitnil,omitempty" name:"UpdatedAt"`
+}
+
 // Predefined struct for user
 type CreateConsumerGroupRequestParams struct {
 	// 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
@@ -297,6 +308,83 @@ func (r *CreateConsumerGroupResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateConsumerGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateConsumerLabelRequestParams struct {
+	// 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>标签</p>
+	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
+
+	// <p>消费组</p>
+	Group *string `json:"Group,omitnil,omitempty" name:"Group"`
+}
+
+type CreateConsumerLabelRequest struct {
+	*tchttp.BaseRequest
+	
+	// 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>标签</p>
+	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
+
+	// <p>消费组</p>
+	Group *string `json:"Group,omitnil,omitempty" name:"Group"`
+}
+
+func (r *CreateConsumerLabelRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateConsumerLabelRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Label")
+	delete(f, "Group")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateConsumerLabelRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateConsumerLabelResponseParams struct {
+	// <p>实例 ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>消费组</p>
+	Group *string `json:"Group,omitnil,omitempty" name:"Group"`
+
+	// <p>标签</p>
+	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateConsumerLabelResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateConsumerLabelResponseParams `json:"Response"`
+}
+
+func (r *CreateConsumerLabelResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateConsumerLabelResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -882,6 +970,142 @@ func (r *DeleteConsumerGroupResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteConsumerGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteConsumerLabelRequestParams struct {
+	// 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>消费组</p>
+	Group *string `json:"Group,omitnil,omitempty" name:"Group"`
+
+	// <p>标签</p>
+	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
+}
+
+type DeleteConsumerLabelRequest struct {
+	*tchttp.BaseRequest
+	
+	// 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>消费组</p>
+	Group *string `json:"Group,omitnil,omitempty" name:"Group"`
+
+	// <p>标签</p>
+	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
+}
+
+func (r *DeleteConsumerLabelRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteConsumerLabelRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Group")
+	delete(f, "Label")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteConsumerLabelRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteConsumerLabelResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteConsumerLabelResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteConsumerLabelResponseParams `json:"Response"`
+}
+
+func (r *DeleteConsumerLabelResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteConsumerLabelResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteConsumerRouteConfigRequestParams struct {
+	// 主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
+	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
+
+	// 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>消费组</p>
+	Group *string `json:"Group,omitnil,omitempty" name:"Group"`
+}
+
+type DeleteConsumerRouteConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// 主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
+	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
+
+	// 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>消费组</p>
+	Group *string `json:"Group,omitnil,omitempty" name:"Group"`
+}
+
+func (r *DeleteConsumerRouteConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteConsumerRouteConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Topic")
+	delete(f, "InstanceId")
+	delete(f, "Group")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteConsumerRouteConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteConsumerRouteConfigResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteConsumerRouteConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteConsumerRouteConfigResponseParams `json:"Response"`
+}
+
+func (r *DeleteConsumerRouteConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteConsumerRouteConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1518,6 +1742,144 @@ func (r *DescribeConsumerGroupResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeConsumerLabelListRequestParams struct {
+	// 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>消费组</p>
+	Group *string `json:"Group,omitnil,omitempty" name:"Group"`
+}
+
+type DescribeConsumerLabelListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>消费组</p>
+	Group *string `json:"Group,omitnil,omitempty" name:"Group"`
+}
+
+func (r *DescribeConsumerLabelListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeConsumerLabelListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Group")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeConsumerLabelListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeConsumerLabelListResponseParams struct {
+	// 查询总数
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>标签列表</p>
+	Labels []*ConsumerLabel `json:"Labels,omitnil,omitempty" name:"Labels"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeConsumerLabelListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeConsumerLabelListResponseParams `json:"Response"`
+}
+
+func (r *DescribeConsumerLabelListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeConsumerLabelListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeConsumerLabelRequestParams struct {
+	// 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>消费组</p>
+	Group *string `json:"Group,omitnil,omitempty" name:"Group"`
+
+	// <p>标签</p>
+	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
+}
+
+type DescribeConsumerLabelRequest struct {
+	*tchttp.BaseRequest
+	
+	// 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>消费组</p>
+	Group *string `json:"Group,omitnil,omitempty" name:"Group"`
+
+	// <p>标签</p>
+	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
+}
+
+func (r *DescribeConsumerLabelRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeConsumerLabelRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Group")
+	delete(f, "Label")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeConsumerLabelRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeConsumerLabelResponseParams struct {
+	// <p>标签详情</p>
+	Label *ConsumerLabel `json:"Label,omitnil,omitempty" name:"Label"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeConsumerLabelResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeConsumerLabelResponseParams `json:"Response"`
+}
+
+func (r *DescribeConsumerLabelResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeConsumerLabelResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeConsumerLagRequestParams struct {
 	// 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -1592,6 +1954,157 @@ func (r *DescribeConsumerLagResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeConsumerLagResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeConsumerRouteConfigRequestParams struct {
+	// 主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
+	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
+
+	// 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>消费组</p>
+	Group *string `json:"Group,omitnil,omitempty" name:"Group"`
+}
+
+type DescribeConsumerRouteConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// 主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
+	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
+
+	// 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>消费组</p>
+	Group *string `json:"Group,omitnil,omitempty" name:"Group"`
+}
+
+func (r *DescribeConsumerRouteConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeConsumerRouteConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Topic")
+	delete(f, "InstanceId")
+	delete(f, "Group")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeConsumerRouteConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeConsumerRouteConfigResponseParams struct {
+	// <p>版本号</p>
+	Version *int64 `json:"Version,omitnil,omitempty" name:"Version"`
+
+	// <p>路由规格</p>
+	Rules []*RouteRule `json:"Rules,omitnil,omitempty" name:"Rules"`
+
+	// <p>切流时间戳</p>
+	CutTimestamp *int64 `json:"CutTimestamp,omitnil,omitempty" name:"CutTimestamp"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeConsumerRouteConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeConsumerRouteConfigResponseParams `json:"Response"`
+}
+
+func (r *DescribeConsumerRouteConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeConsumerRouteConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeConsumerRouteVersionListRequestParams struct {
+	// 主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
+	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
+
+	// 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>消费组</p>
+	Group *string `json:"Group,omitnil,omitempty" name:"Group"`
+}
+
+type DescribeConsumerRouteVersionListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
+	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
+
+	// 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>消费组</p>
+	Group *string `json:"Group,omitnil,omitempty" name:"Group"`
+}
+
+func (r *DescribeConsumerRouteVersionListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeConsumerRouteVersionListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Topic")
+	delete(f, "InstanceId")
+	delete(f, "Group")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeConsumerRouteVersionListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeConsumerRouteVersionListResponseParams struct {
+	// 查询总数
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>版本列表</p>
+	Versions []*RouteRuleVersion `json:"Versions,omitnil,omitempty" name:"Versions"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeConsumerRouteVersionListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeConsumerRouteVersionListResponseParams `json:"Response"`
+}
+
+func (r *DescribeConsumerRouteVersionListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeConsumerRouteVersionListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4670,6 +5183,93 @@ type ProductSKU struct {
 }
 
 // Predefined struct for user
+type PutConsumerRouteConfigRequestParams struct {
+	// 主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
+	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
+
+	// 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>消费组</p>
+	Group *string `json:"Group,omitnil,omitempty" name:"Group"`
+
+	// <p>路由规则</p>
+	Rules []*RouteRule `json:"Rules,omitnil,omitempty" name:"Rules"`
+}
+
+type PutConsumerRouteConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// 主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
+	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
+
+	// 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>消费组</p>
+	Group *string `json:"Group,omitnil,omitempty" name:"Group"`
+
+	// <p>路由规则</p>
+	Rules []*RouteRule `json:"Rules,omitnil,omitempty" name:"Rules"`
+}
+
+func (r *PutConsumerRouteConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PutConsumerRouteConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Topic")
+	delete(f, "InstanceId")
+	delete(f, "Group")
+	delete(f, "Rules")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PutConsumerRouteConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type PutConsumerRouteConfigResponseParams struct {
+	// <p>实例 ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>主题</p>
+	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
+
+	// <p>消费组</p>
+	Group *string `json:"Group,omitnil,omitempty" name:"Group"`
+
+	// <p>版本号</p>
+	Version *int64 `json:"Version,omitnil,omitempty" name:"Version"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type PutConsumerRouteConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *PutConsumerRouteConfigResponseParams `json:"Response"`
+}
+
+func (r *PutConsumerRouteConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PutConsumerRouteConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type RemoveMigratingTopicRequestParams struct {
 	// 任务ID，可在[DescribeSmoothMigrationTaskList](https://cloud.tencent.com/document/api/1493/119997)接口返回的[SmoothMigrationTaskItem](https://cloud.tencent.com/document/api/1493/96031#SmoothMigrationTaskItem)或控制台中获得。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
@@ -4994,6 +5594,28 @@ func (r *RollbackMigratingTopicStageResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *RollbackMigratingTopicStageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type RouteRule struct {
+	// <p>路由匹配条件</p>
+	MatchCondition *string `json:"MatchCondition,omitnil,omitempty" name:"MatchCondition"`
+
+	// <p>标签</p>
+	TargetConsumerLabel *string `json:"TargetConsumerLabel,omitnil,omitempty" name:"TargetConsumerLabel"`
+}
+
+type RouteRuleVersion struct {
+	// <p>版本号</p>
+	Version *int64 `json:"Version,omitnil,omitempty" name:"Version"`
+
+	// <p>切流时间戳</p><p>单位：毫秒（ms）</p>
+	CutTimestamp *int64 `json:"CutTimestamp,omitnil,omitempty" name:"CutTimestamp"`
+
+	// <p>更新时间戳</p><p>单位：毫秒（ms）</p>
+	UpdatedAt *int64 `json:"UpdatedAt,omitnil,omitempty" name:"UpdatedAt"`
+
+	// <p>路由规则列表</p>
+	Rules []*RouteRule `json:"Rules,omitnil,omitempty" name:"Rules"`
 }
 
 // Predefined struct for user

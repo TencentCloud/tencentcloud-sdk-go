@@ -999,12 +999,45 @@ func (r *DescribeGlossaryEntriesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeModelListRequestParams struct {
+	// <p>模型 ID 列表。最多支持 10 个，不支持重复。</p>
+	ModelIds []*string `json:"ModelIds,omitnil,omitempty" name:"ModelIds"`
 
+	// <p>模型名称列表。最多支持 10 个，不支持重复。</p>
+	ModelNames []*string `json:"ModelNames,omitnil,omitempty" name:"ModelNames"`
+
+	// <p>模型类型列表，筛选指定类型的模型。最多支持 10 个，不支持重复。取值：Text（文本）、Vision（视觉）、Multimodal（多模态）、Speech（语音）、Embedding（向量）。</p>
+	ModelTypes []*string `json:"ModelTypes,omitnil,omitempty" name:"ModelTypes"`
+
+	// <p>模型标签</p>
+	Tags []*string `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>返回数量，默认为 20，最大值为 100。</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>偏移量，默认为 0。</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 type DescribeModelListRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>模型 ID 列表。最多支持 10 个，不支持重复。</p>
+	ModelIds []*string `json:"ModelIds,omitnil,omitempty" name:"ModelIds"`
+
+	// <p>模型名称列表。最多支持 10 个，不支持重复。</p>
+	ModelNames []*string `json:"ModelNames,omitnil,omitempty" name:"ModelNames"`
+
+	// <p>模型类型列表，筛选指定类型的模型。最多支持 10 个，不支持重复。取值：Text（文本）、Vision（视觉）、Multimodal（多模态）、Speech（语音）、Embedding（向量）。</p>
+	ModelTypes []*string `json:"ModelTypes,omitnil,omitempty" name:"ModelTypes"`
+
+	// <p>模型标签</p>
+	Tags []*string `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>返回数量，默认为 20，最大值为 100。</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>偏移量，默认为 0。</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 func (r *DescribeModelListRequest) ToJsonString() string {
@@ -1019,7 +1052,12 @@ func (r *DescribeModelListRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "ModelIds")
+	delete(f, "ModelNames")
+	delete(f, "ModelTypes")
+	delete(f, "Tags")
+	delete(f, "Limit")
+	delete(f, "Offset")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeModelListRequest has unknown keys!", "")
 	}

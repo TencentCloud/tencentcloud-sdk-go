@@ -5725,58 +5725,6 @@ func (c *Client) RepairPGUserMigrationHistoryWithContext(ctx context.Context, re
     return
 }
 
-func NewRollbackPGUserMigrationsRequest() (request *RollbackPGUserMigrationsRequest) {
-    request = &RollbackPGUserMigrationsRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("tcb", APIVersion, "RollbackPGUserMigrations")
-    
-    
-    return
-}
-
-func NewRollbackPGUserMigrationsResponse() (response *RollbackPGUserMigrationsResponse) {
-    response = &RollbackPGUserMigrationsResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// RollbackPGUserMigrations
-// 本接口（RollbackPGUserMigrations）用于按最近 N 条已应用 migration 倒序执行 rollback。
-//
-// 可能返回的错误码:
-//  INTERNALERROR_SYS_ERR = "InternalError.SYS_ERR"
-//  INVALIDPARAMETER_INVALID_PARAM = "InvalidParameter.INVALID_PARAM"
-func (c *Client) RollbackPGUserMigrations(request *RollbackPGUserMigrationsRequest) (response *RollbackPGUserMigrationsResponse, err error) {
-    return c.RollbackPGUserMigrationsWithContext(context.Background(), request)
-}
-
-// RollbackPGUserMigrations
-// 本接口（RollbackPGUserMigrations）用于按最近 N 条已应用 migration 倒序执行 rollback。
-//
-// 可能返回的错误码:
-//  INTERNALERROR_SYS_ERR = "InternalError.SYS_ERR"
-//  INVALIDPARAMETER_INVALID_PARAM = "InvalidParameter.INVALID_PARAM"
-func (c *Client) RollbackPGUserMigrationsWithContext(ctx context.Context, request *RollbackPGUserMigrationsRequest) (response *RollbackPGUserMigrationsResponse, err error) {
-    if request == nil {
-        request = NewRollbackPGUserMigrationsRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "RollbackPGUserMigrations")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("RollbackPGUserMigrations require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewRollbackPGUserMigrationsResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewRunCommandsRequest() (request *RunCommandsRequest) {
     request = &RunCommandsRequest{
         BaseRequest: &tchttp.BaseRequest{},
