@@ -1488,6 +1488,12 @@ type SubmitTextureTo3DJobRequestParams struct {
 
 	// <p>是否开启 PBR材质生成，默认 false。</p>
 	EnablePBR *bool `json:"EnablePBR,omitnil,omitempty" name:"EnablePBR"`
+
+	// <p>是否保持模型UV，开启后模型布线纹理均不改变，UV布线不跟纹理进行改变，默认false</p>
+	EnableKeepUV *bool `json:"EnableKeepUV,omitnil,omitempty" name:"EnableKeepUV"`
+
+	// <p>仅支持正方形贴图，分辨率区间为720～4096，默认为4096</p>
+	TextureSize *int64 `json:"TextureSize,omitnil,omitempty" name:"TextureSize"`
 }
 
 type SubmitTextureTo3DJobRequest struct {
@@ -1510,6 +1516,12 @@ type SubmitTextureTo3DJobRequest struct {
 
 	// <p>是否开启 PBR材质生成，默认 false。</p>
 	EnablePBR *bool `json:"EnablePBR,omitnil,omitempty" name:"EnablePBR"`
+
+	// <p>是否保持模型UV，开启后模型布线纹理均不改变，UV布线不跟纹理进行改变，默认false</p>
+	EnableKeepUV *bool `json:"EnableKeepUV,omitnil,omitempty" name:"EnableKeepUV"`
+
+	// <p>仅支持正方形贴图，分辨率区间为720～4096，默认为4096</p>
+	TextureSize *int64 `json:"TextureSize,omitnil,omitempty" name:"TextureSize"`
 }
 
 func (r *SubmitTextureTo3DJobRequest) ToJsonString() string {
@@ -1530,6 +1542,8 @@ func (r *SubmitTextureTo3DJobRequest) FromJsonString(s string) error {
 	delete(f, "Prompt")
 	delete(f, "Image")
 	delete(f, "EnablePBR")
+	delete(f, "EnableKeepUV")
+	delete(f, "TextureSize")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitTextureTo3DJobRequest has unknown keys!", "")
 	}

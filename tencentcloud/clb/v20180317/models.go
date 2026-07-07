@@ -21,6 +21,138 @@ import (
 )
 
 // Predefined struct for user
+type AddModelKeyRequestParams struct {
+	// <p>服务提供商ID</p>
+	ServiceProviderId *string `json:"ServiceProviderId,omitnil,omitempty" name:"ServiceProviderId"`
+
+	// <p>Key 列表，至少 1 个，最多 10 个</p>
+	Keys []*KeyItem `json:"Keys,omitnil,omitempty" name:"Keys"`
+}
+
+type AddModelKeyRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>服务提供商ID</p>
+	ServiceProviderId *string `json:"ServiceProviderId,omitnil,omitempty" name:"ServiceProviderId"`
+
+	// <p>Key 列表，至少 1 个，最多 10 个</p>
+	Keys []*KeyItem `json:"Keys,omitnil,omitempty" name:"Keys"`
+}
+
+func (r *AddModelKeyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddModelKeyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ServiceProviderId")
+	delete(f, "Keys")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddModelKeyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AddModelKeyResponseParams struct {
+	// <p>生成的 Key ID 列表</p>
+	KeyIds []*string `json:"KeyIds,omitnil,omitempty" name:"KeyIds"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type AddModelKeyResponse struct {
+	*tchttp.BaseResponse
+	Response *AddModelKeyResponseParams `json:"Response"`
+}
+
+func (r *AddModelKeyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddModelKeyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AddModelRewriteRequestParams struct {
+	// <p>模型路由实例 ID。</p>
+	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
+
+	// <p>源模型名（重写规则的 key）。</p><p>长度 1-255 字符；支持特殊值 <code>default</code> 表示兜底规则（命中所有未显式列出的源模型）。</p><p>不允许使用 <code>IntentRouter/</code> 前缀（大小写不敏感），即 IntentRouter 不能作为 source。</p>
+	SourceModel *string `json:"SourceModel,omitnil,omitempty" name:"SourceModel"`
+
+	// <p>目标模型名（重写规则的 value）。</p><p>长度 1-255 字符；必须是已关联到该模型路由实例的模型（含 IntentRouter/* 也需先通过 AssociateModels 关联）。</p><p>不允许使用 <code>default</code>；不允许与 SourceModel 相同（大小写不敏感）。</p>
+	TargetModel *string `json:"TargetModel,omitnil,omitempty" name:"TargetModel"`
+}
+
+type AddModelRewriteRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>模型路由实例 ID。</p>
+	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
+
+	// <p>源模型名（重写规则的 key）。</p><p>长度 1-255 字符；支持特殊值 <code>default</code> 表示兜底规则（命中所有未显式列出的源模型）。</p><p>不允许使用 <code>IntentRouter/</code> 前缀（大小写不敏感），即 IntentRouter 不能作为 source。</p>
+	SourceModel *string `json:"SourceModel,omitnil,omitempty" name:"SourceModel"`
+
+	// <p>目标模型名（重写规则的 value）。</p><p>长度 1-255 字符；必须是已关联到该模型路由实例的模型（含 IntentRouter/* 也需先通过 AssociateModels 关联）。</p><p>不允许使用 <code>default</code>；不允许与 SourceModel 相同（大小写不敏感）。</p>
+	TargetModel *string `json:"TargetModel,omitnil,omitempty" name:"TargetModel"`
+}
+
+func (r *AddModelRewriteRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddModelRewriteRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ModelRouterId")
+	delete(f, "SourceModel")
+	delete(f, "TargetModel")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddModelRewriteRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AddModelRewriteResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type AddModelRewriteResponse struct {
+	*tchttp.BaseResponse
+	Response *AddModelRewriteResponseParams `json:"Response"`
+}
+
+func (r *AddModelRewriteResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddModelRewriteResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type AssociateBudgetRequestParams struct {
 	// <p>Budget ID。</p>
 	BudgetId *string `json:"BudgetId,omitnil,omitempty" name:"BudgetId"`
@@ -142,6 +274,142 @@ func (r *AssociateCustomizedConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type AssociateGuardrailConfig struct {
+	// <p>Guardrail 防护类型。</p><p>枚举值：</p><ul><li>WAF：使用腾讯云 WAF LLM SDK 接入配置对模型路由请求进行安全防护。</li></ul><p>当前仅支持 WAF；不传时默认为 WAF。</p>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>关联的腾讯云 WAF 实例 ID。</p><p>当 Type 为 WAF 时必填。接口会校验该 WAF 实例存在且属于当前账号。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>WAF LLM SDK 接入服务 ID。</p><p>该字段对应 WAF LLM SDK 接入配置中的服务标识，用于指定模型路由请求要绑定的 WAF 防护配置。当 Type 为 WAF 时必填。接口会校验该服务配置存在于指定的 WAF 实例下。</p>
+	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+
+	// <p>最大检测对话轮数。</p><p>当 Type 为 WAF 时选填；未传时默认取值为 5。若传入，取值必须为正整数。</p>
+	InputCheckDepth *uint64 `json:"InputCheckDepth,omitnil,omitempty" name:"InputCheckDepth"`
+}
+
+// Predefined struct for user
+type AssociateModelRouterGuardrailsRequestParams struct {
+	// <p>待关联的 Guardrail 防护配置列表。</p><p>当前最多支持 1 个元素。每个元素必须填写 InstanceId、ServiceId；Type 和 InputCheckDepth 为选填，不传时分别使用默认值 WAF 和 5。本结构不包含 GuardrailId，关联成功后由系统生成。</p>
+	Guardrails []*AssociateGuardrailConfig `json:"Guardrails,omitnil,omitempty" name:"Guardrails"`
+
+	// <p>模型路由实例 ID。</p>
+	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
+}
+
+type AssociateModelRouterGuardrailsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>待关联的 Guardrail 防护配置列表。</p><p>当前最多支持 1 个元素。每个元素必须填写 InstanceId、ServiceId；Type 和 InputCheckDepth 为选填，不传时分别使用默认值 WAF 和 5。本结构不包含 GuardrailId，关联成功后由系统生成。</p>
+	Guardrails []*AssociateGuardrailConfig `json:"Guardrails,omitnil,omitempty" name:"Guardrails"`
+
+	// <p>模型路由实例 ID。</p>
+	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
+}
+
+func (r *AssociateModelRouterGuardrailsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AssociateModelRouterGuardrailsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Guardrails")
+	delete(f, "ModelRouterId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AssociateModelRouterGuardrailsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AssociateModelRouterGuardrailsResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type AssociateModelRouterGuardrailsResponse struct {
+	*tchttp.BaseResponse
+	Response *AssociateModelRouterGuardrailsResponseParams `json:"Response"`
+}
+
+func (r *AssociateModelRouterGuardrailsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AssociateModelRouterGuardrailsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AssociateModelsToModelRouterRequestParams struct {
+	// <p>模型路由实例ID</p>
+	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
+
+	// <p>需要关联的模型信息</p>
+	Models []*ModelRouterModel `json:"Models,omitnil,omitempty" name:"Models"`
+}
+
+type AssociateModelsToModelRouterRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>模型路由实例ID</p>
+	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
+
+	// <p>需要关联的模型信息</p>
+	Models []*ModelRouterModel `json:"Models,omitnil,omitempty" name:"Models"`
+}
+
+func (r *AssociateModelsToModelRouterRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AssociateModelsToModelRouterRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ModelRouterId")
+	delete(f, "Models")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AssociateModelsToModelRouterRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AssociateModelsToModelRouterResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type AssociateModelsToModelRouterResponse struct {
+	*tchttp.BaseResponse
+	Response *AssociateModelsToModelRouterResponseParams `json:"Response"`
+}
+
+func (r *AssociateModelsToModelRouterResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AssociateModelsToModelRouterResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 // Predefined struct for user
 type AssociateTargetGroupsRequestParams struct {
 	// 绑定的关系数组，目标组类型需要一致。
@@ -196,6 +464,11 @@ func (r *AssociateTargetGroupsResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *AssociateTargetGroupsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type AssociatedModelRouterItem struct {
+	// <p>模型路由实例ID</p>
+	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
 }
 
 type AssociationItem struct {
@@ -730,11 +1003,17 @@ type BudgetAssociation struct {
 	// <p>模型路由实例ID。</p><p>当Type为ModelRouter时表示关联资源本身；当Type为Key时表示Key所属实例。</p>
 	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
 
-	// <p>关联资源类型。</p><p>枚举值：</p><ul><li>ModelRouter：模型路由实例</li><li>Key：模型路由Key</li></ul>
-	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+	// <p>资源对象的名称。</p>
+	ResourceName *string `json:"ResourceName,omitnil,omitempty" name:"ResourceName"`
 
 	// <p>关联关系的状态</p><p>枚举值：</p><ul><li>Active： 已生效</li><li>Configuring： 配置中</li><li>ConfigureFailed： 配置失败</li></ul>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>关联资源类型。</p><p>枚举值：</p><ul><li>ModelRouter：模型路由实例</li><li>Key：模型路由Key</li><li>UserGroup：用户组</li></ul>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>关联的用户组id</p>
+	UserGroupId *string `json:"UserGroupId,omitnil,omitempty" name:"UserGroupId"`
 }
 
 type BudgetConfig struct {
@@ -871,6 +1150,101 @@ type CertificateOutput struct {
 
 	// 多本服务器证书场景扩展的服务器证书ID。
 	ExtCertIds []*string `json:"ExtCertIds,omitnil,omitempty" name:"ExtCertIds"`
+}
+
+// Predefined struct for user
+type ChatCompletionsRequestParams struct {
+	// <p>virtual key，用于向代理网关鉴权</p>
+	ApiKey *string `json:"ApiKey,omitnil,omitempty" name:"ApiKey"`
+
+	// <p>多模态附件列表</p>
+	Attachments []*MultiModalityAttachments `json:"Attachments,omitnil,omitempty" name:"Attachments"`
+
+	// <p>聊天内容</p>
+	ChatContent *string `json:"ChatContent,omitnil,omitempty" name:"ChatContent"`
+
+	// <p>模型名称，配置的模型标识</p><p>示例：gpt-4o、deepseek-chat</p>
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+
+	// <p>模型路由实例ID</p>
+	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
+
+	// <p>请求路径</p><p>默认值：/v1/chat/completions</p>
+	RequestPath *string `json:"RequestPath,omitnil,omitempty" name:"RequestPath"`
+}
+
+type ChatCompletionsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>virtual key，用于向代理网关鉴权</p>
+	ApiKey *string `json:"ApiKey,omitnil,omitempty" name:"ApiKey"`
+
+	// <p>多模态附件列表</p>
+	Attachments []*MultiModalityAttachments `json:"Attachments,omitnil,omitempty" name:"Attachments"`
+
+	// <p>聊天内容</p>
+	ChatContent *string `json:"ChatContent,omitnil,omitempty" name:"ChatContent"`
+
+	// <p>模型名称，配置的模型标识</p><p>示例：gpt-4o、deepseek-chat</p>
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+
+	// <p>模型路由实例ID</p>
+	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
+
+	// <p>请求路径</p><p>默认值：/v1/chat/completions</p>
+	RequestPath *string `json:"RequestPath,omitnil,omitempty" name:"RequestPath"`
+}
+
+func (r *ChatCompletionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChatCompletionsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ApiKey")
+	delete(f, "Attachments")
+	delete(f, "ChatContent")
+	delete(f, "Model")
+	delete(f, "ModelRouterId")
+	delete(f, "RequestPath")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChatCompletionsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ChatCompletionsResponseParams struct {
+	// <p>聊天的返回信息</p>
+	ChatResponseMessage *string `json:"ChatResponseMessage,omitnil,omitempty" name:"ChatResponseMessage"`
+
+	// <p>聊天请求发送过程中的失败信息</p>
+	ErrorInChat *string `json:"ErrorInChat,omitnil,omitempty" name:"ErrorInChat"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ChatCompletionsResponse struct {
+	*tchttp.BaseResponse
+	Response *ChatCompletionsResponseParams `json:"Response"`
+}
+
+func (r *ChatCompletionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChatCompletionsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ClassicalHealth struct {
@@ -1321,6 +1695,17 @@ type ClustersZone struct {
 	SlaveZone []*string `json:"SlaveZone,omitnil,omitempty" name:"SlaveZone"`
 }
 
+type Coefficient struct {
+	// <p>缓存命中输入积分系数。</p><p>用于 provider prompt cache 命中的输入 token。</p><p>取值范围：[0, 5000]</p><p>默认值：3</p>
+	InputCachedCoefficient *float64 `json:"InputCachedCoefficient,omitnil,omitempty" name:"InputCachedCoefficient"`
+
+	// <p>输入积分系数。</p><p>取值范围：[1, 5000]</p><p>默认值：25</p>
+	InputCoefficient *float64 `json:"InputCoefficient,omitnil,omitempty" name:"InputCoefficient"`
+
+	// <p>输出积分系数。</p><p>取值范围：[1, 5000]</p><p>默认值：100</p>
+	OutputCoefficient *float64 `json:"OutputCoefficient,omitnil,omitempty" name:"OutputCoefficient"`
+}
+
 type ConfigListItem struct {
 	// 配置ID
 	UconfigId *string `json:"UconfigId,omitnil,omitempty" name:"UconfigId"`
@@ -1344,11 +1729,86 @@ type ConfigListItem struct {
 }
 
 // Predefined struct for user
+type CreateBYOKNetworkRequestParams struct {
+	// <p>子网 ID</p><p>参数格式：subnet-xxxxxxxx</p>
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// <p>VPC 实例 ID</p><p>参数格式：vpc-xxxxxxxx</p>
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// <p>BYOK 的自定义名字</p><p>入参限制：1～256个字符，可选</p>
+	ServiceProviderName *string `json:"ServiceProviderName,omitnil,omitempty" name:"ServiceProviderName"`
+
+	// <p>标签</p>
+	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
+type CreateBYOKNetworkRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>子网 ID</p><p>参数格式：subnet-xxxxxxxx</p>
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// <p>VPC 实例 ID</p><p>参数格式：vpc-xxxxxxxx</p>
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// <p>BYOK 的自定义名字</p><p>入参限制：1～256个字符，可选</p>
+	ServiceProviderName *string `json:"ServiceProviderName,omitnil,omitempty" name:"ServiceProviderName"`
+
+	// <p>标签</p>
+	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
+func (r *CreateBYOKNetworkRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBYOKNetworkRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SubnetId")
+	delete(f, "VpcId")
+	delete(f, "ServiceProviderName")
+	delete(f, "Tags")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBYOKNetworkRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateBYOKNetworkResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateBYOKNetworkResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateBYOKNetworkResponseParams `json:"Response"`
+}
+
+func (r *CreateBYOKNetworkResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBYOKNetworkResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateBudgetRequestParams struct {
-	// <p>预算配置数组。</p><p>数组长度最大为1。BudgetResetAt不支持作为入参设置。</p>
+	// <p>预算配置数组。</p><p>数组长度最大为3，最多可同时配置1d、7d、30d三个刷新周期，且每种刷新周期只能出现一次。BudgetResetAt不支持作为入参设置，系统会按配置的刷新周期自动维护刷新时间。</p>
 	BudgetConfigs []*BudgetConfigInput `json:"BudgetConfigs,omitnil,omitempty" name:"BudgetConfigs"`
 
-	// <p>Budget名称。</p><p>不传默认为空字符串。</p>
+	// <p>Budget名称。</p><p>不传默认为 '-'。</p>
 	BudgetName *string `json:"BudgetName,omitnil,omitempty" name:"BudgetName"`
 
 	// <p>Budget限速配置。</p>
@@ -1361,10 +1821,10 @@ type CreateBudgetRequestParams struct {
 type CreateBudgetRequest struct {
 	*tchttp.BaseRequest
 	
-	// <p>预算配置数组。</p><p>数组长度最大为1。BudgetResetAt不支持作为入参设置。</p>
+	// <p>预算配置数组。</p><p>数组长度最大为3，最多可同时配置1d、7d、30d三个刷新周期，且每种刷新周期只能出现一次。BudgetResetAt不支持作为入参设置，系统会按配置的刷新周期自动维护刷新时间。</p>
 	BudgetConfigs []*BudgetConfigInput `json:"BudgetConfigs,omitnil,omitempty" name:"BudgetConfigs"`
 
-	// <p>Budget名称。</p><p>不传默认为空字符串。</p>
+	// <p>Budget名称。</p><p>不传默认为 '-'。</p>
 	BudgetName *string `json:"BudgetName,omitnil,omitempty" name:"BudgetName"`
 
 	// <p>Budget限速配置。</p>
@@ -1491,6 +1951,84 @@ func (r *CreateClsLogSetResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateClsLogSetResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateIntentRouterRequestParams struct {
+	// <p>模型路由实例ID。</p>
+	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
+
+	// <p>路由名称，用作LiteLLM的model_name。</p><p>必须以"IntentRouter/"为前缀，后缀仅支持字母、数字、连字符和下划线，后缀长度1-128个字符。</p>
+	RouteName *string `json:"RouteName,omitnil,omitempty" name:"RouteName"`
+
+	// <p>Tier配置列表。</p><p>每个Tier至少包含一个模型，模型名称必须是已关联到该实例的模型。</p>
+	Tiers []*TierItem `json:"Tiers,omitnil,omitempty" name:"Tiers"`
+
+	// <p>意图路由描述。</p>
+	RouterDescribe *string `json:"RouterDescribe,omitnil,omitempty" name:"RouterDescribe"`
+}
+
+type CreateIntentRouterRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>模型路由实例ID。</p>
+	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
+
+	// <p>路由名称，用作LiteLLM的model_name。</p><p>必须以"IntentRouter/"为前缀，后缀仅支持字母、数字、连字符和下划线，后缀长度1-128个字符。</p>
+	RouteName *string `json:"RouteName,omitnil,omitempty" name:"RouteName"`
+
+	// <p>Tier配置列表。</p><p>每个Tier至少包含一个模型，模型名称必须是已关联到该实例的模型。</p>
+	Tiers []*TierItem `json:"Tiers,omitnil,omitempty" name:"Tiers"`
+
+	// <p>意图路由描述。</p>
+	RouterDescribe *string `json:"RouterDescribe,omitnil,omitempty" name:"RouterDescribe"`
+}
+
+func (r *CreateIntentRouterRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateIntentRouterRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ModelRouterId")
+	delete(f, "RouteName")
+	delete(f, "Tiers")
+	delete(f, "RouterDescribe")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateIntentRouterRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateIntentRouterResponseParams struct {
+	// <p>创建的意图路由ID（ir-xxx格式）。</p>
+	IntentRouterId *string `json:"IntentRouterId,omitnil,omitempty" name:"IntentRouterId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateIntentRouterResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateIntentRouterResponseParams `json:"Response"`
+}
+
+func (r *CreateIntentRouterResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateIntentRouterResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2289,33 +2827,171 @@ func (r *CreateLoadBalancerSnatIpsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateModelRequestParams struct {
+	// <p>接入类型：PublicBYOK/PublicCustom/PrivateCustom</p>
+	AccessType *string `json:"AccessType,omitnil,omitempty" name:"AccessType"`
+
+	// <p>模型提供商</p>
+	ModelProvider *string `json:"ModelProvider,omitnil,omitempty" name:"ModelProvider"`
+
+	// <p>通用模型标识列表</p>
+	ModelIds []*ModelItem `json:"ModelIds,omitnil,omitempty" name:"ModelIds"`
+
+	// <p>Key 列表</p>
+	Keys []*KeyItem `json:"Keys,omitnil,omitempty" name:"Keys"`
+
+	// <p>BYOK ID(在自定义模型时在部署网络后必须填写)</p>
+	ServiceProviderId *string `json:"ServiceProviderId,omitnil,omitempty" name:"ServiceProviderId"`
+
+	// <p>服务供应商(创建BYOK自定义名称)。</p>
+	ServiceProviderName *string `json:"ServiceProviderName,omitnil,omitempty" name:"ServiceProviderName"`
+
+	// <p>模型协议</p>
+	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
+
+	// <p>API Base URL</p>
+	ApiBase *string `json:"ApiBase,omitnil,omitempty" name:"ApiBase"`
+
+	// <p>VPC ID</p>
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// <p>子网 ID</p>
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// <p>转发请求时添加的Host请求头</p>
+	HostHeader *string `json:"HostHeader,omitnil,omitempty" name:"HostHeader"`
+
+	// <p>标签信息</p>
+	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>是否校验服务提供商的SSL证书</p>
+	VerifySSL *bool `json:"VerifySSL,omitnil,omitempty" name:"VerifySSL"`
+}
+
+type CreateModelRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>接入类型：PublicBYOK/PublicCustom/PrivateCustom</p>
+	AccessType *string `json:"AccessType,omitnil,omitempty" name:"AccessType"`
+
+	// <p>模型提供商</p>
+	ModelProvider *string `json:"ModelProvider,omitnil,omitempty" name:"ModelProvider"`
+
+	// <p>通用模型标识列表</p>
+	ModelIds []*ModelItem `json:"ModelIds,omitnil,omitempty" name:"ModelIds"`
+
+	// <p>Key 列表</p>
+	Keys []*KeyItem `json:"Keys,omitnil,omitempty" name:"Keys"`
+
+	// <p>BYOK ID(在自定义模型时在部署网络后必须填写)</p>
+	ServiceProviderId *string `json:"ServiceProviderId,omitnil,omitempty" name:"ServiceProviderId"`
+
+	// <p>服务供应商(创建BYOK自定义名称)。</p>
+	ServiceProviderName *string `json:"ServiceProviderName,omitnil,omitempty" name:"ServiceProviderName"`
+
+	// <p>模型协议</p>
+	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
+
+	// <p>API Base URL</p>
+	ApiBase *string `json:"ApiBase,omitnil,omitempty" name:"ApiBase"`
+
+	// <p>VPC ID</p>
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// <p>子网 ID</p>
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// <p>转发请求时添加的Host请求头</p>
+	HostHeader *string `json:"HostHeader,omitnil,omitempty" name:"HostHeader"`
+
+	// <p>标签信息</p>
+	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>是否校验服务提供商的SSL证书</p>
+	VerifySSL *bool `json:"VerifySSL,omitnil,omitempty" name:"VerifySSL"`
+}
+
+func (r *CreateModelRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateModelRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AccessType")
+	delete(f, "ModelProvider")
+	delete(f, "ModelIds")
+	delete(f, "Keys")
+	delete(f, "ServiceProviderId")
+	delete(f, "ServiceProviderName")
+	delete(f, "Protocol")
+	delete(f, "ApiBase")
+	delete(f, "VpcId")
+	delete(f, "SubnetId")
+	delete(f, "HostHeader")
+	delete(f, "Tags")
+	delete(f, "VerifySSL")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateModelRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateModelResponseParams struct {
+	// <p>服务供应商ID</p>
+	ServiceProviderId *string `json:"ServiceProviderId,omitnil,omitempty" name:"ServiceProviderId"`
+
+	// <p>生成的 Key ID 列表</p>
+	KeyIds []*string `json:"KeyIds,omitnil,omitempty" name:"KeyIds"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateModelResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateModelResponseParams `json:"Response"`
+}
+
+func (r *CreateModelResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateModelResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateModelRouterRequestParams struct {
 	// <p>模型路由类型</p><p>枚举值：</p><ul><li>Shared： 共享型</li><li>Enterprise： 企业级</li></ul>
 	ModelRouterType *string `json:"ModelRouterType,omitnil,omitempty" name:"ModelRouterType"`
 
+	// <p>关联的积分预算ID</p>
+	BudgetId *string `json:"BudgetId,omitnil,omitempty" name:"BudgetId"`
+
+	// <p>证书ID</p><p>入参限制：当Schema为HTTPS时，该参数必传</p>
+	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
+
+	// <p>集群信息</p>
+	ClusterInfo *ClusterInfo `json:"ClusterInfo,omitnil,omitempty" name:"ClusterInfo"`
+
 	// <p>模型路由实例名称</p><p>默认值：-</p>
 	ModelRouterName *string `json:"ModelRouterName,omitnil,omitempty" name:"ModelRouterName"`
-
-	// <p>模型路由实例的网络协议</p><p>枚举值：</p><ul><li>HTTP： HTTP协议</li><li>HTTPS： HTTPS协议</li></ul>
-	Schema *string `json:"Schema,omitnil,omitempty" name:"Schema"`
-
-	// <p>模型路由的监听端口</p><p>取值范围：[1, 65535]</p>
-	Port *uint64 `json:"Port,omitnil,omitempty" name:"Port"`
-
-	// <p>证书ID</p><p>入参限制：当Scheme为HTTPS时，该参数必传</p>
-	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
 
 	// <p>网络类型</p><p>枚举值：</p><ul><li>Internet： 公网</li><li>Intranet： 内网</li></ul>
 	NetworkType *string `json:"NetworkType,omitnil,omitempty" name:"NetworkType"`
 
-	// <p>模型路由实例所属VPC的ID</p>
-	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
-
-	// <p>模型路由实例所属子网的ID</p>
-	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
-
-	// <p>关联的积分预算ID</p>
-	BudgetId *string `json:"BudgetId,omitnil,omitempty" name:"BudgetId"`
+	// <p>模型路由的监听端口</p><p>取值范围：[1, 65535]</p>
+	Port *uint64 `json:"Port,omitnil,omitempty" name:"Port"`
 
 	// <p>限速配置</p>
 	RateLimitConfig *RateLimitConfigForModelRouter `json:"RateLimitConfig,omitnil,omitempty" name:"RateLimitConfig"`
@@ -2323,11 +2999,17 @@ type CreateModelRouterRequestParams struct {
 	// <p>路由配置</p>
 	RouterSetting *RouterSettingWithoutFallBack `json:"RouterSetting,omitnil,omitempty" name:"RouterSetting"`
 
+	// <p>模型路由实例的网络协议</p><p>枚举值：</p><ul><li>HTTP： HTTP协议</li><li>HTTPS： HTTPS协议</li></ul>
+	Schema *string `json:"Schema,omitnil,omitempty" name:"Schema"`
+
+	// <p>模型路由实例所属子网的ID</p>
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
 	// <p>标签</p>
 	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// <p>集群信息</p>
-	ClusterInfo *ClusterInfo `json:"ClusterInfo,omitnil,omitempty" name:"ClusterInfo"`
+	// <p>模型路由实例所属VPC的ID</p>
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 }
 
 type CreateModelRouterRequest struct {
@@ -2336,29 +3018,23 @@ type CreateModelRouterRequest struct {
 	// <p>模型路由类型</p><p>枚举值：</p><ul><li>Shared： 共享型</li><li>Enterprise： 企业级</li></ul>
 	ModelRouterType *string `json:"ModelRouterType,omitnil,omitempty" name:"ModelRouterType"`
 
+	// <p>关联的积分预算ID</p>
+	BudgetId *string `json:"BudgetId,omitnil,omitempty" name:"BudgetId"`
+
+	// <p>证书ID</p><p>入参限制：当Schema为HTTPS时，该参数必传</p>
+	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
+
+	// <p>集群信息</p>
+	ClusterInfo *ClusterInfo `json:"ClusterInfo,omitnil,omitempty" name:"ClusterInfo"`
+
 	// <p>模型路由实例名称</p><p>默认值：-</p>
 	ModelRouterName *string `json:"ModelRouterName,omitnil,omitempty" name:"ModelRouterName"`
-
-	// <p>模型路由实例的网络协议</p><p>枚举值：</p><ul><li>HTTP： HTTP协议</li><li>HTTPS： HTTPS协议</li></ul>
-	Schema *string `json:"Schema,omitnil,omitempty" name:"Schema"`
-
-	// <p>模型路由的监听端口</p><p>取值范围：[1, 65535]</p>
-	Port *uint64 `json:"Port,omitnil,omitempty" name:"Port"`
-
-	// <p>证书ID</p><p>入参限制：当Scheme为HTTPS时，该参数必传</p>
-	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
 
 	// <p>网络类型</p><p>枚举值：</p><ul><li>Internet： 公网</li><li>Intranet： 内网</li></ul>
 	NetworkType *string `json:"NetworkType,omitnil,omitempty" name:"NetworkType"`
 
-	// <p>模型路由实例所属VPC的ID</p>
-	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
-
-	// <p>模型路由实例所属子网的ID</p>
-	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
-
-	// <p>关联的积分预算ID</p>
-	BudgetId *string `json:"BudgetId,omitnil,omitempty" name:"BudgetId"`
+	// <p>模型路由的监听端口</p><p>取值范围：[1, 65535]</p>
+	Port *uint64 `json:"Port,omitnil,omitempty" name:"Port"`
 
 	// <p>限速配置</p>
 	RateLimitConfig *RateLimitConfigForModelRouter `json:"RateLimitConfig,omitnil,omitempty" name:"RateLimitConfig"`
@@ -2366,11 +3042,17 @@ type CreateModelRouterRequest struct {
 	// <p>路由配置</p>
 	RouterSetting *RouterSettingWithoutFallBack `json:"RouterSetting,omitnil,omitempty" name:"RouterSetting"`
 
+	// <p>模型路由实例的网络协议</p><p>枚举值：</p><ul><li>HTTP： HTTP协议</li><li>HTTPS： HTTPS协议</li></ul>
+	Schema *string `json:"Schema,omitnil,omitempty" name:"Schema"`
+
+	// <p>模型路由实例所属子网的ID</p>
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
 	// <p>标签</p>
 	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// <p>集群信息</p>
-	ClusterInfo *ClusterInfo `json:"ClusterInfo,omitnil,omitempty" name:"ClusterInfo"`
+	// <p>模型路由实例所属VPC的ID</p>
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 }
 
 func (r *CreateModelRouterRequest) ToJsonString() string {
@@ -2386,21 +3068,95 @@ func (r *CreateModelRouterRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "ModelRouterType")
-	delete(f, "ModelRouterName")
-	delete(f, "Schema")
-	delete(f, "Port")
-	delete(f, "CertId")
-	delete(f, "NetworkType")
-	delete(f, "VpcId")
-	delete(f, "SubnetId")
 	delete(f, "BudgetId")
+	delete(f, "CertId")
+	delete(f, "ClusterInfo")
+	delete(f, "ModelRouterName")
+	delete(f, "NetworkType")
+	delete(f, "Port")
 	delete(f, "RateLimitConfig")
 	delete(f, "RouterSetting")
+	delete(f, "Schema")
+	delete(f, "SubnetId")
 	delete(f, "Tags")
-	delete(f, "ClusterInfo")
+	delete(f, "VpcId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateModelRouterRequest has unknown keys!", "")
 	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateModelRouterResourcePackageRequestParams struct {
+	// <p>模型路由资源包容量</p><p>取值范围：[1000, 10000000]</p><p>单次购买的模型路由资源包容量下限为1000，上限为10000000</p>
+	ModelRouterResourcePackageAmount *uint64 `json:"ModelRouterResourcePackageAmount,omitnil,omitempty" name:"ModelRouterResourcePackageAmount"`
+
+	// <p>是否自动续订。</p><p>0:不自动续订, 1:用尽到期续订</p>
+	AutoPurchaseFlag *uint64 `json:"AutoPurchaseFlag,omitnil,omitempty" name:"AutoPurchaseFlag"`
+
+	// <p>该笔订单是否自动选择代金券</p><p>默认值：false（不自动选择代金券）</p><p>true时会为本笔订单自动匹配满足条件、最优惠的代金券</p>
+	AutoVoucher *bool `json:"AutoVoucher,omitnil,omitempty" name:"AutoVoucher"`
+}
+
+type CreateModelRouterResourcePackageRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>模型路由资源包容量</p><p>取值范围：[1000, 10000000]</p><p>单次购买的模型路由资源包容量下限为1000，上限为10000000</p>
+	ModelRouterResourcePackageAmount *uint64 `json:"ModelRouterResourcePackageAmount,omitnil,omitempty" name:"ModelRouterResourcePackageAmount"`
+
+	// <p>是否自动续订。</p><p>0:不自动续订, 1:用尽到期续订</p>
+	AutoPurchaseFlag *uint64 `json:"AutoPurchaseFlag,omitnil,omitempty" name:"AutoPurchaseFlag"`
+
+	// <p>该笔订单是否自动选择代金券</p><p>默认值：false（不自动选择代金券）</p><p>true时会为本笔订单自动匹配满足条件、最优惠的代金券</p>
+	AutoVoucher *bool `json:"AutoVoucher,omitnil,omitempty" name:"AutoVoucher"`
+}
+
+func (r *CreateModelRouterResourcePackageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateModelRouterResourcePackageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ModelRouterResourcePackageAmount")
+	delete(f, "AutoPurchaseFlag")
+	delete(f, "AutoVoucher")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateModelRouterResourcePackageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateModelRouterResourcePackageResponseParams struct {
+	// <p>模型路由资源包Id</p>
+	ModelRouterResourcePackageIds []*string `json:"ModelRouterResourcePackageIds,omitnil,omitempty" name:"ModelRouterResourcePackageIds"`
+
+	// <p>订单号</p>
+	DealName *string `json:"DealName,omitnil,omitempty" name:"DealName"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateModelRouterResourcePackageResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateModelRouterResourcePackageResponseParams `json:"Response"`
+}
+
+func (r *CreateModelRouterResourcePackageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateModelRouterResourcePackageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2952,6 +3708,67 @@ func (r *DeleteBudgetsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteIntentRouterRequestParams struct {
+	// <p>模型路由实例ID。</p>
+	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
+
+	// <p>意图路由ID（ir-xxx格式）。</p>
+	IntentRouterId *string `json:"IntentRouterId,omitnil,omitempty" name:"IntentRouterId"`
+}
+
+type DeleteIntentRouterRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>模型路由实例ID。</p>
+	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
+
+	// <p>意图路由ID（ir-xxx格式）。</p>
+	IntentRouterId *string `json:"IntentRouterId,omitnil,omitempty" name:"IntentRouterId"`
+}
+
+func (r *DeleteIntentRouterRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteIntentRouterRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ModelRouterId")
+	delete(f, "IntentRouterId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteIntentRouterRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteIntentRouterResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteIntentRouterResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteIntentRouterResponseParams `json:"Response"`
+}
+
+func (r *DeleteIntentRouterResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteIntentRouterResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteKeysRequestParams struct {
 	// <p>模型路由ID</p>
 	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
@@ -3263,6 +4080,60 @@ func (r *DeleteLoadBalancerSnatIpsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteLoadBalancerSnatIpsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteModelRequestParams struct {
+	// <p>服务提供商ID列表</p>
+	ServiceProviderIds []*string `json:"ServiceProviderIds,omitnil,omitempty" name:"ServiceProviderIds"`
+}
+
+type DeleteModelRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>服务提供商ID列表</p>
+	ServiceProviderIds []*string `json:"ServiceProviderIds,omitnil,omitempty" name:"ServiceProviderIds"`
+}
+
+func (r *DeleteModelRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteModelRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ServiceProviderIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteModelRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteModelResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteModelResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteModelResponseParams `json:"Response"`
+}
+
+func (r *DeleteModelResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteModelResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3689,6 +4560,67 @@ func (r *DeregisterFunctionTargetsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeregisterModelsFromServiceProviderRequestParams struct {
+	// <p>BYOK的ID</p>
+	ServiceProviderId *string `json:"ServiceProviderId,omitnil,omitempty" name:"ServiceProviderId"`
+
+	// <p>模型别名列表</p>
+	ModelAliases []*string `json:"ModelAliases,omitnil,omitempty" name:"ModelAliases"`
+}
+
+type DeregisterModelsFromServiceProviderRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>BYOK的ID</p>
+	ServiceProviderId *string `json:"ServiceProviderId,omitnil,omitempty" name:"ServiceProviderId"`
+
+	// <p>模型别名列表</p>
+	ModelAliases []*string `json:"ModelAliases,omitnil,omitempty" name:"ModelAliases"`
+}
+
+func (r *DeregisterModelsFromServiceProviderRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeregisterModelsFromServiceProviderRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ServiceProviderId")
+	delete(f, "ModelAliases")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeregisterModelsFromServiceProviderRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeregisterModelsFromServiceProviderResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeregisterModelsFromServiceProviderResponse struct {
+	*tchttp.BaseResponse
+	Response *DeregisterModelsFromServiceProviderResponseParams `json:"Response"`
+}
+
+func (r *DeregisterModelsFromServiceProviderResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeregisterModelsFromServiceProviderResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeregisterTargetGroupInstancesRequestParams struct {
 	// 目标组ID。
 	TargetGroupId *string `json:"TargetGroupId,omitnil,omitempty" name:"TargetGroupId"`
@@ -3898,6 +4830,70 @@ func (r *DeregisterTargetsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeregisterTargetsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAssociatedModelAvailabilityRequestParams struct {
+	// <p>模型路由ID</p>
+	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
+
+	// <p>模型列表</p>
+	Models []*string `json:"Models,omitnil,omitempty" name:"Models"`
+}
+
+type DescribeAssociatedModelAvailabilityRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>模型路由ID</p>
+	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
+
+	// <p>模型列表</p>
+	Models []*string `json:"Models,omitnil,omitempty" name:"Models"`
+}
+
+func (r *DescribeAssociatedModelAvailabilityRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAssociatedModelAvailabilityRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ModelRouterId")
+	delete(f, "Models")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAssociatedModelAvailabilityRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAssociatedModelAvailabilityResponseParams struct {
+	// <p>模型可用性列表</p>
+	ModelAvailability []*ModelAvailability `json:"ModelAvailability,omitnil,omitempty" name:"ModelAvailability"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAssociatedModelAvailabilityResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAssociatedModelAvailabilityResponseParams `json:"Response"`
+}
+
+func (r *DescribeAssociatedModelAvailabilityResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAssociatedModelAvailabilityResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4120,14 +5116,14 @@ type DescribeBudgetAssociationsRequestParams struct {
 	// <p>Budget ID。</p><p>一次只允许查询一个Budget。</p>
 	BudgetId *string `json:"BudgetId,omitnil,omitempty" name:"BudgetId"`
 
-	// <p>资源类型。</p><p>枚举值：</p><ul><li>ModelRouter：模型路由实例</li><li>Key：模型路由Key</li></ul><p>不传时返回全部资源类型。</p>
-	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+	// <p>本次查询限制的数量</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// <p>本次查询偏移量</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// <p>本次查询限制的数量</p>
-	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+	// <p>资源类型。</p><p>枚举值：</p><ul><li>ModelRouter：模型路由实例</li><li>Key：模型路由Key</li></ul><p>不传时返回全部资源类型。</p>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
 type DescribeBudgetAssociationsRequest struct {
@@ -4136,14 +5132,14 @@ type DescribeBudgetAssociationsRequest struct {
 	// <p>Budget ID。</p><p>一次只允许查询一个Budget。</p>
 	BudgetId *string `json:"BudgetId,omitnil,omitempty" name:"BudgetId"`
 
-	// <p>资源类型。</p><p>枚举值：</p><ul><li>ModelRouter：模型路由实例</li><li>Key：模型路由Key</li></ul><p>不传时返回全部资源类型。</p>
-	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+	// <p>本次查询限制的数量</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// <p>本次查询偏移量</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// <p>本次查询限制的数量</p>
-	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+	// <p>资源类型。</p><p>枚举值：</p><ul><li>ModelRouter：模型路由实例</li><li>Key：模型路由Key</li></ul><p>不传时返回全部资源类型。</p>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
 func (r *DescribeBudgetAssociationsRequest) ToJsonString() string {
@@ -4159,9 +5155,9 @@ func (r *DescribeBudgetAssociationsRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "BudgetId")
-	delete(f, "Type")
-	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Type")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBudgetAssociationsRequest has unknown keys!", "")
 	}
@@ -5124,6 +6120,218 @@ func (r *DescribeIdleLoadBalancersResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeIntentRouterTiersRequestParams struct {
+
+}
+
+type DescribeIntentRouterTiersRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeIntentRouterTiersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIntentRouterTiersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeIntentRouterTiersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeIntentRouterTiersResponseParams struct {
+	// <p>Tier 字典列表（按 tier_id 升序排列）</p>
+	TierSet []*IntentRouterTierDictItem `json:"TierSet,omitnil,omitempty" name:"TierSet"`
+
+	// <p>Tier 总条数</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeIntentRouterTiersResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeIntentRouterTiersResponseParams `json:"Response"`
+}
+
+func (r *DescribeIntentRouterTiersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIntentRouterTiersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeIntentRoutersRequestParams struct {
+	// <p>模型路由实例ID。</p>
+	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
+
+	// <p>意图路由ID列表</p>
+	IntentRouterIds []*string `json:"IntentRouterIds,omitnil,omitempty" name:"IntentRouterIds"`
+}
+
+type DescribeIntentRoutersRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>模型路由实例ID。</p>
+	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
+
+	// <p>意图路由ID列表</p>
+	IntentRouterIds []*string `json:"IntentRouterIds,omitnil,omitempty" name:"IntentRouterIds"`
+}
+
+func (r *DescribeIntentRoutersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIntentRoutersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ModelRouterId")
+	delete(f, "IntentRouterIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeIntentRoutersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeIntentRoutersResponseParams struct {
+	// <p>意图路由列表。</p>
+	IntentRouterSet []*IntentRouterItem `json:"IntentRouterSet,omitnil,omitempty" name:"IntentRouterSet"`
+
+	// <p>意图路由总数。</p>
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeIntentRoutersResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeIntentRoutersResponseParams `json:"Response"`
+}
+
+func (r *DescribeIntentRoutersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIntentRoutersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeKeysRequestParams struct {
+	// <p>模型路由实例ID</p>
+	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
+
+	// <p>过滤列表</p><p>支持：KeyName、BudgetId、tag-key、tag:&lt;tag-key&gt;。</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>API Key的ID列表</p>
+	KeyIds []*string `json:"KeyIds,omitnil,omitempty" name:"KeyIds"`
+
+	// <p>本次查询限制的数量</p><p>取值范围：[1, 100]</p><p>默认值：20</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>本次查询偏移量</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+type DescribeKeysRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>模型路由实例ID</p>
+	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
+
+	// <p>过滤列表</p><p>支持：KeyName、BudgetId、tag-key、tag:&lt;tag-key&gt;。</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>API Key的ID列表</p>
+	KeyIds []*string `json:"KeyIds,omitnil,omitempty" name:"KeyIds"`
+
+	// <p>本次查询限制的数量</p><p>取值范围：[1, 100]</p><p>默认值：20</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>本次查询偏移量</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+func (r *DescribeKeysRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeKeysRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ModelRouterId")
+	delete(f, "Filters")
+	delete(f, "KeyIds")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeKeysRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeKeysResponseParams struct {
+	// <p>API Key列表</p>
+	Keys []*KeyInfo `json:"Keys,omitnil,omitempty" name:"Keys"`
+
+	// <p>符合条件的总数</p>
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeKeysResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeKeysResponseParams `json:"Response"`
+}
+
+func (r *DescribeKeysResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeKeysResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeLBListenersRequestParams struct {
 	// 需要查询的内网ip列表
 	Backends []*LbRsItem `json:"Backends,omitnil,omitempty" name:"Backends"`
@@ -5985,6 +7193,390 @@ func (r *DescribeLoadBalancersResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeModelAliasesRequestParams struct {
+	// <p>过滤条件</p><p>支持的过滤键：</p><ul><li>ModelAliasName：按模型别名过滤。</li></ul>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>每页数量，取值范围：[1, 100]，默认值：20。</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>分页偏移量，默认值：0。</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>排序条件。支持按 InputCoefficient、InputCachedCoefficient 或 OutputCoefficient 排序，Order 支持 ASC、DESC。不传或传空数组时，默认按 OutputCoefficient 降序排列。最多支持 3 个排序条件，排序字段不可重复。</p>
+	Sort []*Sort `json:"Sort,omitnil,omitempty" name:"Sort"`
+}
+
+type DescribeModelAliasesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>过滤条件</p><p>支持的过滤键：</p><ul><li>ModelAliasName：按模型别名过滤。</li></ul>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>每页数量，取值范围：[1, 100]，默认值：20。</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>分页偏移量，默认值：0。</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>排序条件。支持按 InputCoefficient、InputCachedCoefficient 或 OutputCoefficient 排序，Order 支持 ASC、DESC。不传或传空数组时，默认按 OutputCoefficient 降序排列。最多支持 3 个排序条件，排序字段不可重复。</p>
+	Sort []*Sort `json:"Sort,omitnil,omitempty" name:"Sort"`
+}
+
+func (r *DescribeModelAliasesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeModelAliasesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Sort")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeModelAliasesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeModelAliasesResponseParams struct {
+	// <p>模型别名列表。</p>
+	ModelAliasSet []*ModelAlias `json:"ModelAliasSet,omitnil,omitempty" name:"ModelAliasSet"`
+
+	// <p>符合条件的总数。</p>
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeModelAliasesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeModelAliasesResponseParams `json:"Response"`
+}
+
+func (r *DescribeModelAliasesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeModelAliasesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeModelAssociationsRequestParams struct {
+	// <p>模型路由实例ID</p>
+	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
+
+	// <p>翻页限制</p><p>取值范围：[1, 100]</p><p>默认值：20</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>翻页偏移量</p><p>默认值：0</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+type DescribeModelAssociationsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>模型路由实例ID</p>
+	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
+
+	// <p>翻页限制</p><p>取值范围：[1, 100]</p><p>默认值：20</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>翻页偏移量</p><p>默认值：0</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+func (r *DescribeModelAssociationsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeModelAssociationsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ModelRouterId")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeModelAssociationsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeModelAssociationsResponseParams struct {
+	// <p>模型路由实例与模型的关联关系集合</p>
+	ModelAssociationSet []*ModelAssociation `json:"ModelAssociationSet,omitnil,omitempty" name:"ModelAssociationSet"`
+
+	// <p>模型路由实例ID</p>
+	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
+
+	// <p>符合条件的总数</p>
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeModelAssociationsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeModelAssociationsResponseParams `json:"Response"`
+}
+
+func (r *DescribeModelAssociationsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeModelAssociationsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeModelKeysRequestParams struct {
+	// <p>接入类型过滤：PublicBYOK/PublicCustom/PrivateCustom</p>
+	AccessType *string `json:"AccessType,omitnil,omitempty" name:"AccessType"`
+
+	// <p>过滤条件</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>返回数量限制</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>翻页启始索引</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>服务提供商ID</p>
+	ServiceProviderIds []*string `json:"ServiceProviderIds,omitnil,omitempty" name:"ServiceProviderIds"`
+}
+
+type DescribeModelKeysRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>接入类型过滤：PublicBYOK/PublicCustom/PrivateCustom</p>
+	AccessType *string `json:"AccessType,omitnil,omitempty" name:"AccessType"`
+
+	// <p>过滤条件</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>返回数量限制</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>翻页启始索引</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>服务提供商ID</p>
+	ServiceProviderIds []*string `json:"ServiceProviderIds,omitnil,omitempty" name:"ServiceProviderIds"`
+}
+
+func (r *DescribeModelKeysRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeModelKeysRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AccessType")
+	delete(f, "Filters")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "ServiceProviderIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeModelKeysRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeModelKeysResponseParams struct {
+	// <p>模型列表（含 Key 信息）</p>
+	Models []*ModelKeyInfoItem `json:"Models,omitnil,omitempty" name:"Models"`
+
+	// <p>模型总数</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeModelKeysResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeModelKeysResponseParams `json:"Response"`
+}
+
+func (r *DescribeModelKeysResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeModelKeysResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeModelNamesRequestParams struct {
+	// <p>分页偏移量（&gt;=0）</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>每页数量（1-100）</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>过滤PrivateCustom类型自建模型。如果传递了此参数，则只返回具有相同VPC Id的模型。</p>
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+}
+
+type DescribeModelNamesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>分页偏移量（&gt;=0）</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>每页数量（1-100）</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>过滤PrivateCustom类型自建模型。如果传递了此参数，则只返回具有相同VPC Id的模型。</p>
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+}
+
+func (r *DescribeModelNamesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeModelNamesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "VpcId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeModelNamesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeModelNamesResponseParams struct {
+	// <p>模型标识聚合列表</p>
+	ModelNames []*ModelNameAggregatedItem `json:"ModelNames,omitnil,omitempty" name:"ModelNames"`
+
+	// <p>聚合后的模型标识总数</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeModelNamesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeModelNamesResponseParams `json:"Response"`
+}
+
+func (r *DescribeModelNamesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeModelNamesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeModelRewriteRequestParams struct {
+	// <p>模型路由实例 ID。</p>
+	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
+
+	// <p>选填，按源模型名精确过滤（大小写敏感）。</p><p>长度 1-255 字符；不传则返回该实例的全部重写规则；命中至多 1 条；未命中返回空列表（不报错）。</p>
+	SourceModel *string `json:"SourceModel,omitnil,omitempty" name:"SourceModel"`
+}
+
+type DescribeModelRewriteRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>模型路由实例 ID。</p>
+	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
+
+	// <p>选填，按源模型名精确过滤（大小写敏感）。</p><p>长度 1-255 字符；不传则返回该实例的全部重写规则；命中至多 1 条；未命中返回空列表（不报错）。</p>
+	SourceModel *string `json:"SourceModel,omitnil,omitempty" name:"SourceModel"`
+}
+
+func (r *DescribeModelRewriteRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeModelRewriteRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ModelRouterId")
+	delete(f, "SourceModel")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeModelRewriteRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeModelRewriteResponseParams struct {
+	// <p>重写规则列表，按 SourceModel 字典序排序。无规则或过滤未命中时为空数组。</p>
+	Rewrites []*RewriteItem `json:"Rewrites,omitnil,omitempty" name:"Rewrites"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeModelRewriteResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeModelRewriteResponseParams `json:"Response"`
+}
+
+func (r *DescribeModelRewriteResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeModelRewriteResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeModelRouterDetailRequestParams struct {
 	// <p>模型路由实例ID</p>
 	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
@@ -6038,6 +7630,175 @@ func (r *DescribeModelRouterDetailResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeModelRouterDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeModelRouterGuardrailsRequestParams struct {
+	// <p>模型路由实例 ID。</p>
+	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
+}
+
+type DescribeModelRouterGuardrailsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>模型路由实例 ID。</p>
+	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
+}
+
+func (r *DescribeModelRouterGuardrailsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeModelRouterGuardrailsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ModelRouterId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeModelRouterGuardrailsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeModelRouterGuardrailsResponseParams struct {
+	// <p>当前已关联的 Guardrail 防护配置列表。</p><p>当前最多返回 1 个元素。</p>
+	Guardrails []*GuardrailConfig `json:"Guardrails,omitnil,omitempty" name:"Guardrails"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeModelRouterGuardrailsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeModelRouterGuardrailsResponseParams `json:"Response"`
+}
+
+func (r *DescribeModelRouterGuardrailsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeModelRouterGuardrailsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeModelRouterLogsRequestParams struct {
+	// <p>模型路由实例ID</p>
+	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
+
+	// <p>Key的ID</p>
+	KeyId *string `json:"KeyId,omitnil,omitempty" name:"KeyId"`
+
+	// <p>模型名称</p>
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+
+	// <p>请求状态</p>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>开始时间，与EndTime需要同时传入、开始时间不得早于24小时前，默认仅查询近5分钟日志</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>结束时间，与StartTime需要同时传入、开始时间不得早于24小时前，默认仅查询近5分钟日志</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>游标NextToken</p>
+	NextToken *string `json:"NextToken,omitnil,omitempty" name:"NextToken"`
+
+	// <p>本次查询最大数量</p><p>取值范围：[1, 100]</p><p>默认值：20</p>
+	MaxResults *uint64 `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
+}
+
+type DescribeModelRouterLogsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>模型路由实例ID</p>
+	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
+
+	// <p>Key的ID</p>
+	KeyId *string `json:"KeyId,omitnil,omitempty" name:"KeyId"`
+
+	// <p>模型名称</p>
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+
+	// <p>请求状态</p>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>开始时间，与EndTime需要同时传入、开始时间不得早于24小时前，默认仅查询近5分钟日志</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>结束时间，与StartTime需要同时传入、开始时间不得早于24小时前，默认仅查询近5分钟日志</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>游标NextToken</p>
+	NextToken *string `json:"NextToken,omitnil,omitempty" name:"NextToken"`
+
+	// <p>本次查询最大数量</p><p>取值范围：[1, 100]</p><p>默认值：20</p>
+	MaxResults *uint64 `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
+}
+
+func (r *DescribeModelRouterLogsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeModelRouterLogsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ModelRouterId")
+	delete(f, "KeyId")
+	delete(f, "Model")
+	delete(f, "Status")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "NextToken")
+	delete(f, "MaxResults")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeModelRouterLogsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeModelRouterLogsResponseParams struct {
+	// <p>日志列表</p>
+	Logs []*ModelRouterLog `json:"Logs,omitnil,omitempty" name:"Logs"`
+
+	// <p>满足条件的数量</p>
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>游标NextToken</p>
+	NextToken *string `json:"NextToken,omitnil,omitempty" name:"NextToken"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeModelRouterLogsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeModelRouterLogsResponseParams `json:"Response"`
+}
+
+func (r *DescribeModelRouterLogsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeModelRouterLogsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6109,6 +7870,199 @@ func (r *DescribeModelRouterQuotaResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeModelRouterQuotaResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeModelRouterResourcePackageDeductionRequestParams struct {
+	// <p>抵扣起始时间</p>
+	DeductionTimeBegin *string `json:"DeductionTimeBegin,omitnil,omitempty" name:"DeductionTimeBegin"`
+
+	// <p>抵扣截止时间</p>
+	DeductionTimeEnd *string `json:"DeductionTimeEnd,omitnil,omitempty" name:"DeductionTimeEnd"`
+
+	// <p>模型路由资源包Id</p>
+	ModelRouterResourcePackageId *string `json:"ModelRouterResourcePackageId,omitnil,omitempty" name:"ModelRouterResourcePackageId"`
+
+	// <p>返回的数量</p><p>取值范围：[0, 100]</p><p>默认值：20</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>数据偏移量</p><p>默认值：0</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>排序方式：asc，desc</p>
+	SortBy *string `json:"SortBy,omitnil,omitempty" name:"SortBy"`
+}
+
+type DescribeModelRouterResourcePackageDeductionRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>抵扣起始时间</p>
+	DeductionTimeBegin *string `json:"DeductionTimeBegin,omitnil,omitempty" name:"DeductionTimeBegin"`
+
+	// <p>抵扣截止时间</p>
+	DeductionTimeEnd *string `json:"DeductionTimeEnd,omitnil,omitempty" name:"DeductionTimeEnd"`
+
+	// <p>模型路由资源包Id</p>
+	ModelRouterResourcePackageId *string `json:"ModelRouterResourcePackageId,omitnil,omitempty" name:"ModelRouterResourcePackageId"`
+
+	// <p>返回的数量</p><p>取值范围：[0, 100]</p><p>默认值：20</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>数据偏移量</p><p>默认值：0</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>排序方式：asc，desc</p>
+	SortBy *string `json:"SortBy,omitnil,omitempty" name:"SortBy"`
+}
+
+func (r *DescribeModelRouterResourcePackageDeductionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeModelRouterResourcePackageDeductionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DeductionTimeBegin")
+	delete(f, "DeductionTimeEnd")
+	delete(f, "ModelRouterResourcePackageId")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "SortBy")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeModelRouterResourcePackageDeductionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeModelRouterResourcePackageDeductionResponseParams struct {
+	// <p>模型路由资源包抵扣信息</p>
+	ModelRouterResourcePackageDeductionSet []*ModelRouterResourcePackageDeduction `json:"ModelRouterResourcePackageDeductionSet,omitnil,omitempty" name:"ModelRouterResourcePackageDeductionSet"`
+
+	// <p>符合查询条件的详情信息总数</p>
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeModelRouterResourcePackageDeductionResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeModelRouterResourcePackageDeductionResponseParams `json:"Response"`
+}
+
+func (r *DescribeModelRouterResourcePackageDeductionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeModelRouterResourcePackageDeductionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeModelRouterResourcePackagesRequestParams struct {
+	// <p>模型路由资源包Id。</p>
+	ModelRouterResourcePackageIds []*string `json:"ModelRouterResourcePackageIds,omitnil,omitempty" name:"ModelRouterResourcePackageIds"`
+
+	// <p>数据偏移量。</p><p>默认值：0</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>返回的数量，最大值为100。</p><p>取值范围：[1, 100]</p><p>默认值：20</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>排序参数，支持以下字段：&quot;buyTime&quot;, &quot;startTime&quot;, &quot;endTime&quot;</p>
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
+
+	// <p>排序方式：asc，desc，默认asc</p>
+	SortBy *string `json:"SortBy,omitnil,omitempty" name:"SortBy"`
+
+	// <p>查询的过滤条件。</p><p>每次请求的Filters的上限为10，Filter.Values的上限为100。 Filter.Name和Filter.Values皆为必填项。详细的过滤条件如下： status - Integer - 是否必填：否 - 状态：0-有效 1-已退款 2-已过期 3-已用完。 effect_time_start - String - 是否必填：否 - 生效起始时间,YYYY-MM-DD HH:MM:SS格式。 effect_time_end - String - 是否必填：否 - 生效截止时间。 expire_time_start - String - 是否必填：否 - 失效起始时间。 expire_time_end - String - 是否必填：否 - 失效截止时间。</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type DescribeModelRouterResourcePackagesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>模型路由资源包Id。</p>
+	ModelRouterResourcePackageIds []*string `json:"ModelRouterResourcePackageIds,omitnil,omitempty" name:"ModelRouterResourcePackageIds"`
+
+	// <p>数据偏移量。</p><p>默认值：0</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>返回的数量，最大值为100。</p><p>取值范围：[1, 100]</p><p>默认值：20</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>排序参数，支持以下字段：&quot;buyTime&quot;, &quot;startTime&quot;, &quot;endTime&quot;</p>
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
+
+	// <p>排序方式：asc，desc，默认asc</p>
+	SortBy *string `json:"SortBy,omitnil,omitempty" name:"SortBy"`
+
+	// <p>查询的过滤条件。</p><p>每次请求的Filters的上限为10，Filter.Values的上限为100。 Filter.Name和Filter.Values皆为必填项。详细的过滤条件如下： status - Integer - 是否必填：否 - 状态：0-有效 1-已退款 2-已过期 3-已用完。 effect_time_start - String - 是否必填：否 - 生效起始时间,YYYY-MM-DD HH:MM:SS格式。 effect_time_end - String - 是否必填：否 - 生效截止时间。 expire_time_start - String - 是否必填：否 - 失效起始时间。 expire_time_end - String - 是否必填：否 - 失效截止时间。</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *DescribeModelRouterResourcePackagesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeModelRouterResourcePackagesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ModelRouterResourcePackageIds")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "OrderBy")
+	delete(f, "SortBy")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeModelRouterResourcePackagesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeModelRouterResourcePackagesResponseParams struct {
+	// <p>模型路由资源包信息</p>
+	ModelRouterResourcePackageSet []*ModelRouterPackage `json:"ModelRouterResourcePackageSet,omitnil,omitempty" name:"ModelRouterResourcePackageSet"`
+
+	// <p>符合查询条件的模型路由资源包数量</p>
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>资源包的剩余总量</p>
+	TotalDosage *uint64 `json:"TotalDosage,omitnil,omitempty" name:"TotalDosage"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeModelRouterResourcePackagesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeModelRouterResourcePackagesResponseParams `json:"Response"`
+}
+
+func (r *DescribeModelRouterResourcePackagesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeModelRouterResourcePackagesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6417,6 +8371,137 @@ func (r *DescribeRewriteResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeRewriteResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeServiceProviderHealthStatusRequestParams struct {
+	// <p>BYOK的ID</p>
+	ServiceProviderId *string `json:"ServiceProviderId,omitnil,omitempty" name:"ServiceProviderId"`
+
+	// <p>本次查询的限制数量</p><p>取值范围：[1, 100]</p><p>默认值：20</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>本次查询翻页的偏移量</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+type DescribeServiceProviderHealthStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>BYOK的ID</p>
+	ServiceProviderId *string `json:"ServiceProviderId,omitnil,omitempty" name:"ServiceProviderId"`
+
+	// <p>本次查询的限制数量</p><p>取值范围：[1, 100]</p><p>默认值：20</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>本次查询翻页的偏移量</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+func (r *DescribeServiceProviderHealthStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeServiceProviderHealthStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ServiceProviderId")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeServiceProviderHealthStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeServiceProviderHealthStatusResponseParams struct {
+	// <p>健康检查的结果</p>
+	HealthCheckResults []*ModelHealthCheckResults `json:"HealthCheckResults,omitnil,omitempty" name:"HealthCheckResults"`
+
+	// <p>本次请求总数</p>
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeServiceProviderHealthStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeServiceProviderHealthStatusResponseParams `json:"Response"`
+}
+
+func (r *DescribeServiceProviderHealthStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeServiceProviderHealthStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSupportedProvidersRequestParams struct {
+
+}
+
+type DescribeSupportedProvidersRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeSupportedProvidersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSupportedProvidersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSupportedProvidersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSupportedProvidersResponseParams struct {
+	// <p>Provider 列表</p>
+	Providers []*ProviderItem `json:"Providers,omitnil,omitempty" name:"Providers"`
+
+	// <p>Provider 总数</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeSupportedProvidersResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSupportedProvidersResponseParams `json:"Response"`
+}
+
+func (r *DescribeSupportedProvidersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSupportedProvidersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6960,6 +9045,119 @@ func (r *DescribeTaskStatusResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeUpperModelsRequestParams struct {
+	// <p>接入类型：PublicBYOK/PublicCustom/PrivateCustom</p>
+	AccessType *string `json:"AccessType,omitnil,omitempty" name:"AccessType"`
+
+	// <p>上游 Provider API 地址</p><p>示例：https://api.moonshot.cn</p>
+	ApiBase *string `json:"ApiBase,omitnil,omitempty" name:"ApiBase"`
+
+	// <p>上游 Provider API Key</p><p>用于鉴权访问上游模型列表接口</p>
+	ApiKey *string `json:"ApiKey,omitnil,omitempty" name:"ApiKey"`
+
+	// <p>自定义 Host Header，可选</p><p>仅 VPC 内网场景需要，用于指定请求的 Host 头</p>
+	HostHeader *string `json:"HostHeader,omitnil,omitempty" name:"HostHeader"`
+
+	// <p>Key Id 配合ServiceProviderId一同输入，不指定则默认选用最近创建的Key</p>
+	KeyId *string `json:"KeyId,omitnil,omitempty" name:"KeyId"`
+
+	// <p>模型列表端点路径，可选</p><p>默认值：/v1/models</p>
+	ModelPath *string `json:"ModelPath,omitnil,omitempty" name:"ModelPath"`
+
+	// <p>模型协议</p>
+	ModelProtocol *string `json:"ModelProtocol,omitnil,omitempty" name:"ModelProtocol"`
+
+	// <p>模型提供商</p>
+	ModelProvider *string `json:"ModelProvider,omitnil,omitempty" name:"ModelProvider"`
+
+	// <p>BYOK 业务 ID，可选</p><p>格式：byok-xxxxxxxx</p>
+	ServiceProviderId *string `json:"ServiceProviderId,omitnil,omitempty" name:"ServiceProviderId"`
+}
+
+type DescribeUpperModelsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>接入类型：PublicBYOK/PublicCustom/PrivateCustom</p>
+	AccessType *string `json:"AccessType,omitnil,omitempty" name:"AccessType"`
+
+	// <p>上游 Provider API 地址</p><p>示例：https://api.moonshot.cn</p>
+	ApiBase *string `json:"ApiBase,omitnil,omitempty" name:"ApiBase"`
+
+	// <p>上游 Provider API Key</p><p>用于鉴权访问上游模型列表接口</p>
+	ApiKey *string `json:"ApiKey,omitnil,omitempty" name:"ApiKey"`
+
+	// <p>自定义 Host Header，可选</p><p>仅 VPC 内网场景需要，用于指定请求的 Host 头</p>
+	HostHeader *string `json:"HostHeader,omitnil,omitempty" name:"HostHeader"`
+
+	// <p>Key Id 配合ServiceProviderId一同输入，不指定则默认选用最近创建的Key</p>
+	KeyId *string `json:"KeyId,omitnil,omitempty" name:"KeyId"`
+
+	// <p>模型列表端点路径，可选</p><p>默认值：/v1/models</p>
+	ModelPath *string `json:"ModelPath,omitnil,omitempty" name:"ModelPath"`
+
+	// <p>模型协议</p>
+	ModelProtocol *string `json:"ModelProtocol,omitnil,omitempty" name:"ModelProtocol"`
+
+	// <p>模型提供商</p>
+	ModelProvider *string `json:"ModelProvider,omitnil,omitempty" name:"ModelProvider"`
+
+	// <p>BYOK 业务 ID，可选</p><p>格式：byok-xxxxxxxx</p>
+	ServiceProviderId *string `json:"ServiceProviderId,omitnil,omitempty" name:"ServiceProviderId"`
+}
+
+func (r *DescribeUpperModelsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUpperModelsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AccessType")
+	delete(f, "ApiBase")
+	delete(f, "ApiKey")
+	delete(f, "HostHeader")
+	delete(f, "KeyId")
+	delete(f, "ModelPath")
+	delete(f, "ModelProtocol")
+	delete(f, "ModelProvider")
+	delete(f, "ServiceProviderId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUpperModelsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeUpperModelsResponseParams struct {
+	// <p>上游模型列表</p>
+	Models []*string `json:"Models,omitnil,omitempty" name:"Models"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeUpperModelsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeUpperModelsResponseParams `json:"Response"`
+}
+
+func (r *DescribeUpperModelsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUpperModelsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeUserGroupsRequestParams struct {
 	// <p>模型路由实例ID。</p>
 	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
@@ -7169,6 +9367,133 @@ func (r *DisassociateCustomizedConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DisassociateGuardrailConfig struct {
+	// <p>Guardrail 防护配置 ID。</p><p>可通过 DescribeModelRouterGuardrails 获取；DisassociateModelRouterGuardrails 使用该字段定位要解除关联的防护配置。</p>
+	GuardrailId *string `json:"GuardrailId,omitnil,omitempty" name:"GuardrailId"`
+}
+
+// Predefined struct for user
+type DisassociateModelRouterGuardrailsRequestParams struct {
+	// <p>待解除关联的 Guardrail 防护配置列表。</p><p>每个元素只需要填写 GuardrailId。</p>
+	Guardrails []*DisassociateGuardrailConfig `json:"Guardrails,omitnil,omitempty" name:"Guardrails"`
+
+	// <p>模型路由实例 ID。</p>
+	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
+}
+
+type DisassociateModelRouterGuardrailsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>待解除关联的 Guardrail 防护配置列表。</p><p>每个元素只需要填写 GuardrailId。</p>
+	Guardrails []*DisassociateGuardrailConfig `json:"Guardrails,omitnil,omitempty" name:"Guardrails"`
+
+	// <p>模型路由实例 ID。</p>
+	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
+}
+
+func (r *DisassociateModelRouterGuardrailsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DisassociateModelRouterGuardrailsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Guardrails")
+	delete(f, "ModelRouterId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DisassociateModelRouterGuardrailsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DisassociateModelRouterGuardrailsResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DisassociateModelRouterGuardrailsResponse struct {
+	*tchttp.BaseResponse
+	Response *DisassociateModelRouterGuardrailsResponseParams `json:"Response"`
+}
+
+func (r *DisassociateModelRouterGuardrailsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DisassociateModelRouterGuardrailsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DisassociateModelsFromModelRouterRequestParams struct {
+	// <p>模型路由实例ID</p>
+	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
+
+	// <p>需要解除关联的模型信息</p>
+	Models []*ModelRouterModel `json:"Models,omitnil,omitempty" name:"Models"`
+}
+
+type DisassociateModelsFromModelRouterRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>模型路由实例ID</p>
+	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
+
+	// <p>需要解除关联的模型信息</p>
+	Models []*ModelRouterModel `json:"Models,omitnil,omitempty" name:"Models"`
+}
+
+func (r *DisassociateModelsFromModelRouterRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DisassociateModelsFromModelRouterRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ModelRouterId")
+	delete(f, "Models")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DisassociateModelsFromModelRouterRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DisassociateModelsFromModelRouterResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DisassociateModelsFromModelRouterResponse struct {
+	*tchttp.BaseResponse
+	Response *DisassociateModelsFromModelRouterResponseParams `json:"Response"`
+}
+
+func (r *DisassociateModelsFromModelRouterResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DisassociateModelsFromModelRouterResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 // Predefined struct for user
 type DisassociateTargetGroupsRequestParams struct {
 	// 待解绑的规则关系数组，支持批量解绑多个监听器，单次批量解除最多20个。
@@ -7281,6 +9606,23 @@ type FunctionTarget struct {
 	Weight *uint64 `json:"Weight,omitnil,omitempty" name:"Weight"`
 }
 
+type GuardrailConfig struct {
+	// <p>Guardrail 防护配置 ID。</p><p>DescribeModelRouterGuardrails 会返回该字段；DisassociateModelRouterGuardrails 和 ModifyModelRouterGuardrails 需要使用该字段定位要操作的防护配置。</p>
+	GuardrailId *string `json:"GuardrailId,omitnil,omitempty" name:"GuardrailId"`
+
+	// <p>Guardrail 防护类型。</p><p>枚举值：</p><ul><li>WAF：使用腾讯云 WAF LLM SDK 接入配置对模型路由请求进行安全防护。</li></ul><p>当前仅支持 WAF；AssociateModelRouterGuardrails 不传时默认为 WAF，ModifyModelRouterGuardrails 不传时沿用当前已关联 Guardrail 的 Type。</p>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>关联的腾讯云 WAF 实例 ID。</p><p>ModifyModelRouterGuardrails 在 Type 为 WAF 时必填。DescribeModelRouterGuardrails 返回。接口会校验该 WAF 实例存在且属于当前账号。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>WAF LLM SDK 接入服务 ID。</p><p>该字段对应 WAF LLM SDK 接入配置中的服务标识，用于指定模型路由请求要绑定的 WAF 防护配置。ModifyModelRouterGuardrails 在 Type 为 WAF 时必填。DescribeModelRouterGuardrails 返回。接口会校验该服务配置存在于指定的 WAF 实例下。</p>
+	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+
+	// <p>最大检测对话轮数。</p><p>ModifyModelRouterGuardrails 选填；未传时沿用当前已关联 Guardrail 的 InputCheckDepth。DescribeModelRouterGuardrails 返回。若传入，取值必须为正整数。</p>
+	InputCheckDepth *uint64 `json:"InputCheckDepth,omitnil,omitempty" name:"InputCheckDepth"`
+}
+
 type HealthCheck struct {
 	// 是否开启健康检查：1（开启）、0（关闭）。
 	// 默认为开启。
@@ -7380,6 +9722,123 @@ type InputKeyInfo struct {
 
 	// <p>导入的明文Key</p><p>仅允许导入Key模式下输入</p>
 	PlainKey *string `json:"PlainKey,omitnil,omitempty" name:"PlainKey"`
+}
+
+// Predefined struct for user
+type InquirePriceCreateModelRouterResourcePackageRequestParams struct {
+	// <p>模型路由资源包容量</p><p>取值范围：[1000, 10000000]</p><p>单次购买的模型路由资源包容量下限为1000，上限为10000000</p>
+	ModelRouterResourcePackageAmount *uint64 `json:"ModelRouterResourcePackageAmount,omitnil,omitempty" name:"ModelRouterResourcePackageAmount"`
+}
+
+type InquirePriceCreateModelRouterResourcePackageRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>模型路由资源包容量</p><p>取值范围：[1000, 10000000]</p><p>单次购买的模型路由资源包容量下限为1000，上限为10000000</p>
+	ModelRouterResourcePackageAmount *uint64 `json:"ModelRouterResourcePackageAmount,omitnil,omitempty" name:"ModelRouterResourcePackageAmount"`
+}
+
+func (r *InquirePriceCreateModelRouterResourcePackageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InquirePriceCreateModelRouterResourcePackageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ModelRouterResourcePackageAmount")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InquirePriceCreateModelRouterResourcePackageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type InquirePriceCreateModelRouterResourcePackageResponseParams struct {
+	// <p>模型路由资源包价格</p>
+	ModelRouterResourcePackagePrice *ItemPrice `json:"ModelRouterResourcePackagePrice,omitnil,omitempty" name:"ModelRouterResourcePackagePrice"`
+
+	// <p>本次购买资源包是否可享受首购优惠</p><p>1:可享受首购优惠，0:不可享受首购优惠</p>
+	FirstBuy *uint64 `json:"FirstBuy,omitnil,omitempty" name:"FirstBuy"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type InquirePriceCreateModelRouterResourcePackageResponse struct {
+	*tchttp.BaseResponse
+	Response *InquirePriceCreateModelRouterResourcePackageResponseParams `json:"Response"`
+}
+
+func (r *InquirePriceCreateModelRouterResourcePackageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InquirePriceCreateModelRouterResourcePackageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type InquirePriceRefundModelRouterResourcePackageRequestParams struct {
+	// <p>待退款的模型路由资源包Id</p><p>非有效状态或者设置了自动续订且自动续订已生效的资源包不允许退款。</p>
+	ModelRouterResourcePackageIds []*string `json:"ModelRouterResourcePackageIds,omitnil,omitempty" name:"ModelRouterResourcePackageIds"`
+}
+
+type InquirePriceRefundModelRouterResourcePackageRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>待退款的模型路由资源包Id</p><p>非有效状态或者设置了自动续订且自动续订已生效的资源包不允许退款。</p>
+	ModelRouterResourcePackageIds []*string `json:"ModelRouterResourcePackageIds,omitnil,omitempty" name:"ModelRouterResourcePackageIds"`
+}
+
+func (r *InquirePriceRefundModelRouterResourcePackageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InquirePriceRefundModelRouterResourcePackageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ModelRouterResourcePackageIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InquirePriceRefundModelRouterResourcePackageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type InquirePriceRefundModelRouterResourcePackageResponseParams struct {
+	// <p>待退款的模型路由资源包可退价格</p>
+	ModelRouterResourcePackageRefundPrice []*ModelRouterResourcePackageRefundPrice `json:"ModelRouterResourcePackageRefundPrice,omitnil,omitempty" name:"ModelRouterResourcePackageRefundPrice"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type InquirePriceRefundModelRouterResourcePackageResponse struct {
+	*tchttp.BaseResponse
+	Response *InquirePriceRefundModelRouterResourcePackageResponseParams `json:"Response"`
+}
+
+func (r *InquirePriceRefundModelRouterResourcePackageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InquirePriceRefundModelRouterResourcePackageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -7684,6 +10143,48 @@ func (r *InquiryPriceRenewLoadBalancerResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type IntentRouterItem struct {
+	// <p>创建时间（ISO 8601格式）。</p>
+	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
+
+	// <p>意图路由ID（ir-xxx格式）。</p>
+	IntentRouterId *string `json:"IntentRouterId,omitnil,omitempty" name:"IntentRouterId"`
+
+	// <p>路由名称（例如 IntentRouter/customer-support）。</p>
+	RouteName *string `json:"RouteName,omitnil,omitempty" name:"RouteName"`
+
+	// <p>意图路由描述。</p>
+	RouterDescribe *string `json:"RouterDescribe,omitnil,omitempty" name:"RouterDescribe"`
+
+	// <p>状态。</p><p>枚举值：</p><ul><li>Provisioning：创建中</li><li>Active：正常</li><li>Configuring：配置中</li><li>ConfigureFailed：配置失败</li></ul>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>分层配置列表。</p>
+	Tiers []*IntentRouterTierItem `json:"Tiers,omitnil,omitempty" name:"Tiers"`
+
+	// <p>更新时间（ISO 8601格式）。</p>
+	UpdatedTime *string `json:"UpdatedTime,omitnil,omitempty" name:"UpdatedTime"`
+}
+
+type IntentRouterTierDictItem struct {
+	// <p>Tier 标识</p><p>枚举值：</p><ul><li>default： 默认</li><li>general_chat： 通用对话</li><li>transformation_rewrite： 转换与改写</li><li>knowledge_qa： 知识问答</li><li>summarization： 摘要</li><li>extraction_structuring： 抽取与结构化输出</li><li>content_generation： 内容生成</li><li>coding_technical： 编码与技术</li><li>data_math_analysis： 数据、数学与分析</li><li>reasoning_planning： 推理与规划</li><li>tool_agentic_workflow： 工具与智能体工作流</li></ul>
+	TierId *string `json:"TierId,omitnil,omitempty" name:"TierId"`
+
+	// <p>Tier 显示名称（已国际化）</p>
+	DisplayName *string `json:"DisplayName,omitnil,omitempty" name:"DisplayName"`
+
+	// <p>Tier 描述（已国际化）</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+type IntentRouterTierItem struct {
+	// <p>该分层下的模型显示名称列表。</p>
+	Models []*string `json:"Models,omitnil,omitempty" name:"Models"`
+
+	// <p>Tier 标识。<br>枚举值：</p><ul><li>复杂度分层（4 个固定值，需全部包含）：SIMPLE、MEDIUM、COMPLEX、REASONING</li><li>default： 默认</li><li>general_chat： 通用对话</li><li>transformation_rewrite： 转换与改写</li><li>knowledge_qa： 知识问答</li><li>summarization： 摘要</li><li>extraction_structuring： 抽取与结构化输出</li><li>content_generation： 内容生成</li><li>coding_technical： 编码与技术</li><li>data_math_analysis： 数据、数学与分析</li><li>reasoning_planning： 推理与规划</li><li>tool_agentic_workflow： 工具与智能体工作流</li></ul>
+	TierName *string `json:"TierName,omitnil,omitempty" name:"TierName"`
+}
+
 type InternetAccessible struct {
 	// TRAFFIC_POSTPAID_BY_HOUR 按流量按小时后计费 ; BANDWIDTH_POSTPAID_BY_HOUR 按带宽按小时后计费，国际站用户不支持该计费模式; BANDWIDTH_PACKAGE 按带宽包计费;BANDWIDTH_PREPAID按带宽预付费。
 	InternetChargeType *string `json:"InternetChargeType,omitnil,omitempty" name:"InternetChargeType"`
@@ -7746,6 +10247,74 @@ type Job struct {
 
 	// <p>资源ID</p>
 	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
+}
+
+type KeyDetailItem struct {
+	// Key 业务 ID
+	KeyId *string `json:"KeyId,omitnil,omitempty" name:"KeyId"`
+
+	// Key 创建时间（ISO 8601）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
+
+	// Key 显示名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+}
+
+type KeyInfo struct {
+	// <p>是否禁用Key</p>
+	Blocked *bool `json:"Blocked,omitnil,omitempty" name:"Blocked"`
+
+	// <p>Key关联的Budget ID。</p><p>未关联Budget时返回空字符串。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BudgetId *string `json:"BudgetId,omitnil,omitempty" name:"BudgetId"`
+
+	// <p>Key关联的Budget名称。</p><p>未关联Budget时返回空字符串。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BudgetName *string `json:"BudgetName,omitnil,omitempty" name:"BudgetName"`
+
+	// <p>创建时间</p>
+	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
+
+	// <p>Key按Budget刷新周期划分的Credit使用情况。</p><p>当关联Budget配置多个刷新周期时，按1d、7d、30d顺序返回各周期用量；未关联Budget时返回空数组。</p>
+	CreditUsageSet []*CreditUsage `json:"CreditUsageSet,omitnil,omitempty" name:"CreditUsageSet"`
+
+	// <p>Key的值</p>
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// <p>Key的ID</p>
+	KeyId *string `json:"KeyId,omitnil,omitempty" name:"KeyId"`
+
+	// <p>Key名称</p>
+	KeyName *string `json:"KeyName,omitnil,omitempty" name:"KeyName"`
+
+	// <p>修改时间</p>
+	ModifiedTime *string `json:"ModifiedTime,omitnil,omitempty" name:"ModifiedTime"`
+
+	// <p>限速信息</p>
+	RateLimitConfig *RateLimitConfigForKey `json:"RateLimitConfig,omitnil,omitempty" name:"RateLimitConfig"`
+
+	// <p>Key状态</p><p>枚举值：</p><ul><li>Active： 正常</li></ul>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>标签</p>
+	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>所属的用户组ID</p>
+	UserGroupId *string `json:"UserGroupId,omitnil,omitempty" name:"UserGroupId"`
+
+	// <p>所属的用户组名称</p>
+	UserGroupName *string `json:"UserGroupName,omitnil,omitempty" name:"UserGroupName"`
+}
+
+type KeyItem struct {
+	// Provider API Key
+	ApiKey *string `json:"ApiKey,omitnil,omitempty" name:"ApiKey"`
+
+	// Key 标识名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
 type LBChargePrepaid struct {
@@ -8539,9 +11108,168 @@ func (r *MigrateClassicalLoadBalancersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ModalityProbeDetail struct {
+	// <p>探测的模态</p>
+	Modality *string `json:"Modality,omitnil,omitempty" name:"Modality"`
+
+	// <p>探测结果</p><p>枚举值：</p><ul><li>Supported： 模型支持该输入模态</li><li>Unsupported： 模型不支持该输入模态</li><li>Inconclusive： 模型未明确是否支持该模态，待重新探测</li></ul>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>探测该模态请求的报错详情</p>
+	ErrorInfo *ProviderTestConnectionErrorInfo `json:"ErrorInfo,omitnil,omitempty" name:"ErrorInfo"`
+}
+
+type ModelAlias struct {
+	// <p>模型积分系数配置，包含 <code>InputCoefficient</code>、<code>InputCachedCoefficient</code> 和 <code>OutputCoefficient</code>。</p><p>未配置时输入系数默认为 25，缓存命中输入系数默认为 3，输出系数默认为 100。</p>
+	Coefficient *Coefficient `json:"Coefficient,omitnil,omitempty" name:"Coefficient"`
+
+	// <p>模型别名名称。</p><p>若用户配置了模型别名，则为该别名；未配置时为原始模型名称。</p>
+	ModelAliasName *string `json:"ModelAliasName,omitnil,omitempty" name:"ModelAliasName"`
+
+	// <p>该模型别名下各 BYOK 实例（ServiceProvider）的积分系数明细，体现 ModelAlias 与 ServiceProvider 的层级关系。</p><p>默认返回该别名引用的全部实例；某实例返回 <code>Coefficient</code> 表示其单独配置了 ServiceProvider 维度系数，否则继承顶层 ModelAlias 的 <code>Coefficient</code>。</p><p>该别名当前无有效 BYOK 引用时返回空数组。</p>
+	ServiceProviderCoefficientSet []*ServiceProviderCoefficient `json:"ServiceProviderCoefficientSet,omitnil,omitempty" name:"ServiceProviderCoefficientSet"`
+
+	// <p>模型来源。</p><p>枚举值：</p><ul><li>BYOK：用户 BYOK 配置的模型。</li></ul>
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// <p>状态</p><p>枚举值：</p><ul><li>Active： 正常可用</li><li>Configuring： 变配中</li><li>ConfigureFailed： 变配失败</li></ul>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+type ModelAssociation struct {
+	// <p>该模型最大可支持的输入多模态能力列表</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>image： 支持图像输入</li><li>file： 支持文件输入（当前仅支持pdf）</li></ul>
+	InputModalitiesUnion []*string `json:"InputModalitiesUnion,omitnil,omitempty" name:"InputModalitiesUnion"`
+
+	// <p>模型名称</p>
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
+	// <p>BYOK列表</p>
+	ServiceProviders []*ServiceProvider `json:"ServiceProviders,omitnil,omitempty" name:"ServiceProviders"`
+
+	// <p>模型类型</p>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
+type ModelAvailability struct {
+	// <p>该模型所有健康BYOK实例下支持的输入多模态能力的并集。模型不健康时返回空列表。</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>image： 支持图像输入</li><li>file： 支持文件输入（当前仅支持pdf）</li></ul>
+	InputModalities []*string `json:"InputModalities,omitnil,omitempty" name:"InputModalities"`
+
+	// <p>模型</p>
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+
+	// <p>可用性状态</p><p>枚举值：</p><ul><li>Available： 可用</li><li>Unavailable： 不可用</li><li>Unknown： 未探测</li></ul>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+type ModelHealthCheckResults struct {
+	// <p>BYOK的KeyID</p>
+	ProviderKeyId *string `json:"ProviderKeyId,omitnil,omitempty" name:"ProviderKeyId"`
+
+	// <p>模型</p>
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+
+	// <p>健康检查状态</p>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+type ModelItem struct {
+	// <p>模型唯一标识, 用于实际访问</p>
+	ModelId *string `json:"ModelId,omitnil,omitempty" name:"ModelId"`
+
+	// <p>该模型当前支持的输入多模态能力列表</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>image： 支持图像输入</li><li>file： 支持文件输入（当前仅支持pdf）</li></ul><p>默认值：text</p>
+	InputModalities []*string `json:"InputModalities,omitnil,omitempty" name:"InputModalities"`
+
+	// <p>模型别名, 可以用于实际访问</p>
+	ModelAlias *string `json:"ModelAlias,omitnil,omitempty" name:"ModelAlias"`
+}
+
+type ModelKeyInfoItem struct {
+	// <p>接入类型</p>
+	AccessType *string `json:"AccessType,omitnil,omitempty" name:"AccessType"`
+
+	// <p>API Base URL</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApiBase *string `json:"ApiBase,omitnil,omitempty" name:"ApiBase"`
+
+	// <p>模型创建时间（ISO 8601）</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
+
+	// <p>自定义host header</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HostHeader *string `json:"HostHeader,omitnil,omitempty" name:"HostHeader"`
+
+	// <p>Key 数量</p>
+	KeyCount *int64 `json:"KeyCount,omitnil,omitempty" name:"KeyCount"`
+
+	// <p>Key 详情列表</p>
+	Keys []*KeyDetailItem `json:"Keys,omitnil,omitempty" name:"Keys"`
+
+	// <p>model信息</p>
+	ModelIdsWithAlias []*ServiceProviderModelItem `json:"ModelIdsWithAlias,omitnil,omitempty" name:"ModelIdsWithAlias"`
+
+	// <p>模型供应商</p>
+	ModelProvider *string `json:"ModelProvider,omitnil,omitempty" name:"ModelProvider"`
+
+	// <p>模型协议</p>
+	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
+
+	// <p>内部通信占用IP</p>
+	ServiceIps []*string `json:"ServiceIps,omitnil,omitempty" name:"ServiceIps"`
+
+	// <p>服务提供商ID</p>
+	ServiceProviderId *string `json:"ServiceProviderId,omitnil,omitempty" name:"ServiceProviderId"`
+
+	// <p>服务提供商自定义名称</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceProviderName *string `json:"ServiceProviderName,omitnil,omitempty" name:"ServiceProviderName"`
+
+	// <p>模型状态</p><p>枚举值：</p><ul><li>Active： 运行中</li><li>Provisioning： 创建中</li><li>Configuring： 变配中</li><li>Deleting： 删除中</li><li>ProvisionFailed： 创建失败</li><li>ConfigureFailed： 变配失败</li><li>DeletionFailed： 删除失败</li><li>Disabled： 已禁用</li></ul>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>子网 ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// <p>标签信息</p>
+	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>是否校验上游SSL</p>
+	VerifySSL *bool `json:"VerifySSL,omitnil,omitempty" name:"VerifySSL"`
+
+	// <p>VPC 实例 ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+}
+
+type ModelNameAggregatedItem struct {
+	// <p>模型标识显示名称（优先使用 model_alias，否则使用 model_name）</p>
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
+	// <p>关联的服务商列表</p>
+	ServiceProviders []*ServiceProviderItem `json:"ServiceProviders,omitnil,omitempty" name:"ServiceProviders"`
+
+	// <p>该模型最大可支持的输入多模态能力列表。</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>image： 支持图像输入</li><li>file： 支持文件输入（当前仅支持pdf）</li></ul>
+	InputModalitiesUnion []*string `json:"InputModalitiesUnion,omitnil,omitempty" name:"InputModalitiesUnion"`
+}
+
 type ModelRouterDetail struct {
+	// <p>模型路由实例关联的Budget ID。</p><p>未关联Budget时返回空字符串。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BudgetId *string `json:"BudgetId,omitnil,omitempty" name:"BudgetId"`
+
+	// <p>模型路由实例关联的Budget名称。</p><p>未关联Budget时返回空字符串。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BudgetName *string `json:"BudgetName,omitnil,omitempty" name:"BudgetName"`
+
+	// <p>集群信息</p>
+	ClusterInfo *ClusterInfo `json:"ClusterInfo,omitnil,omitempty" name:"ClusterInfo"`
+
 	// <p>创建时间</p>
 	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
+
+	// <p>模型路由实例按Budget刷新周期划分的Credit使用情况。</p><p>当关联Budget配置多个刷新周期时，按1d、7d、30d顺序返回各周期用量；未关联Budget时返回空数组。</p>
+	CreditUsageSet []*CreditUsage `json:"CreditUsageSet,omitnil,omitempty" name:"CreditUsageSet"`
 
 	// <p>模型路由实例域名</p>
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
@@ -8568,6 +11296,9 @@ type ModelRouterDetail struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RouterSetting *RouterSettingWithFallBack `json:"RouterSetting,omitnil,omitempty" name:"RouterSetting"`
 
+	// <p>安全组ID列表</p>
+	SecurityGroups []*string `json:"SecurityGroups,omitnil,omitempty" name:"SecurityGroups"`
+
 	// <p>模型路由实例的安全状态</p><p>枚举值：</p><ul><li>Normal： 正常</li><li>Banned： 已封禁</li><li>Frozen： 已冻结</li></ul>
 	SecurityStatus *string `json:"SecurityStatus,omitnil,omitempty" name:"SecurityStatus"`
 
@@ -8591,27 +11322,93 @@ type ModelRouterDetail struct {
 
 	// <p>模型路由实例所属VPC的ID</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+}
 
-	// <p>模型路由实例关联的Budget ID。</p><p>未关联Budget时返回空字符串。</p>
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	BudgetId *string `json:"BudgetId,omitnil,omitempty" name:"BudgetId"`
+type ModelRouterLog struct {
+	// <p>API Key的ID</p>
+	KeyId *string `json:"KeyId,omitnil,omitempty" name:"KeyId"`
 
-	// <p>模型路由实例关联的Budget名称。</p><p>未关联Budget时返回空字符串。</p>
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	BudgetName *string `json:"BudgetName,omitnil,omitempty" name:"BudgetName"`
+	// <p>模型</p>
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
 
-	// <p>模型路由实例的Credit使用情况。</p>
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	CreditUsage *CreditUsage `json:"CreditUsage,omitnil,omitempty" name:"CreditUsage"`
+	// <p>所属厂商</p>
+	Provider *string `json:"Provider,omitnil,omitempty" name:"Provider"`
 
-	// <p>模型路由实例按Budget刷新周期划分的Credit使用情况。</p><p>当关联Budget配置多个刷新周期时，按1d、7d、30d顺序返回各周期用量；未关联Budget时返回空数组。</p>
-	CreditUsageSet []*CreditUsage `json:"CreditUsageSet,omitnil,omitempty" name:"CreditUsageSet"`
+	// <p>请求状态</p><p>枚举值：</p><ul><li>failure： 失败</li><li>success： 成功</li></ul>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// <p>安全组ID列表</p>
-	SecurityGroups []*string `json:"SecurityGroups,omitnil,omitempty" name:"SecurityGroups"`
+	// <p>最大重试次数</p>
+	MaxRetries *uint64 `json:"MaxRetries,omitnil,omitempty" name:"MaxRetries"`
 
-	// <p>集群信息</p>
-	ClusterInfo *ClusterInfo `json:"ClusterInfo,omitnil,omitempty" name:"ClusterInfo"`
+	// <p>单次请求消耗的总Token数量</p>
+	TotalTokens *uint64 `json:"TotalTokens,omitnil,omitempty" name:"TotalTokens"`
+
+	// <p>单次请求输入消耗的Token数量</p>
+	InputTokens *uint64 `json:"InputTokens,omitnil,omitempty" name:"InputTokens"`
+
+	// <p>单次请求输出消耗的Token数量</p>
+	OutputTokens *uint64 `json:"OutputTokens,omitnil,omitempty" name:"OutputTokens"`
+
+	// <p>请求耗时</p><p>单位：ms</p>
+	RequestDuration *uint64 `json:"RequestDuration,omitnil,omitempty" name:"RequestDuration"`
+
+	// <p>请求IP</p>
+	RequesterIp *string `json:"RequesterIp,omitnil,omitempty" name:"RequesterIp"`
+
+	// <p>日志查询起始时间</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>日志查询结束时间</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+}
+
+type ModelRouterModel struct {
+	// <p>模型名称</p>
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
+	// <p>所属厂商</p>
+	Provider *string `json:"Provider,omitnil,omitempty" name:"Provider"`
+
+	// <p>模型类型。</p><p>枚举值：</p><ul><li>BYOK： BYOK类型</li><li>Platform： 平台类型</li></ul>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>服务商/模型 ID（byok_model.model_id，形如 model-xxxxxxxx；Platform 类型不传）</p>
+	ServiceProviderId *string `json:"ServiceProviderId,omitnil,omitempty" name:"ServiceProviderId"`
+}
+
+type ModelRouterPackage struct {
+	// <p>模型路由资源包总容量</p>
+	CapacitySize *string `json:"CapacitySize,omitnil,omitempty" name:"CapacitySize"`
+
+	// <p>模型路由资源包总余量</p>
+	CapacityRemain *string `json:"CapacityRemain,omitnil,omitempty" name:"CapacityRemain"`
+
+	// <p>模型路由资源包容量精确值</p>
+	CapacitySizePrecise *string `json:"CapacitySizePrecise,omitnil,omitempty" name:"CapacitySizePrecise"`
+
+	// <p>模型路由资源包总余量精确值</p>
+	CapacityRemainPrecise *string `json:"CapacityRemainPrecise,omitnil,omitempty" name:"CapacityRemainPrecise"`
+
+	// <p>模型路由资源包设置用尽续购标志位 0:未设置 1:用尽到期新购</p><p>取值范围：[0, 1]</p>
+	AutoPurchaseFlag *uint64 `json:"AutoPurchaseFlag,omitnil,omitempty" name:"AutoPurchaseFlag"`
+
+	// <p>模型路由资源包Id</p>
+	ModelRouterResourcePackageId *string `json:"ModelRouterResourcePackageId,omitnil,omitempty" name:"ModelRouterResourcePackageId"`
+
+	// <p>模型路由资源包创建时间</p>
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>模型路由资源包抵扣开始时间</p>
+	DeductionStartTime *string `json:"DeductionStartTime,omitnil,omitempty" name:"DeductionStartTime"`
+
+	// <p>模型路由资源包抵扣截止时间</p>
+	DeductionEndTime *string `json:"DeductionEndTime,omitnil,omitempty" name:"DeductionEndTime"`
+
+	// <p>模型路由资源包失效时间</p>
+	ExpiredTime *string `json:"ExpiredTime,omitnil,omitempty" name:"ExpiredTime"`
+
+	// <p>模型路由资源包状态</p><p>枚举值：</p><ul><li>0： 有效</li><li>1： 已退款</li><li>2： 已过期</li><li>3： 已用完</li></ul>
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 type ModelRouterQuota struct {
@@ -8634,6 +11431,43 @@ type ModelRouterQuota struct {
 	// <p>剩余配额数量</p><p>单位：个</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Available *uint64 `json:"Available,omitnil,omitempty" name:"Available"`
+}
+
+type ModelRouterResourcePackageDeduction struct {
+	// <p>实际抵扣量</p>
+	ActualDosage *string `json:"ActualDosage,omitnil,omitempty" name:"ActualDosage"`
+
+	// <p>抵扣后包剩余量</p>
+	AfterDeductionRemain *string `json:"AfterDeductionRemain,omitnil,omitempty" name:"AfterDeductionRemain"`
+
+	// <p>抵扣前包剩余量</p>
+	BeforeDeductionRemain *string `json:"BeforeDeductionRemain,omitnil,omitempty" name:"BeforeDeductionRemain"`
+
+	// <p>抵扣时间</p>
+	DeductionTime *string `json:"DeductionTime,omitnil,omitempty" name:"DeductionTime"`
+
+	// <p>原始用量</p>
+	Dosage *string `json:"Dosage,omitnil,omitempty" name:"Dosage"`
+
+	// <p>用量结束时间</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>产生用量的模型路由实例Id</p>
+	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
+
+	// <p>模型路由资源包Id</p>
+	ModelRouterResourcePackageId *string `json:"ModelRouterResourcePackageId,omitnil,omitempty" name:"ModelRouterResourcePackageId"`
+
+	// <p>用量开始时间</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+}
+
+type ModelRouterResourcePackageRefundPrice struct {
+	// <p>模型路由资源包Id</p>
+	ModelRouterPackageId *string `json:"ModelRouterPackageId,omitnil,omitempty" name:"ModelRouterPackageId"`
+
+	// <p>可退还金额</p>
+	Price *float64 `json:"Price,omitnil,omitempty" name:"Price"`
 }
 
 type ModelRouterSet struct {
@@ -8689,6 +11523,20 @@ type ModelRouterSet struct {
 
 	// <p>模型路由实例所属VPC的ID</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+}
+
+type ModelTestResult struct {
+	// <p>模型</p>
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+
+	// <p>健康状况</p><p>枚举值：</p><ul><li>Success： 健康</li><li>Error： 不健康</li></ul>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>错误信息</p>
+	ErrorInfo *ProviderTestConnectionErrorInfo `json:"ErrorInfo,omitnil,omitempty" name:"ErrorInfo"`
+
+	// <p>探测请求</p>
+	TestConnectionRequest *TestConnectionRequestInfo `json:"TestConnectionRequest,omitnil,omitempty" name:"TestConnectionRequest"`
 }
 
 // Predefined struct for user
@@ -8800,7 +11648,7 @@ type ModifyBudgetAttributesRequestParams struct {
 	// <p>Budget ID。</p>
 	BudgetId *string `json:"BudgetId,omitnil,omitempty" name:"BudgetId"`
 
-	// <p>预算配置数组。</p><p>数组长度最大为1。BudgetResetAt不支持作为入参设置。</p>
+	// <p>预算配置数组。</p><p>数组长度最大为3，最多可同时配置1d、7d、30d三个刷新周期，且每种刷新周期只能出现一次。BudgetResetAt不支持作为入参设置，系统会按配置的刷新周期自动维护刷新时间。</p>
 	BudgetConfigs []*BudgetConfigInput `json:"BudgetConfigs,omitnil,omitempty" name:"BudgetConfigs"`
 
 	// <p>Budget名称。</p>
@@ -8816,7 +11664,7 @@ type ModifyBudgetAttributesRequest struct {
 	// <p>Budget ID。</p>
 	BudgetId *string `json:"BudgetId,omitnil,omitempty" name:"BudgetId"`
 
-	// <p>预算配置数组。</p><p>数组长度最大为1。BudgetResetAt不支持作为入参设置。</p>
+	// <p>预算配置数组。</p><p>数组长度最大为3，最多可同时配置1d、7d、30d三个刷新周期，且每种刷新周期只能出现一次。BudgetResetAt不支持作为入参设置，系统会按配置的刷新周期自动维护刷新时间。</p>
 	BudgetConfigs []*BudgetConfigInput `json:"BudgetConfigs,omitnil,omitempty" name:"BudgetConfigs"`
 
 	// <p>Budget名称。</p>
@@ -9161,6 +12009,88 @@ func (r *ModifyFunctionTargetsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyFunctionTargetsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyIntentRouterAttributeRequestParams struct {
+	// <p>意图路由ID（ir-xxx格式）。</p>
+	IntentRouterId *string `json:"IntentRouterId,omitnil,omitempty" name:"IntentRouterId"`
+
+	// <p>模型路由实例ID。</p>
+	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
+
+	// <p>新的路由名称。</p><p>选填；必须以"IntentRouter/"为前缀，后缀仅支持字母、数字、连字符和下划线，后缀长度1-128个字符。不传则不修改。</p>
+	RouteName *string `json:"RouteName,omitnil,omitempty" name:"RouteName"`
+
+	// <p>意图路由描述。</p>
+	RouterDescribe *string `json:"RouterDescribe,omitnil,omitempty" name:"RouterDescribe"`
+
+	// <p>新的分层配置列表（全量替换）。</p><p>选填；不传则不修改。传入时必须为完整分层集合：复杂度分层须包含全部 4 个分层 SIMPLE/MEDIUM/COMPLEX/REASONING；语义分层须包含 default 及各语义 Tier（取决于实例所用协议，且不可跨协议变更）。每个分层至少包含一个模型，模型名称必须是已关联到该实例的模型。</p>
+	Tiers []*TierItem `json:"Tiers,omitnil,omitempty" name:"Tiers"`
+}
+
+type ModifyIntentRouterAttributeRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>意图路由ID（ir-xxx格式）。</p>
+	IntentRouterId *string `json:"IntentRouterId,omitnil,omitempty" name:"IntentRouterId"`
+
+	// <p>模型路由实例ID。</p>
+	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
+
+	// <p>新的路由名称。</p><p>选填；必须以"IntentRouter/"为前缀，后缀仅支持字母、数字、连字符和下划线，后缀长度1-128个字符。不传则不修改。</p>
+	RouteName *string `json:"RouteName,omitnil,omitempty" name:"RouteName"`
+
+	// <p>意图路由描述。</p>
+	RouterDescribe *string `json:"RouterDescribe,omitnil,omitempty" name:"RouterDescribe"`
+
+	// <p>新的分层配置列表（全量替换）。</p><p>选填；不传则不修改。传入时必须为完整分层集合：复杂度分层须包含全部 4 个分层 SIMPLE/MEDIUM/COMPLEX/REASONING；语义分层须包含 default 及各语义 Tier（取决于实例所用协议，且不可跨协议变更）。每个分层至少包含一个模型，模型名称必须是已关联到该实例的模型。</p>
+	Tiers []*TierItem `json:"Tiers,omitnil,omitempty" name:"Tiers"`
+}
+
+func (r *ModifyIntentRouterAttributeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyIntentRouterAttributeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "IntentRouterId")
+	delete(f, "ModelRouterId")
+	delete(f, "RouteName")
+	delete(f, "RouterDescribe")
+	delete(f, "Tiers")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyIntentRouterAttributeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyIntentRouterAttributeResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyIntentRouterAttributeResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyIntentRouterAttributeResponseParams `json:"Response"`
+}
+
+func (r *ModifyIntentRouterAttributeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyIntentRouterAttributeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -9902,9 +12832,141 @@ func (r *ModifyLoadBalancersProjectResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyModelAliasAttributesRequestParams struct {
+	// <p>模型积分系数配置。</p><p>必填，至少包含 <code>InputCoefficient</code>、<code>InputCachedCoefficient</code>、<code>OutputCoefficient</code> 中的一个字段，未传字段保持原值。</p><p><code>InputCoefficient</code> 为非缓存命中输入积分系数。</p><p><code>InputCachedCoefficient</code> 为缓存命中输入积分系数，用于 provider prompt cache 命中的输入 token。</p><p><code>OutputCoefficient</code> 为输出积分系数。</p><p>各字段取值范围：[0, 5000]，仅支持整数，0 表示该类 token 不计积分。</p>
+	Coefficient *Coefficient `json:"Coefficient,omitnil,omitempty" name:"Coefficient"`
+
+	// <p>模型别名列表。</p><p>不传 <code>ServiceProviderIds</code>（按 ModelAlias 账号维度修改）时支持数组批量，同一份 Coefficient 应用到多个别名。</p><p>传入 <code>ServiceProviderIds</code>（按 ServiceProvider 维度修改）时只能传 1 个别名，锁定唯一 model 别名；去重后不等于 1 个将返回 InvalidParameter。</p>
+	ModelAliasNames []*string `json:"ModelAliasNames,omitnil,omitempty" name:"ModelAliasNames"`
+
+	// <p>BYOK 实例（ServiceProvider）ID 列表。</p><p>可选，数组。传入时按 ServiceProvider 维度修改：把同一份 Coefficient 批量应用到数组内每一个实例（覆盖配置，仅作用于这些实例），此时 <code>ModelAliasNames</code> 只能传 1 个别名（即 1 别名 × N ServiceProvider）；数组需去重、非空、上限 100，任一实例不归属/不存在/该实例下无该别名将整批返回错误。不传时按 ModelAlias（账号）维度修改，作用于该别名下未单独配置覆盖的全部实例。</p>
+	ServiceProviderIds []*string `json:"ServiceProviderIds,omitnil,omitempty" name:"ServiceProviderIds"`
+}
+
+type ModifyModelAliasAttributesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>模型积分系数配置。</p><p>必填，至少包含 <code>InputCoefficient</code>、<code>InputCachedCoefficient</code>、<code>OutputCoefficient</code> 中的一个字段，未传字段保持原值。</p><p><code>InputCoefficient</code> 为非缓存命中输入积分系数。</p><p><code>InputCachedCoefficient</code> 为缓存命中输入积分系数，用于 provider prompt cache 命中的输入 token。</p><p><code>OutputCoefficient</code> 为输出积分系数。</p><p>各字段取值范围：[0, 5000]，仅支持整数，0 表示该类 token 不计积分。</p>
+	Coefficient *Coefficient `json:"Coefficient,omitnil,omitempty" name:"Coefficient"`
+
+	// <p>模型别名列表。</p><p>不传 <code>ServiceProviderIds</code>（按 ModelAlias 账号维度修改）时支持数组批量，同一份 Coefficient 应用到多个别名。</p><p>传入 <code>ServiceProviderIds</code>（按 ServiceProvider 维度修改）时只能传 1 个别名，锁定唯一 model 别名；去重后不等于 1 个将返回 InvalidParameter。</p>
+	ModelAliasNames []*string `json:"ModelAliasNames,omitnil,omitempty" name:"ModelAliasNames"`
+
+	// <p>BYOK 实例（ServiceProvider）ID 列表。</p><p>可选，数组。传入时按 ServiceProvider 维度修改：把同一份 Coefficient 批量应用到数组内每一个实例（覆盖配置，仅作用于这些实例），此时 <code>ModelAliasNames</code> 只能传 1 个别名（即 1 别名 × N ServiceProvider）；数组需去重、非空、上限 100，任一实例不归属/不存在/该实例下无该别名将整批返回错误。不传时按 ModelAlias（账号）维度修改，作用于该别名下未单独配置覆盖的全部实例。</p>
+	ServiceProviderIds []*string `json:"ServiceProviderIds,omitnil,omitempty" name:"ServiceProviderIds"`
+}
+
+func (r *ModifyModelAliasAttributesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyModelAliasAttributesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Coefficient")
+	delete(f, "ModelAliasNames")
+	delete(f, "ServiceProviderIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyModelAliasAttributesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyModelAliasAttributesResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyModelAliasAttributesResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyModelAliasAttributesResponseParams `json:"Response"`
+}
+
+func (r *ModifyModelAliasAttributesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyModelAliasAttributesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyModelAttributesRequestParams struct {
+	// <p>BYOK的ID</p><p>参数格式：byok-kot39u7j</p>
+	ServiceProviderId *string `json:"ServiceProviderId,omitnil,omitempty" name:"ServiceProviderId"`
+
+	// <p>BYOK的自定义名字</p><p>入参限制：1～256个字符</p>
+	ServiceProviderName *string `json:"ServiceProviderName,omitnil,omitempty" name:"ServiceProviderName"`
+}
+
+type ModifyModelAttributesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>BYOK的ID</p><p>参数格式：byok-kot39u7j</p>
+	ServiceProviderId *string `json:"ServiceProviderId,omitnil,omitempty" name:"ServiceProviderId"`
+
+	// <p>BYOK的自定义名字</p><p>入参限制：1～256个字符</p>
+	ServiceProviderName *string `json:"ServiceProviderName,omitnil,omitempty" name:"ServiceProviderName"`
+}
+
+func (r *ModifyModelAttributesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyModelAttributesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ServiceProviderId")
+	delete(f, "ServiceProviderName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyModelAttributesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyModelAttributesResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyModelAttributesResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyModelAttributesResponseParams `json:"Response"`
+}
+
+func (r *ModifyModelAttributesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyModelAttributesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyModelRouterAttributesRequestParams struct {
 	// <p>模型路由ID</p>
 	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
+
+	// <p>新的 HTTPS 证书ID，用于替换实例 HTTPS 服务端点当前绑定的证书。常用于证书到期前的更换场景。</p><p>使用限制：</p><ul><li>仅企业型（Enterprise）且服务端点协议为 HTTPS 的实例支持修改证书。</li><li>证书须为 SSL 证书控制台中状态为“已签发”（可用）且未过期的服务器证书（SVR 类型）。可在 <a href="https://console.cloud.tencent.com/ssl">SSL 证书控制台</a> 查看证书ID。</li><li>替换后新证书立即生效，过程中不会中断业务流量。</li><li>若传入的证书与当前绑定的证书相同，接口直接返回成功，不做任何变更。</li></ul><p>不传则证书保持不变。可通过 <code>DescribeModelRouterDetail</code> 接口的 <code>ServiceEndPoints.CertId</code> 字段查询当前绑定的证书。</p>
+	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
 
 	// <p>模型路由名称</p>
 	ModelRouterName *string `json:"ModelRouterName,omitnil,omitempty" name:"ModelRouterName"`
@@ -9914,9 +12976,6 @@ type ModifyModelRouterAttributesRequestParams struct {
 
 	// <p>路由配置</p>
 	RouterSetting *RouterSettingWithFallBack `json:"RouterSetting,omitnil,omitempty" name:"RouterSetting"`
-
-	// <p>新的 HTTPS 证书ID，用于替换实例 HTTPS 服务端点当前绑定的证书。常用于证书到期前的更换场景。</p><p>使用限制：</p><ul><li>仅企业型（Enterprise）且服务端点协议为 HTTPS 的实例支持修改证书。</li><li>证书须为 SSL 证书控制台中状态为“已签发”（可用）且未过期的服务器证书（SVR 类型）。可在 <a href="https://console.cloud.tencent.com/ssl">SSL 证书控制台</a> 查看证书ID。</li><li>替换后新证书立即生效，过程中不会中断业务流量。</li><li>若传入的证书与当前绑定的证书相同，接口直接返回成功，不做任何变更。</li></ul><p>不传则证书保持不变。可通过 <code>DescribeModelRouterDetail</code> 接口的 <code>ServiceEndPoints.CertId</code> 字段查询当前绑定的证书。</p>
-	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
 }
 
 type ModifyModelRouterAttributesRequest struct {
@@ -9925,6 +12984,9 @@ type ModifyModelRouterAttributesRequest struct {
 	// <p>模型路由ID</p>
 	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
 
+	// <p>新的 HTTPS 证书ID，用于替换实例 HTTPS 服务端点当前绑定的证书。常用于证书到期前的更换场景。</p><p>使用限制：</p><ul><li>仅企业型（Enterprise）且服务端点协议为 HTTPS 的实例支持修改证书。</li><li>证书须为 SSL 证书控制台中状态为“已签发”（可用）且未过期的服务器证书（SVR 类型）。可在 <a href="https://console.cloud.tencent.com/ssl">SSL 证书控制台</a> 查看证书ID。</li><li>替换后新证书立即生效，过程中不会中断业务流量。</li><li>若传入的证书与当前绑定的证书相同，接口直接返回成功，不做任何变更。</li></ul><p>不传则证书保持不变。可通过 <code>DescribeModelRouterDetail</code> 接口的 <code>ServiceEndPoints.CertId</code> 字段查询当前绑定的证书。</p>
+	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
+
 	// <p>模型路由名称</p>
 	ModelRouterName *string `json:"ModelRouterName,omitnil,omitempty" name:"ModelRouterName"`
 
@@ -9933,9 +12995,6 @@ type ModifyModelRouterAttributesRequest struct {
 
 	// <p>路由配置</p>
 	RouterSetting *RouterSettingWithFallBack `json:"RouterSetting,omitnil,omitempty" name:"RouterSetting"`
-
-	// <p>新的 HTTPS 证书ID，用于替换实例 HTTPS 服务端点当前绑定的证书。常用于证书到期前的更换场景。</p><p>使用限制：</p><ul><li>仅企业型（Enterprise）且服务端点协议为 HTTPS 的实例支持修改证书。</li><li>证书须为 SSL 证书控制台中状态为“已签发”（可用）且未过期的服务器证书（SVR 类型）。可在 <a href="https://console.cloud.tencent.com/ssl">SSL 证书控制台</a> 查看证书ID。</li><li>替换后新证书立即生效，过程中不会中断业务流量。</li><li>若传入的证书与当前绑定的证书相同，接口直接返回成功，不做任何变更。</li></ul><p>不传则证书保持不变。可通过 <code>DescribeModelRouterDetail</code> 接口的 <code>ServiceEndPoints.CertId</code> 字段查询当前绑定的证书。</p>
-	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
 }
 
 func (r *ModifyModelRouterAttributesRequest) ToJsonString() string {
@@ -9951,10 +13010,10 @@ func (r *ModifyModelRouterAttributesRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "ModelRouterId")
+	delete(f, "CertId")
 	delete(f, "ModelRouterName")
 	delete(f, "RateLimitConfig")
 	delete(f, "RouterSetting")
-	delete(f, "CertId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyModelRouterAttributesRequest has unknown keys!", "")
 	}
@@ -9980,6 +13039,128 @@ func (r *ModifyModelRouterAttributesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyModelRouterAttributesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyModelRouterGuardrailsRequestParams struct {
+	// <p>待修改的 Guardrail 防护配置列表。</p><p>当前最多支持 1 个元素。每个元素必须填写 GuardrailId；当 Type 为 WAF 或未传按 WAF 处理时，InstanceId 和 ServiceId 必填；InputCheckDepth 为选填，不传时沿用当前已关联 Guardrail 的取值。</p>
+	Guardrails []*GuardrailConfig `json:"Guardrails,omitnil,omitempty" name:"Guardrails"`
+
+	// <p>模型路由实例 ID。</p>
+	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
+}
+
+type ModifyModelRouterGuardrailsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>待修改的 Guardrail 防护配置列表。</p><p>当前最多支持 1 个元素。每个元素必须填写 GuardrailId；当 Type 为 WAF 或未传按 WAF 处理时，InstanceId 和 ServiceId 必填；InputCheckDepth 为选填，不传时沿用当前已关联 Guardrail 的取值。</p>
+	Guardrails []*GuardrailConfig `json:"Guardrails,omitnil,omitempty" name:"Guardrails"`
+
+	// <p>模型路由实例 ID。</p>
+	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
+}
+
+func (r *ModifyModelRouterGuardrailsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyModelRouterGuardrailsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Guardrails")
+	delete(f, "ModelRouterId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyModelRouterGuardrailsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyModelRouterGuardrailsResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyModelRouterGuardrailsResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyModelRouterGuardrailsResponseParams `json:"Response"`
+}
+
+func (r *ModifyModelRouterGuardrailsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyModelRouterGuardrailsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyModelRouterSecurityGroupsRequestParams struct {
+	// <p>模型路由实例ID</p>
+	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
+
+	// <p>需要绑定的安全组ID列表</p>
+	SecurityGroups []*string `json:"SecurityGroups,omitnil,omitempty" name:"SecurityGroups"`
+}
+
+type ModifyModelRouterSecurityGroupsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>模型路由实例ID</p>
+	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
+
+	// <p>需要绑定的安全组ID列表</p>
+	SecurityGroups []*string `json:"SecurityGroups,omitnil,omitempty" name:"SecurityGroups"`
+}
+
+func (r *ModifyModelRouterSecurityGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyModelRouterSecurityGroupsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ModelRouterId")
+	delete(f, "SecurityGroups")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyModelRouterSecurityGroupsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyModelRouterSecurityGroupsResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyModelRouterSecurityGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyModelRouterSecurityGroupsResponseParams `json:"Response"`
+}
+
+func (r *ModifyModelRouterSecurityGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyModelRouterSecurityGroupsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -10115,6 +13296,74 @@ func (r *ModifyRuleResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyServiceProviderModelAttributesRequestParams struct {
+	// <p>BYOK 实例 ID</p>
+	ServiceProviderId *string `json:"ServiceProviderId,omitnil,omitempty" name:"ServiceProviderId"`
+
+	// <p>待修改的模型的名称（原始模型名称）</p>
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
+	// <p>该模型支持的输入多模态能力列表</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>image： 支持图像输入</li><li>file： 支持文件输入（当前仅支持pdf）</li></ul>
+	InputModalities []*string `json:"InputModalities,omitnil,omitempty" name:"InputModalities"`
+}
+
+type ModifyServiceProviderModelAttributesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>BYOK 实例 ID</p>
+	ServiceProviderId *string `json:"ServiceProviderId,omitnil,omitempty" name:"ServiceProviderId"`
+
+	// <p>待修改的模型的名称（原始模型名称）</p>
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
+	// <p>该模型支持的输入多模态能力列表</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>image： 支持图像输入</li><li>file： 支持文件输入（当前仅支持pdf）</li></ul>
+	InputModalities []*string `json:"InputModalities,omitnil,omitempty" name:"InputModalities"`
+}
+
+func (r *ModifyServiceProviderModelAttributesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyServiceProviderModelAttributesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ServiceProviderId")
+	delete(f, "ModelName")
+	delete(f, "InputModalities")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyServiceProviderModelAttributesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyServiceProviderModelAttributesResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyServiceProviderModelAttributesResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyServiceProviderModelAttributesResponseParams `json:"Response"`
+}
+
+func (r *ModifyServiceProviderModelAttributesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyServiceProviderModelAttributesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -10642,6 +13891,14 @@ type MultiCertInfo struct {
 	SSLVerifyClient *string `json:"SSLVerifyClient,omitnil,omitempty" name:"SSLVerifyClient"`
 }
 
+type MultiModalityAttachments struct {
+	// <p>base64 url编码的文件内容</p>
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// <p>附件类型</p><p>枚举值：</p><ul><li>image： 图像</li><li>pdf： pdf（文件）</li></ul>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
 type OAuth struct {
 	// 开启或关闭鉴权。
 	// True: 开启;
@@ -10667,6 +13924,31 @@ type Price struct {
 	// 描述了lcu价格。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LcuPrice *ItemPrice `json:"LcuPrice,omitnil,omitempty" name:"LcuPrice"`
+}
+
+type ProviderItem struct {
+	// <p>Provider 标识（如 openai）</p>
+	Provider *string `json:"Provider,omitnil,omitempty" name:"Provider"`
+
+	// <p>显示名称（如 OpenAI）</p>
+	DisplayName *string `json:"DisplayName,omitnil,omitempty" name:"DisplayName"`
+
+	// <p>模型协议列表</p>
+	Protocols []*string `json:"Protocols,omitnil,omitempty" name:"Protocols"`
+
+	// <p>英文显示名称</p>
+	EnglishDisplayName *string `json:"EnglishDisplayName,omitnil,omitempty" name:"EnglishDisplayName"`
+}
+
+type ProviderTestConnectionErrorInfo struct {
+	// <p>上游模型侧返回的HTTP状态码</p>
+	HttpCode *uint64 `json:"HttpCode,omitnil,omitempty" name:"HttpCode"`
+
+	// <p>错误状态码</p>
+	ErrorStatus *string `json:"ErrorStatus,omitnil,omitempty" name:"ErrorStatus"`
+
+	// <p>探测请求错误信息</p>
+	OriginalMessage *string `json:"OriginalMessage,omitnil,omitempty" name:"OriginalMessage"`
 }
 
 type Quota struct {
@@ -10717,6 +13999,63 @@ type RateLimitConfigForModelRouter struct {
 }
 
 // Predefined struct for user
+type RefundModelRouterResourcePackageRequestParams struct {
+	// <p>待退还的模型路由资源包Id</p><p>非有效状态或者设置了自动续订且自动续订已生效的资源包不允许退款。</p>
+	ModelRouterResourcePackageIds []*string `json:"ModelRouterResourcePackageIds,omitnil,omitempty" name:"ModelRouterResourcePackageIds"`
+}
+
+type RefundModelRouterResourcePackageRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>待退还的模型路由资源包Id</p><p>非有效状态或者设置了自动续订且自动续订已生效的资源包不允许退款。</p>
+	ModelRouterResourcePackageIds []*string `json:"ModelRouterResourcePackageIds,omitnil,omitempty" name:"ModelRouterResourcePackageIds"`
+}
+
+func (r *RefundModelRouterResourcePackageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RefundModelRouterResourcePackageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ModelRouterResourcePackageIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RefundModelRouterResourcePackageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RefundModelRouterResourcePackageResponseParams struct {
+	// <p>退还模型路由资源包的订单号</p>
+	DealNames []*string `json:"DealNames,omitnil,omitempty" name:"DealNames"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RefundModelRouterResourcePackageResponse struct {
+	*tchttp.BaseResponse
+	Response *RefundModelRouterResourcePackageResponseParams `json:"Response"`
+}
+
+func (r *RefundModelRouterResourcePackageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RefundModelRouterResourcePackageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type RegenerateKeysRequestParams struct {
 	// <p>模型路由实例ID</p>
 	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
@@ -10757,11 +14096,11 @@ func (r *RegenerateKeysRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RegenerateKeysResponseParams struct {
-	// <p>重新生成后的Key的信息</p>
-	RegeneratedKeys []*RegeneratedKey `json:"RegeneratedKeys,omitnil,omitempty" name:"RegeneratedKeys"`
-
 	// <p>重新生成失败的Key的ID列表</p>
 	FailedKeyIds []*string `json:"FailedKeyIds,omitnil,omitempty" name:"FailedKeyIds"`
+
+	// <p>重新生成后的Key的信息</p>
+	RegeneratedKeys []*RegeneratedKey `json:"RegeneratedKeys,omitnil,omitempty" name:"RegeneratedKeys"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -10784,11 +14123,11 @@ func (r *RegenerateKeysResponse) FromJsonString(s string) error {
 }
 
 type RegeneratedKey struct {
-	// <p>Key的ID</p>
-	KeyId *string `json:"KeyId,omitnil,omitempty" name:"KeyId"`
-
 	// <p>重新生成的明文Key</p>
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// <p>Key的ID</p>
+	KeyId *string `json:"KeyId,omitnil,omitempty" name:"KeyId"`
 }
 
 // Predefined struct for user
@@ -10877,6 +14216,67 @@ func (r *RegisterFunctionTargetsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *RegisterFunctionTargetsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RegisterModelsToServiceProviderRequestParams struct {
+	// <p>BYOK的ID</p>
+	ServiceProviderId *string `json:"ServiceProviderId,omitnil,omitempty" name:"ServiceProviderId"`
+
+	// <p>需要关联的模型信息</p>
+	Models []*ModelItem `json:"Models,omitnil,omitempty" name:"Models"`
+}
+
+type RegisterModelsToServiceProviderRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>BYOK的ID</p>
+	ServiceProviderId *string `json:"ServiceProviderId,omitnil,omitempty" name:"ServiceProviderId"`
+
+	// <p>需要关联的模型信息</p>
+	Models []*ModelItem `json:"Models,omitnil,omitempty" name:"Models"`
+}
+
+func (r *RegisterModelsToServiceProviderRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RegisterModelsToServiceProviderRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ServiceProviderId")
+	delete(f, "Models")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RegisterModelsToServiceProviderRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RegisterModelsToServiceProviderResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RegisterModelsToServiceProviderResponse struct {
+	*tchttp.BaseResponse
+	Response *RegisterModelsToServiceProviderResponseParams `json:"Response"`
+}
+
+func (r *RegisterModelsToServiceProviderResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RegisterModelsToServiceProviderResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -11092,6 +14492,128 @@ func (r *RegisterTargetsWithClassicalLBResponse) FromJsonString(s string) error 
 }
 
 // Predefined struct for user
+type RemoveModelKeyRequestParams struct {
+	// <p>服务提供商ID</p>
+	ServiceProviderId *string `json:"ServiceProviderId,omitnil,omitempty" name:"ServiceProviderId"`
+
+	// <p>Key 业务 ID 列表，至少 1 个，最多 10 个</p>
+	KeyIds []*string `json:"KeyIds,omitnil,omitempty" name:"KeyIds"`
+}
+
+type RemoveModelKeyRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>服务提供商ID</p>
+	ServiceProviderId *string `json:"ServiceProviderId,omitnil,omitempty" name:"ServiceProviderId"`
+
+	// <p>Key 业务 ID 列表，至少 1 个，最多 10 个</p>
+	KeyIds []*string `json:"KeyIds,omitnil,omitempty" name:"KeyIds"`
+}
+
+func (r *RemoveModelKeyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RemoveModelKeyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ServiceProviderId")
+	delete(f, "KeyIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RemoveModelKeyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RemoveModelKeyResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RemoveModelKeyResponse struct {
+	*tchttp.BaseResponse
+	Response *RemoveModelKeyResponseParams `json:"Response"`
+}
+
+func (r *RemoveModelKeyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RemoveModelKeyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RemoveModelRewriteRequestParams struct {
+	// <p>模型路由实例 ID。</p>
+	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
+
+	// <p>要删除的源模型名（重写规则的 key）。</p><p>长度 1-255 字符；支持特殊值 <code>default</code> 表示删除兜底规则。</p><p>当指定的 SourceModel 当前不存在重写规则时，请求幂等成功。</p>
+	SourceModel *string `json:"SourceModel,omitnil,omitempty" name:"SourceModel"`
+}
+
+type RemoveModelRewriteRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>模型路由实例 ID。</p>
+	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
+
+	// <p>要删除的源模型名（重写规则的 key）。</p><p>长度 1-255 字符；支持特殊值 <code>default</code> 表示删除兜底规则。</p><p>当指定的 SourceModel 当前不存在重写规则时，请求幂等成功。</p>
+	SourceModel *string `json:"SourceModel,omitnil,omitempty" name:"SourceModel"`
+}
+
+func (r *RemoveModelRewriteRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RemoveModelRewriteRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ModelRouterId")
+	delete(f, "SourceModel")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RemoveModelRewriteRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RemoveModelRewriteResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RemoveModelRewriteResponse struct {
+	*tchttp.BaseResponse
+	Response *RemoveModelRewriteResponseParams `json:"Response"`
+}
+
+func (r *RemoveModelRewriteResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RemoveModelRewriteResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type RenewLoadBalancersRequestParams struct {
 	// 负载均衡实例唯一ID数组，最多支持20个。
 	LoadBalancerIds []*string `json:"LoadBalancerIds,omitnil,omitempty" name:"LoadBalancerIds"`
@@ -11238,6 +14760,14 @@ type ResourceAvailability struct {
 	Availability *string `json:"Availability,omitnil,omitempty" name:"Availability"`
 }
 
+type RewriteItem struct {
+	// <p>源模型名（重写规则的 key）。</p><p>特殊值 <code>default</code> 表示兜底规则（命中所有未显式列出的源模型）。</p>
+	SourceModel *string `json:"SourceModel,omitnil,omitempty" name:"SourceModel"`
+
+	// <p>目标模型名（重写规则的 value）。</p>
+	TargetModel *string `json:"TargetModel,omitnil,omitempty" name:"TargetModel"`
+}
+
 type RewriteLocationMap struct {
 	// 源转发规则ID
 	SourceLocationId *string `json:"SourceLocationId,omitnil,omitempty" name:"SourceLocationId"`
@@ -11275,6 +14805,10 @@ type RewriteTarget struct {
 }
 
 type RouterSettingWithFallBack struct {
+	// <p>模型间路由策略。</p><p>枚举值：</p><ul><li>SimpleShuffle： 简单随机路由</li><li>LowestCost： 最低积分路由</li></ul>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CrossModelGroupRoutingStrategy *string `json:"CrossModelGroupRoutingStrategy,omitnil,omitempty" name:"CrossModelGroupRoutingStrategy"`
+
 	// <p>回退策略</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FallBack *FallBackItem `json:"FallBack,omitnil,omitempty" name:"FallBack"`
@@ -11282,10 +14816,6 @@ type RouterSettingWithFallBack struct {
 	// <p>模型内路由策略</p><p>枚举值：</p><ul><li>SimpleShuffle： 简单随机路由</li><li>LeastBusy： 最低繁忙路由</li><li>LatencyBasedRouting： 最低延迟路由</li><li>UsageBasedRouting： 用量均衡路由</li><li>CostBasedRouting： 最低积分路由</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RoutingStrategy *string `json:"RoutingStrategy,omitnil,omitempty" name:"RoutingStrategy"`
-
-	// <p>模型间路由策略。</p><p>枚举值：</p><ul><li>SimpleShuffle： 简单随机路由</li><li>CostBasedRouting： 最低积分路由</li></ul>
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	CrossModelGroupRoutingStrategy *string `json:"CrossModelGroupRoutingStrategy,omitnil,omitempty" name:"CrossModelGroupRoutingStrategy"`
 }
 
 type RouterSettingWithoutFallBack struct {
@@ -11522,6 +15052,72 @@ type ServiceEndPoints struct {
 
 	// <p>网络协议</p>
 	Schema *string `json:"Schema,omitnil,omitempty" name:"Schema"`
+}
+
+type ServiceProvider struct {
+	// <p>BYOK类型</p>
+	AccessType *string `json:"AccessType,omitnil,omitempty" name:"AccessType"`
+
+	// <p>单个byok实例下该模型可支持的输入多模态能力列表。</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>file： 支持文件输入（当前仅支持pdf）</li><li>image： 支持图像输入</li></ul>
+	InputModalities []*string `json:"InputModalities,omitnil,omitempty" name:"InputModalities"`
+
+	// <p>模型协议</p>
+	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
+
+	// <p>BYOK的所属厂商</p>
+	Provider *string `json:"Provider,omitnil,omitempty" name:"Provider"`
+
+	// <p>BYOK实例ID</p>
+	ServiceProviderId *string `json:"ServiceProviderId,omitnil,omitempty" name:"ServiceProviderId"`
+
+	// <p>BYOK名称</p>
+	ServiceProviderName *string `json:"ServiceProviderName,omitnil,omitempty" name:"ServiceProviderName"`
+}
+
+type ServiceProviderCoefficient struct {
+	// <p>该 BYOK 实例（ServiceProvider）维度的积分系数。</p><p>可选字段：仅当该实例单独配置了 ServiceProvider 维度系数时返回，返回值即该实例的生效系数；未返回时表示该实例继承所属 ModelAlias 的 <code>Coefficient</code>。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Coefficient *Coefficient `json:"Coefficient,omitnil,omitempty" name:"Coefficient"`
+
+	// <p>BYOK 实例（ServiceProvider）ID。</p>
+	ServiceProviderId *string `json:"ServiceProviderId,omitnil,omitempty" name:"ServiceProviderId"`
+
+	// <p>BYOK 实例（ServiceProvider）名称。</p>
+	ServiceProviderName *string `json:"ServiceProviderName,omitnil,omitempty" name:"ServiceProviderName"`
+}
+
+type ServiceProviderItem struct {
+	// <p>服务提供商 ID</p>
+	ServiceProviderId *string `json:"ServiceProviderId,omitnil,omitempty" name:"ServiceProviderId"`
+
+	// <p>用户自定义服务提供商名称</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceProviderName *string `json:"ServiceProviderName,omitnil,omitempty" name:"ServiceProviderName"`
+
+	// <p>模型供应商</p>
+	ModelProvider *string `json:"ModelProvider,omitnil,omitempty" name:"ModelProvider"`
+
+	// <p>该byok实例下该模型可支持的输入多模态能力列表。</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>file： 支持文件输入（当前仅支持pdf）</li><li>image： 支持图像输入</li></ul>
+	InputModalities []*string `json:"InputModalities,omitnil,omitempty" name:"InputModalities"`
+}
+
+type ServiceProviderModelItem struct {
+	// <p>关联的模型路由实例列表</p>
+	AssociatedModelRouters []*AssociatedModelRouterItem `json:"AssociatedModelRouters,omitnil,omitempty" name:"AssociatedModelRouters"`
+
+	// <p>该模型当前支持的输入多模态能力列表</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>image： 支持图像输入</li><li>file： 支持文件输入（当前仅支持pdf）</li></ul><p>默认值：text</p>
+	InputModalities []*string `json:"InputModalities,omitnil,omitempty" name:"InputModalities"`
+
+	// <p>模型别名, 可以用于实际访问</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModelAlias *string `json:"ModelAlias,omitnil,omitempty" name:"ModelAlias"`
+
+	// <p>模型唯一标识, 原始模型名称</p>
+	ModelId *string `json:"ModelId,omitnil,omitempty" name:"ModelId"`
+
+	// <p>该模型经探测最多支持的输入多模态能力列表</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>file： 支持文件输入（当前仅支持pdf）</li><li>image： 支持图像输入</li></ul><p>模型不健康时列表为空</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProbedInputModalities []*string `json:"ProbedInputModalities,omitnil,omitempty" name:"ProbedInputModalities"`
 }
 
 // Predefined struct for user
@@ -11946,6 +15542,14 @@ type SnatIp struct {
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 }
 
+type Sort struct {
+	// <p>排序的字段</p>
+	Field *string `json:"Field,omitnil,omitempty" name:"Field"`
+
+	// <p>排序方式，支持ASC、DESC</p>
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+}
+
 type SpecAvailability struct {
 	// 规格类型。
 	// <li>clb.c2.medium（标准型）</li><li>clb.c3.small（高阶型1）</li><li>clb.c3.medium（高阶型2）</li>
@@ -12246,6 +15850,271 @@ type TargetRegionInfo struct {
 
 	// Target所属网络，私有网络格式如86323，如果是基础网络，则为0
 	NumericalVpcId *int64 `json:"NumericalVpcId,omitnil,omitempty" name:"NumericalVpcId"`
+}
+
+type TestConnectionRequestInfo struct {
+	// <p>请求URL</p>
+	RequestUrl *string `json:"RequestUrl,omitnil,omitempty" name:"RequestUrl"`
+
+	// <p>请求体</p>
+	RequestBody *string `json:"RequestBody,omitnil,omitempty" name:"RequestBody"`
+
+	// <p>请求头</p>
+	RequestHeaders *string `json:"RequestHeaders,omitnil,omitempty" name:"RequestHeaders"`
+}
+
+// Predefined struct for user
+type TestModelInputModalitiesRequestParams struct {
+	// <p>待探测的模型（原始模型名称）</p>
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+
+	// <p>待探测的API Key（明文）</p>
+	ProviderKey *string `json:"ProviderKey,omitnil,omitempty" name:"ProviderKey"`
+
+	// <p>已创建的BYOK API Key ID（与ProviderKey二选一传入）</p>
+	ProviderKeyId *string `json:"ProviderKeyId,omitnil,omitempty" name:"ProviderKeyId"`
+
+	// <p>BYOK类型，当ProviderKey传入时必填</p>
+	AccessType *string `json:"AccessType,omitnil,omitempty" name:"AccessType"`
+
+	// <p>模型厂商协议，当ProviderKey传入时必填</p>
+	ModelProtocol *string `json:"ModelProtocol,omitnil,omitempty" name:"ModelProtocol"`
+
+	// <p>模型的厂商</p>
+	ModelProvider *string `json:"ModelProvider,omitnil,omitempty" name:"ModelProvider"`
+
+	// <p>自定义ApiBase，当ProviderKey传入且AccessType且PrivateCustom/PublicCustom时必填</p>
+	ApiBase *string `json:"ApiBase,omitnil,omitempty" name:"ApiBase"`
+
+	// <p>请求携带的Host头部，当AccessType为PrivateCustom时生效</p>
+	HostHeader *string `json:"HostHeader,omitnil,omitempty" name:"HostHeader"`
+
+	// <p>BYOK实例ID，当AccessType为PrivateCustom时生效，ProviderKey传入时必填</p>
+	ServiceProviderId *string `json:"ServiceProviderId,omitnil,omitempty" name:"ServiceProviderId"`
+
+	// <p>是否校验服务提供商的SSL证书</p><p>PublicBYOK时为True且禁止传入；若传入VerifySSL，则优先同步入参逻辑；若传入了ServiceProviderId则同步已创建的Byok实例该Model的逻辑；否则PublicCustom模式下为True，PrivateCustom模式下为False。</p>
+	VerifySSL *bool `json:"VerifySSL,omitnil,omitempty" name:"VerifySSL"`
+}
+
+type TestModelInputModalitiesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>待探测的模型（原始模型名称）</p>
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+
+	// <p>待探测的API Key（明文）</p>
+	ProviderKey *string `json:"ProviderKey,omitnil,omitempty" name:"ProviderKey"`
+
+	// <p>已创建的BYOK API Key ID（与ProviderKey二选一传入）</p>
+	ProviderKeyId *string `json:"ProviderKeyId,omitnil,omitempty" name:"ProviderKeyId"`
+
+	// <p>BYOK类型，当ProviderKey传入时必填</p>
+	AccessType *string `json:"AccessType,omitnil,omitempty" name:"AccessType"`
+
+	// <p>模型厂商协议，当ProviderKey传入时必填</p>
+	ModelProtocol *string `json:"ModelProtocol,omitnil,omitempty" name:"ModelProtocol"`
+
+	// <p>模型的厂商</p>
+	ModelProvider *string `json:"ModelProvider,omitnil,omitempty" name:"ModelProvider"`
+
+	// <p>自定义ApiBase，当ProviderKey传入且AccessType且PrivateCustom/PublicCustom时必填</p>
+	ApiBase *string `json:"ApiBase,omitnil,omitempty" name:"ApiBase"`
+
+	// <p>请求携带的Host头部，当AccessType为PrivateCustom时生效</p>
+	HostHeader *string `json:"HostHeader,omitnil,omitempty" name:"HostHeader"`
+
+	// <p>BYOK实例ID，当AccessType为PrivateCustom时生效，ProviderKey传入时必填</p>
+	ServiceProviderId *string `json:"ServiceProviderId,omitnil,omitempty" name:"ServiceProviderId"`
+
+	// <p>是否校验服务提供商的SSL证书</p><p>PublicBYOK时为True且禁止传入；若传入VerifySSL，则优先同步入参逻辑；若传入了ServiceProviderId则同步已创建的Byok实例该Model的逻辑；否则PublicCustom模式下为True，PrivateCustom模式下为False。</p>
+	VerifySSL *bool `json:"VerifySSL,omitnil,omitempty" name:"VerifySSL"`
+}
+
+func (r *TestModelInputModalitiesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TestModelInputModalitiesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Model")
+	delete(f, "ProviderKey")
+	delete(f, "ProviderKeyId")
+	delete(f, "AccessType")
+	delete(f, "ModelProtocol")
+	delete(f, "ModelProvider")
+	delete(f, "ApiBase")
+	delete(f, "HostHeader")
+	delete(f, "ServiceProviderId")
+	delete(f, "VerifySSL")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TestModelInputModalitiesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type TestModelInputModalitiesResponseParams struct {
+	// <p>探测的模型</p>
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+
+	// <p>该模型确认支持的输入模态列表</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>image： 支持图像输入</li><li>file： 支持文件输入（当前仅支持pdf）</li></ul><p>收到上游大模型对于输入模态的响应即为“确认支持”</p>
+	SupportedModalities []*string `json:"SupportedModalities,omitnil,omitempty" name:"SupportedModalities"`
+
+	// <p>每个待探测模态的详细请求结果</p>
+	ProbeDetails []*ModalityProbeDetail `json:"ProbeDetails,omitnil,omitempty" name:"ProbeDetails"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type TestModelInputModalitiesResponse struct {
+	*tchttp.BaseResponse
+	Response *TestModelInputModalitiesResponseParams `json:"Response"`
+}
+
+func (r *TestModelInputModalitiesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TestModelInputModalitiesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type TestServiceProviderConnectionRequestParams struct {
+	// <p>需要探测的模型列表</p><p>入参限制：上限为20个模型</p>
+	Models []*string `json:"Models,omitnil,omitempty" name:"Models"`
+
+	// <p>需要探测的Key</p>
+	ProviderKey *string `json:"ProviderKey,omitnil,omitempty" name:"ProviderKey"`
+
+	// <p>需要探测的KeyId，和ProviderKey二者传一个即可</p>
+	ProviderKeyId *string `json:"ProviderKeyId,omitnil,omitempty" name:"ProviderKeyId"`
+
+	// <p>BYOK类型，当ProviderKey存在时必传</p>
+	AccessType *string `json:"AccessType,omitnil,omitempty" name:"AccessType"`
+
+	// <p>模型的厂商</p>
+	ModelProvider *string `json:"ModelProvider,omitnil,omitempty" name:"ModelProvider"`
+
+	// <p>模型厂商协议，当ProviderKey存在时必传</p>
+	ModelProtocol *string `json:"ModelProtocol,omitnil,omitempty" name:"ModelProtocol"`
+
+	// <p>BYOK类型，当AccessType为PublicCustom时生效</p>
+	ApiBase *string `json:"ApiBase,omitnil,omitempty" name:"ApiBase"`
+
+	// <p>请求携带的Host头部，当AccessType为PrivateCustom时生效</p>
+	HostHeader *string `json:"HostHeader,omitnil,omitempty" name:"HostHeader"`
+
+	// <p>BYOK的ID，当AccessType为PrivateCustom时生效</p>
+	ServiceProviderId *string `json:"ServiceProviderId,omitnil,omitempty" name:"ServiceProviderId"`
+
+	// <p>是否校验服务提供商的SSL证书</p><p>默认值：AccessType取值为：</p><ul><li>PublicBYOK时，该参数无效；</li><li>PublicCustom时，该参数默认为true；</li><li>PrivateCustom时，该参数默认为false；</li></ul>
+	VerifySSL *bool `json:"VerifySSL,omitnil,omitempty" name:"VerifySSL"`
+}
+
+type TestServiceProviderConnectionRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>需要探测的模型列表</p><p>入参限制：上限为20个模型</p>
+	Models []*string `json:"Models,omitnil,omitempty" name:"Models"`
+
+	// <p>需要探测的Key</p>
+	ProviderKey *string `json:"ProviderKey,omitnil,omitempty" name:"ProviderKey"`
+
+	// <p>需要探测的KeyId，和ProviderKey二者传一个即可</p>
+	ProviderKeyId *string `json:"ProviderKeyId,omitnil,omitempty" name:"ProviderKeyId"`
+
+	// <p>BYOK类型，当ProviderKey存在时必传</p>
+	AccessType *string `json:"AccessType,omitnil,omitempty" name:"AccessType"`
+
+	// <p>模型的厂商</p>
+	ModelProvider *string `json:"ModelProvider,omitnil,omitempty" name:"ModelProvider"`
+
+	// <p>模型厂商协议，当ProviderKey存在时必传</p>
+	ModelProtocol *string `json:"ModelProtocol,omitnil,omitempty" name:"ModelProtocol"`
+
+	// <p>BYOK类型，当AccessType为PublicCustom时生效</p>
+	ApiBase *string `json:"ApiBase,omitnil,omitempty" name:"ApiBase"`
+
+	// <p>请求携带的Host头部，当AccessType为PrivateCustom时生效</p>
+	HostHeader *string `json:"HostHeader,omitnil,omitempty" name:"HostHeader"`
+
+	// <p>BYOK的ID，当AccessType为PrivateCustom时生效</p>
+	ServiceProviderId *string `json:"ServiceProviderId,omitnil,omitempty" name:"ServiceProviderId"`
+
+	// <p>是否校验服务提供商的SSL证书</p><p>默认值：AccessType取值为：</p><ul><li>PublicBYOK时，该参数无效；</li><li>PublicCustom时，该参数默认为true；</li><li>PrivateCustom时，该参数默认为false；</li></ul>
+	VerifySSL *bool `json:"VerifySSL,omitnil,omitempty" name:"VerifySSL"`
+}
+
+func (r *TestServiceProviderConnectionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TestServiceProviderConnectionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Models")
+	delete(f, "ProviderKey")
+	delete(f, "ProviderKeyId")
+	delete(f, "AccessType")
+	delete(f, "ModelProvider")
+	delete(f, "ModelProtocol")
+	delete(f, "ApiBase")
+	delete(f, "HostHeader")
+	delete(f, "ServiceProviderId")
+	delete(f, "VerifySSL")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TestServiceProviderConnectionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type TestServiceProviderConnectionResponseParams struct {
+	// <p>探测结果</p>
+	Results []*ModelTestResult `json:"Results,omitnil,omitempty" name:"Results"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type TestServiceProviderConnectionResponse struct {
+	*tchttp.BaseResponse
+	Response *TestServiceProviderConnectionResponseParams `json:"Response"`
+}
+
+func (r *TestServiceProviderConnectionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TestServiceProviderConnectionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type TierItem struct {
+	// <p>该分层下的模型显示名称列表。</p><p>至少包含一个模型，模型名称必须是已关联到该模型路由实例的模型。同一分层内不允许重复模型名称。</p>
+	Models []*string `json:"Models,omitnil,omitempty" name:"Models"`
+
+	// <p>Tier 标识。<br>枚举值：</p><ul><li>复杂度分层（4 个固定值，需全部包含）：SIMPLE、MEDIUM、COMPLEX、REASONING</li><li>default：默认</li><li>general_chat：通用对话</li><li>transformation_rewrite：转换与改写</li><li>knowledge_qa：知识问答</li><li>summarization：摘要</li><li>extraction_structuring：抽取与结构化输出</li><li>content_generation：内容生成</li><li>coding_technical：编码与技术</li><li>data_math_analysis：数据、数学与分析</li><li>reasoning_planning：推理与规划</li><li>tool_agentic_workflow：工具与智能体工作流</li></ul>
+	TierName *string `json:"TierName,omitnil,omitempty" name:"TierName"`
 }
 
 type TypeInfo struct {

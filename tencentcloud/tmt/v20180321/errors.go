@@ -26,17 +26,8 @@ const (
 	// 用户区域与请求服务区域不一致。
 	FAILEDOPERATION_ERRORUSERAREA = "FailedOperation.ErrorUserArea"
 
-	// 暂时无法识别该语种。
-	FAILEDOPERATION_LANGUAGERECOGNITIONERR = "FailedOperation.LanguageRecognitionErr"
-
 	// 本月免费额度已用完，如需继续使用您可以在机器翻译控制台升级为付费使用。
 	FAILEDOPERATION_NOFREEAMOUNT = "FailedOperation.NoFreeAmount"
-
-	// 内部请求错误，请稍后重试。
-	FAILEDOPERATION_REQUESTAILABERR = "FailedOperation.RequestAiLabErr"
-
-	// 内部请求错误，请稍后重试。
-	FAILEDOPERATION_REQUESTHUNYUANERR = "FailedOperation.RequestHunYuanErr"
 
 	// 账号因为欠费停止服务，请在腾讯云账户充值。
 	FAILEDOPERATION_SERVICEISOLATE = "FailedOperation.ServiceIsolate"
@@ -53,9 +44,6 @@ const (
 	// 后台服务超时，请稍后重试。
 	INTERNALERROR_BACKENDTIMEOUT = "InternalError.BackendTimeout"
 
-	// 路由获取错误。
-	INTERNALERROR_ERRORGETROUTE = "InternalError.ErrorGetRoute"
-
 	// 未知错误。
 	INTERNALERROR_ERRORUNKNOWN = "InternalError.ErrorUnknown"
 
@@ -68,29 +56,17 @@ const (
 	// 参数错误。
 	INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
 
-	// 参数取值错误。
-	INVALIDPARAMETERVALUE = "InvalidParameterValue"
-
 	// 超过配额限制。
 	LIMITEXCEEDED = "LimitExceeded"
 
-	// 超出请求频率。
-	LIMITEXCEEDED_LIMITEDACCESSFREQUENCY = "LimitExceeded.LimitedAccessFrequency"
-
 	// 缺少参数错误。
 	MISSINGPARAMETER = "MissingParameter"
-
-	// 超出UIN使用限额。
-	REQUESTLIMITEXCEEDED_UINLIMITEXCEEDED = "RequestLimitExceeded.UinLimitExceeded"
 
 	// 请填写正确的Action字段名称。
 	UNAUTHORIZEDOPERATION_ACTIONNOTFOUND = "UnauthorizedOperation.ActionNotFound"
 
 	// 操作不支持。
 	UNSUPPORTEDOPERATION = "UnsupportedOperation"
-
-	// 单次请求text超过长度限制。
-	UNSUPPORTEDOPERATION_TEXTTOOLONG = "UnsupportedOperation.TextTooLong"
 
 	// 不支持的目标语言，请参照语言列表。
 	UNSUPPORTEDOPERATION_UNSUPPORTEDTARGETLANGUAGE = "UnsupportedOperation.UnSupportedTargetLanguage"

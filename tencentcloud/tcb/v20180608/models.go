@@ -8207,9 +8207,6 @@ type PostgreSQLInfo struct {
 
 	// <p>地域</p>
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
-
-	// <p>数据库引擎版本</p>
-	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
 }
 
 // Predefined struct for user

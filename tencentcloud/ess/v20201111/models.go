@@ -10110,73 +10110,69 @@ type CreateStaffResult struct {
 
 // Predefined struct for user
 type CreateUserAutoSignEnableUrlRequestParams struct {
-	// 执行本接口操作的员工信息。
-	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	// <p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 自动签使用的场景值, 可以选择的场景值如下:
-	// <ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
+	// <p>自动签使用的场景值, 可以选择的场景值如下:</p><ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
 	SceneKey *string `json:"SceneKey,omitnil,omitempty" name:"SceneKey"`
 
-	// 自动签开通配置信息, 包括开通的人员的信息等
+	// <p>自动签开通配置信息, 包括开通的人员的信息等</p>
 	AutoSignConfig *AutoSignConfig `json:"AutoSignConfig,omitnil,omitempty" name:"AutoSignConfig"`
 
-	// 生成的链接类型：
-	// <ul><li> 不传(即为空值) 则会生成小程序端开通链接(默认)</li>
-	// <li> **H5SIGN** : 生成H5端开通链接</li></ul>
+	// <p>生成的链接类型：</p><ul><li> 不传(即为空值) 则会生成小程序端开通链接(默认)</li><li> **H5SIGN** : 生成H5端开通链接</li></ul>
 	UrlType *string `json:"UrlType,omitnil,omitempty" name:"UrlType"`
 
-	// 是否通知开通方，通知类型:<ul><li>默认为不通知开通方</li><li>**SMS** :  短信通知 ,如果需要短信通知则NotifyAddress填写对方的手机号</li></ul>
+	// <p>是否通知开通方，通知类型:<ul><li>默认为不通知开通方</li><li><strong>SMS</strong> :  短信通知 ,如果需要短信通知则NotifyAddress填写对方的手机号</li></ul></p>
 	NotifyType *string `json:"NotifyType,omitnil,omitempty" name:"NotifyType"`
 
-	// 如果通知类型NotifyType选择为SMS，则此处为手机号, 其他通知类型不需要设置此项
+	// <p>如果通知类型NotifyType选择为SMS，则此处为手机号, 其他通知类型不需要设置此项</p>
 	NotifyAddress *string `json:"NotifyAddress,omitnil,omitempty" name:"NotifyAddress"`
 
-	// 链接的过期时间，格式为Unix时间戳，不能早于当前时间，且最大为当前时间往后30天。`如果不传，默认过期时间为当前时间往后7天。`
+	// <p>链接的过期时间，格式为Unix时间戳，不能早于当前时间，且最大为当前时间往后30天。<code>如果不传，默认过期时间为当前时间往后7天。</code></p>
 	ExpiredTime *int64 `json:"ExpiredTime,omitnil,omitempty" name:"ExpiredTime"`
 
-	// 代理企业和员工的信息。
-	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	// <p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
-	// 调用方自定义的个性化字段(可自定义此字段的值)，并以base64方式编码，支持的最大数据大小为 20480长度。 在个人自动签的开通、关闭等回调信息场景中，该字段的信息将原封不动地透传给贵方。 
+	// <p>调用方自定义的个性化字段(可自定义此字段的值)，并以base64方式编码，支持的最大数据大小为 20480长度。 在个人自动签的开通、关闭等回调信息场景中，该字段的信息将原封不动地透传给贵方。</p>
 	UserData *string `json:"UserData,omitnil,omitempty" name:"UserData"`
+
+	// <p>要跳转的链接类型<ul><li> <strong>HTTP</strong>：跳转电子签小程序或者H5的http_url, 短信通知或者H5跳转适合此类型  ，此时返回长链</li><li><strong>HTTP_SHORT_URL</strong>：跳转电子签小程序或者H5的http_url, 短信通知或者H5跳转适合此类型，此时返回短链</li><li><strong>APP</strong>： 第三方APP或小程序跳转电子签小程序的path,  APP或者小程序跳转适合此类型，注意：仅UrlType为空，即获取小程序端开通链接时有效</li></ul></p>
+	EndPoint *string `json:"EndPoint,omitnil,omitempty" name:"EndPoint"`
 }
 
 type CreateUserAutoSignEnableUrlRequest struct {
 	*tchttp.BaseRequest
 	
-	// 执行本接口操作的员工信息。
-	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	// <p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 自动签使用的场景值, 可以选择的场景值如下:
-	// <ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
+	// <p>自动签使用的场景值, 可以选择的场景值如下:</p><ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
 	SceneKey *string `json:"SceneKey,omitnil,omitempty" name:"SceneKey"`
 
-	// 自动签开通配置信息, 包括开通的人员的信息等
+	// <p>自动签开通配置信息, 包括开通的人员的信息等</p>
 	AutoSignConfig *AutoSignConfig `json:"AutoSignConfig,omitnil,omitempty" name:"AutoSignConfig"`
 
-	// 生成的链接类型：
-	// <ul><li> 不传(即为空值) 则会生成小程序端开通链接(默认)</li>
-	// <li> **H5SIGN** : 生成H5端开通链接</li></ul>
+	// <p>生成的链接类型：</p><ul><li> 不传(即为空值) 则会生成小程序端开通链接(默认)</li><li> **H5SIGN** : 生成H5端开通链接</li></ul>
 	UrlType *string `json:"UrlType,omitnil,omitempty" name:"UrlType"`
 
-	// 是否通知开通方，通知类型:<ul><li>默认为不通知开通方</li><li>**SMS** :  短信通知 ,如果需要短信通知则NotifyAddress填写对方的手机号</li></ul>
+	// <p>是否通知开通方，通知类型:<ul><li>默认为不通知开通方</li><li><strong>SMS</strong> :  短信通知 ,如果需要短信通知则NotifyAddress填写对方的手机号</li></ul></p>
 	NotifyType *string `json:"NotifyType,omitnil,omitempty" name:"NotifyType"`
 
-	// 如果通知类型NotifyType选择为SMS，则此处为手机号, 其他通知类型不需要设置此项
+	// <p>如果通知类型NotifyType选择为SMS，则此处为手机号, 其他通知类型不需要设置此项</p>
 	NotifyAddress *string `json:"NotifyAddress,omitnil,omitempty" name:"NotifyAddress"`
 
-	// 链接的过期时间，格式为Unix时间戳，不能早于当前时间，且最大为当前时间往后30天。`如果不传，默认过期时间为当前时间往后7天。`
+	// <p>链接的过期时间，格式为Unix时间戳，不能早于当前时间，且最大为当前时间往后30天。<code>如果不传，默认过期时间为当前时间往后7天。</code></p>
 	ExpiredTime *int64 `json:"ExpiredTime,omitnil,omitempty" name:"ExpiredTime"`
 
-	// 代理企业和员工的信息。
-	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	// <p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
-	// 调用方自定义的个性化字段(可自定义此字段的值)，并以base64方式编码，支持的最大数据大小为 20480长度。 在个人自动签的开通、关闭等回调信息场景中，该字段的信息将原封不动地透传给贵方。 
+	// <p>调用方自定义的个性化字段(可自定义此字段的值)，并以base64方式编码，支持的最大数据大小为 20480长度。 在个人自动签的开通、关闭等回调信息场景中，该字段的信息将原封不动地透传给贵方。</p>
 	UserData *string `json:"UserData,omitnil,omitempty" name:"UserData"`
+
+	// <p>要跳转的链接类型<ul><li> <strong>HTTP</strong>：跳转电子签小程序或者H5的http_url, 短信通知或者H5跳转适合此类型  ，此时返回长链</li><li><strong>HTTP_SHORT_URL</strong>：跳转电子签小程序或者H5的http_url, 短信通知或者H5跳转适合此类型，此时返回短链</li><li><strong>APP</strong>： 第三方APP或小程序跳转电子签小程序的path,  APP或者小程序跳转适合此类型，注意：仅UrlType为空，即获取小程序端开通链接时有效</li></ul></p>
+	EndPoint *string `json:"EndPoint,omitnil,omitempty" name:"EndPoint"`
 }
 
 func (r *CreateUserAutoSignEnableUrlRequest) ToJsonString() string {
@@ -10200,6 +10196,7 @@ func (r *CreateUserAutoSignEnableUrlRequest) FromJsonString(s string) error {
 	delete(f, "ExpiredTime")
 	delete(f, "Agent")
 	delete(f, "UserData")
+	delete(f, "EndPoint")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateUserAutoSignEnableUrlRequest has unknown keys!", "")
 	}
@@ -10208,32 +10205,22 @@ func (r *CreateUserAutoSignEnableUrlRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateUserAutoSignEnableUrlResponseParams struct {
-	// 个人用户自动签的开通链接, 短链形式。过期时间受 `ExpiredTime` 参数控制。
+	// <p>个人用户自动签的开通链接, 短链/长链接形式。过期时间受 <code>ExpiredTime</code> 参数控制。</p>
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
-	// 腾讯电子签小程序的 AppID，用于其他小程序/APP等应用跳转至腾讯电子签小程序使用
-	// 
-	// 注: `如果获取的是H5链接, 则不会返回此值`
+	// <p>腾讯电子签小程序的 AppID，用于其他小程序/APP等应用跳转至腾讯电子签小程序使用</p><p>注: <code>如果获取的是H5链接, 则不会返回此值</code></p>
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
 
-	// 腾讯电子签小程序的原始 Id,  ，用于其他小程序/APP等应用跳转至腾讯电子签小程序使用
-	// 
-	// 注: `如果获取的是H5链接, 则不会返回此值`
+	// <p>腾讯电子签小程序的原始 Id,  ，用于其他小程序/APP等应用跳转至腾讯电子签小程序使用</p><p>注: <code>如果获取的是H5链接, 则不会返回此值</code></p>
 	AppOriginalId *string `json:"AppOriginalId,omitnil,omitempty" name:"AppOriginalId"`
 
-	// 腾讯电子签小程序的跳转路径，用于其他小程序/APP等应用跳转至腾讯电子签小程序使用
-	// 
-	// 注: `如果获取的是H5链接, 则不会返回此值`
+	// <p>腾讯电子签小程序的跳转路径，用于其他小程序/APP等应用跳转至腾讯电子签小程序使用</p><p>注: <code>如果获取的是H5链接, 则不会返回此值</code></p>
 	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 
-	// base64 格式的跳转二维码图片，可通过微信扫描后跳转到腾讯电子签小程序的开通界面。
-	// 
-	// 注: `如果获取的是H5链接, 则不会返回此二维码图片`
+	// <p>base64 格式的跳转二维码图片，可通过微信扫描后跳转到腾讯电子签小程序的开通界面。</p><p>注: <code>如果获取的是H5链接, 则不会返回此二维码图片</code></p>
 	QrCode *string `json:"QrCode,omitnil,omitempty" name:"QrCode"`
 
-	// 返回的链接类型
-	// <ul><li> 空: 默认小程序端链接</li>
-	// <li> **H5SIGN** : h5端链接</li></ul>
+	// <p>返回的链接类型</p><ul><li> 空: 默认小程序端链接</li><li> **H5SIGN** : h5端链接</li></ul>
 	UrlType *string `json:"UrlType,omitnil,omitempty" name:"UrlType"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -10258,45 +10245,45 @@ func (r *CreateUserAutoSignEnableUrlResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateUserAutoSignSealUrlRequestParams struct {
-	// 执行本接口操作的员工信息。
-	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	// <p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 自动签使用的场景值, 可以选择的场景值如下:
-	// <ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
+	// <p>自动签使用的场景值, 可以选择的场景值如下:</p><ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
 	SceneKey *string `json:"SceneKey,omitnil,omitempty" name:"SceneKey"`
 
-	// 自动签开通个人用户信息, 包括名字,身份证等。
+	// <p>自动签开通个人用户信息, 包括名字,身份证等。</p>
 	UserInfo *UserThreeFactor `json:"UserInfo,omitnil,omitempty" name:"UserInfo"`
 
-	// 代理企业和员工的信息。
-	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	// <p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
-	// 链接的过期时间，格式为Unix时间戳，不能早于当前时间，且最大为当前时间往后30天。`如果不传，默认过期时间为当前时间往后7天。`
+	// <p>链接的过期时间，格式为Unix时间戳，不能早于当前时间，且最大为当前时间往后30天。<code>如果不传，默认过期时间为当前时间往后7天。</code></p>
 	ExpiredTime *int64 `json:"ExpiredTime,omitnil,omitempty" name:"ExpiredTime"`
+
+	// <p>要跳转的链接类型<ul><li> <strong>HTTP</strong>：跳转电子签小程序的http_url, 短信通知或者H5跳转适合此类型  ，此时返回长链</li><li><strong>HTTP_SHORT_URL</strong>：跳转电子签小程序的http_url, 短信通知或者H5跳转适合此类型，此时返回短链</li><li><strong>APP</strong>： 第三方APP或小程序跳转电子签小程序的path,  APP或者小程序跳转适合此类型</li></ul></p>
+	EndPoint *string `json:"EndPoint,omitnil,omitempty" name:"EndPoint"`
 }
 
 type CreateUserAutoSignSealUrlRequest struct {
 	*tchttp.BaseRequest
 	
-	// 执行本接口操作的员工信息。
-	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	// <p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 自动签使用的场景值, 可以选择的场景值如下:
-	// <ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
+	// <p>自动签使用的场景值, 可以选择的场景值如下:</p><ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
 	SceneKey *string `json:"SceneKey,omitnil,omitempty" name:"SceneKey"`
 
-	// 自动签开通个人用户信息, 包括名字,身份证等。
+	// <p>自动签开通个人用户信息, 包括名字,身份证等。</p>
 	UserInfo *UserThreeFactor `json:"UserInfo,omitnil,omitempty" name:"UserInfo"`
 
-	// 代理企业和员工的信息。
-	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	// <p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
-	// 链接的过期时间，格式为Unix时间戳，不能早于当前时间，且最大为当前时间往后30天。`如果不传，默认过期时间为当前时间往后7天。`
+	// <p>链接的过期时间，格式为Unix时间戳，不能早于当前时间，且最大为当前时间往后30天。<code>如果不传，默认过期时间为当前时间往后7天。</code></p>
 	ExpiredTime *int64 `json:"ExpiredTime,omitnil,omitempty" name:"ExpiredTime"`
+
+	// <p>要跳转的链接类型<ul><li> <strong>HTTP</strong>：跳转电子签小程序的http_url, 短信通知或者H5跳转适合此类型  ，此时返回长链</li><li><strong>HTTP_SHORT_URL</strong>：跳转电子签小程序的http_url, 短信通知或者H5跳转适合此类型，此时返回短链</li><li><strong>APP</strong>： 第三方APP或小程序跳转电子签小程序的path,  APP或者小程序跳转适合此类型</li></ul></p>
+	EndPoint *string `json:"EndPoint,omitnil,omitempty" name:"EndPoint"`
 }
 
 func (r *CreateUserAutoSignSealUrlRequest) ToJsonString() string {
@@ -10316,6 +10303,7 @@ func (r *CreateUserAutoSignSealUrlRequest) FromJsonString(s string) error {
 	delete(f, "UserInfo")
 	delete(f, "Agent")
 	delete(f, "ExpiredTime")
+	delete(f, "EndPoint")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateUserAutoSignSealUrlRequest has unknown keys!", "")
 	}
@@ -10324,19 +10312,19 @@ func (r *CreateUserAutoSignSealUrlRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateUserAutoSignSealUrlResponseParams struct {
-	// 腾讯电子签小程序的AppId，用于其他小程序/APP等应用跳转至腾讯电子签小程序使用。
+	// <p>腾讯电子签小程序的AppId，用于其他小程序/APP等应用跳转至腾讯电子签小程序使用。</p>
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
 
-	// 腾讯电子签小程序的原始Id，用于其他小程序/APP等应用跳转至腾讯电子签小程序使用。
+	// <p>腾讯电子签小程序的原始Id，用于其他小程序/APP等应用跳转至腾讯电子签小程序使用。</p>
 	AppOriginalId *string `json:"AppOriginalId,omitnil,omitempty" name:"AppOriginalId"`
 
-	// 个人用户自动签的开通链接, 短链形式。过期时间受 `ExpiredTime` 参数控制。
+	// <p>个人用户自动签的开通链接, 短链或者长链接形式。过期时间受 <code>ExpiredTime</code> 参数控制。</p>
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
-	// 腾讯电子签小程序的跳转路径，用于其他小程序/APP等应用跳转至腾讯电子签小程序使用。
+	// <p>腾讯电子签小程序的跳转路径，用于其他小程序/APP等应用跳转至腾讯电子签小程序使用。</p>
 	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 
-	// base64格式的跳转二维码图片，可通过微信扫描后跳转到腾讯电子签小程序的开通界面。
+	// <p>base64格式的跳转二维码图片，可通过微信扫描后跳转到腾讯电子签小程序的开通界面。</p>
 	QrCode *string `json:"QrCode,omitnil,omitempty" name:"QrCode"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -20246,6 +20234,9 @@ type UploadFilesRequestParams struct {
 
 	// <p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// <p>文件过期时间的时间戳</p><p>取值范围：[1782835200, 4102329600]</p><p>单位：秒</p><p>设置上传文件的过期时间，此功能为付费能力，请联系电子签运营人员开通</p>
+	Deadline *int64 `json:"Deadline,omitnil,omitempty" name:"Deadline"`
 }
 
 type UploadFilesRequest struct {
@@ -20274,6 +20265,9 @@ type UploadFilesRequest struct {
 
 	// <p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// <p>文件过期时间的时间戳</p><p>取值范围：[1782835200, 4102329600]</p><p>单位：秒</p><p>设置上传文件的过期时间，此功能为付费能力，请联系电子签运营人员开通</p>
+	Deadline *int64 `json:"Deadline,omitnil,omitempty" name:"Deadline"`
 }
 
 func (r *UploadFilesRequest) ToJsonString() string {
@@ -20296,6 +20290,7 @@ func (r *UploadFilesRequest) FromJsonString(s string) error {
 	delete(f, "CustomIds")
 	delete(f, "FileUrls")
 	delete(f, "Agent")
+	delete(f, "Deadline")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UploadFilesRequest has unknown keys!", "")
 	}
@@ -20309,6 +20304,9 @@ type UploadFilesResponseParams struct {
 
 	// <p>上传成功文件数量</p>
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>文件过期时间的时间戳</p><p>单位：秒</p><p>默认值：当前上传时间的一小时内有效</p>
+	Deadline *int64 `json:"Deadline,omitnil,omitempty" name:"Deadline"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

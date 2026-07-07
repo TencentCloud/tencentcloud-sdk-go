@@ -5599,6 +5599,101 @@ func (r *DescribePlatformImagesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribePresetImageListRequestParams struct {
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
+	// <p>业务过滤表达式</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>分页排序</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>单页大小</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>排序字段</p>
+	OrderField []*string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
+
+	// <p>对应字段的排序方式</p>
+	Order []*string `json:"Order,omitnil,omitempty" name:"Order"`
+}
+
+type DescribePresetImageListRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
+	// <p>业务过滤表达式</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>分页排序</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>单页大小</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>排序字段</p>
+	OrderField []*string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
+
+	// <p>对应字段的排序方式</p>
+	Order []*string `json:"Order,omitnil,omitempty" name:"Order"`
+}
+
+func (r *DescribePresetImageListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePresetImageListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TiProjectId")
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "OrderField")
+	delete(f, "Order")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePresetImageListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePresetImageListResponseParams struct {
+	// <p>记录总数</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>镜像列表</p>
+	PresetImageList []*PresetImageInfo `json:"PresetImageList,omitnil,omitempty" name:"PresetImageList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribePresetImageListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePresetImageListResponseParams `json:"Response"`
+}
+
+func (r *DescribePresetImageListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePresetImageListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribePublicAlgoVersionListRequestParams struct {
 	// 过滤器
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
@@ -8590,6 +8685,80 @@ type PodSSHInfo struct {
 	LoginCommand *string `json:"LoginCommand,omitnil,omitempty" name:"LoginCommand"`
 }
 
+type PresetImageInfo struct {
+	// <p>镜像id</p>
+	ImageId *string `json:"ImageId,omitnil,omitempty" name:"ImageId"`
+
+	// <p>镜像仓库名称</p>
+	ImageRepo *string `json:"ImageRepo,omitnil,omitempty" name:"ImageRepo"`
+
+	// <p>镜像标签</p>
+	ImageTag *string `json:"ImageTag,omitnil,omitempty" name:"ImageTag"`
+
+	// <p>镜像url地址</p>
+	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
+
+	// <p>镜像的大小</p>
+	ImageSize *string `json:"ImageSize,omitnil,omitempty" name:"ImageSize"`
+
+	// <p>镜像描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>适用模块</p>
+	ApplicableModuleList []*string `json:"ApplicableModuleList,omitnil,omitempty" name:"ApplicableModuleList"`
+
+	// <p>使用场景</p>
+	Scenario *string `json:"Scenario,omitnil,omitempty" name:"Scenario"`
+
+	// <p>框架名称</p>
+	Framework *string `json:"Framework,omitnil,omitempty" name:"Framework"`
+
+	// <p>框架版本</p>
+	FrameworkVersion *string `json:"FrameworkVersion,omitnil,omitempty" name:"FrameworkVersion"`
+
+	// <p>芯片类型</p>
+	ChipTypeList []*string `json:"ChipTypeList,omitnil,omitempty" name:"ChipTypeList"`
+
+	// <p>运行库版本</p>
+	ComputeLibVersion *string `json:"ComputeLibVersion,omitnil,omitempty" name:"ComputeLibVersion"`
+
+	// <p>python版本</p>
+	PythonVersion *string `json:"PythonVersion,omitnil,omitempty" name:"PythonVersion"`
+
+	// <p>操作系统</p>
+	OS *string `json:"OS,omitnil,omitempty" name:"OS"`
+
+	// <p>运行库列表</p>
+	RuntimeLibList []*RuntimeLib `json:"RuntimeLibList,omitnil,omitempty" name:"RuntimeLibList"`
+
+	// <p>支持的gpu列表</p>
+	SupportGpuList []*string `json:"SupportGpuList,omitnil,omitempty" name:"SupportGpuList"`
+
+	// <p>扩展属性</p>
+	ExtraAttributeList []*Attribute `json:"ExtraAttributeList,omitnil,omitempty" name:"ExtraAttributeList"`
+
+	// <p>是否支持分布式部署</p>
+	SupportDistributedDeploy *bool `json:"SupportDistributedDeploy,omitnil,omitempty" name:"SupportDistributedDeploy"`
+
+	// <p>是否最新稳定版本</p>
+	IsLatestStable *bool `json:"IsLatestStable,omitnil,omitempty" name:"IsLatestStable"`
+
+	// <p>镜像的名称</p>
+	ImageName *string `json:"ImageName,omitnil,omitempty" name:"ImageName"`
+
+	// <p>镜像版本号（内部）</p>
+	Version *uint64 `json:"Version,omitnil,omitempty" name:"Version"`
+
+	// <p>录入时间</p><p>参数格式：YYYY-MM-DDThh:mm:ssZ</p>
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>更新时间</p><p>参数格式：YYYY-MM-DDThh:mm:ssZ</p>
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// <p>镜像类型</p><p>枚举值：</p><ul><li>TCR： TCR类型的镜像</li></ul>
+	ImageType *string `json:"ImageType,omitnil,omitempty" name:"ImageType"`
+}
+
 type PrivateLinkInfo struct {
 	// 私有连接所在的VPCID
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -9080,6 +9249,14 @@ type RollingUpdate struct {
 
 	// 滚动更新的最大新增实例
 	MaxSurge *NumOrPercent `json:"MaxSurge,omitnil,omitempty" name:"MaxSurge"`
+}
+
+type RuntimeLib struct {
+	// <p>运行库名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>运行库版本号</p>
+	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
 }
 
 type SSHConfig struct {

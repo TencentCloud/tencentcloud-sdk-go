@@ -14,6 +14,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ags v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ai3d v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/aiart v0.0.0
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/alb v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ame v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ams v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/anicloud v0.0.0
@@ -78,7 +79,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cmq v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cms v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cngw v0.0.0
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.3.129
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.3.130
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/config v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/controlcenter v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cpdp v0.0.0
@@ -274,6 +275,7 @@ replace (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ags => ../tencentcloud/ags
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ai3d => ../tencentcloud/ai3d
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/aiart => ../tencentcloud/aiart
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/alb => ../tencentcloud/alb
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ame => ../tencentcloud/ame
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ams => ../tencentcloud/ams
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/anicloud => ../tencentcloud/anicloud

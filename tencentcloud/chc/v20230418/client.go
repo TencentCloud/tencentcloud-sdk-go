@@ -1697,6 +1697,110 @@ func (c *Client) DescribeResourceUsageWithContext(ctx context.Context, request *
     return
 }
 
+func NewDescribeWorkOrderCarCollectListRequest() (request *DescribeWorkOrderCarCollectListRequest) {
+    request = &DescribeWorkOrderCarCollectListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("chc", APIVersion, "DescribeWorkOrderCarCollectList")
+    
+    
+    return
+}
+
+func NewDescribeWorkOrderCarCollectListResponse() (response *DescribeWorkOrderCarCollectListResponse) {
+    response = &DescribeWorkOrderCarCollectListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeWorkOrderCarCollectList
+// 查询工单归集的车辆信息列表，支持按车牌号、驾驶员姓名模糊搜索
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDEXTRAPARAMETERCOMBINATION = "InvalidParameterValue.InvalidExtraParameterCombination"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERCOMBINATION = "InvalidParameterValue.InvalidParameterCombination"
+func (c *Client) DescribeWorkOrderCarCollectList(request *DescribeWorkOrderCarCollectListRequest) (response *DescribeWorkOrderCarCollectListResponse, err error) {
+    return c.DescribeWorkOrderCarCollectListWithContext(context.Background(), request)
+}
+
+// DescribeWorkOrderCarCollectList
+// 查询工单归集的车辆信息列表，支持按车牌号、驾驶员姓名模糊搜索
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDEXTRAPARAMETERCOMBINATION = "InvalidParameterValue.InvalidExtraParameterCombination"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERCOMBINATION = "InvalidParameterValue.InvalidParameterCombination"
+func (c *Client) DescribeWorkOrderCarCollectListWithContext(ctx context.Context, request *DescribeWorkOrderCarCollectListRequest) (response *DescribeWorkOrderCarCollectListResponse, err error) {
+    if request == nil {
+        request = NewDescribeWorkOrderCarCollectListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "chc", APIVersion, "DescribeWorkOrderCarCollectList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeWorkOrderCarCollectList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeWorkOrderCarCollectListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeWorkOrderContactCollectListRequest() (request *DescribeWorkOrderContactCollectListRequest) {
+    request = &DescribeWorkOrderContactCollectListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("chc", APIVersion, "DescribeWorkOrderContactCollectList")
+    
+    
+    return
+}
+
+func NewDescribeWorkOrderContactCollectListResponse() (response *DescribeWorkOrderContactCollectListResponse) {
+    response = &DescribeWorkOrderContactCollectListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeWorkOrderContactCollectList
+// 查询工单归集的业务联系人信息列表，支持按姓名、电话模糊搜索
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDEXTRAPARAMETERCOMBINATION = "InvalidParameterValue.InvalidExtraParameterCombination"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERCOMBINATION = "InvalidParameterValue.InvalidParameterCombination"
+func (c *Client) DescribeWorkOrderContactCollectList(request *DescribeWorkOrderContactCollectListRequest) (response *DescribeWorkOrderContactCollectListResponse, err error) {
+    return c.DescribeWorkOrderContactCollectListWithContext(context.Background(), request)
+}
+
+// DescribeWorkOrderContactCollectList
+// 查询工单归集的业务联系人信息列表，支持按姓名、电话模糊搜索
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDEXTRAPARAMETERCOMBINATION = "InvalidParameterValue.InvalidExtraParameterCombination"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERCOMBINATION = "InvalidParameterValue.InvalidParameterCombination"
+func (c *Client) DescribeWorkOrderContactCollectListWithContext(ctx context.Context, request *DescribeWorkOrderContactCollectListRequest) (response *DescribeWorkOrderContactCollectListResponse, err error) {
+    if request == nil {
+        request = NewDescribeWorkOrderContactCollectListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "chc", APIVersion, "DescribeWorkOrderContactCollectList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeWorkOrderContactCollectList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeWorkOrderContactCollectListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeWorkOrderListRequest() (request *DescribeWorkOrderListRequest) {
     request = &DescribeWorkOrderListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1745,6 +1849,58 @@ func (c *Client) DescribeWorkOrderListWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewDescribeWorkOrderListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeWorkOrderPersonnelCollectListRequest() (request *DescribeWorkOrderPersonnelCollectListRequest) {
+    request = &DescribeWorkOrderPersonnelCollectListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("chc", APIVersion, "DescribeWorkOrderPersonnelCollectList")
+    
+    
+    return
+}
+
+func NewDescribeWorkOrderPersonnelCollectListResponse() (response *DescribeWorkOrderPersonnelCollectListResponse) {
+    response = &DescribeWorkOrderPersonnelCollectListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeWorkOrderPersonnelCollectList
+// 查询工单归集的人员信息列表，支持按姓名、手机号模糊搜索
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDEXTRAPARAMETERCOMBINATION = "InvalidParameterValue.InvalidExtraParameterCombination"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERCOMBINATION = "InvalidParameterValue.InvalidParameterCombination"
+func (c *Client) DescribeWorkOrderPersonnelCollectList(request *DescribeWorkOrderPersonnelCollectListRequest) (response *DescribeWorkOrderPersonnelCollectListResponse, err error) {
+    return c.DescribeWorkOrderPersonnelCollectListWithContext(context.Background(), request)
+}
+
+// DescribeWorkOrderPersonnelCollectList
+// 查询工单归集的人员信息列表，支持按姓名、手机号模糊搜索
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDEXTRAPARAMETERCOMBINATION = "InvalidParameterValue.InvalidExtraParameterCombination"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERCOMBINATION = "InvalidParameterValue.InvalidParameterCombination"
+func (c *Client) DescribeWorkOrderPersonnelCollectListWithContext(ctx context.Context, request *DescribeWorkOrderPersonnelCollectListRequest) (response *DescribeWorkOrderPersonnelCollectListResponse, err error) {
+    if request == nil {
+        request = NewDescribeWorkOrderPersonnelCollectListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "chc", APIVersion, "DescribeWorkOrderPersonnelCollectList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeWorkOrderPersonnelCollectList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeWorkOrderPersonnelCollectListResponse()
     err = c.Send(request, response)
     return
 }

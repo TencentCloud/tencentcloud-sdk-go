@@ -27107,6 +27107,26 @@ type SmartSubtitleTaskFullTextResult struct {
 	Progress *uint64 `json:"Progress,omitnil,omitempty" name:"Progress"`
 }
 
+type SmartSubtitleTaskFullTextSegmentItem struct {
+	// <p>识别片段置信度。取值：0~100。</p>
+	Confidence *float64 `json:"Confidence,omitnil,omitempty" name:"Confidence"`
+
+	// <p>识别片段起始的偏移时间，单位：秒。</p>
+	StartTimeOffset *float64 `json:"StartTimeOffset,omitnil,omitempty" name:"StartTimeOffset"`
+
+	// <p>识别片段终止的偏移时间，单位：秒。</p>
+	EndTimeOffset *float64 `json:"EndTimeOffset,omitnil,omitempty" name:"EndTimeOffset"`
+
+	// <p>识别文本。</p>
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+
+	// <p>翻译文本。</p>
+	Trans *string `json:"Trans,omitnil,omitempty" name:"Trans"`
+
+	// <p>说话人ID</p>
+	SpeakerId *string `json:"SpeakerId,omitnil,omitempty" name:"SpeakerId"`
+}
+
 type SmartSubtitleTaskResultInput struct {
 	// <p>智能字幕模板 ID。</p>
 	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
@@ -27120,6 +27140,10 @@ type SmartSubtitleTaskResultInput struct {
 }
 
 type SmartSubtitleTaskTextResultOutput struct {
+	// <p>智能字幕识别片段列表。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SegmentSet []*SmartSubtitleTaskFullTextSegmentItem `json:"SegmentSet,omitnil,omitempty" name:"SegmentSet"`
+
 	// <p>识别字幕结果</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecognizeSubtitleResult []*SubtitleResult `json:"RecognizeSubtitleResult,omitnil,omitempty" name:"RecognizeSubtitleResult"`

@@ -45,6 +45,74 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewCreateApiKeyRequest() (request *CreateApiKeyRequest) {
+    request = &CreateApiKeyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tokenhub", APIVersion, "CreateApiKey")
+    
+    
+    return
+}
+
+func NewCreateApiKeyResponse() (response *CreateApiKeyResponse) {
+    response = &CreateApiKeyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateApiKey
+// 创建 API 密钥。
+//
+// 
+//
+// 创建一个新的 API 密钥，创建成功后返回 API 密钥 ID。需指定平台类型、绑定方式和初始状态。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) CreateApiKey(request *CreateApiKeyRequest) (response *CreateApiKeyResponse, err error) {
+    return c.CreateApiKeyWithContext(context.Background(), request)
+}
+
+// CreateApiKey
+// 创建 API 密钥。
+//
+// 
+//
+// 创建一个新的 API 密钥，创建成功后返回 API 密钥 ID。需指定平台类型、绑定方式和初始状态。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) CreateApiKeyWithContext(ctx context.Context, request *CreateApiKeyRequest) (response *CreateApiKeyResponse, err error) {
+    if request == nil {
+        request = NewCreateApiKeyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tokenhub", APIVersion, "CreateApiKey")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateApiKey require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateApiKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateGlossaryRequest() (request *CreateGlossaryRequest) {
     request = &CreateGlossaryRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -311,6 +379,66 @@ func (c *Client) CreateTokenPlanTeamOrderAndBuyWithContext(ctx context.Context, 
     request.SetContext(ctx)
     
     response = NewCreateTokenPlanTeamOrderAndBuyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteApiKeyRequest() (request *DeleteApiKeyRequest) {
+    request = &DeleteApiKeyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tokenhub", APIVersion, "DeleteApiKey")
+    
+    
+    return
+}
+
+func NewDeleteApiKeyResponse() (response *DeleteApiKeyResponse) {
+    response = &DeleteApiKeyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteApiKey
+// 删除指定的 API 密钥，同时清理关联的模型绑定关系。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) DeleteApiKey(request *DeleteApiKeyRequest) (response *DeleteApiKeyResponse, err error) {
+    return c.DeleteApiKeyWithContext(context.Background(), request)
+}
+
+// DeleteApiKey
+// 删除指定的 API 密钥，同时清理关联的模型绑定关系。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) DeleteApiKeyWithContext(ctx context.Context, request *DeleteApiKeyRequest) (response *DeleteApiKeyResponse, err error) {
+    if request == nil {
+        request = NewDeleteApiKeyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tokenhub", APIVersion, "DeleteApiKey")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteApiKey require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteApiKeyResponse()
     err = c.Send(request, response)
     return
 }
@@ -1337,6 +1465,134 @@ func (c *Client) DescribeUsageRankListWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewDescribeUsageRankListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyApiKeyInfoRequest() (request *ModifyApiKeyInfoRequest) {
+    request = &ModifyApiKeyInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tokenhub", APIVersion, "ModifyApiKeyInfo")
+    
+    
+    return
+}
+
+func NewModifyApiKeyInfoResponse() (response *ModifyApiKeyInfoResponse) {
+    response = &ModifyApiKeyInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyApiKeyInfo
+// 更新 API 密钥信息。
+//
+// 
+//
+// 更新 API 密钥的备注信息、 IP 白名单和 Token 限额（修改限额推荐使用QuotaDesired参数）。所有可选参数不传表示不修改。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) ModifyApiKeyInfo(request *ModifyApiKeyInfoRequest) (response *ModifyApiKeyInfoResponse, err error) {
+    return c.ModifyApiKeyInfoWithContext(context.Background(), request)
+}
+
+// ModifyApiKeyInfo
+// 更新 API 密钥信息。
+//
+// 
+//
+// 更新 API 密钥的备注信息、 IP 白名单和 Token 限额（修改限额推荐使用QuotaDesired参数）。所有可选参数不传表示不修改。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) ModifyApiKeyInfoWithContext(ctx context.Context, request *ModifyApiKeyInfoRequest) (response *ModifyApiKeyInfoResponse, err error) {
+    if request == nil {
+        request = NewModifyApiKeyInfoRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tokenhub", APIVersion, "ModifyApiKeyInfo")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyApiKeyInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyApiKeyInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyApiKeyStatusRequest() (request *ModifyApiKeyStatusRequest) {
+    request = &ModifyApiKeyStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tokenhub", APIVersion, "ModifyApiKeyStatus")
+    
+    
+    return
+}
+
+func NewModifyApiKeyStatusResponse() (response *ModifyApiKeyStatusResponse) {
+    response = &ModifyApiKeyStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyApiKeyStatus
+// 更新 API 密钥的启用或禁用状态。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) ModifyApiKeyStatus(request *ModifyApiKeyStatusRequest) (response *ModifyApiKeyStatusResponse, err error) {
+    return c.ModifyApiKeyStatusWithContext(context.Background(), request)
+}
+
+// ModifyApiKeyStatus
+// 更新 API 密钥的启用或禁用状态。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) ModifyApiKeyStatusWithContext(ctx context.Context, request *ModifyApiKeyStatusRequest) (response *ModifyApiKeyStatusResponse, err error) {
+    if request == nil {
+        request = NewModifyApiKeyStatusRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tokenhub", APIVersion, "ModifyApiKeyStatus")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyApiKeyStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyApiKeyStatusResponse()
     err = c.Send(request, response)
     return
 }

@@ -35,11 +35,29 @@ const (
 	// 删除实例频次校验被判定为高风险，请检查业务或稍后重试。
 	FAILEDOPERATION_FREQUENCYCHECKRISK = "FailedOperation.FrequencyCheckRisk"
 
+	// 账户余额不足。
+	FAILEDOPERATION_INSUFFICIENTBALANCE = "FailedOperation.InsufficientBalance"
+
+	// API Key 无效或未授权。请求路径: %(request_path)s
+	FAILEDOPERATION_INVALIDAPIKEY = "FailedOperation.InvalidApiKey"
+
 	// LB状态异常。
 	FAILEDOPERATION_INVALIDLBSTATUS = "FailedOperation.InvalidLBStatus"
 
+	// 当前模型不支持请求中携带的模态。
+	FAILEDOPERATION_MODELDOESNOTSUPPORTMODALITY = "FailedOperation.ModelDoesNotSupportModality"
+
+	// 模型不存在或访问被拒绝。请求路径: %(request_path)s
+	FAILEDOPERATION_MODELNOTFOUND = "FailedOperation.ModelNotFound"
+
 	// 没有监听器的实例不允许停止。
 	FAILEDOPERATION_NOLISTENERINLB = "FailedOperation.NoListenerInLB"
+
+	// 触发供应商的速率限制。请求路径: %(request_path)s
+	FAILEDOPERATION_RATELIMITEXCEEDED = "FailedOperation.RateLimitExceeded"
+
+	// 请求超时，可能由网络问题或模型响应慢导致。请求路径: %(request_path)s
+	FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
 
 	// 指定的资源正在克隆中，请稍后重试。
 	FAILEDOPERATION_RESOURCEINCLONING = "FailedOperation.ResourceInCloning"
@@ -59,11 +77,26 @@ const (
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
 
+	// 附件不合规。
+	INVALIDPARAMETER_ATTACHMENTITEM = "InvalidParameter.AttachmentItem"
+
+	// 附件不合规。
+	INVALIDPARAMETER_ATTACHMENTS = "InvalidParameter.Attachments"
+
 	// 为确保资源不泄露，保证创建的资源ID幂等性。通过ClientToken创建资源，当订单流程已结束且发货失败，或订单流程长时间未更新时，提示当前ClientToken已经超时过期。
 	INVALIDPARAMETER_CLIENTTOKENLIMITEXCEEDED = "InvalidParameter.ClientTokenLimitExceeded"
 
+	// 上游端点不可达或返回错误。访问地址: %(url)s, 状态码: %(status_code)s
+	INVALIDPARAMETER_ENDPOINTUNREACHABLE = "InvalidParameter.EndpointUnreachable"
+
 	// 参数格式错误。
 	INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+
+	// 多模态能力标签取值不合规。
+	INVALIDPARAMETER_INPUTMODALITY = "InvalidParameter.InputModality"
+
+	// 参数不合规。
+	INVALIDPARAMETER_INVALIDFIELDVALUE = "InvalidParameter.InvalidFieldValue"
 
 	// 查询参数错误。
 	INVALIDPARAMETER_INVALIDFILTER = "InvalidParameter.InvalidFilter"
@@ -92,11 +125,17 @@ const (
 	// 一些重定向规则不存在。
 	INVALIDPARAMETER_SOMEREWRITENOTFOUND = "InvalidParameter.SomeRewriteNotFound"
 
+	// 无效参数组合
+	INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
 
 	// 参数值有重复。
 	INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
+
+	// 参数不合规。
+	INVALIDPARAMETERVALUE_INVALIDFIELDVALUE = "InvalidParameterValue.InvalidFieldValue"
 
 	// Filter参数输入错误。
 	INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
@@ -128,6 +167,12 @@ const (
 	// 资源不存在。
 	RESOURCENOTFOUND = "ResourceNotFound"
 
+	// BYOK 实例（ServiceProvider）未找到或不属于当前用户。
+	RESOURCENOTFOUND_SERVICEPROVIDER = "ResourceNotFound.ServiceProvider"
+
+	// BYOK 实例下指定 ModelName 的模型未找到。
+	RESOURCENOTFOUND_SERVICEPROVIDERMODEL = "ResourceNotFound.ServiceProviderModel"
+
 	// 资源售罄。
 	RESOURCESSOLDOUT = "ResourcesSoldOut"
 
@@ -136,4 +181,16 @@ const (
 
 	// 操作不支持。
 	UNSUPPORTEDOPERATION = "UnsupportedOperation"
+
+	// UnsupportedOperation.InvalidModelRouterStatus
+	UNSUPPORTEDOPERATION_INVALIDMODELROUTERSTATUS = "UnsupportedOperation.InvalidModelRouterStatus"
+
+	// 模型路由资源包已开启自动续订，请先关闭自动续订后再发起退款。
+	UNSUPPORTEDOPERATION_MODELROUTERRESOURCEPACKAGEAUTOPURCHASEENABLED = "UnsupportedOperation.ModelRouterResourcePackageAutoPurchaseEnabled"
+
+	// 模型路由资源包当前状态不支持退款，仅 status=0 的资源包可执行退款。
+	UNSUPPORTEDOPERATION_MODELROUTERRESOURCEPACKAGESTATUSNOTREFUNDABLE = "UnsupportedOperation.ModelRouterResourcePackageStatusNotRefundable"
+
+	// 当前byok实例（serviceprovider）的状态不支持该操作。
+	UNSUPPORTEDOPERATION_SERVICEPROVIDERSTATUS = "UnsupportedOperation.ServiceProviderStatus"
 )

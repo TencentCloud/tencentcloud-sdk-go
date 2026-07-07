@@ -2573,20 +2573,20 @@ func (r *DeleteAutoScaleStrategyResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteGroupsSTDRequestParams struct {
-	// 集群名称
+	// <p>集群名称</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 用户组名称数组
+	// <p>用户组名称数组</p>
 	GroupNames []*string `json:"GroupNames,omitnil,omitempty" name:"GroupNames"`
 }
 
 type DeleteGroupsSTDRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群名称
+	// <p>集群名称</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 用户组名称数组
+	// <p>用户组名称数组</p>
 	GroupNames []*string `json:"GroupNames,omitnil,omitempty" name:"GroupNames"`
 }
 
@@ -2612,8 +2612,11 @@ func (r *DeleteGroupsSTDRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteGroupsSTDResponseParams struct {
-	// 删除返回结果
+	// <p>删除返回结果</p>
 	Data []*ResultItem `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// <p>流程id</p>
+	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -2719,44 +2722,44 @@ func (r *DeleteNodeResourceConfigResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteUserManagerUserListRequestParams struct {
-	// 集群实例ID
+	// <p>集群实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 集群用户名列表
+	// <p>集群用户名列表</p>
 	UserNameList []*string `json:"UserNameList,omitnil,omitempty" name:"UserNameList"`
 
-	// tke/eks集群id，容器集群传
+	// <p>tke/eks集群id，容器集群传</p>
 	TkeClusterId *string `json:"TkeClusterId,omitnil,omitempty" name:"TkeClusterId"`
 
-	// 默认空，容器版传"native"
+	// <p>默认空，容器版传&quot;native&quot;</p>
 	DisplayStrategy *string `json:"DisplayStrategy,omitnil,omitempty" name:"DisplayStrategy"`
 
-	// 用户组
+	// <p>用户组</p>
 	UserGroupList []*UserAndGroup `json:"UserGroupList,omitnil,omitempty" name:"UserGroupList"`
 
-	// 是否删除家目录，只针对cvm集群
+	// <p>是否删除家目录，只针对cvm集群</p>
 	DeleteHomeDir *bool `json:"DeleteHomeDir,omitnil,omitempty" name:"DeleteHomeDir"`
 }
 
 type DeleteUserManagerUserListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群实例ID
+	// <p>集群实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 集群用户名列表
+	// <p>集群用户名列表</p>
 	UserNameList []*string `json:"UserNameList,omitnil,omitempty" name:"UserNameList"`
 
-	// tke/eks集群id，容器集群传
+	// <p>tke/eks集群id，容器集群传</p>
 	TkeClusterId *string `json:"TkeClusterId,omitnil,omitempty" name:"TkeClusterId"`
 
-	// 默认空，容器版传"native"
+	// <p>默认空，容器版传&quot;native&quot;</p>
 	DisplayStrategy *string `json:"DisplayStrategy,omitnil,omitempty" name:"DisplayStrategy"`
 
-	// 用户组
+	// <p>用户组</p>
 	UserGroupList []*UserAndGroup `json:"UserGroupList,omitnil,omitempty" name:"UserGroupList"`
 
-	// 是否删除家目录，只针对cvm集群
+	// <p>是否删除家目录，只针对cvm集群</p>
 	DeleteHomeDir *bool `json:"DeleteHomeDir,omitnil,omitempty" name:"DeleteHomeDir"`
 }
 
@@ -2786,6 +2789,9 @@ func (r *DeleteUserManagerUserListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteUserManagerUserListResponseParams struct {
+	// <p>流程id</p>
+	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -11062,38 +11068,38 @@ func (r *ModifySLInstanceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyUserGroupRequestParams struct {
-	// 集群字符串ID
+	// <p>集群字符串ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 用户信息列表
+	// <p>用户信息列表</p>
 	Users []*string `json:"Users,omitnil,omitempty" name:"Users"`
 
-	// 用户主组，cvm集群为必填参数，tke集群选填
+	// <p>用户主组，cvm集群为必填参数，tke集群选填</p>
 	UserGroup *string `json:"UserGroup,omitnil,omitempty" name:"UserGroup"`
 
-	// 用户副组
+	// <p>用户副组</p>
 	Groups []*string `json:"Groups,omitnil,omitempty" name:"Groups"`
 
-	// 备注
+	// <p>备注</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 }
 
 type ModifyUserGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群字符串ID
+	// <p>集群字符串ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 用户信息列表
+	// <p>用户信息列表</p>
 	Users []*string `json:"Users,omitnil,omitempty" name:"Users"`
 
-	// 用户主组，cvm集群为必填参数，tke集群选填
+	// <p>用户主组，cvm集群为必填参数，tke集群选填</p>
 	UserGroup *string `json:"UserGroup,omitnil,omitempty" name:"UserGroup"`
 
-	// 用户副组
+	// <p>用户副组</p>
 	Groups []*string `json:"Groups,omitnil,omitempty" name:"Groups"`
 
-	// 备注
+	// <p>备注</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 }
 
@@ -11122,6 +11128,9 @@ func (r *ModifyUserGroupRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyUserGroupResponseParams struct {
+	// <p>流程id</p>
+	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -11144,32 +11153,32 @@ func (r *ModifyUserGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyUserManagerPwdRequestParams struct {
-	// 集群实例ID
+	// <p>集群实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 用户名
+	// <p>用户名</p>
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
-	// 密码
+	// <p>密码</p>
 	PassWord *string `json:"PassWord,omitnil,omitempty" name:"PassWord"`
 
-	// 是否同步密码
+	// <p>是否同步密码</p>
 	SyncPwd *bool `json:"SyncPwd,omitnil,omitempty" name:"SyncPwd"`
 }
 
 type ModifyUserManagerPwdRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群实例ID
+	// <p>集群实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 用户名
+	// <p>用户名</p>
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
-	// 密码
+	// <p>密码</p>
 	PassWord *string `json:"PassWord,omitnil,omitempty" name:"PassWord"`
 
-	// 是否同步密码
+	// <p>是否同步密码</p>
 	SyncPwd *bool `json:"SyncPwd,omitnil,omitempty" name:"SyncPwd"`
 }
 
@@ -11197,6 +11206,9 @@ func (r *ModifyUserManagerPwdRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyUserManagerPwdResponseParams struct {
+	// <p>流程id</p>
+	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -11219,52 +11231,38 @@ func (r *ModifyUserManagerPwdResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyUsersOfGroupSTDRequestParams struct {
-	// 集群名称
+	// <p>集群名称</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 用户组名
+	// <p>用户组名</p>
 	Group *string `json:"Group,omitnil,omitempty" name:"Group"`
 
-	// 用户列表
+	// <p>用户列表</p>
 	Users []*string `json:"Users,omitnil,omitempty" name:"Users"`
 
-	// 用户组描述
+	// <p>用户组描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 枚举类, ADD, DELETE, SYNC
-	// 
-	// 
-	// 枚举类说明:
-	// - ADD: 新增的批量用户, 多次新增相同的用户不会报错
-	// - DELETE: 从用户组里删除的批量用户, 删除不存在的用户不会报错
-	// - SYNC: 用于同步整个用户组, 当列表为空时代表清空整个用户组
-	// 默认为SYNC
+	// <p>枚举类, ADD, DELETE, SYNC</p><p>枚举类说明:</p><ul><li>ADD: 新增的批量用户, 多次新增相同的用户不会报错</li><li>DELETE: 从用户组里删除的批量用户, 删除不存在的用户不会报错</li><li>SYNC: 用于同步整个用户组, 当列表为空时代表清空整个用户组<br>默认为SYNC</li></ul>
 	OperateAction *string `json:"OperateAction,omitnil,omitempty" name:"OperateAction"`
 }
 
 type ModifyUsersOfGroupSTDRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群名称
+	// <p>集群名称</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 用户组名
+	// <p>用户组名</p>
 	Group *string `json:"Group,omitnil,omitempty" name:"Group"`
 
-	// 用户列表
+	// <p>用户列表</p>
 	Users []*string `json:"Users,omitnil,omitempty" name:"Users"`
 
-	// 用户组描述
+	// <p>用户组描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 枚举类, ADD, DELETE, SYNC
-	// 
-	// 
-	// 枚举类说明:
-	// - ADD: 新增的批量用户, 多次新增相同的用户不会报错
-	// - DELETE: 从用户组里删除的批量用户, 删除不存在的用户不会报错
-	// - SYNC: 用于同步整个用户组, 当列表为空时代表清空整个用户组
-	// 默认为SYNC
+	// <p>枚举类, ADD, DELETE, SYNC</p><p>枚举类说明:</p><ul><li>ADD: 新增的批量用户, 多次新增相同的用户不会报错</li><li>DELETE: 从用户组里删除的批量用户, 删除不存在的用户不会报错</li><li>SYNC: 用于同步整个用户组, 当列表为空时代表清空整个用户组<br>默认为SYNC</li></ul>
 	OperateAction *string `json:"OperateAction,omitnil,omitempty" name:"OperateAction"`
 }
 
@@ -11293,8 +11291,11 @@ func (r *ModifyUsersOfGroupSTDRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyUsersOfGroupSTDResponseParams struct {
-	// 是否修改成功
+	// <p>是否修改成功</p>
 	Data *bool `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// <p>流程id</p>
+	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

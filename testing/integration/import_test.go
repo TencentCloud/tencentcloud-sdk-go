@@ -30,6 +30,7 @@ import (
 	agsv20250920 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ags/v20250920"
 	ai3dv20250513 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ai3d/v20250513"
 	aiartv20221229 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/aiart/v20221229"
+	albv20251030 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/alb/v20251030"
 	amev20190916 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ame/v20190916"
 	amsv20200608 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ams/v20200608"
 	amsv20201229 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ams/v20201229"
@@ -441,6 +442,19 @@ func TestAiartv20221229Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf("fail to init aiart_v20221229 client: %v", err)
+    }
+}
+
+func TestAlbv20251030Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := albv20251030.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf("fail to init alb_v20251030 client: %v", err)
     }
 }
 

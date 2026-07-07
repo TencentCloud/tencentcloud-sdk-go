@@ -1373,6 +1373,17 @@ type BackupRegionAndIds struct {
 	BackupId *int64 `json:"BackupId,omitnil,omitempty" name:"BackupId"`
 }
 
+type BackupVolumeInfo struct {
+	// 备份使用量
+	BackupVolume *float64 `json:"BackupVolume,omitnil,omitempty" name:"BackupVolume"`
+
+	// 备份类型
+	BackupType *string `json:"BackupType,omitnil,omitempty" name:"BackupType"`
+
+	// 备份方式
+	BackupMethod *string `json:"BackupMethod,omitnil,omitempty" name:"BackupMethod"`
+}
+
 type BillingResourceInfo struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
@@ -7992,6 +8003,96 @@ func (r *DescribeBackupListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeBackupListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBackupOverviewRequestParams struct {
+	// 集群id
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+}
+
+type DescribeBackupOverviewRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群id
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+}
+
+func (r *DescribeBackupOverviewRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBackupOverviewRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBackupOverviewRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBackupOverviewResponseParams struct {
+	// 备份总容量
+	BackupTotalVolume *float64 `json:"BackupTotalVolume,omitnil,omitempty" name:"BackupTotalVolume"`
+
+	// 备份快照容量
+	BackupSnapshotVolume *float64 `json:"BackupSnapshotVolume,omitnil,omitempty" name:"BackupSnapshotVolume"`
+
+	// 备份逻辑容量
+	BackupLogicVolume *float64 `json:"BackupLogicVolume,omitnil,omitempty" name:"BackupLogicVolume"`
+
+	// 日志总容量
+	LogTotalVolume *float64 `json:"LogTotalVolume,omitnil,omitempty" name:"LogTotalVolume"`
+
+	// 日志binlog容量
+	LogBinlogVolume *float64 `json:"LogBinlogVolume,omitnil,omitempty" name:"LogBinlogVolume"`
+
+	// 日志redolog容量
+	LogRedoLogVolume *float64 `json:"LogRedoLogVolume,omitnil,omitempty" name:"LogRedoLogVolume"`
+
+	// 跨地域备份总容量
+	CrossTotalVolume *float64 `json:"CrossTotalVolume,omitnil,omitempty" name:"CrossTotalVolume"`
+
+	// 跨地域备份容量
+	CrossRegionBackupVolume *float64 `json:"CrossRegionBackupVolume,omitnil,omitempty" name:"CrossRegionBackupVolume"`
+
+	// 跨地域日志容量
+	CrossRegionLogVolume *float64 `json:"CrossRegionLogVolume,omitnil,omitempty" name:"CrossRegionLogVolume"`
+
+	// 备份容量详情
+	BackupVolumeInfos []*BackupVolumeInfo `json:"BackupVolumeInfos,omitnil,omitempty" name:"BackupVolumeInfos"`
+
+	// 跨地域备份容量详情
+	CrossRegionBackupVolumeInfos []*BackupVolumeInfo `json:"CrossRegionBackupVolumeInfos,omitnil,omitempty" name:"CrossRegionBackupVolumeInfos"`
+
+	// 跨地域信息
+	CrossRegions []*string `json:"CrossRegions,omitnil,omitempty" name:"CrossRegions"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeBackupOverviewResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBackupOverviewResponseParams `json:"Response"`
+}
+
+func (r *DescribeBackupOverviewResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBackupOverviewResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

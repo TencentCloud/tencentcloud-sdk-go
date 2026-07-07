@@ -5104,32 +5104,32 @@ func (r *ListPoliciesGrantingServiceAccessResponse) FromJsonString(s string) err
 
 // Predefined struct for user
 type ListPoliciesRequestParams struct {
-	// 每页数量，默认值是 20，必须大于 0 且小于或等于 200
+	// <p>每页数量，默认值是 20，必须大于 0 且小于或等于 200</p>
 	Rp *uint64 `json:"Rp,omitnil,omitempty" name:"Rp"`
 
-	// 页码，默认值是 1，从 1开始，不能大于 200
+	// <p>页码，默认值是 1，从 1开始，不能大于 200</p>
 	Page *uint64 `json:"Page,omitnil,omitempty" name:"Page"`
 
-	// 可取值 'All'、'QCS' 和 'Local'，'All' 获取所有策略，'QCS' 只获取预设策略，'Local' 只获取自定义策略，默认取 'All'
+	// <p>可取值 &#39;All&#39;、&#39;QCS&#39; 和 &#39;Local&#39;，&#39;All&#39; 获取所有策略，&#39;QCS&#39; 只获取预设策略，&#39;Local&#39; 只获取自定义策略，默认取 &#39;All&#39;</p>
 	Scope *string `json:"Scope,omitnil,omitempty" name:"Scope"`
 
-	// 按策略名匹配
+	// <p>按策略名匹配</p>
 	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
 }
 
 type ListPoliciesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 每页数量，默认值是 20，必须大于 0 且小于或等于 200
+	// <p>每页数量，默认值是 20，必须大于 0 且小于或等于 200</p>
 	Rp *uint64 `json:"Rp,omitnil,omitempty" name:"Rp"`
 
-	// 页码，默认值是 1，从 1开始，不能大于 200
+	// <p>页码，默认值是 1，从 1开始，不能大于 200</p>
 	Page *uint64 `json:"Page,omitnil,omitempty" name:"Page"`
 
-	// 可取值 'All'、'QCS' 和 'Local'，'All' 获取所有策略，'QCS' 只获取预设策略，'Local' 只获取自定义策略，默认取 'All'
+	// <p>可取值 &#39;All&#39;、&#39;QCS&#39; 和 &#39;Local&#39;，&#39;All&#39; 获取所有策略，&#39;QCS&#39; 只获取预设策略，&#39;Local&#39; 只获取自定义策略，默认取 &#39;All&#39;</p>
 	Scope *string `json:"Scope,omitnil,omitempty" name:"Scope"`
 
-	// 按策略名匹配
+	// <p>按策略名匹配</p>
 	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
 }
 
@@ -5157,22 +5157,13 @@ func (r *ListPoliciesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListPoliciesResponseParams struct {
-	// 策略总数
+	// <p>策略总数</p>
 	TotalNum *uint64 `json:"TotalNum,omitnil,omitempty" name:"TotalNum"`
 
-	// 策略数组，数组每个成员包括 policyId、policyName、addTime、type、description、 createMode 字段。其中： 
-	// policyId：策略 id 
-	// policyName：策略名
-	// addTime：策略创建时间
-	// type：1 表示自定义策略，2 表示预设策略 
-	// description：策略描述 
-	// createMode：1 表示按业务权限创建的策略，其他值表示可以查看策略语法和通过策略语法更新策略
-	// Attachments: 关联的用户数
-	// ServiceType: 策略关联的产品
-	// IsAttached: 当需要查询标记实体是否已经关联策略时不为null。0表示未关联策略，1表示已关联策略
+	// <p>策略数组，数组每个成员包括 policyId、policyName、addTime、type、description、 createMode 字段。其中：<br>policyId：策略 id<br>policyName：策略名<br>addTime：策略创建时间<br>type：1 表示自定义策略，2 表示预设策略<br>description：策略描述<br>createMode：1 表示按业务权限创建的策略，其他值表示可以查看策略语法和通过策略语法更新策略<br>Attachments: 关联的用户数<br>ServiceType: 策略关联的产品<br>IsAttached: 当需要查询标记实体是否已经关联策略时不为null。0表示未关联策略，1表示已关联策略</p>
 	List []*StrategyInfo `json:"List,omitnil,omitempty" name:"List"`
 
-	// 保留字段
+	// <p>保留字段</p>
 	ServiceTypeList []*string `json:"ServiceTypeList,omitnil,omitempty" name:"ServiceTypeList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6130,62 +6121,65 @@ func (r *SetMfaFlagResponse) FromJsonString(s string) error {
 }
 
 type StrategyInfo struct {
-	// 策略ID。
+	// <p>策略ID。</p>
 	PolicyId *uint64 `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
 
-	// 策略名称。
+	// <p>策略名称。</p>
 	PolicyName *string `json:"PolicyName,omitnil,omitempty" name:"PolicyName"`
 
-	// 策略创建时间。
+	// <p>策略创建时间。</p>
 	AddTime *string `json:"AddTime,omitnil,omitempty" name:"AddTime"`
 
-	// 策略类型。1 表示自定义策略，2 表示预设策略。
+	// <p>策略类型。1 表示自定义策略，2 表示预设策略。</p>
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 策略描述。
+	// <p>策略描述。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 创建来源，1 通过控制台创建, 2 通过策略语法创建。
+	// <p>创建来源，1 通过控制台创建, 2 通过策略语法创建。</p>
 	CreateMode *uint64 `json:"CreateMode,omitnil,omitempty" name:"CreateMode"`
 
-	// 关联的用户数
+	// <p>关联的用户数</p>
 	Attachments *uint64 `json:"Attachments,omitnil,omitempty" name:"Attachments"`
 
-	// 策略关联的产品
+	// <p>策略关联的产品</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
-	// 当需要查询标记实体是否已经关联策略时不为null。0表示未关联策略，1表示已关联策略
+	// <p>当需要查询标记实体是否已经关联策略时不为null。0表示未关联策略，1表示已关联策略</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsAttached *uint64 `json:"IsAttached,omitnil,omitempty" name:"IsAttached"`
 
-	// 是否已下线
+	// <p>是否已下线</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Deactived *uint64 `json:"Deactived,omitnil,omitempty" name:"Deactived"`
 
-	// 已下线产品列表
+	// <p>已下线产品列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeactivedDetail []*string `json:"DeactivedDetail,omitnil,omitempty" name:"DeactivedDetail"`
 
-	// 是否是服务相关角色策略
+	// <p>是否是服务相关角色策略</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsServiceLinkedPolicy *uint64 `json:"IsServiceLinkedPolicy,omitnil,omitempty" name:"IsServiceLinkedPolicy"`
 
-	// 关联策略实体数
+	// <p>关联策略实体数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AttachEntityCount *int64 `json:"AttachEntityCount,omitnil,omitempty" name:"AttachEntityCount"`
 
-	// 关联权限边界实体数
+	// <p>关联权限边界实体数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AttachEntityBoundaryCount *int64 `json:"AttachEntityBoundaryCount,omitnil,omitempty" name:"AttachEntityBoundaryCount"`
 
-	// 最后编辑时间
+	// <p>最后编辑时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 标签列表
+	// <p>标签列表</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>权限级别</p><p>枚举值：</p><ul><li>Global： 全局权限</li><li>Finance： 财务权限</li><li>CloudProduct： 云产品权限</li></ul>
+	PermissionLevel *string `json:"PermissionLevel,omitnil,omitempty" name:"PermissionLevel"`
 }
 
 type SubAccountInfo struct {

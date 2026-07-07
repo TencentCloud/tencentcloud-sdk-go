@@ -4077,6 +4077,62 @@ func (c *Client) DescribePlatformImagesWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribePresetImageListRequest() (request *DescribePresetImageListRequest) {
+    request = &DescribePresetImageListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "DescribePresetImageList")
+    
+    
+    return
+}
+
+func NewDescribePresetImageListResponse() (response *DescribePresetImageListResponse) {
+    response = &DescribePresetImageListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribePresetImageList
+// 该接口用于查询内置镜像列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NOTALLOW = "FailedOperation.NotAllow"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_BADNAME = "InvalidParameterValue.BadName"
+func (c *Client) DescribePresetImageList(request *DescribePresetImageListRequest) (response *DescribePresetImageListResponse, err error) {
+    return c.DescribePresetImageListWithContext(context.Background(), request)
+}
+
+// DescribePresetImageList
+// 该接口用于查询内置镜像列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NOTALLOW = "FailedOperation.NotAllow"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_BADNAME = "InvalidParameterValue.BadName"
+func (c *Client) DescribePresetImageListWithContext(ctx context.Context, request *DescribePresetImageListRequest) (response *DescribePresetImageListResponse, err error) {
+    if request == nil {
+        request = NewDescribePresetImageListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "DescribePresetImageList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePresetImageList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePresetImageListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePublicAlgoVersionListRequest() (request *DescribePublicAlgoVersionListRequest) {
     request = &DescribePublicAlgoVersionListRequest{
         BaseRequest: &tchttp.BaseRequest{},

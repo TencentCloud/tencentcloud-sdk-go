@@ -121,6 +121,14 @@ func (r *ConfirmCommonServiceWorkOrderResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ContactCollectInfo struct {
+	// 业务联系人姓名
+	ContactName *string `json:"ContactName,omitnil,omitempty" name:"ContactName"`
+
+	// 联系人电话
+	ContactPhone *string `json:"ContactPhone,omitnil,omitempty" name:"ContactPhone"`
+}
+
 // Predefined struct for user
 type CreateCommonServiceWorkOrderRequestParams struct {
 	// 设备及位置信息列表
@@ -2796,6 +2804,154 @@ func (r *DescribeResourceUsageResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeWorkOrderCarCollectListRequestParams struct {
+	// <p>过滤条件，支持 car-number（车牌号模糊匹配）、driver-name（驾驶员姓名模糊匹配）</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>偏移量，默认为0</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>返回数量，默认为20，最大值为100</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeWorkOrderCarCollectListRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>过滤条件，支持 car-number（车牌号模糊匹配）、driver-name（驾驶员姓名模糊匹配）</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>偏移量，默认为0</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>返回数量，默认为20，最大值为100</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeWorkOrderCarCollectListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWorkOrderCarCollectListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeWorkOrderCarCollectListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeWorkOrderCarCollectListResponseParams struct {
+	// <p>符合条件的记录总数</p>
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>归集车辆信息列表</p>
+	CarSet []*PersonnelVisitCar `json:"CarSet,omitnil,omitempty" name:"CarSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeWorkOrderCarCollectListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeWorkOrderCarCollectListResponseParams `json:"Response"`
+}
+
+func (r *DescribeWorkOrderCarCollectListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWorkOrderCarCollectListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeWorkOrderContactCollectListRequestParams struct {
+	// <p>过滤条件，支持 contact-name（联系人姓名模糊匹配）、contact-phone（联系人电话模糊匹配）</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>偏移量，默认为0</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>返回数量，默认为20，最大值为100</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeWorkOrderContactCollectListRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>过滤条件，支持 contact-name（联系人姓名模糊匹配）、contact-phone（联系人电话模糊匹配）</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>偏移量，默认为0</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>返回数量，默认为20，最大值为100</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeWorkOrderContactCollectListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWorkOrderContactCollectListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeWorkOrderContactCollectListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeWorkOrderContactCollectListResponseParams struct {
+	// <p>符合条件的记录总数</p>
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>归集业务联系人信息列表</p>
+	ContactSet []*ContactCollectInfo `json:"ContactSet,omitnil,omitempty" name:"ContactSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeWorkOrderContactCollectListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeWorkOrderContactCollectListResponseParams `json:"Response"`
+}
+
+func (r *DescribeWorkOrderContactCollectListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWorkOrderContactCollectListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeWorkOrderListRequestParams struct {
 	// 过滤条件。支持：service-type、order-type、order-status、order-id
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
@@ -2873,6 +3029,80 @@ func (r *DescribeWorkOrderListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeWorkOrderListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeWorkOrderPersonnelCollectListRequestParams struct {
+	// <p>过滤条件，支持 personnel-name（姓名模糊匹配）、personnel-tel-number（手机号模糊匹配）</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>偏移量，默认为0</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>返回数量，默认为20，最大值为100</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeWorkOrderPersonnelCollectListRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>过滤条件，支持 personnel-name（姓名模糊匹配）、personnel-tel-number（手机号模糊匹配）</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>偏移量，默认为0</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>返回数量，默认为20，最大值为100</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeWorkOrderPersonnelCollectListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWorkOrderPersonnelCollectListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeWorkOrderPersonnelCollectListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeWorkOrderPersonnelCollectListResponseParams struct {
+	// <p>符合条件的记录总数</p>
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>归集人员信息列表</p>
+	PersonnelSet []*Personnel `json:"PersonnelSet,omitnil,omitempty" name:"PersonnelSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeWorkOrderPersonnelCollectListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeWorkOrderPersonnelCollectListResponseParams `json:"Response"`
+}
+
+func (r *DescribeWorkOrderPersonnelCollectListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWorkOrderPersonnelCollectListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

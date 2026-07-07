@@ -4121,6 +4121,77 @@ func (r *CreateDspmAssetAccessTopologyExportJobResponse) FromJsonString(s string
 }
 
 // Predefined struct for user
+type CreateDspmAssetIdentifyInfoExportJobRequestParams struct {
+	// <p>资产实例id</p>
+	AssetId *string `json:"AssetId,omitnil,omitempty" name:"AssetId"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>过滤器</p>
+	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
+}
+
+type CreateDspmAssetIdentifyInfoExportJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>资产实例id</p>
+	AssetId *string `json:"AssetId,omitnil,omitempty" name:"AssetId"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>过滤器</p>
+	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
+}
+
+func (r *CreateDspmAssetIdentifyInfoExportJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDspmAssetIdentifyInfoExportJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AssetId")
+	delete(f, "MemberId")
+	delete(f, "Filter")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDspmAssetIdentifyInfoExportJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateDspmAssetIdentifyInfoExportJobResponseParams struct {
+	// <p>任务ID</p>
+	JobID *string `json:"JobID,omitnil,omitempty" name:"JobID"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateDspmAssetIdentifyInfoExportJobResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateDspmAssetIdentifyInfoExportJobResponseParams `json:"Response"`
+}
+
+func (r *CreateDspmAssetIdentifyInfoExportJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDspmAssetIdentifyInfoExportJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateDspmAssetsExportJobRequestParams struct {
 	// 集团账号的成员id
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
@@ -4449,6 +4520,383 @@ func (r *CreateDspmExportTaskResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateDspmIdentifyCategoryRequestParams struct {
+	// <p>分类名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+type CreateDspmIdentifyCategoryRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>分类名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+func (r *CreateDspmIdentifyCategoryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDspmIdentifyCategoryRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "MemberId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDspmIdentifyCategoryRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateDspmIdentifyCategoryResponseParams struct {
+	// <p>分类ID</p>
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateDspmIdentifyCategoryResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateDspmIdentifyCategoryResponseParams `json:"Response"`
+}
+
+func (r *CreateDspmIdentifyCategoryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDspmIdentifyCategoryResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateDspmIdentifyComplianceCategoryRelationRequestParams struct {
+	// <p>识别模板ID</p>
+	ComplianceId *uint64 `json:"ComplianceId,omitnil,omitempty" name:"ComplianceId"`
+
+	// <p>分类ID</p>
+	CategoryId *int64 `json:"CategoryId,omitnil,omitempty" name:"CategoryId"`
+
+	// <p>父分类ID</p>
+	ParentCategoryId *int64 `json:"ParentCategoryId,omitnil,omitempty" name:"ParentCategoryId"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+type CreateDspmIdentifyComplianceCategoryRelationRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>识别模板ID</p>
+	ComplianceId *uint64 `json:"ComplianceId,omitnil,omitempty" name:"ComplianceId"`
+
+	// <p>分类ID</p>
+	CategoryId *int64 `json:"CategoryId,omitnil,omitempty" name:"CategoryId"`
+
+	// <p>父分类ID</p>
+	ParentCategoryId *int64 `json:"ParentCategoryId,omitnil,omitempty" name:"ParentCategoryId"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+func (r *CreateDspmIdentifyComplianceCategoryRelationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDspmIdentifyComplianceCategoryRelationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ComplianceId")
+	delete(f, "CategoryId")
+	delete(f, "ParentCategoryId")
+	delete(f, "MemberId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDspmIdentifyComplianceCategoryRelationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateDspmIdentifyComplianceCategoryRelationResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateDspmIdentifyComplianceCategoryRelationResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateDspmIdentifyComplianceCategoryRelationResponseParams `json:"Response"`
+}
+
+func (r *CreateDspmIdentifyComplianceCategoryRelationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDspmIdentifyComplianceCategoryRelationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateDspmIdentifyComplianceGroupCopyRequestParams struct {
+	// <p>来源模板ID</p>
+	FromId *uint64 `json:"FromId,omitnil,omitempty" name:"FromId"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>模板名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>模板描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+type CreateDspmIdentifyComplianceGroupCopyRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>来源模板ID</p>
+	FromId *uint64 `json:"FromId,omitnil,omitempty" name:"FromId"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>模板名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>模板描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+func (r *CreateDspmIdentifyComplianceGroupCopyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDspmIdentifyComplianceGroupCopyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FromId")
+	delete(f, "MemberId")
+	delete(f, "Name")
+	delete(f, "Description")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDspmIdentifyComplianceGroupCopyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateDspmIdentifyComplianceGroupCopyResponseParams struct {
+	// <p>模板ID</p>
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateDspmIdentifyComplianceGroupCopyResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateDspmIdentifyComplianceGroupCopyResponseParams `json:"Response"`
+}
+
+func (r *CreateDspmIdentifyComplianceGroupCopyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDspmIdentifyComplianceGroupCopyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateDspmIdentifyComplianceGroupRequestParams struct {
+	// <p>级别名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>级别组ID</p>
+	LevelGroupId *uint64 `json:"LevelGroupId,omitnil,omitempty" name:"LevelGroupId"`
+
+	// <p>状态</p><p>枚举值：</p><ul><li>0： 不启用</li><li>1： 启用</li></ul>
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+type CreateDspmIdentifyComplianceGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>级别名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>级别组ID</p>
+	LevelGroupId *uint64 `json:"LevelGroupId,omitnil,omitempty" name:"LevelGroupId"`
+
+	// <p>状态</p><p>枚举值：</p><ul><li>0： 不启用</li><li>1： 启用</li></ul>
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+func (r *CreateDspmIdentifyComplianceGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDspmIdentifyComplianceGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "MemberId")
+	delete(f, "Description")
+	delete(f, "LevelGroupId")
+	delete(f, "Status")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDspmIdentifyComplianceGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateDspmIdentifyComplianceGroupResponseParams struct {
+	// <p>识别模板ID</p>
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateDspmIdentifyComplianceGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateDspmIdentifyComplianceGroupResponseParams `json:"Response"`
+}
+
+func (r *CreateDspmIdentifyComplianceGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDspmIdentifyComplianceGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateDspmIdentifyComplianceRuleRelationRequestParams struct {
+	// <p>识别模板ID</p>
+	ComplianceId *uint64 `json:"ComplianceId,omitnil,omitempty" name:"ComplianceId"`
+
+	// <p>分类ID</p>
+	CategoryId *int64 `json:"CategoryId,omitnil,omitempty" name:"CategoryId"`
+
+	// <p>无</p>
+	Rules []*DspmIdentifyCategoryRuleRelateItem `json:"Rules,omitnil,omitempty" name:"Rules"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+type CreateDspmIdentifyComplianceRuleRelationRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>识别模板ID</p>
+	ComplianceId *uint64 `json:"ComplianceId,omitnil,omitempty" name:"ComplianceId"`
+
+	// <p>分类ID</p>
+	CategoryId *int64 `json:"CategoryId,omitnil,omitempty" name:"CategoryId"`
+
+	// <p>无</p>
+	Rules []*DspmIdentifyCategoryRuleRelateItem `json:"Rules,omitnil,omitempty" name:"Rules"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+func (r *CreateDspmIdentifyComplianceRuleRelationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDspmIdentifyComplianceRuleRelationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ComplianceId")
+	delete(f, "CategoryId")
+	delete(f, "Rules")
+	delete(f, "MemberId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDspmIdentifyComplianceRuleRelationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateDspmIdentifyComplianceRuleRelationResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateDspmIdentifyComplianceRuleRelationResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateDspmIdentifyComplianceRuleRelationResponseParams `json:"Response"`
+}
+
+func (r *CreateDspmIdentifyComplianceRuleRelationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDspmIdentifyComplianceRuleRelationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateDspmIdentifyInfoListExportJobRequestParams struct {
 	// 集团账号的成员id
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
@@ -4509,6 +4957,176 @@ func (r *CreateDspmIdentifyInfoListExportJobResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateDspmIdentifyInfoListExportJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateDspmIdentifyLevelGroupRequestParams struct {
+	// <p>分级组名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>无</p>
+	LevelItems []*DspmAddIdentifyLevelItem `json:"LevelItems,omitnil,omitempty" name:"LevelItems"`
+}
+
+type CreateDspmIdentifyLevelGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>分级组名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>无</p>
+	LevelItems []*DspmAddIdentifyLevelItem `json:"LevelItems,omitnil,omitempty" name:"LevelItems"`
+}
+
+func (r *CreateDspmIdentifyLevelGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDspmIdentifyLevelGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "MemberId")
+	delete(f, "Description")
+	delete(f, "LevelItems")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDspmIdentifyLevelGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateDspmIdentifyLevelGroupResponseParams struct {
+	// <p>分级组ID</p>
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateDspmIdentifyLevelGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateDspmIdentifyLevelGroupResponseParams `json:"Response"`
+}
+
+func (r *CreateDspmIdentifyLevelGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDspmIdentifyLevelGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateDspmIdentifyRuleRequestParams struct {
+	// <p>数据项名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>数据项描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>数据项启用状态</p><p>枚举值：</p><ul><li>0： 未启用</li><li>1： 启用</li></ul>
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>结构化规则</p>
+	StructuredRule *string `json:"StructuredRule,omitnil,omitempty" name:"StructuredRule"`
+
+	// <p>非结构化规则</p>
+	UnStructuredRule *string `json:"UnStructuredRule,omitnil,omitempty" name:"UnStructuredRule"`
+}
+
+type CreateDspmIdentifyRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>数据项名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>数据项描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>数据项启用状态</p><p>枚举值：</p><ul><li>0： 未启用</li><li>1： 启用</li></ul>
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>结构化规则</p>
+	StructuredRule *string `json:"StructuredRule,omitnil,omitempty" name:"StructuredRule"`
+
+	// <p>非结构化规则</p>
+	UnStructuredRule *string `json:"UnStructuredRule,omitnil,omitempty" name:"UnStructuredRule"`
+}
+
+func (r *CreateDspmIdentifyRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDspmIdentifyRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "MemberId")
+	delete(f, "Description")
+	delete(f, "Status")
+	delete(f, "StructuredRule")
+	delete(f, "UnStructuredRule")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDspmIdentifyRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateDspmIdentifyRuleResponseParams struct {
+	// <p>数据项id</p>
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateDspmIdentifyRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateDspmIdentifyRuleResponseParams `json:"Response"`
+}
+
+func (r *CreateDspmIdentifyRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDspmIdentifyRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5837,6 +6455,393 @@ func (r *DeleteDspmExportTaskResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteDspmExportTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteDspmIdentifyCategoryRequestParams struct {
+	// <p>分类ID集合</p>
+	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+type DeleteDspmIdentifyCategoryRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>分类ID集合</p>
+	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+func (r *DeleteDspmIdentifyCategoryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDspmIdentifyCategoryRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Ids")
+	delete(f, "MemberId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteDspmIdentifyCategoryRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteDspmIdentifyCategoryResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteDspmIdentifyCategoryResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteDspmIdentifyCategoryResponseParams `json:"Response"`
+}
+
+func (r *DeleteDspmIdentifyCategoryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDspmIdentifyCategoryResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteDspmIdentifyComplianceCategoryRelationRequestParams struct {
+	// <p>识别模板ID</p>
+	ComplianceId *uint64 `json:"ComplianceId,omitnil,omitempty" name:"ComplianceId"`
+
+	// <p>分类ID</p>
+	CategoryId *int64 `json:"CategoryId,omitnil,omitempty" name:"CategoryId"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+type DeleteDspmIdentifyComplianceCategoryRelationRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>识别模板ID</p>
+	ComplianceId *uint64 `json:"ComplianceId,omitnil,omitempty" name:"ComplianceId"`
+
+	// <p>分类ID</p>
+	CategoryId *int64 `json:"CategoryId,omitnil,omitempty" name:"CategoryId"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+func (r *DeleteDspmIdentifyComplianceCategoryRelationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDspmIdentifyComplianceCategoryRelationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ComplianceId")
+	delete(f, "CategoryId")
+	delete(f, "MemberId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteDspmIdentifyComplianceCategoryRelationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteDspmIdentifyComplianceCategoryRelationResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteDspmIdentifyComplianceCategoryRelationResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteDspmIdentifyComplianceCategoryRelationResponseParams `json:"Response"`
+}
+
+func (r *DeleteDspmIdentifyComplianceCategoryRelationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDspmIdentifyComplianceCategoryRelationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteDspmIdentifyComplianceGroupRequestParams struct {
+	// <p>识别模板ID集合</p>
+	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+type DeleteDspmIdentifyComplianceGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>识别模板ID集合</p>
+	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+func (r *DeleteDspmIdentifyComplianceGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDspmIdentifyComplianceGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Ids")
+	delete(f, "MemberId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteDspmIdentifyComplianceGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteDspmIdentifyComplianceGroupResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteDspmIdentifyComplianceGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteDspmIdentifyComplianceGroupResponseParams `json:"Response"`
+}
+
+func (r *DeleteDspmIdentifyComplianceGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDspmIdentifyComplianceGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteDspmIdentifyComplianceRuleRelationRequestParams struct {
+	// <p>识别模板ID</p>
+	ComplianceId *uint64 `json:"ComplianceId,omitnil,omitempty" name:"ComplianceId"`
+
+	// <p>分类ID</p>
+	CategoryId *int64 `json:"CategoryId,omitnil,omitempty" name:"CategoryId"`
+
+	// <p>数据项ID集合</p>
+	RuleIds []*uint64 `json:"RuleIds,omitnil,omitempty" name:"RuleIds"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+type DeleteDspmIdentifyComplianceRuleRelationRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>识别模板ID</p>
+	ComplianceId *uint64 `json:"ComplianceId,omitnil,omitempty" name:"ComplianceId"`
+
+	// <p>分类ID</p>
+	CategoryId *int64 `json:"CategoryId,omitnil,omitempty" name:"CategoryId"`
+
+	// <p>数据项ID集合</p>
+	RuleIds []*uint64 `json:"RuleIds,omitnil,omitempty" name:"RuleIds"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+func (r *DeleteDspmIdentifyComplianceRuleRelationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDspmIdentifyComplianceRuleRelationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ComplianceId")
+	delete(f, "CategoryId")
+	delete(f, "RuleIds")
+	delete(f, "MemberId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteDspmIdentifyComplianceRuleRelationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteDspmIdentifyComplianceRuleRelationResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteDspmIdentifyComplianceRuleRelationResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteDspmIdentifyComplianceRuleRelationResponseParams `json:"Response"`
+}
+
+func (r *DeleteDspmIdentifyComplianceRuleRelationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDspmIdentifyComplianceRuleRelationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteDspmIdentifyLevelGroupRequestParams struct {
+	// <p>级别组id</p>
+	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+type DeleteDspmIdentifyLevelGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>级别组id</p>
+	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+func (r *DeleteDspmIdentifyLevelGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDspmIdentifyLevelGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Ids")
+	delete(f, "MemberId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteDspmIdentifyLevelGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteDspmIdentifyLevelGroupResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteDspmIdentifyLevelGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteDspmIdentifyLevelGroupResponseParams `json:"Response"`
+}
+
+func (r *DeleteDspmIdentifyLevelGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDspmIdentifyLevelGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteDspmIdentifyRuleRequestParams struct {
+	// <p>数据项id</p>
+	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+type DeleteDspmIdentifyRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>数据项id</p>
+	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+func (r *DeleteDspmIdentifyRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDspmIdentifyRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Ids")
+	delete(f, "MemberId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteDspmIdentifyRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteDspmIdentifyRuleResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteDspmIdentifyRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteDspmIdentifyRuleResponseParams `json:"Response"`
+}
+
+func (r *DeleteDspmIdentifyRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDspmIdentifyRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -10000,6 +11005,80 @@ func (r *DescribeCosIpInvokeRecordFileResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeCosObjectScanTaskRequestParams struct {
+	// <p>1: 敏感数据识别 2:恶意文件扫描</p>
+	TaskType *int64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>存储桶列表</p>
+	BucketSet []*string `json:"BucketSet,omitnil,omitempty" name:"BucketSet"`
+}
+
+type DescribeCosObjectScanTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>1: 敏感数据识别 2:恶意文件扫描</p>
+	TaskType *int64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>存储桶列表</p>
+	BucketSet []*string `json:"BucketSet,omitnil,omitempty" name:"BucketSet"`
+}
+
+func (r *DescribeCosObjectScanTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCosObjectScanTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskType")
+	delete(f, "MemberId")
+	delete(f, "BucketSet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCosObjectScanTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCosObjectScanTaskResponseParams struct {
+	// <p>存储桶任务详情</p>
+	BucketTaskIdSet []*CosBucketTaskInfo `json:"BucketTaskIdSet,omitnil,omitempty" name:"BucketTaskIdSet"`
+
+	// <p>appid维度任务列表</p>
+	MemberTaskIdSet []*CosAssetSyncTaskInfo `json:"MemberTaskIdSet,omitnil,omitempty" name:"MemberTaskIdSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeCosObjectScanTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCosObjectScanTaskResponseParams `json:"Response"`
+}
+
+func (r *DescribeCosObjectScanTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCosObjectScanTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeCosOverviewRequestParams struct {
 	// 集团账号的成员id
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
@@ -11953,6 +13032,172 @@ func (r *DescribeDspmAssetFieldListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeDspmAssetFieldSamplesRequestParams struct {
+	// <p>资产实例ID</p>
+	AssetId *string `json:"AssetId,omitnil,omitempty" name:"AssetId"`
+
+	// <p>数据库名</p>
+	DbName *string `json:"DbName,omitnil,omitempty" name:"DbName"`
+
+	// <p>表名</p>
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// <p>字段名</p>
+	FieldName *string `json:"FieldName,omitnil,omitempty" name:"FieldName"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>schema名</p>
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+}
+
+type DescribeDspmAssetFieldSamplesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>资产实例ID</p>
+	AssetId *string `json:"AssetId,omitnil,omitempty" name:"AssetId"`
+
+	// <p>数据库名</p>
+	DbName *string `json:"DbName,omitnil,omitempty" name:"DbName"`
+
+	// <p>表名</p>
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// <p>字段名</p>
+	FieldName *string `json:"FieldName,omitnil,omitempty" name:"FieldName"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>schema名</p>
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+}
+
+func (r *DescribeDspmAssetFieldSamplesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDspmAssetFieldSamplesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AssetId")
+	delete(f, "DbName")
+	delete(f, "TableName")
+	delete(f, "FieldName")
+	delete(f, "MemberId")
+	delete(f, "SchemaName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDspmAssetFieldSamplesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDspmAssetFieldSamplesResponseParams struct {
+	// <p>无</p>
+	DataSet []*string `json:"DataSet,omitnil,omitempty" name:"DataSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDspmAssetFieldSamplesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDspmAssetFieldSamplesResponseParams `json:"Response"`
+}
+
+func (r *DescribeDspmAssetFieldSamplesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDspmAssetFieldSamplesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDspmAssetIdentifyInfoListRequestParams struct {
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>筛选项</p>
+	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
+
+	// <p>识别模板id</p>
+	ComplianceId *uint64 `json:"ComplianceId,omitnil,omitempty" name:"ComplianceId"`
+}
+
+type DescribeDspmAssetIdentifyInfoListRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>筛选项</p>
+	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
+
+	// <p>识别模板id</p>
+	ComplianceId *uint64 `json:"ComplianceId,omitnil,omitempty" name:"ComplianceId"`
+}
+
+func (r *DescribeDspmAssetIdentifyInfoListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDspmAssetIdentifyInfoListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MemberId")
+	delete(f, "Filter")
+	delete(f, "ComplianceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDspmAssetIdentifyInfoListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDspmAssetIdentifyInfoListResponseParams struct {
+	// <p>总数</p>
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>结果集</p>
+	DataSet []*DspmAssetIdentifyInfo `json:"DataSet,omitnil,omitempty" name:"DataSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDspmAssetIdentifyInfoListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDspmAssetIdentifyInfoListResponseParams `json:"Response"`
+}
+
+func (r *DescribeDspmAssetIdentifyInfoListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDspmAssetIdentifyInfoListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeDspmAssetIdsRequestParams struct {
 	// 集团账号的成员id
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
@@ -12724,6 +13969,390 @@ func (r *DescribeDspmExportTaskResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeDspmIdentifyCategoryListRequestParams struct {
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>过滤条件</p>
+	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
+}
+
+type DescribeDspmIdentifyCategoryListRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>过滤条件</p>
+	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
+}
+
+func (r *DescribeDspmIdentifyCategoryListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDspmIdentifyCategoryListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MemberId")
+	delete(f, "Filter")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDspmIdentifyCategoryListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDspmIdentifyCategoryListResponseParams struct {
+	// <p>总数</p><p>单位：数量</p>
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>无</p>
+	DataSet []*DspmIdentifyCategoryItem `json:"DataSet,omitnil,omitempty" name:"DataSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDspmIdentifyCategoryListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDspmIdentifyCategoryListResponseParams `json:"Response"`
+}
+
+func (r *DescribeDspmIdentifyCategoryListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDspmIdentifyCategoryListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDspmIdentifyComplianceCategoryRuleListRequestParams struct {
+	// <p>识别模板ID</p>
+	ComplianceId *uint64 `json:"ComplianceId,omitnil,omitempty" name:"ComplianceId"`
+
+	// <p>分类ID</p>
+	CategoryId *int64 `json:"CategoryId,omitnil,omitempty" name:"CategoryId"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>过滤条件</p>
+	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
+}
+
+type DescribeDspmIdentifyComplianceCategoryRuleListRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>识别模板ID</p>
+	ComplianceId *uint64 `json:"ComplianceId,omitnil,omitempty" name:"ComplianceId"`
+
+	// <p>分类ID</p>
+	CategoryId *int64 `json:"CategoryId,omitnil,omitempty" name:"CategoryId"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>过滤条件</p>
+	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
+}
+
+func (r *DescribeDspmIdentifyComplianceCategoryRuleListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDspmIdentifyComplianceCategoryRuleListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ComplianceId")
+	delete(f, "CategoryId")
+	delete(f, "MemberId")
+	delete(f, "Filter")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDspmIdentifyComplianceCategoryRuleListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDspmIdentifyComplianceCategoryRuleListResponseParams struct {
+	// <p>总数</p><p>单位：数量</p>
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>无</p>
+	DataSet []*DspmIdentifyCategoryRuleRelateDetailItem `json:"DataSet,omitnil,omitempty" name:"DataSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDspmIdentifyComplianceCategoryRuleListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDspmIdentifyComplianceCategoryRuleListResponseParams `json:"Response"`
+}
+
+func (r *DescribeDspmIdentifyComplianceCategoryRuleListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDspmIdentifyComplianceCategoryRuleListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDspmIdentifyComplianceGroupDetailRequestParams struct {
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>识别模板ID</p>
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+}
+
+type DescribeDspmIdentifyComplianceGroupDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>识别模板ID</p>
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+}
+
+func (r *DescribeDspmIdentifyComplianceGroupDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDspmIdentifyComplianceGroupDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MemberId")
+	delete(f, "Id")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDspmIdentifyComplianceGroupDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDspmIdentifyComplianceGroupDetailResponseParams struct {
+	// <p>识别模板ID</p>
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>识别模板名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>模板类型</p><p>枚举值：</p><ul><li>0： 内置</li><li>1： 自定义</li></ul>
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>状态</p><p>枚举值：</p><ul><li>0： 未启用</li><li>1： 启用</li></ul>
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>关联级别组ID</p>
+	LevelGroupId *uint64 `json:"LevelGroupId,omitnil,omitempty" name:"LevelGroupId"`
+
+	// <p>无</p>
+	Detail []*DspmIdentifyComplianceCategoryRelation `json:"Detail,omitnil,omitempty" name:"Detail"`
+
+	// <p>关联级别组名称</p>
+	LevelGroupName *string `json:"LevelGroupName,omitnil,omitempty" name:"LevelGroupName"`
+
+	// <p>创建时间</p>
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>修改时间</p>
+	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDspmIdentifyComplianceGroupDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDspmIdentifyComplianceGroupDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeDspmIdentifyComplianceGroupDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDspmIdentifyComplianceGroupDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDspmIdentifyComplianceGroupListRequestParams struct {
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>过滤条件</p>
+	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
+}
+
+type DescribeDspmIdentifyComplianceGroupListRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>过滤条件</p>
+	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
+}
+
+func (r *DescribeDspmIdentifyComplianceGroupListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDspmIdentifyComplianceGroupListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MemberId")
+	delete(f, "Filter")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDspmIdentifyComplianceGroupListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDspmIdentifyComplianceGroupListResponseParams struct {
+	// <p>总数</p><p>单位：数量</p>
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>无</p>
+	DataSet []*DspmIdentifyComplianceItem `json:"DataSet,omitnil,omitempty" name:"DataSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDspmIdentifyComplianceGroupListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDspmIdentifyComplianceGroupListResponseParams `json:"Response"`
+}
+
+func (r *DescribeDspmIdentifyComplianceGroupListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDspmIdentifyComplianceGroupListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDspmIdentifyDistributionStatisticsRequestParams struct {
+	// <p>统计类型</p><p>枚举值：</p><ul><li>FieldTop5Asset： 识别字段Top5</li><li>FieldCategoryDistribution： 识别字段分类分布</li><li>FieldLevelDistribution： 识别字段级别分布</li><li>AssetDistribution： 识别资产分布</li></ul>
+	StatType *string `json:"StatType,omitnil,omitempty" name:"StatType"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>资产类型</p><p>枚举值：</p><ul><li>cdb： 云数据库MySQL</li><li>mariadb： 云数据库MariaDB</li></ul>
+	AssetType *string `json:"AssetType,omitnil,omitempty" name:"AssetType"`
+
+	// <p>识别模板id</p>
+	ComplianceId *uint64 `json:"ComplianceId,omitnil,omitempty" name:"ComplianceId"`
+}
+
+type DescribeDspmIdentifyDistributionStatisticsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>统计类型</p><p>枚举值：</p><ul><li>FieldTop5Asset： 识别字段Top5</li><li>FieldCategoryDistribution： 识别字段分类分布</li><li>FieldLevelDistribution： 识别字段级别分布</li><li>AssetDistribution： 识别资产分布</li></ul>
+	StatType *string `json:"StatType,omitnil,omitempty" name:"StatType"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>资产类型</p><p>枚举值：</p><ul><li>cdb： 云数据库MySQL</li><li>mariadb： 云数据库MariaDB</li></ul>
+	AssetType *string `json:"AssetType,omitnil,omitempty" name:"AssetType"`
+
+	// <p>识别模板id</p>
+	ComplianceId *uint64 `json:"ComplianceId,omitnil,omitempty" name:"ComplianceId"`
+}
+
+func (r *DescribeDspmIdentifyDistributionStatisticsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDspmIdentifyDistributionStatisticsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StatType")
+	delete(f, "MemberId")
+	delete(f, "AssetType")
+	delete(f, "ComplianceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDspmIdentifyDistributionStatisticsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDspmIdentifyDistributionStatisticsResponseParams struct {
+	// <p>结果</p>
+	DataSet []*DspmStatisticsItem `json:"DataSet,omitnil,omitempty" name:"DataSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDspmIdentifyDistributionStatisticsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDspmIdentifyDistributionStatisticsResponseParams `json:"Response"`
+}
+
+func (r *DescribeDspmIdentifyDistributionStatisticsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDspmIdentifyDistributionStatisticsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeDspmIdentifyIdListRequestParams struct {
 	// 筛选项
 	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
@@ -12924,6 +14553,314 @@ func (r *DescribeDspmIdentifyInfoResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeDspmIdentifyInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDspmIdentifyLevelGroupListRequestParams struct {
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>过滤条件</p>
+	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
+}
+
+type DescribeDspmIdentifyLevelGroupListRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>过滤条件</p>
+	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
+}
+
+func (r *DescribeDspmIdentifyLevelGroupListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDspmIdentifyLevelGroupListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MemberId")
+	delete(f, "Filter")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDspmIdentifyLevelGroupListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDspmIdentifyLevelGroupListResponseParams struct {
+	// <p>总数</p><p>单位：数量</p>
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>无</p>
+	DataSet []*DspmIdentifyLevelGroupItem `json:"DataSet,omitnil,omitempty" name:"DataSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDspmIdentifyLevelGroupListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDspmIdentifyLevelGroupListResponseParams `json:"Response"`
+}
+
+func (r *DescribeDspmIdentifyLevelGroupListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDspmIdentifyLevelGroupListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDspmIdentifyRuleDetailRequestParams struct {
+	// <p>数据项id</p>
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+type DescribeDspmIdentifyRuleDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>数据项id</p>
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+func (r *DescribeDspmIdentifyRuleDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDspmIdentifyRuleDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "MemberId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDspmIdentifyRuleDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDspmIdentifyRuleDetailResponseParams struct {
+	// <p>数据项id</p>
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>数据项名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>数据项描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>数据项是否启用</p><p>枚举值：</p><ul><li>0： 否</li><li>1： 是</li></ul><p>默认值：0</p>
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>数据项类型</p><p>枚举值：</p><ul><li>0： 内置</li><li>1： 自定义</li></ul>
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>结构化规则</p>
+	StructuredRule *string `json:"StructuredRule,omitnil,omitempty" name:"StructuredRule"`
+
+	// <p>非结构化规则</p>
+	UnStructuredRule *string `json:"UnStructuredRule,omitnil,omitempty" name:"UnStructuredRule"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDspmIdentifyRuleDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDspmIdentifyRuleDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeDspmIdentifyRuleDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDspmIdentifyRuleDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDspmIdentifyRuleListRequestParams struct {
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>筛选项</p>
+	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
+}
+
+type DescribeDspmIdentifyRuleListRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>筛选项</p>
+	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
+}
+
+func (r *DescribeDspmIdentifyRuleListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDspmIdentifyRuleListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MemberId")
+	delete(f, "Filter")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDspmIdentifyRuleListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDspmIdentifyRuleListResponseParams struct {
+	// <p>总数</p><p>单位：数量</p>
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>结果</p>
+	DataSet []*DspmIdentifyRuleItem `json:"DataSet,omitnil,omitempty" name:"DataSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDspmIdentifyRuleListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDspmIdentifyRuleListResponseParams `json:"Response"`
+}
+
+func (r *DescribeDspmIdentifyRuleListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDspmIdentifyRuleListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDspmIdentifyRuleTestResultRequestParams struct {
+	// <p>规则类型</p><p>枚举值：</p><ul><li>structured： 结构化规则</li><li>unstructrued： 非结构化规则</li></ul>
+	RuleType *string `json:"RuleType,omitnil,omitempty" name:"RuleType"`
+
+	// <p>规则内容</p>
+	RuleContent *string `json:"RuleContent,omitnil,omitempty" name:"RuleContent"`
+
+	// <p>数据项id</p>
+	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>结构化测试内容</p>
+	StructuredTestContent []*DspmIdentifyRuleStructuredTestItem `json:"StructuredTestContent,omitnil,omitempty" name:"StructuredTestContent"`
+
+	// <p>非结构化测试内容</p>
+	UnStructuredTestContent *string `json:"UnStructuredTestContent,omitnil,omitempty" name:"UnStructuredTestContent"`
+}
+
+type DescribeDspmIdentifyRuleTestResultRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>规则类型</p><p>枚举值：</p><ul><li>structured： 结构化规则</li><li>unstructrued： 非结构化规则</li></ul>
+	RuleType *string `json:"RuleType,omitnil,omitempty" name:"RuleType"`
+
+	// <p>规则内容</p>
+	RuleContent *string `json:"RuleContent,omitnil,omitempty" name:"RuleContent"`
+
+	// <p>数据项id</p>
+	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>结构化测试内容</p>
+	StructuredTestContent []*DspmIdentifyRuleStructuredTestItem `json:"StructuredTestContent,omitnil,omitempty" name:"StructuredTestContent"`
+
+	// <p>非结构化测试内容</p>
+	UnStructuredTestContent *string `json:"UnStructuredTestContent,omitnil,omitempty" name:"UnStructuredTestContent"`
+}
+
+func (r *DescribeDspmIdentifyRuleTestResultRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDspmIdentifyRuleTestResultRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RuleType")
+	delete(f, "RuleContent")
+	delete(f, "RuleId")
+	delete(f, "MemberId")
+	delete(f, "StructuredTestContent")
+	delete(f, "UnStructuredTestContent")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDspmIdentifyRuleTestResultRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDspmIdentifyRuleTestResultResponseParams struct {
+	// <p>是否匹配成功</p><p>枚举值：</p><ul><li>true： 匹配成功</li><li>false： 匹配失败</li></ul>
+	IsMatch *bool `json:"IsMatch,omitnil,omitempty" name:"IsMatch"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDspmIdentifyRuleTestResultResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDspmIdentifyRuleTestResultResponseParams `json:"Response"`
+}
+
+func (r *DescribeDspmIdentifyRuleTestResultResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDspmIdentifyRuleTestResultResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -19530,6 +21467,14 @@ type DspmAccountCount struct {
 	TotalAccountCount *int64 `json:"TotalAccountCount,omitnil,omitempty" name:"TotalAccountCount"`
 }
 
+type DspmAddIdentifyLevelItem struct {
+	// <p>级别名称</p>
+	LevelName *string `json:"LevelName,omitnil,omitempty" name:"LevelName"`
+
+	// <p>级别敏感程度</p><p>单位：分数</p>
+	LevelScore *uint64 `json:"LevelScore,omitnil,omitempty" name:"LevelScore"`
+}
+
 type DspmApplyOrder struct {
 	// 申请单id
 	OrderId *string `json:"OrderId,omitnil,omitempty" name:"OrderId"`
@@ -19960,6 +21905,67 @@ type DspmAssetFieldInfo struct {
 	FieldComment *string `json:"FieldComment,omitnil,omitempty" name:"FieldComment"`
 }
 
+type DspmAssetIdentifyInfo struct {
+	// <p>资产实例id</p>
+	AssetId *string `json:"AssetId,omitnil,omitempty" name:"AssetId"`
+
+	// <p>资产名称</p>
+	AssetName *string `json:"AssetName,omitnil,omitempty" name:"AssetName"`
+
+	// <p>资产类型</p><p>枚举值：</p><ul><li>cdb： MySQL</li><li>mariadb： MariaDB</li><li>mongodb： MongoDB</li></ul>
+	AssetType *string `json:"AssetType,omitnil,omitempty" name:"AssetType"`
+
+	// <p>已检出数据库数量</p>
+	DetectedDbCount *uint64 `json:"DetectedDbCount,omitnil,omitempty" name:"DetectedDbCount"`
+
+	// <p>已检出表数量</p>
+	DetectedTableCount *uint64 `json:"DetectedTableCount,omitnil,omitempty" name:"DetectedTableCount"`
+
+	// <p>数据项id集合</p>
+	RuleIds []*uint64 `json:"RuleIds,omitnil,omitempty" name:"RuleIds"`
+
+	// <p>数据项名称集合</p>
+	RuleNames []*string `json:"RuleNames,omitnil,omitempty" name:"RuleNames"`
+
+	// <p>分类id集合</p>
+	CategoryIds []*uint64 `json:"CategoryIds,omitnil,omitempty" name:"CategoryIds"`
+
+	// <p>分类名称集合</p>
+	CategoryNames []*string `json:"CategoryNames,omitnil,omitempty" name:"CategoryNames"`
+
+	// <p>最高级别ID</p>
+	LevelId *uint64 `json:"LevelId,omitnil,omitempty" name:"LevelId"`
+
+	// <p>最高级别名称</p>
+	LevelName *string `json:"LevelName,omitnil,omitempty" name:"LevelName"`
+
+	// <p>级别敏感程度</p>
+	LevelScore *uint64 `json:"LevelScore,omitnil,omitempty" name:"LevelScore"`
+
+	// <p>检出时间</p>
+	DetectedTime *string `json:"DetectedTime,omitnil,omitempty" name:"DetectedTime"`
+
+	// <p>分类详情</p>
+	CategoryDetails []*DspmIdentifyCategoryDetail `json:"CategoryDetails,omitnil,omitempty" name:"CategoryDetails"`
+
+	// <p>APPID</p>
+	AppId *uint64 `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>账号名称</p>
+	NickName *string `json:"NickName,omitnil,omitempty" name:"NickName"`
+
+	// <p>账号ID</p>
+	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
+}
+
+type DspmAssetIdentifyTaskStatus struct {
+	// <p>任务ID</p>
+	TaskId *uint64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>任务状态</p><p>枚举值：</p><ul><li>0： 未识别</li><li>1： 识别中</li><li>2： 识别终止</li><li>3： 识别成功</li><li>4： 识别失败</li><li>5： 暂停</li></ul>
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
 type DspmAssetInstance struct {
 	// 资产实例Id
 	AssetId *string `json:"AssetId,omitnil,omitempty" name:"AssetId"`
@@ -20279,6 +22285,126 @@ type DspmIdentifyCategoryDetail struct {
 	RuleSet []*DspmIdentifyRuleDetail `json:"RuleSet,omitnil,omitempty" name:"RuleSet"`
 }
 
+type DspmIdentifyCategoryItem struct {
+	// <p>分类ID</p>
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>分类名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>类型</p><p>枚举值：</p><ul><li>0： 内置</li><li>1： 自定义</li></ul>
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>更新时间</p>
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// <p>无</p>
+	ComplianceRelations []*DspmIdentifyRefComplianceInfo `json:"ComplianceRelations,omitnil,omitempty" name:"ComplianceRelations"`
+}
+
+type DspmIdentifyCategoryRuleRelateDetailItem struct {
+	// <p>识别模板ID</p>
+	ComplianceId *uint64 `json:"ComplianceId,omitnil,omitempty" name:"ComplianceId"`
+
+	// <p>分类ID</p>
+	CategoryId *int64 `json:"CategoryId,omitnil,omitempty" name:"CategoryId"`
+
+	// <p>数据项ID</p>
+	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// <p>数据项名称</p>
+	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
+
+	// <p>级别ID</p>
+	LevelId *uint64 `json:"LevelId,omitnil,omitempty" name:"LevelId"`
+
+	// <p>级别名称</p>
+	LevelName *string `json:"LevelName,omitnil,omitempty" name:"LevelName"`
+}
+
+type DspmIdentifyCategoryRuleRelateItem struct {
+	// <p>数据项ID</p>
+	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// <p>级别ID</p>
+	LevelId *uint64 `json:"LevelId,omitnil,omitempty" name:"LevelId"`
+}
+
+type DspmIdentifyComplianceCategoryRelation struct {
+	// <p>分类ID</p>
+	CategoryId *uint64 `json:"CategoryId,omitnil,omitempty" name:"CategoryId"`
+
+	// <p>分类名称</p>
+	CategoryName *string `json:"CategoryName,omitnil,omitempty" name:"CategoryName"`
+
+	// <p>父分类ID</p>
+	CategoryParentId *string `json:"CategoryParentId,omitnil,omitempty" name:"CategoryParentId"`
+
+	// <p>是否叶子节点</p>
+	IsLeaf *bool `json:"IsLeaf,omitnil,omitempty" name:"IsLeaf"`
+
+	// <p>分类类型</p><p>枚举值：</p><ul><li>0： 内置</li><li>1： 自定义</li></ul>
+	CategoryType *uint64 `json:"CategoryType,omitnil,omitempty" name:"CategoryType"`
+
+	// <p>分类层级</p><p>单位：层</p>
+	CategoryGrade *uint64 `json:"CategoryGrade,omitnil,omitempty" name:"CategoryGrade"`
+
+	// <p>无</p>
+	RuleRelations []*DspmIdentifyComplianceRuleRelation `json:"RuleRelations,omitnil,omitempty" name:"RuleRelations"`
+
+	// <p>无</p>
+	Children []*DspmIdentifyComplianceCategoryRelation `json:"Children,omitnil,omitempty" name:"Children"`
+}
+
+type DspmIdentifyComplianceItem struct {
+	// <p>识别模板ID</p>
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>识别模板名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>启用状态</p><p>枚举值：</p><ul><li>0： 不启用</li><li>1： 启用</li></ul>
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>模板类型</p><p>枚举值：</p><ul><li>0： 内置</li><li>1： 自定义</li></ul>
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>更新时间</p>
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// <p>应用状态</p><p>枚举值：</p><ul><li>0： 未应用</li><li>1： 应用中</li></ul>
+	ApplyStatus *uint64 `json:"ApplyStatus,omitnil,omitempty" name:"ApplyStatus"`
+}
+
+type DspmIdentifyComplianceRuleRelation struct {
+	// <p>数据项ID</p>
+	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// <p>数据项名称</p>
+	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
+
+	// <p>级别ID</p>
+	LevelId *uint64 `json:"LevelId,omitnil,omitempty" name:"LevelId"`
+
+	// <p>级别名称</p>
+	LevelName *string `json:"LevelName,omitnil,omitempty" name:"LevelName"`
+
+	// <p>级别程度</p><p>单位：分数</p>
+	LevelScore *uint64 `json:"LevelScore,omitnil,omitempty" name:"LevelScore"`
+
+	// <p>结构化规则状态</p><p>枚举值：</p><ul><li>0： 未配置</li><li>1： 已配置</li></ul>
+	StructuredStatus *uint64 `json:"StructuredStatus,omitnil,omitempty" name:"StructuredStatus"`
+
+	// <p>非结构化规则状态</p><p>枚举值：</p><ul><li>0： 未配置</li><li>1： 已配置</li></ul>
+	UnStructuredStatus *uint64 `json:"UnStructuredStatus,omitnil,omitempty" name:"UnStructuredStatus"`
+
+	// <p>数据项开启状态</p><p>枚举值：</p><ul><li>0： 未开启</li><li>1： 已开启</li></ul>
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
 type DspmIdentifyCount struct {
 	// 身份类型。0-未定义 2-长期身份 3-临时身份
 	IdentifyType *int64 `json:"IdentifyType,omitnil,omitempty" name:"IdentifyType"`
@@ -20364,6 +22490,51 @@ type DspmIdentifyInfoItem struct {
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 }
 
+type DspmIdentifyLevelGroupItem struct {
+	// <p>级别组id</p>
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>级别组名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>级别组描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>级别组类型</p><p>枚举值：</p><ul><li>0： 内置</li><li>1： 自定义</li></ul>
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>级别信息</p>
+	LevelItems []*DspmIdentifyLevelItem `json:"LevelItems,omitnil,omitempty" name:"LevelItems"`
+
+	// <p>更新时间</p><p>参数格式：YYYY-MM-DD hh:mm:ss</p>
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// <p>无</p>
+	ComplianceRelations []*DspmIdentifyRefComplianceInfo `json:"ComplianceRelations,omitnil,omitempty" name:"ComplianceRelations"`
+}
+
+type DspmIdentifyLevelItem struct {
+	// <p>级别名称</p>
+	LevelName *string `json:"LevelName,omitnil,omitempty" name:"LevelName"`
+
+	// <p>级别风险程度（从低到高）</p><p>取值范围：[1, 10]</p><p>单位：程度</p>
+	LevelScore *uint64 `json:"LevelScore,omitnil,omitempty" name:"LevelScore"`
+
+	// <p>级别id</p>
+	LevelId *uint64 `json:"LevelId,omitnil,omitempty" name:"LevelId"`
+}
+
+type DspmIdentifyRefComplianceInfo struct {
+	// <p>识别模板ID</p>
+	ComplianceId *uint64 `json:"ComplianceId,omitnil,omitempty" name:"ComplianceId"`
+
+	// <p>识别模板名称</p>
+	ComplianceName *string `json:"ComplianceName,omitnil,omitempty" name:"ComplianceName"`
+
+	// <p>识别模板类型</p><p>枚举值：</p><ul><li>0： 内置</li><li>1： 自定义</li></ul>
+	ComplianceType *uint64 `json:"ComplianceType,omitnil,omitempty" name:"ComplianceType"`
+}
+
 type DspmIdentifyRuleDetail struct {
 	// <p>数据项id</p>
 	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
@@ -20379,6 +22550,43 @@ type DspmIdentifyRuleDetail struct {
 
 	// <p>敏感程度</p>
 	LevelScore *uint64 `json:"LevelScore,omitnil,omitempty" name:"LevelScore"`
+}
+
+type DspmIdentifyRuleItem struct {
+	// <p>数据项id</p>
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>数据项名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>数据项描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>数据项是否启用</p><p>枚举值：</p><ul><li>0： 否</li><li>1： 是</li></ul>
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>数据项类型</p><p>枚举值：</p><ul><li>0： 内置</li><li>1： 自定义</li></ul>
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>更新时间</p>
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// <p>结构化规则配置状态</p>
+	StructuredStatus *bool `json:"StructuredStatus,omitnil,omitempty" name:"StructuredStatus"`
+
+	// <p>非结构化规则配置状态</p>
+	UnStructuredStatus *bool `json:"UnStructuredStatus,omitnil,omitempty" name:"UnStructuredStatus"`
+
+	// <p>无</p>
+	ComplianceRelations []*DspmIdentifyRefComplianceInfo `json:"ComplianceRelations,omitnil,omitempty" name:"ComplianceRelations"`
+}
+
+type DspmIdentifyRuleStructuredTestItem struct {
+	// <p>参数名</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>参数类型</p>
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 type DspmIp struct {
@@ -20743,6 +22951,17 @@ type DspmSensitiveScanTaskConfig struct {
 
 	// 是否立即扫描
 	IsRunAtOnce *bool `json:"IsRunAtOnce,omitnil,omitempty" name:"IsRunAtOnce"`
+}
+
+type DspmStatisticsItem struct {
+	// <p>统计项名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>统计值</p>
+	Value *int64 `json:"Value,omitnil,omitempty" name:"Value"`
+
+	// <p>描述</p>
+	Desc *string `json:"Desc,omitnil,omitempty" name:"Desc"`
 }
 
 type DspmSupportedAssetType struct {
@@ -22548,6 +24767,135 @@ func (r *ModifyCosAuditMonitorAccountResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyCosAuditObjectIdentifyStatusRequestParams struct {
+	// <p>资源id</p>
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// <p>文本识别状态</p>
+	TextIdentifyStatus *int64 `json:"TextIdentifyStatus,omitnil,omitempty" name:"TextIdentifyStatus"`
+
+	// <p>图片识别状态</p>
+	ImageIdentifyStatus *int64 `json:"ImageIdentifyStatus,omitnil,omitempty" name:"ImageIdentifyStatus"`
+}
+
+type ModifyCosAuditObjectIdentifyStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>资源id</p>
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// <p>文本识别状态</p>
+	TextIdentifyStatus *int64 `json:"TextIdentifyStatus,omitnil,omitempty" name:"TextIdentifyStatus"`
+
+	// <p>图片识别状态</p>
+	ImageIdentifyStatus *int64 `json:"ImageIdentifyStatus,omitnil,omitempty" name:"ImageIdentifyStatus"`
+}
+
+func (r *ModifyCosAuditObjectIdentifyStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCosAuditObjectIdentifyStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ResourceId")
+	delete(f, "TextIdentifyStatus")
+	delete(f, "ImageIdentifyStatus")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCosAuditObjectIdentifyStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyCosAuditObjectIdentifyStatusResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyCosAuditObjectIdentifyStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyCosAuditObjectIdentifyStatusResponseParams `json:"Response"`
+}
+
+func (r *ModifyCosAuditObjectIdentifyStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCosAuditObjectIdentifyStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyCosAuditObjectSampleRateRequestParams struct {
+	// <p>存储桶资产id集合</p>
+	BucketIdSet []*uint64 `json:"BucketIdSet,omitnil,omitempty" name:"BucketIdSet"`
+
+	// <p>采样率集合</p>
+	SampleRateSet []*float64 `json:"SampleRateSet,omitnil,omitempty" name:"SampleRateSet"`
+}
+
+type ModifyCosAuditObjectSampleRateRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>存储桶资产id集合</p>
+	BucketIdSet []*uint64 `json:"BucketIdSet,omitnil,omitempty" name:"BucketIdSet"`
+
+	// <p>采样率集合</p>
+	SampleRateSet []*float64 `json:"SampleRateSet,omitnil,omitempty" name:"SampleRateSet"`
+}
+
+func (r *ModifyCosAuditObjectSampleRateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCosAuditObjectSampleRateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BucketIdSet")
+	delete(f, "SampleRateSet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCosAuditObjectSampleRateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyCosAuditObjectSampleRateResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyCosAuditObjectSampleRateResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyCosAuditObjectSampleRateResponseParams `json:"Response"`
+}
+
+func (r *ModifyCosAuditObjectSampleRateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCosAuditObjectSampleRateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyCosMarkInfoRequestParams struct {
 	// 需要修改的存储桶列表
 	BucketNameSet []*CosBucketInfo `json:"BucketNameSet,omitnil,omitempty" name:"BucketNameSet"`
@@ -22680,6 +25028,67 @@ func (r *ModifyDspmAccessRecordResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyDspmAccessRecordResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDspmApplyingIdentifyComplianceGroupRequestParams struct {
+	// <p>识别模板id</p>
+	ComplianceId *uint64 `json:"ComplianceId,omitnil,omitempty" name:"ComplianceId"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+type ModifyDspmApplyingIdentifyComplianceGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>识别模板id</p>
+	ComplianceId *uint64 `json:"ComplianceId,omitnil,omitempty" name:"ComplianceId"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+func (r *ModifyDspmApplyingIdentifyComplianceGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDspmApplyingIdentifyComplianceGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ComplianceId")
+	delete(f, "MemberId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDspmApplyingIdentifyComplianceGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDspmApplyingIdentifyComplianceGroupResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyDspmApplyingIdentifyComplianceGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyDspmApplyingIdentifyComplianceGroupResponseParams `json:"Response"`
+}
+
+func (r *ModifyDspmApplyingIdentifyComplianceGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDspmApplyingIdentifyComplianceGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -23022,6 +25431,77 @@ func (r *ModifyDspmAssetDataScanTaskResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyDspmAssetDataScanTaskStatusRequestParams struct {
+	// <p>任务ID</p>
+	TaskIds []*uint64 `json:"TaskIds,omitnil,omitempty" name:"TaskIds"`
+
+	// <p>任务状态</p><p>枚举值：</p><ul><li>1： 识别中</li><li>2： 识别终止</li><li>3： 识别成功</li><li>4： 识别失败</li><li>5： 暂停</li><li>0： 未识别</li></ul>
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+type ModifyDspmAssetDataScanTaskStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>任务ID</p>
+	TaskIds []*uint64 `json:"TaskIds,omitnil,omitempty" name:"TaskIds"`
+
+	// <p>任务状态</p><p>枚举值：</p><ul><li>1： 识别中</li><li>2： 识别终止</li><li>3： 识别成功</li><li>4： 识别失败</li><li>5： 暂停</li><li>0： 未识别</li></ul>
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+func (r *ModifyDspmAssetDataScanTaskStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDspmAssetDataScanTaskStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskIds")
+	delete(f, "Status")
+	delete(f, "MemberId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDspmAssetDataScanTaskStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDspmAssetDataScanTaskStatusResponseParams struct {
+	// <p>无</p>
+	DataSet []*DspmAssetIdentifyTaskStatus `json:"DataSet,omitnil,omitempty" name:"DataSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyDspmAssetDataScanTaskStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyDspmAssetDataScanTaskStatusResponseParams `json:"Response"`
+}
+
+func (r *ModifyDspmAssetDataScanTaskStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDspmAssetDataScanTaskStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyDspmAssetLogDeliverySwitchRequestParams struct {
 	// 实例id
 	AssetId *string `json:"AssetId,omitnil,omitempty" name:"AssetId"`
@@ -23240,6 +25720,299 @@ func (r *ModifyDspmBackupSettingResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyDspmIdentifyCategoryRequestParams struct {
+	// <p>分类ID</p>
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>分类名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+type ModifyDspmIdentifyCategoryRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>分类ID</p>
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>分类名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+func (r *ModifyDspmIdentifyCategoryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDspmIdentifyCategoryRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "Name")
+	delete(f, "MemberId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDspmIdentifyCategoryRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDspmIdentifyCategoryResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyDspmIdentifyCategoryResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyDspmIdentifyCategoryResponseParams `json:"Response"`
+}
+
+func (r *ModifyDspmIdentifyCategoryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDspmIdentifyCategoryResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDspmIdentifyComplianceGroupRequestParams struct {
+	// <p>识别模板ID</p>
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>识别模板名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>状态</p><p>枚举值：</p><ul><li>0： 未启用</li><li>1： 启用</li></ul>
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+type ModifyDspmIdentifyComplianceGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>识别模板ID</p>
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>识别模板名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>状态</p><p>枚举值：</p><ul><li>0： 未启用</li><li>1： 启用</li></ul>
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+func (r *ModifyDspmIdentifyComplianceGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDspmIdentifyComplianceGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "Name")
+	delete(f, "MemberId")
+	delete(f, "Description")
+	delete(f, "Status")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDspmIdentifyComplianceGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDspmIdentifyComplianceGroupResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyDspmIdentifyComplianceGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyDspmIdentifyComplianceGroupResponseParams `json:"Response"`
+}
+
+func (r *ModifyDspmIdentifyComplianceGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDspmIdentifyComplianceGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDspmIdentifyComplianceGroupStatusRequestParams struct {
+	// <p>识别模板ID</p>
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>启用状态</p><p>枚举值：</p><ul><li>0： 不启用</li><li>1： 启用</li></ul>
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+type ModifyDspmIdentifyComplianceGroupStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>识别模板ID</p>
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>启用状态</p><p>枚举值：</p><ul><li>0： 不启用</li><li>1： 启用</li></ul>
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+func (r *ModifyDspmIdentifyComplianceGroupStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDspmIdentifyComplianceGroupStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "Status")
+	delete(f, "MemberId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDspmIdentifyComplianceGroupStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDspmIdentifyComplianceGroupStatusResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyDspmIdentifyComplianceGroupStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyDspmIdentifyComplianceGroupStatusResponseParams `json:"Response"`
+}
+
+func (r *ModifyDspmIdentifyComplianceGroupStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDspmIdentifyComplianceGroupStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDspmIdentifyComplianceRuleLevelInfoRequestParams struct {
+	// <p>识别模板ID</p>
+	ComplianceId *uint64 `json:"ComplianceId,omitnil,omitempty" name:"ComplianceId"`
+
+	// <p>数据项id</p>
+	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// <p>级别项id</p>
+	LevelId *uint64 `json:"LevelId,omitnil,omitempty" name:"LevelId"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+type ModifyDspmIdentifyComplianceRuleLevelInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>识别模板ID</p>
+	ComplianceId *uint64 `json:"ComplianceId,omitnil,omitempty" name:"ComplianceId"`
+
+	// <p>数据项id</p>
+	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// <p>级别项id</p>
+	LevelId *uint64 `json:"LevelId,omitnil,omitempty" name:"LevelId"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+func (r *ModifyDspmIdentifyComplianceRuleLevelInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDspmIdentifyComplianceRuleLevelInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ComplianceId")
+	delete(f, "RuleId")
+	delete(f, "LevelId")
+	delete(f, "MemberId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDspmIdentifyComplianceRuleLevelInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDspmIdentifyComplianceRuleLevelInfoResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyDspmIdentifyComplianceRuleLevelInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyDspmIdentifyComplianceRuleLevelInfoResponseParams `json:"Response"`
+}
+
+func (r *ModifyDspmIdentifyComplianceRuleLevelInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDspmIdentifyComplianceRuleLevelInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyDspmIdentifyInfoRequestParams struct {
 	// 对象。uin或person id
 	Subject *string `json:"Subject,omitnil,omitempty" name:"Subject"`
@@ -23297,6 +26070,327 @@ func (r *ModifyDspmIdentifyInfoResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyDspmIdentifyInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDspmIdentifyLevelGroupRequestParams struct {
+	// <p>级别组id</p>
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>级别组名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>级别组描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>级别信息</p>
+	LevelItems []*DspmIdentifyLevelItem `json:"LevelItems,omitnil,omitempty" name:"LevelItems"`
+}
+
+type ModifyDspmIdentifyLevelGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>级别组id</p>
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>级别组名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>级别组描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>级别信息</p>
+	LevelItems []*DspmIdentifyLevelItem `json:"LevelItems,omitnil,omitempty" name:"LevelItems"`
+}
+
+func (r *ModifyDspmIdentifyLevelGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDspmIdentifyLevelGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "Name")
+	delete(f, "MemberId")
+	delete(f, "Description")
+	delete(f, "LevelItems")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDspmIdentifyLevelGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDspmIdentifyLevelGroupResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyDspmIdentifyLevelGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyDspmIdentifyLevelGroupResponseParams `json:"Response"`
+}
+
+func (r *ModifyDspmIdentifyLevelGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDspmIdentifyLevelGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDspmIdentifyLevelItemRequestParams struct {
+	// <p>级别组id</p>
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>级别组名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>敏感程度分</p><p>取值范围：[1, 10]</p><p>单位：敏感程度</p>
+	LevelScore *uint64 `json:"LevelScore,omitnil,omitempty" name:"LevelScore"`
+}
+
+type ModifyDspmIdentifyLevelItemRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>级别组id</p>
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>级别组名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>敏感程度分</p><p>取值范围：[1, 10]</p><p>单位：敏感程度</p>
+	LevelScore *uint64 `json:"LevelScore,omitnil,omitempty" name:"LevelScore"`
+}
+
+func (r *ModifyDspmIdentifyLevelItemRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDspmIdentifyLevelItemRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "Name")
+	delete(f, "MemberId")
+	delete(f, "LevelScore")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDspmIdentifyLevelItemRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDspmIdentifyLevelItemResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyDspmIdentifyLevelItemResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyDspmIdentifyLevelItemResponseParams `json:"Response"`
+}
+
+func (r *ModifyDspmIdentifyLevelItemResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDspmIdentifyLevelItemResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDspmIdentifyRuleRequestParams struct {
+	// <p>数据项id</p>
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>数据项名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>数据项描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>数据项启用状态</p><p>枚举值：</p><ul><li>0： 未启用</li><li>1： 启用</li></ul>
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>结构化规则</p>
+	StructuredRule *string `json:"StructuredRule,omitnil,omitempty" name:"StructuredRule"`
+
+	// <p>非结构化规则</p>
+	UnStructuredRule *string `json:"UnStructuredRule,omitnil,omitempty" name:"UnStructuredRule"`
+}
+
+type ModifyDspmIdentifyRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>数据项id</p>
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>数据项名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>数据项描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>数据项启用状态</p><p>枚举值：</p><ul><li>0： 未启用</li><li>1： 启用</li></ul>
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>结构化规则</p>
+	StructuredRule *string `json:"StructuredRule,omitnil,omitempty" name:"StructuredRule"`
+
+	// <p>非结构化规则</p>
+	UnStructuredRule *string `json:"UnStructuredRule,omitnil,omitempty" name:"UnStructuredRule"`
+}
+
+func (r *ModifyDspmIdentifyRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDspmIdentifyRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "Name")
+	delete(f, "MemberId")
+	delete(f, "Description")
+	delete(f, "Status")
+	delete(f, "StructuredRule")
+	delete(f, "UnStructuredRule")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDspmIdentifyRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDspmIdentifyRuleResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyDspmIdentifyRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyDspmIdentifyRuleResponseParams `json:"Response"`
+}
+
+func (r *ModifyDspmIdentifyRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDspmIdentifyRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDspmIdentifyRuleStatusRequestParams struct {
+	// <p>数据项id</p>
+	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
+
+	// <p>数据项状态</p><p>枚举值：</p><ul><li>0： 关闭</li><li>1： 开启</li></ul>
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+type ModifyDspmIdentifyRuleStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>数据项id</p>
+	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
+
+	// <p>数据项状态</p><p>枚举值：</p><ul><li>0： 关闭</li><li>1： 开启</li></ul>
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+func (r *ModifyDspmIdentifyRuleStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDspmIdentifyRuleStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Ids")
+	delete(f, "Status")
+	delete(f, "MemberId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDspmIdentifyRuleStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDspmIdentifyRuleStatusResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyDspmIdentifyRuleStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyDspmIdentifyRuleStatusResponseParams `json:"Response"`
+}
+
+func (r *ModifyDspmIdentifyRuleStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDspmIdentifyRuleStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
