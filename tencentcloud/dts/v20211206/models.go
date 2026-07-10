@@ -1321,56 +1321,62 @@ func (r *CreateSubscribeCheckJobResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateSubscribeRequestParams struct {
-	// 订阅的数据库类型，目前支持 cynosdbmysql(tdsql-c mysql版),mariadb,mongodb,mysql,percona,tdpg(tdsql postgresql版),tdsqlpercona(tdsql mysql版)
+	// <p>订阅的数据库类型，目前支持 cynosdbmysql(tdsql-c mysql版),mariadb,mongodb,mysql,percona,tdpg(tdsql postgresql版),tdsqlpercona(tdsql mysql版)</p>
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 
-	// 付费方式，枚举值：0-包年包月，1-按量计费
+	// <p>付费方式，枚举值：0-包年包月，1-按量计费</p>
 	PayType *int64 `json:"PayType,omitnil,omitempty" name:"PayType"`
 
-	// 购买时长。当 payType 为包年包月时，该项需要填，单位为月，最小值为 1，最大值为 120。不填默认1
+	// <p>购买时长。当 payType 为包年包月时，该项需要填，单位为月，最小值为 1，最大值为 120。不填默认1</p>
 	Duration *int64 `json:"Duration,omitnil,omitempty" name:"Duration"`
 
-	// 是否自动续费。当 payType 为包年包月时，该项需要填。枚举值：0-不自动续费，1-自动续费。默认不自动续费。按量计费设置该标识无效。
+	// <p>是否自动续费。当 payType 为包年包月时，该项需要填。枚举值：0-不自动续费，1-自动续费。默认不自动续费。按量计费设置该标识无效。</p>
 	AutoRenew *int64 `json:"AutoRenew,omitnil,omitempty" name:"AutoRenew"`
 
-	// 购买数量,默认为1，最大为10
+	// <p>购买数量,默认为1，最大为10</p>
 	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
 
-	// 实例资源标签
+	// <p>实例资源标签</p>
 	Tags []*TagItem `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 任务名，自定义
+	// <p>任务名，自定义</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 订阅实例规格，当前仅支持small、medium、large
+	// <p>数据订阅版本，目前支持kafka和kafkaPro（专业版），如果不填，默认kafkaPro</p>
+	SubscribeVersion *string `json:"SubscribeVersion,omitnil,omitempty" name:"SubscribeVersion"`
+
+	// <p>订阅实例规格，当前仅支持small、medium、large</p>
 	InstanceClass *string `json:"InstanceClass,omitnil,omitempty" name:"InstanceClass"`
 }
 
 type CreateSubscribeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 订阅的数据库类型，目前支持 cynosdbmysql(tdsql-c mysql版),mariadb,mongodb,mysql,percona,tdpg(tdsql postgresql版),tdsqlpercona(tdsql mysql版)
+	// <p>订阅的数据库类型，目前支持 cynosdbmysql(tdsql-c mysql版),mariadb,mongodb,mysql,percona,tdpg(tdsql postgresql版),tdsqlpercona(tdsql mysql版)</p>
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 
-	// 付费方式，枚举值：0-包年包月，1-按量计费
+	// <p>付费方式，枚举值：0-包年包月，1-按量计费</p>
 	PayType *int64 `json:"PayType,omitnil,omitempty" name:"PayType"`
 
-	// 购买时长。当 payType 为包年包月时，该项需要填，单位为月，最小值为 1，最大值为 120。不填默认1
+	// <p>购买时长。当 payType 为包年包月时，该项需要填，单位为月，最小值为 1，最大值为 120。不填默认1</p>
 	Duration *int64 `json:"Duration,omitnil,omitempty" name:"Duration"`
 
-	// 是否自动续费。当 payType 为包年包月时，该项需要填。枚举值：0-不自动续费，1-自动续费。默认不自动续费。按量计费设置该标识无效。
+	// <p>是否自动续费。当 payType 为包年包月时，该项需要填。枚举值：0-不自动续费，1-自动续费。默认不自动续费。按量计费设置该标识无效。</p>
 	AutoRenew *int64 `json:"AutoRenew,omitnil,omitempty" name:"AutoRenew"`
 
-	// 购买数量,默认为1，最大为10
+	// <p>购买数量,默认为1，最大为10</p>
 	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
 
-	// 实例资源标签
+	// <p>实例资源标签</p>
 	Tags []*TagItem `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 任务名，自定义
+	// <p>任务名，自定义</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 订阅实例规格，当前仅支持small、medium、large
+	// <p>数据订阅版本，目前支持kafka和kafkaPro（专业版），如果不填，默认kafkaPro</p>
+	SubscribeVersion *string `json:"SubscribeVersion,omitnil,omitempty" name:"SubscribeVersion"`
+
+	// <p>订阅实例规格，当前仅支持small、medium、large</p>
 	InstanceClass *string `json:"InstanceClass,omitnil,omitempty" name:"InstanceClass"`
 }
 
@@ -1393,6 +1399,7 @@ func (r *CreateSubscribeRequest) FromJsonString(s string) error {
 	delete(f, "Count")
 	delete(f, "Tags")
 	delete(f, "Name")
+	delete(f, "SubscribeVersion")
 	delete(f, "InstanceClass")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSubscribeRequest has unknown keys!", "")
@@ -1402,7 +1409,7 @@ func (r *CreateSubscribeRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateSubscribeResponseParams struct {
-	// 数据订阅实例的ID数组
+	// <p>数据订阅实例的ID数组</p>
 	SubscribeIds []*string `json:"SubscribeIds,omitnil,omitempty" name:"SubscribeIds"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

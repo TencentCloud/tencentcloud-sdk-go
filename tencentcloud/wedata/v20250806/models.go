@@ -14836,32 +14836,32 @@ func (r *ListTriggerWorkflowsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListUpstreamOpsTasksRequestParams struct {
-	// 项目Id
+	// <p>项目Id</p>
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 任务Id
+	// <p>任务Id</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 分页页码
+	// <p>分页页码</p>
 	PageNumber *string `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 分页大小
+	// <p>分页大小</p>
 	PageSize *string `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 }
 
 type ListUpstreamOpsTasksRequest struct {
 	*tchttp.BaseRequest
 	
-	// 项目Id
+	// <p>项目Id</p>
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 任务Id
+	// <p>任务Id</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 分页页码
+	// <p>分页页码</p>
 	PageNumber *string `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 分页大小
+	// <p>分页大小</p>
 	PageSize *string `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 }
 
@@ -14889,7 +14889,7 @@ func (r *ListUpstreamOpsTasksRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListUpstreamOpsTasksResponseParams struct {
-	// 上游任务详情
+	// <p>上游任务详情</p>
 	Data *ParentDependencyConfigPage `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

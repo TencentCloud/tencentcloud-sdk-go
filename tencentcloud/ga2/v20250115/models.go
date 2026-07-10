@@ -1083,27 +1083,33 @@ func (r *DeleteListenerResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAccelerateAreasRequestParams struct {
-	// 全球加速实例ID。
+	// <p>全球加速实例ID。</p>
 	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
 
-	// 偏移量。
+	// <p>偏移量。默认为0。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 符合条件实例数量。
+	// <p>符合条件实例数量。默认为20，最大200。</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>过滤条件。 accelerate-region- String -（过滤条件）终端节点组地域。</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeAccelerateAreasRequest struct {
 	*tchttp.BaseRequest
 	
-	// 全球加速实例ID。
+	// <p>全球加速实例ID。</p>
 	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
 
-	// 偏移量。
+	// <p>偏移量。默认为0。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 符合条件实例数量。
+	// <p>符合条件实例数量。默认为20，最大200。</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>过滤条件。 accelerate-region- String -（过滤条件）终端节点组地域。</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 func (r *DescribeAccelerateAreasRequest) ToJsonString() string {
@@ -1121,6 +1127,7 @@ func (r *DescribeAccelerateAreasRequest) FromJsonString(s string) error {
 	delete(f, "GlobalAcceleratorId")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "Filters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAccelerateAreasRequest has unknown keys!", "")
 	}
@@ -1129,10 +1136,10 @@ func (r *DescribeAccelerateAreasRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAccelerateAreasResponseParams struct {
-	// 加速地域信息。
+	// <p>加速地域信息。</p>
 	AccelerateAreaSet []*AcceleratorAreas `json:"AccelerateAreaSet,omitnil,omitempty" name:"AccelerateAreaSet"`
 
-	// 实例个数。
+	// <p>实例个数。</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

@@ -1711,129 +1711,123 @@ func (r *CreateRabbitMQUserResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateRabbitMQVipInstanceRequestParams struct {
-	// 可用区
+	// <p>可用区</p>
 	ZoneIds []*int64 `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
 
-	// 私有网络ID，形如 vpc-xxx。有效的 VpcId 可通过登录[私有网络](https://console.cloud.tencent.com/vpc/vpc?rid=1)控制台查询；也可以调用接口 [DescribeVpcEx](https://cloud.tencent.com/document/api/215/1372)，从接口返回中的 unVpcId 字段获取。若在创建子机时 VpcId 与 SubnetId 同时传入 DEFAULT，则强制使用默认 vpc 网络。
+	// <p>私有网络ID，形如 vpc-xxx。有效的 VpcId 可通过登录<a href="https://console.cloud.tencent.com/vpc/vpc?rid=1">私有网络</a>控制台查询；也可以调用接口 <a href="https://cloud.tencent.com/document/api/215/1372">DescribeVpcEx</a>，从接口返回中的 unVpcId 字段获取。若在创建子机时 VpcId 与 SubnetId 同时传入 DEFAULT，则强制使用默认 vpc 网络。</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 私有网络子网 ID，形如 subnet-xxx。有效的私有网络子网 ID 可通过登录[子网控制台](https://console.cloud.tencent.com/vpc/subnet?rid=1)查询；也可以调用接口 [DescribeSubnets](https://cloud.tencent.com/document/api/215/15784)，从接口返回中的 unSubnetId 字段获取。若在创建子机时 SubnetId 与 VpcId 同时传入 DEFAULT，则强制使用默认 vpc 网络。
+	// <p>私有网络子网 ID，形如 subnet-xxx。有效的私有网络子网 ID 可通过登录<a href="https://console.cloud.tencent.com/vpc/subnet?rid=1">子网控制台</a>查询；也可以调用接口 <a href="https://cloud.tencent.com/document/api/215/15784">DescribeSubnets</a>，从接口返回中的 unSubnetId 字段获取。若在创建子机时 SubnetId 与 VpcId 同时传入 DEFAULT，则强制使用默认 vpc 网络。</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 集群名称
+	// <p>集群名称</p>
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
-	// 集群的节点规格，需要输入对应的规格标识：
-	// 2C8G：rabbit-vip-profession-2c8g
-	// 4C16G：rabbit-vip-profession-4c16g
-	// 8C32G：rabbit-vip-profession-8c32g
-	// 16C32G：rabbit-vip-basic-4
-	// 16C64G：rabbit-vip-profession-16c64g
-	// 2C4G：rabbit-vip-basic-5
-	// 4C8G：rabbit-vip-basic-1
-	// 8C16G（已售罄）：rabbit-vip-basic-2
-	// 不传默认为 4C8G：rabbit-vip-basic-1
+	// <p>集群的节点规格，需要输入对应的规格标识：<br>2C8G：rabbit-vip-profession-2c8g<br>4C16G：rabbit-vip-profession-4c16g<br>8C32G：rabbit-vip-profession-8c32g<br>16C32G：rabbit-vip-basic-4<br>16C64G：rabbit-vip-profession-16c64g<br>2C4G：rabbit-vip-basic-5<br>4C8G：rabbit-vip-basic-1<br>8C16G（已售罄）：rabbit-vip-basic-2<br>不传默认为 4C8G：rabbit-vip-basic-1</p>
 	NodeSpec *string `json:"NodeSpec,omitnil,omitempty" name:"NodeSpec"`
 
-	// 节点数量,多可用区最少为3节点。不传默认单可用区为1,多可用区为3
+	// <p>节点数量,多可用区最少为3节点。不传默认单可用区为1,多可用区为3</p>
 	NodeNum *int64 `json:"NodeNum,omitnil,omitempty" name:"NodeNum"`
 
-	// 单节点存储规格,不传默认为200G
+	// <p>单节点存储规格,不传默认为200G</p>
 	StorageSize *int64 `json:"StorageSize,omitnil,omitempty" name:"StorageSize"`
 
-	// 是否开启默认镜像队列，true 表示为开启，false 表示为不开启。不传默认为 false
+	// <p>是否开启默认镜像队列，true 表示为开启，false 表示为不开启。不传默认为 false。该参数对4.x集群不生效。</p>
 	EnableCreateDefaultHaMirrorQueue *bool `json:"EnableCreateDefaultHaMirrorQueue,omitnil,omitempty" name:"EnableCreateDefaultHaMirrorQueue"`
 
-	// 仅预付费集群（PayMode 参数为 1 时）使用该参数，表示是否自动续费，true 表示打开自动续费。不传默认为 true
+	// <p>仅预付费集群（PayMode 参数为 1 时）使用该参数，表示是否自动续费，true 表示打开自动续费。不传默认为 true</p>
 	AutoRenewFlag *bool `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 
-	// 购买时长,不传默认为1(月)
+	// <p>购买时长,不传默认为1(月)</p>
 	TimeSpan *int64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
 
-	// 付费方式，0 为后付费，即按量计费；1 为预付费，即包年包月。默认包年包月
+	// <p>付费方式，0 为后付费，即按量计费；1 为预付费，即包年包月。默认包年包月</p>
 	PayMode *uint64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// 集群版本，不传默认为 3.8.30，可选值为 3.8.30、3.11.8和3.13.7
+	// <p>集群版本，不传默认为 3.8.30，可选值为 3.8.30、3.11.8和3.13.7</p>
 	ClusterVersion *string `json:"ClusterVersion,omitnil,omitempty" name:"ClusterVersion"`
 
-	// 是否国际站请求，默认 false
+	// <p>是否国际站请求，默认 false</p>
 	IsIntl *bool `json:"IsIntl,omitnil,omitempty" name:"IsIntl"`
 
-	// 资源标签列表
+	// <p>资源标签列表</p>
 	ResourceTags []*Tag `json:"ResourceTags,omitnil,omitempty" name:"ResourceTags"`
 
-	// 公网带宽大小，单位 Mbps
+	// <p>公网带宽大小，单位 Mbps</p>
 	Bandwidth *uint64 `json:"Bandwidth,omitnil,omitempty" name:"Bandwidth"`
 
-	// 是否打开公网接入，不传默认为false
+	// <p>是否打开公网接入，不传默认为false</p>
 	EnablePublicAccess *bool `json:"EnablePublicAccess,omitnil,omitempty" name:"EnablePublicAccess"`
 
-	// 是否打开集群删除保护，不传默认为 false
+	// <p>是否打开集群删除保护，不传默认为 false</p>
 	EnableDeletionProtection *bool `json:"EnableDeletionProtection,omitnil,omitempty" name:"EnableDeletionProtection"`
+
+	// <p>集群类型</p><p>枚举值：</p><ul><li>NORMAL： 公有云</li><li>CDC： 本地专用集群</li></ul>
+	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
+
+	// <p>CDC 集群 ID</p>
+	CdcClusterId *string `json:"CdcClusterId,omitnil,omitempty" name:"CdcClusterId"`
 }
 
 type CreateRabbitMQVipInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 可用区
+	// <p>可用区</p>
 	ZoneIds []*int64 `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
 
-	// 私有网络ID，形如 vpc-xxx。有效的 VpcId 可通过登录[私有网络](https://console.cloud.tencent.com/vpc/vpc?rid=1)控制台查询；也可以调用接口 [DescribeVpcEx](https://cloud.tencent.com/document/api/215/1372)，从接口返回中的 unVpcId 字段获取。若在创建子机时 VpcId 与 SubnetId 同时传入 DEFAULT，则强制使用默认 vpc 网络。
+	// <p>私有网络ID，形如 vpc-xxx。有效的 VpcId 可通过登录<a href="https://console.cloud.tencent.com/vpc/vpc?rid=1">私有网络</a>控制台查询；也可以调用接口 <a href="https://cloud.tencent.com/document/api/215/1372">DescribeVpcEx</a>，从接口返回中的 unVpcId 字段获取。若在创建子机时 VpcId 与 SubnetId 同时传入 DEFAULT，则强制使用默认 vpc 网络。</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 私有网络子网 ID，形如 subnet-xxx。有效的私有网络子网 ID 可通过登录[子网控制台](https://console.cloud.tencent.com/vpc/subnet?rid=1)查询；也可以调用接口 [DescribeSubnets](https://cloud.tencent.com/document/api/215/15784)，从接口返回中的 unSubnetId 字段获取。若在创建子机时 SubnetId 与 VpcId 同时传入 DEFAULT，则强制使用默认 vpc 网络。
+	// <p>私有网络子网 ID，形如 subnet-xxx。有效的私有网络子网 ID 可通过登录<a href="https://console.cloud.tencent.com/vpc/subnet?rid=1">子网控制台</a>查询；也可以调用接口 <a href="https://cloud.tencent.com/document/api/215/15784">DescribeSubnets</a>，从接口返回中的 unSubnetId 字段获取。若在创建子机时 SubnetId 与 VpcId 同时传入 DEFAULT，则强制使用默认 vpc 网络。</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 集群名称
+	// <p>集群名称</p>
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
-	// 集群的节点规格，需要输入对应的规格标识：
-	// 2C8G：rabbit-vip-profession-2c8g
-	// 4C16G：rabbit-vip-profession-4c16g
-	// 8C32G：rabbit-vip-profession-8c32g
-	// 16C32G：rabbit-vip-basic-4
-	// 16C64G：rabbit-vip-profession-16c64g
-	// 2C4G：rabbit-vip-basic-5
-	// 4C8G：rabbit-vip-basic-1
-	// 8C16G（已售罄）：rabbit-vip-basic-2
-	// 不传默认为 4C8G：rabbit-vip-basic-1
+	// <p>集群的节点规格，需要输入对应的规格标识：<br>2C8G：rabbit-vip-profession-2c8g<br>4C16G：rabbit-vip-profession-4c16g<br>8C32G：rabbit-vip-profession-8c32g<br>16C32G：rabbit-vip-basic-4<br>16C64G：rabbit-vip-profession-16c64g<br>2C4G：rabbit-vip-basic-5<br>4C8G：rabbit-vip-basic-1<br>8C16G（已售罄）：rabbit-vip-basic-2<br>不传默认为 4C8G：rabbit-vip-basic-1</p>
 	NodeSpec *string `json:"NodeSpec,omitnil,omitempty" name:"NodeSpec"`
 
-	// 节点数量,多可用区最少为3节点。不传默认单可用区为1,多可用区为3
+	// <p>节点数量,多可用区最少为3节点。不传默认单可用区为1,多可用区为3</p>
 	NodeNum *int64 `json:"NodeNum,omitnil,omitempty" name:"NodeNum"`
 
-	// 单节点存储规格,不传默认为200G
+	// <p>单节点存储规格,不传默认为200G</p>
 	StorageSize *int64 `json:"StorageSize,omitnil,omitempty" name:"StorageSize"`
 
-	// 是否开启默认镜像队列，true 表示为开启，false 表示为不开启。不传默认为 false
+	// <p>是否开启默认镜像队列，true 表示为开启，false 表示为不开启。不传默认为 false。该参数对4.x集群不生效。</p>
 	EnableCreateDefaultHaMirrorQueue *bool `json:"EnableCreateDefaultHaMirrorQueue,omitnil,omitempty" name:"EnableCreateDefaultHaMirrorQueue"`
 
-	// 仅预付费集群（PayMode 参数为 1 时）使用该参数，表示是否自动续费，true 表示打开自动续费。不传默认为 true
+	// <p>仅预付费集群（PayMode 参数为 1 时）使用该参数，表示是否自动续费，true 表示打开自动续费。不传默认为 true</p>
 	AutoRenewFlag *bool `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 
-	// 购买时长,不传默认为1(月)
+	// <p>购买时长,不传默认为1(月)</p>
 	TimeSpan *int64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
 
-	// 付费方式，0 为后付费，即按量计费；1 为预付费，即包年包月。默认包年包月
+	// <p>付费方式，0 为后付费，即按量计费；1 为预付费，即包年包月。默认包年包月</p>
 	PayMode *uint64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// 集群版本，不传默认为 3.8.30，可选值为 3.8.30、3.11.8和3.13.7
+	// <p>集群版本，不传默认为 3.8.30，可选值为 3.8.30、3.11.8和3.13.7</p>
 	ClusterVersion *string `json:"ClusterVersion,omitnil,omitempty" name:"ClusterVersion"`
 
-	// 是否国际站请求，默认 false
+	// <p>是否国际站请求，默认 false</p>
 	IsIntl *bool `json:"IsIntl,omitnil,omitempty" name:"IsIntl"`
 
-	// 资源标签列表
+	// <p>资源标签列表</p>
 	ResourceTags []*Tag `json:"ResourceTags,omitnil,omitempty" name:"ResourceTags"`
 
-	// 公网带宽大小，单位 Mbps
+	// <p>公网带宽大小，单位 Mbps</p>
 	Bandwidth *uint64 `json:"Bandwidth,omitnil,omitempty" name:"Bandwidth"`
 
-	// 是否打开公网接入，不传默认为false
+	// <p>是否打开公网接入，不传默认为false</p>
 	EnablePublicAccess *bool `json:"EnablePublicAccess,omitnil,omitempty" name:"EnablePublicAccess"`
 
-	// 是否打开集群删除保护，不传默认为 false
+	// <p>是否打开集群删除保护，不传默认为 false</p>
 	EnableDeletionProtection *bool `json:"EnableDeletionProtection,omitnil,omitempty" name:"EnableDeletionProtection"`
+
+	// <p>集群类型</p><p>枚举值：</p><ul><li>NORMAL： 公有云</li><li>CDC： 本地专用集群</li></ul>
+	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
+
+	// <p>CDC 集群 ID</p>
+	CdcClusterId *string `json:"CdcClusterId,omitnil,omitempty" name:"CdcClusterId"`
 }
 
 func (r *CreateRabbitMQVipInstanceRequest) ToJsonString() string {
@@ -1865,6 +1859,8 @@ func (r *CreateRabbitMQVipInstanceRequest) FromJsonString(s string) error {
 	delete(f, "Bandwidth")
 	delete(f, "EnablePublicAccess")
 	delete(f, "EnableDeletionProtection")
+	delete(f, "ClusterType")
+	delete(f, "CdcClusterId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRabbitMQVipInstanceRequest has unknown keys!", "")
 	}
@@ -1873,10 +1869,10 @@ func (r *CreateRabbitMQVipInstanceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateRabbitMQVipInstanceResponseParams struct {
-	// 订单号 ID
+	// <p>订单号 ID</p>
 	TranId *string `json:"TranId,omitnil,omitempty" name:"TranId"`
 
-	// 实例 ID
+	// <p>实例 ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1901,38 +1897,38 @@ func (r *CreateRabbitMQVipInstanceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateRabbitMQVirtualHostRequestParams struct {
-	// 实例 ID，形如amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
+	// <p>实例 ID，形如amqp-xxxxxxxx。有效的 InstanceId 可通过登录 <a href="https://console.cloud.tencent.com/trabbitmq/cluster?rid=1">TDMQ RabbitMQ 控制台</a>查询。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// vhost名
+	// <p>vhost名</p>
 	VirtualHost *string `json:"VirtualHost,omitnil,omitempty" name:"VirtualHost"`
 
-	// 描述
+	// <p>描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 消息轨迹开关,true打开,false关闭,默认关闭
+	// <p>消息轨迹开关,true打开,false关闭,默认关闭</p>
 	TraceFlag *bool `json:"TraceFlag,omitnil,omitempty" name:"TraceFlag"`
 
-	// 是否创建镜像队列策略，默认值 true
+	// <p>是否创建镜像队列策略，默认值 true。该参数对4.x集群不生效。</p>
 	MirrorQueuePolicyFlag *bool `json:"MirrorQueuePolicyFlag,omitnil,omitempty" name:"MirrorQueuePolicyFlag"`
 }
 
 type CreateRabbitMQVirtualHostRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID，形如amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
+	// <p>实例 ID，形如amqp-xxxxxxxx。有效的 InstanceId 可通过登录 <a href="https://console.cloud.tencent.com/trabbitmq/cluster?rid=1">TDMQ RabbitMQ 控制台</a>查询。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// vhost名
+	// <p>vhost名</p>
 	VirtualHost *string `json:"VirtualHost,omitnil,omitempty" name:"VirtualHost"`
 
-	// 描述
+	// <p>描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 消息轨迹开关,true打开,false关闭,默认关闭
+	// <p>消息轨迹开关,true打开,false关闭,默认关闭</p>
 	TraceFlag *bool `json:"TraceFlag,omitnil,omitempty" name:"TraceFlag"`
 
-	// 是否创建镜像队列策略，默认值 true
+	// <p>是否创建镜像队列策略，默认值 true。该参数对4.x集群不生效。</p>
 	MirrorQueuePolicyFlag *bool `json:"MirrorQueuePolicyFlag,omitnil,omitempty" name:"MirrorQueuePolicyFlag"`
 }
 
@@ -1961,7 +1957,7 @@ func (r *CreateRabbitMQVirtualHostRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateRabbitMQVirtualHostResponseParams struct {
-	// vhost名
+	// <p>vhost名</p>
 	VirtualHost *string `json:"VirtualHost,omitnil,omitempty" name:"VirtualHost"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -14080,102 +14076,108 @@ type RabbitMQClusterAccessInfo struct {
 }
 
 type RabbitMQClusterInfo struct {
-	// 集群 ID
+	// <p>集群 ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 集群名称
+	// <p>集群名称</p>
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
-	// 地域信息
+	// <p>地域信息</p>
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 创建时间，毫秒为单位。unix 时间戳
+	// <p>创建时间，毫秒为单位。unix 时间戳</p>
 	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 集群说明信息
+	// <p>集群说明信息</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// VPC及网络信息
+	// <p>VPC及网络信息</p>
 	Vpcs []*VpcEndpointInfo `json:"Vpcs,omitnil,omitempty" name:"Vpcs"`
 
-	// 可用区信息
+	// <p>可用区信息</p>
 	ZoneIds []*int64 `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
 
-	// 虚拟主机数量
+	// <p>虚拟主机数量</p>
 	VirtualHostNumber *int64 `json:"VirtualHostNumber,omitnil,omitempty" name:"VirtualHostNumber"`
 
-	// 队列数量
+	// <p>队列数量</p>
 	QueueNumber *int64 `json:"QueueNumber,omitnil,omitempty" name:"QueueNumber"`
 
-	// 每秒生产消息数 单位：条/秒
+	// <p>每秒生产消息数 单位：条/秒</p>
 	MessagePublishRate *float64 `json:"MessagePublishRate,omitnil,omitempty" name:"MessagePublishRate"`
 
-	// 堆积消息数 单位：条
+	// <p>堆积消息数 单位：条</p>
 	MessageStackNumber *int64 `json:"MessageStackNumber,omitnil,omitempty" name:"MessageStackNumber"`
 
-	// 实例到期时间，按量付费的资源该值为 0，毫秒为单位。unix 时间戳
+	// <p>实例到期时间，按量付费的资源该值为 0，毫秒为单位。unix 时间戳</p>
 	ExpireTime *int64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
-	// Channel数量
+	// <p>Channel数量</p>
 	ChannelNumber *int64 `json:"ChannelNumber,omitnil,omitempty" name:"ChannelNumber"`
 
-	// Connection数量
+	// <p>Connection数量</p>
 	ConnectionNumber *int64 `json:"ConnectionNumber,omitnil,omitempty" name:"ConnectionNumber"`
 
-	// Consumer数量
+	// <p>Consumer数量</p>
 	ConsumerNumber *int64 `json:"ConsumerNumber,omitnil,omitempty" name:"ConsumerNumber"`
 
-	// Exchang数量
+	// <p>Exchang数量</p>
 	ExchangeNumber *int64 `json:"ExchangeNumber,omitnil,omitempty" name:"ExchangeNumber"`
 
-	// 集群异常信息
+	// <p>集群异常信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExceptionInformation *string `json:"ExceptionInformation,omitnil,omitempty" name:"ExceptionInformation"`
 
-	// 实例状态，0表示创建中，1表示正常，2表示隔离中，3表示已销毁，4 - 异常, 5 - 发货失败
+	// <p>实例状态，0表示创建中，1表示正常，2表示隔离中，3表示已销毁，4 - 异常, 5 - 发货失败</p>
 	ClusterStatus *int64 `json:"ClusterStatus,omitnil,omitempty" name:"ClusterStatus"`
 
-	// 自动续费标记，0表示默认状态(用户未设置，即初始状态即手动续费)， 1表示自动续费，2表示明确不自动续费(用户设置)
+	// <p>自动续费标记，0表示默认状态(用户未设置，即初始状态即手动续费)， 1表示自动续费，2表示明确不自动续费(用户设置)</p>
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 
-	// 是否开启镜像队列策略。1表示开启，0表示没开启。
+	// <p>是否开启镜像队列策略。1表示开启，0表示没开启。</p>
 	MirrorQueuePolicyFlag *int64 `json:"MirrorQueuePolicyFlag,omitnil,omitempty" name:"MirrorQueuePolicyFlag"`
 
-	// 每秒消费消息数 单位：条/秒
+	// <p>每秒消费消息数 单位：条/秒</p>
 	MessageConsumeRate *float64 `json:"MessageConsumeRate,omitnil,omitempty" name:"MessageConsumeRate"`
 
-	// 集群版本信息
+	// <p>集群版本信息</p>
 	ClusterVersion *string `json:"ClusterVersion,omitnil,omitempty" name:"ClusterVersion"`
 
-	// 计费模式，0-后付费，1-预付费
+	// <p>计费模式，0-后付费，1-预付费</p>
 	PayMode *uint64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// 实例类型，0 专享版、1 Serverless 版
+	// <p>实例类型，0 专享版、1 Serverless 版</p>
 	InstanceType *uint64 `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
-	// 开始隔离时间。unix 时间戳
+	// <p>开始隔离时间。unix 时间戳</p>
 	IsolatedTime *int64 `json:"IsolatedTime,omitnil,omitempty" name:"IsolatedTime"`
 
-	// 是否为容器实例，默认 true
+	// <p>是否为容器实例，默认 true</p>
 	Container *bool `json:"Container,omitnil,omitempty" name:"Container"`
 
-	// 标签列表
+	// <p>标签列表</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 是否已开启删除保护
+	// <p>是否已开启删除保护</p>
 	EnableDeletionProtection *bool `json:"EnableDeletionProtection,omitnil,omitempty" name:"EnableDeletionProtection"`
 
-	// 是否有vhost未开启镜像队列风险
+	// <p>是否有vhost未开启镜像队列风险</p>
 	MirroredQueueRisk *bool `json:"MirroredQueueRisk,omitnil,omitempty" name:"MirroredQueueRisk"`
 
-	// 是否提示风险
+	// <p>是否提示风险</p>
 	EnableRiskWarning *bool `json:"EnableRiskWarning,omitnil,omitempty" name:"EnableRiskWarning"`
 
-	// 消费超时时间
+	// <p>消费超时时间</p>
 	ConsumeTimeout *uint64 `json:"ConsumeTimeout,omitnil,omitempty" name:"ConsumeTimeout"`
 
-	// 最大Channel数
+	// <p>最大Channel数</p>
 	ChannelMax *uint64 `json:"ChannelMax,omitnil,omitempty" name:"ChannelMax"`
+
+	// <p>集群类型</p><p>枚举值：</p><ul><li>NORMAL： 公有云</li><li>CDC： 本地专用集群</li></ul>
+	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
+
+	// <p>CDC集群ID</p>
+	CdcClusterId *string `json:"CdcClusterId,omitnil,omitempty" name:"CdcClusterId"`
 }
 
 type RabbitMQClusterSpecInfo struct {
@@ -14546,6 +14548,12 @@ type RabbitMQVipInstance struct {
 
 	// <p>公有数据流Stream接入点</p>
 	PublicStreamAccessEndpoint *string `json:"PublicStreamAccessEndpoint,omitnil,omitempty" name:"PublicStreamAccessEndpoint"`
+
+	// <p>集群类型</p><p>枚举值：</p><ul><li>NORMAL： 公有云</li><li>CDC： 本地专用集群</li></ul>
+	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
+
+	// <p>CDC 集群 ID</p>
+	CdcClusterId *string `json:"CdcClusterId,omitnil,omitempty" name:"CdcClusterId"`
 }
 
 type RabbitMQVirtualHostInfo struct {

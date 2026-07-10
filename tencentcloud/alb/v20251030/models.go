@@ -35,13 +35,13 @@ type AddTargetsToTargetGroupRequestParams struct {
 	// 目标组 ID，格式为 lbtg- 后接 8 位字母数字。
 	TargetGroupId *string `json:"TargetGroupId,omitnil,omitempty" name:"TargetGroupId"`
 
+	// 需要添加至目标组的后端服务列表。单次请求最多支持添加 **50** 个后端服务。
+	Targets []*TargetToAdd `json:"Targets,omitnil,omitempty" name:"Targets"`
+
 	// 是否预览此次请求。 
 	// - **false**（默认）：发送普通请求，直接添加后端服务至目标组。 
 	// - **true**：发送预览请求，检查添加后端服务的参数、格式、业务限制等是否符合要求。
 	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
-
-	// 需要添加至目标组的后端服务列表。单次请求最多支持添加 **50** 个后端服务。
-	Targets []*TargetToAdd `json:"Targets,omitnil,omitempty" name:"Targets"`
 }
 
 type AddTargetsToTargetGroupRequest struct {
@@ -50,13 +50,13 @@ type AddTargetsToTargetGroupRequest struct {
 	// 目标组 ID，格式为 lbtg- 后接 8 位字母数字。
 	TargetGroupId *string `json:"TargetGroupId,omitnil,omitempty" name:"TargetGroupId"`
 
+	// 需要添加至目标组的后端服务列表。单次请求最多支持添加 **50** 个后端服务。
+	Targets []*TargetToAdd `json:"Targets,omitnil,omitempty" name:"Targets"`
+
 	// 是否预览此次请求。 
 	// - **false**（默认）：发送普通请求，直接添加后端服务至目标组。 
 	// - **true**：发送预览请求，检查添加后端服务的参数、格式、业务限制等是否符合要求。
 	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
-
-	// 需要添加至目标组的后端服务列表。单次请求最多支持添加 **50** 个后端服务。
-	Targets []*TargetToAdd `json:"Targets,omitnil,omitempty" name:"Targets"`
 }
 
 func (r *AddTargetsToTargetGroupRequest) ToJsonString() string {
@@ -72,8 +72,8 @@ func (r *AddTargetsToTargetGroupRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "TargetGroupId")
-	delete(f, "DryRun")
 	delete(f, "Targets")
+	delete(f, "DryRun")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddTargetsToTargetGroupRequest has unknown keys!", "")
 	}
@@ -861,14 +861,14 @@ type CreateRulesRequestParams struct {
 	// 负载均衡实例 ID，格式为 alb- 后接 8 位字母数字。
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
 
+	// 转发规则列表。
+	Rules []*RuleInput `json:"Rules,omitnil,omitempty" name:"Rules"`
+
 	// 客户端Token，用于保证请求的幂等性。  从您的客户端生成一个参数值，确保不同请求间该参数值唯一。ClientToken只支持ASCII字符。  若您未指定，则系统自动使用API请求的RequestId作为ClientToken标识。每次API请求的RequestId不一样。
 	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
 
 	// 是否只预检查此次请求。
 	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
-
-	// 转发规则列表。
-	Rules []*RuleInput `json:"Rules,omitnil,omitempty" name:"Rules"`
 }
 
 type CreateRulesRequest struct {
@@ -880,14 +880,14 @@ type CreateRulesRequest struct {
 	// 负载均衡实例 ID，格式为 alb- 后接 8 位字母数字。
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
 
+	// 转发规则列表。
+	Rules []*RuleInput `json:"Rules,omitnil,omitempty" name:"Rules"`
+
 	// 客户端Token，用于保证请求的幂等性。  从您的客户端生成一个参数值，确保不同请求间该参数值唯一。ClientToken只支持ASCII字符。  若您未指定，则系统自动使用API请求的RequestId作为ClientToken标识。每次API请求的RequestId不一样。
 	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
 
 	// 是否只预检查此次请求。
 	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
-
-	// 转发规则列表。
-	Rules []*RuleInput `json:"Rules,omitnil,omitempty" name:"Rules"`
 }
 
 func (r *CreateRulesRequest) ToJsonString() string {
@@ -904,9 +904,9 @@ func (r *CreateRulesRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ListenerId")
 	delete(f, "LoadBalancerId")
+	delete(f, "Rules")
 	delete(f, "ClientToken")
 	delete(f, "DryRun")
-	delete(f, "Rules")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRulesRequest has unknown keys!", "")
 	}
@@ -940,102 +940,44 @@ func (r *CreateRulesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateSecurityPolicyRequestParams struct {
-	// 安全策略支持的加密套件列表。加密套件用于协商客户端与服务端之间的加密算法。
-	// 
-	// **配置说明：**
-	// - 加密套件的可选范围取决于所选的 TLS 协议版本（TLSVersions 参数）。
-	// - 只要加密套件被任意一个已选 TLS 版本支持，即可添加到列表中。
-	// - 若 TLSVersions 包含 TLSv1.3：可不指定 TLSv1.3 专属加密套件（系统将自动补全全部 TLSv1.3 套件）；若指定，则必须包含全部 TLSv1.3 专属加密套件，不支持仅指定部分。
-	// 
-	// **获取可用加密套件：**
-	// 请调用 [DescribeSecurityPolicyCapabilities](https://cloud.tencent.com/document/api/xxx) 接口查询各 TLS 版本支持的加密套件列表。
+	// <p>安全策略支持的加密套件列表。加密套件用于协商客户端与服务端之间的加密算法。</p><p><strong>配置说明：</strong></p><ul><li>加密套件的可选范围取决于所选的 TLS 协议版本（TLSVersions 参数）。</li><li>只要加密套件被任意一个已选 TLS 版本支持，即可添加到列表中。</li><li>若 TLSVersions 包含 TLSv1.3：可不指定 TLSv1.3 专属加密套件（系统将自动补全全部 TLSv1.3 套件）；若指定，则必须包含全部 TLSv1.3 专属加密套件，不支持仅指定部分。</li></ul><p><strong>获取可用加密套件：</strong><br>请调用 <a href="https://cloud.tencent.com/document/api/1822/133718">DescribeSecurityPolicyCapabilities</a> 接口查询各 TLS 版本支持的加密套件列表。</p>
 	Ciphers []*string `json:"Ciphers,omitnil,omitempty" name:"Ciphers"`
 
-	// 安全策略支持的 TLS 协议版本列表。TLS（Transport Layer Security）协议用于保障客户端与负载均衡之间的通信安全。
-	// 
-	// **可选值：**
-	// - **TLSv1.0**：兼容性最好，但安全性较低，不推荐在生产环境使用。
-	// - **TLSv1.1**：安全性略优于 TLSv1.0，但仍不推荐。
-	// - **TLSv1.2**：目前主流的安全协议版本，兼顾安全性与兼容性。
-	// - **TLSv1.3**：最新版本，安全性最高，性能更优，推荐优先使用。
-	// 
-	// **建议：** 生产环境建议至少选择 TLSv1.2，若客户端支持，优先启用 TLSv1.3。
+	// <p>安全策略支持的 TLS 协议版本列表。TLS（Transport Layer Security）协议用于保障客户端与负载均衡之间的通信安全。</p><p><strong>可选值：</strong></p><ul><li><strong>TLSv1.0</strong>：兼容性最好，但安全性较低，不推荐在生产环境使用。</li><li><strong>TLSv1.1</strong>：安全性略优于 TLSv1.0，但仍不推荐。</li><li><strong>TLSv1.2</strong>：目前主流的安全协议版本，兼顾安全性与兼容性。</li><li><strong>TLSv1.3</strong>：最新版本，安全性最高，性能更优，推荐优先使用。</li></ul><p><strong>建议：</strong> 生产环境建议至少选择 TLSv1.2，若客户端支持，优先启用 TLSv1.3。</p>
 	TLSVersions []*string `json:"TLSVersions,omitnil,omitempty" name:"TLSVersions"`
 
-	// 客户端幂等性令牌。
-	// 
-	// 用于保证请求的幂等性，防止因网络超时或客户端重试导致的重复创建。建议使用 UUID 作为令牌值。相同的 ClientToken 在有效期内重复请求时，服务端将返回相同的结果。
+	// <p>客户端幂等性令牌。</p><p>用于保证请求的幂等性，防止因网络超时或客户端重试导致的重复创建。建议使用 UUID 作为令牌值。相同的 ClientToken 在有效期内重复请求时，服务端将返回相同的结果。</p>
 	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
 
-	// 是否仅执行预检请求。取值：
-	// - **true**：仅执行预检请求，不实际创建资源。预检请求将验证参数格式、权限及资源配额等，帮助您在正式操作前发现潜在问题。
-	// - **false**（默认）：执行正常请求，通过预检后将直接创建安全策略。
+	// <p>是否仅执行预检请求。取值：</p><ul><li><strong>true</strong>：仅执行预检请求，不实际创建资源。预检请求将验证参数格式、权限及资源配额等，帮助您在正式操作前发现潜在问题。</li><li><strong>false</strong>（默认）：执行正常请求，通过预检后将直接创建安全策略。</li></ul>
 	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
 
-	// 安全策略名称。用于标识和区分不同的安全策略。
-	// 
-	// **命名规则：**
-	// - 长度为 2~128 个字符。
-	// - 必须以英文字母或中文开头。
-	// - 可包含英文字母、中文、数字、半角句号（.）、下划线（_）和短划线（-）。
-	// 
-	// **建议：** 使用具有业务含义的名称，例如 "prod-high-security" 或 "测试环境策略"。
+	// <p>安全策略名称。用于标识和区分不同的安全策略。</p><p><strong>命名规则：</strong></p><ul><li>长度为 2~128 个字符。</li><li>必须以英文字母或中文开头。</li><li>可包含英文字母、中文、数字、半角句号（.）、下划线（_）和短划线（-）。</li></ul><p><strong>建议：</strong> 使用具有业务含义的名称，例如 &quot;prod-high-security&quot; 或 &quot;测试环境策略&quot;。</p>
 	SecurityPolicyName *string `json:"SecurityPolicyName,omitnil,omitempty" name:"SecurityPolicyName"`
 
-	// 安全策略的标签列表。标签用于对资源进行分类和管理，便于按业务、环境、部门等维度筛选和组织资源。
-	// 
-	// 每个标签由键值对（Key-Value）组成，同一资源下标签键不可重复。
+	// <p>安全策略的标签列表。标签用于对资源进行分类和管理，便于按业务、环境、部门等维度筛选和组织资源。</p><p>每个标签由键值对（Key-Value）组成，同一资源下标签键不可重复。</p>
 	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type CreateSecurityPolicyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 安全策略支持的加密套件列表。加密套件用于协商客户端与服务端之间的加密算法。
-	// 
-	// **配置说明：**
-	// - 加密套件的可选范围取决于所选的 TLS 协议版本（TLSVersions 参数）。
-	// - 只要加密套件被任意一个已选 TLS 版本支持，即可添加到列表中。
-	// - 若 TLSVersions 包含 TLSv1.3：可不指定 TLSv1.3 专属加密套件（系统将自动补全全部 TLSv1.3 套件）；若指定，则必须包含全部 TLSv1.3 专属加密套件，不支持仅指定部分。
-	// 
-	// **获取可用加密套件：**
-	// 请调用 [DescribeSecurityPolicyCapabilities](https://cloud.tencent.com/document/api/xxx) 接口查询各 TLS 版本支持的加密套件列表。
+	// <p>安全策略支持的加密套件列表。加密套件用于协商客户端与服务端之间的加密算法。</p><p><strong>配置说明：</strong></p><ul><li>加密套件的可选范围取决于所选的 TLS 协议版本（TLSVersions 参数）。</li><li>只要加密套件被任意一个已选 TLS 版本支持，即可添加到列表中。</li><li>若 TLSVersions 包含 TLSv1.3：可不指定 TLSv1.3 专属加密套件（系统将自动补全全部 TLSv1.3 套件）；若指定，则必须包含全部 TLSv1.3 专属加密套件，不支持仅指定部分。</li></ul><p><strong>获取可用加密套件：</strong><br>请调用 <a href="https://cloud.tencent.com/document/api/1822/133718">DescribeSecurityPolicyCapabilities</a> 接口查询各 TLS 版本支持的加密套件列表。</p>
 	Ciphers []*string `json:"Ciphers,omitnil,omitempty" name:"Ciphers"`
 
-	// 安全策略支持的 TLS 协议版本列表。TLS（Transport Layer Security）协议用于保障客户端与负载均衡之间的通信安全。
-	// 
-	// **可选值：**
-	// - **TLSv1.0**：兼容性最好，但安全性较低，不推荐在生产环境使用。
-	// - **TLSv1.1**：安全性略优于 TLSv1.0，但仍不推荐。
-	// - **TLSv1.2**：目前主流的安全协议版本，兼顾安全性与兼容性。
-	// - **TLSv1.3**：最新版本，安全性最高，性能更优，推荐优先使用。
-	// 
-	// **建议：** 生产环境建议至少选择 TLSv1.2，若客户端支持，优先启用 TLSv1.3。
+	// <p>安全策略支持的 TLS 协议版本列表。TLS（Transport Layer Security）协议用于保障客户端与负载均衡之间的通信安全。</p><p><strong>可选值：</strong></p><ul><li><strong>TLSv1.0</strong>：兼容性最好，但安全性较低，不推荐在生产环境使用。</li><li><strong>TLSv1.1</strong>：安全性略优于 TLSv1.0，但仍不推荐。</li><li><strong>TLSv1.2</strong>：目前主流的安全协议版本，兼顾安全性与兼容性。</li><li><strong>TLSv1.3</strong>：最新版本，安全性最高，性能更优，推荐优先使用。</li></ul><p><strong>建议：</strong> 生产环境建议至少选择 TLSv1.2，若客户端支持，优先启用 TLSv1.3。</p>
 	TLSVersions []*string `json:"TLSVersions,omitnil,omitempty" name:"TLSVersions"`
 
-	// 客户端幂等性令牌。
-	// 
-	// 用于保证请求的幂等性，防止因网络超时或客户端重试导致的重复创建。建议使用 UUID 作为令牌值。相同的 ClientToken 在有效期内重复请求时，服务端将返回相同的结果。
+	// <p>客户端幂等性令牌。</p><p>用于保证请求的幂等性，防止因网络超时或客户端重试导致的重复创建。建议使用 UUID 作为令牌值。相同的 ClientToken 在有效期内重复请求时，服务端将返回相同的结果。</p>
 	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
 
-	// 是否仅执行预检请求。取值：
-	// - **true**：仅执行预检请求，不实际创建资源。预检请求将验证参数格式、权限及资源配额等，帮助您在正式操作前发现潜在问题。
-	// - **false**（默认）：执行正常请求，通过预检后将直接创建安全策略。
+	// <p>是否仅执行预检请求。取值：</p><ul><li><strong>true</strong>：仅执行预检请求，不实际创建资源。预检请求将验证参数格式、权限及资源配额等，帮助您在正式操作前发现潜在问题。</li><li><strong>false</strong>（默认）：执行正常请求，通过预检后将直接创建安全策略。</li></ul>
 	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
 
-	// 安全策略名称。用于标识和区分不同的安全策略。
-	// 
-	// **命名规则：**
-	// - 长度为 2~128 个字符。
-	// - 必须以英文字母或中文开头。
-	// - 可包含英文字母、中文、数字、半角句号（.）、下划线（_）和短划线（-）。
-	// 
-	// **建议：** 使用具有业务含义的名称，例如 "prod-high-security" 或 "测试环境策略"。
+	// <p>安全策略名称。用于标识和区分不同的安全策略。</p><p><strong>命名规则：</strong></p><ul><li>长度为 2~128 个字符。</li><li>必须以英文字母或中文开头。</li><li>可包含英文字母、中文、数字、半角句号（.）、下划线（_）和短划线（-）。</li></ul><p><strong>建议：</strong> 使用具有业务含义的名称，例如 &quot;prod-high-security&quot; 或 &quot;测试环境策略&quot;。</p>
 	SecurityPolicyName *string `json:"SecurityPolicyName,omitnil,omitempty" name:"SecurityPolicyName"`
 
-	// 安全策略的标签列表。标签用于对资源进行分类和管理，便于按业务、环境、部门等维度筛选和组织资源。
-	// 
-	// 每个标签由键值对（Key-Value）组成，同一资源下标签键不可重复。
+	// <p>安全策略的标签列表。标签用于对资源进行分类和管理，便于按业务、环境、部门等维度筛选和组织资源。</p><p>每个标签由键值对（Key-Value）组成，同一资源下标签键不可重复。</p>
 	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
@@ -1065,7 +1007,7 @@ func (r *CreateSecurityPolicyRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateSecurityPolicyResponseParams struct {
-	// 安全策略 ID，格式为 tls- 后接 8 位字母数字。
+	// <p>安全策略 ID，格式为 tls- 后接 8 位字母数字。</p>
 	SecurityPolicyId *string `json:"SecurityPolicyId,omitnil,omitempty" name:"SecurityPolicyId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1090,86 +1032,68 @@ func (r *CreateSecurityPolicyResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateTargetGroupRequestParams struct {
-	// 目标组类型。取值：
-	// - **Instance**（默认）：Cvm服务器类型或者Eni网卡类型。
+	// <p>目标组类型。取值：</p><ul><li><strong>Instance</strong>（默认）：Cvm服务器类型或者Eni网卡类型。</li></ul>
 	TargetType *string `json:"TargetType,omitnil,omitempty" name:"TargetType"`
 
-	// 私有网络 ID。
+	// <p>私有网络 ID。</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 是否预览此次请求。
-	// - **false**（默认）：发送普通请求，直接创建目标组。
-	// - **true**：发送预览请求，检查创建目标组的参数、格式、业务限制等是否符合要求。
+	// <p>是否预览此次请求。</p><ul><li><strong>false</strong>（默认）：发送普通请求，直接创建目标组。</li><li><strong>true</strong>：发送预览请求，检查创建目标组的参数、格式、业务限制等是否符合要求。</li></ul>
 	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
 
-	// 健康检查配置。
+	// <p>健康检查配置。</p>
 	HealthCheckConfig *HealthCheckConfig `json:"HealthCheckConfig,omitnil,omitempty" name:"HealthCheckConfig"`
 
-	// 是否开启长连接。
+	// <p>是否开启长连接。</p>
 	KeepaliveEnabled *bool `json:"KeepaliveEnabled,omitnil,omitempty" name:"KeepaliveEnabled"`
 
-	// 后端服务协议类型。取值：
-	// - **HTTP**（默认）：支持绑定HTTP、HTTPS的监听器
-	// - **HTTPS**：支持绑定HTTPS类型的监听器
-	// - **GRPC**：支持绑定HTTPS类型的监听器
-	// - **GRPCS**：支持绑定HTTPS类型的监听器
+	// <p>后端服务协议类型。取值：</p><ul><li><strong>HTTP</strong>（默认）：支持绑定HTTP、HTTPS的监听器</li><li><strong>HTTPS</strong>：支持绑定HTTPS类型的监听器</li><li><strong>GRPC</strong>：支持绑定HTTPS类型的监听器</li><li><strong>GRPCS</strong>：支持绑定HTTPS类型的监听器</li></ul>
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
-	// 调度算法。取值：
-	// - **wrr**（默认）：加权轮训，按照权重选择后端服务器，权重越高的服务器被轮训到的概率越高。
-	// - **wlc**：加权最小连接数，当不同后端服务器权重值相同时，当前连接数越小的后端服务器被轮询到的概率越高。
+	// <p>调度算法。取值：</p><ul><li><strong>wrr</strong>（默认）：加权轮询，按照权重选择后端服务器，权重越高的服务器被轮询到的概率越高。</li><li><strong>wlc</strong>：加权最小连接数，当不同后端服务器权重值相同时，当前连接数越小的后端服务器被轮询到的概率越高。</li></ul>
 	SchedulerAlgorithm *string `json:"SchedulerAlgorithm,omitnil,omitempty" name:"SchedulerAlgorithm"`
 
-	// 会话保持配置。
+	// <p>会话保持配置。</p>
 	StickySessionConfig *StickySessionConfig `json:"StickySessionConfig,omitnil,omitempty" name:"StickySessionConfig"`
 
-	// 标签。
+	// <p>标签。</p>
 	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 目标组名称。默认为目标组ID。长度为 **1-255** 个字符，可包含数字、大小写字母、中文、半角句号（.）、下划线（_）和短划线（-）。
+	// <p>目标组名称。默认为目标组ID。长度为 <strong>1-255</strong> 个字符，可包含数字、大小写字母、中文、半角句号（.）、下划线（_）和短划线（-）。</p>
 	TargetGroupName *string `json:"TargetGroupName,omitnil,omitempty" name:"TargetGroupName"`
 }
 
 type CreateTargetGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 目标组类型。取值：
-	// - **Instance**（默认）：Cvm服务器类型或者Eni网卡类型。
+	// <p>目标组类型。取值：</p><ul><li><strong>Instance</strong>（默认）：Cvm服务器类型或者Eni网卡类型。</li></ul>
 	TargetType *string `json:"TargetType,omitnil,omitempty" name:"TargetType"`
 
-	// 私有网络 ID。
+	// <p>私有网络 ID。</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 是否预览此次请求。
-	// - **false**（默认）：发送普通请求，直接创建目标组。
-	// - **true**：发送预览请求，检查创建目标组的参数、格式、业务限制等是否符合要求。
+	// <p>是否预览此次请求。</p><ul><li><strong>false</strong>（默认）：发送普通请求，直接创建目标组。</li><li><strong>true</strong>：发送预览请求，检查创建目标组的参数、格式、业务限制等是否符合要求。</li></ul>
 	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
 
-	// 健康检查配置。
+	// <p>健康检查配置。</p>
 	HealthCheckConfig *HealthCheckConfig `json:"HealthCheckConfig,omitnil,omitempty" name:"HealthCheckConfig"`
 
-	// 是否开启长连接。
+	// <p>是否开启长连接。</p>
 	KeepaliveEnabled *bool `json:"KeepaliveEnabled,omitnil,omitempty" name:"KeepaliveEnabled"`
 
-	// 后端服务协议类型。取值：
-	// - **HTTP**（默认）：支持绑定HTTP、HTTPS的监听器
-	// - **HTTPS**：支持绑定HTTPS类型的监听器
-	// - **GRPC**：支持绑定HTTPS类型的监听器
-	// - **GRPCS**：支持绑定HTTPS类型的监听器
+	// <p>后端服务协议类型。取值：</p><ul><li><strong>HTTP</strong>（默认）：支持绑定HTTP、HTTPS的监听器</li><li><strong>HTTPS</strong>：支持绑定HTTPS类型的监听器</li><li><strong>GRPC</strong>：支持绑定HTTPS类型的监听器</li><li><strong>GRPCS</strong>：支持绑定HTTPS类型的监听器</li></ul>
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
-	// 调度算法。取值：
-	// - **wrr**（默认）：加权轮训，按照权重选择后端服务器，权重越高的服务器被轮训到的概率越高。
-	// - **wlc**：加权最小连接数，当不同后端服务器权重值相同时，当前连接数越小的后端服务器被轮询到的概率越高。
+	// <p>调度算法。取值：</p><ul><li><strong>wrr</strong>（默认）：加权轮询，按照权重选择后端服务器，权重越高的服务器被轮询到的概率越高。</li><li><strong>wlc</strong>：加权最小连接数，当不同后端服务器权重值相同时，当前连接数越小的后端服务器被轮询到的概率越高。</li></ul>
 	SchedulerAlgorithm *string `json:"SchedulerAlgorithm,omitnil,omitempty" name:"SchedulerAlgorithm"`
 
-	// 会话保持配置。
+	// <p>会话保持配置。</p>
 	StickySessionConfig *StickySessionConfig `json:"StickySessionConfig,omitnil,omitempty" name:"StickySessionConfig"`
 
-	// 标签。
+	// <p>标签。</p>
 	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 目标组名称。默认为目标组ID。长度为 **1-255** 个字符，可包含数字、大小写字母、中文、半角句号（.）、下划线（_）和短划线（-）。
+	// <p>目标组名称。默认为目标组ID。长度为 <strong>1-255</strong> 个字符，可包含数字、大小写字母、中文、半角句号（.）、下划线（_）和短划线（-）。</p>
 	TargetGroupName *string `json:"TargetGroupName,omitnil,omitempty" name:"TargetGroupName"`
 }
 
@@ -1203,7 +1127,7 @@ func (r *CreateTargetGroupRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateTargetGroupResponseParams struct {
-	// 目标组 ID，格式为 lbtg- 后接 8 位字母数字。
+	// <p>目标组 ID，格式为 lbtg- 后接 8 位字母数字。</p>
 	TargetGroupId *string `json:"TargetGroupId,omitnil,omitempty" name:"TargetGroupId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1236,25 +1160,25 @@ type DefaultAction struct {
 
 // Predefined struct for user
 type DeleteHealthCheckTemplatesRequestParams struct {
+	// 健康检查模板 ID 列表，ID 格式为 hct- 后接字母数字。
+	HealthCheckTemplateIds []*string `json:"HealthCheckTemplateIds,omitnil,omitempty" name:"HealthCheckTemplateIds"`
+
 	// 是否预览此次请求。
 	// - **false**（默认）：发送普通请求，直接删除模板。
 	// - **true**：发送预览请求，检查删除模板的参数、格式、业务限制等是否符合要求。
 	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
-
-	// 健康检查模板 ID 列表，ID 格式为 hct- 后接字母数字。
-	HealthCheckTemplateIds []*string `json:"HealthCheckTemplateIds,omitnil,omitempty" name:"HealthCheckTemplateIds"`
 }
 
 type DeleteHealthCheckTemplatesRequest struct {
 	*tchttp.BaseRequest
 	
+	// 健康检查模板 ID 列表，ID 格式为 hct- 后接字母数字。
+	HealthCheckTemplateIds []*string `json:"HealthCheckTemplateIds,omitnil,omitempty" name:"HealthCheckTemplateIds"`
+
 	// 是否预览此次请求。
 	// - **false**（默认）：发送普通请求，直接删除模板。
 	// - **true**：发送预览请求，检查删除模板的参数、格式、业务限制等是否符合要求。
 	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
-
-	// 健康检查模板 ID 列表，ID 格式为 hct- 后接字母数字。
-	HealthCheckTemplateIds []*string `json:"HealthCheckTemplateIds,omitnil,omitempty" name:"HealthCheckTemplateIds"`
 }
 
 func (r *DeleteHealthCheckTemplatesRequest) ToJsonString() string {
@@ -1269,8 +1193,8 @@ func (r *DeleteHealthCheckTemplatesRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "DryRun")
 	delete(f, "HealthCheckTemplateIds")
+	delete(f, "DryRun")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteHealthCheckTemplatesRequest has unknown keys!", "")
 	}
@@ -1751,40 +1675,32 @@ func (r *DescribeAsyncJobsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeHealthCheckTemplatesRequestParams struct {
-	// 过滤器。通过指定的过滤条件来查询健康检查模版，支持：
-	// - Name的值为**HealthCheckTemplateName**。通过名称来筛选健康检查模版。**Values**的值为模版名称列表。
-	// - Name的值为**HealthCheckProtocol**。通过健康检查协议来筛选健康检查模版。**Values**的值为协议列表。
-	// - 通过标签方式筛选。
+	// <p>过滤器。通过指定的过滤条件来查询健康检查模板，支持：</p><ul><li>Name的值为<strong>HealthCheckTemplateName</strong>。通过名称来筛选健康检查模板。<strong>Values</strong>的值为模板名称列表。</li><li>Name的值为<strong>HealthCheckProtocol</strong>。通过健康检查协议来筛选健康检查模板。<strong>Values</strong>的值为协议列表。</li><li>通过标签方式筛选。</li></ul>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 健康检查模板 ID 列表，ID 格式为 hct- 后接字母数字。
+	// <p>健康检查模板 ID 列表，ID 格式为 hct- 后接字母数字。</p>
 	HealthCheckTemplateIds []*string `json:"HealthCheckTemplateIds,omitnil,omitempty" name:"HealthCheckTemplateIds"`
 
-	// 返回列表的数量，默认为20，最大值为100。
+	// <p>返回列表的数量，默认为20，最大值为100。</p>
 	MaxResults *string `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
 
-	// 下一次查询的Token值。第一次查询和没有下一次查询时，无需填写。
-	// 如果有下一次查询，取值为上一次 API 调用返回的 NextToken 值。
+	// <p>下一次查询的Token值。第一次查询和没有下一次查询时，无需填写。<br>如果有下一次查询，取值为上一次 API 调用返回的 NextToken 值。</p>
 	NextToken *string `json:"NextToken,omitnil,omitempty" name:"NextToken"`
 }
 
 type DescribeHealthCheckTemplatesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 过滤器。通过指定的过滤条件来查询健康检查模版，支持：
-	// - Name的值为**HealthCheckTemplateName**。通过名称来筛选健康检查模版。**Values**的值为模版名称列表。
-	// - Name的值为**HealthCheckProtocol**。通过健康检查协议来筛选健康检查模版。**Values**的值为协议列表。
-	// - 通过标签方式筛选。
+	// <p>过滤器。通过指定的过滤条件来查询健康检查模板，支持：</p><ul><li>Name的值为<strong>HealthCheckTemplateName</strong>。通过名称来筛选健康检查模板。<strong>Values</strong>的值为模板名称列表。</li><li>Name的值为<strong>HealthCheckProtocol</strong>。通过健康检查协议来筛选健康检查模板。<strong>Values</strong>的值为协议列表。</li><li>通过标签方式筛选。</li></ul>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 健康检查模板 ID 列表，ID 格式为 hct- 后接字母数字。
+	// <p>健康检查模板 ID 列表，ID 格式为 hct- 后接字母数字。</p>
 	HealthCheckTemplateIds []*string `json:"HealthCheckTemplateIds,omitnil,omitempty" name:"HealthCheckTemplateIds"`
 
-	// 返回列表的数量，默认为20，最大值为100。
+	// <p>返回列表的数量，默认为20，最大值为100。</p>
 	MaxResults *string `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
 
-	// 下一次查询的Token值。第一次查询和没有下一次查询时，无需填写。
-	// 如果有下一次查询，取值为上一次 API 调用返回的 NextToken 值。
+	// <p>下一次查询的Token值。第一次查询和没有下一次查询时，无需填写。<br>如果有下一次查询，取值为上一次 API 调用返回的 NextToken 值。</p>
 	NextToken *string `json:"NextToken,omitnil,omitempty" name:"NextToken"`
 }
 
@@ -1812,13 +1728,13 @@ func (r *DescribeHealthCheckTemplatesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeHealthCheckTemplatesResponseParams struct {
-	// 健康检查模板列表。
+	// <p>健康检查模板列表。</p>
 	HealthCheckTemplates []*HealthCheckTemplate `json:"HealthCheckTemplates,omitnil,omitempty" name:"HealthCheckTemplates"`
 
-	// 下一次查询的Token值，如果当前是最后一页，返回为空。
+	// <p>下一次查询的Token值，如果当前是最后一页，返回为空。</p>
 	NextToken *string `json:"NextToken,omitnil,omitempty" name:"NextToken"`
 
-	// 经过筛选后查询到的健康检查模板总数。
+	// <p>经过筛选后查询到的健康检查模板总数。</p>
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3482,33 +3398,33 @@ type HTTPQueryStringInfo struct {
 }
 
 type HTTPRedirectInfo struct {
-	// 重定向的HTTP码，支持301、302、303、307、 308。
+	// <p>重定向的HTTP码，支持301、302、303、307、 308。</p>
 	HttpCode *int64 `json:"HttpCode,omitnil,omitempty" name:"HttpCode"`
 
-	// 重定向的主机地址，默认值${host}。长度3 ~ 128个字符，支持的字符集为：a-z 0-9 _ . -。
+	// <p>重定向的主机地址，默认值${host}。长度3 ~ 128个字符，支持的字符集为：a-z 0-9 _ . -。</p>
 	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
 
-	// 重定向的路径，默认值${path}。长度1 ~ 128个字符，支持的字符集为：a-z 0-9  ? =  _  . - / : 。
+	// <p>重定向的路径，默认值${path}。长度1 ~ 128个字符，支持的字符集为：a-z A-Z 0-9  ? =  _  . - / : 。</p>
 	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 
-	// 重定向的端口，默认值 ${port}。取值1 ~ 65535。
+	// <p>重定向的端口，默认值 ${port}。取值1 ~ 65535。</p>
 	Port *string `json:"Port,omitnil,omitempty" name:"Port"`
 
-	// 重定向的协议，取值：HTTP,HTTPS，默认值${protocol}。
+	// <p>重定向的协议，取值：HTTP,HTTPS，默认值${protocol}。</p>
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
-	// 重定向的查询字符串，默认值${query}。长度1 ~ 128字符，支持可打印字符，不支持 #[]{}\|<>& 和空格。
+	// <p>重定向的查询字符串，默认值${query}。长度1 ~ 128字符，支持可打印字符，不支持 #[]{}|&lt;&gt;&amp; 和空格。</p>
 	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 }
 
 type HTTPRewriteInfo struct {
-	// 重写的主机地址，默认值${host}。长度3 ~ 128个字符，支持的字符集为：a-z 0-9 _ . -。
+	// <p>重写的主机地址，默认值${host}。长度3 ~ 128个字符，支持的字符集为：a-z 0-9 _ . -。</p>
 	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
 
-	// 重写的路径，默认值${path}。长度1 ~ 128个字符，支持的字符集为：a-z 0-9 ? = _ . - / : 。
+	// <p>重写的路径，默认值${path}。长度1 ~ 128个字符，支持的字符集为：a-z A-Z 0-9 ? = _ . - / : 。</p>
 	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 
-	// 重写的查询字符串，默认值${query}。长度1 ~ 128字符，支持可打印字符，不支持 #[]{}|<>& 和空格。
+	// <p>重写的查询字符串，默认值${query}。长度1 ~ 128字符，支持可打印字符，不支持 #[]{}|&lt;&gt;&amp; 和空格。</p>
 	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 }
 
@@ -4597,13 +4513,13 @@ type ModifyLoadBalancerModificationProtectionRequestParams struct {
 	// 负载均衡实例 ID，格式为 alb- 后接 8 位字母数字。
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
 
+	// 是否开启修改保护。开启后，可防止实例被意外修改或删除。\n- true：开启修改保护\n- false：关闭修改保护
+	ModificationProtectionEnabled *bool `json:"ModificationProtectionEnabled,omitnil,omitempty" name:"ModificationProtectionEnabled"`
+
 	// 是否只预检此次请求。取值：
 	// - true：仅执行预检，不实际操作资源。检查参数完整性、请求格式及业务限制，通过返回 DryRunOperation，不通过返回对应错误。
 	// - false（默认）：执行正常请求，检查通过后直接操作资源。
 	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
-
-	// 是否开启修改保护。开启后，可防止实例被意外修改或删除。\n- true：开启修改保护\n- false：关闭修改保护
-	ModificationProtectionEnabled *bool `json:"ModificationProtectionEnabled,omitnil,omitempty" name:"ModificationProtectionEnabled"`
 
 	// 开启修改保护的原因说明。
 	// 长度为 1~255 个字符，必须是中文和无害字符串中的字符， 可包含中文、字母、数字、短划线（-）、正斜线（/）、半角句号（.）、下划线（_）。
@@ -4616,13 +4532,13 @@ type ModifyLoadBalancerModificationProtectionRequest struct {
 	// 负载均衡实例 ID，格式为 alb- 后接 8 位字母数字。
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
 
+	// 是否开启修改保护。开启后，可防止实例被意外修改或删除。\n- true：开启修改保护\n- false：关闭修改保护
+	ModificationProtectionEnabled *bool `json:"ModificationProtectionEnabled,omitnil,omitempty" name:"ModificationProtectionEnabled"`
+
 	// 是否只预检此次请求。取值：
 	// - true：仅执行预检，不实际操作资源。检查参数完整性、请求格式及业务限制，通过返回 DryRunOperation，不通过返回对应错误。
 	// - false（默认）：执行正常请求，检查通过后直接操作资源。
 	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
-
-	// 是否开启修改保护。开启后，可防止实例被意外修改或删除。\n- true：开启修改保护\n- false：关闭修改保护
-	ModificationProtectionEnabled *bool `json:"ModificationProtectionEnabled,omitnil,omitempty" name:"ModificationProtectionEnabled"`
 
 	// 开启修改保护的原因说明。
 	// 长度为 1~255 个字符，必须是中文和无害字符串中的字符， 可包含中文、字母、数字、短划线（-）、正斜线（/）、半角句号（.）、下划线（_）。
@@ -4642,8 +4558,8 @@ func (r *ModifyLoadBalancerModificationProtectionRequest) FromJsonString(s strin
 		return err
 	}
 	delete(f, "LoadBalancerId")
-	delete(f, "DryRun")
 	delete(f, "ModificationProtectionEnabled")
+	delete(f, "DryRun")
 	delete(f, "Reason")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLoadBalancerModificationProtectionRequest has unknown keys!", "")
@@ -4750,96 +4666,38 @@ func (r *ModifyRulesAttributesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifySecurityPolicyAttributesRequestParams struct {
-	// 安全策略 ID，格式为 tls- 后接 8 位字母数字。
+	// <p>安全策略 ID，格式为 tls- 后接 8 位字母数字。</p>
 	SecurityPolicyId *string `json:"SecurityPolicyId,omitnil,omitempty" name:"SecurityPolicyId"`
 
-	// 修改后的加密套件列表。加密套件用于协商客户端与服务端之间的加密算法。
-	// 
-	// **配置说明：**
-	// - 加密套件的可选范围取决于所选的 TLS 协议版本（TLSVersions 参数）。
-	// - 只要加密套件被任意一个已选 TLS 版本支持，即可添加到列表中。
-	// - 若 TLSVersions 包含 TLSv1.3：可不指定 TLSv1.3 专属加密套件（系统将自动补全全部 TLSv1.3 套件）；若指定，则必须包含全部 TLSv1.3 专属加密套件，不支持仅指定部分。
-	// 
-	// **获取可用加密套件：**
-	// 请调用 [DescribeSecurityPolicyCapabilities](https://cloud.tencent.com/document/api/xxx) 接口查询各 TLS 版本支持的加密套件列表。
-	// 
-	// **注意：** 若不传此参数，则保持原有配置不变。
+	// <p>修改后的加密套件列表。加密套件用于协商客户端与服务端之间的加密算法。</p><p><strong>配置说明：</strong></p><ul><li>加密套件的可选范围取决于所选的 TLS 协议版本（TLSVersions 参数）。</li><li>只要加密套件被任意一个已选 TLS 版本支持，即可添加到列表中。</li><li>若 TLSVersions 包含 TLSv1.3：可不指定 TLSv1.3 专属加密套件（系统将自动补全全部 TLSv1.3 套件）；若指定，则必须包含全部 TLSv1.3 专属加密套件，不支持仅指定部分。</li></ul><p><strong>获取可用加密套件：</strong><br>请调用 <a href="https://cloud.tencent.com/document/api/1822/133718">DescribeSecurityPolicyCapabilities</a> 接口查询各 TLS 版本支持的加密套件列表。</p><p><strong>注意：</strong> 若不传此参数，则保持原有配置不变。</p>
 	Ciphers []*string `json:"Ciphers,omitnil,omitempty" name:"Ciphers"`
 
-	// 是否仅执行预检请求。取值：
-	// - **true**：仅执行预检请求，不实际修改资源。预检请求将验证参数格式、权限及配置有效性等，帮助您在正式操作前发现潜在问题。
-	// - **false**（默认）：执行正常请求，通过预检后将直接修改安全策略。
+	// <p>是否仅执行预检请求。取值：</p><ul><li><strong>true</strong>：仅执行预检请求，不实际修改资源。预检请求将验证参数格式、权限及配置有效性等，帮助您在正式操作前发现潜在问题。</li><li><strong>false</strong>（默认）：执行正常请求，通过预检后将直接修改安全策略。</li></ul>
 	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
 
-	// 修改后的安全策略名称。用于标识和区分不同的安全策略。
-	// 
-	// **命名规则：**
-	// - 长度为 2~128 个字符。
-	// - 必须以英文字母或中文开头。
-	// - 可包含英文字母、中文、数字、半角句号（.）、下划线（_）和短划线（-）。
-	// 
-	// **注意：** 若不传此参数，则保持原有名称不变。
+	// <p>修改后的安全策略名称。用于标识和区分不同的安全策略。</p><p><strong>命名规则：</strong></p><ul><li>长度为 2~128 个字符。</li><li>必须以英文字母或中文开头。</li><li>可包含英文字母、中文、数字、半角句号（.）、下划线（_）和短划线（-）。</li></ul><p><strong>注意：</strong> 若不传此参数，则保持原有名称不变。</p>
 	SecurityPolicyName *string `json:"SecurityPolicyName,omitnil,omitempty" name:"SecurityPolicyName"`
 
-	// 修改后的 TLS 协议版本列表。TLS（Transport Layer Security）协议用于保障客户端与负载均衡之间的通信安全。
-	// 
-	// **可选值：**
-	// - **TLSv1.0**：兼容性最好，但安全性较低，不推荐在生产环境使用。
-	// - **TLSv1.1**：安全性略优于 TLSv1.0，但仍不推荐。
-	// - **TLSv1.2**：目前主流的安全协议版本，兼顾安全性与兼容性。
-	// - **TLSv1.3**：最新版本，安全性最高，性能更优，推荐优先使用。
-	// 
-	// **注意：** 
-	// - 若不传此参数，则保持原有配置不变。
-	// - 修改 TLS 版本时，请同步检查 Ciphers 参数的配置是否兼容。
+	// <p>修改后的 TLS 协议版本列表。TLS（Transport Layer Security）协议用于保障客户端与负载均衡之间的通信安全。</p><p><strong>可选值：</strong></p><ul><li><strong>TLSv1.0</strong>：兼容性最好，但安全性较低，不推荐在生产环境使用。</li><li><strong>TLSv1.1</strong>：安全性略优于 TLSv1.0，但仍不推荐。</li><li><strong>TLSv1.2</strong>：目前主流的安全协议版本，兼顾安全性与兼容性。</li><li><strong>TLSv1.3</strong>：最新版本，安全性最高，性能更优，推荐优先使用。</li></ul><p><strong>注意：</strong> </p><ul><li>若不传此参数，则保持原有配置不变。</li><li>修改 TLS 版本时，请同步检查 Ciphers 参数的配置是否兼容。</li></ul>
 	TLSVersions []*string `json:"TLSVersions,omitnil,omitempty" name:"TLSVersions"`
 }
 
 type ModifySecurityPolicyAttributesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 安全策略 ID，格式为 tls- 后接 8 位字母数字。
+	// <p>安全策略 ID，格式为 tls- 后接 8 位字母数字。</p>
 	SecurityPolicyId *string `json:"SecurityPolicyId,omitnil,omitempty" name:"SecurityPolicyId"`
 
-	// 修改后的加密套件列表。加密套件用于协商客户端与服务端之间的加密算法。
-	// 
-	// **配置说明：**
-	// - 加密套件的可选范围取决于所选的 TLS 协议版本（TLSVersions 参数）。
-	// - 只要加密套件被任意一个已选 TLS 版本支持，即可添加到列表中。
-	// - 若 TLSVersions 包含 TLSv1.3：可不指定 TLSv1.3 专属加密套件（系统将自动补全全部 TLSv1.3 套件）；若指定，则必须包含全部 TLSv1.3 专属加密套件，不支持仅指定部分。
-	// 
-	// **获取可用加密套件：**
-	// 请调用 [DescribeSecurityPolicyCapabilities](https://cloud.tencent.com/document/api/xxx) 接口查询各 TLS 版本支持的加密套件列表。
-	// 
-	// **注意：** 若不传此参数，则保持原有配置不变。
+	// <p>修改后的加密套件列表。加密套件用于协商客户端与服务端之间的加密算法。</p><p><strong>配置说明：</strong></p><ul><li>加密套件的可选范围取决于所选的 TLS 协议版本（TLSVersions 参数）。</li><li>只要加密套件被任意一个已选 TLS 版本支持，即可添加到列表中。</li><li>若 TLSVersions 包含 TLSv1.3：可不指定 TLSv1.3 专属加密套件（系统将自动补全全部 TLSv1.3 套件）；若指定，则必须包含全部 TLSv1.3 专属加密套件，不支持仅指定部分。</li></ul><p><strong>获取可用加密套件：</strong><br>请调用 <a href="https://cloud.tencent.com/document/api/1822/133718">DescribeSecurityPolicyCapabilities</a> 接口查询各 TLS 版本支持的加密套件列表。</p><p><strong>注意：</strong> 若不传此参数，则保持原有配置不变。</p>
 	Ciphers []*string `json:"Ciphers,omitnil,omitempty" name:"Ciphers"`
 
-	// 是否仅执行预检请求。取值：
-	// - **true**：仅执行预检请求，不实际修改资源。预检请求将验证参数格式、权限及配置有效性等，帮助您在正式操作前发现潜在问题。
-	// - **false**（默认）：执行正常请求，通过预检后将直接修改安全策略。
+	// <p>是否仅执行预检请求。取值：</p><ul><li><strong>true</strong>：仅执行预检请求，不实际修改资源。预检请求将验证参数格式、权限及配置有效性等，帮助您在正式操作前发现潜在问题。</li><li><strong>false</strong>（默认）：执行正常请求，通过预检后将直接修改安全策略。</li></ul>
 	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
 
-	// 修改后的安全策略名称。用于标识和区分不同的安全策略。
-	// 
-	// **命名规则：**
-	// - 长度为 2~128 个字符。
-	// - 必须以英文字母或中文开头。
-	// - 可包含英文字母、中文、数字、半角句号（.）、下划线（_）和短划线（-）。
-	// 
-	// **注意：** 若不传此参数，则保持原有名称不变。
+	// <p>修改后的安全策略名称。用于标识和区分不同的安全策略。</p><p><strong>命名规则：</strong></p><ul><li>长度为 2~128 个字符。</li><li>必须以英文字母或中文开头。</li><li>可包含英文字母、中文、数字、半角句号（.）、下划线（_）和短划线（-）。</li></ul><p><strong>注意：</strong> 若不传此参数，则保持原有名称不变。</p>
 	SecurityPolicyName *string `json:"SecurityPolicyName,omitnil,omitempty" name:"SecurityPolicyName"`
 
-	// 修改后的 TLS 协议版本列表。TLS（Transport Layer Security）协议用于保障客户端与负载均衡之间的通信安全。
-	// 
-	// **可选值：**
-	// - **TLSv1.0**：兼容性最好，但安全性较低，不推荐在生产环境使用。
-	// - **TLSv1.1**：安全性略优于 TLSv1.0，但仍不推荐。
-	// - **TLSv1.2**：目前主流的安全协议版本，兼顾安全性与兼容性。
-	// - **TLSv1.3**：最新版本，安全性最高，性能更优，推荐优先使用。
-	// 
-	// **注意：** 
-	// - 若不传此参数，则保持原有配置不变。
-	// - 修改 TLS 版本时，请同步检查 Ciphers 参数的配置是否兼容。
+	// <p>修改后的 TLS 协议版本列表。TLS（Transport Layer Security）协议用于保障客户端与负载均衡之间的通信安全。</p><p><strong>可选值：</strong></p><ul><li><strong>TLSv1.0</strong>：兼容性最好，但安全性较低，不推荐在生产环境使用。</li><li><strong>TLSv1.1</strong>：安全性略优于 TLSv1.0，但仍不推荐。</li><li><strong>TLSv1.2</strong>：目前主流的安全协议版本，兼顾安全性与兼容性。</li><li><strong>TLSv1.3</strong>：最新版本，安全性最高，性能更优，推荐优先使用。</li></ul><p><strong>注意：</strong> </p><ul><li>若不传此参数，则保持原有配置不变。</li><li>修改 TLS 版本时，请同步检查 Ciphers 参数的配置是否兼容。</li></ul>
 	TLSVersions []*string `json:"TLSVersions,omitnil,omitempty" name:"TLSVersions"`
 }
 
@@ -4890,58 +4748,50 @@ func (r *ModifySecurityPolicyAttributesResponse) FromJsonString(s string) error 
 
 // Predefined struct for user
 type ModifyTargetGroupAttributesRequestParams struct {
-	// 是否预览此次请求。
-	// - **false**（默认）：发送普通请求，直接修改目标组。
-	// - **true**：发送预览请求，检查修改目标组的参数、格式、业务限制等是否符合要求。
+	// <p>是否预览此次请求。</p><ul><li><strong>false</strong>（默认）：发送普通请求，直接修改目标组。</li><li><strong>true</strong>：发送预览请求，检查修改目标组的参数、格式、业务限制等是否符合要求。</li></ul>
 	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
 
-	// 健康检查配置。
+	// <p>健康检查配置。</p>
 	HealthCheckConfig *HealthCheckConfig `json:"HealthCheckConfig,omitnil,omitempty" name:"HealthCheckConfig"`
 
-	// 是否开启长连接。
+	// <p>是否开启长连接。</p>
 	KeepaliveEnabled *bool `json:"KeepaliveEnabled,omitnil,omitempty" name:"KeepaliveEnabled"`
 
-	// 调度算法。取值：
-	// - **wrr**：加权轮训，按照权重选择后端服务器，权重越高的服务器被轮训到的概率越高。
-	// - **wlc**：加权最小连接数，当不同后端服务器权重值相同时，当前连接数越小的后端服务器被轮询到的概率越高。
+	// <p>调度算法。取值：</p><ul><li><strong>wrr</strong>：加权轮询，按照权重选择后端服务器，权重越高的服务器被轮询到的概率越高。</li><li><strong>wlc</strong>：加权最小连接数，当不同后端服务器权重值相同时，当前连接数越小的后端服务器被轮询到的概率越高。</li></ul>
 	SchedulerAlgorithm *string `json:"SchedulerAlgorithm,omitnil,omitempty" name:"SchedulerAlgorithm"`
 
-	// 会话保持配置。
+	// <p>会话保持配置。</p>
 	StickySessionConfig *StickySessionConfig `json:"StickySessionConfig,omitnil,omitempty" name:"StickySessionConfig"`
 
-	// 目标组 ID，格式为 lbtg- 后接 8 位字母数字。
+	// <p>目标组 ID，格式为 lbtg- 后接 8 位字母数字。</p>
 	TargetGroupId *string `json:"TargetGroupId,omitnil,omitempty" name:"TargetGroupId"`
 
-	// 目标组名称。长度为 1~255 个字符，可包含数字、大小写字母、中文、半角句号（.）、下划线（_）和短划线（-）。不传目标组名称时默认使用ID作为目标组名称。
+	// <p>目标组名称。长度为 1~255 个字符，可包含数字、大小写字母、中文、半角句号（.）、下划线（_）和短划线（-）。不传目标组名称时默认使用ID作为目标组名称。</p>
 	TargetGroupName *string `json:"TargetGroupName,omitnil,omitempty" name:"TargetGroupName"`
 }
 
 type ModifyTargetGroupAttributesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 是否预览此次请求。
-	// - **false**（默认）：发送普通请求，直接修改目标组。
-	// - **true**：发送预览请求，检查修改目标组的参数、格式、业务限制等是否符合要求。
+	// <p>是否预览此次请求。</p><ul><li><strong>false</strong>（默认）：发送普通请求，直接修改目标组。</li><li><strong>true</strong>：发送预览请求，检查修改目标组的参数、格式、业务限制等是否符合要求。</li></ul>
 	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
 
-	// 健康检查配置。
+	// <p>健康检查配置。</p>
 	HealthCheckConfig *HealthCheckConfig `json:"HealthCheckConfig,omitnil,omitempty" name:"HealthCheckConfig"`
 
-	// 是否开启长连接。
+	// <p>是否开启长连接。</p>
 	KeepaliveEnabled *bool `json:"KeepaliveEnabled,omitnil,omitempty" name:"KeepaliveEnabled"`
 
-	// 调度算法。取值：
-	// - **wrr**：加权轮训，按照权重选择后端服务器，权重越高的服务器被轮训到的概率越高。
-	// - **wlc**：加权最小连接数，当不同后端服务器权重值相同时，当前连接数越小的后端服务器被轮询到的概率越高。
+	// <p>调度算法。取值：</p><ul><li><strong>wrr</strong>：加权轮询，按照权重选择后端服务器，权重越高的服务器被轮询到的概率越高。</li><li><strong>wlc</strong>：加权最小连接数，当不同后端服务器权重值相同时，当前连接数越小的后端服务器被轮询到的概率越高。</li></ul>
 	SchedulerAlgorithm *string `json:"SchedulerAlgorithm,omitnil,omitempty" name:"SchedulerAlgorithm"`
 
-	// 会话保持配置。
+	// <p>会话保持配置。</p>
 	StickySessionConfig *StickySessionConfig `json:"StickySessionConfig,omitnil,omitempty" name:"StickySessionConfig"`
 
-	// 目标组 ID，格式为 lbtg- 后接 8 位字母数字。
+	// <p>目标组 ID，格式为 lbtg- 后接 8 位字母数字。</p>
 	TargetGroupId *string `json:"TargetGroupId,omitnil,omitempty" name:"TargetGroupId"`
 
-	// 目标组名称。长度为 1~255 个字符，可包含数字、大小写字母、中文、半角句号（.）、下划线（_）和短划线（-）。不传目标组名称时默认使用ID作为目标组名称。
+	// <p>目标组名称。长度为 1~255 个字符，可包含数字、大小写字母、中文、半角句号（.）、下划线（_）和短划线（-）。不传目标组名称时默认使用ID作为目标组名称。</p>
 	TargetGroupName *string `json:"TargetGroupName,omitnil,omitempty" name:"TargetGroupName"`
 }
 
@@ -4997,13 +4847,13 @@ type ModifyTargetsInTargetGroupRequestParams struct {
 	// 目标组 ID，格式为 lbtg- 后接 8 位字母数字。
 	TargetGroupId *string `json:"TargetGroupId,omitnil,omitempty" name:"TargetGroupId"`
 
+	// 需要修改的后端服务列表。
+	Targets []*TargetToModify `json:"Targets,omitnil,omitempty" name:"Targets"`
+
 	// 是否预览此次请求。 
 	// - **false**（默认）：发送普通请求，直接修改后端服务信息。 
 	// - **true**：发送预览请求，检查修改后端服务的参数、格式、业务限制等是否符合要求。
 	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
-
-	// 需要修改的后端服务列表。
-	Targets []*TargetToModify `json:"Targets,omitnil,omitempty" name:"Targets"`
 }
 
 type ModifyTargetsInTargetGroupRequest struct {
@@ -5012,13 +4862,13 @@ type ModifyTargetsInTargetGroupRequest struct {
 	// 目标组 ID，格式为 lbtg- 后接 8 位字母数字。
 	TargetGroupId *string `json:"TargetGroupId,omitnil,omitempty" name:"TargetGroupId"`
 
+	// 需要修改的后端服务列表。
+	Targets []*TargetToModify `json:"Targets,omitnil,omitempty" name:"Targets"`
+
 	// 是否预览此次请求。 
 	// - **false**（默认）：发送普通请求，直接修改后端服务信息。 
 	// - **true**：发送预览请求，检查修改后端服务的参数、格式、业务限制等是否符合要求。
 	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
-
-	// 需要修改的后端服务列表。
-	Targets []*TargetToModify `json:"Targets,omitnil,omitempty" name:"Targets"`
 }
 
 func (r *ModifyTargetsInTargetGroupRequest) ToJsonString() string {
@@ -5034,8 +4884,8 @@ func (r *ModifyTargetsInTargetGroupRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "TargetGroupId")
-	delete(f, "DryRun")
 	delete(f, "Targets")
+	delete(f, "DryRun")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyTargetsInTargetGroupRequest has unknown keys!", "")
 	}
@@ -5196,13 +5046,13 @@ type RemoveTargetsFromTargetGroupRequestParams struct {
 	// 目标组 ID，格式为 lbtg- 后接 8 位字母数字。
 	TargetGroupId *string `json:"TargetGroupId,omitnil,omitempty" name:"TargetGroupId"`
 
+	// 需要从目标组移除的后端服务列表。单次请求最多移除 **50** 个后端服务。
+	Targets []*TargetToRemove `json:"Targets,omitnil,omitempty" name:"Targets"`
+
 	// 是否预览此次请求。 
 	// - **false**（默认）：发送普通请求，直接移除后端服务。 
 	// - **true**：发送预览请求，检查移除后端服务的参数、格式、业务限制等是否符合要求。
 	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
-
-	// 需要从目标组移除的后端服务列表。单次请求最多移除 **50** 个后端服务。
-	Targets []*TargetToRemove `json:"Targets,omitnil,omitempty" name:"Targets"`
 }
 
 type RemoveTargetsFromTargetGroupRequest struct {
@@ -5211,13 +5061,13 @@ type RemoveTargetsFromTargetGroupRequest struct {
 	// 目标组 ID，格式为 lbtg- 后接 8 位字母数字。
 	TargetGroupId *string `json:"TargetGroupId,omitnil,omitempty" name:"TargetGroupId"`
 
+	// 需要从目标组移除的后端服务列表。单次请求最多移除 **50** 个后端服务。
+	Targets []*TargetToRemove `json:"Targets,omitnil,omitempty" name:"Targets"`
+
 	// 是否预览此次请求。 
 	// - **false**（默认）：发送普通请求，直接移除后端服务。 
 	// - **true**：发送预览请求，检查移除后端服务的参数、格式、业务限制等是否符合要求。
 	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
-
-	// 需要从目标组移除的后端服务列表。单次请求最多移除 **50** 个后端服务。
-	Targets []*TargetToRemove `json:"Targets,omitnil,omitempty" name:"Targets"`
 }
 
 func (r *RemoveTargetsFromTargetGroupRequest) ToJsonString() string {
@@ -5233,8 +5083,8 @@ func (r *RemoveTargetsFromTargetGroupRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "TargetGroupId")
-	delete(f, "DryRun")
 	delete(f, "Targets")
+	delete(f, "DryRun")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RemoveTargetsFromTargetGroupRequest has unknown keys!", "")
 	}
@@ -5805,24 +5655,18 @@ type Zone struct {
 }
 
 type ZoneMappingInfo struct {
-	// 子网 ID。
+	// <p>子网 ID。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 可用区ID。最多支持添加10个可用区。若当前地域支持2个及以上的可用区，至少需要添加2个可用区。
-	// 您可以通过调用[DescribeZones](~~36064~~)接口获取可用区ID对应的可用区的信息。
+	// <p>可用区ID。最多支持添加10个可用区。若当前地域支持2个及以上的可用区，至少需要添加2个可用区。<br>您可以通过调用<a href="https://cloud.tencent.com/document/api/1822/133727">DescribeZones</a>接口获取可用区ID对应的可用区的信息。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 负载均衡 VIP/EIP 信息
+	// <p>负载均衡 VIP/EIP 信息</p>
 	LoadBalancerAddress *LoadBalancerAddress `json:"LoadBalancerAddress,omitnil,omitempty" name:"LoadBalancerAddress"`
 
-	// 可用区状态。取值：
-	// - **Active**：运行中。
-	// - **Stopped**：已停止。
-	// - **Shifted**：已移除。
-	// - **Starting**：启动中。
-	// - **Stopping**：停止中。
+	// <p>可用区状态。取值：</p><ul><li><strong>Active</strong>：运行中。</li><li><strong>Stopped</strong>：已停止。</li><li><strong>Shifted</strong>：已移除。</li><li><strong>Starting</strong>：启动中。</li><li><strong>Stopping</strong>：停止中。</li></ul>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
@@ -5831,7 +5675,7 @@ type ZoneMappingsItem struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// <p>可用区ID。最多支持添加10个可用区。若当前地域支持2个及以上的可用区，至少需要添加2个可用区。<br>您可以通过调用<a href="~~36064~~">DescribeZones</a>接口获取可用区ID对应的可用区的信息。</p>
+	// <p>可用区ID。最多支持添加10个可用区。若当前地域支持2个及以上的可用区，至少需要添加2个可用区。<br>您可以通过调用<a href="https://cloud.tencent.com/document/api/1822/133727">DescribeZones</a>接口获取可用区ID对应的可用区的信息。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 

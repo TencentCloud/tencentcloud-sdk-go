@@ -1979,17 +1979,20 @@ type ModelChargingInfo struct {
 }
 
 type ModelChargingItem struct {
-	// 价格维度标识。取值：Input（输入）、Output（输出）、Cache（缓存命中）、Thinking（思考）、BatchInput（批量输入）、BatchOutput（批量输出）、BatchCache（批量缓存命中）、ImageInput（输入图片）、ImageOutput（输出图片）、Search（搜索调用）。
+	// <p>价格维度标识。取值：Input（输入）、Output（输出）、Cache（缓存命中）、Thinking（思考）、BatchInput（批量输入）、BatchOutput（批量输出）、BatchCache（批量缓存命中）、ImageInput（输入图片）、ImageOutput（输出图片）、Search（搜索调用）。</p>
 	PriceName *string `json:"PriceName,omitnil,omitempty" name:"PriceName"`
 
-	// 价格维度展示名，后端直接提供当前语言文本（如 输入、Input），前端无需翻译。
+	// <p>价格维度展示名，后端直接提供当前语言文本（如 输入、Input），前端无需翻译。</p>
 	DisplayName *string `json:"DisplayName,omitnil,omitempty" name:"DisplayName"`
 
-	// 价格数值。
+	// <p>价格数值。</p>
 	Price *string `json:"Price,omitnil,omitempty" name:"Price"`
 
-	// 价格单位，后端直接提供当前语言文本（如 元/百万tokens、元/张、积分/次）。
+	// <p>价格单位，后端直接提供当前语言文本（如 元/百万tokens、元/张、积分/次）。</p>
 	PriceUnit *string `json:"PriceUnit,omitnil,omitempty" name:"PriceUnit"`
+
+	// <p>高峰价格，为空表示无高峰定价</p>
+	PeakPrice *string `json:"PeakPrice,omitnil,omitempty" name:"PeakPrice"`
 }
 
 type ModelFreeTrialInfo struct {

@@ -4751,12 +4751,15 @@ type PathInfo struct {
 
 // Predefined struct for user
 type RunDataRetrievalTaskRequestParams struct {
-
+	// <p>数据检索 ID。可通过 DescribeDataRetrieval 接口获取。</p>
+	DataRetrievalId *string `json:"DataRetrievalId,omitnil,omitempty" name:"DataRetrievalId"`
 }
 
 type RunDataRetrievalTaskRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>数据检索 ID。可通过 DescribeDataRetrieval 接口获取。</p>
+	DataRetrievalId *string `json:"DataRetrievalId,omitnil,omitempty" name:"DataRetrievalId"`
 }
 
 func (r *RunDataRetrievalTaskRequest) ToJsonString() string {
@@ -4771,7 +4774,7 @@ func (r *RunDataRetrievalTaskRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "DataRetrievalId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RunDataRetrievalTaskRequest has unknown keys!", "")
 	}

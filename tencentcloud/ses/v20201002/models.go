@@ -91,7 +91,7 @@ type BatchSendEmailRequestParams struct {
 	// <p>收件人列表ID</p>
 	ReceiverId *uint64 `json:"ReceiverId,omitnil,omitempty" name:"ReceiverId"`
 
-	// <p>邮件主题</p>
+	// <p>邮件主题</p><p>当使用模版发送时，支持使用模版变量参数填充</p>
 	Subject *string `json:"Subject,omitnil,omitempty" name:"Subject"`
 
 	// <p>任务类型 1: 立即发送 2: 定时发送 3: 周期（频率）发送</p>
@@ -131,7 +131,7 @@ type BatchSendEmailRequest struct {
 	// <p>收件人列表ID</p>
 	ReceiverId *uint64 `json:"ReceiverId,omitnil,omitempty" name:"ReceiverId"`
 
-	// <p>邮件主题</p>
+	// <p>邮件主题</p><p>当使用模版发送时，支持使用模版变量参数填充</p>
 	Subject *string `json:"Subject,omitnil,omitempty" name:"Subject"`
 
 	// <p>任务类型 1: 立即发送 2: 定时发送 3: 周期（频率）发送</p>
@@ -2448,7 +2448,7 @@ type SendEmailRequestParams struct {
 	// <p>发件人邮箱地址。不使用别名时请直接填写发件人邮箱地址，例如：noreply@mail.qcloud.com如需填写发件人别名时，请按照如下方式（注意别名与邮箱地址之间必须使用一个空格隔开）：别名+一个空格+&lt;邮箱地址&gt;，别名中不能带有冒号(:)。</p>
 	FromEmailAddress *string `json:"FromEmailAddress,omitnil,omitempty" name:"FromEmailAddress"`
 
-	// <p>邮件主题</p>
+	// <p>邮件主题</p><p>当使用模版发送时，支持使用模版变量参数填充</p>
 	Subject *string `json:"Subject,omitnil,omitempty" name:"Subject"`
 
 	// <p>收信人邮箱地址，最多支持群发50人。注意：邮件内容会显示所有收件人地址，非群发邮件请多次调用API发送。<br>Destination/Cc/Bcc三个参数必须至少存在一个。</p>
@@ -2494,7 +2494,7 @@ type SendEmailRequest struct {
 	// <p>发件人邮箱地址。不使用别名时请直接填写发件人邮箱地址，例如：noreply@mail.qcloud.com如需填写发件人别名时，请按照如下方式（注意别名与邮箱地址之间必须使用一个空格隔开）：别名+一个空格+&lt;邮箱地址&gt;，别名中不能带有冒号(:)。</p>
 	FromEmailAddress *string `json:"FromEmailAddress,omitnil,omitempty" name:"FromEmailAddress"`
 
-	// <p>邮件主题</p>
+	// <p>邮件主题</p><p>当使用模版发送时，支持使用模版变量参数填充</p>
 	Subject *string `json:"Subject,omitnil,omitempty" name:"Subject"`
 
 	// <p>收信人邮箱地址，最多支持群发50人。注意：邮件内容会显示所有收件人地址，非群发邮件请多次调用API发送。<br>Destination/Cc/Bcc三个参数必须至少存在一个。</p>

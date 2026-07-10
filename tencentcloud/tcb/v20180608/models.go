@@ -4686,25 +4686,25 @@ type DescribePGUserMigrationResponseParams struct {
 	// <p>要执行的migration sql 语句</p>
 	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 
-	// <p>回滚的sql 语句</p>
+	// <p>回滚的sql 语句</p><p>deprecated</p>
 	Rollback *string `json:"Rollback,omitnil,omitempty" name:"Rollback"`
 
-	// <p>migration query 语句的checksum值</p><p>由服务端自动生成，同版本 checksum 不一致会拒绝执行</p>
+	// <p>migration query 语句的checksum值,由服务端自动生成，同版本 checksum 不一致会拒绝执行</p><p>deprecated</p>
 	Checksum *string `json:"Checksum,omitnil,omitempty" name:"Checksum"`
 
-	// <p>用于标记调用来源</p>
+	// <p>用于标记调用来源</p><p>deprecated</p>
 	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 
-	// <p>用于标记该条migration由谁创建，目前默认调用的用户uin</p>
+	// <p>用于标记该条migration由谁创建，目前默认调用的用户uin</p><p>deprecated</p>
 	CreatedBy *string `json:"CreatedBy,omitnil,omitempty" name:"CreatedBy"`
 
-	// <p>该migration创建时间</p>
+	// <p>该migration创建时间</p><p>deprecated</p>
 	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
 
-	// <p>该migration应用时间</p>
+	// <p>该migration应用时间</p><p>deprecated</p>
 	AppliedAt *string `json:"AppliedAt,omitnil,omitempty" name:"AppliedAt"`
 
-	// <p>该migration执行耗时</p><p>单位：毫秒</p>
+	// <p>该migration执行耗时</p><p>单位：毫秒</p><p>deprecated</p>
 	DurationMs *int64 `json:"DurationMs,omitnil,omitempty" name:"DurationMs"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6938,16 +6938,16 @@ type MigrationSummary struct {
 	// <p>migration 版本名</p><p>参数格式：仅允许小写字母和下划线</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// <p>migration query sql 语句checksum</p><p>服务端自动生成，同版本不同checksum会拒绝执行</p>
+	// <p>migration query sql 语句checksum，服务端自动生成，同版本不同checksum会拒绝执行</p><p>deprecated</p>
 	Checksum *string `json:"Checksum,omitnil,omitempty" name:"Checksum"`
 
-	// <p>应用时间</p>
+	// <p>应用时间</p><p>deprecated</p>
 	AppliedAt *string `json:"AppliedAt,omitnil,omitempty" name:"AppliedAt"`
 
-	// <p>请求来源</p>
+	// <p>请求来源</p><p>deprecated</p>
 	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 
-	// <p>migration 创建时间</p>
+	// <p>migration 创建时间</p><p>deprecated</p>
 	CreatedBy *string `json:"CreatedBy,omitnil,omitempty" name:"CreatedBy"`
 }
 
@@ -8217,8 +8217,11 @@ type PreviewPGUserMigrationsRequestParams struct {
 	// <p>预览要执行的migration 列表</p>
 	Migrations []*MigrationInput `json:"Migrations,omitnil,omitempty" name:"Migrations"`
 
-	// <p>标记请求来源</p>
+	// <p>标记请求来源</p><p>deprecated</p>
 	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// <p>是否允许 out-of-order local migrations</p><p>默认值：false</p>
+	IncludeAll *bool `json:"IncludeAll,omitnil,omitempty" name:"IncludeAll"`
 }
 
 type PreviewPGUserMigrationsRequest struct {
@@ -8230,8 +8233,11 @@ type PreviewPGUserMigrationsRequest struct {
 	// <p>预览要执行的migration 列表</p>
 	Migrations []*MigrationInput `json:"Migrations,omitnil,omitempty" name:"Migrations"`
 
-	// <p>标记请求来源</p>
+	// <p>标记请求来源</p><p>deprecated</p>
 	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// <p>是否允许 out-of-order local migrations</p><p>默认值：false</p>
+	IncludeAll *bool `json:"IncludeAll,omitnil,omitempty" name:"IncludeAll"`
 }
 
 func (r *PreviewPGUserMigrationsRequest) ToJsonString() string {
@@ -8249,6 +8255,7 @@ func (r *PreviewPGUserMigrationsRequest) FromJsonString(s string) error {
 	delete(f, "EnvId")
 	delete(f, "Migrations")
 	delete(f, "Source")
+	delete(f, "IncludeAll")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PreviewPGUserMigrationsRequest has unknown keys!", "")
 	}
@@ -8492,8 +8499,11 @@ type PushPGUserMigrationsRequestParams struct {
 	// <p>单条 SQL 执行最长时间，超过后由 PostgreSQL 取消该语句</p><p>单位：毫秒</p><p>默认值：300000</p>
 	StatementTimeoutMs *int64 `json:"StatementTimeoutMs,omitnil,omitempty" name:"StatementTimeoutMs"`
 
-	// <p>标记请求来源</p>
+	// <p>标记请求来源</p><p>deprecated</p>
 	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// <p>为true时允许 out-of-order local migrations</p><p>默认值：false</p>
+	IncludeAll *bool `json:"IncludeAll,omitnil,omitempty" name:"IncludeAll"`
 }
 
 type PushPGUserMigrationsRequest struct {
@@ -8511,8 +8521,11 @@ type PushPGUserMigrationsRequest struct {
 	// <p>单条 SQL 执行最长时间，超过后由 PostgreSQL 取消该语句</p><p>单位：毫秒</p><p>默认值：300000</p>
 	StatementTimeoutMs *int64 `json:"StatementTimeoutMs,omitnil,omitempty" name:"StatementTimeoutMs"`
 
-	// <p>标记请求来源</p>
+	// <p>标记请求来源</p><p>deprecated</p>
 	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// <p>为true时允许 out-of-order local migrations</p><p>默认值：false</p>
+	IncludeAll *bool `json:"IncludeAll,omitnil,omitempty" name:"IncludeAll"`
 }
 
 func (r *PushPGUserMigrationsRequest) ToJsonString() string {
@@ -8532,6 +8545,7 @@ func (r *PushPGUserMigrationsRequest) FromJsonString(s string) error {
 	delete(f, "LockTimeoutMs")
 	delete(f, "StatementTimeoutMs")
 	delete(f, "Source")
+	delete(f, "IncludeAll")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PushPGUserMigrationsRequest has unknown keys!", "")
 	}

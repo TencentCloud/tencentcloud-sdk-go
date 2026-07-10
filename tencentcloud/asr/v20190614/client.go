@@ -2185,6 +2185,58 @@ func (c *Client) VoicePrintEnrollWithContext(ctx context.Context, request *Voice
     return
 }
 
+func NewVoicePrintGroupListRequest() (request *VoicePrintGroupListRequest) {
+    request = &VoicePrintGroupListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("asr", APIVersion, "VoicePrintGroupList")
+    
+    
+    return
+}
+
+func NewVoicePrintGroupListResponse() (response *VoicePrintGroupListResponse) {
+    response = &VoicePrintGroupListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// VoicePrintGroupList
+// 返回注册的说话人分组信息列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) VoicePrintGroupList(request *VoicePrintGroupListRequest) (response *VoicePrintGroupListResponse, err error) {
+    return c.VoicePrintGroupListWithContext(context.Background(), request)
+}
+
+// VoicePrintGroupList
+// 返回注册的说话人分组信息列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) VoicePrintGroupListWithContext(ctx context.Context, request *VoicePrintGroupListRequest) (response *VoicePrintGroupListResponse, err error) {
+    if request == nil {
+        request = NewVoicePrintGroupListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "asr", APIVersion, "VoicePrintGroupList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("VoicePrintGroupList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewVoicePrintGroupListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewVoicePrintGroupVerifyRequest() (request *VoicePrintGroupVerifyRequest) {
     request = &VoicePrintGroupVerifyRequest{
         BaseRequest: &tchttp.BaseRequest{},

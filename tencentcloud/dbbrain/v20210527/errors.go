@@ -41,17 +41,35 @@ const (
 	// 数据库操作失败
 	INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
 
+	// InternalError.InternalError
+	INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+
+	// 无效的过滤器
+	INVALIDFILTER = "InvalidFilter"
+
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
 
+	// InvalidParameter.InvalidParameter
+	INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+
+	// 无效参数组合
+	INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
+
+	// InvalidParameterValue.InvalidParameterValue
+	INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 
 	// 超过配额限制。
 	LIMITEXCEEDED = "LimitExceeded"
 
 	// 缺少参数错误。
 	MISSINGPARAMETER = "MissingParameter"
+
+	// MissingParameter.MissingParameter
+	MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
 
 	// 操作被拒绝。
 	OPERATIONDENIED = "OperationDenied"
@@ -82,6 +100,9 @@ const (
 
 	// 未授权操作。
 	UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+
+	// UnauthorizedOperation.UnauthorizedOperation
+	UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 
 	// 未知参数错误。
 	UNKNOWNPARAMETER = "UnknownParameter"

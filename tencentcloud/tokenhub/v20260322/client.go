@@ -1253,7 +1253,7 @@ func NewDescribeTokenPlanApiKeyUsageDetailResponse() (response *DescribeTokenPla
 //
 // 
 //
-// 从 CLS 日志服务查询套餐下的调用明细，按 pkg_id 过滤，支持游标分页。
+// 从 CLS 日志服务查询套餐下的调用明细，按 team_id 过滤，支持游标分页。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
@@ -1271,7 +1271,7 @@ func (c *Client) DescribeTokenPlanApiKeyUsageDetail(request *DescribeTokenPlanAp
 //
 // 
 //
-// 从 CLS 日志服务查询套餐下的调用明细，按 pkg_id 过滤，支持游标分页。
+// 从 CLS 日志服务查询套餐下的调用明细，按 team_id 过滤，支持游标分页。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"

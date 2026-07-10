@@ -616,56 +616,56 @@ func (r *CreateBasicModerationResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateCloudModerationRequestParams struct {
-	// TRTC的[SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid)，和TRTC的房间所对应的SdkAppId相同。
+	// <p>TRTC的<a href="https://cloud.tencent.com/document/product/647/46351#sdkappid">SdkAppId</a>，和TRTC的房间所对应的SdkAppId相同。</p>
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// TRTC的[RoomId](https://cloud.tencent.com/document/product/647/46351#roomid)，为TRTC房间所对应的RoomId。
+	// <p>TRTC的<a href="https://cloud.tencent.com/document/product/647/46351#roomid">RoomId</a>，为TRTC房间所对应的RoomId。</p>
 	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 
-	// 机器人的UserId，用于进房发起审核任务。【*注意】这个UserId不能与当前房间内的主播观众UserId重复。如果一个房间发起多个切片任务时，机器人的userid也不能相互重复，否则会中断前一个切片任务。建议可以把房间ID作为UserId的标识的一部分，即机器人UserId在房间内唯一。
+	// <p>机器人的UserId，用于进房发起AI 内容理解任务。【*注意】这个UserId不能与当前房间内的主播观众UserId重复。如果一个房间发起多个切片任务时，机器人的userid也不能相互重复，否则会中断前一个切片任务。建议可以把房间ID作为UserId的标识的一部分，即机器人UserId在房间内唯一。</p>
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
-	// 云端审核控制参数。
+	// <p>AI 内容理解控制参数。</p>
 	ModerationParams *ModerationParams `json:"ModerationParams,omitnil,omitempty" name:"ModerationParams"`
 
-	// 机器人UserId对应的校验签名，即UserId和UserSig相当于机器人进房的登录密码，具体计算方法请参考TRTC计算UserSig的方案。
+	// <p>机器人UserId对应的校验签名，即UserId和UserSig相当于机器人进房的登录密码，具体计算方法请参考TRTC计算UserSig的方案。</p>
 	UserSig *string `json:"UserSig,omitnil,omitempty" name:"UserSig"`
 
-	// 云端审核文件上传到云存储的参数。
+	// <p>AI 内容理解文件上传到云存储的参数。</p>
 	ModerationStorageParams *ModerationStorageParams `json:"ModerationStorageParams,omitnil,omitempty" name:"ModerationStorageParams"`
 
-	// TRTC房间号的类型。 【*注意】必须和录制的房间所对应的RoomId类型相同: 0: 字符串类型的RoomId 1: 32位整型的RoomId（默认） 示例值：1
+	// <p>TRTC房间号的类型。 【*注意】必须和录制的房间所对应的RoomId类型相同: 0: 字符串类型的RoomId 1: 32位整型的RoomId（默认） 示例值：1</p>
 	RoomIdType *uint64 `json:"RoomIdType,omitnil,omitempty" name:"RoomIdType"`
 
-	// 任务ID可以调用的时效性，从成功开启任务并获得TaskID后开始计算，超时后无法调用查询、更新和停止等接口，但是切片任务不会停止。 参数的单位是小时，默认24小时（1天），最大可设置72小时（3天），最小设置6小时。举例说明：如果不设置该参数，那么开始切片成功后，查询、更新和停止切片的调用时效为24个小时。
+	// <p>任务ID可以调用的时效性，从成功开启任务并获得TaskID后开始计算，超时后无法调用查询、更新和停止等接口，但是切片任务不会停止。 参数的单位是小时，默认24小时（1天），最大可设置72小时（3天），最小设置6小时。举例说明：如果不设置该参数，那么开始切片成功后，查询、更新和停止切片的调用时效为24个小时。</p>
 	ResourceExpiredHour *uint64 `json:"ResourceExpiredHour,omitnil,omitempty" name:"ResourceExpiredHour"`
 }
 
 type CreateCloudModerationRequest struct {
 	*tchttp.BaseRequest
 	
-	// TRTC的[SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid)，和TRTC的房间所对应的SdkAppId相同。
+	// <p>TRTC的<a href="https://cloud.tencent.com/document/product/647/46351#sdkappid">SdkAppId</a>，和TRTC的房间所对应的SdkAppId相同。</p>
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// TRTC的[RoomId](https://cloud.tencent.com/document/product/647/46351#roomid)，为TRTC房间所对应的RoomId。
+	// <p>TRTC的<a href="https://cloud.tencent.com/document/product/647/46351#roomid">RoomId</a>，为TRTC房间所对应的RoomId。</p>
 	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 
-	// 机器人的UserId，用于进房发起审核任务。【*注意】这个UserId不能与当前房间内的主播观众UserId重复。如果一个房间发起多个切片任务时，机器人的userid也不能相互重复，否则会中断前一个切片任务。建议可以把房间ID作为UserId的标识的一部分，即机器人UserId在房间内唯一。
+	// <p>机器人的UserId，用于进房发起AI 内容理解任务。【*注意】这个UserId不能与当前房间内的主播观众UserId重复。如果一个房间发起多个切片任务时，机器人的userid也不能相互重复，否则会中断前一个切片任务。建议可以把房间ID作为UserId的标识的一部分，即机器人UserId在房间内唯一。</p>
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
-	// 云端审核控制参数。
+	// <p>AI 内容理解控制参数。</p>
 	ModerationParams *ModerationParams `json:"ModerationParams,omitnil,omitempty" name:"ModerationParams"`
 
-	// 机器人UserId对应的校验签名，即UserId和UserSig相当于机器人进房的登录密码，具体计算方法请参考TRTC计算UserSig的方案。
+	// <p>机器人UserId对应的校验签名，即UserId和UserSig相当于机器人进房的登录密码，具体计算方法请参考TRTC计算UserSig的方案。</p>
 	UserSig *string `json:"UserSig,omitnil,omitempty" name:"UserSig"`
 
-	// 云端审核文件上传到云存储的参数。
+	// <p>AI 内容理解文件上传到云存储的参数。</p>
 	ModerationStorageParams *ModerationStorageParams `json:"ModerationStorageParams,omitnil,omitempty" name:"ModerationStorageParams"`
 
-	// TRTC房间号的类型。 【*注意】必须和录制的房间所对应的RoomId类型相同: 0: 字符串类型的RoomId 1: 32位整型的RoomId（默认） 示例值：1
+	// <p>TRTC房间号的类型。 【*注意】必须和录制的房间所对应的RoomId类型相同: 0: 字符串类型的RoomId 1: 32位整型的RoomId（默认） 示例值：1</p>
 	RoomIdType *uint64 `json:"RoomIdType,omitnil,omitempty" name:"RoomIdType"`
 
-	// 任务ID可以调用的时效性，从成功开启任务并获得TaskID后开始计算，超时后无法调用查询、更新和停止等接口，但是切片任务不会停止。 参数的单位是小时，默认24小时（1天），最大可设置72小时（3天），最小设置6小时。举例说明：如果不设置该参数，那么开始切片成功后，查询、更新和停止切片的调用时效为24个小时。
+	// <p>任务ID可以调用的时效性，从成功开启任务并获得TaskID后开始计算，超时后无法调用查询、更新和停止等接口，但是切片任务不会停止。 参数的单位是小时，默认24小时（1天），最大可设置72小时（3天），最小设置6小时。举例说明：如果不设置该参数，那么开始切片成功后，查询、更新和停止切片的调用时效为24个小时。</p>
 	ResourceExpiredHour *uint64 `json:"ResourceExpiredHour,omitnil,omitempty" name:"ResourceExpiredHour"`
 }
 
@@ -697,7 +697,7 @@ func (r *CreateCloudModerationRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateCloudModerationResponseParams struct {
-	// 云端审核服务分配的任务ID。任务ID是对一次切片任务生命周期过程的唯一标识，结束任务时会失去意义。任务ID需要业务保存下来，作为下次针对这个任务操作的参数
+	// <p>AI 内容理解服务分配的任务ID。任务ID是对一次切片任务生命周期过程的唯一标识，结束任务时会失去意义。任务ID需要业务保存下来，作为下次针对这个任务操作的参数</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1234,20 +1234,20 @@ func (r *DeleteBasicModerationResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteCloudModerationRequestParams struct {
-	// TRTC的SDKAppId，和TRTC的房间所对应的SDKAppId相同。
+	// <p>TRTC的SDKAppId，和TRTC的房间所对应的SDKAppId相同。</p>
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// 审核任务的唯一Id，在启动切片任务成功后会返回。
+	// <p>AI 内容理解任务的唯一Id，在启动切片任务成功后会返回。</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
 type DeleteCloudModerationRequest struct {
 	*tchttp.BaseRequest
 	
-	// TRTC的SDKAppId，和TRTC的房间所对应的SDKAppId相同。
+	// <p>TRTC的SDKAppId，和TRTC的房间所对应的SDKAppId相同。</p>
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// 审核任务的唯一Id，在启动切片任务成功后会返回。
+	// <p>AI 内容理解任务的唯一Id，在启动切片任务成功后会返回。</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
@@ -1273,7 +1273,7 @@ func (r *DeleteCloudModerationRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteCloudModerationResponseParams struct {
-	// 审核任务的唯一Id，在启动切片任务成功后会返回。
+	// <p>AI 内容理解任务的唯一Id，在启动切片任务成功后会返回。</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2004,20 +2004,20 @@ func (r *DescribeCallDetailInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCloudModerationRequestParams struct {
-	// TRTC的SDKAppId，和录制的房间所对应的SDKAppId相同。
+	// <p>TRTC的SDKAppId，和录制的房间所对应的SDKAppId相同。</p>
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// 云端审核任务的唯一Id，在启动切片任务成功后会返回。
+	// <p>AI 内容理解任务的唯一Id，在启动切片任务成功后会返回。</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
 type DescribeCloudModerationRequest struct {
 	*tchttp.BaseRequest
 	
-	// TRTC的SDKAppId，和录制的房间所对应的SDKAppId相同。
+	// <p>TRTC的SDKAppId，和录制的房间所对应的SDKAppId相同。</p>
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// 云端审核任务的唯一Id，在启动切片任务成功后会返回。
+	// <p>AI 内容理解任务的唯一Id，在启动切片任务成功后会返回。</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
@@ -2043,13 +2043,13 @@ func (r *DescribeCloudModerationRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCloudModerationResponseParams struct {
-	// 切片任务的唯一Id，在启动切片任务成功后会返回。
+	// <p>AI 内容理解任务的唯一Id，在启动切片任务成功后会返回。</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 云端切片任务的状态信息。Idle:表示当前任务空闲中,InProgress:表示当前任务正在进行中,Exited:表示当前任务正在退出的过程中。
+	// <p>AI内容理解任务的状态信息。Idle:表示当前任务空闲中,InProgress:表示当前任务正在进行中,Exited:表示当前任务正在退出的过程中。</p><p>枚举值：</p><ul><li>InProgress： 进行中</li></ul>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 订阅黑白名单
+	// <p>订阅黑白名单</p>
 	SubscribeStreamUserIds *SubscribeModerationUserIds `json:"SubscribeStreamUserIds,omitnil,omitempty" name:"SubscribeStreamUserIds"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4997,38 +4997,33 @@ type MixUserInfo struct {
 }
 
 type ModerationParams struct {
-	// 审核任务类型， 1:音频切片审核，2:视频截帧审核，3:音视切片审核+视频截帧审核  默认值1 
+	// <p>AI 内容理解任务类型， 1:音频切片理解，2:视频截帧理解，3:音视切片+视频截帧理解  默认值1 </p><p>枚举值：</p><ul><li>1： 音频切片理解</li></ul>
 	ModerationType *uint64 `json:"ModerationType,omitnil,omitempty" name:"ModerationType"`
 
-	// 房间内持续没有用户（主播）上行推流的状态超过MaxIdleTime的时长，自动停止切片，单位：秒。默认值为 30 秒，该值需大于等于 5秒，且小于等于1800秒(0.5小时)。示例值：30 
+	// <p>房间内持续没有用户（主播）上行推流的状态超过MaxIdleTime的时长，自动停止切片，单位：秒。默认值为 30 秒，该值需大于等于 5秒，且小于等于1800秒(0.5小时)。示例值：30</p>
 	MaxIdleTime *uint64 `json:"MaxIdleTime,omitnil,omitempty" name:"MaxIdleTime"`
 
-	// 音频切片时长，默认15s 示例值：15, 范围15-60s
+	// <p>音频切片时长，默认15s 示例值：15, 范围15-60s</p>
 	SliceAudio *uint64 `json:"SliceAudio,omitnil,omitempty" name:"SliceAudio"`
 
-	// 视频截帧间隔时长，默认5s, 范围1-60s
+	// <p>视频截帧间隔时长，默认5s, 范围1-60s</p>
 	SliceVideo *uint64 `json:"SliceVideo,omitnil,omitempty" name:"SliceVideo"`
 
-	// 供应商枚举，
-	// trtc : trtc内容理解（支持 1:音频切片审核，2:视频截帧审核，3:音视切片审核+视频截帧审核）
-	// tianyu : 天御内容安全 （支持 1:音频切片审核，2:视频截帧审核，3:音视切片审核+视频截帧审核）
-	// ace  : ACE内容安全 （支持 1:音频切片审核，2:视频截帧审核，3:音视切片审核+视频截帧审核）
-	// shumei : 数美审核（支持 1:音频切片审核，2:视频截帧审核，3:音视切片审核+视频截帧审核）
-	// yidun : 网易易盾审核 （支持 1:音频切片审核，2:视频截帧审核，3:音视切片审核+视频截帧审核）
+	// <p>供应商枚举，<br>trtc : trtc内容理解</p>
 	ModerationSupplier *string `json:"ModerationSupplier,omitnil,omitempty" name:"ModerationSupplier"`
 
-	// 第三方审核商送审需要配置信息, ModerationSupplier为trtc时，这个参数可以不需要初始化
+	// <p>第三方内容理解供应商需要配置信息, ModerationSupplier为trtc时，这个参数可以不需要初始化</p>
 	ModerationSupplierParam *ModerationSupplierParam `json:"ModerationSupplierParam,omitnil,omitempty" name:"ModerationSupplierParam"`
 
-	// 是否保存文件:  0不保存文件 1保存所有文件 2仅保存命中文件
+	// <p>是否保存文件:  0不保存文件 1保存所有文件 2仅保存命中文件</p>
 	SaveModerationFile *uint64 `json:"SaveModerationFile,omitnil,omitempty" name:"SaveModerationFile"`
 
-	// 是否回调所有审核结果:
+	// <p>是否回调所有内容理解结果:
 	// 0 默认回调所有结果 
-	// 1 仅回调命中结果 
+	// 1 仅回调命中结果</p>
 	CallbackAllResults *uint64 `json:"CallbackAllResults,omitnil,omitempty" name:"CallbackAllResults"`
 
-	// 指定订阅流白名单或者黑名单。
+	// <p>指定订阅流白名单或者黑名单。</p>
 	SubscribeStreamUserIds *SubscribeModerationUserIds `json:"SubscribeStreamUserIds,omitnil,omitempty" name:"SubscribeStreamUserIds"`
 }
 
@@ -5056,26 +5051,26 @@ type ModerationSupplierParam struct {
 
 // Predefined struct for user
 type ModifyCloudModerationRequestParams struct {
-	// TRTC的SDKAppId，和TRTC的房间所对应的SDKAppId相同。
+	// <p>TRTC的SDKAppId，和TRTC的房间所对应的SDKAppId相同。</p>
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// 审核任务的唯一Id，在启动切片任务成功后会返回。
+	// <p>AI 内容理解任务的唯一Id，在启动切片任务成功后会返回。</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 指定订阅流白名单或者黑名单。
+	// <p>指定订阅流白名单或者黑名单。</p>
 	SubscribeStreamUserIds *SubscribeStreamUserIds `json:"SubscribeStreamUserIds,omitnil,omitempty" name:"SubscribeStreamUserIds"`
 }
 
 type ModifyCloudModerationRequest struct {
 	*tchttp.BaseRequest
 	
-	// TRTC的SDKAppId，和TRTC的房间所对应的SDKAppId相同。
+	// <p>TRTC的SDKAppId，和TRTC的房间所对应的SDKAppId相同。</p>
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// 审核任务的唯一Id，在启动切片任务成功后会返回。
+	// <p>AI 内容理解任务的唯一Id，在启动切片任务成功后会返回。</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 指定订阅流白名单或者黑名单。
+	// <p>指定订阅流白名单或者黑名单。</p>
 	SubscribeStreamUserIds *SubscribeStreamUserIds `json:"SubscribeStreamUserIds,omitnil,omitempty" name:"SubscribeStreamUserIds"`
 }
 
@@ -5102,7 +5097,7 @@ func (r *ModifyCloudModerationRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyCloudModerationResponseParams struct {
-	// 审核任务的唯一Id，在启动切片任务成功后会返回。
+	// <p>AI 内容理解任务的唯一Id，在启动切片任务成功后会返回。</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

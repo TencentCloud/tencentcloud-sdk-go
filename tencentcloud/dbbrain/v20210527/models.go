@@ -1023,6 +1023,81 @@ func (r *CreateDBDiagReportUrlResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateIgnoreDiagRecordRequestParams struct {
+	// <p>实例ID。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>服务产品类型，取值：mysql（云数据库 MySQL）、cynosdb（TDSQL-C MySQL 版）、dcdb（TDSQL MySQL 版）、mariadb（TDSQL MariaDB 版）、redis（云数据库 Redis）、mongodb（云数据库 MongoDB）、postgres（云数据库 PostgreSQL）。</p>
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// <p>诊断项名称，用于指定需要忽略或取消忽略的诊断事件类型。</p>
+	DiagItem *string `json:"DiagItem,omitnil,omitempty" name:"DiagItem"`
+
+	// <p>忽略状态，取值：1（取消忽略），2（忽略）。</p>
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+type CreateIgnoreDiagRecordRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>实例ID。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>服务产品类型，取值：mysql（云数据库 MySQL）、cynosdb（TDSQL-C MySQL 版）、dcdb（TDSQL MySQL 版）、mariadb（TDSQL MariaDB 版）、redis（云数据库 Redis）、mongodb（云数据库 MongoDB）、postgres（云数据库 PostgreSQL）。</p>
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// <p>诊断项名称，用于指定需要忽略或取消忽略的诊断事件类型。</p>
+	DiagItem *string `json:"DiagItem,omitnil,omitempty" name:"DiagItem"`
+
+	// <p>忽略状态，取值：1（取消忽略），2（忽略）。</p>
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+func (r *CreateIgnoreDiagRecordRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateIgnoreDiagRecordRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Product")
+	delete(f, "DiagItem")
+	delete(f, "Status")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateIgnoreDiagRecordRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateIgnoreDiagRecordResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateIgnoreDiagRecordResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateIgnoreDiagRecordResponseParams `json:"Response"`
+}
+
+func (r *CreateIgnoreDiagRecordResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateIgnoreDiagRecordResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateKillTaskRequestParams struct {
 	// kill会话任务的关联实例ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`

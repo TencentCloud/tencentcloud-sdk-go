@@ -35,13 +35,13 @@ type AlarmConditionFilter struct {
 }
 
 type AlarmEvent struct {
-	// 事件名
+	// <p>事件名</p>
 	EventName *string `json:"EventName,omitnil,omitempty" name:"EventName"`
 
-	// 展示的事件名
+	// <p>展示的事件名</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 告警策略类型
+	// <p>告警策略类型</p>
 	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
 }
 
@@ -473,11 +473,11 @@ type AlarmPolicyEventCondition struct {
 }
 
 type AlarmPolicyFilter struct {
-	// 过滤条件类型 DIMENSION=使用 Dimensions 做过滤
+	// <p>过滤条件类型 DIMENSION=使用 Dimensions 做过滤</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// AlarmPolicyDimension 二维数组序列化后的json字符串，一维数组之间互为或关系，一维数组内的元素互为与关系
+	// <p>AlarmPolicyDimension 二维数组序列化后的json字符串，一维数组之间互为或关系，一维数组内的元素互为与关系</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Dimensions *string `json:"Dimensions,omitnil,omitempty" name:"Dimensions"`
 }
@@ -575,11 +575,11 @@ type AlarmPolicyRule struct {
 }
 
 type AlarmPolicyTriggerTask struct {
-	// 触发任务类型 AS=弹性伸缩
+	// <p>触发任务类型 AS=弹性伸缩</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 用 json 表示配置信息 {"Key1":"Value1","Key2":"Value2"}
+	// <p>用 json 表示配置信息 {&quot;Key1&quot;:&quot;Value1&quot;,&quot;Key2&quot;:&quot;Value2&quot;}</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskConfig *string `json:"TaskConfig,omitnil,omitempty" name:"TaskConfig"`
 }
@@ -6111,19 +6111,19 @@ func (r *DescribeAlarmPolicyResponse) FromJsonString(s string) error {
 }
 
 type DescribeAlarmSmsQuotaQuota struct {
-	// 配额类型
+	// <p>配额类型</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 配额名称
+	// <p>配额名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 免费配额剩余量
+	// <p>免费配额剩余量</p>
 	FreeLeft *int64 `json:"FreeLeft,omitnil,omitempty" name:"FreeLeft"`
 
-	// 付费配额剩余量
+	// <p>付费配额剩余量</p>
 	PurchaseLeft *int64 `json:"PurchaseLeft,omitnil,omitempty" name:"PurchaseLeft"`
 
-	// 已使用量
+	// <p>已使用量</p>
 	Used *int64 `json:"Used,omitnil,omitempty" name:"Used"`
 }
 
@@ -6457,90 +6457,90 @@ func (r *DescribeBaseMetricsResponse) FromJsonString(s string) error {
 }
 
 type DescribeBasicAlarmListAlarms struct {
-	// 该条告警的ID
+	// <p>该条告警的ID</p>
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 项目ID
+	// <p>项目ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 项目名称
+	// <p>项目名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectName *string `json:"ProjectName,omitnil,omitempty" name:"ProjectName"`
 
-	// 告警状态ID，0表示未恢复；1表示已恢复；2,3,5表示数据不足；4表示已失效
+	// <p>告警状态ID，0表示未恢复；1表示已恢复；2,3,5表示数据不足；4表示已失效</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 告警状态，ALARM表示未恢复；OK表示已恢复；NO_DATA表示数据不足；NO_CONF表示已失效
+	// <p>告警状态，ALARM表示未恢复；OK表示已恢复；NO_DATA表示数据不足；NO_CONF表示已失效</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AlarmStatus *string `json:"AlarmStatus,omitnil,omitempty" name:"AlarmStatus"`
 
-	// 策略组ID
+	// <p>策略组ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupId *int64 `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 策略组名
+	// <p>策略组名</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
-	// 发生时间
+	// <p>发生时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FirstOccurTime *string `json:"FirstOccurTime,omitnil,omitempty" name:"FirstOccurTime"`
 
-	// 持续时间，单位s
+	// <p>持续时间，单位s</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Duration *int64 `json:"Duration,omitnil,omitempty" name:"Duration"`
 
-	// 结束时间
+	// <p>结束时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastOccurTime *string `json:"LastOccurTime,omitnil,omitempty" name:"LastOccurTime"`
 
-	// 告警内容
+	// <p>告警内容</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 
-	// 告警对象
+	// <p>告警对象</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ObjName *string `json:"ObjName,omitnil,omitempty" name:"ObjName"`
 
-	// 告警对象ID
+	// <p>告警对象ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ObjId *string `json:"ObjId,omitnil,omitempty" name:"ObjId"`
 
-	// 策略类型
+	// <p>策略类型</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ViewName *string `json:"ViewName,omitnil,omitempty" name:"ViewName"`
 
-	// VPC，只有CVM有
+	// <p>VPC，只有CVM有</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Vpc *string `json:"Vpc,omitnil,omitempty" name:"Vpc"`
 
-	// 指标ID
+	// <p>指标ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MetricId *int64 `json:"MetricId,omitnil,omitempty" name:"MetricId"`
 
-	// 指标名
+	// <p>指标名</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MetricName *string `json:"MetricName,omitnil,omitempty" name:"MetricName"`
 
-	// 告警类型，0表示指标告警，2表示产品事件告警，3表示平台事件告警
+	// <p>告警类型，0表示指标告警，2表示产品事件告警，3表示平台事件告警</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AlarmType *int64 `json:"AlarmType,omitnil,omitempty" name:"AlarmType"`
 
-	// 地域
+	// <p>地域</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 告警对象维度信息
+	// <p>告警对象维度信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Dimensions *string `json:"Dimensions,omitnil,omitempty" name:"Dimensions"`
 
-	// 通知方式
+	// <p>通知方式</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NotifyWay []*string `json:"NotifyWay,omitnil,omitempty" name:"NotifyWay"`
 
-	// 所属实例组信息
+	// <p>所属实例组信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceGroup []*InstanceGroup `json:"InstanceGroup,omitnil,omitempty" name:"InstanceGroup"`
 }
@@ -8344,193 +8344,193 @@ func (r *DescribePluginOverviewsResponse) FromJsonString(s string) error {
 }
 
 type DescribePolicyConditionListCondition struct {
-	// 策略视图名称
+	// <p>策略视图名称</p>
 	PolicyViewName *string `json:"PolicyViewName,omitnil,omitempty" name:"PolicyViewName"`
 
-	// 事件告警条件
+	// <p>事件告警条件</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EventMetrics []*DescribePolicyConditionListEventMetric `json:"EventMetrics,omitnil,omitempty" name:"EventMetrics"`
 
-	// 是否支持多地域
+	// <p>是否支持多地域</p>
 	IsSupportMultiRegion *bool `json:"IsSupportMultiRegion,omitnil,omitempty" name:"IsSupportMultiRegion"`
 
-	// 指标告警条件
+	// <p>指标告警条件</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Metrics []*DescribePolicyConditionListMetric `json:"Metrics,omitnil,omitempty" name:"Metrics"`
 
-	// 策略类型名称
+	// <p>策略类型名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 排序id
+	// <p>排序id</p>
 	SortId *int64 `json:"SortId,omitnil,omitempty" name:"SortId"`
 
-	// 是否支持默认策略
+	// <p>是否支持默认策略</p>
 	SupportDefault *bool `json:"SupportDefault,omitnil,omitempty" name:"SupportDefault"`
 
-	// 支持该策略类型的地域列表
+	// <p>支持该策略类型的地域列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SupportRegions []*string `json:"SupportRegions,omitnil,omitempty" name:"SupportRegions"`
 
-	// 弃用信息
+	// <p>弃用信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeprecatingInfo *DescribePolicyConditionListResponseDeprecatingInfo `json:"DeprecatingInfo,omitnil,omitempty" name:"DeprecatingInfo"`
 }
 
 type DescribePolicyConditionListConfigManual struct {
-	// 检测方式
+	// <p>检测方式</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CalcType *DescribePolicyConditionListConfigManualCalcType `json:"CalcType,omitnil,omitempty" name:"CalcType"`
 
-	// 检测阈值
+	// <p>检测阈值</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CalcValue *DescribePolicyConditionListConfigManualCalcValue `json:"CalcValue,omitnil,omitempty" name:"CalcValue"`
 
-	// 持续时间
+	// <p>持续时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContinueTime *DescribePolicyConditionListConfigManualContinueTime `json:"ContinueTime,omitnil,omitempty" name:"ContinueTime"`
 
-	// 数据周期
+	// <p>数据周期</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Period *DescribePolicyConditionListConfigManualPeriod `json:"Period,omitnil,omitempty" name:"Period"`
 
-	// 持续周期个数
+	// <p>持续周期个数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PeriodNum *DescribePolicyConditionListConfigManualPeriodNum `json:"PeriodNum,omitnil,omitempty" name:"PeriodNum"`
 
-	// 聚合方式
+	// <p>聚合方式</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StatType *DescribePolicyConditionListConfigManualStatType `json:"StatType,omitnil,omitempty" name:"StatType"`
 }
 
 type DescribePolicyConditionListConfigManualCalcType struct {
-	// CalcType 取值
+	// <p>CalcType 取值</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Keys []*int64 `json:"Keys,omitnil,omitempty" name:"Keys"`
 
-	// 是否必须
+	// <p>是否必须</p>
 	Need *bool `json:"Need,omitnil,omitempty" name:"Need"`
 }
 
 type DescribePolicyConditionListConfigManualCalcValue struct {
-	// 默认值
+	// <p>默认值</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Default *string `json:"Default,omitnil,omitempty" name:"Default"`
 
-	// 固定值
+	// <p>固定值</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Fixed *string `json:"Fixed,omitnil,omitempty" name:"Fixed"`
 
-	// 最大值
+	// <p>最大值</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Max *string `json:"Max,omitnil,omitempty" name:"Max"`
 
-	// 最小值
+	// <p>最小值</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Min *string `json:"Min,omitnil,omitempty" name:"Min"`
 
-	// 是否必须
+	// <p>是否必须</p>
 	Need *bool `json:"Need,omitnil,omitempty" name:"Need"`
 }
 
 type DescribePolicyConditionListConfigManualContinueTime struct {
-	// 默认持续时间，单位：秒
+	// <p>默认持续时间，单位：秒</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Default *int64 `json:"Default,omitnil,omitempty" name:"Default"`
 
-	// 可选持续时间，单位：秒
+	// <p>可选持续时间，单位：秒</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Keys []*int64 `json:"Keys,omitnil,omitempty" name:"Keys"`
 
-	// 是否必须
+	// <p>是否必须</p>
 	Need *bool `json:"Need,omitnil,omitempty" name:"Need"`
 }
 
 type DescribePolicyConditionListConfigManualPeriod struct {
-	// 默认周期，单位：秒
+	// <p>默认周期，单位：秒</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Default *int64 `json:"Default,omitnil,omitempty" name:"Default"`
 
-	// 可选周期，单位：秒
+	// <p>可选周期，单位：秒</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Keys []*int64 `json:"Keys,omitnil,omitempty" name:"Keys"`
 
-	// 是否必须
+	// <p>是否必须</p>
 	Need *bool `json:"Need,omitnil,omitempty" name:"Need"`
 }
 
 type DescribePolicyConditionListConfigManualPeriodNum struct {
-	// 默认周期数
+	// <p>默认周期数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Default *int64 `json:"Default,omitnil,omitempty" name:"Default"`
 
-	// 可选周期数
+	// <p>可选周期数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Keys []*int64 `json:"Keys,omitnil,omitempty" name:"Keys"`
 
-	// 是否必须
+	// <p>是否必须</p>
 	Need *bool `json:"Need,omitnil,omitempty" name:"Need"`
 }
 
 type DescribePolicyConditionListConfigManualStatType struct {
-	// 数据聚合方式，周期5秒
+	// <p>数据聚合方式，周期5秒</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	P5 *string `json:"P5,omitnil,omitempty" name:"P5"`
 
-	// 数据聚合方式，周期10秒
+	// <p>数据聚合方式，周期10秒</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	P10 *string `json:"P10,omitnil,omitempty" name:"P10"`
 
-	// 数据聚合方式，周期1分钟
+	// <p>数据聚合方式，周期1分钟</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	P60 *string `json:"P60,omitnil,omitempty" name:"P60"`
 
-	// 数据聚合方式，周期5分钟
+	// <p>数据聚合方式，周期5分钟</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	P300 *string `json:"P300,omitnil,omitempty" name:"P300"`
 
-	// 数据聚合方式，周期10分钟
+	// <p>数据聚合方式，周期10分钟</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	P600 *string `json:"P600,omitnil,omitempty" name:"P600"`
 
-	// 数据聚合方式，周期30分钟
+	// <p>数据聚合方式，周期30分钟</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	P1800 *string `json:"P1800,omitnil,omitempty" name:"P1800"`
 
-	// 数据聚合方式，周期1小时
+	// <p>数据聚合方式，周期1小时</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	P3600 *string `json:"P3600,omitnil,omitempty" name:"P3600"`
 
-	// 数据聚合方式，周期1天
+	// <p>数据聚合方式，周期1天</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	P86400 *string `json:"P86400,omitnil,omitempty" name:"P86400"`
 }
 
 type DescribePolicyConditionListEventMetric struct {
-	// 事件id
+	// <p>事件id</p>
 	EventId *int64 `json:"EventId,omitnil,omitempty" name:"EventId"`
 
-	// 事件名称
+	// <p>事件名称</p>
 	EventShowName *string `json:"EventShowName,omitnil,omitempty" name:"EventShowName"`
 
-	// 是否需要恢复
+	// <p>是否需要恢复</p>
 	NeedRecovered *bool `json:"NeedRecovered,omitnil,omitempty" name:"NeedRecovered"`
 
-	// 事件类型，预留字段，当前固定取值为2
+	// <p>事件类型，预留字段，当前固定取值为2</p>
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
 type DescribePolicyConditionListMetric struct {
-	// 指标配置
+	// <p>指标配置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConfigManual *DescribePolicyConditionListConfigManual `json:"ConfigManual,omitnil,omitempty" name:"ConfigManual"`
 
-	// 指标id
+	// <p>指标id</p>
 	MetricId *int64 `json:"MetricId,omitnil,omitempty" name:"MetricId"`
 
-	// 指标名称
+	// <p>指标名称</p>
 	MetricShowName *string `json:"MetricShowName,omitnil,omitempty" name:"MetricShowName"`
 
-	// 指标单位
+	// <p>指标单位</p>
 	MetricUnit *string `json:"MetricUnit,omitnil,omitempty" name:"MetricUnit"`
 }
 
@@ -8592,15 +8592,15 @@ func (r *DescribePolicyConditionListResponse) FromJsonString(s string) error {
 }
 
 type DescribePolicyConditionListResponseDeprecatingInfo struct {
-	// 是否隐藏
+	// <p>是否隐藏</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Hidden *bool `json:"Hidden,omitnil,omitempty" name:"Hidden"`
 
-	// 新视图名称
+	// <p>新视图名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NewViewNames []*string `json:"NewViewNames,omitnil,omitempty" name:"NewViewNames"`
 
-	// 描述
+	// <p>描述</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
@@ -8702,47 +8702,47 @@ type DescribePolicyGroupInfoEventCondition struct {
 }
 
 type DescribePolicyGroupInfoReceiverInfo struct {
-	// 告警接收组id列表
+	// <p>告警接收组id列表</p>
 	ReceiverGroupList []*int64 `json:"ReceiverGroupList,omitnil,omitempty" name:"ReceiverGroupList"`
 
-	// 告警接收人id列表
+	// <p>告警接收人id列表</p>
 	ReceiverUserList []*int64 `json:"ReceiverUserList,omitnil,omitempty" name:"ReceiverUserList"`
 
-	// 告警时间段开始时间。范围[0,86400)，作为 UNIX 时间戳转成北京时间后去掉日期，例如7200表示"10:0:0"
+	// <p>告警时间段开始时间。范围[0,86400)，作为 UNIX 时间戳转成北京时间后去掉日期，例如7200表示&quot;10:0:0&quot;</p>
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 告警时间段结束时间。含义同StartTime
+	// <p>告警时间段结束时间。含义同StartTime</p>
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 接收类型。“group”(接收组)或“user”(接收人)
+	// <p>接收类型。“group”(接收组)或“user”(接收人)</p>
 	ReceiverType *string `json:"ReceiverType,omitnil,omitempty" name:"ReceiverType"`
 
-	// 告警通知方式。可选 "SMS","SITE","EMAIL","CALL","WECHAT"
+	// <p>告警通知方式。可选 &quot;SMS&quot;,&quot;SITE&quot;,&quot;EMAIL&quot;,&quot;CALL&quot;,&quot;WECHAT&quot;</p>
 	NotifyWay []*string `json:"NotifyWay,omitnil,omitempty" name:"NotifyWay"`
 
-	// 电话告警接收者uid
+	// <p>电话告警接收者uid</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UidList []*int64 `json:"UidList,omitnil,omitempty" name:"UidList"`
 
-	// 电话告警轮数
+	// <p>电话告警轮数</p>
 	RoundNumber *int64 `json:"RoundNumber,omitnil,omitempty" name:"RoundNumber"`
 
-	// 电话告警每轮间隔（秒）
+	// <p>电话告警每轮间隔（秒）</p>
 	RoundInterval *int64 `json:"RoundInterval,omitnil,omitempty" name:"RoundInterval"`
 
-	// 电话告警对个人间隔（秒）
+	// <p>电话告警对个人间隔（秒）</p>
 	PersonInterval *int64 `json:"PersonInterval,omitnil,omitempty" name:"PersonInterval"`
 
-	// 是否需要电话告警触达提示。0不需要，1需要
+	// <p>是否需要电话告警触达提示。0不需要，1需要</p>
 	NeedSendNotice *int64 `json:"NeedSendNotice,omitnil,omitempty" name:"NeedSendNotice"`
 
-	// 电话告警通知时机。可选"OCCUR"(告警时通知),"RECOVER"(恢复时通知)
+	// <p>电话告警通知时机。可选&quot;OCCUR&quot;(告警时通知),&quot;RECOVER&quot;(恢复时通知)</p>
 	SendFor []*string `json:"SendFor,omitnil,omitempty" name:"SendFor"`
 
-	// 恢复通知方式。可选"SMS"
+	// <p>恢复通知方式。可选&quot;SMS&quot;</p>
 	RecoverNotify []*string `json:"RecoverNotify,omitnil,omitempty" name:"RecoverNotify"`
 
-	// 告警发送语言
+	// <p>告警发送语言</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReceiveLanguage *string `json:"ReceiveLanguage,omitnil,omitempty" name:"ReceiveLanguage"`
 }
@@ -8866,69 +8866,69 @@ func (r *DescribePolicyGroupInfoResponse) FromJsonString(s string) error {
 }
 
 type DescribePolicyGroupListGroup struct {
-	// 策略组id
+	// <p>策略组id</p>
 	GroupId *int64 `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 策略组名称
+	// <p>策略组名称</p>
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
-	// 是否开启
+	// <p>是否开启</p>
 	IsOpen *bool `json:"IsOpen,omitnil,omitempty" name:"IsOpen"`
 
-	// 策略视图名称
+	// <p>策略视图名称</p>
 	ViewName *string `json:"ViewName,omitnil,omitempty" name:"ViewName"`
 
-	// 最近编辑的用户uin
+	// <p>最近编辑的用户uin</p>
 	LastEditUin *string `json:"LastEditUin,omitnil,omitempty" name:"LastEditUin"`
 
-	// 最后修改时间
+	// <p>最后修改时间</p>
 	UpdateTime *int64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	InsertTime *int64 `json:"InsertTime,omitnil,omitempty" name:"InsertTime"`
 
-	// 策略组绑定的实例数
+	// <p>策略组绑定的实例数</p>
 	UseSum *int64 `json:"UseSum,omitnil,omitempty" name:"UseSum"`
 
-	// 策略组绑定的未屏蔽实例数
+	// <p>策略组绑定的未屏蔽实例数</p>
 	NoShieldedSum *int64 `json:"NoShieldedSum,omitnil,omitempty" name:"NoShieldedSum"`
 
-	// 是否为默认策略，0表示非默认策略，1表示默认策略
+	// <p>是否为默认策略，0表示非默认策略，1表示默认策略</p>
 	IsDefault *int64 `json:"IsDefault,omitnil,omitempty" name:"IsDefault"`
 
-	// 是否可以设置成默认策略
+	// <p>是否可以设置成默认策略</p>
 	CanSetDefault *bool `json:"CanSetDefault,omitnil,omitempty" name:"CanSetDefault"`
 
-	// 父策略组id
+	// <p>父策略组id</p>
 	ParentGroupId *int64 `json:"ParentGroupId,omitnil,omitempty" name:"ParentGroupId"`
 
-	// 策略组备注
+	// <p>策略组备注</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 策略组所属项目id
+	// <p>策略组所属项目id</p>
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 阈值规则列表
+	// <p>阈值规则列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Conditions []*DescribePolicyGroupInfoCondition `json:"Conditions,omitnil,omitempty" name:"Conditions"`
 
-	// 产品事件规则列表
+	// <p>产品事件规则列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EventConditions []*DescribePolicyGroupInfoEventCondition `json:"EventConditions,omitnil,omitempty" name:"EventConditions"`
 
-	// 用户接收人列表
+	// <p>用户接收人列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReceiverInfos []*DescribePolicyGroupInfoReceiverInfo `json:"ReceiverInfos,omitnil,omitempty" name:"ReceiverInfos"`
 
-	// 模板策略组
+	// <p>模板策略组</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConditionsTemp *DescribePolicyGroupInfoConditionTpl `json:"ConditionsTemp,omitnil,omitempty" name:"ConditionsTemp"`
 
-	// 策略组绑定的实例组信息
+	// <p>策略组绑定的实例组信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceGroup *DescribePolicyGroupListGroupInstanceGroup `json:"InstanceGroup,omitnil,omitempty" name:"InstanceGroup"`
 
-	// 且或规则标识, 0表示或规则(任意一条规则满足阈值条件就告警), 1表示且规则(所有规则都满足阈值条件才告警)
+	// <p>且或规则标识, 0表示或规则(任意一条规则满足阈值条件就告警), 1表示且规则(所有规则都满足阈值条件才告警)</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsUnionRule *int64 `json:"IsUnionRule,omitnil,omitempty" name:"IsUnionRule"`
 }
@@ -12001,40 +12001,40 @@ type Dimension struct {
 }
 
 type DimensionNew struct {
-	// 维度 key 标示，后台英文名
+	// <p>维度 key 标示，后台英文名</p>
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
-	// 维度 key 名称，中英文前台展示名
+	// <p>维度 key 名称，中英文前台展示名</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 是否必选
+	// <p>是否必选</p>
 	IsRequired *bool `json:"IsRequired,omitnil,omitempty" name:"IsRequired"`
 
-	// 支持的操作符列表
+	// <p>支持的操作符列表</p>
 	Operators []*Operator `json:"Operators,omitnil,omitempty" name:"Operators"`
 
-	// 是否支持多选
+	// <p>是否支持多选</p>
 	IsMultiple *bool `json:"IsMultiple,omitnil,omitempty" name:"IsMultiple"`
 
-	// 创建后是否可以修改
+	// <p>创建后是否可以修改</p>
 	IsMutable *bool `json:"IsMutable,omitnil,omitempty" name:"IsMutable"`
 
-	// 是否展示给用户
+	// <p>是否展示给用户</p>
 	IsVisible *bool `json:"IsVisible,omitnil,omitempty" name:"IsVisible"`
 
-	// 能否用来过滤策略列表
+	// <p>能否用来过滤策略列表</p>
 	CanFilterPolicy *bool `json:"CanFilterPolicy,omitnil,omitempty" name:"CanFilterPolicy"`
 
-	// 能否用来过滤告警历史
+	// <p>能否用来过滤告警历史</p>
 	CanFilterHistory *bool `json:"CanFilterHistory,omitnil,omitempty" name:"CanFilterHistory"`
 
-	// 能否作为聚合维度
+	// <p>能否作为聚合维度</p>
 	CanGroupBy *bool `json:"CanGroupBy,omitnil,omitempty" name:"CanGroupBy"`
 
-	// 是否必须作为聚合维度
+	// <p>是否必须作为聚合维度</p>
 	MustGroupBy *bool `json:"MustGroupBy,omitnil,omitempty" name:"MustGroupBy"`
 
-	// 前端翻译要替换的 key
+	// <p>前端翻译要替换的 key</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ShowValueReplace *string `json:"ShowValueReplace,omitnil,omitempty" name:"ShowValueReplace"`
 }
@@ -12167,6 +12167,74 @@ func (r *EnableGrafanaSSOResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type EnablePredefinedPoliciesRequestParams struct {
+	// 预设配置id
+	PredefinedConfigID *string `json:"PredefinedConfigID,omitnil,omitempty" name:"PredefinedConfigID"`
+
+	// 云产品id
+	PredefinedGroupID *string `json:"PredefinedGroupID,omitnil,omitempty" name:"PredefinedGroupID"`
+
+	// 通知模板id
+	NoticeIDs []*string `json:"NoticeIDs,omitnil,omitempty" name:"NoticeIDs"`
+}
+
+type EnablePredefinedPoliciesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 预设配置id
+	PredefinedConfigID *string `json:"PredefinedConfigID,omitnil,omitempty" name:"PredefinedConfigID"`
+
+	// 云产品id
+	PredefinedGroupID *string `json:"PredefinedGroupID,omitnil,omitempty" name:"PredefinedGroupID"`
+
+	// 通知模板id
+	NoticeIDs []*string `json:"NoticeIDs,omitnil,omitempty" name:"NoticeIDs"`
+}
+
+func (r *EnablePredefinedPoliciesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *EnablePredefinedPoliciesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PredefinedConfigID")
+	delete(f, "PredefinedGroupID")
+	delete(f, "NoticeIDs")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EnablePredefinedPoliciesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type EnablePredefinedPoliciesResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type EnablePredefinedPoliciesResponse struct {
+	*tchttp.BaseResponse
+	Response *EnablePredefinedPoliciesResponseParams `json:"Response"`
+}
+
+func (r *EnablePredefinedPoliciesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *EnablePredefinedPoliciesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type EnableSSOCamCheckRequestParams struct {
 	// Grafana 实例 ID，例如：grafana-abcdefgh
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -12228,24 +12296,24 @@ func (r *EnableSSOCamCheckResponse) FromJsonString(s string) error {
 }
 
 type EventCondition struct {
-	// 告警通知频率
+	// <p>告警通知频率</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AlarmNotifyPeriod *string `json:"AlarmNotifyPeriod,omitnil,omitempty" name:"AlarmNotifyPeriod"`
 
-	// 重复通知策略预定义（0 - 只告警一次， 1 - 指数告警，2 - 连接告警）
+	// <p>重复通知策略预定义（0 - 只告警一次， 1 - 指数告警，2 - 连接告警）</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AlarmNotifyType *string `json:"AlarmNotifyType,omitnil,omitempty" name:"AlarmNotifyType"`
 
-	// 事件ID
+	// <p>事件ID</p>
 	EventID *string `json:"EventID,omitnil,omitempty" name:"EventID"`
 
-	// 事件展示名称（对外）
+	// <p>事件展示名称（对外）</p>
 	EventDisplayName *string `json:"EventDisplayName,omitnil,omitempty" name:"EventDisplayName"`
 
-	// 规则ID
+	// <p>规则ID</p>
 	RuleID *string `json:"RuleID,omitnil,omitempty" name:"RuleID"`
 
-	// 指标名
+	// <p>指标名</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MetricName *string `json:"MetricName,omitnil,omitempty" name:"MetricName"`
 }
@@ -13012,52 +13080,52 @@ type ManagementCommand struct {
 }
 
 type Metric struct {
-	// 告警策略类型
+	// <p>告警策略类型</p>
 	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
 
-	// 指标名
+	// <p>指标名</p>
 	MetricName *string `json:"MetricName,omitnil,omitempty" name:"MetricName"`
 
-	// 指标展示名
+	// <p>指标展示名</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 最小值
+	// <p>最小值</p>
 	Min *float64 `json:"Min,omitnil,omitempty" name:"Min"`
 
-	// 最大值
+	// <p>最大值</p>
 	Max *float64 `json:"Max,omitnil,omitempty" name:"Max"`
 
-	// 维度列表
+	// <p>维度列表</p>
 	Dimensions []*string `json:"Dimensions,omitnil,omitempty" name:"Dimensions"`
 
-	// 单位
+	// <p>单位</p>
 	Unit *string `json:"Unit,omitnil,omitempty" name:"Unit"`
 
-	// 指标配置
+	// <p>指标配置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MetricConfig *MetricConfig `json:"MetricConfig,omitnil,omitempty" name:"MetricConfig"`
 
-	// 是否为高级指标。1是 0否
+	// <p>是否为高级指标。1是 0否</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsAdvanced *int64 `json:"IsAdvanced,omitnil,omitempty" name:"IsAdvanced"`
 
-	// 高级指标是否开通。1是 0否
+	// <p>高级指标是否开通。1是 0否</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsOpen *int64 `json:"IsOpen,omitnil,omitempty" name:"IsOpen"`
 
-	// 集成中心产品ID
+	// <p>集成中心产品ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductId *int64 `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
-	// 匹配运算符
+	// <p>匹配运算符</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Operators []*Operator `json:"Operators,omitnil,omitempty" name:"Operators"`
 
-	// 指标触发
+	// <p>指标触发</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Periods []*int64 `json:"Periods,omitnil,omitempty" name:"Periods"`
 
-	// 是否延迟指标
+	// <p>是否延迟指标</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsLatenessMetric *int64 `json:"IsLatenessMetric,omitnil,omitempty" name:"IsLatenessMetric"`
 }
@@ -13766,28 +13834,28 @@ func (r *ModifyAlarmReceiversResponse) FromJsonString(s string) error {
 }
 
 type ModifyConditionsTemplateRequestCondition struct {
-	// 统计周期
+	// <p>统计周期</p>
 	CalcPeriod *string `json:"CalcPeriod,omitnil,omitempty" name:"CalcPeriod"`
 
-	// 统计方式
+	// <p>统计方式</p>
 	CalcType *string `json:"CalcType,omitnil,omitempty" name:"CalcType"`
 
-	// 持续周期
+	// <p>持续周期</p>
 	ContinuePeriod *string `json:"ContinuePeriod,omitnil,omitempty" name:"ContinuePeriod"`
 
-	// 指标ID
+	// <p>指标ID</p>
 	MetricID *int64 `json:"MetricID,omitnil,omitempty" name:"MetricID"`
 
-	// 统计值
+	// <p>统计值</p>
 	CalcValue *string `json:"CalcValue,omitnil,omitempty" name:"CalcValue"`
 
-	// 告警通知周期
+	// <p>告警通知周期</p>
 	AlarmNotifyPeriod *string `json:"AlarmNotifyPeriod,omitnil,omitempty" name:"AlarmNotifyPeriod"`
 
-	// 告警通知方式
+	// <p>告警通知方式</p>
 	AlarmNotifyType *int64 `json:"AlarmNotifyType,omitnil,omitempty" name:"AlarmNotifyType"`
 
-	// 规则ID
+	// <p>规则ID</p>
 	RuleID *int64 `json:"RuleID,omitnil,omitempty" name:"RuleID"`
 }
 
@@ -15881,49 +15949,49 @@ type PrometheusZoneItem struct {
 }
 
 type ReceiverInfo struct {
-	// 告警时间段开始时间。范围[0,86400)，作为 UNIX 时间戳转成北京时间后去掉日期，例如7200表示"10:0:0"
+	// <p>告警时间段开始时间。范围[0,86400)，作为 UNIX 时间戳转成北京时间后去掉日期，例如7200表示&quot;10:0:0&quot;</p>
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 告警时间段结束时间。含义同StartTime
+	// <p>告警时间段结束时间。含义同StartTime</p>
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 告警通知方式。可选 "SMS","SITE","EMAIL","CALL","WECHAT"
+	// <p>告警通知方式。可选 &quot;SMS&quot;,&quot;SITE&quot;,&quot;EMAIL&quot;,&quot;CALL&quot;,&quot;WECHAT&quot;</p>
 	NotifyWay []*string `json:"NotifyWay,omitnil,omitempty" name:"NotifyWay"`
 
-	// 接收人类型。“group” 或 “user”
+	// <p>接收人类型。“group” 或 “user”</p>
 	ReceiverType *string `json:"ReceiverType,omitnil,omitempty" name:"ReceiverType"`
 
-	// ReceiverId
+	// <p>ReceiverId</p>
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 电话告警通知时机。可选"OCCUR"(告警时通知),"RECOVER"(恢复时通知)
+	// <p>电话告警通知时机。可选&quot;OCCUR&quot;(告警时通知),&quot;RECOVER&quot;(恢复时通知)</p>
 	SendFor []*string `json:"SendFor,omitnil,omitempty" name:"SendFor"`
 
-	// 电话告警接收者 UID
+	// <p>电话告警接收者 UID</p>
 	UidList []*int64 `json:"UidList,omitnil,omitempty" name:"UidList"`
 
-	// 电话告警轮数
+	// <p>电话告警轮数</p>
 	RoundNumber *int64 `json:"RoundNumber,omitnil,omitempty" name:"RoundNumber"`
 
-	// 电话告警对个人间隔（秒）
+	// <p>电话告警对个人间隔（秒）</p>
 	PersonInterval *int64 `json:"PersonInterval,omitnil,omitempty" name:"PersonInterval"`
 
-	// 电话告警每轮间隔（秒）
+	// <p>电话告警每轮间隔（秒）</p>
 	RoundInterval *int64 `json:"RoundInterval,omitnil,omitempty" name:"RoundInterval"`
 
-	// 恢复通知方式。可选"SMS"
+	// <p>恢复通知方式。可选&quot;SMS&quot;</p>
 	RecoverNotify []*string `json:"RecoverNotify,omitnil,omitempty" name:"RecoverNotify"`
 
-	// 是否需要电话告警触达提示。0不需要，1需要
+	// <p>是否需要电话告警触达提示。0不需要，1需要</p>
 	NeedSendNotice *int64 `json:"NeedSendNotice,omitnil,omitempty" name:"NeedSendNotice"`
 
-	// 接收组列表。通过平台接口查询到的接收组 ID 列表
+	// <p>接收组列表。通过平台接口查询到的接收组 ID 列表</p>
 	ReceiverGroupList []*int64 `json:"ReceiverGroupList,omitnil,omitempty" name:"ReceiverGroupList"`
 
-	// 接收人列表。通过平台接口查询到的接收人 ID 列表
+	// <p>接收人列表。通过平台接口查询到的接收人 ID 列表</p>
 	ReceiverUserList []*int64 `json:"ReceiverUserList,omitnil,omitempty" name:"ReceiverUserList"`
 
-	// 告警接收语言，枚举值（zh-CN，en-US）
+	// <p>告警接收语言，枚举值（zh-CN，en-US）</p>
 	ReceiveLanguage *string `json:"ReceiveLanguage,omitnil,omitempty" name:"ReceiveLanguage"`
 }
 
@@ -16519,40 +16587,40 @@ type TaskStepInfo struct {
 }
 
 type TemplateGroup struct {
-	// 指标告警规则
+	// <p>指标告警规则</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Conditions []*Condition `json:"Conditions,omitnil,omitempty" name:"Conditions"`
 
-	// 事件告警规则
+	// <p>事件告警规则</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EventConditions []*EventCondition `json:"EventConditions,omitnil,omitempty" name:"EventConditions"`
 
-	// 关联告警策略组
+	// <p>关联告警策略组</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PolicyGroups []*PolicyGroup `json:"PolicyGroups,omitnil,omitempty" name:"PolicyGroups"`
 
-	// 模板策略组ID
+	// <p>模板策略组ID</p>
 	GroupID *int64 `json:"GroupID,omitnil,omitempty" name:"GroupID"`
 
-	// 模板策略组名称
+	// <p>模板策略组名称</p>
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	InsertTime *int64 `json:"InsertTime,omitnil,omitempty" name:"InsertTime"`
 
-	// 最后修改人UIN
+	// <p>最后修改人UIN</p>
 	LastEditUin *int64 `json:"LastEditUin,omitnil,omitempty" name:"LastEditUin"`
 
-	// 备注
+	// <p>备注</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 更新时间
+	// <p>更新时间</p>
 	UpdateTime *int64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 视图
+	// <p>视图</p>
 	ViewName *string `json:"ViewName,omitnil,omitempty" name:"ViewName"`
 
-	// 是否为与关系
+	// <p>是否为与关系</p>
 	IsUnionRule *int64 `json:"IsUnionRule,omitnil,omitempty" name:"IsUnionRule"`
 }
 

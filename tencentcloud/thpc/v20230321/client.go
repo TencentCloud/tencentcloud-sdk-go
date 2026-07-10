@@ -1139,6 +1139,7 @@ func NewDescribeJobsResponse() (response *DescribeJobsResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CALLBATCH = "InternalError.CallBatch"
 //  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
 //  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
 //  INVALIDPARAMETERVALUE_TOOSMALL = "InvalidParameterValue.TooSmall"
@@ -1151,6 +1152,7 @@ func (c *Client) DescribeJobs(request *DescribeJobsRequest) (response *DescribeJ
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CALLBATCH = "InternalError.CallBatch"
 //  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
 //  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
 //  INVALIDPARAMETERVALUE_TOOSMALL = "InvalidParameterValue.TooSmall"
@@ -1402,6 +1404,7 @@ func NewDescribeWorkspacesResponse() (response *DescribeWorkspacesResponse) {
 // 可能返回的错误码:
 //  INVALIDPARAMETER_ATMOSTONE = "InvalidParameter.AtMostOne"
 //  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETERVALUE_INVALIDCVMINSTANCEIDMALFORMED = "InvalidParameterValue.InvalidCvmInstanceIdMalformed"
 //  INVALIDPARAMETERVALUE_INVALIDSPACEIDMALFORMED = "InvalidParameterValue.InvalidSpaceIdMalformed"
 func (c *Client) DescribeWorkspaces(request *DescribeWorkspacesRequest) (response *DescribeWorkspacesResponse, err error) {
     return c.DescribeWorkspacesWithContext(context.Background(), request)
@@ -1413,6 +1416,7 @@ func (c *Client) DescribeWorkspaces(request *DescribeWorkspacesRequest) (respons
 // 可能返回的错误码:
 //  INVALIDPARAMETER_ATMOSTONE = "InvalidParameter.AtMostOne"
 //  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETERVALUE_INVALIDCVMINSTANCEIDMALFORMED = "InvalidParameterValue.InvalidCvmInstanceIdMalformed"
 //  INVALIDPARAMETERVALUE_INVALIDSPACEIDMALFORMED = "InvalidParameterValue.InvalidSpaceIdMalformed"
 func (c *Client) DescribeWorkspacesWithContext(ctx context.Context, request *DescribeWorkspacesRequest) (response *DescribeWorkspacesResponse, err error) {
     if request == nil {
@@ -1456,6 +1460,7 @@ func NewDetachNodesResponse() (response *DetachNodesResponse) {
 // 可能返回的错误码:
 //  INVALIDPARAMETER_ATMOSTONE = "InvalidParameter.AtMostOne"
 //  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETERVALUE_INVALIDCVMINSTANCEIDMALFORMED = "InvalidParameterValue.InvalidCvmInstanceIdMalformed"
 //  INVALIDPARAMETERVALUE_INVALIDSPACEIDMALFORMED = "InvalidParameterValue.InvalidSpaceIdMalformed"
 func (c *Client) DetachNodes(request *DetachNodesRequest) (response *DetachNodesResponse, err error) {
     return c.DetachNodesWithContext(context.Background(), request)
@@ -1467,6 +1472,7 @@ func (c *Client) DetachNodes(request *DetachNodesRequest) (response *DetachNodes
 // 可能返回的错误码:
 //  INVALIDPARAMETER_ATMOSTONE = "InvalidParameter.AtMostOne"
 //  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETERVALUE_INVALIDCVMINSTANCEIDMALFORMED = "InvalidParameterValue.InvalidCvmInstanceIdMalformed"
 //  INVALIDPARAMETERVALUE_INVALIDSPACEIDMALFORMED = "InvalidParameterValue.InvalidSpaceIdMalformed"
 func (c *Client) DetachNodesWithContext(ctx context.Context, request *DetachNodesRequest) (response *DetachNodesResponse, err error) {
     if request == nil {
@@ -1510,6 +1516,7 @@ func NewModifyClusterDeletionProtectionResponse() (response *ModifyClusterDeleti
 // 可能返回的错误码:
 //  INVALIDPARAMETER_ATMOSTONE = "InvalidParameter.AtMostOne"
 //  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETERVALUE_INVALIDCVMINSTANCEIDMALFORMED = "InvalidParameterValue.InvalidCvmInstanceIdMalformed"
 //  INVALIDPARAMETERVALUE_INVALIDSPACEIDMALFORMED = "InvalidParameterValue.InvalidSpaceIdMalformed"
 func (c *Client) ModifyClusterDeletionProtection(request *ModifyClusterDeletionProtectionRequest) (response *ModifyClusterDeletionProtectionResponse, err error) {
     return c.ModifyClusterDeletionProtectionWithContext(context.Background(), request)
@@ -1521,6 +1528,7 @@ func (c *Client) ModifyClusterDeletionProtection(request *ModifyClusterDeletionP
 // 可能返回的错误码:
 //  INVALIDPARAMETER_ATMOSTONE = "InvalidParameter.AtMostOne"
 //  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETERVALUE_INVALIDCVMINSTANCEIDMALFORMED = "InvalidParameterValue.InvalidCvmInstanceIdMalformed"
 //  INVALIDPARAMETERVALUE_INVALIDSPACEIDMALFORMED = "InvalidParameterValue.InvalidSpaceIdMalformed"
 func (c *Client) ModifyClusterDeletionProtectionWithContext(ctx context.Context, request *ModifyClusterDeletionProtectionRequest) (response *ModifyClusterDeletionProtectionResponse, err error) {
     if request == nil {

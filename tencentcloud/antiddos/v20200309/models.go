@@ -3592,32 +3592,32 @@ func (r *DescribeBGPIPL7RulesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBasicDeviceStatusRequestParams struct {
-	// IP 资源列表
+	// <p>IP 资源列表</p>
 	IpList []*string `json:"IpList,omitnil,omitempty" name:"IpList"`
 
-	// 域名化资源传id
+	// <p>域名化资源传id</p>
 	IdList []*string `json:"IdList,omitnil,omitempty" name:"IdList"`
 
-	// 地域名称
+	// <p>地域名称</p>
 	FilterRegion *uint64 `json:"FilterRegion,omitnil,omitempty" name:"FilterRegion"`
 
-	// cnameWaf资源
+	// <p>cnameWaf资源</p>
 	CnameWafIdList []*string `json:"CnameWafIdList,omitnil,omitempty" name:"CnameWafIdList"`
 }
 
 type DescribeBasicDeviceStatusRequest struct {
 	*tchttp.BaseRequest
 	
-	// IP 资源列表
+	// <p>IP 资源列表</p>
 	IpList []*string `json:"IpList,omitnil,omitempty" name:"IpList"`
 
-	// 域名化资源传id
+	// <p>域名化资源传id</p>
 	IdList []*string `json:"IdList,omitnil,omitempty" name:"IdList"`
 
-	// 地域名称
+	// <p>地域名称</p>
 	FilterRegion *uint64 `json:"FilterRegion,omitnil,omitempty" name:"FilterRegion"`
 
-	// cnameWaf资源
+	// <p>cnameWaf资源</p>
 	CnameWafIdList []*string `json:"CnameWafIdList,omitnil,omitempty" name:"CnameWafIdList"`
 }
 
@@ -3645,16 +3645,13 @@ func (r *DescribeBasicDeviceStatusRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBasicDeviceStatusResponseParams struct {
-	// 返回资源及状态，状态码：
-	// 1 - 封堵状态
-	// 2 - 正常状态
-	// 3 - 攻击状态
+	// <p>返回资源及状态，状态码：<br>1 - 封堵状态<br>2 - 正常状态<br>3 - 攻击状态</p>
 	Data []*KeyValue `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// 域名化资产的名称
+	// <p>域名化资产的名称</p>
 	CLBData []*KeyValue `json:"CLBData,omitnil,omitempty" name:"CLBData"`
 
-	// cnamewaf资源状态
+	// <p>cnamewaf资源状态</p>
 	CnameWafData []*KeyValue `json:"CnameWafData,omitnil,omitempty" name:"CnameWafData"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

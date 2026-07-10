@@ -8271,6 +8271,56 @@ func (c *Client) EnableGrafanaSSOWithContext(ctx context.Context, request *Enabl
     return
 }
 
+func NewEnablePredefinedPoliciesRequest() (request *EnablePredefinedPoliciesRequest) {
+    request = &EnablePredefinedPoliciesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("monitor", APIVersion, "EnablePredefinedPolicies")
+    
+    
+    return
+}
+
+func NewEnablePredefinedPoliciesResponse() (response *EnablePredefinedPoliciesResponse) {
+    response = &EnablePredefinedPoliciesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// EnablePredefinedPolicies
+// 一键启用（创建）某个云产品下的预设策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) EnablePredefinedPolicies(request *EnablePredefinedPoliciesRequest) (response *EnablePredefinedPoliciesResponse, err error) {
+    return c.EnablePredefinedPoliciesWithContext(context.Background(), request)
+}
+
+// EnablePredefinedPolicies
+// 一键启用（创建）某个云产品下的预设策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) EnablePredefinedPoliciesWithContext(ctx context.Context, request *EnablePredefinedPoliciesRequest) (response *EnablePredefinedPoliciesResponse, err error) {
+    if request == nil {
+        request = NewEnablePredefinedPoliciesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "monitor", APIVersion, "EnablePredefinedPolicies")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EnablePredefinedPolicies require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewEnablePredefinedPoliciesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewEnableSSOCamCheckRequest() (request *EnableSSOCamCheckRequest) {
     request = &EnableSSOCamCheckRequest{
         BaseRequest: &tchttp.BaseRequest{},

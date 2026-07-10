@@ -7712,33 +7712,45 @@ func (r *DescribeDMSTablesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDataEngineEventsRequestParams struct {
-	// 虚拟集群名称
+	// <p>虚拟集群名称</p>
 	DataEngineName *string `json:"DataEngineName,omitnil,omitempty" name:"DataEngineName"`
 
-	// 返回数量，默认为10，最大为100
+	// <p>返回数量，默认为10，最大为100</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量，默认为0
+	// <p>偏移量，默认为0</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 资源组id
+	// <p>资源组id</p>
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// <p>查询开始时间，用于筛选资源组启停事件的时间范围，不传则不限制开始时间</p><p>参数格式：YYYY-mm-dd HH:MM:SS</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>查询结束时间，用于筛选资源组启停事件的时间范围，不传则不限制结束时间。需大于等于 StartTime</p><p>参数格式：YYYY-mm-dd HH:MM:SS</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
 type DescribeDataEngineEventsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 虚拟集群名称
+	// <p>虚拟集群名称</p>
 	DataEngineName *string `json:"DataEngineName,omitnil,omitempty" name:"DataEngineName"`
 
-	// 返回数量，默认为10，最大为100
+	// <p>返回数量，默认为10，最大为100</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量，默认为0
+	// <p>偏移量，默认为0</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 资源组id
+	// <p>资源组id</p>
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// <p>查询开始时间，用于筛选资源组启停事件的时间范围，不传则不限制开始时间</p><p>参数格式：YYYY-mm-dd HH:MM:SS</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>查询结束时间，用于筛选资源组启停事件的时间范围，不传则不限制结束时间。需大于等于 StartTime</p><p>参数格式：YYYY-mm-dd HH:MM:SS</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
 func (r *DescribeDataEngineEventsRequest) ToJsonString() string {
@@ -7757,6 +7769,8 @@ func (r *DescribeDataEngineEventsRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Offset")
 	delete(f, "SessionId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDataEngineEventsRequest has unknown keys!", "")
 	}
@@ -7765,20 +7779,20 @@ func (r *DescribeDataEngineEventsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDataEngineEventsResponseParams struct {
-	// 事件详细信息
+	// <p>事件详细信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Events []*HouseEventsInfo `json:"Events,omitnil,omitempty" name:"Events"`
 
-	// 分页号
+	// <p>分页号</p>
 	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
 
-	// 分页大小
+	// <p>分页大小</p>
 	Size *int64 `json:"Size,omitnil,omitempty" name:"Size"`
 
-	// 总页数
+	// <p>总页数</p>
 	TotalPages *int64 `json:"TotalPages,omitnil,omitempty" name:"TotalPages"`
 
-	// 总条数
+	// <p>总条数</p>
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

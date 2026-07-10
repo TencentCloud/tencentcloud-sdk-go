@@ -2825,6 +2825,68 @@ func (r *VoicePrintEnrollResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type VoicePrintGroupList struct {
+	// <p>总数量</p>
+	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// <p>分组名称列表</p>
+	GroupIds []*string `json:"GroupIds,omitnil,omitempty" name:"GroupIds"`
+}
+
+// Predefined struct for user
+type VoicePrintGroupListRequestParams struct {
+
+}
+
+type VoicePrintGroupListRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *VoicePrintGroupListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *VoicePrintGroupListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VoicePrintGroupListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type VoicePrintGroupListResponseParams struct {
+	// <p>返回分组名称列表数据</p>
+	Data *VoicePrintGroupList `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type VoicePrintGroupListResponse struct {
+	*tchttp.BaseResponse
+	Response *VoicePrintGroupListResponseParams `json:"Response"`
+}
+
+func (r *VoicePrintGroupListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *VoicePrintGroupListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 // Predefined struct for user
 type VoicePrintGroupVerifyRequestParams struct {
 	// 音频格式 0: pcm, 1: wav

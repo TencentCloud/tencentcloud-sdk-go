@@ -4967,6 +4967,10 @@ func NewSearchFacesResponse() (response *SearchFacesResponse) {
 //
 // 
 //
+// **注意：**若人员库超过1年未调用，平台将对人员库资源进行删除，以确保用户信息安全。
+//
+// 
+//
 // >     
 //
 // - 公共参数中的签名方式请使用V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
@@ -5075,6 +5079,10 @@ func (c *Client) SearchFaces(request *SearchFacesRequest) (response *SearchFaces
 // 
 //
 // 本接口需与[人员库管理相关接口](https://cloud.tencent.com/document/product/867/45015)结合使用。
+//
+// 
+//
+// **注意：**若人员库超过1年未调用，平台将对人员库资源进行删除，以确保用户信息安全。
 //
 // 
 //
@@ -5219,6 +5227,8 @@ func NewSearchFacesReturnsByGroupResponse() (response *SearchFacesReturnsByGroup
 //
 // 
 //
+// **注意：**若人员库超过1年未调用，平台将对人员库资源进行删除，以确保用户信息安全。
+//
 // >     
 //
 // - 公共参数中的签名方式请使用V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
@@ -5327,6 +5337,8 @@ func (c *Client) SearchFacesReturnsByGroup(request *SearchFacesReturnsByGroupReq
 // 本接口需与[人员库管理相关接口](https://cloud.tencent.com/document/product/867/45015)结合使用。
 //
 // 
+//
+// **注意：**若人员库超过1年未调用，平台将对人员库资源进行删除，以确保用户信息安全。
 //
 // >     
 //
@@ -5463,7 +5475,7 @@ func NewSearchPersonsResponse() (response *SearchPersonsResponse) {
 //
 // 本接口会将该人员（Person）下的所有人脸（Face）进行融合特征处理，即若某个 Person 下有4张 Face ，本接口会将4张 Face 的特征进行融合处理，生成对应这个 Person 的特征，使人员搜索（确定待识别的人脸图片是某人）更加准确。而[人脸搜索](https://cloud.tencent.com/document/product/867/44994)及[人脸搜索按库返回接口](https://cloud.tencent.com/document/product/867/44993)将该人员（Person）下的每个人脸（Face）都作为单独个体进行搜索。
 //
-// 
+// **注意：**若人员库超过1年未调用，平台将对人员库资源进行删除，以确保用户信息安全。
 //
 // >     
 //
@@ -5532,7 +5544,7 @@ func (c *Client) SearchPersons(request *SearchPersonsRequest) (response *SearchP
 //
 // 本接口会将该人员（Person）下的所有人脸（Face）进行融合特征处理，即若某个 Person 下有4张 Face ，本接口会将4张 Face 的特征进行融合处理，生成对应这个 Person 的特征，使人员搜索（确定待识别的人脸图片是某人）更加准确。而[人脸搜索](https://cloud.tencent.com/document/product/867/44994)及[人脸搜索按库返回接口](https://cloud.tencent.com/document/product/867/44993)将该人员（Person）下的每个人脸（Face）都作为单独个体进行搜索。
 //
-// 
+// **注意：**若人员库超过1年未调用，平台将对人员库资源进行删除，以确保用户信息安全。
 //
 // >     
 //
@@ -5633,6 +5645,8 @@ func NewSearchPersonsReturnsByGroupResponse() (response *SearchPersonsReturnsByG
 //
 // 本接口会将该人员（Person）下的所有人脸（Face）进行融合特征处理，即若某个 Person 下有4张 Face ，本接口会将4张 Face 的特征进行融合处理，生成对应这个 Person 的特征，使人员搜索（确定待识别的人脸图片是某人）更加准确。而[人脸搜索](https://cloud.tencent.com/document/product/867/44994)及[人脸搜索按库返回接口](https://cloud.tencent.com/document/product/867/44993)将该人员（Person）下的每个人脸（Face）都作为单独个体进行搜索。
 //
+// **注意：**若人员库超过1年未调用，平台将对人员库资源进行删除，以确保用户信息安全。
+//
 // >     
 //
 // - 公共参数中的签名方式请使用V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
@@ -5697,6 +5711,8 @@ func (c *Client) SearchPersonsReturnsByGroup(request *SearchPersonsReturnsByGrou
 // 
 //
 // 本接口会将该人员（Person）下的所有人脸（Face）进行融合特征处理，即若某个 Person 下有4张 Face ，本接口会将4张 Face 的特征进行融合处理，生成对应这个 Person 的特征，使人员搜索（确定待识别的人脸图片是某人）更加准确。而[人脸搜索](https://cloud.tencent.com/document/product/867/44994)及[人脸搜索按库返回接口](https://cloud.tencent.com/document/product/867/44993)将该人员（Person）下的每个人脸（Face）都作为单独个体进行搜索。
+//
+// **注意：**若人员库超过1年未调用，平台将对人员库资源进行删除，以确保用户信息安全。
 //
 // >     
 //
@@ -5889,7 +5905,7 @@ func NewVerifyFaceResponse() (response *VerifyFaceResponse) {
 //
 // 与[人员验证](https://cloud.tencent.com/document/product/867/44982)接口不同的是，人脸验证将该人员（Person）下的每个人脸（Face）都作为单独个体进行验证，而[人员验证](https://cloud.tencent.com/document/product/867/44982)会将该人员（Person）下的所有人脸（Face）进行融合特征处理，即若某个 Person下有4张 Face，人员验证接口会将4张 Face 的特征进行融合处理，生成对应这个 Person 的特征，使人员验证（确定待识别的人脸图片是某人员）更加准确。
 //
-// 
+// **注意：**若人员库超过1年未调用，平台将对人员库资源进行删除，以确保用户信息安全。
 //
 // >     
 //
@@ -5982,7 +5998,7 @@ func (c *Client) VerifyFace(request *VerifyFaceRequest) (response *VerifyFaceRes
 //
 // 与[人员验证](https://cloud.tencent.com/document/product/867/44982)接口不同的是，人脸验证将该人员（Person）下的每个人脸（Face）都作为单独个体进行验证，而[人员验证](https://cloud.tencent.com/document/product/867/44982)会将该人员（Person）下的所有人脸（Face）进行融合特征处理，即若某个 Person下有4张 Face，人员验证接口会将4张 Face 的特征进行融合处理，生成对应这个 Person 的特征，使人员验证（确定待识别的人脸图片是某人员）更加准确。
 //
-// 
+// **注意：**若人员库超过1年未调用，平台将对人员库资源进行删除，以确保用户信息安全。
 //
 // >     
 //
@@ -6105,7 +6121,7 @@ func NewVerifyPersonResponse() (response *VerifyPersonResponse) {
 //
 //  和人脸比对相关接口不同的是，人脸验证相关接口用于判断 “此人是否是此人”，“此人”的信息已存于人员库中，“此人”可能存在多张人脸图片；而人脸比对相关接口用于判断两张人脸的相似度。
 //
-// 
+// **注意：**若人员库超过1年未调用，平台将对人员库资源进行删除，以确保用户信息安全。
 //
 // 
 //
@@ -6162,7 +6178,7 @@ func (c *Client) VerifyPerson(request *VerifyPersonRequest) (response *VerifyPer
 //
 //  和人脸比对相关接口不同的是，人脸验证相关接口用于判断 “此人是否是此人”，“此人”的信息已存于人员库中，“此人”可能存在多张人脸图片；而人脸比对相关接口用于判断两张人脸的相似度。
 //
-// 
+// **注意：**若人员库超过1年未调用，平台将对人员库资源进行删除，以确保用户信息安全。
 //
 // 
 //

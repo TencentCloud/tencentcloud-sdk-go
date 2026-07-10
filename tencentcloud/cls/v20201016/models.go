@@ -3909,6 +3909,15 @@ type CreateDlcDeliverRequestParams struct {
 
 	// <p>是否开启投递服务日志。1关闭，2开启。默认开启</p>
 	HasServicesLog *uint64 `json:"HasServicesLog,omitnil,omitempty" name:"HasServicesLog"`
+
+	// <p>自动创建dlc字段</p><p>默认值：false</p><p>当您的日志中有新增字段时，系统自动将其投递至DLC</p>
+	AutoCreateField *bool `json:"AutoCreateField,omitnil,omitempty" name:"AutoCreateField"`
+
+	// <p>将投递失败的日志存储至DLC表</p>
+	DlcFailHandle *DlcFailHandle `json:"DlcFailHandle,omitnil,omitempty" name:"DlcFailHandle"`
+
+	// <p>日志预过滤-数据写入 Splunk 的原始数据进行预过滤处理</p>
+	DSLFilter *string `json:"DSLFilter,omitnil,omitempty" name:"DSLFilter"`
 }
 
 type CreateDlcDeliverRequest struct {
@@ -3940,6 +3949,15 @@ type CreateDlcDeliverRequest struct {
 
 	// <p>是否开启投递服务日志。1关闭，2开启。默认开启</p>
 	HasServicesLog *uint64 `json:"HasServicesLog,omitnil,omitempty" name:"HasServicesLog"`
+
+	// <p>自动创建dlc字段</p><p>默认值：false</p><p>当您的日志中有新增字段时，系统自动将其投递至DLC</p>
+	AutoCreateField *bool `json:"AutoCreateField,omitnil,omitempty" name:"AutoCreateField"`
+
+	// <p>将投递失败的日志存储至DLC表</p>
+	DlcFailHandle *DlcFailHandle `json:"DlcFailHandle,omitnil,omitempty" name:"DlcFailHandle"`
+
+	// <p>日志预过滤-数据写入 Splunk 的原始数据进行预过滤处理</p>
+	DSLFilter *string `json:"DSLFilter,omitnil,omitempty" name:"DSLFilter"`
 }
 
 func (r *CreateDlcDeliverRequest) ToJsonString() string {
@@ -3963,6 +3981,9 @@ func (r *CreateDlcDeliverRequest) FromJsonString(s string) error {
 	delete(f, "Interval")
 	delete(f, "EndTime")
 	delete(f, "HasServicesLog")
+	delete(f, "AutoCreateField")
+	delete(f, "DlcFailHandle")
+	delete(f, "DSLFilter")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDlcDeliverRequest has unknown keys!", "")
 	}
@@ -17894,6 +17915,15 @@ type ModifyDlcDeliverRequestParams struct {
 
 	// <p>任务状态。</p><p>枚举值：</p><ul><li>1： 运行</li><li>2： 停止</li></ul>
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>自动创建dlc字段</p><p>默认值：false</p><p>当您的日志中有新增字段时，系统自动将其投递至DLC</p>
+	AutoCreateField *bool `json:"AutoCreateField,omitnil,omitempty" name:"AutoCreateField"`
+
+	// <p>将投递失败的日志存储至DLC表</p>
+	DlcFailHandle *DlcFailHandle `json:"DlcFailHandle,omitnil,omitempty" name:"DlcFailHandle"`
+
+	// <p>日志预过滤-数据写入 Splunk 的原始数据进行预过滤处理</p>
+	DSLFilter *string `json:"DSLFilter,omitnil,omitempty" name:"DSLFilter"`
 }
 
 type ModifyDlcDeliverRequest struct {
@@ -17931,6 +17961,15 @@ type ModifyDlcDeliverRequest struct {
 
 	// <p>任务状态。</p><p>枚举值：</p><ul><li>1： 运行</li><li>2： 停止</li></ul>
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>自动创建dlc字段</p><p>默认值：false</p><p>当您的日志中有新增字段时，系统自动将其投递至DLC</p>
+	AutoCreateField *bool `json:"AutoCreateField,omitnil,omitempty" name:"AutoCreateField"`
+
+	// <p>将投递失败的日志存储至DLC表</p>
+	DlcFailHandle *DlcFailHandle `json:"DlcFailHandle,omitnil,omitempty" name:"DlcFailHandle"`
+
+	// <p>日志预过滤-数据写入 Splunk 的原始数据进行预过滤处理</p>
+	DSLFilter *string `json:"DSLFilter,omitnil,omitempty" name:"DSLFilter"`
 }
 
 func (r *ModifyDlcDeliverRequest) ToJsonString() string {
@@ -17956,6 +17995,9 @@ func (r *ModifyDlcDeliverRequest) FromJsonString(s string) error {
 	delete(f, "DlcInfo")
 	delete(f, "HasServicesLog")
 	delete(f, "Status")
+	delete(f, "AutoCreateField")
+	delete(f, "DlcFailHandle")
+	delete(f, "DSLFilter")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDlcDeliverRequest has unknown keys!", "")
 	}

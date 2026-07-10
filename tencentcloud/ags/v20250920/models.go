@@ -189,21 +189,27 @@ func (r *CreateAPIKeyResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreatePreCacheImageTaskRequestParams struct {
-	// 镜像地址
+	// <p>镜像地址</p>
 	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
 
-	// 镜像仓库类型：`enterprise`、`personal`。
+	// <p>镜像仓库类型：<code>enterprise</code>、<code>personal</code>、<code>custom</code></p><p>枚举值：</p><ul><li>enterprise： tcr 企业容器镜像服务</li><li>personal： ccr 个人容器镜像服务</li></ul>
 	ImageRegistryType *string `json:"ImageRegistryType,omitnil,omitempty" name:"ImageRegistryType"`
+
+	// <p>预热超时时长</p>
+	TimeoutMinutes *int64 `json:"TimeoutMinutes,omitnil,omitempty" name:"TimeoutMinutes"`
 }
 
 type CreatePreCacheImageTaskRequest struct {
 	*tchttp.BaseRequest
 	
-	// 镜像地址
+	// <p>镜像地址</p>
 	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
 
-	// 镜像仓库类型：`enterprise`、`personal`。
+	// <p>镜像仓库类型：<code>enterprise</code>、<code>personal</code>、<code>custom</code></p><p>枚举值：</p><ul><li>enterprise： tcr 企业容器镜像服务</li><li>personal： ccr 个人容器镜像服务</li></ul>
 	ImageRegistryType *string `json:"ImageRegistryType,omitnil,omitempty" name:"ImageRegistryType"`
+
+	// <p>预热超时时长</p>
+	TimeoutMinutes *int64 `json:"TimeoutMinutes,omitnil,omitempty" name:"TimeoutMinutes"`
 }
 
 func (r *CreatePreCacheImageTaskRequest) ToJsonString() string {
@@ -220,6 +226,7 @@ func (r *CreatePreCacheImageTaskRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Image")
 	delete(f, "ImageRegistryType")
+	delete(f, "TimeoutMinutes")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePreCacheImageTaskRequest has unknown keys!", "")
 	}
@@ -228,13 +235,13 @@ func (r *CreatePreCacheImageTaskRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreatePreCacheImageTaskResponseParams struct {
-	// 镜像地址
+	// <p>镜像地址</p>
 	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
 
-	// 镜像 Digest
+	// <p>镜像 Digest</p>
 	ImageDigest *string `json:"ImageDigest,omitnil,omitempty" name:"ImageDigest"`
 
-	// 镜像仓库类型：`enterprise`、`personal`。
+	// <p>镜像仓库类型：<code>enterprise</code>、<code>personal</code>。</p>
 	ImageRegistryType *string `json:"ImageRegistryType,omitnil,omitempty" name:"ImageRegistryType"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

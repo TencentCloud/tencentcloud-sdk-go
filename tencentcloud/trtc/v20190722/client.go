@@ -269,17 +269,11 @@ func NewCreateCloudModerationResponse() (response *CreateCloudModerationResponse
 }
 
 // CreateCloudModeration
-// 接口说明：
+// 启动AI 内容理解功能，完成房间内的音视频切片，视频截帧，或者录制音频流，投递到AI内容理解，完成内容识别。您可以通过此接口实现如下目标：
 //
-// 启动云端审核功能，完成房间内的音视频切片，视频截帧，或者录制音频流，送审到指定的审核商，完成审核。
+// ●指定内容参数（ModerationParams）来指定内容理解需要的详细参数。
 //
-// 
-//
-// 您可以通过此接口实现如下目标：
-//
-// * 指定审核参数（ModerationParams）来指定审核需要的详细参数。
-//
-// * 指定存储参数（ModerationStorageParams）将命中的审核文件指定上传到您希望的云存储，目前支持腾讯云（对象存储COS）和第三方AWS
+// ●指定存储参数（ModerationStorageParams）将命中的切片文件指定上传到您希望的云存储，目前支持腾讯云（对象存储COS）以及第三方AWS（S3）和阿里云（OSS）
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -311,17 +305,11 @@ func (c *Client) CreateCloudModeration(request *CreateCloudModerationRequest) (r
 }
 
 // CreateCloudModeration
-// 接口说明：
+// 启动AI 内容理解功能，完成房间内的音视频切片，视频截帧，或者录制音频流，投递到AI内容理解，完成内容识别。您可以通过此接口实现如下目标：
 //
-// 启动云端审核功能，完成房间内的音视频切片，视频截帧，或者录制音频流，送审到指定的审核商，完成审核。
+// ●指定内容参数（ModerationParams）来指定内容理解需要的详细参数。
 //
-// 
-//
-// 您可以通过此接口实现如下目标：
-//
-// * 指定审核参数（ModerationParams）来指定审核需要的详细参数。
-//
-// * 指定存储参数（ModerationStorageParams）将命中的审核文件指定上传到您希望的云存储，目前支持腾讯云（对象存储COS）和第三方AWS
+// ●指定存储参数（ModerationStorageParams）将命中的切片文件指定上传到您希望的云存储，目前支持腾讯云（对象存储COS）以及第三方AWS（S3）和阿里云（OSS）
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -877,7 +865,7 @@ func NewDeleteCloudModerationResponse() (response *DeleteCloudModerationResponse
 }
 
 // DeleteCloudModeration
-// 成功开启云端审核任务后，可以使用此接口来停止送审。
+// 成功开启AI 内容理解任务后，可以使用此接口来停止进行内容识别。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -899,7 +887,7 @@ func (c *Client) DeleteCloudModeration(request *DeleteCloudModerationRequest) (r
 }
 
 // DeleteCloudModeration
-// 成功开启云端审核任务后，可以使用此接口来停止送审。
+// 成功开启AI 内容理解任务后，可以使用此接口来停止进行内容识别。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1567,7 +1555,7 @@ func NewDescribeCloudModerationResponse() (response *DescribeCloudModerationResp
 }
 
 // DescribeCloudModeration
-// 成功开启审核任务后，可以使用此接口来查询审核任务状态和订阅的黑白名单信息。仅在任务进行时有效，任务退出后查询将会返回错误。
+// 成功开启AI 内容理解任务后，可以使用此接口来查询AI 内容理解任务状态和订阅的黑白名单信息。仅在任务进行时有效，任务退出后查询将会返回错误。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1589,7 +1577,7 @@ func (c *Client) DescribeCloudModeration(request *DescribeCloudModerationRequest
 }
 
 // DescribeCloudModeration
-// 成功开启审核任务后，可以使用此接口来查询审核任务状态和订阅的黑白名单信息。仅在任务进行时有效，任务退出后查询将会返回错误。
+// 成功开启AI 内容理解任务后，可以使用此接口来查询AI 内容理解任务状态和订阅的黑白名单信息。仅在任务进行时有效，任务退出后查询将会返回错误。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -3815,7 +3803,7 @@ func NewModifyCloudModerationResponse() (response *ModifyCloudModerationResponse
 }
 
 // ModifyCloudModeration
-// 成功开启云端审核任务后，可以使用此接口来更新订阅黑白名单。
+// 成功开启AI 内容理解任务后，可以使用此接口来更新订阅黑白名单。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -3836,7 +3824,7 @@ func (c *Client) ModifyCloudModeration(request *ModifyCloudModerationRequest) (r
 }
 
 // ModifyCloudModeration
-// 成功开启云端审核任务后，可以使用此接口来更新订阅黑白名单。
+// 成功开启AI 内容理解任务后，可以使用此接口来更新订阅黑白名单。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

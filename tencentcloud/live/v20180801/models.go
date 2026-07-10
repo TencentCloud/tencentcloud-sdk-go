@@ -2153,20 +2153,20 @@ func (r *CreateAuditKeywordLibResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateAuditKeywordsRequestParams struct {
-	// 关键词列表。
+	// <p>关键词列表。</p>
 	Keywords []*AuditKeyword `json:"Keywords,omitnil,omitempty" name:"Keywords"`
 
-	// 直播审核词库Id。
+	// <p>直播审核词库Id。</p>
 	LibId *string `json:"LibId,omitnil,omitempty" name:"LibId"`
 }
 
 type CreateAuditKeywordsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 关键词列表。
+	// <p>关键词列表。</p>
 	Keywords []*AuditKeyword `json:"Keywords,omitnil,omitempty" name:"Keywords"`
 
-	// 直播审核词库Id。
+	// <p>直播审核词库Id。</p>
 	LibId *string `json:"LibId,omitnil,omitempty" name:"LibId"`
 }
 
@@ -2192,11 +2192,14 @@ func (r *CreateAuditKeywordsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateAuditKeywordsResponseParams struct {
-	// 添加成功的关键词 Id 列表。
+	// <p>添加成功的关键词 Id 列表。</p>
 	KeywordIds []*string `json:"KeywordIds,omitnil,omitempty" name:"KeywordIds"`
 
-	// 重复关键词列表。
+	// <p>重复关键词列表。</p>
 	DupInfos []*AuditKeywordInfo `json:"DupInfos,omitnil,omitempty" name:"DupInfos"`
+
+	// <p>新增成功关键词列表</p>
+	Keywords []*AuditKeywordInfo `json:"Keywords,omitnil,omitempty" name:"Keywords"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

@@ -42565,398 +42565,403 @@ type TaskMissingInstanceStrategy struct {
 }
 
 type TaskOpsDto struct {
-	// 任务ID
+	// <p>任务ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 虚拟任务id
+	// <p>虚拟任务id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VirtualTaskId *string `json:"VirtualTaskId,omitnil,omitempty" name:"VirtualTaskId"`
 
-	// 虚拟任务标记
+	// <p>虚拟任务标记</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VirtualFlag *bool `json:"VirtualFlag,omitnil,omitempty" name:"VirtualFlag"`
 
-	// 任务名
+	// <p>任务名</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
 
-	// 工作流id
+	// <p>工作流id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
 
-	// 任务为虚拟任务时，任务所在的真实工作流Id
+	// <p>任务为虚拟任务时，任务所在的真实工作流Id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RealWorkflowId *string `json:"RealWorkflowId,omitnil,omitempty" name:"RealWorkflowId"`
 
-	// 工作流名称
+	// <p>工作流名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkflowName *string `json:"WorkflowName,omitnil,omitempty" name:"WorkflowName"`
 
-	// 文件夹id
+	// <p>文件夹id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FolderId *string `json:"FolderId,omitnil,omitempty" name:"FolderId"`
 
-	// 文件夹名字
+	// <p>文件夹名字</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FolderName *string `json:"FolderName,omitnil,omitempty" name:"FolderName"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 最近更新时间
+	// <p>最近更新时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastUpdate *string `json:"LastUpdate,omitnil,omitempty" name:"LastUpdate"`
 
-	// 任务状态
+	// <p>任务状态</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 责任人
+	// <p>责任人</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InCharge *string `json:"InCharge,omitnil,omitempty" name:"InCharge"`
 
-	// 责任人用户id
+	// <p>责任人用户id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InChargeId *string `json:"InChargeId,omitnil,omitempty" name:"InChargeId"`
 
-	// 调度生效日期
+	// <p>调度生效日期</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 调度结束日期
+	// <p>调度结束日期</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 执行时间左闭区间
+	// <p>执行时间左闭区间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExecutionStartTime *string `json:"ExecutionStartTime,omitnil,omitempty" name:"ExecutionStartTime"`
 
-	// 执行时间右闭区间
+	// <p>执行时间右闭区间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExecutionEndTime *string `json:"ExecutionEndTime,omitnil,omitempty" name:"ExecutionEndTime"`
 
-	// 周期类型
+	// <p>周期类型</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CycleType *string `json:"CycleType,omitnil,omitempty" name:"CycleType"`
 
-	// 步长
+	// <p>步长</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CycleStep *uint64 `json:"CycleStep,omitnil,omitempty" name:"CycleStep"`
 
-	// 调度cron表达式
+	// <p>调度cron表达式</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CrontabExpression *string `json:"CrontabExpression,omitnil,omitempty" name:"CrontabExpression"`
 
-	// 延时执行时间，unit=分钟
+	// <p>延时执行时间，unit=分钟</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DelayTime *uint64 `json:"DelayTime,omitnil,omitempty" name:"DelayTime"`
 
-	// 开始执行时间
+	// <p>开始执行时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartupTime *uint64 `json:"StartupTime,omitnil,omitempty" name:"StartupTime"`
 
-	// 重试等待时间, unit=分钟
+	// <p>重试等待时间, unit=分钟</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RetryWait *uint64 `json:"RetryWait,omitnil,omitempty" name:"RetryWait"`
 
-	// 是否可重试，1 代表可以重试
+	// <p>是否可重试，1 代表可以重试</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RetryAble *uint64 `json:"RetryAble,omitnil,omitempty" name:"RetryAble"`
 
-	// 调度配置-弹性周期配置，小时/周/月/年调度才有，小时任务指定每天的0点3点4点跑，则为'0,3,4'
+	// <p>调度配置-弹性周期配置，小时/周/月/年调度才有，小时任务指定每天的0点3点4点跑，则为&#39;0,3,4&#39;</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskAction *string `json:"TaskAction,omitnil,omitempty" name:"TaskAction"`
 
-	// 运行次数限制
+	// <p>运行次数限制</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TryLimit *uint64 `json:"TryLimit,omitnil,omitempty" name:"TryLimit"`
 
-	// 运行优先级
+	// <p>运行优先级</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RunPriority *uint64 `json:"RunPriority,omitnil,omitempty" name:"RunPriority"`
 
-	// 任务类型
+	// <p>任务类型</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskType *TaskTypeOpsDto `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
-	// 指定的运行节点
+	// <p>指定的运行节点</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BrokerIp *string `json:"BrokerIp,omitnil,omitempty" name:"BrokerIp"`
 
-	// 集群name
+	// <p>集群name</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 最小数据时间
+	// <p>最小数据时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MinDateTime *string `json:"MinDateTime,omitnil,omitempty" name:"MinDateTime"`
 
-	// 最大数据时间
+	// <p>最大数据时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxDateTime *string `json:"MaxDateTime,omitnil,omitempty" name:"MaxDateTime"`
 
-	// 运行耗时超时时间
+	// <p>运行耗时超时时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExecutionTTL *int64 `json:"ExecutionTTL,omitnil,omitempty" name:"ExecutionTTL"`
 
-	// 自依赖类型
+	// <p>自依赖类型</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SelfDepend *string `json:"SelfDepend,omitnil,omitempty" name:"SelfDepend"`
 
-	// 左侧坐标
+	// <p>左侧坐标</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LeftCoordinate *float64 `json:"LeftCoordinate,omitnil,omitempty" name:"LeftCoordinate"`
 
-	// 顶部坐标
+	// <p>顶部坐标</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopCoordinate *float64 `json:"TopCoordinate,omitnil,omitempty" name:"TopCoordinate"`
 
-	// 任务备注
+	// <p>任务备注</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Notes *string `json:"Notes,omitnil,omitempty" name:"Notes"`
 
-	// 任务初始化策略
+	// <p>任务初始化策略</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceInitStrategy *string `json:"InstanceInitStrategy,omitnil,omitempty" name:"InstanceInitStrategy"`
 
-	// 计算队列
+	// <p>计算队列</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	YarnQueue *string `json:"YarnQueue,omitnil,omitempty" name:"YarnQueue"`
 
-	// 最新调度提交时间
+	// <p>最新调度提交时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastSchedulerCommitTime *string `json:"LastSchedulerCommitTime,omitnil,omitempty" name:"LastSchedulerCommitTime"`
 
-	// 按cron表达式计算的任务开始执行时间
+	// <p>按cron表达式计算的任务开始执行时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NormalizedJobStartTime *string `json:"NormalizedJobStartTime,omitnil,omitempty" name:"NormalizedJobStartTime"`
 
-	// 调度计划描述
+	// <p>调度计划描述</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SchedulerDesc *string `json:"SchedulerDesc,omitnil,omitempty" name:"SchedulerDesc"`
 
-	// 计算资源组
+	// <p>计算资源组</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceGroup *string `json:"ResourceGroup,omitnil,omitempty" name:"ResourceGroup"`
 
-	// 任务创建人
+	// <p>任务创建人</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Creator *string `json:"Creator,omitnil,omitempty" name:"Creator"`
 
-	// 任务依赖类型 and、or
+	// <p>任务依赖类型 and、or</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DependencyRel *string `json:"DependencyRel,omitnil,omitempty" name:"DependencyRel"`
 
-	// 任务工作流依赖 yes、no
+	// <p>任务工作流依赖 yes、no</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DependencyWorkflow *string `json:"DependencyWorkflow,omitnil,omitempty" name:"DependencyWorkflow"`
 
-	// 事件监听配置
+	// <p>事件监听配置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EventListenerConfig *string `json:"EventListenerConfig,omitnil,omitempty" name:"EventListenerConfig"`
 
-	// 事件驱动配置
+	// <p>事件驱动配置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EventPublisherConfig *string `json:"EventPublisherConfig,omitnil,omitempty" name:"EventPublisherConfig"`
 
-	// 虚拟任务状态
+	// <p>虚拟任务状态</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VirtualTaskStatus *string `json:"VirtualTaskStatus,omitnil,omitempty" name:"VirtualTaskStatus"`
 
-	// 任务依赖边详情
+	// <p>任务依赖边详情</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskLinkInfo *LinkOpsDto `json:"TaskLinkInfo,omitnil,omitempty" name:"TaskLinkInfo"`
 
-	// 任务产品类型
+	// <p>任务产品类型</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductName *string `json:"ProductName,omitnil,omitempty" name:"ProductName"`
 
-	// 项目id
+	// <p>项目id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 项目标识
+	// <p>项目标识</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectIdent *string `json:"ProjectIdent,omitnil,omitempty" name:"ProjectIdent"`
 
-	// 项目名称
+	// <p>项目名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectName *string `json:"ProjectName,omitnil,omitempty" name:"ProjectName"`
 
-	// 主账户userId
+	// <p>主账户userId</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OwnId *string `json:"OwnId,omitnil,omitempty" name:"OwnId"`
 
-	// 用户userId
+	// <p>用户userId</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
-	// 租户id
+	// <p>租户id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TenantId *string `json:"TenantId,omitnil,omitempty" name:"TenantId"`
 
-	// 更新人昵称
+	// <p>更新人昵称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateUser *string `json:"UpdateUser,omitnil,omitempty" name:"UpdateUser"`
 
-	// 更新时间
+	// <p>更新时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 更新人userId
+	// <p>更新人userId</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateUserId *string `json:"UpdateUserId,omitnil,omitempty" name:"UpdateUserId"`
 
-	// 任务类型id
+	// <p>任务类型id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskTypeId *int64 `json:"TaskTypeId,omitnil,omitempty" name:"TaskTypeId"`
 
-	// 任务类型描述
+	// <p>任务类型描述</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskTypeDesc *string `json:"TaskTypeDesc,omitnil,omitempty" name:"TaskTypeDesc"`
 
-	// 是否展示工作流
+	// <p>是否展示工作流</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ShowWorkflow *bool `json:"ShowWorkflow,omitnil,omitempty" name:"ShowWorkflow"`
 
-	// 首次提交时间
+	// <p>首次提交时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FirstSubmitTime *string `json:"FirstSubmitTime,omitnil,omitempty" name:"FirstSubmitTime"`
 
-	// 首次运行时间
+	// <p>首次运行时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FirstRunTime *string `json:"FirstRunTime,omitnil,omitempty" name:"FirstRunTime"`
 
-	// 调度描述
+	// <p>调度描述</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScheduleDesc *string `json:"ScheduleDesc,omitnil,omitempty" name:"ScheduleDesc"`
 
-	// 周期
+	// <p>周期</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CycleNum *int64 `json:"CycleNum,omitnil,omitempty" name:"CycleNum"`
 
-	// 表达式
+	// <p>表达式</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Crontab *string `json:"Crontab,omitnil,omitempty" name:"Crontab"`
 
-	// 开始日期
+	// <p>开始日期</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartDate *string `json:"StartDate,omitnil,omitempty" name:"StartDate"`
 
-	// 结束日期
+	// <p>结束日期</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndDate *string `json:"EndDate,omitnil,omitempty" name:"EndDate"`
 
-	// 周期单位
+	// <p>周期单位</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CycleUnit *string `json:"CycleUnit,omitnil,omitempty" name:"CycleUnit"`
 
-	// 初始化策略
+	// <p>初始化策略</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InitStrategy *string `json:"InitStrategy,omitnil,omitempty" name:"InitStrategy"`
 
-	// 层级
+	// <p>层级</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Layer *string `json:"Layer,omitnil,omitempty" name:"Layer"`
 
-	// 来源数据源ID
+	// <p>来源数据源ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SourceServiceId *string `json:"SourceServiceId,omitnil,omitempty" name:"SourceServiceId"`
 
-	// 来源数据源类型
+	// <p>来源数据源类型</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SourceServiceType *string `json:"SourceServiceType,omitnil,omitempty" name:"SourceServiceType"`
 
-	// 目标数据源ID
+	// <p>目标数据源ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TargetServiceId *string `json:"TargetServiceId,omitnil,omitempty" name:"TargetServiceId"`
 
-	// 目标数据源类型
+	// <p>目标数据源类型</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TargetServiceType *string `json:"TargetServiceType,omitnil,omitempty" name:"TargetServiceType"`
 
-	// 子任务列表
+	// <p>子任务列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TasksStr *string `json:"TasksStr,omitnil,omitempty" name:"TasksStr"`
 
-	// 任务版本是否已提交
+	// <p>任务版本是否已提交</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Submit *bool `json:"Submit,omitnil,omitempty" name:"Submit"`
 
-	// 资源组id
+	// <p>资源组id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExecutorGroupId *string `json:"ExecutorGroupId,omitnil,omitempty" name:"ExecutorGroupId"`
 
-	// 资源组名称
+	// <p>资源组名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExecutorGroupName *string `json:"ExecutorGroupName,omitnil,omitempty" name:"ExecutorGroupName"`
 
-	// 任务扩展信息(目前返沪离线同步的任务详情)
+	// <p>任务扩展信息(目前返沪离线同步的任务详情)</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskExtInfo *string `json:"TaskExtInfo,omitnil,omitempty" name:"TaskExtInfo"`
 
-	// 任务绑定的事件信息
+	// <p>任务绑定的事件信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EventListenerInfos []*AiOpsEventListenerDTO `json:"EventListenerInfos,omitnil,omitempty" name:"EventListenerInfos"`
 
-	// 脚本信息
+	// <p>脚本信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScriptInfo *AiopsScriptInfo `json:"ScriptInfo,omitnil,omitempty" name:"ScriptInfo"`
 
-	// DLC资源配置
+	// <p>DLC资源配置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DLCResourceConfig *AiopsDLCResourceConfigDto `json:"DLCResourceConfig,omitnil,omitempty" name:"DLCResourceConfig"`
 
-	// 父任务simple信息
+	// <p>父任务simple信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParentTaskInfos *AiopsSimpleTaskDto `json:"ParentTaskInfos,omitnil,omitempty" name:"ParentTaskInfos"`
 
-	// 资源获取标识
+	// <p>资源获取标识</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExtResourceFlag *ExtResourceFlagDto `json:"ExtResourceFlag,omitnil,omitempty" name:"ExtResourceFlag"`
 
-	// 父任务simple信息(新)
+	// <p>父任务simple信息(新)</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NewParentTaskInfos []*AiopsSimpleTaskDto `json:"NewParentTaskInfos,omitnil,omitempty" name:"NewParentTaskInfos"`
 
-	// 任务自依赖类型：
-	// yes： 任务需满足自依赖
-	// no：任务无需满足自依赖
+	// <p>任务自依赖类型：<br>yes： 任务需满足自依赖<br>no：任务无需满足自依赖</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SelfWorkFlowDependType *string `json:"SelfWorkFlowDependType,omitnil,omitempty" name:"SelfWorkFlowDependType"`
 
-	// 允许重跑类型，ALL 表示无论实例运行成功还是失败都允许重跑，NONE表示无论成功或者失败都不允许重跑，FAILURE 表示只有运行失败才能重跑
+	// <p>允许重跑类型，ALL 表示无论实例运行成功还是失败都允许重跑，NONE表示无论成功或者失败都不允许重跑，FAILURE 表示只有运行失败才能重跑</p>
 	AllowRedoType *string `json:"AllowRedoType,omitnil,omitempty" name:"AllowRedoType"`
 
-	// 负责人Id
+	// <p>负责人Id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OwnerId *string `json:"OwnerId,omitnil,omitempty" name:"OwnerId"`
 
-	// 当前用户对该任务的权限列表， 当前支持
-	// CAN_MANAGE : 有权限管理操作
+	// <p>当前用户对该任务的权限列表， 当前支持<br>CAN_MANAGE : 有权限管理操作</p>
 	Privileges []*string `json:"Privileges,omitnil,omitempty" name:"Privileges"`
 
-	// bundle客户端唯一id
+	// <p>bundle客户端唯一id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BundleId *string `json:"BundleId,omitnil,omitempty" name:"BundleId"`
 
-	// bundle客户端信息
+	// <p>bundle客户端信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BundleInfo *string `json:"BundleInfo,omitnil,omitempty" name:"BundleInfo"`
 
-	// 工作流类型
+	// <p>工作流类型</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkflowType *string `json:"WorkflowType,omitnil,omitempty" name:"WorkflowType"`
 
-	// 任务扩展信息
+	// <p>任务扩展信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskExtDTO *TaskExtOpsDto `json:"TaskExtDTO,omitnil,omitempty" name:"TaskExtDTO"`
 
-	// 任务时区
+	// <p>任务时区</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScheduleTimeZone *string `json:"ScheduleTimeZone,omitnil,omitempty" name:"ScheduleTimeZone"`
+
+	// <p>代理任务ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProxyTaskId *string `json:"ProxyTaskId,omitnil,omitempty" name:"ProxyTaskId"`
+
+	// <p>代理任务类型ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProxyTaskTypeId *int64 `json:"ProxyTaskTypeId,omitnil,omitempty" name:"ProxyTaskTypeId"`
 }
 
 type TaskScriptContent struct {

@@ -3244,49 +3244,55 @@ type SpaceDataDisk struct {
 }
 
 type SpaceInfo struct {
-	// 工作空间ID
+	// <p>工作空间ID</p>
 	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
 
-	// 工作空间类型
+	// <p>工作空间类别</p>
+	SpaceClass *string `json:"SpaceClass,omitnil,omitempty" name:"SpaceClass"`
+
+	// <p>工作空间类型</p>
 	SpaceFamily *string `json:"SpaceFamily,omitnil,omitempty" name:"SpaceFamily"`
 
-	// 工作空间规格
+	// <p>工作空间规格</p>
 	SpaceType *string `json:"SpaceType,omitnil,omitempty" name:"SpaceType"`
 
-	// 工作空间名称
+	// <p>工作空间名称</p>
 	SpaceName *string `json:"SpaceName,omitnil,omitempty" name:"SpaceName"`
 
-	// 工作空间状态。取值范围：<br><li>PENDING：表示创建中<br></li><li>LAUNCH_FAILED：表示创建失败<br></li><li>ONLINE：表示运行中<br></li><li>ARREARS：表示隔离中<br></li><li>TERMINATING：表示销毁中。<br></li>
+	// <p>工作空间状态。取值范围：<br><li>PENDING：表示创建中<br></li><li>LAUNCH_FAILED：表示创建失败<br></li><li>ONLINE：表示运行中<br></li><li>ARREARS：表示隔离中<br></li><li>TERMINATING：表示销毁中。<br></li></p>
 	SpaceState *string `json:"SpaceState,omitnil,omitempty" name:"SpaceState"`
 
-	// 工作空间计费模式
+	// <p>工作空间计费模式</p>
 	SpaceChargeType *string `json:"SpaceChargeType,omitnil,omitempty" name:"SpaceChargeType"`
 
-	// 工作空间对应资源ID
+	// <p>工作空间对应资源ID</p>
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
-	// 自动续费标识
+	// <p>自动续费标识</p>
 	RenewFlag *string `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 
-	// 工作空间关联的工作列表
+	// <p>工作空间关联的工作列表</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
 
-	// 到期时间
+	// <p>到期时间</p>
 	ExpiredTime *string `json:"ExpiredTime,omitnil,omitempty" name:"ExpiredTime"`
 
-	// 工作空间所在位置
+	// <p>工作空间所在位置</p>
 	Placement *Placement `json:"Placement,omitnil,omitempty" name:"Placement"`
 
-	// 工作空间的最新操作
+	// <p>工作空间的最新操作</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LatestOperation *string `json:"LatestOperation,omitnil,omitempty" name:"LatestOperation"`
 
-	// 工作空间的最新操作状态
+	// <p>工作空间的最新操作状态</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LatestOperationState *string `json:"LatestOperationState,omitnil,omitempty" name:"LatestOperationState"`
+
+	// <p>实例的内网IP</p>
+	PrivateIpAddresses []*string `json:"PrivateIpAddresses,omitnil,omitempty" name:"PrivateIpAddresses"`
 }
 
 type SpaceInternetAccessible struct {

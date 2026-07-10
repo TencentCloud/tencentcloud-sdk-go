@@ -13146,6 +13146,9 @@ type Resource struct {
 
 	// <p>分区置放群组分区数</p>
 	PartitionNumber *int64 `json:"PartitionNumber,omitnil,omitempty" name:"PartitionNumber"`
+
+	// <p>高性能集群ID</p>
+	HCCHpcClusterId *string `json:"HCCHpcClusterId,omitnil,omitempty" name:"HCCHpcClusterId"`
 }
 
 type ResourceDetail struct {

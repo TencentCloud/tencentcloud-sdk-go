@@ -1242,38 +1242,39 @@ type AutoMapRule struct {
 }
 
 type BackupConfigInfo struct {
-	// 系统自动时间
+	// <p>系统自动时间</p>
 	BackupCustomAutoTime *bool `json:"BackupCustomAutoTime,omitnil,omitempty" name:"BackupCustomAutoTime"`
 
-	// 表示全备开始时间，[0-24*3600]， 如0:00, 1:00, 2:00 分别为 0，3600， 7200
+	// <p>表示全备开始时间，[0-24*3600]， 如0:00, 1:00, 2:00 分别为 0，3600， 7200</p>
 	BackupTimeBeg *uint64 `json:"BackupTimeBeg,omitnil,omitempty" name:"BackupTimeBeg"`
 
-	// 表示全备结束时间，[0-24*3600]， 如0:00, 1:00, 2:00 分别为 0，3600， 7200
+	// <p>表示全备结束时间，[0-24*3600]， 如0:00, 1:00, 2:00 分别为 0，3600， 7200</p>
 	BackupTimeEnd *uint64 `json:"BackupTimeEnd,omitnil,omitempty" name:"BackupTimeEnd"`
 
-	// 该参数目前不支持修改，无需填写。备份频率，长度为7的数组，分别对应周日到周六的备份方式，full-全量备份，increment-增量备份
+	// <p>该参数目前不支持修改，无需填写。备份频率，长度为7的数组，分别对应周日到周六的备份方式，full-全量备份，increment-增量备份</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BackupWeekDays []*string `json:"BackupWeekDays,omitnil,omitempty" name:"BackupWeekDays"`
 
-	// 间隔时间
+	// <p>间隔时间</p>
 	BackupIntervalTime *int64 `json:"BackupIntervalTime,omitnil,omitempty" name:"BackupIntervalTime"`
 
-	// 表示保留备份时长, 单位秒，超过该时间将被清理, 七天表示为3600247=604800，最大为158112000
+	// <p>表示保留备份时长, 单位秒，超过该时间将被清理, 七天表示为3600247=604800，最大为158112000</p>
 	ReserveDuration *uint64 `json:"ReserveDuration,omitnil,omitempty" name:"ReserveDuration"`
 
-	// 跨地域备份开启
-	// yes-开启
-	// no-关闭
+	// <p>跨地域备份开启<br>yes-开启<br>no-关闭</p>
 	CrossRegionsEnable *string `json:"CrossRegionsEnable,omitnil,omitempty" name:"CrossRegionsEnable"`
 
-	// 跨地域备份地域
+	// <p>跨地域备份地域</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CrossRegions []*string `json:"CrossRegions,omitnil,omitempty" name:"CrossRegions"`
 
-	// 自动数据备份触发策略，periodically:自动周期备份,frequent:高频备份
+	// <p>跨地域备份保留时间</p><p>单位：天</p>
+	CrossRegionSaveDays *int64 `json:"CrossRegionSaveDays,omitnil,omitempty" name:"CrossRegionSaveDays"`
+
+	// <p>自动数据备份触发策略，periodically:自动周期备份,frequent:高频备份</p>
 	BackupTriggerStrategy *string `json:"BackupTriggerStrategy,omitnil,omitempty" name:"BackupTriggerStrategy"`
 
-	// 备份投递关系
+	// <p>备份投递关系</p>
 	AutoCopyVaults []*CreateBackupVaultItem `json:"AutoCopyVaults,omitnil,omitempty" name:"AutoCopyVaults"`
 }
 
@@ -1471,50 +1472,64 @@ type BindInstanceInfo struct {
 }
 
 type BinlogConfigInfo struct {
-	// binlog保留时间
+	// <p>binlog保留时间</p>
 	BinlogSaveDays *int64 `json:"BinlogSaveDays,omitnil,omitempty" name:"BinlogSaveDays"`
 
-	// binlog异地地域备份是否开启
+	// <p>binlog异地地域备份是否开启</p>
 	BinlogCrossRegionsEnable *string `json:"BinlogCrossRegionsEnable,omitnil,omitempty" name:"BinlogCrossRegionsEnable"`
 
-	// binlog异地地域
+	// <p>binlog异地地域</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BinlogCrossRegions []*string `json:"BinlogCrossRegions,omitnil,omitempty" name:"BinlogCrossRegions"`
 
-	// 保险箱信息
+	// <p>跨地域备份保留时间</p><p>单位：天</p>
+	BinlogCrossRegionSaveDays *int64 `json:"BinlogCrossRegionSaveDays,omitnil,omitempty" name:"BinlogCrossRegionSaveDays"`
+
+	// <p>保险箱信息</p>
 	AutoCopyVaults []*CreateBackupVaultItem `json:"AutoCopyVaults,omitnil,omitempty" name:"AutoCopyVaults"`
 }
 
 type BinlogItem struct {
-	// Binlog文件名称
+	// <p>Binlog文件名称</p>
 	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
 
-	// 文件大小，单位：字节
+	// <p>文件大小，单位：字节</p>
 	FileSize *int64 `json:"FileSize,omitnil,omitempty" name:"FileSize"`
 
-	// 事务最早时间
+	// <p>事务最早时间</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 事务最晚时间
+	// <p>事务最晚时间</p>
 	FinishTime *string `json:"FinishTime,omitnil,omitempty" name:"FinishTime"`
 
-	// Binlog文件ID
+	// <p>Binlog文件ID</p>
 	BinlogId *int64 `json:"BinlogId,omitnil,omitempty" name:"BinlogId"`
 
-	// binlog所跨地域
+	// <p>binlog所跨地域</p>
 	CrossRegions []*string `json:"CrossRegions,omitnil,omitempty" name:"CrossRegions"`
 
-	// 备份投递状态
+	// <p>备份投递状态</p>
 	CopyStatus *string `json:"CopyStatus,omitnil,omitempty" name:"CopyStatus"`
 
-	// 保险箱信息
+	// <p>保险箱信息</p>
 	VaultInfos []*VaultInfo `json:"VaultInfos,omitnil,omitempty" name:"VaultInfos"`
 
-	// 加密秘钥key
+	// <p>加密秘钥key</p>
 	EncryptKeyId *string `json:"EncryptKeyId,omitnil,omitempty" name:"EncryptKeyId"`
 
-	// 加密秘钥地域
+	// <p>加密秘钥地域</p>
 	EncryptRegion *string `json:"EncryptRegion,omitnil,omitempty" name:"EncryptRegion"`
+
+	// <p>备份的地域分布信息</p>
+	ExistRegions []*BinlogRegionInfo `json:"ExistRegions,omitnil,omitempty" name:"ExistRegions"`
+}
+
+type BinlogRegionInfo struct {
+	// <p>备份地域</p>
+	BackupRegion *string `json:"BackupRegion,omitnil,omitempty" name:"BackupRegion"`
+
+	// <p>备份ID</p>
+	BackupId *int64 `json:"BackupId,omitnil,omitempty" name:"BackupId"`
 }
 
 type BizTaskInfo struct {
@@ -14915,79 +14930,87 @@ type InputAccount struct {
 
 // Predefined struct for user
 type InquirePriceCreateRequestParams struct {
-	// 可用区,每个地域提供最佳实践
+	// <p>可用区,每个地域提供最佳实践</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 购买计算节点个数
+	// <p>购买计算节点个数</p>
 	GoodsNum *int64 `json:"GoodsNum,omitnil,omitempty" name:"GoodsNum"`
 
-	// 实例购买类型，可选值为：PREPAID, POSTPAID, SERVERLESS
+	// <p>实例购买类型，可选值为：PREPAID, POSTPAID, SERVERLESS</p>
 	InstancePayMode *string `json:"InstancePayMode,omitnil,omitempty" name:"InstancePayMode"`
 
-	// 存储购买类型，可选值为：PREPAID, POSTPAID
+	// <p>存储购买类型，可选值为：PREPAID, POSTPAID</p>
 	StoragePayMode *string `json:"StoragePayMode,omitnil,omitempty" name:"StoragePayMode"`
 
-	// 实例设备类型，支持值如下：
-	// - common：表示通用型
-	// - exclusive：表示独享型
+	// <p>实例设备类型，支持值如下：</p><ul><li>common：表示通用型</li><li>exclusive：表示独享型</li></ul>
 	DeviceType *string `json:"DeviceType,omitnil,omitempty" name:"DeviceType"`
 
-	// CPU核数，PREPAID与POSTPAID实例类型必传
+	// <p>CPU核数，PREPAID与POSTPAID实例类型必传</p>
 	Cpu *int64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 
-	// 内存大小，单位G，PREPAID与POSTPAID实例类型必传
+	// <p>内存大小，单位G，PREPAID与POSTPAID实例类型必传</p>
 	Memory *int64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
-	// Ccu大小，serverless类型必传
+	// <p>Ccu大小，serverless类型必传</p>
 	Ccu *float64 `json:"Ccu,omitnil,omitempty" name:"Ccu"`
 
-	// 存储大小，PREPAID存储类型必传
+	// <p>存储大小，PREPAID存储类型必传</p>
 	StorageLimit *int64 `json:"StorageLimit,omitnil,omitempty" name:"StorageLimit"`
 
-	// 购买时长，PREPAID购买类型必传
+	// <p>购买时长，PREPAID购买类型必传</p>
 	TimeSpan *int64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
 
-	// 时长单位，可选值为：m,d。PREPAID购买类型必传
+	// <p>时长单位，可选值为：m,d。PREPAID购买类型必传</p>
 	TimeUnit *string `json:"TimeUnit,omitnil,omitempty" name:"TimeUnit"`
+
+	// <p>存储架构类型。 枚举值：1.0/2.0 默认值：1.0</p>
+	StorageVersion *string `json:"StorageVersion,omitnil,omitempty" name:"StorageVersion"`
+
+	// <p>存储是否跨AZ，2.0存储架构下有效</p>
+	IsMultiAz *bool `json:"IsMultiAz,omitnil,omitempty" name:"IsMultiAz"`
 }
 
 type InquirePriceCreateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 可用区,每个地域提供最佳实践
+	// <p>可用区,每个地域提供最佳实践</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 购买计算节点个数
+	// <p>购买计算节点个数</p>
 	GoodsNum *int64 `json:"GoodsNum,omitnil,omitempty" name:"GoodsNum"`
 
-	// 实例购买类型，可选值为：PREPAID, POSTPAID, SERVERLESS
+	// <p>实例购买类型，可选值为：PREPAID, POSTPAID, SERVERLESS</p>
 	InstancePayMode *string `json:"InstancePayMode,omitnil,omitempty" name:"InstancePayMode"`
 
-	// 存储购买类型，可选值为：PREPAID, POSTPAID
+	// <p>存储购买类型，可选值为：PREPAID, POSTPAID</p>
 	StoragePayMode *string `json:"StoragePayMode,omitnil,omitempty" name:"StoragePayMode"`
 
-	// 实例设备类型，支持值如下：
-	// - common：表示通用型
-	// - exclusive：表示独享型
+	// <p>实例设备类型，支持值如下：</p><ul><li>common：表示通用型</li><li>exclusive：表示独享型</li></ul>
 	DeviceType *string `json:"DeviceType,omitnil,omitempty" name:"DeviceType"`
 
-	// CPU核数，PREPAID与POSTPAID实例类型必传
+	// <p>CPU核数，PREPAID与POSTPAID实例类型必传</p>
 	Cpu *int64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 
-	// 内存大小，单位G，PREPAID与POSTPAID实例类型必传
+	// <p>内存大小，单位G，PREPAID与POSTPAID实例类型必传</p>
 	Memory *int64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
-	// Ccu大小，serverless类型必传
+	// <p>Ccu大小，serverless类型必传</p>
 	Ccu *float64 `json:"Ccu,omitnil,omitempty" name:"Ccu"`
 
-	// 存储大小，PREPAID存储类型必传
+	// <p>存储大小，PREPAID存储类型必传</p>
 	StorageLimit *int64 `json:"StorageLimit,omitnil,omitempty" name:"StorageLimit"`
 
-	// 购买时长，PREPAID购买类型必传
+	// <p>购买时长，PREPAID购买类型必传</p>
 	TimeSpan *int64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
 
-	// 时长单位，可选值为：m,d。PREPAID购买类型必传
+	// <p>时长单位，可选值为：m,d。PREPAID购买类型必传</p>
 	TimeUnit *string `json:"TimeUnit,omitnil,omitempty" name:"TimeUnit"`
+
+	// <p>存储架构类型。 枚举值：1.0/2.0 默认值：1.0</p>
+	StorageVersion *string `json:"StorageVersion,omitnil,omitempty" name:"StorageVersion"`
+
+	// <p>存储是否跨AZ，2.0存储架构下有效</p>
+	IsMultiAz *bool `json:"IsMultiAz,omitnil,omitempty" name:"IsMultiAz"`
 }
 
 func (r *InquirePriceCreateRequest) ToJsonString() string {
@@ -15013,6 +15036,8 @@ func (r *InquirePriceCreateRequest) FromJsonString(s string) error {
 	delete(f, "StorageLimit")
 	delete(f, "TimeSpan")
 	delete(f, "TimeUnit")
+	delete(f, "StorageVersion")
+	delete(f, "IsMultiAz")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InquirePriceCreateRequest has unknown keys!", "")
 	}
@@ -15021,10 +15046,10 @@ func (r *InquirePriceCreateRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type InquirePriceCreateResponseParams struct {
-	// 实例价格
+	// <p>实例价格</p>
 	InstancePrice *TradePrice `json:"InstancePrice,omitnil,omitempty" name:"InstancePrice"`
 
-	// 存储价格
+	// <p>存储价格</p>
 	StoragePrice *TradePrice `json:"StoragePrice,omitnil,omitempty" name:"StoragePrice"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -16433,29 +16458,30 @@ type LogRuleTemplateInfo struct {
 }
 
 type LogicBackupConfigInfo struct {
-	// 是否开启自动逻辑备份
+	// <p>是否开启自动逻辑备份</p>
 	LogicBackupEnable *string `json:"LogicBackupEnable,omitnil,omitempty" name:"LogicBackupEnable"`
 
-	// 自动逻辑备份开始时间
+	// <p>自动逻辑备份开始时间</p>
 	LogicBackupTimeBeg *uint64 `json:"LogicBackupTimeBeg,omitnil,omitempty" name:"LogicBackupTimeBeg"`
 
-	// 自动逻辑备份结束时间
+	// <p>自动逻辑备份结束时间</p>
 	LogicBackupTimeEnd *uint64 `json:"LogicBackupTimeEnd,omitnil,omitempty" name:"LogicBackupTimeEnd"`
 
-	// 自动逻辑备份保留时间
-	// 单位：秒
+	// <p>自动逻辑备份保留时间<br>单位：秒</p>
 	LogicReserveDuration *uint64 `json:"LogicReserveDuration,omitnil,omitempty" name:"LogicReserveDuration"`
 
-	// 是否开启跨地域逻辑备份
-	// 可选值：ON/OFF
+	// <p>是否开启跨地域逻辑备份<br>可选值：ON/OFF</p>
 	LogicCrossRegionsEnable *string `json:"LogicCrossRegionsEnable,omitnil,omitempty" name:"LogicCrossRegionsEnable"`
 
-	// 逻辑备份所跨地域
+	// <p>逻辑备份所跨地域</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogicCrossRegions []*string `json:"LogicCrossRegions,omitnil,omitempty" name:"LogicCrossRegions"`
 
-	// 备份投递关系
+	// <p>备份投递关系</p>
 	AutoCopyVaults []*CreateBackupVaultItem `json:"AutoCopyVaults,omitnil,omitempty" name:"AutoCopyVaults"`
+
+	// <p>天</p><p>单位：跨地域逻辑备份保留时间</p>
+	LogicCrossRegionSaveDays *int64 `json:"LogicCrossRegionSaveDays,omitnil,omitempty" name:"LogicCrossRegionSaveDays"`
 }
 
 type ManualBackupData struct {
@@ -17403,21 +17429,27 @@ func (r *ModifyBinlogConfigResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyBinlogSaveDaysRequestParams struct {
-	// 集群ID
+	// <p>集群ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// Binlog保留天数
+	// <p>Binlog保留天数</p>
 	BinlogSaveDays *int64 `json:"BinlogSaveDays,omitnil,omitempty" name:"BinlogSaveDays"`
+
+	// <p>跨地域备份保留时间</p><p>单位：天</p>
+	BinlogCrossRegionSaveDays *int64 `json:"BinlogCrossRegionSaveDays,omitnil,omitempty" name:"BinlogCrossRegionSaveDays"`
 }
 
 type ModifyBinlogSaveDaysRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群ID
+	// <p>集群ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// Binlog保留天数
+	// <p>Binlog保留天数</p>
 	BinlogSaveDays *int64 `json:"BinlogSaveDays,omitnil,omitempty" name:"BinlogSaveDays"`
+
+	// <p>跨地域备份保留时间</p><p>单位：天</p>
+	BinlogCrossRegionSaveDays *int64 `json:"BinlogCrossRegionSaveDays,omitnil,omitempty" name:"BinlogCrossRegionSaveDays"`
 }
 
 func (r *ModifyBinlogSaveDaysRequest) ToJsonString() string {
@@ -17434,6 +17466,7 @@ func (r *ModifyBinlogSaveDaysRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ClusterId")
 	delete(f, "BinlogSaveDays")
+	delete(f, "BinlogCrossRegionSaveDays")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyBinlogSaveDaysRequest has unknown keys!", "")
 	}
@@ -19968,27 +20001,33 @@ func (r *ModifyServerlessStrategyResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifySnapBackupCrossRegionConfigRequestParams struct {
-	// 集群ID
+	// <p>集群ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 是否开启跨地域快照备份ON/OFF
+	// <p>是否开启跨地域快照备份ON/OFF</p>
 	CrossRegionsEnable *string `json:"CrossRegionsEnable,omitnil,omitempty" name:"CrossRegionsEnable"`
 
-	// 快照备份所跨地域
+	// <p>快照备份所跨地域</p>
 	CrossRegions []*string `json:"CrossRegions,omitnil,omitempty" name:"CrossRegions"`
+
+	// <p>跨地域备份保留时间</p><p>单位：天</p>
+	CrossRegionSaveDays *int64 `json:"CrossRegionSaveDays,omitnil,omitempty" name:"CrossRegionSaveDays"`
 }
 
 type ModifySnapBackupCrossRegionConfigRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群ID
+	// <p>集群ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 是否开启跨地域快照备份ON/OFF
+	// <p>是否开启跨地域快照备份ON/OFF</p>
 	CrossRegionsEnable *string `json:"CrossRegionsEnable,omitnil,omitempty" name:"CrossRegionsEnable"`
 
-	// 快照备份所跨地域
+	// <p>快照备份所跨地域</p>
 	CrossRegions []*string `json:"CrossRegions,omitnil,omitempty" name:"CrossRegions"`
+
+	// <p>跨地域备份保留时间</p><p>单位：天</p>
+	CrossRegionSaveDays *int64 `json:"CrossRegionSaveDays,omitnil,omitempty" name:"CrossRegionSaveDays"`
 }
 
 func (r *ModifySnapBackupCrossRegionConfigRequest) ToJsonString() string {
@@ -20006,6 +20045,7 @@ func (r *ModifySnapBackupCrossRegionConfigRequest) FromJsonString(s string) erro
 	delete(f, "ClusterId")
 	delete(f, "CrossRegionsEnable")
 	delete(f, "CrossRegions")
+	delete(f, "CrossRegionSaveDays")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifySnapBackupCrossRegionConfigRequest has unknown keys!", "")
 	}
@@ -20014,7 +20054,7 @@ func (r *ModifySnapBackupCrossRegionConfigRequest) FromJsonString(s string) erro
 
 // Predefined struct for user
 type ModifySnapBackupCrossRegionConfigResponseParams struct {
-	// 任务id
+	// <p>任务id</p>
 	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

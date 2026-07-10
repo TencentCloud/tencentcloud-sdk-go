@@ -10205,15 +10205,10 @@ func (r *StopTrainingTaskResponse) FromJsonString(s string) error {
 }
 
 type StorageExtraConf struct {
-	// cfs的存储类型
-	//   // HP:通用性能型
-	//   // SD:通用标准型
-	//   // TP:turbo性能型
-	//   // TB:turbo标准型
-	//   // THP:吞吐型
+	// <p>cfs的存储类型<br>  // HP:通用性能型<br>  // SD:通用标准型<br>  // TP:turbo性能型<br>  // TB:turbo标准型<br>  // THP:吞吐型</p>
 	CFSStorageType *string `json:"CFSStorageType,omitnil,omitempty" name:"CFSStorageType"`
 
-	// cfs的协议
+	// <p>cfs的协议</p>
 	CFSProtocol *string `json:"CFSProtocol,omitnil,omitempty" name:"CFSProtocol"`
 }
 

@@ -53,6 +53,9 @@ const (
 	// 暂时笼统的定义这个错误码。
 	FAILEDOPERATION_REDOFLOWFAILED = "FailedOperation.RedoFlowFailed"
 
+	// 访问服务Log失败，请稍后重试。如果持续不成功，请联系客服进行处理
+	FAILEDOPERATION_SERVICEACCESSERROR = "FailedOperation.ServiceAccessError"
+
 	// 设置规则失败。
 	FAILEDOPERATION_SETRULELOCATIONFAILED = "FailedOperation.SetRuleLocationFailed"
 
@@ -113,6 +116,9 @@ const (
 	// 业务参数错误。
 	INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
 
+	// 非法的参数。
+	INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
+
 	// 不是vpc网络下实例。
 	INVALIDPARAMETER_ISNOTVPCINSTANCE = "InvalidParameter.IsNotVpcInstance"
 
@@ -140,11 +146,17 @@ const (
 	// 业务校验不通过。
 	INVALIDPARAMETERVALUE_CHECKNOTPASS = "InvalidParameterValue.CheckNotPass"
 
+	// 数据转换失败
+	INVALIDPARAMETERVALUE_DATACONVERTERROR = "InvalidParameterValue.DataConvertError"
+
 	// 重命名，命名规则错误。
 	INVALIDPARAMETERVALUE_INSTANCENAMERULEERROR = "InvalidParameterValue.InstanceNameRuleError"
 
 	// 请求购买的实例类型错误（TypeId 1:集群版；2:主从版,即原主从版)。
 	INVALIDPARAMETERVALUE_INVALIDINSTANCETYPEID = "InvalidParameterValue.InvalidInstanceTypeId"
+
+	// 非法的入参。
+	INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 
 	// vpc网络下，vpcid 子网id 非法。
 	INVALIDPARAMETERVALUE_INVALIDSUBNETID = "InvalidParameterValue.InvalidSubnetId"
