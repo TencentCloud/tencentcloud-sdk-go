@@ -3351,32 +3351,32 @@ func (r *ImportDataKeyResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ImportKeyMaterialRequestParams struct {
-	// 使用GetParametersForImport 返回的PublicKey加密后的密钥材料base64编码。对于国密版本region的KMS，导入的密钥材料长度要求为 128 bit，FIPS版本region的KMS， 导入的密钥材料长度要求为 256 bit。
+	// <p>使用GetParametersForImport 返回的PublicKey加密后的密钥材料base64编码。对于国密版本region的KMS，导入的密钥材料长度要求为 128 bit，FIPS 140-2版本region的KMS， 导入的密钥材料长度要求为 256 bit。</p>
 	EncryptedKeyMaterial *string `json:"EncryptedKeyMaterial,omitnil,omitempty" name:"EncryptedKeyMaterial"`
 
-	// 通过调用GetParametersForImport获得的导入令牌。
+	// <p>通过调用GetParametersForImport获得的导入令牌。</p>
 	ImportToken *string `json:"ImportToken,omitnil,omitempty" name:"ImportToken"`
 
-	// 指定导入密钥材料的CMK，需要和GetParametersForImport 指定的CMK相同。
+	// <p>指定导入密钥材料的CMK，需要和GetParametersForImport 指定的CMK相同。</p>
 	KeyId *string `json:"KeyId,omitnil,omitempty" name:"KeyId"`
 
-	// 密钥材料过期时间 unix 时间戳，不指定或者 0 表示密钥材料不会过期，若指定过期时间，需要大于当前时间点，最大支持 2147443200。
+	// <p>密钥材料过期时间 unix 时间戳，不指定或者 0 表示密钥材料不会过期，若指定过期时间，需要大于当前时间点，最大支持 2147443200。</p>
 	ValidTo *uint64 `json:"ValidTo,omitnil,omitempty" name:"ValidTo"`
 }
 
 type ImportKeyMaterialRequest struct {
 	*tchttp.BaseRequest
 	
-	// 使用GetParametersForImport 返回的PublicKey加密后的密钥材料base64编码。对于国密版本region的KMS，导入的密钥材料长度要求为 128 bit，FIPS版本region的KMS， 导入的密钥材料长度要求为 256 bit。
+	// <p>使用GetParametersForImport 返回的PublicKey加密后的密钥材料base64编码。对于国密版本region的KMS，导入的密钥材料长度要求为 128 bit，FIPS 140-2版本region的KMS， 导入的密钥材料长度要求为 256 bit。</p>
 	EncryptedKeyMaterial *string `json:"EncryptedKeyMaterial,omitnil,omitempty" name:"EncryptedKeyMaterial"`
 
-	// 通过调用GetParametersForImport获得的导入令牌。
+	// <p>通过调用GetParametersForImport获得的导入令牌。</p>
 	ImportToken *string `json:"ImportToken,omitnil,omitempty" name:"ImportToken"`
 
-	// 指定导入密钥材料的CMK，需要和GetParametersForImport 指定的CMK相同。
+	// <p>指定导入密钥材料的CMK，需要和GetParametersForImport 指定的CMK相同。</p>
 	KeyId *string `json:"KeyId,omitnil,omitempty" name:"KeyId"`
 
-	// 密钥材料过期时间 unix 时间戳，不指定或者 0 表示密钥材料不会过期，若指定过期时间，需要大于当前时间点，最大支持 2147443200。
+	// <p>密钥材料过期时间 unix 时间戳，不指定或者 0 表示密钥材料不会过期，若指定过期时间，需要大于当前时间点，最大支持 2147443200。</p>
 	ValidTo *uint64 `json:"ValidTo,omitnil,omitempty" name:"ValidTo"`
 }
 
@@ -3430,88 +3430,88 @@ type Key struct {
 }
 
 type KeyMetadata struct {
-	// CMK的全局唯一标识
+	// <p>CMK的全局唯一标识</p>
 	KeyId *string `json:"KeyId,omitnil,omitempty" name:"KeyId"`
 
-	// 作为密钥更容易辨识，更容易被人看懂的别名
+	// <p>作为密钥更容易辨识，更容易被人看懂的别名</p>
 	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
 
-	// 密钥创建时间
+	// <p>密钥创建时间</p>
 	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// CMK的描述
+	// <p>CMK的描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// CMK的状态， 取值为：Enabled | Disabled | PendingDelete | PendingImport | Archived
+	// <p>CMK的状态， 取值为：Enabled | Disabled | PendingDelete | PendingImport | Archived</p>
 	KeyState *string `json:"KeyState,omitnil,omitempty" name:"KeyState"`
 
-	// CMK用途，取值为: ENCRYPT_DECRYPT | ASYMMETRIC_DECRYPT_RSA_2048 | ASYMMETRIC_DECRYPT_SM2 | ASYMMETRIC_SIGN_VERIFY_SM2 | ASYMMETRIC_SIGN_VERIFY_RSA_2048 | ASYMMETRIC_SIGN_VERIFY_ECC
+	// <p>CMK用途，取值为: ENCRYPT_DECRYPT | ASYMMETRIC_DECRYPT_RSA_2048 | ASYMMETRIC_DECRYPT_SM2 | ASYMMETRIC_SIGN_VERIFY_SM2 | ASYMMETRIC_SIGN_VERIFY_RSA_2048 | ASYMMETRIC_SIGN_VERIFY_ECC</p>
 	KeyUsage *string `json:"KeyUsage,omitnil,omitempty" name:"KeyUsage"`
 
-	// CMK类型，2 表示符合FIPS标准，4表示符合国密标准
+	// <p>CMK类型，2 表示符合FIPS 140-2标准，4表示符合国密标准</p><p>枚举值：</p><ul><li>2： 表示符合FIPS 140-2标准</li><li>4： 表示符合国密标准</li></ul>
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 创建者
+	// <p>创建者</p>
 	CreatorUin *uint64 `json:"CreatorUin,omitnil,omitempty" name:"CreatorUin"`
 
-	// 是否开启了密钥轮换功能
+	// <p>是否开启了密钥轮换功能</p>
 	KeyRotationEnabled *bool `json:"KeyRotationEnabled,omitnil,omitempty" name:"KeyRotationEnabled"`
 
-	// CMK的创建者，用户创建的为 user，授权各云产品自动创建的为对应的产品名
+	// <p>CMK的创建者，用户创建的为 user，授权各云产品自动创建的为对应的产品名</p>
 	Owner *string `json:"Owner,omitnil,omitempty" name:"Owner"`
 
-	// 在密钥轮换开启状态下，下次轮换的时间
+	// <p>在密钥轮换开启状态下，下次轮换的时间</p>
 	NextRotateTime *uint64 `json:"NextRotateTime,omitnil,omitempty" name:"NextRotateTime"`
 
-	// 计划删除的时间
+	// <p>计划删除的时间</p>
 	DeletionDate *uint64 `json:"DeletionDate,omitnil,omitempty" name:"DeletionDate"`
 
-	// CMK 密钥材料类型，由KMS创建的为： TENCENT_KMS， 由用户导入的类型为：EXTERNAL
+	// <p>CMK 密钥材料类型，由KMS创建的为： TENCENT_KMS， 由用户导入的类型为：EXTERNAL</p>
 	Origin *string `json:"Origin,omitnil,omitempty" name:"Origin"`
 
-	// 在Origin为  EXTERNAL 时有效，表示密钥材料的有效日期， 0 表示不过期
+	// <p>在Origin为  EXTERNAL 时有效，表示密钥材料的有效日期， 0 表示不过期</p>
 	ValidTo *uint64 `json:"ValidTo,omitnil,omitempty" name:"ValidTo"`
 
-	// 资源ID，格式：creatorUin/$creatorUin/$keyId
+	// <p>资源ID，格式：creatorUin/$creatorUin/$keyId</p>
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
-	// HSM 集群 ID（仅对 KMS 独占版/托管版服务实例有效）
+	// <p>HSM 集群 ID（仅对 KMS 独占版/托管版服务实例有效）</p>
 	HsmClusterId *string `json:"HsmClusterId,omitnil,omitempty" name:"HsmClusterId"`
 
-	// 密钥轮转周期（天）
+	// <p>密钥轮转周期（天）</p>
 	RotateDays *uint64 `json:"RotateDays,omitnil,omitempty" name:"RotateDays"`
 
-	// 上次乱转时间（Unix timestamp）
+	// <p>上次轮转时间（Unix timestamp）</p>
 	LastRotateTime *uint64 `json:"LastRotateTime,omitnil,omitempty" name:"LastRotateTime"`
 
-	//  密钥是否是主副本。0:主本，1:同步副本。
+	// <p>密钥是否是主副本。0:主本，1:同步副本。</p>
 	IsSyncReplica *int64 `json:"IsSyncReplica,omitnil,omitempty" name:"IsSyncReplica"`
 
-	// 同步的原始地域
+	// <p>同步的原始地域</p>
 	SourceRegion *string `json:"SourceRegion,omitnil,omitempty" name:"SourceRegion"`
 
-	// 密钥同步的状态，0:未同步,1:同步成功,2:同步失败,3:同步中。
+	// <p>密钥同步的状态，0:未同步,1:同步成功,2:同步失败,3:同步中。</p>
 	SyncStatus *int64 `json:"SyncStatus,omitnil,omitempty" name:"SyncStatus"`
 
-	// 同步的结果描述
+	// <p>同步的结果描述</p>
 	SyncMessages *string `json:"SyncMessages,omitnil,omitempty" name:"SyncMessages"`
 
-	// 同步的开始时间
+	// <p>同步的开始时间</p>
 	SyncStartTime *uint64 `json:"SyncStartTime,omitnil,omitempty" name:"SyncStartTime"`
 
-	// 同步的结束时间
+	// <p>同步的结束时间</p>
 	SyncEndTime *uint64 `json:"SyncEndTime,omitnil,omitempty" name:"SyncEndTime"`
 
-	// 同步的原始集群，如果为空，是公有云公共集群
+	// <p>同步的原始集群，如果为空，是公有云公共集群</p>
 	SourceHsmClusterId *string `json:"SourceHsmClusterId,omitnil,omitempty" name:"SourceHsmClusterId"`
 
-	// 成员账号appId
+	// <p>成员账号appId</p>
 	AccountAppId *uint64 `json:"AccountAppId,omitnil,omitempty" name:"AccountAppId"`
 
-	// 成员账号uin
+	// <p>成员账号uin</p>
 	AccountUin *uint64 `json:"AccountUin,omitnil,omitempty" name:"AccountUin"`
 
-	// 成员账号名称
+	// <p>成员账号名称</p>
 	AccountName *string `json:"AccountName,omitnil,omitempty" name:"AccountName"`
 }
 

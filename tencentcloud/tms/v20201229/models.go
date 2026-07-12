@@ -109,35 +109,35 @@ func (r *CreateFinancialLLMTaskResponse) FromJsonString(s string) error {
 }
 
 type DetailResults struct {
-	// 该字段用于返回检测结果所对应的全部恶意标签。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告；以及其他令人反感、不安全或不适宜的内容类型。
+	// <p>该字段用于返回检测结果所对应的全部恶意标签。<br>返回值：<strong>Normal</strong>：正常，<strong>Porn</strong>：色情，<strong>Abuse</strong>：谩骂，<strong>Ad</strong>：广告；以及其他令人反感、不安全或不适宜的内容类型。</p>
 	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
 
-	// 该字段用于返回对应当前标签的后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
+	// <p>该字段用于返回对应当前标签的后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：<strong>Block</strong>：建议屏蔽，<strong>Review</strong> ：建议人工复审，<strong>Pass</strong>：建议通过</p>
 	Suggestion *string `json:"Suggestion,omitnil,omitempty" name:"Suggestion"`
 
-	// 该字段用于返回检测文本命中的关键词信息，用于标注文本违规的具体原因（如：*加我微信*）。该参数可能会有多个返回值，代表命中的多个关键词；如返回值为空且Score不为空，则代表识别结果所对应的恶意标签（Label）是来自于语义模型判断的返回值。
+	// <p>该字段用于返回检测文本命中的关键词信息，用于标注文本违规的具体原因（如：<em>加我微信</em>）。该参数可能会有多个返回值，代表命中的多个关键词；如返回值为空且Score不为空，则代表识别结果所对应的恶意标签（Label）是来自于语义模型判断的返回值。</p>
 	Keywords []*string `json:"Keywords,omitnil,omitempty" name:"Keywords"`
 
-	// 该字段用于返回当前标签（Label）下的置信度，取值范围：0（**置信度最低**）-100（**置信度最高** ），越高代表文本越有可能属于当前返回的标签；如：*色情 99*，则表明该文本非常有可能属于色情内容；*色情 0*，则表明该文本不属于色情内容。
+	// <p>该字段用于返回当前标签（Label）下的置信度，取值范围：0（<strong>置信度最低</strong>）-100（<strong>置信度最高</strong> ），越高代表文本越有可能属于当前返回的标签；如：<em>色情 99</em>，则表明该文本非常有可能属于色情内容；<em>色情 0</em>，则表明该文本不属于色情内容。</p>
 	Score *int64 `json:"Score,omitnil,omitempty" name:"Score"`
 
-	// 该字段用于返回自定义关键词对应的词库类型，取值为**1**（黑白库）和**2**（自定义关键词库），若未配置自定义关键词库,则默认值为1（黑白库匹配）。
+	// <p>该字段用于返回自定义关键词对应的词库类型，取值为<strong>1</strong>（黑白库）和<strong>2</strong>（自定义关键词库），若未配置自定义关键词库,则默认值为1（黑白库匹配）。</p>
 	LibType *int64 `json:"LibType,omitnil,omitempty" name:"LibType"`
 
-	// 该字段用于返回自定义库的ID，以方便自定义库管理和配置。
+	// <p>该字段用于返回自定义库的ID，以方便自定义库管理和配置。</p>
 	LibId *string `json:"LibId,omitnil,omitempty" name:"LibId"`
 
-	// 该字段用于返回自定义库的名称,以方便自定义库管理和配置。
+	// <p>该字段用于返回自定义库的名称,以方便自定义库管理和配置。</p>
 	LibName *string `json:"LibName,omitnil,omitempty" name:"LibName"`
 
-	// 该字段用于返回当前标签（Label）下的二级标签。
+	// <p>该字段用于返回当前标签（Label）下的二级标签。</p>
 	SubLabel *string `json:"SubLabel,omitnil,omitempty" name:"SubLabel"`
 
-	// 该字段用于返回当前一级标签（Label）下的关键词、子标签及分数。
+	// <p>该字段用于返回当前一级标签（Label）下的关键词、子标签及分数。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 该字段用于返回违规文本命中信息
+	// <p>该字段用于返回违规文本命中信息</p>
 	HitInfos []*HitInfo `json:"HitInfos,omitnil,omitempty" name:"HitInfos"`
 }
 
@@ -274,6 +274,28 @@ type HitInfo struct {
 	Positions []*Positions `json:"Positions,omitnil,omitempty" name:"Positions"`
 }
 
+type HitPosition struct {
+	// <p>起始下标，含（按 rune/字符计算）,一段文本的起始下标是0</p>
+	Start *int64 `json:"Start,omitnil,omitempty" name:"Start"`
+
+	// <p>结束下标，不含（按 rune/字符），比如Start：1，End:3,表示第1，第2个字符，不包含第3个字符</p>
+	End *int64 `json:"End,omitnil,omitempty" name:"End"`
+}
+
+type HitSnippetInfo struct {
+	// <p>命中的文本片段（明文），已还原到预处理前的原文，注意该字段内容在原文中可能不连续，需要结合HitSnippetInfos[].Positions来还原出所在原文位置</p>
+	Snippet *string `json:"Snippet,omitnil,omitempty" name:"Snippet"`
+
+	// <p>原子能力类型，如果是业务自定义库命中，会给出词库名称</p>
+	AtomicName *string `json:"AtomicName,omitnil,omitempty" name:"AtomicName"`
+
+	// <p>原子能力ID，如果是业务自定义库导致命中本次审核标签，该值是词库ID</p>
+	AtomicId *string `json:"AtomicId,omitnil,omitempty" name:"AtomicId"`
+
+	// <p>该命中片段在原文中的位置列表，由于文本片段在原文中可能不连续，它可能是有多段位置信息</p>
+	Positions []*HitPosition `json:"Positions,omitnil,omitempty" name:"Positions"`
+}
+
 type Positions struct {
 	// 关键词起始位置
 	Start *int64 `json:"Start,omitnil,omitempty" name:"Start"`
@@ -328,70 +350,56 @@ type Tag struct {
 
 // Predefined struct for user
 type TextModerationRequestParams struct {
-	// 待检测的文本内容，需为UTF-8编码并以Base64格式传入。
+	// <p>待检测的文本内容，需为UTF-8编码并以Base64格式传入。</p>
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 
-	// 接口使用的识别策略编号，需在[控制台](https://console.cloud.tencent.com/cms/clouds/manage)获取。详细获取方式请参考以下链接：
-	// - **内容安全**（详见步骤四：策略配置）：[点击这里](https://cloud.tencent.com/document/product/1124/37119)
-	// - **AI生成识别**（详见服务对接->方式二）：[点击这里](https://cloud.tencent.com/document/product/1124/118694)
+	// <p>接口使用的识别策略编号，需在<a href="https://console.cloud.tencent.com/cms/clouds/manage">控制台</a>获取。详细获取方式请参考以下链接：</p><ul><li><strong>内容安全</strong>（详见步骤四：策略配置）：<a href="https://cloud.tencent.com/document/product/1124/37119">点击这里</a></li><li><strong>AI生成识别</strong>（详见服务对接-&gt;方式二）：<a href="https://cloud.tencent.com/document/product/1124/118694">点击这里</a></li></ul>
 	BizType *string `json:"BizType,omitnil,omitempty" name:"BizType"`
 
-	// 该字段表示您为待检测文本分配的数据ID，作用是方便您对数据进行标识和管理。
-	// 取值：可由英文字母、数字、四种特殊符号（_，-，@，#）组成，**长度不超过64个字符**。
+	// <p>该字段表示您为待检测文本分配的数据ID，作用是方便您对数据进行标识和管理。<br>取值：可由英文字母、数字、四种特殊符号（_，-，@，#）组成，<strong>长度不超过64个字符</strong>。</p>
 	DataId *string `json:"DataId,omitnil,omitempty" name:"DataId"`
 
-	// 该字段标识用户信息，传入后可增强甄别有违规风险的发布者账号。
+	// <p>该字段标识用户信息，传入后可增强甄别有违规风险的发布者账号。</p>
 	User *User `json:"User,omitnil,omitempty" name:"User"`
 
-	// 该字段标识设备信息，传入后可增强甄别有违规风险的发布者设备。
+	// <p>该字段标识设备信息，传入后可增强甄别有违规风险的发布者设备。</p>
 	Device *Device `json:"Device,omitnil,omitempty" name:"Device"`
 
-	// Content字段的原始语种，枚举值包括 zh 和 en：
-	// - 推荐使用 zh
-	// - en 适用于纯英文内容，耗时较高。若需使用 en，请先通过[反馈工单](https://console.cloud.tencent.com/workorder/category?level1_id=141&level2_id=1287&source=14&data_title=%E6%96%87%E6%9C%AC%E5%86%85%E5%AE%B9%E5%AE%89%E5%85%A8&step=1)确认
+	// <p>Content字段的原始语种，枚举值包括 zh 和 en：</p><ul><li>推荐使用 zh</li><li>en 适用于纯英文内容，耗时较高。若需使用 en，请先通过<a href="https://console.cloud.tencent.com/workorder/category?level1_id=141&amp;level2_id=1287&amp;source=14&amp;data_title=%E6%96%87%E6%9C%AC%E5%86%85%E5%AE%B9%E5%AE%89%E5%85%A8&amp;step=1">反馈工单</a>确认</li></ul>
 	SourceLanguage *string `json:"SourceLanguage,omitnil,omitempty" name:"SourceLanguage"`
 
-	// 服务类型，枚举值包括 TEXT 和 TEXT_AIGC：
-	// TEXT：内容安全
-	// TEXT_AIGC：AI生成识别
+	// <p>服务类型，枚举值包括 TEXT 和 TEXT_AIGC：<br>TEXT：内容安全<br>TEXT_AIGC：AI生成识别</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 适用于上下文关联审核场景，若多条文本内容需要联合审核，通过该字段关联会话。
+	// <p>适用于上下文关联审核场景，若多条文本内容需要联合审核，通过该字段关联会话。</p>
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 }
 
 type TextModerationRequest struct {
 	*tchttp.BaseRequest
 	
-	// 待检测的文本内容，需为UTF-8编码并以Base64格式传入。
+	// <p>待检测的文本内容，需为UTF-8编码并以Base64格式传入。</p>
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 
-	// 接口使用的识别策略编号，需在[控制台](https://console.cloud.tencent.com/cms/clouds/manage)获取。详细获取方式请参考以下链接：
-	// - **内容安全**（详见步骤四：策略配置）：[点击这里](https://cloud.tencent.com/document/product/1124/37119)
-	// - **AI生成识别**（详见服务对接->方式二）：[点击这里](https://cloud.tencent.com/document/product/1124/118694)
+	// <p>接口使用的识别策略编号，需在<a href="https://console.cloud.tencent.com/cms/clouds/manage">控制台</a>获取。详细获取方式请参考以下链接：</p><ul><li><strong>内容安全</strong>（详见步骤四：策略配置）：<a href="https://cloud.tencent.com/document/product/1124/37119">点击这里</a></li><li><strong>AI生成识别</strong>（详见服务对接-&gt;方式二）：<a href="https://cloud.tencent.com/document/product/1124/118694">点击这里</a></li></ul>
 	BizType *string `json:"BizType,omitnil,omitempty" name:"BizType"`
 
-	// 该字段表示您为待检测文本分配的数据ID，作用是方便您对数据进行标识和管理。
-	// 取值：可由英文字母、数字、四种特殊符号（_，-，@，#）组成，**长度不超过64个字符**。
+	// <p>该字段表示您为待检测文本分配的数据ID，作用是方便您对数据进行标识和管理。<br>取值：可由英文字母、数字、四种特殊符号（_，-，@，#）组成，<strong>长度不超过64个字符</strong>。</p>
 	DataId *string `json:"DataId,omitnil,omitempty" name:"DataId"`
 
-	// 该字段标识用户信息，传入后可增强甄别有违规风险的发布者账号。
+	// <p>该字段标识用户信息，传入后可增强甄别有违规风险的发布者账号。</p>
 	User *User `json:"User,omitnil,omitempty" name:"User"`
 
-	// 该字段标识设备信息，传入后可增强甄别有违规风险的发布者设备。
+	// <p>该字段标识设备信息，传入后可增强甄别有违规风险的发布者设备。</p>
 	Device *Device `json:"Device,omitnil,omitempty" name:"Device"`
 
-	// Content字段的原始语种，枚举值包括 zh 和 en：
-	// - 推荐使用 zh
-	// - en 适用于纯英文内容，耗时较高。若需使用 en，请先通过[反馈工单](https://console.cloud.tencent.com/workorder/category?level1_id=141&level2_id=1287&source=14&data_title=%E6%96%87%E6%9C%AC%E5%86%85%E5%AE%B9%E5%AE%89%E5%85%A8&step=1)确认
+	// <p>Content字段的原始语种，枚举值包括 zh 和 en：</p><ul><li>推荐使用 zh</li><li>en 适用于纯英文内容，耗时较高。若需使用 en，请先通过<a href="https://console.cloud.tencent.com/workorder/category?level1_id=141&amp;level2_id=1287&amp;source=14&amp;data_title=%E6%96%87%E6%9C%AC%E5%86%85%E5%AE%B9%E5%AE%89%E5%85%A8&amp;step=1">反馈工单</a>确认</li></ul>
 	SourceLanguage *string `json:"SourceLanguage,omitnil,omitempty" name:"SourceLanguage"`
 
-	// 服务类型，枚举值包括 TEXT 和 TEXT_AIGC：
-	// TEXT：内容安全
-	// TEXT_AIGC：AI生成识别
+	// <p>服务类型，枚举值包括 TEXT 和 TEXT_AIGC：<br>TEXT：内容安全<br>TEXT_AIGC：AI生成识别</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 适用于上下文关联审核场景，若多条文本内容需要联合审核，通过该字段关联会话。
+	// <p>适用于上下文关联审核场景，若多条文本内容需要联合审核，通过该字段关联会话。</p>
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 }
 
@@ -423,53 +431,54 @@ func (r *TextModerationRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type TextModerationResponseParams struct {
-	// 该字段用于回显检测对象请求参数中的 BizType，与输入的 BizType 值对应。
+	// <p>该字段用于回显检测对象请求参数中的 BizType，与输入的 BizType 值对应。</p>
 	BizType *string `json:"BizType,omitnil,omitempty" name:"BizType"`
 
-	// 用于标识对本次请求的处置建议，共三种返回值。
-	// 返回值：**Block**: 建议直接做违规处置，**Review**: 建议人工二次确认，**Pass**: 未识别到风险。
+	// <p>用于标识对本次请求的处置建议，共三种返回值。<br>返回值：<strong>Block</strong>: 建议直接做违规处置，<strong>Review</strong>: 建议人工二次确认，<strong>Pass</strong>: 未识别到风险。</p>
 	Suggestion *string `json:"Suggestion,omitnil,omitempty" name:"Suggestion"`
 
-	// 该字段用于返回检测结果（DetailResults）中所对应的**优先级最高的恶意标签**，表示模型推荐的审核结果，建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告；以及其他令人反感、不安全或不适宜的内容类型
+	// <p>该字段用于返回检测结果（DetailResults）中所对应的<strong>优先级最高的恶意标签</strong>，表示模型推荐的审核结果，建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：<strong>Normal</strong>：正常，<strong>Porn</strong>：色情，<strong>Abuse</strong>：谩骂，<strong>Ad</strong>：广告；以及其他令人反感、不安全或不适宜的内容类型</p>
 	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
 
-	// 对应 Label 字段下的二级子标签，表示该 Label 下更细分的违规点。
+	// <p>对应 Label 字段下的二级子标签，表示该 Label 下更细分的违规点。</p>
 	SubLabel *string `json:"SubLabel,omitnil,omitempty" name:"SubLabel"`
 
-	// 该字段标识 SubLabel 的置信度，取值范围为 0 - 100，值越高代表置信度越高。
+	// <p>该字段标识 SubLabel 的置信度，取值范围为 0 - 100，值越高代表置信度越高。</p>
 	Score *int64 `json:"Score,omitnil,omitempty" name:"Score"`
 
-	// 该字段标识被检测文本所命中的关键词，可能返回0个或多个关键词。
+	// <p>该字段标识被检测文本所命中的关键词，可能返回0个或多个关键词。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Keywords []*string `json:"Keywords,omitnil,omitempty" name:"Keywords"`
 
-	// 该字段返回的检测的详细信息，返回值信息可参阅对应数据结构 DetailResults 的详细描述。
+	// <p>该字段返回的检测的详细信息，返回值信息可参阅对应数据结构 DetailResults 的详细描述。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DetailResults []*DetailResults `json:"DetailResults,omitnil,omitempty" name:"DetailResults"`
 
-	// 该字段标识入参 User 的检测结果，具体内容参阅数据结构 RiskDetails。
+	// <p>该字段标识入参 User 的检测结果，具体内容参阅数据结构 RiskDetails。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskDetails []*RiskDetails `json:"RiskDetails,omitnil,omitempty" name:"RiskDetails"`
 
-	// 该字段用于返回根据您的需求配置的附加信息（Extra），如未配置则默认返回值为空。
-	// 备注：不同客户或Biztype下返回信息不同，如需配置该字段请提交工单咨询或联系售后专员处理。
+	// <p>该字段用于返回根据您的需求配置的附加信息（Extra），如未配置则默认返回值为空。<br>备注：不同客户或Biztype下返回信息不同，如需配置该字段请提交工单咨询或联系售后专员处理。</p>
 	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
 
-	// 该字段用于回显检测对象请求参数中的 DataId，与输入的 DataId 值对应。
+	// <p>该字段用于回显检测对象请求参数中的 DataId，与输入的 DataId 值对应。</p>
 	DataId *string `json:"DataId,omitnil,omitempty" name:"DataId"`
 
-	// 历史上下文关联的字段，不再推荐使用。上下文关联审核可通过入参的 SessionId 来实现。
+	// <p>历史上下文关联的字段，不再推荐使用。上下文关联审核可通过入参的 SessionId 来实现。</p>
 	ContextText *string `json:"ContextText,omitnil,omitempty" name:"ContextText"`
 
-	// 该字段为历史结构字段，不再推荐使用。
+	// <p>该字段为历史结构字段，不再推荐使用。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SentimentAnalysis *SentimentAnalysis `json:"SentimentAnalysis,omitnil,omitempty" name:"SentimentAnalysis"`
 
-	// 该字段为历史结构字段，不再推荐使用。
+	// <p>该字段为历史结构字段，不再推荐使用。</p>
 	HitType *string `json:"HitType,omitnil,omitempty" name:"HitType"`
 
-	// 该字段用于回显检测对象请求参数中的 SessionId，与输入的 SessionId 值对应。
+	// <p>该字段用于回显检测对象请求参数中的 SessionId，与输入的 SessionId 值对应。</p>
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// <p>该字段用于标记导致本次审核命中标签的原文内容位置信息</p>
+	HitSnippetInfos []*HitSnippetInfo `json:"HitSnippetInfos,omitnil,omitempty" name:"HitSnippetInfos"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

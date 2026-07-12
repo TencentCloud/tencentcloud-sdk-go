@@ -897,26 +897,26 @@ func (r *AttachDataMaskPolicyResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AttachUserPolicyRequestParams struct {
-	// 用户Id，和子用户uin相同，需要先使用CreateUser接口创建用户。可以使用DescribeUsers接口查看。
+	// <p>用户Id，和子用户uin相同，需要先使用CreateUser接口创建用户。可以使用DescribeUsers接口查看。</p>
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
-	// 鉴权策略集合
+	// <p>鉴权策略集合</p>
 	PolicySet []*Policy `json:"PolicySet,omitnil,omitempty" name:"PolicySet"`
 
-	// 用户来源类型TencentAccount（普通腾讯云用户） / EntraAccount（微软用户）
+	// <p>用户来源类型TencentAccount（普通腾讯云用户） / EntraAccount（微软用户）</p>
 	AccountType *string `json:"AccountType,omitnil,omitempty" name:"AccountType"`
 }
 
 type AttachUserPolicyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 用户Id，和子用户uin相同，需要先使用CreateUser接口创建用户。可以使用DescribeUsers接口查看。
+	// <p>用户Id，和子用户uin相同，需要先使用CreateUser接口创建用户。可以使用DescribeUsers接口查看。</p>
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
-	// 鉴权策略集合
+	// <p>鉴权策略集合</p>
 	PolicySet []*Policy `json:"PolicySet,omitnil,omitempty" name:"PolicySet"`
 
-	// 用户来源类型TencentAccount（普通腾讯云用户） / EntraAccount（微软用户）
+	// <p>用户来源类型TencentAccount（普通腾讯云用户） / EntraAccount（微软用户）</p>
 	AccountType *string `json:"AccountType,omitnil,omitempty" name:"AccountType"`
 }
 
@@ -943,6 +943,9 @@ func (r *AttachUserPolicyRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AttachUserPolicyResponseParams struct {
+	// <p>要授权的策略列表</p>
+	PolicySet []*Policy `json:"PolicySet,omitnil,omitempty" name:"PolicySet"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -965,20 +968,20 @@ func (r *AttachUserPolicyResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AttachWorkGroupPolicyRequestParams struct {
-	// 工作组Id
+	// <p>工作组Id</p>
 	WorkGroupId *int64 `json:"WorkGroupId,omitnil,omitempty" name:"WorkGroupId"`
 
-	// 要绑定的策略集合
+	// <p>要绑定的策略集合</p>
 	PolicySet []*Policy `json:"PolicySet,omitnil,omitempty" name:"PolicySet"`
 }
 
 type AttachWorkGroupPolicyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 工作组Id
+	// <p>工作组Id</p>
 	WorkGroupId *int64 `json:"WorkGroupId,omitnil,omitempty" name:"WorkGroupId"`
 
-	// 要绑定的策略集合
+	// <p>要绑定的策略集合</p>
 	PolicySet []*Policy `json:"PolicySet,omitnil,omitempty" name:"PolicySet"`
 }
 
@@ -1004,6 +1007,9 @@ func (r *AttachWorkGroupPolicyRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AttachWorkGroupPolicyResponseParams struct {
+	// <p>要授权的策略列表</p>
+	PolicySet []*Policy `json:"PolicySet,omitnil,omitempty" name:"PolicySet"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -12571,105 +12577,63 @@ func (r *DescribeUserDataEngineConfigResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeUserInfoRequestParams struct {
-	// 用户Id
+	// <p>用户Id</p>
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
-	// 必传字段，查询的信息类型，Group：工作组 DataAuth：数据权限 EngineAuth:引擎权限 RowFilter：行级别权限
+	// <p>必传字段，查询的信息类型，Group：工作组 DataAuth：数据权限 EngineAuth:引擎权限 RowFilter：行级别权限</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 查询的过滤条件。
-	// 
-	// 当Type为Group时，支持Key为workgroup-name的模糊搜索；
-	// 
-	// 当Type为DataAuth时，支持key：
-	// 
-	// policy-type：权限类型。
-	// 
-	// policy-source：数据来源。
-	// 
-	// data-name：库表的模糊搜索。
-	// 
-	// 当Type为EngineAuth时，支持key：
-	// 
-	// policy-type：权限类型。
-	// 
-	// policy-source：数据来源。
-	// 
-	// engine-name：库表的模糊搜索。
+	// <p>查询的过滤条件。</p><p>当Type为Group时，支持Key为workgroup-name的模糊搜索；</p><p>当Type为DataAuth时，支持key：</p><p>policy-type：权限类型。</p><p>policy-source：数据来源。</p><p>data-name：库表的模糊搜索。</p><p>当Type为EngineAuth时，支持key：</p><p>policy-type：权限类型。</p><p>policy-source：数据来源。</p><p>engine-name：库表的模糊搜索。</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 排序字段。
-	// 
-	// 当Type为Group时，支持create-time、group-name
-	// 
-	// 当Type为DataAuth时，支持create-time
-	// 
-	// 当Type为EngineAuth时，支持create-time
+	// <p>排序字段。</p><p>当Type为Group时，支持create-time、group-name</p><p>当Type为DataAuth时，支持create-time</p><p>当Type为EngineAuth时，支持create-time</p>
 	SortBy *string `json:"SortBy,omitnil,omitempty" name:"SortBy"`
 
-	// 排序方式，desc表示正序，asc表示反序， 默认为asc
+	// <p>排序方式，desc表示正序，asc表示反序， 默认为asc</p>
 	Sorting *string `json:"Sorting,omitnil,omitempty" name:"Sorting"`
 
-	// 返回数量，默认20，最大值100
+	// <p>返回数量，默认20，最大值100</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量，默认为0
+	// <p>偏移量，默认为0</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 用户来源类型TencentAccount（普通腾讯云用户） / EntraAccount（微软用户）
+	// <p>用户来源类型TencentAccount（普通腾讯云用户） / EntraAccount（微软用户）</p>
 	AccountType *string `json:"AccountType,omitnil,omitempty" name:"AccountType"`
+
+	// <p>TF 资源 ID</p>
+	PolicyId *string `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
 }
 
 type DescribeUserInfoRequest struct {
 	*tchttp.BaseRequest
 	
-	// 用户Id
+	// <p>用户Id</p>
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
-	// 必传字段，查询的信息类型，Group：工作组 DataAuth：数据权限 EngineAuth:引擎权限 RowFilter：行级别权限
+	// <p>必传字段，查询的信息类型，Group：工作组 DataAuth：数据权限 EngineAuth:引擎权限 RowFilter：行级别权限</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 查询的过滤条件。
-	// 
-	// 当Type为Group时，支持Key为workgroup-name的模糊搜索；
-	// 
-	// 当Type为DataAuth时，支持key：
-	// 
-	// policy-type：权限类型。
-	// 
-	// policy-source：数据来源。
-	// 
-	// data-name：库表的模糊搜索。
-	// 
-	// 当Type为EngineAuth时，支持key：
-	// 
-	// policy-type：权限类型。
-	// 
-	// policy-source：数据来源。
-	// 
-	// engine-name：库表的模糊搜索。
+	// <p>查询的过滤条件。</p><p>当Type为Group时，支持Key为workgroup-name的模糊搜索；</p><p>当Type为DataAuth时，支持key：</p><p>policy-type：权限类型。</p><p>policy-source：数据来源。</p><p>data-name：库表的模糊搜索。</p><p>当Type为EngineAuth时，支持key：</p><p>policy-type：权限类型。</p><p>policy-source：数据来源。</p><p>engine-name：库表的模糊搜索。</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 排序字段。
-	// 
-	// 当Type为Group时，支持create-time、group-name
-	// 
-	// 当Type为DataAuth时，支持create-time
-	// 
-	// 当Type为EngineAuth时，支持create-time
+	// <p>排序字段。</p><p>当Type为Group时，支持create-time、group-name</p><p>当Type为DataAuth时，支持create-time</p><p>当Type为EngineAuth时，支持create-time</p>
 	SortBy *string `json:"SortBy,omitnil,omitempty" name:"SortBy"`
 
-	// 排序方式，desc表示正序，asc表示反序， 默认为asc
+	// <p>排序方式，desc表示正序，asc表示反序， 默认为asc</p>
 	Sorting *string `json:"Sorting,omitnil,omitempty" name:"Sorting"`
 
-	// 返回数量，默认20，最大值100
+	// <p>返回数量，默认20，最大值100</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量，默认为0
+	// <p>偏移量，默认为0</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 用户来源类型TencentAccount（普通腾讯云用户） / EntraAccount（微软用户）
+	// <p>用户来源类型TencentAccount（普通腾讯云用户） / EntraAccount（微软用户）</p>
 	AccountType *string `json:"AccountType,omitnil,omitempty" name:"AccountType"`
+
+	// <p>TF 资源 ID</p>
+	PolicyId *string `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
 }
 
 func (r *DescribeUserInfoRequest) ToJsonString() string {
@@ -12692,6 +12656,7 @@ func (r *DescribeUserInfoRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Offset")
 	delete(f, "AccountType")
+	delete(f, "PolicyId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUserInfoRequest has unknown keys!", "")
 	}
@@ -12700,7 +12665,7 @@ func (r *DescribeUserInfoRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeUserInfoResponseParams struct {
-	// 用户详细信息
+	// <p>用户详细信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserInfo *UserDetailInfo `json:"UserInfo,omitnil,omitempty" name:"UserInfo"`
 
@@ -13245,99 +13210,57 @@ func (r *DescribeViewsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeWorkGroupInfoRequestParams struct {
-	// 工作组Id
+	// <p>工作组Id</p>
 	WorkGroupId *int64 `json:"WorkGroupId,omitnil,omitempty" name:"WorkGroupId"`
 
-	// 查询信息类型：User：用户信息 DataAuth：数据权限 EngineAuth：引擎权限
+	// <p>查询信息类型：User：用户信息 DataAuth：数据权限 EngineAuth：引擎权限</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 查询的过滤条件。
-	// 
-	// 当Type为User时，支持Key为user-name的模糊搜索；
-	// 
-	// 当Type为DataAuth时，支持key：
-	// 
-	// policy-type：权限类型。
-	// 
-	// policy-source：数据来源。
-	// 
-	// data-name：库表的模糊搜索。
-	// 
-	// 当Type为EngineAuth时，支持key：
-	// 
-	// policy-type：权限类型。
-	// 
-	// policy-source：数据来源。
-	// 
-	// engine-name：库表的模糊搜索。
+	// <p>查询的过滤条件。</p><p>当Type为User时，支持Key为user-name的模糊搜索；</p><p>当Type为DataAuth时，支持key：</p><p>policy-type：权限类型。</p><p>policy-source：数据来源。</p><p>data-name：库表的模糊搜索。</p><p>当Type为EngineAuth时，支持key：</p><p>policy-type：权限类型。</p><p>policy-source：数据来源。</p><p>engine-name：库表的模糊搜索。</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 排序字段。
-	// 
-	// 当Type为User时，支持create-time、user-name
-	// 
-	// 当Type为DataAuth时，支持create-time
-	// 
-	// 当Type为EngineAuth时，支持create-time
+	// <p>排序字段。</p><p>当Type为User时，支持create-time、user-name</p><p>当Type为DataAuth时，支持create-time</p><p>当Type为EngineAuth时，支持create-time</p>
 	SortBy *string `json:"SortBy,omitnil,omitempty" name:"SortBy"`
 
-	// 排序方式，desc表示正序，asc表示反序， 默认为asc
+	// <p>排序方式，desc表示正序，asc表示反序， 默认为asc</p>
 	Sorting *string `json:"Sorting,omitnil,omitempty" name:"Sorting"`
 
-	// 返回数量，默认20，最大值100
+	// <p>返回数量，默认20，最大值100</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量，默认为0
+	// <p>偏移量，默认为0</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>要授权的策略列表</p>
+	PolicyId *string `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
 }
 
 type DescribeWorkGroupInfoRequest struct {
 	*tchttp.BaseRequest
 	
-	// 工作组Id
+	// <p>工作组Id</p>
 	WorkGroupId *int64 `json:"WorkGroupId,omitnil,omitempty" name:"WorkGroupId"`
 
-	// 查询信息类型：User：用户信息 DataAuth：数据权限 EngineAuth：引擎权限
+	// <p>查询信息类型：User：用户信息 DataAuth：数据权限 EngineAuth：引擎权限</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 查询的过滤条件。
-	// 
-	// 当Type为User时，支持Key为user-name的模糊搜索；
-	// 
-	// 当Type为DataAuth时，支持key：
-	// 
-	// policy-type：权限类型。
-	// 
-	// policy-source：数据来源。
-	// 
-	// data-name：库表的模糊搜索。
-	// 
-	// 当Type为EngineAuth时，支持key：
-	// 
-	// policy-type：权限类型。
-	// 
-	// policy-source：数据来源。
-	// 
-	// engine-name：库表的模糊搜索。
+	// <p>查询的过滤条件。</p><p>当Type为User时，支持Key为user-name的模糊搜索；</p><p>当Type为DataAuth时，支持key：</p><p>policy-type：权限类型。</p><p>policy-source：数据来源。</p><p>data-name：库表的模糊搜索。</p><p>当Type为EngineAuth时，支持key：</p><p>policy-type：权限类型。</p><p>policy-source：数据来源。</p><p>engine-name：库表的模糊搜索。</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 排序字段。
-	// 
-	// 当Type为User时，支持create-time、user-name
-	// 
-	// 当Type为DataAuth时，支持create-time
-	// 
-	// 当Type为EngineAuth时，支持create-time
+	// <p>排序字段。</p><p>当Type为User时，支持create-time、user-name</p><p>当Type为DataAuth时，支持create-time</p><p>当Type为EngineAuth时，支持create-time</p>
 	SortBy *string `json:"SortBy,omitnil,omitempty" name:"SortBy"`
 
-	// 排序方式，desc表示正序，asc表示反序， 默认为asc
+	// <p>排序方式，desc表示正序，asc表示反序， 默认为asc</p>
 	Sorting *string `json:"Sorting,omitnil,omitempty" name:"Sorting"`
 
-	// 返回数量，默认20，最大值100
+	// <p>返回数量，默认20，最大值100</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量，默认为0
+	// <p>偏移量，默认为0</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>要授权的策略列表</p>
+	PolicyId *string `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
 }
 
 func (r *DescribeWorkGroupInfoRequest) ToJsonString() string {
@@ -13359,6 +13282,7 @@ func (r *DescribeWorkGroupInfoRequest) FromJsonString(s string) error {
 	delete(f, "Sorting")
 	delete(f, "Limit")
 	delete(f, "Offset")
+	delete(f, "PolicyId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeWorkGroupInfoRequest has unknown keys!", "")
 	}
@@ -13367,7 +13291,7 @@ func (r *DescribeWorkGroupInfoRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeWorkGroupInfoResponseParams struct {
-	// 工作组详细信息
+	// <p>工作组详细信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkGroupInfo *WorkGroupDetailInfo `json:"WorkGroupInfo,omitnil,omitempty" name:"WorkGroupInfo"`
 
@@ -13488,27 +13412,33 @@ func (r *DescribeWorkGroupsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DetachUserPolicyRequestParams struct {
-	// 用户Id，和CAM侧Uin匹配
+	// <p>用户Id，和CAM侧Uin匹配</p>
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
-	// 解绑的权限集合
+	// <p>解绑的权限集合</p>
 	PolicySet []*Policy `json:"PolicySet,omitnil,omitempty" name:"PolicySet"`
 
-	// 用户来源类型TencentAccount（普通腾讯云用户） / EntraAccount（微软用户）
+	// <p>用户来源类型TencentAccount（普通腾讯云用户） / EntraAccount（微软用户）</p>
 	AccountType *string `json:"AccountType,omitnil,omitempty" name:"AccountType"`
+
+	// <p>要授权的策略列表</p>
+	PolicyIds []*string `json:"PolicyIds,omitnil,omitempty" name:"PolicyIds"`
 }
 
 type DetachUserPolicyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 用户Id，和CAM侧Uin匹配
+	// <p>用户Id，和CAM侧Uin匹配</p>
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
-	// 解绑的权限集合
+	// <p>解绑的权限集合</p>
 	PolicySet []*Policy `json:"PolicySet,omitnil,omitempty" name:"PolicySet"`
 
-	// 用户来源类型TencentAccount（普通腾讯云用户） / EntraAccount（微软用户）
+	// <p>用户来源类型TencentAccount（普通腾讯云用户） / EntraAccount（微软用户）</p>
 	AccountType *string `json:"AccountType,omitnil,omitempty" name:"AccountType"`
+
+	// <p>要授权的策略列表</p>
+	PolicyIds []*string `json:"PolicyIds,omitnil,omitempty" name:"PolicyIds"`
 }
 
 func (r *DetachUserPolicyRequest) ToJsonString() string {
@@ -13526,6 +13456,7 @@ func (r *DetachUserPolicyRequest) FromJsonString(s string) error {
 	delete(f, "UserId")
 	delete(f, "PolicySet")
 	delete(f, "AccountType")
+	delete(f, "PolicyIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DetachUserPolicyRequest has unknown keys!", "")
 	}
@@ -13556,21 +13487,27 @@ func (r *DetachUserPolicyResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DetachWorkGroupPolicyRequestParams struct {
-	// 工作组Id
+	// <p>工作组Id</p>
 	WorkGroupId *int64 `json:"WorkGroupId,omitnil,omitempty" name:"WorkGroupId"`
 
-	// 解绑的权限集合
+	// <p>解绑的权限集合</p>
 	PolicySet []*Policy `json:"PolicySet,omitnil,omitempty" name:"PolicySet"`
+
+	// <p>要授权的策略列表</p>
+	PolicyIds []*string `json:"PolicyIds,omitnil,omitempty" name:"PolicyIds"`
 }
 
 type DetachWorkGroupPolicyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 工作组Id
+	// <p>工作组Id</p>
 	WorkGroupId *int64 `json:"WorkGroupId,omitnil,omitempty" name:"WorkGroupId"`
 
-	// 解绑的权限集合
+	// <p>解绑的权限集合</p>
 	PolicySet []*Policy `json:"PolicySet,omitnil,omitempty" name:"PolicySet"`
+
+	// <p>要授权的策略列表</p>
+	PolicyIds []*string `json:"PolicyIds,omitnil,omitempty" name:"PolicyIds"`
 }
 
 func (r *DetachWorkGroupPolicyRequest) ToJsonString() string {
@@ -13587,6 +13524,7 @@ func (r *DetachWorkGroupPolicyRequest) FromJsonString(s string) error {
 	}
 	delete(f, "WorkGroupId")
 	delete(f, "PolicySet")
+	delete(f, "PolicyIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DetachWorkGroupPolicyRequest has unknown keys!", "")
 	}
@@ -16159,77 +16097,80 @@ func (r *PauseStandardEngineResourceGroupsResponse) FromJsonString(s string) err
 }
 
 type Policy struct {
-	// 需要授权的数据库名，填 * 代表当前Catalog下所有数据库。当授权类型为管理员级别时，只允许填 “*”，当授权类型为数据连接级别时只允许填空，其他类型下可以任意指定数据库。
+	// <p>需要授权的数据库名，填 * 代表当前Catalog下所有数据库。当授权类型为管理员级别时，只允许填 “*”，当授权类型为数据连接级别时只允许填空，其他类型下可以任意指定数据库。</p>
 	Database *string `json:"Database,omitnil,omitempty" name:"Database"`
 
-	// 需要授权的数据源名称，管理员级别下只支持填  * （代表该级别全部资源）；数据源级别和数据库级别鉴权的情况下，只支持填COSDataCatalog或者*；在数据表级别鉴权下可以填写用户自定义数据源。不填情况下默认为DataLakeCatalog。注意：如果是对用户自定义数据源进行鉴权，DLC能够管理的权限是用户接入数据源的时候提供的账户的子集。
+	// <p>需要授权的数据源名称，管理员级别下只支持填  * （代表该级别全部资源）；数据源级别和数据库级别鉴权的情况下，只支持填COSDataCatalog或者*；在数据表级别鉴权下可以填写用户自定义数据源。不填情况下默认为DataLakeCatalog。注意：如果是对用户自定义数据源进行鉴权，DLC能够管理的权限是用户接入数据源的时候提供的账户的子集。</p>
 	Catalog *string `json:"Catalog,omitnil,omitempty" name:"Catalog"`
 
-	// 需要授权的表名，填 * 代表当前Database下所有表。当授权类型为管理员级别时，只允许填“*”，当授权类型为数据连接级别、数据库级别时只允许填空，其他类型下可以任意指定数据表。
+	// <p>需要授权的表名，填 * 代表当前Database下所有表。当授权类型为管理员级别时，只允许填“*”，当授权类型为数据连接级别、数据库级别时只允许填空，其他类型下可以任意指定数据表。</p>
 	Table *string `json:"Table,omitnil,omitempty" name:"Table"`
 
-	// 授权的权限操作，对于不同级别的鉴权提供不同操作。管理员权限：ALL，不填默认为ALL；数据连接级鉴权：CREATE；数据库级别鉴权：ALL、CREATE、ALTER、DROP；数据表权限：ALL、SELECT、INSERT、ALTER、DELETE、DROP、UPDATE。注意：在数据表权限下，指定的数据源不为COSDataCatalog的时候，只支持SELECT操作。
+	// <p>授权的权限操作，对于不同级别的鉴权提供不同操作。管理员权限：ALL，不填默认为ALL；数据连接级鉴权：CREATE；数据库级别鉴权：ALL、CREATE、ALTER、DROP；数据表权限：ALL、SELECT、INSERT、ALTER、DELETE、DROP、UPDATE。注意：在数据表权限下，指定的数据源不为COSDataCatalog的时候，只支持SELECT操作。</p>
 	Operation *string `json:"Operation,omitnil,omitempty" name:"Operation"`
 
-	// 授权类型，现在支持八种授权类型：ADMIN:管理员级别鉴权 DATASOURCE：数据连接级别鉴权 DATABASE：数据库级别鉴权 TABLE：表级别鉴权 VIEW：视图级别鉴权 FUNCTION：函数级别鉴权 COLUMN：列级别鉴权 ENGINE：数据引擎鉴权。不填默认为管理员级别鉴权。
+	// <p>授权类型，现在支持八种授权类型：ADMIN:管理员级别鉴权 DATASOURCE：数据连接级别鉴权 DATABASE：数据库级别鉴权 TABLE：表级别鉴权 VIEW：视图级别鉴权 FUNCTION：函数级别鉴权 COLUMN：列级别鉴权 ENGINE：数据引擎鉴权。不填默认为管理员级别鉴权。</p>
 	PolicyType *string `json:"PolicyType,omitnil,omitempty" name:"PolicyType"`
 
-	// 需要授权的函数名，填 * 代表当前Catalog下所有函数。当授权类型为管理员级别时，只允许填“*”，当授权类型为数据连接级别时只允许填空，其他类型下可以任意指定函数。
+	// <p>需要授权的函数名，填 * 代表当前Catalog下所有函数。当授权类型为管理员级别时，只允许填“*”，当授权类型为数据连接级别时只允许填空，其他类型下可以任意指定函数。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Function *string `json:"Function,omitnil,omitempty" name:"Function"`
 
-	// 需要授权的视图，填 * 代表当前Database下所有视图。当授权类型为管理员级别时，只允许填“*”，当授权类型为数据连接级别、数据库级别时只允许填空，其他类型下可以任意指定视图。
+	// <p>需要授权的视图，填 * 代表当前Database下所有视图。当授权类型为管理员级别时，只允许填“*”，当授权类型为数据连接级别、数据库级别时只允许填空，其他类型下可以任意指定视图。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	View *string `json:"View,omitnil,omitempty" name:"View"`
 
-	// 需要授权的列，填 * 代表当前所有列。当授权类型为管理员级别时，只允许填“*”
+	// <p>需要授权的列，填 * 代表当前所有列。当授权类型为管理员级别时，只允许填“*”</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Column *string `json:"Column,omitnil,omitempty" name:"Column"`
 
-	// 需要授权的数据引擎，填 * 代表当前所有引擎。当授权类型为管理员级别时，只允许填“*”
+	// <p>需要授权的数据引擎，填 * 代表当前所有引擎。当授权类型为管理员级别时，只允许填“*”</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataEngine *string `json:"DataEngine,omitnil,omitempty" name:"DataEngine"`
 
-	// 用户是否可以进行二次授权。当为true的时候，被授权的用户可以将本次获取的权限再次授权给其他子用户。默认为false
+	// <p>用户是否可以进行二次授权。当为true的时候，被授权的用户可以将本次获取的权限再次授权给其他子用户。默认为false</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReAuth *bool `json:"ReAuth,omitnil,omitempty" name:"ReAuth"`
 
-	// 权限来源，入参不填。USER：权限来自用户本身；WORKGROUP：权限来自绑定的工作组
+	// <p>权限来源，入参不填。USER：权限来自用户本身；WORKGROUP：权限来自绑定的工作组</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 
-	// 授权模式，入参不填。COMMON：普通模式；SENIOR：高级模式。
+	// <p>授权模式，入参不填。COMMON：普通模式；SENIOR：高级模式。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
 
-	// 操作者，入参不填。
+	// <p>操作者，入参不填。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 权限创建的时间，入参不填
+	// <p>权限创建的时间，入参不填</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 权限所属工作组的ID，只有当该权限的来源为工作组时才会有值。即仅当Source字段的值为WORKGROUP时该字段才有值。
+	// <p>权限所属工作组的ID，只有当该权限的来源为工作组时才会有值。即仅当Source字段的值为WORKGROUP时该字段才有值。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SourceId *int64 `json:"SourceId,omitnil,omitempty" name:"SourceId"`
 
-	// 权限所属工作组的名称，只有当该权限的来源为工作组时才会有值。即仅当Source字段的值为WORKGROUP时该字段才有值。
+	// <p>权限所属工作组的名称，只有当该权限的来源为工作组时才会有值。即仅当Source字段的值为WORKGROUP时该字段才有值。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SourceName *string `json:"SourceName,omitnil,omitempty" name:"SourceName"`
 
-	// 策略ID
+	// <p>策略ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 引擎类型
+	// <p>引擎类型</p>
 	EngineGeneration *string `json:"EngineGeneration,omitnil,omitempty" name:"EngineGeneration"`
 
-	// 需要授权的Model名，填 * 代表当前Database下所有表。当授权类型为管理员级别时，只允许填“*”，当授权类型为数据连接级别、数据库级别时只允许填空，其他类型下可以任意指定数据表。
+	// <p>需要授权的Model名，填 * 代表当前Database下所有表。当授权类型为管理员级别时，只允许填“*”，当授权类型为数据连接级别、数据库级别时只允许填空，其他类型下可以任意指定数据表。</p>
 	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
 
-	// 权限来源是否为管理员
+	// <p>权限来源是否为管理员</p>
 	IsAdminPolicy *bool `json:"IsAdminPolicy,omitnil,omitempty" name:"IsAdminPolicy"`
+
+	// <p>user和workgroup对应的确定性字符串PolicyId</p>
+	PolicyId *string `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
 }
 
 type Policys struct {

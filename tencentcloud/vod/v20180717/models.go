@@ -3580,6 +3580,34 @@ type AudioVolumeParam struct {
 	Gain *float64 `json:"Gain,omitnil,omitempty" name:"Gain"`
 }
 
+type BeautyEffectItem struct {
+	// <p>是否开启美颜。</p><p>枚举值：</p><ul><li>ON： 开</li><li>OFF： 关</li></ul>
+	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
+
+	// <p>美颜项。</p>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>美颜强度。</p>
+	Value *int64 `json:"Value,omitnil,omitempty" name:"Value"`
+
+	// <p>附加资源路径。</p>
+	ResourcePath *string `json:"ResourcePath,omitnil,omitempty" name:"ResourcePath"`
+
+	// <p>附加信息。</p>
+	ExtInfo *string `json:"ExtInfo,omitnil,omitempty" name:"ExtInfo"`
+}
+
+type BeautyFilterItem struct {
+	// <p>是否开启滤镜。</p><p>枚举值：</p><ul><li>ON： 开</li><li>OFF： 关</li></ul>
+	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
+
+	// <p>滤镜项。</p>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>滤镜强度。</p>
+	Value *int64 `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
 type BlackWhiteEdgeConfigureInfo struct {
 	// 视频画面黑边、白边、黑屏、白屏检测开关，可选值：
 	// <li>ON：开启；</li>
@@ -19706,6 +19734,14 @@ type IPFilterPolicy struct {
 	IPList []*string `json:"IPList,omitnil,omitempty" name:"IPList"`
 }
 
+type ImageBeautyConfig struct {
+	// <p>美颜效果项。</p>
+	BeautyEffectItems []*BeautyEffectItem `json:"BeautyEffectItems,omitnil,omitempty" name:"BeautyEffectItems"`
+
+	// <p>美颜滤镜项。</p>
+	BeautyFilterItems []*BeautyFilterItem `json:"BeautyFilterItems,omitnil,omitempty" name:"BeautyFilterItems"`
+}
+
 type ImageBlur struct {
 	// 图片模糊的操作类型。可选模式有：
 	// <li>Gaussian : 高斯模糊。</li>
@@ -27163,13 +27199,16 @@ type ProcessImageAsync struct {
 }
 
 type ProcessImageAsyncInput struct {
-	// 图片处理的FileId。
+	// <p>图片处理的FileId。</p>
 	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
 
-	// 图片处理参数。
+	// <p>图片URL。</p>
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// <p>图片处理参数。</p>
 	ImageTaskInput *ProcessImageAsyncTaskInput `json:"ImageTaskInput,omitnil,omitempty" name:"ImageTaskInput"`
 
-	// 图片处理任务的输出媒体文件配置。
+	// <p>图片处理任务的输出媒体文件配置。</p>
 	OutputConfig *ProcessImageAsyncOutputConfig `json:"OutputConfig,omitnil,omitempty" name:"OutputConfig"`
 }
 
@@ -27342,13 +27381,17 @@ func (r *ProcessImageAsyncResponse) FromJsonString(s string) error {
 }
 
 type ProcessImageAsyncTask struct {
-	// 图片转码输出配置。
+	// <p>图片转码输出配置。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EncodeConfig *ImageEncodeConfig `json:"EncodeConfig,omitnil,omitempty" name:"EncodeConfig"`
 
-	// 图片增强配置。
+	// <p>图片增强配置。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnhanceConfig *ImageEnhanceConfig `json:"EnhanceConfig,omitnil,omitempty" name:"EnhanceConfig"`
+
+	// <p>图片美颜配置。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BeautyConfig *ImageBeautyConfig `json:"BeautyConfig,omitnil,omitempty" name:"BeautyConfig"`
 }
 
 type ProcessImageAsyncTaskInput struct {

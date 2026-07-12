@@ -409,6 +409,25 @@ type AutoScalerRules struct {
 	Policies []*AutoScalerPolicy `json:"Policies,omitnil,omitempty" name:"Policies"`
 }
 
+type BetaLabel struct {
+	// <p>键</p>
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// <p>值</p>
+	Value *BetaLabelMatchString `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type BetaLabelMatchString struct {
+	// <p>类型</p><p>枚举值：</p><ul><li>EXAT： 精确匹配</li></ul>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>值</p>
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+
+	// <p>值类型</p><p>枚举值：</p><ul><li>TEXT： 文本</li></ul>
+	ValueType *string `json:"ValueType,omitnil,omitempty" name:"ValueType"`
+}
+
 // Predefined struct for user
 type BindAutoScalerResourceStrategyToGroupsRequestParams struct {
 	// 网关实例ID
@@ -1496,62 +1515,68 @@ type ConfigFilePublishInfo struct {
 }
 
 type ConfigFileRelease struct {
-	// 配置文件发布id
+	// <p>配置文件发布id</p>
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 配置文件发布名称
+	// <p>配置文件发布名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 配置文件发布命名空间
+	// <p>配置文件发布命名空间</p>
 	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
 
-	// 配置文件发布组
+	// <p>配置文件发布组</p>
 	Group *string `json:"Group,omitnil,omitempty" name:"Group"`
 
-	// 配置文件发布文件名称
+	// <p>配置文件发布文件名称</p>
 	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
 
-	// 配置文件发布内容
+	// <p>配置文件发布内容</p>
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 
-	// 配置文件发布注释
+	// <p>配置文件发布注释</p>
 	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
 
-	// 配置文件发布Md5
+	// <p>配置文件发布Md5</p>
 	Md5 *string `json:"Md5,omitnil,omitempty" name:"Md5"`
 
-	// 配置文件发布版本
+	// <p>配置文件发布版本</p>
 	Version *uint64 `json:"Version,omitnil,omitempty" name:"Version"`
 
-	// 配置文件发布创建时间
+	// <p>配置文件发布创建时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 配置文件发布创建者
+	// <p>配置文件发布创建者</p>
 	CreateBy *string `json:"CreateBy,omitnil,omitempty" name:"CreateBy"`
 
-	// 配置文件发布修改时间
+	// <p>配置文件发布修改时间</p>
 	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 
-	// 配置文件发布修改者
+	// <p>配置文件发布修改者</p>
 	ModifyBy *string `json:"ModifyBy,omitnil,omitempty" name:"ModifyBy"`
 
-	// 发布描述
+	// <p>发布描述</p>
 	ReleaseDescription *string `json:"ReleaseDescription,omitnil,omitempty" name:"ReleaseDescription"`
 
-	// 是否生效
+	// <p>是否生效</p>
 	Active *bool `json:"Active,omitnil,omitempty" name:"Active"`
 
-	// 格式
+	// <p>格式</p>
 	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
 
-	// 配置文件ID
+	// <p>配置文件ID</p>
 	ConfigFileId *string `json:"ConfigFileId,omitnil,omitempty" name:"ConfigFileId"`
 
-	// 配置文件类型
+	// <p>配置文件类型</p>
 	ConfigFileSupportedClient *int64 `json:"ConfigFileSupportedClient,omitnil,omitempty" name:"ConfigFileSupportedClient"`
 
-	// 配置文件持久化
+	// <p>配置文件持久化</p>
 	ConfigFilePersistent *ConfigFilePersistent `json:"ConfigFilePersistent,omitnil,omitempty" name:"ConfigFilePersistent"`
+
+	// <p>灰度标签</p>
+	BetaLabels []*BetaLabel `json:"BetaLabels,omitnil,omitempty" name:"BetaLabels"`
+
+	// <p>发布类型</p><p>枚举值：</p><ul><li>gary： 灰度发布</li></ul>
+	ReleaseType *string `json:"ReleaseType,omitnil,omitempty" name:"ReleaseType"`
 }
 
 type ConfigFileReleaseDeletion struct {

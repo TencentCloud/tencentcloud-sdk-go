@@ -90,6 +90,12 @@ type ComputeDetail struct {
 
 	// 内存
 	Memory *string `json:"Memory,omitnil,omitempty" name:"Memory"`
+
+	// 该套餐是否支持包年包月
+	PrepaidEnable *bool `json:"PrepaidEnable,omitnil,omitempty" name:"PrepaidEnable"`
+
+	// 该套餐是否支持按量计费
+	PostpaidEnable *bool `json:"PostpaidEnable,omitnil,omitempty" name:"PostpaidEnable"`
 }
 
 type ComputeInfo struct {
@@ -221,6 +227,9 @@ type CreateInferServiceByTemplateRequestParams struct {
 
 	// <p>推理服务安全类型</p><p>枚举值：</p><ul><li>STANDARD： 标准推理服务</li><li>CONFIDENTIAL： 可信推理服务</li></ul>
 	SecurityType *string `json:"SecurityType,omitnil,omitempty" name:"SecurityType"`
+
+	// <p>包年包月参数(ServiceChargeType为包月时必填)</p>
+	ServiceChargePrepaid *ServiceChargePrepaid `json:"ServiceChargePrepaid,omitnil,omitempty" name:"ServiceChargePrepaid"`
 }
 
 type CreateInferServiceByTemplateRequest struct {
@@ -246,6 +255,9 @@ type CreateInferServiceByTemplateRequest struct {
 
 	// <p>推理服务安全类型</p><p>枚举值：</p><ul><li>STANDARD： 标准推理服务</li><li>CONFIDENTIAL： 可信推理服务</li></ul>
 	SecurityType *string `json:"SecurityType,omitnil,omitempty" name:"SecurityType"`
+
+	// <p>包年包月参数(ServiceChargeType为包月时必填)</p>
+	ServiceChargePrepaid *ServiceChargePrepaid `json:"ServiceChargePrepaid,omitnil,omitempty" name:"ServiceChargePrepaid"`
 }
 
 func (r *CreateInferServiceByTemplateRequest) ToJsonString() string {
@@ -267,6 +279,7 @@ func (r *CreateInferServiceByTemplateRequest) FromJsonString(s string) error {
 	delete(f, "HyperParam")
 	delete(f, "NetworkSetting")
 	delete(f, "SecurityType")
+	delete(f, "ServiceChargePrepaid")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInferServiceByTemplateRequest has unknown keys!", "")
 	}
@@ -371,14 +384,14 @@ func (r *CreateMuskPromptResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteServiceRequestParams struct {
-	// 服务ID
+	// <p>服务ID</p>
 	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
 }
 
 type DeleteServiceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 服务ID
+	// <p>服务ID</p>
 	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
 }
 
@@ -442,6 +455,9 @@ type DeployInferServiceRequestParams struct {
 
 	// <p>安全类型</p><p>枚举值：</p><ul><li>STANDARD： 标准推理</li><li>CONFIDENTIAL： 可信推理</li></ul>
 	SecurityType *string `json:"SecurityType,omitnil,omitempty" name:"SecurityType"`
+
+	// <p>包年包月参数(包月时必填)</p>
+	ServiceChargePrepaid *ServiceChargePrepaid `json:"ServiceChargePrepaid,omitnil,omitempty" name:"ServiceChargePrepaid"`
 }
 
 type DeployInferServiceRequest struct {
@@ -464,6 +480,9 @@ type DeployInferServiceRequest struct {
 
 	// <p>安全类型</p><p>枚举值：</p><ul><li>STANDARD： 标准推理</li><li>CONFIDENTIAL： 可信推理</li></ul>
 	SecurityType *string `json:"SecurityType,omitnil,omitempty" name:"SecurityType"`
+
+	// <p>包年包月参数(包月时必填)</p>
+	ServiceChargePrepaid *ServiceChargePrepaid `json:"ServiceChargePrepaid,omitnil,omitempty" name:"ServiceChargePrepaid"`
 }
 
 func (r *DeployInferServiceRequest) ToJsonString() string {
@@ -484,6 +503,7 @@ func (r *DeployInferServiceRequest) FromJsonString(s string) error {
 	delete(f, "HyperParam")
 	delete(f, "NetworkSetting")
 	delete(f, "SecurityType")
+	delete(f, "ServiceChargePrepaid")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeployInferServiceRequest has unknown keys!", "")
 	}
@@ -2054,6 +2074,17 @@ type SceneInfo struct {
 	SceneName *string `json:"SceneName,omitnil,omitempty" name:"SceneName"`
 }
 
+type ServiceChargePrepaid struct {
+	// <p>购买时长，默认1</p>
+	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
+
+	// <p>时长单位：MONTH(月)/DAY(天)</p>
+	TimeUnit *string `json:"TimeUnit,omitnil,omitempty" name:"TimeUnit"`
+
+	// <p>自动续费：NOTIFY_AND_AUTO_RENEW/NOTIFY_AND_MANUAL_RENEW/DISABLE_NOTIFY_AND_MANUAL_RENEW</p>
+	RenewFlag *string `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
+}
+
 type ServiceDetail struct {
 	// 服务id
 	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
@@ -2093,6 +2124,21 @@ type ServiceDetail struct {
 
 
 	TargetReplicas *uint64 `json:"TargetReplicas,omitnil,omitempty" name:"TargetReplicas"`
+
+	// 计费类型：POSTPAID_BY_HOUR(按量)/PREPAID_BY_MONTH(包月)
+	ChargeType *string `json:"ChargeType,omitnil,omitempty" name:"ChargeType"`
+
+	// 到期时间(包月)，按量为空
+	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 自动续费标识(包月)
+	RenewFlag *string `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
+
+	// 受限状态(如欠费隔离)
+	RestrictState *string `json:"RestrictState,omitnil,omitempty" name:"RestrictState"`
+
+	// 是否自定义部署：1是 0否
+	IsCustomDeploy *int64 `json:"IsCustomDeploy,omitnil,omitempty" name:"IsCustomDeploy"`
 }
 
 type ServiceMetaData struct {

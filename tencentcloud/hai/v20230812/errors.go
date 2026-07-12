@@ -23,6 +23,9 @@ const (
 	// 欠费账户不能创建实例
 	FAILEDOPERATION_ARREARSACCOUNTCANNOTRUNINSTANCES = "FailedOperation.ArrearsAccountCannotRunInstances"
 
+	// 该服务已开启自动扩缩容功能，请先关闭自动扩缩容，再手动调整副本数。
+	FAILEDOPERATION_AUTOSCALEMANUALCONFLICT = "FailedOperation.AutoscaleManualConflict"
+
 	// 资源不允许退还
 	FAILEDOPERATION_CANNOTRETURN = "FailedOperation.CannotReturn"
 

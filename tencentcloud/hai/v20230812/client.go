@@ -128,6 +128,7 @@ func NewCreateInferServiceByTemplateResponse() (response *CreateInferServiceByTe
 // 本接口(CreateInferServiceByTemplate)用于根据模板创建服务
 //
 // 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_COMPUTESETCANNOTBENONE = "InvalidParameterValue.ComputeSetCannotBeNone"
 //  INVALIDPARAMETERVALUE_INVALIDCHARGETYPE = "InvalidParameterValue.InvalidChargeType"
 //  INVALIDPARAMETERVALUE_INVALIDSECURITYTYPE = "InvalidParameterValue.InvalidSecurityType"
@@ -148,6 +149,7 @@ func (c *Client) CreateInferServiceByTemplate(request *CreateInferServiceByTempl
 // 本接口(CreateInferServiceByTemplate)用于根据模板创建服务
 //
 // 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_COMPUTESETCANNOTBENONE = "InvalidParameterValue.ComputeSetCannotBeNone"
 //  INVALIDPARAMETERVALUE_INVALIDCHARGETYPE = "InvalidParameterValue.InvalidChargeType"
 //  INVALIDPARAMETERVALUE_INVALIDSECURITYTYPE = "InvalidParameterValue.InvalidSecurityType"
@@ -1554,6 +1556,7 @@ func NewUpdateServiceConfigsResponse() (response *UpdateServiceConfigsResponse) 
 // 本接口(UpdateServiceConfigs)用于更新服务配置。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_AUTOSCALEMANUALCONFLICT = "FailedOperation.AutoscaleManualConflict"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_INVALIDSERVICEIDMALFORMED = "InvalidParameterValue.InvalidServiceIdMalformed"
 //  INVALIDPARAMETERVALUE_SERVICEIDNOTFOUND = "InvalidParameterValue.ServiceIdNotFound"
@@ -1568,6 +1571,7 @@ func (c *Client) UpdateServiceConfigs(request *UpdateServiceConfigsRequest) (res
 // 本接口(UpdateServiceConfigs)用于更新服务配置。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_AUTOSCALEMANUALCONFLICT = "FailedOperation.AutoscaleManualConflict"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_INVALIDSERVICEIDMALFORMED = "InvalidParameterValue.InvalidServiceIdMalformed"
 //  INVALIDPARAMETERVALUE_SERVICEIDNOTFOUND = "InvalidParameterValue.ServiceIdNotFound"

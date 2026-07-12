@@ -5423,6 +5423,68 @@ func (c *Client) DescribeClusterInstanceGrpsWithContext(ctx context.Context, req
     return
 }
 
+func NewDescribeClusterLevelsRequest() (request *DescribeClusterLevelsRequest) {
+    request = &DescribeClusterLevelsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeClusterLevels")
+    
+    
+    return
+}
+
+func NewDescribeClusterLevelsResponse() (response *DescribeClusterLevelsResponse) {
+    response = &DescribeClusterLevelsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeClusterLevels
+// 查询可支持的集群类型列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeClusterLevels(request *DescribeClusterLevelsRequest) (response *DescribeClusterLevelsResponse, err error) {
+    return c.DescribeClusterLevelsWithContext(context.Background(), request)
+}
+
+// DescribeClusterLevels
+// 查询可支持的集群类型列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeClusterLevelsWithContext(ctx context.Context, request *DescribeClusterLevelsRequest) (response *DescribeClusterLevelsResponse, err error) {
+    if request == nil {
+        request = NewDescribeClusterLevelsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeClusterLevels")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeClusterLevels require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeClusterLevelsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeClusterParamLogsRequest() (request *DescribeClusterParamLogsRequest) {
     request = &DescribeClusterParamLogsRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -88,24 +88,69 @@ type BatchCreateFailedItem struct {
 }
 
 type BindingItem struct {
-	// 资源 ID（模型 ID 或服务 ID）。
+	// <p>资源 ID（模型 ID 或服务 ID）。</p>
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
-	// 资源类型。取值：endpoint（服务）、model（模型）。
+	// <p>资源类型。取值：endpoint（推理服务）、model（模型）。推荐绑定endpoint，绑定model即将下线。已绑定model的apikey仍可使用，但控制台回显将不会展示模型绑定列表。</p><p>枚举值：</p><ul><li>endpoint： 绑定到endpoint（默认推理服务或自定义推理服务）</li></ul>
 	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
-	// 资源状态
+	// <p>资源状态</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 // Predefined struct for user
 type CreateApiKeyRequestParams struct {
+	// <p>API 密钥名称，创建后不可修改。</p>
+	ApiKeyName *string `json:"ApiKeyName,omitnil,omitempty" name:"ApiKeyName"`
 
+	// <p>平台类型。取值：maas</p>
+	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
+
+	// <p>绑定类型。取值：all（全部模型和接入点）、model_custom_endpoint_custom（自定义模型+自定义接入点）。</p><p>枚举值：</p><ul><li>all： 全部模型和接入点</li><li>model_custom_endpoint_custom： 自定义模型+自定义接入点</li></ul>
+	BindType *string `json:"BindType,omitnil,omitempty" name:"BindType"`
+
+	// <p>备注信息</p>
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// <p>初始状态。取值：enable（启用）、disable（禁用）。不传默认 enable。</p>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>资源绑定列表（model 和 endpoint 混合），每项需显式指定 ResourceType。BindType 为 all 时不填；BindType 为model_custom_endpoint_custom时必填。</p>
+	Bindings []*BindingItem `json:"Bindings,omitnil,omitempty" name:"Bindings"`
+
+	// <p>IP 白名单列表。支持 IPv4（如 1.2.3.4）和 CIDR（如 10.0.0.0/24）格式，IPv6暂不支持。最多 50 个条目，不支持重复。不传或传空数组表示不限制 IP。</p>
+	IpWhitelist []*string `json:"IpWhitelist,omitnil,omitempty" name:"IpWhitelist"`
+
+	// <p>Token 限额配置多维度列表。可选，不传表示不开启限额。</p>
+	Quotas []*QuotaCreateItem `json:"Quotas,omitnil,omitempty" name:"Quotas"`
 }
 
 type CreateApiKeyRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>API 密钥名称，创建后不可修改。</p>
+	ApiKeyName *string `json:"ApiKeyName,omitnil,omitempty" name:"ApiKeyName"`
+
+	// <p>平台类型。取值：maas</p>
+	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
+
+	// <p>绑定类型。取值：all（全部模型和接入点）、model_custom_endpoint_custom（自定义模型+自定义接入点）。</p><p>枚举值：</p><ul><li>all： 全部模型和接入点</li><li>model_custom_endpoint_custom： 自定义模型+自定义接入点</li></ul>
+	BindType *string `json:"BindType,omitnil,omitempty" name:"BindType"`
+
+	// <p>备注信息</p>
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// <p>初始状态。取值：enable（启用）、disable（禁用）。不传默认 enable。</p>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>资源绑定列表（model 和 endpoint 混合），每项需显式指定 ResourceType。BindType 为 all 时不填；BindType 为model_custom_endpoint_custom时必填。</p>
+	Bindings []*BindingItem `json:"Bindings,omitnil,omitempty" name:"Bindings"`
+
+	// <p>IP 白名单列表。支持 IPv4（如 1.2.3.4）和 CIDR（如 10.0.0.0/24）格式，IPv6暂不支持。最多 50 个条目，不支持重复。不传或传空数组表示不限制 IP。</p>
+	IpWhitelist []*string `json:"IpWhitelist,omitnil,omitempty" name:"IpWhitelist"`
+
+	// <p>Token 限额配置多维度列表。可选，不传表示不开启限额。</p>
+	Quotas []*QuotaCreateItem `json:"Quotas,omitnil,omitempty" name:"Quotas"`
 }
 
 func (r *CreateApiKeyRequest) ToJsonString() string {
@@ -120,7 +165,14 @@ func (r *CreateApiKeyRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "ApiKeyName")
+	delete(f, "Platform")
+	delete(f, "BindType")
+	delete(f, "Remark")
+	delete(f, "Status")
+	delete(f, "Bindings")
+	delete(f, "IpWhitelist")
+	delete(f, "Quotas")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateApiKeyRequest has unknown keys!", "")
 	}
@@ -129,6 +181,9 @@ func (r *CreateApiKeyRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateApiKeyResponseParams struct {
+	// <p>apikey id</p>
+	ApiKeyId *string `json:"ApiKeyId,omitnil,omitempty" name:"ApiKeyId"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -499,12 +554,21 @@ func (r *CreateTokenPlanTeamOrderAndBuyResponse) FromJsonString(s string) error 
 
 // Predefined struct for user
 type DeleteApiKeyRequestParams struct {
+	// <p>API 密钥 ID。</p>
+	ApiKeyId *string `json:"ApiKeyId,omitnil,omitempty" name:"ApiKeyId"`
 
+	// <p>平台类型。取值：maas。</p>
+	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
 }
 
 type DeleteApiKeyRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>API 密钥 ID。</p>
+	ApiKeyId *string `json:"ApiKeyId,omitnil,omitempty" name:"ApiKeyId"`
+
+	// <p>平台类型。取值：maas。</p>
+	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
 }
 
 func (r *DeleteApiKeyRequest) ToJsonString() string {
@@ -519,7 +583,8 @@ func (r *DeleteApiKeyRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "ApiKeyId")
+	delete(f, "Platform")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteApiKeyRequest has unknown keys!", "")
 	}
@@ -2047,12 +2112,45 @@ type ModelSpec struct {
 
 // Predefined struct for user
 type ModifyApiKeyInfoRequestParams struct {
+	// <p>API 密钥 ID。</p>
+	ApiKeyId *string `json:"ApiKeyId,omitnil,omitempty" name:"ApiKeyId"`
 
+	// <p>平台类型。取值：maas。</p>
+	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
+
+	// <p>API 密钥名称。最大 128 字符。不传表示不修改。</p>
+	ApiKeyName *string `json:"ApiKeyName,omitnil,omitempty" name:"ApiKeyName"`
+
+	// <p>备注。</p>
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// <p>IP 白名单列表。支持 IPv4（如 1.2.3.4）、CIDR（如 10.0.0.0/24）格式，IPv6暂不支持。最多 50 个，不支持重复。传入空数组表示清空白名单（不限制 IP）。不传表示不修改。</p>
+	IpWhitelist []*string `json:"IpWhitelist,omitnil,omitempty" name:"IpWhitelist"`
+
+	// <p>【修改限额推荐使用QuotaDesired参数】Token 限额期望状态。可选，不传表示不修改，传入空数组表示清空。和 Quotas（Token限额配置）字段互斥，不支持同时传入</p>
+	QuotasDesired []*QuotasDesired `json:"QuotasDesired,omitnil,omitempty" name:"QuotasDesired"`
 }
 
 type ModifyApiKeyInfoRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>API 密钥 ID。</p>
+	ApiKeyId *string `json:"ApiKeyId,omitnil,omitempty" name:"ApiKeyId"`
+
+	// <p>平台类型。取值：maas。</p>
+	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
+
+	// <p>API 密钥名称。最大 128 字符。不传表示不修改。</p>
+	ApiKeyName *string `json:"ApiKeyName,omitnil,omitempty" name:"ApiKeyName"`
+
+	// <p>备注。</p>
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// <p>IP 白名单列表。支持 IPv4（如 1.2.3.4）、CIDR（如 10.0.0.0/24）格式，IPv6暂不支持。最多 50 个，不支持重复。传入空数组表示清空白名单（不限制 IP）。不传表示不修改。</p>
+	IpWhitelist []*string `json:"IpWhitelist,omitnil,omitempty" name:"IpWhitelist"`
+
+	// <p>【修改限额推荐使用QuotaDesired参数】Token 限额期望状态。可选，不传表示不修改，传入空数组表示清空。和 Quotas（Token限额配置）字段互斥，不支持同时传入</p>
+	QuotasDesired []*QuotasDesired `json:"QuotasDesired,omitnil,omitempty" name:"QuotasDesired"`
 }
 
 func (r *ModifyApiKeyInfoRequest) ToJsonString() string {
@@ -2067,7 +2165,12 @@ func (r *ModifyApiKeyInfoRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "ApiKeyId")
+	delete(f, "Platform")
+	delete(f, "ApiKeyName")
+	delete(f, "Remark")
+	delete(f, "IpWhitelist")
+	delete(f, "QuotasDesired")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyApiKeyInfoRequest has unknown keys!", "")
 	}
@@ -2098,12 +2201,27 @@ func (r *ModifyApiKeyInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyApiKeyStatusRequestParams struct {
+	// <p>API 密钥 ID。</p>
+	ApiKeyId *string `json:"ApiKeyId,omitnil,omitempty" name:"ApiKeyId"`
 
+	// <p>平台类型。取值：maas。</p>
+	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
+
+	// <p>状态。取值：enable（启用）、disable（禁用）。</p>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 type ModifyApiKeyStatusRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>API 密钥 ID。</p>
+	ApiKeyId *string `json:"ApiKeyId,omitnil,omitempty" name:"ApiKeyId"`
+
+	// <p>平台类型。取值：maas。</p>
+	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
+
+	// <p>状态。取值：enable（启用）、disable（禁用）。</p>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 func (r *ModifyApiKeyStatusRequest) ToJsonString() string {
@@ -2118,7 +2236,9 @@ func (r *ModifyApiKeyStatusRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "ApiKeyId")
+	delete(f, "Platform")
+	delete(f, "Status")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyApiKeyStatusRequest has unknown keys!", "")
 	}
@@ -2393,6 +2513,17 @@ func (r *ModifyTokenPlanApiKeySecretResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type QuotaCreateItem struct {
+	// <p>限额周期。取值：d（按日）、m（按月）、lifetime（总额度，不重置）。</p>
+	CycleUnit *string `json:"CycleUnit,omitnil,omitempty" name:"CycleUnit"`
+
+	// <p>维度当期限额总量（Token 数），不能大于10万亿。使用字符串避免大数精度丢失。</p>
+	CycleCredits *string `json:"CycleCredits,omitnil,omitempty" name:"CycleCredits"`
+
+	// <p>月度限额起始日。CycleUnit 为 m 时可选，1~31，默认 1。小月（如 2 月）由下游自动取该月最后一天。</p>
+	MonthStartDay *int64 `json:"MonthStartDay,omitnil,omitempty" name:"MonthStartDay"`
+}
+
 type QuotaInfo struct {
 	// 限额包 ID。
 	PkgId *string `json:"PkgId,omitnil,omitempty" name:"PkgId"`
@@ -2414,6 +2545,17 @@ type QuotaInfo struct {
 
 	// 限额过期时间。
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+}
+
+type QuotasDesired struct {
+	// <p>限额周期，必填。取值：d（按日）、m（按月）、lifetime（总额度）。</p>
+	CycleUnit *string `json:"CycleUnit,omitnil,omitempty" name:"CycleUnit"`
+
+	// <p>单周期额度（Token 数），必填，不能大于10万亿。使用字符串避免大数精度丢失。同维度若与现网不同视为升配/降配。</p>
+	CycleCredits *string `json:"CycleCredits,omitnil,omitempty" name:"CycleCredits"`
+
+	// <p>月度限额起始日。CycleUnit=m 时可选，1~31，默认 1。小月（如 2 月）由下游自动取该月最后一天。已有月度限额包时，更新月起始日视为周期窗口切换，会 delete 旧包后 add 新包，累计额度会重置</p>
+	MonthStartDay *int64 `json:"MonthStartDay,omitnil,omitempty" name:"MonthStartDay"`
 }
 
 // Predefined struct for user
