@@ -16271,22 +16271,25 @@ type LLMMonPkg struct {
 }
 
 type LLMPkg struct {
-	// 资源id
+	// <p>资源id</p>
 	ResourceIds *string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
 
-	// 状态
+	// <p>状态</p>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 地域
+	// <p>地域</p>
 	Region *int64 `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 开始时间
+	// <p>开始时间</p>
 	BeginTime *string `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
 
-	// 结束时间
+	// <p>结束时间</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 计费项
+	// <p>申请数量</p>
+	InquireNum *int64 `json:"InquireNum,omitnil,omitempty" name:"InquireNum"`
+
+	// <p>计费项标签，如 sv_wsm_waf_llm_prompt_attack</p>
 	InquireKey *string `json:"InquireKey,omitnil,omitempty" name:"InquireKey"`
 }
 

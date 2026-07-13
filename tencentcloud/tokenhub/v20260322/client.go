@@ -113,6 +113,96 @@ func (c *Client) CreateApiKeyWithContext(ctx context.Context, request *CreateApi
     return
 }
 
+func NewCreateEndpointRequest() (request *CreateEndpointRequest) {
+    request = &CreateEndpointRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tokenhub", APIVersion, "CreateEndpoint")
+    
+    
+    return
+}
+
+func NewCreateEndpointResponse() (response *CreateEndpointResponse) {
+    response = &CreateEndpointResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateEndpoint
+// 创建推理服务。
+//
+// 
+//
+// 创建一个在线推理服务，创建成功后返回推理服务 ID。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CREATEINSTANCEFAILED = "FailedOperation.CreateInstanceFailed"
+//  FAILEDOPERATION_ENABLEPOSTPAIDFAILED = "FailedOperation.EnablePostPaidFailed"
+//  FAILEDOPERATION_ENDPOINTALREADYEXISTS = "FailedOperation.EndpointAlreadyExists"
+//  FAILEDOPERATION_FREEQUOTAEXHAUSTED = "FailedOperation.FreeQuotaExhausted"
+//  FAILEDOPERATION_PACKAGEQUERYFAILED = "FailedOperation.PackageQueryFailed"
+//  FAILEDOPERATION_PURCHASETPMFAILED = "FailedOperation.PurchaseTpmFailed"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETER_MODELIDNOTFOUND = "InvalidParameter.ModelIdNotFound"
+//  INVALIDPARAMETER_QPMLIMITEXCEEDED = "InvalidParameter.QPMLimitExceeded"
+//  INVALIDPARAMETER_TPMBELOWQUOTA = "InvalidParameter.TPMBelowQuota"
+//  INVALIDPARAMETER_TPMLIMITEXCEEDED = "InvalidParameter.TPMLimitExceeded"
+//  INVALIDPARAMETERVALUE_ENDPOINTNAMETOOLONG = "InvalidParameterValue.EndpointNameTooLong"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  LIMITEXCEEDED_ENDPOINTQUOTA = "LimitExceeded.EndpointQuota"
+//  MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) CreateEndpoint(request *CreateEndpointRequest) (response *CreateEndpointResponse, err error) {
+    return c.CreateEndpointWithContext(context.Background(), request)
+}
+
+// CreateEndpoint
+// 创建推理服务。
+//
+// 
+//
+// 创建一个在线推理服务，创建成功后返回推理服务 ID。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CREATEINSTANCEFAILED = "FailedOperation.CreateInstanceFailed"
+//  FAILEDOPERATION_ENABLEPOSTPAIDFAILED = "FailedOperation.EnablePostPaidFailed"
+//  FAILEDOPERATION_ENDPOINTALREADYEXISTS = "FailedOperation.EndpointAlreadyExists"
+//  FAILEDOPERATION_FREEQUOTAEXHAUSTED = "FailedOperation.FreeQuotaExhausted"
+//  FAILEDOPERATION_PACKAGEQUERYFAILED = "FailedOperation.PackageQueryFailed"
+//  FAILEDOPERATION_PURCHASETPMFAILED = "FailedOperation.PurchaseTpmFailed"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETER_MODELIDNOTFOUND = "InvalidParameter.ModelIdNotFound"
+//  INVALIDPARAMETER_QPMLIMITEXCEEDED = "InvalidParameter.QPMLimitExceeded"
+//  INVALIDPARAMETER_TPMBELOWQUOTA = "InvalidParameter.TPMBelowQuota"
+//  INVALIDPARAMETER_TPMLIMITEXCEEDED = "InvalidParameter.TPMLimitExceeded"
+//  INVALIDPARAMETERVALUE_ENDPOINTNAMETOOLONG = "InvalidParameterValue.EndpointNameTooLong"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  LIMITEXCEEDED_ENDPOINTQUOTA = "LimitExceeded.EndpointQuota"
+//  MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) CreateEndpointWithContext(ctx context.Context, request *CreateEndpointRequest) (response *CreateEndpointResponse, err error) {
+    if request == nil {
+        request = NewCreateEndpointRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tokenhub", APIVersion, "CreateEndpoint")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateEndpoint require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateEndpointResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateGlossaryRequest() (request *CreateGlossaryRequest) {
     request = &CreateGlossaryRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -443,6 +533,74 @@ func (c *Client) DeleteApiKeyWithContext(ctx context.Context, request *DeleteApi
     return
 }
 
+func NewDeleteEndpointRequest() (request *DeleteEndpointRequest) {
+    request = &DeleteEndpointRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tokenhub", APIVersion, "DeleteEndpoint")
+    
+    
+    return
+}
+
+func NewDeleteEndpointResponse() (response *DeleteEndpointResponse) {
+    response = &DeleteEndpointResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteEndpoint
+// 删除推理服务。
+//
+// 
+//
+// 删除指定的推理服务端点，操作不可逆。调用接口后，若通过 DescribeEndpoint 接口查询不到对应的端点，则表示删除成功。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+//  RESOURCENOTFOUND_ENDPOINTNOTFOUND = "ResourceNotFound.EndpointNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) DeleteEndpoint(request *DeleteEndpointRequest) (response *DeleteEndpointResponse, err error) {
+    return c.DeleteEndpointWithContext(context.Background(), request)
+}
+
+// DeleteEndpoint
+// 删除推理服务。
+//
+// 
+//
+// 删除指定的推理服务端点，操作不可逆。调用接口后，若通过 DescribeEndpoint 接口查询不到对应的端点，则表示删除成功。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+//  RESOURCENOTFOUND_ENDPOINTNOTFOUND = "ResourceNotFound.EndpointNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) DeleteEndpointWithContext(ctx context.Context, request *DeleteEndpointRequest) (response *DeleteEndpointResponse, err error) {
+    if request == nil {
+        request = NewDeleteEndpointRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tokenhub", APIVersion, "DeleteEndpoint")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteEndpoint require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteEndpointResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteGlossaryRequest() (request *DeleteGlossaryRequest) {
     request = &DeleteGlossaryRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -767,6 +925,74 @@ func (c *Client) DescribeApiKeyListWithContext(ctx context.Context, request *Des
     return
 }
 
+func NewDescribeEndpointRequest() (request *DescribeEndpointRequest) {
+    request = &DescribeEndpointRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tokenhub", APIVersion, "DescribeEndpoint")
+    
+    
+    return
+}
+
+func NewDescribeEndpointResponse() (response *DescribeEndpointResponse) {
+    response = &DescribeEndpointResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeEndpoint
+// 查询推理服务详情。
+//
+// 
+//
+// 根据推理服务 ID 查询推理服务的详细信息，包括计费信息、免费额度、API 调用地址等。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+//  RESOURCENOTFOUND_ENDPOINTNOTFOUND = "ResourceNotFound.EndpointNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) DescribeEndpoint(request *DescribeEndpointRequest) (response *DescribeEndpointResponse, err error) {
+    return c.DescribeEndpointWithContext(context.Background(), request)
+}
+
+// DescribeEndpoint
+// 查询推理服务详情。
+//
+// 
+//
+// 根据推理服务 ID 查询推理服务的详细信息，包括计费信息、免费额度、API 调用地址等。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+//  RESOURCENOTFOUND_ENDPOINTNOTFOUND = "ResourceNotFound.EndpointNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) DescribeEndpointWithContext(ctx context.Context, request *DescribeEndpointRequest) (response *DescribeEndpointResponse, err error) {
+    if request == nil {
+        request = NewDescribeEndpointRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tokenhub", APIVersion, "DescribeEndpoint")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEndpoint require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeEndpointResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeGlossariesRequest() (request *DescribeGlossariesRequest) {
     request = &DescribeGlossariesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -895,6 +1121,74 @@ func (c *Client) DescribeGlossaryEntriesWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewDescribeGlossaryEntriesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeModelEndpointListRequest() (request *DescribeModelEndpointListRequest) {
+    request = &DescribeModelEndpointListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tokenhub", APIVersion, "DescribeModelEndpointList")
+    
+    
+    return
+}
+
+func NewDescribeModelEndpointListResponse() (response *DescribeModelEndpointListResponse) {
+    response = &DescribeModelEndpointListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeModelEndpointList
+// 查询模型接入点列表。
+//
+// 
+//
+// 以模型为基准展示所有在线文本类型模型的接入点概览，支持按状态、计费方式、创建来源等条件筛选，使用 Offset/Limit 分页。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETER_LIMIT = "InvalidParameter.Limit"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) DescribeModelEndpointList(request *DescribeModelEndpointListRequest) (response *DescribeModelEndpointListResponse, err error) {
+    return c.DescribeModelEndpointListWithContext(context.Background(), request)
+}
+
+// DescribeModelEndpointList
+// 查询模型接入点列表。
+//
+// 
+//
+// 以模型为基准展示所有在线文本类型模型的接入点概览，支持按状态、计费方式、创建来源等条件筛选，使用 Offset/Limit 分页。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETER_LIMIT = "InvalidParameter.Limit"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) DescribeModelEndpointListWithContext(ctx context.Context, request *DescribeModelEndpointListRequest) (response *DescribeModelEndpointListResponse, err error) {
+    if request == nil {
+        request = NewDescribeModelEndpointListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tokenhub", APIVersion, "DescribeModelEndpointList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeModelEndpointList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeModelEndpointListResponse()
     err = c.Send(request, response)
     return
 }
@@ -1593,6 +1887,118 @@ func (c *Client) ModifyApiKeyStatusWithContext(ctx context.Context, request *Mod
     request.SetContext(ctx)
     
     response = NewModifyApiKeyStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyEndpointRequest() (request *ModifyEndpointRequest) {
+    request = &ModifyEndpointRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tokenhub", APIVersion, "ModifyEndpoint")
+    
+    
+    return
+}
+
+func NewModifyEndpointResponse() (response *ModifyEndpointResponse) {
+    response = &ModifyEndpointResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyEndpoint
+// 修改推理服务。
+//
+// 
+//
+// 修改推理服务的属性，支持修改服务名称、QPM/TPM 限流上限、TPM 包续费设置、智能路由开关和手动重试 TPM 购买。
+//
+// 
+//
+// 注意事项：
+//
+// - 不支持通过本接口切换计费类型（ChargeType），计费类型仅可在创建推理服务（CreateEndpoint）时指定。
+//
+// - 不支持通过本接口修改 TPM 预付费保障包的 quota（TpmInputLimit/TpmOutputLimit/TimeSpan），这些值仅可在创建推理服务时指定。
+//
+// - 当 RetryTPMPurchase 为 true 时，系统会异步重试 TPM 包购买，调用后需轮询推理服务状态确认结果。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ENDPOINTNOTFOUND = "FailedOperation.EndpointNotFound"
+//  FAILEDOPERATION_ENDPOINTNOTHEALTHY = "FailedOperation.EndpointNotHealthy"
+//  FAILEDOPERATION_NOTPMPACKAGE = "FailedOperation.NoTPMPackage"
+//  FAILEDOPERATION_OPERATIONDENIED = "FailedOperation.OperationDenied"
+//  FAILEDOPERATION_SETRENEWFLAGFAILED = "FailedOperation.SetRenewFlagFailed"
+//  FAILEDOPERATION_TPMPACKAGEPENDING = "FailedOperation.TPMPackagePending"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETER_QPMLIMITEXCEEDED = "InvalidParameter.QPMLimitExceeded"
+//  INVALIDPARAMETER_TPMINPUTBELOWQUOTA = "InvalidParameter.TPMInputBelowQuota"
+//  INVALIDPARAMETER_TPMINPUTLIMITEXCEEDED = "InvalidParameter.TPMInputLimitExceeded"
+//  INVALIDPARAMETER_TPMLIMITEXCEEDED = "InvalidParameter.TPMLimitExceeded"
+//  INVALIDPARAMETER_TPMOUTPUTBELOWQUOTA = "InvalidParameter.TPMOutputBelowQuota"
+//  INVALIDPARAMETER_TPMOUTPUTLIMITEXCEEDED = "InvalidParameter.TPMOutputLimitExceeded"
+//  INVALIDPARAMETER_TPMPREQUOTAMODIFYNOTSUPPORTED = "InvalidParameter.TPMPreQuotaModifyNotSupported"
+//  OPERATIONDENIED_OPERATIONDENIED = "OperationDenied.OperationDenied"
+//  RESOURCENOTFOUND_ENDPOINTNOTFOUND = "ResourceNotFound.EndpointNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) ModifyEndpoint(request *ModifyEndpointRequest) (response *ModifyEndpointResponse, err error) {
+    return c.ModifyEndpointWithContext(context.Background(), request)
+}
+
+// ModifyEndpoint
+// 修改推理服务。
+//
+// 
+//
+// 修改推理服务的属性，支持修改服务名称、QPM/TPM 限流上限、TPM 包续费设置、智能路由开关和手动重试 TPM 购买。
+//
+// 
+//
+// 注意事项：
+//
+// - 不支持通过本接口切换计费类型（ChargeType），计费类型仅可在创建推理服务（CreateEndpoint）时指定。
+//
+// - 不支持通过本接口修改 TPM 预付费保障包的 quota（TpmInputLimit/TpmOutputLimit/TimeSpan），这些值仅可在创建推理服务时指定。
+//
+// - 当 RetryTPMPurchase 为 true 时，系统会异步重试 TPM 包购买，调用后需轮询推理服务状态确认结果。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ENDPOINTNOTFOUND = "FailedOperation.EndpointNotFound"
+//  FAILEDOPERATION_ENDPOINTNOTHEALTHY = "FailedOperation.EndpointNotHealthy"
+//  FAILEDOPERATION_NOTPMPACKAGE = "FailedOperation.NoTPMPackage"
+//  FAILEDOPERATION_OPERATIONDENIED = "FailedOperation.OperationDenied"
+//  FAILEDOPERATION_SETRENEWFLAGFAILED = "FailedOperation.SetRenewFlagFailed"
+//  FAILEDOPERATION_TPMPACKAGEPENDING = "FailedOperation.TPMPackagePending"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETER_QPMLIMITEXCEEDED = "InvalidParameter.QPMLimitExceeded"
+//  INVALIDPARAMETER_TPMINPUTBELOWQUOTA = "InvalidParameter.TPMInputBelowQuota"
+//  INVALIDPARAMETER_TPMINPUTLIMITEXCEEDED = "InvalidParameter.TPMInputLimitExceeded"
+//  INVALIDPARAMETER_TPMLIMITEXCEEDED = "InvalidParameter.TPMLimitExceeded"
+//  INVALIDPARAMETER_TPMOUTPUTBELOWQUOTA = "InvalidParameter.TPMOutputBelowQuota"
+//  INVALIDPARAMETER_TPMOUTPUTLIMITEXCEEDED = "InvalidParameter.TPMOutputLimitExceeded"
+//  INVALIDPARAMETER_TPMPREQUOTAMODIFYNOTSUPPORTED = "InvalidParameter.TPMPreQuotaModifyNotSupported"
+//  OPERATIONDENIED_OPERATIONDENIED = "OperationDenied.OperationDenied"
+//  RESOURCENOTFOUND_ENDPOINTNOTFOUND = "ResourceNotFound.EndpointNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) ModifyEndpointWithContext(ctx context.Context, request *ModifyEndpointRequest) (response *ModifyEndpointResponse, err error) {
+    if request == nil {
+        request = NewModifyEndpointRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tokenhub", APIVersion, "ModifyEndpoint")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyEndpoint require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyEndpointResponse()
     err = c.Send(request, response)
     return
 }

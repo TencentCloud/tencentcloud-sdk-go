@@ -354,38 +354,38 @@ func (r *CreateCloudRecordingResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateDeviceRequestParams struct {
-	// 创建设备所归属的项目ID
+	// <p>创建设备所归属的项目ID</p>
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 创建设备ID，项目内需要唯一，由小写英文字母、数字和下划线构成，长度不超过18
+	// <p>创建设备ID，项目内需要唯一，由小写英文字母、数字和下划线构成，长度不超过32</p>
 	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
 
-	// 创建设备名称，长度小于24, 可包含中文、数字、英文字母和下划线
+	// <p>创建设备名称，长度小于24, 可包含中文、数字、英文字母和下划线</p>
 	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
 
-	// 设备类型，field为现场设备（受控设备），remote为远端设备（操控设备），不填默认为field
+	// <p>设备类型</p><p>枚举值：</p><ul><li>field： 现场设备（受控设备）</li><li>remote： 远端设备（操控设备）</li></ul>
 	DeviceType *string `json:"DeviceType,omitnil,omitempty" name:"DeviceType"`
 
-	// 设备认证口令，由大小写英文字母和数字构成，须为16位
+	// <p>设备认证口令，由大小写英文字母和数字构成，须为16位</p>
 	DeviceToken *string `json:"DeviceToken,omitnil,omitempty" name:"DeviceToken"`
 }
 
 type CreateDeviceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 创建设备所归属的项目ID
+	// <p>创建设备所归属的项目ID</p>
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 创建设备ID，项目内需要唯一，由小写英文字母、数字和下划线构成，长度不超过18
+	// <p>创建设备ID，项目内需要唯一，由小写英文字母、数字和下划线构成，长度不超过32</p>
 	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
 
-	// 创建设备名称，长度小于24, 可包含中文、数字、英文字母和下划线
+	// <p>创建设备名称，长度小于24, 可包含中文、数字、英文字母和下划线</p>
 	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
 
-	// 设备类型，field为现场设备（受控设备），remote为远端设备（操控设备），不填默认为field
+	// <p>设备类型</p><p>枚举值：</p><ul><li>field： 现场设备（受控设备）</li><li>remote： 远端设备（操控设备）</li></ul>
 	DeviceType *string `json:"DeviceType,omitnil,omitempty" name:"DeviceType"`
 
-	// 设备认证口令，由大小写英文字母和数字构成，须为16位
+	// <p>设备认证口令，由大小写英文字母和数字构成，须为16位</p>
 	DeviceToken *string `json:"DeviceToken,omitnil,omitempty" name:"DeviceToken"`
 }
 

@@ -872,6 +872,18 @@ type CreateDBInstanceHourRequestParams struct {
 	// <p>参数模板 ID。</p><ul><li>参数模板是预置了特定参数值的集合，可用于快速配置新的 MongoDB 实例。合理使用参数模板，能有效提升数据库的部署效率与运行性能。</li><li>参数模板 ID 可通过 <a href="https://cloud.tencent.com/document/product/240/109155">DescribeDBInstanceParamTpl </a>接口获取。请选择与实例版本与架构所对应的参数模板 ID。</li></ul>
 	ParamTemplateId *string `json:"ParamTemplateId,omitnil,omitempty" name:"ParamTemplateId"`
 
+	// <p>数据库存储加密取值。</p><ul><li>No_Encryption：不采用存储加密。</li><li>TDE：开启 TDE 存储加密方式。</li></ul>
+	DataEncryption *string `json:"DataEncryption,omitnil,omitempty" name:"DataEncryption"`
+
+	// <p>如选取 TDE 存储加密，须指定密钥来源。</p><ul><li>auto 自动生成密钥。</li><li>manual 手动指定密钥。</li></ul>
+	EncryptionKeySource *string `json:"EncryptionKeySource,omitnil,omitempty" name:"EncryptionKeySource"`
+
+	// <p>密钥 ID。如密钥资源选取为指定自定义，须输入指定的密钥 ID。</p>
+	KeyId *string `json:"KeyId,omitnil,omitempty" name:"KeyId"`
+
+	// <p>如果密钥来源为指定自定义密钥，须填写该字段指定密钥的地域信息。</p>
+	KmsRegion *string `json:"KmsRegion,omitnil,omitempty" name:"KmsRegion"`
+
 	// <p>实例CPU核大小，单位：C。具体售卖的CPU规格，请通过接口 <a href="https://cloud.tencent.com/document/product/240/38567">DescribeSpecInfo</a> 获取。<br>注意：通用 I 型实例必须设置 CPU 大小。</p>
 	CpuCore *int64 `json:"CpuCore,omitnil,omitempty" name:"CpuCore"`
 }
@@ -960,6 +972,18 @@ type CreateDBInstanceHourRequest struct {
 	// <p>参数模板 ID。</p><ul><li>参数模板是预置了特定参数值的集合，可用于快速配置新的 MongoDB 实例。合理使用参数模板，能有效提升数据库的部署效率与运行性能。</li><li>参数模板 ID 可通过 <a href="https://cloud.tencent.com/document/product/240/109155">DescribeDBInstanceParamTpl </a>接口获取。请选择与实例版本与架构所对应的参数模板 ID。</li></ul>
 	ParamTemplateId *string `json:"ParamTemplateId,omitnil,omitempty" name:"ParamTemplateId"`
 
+	// <p>数据库存储加密取值。</p><ul><li>No_Encryption：不采用存储加密。</li><li>TDE：开启 TDE 存储加密方式。</li></ul>
+	DataEncryption *string `json:"DataEncryption,omitnil,omitempty" name:"DataEncryption"`
+
+	// <p>如选取 TDE 存储加密，须指定密钥来源。</p><ul><li>auto 自动生成密钥。</li><li>manual 手动指定密钥。</li></ul>
+	EncryptionKeySource *string `json:"EncryptionKeySource,omitnil,omitempty" name:"EncryptionKeySource"`
+
+	// <p>密钥 ID。如密钥资源选取为指定自定义，须输入指定的密钥 ID。</p>
+	KeyId *string `json:"KeyId,omitnil,omitempty" name:"KeyId"`
+
+	// <p>如果密钥来源为指定自定义密钥，须填写该字段指定密钥的地域信息。</p>
+	KmsRegion *string `json:"KmsRegion,omitnil,omitempty" name:"KmsRegion"`
+
 	// <p>实例CPU核大小，单位：C。具体售卖的CPU规格，请通过接口 <a href="https://cloud.tencent.com/document/product/240/38567">DescribeSpecInfo</a> 获取。<br>注意：通用 I 型实例必须设置 CPU 大小。</p>
 	CpuCore *int64 `json:"CpuCore,omitnil,omitempty" name:"CpuCore"`
 }
@@ -1003,6 +1027,10 @@ func (r *CreateDBInstanceHourRequest) FromJsonString(s string) error {
 	delete(f, "ReadonlyNodeAvailabilityZoneList")
 	delete(f, "HiddenZone")
 	delete(f, "ParamTemplateId")
+	delete(f, "DataEncryption")
+	delete(f, "EncryptionKeySource")
+	delete(f, "KeyId")
+	delete(f, "KmsRegion")
 	delete(f, "CpuCore")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDBInstanceHourRequest has unknown keys!", "")
@@ -1246,6 +1274,18 @@ type CreateDBInstanceRequestParams struct {
 	// <p>参数模板 ID。</p><ul><li>参数模板是预置了特定参数值的集合，可用于快速配置新的 MongoDB 实例。合理使用参数模板，能有效提升数据库的部署效率与运行性能。</li><li>参数模板 ID 可通过 <a href="https://cloud.tencent.com/document/product/240/109155">DescribeDBInstanceParamTpl </a>接口获取。请选择与实例版本与架构所对应的参数模板 ID。</li></ul>
 	ParamTemplateId *string `json:"ParamTemplateId,omitnil,omitempty" name:"ParamTemplateId"`
 
+	// <p>数据库存储加密取值。</p><ul><li>No_Encryption：不采用存储加密。</li><li>TDE：开启 TDE 存储加密方式。</li></ul>
+	DataEncryption *string `json:"DataEncryption,omitnil,omitempty" name:"DataEncryption"`
+
+	// <p>如选取 TDE 存储加密，须指定密钥来源。</p><ul><li>auto 自动生成密钥。</li><li>manual 手动指定密钥。</li></ul>
+	EncryptionKeySource *string `json:"EncryptionKeySource,omitnil,omitempty" name:"EncryptionKeySource"`
+
+	// <p>密钥 ID。如密钥资源选取为指定自定义，须输入指定的密钥 ID。</p>
+	KeyId *string `json:"KeyId,omitnil,omitempty" name:"KeyId"`
+
+	// <p>如果密钥来源为指定自定义密钥，须填写该字段指定密钥的地域信息。</p>
+	KmsRegion *string `json:"KmsRegion,omitnil,omitempty" name:"KmsRegion"`
+
 	// <p>实例CPU核大小，单位：C。具体售卖的CPU规格，请通过接口 <a href="https://cloud.tencent.com/document/product/240/38567">DescribeSpecInfo</a> 获取<br>注意：通用 I 型实例必须设置 CPU 大小。</p>
 	CpuCore *int64 `json:"CpuCore,omitnil,omitempty" name:"CpuCore"`
 }
@@ -1343,6 +1383,18 @@ type CreateDBInstanceRequest struct {
 	// <p>参数模板 ID。</p><ul><li>参数模板是预置了特定参数值的集合，可用于快速配置新的 MongoDB 实例。合理使用参数模板，能有效提升数据库的部署效率与运行性能。</li><li>参数模板 ID 可通过 <a href="https://cloud.tencent.com/document/product/240/109155">DescribeDBInstanceParamTpl </a>接口获取。请选择与实例版本与架构所对应的参数模板 ID。</li></ul>
 	ParamTemplateId *string `json:"ParamTemplateId,omitnil,omitempty" name:"ParamTemplateId"`
 
+	// <p>数据库存储加密取值。</p><ul><li>No_Encryption：不采用存储加密。</li><li>TDE：开启 TDE 存储加密方式。</li></ul>
+	DataEncryption *string `json:"DataEncryption,omitnil,omitempty" name:"DataEncryption"`
+
+	// <p>如选取 TDE 存储加密，须指定密钥来源。</p><ul><li>auto 自动生成密钥。</li><li>manual 手动指定密钥。</li></ul>
+	EncryptionKeySource *string `json:"EncryptionKeySource,omitnil,omitempty" name:"EncryptionKeySource"`
+
+	// <p>密钥 ID。如密钥资源选取为指定自定义，须输入指定的密钥 ID。</p>
+	KeyId *string `json:"KeyId,omitnil,omitempty" name:"KeyId"`
+
+	// <p>如果密钥来源为指定自定义密钥，须填写该字段指定密钥的地域信息。</p>
+	KmsRegion *string `json:"KmsRegion,omitnil,omitempty" name:"KmsRegion"`
+
 	// <p>实例CPU核大小，单位：C。具体售卖的CPU规格，请通过接口 <a href="https://cloud.tencent.com/document/product/240/38567">DescribeSpecInfo</a> 获取<br>注意：通用 I 型实例必须设置 CPU 大小。</p>
 	CpuCore *int64 `json:"CpuCore,omitnil,omitempty" name:"CpuCore"`
 }
@@ -1389,6 +1441,10 @@ func (r *CreateDBInstanceRequest) FromJsonString(s string) error {
 	delete(f, "ReadonlyNodeAvailabilityZoneList")
 	delete(f, "HiddenZone")
 	delete(f, "ParamTemplateId")
+	delete(f, "DataEncryption")
+	delete(f, "EncryptionKeySource")
+	delete(f, "KeyId")
+	delete(f, "KmsRegion")
 	delete(f, "CpuCore")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDBInstanceRequest has unknown keys!", "")
@@ -7496,20 +7552,20 @@ type ParamType struct {
 
 // Predefined struct for user
 type PromoteDBInstanceToActiveRequestParams struct {
-	// 灾备实例id
+	// <p>指定需转为普通实例的灾备或只读实例 ID。请登录 <a href="https://console.cloud.tencent.com/mongodb">MongoDB 控制台</a>在实例列表复制灾备或只读实例 ID。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 主实例id
+	// <p>指定灾备或只读实例所属的主实例。请登录 <a href="https://console.cloud.tencent.com/mongodb">MongoDB 控制台</a>在实例列表复制实例 ID。</p>
 	MasterId *string `json:"MasterId,omitnil,omitempty" name:"MasterId"`
 }
 
 type PromoteDBInstanceToActiveRequest struct {
 	*tchttp.BaseRequest
 	
-	// 灾备实例id
+	// <p>指定需转为普通实例的灾备或只读实例 ID。请登录 <a href="https://console.cloud.tencent.com/mongodb">MongoDB 控制台</a>在实例列表复制灾备或只读实例 ID。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 主实例id
+	// <p>指定灾备或只读实例所属的主实例。请登录 <a href="https://console.cloud.tencent.com/mongodb">MongoDB 控制台</a>在实例列表复制实例 ID。</p>
 	MasterId *string `json:"MasterId,omitnil,omitempty" name:"MasterId"`
 }
 
@@ -7535,7 +7591,7 @@ func (r *PromoteDBInstanceToActiveRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type PromoteDBInstanceToActiveResponseParams struct {
-	// 任务id
+	// <p>任务 ID。</p>
 	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

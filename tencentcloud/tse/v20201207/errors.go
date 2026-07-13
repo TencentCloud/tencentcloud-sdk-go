@@ -194,6 +194,9 @@ const (
 	// 资源不存在。
 	RESOURCENOTFOUND_RESOURCENOTFOUND = "ResourceNotFound.ResourceNotFound"
 
+	// 未购买
+	RESOURCEUNAVAILABLE_NOTPURCHASED = "ResourceUnavailable.NotPurchased"
+
 	// 未授权操作。
 	UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 

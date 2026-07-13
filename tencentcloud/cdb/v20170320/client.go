@@ -3301,6 +3301,7 @@ func NewDescribeAuditInstanceListResponse() (response *DescribeAuditInstanceList
 //  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
 //  INVALIDPARAMETER_EXCEPTIONPARAM = "InvalidParameter.ExceptionParam"
 //  INVALIDPARAMETERVALUE_DATACONVERTERROR = "InvalidParameterValue.DataConvertError"
+//  OPERATIONDENIED_RESOURCENOTFUNDERROR = "OperationDenied.ResourceNotFundError"
 func (c *Client) DescribeAuditInstanceList(request *DescribeAuditInstanceListRequest) (response *DescribeAuditInstanceListResponse, err error) {
     return c.DescribeAuditInstanceListWithContext(context.Background(), request)
 }
@@ -3316,6 +3317,7 @@ func (c *Client) DescribeAuditInstanceList(request *DescribeAuditInstanceListReq
 //  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
 //  INVALIDPARAMETER_EXCEPTIONPARAM = "InvalidParameter.ExceptionParam"
 //  INVALIDPARAMETERVALUE_DATACONVERTERROR = "InvalidParameterValue.DataConvertError"
+//  OPERATIONDENIED_RESOURCENOTFUNDERROR = "OperationDenied.ResourceNotFundError"
 func (c *Client) DescribeAuditInstanceListWithContext(ctx context.Context, request *DescribeAuditInstanceListRequest) (response *DescribeAuditInstanceListResponse, err error) {
     if request == nil {
         request = NewDescribeAuditInstanceListRequest()
@@ -10247,6 +10249,7 @@ func NewOpenAuditServiceResponse() (response *OpenAuditServiceResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEAUDITFAILERROR = "FailedOperation.CreateAuditFailError"
+//  FAILEDOPERATION_INSTANCEQUERYERROR = "FailedOperation.InstanceQueryError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_HTTPERROR = "InternalError.HttpError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
@@ -10268,6 +10271,7 @@ func (c *Client) OpenAuditService(request *OpenAuditServiceRequest) (response *O
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEAUDITFAILERROR = "FailedOperation.CreateAuditFailError"
+//  FAILEDOPERATION_INSTANCEQUERYERROR = "FailedOperation.InstanceQueryError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_HTTPERROR = "InternalError.HttpError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"

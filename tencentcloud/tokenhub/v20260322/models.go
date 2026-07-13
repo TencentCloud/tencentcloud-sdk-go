@@ -210,6 +210,111 @@ type CreateApiKeysResultItem struct {
 }
 
 // Predefined struct for user
+type CreateEndpointRequestParams struct {
+	// <p>服务名称。最大 64 字符。</p>
+	EndpointName *string `json:"EndpointName,omitnil,omitempty" name:"EndpointName"`
+
+	// <p>模型 ID。可通过 DescribeModelList 接口获取。</p>
+	ModelId *string `json:"ModelId,omitnil,omitempty" name:"ModelId"`
+
+	// <p>计费方式。取值：FREE（免费体验）、TOKEN（按 Token 计费）、TPM（TPM 保障）、COMPUTE_UNIT（按算力单元计费）。</p>
+	ChargeType *string `json:"ChargeType,omitnil,omitempty" name:"ChargeType"`
+
+	// <p>RPM（每分钟请求数）限流上限。可选。必须大于 0，且不能超过用户在该模型上的 RPM 上限。不传则使用默认值（60）。</p>
+	RPM *int64 `json:"RPM,omitnil,omitempty" name:"RPM"`
+
+	// <p>TPM（每分钟 Token 数）限流上限，单位为 tokens/min。可选。必须大于 0，且不能超过用户在该模型上的 TPM 上限。设置后会同时作用于输入 TPM 和输出 TPM。不传则使用默认值（0 表示不限流）。</p>
+	TPM *int64 `json:"TPM,omitnil,omitempty" name:"TPM"`
+
+	// <p>自动调整配额</p>
+	AutoAdjustQuota *int64 `json:"AutoAdjustQuota,omitnil,omitempty" name:"AutoAdjustQuota"`
+
+	// <p>自定义推理服务 id</p>
+	EndpointId *string `json:"EndpointId,omitnil,omitempty" name:"EndpointId"`
+}
+
+type CreateEndpointRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>服务名称。最大 64 字符。</p>
+	EndpointName *string `json:"EndpointName,omitnil,omitempty" name:"EndpointName"`
+
+	// <p>模型 ID。可通过 DescribeModelList 接口获取。</p>
+	ModelId *string `json:"ModelId,omitnil,omitempty" name:"ModelId"`
+
+	// <p>计费方式。取值：FREE（免费体验）、TOKEN（按 Token 计费）、TPM（TPM 保障）、COMPUTE_UNIT（按算力单元计费）。</p>
+	ChargeType *string `json:"ChargeType,omitnil,omitempty" name:"ChargeType"`
+
+	// <p>RPM（每分钟请求数）限流上限。可选。必须大于 0，且不能超过用户在该模型上的 RPM 上限。不传则使用默认值（60）。</p>
+	RPM *int64 `json:"RPM,omitnil,omitempty" name:"RPM"`
+
+	// <p>TPM（每分钟 Token 数）限流上限，单位为 tokens/min。可选。必须大于 0，且不能超过用户在该模型上的 TPM 上限。设置后会同时作用于输入 TPM 和输出 TPM。不传则使用默认值（0 表示不限流）。</p>
+	TPM *int64 `json:"TPM,omitnil,omitempty" name:"TPM"`
+
+	// <p>自动调整配额</p>
+	AutoAdjustQuota *int64 `json:"AutoAdjustQuota,omitnil,omitempty" name:"AutoAdjustQuota"`
+
+	// <p>自定义推理服务 id</p>
+	EndpointId *string `json:"EndpointId,omitnil,omitempty" name:"EndpointId"`
+}
+
+func (r *CreateEndpointRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateEndpointRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EndpointName")
+	delete(f, "ModelId")
+	delete(f, "ChargeType")
+	delete(f, "RPM")
+	delete(f, "TPM")
+	delete(f, "AutoAdjustQuota")
+	delete(f, "EndpointId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateEndpointRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateEndpointResponseParams struct {
+	// <p>推理服务 ID。</p>
+	EndpointId *string `json:"EndpointId,omitnil,omitempty" name:"EndpointId"`
+
+	// <p>推理服务详情信息。</p>
+	Endpoint *EndpointCreateDetail `json:"Endpoint,omitnil,omitempty" name:"Endpoint"`
+
+	// <p>停止原因。当推理服务状态为已停止时返回。取值：FREE_QUOTA_EXHAUSTED（免费额度已用尽）、NO_FREE_PACKAGE（无可用免费包）、INSUFFICIENT_BALANCE（余额不足）、BILLING_ISOLATED（账户欠费隔离）、INTERNAL_ERROR（内部错误）。</p>
+	StopReason *string `json:"StopReason,omitnil,omitempty" name:"StopReason"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateEndpointResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateEndpointResponseParams `json:"Response"`
+}
+
+func (r *CreateEndpointResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateEndpointResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateGlossaryEntriesRequestParams struct {
 	// 术语库 ID。可通过 DescribeGlossaries 接口获取。
 	GlossaryId *string `json:"GlossaryId,omitnil,omitempty" name:"GlossaryId"`
@@ -614,6 +719,57 @@ func (r *DeleteApiKeyResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteEndpointRequestParams struct {
+
+}
+
+type DeleteEndpointRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DeleteEndpointRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteEndpointRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteEndpointRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteEndpointResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteEndpointResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteEndpointResponseParams `json:"Response"`
+}
+
+func (r *DeleteEndpointResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteEndpointResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteGlossaryEntriesRequestParams struct {
 	// 术语库 ID。可通过 DescribeGlossaries 接口获取。
 	GlossaryId *string `json:"GlossaryId,omitnil,omitempty" name:"GlossaryId"`
@@ -998,6 +1154,63 @@ func (r *DescribeApiKeyResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeEndpointRequestParams struct {
+	// <p>推理服务 ID。可通过 DescribeEndpointList 接口获取。</p>
+	EndpointId *string `json:"EndpointId,omitnil,omitempty" name:"EndpointId"`
+}
+
+type DescribeEndpointRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>推理服务 ID。可通过 DescribeEndpointList 接口获取。</p>
+	EndpointId *string `json:"EndpointId,omitnil,omitempty" name:"EndpointId"`
+}
+
+func (r *DescribeEndpointRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEndpointRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EndpointId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEndpointRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeEndpointResponseParams struct {
+	// <p>推理服务详情。</p>
+	Endpoint *EndpointDetail `json:"Endpoint,omitnil,omitempty" name:"Endpoint"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeEndpointResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeEndpointResponseParams `json:"Response"`
+}
+
+func (r *DescribeEndpointResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEndpointResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeGlossariesRequestParams struct {
 	// 返回数量。默认为 20，最大值为 100。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
@@ -1161,6 +1374,87 @@ func (r *DescribeGlossaryEntriesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeGlossaryEntriesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeModelEndpointListRequestParams struct {
+	// <p>偏移量，从 0 开始，默认为 0。</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>每页返回数量，默认为 20，最大值为 100。</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>过滤条件列表。支持的过滤字段：Status（状态，取值 ACTIVE/INACTIVE）、ChargeType（计费方式，取值 FREE/TOKEN）、RequestSource（创建来源，取值 MC/GW）、ModelName（模型名称）、ModelId（模型 ID）、PaymentEnabled（是否已开启后付费，取值 true/false）。</p>
+	Filters []*RequestFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>排序条件列表。支持的排序字段：CreatedTime、UpdatedTime。不传时使用默认排序规则。</p>
+	Sorts []*RequestSort `json:"Sorts,omitnil,omitempty" name:"Sorts"`
+}
+
+type DescribeModelEndpointListRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>偏移量，从 0 开始，默认为 0。</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>每页返回数量，默认为 20，最大值为 100。</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>过滤条件列表。支持的过滤字段：Status（状态，取值 ACTIVE/INACTIVE）、ChargeType（计费方式，取值 FREE/TOKEN）、RequestSource（创建来源，取值 MC/GW）、ModelName（模型名称）、ModelId（模型 ID）、PaymentEnabled（是否已开启后付费，取值 true/false）。</p>
+	Filters []*RequestFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>排序条件列表。支持的排序字段：CreatedTime、UpdatedTime。不传时使用默认排序规则。</p>
+	Sorts []*RequestSort `json:"Sorts,omitnil,omitempty" name:"Sorts"`
+}
+
+func (r *DescribeModelEndpointListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeModelEndpointListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	delete(f, "Sorts")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeModelEndpointListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeModelEndpointListResponseParams struct {
+	// <p>模型接入点列表。</p>
+	ModelEndpointSet []*ModelEndpointView `json:"ModelEndpointSet,omitnil,omitempty" name:"ModelEndpointSet"`
+
+	// <p>符合条件的总数。</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeModelEndpointListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeModelEndpointListResponseParams `json:"Response"`
+}
+
+func (r *DescribeModelEndpointListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeModelEndpointListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1917,6 +2211,52 @@ func (r *DescribeUsageRankListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type EndpointCreateDetail struct {
+	// 预付费包 id
+	PreResourceId *string `json:"PreResourceId,omitnil,omitempty" name:"PreResourceId"`
+}
+
+type EndpointDetail struct {
+	// <p>推理服务 ID。</p>
+	EndpointId *string `json:"EndpointId,omitnil,omitempty" name:"EndpointId"`
+
+	// <p>服务名称。</p>
+	EndpointName *string `json:"EndpointName,omitnil,omitempty" name:"EndpointName"`
+
+	// <p>模型名称。</p>
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
+	// <p>模型 ID。</p>
+	ModelId *string `json:"ModelId,omitnil,omitempty" name:"ModelId"`
+
+	// <p>状态。取值：ACTIVE（使用中）、INACTIVE（停止中）。</p>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>服务类型。取值：TEXT_GENERATION（文本生成）、IMAGE_GENERATION（图片生成）、VIDEO_GENERATION（视频生成）。</p>
+	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
+
+	// <p>计费方式。取值：FREE（免费体验）、TOKEN（按 Token 计费）</p><p>枚举值：</p><ul><li>FREE： 免费体验</li><li>TOKEN： 按 Token 计费</li></ul>
+	ChargeType *string `json:"ChargeType,omitnil,omitempty" name:"ChargeType"`
+
+	// <p>是否开启付费计费。true 表示已开启付费资源包，false 表示仅使用免费额度。</p>
+	PaymentEnabled *bool `json:"PaymentEnabled,omitnil,omitempty" name:"PaymentEnabled"`
+
+	// <p>计费详情信息，JSON 格式字符串。不同 ChargeType 对应不同的 JSON 结构：</p><ul><li>免费额度信息（所有类型均可能包含）：{&quot;FreeQuota&quot;: {&quot;TotalQuota&quot;: 200, &quot;UsedQuota&quot;: 56, &quot;UsagePercent&quot;: 28, &quot;ExpireTime&quot;: &quot;2026-06-15T00:00:00Z&quot;}}</li><li>TPM 类型额外包含：{&quot;Tpm&quot;: {&quot;TpmInputLimit&quot;: 1000, &quot;TpmOutputLimit&quot;: 1000}}</li><li>其他类型：预留扩展。</li></ul>
+	ChargeDetail *string `json:"ChargeDetail,omitnil,omitempty" name:"ChargeDetail"`
+
+	// <p>停止原因。当状态为 INACTIVE 时返回。取值：FREE_QUOTA_EXHAUSTED（免费额度已用尽）、NO_FREE_PACKAGE（无可用免费包）、INSUFFICIENT_BALANCE（余额不足，格式为 INSUFFICIENT_BALANCE:&lt;待支付资源ID&gt;）、BILLING_ISOLATED（账户欠费隔离）、INTERNAL_ERROR（内部错误）。当值为 INSUFFICIENT_BALANCE 时，冒号后附带待支付的 TPM 包资源 ID，前端可据此引导用户前往对应订单页完成支付。</p>
+	StopReason *string `json:"StopReason,omitnil,omitempty" name:"StopReason"`
+
+	// <p>TPM（每分钟 Token 限流）。当推理服务未单独设置时，回退为关联模型的默认 TPM 值。</p>
+	TPM *int64 `json:"TPM,omitnil,omitempty" name:"TPM"`
+
+	// <p>自动调整配额</p>
+	AutoAdjustQuota *int64 `json:"AutoAdjustQuota,omitnil,omitempty" name:"AutoAdjustQuota"`
+
+	// <p>RPM（每分钟请求数限流）。当推理服务未单独设置时，回退为关联模型的默认 RPM 值。</p>
+	RPM *int64 `json:"RPM,omitnil,omitempty" name:"RPM"`
+}
+
 type GlossaryEntryInput struct {
 	// 源语言术语。最大 1000 字符。
 	SourceTerm *string `json:"SourceTerm,omitnil,omitempty" name:"SourceTerm"`
@@ -2058,6 +2398,44 @@ type ModelChargingItem struct {
 
 	// <p>高峰价格，为空表示无高峰定价</p>
 	PeakPrice *string `json:"PeakPrice,omitnil,omitempty" name:"PeakPrice"`
+}
+
+type ModelEndpointView struct {
+	// <p>推理服务 ID。网关默认创建的 id 与模型 id 相同；控制台自定义推理服务以 ep- 开头。</p>
+	EndpointId *string `json:"EndpointId,omitnil,omitempty" name:"EndpointId"`
+
+	// <p>推理服务名称。未激活时与 ModelId 相同。</p>
+	EndpointName *string `json:"EndpointName,omitnil,omitempty" name:"EndpointName"`
+
+	// <p>模型 ID。</p>
+	ModelId *string `json:"ModelId,omitnil,omitempty" name:"ModelId"`
+
+	// <p>模型名称。</p>
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
+	// <p>状态。取值：ACTIVE（运行中）、INACTIVE（已停止）。</p>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>服务类型。固定为 TEXT_GENERATION（文本生成）。</p>
+	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
+
+	// <p>计费方式。取值：FREE（免费体验）、TOKEN（按 Token 计费）。未激活时为空。</p>
+	ChargeType *string `json:"ChargeType,omitnil,omitempty" name:"ChargeType"`
+
+	// <p>是否已开启后付费。true 表示已开启，false 表示未开启。未激活时为 false。</p>
+	PaymentEnabled *bool `json:"PaymentEnabled,omitnil,omitempty" name:"PaymentEnabled"`
+
+	// <p>计费详情信息，JSON 格式字符串，包含免费额度用量等信息。未激活时为空。</p>
+	ChargeDetail *string `json:"ChargeDetail,omitnil,omitempty" name:"ChargeDetail"`
+
+	// <p>停止原因。当状态为 INACTIVE 时返回。取值：FREE_QUOTA_EXHAUSTED（免费额度已用尽）、NO_FREE_PACKAGE（无可用免费包）、INSUFFICIENT_BALANCE（余额不足）、BILLING_ISOLATED（账户欠费隔离）、INTERNAL_ERROR（内部错误）。</p>
+	StopReason *string `json:"StopReason,omitnil,omitempty" name:"StopReason"`
+
+	// <p>推理服务的 rpm 限制，没设置就按模型维度 rpm 限制展示</p>
+	RPM *int64 `json:"RPM,omitnil,omitempty" name:"RPM"`
+
+	// <p>推理服务的tpm 限制，没设置就按模型维度 tpm 限制展示</p>
+	TPM *int64 `json:"TPM,omitnil,omitempty" name:"TPM"`
 }
 
 type ModelFreeTrialInfo struct {
@@ -2264,6 +2642,60 @@ func (r *ModifyApiKeyStatusResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyApiKeyStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyEndpointRequestParams struct {
+	// 自动调整配额
+	AutoAdjustQuota *int64 `json:"AutoAdjustQuota,omitnil,omitempty" name:"AutoAdjustQuota"`
+}
+
+type ModifyEndpointRequest struct {
+	*tchttp.BaseRequest
+	
+	// 自动调整配额
+	AutoAdjustQuota *int64 `json:"AutoAdjustQuota,omitnil,omitempty" name:"AutoAdjustQuota"`
+}
+
+func (r *ModifyEndpointRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyEndpointRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AutoAdjustQuota")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyEndpointRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyEndpointResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyEndpointResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyEndpointResponseParams `json:"Response"`
+}
+
+func (r *ModifyEndpointResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyEndpointResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

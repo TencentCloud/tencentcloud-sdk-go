@@ -365,33 +365,39 @@ func (r *BuildClientNodeMountCommandResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type BuildCustomerClusterRequestParams struct {
-	// 文件系统id
+	// <p>文件系统id</p>
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
-	// vpc网络ID
+	// <p>vpc网络ID</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 子网id
+	// <p>子网id</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 集群名称
+	// <p>集群名称</p>
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
+
+	// <p>可用区</p>
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 }
 
 type BuildCustomerClusterRequest struct {
 	*tchttp.BaseRequest
 	
-	// 文件系统id
+	// <p>文件系统id</p>
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
-	// vpc网络ID
+	// <p>vpc网络ID</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 子网id
+	// <p>子网id</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 集群名称
+	// <p>集群名称</p>
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
+
+	// <p>可用区</p>
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 }
 
 func (r *BuildCustomerClusterRequest) ToJsonString() string {
@@ -410,6 +416,7 @@ func (r *BuildCustomerClusterRequest) FromJsonString(s string) error {
 	delete(f, "VpcId")
 	delete(f, "SubnetId")
 	delete(f, "ClusterName")
+	delete(f, "Zone")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BuildCustomerClusterRequest has unknown keys!", "")
 	}
@@ -418,7 +425,7 @@ func (r *BuildCustomerClusterRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type BuildCustomerClusterResponseParams struct {
-	// 客户端集群Id
+	// <p>客户端集群Id</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

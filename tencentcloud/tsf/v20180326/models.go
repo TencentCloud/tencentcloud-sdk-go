@@ -675,20 +675,23 @@ type ApiVersionArray struct {
 }
 
 type ApplicationAttribute struct {
-	// 总实例个数
+	// <p>总实例个数</p>
 	InstanceCount *int64 `json:"InstanceCount,omitnil,omitempty" name:"InstanceCount"`
 
-	// 运行实例个数
+	// <p>运行实例个数</p>
 	RunInstanceCount *int64 `json:"RunInstanceCount,omitnil,omitempty" name:"RunInstanceCount"`
 
-	// 应用下部署组个数
+	// <p>应用下部署组个数</p>
 	GroupCount *int64 `json:"GroupCount,omitnil,omitempty" name:"GroupCount"`
 
-	// 运行中部署组个数
+	// <p>运行中部署组个数</p>
 	RunningGroupCount *string `json:"RunningGroupCount,omitnil,omitempty" name:"RunningGroupCount"`
 
-	// 异常部署组个数
+	// <p>异常部署组个数</p>
 	AbnormalCount *string `json:"AbnormalCount,omitnil,omitempty" name:"AbnormalCount"`
+
+	// <p>镜像tag数量</p>
+	ImageTagCount *int64 `json:"ImageTagCount,omitnil,omitempty" name:"ImageTagCount"`
 }
 
 type ApplicationForPage struct {

@@ -1857,32 +1857,26 @@ type DetectedWords struct {
 
 // Predefined struct for user
 type DriverLicenseOCRRequestParams struct {
-	// 图片的 Base64 值。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	// <p>图片的 Base64 值。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。</p>
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
 
-	// 图片的 Url 地址。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片下载时间不超过 3 秒。建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
+	// <p>图片的 Url 地址。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片下载时间不超过 3 秒。建议图片存储于腾讯云，可保障更高的下载速度和稳定性。</p>
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 
-	// FRONT 为驾驶证主页正面（有红色印章的一面），
-	// BACK 为驾驶证副页正面（有档案编号的一面）。
-	// DOUBLE 支持自动识别驾驶证正副页单面，和正副双面同框识别
-	// 默认值为：FRONT。
+	// <p>FRONT 为驾驶证主页正面（有红色印章的一面），<br>BACK 为驾驶证副页正面（有档案编号的一面）。<br>DOUBLE 支持自动识别驾驶证正副页单面，和正副双面同框识别<br>默认值为：FRONT。</p>
 	CardSide *string `json:"CardSide,omitnil,omitempty" name:"CardSide"`
 }
 
 type DriverLicenseOCRRequest struct {
 	*tchttp.BaseRequest
 	
-	// 图片的 Base64 值。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	// <p>图片的 Base64 值。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。</p>
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
 
-	// 图片的 Url 地址。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片下载时间不超过 3 秒。建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
+	// <p>图片的 Url 地址。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片下载时间不超过 3 秒。建议图片存储于腾讯云，可保障更高的下载速度和稳定性。</p>
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 
-	// FRONT 为驾驶证主页正面（有红色印章的一面），
-	// BACK 为驾驶证副页正面（有档案编号的一面）。
-	// DOUBLE 支持自动识别驾驶证正副页单面，和正副双面同框识别
-	// 默认值为：FRONT。
+	// <p>FRONT 为驾驶证主页正面（有红色印章的一面），<br>BACK 为驾驶证副页正面（有档案编号的一面）。<br>DOUBLE 支持自动识别驾驶证正副页单面，和正副双面同框识别<br>默认值为：FRONT。</p>
 	CardSide *string `json:"CardSide,omitnil,omitempty" name:"CardSide"`
 }
 
@@ -1909,85 +1903,70 @@ func (r *DriverLicenseOCRRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DriverLicenseOCRResponseParams struct {
-	// 驾驶证正页姓名
+	// <p>驾驶证正页姓名</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 性别
+	// <p>性别</p>
 	Sex *string `json:"Sex,omitnil,omitempty" name:"Sex"`
 
-	// 国籍
+	// <p>国籍</p>
 	Nationality *string `json:"Nationality,omitnil,omitempty" name:"Nationality"`
 
-	// 住址
+	// <p>住址</p>
 	Address *string `json:"Address,omitnil,omitempty" name:"Address"`
 
-	// 出生日期（YYYY-MM-DD）
+	// <p>出生日期（YYYY-MM-DD）</p>
 	DateOfBirth *string `json:"DateOfBirth,omitnil,omitempty" name:"DateOfBirth"`
 
-	// 初次领证日期（YYYY-MM-DD）
+	// <p>初次领证日期（YYYY-MM-DD）</p>
 	DateOfFirstIssue *string `json:"DateOfFirstIssue,omitnil,omitempty" name:"DateOfFirstIssue"`
 
-	// 准驾车型
+	// <p>准驾车型</p>
 	Class *string `json:"Class,omitnil,omitempty" name:"Class"`
 
-	// 有效期开始时间（YYYY-MM-DD）
+	// <p>有效期开始时间（YYYY-MM-DD）</p>
 	StartDate *string `json:"StartDate,omitnil,omitempty" name:"StartDate"`
 
-	// 有效期截止时间（新版驾驶证返回 YYYY-MM-DD，
-	// 老版驾驶证返回有效期限 X年）
+	// <p>有效期截止时间（新版驾驶证返回 YYYY-MM-DD，老版驾驶证返回有效期限 X年；若驾驶证有效期为长期，则返回&quot;长期&quot;）</p>
 	EndDate *string `json:"EndDate,omitnil,omitempty" name:"EndDate"`
 
-	// 驾驶证正页证号
+	// <p>驾驶证正页证号</p>
 	CardCode *string `json:"CardCode,omitnil,omitempty" name:"CardCode"`
 
-	// 档案编号
+	// <p>档案编号</p>
 	ArchivesCode *string `json:"ArchivesCode,omitnil,omitempty" name:"ArchivesCode"`
 
-	// 记录
+	// <p>记录</p>
 	Record *string `json:"Record,omitnil,omitempty" name:"Record"`
 
-	// Code 告警码列表和释义：
-	// -9102  复印件告警
-	// -9103  翻拍件告警
-	// -9104  反光告警
-	// -9105  模糊告警
-	// -9106  边框不完整告警
-	// 注：告警码可以同时存在多个
+	// <p>Code 告警码列表和释义：<br>-9102  复印件告警<br>-9103  翻拍件告警<br>-9104  反光告警<br>-9105  模糊告警<br>-9106  边框不完整告警<br>注：告警码可以同时存在多个</p>
 	RecognizeWarnCode []*int64 `json:"RecognizeWarnCode,omitnil,omitempty" name:"RecognizeWarnCode"`
 
-	// 告警码说明：
-	// WARN_DRIVER_LICENSE_COPY_CARD 复印件告警
-	// WARN_DRIVER_LICENSE_SCREENED_CARD 翻拍件告警
-	// WARN_DRIVER_LICENSE_REFLECTION 反光告警
-	// WARN_DRIVER_LICENSE_BLUR 模糊告警
-	// WARN_DRIVER_LICENSE_BORDER_INCOMPLETE 边框不完整告警
-	// 注：告警信息可以同时存在多个
+	// <p>告警码说明：<br>WARN_DRIVER_LICENSE_COPY_CARD 复印件告警<br>WARN_DRIVER_LICENSE_SCREENED_CARD 翻拍件告警<br>WARN_DRIVER_LICENSE_REFLECTION 反光告警<br>WARN_DRIVER_LICENSE_BLUR 模糊告警<br>WARN_DRIVER_LICENSE_BORDER_INCOMPLETE 边框不完整告警<br>注：告警信息可以同时存在多个</p>
 	RecognizeWarnMsg []*string `json:"RecognizeWarnMsg,omitnil,omitempty" name:"RecognizeWarnMsg"`
 
-	// 发证单位
+	// <p>发证单位</p>
 	IssuingAuthority *string `json:"IssuingAuthority,omitnil,omitempty" name:"IssuingAuthority"`
 
-	// 状态（仅电子驾驶证支持返回该字段）
+	// <p>状态（仅电子驾驶证支持返回该字段）</p>
 	State *string `json:"State,omitnil,omitempty" name:"State"`
 
-	// 累积记分（仅电子驾驶证支持返回该字段）
+	// <p>累积记分（仅电子驾驶证支持返回该字段）</p>
 	CumulativeScore *string `json:"CumulativeScore,omitnil,omitempty" name:"CumulativeScore"`
 
-	// 当前时间（仅电子驾驶证支持返回该字段）
+	// <p>当前时间（仅电子驾驶证支持返回该字段）</p>
 	CurrentTime *string `json:"CurrentTime,omitnil,omitempty" name:"CurrentTime"`
 
-	// 生成时间（仅电子驾驶证支持返回该字段）
+	// <p>生成时间（仅电子驾驶证支持返回该字段）</p>
 	GenerateTime *string `json:"GenerateTime,omitnil,omitempty" name:"GenerateTime"`
 
-	// 驾驶证副页姓名
+	// <p>驾驶证副页姓名</p>
 	BackPageName *string `json:"BackPageName,omitnil,omitempty" name:"BackPageName"`
 
-	// 驾驶证副页证号
+	// <p>驾驶证副页证号</p>
 	BackPageCardCode *string `json:"BackPageCardCode,omitnil,omitempty" name:"BackPageCardCode"`
 
-	// 驾驶证类型
-	// 电子驾驶证：Electronic
-	// 普通驾驶证：Normal
+	// <p>驾驶证类型<br>电子驾驶证：Electronic<br>普通驾驶证：Normal</p>
 	DriverLicenseType *string `json:"DriverLicenseType,omitnil,omitempty" name:"DriverLicenseType"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5140,19 +5119,19 @@ type IDCardResult struct {
 }
 
 type ImageCoordinates struct {
-	// 头像左上角横坐标
+	// <p>头像左上角横坐标</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	X *int64 `json:"X,omitnil,omitempty" name:"X"`
 
-	// 头像左上角纵坐标
+	// <p>头像左上角纵坐标</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Y *int64 `json:"Y,omitnil,omitempty" name:"Y"`
 
-	// 头像框宽度
+	// <p>头像框宽度</p><p>单位：px</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Width *int64 `json:"Width,omitnil,omitempty" name:"Width"`
 
-	// 头像框高度
+	// <p>头像框高度</p><p>单位：px</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Height *int64 `json:"Height,omitnil,omitempty" name:"Height"`
 }
@@ -9183,16 +9162,16 @@ func (r *RecognizeValidIDCardOCRResponse) FromJsonString(s string) error {
 }
 
 type Rect struct {
-	// 左上角x
+	// <p>左上角x</p>
 	X *int64 `json:"X,omitnil,omitempty" name:"X"`
 
-	// 左上角y
+	// <p>左上角y</p>
 	Y *int64 `json:"Y,omitnil,omitempty" name:"Y"`
 
-	// 宽度
+	// <p>宽度</p><p>单位：px</p>
 	Width *int64 `json:"Width,omitnil,omitempty" name:"Width"`
 
-	// 高度
+	// <p>高度</p><p>单位：px</p>
 	Height *int64 `json:"Height,omitnil,omitempty" name:"Height"`
 }
 

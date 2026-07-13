@@ -4917,6 +4917,23 @@ func (r *DeleteTimeWindowResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DeliverSummary struct {
+	// <p>投递类型，store（存储类），mq（消息通道）</p>
+	DeliverType *string `json:"DeliverType,omitnil,omitempty" name:"DeliverType"`
+
+	// <p>投递子类型：cls，ckafka。</p>
+	DeliverSubType *string `json:"DeliverSubType,omitnil,omitempty" name:"DeliverSubType"`
+
+	// <p>投递者</p>
+	DeliverConsumer *string `json:"DeliverConsumer,omitnil,omitempty" name:"DeliverConsumer"`
+
+	// <p>投递者名称</p>
+	DeliverConsumerName *string `json:"DeliverConsumerName,omitnil,omitempty" name:"DeliverConsumerName"`
+
+	// <p>投递异常错误</p>
+	DeliverError *string `json:"DeliverError,omitnil,omitempty" name:"DeliverError"`
+}
+
 type DeployGroupInfo struct {
 	// 置放群组 ID。
 	DeployGroupId *string `json:"DeployGroupId,omitnil,omitempty" name:"DeployGroupId"`
@@ -5259,38 +5276,38 @@ func (r *DescribeAuditConfigResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAuditInstanceListRequestParams struct {
-	// 实例审计开启的状态。1-已开启审计；0-未开启审计。
+	// <p>实例审计开启的状态。1-已开启审计；0-未开启审计。</p>
 	AuditSwitch *int64 `json:"AuditSwitch,omitnil,omitempty" name:"AuditSwitch"`
 
-	// 查询实例列表的过滤条件。
+	// <p>查询实例列表的过滤条件。</p>
 	Filters []*AuditInstanceFilters `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 实例的审计规则模式。1-规则审计；0-全审计。
+	// <p>实例的审计规则模式。1-规则审计；0-全审计。</p>
 	AuditMode *int64 `json:"AuditMode,omitnil,omitempty" name:"AuditMode"`
 
-	// 单次请求返回的数量。默认值为30，最大值为 20000。
+	// <p>单次请求返回的数量。默认值为30，最大值为 20000。</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量，默认值为 0。
+	// <p>偏移量，默认值为 0。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 type DescribeAuditInstanceListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例审计开启的状态。1-已开启审计；0-未开启审计。
+	// <p>实例审计开启的状态。1-已开启审计；0-未开启审计。</p>
 	AuditSwitch *int64 `json:"AuditSwitch,omitnil,omitempty" name:"AuditSwitch"`
 
-	// 查询实例列表的过滤条件。
+	// <p>查询实例列表的过滤条件。</p>
 	Filters []*AuditInstanceFilters `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 实例的审计规则模式。1-规则审计；0-全审计。
+	// <p>实例的审计规则模式。1-规则审计；0-全审计。</p>
 	AuditMode *int64 `json:"AuditMode,omitnil,omitempty" name:"AuditMode"`
 
-	// 单次请求返回的数量。默认值为30，最大值为 20000。
+	// <p>单次请求返回的数量。默认值为30，最大值为 20000。</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量，默认值为 0。
+	// <p>偏移量，默认值为 0。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
@@ -5319,10 +5336,10 @@ func (r *DescribeAuditInstanceListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAuditInstanceListResponseParams struct {
-	// 符合查询条件的实例总数。
+	// <p>符合查询条件的实例总数。</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 审计实例详细信息列表。
+	// <p>审计实例详细信息列表。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Items []*InstanceDbAuditStatus `json:"Items,omitnil,omitempty" name:"Items"`
 
@@ -11415,80 +11432,71 @@ type InstanceAuditLogFilters struct {
 }
 
 type InstanceDbAuditStatus struct {
-	// 实例ID。
+	// <p>实例ID。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 审计状态。ON-表示审计已开启，OFF-表示审计关闭
+	// <p>审计状态。ON-表示审计已开启，OFF-表示审计关闭</p>
 	AuditStatus *string `json:"AuditStatus,omitnil,omitempty" name:"AuditStatus"`
 
-	// 任务状态。0-无任务；1-审计开启中，2-审计关闭中。
+	// <p>任务状态。0-无任务；1-审计开启中，2-审计关闭中。</p>
 	AuditTask *uint64 `json:"AuditTask,omitnil,omitempty" name:"AuditTask"`
 
-	// 日志保留时长。支持值包括：
-	// 7 - 一周；
-	// 30 - 一个月；
-	// 90 - 三个月；
-	// 180 - 六个月；
-	// 365 - 一年；
-	// 1095 - 三年；
-	// 1825 - 五年。
+	// <p>日志保留时长。支持值包括：<br>7 - 一周；<br>30 - 一个月；<br>90 - 三个月；<br>180 - 六个月；<br>365 - 一年；<br>1095 - 三年；<br>1825 - 五年。</p>
 	LogExpireDay *uint64 `json:"LogExpireDay,omitnil,omitempty" name:"LogExpireDay"`
 
-	// 高频存储时长。支持值包括：
-	// 3 - 3天；
-	// 7 - 一周；
-	// 30 - 一个月；
-	// 90 - 三个月；
-	// 180 - 六个月；
-	// 365 - 一年；
-	// 1095 - 三年；
-	// 1825 - 五年。
+	// <p>高频存储时长。支持值包括：<br>3 - 3天；<br>7 - 一周；<br>30 - 一个月；<br>90 - 三个月；<br>180 - 六个月；<br>365 - 一年；<br>1095 - 三年；<br>1825 - 五年。</p>
 	HighLogExpireDay *uint64 `json:"HighLogExpireDay,omitnil,omitempty" name:"HighLogExpireDay"`
 
-	// 低频存储时长。单位：天，等于日志保存时长减去高频存储时长。
+	// <p>低频存储时长。单位：天，等于日志保存时长减去高频存储时长。</p>
 	LowLogExpireDay *uint64 `json:"LowLogExpireDay,omitnil,omitempty" name:"LowLogExpireDay"`
 
-	// 日志存储量(单位：GB)。
+	// <p>日志存储量(单位：GB)。</p>
 	BillingAmount *float64 `json:"BillingAmount,omitnil,omitempty" name:"BillingAmount"`
 
-	// 高频存储量(单位：GB)。
+	// <p>高频存储量(单位：GB)。</p>
 	HighRealStorage *float64 `json:"HighRealStorage,omitnil,omitempty" name:"HighRealStorage"`
 
-	// 低频存储量(单位：GB)。
+	// <p>低频存储量(单位：GB)。</p>
 	LowRealStorage *float64 `json:"LowRealStorage,omitnil,omitempty" name:"LowRealStorage"`
 
-	// 是否为全审计。true-表示全审计。
+	// <p>是否为全审计（true-表示全审计）</p>
 	AuditAll *bool `json:"AuditAll,omitnil,omitempty" name:"AuditAll"`
 
-	// 审计开通时间。
+	// <p>审计开通时间。</p>
 	CreateAt *string `json:"CreateAt,omitnil,omitempty" name:"CreateAt"`
 
-	// 实例相关信息
+	// <p>实例相关信息</p>
 	InstanceInfo *AuditInstanceInfo `json:"InstanceInfo,omitnil,omitempty" name:"InstanceInfo"`
 
-	// 总存储量(单位：GB)。
+	// <p>总存储量(单位：GB)。</p>
 	RealStorage *float64 `json:"RealStorage,omitnil,omitempty" name:"RealStorage"`
 
-	// 是否包含审计策略
+	// <p>是否包含审计策略</p>
 	OldRule *bool `json:"OldRule,omitnil,omitempty" name:"OldRule"`
 
-	// 实例所应用的规则模板。
+	// <p>实例所应用的规则模板。</p>
 	RuleTemplateIds []*string `json:"RuleTemplateIds,omitnil,omitempty" name:"RuleTemplateIds"`
 
-	// 限免状态
+	// <p>限免状态</p>
 	TrialStatus *string `json:"TrialStatus,omitnil,omitempty" name:"TrialStatus"`
 
-	// 限免开启时间
+	// <p>限免开启时间</p>
 	TrialStartTime *int64 `json:"TrialStartTime,omitnil,omitempty" name:"TrialStartTime"`
 
-	// 限免持续时间
+	// <p>限免持续时间</p>
 	TrialDuration *int64 `json:"TrialDuration,omitnil,omitempty" name:"TrialDuration"`
 
-	// 限免关闭时间
+	// <p>限免关闭时间</p>
 	TrialCloseTime *int64 `json:"TrialCloseTime,omitnil,omitempty" name:"TrialCloseTime"`
 
-	// 限免期查询日志时长
+	// <p>限免期查询日志时长</p>
 	TrialDescribeLogHours *int64 `json:"TrialDescribeLogHours,omitnil,omitempty" name:"TrialDescribeLogHours"`
+
+	// <p>投递信息</p>
+	DeliverSummary []*DeliverSummary `json:"DeliverSummary,omitnil,omitempty" name:"DeliverSummary"`
+
+	// <p>是否开启了投递，ON：开启，OFF：关闭</p>
+	Deliver *string `json:"Deliver,omitnil,omitempty" name:"Deliver"`
 }
 
 type InstanceInfo struct {

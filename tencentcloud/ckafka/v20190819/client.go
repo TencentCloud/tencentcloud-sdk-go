@@ -5595,6 +5595,58 @@ func (c *Client) InstanceScalingDownWithContext(ctx context.Context, request *In
     return
 }
 
+func NewIsolatedInstancePreRequest() (request *IsolatedInstancePreRequest) {
+    request = &IsolatedInstancePreRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ckafka", APIVersion, "IsolatedInstancePre")
+    
+    
+    return
+}
+
+func NewIsolatedInstancePreResponse() (response *IsolatedInstancePreResponse) {
+    response = &IsolatedInstancePreResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// IsolatedInstancePre
+// 隔离预付费实例，该接口会对实例执行隔离的动作，执行成功后实例会被隔离
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) IsolatedInstancePre(request *IsolatedInstancePreRequest) (response *IsolatedInstancePreResponse, err error) {
+    return c.IsolatedInstancePreWithContext(context.Background(), request)
+}
+
+// IsolatedInstancePre
+// 隔离预付费实例，该接口会对实例执行隔离的动作，执行成功后实例会被隔离
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) IsolatedInstancePreWithContext(ctx context.Context, request *IsolatedInstancePreRequest) (response *IsolatedInstancePreResponse, err error) {
+    if request == nil {
+        request = NewIsolatedInstancePreRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "IsolatedInstancePre")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("IsolatedInstancePre require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewIsolatedInstancePreResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyAccessPolicyRequest() (request *ModifyAccessPolicyRequest) {
     request = &ModifyAccessPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},

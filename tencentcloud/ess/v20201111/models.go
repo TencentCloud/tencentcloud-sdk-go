@@ -161,7 +161,7 @@ type ApproverInfo struct {
 	// <p>此签署人（员工或者个人）签署前，是否需要发起方企业审批，取值如下：</p><ul><li>**false**：（默认）不需要审批，直接签署。</li><li>**true**：需要走审批流程。当到对应参与人签署时，会阻塞其签署操作，等待企业内部审批完成。</li></ul>企业可以通过CreateFlowSignReview审批接口通知腾讯电子签平台企业内部审批结果<ul><li>如果企业通知腾讯电子签平台审核通过，签署方可继续签署动作。</li><li>如果企业通知腾讯电子签平台审核未通过，平台将继续阻塞签署方的签署动作，直到企业通知平台审核通过。</li></ul><p>注：<code>此功能可用于与发起方企业内部的审批流程进行关联，支持手动、静默签署合同</code></p><p><img src="https://qcloudimg.tencent-cloud.cn/raw/b14d5188ed0229d1401e74a9a49cab6d.png" alt="image"></p>
 	ApproverNeedSignReview *bool `json:"ApproverNeedSignReview,omitnil,omitempty" name:"ApproverNeedSignReview"`
 
-	// <p>【在用文件发起合同场景下才有效】在调用<a href="https://qian.tencent.com/developers/companyApis/startFlows/CreateFlowByFiles">用PDF文件创建签署流程</a>创建合同时,如果设置了外层参数SignBeanTag=1(允许签署过程中添加签署控件),则可通过此参数明确规定合同所使用的签署控件类型（骑缝章、普通章法人章等）和具体的印章（印章ID或者印章类型）或签名方式。</p><p>注：<code>限制印章控件或骑缝章控件情况下,仅本企业签署方可以指定具体印章（通过传递ComponentValue,支持多个），他方企业或个人只支持限制控件类型。</code></p>
+	// <p>【在用文件发起合同场景下才有效】<br>在调用<a href="https://qian.tencent.com/developers/companyApis/startFlows/CreateFlowByFiles">用PDF文件创建签署流程</a>创建合同时,如果设置了外层参数SignBeanTag=1(允许签署过程中添加签署控件),则可通过此参数明确规定合同所使用的签署控件类型（骑缝章、普通章法人章等）和具体的印章（印章ID或者印章类型）或签名方式。</p><p>注：<a href="https://qian.tencent.com/developers/company/sign_bean_tag">参考文档和使用示例</a></p>
 	AddSignComponentsLimits []*ComponentLimit `json:"AddSignComponentsLimits,omitnil,omitempty" name:"AddSignComponentsLimits"`
 
 	// <p>签署须知：支持传入富文本，最长字数：500个中文字符</p>
@@ -1250,36 +1250,10 @@ type Component struct {
 }
 
 type ComponentLimit struct {
-	// 控件类型，支持以下类型
-	// <ul><li>SIGN_SEAL : 印章控件</li>
-	// <li>SIGN_PAGING_SEAL : 骑缝章控件</li>
-	// <li>SIGN_LEGAL_PERSON_SEAL : 企业法定代表人控件</li>
-	// <li>SIGN_SIGNATURE : 用户签名控件</li></ul>
+	// <p>控件类型，支持以下类型</p><ul><li>SIGN_SEAL : 印章控件</li><li>SIGN_PAGING_SEAL : 骑缝章控件</li><li>SIGN_LEGAL_PERSON_SEAL : 企业法定代表人控件</li><li>SIGN_SIGNATURE : 用户签名控件</li></ul>
 	ComponentType *string `json:"ComponentType,omitnil,omitempty" name:"ComponentType"`
 
-	// 签署控件类型的值(可选)，用与限制签署时印章或者签名的选择范围
-	// 
-	// 1.当ComponentType 是 SIGN_SEAL 或者 SIGN_PAGING_SEAL 时可传入企业印章Id（支持多个）或者以下印章类型
-	// 
-	// <ul><li> <b>OFFICIAL</b> :  企业公章</li>
-	// <li> <b>CONTRACT</b> : 合同专用章</li>
-	// <li> <b>FINANCE</b> : 财务专用章</li>
-	// <li> <b>PERSONNEL</b> : 人事专用章</li>
-	// <li> <b>OTHER</b> : 其他</li>
-	// </ul>
-	// 
-	// **注：`限制印章控件或骑缝章控件情况下,仅本企业签署方可以指定具体印章（通过传递ComponentValue,支持多个),他方企业签署人只能限制类型.若同时指定了印章类型和印章Id,以印章Id为主,印章类型会被忽略`**
-	// 
-	// 
-	// 2.当ComponentType 是 SIGN_SIGNATURE 时可传入以下类型（支持多个）
-	// 
-	// <ul><li>HANDWRITE : 需要实时手写的手写签名</li>
-	// <li>HANDWRITTEN_ESIGN : 长效手写签名， 是使用保存到个人中心的印章列表的手写签名(并且包含HANDWRITE)</li>
-	// <li>OCR_ESIGN : OCR印章（智慧手写签名）</li>
-	// <li>ESIGN : 个人印章</li>
-	// <li>SYSTEM_ESIGN : 系统印章</li></ul>
-	// 
-	// 3.当ComponentType 是 SIGN_LEGAL_PERSON_SEAL 时无需传递此参数。
+	// <p>签署控件类型的值(可选)，用于限制签署时印章或者签名的选择范围</p><p>1.当 ComponentType 是 SIGN_SEAL 或者 SIGN_PAGING_SEAL 时，可指定印章类型或具体企业印章Id。具体场景与规则说明如下：</p><p>指定印章类型:可传入以下枚举值来限制印章类型</p><ul><li> <b>OFFICIAL</b> :  企业公章</li><li> <b>CONTRACT</b> : 合同专用章</li><li> <b>FINANCE</b> : 财务专用章</li><li> <b>PERSONNEL</b> : 人事专用章</li><li> <b>OTHER</b> : 其他</li></ul><p>指定具体印章Id:可通过传递 ComponentValue 来指定具体的企业印章ID（支持传入多个）<br><strong>限制条件</strong>：</p><ul><li>可为本企业（即发起方）的签署人指定本企业具体印章ID。</li><li>主企业发起或<a href="https://qian.tencent.com/developers/company/groupCompany">集团账号主代子</a>发起的业务场景下，也支持指定子企业的具体印章ID。</li><li><font color="red"><strong>他方企业签署人不支持指定具体印章ID</strong></font></li></ul><p><font color="red"><strong>注意： 若请求中同时指定了具体的印章ID和印章类型，将以印章ID为准，传入的印章类型参数会被自动忽略。</strong></font><br><br></p><p>2.当ComponentType 是 SIGN_SIGNATURE 时可传入以下类型（支持多个）</p><ul><li>HANDWRITE : 需要实时手写的手写签名</li><li>HANDWRITTEN_ESIGN : 长效手写签名， 是使用保存到个人中心的印章列表的手写签名(并且包含HANDWRITE)</li><li>OCR_ESIGN : OCR印章（智慧手写签名）</li><li>ESIGN : 个人印章</li><li>SYSTEM_ESIGN : 系统印章</li></ul><br>3.当ComponentType 是 SIGN_LEGAL_PERSON_SEAL 时无需传递此参数。
 	ComponentValue []*string `json:"ComponentValue,omitnil,omitempty" name:"ComponentValue"`
 }
 

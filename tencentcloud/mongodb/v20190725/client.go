@@ -4577,7 +4577,7 @@ func NewPromoteDBInstanceToActiveResponse() (response *PromoteDBInstanceToActive
 }
 
 // PromoteDBInstanceToActive
-// 本接口（PromoteDBInstanceToActive）用于灾备实例转正
+// 本接口（PromoteDBInstanceToActive）用于将灾备实例或只读实例转为独立的主实例
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -4588,7 +4588,7 @@ func (c *Client) PromoteDBInstanceToActive(request *PromoteDBInstanceToActiveReq
 }
 
 // PromoteDBInstanceToActive
-// 本接口（PromoteDBInstanceToActive）用于灾备实例转正
+// 本接口（PromoteDBInstanceToActive）用于将灾备实例或只读实例转为独立的主实例
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

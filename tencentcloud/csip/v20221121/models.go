@@ -2915,6 +2915,9 @@ type CosBucketId struct {
 	// appid
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
 
+
+	IsAutoMonitor *uint64 `json:"IsAutoMonitor,omitnil,omitempty" name:"IsAutoMonitor"`
+
 	// bucket id集合
 	BucketIdSet []*string `json:"BucketIdSet,omitnil,omitempty" name:"BucketIdSet"`
 }

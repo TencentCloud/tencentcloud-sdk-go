@@ -69,20 +69,20 @@ type AcceleratorRegionSet struct {
 
 // Predefined struct for user
 type CreateAccelerateAreasRequestParams struct {
-	// 全球加速实例ID。
+	// <p>全球加速实例ID。</p>
 	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
 
-	// 加速地域信息。
+	// <p>加速地域信息。一次最多创建10组加速地域。</p>
 	AcceleratorAreas []*AcceleratorAreas `json:"AcceleratorAreas,omitnil,omitempty" name:"AcceleratorAreas"`
 }
 
 type CreateAccelerateAreasRequest struct {
 	*tchttp.BaseRequest
 	
-	// 全球加速实例ID。
+	// <p>全球加速实例ID。</p>
 	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
 
-	// 加速地域信息。
+	// <p>加速地域信息。一次最多创建10组加速地域。</p>
 	AcceleratorAreas []*AcceleratorAreas `json:"AcceleratorAreas,omitnil,omitempty" name:"AcceleratorAreas"`
 }
 
@@ -108,7 +108,7 @@ func (r *CreateAccelerateAreasRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateAccelerateAreasResponseParams struct {
-	// 异步任务ID。
+	// <p>异步任务ID。</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2115,20 +2115,20 @@ type ListenerSet struct {
 
 // Predefined struct for user
 type ModifyAccelerateAreasRequestParams struct {
-	// 全球加速实例ID。
+	// <p>全球加速实例ID。</p>
 	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
 
-	// 加速地域信息。
+	// <p>加速地域信息。</p><p>入参限制：数组长度不能超过10。</p>
 	AcceleratorAreas []*AcceleratorAreas `json:"AcceleratorAreas,omitnil,omitempty" name:"AcceleratorAreas"`
 }
 
 type ModifyAccelerateAreasRequest struct {
 	*tchttp.BaseRequest
 	
-	// 全球加速实例ID。
+	// <p>全球加速实例ID。</p>
 	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
 
-	// 加速地域信息。
+	// <p>加速地域信息。</p><p>入参限制：数组长度不能超过10。</p>
 	AcceleratorAreas []*AcceleratorAreas `json:"AcceleratorAreas,omitnil,omitempty" name:"AcceleratorAreas"`
 }
 
@@ -2154,7 +2154,7 @@ func (r *ModifyAccelerateAreasRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyAccelerateAreasResponseParams struct {
-	// 异步任务ID。
+	// <p>异步任务ID。</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

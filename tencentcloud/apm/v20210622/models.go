@@ -3944,267 +3944,285 @@ func (r *ModifyApmAssociationResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyApmInstanceRequestParams struct {
-	// 业务系统 ID
+	// <p>业务系统 ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 业务系统名
+	// <p>业务系统名</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// Tag 列表
+	// <p>Tag 列表</p>
 	Tags []*ApmTag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 业务系统描述
+	// <p>业务系统描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// Trace 数据保存时长（单位：天）
+	// <p>Trace 数据保存时长（单位：天）</p>
 	TraceDuration *int64 `json:"TraceDuration,omitnil,omitempty" name:"TraceDuration"`
 
-	// 是否开启计费
+	// <p>是否开启计费</p>
 	OpenBilling *bool `json:"OpenBilling,omitnil,omitempty" name:"OpenBilling"`
 
-	// 业务系统上报额度
+	// <p>业务系统上报额度</p>
 	SpanDailyCounters *uint64 `json:"SpanDailyCounters,omitnil,omitempty" name:"SpanDailyCounters"`
 
-	// 错误率警示线，当应用的平均错误率超出该阈值时，系统会给出异常提示。
+	// <p>错误率警示线，当应用的平均错误率超出该阈值时，系统会给出异常提示。</p>
 	ErrRateThreshold *int64 `json:"ErrRateThreshold,omitnil,omitempty" name:"ErrRateThreshold"`
 
-	// 采样率（单位：%）
+	// <p>采样率（单位：%）</p>
 	SampleRate *int64 `json:"SampleRate,omitnil,omitempty" name:"SampleRate"`
 
-	// 是否开启错误采样（0=关, 1=开）
+	// <p>是否开启错误采样（0=关, 1=开）</p>
 	ErrorSample *int64 `json:"ErrorSample,omitnil,omitempty" name:"ErrorSample"`
 
-	// 采样慢调用保存阈值（单位：ms）
+	// <p>采样慢调用保存阈值（单位：ms）</p>
 	SlowRequestSavedThreshold *int64 `json:"SlowRequestSavedThreshold,omitnil,omitempty" name:"SlowRequestSavedThreshold"`
 
-	// 是否开启日志功能（0=关, 1=开）
+	// <p>是否开启日志功能（0=关, 1=开）</p>
 	IsRelatedLog *int64 `json:"IsRelatedLog,omitnil,omitempty" name:"IsRelatedLog"`
 
-	// 日志地域，开启日志功能后才会生效
+	// <p>日志地域，开启日志功能后才会生效</p>
 	LogRegion *string `json:"LogRegion,omitnil,omitempty" name:"LogRegion"`
 
-	// CLS 日志主题 ID，开启日志功能后才会生效
+	// <p>CLS 日志主题 ID，开启日志功能后才会生效</p>
 	LogTopicID *string `json:"LogTopicID,omitnil,omitempty" name:"LogTopicID"`
 
-	// 日志集，开启日志功能后才会生效
+	// <p>日志集，开启日志功能后才会生效</p>
 	LogSet *string `json:"LogSet,omitnil,omitempty" name:"LogSet"`
 
-	// 日志源，开启日志功能后才会生效
+	// <p>日志源，开启日志功能后才会生效</p>
 	LogSource *string `json:"LogSource,omitnil,omitempty" name:"LogSource"`
 
-	// 用户自定义展示标签列表
+	// <p>用户自定义展示标签列表</p>
 	CustomShowTags []*string `json:"CustomShowTags,omitnil,omitempty" name:"CustomShowTags"`
 
-	// 修改计费模式（1为预付费，0为按量付费）
+	// <p>修改计费模式（1为预付费，0为按量付费）</p>
 	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// 响应时间警示线
+	// <p>响应时间警示线</p>
 	ResponseDurationWarningThreshold *int64 `json:"ResponseDurationWarningThreshold,omitnil,omitempty" name:"ResponseDurationWarningThreshold"`
 
-	// 是否免费（0=付费版；1=TSF 受限免费版；2=免费版），默认0
+	// <p>是否免费（0=付费版；1=TSF 受限免费版；2=免费版），默认0</p>
 	Free *int64 `json:"Free,omitnil,omitempty" name:"Free"`
 
-	// 是否关联 Dashboard（0=关,1=开）
+	// <p>是否关联 Dashboard（0=关,1=开）</p>
 	IsRelatedDashboard *int64 `json:"IsRelatedDashboard,omitnil,omitempty" name:"IsRelatedDashboard"`
 
-	// 关联的 Dashboard ID，开启关联 Dashboard 后才会生效
+	// <p>关联的 Dashboard ID，开启关联 Dashboard 后才会生效</p>
 	DashboardTopicID *string `json:"DashboardTopicID,omitnil,omitempty" name:"DashboardTopicID"`
 
-	// 是否开启 SQL 注入检测（0=关,1=开）
+	// <p>是否开启 SQL 注入检测（0=关,1=开）</p>
 	IsSqlInjectionAnalysis *int64 `json:"IsSqlInjectionAnalysis,omitnil,omitempty" name:"IsSqlInjectionAnalysis"`
 
-	// 是否开启组件漏洞检测（0=关,1=开）
+	// <p>是否开启组件漏洞检测（0=关,1=开）</p>
 	IsInstrumentationVulnerabilityScan *int64 `json:"IsInstrumentationVulnerabilityScan,omitnil,omitempty" name:"IsInstrumentationVulnerabilityScan"`
 
-	// 是否开启远程命令攻击检测
+	// <p>是否开启远程命令攻击检测</p>
 	IsRemoteCommandExecutionAnalysis *int64 `json:"IsRemoteCommandExecutionAnalysis,omitnil,omitempty" name:"IsRemoteCommandExecutionAnalysis"`
 
-	// 是否开启内存马检测
+	// <p>是否开启内存马检测</p>
 	IsMemoryHijackingAnalysis *int64 `json:"IsMemoryHijackingAnalysis,omitnil,omitempty" name:"IsMemoryHijackingAnalysis"`
 
-	// CLS索引类型(0=全文索引，1=键值索引)
+	// <p>CLS索引类型(0=全文索引，1=键值索引)</p>
 	LogIndexType *int64 `json:"LogIndexType,omitnil,omitempty" name:"LogIndexType"`
 
-	// traceId的索引key: 当CLS索引类型为键值索引时生效
+	// <p>traceId的索引key: 当CLS索引类型为键值索引时生效</p>
 	LogTraceIdKey *string `json:"LogTraceIdKey,omitnil,omitempty" name:"LogTraceIdKey"`
 
-	// 是否开启删除任意文件检测（0-关闭，1-开启）
+	// <p>是否开启删除任意文件检测（0-关闭，1-开启）</p>
 	IsDeleteAnyFileAnalysis *int64 `json:"IsDeleteAnyFileAnalysis,omitnil,omitempty" name:"IsDeleteAnyFileAnalysis"`
 
-	// 是否开启读取任意文件检测（0-关闭，1-开启）
+	// <p>是否开启读取任意文件检测（0-关闭，1-开启）</p>
 	IsReadAnyFileAnalysis *int64 `json:"IsReadAnyFileAnalysis,omitnil,omitempty" name:"IsReadAnyFileAnalysis"`
 
-	// 是否开启上传任意文件检测（0-关闭，1-开启）
+	// <p>是否开启上传任意文件检测（0-关闭，1-开启）</p>
 	IsUploadAnyFileAnalysis *int64 `json:"IsUploadAnyFileAnalysis,omitnil,omitempty" name:"IsUploadAnyFileAnalysis"`
 
-	// 是否开启包含任意文件检测（0-关闭，1-开启）
+	// <p>是否开启包含任意文件检测（0-关闭，1-开启）</p>
 	IsIncludeAnyFileAnalysis *int64 `json:"IsIncludeAnyFileAnalysis,omitnil,omitempty" name:"IsIncludeAnyFileAnalysis"`
 
-	// 是否开启目录遍历检测（0-关闭，1-开启）
+	// <p>是否开启目录遍历检测（0-关闭，1-开启）</p>
 	IsDirectoryTraversalAnalysis *int64 `json:"IsDirectoryTraversalAnalysis,omitnil,omitempty" name:"IsDirectoryTraversalAnalysis"`
 
-	// 是否开启模板引擎注入检测（0-关闭，1-开启）
+	// <p>是否开启模板引擎注入检测（0-关闭，1-开启）</p>
 	IsTemplateEngineInjectionAnalysis *int64 `json:"IsTemplateEngineInjectionAnalysis,omitnil,omitempty" name:"IsTemplateEngineInjectionAnalysis"`
 
-	// 是否开启脚本引擎注入检测（0-关闭，1-开启）
+	// <p>是否开启脚本引擎注入检测（0-关闭，1-开启）</p>
 	IsScriptEngineInjectionAnalysis *int64 `json:"IsScriptEngineInjectionAnalysis,omitnil,omitempty" name:"IsScriptEngineInjectionAnalysis"`
 
-	// 是否开启表达式注入检测（0-关闭，1-开启）
+	// <p>是否开启表达式注入检测（0-关闭，1-开启）</p>
 	IsExpressionInjectionAnalysis *int64 `json:"IsExpressionInjectionAnalysis,omitnil,omitempty" name:"IsExpressionInjectionAnalysis"`
 
-	// 是否开启JNDI注入检测（0-关闭，1-开启）
+	// <p>是否开启JNDI注入检测（0-关闭，1-开启）</p>
 	IsJNDIInjectionAnalysis *int64 `json:"IsJNDIInjectionAnalysis,omitnil,omitempty" name:"IsJNDIInjectionAnalysis"`
 
-	// 是否开启JNI注入检测（0-关闭，1-开启）
+	// <p>是否开启JNI注入检测（0-关闭，1-开启）</p>
 	IsJNIInjectionAnalysis *int64 `json:"IsJNIInjectionAnalysis,omitnil,omitempty" name:"IsJNIInjectionAnalysis"`
 
-	// 是否开启Webshell后门检测（0-关闭，1-开启）
+	// <p>是否开启Webshell后门检测（0-关闭，1-开启）</p>
 	IsWebshellBackdoorAnalysis *int64 `json:"IsWebshellBackdoorAnalysis,omitnil,omitempty" name:"IsWebshellBackdoorAnalysis"`
 
-	// 是否开启反序列化检测（0-关闭，1-开启）
+	// <p>是否开启反序列化检测（0-关闭，1-开启）</p>
 	IsDeserializationAnalysis *int64 `json:"IsDeserializationAnalysis,omitnil,omitempty" name:"IsDeserializationAnalysis"`
 
-	// URL长分段收敛阈值
+	// <p>URL长分段收敛阈值</p>
 	UrlLongSegmentThreshold *int64 `json:"UrlLongSegmentThreshold,omitnil,omitempty" name:"UrlLongSegmentThreshold"`
 
-	// URL数字分段收敛阈值
+	// <p>URL数字分段收敛阈值</p>
 	UrlNumberSegmentThreshold *int64 `json:"UrlNumberSegmentThreshold,omitnil,omitempty" name:"UrlNumberSegmentThreshold"`
 
-	// spanId的索引key: 当CLS索引类型为键值索引时生效
+	// <p>spanId的索引key: 当CLS索引类型为键值索引时生效</p>
 	LogSpanIdKey *string `json:"LogSpanIdKey,omitnil,omitempty" name:"LogSpanIdKey"`
+
+	// <p>是否开启探针头采样</p>
+	EnableHeadSampler *bool `json:"EnableHeadSampler,omitnil,omitempty" name:"EnableHeadSampler"`
+
+	// <p>头采类型</p><p>枚举值：</p><ul><li>parentbased_traceidratio： 默认</li></ul>
+	HeadSamplerType *string `json:"HeadSamplerType,omitnil,omitempty" name:"HeadSamplerType"`
+
+	// <p>头采采样率</p><p>取值范围：[0, 100]</p>
+	HeadSamplerArg *int64 `json:"HeadSamplerArg,omitnil,omitempty" name:"HeadSamplerArg"`
 }
 
 type ModifyApmInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 业务系统 ID
+	// <p>业务系统 ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 业务系统名
+	// <p>业务系统名</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// Tag 列表
+	// <p>Tag 列表</p>
 	Tags []*ApmTag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 业务系统描述
+	// <p>业务系统描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// Trace 数据保存时长（单位：天）
+	// <p>Trace 数据保存时长（单位：天）</p>
 	TraceDuration *int64 `json:"TraceDuration,omitnil,omitempty" name:"TraceDuration"`
 
-	// 是否开启计费
+	// <p>是否开启计费</p>
 	OpenBilling *bool `json:"OpenBilling,omitnil,omitempty" name:"OpenBilling"`
 
-	// 业务系统上报额度
+	// <p>业务系统上报额度</p>
 	SpanDailyCounters *uint64 `json:"SpanDailyCounters,omitnil,omitempty" name:"SpanDailyCounters"`
 
-	// 错误率警示线，当应用的平均错误率超出该阈值时，系统会给出异常提示。
+	// <p>错误率警示线，当应用的平均错误率超出该阈值时，系统会给出异常提示。</p>
 	ErrRateThreshold *int64 `json:"ErrRateThreshold,omitnil,omitempty" name:"ErrRateThreshold"`
 
-	// 采样率（单位：%）
+	// <p>采样率（单位：%）</p>
 	SampleRate *int64 `json:"SampleRate,omitnil,omitempty" name:"SampleRate"`
 
-	// 是否开启错误采样（0=关, 1=开）
+	// <p>是否开启错误采样（0=关, 1=开）</p>
 	ErrorSample *int64 `json:"ErrorSample,omitnil,omitempty" name:"ErrorSample"`
 
-	// 采样慢调用保存阈值（单位：ms）
+	// <p>采样慢调用保存阈值（单位：ms）</p>
 	SlowRequestSavedThreshold *int64 `json:"SlowRequestSavedThreshold,omitnil,omitempty" name:"SlowRequestSavedThreshold"`
 
-	// 是否开启日志功能（0=关, 1=开）
+	// <p>是否开启日志功能（0=关, 1=开）</p>
 	IsRelatedLog *int64 `json:"IsRelatedLog,omitnil,omitempty" name:"IsRelatedLog"`
 
-	// 日志地域，开启日志功能后才会生效
+	// <p>日志地域，开启日志功能后才会生效</p>
 	LogRegion *string `json:"LogRegion,omitnil,omitempty" name:"LogRegion"`
 
-	// CLS 日志主题 ID，开启日志功能后才会生效
+	// <p>CLS 日志主题 ID，开启日志功能后才会生效</p>
 	LogTopicID *string `json:"LogTopicID,omitnil,omitempty" name:"LogTopicID"`
 
-	// 日志集，开启日志功能后才会生效
+	// <p>日志集，开启日志功能后才会生效</p>
 	LogSet *string `json:"LogSet,omitnil,omitempty" name:"LogSet"`
 
-	// 日志源，开启日志功能后才会生效
+	// <p>日志源，开启日志功能后才会生效</p>
 	LogSource *string `json:"LogSource,omitnil,omitempty" name:"LogSource"`
 
-	// 用户自定义展示标签列表
+	// <p>用户自定义展示标签列表</p>
 	CustomShowTags []*string `json:"CustomShowTags,omitnil,omitempty" name:"CustomShowTags"`
 
-	// 修改计费模式（1为预付费，0为按量付费）
+	// <p>修改计费模式（1为预付费，0为按量付费）</p>
 	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// 响应时间警示线
+	// <p>响应时间警示线</p>
 	ResponseDurationWarningThreshold *int64 `json:"ResponseDurationWarningThreshold,omitnil,omitempty" name:"ResponseDurationWarningThreshold"`
 
-	// 是否免费（0=付费版；1=TSF 受限免费版；2=免费版），默认0
+	// <p>是否免费（0=付费版；1=TSF 受限免费版；2=免费版），默认0</p>
 	Free *int64 `json:"Free,omitnil,omitempty" name:"Free"`
 
-	// 是否关联 Dashboard（0=关,1=开）
+	// <p>是否关联 Dashboard（0=关,1=开）</p>
 	IsRelatedDashboard *int64 `json:"IsRelatedDashboard,omitnil,omitempty" name:"IsRelatedDashboard"`
 
-	// 关联的 Dashboard ID，开启关联 Dashboard 后才会生效
+	// <p>关联的 Dashboard ID，开启关联 Dashboard 后才会生效</p>
 	DashboardTopicID *string `json:"DashboardTopicID,omitnil,omitempty" name:"DashboardTopicID"`
 
-	// 是否开启 SQL 注入检测（0=关,1=开）
+	// <p>是否开启 SQL 注入检测（0=关,1=开）</p>
 	IsSqlInjectionAnalysis *int64 `json:"IsSqlInjectionAnalysis,omitnil,omitempty" name:"IsSqlInjectionAnalysis"`
 
-	// 是否开启组件漏洞检测（0=关,1=开）
+	// <p>是否开启组件漏洞检测（0=关,1=开）</p>
 	IsInstrumentationVulnerabilityScan *int64 `json:"IsInstrumentationVulnerabilityScan,omitnil,omitempty" name:"IsInstrumentationVulnerabilityScan"`
 
-	// 是否开启远程命令攻击检测
+	// <p>是否开启远程命令攻击检测</p>
 	IsRemoteCommandExecutionAnalysis *int64 `json:"IsRemoteCommandExecutionAnalysis,omitnil,omitempty" name:"IsRemoteCommandExecutionAnalysis"`
 
-	// 是否开启内存马检测
+	// <p>是否开启内存马检测</p>
 	IsMemoryHijackingAnalysis *int64 `json:"IsMemoryHijackingAnalysis,omitnil,omitempty" name:"IsMemoryHijackingAnalysis"`
 
-	// CLS索引类型(0=全文索引，1=键值索引)
+	// <p>CLS索引类型(0=全文索引，1=键值索引)</p>
 	LogIndexType *int64 `json:"LogIndexType,omitnil,omitempty" name:"LogIndexType"`
 
-	// traceId的索引key: 当CLS索引类型为键值索引时生效
+	// <p>traceId的索引key: 当CLS索引类型为键值索引时生效</p>
 	LogTraceIdKey *string `json:"LogTraceIdKey,omitnil,omitempty" name:"LogTraceIdKey"`
 
-	// 是否开启删除任意文件检测（0-关闭，1-开启）
+	// <p>是否开启删除任意文件检测（0-关闭，1-开启）</p>
 	IsDeleteAnyFileAnalysis *int64 `json:"IsDeleteAnyFileAnalysis,omitnil,omitempty" name:"IsDeleteAnyFileAnalysis"`
 
-	// 是否开启读取任意文件检测（0-关闭，1-开启）
+	// <p>是否开启读取任意文件检测（0-关闭，1-开启）</p>
 	IsReadAnyFileAnalysis *int64 `json:"IsReadAnyFileAnalysis,omitnil,omitempty" name:"IsReadAnyFileAnalysis"`
 
-	// 是否开启上传任意文件检测（0-关闭，1-开启）
+	// <p>是否开启上传任意文件检测（0-关闭，1-开启）</p>
 	IsUploadAnyFileAnalysis *int64 `json:"IsUploadAnyFileAnalysis,omitnil,omitempty" name:"IsUploadAnyFileAnalysis"`
 
-	// 是否开启包含任意文件检测（0-关闭，1-开启）
+	// <p>是否开启包含任意文件检测（0-关闭，1-开启）</p>
 	IsIncludeAnyFileAnalysis *int64 `json:"IsIncludeAnyFileAnalysis,omitnil,omitempty" name:"IsIncludeAnyFileAnalysis"`
 
-	// 是否开启目录遍历检测（0-关闭，1-开启）
+	// <p>是否开启目录遍历检测（0-关闭，1-开启）</p>
 	IsDirectoryTraversalAnalysis *int64 `json:"IsDirectoryTraversalAnalysis,omitnil,omitempty" name:"IsDirectoryTraversalAnalysis"`
 
-	// 是否开启模板引擎注入检测（0-关闭，1-开启）
+	// <p>是否开启模板引擎注入检测（0-关闭，1-开启）</p>
 	IsTemplateEngineInjectionAnalysis *int64 `json:"IsTemplateEngineInjectionAnalysis,omitnil,omitempty" name:"IsTemplateEngineInjectionAnalysis"`
 
-	// 是否开启脚本引擎注入检测（0-关闭，1-开启）
+	// <p>是否开启脚本引擎注入检测（0-关闭，1-开启）</p>
 	IsScriptEngineInjectionAnalysis *int64 `json:"IsScriptEngineInjectionAnalysis,omitnil,omitempty" name:"IsScriptEngineInjectionAnalysis"`
 
-	// 是否开启表达式注入检测（0-关闭，1-开启）
+	// <p>是否开启表达式注入检测（0-关闭，1-开启）</p>
 	IsExpressionInjectionAnalysis *int64 `json:"IsExpressionInjectionAnalysis,omitnil,omitempty" name:"IsExpressionInjectionAnalysis"`
 
-	// 是否开启JNDI注入检测（0-关闭，1-开启）
+	// <p>是否开启JNDI注入检测（0-关闭，1-开启）</p>
 	IsJNDIInjectionAnalysis *int64 `json:"IsJNDIInjectionAnalysis,omitnil,omitempty" name:"IsJNDIInjectionAnalysis"`
 
-	// 是否开启JNI注入检测（0-关闭，1-开启）
+	// <p>是否开启JNI注入检测（0-关闭，1-开启）</p>
 	IsJNIInjectionAnalysis *int64 `json:"IsJNIInjectionAnalysis,omitnil,omitempty" name:"IsJNIInjectionAnalysis"`
 
-	// 是否开启Webshell后门检测（0-关闭，1-开启）
+	// <p>是否开启Webshell后门检测（0-关闭，1-开启）</p>
 	IsWebshellBackdoorAnalysis *int64 `json:"IsWebshellBackdoorAnalysis,omitnil,omitempty" name:"IsWebshellBackdoorAnalysis"`
 
-	// 是否开启反序列化检测（0-关闭，1-开启）
+	// <p>是否开启反序列化检测（0-关闭，1-开启）</p>
 	IsDeserializationAnalysis *int64 `json:"IsDeserializationAnalysis,omitnil,omitempty" name:"IsDeserializationAnalysis"`
 
-	// URL长分段收敛阈值
+	// <p>URL长分段收敛阈值</p>
 	UrlLongSegmentThreshold *int64 `json:"UrlLongSegmentThreshold,omitnil,omitempty" name:"UrlLongSegmentThreshold"`
 
-	// URL数字分段收敛阈值
+	// <p>URL数字分段收敛阈值</p>
 	UrlNumberSegmentThreshold *int64 `json:"UrlNumberSegmentThreshold,omitnil,omitempty" name:"UrlNumberSegmentThreshold"`
 
-	// spanId的索引key: 当CLS索引类型为键值索引时生效
+	// <p>spanId的索引key: 当CLS索引类型为键值索引时生效</p>
 	LogSpanIdKey *string `json:"LogSpanIdKey,omitnil,omitempty" name:"LogSpanIdKey"`
+
+	// <p>是否开启探针头采样</p>
+	EnableHeadSampler *bool `json:"EnableHeadSampler,omitnil,omitempty" name:"EnableHeadSampler"`
+
+	// <p>头采类型</p><p>枚举值：</p><ul><li>parentbased_traceidratio： 默认</li></ul>
+	HeadSamplerType *string `json:"HeadSamplerType,omitnil,omitempty" name:"HeadSamplerType"`
+
+	// <p>头采采样率</p><p>取值范围：[0, 100]</p>
+	HeadSamplerArg *int64 `json:"HeadSamplerArg,omitnil,omitempty" name:"HeadSamplerArg"`
 }
 
 func (r *ModifyApmInstanceRequest) ToJsonString() string {
@@ -4262,6 +4280,9 @@ func (r *ModifyApmInstanceRequest) FromJsonString(s string) error {
 	delete(f, "UrlLongSegmentThreshold")
 	delete(f, "UrlNumberSegmentThreshold")
 	delete(f, "LogSpanIdKey")
+	delete(f, "EnableHeadSampler")
+	delete(f, "HeadSamplerType")
+	delete(f, "HeadSamplerArg")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyApmInstanceRequest has unknown keys!", "")
 	}

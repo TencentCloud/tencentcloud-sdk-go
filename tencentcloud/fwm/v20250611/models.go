@@ -153,138 +153,106 @@ type AddressTemplateSpecification struct {
 }
 
 type AnalysisSgRuleInfoResp struct {
-	// 规则id  等同RuleUuid
+	// <p>规则id  等同RuleUuid</p>
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 规则Id
+	// <p>规则Id</p>
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
-	// 排序
+	// <p>排序</p>
 	OrderIndex *int64 `json:"OrderIndex,omitnil,omitempty" name:"OrderIndex"`
 
-	// 云防排序
+	// <p>云防排序</p>
 	CfwOrderIndex *int64 `json:"CfwOrderIndex,omitnil,omitempty" name:"CfwOrderIndex"`
 
-	// 源规则内容
+	// <p>源规则内容</p>
 	SourceId *string `json:"SourceId,omitnil,omitempty" name:"SourceId"`
 
-	// 源规则类型 
-	// 取值范围 0/1/2/3/4/5/6/7/8/9/100
-	// 0表示ip(net),
-	// 1表示VPC实例(instance)
-	// 2表示子网实例(instance)
-	// 3表示CVM实例(instance)
-	// 4表示CLB实例(instance)
-	// 5表示ENI实例(instance)
-	// 6表示数据库实例(instance)
-	// 7表示模板(template)
-	// 8表示标签(tag)
-	// 9表示地域(region)
-	// 100表示资产分组(resourcegroup)
+	// <p>源规则类型<br>取值范围 0/1/2/3/4/5/6/7/8/9<br>0表示ip(net),<br>1表示VPC实例(instance)<br>2表示子网实例(instance)<br>3表示CVM实例(instance)<br>4表示CLB实例(instance)<br>5表示ENI实例(instance)<br>6表示数据库实例(instance)<br>7表示模板(template)<br>8表示标签(tag)<br>9表示地域(region)</p><p>枚举值：</p><ul><li>0： IP / CIDR</li><li>1： VPC 实例</li><li>2： 子网 </li><li>3： CVM 实例</li><li>4： CLB 实例</li><li>5： ENI（弹性网卡）实例</li><li>6： CDB（云数据库）实例</li><li>7： 参数模板</li><li>8： 标签</li><li>9： 地域</li></ul>
 	SourceType *int64 `json:"SourceType,omitnil,omitempty" name:"SourceType"`
 
-	// 目的规则内容
+	// <p>目的规则内容</p>
 	TargetId *string `json:"TargetId,omitnil,omitempty" name:"TargetId"`
 
-	// 目的规则类型 
-	// 取值范围 0/1/2/3/4/5/6/7/8/9/100
-	// 0表示ip(net),
-	// 1表示VPC实例(instance)
-	// 2表示子网实例(instance)
-	// 3表示CVM实例(instance)
-	// 4表示CLB实例(instance)
-	// 5表示ENI实例(instance)
-	// 6表示数据库实例(instance)
-	// 7表示模板(template)
-	// 8表示标签(tag)
-	// 9表示地域(region)
-	// 100表示资产分组(resourcegroup)
+	// <p>目的规则类型<br>取值范围 0/1/2/3/4/5/6/7/8/9/100<br>0表示ip(net),<br>1表示VPC实例(instance)<br>2表示子网实例(instance)<br>3表示CVM实例(instance)<br>4表示CLB实例(instance)<br>5表示ENI实例(instance)<br>6表示数据库实例(instance)<br>7表示模板(template)<br>8表示标签(tag)<br>9表示地域(region)<br>100表示资产分组(resourcegroup)</p><p>枚举值：</p><ul><li>0： IP / CIDR</li><li>1： VPC 实例</li><li>2： 子网 </li><li>3： CVM 实例</li><li>4： CLB 实例</li><li>5： ENI（弹性网卡）实例</li><li>6： CDB（云数据库）实例</li><li>7： 参数模板</li><li>8： 标签</li><li>9： 地域</li></ul>
 	TargetType *int64 `json:"TargetType,omitnil,omitempty" name:"TargetType"`
 
-	// 协议名称
-	// 取值范围:TCP/ANY/ICMP/UDP
-	// ANY:表示所有
+	// <p>协议名称<br>取值范围:TCP/ANY/ICMP/UDP<br>ANY:表示所有</p>
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
-	// 端口
+	// <p>端口</p>
 	Port *string `json:"Port,omitnil,omitempty" name:"Port"`
 
-	// 规则策略
-	// 取值范围:1/2
-	// 1:阻断
-	// 2:放行
+	// <p>规则策略<br>取值范围:1/2<br>1:阻断<br>2:放行</p>
 	Strategy *int64 `json:"Strategy,omitnil,omitempty" name:"Strategy"`
 
-	// 描述
+	// <p>描述</p>
 	Detail *string `json:"Detail,omitnil,omitempty" name:"Detail"`
 
-	// 地域
+	// <p>地域</p>
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 服务模板id
+	// <p>服务模板id</p>
 	ServiceTemplateId *string `json:"ServiceTemplateId,omitnil,omitempty" name:"ServiceTemplateId"`
 
-	// 源资产名称
+	// <p>源资产名称</p>
 	SouInstanceName *string `json:"SouInstanceName,omitnil,omitempty" name:"SouInstanceName"`
 
-	// 源资产公网ip
+	// <p>源资产公网ip</p>
 	SouPublicIp *string `json:"SouPublicIp,omitnil,omitempty" name:"SouPublicIp"`
 
-	// 源资产内网ip
+	// <p>源资产内网ip</p>
 	SouPrivateIp *string `json:"SouPrivateIp,omitnil,omitempty" name:"SouPrivateIp"`
 
-	// 源资产网段信息
+	// <p>源资产网段信息</p>
 	SouCidr *string `json:"SouCidr,omitnil,omitempty" name:"SouCidr"`
 
-	// 源模板名称
+	// <p>源模板名称</p>
 	SouParameterName *string `json:"SouParameterName,omitnil,omitempty" name:"SouParameterName"`
 
-	// 目的资产名称
+	// <p>目的资产名称</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 目的资产公网ip
+	// <p>目的资产公网ip</p>
 	PublicIp *string `json:"PublicIp,omitnil,omitempty" name:"PublicIp"`
 
-	// 目的资产内网ip
+	// <p>目的资产内网ip</p>
 	PrivateIp *string `json:"PrivateIp,omitnil,omitempty" name:"PrivateIp"`
 
-	// 目的资产网段信息
+	// <p>目的资产网段信息</p>
 	Cidr *string `json:"Cidr,omitnil,omitempty" name:"Cidr"`
 
-	// 目的模板名称
+	// <p>目的模板名称</p>
 	ParameterName *string `json:"ParameterName,omitnil,omitempty" name:"ParameterName"`
 
-	// 端口模板名称
+	// <p>端口模板名称</p>
 	ProtocolPortName *string `json:"ProtocolPortName,omitnil,omitempty" name:"ProtocolPortName"`
 
-	// 域名解析的IP统计
+	// <p>域名解析的IP统计</p>
 	DnsParseCount *SgDnsParseCount `json:"DnsParseCount,omitnil,omitempty" name:"DnsParseCount"`
 
-	// 规则生效范围
+	// <p>规则生效范围</p>
 	Scope *string `json:"Scope,omitnil,omitempty" name:"Scope"`
 
-	// 分区：
-	// 1防火墙管理最前分区
-	// 2是云防规则
-	// 3防火墙管理最后分区
+	// <p>分区：<br>1防火墙管理最前分区<br>2是云防规则<br>3防火墙管理最后分区</p>
 	RulePartition *int64 `json:"RulePartition,omitnil,omitempty" name:"RulePartition"`
 
-	// 规则组Id
+	// <p>规则组Id</p>
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 规则组名称
+	// <p>规则组名称</p>
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
-	// 规则组内规则id
+	// <p>规则组内规则id</p>
 	GroupRuleId *string `json:"GroupRuleId,omitnil,omitempty" name:"GroupRuleId"`
 
-	// 策略Id
+	// <p>策略Id</p>
 	StrategyId *string `json:"StrategyId,omitnil,omitempty" name:"StrategyId"`
 
-	// ip类型
+	// <p>ip类型</p>
 	IpVersion *string `json:"IpVersion,omitnil,omitempty" name:"IpVersion"`
 
-	// 成员信息
+	// <p>成员信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BelongMember *MemberInfo `json:"BelongMember,omitnil,omitempty" name:"BelongMember"`
 }
@@ -351,15 +319,15 @@ func (r *CancelIgnorePolicyRiskResponse) FromJsonString(s string) error {
 }
 
 type CommonFilter struct {
-	// 筛选字段名。支持：SecurityGroupId、FwGroupId、Ip（IP地址模糊搜索）、InstanceName（实例名称模糊搜索）、VpcId（VPC ID精确搜索）
+	// <p>筛选字段名。支持：SecurityGroupId、FwGroupId、IP（IP地址模糊搜索）、InstanceName（实例名称模糊搜索）、VpcId（VPC ID精确搜索）</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 筛选值列表
+	// <p>筛选值列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
 
-	// 操作类型。1=等于，7=in，9=模糊匹配
+	// <p>操作类型。1=等于，7=in，9=模糊匹配</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OperatorType *int64 `json:"OperatorType,omitnil,omitempty" name:"OperatorType"`
 }
@@ -3565,50 +3533,50 @@ func (r *ModifyVpcAclRuleSequenceResponse) FromJsonString(s string) error {
 }
 
 type NatAclRule struct {
-	// 源地址内容
+	// <p>源地址内容</p>
 	SourceContent *string `json:"SourceContent,omitnil,omitempty" name:"SourceContent"`
 
-	// 源类型：ip/url/template/instance/tag
+	// <p>源类型：ip/url/template/instance/tag</p>
 	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
 
-	// 目的地址内容
+	// <p>目的地址内容</p>
 	TargetContent *string `json:"TargetContent,omitnil,omitempty" name:"TargetContent"`
 
-	// 目的类型：ip/url/template/instance/tag
+	// <p>目的类型：ip/url/template/instance/tag</p>
 	TargetType *string `json:"TargetType,omitnil,omitempty" name:"TargetType"`
 
-	// 协议：TCP/UDP/ICMP/ANY/HTTP/HTTPS/DNS/FTP等
+	// <p>协议：TCP/UDP/ICMP/ANY/HTTP/HTTPS/DNS/FTP等</p>
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
-	// 动作：accept/drop/log
+	// <p>动作：accept/drop/log</p>
 	RuleAction *string `json:"RuleAction,omitnil,omitempty" name:"RuleAction"`
 
-	// 优先级（从1开始）
+	// <p>优先级（从1开始）</p>
 	OrderIndex *int64 `json:"OrderIndex,omitnil,omitempty" name:"OrderIndex"`
 
-	// 规则生效范围：ALL-全局生效，ap-xxx-地域生效，cfwnat-xxx-NAT防火墙实例生效
+	// <p>规则生效范围：ALL-全局生效，ap-xxx-地域生效，cfwnat-xxx-NAT防火墙实例生效</p>
 	Scope *string `json:"Scope,omitnil,omitempty" name:"Scope"`
 
-	// 规则方向：1-入站规则，0-出站规则
+	// <p>规则方向：1-入站规则，0-出站规则</p>
 	Direction *int64 `json:"Direction,omitnil,omitempty" name:"Direction"`
 
-	// 规则ID（修改时必填）
+	// <p>规则ID（修改时必填）</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
-	// 端口（ICMP协议时为空）
+	// <p>端口（ICMP协议时为空）</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Port *string `json:"Port,omitnil,omitempty" name:"Port"`
 
-	// 规则描述
+	// <p>规则描述</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 端口模板ID
+	// <p>端口模板ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParamTemplateId *string `json:"ParamTemplateId,omitnil,omitempty" name:"ParamTemplateId"`
 
-	// 规则归属的成员账号ID（当Scope为cfwnat-xxx或SourceType/DestType为instance/tag时必填）
+	// <p>规则归属的成员账号ID(当Scope为cfwnat-xxx或SourceType/DestType为instance/tag时必填)</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BelongMemberId *string `json:"BelongMemberId,omitnil,omitempty" name:"BelongMemberId"`
 }
@@ -3961,117 +3929,91 @@ type RiskCategoryItem struct {
 }
 
 type SecGroupRuleResp struct {
-	// 排序
+	// <p>排序</p>
 	OrderIndex *int64 `json:"OrderIndex,omitnil,omitempty" name:"OrderIndex"`
 
-	// 主键id
+	// <p>主键id</p>
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
-	// ip类型
+	// <p>ip类型</p>
 	IpVersion *string `json:"IpVersion,omitnil,omitempty" name:"IpVersion"`
 
-	// 源规则内容
+	// <p>源规则内容</p>
 	SourceId *string `json:"SourceId,omitnil,omitempty" name:"SourceId"`
 
-	// 源规则类型 
-	// 取值范围 0/1/2/3/4/5/6/7/8/9/100
-	// 0表示ip(net),
-	// 1表示VPC实例(instance)
-	// 2表示子网实例(instance)
-	// 3表示CVM实例(instance)
-	// 4表示CLB实例(instance)
-	// 5表示ENI实例(instance)
-	// 6表示数据库实例(instance)
-	// 7表示模板(template)
-	// 8表示标签(tag)
-	// 9表示地域(region)
-	// 100表示资产分组(resourcegroup)
+	// <p>源规则类型<br>取值范围 0/1/2/3/4/5/6/7/8/9/100<br>0表示ip(net),<br>1表示VPC实例(instance)<br>2表示子网实例(instance)<br>3表示CVM实例(instance)<br>4表示CLB实例(instance)<br>5表示ENI实例(instance)<br>6表示数据库实例(instance)<br>7表示模板(template)<br>8表示标签(tag)<br>9表示地域(region)<br>100表示资产分组(resourcegroup)</p>
 	SourceType *int64 `json:"SourceType,omitnil,omitempty" name:"SourceType"`
 
-	// 目的规则内容
+	// <p>目的规则内容</p>
 	TargetId *string `json:"TargetId,omitnil,omitempty" name:"TargetId"`
 
-	// 目的规则类型 
-	// 取值范围 0/1/2/3/4/5/6/7/8/9/100
-	// 0表示ip(net),
-	// 1表示VPC实例(instance)
-	// 2表示子网实例(instance)
-	// 3表示CVM实例(instance)
-	// 4表示CLB实例(instance)
-	// 5表示ENI实例(instance)
-	// 6表示数据库实例(instance)
-	// 7表示模板(template)
-	// 8表示标签(tag)
-	// 9表示地域(region)
-	// 100表示资产分组(resourcegroup)
+	// <p>目的规则类型<br>取值范围 0/1/2/3/4/5/6/7/8/9/100<br>0表示ip(net),<br>1表示VPC实例(instance)<br>2表示子网实例(instance)<br>3表示CVM实例(instance)<br>4表示CLB实例(instance)<br>5表示ENI实例(instance)<br>6表示数据库实例(instance)<br>7表示模板(template)<br>8表示标签(tag)<br>9表示地域(region)<br>100表示资产分组(resourcegroup)</p>
 	TargetType *int64 `json:"TargetType,omitnil,omitempty" name:"TargetType"`
 
-	// 协议名称
-	// 取值范围:TCP/ANY/ICMP/UDP
-	// ANY:表示所有
+	// <p>协议名称<br>取值范围:TCP/ANY/ICMP/UDP<br>ANY:表示所有</p>
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
-	// 端口
+	// <p>端口</p>
 	Port *string `json:"Port,omitnil,omitempty" name:"Port"`
 
-	// 策略
+	// <p>策略</p>
 	Strategy *int64 `json:"Strategy,omitnil,omitempty" name:"Strategy"`
 
-	// 描述
+	// <p>描述</p>
 	Detail *string `json:"Detail,omitnil,omitempty" name:"Detail"`
 
-	// 地域
+	// <p>地域</p>
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 服务模板id
+	// <p>服务模板id</p>
 	ServiceTemplateId *string `json:"ServiceTemplateId,omitnil,omitempty" name:"ServiceTemplateId"`
 
-	// 源资产名称
+	// <p>源资产名称</p>
 	SouInstanceName *string `json:"SouInstanceName,omitnil,omitempty" name:"SouInstanceName"`
 
-	// 源资产公网ip
+	// <p>源资产公网ip</p>
 	SouPublicIp *string `json:"SouPublicIp,omitnil,omitempty" name:"SouPublicIp"`
 
-	// 源资产内网ip
+	// <p>源资产内网ip</p>
 	SouPrivateIp *string `json:"SouPrivateIp,omitnil,omitempty" name:"SouPrivateIp"`
 
-	// 源资产网段信息
+	// <p>源资产网段信息</p>
 	SouCidr *string `json:"SouCidr,omitnil,omitempty" name:"SouCidr"`
 
-	// 源模板名称
+	// <p>源模板名称</p>
 	SouParameterName *string `json:"SouParameterName,omitnil,omitempty" name:"SouParameterName"`
 
-	// 目的资产名称
+	// <p>目的资产名称</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 目的资产公网ip
+	// <p>目的资产公网ip</p>
 	PublicIp *string `json:"PublicIp,omitnil,omitempty" name:"PublicIp"`
 
-	// 目的资产内网ip
+	// <p>目的资产内网ip</p>
 	PrivateIp *string `json:"PrivateIp,omitnil,omitempty" name:"PrivateIp"`
 
-	// 目的资产网段信息
+	// <p>目的资产网段信息</p>
 	Cidr *string `json:"Cidr,omitnil,omitempty" name:"Cidr"`
 
-	// 目的模板名称
+	// <p>目的模板名称</p>
 	ParameterName *string `json:"ParameterName,omitnil,omitempty" name:"ParameterName"`
 
-	// 端口模板名称
+	// <p>端口模板名称</p>
 	ProtocolPortName *string `json:"ProtocolPortName,omitnil,omitempty" name:"ProtocolPortName"`
 
-	// 规则id  等同RuleUuid
+	// <p>规则id  等同RuleUuid</p>
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 域名解析的IP统计
+	// <p>域名解析的IP统计</p>
 	DnsParseCount *SgDnsParseCount `json:"DnsParseCount,omitnil,omitempty" name:"DnsParseCount"`
 
-	// 规则生效范围
+	// <p>规则生效范围</p>
 	Scope *string `json:"Scope,omitnil,omitempty" name:"Scope"`
 
-	// 规则最新一次是否有改动 取值范围：0/1 0:否 1:是
+	// <p>规则最近一次是否有改动 取值范围：0/1 0:否 1:是</p>
 	IsNew *int64 `json:"IsNew,omitnil,omitempty" name:"IsNew"`
 
-	// 规则归属的成员账号（当FwGroupId为cfwg-xxx或SourceType/DestType为instance/tag时必填)
+	// <p>规则归属的成员账号（当FwGroupId为cfwg-xxx或SourceType/DestType为instance/tag时必填)</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BelongMember *MemberInfo `json:"BelongMember,omitnil,omitempty" name:"BelongMember"`
 }

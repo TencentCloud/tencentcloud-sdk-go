@@ -1648,6 +1648,9 @@ type ClusterInfo struct {
 
 	// <p>集群类型</p><p>枚举值：</p><ul><li>Public： 公有云集群</li><li>Exclusive： 独占集群</li></ul><p>默认值：Public</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>集群名称</p>
+	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 }
 
 type ClusterItem struct {

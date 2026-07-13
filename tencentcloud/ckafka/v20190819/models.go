@@ -9004,6 +9004,63 @@ type IpWhitelistDTO struct {
 	PolicyDescription *string `json:"PolicyDescription,omitnil,omitempty" name:"PolicyDescription"`
 }
 
+// Predefined struct for user
+type IsolatedInstancePreRequestParams struct {
+	// ckafka集群实例Id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+type IsolatedInstancePreRequest struct {
+	*tchttp.BaseRequest
+	
+	// ckafka集群实例Id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+func (r *IsolatedInstancePreRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *IsolatedInstancePreRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "IsolatedInstancePreRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type IsolatedInstancePreResponseParams struct {
+	// 返回结果
+	Result *CreateInstancePreResp `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type IsolatedInstancePreResponse struct {
+	*tchttp.BaseResponse
+	Response *IsolatedInstancePreResponseParams `json:"Response"`
+}
+
+func (r *IsolatedInstancePreResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *IsolatedInstancePreResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type JgwOperateResponse struct {
 	// <p>返回的code，0为正常，非0为错误</p>
 	ReturnCode *string `json:"ReturnCode,omitnil,omitempty" name:"ReturnCode"`

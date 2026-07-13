@@ -2676,6 +2676,9 @@ type AigcVideoTaskOutput struct {
 
 	// <p>任务类型为 Procedure 的任务 ID。若发起<a href="https://cloud.tencent.com/document/product/266/126239">创建 AIGC 生视频任务</a>时指定了任务流模板(Procedure)，当该任务流模板指定了 MediaProcessTask、AiAnalysisTask、AiRecognitionTask 中的一个或多个时发起该任务。</p>
 	ProcedureTaskIds []*string `json:"ProcedureTaskIds,omitnil,omitempty" name:"ProcedureTaskIds"`
+
+	// <p>AIGC 生视频任务的用量信息。</p>
+	Usage *AigcVideoTaskUsage `json:"Usage,omitnil,omitempty" name:"Usage"`
 }
 
 type AigcVideoTaskOutputFileInfo struct {
@@ -2708,6 +2711,14 @@ type AigcVideoTaskOutputFileInfo struct {
 
 	// <p>文件的用途类型。</p><p>枚举值：</p><ul><li>scene_url： 3D 场景文件，FileUrl 字段有返回值。</li><li>point_url： 点云文件，FileUrl 字段有返回值。</li><li>mesh_url： 原始网格模型文，FileUrl 字段有返回值。</li><li>mesh_simplified_url： 简化后的网格模型文件，FileUrl 字段有返回值。</li><li>position_info： 场景空间位置信息，FileContent 字段有返回值。</li><li>image_url： 生成的图片，FileUrl 字段有返回值。</li></ul>
 	UsageType *string `json:"UsageType,omitnil,omitempty" name:"UsageType"`
+}
+
+type AigcVideoTaskUsage struct {
+	// <p>输入 Token 数目。</p>
+	InputTokens *int64 `json:"InputTokens,omitnil,omitempty" name:"InputTokens"`
+
+	// <p>思考产生的 Token 数目。</p>
+	ThoughtTokens *int64 `json:"ThoughtTokens,omitnil,omitempty" name:"ThoughtTokens"`
 }
 
 type AnimatedGraphicTaskInput struct {

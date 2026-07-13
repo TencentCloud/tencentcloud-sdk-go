@@ -6689,56 +6689,56 @@ func (r *DescribeBasicAlarmListResponse) FromJsonString(s string) error {
 }
 
 type DescribeBindingPolicyObjectListDimension struct {
-	// 地域id
+	// <p>地域id</p>
 	RegionId *int64 `json:"RegionId,omitnil,omitempty" name:"RegionId"`
 
-	// 地域简称
+	// <p>地域简称</p>
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 维度组合json字符串
+	// <p>维度组合json字符串</p>
 	Dimensions *string `json:"Dimensions,omitnil,omitempty" name:"Dimensions"`
 
-	// 事件维度组合json字符串
+	// <p>事件维度组合json字符串</p>
 	EventDimensions *string `json:"EventDimensions,omitnil,omitempty" name:"EventDimensions"`
 }
 
 type DescribeBindingPolicyObjectListInstance struct {
-	// 对象唯一id
+	// <p>对象唯一id</p>
 	UniqueId *string `json:"UniqueId,omitnil,omitempty" name:"UniqueId"`
 
-	// 表示对象实例的维度集合，jsonObj字符串
+	// <p>表示对象实例的维度集合，jsonObj字符串</p>
 	Dimensions *string `json:"Dimensions,omitnil,omitempty" name:"Dimensions"`
 
-	// 对象是否被屏蔽，0表示未屏蔽，1表示被屏蔽
+	// <p>对象是否被屏蔽，0表示未屏蔽，1表示被屏蔽</p>
 	IsShielded *int64 `json:"IsShielded,omitnil,omitempty" name:"IsShielded"`
 
-	// 对象所在的地域
+	// <p>对象所在的地域</p>
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 }
 
 type DescribeBindingPolicyObjectListInstanceGroup struct {
-	// 实例分组id
+	// <p>实例分组id</p>
 	InstanceGroupId *int64 `json:"InstanceGroupId,omitnil,omitempty" name:"InstanceGroupId"`
 
-	// 告警策略类型名称
+	// <p>告警策略类型名称</p>
 	ViewName *string `json:"ViewName,omitnil,omitempty" name:"ViewName"`
 
-	// 最后编辑uin
+	// <p>最后编辑uin</p>
 	LastEditUin *string `json:"LastEditUin,omitnil,omitempty" name:"LastEditUin"`
 
-	// 实例分组名称
+	// <p>实例分组名称</p>
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
-	// 实例数量
+	// <p>实例数量</p>
 	InstanceSum *int64 `json:"InstanceSum,omitnil,omitempty" name:"InstanceSum"`
 
-	// 更新时间
+	// <p>更新时间</p>
 	UpdateTime *int64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	InsertTime *int64 `json:"InsertTime,omitnil,omitempty" name:"InsertTime"`
 
-	// 实例所在的地域集合
+	// <p>实例所在的地域集合</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Regions []*string `json:"Regions,omitnil,omitempty" name:"Regions"`
 }
@@ -8606,98 +8606,98 @@ type DescribePolicyConditionListResponseDeprecatingInfo struct {
 }
 
 type DescribePolicyGroupInfoCallback struct {
-	// 用户回调接口地址
+	// <p>用户回调接口地址</p>
 	CallbackUrl *string `json:"CallbackUrl,omitnil,omitempty" name:"CallbackUrl"`
 
-	// 用户回调接口状态，0表示未验证，1表示已验证，2表示存在url但没有通过验证
+	// <p>用户回调接口状态，0表示未验证，1表示已验证，2表示存在url但没有通过验证</p>
 	ValidFlag *int64 `json:"ValidFlag,omitnil,omitempty" name:"ValidFlag"`
 
-	// 用户回调接口验证码
+	// <p>用户回调接口验证码</p>
 	VerifyCode *string `json:"VerifyCode,omitnil,omitempty" name:"VerifyCode"`
 }
 
 type DescribePolicyGroupInfoCondition struct {
-	// 指标名称
+	// <p>指标名称</p>
 	MetricShowName *string `json:"MetricShowName,omitnil,omitempty" name:"MetricShowName"`
 
-	// 数据聚合周期(单位秒)
+	// <p>数据聚合周期(单位秒)</p>
 	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
 
-	// 指标id
+	// <p>指标id</p>
 	MetricId *int64 `json:"MetricId,omitnil,omitempty" name:"MetricId"`
 
-	// 阈值规则id
+	// <p>阈值规则id</p>
 	RuleId *int64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
-	// 指标单位
+	// <p>指标单位</p>
 	Unit *string `json:"Unit,omitnil,omitempty" name:"Unit"`
 
-	// 告警发送收敛类型。0连续告警，1指数告警
+	// <p>告警发送收敛类型。0连续告警，1指数告警</p>
 	AlarmNotifyType *int64 `json:"AlarmNotifyType,omitnil,omitempty" name:"AlarmNotifyType"`
 
-	// 告警发送周期单位秒。<0 不触发, 0 只触发一次, >0 每隔triggerTime秒触发一次
+	// <p>告警发送周期单位秒。&lt;0 不触发, 0 只触发一次, &gt;0 每隔triggerTime秒触发一次</p>
 	AlarmNotifyPeriod *int64 `json:"AlarmNotifyPeriod,omitnil,omitempty" name:"AlarmNotifyPeriod"`
 
-	// 比较类型，1表示大于，2表示大于等于，3表示小于，4表示小于等于，5表示相等，6表示不相等，7表示日同比上涨，8表示日同比下降，9表示周同比上涨，10表示周同比下降，11表示周期环比上涨，12表示周期环比下降
+	// <p>比较类型，1表示大于，2表示大于等于，3表示小于，4表示小于等于，5表示相等，6表示不相等，7表示日同比上涨，8表示日同比下降，9表示周同比上涨，10表示周同比下降，11表示周期环比上涨，12表示周期环比下降</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CalcType *int64 `json:"CalcType,omitnil,omitempty" name:"CalcType"`
 
-	// 检测阈值
+	// <p>检测阈值</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CalcValue *string `json:"CalcValue,omitnil,omitempty" name:"CalcValue"`
 
-	// 持续多长时间触发规则会告警(单位秒)
+	// <p>持续多长时间触发规则会告警(单位秒)</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContinueTime *int64 `json:"ContinueTime,omitnil,omitempty" name:"ContinueTime"`
 
-	// 告警指标名
+	// <p>告警指标名</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MetricName *string `json:"MetricName,omitnil,omitempty" name:"MetricName"`
 }
 
 type DescribePolicyGroupInfoConditionTpl struct {
-	// 策略组id
+	// <p>策略组id</p>
 	GroupId *int64 `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 策略组名称
+	// <p>策略组名称</p>
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
-	// 策略类型
+	// <p>策略类型</p>
 	ViewName *string `json:"ViewName,omitnil,omitempty" name:"ViewName"`
 
-	// 策略组说明
+	// <p>策略组说明</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 最后编辑的用户uin
+	// <p>最后编辑的用户uin</p>
 	LastEditUin *string `json:"LastEditUin,omitnil,omitempty" name:"LastEditUin"`
 
-	// 更新时间
+	// <p>更新时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *int64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InsertTime *int64 `json:"InsertTime,omitnil,omitempty" name:"InsertTime"`
 
-	// 是否且规则
+	// <p>是否且规则</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsUnionRule *int64 `json:"IsUnionRule,omitnil,omitempty" name:"IsUnionRule"`
 }
 
 type DescribePolicyGroupInfoEventCondition struct {
-	// 事件id
+	// <p>事件id</p>
 	EventId *int64 `json:"EventId,omitnil,omitempty" name:"EventId"`
 
-	// 事件告警规则id
+	// <p>事件告警规则id</p>
 	RuleId *int64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
-	// 事件名称
+	// <p>事件名称</p>
 	EventShowName *string `json:"EventShowName,omitnil,omitempty" name:"EventShowName"`
 
-	// 告警发送周期单位秒。<0 不触发, 0 只触发一次, >0 每隔triggerTime秒触发一次
+	// <p>告警发送周期单位秒。&lt;0 不触发, 0 只触发一次, &gt;0 每隔triggerTime秒触发一次</p>
 	AlarmNotifyPeriod *int64 `json:"AlarmNotifyPeriod,omitnil,omitempty" name:"AlarmNotifyPeriod"`
 
-	// 告警发送收敛类型。0连续告警，1指数告警
+	// <p>告警发送收敛类型。0连续告警，1指数告警</p>
 	AlarmNotifyType *int64 `json:"AlarmNotifyType,omitnil,omitempty" name:"AlarmNotifyType"`
 }
 
@@ -8934,25 +8934,25 @@ type DescribePolicyGroupListGroup struct {
 }
 
 type DescribePolicyGroupListGroupInstanceGroup struct {
-	// 实例分组名称id
+	// <p>实例分组名称id</p>
 	InstanceGroupId *int64 `json:"InstanceGroupId,omitnil,omitempty" name:"InstanceGroupId"`
 
-	// 策略类型视图名称
+	// <p>策略类型视图名称</p>
 	ViewName *string `json:"ViewName,omitnil,omitempty" name:"ViewName"`
 
-	// 最近编辑的用户uin
+	// <p>最近编辑的用户uin</p>
 	LastEditUin *string `json:"LastEditUin,omitnil,omitempty" name:"LastEditUin"`
 
-	// 实例分组名称
+	// <p>实例分组名称</p>
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
-	// 实例数量
+	// <p>实例数量</p>
 	InstanceSum *int64 `json:"InstanceSum,omitnil,omitempty" name:"InstanceSum"`
 
-	// 更新时间
+	// <p>更新时间</p>
 	UpdateTime *int64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	InsertTime *int64 `json:"InsertTime,omitnil,omitempty" name:"InsertTime"`
 }
 

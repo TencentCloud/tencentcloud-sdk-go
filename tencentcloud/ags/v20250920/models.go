@@ -1486,38 +1486,38 @@ func (r *UpdateSandboxInstanceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateSandboxToolRequestParams struct {
-	// 沙箱工具ID
+	// <p>沙箱工具ID</p>
 	ToolId *string `json:"ToolId,omitnil,omitempty" name:"ToolId"`
 
-	// 沙箱工具描述，最大长度200字符
+	// <p>沙箱工具描述，最大长度200字符</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 网络配置
+	// <p>网络配置</p>
 	NetworkConfiguration *NetworkConfiguration `json:"NetworkConfiguration,omitnil,omitempty" name:"NetworkConfiguration"`
 
-	// 标签
+	// <p>标签</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 沙箱工具自定义配置
+	// <p>沙箱工具自定义配置</p>
 	CustomConfiguration *CustomConfiguration `json:"CustomConfiguration,omitnil,omitempty" name:"CustomConfiguration"`
 }
 
 type UpdateSandboxToolRequest struct {
 	*tchttp.BaseRequest
 	
-	// 沙箱工具ID
+	// <p>沙箱工具ID</p>
 	ToolId *string `json:"ToolId,omitnil,omitempty" name:"ToolId"`
 
-	// 沙箱工具描述，最大长度200字符
+	// <p>沙箱工具描述，最大长度200字符</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 网络配置
+	// <p>网络配置</p>
 	NetworkConfiguration *NetworkConfiguration `json:"NetworkConfiguration,omitnil,omitempty" name:"NetworkConfiguration"`
 
-	// 标签
+	// <p>标签</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 沙箱工具自定义配置
+	// <p>沙箱工具自定义配置</p>
 	CustomConfiguration *CustomConfiguration `json:"CustomConfiguration,omitnil,omitempty" name:"CustomConfiguration"`
 }
 
