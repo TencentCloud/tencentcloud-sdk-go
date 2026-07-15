@@ -10491,26 +10491,26 @@ func (r *DescribeRumLogExportsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRumLogExportsV2RequestParams struct {
-	// Page size
+	// <p>Page size</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// Page number
+	// <p>Page number</p>
 	PageNum *int64 `json:"PageNum,omitnil,omitempty" name:"PageNum"`
 
-	// Project ID
+	// <p>Project ID</p>
 	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
 }
 
 type DescribeRumLogExportsV2Request struct {
 	*tchttp.BaseRequest
 	
-	// Page size
+	// <p>Page size</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// Page number
+	// <p>Page number</p>
 	PageNum *int64 `json:"PageNum,omitnil,omitempty" name:"PageNum"`
 
-	// Project ID
+	// <p>Project ID</p>
 	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
 }
 
@@ -10537,7 +10537,7 @@ func (r *DescribeRumLogExportsV2Request) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRumLogExportsV2ResponseParams struct {
-	// Query result in JSON string format
+	// <p>日志导出列表</p>
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

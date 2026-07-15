@@ -2191,6 +2191,80 @@ func (c *Client) CreateLoadBalancerWithContext(ctx context.Context, request *Cre
     return
 }
 
+func NewCreateLogAnalysisDownloadTaskRequest() (request *CreateLogAnalysisDownloadTaskRequest) {
+    request = &CreateLogAnalysisDownloadTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "CreateLogAnalysisDownloadTask")
+    
+    
+    return
+}
+
+func NewCreateLogAnalysisDownloadTaskResponse() (response *CreateLogAnalysisDownloadTaskResponse) {
+    response = &CreateLogAnalysisDownloadTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateLogAnalysisDownloadTask
+// 本接口用以创建日志分析下载任务，创建完成后可通过 DescribeLogAnalysisDownloadTasks 接口查询下载任务。
+//
+// 注意：
+//
+// 1.单次最多支持下载 5000万条日志。
+//
+// 2.日志文件将保留 3 天。
+//
+// 3.同时存在多个任务时将按照任务创建时间依次处理。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_LOADBALANCERBINDORIGINGROUPINVALID = "InvalidParameter.LoadBalancerBindOriginGroupInvalid"
+//  INVALIDPARAMETER_LOADBALANCERNAMEREPEATED = "InvalidParameter.LoadBalancerNameRepeated"
+//  INVALIDPARAMETER_ORIGINGROUPTYPECANNOTMATCHLBTYPE = "InvalidParameter.OriginGroupTypeCanNotMatchLBType"
+//  INVALIDPARAMETER_SOMEORIGINGROUPNOTEXIST = "InvalidParameter.SomeOriginGroupNotExist"
+//  LIMITEXCEEDED_LOADBALANCINGCOUNTLIMITEXCEEDED = "LimitExceeded.LoadBalancingCountLimitExceeded"
+func (c *Client) CreateLogAnalysisDownloadTask(request *CreateLogAnalysisDownloadTaskRequest) (response *CreateLogAnalysisDownloadTaskResponse, err error) {
+    return c.CreateLogAnalysisDownloadTaskWithContext(context.Background(), request)
+}
+
+// CreateLogAnalysisDownloadTask
+// 本接口用以创建日志分析下载任务，创建完成后可通过 DescribeLogAnalysisDownloadTasks 接口查询下载任务。
+//
+// 注意：
+//
+// 1.单次最多支持下载 5000万条日志。
+//
+// 2.日志文件将保留 3 天。
+//
+// 3.同时存在多个任务时将按照任务创建时间依次处理。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_LOADBALANCERBINDORIGINGROUPINVALID = "InvalidParameter.LoadBalancerBindOriginGroupInvalid"
+//  INVALIDPARAMETER_LOADBALANCERNAMEREPEATED = "InvalidParameter.LoadBalancerNameRepeated"
+//  INVALIDPARAMETER_ORIGINGROUPTYPECANNOTMATCHLBTYPE = "InvalidParameter.OriginGroupTypeCanNotMatchLBType"
+//  INVALIDPARAMETER_SOMEORIGINGROUPNOTEXIST = "InvalidParameter.SomeOriginGroupNotExist"
+//  LIMITEXCEEDED_LOADBALANCINGCOUNTLIMITEXCEEDED = "LimitExceeded.LoadBalancingCountLimitExceeded"
+func (c *Client) CreateLogAnalysisDownloadTaskWithContext(ctx context.Context, request *CreateLogAnalysisDownloadTaskRequest) (response *CreateLogAnalysisDownloadTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateLogAnalysisDownloadTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "CreateLogAnalysisDownloadTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateLogAnalysisDownloadTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateLogAnalysisDownloadTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateMultiPathGatewayRequest() (request *CreateMultiPathGatewayRequest) {
     request = &CreateMultiPathGatewayRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -7897,6 +7971,108 @@ func (c *Client) DescribeLoadBalancerListWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewDescribeLoadBalancerListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeLogAnalysisDetailRequest() (request *DescribeLogAnalysisDetailRequest) {
+    request = &DescribeLogAnalysisDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeLogAnalysisDetail")
+    
+    
+    return
+}
+
+func NewDescribeLogAnalysisDetailResponse() (response *DescribeLogAnalysisDetailResponse) {
+    response = &DescribeLogAnalysisDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeLogAnalysisDetail
+// 本接口用以查询日志分析日志详情，数据来自站点下实时日志推送任务目的地为 "log-analysis" 的任务推送的日志数据。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeLogAnalysisDetail(request *DescribeLogAnalysisDetailRequest) (response *DescribeLogAnalysisDetailResponse, err error) {
+    return c.DescribeLogAnalysisDetailWithContext(context.Background(), request)
+}
+
+// DescribeLogAnalysisDetail
+// 本接口用以查询日志分析日志详情，数据来自站点下实时日志推送任务目的地为 "log-analysis" 的任务推送的日志数据。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeLogAnalysisDetailWithContext(ctx context.Context, request *DescribeLogAnalysisDetailRequest) (response *DescribeLogAnalysisDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeLogAnalysisDetailRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeLogAnalysisDetail")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLogAnalysisDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLogAnalysisDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeLogAnalysisDownloadTasksRequest() (request *DescribeLogAnalysisDownloadTasksRequest) {
+    request = &DescribeLogAnalysisDownloadTasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeLogAnalysisDownloadTasks")
+    
+    
+    return
+}
+
+func NewDescribeLogAnalysisDownloadTasksResponse() (response *DescribeLogAnalysisDownloadTasksResponse) {
+    response = &DescribeLogAnalysisDownloadTasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeLogAnalysisDownloadTasks
+// 本接口用以查询日志分析日志下载任务列表。注意：只保留最近三天的下载任务记录。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_REALTIMELOGLOGANALYSISNOTSUPPORT = "FailedOperation.RealtimeLogLogAnalysisNotSupport"
+//  INVALIDPARAMETER_INVALIDLOGANALYSISCONDITION = "InvalidParameter.InvalidLogAnalysisCondition"
+func (c *Client) DescribeLogAnalysisDownloadTasks(request *DescribeLogAnalysisDownloadTasksRequest) (response *DescribeLogAnalysisDownloadTasksResponse, err error) {
+    return c.DescribeLogAnalysisDownloadTasksWithContext(context.Background(), request)
+}
+
+// DescribeLogAnalysisDownloadTasks
+// 本接口用以查询日志分析日志下载任务列表。注意：只保留最近三天的下载任务记录。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_REALTIMELOGLOGANALYSISNOTSUPPORT = "FailedOperation.RealtimeLogLogAnalysisNotSupport"
+//  INVALIDPARAMETER_INVALIDLOGANALYSISCONDITION = "InvalidParameter.InvalidLogAnalysisCondition"
+func (c *Client) DescribeLogAnalysisDownloadTasksWithContext(ctx context.Context, request *DescribeLogAnalysisDownloadTasksRequest) (response *DescribeLogAnalysisDownloadTasksResponse, err error) {
+    if request == nil {
+        request = NewDescribeLogAnalysisDownloadTasksRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeLogAnalysisDownloadTasks")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLogAnalysisDownloadTasks require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLogAnalysisDownloadTasksResponse()
     err = c.Send(request, response)
     return
 }

@@ -24702,6 +24702,67 @@ func (r *ModifyAlarmRiskStatusResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyCosAuditBucketMonitorStatusRequestParams struct {
+	// 存储桶集合
+	BucketNameSet []*string `json:"BucketNameSet,omitnil,omitempty" name:"BucketNameSet"`
+
+	// 0 关闭 1 开启
+	MonitorStatus *uint64 `json:"MonitorStatus,omitnil,omitempty" name:"MonitorStatus"`
+}
+
+type ModifyCosAuditBucketMonitorStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// 存储桶集合
+	BucketNameSet []*string `json:"BucketNameSet,omitnil,omitempty" name:"BucketNameSet"`
+
+	// 0 关闭 1 开启
+	MonitorStatus *uint64 `json:"MonitorStatus,omitnil,omitempty" name:"MonitorStatus"`
+}
+
+func (r *ModifyCosAuditBucketMonitorStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCosAuditBucketMonitorStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BucketNameSet")
+	delete(f, "MonitorStatus")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCosAuditBucketMonitorStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyCosAuditBucketMonitorStatusResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyCosAuditBucketMonitorStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyCosAuditBucketMonitorStatusResponseParams `json:"Response"`
+}
+
+func (r *ModifyCosAuditBucketMonitorStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCosAuditBucketMonitorStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyCosAuditMonitorAccountRequestParams struct {
 	// 资源id
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
@@ -29260,7 +29321,7 @@ type ServiceSupport struct {
 }
 
 type SkillCapabilityTag struct {
-	// 能力标签标识，适合程序判定、过滤或聚合使用
+	// 能力标签标识
 	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
 
 	// 能力标签展示名称
@@ -29268,7 +29329,8 @@ type SkillCapabilityTag struct {
 }
 
 type SkillRuleCatalogItem struct {
-	// 融合规则 ID（9xxxx）
+	// 融合规则 ID
+	// 参数格式：形如 9xxxx
 	RuleID *string `json:"RuleID,omitnil,omitempty" name:"RuleID"`
 
 	// 风险类别名称
@@ -29282,7 +29344,7 @@ type SkillScanEngineResult struct {
 	// STATIC：静态分析引擎
 	ScanType *string `json:"ScanType,omitnil,omitempty" name:"ScanType"`
 
-	// 该引擎命中的规则列表
+	// 命中规则列表
 	RuleList []*SkillScanRuleHit `json:"RuleList,omitnil,omitempty" name:"RuleList"`
 }
 
@@ -29343,10 +29405,11 @@ type SkillScanItem struct {
 }
 
 type SkillScanRuleHit struct {
-	// 融合规则编号（9xxxx），可与 RuleCatalog 交叉引用
+	// 融合规则编号
+	// 参数格式：形如 9xxxx
 	RuleID *string `json:"RuleID,omitnil,omitempty" name:"RuleID"`
 
-	// 当前命中规则的具体发现描述，包含文件位置、行为特征、风险点等信息
+	// 风险发现描述
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 

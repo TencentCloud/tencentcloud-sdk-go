@@ -3972,22 +3972,20 @@ func (r *MinorsVerificationResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type MobileNetworkTimeVerificationRequestParams struct {
-	// 手机号码。
+	// <p>手机号码。</p>
 	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
 
-	// 敏感数据加密信息。
-	// - 对传入信息（手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+	// <p>敏感数据加密信息。</p><ul><li>对传入信息（手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。</li></ul>
 	Encryption *Encryption `json:"Encryption,omitnil,omitempty" name:"Encryption"`
 }
 
 type MobileNetworkTimeVerificationRequest struct {
 	*tchttp.BaseRequest
 	
-	// 手机号码。
+	// <p>手机号码。</p>
 	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
 
-	// 敏感数据加密信息。
-	// - 对传入信息（手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+	// <p>敏感数据加密信息。</p><ul><li>对传入信息（手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。</li></ul>
 	Encryption *Encryption `json:"Encryption,omitnil,omitempty" name:"Encryption"`
 }
 
@@ -4013,24 +4011,13 @@ func (r *MobileNetworkTimeVerificationRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type MobileNetworkTimeVerificationResponseParams struct {
-	// 认证结果码，收费情况如下。
-	// - 收费结果码：
-	// 0: 成功。
-	// -2: 手机号不存在。
-	// -3: 手机号存在，但无法查询到在网时长。
-	// 
-	// - 不收费结果码：
-	// -1: 手机号格式不正确。
-	// -4: 验证中心服务繁忙。
-	// -5：认证次数超过当日限制，请次日重试。
+	// <p>认证结果码，收费情况如下。- 收费结果码：0: 成功。-2: 手机号不存在。-3: 手机号存在，但无法查询到在网时长。- 不收费结果码：-1: 手机号格式不正确。-4: 验证中心服务繁忙。-5：认证次数超过当日限制，请次日重试。-13：该号段不支持验证</p>
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 业务结果描述。
+	// <p>业务结果描述。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 在网时长区间。
-	// - 格式为[a,b)，表示在网时长在a个月以上，b个月以下。
-	// - 若b为+时表示没有上限。
+	// <p>在网时长区间。</p><ul><li>格式为[a,b)，表示在网时长在a个月以上，b个月以下。</li><li>若b为+时表示没有上限。</li></ul>
 	Range *string `json:"Range,omitnil,omitempty" name:"Range"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4094,7 +4081,7 @@ func (r *MobileStatusRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type MobileStatusResponseParams struct {
-	// <p>认证结果码，收费情况如下。</p><ul><li><p>收费结果码：<br>0：成功。</p></li><li><p>不收费结果码：<br>-1：未查询到结果。<br>-2：手机号格式不正确。<br>-3：验证中心服务繁忙。<br>-4：认证次数超过当日限制，请次日重试。</p></li></ul>
+	// <p>认证结果码，收费情况如下。- 收费结果码：0：成功。- 不收费结果码：-1：未查询到结果。-2：手机号格式不正确。-3：验证中心服务繁忙。-4：认证次数超过当日限制，请次日重试。-13：该号段不支持验证</p>
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// <p>业务结果描述。</p>
@@ -4280,34 +4267,32 @@ func (r *ParseNfcDataResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type PhoneVerificationCMCCRequestParams struct {
-	// 身份证号。
+	// <p>身份证号。</p>
 	IdCard *string `json:"IdCard,omitnil,omitempty" name:"IdCard"`
 
-	// 姓名。
+	// <p>姓名。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 手机号。
+	// <p>手机号。</p>
 	Phone *string `json:"Phone,omitnil,omitempty" name:"Phone"`
 
-	// 敏感数据加密信息。
-	// - 对传入信息（姓名、身份证号、手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+	// <p>敏感数据加密信息。</p><ul><li>对传入信息（姓名、身份证号、手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。</li></ul>
 	Encryption *Encryption `json:"Encryption,omitnil,omitempty" name:"Encryption"`
 }
 
 type PhoneVerificationCMCCRequest struct {
 	*tchttp.BaseRequest
 	
-	// 身份证号。
+	// <p>身份证号。</p>
 	IdCard *string `json:"IdCard,omitnil,omitempty" name:"IdCard"`
 
-	// 姓名。
+	// <p>姓名。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 手机号。
+	// <p>手机号。</p>
 	Phone *string `json:"Phone,omitnil,omitempty" name:"Phone"`
 
-	// 敏感数据加密信息。
-	// - 对传入信息（姓名、身份证号、手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+	// <p>敏感数据加密信息。</p><ul><li>对传入信息（姓名、身份证号、手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。</li></ul>
 	Encryption *Encryption `json:"Encryption,omitnil,omitempty" name:"Encryption"`
 }
 
@@ -4335,24 +4320,13 @@ func (r *PhoneVerificationCMCCRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type PhoneVerificationCMCCResponseParams struct {
-	// 认证结果码，收费情况如下。
-	// - 收费结果码：
-	// 0: 认证通过。
-	// -4: 信息不一致（手机号已实名，但姓名和身份证号与实名信息不一致）。
-	// 
-	// - 不收费结果码：
-	// -6: 手机号码不合法。
-	// -7: 身份证号码有误。
-	// -8: 姓名校验不通过。
-	// -9: 没有记录。
-	// -11: 验证中心服务繁忙。
+	// <p>认证结果码，收费情况如下。- 收费结果码：0: 认证通过。-4: 信息不一致（手机号已实名，但姓名和身份证号与实名信息不一致）。- 不收费结果码：-6: 手机号码不合法。-7: 身份证号码有误。-8: 姓名校验不通过。-9: 没有记录。-11: 验证中心服务繁忙。-13：该号段不支持验证</p>
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 运营商名称。
-	// - 取值范围为["移动","联通","电信",""]。
+	// <p>运营商名称。</p><ul><li>取值范围为[&quot;移动&quot;,&quot;联通&quot;,&quot;电信&quot;,&quot;&quot;]。</li></ul>
 	Isp *string `json:"Isp,omitnil,omitempty" name:"Isp"`
 
-	// 业务结果描述。
+	// <p>业务结果描述。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4377,34 +4351,32 @@ func (r *PhoneVerificationCMCCResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type PhoneVerificationCTCCRequestParams struct {
-	// 身份证号。
+	// <p>身份证号。</p>
 	IdCard *string `json:"IdCard,omitnil,omitempty" name:"IdCard"`
 
-	// 姓名。
+	// <p>姓名。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 手机号。
+	// <p>手机号。</p>
 	Phone *string `json:"Phone,omitnil,omitempty" name:"Phone"`
 
-	// 敏感数据加密信息。
-	// - 对传入信息（姓名、身份证号、手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+	// <p>敏感数据加密信息。</p><ul><li>对传入信息（姓名、身份证号、手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。</li></ul>
 	Encryption *Encryption `json:"Encryption,omitnil,omitempty" name:"Encryption"`
 }
 
 type PhoneVerificationCTCCRequest struct {
 	*tchttp.BaseRequest
 	
-	// 身份证号。
+	// <p>身份证号。</p>
 	IdCard *string `json:"IdCard,omitnil,omitempty" name:"IdCard"`
 
-	// 姓名。
+	// <p>姓名。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 手机号。
+	// <p>手机号。</p>
 	Phone *string `json:"Phone,omitnil,omitempty" name:"Phone"`
 
-	// 敏感数据加密信息。
-	// - 对传入信息（姓名、身份证号、手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+	// <p>敏感数据加密信息。</p><ul><li>对传入信息（姓名、身份证号、手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。</li></ul>
 	Encryption *Encryption `json:"Encryption,omitnil,omitempty" name:"Encryption"`
 }
 
@@ -4432,24 +4404,13 @@ func (r *PhoneVerificationCTCCRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type PhoneVerificationCTCCResponseParams struct {
-	// 认证结果码，收费情况如下。
-	// - 收费结果码：
-	// 0: 认证通过。
-	// -4: 信息不一致（手机号已实名，但姓名和身份证号与实名信息不一致）。
-	// 
-	// - 不收费结果码：
-	// -6: 手机号码不合法。
-	// -7: 身份证号码有误。
-	// -8: 姓名校验不通过。
-	// -9: 没有记录。
-	// -11: 验证中心服务繁忙。
+	// <p>认证结果码，收费情况如下。- 收费结果码：0: 认证通过。-4: 信息不一致（手机号已实名，但姓名和身份证号与实名信息不一致）。- 不收费结果码：-6: 手机号码不合法。-7: 身份证号码有误。-8: 姓名校验不通过。-9: 没有记录。-11: 验证中心服务繁忙。-13：该号段不支持验证</p>
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 运营商名称。
-	// - 取值范围为["移动","联通","电信",""]。
+	// <p>运营商名称。</p><ul><li>取值范围为[&quot;移动&quot;,&quot;联通&quot;,&quot;电信&quot;,&quot;&quot;]。</li></ul>
 	Isp *string `json:"Isp,omitnil,omitempty" name:"Isp"`
 
-	// 业务结果描述。
+	// <p>业务结果描述。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4474,34 +4435,32 @@ func (r *PhoneVerificationCTCCResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type PhoneVerificationCUCCRequestParams struct {
-	// 身份证号。
+	// <p>身份证号。</p>
 	IdCard *string `json:"IdCard,omitnil,omitempty" name:"IdCard"`
 
-	// 姓名。
+	// <p>姓名。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 手机号。
+	// <p>手机号。</p>
 	Phone *string `json:"Phone,omitnil,omitempty" name:"Phone"`
 
-	// 敏感数据加密信息。
-	// - 对传入信息（姓名、身份证号、手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+	// <p>敏感数据加密信息。</p><ul><li>对传入信息（姓名、身份证号、手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。</li></ul>
 	Encryption *Encryption `json:"Encryption,omitnil,omitempty" name:"Encryption"`
 }
 
 type PhoneVerificationCUCCRequest struct {
 	*tchttp.BaseRequest
 	
-	// 身份证号。
+	// <p>身份证号。</p>
 	IdCard *string `json:"IdCard,omitnil,omitempty" name:"IdCard"`
 
-	// 姓名。
+	// <p>姓名。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 手机号。
+	// <p>手机号。</p>
 	Phone *string `json:"Phone,omitnil,omitempty" name:"Phone"`
 
-	// 敏感数据加密信息。
-	// - 对传入信息（姓名、身份证号、手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+	// <p>敏感数据加密信息。</p><ul><li>对传入信息（姓名、身份证号、手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。</li></ul>
 	Encryption *Encryption `json:"Encryption,omitnil,omitempty" name:"Encryption"`
 }
 
@@ -4529,24 +4488,13 @@ func (r *PhoneVerificationCUCCRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type PhoneVerificationCUCCResponseParams struct {
-	// 认证结果码，收费情况如下。
-	// - 收费结果码：
-	// 0: 认证通过。
-	// -4: 信息不一致（手机号已实名，但姓名和身份证号与实名信息不一致）。
-	// 
-	// - 不收费结果码：
-	// -6: 手机号码不合法。
-	// -7: 身份证号码有误。
-	// -8: 姓名校验不通过。
-	// -9: 没有记录。
-	// -11: 验证中心服务繁忙。
+	// <p>认证结果码，收费情况如下。- 收费结果码：0: 认证通过。-4: 信息不一致（手机号已实名，但姓名和身份证号与实名信息不一致）。- 不收费结果码：-6: 手机号码不合法。-7: 身份证号码有误。-8: 姓名校验不通过。-9: 没有记录。-11: 验证中心服务繁忙。-13：该号段不支持验证</p>
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 运营商名称。
-	// - 取值范围为["移动","联通","电信",""]。
+	// <p>运营商名称。</p><ul><li>取值范围为[&quot;移动&quot;,&quot;联通&quot;,&quot;电信&quot;,&quot;&quot;]。</li></ul>
 	Isp *string `json:"Isp,omitnil,omitempty" name:"Isp"`
 
-	// 业务结果描述。
+	// <p>业务结果描述。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

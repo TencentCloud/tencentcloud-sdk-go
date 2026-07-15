@@ -158,6 +158,9 @@ const (
 	// 接入网段前缀必须是10，172，192开头。
 	INVALIDPARAMETERVALUE_ACCESSSUBNETPREFIX = "InvalidParameterValue.AccessSubnetPrefix"
 
+	// 指定的EIP已开启直通开关，无法再次开启
+	INVALIDPARAMETERVALUE_ADDRESSALREADYHASPASSTHROUGH = "InvalidParameterValue.AddressAlreadyHasPassThrough"
+
 	// 被攻击的IP地址。
 	INVALIDPARAMETERVALUE_ADDRESSATTACKED = "InvalidParameterValue.AddressAttacked"
 

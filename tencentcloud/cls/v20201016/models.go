@@ -5570,6 +5570,9 @@ type CreateScheduledSqlRequestParams struct {
 	// <p>源topicId的地域信息,支持地域见 <a href="https://cloud.tencent.com/document/api/614/56474#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8">地域列表</a> 文档</p>
 	SrcTopicRegion *string `json:"SrcTopicRegion,omitnil,omitempty" name:"SrcTopicRegion"`
 
+	// <p>调度时间单位</p><p>取值范围：[1, 2]</p><p>默认值：1</p><p>默认值为1（分钟），其他值2（秒）</p>
+	ProcessPeriodUnit *int64 `json:"ProcessPeriodUnit,omitnil,omitempty" name:"ProcessPeriodUnit"`
+
 	// <p>调度结束时间，当ProcessType=2时为必传字段, Unix时间戳，单位ms</p>
 	ProcessEndTime *uint64 `json:"ProcessEndTime,omitnil,omitempty" name:"ProcessEndTime"`
 
@@ -5619,6 +5622,9 @@ type CreateScheduledSqlRequest struct {
 	// <p>源topicId的地域信息,支持地域见 <a href="https://cloud.tencent.com/document/api/614/56474#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8">地域列表</a> 文档</p>
 	SrcTopicRegion *string `json:"SrcTopicRegion,omitnil,omitempty" name:"SrcTopicRegion"`
 
+	// <p>调度时间单位</p><p>取值范围：[1, 2]</p><p>默认值：1</p><p>默认值为1（分钟），其他值2（秒）</p>
+	ProcessPeriodUnit *int64 `json:"ProcessPeriodUnit,omitnil,omitempty" name:"ProcessPeriodUnit"`
+
 	// <p>调度结束时间，当ProcessType=2时为必传字段, Unix时间戳，单位ms</p>
 	ProcessEndTime *uint64 `json:"ProcessEndTime,omitnil,omitempty" name:"ProcessEndTime"`
 
@@ -5655,6 +5661,7 @@ func (r *CreateScheduledSqlRequest) FromJsonString(s string) error {
 	delete(f, "ProcessTimeWindow")
 	delete(f, "ProcessDelay")
 	delete(f, "SrcTopicRegion")
+	delete(f, "ProcessPeriodUnit")
 	delete(f, "ProcessEndTime")
 	delete(f, "SyntaxRule")
 	delete(f, "HasServicesLog")
@@ -19537,6 +19544,9 @@ type ModifyScheduledSqlRequestParams struct {
 
 	// <p>全文检索查询标记。1：关闭，2：打开。</p>
 	FullQuery *uint64 `json:"FullQuery,omitnil,omitempty" name:"FullQuery"`
+
+	// <p>调度周期单位</p><p>取值范围：[1, 2]</p><p>默认值：1</p><p>默认值1（分钟），其他值2（秒）</p>
+	ProcessPeriodUnit *int64 `json:"ProcessPeriodUnit,omitnil,omitempty" name:"ProcessPeriodUnit"`
 }
 
 type ModifyScheduledSqlRequest struct {
@@ -19580,6 +19590,9 @@ type ModifyScheduledSqlRequest struct {
 
 	// <p>全文检索查询标记。1：关闭，2：打开。</p>
 	FullQuery *uint64 `json:"FullQuery,omitnil,omitempty" name:"FullQuery"`
+
+	// <p>调度周期单位</p><p>取值范围：[1, 2]</p><p>默认值：1</p><p>默认值1（分钟），其他值2（秒）</p>
+	ProcessPeriodUnit *int64 `json:"ProcessPeriodUnit,omitnil,omitempty" name:"ProcessPeriodUnit"`
 }
 
 func (r *ModifyScheduledSqlRequest) ToJsonString() string {
@@ -19607,6 +19620,7 @@ func (r *ModifyScheduledSqlRequest) FromJsonString(s string) error {
 	delete(f, "SyntaxRule")
 	delete(f, "HasServicesLog")
 	delete(f, "FullQuery")
+	delete(f, "ProcessPeriodUnit")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyScheduledSqlRequest has unknown keys!", "")
 	}
@@ -21550,67 +21564,68 @@ type ScheduledSqlResouceInfo struct {
 }
 
 type ScheduledSqlTaskInfo struct {
-	// ScheduledSql任务id
+	// <p>ScheduledSql任务id</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// ScheduledSql任务名称
+	// <p>ScheduledSql任务名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 源日志主题id
+	// <p>源日志主题id</p>
 	SrcTopicId *string `json:"SrcTopicId,omitnil,omitempty" name:"SrcTopicId"`
 
-	// 源日志主题名称
+	// <p>源日志主题名称</p>
 	SrcTopicName *string `json:"SrcTopicName,omitnil,omitempty" name:"SrcTopicName"`
 
-	// 定时SQL分析目标主题
+	// <p>定时SQL分析目标主题</p>
 	DstResource *ScheduledSqlResouceInfo `json:"DstResource,omitnil,omitempty" name:"DstResource"`
 
-	// 任务创建时间。格式：yyyy-MM-dd HH:mm:ss
+	// <p>任务创建时间。格式：yyyy-MM-dd HH:mm:ss</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 任务更新时间，格式：yyyy-MM-dd HH:mm:ss
+	// <p>任务更新时间，格式：yyyy-MM-dd HH:mm:ss</p>
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 任务状态，1:运行 2:停止 3:异常-找不到源日志主题 4:异常-找不到目标主题
-	// 
-	// 5: 访问权限问题 6:内部故障 7:其他故障
+	// <p>任务状态，1:运行 2:停止 3:异常-找不到源日志主题 4:异常-找不到目标主题</p><p>5: 访问权限问题 6:内部故障 7:其他故障</p>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 任务启用状态，1开启,  2关闭
+	// <p>任务启用状态，1开启,  2关闭</p>
 	EnableFlag *int64 `json:"EnableFlag,omitnil,omitempty" name:"EnableFlag"`
 
-	// 查询语句
+	// <p>查询语句</p>
 	ScheduledSqlContent *string `json:"ScheduledSqlContent,omitnil,omitempty" name:"ScheduledSqlContent"`
 
-	// 调度开始时间，格式：yyyy-MM-dd HH:mm:ss
+	// <p>调度开始时间，格式：yyyy-MM-dd HH:mm:ss</p>
 	ProcessStartTime *string `json:"ProcessStartTime,omitnil,omitempty" name:"ProcessStartTime"`
 
-	// 调度类型，1:持续运行 2:指定时间范围
+	// <p>调度类型，1:持续运行 2:指定时间范围</p>
 	ProcessType *int64 `json:"ProcessType,omitnil,omitempty" name:"ProcessType"`
 
-	// 调度结束时间，格式：yyyy-MM-dd HH:mm:ss，当process_type=2时为必传字段
+	// <p>调度结束时间，格式：yyyy-MM-dd HH:mm:ss，当process_type=2时为必传字段</p>
 	ProcessEndTime *string `json:"ProcessEndTime,omitnil,omitempty" name:"ProcessEndTime"`
 
-	// 调度周期(分钟)，1~1440分钟
+	// <p>调度周期(分钟)，1~1440分钟</p>
 	ProcessPeriod *int64 `json:"ProcessPeriod,omitnil,omitempty" name:"ProcessPeriod"`
 
-	// 查询的时间窗口. @m-15m, @m，意为近15分钟
+	// <p>查询的时间窗口. @m-15m, @m，意为近15分钟</p>
 	ProcessTimeWindow *string `json:"ProcessTimeWindow,omitnil,omitempty" name:"ProcessTimeWindow"`
 
-	// 执行延迟(秒)，0~120秒，默认60秒
+	// <p>执行延迟(秒)，0~120秒，默认60秒</p>
 	ProcessDelay *int64 `json:"ProcessDelay,omitnil,omitempty" name:"ProcessDelay"`
 
-	// 源topicId的地域信息，支持地域见 [地域列表](https://cloud.tencent.com/document/api/614/56474#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8) 文档。
+	// <p>源topicId的地域信息，支持地域见 <a href="https://cloud.tencent.com/document/api/614/56474#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8">地域列表</a> 文档。</p>
 	SrcTopicRegion *string `json:"SrcTopicRegion,omitnil,omitempty" name:"SrcTopicRegion"`
 
-	// 语法规则，0：Lucene语法，1：CQL语法
+	// <p>语法规则，0：Lucene语法，1：CQL语法</p>
 	SyntaxRule *uint64 `json:"SyntaxRule,omitnil,omitempty" name:"SyntaxRule"`
 
-	// 是否开启投递服务日志。1：关闭，2：开启。
+	// <p>是否开启投递服务日志。1：关闭，2：开启。</p>
 	HasServicesLog *uint64 `json:"HasServicesLog,omitnil,omitempty" name:"HasServicesLog"`
 
-	// 全文检索标记。1：关闭，2：打开。
+	// <p>全文检索标记。1：关闭，2：打开。</p>
 	FullQuery *uint64 `json:"FullQuery,omitnil,omitempty" name:"FullQuery"`
+
+	// <p>调度周期时间单位</p><p>取值范围：[1, 2]</p><p>默认值：1</p><p>默认值1（分钟），其他值2（秒）</p>
+	ProcessPeriodUnit *int64 `json:"ProcessPeriodUnit,omitnil,omitempty" name:"ProcessPeriodUnit"`
 }
 
 // Predefined struct for user

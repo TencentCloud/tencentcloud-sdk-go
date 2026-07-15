@@ -20,6 +20,32 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
+type AdminChangeInvitationInfo struct {
+	// <p>要变更的企业Id。 使用接口进行变更，所支持的企业有两种。</p><p>注意：<br>此参数和 ChangeAdminOrganizationOpenId二选一，如果都传递了，但是不一致会进行报错拦截。</p>
+	ChangeAdminOrganizationId *string `json:"ChangeAdminOrganizationId,omitnil,omitempty" name:"ChangeAdminOrganizationId"`
+
+	// <p>要变更的企业Id。 使用接口进行变更，所支持的企业有两种。<br>注意： 此参数和 ChangeAdminOrganizationId二选一，如果都传递了，不一致会进行报错拦截。</p>
+	ChangeAdminOrganizationOpenId *string `json:"ChangeAdminOrganizationOpenId,omitnil,omitempty" name:"ChangeAdminOrganizationOpenId"`
+
+	// <p>组织机构要变更的超管OpenId。</p>
+	NewAdminOpenId *string `json:"NewAdminOpenId,omitnil,omitempty" name:"NewAdminOpenId"`
+
+	// <p>组织机构要变更的超管姓名。</p>
+	NewAdminName *string `json:"NewAdminName,omitnil,omitempty" name:"NewAdminName"`
+
+	// <p>组织机构要变更的超管手机号。 跟超管变更的操作人保持一致。</p>
+	NewAdminMobile *string `json:"NewAdminMobile,omitnil,omitempty" name:"NewAdminMobile"`
+
+	// <p>组织机构要变更的超管证件类型支持以下类型</p><ul><li>ID_CARD : 中国大陆居民身份证 (默认值)</li><li>HONGKONG_AND_MACAO : 中国港澳居民来往内地通行证</li><li>HONGKONG_MACAO_AND_TAIWAN : 中国港澳台居民居住证(格式同中国大陆居民身份证)</li></ul><p>跟超管变更的操作人保持一致。</p><p>枚举值：</p><ul><li>ID_CARD： 中国大陆居民身份证 (默认值)</li><li>HONGKONG_AND_MACAO： 中国港澳居民来往内地通行证</li><li>HONGKONG_MACAO_AND_TAIWAN： 中国港澳台居民居住证(格式同中国大陆居民身份证)</li></ul>
+	NewAdminIdCardType *string `json:"NewAdminIdCardType,omitnil,omitempty" name:"NewAdminIdCardType"`
+
+	// <p>组织机构新超管证件号。 跟超管变更的操作人保持一致。</p>
+	NewAdminIdCardNumber *string `json:"NewAdminIdCardNumber,omitnil,omitempty" name:"NewAdminIdCardNumber"`
+
+	// <p>授权书(PNG或JPG或PDF) base64格式, 大小不超过8M 。</p><p> p.s. 如果上传授权书 ，需遵循以下条件 1. 超管的信息（超管姓名，超管手机号）必须为必填参数。</p>
+	AuthFiles []*string `json:"AuthFiles,omitnil,omitempty" name:"AuthFiles"`
+}
+
 type Agent struct {
 	// 应用的唯一标识(由电子签平台自动生成)。不同的业务系统可以采用不同的AppId，不同AppId下的数据是隔离的。可以由控制台开发者中心-应用集成自主生成。位置如下:
 	// 
@@ -6344,6 +6370,165 @@ type ComponentLimit struct {
 }
 
 // Predefined struct for user
+type CreateBatchAdminChangeInvitationsRequestParams struct {
+	// <p>关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。</p><p>此接口下面信息必填。</p><ul><li>渠道应用标识:  Agent.AppId</li></ul>
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// <p>组织机构超管变更信息。 一次最多支持10条超管变更信息。</p>
+	AdminChangeInvitationInfos []*AdminChangeInvitationInfo `json:"AdminChangeInvitationInfos,omitnil,omitempty" name:"AdminChangeInvitationInfos"`
+}
+
+type CreateBatchAdminChangeInvitationsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。</p><p>此接口下面信息必填。</p><ul><li>渠道应用标识:  Agent.AppId</li></ul>
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// <p>组织机构超管变更信息。 一次最多支持10条超管变更信息。</p>
+	AdminChangeInvitationInfos []*AdminChangeInvitationInfo `json:"AdminChangeInvitationInfos,omitnil,omitempty" name:"AdminChangeInvitationInfos"`
+}
+
+func (r *CreateBatchAdminChangeInvitationsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBatchAdminChangeInvitationsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Agent")
+	delete(f, "AdminChangeInvitationInfos")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBatchAdminChangeInvitationsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateBatchAdminChangeInvitationsResponseParams struct {
+	// <p>批量生成企业认证链接的详细错误信息，顺序与输入参数子企业列表顺序一致。</p><ul><li>如果所有企业认证链接都成功生成，将不返回错误信息</li><li>如果存在任何错误，将返回具体的错误描述。（没有错误的企业返回空字符串）</li></ul>
+	ErrorMessages []*string `json:"ErrorMessages,omitnil,omitempty" name:"ErrorMessages"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateBatchAdminChangeInvitationsResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateBatchAdminChangeInvitationsResponseParams `json:"Response"`
+}
+
+func (r *CreateBatchAdminChangeInvitationsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBatchAdminChangeInvitationsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateBatchAdminChangeInvitationsUrlRequestParams struct {
+	// <p>关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。</p><p>此接口下面信息必填。</p><ul><li>渠道应用标识:  Agent.AppId</li></ul>
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// <p>组织机构要变更的超管姓名。 在超管变更流程中，必须是超管本人进行操作，需要更当前操作人的姓名保持一致。</p>
+	NewAdminName *string `json:"NewAdminName,omitnil,omitempty" name:"NewAdminName"`
+
+	// <p>组织机构要变更的超管手机号。 在超管变更流程中，必须是超管本人进行操作，需要更当前操作人的手机号保持一致。 超管手机号 和超管证件号 二选一 必填。 注意： 1. 如果新超管的个人身份在电子签进行了手机号的变更，之前提交的超管变更任务将无法获取。</p>
+	NewAdminMobile *string `json:"NewAdminMobile,omitnil,omitempty" name:"NewAdminMobile"`
+
+	// <p>组织机构要变更的超管证件类型支持以下类型</p><ul><li>ID_CARD : 中国大陆居民身份证 (默认值)</li><li>HONGKONG_AND_MACAO : 中国港澳居民来往内地通行证</li><li>HONGKONG_MACAO_AND_TAIWAN : 中国港澳台居民居住证(格式同中国大陆居民身份证)<br>需要更当前操作人的证件类型保持一致。</li></ul><p>枚举值：</p><ul><li>ID_CARD： 中国大陆居民身份证 (默认值)</li><li>HONGKONG_AND_MACAO： 中国港澳居民来往内地通行证</li><li>HONGKONG_MACAO_AND_TAIWAN： 中国港澳台居民居住证(格式同中国大陆居民身份证)</li></ul><p>默认值：ID_CARD</p>
+	NewAdminIdCardType *string `json:"NewAdminIdCardType,omitnil,omitempty" name:"NewAdminIdCardType"`
+
+	// <p>组织机构要变更的超管证件号。 在超管变更流程中，必须是超管本人进行操作，需要更当前操作人的证件号保持一致。 超管手机号和超管证件号 二选一必填。</p>
+	NewAdminIdCardNumber *string `json:"NewAdminIdCardNumber,omitnil,omitempty" name:"NewAdminIdCardNumber"`
+
+	// <p>要跳转的链接类型</p><ul><li> **HTTP**：跳转电子签小程序的http_url，短信通知或者H5跳转适合此类型 ，此时返回长链 （默认类型）。</li><li>**HTTP_SHORT_URL**：跳转电子签小程序的http_url，短信通知或者H5跳转适合此类型，此时返回短链。</li><li>**APP**： 第三方APP或小程序跳转电子签小程序的path，APP或者小程序跳转适合此类型。</li><li>**QR_CODE**： 跳转电子签小程序的http_url的二维码形式，可以在页面展示适合此类型。</li></ul><p>枚举值：</p><ul><li>HTTP： 跳转电子签小程序的http_url，短信通知或者H5跳转适合此类型 ，此时返回长链 （默认类型）。</li><li>HTTP_SHORT_URL： 跳转电子签小程序的http_url，短信通知或者H5跳转适合此类型，此时返回短链。</li><li>APP： 第三方APP或小程序跳转电子签小程序的path，APP或者小程序跳转适合此类型。</li><li>QR_CODE： 跳转电子签小程序的http_url的二维码形式，可以在页面展示适合此类型。</li></ul><p>默认值：HTTP</p>
+	Endpoint *string `json:"Endpoint,omitnil,omitempty" name:"Endpoint"`
+}
+
+type CreateBatchAdminChangeInvitationsUrlRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。</p><p>此接口下面信息必填。</p><ul><li>渠道应用标识:  Agent.AppId</li></ul>
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// <p>组织机构要变更的超管姓名。 在超管变更流程中，必须是超管本人进行操作，需要更当前操作人的姓名保持一致。</p>
+	NewAdminName *string `json:"NewAdminName,omitnil,omitempty" name:"NewAdminName"`
+
+	// <p>组织机构要变更的超管手机号。 在超管变更流程中，必须是超管本人进行操作，需要更当前操作人的手机号保持一致。 超管手机号 和超管证件号 二选一 必填。 注意： 1. 如果新超管的个人身份在电子签进行了手机号的变更，之前提交的超管变更任务将无法获取。</p>
+	NewAdminMobile *string `json:"NewAdminMobile,omitnil,omitempty" name:"NewAdminMobile"`
+
+	// <p>组织机构要变更的超管证件类型支持以下类型</p><ul><li>ID_CARD : 中国大陆居民身份证 (默认值)</li><li>HONGKONG_AND_MACAO : 中国港澳居民来往内地通行证</li><li>HONGKONG_MACAO_AND_TAIWAN : 中国港澳台居民居住证(格式同中国大陆居民身份证)<br>需要更当前操作人的证件类型保持一致。</li></ul><p>枚举值：</p><ul><li>ID_CARD： 中国大陆居民身份证 (默认值)</li><li>HONGKONG_AND_MACAO： 中国港澳居民来往内地通行证</li><li>HONGKONG_MACAO_AND_TAIWAN： 中国港澳台居民居住证(格式同中国大陆居民身份证)</li></ul><p>默认值：ID_CARD</p>
+	NewAdminIdCardType *string `json:"NewAdminIdCardType,omitnil,omitempty" name:"NewAdminIdCardType"`
+
+	// <p>组织机构要变更的超管证件号。 在超管变更流程中，必须是超管本人进行操作，需要更当前操作人的证件号保持一致。 超管手机号和超管证件号 二选一必填。</p>
+	NewAdminIdCardNumber *string `json:"NewAdminIdCardNumber,omitnil,omitempty" name:"NewAdminIdCardNumber"`
+
+	// <p>要跳转的链接类型</p><ul><li> **HTTP**：跳转电子签小程序的http_url，短信通知或者H5跳转适合此类型 ，此时返回长链 （默认类型）。</li><li>**HTTP_SHORT_URL**：跳转电子签小程序的http_url，短信通知或者H5跳转适合此类型，此时返回短链。</li><li>**APP**： 第三方APP或小程序跳转电子签小程序的path，APP或者小程序跳转适合此类型。</li><li>**QR_CODE**： 跳转电子签小程序的http_url的二维码形式，可以在页面展示适合此类型。</li></ul><p>枚举值：</p><ul><li>HTTP： 跳转电子签小程序的http_url，短信通知或者H5跳转适合此类型 ，此时返回长链 （默认类型）。</li><li>HTTP_SHORT_URL： 跳转电子签小程序的http_url，短信通知或者H5跳转适合此类型，此时返回短链。</li><li>APP： 第三方APP或小程序跳转电子签小程序的path，APP或者小程序跳转适合此类型。</li><li>QR_CODE： 跳转电子签小程序的http_url的二维码形式，可以在页面展示适合此类型。</li></ul><p>默认值：HTTP</p>
+	Endpoint *string `json:"Endpoint,omitnil,omitempty" name:"Endpoint"`
+}
+
+func (r *CreateBatchAdminChangeInvitationsUrlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBatchAdminChangeInvitationsUrlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Agent")
+	delete(f, "NewAdminName")
+	delete(f, "NewAdminMobile")
+	delete(f, "NewAdminIdCardType")
+	delete(f, "NewAdminIdCardNumber")
+	delete(f, "Endpoint")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBatchAdminChangeInvitationsUrlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateBatchAdminChangeInvitationsUrlResponseParams struct {
+	// <p>批量企业注册链接-单链接包含多条认证流，根据Endpoint的不同设置，返回不同的链接地址。失效时间：7天<br>跳转链接, 链接的有效期根据企业,员工状态和终端等有区别, 可以参考下表</p><table> <thead> <tr> <th>Endpoint</th> <th>示例</th> <th>链接有效期限</th> </tr> </thead>  <tbody> <tr> <td>HTTP</td> <td>https://res.ess.tencent.cn/cdn/h5-activity-dev/jump-mp.html?to=AUTHORIZATION_ENTERPRISE_FOR_BATCH_SUBMIT&amp;shortKey=yDCHHURDfBxSB2rj2Bfa</td> <td>7天</td> </tr> <tr> <td>HTTP_SHORT_URL</td> <td>https://test.essurl.cn/8gDKUBAWK8</td> <td>7天</td> </tr> <tr> <td>APP</td> <td>pages/guide/index?to=AUTHORIZATION_ENTERPRISE_FOR_BATCH_SUBMIT&amp;shortKey=yDCHpURDfR6iEkdpsDde</td> <td>7天</td> </tr><tr> <td>QR_CODE</td> <td>https://dyn.test.ess.tencent.cn/imgs/qrcode_urls/authorization_enterprise_for_batch_submit/yDCHHUUckpbdauq9UEjnoFDCCumAMmv1.png</td> <td>7天</td> </tr> </tbody> </table>注： <code>1.创建的链接应避免被转义，如：&amp;被转义为\u0026；如使用Postman请求后，请选择响应类型为 JSON，否则链接将被转义</code>
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// <p>链接过期时间，为 7 天后，创建时间，格式为Unix标准时间戳（秒）。</p><p>单位：格式为Unix标准时间戳（秒）</p>
+	ExpireTime *uint64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateBatchAdminChangeInvitationsUrlResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateBatchAdminChangeInvitationsUrlResponseParams `json:"Response"`
+}
+
+func (r *CreateBatchAdminChangeInvitationsUrlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBatchAdminChangeInvitationsUrlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateBatchInitOrganizationUrlRequestParams struct {
 	// 应用相关信息。 此接口Agent.AppId 必填。
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
@@ -11635,6 +11820,110 @@ func (r *ModifyFlowDeadlineResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyOrganizationBusinessInfoRequestParams struct {
+	// <p>关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容此接口下面信息必填。<ul><li>渠道应用标识:  Agent.AppId</li><li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li><li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId</li></ul>注:<code>1. 企业激活时， 此时的Agent.ProxyOrganizationOpenId将会是企业激活后企业的唯一标识，建议开发者保存企业ProxyOrganizationOpenId，后续各项接口调用皆需要此参数。</code><code>2. 员工认证时， 此时的Agent.ProxyOperator.OpenId将会是员工认证加入企业后的唯一标识，建议开发者保存此员工的OpenId，后续各项接口调用皆需要此参数。</code><code>3. 同渠道应用(Agent.AppId)下，企业唯一标识ProxyOrganizationOpenId需要保持唯一，员工唯一标识OpenId也要保持唯一 (而不是企业下唯一)。</code></p>
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// <p>企业营业执照或相关证照图片的 resourceId，需提前通过<a href="https://qian.tencent.com/developers/partnerApis/files/UploadFiles">上传文件接口</a>获取后传入。<br>注意：电子签<b>不会</b>对上传的营业执照图片做 OCR 识别，该图片仅作为企业信息变更的凭证留存；企业最新的名称、法人、地址等信息仍需通过本接口的其它字段显式传入。</p>
+	BizLicenseResourceId *string `json:"BizLicenseResourceId,omitnil,omitempty" name:"BizLicenseResourceId"`
+
+	// <p>变更后的最新工商登记企业名称。<br>仅当企业名称发生变更时传入，未变更则不传（系统自动沿用电子签侧当前企业名称）。<br></p>
+	OrganizationName *string `json:"OrganizationName,omitnil,omitempty" name:"OrganizationName"`
+
+	// <p>变更后的企业注册地址。<br>仅当地址发生变更时传入，未变更则不传；传入后系统会自动解析省/市/区。<br></p>
+	Address *string `json:"Address,omitnil,omitempty" name:"Address"`
+
+	// <p>变更后的企业类型。<br>仅当企业类型发生变更时传入，未变更则不传（沿用当前类型）。<br>目前仅支持个体工商户（INDIVIDUALBIZ）变更为企业（ENTERPRISE）。</p><p>枚举值：</p><ul><li>INDIVIDUALBIZ： 个体工商户</li><li>ENTERPRISE： 企业</li></ul>
+	OrganizationType *string `json:"OrganizationType,omitnil,omitempty" name:"OrganizationType"`
+
+	// <p>变更后的最新工商登记法人姓名。<br>仅当法人发生变更时传入，未变更则不传（系统自动沿用当前法人姓名）。</p>
+	LegalName *string `json:"LegalName,omitnil,omitempty" name:"LegalName"`
+}
+
+type ModifyOrganizationBusinessInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容此接口下面信息必填。<ul><li>渠道应用标识:  Agent.AppId</li><li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li><li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId</li></ul>注:<code>1. 企业激活时， 此时的Agent.ProxyOrganizationOpenId将会是企业激活后企业的唯一标识，建议开发者保存企业ProxyOrganizationOpenId，后续各项接口调用皆需要此参数。</code><code>2. 员工认证时， 此时的Agent.ProxyOperator.OpenId将会是员工认证加入企业后的唯一标识，建议开发者保存此员工的OpenId，后续各项接口调用皆需要此参数。</code><code>3. 同渠道应用(Agent.AppId)下，企业唯一标识ProxyOrganizationOpenId需要保持唯一，员工唯一标识OpenId也要保持唯一 (而不是企业下唯一)。</code></p>
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// <p>企业营业执照或相关证照图片的 resourceId，需提前通过<a href="https://qian.tencent.com/developers/partnerApis/files/UploadFiles">上传文件接口</a>获取后传入。<br>注意：电子签<b>不会</b>对上传的营业执照图片做 OCR 识别，该图片仅作为企业信息变更的凭证留存；企业最新的名称、法人、地址等信息仍需通过本接口的其它字段显式传入。</p>
+	BizLicenseResourceId *string `json:"BizLicenseResourceId,omitnil,omitempty" name:"BizLicenseResourceId"`
+
+	// <p>变更后的最新工商登记企业名称。<br>仅当企业名称发生变更时传入，未变更则不传（系统自动沿用电子签侧当前企业名称）。<br></p>
+	OrganizationName *string `json:"OrganizationName,omitnil,omitempty" name:"OrganizationName"`
+
+	// <p>变更后的企业注册地址。<br>仅当地址发生变更时传入，未变更则不传；传入后系统会自动解析省/市/区。<br></p>
+	Address *string `json:"Address,omitnil,omitempty" name:"Address"`
+
+	// <p>变更后的企业类型。<br>仅当企业类型发生变更时传入，未变更则不传（沿用当前类型）。<br>目前仅支持个体工商户（INDIVIDUALBIZ）变更为企业（ENTERPRISE）。</p><p>枚举值：</p><ul><li>INDIVIDUALBIZ： 个体工商户</li><li>ENTERPRISE： 企业</li></ul>
+	OrganizationType *string `json:"OrganizationType,omitnil,omitempty" name:"OrganizationType"`
+
+	// <p>变更后的最新工商登记法人姓名。<br>仅当法人发生变更时传入，未变更则不传（系统自动沿用当前法人姓名）。</p>
+	LegalName *string `json:"LegalName,omitnil,omitempty" name:"LegalName"`
+}
+
+func (r *ModifyOrganizationBusinessInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyOrganizationBusinessInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Agent")
+	delete(f, "BizLicenseResourceId")
+	delete(f, "OrganizationName")
+	delete(f, "Address")
+	delete(f, "OrganizationType")
+	delete(f, "LegalName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyOrganizationBusinessInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyOrganizationBusinessInfoResponseParams struct {
+	// <p>业务状态码。<br>0 表示正常（无阻断）；非 0 表示存在阻断，例如企业名称变更且存在未完结合同时返回 1。</p><p>枚举值：</p><ul><li>0： 正常（无阻断）</li><li>1： 存在未完结合同</li></ul>
+	ErrorCode *int64 `json:"ErrorCode,omitnil,omitempty" name:"ErrorCode"`
+
+	// <p>提示文案。<br>例如企业名称变更且存在未完结合同时返回「存在 X 份未完结的合同，请先撤销或者完成合同」。</p>
+	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
+
+	// <p>未完结合同总数。<br>仅当企业名称变更且存在未完结合同时有值。</p>
+	UnfinishedCount *uint64 `json:"UnfinishedCount,omitnil,omitempty" name:"UnfinishedCount"`
+
+	// <p>SaaS 企业下未完结合同的 flowId 列表。</p>
+	FlowIds []*string `json:"FlowIds,omitnil,omitempty" name:"FlowIds"`
+
+	// <p>渠道子客企业下未完结合同的 flowId 列表。</p>
+	ChannelFlowIds []*string `json:"ChannelFlowIds,omitnil,omitempty" name:"ChannelFlowIds"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyOrganizationBusinessInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyOrganizationBusinessInfoResponseParams `json:"Response"`
+}
+
+func (r *ModifyOrganizationBusinessInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyOrganizationBusinessInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyPartnerAutoSignAuthUrlRequestParams struct {
 	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 	// 
@@ -12163,17 +12452,20 @@ type OrganizationAuthUrl struct {
 }
 
 type OrganizationAuthorizationOptions struct {
-	// 对方打开链接认证时，对方填写的营业执照的社会信用代码是否与接口上传上来的要保持一致。<ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul>
+	// <p>对方打开链接认证时，对方填写的营业执照的社会信用代码是否与接口上传上来的要保持一致。<ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul></p>
 	UniformSocialCreditCodeSame *bool `json:"UniformSocialCreditCodeSame,omitnil,omitempty" name:"UniformSocialCreditCodeSame"`
 
-	// 对方打开链接认证时，企业名称是否要与接口传递上来的保持一致。<ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul>p.s. 仅在企业名称不为空时有效
+	// <p>对方打开链接认证时，企业名称是否要与接口传递上来的保持一致。<ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul>p.s. 仅在企业名称不为空时有效</p>
 	OrganizationNameSame *bool `json:"OrganizationNameSame,omitnil,omitempty" name:"OrganizationNameSame"`
 
-	// 对方打开链接认证时，法人姓名是否要与接口传递上来的保持一致。<ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul>p.s. 仅在法人姓名不为空时有效
+	// <p>对方打开链接认证时，法人姓名是否要与接口传递上来的保持一致。<ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul>p.s. 仅在法人姓名不为空时有效</p>
 	LegalNameSame *bool `json:"LegalNameSame,omitnil,omitempty" name:"LegalNameSame"`
 
-	// 对方打开链接认证时，对公打款账号是否要与接口传递上来的保持一致。<ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul>p.s. 仅在对公打款账号不为空时有效
+	// <p>对方打开链接认证时，对公打款账号是否要与接口传递上来的保持一致。<ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul>p.s. 仅在对公打款账号不为空时有效</p>
 	BankAccountNumberSame *bool `json:"BankAccountNumberSame,omitnil,omitempty" name:"BankAccountNumberSame"`
+
+	// <p>对方打开链接认证时，公司地址是否要与接口传递上来的保持一致。<ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul>p.s. 仅在公司地址（ProxyAddress）不为空时有效</p>
+	AddressSame *bool `json:"AddressSame,omitnil,omitempty" name:"AddressSame"`
 }
 
 type OrganizationCommonInfo struct {
@@ -12956,88 +13248,64 @@ func (r *SyncProxyOrganizationOperatorsResponse) FromJsonString(s string) error 
 
 // Predefined struct for user
 type SyncProxyOrganizationRequestParams struct {
-	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
-	// 
-	// 此接口下面信息必填。
-	// <ul>
-	// <li>渠道应用标识:  Agent.AppId</li>
-	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
-	// </ul>
+	// <p>关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。</p><p>此接口下面信息必填。</p><ul><li>渠道应用标识:  Agent.AppId</li><li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li></ul>
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
-	// 第三方平台子客企业名称，请确认该名称与企业营业执照中注册的名称一致。
-	// 注: `如果名称中包含英文括号()，请使用中文括号（）代替。`
+	// <p>第三方平台子客企业名称，请确认该名称与企业营业执照中注册的名称一致。<br>注: <code>如果名称中包含英文括号()，请使用中文括号（）代替。</code></p>
 	ProxyOrganizationName *string `json:"ProxyOrganizationName,omitnil,omitempty" name:"ProxyOrganizationName"`
 
-	// 营业执照正面照(PNG或JPG) base64格式, 大小不超过5M
+	// <p>营业执照正面照(PNG或JPG) base64格式, 大小不超过5M</p>
 	BusinessLicense *string `json:"BusinessLicense,omitnil,omitempty" name:"BusinessLicense"`
 
-	// 第三方平台子客企业统一社会信用代码，最大长度200个字符
+	// <p>第三方平台子客企业统一社会信用代码，最大长度200个字符</p>
 	UniformSocialCreditCode *string `json:"UniformSocialCreditCode,omitnil,omitempty" name:"UniformSocialCreditCode"`
 
-	// 第三方平台子客企业法定代表人的名字
+	// <p>第三方平台子客企业法定代表人的名字</p>
 	ProxyLegalName *string `json:"ProxyLegalName,omitnil,omitempty" name:"ProxyLegalName"`
 
-	// 暂未开放
+	// <p>暂未开放</p>
 	//
 	// Deprecated: Operator is deprecated.
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 第三方平台子客企业法定代表人的证件类型，支持以下类型
-	// <ul><li>ID_CARD : 中国大陆居民身份证 (默认值)</li></ul>
-	// 注: `现在仅支持ID_CARD中国大陆居民身份证类型`
+	// <p>第三方平台子客企业法定代表人的证件类型，支持以下类型</p><ul><li>ID_CARD : 中国大陆居民身份证 (默认值)</li></ul>注: <code>现在仅支持ID_CARD中国大陆居民身份证类型</code>
 	ProxyLegalIdCardType *string `json:"ProxyLegalIdCardType,omitnil,omitempty" name:"ProxyLegalIdCardType"`
 
-	// 第三方平台子客企业法定代表人的证件号码, 应符合以下规则
-	// <ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li></ul>
+	// <p>第三方平台子客企业法定代表人的证件号码, 应符合以下规则</p><ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li></ul>
 	ProxyLegalIdCardNumber *string `json:"ProxyLegalIdCardNumber,omitnil,omitempty" name:"ProxyLegalIdCardNumber"`
 
-	// 第三方平台子客企业详细住所，最大长度500个字符
-	// 
-	// 注：`需要符合省市区详情的格式例如： XX省XX市XX区街道具体地址`
+	// <p>第三方平台子客企业详细住所，最大长度500个字符</p><p>注：<code>需要符合省市区详情的格式例如： XX省XX市XX区街道具体地址</code></p>
 	ProxyAddress *string `json:"ProxyAddress,omitnil,omitempty" name:"ProxyAddress"`
 }
 
 type SyncProxyOrganizationRequest struct {
 	*tchttp.BaseRequest
 	
-	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
-	// 
-	// 此接口下面信息必填。
-	// <ul>
-	// <li>渠道应用标识:  Agent.AppId</li>
-	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
-	// </ul>
+	// <p>关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。</p><p>此接口下面信息必填。</p><ul><li>渠道应用标识:  Agent.AppId</li><li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li></ul>
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
-	// 第三方平台子客企业名称，请确认该名称与企业营业执照中注册的名称一致。
-	// 注: `如果名称中包含英文括号()，请使用中文括号（）代替。`
+	// <p>第三方平台子客企业名称，请确认该名称与企业营业执照中注册的名称一致。<br>注: <code>如果名称中包含英文括号()，请使用中文括号（）代替。</code></p>
 	ProxyOrganizationName *string `json:"ProxyOrganizationName,omitnil,omitempty" name:"ProxyOrganizationName"`
 
-	// 营业执照正面照(PNG或JPG) base64格式, 大小不超过5M
+	// <p>营业执照正面照(PNG或JPG) base64格式, 大小不超过5M</p>
 	BusinessLicense *string `json:"BusinessLicense,omitnil,omitempty" name:"BusinessLicense"`
 
-	// 第三方平台子客企业统一社会信用代码，最大长度200个字符
+	// <p>第三方平台子客企业统一社会信用代码，最大长度200个字符</p>
 	UniformSocialCreditCode *string `json:"UniformSocialCreditCode,omitnil,omitempty" name:"UniformSocialCreditCode"`
 
-	// 第三方平台子客企业法定代表人的名字
+	// <p>第三方平台子客企业法定代表人的名字</p>
 	ProxyLegalName *string `json:"ProxyLegalName,omitnil,omitempty" name:"ProxyLegalName"`
 
-	// 暂未开放
+	// <p>暂未开放</p>
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 第三方平台子客企业法定代表人的证件类型，支持以下类型
-	// <ul><li>ID_CARD : 中国大陆居民身份证 (默认值)</li></ul>
-	// 注: `现在仅支持ID_CARD中国大陆居民身份证类型`
+	// <p>第三方平台子客企业法定代表人的证件类型，支持以下类型</p><ul><li>ID_CARD : 中国大陆居民身份证 (默认值)</li></ul>注: <code>现在仅支持ID_CARD中国大陆居民身份证类型</code>
 	ProxyLegalIdCardType *string `json:"ProxyLegalIdCardType,omitnil,omitempty" name:"ProxyLegalIdCardType"`
 
-	// 第三方平台子客企业法定代表人的证件号码, 应符合以下规则
-	// <ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li></ul>
+	// <p>第三方平台子客企业法定代表人的证件号码, 应符合以下规则</p><ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li></ul>
 	ProxyLegalIdCardNumber *string `json:"ProxyLegalIdCardNumber,omitnil,omitempty" name:"ProxyLegalIdCardNumber"`
 
-	// 第三方平台子客企业详细住所，最大长度500个字符
-	// 
-	// 注：`需要符合省市区详情的格式例如： XX省XX市XX区街道具体地址`
+	// <p>第三方平台子客企业详细住所，最大长度500个字符</p><p>注：<code>需要符合省市区详情的格式例如： XX省XX市XX区街道具体地址</code></p>
 	ProxyAddress *string `json:"ProxyAddress,omitnil,omitempty" name:"ProxyAddress"`
 }
 

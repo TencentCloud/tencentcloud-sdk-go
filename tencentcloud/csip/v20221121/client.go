@@ -16401,6 +16401,86 @@ func (c *Client) ModifyAlarmRiskStatusWithContext(ctx context.Context, request *
     return
 }
 
+func NewModifyCosAuditBucketMonitorStatusRequest() (request *ModifyCosAuditBucketMonitorStatusRequest) {
+    request = &ModifyCosAuditBucketMonitorStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "ModifyCosAuditBucketMonitorStatus")
+    
+    
+    return
+}
+
+func NewModifyCosAuditBucketMonitorStatusResponse() (response *ModifyCosAuditBucketMonitorStatusResponse) {
+    response = &ModifyCosAuditBucketMonitorStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyCosAuditBucketMonitorStatus
+// 修改存储桶监测状态
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyCosAuditBucketMonitorStatus(request *ModifyCosAuditBucketMonitorStatusRequest) (response *ModifyCosAuditBucketMonitorStatusResponse, err error) {
+    return c.ModifyCosAuditBucketMonitorStatusWithContext(context.Background(), request)
+}
+
+// ModifyCosAuditBucketMonitorStatus
+// 修改存储桶监测状态
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyCosAuditBucketMonitorStatusWithContext(ctx context.Context, request *ModifyCosAuditBucketMonitorStatusRequest) (response *ModifyCosAuditBucketMonitorStatusResponse, err error) {
+    if request == nil {
+        request = NewModifyCosAuditBucketMonitorStatusRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "ModifyCosAuditBucketMonitorStatus")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyCosAuditBucketMonitorStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyCosAuditBucketMonitorStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyCosAuditMonitorAccountRequest() (request *ModifyCosAuditMonitorAccountRequest) {
     request = &ModifyCosAuditMonitorAccountRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -59,6 +59,9 @@ const (
 	// 企业名称与工商局信息不符,需要超管/法人修改
 	FAILEDOPERATION_ORGANIZATIONNAMENEEDCHANGE = "FailedOperation.OrganizationNameNeedChange"
 
+	// 企业信息未变更
+	FAILEDOPERATION_ORGANIZATIONNOTCHANGE = "FailedOperation.OrganizationNotChange"
+
 	// 发起签署存在填写控件。
 	FAILEDOPERATION_QRCODECREATORSIGNCOMPONENTS = "FailedOperation.QrCodeCreatorSignComponents"
 

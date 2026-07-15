@@ -11868,6 +11868,104 @@ func (r *DescribeImageTaskDetailResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeImageTasksRequestParams struct {
+	// <p>任务状态过滤条件。</p>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>返回记录条数。</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>翻页标识，分批拉取时使用：当单次请求无法拉取所有数据，接口将会返回 ScrollToken，下一次请求携带该 Token，将会从下一条记录开始获取。</p>
+	ScrollToken *string `json:"ScrollToken,omitnil,omitempty" name:"ScrollToken"`
+
+	// <p>任务开始时间。</p><p>参数格式：YYYY-MM-DDThh:mm:ssZ</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>任务结束时间。</p><p>参数格式：YYYY-MM-DDThh:mm:ssZ</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>筛选子任务状态。</p>
+	SubTaskHasFailed *bool `json:"SubTaskHasFailed,omitnil,omitempty" name:"SubTaskHasFailed"`
+}
+
+type DescribeImageTasksRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>任务状态过滤条件。</p>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>返回记录条数。</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>翻页标识，分批拉取时使用：当单次请求无法拉取所有数据，接口将会返回 ScrollToken，下一次请求携带该 Token，将会从下一条记录开始获取。</p>
+	ScrollToken *string `json:"ScrollToken,omitnil,omitempty" name:"ScrollToken"`
+
+	// <p>任务开始时间。</p><p>参数格式：YYYY-MM-DDThh:mm:ssZ</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>任务结束时间。</p><p>参数格式：YYYY-MM-DDThh:mm:ssZ</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>筛选子任务状态。</p>
+	SubTaskHasFailed *bool `json:"SubTaskHasFailed,omitnil,omitempty" name:"SubTaskHasFailed"`
+}
+
+func (r *DescribeImageTasksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeImageTasksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Status")
+	delete(f, "Limit")
+	delete(f, "ScrollToken")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "SubTaskHasFailed")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeImageTasksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeImageTasksResponseParams struct {
+	// <p>符合过滤条件的记录总数。</p><p>单位：条</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>翻页标识，当请求未返回所有数据，该字段表示下一条记录的 ID。当该字段为空字符串，说明已无更多数据。</p>
+	ScrollToken *string `json:"ScrollToken,omitnil,omitempty" name:"ScrollToken"`
+
+	// <p>图片任务概要列表。</p>
+	TaskSet []*ImageTaskInfo `json:"TaskSet,omitnil,omitempty" name:"TaskSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeImageTasksResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeImageTasksResponseParams `json:"Response"`
+}
+
+func (r *DescribeImageTasksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeImageTasksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeInput struct {
 	// 输入Id。
 	InputId *string `json:"InputId,omitnil,omitempty" name:"InputId"`
@@ -18665,6 +18763,29 @@ type ImageSpriteTemplate struct {
 
 	// 图片格式。
 	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
+}
+
+type ImageTaskInfo struct {
+	// <p>图片处理任务TaskId。</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>任务状态。</p><p>枚举值：</p><ul><li>FINISH： 任务结束</li><li>PROCESSING： 任务处理中</li></ul>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>输入文件。</p>
+	Input *string `json:"Input,omitnil,omitempty" name:"Input"`
+
+	// <p>创建时间。</p><p>参数格式：YYYY-MM-DDThh:mm:ssZ</p>
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>开始处理时间。</p><p>参数格式：YYYY-MM-DDThh:mm:ssZ</p>
+	BeginProcessTime *string `json:"BeginProcessTime,omitnil,omitempty" name:"BeginProcessTime"`
+
+	// <p>结束时间。</p><p>参数格式：YYYY-MM-DDThh:mm:ssZ</p>
+	FinishTime *string `json:"FinishTime,omitnil,omitempty" name:"FinishTime"`
+
+	// <p>子任务失败标识。</p>
+	SubTaskHasFailed *bool `json:"SubTaskHasFailed,omitnil,omitempty" name:"SubTaskHasFailed"`
 }
 
 type ImageTaskInput struct {

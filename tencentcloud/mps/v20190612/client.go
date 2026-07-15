@@ -5915,6 +5915,62 @@ func (c *Client) DescribeImageTaskDetailWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeImageTasksRequest() (request *DescribeImageTasksRequest) {
+    request = &DescribeImageTasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "DescribeImageTasks")
+    
+    
+    return
+}
+
+func NewDescribeImageTasksResponse() (response *DescribeImageTasksResponse) {
+    response = &DescribeImageTasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeImageTasks
+// 图片处理任务查询接口。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMIT = "InvalidParameterValue.Limit"
+func (c *Client) DescribeImageTasks(request *DescribeImageTasksRequest) (response *DescribeImageTasksResponse, err error) {
+    return c.DescribeImageTasksWithContext(context.Background(), request)
+}
+
+// DescribeImageTasks
+// 图片处理任务查询接口。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMIT = "InvalidParameterValue.Limit"
+func (c *Client) DescribeImageTasksWithContext(ctx context.Context, request *DescribeImageTasksRequest) (response *DescribeImageTasksResponse, err error) {
+    if request == nil {
+        request = NewDescribeImageTasksRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DescribeImageTasks")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeImageTasks require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeImageTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLiveRecordTemplatesRequest() (request *DescribeLiveRecordTemplatesRequest) {
     request = &DescribeLiveRecordTemplatesRequest{
         BaseRequest: &tchttp.BaseRequest{},
