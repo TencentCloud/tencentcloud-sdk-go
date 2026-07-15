@@ -1432,6 +1432,161 @@ func (r *CreateJobResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateOceanusClusterRequestParams struct {
+	// <p>集群名称</p><p>入参限制：支持1-50个英文、汉字、数字、连接线-或下划线_</p>
+	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
+
+	// <p>地域Id，可通过地域管理系统<a href="https://cloud.tencent.com/document/api/1596/77930"> DescribeRegions</a>查询Product参数设置 oceanus</p>
+	RegionId *int64 `json:"RegionId,omitnil,omitempty" name:"RegionId"`
+
+	// <p>可用区Id，可通过地域管理系统<a href="https://cloud.tencent.com/document/api/1596/77929"> DescribeZones</a>查询<br>Product参数设置 oceanus</p>
+	ZoneId *int64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// <p>FlinkUI访问密码</p><p>用户名与密码将用于登录查看作业的 Flink UI 界面，集群用户名:admin</p>
+	LoginPassword *string `json:"LoginPassword,omitnil,omitempty" name:"LoginPassword"`
+
+	// <p>流计算通过 VPC 和弹性网卡来访问同地域中的其他云产品资源，并需要占用一定的子网 IP 数量，请确保所选子网的可用 IP 数量充足 如现有网络不符合您的要求，请前往 VPC 控制台<a href="https://console.cloud.tencent.com/vpc/vpc?rid=undefined">新建私有网络</a> 或 <a href="https://console.cloud.tencent.com/vpc/subnet?rid=undefined">新建子网</a></p>
+	VpcDescriptions []*VPCDescription `json:"VpcDescriptions,omitnil,omitempty" name:"VpcDescriptions"`
+
+	// <p>流计算使用对象存储 COS 来保存作业的 checkpoint、jar 包、或投递日志等，如本地域无可用存储桶，请前往<a href="https://console.cloud.tencent.com/cos5">对象存储控制台</a>新建 为了保证您的正常使用，对应COS的生命周期配置请参考<a href="https://cloud.tencent.com/document/product/436/33417?from=console_document_search">文档</a></p>
+	DefaultCOSBucket *string `json:"DefaultCOSBucket,omitnil,omitempty" name:"DefaultCOSBucket"`
+
+	// <p>集群CU数， 12 CU 是流计算的最小计算资源和计费单位，1CU 包含1个 CPU 和 4GB 内存。 当CU数大于等于 48 时，减免管理节点费用。</p>
+	CU *int64 `json:"CU,omitnil,omitempty" name:"CU"`
+
+	// <p>集群描述</p><p>入参限制：支持1-50个英文、汉字、数字、连接线-或下划线_</p>
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// <p>购买时长，以月为单位</p><p>取值范围：[1, 48]</p>
+	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
+
+	// <p>集群计费类型</p><p>枚举值：</p><ul><li>PREPAID： 包年包月</li><li>POSTPAID_BY_SECOND： 按量计费</li></ul><p>默认值：POSTPAID_BY_SECOND</p>
+	InstanceChargeType *string `json:"InstanceChargeType,omitnil,omitempty" name:"InstanceChargeType"`
+
+	// <p>集群类型</p><p>枚举值：</p><ul><li>MULTI_AZ_CLUSTER： 多可用区集群</li></ul>
+	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
+
+	// <p>自动续费标识</p><p>枚举值：</p><ul><li>NOTIFY_AND_MANUAL_RENEW： 通知并手动续费</li><li>NOTIFY_AND_AUTO_RENEW： 通知并自动续费</li><li>DISABLE_NOTIFY_AND_MANUAL_RENEW： 不通知并不自动续费</li></ul><p>默认值：NOTIFY_AND_MANUAL_RENEW</p><p>InstanceChargeType设置PREPAID时，对应包年包月集群，需要设置自动续费标识，按量计费集群不需要设置</p>
+	RenewFlag *string `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
+
+	// <p>Flink UI访问类型设置</p><p>枚举值：</p><ul><li>NetworkAccess_INTERNAL： 内网访问</li><li>NetworkAccess_EXTERNAL： 公网访问</li></ul><p>默认值：NetworkAccess_EXTERNAL</p>
+	FlinkWebUINetworkAccessType *string `json:"FlinkWebUINetworkAccessType,omitnil,omitempty" name:"FlinkWebUINetworkAccessType"`
+
+	// <p>多可用区VPC</p>
+	SlaveVpcDescriptions []*SlaveVpcDescriptions `json:"SlaveVpcDescriptions,omitnil,omitempty" name:"SlaveVpcDescriptions"`
+
+	// <p>核心内存比值，只支持 [0，2，4，8]</p>
+	CUMemory *int64 `json:"CUMemory,omitnil,omitempty" name:"CUMemory"`
+}
+
+type CreateOceanusClusterRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>集群名称</p><p>入参限制：支持1-50个英文、汉字、数字、连接线-或下划线_</p>
+	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
+
+	// <p>地域Id，可通过地域管理系统<a href="https://cloud.tencent.com/document/api/1596/77930"> DescribeRegions</a>查询Product参数设置 oceanus</p>
+	RegionId *int64 `json:"RegionId,omitnil,omitempty" name:"RegionId"`
+
+	// <p>可用区Id，可通过地域管理系统<a href="https://cloud.tencent.com/document/api/1596/77929"> DescribeZones</a>查询<br>Product参数设置 oceanus</p>
+	ZoneId *int64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// <p>FlinkUI访问密码</p><p>用户名与密码将用于登录查看作业的 Flink UI 界面，集群用户名:admin</p>
+	LoginPassword *string `json:"LoginPassword,omitnil,omitempty" name:"LoginPassword"`
+
+	// <p>流计算通过 VPC 和弹性网卡来访问同地域中的其他云产品资源，并需要占用一定的子网 IP 数量，请确保所选子网的可用 IP 数量充足 如现有网络不符合您的要求，请前往 VPC 控制台<a href="https://console.cloud.tencent.com/vpc/vpc?rid=undefined">新建私有网络</a> 或 <a href="https://console.cloud.tencent.com/vpc/subnet?rid=undefined">新建子网</a></p>
+	VpcDescriptions []*VPCDescription `json:"VpcDescriptions,omitnil,omitempty" name:"VpcDescriptions"`
+
+	// <p>流计算使用对象存储 COS 来保存作业的 checkpoint、jar 包、或投递日志等，如本地域无可用存储桶，请前往<a href="https://console.cloud.tencent.com/cos5">对象存储控制台</a>新建 为了保证您的正常使用，对应COS的生命周期配置请参考<a href="https://cloud.tencent.com/document/product/436/33417?from=console_document_search">文档</a></p>
+	DefaultCOSBucket *string `json:"DefaultCOSBucket,omitnil,omitempty" name:"DefaultCOSBucket"`
+
+	// <p>集群CU数， 12 CU 是流计算的最小计算资源和计费单位，1CU 包含1个 CPU 和 4GB 内存。 当CU数大于等于 48 时，减免管理节点费用。</p>
+	CU *int64 `json:"CU,omitnil,omitempty" name:"CU"`
+
+	// <p>集群描述</p><p>入参限制：支持1-50个英文、汉字、数字、连接线-或下划线_</p>
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// <p>购买时长，以月为单位</p><p>取值范围：[1, 48]</p>
+	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
+
+	// <p>集群计费类型</p><p>枚举值：</p><ul><li>PREPAID： 包年包月</li><li>POSTPAID_BY_SECOND： 按量计费</li></ul><p>默认值：POSTPAID_BY_SECOND</p>
+	InstanceChargeType *string `json:"InstanceChargeType,omitnil,omitempty" name:"InstanceChargeType"`
+
+	// <p>集群类型</p><p>枚举值：</p><ul><li>MULTI_AZ_CLUSTER： 多可用区集群</li></ul>
+	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
+
+	// <p>自动续费标识</p><p>枚举值：</p><ul><li>NOTIFY_AND_MANUAL_RENEW： 通知并手动续费</li><li>NOTIFY_AND_AUTO_RENEW： 通知并自动续费</li><li>DISABLE_NOTIFY_AND_MANUAL_RENEW： 不通知并不自动续费</li></ul><p>默认值：NOTIFY_AND_MANUAL_RENEW</p><p>InstanceChargeType设置PREPAID时，对应包年包月集群，需要设置自动续费标识，按量计费集群不需要设置</p>
+	RenewFlag *string `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
+
+	// <p>Flink UI访问类型设置</p><p>枚举值：</p><ul><li>NetworkAccess_INTERNAL： 内网访问</li><li>NetworkAccess_EXTERNAL： 公网访问</li></ul><p>默认值：NetworkAccess_EXTERNAL</p>
+	FlinkWebUINetworkAccessType *string `json:"FlinkWebUINetworkAccessType,omitnil,omitempty" name:"FlinkWebUINetworkAccessType"`
+
+	// <p>多可用区VPC</p>
+	SlaveVpcDescriptions []*SlaveVpcDescriptions `json:"SlaveVpcDescriptions,omitnil,omitempty" name:"SlaveVpcDescriptions"`
+
+	// <p>核心内存比值，只支持 [0，2，4，8]</p>
+	CUMemory *int64 `json:"CUMemory,omitnil,omitempty" name:"CUMemory"`
+}
+
+func (r *CreateOceanusClusterRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateOceanusClusterRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterName")
+	delete(f, "RegionId")
+	delete(f, "ZoneId")
+	delete(f, "LoginPassword")
+	delete(f, "VpcDescriptions")
+	delete(f, "DefaultCOSBucket")
+	delete(f, "CU")
+	delete(f, "Remark")
+	delete(f, "Period")
+	delete(f, "InstanceChargeType")
+	delete(f, "ClusterType")
+	delete(f, "RenewFlag")
+	delete(f, "FlinkWebUINetworkAccessType")
+	delete(f, "SlaveVpcDescriptions")
+	delete(f, "CUMemory")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateOceanusClusterRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateOceanusClusterResponseParams struct {
+	// <p>创建的集群ID</p><p>参数格式：cluster-xxx</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateOceanusClusterResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateOceanusClusterResponseParams `json:"Response"`
+}
+
+func (r *CreateOceanusClusterResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateOceanusClusterResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateResourceConfigRequestParams struct {
 	// 资源ID
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
@@ -2010,6 +2165,63 @@ func (r *DeleteJobsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteJobsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteOceanusClusterRequestParams struct {
+	// <p>集群ID</p><p>参数格式：cluster-xxxx</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+}
+
+type DeleteOceanusClusterRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>集群ID</p><p>参数格式：cluster-xxxx</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+}
+
+func (r *DeleteOceanusClusterRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteOceanusClusterRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteOceanusClusterRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteOceanusClusterResponseParams struct {
+	// <p>参数值success代表操作执行成功</p>
+	TaskExecResult *string `json:"TaskExecResult,omitnil,omitempty" name:"TaskExecResult"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteOceanusClusterResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteOceanusClusterResponseParams `json:"Response"`
+}
+
+func (r *DeleteOceanusClusterResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteOceanusClusterResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5212,6 +5424,70 @@ type RefJobStatusCountItem struct {
 	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
 }
 
+// Predefined struct for user
+type RenewOceanusClusterRequestParams struct {
+	// <p>集群ID</p><p>参数格式：cluster-xxx</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// <p>续费的时长，单位为月，只支持包年包月集群</p><p>取值范围：[1, 36]</p>
+	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
+}
+
+type RenewOceanusClusterRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>集群ID</p><p>参数格式：cluster-xxx</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// <p>续费的时长，单位为月，只支持包年包月集群</p><p>取值范围：[1, 36]</p>
+	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
+}
+
+func (r *RenewOceanusClusterRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RenewOceanusClusterRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "Period")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RenewOceanusClusterRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RenewOceanusClusterResponseParams struct {
+	// <p>参数值success代表操作执行成功</p>
+	TaskExecResult *string `json:"TaskExecResult,omitnil,omitempty" name:"TaskExecResult"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RenewOceanusClusterResponse struct {
+	*tchttp.BaseResponse
+	Response *RenewOceanusClusterResponseParams `json:"Response"`
+}
+
+func (r *RenewOceanusClusterResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RenewOceanusClusterResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ResourceConfigItem struct {
 	// 资源ID
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
@@ -5734,6 +6010,77 @@ type Savepoint struct {
 	CheckpointSize *int64 `json:"CheckpointSize,omitnil,omitempty" name:"CheckpointSize"`
 }
 
+// Predefined struct for user
+type ScaleOceanusClusterRequestParams struct {
+	// <p>集群ID</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// <p>集群的目标CU，需大于12CU，并且集群CU需要满足 12 + 7*n (n&gt;=0)</p>
+	NewCU *int64 `json:"NewCU,omitnil,omitempty" name:"NewCU"`
+
+	// <p>扩容集群或者缩容集群</p><p>枚举值：</p><ul><li>ScaleDown： 缩容集群</li><li>ScaleUp： 扩容集群</li></ul><p>默认值：ScaleUp</p>
+	ScaleMode *string `json:"ScaleMode,omitnil,omitempty" name:"ScaleMode"`
+}
+
+type ScaleOceanusClusterRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>集群ID</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// <p>集群的目标CU，需大于12CU，并且集群CU需要满足 12 + 7*n (n&gt;=0)</p>
+	NewCU *int64 `json:"NewCU,omitnil,omitempty" name:"NewCU"`
+
+	// <p>扩容集群或者缩容集群</p><p>枚举值：</p><ul><li>ScaleDown： 缩容集群</li><li>ScaleUp： 扩容集群</li></ul><p>默认值：ScaleUp</p>
+	ScaleMode *string `json:"ScaleMode,omitnil,omitempty" name:"ScaleMode"`
+}
+
+func (r *ScaleOceanusClusterRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ScaleOceanusClusterRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "NewCU")
+	delete(f, "ScaleMode")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ScaleOceanusClusterRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ScaleOceanusClusterResponseParams struct {
+	// <p>参数值success代表操作执行成功</p>
+	TaskExecResult *string `json:"TaskExecResult,omitnil,omitempty" name:"TaskExecResult"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ScaleOceanusClusterResponse struct {
+	*tchttp.BaseResponse
+	Response *ScaleOceanusClusterResponseParams `json:"Response"`
+}
+
+func (r *ScaleOceanusClusterResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ScaleOceanusClusterResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type SessionClusterRefItem struct {
 	// 空间唯一标识
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -5852,6 +6199,20 @@ type SetatsDisk struct {
 	// <p>磁盘大小</p><p>单位：GB</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiskSize *int64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
+}
+
+type SlaveVpcDescriptions struct {
+	// <p>私有网络ID</p>
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// <p>子网ID</p>
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// <p>用户AppId</p>
+	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>用户UIN</p>
+	OwnerUin *string `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
 }
 
 type SlaveZone struct {
@@ -6272,6 +6633,22 @@ func (r *TriggerJobSavepointResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *TriggerJobSavepointResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type VPCDescription struct {
+	// 私有网络ID
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// 子网ID
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// 用户AppId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// 用户UIN
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OwnerUin *string `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
 }
 
 type VariableItem struct {

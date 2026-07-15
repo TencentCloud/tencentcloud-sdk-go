@@ -2459,6 +2459,178 @@ func (c *Client) DescribeDocumentsByRoomWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeEditVersionsRequest() (request *DescribeEditVersionsRequest) {
+    request = &DescribeEditVersionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "DescribeEditVersions")
+    
+    
+    return
+}
+
+func NewDescribeEditVersionsResponse() (response *DescribeEditVersionsResponse) {
+    response = &DescribeEditVersionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeEditVersions
+// 获取课堂的所有编辑版本（含源版本）
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLASSENDED = "FailedOperation.ClassEnded"
+//  FAILEDOPERATION_CLASSEXPIRED = "FailedOperation.ClassExpired"
+//  FAILEDOPERATION_CLASSSTARTED = "FailedOperation.ClassStarted"
+//  FAILEDOPERATION_CLASSTOOLONG = "FailedOperation.ClassTooLong"
+//  FAILEDOPERATION_IMAGEARGINVALID = "FailedOperation.ImageArgInvalid"
+//  FAILEDOPERATION_ORIGINIDEXISTS = "FailedOperation.OriginIdExists"
+//  FAILEDOPERATION_POSTPAIDNOTAVAILABLE = "FailedOperation.PostpaidNotAvailable"
+//  FAILEDOPERATION_REQUESTTIMEDOUT = "FailedOperation.RequestTimedOut"
+//  FAILEDOPERATION_ROOMNOTEND = "FailedOperation.RoomNotEnd"
+//  FAILEDOPERATION_USERISALREADYINGROUP = "FailedOperation.UserIsAlreadyInGroup"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CLASSID = "InvalidParameter.ClassID"
+//  INVALIDPARAMETER_CLASSIDS = "InvalidParameter.ClassIDs"
+//  INVALIDPARAMETER_CONTENT = "InvalidParameter.Content"
+//  INVALIDPARAMETER_CSSORJS = "InvalidParameter.CssOrJs"
+//  INVALIDPARAMETER_DISABLERECORD = "InvalidParameter.DisableRecord"
+//  INVALIDPARAMETER_ENDTIME = "InvalidParameter.EndTime"
+//  INVALIDPARAMETER_GROUPMEMBEROVERLIMIT = "InvalidParameter.GroupMemberOverLimit"
+//  INVALIDPARAMETER_GROUPPARAMINVALID = "InvalidParameter.GroupParamInvalid"
+//  INVALIDPARAMETER_GROUPTEACHERNOTMEMBER = "InvalidParameter.GroupTeacherNotMember"
+//  INVALIDPARAMETER_GROUPTEACHERSNOTEXIST = "InvalidParameter.GroupTeachersNotExist"
+//  INVALIDPARAMETER_GROUPTYPEINVALID = "InvalidParameter.GroupTypeInvalid"
+//  INVALIDPARAMETER_LIVETYPE = "InvalidParameter.LiveType"
+//  INVALIDPARAMETER_MAXMICNUMBER = "InvalidParameter.MaxMicNumber"
+//  INVALIDPARAMETER_MAXRTCMEMBER = "InvalidParameter.MaxRTCMember"
+//  INVALIDPARAMETER_RECORDLAYOUT = "InvalidParameter.RecordLayout"
+//  INVALIDPARAMETER_REPLAYLAYOUT = "InvalidParameter.ReplayLayout"
+//  INVALIDPARAMETER_ROOMTYPEINVALID = "InvalidParameter.RoomTypeInvalid"
+//  INVALIDPARAMETER_SCHOOLID = "InvalidParameter.SchoolID"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETER_STARTTIME = "InvalidParameter.StartTime"
+//  INVALIDPARAMETER_USERSCHOOLMISMATCH = "InvalidParameter.UserSchoolMismatch"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_CLASSDOCUMENTLIMIT = "LimitExceeded.ClassDocumentLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEINSUFFICIENT_RECORD = "ResourceInsufficient.Record"
+//  RESOURCEINSUFFICIENT_ROOM = "ResourceInsufficient.Room"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_DOCUMENT = "ResourceNotFound.Document"
+//  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
+//  RESOURCENOTFOUND_GROUPPARTUSERSNOTEXIST = "ResourceNotFound.GroupPartUsersNotExist"
+//  RESOURCENOTFOUND_ROOM = "ResourceNotFound.Room"
+//  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_ROOMSTATISTICS = "ResourceUnavailable.RoomStatistics"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_VERSION = "UnsupportedOperation.Version"
+func (c *Client) DescribeEditVersions(request *DescribeEditVersionsRequest) (response *DescribeEditVersionsResponse, err error) {
+    return c.DescribeEditVersionsWithContext(context.Background(), request)
+}
+
+// DescribeEditVersions
+// 获取课堂的所有编辑版本（含源版本）
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLASSENDED = "FailedOperation.ClassEnded"
+//  FAILEDOPERATION_CLASSEXPIRED = "FailedOperation.ClassExpired"
+//  FAILEDOPERATION_CLASSSTARTED = "FailedOperation.ClassStarted"
+//  FAILEDOPERATION_CLASSTOOLONG = "FailedOperation.ClassTooLong"
+//  FAILEDOPERATION_IMAGEARGINVALID = "FailedOperation.ImageArgInvalid"
+//  FAILEDOPERATION_ORIGINIDEXISTS = "FailedOperation.OriginIdExists"
+//  FAILEDOPERATION_POSTPAIDNOTAVAILABLE = "FailedOperation.PostpaidNotAvailable"
+//  FAILEDOPERATION_REQUESTTIMEDOUT = "FailedOperation.RequestTimedOut"
+//  FAILEDOPERATION_ROOMNOTEND = "FailedOperation.RoomNotEnd"
+//  FAILEDOPERATION_USERISALREADYINGROUP = "FailedOperation.UserIsAlreadyInGroup"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CLASSID = "InvalidParameter.ClassID"
+//  INVALIDPARAMETER_CLASSIDS = "InvalidParameter.ClassIDs"
+//  INVALIDPARAMETER_CONTENT = "InvalidParameter.Content"
+//  INVALIDPARAMETER_CSSORJS = "InvalidParameter.CssOrJs"
+//  INVALIDPARAMETER_DISABLERECORD = "InvalidParameter.DisableRecord"
+//  INVALIDPARAMETER_ENDTIME = "InvalidParameter.EndTime"
+//  INVALIDPARAMETER_GROUPMEMBEROVERLIMIT = "InvalidParameter.GroupMemberOverLimit"
+//  INVALIDPARAMETER_GROUPPARAMINVALID = "InvalidParameter.GroupParamInvalid"
+//  INVALIDPARAMETER_GROUPTEACHERNOTMEMBER = "InvalidParameter.GroupTeacherNotMember"
+//  INVALIDPARAMETER_GROUPTEACHERSNOTEXIST = "InvalidParameter.GroupTeachersNotExist"
+//  INVALIDPARAMETER_GROUPTYPEINVALID = "InvalidParameter.GroupTypeInvalid"
+//  INVALIDPARAMETER_LIVETYPE = "InvalidParameter.LiveType"
+//  INVALIDPARAMETER_MAXMICNUMBER = "InvalidParameter.MaxMicNumber"
+//  INVALIDPARAMETER_MAXRTCMEMBER = "InvalidParameter.MaxRTCMember"
+//  INVALIDPARAMETER_RECORDLAYOUT = "InvalidParameter.RecordLayout"
+//  INVALIDPARAMETER_REPLAYLAYOUT = "InvalidParameter.ReplayLayout"
+//  INVALIDPARAMETER_ROOMTYPEINVALID = "InvalidParameter.RoomTypeInvalid"
+//  INVALIDPARAMETER_SCHOOLID = "InvalidParameter.SchoolID"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETER_STARTTIME = "InvalidParameter.StartTime"
+//  INVALIDPARAMETER_USERSCHOOLMISMATCH = "InvalidParameter.UserSchoolMismatch"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_CLASSDOCUMENTLIMIT = "LimitExceeded.ClassDocumentLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEINSUFFICIENT_RECORD = "ResourceInsufficient.Record"
+//  RESOURCEINSUFFICIENT_ROOM = "ResourceInsufficient.Room"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_DOCUMENT = "ResourceNotFound.Document"
+//  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
+//  RESOURCENOTFOUND_GROUPPARTUSERSNOTEXIST = "ResourceNotFound.GroupPartUsersNotExist"
+//  RESOURCENOTFOUND_ROOM = "ResourceNotFound.Room"
+//  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_ROOMSTATISTICS = "ResourceUnavailable.RoomStatistics"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_VERSION = "UnsupportedOperation.Version"
+func (c *Client) DescribeEditVersionsWithContext(ctx context.Context, request *DescribeEditVersionsRequest) (response *DescribeEditVersionsResponse, err error) {
+    if request == nil {
+        request = NewDescribeEditVersionsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "lcic", APIVersion, "DescribeEditVersions")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEditVersions require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeEditVersionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeGroupRequest() (request *DescribeGroupRequest) {
     request = &DescribeGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3959,6 +4131,178 @@ func (c *Client) ForbidSendMsgWithContext(ctx context.Context, request *ForbidSe
     return
 }
 
+func NewGetEditVersionTokenRequest() (request *GetEditVersionTokenRequest) {
+    request = &GetEditVersionTokenRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "GetEditVersionToken")
+    
+    
+    return
+}
+
+func NewGetEditVersionTokenResponse() (response *GetEditVersionTokenResponse) {
+    response = &GetEditVersionTokenResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetEditVersionToken
+// 获取剪辑信令回放token
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLASSENDED = "FailedOperation.ClassEnded"
+//  FAILEDOPERATION_CLASSEXPIRED = "FailedOperation.ClassExpired"
+//  FAILEDOPERATION_CLASSSTARTED = "FailedOperation.ClassStarted"
+//  FAILEDOPERATION_CLASSTOOLONG = "FailedOperation.ClassTooLong"
+//  FAILEDOPERATION_IMAGEARGINVALID = "FailedOperation.ImageArgInvalid"
+//  FAILEDOPERATION_ORIGINIDEXISTS = "FailedOperation.OriginIdExists"
+//  FAILEDOPERATION_POSTPAIDNOTAVAILABLE = "FailedOperation.PostpaidNotAvailable"
+//  FAILEDOPERATION_REQUESTTIMEDOUT = "FailedOperation.RequestTimedOut"
+//  FAILEDOPERATION_ROOMNOTEND = "FailedOperation.RoomNotEnd"
+//  FAILEDOPERATION_USERISALREADYINGROUP = "FailedOperation.UserIsAlreadyInGroup"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CLASSID = "InvalidParameter.ClassID"
+//  INVALIDPARAMETER_CLASSIDS = "InvalidParameter.ClassIDs"
+//  INVALIDPARAMETER_CONTENT = "InvalidParameter.Content"
+//  INVALIDPARAMETER_CSSORJS = "InvalidParameter.CssOrJs"
+//  INVALIDPARAMETER_DISABLERECORD = "InvalidParameter.DisableRecord"
+//  INVALIDPARAMETER_ENDTIME = "InvalidParameter.EndTime"
+//  INVALIDPARAMETER_GROUPMEMBEROVERLIMIT = "InvalidParameter.GroupMemberOverLimit"
+//  INVALIDPARAMETER_GROUPPARAMINVALID = "InvalidParameter.GroupParamInvalid"
+//  INVALIDPARAMETER_GROUPTEACHERNOTMEMBER = "InvalidParameter.GroupTeacherNotMember"
+//  INVALIDPARAMETER_GROUPTEACHERSNOTEXIST = "InvalidParameter.GroupTeachersNotExist"
+//  INVALIDPARAMETER_GROUPTYPEINVALID = "InvalidParameter.GroupTypeInvalid"
+//  INVALIDPARAMETER_LIVETYPE = "InvalidParameter.LiveType"
+//  INVALIDPARAMETER_MAXMICNUMBER = "InvalidParameter.MaxMicNumber"
+//  INVALIDPARAMETER_MAXRTCMEMBER = "InvalidParameter.MaxRTCMember"
+//  INVALIDPARAMETER_RECORDLAYOUT = "InvalidParameter.RecordLayout"
+//  INVALIDPARAMETER_REPLAYLAYOUT = "InvalidParameter.ReplayLayout"
+//  INVALIDPARAMETER_ROOMTYPEINVALID = "InvalidParameter.RoomTypeInvalid"
+//  INVALIDPARAMETER_SCHOOLID = "InvalidParameter.SchoolID"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETER_STARTTIME = "InvalidParameter.StartTime"
+//  INVALIDPARAMETER_USERSCHOOLMISMATCH = "InvalidParameter.UserSchoolMismatch"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_CLASSDOCUMENTLIMIT = "LimitExceeded.ClassDocumentLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEINSUFFICIENT_RECORD = "ResourceInsufficient.Record"
+//  RESOURCEINSUFFICIENT_ROOM = "ResourceInsufficient.Room"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_DOCUMENT = "ResourceNotFound.Document"
+//  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
+//  RESOURCENOTFOUND_GROUPPARTUSERSNOTEXIST = "ResourceNotFound.GroupPartUsersNotExist"
+//  RESOURCENOTFOUND_ROOM = "ResourceNotFound.Room"
+//  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_ROOMSTATISTICS = "ResourceUnavailable.RoomStatistics"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_VERSION = "UnsupportedOperation.Version"
+func (c *Client) GetEditVersionToken(request *GetEditVersionTokenRequest) (response *GetEditVersionTokenResponse, err error) {
+    return c.GetEditVersionTokenWithContext(context.Background(), request)
+}
+
+// GetEditVersionToken
+// 获取剪辑信令回放token
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLASSENDED = "FailedOperation.ClassEnded"
+//  FAILEDOPERATION_CLASSEXPIRED = "FailedOperation.ClassExpired"
+//  FAILEDOPERATION_CLASSSTARTED = "FailedOperation.ClassStarted"
+//  FAILEDOPERATION_CLASSTOOLONG = "FailedOperation.ClassTooLong"
+//  FAILEDOPERATION_IMAGEARGINVALID = "FailedOperation.ImageArgInvalid"
+//  FAILEDOPERATION_ORIGINIDEXISTS = "FailedOperation.OriginIdExists"
+//  FAILEDOPERATION_POSTPAIDNOTAVAILABLE = "FailedOperation.PostpaidNotAvailable"
+//  FAILEDOPERATION_REQUESTTIMEDOUT = "FailedOperation.RequestTimedOut"
+//  FAILEDOPERATION_ROOMNOTEND = "FailedOperation.RoomNotEnd"
+//  FAILEDOPERATION_USERISALREADYINGROUP = "FailedOperation.UserIsAlreadyInGroup"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CLASSID = "InvalidParameter.ClassID"
+//  INVALIDPARAMETER_CLASSIDS = "InvalidParameter.ClassIDs"
+//  INVALIDPARAMETER_CONTENT = "InvalidParameter.Content"
+//  INVALIDPARAMETER_CSSORJS = "InvalidParameter.CssOrJs"
+//  INVALIDPARAMETER_DISABLERECORD = "InvalidParameter.DisableRecord"
+//  INVALIDPARAMETER_ENDTIME = "InvalidParameter.EndTime"
+//  INVALIDPARAMETER_GROUPMEMBEROVERLIMIT = "InvalidParameter.GroupMemberOverLimit"
+//  INVALIDPARAMETER_GROUPPARAMINVALID = "InvalidParameter.GroupParamInvalid"
+//  INVALIDPARAMETER_GROUPTEACHERNOTMEMBER = "InvalidParameter.GroupTeacherNotMember"
+//  INVALIDPARAMETER_GROUPTEACHERSNOTEXIST = "InvalidParameter.GroupTeachersNotExist"
+//  INVALIDPARAMETER_GROUPTYPEINVALID = "InvalidParameter.GroupTypeInvalid"
+//  INVALIDPARAMETER_LIVETYPE = "InvalidParameter.LiveType"
+//  INVALIDPARAMETER_MAXMICNUMBER = "InvalidParameter.MaxMicNumber"
+//  INVALIDPARAMETER_MAXRTCMEMBER = "InvalidParameter.MaxRTCMember"
+//  INVALIDPARAMETER_RECORDLAYOUT = "InvalidParameter.RecordLayout"
+//  INVALIDPARAMETER_REPLAYLAYOUT = "InvalidParameter.ReplayLayout"
+//  INVALIDPARAMETER_ROOMTYPEINVALID = "InvalidParameter.RoomTypeInvalid"
+//  INVALIDPARAMETER_SCHOOLID = "InvalidParameter.SchoolID"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETER_STARTTIME = "InvalidParameter.StartTime"
+//  INVALIDPARAMETER_USERSCHOOLMISMATCH = "InvalidParameter.UserSchoolMismatch"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_CLASSDOCUMENTLIMIT = "LimitExceeded.ClassDocumentLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEINSUFFICIENT_RECORD = "ResourceInsufficient.Record"
+//  RESOURCEINSUFFICIENT_ROOM = "ResourceInsufficient.Room"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_DOCUMENT = "ResourceNotFound.Document"
+//  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
+//  RESOURCENOTFOUND_GROUPPARTUSERSNOTEXIST = "ResourceNotFound.GroupPartUsersNotExist"
+//  RESOURCENOTFOUND_ROOM = "ResourceNotFound.Room"
+//  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_ROOMSTATISTICS = "ResourceUnavailable.RoomStatistics"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_VERSION = "UnsupportedOperation.Version"
+func (c *Client) GetEditVersionTokenWithContext(ctx context.Context, request *GetEditVersionTokenRequest) (response *GetEditVersionTokenResponse, err error) {
+    if request == nil {
+        request = NewGetEditVersionTokenRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "lcic", APIVersion, "GetEditVersionToken")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetEditVersionToken require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetEditVersionTokenResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetPlaybackTokenRequest() (request *GetPlaybackTokenRequest) {
     request = &GetPlaybackTokenRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5211,6 +5555,178 @@ func (c *Client) SetAppCustomContentWithContext(ctx context.Context, request *Se
     request.SetContext(ctx)
     
     response = NewSetAppCustomContentResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSetMainEditVersionRequest() (request *SetMainEditVersionRequest) {
+    request = &SetMainEditVersionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "SetMainEditVersion")
+    
+    
+    return
+}
+
+func NewSetMainEditVersionResponse() (response *SetMainEditVersionResponse) {
+    response = &SetMainEditVersionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SetMainEditVersion
+// 切换课堂的主编辑版本
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLASSENDED = "FailedOperation.ClassEnded"
+//  FAILEDOPERATION_CLASSEXPIRED = "FailedOperation.ClassExpired"
+//  FAILEDOPERATION_CLASSSTARTED = "FailedOperation.ClassStarted"
+//  FAILEDOPERATION_CLASSTOOLONG = "FailedOperation.ClassTooLong"
+//  FAILEDOPERATION_IMAGEARGINVALID = "FailedOperation.ImageArgInvalid"
+//  FAILEDOPERATION_ORIGINIDEXISTS = "FailedOperation.OriginIdExists"
+//  FAILEDOPERATION_POSTPAIDNOTAVAILABLE = "FailedOperation.PostpaidNotAvailable"
+//  FAILEDOPERATION_REQUESTTIMEDOUT = "FailedOperation.RequestTimedOut"
+//  FAILEDOPERATION_ROOMNOTEND = "FailedOperation.RoomNotEnd"
+//  FAILEDOPERATION_USERISALREADYINGROUP = "FailedOperation.UserIsAlreadyInGroup"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CLASSID = "InvalidParameter.ClassID"
+//  INVALIDPARAMETER_CLASSIDS = "InvalidParameter.ClassIDs"
+//  INVALIDPARAMETER_CONTENT = "InvalidParameter.Content"
+//  INVALIDPARAMETER_CSSORJS = "InvalidParameter.CssOrJs"
+//  INVALIDPARAMETER_DISABLERECORD = "InvalidParameter.DisableRecord"
+//  INVALIDPARAMETER_ENDTIME = "InvalidParameter.EndTime"
+//  INVALIDPARAMETER_GROUPMEMBEROVERLIMIT = "InvalidParameter.GroupMemberOverLimit"
+//  INVALIDPARAMETER_GROUPPARAMINVALID = "InvalidParameter.GroupParamInvalid"
+//  INVALIDPARAMETER_GROUPTEACHERNOTMEMBER = "InvalidParameter.GroupTeacherNotMember"
+//  INVALIDPARAMETER_GROUPTEACHERSNOTEXIST = "InvalidParameter.GroupTeachersNotExist"
+//  INVALIDPARAMETER_GROUPTYPEINVALID = "InvalidParameter.GroupTypeInvalid"
+//  INVALIDPARAMETER_LIVETYPE = "InvalidParameter.LiveType"
+//  INVALIDPARAMETER_MAXMICNUMBER = "InvalidParameter.MaxMicNumber"
+//  INVALIDPARAMETER_MAXRTCMEMBER = "InvalidParameter.MaxRTCMember"
+//  INVALIDPARAMETER_RECORDLAYOUT = "InvalidParameter.RecordLayout"
+//  INVALIDPARAMETER_REPLAYLAYOUT = "InvalidParameter.ReplayLayout"
+//  INVALIDPARAMETER_ROOMTYPEINVALID = "InvalidParameter.RoomTypeInvalid"
+//  INVALIDPARAMETER_SCHOOLID = "InvalidParameter.SchoolID"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETER_STARTTIME = "InvalidParameter.StartTime"
+//  INVALIDPARAMETER_USERSCHOOLMISMATCH = "InvalidParameter.UserSchoolMismatch"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_CLASSDOCUMENTLIMIT = "LimitExceeded.ClassDocumentLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEINSUFFICIENT_RECORD = "ResourceInsufficient.Record"
+//  RESOURCEINSUFFICIENT_ROOM = "ResourceInsufficient.Room"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_DOCUMENT = "ResourceNotFound.Document"
+//  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
+//  RESOURCENOTFOUND_GROUPPARTUSERSNOTEXIST = "ResourceNotFound.GroupPartUsersNotExist"
+//  RESOURCENOTFOUND_ROOM = "ResourceNotFound.Room"
+//  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_ROOMSTATISTICS = "ResourceUnavailable.RoomStatistics"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_VERSION = "UnsupportedOperation.Version"
+func (c *Client) SetMainEditVersion(request *SetMainEditVersionRequest) (response *SetMainEditVersionResponse, err error) {
+    return c.SetMainEditVersionWithContext(context.Background(), request)
+}
+
+// SetMainEditVersion
+// 切换课堂的主编辑版本
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLASSENDED = "FailedOperation.ClassEnded"
+//  FAILEDOPERATION_CLASSEXPIRED = "FailedOperation.ClassExpired"
+//  FAILEDOPERATION_CLASSSTARTED = "FailedOperation.ClassStarted"
+//  FAILEDOPERATION_CLASSTOOLONG = "FailedOperation.ClassTooLong"
+//  FAILEDOPERATION_IMAGEARGINVALID = "FailedOperation.ImageArgInvalid"
+//  FAILEDOPERATION_ORIGINIDEXISTS = "FailedOperation.OriginIdExists"
+//  FAILEDOPERATION_POSTPAIDNOTAVAILABLE = "FailedOperation.PostpaidNotAvailable"
+//  FAILEDOPERATION_REQUESTTIMEDOUT = "FailedOperation.RequestTimedOut"
+//  FAILEDOPERATION_ROOMNOTEND = "FailedOperation.RoomNotEnd"
+//  FAILEDOPERATION_USERISALREADYINGROUP = "FailedOperation.UserIsAlreadyInGroup"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CLASSID = "InvalidParameter.ClassID"
+//  INVALIDPARAMETER_CLASSIDS = "InvalidParameter.ClassIDs"
+//  INVALIDPARAMETER_CONTENT = "InvalidParameter.Content"
+//  INVALIDPARAMETER_CSSORJS = "InvalidParameter.CssOrJs"
+//  INVALIDPARAMETER_DISABLERECORD = "InvalidParameter.DisableRecord"
+//  INVALIDPARAMETER_ENDTIME = "InvalidParameter.EndTime"
+//  INVALIDPARAMETER_GROUPMEMBEROVERLIMIT = "InvalidParameter.GroupMemberOverLimit"
+//  INVALIDPARAMETER_GROUPPARAMINVALID = "InvalidParameter.GroupParamInvalid"
+//  INVALIDPARAMETER_GROUPTEACHERNOTMEMBER = "InvalidParameter.GroupTeacherNotMember"
+//  INVALIDPARAMETER_GROUPTEACHERSNOTEXIST = "InvalidParameter.GroupTeachersNotExist"
+//  INVALIDPARAMETER_GROUPTYPEINVALID = "InvalidParameter.GroupTypeInvalid"
+//  INVALIDPARAMETER_LIVETYPE = "InvalidParameter.LiveType"
+//  INVALIDPARAMETER_MAXMICNUMBER = "InvalidParameter.MaxMicNumber"
+//  INVALIDPARAMETER_MAXRTCMEMBER = "InvalidParameter.MaxRTCMember"
+//  INVALIDPARAMETER_RECORDLAYOUT = "InvalidParameter.RecordLayout"
+//  INVALIDPARAMETER_REPLAYLAYOUT = "InvalidParameter.ReplayLayout"
+//  INVALIDPARAMETER_ROOMTYPEINVALID = "InvalidParameter.RoomTypeInvalid"
+//  INVALIDPARAMETER_SCHOOLID = "InvalidParameter.SchoolID"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETER_STARTTIME = "InvalidParameter.StartTime"
+//  INVALIDPARAMETER_USERSCHOOLMISMATCH = "InvalidParameter.UserSchoolMismatch"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_CLASSDOCUMENTLIMIT = "LimitExceeded.ClassDocumentLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEINSUFFICIENT_RECORD = "ResourceInsufficient.Record"
+//  RESOURCEINSUFFICIENT_ROOM = "ResourceInsufficient.Room"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_DOCUMENT = "ResourceNotFound.Document"
+//  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
+//  RESOURCENOTFOUND_GROUPPARTUSERSNOTEXIST = "ResourceNotFound.GroupPartUsersNotExist"
+//  RESOURCENOTFOUND_ROOM = "ResourceNotFound.Room"
+//  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_ROOMSTATISTICS = "ResourceUnavailable.RoomStatistics"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_VERSION = "UnsupportedOperation.Version"
+func (c *Client) SetMainEditVersionWithContext(ctx context.Context, request *SetMainEditVersionRequest) (response *SetMainEditVersionResponse, err error) {
+    if request == nil {
+        request = NewSetMainEditVersionRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "lcic", APIVersion, "SetMainEditVersion")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SetMainEditVersion require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSetMainEditVersionResponse()
     err = c.Send(request, response)
     return
 }

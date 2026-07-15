@@ -5208,38 +5208,38 @@ func (r *DescribeDataReportCountResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDataReportCountV2RequestParams struct {
-	// 开始时间
+	// <p>开始时间</p>
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间
+	// <p>结束时间</p>
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 项目ID
+	// <p>项目ID</p>
 	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
 
-	// 上报类型（custom，event，log，miniProgramData，performance，pv，speed，webvitals）
+	// <p>上报类型（custom，event，log，miniProgramData，performance，pv，speed，webvitals）</p>
 	ReportType *string `json:"ReportType,omitnil,omitempty" name:"ReportType"`
 
-	// 实例ID
+	// <p>实例ID</p>
 	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
 }
 
 type DescribeDataReportCountV2Request struct {
 	*tchttp.BaseRequest
 	
-	// 开始时间
+	// <p>开始时间</p>
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间
+	// <p>结束时间</p>
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 项目ID
+	// <p>项目ID</p>
 	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
 
-	// 上报类型（custom，event，log，miniProgramData，performance，pv，speed，webvitals）
+	// <p>上报类型（custom，event，log，miniProgramData，performance，pv，speed，webvitals）</p>
 	ReportType *string `json:"ReportType,omitnil,omitempty" name:"ReportType"`
 
-	// 实例ID
+	// <p>实例ID</p>
 	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
 }
 
@@ -5268,7 +5268,7 @@ func (r *DescribeDataReportCountV2Request) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDataReportCountV2ResponseParams struct {
-	// 返回值
+	// <p>返回值</p>
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9918,56 +9918,56 @@ func (r *DescribeReleaseFilesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRumGroupLogRequestParams struct {
-	// 排序方式  desc  asc（必填）
+	// <p>排序方式  desc  asc（必填）</p>
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 开始时间（必填）
+	// <p>开始时间（必填）</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 单次查询返回的原始日志条数，最大值为100（必填）
+	// <p>单次查询返回的原始日志条数，最大值为100（必填）</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 页数，第几页
+	// <p>页数，第几页（注意：该字段已废弃！）</p>
 	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
 
-	// 查询语句，参考控制台请求参数，语句长度最大为4096（必填）
+	// <p>查询语句，参考控制台请求参数，语句长度最大为4096（必填）</p>
 	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 
-	// 结束时间（必填）
+	// <p>结束时间（必填）</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 项目ID（必填）
+	// <p>项目ID（必填）</p>
 	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
 
-	// 聚合字段
+	// <p>聚合字段</p>
 	GroupField *string `json:"GroupField,omitnil,omitempty" name:"GroupField"`
 }
 
 type DescribeRumGroupLogRequest struct {
 	*tchttp.BaseRequest
 	
-	// 排序方式  desc  asc（必填）
+	// <p>排序方式  desc  asc（必填）</p>
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 开始时间（必填）
+	// <p>开始时间（必填）</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 单次查询返回的原始日志条数，最大值为100（必填）
+	// <p>单次查询返回的原始日志条数，最大值为100（必填）</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 页数，第几页
+	// <p>页数，第几页（注意：该字段已废弃！）</p>
 	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
 
-	// 查询语句，参考控制台请求参数，语句长度最大为4096（必填）
+	// <p>查询语句，参考控制台请求参数，语句长度最大为4096（必填）</p>
 	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 
-	// 结束时间（必填）
+	// <p>结束时间（必填）</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 项目ID（必填）
+	// <p>项目ID（必填）</p>
 	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
 
-	// 聚合字段
+	// <p>聚合字段</p>
 	GroupField *string `json:"GroupField,omitnil,omitempty" name:"GroupField"`
 }
 
@@ -9999,7 +9999,7 @@ func (r *DescribeRumGroupLogRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRumGroupLogResponseParams struct {
-	// 返回字符串
+	// <p>返回字符串</p>
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -10024,56 +10024,56 @@ func (r *DescribeRumGroupLogResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRumGroupLogV2RequestParams struct {
-	// 排序方式 desc asc（必填）
+	// <p>排序方式 desc asc（必填）</p>
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 开始时间（必填）
+	// <p>开始时间（必填）</p>
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 单次查询返回的原始日志条数，最大值为100（必填）
+	// <p>单次查询返回的原始日志条数，最大值为100（必填）</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 过滤条件
+	// <p>过滤条件</p>
 	Filter *string `json:"Filter,omitnil,omitempty" name:"Filter"`
 
-	// 结束时间（必填）
+	// <p>结束时间（必填）</p>
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 项目ID（必填）
+	// <p>项目ID（必填）</p>
 	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
 
-	// 聚合字段
+	// <p>聚合字段</p>
 	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
 
-	// 页数，第几页
+	// <p>页数，第几页（注意：该字段已废弃！）</p>
 	Last *int64 `json:"Last,omitnil,omitempty" name:"Last"`
 }
 
 type DescribeRumGroupLogV2Request struct {
 	*tchttp.BaseRequest
 	
-	// 排序方式 desc asc（必填）
+	// <p>排序方式 desc asc（必填）</p>
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 开始时间（必填）
+	// <p>开始时间（必填）</p>
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 单次查询返回的原始日志条数，最大值为100（必填）
+	// <p>单次查询返回的原始日志条数，最大值为100（必填）</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 过滤条件
+	// <p>过滤条件</p>
 	Filter *string `json:"Filter,omitnil,omitempty" name:"Filter"`
 
-	// 结束时间（必填）
+	// <p>结束时间（必填）</p>
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 项目ID（必填）
+	// <p>项目ID（必填）</p>
 	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
 
-	// 聚合字段
+	// <p>聚合字段</p>
 	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
 
-	// 页数，第几页
+	// <p>页数，第几页（注意：该字段已废弃！）</p>
 	Last *int64 `json:"Last,omitnil,omitempty" name:"Last"`
 }
 
@@ -10105,7 +10105,7 @@ func (r *DescribeRumGroupLogV2Request) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRumGroupLogV2ResponseParams struct {
-	// Query result in JSON string format
+	// <p>Query result in JSON string format</p>
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -11024,38 +11024,38 @@ func (r *DescribeScoresResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeScoresV2RequestParams struct {
-	// 开始时间
+	// <p>开始时间</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间
+	// <p>结束时间</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 项目 ID 列表
+	// <p>项目 ID 列表</p>
 	IDList []*int64 `json:"IDList,omitnil,omitempty" name:"IDList"`
 
-	// 查询粒度，hour 或 day
+	// <p>查询粒度，hour 或 day</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 环境
+	// <p>环境</p>
 	Env *string `json:"Env,omitnil,omitempty" name:"Env"`
 }
 
 type DescribeScoresV2Request struct {
 	*tchttp.BaseRequest
 	
-	// 开始时间
+	// <p>开始时间</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间
+	// <p>结束时间</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 项目 ID 列表
+	// <p>项目 ID 列表</p>
 	IDList []*int64 `json:"IDList,omitnil,omitempty" name:"IDList"`
 
-	// 查询粒度，hour 或 day
+	// <p>查询粒度，hour 或 day</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 环境
+	// <p>环境</p>
 	Env *string `json:"Env,omitnil,omitempty" name:"Env"`
 }
 
@@ -11084,7 +11084,7 @@ func (r *DescribeScoresV2Request) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeScoresV2ResponseParams struct {
-	// 项目得分数组
+	// <p>项目得分数组</p>
 	ScoreSet []*ScoreInfoV2 `json:"ScoreSet,omitnil,omitempty" name:"ScoreSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

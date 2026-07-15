@@ -119,7 +119,185 @@ func NewCreateNodePoolResponse() (response *CreateNodePoolResponse) {
 }
 
 // CreateNodePool
-// 创建 TKE 节点池
+// **通过 CAM 策略强制节点池安全配置**
+//
+// 
+//
+// 创建原生节点池（`CreateNodePool`）接口已接入 CAM 条件鉴权，会根据请求参数计算出一组**条件键（Condition Key）**并传入 CAM 鉴权。您可以在 CAM/SCP 策略中基于这些条件键配置 `deny` 规则，从而强制约束节点池的安全配置（如必须开启磁盘加密、安全加固等）。
+//
+// 
+//
+// **支持的条件键**
+//
+// 
+//
+// | 条件键 | 含义 | 取值 | 取值判定说明 |
+//
+// |--------|------|------|-------------|
+//
+// | `tke:NodePoolType` | 节点池类型 | `Native` / `External` | 取请求的节点池类型，未指定时默认为 `Native` |
+//
+// | `tke:SystemDiskEncrypted` | 系统盘是否加密 | `true` / `false` | 系统盘加密属性为 `ENCRYPT`（大小写不敏感）时为 `true`，否则为 `false` |
+//
+// | `tke:AllDataDisksEncrypted` | 所有数据盘是否都已加密 | `true` / `false` | 全部数据盘加密属性均为 `ENCRYPT` 时为 `true`；未配置数据盘时也为 `true`；只要有任一数据盘未加密即为 `false` |
+//
+// | `tke:SecurityAgentEnabled` | 是否开启安全加固（Security Agent） | `true` / `false` | 开启安全加固时为 `true`，否则为 `false` |
+//
+// 
+//
+// > 说明：所有条件键的取值均为字符串 `"true"` / `"false"`，请在策略中使用字符串形式匹配。
+//
+// 
+//
+// **使用方式**
+//
+// 
+//
+// 在 CAM 策略中使用 `bool_equal` 匹配条件键值为 `"false"`，配合 `effect: deny`，即可实现"未满足安全配置则拒绝创建节点池"的强制约束。
+//
+// 
+//
+// **示例一：强制开启安全加固**
+//
+// 
+//
+// 创建节点池时若未开启安全加固（`tke:SecurityAgentEnabled = "false"`），则拒绝。
+//
+// 
+//
+// ```json
+//
+// {
+//
+//     "version": "2.0",
+//
+//     "statement": [
+//
+//         {
+//
+//             "effect": "deny",
+//
+//             "action": ["tke:CreateNodePool"],
+//
+//             "resource": ["*"],
+//
+//             "condition": {
+//
+//                 "bool_equal": {
+//
+//                     "tke:SecurityAgentEnabled": "false"
+//
+//                 }
+//
+//             }
+//
+//         }
+//
+//     ]
+//
+// }
+//
+// ```
+//
+// 
+//
+// **示例二：强制数据盘加密**
+//
+// 
+//
+// 创建节点池时若存在未加密的数据盘（`tke:AllDataDisksEncrypted = "false"`），则拒绝。
+//
+// 
+//
+// ```json
+//
+// {
+//
+//     "version": "2.0",
+//
+//     "statement": [
+//
+//         {
+//
+//             "effect": "deny",
+//
+//             "action": ["tke:CreateNodePool"],
+//
+//             "resource": ["*"],
+//
+//             "condition": {
+//
+//                 "bool_equal": {
+//
+//                     "tke:AllDataDisksEncrypted": "false"
+//
+//                 }
+//
+//             }
+//
+//         }
+//
+//     ]
+//
+// }
+//
+// ```
+//
+// 
+//
+// **示例三：强制系统盘加密**
+//
+// 
+//
+// 创建节点池时若系统盘未加密（`tke:SystemDiskEncrypted = "false"`），则拒绝。
+//
+// 
+//
+// ```json
+//
+// {
+//
+//     "version": "2.0",
+//
+//     "statement": [
+//
+//         {
+//
+//             "effect": "deny",
+//
+//             "action": ["tke:CreateNodePool"],
+//
+//             "resource": ["*"],
+//
+//             "condition": {
+//
+//                 "bool_equal": {
+//
+//                     "tke:SystemDiskEncrypted": "false"
+//
+//                 }
+//
+//             }
+//
+//         }
+//
+//     ]
+//
+// }
+//
+// ```
+//
+// 
+//
+// **注意事项**
+//
+// 
+//
+// - 上述条件键在**未配置任何 CAM 策略**时不会影响节点池创建，仅在您显式配置了对应 `deny` 策略时才生效。
+//
+// - 如需同时强制多项安全配置，必须在同一策略的 `statement` 中配置多条 `deny` 规则，不能将多个条件键写入同一条 `condition`。
+//
+// - `tke:AllDataDisksEncrypted` 在**无数据盘**场景下取值为 `true`（不存在未加密的数据盘），因此仅约束"已配置的数据盘必须加密"，不会强制要求必须挂载数据盘。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -132,7 +310,185 @@ func (c *Client) CreateNodePool(request *CreateNodePoolRequest) (response *Creat
 }
 
 // CreateNodePool
-// 创建 TKE 节点池
+// **通过 CAM 策略强制节点池安全配置**
+//
+// 
+//
+// 创建原生节点池（`CreateNodePool`）接口已接入 CAM 条件鉴权，会根据请求参数计算出一组**条件键（Condition Key）**并传入 CAM 鉴权。您可以在 CAM/SCP 策略中基于这些条件键配置 `deny` 规则，从而强制约束节点池的安全配置（如必须开启磁盘加密、安全加固等）。
+//
+// 
+//
+// **支持的条件键**
+//
+// 
+//
+// | 条件键 | 含义 | 取值 | 取值判定说明 |
+//
+// |--------|------|------|-------------|
+//
+// | `tke:NodePoolType` | 节点池类型 | `Native` / `External` | 取请求的节点池类型，未指定时默认为 `Native` |
+//
+// | `tke:SystemDiskEncrypted` | 系统盘是否加密 | `true` / `false` | 系统盘加密属性为 `ENCRYPT`（大小写不敏感）时为 `true`，否则为 `false` |
+//
+// | `tke:AllDataDisksEncrypted` | 所有数据盘是否都已加密 | `true` / `false` | 全部数据盘加密属性均为 `ENCRYPT` 时为 `true`；未配置数据盘时也为 `true`；只要有任一数据盘未加密即为 `false` |
+//
+// | `tke:SecurityAgentEnabled` | 是否开启安全加固（Security Agent） | `true` / `false` | 开启安全加固时为 `true`，否则为 `false` |
+//
+// 
+//
+// > 说明：所有条件键的取值均为字符串 `"true"` / `"false"`，请在策略中使用字符串形式匹配。
+//
+// 
+//
+// **使用方式**
+//
+// 
+//
+// 在 CAM 策略中使用 `bool_equal` 匹配条件键值为 `"false"`，配合 `effect: deny`，即可实现"未满足安全配置则拒绝创建节点池"的强制约束。
+//
+// 
+//
+// **示例一：强制开启安全加固**
+//
+// 
+//
+// 创建节点池时若未开启安全加固（`tke:SecurityAgentEnabled = "false"`），则拒绝。
+//
+// 
+//
+// ```json
+//
+// {
+//
+//     "version": "2.0",
+//
+//     "statement": [
+//
+//         {
+//
+//             "effect": "deny",
+//
+//             "action": ["tke:CreateNodePool"],
+//
+//             "resource": ["*"],
+//
+//             "condition": {
+//
+//                 "bool_equal": {
+//
+//                     "tke:SecurityAgentEnabled": "false"
+//
+//                 }
+//
+//             }
+//
+//         }
+//
+//     ]
+//
+// }
+//
+// ```
+//
+// 
+//
+// **示例二：强制数据盘加密**
+//
+// 
+//
+// 创建节点池时若存在未加密的数据盘（`tke:AllDataDisksEncrypted = "false"`），则拒绝。
+//
+// 
+//
+// ```json
+//
+// {
+//
+//     "version": "2.0",
+//
+//     "statement": [
+//
+//         {
+//
+//             "effect": "deny",
+//
+//             "action": ["tke:CreateNodePool"],
+//
+//             "resource": ["*"],
+//
+//             "condition": {
+//
+//                 "bool_equal": {
+//
+//                     "tke:AllDataDisksEncrypted": "false"
+//
+//                 }
+//
+//             }
+//
+//         }
+//
+//     ]
+//
+// }
+//
+// ```
+//
+// 
+//
+// **示例三：强制系统盘加密**
+//
+// 
+//
+// 创建节点池时若系统盘未加密（`tke:SystemDiskEncrypted = "false"`），则拒绝。
+//
+// 
+//
+// ```json
+//
+// {
+//
+//     "version": "2.0",
+//
+//     "statement": [
+//
+//         {
+//
+//             "effect": "deny",
+//
+//             "action": ["tke:CreateNodePool"],
+//
+//             "resource": ["*"],
+//
+//             "condition": {
+//
+//                 "bool_equal": {
+//
+//                     "tke:SystemDiskEncrypted": "false"
+//
+//                 }
+//
+//             }
+//
+//         }
+//
+//     ]
+//
+// }
+//
+// ```
+//
+// 
+//
+// **注意事项**
+//
+// 
+//
+// - 上述条件键在**未配置任何 CAM 策略**时不会影响节点池创建，仅在您显式配置了对应 `deny` 策略时才生效。
+//
+// - 如需同时强制多项安全配置，必须在同一策略的 `statement` 中配置多条 `deny` 规则，不能将多个条件键写入同一条 `condition`。
+//
+// - `tke:AllDataDisksEncrypted` 在**无数据盘**场景下取值为 `true`（不存在未加密的数据盘），因此仅约束"已配置的数据盘必须加密"，不会强制要求必须挂载数据盘。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

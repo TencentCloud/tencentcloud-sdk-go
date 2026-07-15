@@ -236,68 +236,68 @@ type CreateNativeNodePoolParam struct {
 
 // Predefined struct for user
 type CreateNodePoolRequestParams struct {
-	// 集群 ID
+	// <p>集群 ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 节点池名称
+	// <p>节点池名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 节点池类型
+	// <p>节点池类型</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 节点  Labels
+	// <p>节点  Labels</p>
 	Labels []*Label `json:"Labels,omitnil,omitempty" name:"Labels"`
 
-	// 节点污点
+	// <p>节点污点</p>
 	Taints []*Taint `json:"Taints,omitnil,omitempty" name:"Taints"`
 
-	// 节点标签
+	// <p>节点标签</p>
 	Tags []*TagSpecification `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 是否开启删除保护
+	// <p>是否开启删除保护</p>
 	DeletionProtection *bool `json:"DeletionProtection,omitnil,omitempty" name:"DeletionProtection"`
 
-	// 节点是否默认不可调度
+	// <p>节点是否默认不可调度</p>
 	Unschedulable *bool `json:"Unschedulable,omitnil,omitempty" name:"Unschedulable"`
 
-	// 原生节点池创建参数（Type字段设置为Native时需填写）
+	// <p>原生节点池创建参数（Type字段设置为Native时需填写）</p>
 	Native *CreateNativeNodePoolParam `json:"Native,omitnil,omitempty" name:"Native"`
 
-	// 节点 Annotation 列表
+	// <p>节点 Annotation 列表</p>
 	Annotations []*Annotation `json:"Annotations,omitnil,omitempty" name:"Annotations"`
 }
 
 type CreateNodePoolRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群 ID
+	// <p>集群 ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 节点池名称
+	// <p>节点池名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 节点池类型
+	// <p>节点池类型</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 节点  Labels
+	// <p>节点  Labels</p>
 	Labels []*Label `json:"Labels,omitnil,omitempty" name:"Labels"`
 
-	// 节点污点
+	// <p>节点污点</p>
 	Taints []*Taint `json:"Taints,omitnil,omitempty" name:"Taints"`
 
-	// 节点标签
+	// <p>节点标签</p>
 	Tags []*TagSpecification `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 是否开启删除保护
+	// <p>是否开启删除保护</p>
 	DeletionProtection *bool `json:"DeletionProtection,omitnil,omitempty" name:"DeletionProtection"`
 
-	// 节点是否默认不可调度
+	// <p>节点是否默认不可调度</p>
 	Unschedulable *bool `json:"Unschedulable,omitnil,omitempty" name:"Unschedulable"`
 
-	// 原生节点池创建参数（Type字段设置为Native时需填写）
+	// <p>原生节点池创建参数（Type字段设置为Native时需填写）</p>
 	Native *CreateNativeNodePoolParam `json:"Native,omitnil,omitempty" name:"Native"`
 
-	// 节点 Annotation 列表
+	// <p>节点 Annotation 列表</p>
 	Annotations []*Annotation `json:"Annotations,omitnil,omitempty" name:"Annotations"`
 }
 
@@ -331,7 +331,7 @@ func (r *CreateNodePoolRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateNodePoolResponseParams struct {
-	// 节点池 ID
+	// <p>节点池 ID</p>
 	NodePoolId *string `json:"NodePoolId,omitnil,omitempty" name:"NodePoolId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2960,14 +2960,14 @@ type TagSpecification struct {
 }
 
 type Taint struct {
+	// Taint的Effect
+	Effect *string `json:"Effect,omitnil,omitempty" name:"Effect"`
+
 	// Taint的Key
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
 	// Taint的Value
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
-
-	// Taint的Effect
-	Effect *string `json:"Effect,omitnil,omitempty" name:"Effect"`
 }
 
 type UpdateNativeNodePoolParam struct {

@@ -529,6 +529,62 @@ func (c *Client) CreateJobConfigWithContext(ctx context.Context, request *Create
     return
 }
 
+func NewCreateOceanusClusterRequest() (request *CreateOceanusClusterRequest) {
+    request = &CreateOceanusClusterRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("oceanus", APIVersion, "CreateOceanusCluster")
+    
+    
+    return
+}
+
+func NewCreateOceanusClusterResponse() (response *CreateOceanusClusterResponse) {
+    response = &CreateOceanusClusterResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateOceanusCluster
+// 创建Oceanus集群
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_CAMNOTAUTHORIZED = "AuthFailure.CAMNotAuthorized"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+func (c *Client) CreateOceanusCluster(request *CreateOceanusClusterRequest) (response *CreateOceanusClusterResponse, err error) {
+    return c.CreateOceanusClusterWithContext(context.Background(), request)
+}
+
+// CreateOceanusCluster
+// 创建Oceanus集群
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_CAMNOTAUTHORIZED = "AuthFailure.CAMNotAuthorized"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+func (c *Client) CreateOceanusClusterWithContext(ctx context.Context, request *CreateOceanusClusterRequest) (response *CreateOceanusClusterResponse, err error) {
+    if request == nil {
+        request = NewCreateOceanusClusterRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "oceanus", APIVersion, "CreateOceanusCluster")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateOceanusCluster require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateOceanusClusterResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateResourceRequest() (request *CreateResourceRequest) {
     request = &CreateResourceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -995,6 +1051,66 @@ func (c *Client) DeleteJobsWithContext(ctx context.Context, request *DeleteJobsR
     request.SetContext(ctx)
     
     response = NewDeleteJobsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteOceanusClusterRequest() (request *DeleteOceanusClusterRequest) {
+    request = &DeleteOceanusClusterRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("oceanus", APIVersion, "DeleteOceanusCluster")
+    
+    
+    return
+}
+
+func NewDeleteOceanusClusterResponse() (response *DeleteOceanusClusterResponse) {
+    response = &DeleteOceanusClusterResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteOceanusCluster
+// 销毁Oceanus集群
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_CAMNOTAUTHORIZED = "AuthFailure.CAMNotAuthorized"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  LIMITEXCEEDED = "LimitExceeded"
+func (c *Client) DeleteOceanusCluster(request *DeleteOceanusClusterRequest) (response *DeleteOceanusClusterResponse, err error) {
+    return c.DeleteOceanusClusterWithContext(context.Background(), request)
+}
+
+// DeleteOceanusCluster
+// 销毁Oceanus集群
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_CAMNOTAUTHORIZED = "AuthFailure.CAMNotAuthorized"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  LIMITEXCEEDED = "LimitExceeded"
+func (c *Client) DeleteOceanusClusterWithContext(ctx context.Context, request *DeleteOceanusClusterRequest) (response *DeleteOceanusClusterResponse, err error) {
+    if request == nil {
+        request = NewDeleteOceanusClusterRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "oceanus", APIVersion, "DeleteOceanusCluster")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteOceanusCluster require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteOceanusClusterResponse()
     err = c.Send(request, response)
     return
 }
@@ -2799,6 +2915,64 @@ func (c *Client) ParseConnectorWithContext(ctx context.Context, request *ParseCo
     return
 }
 
+func NewRenewOceanusClusterRequest() (request *RenewOceanusClusterRequest) {
+    request = &RenewOceanusClusterRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("oceanus", APIVersion, "RenewOceanusCluster")
+    
+    
+    return
+}
+
+func NewRenewOceanusClusterResponse() (response *RenewOceanusClusterResponse) {
+    response = &RenewOceanusClusterResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RenewOceanusCluster
+// 续费Oceanus集群
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_CAMNOTAUTHORIZED = "AuthFailure.CAMNotAuthorized"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  LIMITEXCEEDED = "LimitExceeded"
+func (c *Client) RenewOceanusCluster(request *RenewOceanusClusterRequest) (response *RenewOceanusClusterResponse, err error) {
+    return c.RenewOceanusClusterWithContext(context.Background(), request)
+}
+
+// RenewOceanusCluster
+// 续费Oceanus集群
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_CAMNOTAUTHORIZED = "AuthFailure.CAMNotAuthorized"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  LIMITEXCEEDED = "LimitExceeded"
+func (c *Client) RenewOceanusClusterWithContext(ctx context.Context, request *RenewOceanusClusterRequest) (response *RenewOceanusClusterResponse, err error) {
+    if request == nil {
+        request = NewRenewOceanusClusterRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "oceanus", APIVersion, "RenewOceanusCluster")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RenewOceanusCluster require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRenewOceanusClusterResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRunJobsRequest() (request *RunJobsRequest) {
     request = &RunJobsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2947,6 +3121,64 @@ func (c *Client) RunSqlGatewayStatementWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewRunSqlGatewayStatementResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewScaleOceanusClusterRequest() (request *ScaleOceanusClusterRequest) {
+    request = &ScaleOceanusClusterRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("oceanus", APIVersion, "ScaleOceanusCluster")
+    
+    
+    return
+}
+
+func NewScaleOceanusClusterResponse() (response *ScaleOceanusClusterResponse) {
+    response = &ScaleOceanusClusterResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ScaleOceanusCluster
+// 扩缩容Oceanus集群
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_CAMNOTAUTHORIZED = "AuthFailure.CAMNotAuthorized"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  LIMITEXCEEDED = "LimitExceeded"
+func (c *Client) ScaleOceanusCluster(request *ScaleOceanusClusterRequest) (response *ScaleOceanusClusterResponse, err error) {
+    return c.ScaleOceanusClusterWithContext(context.Background(), request)
+}
+
+// ScaleOceanusCluster
+// 扩缩容Oceanus集群
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_CAMNOTAUTHORIZED = "AuthFailure.CAMNotAuthorized"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  LIMITEXCEEDED = "LimitExceeded"
+func (c *Client) ScaleOceanusClusterWithContext(ctx context.Context, request *ScaleOceanusClusterRequest) (response *ScaleOceanusClusterResponse, err error) {
+    if request == nil {
+        request = NewScaleOceanusClusterRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "oceanus", APIVersion, "ScaleOceanusCluster")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ScaleOceanusCluster require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewScaleOceanusClusterResponse()
     err = c.Send(request, response)
     return
 }

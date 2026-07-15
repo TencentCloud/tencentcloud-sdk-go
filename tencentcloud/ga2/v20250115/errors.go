@@ -86,6 +86,9 @@ const (
 	// 只能是可打印ASCII字符。
 	INVALIDPARAMETERVALUE_ASCIICHARACTERS = "InvalidParameterValue.AsciiCharacters"
 
+	// 证书 `%(value)s` 和存量证书重复。
+	INVALIDPARAMETERVALUE_CERTIFICATESCONFLICT = "InvalidParameterValue.CertificatesConflict"
+
 	// 七层转发策略域名和存量重复。
 	INVALIDPARAMETERVALUE_FORWARDINGPOLICYHOSTCONFLICT = "InvalidParameterValue.ForwardingPolicyHostConflict"
 
@@ -173,6 +176,9 @@ const (
 	// 抱歉，您的操作暂时无法完成，请稍后重试或联系客服。
 	UNSUPPORTEDOPERATION_BILLINGFAILED = "UnsupportedOperation.BillingFailed"
 
+	// CA证书不允许操作。
+	UNSUPPORTEDOPERATION_CACERTIFICATESOPERATE = "UnsupportedOperation.CaCertificatesOperate"
+
 	// 证书状态是 `%(value)s` ，不支持当前操作。
 	UNSUPPORTEDOPERATION_CERTIFICATEINVALIDSTATUS = "UnsupportedOperation.CertificateInvalidStatus"
 
@@ -182,11 +188,17 @@ const (
 	// 当前账号不支持此操作。
 	UNSUPPORTEDOPERATION_CURRENTACCOUNTNOTALLOWED = "UnsupportedOperation.CurrentAccountNotAllowed"
 
+	// 默认证书不允许操作。
+	UNSUPPORTEDOPERATION_DEFAULTCERTIFICATESOPERATE = "UnsupportedOperation.DefaultCertificatesOperate"
+
 	// 默认终端节点组不支持修改。
 	UNSUPPORTEDOPERATION_DEFAULTENDPOINTGROUPMODIFY = "UnsupportedOperation.DefaultEndpointGroupModify"
 
 	// 默认七层转发策略规则不允许操作。
 	UNSUPPORTEDOPERATION_DEFAULTFORWARDINGPOLICYOPERATE = "UnsupportedOperation.DefaultForwardingPolicyOperate"
+
+	// 替换证书域名和旧证书域名不匹配。
+	UNSUPPORTEDOPERATION_DOMAINMISMATCHED = "UnsupportedOperation.DomainMismatched"
 
 	// 请勿重复操作当前实例状态。
 	UNSUPPORTEDOPERATION_DUPLICATEINSTANCESTATUS = "UnsupportedOperation.DuplicateInstanceStatus"

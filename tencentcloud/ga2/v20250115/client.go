@@ -519,6 +519,62 @@ func (c *Client) CreateListenerWithContext(ctx context.Context, request *CreateL
     return
 }
 
+func NewCreateListenerAdditionalCertRequest() (request *CreateListenerAdditionalCertRequest) {
+    request = &CreateListenerAdditionalCertRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ga2", APIVersion, "CreateListenerAdditionalCert")
+    
+    
+    return
+}
+
+func NewCreateListenerAdditionalCertResponse() (response *CreateListenerAdditionalCertResponse) {
+    response = &CreateListenerAdditionalCertResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateListenerAdditionalCert
+// 添加扩展证书
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_CERTIFICATESCONFLICT = "InvalidParameterValue.CertificatesConflict"
+//  INVALIDPARAMETERVALUE_INSTANCEMISMATCH = "InvalidParameterValue.InstanceMismatch"
+//  UNSUPPORTEDOPERATION_CERTIFICATEINVALIDSTATUS = "UnsupportedOperation.CertificateInvalidStatus"
+//  UNSUPPORTEDOPERATION_INSTANCENOTRUNNING = "UnsupportedOperation.InstanceNotRunning"
+func (c *Client) CreateListenerAdditionalCert(request *CreateListenerAdditionalCertRequest) (response *CreateListenerAdditionalCertResponse, err error) {
+    return c.CreateListenerAdditionalCertWithContext(context.Background(), request)
+}
+
+// CreateListenerAdditionalCert
+// 添加扩展证书
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_CERTIFICATESCONFLICT = "InvalidParameterValue.CertificatesConflict"
+//  INVALIDPARAMETERVALUE_INSTANCEMISMATCH = "InvalidParameterValue.InstanceMismatch"
+//  UNSUPPORTEDOPERATION_CERTIFICATEINVALIDSTATUS = "UnsupportedOperation.CertificateInvalidStatus"
+//  UNSUPPORTEDOPERATION_INSTANCENOTRUNNING = "UnsupportedOperation.InstanceNotRunning"
+func (c *Client) CreateListenerAdditionalCertWithContext(ctx context.Context, request *CreateListenerAdditionalCertRequest) (response *CreateListenerAdditionalCertResponse, err error) {
+    if request == nil {
+        request = NewCreateListenerAdditionalCertRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ga2", APIVersion, "CreateListenerAdditionalCert")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateListenerAdditionalCert require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateListenerAdditionalCertResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteAccelerateAreasRequest() (request *DeleteAccelerateAreasRequest) {
     request = &DeleteAccelerateAreasRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -542,31 +598,10 @@ func NewDeleteAccelerateAreasResponse() (response *DeleteAccelerateAreasResponse
 // 删除加速地域
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_INSUFFICIENTRESOURCES = "FailedOperation.InsufficientResources"
-//  INVALIDPARAMETER_APPLICATIONLAYERLISTENERCANNOTCARRYPARAMETERS = "InvalidParameter.ApplicationLayerListenerCannotCarryParameters"
-//  INVALIDPARAMETER_CLIENTAFFINITYCLOSE = "InvalidParameter.ClientAffinityCLose"
-//  INVALIDPARAMETER_HTTPLISTENERCANNOTCARRYPARAMETERS = "InvalidParameter.HttpListenerCannotCarryParameters"
-//  INVALIDPARAMETER_HTTPSLISTENERCANNOTCARRYPARAMETERS = "InvalidParameter.HttpsListenerCannotCarryParameters"
-//  INVALIDPARAMETER_SINGLEPORT = "InvalidParameter.SinglePort"
-//  INVALIDPARAMETER_TCPENDPOINTGROUPCARRYPARAMETERS = "InvalidParameter.TcpEndpointGroupCarryParameters"
-//  INVALIDPARAMETER_TRANSPORTLAYERLISTENERCANNOTCARRYPARAMETERS = "InvalidParameter.TransportLayerListenerCannotCarryParameters"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_INSTANCENAME = "InvalidParameterValue.InstanceName"
-//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
-//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
-//  INVALIDPARAMETERVALUE_SEGMENTPORTRANGE = "InvalidParameterValue.SegmentPortRange"
-//  INVALIDPARAMETERVALUE_TCPSERIESLISTENERPORTEQUAL = "InvalidParameterValue.TcpSeriesListenerPortEqual"
-//  INVALIDPARAMETERVALUE_THIRDAREALISTENERPORTEQUAL = "InvalidParameterValue.ThirdAreaListenerPortEqual"
-//  INVALIDPARAMETERVALUE_THIRDAREALISTENERPORTSEGMENT = "InvalidParameterValue.ThirdAreaListenerPortSegment"
-//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
-//  INVALIDPARAMETERVALUE_UDPSERIESLISTENERPORTEQUAL = "InvalidParameterValue.UdpSeriesListenerPortEqual"
-//  MISSINGPARAMETER = "MissingParameter"
+//  INVALIDPARAMETERVALUE_CERTIFICATESCONFLICT = "InvalidParameterValue.CertificatesConflict"
+//  INVALIDPARAMETERVALUE_INSTANCEMISMATCH = "InvalidParameterValue.InstanceMismatch"
 //  UNSUPPORTEDOPERATION_CERTIFICATEINVALIDSTATUS = "UnsupportedOperation.CertificateInvalidStatus"
 //  UNSUPPORTEDOPERATION_INSTANCENOTRUNNING = "UnsupportedOperation.InstanceNotRunning"
-//  UNSUPPORTEDOPERATION_INSTANCESTATENOTALLOWEDOPERATE = "UnsupportedOperation.InstanceStateNotAllowedOperate"
-//  UNSUPPORTEDOPERATION_LISTENERPORTSEGMENT = "UnsupportedOperation.ListenerPortSegment"
-//  UNSUPPORTEDOPERATION_ONLYTCPLISTENERSUPPORTTOA = "UnsupportedOperation.OnlyTcpListenerSupportToa"
-//  UNSUPPORTEDOPERATION_TOAFEATURENOTENABLED = "UnsupportedOperation.TOAFeatureNotEnabled"
 func (c *Client) DeleteAccelerateAreas(request *DeleteAccelerateAreasRequest) (response *DeleteAccelerateAreasResponse, err error) {
     return c.DeleteAccelerateAreasWithContext(context.Background(), request)
 }
@@ -575,31 +610,10 @@ func (c *Client) DeleteAccelerateAreas(request *DeleteAccelerateAreasRequest) (r
 // 删除加速地域
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_INSUFFICIENTRESOURCES = "FailedOperation.InsufficientResources"
-//  INVALIDPARAMETER_APPLICATIONLAYERLISTENERCANNOTCARRYPARAMETERS = "InvalidParameter.ApplicationLayerListenerCannotCarryParameters"
-//  INVALIDPARAMETER_CLIENTAFFINITYCLOSE = "InvalidParameter.ClientAffinityCLose"
-//  INVALIDPARAMETER_HTTPLISTENERCANNOTCARRYPARAMETERS = "InvalidParameter.HttpListenerCannotCarryParameters"
-//  INVALIDPARAMETER_HTTPSLISTENERCANNOTCARRYPARAMETERS = "InvalidParameter.HttpsListenerCannotCarryParameters"
-//  INVALIDPARAMETER_SINGLEPORT = "InvalidParameter.SinglePort"
-//  INVALIDPARAMETER_TCPENDPOINTGROUPCARRYPARAMETERS = "InvalidParameter.TcpEndpointGroupCarryParameters"
-//  INVALIDPARAMETER_TRANSPORTLAYERLISTENERCANNOTCARRYPARAMETERS = "InvalidParameter.TransportLayerListenerCannotCarryParameters"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_INSTANCENAME = "InvalidParameterValue.InstanceName"
-//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
-//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
-//  INVALIDPARAMETERVALUE_SEGMENTPORTRANGE = "InvalidParameterValue.SegmentPortRange"
-//  INVALIDPARAMETERVALUE_TCPSERIESLISTENERPORTEQUAL = "InvalidParameterValue.TcpSeriesListenerPortEqual"
-//  INVALIDPARAMETERVALUE_THIRDAREALISTENERPORTEQUAL = "InvalidParameterValue.ThirdAreaListenerPortEqual"
-//  INVALIDPARAMETERVALUE_THIRDAREALISTENERPORTSEGMENT = "InvalidParameterValue.ThirdAreaListenerPortSegment"
-//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
-//  INVALIDPARAMETERVALUE_UDPSERIESLISTENERPORTEQUAL = "InvalidParameterValue.UdpSeriesListenerPortEqual"
-//  MISSINGPARAMETER = "MissingParameter"
+//  INVALIDPARAMETERVALUE_CERTIFICATESCONFLICT = "InvalidParameterValue.CertificatesConflict"
+//  INVALIDPARAMETERVALUE_INSTANCEMISMATCH = "InvalidParameterValue.InstanceMismatch"
 //  UNSUPPORTEDOPERATION_CERTIFICATEINVALIDSTATUS = "UnsupportedOperation.CertificateInvalidStatus"
 //  UNSUPPORTEDOPERATION_INSTANCENOTRUNNING = "UnsupportedOperation.InstanceNotRunning"
-//  UNSUPPORTEDOPERATION_INSTANCESTATENOTALLOWEDOPERATE = "UnsupportedOperation.InstanceStateNotAllowedOperate"
-//  UNSUPPORTEDOPERATION_LISTENERPORTSEGMENT = "UnsupportedOperation.ListenerPortSegment"
-//  UNSUPPORTEDOPERATION_ONLYTCPLISTENERSUPPORTTOA = "UnsupportedOperation.OnlyTcpListenerSupportToa"
-//  UNSUPPORTEDOPERATION_TOAFEATURENOTENABLED = "UnsupportedOperation.TOAFeatureNotEnabled"
 func (c *Client) DeleteAccelerateAreasWithContext(ctx context.Context, request *DeleteAccelerateAreasRequest) (response *DeleteAccelerateAreasResponse, err error) {
     if request == nil {
         request = NewDeleteAccelerateAreasRequest()
@@ -895,6 +909,62 @@ func (c *Client) DeleteListenerWithContext(ctx context.Context, request *DeleteL
     return
 }
 
+func NewDeleteListenerAdditionalCertRequest() (request *DeleteListenerAdditionalCertRequest) {
+    request = &DeleteListenerAdditionalCertRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ga2", APIVersion, "DeleteListenerAdditionalCert")
+    
+    
+    return
+}
+
+func NewDeleteListenerAdditionalCertResponse() (response *DeleteListenerAdditionalCertResponse) {
+    response = &DeleteListenerAdditionalCertResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteListenerAdditionalCert
+// 删除扩展证书
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INSTANCEMISMATCH = "InvalidParameterValue.InstanceMismatch"
+//  UNSUPPORTEDOPERATION_CACERTIFICATESOPERATE = "UnsupportedOperation.CaCertificatesOperate"
+//  UNSUPPORTEDOPERATION_DEFAULTCERTIFICATESOPERATE = "UnsupportedOperation.DefaultCertificatesOperate"
+//  UNSUPPORTEDOPERATION_INSTANCENOTRUNNING = "UnsupportedOperation.InstanceNotRunning"
+func (c *Client) DeleteListenerAdditionalCert(request *DeleteListenerAdditionalCertRequest) (response *DeleteListenerAdditionalCertResponse, err error) {
+    return c.DeleteListenerAdditionalCertWithContext(context.Background(), request)
+}
+
+// DeleteListenerAdditionalCert
+// 删除扩展证书
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INSTANCEMISMATCH = "InvalidParameterValue.InstanceMismatch"
+//  UNSUPPORTEDOPERATION_CACERTIFICATESOPERATE = "UnsupportedOperation.CaCertificatesOperate"
+//  UNSUPPORTEDOPERATION_DEFAULTCERTIFICATESOPERATE = "UnsupportedOperation.DefaultCertificatesOperate"
+//  UNSUPPORTEDOPERATION_INSTANCENOTRUNNING = "UnsupportedOperation.InstanceNotRunning"
+func (c *Client) DeleteListenerAdditionalCertWithContext(ctx context.Context, request *DeleteListenerAdditionalCertRequest) (response *DeleteListenerAdditionalCertResponse, err error) {
+    if request == nil {
+        request = NewDeleteListenerAdditionalCertRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ga2", APIVersion, "DeleteListenerAdditionalCert")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteListenerAdditionalCert require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteListenerAdditionalCertResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAccelerateAreasRequest() (request *DescribeAccelerateAreasRequest) {
     request = &DescribeAccelerateAreasRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -918,8 +988,9 @@ func NewDescribeAccelerateAreasResponse() (response *DescribeAccelerateAreasResp
 // 查询加速地域
 //
 // 可能返回的错误码:
-//  UNSUPPORTEDOPERATION_EXISTACCESSLOG = "UnsupportedOperation.ExistAccessLog"
-//  UNSUPPORTEDOPERATION_EXISTENDPOINTGROUP = "UnsupportedOperation.ExistEndpointGroup"
+//  INVALIDPARAMETERVALUE_INSTANCEMISMATCH = "InvalidParameterValue.InstanceMismatch"
+//  UNSUPPORTEDOPERATION_CACERTIFICATESOPERATE = "UnsupportedOperation.CaCertificatesOperate"
+//  UNSUPPORTEDOPERATION_DEFAULTCERTIFICATESOPERATE = "UnsupportedOperation.DefaultCertificatesOperate"
 //  UNSUPPORTEDOPERATION_INSTANCENOTRUNNING = "UnsupportedOperation.InstanceNotRunning"
 func (c *Client) DescribeAccelerateAreas(request *DescribeAccelerateAreasRequest) (response *DescribeAccelerateAreasResponse, err error) {
     return c.DescribeAccelerateAreasWithContext(context.Background(), request)
@@ -929,8 +1000,9 @@ func (c *Client) DescribeAccelerateAreas(request *DescribeAccelerateAreasRequest
 // 查询加速地域
 //
 // 可能返回的错误码:
-//  UNSUPPORTEDOPERATION_EXISTACCESSLOG = "UnsupportedOperation.ExistAccessLog"
-//  UNSUPPORTEDOPERATION_EXISTENDPOINTGROUP = "UnsupportedOperation.ExistEndpointGroup"
+//  INVALIDPARAMETERVALUE_INSTANCEMISMATCH = "InvalidParameterValue.InstanceMismatch"
+//  UNSUPPORTEDOPERATION_CACERTIFICATESOPERATE = "UnsupportedOperation.CaCertificatesOperate"
+//  UNSUPPORTEDOPERATION_DEFAULTCERTIFICATESOPERATE = "UnsupportedOperation.DefaultCertificatesOperate"
 //  UNSUPPORTEDOPERATION_INSTANCENOTRUNNING = "UnsupportedOperation.InstanceNotRunning"
 func (c *Client) DescribeAccelerateAreasWithContext(ctx context.Context, request *DescribeAccelerateAreasRequest) (response *DescribeAccelerateAreasResponse, err error) {
     if request == nil {
@@ -972,8 +1044,9 @@ func NewDescribeAccelerateRegionsResponse() (response *DescribeAccelerateRegions
 // 查询可选加速区域
 //
 // 可能返回的错误码:
-//  UNSUPPORTEDOPERATION_EXISTACCESSLOG = "UnsupportedOperation.ExistAccessLog"
-//  UNSUPPORTEDOPERATION_EXISTENDPOINTGROUP = "UnsupportedOperation.ExistEndpointGroup"
+//  INVALIDPARAMETERVALUE_INSTANCEMISMATCH = "InvalidParameterValue.InstanceMismatch"
+//  UNSUPPORTEDOPERATION_CACERTIFICATESOPERATE = "UnsupportedOperation.CaCertificatesOperate"
+//  UNSUPPORTEDOPERATION_DEFAULTCERTIFICATESOPERATE = "UnsupportedOperation.DefaultCertificatesOperate"
 //  UNSUPPORTEDOPERATION_INSTANCENOTRUNNING = "UnsupportedOperation.InstanceNotRunning"
 func (c *Client) DescribeAccelerateRegions(request *DescribeAccelerateRegionsRequest) (response *DescribeAccelerateRegionsResponse, err error) {
     return c.DescribeAccelerateRegionsWithContext(context.Background(), request)
@@ -983,8 +1056,9 @@ func (c *Client) DescribeAccelerateRegions(request *DescribeAccelerateRegionsReq
 // 查询可选加速区域
 //
 // 可能返回的错误码:
-//  UNSUPPORTEDOPERATION_EXISTACCESSLOG = "UnsupportedOperation.ExistAccessLog"
-//  UNSUPPORTEDOPERATION_EXISTENDPOINTGROUP = "UnsupportedOperation.ExistEndpointGroup"
+//  INVALIDPARAMETERVALUE_INSTANCEMISMATCH = "InvalidParameterValue.InstanceMismatch"
+//  UNSUPPORTEDOPERATION_CACERTIFICATESOPERATE = "UnsupportedOperation.CaCertificatesOperate"
+//  UNSUPPORTEDOPERATION_DEFAULTCERTIFICATESOPERATE = "UnsupportedOperation.DefaultCertificatesOperate"
 //  UNSUPPORTEDOPERATION_INSTANCENOTRUNNING = "UnsupportedOperation.InstanceNotRunning"
 func (c *Client) DescribeAccelerateRegionsWithContext(ctx context.Context, request *DescribeAccelerateRegionsRequest) (response *DescribeAccelerateRegionsResponse, err error) {
     if request == nil {
@@ -1761,6 +1835,64 @@ func (c *Client) ModifyListenerWithContext(ctx context.Context, request *ModifyL
     request.SetContext(ctx)
     
     response = NewModifyListenerResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewReplaceListenerAdditionalCertRequest() (request *ReplaceListenerAdditionalCertRequest) {
+    request = &ReplaceListenerAdditionalCertRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ga2", APIVersion, "ReplaceListenerAdditionalCert")
+    
+    
+    return
+}
+
+func NewReplaceListenerAdditionalCertResponse() (response *ReplaceListenerAdditionalCertResponse) {
+    response = &ReplaceListenerAdditionalCertResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ReplaceListenerAdditionalCert
+// 替换扩展证书
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INPUTREPEAT = "InvalidParameter.InputRepeat"
+//  INVALIDPARAMETERVALUE_CERTIFICATESCONFLICT = "InvalidParameterValue.CertificatesConflict"
+//  UNSUPPORTEDOPERATION_CERTIFICATEINVALIDSTATUS = "UnsupportedOperation.CertificateInvalidStatus"
+//  UNSUPPORTEDOPERATION_DOMAINMISMATCHED = "UnsupportedOperation.DomainMismatched"
+//  UNSUPPORTEDOPERATION_INSTANCENOTRUNNING = "UnsupportedOperation.InstanceNotRunning"
+func (c *Client) ReplaceListenerAdditionalCert(request *ReplaceListenerAdditionalCertRequest) (response *ReplaceListenerAdditionalCertResponse, err error) {
+    return c.ReplaceListenerAdditionalCertWithContext(context.Background(), request)
+}
+
+// ReplaceListenerAdditionalCert
+// 替换扩展证书
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INPUTREPEAT = "InvalidParameter.InputRepeat"
+//  INVALIDPARAMETERVALUE_CERTIFICATESCONFLICT = "InvalidParameterValue.CertificatesConflict"
+//  UNSUPPORTEDOPERATION_CERTIFICATEINVALIDSTATUS = "UnsupportedOperation.CertificateInvalidStatus"
+//  UNSUPPORTEDOPERATION_DOMAINMISMATCHED = "UnsupportedOperation.DomainMismatched"
+//  UNSUPPORTEDOPERATION_INSTANCENOTRUNNING = "UnsupportedOperation.InstanceNotRunning"
+func (c *Client) ReplaceListenerAdditionalCertWithContext(ctx context.Context, request *ReplaceListenerAdditionalCertRequest) (response *ReplaceListenerAdditionalCertResponse, err error) {
+    if request == nil {
+        request = NewReplaceListenerAdditionalCertRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ga2", APIVersion, "ReplaceListenerAdditionalCert")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ReplaceListenerAdditionalCert require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewReplaceListenerAdditionalCertResponse()
     err = c.Send(request, response)
     return
 }

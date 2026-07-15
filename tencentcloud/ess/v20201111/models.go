@@ -9420,65 +9420,63 @@ func (r *CreateSchemeUrlResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateSealPolicyRequestParams struct {
-	// 执行本接口操作的员工信息。
-	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	// <p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 用户在电子文件签署平台标识信息，具体参考UserInfo结构体。可跟下面的UserIds可叠加起作用
+	// <p>用户在电子文件签署平台标识信息，具体参考UserInfo结构体。可跟下面的UserIds可叠加起作用,<br>同时也支持使用主企业的User进行授权， 当使用主企业的User时， 需要有集团角色。</p>
 	Users []*UserInfo `json:"Users,omitnil,omitempty" name:"Users"`
 
-	// 电子印章ID，为32位字符串。
-	// 建议开发者保留此印章ID，后续指定签署区印章或者操作印章需此印章ID。
-	// 可登录腾讯电子签控制台，在 "印章"->"印章中心"选择查看的印章，在"印章详情" 中查看某个印章的SealId(在页面中展示为印章ID)。
+	// <p>电子印章ID，为32位字符串。<br>建议开发者保留此印章ID，后续指定签署区印章或者操作印章需此印章ID。<br>可登录腾讯电子签控制台，在 &quot;印章&quot;-&gt;&quot;印章中心&quot;选择查看的印章，在&quot;印章详情&quot; 中查看某个印章的SealId(在页面中展示为印章ID)。</p>
 	SealId *string `json:"SealId,omitnil,omitempty" name:"SealId"`
 
-	// 授权有效期，时间戳秒级。可以传0，代表有效期到2099年12月12日23点59分59秒。
+	// <p>授权有效期，时间戳秒级。可以传0，代表有效期到2099年12月12日23点59分59秒。</p>
 	Expired *int64 `json:"Expired,omitnil,omitempty" name:"Expired"`
 
-	// 需要授权的用户UserId集合。跟上面的SealId参数配合使用。选填，跟上面的Users同时起作用
+	// <p>需要授权的用户UserId集合。跟上面的SealId参数配合使用。选填，跟上面的Users同时起作用。<br>支持使用主企业的UserId进行授权， 当使用主企业的UserId时，该UserId 需要有集团角色。</p>
 	UserIds []*string `json:"UserIds,omitnil,omitempty" name:"UserIds"`
 
-	// 印章授权内容
+	// <p>印章授权内容，最多300 个字符。</p>
 	Policy *string `json:"Policy,omitnil,omitempty" name:"Policy"`
 
-	// 代理企业和员工的信息。
-	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	// <p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
-	// 个性化配置字段，默认不传。
+	// <p>个性化配置字段，默认不传。</p>
 	Options []*Option `json:"Options,omitnil,omitempty" name:"Options"`
+
+	// <p>针对用印的合同/合同组授权。<br>当单次用印授权时，可以仅在指定合同获得印章授权。<br>此场景下不会触发印章授权回调。</p>
+	AuthorizationFlows *SealPolicyAuthorizationFlows `json:"AuthorizationFlows,omitnil,omitempty" name:"AuthorizationFlows"`
 }
 
 type CreateSealPolicyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 执行本接口操作的员工信息。
-	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	// <p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 用户在电子文件签署平台标识信息，具体参考UserInfo结构体。可跟下面的UserIds可叠加起作用
+	// <p>用户在电子文件签署平台标识信息，具体参考UserInfo结构体。可跟下面的UserIds可叠加起作用,<br>同时也支持使用主企业的User进行授权， 当使用主企业的User时， 需要有集团角色。</p>
 	Users []*UserInfo `json:"Users,omitnil,omitempty" name:"Users"`
 
-	// 电子印章ID，为32位字符串。
-	// 建议开发者保留此印章ID，后续指定签署区印章或者操作印章需此印章ID。
-	// 可登录腾讯电子签控制台，在 "印章"->"印章中心"选择查看的印章，在"印章详情" 中查看某个印章的SealId(在页面中展示为印章ID)。
+	// <p>电子印章ID，为32位字符串。<br>建议开发者保留此印章ID，后续指定签署区印章或者操作印章需此印章ID。<br>可登录腾讯电子签控制台，在 &quot;印章&quot;-&gt;&quot;印章中心&quot;选择查看的印章，在&quot;印章详情&quot; 中查看某个印章的SealId(在页面中展示为印章ID)。</p>
 	SealId *string `json:"SealId,omitnil,omitempty" name:"SealId"`
 
-	// 授权有效期，时间戳秒级。可以传0，代表有效期到2099年12月12日23点59分59秒。
+	// <p>授权有效期，时间戳秒级。可以传0，代表有效期到2099年12月12日23点59分59秒。</p>
 	Expired *int64 `json:"Expired,omitnil,omitempty" name:"Expired"`
 
-	// 需要授权的用户UserId集合。跟上面的SealId参数配合使用。选填，跟上面的Users同时起作用
+	// <p>需要授权的用户UserId集合。跟上面的SealId参数配合使用。选填，跟上面的Users同时起作用。<br>支持使用主企业的UserId进行授权， 当使用主企业的UserId时，该UserId 需要有集团角色。</p>
 	UserIds []*string `json:"UserIds,omitnil,omitempty" name:"UserIds"`
 
-	// 印章授权内容
+	// <p>印章授权内容，最多300 个字符。</p>
 	Policy *string `json:"Policy,omitnil,omitempty" name:"Policy"`
 
-	// 代理企业和员工的信息。
-	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	// <p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
-	// 个性化配置字段，默认不传。
+	// <p>个性化配置字段，默认不传。</p>
 	Options []*Option `json:"Options,omitnil,omitempty" name:"Options"`
+
+	// <p>针对用印的合同/合同组授权。<br>当单次用印授权时，可以仅在指定合同获得印章授权。<br>此场景下不会触发印章授权回调。</p>
+	AuthorizationFlows *SealPolicyAuthorizationFlows `json:"AuthorizationFlows,omitnil,omitempty" name:"AuthorizationFlows"`
 }
 
 func (r *CreateSealPolicyRequest) ToJsonString() string {
@@ -9501,6 +9499,7 @@ func (r *CreateSealPolicyRequest) FromJsonString(s string) error {
 	delete(f, "Policy")
 	delete(f, "Agent")
 	delete(f, "Options")
+	delete(f, "AuthorizationFlows")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSealPolicyRequest has unknown keys!", "")
 	}
@@ -9509,14 +9508,13 @@ func (r *CreateSealPolicyRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateSealPolicyResponseParams struct {
-	// 最终授权成功的用户ID，在腾讯电子签平台的唯一身份标识，为32位字符串。
-	// 可登录腾讯电子签控制台，在 "更多能力"->"组织管理" 中查看某位员工的UserId(在页面中展示为用户ID)。
+	// <p>最终授权成功的用户ID，在腾讯电子签平台的唯一身份标识，为32位字符串。<br>可登录腾讯电子签控制台，在 &quot;更多能力&quot;-&gt;&quot;组织管理&quot; 中查看某位员工的UserId(在页面中展示为用户ID)。</p>
 	UserIds []*string `json:"UserIds,omitnil,omitempty" name:"UserIds"`
 
-	// 人脸验证操作人链接，用法可以参考"[跳转电子签小程序配置](https://qian.tencent.com/developers/company/openwxminiprogram/)"，默认为空。
+	// <p>人脸验证操作人链接，用法可以参考&quot;<a href="https://qian.tencent.com/developers/company/openwxminiprogram/">跳转电子签小程序配置</a>&quot;，默认为空。</p>
 	SealOperatorVerifyPath *string `json:"SealOperatorVerifyPath,omitnil,omitempty" name:"SealOperatorVerifyPath"`
 
-	// 人脸验证操作人二维码链接，扫码后会跳转到腾讯电子签小程序进行人脸验证，默认为空。
+	// <p>人脸验证操作人二维码链接，扫码后会跳转到腾讯电子签小程序进行人脸验证，默认为空。</p>
 	SealOperatorVerifyQrcodeUrl *string `json:"SealOperatorVerifyQrcodeUrl,omitnil,omitempty" name:"SealOperatorVerifyQrcodeUrl"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -19218,6 +19216,14 @@ type SealInfo struct {
 
 	// 印章名称
 	SealName *string `json:"SealName,omitnil,omitempty" name:"SealName"`
+}
+
+type SealPolicyAuthorizationFlows struct {
+	// <p>合同id列表，最大支持50个</p>
+	FlowIds []*string `json:"FlowIds,omitnil,omitempty" name:"FlowIds"`
+
+	// <p>合同组id列表， 最大支持10个<br>FlowGroupIds(合同组)与FlowIds(合同列表) 两个参数只能选择其中一个，两者同时传会提示参数错误。</p>
+	FlowGroupIds []*string `json:"FlowGroupIds,omitnil,omitempty" name:"FlowGroupIds"`
 }
 
 type SignCertificate struct {

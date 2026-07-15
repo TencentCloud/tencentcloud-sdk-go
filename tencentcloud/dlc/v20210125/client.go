@@ -3128,6 +3128,7 @@ func NewCreateTaskResponse() (response *CreateTaskResponse) {
 //  INVALIDPARAMETER_INVALIDDATAENGINENAME = "InvalidParameter.InvalidDataEngineName"
 //  INVALIDPARAMETER_INVALIDFAILURETOLERANCE = "InvalidParameter.InvalidFailureTolerance"
 //  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+//  INVALIDPARAMETER_INVALIDSQLCONFIG = "InvalidParameter.InvalidSQLConfig"
 //  INVALIDPARAMETER_INVALIDSQLCONFIGSQL = "InvalidParameter.InvalidSQLConfigSQL"
 //  INVALIDPARAMETER_INVALIDSQLNUM = "InvalidParameter.InvalidSQLNum"
 //  INVALIDPARAMETER_INVALIDSTORELOCATION = "InvalidParameter.InvalidStoreLocation"
@@ -3172,6 +3173,7 @@ func (c *Client) CreateTask(request *CreateTaskRequest) (response *CreateTaskRes
 //  INVALIDPARAMETER_INVALIDDATAENGINENAME = "InvalidParameter.InvalidDataEngineName"
 //  INVALIDPARAMETER_INVALIDFAILURETOLERANCE = "InvalidParameter.InvalidFailureTolerance"
 //  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+//  INVALIDPARAMETER_INVALIDSQLCONFIG = "InvalidParameter.InvalidSQLConfig"
 //  INVALIDPARAMETER_INVALIDSQLCONFIGSQL = "InvalidParameter.InvalidSQLConfigSQL"
 //  INVALIDPARAMETER_INVALIDSQLNUM = "InvalidParameter.InvalidSQLNum"
 //  INVALIDPARAMETER_INVALIDSTORELOCATION = "InvalidParameter.InvalidStoreLocation"
@@ -8203,7 +8205,7 @@ func NewDescribeTasksResponse() (response *DescribeTasksResponse) {
 }
 
 // DescribeTasks
-// 该接口（DescribleTasks）用于查询任务列表
+// 该接口（DescribeTasks）用于查询任务列表
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -8226,7 +8228,7 @@ func (c *Client) DescribeTasks(request *DescribeTasksRequest) (response *Describ
 }
 
 // DescribeTasks
-// 该接口（DescribleTasks）用于查询任务列表
+// 该接口（DescribeTasks）用于查询任务列表
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

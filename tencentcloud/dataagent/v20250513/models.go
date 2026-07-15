@@ -317,6 +317,9 @@ type ChatAIRequestParams struct {
 
 	// <p>知识库id列表</p>
 	KnowledgeBaseIds []*string `json:"KnowledgeBaseIds,omitnil,omitempty" name:"KnowledgeBaseIds"`
+
+	// <p>版本信息</p>
+	ArchVersion *string `json:"ArchVersion,omitnil,omitempty" name:"ArchVersion"`
 }
 
 type ChatAIRequest struct {
@@ -351,6 +354,9 @@ type ChatAIRequest struct {
 
 	// <p>知识库id列表</p>
 	KnowledgeBaseIds []*string `json:"KnowledgeBaseIds,omitnil,omitempty" name:"KnowledgeBaseIds"`
+
+	// <p>版本信息</p>
+	ArchVersion *string `json:"ArchVersion,omitnil,omitempty" name:"ArchVersion"`
 }
 
 func (r *ChatAIRequest) ToJsonString() string {
@@ -375,6 +381,7 @@ func (r *ChatAIRequest) FromJsonString(s string) error {
 	delete(f, "AgentType")
 	delete(f, "OldRecordId")
 	delete(f, "KnowledgeBaseIds")
+	delete(f, "ArchVersion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChatAIRequest has unknown keys!", "")
 	}

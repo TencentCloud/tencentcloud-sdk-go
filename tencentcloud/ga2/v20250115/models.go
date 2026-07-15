@@ -512,6 +512,77 @@ func (r *CreateGlobalAcceleratorResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateListenerAdditionalCertRequestParams struct {
+	// <p>全球加速实例ID。</p>
+	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
+
+	// <p>监听器ID。</p>
+	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
+
+	// <p>证书ID。</p><p>当前只能添加服务器证书。</p>
+	AdditionalCertificates []*string `json:"AdditionalCertificates,omitnil,omitempty" name:"AdditionalCertificates"`
+}
+
+type CreateListenerAdditionalCertRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>全球加速实例ID。</p>
+	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
+
+	// <p>监听器ID。</p>
+	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
+
+	// <p>证书ID。</p><p>当前只能添加服务器证书。</p>
+	AdditionalCertificates []*string `json:"AdditionalCertificates,omitnil,omitempty" name:"AdditionalCertificates"`
+}
+
+func (r *CreateListenerAdditionalCertRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateListenerAdditionalCertRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GlobalAcceleratorId")
+	delete(f, "ListenerId")
+	delete(f, "AdditionalCertificates")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateListenerAdditionalCertRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateListenerAdditionalCertResponseParams struct {
+	// <p>任务ID。</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateListenerAdditionalCertResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateListenerAdditionalCertResponseParams `json:"Response"`
+}
+
+func (r *CreateListenerAdditionalCertResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateListenerAdditionalCertResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateListenerRequestParams struct {
 	// <p>全球加速实例ID。</p>
 	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
@@ -1014,6 +1085,77 @@ func (r *DeleteGlobalAcceleratorResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteGlobalAcceleratorResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteListenerAdditionalCertRequestParams struct {
+	// 全球加速实例ID。
+	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
+
+	// 监听器ID。
+	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
+
+	// 证书ID。
+	AdditionalCertificates []*string `json:"AdditionalCertificates,omitnil,omitempty" name:"AdditionalCertificates"`
+}
+
+type DeleteListenerAdditionalCertRequest struct {
+	*tchttp.BaseRequest
+	
+	// 全球加速实例ID。
+	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
+
+	// 监听器ID。
+	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
+
+	// 证书ID。
+	AdditionalCertificates []*string `json:"AdditionalCertificates,omitnil,omitempty" name:"AdditionalCertificates"`
+}
+
+func (r *DeleteListenerAdditionalCertRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteListenerAdditionalCertRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GlobalAcceleratorId")
+	delete(f, "ListenerId")
+	delete(f, "AdditionalCertificates")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteListenerAdditionalCertRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteListenerAdditionalCertResponseParams struct {
+	// 任务ID。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteListenerAdditionalCertResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteListenerAdditionalCertResponseParams `json:"Response"`
+}
+
+func (r *DeleteListenerAdditionalCertResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteListenerAdditionalCertResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2868,6 +3010,84 @@ type PortRanges struct {
 	// 终点端口。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ToPort *uint64 `json:"ToPort,omitnil,omitempty" name:"ToPort"`
+}
+
+// Predefined struct for user
+type ReplaceListenerAdditionalCertRequestParams struct {
+	// 全球加速实例ID。
+	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
+
+	// 监听器ID。
+	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
+
+	// 证书ID。
+	AdditionalCertificate *string `json:"AdditionalCertificate,omitnil,omitempty" name:"AdditionalCertificate"`
+
+	// 旧的证书ID。
+	OldCertificate *string `json:"OldCertificate,omitnil,omitempty" name:"OldCertificate"`
+}
+
+type ReplaceListenerAdditionalCertRequest struct {
+	*tchttp.BaseRequest
+	
+	// 全球加速实例ID。
+	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
+
+	// 监听器ID。
+	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
+
+	// 证书ID。
+	AdditionalCertificate *string `json:"AdditionalCertificate,omitnil,omitempty" name:"AdditionalCertificate"`
+
+	// 旧的证书ID。
+	OldCertificate *string `json:"OldCertificate,omitnil,omitempty" name:"OldCertificate"`
+}
+
+func (r *ReplaceListenerAdditionalCertRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ReplaceListenerAdditionalCertRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GlobalAcceleratorId")
+	delete(f, "ListenerId")
+	delete(f, "AdditionalCertificate")
+	delete(f, "OldCertificate")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ReplaceListenerAdditionalCertRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ReplaceListenerAdditionalCertResponseParams struct {
+	// 任务ID。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ReplaceListenerAdditionalCertResponse struct {
+	*tchttp.BaseResponse
+	Response *ReplaceListenerAdditionalCertResponseParams `json:"Response"`
+}
+
+func (r *ReplaceListenerAdditionalCertResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ReplaceListenerAdditionalCertResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ResponseHeaders struct {

@@ -455,6 +455,9 @@ type AdaptiveDynamicStreamingTaskInput struct {
 
 	// <p>外挂音频功能，指定要插入的音频文件。</p>
 	AddOnAudios []*AddOnAudio `json:"AddOnAudios,omitnil,omitempty" name:"AddOnAudios"`
+
+	// <p>非空时直接替换模板的 StreamInfos 字段，字段格式与创建自适应模板时的 StreamInfos 完全一致</p>
+	StdExtStreamInfos []*AdaptiveStreamTemplate `json:"StdExtStreamInfos,omitnil,omitempty" name:"StdExtStreamInfos"`
 }
 
 type AdaptiveDynamicStreamingTemplate struct {
@@ -1408,6 +1411,20 @@ type AiContentReviewResult struct {
 type AiContentReviewTaskInput struct {
 	// 视频内容审核模板 ID。
 	Definition *uint64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+}
+
+type AiDramaInput struct {
+	// <p>ai漫剧剧本</p><p>参数格式：无</p><p>入参限制：无</p>
+	Script *string `json:"Script,omitnil,omitempty" name:"Script"`
+
+	// <p>ai漫剧风格</p><p>枚举值：</p><ul><li>chinese_ink_wash： 国风水墨</li><li>fantasy_cyberpunk： 奇幻赛博朋克</li><li>japanese_anime_2d： 日漫二次元</li></ul><p>默认值：chinese_ink_wash</p><p>枚举值：</p><ul><li>realistic_live_action： 真人写实</li><li>chinese_ink_wash： 国风水墨</li><li>fantasy_cyberpunk： 奇幻赛博朋克</li><li>japanese_anime_2d： 日漫二次元</li></ul><p>默认值：chinese_ink_wash</p>
+	Style *string `json:"Style,omitnil,omitempty" name:"Style"`
+
+	// <p>宽高比</p><p>枚举值：</p><ul><li>16:9： 16:9</li><li>9:16： 9:16</li></ul><p>默认值：16:9</p>
+	Ratio *string `json:"Ratio,omitnil,omitempty" name:"Ratio"`
+
+	// <p>输出视频分辨率</p><p>枚举值：</p><ul><li>720p： 720p</li><li>1080p： 1080p</li></ul><p>默认值：720p</p>
+	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
 }
 
 type AiParagraphInfo struct {
@@ -4491,6 +4508,70 @@ func (r *CreateAdaptiveDynamicStreamingTemplateResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateAdaptiveDynamicStreamingTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAiDramaTaskRequestParams struct {
+	// <p>ai漫剧输入</p>
+	Input *AiDramaInput `json:"Input,omitnil,omitempty" name:"Input"`
+
+	// <p>用户cos信息</p>
+	CosInfo *VideoDramaCosInfo `json:"CosInfo,omitnil,omitempty" name:"CosInfo"`
+}
+
+type CreateAiDramaTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>ai漫剧输入</p>
+	Input *AiDramaInput `json:"Input,omitnil,omitempty" name:"Input"`
+
+	// <p>用户cos信息</p>
+	CosInfo *VideoDramaCosInfo `json:"CosInfo,omitnil,omitempty" name:"CosInfo"`
+}
+
+func (r *CreateAiDramaTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAiDramaTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Input")
+	delete(f, "CosInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAiDramaTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAiDramaTaskResponseParams struct {
+	// <p>任务id</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateAiDramaTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateAiDramaTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateAiDramaTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAiDramaTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -7954,6 +8035,70 @@ func (r *CreateVideoDatabaseEntryTaskResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateVideoDatabaseEntryTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateVideoRedrawTaskRequestParams struct {
+	// <p>输入待转绘视频url信息</p>
+	Input *VideoRedrawInput `json:"Input,omitnil,omitempty" name:"Input"`
+
+	// <p>用户cos信息，用于保存生成结果</p>
+	CosInfo *VideoRedrawCosInfo `json:"CosInfo,omitnil,omitempty" name:"CosInfo"`
+}
+
+type CreateVideoRedrawTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>输入待转绘视频url信息</p>
+	Input *VideoRedrawInput `json:"Input,omitnil,omitempty" name:"Input"`
+
+	// <p>用户cos信息，用于保存生成结果</p>
+	CosInfo *VideoRedrawCosInfo `json:"CosInfo,omitnil,omitempty" name:"CosInfo"`
+}
+
+func (r *CreateVideoRedrawTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateVideoRedrawTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Input")
+	delete(f, "CosInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateVideoRedrawTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateVideoRedrawTaskResponseParams struct {
+	// <p>任务id</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateVideoRedrawTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateVideoRedrawTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateVideoRedrawTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateVideoRedrawTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -29966,6 +30111,17 @@ type VideoDenoiseConfig struct {
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
+type VideoDramaCosInfo struct {
+	// <p>cos通地域</p>
+	CosBucketRegion *string `json:"CosBucketRegion,omitnil,omitempty" name:"CosBucketRegion"`
+
+	// <p>cos桶名称</p>
+	CosBucketName *string `json:"CosBucketName,omitnil,omitempty" name:"CosBucketName"`
+
+	// <p>cos桶路径</p>
+	CosBucketPath *string `json:"CosBucketPath,omitnil,omitempty" name:"CosBucketPath"`
+}
+
 type VideoEnhanceConfig struct {
 	// 插帧帧率配置（旧）。新用户建议使用FrameRateWithDen配置插帧帧率，支持分数，且效果更好。注意，FrameRate 与FrameRateWithDen 只能二选一，同时配置可能导致任务失败。源帧率大于等于目标帧率时能力不会生效。
 	// 
@@ -30028,6 +30184,22 @@ type VideoEnhanceConfig struct {
 	// 
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FrameRateWithDen *FrameRateWithDenConfig `json:"FrameRateWithDen,omitnil,omitempty" name:"FrameRateWithDen"`
+}
+
+type VideoRedrawCosInfo struct {
+	// <p>cos桶地域</p>
+	CosBucketRegion *string `json:"CosBucketRegion,omitnil,omitempty" name:"CosBucketRegion"`
+
+	// <p>cos桶名称</p>
+	CosBucketName *string `json:"CosBucketName,omitnil,omitempty" name:"CosBucketName"`
+
+	// <p>cos桶路径</p>
+	CosBucketPath *string `json:"CosBucketPath,omitnil,omitempty" name:"CosBucketPath"`
+}
+
+type VideoRedrawInput struct {
+	// <p>输入待转绘的视频URL</p>
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 }
 
 type VideoTemplateInfo struct {

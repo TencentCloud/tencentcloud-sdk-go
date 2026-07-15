@@ -29,6 +29,9 @@ const (
 	// 操作失败：COS 已经停服。
 	FAILEDOPERATION_COSSTATUSINAVLID = "FailedOperation.CosStatusInavlid"
 
+	// 创建AIGC任务失败
+	FAILEDOPERATION_CREATEAIGCTASKFAILED = "FailedOperation.CreateAIGCTaskFailed"
+
 	// 生成资源失败。
 	FAILEDOPERATION_GENERATERESOURCE = "FailedOperation.GenerateResource"
 
@@ -49,6 +52,9 @@ const (
 
 	// 查询的任务不存在
 	FAILEDOPERATION_TASKNOTFOUND = "FailedOperation.TaskNotFound"
+
+	// 用户状态已停服
+	FAILEDOPERATION_USERARREARS = "FailedOperation.UserArrears"
 
 	// 内部错误。
 	INTERNALERROR = "InternalError"
@@ -106,6 +112,9 @@ const (
 
 	// InvalidParameter.InvalidParameterChannelId
 	INVALIDPARAMETER_INVALIDPARAMETERCHANNELID = "InvalidParameter.InvalidParameterChannelId"
+
+	// 请求参数中Url不合法
+	INVALIDPARAMETER_INVALIDURL = "InvalidParameter.InvalidUrl"
 
 	// InvalidParameter.MaxBandwidth
 	INVALIDPARAMETER_MAXBANDWIDTH = "InvalidParameter.MaxBandwidth"
@@ -535,6 +544,9 @@ const (
 
 	// 水印原点距离视频图像坐标原点的垂直位置。支持 %、px 两种格式。
 	INVALIDPARAMETERVALUE_YPOS = "InvalidParameterValue.YPos"
+
+	// 无法创建任务，当前正在执行的任务数达到上限
+	LIMITEXCEEDED_CREATETASK = "LimitExceeded.CreateTask"
 
 	// 热词库创建数量到达默认上限
 	LIMITEXCEEDED_TOOMUCHHOTWORDS = "LimitExceeded.TooMuchHotWords"

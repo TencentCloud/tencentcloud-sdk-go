@@ -2810,6 +2810,79 @@ func (r *DescribeDocumentsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeEditVersionsRequestParams struct {
+	// <p>应用ID</p>
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// <p>课堂ID</p>
+	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+}
+
+type DescribeEditVersionsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>应用ID</p>
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// <p>课堂ID</p>
+	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+}
+
+func (r *DescribeEditVersionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEditVersionsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "RoomId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEditVersionsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeEditVersionsResponseParams struct {
+	// <p>课堂ID</p>
+	ClassId *uint64 `json:"ClassId,omitnil,omitempty" name:"ClassId"`
+
+	// <p>当前课堂最新的版本号</p>
+	LatestVersionNo *uint64 `json:"LatestVersionNo,omitnil,omitempty" name:"LatestVersionNo"`
+
+	// <p>当前课堂设置的主版本号</p>
+	MainVersion *uint64 `json:"MainVersion,omitnil,omitempty" name:"MainVersion"`
+
+	// <p>当前课堂所有版本信息</p>
+	Versions []*EditVersions `json:"Versions,omitnil,omitempty" name:"Versions"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeEditVersionsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeEditVersionsResponseParams `json:"Response"`
+}
+
+func (r *DescribeEditVersionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEditVersionsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeGroupListRequestParams struct {
 	// 低代码平台应用ID
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
@@ -4580,6 +4653,38 @@ type DocumentInfo struct {
 	MinScaleResolution *string `json:"MinScaleResolution,omitnil,omitempty" name:"MinScaleResolution"`
 }
 
+type EditVersions struct {
+	// <p>版本号</p><p>取值范围：[0, 100]</p><p>默认值：0</p>
+	Version *uint64 `json:"Version,omitnil,omitempty" name:"Version"`
+
+	// <p>版本状态</p><p>枚举值：</p><ul><li>READY： 已完成</li><li>FAILED： 失败</li><li>PROCESSING： 进行中</li></ul>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>是否是主版本</p><p>枚举值：</p><ul><li>true： 是</li><li>false： 否</li></ul>
+	IsMain *bool `json:"IsMain,omitnil,omitempty" name:"IsMain"`
+
+	// <p>是否源头版本</p><p>枚举值：</p><ul><li>true： 是</li><li>false： 否</li></ul>
+	IsSource *bool `json:"IsSource,omitnil,omitempty" name:"IsSource"`
+
+	// <p>版本时长</p><p>取值范围：[0, 1000000]</p><p>单位：秒</p>
+	KeepDurationSec *uint64 `json:"KeepDurationSec,omitnil,omitempty" name:"KeepDurationSec"`
+
+	// <p>创建时间</p><p>取值范围：[0, 10000000]</p>
+	CreatedAtMs *uint64 `json:"CreatedAtMs,omitnil,omitempty" name:"CreatedAtMs"`
+
+	// <p>创建用户id</p>
+	CreatorUserId *string `json:"CreatorUserId,omitnil,omitempty" name:"CreatorUserId"`
+
+	// <p>失败原因</p><p>默认值：空</p><p>仅失败才会有原因</p>
+	FailReason *string `json:"FailReason,omitnil,omitempty" name:"FailReason"`
+
+	// <p>更新时间</p><p>取值范围：[0, 100000]</p>
+	UpdatedAtMs *uint64 `json:"UpdatedAtMs,omitnil,omitempty" name:"UpdatedAtMs"`
+
+	// <p>版本名字</p>
+	VersionName *string `json:"VersionName,omitnil,omitempty" name:"VersionName"`
+}
+
 // Predefined struct for user
 type EndRoomRequestParams struct {
 	// 课堂ID
@@ -4760,6 +4865,93 @@ func (r *ForbidSendMsgResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ForbidSendMsgResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetEditVersionTokenRequestParams struct {
+	// <p>实时互动-教育版的SdkAppId。</p>
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// <p>课堂ID</p>
+	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+
+	// <p>用户ID</p>
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// <p>token过期时间，0代表无过期时间，单位毫秒。</p>
+	ExpireSeconds *int64 `json:"ExpireSeconds,omitnil,omitempty" name:"ExpireSeconds"`
+}
+
+type GetEditVersionTokenRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>实时互动-教育版的SdkAppId。</p>
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// <p>课堂ID</p>
+	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+
+	// <p>用户ID</p>
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// <p>token过期时间，0代表无过期时间，单位毫秒。</p>
+	ExpireSeconds *int64 `json:"ExpireSeconds,omitnil,omitempty" name:"ExpireSeconds"`
+}
+
+func (r *GetEditVersionTokenRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetEditVersionTokenRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "RoomId")
+	delete(f, "UserId")
+	delete(f, "ExpireSeconds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetEditVersionTokenRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetEditVersionTokenResponseParams struct {
+	// <p>信令回放剪辑页面token</p>
+	Token *string `json:"Token,omitnil,omitempty" name:"Token"`
+
+	// <p>课堂ID</p>
+	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+
+	// <p>用户ID</p>
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// <p>版本号，预留</p><p>默认值：0</p>
+	VersionNo *uint64 `json:"VersionNo,omitnil,omitempty" name:"VersionNo"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetEditVersionTokenResponse struct {
+	*tchttp.BaseResponse
+	Response *GetEditVersionTokenResponseParams `json:"Response"`
+}
+
+func (r *GetEditVersionTokenResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetEditVersionTokenResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6889,6 +7081,90 @@ func (r *SetAppCustomContentResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *SetAppCustomContentResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SetMainEditVersionRequestParams struct {
+	// <p>应用ID</p>
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// <p>课堂ID</p>
+	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+
+	// <p>版本号，可通过DescribeEditVersion接口获取当前课堂全部版本，来查看到版本号。</p>
+	VersionNo *uint64 `json:"VersionNo,omitnil,omitempty" name:"VersionNo"`
+
+	// <p>操作者ID</p>
+	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
+}
+
+type SetMainEditVersionRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>应用ID</p>
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// <p>课堂ID</p>
+	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+
+	// <p>版本号，可通过DescribeEditVersion接口获取当前课堂全部版本，来查看到版本号。</p>
+	VersionNo *uint64 `json:"VersionNo,omitnil,omitempty" name:"VersionNo"`
+
+	// <p>操作者ID</p>
+	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
+}
+
+func (r *SetMainEditVersionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SetMainEditVersionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "RoomId")
+	delete(f, "VersionNo")
+	delete(f, "Operator")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SetMainEditVersionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SetMainEditVersionResponseParams struct {
+	// <p>课堂ID</p>
+	ClassId *uint64 `json:"ClassId,omitnil,omitempty" name:"ClassId"`
+
+	// <p>上一个主版本的版本号</p>
+	PreviousMainVersion *uint64 `json:"PreviousMainVersion,omitnil,omitempty" name:"PreviousMainVersion"`
+
+	// <p>当前生效中的主版本号</p>
+	MainVersion *uint64 `json:"MainVersion,omitnil,omitempty" name:"MainVersion"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type SetMainEditVersionResponse struct {
+	*tchttp.BaseResponse
+	Response *SetMainEditVersionResponseParams `json:"Response"`
+}
+
+func (r *SetMainEditVersionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SetMainEditVersionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

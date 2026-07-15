@@ -611,6 +611,62 @@ func (c *Client) CreateAdaptiveDynamicStreamingTemplateWithContext(ctx context.C
     return
 }
 
+func NewCreateAiDramaTaskRequest() (request *CreateAiDramaTaskRequest) {
+    request = &CreateAiDramaTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "CreateAiDramaTask")
+    
+    
+    return
+}
+
+func NewCreateAiDramaTaskResponse() (response *CreateAiDramaTaskResponse) {
+    response = &CreateAiDramaTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateAiDramaTask
+// Ai漫剧工作流，输入剧本，自动拆分分镜，生成Ai漫剧
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CREATEAIGCTASKFAILED = "FailedOperation.CreateAIGCTaskFailed"
+//  FAILEDOPERATION_USERARREARS = "FailedOperation.UserArrears"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED_CREATETASK = "LimitExceeded.CreateTask"
+func (c *Client) CreateAiDramaTask(request *CreateAiDramaTaskRequest) (response *CreateAiDramaTaskResponse, err error) {
+    return c.CreateAiDramaTaskWithContext(context.Background(), request)
+}
+
+// CreateAiDramaTask
+// Ai漫剧工作流，输入剧本，自动拆分分镜，生成Ai漫剧
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CREATEAIGCTASKFAILED = "FailedOperation.CreateAIGCTaskFailed"
+//  FAILEDOPERATION_USERARREARS = "FailedOperation.UserArrears"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED_CREATETASK = "LimitExceeded.CreateTask"
+func (c *Client) CreateAiDramaTaskWithContext(ctx context.Context, request *CreateAiDramaTaskRequest) (response *CreateAiDramaTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateAiDramaTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "CreateAiDramaTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAiDramaTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateAiDramaTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAigcAudioTaskRequest() (request *CreateAigcAudioTaskRequest) {
     request = &CreateAigcAudioTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2669,6 +2725,64 @@ func (c *Client) CreateVideoDatabaseEntryTaskWithContext(ctx context.Context, re
     request.SetContext(ctx)
     
     response = NewCreateVideoDatabaseEntryTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateVideoRedrawTaskRequest() (request *CreateVideoRedrawTaskRequest) {
+    request = &CreateVideoRedrawTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "CreateVideoRedrawTask")
+    
+    
+    return
+}
+
+func NewCreateVideoRedrawTaskResponse() (response *CreateVideoRedrawTaskResponse) {
+    response = &CreateVideoRedrawTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateVideoRedrawTask
+// 创建AIGC转绘任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CREATEAIGCTASKFAILED = "FailedOperation.CreateAIGCTaskFailed"
+//  FAILEDOPERATION_USERARREARS = "FailedOperation.UserArrears"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDURL = "InvalidParameter.InvalidUrl"
+//  LIMITEXCEEDED_CREATETASK = "LimitExceeded.CreateTask"
+func (c *Client) CreateVideoRedrawTask(request *CreateVideoRedrawTaskRequest) (response *CreateVideoRedrawTaskResponse, err error) {
+    return c.CreateVideoRedrawTaskWithContext(context.Background(), request)
+}
+
+// CreateVideoRedrawTask
+// 创建AIGC转绘任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CREATEAIGCTASKFAILED = "FailedOperation.CreateAIGCTaskFailed"
+//  FAILEDOPERATION_USERARREARS = "FailedOperation.UserArrears"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDURL = "InvalidParameter.InvalidUrl"
+//  LIMITEXCEEDED_CREATETASK = "LimitExceeded.CreateTask"
+func (c *Client) CreateVideoRedrawTaskWithContext(ctx context.Context, request *CreateVideoRedrawTaskRequest) (response *CreateVideoRedrawTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateVideoRedrawTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "CreateVideoRedrawTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateVideoRedrawTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateVideoRedrawTaskResponse()
     err = c.Send(request, response)
     return
 }

@@ -317,6 +317,9 @@ type CreateCustomerRequestParams struct {
 
 	// <p>知情同意勾选清单，用于审计回放</p>
 	ScanRateAckChecklist []*string `json:"ScanRateAckChecklist,omitnil,omitempty" name:"ScanRateAckChecklist"`
+
+	// <p>扫描优先级配置</p>
+	ScanPriority *ScanPriorityReq `json:"ScanPriority,omitnil,omitempty" name:"ScanPriority"`
 }
 
 type CreateCustomerRequest struct {
@@ -384,6 +387,9 @@ type CreateCustomerRequest struct {
 
 	// <p>知情同意勾选清单，用于审计回放</p>
 	ScanRateAckChecklist []*string `json:"ScanRateAckChecklist,omitnil,omitempty" name:"ScanRateAckChecklist"`
+
+	// <p>扫描优先级配置</p>
+	ScanPriority *ScanPriorityReq `json:"ScanPriority,omitnil,omitempty" name:"ScanPriority"`
 }
 
 func (r *CreateCustomerRequest) ToJsonString() string {
@@ -419,6 +425,7 @@ func (r *CreateCustomerRequest) FromJsonString(s string) error {
 	delete(f, "SingleIPTaskLimit")
 	delete(f, "HighRiskAck")
 	delete(f, "ScanRateAckChecklist")
+	delete(f, "ScanPriority")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCustomerRequest has unknown keys!", "")
 	}
@@ -835,6 +842,9 @@ type CreateJobRecordRequestParams struct {
 
 	// <p>知情同意勾选清单，用于审计回放</p>
 	ScanRateAckChecklist []*string `json:"ScanRateAckChecklist,omitnil,omitempty" name:"ScanRateAckChecklist"`
+
+	// <p>扫描优先级配置</p>
+	ScanPriority *ScanPriorityReq `json:"ScanPriority,omitnil,omitempty" name:"ScanPriority"`
 }
 
 type CreateJobRecordRequest struct {
@@ -866,6 +876,9 @@ type CreateJobRecordRequest struct {
 
 	// <p>知情同意勾选清单，用于审计回放</p>
 	ScanRateAckChecklist []*string `json:"ScanRateAckChecklist,omitnil,omitempty" name:"ScanRateAckChecklist"`
+
+	// <p>扫描优先级配置</p>
+	ScanPriority *ScanPriorityReq `json:"ScanPriority,omitnil,omitempty" name:"ScanPriority"`
 }
 
 func (r *CreateJobRecordRequest) ToJsonString() string {
@@ -889,6 +902,7 @@ func (r *CreateJobRecordRequest) FromJsonString(s string) error {
 	delete(f, "SingleIPTaskLimit")
 	delete(f, "HighRiskAck")
 	delete(f, "ScanRateAckChecklist")
+	delete(f, "ScanPriority")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateJobRecordRequest has unknown keys!", "")
 	}
@@ -1756,6 +1770,10 @@ type Customer struct {
 
 	// <p>端口扫描 QPS，默认 100，下限 10，保守值 200，上限 5000</p>
 	PortScanQps *int64 `json:"PortScanQps,omitnil,omitempty" name:"PortScanQps"`
+
+	// <p>扫描优先级配置</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScanPriority *ScanPriorityDisplay `json:"ScanPriority,omitnil,omitempty" name:"ScanPriority"`
 }
 
 // Predefined struct for user
@@ -3097,7 +3115,7 @@ type DescribeCustomersRequestParams struct {
 	// 查询数组
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 企业名称模糊搜索
+	// <p>企业名称模糊搜索</p>
 	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
 }
 
@@ -3113,7 +3131,7 @@ type DescribeCustomersRequest struct {
 	// 查询数组
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 企业名称模糊搜索
+	// <p>企业名称模糊搜索</p>
 	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
 }
 
@@ -3141,10 +3159,10 @@ func (r *DescribeCustomersRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCustomersResponseParams struct {
-	// 总数
+	// <p>总数</p>
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
-	// 企业列表
+	// <p>企业列表</p>
 	List []*Customer `json:"List,omitnil,omitempty" name:"List"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7206,44 +7224,53 @@ type DisplayJobRecordDetail struct {
 }
 
 type DisplayLeakageCode struct {
-	// 主键ID
+	// <p>主键ID</p>
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 公共字段
+	// <p>公共字段</p>
 	DisplayToolCommon *DisplayToolCommon `json:"DisplayToolCommon,omitnil,omitempty" name:"DisplayToolCommon"`
 
-	// 事件名称
+	// <p>事件名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 事件描述
+	// <p>事件描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 数据源
+	// <p>数据源</p>
 	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 
-	// 风险等级：1-低危 2-中危 3-高危 4-严重 5-误报
+	// <p>风险等级：1-低危 2-中危 3-高危 4-严重 5-误报</p>
 	RiskLevel *int64 `json:"RiskLevel,omitnil,omitempty" name:"RiskLevel"`
 
-	// 仓库名称
+	// <p>仓库名称</p>
 	HubName *string `json:"HubName,omitnil,omitempty" name:"HubName"`
 
-	// 链接
+	// <p>链接</p>
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
-	// 截图
+	// <p>截图</p>
 	Screenshot *string `json:"Screenshot,omitnil,omitempty" name:"Screenshot"`
 
-	// 建议
+	// <p>建议</p>
 	Suggestion *string `json:"Suggestion,omitnil,omitempty" name:"Suggestion"`
 
-	// 关键词
+	// <p>关键词</p>
 	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
 
-	// 处置状态：0-待处理 1-处理中 2-已处理
+	// <p>处置状态</p><p>枚举值：</p><ul><li>0： 待处理</li><li>1： 处理中</li><li>2： 已处理</li><li>3： 误报</li></ul>
 	HandlingStatus *int64 `json:"HandlingStatus,omitnil,omitempty" name:"HandlingStatus"`
 
-	// 备注
+	// <p>备注</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// <p>仓库命名空间</p>
+	RepoNamespace *string `json:"RepoNamespace,omitnil,omitempty" name:"RepoNamespace"`
+
+	// <p>仓库名称</p>
+	RepoName *string `json:"RepoName,omitnil,omitempty" name:"RepoName"`
+
+	// <p>作者名称</p>
+	AuthorName *string `json:"AuthorName,omitnil,omitempty" name:"AuthorName"`
 }
 
 type DisplayLeakageData struct {
@@ -7987,6 +8014,9 @@ type ModifyCustomerRequestParams struct {
 
 	// <p>知情同意勾选清单，用于审计回放</p>
 	ScanRateAckChecklist []*string `json:"ScanRateAckChecklist,omitnil,omitempty" name:"ScanRateAckChecklist"`
+
+	// <p>扫描优先级配置</p>
+	ScanPriority *ScanPriorityReq `json:"ScanPriority,omitnil,omitempty" name:"ScanPriority"`
 }
 
 type ModifyCustomerRequest struct {
@@ -8054,6 +8084,9 @@ type ModifyCustomerRequest struct {
 
 	// <p>知情同意勾选清单，用于审计回放</p>
 	ScanRateAckChecklist []*string `json:"ScanRateAckChecklist,omitnil,omitempty" name:"ScanRateAckChecklist"`
+
+	// <p>扫描优先级配置</p>
+	ScanPriority *ScanPriorityReq `json:"ScanPriority,omitnil,omitempty" name:"ScanPriority"`
 }
 
 func (r *ModifyCustomerRequest) ToJsonString() string {
@@ -8089,6 +8122,7 @@ func (r *ModifyCustomerRequest) FromJsonString(s string) error {
 	delete(f, "SingleIPTaskLimit")
 	delete(f, "HighRiskAck")
 	delete(f, "ScanRateAckChecklist")
+	delete(f, "ScanPriority")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCustomerRequest has unknown keys!", "")
 	}
@@ -8275,6 +8309,24 @@ func (r *ModifySeedStatusResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ModifySeedStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type ScanPriorityDisplay struct {
+	// <p>只对新增资产进行漏洞扫描</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OnlyScanNewAsset *bool `json:"OnlyScanNewAsset,omitnil,omitempty" name:"OnlyScanNewAsset"`
+
+	// <p>启用的优先级规则(有序):new_asset,high_risk_port,admin_panel,high_risk_fingerprint</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PriorityRules []*string `json:"PriorityRules,omitnil,omitempty" name:"PriorityRules"`
+}
+
+type ScanPriorityReq struct {
+	// <p>只对新增资产进行漏洞扫描</p>
+	OnlyScanNewAsset *bool `json:"OnlyScanNewAsset,omitnil,omitempty" name:"OnlyScanNewAsset"`
+
+	// <p>启用的优先级规则(有序):new_asset,high_risk_port,admin_panel,high_risk_fingerprint</p>
+	PriorityRules []*string `json:"PriorityRules,omitnil,omitempty" name:"PriorityRules"`
 }
 
 // Predefined struct for user

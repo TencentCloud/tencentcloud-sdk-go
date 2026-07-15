@@ -398,6 +398,9 @@ const (
 	// SQL解析失败。
 	INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
 
+	// 传入的 SQL 配置参数不合法
+	INVALIDPARAMETER_INVALIDSQLCONFIG = "InvalidParameter.InvalidSQLConfig"
+
 	// 参数校验失败，请调整参数，或者提交工单联系我们
 	INVALIDPARAMETER_INVALIDSQLCONFIGSQL = "InvalidParameter.InvalidSQLConfigSQL"
 

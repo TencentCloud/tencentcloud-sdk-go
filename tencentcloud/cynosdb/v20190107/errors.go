@@ -35,6 +35,9 @@ const (
 	// 鉴权失败，请稍后重试。如果持续不成功，请联系客服进行处理。
 	FAILEDOPERATION_CAMSIGANDAUTHERROR = "FailedOperation.CamSigAndAuthError"
 
+	// 创建审计失败
+	FAILEDOPERATION_CREATEAUDITFAILERROR = "FailedOperation.CreateAuditFailError"
+
 	// 创建并支付订单失败。
 	FAILEDOPERATION_CREATEORDER = "FailedOperation.CreateOrder"
 

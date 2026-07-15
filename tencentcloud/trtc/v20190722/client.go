@@ -68,6 +68,7 @@ func NewAsyncTextToSpeechResponse() (response *AsyncTextToSpeechResponse) {
 // 异步语音合成
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_TEXT = "InvalidParameter.Text"
 //  INVALIDPARAMETER_TEXTLENGTH = "InvalidParameter.TextLength"
 //  UNSUPPORTEDOPERATION_TASKLIMIT = "UnsupportedOperation.TaskLimit"
 func (c *Client) AsyncTextToSpeech(request *AsyncTextToSpeechRequest) (response *AsyncTextToSpeechResponse, err error) {
@@ -78,6 +79,7 @@ func (c *Client) AsyncTextToSpeech(request *AsyncTextToSpeechRequest) (response 
 // 异步语音合成
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_TEXT = "InvalidParameter.Text"
 //  INVALIDPARAMETER_TEXTLENGTH = "InvalidParameter.TextLength"
 //  UNSUPPORTEDOPERATION_TASKLIMIT = "UnsupportedOperation.TaskLimit"
 func (c *Client) AsyncTextToSpeechWithContext(ctx context.Context, request *AsyncTextToSpeechRequest) (response *AsyncTextToSpeechResponse, err error) {
@@ -5550,6 +5552,7 @@ func NewTextToSpeechResponse() (response *TextToSpeechResponse) {
 // 语音合成接口
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_MODEL = "InvalidParameter.Model"
 //  INVALIDPARAMETER_PITCH = "InvalidParameter.Pitch"
 //  INVALIDPARAMETER_PRONUNCIATIONDICT = "InvalidParameter.PronunciationDict"
 //  INVALIDPARAMETER_SAMPLERATE = "InvalidParameter.SampleRate"
@@ -5570,6 +5573,7 @@ func (c *Client) TextToSpeech(request *TextToSpeechRequest) (response *TextToSpe
 // 语音合成接口
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_MODEL = "InvalidParameter.Model"
 //  INVALIDPARAMETER_PITCH = "InvalidParameter.Pitch"
 //  INVALIDPARAMETER_PRONUNCIATIONDICT = "InvalidParameter.PronunciationDict"
 //  INVALIDPARAMETER_SAMPLERATE = "InvalidParameter.SampleRate"
@@ -5620,6 +5624,7 @@ func NewTextToSpeechSSEResponse() (response *TextToSpeechSSEResponse) {
 // SSE流式文本转语音
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_MODEL = "InvalidParameter.Model"
 //  INVALIDPARAMETER_PITCH = "InvalidParameter.Pitch"
 //  INVALIDPARAMETER_PRONUNCIATIONDICT = "InvalidParameter.PronunciationDict"
 //  INVALIDPARAMETER_SAMPLERATE = "InvalidParameter.SampleRate"
@@ -5639,6 +5644,7 @@ func (c *Client) TextToSpeechSSE(request *TextToSpeechSSERequest) (response *Tex
 // SSE流式文本转语音
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_MODEL = "InvalidParameter.Model"
 //  INVALIDPARAMETER_PITCH = "InvalidParameter.Pitch"
 //  INVALIDPARAMETER_PRONUNCIATIONDICT = "InvalidParameter.PronunciationDict"
 //  INVALIDPARAMETER_SAMPLERATE = "InvalidParameter.SampleRate"

@@ -54,7 +54,7 @@ type AIAgentAsset struct {
 	// <p>metadata 有风险时对应路径</p>
 	MetadataRiskURL *string `json:"MetadataRiskURL,omitnil,omitempty" name:"MetadataRiskURL"`
 
-	// <p>无</p>
+	// <p>凭据 Skill 安装状态</p>
 	SkillState *SkillState `json:"SkillState,omitnil,omitempty" name:"SkillState"`
 
 	// <p>流量沙箱插件状态</p>
@@ -2912,13 +2912,13 @@ type CosBucketBillingInfo struct {
 }
 
 type CosBucketId struct {
-	// appid
+	// <p>appid</p>
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
 
-
+	// <p>是否自动监测</p>
 	IsAutoMonitor *uint64 `json:"IsAutoMonitor,omitnil,omitempty" name:"IsAutoMonitor"`
 
-	// bucket id集合
+	// <p>bucket id集合</p>
 	BucketIdSet []*string `json:"BucketIdSet,omitnil,omitempty" name:"BucketIdSet"`
 }
 
@@ -22301,7 +22301,7 @@ type DspmIdentifyCategoryItem struct {
 	// <p>更新时间</p>
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// <p>无</p>
+	// <p>关联的识别模板信息</p>
 	ComplianceRelations []*DspmIdentifyRefComplianceInfo `json:"ComplianceRelations,omitnil,omitempty" name:"ComplianceRelations"`
 }
 
@@ -22352,10 +22352,10 @@ type DspmIdentifyComplianceCategoryRelation struct {
 	// <p>分类层级</p><p>单位：层</p>
 	CategoryGrade *uint64 `json:"CategoryGrade,omitnil,omitempty" name:"CategoryGrade"`
 
-	// <p>无</p>
+	// <p>关联的数据项信息</p>
 	RuleRelations []*DspmIdentifyComplianceRuleRelation `json:"RuleRelations,omitnil,omitempty" name:"RuleRelations"`
 
-	// <p>无</p>
+	// <p>子节点信息</p>
 	Children []*DspmIdentifyComplianceCategoryRelation `json:"Children,omitnil,omitempty" name:"Children"`
 }
 
@@ -22512,7 +22512,7 @@ type DspmIdentifyLevelGroupItem struct {
 	// <p>更新时间</p><p>参数格式：YYYY-MM-DD hh:mm:ss</p>
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// <p>无</p>
+	// <p>关联的识别模板信息</p>
 	ComplianceRelations []*DspmIdentifyRefComplianceInfo `json:"ComplianceRelations,omitnil,omitempty" name:"ComplianceRelations"`
 }
 
@@ -22580,7 +22580,7 @@ type DspmIdentifyRuleItem struct {
 	// <p>非结构化规则配置状态</p>
 	UnStructuredStatus *bool `json:"UnStructuredStatus,omitnil,omitempty" name:"UnStructuredStatus"`
 
-	// <p>无</p>
+	// <p>关联的识别模板信息</p>
 	ComplianceRelations []*DspmIdentifyRefComplianceInfo `json:"ComplianceRelations,omitnil,omitempty" name:"ComplianceRelations"`
 }
 

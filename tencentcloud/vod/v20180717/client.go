@@ -15385,6 +15385,62 @@ func (c *Client) SplitMediaWithContext(ctx context.Context, request *SplitMediaR
     return
 }
 
+func NewUpdateAigcApiTokenRequest() (request *UpdateAigcApiTokenRequest) {
+    request = &UpdateAigcApiTokenRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "UpdateAigcApiToken")
+    
+    
+    return
+}
+
+func NewUpdateAigcApiTokenResponse() (response *UpdateAigcApiTokenResponse) {
+    response = &UpdateAigcApiTokenResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateAigcApiToken
+// 创建AIGC调用API的Token。创建后数据同步有延时，约30秒后可查询或删除。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) UpdateAigcApiToken(request *UpdateAigcApiTokenRequest) (response *UpdateAigcApiTokenResponse, err error) {
+    return c.UpdateAigcApiTokenWithContext(context.Background(), request)
+}
+
+// UpdateAigcApiToken
+// 创建AIGC调用API的Token。创建后数据同步有延时，约30秒后可查询或删除。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) UpdateAigcApiTokenWithContext(ctx context.Context, request *UpdateAigcApiTokenRequest) (response *UpdateAigcApiTokenResponse, err error) {
+    if request == nil {
+        request = NewUpdateAigcApiTokenRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vod", APIVersion, "UpdateAigcApiToken")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateAigcApiToken require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateAigcApiTokenResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewVerifyDomainRecordRequest() (request *VerifyDomainRecordRequest) {
     request = &VerifyDomainRecordRequest{
         BaseRequest: &tchttp.BaseRequest{},
