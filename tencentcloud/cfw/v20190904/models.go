@@ -115,20 +115,26 @@ type AccessInstanceInfo struct {
 
 // Predefined struct for user
 type AddAclRuleRequestParams struct {
-	// 需要添加的访问控制规则列表
+	// <p>需要添加的访问控制规则列表</p>
 	Rules []*CreateRuleItem `json:"Rules,omitnil,omitempty" name:"Rules"`
 
-	// 添加规则的来源，一般不需要使用，值insert_rule 表示插入指定位置的规则；值batch_import 表示批量导入规则；为空时表示添加规则
+	// <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+	CfwAiAgentOperationSource *string `json:"CfwAiAgentOperationSource,omitnil,omitempty" name:"CfwAiAgentOperationSource"`
+
+	// <p>添加规则的来源，一般不需要使用，值insert_rule 表示插入指定位置的规则；值batch_import 表示批量导入规则；为空时表示添加规则</p>
 	From *string `json:"From,omitnil,omitempty" name:"From"`
 }
 
 type AddAclRuleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 需要添加的访问控制规则列表
+	// <p>需要添加的访问控制规则列表</p>
 	Rules []*CreateRuleItem `json:"Rules,omitnil,omitempty" name:"Rules"`
 
-	// 添加规则的来源，一般不需要使用，值insert_rule 表示插入指定位置的规则；值batch_import 表示批量导入规则；为空时表示添加规则
+	// <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+	CfwAiAgentOperationSource *string `json:"CfwAiAgentOperationSource,omitnil,omitempty" name:"CfwAiAgentOperationSource"`
+
+	// <p>添加规则的来源，一般不需要使用，值insert_rule 表示插入指定位置的规则；值batch_import 表示批量导入规则；为空时表示添加规则</p>
 	From *string `json:"From,omitnil,omitempty" name:"From"`
 }
 
@@ -145,6 +151,7 @@ func (r *AddAclRuleRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Rules")
+	delete(f, "CfwAiAgentOperationSource")
 	delete(f, "From")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddAclRuleRequest has unknown keys!", "")
@@ -154,7 +161,7 @@ func (r *AddAclRuleRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AddAclRuleResponseParams struct {
-	// 创建成功后返回新策略ID列表
+	// <p>创建成功后返回新策略ID列表</p>
 	RuleUuid []*int64 `json:"RuleUuid,omitnil,omitempty" name:"RuleUuid"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -182,6 +189,9 @@ type AddEnterpriseSecurityGroupRulesRequestParams struct {
 	// <p>创建规则数据</p>
 	Data []*SecurityGroupRule `json:"Data,omitnil,omitempty" name:"Data"`
 
+	// <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+	CfwAiAgentOperationSource *string `json:"CfwAiAgentOperationSource,omitnil,omitempty" name:"CfwAiAgentOperationSource"`
+
 	// <p>添加类型，0：添加到最后，1：添加到最前；2：中间插入；默认0添加到最后</p>
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 
@@ -203,6 +213,9 @@ type AddEnterpriseSecurityGroupRulesRequest struct {
 	
 	// <p>创建规则数据</p>
 	Data []*SecurityGroupRule `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+	CfwAiAgentOperationSource *string `json:"CfwAiAgentOperationSource,omitnil,omitempty" name:"CfwAiAgentOperationSource"`
 
 	// <p>添加类型，0：添加到最后，1：添加到最前；2：中间插入；默认0添加到最后</p>
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
@@ -233,6 +246,7 @@ func (r *AddEnterpriseSecurityGroupRulesRequest) FromJsonString(s string) error 
 		return err
 	}
 	delete(f, "Data")
+	delete(f, "CfwAiAgentOperationSource")
 	delete(f, "Type")
 	delete(f, "ClientToken")
 	delete(f, "IsDelay")
@@ -274,20 +288,26 @@ func (r *AddEnterpriseSecurityGroupRulesResponse) FromJsonString(s string) error
 
 // Predefined struct for user
 type AddNatAcRuleRequestParams struct {
-	// 需要添加的nat访问控制规则列表
+	// <p>需要添加的nat访问控制规则列表</p>
 	Rules []*CreateNatRuleItem `json:"Rules,omitnil,omitempty" name:"Rules"`
 
-	// 添加规则的来源，一般不需要使用，值insert_rule 表示插入指定位置的规则；值batch_import 表示批量导入规则；为空时表示添加规则
+	// <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+	CfwAiAgentOperationSource *string `json:"CfwAiAgentOperationSource,omitnil,omitempty" name:"CfwAiAgentOperationSource"`
+
+	// <p>添加规则的来源，一般不需要使用，值insert_rule 表示插入指定位置的规则；值batch_import 表示批量导入规则；为空时表示添加规则</p>
 	From *string `json:"From,omitnil,omitempty" name:"From"`
 }
 
 type AddNatAcRuleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 需要添加的nat访问控制规则列表
+	// <p>需要添加的nat访问控制规则列表</p>
 	Rules []*CreateNatRuleItem `json:"Rules,omitnil,omitempty" name:"Rules"`
 
-	// 添加规则的来源，一般不需要使用，值insert_rule 表示插入指定位置的规则；值batch_import 表示批量导入规则；为空时表示添加规则
+	// <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+	CfwAiAgentOperationSource *string `json:"CfwAiAgentOperationSource,omitnil,omitempty" name:"CfwAiAgentOperationSource"`
+
+	// <p>添加规则的来源，一般不需要使用，值insert_rule 表示插入指定位置的规则；值batch_import 表示批量导入规则；为空时表示添加规则</p>
 	From *string `json:"From,omitnil,omitempty" name:"From"`
 }
 
@@ -304,6 +324,7 @@ func (r *AddNatAcRuleRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Rules")
+	delete(f, "CfwAiAgentOperationSource")
 	delete(f, "From")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddNatAcRuleRequest has unknown keys!", "")
@@ -313,7 +334,7 @@ func (r *AddNatAcRuleRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AddNatAcRuleResponseParams struct {
-	// 创建成功后返回新策略ID列表
+	// <p>创建成功后返回新策略ID列表</p>
 	RuleUuid []*int64 `json:"RuleUuid,omitnil,omitempty" name:"RuleUuid"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -338,20 +359,26 @@ func (r *AddNatAcRuleResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AddVpcAcRuleRequestParams struct {
-	// 需要添加的vpc内网间规则列表
+	// <p>需要添加的vpc内网间规则列表</p>
 	Rules []*VpcRuleItem `json:"Rules,omitnil,omitempty" name:"Rules"`
 
-	// 添加规则的来源，一般不需要使用，值insert_rule 表示插入指定位置的规则；值batch_import 表示批量导入规则；为空时表示添加规则
+	// <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+	CfwAiAgentOperationSource *string `json:"CfwAiAgentOperationSource,omitnil,omitempty" name:"CfwAiAgentOperationSource"`
+
+	// <p>添加规则的来源，一般不需要使用，值insert_rule 表示插入指定位置的规则；值batch_import 表示批量导入规则；为空时表示添加规则</p>
 	From *string `json:"From,omitnil,omitempty" name:"From"`
 }
 
 type AddVpcAcRuleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 需要添加的vpc内网间规则列表
+	// <p>需要添加的vpc内网间规则列表</p>
 	Rules []*VpcRuleItem `json:"Rules,omitnil,omitempty" name:"Rules"`
 
-	// 添加规则的来源，一般不需要使用，值insert_rule 表示插入指定位置的规则；值batch_import 表示批量导入规则；为空时表示添加规则
+	// <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+	CfwAiAgentOperationSource *string `json:"CfwAiAgentOperationSource,omitnil,omitempty" name:"CfwAiAgentOperationSource"`
+
+	// <p>添加规则的来源，一般不需要使用，值insert_rule 表示插入指定位置的规则；值batch_import 表示批量导入规则；为空时表示添加规则</p>
 	From *string `json:"From,omitnil,omitempty" name:"From"`
 }
 
@@ -368,6 +395,7 @@ func (r *AddVpcAcRuleRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Rules")
+	delete(f, "CfwAiAgentOperationSource")
 	delete(f, "From")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddVpcAcRuleRequest has unknown keys!", "")
@@ -377,7 +405,7 @@ func (r *AddVpcAcRuleRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AddVpcAcRuleResponseParams struct {
-	// 创建成功后返回新策略ID列表
+	// <p>创建成功后返回新策略ID列表</p>
 	RuleUuids []*int64 `json:"RuleUuids,omitnil,omitempty" name:"RuleUuids"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -659,6 +687,20 @@ type CfwNatDnatRule struct {
 
 	// NAT防火墙转发规则描述。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+type CfwStatusMonitorFilter struct {
+	// <p>过滤字段名。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>过滤值列表，最多 10 个。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
+
+	// <p>操作符类型，可选；仅支持后端允许的类型。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OperatorType *int64 `json:"OperatorType,omitnil,omitempty" name:"OperatorType"`
 }
 
 // Predefined struct for user
@@ -1205,28 +1247,32 @@ func (r *CreateAlertCenterIsolateResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateAlertCenterOmitRequestParams struct {
-	// 处置对象,ID列表，  IdLists和IpList二选一
+	// <p>处置对象,ID列表，  IdLists和IpList二选一</p>
 	HandleIdList []*string `json:"HandleIdList,omitnil,omitempty" name:"HandleIdList"`
 
-	// 忽略数据来源：
-	// AlertTable 告警中心  InterceptionTable拦截列表
+	// <p>忽略数据来源：<br>AlertTable 告警中心  InterceptionTable拦截列表</p>
 	TableType *string `json:"TableType,omitnil,omitempty" name:"TableType"`
 
-	// 处置对象,事件ID列表
+	// <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+	CfwAiAgentOperationSource *string `json:"CfwAiAgentOperationSource,omitnil,omitempty" name:"CfwAiAgentOperationSource"`
+
+	// <p>处置对象,事件ID列表</p>
 	HandleEventIdList []*string `json:"HandleEventIdList,omitnil,omitempty" name:"HandleEventIdList"`
 }
 
 type CreateAlertCenterOmitRequest struct {
 	*tchttp.BaseRequest
 	
-	// 处置对象,ID列表，  IdLists和IpList二选一
+	// <p>处置对象,ID列表，  IdLists和IpList二选一</p>
 	HandleIdList []*string `json:"HandleIdList,omitnil,omitempty" name:"HandleIdList"`
 
-	// 忽略数据来源：
-	// AlertTable 告警中心  InterceptionTable拦截列表
+	// <p>忽略数据来源：<br>AlertTable 告警中心  InterceptionTable拦截列表</p>
 	TableType *string `json:"TableType,omitnil,omitempty" name:"TableType"`
 
-	// 处置对象,事件ID列表
+	// <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+	CfwAiAgentOperationSource *string `json:"CfwAiAgentOperationSource,omitnil,omitempty" name:"CfwAiAgentOperationSource"`
+
+	// <p>处置对象,事件ID列表</p>
 	HandleEventIdList []*string `json:"HandleEventIdList,omitnil,omitempty" name:"HandleEventIdList"`
 }
 
@@ -1244,6 +1290,7 @@ func (r *CreateAlertCenterOmitRequest) FromJsonString(s string) error {
 	}
 	delete(f, "HandleIdList")
 	delete(f, "TableType")
+	delete(f, "CfwAiAgentOperationSource")
 	delete(f, "HandleEventIdList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAlertCenterOmitRequest has unknown keys!", "")
@@ -1253,21 +1300,13 @@ func (r *CreateAlertCenterOmitRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateAlertCenterOmitResponseParams struct {
-	// 返回状态码：
-	// 0 成功
-	// 非0 失败
+	// <p>返回状态码：<br>0 成功<br>非0 失败</p>
 	ReturnCode *int64 `json:"ReturnCode,omitnil,omitempty" name:"ReturnCode"`
 
-	// 返回信息：
-	// success 成功
-	// 其他
+	// <p>返回信息：<br>success 成功<br>其他</p>
 	ReturnMsg *string `json:"ReturnMsg,omitnil,omitempty" name:"ReturnMsg"`
 
-	// 处置状态码：
-	// 0  处置成功
-	// -1 通用错误，不用处理
-	// -3 表示重复，需重新刷新列表
-	// 其他
+	// <p>处置状态码：<br>0  处置成功<br>-1 通用错误，不用处理<br>-3 表示重复，需重新刷新列表<br>其他</p>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1502,26 +1541,32 @@ func (r *CreateBlockIgnoreRuleListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateBlockIgnoreRuleNewRequestParams struct {
-	// 非自定义类型规则列表
+	// <p>非自定义类型规则列表</p>
 	Rules []*BanAndAllowRule `json:"Rules,omitnil,omitempty" name:"Rules"`
 
-	// RuleType: 1黑名单 2外部IP 3域名 4情报 5资产 6自定义规则  7入侵防御规则
+	// <p>RuleType: 1黑名单 2外部IP 3域名 4情报 5资产 6自定义规则  7入侵防御规则</p>
 	RuleType *int64 `json:"RuleType,omitnil,omitempty" name:"RuleType"`
 
-	// 删除白名单冲突地址并继续添加/删除封禁列表冲突地址并继续添加；表示是否覆盖重复数据，1为覆盖，非1不覆盖，跳过重复数据
+	// <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+	CfwAiAgentOperationSource *string `json:"CfwAiAgentOperationSource,omitnil,omitempty" name:"CfwAiAgentOperationSource"`
+
+	// <p>删除白名单冲突地址并继续添加/删除封禁列表冲突地址并继续添加；表示是否覆盖重复数据，1为覆盖，非1不覆盖，跳过重复数据</p>
 	CoverDuplicate *int64 `json:"CoverDuplicate,omitnil,omitempty" name:"CoverDuplicate"`
 }
 
 type CreateBlockIgnoreRuleNewRequest struct {
 	*tchttp.BaseRequest
 	
-	// 非自定义类型规则列表
+	// <p>非自定义类型规则列表</p>
 	Rules []*BanAndAllowRule `json:"Rules,omitnil,omitempty" name:"Rules"`
 
-	// RuleType: 1黑名单 2外部IP 3域名 4情报 5资产 6自定义规则  7入侵防御规则
+	// <p>RuleType: 1黑名单 2外部IP 3域名 4情报 5资产 6自定义规则  7入侵防御规则</p>
 	RuleType *int64 `json:"RuleType,omitnil,omitempty" name:"RuleType"`
 
-	// 删除白名单冲突地址并继续添加/删除封禁列表冲突地址并继续添加；表示是否覆盖重复数据，1为覆盖，非1不覆盖，跳过重复数据
+	// <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+	CfwAiAgentOperationSource *string `json:"CfwAiAgentOperationSource,omitnil,omitempty" name:"CfwAiAgentOperationSource"`
+
+	// <p>删除白名单冲突地址并继续添加/删除封禁列表冲突地址并继续添加；表示是否覆盖重复数据，1为覆盖，非1不覆盖，跳过重复数据</p>
 	CoverDuplicate *int64 `json:"CoverDuplicate,omitnil,omitempty" name:"CoverDuplicate"`
 }
 
@@ -1539,6 +1584,7 @@ func (r *CreateBlockIgnoreRuleNewRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Rules")
 	delete(f, "RuleType")
+	delete(f, "CfwAiAgentOperationSource")
 	delete(f, "CoverDuplicate")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBlockIgnoreRuleNewRequest has unknown keys!", "")
@@ -2546,34 +2592,38 @@ func (r *DeleteBlockIgnoreRuleListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteBlockIgnoreRuleNewRequestParams struct {
-	// 是否删除全部
+	// <p>是否删除全部</p>
 	DeleteAll *int64 `json:"DeleteAll,omitnil,omitempty" name:"DeleteAll"`
 
-	// blocklist 封禁列表 whitelist 白名单列表
+	// <p>blocklist 封禁列表 whitelist 白名单列表</p>
 	ShowType *string `json:"ShowType,omitnil,omitempty" name:"ShowType"`
 
-	// 规则列表
+	// <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+	CfwAiAgentOperationSource *string `json:"CfwAiAgentOperationSource,omitnil,omitempty" name:"CfwAiAgentOperationSource"`
+
+	// <p>规则列表</p>
 	Rules []*BanAndAllowRuleDel `json:"Rules,omitnil,omitempty" name:"Rules"`
 
-	// 封禁：1，放通：100，
-	// 主要用于全部删除时区分列表类型
+	// <p>封禁：1，放通：100，<br>主要用于全部删除时区分列表类型</p>
 	RuleType *int64 `json:"RuleType,omitnil,omitempty" name:"RuleType"`
 }
 
 type DeleteBlockIgnoreRuleNewRequest struct {
 	*tchttp.BaseRequest
 	
-	// 是否删除全部
+	// <p>是否删除全部</p>
 	DeleteAll *int64 `json:"DeleteAll,omitnil,omitempty" name:"DeleteAll"`
 
-	// blocklist 封禁列表 whitelist 白名单列表
+	// <p>blocklist 封禁列表 whitelist 白名单列表</p>
 	ShowType *string `json:"ShowType,omitnil,omitempty" name:"ShowType"`
 
-	// 规则列表
+	// <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+	CfwAiAgentOperationSource *string `json:"CfwAiAgentOperationSource,omitnil,omitempty" name:"CfwAiAgentOperationSource"`
+
+	// <p>规则列表</p>
 	Rules []*BanAndAllowRuleDel `json:"Rules,omitnil,omitempty" name:"Rules"`
 
-	// 封禁：1，放通：100，
-	// 主要用于全部删除时区分列表类型
+	// <p>封禁：1，放通：100，<br>主要用于全部删除时区分列表类型</p>
 	RuleType *int64 `json:"RuleType,omitnil,omitempty" name:"RuleType"`
 }
 
@@ -2591,6 +2641,7 @@ func (r *DeleteBlockIgnoreRuleNewRequest) FromJsonString(s string) error {
 	}
 	delete(f, "DeleteAll")
 	delete(f, "ShowType")
+	delete(f, "CfwAiAgentOperationSource")
 	delete(f, "Rules")
 	delete(f, "RuleType")
 	if len(f) > 0 {
@@ -4272,6 +4323,226 @@ func (r *DescribeCcnVpcFwSwitchResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeCfwAlertsRequestParams struct {
+	// <p>单页返回告警数。可选，默认 10，最大 50。</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>分页偏移。可选，默认 0。</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+type DescribeCfwAlertsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>单页返回告警数。可选，默认 10，最大 50。</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>分页偏移。可选，默认 0。</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+func (r *DescribeCfwAlertsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCfwAlertsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCfwAlertsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCfwAlertsResponseParams struct {
+	// <p>查询结果。UTF-8 JSON object 字符串；调用方需解析 Response.Data。</p>
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeCfwAlertsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCfwAlertsResponseParams `json:"Response"`
+}
+
+func (r *DescribeCfwAlertsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCfwAlertsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCfwAnalysisDataRequestParams struct {
+	// <p>分析场景。必填。full_traffic 表示全流量深度分析；east_west 表示东西向流量分析；alert_comprehensive 表示告警综合分析；asset_exposure 表示资产暴露面分析；access_troubleshoot 表示访问阻断排障分析。</p>
+	Scenario *string `json:"Scenario,omitnil,omitempty" name:"Scenario"`
+
+	// <p>查询开始时间。可选，格式 YYYY-MM-DD HH:MM:SS；不传时默认查询最近 7 天。</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>查询结束时间。可选，格式 YYYY-MM-DD HH:MM:SS；不传时默认当前时间。</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>分析对象类型。可选，默认 user；user 表示租户全局，asset 表示单个资产，vpc 表示 VPC，domain 表示域名。</p>
+	ObjectType *string `json:"ObjectType,omitnil,omitempty" name:"ObjectType"`
+
+	// <p>分析对象标识。ObjectType 为 asset、vpc 或 domain 时按需传入，可填写 IP、实例 ID、VPC ID 或域名。</p>
+	ObjectId *string `json:"ObjectId,omitnil,omitempty" name:"ObjectId"`
+
+	// <p>排障目标。可选，主要用于 access_troubleshoot 场景，可填写 IP 或域名。</p>
+	Target *string `json:"Target,omitnil,omitempty" name:"Target"`
+
+	// <p>需要跳过的分析段名称列表。可选；不传时执行该场景全部分析段。</p>
+	SkipSections []*string `json:"SkipSections,omitnil,omitempty" name:"SkipSections"`
+}
+
+type DescribeCfwAnalysisDataRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>分析场景。必填。full_traffic 表示全流量深度分析；east_west 表示东西向流量分析；alert_comprehensive 表示告警综合分析；asset_exposure 表示资产暴露面分析；access_troubleshoot 表示访问阻断排障分析。</p>
+	Scenario *string `json:"Scenario,omitnil,omitempty" name:"Scenario"`
+
+	// <p>查询开始时间。可选，格式 YYYY-MM-DD HH:MM:SS；不传时默认查询最近 7 天。</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>查询结束时间。可选，格式 YYYY-MM-DD HH:MM:SS；不传时默认当前时间。</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>分析对象类型。可选，默认 user；user 表示租户全局，asset 表示单个资产，vpc 表示 VPC，domain 表示域名。</p>
+	ObjectType *string `json:"ObjectType,omitnil,omitempty" name:"ObjectType"`
+
+	// <p>分析对象标识。ObjectType 为 asset、vpc 或 domain 时按需传入，可填写 IP、实例 ID、VPC ID 或域名。</p>
+	ObjectId *string `json:"ObjectId,omitnil,omitempty" name:"ObjectId"`
+
+	// <p>排障目标。可选，主要用于 access_troubleshoot 场景，可填写 IP 或域名。</p>
+	Target *string `json:"Target,omitnil,omitempty" name:"Target"`
+
+	// <p>需要跳过的分析段名称列表。可选；不传时执行该场景全部分析段。</p>
+	SkipSections []*string `json:"SkipSections,omitnil,omitempty" name:"SkipSections"`
+}
+
+func (r *DescribeCfwAnalysisDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCfwAnalysisDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Scenario")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "ObjectType")
+	delete(f, "ObjectId")
+	delete(f, "Target")
+	delete(f, "SkipSections")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCfwAnalysisDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCfwAnalysisDataResponseParams struct {
+	// <p>查询结果。UTF-8 JSON object 字符串；调用方需解析 Response.Data。</p>
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeCfwAnalysisDataResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCfwAnalysisDataResponseParams `json:"Response"`
+}
+
+func (r *DescribeCfwAnalysisDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCfwAnalysisDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCfwAssetsRequestParams struct {
+	// 最大返回资产数。可选，默认 100；取值 1 至 1000。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeCfwAssetsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 最大返回资产数。可选，默认 100；取值 1 至 1000。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeCfwAssetsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCfwAssetsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCfwAssetsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCfwAssetsResponseParams struct {
+	// 查询结果。UTF-8 JSON object 字符串；调用方需解析 Response.Data。
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeCfwAssetsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCfwAssetsResponseParams `json:"Response"`
+}
+
+func (r *DescribeCfwAssetsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCfwAssetsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeCfwEipsRequestParams struct {
 	// 1：cfw接入模式，目前仅支持接入模式实例
 	Mode *uint64 `json:"Mode,omitnil,omitempty" name:"Mode"`
@@ -4397,6 +4668,552 @@ func (r *DescribeCfwInsStatusResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCfwInsStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCfwLogsRequestParams struct {
+	// <p>日志类型。首次查询必填；使用 NextToken 续查时不能传。枚举值包括 cfw_netflow_border、cfw_netflow_vpc、cfw_netflow_nat、cfw_netflow_nta、cfw_netflow_dns、cfw_rule_threatinfo、cfw_rule_acl、cfw_rule_vpc_acl、cfw_rule_nat_acl、cfw_ndr_subject_risk、cfw_ndr_dataleak_entry、cfw_ndr_ai_audit、cfw_feature_collect、cfw_behavior_collect、operate_log_all。</p>
+	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
+
+	// <p>CLS CQL 查询语句。默认 *；使用 NextToken 续查时不能传。</p>
+	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
+
+	// <p>查询起始时间。支持 RFC3339、YYYY-MM-DD HH:MM:SS、YYYY-MM-DD 或 Unix 时间戳；传入后从该时间向后查询 TimeRange；使用 NextToken 续查时不能传。</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>查询时间范围。默认 1h；格式为正整数加单位 m/h/d，例如 5m、1h、24h、7d；使用 NextToken 续查时不能传。</p>
+	TimeRange *string `json:"TimeRange,omitnil,omitempty" name:"TimeRange"`
+
+	// <p>单页返回条数。默认 100，最大 1000；使用 NextToken 续查时不能传。</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>上一页 Response.Data 返回的不透明续查 token。首次查询不传；续查时只传 NextToken。无效、篡改、过期或租户不匹配会被拒绝。</p>
+	NextToken *string `json:"NextToken,omitnil,omitempty" name:"NextToken"`
+}
+
+type DescribeCfwLogsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>日志类型。首次查询必填；使用 NextToken 续查时不能传。枚举值包括 cfw_netflow_border、cfw_netflow_vpc、cfw_netflow_nat、cfw_netflow_nta、cfw_netflow_dns、cfw_rule_threatinfo、cfw_rule_acl、cfw_rule_vpc_acl、cfw_rule_nat_acl、cfw_ndr_subject_risk、cfw_ndr_dataleak_entry、cfw_ndr_ai_audit、cfw_feature_collect、cfw_behavior_collect、operate_log_all。</p>
+	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
+
+	// <p>CLS CQL 查询语句。默认 *；使用 NextToken 续查时不能传。</p>
+	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
+
+	// <p>查询起始时间。支持 RFC3339、YYYY-MM-DD HH:MM:SS、YYYY-MM-DD 或 Unix 时间戳；传入后从该时间向后查询 TimeRange；使用 NextToken 续查时不能传。</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>查询时间范围。默认 1h；格式为正整数加单位 m/h/d，例如 5m、1h、24h、7d；使用 NextToken 续查时不能传。</p>
+	TimeRange *string `json:"TimeRange,omitnil,omitempty" name:"TimeRange"`
+
+	// <p>单页返回条数。默认 100，最大 1000；使用 NextToken 续查时不能传。</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>上一页 Response.Data 返回的不透明续查 token。首次查询不传；续查时只传 NextToken。无效、篡改、过期或租户不匹配会被拒绝。</p>
+	NextToken *string `json:"NextToken,omitnil,omitempty" name:"NextToken"`
+}
+
+func (r *DescribeCfwLogsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCfwLogsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LogType")
+	delete(f, "Query")
+	delete(f, "StartTime")
+	delete(f, "TimeRange")
+	delete(f, "Limit")
+	delete(f, "NextToken")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCfwLogsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCfwLogsResponseParams struct {
+	// <p>查询结果。UTF-8 JSON object 字符串；调用方需解析 Response.Data。</p>
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeCfwLogsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCfwLogsResponseParams `json:"Response"`
+}
+
+func (r *DescribeCfwLogsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCfwLogsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCfwRiskOverviewRequestParams struct {
+
+}
+
+type DescribeCfwRiskOverviewRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeCfwRiskOverviewRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCfwRiskOverviewRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCfwRiskOverviewRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCfwRiskOverviewResponseParams struct {
+	// 查询结果。UTF-8 JSON object 字符串；调用方需解析 Response.Data。
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeCfwRiskOverviewResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCfwRiskOverviewResponseParams `json:"Response"`
+}
+
+func (r *DescribeCfwRiskOverviewResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCfwRiskOverviewResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCfwRuleOptimizationRequestParams struct {
+	// 长期零命中规则阈值天数。可选，必须为正整数，默认 180。
+	IdleDays *int64 `json:"IdleDays,omitnil,omitempty" name:"IdleDays"`
+
+	// 单 IP 离散过多聚合建议的最小数量。可选，最小为 2，默认 10。
+	IpAggMin *int64 `json:"IpAggMin,omitnil,omitempty" name:"IpAggMin"`
+
+	// 可迁移 IOC 建议中返回的样例 IOC 数量上限。可选，必须为正整数，默认 50。
+	IocSample *int64 `json:"IocSample,omitnil,omitempty" name:"IocSample"`
+}
+
+type DescribeCfwRuleOptimizationRequest struct {
+	*tchttp.BaseRequest
+	
+	// 长期零命中规则阈值天数。可选，必须为正整数，默认 180。
+	IdleDays *int64 `json:"IdleDays,omitnil,omitempty" name:"IdleDays"`
+
+	// 单 IP 离散过多聚合建议的最小数量。可选，最小为 2，默认 10。
+	IpAggMin *int64 `json:"IpAggMin,omitnil,omitempty" name:"IpAggMin"`
+
+	// 可迁移 IOC 建议中返回的样例 IOC 数量上限。可选，必须为正整数，默认 50。
+	IocSample *int64 `json:"IocSample,omitnil,omitempty" name:"IocSample"`
+}
+
+func (r *DescribeCfwRuleOptimizationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCfwRuleOptimizationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "IdleDays")
+	delete(f, "IpAggMin")
+	delete(f, "IocSample")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCfwRuleOptimizationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCfwRuleOptimizationResponseParams struct {
+	// 查询结果。UTF-8 JSON object 字符串；调用方需解析 Response.Data。示例仅展示代表性字段；完整结果还包含 rule_type_name、rule_total、rule_active、rule_skipped_geo_or_cloud、dimension_skipped、thresholds 和 generated_at，finding 还包含 risk_level、affected_rule_uuids、affected_rule_seqs、recommendation_action、reason 和 evidence。结果过大时返回摘要，不返回 findings，并增加 truncated 和 truncated_reason。
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeCfwRuleOptimizationResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCfwRuleOptimizationResponseParams `json:"Response"`
+}
+
+func (r *DescribeCfwRuleOptimizationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCfwRuleOptimizationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCfwRulesRequestParams struct {
+	// <p>规则域。必填。枚举：border 互联网边界；nat NAT 边界；vpc VPC 间；enterprise_sg 企业安全组；intrusion_prevention 入侵防御。RuleType=intrusion_prevention 时还必须传 ListType。</p>
+	RuleType *string `json:"RuleType,omitnil,omitempty" name:"RuleType"`
+
+	// <p>入侵防御列表类型。仅 RuleType=intrusion_prevention 时使用并必填。blocklist 表示封禁列表，whitelist 表示白名单策略，isolate 表示隔离列表。</p>
+	ListType *string `json:"ListType,omitnil,omitempty" name:"ListType"`
+
+	// <p>访问方向过滤。可选。0 表示出站，1 表示入站；不传则不过滤。RuleType=intrusion_prevention 时不支持。</p>
+	Direction *int64 `json:"Direction,omitnil,omitempty" name:"Direction"`
+
+	// <p>规则动作过滤。可选。0 表示观察，1 表示阻断，2 表示放行；不传则不过滤。</p>
+	RuleAction *int64 `json:"RuleAction,omitnil,omitempty" name:"RuleAction"`
+
+	// <p>精确规则 ID 过滤。可选。用于按数值规则标识定位单条规则。</p>
+	RuleId *int64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// <p>单页返回规则数。可选，默认 100，最大 1000。</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>分页偏移。可选，默认 0。</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+type DescribeCfwRulesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>规则域。必填。枚举：border 互联网边界；nat NAT 边界；vpc VPC 间；enterprise_sg 企业安全组；intrusion_prevention 入侵防御。RuleType=intrusion_prevention 时还必须传 ListType。</p>
+	RuleType *string `json:"RuleType,omitnil,omitempty" name:"RuleType"`
+
+	// <p>入侵防御列表类型。仅 RuleType=intrusion_prevention 时使用并必填。blocklist 表示封禁列表，whitelist 表示白名单策略，isolate 表示隔离列表。</p>
+	ListType *string `json:"ListType,omitnil,omitempty" name:"ListType"`
+
+	// <p>访问方向过滤。可选。0 表示出站，1 表示入站；不传则不过滤。RuleType=intrusion_prevention 时不支持。</p>
+	Direction *int64 `json:"Direction,omitnil,omitempty" name:"Direction"`
+
+	// <p>规则动作过滤。可选。0 表示观察，1 表示阻断，2 表示放行；不传则不过滤。</p>
+	RuleAction *int64 `json:"RuleAction,omitnil,omitempty" name:"RuleAction"`
+
+	// <p>精确规则 ID 过滤。可选。用于按数值规则标识定位单条规则。</p>
+	RuleId *int64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// <p>单页返回规则数。可选，默认 100，最大 1000。</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>分页偏移。可选，默认 0。</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+func (r *DescribeCfwRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCfwRulesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RuleType")
+	delete(f, "ListType")
+	delete(f, "Direction")
+	delete(f, "RuleAction")
+	delete(f, "RuleId")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCfwRulesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCfwRulesResponseParams struct {
+	// <p>查询结果。UTF-8 JSON object 字符串；调用方需解析 Response.Data。</p>
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeCfwRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCfwRulesResponseParams `json:"Response"`
+}
+
+func (r *DescribeCfwRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCfwRulesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCfwStatusMonitorRequestParams struct {
+	// <p>操作类型。describe_scene 表示发现场景和二级下拉选项；fetch_scene 表示获取具体场景快照。必填。</p>
+	Op *string `json:"Op,omitnil,omitempty" name:"Op"`
+
+	// <p>防火墙场景类型。支持 internet_edge（互联网边界防火墙）、nat_cluster（NAT边界防火墙-集群）、nat_ha（NAT边界防火墙-主备）、vpc_cluster（VPC边界防火墙-集群）、vpc_ha（VPC边界防火墙-主备）。必填。</p>
+	FirewallType *string `json:"FirewallType,omitnil,omitempty" name:"FirewallType"`
+
+	// <p>二级下拉选项 ID。fetch_scene 按需传入；internet_edge 为地域，NAT 为实例 ID，VPC 带宽场景为防火墙组 ID；vpc_cluster 的 connections 汇总场景会忽略该参数。</p>
+	SelectionId *string `json:"SelectionId,omitnil,omitempty" name:"SelectionId"`
+
+	// <p>二级下拉显示名称。可替代 SelectionId 按名称匹配。</p>
+	SelectionName *string `json:"SelectionName,omitnil,omitempty" name:"SelectionName"`
+
+	// <p>引擎实例 ID。主要用于 vpc_ha 下一个防火墙组对应多个实例的场景。</p>
+	SelectionInstanceId *string `json:"SelectionInstanceId,omitnil,omitempty" name:"SelectionInstanceId"`
+
+	// <p>指标页签。fetch_scene 可传；不传时使用该场景默认值。支持 bandwidth、connections。</p>
+	Metric *string `json:"Metric,omitnil,omitempty" name:"Metric"`
+
+	// <p>指标下的视角。fetch_scene 可传；不传时使用该场景默认值。支持 ip、subnet、session、switch、vpc，实际可用组合以 describe_scene 返回为准。</p>
+	Perspective *string `json:"Perspective,omitnil,omitempty" name:"Perspective"`
+
+	// <p>NAT 主备连接数 IP 视角范围。external 表示外部 IP，asset 表示资产 IP；仅 nat_ha + connections + ip 使用。</p>
+	IpScope *string `json:"IpScope,omitnil,omitempty" name:"IpScope"`
+
+	// <p>预设时间范围。默认 24h；fetch_scene 使用。支持 5m、15m、30m、1h、6h、24h、3d、7d、30d、today、yesterday、day_before_yesterday、this_week、last_week、this_month。</p>
+	TimePreset *string `json:"TimePreset,omitnil,omitempty" name:"TimePreset"`
+
+	// <p>自定义开始时间。格式 YYYY-MM-DD HH:MM:SS；必须与 EndTime 同时传，最大跨度 30 天。</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>自定义结束时间。格式 YYYY-MM-DD HH:MM:SS；必须与 StartTime 同时传，最大跨度 30 天。</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>页码，从 1 开始。默认 1；fetch_scene 列表视角使用。</p>
+	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
+
+	// <p>每页条数。默认 10，最大 100；fetch_scene 列表视角使用。</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>是否只获取概览数据。true 时 fetch_scene 只请求 overview，跳过 table/detail，适合只看场景快照汇总。</p>
+	OverviewOnly *bool `json:"OverviewOnly,omitnil,omitempty" name:"OverviewOnly"`
+
+	// <p>原始偏移量覆盖。可选，传入后覆盖 Page 计算结果；必须大于等于 0 且不超过安全上限。</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>排序字段。可选，只接受当前场景后端允许的安全字段。</p>
+	SortBy *string `json:"SortBy,omitnil,omitempty" name:"SortBy"`
+
+	// <p>排序方向。默认 desc；支持 asc、desc。</p>
+	SortOrder *string `json:"SortOrder,omitnil,omitempty" name:"SortOrder"`
+
+	// <p>过滤条件列表。可选，最多 5 个；是否支持以及字段名以具体 fetch_scene 场景为准。</p>
+	Filters []*CfwStatusMonitorFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type DescribeCfwStatusMonitorRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>操作类型。describe_scene 表示发现场景和二级下拉选项；fetch_scene 表示获取具体场景快照。必填。</p>
+	Op *string `json:"Op,omitnil,omitempty" name:"Op"`
+
+	// <p>防火墙场景类型。支持 internet_edge（互联网边界防火墙）、nat_cluster（NAT边界防火墙-集群）、nat_ha（NAT边界防火墙-主备）、vpc_cluster（VPC边界防火墙-集群）、vpc_ha（VPC边界防火墙-主备）。必填。</p>
+	FirewallType *string `json:"FirewallType,omitnil,omitempty" name:"FirewallType"`
+
+	// <p>二级下拉选项 ID。fetch_scene 按需传入；internet_edge 为地域，NAT 为实例 ID，VPC 带宽场景为防火墙组 ID；vpc_cluster 的 connections 汇总场景会忽略该参数。</p>
+	SelectionId *string `json:"SelectionId,omitnil,omitempty" name:"SelectionId"`
+
+	// <p>二级下拉显示名称。可替代 SelectionId 按名称匹配。</p>
+	SelectionName *string `json:"SelectionName,omitnil,omitempty" name:"SelectionName"`
+
+	// <p>引擎实例 ID。主要用于 vpc_ha 下一个防火墙组对应多个实例的场景。</p>
+	SelectionInstanceId *string `json:"SelectionInstanceId,omitnil,omitempty" name:"SelectionInstanceId"`
+
+	// <p>指标页签。fetch_scene 可传；不传时使用该场景默认值。支持 bandwidth、connections。</p>
+	Metric *string `json:"Metric,omitnil,omitempty" name:"Metric"`
+
+	// <p>指标下的视角。fetch_scene 可传；不传时使用该场景默认值。支持 ip、subnet、session、switch、vpc，实际可用组合以 describe_scene 返回为准。</p>
+	Perspective *string `json:"Perspective,omitnil,omitempty" name:"Perspective"`
+
+	// <p>NAT 主备连接数 IP 视角范围。external 表示外部 IP，asset 表示资产 IP；仅 nat_ha + connections + ip 使用。</p>
+	IpScope *string `json:"IpScope,omitnil,omitempty" name:"IpScope"`
+
+	// <p>预设时间范围。默认 24h；fetch_scene 使用。支持 5m、15m、30m、1h、6h、24h、3d、7d、30d、today、yesterday、day_before_yesterday、this_week、last_week、this_month。</p>
+	TimePreset *string `json:"TimePreset,omitnil,omitempty" name:"TimePreset"`
+
+	// <p>自定义开始时间。格式 YYYY-MM-DD HH:MM:SS；必须与 EndTime 同时传，最大跨度 30 天。</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>自定义结束时间。格式 YYYY-MM-DD HH:MM:SS；必须与 StartTime 同时传，最大跨度 30 天。</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>页码，从 1 开始。默认 1；fetch_scene 列表视角使用。</p>
+	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
+
+	// <p>每页条数。默认 10，最大 100；fetch_scene 列表视角使用。</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>是否只获取概览数据。true 时 fetch_scene 只请求 overview，跳过 table/detail，适合只看场景快照汇总。</p>
+	OverviewOnly *bool `json:"OverviewOnly,omitnil,omitempty" name:"OverviewOnly"`
+
+	// <p>原始偏移量覆盖。可选，传入后覆盖 Page 计算结果；必须大于等于 0 且不超过安全上限。</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>排序字段。可选，只接受当前场景后端允许的安全字段。</p>
+	SortBy *string `json:"SortBy,omitnil,omitempty" name:"SortBy"`
+
+	// <p>排序方向。默认 desc；支持 asc、desc。</p>
+	SortOrder *string `json:"SortOrder,omitnil,omitempty" name:"SortOrder"`
+
+	// <p>过滤条件列表。可选，最多 5 个；是否支持以及字段名以具体 fetch_scene 场景为准。</p>
+	Filters []*CfwStatusMonitorFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *DescribeCfwStatusMonitorRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCfwStatusMonitorRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Op")
+	delete(f, "FirewallType")
+	delete(f, "SelectionId")
+	delete(f, "SelectionName")
+	delete(f, "SelectionInstanceId")
+	delete(f, "Metric")
+	delete(f, "Perspective")
+	delete(f, "IpScope")
+	delete(f, "TimePreset")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Page")
+	delete(f, "Limit")
+	delete(f, "OverviewOnly")
+	delete(f, "Offset")
+	delete(f, "SortBy")
+	delete(f, "SortOrder")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCfwStatusMonitorRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCfwStatusMonitorResponseParams struct {
+	// <p>查询结果。UTF-8 JSON object 字符串；调用方需解析 Response.Data。describe_scene 返回 scene 与 selection.available_options；fetch_scene 返回选中场景的 data 快照。</p>
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeCfwStatusMonitorResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCfwStatusMonitorResponseParams `json:"Response"`
+}
+
+func (r *DescribeCfwStatusMonitorResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCfwStatusMonitorResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCfwSwitchesRequestParams struct {
+
+}
+
+type DescribeCfwSwitchesRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeCfwSwitchesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCfwSwitchesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCfwSwitchesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCfwSwitchesResponseParams struct {
+	// 查询结果。UTF-8 JSON object 字符串；调用方需解析 Response.Data。
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeCfwSwitchesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCfwSwitchesResponseParams `json:"Response"`
+}
+
+func (r *DescribeCfwSwitchesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCfwSwitchesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -9163,15 +9980,21 @@ func (r *ModifyAcRuleResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyAclRuleRequestParams struct {
-	// 需要编辑的规则数组，基于Uuid唯一id修改该规则
+	// <p>需要编辑的规则数组，基于Uuid唯一id修改该规则</p>
 	Rules []*CreateRuleItem `json:"Rules,omitnil,omitempty" name:"Rules"`
+
+	// <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+	CfwAiAgentOperationSource *string `json:"CfwAiAgentOperationSource,omitnil,omitempty" name:"CfwAiAgentOperationSource"`
 }
 
 type ModifyAclRuleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 需要编辑的规则数组，基于Uuid唯一id修改该规则
+	// <p>需要编辑的规则数组，基于Uuid唯一id修改该规则</p>
 	Rules []*CreateRuleItem `json:"Rules,omitnil,omitempty" name:"Rules"`
+
+	// <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+	CfwAiAgentOperationSource *string `json:"CfwAiAgentOperationSource,omitnil,omitempty" name:"CfwAiAgentOperationSource"`
 }
 
 func (r *ModifyAclRuleRequest) ToJsonString() string {
@@ -9187,6 +10010,7 @@ func (r *ModifyAclRuleRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Rules")
+	delete(f, "CfwAiAgentOperationSource")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAclRuleRequest has unknown keys!", "")
 	}
@@ -9195,7 +10019,7 @@ func (r *ModifyAclRuleRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyAclRuleResponseParams struct {
-	// 编辑成功后返回新策略ID列表
+	// <p>编辑成功后返回新策略ID列表</p>
 	RuleUuid []*int64 `json:"RuleUuid,omitnil,omitempty" name:"RuleUuid"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -10337,32 +11161,38 @@ func (r *ModifyEnterpriseSecurityDispatchStatusResponse) FromJsonString(s string
 
 // Predefined struct for user
 type ModifyEnterpriseSecurityGroupRuleRequestParams struct {
-	// 规则的uuid，可通过查询规则列表获取
+	// <p>规则的uuid，可通过查询规则列表获取</p>
 	RuleUuid *uint64 `json:"RuleUuid,omitnil,omitempty" name:"RuleUuid"`
 
-	// 修改类型，0：修改规则内容；1：修改单条规则开关状态；2：修改所有规则开关状态
+	// <p>修改类型，0：修改规则内容；1：修改单条规则开关状态；2：修改所有规则开关状态</p>
 	ModifyType *uint64 `json:"ModifyType,omitnil,omitempty" name:"ModifyType"`
 
-	// 编辑后的企业安全组规则数据；修改规则状态不用填该字段
+	// <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+	CfwAiAgentOperationSource *string `json:"CfwAiAgentOperationSource,omitnil,omitempty" name:"CfwAiAgentOperationSource"`
+
+	// <p>编辑后的企业安全组规则数据；修改规则状态不用填该字段</p>
 	Data *SecurityGroupRule `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// 0是关闭,1是开启
+	// <p>0是关闭,1是开启</p>
 	Enable *uint64 `json:"Enable,omitnil,omitempty" name:"Enable"`
 }
 
 type ModifyEnterpriseSecurityGroupRuleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 规则的uuid，可通过查询规则列表获取
+	// <p>规则的uuid，可通过查询规则列表获取</p>
 	RuleUuid *uint64 `json:"RuleUuid,omitnil,omitempty" name:"RuleUuid"`
 
-	// 修改类型，0：修改规则内容；1：修改单条规则开关状态；2：修改所有规则开关状态
+	// <p>修改类型，0：修改规则内容；1：修改单条规则开关状态；2：修改所有规则开关状态</p>
 	ModifyType *uint64 `json:"ModifyType,omitnil,omitempty" name:"ModifyType"`
 
-	// 编辑后的企业安全组规则数据；修改规则状态不用填该字段
+	// <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+	CfwAiAgentOperationSource *string `json:"CfwAiAgentOperationSource,omitnil,omitempty" name:"CfwAiAgentOperationSource"`
+
+	// <p>编辑后的企业安全组规则数据；修改规则状态不用填该字段</p>
 	Data *SecurityGroupRule `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// 0是关闭,1是开启
+	// <p>0是关闭,1是开启</p>
 	Enable *uint64 `json:"Enable,omitnil,omitempty" name:"Enable"`
 }
 
@@ -10380,6 +11210,7 @@ func (r *ModifyEnterpriseSecurityGroupRuleRequest) FromJsonString(s string) erro
 	}
 	delete(f, "RuleUuid")
 	delete(f, "ModifyType")
+	delete(f, "CfwAiAgentOperationSource")
 	delete(f, "Data")
 	delete(f, "Enable")
 	if len(f) > 0 {
@@ -10390,10 +11221,10 @@ func (r *ModifyEnterpriseSecurityGroupRuleRequest) FromJsonString(s string) erro
 
 // Predefined struct for user
 type ModifyEnterpriseSecurityGroupRuleResponseParams struct {
-	// 状态值，0：编辑成功，非0：编辑失败
+	// <p>状态值，0：编辑成功，非0：编辑失败</p>
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 编辑后新生成规则的Id
+	// <p>编辑后新生成规则的Id</p>
 	NewRuleUuid *uint64 `json:"NewRuleUuid,omitnil,omitempty" name:"NewRuleUuid"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -10544,15 +11375,21 @@ func (r *ModifyIpsModeSwitchResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyNatAcRuleRequestParams struct {
-	// 需要编辑的规则数组,基于Uuid唯一id来修改该规则
+	// <p>需要编辑的规则数组,基于Uuid唯一id来修改该规则</p>
 	Rules []*CreateNatRuleItem `json:"Rules,omitnil,omitempty" name:"Rules"`
+
+	// <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+	CfwAiAgentOperationSource *string `json:"CfwAiAgentOperationSource,omitnil,omitempty" name:"CfwAiAgentOperationSource"`
 }
 
 type ModifyNatAcRuleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 需要编辑的规则数组,基于Uuid唯一id来修改该规则
+	// <p>需要编辑的规则数组,基于Uuid唯一id来修改该规则</p>
 	Rules []*CreateNatRuleItem `json:"Rules,omitnil,omitempty" name:"Rules"`
+
+	// <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+	CfwAiAgentOperationSource *string `json:"CfwAiAgentOperationSource,omitnil,omitempty" name:"CfwAiAgentOperationSource"`
 }
 
 func (r *ModifyNatAcRuleRequest) ToJsonString() string {
@@ -10568,6 +11405,7 @@ func (r *ModifyNatAcRuleRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Rules")
+	delete(f, "CfwAiAgentOperationSource")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyNatAcRuleRequest has unknown keys!", "")
 	}
@@ -10576,7 +11414,7 @@ func (r *ModifyNatAcRuleRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyNatAcRuleResponseParams struct {
-	// 编辑成功后返回新策略ID列表
+	// <p>编辑成功后返回新策略ID列表</p>
 	RuleUuid []*int64 `json:"RuleUuid,omitnil,omitempty" name:"RuleUuid"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -11560,15 +12398,21 @@ func (r *ModifyTableStatusResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyVpcAcRuleRequestParams struct {
-	// 需要编辑的规则数组
+	// <p>需要编辑的规则数组</p>
 	Rules []*VpcRuleItem `json:"Rules,omitnil,omitempty" name:"Rules"`
+
+	// <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+	CfwAiAgentOperationSource *string `json:"CfwAiAgentOperationSource,omitnil,omitempty" name:"CfwAiAgentOperationSource"`
 }
 
 type ModifyVpcAcRuleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 需要编辑的规则数组
+	// <p>需要编辑的规则数组</p>
 	Rules []*VpcRuleItem `json:"Rules,omitnil,omitempty" name:"Rules"`
+
+	// <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+	CfwAiAgentOperationSource *string `json:"CfwAiAgentOperationSource,omitnil,omitempty" name:"CfwAiAgentOperationSource"`
 }
 
 func (r *ModifyVpcAcRuleRequest) ToJsonString() string {
@@ -11584,6 +12428,7 @@ func (r *ModifyVpcAcRuleRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Rules")
+	delete(f, "CfwAiAgentOperationSource")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyVpcAcRuleRequest has unknown keys!", "")
 	}
@@ -11592,7 +12437,7 @@ func (r *ModifyVpcAcRuleRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyVpcAcRuleResponseParams struct {
-	// 编辑成功后返回新策略ID列表
+	// <p>编辑成功后返回新策略ID列表</p>
 	RuleUuids []*int64 `json:"RuleUuids,omitnil,omitempty" name:"RuleUuids"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -12424,20 +13269,26 @@ func (r *RemoveAcRuleResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RemoveAclRuleRequestParams struct {
-	// 规则的uuid列表，可通过查询规则列表获取，注意：如果传入的是[-1]将删除所有规则
+	// <p>规则的uuid列表，可通过查询规则列表获取，注意：如果传入的是[-1]将删除所有规则</p>
 	RuleUuid []*int64 `json:"RuleUuid,omitnil,omitempty" name:"RuleUuid"`
 
-	// 规则方向：1，入站；0，出站
+	// <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+	CfwAiAgentOperationSource *string `json:"CfwAiAgentOperationSource,omitnil,omitempty" name:"CfwAiAgentOperationSource"`
+
+	// <p>规则方向：1，入站；0，出站</p>
 	Direction *uint64 `json:"Direction,omitnil,omitempty" name:"Direction"`
 }
 
 type RemoveAclRuleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 规则的uuid列表，可通过查询规则列表获取，注意：如果传入的是[-1]将删除所有规则
+	// <p>规则的uuid列表，可通过查询规则列表获取，注意：如果传入的是[-1]将删除所有规则</p>
 	RuleUuid []*int64 `json:"RuleUuid,omitnil,omitempty" name:"RuleUuid"`
 
-	// 规则方向：1，入站；0，出站
+	// <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+	CfwAiAgentOperationSource *string `json:"CfwAiAgentOperationSource,omitnil,omitempty" name:"CfwAiAgentOperationSource"`
+
+	// <p>规则方向：1，入站；0，出站</p>
 	Direction *uint64 `json:"Direction,omitnil,omitempty" name:"Direction"`
 }
 
@@ -12454,6 +13305,7 @@ func (r *RemoveAclRuleRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "RuleUuid")
+	delete(f, "CfwAiAgentOperationSource")
 	delete(f, "Direction")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RemoveAclRuleRequest has unknown keys!", "")
@@ -12463,7 +13315,7 @@ func (r *RemoveAclRuleRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RemoveAclRuleResponseParams struct {
-	// 删除成功后返回被删除策略的uuid列表
+	// <p>删除成功后返回被删除策略的uuid列表</p>
 	RuleUuid []*int64 `json:"RuleUuid,omitnil,omitempty" name:"RuleUuid"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -12488,21 +13340,27 @@ func (r *RemoveAclRuleResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RemoveEnterpriseSecurityGroupRuleRequestParams struct {
-	// 规则的uuid，可通过查询规则列表获取
+	// <p>规则的uuid，可通过查询规则列表获取</p>
 	RuleUuid *int64 `json:"RuleUuid,omitnil,omitempty" name:"RuleUuid"`
 
-	// 删除类型，0是单条删除，RuleUuid填写删除规则id，1为全部删除，RuleUuid填0即可
+	// <p>删除类型，0是单条删除，RuleUuid填写删除规则id，1为全部删除，RuleUuid填0即可</p>
 	RemoveType *int64 `json:"RemoveType,omitnil,omitempty" name:"RemoveType"`
+
+	// <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+	CfwAiAgentOperationSource *string `json:"CfwAiAgentOperationSource,omitnil,omitempty" name:"CfwAiAgentOperationSource"`
 }
 
 type RemoveEnterpriseSecurityGroupRuleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 规则的uuid，可通过查询规则列表获取
+	// <p>规则的uuid，可通过查询规则列表获取</p>
 	RuleUuid *int64 `json:"RuleUuid,omitnil,omitempty" name:"RuleUuid"`
 
-	// 删除类型，0是单条删除，RuleUuid填写删除规则id，1为全部删除，RuleUuid填0即可
+	// <p>删除类型，0是单条删除，RuleUuid填写删除规则id，1为全部删除，RuleUuid填0即可</p>
 	RemoveType *int64 `json:"RemoveType,omitnil,omitempty" name:"RemoveType"`
+
+	// <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+	CfwAiAgentOperationSource *string `json:"CfwAiAgentOperationSource,omitnil,omitempty" name:"CfwAiAgentOperationSource"`
 }
 
 func (r *RemoveEnterpriseSecurityGroupRuleRequest) ToJsonString() string {
@@ -12519,6 +13377,7 @@ func (r *RemoveEnterpriseSecurityGroupRuleRequest) FromJsonString(s string) erro
 	}
 	delete(f, "RuleUuid")
 	delete(f, "RemoveType")
+	delete(f, "CfwAiAgentOperationSource")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RemoveEnterpriseSecurityGroupRuleRequest has unknown keys!", "")
 	}
@@ -12527,10 +13386,10 @@ func (r *RemoveEnterpriseSecurityGroupRuleRequest) FromJsonString(s string) erro
 
 // Predefined struct for user
 type RemoveEnterpriseSecurityGroupRuleResponseParams struct {
-	// 删除成功后返回被删除策略的uuid
+	// <p>删除成功后返回被删除策略的uuid</p>
 	RuleUuid *int64 `json:"RuleUuid,omitnil,omitempty" name:"RuleUuid"`
 
-	// 0代表成功，-1代表失败
+	// <p>0代表成功，-1代表失败</p>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -12555,20 +13414,26 @@ func (r *RemoveEnterpriseSecurityGroupRuleResponse) FromJsonString(s string) err
 
 // Predefined struct for user
 type RemoveNatAcRuleRequestParams struct {
-	// 规则的uuid列表，可通过查询规则列表获取，注意：如果传入的是[-1]将删除所有规则
+	// <p>规则的uuid列表，可通过查询规则列表获取，注意：如果传入的是[-1]将删除所有规则</p>
 	RuleUuid []*int64 `json:"RuleUuid,omitnil,omitempty" name:"RuleUuid"`
 
-	// 规则方向：1，入站；0，出站
+	// <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+	CfwAiAgentOperationSource *string `json:"CfwAiAgentOperationSource,omitnil,omitempty" name:"CfwAiAgentOperationSource"`
+
+	// <p>规则方向：1，入站；0，出站</p>
 	Direction *uint64 `json:"Direction,omitnil,omitempty" name:"Direction"`
 }
 
 type RemoveNatAcRuleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 规则的uuid列表，可通过查询规则列表获取，注意：如果传入的是[-1]将删除所有规则
+	// <p>规则的uuid列表，可通过查询规则列表获取，注意：如果传入的是[-1]将删除所有规则</p>
 	RuleUuid []*int64 `json:"RuleUuid,omitnil,omitempty" name:"RuleUuid"`
 
-	// 规则方向：1，入站；0，出站
+	// <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+	CfwAiAgentOperationSource *string `json:"CfwAiAgentOperationSource,omitnil,omitempty" name:"CfwAiAgentOperationSource"`
+
+	// <p>规则方向：1，入站；0，出站</p>
 	Direction *uint64 `json:"Direction,omitnil,omitempty" name:"Direction"`
 }
 
@@ -12585,6 +13450,7 @@ func (r *RemoveNatAcRuleRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "RuleUuid")
+	delete(f, "CfwAiAgentOperationSource")
 	delete(f, "Direction")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RemoveNatAcRuleRequest has unknown keys!", "")
@@ -12594,7 +13460,7 @@ func (r *RemoveNatAcRuleRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RemoveNatAcRuleResponseParams struct {
-	// 删除成功后返回被删除策略的uuid列表
+	// <p>删除成功后返回被删除策略的uuid列表</p>
 	RuleUuid []*int64 `json:"RuleUuid,omitnil,omitempty" name:"RuleUuid"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -12686,20 +13552,26 @@ func (r *RemoveOfflineExportTaskResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RemoveVpcAcRuleRequestParams struct {
-	// 规则的uuid列表，可通过查询规则列表获取，注意：如果传入的是[-1]将删除所有规则
+	// <p>规则的uuid列表，可通过查询规则列表获取，注意：如果传入的是[-1]将删除所有规则</p>
 	RuleUuids []*int64 `json:"RuleUuids,omitnil,omitempty" name:"RuleUuids"`
 
-	// 仅当RuleUuids为-1时有效；0：删除Ipv4规则，1：删除Ipv6规则；默认为Ipv4类型规则
+	// <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+	CfwAiAgentOperationSource *string `json:"CfwAiAgentOperationSource,omitnil,omitempty" name:"CfwAiAgentOperationSource"`
+
+	// <p>仅当RuleUuids为-1时有效；0：删除Ipv4规则，1：删除Ipv6规则；默认为Ipv4类型规则</p>
 	IpVersion *uint64 `json:"IpVersion,omitnil,omitempty" name:"IpVersion"`
 }
 
 type RemoveVpcAcRuleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 规则的uuid列表，可通过查询规则列表获取，注意：如果传入的是[-1]将删除所有规则
+	// <p>规则的uuid列表，可通过查询规则列表获取，注意：如果传入的是[-1]将删除所有规则</p>
 	RuleUuids []*int64 `json:"RuleUuids,omitnil,omitempty" name:"RuleUuids"`
 
-	// 仅当RuleUuids为-1时有效；0：删除Ipv4规则，1：删除Ipv6规则；默认为Ipv4类型规则
+	// <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+	CfwAiAgentOperationSource *string `json:"CfwAiAgentOperationSource,omitnil,omitempty" name:"CfwAiAgentOperationSource"`
+
+	// <p>仅当RuleUuids为-1时有效；0：删除Ipv4规则，1：删除Ipv6规则；默认为Ipv4类型规则</p>
 	IpVersion *uint64 `json:"IpVersion,omitnil,omitempty" name:"IpVersion"`
 }
 
@@ -12716,6 +13588,7 @@ func (r *RemoveVpcAcRuleRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "RuleUuids")
+	delete(f, "CfwAiAgentOperationSource")
 	delete(f, "IpVersion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RemoveVpcAcRuleRequest has unknown keys!", "")
@@ -12725,7 +13598,7 @@ func (r *RemoveVpcAcRuleRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RemoveVpcAcRuleResponseParams struct {
-	// 删除成功后返回被删除策略的uuid列表
+	// <p>删除成功后返回被删除策略的uuid列表</p>
 	RuleUuids []*int64 `json:"RuleUuids,omitnil,omitempty" name:"RuleUuids"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

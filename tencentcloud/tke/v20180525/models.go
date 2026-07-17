@@ -2171,98 +2171,98 @@ func (r *CreateClusterMaintenanceWindowAndExclusionsResponse) FromJsonString(s s
 
 // Predefined struct for user
 type CreateClusterNodePoolRequestParams struct {
-	// cluster id
+	// <p>cluster id</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// AutoScalingGroupPara AS组参数，参考 https://cloud.tencent.com/document/product/377/20440
+	// <p>AutoScalingGroupPara AS组参数，参考 https://cloud.tencent.com/document/product/377/20440</p>
 	AutoScalingGroupPara *string `json:"AutoScalingGroupPara,omitnil,omitempty" name:"AutoScalingGroupPara"`
 
-	// LaunchConfigurePara 运行参数，参考 https://cloud.tencent.com/document/product/377/20447
+	// <p>LaunchConfigurePara 运行参数，参考 https://cloud.tencent.com/document/product/377/20447</p>
 	LaunchConfigurePara *string `json:"LaunchConfigurePara,omitnil,omitempty" name:"LaunchConfigurePara"`
 
-	// InstanceAdvancedSettings
+	// <p>InstanceAdvancedSettings</p>
 	InstanceAdvancedSettings *InstanceAdvancedSettings `json:"InstanceAdvancedSettings,omitnil,omitempty" name:"InstanceAdvancedSettings"`
 
-	// 是否启用自动伸缩
+	// <p>是否启用自动伸缩</p>
 	EnableAutoscale *bool `json:"EnableAutoscale,omitnil,omitempty" name:"EnableAutoscale"`
 
-	// 节点池名称
+	// <p>节点池名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// Labels标签
+	// <p>Labels标签</p>
 	Labels []*Label `json:"Labels,omitnil,omitempty" name:"Labels"`
 
-	// Taints互斥
+	// <p>Taints互斥</p>
 	Taints []*Taint `json:"Taints,omitnil,omitempty" name:"Taints"`
 
-	// 节点Annotation 列表
+	// <p>节点Annotation 列表</p>
 	Annotations []*AnnotationValue `json:"Annotations,omitnil,omitempty" name:"Annotations"`
 
-	// 节点池纬度运行时类型及版本
+	// <p>节点池纬度运行时类型及版本</p>
 	ContainerRuntime *string `json:"ContainerRuntime,omitnil,omitempty" name:"ContainerRuntime"`
 
-	// 运行时版本
+	// <p>运行时版本</p>
 	RuntimeVersion *string `json:"RuntimeVersion,omitnil,omitempty" name:"RuntimeVersion"`
 
-	// 节点池os，当为自定义镜像时，传镜像id；否则为公共镜像的osName
+	// <p>节点池os，当为自定义镜像时，传镜像id；否则为公共镜像的osName</p>
 	NodePoolOs *string `json:"NodePoolOs,omitnil,omitempty" name:"NodePoolOs"`
 
-	// 容器的镜像版本，"DOCKER_CUSTOMIZE"(容器定制版),"GENERAL"(普通版本，默认值)
+	// <p>容器的镜像版本，&quot;DOCKER_CUSTOMIZE&quot;(容器定制版),&quot;GENERAL&quot;(普通版本，默认值)</p>
 	OsCustomizeType *string `json:"OsCustomizeType,omitnil,omitempty" name:"OsCustomizeType"`
 
-	// 资源标签
+	// <p>资源标签</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 删除保护开关
+	// <p>删除保护开关</p>
 	DeletionProtection *bool `json:"DeletionProtection,omitnil,omitempty" name:"DeletionProtection"`
 }
 
 type CreateClusterNodePoolRequest struct {
 	*tchttp.BaseRequest
 	
-	// cluster id
+	// <p>cluster id</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// AutoScalingGroupPara AS组参数，参考 https://cloud.tencent.com/document/product/377/20440
+	// <p>AutoScalingGroupPara AS组参数，参考 https://cloud.tencent.com/document/product/377/20440</p>
 	AutoScalingGroupPara *string `json:"AutoScalingGroupPara,omitnil,omitempty" name:"AutoScalingGroupPara"`
 
-	// LaunchConfigurePara 运行参数，参考 https://cloud.tencent.com/document/product/377/20447
+	// <p>LaunchConfigurePara 运行参数，参考 https://cloud.tencent.com/document/product/377/20447</p>
 	LaunchConfigurePara *string `json:"LaunchConfigurePara,omitnil,omitempty" name:"LaunchConfigurePara"`
 
-	// InstanceAdvancedSettings
+	// <p>InstanceAdvancedSettings</p>
 	InstanceAdvancedSettings *InstanceAdvancedSettings `json:"InstanceAdvancedSettings,omitnil,omitempty" name:"InstanceAdvancedSettings"`
 
-	// 是否启用自动伸缩
+	// <p>是否启用自动伸缩</p>
 	EnableAutoscale *bool `json:"EnableAutoscale,omitnil,omitempty" name:"EnableAutoscale"`
 
-	// 节点池名称
+	// <p>节点池名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// Labels标签
+	// <p>Labels标签</p>
 	Labels []*Label `json:"Labels,omitnil,omitempty" name:"Labels"`
 
-	// Taints互斥
+	// <p>Taints互斥</p>
 	Taints []*Taint `json:"Taints,omitnil,omitempty" name:"Taints"`
 
-	// 节点Annotation 列表
+	// <p>节点Annotation 列表</p>
 	Annotations []*AnnotationValue `json:"Annotations,omitnil,omitempty" name:"Annotations"`
 
-	// 节点池纬度运行时类型及版本
+	// <p>节点池纬度运行时类型及版本</p>
 	ContainerRuntime *string `json:"ContainerRuntime,omitnil,omitempty" name:"ContainerRuntime"`
 
-	// 运行时版本
+	// <p>运行时版本</p>
 	RuntimeVersion *string `json:"RuntimeVersion,omitnil,omitempty" name:"RuntimeVersion"`
 
-	// 节点池os，当为自定义镜像时，传镜像id；否则为公共镜像的osName
+	// <p>节点池os，当为自定义镜像时，传镜像id；否则为公共镜像的osName</p>
 	NodePoolOs *string `json:"NodePoolOs,omitnil,omitempty" name:"NodePoolOs"`
 
-	// 容器的镜像版本，"DOCKER_CUSTOMIZE"(容器定制版),"GENERAL"(普通版本，默认值)
+	// <p>容器的镜像版本，&quot;DOCKER_CUSTOMIZE&quot;(容器定制版),&quot;GENERAL&quot;(普通版本，默认值)</p>
 	OsCustomizeType *string `json:"OsCustomizeType,omitnil,omitempty" name:"OsCustomizeType"`
 
-	// 资源标签
+	// <p>资源标签</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 删除保护开关
+	// <p>删除保护开关</p>
 	DeletionProtection *bool `json:"DeletionProtection,omitnil,omitempty" name:"DeletionProtection"`
 }
 
@@ -2301,7 +2301,7 @@ func (r *CreateClusterNodePoolRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateClusterNodePoolResponseParams struct {
-	// 节点池id
+	// <p>节点池id</p>
 	NodePoolId *string `json:"NodePoolId,omitnil,omitempty" name:"NodePoolId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -19160,128 +19160,128 @@ func (r *ModifyClusterMaintenanceWindowAndExclusionsResponse) FromJsonString(s s
 
 // Predefined struct for user
 type ModifyClusterNodePoolRequestParams struct {
-	// 集群ID
+	// <p>集群ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 节点池ID
+	// <p>节点池ID</p>
 	NodePoolId *string `json:"NodePoolId,omitnil,omitempty" name:"NodePoolId"`
 
-	// 名称，最长63个字符，只能包含小写字母、数字及分隔符“_”，且必须以小写字母开头，数字或小写字母结尾
+	// <p>名称，最长63个字符，只能包含小写字母、数字及分隔符“_”，且必须以小写字母开头，数字或小写字母结尾</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 最大节点数
+	// <p>最大节点数</p>
 	MaxNodesNum *int64 `json:"MaxNodesNum,omitnil,omitempty" name:"MaxNodesNum"`
 
-	// 最小节点数
+	// <p>最小节点数</p>
 	MinNodesNum *int64 `json:"MinNodesNum,omitnil,omitempty" name:"MinNodesNum"`
 
-	// 标签
+	// <p>标签</p>
 	Labels []*Label `json:"Labels,omitnil,omitempty" name:"Labels"`
 
-	// 污点
+	// <p>污点</p>
 	Taints []*Taint `json:"Taints,omitnil,omitempty" name:"Taints"`
 
-	// 节点 Annotation 列表
+	// <p>节点 Annotation 列表</p>
 	Annotations []*AnnotationValue `json:"Annotations,omitnil,omitempty" name:"Annotations"`
 
-	// 是否开启伸缩
+	// <p>是否开启伸缩</p>
 	EnableAutoscale *bool `json:"EnableAutoscale,omitnil,omitempty" name:"EnableAutoscale"`
 
-	// 操作系统名称
+	// <p>操作系统名称</p>
 	OsName *string `json:"OsName,omitnil,omitempty" name:"OsName"`
 
-	// 镜像版本，"DOCKER_CUSTOMIZE"(容器定制版),"GENERAL"(普通版本，默认值)
+	// <p>镜像版本，&quot;DOCKER_CUSTOMIZE&quot;(容器定制版),&quot;GENERAL&quot;(普通版本，默认值)</p>
 	OsCustomizeType *string `json:"OsCustomizeType,omitnil,omitempty" name:"OsCustomizeType"`
 
-	// GPU驱动版本，CUDA版本，cuDNN版本以及是否启用MIG特性
+	// <p>GPU驱动版本，CUDA版本，cuDNN版本以及是否启用MIG特性</p>
 	GPUArgs *GPUArgs `json:"GPUArgs,omitnil,omitempty" name:"GPUArgs"`
 
-	// base64编码后的自定义脚本
+	// <p>base64编码后的自定义脚本</p>
 	UserScript *string `json:"UserScript,omitnil,omitempty" name:"UserScript"`
 
-	// 更新label和taint时忽略存量节点
+	// <p>更新label和taint时忽略存量节点</p>
 	IgnoreExistedNode *bool `json:"IgnoreExistedNode,omitnil,omitempty" name:"IgnoreExistedNode"`
 
-	// 节点自定义参数
+	// <p>节点自定义参数</p>
 	ExtraArgs *InstanceExtraArgs `json:"ExtraArgs,omitnil,omitempty" name:"ExtraArgs"`
 
-	// 资源标签
+	// <p>资源标签</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 设置加入的节点是否参与调度，默认值为0，表示参与调度；非0表示不参与调度, 待节点初始化完成之后, 可执行kubectl uncordon nodename使node加入调度.
+	// <p>设置加入的节点是否参与调度，默认值为0，表示参与调度；非0表示不参与调度, 待节点初始化完成之后, 可执行kubectl uncordon nodename使node加入调度.</p>
 	Unschedulable *int64 `json:"Unschedulable,omitnil,omitempty" name:"Unschedulable"`
 
-	// 删除保护开关
+	// <p>删除保护开关</p>
 	DeletionProtection *bool `json:"DeletionProtection,omitnil,omitempty" name:"DeletionProtection"`
 
-	// dockerd --graph 指定值, 默认为 /var/lib/docker
+	// <p>dockerd --graph 指定值, 默认为 /var/lib/docker</p>
 	DockerGraphPath *string `json:"DockerGraphPath,omitnil,omitempty" name:"DockerGraphPath"`
 
-	// base64编码后的自定义脚本
+	// <p>base64编码后的自定义脚本</p>
 	PreStartUserScript *string `json:"PreStartUserScript,omitnil,omitempty" name:"PreStartUserScript"`
 }
 
 type ModifyClusterNodePoolRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群ID
+	// <p>集群ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 节点池ID
+	// <p>节点池ID</p>
 	NodePoolId *string `json:"NodePoolId,omitnil,omitempty" name:"NodePoolId"`
 
-	// 名称，最长63个字符，只能包含小写字母、数字及分隔符“_”，且必须以小写字母开头，数字或小写字母结尾
+	// <p>名称，最长63个字符，只能包含小写字母、数字及分隔符“_”，且必须以小写字母开头，数字或小写字母结尾</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 最大节点数
+	// <p>最大节点数</p>
 	MaxNodesNum *int64 `json:"MaxNodesNum,omitnil,omitempty" name:"MaxNodesNum"`
 
-	// 最小节点数
+	// <p>最小节点数</p>
 	MinNodesNum *int64 `json:"MinNodesNum,omitnil,omitempty" name:"MinNodesNum"`
 
-	// 标签
+	// <p>标签</p>
 	Labels []*Label `json:"Labels,omitnil,omitempty" name:"Labels"`
 
-	// 污点
+	// <p>污点</p>
 	Taints []*Taint `json:"Taints,omitnil,omitempty" name:"Taints"`
 
-	// 节点 Annotation 列表
+	// <p>节点 Annotation 列表</p>
 	Annotations []*AnnotationValue `json:"Annotations,omitnil,omitempty" name:"Annotations"`
 
-	// 是否开启伸缩
+	// <p>是否开启伸缩</p>
 	EnableAutoscale *bool `json:"EnableAutoscale,omitnil,omitempty" name:"EnableAutoscale"`
 
-	// 操作系统名称
+	// <p>操作系统名称</p>
 	OsName *string `json:"OsName,omitnil,omitempty" name:"OsName"`
 
-	// 镜像版本，"DOCKER_CUSTOMIZE"(容器定制版),"GENERAL"(普通版本，默认值)
+	// <p>镜像版本，&quot;DOCKER_CUSTOMIZE&quot;(容器定制版),&quot;GENERAL&quot;(普通版本，默认值)</p>
 	OsCustomizeType *string `json:"OsCustomizeType,omitnil,omitempty" name:"OsCustomizeType"`
 
-	// GPU驱动版本，CUDA版本，cuDNN版本以及是否启用MIG特性
+	// <p>GPU驱动版本，CUDA版本，cuDNN版本以及是否启用MIG特性</p>
 	GPUArgs *GPUArgs `json:"GPUArgs,omitnil,omitempty" name:"GPUArgs"`
 
-	// base64编码后的自定义脚本
+	// <p>base64编码后的自定义脚本</p>
 	UserScript *string `json:"UserScript,omitnil,omitempty" name:"UserScript"`
 
-	// 更新label和taint时忽略存量节点
+	// <p>更新label和taint时忽略存量节点</p>
 	IgnoreExistedNode *bool `json:"IgnoreExistedNode,omitnil,omitempty" name:"IgnoreExistedNode"`
 
-	// 节点自定义参数
+	// <p>节点自定义参数</p>
 	ExtraArgs *InstanceExtraArgs `json:"ExtraArgs,omitnil,omitempty" name:"ExtraArgs"`
 
-	// 资源标签
+	// <p>资源标签</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 设置加入的节点是否参与调度，默认值为0，表示参与调度；非0表示不参与调度, 待节点初始化完成之后, 可执行kubectl uncordon nodename使node加入调度.
+	// <p>设置加入的节点是否参与调度，默认值为0，表示参与调度；非0表示不参与调度, 待节点初始化完成之后, 可执行kubectl uncordon nodename使node加入调度.</p>
 	Unschedulable *int64 `json:"Unschedulable,omitnil,omitempty" name:"Unschedulable"`
 
-	// 删除保护开关
+	// <p>删除保护开关</p>
 	DeletionProtection *bool `json:"DeletionProtection,omitnil,omitempty" name:"DeletionProtection"`
 
-	// dockerd --graph 指定值, 默认为 /var/lib/docker
+	// <p>dockerd --graph 指定值, 默认为 /var/lib/docker</p>
 	DockerGraphPath *string `json:"DockerGraphPath,omitnil,omitempty" name:"DockerGraphPath"`
 
-	// base64编码后的自定义脚本
+	// <p>base64编码后的自定义脚本</p>
 	PreStartUserScript *string `json:"PreStartUserScript,omitnil,omitempty" name:"PreStartUserScript"`
 }
 
@@ -19751,50 +19751,50 @@ func (r *ModifyClusterVirtualNodePoolResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyExternalNodePoolRequestParams struct {
-	// 集群ID
+	// <p>集群ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 节点池ID
+	// <p>节点池ID</p>
 	NodePoolId *string `json:"NodePoolId,omitnil,omitempty" name:"NodePoolId"`
 
-	// 节点池名称
+	// <p>节点池名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 注册节点标签
+	// <p>注册节点标签</p>
 	Labels []*Label `json:"Labels,omitnil,omitempty" name:"Labels"`
 
-	// 注册节点污点
+	// <p>注册节点污点</p>
 	Taints []*Taint `json:"Taints,omitnil,omitempty" name:"Taints"`
 
-	// 删除保护开关
+	// <p>删除保护开关</p>
 	DeletionProtection *bool `json:"DeletionProtection,omitnil,omitempty" name:"DeletionProtection"`
 
-	// base64 编码的用户脚本, 此脚本会在 k8s 组件运行后执行, 需要用户保证脚本的可重入及重试逻辑, 脚本及其生成的日志文件可在节点的 /data/ccs_userscript/ 路径查看
+	// <p>base64 编码的用户脚本, 此脚本会在 k8s 组件运行后执行, 需要用户保证脚本的可重入及重试逻辑, 脚本及其生成的日志文件可在节点的 /data/ccs_userscript/ 路径查看</p>
 	UserScript *string `json:"UserScript,omitnil,omitempty" name:"UserScript"`
 }
 
 type ModifyExternalNodePoolRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群ID
+	// <p>集群ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 节点池ID
+	// <p>节点池ID</p>
 	NodePoolId *string `json:"NodePoolId,omitnil,omitempty" name:"NodePoolId"`
 
-	// 节点池名称
+	// <p>节点池名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 注册节点标签
+	// <p>注册节点标签</p>
 	Labels []*Label `json:"Labels,omitnil,omitempty" name:"Labels"`
 
-	// 注册节点污点
+	// <p>注册节点污点</p>
 	Taints []*Taint `json:"Taints,omitnil,omitempty" name:"Taints"`
 
-	// 删除保护开关
+	// <p>删除保护开关</p>
 	DeletionProtection *bool `json:"DeletionProtection,omitnil,omitempty" name:"DeletionProtection"`
 
-	// base64 编码的用户脚本, 此脚本会在 k8s 组件运行后执行, 需要用户保证脚本的可重入及重试逻辑, 脚本及其生成的日志文件可在节点的 /data/ccs_userscript/ 路径查看
+	// <p>base64 编码的用户脚本, 此脚本会在 k8s 组件运行后执行, 需要用户保证脚本的可重入及重试逻辑, 脚本及其生成的日志文件可在节点的 /data/ccs_userscript/ 路径查看</p>
 	UserScript *string `json:"UserScript,omitnil,omitempty" name:"UserScript"`
 }
 
@@ -24785,76 +24785,62 @@ type UpgradeAbleInstancesItem struct {
 
 // Predefined struct for user
 type UpgradeClusterInstancesRequestParams struct {
-	// 集群ID（请登录 [TKE 控制台](https://console.cloud.tencent.com/tke2) 获取集群 ID ）
+	// <p>集群ID（请登录 <a href="https://console.cloud.tencent.com/tke2">TKE 控制台</a> 获取集群 ID ）</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// create 表示开始一次升级任务
-	// pause 表示停止任务
-	// resume表示继续任务
-	// abort表示终止任务
+	// <p>create 表示开始一次升级任务<br>pause 表示停止任务<br>resume表示继续任务<br>abort表示终止任务</p>
 	Operation *string `json:"Operation,omitnil,omitempty" name:"Operation"`
 
-	// 升级类型，只有Operation是create需要设置
-	// reset 大版本重装升级
-	// hot 小版本热升级
-	// major 大版本原地升级
+	// <p>升级类型，只有Operation是create需要设置<br>reset 大版本重装升级<br>hot 小版本热升级<br>major 大版本原地升级</p>
 	UpgradeType *string `json:"UpgradeType,omitnil,omitempty" name:"UpgradeType"`
 
-	// 需要升级的节点列表，可以通过控制台或 [查询待升级节点接口
-	// ](https://cloud.tencent.com/document/api/457/50366) 获取
+	// <p>需要升级的节点列表，可以通过控制台或 <a href="https://cloud.tencent.com/document/api/457/50366">查询待升级节点接口</a> 获取</p>
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 当节点重新加入集群时候所使用的参数，参考添加已有节点接口
+	// <p>当节点重新加入集群时候所使用的参数，参考添加已有节点接口</p>
 	ResetParam *UpgradeNodeResetParam `json:"ResetParam,omitnil,omitempty" name:"ResetParam"`
 
-	// 是否忽略节点升级前检查，默认值 false
+	// <p>是否忽略节点升级前检查，默认值 false</p>
 	SkipPreCheck *bool `json:"SkipPreCheck,omitnil,omitempty" name:"SkipPreCheck"`
 
-	// 最大可容忍的不可用Pod比例，如果设置 0 表示不做校验
+	// <p>最大可容忍的不可用Pod百分比，如果设置 0 表示不做校验</p><p>取值范围：[0, 100]</p><p>默认值：20</p>
 	MaxNotReadyPercent *float64 `json:"MaxNotReadyPercent,omitnil,omitempty" name:"MaxNotReadyPercent"`
 
-	// 是否升级节点运行时，默认false不升级
+	// <p>是否升级节点运行时，默认false不升级</p>
 	UpgradeRunTime *bool `json:"UpgradeRunTime,omitnil,omitempty" name:"UpgradeRunTime"`
 
-	// 支持多个节点并行升级，默认值为 1，最大并行数为15
+	// <p>支持多个节点并行升级，默认值为 1，最大并行数为15</p>
 	Concurrent *int64 `json:"Concurrent,omitnil,omitempty" name:"Concurrent"`
 }
 
 type UpgradeClusterInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群ID（请登录 [TKE 控制台](https://console.cloud.tencent.com/tke2) 获取集群 ID ）
+	// <p>集群ID（请登录 <a href="https://console.cloud.tencent.com/tke2">TKE 控制台</a> 获取集群 ID ）</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// create 表示开始一次升级任务
-	// pause 表示停止任务
-	// resume表示继续任务
-	// abort表示终止任务
+	// <p>create 表示开始一次升级任务<br>pause 表示停止任务<br>resume表示继续任务<br>abort表示终止任务</p>
 	Operation *string `json:"Operation,omitnil,omitempty" name:"Operation"`
 
-	// 升级类型，只有Operation是create需要设置
-	// reset 大版本重装升级
-	// hot 小版本热升级
-	// major 大版本原地升级
+	// <p>升级类型，只有Operation是create需要设置<br>reset 大版本重装升级<br>hot 小版本热升级<br>major 大版本原地升级</p>
 	UpgradeType *string `json:"UpgradeType,omitnil,omitempty" name:"UpgradeType"`
 
-	// 需要升级的节点列表，可以通过控制台或 [查询待升级节点接口
-	// ](https://cloud.tencent.com/document/api/457/50366) 获取
+	// <p>需要升级的节点列表，可以通过控制台或 <a href="https://cloud.tencent.com/document/api/457/50366">查询待升级节点接口</a> 获取</p>
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 当节点重新加入集群时候所使用的参数，参考添加已有节点接口
+	// <p>当节点重新加入集群时候所使用的参数，参考添加已有节点接口</p>
 	ResetParam *UpgradeNodeResetParam `json:"ResetParam,omitnil,omitempty" name:"ResetParam"`
 
-	// 是否忽略节点升级前检查，默认值 false
+	// <p>是否忽略节点升级前检查，默认值 false</p>
 	SkipPreCheck *bool `json:"SkipPreCheck,omitnil,omitempty" name:"SkipPreCheck"`
 
-	// 最大可容忍的不可用Pod比例，如果设置 0 表示不做校验
+	// <p>最大可容忍的不可用Pod百分比，如果设置 0 表示不做校验</p><p>取值范围：[0, 100]</p><p>默认值：20</p>
 	MaxNotReadyPercent *float64 `json:"MaxNotReadyPercent,omitnil,omitempty" name:"MaxNotReadyPercent"`
 
-	// 是否升级节点运行时，默认false不升级
+	// <p>是否升级节点运行时，默认false不升级</p>
 	UpgradeRunTime *bool `json:"UpgradeRunTime,omitnil,omitempty" name:"UpgradeRunTime"`
 
-	// 支持多个节点并行升级，默认值为 1，最大并行数为15
+	// <p>支持多个节点并行升级，默认值为 1，最大并行数为15</p>
 	Concurrent *int64 `json:"Concurrent,omitnil,omitempty" name:"Concurrent"`
 }
 

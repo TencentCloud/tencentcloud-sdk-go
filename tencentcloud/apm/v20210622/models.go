@@ -309,7 +309,7 @@ type ApmApplicationConfigView struct {
 	// <p>HTTP 状态码过滤</p>
 	ErrorCodeFilter *string `json:"ErrorCodeFilter,omitnil,omitempty" name:"ErrorCodeFilter"`
 
-	// <p>应用诊断开关（已废弃）</p>
+	// <p>应用诊断开关</p>
 	EventEnable *bool `json:"EventEnable,omitnil,omitempty" name:"EventEnable"`
 
 	// <p>URL 收敛开关 0 关 1 开</p>
@@ -345,10 +345,10 @@ type ApmApplicationConfigView struct {
 	// <p>探针总开关</p>
 	AgentEnable *bool `json:"AgentEnable,omitnil,omitempty" name:"AgentEnable"`
 
-	// <p>组件列表开关（已废弃）</p>
+	// <p>组件列表开关</p>
 	InstrumentList []*Instrument `json:"InstrumentList,omitnil,omitempty" name:"InstrumentList"`
 
-	// <p>链路压缩开关（已废弃）</p>
+	// <p>链路压缩开关</p>
 	TraceSquash *bool `json:"TraceSquash,omitnil,omitempty" name:"TraceSquash"`
 
 	// <p>链路过滤配置</p>
@@ -831,6 +831,8 @@ type CreateApmInstanceRequestParams struct {
 	Tags []*ApmTag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 业务系统上报额度值，默认赋值为0表示不限制上报额度，已废弃
+	//
+	// Deprecated: SpanDailyCounters is deprecated.
 	SpanDailyCounters *uint64 `json:"SpanDailyCounters,omitnil,omitempty" name:"SpanDailyCounters"`
 
 	// 业务系统的计费模式（0=按量付费，1=预付费）
@@ -1288,6 +1290,8 @@ type DescribeApmAgentRequestParams struct {
 	LanguageEnvironment *string `json:"LanguageEnvironment,omitnil,omitempty" name:"LanguageEnvironment"`
 
 	// 上报方式，已弃用
+	//
+	// Deprecated: ReportMethod is deprecated.
 	ReportMethod *string `json:"ReportMethod,omitnil,omitempty" name:"ReportMethod"`
 }
 
@@ -3293,7 +3297,7 @@ type DescribeTopologyNewResponseParams struct {
 	// <p>边集合</p>
 	Edges []*TopologyEdgeNew `json:"Edges,omitnil,omitempty" name:"Edges"`
 
-	// <p>拓扑图是否有修改</p>
+	// <p>拓扑图是否有修改</p><p>枚举值：</p><ul><li>0： 拓扑图未修改</li><li>1： 拓扑图已修改</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopologyModifyFlag *int64 `json:"TopologyModifyFlag,omitnil,omitempty" name:"TopologyModifyFlag"`
 
@@ -4526,26 +4530,26 @@ func (r *ModifyApmSampleConfigResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyApmServiceRequestParams struct {
-	// 应用ID
+	// <p>应用ID</p>
 	ServiceID *string `json:"ServiceID,omitnil,omitempty" name:"ServiceID"`
 
-	// 应用描述
+	// <p>应用描述</p>
 	ServiceDescription *string `json:"ServiceDescription,omitnil,omitempty" name:"ServiceDescription"`
 
-	// 标签列表
+	// <p>标签列表</p>
 	Tags []*ApmTag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type ModifyApmServiceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用ID
+	// <p>应用ID</p>
 	ServiceID *string `json:"ServiceID,omitnil,omitempty" name:"ServiceID"`
 
-	// 应用描述
+	// <p>应用描述</p>
 	ServiceDescription *string `json:"ServiceDescription,omitnil,omitempty" name:"ServiceDescription"`
 
-	// 标签列表
+	// <p>标签列表</p>
 	Tags []*ApmTag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 

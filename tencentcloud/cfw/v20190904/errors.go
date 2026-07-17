@@ -32,6 +32,9 @@ const (
 	// FailedOperation.QueryError
 	FAILEDOPERATION_QUERYERROR = "FailedOperation.QueryError"
 
+	// FailedOperation.ResponseTooLarge
+	FAILEDOPERATION_RESPONSETOOLARGE = "FailedOperation.ResponseTooLarge"
+
 	// FailedOperation.SearchTimeout
 	FAILEDOPERATION_SEARCHTIMEOUT = "FailedOperation.SearchTimeout"
 

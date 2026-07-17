@@ -1567,9 +1567,9 @@ func (r *UpdateSandboxToolResponse) FromJsonString(s string) error {
 }
 
 type VPCConfig struct {
-	// VPC子网ID列表
+	// <p>VPC子网ID列表</p>
 	SubnetIds []*string `json:"SubnetIds,omitnil,omitempty" name:"SubnetIds"`
 
-	// 安全组ID列表
+	// <p>安全组ID列表</p>
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
 }

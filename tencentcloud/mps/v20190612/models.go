@@ -951,6 +951,9 @@ type AiAnalysisTaskDubbingOutput struct {
 
 	// <p>译制视频存储位置。</p>
 	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitnil,omitempty" name:"OutputStorage"`
+
+	// <p>额外结果，目前包含字幕文件结果 Url</p>
+	ExtraOutput *string `json:"ExtraOutput,omitnil,omitempty" name:"ExtraOutput"`
 }
 
 type AiAnalysisTaskDubbingResult struct {
@@ -30063,13 +30066,13 @@ type VODInputInfo struct {
 }
 
 type VODOutputStorage struct {
-	// 媒体处理生成的文件输出的目标 *Bucket ID*
+	// <p>媒体处理生成的文件输出的目标 <em>Bucket ID</em></p>
 	Bucket *string `json:"Bucket,omitnil,omitempty" name:"Bucket"`
 
-	// 媒体处理生成的文件输出的目标 Bucket 的园区
+	// <p>媒体处理生成的文件输出的目标 Bucket 的园区</p>
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 点播专业版应用Id
+	// <p>点播专业版应用Id</p>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 }
 

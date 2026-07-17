@@ -115,7 +115,7 @@ type BatchSendEmailRequestParams struct {
 	// <p>定时发送任务的必要参数</p>
 	TimedParam *TimedEmailParam `json:"TimedParam,omitnil,omitempty" name:"TimedParam"`
 
-	// <p>退订链接选项</p><p>枚举值：</p><ul><li>0： 不加入退订链接</li><li>1： 简体中文</li><li>2： 英文</li><li>3： 繁体中文</li><li>4： 西班牙语</li><li>5： 法语</li><li>6： 德语</li><li>7： 日语</li><li>8： 韩语</li><li>9： 阿拉伯语</li><li>10： 泰语</li><li>11： 印尼语</li></ul>
+	// <p>退订链接选项</p><p>枚举值：</p><ul><li>0： 不加入退订链接</li><li>1： 简体中文</li><li>2： 英文</li><li>3： 繁体中文</li><li>4： 西班牙语</li><li>5： 法语</li><li>6： 德语</li><li>7： 日语</li><li>8： 韩语</li><li>9： 阿拉伯语</li><li>10： 泰语</li><li>11： 印尼语</li><li>12： 越南语</li></ul>
 	Unsubscribe *string `json:"Unsubscribe,omitnil,omitempty" name:"Unsubscribe"`
 
 	// <p>是否添加广告标识 0:不添加 1:添加到subject前面，2:添加到subject后面</p>
@@ -155,7 +155,7 @@ type BatchSendEmailRequest struct {
 	// <p>定时发送任务的必要参数</p>
 	TimedParam *TimedEmailParam `json:"TimedParam,omitnil,omitempty" name:"TimedParam"`
 
-	// <p>退订链接选项</p><p>枚举值：</p><ul><li>0： 不加入退订链接</li><li>1： 简体中文</li><li>2： 英文</li><li>3： 繁体中文</li><li>4： 西班牙语</li><li>5： 法语</li><li>6： 德语</li><li>7： 日语</li><li>8： 韩语</li><li>9： 阿拉伯语</li><li>10： 泰语</li><li>11： 印尼语</li></ul>
+	// <p>退订链接选项</p><p>枚举值：</p><ul><li>0： 不加入退订链接</li><li>1： 简体中文</li><li>2： 英文</li><li>3： 繁体中文</li><li>4： 西班牙语</li><li>5： 法语</li><li>6： 德语</li><li>7： 日语</li><li>8： 韩语</li><li>9： 阿拉伯语</li><li>10： 泰语</li><li>11： 印尼语</li><li>12： 越南语</li></ul>
 	Unsubscribe *string `json:"Unsubscribe,omitnil,omitempty" name:"Unsubscribe"`
 
 	// <p>是否添加广告标识 0:不添加 1:添加到subject前面，2:添加到subject后面</p>
@@ -2472,7 +2472,7 @@ type SendEmailRequestParams struct {
 	// <p>需要发送附件时，填写附件相关参数。腾讯云接口请求最大支持 8M 的请求包，附件内容经过 Base64 预期扩大1.5倍，应该控制所有附件的总大小最大在 4M 以内，整体请求超出 8M 时接口会返回错误</p>
 	Attachments []*Attachment `json:"Attachments,omitnil,omitempty" name:"Attachments"`
 
-	// <p>退订链接选项</p><p>枚举值：</p><ul><li>0： 不加入退订链接</li><li>1： 简体中文</li><li>2： 英文</li><li>3： 繁体中文</li><li>4： 西班牙语</li><li>5： 法语</li><li>6： 德语</li><li>7： 日语</li><li>8： 韩语</li><li>9： 阿拉伯语</li><li>10： 泰语</li><li>11： 印尼语</li></ul>
+	// <p>退订链接选项</p><p>枚举值：</p><ul><li>0： 不加入退订链接</li><li>1： 简体中文</li><li>2： 英文</li><li>3： 繁体中文</li><li>4： 西班牙语</li><li>5： 法语</li><li>6： 德语</li><li>7： 日语</li><li>8： 韩语</li><li>9： 阿拉伯语</li><li>10： 泰语</li><li>11： 印尼语</li><li>12： 越南语</li></ul>
 	Unsubscribe *string `json:"Unsubscribe,omitnil,omitempty" name:"Unsubscribe"`
 
 	// <p>邮件触发类型 0:非触发类，默认类型，营销类邮件、非即时类邮件等选择此类型  1:触发类，验证码等即时发送类邮件，若邮件超过一定大小，系统会自动选择非触发类型通道</p>
@@ -2518,7 +2518,7 @@ type SendEmailRequest struct {
 	// <p>需要发送附件时，填写附件相关参数。腾讯云接口请求最大支持 8M 的请求包，附件内容经过 Base64 预期扩大1.5倍，应该控制所有附件的总大小最大在 4M 以内，整体请求超出 8M 时接口会返回错误</p>
 	Attachments []*Attachment `json:"Attachments,omitnil,omitempty" name:"Attachments"`
 
-	// <p>退订链接选项</p><p>枚举值：</p><ul><li>0： 不加入退订链接</li><li>1： 简体中文</li><li>2： 英文</li><li>3： 繁体中文</li><li>4： 西班牙语</li><li>5： 法语</li><li>6： 德语</li><li>7： 日语</li><li>8： 韩语</li><li>9： 阿拉伯语</li><li>10： 泰语</li><li>11： 印尼语</li></ul>
+	// <p>退订链接选项</p><p>枚举值：</p><ul><li>0： 不加入退订链接</li><li>1： 简体中文</li><li>2： 英文</li><li>3： 繁体中文</li><li>4： 西班牙语</li><li>5： 法语</li><li>6： 德语</li><li>7： 日语</li><li>8： 韩语</li><li>9： 阿拉伯语</li><li>10： 泰语</li><li>11： 印尼语</li><li>12： 越南语</li></ul>
 	Unsubscribe *string `json:"Unsubscribe,omitnil,omitempty" name:"Unsubscribe"`
 
 	// <p>邮件触发类型 0:非触发类，默认类型，营销类邮件、非即时类邮件等选择此类型  1:触发类，验证码等即时发送类邮件，若邮件超过一定大小，系统会自动选择非触发类型通道</p>

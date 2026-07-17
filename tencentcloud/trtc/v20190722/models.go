@@ -306,7 +306,7 @@ type AudioEncodeParams struct {
 }
 
 type AudioFormat struct {
-	// <p>生成的音频格式</p><ul><li><p>TextToSpeechSSE 流式接口</p><p>支持 pcm,mp3,  默认: pcm</p></li><li><p>TextToSpeech 非流式接口</p><p>支持 pcm,wav,mp3,  默认: pcm</p></li><li><p>AsyncTextToSpeech<br>支持pcm,mp3, 默认: mp3</p></li></ul>
+	// <p>生成的音频格式，注意opus格式是ogg/opus编码</p><ul><li><p>TextToSpeechSSE 流式接口</p><p>支持 pcm,mp3,opus 默认: pcm</p></li><li><p>TextToSpeech 非流式接口</p><p>支持 pcm,wav,mp3,opus  默认: pcm</p></li><li><p>AsyncTextToSpeech<br>支持pcm,mp3,opus 默认: mp3</p></li></ul>
 	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
 
 	// <p>生成的音频采样率，默认24000<br>可选</p><ul><li>16000</li><li>24000</li></ul>

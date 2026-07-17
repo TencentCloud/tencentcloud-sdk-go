@@ -10765,9 +10765,9 @@ func NewModifyOrganizationBusinessInfoResponse() (response *ModifyOrganizationBu
 //
 // 
 //
-// * **变更直接成功/确认成功后**：触发 [企业基础信息修改通知回调](https://www.google.com/search?q=https://qian.tencent.com/developers/partner/callback_types_staffs/%23%25E5%258D%2581%25E5%259B%259B-%25E4%25BC%2581%25E4%25B8%259A%25E5%259F%25BA%25E7%25A1%2580%25E4%25BF%25A1%25E6%2581%25AF%25E4%25BF%25AE%25E6%2594%25B9%25E9%2580%259A%25E7%259F%25A5)
+// * **变更直接成功/确认成功后**：触发 [企业基础信息修改通知回调](https://qian.tencent.com/developers/partner/callback_types_staffs#%E5%8D%81%E5%9B%9B-%E4%BC%81%E4%B8%9A%E5%9F%BA%E7%A1%80%E4%BF%A1%E6%81%AF%E4%BF%AE%E6%94%B9%E9%80%9A%E7%9F%A5)
 //
-// * **人工收录审核产生结果后**：触发 [企业收录申请审核结果回调](https://www.google.com/search?q=https://qian.tencent.com/developers/partner/callback_types_staffs/%23%25E5%258D%2581%25E5%2585%25AD-%25E4%25BC%2581%25E4%25B8%259A%25E6%2594%25B6%25E5%25BD%2595%25E7%2594%25B3%25E8%25AF%25B7%25E5%25AE%25A1%25E6%25A0%25B8%25E7%25BB%2593%25E6%259E%259C%25E5%259B%259E%25E8%25B0%2583)
+// * **人工收录审核产生结果后**：触发 [企业收录申请审核结果回调](https://qian.tencent.com/developers/partner/callback_types_staffs#%E5%8D%81%E5%85%AD-%E4%BC%81%E4%B8%9A%E6%94%B6%E5%BD%95%E7%94%B3%E8%AF%B7%E5%AE%A1%E6%A0%B8%E7%BB%93%E6%9E%9C%E5%9B%9E%E8%B0%83)
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -10862,9 +10862,9 @@ func (c *Client) ModifyOrganizationBusinessInfo(request *ModifyOrganizationBusin
 //
 // 
 //
-// * **变更直接成功/确认成功后**：触发 [企业基础信息修改通知回调](https://www.google.com/search?q=https://qian.tencent.com/developers/partner/callback_types_staffs/%23%25E5%258D%2581%25E5%259B%259B-%25E4%25BC%2581%25E4%25B8%259A%25E5%259F%25BA%25E7%25A1%2580%25E4%25BF%25A1%25E6%2581%25AF%25E4%25BF%25AE%25E6%2594%25B9%25E9%2580%259A%25E7%259F%25A5)
+// * **变更直接成功/确认成功后**：触发 [企业基础信息修改通知回调](https://qian.tencent.com/developers/partner/callback_types_staffs#%E5%8D%81%E5%9B%9B-%E4%BC%81%E4%B8%9A%E5%9F%BA%E7%A1%80%E4%BF%A1%E6%81%AF%E4%BF%AE%E6%94%B9%E9%80%9A%E7%9F%A5)
 //
-// * **人工收录审核产生结果后**：触发 [企业收录申请审核结果回调](https://www.google.com/search?q=https://qian.tencent.com/developers/partner/callback_types_staffs/%23%25E5%258D%2581%25E5%2585%25AD-%25E4%25BC%2581%25E4%25B8%259A%25E6%2594%25B6%25E5%25BD%2595%25E7%2594%25B3%25E8%25AF%25B7%25E5%25AE%25A1%25E6%25A0%25B8%25E7%25BB%2593%25E6%259E%259C%25E5%259B%259E%25E8%25B0%2583)
+// * **人工收录审核产生结果后**：触发 [企业收录申请审核结果回调](https://qian.tencent.com/developers/partner/callback_types_staffs#%E5%8D%81%E5%85%AD-%E4%BC%81%E4%B8%9A%E6%94%B6%E5%BD%95%E7%94%B3%E8%AF%B7%E5%AE%A1%E6%A0%B8%E7%BB%93%E6%9E%9C%E5%9B%9E%E8%B0%83)
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

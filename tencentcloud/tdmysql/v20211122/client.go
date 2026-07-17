@@ -507,6 +507,64 @@ func (c *Client) DeleteUsersWithContext(ctx context.Context, request *DeleteUser
     return
 }
 
+func NewDescribeDBEnginesRequest() (request *DescribeDBEnginesRequest) {
+    request = &DescribeDBEnginesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmysql", APIVersion, "DescribeDBEngines")
+    
+    
+    return
+}
+
+func NewDescribeDBEnginesResponse() (response *DescribeDBEnginesResponse) {
+    response = &DescribeDBEnginesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDBEngines
+// 本接口（DescribeDBEngines）用于获取DB引擎版本列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_ROUTERNOTFOUND = "InternalError.RouterNotFound"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_DELETERUNNINGBACKUPTASKERR = "OperationDenied.DeleteRunningBackupTaskErr"
+//  RESOURCENOTFOUND_BIZRESOURCENOTFOUNDERROR = "ResourceNotFound.BizResourceNotFoundError"
+func (c *Client) DescribeDBEngines(request *DescribeDBEnginesRequest) (response *DescribeDBEnginesResponse, err error) {
+    return c.DescribeDBEnginesWithContext(context.Background(), request)
+}
+
+// DescribeDBEngines
+// 本接口（DescribeDBEngines）用于获取DB引擎版本列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_ROUTERNOTFOUND = "InternalError.RouterNotFound"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_DELETERUNNINGBACKUPTASKERR = "OperationDenied.DeleteRunningBackupTaskErr"
+//  RESOURCENOTFOUND_BIZRESOURCENOTFOUNDERROR = "ResourceNotFound.BizResourceNotFoundError"
+func (c *Client) DescribeDBEnginesWithContext(ctx context.Context, request *DescribeDBEnginesRequest) (response *DescribeDBEnginesResponse, err error) {
+    if request == nil {
+        request = NewDescribeDBEnginesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tdmysql", APIVersion, "DescribeDBEngines")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDBEngines require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDBEnginesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDBInstanceDetailRequest() (request *DescribeDBInstanceDetailRequest) {
     request = &DescribeDBInstanceDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},

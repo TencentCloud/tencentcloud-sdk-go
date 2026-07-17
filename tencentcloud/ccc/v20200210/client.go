@@ -692,6 +692,7 @@ func NewCreateAutoCalloutTaskResponse() (response *CreateAutoCalloutTaskResponse
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_EXPERIENCEACCOUNT = "InvalidParameterValue.ExperienceAccount"
+//  LIMITEXCEEDED_OUTOFQUOTAMAXCOUNT = "LimitExceeded.OutOfQuotaMaxCount"
 func (c *Client) CreateAutoCalloutTask(request *CreateAutoCalloutTaskRequest) (response *CreateAutoCalloutTaskResponse, err error) {
     return c.CreateAutoCalloutTaskWithContext(context.Background(), request)
 }
@@ -710,6 +711,7 @@ func (c *Client) CreateAutoCalloutTask(request *CreateAutoCalloutTaskRequest) (r
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_EXPERIENCEACCOUNT = "InvalidParameterValue.ExperienceAccount"
+//  LIMITEXCEEDED_OUTOFQUOTAMAXCOUNT = "LimitExceeded.OutOfQuotaMaxCount"
 func (c *Client) CreateAutoCalloutTaskWithContext(ctx context.Context, request *CreateAutoCalloutTaskRequest) (response *CreateAutoCalloutTaskResponse, err error) {
     if request == nil {
         request = NewCreateAutoCalloutTaskRequest()

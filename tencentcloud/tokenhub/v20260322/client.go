@@ -223,7 +223,7 @@ func NewCreateGlossaryResponse() (response *CreateGlossaryResponse) {
 }
 
 // CreateGlossary
-// 创建术语库。
+// 创建术语库。(单个用户默认最多可以创建50个术语库，支持加白)
 //
 // 
 //
@@ -240,7 +240,7 @@ func (c *Client) CreateGlossary(request *CreateGlossaryRequest) (response *Creat
 }
 
 // CreateGlossary
-// 创建术语库。
+// 创建术语库。(单个用户默认最多可以创建50个术语库，支持加白)
 //
 // 
 //
@@ -295,6 +295,8 @@ func NewCreateGlossaryEntriesResponse() (response *CreateGlossaryEntriesResponse
 //
 // 在指定术语库下批量创建术语条目。单次最多创建 100 条。
 //
+// 单个术语库默认最多总共可以创建10000个术语对
+//
 // 可能返回的错误码:
 //  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
 //  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
@@ -312,6 +314,8 @@ func (c *Client) CreateGlossaryEntries(request *CreateGlossaryEntriesRequest) (r
 // 
 //
 // 在指定术语库下批量创建术语条目。单次最多创建 100 条。
+//
+// 单个术语库默认最多总共可以创建10000个术语对
 //
 // 可能返回的错误码:
 //  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
@@ -427,7 +431,7 @@ func NewCreateTokenPlanTeamOrderAndBuyResponse() (response *CreateTokenPlanTeamO
 }
 
 // CreateTokenPlanTeamOrderAndBuy
-// 购买套餐。
+// 购买套餐（重新开通过期的套餐续费也通过该接口实现，需要额外传已过期套餐teamId。注：续费成功后套餐包总周期数（TotalCycles）会包含历史周期数，实际套餐包生效周期以生效时间（StartTime）和到期时间（ExpireTime）为准）。
 //
 // 
 //
@@ -444,7 +448,7 @@ func (c *Client) CreateTokenPlanTeamOrderAndBuy(request *CreateTokenPlanTeamOrde
 }
 
 // CreateTokenPlanTeamOrderAndBuy
-// 购买套餐。
+// 购买套餐（重新开通过期的套餐续费也通过该接口实现，需要额外传已过期套餐teamId。注：续费成功后套餐包总周期数（TotalCycles）会包含历史周期数，实际套餐包生效周期以生效时间（StartTime）和到期时间（ExpireTime）为准）。
 //
 // 
 //

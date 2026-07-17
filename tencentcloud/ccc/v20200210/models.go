@@ -1999,6 +1999,9 @@ type CreateAutoCalloutTaskRequestParams struct {
 
 	// <p>触发策略</p>
 	TriggerStrategy []*TriggerStrategyItem `json:"TriggerStrategy,omitnil,omitempty" name:"TriggerStrategy"`
+
+	// <p>智能体并发限制</p>
+	ConcurrencyLimit *int64 `json:"ConcurrencyLimit,omitnil,omitempty" name:"ConcurrencyLimit"`
 }
 
 type CreateAutoCalloutTaskRequest struct {
@@ -2066,6 +2069,9 @@ type CreateAutoCalloutTaskRequest struct {
 
 	// <p>触发策略</p>
 	TriggerStrategy []*TriggerStrategyItem `json:"TriggerStrategy,omitnil,omitempty" name:"TriggerStrategy"`
+
+	// <p>智能体并发限制</p>
+	ConcurrencyLimit *int64 `json:"ConcurrencyLimit,omitnil,omitempty" name:"ConcurrencyLimit"`
 }
 
 func (r *CreateAutoCalloutTaskRequest) ToJsonString() string {
@@ -2101,6 +2107,7 @@ func (r *CreateAutoCalloutTaskRequest) FromJsonString(s string) error {
 	delete(f, "RetryTags")
 	delete(f, "AvailableWorkTimeConfig")
 	delete(f, "TriggerStrategy")
+	delete(f, "ConcurrencyLimit")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAutoCalloutTaskRequest has unknown keys!", "")
 	}

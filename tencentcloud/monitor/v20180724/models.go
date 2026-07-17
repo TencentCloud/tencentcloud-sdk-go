@@ -9700,43 +9700,45 @@ func (r *DescribePrometheusAgentsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribePrometheusAlertGroupsRequestParams struct {
-	// Prometheus 实例 ID
+	// <p>Prometheus 实例 ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 返回数量，默认为 20，最大值为 100
+	// <p>返回数量，默认为 20，最大值为 100</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量，默认为 0
+	// <p>偏移量，默认为 0</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 告警分组ID，形如alert-xxxx。
-	// 查询给定ID的告警分组
+	// <p>告警分组ID，形如alert-xxxx。<br>查询给定ID的告警分组</p>
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 告警分组名称。
-	// 查询名称中包含给定字符串的告警分组
+	// <p>告警分组名称。<br>查询名称中包含给定字符串的告警分组</p>
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
+
+	// <p>通过自定义label查询告警规则：<br>返回包含符合过滤条件告警规则的整个分组</p><p>多个label过滤条件取交集</p>
+	Labels []*PrometheusRuleKV `json:"Labels,omitnil,omitempty" name:"Labels"`
 }
 
 type DescribePrometheusAlertGroupsRequest struct {
 	*tchttp.BaseRequest
 	
-	// Prometheus 实例 ID
+	// <p>Prometheus 实例 ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 返回数量，默认为 20，最大值为 100
+	// <p>返回数量，默认为 20，最大值为 100</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量，默认为 0
+	// <p>偏移量，默认为 0</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 告警分组ID，形如alert-xxxx。
-	// 查询给定ID的告警分组
+	// <p>告警分组ID，形如alert-xxxx。<br>查询给定ID的告警分组</p>
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 告警分组名称。
-	// 查询名称中包含给定字符串的告警分组
+	// <p>告警分组名称。<br>查询名称中包含给定字符串的告警分组</p>
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
+
+	// <p>通过自定义label查询告警规则：<br>返回包含符合过滤条件告警规则的整个分组</p><p>多个label过滤条件取交集</p>
+	Labels []*PrometheusRuleKV `json:"Labels,omitnil,omitempty" name:"Labels"`
 }
 
 func (r *DescribePrometheusAlertGroupsRequest) ToJsonString() string {
@@ -9756,6 +9758,7 @@ func (r *DescribePrometheusAlertGroupsRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "GroupId")
 	delete(f, "GroupName")
+	delete(f, "Labels")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePrometheusAlertGroupsRequest has unknown keys!", "")
 	}
@@ -9764,11 +9767,11 @@ func (r *DescribePrometheusAlertGroupsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribePrometheusAlertGroupsResponseParams struct {
-	// 告警分组信息
+	// <p>告警分组信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AlertGroupSet []*PrometheusAlertGroupSet `json:"AlertGroupSet,omitnil,omitempty" name:"AlertGroupSet"`
 
-	// 告警分组总数
+	// <p>告警分组总数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 

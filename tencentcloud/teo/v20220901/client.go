@@ -1645,6 +1645,118 @@ func (c *Client) CreateFunctionRuleWithContext(ctx context.Context, request *Cre
     return
 }
 
+func NewCreateInferenceAPITokenRequest() (request *CreateInferenceAPITokenRequest) {
+    request = &CreateInferenceAPITokenRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "CreateInferenceAPIToken")
+    
+    
+    return
+}
+
+func NewCreateInferenceAPITokenResponse() (response *CreateInferenceAPITokenResponse) {
+    response = &CreateInferenceAPITokenResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateInferenceAPIToken
+// 创建推理 API Token，用于访问推理服务时进行鉴权，Token 内容仅在创建时返回一次，每个站点最多创建 100 个。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_ZONENOTFOUND = "InvalidParameterValue.ZoneNotFound"
+//  LIMITEXCEEDED = "LimitExceeded"
+func (c *Client) CreateInferenceAPIToken(request *CreateInferenceAPITokenRequest) (response *CreateInferenceAPITokenResponse, err error) {
+    return c.CreateInferenceAPITokenWithContext(context.Background(), request)
+}
+
+// CreateInferenceAPIToken
+// 创建推理 API Token，用于访问推理服务时进行鉴权，Token 内容仅在创建时返回一次，每个站点最多创建 100 个。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_ZONENOTFOUND = "InvalidParameterValue.ZoneNotFound"
+//  LIMITEXCEEDED = "LimitExceeded"
+func (c *Client) CreateInferenceAPITokenWithContext(ctx context.Context, request *CreateInferenceAPITokenRequest) (response *CreateInferenceAPITokenResponse, err error) {
+    if request == nil {
+        request = NewCreateInferenceAPITokenRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "CreateInferenceAPIToken")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateInferenceAPIToken require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateInferenceAPITokenResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateInferenceServiceRequest() (request *CreateInferenceServiceRequest) {
+    request = &CreateInferenceServiceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "CreateInferenceService")
+    
+    
+    return
+}
+
+func NewCreateInferenceServiceResponse() (response *CreateInferenceServiceResponse) {
+    response = &CreateInferenceServiceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateInferenceService
+// 创建推理服务，支持设置服务名称、监听端口、容器镜像配置和资源配置，创建成功后提供推理访问地址。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INFERENCESERVICENAME = "InvalidParameterValue.InferenceServiceName"
+//  INVALIDPARAMETERVALUE_INFERENCESERVICENAMEDUPLICATE = "InvalidParameterValue.InferenceServiceNameDuplicate"
+//  INVALIDPARAMETERVALUE_ZONENOTFOUND = "InvalidParameterValue.ZoneNotFound"
+//  LIMITEXCEEDED_INFERENCESERVICE = "LimitExceeded.InferenceService"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) CreateInferenceService(request *CreateInferenceServiceRequest) (response *CreateInferenceServiceResponse, err error) {
+    return c.CreateInferenceServiceWithContext(context.Background(), request)
+}
+
+// CreateInferenceService
+// 创建推理服务，支持设置服务名称、监听端口、容器镜像配置和资源配置，创建成功后提供推理访问地址。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INFERENCESERVICENAME = "InvalidParameterValue.InferenceServiceName"
+//  INVALIDPARAMETERVALUE_INFERENCESERVICENAMEDUPLICATE = "InvalidParameterValue.InferenceServiceNameDuplicate"
+//  INVALIDPARAMETERVALUE_ZONENOTFOUND = "InvalidParameterValue.ZoneNotFound"
+//  LIMITEXCEEDED_INFERENCESERVICE = "LimitExceeded.InferenceService"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) CreateInferenceServiceWithContext(ctx context.Context, request *CreateInferenceServiceRequest) (response *CreateInferenceServiceResponse, err error) {
+    if request == nil {
+        request = NewCreateInferenceServiceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "CreateInferenceService")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateInferenceService require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateInferenceServiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateJustInTimeTranscodeTemplateRequest() (request *CreateJustInTimeTranscodeTemplateRequest) {
     request = &CreateJustInTimeTranscodeTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4839,6 +4951,58 @@ func (c *Client) DeleteFunctionRulesWithContext(ctx context.Context, request *De
     return
 }
 
+func NewDeleteInferenceAPITokenRequest() (request *DeleteInferenceAPITokenRequest) {
+    request = &DeleteInferenceAPITokenRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "DeleteInferenceAPIToken")
+    
+    
+    return
+}
+
+func NewDeleteInferenceAPITokenResponse() (response *DeleteInferenceAPITokenResponse) {
+    response = &DeleteInferenceAPITokenResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteInferenceAPIToken
+// 删除推理 API Token，删除后该 Token 立即失效，使用其访问推理服务的请求将无法通过鉴权。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_ZONENOTFOUND = "InvalidParameterValue.ZoneNotFound"
+func (c *Client) DeleteInferenceAPIToken(request *DeleteInferenceAPITokenRequest) (response *DeleteInferenceAPITokenResponse, err error) {
+    return c.DeleteInferenceAPITokenWithContext(context.Background(), request)
+}
+
+// DeleteInferenceAPIToken
+// 删除推理 API Token，删除后该 Token 立即失效，使用其访问推理服务的请求将无法通过鉴权。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_ZONENOTFOUND = "InvalidParameterValue.ZoneNotFound"
+func (c *Client) DeleteInferenceAPITokenWithContext(ctx context.Context, request *DeleteInferenceAPITokenRequest) (response *DeleteInferenceAPITokenResponse, err error) {
+    if request == nil {
+        request = NewDeleteInferenceAPITokenRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DeleteInferenceAPIToken")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteInferenceAPIToken require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteInferenceAPITokenResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteJustInTimeTranscodeTemplatesRequest() (request *DeleteJustInTimeTranscodeTemplatesRequest) {
     request = &DeleteJustInTimeTranscodeTemplatesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -7625,6 +7789,334 @@ func (c *Client) DescribeIdentificationsWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewDescribeIdentificationsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeInferenceAPITokensRequest() (request *DescribeInferenceAPITokensRequest) {
+    request = &DescribeInferenceAPITokensRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeInferenceAPITokens")
+    
+    
+    return
+}
+
+func NewDescribeInferenceAPITokensResponse() (response *DescribeInferenceAPITokensResponse) {
+    response = &DescribeInferenceAPITokensResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeInferenceAPITokens
+// 查询推理 API Token 列表，返回 Token 的 ID、名称、内容和创建时间，支持分页查询。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_ZONENOTFOUND = "InvalidParameterValue.ZoneNotFound"
+func (c *Client) DescribeInferenceAPITokens(request *DescribeInferenceAPITokensRequest) (response *DescribeInferenceAPITokensResponse, err error) {
+    return c.DescribeInferenceAPITokensWithContext(context.Background(), request)
+}
+
+// DescribeInferenceAPITokens
+// 查询推理 API Token 列表，返回 Token 的 ID、名称、内容和创建时间，支持分页查询。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_ZONENOTFOUND = "InvalidParameterValue.ZoneNotFound"
+func (c *Client) DescribeInferenceAPITokensWithContext(ctx context.Context, request *DescribeInferenceAPITokensRequest) (response *DescribeInferenceAPITokensResponse, err error) {
+    if request == nil {
+        request = NewDescribeInferenceAPITokensRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeInferenceAPITokens")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInferenceAPITokens require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeInferenceAPITokensResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeInferenceHardwareSpecificationsRequest() (request *DescribeInferenceHardwareSpecificationsRequest) {
+    request = &DescribeInferenceHardwareSpecificationsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeInferenceHardwareSpecifications")
+    
+    
+    return
+}
+
+func NewDescribeInferenceHardwareSpecificationsResponse() (response *DescribeInferenceHardwareSpecificationsResponse) {
+    response = &DescribeInferenceHardwareSpecificationsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeInferenceHardwareSpecifications
+// 查询推理硬件规格列表，返回各规格的 CPU、内存、GPU 和显存等配置，创建服务时可从中选择所需规格。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_ZONENOTFOUND = "InvalidParameterValue.ZoneNotFound"
+func (c *Client) DescribeInferenceHardwareSpecifications(request *DescribeInferenceHardwareSpecificationsRequest) (response *DescribeInferenceHardwareSpecificationsResponse, err error) {
+    return c.DescribeInferenceHardwareSpecificationsWithContext(context.Background(), request)
+}
+
+// DescribeInferenceHardwareSpecifications
+// 查询推理硬件规格列表，返回各规格的 CPU、内存、GPU 和显存等配置，创建服务时可从中选择所需规格。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_ZONENOTFOUND = "InvalidParameterValue.ZoneNotFound"
+func (c *Client) DescribeInferenceHardwareSpecificationsWithContext(ctx context.Context, request *DescribeInferenceHardwareSpecificationsRequest) (response *DescribeInferenceHardwareSpecificationsResponse, err error) {
+    if request == nil {
+        request = NewDescribeInferenceHardwareSpecificationsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeInferenceHardwareSpecifications")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInferenceHardwareSpecifications require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeInferenceHardwareSpecificationsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeInferenceServiceDeploymentLogsRequest() (request *DescribeInferenceServiceDeploymentLogsRequest) {
+    request = &DescribeInferenceServiceDeploymentLogsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeInferenceServiceDeploymentLogs")
+    
+    
+    return
+}
+
+func NewDescribeInferenceServiceDeploymentLogsResponse() (response *DescribeInferenceServiceDeploymentLogsResponse) {
+    response = &DescribeInferenceServiceDeploymentLogsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeInferenceServiceDeploymentLogs
+// 查询推理服务指定一次部署的日志，返回日志内容和产生时间，支持按时间范围检索、分页和排序。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ZONENOTFOUND = "InvalidParameterValue.ZoneNotFound"
+func (c *Client) DescribeInferenceServiceDeploymentLogs(request *DescribeInferenceServiceDeploymentLogsRequest) (response *DescribeInferenceServiceDeploymentLogsResponse, err error) {
+    return c.DescribeInferenceServiceDeploymentLogsWithContext(context.Background(), request)
+}
+
+// DescribeInferenceServiceDeploymentLogs
+// 查询推理服务指定一次部署的日志，返回日志内容和产生时间，支持按时间范围检索、分页和排序。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ZONENOTFOUND = "InvalidParameterValue.ZoneNotFound"
+func (c *Client) DescribeInferenceServiceDeploymentLogsWithContext(ctx context.Context, request *DescribeInferenceServiceDeploymentLogsRequest) (response *DescribeInferenceServiceDeploymentLogsResponse, err error) {
+    if request == nil {
+        request = NewDescribeInferenceServiceDeploymentLogsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeInferenceServiceDeploymentLogs")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInferenceServiceDeploymentLogs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeInferenceServiceDeploymentLogsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeInferenceServiceDeploymentRecordsRequest() (request *DescribeInferenceServiceDeploymentRecordsRequest) {
+    request = &DescribeInferenceServiceDeploymentRecordsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeInferenceServiceDeploymentRecords")
+    
+    
+    return
+}
+
+func NewDescribeInferenceServiceDeploymentRecordsResponse() (response *DescribeInferenceServiceDeploymentRecordsResponse) {
+    response = &DescribeInferenceServiceDeploymentRecordsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeInferenceServiceDeploymentRecords
+// 查询推理服务部署历史列表，返回每次部署的操作类型、状态、耗时、配置快照和是否为当前生效配置，支持分页和排序。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ZONENOTFOUND = "InvalidParameterValue.ZoneNotFound"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeInferenceServiceDeploymentRecords(request *DescribeInferenceServiceDeploymentRecordsRequest) (response *DescribeInferenceServiceDeploymentRecordsResponse, err error) {
+    return c.DescribeInferenceServiceDeploymentRecordsWithContext(context.Background(), request)
+}
+
+// DescribeInferenceServiceDeploymentRecords
+// 查询推理服务部署历史列表，返回每次部署的操作类型、状态、耗时、配置快照和是否为当前生效配置，支持分页和排序。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ZONENOTFOUND = "InvalidParameterValue.ZoneNotFound"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeInferenceServiceDeploymentRecordsWithContext(ctx context.Context, request *DescribeInferenceServiceDeploymentRecordsRequest) (response *DescribeInferenceServiceDeploymentRecordsResponse, err error) {
+    if request == nil {
+        request = NewDescribeInferenceServiceDeploymentRecordsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeInferenceServiceDeploymentRecords")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInferenceServiceDeploymentRecords require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeInferenceServiceDeploymentRecordsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeInferenceServiceMonitorDataRequest() (request *DescribeInferenceServiceMonitorDataRequest) {
+    request = &DescribeInferenceServiceMonitorDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeInferenceServiceMonitorData")
+    
+    
+    return
+}
+
+func NewDescribeInferenceServiceMonitorDataResponse() (response *DescribeInferenceServiceMonitorDataResponse) {
+    response = &DescribeInferenceServiceMonitorDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeInferenceServiceMonitorData
+// 查询推理服务监控数据，支持 CPU、内存、GPU、显存使用率和实例数量等指标，可指定时间范围和聚合粒度，最多查询最近 30 天的数据。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ZONENOTFOUND = "InvalidParameterValue.ZoneNotFound"
+func (c *Client) DescribeInferenceServiceMonitorData(request *DescribeInferenceServiceMonitorDataRequest) (response *DescribeInferenceServiceMonitorDataResponse, err error) {
+    return c.DescribeInferenceServiceMonitorDataWithContext(context.Background(), request)
+}
+
+// DescribeInferenceServiceMonitorData
+// 查询推理服务监控数据，支持 CPU、内存、GPU、显存使用率和实例数量等指标，可指定时间范围和聚合粒度，最多查询最近 30 天的数据。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ZONENOTFOUND = "InvalidParameterValue.ZoneNotFound"
+func (c *Client) DescribeInferenceServiceMonitorDataWithContext(ctx context.Context, request *DescribeInferenceServiceMonitorDataRequest) (response *DescribeInferenceServiceMonitorDataResponse, err error) {
+    if request == nil {
+        request = NewDescribeInferenceServiceMonitorDataRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeInferenceServiceMonitorData")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInferenceServiceMonitorData require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeInferenceServiceMonitorDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeInferenceServicesRequest() (request *DescribeInferenceServicesRequest) {
+    request = &DescribeInferenceServicesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeInferenceServices")
+    
+    
+    return
+}
+
+func NewDescribeInferenceServicesResponse() (response *DescribeInferenceServicesResponse) {
+    response = &DescribeInferenceServicesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeInferenceServices
+// 查询推理服务列表，支持按服务名称、服务 ID、状态过滤，返回服务的配置、运行状态、实例数和推理访问地址等信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_ZONENOTFOUND = "InvalidParameterValue.ZoneNotFound"
+func (c *Client) DescribeInferenceServices(request *DescribeInferenceServicesRequest) (response *DescribeInferenceServicesResponse, err error) {
+    return c.DescribeInferenceServicesWithContext(context.Background(), request)
+}
+
+// DescribeInferenceServices
+// 查询推理服务列表，支持按服务名称、服务 ID、状态过滤，返回服务的配置、运行状态、实例数和推理访问地址等信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_ZONENOTFOUND = "InvalidParameterValue.ZoneNotFound"
+func (c *Client) DescribeInferenceServicesWithContext(ctx context.Context, request *DescribeInferenceServicesRequest) (response *DescribeInferenceServicesResponse, err error) {
+    if request == nil {
+        request = NewDescribeInferenceServicesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeInferenceServices")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInferenceServices require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeInferenceServicesResponse()
     err = c.Send(request, response)
     return
 }
@@ -12597,6 +13089,60 @@ func (c *Client) ModifyHostsCertificateWithContext(ctx context.Context, request 
     return
 }
 
+func NewModifyInferenceServiceRequest() (request *ModifyInferenceServiceRequest) {
+    request = &ModifyInferenceServiceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "ModifyInferenceService")
+    
+    
+    return
+}
+
+func NewModifyInferenceServiceResponse() (response *ModifyInferenceServiceResponse) {
+    response = &ModifyInferenceServiceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyInferenceService
+// 修改推理服务，支持更新监听端口、请求路径、容器镜像、资源配置和描述信息，仅传入的参数会被修改，未传入的参数保持不变。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_ZONENOTFOUND = "InvalidParameterValue.ZoneNotFound"
+//  RESOURCENOTFOUND_INFERENCESERVICE = "ResourceNotFound.InferenceService"
+func (c *Client) ModifyInferenceService(request *ModifyInferenceServiceRequest) (response *ModifyInferenceServiceResponse, err error) {
+    return c.ModifyInferenceServiceWithContext(context.Background(), request)
+}
+
+// ModifyInferenceService
+// 修改推理服务，支持更新监听端口、请求路径、容器镜像、资源配置和描述信息，仅传入的参数会被修改，未传入的参数保持不变。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_ZONENOTFOUND = "InvalidParameterValue.ZoneNotFound"
+//  RESOURCENOTFOUND_INFERENCESERVICE = "ResourceNotFound.InferenceService"
+func (c *Client) ModifyInferenceServiceWithContext(ctx context.Context, request *ModifyInferenceServiceRequest) (response *ModifyInferenceServiceResponse, err error) {
+    if request == nil {
+        request = NewModifyInferenceServiceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "ModifyInferenceService")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyInferenceService require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyInferenceServiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyL4ProxyRequest() (request *ModifyL4ProxyRequest) {
     request = &ModifyL4ProxyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -15665,6 +16211,60 @@ func (c *Client) ModifyZoneWorkModeWithContext(ctx context.Context, request *Mod
     request.SetContext(ctx)
     
     response = NewModifyZoneWorkModeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewOperateInferenceServiceRequest() (request *OperateInferenceServiceRequest) {
+    request = &OperateInferenceServiceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "OperateInferenceService")
+    
+    
+    return
+}
+
+func NewOperateInferenceServiceResponse() (response *OperateInferenceServiceResponse) {
+    response = &OperateInferenceServiceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// OperateInferenceService
+// 操作推理服务，支持停止、启动和删除推理服务，删除后资源不可恢复。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_ZONENOTFOUND = "InvalidParameterValue.ZoneNotFound"
+//  RESOURCENOTFOUND_INFERENCESERVICE = "ResourceNotFound.InferenceService"
+func (c *Client) OperateInferenceService(request *OperateInferenceServiceRequest) (response *OperateInferenceServiceResponse, err error) {
+    return c.OperateInferenceServiceWithContext(context.Background(), request)
+}
+
+// OperateInferenceService
+// 操作推理服务，支持停止、启动和删除推理服务，删除后资源不可恢复。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_ZONENOTFOUND = "InvalidParameterValue.ZoneNotFound"
+//  RESOURCENOTFOUND_INFERENCESERVICE = "ResourceNotFound.InferenceService"
+func (c *Client) OperateInferenceServiceWithContext(ctx context.Context, request *OperateInferenceServiceRequest) (response *OperateInferenceServiceResponse, err error) {
+    if request == nil {
+        request = NewOperateInferenceServiceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "OperateInferenceService")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("OperateInferenceService require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewOperateInferenceServiceResponse()
     err = c.Send(request, response)
     return
 }

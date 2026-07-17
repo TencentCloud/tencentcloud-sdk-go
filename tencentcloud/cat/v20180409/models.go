@@ -239,152 +239,98 @@ func (r *DeleteProbeTaskResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDetailedSingleProbeDataRequestParams struct {
-	// 开始时间戳（毫秒级）
+	// <p>开始时间戳（毫秒级）</p>
 	BeginTime *uint64 `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
 
-	// 结束时间戳（毫秒级）
+	// <p>结束时间戳（毫秒级）</p>
 	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 任务类型
-	// AnalyzeTaskType_Network：网络质量
-	// AnalyzeTaskType_Browse：页面性能
-	// AnalyzeTaskType_UploadDownload：文件传输（含文件上传、文件下载）
-	// AnalyzeTaskType_Transport：端口性能
-	// AnalyzeTaskType_MediaStream：音视频体验
+	// <p>任务类型<br>AnalyzeTaskType_Network：网络质量<br>AnalyzeTaskType_Browse：页面性能<br>AnalyzeTaskType_UploadDownload：文件传输（含文件上传、文件下载）<br>AnalyzeTaskType_Transport：端口性能<br>AnalyzeTaskType_MediaStream：音视频体验</p>
 	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
-	// 待排序字段
-	// 可以填写 ProbeTime 拨测时间排序
-	// 也可填写SelectedFields 中的选中字段
+	// <p>待排序字段<br>可以填写 ProbeTime 拨测时间排序<br>也可填写SelectedFields 中的选中字段</p>
 	SortField *string `json:"SortField,omitnil,omitempty" name:"SortField"`
 
-	// true表示升序
+	// <p>true表示升序</p>
 	Ascending *bool `json:"Ascending,omitnil,omitempty" name:"Ascending"`
 
-	// 选中字段，如ProbeTime、TransferTime、TransferSize等。
+	// <p>选中字段，如ProbeTime、TransferTime、TransferSize等。</p>
 	SelectedFields []*string `json:"SelectedFields,omitnil,omitempty" name:"SelectedFields"`
 
-	// 起始取数位置
+	// <p>起始取数位置</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 取数数量
+	// <p>取数数量</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 任务ID
+	// <p>任务ID</p>
 	TaskID []*string `json:"TaskID,omitnil,omitempty" name:"TaskID"`
 
-	// 拨测点运营商
-	// 	
-	// 这里实际按拨测结果中的运营商来填写即可
-	// 
-	// 电信：中国电信
-	// 移动：中国移动
-	// 联通：中国联通
+	// <p>拨测点运营商</p><p>这里实际按拨测结果中的运营商来填写即可</p><p>电信：中国电信<br>移动：中国移动<br>联通：中国联通</p>
 	Operators []*string `json:"Operators,omitnil,omitempty" name:"Operators"`
 
-	// 拨测点地区
-	// 	
-	// 这里实际按拨测结果中的地区来填写即可
-	// 
-	// 国内一般是省级单位，如广东、广西、中国香港；直辖市则填北京、上海
-	// 
-	// 境外一般是国家名，如澳大利亚、新加坡
+	// <p>拨测点地区</p><p>这里实际按拨测结果中的地区来填写即可</p><p>国内一般是省级单位，如广东、广西、中国香港；直辖市则填北京、上海</p><p>境外一般是国家名，如澳大利亚、新加坡</p>
 	Districts []*string `json:"Districts,omitnil,omitempty" name:"Districts"`
 
-	// 错误类型
+	// <p>错误类型</p>
 	ErrorTypes []*string `json:"ErrorTypes,omitnil,omitempty" name:"ErrorTypes"`
 
-	// 城市
-	// 这里实际按拨测结果中的城市来填写即可
-	// 
-	// 示例：
-	// 
-	// 深圳市
-	// 武汉市
-	// 首尔
-	// 多伦多
+	// <p>城市<br>这里实际按拨测结果中的城市来填写即可</p><p>示例：</p><p>深圳市<br>武汉市<br>首尔<br>多伦多</p>
 	City []*string `json:"City,omitnil,omitempty" name:"City"`
 
-	// es scroll查询id
+	// <p>es scroll查询id</p>
 	ScrollID *string `json:"ScrollID,omitnil,omitempty" name:"ScrollID"`
 
-	// 详情数据下载
+	// <p>详情数据下载</p>
 	QueryFlag *string `json:"QueryFlag,omitnil,omitempty" name:"QueryFlag"`
 }
 
 type DescribeDetailedSingleProbeDataRequest struct {
 	*tchttp.BaseRequest
 	
-	// 开始时间戳（毫秒级）
+	// <p>开始时间戳（毫秒级）</p>
 	BeginTime *uint64 `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
 
-	// 结束时间戳（毫秒级）
+	// <p>结束时间戳（毫秒级）</p>
 	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 任务类型
-	// AnalyzeTaskType_Network：网络质量
-	// AnalyzeTaskType_Browse：页面性能
-	// AnalyzeTaskType_UploadDownload：文件传输（含文件上传、文件下载）
-	// AnalyzeTaskType_Transport：端口性能
-	// AnalyzeTaskType_MediaStream：音视频体验
+	// <p>任务类型<br>AnalyzeTaskType_Network：网络质量<br>AnalyzeTaskType_Browse：页面性能<br>AnalyzeTaskType_UploadDownload：文件传输（含文件上传、文件下载）<br>AnalyzeTaskType_Transport：端口性能<br>AnalyzeTaskType_MediaStream：音视频体验</p>
 	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
-	// 待排序字段
-	// 可以填写 ProbeTime 拨测时间排序
-	// 也可填写SelectedFields 中的选中字段
+	// <p>待排序字段<br>可以填写 ProbeTime 拨测时间排序<br>也可填写SelectedFields 中的选中字段</p>
 	SortField *string `json:"SortField,omitnil,omitempty" name:"SortField"`
 
-	// true表示升序
+	// <p>true表示升序</p>
 	Ascending *bool `json:"Ascending,omitnil,omitempty" name:"Ascending"`
 
-	// 选中字段，如ProbeTime、TransferTime、TransferSize等。
+	// <p>选中字段，如ProbeTime、TransferTime、TransferSize等。</p>
 	SelectedFields []*string `json:"SelectedFields,omitnil,omitempty" name:"SelectedFields"`
 
-	// 起始取数位置
+	// <p>起始取数位置</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 取数数量
+	// <p>取数数量</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 任务ID
+	// <p>任务ID</p>
 	TaskID []*string `json:"TaskID,omitnil,omitempty" name:"TaskID"`
 
-	// 拨测点运营商
-	// 	
-	// 这里实际按拨测结果中的运营商来填写即可
-	// 
-	// 电信：中国电信
-	// 移动：中国移动
-	// 联通：中国联通
+	// <p>拨测点运营商</p><p>这里实际按拨测结果中的运营商来填写即可</p><p>电信：中国电信<br>移动：中国移动<br>联通：中国联通</p>
 	Operators []*string `json:"Operators,omitnil,omitempty" name:"Operators"`
 
-	// 拨测点地区
-	// 	
-	// 这里实际按拨测结果中的地区来填写即可
-	// 
-	// 国内一般是省级单位，如广东、广西、中国香港；直辖市则填北京、上海
-	// 
-	// 境外一般是国家名，如澳大利亚、新加坡
+	// <p>拨测点地区</p><p>这里实际按拨测结果中的地区来填写即可</p><p>国内一般是省级单位，如广东、广西、中国香港；直辖市则填北京、上海</p><p>境外一般是国家名，如澳大利亚、新加坡</p>
 	Districts []*string `json:"Districts,omitnil,omitempty" name:"Districts"`
 
-	// 错误类型
+	// <p>错误类型</p>
 	ErrorTypes []*string `json:"ErrorTypes,omitnil,omitempty" name:"ErrorTypes"`
 
-	// 城市
-	// 这里实际按拨测结果中的城市来填写即可
-	// 
-	// 示例：
-	// 
-	// 深圳市
-	// 武汉市
-	// 首尔
-	// 多伦多
+	// <p>城市<br>这里实际按拨测结果中的城市来填写即可</p><p>示例：</p><p>深圳市<br>武汉市<br>首尔<br>多伦多</p>
 	City []*string `json:"City,omitnil,omitempty" name:"City"`
 
-	// es scroll查询id
+	// <p>es scroll查询id</p>
 	ScrollID *string `json:"ScrollID,omitnil,omitempty" name:"ScrollID"`
 
-	// 详情数据下载
+	// <p>详情数据下载</p>
 	QueryFlag *string `json:"QueryFlag,omitnil,omitempty" name:"QueryFlag"`
 }
 
@@ -423,13 +369,13 @@ func (r *DescribeDetailedSingleProbeDataRequest) FromJsonString(s string) error 
 
 // Predefined struct for user
 type DescribeDetailedSingleProbeDataResponseParams struct {
-	// 单次详情数据
+	// <p>单次详情数据</p>
 	DataSet []*DetailedSingleDataDefine `json:"DataSet,omitnil,omitempty" name:"DataSet"`
 
-	// 符合条件的数据总数
+	// <p>符合条件的数据总数</p>
 	TotalNumber *int64 `json:"TotalNumber,omitnil,omitempty" name:"TotalNumber"`
 
-	// es scroll查询的id
+	// <p>es scroll查询的id</p>
 	ScrollID *string `json:"ScrollID,omitnil,omitempty" name:"ScrollID"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

@@ -2755,6 +2755,168 @@ func (c *Client) DescribeCcnVpcFwSwitchWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribeCfwAlertsRequest() (request *DescribeCfwAlertsRequest) {
+    request = &DescribeCfwAlertsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "DescribeCfwAlerts")
+    
+    
+    return
+}
+
+func NewDescribeCfwAlertsResponse() (response *DescribeCfwAlertsResponse) {
+    response = &DescribeCfwAlertsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCfwAlerts
+// 查询当前租户防火墙聚合告警事件。Response.Data 内 total 表示聚合告警事件数；alerts[].occurrence_count 表示单个聚合告警事件的告警发生次数/命中次数。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_RESPONSETOOLARGE = "FailedOperation.ResponseTooLarge"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeCfwAlerts(request *DescribeCfwAlertsRequest) (response *DescribeCfwAlertsResponse, err error) {
+    return c.DescribeCfwAlertsWithContext(context.Background(), request)
+}
+
+// DescribeCfwAlerts
+// 查询当前租户防火墙聚合告警事件。Response.Data 内 total 表示聚合告警事件数；alerts[].occurrence_count 表示单个聚合告警事件的告警发生次数/命中次数。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_RESPONSETOOLARGE = "FailedOperation.ResponseTooLarge"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeCfwAlertsWithContext(ctx context.Context, request *DescribeCfwAlertsRequest) (response *DescribeCfwAlertsResponse, err error) {
+    if request == nil {
+        request = NewDescribeCfwAlertsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeCfwAlerts")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCfwAlerts require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCfwAlertsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCfwAnalysisDataRequest() (request *DescribeCfwAnalysisDataRequest) {
+    request = &DescribeCfwAnalysisDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "DescribeCfwAnalysisData")
+    
+    
+    return
+}
+
+func NewDescribeCfwAnalysisDataResponse() (response *DescribeCfwAnalysisDataResponse) {
+    response = &DescribeCfwAnalysisDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCfwAnalysisData
+// 查询当前租户防火墙分析报告数据。按分析场景返回整组分析结果，结果在 Response.Data 的 JSON 字符串中。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_RESPONSETOOLARGE = "FailedOperation.ResponseTooLarge"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeCfwAnalysisData(request *DescribeCfwAnalysisDataRequest) (response *DescribeCfwAnalysisDataResponse, err error) {
+    return c.DescribeCfwAnalysisDataWithContext(context.Background(), request)
+}
+
+// DescribeCfwAnalysisData
+// 查询当前租户防火墙分析报告数据。按分析场景返回整组分析结果，结果在 Response.Data 的 JSON 字符串中。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_RESPONSETOOLARGE = "FailedOperation.ResponseTooLarge"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeCfwAnalysisDataWithContext(ctx context.Context, request *DescribeCfwAnalysisDataRequest) (response *DescribeCfwAnalysisDataResponse, err error) {
+    if request == nil {
+        request = NewDescribeCfwAnalysisDataRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeCfwAnalysisData")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCfwAnalysisData require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCfwAnalysisDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCfwAssetsRequest() (request *DescribeCfwAssetsRequest) {
+    request = &DescribeCfwAssetsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "DescribeCfwAssets")
+    
+    
+    return
+}
+
+func NewDescribeCfwAssetsResponse() (response *DescribeCfwAssetsResponse) {
+    response = &DescribeCfwAssetsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCfwAssets
+// 查询当前租户防火墙纳管资产。默认查询主机资产；仅明确需要 VPC 或子网时传 AssetType。结果在 Response.Data 的 JSON 字符串中。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_RESPONSETOOLARGE = "FailedOperation.ResponseTooLarge"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeCfwAssets(request *DescribeCfwAssetsRequest) (response *DescribeCfwAssetsResponse, err error) {
+    return c.DescribeCfwAssetsWithContext(context.Background(), request)
+}
+
+// DescribeCfwAssets
+// 查询当前租户防火墙纳管资产。默认查询主机资产；仅明确需要 VPC 或子网时传 AssetType。结果在 Response.Data 的 JSON 字符串中。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_RESPONSETOOLARGE = "FailedOperation.ResponseTooLarge"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeCfwAssetsWithContext(ctx context.Context, request *DescribeCfwAssetsRequest) (response *DescribeCfwAssetsResponse, err error) {
+    if request == nil {
+        request = NewDescribeCfwAssetsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeCfwAssets")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCfwAssets require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCfwAssetsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCfwEipsRequest() (request *DescribeCfwEipsRequest) {
     request = &DescribeCfwEipsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2919,6 +3081,324 @@ func (c *Client) DescribeCfwInsStatusWithContext(ctx context.Context, request *D
     request.SetContext(ctx)
     
     response = NewDescribeCfwInsStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCfwLogsRequest() (request *DescribeCfwLogsRequest) {
+    request = &DescribeCfwLogsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "DescribeCfwLogs")
+    
+    
+    return
+}
+
+func NewDescribeCfwLogsResponse() (response *DescribeCfwLogsResponse) {
+    response = &DescribeCfwLogsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCfwLogs
+// 查询当前租户防火墙日志。分页只使用 Response.Data 内的 HasMore / NextToken。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_RESPONSETOOLARGE = "FailedOperation.ResponseTooLarge"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeCfwLogs(request *DescribeCfwLogsRequest) (response *DescribeCfwLogsResponse, err error) {
+    return c.DescribeCfwLogsWithContext(context.Background(), request)
+}
+
+// DescribeCfwLogs
+// 查询当前租户防火墙日志。分页只使用 Response.Data 内的 HasMore / NextToken。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_RESPONSETOOLARGE = "FailedOperation.ResponseTooLarge"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeCfwLogsWithContext(ctx context.Context, request *DescribeCfwLogsRequest) (response *DescribeCfwLogsResponse, err error) {
+    if request == nil {
+        request = NewDescribeCfwLogsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeCfwLogs")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCfwLogs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCfwLogsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCfwRiskOverviewRequest() (request *DescribeCfwRiskOverviewRequest) {
+    request = &DescribeCfwRiskOverviewRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "DescribeCfwRiskOverview")
+    
+    
+    return
+}
+
+func NewDescribeCfwRiskOverviewResponse() (response *DescribeCfwRiskOverviewResponse) {
+    response = &DescribeCfwRiskOverviewResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCfwRiskOverview
+// 查询当前租户风险中心未处理风险概览。默认查询最近 7 天；自定义时间范围需同时传 StartTime 和 EndTime。结果在 Response.Data 的 JSON 字符串中。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_RESPONSETOOLARGE = "FailedOperation.ResponseTooLarge"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeCfwRiskOverview(request *DescribeCfwRiskOverviewRequest) (response *DescribeCfwRiskOverviewResponse, err error) {
+    return c.DescribeCfwRiskOverviewWithContext(context.Background(), request)
+}
+
+// DescribeCfwRiskOverview
+// 查询当前租户风险中心未处理风险概览。默认查询最近 7 天；自定义时间范围需同时传 StartTime 和 EndTime。结果在 Response.Data 的 JSON 字符串中。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_RESPONSETOOLARGE = "FailedOperation.ResponseTooLarge"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeCfwRiskOverviewWithContext(ctx context.Context, request *DescribeCfwRiskOverviewRequest) (response *DescribeCfwRiskOverviewResponse, err error) {
+    if request == nil {
+        request = NewDescribeCfwRiskOverviewRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeCfwRiskOverview")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCfwRiskOverview require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCfwRiskOverviewResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCfwRuleOptimizationRequest() (request *DescribeCfwRuleOptimizationRequest) {
+    request = &DescribeCfwRuleOptimizationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "DescribeCfwRuleOptimization")
+    
+    
+    return
+}
+
+func NewDescribeCfwRuleOptimizationResponse() (response *DescribeCfwRuleOptimizationResponse) {
+    response = &DescribeCfwRuleOptimizationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCfwRuleOptimization
+// 查询当前租户防火墙规则优化建议。只读分析，不修改规则；Action 名保持单数 RuleOptimization。结果在 Response.Data 的 JSON 字符串中。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeCfwRuleOptimization(request *DescribeCfwRuleOptimizationRequest) (response *DescribeCfwRuleOptimizationResponse, err error) {
+    return c.DescribeCfwRuleOptimizationWithContext(context.Background(), request)
+}
+
+// DescribeCfwRuleOptimization
+// 查询当前租户防火墙规则优化建议。只读分析，不修改规则；Action 名保持单数 RuleOptimization。结果在 Response.Data 的 JSON 字符串中。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeCfwRuleOptimizationWithContext(ctx context.Context, request *DescribeCfwRuleOptimizationRequest) (response *DescribeCfwRuleOptimizationResponse, err error) {
+    if request == nil {
+        request = NewDescribeCfwRuleOptimizationRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeCfwRuleOptimization")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCfwRuleOptimization require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCfwRuleOptimizationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCfwRulesRequest() (request *DescribeCfwRulesRequest) {
+    request = &DescribeCfwRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "DescribeCfwRules")
+    
+    
+    return
+}
+
+func NewDescribeCfwRulesResponse() (response *DescribeCfwRulesResponse) {
+    response = &DescribeCfwRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCfwRules
+// 查询当前租户防火墙规则配置。覆盖互联网边界、NAT、VPC、企业安全组，以及入侵防御 intrusion_prevention 的 blocklist、whitelist、isolate 三类有效列表。结果在 Response.Data 的 JSON 字符串中。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeCfwRules(request *DescribeCfwRulesRequest) (response *DescribeCfwRulesResponse, err error) {
+    return c.DescribeCfwRulesWithContext(context.Background(), request)
+}
+
+// DescribeCfwRules
+// 查询当前租户防火墙规则配置。覆盖互联网边界、NAT、VPC、企业安全组，以及入侵防御 intrusion_prevention 的 blocklist、whitelist、isolate 三类有效列表。结果在 Response.Data 的 JSON 字符串中。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeCfwRulesWithContext(ctx context.Context, request *DescribeCfwRulesRequest) (response *DescribeCfwRulesResponse, err error) {
+    if request == nil {
+        request = NewDescribeCfwRulesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeCfwRules")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCfwRules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCfwRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCfwStatusMonitorRequest() (request *DescribeCfwStatusMonitorRequest) {
+    request = &DescribeCfwStatusMonitorRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "DescribeCfwStatusMonitor")
+    
+    
+    return
+}
+
+func NewDescribeCfwStatusMonitorResponse() (response *DescribeCfwStatusMonitorResponse) {
+    response = &DescribeCfwStatusMonitorResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCfwStatusMonitor
+// 查询状态监控场景。Op=describe_scene 用于发现可用场景、指标、视角和二级下拉 available_options；Op=fetch_scene 用于拉取具体场景快照，结果在 Response.Data 的 JSON 字符串中。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_RESPONSETOOLARGE = "FailedOperation.ResponseTooLarge"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeCfwStatusMonitor(request *DescribeCfwStatusMonitorRequest) (response *DescribeCfwStatusMonitorResponse, err error) {
+    return c.DescribeCfwStatusMonitorWithContext(context.Background(), request)
+}
+
+// DescribeCfwStatusMonitor
+// 查询状态监控场景。Op=describe_scene 用于发现可用场景、指标、视角和二级下拉 available_options；Op=fetch_scene 用于拉取具体场景快照，结果在 Response.Data 的 JSON 字符串中。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_RESPONSETOOLARGE = "FailedOperation.ResponseTooLarge"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeCfwStatusMonitorWithContext(ctx context.Context, request *DescribeCfwStatusMonitorRequest) (response *DescribeCfwStatusMonitorResponse, err error) {
+    if request == nil {
+        request = NewDescribeCfwStatusMonitorRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeCfwStatusMonitor")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCfwStatusMonitor require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCfwStatusMonitorResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCfwSwitchesRequest() (request *DescribeCfwSwitchesRequest) {
+    request = &DescribeCfwSwitchesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "DescribeCfwSwitches")
+    
+    
+    return
+}
+
+func NewDescribeCfwSwitchesResponse() (response *DescribeCfwSwitchesResponse) {
+    response = &DescribeCfwSwitchesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCfwSwitches
+// 查询当前租户防火墙防护开关总览。结果在 Response.Data 的 JSON 字符串中。本接口没有自定义业务入参，不支持过滤、排序或分页。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeCfwSwitches(request *DescribeCfwSwitchesRequest) (response *DescribeCfwSwitchesResponse, err error) {
+    return c.DescribeCfwSwitchesWithContext(context.Background(), request)
+}
+
+// DescribeCfwSwitches
+// 查询当前租户防火墙防护开关总览。结果在 Response.Data 的 JSON 字符串中。本接口没有自定义业务入参，不支持过滤、排序或分页。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeCfwSwitchesWithContext(ctx context.Context, request *DescribeCfwSwitchesRequest) (response *DescribeCfwSwitchesResponse, err error) {
+    if request == nil {
+        request = NewDescribeCfwSwitchesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeCfwSwitches")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCfwSwitches require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCfwSwitchesResponse()
     err = c.Send(request, response)
     return
 }

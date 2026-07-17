@@ -242,6 +242,9 @@ const (
 	// 拉取产品列表失败。
 	INVALIDPARAMETERVALUE_GETPRODUCTSLISTERROR = "InvalidParameterValue.GetProductsListError"
 
+	// AppKey 无效
+	INVALIDPARAMETERVALUE_INVALIDAPPKEY = "InvalidParameterValue.InvalidAppKey"
+
 	// 回调 Token 格式有误
 	INVALIDPARAMETERVALUE_INVALIDCALLBACKTOKEN = "InvalidParameterValue.InvalidCallbackToken"
 
@@ -361,6 +364,9 @@ const (
 
 	// TPNSiOSAccessID, TPNSiOSSecretKey, TPNSiOSRegion validation failed。
 	INVALIDPARAMETERVALUE_TPNSIOSVALIDATIONFAILED = "InvalidParameterValue.TPNSiOSValidationFailed"
+
+	// Topic与replyTopic必须同时设置或同时为空
+	INVALIDPARAMETERVALUE_TOPICMISMATCH = "InvalidParameterValue.TopicMismatch"
 
 	// Topic已存在。
 	INVALIDPARAMETERVALUE_TOPICPOLICYALREADYEXIST = "InvalidParameterValue.TopicPolicyAlreadyExist"
@@ -698,6 +704,9 @@ const (
 	// 产品已被共享，请先解除共享。
 	UNSUPPORTEDOPERATION_PRODUCTHASSHARED = "UnsupportedOperation.ProductHasShared"
 
+	// 子产品禁止直接绑定家庭，请走网关绑定
+	UNSUPPORTEDOPERATION_PRODUCTISSUBPRODUCT = "UnsupportedOperation.ProductIsSubProduct"
+
 	// 存在重复项目。
 	UNSUPPORTEDOPERATION_PROJECTDUPKEYEXIST = "UnsupportedOperation.ProjectDupKeyExist"
 
@@ -727,4 +736,7 @@ const (
 
 	// Video平台产品不存在。
 	UNSUPPORTEDOPERATION_VIDEOPRODUCTNOTEXIST = "UnsupportedOperation.VideoProductNotExist"
+
+	// 虚拟设备禁止绑定 / 解绑
+	UNSUPPORTEDOPERATION_VIRTUALDEVICECANNOTBIND = "UnsupportedOperation.VirtualDeviceCannotBind"
 )

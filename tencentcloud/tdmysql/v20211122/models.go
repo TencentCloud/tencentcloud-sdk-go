@@ -1150,6 +1150,36 @@ func (r *CreateUsersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DBEngineInfo struct {
+	// <p>引擎类型</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>引擎版本</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
+
+	// <p>引擎名称</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>引擎描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>是否最新版本</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	New *bool `json:"New,omitnil,omitempty" name:"New"`
+
+	// <p>支持的兼容的模式，以,分隔</p>
+	SQLMode []*string `json:"SQLMode,omitnil,omitempty" name:"SQLMode"`
+
+	// <p>是否支持参数模板</p>
+	IsSupportParamTemplate *bool `json:"IsSupportParamTemplate,omitnil,omitempty" name:"IsSupportParamTemplate"`
+
+	// <p>是否支持Serverless模式</p>
+	IsSupportServerless *bool `json:"IsSupportServerless,omitnil,omitempty" name:"IsSupportServerless"`
+}
+
 type DBParamValue struct {
 	// 参数名称
 	Param *string `json:"Param,omitnil,omitempty" name:"Param"`
@@ -1356,6 +1386,63 @@ func (r *DeleteUsersResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteUsersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDBEnginesRequestParams struct {
+
+}
+
+type DescribeDBEnginesRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeDBEnginesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDBEnginesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDBEnginesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDBEnginesResponseParams struct {
+	// items总数
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// DB引擎信息
+	Items []*DBEngineInfo `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDBEnginesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDBEnginesResponseParams `json:"Response"`
+}
+
+func (r *DescribeDBEnginesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDBEnginesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

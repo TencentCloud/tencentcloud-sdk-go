@@ -933,6 +933,108 @@ func (r *BindTWeTalkAgentResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type BindUserDeviceRequestParams struct {
+	// <p>应用 AppKey，用于解析 IotAppID 并完成签名校验</p>
+	AppKey *string `json:"AppKey,omitnil,omitempty" name:"AppKey"`
+
+	// <p>产品 ID</p>
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// <p>设备名（禁止使用虚拟设备名 ~virtualDev）</p>
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// <p>用户 OpenID，用于定位 / 兜底创建 App 用户</p>
+	OpenID *string `json:"OpenID,omitnil,omitempty" name:"OpenID"`
+
+	// <p>家庭名，默认 default</p>
+	FamilyName *string `json:"FamilyName,omitnil,omitempty" name:"FamilyName"`
+
+	// <p>房间 ID，默认 &quot;0&quot;</p>
+	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+
+	// <p>用户昵称（仅首次创建用户时使用）</p>
+	NickName *string `json:"NickName,omitnil,omitempty" name:"NickName"`
+}
+
+type BindUserDeviceRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>应用 AppKey，用于解析 IotAppID 并完成签名校验</p>
+	AppKey *string `json:"AppKey,omitnil,omitempty" name:"AppKey"`
+
+	// <p>产品 ID</p>
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// <p>设备名（禁止使用虚拟设备名 ~virtualDev）</p>
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// <p>用户 OpenID，用于定位 / 兜底创建 App 用户</p>
+	OpenID *string `json:"OpenID,omitnil,omitempty" name:"OpenID"`
+
+	// <p>家庭名，默认 default</p>
+	FamilyName *string `json:"FamilyName,omitnil,omitempty" name:"FamilyName"`
+
+	// <p>房间 ID，默认 &quot;0&quot;</p>
+	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+
+	// <p>用户昵称（仅首次创建用户时使用）</p>
+	NickName *string `json:"NickName,omitnil,omitempty" name:"NickName"`
+}
+
+func (r *BindUserDeviceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BindUserDeviceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AppKey")
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	delete(f, "OpenID")
+	delete(f, "FamilyName")
+	delete(f, "RoomId")
+	delete(f, "NickName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BindUserDeviceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BindUserDeviceResponseParams struct {
+	// <p>用户 UserID（已存在则复用）</p>
+	UserID *string `json:"UserID,omitnil,omitempty" name:"UserID"`
+
+	// <p>家庭 ID（已存在则复用）</p>
+	FamilyId *string `json:"FamilyId,omitnil,omitempty" name:"FamilyId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type BindUserDeviceResponse struct {
+	*tchttp.BaseResponse
+	Response *BindUserDeviceResponseParams `json:"Response"`
+}
+
+func (r *BindUserDeviceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BindUserDeviceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CallDeviceActionAsyncRequestParams struct {
 	// 产品Id
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
@@ -1094,6 +1196,110 @@ func (r *CallDeviceActionSyncResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CallDeviceActionSyncResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CallDeviceRRPCSyncRequestParams struct {
+	// <p>产品 ID</p>
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// <p>设备名</p>
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// <p>业务原始 payload，透传给设备</p>
+	Payload *string `json:"Payload,omitnil,omitempty" name:"Payload"`
+
+	// <p>下行传输层编码标识；base64 时下发到 broker 的 payload 会做一次 base64 编码</p>
+	Encoding *string `json:"Encoding,omitnil,omitempty" name:"Encoding"`
+
+	// <p>自定义下行 topic；为空则用 <code>$iotrrpc/down/{ProductId}/{DeviceName}/{mid}</code></p>
+	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
+
+	// <p>自定义上行 topic 模板（支持通配符）；可留空，留空时仅依赖 clientToken 关联 ack</p>
+	ReplyTopic *string `json:"ReplyTopic,omitnil,omitempty" name:"ReplyTopic"`
+}
+
+type CallDeviceRRPCSyncRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>产品 ID</p>
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// <p>设备名</p>
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// <p>业务原始 payload，透传给设备</p>
+	Payload *string `json:"Payload,omitnil,omitempty" name:"Payload"`
+
+	// <p>下行传输层编码标识；base64 时下发到 broker 的 payload 会做一次 base64 编码</p>
+	Encoding *string `json:"Encoding,omitnil,omitempty" name:"Encoding"`
+
+	// <p>自定义下行 topic；为空则用 <code>$iotrrpc/down/{ProductId}/{DeviceName}/{mid}</code></p>
+	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
+
+	// <p>自定义上行 topic 模板（支持通配符）；可留空，留空时仅依赖 clientToken 关联 ack</p>
+	ReplyTopic *string `json:"ReplyTopic,omitnil,omitempty" name:"ReplyTopic"`
+}
+
+func (r *CallDeviceRRPCSyncRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CallDeviceRRPCSyncRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	delete(f, "Payload")
+	delete(f, "Encoding")
+	delete(f, "Topic")
+	delete(f, "ReplyTopic")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CallDeviceRRPCSyncRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CallDeviceRRPCSyncResponseParams struct {
+	// <p>平台为本次调用分配的关联 token（v2{instanceId}::{reqId} 形式）</p>
+	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
+
+	// <p>调用状态</p>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>平台分配的 messageID</p>
+	MessageId *uint64 `json:"MessageId,omitnil,omitempty" name:"MessageId"`
+
+	// <p>设备回包原始字节的 base64 编码（仅 Status=Replied 有值）</p>
+	PayloadBase64 *string `json:"PayloadBase64,omitnil,omitempty" name:"PayloadBase64"`
+
+	// <p>实际生效的 reply topic 模板（默认模式由平台生成，自定义模式为入参原值）</p>
+	ReplyTopic *string `json:"ReplyTopic,omitnil,omitempty" name:"ReplyTopic"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CallDeviceRRPCSyncResponse struct {
+	*tchttp.BaseResponse
+	Response *CallDeviceRRPCSyncResponseParams `json:"Response"`
+}
+
+func (r *CallDeviceRRPCSyncResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CallDeviceRRPCSyncResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -19869,6 +20075,88 @@ func (r *ResumeWeCallDeviceResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ResumeWeCallDeviceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RevokeBindUserDeviceRequestParams struct {
+	// <p>应用 AppKey，用于解析 IotAppID 并完成签名校验</p>
+	AppKey *string `json:"AppKey,omitnil,omitempty" name:"AppKey"`
+
+	// <p>产品 ID</p>
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// <p>设备名</p>
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// <p>用户 OpenID（仅只读定位，不会创建）</p>
+	OpenID *string `json:"OpenID,omitnil,omitempty" name:"OpenID"`
+
+	// <p>家庭名，默认 default</p>
+	FamilyName *string `json:"FamilyName,omitnil,omitempty" name:"FamilyName"`
+}
+
+type RevokeBindUserDeviceRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>应用 AppKey，用于解析 IotAppID 并完成签名校验</p>
+	AppKey *string `json:"AppKey,omitnil,omitempty" name:"AppKey"`
+
+	// <p>产品 ID</p>
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// <p>设备名</p>
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// <p>用户 OpenID（仅只读定位，不会创建）</p>
+	OpenID *string `json:"OpenID,omitnil,omitempty" name:"OpenID"`
+
+	// <p>家庭名，默认 default</p>
+	FamilyName *string `json:"FamilyName,omitnil,omitempty" name:"FamilyName"`
+}
+
+func (r *RevokeBindUserDeviceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RevokeBindUserDeviceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AppKey")
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	delete(f, "OpenID")
+	delete(f, "FamilyName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RevokeBindUserDeviceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RevokeBindUserDeviceResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RevokeBindUserDeviceResponse struct {
+	*tchttp.BaseResponse
+	Response *RevokeBindUserDeviceResponseParams `json:"Response"`
+}
+
+func (r *RevokeBindUserDeviceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RevokeBindUserDeviceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
