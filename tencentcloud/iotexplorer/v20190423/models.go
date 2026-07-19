@@ -20160,6 +20160,88 @@ func (r *RevokeBindUserDeviceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type RevokeShareDeviceFromUserRequestParams struct {
+	// <p>应用 AppKey，用于解析 IotAppID 并完成签名校验</p>
+	AppKey *string `json:"AppKey,omitnil,omitempty" name:"AppKey"`
+
+	// <p>产品 ID</p>
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// <p>设备名</p>
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// <p>设备所有者 OpenID（必须已存在）</p>
+	OwnerOpenID *string `json:"OwnerOpenID,omitnil,omitempty" name:"OwnerOpenID"`
+
+	// <p>被取消分享用户 OpenID（不存在视为已取消，幂等成功）</p>
+	ToOpenID *string `json:"ToOpenID,omitnil,omitempty" name:"ToOpenID"`
+}
+
+type RevokeShareDeviceFromUserRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>应用 AppKey，用于解析 IotAppID 并完成签名校验</p>
+	AppKey *string `json:"AppKey,omitnil,omitempty" name:"AppKey"`
+
+	// <p>产品 ID</p>
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// <p>设备名</p>
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// <p>设备所有者 OpenID（必须已存在）</p>
+	OwnerOpenID *string `json:"OwnerOpenID,omitnil,omitempty" name:"OwnerOpenID"`
+
+	// <p>被取消分享用户 OpenID（不存在视为已取消，幂等成功）</p>
+	ToOpenID *string `json:"ToOpenID,omitnil,omitempty" name:"ToOpenID"`
+}
+
+func (r *RevokeShareDeviceFromUserRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RevokeShareDeviceFromUserRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AppKey")
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	delete(f, "OwnerOpenID")
+	delete(f, "ToOpenID")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RevokeShareDeviceFromUserRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RevokeShareDeviceFromUserResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RevokeShareDeviceFromUserResponse struct {
+	*tchttp.BaseResponse
+	Response *RevokeShareDeviceFromUserResponseParams `json:"Response"`
+}
+
+func (r *RevokeShareDeviceFromUserResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RevokeShareDeviceFromUserResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type SearchKeyword struct {
 	// 搜索条件的Key
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
@@ -20625,6 +20707,101 @@ type SeeTaskMetadata struct {
 
 	// 自定义事件 ID
 	CustomId *string `json:"CustomId,omitnil,omitempty" name:"CustomId"`
+}
+
+// Predefined struct for user
+type ShareDeviceToUserRequestParams struct {
+	// <p>应用 AppKey，用于解析 IotAppID 并完成签名校验</p>
+	AppKey *string `json:"AppKey,omitnil,omitempty" name:"AppKey"`
+
+	// <p>产品 ID</p>
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// <p>设备名</p>
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// <p>设备所有者 OpenID（必须已存在）</p>
+	OwnerOpenID *string `json:"OwnerOpenID,omitnil,omitempty" name:"OwnerOpenID"`
+
+	// <p>被分享用户 OpenID（不存在则自动创建）</p>
+	ToOpenID *string `json:"ToOpenID,omitnil,omitempty" name:"ToOpenID"`
+
+	// <p>被分享用户昵称（仅自动创建时使用）</p>
+	ToNickName *string `json:"ToNickName,omitnil,omitempty" name:"ToNickName"`
+}
+
+type ShareDeviceToUserRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>应用 AppKey，用于解析 IotAppID 并完成签名校验</p>
+	AppKey *string `json:"AppKey,omitnil,omitempty" name:"AppKey"`
+
+	// <p>产品 ID</p>
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// <p>设备名</p>
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// <p>设备所有者 OpenID（必须已存在）</p>
+	OwnerOpenID *string `json:"OwnerOpenID,omitnil,omitempty" name:"OwnerOpenID"`
+
+	// <p>被分享用户 OpenID（不存在则自动创建）</p>
+	ToOpenID *string `json:"ToOpenID,omitnil,omitempty" name:"ToOpenID"`
+
+	// <p>被分享用户昵称（仅自动创建时使用）</p>
+	ToNickName *string `json:"ToNickName,omitnil,omitempty" name:"ToNickName"`
+}
+
+func (r *ShareDeviceToUserRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ShareDeviceToUserRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AppKey")
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	delete(f, "OwnerOpenID")
+	delete(f, "ToOpenID")
+	delete(f, "ToNickName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ShareDeviceToUserRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ShareDeviceToUserResponseParams struct {
+	// <p>Owner 的 UserID</p>
+	OwnerUserID *string `json:"OwnerUserID,omitnil,omitempty" name:"OwnerUserID"`
+
+	// <p>被分享用户的 UserID</p>
+	ToUserID *string `json:"ToUserID,omitnil,omitempty" name:"ToUserID"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ShareDeviceToUserResponse struct {
+	*tchttp.BaseResponse
+	Response *ShareDeviceToUserResponseParams `json:"Response"`
+}
+
+func (r *ShareDeviceToUserResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ShareDeviceToUserResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SubscribedTopicItem struct {

@@ -574,6 +574,81 @@ func (r *CreateRestoreTasksResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateTrashConfigRequestParams struct {
+	// <p>文件系统ID</p>
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// <p>数据保留时间（天）</p>
+	ReservedDays *uint64 `json:"ReservedDays,omitnil,omitempty" name:"ReservedDays"`
+
+	// <p>规则状态（1：打开；2：关闭）</p>
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <ol><li>字段为空表示开启普通用户回收站 </li><li>字段不为空表示开启HDFS原生回收站，且值必须为/user/*/.Trash</li></ol>
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
+}
+
+type CreateTrashConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>文件系统ID</p>
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// <p>数据保留时间（天）</p>
+	ReservedDays *uint64 `json:"ReservedDays,omitnil,omitempty" name:"ReservedDays"`
+
+	// <p>规则状态（1：打开；2：关闭）</p>
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <ol><li>字段为空表示开启普通用户回收站 </li><li>字段不为空表示开启HDFS原生回收站，且值必须为/user/*/.Trash</li></ol>
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
+}
+
+func (r *CreateTrashConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateTrashConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileSystemId")
+	delete(f, "ReservedDays")
+	delete(f, "Status")
+	delete(f, "Path")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTrashConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateTrashConfigResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateTrashConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateTrashConfigResponseParams `json:"Response"`
+}
+
+func (r *CreateTrashConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateTrashConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteAccessGroupRequestParams struct {
 	// 权限组ID
 	AccessGroupId *string `json:"AccessGroupId,omitnil,omitempty" name:"AccessGroupId"`
@@ -840,6 +915,60 @@ func (r *DeleteMountPointResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteMountPointResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteTrashConfigRequestParams struct {
+	// 文件系统ID
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+}
+
+type DeleteTrashConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// 文件系统ID
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+}
+
+func (r *DeleteTrashConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteTrashConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileSystemId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteTrashConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteTrashConfigResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteTrashConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteTrashConfigResponseParams `json:"Response"`
+}
+
+func (r *DeleteTrashConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteTrashConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1489,6 +1618,63 @@ func (r *DescribeRestoreTasksResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeTrashConfigRequestParams struct {
+	// <p>文件系统ID</p>
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+}
+
+type DescribeTrashConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>文件系统ID</p>
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+}
+
+func (r *DescribeTrashConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTrashConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileSystemId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTrashConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTrashConfigResponseParams struct {
+	// <p>回收站配置</p>
+	TrashConfig *TrashConfig `json:"TrashConfig,omitnil,omitempty" name:"TrashConfig"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeTrashConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTrashConfigResponseParams `json:"Response"`
+}
+
+func (r *DescribeTrashConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTrashConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DisassociateAccessGroupsRequestParams struct {
 	// 挂载点ID
 	MountPointId *string `json:"MountPointId,omitnil,omitempty" name:"MountPointId"`
@@ -2026,6 +2212,74 @@ func (r *ModifyResourceTagsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyTrashConfigRequestParams struct {
+	// 文件系统ID
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// 数据保留时间（天）
+	ReservedDays *uint64 `json:"ReservedDays,omitnil,omitempty" name:"ReservedDays"`
+
+	// 规则状态（1：打开；2：关闭）
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+type ModifyTrashConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// 文件系统ID
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// 数据保留时间（天）
+	ReservedDays *uint64 `json:"ReservedDays,omitnil,omitempty" name:"ReservedDays"`
+
+	// 规则状态（1：打开；2：关闭）
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+func (r *ModifyTrashConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyTrashConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileSystemId")
+	delete(f, "ReservedDays")
+	delete(f, "Status")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyTrashConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyTrashConfigResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyTrashConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyTrashConfigResponseParams `json:"Response"`
+}
+
+func (r *ModifyTrashConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyTrashConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type MountPoint struct {
 	// 挂载点ID
 	MountPointId *string `json:"MountPointId,omitnil,omitempty" name:"MountPointId"`
@@ -2100,4 +2354,18 @@ type Transition struct {
 
 	// 转换类型（1：归档；2：删除；3：低频；4：深度归档；5：智能分层）
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
+type TrashConfig struct {
+	// 文件系统ID
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// 数据保留时间（天）
+	ReservedDays *uint64 `json:"ReservedDays,omitnil,omitempty" name:"ReservedDays"`
+
+	// 回收站配置状态（1：打开；2：关闭）
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 回收站路径
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 }

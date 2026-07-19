@@ -2027,6 +2027,20 @@ func (r *DestroyInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DiskEncryptInfo struct {
+	// <p>加密类型</p><p>枚举值：</p><ul><li>CUSTOMER_KMS： 客户自定义的KMS密钥信息</li><li>TENCENT_KEY： 使用腾讯云自动创建的KMS密钥信息</li></ul>
+	EncryptType *string `json:"EncryptType,omitnil,omitempty" name:"EncryptType"`
+
+	// <p>KMS 根密钥ID</p>
+	KmsKeyId *string `json:"KmsKeyId,omitnil,omitempty" name:"KmsKeyId"`
+
+	// <p>KMS密钥地域</p>
+	KmsRegion *string `json:"KmsRegion,omitnil,omitempty" name:"KmsRegion"`
+
+	// <p>KMS 根密钥 key 名</p>
+	KmsKeyName *string `json:"KmsKeyName,omitnil,omitempty" name:"KmsKeyName"`
+}
+
 type DiskSpec struct {
 	// 磁盘类型，例如“CLOUD_SSD", "LOCAL_SSD"等
 	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
@@ -2345,6 +2359,9 @@ type InstanceInfo struct {
 
 	// <p>实例是否开启HTTPS</p><p>枚举值：</p><ul><li>true： 已开启HTTPS</li><li>false： 未开启HTTPS</li></ul>
 	HttpsEnabled *bool `json:"HttpsEnabled,omitnil,omitempty" name:"HttpsEnabled"`
+
+	// <p>集群磁盘加密配置</p>
+	DiskEncryptInfo *DiskEncryptInfo `json:"DiskEncryptInfo,omitnil,omitempty" name:"DiskEncryptInfo"`
 }
 
 type InstanceNode struct {

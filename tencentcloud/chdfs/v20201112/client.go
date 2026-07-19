@@ -557,6 +557,76 @@ func (c *Client) CreateRestoreTasksWithContext(ctx context.Context, request *Cre
     return
 }
 
+func NewCreateTrashConfigRequest() (request *CreateTrashConfigRequest) {
+    request = &CreateTrashConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("chdfs", APIVersion, "CreateTrashConfig")
+    
+    
+    return
+}
+
+func NewCreateTrashConfigResponse() (response *CreateTrashConfigResponse) {
+    response = &CreateTrashConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateTrashConfig
+// 创建回收站配置。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDFILESYSTEMID = "InvalidParameterValue.InvalidFileSystemId"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_FILESYSTEMNOTEXISTS = "ResourceNotFound.FileSystemNotExists"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateTrashConfig(request *CreateTrashConfigRequest) (response *CreateTrashConfigResponse, err error) {
+    return c.CreateTrashConfigWithContext(context.Background(), request)
+}
+
+// CreateTrashConfig
+// 创建回收站配置。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDFILESYSTEMID = "InvalidParameterValue.InvalidFileSystemId"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_FILESYSTEMNOTEXISTS = "ResourceNotFound.FileSystemNotExists"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateTrashConfigWithContext(ctx context.Context, request *CreateTrashConfigRequest) (response *CreateTrashConfigResponse, err error) {
+    if request == nil {
+        request = NewCreateTrashConfigRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "chdfs", APIVersion, "CreateTrashConfig")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateTrashConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateTrashConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteAccessGroupRequest() (request *DeleteAccessGroupRequest) {
     request = &DeleteAccessGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -875,6 +945,72 @@ func (c *Client) DeleteMountPointWithContext(ctx context.Context, request *Delet
     request.SetContext(ctx)
     
     response = NewDeleteMountPointResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteTrashConfigRequest() (request *DeleteTrashConfigRequest) {
+    request = &DeleteTrashConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("chdfs", APIVersion, "DeleteTrashConfig")
+    
+    
+    return
+}
+
+func NewDeleteTrashConfigResponse() (response *DeleteTrashConfigResponse) {
+    response = &DeleteTrashConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteTrashConfig
+// 删除回收站配置。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDFILESYSTEMID = "InvalidParameterValue.InvalidFileSystemId"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DeleteTrashConfig(request *DeleteTrashConfigRequest) (response *DeleteTrashConfigResponse, err error) {
+    return c.DeleteTrashConfigWithContext(context.Background(), request)
+}
+
+// DeleteTrashConfig
+// 删除回收站配置。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDFILESYSTEMID = "InvalidParameterValue.InvalidFileSystemId"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DeleteTrashConfigWithContext(ctx context.Context, request *DeleteTrashConfigRequest) (response *DeleteTrashConfigResponse, err error) {
+    if request == nil {
+        request = NewDeleteTrashConfigRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "chdfs", APIVersion, "DeleteTrashConfig")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteTrashConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteTrashConfigResponse()
     err = c.Send(request, response)
     return
 }
@@ -1529,6 +1665,72 @@ func (c *Client) DescribeRestoreTasksWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeTrashConfigRequest() (request *DescribeTrashConfigRequest) {
+    request = &DescribeTrashConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("chdfs", APIVersion, "DescribeTrashConfig")
+    
+    
+    return
+}
+
+func NewDescribeTrashConfigResponse() (response *DescribeTrashConfigResponse) {
+    response = &DescribeTrashConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTrashConfig
+// 通过文件系统ID查看回收站配置。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDFILESYSTEMID = "InvalidParameterValue.InvalidFileSystemId"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeTrashConfig(request *DescribeTrashConfigRequest) (response *DescribeTrashConfigResponse, err error) {
+    return c.DescribeTrashConfigWithContext(context.Background(), request)
+}
+
+// DescribeTrashConfig
+// 通过文件系统ID查看回收站配置。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDFILESYSTEMID = "InvalidParameterValue.InvalidFileSystemId"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeTrashConfigWithContext(ctx context.Context, request *DescribeTrashConfigRequest) (response *DescribeTrashConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribeTrashConfigRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "chdfs", APIVersion, "DescribeTrashConfig")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTrashConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTrashConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDisassociateAccessGroupsRequest() (request *DisassociateAccessGroupsRequest) {
     request = &DisassociateAccessGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2001,6 +2203,72 @@ func (c *Client) ModifyResourceTagsWithContext(ctx context.Context, request *Mod
     request.SetContext(ctx)
     
     response = NewModifyResourceTagsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyTrashConfigRequest() (request *ModifyTrashConfigRequest) {
+    request = &ModifyTrashConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("chdfs", APIVersion, "ModifyTrashConfig")
+    
+    
+    return
+}
+
+func NewModifyTrashConfigResponse() (response *ModifyTrashConfigResponse) {
+    response = &ModifyTrashConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyTrashConfig
+// 修改回收站配置，需要指定回收站路径，数据保留时间、和状态。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDFILESYSTEMID = "InvalidParameterValue.InvalidFileSystemId"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyTrashConfig(request *ModifyTrashConfigRequest) (response *ModifyTrashConfigResponse, err error) {
+    return c.ModifyTrashConfigWithContext(context.Background(), request)
+}
+
+// ModifyTrashConfig
+// 修改回收站配置，需要指定回收站路径，数据保留时间、和状态。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDFILESYSTEMID = "InvalidParameterValue.InvalidFileSystemId"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyTrashConfigWithContext(ctx context.Context, request *ModifyTrashConfigRequest) (response *ModifyTrashConfigResponse, err error) {
+    if request == nil {
+        request = NewModifyTrashConfigRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "chdfs", APIVersion, "ModifyTrashConfig")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyTrashConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyTrashConfigResponse()
     err = c.Send(request, response)
     return
 }

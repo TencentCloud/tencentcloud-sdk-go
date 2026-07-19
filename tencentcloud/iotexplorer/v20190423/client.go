@@ -14341,6 +14341,88 @@ func (c *Client) RevokeBindUserDeviceWithContext(ctx context.Context, request *R
     return
 }
 
+func NewRevokeShareDeviceFromUserRequest() (request *RevokeShareDeviceFromUserRequest) {
+    request = &RevokeShareDeviceFromUserRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "RevokeShareDeviceFromUser")
+    
+    
+    return
+}
+
+func NewRevokeShareDeviceFromUserResponse() (response *RevokeShareDeviceFromUserResponse) {
+    response = &RevokeShareDeviceFromUserResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RevokeShareDeviceFromUser
+// Owner 取消对指定用户的设备分享：
+//
+// 1. 校验产品 ACL / 子产品禁止 / 设备真实存在；
+//
+// 2. 只读定位 Owner（必须已存在），并校验 Owner 持有该设备；
+//
+// 3. 只读定位被取消分享用户（不存在视为已取消，幂等成功）；
+//
+// 4. 删除分享关系记录（不存在视为已取消，幂等成功）。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_INVALIDAPPKEY = "InvalidParameterValue.InvalidAppKey"
+//  INVALIDPARAMETERVALUE_SHAREDEVICETOSELF = "InvalidParameterValue.ShareDeviceToSelf"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSHAREDEVICE = "UnauthorizedOperation.NoPermissionToShareDevice"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNSUPPORTEDOPERATION_PRODUCTISSUBPRODUCT = "UnsupportedOperation.ProductIsSubProduct"
+//  UNSUPPORTEDOPERATION_VIRTUALDEVICECANNOTBIND = "UnsupportedOperation.VirtualDeviceCannotBind"
+func (c *Client) RevokeShareDeviceFromUser(request *RevokeShareDeviceFromUserRequest) (response *RevokeShareDeviceFromUserResponse, err error) {
+    return c.RevokeShareDeviceFromUserWithContext(context.Background(), request)
+}
+
+// RevokeShareDeviceFromUser
+// Owner 取消对指定用户的设备分享：
+//
+// 1. 校验产品 ACL / 子产品禁止 / 设备真实存在；
+//
+// 2. 只读定位 Owner（必须已存在），并校验 Owner 持有该设备；
+//
+// 3. 只读定位被取消分享用户（不存在视为已取消，幂等成功）；
+//
+// 4. 删除分享关系记录（不存在视为已取消，幂等成功）。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_INVALIDAPPKEY = "InvalidParameterValue.InvalidAppKey"
+//  INVALIDPARAMETERVALUE_SHAREDEVICETOSELF = "InvalidParameterValue.ShareDeviceToSelf"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSHAREDEVICE = "UnauthorizedOperation.NoPermissionToShareDevice"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNSUPPORTEDOPERATION_PRODUCTISSUBPRODUCT = "UnsupportedOperation.ProductIsSubProduct"
+//  UNSUPPORTEDOPERATION_VIRTUALDEVICECANNOTBIND = "UnsupportedOperation.VirtualDeviceCannotBind"
+func (c *Client) RevokeShareDeviceFromUserWithContext(ctx context.Context, request *RevokeShareDeviceFromUserRequest) (response *RevokeShareDeviceFromUserResponse, err error) {
+    if request == nil {
+        request = NewRevokeShareDeviceFromUserRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "RevokeShareDeviceFromUser")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RevokeShareDeviceFromUser require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRevokeShareDeviceFromUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSearchPositionSpaceRequest() (request *SearchPositionSpaceRequest) {
     request = &SearchPositionSpaceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -14511,6 +14593,90 @@ func (c *Client) SearchTopicRuleWithContext(ctx context.Context, request *Search
     request.SetContext(ctx)
     
     response = NewSearchTopicRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewShareDeviceToUserRequest() (request *ShareDeviceToUserRequest) {
+    request = &ShareDeviceToUserRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "ShareDeviceToUser")
+    
+    
+    return
+}
+
+func NewShareDeviceToUserResponse() (response *ShareDeviceToUserResponse) {
+    response = &ShareDeviceToUserResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ShareDeviceToUser
+// Owner 将其名下的设备分享给指定 App 用户：
+//
+// 1. 校验产品 ACL / 子产品禁止 / 设备真实存在；
+//
+// 2. 只读定位 Owner（必须已存在），并校验 Owner 确实持有该设备；
+//
+// 3. 兜底创建被分享用户（已存在则复用，昵称不覆盖）；
+//
+// 4. 写入分享关系（重复分享幂等成功，不修改原 CreateTime）。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_INVALIDAPPKEY = "InvalidParameterValue.InvalidAppKey"
+//  INVALIDPARAMETERVALUE_SHAREDEVICETOSELF = "InvalidParameterValue.ShareDeviceToSelf"
+//  RESOURCENOTFOUND_DEVICENOTBOUND = "ResourceNotFound.DeviceNotBound"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSHAREDEVICE = "UnauthorizedOperation.NoPermissionToShareDevice"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNSUPPORTEDOPERATION_PRODUCTISSUBPRODUCT = "UnsupportedOperation.ProductIsSubProduct"
+//  UNSUPPORTEDOPERATION_VIRTUALDEVICECANNOTBIND = "UnsupportedOperation.VirtualDeviceCannotBind"
+func (c *Client) ShareDeviceToUser(request *ShareDeviceToUserRequest) (response *ShareDeviceToUserResponse, err error) {
+    return c.ShareDeviceToUserWithContext(context.Background(), request)
+}
+
+// ShareDeviceToUser
+// Owner 将其名下的设备分享给指定 App 用户：
+//
+// 1. 校验产品 ACL / 子产品禁止 / 设备真实存在；
+//
+// 2. 只读定位 Owner（必须已存在），并校验 Owner 确实持有该设备；
+//
+// 3. 兜底创建被分享用户（已存在则复用，昵称不覆盖）；
+//
+// 4. 写入分享关系（重复分享幂等成功，不修改原 CreateTime）。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_INVALIDAPPKEY = "InvalidParameterValue.InvalidAppKey"
+//  INVALIDPARAMETERVALUE_SHAREDEVICETOSELF = "InvalidParameterValue.ShareDeviceToSelf"
+//  RESOURCENOTFOUND_DEVICENOTBOUND = "ResourceNotFound.DeviceNotBound"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSHAREDEVICE = "UnauthorizedOperation.NoPermissionToShareDevice"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNSUPPORTEDOPERATION_PRODUCTISSUBPRODUCT = "UnsupportedOperation.ProductIsSubProduct"
+//  UNSUPPORTEDOPERATION_VIRTUALDEVICECANNOTBIND = "UnsupportedOperation.VirtualDeviceCannotBind"
+func (c *Client) ShareDeviceToUserWithContext(ctx context.Context, request *ShareDeviceToUserRequest) (response *ShareDeviceToUserResponse, err error) {
+    if request == nil {
+        request = NewShareDeviceToUserRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "ShareDeviceToUser")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ShareDeviceToUser require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewShareDeviceToUserResponse()
     err = c.Send(request, response)
     return
 }

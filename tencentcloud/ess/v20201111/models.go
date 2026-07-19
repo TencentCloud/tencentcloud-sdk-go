@@ -17090,17 +17090,10 @@ type IntentionQuestionResult struct {
 }
 
 type JumpEvent struct {
-	// 跳转事件枚举，
-	// * 1 - 企业收录。
-	// * 2 - 超管授权书审核。
-	// * 3 - 认证完成。
+	// <p>跳转事件枚举</p><p>枚举值：</p><ul><li>1： 企业收录</li><li>2： 超管授权书审核</li><li>3： 企业认证完成</li></ul>
 	JumpEventType *uint64 `json:"JumpEventType,omitnil,omitempty" name:"JumpEventType"`
 
-	// 为认证成功后页面进行回跳的URL，请确保回跳地址的可用性。
-	// Endpoint如果是APP 类型，请传递<font color="red">"true"</font>
-	// 如果 Endpoint 是 H5 类型，请参考文档[跳转电子签H5](https://qian.tencent.com/developers/company/openqianh5/)
-	// 
-	// p.s. 如果Endpoint是 APP，传递的跳转地址无效，不会进行跳转，仅会进行回跳。
+	// <p>为认证成功后页面进行回跳的URL，请确保回跳地址的可用性。<br>Endpoint如果是APP 类型，请传递<font color="red">&quot;true&quot;</font><br>如果 Endpoint 是 H5 类型，请参考文档<a href="https://qian.tencent.com/developers/company/openqianh5/">跳转电子签H5</a></p><p>p.s. 如果Endpoint是 APP，传递的跳转地址无效，不会进行跳转，仅会进行回跳。</p>
 	JumpUrl *string `json:"JumpUrl,omitnil,omitempty" name:"JumpUrl"`
 }
 

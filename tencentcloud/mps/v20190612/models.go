@@ -5417,6 +5417,70 @@ func (r *CreateContentReviewTemplateResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateDocToVideoTaskRequestParams struct {
+	// <p>AIGC文档生成视频的输入信息</p>
+	Input *DocToVideoInput `json:"Input,omitnil,omitempty" name:"Input"`
+
+	// <p>用户cos信息，用于保存生成结果</p>
+	CosInfo *DocToVideoCosInfo `json:"CosInfo,omitnil,omitempty" name:"CosInfo"`
+}
+
+type CreateDocToVideoTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>AIGC文档生成视频的输入信息</p>
+	Input *DocToVideoInput `json:"Input,omitnil,omitempty" name:"Input"`
+
+	// <p>用户cos信息，用于保存生成结果</p>
+	CosInfo *DocToVideoCosInfo `json:"CosInfo,omitnil,omitempty" name:"CosInfo"`
+}
+
+func (r *CreateDocToVideoTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDocToVideoTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Input")
+	delete(f, "CosInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDocToVideoTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateDocToVideoTaskResponseParams struct {
+	// <p>任务id</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateDocToVideoTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateDocToVideoTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateDocToVideoTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDocToVideoTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateImageSpriteTemplateRequestParams struct {
 	// 采样类型，取值：
 	// <li>Percent：按百分比。</li>
@@ -17446,6 +17510,46 @@ func (r *DisassociateSecurityGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DocToVideoCosInfo struct {
+	// <p>cos桶地域</p>
+	CosBucketRegion *string `json:"CosBucketRegion,omitnil,omitempty" name:"CosBucketRegion"`
+
+	// <p>cos桶名称</p>
+	CosBucketName *string `json:"CosBucketName,omitnil,omitempty" name:"CosBucketName"`
+
+	// <p>cos桶路径</p>
+	CosBucketPath *string `json:"CosBucketPath,omitnil,omitempty" name:"CosBucketPath"`
+}
+
+type DocToVideoInput struct {
+	// <p>用于生成视频的文档链接。</p><p>支持的文档类型：pdf、pptx、docx、png、jpg<br>文档数量限制：3个<br>文档大小限制：10MB<br>文档页数限制：100页</p>
+	FileUrl []*string `json:"FileUrl,omitnil,omitempty" name:"FileUrl"`
+
+	// <p>用于生成视频的prompt信息。</p><p>prompt长度限制：2000字符。</p>
+	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
+
+	// <p>文档生成视频模型名称</p><p>默认值：Wand</p>
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
+	// <p>文档生成视频模型版本号</p><p>默认值：1.0</p>
+	ModelVersion *string `json:"ModelVersion,omitnil,omitempty" name:"ModelVersion"`
+
+	// <p>生成视频的宽高比。</p><p>枚举值：</p><ul><li>16:9： 16:9</li><li>9:16： 9:16</li><li>1:1： 1:1</li></ul><p>默认值：16:9</p>
+	Ratio *string `json:"Ratio,omitnil,omitempty" name:"Ratio"`
+
+	// <p>生成视频的语言。</p><p>枚举值：</p><ul><li>zh： 中文</li><li>en： 英文</li><li>ja： 日语</li><li>ko： 韩语</li><li>ru： 俄语</li><li>fr： 法语</li><li>es： 西班牙语</li><li>de： 德语</li></ul><p>默认值：zh</p>
+	Language *string `json:"Language,omitnil,omitempty" name:"Language"`
+
+	// <p>生成视频的时长参考。</p><p>非准确的视频时长，仅供大模型参考生成。</p><p>取值范围：[15, 1200]</p><p>单位：秒</p>
+	ReferenceDuration *int64 `json:"ReferenceDuration,omitnil,omitempty" name:"ReferenceDuration"`
+
+	// <p>是否开启AI配音功能。</p><p>默认值：false</p>
+	EnableTTS *bool `json:"EnableTTS,omitnil,omitempty" name:"EnableTTS"`
+
+	// <p>音色ID。仅开启AI配音功能时有效。</p>
+	VoiceId *string `json:"VoiceId,omitnil,omitempty" name:"VoiceId"`
+}
+
 type DrmInfo struct {
 	// 加密类型：
 	// 
@@ -17675,6 +17779,93 @@ type EditMediaTaskOutput struct {
 	// 编辑后的视频文件元信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MetaData *MediaMetaData `json:"MetaData,omitnil,omitempty" name:"MetaData"`
+}
+
+type EmbeddingData struct {
+	// <p>数据类型</p><p>枚举值：</p><ul><li>text： 文本</li></ul>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>数据内容，当Type 为text时，为文本字符串</p>
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+}
+
+// Predefined struct for user
+type EmbeddingDataRequestParams struct {
+	// <p>embedding 的模型，现在只支持 text_embedding_v1</p><p>枚举值：</p><ul><li>text_embedding_v1： 文本embedding的模型，可以填写Prompt</li></ul>
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+
+	// <p>embedding的输入</p>
+	Files []*EmbeddingData `json:"Files,omitnil,omitempty" name:"Files"`
+
+	// <p>embedding 的输入prompt</p>
+	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
+}
+
+type EmbeddingDataRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>embedding 的模型，现在只支持 text_embedding_v1</p><p>枚举值：</p><ul><li>text_embedding_v1： 文本embedding的模型，可以填写Prompt</li></ul>
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+
+	// <p>embedding的输入</p>
+	Files []*EmbeddingData `json:"Files,omitnil,omitempty" name:"Files"`
+
+	// <p>embedding 的输入prompt</p>
+	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
+}
+
+func (r *EmbeddingDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *EmbeddingDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Model")
+	delete(f, "Files")
+	delete(f, "Prompt")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EmbeddingDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type EmbeddingDataResponseParams struct {
+	// <p>embedding 的结果</p>
+	Data []*EmbeddingResultItem `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// <p>embedding 的 token 用量</p>
+	Usage *TokensUsage `json:"Usage,omitnil,omitempty" name:"Usage"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type EmbeddingDataResponse struct {
+	*tchttp.BaseResponse
+	Response *EmbeddingDataResponseParams `json:"Response"`
+}
+
+func (r *EmbeddingDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *EmbeddingDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type EmbeddingResultItem struct {
+	// <p>向量</p>
+	Result []*float64 `json:"Result,omitnil,omitempty" name:"Result"`
 }
 
 // Predefined struct for user
@@ -29359,6 +29550,17 @@ type TimeSpotCheck struct {
 	// 
 	// 取值为 0 或为空时，表示循环至视频结束。
 	CirclesNumber *uint64 `json:"CirclesNumber,omitnil,omitempty" name:"CirclesNumber"`
+}
+
+type TokensUsage struct {
+	// <p>输入token量</p>
+	InputTokens *uint64 `json:"InputTokens,omitnil,omitempty" name:"InputTokens"`
+
+	// <p>输出token量</p>
+	OutputTokens *uint64 `json:"OutputTokens,omitnil,omitempty" name:"OutputTokens"`
+
+	// <p>总token量，一般是输入+输出</p>
+	TotalTokens *uint64 `json:"TotalTokens,omitnil,omitempty" name:"TotalTokens"`
 }
 
 type TrackInfo struct {

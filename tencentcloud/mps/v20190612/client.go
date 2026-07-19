@@ -1079,6 +1079,62 @@ func (c *Client) CreateContentReviewTemplateWithContext(ctx context.Context, req
     return
 }
 
+func NewCreateDocToVideoTaskRequest() (request *CreateDocToVideoTaskRequest) {
+    request = &CreateDocToVideoTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "CreateDocToVideoTask")
+    
+    
+    return
+}
+
+func NewCreateDocToVideoTaskResponse() (response *CreateDocToVideoTaskResponse) {
+    response = &CreateDocToVideoTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateDocToVideoTask
+// 创建 AiGC 文档生成视频任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CREATEAIGCTASKFAILED = "FailedOperation.CreateAIGCTaskFailed"
+//  FAILEDOPERATION_USERARREARS = "FailedOperation.UserArrears"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED_CREATETASK = "LimitExceeded.CreateTask"
+func (c *Client) CreateDocToVideoTask(request *CreateDocToVideoTaskRequest) (response *CreateDocToVideoTaskResponse, err error) {
+    return c.CreateDocToVideoTaskWithContext(context.Background(), request)
+}
+
+// CreateDocToVideoTask
+// 创建 AiGC 文档生成视频任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CREATEAIGCTASKFAILED = "FailedOperation.CreateAIGCTaskFailed"
+//  FAILEDOPERATION_USERARREARS = "FailedOperation.UserArrears"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED_CREATETASK = "LimitExceeded.CreateTask"
+func (c *Client) CreateDocToVideoTaskWithContext(ctx context.Context, request *CreateDocToVideoTaskRequest) (response *CreateDocToVideoTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateDocToVideoTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "CreateDocToVideoTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDocToVideoTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateDocToVideoTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateImageSpriteTemplateRequest() (request *CreateImageSpriteTemplateRequest) {
     request = &CreateImageSpriteTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -9611,6 +9667,60 @@ func (c *Client) EditMediaWithContext(ctx context.Context, request *EditMediaReq
     request.SetContext(ctx)
     
     response = NewEditMediaResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewEmbeddingDataRequest() (request *EmbeddingDataRequest) {
+    request = &EmbeddingDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "EmbeddingData")
+    
+    
+    return
+}
+
+func NewEmbeddingDataResponse() (response *EmbeddingDataResponse) {
+    response = &EmbeddingDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// EmbeddingData
+// 模型embedding 接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_MODELNOTSUPPORTED = "InvalidParameter.ModelNotSupported"
+//  INVALIDPARAMETER_VALUE = "InvalidParameter.Value"
+func (c *Client) EmbeddingData(request *EmbeddingDataRequest) (response *EmbeddingDataResponse, err error) {
+    return c.EmbeddingDataWithContext(context.Background(), request)
+}
+
+// EmbeddingData
+// 模型embedding 接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_MODELNOTSUPPORTED = "InvalidParameter.ModelNotSupported"
+//  INVALIDPARAMETER_VALUE = "InvalidParameter.Value"
+func (c *Client) EmbeddingDataWithContext(ctx context.Context, request *EmbeddingDataRequest) (response *EmbeddingDataResponse, err error) {
+    if request == nil {
+        request = NewEmbeddingDataRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "EmbeddingData")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EmbeddingData require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewEmbeddingDataResponse()
     err = c.Send(request, response)
     return
 }
