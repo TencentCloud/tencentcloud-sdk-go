@@ -185,6 +185,9 @@ const (
 	// VoicePrintIdList 不能为空，也不能过长。
 	INVALIDPARAMETER_INVALIDVOICEPRINTIDLIST = "InvalidParameter.InvalidVoicePrintIdList"
 
+	// 无效的语言参数
+	INVALIDPARAMETER_LANGUAGE = "InvalidParameter.Language"
+
 	// 大画面居右显示参数错误。
 	INVALIDPARAMETER_MAINVIDEORIGHTALIGN = "InvalidParameter.MainVideoRightAlign"
 

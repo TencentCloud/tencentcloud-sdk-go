@@ -1547,38 +1547,38 @@ func (r *GetTransformationResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListConnectionsRequestParams struct {
-	// 事件集ID
+	// <p>事件集ID</p>
 	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 
-	// 根据哪个字段进行返回结果排序，目前支持如下以下字段：AddTime, ModTime
+	// <p>根据哪个字段进行返回结果排序</p><p>枚举值：</p><ul><li>created_at： 创建时间</li><li>updated_at： 更新时间</li><li>name： 连接器名称</li></ul><p>默认值：updated_at</p>
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 返回数量，默认为20，最大值为100。
+	// <p>返回数量，默认为20，最大值为100。</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 以升序还是降序的方式返回结果，可选值 ASC 和 DESC
+	// <p>以升序还是降序的方式返回结果，可选值 ASC 和 DESC</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 偏移量，默认为0。
+	// <p>偏移量，默认为0。</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 type ListConnectionsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 事件集ID
+	// <p>事件集ID</p>
 	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 
-	// 根据哪个字段进行返回结果排序，目前支持如下以下字段：AddTime, ModTime
+	// <p>根据哪个字段进行返回结果排序</p><p>枚举值：</p><ul><li>created_at： 创建时间</li><li>updated_at： 更新时间</li><li>name： 连接器名称</li></ul><p>默认值：updated_at</p>
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 返回数量，默认为20，最大值为100。
+	// <p>返回数量，默认为20，最大值为100。</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 以升序还是降序的方式返回结果，可选值 ASC 和 DESC
+	// <p>以升序还是降序的方式返回结果，可选值 ASC 和 DESC</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 偏移量，默认为0。
+	// <p>偏移量，默认为0。</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
@@ -1607,10 +1607,10 @@ func (r *ListConnectionsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListConnectionsResponseParams struct {
-	// 连接器信息
+	// <p>连接器信息</p>
 	Connections []*Connection `json:"Connections,omitnil,omitempty" name:"Connections"`
 
-	// 连接器总数
+	// <p>连接器总数</p>
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1635,38 +1635,38 @@ func (r *ListConnectionsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListEventBusesRequestParams struct {
-	// 根据哪个字段进行返回结果排序,支持以下字段：created_at（创建时间）, updated_at（修改时间）
+	// <p>根据哪个字段进行返回结果排序</p><p>枚举值：</p><ul><li>created_at： 创建时间</li><li>updated_at： 修改时间</li><li>name： 事件集名称</li></ul><p>默认值：updated_at</p>
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 返回数量，默认为20，最大值为100。
+	// <p>返回数量，默认为20，最大值为100。</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 以升序还是降序的方式返回结果，可选值 ASC（升序） 和 DESC（降序）
+	// <p>以升序还是降序的方式返回结果，可选值 ASC（升序） 和 DESC（降序）</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 过滤字段范围: EventBusName(事件集名称)/EventBusId(事件集Id)/Type(事件集类型:Cloud(云服务);Platform(平台型);Custom(自定义))/TagKey(标签键)。每次请求的Filters的上限为10，Filter.Values的上限为5。[{"Name":"Type","Values":["Cloud","Platform"]}]
+	// <p>过滤字段范围: EventBusName(事件集名称)/EventBusId(事件集Id)/Type(事件集类型:Cloud(云服务);Platform(平台型);Custom(自定义))/TagKey(标签键)。每次请求的Filters的上限为10，Filter.Values的上限为5。[{&quot;Name&quot;:&quot;Type&quot;,&quot;Values&quot;:[&quot;Cloud&quot;,&quot;Platform&quot;]}]</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 分页偏移量，默认为0。
+	// <p>分页偏移量，默认为0。</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 type ListEventBusesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 根据哪个字段进行返回结果排序,支持以下字段：created_at（创建时间）, updated_at（修改时间）
+	// <p>根据哪个字段进行返回结果排序</p><p>枚举值：</p><ul><li>created_at： 创建时间</li><li>updated_at： 修改时间</li><li>name： 事件集名称</li></ul><p>默认值：updated_at</p>
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 返回数量，默认为20，最大值为100。
+	// <p>返回数量，默认为20，最大值为100。</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 以升序还是降序的方式返回结果，可选值 ASC（升序） 和 DESC（降序）
+	// <p>以升序还是降序的方式返回结果，可选值 ASC（升序） 和 DESC（降序）</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 过滤字段范围: EventBusName(事件集名称)/EventBusId(事件集Id)/Type(事件集类型:Cloud(云服务);Platform(平台型);Custom(自定义))/TagKey(标签键)。每次请求的Filters的上限为10，Filter.Values的上限为5。[{"Name":"Type","Values":["Cloud","Platform"]}]
+	// <p>过滤字段范围: EventBusName(事件集名称)/EventBusId(事件集Id)/Type(事件集类型:Cloud(云服务);Platform(平台型);Custom(自定义))/TagKey(标签键)。每次请求的Filters的上限为10，Filter.Values的上限为5。[{&quot;Name&quot;:&quot;Type&quot;,&quot;Values&quot;:[&quot;Cloud&quot;,&quot;Platform&quot;]}]</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 分页偏移量，默认为0。
+	// <p>分页偏移量，默认为0。</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
@@ -1695,10 +1695,10 @@ func (r *ListEventBusesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListEventBusesResponseParams struct {
-	// 事件集信息
+	// <p>事件集信息</p>
 	EventBuses []*EventBus `json:"EventBuses,omitnil,omitempty" name:"EventBuses"`
 
-	// 事件集总数
+	// <p>事件集总数</p>
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1891,38 +1891,38 @@ func (r *ListPlatformProductsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListRulesRequestParams struct {
-	// 事件集ID
+	// <p>事件集ID</p>
 	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 
-	// 根据哪个字段进行返回结果排序,支持以下字段：AddTime（创建时间）, ModTime（修改时间）,name（规则名称）
+	// <p>根据哪个字段进行返回结果排序</p><p>枚举值：</p><ul><li>created_at： 创建时间</li><li>updated_at： 修改时间</li><li>name： 规则名称</li></ul><p>默认值：updated_at</p>
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 返回数量，默认为20，最大值为100。
+	// <p>返回数量，默认为20，最大值为100。</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页偏移量，默认为0。
+	// <p>分页偏移量，默认为0。</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 以升序还是降序的方式返回结果，可选值 ASC（升序） 和 DESC（降序）
+	// <p>以升序还是降序的方式返回结果，可选值 ASC（升序） 和 DESC（降序）</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 }
 
 type ListRulesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 事件集ID
+	// <p>事件集ID</p>
 	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 
-	// 根据哪个字段进行返回结果排序,支持以下字段：AddTime（创建时间）, ModTime（修改时间）,name（规则名称）
+	// <p>根据哪个字段进行返回结果排序</p><p>枚举值：</p><ul><li>created_at： 创建时间</li><li>updated_at： 修改时间</li><li>name： 规则名称</li></ul><p>默认值：updated_at</p>
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 返回数量，默认为20，最大值为100。
+	// <p>返回数量，默认为20，最大值为100。</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页偏移量，默认为0。
+	// <p>分页偏移量，默认为0。</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 以升序还是降序的方式返回结果，可选值 ASC（升序） 和 DESC（降序）
+	// <p>以升序还是降序的方式返回结果，可选值 ASC（升序） 和 DESC（降序）</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 }
 
@@ -1951,10 +1951,10 @@ func (r *ListRulesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListRulesResponseParams struct {
-	// 事件规则信息
+	// <p>事件规则信息</p>
 	Rules []*Rule `json:"Rules,omitnil,omitempty" name:"Rules"`
 
-	// 事件规则总数
+	// <p>事件规则总数</p>
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1985,7 +1985,7 @@ type ListTargetsRequestParams struct {
 	// <p>事件规则ID</p>
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
-	// <p>根据哪个字段进行返回结果排序,支持以下字段：AddTime（创建时间）, ModTime（修改时间）</p>
+	// <p>根据哪个字段进行返回结果排序</p><p>枚举值：</p><ul><li>created_at： 创建时间</li><li>updated_at： 修改时间</li></ul><p>默认值：updated_at</p>
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
 	// <p>返回数量，默认为20，最大值为100。</p>
@@ -2007,7 +2007,7 @@ type ListTargetsRequest struct {
 	// <p>事件规则ID</p>
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
-	// <p>根据哪个字段进行返回结果排序,支持以下字段：AddTime（创建时间）, ModTime（修改时间）</p>
+	// <p>根据哪个字段进行返回结果排序</p><p>枚举值：</p><ul><li>created_at： 创建时间</li><li>updated_at： 修改时间</li></ul><p>默认值：updated_at</p>
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
 	// <p>返回数量，默认为20，最大值为100。</p>
@@ -2270,35 +2270,35 @@ type RetryPolicy struct {
 }
 
 type Rule struct {
-	// 状态
+	// <p>状态</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 修改时间
+	// <p>修改时间</p>
 	ModTime *string `json:"ModTime,omitnil,omitempty" name:"ModTime"`
 
-	// 使能开关
+	// <p>使能开关</p>
 	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
 
-	// 描述
+	// <p>描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 规则ID
+	// <p>规则ID</p>
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	AddTime *string `json:"AddTime,omitnil,omitempty" name:"AddTime"`
 
-	// 事件集ID
+	// <p>事件集ID</p>
 	EventBusId *string `json:"EventBusId,omitnil,omitempty" name:"EventBusId"`
 
-	// 规则名称
+	// <p>规则名称</p>
 	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
 
-	// Target 简要信息
+	// <p>Target 简要信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Targets []*TargetBrief `json:"Targets,omitnil,omitempty" name:"Targets"`
 
-	// rule设置的dlq规则. 可能为null
+	// <p>rule设置的dlq规则. 可能为null</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeadLetterConfig *DeadLetterConfig `json:"DeadLetterConfig,omitnil,omitempty" name:"DeadLetterConfig"`
 }
@@ -2331,16 +2331,16 @@ type SearchLogRequestParams struct {
 	// <p>页码</p>
 	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
 
-	// <p>每页数据大小</p>
+	// <p>每页数据大小</p><p>取值范围：[1, 1000]</p><p>默认值：10</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// <p>事件查询筛选条件；示例如下：[{&quot;key&quot;:&quot;host&quot;,&quot;operator&quot;:&quot;eq&quot;,&quot;value&quot;:&quot;106.53.106.243&quot;},{&quot;type&quot;:&quot;AND&quot;,&quot;filters&quot;:[{&quot;key&quot;:&quot;region&quot;,&quot;operator&quot;:&quot;like&quot;,&quot;value&quot;:&quot;<em>guangzhou</em>&quot;},{&quot;key&quot;:&quot;type&quot;,&quot;operator&quot;:&quot;eq&quot;,&quot;value&quot;:&quot;cvm:ErrorEvent:GuestReboot&quot;}]},{&quot;type&quot;:&quot;OR&quot;,&quot;filters&quot;:[{&quot;key&quot;:&quot;field1&quot;,&quot;operator&quot;:&quot;like&quot;,&quot;value&quot;:&quot;<em>access</em>&quot;},{&quot;key&quot;:&quot;field2&quot;,&quot;operator&quot;:&quot;eq&quot;,&quot;value&quot;:&quot;custom&quot;}]}]</p>
 	Filter []*LogFilter `json:"Filter,omitnil,omitempty" name:"Filter"`
 
-	// <p>事件查询结果排序，[&quot;timestamp&quot;,&quot;subject&quot;]</p>
+	// <p>事件查询结果排序</p><p>枚举值：</p><ul><li>Timestamp： 事件触发时间</li><li>Source： 事件源</li><li>Type： 事件类型</li><li>RuleIds： 事件规则</li><li>Subject： 事件对象</li><li>Region： 事件地域</li><li>Status： 事件状态</li></ul>
 	OrderFields []*string `json:"OrderFields,omitnil,omitempty" name:"OrderFields"`
 
-	// <p>排序方式，asc 从旧到新，desc 从新到旧</p>
+	// <p>排序方式，asc 从旧到新，desc 从新到旧</p><p>枚举值：</p><ul><li>asc： 从旧到新</li><li>desc： 从新到旧</li></ul><p>默认值：desc</p>
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 }
 
@@ -2359,16 +2359,16 @@ type SearchLogRequest struct {
 	// <p>页码</p>
 	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
 
-	// <p>每页数据大小</p>
+	// <p>每页数据大小</p><p>取值范围：[1, 1000]</p><p>默认值：10</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// <p>事件查询筛选条件；示例如下：[{&quot;key&quot;:&quot;host&quot;,&quot;operator&quot;:&quot;eq&quot;,&quot;value&quot;:&quot;106.53.106.243&quot;},{&quot;type&quot;:&quot;AND&quot;,&quot;filters&quot;:[{&quot;key&quot;:&quot;region&quot;,&quot;operator&quot;:&quot;like&quot;,&quot;value&quot;:&quot;<em>guangzhou</em>&quot;},{&quot;key&quot;:&quot;type&quot;,&quot;operator&quot;:&quot;eq&quot;,&quot;value&quot;:&quot;cvm:ErrorEvent:GuestReboot&quot;}]},{&quot;type&quot;:&quot;OR&quot;,&quot;filters&quot;:[{&quot;key&quot;:&quot;field1&quot;,&quot;operator&quot;:&quot;like&quot;,&quot;value&quot;:&quot;<em>access</em>&quot;},{&quot;key&quot;:&quot;field2&quot;,&quot;operator&quot;:&quot;eq&quot;,&quot;value&quot;:&quot;custom&quot;}]}]</p>
 	Filter []*LogFilter `json:"Filter,omitnil,omitempty" name:"Filter"`
 
-	// <p>事件查询结果排序，[&quot;timestamp&quot;,&quot;subject&quot;]</p>
+	// <p>事件查询结果排序</p><p>枚举值：</p><ul><li>Timestamp： 事件触发时间</li><li>Source： 事件源</li><li>Type： 事件类型</li><li>RuleIds： 事件规则</li><li>Subject： 事件对象</li><li>Region： 事件地域</li><li>Status： 事件状态</li></ul>
 	OrderFields []*string `json:"OrderFields,omitnil,omitempty" name:"OrderFields"`
 
-	// <p>排序方式，asc 从旧到新，desc 从新到旧</p>
+	// <p>排序方式，asc 从旧到新，desc 从新到旧</p><p>枚举值：</p><ul><li>asc： 从旧到新</li><li>desc： 从新到旧</li></ul><p>默认值：desc</p>
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 }
 

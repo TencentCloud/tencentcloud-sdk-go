@@ -23638,7 +23638,7 @@ type FilterDataObject struct {
 }
 
 type Filters struct {
-	// 过滤条件名称
+	// 过滤条件名称。取值：TaskID（任务ID，精确匹配）、TaskStatus（任务状态，Values: INIT/SCANNING/SUCCESS/FAILED）、TaskType（任务类型，Values: PERIODIC/MANUAL）
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 过滤条件值列表
@@ -24343,6 +24343,15 @@ type Machine struct {
 
 	// <p>核数</p>
 	CpuCoreCount *uint64 `json:"CpuCoreCount,omitnil,omitempty" name:"CpuCoreCount"`
+
+	// <p>是否支持迁移</p>
+	MigrationRequired *bool `json:"MigrationRequired,omitnil,omitempty" name:"MigrationRequired"`
+
+	// <p>是否支持暴露面扫描</p>
+	IsSupportXSPM *bool `json:"IsSupportXSPM,omitnil,omitempty" name:"IsSupportXSPM"`
+
+	// <p>是否能解绑</p>
+	CanUnbind *bool `json:"CanUnbind,omitnil,omitempty" name:"CanUnbind"`
 }
 
 type MachineDetail struct {

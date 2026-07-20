@@ -1041,6 +1041,56 @@ func (c *Client) DeleteVariableWithContext(ctx context.Context, request *DeleteV
     return
 }
 
+func NewDescribeAccountListRequest() (request *DescribeAccountListRequest) {
+    request = &DescribeAccountListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "DescribeAccountList")
+    
+    
+    return
+}
+
+func NewDescribeAccountListResponse() (response *DescribeAccountListResponse) {
+    response = &DescribeAccountListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAccountList
+// 查看企业下的员工列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeAccountList(request *DescribeAccountListRequest) (response *DescribeAccountListResponse, err error) {
+    return c.DescribeAccountListWithContext(context.Background(), request)
+}
+
+// DescribeAccountList
+// 查看企业下的员工列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeAccountListWithContext(ctx context.Context, request *DescribeAccountListRequest) (response *DescribeAccountListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAccountListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "DescribeAccountList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAccountList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAccountListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAgentDetailRequest() (request *DescribeAgentDetailRequest) {
     request = &DescribeAgentDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1307,6 +1357,106 @@ func (c *Client) DescribeAppSummaryListWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribeAuditLogListRequest() (request *DescribeAuditLogListRequest) {
+    request = &DescribeAuditLogListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "DescribeAuditLogList")
+    
+    
+    return
+}
+
+func NewDescribeAuditLogListResponse() (response *DescribeAuditLogListResponse) {
+    response = &DescribeAuditLogListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAuditLogList
+// 查看操作日志列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeAuditLogList(request *DescribeAuditLogListRequest) (response *DescribeAuditLogListResponse, err error) {
+    return c.DescribeAuditLogListWithContext(context.Background(), request)
+}
+
+// DescribeAuditLogList
+// 查看操作日志列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeAuditLogListWithContext(ctx context.Context, request *DescribeAuditLogListRequest) (response *DescribeAuditLogListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAuditLogListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "DescribeAuditLogList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAuditLogList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAuditLogListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAuditLogMetaRequest() (request *DescribeAuditLogMetaRequest) {
+    request = &DescribeAuditLogMetaRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "DescribeAuditLogMeta")
+    
+    
+    return
+}
+
+func NewDescribeAuditLogMetaResponse() (response *DescribeAuditLogMetaResponse) {
+    response = &DescribeAuditLogMetaResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAuditLogMeta
+// 获取审计日志元信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeAuditLogMeta(request *DescribeAuditLogMetaRequest) (response *DescribeAuditLogMetaResponse, err error) {
+    return c.DescribeAuditLogMetaWithContext(context.Background(), request)
+}
+
+// DescribeAuditLogMeta
+// 获取审计日志元信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeAuditLogMetaWithContext(ctx context.Context, request *DescribeAuditLogMetaRequest) (response *DescribeAuditLogMetaResponse, err error) {
+    if request == nil {
+        request = NewDescribeAuditLogMetaRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "DescribeAuditLogMeta")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAuditLogMeta require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAuditLogMetaResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeConversationRequest() (request *DescribeConversationRequest) {
     request = &DescribeConversationRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1331,8 +1481,6 @@ func NewDescribeConversationResponse() (response *DescribeConversationResponse) 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeConversation(request *DescribeConversationRequest) (response *DescribeConversationResponse, err error) {
     return c.DescribeConversationWithContext(context.Background(), request)
 }
@@ -1342,8 +1490,6 @@ func (c *Client) DescribeConversation(request *DescribeConversationRequest) (res
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeConversationWithContext(ctx context.Context, request *DescribeConversationRequest) (response *DescribeConversationResponse, err error) {
     if request == nil {
         request = NewDescribeConversationRequest()
@@ -1385,8 +1531,6 @@ func NewDescribeConversationListResponse() (response *DescribeConversationListRe
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeConversationList(request *DescribeConversationListRequest) (response *DescribeConversationListResponse, err error) {
     return c.DescribeConversationListWithContext(context.Background(), request)
 }
@@ -1396,8 +1540,6 @@ func (c *Client) DescribeConversationList(request *DescribeConversationListReque
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeConversationListWithContext(ctx context.Context, request *DescribeConversationListRequest) (response *DescribeConversationListResponse, err error) {
     if request == nil {
         request = NewDescribeConversationListRequest()
@@ -1439,8 +1581,6 @@ func NewDescribeConversationMessageListResponse() (response *DescribeConversatio
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeConversationMessageList(request *DescribeConversationMessageListRequest) (response *DescribeConversationMessageListResponse, err error) {
     return c.DescribeConversationMessageListWithContext(context.Background(), request)
 }
@@ -1450,8 +1590,6 @@ func (c *Client) DescribeConversationMessageList(request *DescribeConversationMe
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeConversationMessageListWithContext(ctx context.Context, request *DescribeConversationMessageListRequest) (response *DescribeConversationMessageListResponse, err error) {
     if request == nil {
         request = NewDescribeConversationMessageListRequest()
@@ -1493,8 +1631,6 @@ func NewDescribeLatestReleaseResponse() (response *DescribeLatestReleaseResponse
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeLatestRelease(request *DescribeLatestReleaseRequest) (response *DescribeLatestReleaseResponse, err error) {
     return c.DescribeLatestReleaseWithContext(context.Background(), request)
 }
@@ -1504,8 +1640,6 @@ func (c *Client) DescribeLatestRelease(request *DescribeLatestReleaseRequest) (r
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeLatestReleaseWithContext(ctx context.Context, request *DescribeLatestReleaseRequest) (response *DescribeLatestReleaseResponse, err error) {
     if request == nil {
         request = NewDescribeLatestReleaseRequest()
@@ -1547,8 +1681,6 @@ func NewDescribeModelListResponse() (response *DescribeModelListResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeModelList(request *DescribeModelListRequest) (response *DescribeModelListResponse, err error) {
     return c.DescribeModelListWithContext(context.Background(), request)
 }
@@ -1558,8 +1690,6 @@ func (c *Client) DescribeModelList(request *DescribeModelListRequest) (response 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeModelListWithContext(ctx context.Context, request *DescribeModelListRequest) (response *DescribeModelListResponse, err error) {
     if request == nil {
         request = NewDescribeModelListRequest()
@@ -1601,8 +1731,6 @@ func NewDescribePluginResponse() (response *DescribePluginResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribePlugin(request *DescribePluginRequest) (response *DescribePluginResponse, err error) {
     return c.DescribePluginWithContext(context.Background(), request)
 }
@@ -1612,8 +1740,6 @@ func (c *Client) DescribePlugin(request *DescribePluginRequest) (response *Descr
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribePluginWithContext(ctx context.Context, request *DescribePluginRequest) (response *DescribePluginResponse, err error) {
     if request == nil {
         request = NewDescribePluginRequest()
@@ -1655,8 +1781,6 @@ func NewDescribePluginSummaryListResponse() (response *DescribePluginSummaryList
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribePluginSummaryList(request *DescribePluginSummaryListRequest) (response *DescribePluginSummaryListResponse, err error) {
     return c.DescribePluginSummaryListWithContext(context.Background(), request)
 }
@@ -1666,8 +1790,6 @@ func (c *Client) DescribePluginSummaryList(request *DescribePluginSummaryListReq
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribePluginSummaryListWithContext(ctx context.Context, request *DescribePluginSummaryListRequest) (response *DescribePluginSummaryListResponse, err error) {
     if request == nil {
         request = NewDescribePluginSummaryListRequest()
@@ -1709,8 +1831,6 @@ func NewDescribeReleaseListResponse() (response *DescribeReleaseListResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeReleaseList(request *DescribeReleaseListRequest) (response *DescribeReleaseListResponse, err error) {
     return c.DescribeReleaseListWithContext(context.Background(), request)
 }
@@ -1720,8 +1840,6 @@ func (c *Client) DescribeReleaseList(request *DescribeReleaseListRequest) (respo
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeReleaseListWithContext(ctx context.Context, request *DescribeReleaseListRequest) (response *DescribeReleaseListResponse, err error) {
     if request == nil {
         request = NewDescribeReleaseListRequest()
@@ -1763,8 +1881,6 @@ func NewDescribeReleaseSummaryResponse() (response *DescribeReleaseSummaryRespon
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeReleaseSummary(request *DescribeReleaseSummaryRequest) (response *DescribeReleaseSummaryResponse, err error) {
     return c.DescribeReleaseSummaryWithContext(context.Background(), request)
 }
@@ -1774,8 +1890,6 @@ func (c *Client) DescribeReleaseSummary(request *DescribeReleaseSummaryRequest) 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeReleaseSummaryWithContext(ctx context.Context, request *DescribeReleaseSummaryRequest) (response *DescribeReleaseSummaryResponse, err error) {
     if request == nil {
         request = NewDescribeReleaseSummaryRequest()
@@ -1817,8 +1931,6 @@ func NewDescribeSkillCategoryListResponse() (response *DescribeSkillCategoryList
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeSkillCategoryList(request *DescribeSkillCategoryListRequest) (response *DescribeSkillCategoryListResponse, err error) {
     return c.DescribeSkillCategoryListWithContext(context.Background(), request)
 }
@@ -1828,8 +1940,6 @@ func (c *Client) DescribeSkillCategoryList(request *DescribeSkillCategoryListReq
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeSkillCategoryListWithContext(ctx context.Context, request *DescribeSkillCategoryListRequest) (response *DescribeSkillCategoryListResponse, err error) {
     if request == nil {
         request = NewDescribeSkillCategoryListRequest()
@@ -1871,8 +1981,6 @@ func NewDescribeSkillDetailResponse() (response *DescribeSkillDetailResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeSkillDetail(request *DescribeSkillDetailRequest) (response *DescribeSkillDetailResponse, err error) {
     return c.DescribeSkillDetailWithContext(context.Background(), request)
 }
@@ -1882,8 +1990,6 @@ func (c *Client) DescribeSkillDetail(request *DescribeSkillDetailRequest) (respo
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeSkillDetailWithContext(ctx context.Context, request *DescribeSkillDetailRequest) (response *DescribeSkillDetailResponse, err error) {
     if request == nil {
         request = NewDescribeSkillDetailRequest()
@@ -1925,8 +2031,6 @@ func NewDescribeSkillReferenceListResponse() (response *DescribeSkillReferenceLi
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeSkillReferenceList(request *DescribeSkillReferenceListRequest) (response *DescribeSkillReferenceListResponse, err error) {
     return c.DescribeSkillReferenceListWithContext(context.Background(), request)
 }
@@ -1936,8 +2040,6 @@ func (c *Client) DescribeSkillReferenceList(request *DescribeSkillReferenceListR
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeSkillReferenceListWithContext(ctx context.Context, request *DescribeSkillReferenceListRequest) (response *DescribeSkillReferenceListResponse, err error) {
     if request == nil {
         request = NewDescribeSkillReferenceListRequest()
@@ -1979,8 +2081,6 @@ func NewDescribeSkillSummaryListResponse() (response *DescribeSkillSummaryListRe
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeSkillSummaryList(request *DescribeSkillSummaryListRequest) (response *DescribeSkillSummaryListResponse, err error) {
     return c.DescribeSkillSummaryListWithContext(context.Background(), request)
 }
@@ -1990,8 +2090,6 @@ func (c *Client) DescribeSkillSummaryList(request *DescribeSkillSummaryListReque
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeSkillSummaryListWithContext(ctx context.Context, request *DescribeSkillSummaryListRequest) (response *DescribeSkillSummaryListResponse, err error) {
     if request == nil {
         request = NewDescribeSkillSummaryListRequest()

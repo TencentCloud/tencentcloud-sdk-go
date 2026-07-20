@@ -45,6 +45,17 @@ type AIOptimizeModel struct {
 	Model *ModelDetailInfo `json:"Model,omitnil,omitempty" name:"Model"`
 }
 
+type AccountInfo struct {
+	// <p>员工子账号id</p>
+	AccountUin *string `json:"AccountUin,omitnil,omitempty" name:"AccountUin"`
+
+	// <p>员工昵称</p>
+	NickName *string `json:"NickName,omitnil,omitempty" name:"NickName"`
+
+	// <p>员工头像</p>
+	Avatar *string `json:"Avatar,omitnil,omitempty" name:"Avatar"`
+}
+
 type AgentAdvancedConfig struct {
 	// <p>最大推理轮数</p>
 	MaxReasoningRound *uint64 `json:"MaxReasoningRound,omitnil,omitempty" name:"MaxReasoningRound"`
@@ -166,7 +177,7 @@ type AgentPluginConfig struct {
 	// <p>授权类型</p><p>枚举值：</p><ul><li>0： 无鉴权</li><li>1： API Key</li><li>2： CAM授权</li><li>3： OAuth2.0授权</li></ul>
 	AuthType *int64 `json:"AuthType,omitnil,omitempty" name:"AuthType"`
 
-	// OAuth 授权同意模式；0-开发者授权；1-使用者授权（仅在auth_type=3时生效）
+	// <p>OAuth 授权同意模式；0-开发者授权；1-使用者授权（仅在auth_type=3时生效）</p>
 	OAuthConsent *int64 `json:"OAuthConsent,omitnil,omitempty" name:"OAuthConsent"`
 }
 
@@ -477,32 +488,36 @@ type ApiToolConfig struct {
 }
 
 type App struct {
-	// 辅助信息(子状态/审批/申诉/搜索资源/特殊状态等)
+	// <p>辅助信息(子状态/审批/申诉/搜索资源/特殊状态等)</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AuxiliaryInfo *AppAuxiliaryInfo `json:"AuxiliaryInfo,omitnil,omitempty" name:"AuxiliaryInfo"`
 
-	// 配置
+	// <p>配置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Config *AppConfig `json:"Config,omitnil,omitempty" name:"Config"`
 
-	// 元数据
+	// <p>元数据</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Metadata *AppMetadata `json:"Metadata,omitnil,omitempty" name:"Metadata"`
 
-	// 应用密钥信息
+	// <p>应用密钥信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecretInfo *AppSecretInfo `json:"SecretInfo,omitnil,omitempty" name:"SecretInfo"`
 
-	// 分享链接信息(含访问控制)
+	// <p>分享链接信息(含访问控制)</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ShareUrlInfo *AppShareURLInfo `json:"ShareUrlInfo,omitnil,omitempty" name:"ShareUrlInfo"`
 
-	// 状态
+	// <p>状态</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *AppStatusInfo `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 应用引用的共享知识库列表
+	// <p>应用引用的共享知识库列表</p>
 	SharedKbList []*AppSharedKbInfo `json:"SharedKbList,omitnil,omitempty" name:"SharedKbList"`
+
+	// <p>企业共享配置</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CorpShareConfig *CorpShareConfig `json:"CorpShareConfig,omitnil,omitempty" name:"CorpShareConfig"`
 }
 
 type AppAdvancedConf struct {
@@ -717,13 +732,13 @@ type AppSecretInfo struct {
 }
 
 type AppShareAccessControl struct {
-	// 访问控制类型。枚举值: 1:公开访问(所有用户都可访问), 2:内部访问(仅企业用户可访问), 3:账号白名单(指定UIN/手机/邮箱/IP可访问)
+	// <table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>APP_SHARE_ACCESS_TYPE_UNSPECIFIED</td><td>0</td><td></td></tr><tr><td>APP_SHARE_ACCESS_TYPE_PUBLIC</td><td>1</td><td>公开访问(所有用户都可访问)</td></tr><tr><td>APP_SHARE_ACCESS_TYPE_INTERNAL</td><td>2</td><td>内部访问(仅企业用户可访问)</td></tr><tr><td>APP_SHARE_ACCESS_TYPE_ACCOUNT_WHITELIST</td><td>3</td><td>账号白名单(指定UIN/手机/邮箱/IP可访问)</td></tr></tbody></table>
 	AccessType *int64 `json:"AccessType,omitnil,omitempty" name:"AccessType"`
 
-	// 体验链接开关
+	// <p>是否开启访问控制</p><p>枚举值：</p><ul><li>true： 启用</li><li>false： 禁用</li></ul>
 	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
 
-	// 白名单(仅 access_type=ACCOUNT_WHITELIST 时生效)
+	// <p>白名单信息</p>
 	Whitelist []*AppShareWhitelistItem `json:"Whitelist,omitnil,omitempty" name:"Whitelist"`
 }
 
@@ -737,10 +752,10 @@ type AppShareURLInfo struct {
 }
 
 type AppShareWhitelistItem struct {
-	// 白名单类型。枚举值: 1:UIN账号, 2:手机号码, 3:邮箱地址, 4:IP地址
+	// <table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>APP_SHARE_WHITELIST_TYPE_UNSPECIFIED</td><td>0</td><td></td></tr><tr><td>APP_SHARE_WHITELIST_TYPE_UIN</td><td>1</td><td>UIN账号</td></tr><tr><td>APP_SHARE_WHITELIST_TYPE_PHONE</td><td>2</td><td>手机号码</td></tr><tr><td>APP_SHARE_WHITELIST_TYPE_EMAIL</td><td>3</td><td>邮箱地址</td></tr><tr><td>APP_SHARE_WHITELIST_TYPE_IP</td><td>4</td><td>IP地址</td></tr><tr><td>APP_SHARE_WHITELIST_TYPE_RTX</td><td>5</td><td>RTX账号</td></tr></tbody></table>
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 白名单值列表(UIN/手机号/邮箱/IP等)
+	// <p>白名单数组信息</p><p>参数格式：白名单值</p>
 	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
 }
 
@@ -841,6 +856,40 @@ type AppealingStatus struct {
 	RoleInAppeal *bool `json:"RoleInAppeal,omitnil,omitempty" name:"RoleInAppeal"`
 }
 
+type AuditLog struct {
+	// <p>员工信息</p>
+	AccountInfo *AccountInfo `json:"AccountInfo,omitnil,omitempty" name:"AccountInfo"`
+
+	// <p>应用业务id</p>
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>应用名称</p><p>操作日志触发时的名称</p>
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
+
+	// <p>操作时间</p><p>参数格式：秒时间戳</p>
+	OperateTime *string `json:"OperateTime,omitnil,omitempty" name:"OperateTime"`
+
+	// <p>操作类型</p>
+	Action *string `json:"Action,omitnil,omitempty" name:"Action"`
+
+	// <p>操作对象</p>
+	Biz *string `json:"Biz,omitnil,omitempty" name:"Biz"`
+
+	// <p>操作内容</p>
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// <p>操作唯一ID</p>
+	UniqueId *string `json:"UniqueId,omitnil,omitempty" name:"UniqueId"`
+}
+
+type AuditLogMetaField struct {
+	// <p>操作日志元数据key</p>
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// <p>操作日志元数据Name</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+}
+
 type AuthConfig struct {
 	// <p>授权方式。</p><p>枚举值：</p><ul><li>0：无鉴权</li><li>1：API Key 鉴权</li><li>2：CAM 授权</li><li>3：OAuth 2.0 授权</li></ul>
 	AuthType *int64 `json:"AuthType,omitnil,omitempty" name:"AuthType"`
@@ -914,14 +963,35 @@ type CamAuthConfig struct {
 	SecretKeyName *string `json:"SecretKeyName,omitnil,omitempty" name:"SecretKeyName"`
 }
 
+type ClawAgentAgentTeamConfig struct {
+	// <p>是否开启Agent团队协作</p>
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// <p>prompt内容</p>
+	PromptContent *string `json:"PromptContent,omitnil,omitempty" name:"PromptContent"`
+}
+
 type ClawAgentConfig struct {
 	// 调用方自定义配置(控制C端用户在对话时可动态传入哪些自定义配置)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CustomConfig *ClawAgentCustomConfig `json:"CustomConfig,omitnil,omitempty" name:"CustomConfig"`
+
+	// Agent团队协作配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AgentTeamConfig *ClawAgentAgentTeamConfig `json:"AgentTeamConfig,omitnil,omitempty" name:"AgentTeamConfig"`
+
+	// 长期记忆配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LongMemoryConfig *ClawAgentLongMemoryConfig `json:"LongMemoryConfig,omitnil,omitempty" name:"LongMemoryConfig"`
 }
 
 type ClawAgentCustomConfig struct {
 	// <p>是否允许C端用户在对话时动态传入自定义Agent配置</p>
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+}
+
+type ClawAgentLongMemoryConfig struct {
+	// <p>是否开启长期记忆</p>
 	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
 }
 
@@ -1283,6 +1353,17 @@ func (r *CopyAppResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CorpShareConfig struct {
+	// <p>企业共享开关</p>
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// <table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>SHARE_SCOPE_TYPE_UNSPECIFIED</td><td>0</td><td></td></tr><tr><td>SHARE_SCOPE_TYPE_ALL</td><td>1</td><td></td></tr><tr><td>SHARE_SCOPE_TYPE_ACCOUNT</td><td>2</td><td></td></tr></tbody></table>
+	ShareScope *int64 `json:"ShareScope,omitnil,omitempty" name:"ShareScope"`
+
+	// <p>企业共享应用标签</p>
+	TagIdList []*string `json:"TagIdList,omitnil,omitempty" name:"TagIdList"`
+}
+
 // Predefined struct for user
 type CreateAgentRequestParams struct {
 	// <p>应用Id</p>
@@ -1557,7 +1638,13 @@ type CreatePluginRequestParams struct {
 	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
 
 	// <p>插件的工具列表</p>
-	ToolList *Tool `json:"ToolList,omitnil,omitempty" name:"ToolList"`
+	ToolList []*Tool `json:"ToolList,omitnil,omitempty" name:"ToolList"`
+
+	// <p>登录用户主账号(集成商模式必填)</p>
+	LoginUin *string `json:"LoginUin,omitnil,omitempty" name:"LoginUin"`
+
+	// <p>登录用户子账号(集成商模式必填)</p>
+	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
 }
 
 type CreatePluginRequest struct {
@@ -1573,7 +1660,13 @@ type CreatePluginRequest struct {
 	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
 
 	// <p>插件的工具列表</p>
-	ToolList *Tool `json:"ToolList,omitnil,omitempty" name:"ToolList"`
+	ToolList []*Tool `json:"ToolList,omitnil,omitempty" name:"ToolList"`
+
+	// <p>登录用户主账号(集成商模式必填)</p>
+	LoginUin *string `json:"LoginUin,omitnil,omitempty" name:"LoginUin"`
+
+	// <p>登录用户子账号(集成商模式必填)</p>
+	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
 }
 
 func (r *CreatePluginRequest) ToJsonString() string {
@@ -1592,6 +1685,8 @@ func (r *CreatePluginRequest) FromJsonString(s string) error {
 	delete(f, "Config")
 	delete(f, "SpaceId")
 	delete(f, "ToolList")
+	delete(f, "LoginUin")
+	delete(f, "LoginSubAccountUin")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePluginRequest has unknown keys!", "")
 	}
@@ -1625,38 +1720,50 @@ func (r *CreatePluginResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateReleaseRequestParams struct {
-	// 应用ID
+	// <p>应用ID</p>
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
 
-	// 渠道ID列表
+	// <p>应用分享访问控制配置</p>
+	AppShareAccessControl *AppShareAccessControl `json:"AppShareAccessControl,omitnil,omitempty" name:"AppShareAccessControl"`
+
+	// <p>渠道ID列表</p>
 	ChannelIdList []*string `json:"ChannelIdList,omitnil,omitempty" name:"ChannelIdList"`
 
-	// 发布描述
+	// <p>企业共享配置</p>
+	CorpShareConfig *CorpShareConfig `json:"CorpShareConfig,omitnil,omitempty" name:"CorpShareConfig"`
+
+	// <p>发布描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 将默认知识库中，仅调试生效的知识批量变更为"调试/发布都生效"
+	// <p>将默认知识库中，仅调试生效的知识批量变更为&quot;调试/发布都生效&quot;</p>
 	IsDevToRelease *bool `json:"IsDevToRelease,omitnil,omitempty" name:"IsDevToRelease"`
 
-	// 是否同步发布为应用模板
+	// <p>是否同步发布为应用模板</p>
 	IsPublishAsTemplate *bool `json:"IsPublishAsTemplate,omitnil,omitempty" name:"IsPublishAsTemplate"`
 }
 
 type CreateReleaseRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用ID
+	// <p>应用ID</p>
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
 
-	// 渠道ID列表
+	// <p>应用分享访问控制配置</p>
+	AppShareAccessControl *AppShareAccessControl `json:"AppShareAccessControl,omitnil,omitempty" name:"AppShareAccessControl"`
+
+	// <p>渠道ID列表</p>
 	ChannelIdList []*string `json:"ChannelIdList,omitnil,omitempty" name:"ChannelIdList"`
 
-	// 发布描述
+	// <p>企业共享配置</p>
+	CorpShareConfig *CorpShareConfig `json:"CorpShareConfig,omitnil,omitempty" name:"CorpShareConfig"`
+
+	// <p>发布描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 将默认知识库中，仅调试生效的知识批量变更为"调试/发布都生效"
+	// <p>将默认知识库中，仅调试生效的知识批量变更为&quot;调试/发布都生效&quot;</p>
 	IsDevToRelease *bool `json:"IsDevToRelease,omitnil,omitempty" name:"IsDevToRelease"`
 
-	// 是否同步发布为应用模板
+	// <p>是否同步发布为应用模板</p>
 	IsPublishAsTemplate *bool `json:"IsPublishAsTemplate,omitnil,omitempty" name:"IsPublishAsTemplate"`
 }
 
@@ -1673,7 +1780,9 @@ func (r *CreateReleaseRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "AppId")
+	delete(f, "AppShareAccessControl")
 	delete(f, "ChannelIdList")
+	delete(f, "CorpShareConfig")
 	delete(f, "Description")
 	delete(f, "IsDevToRelease")
 	delete(f, "IsPublishAsTemplate")
@@ -1685,10 +1794,10 @@ func (r *CreateReleaseRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateReleaseResponseParams struct {
-	// need_approval
+	// <p>need_approval</p>
 	NeedApproval *bool `json:"NeedApproval,omitnil,omitempty" name:"NeedApproval"`
 
-	// release_id
+	// <p>release_id</p>
 	ReleaseId *string `json:"ReleaseId,omitnil,omitempty" name:"ReleaseId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2315,15 +2424,21 @@ func (r *DeleteAgentResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteAppRequestParams struct {
-	// app_id
+	// <p>app_id</p>
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>删除原因(非必填,审批时展示)</p>
+	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
 }
 
 type DeleteAppRequest struct {
 	*tchttp.BaseRequest
 	
-	// app_id
+	// <p>app_id</p>
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>删除原因(非必填,审批时展示)</p>
+	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
 }
 
 func (r *DeleteAppRequest) ToJsonString() string {
@@ -2339,6 +2454,7 @@ func (r *DeleteAppRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "AppId")
+	delete(f, "Reason")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAppRequest has unknown keys!", "")
 	}
@@ -2460,6 +2576,12 @@ func (r *DeleteConversationResponse) FromJsonString(s string) error {
 type DeletePluginRequestParams struct {
 	// <p>插件id</p>
 	PluginId *string `json:"PluginId,omitnil,omitempty" name:"PluginId"`
+
+	// <p>登录用户主账号(集成商模式必填)</p>
+	LoginUin *string `json:"LoginUin,omitnil,omitempty" name:"LoginUin"`
+
+	// <p>登录用户子账号(集成商模式必填)</p>
+	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
 }
 
 type DeletePluginRequest struct {
@@ -2467,6 +2589,12 @@ type DeletePluginRequest struct {
 	
 	// <p>插件id</p>
 	PluginId *string `json:"PluginId,omitnil,omitempty" name:"PluginId"`
+
+	// <p>登录用户主账号(集成商模式必填)</p>
+	LoginUin *string `json:"LoginUin,omitnil,omitempty" name:"LoginUin"`
+
+	// <p>登录用户子账号(集成商模式必填)</p>
+	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
 }
 
 func (r *DeletePluginRequest) ToJsonString() string {
@@ -2482,6 +2610,8 @@ func (r *DeletePluginRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "PluginId")
+	delete(f, "LoginUin")
+	delete(f, "LoginSubAccountUin")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeletePluginRequest has unknown keys!", "")
 	}
@@ -2772,6 +2902,80 @@ func (r *DeleteVariableResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeAccountListRequestParams struct {
+	// <p>页码</p><p>从0开始</p>
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// <p>分页数量</p><p>取值范围：[1, 100]</p><p>单位：个</p><p>最大100</p>
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// <p>参数过滤</p><p>支持SpaceId,NIckName 过滤查询</p>
+	FilterList []*Filter `json:"FilterList,omitnil,omitempty" name:"FilterList"`
+}
+
+type DescribeAccountListRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>页码</p><p>从0开始</p>
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// <p>分页数量</p><p>取值范围：[1, 100]</p><p>单位：个</p><p>最大100</p>
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// <p>参数过滤</p><p>支持SpaceId,NIckName 过滤查询</p>
+	FilterList []*Filter `json:"FilterList,omitnil,omitempty" name:"FilterList"`
+}
+
+func (r *DescribeAccountListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAccountListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	delete(f, "FilterList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAccountListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAccountListResponseParams struct {
+	// <p>总数</p>
+	TotalCount *string `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>员工列表</p>
+	AccountList []*AccountInfo `json:"AccountList,omitnil,omitempty" name:"AccountList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAccountListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAccountListResponseParams `json:"Response"`
+}
+
+func (r *DescribeAccountListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAccountListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeAgentDetailRequestParams struct {
 	// <p>应用Id</p>
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
@@ -3013,32 +3217,32 @@ func (r *DescribeAgentSummaryListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAppRequestParams struct {
-	// 应用ID
+	// <p>应用ID</p>
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
 
-	// 应用域: ADP_DOMAIN_DEV(1)=开发域, ADP_DOMAIN_PROD(2)=发布域。枚举值: 1:开发域, 2:生产域
+	// <p>应用域: ADP_DOMAIN_DEV(1)=开发域, ADP_DOMAIN_PROD(2)=发布域。枚举值: 1:开发域, 2:生产域</p>
 	Domain *int64 `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 字段掩码，指定需要返回的字段(Paths为空则返回所有字段)。Paths枚举值：AppConfig(应用配置), SecretInfo(应用密钥信息), ShareUrlInfo(分享链接信息), SpecialStatusInfo(特殊状态信息), SearchResourceStatus(搜索资源状态), SharedKbList(应用引用的共享知识库列表)
+	// <p>字段掩码，指定需要返回的字段(Paths为空则返回所有字段)。Paths枚举值：AppConfig(应用配置), SecretInfo(应用密钥信息), ShareUrlInfo(分享链接信息), SpecialStatusInfo(特殊状态信息), SearchResourceStatus(搜索资源状态), SharedKbList(应用引用的共享知识库列表),CorpShareConfig(企业共享配置)</p>
 	FieldMask *FieldMask `json:"FieldMask,omitnil,omitempty" name:"FieldMask"`
 
-	// 特殊状态类型(当FieldMask包含SpecialStatusInfo时必填)。枚举值: 1:回滚状态, 2:首次导入状态
+	// <p>特殊状态类型(当FieldMask包含SpecialStatusInfo时必填)。枚举值: 1:回滚状态, 2:首次导入状态</p>
 	StatusType *int64 `json:"StatusType,omitnil,omitempty" name:"StatusType"`
 }
 
 type DescribeAppRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用ID
+	// <p>应用ID</p>
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
 
-	// 应用域: ADP_DOMAIN_DEV(1)=开发域, ADP_DOMAIN_PROD(2)=发布域。枚举值: 1:开发域, 2:生产域
+	// <p>应用域: ADP_DOMAIN_DEV(1)=开发域, ADP_DOMAIN_PROD(2)=发布域。枚举值: 1:开发域, 2:生产域</p>
 	Domain *int64 `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 字段掩码，指定需要返回的字段(Paths为空则返回所有字段)。Paths枚举值：AppConfig(应用配置), SecretInfo(应用密钥信息), ShareUrlInfo(分享链接信息), SpecialStatusInfo(特殊状态信息), SearchResourceStatus(搜索资源状态), SharedKbList(应用引用的共享知识库列表)
+	// <p>字段掩码，指定需要返回的字段(Paths为空则返回所有字段)。Paths枚举值：AppConfig(应用配置), SecretInfo(应用密钥信息), ShareUrlInfo(分享链接信息), SpecialStatusInfo(特殊状态信息), SearchResourceStatus(搜索资源状态), SharedKbList(应用引用的共享知识库列表),CorpShareConfig(企业共享配置)</p>
 	FieldMask *FieldMask `json:"FieldMask,omitnil,omitempty" name:"FieldMask"`
 
-	// 特殊状态类型(当FieldMask包含SpecialStatusInfo时必填)。枚举值: 1:回滚状态, 2:首次导入状态
+	// <p>特殊状态类型(当FieldMask包含SpecialStatusInfo时必填)。枚举值: 1:回滚状态, 2:首次导入状态</p>
 	StatusType *int64 `json:"StatusType,omitnil,omitempty" name:"StatusType"`
 }
 
@@ -3066,7 +3270,7 @@ func (r *DescribeAppRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAppResponseParams struct {
-	// 应用详情
+	// <p>应用详情</p>
 	App *App `json:"App,omitnil,omitempty" name:"App"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3174,6 +3378,144 @@ func (r *DescribeAppSummaryListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAppSummaryListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAuditLogListRequestParams struct {
+	// <p>空间id</p>
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// <p>每页数量</p><p>取值范围：[1, 100]</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>es查询起始位置</p><p>对应接口返回SearchAfter</p>
+	SearchAfter []*string `json:"SearchAfter,omitnil,omitempty" name:"SearchAfter"`
+
+	// <p>参数过滤</p><p>支持 Action,BizObject,Content<br>支持SpaceId,AccountUin,AppId(最多100个)<br>支持startTime,endTime(秒时间戳)</p>
+	FilterList []*Filter `json:"FilterList,omitnil,omitempty" name:"FilterList"`
+}
+
+type DescribeAuditLogListRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>空间id</p>
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// <p>每页数量</p><p>取值范围：[1, 100]</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>es查询起始位置</p><p>对应接口返回SearchAfter</p>
+	SearchAfter []*string `json:"SearchAfter,omitnil,omitempty" name:"SearchAfter"`
+
+	// <p>参数过滤</p><p>支持 Action,BizObject,Content<br>支持SpaceId,AccountUin,AppId(最多100个)<br>支持startTime,endTime(秒时间戳)</p>
+	FilterList []*Filter `json:"FilterList,omitnil,omitempty" name:"FilterList"`
+}
+
+func (r *DescribeAuditLogListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAuditLogListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SpaceId")
+	delete(f, "Limit")
+	delete(f, "SearchAfter")
+	delete(f, "FilterList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAuditLogListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAuditLogListResponseParams struct {
+	// <p>操作日志列表</p>
+	AuditLogList []*AuditLog `json:"AuditLogList,omitnil,omitempty" name:"AuditLogList"`
+
+	// <p>es查询起始位置</p><p>用于入参查询下一页</p>
+	SearchAfter []*string `json:"SearchAfter,omitnil,omitempty" name:"SearchAfter"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAuditLogListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAuditLogListResponseParams `json:"Response"`
+}
+
+func (r *DescribeAuditLogListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAuditLogListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAuditLogMetaRequestParams struct {
+
+}
+
+type DescribeAuditLogMetaRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeAuditLogMetaRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAuditLogMetaRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAuditLogMetaRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAuditLogMetaResponseParams struct {
+	// <p>操作类型列表</p>
+	Actions []*AuditLogMetaField `json:"Actions,omitnil,omitempty" name:"Actions"`
+
+	// <p>操作对象列表</p>
+	BizObjects []*AuditLogMetaField `json:"BizObjects,omitnil,omitempty" name:"BizObjects"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAuditLogMetaResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAuditLogMetaResponseParams `json:"Response"`
+}
+
+func (r *DescribeAuditLogMetaResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAuditLogMetaResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4801,7 +5143,7 @@ func (r *FavoriteSkillResponse) FromJsonString(s string) error {
 }
 
 type FieldMask struct {
-	// <p>参数名称</p><p>参数格式：需要获取的指定字段路径</p>
+	// 字段路径列表
 	Paths []*string `json:"Paths,omitnil,omitempty" name:"Paths"`
 }
 
@@ -4841,7 +5183,7 @@ type Filter struct {
 	// 过滤字段名
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 操作符，默认 IN（向后兼容）<table><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>FILTER_OPERATOR_IN</td><td>0</td><td>属于 value_list（默认值，向后兼容；value_list 不可为空）</td></tr><tr><td>FILTER_OPERATOR_NOT_IN</td><td>1</td><td>不属于 value_list（value_list 不可为空）</td></tr></table>
+	// 操作符：0-属于，1-不属于
 	Operator *int64 `json:"Operator,omitnil,omitempty" name:"Operator"`
 
 	// 过滤值数组
@@ -5168,82 +5510,56 @@ func (r *ModifyAgentResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyAppRequestParams struct {
-	// 应用ID
+	// <p>应用ID</p>
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
 
-	// 应用模式。枚举值: 1:标准模式, 2:Agent模式, 3:单工作流模式, 4:ClawAgent模式
+	// <p>应用模式。枚举值: 1:标准模式, 2:Agent模式, 3:单工作流模式, 4:ClawAgent模式</p>
 	AppMode *int64 `json:"AppMode,omitnil,omitempty" name:"AppMode"`
 
-	// 应用头像
+	// <p>应用头像</p>
 	Avatar *string `json:"Avatar,omitnil,omitempty" name:"Avatar"`
 
-	// 应用配置
+	// <p>应用配置</p>
 	Config *AppConfig `json:"Config,omitnil,omitempty" name:"Config"`
 
-	// 应用描述
+	// <p>应用描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 应用名称
+	// <p>应用名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 分享配置
-	ShareConfig *AppShareAccessControl `json:"ShareConfig,omitnil,omitempty" name:"ShareConfig"`
-
-	// 引用的共享知识库ID列表(全量覆盖)
+	// <p>引用的共享知识库ID列表(全量覆盖)</p>
 	SharedKbIdList []*string `json:"SharedKbIdList,omitnil,omitempty" name:"SharedKbIdList"`
 
-	// 字段掩码，指定需要更新的字段(Paths为空则不更新任何字段)。Paths枚举值：
-	// 【顶层】Name, Avatar, Description, AppMode, ShareConfig, SharedKbIdList
-	// 【Greeting】Config.Greeting, Config.Greeting.Greeting, Config.Greeting.OpeningQuestionList
-	// 【Model】Config.Model, Config.Model.ThinkModel, Config.Model.GenerateModel, Config.Model.AiOptimizeModel, Config.Model.FileParseModel, Config.Model.PromptRewriteModel, Config.Model.MultiModalQaModel, Config.Model.MultiModalUnderstandingModel
-	// 【WebSearch】Config.WebSearch
-	// 【Memory】Config.Memory, Config.Memory.Enabled, Config.Memory.LongMemoryDay, Config.Memory.Model, Config.Memory.PromptMode, Config.Memory.PromptContent
-	// 【Mode】Config.Mode, Config.Mode.MultiAgentConfig, Config.Mode.SingleWorkflowConfig
-	// 【Experience】Config.Experience, Config.Experience.Conversation, Config.Experience.Role, Config.Experience.Advanced
-	// 【Experience.Conversation】Config.Experience.Conversation.AiCall, Config.Experience.Conversation.BackgroundImage, Config.Experience.Conversation.Method, Config.Experience.Conversation.FallbackReply, Config.Experience.Conversation.Recommended, Config.Experience.Conversation.InputBoxConfig, Config.Experience.Conversation.WebSearch
-	// 【Experience.Conversation.AiCall】Config.Experience.Conversation.AiCall.VoiceInteract, Config.Experience.Conversation.AiCall.VoiceCall, Config.Experience.Conversation.AiCall.DigitalHuman
-	// 【Experience.Advanced】Config.Experience.Advanced.ContextRewrite, Config.Experience.Advanced.ImageTextRetrieval, Config.Experience.Advanced.IntentAchievement, Config.Experience.Advanced.ReplyFlexibility
+	// <p>字段掩码，指定需要更新的字段(Paths为空则不更新任何字段)。Paths枚举值：<br>【顶层】Name, Avatar, Description, AppMode, SharedKbIdList<br>【Greeting】Config.Greeting, Config.Greeting.Greeting, Config.Greeting.OpeningQuestionList<br>【Model】Config.Model, Config.Model.ThinkModel, Config.Model.GenerateModel, Config.Model.AiOptimizeModel, Config.Model.FileParseModel, Config.Model.PromptRewriteModel, Config.Model.MultiModalQaModel, Config.Model.MultiModalUnderstandingModel<br>【WebSearch】Config.WebSearch<br>【Memory】Config.Memory, Config.Memory.Enabled, Config.Memory.LongMemoryDay, Config.Memory.Model, Config.Memory.PromptMode, Config.Memory.PromptContent<br>【Mode】Config.Mode, Config.Mode.MultiAgentConfig, Config.Mode.SingleWorkflowConfig<br>【Experience】Config.Experience, Config.Experience.Conversation, Config.Experience.Role, Config.Experience.Advanced<br>【Experience.Conversation】Config.Experience.Conversation.AiCall, Config.Experience.Conversation.BackgroundImage, Config.Experience.Conversation.Method, Config.Experience.Conversation.FallbackReply, Config.Experience.Conversation.Recommended, Config.Experience.Conversation.InputBoxConfig, Config.Experience.Conversation.WebSearch<br>【Experience.Conversation.AiCall】Config.Experience.Conversation.AiCall.VoiceInteract, Config.Experience.Conversation.AiCall.VoiceCall, Config.Experience.Conversation.AiCall.DigitalHuman<br>【Experience.Advanced】Config.Experience.Advanced.ContextRewrite, Config.Experience.Advanced.ImageTextRetrieval, Config.Experience.Advanced.IntentAchievement, Config.Experience.Advanced.ReplyFlexibility</p>
 	UpdateMask *FieldMask `json:"UpdateMask,omitnil,omitempty" name:"UpdateMask"`
 }
 
 type ModifyAppRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用ID
+	// <p>应用ID</p>
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
 
-	// 应用模式。枚举值: 1:标准模式, 2:Agent模式, 3:单工作流模式, 4:ClawAgent模式
+	// <p>应用模式。枚举值: 1:标准模式, 2:Agent模式, 3:单工作流模式, 4:ClawAgent模式</p>
 	AppMode *int64 `json:"AppMode,omitnil,omitempty" name:"AppMode"`
 
-	// 应用头像
+	// <p>应用头像</p>
 	Avatar *string `json:"Avatar,omitnil,omitempty" name:"Avatar"`
 
-	// 应用配置
+	// <p>应用配置</p>
 	Config *AppConfig `json:"Config,omitnil,omitempty" name:"Config"`
 
-	// 应用描述
+	// <p>应用描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 应用名称
+	// <p>应用名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 分享配置
-	ShareConfig *AppShareAccessControl `json:"ShareConfig,omitnil,omitempty" name:"ShareConfig"`
-
-	// 引用的共享知识库ID列表(全量覆盖)
+	// <p>引用的共享知识库ID列表(全量覆盖)</p>
 	SharedKbIdList []*string `json:"SharedKbIdList,omitnil,omitempty" name:"SharedKbIdList"`
 
-	// 字段掩码，指定需要更新的字段(Paths为空则不更新任何字段)。Paths枚举值：
-	// 【顶层】Name, Avatar, Description, AppMode, ShareConfig, SharedKbIdList
-	// 【Greeting】Config.Greeting, Config.Greeting.Greeting, Config.Greeting.OpeningQuestionList
-	// 【Model】Config.Model, Config.Model.ThinkModel, Config.Model.GenerateModel, Config.Model.AiOptimizeModel, Config.Model.FileParseModel, Config.Model.PromptRewriteModel, Config.Model.MultiModalQaModel, Config.Model.MultiModalUnderstandingModel
-	// 【WebSearch】Config.WebSearch
-	// 【Memory】Config.Memory, Config.Memory.Enabled, Config.Memory.LongMemoryDay, Config.Memory.Model, Config.Memory.PromptMode, Config.Memory.PromptContent
-	// 【Mode】Config.Mode, Config.Mode.MultiAgentConfig, Config.Mode.SingleWorkflowConfig
-	// 【Experience】Config.Experience, Config.Experience.Conversation, Config.Experience.Role, Config.Experience.Advanced
-	// 【Experience.Conversation】Config.Experience.Conversation.AiCall, Config.Experience.Conversation.BackgroundImage, Config.Experience.Conversation.Method, Config.Experience.Conversation.FallbackReply, Config.Experience.Conversation.Recommended, Config.Experience.Conversation.InputBoxConfig, Config.Experience.Conversation.WebSearch
-	// 【Experience.Conversation.AiCall】Config.Experience.Conversation.AiCall.VoiceInteract, Config.Experience.Conversation.AiCall.VoiceCall, Config.Experience.Conversation.AiCall.DigitalHuman
-	// 【Experience.Advanced】Config.Experience.Advanced.ContextRewrite, Config.Experience.Advanced.ImageTextRetrieval, Config.Experience.Advanced.IntentAchievement, Config.Experience.Advanced.ReplyFlexibility
+	// <p>字段掩码，指定需要更新的字段(Paths为空则不更新任何字段)。Paths枚举值：<br>【顶层】Name, Avatar, Description, AppMode, SharedKbIdList<br>【Greeting】Config.Greeting, Config.Greeting.Greeting, Config.Greeting.OpeningQuestionList<br>【Model】Config.Model, Config.Model.ThinkModel, Config.Model.GenerateModel, Config.Model.AiOptimizeModel, Config.Model.FileParseModel, Config.Model.PromptRewriteModel, Config.Model.MultiModalQaModel, Config.Model.MultiModalUnderstandingModel<br>【WebSearch】Config.WebSearch<br>【Memory】Config.Memory, Config.Memory.Enabled, Config.Memory.LongMemoryDay, Config.Memory.Model, Config.Memory.PromptMode, Config.Memory.PromptContent<br>【Mode】Config.Mode, Config.Mode.MultiAgentConfig, Config.Mode.SingleWorkflowConfig<br>【Experience】Config.Experience, Config.Experience.Conversation, Config.Experience.Role, Config.Experience.Advanced<br>【Experience.Conversation】Config.Experience.Conversation.AiCall, Config.Experience.Conversation.BackgroundImage, Config.Experience.Conversation.Method, Config.Experience.Conversation.FallbackReply, Config.Experience.Conversation.Recommended, Config.Experience.Conversation.InputBoxConfig, Config.Experience.Conversation.WebSearch<br>【Experience.Conversation.AiCall】Config.Experience.Conversation.AiCall.VoiceInteract, Config.Experience.Conversation.AiCall.VoiceCall, Config.Experience.Conversation.AiCall.DigitalHuman<br>【Experience.Advanced】Config.Experience.Advanced.ContextRewrite, Config.Experience.Advanced.ImageTextRetrieval, Config.Experience.Advanced.IntentAchievement, Config.Experience.Advanced.ReplyFlexibility</p>
 	UpdateMask *FieldMask `json:"UpdateMask,omitnil,omitempty" name:"UpdateMask"`
 }
 
@@ -5265,7 +5581,6 @@ func (r *ModifyAppRequest) FromJsonString(s string) error {
 	delete(f, "Config")
 	delete(f, "Description")
 	delete(f, "Name")
-	delete(f, "ShareConfig")
 	delete(f, "SharedKbIdList")
 	delete(f, "UpdateMask")
 	if len(f) > 0 {
@@ -5276,10 +5591,10 @@ func (r *ModifyAppRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyAppResponseParams struct {
-	// app_id
+	// <p>app_id</p>
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
 
-	// 更新时间 (Unix时间戳,秒级)
+	// <p>更新时间 (Unix时间戳,秒级)</p>
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5431,6 +5746,12 @@ type ModifyPluginRequestParams struct {
 
 	// <p>插件的工具列表，mcp插件不传</p>
 	ToolList []*Tool `json:"ToolList,omitnil,omitempty" name:"ToolList"`
+
+	// <p>登录用户主账号(集成商模式必填)</p>
+	LoginUin *string `json:"LoginUin,omitnil,omitempty" name:"LoginUin"`
+
+	// <p>登录用户子账号(集成商模式必填)</p>
+	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
 }
 
 type ModifyPluginRequest struct {
@@ -5453,6 +5774,12 @@ type ModifyPluginRequest struct {
 
 	// <p>插件的工具列表，mcp插件不传</p>
 	ToolList []*Tool `json:"ToolList,omitnil,omitempty" name:"ToolList"`
+
+	// <p>登录用户主账号(集成商模式必填)</p>
+	LoginUin *string `json:"LoginUin,omitnil,omitempty" name:"LoginUin"`
+
+	// <p>登录用户子账号(集成商模式必填)</p>
+	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
 }
 
 func (r *ModifyPluginRequest) ToJsonString() string {
@@ -5473,6 +5800,8 @@ func (r *ModifyPluginRequest) FromJsonString(s string) error {
 	delete(f, "Config")
 	delete(f, "UpdateMask")
 	delete(f, "ToolList")
+	delete(f, "LoginUin")
+	delete(f, "LoginSubAccountUin")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyPluginRequest has unknown keys!", "")
 	}
@@ -5784,6 +6113,7 @@ type Plugin struct {
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 插件运营管理信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Operation *PluginOperation `json:"Operation,omitnil,omitempty" name:"Operation"`
 
 	// 插件id
@@ -5793,21 +6123,25 @@ type Plugin struct {
 	PluginVersion *int64 `json:"PluginVersion,omitnil,omitempty" name:"PluginVersion"`
 
 	// 插件基础信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Profile *PluginProfile `json:"Profile,omitnil,omitempty" name:"Profile"`
 
 	// 插件统计信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Statistics *PluginStatistics `json:"Statistics,omitnil,omitempty" name:"Statistics"`
 
 	// <p>插件状态，1:可用，2:不可用 </p><p>枚举值：</p><ul><li>1： 可用</li><li>2： 不可用</li></ul>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 工具列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ToolList []*Tool `json:"ToolList,omitnil,omitempty" name:"ToolList"`
 
 	// 更新时间，Unix时间戳
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 用户维度的插件状态信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserState *PluginUserState `json:"UserState,omitnil,omitempty" name:"UserState"`
 }
 
@@ -6034,23 +6368,31 @@ func (r *ReleaseSkillResponse) FromJsonString(s string) error {
 }
 
 type ReleaseSummary struct {
-	// 创建时间 (Unix时间戳,秒级)
+	// <p>创建时间 (Unix时间戳,秒级)</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 发布描述
+	// <p>发布描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 发布ID
+	// <p>发布ID</p>
 	ReleaseId *string `json:"ReleaseId,omitnil,omitempty" name:"ReleaseId"`
 
-	// 发布状态。枚举值: 1:待发布, 2:发布中, 3:发布成功, 4:发布失败, 5:审核中, 6:审核成功, 7:审核失败, 8:发布成功回调处理中, 9:发布暂停, 10:申诉审核中, 11:申诉审核通过, 12:申诉审核不通过
+	// <p>发布状态。枚举值: 1:待发布, 2:发布中, 3:发布成功, 4:发布失败, 5:审核中, 6:审核成功, 7:审核失败, 8:发布成功回调处理中, 9:发布暂停, 10:申诉审核中, 11:申诉审核通过, 12:申诉审核不通过</p>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 状态描述
+	// <p>状态描述</p>
 	StatusDescription *string `json:"StatusDescription,omitnil,omitempty" name:"StatusDescription"`
 
-	// 发布渠道ID列表
+	// <p>应用分享访问控制</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppShareAccessControl *AppShareAccessControl `json:"AppShareAccessControl,omitnil,omitempty" name:"AppShareAccessControl"`
+
+	// <p>发布渠道ID列表</p>
 	ChannelIdList []*string `json:"ChannelIdList,omitnil,omitempty" name:"ChannelIdList"`
+
+	// <p>企业共享配置</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CorpShareConfig *CorpShareConfig `json:"CorpShareConfig,omitnil,omitempty" name:"CorpShareConfig"`
 }
 
 type RequestParam struct {
@@ -6870,26 +7212,32 @@ func (r *UnfavoriteSkillResponse) FromJsonString(s string) error {
 }
 
 type Variable struct {
-	// 默认文件名称
+	// <p>默认文件名称</p>
 	DefaultFileName *string `json:"DefaultFileName,omitnil,omitempty" name:"DefaultFileName"`
 
-	// 默认值
+	// <p>默认值</p>
 	DefaultValue *string `json:"DefaultValue,omitnil,omitempty" name:"DefaultValue"`
 
-	// 变量描述
+	// <p>变量描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 模块类型。枚举值: 1:环境参数, 2:应用参数, 3:系统参数, -1:所有参数
+	// <p>模块类型。枚举值: 1:环境参数, 2:应用参数, 3:系统参数, -1:所有参数</p>
 	ModuleType *int64 `json:"ModuleType,omitnil,omitempty" name:"ModuleType"`
 
-	// 变量名称
+	// <p>变量名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 变量类型。枚举值: 1:字符串, 2:整数, 3:浮点数, 4:布尔值, 5:对象, 6:字符串数组, 7:整数数组, 8:浮点数数组, 9:布尔值数组, 10:对象数组, 11:文件, 12:文档, 13:图片, 14:音频, 15:视频, 16:文件数组, 17:文档数组, 18:图片数组, 19:音频数组, 20:视频数组, 21:数组的数组, 22:密钥/敏感信息, 99:空值
+	// <p>变量类型</p><p>枚举值：</p><ul><li>0： 字符串</li><li>1： 整数</li><li>2： 浮点数</li><li>3： 布尔值</li><li>4： 对象</li><li>5： 字符串数组</li><li>6： 整数数组</li><li>7： 浮点数数组</li><li>8： 布尔值数组</li><li>9： 对象数组</li><li>10： 文件</li><li>11： 文档</li><li>12： 图片</li><li>13： 音频</li><li>14： 视频</li><li>15： 文件数组</li><li>16： 文档数组</li><li>17： 图片数组</li><li>18： 音频数组</li><li>19： 视频数组</li><li>20： 数组的数组</li><li>21： 密钥</li></ul>
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 变量ID
+	// <p>变量ID</p>
 	VariableId *string `json:"VariableId,omitnil,omitempty" name:"VariableId"`
+
+	// <p>是否启用网络策略(仅环境变量生效)</p>
+	EnableEndpoints *bool `json:"EnableEndpoints,omitnil,omitempty" name:"EnableEndpoints"`
+
+	// <p>网络策略列表(支持: 精确域名、*.通配子域名、可带协议/端口/路径前缀)</p>
+	EndpointList []*string `json:"EndpointList,omitnil,omitempty" name:"EndpointList"`
 }
 
 type VoiceConfig struct {

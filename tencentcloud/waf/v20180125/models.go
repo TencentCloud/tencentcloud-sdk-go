@@ -505,99 +505,105 @@ func (r *AddAttackWhiteRuleResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AddBatchCustomRuleRequestParams struct {
-	// 规则名称
+	// <p>规则名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 如果没有设置JobDateTime字段则用此字段，0表示永久生效，其它表示定时生效的截止时间（单位为秒）
+	// <p>如果没有设置JobDateTime字段则用此字段，0表示永久生效，其它表示定时生效的截止时间（单位为秒）</p>
 	ExpireTime *int64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
-	// 优先级
+	// <p>优先级</p>
 	SortId *int64 `json:"SortId,omitnil,omitempty" name:"SortId"`
 
-	// 动作类型，1代表阻断，2代表人机识别，3代表观察，4代表重定向
+	// <p>动作类型，1代表阻断，2代表人机识别，3代表观察，4代表重定向</p>
 	ActionType *int64 `json:"ActionType,omitnil,omitempty" name:"ActionType"`
 
-	// 重定向地址
+	// <p>重定向地址</p>
 	Redirect *string `json:"Redirect,omitnil,omitempty" name:"Redirect"`
 
-	// 加白模块
+	// <p>加白模块</p>
 	Bypass *string `json:"Bypass,omitnil,omitempty" name:"Bypass"`
 
-	// 备注
+	// <p>备注</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 事件Id
+	// <p>事件Id</p>
 	EventId *string `json:"EventId,omitnil,omitempty" name:"EventId"`
 
-	// 域名列表
+	// <p>域名列表</p>
 	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
 
-	// 策略详情列表
+	// <p>策略详情列表</p>
 	Strategies []*Strategy `json:"Strategies,omitnil,omitempty" name:"Strategies"`
 
-	// 规则执行的方式，TimedJob为定时执行，CronJob为周期执行
+	// <p>规则执行的方式，TimedJob为定时执行，CronJob为周期执行</p>
 	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
 
-	// 定时任务配置
+	// <p>定时任务配置</p>
 	JobDateTime *JobDateTime `json:"JobDateTime,omitnil,omitempty" name:"JobDateTime"`
 
-	// 匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系
+	// <p>匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系</p>
 	LogicalOp *string `json:"LogicalOp,omitnil,omitempty" name:"LogicalOp"`
 
-	// 页面ID
+	// <p>页面ID</p>
 	PageId *string `json:"PageId,omitnil,omitempty" name:"PageId"`
 
-	// 动作灰度比例
+	// <p>动作灰度比例</p>
 	ActionRatio *uint64 `json:"ActionRatio,omitnil,omitempty" name:"ActionRatio"`
+
+	// <p>绑定的防护组ID</p>
+	GroupIds []*uint64 `json:"GroupIds,omitnil,omitempty" name:"GroupIds"`
 }
 
 type AddBatchCustomRuleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 规则名称
+	// <p>规则名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 如果没有设置JobDateTime字段则用此字段，0表示永久生效，其它表示定时生效的截止时间（单位为秒）
+	// <p>如果没有设置JobDateTime字段则用此字段，0表示永久生效，其它表示定时生效的截止时间（单位为秒）</p>
 	ExpireTime *int64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
-	// 优先级
+	// <p>优先级</p>
 	SortId *int64 `json:"SortId,omitnil,omitempty" name:"SortId"`
 
-	// 动作类型，1代表阻断，2代表人机识别，3代表观察，4代表重定向
+	// <p>动作类型，1代表阻断，2代表人机识别，3代表观察，4代表重定向</p>
 	ActionType *int64 `json:"ActionType,omitnil,omitempty" name:"ActionType"`
 
-	// 重定向地址
+	// <p>重定向地址</p>
 	Redirect *string `json:"Redirect,omitnil,omitempty" name:"Redirect"`
 
-	// 加白模块
+	// <p>加白模块</p>
 	Bypass *string `json:"Bypass,omitnil,omitempty" name:"Bypass"`
 
-	// 备注
+	// <p>备注</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 事件Id
+	// <p>事件Id</p>
 	EventId *string `json:"EventId,omitnil,omitempty" name:"EventId"`
 
-	// 域名列表
+	// <p>域名列表</p>
 	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
 
-	// 策略详情列表
+	// <p>策略详情列表</p>
 	Strategies []*Strategy `json:"Strategies,omitnil,omitempty" name:"Strategies"`
 
-	// 规则执行的方式，TimedJob为定时执行，CronJob为周期执行
+	// <p>规则执行的方式，TimedJob为定时执行，CronJob为周期执行</p>
 	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
 
-	// 定时任务配置
+	// <p>定时任务配置</p>
 	JobDateTime *JobDateTime `json:"JobDateTime,omitnil,omitempty" name:"JobDateTime"`
 
-	// 匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系
+	// <p>匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系</p>
 	LogicalOp *string `json:"LogicalOp,omitnil,omitempty" name:"LogicalOp"`
 
-	// 页面ID
+	// <p>页面ID</p>
 	PageId *string `json:"PageId,omitnil,omitempty" name:"PageId"`
 
-	// 动作灰度比例
+	// <p>动作灰度比例</p>
 	ActionRatio *uint64 `json:"ActionRatio,omitnil,omitempty" name:"ActionRatio"`
+
+	// <p>绑定的防护组ID</p>
+	GroupIds []*uint64 `json:"GroupIds,omitnil,omitempty" name:"GroupIds"`
 }
 
 func (r *AddBatchCustomRuleRequest) ToJsonString() string {
@@ -627,6 +633,7 @@ func (r *AddBatchCustomRuleRequest) FromJsonString(s string) error {
 	delete(f, "LogicalOp")
 	delete(f, "PageId")
 	delete(f, "ActionRatio")
+	delete(f, "GroupIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddBatchCustomRuleRequest has unknown keys!", "")
 	}
@@ -635,7 +642,7 @@ func (r *AddBatchCustomRuleRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AddBatchCustomRuleResponseParams struct {
-	// 操作成功
+	// <p>操作成功</p>
 	Res *string `json:"Res,omitnil,omitempty" name:"Res"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1738,6 +1745,17 @@ type ApiEvent struct {
 	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 }
 
+type ApiEventSample struct {
+	// <p>攻击样本的请求部分</p>
+	Request *string `json:"Request,omitnil,omitempty" name:"Request"`
+
+	// <p>攻击样本的响应</p>
+	Response *string `json:"Response,omitnil,omitempty" name:"Response"`
+
+	// <p>攻击样本状态码</p>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
 type ApiGuardContent struct {
 	// <p>prompt</p>
 	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
@@ -1830,38 +1848,47 @@ type ApiPkg struct {
 }
 
 type ApiSecAttackSource struct {
-	// 攻击来源ip
+	// <p>攻击来源ip</p>
 	SrcIp *string `json:"SrcIp,omitnil,omitempty" name:"SrcIp"`
 
-	// 威胁等级
+	// <p>威胁等级</p>
 	EventLevel *string `json:"EventLevel,omitnil,omitempty" name:"EventLevel"`
 
-	// BOT标签
+	// <p>BOT标签</p>
 	BotLabel *string `json:"BotLabel,omitnil,omitempty" name:"BotLabel"`
 
-	// 变更时间
+	// <p>变更时间</p>
 	Timestamp *uint64 `json:"Timestamp,omitnil,omitempty" name:"Timestamp"`
 
-	// 地理位置
+	// <p>地理位置</p>
 	City *string `json:"City,omitnil,omitempty" name:"City"`
 
-	// 开始时间
+	// <p>开始时间</p>
 	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 关联事件数量
+	// <p>关联事件数量</p>
 	EventCount *int64 `json:"EventCount,omitnil,omitempty" name:"EventCount"`
 
-	// 攻击数量
+	// <p>攻击数量</p>
 	AttackCount *int64 `json:"AttackCount,omitnil,omitempty" name:"AttackCount"`
 
-	// 缺失参数名，当事件类型是缺失参数名，缺失参数名和密码时，返回此字段
+	// <p>缺失参数名，当事件类型是缺失参数名，缺失参数名和密码时，返回此字段</p>
 	MissUserName *string `json:"MissUserName,omitnil,omitempty" name:"MissUserName"`
 
-	// 当是水平越权和垂直越权时，返回此字段
+	// <p>当是水平越权和垂直越权时，返回此字段</p>
 	AttackDetail []*string `json:"AttackDetail,omitnil,omitempty" name:"AttackDetail"`
 
-	// 缺失密码参数，当事件类型是缺失参数名，缺失参数名和密码时，返回此字段
+	// <p>缺失密码参数，当事件类型是缺失参数名，缺失参数名和密码时，返回此字段</p>
 	MissPassword *string `json:"MissPassword,omitnil,omitempty" name:"MissPassword"`
+
+	// <p>事件描述</p>
+	EventDescription *string `json:"EventDescription,omitnil,omitempty" name:"EventDescription"`
+
+	// <p>事件描述(英文)</p>
+	EventDescriptionEng *string `json:"EventDescriptionEng,omitnil,omitempty" name:"EventDescriptionEng"`
+
+	// <p>攻击样本</p>
+	Sample *ApiEventSample `json:"Sample,omitnil,omitempty" name:"Sample"`
 }
 
 type ApiSecCustomEventRule struct {
@@ -2173,71 +2200,74 @@ type BatchCustomRuleListData struct {
 }
 
 type BatchCustomRuleListItem struct {
-	// 规则Id
+	// <p>规则Id</p>
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 动作类型，1代表阻断，2代表人机识别，3代表观察，4代表重定向，5代表JS校验
+	// <p>动作类型，1代表阻断，2代表人机识别，3代表观察，4代表重定向，5代表JS校验</p>
 	ActionType *int64 `json:"ActionType,omitnil,omitempty" name:"ActionType"`
 
-	// 加白模块
+	// <p>加白模块</p>
 	Bypass *string `json:"Bypass,omitnil,omitempty" name:"Bypass"`
 
-	// 有效期
+	// <p>有效期</p>
 	ExpireTime *uint64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
-	// 规则名称
+	// <p>规则名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 重定向地址
+	// <p>重定向地址</p>
 	Redirect *string `json:"Redirect,omitnil,omitempty" name:"Redirect"`
 
-	// 优先级
+	// <p>优先级</p>
 	SortId *int64 `json:"SortId,omitnil,omitempty" name:"SortId"`
 
-	// 开关状态
+	// <p>开关状态</p>
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 域名列表
+	// <p>域名列表</p>
 	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
 
-	// 备注
+	// <p>备注</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 策略列表
+	// <p>策略列表</p>
 	Strategies []*Strategy `json:"Strategies,omitnil,omitempty" name:"Strategies"`
 
-	// 事件Id
+	// <p>事件Id</p>
 	EventId *string `json:"EventId,omitnil,omitempty" name:"EventId"`
 
-	// 生效状态
+	// <p>生效状态</p>
 	ValidStatus *uint64 `json:"ValidStatus,omitnil,omitempty" name:"ValidStatus"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 更新时间
+	// <p>更新时间</p>
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 规则执行的方式，TimedJob为定时执行，CronJob为周期执行
+	// <p>规则执行的方式，TimedJob为定时执行，CronJob为周期执行</p>
 	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
 
-	// 定时任务配置
+	// <p>定时任务配置</p>
 	JobDateTime *JobDateTime `json:"JobDateTime,omitnil,omitempty" name:"JobDateTime"`
 
-	// 周期任务粒度
+	// <p>周期任务粒度</p>
 	CronType *string `json:"CronType,omitnil,omitempty" name:"CronType"`
 
-	// 标签
+	// <p>标签</p>
 	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
 
-	// 页面ID
+	// <p>页面ID</p>
 	PageId *string `json:"PageId,omitnil,omitempty" name:"PageId"`
 
-	// 匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系
+	// <p>匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系</p>
 	LogicalOp *string `json:"LogicalOp,omitnil,omitempty" name:"LogicalOp"`
 
-	// 动作灰度的比例
+	// <p>动作灰度的比例</p>
 	ActionRatio *uint64 `json:"ActionRatio,omitnil,omitempty" name:"ActionRatio"`
+
+	// <p>防护对象组ID</p>
+	GroupIds []*uint64 `json:"GroupIds,omitnil,omitempty" name:"GroupIds"`
 }
 
 type BatchCustomWhiteRule struct {
@@ -3281,6 +3311,9 @@ type ClbObject struct {
 
 	// <p>waf接入状态</p>
 	WafAccessStatus *int64 `json:"WafAccessStatus,omitnil,omitempty" name:"WafAccessStatus"`
+
+	// <p>备注</p>
+	Note *string `json:"Note,omitnil,omitempty" name:"Note"`
 }
 
 type ClbWafRegionItem struct {
@@ -16062,6 +16095,9 @@ type IntentContent struct {
 type IntentDetectResult struct {
 	// <p>是否恶意意图</p><p>枚举值：</p><ul><li>1： 恶意</li><li>0： 正常</li></ul>
 	IsUnSafe *uint64 `json:"IsUnSafe,omitnil,omitempty" name:"IsUnSafe"`
+
+	// <p>检出分类</p>
+	Category *string `json:"Category,omitnil,omitempty" name:"Category"`
 }
 
 type IpAccessControlData struct {
@@ -23637,12 +23673,153 @@ type SpartaProtectionPort struct {
 }
 
 type Strategy struct {
-	// 匹配字段
-	// 
-	//     匹配字段不同，相应的匹配参数、逻辑符号、匹配内容有所不同
-	// 具体如下所示：
-	// <table><thead><tr><th>匹配字段</th><th>匹配参数</th><th>逻辑符号</th><th>匹配内容</th></tr></thead><tbody><tr><td>IP（来源IP）</td><td>不支持参数</td><td>ipmatch（匹配）<br/>ipnmatch（不匹配）</td><td>多个IP以英文逗号隔开,最多20个</td></tr><tr><td>IPV6（来源IPv6）</td><td>不支持参数</td><td>ipmatch（匹配）<br/>ipnmatch（不匹配）</td><td>支持单个IPV6地址</td></tr><tr><td>Referer（Referer）</td><td>不支持参数</td><td>empty（内容为空）<br/>null（不存在）<br/>eq（等于）<br/>neq（不等于）<br/>contains（包含）<br/>ncontains（不包含）<br/>len_eq（长度等于）<br/>len_gt（长度大于）<br/>len_lt（长度小于）<br/>strprefix（前缀匹配）<br/>strsuffix（后缀匹配）<br/>rematch（正则匹配）</td><td>请输入内容,512个字符以内</td></tr><tr><td>URL（请求路径）</td><td>不支持参数</td><td>eq（等于）<br/>neq（不等于）<br/>contains（包含）<br/>ncontains（不包含）<br/>len_eq（长度等于）<br/>len_gt（长度大于）<br/>len_lt（长度小于）<br/>strprefix（前缀匹配）<br/>strsuffix（后缀匹配）<br/>rematch（正则匹配）<br/></td><td>请以/开头,512个字符以内</td></tr><tr><td>UserAgent（UserAgent）</td><td>不支持参数</td><td>同匹配字段<font color="Red">Referer</font>逻辑符号</td><td>请输入内容,512个字符以内</td></tr><tr><td>HTTP_METHOD（HTTP请求方法）</td><td>不支持参数</td><td>eq（等于）<br/>neq（不等于）</td><td>请输入方法名称,建议大写</td></tr><tr><td>QUERY_STRING（请求字符串）</td><td>不支持参数</td><td>同匹配字段<font color="Red">请求路径</font>逻辑符号</td><td>请输入内容,512个字符以内</td></tr><tr><td>GET（GET参数值）</td><td>支持参数录入</td><td>contains（包含）<br/>ncontains（不包含）<br/>len_eq（长度等于）<br/>len_gt（长度大于）<br/>len_lt（长度小于）<br/>strprefix（前缀匹配）<br/>strsuffix（后缀匹配）</td><td>请输入内容,512个字符以内</td></tr><tr><td>GET_PARAMS_NAMES（GET参数名）</td><td>不支持参数</td><td>exsit（存在参数）<br/>nexsit（不存在参数）<br/>len_eq（长度等于）<br/>len_gt（长度大于）<br/>len_lt（长度小于）<br/>strprefix（前缀匹配）<br/>strsuffix（后缀匹配）</td><td>请输入内容,512个字符以内</td></tr><tr><td>POST（POST参数值）</td><td>支持参数录入</td><td>同匹配字段<font color="Red">GET参数值</font>逻辑符号</td><td>请输入内容,512个字符以内</td></tr><tr><td>GET_POST_NAMES（POST参数名）</td><td>不支持参数</td><td>同匹配字段<font color="Red">GET参数名</font>逻辑符号</td><td>请输入内容,512个字符以内</td></tr><tr><td>POST_BODY（完整BODY）</td><td>不支持参数</td><td>同匹配字段<font color="Red">请求路径</font>逻辑符号</td><td>请输入BODY内容,512个字符以内</td></tr><tr><td>COOKIE（Cookie）</td><td>不支持参数</td><td>empty（内容为空）<br/>null（不存在）<br/>rematch（正则匹配）</td><td><font color="Red">暂不支持</font></td></tr><tr><td>GET_COOKIES_NAMES（Cookie参数名）</td><td>不支持参数</td><td>同匹配字段<font color="Red">GET参数名</font>逻辑符号</td><td>请输入内容,512个字符以内</td></tr><tr><td>ARGS_COOKIE（Cookie参数值）</td><td>支持参数录入</td><td>同匹配字段<font color="Red">GET参数值</font>逻辑符号</td><td>请输入内容,512个字符以内</td></tr><tr><td>GET_HEADERS_NAMES（Header参数名）</td><td>不支持参数</td><td>exsit（存在参数）<br/>nexsit（不存在参数）<br/>len_eq（长度等于）<br/>len_gt（长度大于）<br/>len_lt（长度小于）<br/>strprefix（前缀匹配）<br/>strsuffix（后缀匹配）<br/>rematch（正则匹配）</td><td>请输入内容,建议小写,512个字符以内</td></tr><tr><td>ARGS_HEADER（Header参数值）</td><td>支持参数录入</td><td>contains（包含）<br/>ncontains（不包含）<br/>len_eq（长度等于）<br/>len_gt（长度大于）<br/>len_lt（长度小于）<br/>strprefix（前缀匹配）<br/>strsuffix（后缀匹配）<br/>rematch（正则匹配）</td><td>请输入内容,512个字符以内</td></tr><tr><td>CONTENT_LENGTH（Content-length）</td><td>支持参数录入</td><td>numgt（数值大于）<br/>numlt（数值小于）<br/>numeq（数值等于）<br/></td><td>请输入0-9999999999999之间的整数</td></tr><tr><td>IP_GEO（来源IP归属地）</td><td>支持参数录入</td><td>geo_in（属于）<br/>geo_not_in（不属于）<br/></td><td>请输入内容,10240字符以内，格式为序列化的JSON，格式为：[{"Country":"中国","Region":"广东","City":"深圳"}]</td></tr><tr><td>CAPTCHA_RISK（验证码风险）</td><td>不支持参数</td><td>eq（等于）<br/>neq（不等于）<br/>belong（属于）<br/>not_belong（不属于）<br/>null（不存在）<br/>exist（存在）</td><td>请输入风险等级值,支持数值范围0-255</td></tr><tr><td>CAPTCHA_DEVICE_RISK（验证码设备风险）</td><td>不支持参数</td><td>eq（等于）<br/>neq（不等于）<br/>belong（属于）<br/>not_belong（不属于）<br/>null（不存在）<br/>exist（存在）</td><td>请输入设备风险代码,支持取值：101、201、301、401、501、601、701</td></tr><tr><td>CAPTCHAR_SCORE（验证码风险评估分）</td><td>不支持参数</td><td>numeq（数值等于）<br/>numgt（数值大于）<br/>numlt（数值小于）<br/>numle（数值小于等于）<br/>numge（数值大于等于）<br/>null（不存在）<br/>exist（存在）</td><td>请输入评估分数,支持数值范围0-100</td></tr>
-	// </tbody></table>
+	// 匹配字段 匹配字段不同，相应的匹配参数、逻辑符号、匹配内容有所不同
+	// 具体如下所示： <table>
+	// 	<thead>
+	// 		<tr>
+	// 			<th>匹配字段</th>
+	// 			<th>匹配参数</th>
+	// 			<th>逻辑符号</th>
+	// 			<th>匹配内容</th>
+	// 		</tr>
+	// 	</thead>
+	// 	<tbody>
+	// 		<tr>
+	// 			<td>IP（来源IP）</td>
+	// 			<td>不支持参数</td>
+	// 			<td>ipmatch（匹配）<br />ipnmatch（不匹配）</td>
+	// 			<td>多个IP以英文逗号隔开,最多20个</td>
+	// 		</tr>
+	// 		<tr>
+	// 			<td>IPV6（来源IPv6）</td>
+	// 			<td>不支持参数</td>
+	// 			<td>ipmatch（匹配）<br />ipnmatch（不匹配）</td>
+	// 			<td>支持单个IPV6地址</td>
+	// 		</tr>
+	// 		<tr>
+	// 			<td>Referer（Referer）</td>
+	// 			<td>不支持参数</td>
+	// 			<td>empty（内容为空）<br />null（不存在）<br />eq（等于）<br />neq（不等于）<br />contains（包含）<br />ncontains（不包含）<br/>belong_to（属于）<br/>not_belong_to（不属于）<br />len_eq（长度等于）<br />len_gt（长度大于）<br />len_lt（长度小于）<br />strprefix（前缀匹配）<br />strsuffix（后缀匹配）<br />rematch（正则匹配）</td>
+	// 			<td>请输入内容,512个字符以内</td>
+	// 		</tr>
+	// 		<tr>
+	// 			<td>URL（请求路径）</td>
+	// 			<td>不支持参数</td>
+	// 			<td>eq（等于）<br />neq（不等于）<br />contains（包含）<br />ncontains（不包含）<br />len_eq（长度等于）<br />belong_to（属于）<br />not_belong_to（不属于）<br />len_gt（长度大于）<br />len_lt（长度小于）<br />strprefix（前缀匹配）<br />strsuffix（后缀匹配）<br />rematch（正则匹配）<br /></td>
+	// 			<td>请以/开头,512个字符以内</td>
+	// 		</tr>
+	// 		<tr>
+	// 			<td>UserAgent（UserAgent）</td>
+	// 			<td>不支持参数</td>
+	// 			<td>同匹配字段<font color="Red">Referer</font>逻辑符号</td>
+	// 			<td>请输入内容,512个字符以内</td>
+	// 		</tr>
+	// 		<tr>
+	// 			<td>HTTP_METHOD（HTTP请求方法）</td>
+	// 			<td>不支持参数</td>
+	// 			<td>eq（等于）<br />neq（不等于）<br/>belong_to（属于）<br/>not_belong_to（不属于）</td>
+	// 			<td>请输入方法名称,建议大写</td>
+	// 		</tr>
+	// 		<tr>
+	// 			<td>QUERY_STRING（请求字符串）</td>
+	// 			<td>不支持参数</td>
+	// 			<td>同匹配字段<font color="Red">请求路径</font>逻辑符号</td>
+	// 			<td>请输入内容,512个字符以内</td>
+	// 		</tr>
+	// 		<tr>
+	// 			<td>GET（GET参数值）</td>
+	// 			<td>支持参数录入</td>
+	// 			<td>contains（包含）<br />ncontains（不包含）<br/>belong_to（属于）<br/>not_belong_to（不属于）<br />len_eq（长度等于）<br />len_gt（长度大于）<br />len_lt（长度小于）<br />strprefix（前缀匹配）<br />strsuffix（后缀匹配）</td>
+	// 			<td>请输入内容,512个字符以内</td>
+	// 		</tr>
+	// 		<tr>
+	// 			<td>GET_PARAMS_NAMES（GET参数名）</td>
+	// 			<td>不支持参数</td>
+	// 			<td>exsit（存在参数）<br />nexsit（不存在参数）<br/>belong_to（属于）<br/>not_belong_to（不属于）<br />len_eq（长度等于）<br />len_gt（长度大于）<br />len_lt（长度小于）<br />strprefix（前缀匹配）<br />strsuffix（后缀匹配）</td>
+	// 			<td>请输入内容,512个字符以内</td>
+	// 		</tr>
+	// 		<tr>
+	// 			<td>POST（POST参数值）</td>
+	// 			<td>支持参数录入</td>
+	// 			<td>同匹配字段<font color="Red">GET参数值</font>逻辑符号</td>
+	// 			<td>请输入内容,512个字符以内</td>
+	// 		</tr>
+	// 		<tr>
+	// 			<td>GET_POST_NAMES（POST参数名）</td>
+	// 			<td>不支持参数</td>
+	// 			<td>同匹配字段<font color="Red">GET参数名</font>逻辑符号</td>
+	// 			<td>请输入内容,512个字符以内</td>
+	// 		</tr>
+	// 		<tr>
+	// 			<td>POST_BODY（完整BODY）</td>
+	// 			<td>不支持参数</td>
+	// 			<td>同匹配字段<font color="Red">请求路径</font>逻辑符号</td>
+	// 			<td>请输入BODY内容,512个字符以内</td>
+	// 		</tr>
+	// 		<tr>
+	// 			<td>COOKIE（Cookie）</td>
+	// 			<td>不支持参数</td>
+	// 			<td>empty（内容为空）<br />null（不存在）<br />rematch（正则匹配）</td>
+	// 			<td>
+	// 				<font color="Red">暂不支持</font>
+	// 			</td>
+	// 		</tr>
+	// 		<tr>
+	// 			<td>GET_COOKIES_NAMES（Cookie参数名）</td>
+	// 			<td>不支持参数</td>
+	// 			<td>同匹配字段<font color="Red">GET参数名</font>逻辑符号</td>
+	// 			<td>请输入内容,512个字符以内</td>
+	// 		</tr>
+	// 		<tr>
+	// 			<td>ARGS_COOKIE（Cookie参数值）</td>
+	// 			<td>支持参数录入</td>
+	// 			<td>同匹配字段<font color="Red">GET参数值</font>逻辑符号</td>
+	// 			<td>请输入内容,512个字符以内</td>
+	// 		</tr>
+	// 		<tr>
+	// 			<td>GET_HEADERS_NAMES（Header参数名）</td>
+	// 			<td>不支持参数</td>
+	// 			<td>exsit（存在参数）<br />nexsit（不存在参数）<br />len_eq（长度等于）<br />len_gt（长度大于）<br />len_lt（长度小于）<br />strprefix（前缀匹配）<br />strsuffix（后缀匹配）<br />rematch（正则匹配）</td>
+	// 			<td>请输入内容,建议小写,512个字符以内</td>
+	// 		</tr>
+	// 		<tr>
+	// 			<td>ARGS_HEADER（Header参数值）</td>
+	// 			<td>支持参数录入</td>
+	// 			<td>contains（包含）<br />ncontains（不包含）<br />len_eq（长度等于）<br />len_gt（长度大于）<br />len_lt（长度小于）<br />strprefix（前缀匹配）<br />strsuffix（后缀匹配）<br />rematch（正则匹配）</td>
+	// 			<td>请输入内容,512个字符以内</td>
+	// 		</tr>
+	// 		<tr>
+	// 			<td>CONTENT_LENGTH（Content-length）</td>
+	// 			<td>支持参数录入</td>
+	// 			<td>numgt（数值大于）<br />numlt（数值小于）<br />numeq（数值等于）<br /></td>
+	// 			<td>请输入0-9999999999999之间的整数</td>
+	// 		</tr>
+	// 		<tr>
+	// 			<td>IP_GEO（来源IP归属地）</td>
+	// 			<td>支持参数录入</td>
+	// 			<td>geo_in（属于）<br />geo_not_in（不属于）<br /></td>
+	// 			<td>请输入内容,10240字符以内，格式为序列化的JSON，格式为：[{"Country":"中国","Region":"广东","City":"深圳"}]</td>
+	// 		</tr>
+	// 		<tr>
+	// 			<td>CAPTCHA_RISK（验证码风险）</td>
+	// 			<td>不支持参数</td>
+	// 			<td>eq（等于）<br />neq（不等于）<br />belong（属于）<br />not_belong（不属于）<br />null（不存在）<br />exist（存在）</td>
+	// 			<td>请输入风险等级值,支持数值范围0-255</td>
+	// 		</tr>
+	// 		<tr>
+	// 			<td>CAPTCHA_DEVICE_RISK（验证码设备风险）</td>
+	// 			<td>不支持参数</td>
+	// 			<td>eq（等于）<br />neq（不等于）<br />belong（属于）<br />not_belong（不属于）<br />null（不存在）<br />exist（存在）</td>
+	// 			<td>请输入设备风险代码,支持取值：101、201、301、401、501、601、701</td>
+	// 		</tr>
+	// 		<tr>
+	// 			<td>CAPTCHAR_SCORE（验证码风险评估分）</td>
+	// 			<td>不支持参数</td>
+	// 			<td>numeq（数值等于）<br />numgt（数值大于）<br />numlt（数值小于）<br />numle（数值小于等于）<br />numge（数值大于等于）<br />null（不存在）<br />exist（存在）</td>
+	// 			<td>请输入评估分数,支持数值范围0-100</td>
+	// 		</tr>
+	// 	</tbody>
+	// </table>
 	Field *string `json:"Field,omitnil,omitempty" name:"Field"`
 
 	// 逻辑符号 
@@ -23667,6 +23844,8 @@ type Strategy struct {
 	//         numneq （ 数值不等于）
 	//         numle （ 数值小于等于）
 	//         numge （ 数值大于等于）
+	// 		belong_to（属于）
+	// 		not_belong_to（不属于）
 	//         geo_in （ IP地理属于）
 	//         geo_not_in （ IP地理不属于）
 	//     各匹配字段对应的逻辑符号不同，详见上述匹配字段表格

@@ -690,35 +690,35 @@ type CfwNatDnatRule struct {
 }
 
 type CfwStatusMonitorFilter struct {
-	// <p>过滤字段名。</p>
+	// 过滤字段名。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// <p>过滤值列表，最多 10 个。</p>
+	// 过滤值列表，最多 10 个。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
 
-	// <p>操作符类型，可选；仅支持后端允许的类型。</p>
+	// 操作符类型，可选；仅支持后端允许的类型。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OperatorType *int64 `json:"OperatorType,omitnil,omitempty" name:"OperatorType"`
 }
 
 // Predefined struct for user
 type CloseClusterNatFwSwitchRequestParams struct {
-	// NAT防火墙实例ID
+	// <p>NAT防火墙实例ID</p>
 	NatInsId *string `json:"NatInsId,omitnil,omitempty" name:"NatInsId"`
 
-	// 云联网实例ID
+	// <p>云联网实例ID</p>
 	CcnId *string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
 }
 
 type CloseClusterNatFwSwitchRequest struct {
 	*tchttp.BaseRequest
 	
-	// NAT防火墙实例ID
+	// <p>NAT防火墙实例ID</p>
 	NatInsId *string `json:"NatInsId,omitnil,omitempty" name:"NatInsId"`
 
-	// 云联网实例ID
+	// <p>云联网实例ID</p>
 	CcnId *string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
 }
 
@@ -1330,6 +1330,167 @@ func (r *CreateAlertCenterOmitResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateAlertCenterRuleAsyncRequestParams struct {
+	// <p>处置时间<br>1  1天<br>7   7天<br>-2 永久</p>
+	HandleTime *int64 `json:"HandleTime,omitnil,omitempty" name:"HandleTime"`
+
+	// <p>处置类型<br>当HandleIdList 不为空时：1封禁 2放通<br>当HandleIpList 不为空时：3放通 4封禁</p>
+	HandleType *int64 `json:"HandleType,omitnil,omitempty" name:"HandleType"`
+
+	// <p>当前日志方向： 0 出向 1 入向</p>
+	AlertDirection *int64 `json:"AlertDirection,omitnil,omitempty" name:"AlertDirection"`
+
+	// <p>处置方向： 0出向 1入向 0,1出入向 3内网</p>
+	HandleDirection *string `json:"HandleDirection,omitnil,omitempty" name:"HandleDirection"`
+
+	// <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+	CfwAiAgentOperationSource *string `json:"CfwAiAgentOperationSource,omitnil,omitempty" name:"CfwAiAgentOperationSource"`
+
+	// <p>处置对象,ID列表，  IdLists,IpList,EventIdList三选一</p>
+	HandleIdList []*string `json:"HandleIdList,omitnil,omitempty" name:"HandleIdList"`
+
+	// <p>处置对象,IP列表，  IdLists,IpList,EventIdList三选一</p>
+	HandleIpList []*string `json:"HandleIpList,omitnil,omitempty" name:"HandleIpList"`
+
+	// <p>处置描述</p>
+	HandleComment *string `json:"HandleComment,omitnil,omitempty" name:"HandleComment"`
+
+	// <p>放通原因:<br>0默认 1重复 2误报 3紧急放通</p>
+	IgnoreReason *int64 `json:"IgnoreReason,omitnil,omitempty" name:"IgnoreReason"`
+
+	// <p>封禁域名-保留字段</p>
+	BlockDomain *string `json:"BlockDomain,omitnil,omitempty" name:"BlockDomain"`
+
+	// <p>处置对象,事件ID列表，  IdLists,IpList,EventIdList三选一</p>
+	HandleEventIdList []*string `json:"HandleEventIdList,omitnil,omitempty" name:"HandleEventIdList"`
+
+	// <p>加白IP列表 隔离时放通的ip列表</p>
+	WhiteIpList []*string `json:"WhiteIpList,omitnil,omitempty" name:"WhiteIpList"`
+
+	// <p>隔离类型 1 互联网入站 2 互联网出站 4 内网访问</p>
+	IsolateType []*int64 `json:"IsolateType,omitnil,omitempty" name:"IsolateType"`
+
+	// <p>隔离资产列表</p>
+	AssetIdList []*string `json:"AssetIdList,omitnil,omitempty" name:"AssetIdList"`
+
+	// <p>处置HandleIpList，属于的告警事件ID</p>
+	TargetEventIdList []*string `json:"TargetEventIdList,omitnil,omitempty" name:"TargetEventIdList"`
+}
+
+type CreateAlertCenterRuleAsyncRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>处置时间<br>1  1天<br>7   7天<br>-2 永久</p>
+	HandleTime *int64 `json:"HandleTime,omitnil,omitempty" name:"HandleTime"`
+
+	// <p>处置类型<br>当HandleIdList 不为空时：1封禁 2放通<br>当HandleIpList 不为空时：3放通 4封禁</p>
+	HandleType *int64 `json:"HandleType,omitnil,omitempty" name:"HandleType"`
+
+	// <p>当前日志方向： 0 出向 1 入向</p>
+	AlertDirection *int64 `json:"AlertDirection,omitnil,omitempty" name:"AlertDirection"`
+
+	// <p>处置方向： 0出向 1入向 0,1出入向 3内网</p>
+	HandleDirection *string `json:"HandleDirection,omitnil,omitempty" name:"HandleDirection"`
+
+	// <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+	CfwAiAgentOperationSource *string `json:"CfwAiAgentOperationSource,omitnil,omitempty" name:"CfwAiAgentOperationSource"`
+
+	// <p>处置对象,ID列表，  IdLists,IpList,EventIdList三选一</p>
+	HandleIdList []*string `json:"HandleIdList,omitnil,omitempty" name:"HandleIdList"`
+
+	// <p>处置对象,IP列表，  IdLists,IpList,EventIdList三选一</p>
+	HandleIpList []*string `json:"HandleIpList,omitnil,omitempty" name:"HandleIpList"`
+
+	// <p>处置描述</p>
+	HandleComment *string `json:"HandleComment,omitnil,omitempty" name:"HandleComment"`
+
+	// <p>放通原因:<br>0默认 1重复 2误报 3紧急放通</p>
+	IgnoreReason *int64 `json:"IgnoreReason,omitnil,omitempty" name:"IgnoreReason"`
+
+	// <p>封禁域名-保留字段</p>
+	BlockDomain *string `json:"BlockDomain,omitnil,omitempty" name:"BlockDomain"`
+
+	// <p>处置对象,事件ID列表，  IdLists,IpList,EventIdList三选一</p>
+	HandleEventIdList []*string `json:"HandleEventIdList,omitnil,omitempty" name:"HandleEventIdList"`
+
+	// <p>加白IP列表 隔离时放通的ip列表</p>
+	WhiteIpList []*string `json:"WhiteIpList,omitnil,omitempty" name:"WhiteIpList"`
+
+	// <p>隔离类型 1 互联网入站 2 互联网出站 4 内网访问</p>
+	IsolateType []*int64 `json:"IsolateType,omitnil,omitempty" name:"IsolateType"`
+
+	// <p>隔离资产列表</p>
+	AssetIdList []*string `json:"AssetIdList,omitnil,omitempty" name:"AssetIdList"`
+
+	// <p>处置HandleIpList，属于的告警事件ID</p>
+	TargetEventIdList []*string `json:"TargetEventIdList,omitnil,omitempty" name:"TargetEventIdList"`
+}
+
+func (r *CreateAlertCenterRuleAsyncRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAlertCenterRuleAsyncRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "HandleTime")
+	delete(f, "HandleType")
+	delete(f, "AlertDirection")
+	delete(f, "HandleDirection")
+	delete(f, "CfwAiAgentOperationSource")
+	delete(f, "HandleIdList")
+	delete(f, "HandleIpList")
+	delete(f, "HandleComment")
+	delete(f, "IgnoreReason")
+	delete(f, "BlockDomain")
+	delete(f, "HandleEventIdList")
+	delete(f, "WhiteIpList")
+	delete(f, "IsolateType")
+	delete(f, "AssetIdList")
+	delete(f, "TargetEventIdList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAlertCenterRuleAsyncRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAlertCenterRuleAsyncResponseParams struct {
+	// <p>返回状态码：<br>0 成功<br>非0 失败</p>
+	ReturnCode *int64 `json:"ReturnCode,omitnil,omitempty" name:"ReturnCode"`
+
+	// <p>返回信息：<br>success 成功<br>其他</p>
+	ReturnMsg *string `json:"ReturnMsg,omitnil,omitempty" name:"ReturnMsg"`
+
+	// <p>处置状态码：0  处置成功 1处置中  -1 通用错误，不用处理-3 表示重复，需重新刷新列表其他</p>
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateAlertCenterRuleAsyncResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateAlertCenterRuleAsyncResponseParams `json:"Response"`
+}
+
+func (r *CreateAlertCenterRuleAsyncResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAlertCenterRuleAsyncResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateAlertCenterRuleRequestParams struct {
 	// 处置时间
 	// 1  1天
@@ -1734,26 +1895,26 @@ func (r *CreateDatabaseWhiteListRulesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateNatFwDnatRuleRequestParams struct {
-	// 0：cfw新增模式，1：cfw接入模式。
+	// <p>0：cfw新增模式，1：cfw接入模式。</p>
 	Mode *uint64 `json:"Mode,omitnil,omitempty" name:"Mode"`
 
-	// 防火墙实例id，该字段必须传递。
+	// <p>防火墙实例id，该字段必须传递。</p>
 	CfwInstance *string `json:"CfwInstance,omitnil,omitempty" name:"CfwInstance"`
 
-	// 添加或删除操作的Dnat规则列表。
+	// <p>添加或删除操作的Dnat规则列表。</p>
 	DnatRules []*CfwNatDnatRule `json:"DnatRules,omitnil,omitempty" name:"DnatRules"`
 }
 
 type CreateNatFwDnatRuleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 0：cfw新增模式，1：cfw接入模式。
+	// <p>0：cfw新增模式，1：cfw接入模式。</p>
 	Mode *uint64 `json:"Mode,omitnil,omitempty" name:"Mode"`
 
-	// 防火墙实例id，该字段必须传递。
+	// <p>防火墙实例id，该字段必须传递。</p>
 	CfwInstance *string `json:"CfwInstance,omitnil,omitempty" name:"CfwInstance"`
 
-	// 添加或删除操作的Dnat规则列表。
+	// <p>添加或删除操作的Dnat规则列表。</p>
 	DnatRules []*CfwNatDnatRule `json:"DnatRules,omitnil,omitempty" name:"DnatRules"`
 }
 
@@ -1915,74 +2076,74 @@ func (r *CreateNatFwInstanceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateNatFwInstanceWithDomainRequestParams struct {
-	// 防火墙实例名称
+	// <p>防火墙实例名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 带宽
+	// <p>带宽</p>
 	Width *int64 `json:"Width,omitnil,omitempty" name:"Width"`
 
-	// 模式 1：接入模式；0：新增模式
+	// <p>模式 1：接入模式；0：新增模式</p>
 	Mode *int64 `json:"Mode,omitnil,omitempty" name:"Mode"`
 
-	// 新增模式传递参数，其中NewModeItems和NatgwList至少传递一种。
+	// <p>新增模式传递参数，其中NewModeItems和NatgwList至少传递一种。</p>
 	NewModeItems *NewModeItems `json:"NewModeItems,omitnil,omitempty" name:"NewModeItems"`
 
-	// 接入模式接入的nat网关列表，其中NewModeItems和NatgwList至少传递一种。
+	// <p>接入模式接入的nat网关列表，其中NewModeItems和NatgwList至少传递一种。</p>
 	NatGwList []*string `json:"NatGwList,omitnil,omitempty" name:"NatGwList"`
 
-	// 主可用区，为空则选择默认可用区
+	// <p>主可用区，为空则选择默认可用区</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 备可用区，为空则选择默认可用区
+	// <p>备可用区，为空则选择默认可用区</p>
 	ZoneBak *string `json:"ZoneBak,omitnil,omitempty" name:"ZoneBak"`
 
-	// 异地灾备 1：使用异地灾备；0：不使用异地灾备；为空则默认不使用异地灾备
+	// <p>异地灾备 1：使用异地灾备；0：不使用异地灾备；为空则默认不使用异地灾备</p>
 	CrossAZone *int64 `json:"CrossAZone,omitnil,omitempty" name:"CrossAZone"`
 
-	// 0不创建域名,1创建域名
+	// <p>0不创建域名,1创建域名</p>
 	IsCreateDomain *int64 `json:"IsCreateDomain,omitnil,omitempty" name:"IsCreateDomain"`
 
-	// 如果要创建域名则必填
+	// <p>如果要创建域名则必填</p>
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 指定防火墙使用网段信息
+	// <p>指定防火墙使用网段信息</p>
 	FwCidrInfo *FwCidrInfo `json:"FwCidrInfo,omitnil,omitempty" name:"FwCidrInfo"`
 }
 
 type CreateNatFwInstanceWithDomainRequest struct {
 	*tchttp.BaseRequest
 	
-	// 防火墙实例名称
+	// <p>防火墙实例名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 带宽
+	// <p>带宽</p>
 	Width *int64 `json:"Width,omitnil,omitempty" name:"Width"`
 
-	// 模式 1：接入模式；0：新增模式
+	// <p>模式 1：接入模式；0：新增模式</p>
 	Mode *int64 `json:"Mode,omitnil,omitempty" name:"Mode"`
 
-	// 新增模式传递参数，其中NewModeItems和NatgwList至少传递一种。
+	// <p>新增模式传递参数，其中NewModeItems和NatgwList至少传递一种。</p>
 	NewModeItems *NewModeItems `json:"NewModeItems,omitnil,omitempty" name:"NewModeItems"`
 
-	// 接入模式接入的nat网关列表，其中NewModeItems和NatgwList至少传递一种。
+	// <p>接入模式接入的nat网关列表，其中NewModeItems和NatgwList至少传递一种。</p>
 	NatGwList []*string `json:"NatGwList,omitnil,omitempty" name:"NatGwList"`
 
-	// 主可用区，为空则选择默认可用区
+	// <p>主可用区，为空则选择默认可用区</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 备可用区，为空则选择默认可用区
+	// <p>备可用区，为空则选择默认可用区</p>
 	ZoneBak *string `json:"ZoneBak,omitnil,omitempty" name:"ZoneBak"`
 
-	// 异地灾备 1：使用异地灾备；0：不使用异地灾备；为空则默认不使用异地灾备
+	// <p>异地灾备 1：使用异地灾备；0：不使用异地灾备；为空则默认不使用异地灾备</p>
 	CrossAZone *int64 `json:"CrossAZone,omitnil,omitempty" name:"CrossAZone"`
 
-	// 0不创建域名,1创建域名
+	// <p>0不创建域名,1创建域名</p>
 	IsCreateDomain *int64 `json:"IsCreateDomain,omitnil,omitempty" name:"IsCreateDomain"`
 
-	// 如果要创建域名则必填
+	// <p>如果要创建域名则必填</p>
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 指定防火墙使用网段信息
+	// <p>指定防火墙使用网段信息</p>
 	FwCidrInfo *FwCidrInfo `json:"FwCidrInfo,omitnil,omitempty" name:"FwCidrInfo"`
 }
 
@@ -2017,7 +2178,7 @@ func (r *CreateNatFwInstanceWithDomainRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateNatFwInstanceWithDomainResponseParams struct {
-	// nat实例信息
+	// <p>nat实例信息</p>
 	CfwInsId *string `json:"CfwInsId,omitnil,omitempty" name:"CfwInsId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2222,66 +2383,56 @@ func (r *CreateSecurityGroupRulesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateVpcFwGroupRequestParams struct {
-	// VPC防火墙(组)名称
+	// <p>VPC防火墙(组)名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 模式 1：CCN云联网模式；0：私有网络模式 2: sase 模式 3：ccn 高级模式 4: 私有网络(跨租户单边模式)
+	// <p>模式 1：CCN云联网模式；0：私有网络模式 2: sase 模式 3：ccn 高级模式 4: 私有网络(跨租户单边模式)</p>
 	Mode *int64 `json:"Mode,omitnil,omitempty" name:"Mode"`
 
-	// 防火墙(组)下的防火墙实例列表
+	// <p>防火墙(组)下的防火墙实例列表</p>
 	VpcFwInstances []*VpcFwInstance `json:"VpcFwInstances,omitnil,omitempty" name:"VpcFwInstances"`
 
-	// 防火墙实例的开关模式
-	// 1: 单点互通
-	// 2: 多点互通
-	// 3: 全互通
-	// 4: 自定义路由
+	// <p>防火墙实例的开关模式<br>1: 单点互通<br>2: 多点互通<br>3: 全互通<br>4: 自定义路由</p>
 	SwitchMode *int64 `json:"SwitchMode,omitnil,omitempty" name:"SwitchMode"`
 
-	// auto 自动选择防火墙网段
-	// 10.10.10.0/24 用户输入的防火墙网段
+	// <p>auto 自动选择防火墙网段<br>10.10.10.0/24 用户输入的防火墙网段</p>
 	FwVpcCidr *string `json:"FwVpcCidr,omitnil,omitempty" name:"FwVpcCidr"`
 
-	// 云联网id ，适用于云联网模式
+	// <p>云联网id ，适用于云联网模式</p>
 	CcnId *string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
 
-	// 指定防火墙使用网段信息
+	// <p>指定防火墙使用网段信息</p>
 	FwCidrInfo *FwCidrInfo `json:"FwCidrInfo,omitnil,omitempty" name:"FwCidrInfo"`
 
-	// 跨租户管理员模式  1管理员 2多账号
+	// <p>跨租户管理员模式  1管理员 2多账号</p>
 	CrossUserMode *string `json:"CrossUserMode,omitnil,omitempty" name:"CrossUserMode"`
 }
 
 type CreateVpcFwGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// VPC防火墙(组)名称
+	// <p>VPC防火墙(组)名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 模式 1：CCN云联网模式；0：私有网络模式 2: sase 模式 3：ccn 高级模式 4: 私有网络(跨租户单边模式)
+	// <p>模式 1：CCN云联网模式；0：私有网络模式 2: sase 模式 3：ccn 高级模式 4: 私有网络(跨租户单边模式)</p>
 	Mode *int64 `json:"Mode,omitnil,omitempty" name:"Mode"`
 
-	// 防火墙(组)下的防火墙实例列表
+	// <p>防火墙(组)下的防火墙实例列表</p>
 	VpcFwInstances []*VpcFwInstance `json:"VpcFwInstances,omitnil,omitempty" name:"VpcFwInstances"`
 
-	// 防火墙实例的开关模式
-	// 1: 单点互通
-	// 2: 多点互通
-	// 3: 全互通
-	// 4: 自定义路由
+	// <p>防火墙实例的开关模式<br>1: 单点互通<br>2: 多点互通<br>3: 全互通<br>4: 自定义路由</p>
 	SwitchMode *int64 `json:"SwitchMode,omitnil,omitempty" name:"SwitchMode"`
 
-	// auto 自动选择防火墙网段
-	// 10.10.10.0/24 用户输入的防火墙网段
+	// <p>auto 自动选择防火墙网段<br>10.10.10.0/24 用户输入的防火墙网段</p>
 	FwVpcCidr *string `json:"FwVpcCidr,omitnil,omitempty" name:"FwVpcCidr"`
 
-	// 云联网id ，适用于云联网模式
+	// <p>云联网id ，适用于云联网模式</p>
 	CcnId *string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
 
-	// 指定防火墙使用网段信息
+	// <p>指定防火墙使用网段信息</p>
 	FwCidrInfo *FwCidrInfo `json:"FwCidrInfo,omitnil,omitempty" name:"FwCidrInfo"`
 
-	// 跨租户管理员模式  1管理员 2多账号
+	// <p>跨租户管理员模式  1管理员 2多账号</p>
 	CrossUserMode *string `json:"CrossUserMode,omitnil,omitempty" name:"CrossUserMode"`
 }
 
@@ -2313,7 +2464,7 @@ func (r *CreateVpcFwGroupRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateVpcFwGroupResponseParams struct {
-	// 防火墙组ID
+	// <p>防火墙组ID</p>
 	FwGroupId *string `json:"FwGroupId,omitnil,omitempty" name:"FwGroupId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2674,26 +2825,26 @@ func (r *DeleteBlockIgnoreRuleNewResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteNatFwDnatRuleRequestParams struct {
-	// 0：cfw新增模式，1：cfw接入模式。
+	// <p>0：cfw新增模式，1：cfw接入模式。</p>
 	Mode *uint64 `json:"Mode,omitnil,omitempty" name:"Mode"`
 
-	// 防火墙实例id，该字段必须传递。
+	// <p>防火墙实例id，该字段必须传递。</p>
 	CfwInstance *string `json:"CfwInstance,omitnil,omitempty" name:"CfwInstance"`
 
-	// 添加或删除操作的Dnat规则列表。
+	// <p>添加或删除操作的Dnat规则列表。</p>
 	DnatRules []*CfwNatDnatRule `json:"DnatRules,omitnil,omitempty" name:"DnatRules"`
 }
 
 type DeleteNatFwDnatRuleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 0：cfw新增模式，1：cfw接入模式。
+	// <p>0：cfw新增模式，1：cfw接入模式。</p>
 	Mode *uint64 `json:"Mode,omitnil,omitempty" name:"Mode"`
 
-	// 防火墙实例id，该字段必须传递。
+	// <p>防火墙实例id，该字段必须传递。</p>
 	CfwInstance *string `json:"CfwInstance,omitnil,omitempty" name:"CfwInstance"`
 
-	// 添加或删除操作的Dnat规则列表。
+	// <p>添加或删除操作的Dnat规则列表。</p>
 	DnatRules []*CfwNatDnatRule `json:"DnatRules,omitnil,omitempty" name:"DnatRules"`
 }
 
@@ -2742,14 +2893,14 @@ func (r *DeleteNatFwDnatRuleResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteNatFwInstanceRequestParams struct {
-	// 防火墙实例id
+	// <p>防火墙实例id</p>
 	CfwInstance *string `json:"CfwInstance,omitnil,omitempty" name:"CfwInstance"`
 }
 
 type DeleteNatFwInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 防火墙实例id
+	// <p>防火墙实例id</p>
 	CfwInstance *string `json:"CfwInstance,omitnil,omitempty" name:"CfwInstance"`
 }
 
@@ -2988,30 +3139,26 @@ func (r *DeleteSecurityGroupRuleResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteVpcFwGroupRequestParams struct {
-	// 防火墙(组)Id
+	// <p>防火墙(组)Id</p>
 	FwGroupId *string `json:"FwGroupId,omitnil,omitempty" name:"FwGroupId"`
 
-	// 是否删除整个防火墙(组)
-	// 0：不删除防火墙(组)，只删除单独实例
-	// 1：删除整个防火墙(组)
+	// <p>是否删除整个防火墙(组)<br>0：不删除防火墙(组)，只删除单独实例<br>1：删除整个防火墙(组)</p>
 	DeleteFwGroup *int64 `json:"DeleteFwGroup,omitnil,omitempty" name:"DeleteFwGroup"`
 
-	// 待删除的防火墙实例数组
+	// <p>待删除的防火墙实例数组</p>
 	VpcFwInsList []*string `json:"VpcFwInsList,omitnil,omitempty" name:"VpcFwInsList"`
 }
 
 type DeleteVpcFwGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 防火墙(组)Id
+	// <p>防火墙(组)Id</p>
 	FwGroupId *string `json:"FwGroupId,omitnil,omitempty" name:"FwGroupId"`
 
-	// 是否删除整个防火墙(组)
-	// 0：不删除防火墙(组)，只删除单独实例
-	// 1：删除整个防火墙(组)
+	// <p>是否删除整个防火墙(组)<br>0：不删除防火墙(组)，只删除单独实例<br>1：删除整个防火墙(组)</p>
 	DeleteFwGroup *int64 `json:"DeleteFwGroup,omitnil,omitempty" name:"DeleteFwGroup"`
 
-	// 待删除的防火墙实例数组
+	// <p>待删除的防火墙实例数组</p>
 	VpcFwInsList []*string `json:"VpcFwInsList,omitnil,omitempty" name:"VpcFwInsList"`
 }
 
@@ -3609,20 +3756,17 @@ func (r *DescribeAssetSyncRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAssetSyncResponseParams struct {
-	// 返回状态
-	// 1 更新中
-	// 2 更新完成
-	// 3 更新失败
-	// 4 更新失败
+	// <p>返回状态<br>1 更新中<br>2 更新完成<br>3 更新失败<br>4 更新失败</p>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// success 成功
-	// 其他失败
+	// <p>success 成功<br>其他失败</p>
 	ReturnMsg *string `json:"ReturnMsg,omitnil,omitempty" name:"ReturnMsg"`
 
-	// 0 成功
-	// 非0 失败
+	// <p>0 成功<br>非0 失败</p>
 	ReturnCode *uint64 `json:"ReturnCode,omitnil,omitempty" name:"ReturnCode"`
+
+	// <p>已有CVM数量</p>
+	CVMCount *int64 `json:"CVMCount,omitnil,omitempty" name:"CVMCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -4072,14 +4216,14 @@ func (r *DescribeBlockStaticListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCcnAssociatedInstancesRequestParams struct {
-	// 云联网ID
+	// <p>云联网ID</p>
 	CcnId *string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
 }
 
 type DescribeCcnAssociatedInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 云联网ID
+	// <p>云联网ID</p>
 	CcnId *string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
 }
 
@@ -4104,10 +4248,10 @@ func (r *DescribeCcnAssociatedInstancesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCcnAssociatedInstancesResponseParams struct {
-	// 实例总数
+	// <p>实例总数</p>
 	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
 
-	// 云联网关联的实例信息
+	// <p>云联网关联的实例信息</p>
 	CcnAssociatedInstances []*CcnAssociatedInstance `json:"CcnAssociatedInstances,omitnil,omitempty" name:"CcnAssociatedInstances"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4132,26 +4276,26 @@ func (r *DescribeCcnAssociatedInstancesResponse) FromJsonString(s string) error 
 
 // Predefined struct for user
 type DescribeCcnInstanceRegionStatusRequestParams struct {
-	// 云联网ID
+	// <p>云联网ID</p>
 	CcnId *string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
 
-	// 要查询引流网络部署状态的云联网关联的实例ID列表
+	// <p>要查询引流网络部署状态的云联网关联的实例ID列表</p>
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 引流路由方法 0:多路由表, 1:策略路由
+	// <p>引流路由方法 0:多路由表, 1:策略路由</p>
 	RoutingMode *uint64 `json:"RoutingMode,omitnil,omitempty" name:"RoutingMode"`
 }
 
 type DescribeCcnInstanceRegionStatusRequest struct {
 	*tchttp.BaseRequest
 	
-	// 云联网ID
+	// <p>云联网ID</p>
 	CcnId *string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
 
-	// 要查询引流网络部署状态的云联网关联的实例ID列表
+	// <p>要查询引流网络部署状态的云联网关联的实例ID列表</p>
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 引流路由方法 0:多路由表, 1:策略路由
+	// <p>引流路由方法 0:多路由表, 1:策略路由</p>
 	RoutingMode *uint64 `json:"RoutingMode,omitnil,omitempty" name:"RoutingMode"`
 }
 
@@ -4178,10 +4322,10 @@ func (r *DescribeCcnInstanceRegionStatusRequest) FromJsonString(s string) error 
 
 // Predefined struct for user
 type DescribeCcnInstanceRegionStatusResponseParams struct {
-	// 地域总数量
+	// <p>地域总数量</p>
 	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
 
-	// 地域防火墙引流网络状态列表
+	// <p>地域防火墙引流网络状态列表</p>
 	RegionFwStatus []*RegionFwStatus `json:"RegionFwStatus,omitnil,omitempty" name:"RegionFwStatus"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4235,13 +4379,13 @@ func (r *DescribeCcnVpcFwPolicyLimitRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCcnVpcFwPolicyLimitResponseParams struct {
-	// 支持的引流策略数量（最外层总条数）
+	// <p>支持的引流策略数量（最外层总条数）</p>
 	CcnPolicyInterconnectPairLenLimit *uint64 `json:"CcnPolicyInterconnectPairLenLimit,omitnil,omitempty" name:"CcnPolicyInterconnectPairLenLimit"`
 
-	// 单条引流策略中单组的最大配置数量（内层单组总条数）
+	// <p>单条引流策略中单组的最大配置数量（内层单组总条数）</p>
 	CcnPolicyGroupLenLimit *uint64 `json:"CcnPolicyGroupLenLimit,omitnil,omitempty" name:"CcnPolicyGroupLenLimit"`
 
-	// 接入的实例网段长度（网段数量）限制
+	// <p>接入的实例网段长度（网段数量）限制</p>
 	CcnPolicyCidrLenLimit *uint64 `json:"CcnPolicyCidrLenLimit,omitnil,omitempty" name:"CcnPolicyCidrLenLimit"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4266,14 +4410,14 @@ func (r *DescribeCcnVpcFwPolicyLimitResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCcnVpcFwSwitchRequestParams struct {
-	// 云联网ID
+	// <p>云联网ID</p>
 	CcnId *string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
 }
 
 type DescribeCcnVpcFwSwitchRequest struct {
 	*tchttp.BaseRequest
 	
-	// 云联网ID
+	// <p>云联网ID</p>
 	CcnId *string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
 }
 
@@ -4298,7 +4442,7 @@ func (r *DescribeCcnVpcFwSwitchRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCcnVpcFwSwitchResponseParams struct {
-	// 互联对配置
+	// <p>互联对配置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InterconnectPairs []*InterconnectPair `json:"InterconnectPairs,omitnil,omitempty" name:"InterconnectPairs"`
 
@@ -4324,21 +4468,111 @@ func (r *DescribeCcnVpcFwSwitchResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCfwAlertsRequestParams struct {
+	// <p>告警开始时间。可选，格式 YYYY-MM-DD HH:MM:SS；默认查询最近 1 小时。</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>告警结束时间。可选，格式 YYYY-MM-DD HH:MM:SS；默认当前时间。</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>告警严重级别过滤。可选；枚举 low、middle、high。</p>
+	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
+
+	// <p>流量方向过滤。可选；枚举 outbound 出站、inbound 入站、lateral 横向。</p>
+	Direction *string `json:"Direction,omitnil,omitempty" name:"Direction"`
+
+	// <p>处置状态过滤。可选；枚举 unhandled、handled、blocked、passed、isolated、ignored。</p>
+	ActionStatus *string `json:"ActionStatus,omitnil,omitempty" name:"ActionStatus"`
+
+	// <p>攻击链阶段过滤。可选；枚举 recon、brute_force、delivery、exploit、c2、lateral_movement、exfiltration。</p>
+	KillChain *string `json:"KillChain,omitnil,omitempty" name:"KillChain"`
+
+	// <p>攻击结果过滤。可选；枚举 attempt、success、fail、unknown。</p>
+	AttackResult *string `json:"AttackResult,omitnil,omitempty" name:"AttackResult"`
+
+	// <p>IPS 策略动作过滤。可选；枚举 observe、block。</p>
+	Strategy *string `json:"Strategy,omitnil,omitempty" name:"Strategy"`
+
+	// <p>攻击事件名称关键字过滤。可选，例如 SQL注入、暴力破解、恶意域名访问。</p>
+	EventName *string `json:"EventName,omitnil,omitempty" name:"EventName"`
+
+	// <p>精确告警事件 ID 过滤。用于指定事件的写操作前检查和写操作后核验；事件重新聚合时返回原请求 ID 和当前事件 ID。无匹配返回空结果，多匹配或定位过程异常时失败，不退化为宽查询。</p>
+	EventId *string `json:"EventId,omitnil,omitempty" name:"EventId"`
+
+	// <p>源 IP 过滤。可选。</p>
+	SrcIp *string `json:"SrcIp,omitnil,omitempty" name:"SrcIp"`
+
+	// <p>目的 IP 过滤。可选。</p>
+	DstIp *string `json:"DstIp,omitnil,omitempty" name:"DstIp"`
+
+	// <p>云资源实例 ID 过滤。可选，例如 ins-xxxxxxxx。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
 	// <p>单页返回告警数。可选，默认 10，最大 50。</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// <p>分页偏移。可选，默认 0。</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>排序字段。可选，默认 EndTime；枚举 EndTime、StartTime、Count。排序字段。可选，默认 EndTime；枚举 EndTime、StartTime、Count；Count 表示按单个聚合告警事件的告警发生次数/命中次数排序，对应返回中的 occurrence_count</p>
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
+
+	// <p>排序方向。可选，默认 desc；枚举 desc、asc。</p>
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 }
 
 type DescribeCfwAlertsRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>告警开始时间。可选，格式 YYYY-MM-DD HH:MM:SS；默认查询最近 1 小时。</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>告警结束时间。可选，格式 YYYY-MM-DD HH:MM:SS；默认当前时间。</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>告警严重级别过滤。可选；枚举 low、middle、high。</p>
+	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
+
+	// <p>流量方向过滤。可选；枚举 outbound 出站、inbound 入站、lateral 横向。</p>
+	Direction *string `json:"Direction,omitnil,omitempty" name:"Direction"`
+
+	// <p>处置状态过滤。可选；枚举 unhandled、handled、blocked、passed、isolated、ignored。</p>
+	ActionStatus *string `json:"ActionStatus,omitnil,omitempty" name:"ActionStatus"`
+
+	// <p>攻击链阶段过滤。可选；枚举 recon、brute_force、delivery、exploit、c2、lateral_movement、exfiltration。</p>
+	KillChain *string `json:"KillChain,omitnil,omitempty" name:"KillChain"`
+
+	// <p>攻击结果过滤。可选；枚举 attempt、success、fail、unknown。</p>
+	AttackResult *string `json:"AttackResult,omitnil,omitempty" name:"AttackResult"`
+
+	// <p>IPS 策略动作过滤。可选；枚举 observe、block。</p>
+	Strategy *string `json:"Strategy,omitnil,omitempty" name:"Strategy"`
+
+	// <p>攻击事件名称关键字过滤。可选，例如 SQL注入、暴力破解、恶意域名访问。</p>
+	EventName *string `json:"EventName,omitnil,omitempty" name:"EventName"`
+
+	// <p>精确告警事件 ID 过滤。用于指定事件的写操作前检查和写操作后核验；事件重新聚合时返回原请求 ID 和当前事件 ID。无匹配返回空结果，多匹配或定位过程异常时失败，不退化为宽查询。</p>
+	EventId *string `json:"EventId,omitnil,omitempty" name:"EventId"`
+
+	// <p>源 IP 过滤。可选。</p>
+	SrcIp *string `json:"SrcIp,omitnil,omitempty" name:"SrcIp"`
+
+	// <p>目的 IP 过滤。可选。</p>
+	DstIp *string `json:"DstIp,omitnil,omitempty" name:"DstIp"`
+
+	// <p>云资源实例 ID 过滤。可选，例如 ins-xxxxxxxx。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
 	// <p>单页返回告警数。可选，默认 10，最大 50。</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// <p>分页偏移。可选，默认 0。</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>排序字段。可选，默认 EndTime；枚举 EndTime、StartTime、Count。排序字段。可选，默认 EndTime；枚举 EndTime、StartTime、Count；Count 表示按单个聚合告警事件的告警发生次数/命中次数排序，对应返回中的 occurrence_count</p>
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
+
+	// <p>排序方向。可选，默认 desc；枚举 desc、asc。</p>
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 }
 
 func (r *DescribeCfwAlertsRequest) ToJsonString() string {
@@ -4353,8 +4587,23 @@ func (r *DescribeCfwAlertsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Level")
+	delete(f, "Direction")
+	delete(f, "ActionStatus")
+	delete(f, "KillChain")
+	delete(f, "AttackResult")
+	delete(f, "Strategy")
+	delete(f, "EventName")
+	delete(f, "EventId")
+	delete(f, "SrcIp")
+	delete(f, "DstIp")
+	delete(f, "InstanceId")
 	delete(f, "Limit")
 	delete(f, "Offset")
+	delete(f, "OrderBy")
+	delete(f, "Order")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCfwAlertsRequest has unknown keys!", "")
 	}
@@ -4388,50 +4637,50 @@ func (r *DescribeCfwAlertsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCfwAnalysisDataRequestParams struct {
-	// <p>分析场景。必填。full_traffic 表示全流量深度分析；east_west 表示东西向流量分析；alert_comprehensive 表示告警综合分析；asset_exposure 表示资产暴露面分析；access_troubleshoot 表示访问阻断排障分析。</p>
+	// 分析场景。必填。full_traffic 表示全流量深度分析；east_west 表示东西向流量分析；alert_comprehensive 表示告警综合分析；asset_exposure 表示资产暴露面分析；access_troubleshoot 表示访问阻断排障分析。
 	Scenario *string `json:"Scenario,omitnil,omitempty" name:"Scenario"`
 
-	// <p>查询开始时间。可选，格式 YYYY-MM-DD HH:MM:SS；不传时默认查询最近 7 天。</p>
+	// 查询开始时间。可选，格式 YYYY-MM-DD HH:MM:SS；不传时默认查询最近 7 天。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// <p>查询结束时间。可选，格式 YYYY-MM-DD HH:MM:SS；不传时默认当前时间。</p>
+	// 查询结束时间。可选，格式 YYYY-MM-DD HH:MM:SS；不传时默认当前时间。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// <p>分析对象类型。可选，默认 user；user 表示租户全局，asset 表示单个资产，vpc 表示 VPC，domain 表示域名。</p>
+	// 分析对象类型。可选，默认 user；user 表示租户全局，asset 表示资产上下文，vpc 表示 VPC 上下文，domain 表示域名上下文。选择非 user 时建议同时传 ObjectId 以限定具体对象；当前未传 ObjectId 时仍按该对象类型执行宽查询。
 	ObjectType *string `json:"ObjectType,omitnil,omitempty" name:"ObjectType"`
 
-	// <p>分析对象标识。ObjectType 为 asset、vpc 或 domain 时按需传入，可填写 IP、实例 ID、VPC ID 或域名。</p>
+	// 分析对象标识。ObjectType 为 asset、vpc 或 domain 时可传，用于限定具体 IP、实例 ID、VPC ID 或域名；当前为可选参数，省略时不会按具体对象过滤。
 	ObjectId *string `json:"ObjectId,omitnil,omitempty" name:"ObjectId"`
 
-	// <p>排障目标。可选，主要用于 access_troubleshoot 场景，可填写 IP 或域名。</p>
+	// 目标 IP 或域名过滤。可选，常用于 access_troubleshoot，也可用于其他 Scenario；传入后优先于 ObjectType/ObjectId，并对该场景全部分析段追加源 IP、目的 IP 或目的域名过滤。
 	Target *string `json:"Target,omitnil,omitempty" name:"Target"`
 
-	// <p>需要跳过的分析段名称列表。可选；不传时执行该场景全部分析段。</p>
+	// 需要跳过的分析段名称列表。可选；不传或传空数组时执行该场景全部分析段。full_traffic 支持 beacon、dns_large、dns_dga、dns_dga_fine、dns_tunnel、icmp_tunnel、mining、p2p、remote_tool、file_transfer、high_risk_outbound、lateral_baseline、vpc_sensitive、smb_write、outbound_baseline、inbound_high_risk、tls_expired、tls_self_signed、first_seen_ip、first_seen_country、first_seen_port；east_west 支持 vpc_inter_vpc、subnet_inter、service_port、lateral_baseline、vpc_sensitive、smb_write、database_lateral；alert_comprehensive 支持 outbound_baseline、lateral_baseline、beacon、inbound_high_risk、first_seen_ip、first_seen_country、first_seen_port；asset_exposure 支持 inbound_high_risk、tls_expired、tls_self_signed、high_risk_outbound；access_troubleshoot 支持 acl_border_block、acl_nat_block、acl_vpc_block、ips_block。传入当前 Scenario 不支持的名称会返回 InvalidParameter。
 	SkipSections []*string `json:"SkipSections,omitnil,omitempty" name:"SkipSections"`
 }
 
 type DescribeCfwAnalysisDataRequest struct {
 	*tchttp.BaseRequest
 	
-	// <p>分析场景。必填。full_traffic 表示全流量深度分析；east_west 表示东西向流量分析；alert_comprehensive 表示告警综合分析；asset_exposure 表示资产暴露面分析；access_troubleshoot 表示访问阻断排障分析。</p>
+	// 分析场景。必填。full_traffic 表示全流量深度分析；east_west 表示东西向流量分析；alert_comprehensive 表示告警综合分析；asset_exposure 表示资产暴露面分析；access_troubleshoot 表示访问阻断排障分析。
 	Scenario *string `json:"Scenario,omitnil,omitempty" name:"Scenario"`
 
-	// <p>查询开始时间。可选，格式 YYYY-MM-DD HH:MM:SS；不传时默认查询最近 7 天。</p>
+	// 查询开始时间。可选，格式 YYYY-MM-DD HH:MM:SS；不传时默认查询最近 7 天。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// <p>查询结束时间。可选，格式 YYYY-MM-DD HH:MM:SS；不传时默认当前时间。</p>
+	// 查询结束时间。可选，格式 YYYY-MM-DD HH:MM:SS；不传时默认当前时间。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// <p>分析对象类型。可选，默认 user；user 表示租户全局，asset 表示单个资产，vpc 表示 VPC，domain 表示域名。</p>
+	// 分析对象类型。可选，默认 user；user 表示租户全局，asset 表示资产上下文，vpc 表示 VPC 上下文，domain 表示域名上下文。选择非 user 时建议同时传 ObjectId 以限定具体对象；当前未传 ObjectId 时仍按该对象类型执行宽查询。
 	ObjectType *string `json:"ObjectType,omitnil,omitempty" name:"ObjectType"`
 
-	// <p>分析对象标识。ObjectType 为 asset、vpc 或 domain 时按需传入，可填写 IP、实例 ID、VPC ID 或域名。</p>
+	// 分析对象标识。ObjectType 为 asset、vpc 或 domain 时可传，用于限定具体 IP、实例 ID、VPC ID 或域名；当前为可选参数，省略时不会按具体对象过滤。
 	ObjectId *string `json:"ObjectId,omitnil,omitempty" name:"ObjectId"`
 
-	// <p>排障目标。可选，主要用于 access_troubleshoot 场景，可填写 IP 或域名。</p>
+	// 目标 IP 或域名过滤。可选，常用于 access_troubleshoot，也可用于其他 Scenario；传入后优先于 ObjectType/ObjectId，并对该场景全部分析段追加源 IP、目的 IP 或目的域名过滤。
 	Target *string `json:"Target,omitnil,omitempty" name:"Target"`
 
-	// <p>需要跳过的分析段名称列表。可选；不传时执行该场景全部分析段。</p>
+	// 需要跳过的分析段名称列表。可选；不传或传空数组时执行该场景全部分析段。full_traffic 支持 beacon、dns_large、dns_dga、dns_dga_fine、dns_tunnel、icmp_tunnel、mining、p2p、remote_tool、file_transfer、high_risk_outbound、lateral_baseline、vpc_sensitive、smb_write、outbound_baseline、inbound_high_risk、tls_expired、tls_self_signed、first_seen_ip、first_seen_country、first_seen_port；east_west 支持 vpc_inter_vpc、subnet_inter、service_port、lateral_baseline、vpc_sensitive、smb_write、database_lateral；alert_comprehensive 支持 outbound_baseline、lateral_baseline、beacon、inbound_high_risk、first_seen_ip、first_seen_country、first_seen_port；asset_exposure 支持 inbound_high_risk、tls_expired、tls_self_signed、high_risk_outbound；access_troubleshoot 支持 acl_border_block、acl_nat_block、acl_vpc_block、ips_block。传入当前 Scenario 不支持的名称会返回 InvalidParameter。
 	SkipSections []*string `json:"SkipSections,omitnil,omitempty" name:"SkipSections"`
 }
 
@@ -4462,7 +4711,7 @@ func (r *DescribeCfwAnalysisDataRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCfwAnalysisDataResponseParams struct {
-	// <p>查询结果。UTF-8 JSON object 字符串；调用方需解析 Response.Data。</p>
+	// 查询结果。Response.Data 是 UTF-8 JSON object 字符串，调用方需要二次 JSON 解析。status 取值为 success、partial 或 error。section 查询失败时，error 只返回固定安全摘要，不包含底层服务内部信息。示例仅展示一个代表性 section；实际返回包含当前场景全部未跳过的 section；summary 包含 total_findings、high_risk_count 和 data_coverage，metadata 包含 scenario、time_range、object 和 query_stats，query_stats 包含 total_queries、successful 和 failed。
 	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4487,15 +4736,57 @@ func (r *DescribeCfwAnalysisDataResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCfwAssetsRequestParams struct {
-	// 最大返回资产数。可选，默认 100；取值 1 至 1000。
+	// <p>资产类型。可选，默认 host；枚举 host 主机资产、vpc VPC 网络、subnet 子网。</p>
+	AssetType *string `json:"AssetType,omitnil,omitempty" name:"AssetType"`
+
+	// <p>IP 地址过滤。可选，支持部分匹配；适用于 host。</p>
+	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
+
+	// <p>实例 ID 过滤。可选，适用于 host。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>VPC ID 过滤。可选，适用于 host、vpc、subnet。</p>
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// <p>子网 ID 过滤。可选，适用于 host、subnet。</p>
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// <p>实例类型过滤。可选，适用于 host；常见值包括 CVM、CLB、ENI、POD、MYSQL、REDIS、MARIADB、NAT、VPN、HAVIP、NATFW、GAAP、DC。</p>
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// <p>最大返回资产数。可选，默认 100，最大 1000。</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>上一页 Response.Data 返回的不透明资产或指纹续查 token。首次查询不传；续查时只传 NextToken，不能同时传 AssetType、过滤条件或 Limit。调用方无需区分 token 类型；无效、篡改或租户不匹配会被拒绝。</p>
+	NextToken *string `json:"NextToken,omitnil,omitempty" name:"NextToken"`
 }
 
 type DescribeCfwAssetsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 最大返回资产数。可选，默认 100；取值 1 至 1000。
+	// <p>资产类型。可选，默认 host；枚举 host 主机资产、vpc VPC 网络、subnet 子网。</p>
+	AssetType *string `json:"AssetType,omitnil,omitempty" name:"AssetType"`
+
+	// <p>IP 地址过滤。可选，支持部分匹配；适用于 host。</p>
+	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
+
+	// <p>实例 ID 过滤。可选，适用于 host。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>VPC ID 过滤。可选，适用于 host、vpc、subnet。</p>
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// <p>子网 ID 过滤。可选，适用于 host、subnet。</p>
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// <p>实例类型过滤。可选，适用于 host；常见值包括 CVM、CLB、ENI、POD、MYSQL、REDIS、MARIADB、NAT、VPN、HAVIP、NATFW、GAAP、DC。</p>
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// <p>最大返回资产数。可选，默认 100，最大 1000。</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>上一页 Response.Data 返回的不透明资产或指纹续查 token。首次查询不传；续查时只传 NextToken，不能同时传 AssetType、过滤条件或 Limit。调用方无需区分 token 类型；无效、篡改或租户不匹配会被拒绝。</p>
+	NextToken *string `json:"NextToken,omitnil,omitempty" name:"NextToken"`
 }
 
 func (r *DescribeCfwAssetsRequest) ToJsonString() string {
@@ -4510,7 +4801,14 @@ func (r *DescribeCfwAssetsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "AssetType")
+	delete(f, "Ip")
+	delete(f, "InstanceId")
+	delete(f, "VpcId")
+	delete(f, "SubnetId")
+	delete(f, "InstanceType")
 	delete(f, "Limit")
+	delete(f, "NextToken")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCfwAssetsRequest has unknown keys!", "")
 	}
@@ -4519,7 +4817,7 @@ func (r *DescribeCfwAssetsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCfwAssetsResponseParams struct {
-	// 查询结果。UTF-8 JSON object 字符串；调用方需解析 Response.Data。
+	// <p>查询结果。UTF-8 JSON object 字符串；调用方需解析 Response.Data。</p>
 	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4544,26 +4842,26 @@ func (r *DescribeCfwAssetsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCfwEipsRequestParams struct {
-	// 1：cfw接入模式，目前仅支持接入模式实例
+	// <p>1：cfw接入模式，目前仅支持接入模式实例</p>
 	Mode *uint64 `json:"Mode,omitnil,omitempty" name:"Mode"`
 
-	// ALL：查询所有弹性公网ip; nat-xxxxx：接入模式场景指定网关的弹性公网ip
+	// <p>ALL：查询所有弹性公网ip; nat-xxxxx：接入模式场景指定网关的弹性公网ip</p>
 	NatGatewayId *string `json:"NatGatewayId,omitnil,omitempty" name:"NatGatewayId"`
 
-	// 防火墙实例id，当前仅支持接入模式的实例，该字段必填
+	// <p>防火墙实例id，当前仅支持接入模式的实例，该字段必填</p>
 	CfwInstance *string `json:"CfwInstance,omitnil,omitempty" name:"CfwInstance"`
 }
 
 type DescribeCfwEipsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 1：cfw接入模式，目前仅支持接入模式实例
+	// <p>1：cfw接入模式，目前仅支持接入模式实例</p>
 	Mode *uint64 `json:"Mode,omitnil,omitempty" name:"Mode"`
 
-	// ALL：查询所有弹性公网ip; nat-xxxxx：接入模式场景指定网关的弹性公网ip
+	// <p>ALL：查询所有弹性公网ip; nat-xxxxx：接入模式场景指定网关的弹性公网ip</p>
 	NatGatewayId *string `json:"NatGatewayId,omitnil,omitempty" name:"NatGatewayId"`
 
-	// 防火墙实例id，当前仅支持接入模式的实例，该字段必填
+	// <p>防火墙实例id，当前仅支持接入模式的实例，该字段必填</p>
 	CfwInstance *string `json:"CfwInstance,omitnil,omitempty" name:"CfwInstance"`
 }
 
@@ -4590,7 +4888,7 @@ func (r *DescribeCfwEipsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCfwEipsResponseParams struct {
-	// 返回值信息
+	// <p>返回值信息</p>
 	NatFwEipList []*NatFwEipsInfo `json:"NatFwEipList,omitnil,omitempty" name:"NatFwEipList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4644,11 +4942,11 @@ func (r *DescribeCfwInsStatusRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCfwInsStatusResponseParams struct {
-	// 防火墙实例运行状态
+	// <p>防火墙实例运行状态</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CfwInsStatus []*CfwInsStatus `json:"CfwInsStatus,omitnil,omitempty" name:"CfwInsStatus"`
 
-	// 0
+	// <p>0</p>
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4673,44 +4971,44 @@ func (r *DescribeCfwInsStatusResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCfwLogsRequestParams struct {
-	// <p>日志类型。首次查询必填；使用 NextToken 续查时不能传。枚举值包括 cfw_netflow_border、cfw_netflow_vpc、cfw_netflow_nat、cfw_netflow_nta、cfw_netflow_dns、cfw_rule_threatinfo、cfw_rule_acl、cfw_rule_vpc_acl、cfw_rule_nat_acl、cfw_ndr_subject_risk、cfw_ndr_dataleak_entry、cfw_ndr_ai_audit、cfw_feature_collect、cfw_behavior_collect、operate_log_all。</p>
+	// 日志类型。首次查询必填；使用 NextToken 续查时不能传。cfw_netflow_border=互联网边界流量，cfw_netflow_vpc=VPC 东西向流量，cfw_netflow_nat=NAT 防火墙流量，cfw_netflow_nta=NDR/NTA 流量，cfw_netflow_dns=DNS 防火墙日志，cfw_rule_threatinfo=入侵防御/威胁情报告警，cfw_rule_acl=互联网边界访问控制日志，cfw_rule_vpc_acl=VPC 访问控制日志，cfw_rule_nat_acl=NAT 访问控制日志，cfw_ndr_subject_risk=NDR 专题风险，cfw_ndr_dataleak_entry=NDR 敏感数据泄露，cfw_ndr_ai_audit=NDR AI 应用识别与大模型调用审计，cfw_feature_collect=统计特征与基线异常，cfw_behavior_collect=Beacon/DNS/端口/证书/VPC 互访行为，operate_log_all=操作审计日志。
 	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
 
-	// <p>CLS CQL 查询语句。默认 *；使用 NextToken 续查时不能传。</p>
+	// 日志过滤表达式。默认 * 表示不过滤；例如 src_ip:1.1.1.1。可查询字段随 LogType 变化，应优先使用对应 Items 中已返回的字段名，不要猜测不存在的字段；使用 NextToken 续查时不能传。
 	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 
-	// <p>查询起始时间。支持 RFC3339、YYYY-MM-DD HH:MM:SS、YYYY-MM-DD 或 Unix 时间戳；传入后从该时间向后查询 TimeRange；使用 NextToken 续查时不能传。</p>
+	// 查询起始时间。支持 RFC3339、YYYY-MM-DD HH:MM:SS、YYYY-MM-DD 或 Unix 时间戳；传入后从该时间向后查询 TimeRange；使用 NextToken 续查时不能传。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// <p>查询时间范围。默认 1h；格式为正整数加单位 m/h/d，例如 5m、1h、24h、7d；使用 NextToken 续查时不能传。</p>
+	// 查询时间范围。默认 1h；格式为正整数加单位 m/h/d，例如 5m、1h、24h、7d；使用 NextToken 续查时不能传。
 	TimeRange *string `json:"TimeRange,omitnil,omitempty" name:"TimeRange"`
 
-	// <p>单页返回条数。默认 100，最大 1000；使用 NextToken 续查时不能传。</p>
+	// 单页返回条数。首次查询可选，默认 100；取值 1 至 1000；使用 NextToken 续查时不能传。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// <p>上一页 Response.Data 返回的不透明续查 token。首次查询不传；续查时只传 NextToken。无效、篡改、过期或租户不匹配会被拒绝。</p>
+	// 上一页 Response.Data 返回的不透明续查 token。首次查询不传；续查时只传 NextToken。无效、篡改或租户不匹配会被拒绝。
 	NextToken *string `json:"NextToken,omitnil,omitempty" name:"NextToken"`
 }
 
 type DescribeCfwLogsRequest struct {
 	*tchttp.BaseRequest
 	
-	// <p>日志类型。首次查询必填；使用 NextToken 续查时不能传。枚举值包括 cfw_netflow_border、cfw_netflow_vpc、cfw_netflow_nat、cfw_netflow_nta、cfw_netflow_dns、cfw_rule_threatinfo、cfw_rule_acl、cfw_rule_vpc_acl、cfw_rule_nat_acl、cfw_ndr_subject_risk、cfw_ndr_dataleak_entry、cfw_ndr_ai_audit、cfw_feature_collect、cfw_behavior_collect、operate_log_all。</p>
+	// 日志类型。首次查询必填；使用 NextToken 续查时不能传。cfw_netflow_border=互联网边界流量，cfw_netflow_vpc=VPC 东西向流量，cfw_netflow_nat=NAT 防火墙流量，cfw_netflow_nta=NDR/NTA 流量，cfw_netflow_dns=DNS 防火墙日志，cfw_rule_threatinfo=入侵防御/威胁情报告警，cfw_rule_acl=互联网边界访问控制日志，cfw_rule_vpc_acl=VPC 访问控制日志，cfw_rule_nat_acl=NAT 访问控制日志，cfw_ndr_subject_risk=NDR 专题风险，cfw_ndr_dataleak_entry=NDR 敏感数据泄露，cfw_ndr_ai_audit=NDR AI 应用识别与大模型调用审计，cfw_feature_collect=统计特征与基线异常，cfw_behavior_collect=Beacon/DNS/端口/证书/VPC 互访行为，operate_log_all=操作审计日志。
 	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
 
-	// <p>CLS CQL 查询语句。默认 *；使用 NextToken 续查时不能传。</p>
+	// 日志过滤表达式。默认 * 表示不过滤；例如 src_ip:1.1.1.1。可查询字段随 LogType 变化，应优先使用对应 Items 中已返回的字段名，不要猜测不存在的字段；使用 NextToken 续查时不能传。
 	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 
-	// <p>查询起始时间。支持 RFC3339、YYYY-MM-DD HH:MM:SS、YYYY-MM-DD 或 Unix 时间戳；传入后从该时间向后查询 TimeRange；使用 NextToken 续查时不能传。</p>
+	// 查询起始时间。支持 RFC3339、YYYY-MM-DD HH:MM:SS、YYYY-MM-DD 或 Unix 时间戳；传入后从该时间向后查询 TimeRange；使用 NextToken 续查时不能传。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// <p>查询时间范围。默认 1h；格式为正整数加单位 m/h/d，例如 5m、1h、24h、7d；使用 NextToken 续查时不能传。</p>
+	// 查询时间范围。默认 1h；格式为正整数加单位 m/h/d，例如 5m、1h、24h、7d；使用 NextToken 续查时不能传。
 	TimeRange *string `json:"TimeRange,omitnil,omitempty" name:"TimeRange"`
 
-	// <p>单页返回条数。默认 100，最大 1000；使用 NextToken 续查时不能传。</p>
+	// 单页返回条数。首次查询可选，默认 100；取值 1 至 1000；使用 NextToken 续查时不能传。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// <p>上一页 Response.Data 返回的不透明续查 token。首次查询不传；续查时只传 NextToken。无效、篡改、过期或租户不匹配会被拒绝。</p>
+	// 上一页 Response.Data 返回的不透明续查 token。首次查询不传；续查时只传 NextToken。无效、篡改或租户不匹配会被拒绝。
 	NextToken *string `json:"NextToken,omitnil,omitempty" name:"NextToken"`
 }
 
@@ -4740,7 +5038,7 @@ func (r *DescribeCfwLogsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCfwLogsResponseParams struct {
-	// <p>查询结果。UTF-8 JSON object 字符串；调用方需解析 Response.Data。</p>
+	// 查询结果。UTF-8 JSON object 字符串；调用方需解析 Response.Data。Items 是当前页日志数组，字段随 LogType 变化；TotalCount 是当前页返回条数，Limit 是页大小，LogType 和 TimeWindow 回显查询范围。HasMore=true 时必须保存并原样使用 NextToken 续查；HasMore=false 时分页结束。
 	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4765,12 +5063,21 @@ func (r *DescribeCfwLogsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCfwRiskOverviewRequestParams struct {
+	// <p>自定义开始时间。可选，格式 YYYY-MM-DD HH:MM:SS；必须和 EndTime 同时传。</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
+	// <p>自定义结束时间。可选，格式 YYYY-MM-DD HH:MM:SS；必须和 StartTime 同时传。</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
 type DescribeCfwRiskOverviewRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>自定义开始时间。可选，格式 YYYY-MM-DD HH:MM:SS；必须和 EndTime 同时传。</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>自定义结束时间。可选，格式 YYYY-MM-DD HH:MM:SS；必须和 StartTime 同时传。</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
 func (r *DescribeCfwRiskOverviewRequest) ToJsonString() string {
@@ -4785,7 +5092,8 @@ func (r *DescribeCfwRiskOverviewRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "StartTime")
+	delete(f, "EndTime")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCfwRiskOverviewRequest has unknown keys!", "")
 	}
@@ -4794,7 +5102,7 @@ func (r *DescribeCfwRiskOverviewRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCfwRiskOverviewResponseParams struct {
-	// 查询结果。UTF-8 JSON object 字符串；调用方需解析 Response.Data。
+	// <p>查询结果。UTF-8 JSON object 字符串；调用方需解析 Response.Data。</p>
 	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4819,26 +5127,38 @@ func (r *DescribeCfwRiskOverviewResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCfwRuleOptimizationRequestParams struct {
-	// 长期零命中规则阈值天数。可选，必须为正整数，默认 180。
+	// <p>防火墙规则类型。必填。枚举：border 互联网边界；nat NAT 边界；vpc VPC 间；enterprise_sg 企业安全组。</p>
+	RuleType *string `json:"RuleType,omitnil,omitempty" name:"RuleType"`
+
+	// <p>要执行的优化维度白名单。可选，例如 D1、D2、D8；不传默认执行全部支持维度。</p>
+	Dimensions []*string `json:"Dimensions,omitnil,omitempty" name:"Dimensions"`
+
+	// <p>长期零命中规则阈值天数。可选，默认 180。</p>
 	IdleDays *int64 `json:"IdleDays,omitnil,omitempty" name:"IdleDays"`
 
-	// 单 IP 离散过多聚合建议的最小数量。可选，最小为 2，默认 10。
+	// <p>单 IP 离散过多聚合建议的最小数量。可选，默认 10。</p>
 	IpAggMin *int64 `json:"IpAggMin,omitnil,omitempty" name:"IpAggMin"`
 
-	// 可迁移 IOC 建议中返回的样例 IOC 数量上限。可选，必须为正整数，默认 50。
+	// <p>可迁移 IOC 建议中返回的样例 IOC 数量上限。可选，默认 50。</p>
 	IocSample *int64 `json:"IocSample,omitnil,omitempty" name:"IocSample"`
 }
 
 type DescribeCfwRuleOptimizationRequest struct {
 	*tchttp.BaseRequest
 	
-	// 长期零命中规则阈值天数。可选，必须为正整数，默认 180。
+	// <p>防火墙规则类型。必填。枚举：border 互联网边界；nat NAT 边界；vpc VPC 间；enterprise_sg 企业安全组。</p>
+	RuleType *string `json:"RuleType,omitnil,omitempty" name:"RuleType"`
+
+	// <p>要执行的优化维度白名单。可选，例如 D1、D2、D8；不传默认执行全部支持维度。</p>
+	Dimensions []*string `json:"Dimensions,omitnil,omitempty" name:"Dimensions"`
+
+	// <p>长期零命中规则阈值天数。可选，默认 180。</p>
 	IdleDays *int64 `json:"IdleDays,omitnil,omitempty" name:"IdleDays"`
 
-	// 单 IP 离散过多聚合建议的最小数量。可选，最小为 2，默认 10。
+	// <p>单 IP 离散过多聚合建议的最小数量。可选，默认 10。</p>
 	IpAggMin *int64 `json:"IpAggMin,omitnil,omitempty" name:"IpAggMin"`
 
-	// 可迁移 IOC 建议中返回的样例 IOC 数量上限。可选，必须为正整数，默认 50。
+	// <p>可迁移 IOC 建议中返回的样例 IOC 数量上限。可选，默认 50。</p>
 	IocSample *int64 `json:"IocSample,omitnil,omitempty" name:"IocSample"`
 }
 
@@ -4854,6 +5174,8 @@ func (r *DescribeCfwRuleOptimizationRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "RuleType")
+	delete(f, "Dimensions")
 	delete(f, "IdleDays")
 	delete(f, "IpAggMin")
 	delete(f, "IocSample")
@@ -4865,7 +5187,7 @@ func (r *DescribeCfwRuleOptimizationRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCfwRuleOptimizationResponseParams struct {
-	// 查询结果。UTF-8 JSON object 字符串；调用方需解析 Response.Data。示例仅展示代表性字段；完整结果还包含 rule_type_name、rule_total、rule_active、rule_skipped_geo_or_cloud、dimension_skipped、thresholds 和 generated_at，finding 还包含 risk_level、affected_rule_uuids、affected_rule_seqs、recommendation_action、reason 和 evidence。结果过大时返回摘要，不返回 findings，并增加 truncated 和 truncated_reason。
+	// <p>查询结果。UTF-8 JSON object 字符串；调用方需解析 Response.Data。</p>
 	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4902,8 +5224,38 @@ type DescribeCfwRulesRequestParams struct {
 	// <p>规则动作过滤。可选。0 表示观察，1 表示阻断，2 表示放行；不传则不过滤。</p>
 	RuleAction *int64 `json:"RuleAction,omitnil,omitempty" name:"RuleAction"`
 
+	// <p>启用状态过滤。可选。默认只返回启用规则；传 false 只查询禁用规则。</p>
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// <p>是否同时包含启用和禁用规则。可选。true 表示包含两类；不能和 Enabled 同时使用。</p>
+	IncludeDisabled *bool `json:"IncludeDisabled,omitnil,omitempty" name:"IncludeDisabled"`
+
 	// <p>精确规则 ID 过滤。可选。用于按数值规则标识定位单条规则。</p>
 	RuleId *int64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// <p>精确公开规则标识过滤。可选。推荐在用户提供规则标识时使用。</p>
+	RuleUuid *string `json:"RuleUuid,omitnil,omitempty" name:"RuleUuid"`
+
+	// <p>协议过滤。可选。例如 TCP、UDP、ICMP、HTTP、HTTPS、ANY；不传则不过滤。</p>
+	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
+
+	// <p>源地址或源内容关键字过滤。可选，支持模糊匹配。</p>
+	SrcIp *string `json:"SrcIp,omitnil,omitempty" name:"SrcIp"`
+
+	// <p>目的地址、目的域名或目的内容关键字过滤。可选，支持模糊匹配。</p>
+	DstIp *string `json:"DstIp,omitnil,omitempty" name:"DstIp"`
+
+	// <p>规则描述关键字过滤。可选。</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>入侵防御列表关键字搜索。可选，最大 100 字符。blocklist 搜索 ioc/address/comment/rule_source；whitelist 搜索 rule_name/ioc/comment/src_ip/dst_ip；isolate 搜索实例、公网 IP、内网 IP、VPC、地域。</p>
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+
+	// <p>精确实例 ID 过滤。仅 RuleType=intrusion_prevention 且 ListType=isolate 时使用；写操作前后核验应使用该参数而不是 Keyword。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>是否展开模板、资产组、实例等名称。可选，默认 true；传 false 返回原始标识。</p>
+	ExpandNames *bool `json:"ExpandNames,omitnil,omitempty" name:"ExpandNames"`
 
 	// <p>单页返回规则数。可选，默认 100，最大 1000。</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
@@ -4927,8 +5279,38 @@ type DescribeCfwRulesRequest struct {
 	// <p>规则动作过滤。可选。0 表示观察，1 表示阻断，2 表示放行；不传则不过滤。</p>
 	RuleAction *int64 `json:"RuleAction,omitnil,omitempty" name:"RuleAction"`
 
+	// <p>启用状态过滤。可选。默认只返回启用规则；传 false 只查询禁用规则。</p>
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// <p>是否同时包含启用和禁用规则。可选。true 表示包含两类；不能和 Enabled 同时使用。</p>
+	IncludeDisabled *bool `json:"IncludeDisabled,omitnil,omitempty" name:"IncludeDisabled"`
+
 	// <p>精确规则 ID 过滤。可选。用于按数值规则标识定位单条规则。</p>
 	RuleId *int64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// <p>精确公开规则标识过滤。可选。推荐在用户提供规则标识时使用。</p>
+	RuleUuid *string `json:"RuleUuid,omitnil,omitempty" name:"RuleUuid"`
+
+	// <p>协议过滤。可选。例如 TCP、UDP、ICMP、HTTP、HTTPS、ANY；不传则不过滤。</p>
+	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
+
+	// <p>源地址或源内容关键字过滤。可选，支持模糊匹配。</p>
+	SrcIp *string `json:"SrcIp,omitnil,omitempty" name:"SrcIp"`
+
+	// <p>目的地址、目的域名或目的内容关键字过滤。可选，支持模糊匹配。</p>
+	DstIp *string `json:"DstIp,omitnil,omitempty" name:"DstIp"`
+
+	// <p>规则描述关键字过滤。可选。</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>入侵防御列表关键字搜索。可选，最大 100 字符。blocklist 搜索 ioc/address/comment/rule_source；whitelist 搜索 rule_name/ioc/comment/src_ip/dst_ip；isolate 搜索实例、公网 IP、内网 IP、VPC、地域。</p>
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+
+	// <p>精确实例 ID 过滤。仅 RuleType=intrusion_prevention 且 ListType=isolate 时使用；写操作前后核验应使用该参数而不是 Keyword。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>是否展开模板、资产组、实例等名称。可选，默认 true；传 false 返回原始标识。</p>
+	ExpandNames *bool `json:"ExpandNames,omitnil,omitempty" name:"ExpandNames"`
 
 	// <p>单页返回规则数。可选，默认 100，最大 1000。</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
@@ -4953,7 +5335,17 @@ func (r *DescribeCfwRulesRequest) FromJsonString(s string) error {
 	delete(f, "ListType")
 	delete(f, "Direction")
 	delete(f, "RuleAction")
+	delete(f, "Enabled")
+	delete(f, "IncludeDisabled")
 	delete(f, "RuleId")
+	delete(f, "RuleUuid")
+	delete(f, "Protocol")
+	delete(f, "SrcIp")
+	delete(f, "DstIp")
+	delete(f, "Description")
+	delete(f, "Keyword")
+	delete(f, "InstanceId")
+	delete(f, "ExpandNames")
 	delete(f, "Limit")
 	delete(f, "Offset")
 	if len(f) > 0 {
@@ -4989,116 +5381,116 @@ func (r *DescribeCfwRulesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCfwStatusMonitorRequestParams struct {
-	// <p>操作类型。describe_scene 表示发现场景和二级下拉选项；fetch_scene 表示获取具体场景快照。必填。</p>
+	// 操作类型。describe_scene 表示发现场景和二级下拉选项；fetch_scene 表示获取具体场景快照。必填。
 	Op *string `json:"Op,omitnil,omitempty" name:"Op"`
 
-	// <p>防火墙场景类型。支持 internet_edge（互联网边界防火墙）、nat_cluster（NAT边界防火墙-集群）、nat_ha（NAT边界防火墙-主备）、vpc_cluster（VPC边界防火墙-集群）、vpc_ha（VPC边界防火墙-主备）。必填。</p>
+	// 防火墙场景类型。支持 internet_edge（互联网边界防火墙）、nat_cluster（NAT边界防火墙-集群）、nat_ha（NAT边界防火墙-主备）、vpc_cluster（VPC边界防火墙-集群）、vpc_ha（VPC边界防火墙-主备）。必填。
 	FirewallType *string `json:"FirewallType,omitnil,omitempty" name:"FirewallType"`
 
-	// <p>二级下拉选项 ID。fetch_scene 按需传入；internet_edge 为地域，NAT 为实例 ID，VPC 带宽场景为防火墙组 ID；vpc_cluster 的 connections 汇总场景会忽略该参数。</p>
+	// 二级下拉选项 ID。fetch_scene 按需传入，值来自 describe_scene 返回的 selection.available_options[].id；internet_edge 为地域，NAT 为实例 ID，VPC 带宽场景为防火墙组 ID；vpc_cluster 的 connections 汇总场景会忽略该参数。
 	SelectionId *string `json:"SelectionId,omitnil,omitempty" name:"SelectionId"`
 
-	// <p>二级下拉显示名称。可替代 SelectionId 按名称匹配。</p>
+	// 二级下拉显示名称。可替代 SelectionId 按名称匹配，值来自 describe_scene 返回的 selection.available_options[].name。
 	SelectionName *string `json:"SelectionName,omitnil,omitempty" name:"SelectionName"`
 
-	// <p>引擎实例 ID。主要用于 vpc_ha 下一个防火墙组对应多个实例的场景。</p>
+	// 引擎实例 ID。主要用于 vpc_ha 下一个防火墙组对应多个实例的场景，优先使用 describe_scene 返回的 selection.available_options[].instance_id；如只有 instance_ids，则从数组中选择一个字符串值。
 	SelectionInstanceId *string `json:"SelectionInstanceId,omitnil,omitempty" name:"SelectionInstanceId"`
 
-	// <p>指标页签。fetch_scene 可传；不传时使用该场景默认值。支持 bandwidth、connections。</p>
+	// 指标页签。fetch_scene 可传；不传时使用该场景默认值。支持 bandwidth、connections。
 	Metric *string `json:"Metric,omitnil,omitempty" name:"Metric"`
 
-	// <p>指标下的视角。fetch_scene 可传；不传时使用该场景默认值。支持 ip、subnet、session、switch、vpc，实际可用组合以 describe_scene 返回为准。</p>
+	// 指标下的视角。fetch_scene 可传；不传时使用该场景默认值。支持 ip、subnet、session、switch、vpc，实际可用组合以 describe_scene 返回为准。
 	Perspective *string `json:"Perspective,omitnil,omitempty" name:"Perspective"`
 
-	// <p>NAT 主备连接数 IP 视角范围。external 表示外部 IP，asset 表示资产 IP；仅 nat_ha + connections + ip 使用。</p>
+	// NAT 主备连接数 IP 视角范围。external 表示外部 IP，asset 表示资产 IP；仅 nat_ha + connections + ip 使用，其他组合传入将返回 InvalidParameter。
 	IpScope *string `json:"IpScope,omitnil,omitempty" name:"IpScope"`
 
-	// <p>预设时间范围。默认 24h；fetch_scene 使用。支持 5m、15m、30m、1h、6h、24h、3d、7d、30d、today、yesterday、day_before_yesterday、this_week、last_week、this_month。</p>
+	// 预设时间范围。默认 24h；fetch_scene 使用。支持 5m、15m、30m、1h、6h、24h、3d、7d、30d、today、yesterday、day_before_yesterday、this_week、last_week、this_month。
 	TimePreset *string `json:"TimePreset,omitnil,omitempty" name:"TimePreset"`
 
-	// <p>自定义开始时间。格式 YYYY-MM-DD HH:MM:SS；必须与 EndTime 同时传，最大跨度 30 天。</p>
+	// 自定义开始时间。格式 YYYY-MM-DD HH:MM:SS；必须与 EndTime 同时传，最大跨度 30 天。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// <p>自定义结束时间。格式 YYYY-MM-DD HH:MM:SS；必须与 StartTime 同时传，最大跨度 30 天。</p>
+	// 自定义结束时间。格式 YYYY-MM-DD HH:MM:SS；必须与 StartTime 同时传，最大跨度 30 天。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// <p>页码，从 1 开始。默认 1；fetch_scene 列表视角使用。</p>
+	// 页码，从 1 开始。默认 1；fetch_scene 列表视角使用。
 	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
 
-	// <p>每页条数。默认 10，最大 100；fetch_scene 列表视角使用。</p>
+	// 每页条数。默认 10，取值 1 至 100；fetch_scene 列表视角使用。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// <p>是否只获取概览数据。true 时 fetch_scene 只请求 overview，跳过 table/detail，适合只看场景快照汇总。</p>
+	// 是否只获取概览数据。true 时 fetch_scene 只请求 overview，跳过 table/detail，适合只看场景快照汇总。
 	OverviewOnly *bool `json:"OverviewOnly,omitnil,omitempty" name:"OverviewOnly"`
 
-	// <p>原始偏移量覆盖。可选，传入后覆盖 Page 计算结果；必须大于等于 0 且不超过安全上限。</p>
+	// 原始偏移量覆盖。可选，传入后覆盖 Page 计算结果；取值 0 至 10000。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// <p>排序字段。可选，只接受当前场景后端允许的安全字段。</p>
+	// 排序字段。可选。互联网边界 IP、NAT IP/子网视角支持 InputMax、OutputMax；VPC switch 视角支持 SwitchName；VPC ip/vpc 视角支持 FlowMax；其他组合不要传。
 	SortBy *string `json:"SortBy,omitnil,omitempty" name:"SortBy"`
 
-	// <p>排序方向。默认 desc；支持 asc、desc。</p>
+	// 排序方向。默认 desc；支持 asc、desc。
 	SortOrder *string `json:"SortOrder,omitnil,omitempty" name:"SortOrder"`
 
-	// <p>过滤条件列表。可选，最多 5 个；是否支持以及字段名以具体 fetch_scene 场景为准。</p>
+	// 过滤条件列表。保留字段；当前公开 fetch_scene 场景均不支持，调用方不要传。
 	Filters []*CfwStatusMonitorFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeCfwStatusMonitorRequest struct {
 	*tchttp.BaseRequest
 	
-	// <p>操作类型。describe_scene 表示发现场景和二级下拉选项；fetch_scene 表示获取具体场景快照。必填。</p>
+	// 操作类型。describe_scene 表示发现场景和二级下拉选项；fetch_scene 表示获取具体场景快照。必填。
 	Op *string `json:"Op,omitnil,omitempty" name:"Op"`
 
-	// <p>防火墙场景类型。支持 internet_edge（互联网边界防火墙）、nat_cluster（NAT边界防火墙-集群）、nat_ha（NAT边界防火墙-主备）、vpc_cluster（VPC边界防火墙-集群）、vpc_ha（VPC边界防火墙-主备）。必填。</p>
+	// 防火墙场景类型。支持 internet_edge（互联网边界防火墙）、nat_cluster（NAT边界防火墙-集群）、nat_ha（NAT边界防火墙-主备）、vpc_cluster（VPC边界防火墙-集群）、vpc_ha（VPC边界防火墙-主备）。必填。
 	FirewallType *string `json:"FirewallType,omitnil,omitempty" name:"FirewallType"`
 
-	// <p>二级下拉选项 ID。fetch_scene 按需传入；internet_edge 为地域，NAT 为实例 ID，VPC 带宽场景为防火墙组 ID；vpc_cluster 的 connections 汇总场景会忽略该参数。</p>
+	// 二级下拉选项 ID。fetch_scene 按需传入，值来自 describe_scene 返回的 selection.available_options[].id；internet_edge 为地域，NAT 为实例 ID，VPC 带宽场景为防火墙组 ID；vpc_cluster 的 connections 汇总场景会忽略该参数。
 	SelectionId *string `json:"SelectionId,omitnil,omitempty" name:"SelectionId"`
 
-	// <p>二级下拉显示名称。可替代 SelectionId 按名称匹配。</p>
+	// 二级下拉显示名称。可替代 SelectionId 按名称匹配，值来自 describe_scene 返回的 selection.available_options[].name。
 	SelectionName *string `json:"SelectionName,omitnil,omitempty" name:"SelectionName"`
 
-	// <p>引擎实例 ID。主要用于 vpc_ha 下一个防火墙组对应多个实例的场景。</p>
+	// 引擎实例 ID。主要用于 vpc_ha 下一个防火墙组对应多个实例的场景，优先使用 describe_scene 返回的 selection.available_options[].instance_id；如只有 instance_ids，则从数组中选择一个字符串值。
 	SelectionInstanceId *string `json:"SelectionInstanceId,omitnil,omitempty" name:"SelectionInstanceId"`
 
-	// <p>指标页签。fetch_scene 可传；不传时使用该场景默认值。支持 bandwidth、connections。</p>
+	// 指标页签。fetch_scene 可传；不传时使用该场景默认值。支持 bandwidth、connections。
 	Metric *string `json:"Metric,omitnil,omitempty" name:"Metric"`
 
-	// <p>指标下的视角。fetch_scene 可传；不传时使用该场景默认值。支持 ip、subnet、session、switch、vpc，实际可用组合以 describe_scene 返回为准。</p>
+	// 指标下的视角。fetch_scene 可传；不传时使用该场景默认值。支持 ip、subnet、session、switch、vpc，实际可用组合以 describe_scene 返回为准。
 	Perspective *string `json:"Perspective,omitnil,omitempty" name:"Perspective"`
 
-	// <p>NAT 主备连接数 IP 视角范围。external 表示外部 IP，asset 表示资产 IP；仅 nat_ha + connections + ip 使用。</p>
+	// NAT 主备连接数 IP 视角范围。external 表示外部 IP，asset 表示资产 IP；仅 nat_ha + connections + ip 使用，其他组合传入将返回 InvalidParameter。
 	IpScope *string `json:"IpScope,omitnil,omitempty" name:"IpScope"`
 
-	// <p>预设时间范围。默认 24h；fetch_scene 使用。支持 5m、15m、30m、1h、6h、24h、3d、7d、30d、today、yesterday、day_before_yesterday、this_week、last_week、this_month。</p>
+	// 预设时间范围。默认 24h；fetch_scene 使用。支持 5m、15m、30m、1h、6h、24h、3d、7d、30d、today、yesterday、day_before_yesterday、this_week、last_week、this_month。
 	TimePreset *string `json:"TimePreset,omitnil,omitempty" name:"TimePreset"`
 
-	// <p>自定义开始时间。格式 YYYY-MM-DD HH:MM:SS；必须与 EndTime 同时传，最大跨度 30 天。</p>
+	// 自定义开始时间。格式 YYYY-MM-DD HH:MM:SS；必须与 EndTime 同时传，最大跨度 30 天。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// <p>自定义结束时间。格式 YYYY-MM-DD HH:MM:SS；必须与 StartTime 同时传，最大跨度 30 天。</p>
+	// 自定义结束时间。格式 YYYY-MM-DD HH:MM:SS；必须与 StartTime 同时传，最大跨度 30 天。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// <p>页码，从 1 开始。默认 1；fetch_scene 列表视角使用。</p>
+	// 页码，从 1 开始。默认 1；fetch_scene 列表视角使用。
 	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
 
-	// <p>每页条数。默认 10，最大 100；fetch_scene 列表视角使用。</p>
+	// 每页条数。默认 10，取值 1 至 100；fetch_scene 列表视角使用。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// <p>是否只获取概览数据。true 时 fetch_scene 只请求 overview，跳过 table/detail，适合只看场景快照汇总。</p>
+	// 是否只获取概览数据。true 时 fetch_scene 只请求 overview，跳过 table/detail，适合只看场景快照汇总。
 	OverviewOnly *bool `json:"OverviewOnly,omitnil,omitempty" name:"OverviewOnly"`
 
-	// <p>原始偏移量覆盖。可选，传入后覆盖 Page 计算结果；必须大于等于 0 且不超过安全上限。</p>
+	// 原始偏移量覆盖。可选，传入后覆盖 Page 计算结果；取值 0 至 10000。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// <p>排序字段。可选，只接受当前场景后端允许的安全字段。</p>
+	// 排序字段。可选。互联网边界 IP、NAT IP/子网视角支持 InputMax、OutputMax；VPC switch 视角支持 SwitchName；VPC ip/vpc 视角支持 FlowMax；其他组合不要传。
 	SortBy *string `json:"SortBy,omitnil,omitempty" name:"SortBy"`
 
-	// <p>排序方向。默认 desc；支持 asc、desc。</p>
+	// 排序方向。默认 desc；支持 asc、desc。
 	SortOrder *string `json:"SortOrder,omitnil,omitempty" name:"SortOrder"`
 
-	// <p>过滤条件列表。可选，最多 5 个；是否支持以及字段名以具体 fetch_scene 场景为准。</p>
+	// 过滤条件列表。保留字段；当前公开 fetch_scene 场景均不支持，调用方不要传。
 	Filters []*CfwStatusMonitorFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -5140,7 +5532,7 @@ func (r *DescribeCfwStatusMonitorRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCfwStatusMonitorResponseParams struct {
-	// <p>查询结果。UTF-8 JSON object 字符串；调用方需解析 Response.Data。describe_scene 返回 scene 与 selection.available_options；fetch_scene 返回选中场景的 data 快照。</p>
+	// 查询结果。UTF-8 JSON object 字符串；调用方需解析 Response.Data。describe_scene 的 scene 返回 metric_options、perspective_options、default_metric、default_perspective、selection_required_by_metric、selection_kind_by_metric 和 time_preset_options；selection.available_options 返回可用于 SelectionId/SelectionName/SelectionInstanceId 的选项。fetch_scene 返回选中场景的 data 快照，可能包含 overview、table 或 detail。下方示例是字段结构节选，数组仅展示代表值。
 	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5194,7 +5586,7 @@ func (r *DescribeCfwSwitchesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCfwSwitchesResponseParams struct {
-	// 查询结果。UTF-8 JSON object 字符串；调用方需解析 Response.Data。
+	// 查询结果。UTF-8 JSON object 字符串；调用方需解析 Response.Data。border_firewall 返回公网 IP 总数、已防护数、未防护数、操作中数量和防护率；nat_firewall、vpc_firewall 按 cluster/ha 返回实例及子开关汇总；ndr 返回已开启开关数；ips 返回当前防护模式。
 	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5303,56 +5695,56 @@ func (r *DescribeClusterNatCcnFwSwitchListResponse) FromJsonString(s string) err
 
 // Predefined struct for user
 type DescribeClusterVpcFwSwitchsRequestParams struct {
-	// 需要查询的索引，特定场景使用，可不填
+	// <p>需要查询的索引，特定场景使用，可不填</p>
 	Index *string `json:"Index,omitnil,omitempty" name:"Index"`
 
-	// 过滤条件组合
+	// <p>过滤条件组合</p>
 	Filters []*CommonFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 每页条数
+	// <p>每页条数</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移值
+	// <p>偏移值</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 检索的起始时间，可不传
+	// <p>检索的起始时间，可不传</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 检索的截止时间，可不传
+	// <p>检索的截止时间，可不传</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值
+	// <p>desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 排序所用到的字段
+	// <p>排序所用到的字段</p>
 	By *string `json:"By,omitnil,omitempty" name:"By"`
 }
 
 type DescribeClusterVpcFwSwitchsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 需要查询的索引，特定场景使用，可不填
+	// <p>需要查询的索引，特定场景使用，可不填</p>
 	Index *string `json:"Index,omitnil,omitempty" name:"Index"`
 
-	// 过滤条件组合
+	// <p>过滤条件组合</p>
 	Filters []*CommonFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 每页条数
+	// <p>每页条数</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移值
+	// <p>偏移值</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 检索的起始时间，可不传
+	// <p>检索的起始时间，可不传</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 检索的截止时间，可不传
+	// <p>检索的截止时间，可不传</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值
+	// <p>desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 排序所用到的字段
+	// <p>排序所用到的字段</p>
 	By *string `json:"By,omitnil,omitempty" name:"By"`
 }
 
@@ -5384,14 +5776,14 @@ func (r *DescribeClusterVpcFwSwitchsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeClusterVpcFwSwitchsResponseParams struct {
-	// 总条数
+	// <p>总条数</p>
 	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
 
-	// 防火墙开关列表
+	// <p>防火墙开关列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data []*ClusterSwitchDetail `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// 开关开启失败列表
+	// <p>开关开启失败列表</p>
 	FailData []*SwitchFailInfo `json:"FailData,omitnil,omitempty" name:"FailData"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5445,25 +5837,25 @@ func (r *DescribeDefenseSwitchRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDefenseSwitchResponseParams struct {
-	// 基础防御开关
+	// <p>基础防御开关</p>
 	BasicRuleSwitch *int64 `json:"BasicRuleSwitch,omitnil,omitempty" name:"BasicRuleSwitch"`
 
-	// 安全基线开关
+	// <p>安全基线开关</p>
 	BaselineAllSwitch *int64 `json:"BaselineAllSwitch,omitnil,omitempty" name:"BaselineAllSwitch"`
 
-	// 威胁情报开关
+	// <p>威胁情报开关</p>
 	TiSwitch *int64 `json:"TiSwitch,omitnil,omitempty" name:"TiSwitch"`
 
-	// 虚拟补丁开关
+	// <p>虚拟补丁开关</p>
 	VirtualPatchSwitch *int64 `json:"VirtualPatchSwitch,omitnil,omitempty" name:"VirtualPatchSwitch"`
 
-	// 是否历史开启
+	// <p>是否历史开启</p>
 	HistoryOpen *int64 `json:"HistoryOpen,omitnil,omitempty" name:"HistoryOpen"`
 
-	// 状态值，0：查询成功，非0：查询失败
+	// <p>状态值，0：查询成功，非0：查询失败</p>
 	ReturnCode *int64 `json:"ReturnCode,omitnil,omitempty" name:"ReturnCode"`
 
-	// 状态信息，success：查询成功，fail：查询失败
+	// <p>状态信息，success：查询成功，fail：查询失败</p>
 	ReturnMsg *string `json:"ReturnMsg,omitnil,omitempty" name:"ReturnMsg"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5927,50 +6319,50 @@ func (r *DescribeEnterpriseSecurityGroupRuleResponse) FromJsonString(s string) e
 
 // Predefined struct for user
 type DescribeFwEdgeIpsRequestParams struct {
-	// 过滤条件组合
+	// <p>过滤条件组合</p>
 	Filters []*CommonFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 每页条数
+	// <p>每页条数</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移值
+	// <p>偏移值</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 检索的起始时间，可不传
+	// <p>检索的起始时间，可不传</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 检索的截止时间，可不传
+	// <p>检索的截止时间，可不传</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值
+	// <p>desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 排序所用到的字段
+	// <p>排序所用到的字段</p>
 	By *string `json:"By,omitnil,omitempty" name:"By"`
 }
 
 type DescribeFwEdgeIpsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 过滤条件组合
+	// <p>过滤条件组合</p>
 	Filters []*CommonFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 每页条数
+	// <p>每页条数</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移值
+	// <p>偏移值</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 检索的起始时间，可不传
+	// <p>检索的起始时间，可不传</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 检索的截止时间，可不传
+	// <p>检索的截止时间，可不传</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值
+	// <p>desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 排序所用到的字段
+	// <p>排序所用到的字段</p>
 	By *string `json:"By,omitnil,omitempty" name:"By"`
 }
 
@@ -6001,19 +6393,19 @@ func (r *DescribeFwEdgeIpsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeFwEdgeIpsResponseParams struct {
-	// ip 开关列表
+	// <p>ip 开关列表</p>
 	Data []*EdgeIpInfo `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// ip 开关列表个数
+	// <p>ip 开关列表个数</p>
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
-	// 地域列表
+	// <p>地域列表</p>
 	RegionLst []*string `json:"RegionLst,omitnil,omitempty" name:"RegionLst"`
 
-	// 实例类型列表
+	// <p>实例类型列表</p>
 	InstanceTypeLst []*string `json:"InstanceTypeLst,omitnil,omitempty" name:"InstanceTypeLst"`
 
-	// 串行模式开关个数
+	// <p>串行模式开关个数</p>
 	SerilCount *int64 `json:"SerilCount,omitnil,omitempty" name:"SerilCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6140,14 +6532,14 @@ func (r *DescribeFwGroupInstanceInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeFwSyncStatusRequestParams struct {
-	// 查询的同步状态类型：Route,同步路由状态
+	// <p>查询的同步状态类型：Route,同步路由状态</p>
 	SyncType *string `json:"SyncType,omitnil,omitempty" name:"SyncType"`
 }
 
 type DescribeFwSyncStatusRequest struct {
 	*tchttp.BaseRequest
 	
-	// 查询的同步状态类型：Route,同步路由状态
+	// <p>查询的同步状态类型：Route,同步路由状态</p>
 	SyncType *string `json:"SyncType,omitnil,omitempty" name:"SyncType"`
 }
 
@@ -6172,7 +6564,7 @@ func (r *DescribeFwSyncStatusRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeFwSyncStatusResponseParams struct {
-	// 同步状态：1，同步中；0，同步完成
+	// <p>同步状态：1，同步中；0，同步完成</p>
 	SyncStatus *int64 `json:"SyncStatus,omitnil,omitempty" name:"SyncStatus"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6226,7 +6618,7 @@ func (r *DescribeGuideScanInfoRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeGuideScanInfoResponseParams struct {
-	// 扫描信息
+	// <p>扫描信息</p>
 	Data *ScanInfo `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7036,56 +7428,56 @@ func (r *DescribeNatFwClusterRegionStatusResponse) FromJsonString(s string) erro
 
 // Predefined struct for user
 type DescribeNatFwDnatRuleRequestParams struct {
-	// 需要查询的索引，特定场景使用，可不填
+	// <p>需要查询的索引，特定场景使用，可不填</p>
 	Index *string `json:"Index,omitnil,omitempty" name:"Index"`
 
-	// 过滤条件组合
+	// <p>过滤条件组合</p>
 	Filters []*CommonFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 每页条数
+	// <p>每页条数</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移值
+	// <p>偏移值</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 检索的起始时间，可不传
+	// <p>检索的起始时间，可不传</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 检索的截止时间，可不传
+	// <p>检索的截止时间，可不传</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值，可不传
+	// <p>desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值，可不传</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 排序所用到的字段，可不传
+	// <p>排序所用到的字段，可不传</p>
 	By *string `json:"By,omitnil,omitempty" name:"By"`
 }
 
 type DescribeNatFwDnatRuleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 需要查询的索引，特定场景使用，可不填
+	// <p>需要查询的索引，特定场景使用，可不填</p>
 	Index *string `json:"Index,omitnil,omitempty" name:"Index"`
 
-	// 过滤条件组合
+	// <p>过滤条件组合</p>
 	Filters []*CommonFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 每页条数
+	// <p>每页条数</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移值
+	// <p>偏移值</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 检索的起始时间，可不传
+	// <p>检索的起始时间，可不传</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 检索的截止时间，可不传
+	// <p>检索的截止时间，可不传</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值，可不传
+	// <p>desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值，可不传</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 排序所用到的字段，可不传
+	// <p>排序所用到的字段，可不传</p>
 	By *string `json:"By,omitnil,omitempty" name:"By"`
 }
 
@@ -7117,10 +7509,10 @@ func (r *DescribeNatFwDnatRuleRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeNatFwDnatRuleResponseParams struct {
-	// Dnat规则列表
+	// <p>Dnat规则列表</p>
 	Data []*DescNatDnatRule `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// 列表总数
+	// <p>列表总数</p>
 	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7174,16 +7566,16 @@ func (r *DescribeNatFwInfoCountRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeNatFwInfoCountResponseParams struct {
-	// 返回参数 success 成功 failed 失败
+	// <p>返回参数 success 成功 failed 失败</p>
 	ReturnMsg *string `json:"ReturnMsg,omitnil,omitempty" name:"ReturnMsg"`
 
-	// 当前租户的nat防火墙实例个数
+	// <p>当前租户的nat防火墙实例个数</p>
 	NatFwInsCount *int64 `json:"NatFwInsCount,omitnil,omitempty" name:"NatFwInsCount"`
 
-	// 当前租户接入防火墙的子网个数
+	// <p>当前租户接入防火墙的子网个数</p>
 	SubnetCount *int64 `json:"SubnetCount,omitnil,omitempty" name:"SubnetCount"`
 
-	// 打开NAT防火墙开关个数
+	// <p>打开NAT防火墙开关个数</p>
 	OpenSwitchCount *int64 `json:"OpenSwitchCount,omitnil,omitempty" name:"OpenSwitchCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7294,7 +7686,7 @@ func (r *DescribeNatFwInstanceWithRegionRequest) FromJsonString(s string) error 
 
 // Predefined struct for user
 type DescribeNatFwInstanceWithRegionResponseParams struct {
-	// 实例数组
+	// <p>实例数组</p>
 	NatinsLst []*NatFwInstance `json:"NatinsLst,omitnil,omitempty" name:"NatinsLst"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7319,26 +7711,26 @@ func (r *DescribeNatFwInstanceWithRegionResponse) FromJsonString(s string) error
 
 // Predefined struct for user
 type DescribeNatFwInstancesInfoRequestParams struct {
-	// 获取实例列表过滤字段
+	// <p>获取实例列表过滤字段</p>
 	Filter []*NatFwFilter `json:"Filter,omitnil,omitempty" name:"Filter"`
 
-	// 第几页
+	// <p>第几页</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 每页长度
+	// <p>每页长度</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeNatFwInstancesInfoRequest struct {
 	*tchttp.BaseRequest
 	
-	// 获取实例列表过滤字段
+	// <p>获取实例列表过滤字段</p>
 	Filter []*NatFwFilter `json:"Filter,omitnil,omitempty" name:"Filter"`
 
-	// 第几页
+	// <p>第几页</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 每页长度
+	// <p>每页长度</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
@@ -7365,10 +7757,10 @@ func (r *DescribeNatFwInstancesInfoRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeNatFwInstancesInfoResponseParams struct {
-	// 实例卡片信息数组
+	// <p>实例卡片信息数组</p>
 	NatinsLst []*NatInstanceInfo `json:"NatinsLst,omitnil,omitempty" name:"NatinsLst"`
 
-	// nat 防火墙个数
+	// <p>nat 防火墙个数</p>
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7393,38 +7785,38 @@ func (r *DescribeNatFwInstancesInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeNatFwSwitchRequestParams struct {
-	// 偏移量，分页用
+	// <p>偏移量，分页用</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 条数，分页用
+	// <p>条数，分页用</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 过滤条件组合
+	// <p>过滤条件组合</p>
 	Filters []*CommonFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值
+	// <p>desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 排序所用到的字段
+	// <p>排序所用到的字段</p>
 	By *string `json:"By,omitnil,omitempty" name:"By"`
 }
 
 type DescribeNatFwSwitchRequest struct {
 	*tchttp.BaseRequest
 	
-	// 偏移量，分页用
+	// <p>偏移量，分页用</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 条数，分页用
+	// <p>条数，分页用</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 过滤条件组合
+	// <p>过滤条件组合</p>
 	Filters []*CommonFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值
+	// <p>desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 排序所用到的字段
+	// <p>排序所用到的字段</p>
 	By *string `json:"By,omitnil,omitempty" name:"By"`
 }
 
@@ -7453,35 +7845,35 @@ func (r *DescribeNatFwSwitchRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeNatFwSwitchResponseParams struct {
-	// 总数
+	// <p>总数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
-	// NAT边界防火墙开关列表数据
+	// <p>NAT边界防火墙开关列表数据</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data []*NatSwitchListData `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// 开关相关VPC列表
+	// <p>开关相关VPC列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcList []*CommonIdName `json:"VpcList,omitnil,omitempty" name:"VpcList"`
 
-	// 开关相关NAT列表
+	// <p>开关相关NAT列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NatList []*CommonIdName `json:"NatList,omitnil,omitempty" name:"NatList"`
 
-	// 开关相关ROUTE列表
+	// <p>开关相关ROUTE列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RouteList []*CommonIdName `json:"RouteList,omitnil,omitempty" name:"RouteList"`
 
-	// 开启开关个数
+	// <p>开启开关个数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OnNum *int64 `json:"OnNum,omitnil,omitempty" name:"OnNum"`
 
-	// 关闭开关个数
+	// <p>关闭开关个数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OffNum *int64 `json:"OffNum,omitnil,omitempty" name:"OffNum"`
 
-	// 失败开关状态
+	// <p>失败开关状态</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailData []*CommonIdNameStatus `json:"FailData,omitnil,omitempty" name:"FailData"`
 
@@ -7507,32 +7899,32 @@ func (r *DescribeNatFwSwitchResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeNatFwVpcDnsLstRequestParams struct {
-	// natfw 防火墙实例id
+	// <p>natfw 防火墙实例id</p>
 	NatFwInsId *string `json:"NatFwInsId,omitnil,omitempty" name:"NatFwInsId"`
 
-	// natfw 过滤，以','分隔
+	// <p>natfw 过滤，以&#39;,&#39;分隔</p>
 	NatInsIdFilter *string `json:"NatInsIdFilter,omitnil,omitempty" name:"NatInsIdFilter"`
 
-	// 分页页数
+	// <p>分页页数</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 每页最多个数
+	// <p>每页最多个数</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeNatFwVpcDnsLstRequest struct {
 	*tchttp.BaseRequest
 	
-	// natfw 防火墙实例id
+	// <p>natfw 防火墙实例id</p>
 	NatFwInsId *string `json:"NatFwInsId,omitnil,omitempty" name:"NatFwInsId"`
 
-	// natfw 过滤，以','分隔
+	// <p>natfw 过滤，以&#39;,&#39;分隔</p>
 	NatInsIdFilter *string `json:"NatInsIdFilter,omitnil,omitempty" name:"NatInsIdFilter"`
 
-	// 分页页数
+	// <p>分页页数</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 每页最多个数
+	// <p>每页最多个数</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
@@ -7560,13 +7952,13 @@ func (r *DescribeNatFwVpcDnsLstRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeNatFwVpcDnsLstResponseParams struct {
-	// nat防火墙vpc dns 信息数组
+	// <p>nat防火墙vpc dns 信息数组</p>
 	VpcDnsSwitchLst []*VpcDnsInfo `json:"VpcDnsSwitchLst,omitnil,omitempty" name:"VpcDnsSwitchLst"`
 
-	// 返回参数 success成功 failed 失败
+	// <p>返回参数 success成功 failed 失败</p>
 	ReturnMsg *string `json:"ReturnMsg,omitnil,omitempty" name:"ReturnMsg"`
 
-	// 开关总条数
+	// <p>开关总条数</p>
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8255,14 +8647,14 @@ func (r *DescribeSourceAssetResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSwitchErrorRequestParams struct {
-	// EDGE_FW : 互联网边界防火墙 , NDR: 流量分析，VPC_FW：VPC边界防火墙
+	// <p>EDGE_FW : 互联网边界防火墙 , NDR: 流量分析，VPC_FW：VPC边界防火墙</p>
 	FwType *string `json:"FwType,omitnil,omitempty" name:"FwType"`
 }
 
 type DescribeSwitchErrorRequest struct {
 	*tchttp.BaseRequest
 	
-	// EDGE_FW : 互联网边界防火墙 , NDR: 流量分析，VPC_FW：VPC边界防火墙
+	// <p>EDGE_FW : 互联网边界防火墙 , NDR: 流量分析，VPC_FW：VPC边界防火墙</p>
 	FwType *string `json:"FwType,omitnil,omitempty" name:"FwType"`
 }
 
@@ -8287,7 +8679,7 @@ func (r *DescribeSwitchErrorRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSwitchErrorResponseParams struct {
-	// 错误信息列表
+	// <p>错误信息列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data []*SwitchError `json:"Data,omitnil,omitempty" name:"Data"`
 
@@ -8892,11 +9284,11 @@ func (r *DescribeVpcFwCcnPolicyWhiteListRequest) FromJsonString(s string) error 
 
 // Predefined struct for user
 type DescribeVpcFwCcnPolicyWhiteListResponseParams struct {
-	// 支持自动接入和策略路由的CCN列表
+	// <p>支持自动接入和策略路由的CCN列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SupportCcnPolicy []*string `json:"SupportCcnPolicy,omitnil,omitempty" name:"SupportCcnPolicy"`
 
-	// 自动接入中支持自定义cidr的CCN列表
+	// <p>自动接入中支持自定义cidr的CCN列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SupportCcnPolicyCidr []*string `json:"SupportCcnPolicyCidr,omitnil,omitempty" name:"SupportCcnPolicyCidr"`
 
@@ -8922,50 +9314,50 @@ func (r *DescribeVpcFwCcnPolicyWhiteListResponse) FromJsonString(s string) error
 
 // Predefined struct for user
 type DescribeVpcFwGroupSwitchRequestParams struct {
-	// 每页条数
+	// <p>每页条数</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移值
+	// <p>偏移值</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 过滤条件组合
+	// <p>过滤条件组合</p>
 	Filters []*CommonFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 检索的起始时间，可不传
+	// <p>检索的起始时间，可不传</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 检索的截止时间，可不传
+	// <p>检索的截止时间，可不传</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值
+	// <p>desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 排序所用到的字段
+	// <p>排序所用到的字段</p>
 	By *string `json:"By,omitnil,omitempty" name:"By"`
 }
 
 type DescribeVpcFwGroupSwitchRequest struct {
 	*tchttp.BaseRequest
 	
-	// 每页条数
+	// <p>每页条数</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移值
+	// <p>偏移值</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 过滤条件组合
+	// <p>过滤条件组合</p>
 	Filters []*CommonFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 检索的起始时间，可不传
+	// <p>检索的起始时间，可不传</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 检索的截止时间，可不传
+	// <p>检索的截止时间，可不传</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值
+	// <p>desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 排序所用到的字段
+	// <p>排序所用到的字段</p>
 	By *string `json:"By,omitnil,omitempty" name:"By"`
 }
 
@@ -8996,10 +9388,10 @@ func (r *DescribeVpcFwGroupSwitchRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeVpcFwGroupSwitchResponseParams struct {
-	// 开关列表
+	// <p>开关列表</p>
 	SwitchList []*FwGroupSwitchShow `json:"SwitchList,omitnil,omitempty" name:"SwitchList"`
 
-	// 开关总个数
+	// <p>开关总个数</p>
 	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -10419,18 +10811,13 @@ func (r *ModifyAssetSyncRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyAssetSyncResponseParams struct {
-	// 返回状态
-	// 0 请求成功
-	// 2 请求失败
-	// 3 请求失败-频率限制
+	// <p>返回状态<br>0 请求成功<br>2 请求失败<br>3 请求失败-频率限制</p>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// success 成功
-	// 其他失败
+	// <p>success 成功<br>其他失败</p>
 	ReturnMsg *string `json:"ReturnMsg,omitnil,omitempty" name:"ReturnMsg"`
 
-	// 0 成功
-	// 非0 失败
+	// <p>0 成功<br>非0 失败</p>
 	ReturnCode *uint64 `json:"ReturnCode,omitnil,omitempty" name:"ReturnCode"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -10733,32 +11120,32 @@ func (r *ModifyBlockTopResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyClusterFwBypassRequestParams struct {
-	// 防火墙类型，"VPC_FW"-VPC防火墙，"NAT_FW"-NAT防火墙
+	// <p>防火墙类型，&quot;VPC_FW&quot;-VPC防火墙，&quot;NAT_FW&quot;-NAT防火墙</p>
 	FwType *string `json:"FwType,omitnil,omitempty" name:"FwType"`
 
-	// 云联网实例ID
+	// <p>云联网实例ID</p>
 	CcnId *string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
 
-	// Bypass开关，true-开启Bypass（禁用正常下一跳，流量绕过防火墙），false-关闭Bypass（启用正常下一跳，流量经过防火墙）
+	// <p>Bypass开关，true-开启Bypass（禁用正常下一跳，流量绕过防火墙），false-关闭Bypass（启用正常下一跳，流量经过防火墙）</p>
 	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
 
-	// NAT防火墙实例ID，FwType为nat时必填
+	// <p>NAT防火墙实例ID，FwType为nat时必填</p>
 	NatInsId *string `json:"NatInsId,omitnil,omitempty" name:"NatInsId"`
 }
 
 type ModifyClusterFwBypassRequest struct {
 	*tchttp.BaseRequest
 	
-	// 防火墙类型，"VPC_FW"-VPC防火墙，"NAT_FW"-NAT防火墙
+	// <p>防火墙类型，&quot;VPC_FW&quot;-VPC防火墙，&quot;NAT_FW&quot;-NAT防火墙</p>
 	FwType *string `json:"FwType,omitnil,omitempty" name:"FwType"`
 
-	// 云联网实例ID
+	// <p>云联网实例ID</p>
 	CcnId *string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
 
-	// Bypass开关，true-开启Bypass（禁用正常下一跳，流量绕过防火墙），false-关闭Bypass（启用正常下一跳，流量经过防火墙）
+	// <p>Bypass开关，true-开启Bypass（禁用正常下一跳，流量绕过防火墙），false-关闭Bypass（启用正常下一跳，流量经过防火墙）</p>
 	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
 
-	// NAT防火墙实例ID，FwType为nat时必填
+	// <p>NAT防火墙实例ID，FwType为nat时必填</p>
 	NatInsId *string `json:"NatInsId,omitnil,omitempty" name:"NatInsId"`
 }
 
@@ -10862,20 +11249,20 @@ func (r *ModifyClusterNatFwSwitchResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyClusterVpcFwSwitchRequestParams struct {
-	// 开关，0：关闭，1：开启
+	// <p>开关，0：关闭，1：开启</p>
 	Enable *int64 `json:"Enable,omitnil,omitempty" name:"Enable"`
 
-	// 集群模式vpc间防火墙ccn开关信息
+	// <p>集群模式vpc间防火墙ccn开关信息</p>
 	CcnSwitch []*CcnSwitchInfo `json:"CcnSwitch,omitnil,omitempty" name:"CcnSwitch"`
 }
 
 type ModifyClusterVpcFwSwitchRequest struct {
 	*tchttp.BaseRequest
 	
-	// 开关，0：关闭，1：开启
+	// <p>开关，0：关闭，1：开启</p>
 	Enable *int64 `json:"Enable,omitnil,omitempty" name:"Enable"`
 
-	// 集群模式vpc间防火墙ccn开关信息
+	// <p>集群模式vpc间防火墙ccn开关信息</p>
 	CcnSwitch []*CcnSwitchInfo `json:"CcnSwitch,omitnil,omitempty" name:"CcnSwitch"`
 }
 
@@ -11011,42 +11398,32 @@ func (r *ModifyEWRuleStatusResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyEdgeIpSwitchRequestParams struct {
-	// 0 关闭开关
-	// 1 打开开关
-	// 2 不操作开关，此次切换模式
+	// <p>0 关闭开关<br>1 打开开关<br>2 不操作开关，此次切换模式</p>
 	Enable *int64 `json:"Enable,omitnil,omitempty" name:"Enable"`
 
-	// 操作开关详情
+	// <p>操作开关详情</p>
 	EdgeIpSwitchLst []*EdgeIpSwitch `json:"EdgeIpSwitchLst,omitnil,omitempty" name:"EdgeIpSwitchLst"`
 
-	// 0 不自动选择子网
-	// 1 自动选择子网创建私有连接
+	// <p>0 不自动选择子网<br>1 自动选择子网创建私有连接</p>
 	AutoChooseSubnet *int64 `json:"AutoChooseSubnet,omitnil,omitempty" name:"AutoChooseSubnet"`
 
-	// 0 切换为旁路
-	// 1 切换为串行
-	// 2 不切换模式，此次操作开关
+	// <p>0 切换为旁路<br>1 切换为串行<br>2 不切换模式，此次操作开关</p>
 	SwitchMode *int64 `json:"SwitchMode,omitnil,omitempty" name:"SwitchMode"`
 }
 
 type ModifyEdgeIpSwitchRequest struct {
 	*tchttp.BaseRequest
 	
-	// 0 关闭开关
-	// 1 打开开关
-	// 2 不操作开关，此次切换模式
+	// <p>0 关闭开关<br>1 打开开关<br>2 不操作开关，此次切换模式</p>
 	Enable *int64 `json:"Enable,omitnil,omitempty" name:"Enable"`
 
-	// 操作开关详情
+	// <p>操作开关详情</p>
 	EdgeIpSwitchLst []*EdgeIpSwitch `json:"EdgeIpSwitchLst,omitnil,omitempty" name:"EdgeIpSwitchLst"`
 
-	// 0 不自动选择子网
-	// 1 自动选择子网创建私有连接
+	// <p>0 不自动选择子网<br>1 自动选择子网创建私有连接</p>
 	AutoChooseSubnet *int64 `json:"AutoChooseSubnet,omitnil,omitempty" name:"AutoChooseSubnet"`
 
-	// 0 切换为旁路
-	// 1 切换为串行
-	// 2 不切换模式，此次操作开关
+	// <p>0 切换为旁路<br>1 切换为串行<br>2 不切换模式，此次操作开关</p>
 	SwitchMode *int64 `json:"SwitchMode,omitnil,omitempty" name:"SwitchMode"`
 }
 
@@ -11249,30 +11626,26 @@ func (r *ModifyEnterpriseSecurityGroupRuleResponse) FromJsonString(s string) err
 
 // Predefined struct for user
 type ModifyFwGroupSwitchRequestParams struct {
-	// 打开或关闭开关
-	// 0：关闭开关
-	// 1：打开开关
+	// <p>打开或关闭开关<br>0：关闭开关<br>1：打开开关</p>
 	Enable *int64 `json:"Enable,omitnil,omitempty" name:"Enable"`
 
-	// 是否操作全部开关 0 不操作全部开关，1 操作全部开关
+	// <p>是否操作全部开关 0 不操作全部开关，1 操作全部开关</p>
 	AllSwitch *int64 `json:"AllSwitch,omitnil,omitempty" name:"AllSwitch"`
 
-	// 开关列表
+	// <p>开关列表</p>
 	SwitchList []*FwGroupSwitch `json:"SwitchList,omitnil,omitempty" name:"SwitchList"`
 }
 
 type ModifyFwGroupSwitchRequest struct {
 	*tchttp.BaseRequest
 	
-	// 打开或关闭开关
-	// 0：关闭开关
-	// 1：打开开关
+	// <p>打开或关闭开关<br>0：关闭开关<br>1：打开开关</p>
 	Enable *int64 `json:"Enable,omitnil,omitempty" name:"Enable"`
 
-	// 是否操作全部开关 0 不操作全部开关，1 操作全部开关
+	// <p>是否操作全部开关 0 不操作全部开关，1 操作全部开关</p>
 	AllSwitch *int64 `json:"AllSwitch,omitnil,omitempty" name:"AllSwitch"`
 
-	// 开关列表
+	// <p>开关列表</p>
 	SwitchList []*FwGroupSwitch `json:"SwitchList,omitnil,omitempty" name:"SwitchList"`
 }
 
@@ -11374,6 +11747,94 @@ func (r *ModifyIpsModeSwitchResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyIsolateTableRequestParams struct {
+	// <p>资产唯一id</p>
+	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
+
+	// <p>操作动作：编辑、删除</p>
+	ButtonAction *string `json:"ButtonAction,omitnil,omitempty" name:"ButtonAction"`
+
+	// <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+	CfwAiAgentOperationSource *string `json:"CfwAiAgentOperationSource,omitnil,omitempty" name:"CfwAiAgentOperationSource"`
+
+	// <p>起始时间</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>结束时间</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+}
+
+type ModifyIsolateTableRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>资产唯一id</p>
+	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
+
+	// <p>操作动作：编辑、删除</p>
+	ButtonAction *string `json:"ButtonAction,omitnil,omitempty" name:"ButtonAction"`
+
+	// <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+	CfwAiAgentOperationSource *string `json:"CfwAiAgentOperationSource,omitnil,omitempty" name:"CfwAiAgentOperationSource"`
+
+	// <p>起始时间</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>结束时间</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+}
+
+func (r *ModifyIsolateTableRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyIsolateTableRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceID")
+	delete(f, "ButtonAction")
+	delete(f, "CfwAiAgentOperationSource")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyIsolateTableRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyIsolateTableResponseParams struct {
+	// <p>0 成功  非0失败</p>
+	ReturnCode *int64 `json:"ReturnCode,omitnil,omitempty" name:"ReturnCode"`
+
+	// <p>success 成功 其他失败</p>
+	ReturnMsg *string `json:"ReturnMsg,omitnil,omitempty" name:"ReturnMsg"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyIsolateTableResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyIsolateTableResponseParams `json:"Response"`
+}
+
+func (r *ModifyIsolateTableResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyIsolateTableResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyNatAcRuleRequestParams struct {
 	// <p>需要编辑的规则数组,基于Uuid唯一id来修改该规则</p>
 	Rules []*CreateNatRuleItem `json:"Rules,omitnil,omitempty" name:"Rules"`
@@ -11439,38 +11900,38 @@ func (r *ModifyNatAcRuleResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyNatFwReSelectRequestParams struct {
-	// 模式 1：接入模式；0：新增模式
+	// <p>模式 1：接入模式；0：新增模式</p>
 	Mode *int64 `json:"Mode,omitnil,omitempty" name:"Mode"`
 
-	// 防火墙实例id
+	// <p>防火墙实例id</p>
 	CfwInstance *string `json:"CfwInstance,omitnil,omitempty" name:"CfwInstance"`
 
-	// 接入模式重新接入的nat网关列表，其中NatGwList和VpcList只能传递一个。
+	// <p>接入模式重新接入的nat网关列表，其中NatGwList和VpcList只能传递一个。</p>
 	NatGwList []*string `json:"NatGwList,omitnil,omitempty" name:"NatGwList"`
 
-	// 新增模式重新接入的vpc列表，其中NatGwList和NatgwList只能传递一个。
+	// <p>新增模式重新接入的vpc列表，其中NatGwList和NatgwList只能传递一个。</p>
 	VpcList []*string `json:"VpcList,omitnil,omitempty" name:"VpcList"`
 
-	// 指定防火墙使用网段信息
+	// <p>指定防火墙使用网段信息</p>
 	FwCidrInfo *FwCidrInfo `json:"FwCidrInfo,omitnil,omitempty" name:"FwCidrInfo"`
 }
 
 type ModifyNatFwReSelectRequest struct {
 	*tchttp.BaseRequest
 	
-	// 模式 1：接入模式；0：新增模式
+	// <p>模式 1：接入模式；0：新增模式</p>
 	Mode *int64 `json:"Mode,omitnil,omitempty" name:"Mode"`
 
-	// 防火墙实例id
+	// <p>防火墙实例id</p>
 	CfwInstance *string `json:"CfwInstance,omitnil,omitempty" name:"CfwInstance"`
 
-	// 接入模式重新接入的nat网关列表，其中NatGwList和VpcList只能传递一个。
+	// <p>接入模式重新接入的nat网关列表，其中NatGwList和VpcList只能传递一个。</p>
 	NatGwList []*string `json:"NatGwList,omitnil,omitempty" name:"NatGwList"`
 
-	// 新增模式重新接入的vpc列表，其中NatGwList和NatgwList只能传递一个。
+	// <p>新增模式重新接入的vpc列表，其中NatGwList和NatgwList只能传递一个。</p>
 	VpcList []*string `json:"VpcList,omitnil,omitempty" name:"VpcList"`
 
-	// 指定防火墙使用网段信息
+	// <p>指定防火墙使用网段信息</p>
 	FwCidrInfo *FwCidrInfo `json:"FwCidrInfo,omitnil,omitempty" name:"FwCidrInfo"`
 }
 
@@ -11521,32 +11982,32 @@ func (r *ModifyNatFwReSelectResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyNatFwSwitchRequestParams struct {
-	// 开关，0：关闭，1：开启
+	// <p>开关，0：关闭，1：开启</p>
 	Enable *int64 `json:"Enable,omitnil,omitempty" name:"Enable"`
 
-	// 防火墙实例id列表，其中CfwInsIdList，SubnetIdList和RouteTableIdList只能传递一种。
+	// <p>防火墙实例id列表，其中CfwInsIdList，SubnetIdList和RouteTableIdList只能传递一种。</p>
 	CfwInsIdList []*string `json:"CfwInsIdList,omitnil,omitempty" name:"CfwInsIdList"`
 
-	// 子网id列表，其中CfwInsIdList，SubnetIdList和RouteTableIdList只能传递一种。
+	// <p>子网id列表，其中CfwInsIdList，SubnetIdList和RouteTableIdList只能传递一种。</p>
 	SubnetIdList []*string `json:"SubnetIdList,omitnil,omitempty" name:"SubnetIdList"`
 
-	// 路由表id列表，其中CfwInsIdList，SubnetIdList和RouteTableIdList只能传递一种。
+	// <p>路由表id列表，其中CfwInsIdList，SubnetIdList和RouteTableIdList只能传递一种。</p>
 	RouteTableIdList []*string `json:"RouteTableIdList,omitnil,omitempty" name:"RouteTableIdList"`
 }
 
 type ModifyNatFwSwitchRequest struct {
 	*tchttp.BaseRequest
 	
-	// 开关，0：关闭，1：开启
+	// <p>开关，0：关闭，1：开启</p>
 	Enable *int64 `json:"Enable,omitnil,omitempty" name:"Enable"`
 
-	// 防火墙实例id列表，其中CfwInsIdList，SubnetIdList和RouteTableIdList只能传递一种。
+	// <p>防火墙实例id列表，其中CfwInsIdList，SubnetIdList和RouteTableIdList只能传递一种。</p>
 	CfwInsIdList []*string `json:"CfwInsIdList,omitnil,omitempty" name:"CfwInsIdList"`
 
-	// 子网id列表，其中CfwInsIdList，SubnetIdList和RouteTableIdList只能传递一种。
+	// <p>子网id列表，其中CfwInsIdList，SubnetIdList和RouteTableIdList只能传递一种。</p>
 	SubnetIdList []*string `json:"SubnetIdList,omitnil,omitempty" name:"SubnetIdList"`
 
-	// 路由表id列表，其中CfwInsIdList，SubnetIdList和RouteTableIdList只能传递一种。
+	// <p>路由表id列表，其中CfwInsIdList，SubnetIdList和RouteTableIdList只能传递一种。</p>
 	RouteTableIdList []*string `json:"RouteTableIdList,omitnil,omitempty" name:"RouteTableIdList"`
 }
 
@@ -11596,20 +12057,20 @@ func (r *ModifyNatFwSwitchResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyNatFwVpcDnsSwitchRequestParams struct {
-	// nat 防火墙 id
+	// <p>nat 防火墙 id</p>
 	NatFwInsId *string `json:"NatFwInsId,omitnil,omitempty" name:"NatFwInsId"`
 
-	// DNS 开关切换列表
+	// <p>DNS 开关切换列表</p>
 	DnsVpcSwitchLst []*DnsVpcSwitch `json:"DnsVpcSwitchLst,omitnil,omitempty" name:"DnsVpcSwitchLst"`
 }
 
 type ModifyNatFwVpcDnsSwitchRequest struct {
 	*tchttp.BaseRequest
 	
-	// nat 防火墙 id
+	// <p>nat 防火墙 id</p>
 	NatFwInsId *string `json:"NatFwInsId,omitnil,omitempty" name:"NatFwInsId"`
 
-	// DNS 开关切换列表
+	// <p>DNS 开关切换列表</p>
 	DnsVpcSwitchLst []*DnsVpcSwitch `json:"DnsVpcSwitchLst,omitnil,omitempty" name:"DnsVpcSwitchLst"`
 }
 
@@ -11635,7 +12096,7 @@ func (r *ModifyNatFwVpcDnsSwitchRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyNatFwVpcDnsSwitchResponseParams struct {
-	// 修改成功
+	// <p>修改成功</p>
 	ReturnMsg *string `json:"ReturnMsg,omitnil,omitempty" name:"ReturnMsg"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -11660,20 +12121,20 @@ func (r *ModifyNatFwVpcDnsSwitchResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyNatInstanceRequestParams struct {
-	// NAT防火墙实例名称
+	// <p>NAT防火墙实例名称</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// NAT防火墙实例ID
+	// <p>NAT防火墙实例ID</p>
 	NatInstanceId *string `json:"NatInstanceId,omitnil,omitempty" name:"NatInstanceId"`
 }
 
 type ModifyNatInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// NAT防火墙实例名称
+	// <p>NAT防火墙实例名称</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// NAT防火墙实例ID
+	// <p>NAT防火墙实例ID</p>
 	NatInstanceId *string `json:"NatInstanceId,omitnil,omitempty" name:"NatInstanceId"`
 }
 
@@ -11699,11 +12160,10 @@ func (r *ModifyNatInstanceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyNatInstanceResponseParams struct {
-	// 0 正常
-	// -1 异常
+	// <p>0 正常<br>-1 异常</p>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// nat实例唯一ID
+	// <p>nat实例唯一ID</p>
 	NatInstanceId *string `json:"NatInstanceId,omitnil,omitempty" name:"NatInstanceId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -12462,32 +12922,32 @@ func (r *ModifyVpcAcRuleResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyVpcFwGroupRequestParams struct {
-	// 编辑的防火墙(组)ID
+	// <p>编辑的防火墙(组)ID</p>
 	FwGroupId *string `json:"FwGroupId,omitnil,omitempty" name:"FwGroupId"`
 
-	// 修改防火墙(组)名称
+	// <p>修改防火墙(组)名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 编辑的防火墙实例列表
+	// <p>编辑的防火墙实例列表</p>
 	VpcFwInstances []*VpcFwInstance `json:"VpcFwInstances,omitnil,omitempty" name:"VpcFwInstances"`
 
-	// 指定防火墙使用网段信息
+	// <p>指定防火墙使用网段信息</p>
 	FwCidrInfo *FwCidrInfo `json:"FwCidrInfo,omitnil,omitempty" name:"FwCidrInfo"`
 }
 
 type ModifyVpcFwGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 编辑的防火墙(组)ID
+	// <p>编辑的防火墙(组)ID</p>
 	FwGroupId *string `json:"FwGroupId,omitnil,omitempty" name:"FwGroupId"`
 
-	// 修改防火墙(组)名称
+	// <p>修改防火墙(组)名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 编辑的防火墙实例列表
+	// <p>编辑的防火墙实例列表</p>
 	VpcFwInstances []*VpcFwInstance `json:"VpcFwInstances,omitnil,omitempty" name:"VpcFwInstances"`
 
-	// 指定防火墙使用网段信息
+	// <p>指定防火墙使用网段信息</p>
 	FwCidrInfo *FwCidrInfo `json:"FwCidrInfo,omitnil,omitempty" name:"FwCidrInfo"`
 }
 
@@ -13078,14 +13538,14 @@ type OfflineExportTask struct {
 
 // Predefined struct for user
 type OpenClusterNatFwSwitchRequestParams struct {
-	// NAT CCN防火墙开关配置
+	// <p>NAT CCN防火墙开关配置</p>
 	NatCcnSwitch *NatCcnSwitchConfig `json:"NatCcnSwitch,omitnil,omitempty" name:"NatCcnSwitch"`
 }
 
 type OpenClusterNatFwSwitchRequest struct {
 	*tchttp.BaseRequest
 	
-	// NAT CCN防火墙开关配置
+	// <p>NAT CCN防火墙开关配置</p>
 	NatCcnSwitch *NatCcnSwitchConfig `json:"NatCcnSwitch,omitnil,omitempty" name:"NatCcnSwitch"`
 }
 
@@ -14319,26 +14779,26 @@ func (r *SetNatFwDnatRuleResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SetNatFwEipRequestParams struct {
-	// bind：绑定eip；unbind：解绑eip；newAdd：新增防火墙弹性公网ip
+	// <p>bind：绑定eip；unbind：解绑eip；newAdd：新增防火墙弹性公网ip</p>
 	OperationType *string `json:"OperationType,omitnil,omitempty" name:"OperationType"`
 
-	// 防火墙实例id
+	// <p>防火墙实例id</p>
 	CfwInstance *string `json:"CfwInstance,omitnil,omitempty" name:"CfwInstance"`
 
-	// 当OperationType 为bind或unbind操作时，使用该字段。
+	// <p>当OperationType 为bind或unbind操作时，使用该字段。</p>
 	EipList []*string `json:"EipList,omitnil,omitempty" name:"EipList"`
 }
 
 type SetNatFwEipRequest struct {
 	*tchttp.BaseRequest
 	
-	// bind：绑定eip；unbind：解绑eip；newAdd：新增防火墙弹性公网ip
+	// <p>bind：绑定eip；unbind：解绑eip；newAdd：新增防火墙弹性公网ip</p>
 	OperationType *string `json:"OperationType,omitnil,omitempty" name:"OperationType"`
 
-	// 防火墙实例id
+	// <p>防火墙实例id</p>
 	CfwInstance *string `json:"CfwInstance,omitnil,omitempty" name:"CfwInstance"`
 
-	// 当OperationType 为bind或unbind操作时，使用该字段。
+	// <p>当OperationType 为bind或unbind操作时，使用该字段。</p>
 	EipList []*string `json:"EipList,omitnil,omitempty" name:"EipList"`
 }
 
@@ -14584,20 +15044,20 @@ type SwitchListsData struct {
 
 // Predefined struct for user
 type SyncFwOperateRequestParams struct {
-	// 同步操作类型：Route，同步防火墙路由
+	// <p>同步操作类型：Route，同步防火墙路由</p>
 	SyncType *string `json:"SyncType,omitnil,omitempty" name:"SyncType"`
 
-	// 防火墙类型；nat,nat防火墙;ew,vpc间防火墙
+	// <p>防火墙类型；nat,nat防火墙;ew,vpc间防火墙</p>
 	FwType *string `json:"FwType,omitnil,omitempty" name:"FwType"`
 }
 
 type SyncFwOperateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 同步操作类型：Route，同步防火墙路由
+	// <p>同步操作类型：Route，同步防火墙路由</p>
 	SyncType *string `json:"SyncType,omitnil,omitempty" name:"SyncType"`
 
-	// 防火墙类型；nat,nat防火墙;ew,vpc间防火墙
+	// <p>防火墙类型；nat,nat防火墙;ew,vpc间防火墙</p>
 	FwType *string `json:"FwType,omitnil,omitempty" name:"FwType"`
 }
 

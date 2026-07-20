@@ -8429,7 +8429,7 @@ type Voice struct {
 	// <p>语速调节，0.5 为半速慢放，2.0 为两倍速快放，1.0 为正常语速，区间：[0.5, 2.0]，默认1.0</p>
 	Speed *float64 `json:"Speed,omitnil,omitempty" name:"Speed"`
 
-	// <p>音量调节，0 为静音，10 为最大音量，建议保持默认值 1.0，区间：[0, 10]，默认1.0</p>
+	// <p>音量调节，默认1.0，10 为最大音量，建议保持默认值 1.0，区间：(0, 10]</p>
 	Volume *float64 `json:"Volume,omitnil,omitempty" name:"Volume"`
 
 	// <p>音高调节，负值声音更低沉，正值声音更尖锐，0 为原始音高，区间 [-12, 12],  默认0</p>

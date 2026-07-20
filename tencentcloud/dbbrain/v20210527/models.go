@@ -3697,7 +3697,7 @@ type DescribeDBSpaceStatusRequestParams struct {
 	// <p>时间段天数，截止日期为当日，默认为7天。</p>
 	RangeDays *int64 `json:"RangeDays,omitnil,omitempty" name:"RangeDays"`
 
-	// <p>服务产品类型，支持值包括： &quot;mysql&quot; - 云数据库 MySQL， &quot;cynosdb&quot; - 云数据库 CynosDB  for MySQL，&quot;mongodb&quot; - 云数据库 MongoDB，&quot;dcdb&quot; -（TDSQL MySQL 版）、&quot;mariadb&quot; -（TDSQL MariaDB 版）默认为&quot;mysql&quot;。</p>
+	// <p>服务产品类型，支持值包括： &quot;mysql&quot; - 云数据库 MySQL， &quot;cynosdb&quot; - 云数据库 CynosDB  for MySQL，&quot;mongodb&quot; - 云数据库 MongoDB，&quot;dcdb&quot; -（TDSQL MySQL 版）、&quot;mariadb&quot; -（TDSQL MariaDB 版）、&quot;tdstore&quot; - 云数据库TDSQL Boundless，默认为&quot;mysql&quot;。</p>
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 }
 
@@ -3710,7 +3710,7 @@ type DescribeDBSpaceStatusRequest struct {
 	// <p>时间段天数，截止日期为当日，默认为7天。</p>
 	RangeDays *int64 `json:"RangeDays,omitnil,omitempty" name:"RangeDays"`
 
-	// <p>服务产品类型，支持值包括： &quot;mysql&quot; - 云数据库 MySQL， &quot;cynosdb&quot; - 云数据库 CynosDB  for MySQL，&quot;mongodb&quot; - 云数据库 MongoDB，&quot;dcdb&quot; -（TDSQL MySQL 版）、&quot;mariadb&quot; -（TDSQL MariaDB 版）默认为&quot;mysql&quot;。</p>
+	// <p>服务产品类型，支持值包括： &quot;mysql&quot; - 云数据库 MySQL， &quot;cynosdb&quot; - 云数据库 CynosDB  for MySQL，&quot;mongodb&quot; - 云数据库 MongoDB，&quot;dcdb&quot; -（TDSQL MySQL 版）、&quot;mariadb&quot; -（TDSQL MariaDB 版）、&quot;tdstore&quot; - 云数据库TDSQL Boundless，默认为&quot;mysql&quot;。</p>
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 }
 
@@ -6344,62 +6344,62 @@ func (r *DescribeSlowLogTimeSeriesStatsResponse) FromJsonString(s string) error 
 
 // Predefined struct for user
 type DescribeSlowLogTopSqlsRequestParams struct {
-	// 实例 ID 。
+	// <p>实例 ID。可通过 <a href="https://cloud.tencent.com/document/api/1130/57798">DescribeDiagDBInstances</a> 接口获取。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 开始时间，如“2019-09-10 12:13:14”。
+	// <p>开始时间，如“2019-09-10 12:13:14”。</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 截止时间，如“2019-09-11 10:13:14”，截止时间与开始时间的间隔小于7天。
+	// <p>截止时间，如“2019-09-11 10:13:14”，截止时间与开始时间的间隔小于7天。</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 排序键，目前支持 QueryTime,ExecTimes,RowsSent,LockTime以及RowsExamined 等排序键，默认为QueryTime。
+	// <p>排序键，目前支持 QueryTime,ExecTimes,RowsSent,LockTime以及RowsExamined 等排序键，默认为QueryTime。<br>其中：<br>QueryTime-查询耗时<br>ExecTimes-执行次数<br>RowsSent-返回行数<br>LockTime-锁等待时间<br>RowsExamined-扫描行数</p>
 	SortBy *string `json:"SortBy,omitnil,omitempty" name:"SortBy"`
 
-	// 排序方式，支持ASC（升序）以及DESC（降序），默认为DESC。
+	// <p>排序方式，支持ASC（升序）以及DESC（降序），默认为DESC。</p>
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 返回数量，默认为20，最大值为100。
+	// <p>返回数量，默认为20，最大值为100。</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量，默认为0。
+	// <p>偏移量，默认为0。</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 数据库名称数组。
+	// <p>数据库名称数组。</p>
 	SchemaList []*SchemaItem `json:"SchemaList,omitnil,omitempty" name:"SchemaList"`
 
-	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
+	// <p>服务产品类型，支持值包括： &quot;mysql&quot; - 云数据库 MySQL， &quot;cynosdb&quot; - 云数据库 CynosDB  for MySQL， &quot;tdstore&quot; - 云数据库TDSQL Boundless，默认为&quot;mysql&quot;。</p>
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 }
 
 type DescribeSlowLogTopSqlsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID 。
+	// <p>实例 ID。可通过 <a href="https://cloud.tencent.com/document/api/1130/57798">DescribeDiagDBInstances</a> 接口获取。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 开始时间，如“2019-09-10 12:13:14”。
+	// <p>开始时间，如“2019-09-10 12:13:14”。</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 截止时间，如“2019-09-11 10:13:14”，截止时间与开始时间的间隔小于7天。
+	// <p>截止时间，如“2019-09-11 10:13:14”，截止时间与开始时间的间隔小于7天。</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 排序键，目前支持 QueryTime,ExecTimes,RowsSent,LockTime以及RowsExamined 等排序键，默认为QueryTime。
+	// <p>排序键，目前支持 QueryTime,ExecTimes,RowsSent,LockTime以及RowsExamined 等排序键，默认为QueryTime。<br>其中：<br>QueryTime-查询耗时<br>ExecTimes-执行次数<br>RowsSent-返回行数<br>LockTime-锁等待时间<br>RowsExamined-扫描行数</p>
 	SortBy *string `json:"SortBy,omitnil,omitempty" name:"SortBy"`
 
-	// 排序方式，支持ASC（升序）以及DESC（降序），默认为DESC。
+	// <p>排序方式，支持ASC（升序）以及DESC（降序），默认为DESC。</p>
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 返回数量，默认为20，最大值为100。
+	// <p>返回数量，默认为20，最大值为100。</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量，默认为0。
+	// <p>偏移量，默认为0。</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 数据库名称数组。
+	// <p>数据库名称数组。</p>
 	SchemaList []*SchemaItem `json:"SchemaList,omitnil,omitempty" name:"SchemaList"`
 
-	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
+	// <p>服务产品类型，支持值包括： &quot;mysql&quot; - 云数据库 MySQL， &quot;cynosdb&quot; - 云数据库 CynosDB  for MySQL， &quot;tdstore&quot; - 云数据库TDSQL Boundless，默认为&quot;mysql&quot;。</p>
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 }
 
@@ -6432,10 +6432,10 @@ func (r *DescribeSlowLogTopSqlsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSlowLogTopSqlsResponseParams struct {
-	// 符合条件的记录总数。
+	// <p>符合条件的记录总数。</p>
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 慢日志 top sql 列表
+	// <p>慢日志 top sql 列表</p>
 	Rows []*SlowLogTopSqlItem `json:"Rows,omitnil,omitempty" name:"Rows"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6568,80 +6568,80 @@ func (r *DescribeSlowLogUserHostStatsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSlowLogsRequestParams struct {
-	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB for MySQL，默认为"mysql"。
+	// <p>服务产品类型，支持值包括： &quot;mysql&quot; - 云数据库 MySQL， &quot;cynosdb&quot; - 云数据库 CynosDB for MySQL，&quot;tdstore&quot; - 云数据库TDSQL Boundless，默认为&quot;mysql&quot;。</p>
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 
-	// 实例id。
+	// <p>实例 ID。可通过 <a href="https://cloud.tencent.com/document/api/1130/57798">DescribeDiagDBInstances</a> 接口获取。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// sql模板的md5值
+	// <p>sql 模板的 md5 值，可通过 <a href="https://cloud.tencent.com/document/product/1130/57784">DescribeSlowLogTopSqls</a> 接口获取。</p>
 	Md5 *string `json:"Md5,omitnil,omitempty" name:"Md5"`
 
-	// 开始时间，如“2019-09-10 12:13:14”。
+	// <p>开始时间，如“2019-09-10 12:13:14”。</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 截止时间，如“2019-09-11 10:13:14”，截止时间与开始时间的间隔小于7天。
+	// <p>截止时间，如“2019-09-11 10:13:14”，截止时间与开始时间的间隔小于7天。</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 偏移量，默认为0。
+	// <p>偏移量，默认为0。</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 查询数目，默认为20，最大为100。
+	// <p>查询数目，默认为20，最大为100。</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 数据库列表
+	// <p>数据库列表</p>
 	DB []*string `json:"DB,omitnil,omitempty" name:"DB"`
 
-	// 关键字
+	// <p>关键字</p>
 	Key []*string `json:"Key,omitnil,omitempty" name:"Key"`
 
-	// 用户
+	// <p>用户</p>
 	User []*string `json:"User,omitnil,omitempty" name:"User"`
 
-	// IP
+	// <p>IP 来源</p>
 	Ip []*string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
-	// 耗时区间,耗时区间的左右边界分别对应数组的第0个元素和第一个元素
+	// <p>耗时区间,耗时区间的左右边界分别对应数组的第0个元素和第一个元素</p>
 	Time []*int64 `json:"Time,omitnil,omitempty" name:"Time"`
 }
 
 type DescribeSlowLogsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB for MySQL，默认为"mysql"。
+	// <p>服务产品类型，支持值包括： &quot;mysql&quot; - 云数据库 MySQL， &quot;cynosdb&quot; - 云数据库 CynosDB for MySQL，&quot;tdstore&quot; - 云数据库TDSQL Boundless，默认为&quot;mysql&quot;。</p>
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 
-	// 实例id。
+	// <p>实例 ID。可通过 <a href="https://cloud.tencent.com/document/api/1130/57798">DescribeDiagDBInstances</a> 接口获取。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// sql模板的md5值
+	// <p>sql 模板的 md5 值，可通过 <a href="https://cloud.tencent.com/document/product/1130/57784">DescribeSlowLogTopSqls</a> 接口获取。</p>
 	Md5 *string `json:"Md5,omitnil,omitempty" name:"Md5"`
 
-	// 开始时间，如“2019-09-10 12:13:14”。
+	// <p>开始时间，如“2019-09-10 12:13:14”。</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 截止时间，如“2019-09-11 10:13:14”，截止时间与开始时间的间隔小于7天。
+	// <p>截止时间，如“2019-09-11 10:13:14”，截止时间与开始时间的间隔小于7天。</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 偏移量，默认为0。
+	// <p>偏移量，默认为0。</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 查询数目，默认为20，最大为100。
+	// <p>查询数目，默认为20，最大为100。</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 数据库列表
+	// <p>数据库列表</p>
 	DB []*string `json:"DB,omitnil,omitempty" name:"DB"`
 
-	// 关键字
+	// <p>关键字</p>
 	Key []*string `json:"Key,omitnil,omitempty" name:"Key"`
 
-	// 用户
+	// <p>用户</p>
 	User []*string `json:"User,omitnil,omitempty" name:"User"`
 
-	// IP
+	// <p>IP 来源</p>
 	Ip []*string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
-	// 耗时区间,耗时区间的左右边界分别对应数组的第0个元素和第一个元素
+	// <p>耗时区间,耗时区间的左右边界分别对应数组的第0个元素和第一个元素</p>
 	Time []*int64 `json:"Time,omitnil,omitempty" name:"Time"`
 }
 
@@ -6677,10 +6677,10 @@ func (r *DescribeSlowLogsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSlowLogsResponseParams struct {
-	// 符合条件的记录总数。
+	// <p>符合条件的记录总数。</p>
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 慢日志明细
+	// <p>慢日志明细</p>
 	Rows []*SlowLogInfoItem `json:"Rows,omitnil,omitempty" name:"Rows"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9054,7 +9054,7 @@ type SlowLogHost struct {
 }
 
 type SlowLogInfoItem struct {
-	// 慢日志开始时间
+	// 慢日志开始时间，格式: "yyyy-MM-dd HH:mm:ss"
 	Timestamp *string `json:"Timestamp,omitnil,omitempty" name:"Timestamp"`
 
 	// sql语句

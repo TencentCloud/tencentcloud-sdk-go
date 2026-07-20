@@ -219,6 +219,7 @@ import (
 	ptsv20210728 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/pts/v20210728"
 	rcev20201103 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/rce/v20201103"
 	rcev20250425 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/rce/v20250425"
+	rcev20260130 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/rce/v20260130"
 	redisv20180412 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/redis/v20180412"
 	regionv20220627 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/region/v20220627"
 	rumv20210622 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/rum/v20210622"
@@ -2899,6 +2900,19 @@ func TestRcev20250425Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf("fail to init rce_v20250425 client: %v", err)
+    }
+}
+
+func TestRcev20260130Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := rcev20260130.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf("fail to init rce_v20260130 client: %v", err)
     }
 }
 

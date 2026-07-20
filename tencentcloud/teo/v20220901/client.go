@@ -1037,7 +1037,7 @@ func NewCreateConfigGroupVersionResponse() (response *CreateConfigGroupVersionRe
 }
 
 // CreateConfigGroupVersion
-// 在版本管理模式下，用于创建指定配置组的新版本。版本管理功能内测中，当前仅白名单开放。
+// 在版本管理模式下，用于创建指定配置组的新版本。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1085,7 +1085,7 @@ func (c *Client) CreateConfigGroupVersion(request *CreateConfigGroupVersionReque
 }
 
 // CreateConfigGroupVersion
-// 在版本管理模式下，用于创建指定配置组的新版本。版本管理功能内测中，当前仅白名单开放。
+// 在版本管理模式下，用于创建指定配置组的新版本。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

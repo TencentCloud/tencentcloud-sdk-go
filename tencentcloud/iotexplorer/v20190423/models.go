@@ -20,6 +20,11 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
+type ADPConfig struct {
+	// <p>ADP 平台 AppKey</p>
+	AppKey *string `json:"AppKey,omitnil,omitempty" name:"AppKey"`
+}
+
 type AISearchInfo struct {
 	// 基于搜索结果的总结
 	Summary *string `json:"Summary,omitnil,omitempty" name:"Summary"`
@@ -21204,7 +21209,7 @@ type TalkLLMConfig struct {
 	// <p>超时时间，秒</p>
 	Timeout *int64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
 
-	// <p>OpenAI兼容模型Base URL，仅支持 80 和 443 端口，Type=openai时必填</p>
+	// <p>OpenAI兼容模型的Base URL，Type=openai时必填</p>
 	BaseUrl *string `json:"BaseUrl,omitnil,omitempty" name:"BaseUrl"`
 
 	// <p>模型名称，Type=openai时必填</p>
@@ -21215,6 +21220,9 @@ type TalkLLMConfig struct {
 
 	// <p>额外模型请求体参数，JSON对象字符串，只允许JSON object，不允许普通字符串</p>
 	ExtraBody *string `json:"ExtraBody,omitnil,omitempty" name:"ExtraBody"`
+
+	// <p>ADP 平台配置</p>
+	ADP *ADPConfig `json:"ADP,omitnil,omitempty" name:"ADP"`
 }
 
 type TalkLLMConfigInfo struct {

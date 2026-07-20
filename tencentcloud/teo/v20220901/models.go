@@ -2042,28 +2042,28 @@ type CompressionParameters struct {
 }
 
 type ConfigGroupVersionInfo struct {
-	// 版本 ID。
+	// <p>配置组版本 ID，创建配置组版本时 EdgeOne 分配的唯一资源 ID。</p><p>参数格式：ver-2kplomhisdcb</p><p>取值参考：</p><ul><li><a href="https://cloud.tencent.com/document/api/1552/101867">CreateConfigGroupVersion</a> 返回值 <code>VersionId</code></li><li><a href="https://cloud.tencent.com/document/api/1552/101864">DescribeConfigGroupVersions</a> 返回值 <code>ConfigGroupVersionInfos</code></li></ul>
 	VersionId *string `json:"VersionId,omitnil,omitempty" name:"VersionId"`
 
-	// 版本号。
+	// <p>配置组版本号。该参数仅作展示使用，配置组每创建一次新版本，该版本号自增加一，初始版本的版本号为 &quot;0&quot;。</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/1552/101864">DescribeConfigGroupVersions</a> 返回值 <code>ConfigGroupVersionInfos</code></p>
 	VersionNumber *string `json:"VersionNumber,omitnil,omitempty" name:"VersionNumber"`
 
-	// 配置组 ID。
-	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+	// <p>配置组版本所基于的来源版本 ID，在创建配置组版本时进行指定来源版本 ID，新版本将在该来源版本的配置基础上派生创建。</p><p>参数格式：ver-2kplomhisdcb</p><p>取值参考：</p><ul><li><a href="https://cloud.tencent.com/document/api/1552/101867">CreateConfigGroupVersion</a> 返回值 <code>VersionId</code></li><li><a href="https://cloud.tencent.com/document/api/1552/101864">DescribeConfigGroupVersions</a> 返回值 <code>ConfigGroupVersionInfos</code></li></ul>
+	SourceVersion *string `json:"SourceVersion,omitnil,omitempty" name:"SourceVersion"`
 
-	// 配置组类型，可选项如下：<li>l7_acceleration: 七层加速配置组；</li><li>edge_functions: 边缘函数配置组；</li><li>web_security: Web 防护配置组。</li>
+	// <p>版本归属的配置组类型。</p><p>枚举值：</p><ul><li>l7_acceleration： 七层加速配置组</li><li>edge_functions： 边缘函数配置组</li><li>web_security： Web 防护配置组</li></ul>
 	GroupType *string `json:"GroupType,omitnil,omitempty" name:"GroupType"`
 
-	// 版本描述。
+	// <p>版本归属的配置组 ID。</p><p>参数格式：cg-2kplomhisdcb</p>
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// <p>版本描述。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 版本状态，取值有：
-	// <li>creating：创建中；</li>
-	// <li>inactive：未生效；</li>
-	// <li>active：已生效。</li>
+	// <p>版本生效状态。</p><p>枚举值：</p><ul><li>creating： 版本创建中</li><li>inactive： 版本未生效</li><li>active： 版本已生效</li></ul>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 版本创建时间。时间为世界标准时间（UTC）， 遵循 ISO 8601 标准的日期和时间格式。
+	// <p>版本创建时间。时间为世界标准时间（UTC）， 遵循 ISO 8601 标准的日期和时间格式。</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 }
 
@@ -2824,33 +2824,39 @@ func (r *CreateCLSIndexResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateConfigGroupVersionRequestParams struct {
-	// 站点 ID。
+	// <p>站点 ID。</p>
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 待新建版本的配置组 ID。
+	// <p>待新建版本的配置组 ID。您可以通过查询环境信息接口（DescribeEnvironments）获取完整的环境信息，环境信息中包含了每个配置组类型的配置组 ID。</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/1552/101862">DescribeEnvironments</a> 返回值 <code>EnvInfos</code></p>
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 待导入的配置内容。要求采用 JSON 格式，按照 UTF-8 方式进行编码。配置文件内容可参考下方示例。
+	// <p>待导入的配置内容。要求采用 JSON 格式，按照 UTF-8 方式进行编码。配置文件内容可参考下方示例和 <a href="https://cloud.tencent.com/document/product/1552/125342">配置组语法说明</a>。</p>
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 
-	// 版本描述，可输入最大长度为 50 个字符，可以通过本字段填写该版本的使用场景等。
+	// <p>版本描述，可输入最大长度为 50 个字符，可以通过本字段填写该版本的使用场景等。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>新版本所基于的来源版本 ID。新版本将在该来源版本的配置基础上派生创建。该字段可选，未传入时默认采用当前生产环境正在生效的版本作为来源版本。</p><p>取值参考：</p><ul><li><a href="https://cloud.tencent.com/document/api/1552/101867">CreateConfigGroupVersion</a> 返回值 <code>VersionId</code></li><li><a href="https://cloud.tencent.com/document/api/1552/101864">DescribeConfigGroupVersions</a> 返回值 <code>ConfigGroupVersionInfos</code></li></ul>
+	SourceVersion *string `json:"SourceVersion,omitnil,omitempty" name:"SourceVersion"`
 }
 
 type CreateConfigGroupVersionRequest struct {
 	*tchttp.BaseRequest
 	
-	// 站点 ID。
+	// <p>站点 ID。</p>
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 待新建版本的配置组 ID。
+	// <p>待新建版本的配置组 ID。您可以通过查询环境信息接口（DescribeEnvironments）获取完整的环境信息，环境信息中包含了每个配置组类型的配置组 ID。</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/1552/101862">DescribeEnvironments</a> 返回值 <code>EnvInfos</code></p>
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 待导入的配置内容。要求采用 JSON 格式，按照 UTF-8 方式进行编码。配置文件内容可参考下方示例。
+	// <p>待导入的配置内容。要求采用 JSON 格式，按照 UTF-8 方式进行编码。配置文件内容可参考下方示例和 <a href="https://cloud.tencent.com/document/product/1552/125342">配置组语法说明</a>。</p>
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 
-	// 版本描述，可输入最大长度为 50 个字符，可以通过本字段填写该版本的使用场景等。
+	// <p>版本描述，可输入最大长度为 50 个字符，可以通过本字段填写该版本的使用场景等。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>新版本所基于的来源版本 ID。新版本将在该来源版本的配置基础上派生创建。该字段可选，未传入时默认采用当前生产环境正在生效的版本作为来源版本。</p><p>取值参考：</p><ul><li><a href="https://cloud.tencent.com/document/api/1552/101867">CreateConfigGroupVersion</a> 返回值 <code>VersionId</code></li><li><a href="https://cloud.tencent.com/document/api/1552/101864">DescribeConfigGroupVersions</a> 返回值 <code>ConfigGroupVersionInfos</code></li></ul>
+	SourceVersion *string `json:"SourceVersion,omitnil,omitempty" name:"SourceVersion"`
 }
 
 func (r *CreateConfigGroupVersionRequest) ToJsonString() string {
@@ -2869,6 +2875,7 @@ func (r *CreateConfigGroupVersionRequest) FromJsonString(s string) error {
 	delete(f, "GroupId")
 	delete(f, "Content")
 	delete(f, "Description")
+	delete(f, "SourceVersion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateConfigGroupVersionRequest has unknown keys!", "")
 	}
@@ -2877,7 +2884,7 @@ func (r *CreateConfigGroupVersionRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateConfigGroupVersionResponseParams struct {
-	// 版本 ID。
+	// <p>版本 ID。</p>
 	VersionId *string `json:"VersionId,omitnil,omitempty" name:"VersionId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

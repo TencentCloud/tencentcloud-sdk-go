@@ -6051,6 +6051,140 @@ func (c *Client) DescribeLakeFsTaskResultWithContext(ctx context.Context, reques
     return
 }
 
+func NewDescribeMCPTaskRequest() (request *DescribeMCPTaskRequest) {
+    request = &DescribeMCPTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeMCPTask")
+    
+    
+    return
+}
+
+func NewDescribeMCPTaskResponse() (response *DescribeMCPTaskResponse) {
+    response = &DescribeMCPTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMCPTask
+// 该接口（DescribeTasks）用于查询任务列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FILTERSVALUESNUMBEROUTOFLIMIT = "InvalidParameter.FiltersValuesNumberOutOfLimit"
+//  INVALIDPARAMETER_INVALIDFILTERLENGTH = "InvalidParameter.InvalidFilterLength"
+//  INVALIDPARAMETER_INVALIDTIMEFORMAT = "InvalidParameter.InvalidTimeFormat"
+//  INVALIDPARAMETER_PARAMETERBASE64DECODEFAILED = "InvalidParameter.ParameterBase64DecodeFailed"
+//  INVALIDPARAMETER_PARAMETERNOTFOUNDORBENONE = "InvalidParameter.ParameterNotFoundOrBeNone"
+//  INVALIDPARAMETER_SQLTASKFILTERSKEYTYPENOTMATH = "InvalidParameter.SQLTaskFiltersKeyTypeNotMath"
+//  INVALIDPARAMETER_SQLTASKNOTFOUND = "InvalidParameter.SQLTaskNotFound"
+//  INVALIDPARAMETER_SQLTASKSORTBYTYPENOTMATCH = "InvalidParameter.SQLTaskSortByTypeNotMatch"
+//  INVALIDPARAMETER_SPARKJOBNOTFOUND = "InvalidParameter.SparkJobNotFound"
+//  INVALIDPARAMETER_TASKSTATETYPENOTMATH = "InvalidParameter.TaskStateTypeNotMath"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeMCPTask(request *DescribeMCPTaskRequest) (response *DescribeMCPTaskResponse, err error) {
+    return c.DescribeMCPTaskWithContext(context.Background(), request)
+}
+
+// DescribeMCPTask
+// 该接口（DescribeTasks）用于查询任务列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FILTERSVALUESNUMBEROUTOFLIMIT = "InvalidParameter.FiltersValuesNumberOutOfLimit"
+//  INVALIDPARAMETER_INVALIDFILTERLENGTH = "InvalidParameter.InvalidFilterLength"
+//  INVALIDPARAMETER_INVALIDTIMEFORMAT = "InvalidParameter.InvalidTimeFormat"
+//  INVALIDPARAMETER_PARAMETERBASE64DECODEFAILED = "InvalidParameter.ParameterBase64DecodeFailed"
+//  INVALIDPARAMETER_PARAMETERNOTFOUNDORBENONE = "InvalidParameter.ParameterNotFoundOrBeNone"
+//  INVALIDPARAMETER_SQLTASKFILTERSKEYTYPENOTMATH = "InvalidParameter.SQLTaskFiltersKeyTypeNotMath"
+//  INVALIDPARAMETER_SQLTASKNOTFOUND = "InvalidParameter.SQLTaskNotFound"
+//  INVALIDPARAMETER_SQLTASKSORTBYTYPENOTMATCH = "InvalidParameter.SQLTaskSortByTypeNotMatch"
+//  INVALIDPARAMETER_SPARKJOBNOTFOUND = "InvalidParameter.SparkJobNotFound"
+//  INVALIDPARAMETER_TASKSTATETYPENOTMATH = "InvalidParameter.TaskStateTypeNotMath"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeMCPTaskWithContext(ctx context.Context, request *DescribeMCPTaskRequest) (response *DescribeMCPTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeMCPTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "DescribeMCPTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMCPTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMCPTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeMCPTaskResultRequest() (request *DescribeMCPTaskResultRequest) {
+    request = &DescribeMCPTaskResultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeMCPTaskResult")
+    
+    
+    return
+}
+
+func NewDescribeMCPTaskResultResponse() (response *DescribeMCPTaskResultResponse) {
+    response = &DescribeMCPTaskResultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMCPTaskResult
+// 获取任务结果查询
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_HTTPCLIENTDOREQUESTFAILED = "FailedOperation.HttpClientDoRequestFailed"
+//  FAILEDOPERATION_SQLTASKRESULTOVERSIZE = "FailedOperation.SQLTaskResultOversize"
+//  FAILEDOPERATION_TASKOVERTIMEFETCHRESULT = "FailedOperation.TaskOvertimeFetchResult"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+func (c *Client) DescribeMCPTaskResult(request *DescribeMCPTaskResultRequest) (response *DescribeMCPTaskResultResponse, err error) {
+    return c.DescribeMCPTaskResultWithContext(context.Background(), request)
+}
+
+// DescribeMCPTaskResult
+// 获取任务结果查询
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_HTTPCLIENTDOREQUESTFAILED = "FailedOperation.HttpClientDoRequestFailed"
+//  FAILEDOPERATION_SQLTASKRESULTOVERSIZE = "FailedOperation.SQLTaskResultOversize"
+//  FAILEDOPERATION_TASKOVERTIMEFETCHRESULT = "FailedOperation.TaskOvertimeFetchResult"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+func (c *Client) DescribeMCPTaskResultWithContext(ctx context.Context, request *DescribeMCPTaskResultRequest) (response *DescribeMCPTaskResultResponse, err error) {
+    if request == nil {
+        request = NewDescribeMCPTaskResultRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "DescribeMCPTaskResult")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMCPTaskResult require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMCPTaskResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeNativeSparkSessionsRequest() (request *DescribeNativeSparkSessionsRequest) {
     request = &DescribeNativeSparkSessionsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6074,11 +6208,10 @@ func NewDescribeNativeSparkSessionsResponse() (response *DescribeNativeSparkSess
 // 根据资源组获取spark session列表
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  OPERATIONDENIED = "OperationDenied"
+//  FAILEDOPERATION_HTTPCLIENTDOREQUESTFAILED = "FailedOperation.HttpClientDoRequestFailed"
+//  FAILEDOPERATION_SQLTASKRESULTOVERSIZE = "FailedOperation.SQLTaskResultOversize"
+//  FAILEDOPERATION_TASKOVERTIMEFETCHRESULT = "FailedOperation.TaskOvertimeFetchResult"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
 func (c *Client) DescribeNativeSparkSessions(request *DescribeNativeSparkSessionsRequest) (response *DescribeNativeSparkSessionsResponse, err error) {
     return c.DescribeNativeSparkSessionsWithContext(context.Background(), request)
 }
@@ -6087,11 +6220,10 @@ func (c *Client) DescribeNativeSparkSessions(request *DescribeNativeSparkSession
 // 根据资源组获取spark session列表
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  OPERATIONDENIED = "OperationDenied"
+//  FAILEDOPERATION_HTTPCLIENTDOREQUESTFAILED = "FailedOperation.HttpClientDoRequestFailed"
+//  FAILEDOPERATION_SQLTASKRESULTOVERSIZE = "FailedOperation.SQLTaskResultOversize"
+//  FAILEDOPERATION_TASKOVERTIMEFETCHRESULT = "FailedOperation.TaskOvertimeFetchResult"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
 func (c *Client) DescribeNativeSparkSessionsWithContext(ctx context.Context, request *DescribeNativeSparkSessionsRequest) (response *DescribeNativeSparkSessionsResponse, err error) {
     if request == nil {
         request = NewDescribeNativeSparkSessionsRequest()

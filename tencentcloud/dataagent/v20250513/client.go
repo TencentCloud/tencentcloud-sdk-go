@@ -1467,6 +1467,68 @@ func (c *Client) QueryKnowledgeTaskWithContext(ctx context.Context, request *Que
     return
 }
 
+func NewQueryModelsRequest() (request *QueryModelsRequest) {
+    request = &QueryModelsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dataagent", APIVersion, "QueryModels")
+    
+    
+    return
+}
+
+func NewQueryModelsResponse() (response *QueryModelsResponse) {
+    response = &QueryModelsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// QueryModels
+// 查询聊天支持模型信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALID = "InvalidParameter.Invalid"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) QueryModels(request *QueryModelsRequest) (response *QueryModelsResponse, err error) {
+    return c.QueryModelsWithContext(context.Background(), request)
+}
+
+// QueryModels
+// 查询聊天支持模型信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALID = "InvalidParameter.Invalid"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) QueryModelsWithContext(ctx context.Context, request *QueryModelsRequest) (response *QueryModelsResponse, err error) {
+    if request == nil {
+        request = NewQueryModelsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dataagent", APIVersion, "QueryModels")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryModels require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryModelsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewQuerySceneListRequest() (request *QuerySceneListRequest) {
     request = &QuerySceneListRequest{
         BaseRequest: &tchttp.BaseRequest{},

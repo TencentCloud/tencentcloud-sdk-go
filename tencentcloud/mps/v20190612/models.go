@@ -8112,6 +8112,9 @@ type CreateVideoRedrawTaskRequestParams struct {
 
 	// <p>用户cos信息，用于保存生成结果</p>
 	CosInfo *VideoRedrawCosInfo `json:"CosInfo,omitnil,omitempty" name:"CosInfo"`
+
+	// <p>ai转绘任务信息</p>
+	TaskInfo *VideoRedrawTaskInfo `json:"TaskInfo,omitnil,omitempty" name:"TaskInfo"`
 }
 
 type CreateVideoRedrawTaskRequest struct {
@@ -8122,6 +8125,9 @@ type CreateVideoRedrawTaskRequest struct {
 
 	// <p>用户cos信息，用于保存生成结果</p>
 	CosInfo *VideoRedrawCosInfo `json:"CosInfo,omitnil,omitempty" name:"CosInfo"`
+
+	// <p>ai转绘任务信息</p>
+	TaskInfo *VideoRedrawTaskInfo `json:"TaskInfo,omitnil,omitempty" name:"TaskInfo"`
 }
 
 func (r *CreateVideoRedrawTaskRequest) ToJsonString() string {
@@ -8138,6 +8144,7 @@ func (r *CreateVideoRedrawTaskRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Input")
 	delete(f, "CosInfo")
+	delete(f, "TaskInfo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateVideoRedrawTaskRequest has unknown keys!", "")
 	}
@@ -30405,6 +30412,11 @@ type VideoRedrawCosInfo struct {
 type VideoRedrawInput struct {
 	// <p>输入待转绘的视频URL</p>
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+}
+
+type VideoRedrawTaskInfo struct {
+	// <p>转绘视频风格，如动漫、赛博朋克、水墨等</p>
+	Style *string `json:"Style,omitnil,omitempty" name:"Style"`
 }
 
 type VideoTemplateInfo struct {

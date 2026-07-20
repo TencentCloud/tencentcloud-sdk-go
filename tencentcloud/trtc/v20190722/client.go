@@ -5552,6 +5552,7 @@ func NewTextToSpeechResponse() (response *TextToSpeechResponse) {
 // 语音合成接口
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_LANGUAGE = "InvalidParameter.Language"
 //  INVALIDPARAMETER_MODEL = "InvalidParameter.Model"
 //  INVALIDPARAMETER_PITCH = "InvalidParameter.Pitch"
 //  INVALIDPARAMETER_PRONUNCIATIONDICT = "InvalidParameter.PronunciationDict"
@@ -5573,6 +5574,7 @@ func (c *Client) TextToSpeech(request *TextToSpeechRequest) (response *TextToSpe
 // 语音合成接口
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_LANGUAGE = "InvalidParameter.Language"
 //  INVALIDPARAMETER_MODEL = "InvalidParameter.Model"
 //  INVALIDPARAMETER_PITCH = "InvalidParameter.Pitch"
 //  INVALIDPARAMETER_PRONUNCIATIONDICT = "InvalidParameter.PronunciationDict"
@@ -5624,6 +5626,7 @@ func NewTextToSpeechSSEResponse() (response *TextToSpeechSSEResponse) {
 // SSE流式文本转语音
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_LANGUAGE = "InvalidParameter.Language"
 //  INVALIDPARAMETER_MODEL = "InvalidParameter.Model"
 //  INVALIDPARAMETER_PITCH = "InvalidParameter.Pitch"
 //  INVALIDPARAMETER_PRONUNCIATIONDICT = "InvalidParameter.PronunciationDict"
@@ -5644,6 +5647,7 @@ func (c *Client) TextToSpeechSSE(request *TextToSpeechSSERequest) (response *Tex
 // SSE流式文本转语音
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_LANGUAGE = "InvalidParameter.Language"
 //  INVALIDPARAMETER_MODEL = "InvalidParameter.Model"
 //  INVALIDPARAMETER_PITCH = "InvalidParameter.Pitch"
 //  INVALIDPARAMETER_PRONUNCIATIONDICT = "InvalidParameter.PronunciationDict"

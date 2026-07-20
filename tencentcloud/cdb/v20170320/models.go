@@ -3238,6 +3238,9 @@ type CreateDBInstanceHourRequestParams struct {
 	// <p>集群类型:cage——金融围拢，cdc——CDB ON CDC；dedicate——独享集群</p>
 	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 
+	// <p>是否对磁盘进行加密。仅云盘版实例支持该功能。 指定为 &quot;on&quot; 表示开启加密， 否则不加密。 购买只读实例、灾备实例、新克隆实例时该参数自动和主实例保持一致。</p>
+	DiskEncryption *string `json:"DiskEncryption,omitnil,omitempty" name:"DiskEncryption"`
+
 	// <p>开启或关闭实例销毁保护。on-开启，off-关闭</p>
 	DestroyProtect *string `json:"DestroyProtect,omitnil,omitempty" name:"DestroyProtect"`
 
@@ -3371,6 +3374,9 @@ type CreateDBInstanceHourRequest struct {
 	// <p>集群类型:cage——金融围拢，cdc——CDB ON CDC；dedicate——独享集群</p>
 	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 
+	// <p>是否对磁盘进行加密。仅云盘版实例支持该功能。 指定为 &quot;on&quot; 表示开启加密， 否则不加密。 购买只读实例、灾备实例、新克隆实例时该参数自动和主实例保持一致。</p>
+	DiskEncryption *string `json:"DiskEncryption,omitnil,omitempty" name:"DiskEncryption"`
+
 	// <p>开启或关闭实例销毁保护。on-开启，off-关闭</p>
 	DestroyProtect *string `json:"DestroyProtect,omitnil,omitempty" name:"DestroyProtect"`
 
@@ -3431,6 +3437,7 @@ func (r *CreateDBInstanceHourRequest) FromJsonString(s string) error {
 	delete(f, "ClusterTopology")
 	delete(f, "DiskType")
 	delete(f, "ClusterType")
+	delete(f, "DiskEncryption")
 	delete(f, "DestroyProtect")
 	delete(f, "FourthZone")
 	if len(f) > 0 {
@@ -3592,6 +3599,9 @@ type CreateDBInstanceRequestParams struct {
 	// <p>磁盘类型，单节点（云盘版）或者云盘版实例可以指定此参数。CLOUD_SSD 表示 SSD 云硬盘，CLOUD_HSSD 表示增强型 SSD 云硬盘，CLOUD_PREMIUM 表示高性能云硬盘。<br>说明：单节点（云盘版）、云盘版实例硬盘类型所支持的地域略有不同，具体支持情况请参考 <a href="https://cloud.tencent.com/document/product/236/8458">地域和可用区</a>。</p>
 	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
 
+	// <p>是否对磁盘进行加密。仅云盘版实例支持该功能。 指定为 &quot;on&quot; 表示开启加密， 否则不加密。 购买只读实例、灾备实例、新克隆实例时该参数自动和主实例保持一致。</p>
+	DiskEncryption *string `json:"DiskEncryption,omitnil,omitempty" name:"DiskEncryption"`
+
 	// <p>开启或关闭实例销毁保护。on-开启，off-关闭</p>
 	DestroyProtect *string `json:"DestroyProtect,omitnil,omitempty" name:"DestroyProtect"`
 
@@ -3725,6 +3735,9 @@ type CreateDBInstanceRequest struct {
 	// <p>磁盘类型，单节点（云盘版）或者云盘版实例可以指定此参数。CLOUD_SSD 表示 SSD 云硬盘，CLOUD_HSSD 表示增强型 SSD 云硬盘，CLOUD_PREMIUM 表示高性能云硬盘。<br>说明：单节点（云盘版）、云盘版实例硬盘类型所支持的地域略有不同，具体支持情况请参考 <a href="https://cloud.tencent.com/document/product/236/8458">地域和可用区</a>。</p>
 	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
 
+	// <p>是否对磁盘进行加密。仅云盘版实例支持该功能。 指定为 &quot;on&quot; 表示开启加密， 否则不加密。 购买只读实例、灾备实例、新克隆实例时该参数自动和主实例保持一致。</p>
+	DiskEncryption *string `json:"DiskEncryption,omitnil,omitempty" name:"DiskEncryption"`
+
 	// <p>开启或关闭实例销毁保护。on-开启，off-关闭</p>
 	DestroyProtect *string `json:"DestroyProtect,omitnil,omitempty" name:"DestroyProtect"`
 
@@ -3785,6 +3798,7 @@ func (r *CreateDBInstanceRequest) FromJsonString(s string) error {
 	delete(f, "DataProtectVolume")
 	delete(f, "ClusterTopology")
 	delete(f, "DiskType")
+	delete(f, "DiskEncryption")
 	delete(f, "DestroyProtect")
 	delete(f, "FourthZone")
 	if len(f) > 0 {

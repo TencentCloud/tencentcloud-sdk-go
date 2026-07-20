@@ -101,6 +101,9 @@ const (
 	// 实例名称仅支持以大小写字符或中文开头，支持数字、英文句号、或段划线、下划线。
 	INVALIDPARAMETERVALUE_INSTANCENAME = "InvalidParameterValue.InstanceName"
 
+	// 参数 `%(parameter)s` 值 `%(value)s` 数量超过限制。不能大于 `%(limit)s` 个。
+	INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+
 	// 终端节点组监听端口要和终端节点组所属监听器端口保持一致。
 	INVALIDPARAMETERVALUE_LISTENERPORTNOTEQUAL = "InvalidParameterValue.ListenerPortNotEqual"
 
@@ -230,6 +233,9 @@ const (
 	// 存在监听器，不支持当前操作。
 	UNSUPPORTEDOPERATION_EXISTLISTENER = "UnsupportedOperation.ExistListener"
 
+	// 存在第三方节点，不允许配置默认准许所有流量访问通道策略。
+	UNSUPPORTEDOPERATION_EXISTTHIRDPARTYNODES = "UnsupportedOperation.ExistThirdPartyNodes"
+
 	// 转发规则不支持配置默认终端节点组。
 	UNSUPPORTEDOPERATION_FORWARDGROUPFORWARDINGRULEUNSUPPORTEDDEFAULTENDPOINTGROUP = "UnsupportedOperation.ForwardGroupForwardingRuleUnsupportedDefaultEndpointGroup"
 
@@ -259,6 +265,9 @@ const (
 
 	// 仅TCP监听器，支持通过TOA获取客户端IP。
 	UNSUPPORTEDOPERATION_ONLYTCPLISTENERSUPPORTTOA = "UnsupportedOperation.OnlyTcpListenerSupportToa"
+
+	// 请求参数错误，不支持当前操作。具体出错信息为：`%(info)s` 。
+	UNSUPPORTEDOPERATION_REQUESTPARAMETERSERROR = "UnsupportedOperation.RequestParametersError"
 
 	// 当前操作使终端节点组域名和全球加速实例域名一致，不支持当前操作。
 	UNSUPPORTEDOPERATION_SAMEDOMAIN = "UnsupportedOperation.SameDomain"

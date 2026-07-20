@@ -6818,20 +6818,35 @@ type UserWorkloadGroup struct {
 }
 
 type WorkloadGroupConfig struct {
-	// 资源组名称
+	// <p>资源组名称</p>
 	WorkloadGroupName *string `json:"WorkloadGroupName,omitnil,omitempty" name:"WorkloadGroupName"`
 
-	// CPU权重
+	// <p>CPU权重</p>
 	CpuShare *int64 `json:"CpuShare,omitnil,omitempty" name:"CpuShare"`
 
-	// 内存限制，所有资源组的内存限制值之和应该小于等于100
+	// <p>内存限制，所有资源组的内存限制值之和应该小于等于100</p>
 	MemoryLimit *int64 `json:"MemoryLimit,omitnil,omitempty" name:"MemoryLimit"`
 
-	// 是否允许超配分配
+	// <p>是否允许超配分配</p>
 	EnableMemoryOverCommit *bool `json:"EnableMemoryOverCommit,omitnil,omitempty" name:"EnableMemoryOverCommit"`
 
-	// cpu硬限制
+	// <p>cpu硬限制</p>
 	CpuHardLimit *string `json:"CpuHardLimit,omitnil,omitempty" name:"CpuHardLimit"`
+
+	// <p>4.1+ 新增；默认值为 0（不预留），根据业务可设为 5/10</p>
+	MinCpuPercent *int64 `json:"MinCpuPercent,omitnil,omitempty" name:"MinCpuPercent"`
+
+	// <p>4.1+ 新增；默认值为 0（不预留），根据业务可设为 5/10</p>
+	MinMemoryPercent *int64 `json:"MinMemoryPercent,omitnil,omitempty" name:"MinMemoryPercent"`
+
+	// <p>2.1+ 新增；不传走内核默认（Integer.MAX_VALUE=2147483647），建议按业务并发量配置</p>
+	MaxConcurrencyNum *int64 `json:"MaxConcurrencyNum,omitnil,omitempty" name:"MaxConcurrencyNum"`
+
+	// <p>2.1+ 新增；0=不排队，建议为 MaxConcurrencyNum 的 50%</p>
+	MaxQueueSize *int64 `json:"MaxQueueSize,omitnil,omitempty" name:"MaxQueueSize"`
+
+	// <p>2.1+ 新增；单位 ms，建议 5000（5s）</p>
+	QueueTimeout *int64 `json:"QueueTimeout,omitnil,omitempty" name:"QueueTimeout"`
 }
 
 type ZoneInfo struct {

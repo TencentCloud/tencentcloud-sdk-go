@@ -67,6 +67,23 @@ type AcceleratorRegionSet struct {
 	IsTencentRegion *uint64 `json:"IsTencentRegion,omitnil,omitempty" name:"IsTencentRegion"`
 }
 
+type AclEntries struct {
+	// <p>协议。</p><p>入参限制：支持配置&#39;TCP&#39;, &#39;UDP&#39;, &#39;ALL&#39;；</p>
+	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
+
+	// <p>端口。</p>
+	Port *string `json:"Port,omitnil,omitempty" name:"Port"`
+
+	// <p>网段。</p>
+	SourceCidrBlock *string `json:"SourceCidrBlock,omitnil,omitempty" name:"SourceCidrBlock"`
+
+	// <p>执行动作。</p><p>入参限制：支持配置&#39;ACCEPT&#39;, &#39;DROP&#39;；</p>
+	Policy *string `json:"Policy,omitnil,omitempty" name:"Policy"`
+
+	// <p>描述信息，最大长度不能超过100个字节。</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
 // Predefined struct for user
 type CreateAccelerateAreasRequestParams struct {
 	// <p>全球加速实例ID。</p>
@@ -413,6 +430,147 @@ func (r *CreateForwardingRuleResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateForwardingRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateGlobalAcceleratorAclPolicyRequestParams struct {
+	// <p>全球加速实例ID。</p>
+	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
+
+	// <p>默认行为。</p><p>枚举值：</p><ul><li>ACCEPT： 默认准许所有流量访问通道</li><li>DROP： 默认拒绝所有流量访问通道</li></ul>
+	DefaultAction *string `json:"DefaultAction,omitnil,omitempty" name:"DefaultAction"`
+}
+
+type CreateGlobalAcceleratorAclPolicyRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>全球加速实例ID。</p>
+	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
+
+	// <p>默认行为。</p><p>枚举值：</p><ul><li>ACCEPT： 默认准许所有流量访问通道</li><li>DROP： 默认拒绝所有流量访问通道</li></ul>
+	DefaultAction *string `json:"DefaultAction,omitnil,omitempty" name:"DefaultAction"`
+}
+
+func (r *CreateGlobalAcceleratorAclPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateGlobalAcceleratorAclPolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GlobalAcceleratorId")
+	delete(f, "DefaultAction")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateGlobalAcceleratorAclPolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateGlobalAcceleratorAclPolicyResponseParams struct {
+	// <p>异步任务ID。</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>访问控制策略ID。</p>
+	GlobalAcceleratorAclPolicyId *string `json:"GlobalAcceleratorAclPolicyId,omitnil,omitempty" name:"GlobalAcceleratorAclPolicyId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateGlobalAcceleratorAclPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateGlobalAcceleratorAclPolicyResponseParams `json:"Response"`
+}
+
+func (r *CreateGlobalAcceleratorAclPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateGlobalAcceleratorAclPolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateGlobalAcceleratorAclRuleRequestParams struct {
+	// 全球加速实例ID。
+	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
+
+	// 安全策略ID
+	GlobalAcceleratorAclPolicyId *string `json:"GlobalAcceleratorAclPolicyId,omitnil,omitempty" name:"GlobalAcceleratorAclPolicyId"`
+
+	// Acl信息。
+	AclEntries []*AclEntries `json:"AclEntries,omitnil,omitempty" name:"AclEntries"`
+}
+
+type CreateGlobalAcceleratorAclRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 全球加速实例ID。
+	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
+
+	// 安全策略ID
+	GlobalAcceleratorAclPolicyId *string `json:"GlobalAcceleratorAclPolicyId,omitnil,omitempty" name:"GlobalAcceleratorAclPolicyId"`
+
+	// Acl信息。
+	AclEntries []*AclEntries `json:"AclEntries,omitnil,omitempty" name:"AclEntries"`
+}
+
+func (r *CreateGlobalAcceleratorAclRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateGlobalAcceleratorAclRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GlobalAcceleratorId")
+	delete(f, "GlobalAcceleratorAclPolicyId")
+	delete(f, "AclEntries")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateGlobalAcceleratorAclRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateGlobalAcceleratorAclRuleResponseParams struct {
+	// 异步任务ID。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// ACL规则ID。
+	GlobalAcceleratorAclRuleIds []*string `json:"GlobalAcceleratorAclRuleIds,omitnil,omitempty" name:"GlobalAcceleratorAclRuleIds"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateGlobalAcceleratorAclRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateGlobalAcceleratorAclRuleResponseParams `json:"Response"`
+}
+
+func (r *CreateGlobalAcceleratorAclRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateGlobalAcceleratorAclRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1028,6 +1186,141 @@ func (r *DeleteForwardingRuleResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteForwardingRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteGlobalAcceleratorAclPolicyRequestParams struct {
+	// 全球加速实例ID。
+	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
+
+	// 访问控制策略ID。
+	GlobalAcceleratorAclPolicyId *string `json:"GlobalAcceleratorAclPolicyId,omitnil,omitempty" name:"GlobalAcceleratorAclPolicyId"`
+}
+
+type DeleteGlobalAcceleratorAclPolicyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 全球加速实例ID。
+	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
+
+	// 访问控制策略ID。
+	GlobalAcceleratorAclPolicyId *string `json:"GlobalAcceleratorAclPolicyId,omitnil,omitempty" name:"GlobalAcceleratorAclPolicyId"`
+}
+
+func (r *DeleteGlobalAcceleratorAclPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteGlobalAcceleratorAclPolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GlobalAcceleratorId")
+	delete(f, "GlobalAcceleratorAclPolicyId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteGlobalAcceleratorAclPolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteGlobalAcceleratorAclPolicyResponseParams struct {
+	// 异步任务ID。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteGlobalAcceleratorAclPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteGlobalAcceleratorAclPolicyResponseParams `json:"Response"`
+}
+
+func (r *DeleteGlobalAcceleratorAclPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteGlobalAcceleratorAclPolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteGlobalAcceleratorAclRuleRequestParams struct {
+	// 全球加速实例ID。
+	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
+
+	// 安全策略ID
+	GlobalAcceleratorAclPolicyId *string `json:"GlobalAcceleratorAclPolicyId,omitnil,omitempty" name:"GlobalAcceleratorAclPolicyId"`
+
+	// Acl规则ID。
+	GlobalAcceleratorAclRuleIds []*string `json:"GlobalAcceleratorAclRuleIds,omitnil,omitempty" name:"GlobalAcceleratorAclRuleIds"`
+}
+
+type DeleteGlobalAcceleratorAclRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 全球加速实例ID。
+	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
+
+	// 安全策略ID
+	GlobalAcceleratorAclPolicyId *string `json:"GlobalAcceleratorAclPolicyId,omitnil,omitempty" name:"GlobalAcceleratorAclPolicyId"`
+
+	// Acl规则ID。
+	GlobalAcceleratorAclRuleIds []*string `json:"GlobalAcceleratorAclRuleIds,omitnil,omitempty" name:"GlobalAcceleratorAclRuleIds"`
+}
+
+func (r *DeleteGlobalAcceleratorAclRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteGlobalAcceleratorAclRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GlobalAcceleratorId")
+	delete(f, "GlobalAcceleratorAclPolicyId")
+	delete(f, "GlobalAcceleratorAclRuleIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteGlobalAcceleratorAclRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteGlobalAcceleratorAclRuleResponseParams struct {
+	// 异步任务ID。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteGlobalAcceleratorAclRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteGlobalAcceleratorAclRuleResponseParams `json:"Response"`
+}
+
+func (r *DeleteGlobalAcceleratorAclRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteGlobalAcceleratorAclRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2746,6 +3039,183 @@ func (r *ModifyForwardingRuleResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyForwardingRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyGlobalAcceleratorAclPolicyRequestParams struct {
+	// <p>全球加速实例ID。</p>
+	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
+
+	// <p>访问控制策略ID。</p>
+	GlobalAcceleratorAclPolicyId *string `json:"GlobalAcceleratorAclPolicyId,omitnil,omitempty" name:"GlobalAcceleratorAclPolicyId"`
+
+	// <p>访问控制策略状态。</p><p>枚举值：</p><ul><li>OPEN： 打开。</li><li>CLOSE： 关闭。</li></ul>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+type ModifyGlobalAcceleratorAclPolicyRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>全球加速实例ID。</p>
+	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
+
+	// <p>访问控制策略ID。</p>
+	GlobalAcceleratorAclPolicyId *string `json:"GlobalAcceleratorAclPolicyId,omitnil,omitempty" name:"GlobalAcceleratorAclPolicyId"`
+
+	// <p>访问控制策略状态。</p><p>枚举值：</p><ul><li>OPEN： 打开。</li><li>CLOSE： 关闭。</li></ul>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+func (r *ModifyGlobalAcceleratorAclPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyGlobalAcceleratorAclPolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GlobalAcceleratorId")
+	delete(f, "GlobalAcceleratorAclPolicyId")
+	delete(f, "Status")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyGlobalAcceleratorAclPolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyGlobalAcceleratorAclPolicyResponseParams struct {
+	// <p>异步任务ID。</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyGlobalAcceleratorAclPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyGlobalAcceleratorAclPolicyResponseParams `json:"Response"`
+}
+
+func (r *ModifyGlobalAcceleratorAclPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyGlobalAcceleratorAclPolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyGlobalAcceleratorAclRuleRequestParams struct {
+	// <p>全球加速实例ID。</p>
+	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
+
+	// <p>安全策略ID</p>
+	GlobalAcceleratorAclPolicyId *string `json:"GlobalAcceleratorAclPolicyId,omitnil,omitempty" name:"GlobalAcceleratorAclPolicyId"`
+
+	// <p>Acl规则ID。</p>
+	GlobalAcceleratorAclRuleId *string `json:"GlobalAcceleratorAclRuleId,omitnil,omitempty" name:"GlobalAcceleratorAclRuleId"`
+
+	// <p>协议。</p><p>入参限制：支持选择&#39;TCP&#39;, &#39;UDP&#39;, &#39;ALL&#39;。</p>
+	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
+
+	// <p>端口。</p>
+	Port *string `json:"Port,omitnil,omitempty" name:"Port"`
+
+	// <p>网段。</p>
+	SourceCidrBlock *string `json:"SourceCidrBlock,omitnil,omitempty" name:"SourceCidrBlock"`
+
+	// <p>动作。</p><p>入参限制：支持选择&#39;ACCEPT&#39;, &#39;DROP&#39;。</p><p>枚举值：</p><ul><li>ACCEPT： 允许。</li><li>DROP： 拒绝。</li></ul>
+	Policy *string `json:"Policy,omitnil,omitempty" name:"Policy"`
+
+	// <p>描述信息，最大长度不能超过100个字节。</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+type ModifyGlobalAcceleratorAclRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>全球加速实例ID。</p>
+	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
+
+	// <p>安全策略ID</p>
+	GlobalAcceleratorAclPolicyId *string `json:"GlobalAcceleratorAclPolicyId,omitnil,omitempty" name:"GlobalAcceleratorAclPolicyId"`
+
+	// <p>Acl规则ID。</p>
+	GlobalAcceleratorAclRuleId *string `json:"GlobalAcceleratorAclRuleId,omitnil,omitempty" name:"GlobalAcceleratorAclRuleId"`
+
+	// <p>协议。</p><p>入参限制：支持选择&#39;TCP&#39;, &#39;UDP&#39;, &#39;ALL&#39;。</p>
+	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
+
+	// <p>端口。</p>
+	Port *string `json:"Port,omitnil,omitempty" name:"Port"`
+
+	// <p>网段。</p>
+	SourceCidrBlock *string `json:"SourceCidrBlock,omitnil,omitempty" name:"SourceCidrBlock"`
+
+	// <p>动作。</p><p>入参限制：支持选择&#39;ACCEPT&#39;, &#39;DROP&#39;。</p><p>枚举值：</p><ul><li>ACCEPT： 允许。</li><li>DROP： 拒绝。</li></ul>
+	Policy *string `json:"Policy,omitnil,omitempty" name:"Policy"`
+
+	// <p>描述信息，最大长度不能超过100个字节。</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+func (r *ModifyGlobalAcceleratorAclRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyGlobalAcceleratorAclRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GlobalAcceleratorId")
+	delete(f, "GlobalAcceleratorAclPolicyId")
+	delete(f, "GlobalAcceleratorAclRuleId")
+	delete(f, "Protocol")
+	delete(f, "Port")
+	delete(f, "SourceCidrBlock")
+	delete(f, "Policy")
+	delete(f, "Description")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyGlobalAcceleratorAclRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyGlobalAcceleratorAclRuleResponseParams struct {
+	// <p>异步任务ID。</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyGlobalAcceleratorAclRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyGlobalAcceleratorAclRuleResponseParams `json:"Response"`
+}
+
+func (r *ModifyGlobalAcceleratorAclRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyGlobalAcceleratorAclRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

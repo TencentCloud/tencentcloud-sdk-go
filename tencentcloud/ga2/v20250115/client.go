@@ -421,6 +421,118 @@ func (c *Client) CreateGlobalAcceleratorWithContext(ctx context.Context, request
     return
 }
 
+func NewCreateGlobalAcceleratorAclPolicyRequest() (request *CreateGlobalAcceleratorAclPolicyRequest) {
+    request = &CreateGlobalAcceleratorAclPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ga2", APIVersion, "CreateGlobalAcceleratorAclPolicy")
+    
+    
+    return
+}
+
+func NewCreateGlobalAcceleratorAclPolicyResponse() (response *CreateGlobalAcceleratorAclPolicyResponse) {
+    response = &CreateGlobalAcceleratorAclPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateGlobalAcceleratorAclPolicy
+// 创建访问控制策略
+//
+// 可能返回的错误码:
+//  UNSUPPORTEDOPERATION_EXISTTHIRDPARTYNODES = "UnsupportedOperation.ExistThirdPartyNodes"
+//  UNSUPPORTEDOPERATION_INSTANCESTATENOTALLOWEDOPERATE = "UnsupportedOperation.InstanceStateNotAllowedOperate"
+func (c *Client) CreateGlobalAcceleratorAclPolicy(request *CreateGlobalAcceleratorAclPolicyRequest) (response *CreateGlobalAcceleratorAclPolicyResponse, err error) {
+    return c.CreateGlobalAcceleratorAclPolicyWithContext(context.Background(), request)
+}
+
+// CreateGlobalAcceleratorAclPolicy
+// 创建访问控制策略
+//
+// 可能返回的错误码:
+//  UNSUPPORTEDOPERATION_EXISTTHIRDPARTYNODES = "UnsupportedOperation.ExistThirdPartyNodes"
+//  UNSUPPORTEDOPERATION_INSTANCESTATENOTALLOWEDOPERATE = "UnsupportedOperation.InstanceStateNotAllowedOperate"
+func (c *Client) CreateGlobalAcceleratorAclPolicyWithContext(ctx context.Context, request *CreateGlobalAcceleratorAclPolicyRequest) (response *CreateGlobalAcceleratorAclPolicyResponse, err error) {
+    if request == nil {
+        request = NewCreateGlobalAcceleratorAclPolicyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ga2", APIVersion, "CreateGlobalAcceleratorAclPolicy")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateGlobalAcceleratorAclPolicy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateGlobalAcceleratorAclPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateGlobalAcceleratorAclRuleRequest() (request *CreateGlobalAcceleratorAclRuleRequest) {
+    request = &CreateGlobalAcceleratorAclRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ga2", APIVersion, "CreateGlobalAcceleratorAclRule")
+    
+    
+    return
+}
+
+func NewCreateGlobalAcceleratorAclRuleResponse() (response *CreateGlobalAcceleratorAclRuleResponse) {
+    response = &CreateGlobalAcceleratorAclRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateGlobalAcceleratorAclRule
+// 创建ACL规则
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INPUTREPEAT = "InvalidParameter.InputRepeat"
+//  INVALIDPARAMETERVALUE_INSTANCEMISMATCH = "InvalidParameterValue.InstanceMismatch"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNSUPPORTEDOPERATION_INSTANCENOTRUNNING = "UnsupportedOperation.InstanceNotRunning"
+//  UNSUPPORTEDOPERATION_INSTANCESTATENOTALLOWEDOPERATE = "UnsupportedOperation.InstanceStateNotAllowedOperate"
+//  UNSUPPORTEDOPERATION_REQUESTPARAMETERSERROR = "UnsupportedOperation.RequestParametersError"
+func (c *Client) CreateGlobalAcceleratorAclRule(request *CreateGlobalAcceleratorAclRuleRequest) (response *CreateGlobalAcceleratorAclRuleResponse, err error) {
+    return c.CreateGlobalAcceleratorAclRuleWithContext(context.Background(), request)
+}
+
+// CreateGlobalAcceleratorAclRule
+// 创建ACL规则
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INPUTREPEAT = "InvalidParameter.InputRepeat"
+//  INVALIDPARAMETERVALUE_INSTANCEMISMATCH = "InvalidParameterValue.InstanceMismatch"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNSUPPORTEDOPERATION_INSTANCENOTRUNNING = "UnsupportedOperation.InstanceNotRunning"
+//  UNSUPPORTEDOPERATION_INSTANCESTATENOTALLOWEDOPERATE = "UnsupportedOperation.InstanceStateNotAllowedOperate"
+//  UNSUPPORTEDOPERATION_REQUESTPARAMETERSERROR = "UnsupportedOperation.RequestParametersError"
+func (c *Client) CreateGlobalAcceleratorAclRuleWithContext(ctx context.Context, request *CreateGlobalAcceleratorAclRuleRequest) (response *CreateGlobalAcceleratorAclRuleResponse, err error) {
+    if request == nil {
+        request = NewCreateGlobalAcceleratorAclRuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ga2", APIVersion, "CreateGlobalAcceleratorAclRule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateGlobalAcceleratorAclRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateGlobalAcceleratorAclRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateListenerRequest() (request *CreateListenerRequest) {
     request = &CreateListenerRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -851,6 +963,116 @@ func (c *Client) DeleteGlobalAcceleratorWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewDeleteGlobalAcceleratorResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteGlobalAcceleratorAclPolicyRequest() (request *DeleteGlobalAcceleratorAclPolicyRequest) {
+    request = &DeleteGlobalAcceleratorAclPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ga2", APIVersion, "DeleteGlobalAcceleratorAclPolicy")
+    
+    
+    return
+}
+
+func NewDeleteGlobalAcceleratorAclPolicyResponse() (response *DeleteGlobalAcceleratorAclPolicyResponse) {
+    response = &DeleteGlobalAcceleratorAclPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteGlobalAcceleratorAclPolicy
+// 删除访问控制策略
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INSTANCEMISMATCH = "InvalidParameterValue.InstanceMismatch"
+//  UNSUPPORTEDOPERATION_DUPLICATEINSTANCESTATUS = "UnsupportedOperation.DuplicateInstanceStatus"
+//  UNSUPPORTEDOPERATION_INSTANCESTATENOTALLOWEDOPERATE = "UnsupportedOperation.InstanceStateNotAllowedOperate"
+func (c *Client) DeleteGlobalAcceleratorAclPolicy(request *DeleteGlobalAcceleratorAclPolicyRequest) (response *DeleteGlobalAcceleratorAclPolicyResponse, err error) {
+    return c.DeleteGlobalAcceleratorAclPolicyWithContext(context.Background(), request)
+}
+
+// DeleteGlobalAcceleratorAclPolicy
+// 删除访问控制策略
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INSTANCEMISMATCH = "InvalidParameterValue.InstanceMismatch"
+//  UNSUPPORTEDOPERATION_DUPLICATEINSTANCESTATUS = "UnsupportedOperation.DuplicateInstanceStatus"
+//  UNSUPPORTEDOPERATION_INSTANCESTATENOTALLOWEDOPERATE = "UnsupportedOperation.InstanceStateNotAllowedOperate"
+func (c *Client) DeleteGlobalAcceleratorAclPolicyWithContext(ctx context.Context, request *DeleteGlobalAcceleratorAclPolicyRequest) (response *DeleteGlobalAcceleratorAclPolicyResponse, err error) {
+    if request == nil {
+        request = NewDeleteGlobalAcceleratorAclPolicyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ga2", APIVersion, "DeleteGlobalAcceleratorAclPolicy")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteGlobalAcceleratorAclPolicy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteGlobalAcceleratorAclPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteGlobalAcceleratorAclRuleRequest() (request *DeleteGlobalAcceleratorAclRuleRequest) {
+    request = &DeleteGlobalAcceleratorAclRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ga2", APIVersion, "DeleteGlobalAcceleratorAclRule")
+    
+    
+    return
+}
+
+func NewDeleteGlobalAcceleratorAclRuleResponse() (response *DeleteGlobalAcceleratorAclRuleResponse) {
+    response = &DeleteGlobalAcceleratorAclRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteGlobalAcceleratorAclRule
+// 删除ACL规则
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INSTANCEMISMATCH = "InvalidParameterValue.InstanceMismatch"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNSUPPORTEDOPERATION_INSTANCESTATENOTALLOWEDOPERATE = "UnsupportedOperation.InstanceStateNotAllowedOperate"
+func (c *Client) DeleteGlobalAcceleratorAclRule(request *DeleteGlobalAcceleratorAclRuleRequest) (response *DeleteGlobalAcceleratorAclRuleResponse, err error) {
+    return c.DeleteGlobalAcceleratorAclRuleWithContext(context.Background(), request)
+}
+
+// DeleteGlobalAcceleratorAclRule
+// 删除ACL规则
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INSTANCEMISMATCH = "InvalidParameterValue.InstanceMismatch"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNSUPPORTEDOPERATION_INSTANCESTATENOTALLOWEDOPERATE = "UnsupportedOperation.InstanceStateNotAllowedOperate"
+func (c *Client) DeleteGlobalAcceleratorAclRuleWithContext(ctx context.Context, request *DeleteGlobalAcceleratorAclRuleRequest) (response *DeleteGlobalAcceleratorAclRuleResponse, err error) {
+    if request == nil {
+        request = NewDeleteGlobalAcceleratorAclRuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ga2", APIVersion, "DeleteGlobalAcceleratorAclRule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteGlobalAcceleratorAclRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteGlobalAcceleratorAclRuleResponse()
     err = c.Send(request, response)
     return
 }
@@ -1763,6 +1985,118 @@ func (c *Client) ModifyGlobalAcceleratorWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewModifyGlobalAcceleratorResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyGlobalAcceleratorAclPolicyRequest() (request *ModifyGlobalAcceleratorAclPolicyRequest) {
+    request = &ModifyGlobalAcceleratorAclPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ga2", APIVersion, "ModifyGlobalAcceleratorAclPolicy")
+    
+    
+    return
+}
+
+func NewModifyGlobalAcceleratorAclPolicyResponse() (response *ModifyGlobalAcceleratorAclPolicyResponse) {
+    response = &ModifyGlobalAcceleratorAclPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyGlobalAcceleratorAclPolicy
+// 修改访问控制策略状态
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INSTANCEMISMATCH = "InvalidParameterValue.InstanceMismatch"
+//  UNSUPPORTEDOPERATION_DUPLICATEINSTANCESTATUS = "UnsupportedOperation.DuplicateInstanceStatus"
+//  UNSUPPORTEDOPERATION_INSTANCESTATENOTALLOWEDOPERATE = "UnsupportedOperation.InstanceStateNotAllowedOperate"
+func (c *Client) ModifyGlobalAcceleratorAclPolicy(request *ModifyGlobalAcceleratorAclPolicyRequest) (response *ModifyGlobalAcceleratorAclPolicyResponse, err error) {
+    return c.ModifyGlobalAcceleratorAclPolicyWithContext(context.Background(), request)
+}
+
+// ModifyGlobalAcceleratorAclPolicy
+// 修改访问控制策略状态
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INSTANCEMISMATCH = "InvalidParameterValue.InstanceMismatch"
+//  UNSUPPORTEDOPERATION_DUPLICATEINSTANCESTATUS = "UnsupportedOperation.DuplicateInstanceStatus"
+//  UNSUPPORTEDOPERATION_INSTANCESTATENOTALLOWEDOPERATE = "UnsupportedOperation.InstanceStateNotAllowedOperate"
+func (c *Client) ModifyGlobalAcceleratorAclPolicyWithContext(ctx context.Context, request *ModifyGlobalAcceleratorAclPolicyRequest) (response *ModifyGlobalAcceleratorAclPolicyResponse, err error) {
+    if request == nil {
+        request = NewModifyGlobalAcceleratorAclPolicyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ga2", APIVersion, "ModifyGlobalAcceleratorAclPolicy")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyGlobalAcceleratorAclPolicy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyGlobalAcceleratorAclPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyGlobalAcceleratorAclRuleRequest() (request *ModifyGlobalAcceleratorAclRuleRequest) {
+    request = &ModifyGlobalAcceleratorAclRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ga2", APIVersion, "ModifyGlobalAcceleratorAclRule")
+    
+    
+    return
+}
+
+func NewModifyGlobalAcceleratorAclRuleResponse() (response *ModifyGlobalAcceleratorAclRuleResponse) {
+    response = &ModifyGlobalAcceleratorAclRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyGlobalAcceleratorAclRule
+// 修改ACL规则
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INPUTDUPLICATEWITHEXISTINGDATA = "InvalidParameter.InputDuplicateWithExistingData"
+//  INVALIDPARAMETER_INPUTMUSTEXISTONE = "InvalidParameter.InputMustExistOne"
+//  INVALIDPARAMETERVALUE_INSTANCEMISMATCH = "InvalidParameterValue.InstanceMismatch"
+//  UNSUPPORTEDOPERATION_INSTANCESTATENOTALLOWEDOPERATE = "UnsupportedOperation.InstanceStateNotAllowedOperate"
+//  UNSUPPORTEDOPERATION_REQUESTPARAMETERSERROR = "UnsupportedOperation.RequestParametersError"
+func (c *Client) ModifyGlobalAcceleratorAclRule(request *ModifyGlobalAcceleratorAclRuleRequest) (response *ModifyGlobalAcceleratorAclRuleResponse, err error) {
+    return c.ModifyGlobalAcceleratorAclRuleWithContext(context.Background(), request)
+}
+
+// ModifyGlobalAcceleratorAclRule
+// 修改ACL规则
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INPUTDUPLICATEWITHEXISTINGDATA = "InvalidParameter.InputDuplicateWithExistingData"
+//  INVALIDPARAMETER_INPUTMUSTEXISTONE = "InvalidParameter.InputMustExistOne"
+//  INVALIDPARAMETERVALUE_INSTANCEMISMATCH = "InvalidParameterValue.InstanceMismatch"
+//  UNSUPPORTEDOPERATION_INSTANCESTATENOTALLOWEDOPERATE = "UnsupportedOperation.InstanceStateNotAllowedOperate"
+//  UNSUPPORTEDOPERATION_REQUESTPARAMETERSERROR = "UnsupportedOperation.RequestParametersError"
+func (c *Client) ModifyGlobalAcceleratorAclRuleWithContext(ctx context.Context, request *ModifyGlobalAcceleratorAclRuleRequest) (response *ModifyGlobalAcceleratorAclRuleResponse, err error) {
+    if request == nil {
+        request = NewModifyGlobalAcceleratorAclRuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ga2", APIVersion, "ModifyGlobalAcceleratorAclRule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyGlobalAcceleratorAclRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyGlobalAcceleratorAclRuleResponse()
     err = c.Send(request, response)
     return
 }

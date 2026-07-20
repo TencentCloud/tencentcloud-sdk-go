@@ -721,6 +721,62 @@ func (c *Client) CreateAlertCenterRuleWithContext(ctx context.Context, request *
     return
 }
 
+func NewCreateAlertCenterRuleAsyncRequest() (request *CreateAlertCenterRuleAsyncRequest) {
+    request = &CreateAlertCenterRuleAsyncRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "CreateAlertCenterRuleAsync")
+    
+    
+    return
+}
+
+func NewCreateAlertCenterRuleAsyncResponse() (response *CreateAlertCenterRuleAsyncResponse) {
+    response = &CreateAlertCenterRuleAsyncResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateAlertCenterRuleAsync
+// 用户告警中心-封禁、放通处置按钮
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateAlertCenterRuleAsync(request *CreateAlertCenterRuleAsyncRequest) (response *CreateAlertCenterRuleAsyncResponse, err error) {
+    return c.CreateAlertCenterRuleAsyncWithContext(context.Background(), request)
+}
+
+// CreateAlertCenterRuleAsync
+// 用户告警中心-封禁、放通处置按钮
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateAlertCenterRuleAsyncWithContext(ctx context.Context, request *CreateAlertCenterRuleAsyncRequest) (response *CreateAlertCenterRuleAsyncResponse, err error) {
+    if request == nil {
+        request = NewCreateAlertCenterRuleAsyncRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "CreateAlertCenterRuleAsync")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAlertCenterRuleAsync require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateAlertCenterRuleAsyncResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateBlockIgnoreRuleListRequest() (request *CreateBlockIgnoreRuleListRequest) {
     request = &CreateBlockIgnoreRuleListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2883,7 +2939,7 @@ func NewDescribeCfwAssetsResponse() (response *DescribeCfwAssetsResponse) {
 }
 
 // DescribeCfwAssets
-// 查询当前租户防火墙纳管资产。默认查询主机资产；仅明确需要 VPC 或子网时传 AssetType。结果在 Response.Data 的 JSON 字符串中。
+// 查询当前租户防火墙纳管资产。首次查询传 AssetType、过滤条件和 Limit；Response.Data.HasMore=true 时，续查只传 NextToken。默认查询 host；broad 查询分页返回资产，exact InstanceId 查询分页返回该实例 fingerprints 且每页重复基础资产。仅明确需要 VPC 或子网时传 AssetType。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_RESPONSETOOLARGE = "FailedOperation.ResponseTooLarge"
@@ -2894,7 +2950,7 @@ func (c *Client) DescribeCfwAssets(request *DescribeCfwAssetsRequest) (response 
 }
 
 // DescribeCfwAssets
-// 查询当前租户防火墙纳管资产。默认查询主机资产；仅明确需要 VPC 或子网时传 AssetType。结果在 Response.Data 的 JSON 字符串中。
+// 查询当前租户防火墙纳管资产。首次查询传 AssetType、过滤条件和 Limit；Response.Data.HasMore=true 时，续查只传 NextToken。默认查询 host；broad 查询分页返回资产，exact InstanceId 查询分页返回该实例 fingerprints 且每页重复基础资产。仅明确需要 VPC 或子网时传 AssetType。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_RESPONSETOOLARGE = "FailedOperation.ResponseTooLarge"
@@ -3371,7 +3427,7 @@ func NewDescribeCfwSwitchesResponse() (response *DescribeCfwSwitchesResponse) {
 }
 
 // DescribeCfwSwitches
-// 查询当前租户防火墙防护开关总览。结果在 Response.Data 的 JSON 字符串中。本接口没有自定义业务入参，不支持过滤、排序或分页。
+// 查询当前租户防火墙防护开关总览。结果在 Response.Data 的 JSON 字符串中。本接口没有自定义业务入参，不支持过滤、排序或分页。border_firewall、nat_firewall、vpc_firewall、ndr 的 available 表示至少一个对应防护开关实际开启，不表示仅已购买或已创建；ips.mode 可能为跟随全局、观察、拦截、严格、关闭或未知。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -3381,7 +3437,7 @@ func (c *Client) DescribeCfwSwitches(request *DescribeCfwSwitchesRequest) (respo
 }
 
 // DescribeCfwSwitches
-// 查询当前租户防火墙防护开关总览。结果在 Response.Data 的 JSON 字符串中。本接口没有自定义业务入参，不支持过滤、排序或分页。
+// 查询当前租户防火墙防护开关总览。结果在 Response.Data 的 JSON 字符串中。本接口没有自定义业务入参，不支持过滤、排序或分页。border_firewall、nat_firewall、vpc_firewall、ndr 的 available 表示至少一个对应防护开关实际开启，不表示仅已购买或已创建；ips.mode 可能为跟随全局、观察、拦截、严格、关闭或未知。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -8099,6 +8155,90 @@ func (c *Client) ModifyIpsModeSwitchWithContext(ctx context.Context, request *Mo
     request.SetContext(ctx)
     
     response = NewModifyIpsModeSwitchResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyIsolateTableRequest() (request *ModifyIsolateTableRequest) {
+    request = &ModifyIsolateTableRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "ModifyIsolateTable")
+    
+    
+    return
+}
+
+func NewModifyIsolateTableResponse() (response *ModifyIsolateTableResponse) {
+    response = &ModifyIsolateTableResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyIsolateTable
+// ModifyIsolateTable 隔离列表编辑和删除操作
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyIsolateTable(request *ModifyIsolateTableRequest) (response *ModifyIsolateTableResponse, err error) {
+    return c.ModifyIsolateTableWithContext(context.Background(), request)
+}
+
+// ModifyIsolateTable
+// ModifyIsolateTable 隔离列表编辑和删除操作
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyIsolateTableWithContext(ctx context.Context, request *ModifyIsolateTableRequest) (response *ModifyIsolateTableResponse, err error) {
+    if request == nil {
+        request = NewModifyIsolateTableRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "ModifyIsolateTable")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyIsolateTable require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyIsolateTableResponse()
     err = c.Send(request, response)
     return
 }
