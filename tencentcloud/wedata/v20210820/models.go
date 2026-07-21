@@ -40513,25 +40513,25 @@ type TableInfo struct {
 }
 
 type TableLineage struct {
-	// 数据源id
+	// <p>数据源id</p>
 	DatasourceId *string `json:"DatasourceId,omitnil,omitempty" name:"DatasourceId"`
 
-	// 库名称
+	// <p>库名称</p>
 	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
 
-	// 表名称
+	// <p>表名称</p>
 	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
 
-	// catalog值
+	// <p>catalog值,仅使用DLC且开启TcLake的支持,其他类型传空即可</p>
 	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
 
-	// schema名称
+	// <p>schema名称</p>
 	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
 
-	// 扩展参数
+	// <p>扩展参数</p>
 	ExtParams []*ExtParam `json:"ExtParams,omitnil,omitempty" name:"ExtParams"`
 
-	// table类型 TABLE｜VIEW
+	// <p>table类型 TABLE｜VIEW</p>
 	TableType *string `json:"TableType,omitnil,omitempty" name:"TableType"`
 }
 

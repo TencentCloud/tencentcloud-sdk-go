@@ -910,6 +910,9 @@ type AvatarScriptInfo struct {
 
 	// <p>话术最后更新时间，UTC时间。<br>注意：UTC时间和北京时间相差八小时。</p>
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// <p>已完成状态的视频URL</p>
+	MediaUrl *string `json:"MediaUrl,omitnil,omitempty" name:"MediaUrl"`
 }
 
 type AvatarTemporaryScriptInfo struct {

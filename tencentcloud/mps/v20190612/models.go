@@ -880,6 +880,15 @@ type AiAnalysisTaskDelLogoOutput struct {
 	// <p>音色克隆的标注文件地址</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VoiceClonedMarkFile *string `json:"VoiceClonedMarkFile,omitnil,omitempty" name:"VoiceClonedMarkFile"`
+
+	// <p>擦除后文件的FileId。</p>
+	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
+
+	// <p>基于画面提取的字幕文件FileId。</p>
+	OriginSubtitleFileId *string `json:"OriginSubtitleFileId,omitnil,omitempty" name:"OriginSubtitleFileId"`
+
+	// <p>基于画面提取的字幕翻译文件FileId    。</p>
+	TranslateSubtitleFileId *string `json:"TranslateSubtitleFileId,omitnil,omitempty" name:"TranslateSubtitleFileId"`
 }
 
 type AiAnalysisTaskDelLogoResult struct {
@@ -954,6 +963,12 @@ type AiAnalysisTaskDubbingOutput struct {
 
 	// <p>额外结果，目前包含字幕文件结果 Url</p>
 	ExtraOutput *string `json:"ExtraOutput,omitnil,omitempty" name:"ExtraOutput"`
+
+	// <p>译制视频FileId。</p>
+	VideoFileId *string `json:"VideoFileId,omitnil,omitempty" name:"VideoFileId"`
+
+	// <p>标记文件FileId。</p>
+	SpeakerFileId *string `json:"SpeakerFileId,omitnil,omitempty" name:"SpeakerFileId"`
 }
 
 type AiAnalysisTaskDubbingResult struct {
@@ -1963,6 +1978,15 @@ type AiRecognitionTaskTransTextSegmentItem struct {
 
 	// <p>字词时间戳信息。</p>
 	Wordlist []*WordResult `json:"Wordlist,omitnil,omitempty" name:"Wordlist"`
+}
+
+type AiRestorationConfig struct {
+	// <p>能力配置开关</p><p>枚举值：</p><ul><li>ON： 开启</li><li>OFF： 关闭</li></ul><p>默认值：OFF</p>
+	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
+
+	// <p>强度类型</p><p>枚举值：</p><ul><li>weak： 弱</li><li>normal： 中</li><li>strong： 强</li></ul><p>默认值：normal</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
 type AiReviewPoliticalAsrTaskInput struct {
@@ -4607,7 +4631,7 @@ type CreateAigcAudioTaskRequestParams struct {
 	// <p>用于传入要求的额外参数。</p>
 	ExtraParameters *AigcAudioExtraParam `json:"ExtraParameters,omitnil,omitempty" name:"ExtraParameters"`
 
-	// <p>用于传入一些模型需要的特殊场景参数，Json格式序列化成字符串。<br>示例MinimaxMusic模型传入歌词时：<br>{"lyric":{"小马在快乐奔跑，花儿在开放"}}</p>
+	// <p>用于传入一些模型需要的特殊场景参数，Json格式序列化成字符串。<br>示例MinimaxMusic模型传入歌词时：<br>{"lyric":{"小马在快乐奔跑，花儿在开放"}}</p><ol><li>MiniMaxMusic生纯音乐参数使用示例: &quot;AdditionalParameters&quot;:&quot;{"is_instrumental":true}&quot;</li></ol>
 	AdditionalParameters *string `json:"AdditionalParameters,omitnil,omitempty" name:"AdditionalParameters"`
 
 	// <p>接口操作者名称。</p>
@@ -4644,7 +4668,7 @@ type CreateAigcAudioTaskRequest struct {
 	// <p>用于传入要求的额外参数。</p>
 	ExtraParameters *AigcAudioExtraParam `json:"ExtraParameters,omitnil,omitempty" name:"ExtraParameters"`
 
-	// <p>用于传入一些模型需要的特殊场景参数，Json格式序列化成字符串。<br>示例MinimaxMusic模型传入歌词时：<br>{"lyric":{"小马在快乐奔跑，花儿在开放"}}</p>
+	// <p>用于传入一些模型需要的特殊场景参数，Json格式序列化成字符串。<br>示例MinimaxMusic模型传入歌词时：<br>{"lyric":{"小马在快乐奔跑，花儿在开放"}}</p><ol><li>MiniMaxMusic生纯音乐参数使用示例: &quot;AdditionalParameters&quot;:&quot;{"is_instrumental":true}&quot;</li></ol>
 	AdditionalParameters *string `json:"AdditionalParameters,omitnil,omitempty" name:"AdditionalParameters"`
 
 	// <p>接口操作者名称。</p>
@@ -18918,19 +18942,22 @@ type ImageProcessPrompt struct {
 }
 
 type ImageProcessTaskOutput struct {
-	// 输出文件的路径。
+	// <p>输出文件的路径。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 
-	// 输出文件的存储位置。
+	// <p>输出文件的存储位置。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitnil,omitempty" name:"OutputStorage"`
 
-	// 输出文件的URL。
+	// <p>输出文件的URL。</p>
 	SignedUrl *string `json:"SignedUrl,omitnil,omitempty" name:"SignedUrl"`
 
-	// 图生文任务的处理结果。
+	// <p>图生文任务的处理结果。</p>
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// <p>VOD标准版FileId</p>
+	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
 }
 
 type ImageProcessTaskResult struct {
@@ -28537,6 +28564,9 @@ type SubtitleResult struct {
 
 	// <p>字幕压制视频路径。</p>
 	SubtitleEmbedPath *string `json:"SubtitleEmbedPath,omitnil,omitempty" name:"SubtitleEmbedPath"`
+
+	// <p>字幕文件FileId。</p>
+	SubtitleFileId *string `json:"SubtitleFileId,omitnil,omitempty" name:"SubtitleFileId"`
 }
 
 type SubtitleShadowConfig struct {
@@ -28753,6 +28783,9 @@ type SubtitleTransResultItem struct {
 
 	// <p>翻译字幕压制视频路径。</p>
 	SubtitleEmbedPath *string `json:"SubtitleEmbedPath,omitnil,omitempty" name:"SubtitleEmbedPath"`
+
+	// <p>字幕文件FileId。</p>
+	SubtitleFileId *string `json:"SubtitleFileId,omitnil,omitempty" name:"SubtitleFileId"`
 }
 
 type SuperResolutionConfig struct {
@@ -30261,17 +30294,23 @@ type UserDefineOcrTextReviewTemplateInfoForUpdate struct {
 }
 
 type VODInputInfo struct {
-	// 媒体处理对象文件所在的 *Bucket ID*
+	// <p>媒体处理对象文件所在的 <em>Bucket ID</em></p>
 	Bucket *string `json:"Bucket,omitnil,omitempty" name:"Bucket"`
 
-	// 媒体处理对象文件所在的 Bucket 所属园区
+	// <p>媒体处理对象文件所在的 Bucket 所属园区</p>
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 媒体处理对象文件的输入路径
+	// <p>媒体处理对象文件的输入路径</p>
 	Object *string `json:"Object,omitnil,omitempty" name:"Object"`
 
-	// 点播专业版应用Id
+	// <p>点播应用Id。</p>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+
+	// <p>是否使用VOD标准版。<br>注意：不填表示使用VOD专业版。</p><p>枚举值：</p><ul><li>0： 使用VOD专业版</li><li>1： 使用VOD标准版，可使用FileId发起任务</li></ul><p>默认值：0</p>
+	VodBasic *int64 `json:"VodBasic,omitnil,omitempty" name:"VodBasic"`
+
+	// <p>VOD标准版FileId</p>
+	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
 }
 
 type VODOutputStorage struct {
@@ -30281,8 +30320,11 @@ type VODOutputStorage struct {
 	// <p>媒体处理生成的文件输出的目标 Bucket 的园区</p>
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// <p>点播专业版应用Id</p>
+	// <p>点播应用Id</p>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+
+	// <p>任务输出是否使用VOD标准版。<br>注意：不填表示使用VOD专业版。</p><p>枚举值：</p><ul><li>0： 不使用VOD标准版</li><li>1： 使用VOD标准版</li></ul>
+	VodBasic *int64 `json:"VodBasic,omitnil,omitempty" name:"VodBasic"`
 }
 
 type VideoComprehensionResultItem struct {
@@ -30335,67 +30377,57 @@ type VideoDramaCosInfo struct {
 }
 
 type VideoEnhanceConfig struct {
-	// 插帧帧率配置（旧）。新用户建议使用FrameRateWithDen配置插帧帧率，支持分数，且效果更好。注意，FrameRate 与FrameRateWithDen 只能二选一，同时配置可能导致任务失败。源帧率大于等于目标帧率时能力不会生效。
-	// 
+	// <p>插帧帧率配置（旧）。新用户建议使用FrameRateWithDen配置插帧帧率，支持分数，且效果更好。注意，FrameRate 与FrameRateWithDen 只能二选一，同时配置可能导致任务失败。源帧率大于等于目标帧率时能力不会生效。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FrameRate *FrameRateConfig `json:"FrameRate,omitnil,omitempty" name:"FrameRate"`
 
-	// 超分配置。源分辨率高于目标分辨率时不对视频做处理。注意与大模型增强不可同时开启。
-	// 
+	// <p>超分配置。源分辨率高于目标分辨率时不对视频做处理。注意与大模型增强不可同时开启。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SuperResolution *SuperResolutionConfig `json:"SuperResolution,omitnil,omitempty" name:"SuperResolution"`
 
-	// HDR配置。
+	// <p>HDR配置。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Hdr *HdrConfig `json:"Hdr,omitnil,omitempty" name:"Hdr"`
 
-	// 视频降噪配置。注意与大模型增强不可同时开启。
-	// 
+	// <p>视频降噪配置。注意与大模型增强不可同时开启。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Denoise *VideoDenoiseConfig `json:"Denoise,omitnil,omitempty" name:"Denoise"`
 
-	// 综合增强配置。注意大模型、综合增强、去毛刺三项里最多配置一项
+	// <p>综合增强配置。注意大模型、综合增强、去毛刺三项里最多配置一项</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageQualityEnhance *ImageQualityEnhanceConfig `json:"ImageQualityEnhance,omitnil,omitempty" name:"ImageQualityEnhance"`
 
-	// 色彩增强配置。
+	// <p>色彩增强配置。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ColorEnhance *ColorEnhanceConfig `json:"ColorEnhance,omitnil,omitempty" name:"ColorEnhance"`
 
-	// 低光照增强配置。
+	// <p>低光照增强配置。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LowLightEnhance *LowLightEnhanceConfig `json:"LowLightEnhance,omitnil,omitempty" name:"LowLightEnhance"`
 
-	// 去划痕配置。
+	// <p>去划痕配置。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScratchRepair *ScratchRepairConfig `json:"ScratchRepair,omitnil,omitempty" name:"ScratchRepair"`
 
-	// 去伪影（毛刺）配置。注意大模型、综合增强、去毛刺三项里最多配置一项
+	// <p>去伪影（毛刺）配置。注意大模型、综合增强、去毛刺三项里最多配置一项</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ArtifactRepair *ArtifactRepairConfig `json:"ArtifactRepair,omitnil,omitempty" name:"ArtifactRepair"`
 
-	// 增强场景配置，可选值：
-	// <li>common（通用），通用增强参数，适用于各种视频类型的基础优化参数，提升整体画质。</li>
-	// <li>AIGC，整体分辨率提升，利用AI技术提升视频整体分辨率，增强画面清晰度。</li>
-	// <li>short_play（短剧），增强面部与字幕细节，突出人物面部表情细节和字幕清晰度，提升观剧体验。</li>
-	// <li>short_video（短视频），优化复杂多样的画质问题，针对短视频的复杂场景，优化画质，解决多种视觉问题。</li>
-	// <li>game（游戏视频），修复运动模糊，提升细节，重点提升游戏细节清晰度，恢复运动模糊区域，使游戏画面内容更清晰，更丰富。</li>
-	// <li>HD_movie_series（超高清影视剧），获得超高清流畅效果，针对广电/OTT超高清视频的诉求，生成4K 60fps HDR的超高清标准视频。支持广电场景格式标准要求。</li>
-	// <li>LQ_material（低清素材/老片修复），整体分辨率提升，针对老旧视频由于拍摄年代较久存在的分辨率不足、模糊失真、划痕损伤和色温等问题进行专门优化。</li>
-	// <li>lecture（秀场/电商/大会/讲座），美化提升面部效果，针对秀场/电商/大会/讲座等存在人物进行讲解的场景，进行人脸区域、噪声消除、毛刺处理的专门优化。</li>
-	// <li>填空字符串代表不使用增强场景</li>
+	// <p>增强场景配置，可选值：</p><li>common（通用），通用增强参数，适用于各种视频类型的基础优化参数，提升整体画质。</li><li>AIGC，整体分辨率提升，利用AI技术提升视频整体分辨率，增强画面清晰度。</li><li>short_play（短剧 &amp; AI 仿真人剧），增强面部与字幕细节，突出人物面部表情细节和字幕清晰度，提升观剧体验。</li><li>ai_comic（AI漫剧），增强漫画风格画面细节。</li><li>short_video（短视频），优化复杂多样的画质问题，针对短视频的复杂场景，优化画质，解决多种视觉问题。</li><li>game（游戏视频），修复运动模糊，提升细节，重点提升游戏细节清晰度，恢复运动模糊区域，使游戏画面内容更清晰，更丰富。</li><li>HD_movie_series（超高清影视剧），获得超高清流畅效果，针对广电/OTT超高清视频的诉求，生成4K 60fps HDR的超高清标准视频。支持广电场景格式标准要求。</li><li>LQ_material（低清素材/老片修复），整体分辨率提升，针对老旧视频由于拍摄年代较久存在的分辨率不足、模糊失真、划痕损伤和色温等问题进行专门优化。</li><li>lecture（秀场/电商/大会/讲座），美化提升面部效果，针对秀场/电商/大会/讲座等存在人物进行讲解的场景，进行人脸区域、噪声消除、毛刺处理的专门优化。</li><li>填空字符串代表不使用增强场景</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnhanceSceneType *string `json:"EnhanceSceneType,omitnil,omitempty" name:"EnhanceSceneType"`
 
-	// 大模型增强配置。注意大模型、综合增强、去毛刺三项里最多配置一项。且不可与超分、降噪同时开启。
-	// 
+	// <p>大模型增强配置。注意大模型、综合增强、去毛刺三项里最多配置一项。且不可与超分、降噪同时开启。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiffusionEnhance *DiffusionEnhanceConfig `json:"DiffusionEnhance,omitnil,omitempty" name:"DiffusionEnhance"`
 
-	// 新插帧帧率配置，支持分数。注意与FrameRate二选一。源帧率大于等于目标帧率时能力不会生效。
-	// 
+	// <p>新插帧帧率配置，支持分数。注意与FrameRate二选一。源帧率大于等于目标帧率时能力不会生效。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FrameRateWithDen *FrameRateWithDenConfig `json:"FrameRateWithDen,omitnil,omitempty" name:"FrameRateWithDen"`
+
+	// <p>大模型修复配置。注意大模型、综合增强、去毛刺三项里最多配置一项。且不可与超分、降噪同时开启。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AiRestoration *AiRestorationConfig `json:"AiRestoration,omitnil,omitempty" name:"AiRestoration"`
 }
 
 type VideoRedrawCosInfo struct {

@@ -2713,6 +2713,9 @@ func (r *DeleteModelServiceAuthTokenResponse) FromJsonString(s string) error {
 type DeleteModelServiceGroupRequestParams struct {
 	// 服务id
 	ServiceGroupId *string `json:"ServiceGroupId,omitnil,omitempty" name:"ServiceGroupId"`
+
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 }
 
 type DeleteModelServiceGroupRequest struct {
@@ -2720,6 +2723,9 @@ type DeleteModelServiceGroupRequest struct {
 	
 	// 服务id
 	ServiceGroupId *string `json:"ServiceGroupId,omitnil,omitempty" name:"ServiceGroupId"`
+
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 }
 
 func (r *DeleteModelServiceGroupRequest) ToJsonString() string {
@@ -2735,6 +2741,7 @@ func (r *DeleteModelServiceGroupRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "ServiceGroupId")
+	delete(f, "TiProjectId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteModelServiceGroupRequest has unknown keys!", "")
 	}
@@ -2768,6 +2775,9 @@ type DeleteModelServiceRequestParams struct {
 	// 服务id
 	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
 
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
 	// 服务分类
 	//
 	// Deprecated: ServiceCategory is deprecated.
@@ -2779,6 +2789,9 @@ type DeleteModelServiceRequest struct {
 	
 	// 服务id
 	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 
 	// 服务分类
 	ServiceCategory *string `json:"ServiceCategory,omitnil,omitempty" name:"ServiceCategory"`
@@ -2797,6 +2810,7 @@ func (r *DeleteModelServiceRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "ServiceId")
+	delete(f, "TiProjectId")
 	delete(f, "ServiceCategory")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteModelServiceRequest has unknown keys!", "")
@@ -4687,6 +4701,9 @@ type DescribeModelServiceCallInfoRequestParams struct {
 	// 服务组id
 	ServiceGroupId *string `json:"ServiceGroupId,omitnil,omitempty" name:"ServiceGroupId"`
 
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
 	// 服务分类
 	//
 	// Deprecated: ServiceCategory is deprecated.
@@ -4698,6 +4715,9 @@ type DescribeModelServiceCallInfoRequest struct {
 	
 	// 服务组id
 	ServiceGroupId *string `json:"ServiceGroupId,omitnil,omitempty" name:"ServiceGroupId"`
+
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 
 	// 服务分类
 	ServiceCategory *string `json:"ServiceCategory,omitnil,omitempty" name:"ServiceCategory"`
@@ -4716,6 +4736,7 @@ func (r *DescribeModelServiceCallInfoRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "ServiceGroupId")
+	delete(f, "TiProjectId")
 	delete(f, "ServiceCategory")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeModelServiceCallInfoRequest has unknown keys!", "")
@@ -4726,19 +4747,15 @@ func (r *DescribeModelServiceCallInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeModelServiceCallInfoResponseParams struct {
 	// 服务调用信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceCallInfo *ServiceCallInfo `json:"ServiceCallInfo,omitnil,omitempty" name:"ServiceCallInfo"`
 
 	// 升级网关调用信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InferGatewayCallInfo *InferGatewayCallInfo `json:"InferGatewayCallInfo,omitnil,omitempty" name:"InferGatewayCallInfo"`
 
 	// 默认nginx网关的调用信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DefaultNginxGatewayCallInfo *DefaultNginxGatewayCallInfo `json:"DefaultNginxGatewayCallInfo,omitnil,omitempty" name:"DefaultNginxGatewayCallInfo"`
 
 	// 太极服务的调用信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TJCallInfo *TJCallInfo `json:"TJCallInfo,omitnil,omitempty" name:"TJCallInfo"`
 
 	// 内网调用信息
@@ -7435,270 +7452,230 @@ func (r *ModifyModelServiceAuthorizationResponse) FromJsonString(s string) error
 
 // Predefined struct for user
 type ModifyModelServiceRequestParams struct {
-	// 服务id
+	// <p>服务id</p>
 	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
 
-	// 模型信息，需要挂载模型时填写
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
+	// <p>模型信息，需要挂载模型时填写</p>
 	ModelInfo *ModelInfo `json:"ModelInfo,omitnil,omitempty" name:"ModelInfo"`
 
-	// 镜像信息，配置服务运行所需的镜像地址等信息
+	// <p>镜像信息，配置服务运行所需的镜像地址等信息</p>
 	ImageInfo *ImageInfo `json:"ImageInfo,omitnil,omitempty" name:"ImageInfo"`
 
-	// 环境变量，可选参数，用于配置容器中的环境变量
+	// <p>环境变量，可选参数，用于配置容器中的环境变量</p>
 	Env []*EnvVar `json:"Env,omitnil,omitempty" name:"Env"`
 
-	// 资源描述，指定预付费模式下的cpu,mem,gpu等信息，后付费无需填写
+	// <p>资源描述，指定预付费模式下的cpu,mem,gpu等信息，后付费无需填写</p>
 	Resources *ResourceInfo `json:"Resources,omitnil,omitempty" name:"Resources"`
 
-	// 使用DescribeBillingSpecs接口返回的规格列表中的值，或者参考实例列表:
-	// TI.S.MEDIUM.POST	2C4G
-	// TI.S.LARGE.POST	4C8G
-	// TI.S.2XLARGE16.POST	8C16G
-	// TI.S.2XLARGE32.POST	8C32G
-	// TI.S.4XLARGE32.POST	16C32G
-	// TI.S.4XLARGE64.POST	16C64G
-	// TI.S.6XLARGE48.POST	24C48G
-	// TI.S.6XLARGE96.POST	24C96G
-	// TI.S.8XLARGE64.POST	32C64G
-	// TI.S.8XLARGE128.POST 32C128G
-	// TI.GN7.LARGE20.POST	4C20G T4*1/4
-	// TI.GN7.2XLARGE40.POST	10C40G T4*1/2
-	// TI.GN7.2XLARGE32.POST	8C32G T4*1
-	// TI.GN7.5XLARGE80.POST	20C80G T4*1
-	// TI.GN7.8XLARGE128.POST	32C128G T4*1
-	// TI.GN7.10XLARGE160.POST	40C160G T4*2
-	// TI.GN7.20XLARGE320.POST	80C320G T4*4
+	// <p>使用DescribeBillingSpecs接口返回的规格列表中的值，或者参考实例列表:<br>TI.S.MEDIUM.POST    2C4G<br>TI.S.LARGE.POST    4C8G<br>TI.S.2XLARGE16.POST    8C16G<br>TI.S.2XLARGE32.POST    8C32G<br>TI.S.4XLARGE32.POST    16C32G<br>TI.S.4XLARGE64.POST    16C64G<br>TI.S.6XLARGE48.POST    24C48G<br>TI.S.6XLARGE96.POST    24C96G<br>TI.S.8XLARGE64.POST    32C64G<br>TI.S.8XLARGE128.POST 32C128G<br>TI.GN7.LARGE20.POST    4C20G T4<em>1/4<br>TI.GN7.2XLARGE40.POST    10C40G T4</em>1/2<br>TI.GN7.2XLARGE32.POST    8C32G T4<em>1<br>TI.GN7.5XLARGE80.POST    20C80G T4</em>1<br>TI.GN7.8XLARGE128.POST    32C128G T4<em>1<br>TI.GN7.10XLARGE160.POST    40C160G T4</em>2<br>TI.GN7.20XLARGE320.POST    80C320G T4*4</p>
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
-	// 扩缩容类型 支持：自动 - "AUTO", 手动 - "MANUAL"
+	// <p>扩缩容类型 支持：自动 - &quot;AUTO&quot;, 手动 - &quot;MANUAL&quot;</p>
 	ScaleMode *string `json:"ScaleMode,omitnil,omitempty" name:"ScaleMode"`
 
-	// 实例数量, 不同计费模式和调节模式下对应关系如下
-	// PREPAID 和 POSTPAID_BY_HOUR:
-	// 手动调节模式下对应 实例数量
-	// 自动调节模式下对应 基于时间的默认策略的实例数量
-	// HYBRID_PAID:
-	// 后付费实例手动调节模式下对应 实例数量
-	// 后付费实例自动调节模式下对应 时间策略的默认策略的实例数量
+	// <p>实例数量, 不同计费模式和调节模式下对应关系如下<br>PREPAID 和 POSTPAID_BY_HOUR:<br>手动调节模式下对应 实例数量<br>自动调节模式下对应 基于时间的默认策略的实例数量<br>HYBRID_PAID:<br>后付费实例手动调节模式下对应 实例数量<br>后付费实例自动调节模式下对应 时间策略的默认策略的实例数量</p>
 	Replicas *int64 `json:"Replicas,omitnil,omitempty" name:"Replicas"`
 
-	// 自动伸缩信息
+	// <p>自动伸缩信息</p>
 	HorizontalPodAutoscaler *HorizontalPodAutoscaler `json:"HorizontalPodAutoscaler,omitnil,omitempty" name:"HorizontalPodAutoscaler"`
 
-	// 是否开启日志投递，开启后需填写配置投递到指定cls
+	// <p>是否开启日志投递，开启后需填写配置投递到指定cls</p>
 	LogEnable *bool `json:"LogEnable,omitnil,omitempty" name:"LogEnable"`
 
-	// 日志配置，需要投递服务日志到指定cls时填写
+	// <p>日志配置，需要投递服务日志到指定cls时填写</p>
 	LogConfig *LogConfig `json:"LogConfig,omitnil,omitempty" name:"LogConfig"`
 
-	// 特殊更新行为： "STOP": 停止, "RESUME": 重启, "SCALE": 扩缩容, 存在这些特殊更新行为时，会忽略其他更新字段
+	// <p>特殊更新行为： &quot;STOP&quot;: 停止, &quot;RESUME&quot;: 重启, &quot;SCALE&quot;: 扩缩容, 存在这些特殊更新行为时，会忽略其他更新字段</p>
 	ServiceAction *string `json:"ServiceAction,omitnil,omitempty" name:"ServiceAction"`
 
-	// 服务的描述
+	// <p>服务的描述</p>
 	ServiceDescription *string `json:"ServiceDescription,omitnil,omitempty" name:"ServiceDescription"`
 
-	// 自动伸缩策略
+	// <p>自动伸缩策略</p>
 	ScaleStrategy *string `json:"ScaleStrategy,omitnil,omitempty" name:"ScaleStrategy"`
 
-	// 自动伸缩策略配置 HPA : 通过HPA进行弹性伸缩 CRON 通过定时任务进行伸缩
+	// <p>自动伸缩策略配置 HPA : 通过HPA进行弹性伸缩 CRON 通过定时任务进行伸缩</p>
 	CronScaleJobs []*CronScaleJob `json:"CronScaleJobs,omitnil,omitempty" name:"CronScaleJobs"`
 
-	// 计费模式[HYBRID_PAID]时生效, 用于标识混合计费模式下的预付费实例数, 若不填则默认为1
+	// <p>计费模式[HYBRID_PAID]时生效, 用于标识混合计费模式下的预付费实例数, 若不填则默认为1</p>
 	HybridBillingPrepaidReplicas *int64 `json:"HybridBillingPrepaidReplicas,omitnil,omitempty" name:"HybridBillingPrepaidReplicas"`
 
-	// 是否开启模型的热更新。默认不开启
+	// <p>是否开启模型的热更新。默认不开启</p>
 	ModelHotUpdateEnable *bool `json:"ModelHotUpdateEnable,omitnil,omitempty" name:"ModelHotUpdateEnable"`
 
-	// 定时停止配置
+	// <p>定时停止配置</p>
 	ScheduledAction *ScheduledAction `json:"ScheduledAction,omitnil,omitempty" name:"ScheduledAction"`
 
-	// 服务限速限流相关配置
+	// <p>服务限速限流相关配置</p>
 	ServiceLimit *ServiceLimit `json:"ServiceLimit,omitnil,omitempty" name:"ServiceLimit"`
 
-	// 挂载配置，目前只支持CFS
+	// <p>挂载配置，目前只支持CFS</p>
 	VolumeMount *VolumeMount `json:"VolumeMount,omitnil,omitempty" name:"VolumeMount"`
 
-	// 是否开启模型的加速, 仅对StableDiffusion(动态加速)格式的模型有效。默认不开启
+	// <p>是否开启模型的加速, 仅对StableDiffusion(动态加速)格式的模型有效。默认不开启</p>
 	ModelTurboEnable *bool `json:"ModelTurboEnable,omitnil,omitempty" name:"ModelTurboEnable"`
 
-	// 服务的启动命令，如遇特殊字符导致配置失败，可使用CommandBase64参数
+	// <p>服务的启动命令，如遇特殊字符导致配置失败，可使用CommandBase64参数</p>
 	Command *string `json:"Command,omitnil,omitempty" name:"Command"`
 
-	// 是否开启TIONE内网访问外部，此功能仅支持后付费机型与从TIONE平台购买的预付费机型；使用从CVM选择资源组时此配置不生效。
+	// <p>是否开启TIONE内网访问外部，此功能仅支持后付费机型与从TIONE平台购买的预付费机型；使用从CVM选择资源组时此配置不生效。</p>
 	ServiceEIP *ServiceEIP `json:"ServiceEIP,omitnil,omitempty" name:"ServiceEIP"`
 
-	// 服务的启动命令，以base64格式进行输入，与Command同时配置时，仅当前参数生效
+	// <p>服务的启动命令，以base64格式进行输入，与Command同时配置时，仅当前参数生效</p>
 	CommandBase64 *string `json:"CommandBase64,omitnil,omitempty" name:"CommandBase64"`
 
-	// 服务端口，仅在非内置镜像时生效，默认8501。不支持输入8501-8510,6006,9092
+	// <p>服务端口，仅在非内置镜像时生效，默认8501。不支持输入8501-8510,6006,9092</p>
 	ServicePort *int64 `json:"ServicePort,omitnil,omitempty" name:"ServicePort"`
 
-	// 单副本下的实例数，仅在部署类型为DIST时生效，默认1
+	// <p>单副本下的实例数，仅在部署类型为DIST时生效，默认1</p>
 	InstancePerReplicas *int64 `json:"InstancePerReplicas,omitnil,omitempty" name:"InstancePerReplicas"`
 
-	// 服务的优雅退出时限。单位为秒，默认值为30，最小为1
+	// <p>服务的优雅退出时限。单位为秒，默认值为30，最小为1</p>
 	TerminationGracePeriodSeconds *int64 `json:"TerminationGracePeriodSeconds,omitnil,omitempty" name:"TerminationGracePeriodSeconds"`
 
-	// 服务实例停止前执行的命令，执行完毕或执行时间超过优雅退出时限后实例结束
+	// <p>服务实例停止前执行的命令，执行完毕或执行时间超过优雅退出时限后实例结束</p>
 	PreStopCommand []*string `json:"PreStopCommand,omitnil,omitempty" name:"PreStopCommand"`
 
-	// 是否启动grpc端口
+	// <p>是否启动grpc端口</p>
 	GrpcEnable *bool `json:"GrpcEnable,omitnil,omitempty" name:"GrpcEnable"`
 
-	// 健康探针
+	// <p>健康探针</p>
 	HealthProbe *HealthProbe `json:"HealthProbe,omitnil,omitempty" name:"HealthProbe"`
 
-	// 滚动更新策略
+	// <p>滚动更新策略</p>
 	RollingUpdate *RollingUpdate `json:"RollingUpdate,omitnil,omitempty" name:"RollingUpdate"`
 
-	// sidecar配置
+	// <p>sidecar配置</p>
 	Sidecar *SidecarSpec `json:"Sidecar,omitnil,omitempty" name:"Sidecar"`
 
-	// 资源组 id
+	// <p>资源组 id</p>
 	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
 
-	// 数据盘批量挂载配置，当前仅支持CFS，仅针对“模型来源-腾讯云存储、模型来源-腾讯云容器镜像、模型来源-资源组、模型来源-数据源”。
+	// <p>数据盘批量挂载配置，当前仅支持CFS，仅针对“模型来源-腾讯云存储、模型来源-腾讯云容器镜像、模型来源-资源组、模型来源-数据源”。</p>
 	VolumeMounts []*VolumeMount `json:"VolumeMounts,omitnil,omitempty" name:"VolumeMounts"`
 
-	// 调度策略 [binpack] 优先占满整机，尽量避免碎卡（默认值）[spread] 优先分散在各个节点，确保服务高可用
+	// <p>调度策略 [binpack] 优先占满整机，尽量避免碎卡（默认值）[spread] 优先分散在各个节点，确保服务高可用</p>
 	SchedulingStrategy *string `json:"SchedulingStrategy,omitnil,omitempty" name:"SchedulingStrategy"`
 
-	// 目标工作空间，不为0则进行迁移，源服务只允许在默认空间
+	// <p>目标工作空间，不为0则进行迁移，源服务只允许在默认空间</p>
 	TargetProjectId *int64 `json:"TargetProjectId,omitnil,omitempty" name:"TargetProjectId"`
 }
 
 type ModifyModelServiceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 服务id
+	// <p>服务id</p>
 	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
 
-	// 模型信息，需要挂载模型时填写
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
+	// <p>模型信息，需要挂载模型时填写</p>
 	ModelInfo *ModelInfo `json:"ModelInfo,omitnil,omitempty" name:"ModelInfo"`
 
-	// 镜像信息，配置服务运行所需的镜像地址等信息
+	// <p>镜像信息，配置服务运行所需的镜像地址等信息</p>
 	ImageInfo *ImageInfo `json:"ImageInfo,omitnil,omitempty" name:"ImageInfo"`
 
-	// 环境变量，可选参数，用于配置容器中的环境变量
+	// <p>环境变量，可选参数，用于配置容器中的环境变量</p>
 	Env []*EnvVar `json:"Env,omitnil,omitempty" name:"Env"`
 
-	// 资源描述，指定预付费模式下的cpu,mem,gpu等信息，后付费无需填写
+	// <p>资源描述，指定预付费模式下的cpu,mem,gpu等信息，后付费无需填写</p>
 	Resources *ResourceInfo `json:"Resources,omitnil,omitempty" name:"Resources"`
 
-	// 使用DescribeBillingSpecs接口返回的规格列表中的值，或者参考实例列表:
-	// TI.S.MEDIUM.POST	2C4G
-	// TI.S.LARGE.POST	4C8G
-	// TI.S.2XLARGE16.POST	8C16G
-	// TI.S.2XLARGE32.POST	8C32G
-	// TI.S.4XLARGE32.POST	16C32G
-	// TI.S.4XLARGE64.POST	16C64G
-	// TI.S.6XLARGE48.POST	24C48G
-	// TI.S.6XLARGE96.POST	24C96G
-	// TI.S.8XLARGE64.POST	32C64G
-	// TI.S.8XLARGE128.POST 32C128G
-	// TI.GN7.LARGE20.POST	4C20G T4*1/4
-	// TI.GN7.2XLARGE40.POST	10C40G T4*1/2
-	// TI.GN7.2XLARGE32.POST	8C32G T4*1
-	// TI.GN7.5XLARGE80.POST	20C80G T4*1
-	// TI.GN7.8XLARGE128.POST	32C128G T4*1
-	// TI.GN7.10XLARGE160.POST	40C160G T4*2
-	// TI.GN7.20XLARGE320.POST	80C320G T4*4
+	// <p>使用DescribeBillingSpecs接口返回的规格列表中的值，或者参考实例列表:<br>TI.S.MEDIUM.POST    2C4G<br>TI.S.LARGE.POST    4C8G<br>TI.S.2XLARGE16.POST    8C16G<br>TI.S.2XLARGE32.POST    8C32G<br>TI.S.4XLARGE32.POST    16C32G<br>TI.S.4XLARGE64.POST    16C64G<br>TI.S.6XLARGE48.POST    24C48G<br>TI.S.6XLARGE96.POST    24C96G<br>TI.S.8XLARGE64.POST    32C64G<br>TI.S.8XLARGE128.POST 32C128G<br>TI.GN7.LARGE20.POST    4C20G T4<em>1/4<br>TI.GN7.2XLARGE40.POST    10C40G T4</em>1/2<br>TI.GN7.2XLARGE32.POST    8C32G T4<em>1<br>TI.GN7.5XLARGE80.POST    20C80G T4</em>1<br>TI.GN7.8XLARGE128.POST    32C128G T4<em>1<br>TI.GN7.10XLARGE160.POST    40C160G T4</em>2<br>TI.GN7.20XLARGE320.POST    80C320G T4*4</p>
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
-	// 扩缩容类型 支持：自动 - "AUTO", 手动 - "MANUAL"
+	// <p>扩缩容类型 支持：自动 - &quot;AUTO&quot;, 手动 - &quot;MANUAL&quot;</p>
 	ScaleMode *string `json:"ScaleMode,omitnil,omitempty" name:"ScaleMode"`
 
-	// 实例数量, 不同计费模式和调节模式下对应关系如下
-	// PREPAID 和 POSTPAID_BY_HOUR:
-	// 手动调节模式下对应 实例数量
-	// 自动调节模式下对应 基于时间的默认策略的实例数量
-	// HYBRID_PAID:
-	// 后付费实例手动调节模式下对应 实例数量
-	// 后付费实例自动调节模式下对应 时间策略的默认策略的实例数量
+	// <p>实例数量, 不同计费模式和调节模式下对应关系如下<br>PREPAID 和 POSTPAID_BY_HOUR:<br>手动调节模式下对应 实例数量<br>自动调节模式下对应 基于时间的默认策略的实例数量<br>HYBRID_PAID:<br>后付费实例手动调节模式下对应 实例数量<br>后付费实例自动调节模式下对应 时间策略的默认策略的实例数量</p>
 	Replicas *int64 `json:"Replicas,omitnil,omitempty" name:"Replicas"`
 
-	// 自动伸缩信息
+	// <p>自动伸缩信息</p>
 	HorizontalPodAutoscaler *HorizontalPodAutoscaler `json:"HorizontalPodAutoscaler,omitnil,omitempty" name:"HorizontalPodAutoscaler"`
 
-	// 是否开启日志投递，开启后需填写配置投递到指定cls
+	// <p>是否开启日志投递，开启后需填写配置投递到指定cls</p>
 	LogEnable *bool `json:"LogEnable,omitnil,omitempty" name:"LogEnable"`
 
-	// 日志配置，需要投递服务日志到指定cls时填写
+	// <p>日志配置，需要投递服务日志到指定cls时填写</p>
 	LogConfig *LogConfig `json:"LogConfig,omitnil,omitempty" name:"LogConfig"`
 
-	// 特殊更新行为： "STOP": 停止, "RESUME": 重启, "SCALE": 扩缩容, 存在这些特殊更新行为时，会忽略其他更新字段
+	// <p>特殊更新行为： &quot;STOP&quot;: 停止, &quot;RESUME&quot;: 重启, &quot;SCALE&quot;: 扩缩容, 存在这些特殊更新行为时，会忽略其他更新字段</p>
 	ServiceAction *string `json:"ServiceAction,omitnil,omitempty" name:"ServiceAction"`
 
-	// 服务的描述
+	// <p>服务的描述</p>
 	ServiceDescription *string `json:"ServiceDescription,omitnil,omitempty" name:"ServiceDescription"`
 
-	// 自动伸缩策略
+	// <p>自动伸缩策略</p>
 	ScaleStrategy *string `json:"ScaleStrategy,omitnil,omitempty" name:"ScaleStrategy"`
 
-	// 自动伸缩策略配置 HPA : 通过HPA进行弹性伸缩 CRON 通过定时任务进行伸缩
+	// <p>自动伸缩策略配置 HPA : 通过HPA进行弹性伸缩 CRON 通过定时任务进行伸缩</p>
 	CronScaleJobs []*CronScaleJob `json:"CronScaleJobs,omitnil,omitempty" name:"CronScaleJobs"`
 
-	// 计费模式[HYBRID_PAID]时生效, 用于标识混合计费模式下的预付费实例数, 若不填则默认为1
+	// <p>计费模式[HYBRID_PAID]时生效, 用于标识混合计费模式下的预付费实例数, 若不填则默认为1</p>
 	HybridBillingPrepaidReplicas *int64 `json:"HybridBillingPrepaidReplicas,omitnil,omitempty" name:"HybridBillingPrepaidReplicas"`
 
-	// 是否开启模型的热更新。默认不开启
+	// <p>是否开启模型的热更新。默认不开启</p>
 	ModelHotUpdateEnable *bool `json:"ModelHotUpdateEnable,omitnil,omitempty" name:"ModelHotUpdateEnable"`
 
-	// 定时停止配置
+	// <p>定时停止配置</p>
 	ScheduledAction *ScheduledAction `json:"ScheduledAction,omitnil,omitempty" name:"ScheduledAction"`
 
-	// 服务限速限流相关配置
+	// <p>服务限速限流相关配置</p>
 	ServiceLimit *ServiceLimit `json:"ServiceLimit,omitnil,omitempty" name:"ServiceLimit"`
 
-	// 挂载配置，目前只支持CFS
+	// <p>挂载配置，目前只支持CFS</p>
 	VolumeMount *VolumeMount `json:"VolumeMount,omitnil,omitempty" name:"VolumeMount"`
 
-	// 是否开启模型的加速, 仅对StableDiffusion(动态加速)格式的模型有效。默认不开启
+	// <p>是否开启模型的加速, 仅对StableDiffusion(动态加速)格式的模型有效。默认不开启</p>
 	ModelTurboEnable *bool `json:"ModelTurboEnable,omitnil,omitempty" name:"ModelTurboEnable"`
 
-	// 服务的启动命令，如遇特殊字符导致配置失败，可使用CommandBase64参数
+	// <p>服务的启动命令，如遇特殊字符导致配置失败，可使用CommandBase64参数</p>
 	Command *string `json:"Command,omitnil,omitempty" name:"Command"`
 
-	// 是否开启TIONE内网访问外部，此功能仅支持后付费机型与从TIONE平台购买的预付费机型；使用从CVM选择资源组时此配置不生效。
+	// <p>是否开启TIONE内网访问外部，此功能仅支持后付费机型与从TIONE平台购买的预付费机型；使用从CVM选择资源组时此配置不生效。</p>
 	ServiceEIP *ServiceEIP `json:"ServiceEIP,omitnil,omitempty" name:"ServiceEIP"`
 
-	// 服务的启动命令，以base64格式进行输入，与Command同时配置时，仅当前参数生效
+	// <p>服务的启动命令，以base64格式进行输入，与Command同时配置时，仅当前参数生效</p>
 	CommandBase64 *string `json:"CommandBase64,omitnil,omitempty" name:"CommandBase64"`
 
-	// 服务端口，仅在非内置镜像时生效，默认8501。不支持输入8501-8510,6006,9092
+	// <p>服务端口，仅在非内置镜像时生效，默认8501。不支持输入8501-8510,6006,9092</p>
 	ServicePort *int64 `json:"ServicePort,omitnil,omitempty" name:"ServicePort"`
 
-	// 单副本下的实例数，仅在部署类型为DIST时生效，默认1
+	// <p>单副本下的实例数，仅在部署类型为DIST时生效，默认1</p>
 	InstancePerReplicas *int64 `json:"InstancePerReplicas,omitnil,omitempty" name:"InstancePerReplicas"`
 
-	// 服务的优雅退出时限。单位为秒，默认值为30，最小为1
+	// <p>服务的优雅退出时限。单位为秒，默认值为30，最小为1</p>
 	TerminationGracePeriodSeconds *int64 `json:"TerminationGracePeriodSeconds,omitnil,omitempty" name:"TerminationGracePeriodSeconds"`
 
-	// 服务实例停止前执行的命令，执行完毕或执行时间超过优雅退出时限后实例结束
+	// <p>服务实例停止前执行的命令，执行完毕或执行时间超过优雅退出时限后实例结束</p>
 	PreStopCommand []*string `json:"PreStopCommand,omitnil,omitempty" name:"PreStopCommand"`
 
-	// 是否启动grpc端口
+	// <p>是否启动grpc端口</p>
 	GrpcEnable *bool `json:"GrpcEnable,omitnil,omitempty" name:"GrpcEnable"`
 
-	// 健康探针
+	// <p>健康探针</p>
 	HealthProbe *HealthProbe `json:"HealthProbe,omitnil,omitempty" name:"HealthProbe"`
 
-	// 滚动更新策略
+	// <p>滚动更新策略</p>
 	RollingUpdate *RollingUpdate `json:"RollingUpdate,omitnil,omitempty" name:"RollingUpdate"`
 
-	// sidecar配置
+	// <p>sidecar配置</p>
 	Sidecar *SidecarSpec `json:"Sidecar,omitnil,omitempty" name:"Sidecar"`
 
-	// 资源组 id
+	// <p>资源组 id</p>
 	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
 
-	// 数据盘批量挂载配置，当前仅支持CFS，仅针对“模型来源-腾讯云存储、模型来源-腾讯云容器镜像、模型来源-资源组、模型来源-数据源”。
+	// <p>数据盘批量挂载配置，当前仅支持CFS，仅针对“模型来源-腾讯云存储、模型来源-腾讯云容器镜像、模型来源-资源组、模型来源-数据源”。</p>
 	VolumeMounts []*VolumeMount `json:"VolumeMounts,omitnil,omitempty" name:"VolumeMounts"`
 
-	// 调度策略 [binpack] 优先占满整机，尽量避免碎卡（默认值）[spread] 优先分散在各个节点，确保服务高可用
+	// <p>调度策略 [binpack] 优先占满整机，尽量避免碎卡（默认值）[spread] 优先分散在各个节点，确保服务高可用</p>
 	SchedulingStrategy *string `json:"SchedulingStrategy,omitnil,omitempty" name:"SchedulingStrategy"`
 
-	// 目标工作空间，不为0则进行迁移，源服务只允许在默认空间
+	// <p>目标工作空间，不为0则进行迁移，源服务只允许在默认空间</p>
 	TargetProjectId *int64 `json:"TargetProjectId,omitnil,omitempty" name:"TargetProjectId"`
 }
 
@@ -7715,6 +7692,7 @@ func (r *ModifyModelServiceRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "ServiceId")
+	delete(f, "TiProjectId")
 	delete(f, "ModelInfo")
 	delete(f, "ImageInfo")
 	delete(f, "Env")
@@ -7758,7 +7736,7 @@ func (r *ModifyModelServiceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyModelServiceResponseParams struct {
-	// 生成的模型服务
+	// <p>生成的模型服务</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Service *Service `json:"Service,omitnil,omitempty" name:"Service"`
 
@@ -9449,6 +9427,9 @@ type Service struct {
 
 	// <p>外部的资源组信息，表示借调了哪些资源组的资源</p>
 	ExternalResourceGroups []*ResourceGroupInfo `json:"ExternalResourceGroups,omitnil,omitempty" name:"ExternalResourceGroups"`
+
+	// <p>服务所属的项目 id,0表示默认空间</p>
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// <p>变更服务的子账户</p>
 	Changer *string `json:"Changer,omitnil,omitempty" name:"Changer"`

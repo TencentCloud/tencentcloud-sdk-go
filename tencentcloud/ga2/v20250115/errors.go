@@ -89,6 +89,9 @@ const (
 	// 证书 `%(value)s` 和存量证书重复。
 	INVALIDPARAMETERVALUE_CERTIFICATESCONFLICT = "InvalidParameterValue.CertificatesConflict"
 
+	// 参数 `%(parameter)s` 不能为空。
+	INVALIDPARAMETERVALUE_EMPTY = "InvalidParameterValue.Empty"
+
 	// 七层转发策略域名和存量重复。
 	INVALIDPARAMETERVALUE_FORWARDINGPOLICYHOSTCONFLICT = "InvalidParameterValue.ForwardingPolicyHostConflict"
 
@@ -106,6 +109,12 @@ const (
 
 	// 终端节点组监听端口要和终端节点组所属监听器端口保持一致。
 	INVALIDPARAMETERVALUE_LISTENERPORTNOTEQUAL = "InvalidParameterValue.ListenerPortNotEqual"
+
+	// 参数`%(value)s`日志主题所在地域与终端节点地域`%(region)s`未正确对应。
+	INVALIDPARAMETERVALUE_LOGTASKLOCATEDERROR = "InvalidParameterValue.LogTaskLocatedError"
+
+	// 日志集主题`%(value)s`不存在
+	INVALIDPARAMETERVALUE_LOGSETNOTEXIST = "InvalidParameterValue.LogsetNotExist"
 
 	// 参数 `%(parameter)s` 值 `%(value)s` 是无效的。正确且完整的值形如 `%(template)s`。
 	INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
@@ -166,6 +175,9 @@ const (
 
 	// 加速地域`%(value)s` 已经存在。
 	UNSUPPORTEDOPERATION_ACCELERATEREGIONREPEAT = "UnsupportedOperation.AccelerateRegionRepeat"
+
+	// 当前账号不支持配置访问日志。
+	UNSUPPORTEDOPERATION_ACCESSLOG = "UnsupportedOperation.AccessLog"
 
 	// 账户被冻结，不支持当前操作。
 	UNSUPPORTEDOPERATION_ACCOUNTFROZEN = "UnsupportedOperation.AccountFrozen"
@@ -259,6 +271,9 @@ const (
 
 	// 当前账号不支持配置端口段。
 	UNSUPPORTEDOPERATION_LISTENERPORTSEGMENT = "UnsupportedOperation.ListenerPortSegment"
+
+	// 暂不支持，请先授权开启日志任务。
+	UNSUPPORTEDOPERATION_NOTAUTHORIZATION = "UnsupportedOperation.NotAuthorization"
 
 	// 当前全球加速实例没有设置跨境类型。无法创建跨境加速地域或终端节点组。
 	UNSUPPORTEDOPERATION_NOTSETCROSSBORDERTYPE = "UnsupportedOperation.NotSetCrossBorderType"

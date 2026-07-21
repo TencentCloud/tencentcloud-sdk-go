@@ -434,6 +434,112 @@ func (r *CreateForwardingRuleResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateGlobalAcceleratorAccessLogRequestParams struct {
+	// <p>GA示例唯一Id</p>
+	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
+
+	// <p>监听器Id</p>
+	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
+
+	// <p>终端节点组Id</p>
+	EndpointGroupId *string `json:"EndpointGroupId,omitnil,omitempty" name:"EndpointGroupId"`
+
+	// <p>日志集所在地域</p>
+	CloudRegion *string `json:"CloudRegion,omitnil,omitempty" name:"CloudRegion"`
+
+	// <p>日志主题Id</p>
+	CloudLogId *string `json:"CloudLogId,omitnil,omitempty" name:"CloudLogId"`
+
+	// <p>日志集Id</p>
+	CloudLogSetId *string `json:"CloudLogSetId,omitnil,omitempty" name:"CloudLogSetId"`
+
+	// <p>指定采集字段</p><p>枚举值：</p><ul><li>session_time： 四层，会话持续时间</li><li>upstream_bytes_received： 四层、七层，从终端节点接收的字节数</li><li>upstream_bytes_sent： 四层、七层，发送给终端节点的字节数</li><li>request_method： 七层，GET/POST</li><li>scheme： 七层，http/https</li><li>request_uri： 七层，客户端原始请求的URI</li><li>uri： 七层，当前请求的URI</li><li>host： 七层，客户端访问域名（七层）</li><li>remote_user： 七层，基本认证时的用户名（未认证时为&quot;-&quot;）</li><li>http_user_agent： 七层，客户端浏览器标识</li><li>http_referer： 七层，请求来源URL（直接从地址栏访问时为&quot;-&quot;）</li><li>http_x_forwarded_for： 七层，记录客户端原始IP及经过的代理服务器IP链</li><li>content_type： 七层，content_type</li><li>body_bytes_sent： 七层，发送给客户端的http body大小，不包含header</li><li>request_time： 七层，从接收到客户端请求的第一个字节到发送完响应最后一个字节之间的总时间（单位：秒）</li><li>sent_http_content_type： 七层，响应内容类型</li><li>upstream_header_time： 七层，终端节点的响应头到达时间</li><li>upstream_response_length： 七层，终端节点返回的响应体长度</li><li>upstream_response_time： 七层，终端节点完整响应时间</li><li>upstream_status： 七层，终端节点返回的HTTP状态码</li></ul>
+	FieldKeys []*string `json:"FieldKeys,omitnil,omitempty" name:"FieldKeys"`
+
+	// <p>日志描述</p>
+	FlowLogDescription *string `json:"FlowLogDescription,omitnil,omitempty" name:"FlowLogDescription"`
+}
+
+type CreateGlobalAcceleratorAccessLogRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>GA示例唯一Id</p>
+	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
+
+	// <p>监听器Id</p>
+	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
+
+	// <p>终端节点组Id</p>
+	EndpointGroupId *string `json:"EndpointGroupId,omitnil,omitempty" name:"EndpointGroupId"`
+
+	// <p>日志集所在地域</p>
+	CloudRegion *string `json:"CloudRegion,omitnil,omitempty" name:"CloudRegion"`
+
+	// <p>日志主题Id</p>
+	CloudLogId *string `json:"CloudLogId,omitnil,omitempty" name:"CloudLogId"`
+
+	// <p>日志集Id</p>
+	CloudLogSetId *string `json:"CloudLogSetId,omitnil,omitempty" name:"CloudLogSetId"`
+
+	// <p>指定采集字段</p><p>枚举值：</p><ul><li>session_time： 四层，会话持续时间</li><li>upstream_bytes_received： 四层、七层，从终端节点接收的字节数</li><li>upstream_bytes_sent： 四层、七层，发送给终端节点的字节数</li><li>request_method： 七层，GET/POST</li><li>scheme： 七层，http/https</li><li>request_uri： 七层，客户端原始请求的URI</li><li>uri： 七层，当前请求的URI</li><li>host： 七层，客户端访问域名（七层）</li><li>remote_user： 七层，基本认证时的用户名（未认证时为&quot;-&quot;）</li><li>http_user_agent： 七层，客户端浏览器标识</li><li>http_referer： 七层，请求来源URL（直接从地址栏访问时为&quot;-&quot;）</li><li>http_x_forwarded_for： 七层，记录客户端原始IP及经过的代理服务器IP链</li><li>content_type： 七层，content_type</li><li>body_bytes_sent： 七层，发送给客户端的http body大小，不包含header</li><li>request_time： 七层，从接收到客户端请求的第一个字节到发送完响应最后一个字节之间的总时间（单位：秒）</li><li>sent_http_content_type： 七层，响应内容类型</li><li>upstream_header_time： 七层，终端节点的响应头到达时间</li><li>upstream_response_length： 七层，终端节点返回的响应体长度</li><li>upstream_response_time： 七层，终端节点完整响应时间</li><li>upstream_status： 七层，终端节点返回的HTTP状态码</li></ul>
+	FieldKeys []*string `json:"FieldKeys,omitnil,omitempty" name:"FieldKeys"`
+
+	// <p>日志描述</p>
+	FlowLogDescription *string `json:"FlowLogDescription,omitnil,omitempty" name:"FlowLogDescription"`
+}
+
+func (r *CreateGlobalAcceleratorAccessLogRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateGlobalAcceleratorAccessLogRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GlobalAcceleratorId")
+	delete(f, "ListenerId")
+	delete(f, "EndpointGroupId")
+	delete(f, "CloudRegion")
+	delete(f, "CloudLogId")
+	delete(f, "CloudLogSetId")
+	delete(f, "FieldKeys")
+	delete(f, "FlowLogDescription")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateGlobalAcceleratorAccessLogRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateGlobalAcceleratorAccessLogResponseParams struct {
+	// <p>日志任务唯一Id</p>
+	LogPushTaskId *string `json:"LogPushTaskId,omitnil,omitempty" name:"LogPushTaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateGlobalAcceleratorAccessLogResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateGlobalAcceleratorAccessLogResponseParams `json:"Response"`
+}
+
+func (r *CreateGlobalAcceleratorAccessLogResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateGlobalAcceleratorAccessLogResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateGlobalAcceleratorAclPolicyRequestParams struct {
 	// <p>全球加速实例ID。</p>
 	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
@@ -1190,6 +1296,67 @@ func (r *DeleteForwardingRuleResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteGlobalAcceleratorAccessLogRequestParams struct {
+	// <p>日志唯一Id</p>
+	LogPushTaskId *string `json:"LogPushTaskId,omitnil,omitempty" name:"LogPushTaskId"`
+
+	// <p>GA实例唯一Id</p>
+	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
+}
+
+type DeleteGlobalAcceleratorAccessLogRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>日志唯一Id</p>
+	LogPushTaskId *string `json:"LogPushTaskId,omitnil,omitempty" name:"LogPushTaskId"`
+
+	// <p>GA实例唯一Id</p>
+	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
+}
+
+func (r *DeleteGlobalAcceleratorAccessLogRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteGlobalAcceleratorAccessLogRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LogPushTaskId")
+	delete(f, "GlobalAcceleratorId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteGlobalAcceleratorAccessLogRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteGlobalAcceleratorAccessLogResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteGlobalAcceleratorAccessLogResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteGlobalAcceleratorAccessLogResponseParams `json:"Response"`
+}
+
+func (r *DeleteGlobalAcceleratorAccessLogResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteGlobalAcceleratorAccessLogResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteGlobalAcceleratorAclPolicyRequestParams struct {
 	// 全球加速实例ID。
 	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
@@ -1652,6 +1819,63 @@ func (r *DescribeAccelerateRegionsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeAccessLogParamRequestParams struct {
+
+}
+
+type DescribeAccessLogParamRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeAccessLogParamRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAccessLogParamRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAccessLogParamRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAccessLogParamResponseParams struct {
+	// <p>七层可选参数</p>
+	L7Param []*string `json:"L7Param,omitnil,omitempty" name:"L7Param"`
+
+	// <p>四层可选参数</p>
+	L4Param []*string `json:"L4Param,omitnil,omitempty" name:"L4Param"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAccessLogParamResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAccessLogParamResponseParams `json:"Response"`
+}
+
+func (r *DescribeAccessLogParamResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAccessLogParamResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeCrossBorderSettlementRequestParams struct {
 	// 全球加速实例ID。
 	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
@@ -1976,6 +2200,235 @@ func (r *DescribeForwardingRuleResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeForwardingRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeGlobalAcceleratorAccessLogRequestParams struct {
+	// <p>ga实例唯一Id</p>
+	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
+
+	// <p>查询过滤参数。{ &quot;Name&quot;: &quot;listener-id&quot;, &quot;Values&quot;: [&quot;监听器唯一Id&quot;] },{ &quot;Name&quot;: &quot;endpoint-group-id&quot;, &quot;Values&quot;: [&quot;终端节点组唯一Id&quot;] },{ &quot;Name&quot;: &quot;access_log_id&quot;, &quot;Values&quot;: [&quot;日志唯一Id&quot;] }</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>偏移量，默认为0。</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>返回数量。</p><p>取值范围：[0, 200]</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeGlobalAcceleratorAccessLogRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>ga实例唯一Id</p>
+	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
+
+	// <p>查询过滤参数。{ &quot;Name&quot;: &quot;listener-id&quot;, &quot;Values&quot;: [&quot;监听器唯一Id&quot;] },{ &quot;Name&quot;: &quot;endpoint-group-id&quot;, &quot;Values&quot;: [&quot;终端节点组唯一Id&quot;] },{ &quot;Name&quot;: &quot;access_log_id&quot;, &quot;Values&quot;: [&quot;日志唯一Id&quot;] }</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>偏移量，默认为0。</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>返回数量。</p><p>取值范围：[0, 200]</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeGlobalAcceleratorAccessLogRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeGlobalAcceleratorAccessLogRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GlobalAcceleratorId")
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeGlobalAcceleratorAccessLogRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeGlobalAcceleratorAccessLogResponseParams struct {
+	// <p>返回日志任务详情</p>
+	GlobalAcceleratorAccessLog []*GlobalAcceleratorAccessLog `json:"GlobalAcceleratorAccessLog,omitnil,omitempty" name:"GlobalAcceleratorAccessLog"`
+
+	// <p>日志任务条数。</p>
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeGlobalAcceleratorAccessLogResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeGlobalAcceleratorAccessLogResponseParams `json:"Response"`
+}
+
+func (r *DescribeGlobalAcceleratorAccessLogResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeGlobalAcceleratorAccessLogResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeGlobalAcceleratorAclPoliciesRequestParams struct {
+	// <p>全球加速实例ID。</p>
+	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
+
+	// <p>偏移量。默认值为0。</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>返回数量，默认值为20，最大值为200。</p>
+	Limit *string `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeGlobalAcceleratorAclPoliciesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>全球加速实例ID。</p>
+	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
+
+	// <p>偏移量。默认值为0。</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>返回数量，默认值为20，最大值为200。</p>
+	Limit *string `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeGlobalAcceleratorAclPoliciesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeGlobalAcceleratorAclPoliciesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GlobalAcceleratorId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeGlobalAcceleratorAclPoliciesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeGlobalAcceleratorAclPoliciesResponseParams struct {
+	// <p>访问控制策略信息。</p>
+	GlobalAcceleratorAclPolicySet []*GlobalAcceleratorAclPolicies `json:"GlobalAcceleratorAclPolicySet,omitnil,omitempty" name:"GlobalAcceleratorAclPolicySet"`
+
+	// <p>符合条件实例总个数。</p>
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeGlobalAcceleratorAclPoliciesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeGlobalAcceleratorAclPoliciesResponseParams `json:"Response"`
+}
+
+func (r *DescribeGlobalAcceleratorAclPoliciesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeGlobalAcceleratorAclPoliciesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeGlobalAcceleratorAclRulesRequestParams struct {
+	// <p>访问控制策略ID。</p>
+	GlobalAcceleratorAclPolicyId *string `json:"GlobalAcceleratorAclPolicyId,omitnil,omitempty" name:"GlobalAcceleratorAclPolicyId"`
+
+	// <p>偏移量，默认为0。</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>返回数量。</p><p>取值范围：[1, 200]</p><p>默认值：20</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeGlobalAcceleratorAclRulesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>访问控制策略ID。</p>
+	GlobalAcceleratorAclPolicyId *string `json:"GlobalAcceleratorAclPolicyId,omitnil,omitempty" name:"GlobalAcceleratorAclPolicyId"`
+
+	// <p>偏移量，默认为0。</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>返回数量。</p><p>取值范围：[1, 200]</p><p>默认值：20</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeGlobalAcceleratorAclRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeGlobalAcceleratorAclRulesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GlobalAcceleratorAclPolicyId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeGlobalAcceleratorAclRulesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeGlobalAcceleratorAclRulesResponseParams struct {
+	// <p>符合条件的Acl规则实例。</p>
+	GlobalAcceleratorAclRuleSet []*GlobalAcceleratorAclRuleSet `json:"GlobalAcceleratorAclRuleSet,omitnil,omitempty" name:"GlobalAcceleratorAclRuleSet"`
+
+	// <p>符合条件的实例个数。</p>
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeGlobalAcceleratorAclRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeGlobalAcceleratorAclRulesResponseParams `json:"Response"`
+}
+
+func (r *DescribeGlobalAcceleratorAclRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeGlobalAcceleratorAclRulesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2391,35 +2844,79 @@ type ForwardingPolicySet struct {
 }
 
 type ForwardingRuleSet struct {
-	// 七层转发规则条件信息。
+	// <p>七层转发规则条件信息。</p>
 	RuleCondition []*RuleCondition `json:"RuleCondition,omitnil,omitempty" name:"RuleCondition"`
 
-	// 七层转发规则行为信息。
+	// <p>七层转发规则行为信息。</p>
 	RuleAction []*RuleAction `json:"RuleAction,omitnil,omitempty" name:"RuleAction"`
 
-	// 是否开启回源Sni。
+	// <p>是否开启回源Sni。</p>
 	EnableOriginSni *bool `json:"EnableOriginSni,omitnil,omitempty" name:"EnableOriginSni"`
 
-	// 回源Sni。
+	// <p>回源Sni。</p>
 	OriginSni *string `json:"OriginSni,omitnil,omitempty" name:"OriginSni"`
 
-	// 回源Herder信息。
+	// <p>回源Herder信息。</p>
 	OriginHeaders []*OriginHeader `json:"OriginHeaders,omitnil,omitempty" name:"OriginHeaders"`
 
-	// 回源Host。
+	// <p>回源Host。</p>
 	OriginHost *string `json:"OriginHost,omitnil,omitempty" name:"OriginHost"`
 
-	// 全球加速实例ID。
+	// <p>全球加速实例ID。</p>
 	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
 
-	// 监听器ID。
+	// <p>监听器ID。</p>
 	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
 
-	// 七层转发策略ID。
+	// <p>七层转发策略ID。</p>
 	ForwardingPolicyId *string `json:"ForwardingPolicyId,omitnil,omitempty" name:"ForwardingPolicyId"`
 
-	// 七层转发规则ID。
+	// <p>七层转发规则ID。</p>
 	ForwardingRuleId *string `json:"ForwardingRuleId,omitnil,omitempty" name:"ForwardingRuleId"`
+
+	// <p>源站响应头</p>
+	HideResponseHeaders []*HideResponseHeaders `json:"HideResponseHeaders,omitnil,omitempty" name:"HideResponseHeaders"`
+
+	// <p>删除源站响应头</p>
+	ResponseHeaders []*ResponseHeaders `json:"ResponseHeaders,omitnil,omitempty" name:"ResponseHeaders"`
+}
+
+type GlobalAcceleratorAccessLog struct {
+
+}
+
+type GlobalAcceleratorAclPolicies struct {
+	// 访问控制策略ID。
+	GlobalAcceleratorAclPolicyId *string `json:"GlobalAcceleratorAclPolicyId,omitnil,omitempty" name:"GlobalAcceleratorAclPolicyId"`
+
+	// 默认动作。
+	DefaultAction *string `json:"DefaultAction,omitnil,omitempty" name:"DefaultAction"`
+
+	// 状态。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+type GlobalAcceleratorAclRuleSet struct {
+	// 访问控制策略ID。
+	GlobalAcceleratorPolicyId *string `json:"GlobalAcceleratorPolicyId,omitnil,omitempty" name:"GlobalAcceleratorPolicyId"`
+
+	// Acl规则ID。
+	GlobalAcceleratorAclRuleId *string `json:"GlobalAcceleratorAclRuleId,omitnil,omitempty" name:"GlobalAcceleratorAclRuleId"`
+
+	// 协议。
+	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
+
+	// 端口。
+	Port *string `json:"Port,omitnil,omitempty" name:"Port"`
+
+	// 网段。
+	SourceCidrBlock *string `json:"SourceCidrBlock,omitnil,omitempty" name:"SourceCidrBlock"`
+
+	// 动作。
+	Policy *string `json:"Policy,omitnil,omitempty" name:"Policy"`
+
+	// 描述。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 type GlobalAcceleratorSet struct {
@@ -2609,6 +3106,74 @@ func (r *ModifyAccelerateAreasResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyAccelerateAreasResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAccessLogStatusRequestParams struct {
+	// <p>日志唯一Id</p>
+	LogPushTaskId *string `json:"LogPushTaskId,omitnil,omitempty" name:"LogPushTaskId"`
+
+	// <p>状态（启动START， 停止STOP）</p><p>枚举值：</p><ul><li>START： 启动</li><li>STOP： 停止</li></ul>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>GA实例唯一Id</p>
+	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
+}
+
+type ModifyAccessLogStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>日志唯一Id</p>
+	LogPushTaskId *string `json:"LogPushTaskId,omitnil,omitempty" name:"LogPushTaskId"`
+
+	// <p>状态（启动START， 停止STOP）</p><p>枚举值：</p><ul><li>START： 启动</li><li>STOP： 停止</li></ul>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>GA实例唯一Id</p>
+	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
+}
+
+func (r *ModifyAccessLogStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAccessLogStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LogPushTaskId")
+	delete(f, "Status")
+	delete(f, "GlobalAcceleratorId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAccessLogStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAccessLogStatusResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyAccessLogStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyAccessLogStatusResponseParams `json:"Response"`
+}
+
+func (r *ModifyAccessLogStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAccessLogStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3039,6 +3604,95 @@ func (r *ModifyForwardingRuleResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyForwardingRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyGlobalAcceleratorAccessLogRequestParams struct {
+	// <p>日志唯一Id</p>
+	LogPushTaskId *string `json:"LogPushTaskId,omitnil,omitempty" name:"LogPushTaskId"`
+
+	// <p>GA实例唯一Id</p>
+	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
+
+	// <p>日志主题Id</p>
+	CloudLogId *string `json:"CloudLogId,omitnil,omitempty" name:"CloudLogId"`
+
+	// <p>日志集Id</p>
+	CloudLogSetId *string `json:"CloudLogSetId,omitnil,omitempty" name:"CloudLogSetId"`
+
+	// <p>用户可选日志监听字段</p><p>枚举值：</p><ul><li>session_time： 四层，会话持续时间</li><li>upstream_bytes_received： 四层、七层，从终端节点接收的字节数</li><li>upstream_bytes_sent： 四层、七层，发送给终端节点的字节数</li><li>request_method： 七层，GET/POST</li><li>scheme： 七层，http/https</li><li>request_uri： 七层，客户端原始请求的URI</li><li>uri： 七层，当前请求的URI</li><li>host： 七层，客户端访问域名（七层）</li><li>remote_user： 七层，基本认证时的用户名（未认证时为&quot;-&quot;）</li><li>http_user_agent： 七层，客户端浏览器标识</li><li>http_referer： 七层，请求来源URL（直接从地址栏访问时为&quot;-&quot;）</li><li>http_x_forwarded_for： 七层，记录客户端原始IP及经过的代理服务器IP链</li><li>content_type： 七层，content_type</li><li>body_bytes_sent： 七层，发送给客户端的http body大小，不包含header</li><li>request_time： 七层，从接收到客户端请求的第一个字节到发送完响应最后一个字节之间的总时间（单位：秒）</li><li>sent_http_content_type： 七层，响应内容类型</li><li>upstream_header_time： 七层，终端节点的响应头到达时间</li><li>upstream_response_length： 七层，终端节点返回的响应体长度</li><li>upstream_response_time： 七层，终端节点完整响应时间</li><li>upstream_status： 七层，终端节点返回的HTTP状态码</li></ul>
+	FieldKeys []*string `json:"FieldKeys,omitnil,omitempty" name:"FieldKeys"`
+
+	// <p>日志描述</p>
+	FlowLogDescription *string `json:"FlowLogDescription,omitnil,omitempty" name:"FlowLogDescription"`
+}
+
+type ModifyGlobalAcceleratorAccessLogRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>日志唯一Id</p>
+	LogPushTaskId *string `json:"LogPushTaskId,omitnil,omitempty" name:"LogPushTaskId"`
+
+	// <p>GA实例唯一Id</p>
+	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
+
+	// <p>日志主题Id</p>
+	CloudLogId *string `json:"CloudLogId,omitnil,omitempty" name:"CloudLogId"`
+
+	// <p>日志集Id</p>
+	CloudLogSetId *string `json:"CloudLogSetId,omitnil,omitempty" name:"CloudLogSetId"`
+
+	// <p>用户可选日志监听字段</p><p>枚举值：</p><ul><li>session_time： 四层，会话持续时间</li><li>upstream_bytes_received： 四层、七层，从终端节点接收的字节数</li><li>upstream_bytes_sent： 四层、七层，发送给终端节点的字节数</li><li>request_method： 七层，GET/POST</li><li>scheme： 七层，http/https</li><li>request_uri： 七层，客户端原始请求的URI</li><li>uri： 七层，当前请求的URI</li><li>host： 七层，客户端访问域名（七层）</li><li>remote_user： 七层，基本认证时的用户名（未认证时为&quot;-&quot;）</li><li>http_user_agent： 七层，客户端浏览器标识</li><li>http_referer： 七层，请求来源URL（直接从地址栏访问时为&quot;-&quot;）</li><li>http_x_forwarded_for： 七层，记录客户端原始IP及经过的代理服务器IP链</li><li>content_type： 七层，content_type</li><li>body_bytes_sent： 七层，发送给客户端的http body大小，不包含header</li><li>request_time： 七层，从接收到客户端请求的第一个字节到发送完响应最后一个字节之间的总时间（单位：秒）</li><li>sent_http_content_type： 七层，响应内容类型</li><li>upstream_header_time： 七层，终端节点的响应头到达时间</li><li>upstream_response_length： 七层，终端节点返回的响应体长度</li><li>upstream_response_time： 七层，终端节点完整响应时间</li><li>upstream_status： 七层，终端节点返回的HTTP状态码</li></ul>
+	FieldKeys []*string `json:"FieldKeys,omitnil,omitempty" name:"FieldKeys"`
+
+	// <p>日志描述</p>
+	FlowLogDescription *string `json:"FlowLogDescription,omitnil,omitempty" name:"FlowLogDescription"`
+}
+
+func (r *ModifyGlobalAcceleratorAccessLogRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyGlobalAcceleratorAccessLogRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LogPushTaskId")
+	delete(f, "GlobalAcceleratorId")
+	delete(f, "CloudLogId")
+	delete(f, "CloudLogSetId")
+	delete(f, "FieldKeys")
+	delete(f, "FlowLogDescription")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyGlobalAcceleratorAccessLogRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyGlobalAcceleratorAccessLogResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyGlobalAcceleratorAccessLogResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyGlobalAcceleratorAccessLogResponseParams `json:"Response"`
+}
+
+func (r *ModifyGlobalAcceleratorAccessLogResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyGlobalAcceleratorAccessLogResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

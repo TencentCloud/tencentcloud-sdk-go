@@ -1209,6 +1209,14 @@ type ConversationReference struct {
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
+type ConversationResetInfo struct {
+	// <p>最近一次重置的毫秒级时间戳</p>
+	ResetTime *string `json:"ResetTime,omitnil,omitempty" name:"ResetTime"`
+
+	// <p>最近一次重置边界；该记录及更早的记录不再作为对话上下文</p>
+	ResetThroughRecordId *string `json:"ResetThroughRecordId,omitnil,omitempty" name:"ResetThroughRecordId"`
+}
+
 type ConversationWorkspace struct {
 	// <p>工作空间 ID</p>
 	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
@@ -3765,7 +3773,13 @@ type DescribeConversationMessageListResponseParams struct {
 	MessageList []*ConversationMessage `json:"MessageList,omitnil,omitempty" name:"MessageList"`
 
 	// <p>消息列表</p>
+	//
+	// Deprecated: Messages is deprecated.
 	Messages []*ConversationMessage `json:"Messages,omitnil,omitempty" name:"Messages"`
+
+	// <p>最近一次重置信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResetInfo *ConversationResetInfo `json:"ResetInfo,omitnil,omitempty" name:"ResetInfo"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -4073,6 +4087,9 @@ type DescribePluginRequestParams struct {
 
 	// <p>获取指定字段</p>
 	FieldMask *FieldMask `json:"FieldMask,omitnil,omitempty" name:"FieldMask"`
+
+	// <p>插件展示场景。不传或取 0 时不限定场景。</p><p>枚举值：</p><ul><li>0：不限定场景</li><li>1：Agent 模式</li><li>2：工作流</li><li>3：智能工作台</li></ul>
+	Module *int64 `json:"Module,omitnil,omitempty" name:"Module"`
 }
 
 type DescribePluginRequest struct {
@@ -4086,6 +4103,9 @@ type DescribePluginRequest struct {
 
 	// <p>获取指定字段</p>
 	FieldMask *FieldMask `json:"FieldMask,omitnil,omitempty" name:"FieldMask"`
+
+	// <p>插件展示场景。不传或取 0 时不限定场景。</p><p>枚举值：</p><ul><li>0：不限定场景</li><li>1：Agent 模式</li><li>2：工作流</li><li>3：智能工作台</li></ul>
+	Module *int64 `json:"Module,omitnil,omitempty" name:"Module"`
 }
 
 func (r *DescribePluginRequest) ToJsonString() string {
@@ -4103,6 +4123,7 @@ func (r *DescribePluginRequest) FromJsonString(s string) error {
 	delete(f, "PluginId")
 	delete(f, "SpaceId")
 	delete(f, "FieldMask")
+	delete(f, "Module")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePluginRequest has unknown keys!", "")
 	}
@@ -5183,7 +5204,7 @@ type Filter struct {
 	// 过滤字段名
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 操作符：0-属于，1-不属于
+	// 操作符，默认 IN（向后兼容）<table><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>FILTER_OPERATOR_IN</td><td>0</td><td>属于 value_list（默认值，向后兼容；value_list 不可为空）</td></tr><tr><td>FILTER_OPERATOR_NOT_IN</td><td>1</td><td>不属于 value_list（value_list 不可为空）</td></tr></table>
 	Operator *int64 `json:"Operator,omitnil,omitempty" name:"Operator"`
 
 	// 过滤值数组
@@ -6242,6 +6263,9 @@ type PluginSummary struct {
 
 	// <p>插件配置信息</p>
 	Config *PluginConfig `json:"Config,omitnil,omitempty" name:"Config"`
+
+	// <p>工具信息</p>
+	ToolList []*ToolSummary `json:"ToolList,omitnil,omitempty" name:"ToolList"`
 }
 
 type PluginUserState struct {
@@ -7087,6 +7111,11 @@ type ToolExample struct {
 
 	// <p>响应参数</p>
 	Response *string `json:"Response,omitnil,omitempty" name:"Response"`
+}
+
+type ToolSummary struct {
+	// <p>工具Id</p>
+	ToolId *string `json:"ToolId,omitnil,omitempty" name:"ToolId"`
 }
 
 // Predefined struct for user

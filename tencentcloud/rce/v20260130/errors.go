@@ -23,9 +23,6 @@ const (
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
 
-	// 必填字段缺失。
-	INVALIDPARAMETER_FIELDMISSED = "InvalidParameter.FieldMissed"
-
 	// 字段格式错误。
 	INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
 

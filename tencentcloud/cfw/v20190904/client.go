@@ -2119,6 +2119,62 @@ func (c *Client) DescribeAcListsWithContext(ctx context.Context, request *Descri
     return
 }
 
+func NewDescribeAclRegInfoRequest() (request *DescribeAclRegInfoRequest) {
+    request = &DescribeAclRegInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "DescribeAclRegInfo")
+    
+    
+    return
+}
+
+func NewDescribeAclRegInfoResponse() (response *DescribeAclRegInfoResponse) {
+    response = &DescribeAclRegInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAclRegInfo
+// 查询ACL规则支持配置的地区
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeAclRegInfo(request *DescribeAclRegInfoRequest) (response *DescribeAclRegInfoResponse, err error) {
+    return c.DescribeAclRegInfoWithContext(context.Background(), request)
+}
+
+// DescribeAclRegInfo
+// 查询ACL规则支持配置的地区
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeAclRegInfoWithContext(ctx context.Context, request *DescribeAclRegInfoRequest) (response *DescribeAclRegInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeAclRegInfoRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeAclRegInfo")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAclRegInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAclRegInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAclRuleRequest() (request *DescribeAclRuleRequest) {
     request = &DescribeAclRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},

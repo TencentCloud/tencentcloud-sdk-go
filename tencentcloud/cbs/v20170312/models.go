@@ -4180,6 +4180,9 @@ type ModifyRemoteDiskAttributesRequestParams struct {
 
 	// <p>新的单副本SSD硬盘项目ID。</p>
 	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// <p>云硬盘的自动续费标识</p><p>枚举值：</p><ul><li>NOTIFY_AND_AUTO_RENEW： 通知过期且自动续费</li><li>NOTIFY_AND_MANUAL_RENEW： 通知过期不自动续费</li><li>DISABLE_NOTIFY_AND_MANUAL_RENEW： 不通知过期不自动续费</li></ul>
+	AutoRenewFlag *string `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 }
 
 type ModifyRemoteDiskAttributesRequest struct {
@@ -4193,6 +4196,9 @@ type ModifyRemoteDiskAttributesRequest struct {
 
 	// <p>新的单副本SSD硬盘项目ID。</p>
 	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// <p>云硬盘的自动续费标识</p><p>枚举值：</p><ul><li>NOTIFY_AND_AUTO_RENEW： 通知过期且自动续费</li><li>NOTIFY_AND_MANUAL_RENEW： 通知过期不自动续费</li><li>DISABLE_NOTIFY_AND_MANUAL_RENEW： 不通知过期不自动续费</li></ul>
+	AutoRenewFlag *string `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 }
 
 func (r *ModifyRemoteDiskAttributesRequest) ToJsonString() string {
@@ -4210,6 +4216,7 @@ func (r *ModifyRemoteDiskAttributesRequest) FromJsonString(s string) error {
 	delete(f, "RemoteDiskIds")
 	delete(f, "DiskName")
 	delete(f, "ProjectId")
+	delete(f, "AutoRenewFlag")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRemoteDiskAttributesRequest has unknown keys!", "")
 	}
@@ -4778,6 +4785,9 @@ type Snapshot struct {
 
 	// <p>自动快照策略ID，仅当该快照由自动快照策略方式创建时才会返回。</p>
 	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitnil,omitempty" name:"AutoSnapshotPolicyId"`
+
+	// <p>快照模式。取值为 INSTANT_SNAPSHOT 表示极速快照，STANDARD_SNAPSHOT 表示普通快照。</p><p>枚举值：</p><ul><li>INSTANT_SNAPSHOT： 极速快照</li><li>STANDARD_SNAPSHOT： 普通快照</li></ul>
+	SnapshotMode *string `json:"SnapshotMode,omitnil,omitempty" name:"SnapshotMode"`
 }
 
 type SnapshotCopyResult struct {

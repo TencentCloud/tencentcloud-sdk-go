@@ -45,6 +45,142 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewAssessDeviceRiskPremiumProRequest() (request *AssessDeviceRiskPremiumProRequest) {
+    request = &AssessDeviceRiskPremiumProRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rce", APIVersion, "AssessDeviceRiskPremiumPro")
+    
+    
+    return
+}
+
+func NewAssessDeviceRiskPremiumProResponse() (response *AssessDeviceRiskPremiumProResponse) {
+    response = &AssessDeviceRiskPremiumProResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// AssessDeviceRiskPremiumPro
+// 设备风险评估-高级版
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMEXCEPTION = "InternalError.SystemException"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_INVALIDVALUE = "InvalidParameter.InvalidValue"
+//  INVALIDPARAMETER_LENGTHEXCEED = "InvalidParameter.LengthExceed"
+//  INVALIDPARAMETERVALUE_EVENTNOTEXIST = "InvalidParameterValue.EventNotExist"
+//  INVALIDPARAMETERVALUE_TENANTNOTEXIST = "InvalidParameterValue.TenantNotExist"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_FIELDMISSED = "MissingParameter.FieldMissed"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) AssessDeviceRiskPremiumPro(request *AssessDeviceRiskPremiumProRequest) (response *AssessDeviceRiskPremiumProResponse, err error) {
+    return c.AssessDeviceRiskPremiumProWithContext(context.Background(), request)
+}
+
+// AssessDeviceRiskPremiumPro
+// 设备风险评估-高级版
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMEXCEPTION = "InternalError.SystemException"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_INVALIDVALUE = "InvalidParameter.InvalidValue"
+//  INVALIDPARAMETER_LENGTHEXCEED = "InvalidParameter.LengthExceed"
+//  INVALIDPARAMETERVALUE_EVENTNOTEXIST = "InvalidParameterValue.EventNotExist"
+//  INVALIDPARAMETERVALUE_TENANTNOTEXIST = "InvalidParameterValue.TenantNotExist"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_FIELDMISSED = "MissingParameter.FieldMissed"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) AssessDeviceRiskPremiumProWithContext(ctx context.Context, request *AssessDeviceRiskPremiumProRequest) (response *AssessDeviceRiskPremiumProResponse, err error) {
+    if request == nil {
+        request = NewAssessDeviceRiskPremiumProRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rce", APIVersion, "AssessDeviceRiskPremiumPro")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AssessDeviceRiskPremiumPro require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAssessDeviceRiskPremiumProResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewAssessDeviceRiskProRequest() (request *AssessDeviceRiskProRequest) {
+    request = &AssessDeviceRiskProRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rce", APIVersion, "AssessDeviceRiskPro")
+    
+    
+    return
+}
+
+func NewAssessDeviceRiskProResponse() (response *AssessDeviceRiskProResponse) {
+    response = &AssessDeviceRiskProResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// AssessDeviceRiskPro
+// 设备风险评估-基础版
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMEXCEPTION = "InternalError.SystemException"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_INVALIDVALUE = "InvalidParameter.InvalidValue"
+//  INVALIDPARAMETER_LENGTHEXCEED = "InvalidParameter.LengthExceed"
+//  INVALIDPARAMETERVALUE_EVENTNOTEXIST = "InvalidParameterValue.EventNotExist"
+//  INVALIDPARAMETERVALUE_TENANTNOTEXIST = "InvalidParameterValue.TenantNotExist"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_FIELDMISSED = "MissingParameter.FieldMissed"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) AssessDeviceRiskPro(request *AssessDeviceRiskProRequest) (response *AssessDeviceRiskProResponse, err error) {
+    return c.AssessDeviceRiskProWithContext(context.Background(), request)
+}
+
+// AssessDeviceRiskPro
+// 设备风险评估-基础版
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMEXCEPTION = "InternalError.SystemException"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_INVALIDVALUE = "InvalidParameter.InvalidValue"
+//  INVALIDPARAMETER_LENGTHEXCEED = "InvalidParameter.LengthExceed"
+//  INVALIDPARAMETERVALUE_EVENTNOTEXIST = "InvalidParameterValue.EventNotExist"
+//  INVALIDPARAMETERVALUE_TENANTNOTEXIST = "InvalidParameterValue.TenantNotExist"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_FIELDMISSED = "MissingParameter.FieldMissed"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) AssessDeviceRiskProWithContext(ctx context.Context, request *AssessDeviceRiskProRequest) (response *AssessDeviceRiskProResponse, err error) {
+    if request == nil {
+        request = NewAssessDeviceRiskProRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rce", APIVersion, "AssessDeviceRiskPro")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AssessDeviceRiskPro require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAssessDeviceRiskProResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAssessEnvironmentRiskRequest() (request *AssessEnvironmentRiskRequest) {
     request = &AssessEnvironmentRiskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -70,7 +206,6 @@ func NewAssessEnvironmentRiskResponse() (response *AssessEnvironmentRiskResponse
 // 可能返回的错误码:
 //  INTERNALERROR_SYSTEMEXCEPTION = "InternalError.SystemException"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_FIELDMISSED = "InvalidParameter.FieldMissed"
 //  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
 //  INVALIDPARAMETER_INVALIDVALUE = "InvalidParameter.InvalidValue"
 //  INVALIDPARAMETER_LENGTHEXCEED = "InvalidParameter.LengthExceed"
@@ -89,7 +224,6 @@ func (c *Client) AssessEnvironmentRisk(request *AssessEnvironmentRiskRequest) (r
 // 可能返回的错误码:
 //  INTERNALERROR_SYSTEMEXCEPTION = "InternalError.SystemException"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_FIELDMISSED = "InvalidParameter.FieldMissed"
 //  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
 //  INVALIDPARAMETER_INVALIDVALUE = "InvalidParameter.InvalidValue"
 //  INVALIDPARAMETER_LENGTHEXCEED = "InvalidParameter.LengthExceed"

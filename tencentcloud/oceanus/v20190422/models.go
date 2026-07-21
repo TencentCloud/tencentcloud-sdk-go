@@ -6265,51 +6265,77 @@ type SlotSharingGroupSpec struct {
 	ManagedMemory *string `json:"ManagedMemory,omitnil,omitempty" name:"ManagedMemory"`
 }
 
+type SqlGatewayEndpoint struct {
+	// <p>类型</p><p>枚举值：</p><ul><li>rest： rest</li><li>hiveserver2： hiveserver2</li><li>pg： pg</li></ul>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>地址</p>
+	Address *string `json:"Address,omitnil,omitempty" name:"Address"`
+
+	// <p>是否开启</p>
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// <p>其他信息</p>
+	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
+}
+
 type SqlGatewayItem struct {
-	// 唯一标识
+	// <p>唯一标识</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SerialId *string `json:"SerialId,omitnil,omitempty" name:"SerialId"`
 
-	// Flink内核版本
+	// <p>Flink内核版本</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlinkVersion *string `json:"FlinkVersion,omitnil,omitempty" name:"FlinkVersion"`
 
-	// 状态，1.停止 2. 开启中 3. 开启 4. 开启失败 5. 停止中
+	// <p>状态，1.停止 2. 开启中 3. 开启 4. 开启失败 5. 停止中</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 创建人
+	// <p>创建人</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatorUin *string `json:"CreatorUin,omitnil,omitempty" name:"CreatorUin"`
 
-	// 引用资源
+	// <p>引用资源</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceRefs []*GatewayRefItem `json:"ResourceRefs,omitnil,omitempty" name:"ResourceRefs"`
 
-	// Cu规格
+	// <p>Cu规格</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CuSpec *float64 `json:"CuSpec,omitnil,omitempty" name:"CuSpec"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 更新时间
+	// <p>更新时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 配置参数
+	// <p>配置参数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Properties []*Property `json:"Properties,omitnil,omitempty" name:"Properties"`
 
-	// Cpu
+	// <p>Cpu</p>
 	Cpu *float64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 
-	// Mem
+	// <p>Mem</p>
 	Mem *float64 `json:"Mem,omitnil,omitempty" name:"Mem"`
 
-	// jdk版本
+	// <p>jdk版本</p>
 	JdkVersion *string `json:"JdkVersion,omitnil,omitempty" name:"JdkVersion"`
+
+	// <p>session id</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SessionClusterId *string `json:"SessionClusterId,omitnil,omitempty" name:"SessionClusterId"`
+
+	// <p>pg用户名</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PgUser *string `json:"PgUser,omitnil,omitempty" name:"PgUser"`
+
+	// <p>协议</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Endpoints []*SqlGatewayEndpoint `json:"Endpoints,omitnil,omitempty" name:"Endpoints"`
 }
 
 type StatementResult struct {

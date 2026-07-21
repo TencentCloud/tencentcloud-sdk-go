@@ -421,6 +421,70 @@ func (c *Client) CreateGlobalAcceleratorWithContext(ctx context.Context, request
     return
 }
 
+func NewCreateGlobalAcceleratorAccessLogRequest() (request *CreateGlobalAcceleratorAccessLogRequest) {
+    request = &CreateGlobalAcceleratorAccessLogRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ga2", APIVersion, "CreateGlobalAcceleratorAccessLog")
+    
+    
+    return
+}
+
+func NewCreateGlobalAcceleratorAccessLogResponse() (response *CreateGlobalAcceleratorAccessLogResponse) {
+    response = &CreateGlobalAcceleratorAccessLogResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateGlobalAcceleratorAccessLog
+// 创建GA访问日志
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INSTANCEMISMATCH = "InvalidParameterValue.InstanceMismatch"
+//  INVALIDPARAMETERVALUE_LOGTASKLOCATEDERROR = "InvalidParameterValue.LogTaskLocatedError"
+//  INVALIDPARAMETERVALUE_LOGSETNOTEXIST = "InvalidParameterValue.LogsetNotExist"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  UNSUPPORTEDOPERATION_ACCESSLOG = "UnsupportedOperation.AccessLog"
+//  UNSUPPORTEDOPERATION_EXISTACCESSLOG = "UnsupportedOperation.ExistAccessLog"
+//  UNSUPPORTEDOPERATION_INSTANCENOTRUNNING = "UnsupportedOperation.InstanceNotRunning"
+//  UNSUPPORTEDOPERATION_NOTAUTHORIZATION = "UnsupportedOperation.NotAuthorization"
+func (c *Client) CreateGlobalAcceleratorAccessLog(request *CreateGlobalAcceleratorAccessLogRequest) (response *CreateGlobalAcceleratorAccessLogResponse, err error) {
+    return c.CreateGlobalAcceleratorAccessLogWithContext(context.Background(), request)
+}
+
+// CreateGlobalAcceleratorAccessLog
+// 创建GA访问日志
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INSTANCEMISMATCH = "InvalidParameterValue.InstanceMismatch"
+//  INVALIDPARAMETERVALUE_LOGTASKLOCATEDERROR = "InvalidParameterValue.LogTaskLocatedError"
+//  INVALIDPARAMETERVALUE_LOGSETNOTEXIST = "InvalidParameterValue.LogsetNotExist"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  UNSUPPORTEDOPERATION_ACCESSLOG = "UnsupportedOperation.AccessLog"
+//  UNSUPPORTEDOPERATION_EXISTACCESSLOG = "UnsupportedOperation.ExistAccessLog"
+//  UNSUPPORTEDOPERATION_INSTANCENOTRUNNING = "UnsupportedOperation.InstanceNotRunning"
+//  UNSUPPORTEDOPERATION_NOTAUTHORIZATION = "UnsupportedOperation.NotAuthorization"
+func (c *Client) CreateGlobalAcceleratorAccessLogWithContext(ctx context.Context, request *CreateGlobalAcceleratorAccessLogRequest) (response *CreateGlobalAcceleratorAccessLogResponse, err error) {
+    if request == nil {
+        request = NewCreateGlobalAcceleratorAccessLogRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ga2", APIVersion, "CreateGlobalAcceleratorAccessLog")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateGlobalAcceleratorAccessLog require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateGlobalAcceleratorAccessLogResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateGlobalAcceleratorAclPolicyRequest() (request *CreateGlobalAcceleratorAclPolicyRequest) {
     request = &CreateGlobalAcceleratorAclPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -967,6 +1031,62 @@ func (c *Client) DeleteGlobalAcceleratorWithContext(ctx context.Context, request
     return
 }
 
+func NewDeleteGlobalAcceleratorAccessLogRequest() (request *DeleteGlobalAcceleratorAccessLogRequest) {
+    request = &DeleteGlobalAcceleratorAccessLogRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ga2", APIVersion, "DeleteGlobalAcceleratorAccessLog")
+    
+    
+    return
+}
+
+func NewDeleteGlobalAcceleratorAccessLogResponse() (response *DeleteGlobalAcceleratorAccessLogResponse) {
+    response = &DeleteGlobalAcceleratorAccessLogResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteGlobalAcceleratorAccessLog
+// 删除GA日志任务
+//
+// 可能返回的错误码:
+//  UNSUPPORTEDOPERATION_EXISTACCELERATORAREA = "UnsupportedOperation.ExistAcceleratorArea"
+//  UNSUPPORTEDOPERATION_EXISTGLOBALACCELERATORACLPOLICY = "UnsupportedOperation.ExistGlobalAcceleratorAclPolicy"
+//  UNSUPPORTEDOPERATION_EXISTLISTENER = "UnsupportedOperation.ExistListener"
+//  UNSUPPORTEDOPERATION_INSTANCESTATENOTALLOWEDOPERATE = "UnsupportedOperation.InstanceStateNotAllowedOperate"
+func (c *Client) DeleteGlobalAcceleratorAccessLog(request *DeleteGlobalAcceleratorAccessLogRequest) (response *DeleteGlobalAcceleratorAccessLogResponse, err error) {
+    return c.DeleteGlobalAcceleratorAccessLogWithContext(context.Background(), request)
+}
+
+// DeleteGlobalAcceleratorAccessLog
+// 删除GA日志任务
+//
+// 可能返回的错误码:
+//  UNSUPPORTEDOPERATION_EXISTACCELERATORAREA = "UnsupportedOperation.ExistAcceleratorArea"
+//  UNSUPPORTEDOPERATION_EXISTGLOBALACCELERATORACLPOLICY = "UnsupportedOperation.ExistGlobalAcceleratorAclPolicy"
+//  UNSUPPORTEDOPERATION_EXISTLISTENER = "UnsupportedOperation.ExistListener"
+//  UNSUPPORTEDOPERATION_INSTANCESTATENOTALLOWEDOPERATE = "UnsupportedOperation.InstanceStateNotAllowedOperate"
+func (c *Client) DeleteGlobalAcceleratorAccessLogWithContext(ctx context.Context, request *DeleteGlobalAcceleratorAccessLogRequest) (response *DeleteGlobalAcceleratorAccessLogResponse, err error) {
+    if request == nil {
+        request = NewDeleteGlobalAcceleratorAccessLogRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ga2", APIVersion, "DeleteGlobalAcceleratorAccessLog")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteGlobalAcceleratorAccessLog require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteGlobalAcceleratorAccessLogResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteGlobalAcceleratorAclPolicyRequest() (request *DeleteGlobalAcceleratorAclPolicyRequest) {
     request = &DeleteGlobalAcceleratorAclPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1299,6 +1419,62 @@ func (c *Client) DescribeAccelerateRegionsWithContext(ctx context.Context, reque
     return
 }
 
+func NewDescribeAccessLogParamRequest() (request *DescribeAccessLogParamRequest) {
+    request = &DescribeAccessLogParamRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ga2", APIVersion, "DescribeAccessLogParam")
+    
+    
+    return
+}
+
+func NewDescribeAccessLogParamResponse() (response *DescribeAccessLogParamResponse) {
+    response = &DescribeAccessLogParamResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAccessLogParam
+// 查看访问日志上报参数
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INSTANCEMISMATCH = "InvalidParameterValue.InstanceMismatch"
+//  UNSUPPORTEDOPERATION_CACERTIFICATESOPERATE = "UnsupportedOperation.CaCertificatesOperate"
+//  UNSUPPORTEDOPERATION_DEFAULTCERTIFICATESOPERATE = "UnsupportedOperation.DefaultCertificatesOperate"
+//  UNSUPPORTEDOPERATION_INSTANCENOTRUNNING = "UnsupportedOperation.InstanceNotRunning"
+func (c *Client) DescribeAccessLogParam(request *DescribeAccessLogParamRequest) (response *DescribeAccessLogParamResponse, err error) {
+    return c.DescribeAccessLogParamWithContext(context.Background(), request)
+}
+
+// DescribeAccessLogParam
+// 查看访问日志上报参数
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INSTANCEMISMATCH = "InvalidParameterValue.InstanceMismatch"
+//  UNSUPPORTEDOPERATION_CACERTIFICATESOPERATE = "UnsupportedOperation.CaCertificatesOperate"
+//  UNSUPPORTEDOPERATION_DEFAULTCERTIFICATESOPERATE = "UnsupportedOperation.DefaultCertificatesOperate"
+//  UNSUPPORTEDOPERATION_INSTANCENOTRUNNING = "UnsupportedOperation.InstanceNotRunning"
+func (c *Client) DescribeAccessLogParamWithContext(ctx context.Context, request *DescribeAccessLogParamRequest) (response *DescribeAccessLogParamResponse, err error) {
+    if request == nil {
+        request = NewDescribeAccessLogParamRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ga2", APIVersion, "DescribeAccessLogParam")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAccessLogParam require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAccessLogParamResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCrossBorderSettlementRequest() (request *DescribeCrossBorderSettlementRequest) {
     request = &DescribeCrossBorderSettlementRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1507,6 +1683,156 @@ func (c *Client) DescribeForwardingRuleWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribeGlobalAcceleratorAccessLogRequest() (request *DescribeGlobalAcceleratorAccessLogRequest) {
+    request = &DescribeGlobalAcceleratorAccessLogRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ga2", APIVersion, "DescribeGlobalAcceleratorAccessLog")
+    
+    
+    return
+}
+
+func NewDescribeGlobalAcceleratorAccessLogResponse() (response *DescribeGlobalAcceleratorAccessLogResponse) {
+    response = &DescribeGlobalAcceleratorAccessLogResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeGlobalAcceleratorAccessLog
+// 查询日志任务
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+func (c *Client) DescribeGlobalAcceleratorAccessLog(request *DescribeGlobalAcceleratorAccessLogRequest) (response *DescribeGlobalAcceleratorAccessLogResponse, err error) {
+    return c.DescribeGlobalAcceleratorAccessLogWithContext(context.Background(), request)
+}
+
+// DescribeGlobalAcceleratorAccessLog
+// 查询日志任务
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+func (c *Client) DescribeGlobalAcceleratorAccessLogWithContext(ctx context.Context, request *DescribeGlobalAcceleratorAccessLogRequest) (response *DescribeGlobalAcceleratorAccessLogResponse, err error) {
+    if request == nil {
+        request = NewDescribeGlobalAcceleratorAccessLogRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ga2", APIVersion, "DescribeGlobalAcceleratorAccessLog")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeGlobalAcceleratorAccessLog require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeGlobalAcceleratorAccessLogResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeGlobalAcceleratorAclPoliciesRequest() (request *DescribeGlobalAcceleratorAclPoliciesRequest) {
+    request = &DescribeGlobalAcceleratorAclPoliciesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ga2", APIVersion, "DescribeGlobalAcceleratorAclPolicies")
+    
+    
+    return
+}
+
+func NewDescribeGlobalAcceleratorAclPoliciesResponse() (response *DescribeGlobalAcceleratorAclPoliciesResponse) {
+    response = &DescribeGlobalAcceleratorAclPoliciesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeGlobalAcceleratorAclPolicies
+// 查看访问控制策略
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+func (c *Client) DescribeGlobalAcceleratorAclPolicies(request *DescribeGlobalAcceleratorAclPoliciesRequest) (response *DescribeGlobalAcceleratorAclPoliciesResponse, err error) {
+    return c.DescribeGlobalAcceleratorAclPoliciesWithContext(context.Background(), request)
+}
+
+// DescribeGlobalAcceleratorAclPolicies
+// 查看访问控制策略
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+func (c *Client) DescribeGlobalAcceleratorAclPoliciesWithContext(ctx context.Context, request *DescribeGlobalAcceleratorAclPoliciesRequest) (response *DescribeGlobalAcceleratorAclPoliciesResponse, err error) {
+    if request == nil {
+        request = NewDescribeGlobalAcceleratorAclPoliciesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ga2", APIVersion, "DescribeGlobalAcceleratorAclPolicies")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeGlobalAcceleratorAclPolicies require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeGlobalAcceleratorAclPoliciesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeGlobalAcceleratorAclRulesRequest() (request *DescribeGlobalAcceleratorAclRulesRequest) {
+    request = &DescribeGlobalAcceleratorAclRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ga2", APIVersion, "DescribeGlobalAcceleratorAclRules")
+    
+    
+    return
+}
+
+func NewDescribeGlobalAcceleratorAclRulesResponse() (response *DescribeGlobalAcceleratorAclRulesResponse) {
+    response = &DescribeGlobalAcceleratorAclRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeGlobalAcceleratorAclRules
+// 查看ACL规则
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+func (c *Client) DescribeGlobalAcceleratorAclRules(request *DescribeGlobalAcceleratorAclRulesRequest) (response *DescribeGlobalAcceleratorAclRulesResponse, err error) {
+    return c.DescribeGlobalAcceleratorAclRulesWithContext(context.Background(), request)
+}
+
+// DescribeGlobalAcceleratorAclRules
+// 查看ACL规则
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+func (c *Client) DescribeGlobalAcceleratorAclRulesWithContext(ctx context.Context, request *DescribeGlobalAcceleratorAclRulesRequest) (response *DescribeGlobalAcceleratorAclRulesResponse, err error) {
+    if request == nil {
+        request = NewDescribeGlobalAcceleratorAclRulesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ga2", APIVersion, "DescribeGlobalAcceleratorAclRules")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeGlobalAcceleratorAclRules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeGlobalAcceleratorAclRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeGlobalAcceleratorsRequest() (request *DescribeGlobalAcceleratorsRequest) {
     request = &DescribeGlobalAcceleratorsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1530,7 +1856,6 @@ func NewDescribeGlobalAcceleratorsResponse() (response *DescribeGlobalAccelerato
 // 修改全球加速实例
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETER_INPUTOUTOFRANGE = "InvalidParameter.InputOutOfRange"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 func (c *Client) DescribeGlobalAccelerators(request *DescribeGlobalAcceleratorsRequest) (response *DescribeGlobalAcceleratorsResponse, err error) {
     return c.DescribeGlobalAcceleratorsWithContext(context.Background(), request)
@@ -1540,7 +1865,6 @@ func (c *Client) DescribeGlobalAccelerators(request *DescribeGlobalAcceleratorsR
 // 修改全球加速实例
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETER_INPUTOUTOFRANGE = "InvalidParameter.InputOutOfRange"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 func (c *Client) DescribeGlobalAcceleratorsWithContext(ctx context.Context, request *DescribeGlobalAcceleratorsRequest) (response *DescribeGlobalAcceleratorsResponse, err error) {
     if request == nil {
@@ -1582,7 +1906,6 @@ func NewDescribeListenersResponse() (response *DescribeListenersResponse) {
 // 查询监听器
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETER_INPUTOUTOFRANGE = "InvalidParameter.InputOutOfRange"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 func (c *Client) DescribeListeners(request *DescribeListenersRequest) (response *DescribeListenersResponse, err error) {
     return c.DescribeListenersWithContext(context.Background(), request)
@@ -1592,7 +1915,6 @@ func (c *Client) DescribeListeners(request *DescribeListenersRequest) (response 
 // 查询监听器
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETER_INPUTOUTOFRANGE = "InvalidParameter.InputOutOfRange"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 func (c *Client) DescribeListenersWithContext(ctx context.Context, request *DescribeListenersRequest) (response *DescribeListenersResponse, err error) {
     if request == nil {
@@ -1713,6 +2035,62 @@ func (c *Client) ModifyAccelerateAreasWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewModifyAccelerateAreasResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyAccessLogStatusRequest() (request *ModifyAccessLogStatusRequest) {
+    request = &ModifyAccessLogStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ga2", APIVersion, "ModifyAccessLogStatus")
+    
+    
+    return
+}
+
+func NewModifyAccessLogStatusResponse() (response *ModifyAccessLogStatusResponse) {
+    response = &ModifyAccessLogStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyAccessLogStatus
+// 修改日志任务状态
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_LOGSETNOTEXIST = "InvalidParameterValue.LogsetNotExist"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_INSTANCESTATENOTALLOWEDOPERATE = "UnsupportedOperation.InstanceStateNotAllowedOperate"
+//  UNSUPPORTEDOPERATION_NOTAUTHORIZATION = "UnsupportedOperation.NotAuthorization"
+func (c *Client) ModifyAccessLogStatus(request *ModifyAccessLogStatusRequest) (response *ModifyAccessLogStatusResponse, err error) {
+    return c.ModifyAccessLogStatusWithContext(context.Background(), request)
+}
+
+// ModifyAccessLogStatus
+// 修改日志任务状态
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_LOGSETNOTEXIST = "InvalidParameterValue.LogsetNotExist"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_INSTANCESTATENOTALLOWEDOPERATE = "UnsupportedOperation.InstanceStateNotAllowedOperate"
+//  UNSUPPORTEDOPERATION_NOTAUTHORIZATION = "UnsupportedOperation.NotAuthorization"
+func (c *Client) ModifyAccessLogStatusWithContext(ctx context.Context, request *ModifyAccessLogStatusRequest) (response *ModifyAccessLogStatusResponse, err error) {
+    if request == nil {
+        request = NewModifyAccessLogStatusRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ga2", APIVersion, "ModifyAccessLogStatus")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAccessLogStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyAccessLogStatusResponse()
     err = c.Send(request, response)
     return
 }
@@ -1985,6 +2363,64 @@ func (c *Client) ModifyGlobalAcceleratorWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewModifyGlobalAcceleratorResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyGlobalAcceleratorAccessLogRequest() (request *ModifyGlobalAcceleratorAccessLogRequest) {
+    request = &ModifyGlobalAcceleratorAccessLogRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ga2", APIVersion, "ModifyGlobalAcceleratorAccessLog")
+    
+    
+    return
+}
+
+func NewModifyGlobalAcceleratorAccessLogResponse() (response *ModifyGlobalAcceleratorAccessLogResponse) {
+    response = &ModifyGlobalAcceleratorAccessLogResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyGlobalAcceleratorAccessLog
+// 修改GA访问日志
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_EMPTY = "InvalidParameterValue.Empty"
+//  INVALIDPARAMETERVALUE_LOGSETNOTEXIST = "InvalidParameterValue.LogsetNotExist"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  UNSUPPORTEDOPERATION_INSTANCENOTRUNNING = "UnsupportedOperation.InstanceNotRunning"
+//  UNSUPPORTEDOPERATION_NOTAUTHORIZATION = "UnsupportedOperation.NotAuthorization"
+func (c *Client) ModifyGlobalAcceleratorAccessLog(request *ModifyGlobalAcceleratorAccessLogRequest) (response *ModifyGlobalAcceleratorAccessLogResponse, err error) {
+    return c.ModifyGlobalAcceleratorAccessLogWithContext(context.Background(), request)
+}
+
+// ModifyGlobalAcceleratorAccessLog
+// 修改GA访问日志
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_EMPTY = "InvalidParameterValue.Empty"
+//  INVALIDPARAMETERVALUE_LOGSETNOTEXIST = "InvalidParameterValue.LogsetNotExist"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  UNSUPPORTEDOPERATION_INSTANCENOTRUNNING = "UnsupportedOperation.InstanceNotRunning"
+//  UNSUPPORTEDOPERATION_NOTAUTHORIZATION = "UnsupportedOperation.NotAuthorization"
+func (c *Client) ModifyGlobalAcceleratorAccessLogWithContext(ctx context.Context, request *ModifyGlobalAcceleratorAccessLogRequest) (response *ModifyGlobalAcceleratorAccessLogResponse, err error) {
+    if request == nil {
+        request = NewModifyGlobalAcceleratorAccessLogRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ga2", APIVersion, "ModifyGlobalAcceleratorAccessLog")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyGlobalAcceleratorAccessLog require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyGlobalAcceleratorAccessLogResponse()
     err = c.Send(request, response)
     return
 }

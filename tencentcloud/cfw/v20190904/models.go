@@ -113,6 +113,41 @@ type AccessInstanceInfo struct {
 	AccessCidrList []*string `json:"AccessCidrList,omitnil,omitempty" name:"AccessCidrList"`
 }
 
+type AclRegInfo struct {
+	// 地域KEY
+	RegionCode *string `json:"RegionCode,omitnil,omitempty" name:"RegionCode"`
+
+	// 地域名称
+	RegionName *string `json:"RegionName,omitnil,omitempty" name:"RegionName"`
+
+	// 上级地域信息
+	Parent *string `json:"Parent,omitnil,omitempty" name:"Parent"`
+
+	// 中文拼音首字母
+	ZhKey *string `json:"ZhKey,omitnil,omitempty" name:"ZhKey"`
+
+	// 英文首字母
+	EnKey *string `json:"EnKey,omitnil,omitempty" name:"EnKey"`
+
+	// 是否为地区
+	Area *int64 `json:"Area,omitnil,omitempty" name:"Area"`
+
+	// 是否为省份、城市
+	IsCity *int64 `json:"IsCity,omitnil,omitempty" name:"IsCity"`
+
+	// 序号
+	Num *int64 `json:"Num,omitnil,omitempty" name:"Num"`
+
+	// 是否支持旁路
+	ForBypass *int64 `json:"ForBypass,omitnil,omitempty" name:"ForBypass"`
+
+	// 是否支持串行
+	ForSerial *int64 `json:"ForSerial,omitnil,omitempty" name:"ForSerial"`
+
+	// 是否支持NAT
+	ForNat *int64 `json:"ForNat,omitnil,omitempty" name:"ForNat"`
+}
+
 // Predefined struct for user
 type AddAclRuleRequestParams struct {
 	// <p>需要添加的访问控制规则列表</p>
@@ -1963,62 +1998,62 @@ func (r *CreateNatFwDnatRuleResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateNatFwInstanceRequestParams struct {
-	// 防火墙实例名称
+	// <p>防火墙实例名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 带宽
+	// <p>带宽</p>
 	Width *int64 `json:"Width,omitnil,omitempty" name:"Width"`
 
-	// 模式 1：接入模式；0：新增模式
+	// <p>模式 1：接入模式；0：新增模式</p>
 	Mode *int64 `json:"Mode,omitnil,omitempty" name:"Mode"`
 
-	// 新增模式传递参数，其中NewModeItems和NatgwList至少传递一种。
+	// <p>新增模式传递参数，其中NewModeItems和NatgwList至少传递一种。</p>
 	NewModeItems *NewModeItems `json:"NewModeItems,omitnil,omitempty" name:"NewModeItems"`
 
-	// 接入模式接入的nat网关列表，其中NewModeItems和NatgwList至少传递一种。
+	// <p>接入模式接入的nat网关列表，其中NewModeItems和NatgwList至少传递一种。</p>
 	NatGwList []*string `json:"NatGwList,omitnil,omitempty" name:"NatGwList"`
 
-	// 主可用区，为空则选择默认可用区
+	// <p>主可用区，为空则选择默认可用区</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 备可用区，为空则选择默认可用区
+	// <p>备可用区，为空则选择默认可用区</p>
 	ZoneBak *string `json:"ZoneBak,omitnil,omitempty" name:"ZoneBak"`
 
-	// 异地灾备 1：使用异地灾备；0：不使用异地灾备；为空则默认不使用异地灾备
+	// <p>异地灾备 1：使用异地灾备；0：不使用异地灾备；为空则默认不使用异地灾备</p>
 	CrossAZone *int64 `json:"CrossAZone,omitnil,omitempty" name:"CrossAZone"`
 
-	// 指定防火墙使用网段信息
+	// <p>指定防火墙使用网段信息</p>
 	FwCidrInfo *FwCidrInfo `json:"FwCidrInfo,omitnil,omitempty" name:"FwCidrInfo"`
 }
 
 type CreateNatFwInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 防火墙实例名称
+	// <p>防火墙实例名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 带宽
+	// <p>带宽</p>
 	Width *int64 `json:"Width,omitnil,omitempty" name:"Width"`
 
-	// 模式 1：接入模式；0：新增模式
+	// <p>模式 1：接入模式；0：新增模式</p>
 	Mode *int64 `json:"Mode,omitnil,omitempty" name:"Mode"`
 
-	// 新增模式传递参数，其中NewModeItems和NatgwList至少传递一种。
+	// <p>新增模式传递参数，其中NewModeItems和NatgwList至少传递一种。</p>
 	NewModeItems *NewModeItems `json:"NewModeItems,omitnil,omitempty" name:"NewModeItems"`
 
-	// 接入模式接入的nat网关列表，其中NewModeItems和NatgwList至少传递一种。
+	// <p>接入模式接入的nat网关列表，其中NewModeItems和NatgwList至少传递一种。</p>
 	NatGwList []*string `json:"NatGwList,omitnil,omitempty" name:"NatGwList"`
 
-	// 主可用区，为空则选择默认可用区
+	// <p>主可用区，为空则选择默认可用区</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 备可用区，为空则选择默认可用区
+	// <p>备可用区，为空则选择默认可用区</p>
 	ZoneBak *string `json:"ZoneBak,omitnil,omitempty" name:"ZoneBak"`
 
-	// 异地灾备 1：使用异地灾备；0：不使用异地灾备；为空则默认不使用异地灾备
+	// <p>异地灾备 1：使用异地灾备；0：不使用异地灾备；为空则默认不使用异地灾备</p>
 	CrossAZone *int64 `json:"CrossAZone,omitnil,omitempty" name:"CrossAZone"`
 
-	// 指定防火墙使用网段信息
+	// <p>指定防火墙使用网段信息</p>
 	FwCidrInfo *FwCidrInfo `json:"FwCidrInfo,omitnil,omitempty" name:"FwCidrInfo"`
 }
 
@@ -2051,7 +2086,7 @@ func (r *CreateNatFwInstanceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateNatFwInstanceResponseParams struct {
-	// 防火墙实例id
+	// <p>防火墙实例id</p>
 	CfwInsId *string `json:"CfwInsId,omitnil,omitempty" name:"CfwInsId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3483,6 +3518,63 @@ func (r *DescribeAcListsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAcListsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAclRegInfoRequestParams struct {
+	// 防火墙类型 SERIAL：串行、NAT：NAT防火墙，BYPASS：旁路防火墙
+	FwType []*string `json:"FwType,omitnil,omitempty" name:"FwType"`
+}
+
+type DescribeAclRegInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 防火墙类型 SERIAL：串行、NAT：NAT防火墙，BYPASS：旁路防火墙
+	FwType []*string `json:"FwType,omitnil,omitempty" name:"FwType"`
+}
+
+func (r *DescribeAclRegInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAclRegInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FwType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAclRegInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAclRegInfoResponseParams struct {
+	// 规则支持的地域列表
+	Data []*AclRegInfo `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAclRegInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAclRegInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeAclRegInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAclRegInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -12317,14 +12409,14 @@ func (r *ModifyResourceGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyRunSyncAssetRequestParams struct {
-	// 0: 互联网防火墙开关，1：vpc 防火墙开关
+	// <p>0: 互联网防火墙开关，1：vpc 防火墙开关</p>
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
 type ModifyRunSyncAssetRequest struct {
 	*tchttp.BaseRequest
 	
-	// 0: 互联网防火墙开关，1：vpc 防火墙开关
+	// <p>0: 互联网防火墙开关，1：vpc 防火墙开关</p>
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
@@ -12349,7 +12441,7 @@ func (r *ModifyRunSyncAssetRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyRunSyncAssetResponseParams struct {
-	// 0：同步成功，1：资产更新中，2：后台同步调用失败
+	// <p>0：同步成功，1：资产更新中，2：后台同步调用失败</p>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

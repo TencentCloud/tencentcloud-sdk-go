@@ -9039,12 +9039,15 @@ func (r *DescribeLakeFsTaskResultResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeMCPTaskRequestParams struct {
-
+	// <p>任务 ID</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
 type DescribeMCPTaskRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>任务 ID</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
 func (r *DescribeMCPTaskRequest) ToJsonString() string {
@@ -9059,7 +9062,7 @@ func (r *DescribeMCPTaskRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "TaskId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMCPTaskRequest has unknown keys!", "")
 	}
@@ -9068,6 +9071,9 @@ func (r *DescribeMCPTaskRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeMCPTaskResponseParams struct {
+	// <p>任务详细信息</p>
+	TaskInfo *MCPTaskInfo `json:"TaskInfo,omitnil,omitempty" name:"TaskInfo"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -9090,12 +9096,15 @@ func (r *DescribeMCPTaskResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeMCPTaskResultRequestParams struct {
-
+	// <p>任务ID</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
 type DescribeMCPTaskResultRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>任务ID</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
 func (r *DescribeMCPTaskResultRequest) ToJsonString() string {
@@ -9110,7 +9119,7 @@ func (r *DescribeMCPTaskResultRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "TaskId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMCPTaskResultRequest has unknown keys!", "")
 	}
@@ -9119,6 +9128,9 @@ func (r *DescribeMCPTaskResultRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeMCPTaskResultResponseParams struct {
+	// <p>任务结果信息</p>
+	TaskResult *MCPTaskResultInfo `json:"TaskResult,omitnil,omitempty" name:"TaskResult"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -14971,6 +14983,115 @@ func (r *LockMetaDataResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *LockMetaDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type MCPTaskInfo struct {
+	// <p>任务 ID</p>
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>BatchId</p>
+	BatchId *string `json:"BatchId,omitnil,omitempty" name:"BatchId"`
+
+	// <p>状态</p>
+	State *int64 `json:"State,omitnil,omitempty" name:"State"`
+
+	// <p>任务类型</p>
+	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+
+	// <p>任务类型</p>
+	TaskKind *string `json:"TaskKind,omitnil,omitempty" name:"TaskKind"`
+
+	// <p>引擎详情</p>
+	EngineTypeDetail *string `json:"EngineTypeDetail,omitnil,omitempty" name:"EngineTypeDetail"`
+
+	// <p>SQL 类型</p>
+	SQLType *string `json:"SQLType,omitnil,omitempty" name:"SQLType"`
+
+	// <p>SQL</p>
+	SQL *string `json:"SQL,omitnil,omitempty" name:"SQL"`
+
+	// <p>是否截断</p>
+	IsSQLCutOff *bool `json:"IsSQLCutOff,omitnil,omitempty" name:"IsSQLCutOff"`
+
+	// <p>数据库名称</p>
+	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
+
+	// <p>引擎 ID</p>
+	DataEngineId *string `json:"DataEngineId,omitnil,omitempty" name:"DataEngineId"`
+
+	// <p>资源组名称</p>
+	ResourceGroupName *string `json:"ResourceGroupName,omitnil,omitempty" name:"ResourceGroupName"`
+
+	// <p>JobId</p>
+	SparkJobId *string `json:"SparkJobId,omitnil,omitempty" name:"SparkJobId"`
+
+	// <p>Job 名称</p>
+	SparkJobName *string `json:"SparkJobName,omitnil,omitempty" name:"SparkJobName"`
+
+	// <p>操作人 Uin</p>
+	OperateUin *string `json:"OperateUin,omitnil,omitempty" name:"OperateUin"`
+
+	// <p>创建时间</p>
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>开始时间</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>结束时间</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>更新时间</p>
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// <p>引擎耗时</p><p>单位：毫秒</p>
+	UsedTime *int64 `json:"UsedTime,omitnil,omitempty" name:"UsedTime"`
+
+	// <p>执行总耗时</p><p>单位：毫秒</p>
+	TotalTime *int64 `json:"TotalTime,omitnil,omitempty" name:"TotalTime"`
+
+	// <p>进度</p>
+	Progress *int64 `json:"Progress,omitnil,omitempty" name:"Progress"`
+
+	// <p>输出信息</p>
+	OutputMessage *string `json:"OutputMessage,omitnil,omitempty" name:"OutputMessage"`
+
+	// <p>结果集</p>
+	DataSet *string `json:"DataSet,omitnil,omitempty" name:"DataSet"`
+}
+
+type MCPTaskResultInfo struct {
+	// <p>任务 ID</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>状态</p>
+	State *int64 `json:"State,omitnil,omitempty" name:"State"`
+
+	// <p>结果集 Schema</p>
+	ResultSchema []*Column `json:"ResultSchema,omitnil,omitempty" name:"ResultSchema"`
+
+	// <p>结果集</p>
+	ResultSet *string `json:"ResultSet,omitnil,omitempty" name:"ResultSet"`
+
+	// <p>是否还有其他结果</p>
+	NextToken *string `json:"NextToken,omitnil,omitempty" name:"NextToken"`
+
+	// <p>影响行数</p>
+	RowAffectInfo *string `json:"RowAffectInfo,omitnil,omitempty" name:"RowAffectInfo"`
+
+	// <p>输出信息</p>
+	OutputMessage *string `json:"OutputMessage,omitnil,omitempty" name:"OutputMessage"`
+
+	// <p>展示 format</p>
+	DisplayFormat *string `json:"DisplayFormat,omitnil,omitempty" name:"DisplayFormat"`
+
+	// <p>能否下载</p>
+	CanDownload *bool `json:"CanDownload,omitnil,omitempty" name:"CanDownload"`
+
+	// <p>结果花费时间</p><p>单位：毫秒</p>
+	QueryResultTime *float64 `json:"QueryResultTime,omitnil,omitempty" name:"QueryResultTime"`
+
+	// <p>是否超大</p>
+	IsResultOversize *bool `json:"IsResultOversize,omitnil,omitempty" name:"IsResultOversize"`
 }
 
 type MixedTablePartitions struct {
