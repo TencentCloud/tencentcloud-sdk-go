@@ -1257,6 +1257,10 @@ func NewDescribeDeviceDetailListResponse() (response *DescribeDeviceDetailListRe
 }
 
 // DescribeDeviceDetailList
+// 不使用了
+//
+// 
+//
 // 基于软件查看终端详情列表,私有化调用path为：capi/Software/DescribeDeviceDetailList
 //
 // 可能返回的错误码:
@@ -1267,6 +1271,10 @@ func (c *Client) DescribeDeviceDetailList(request *DescribeDeviceDetailListReque
 }
 
 // DescribeDeviceDetailList
+// 不使用了
+//
+// 
+//
 // 基于软件查看终端详情列表,私有化调用path为：capi/Software/DescribeDeviceDetailList
 //
 // 可能返回的错误码:

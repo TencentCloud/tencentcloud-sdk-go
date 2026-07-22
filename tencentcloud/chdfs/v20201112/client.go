@@ -485,6 +485,78 @@ func (c *Client) CreateMountPointWithContext(ctx context.Context, request *Creat
     return
 }
 
+func NewCreatePathProtectionRuleRequest() (request *CreatePathProtectionRuleRequest) {
+    request = &CreatePathProtectionRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("chdfs", APIVersion, "CreatePathProtectionRule")
+    
+    
+    return
+}
+
+func NewCreatePathProtectionRuleResponse() (response *CreatePathProtectionRuleResponse) {
+    response = &CreatePathProtectionRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreatePathProtectionRule
+// 创建路径保护规则。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDFILESYSTEMID = "InvalidParameterValue.InvalidFileSystemId"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_FILESYSTEMNOTEXISTS = "ResourceNotFound.FileSystemNotExists"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreatePathProtectionRule(request *CreatePathProtectionRuleRequest) (response *CreatePathProtectionRuleResponse, err error) {
+    return c.CreatePathProtectionRuleWithContext(context.Background(), request)
+}
+
+// CreatePathProtectionRule
+// 创建路径保护规则。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDFILESYSTEMID = "InvalidParameterValue.InvalidFileSystemId"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_FILESYSTEMNOTEXISTS = "ResourceNotFound.FileSystemNotExists"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreatePathProtectionRuleWithContext(ctx context.Context, request *CreatePathProtectionRuleRequest) (response *CreatePathProtectionRuleResponse, err error) {
+    if request == nil {
+        request = NewCreatePathProtectionRuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "chdfs", APIVersion, "CreatePathProtectionRule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreatePathProtectionRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreatePathProtectionRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateRestoreTasksRequest() (request *CreateRestoreTasksRequest) {
     request = &CreateRestoreTasksRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -945,6 +1017,70 @@ func (c *Client) DeleteMountPointWithContext(ctx context.Context, request *Delet
     request.SetContext(ctx)
     
     response = NewDeleteMountPointResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeletePathProtectionRuleRequest() (request *DeletePathProtectionRuleRequest) {
+    request = &DeletePathProtectionRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("chdfs", APIVersion, "DeletePathProtectionRule")
+    
+    
+    return
+}
+
+func NewDeletePathProtectionRuleResponse() (response *DeletePathProtectionRuleResponse) {
+    response = &DeletePathProtectionRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeletePathProtectionRule
+// 删除路径保护规则。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DeletePathProtectionRule(request *DeletePathProtectionRuleRequest) (response *DeletePathProtectionRuleResponse, err error) {
+    return c.DeletePathProtectionRuleWithContext(context.Background(), request)
+}
+
+// DeletePathProtectionRule
+// 删除路径保护规则。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DeletePathProtectionRuleWithContext(ctx context.Context, request *DeletePathProtectionRuleRequest) (response *DeletePathProtectionRuleResponse, err error) {
+    if request == nil {
+        request = NewDeletePathProtectionRuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "chdfs", APIVersion, "DeletePathProtectionRule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeletePathProtectionRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeletePathProtectionRuleResponse()
     err = c.Send(request, response)
     return
 }
@@ -1529,6 +1665,72 @@ func (c *Client) DescribeMountPointsWithContext(ctx context.Context, request *De
     request.SetContext(ctx)
     
     response = NewDescribeMountPointsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePathProtectionRulesRequest() (request *DescribePathProtectionRulesRequest) {
+    request = &DescribePathProtectionRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("chdfs", APIVersion, "DescribePathProtectionRules")
+    
+    
+    return
+}
+
+func NewDescribePathProtectionRulesResponse() (response *DescribePathProtectionRulesResponse) {
+    response = &DescribePathProtectionRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribePathProtectionRules
+// 通过文件系统ID查看路径保护规则列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDFILESYSTEMID = "InvalidParameterValue.InvalidFileSystemId"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FILESYSTEMNOTEXISTS = "ResourceNotFound.FileSystemNotExists"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribePathProtectionRules(request *DescribePathProtectionRulesRequest) (response *DescribePathProtectionRulesResponse, err error) {
+    return c.DescribePathProtectionRulesWithContext(context.Background(), request)
+}
+
+// DescribePathProtectionRules
+// 通过文件系统ID查看路径保护规则列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDFILESYSTEMID = "InvalidParameterValue.InvalidFileSystemId"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FILESYSTEMNOTEXISTS = "ResourceNotFound.FileSystemNotExists"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribePathProtectionRulesWithContext(ctx context.Context, request *DescribePathProtectionRulesRequest) (response *DescribePathProtectionRulesResponse, err error) {
+    if request == nil {
+        request = NewDescribePathProtectionRulesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "chdfs", APIVersion, "DescribePathProtectionRules")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePathProtectionRules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePathProtectionRulesResponse()
     err = c.Send(request, response)
     return
 }
@@ -2133,6 +2335,72 @@ func (c *Client) ModifyMountPointWithContext(ctx context.Context, request *Modif
     request.SetContext(ctx)
     
     response = NewModifyMountPointResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyPathProtectionRuleRequest() (request *ModifyPathProtectionRuleRequest) {
+    request = &ModifyPathProtectionRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("chdfs", APIVersion, "ModifyPathProtectionRule")
+    
+    
+    return
+}
+
+func NewModifyPathProtectionRuleResponse() (response *ModifyPathProtectionRuleResponse) {
+    response = &ModifyPathProtectionRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyPathProtectionRule
+// 修改路径保护规则属性，需要指定路径保护规则ID，支持修改规则名称、路径和状态。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyPathProtectionRule(request *ModifyPathProtectionRuleRequest) (response *ModifyPathProtectionRuleResponse, err error) {
+    return c.ModifyPathProtectionRuleWithContext(context.Background(), request)
+}
+
+// ModifyPathProtectionRule
+// 修改路径保护规则属性，需要指定路径保护规则ID，支持修改规则名称、路径和状态。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyPathProtectionRuleWithContext(ctx context.Context, request *ModifyPathProtectionRuleRequest) (response *ModifyPathProtectionRuleResponse, err error) {
+    if request == nil {
+        request = NewModifyPathProtectionRuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "chdfs", APIVersion, "ModifyPathProtectionRule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyPathProtectionRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyPathProtectionRuleResponse()
     err = c.Send(request, response)
     return
 }

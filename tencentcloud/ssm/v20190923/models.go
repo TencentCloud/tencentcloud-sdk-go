@@ -447,33 +447,33 @@ func (r *CreateSecretResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteSecretRequestParams struct {
-	// 指定需要删除的凭据名称。
+	// <p>指定需要删除的凭据名称。</p>
 	SecretName *string `json:"SecretName,omitnil,omitempty" name:"SecretName"`
 
-	// 指定计划删除日期，单位（天），0（默认）表示立即删除， 1-30 表示预留的天数，超出该日期之后彻底删除。
-	// 当凭据类型为SSH密钥对凭据时，此字段只能取值只能为0。
+	// <p>指定计划删除日期，单位（天），0（默认）表示立即删除， 1-30 表示预留的天数，超出该日期之后彻底删除。<br>当凭据类型为SSH密钥对凭据时，此字段只能取值只能为0。</p>
 	RecoveryWindowInDays *uint64 `json:"RecoveryWindowInDays,omitnil,omitempty" name:"RecoveryWindowInDays"`
 
-	// 当凭据类型为SSH密钥对凭据时，此字段有效，取值：
-	// True -- 表示不仅仅清理此凭据中存储的SSH密钥信息，还会将SSH密钥对从CVM侧进行清理。注意，如果SSH密钥此时绑定了CVM实例，那么会清理失败。
-	// False --  表示仅仅清理此凭据中存储的SSH密钥信息，不在CVM进侧进行清理。
+	// <p>当凭据类型为SSH密钥对凭据时，此字段有效，取值：<br>True -- 表示不仅仅清理此凭据中存储的SSH密钥信息，还会将SSH密钥对从CVM侧进行清理。注意，如果SSH密钥此时绑定了CVM实例，那么会清理失败。<br>False --  表示仅仅清理此凭据中存储的SSH密钥信息，不在CVM进侧进行清理。</p>
 	CleanSSHKey *bool `json:"CleanSSHKey,omitnil,omitempty" name:"CleanSSHKey"`
+
+	// <p>删除模式</p><p>枚举值：</p><ul><li>0： 仅删除凭据</li><li>1： 删除凭据和账号</li></ul>
+	DeleteMode *uint64 `json:"DeleteMode,omitnil,omitempty" name:"DeleteMode"`
 }
 
 type DeleteSecretRequest struct {
 	*tchttp.BaseRequest
 	
-	// 指定需要删除的凭据名称。
+	// <p>指定需要删除的凭据名称。</p>
 	SecretName *string `json:"SecretName,omitnil,omitempty" name:"SecretName"`
 
-	// 指定计划删除日期，单位（天），0（默认）表示立即删除， 1-30 表示预留的天数，超出该日期之后彻底删除。
-	// 当凭据类型为SSH密钥对凭据时，此字段只能取值只能为0。
+	// <p>指定计划删除日期，单位（天），0（默认）表示立即删除， 1-30 表示预留的天数，超出该日期之后彻底删除。<br>当凭据类型为SSH密钥对凭据时，此字段只能取值只能为0。</p>
 	RecoveryWindowInDays *uint64 `json:"RecoveryWindowInDays,omitnil,omitempty" name:"RecoveryWindowInDays"`
 
-	// 当凭据类型为SSH密钥对凭据时，此字段有效，取值：
-	// True -- 表示不仅仅清理此凭据中存储的SSH密钥信息，还会将SSH密钥对从CVM侧进行清理。注意，如果SSH密钥此时绑定了CVM实例，那么会清理失败。
-	// False --  表示仅仅清理此凭据中存储的SSH密钥信息，不在CVM进侧进行清理。
+	// <p>当凭据类型为SSH密钥对凭据时，此字段有效，取值：<br>True -- 表示不仅仅清理此凭据中存储的SSH密钥信息，还会将SSH密钥对从CVM侧进行清理。注意，如果SSH密钥此时绑定了CVM实例，那么会清理失败。<br>False --  表示仅仅清理此凭据中存储的SSH密钥信息，不在CVM进侧进行清理。</p>
 	CleanSSHKey *bool `json:"CleanSSHKey,omitnil,omitempty" name:"CleanSSHKey"`
+
+	// <p>删除模式</p><p>枚举值：</p><ul><li>0： 仅删除凭据</li><li>1： 删除凭据和账号</li></ul>
+	DeleteMode *uint64 `json:"DeleteMode,omitnil,omitempty" name:"DeleteMode"`
 }
 
 func (r *DeleteSecretRequest) ToJsonString() string {
@@ -491,6 +491,7 @@ func (r *DeleteSecretRequest) FromJsonString(s string) error {
 	delete(f, "SecretName")
 	delete(f, "RecoveryWindowInDays")
 	delete(f, "CleanSSHKey")
+	delete(f, "DeleteMode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteSecretRequest has unknown keys!", "")
 	}
@@ -499,11 +500,14 @@ func (r *DeleteSecretRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteSecretResponseParams struct {
-	// 指定删除的凭据名称。
+	// <p>指定删除的凭据名称。</p>
 	SecretName *string `json:"SecretName,omitnil,omitempty" name:"SecretName"`
 
-	// 凭据删除的日期，unix时间戳。
+	// <p>凭据删除的日期，unix时间戳。</p>
 	DeleteTime *int64 `json:"DeleteTime,omitnil,omitempty" name:"DeleteTime"`
+
+	// <p>异步删除任务 ID</p>
+	FlowID *int64 `json:"FlowID,omitnil,omitempty" name:"FlowID"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -720,14 +724,14 @@ func (r *DescribeRotationDetailResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRotationHistoryRequestParams struct {
-	// 指定需要获取凭据轮转历史的凭据名称。
+	// <p>指定需要获取凭据轮转历史的凭据名称。</p>
 	SecretName *string `json:"SecretName,omitnil,omitempty" name:"SecretName"`
 }
 
 type DescribeRotationHistoryRequest struct {
 	*tchttp.BaseRequest
 	
-	// 指定需要获取凭据轮转历史的凭据名称。
+	// <p>指定需要获取凭据轮转历史的凭据名称。</p>
 	SecretName *string `json:"SecretName,omitnil,omitempty" name:"SecretName"`
 }
 
@@ -752,11 +756,14 @@ func (r *DescribeRotationHistoryRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRotationHistoryResponseParams struct {
-	// 版本号列表
+	// <p>版本号列表</p>
 	VersionIDs []*string `json:"VersionIDs,omitnil,omitempty" name:"VersionIDs"`
 
-	// 版本号个数，可以给用户展示的版本号个数上限为10个。
+	// <p>版本号个数，可以给用户展示的版本号个数上限为10个。</p>
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>凭据对应账号相关信息</p>
+	AccountInfoList []*SecretAccountInfo `json:"AccountInfoList,omitnil,omitempty" name:"AccountInfoList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -874,6 +881,9 @@ type DescribeSecretResponseParams struct {
 
 	// <p>所属用户UIN 字符串</p>
 	TargetUinString *string `json:"TargetUinString,omitnil,omitempty" name:"TargetUinString"`
+
+	// <p>对应云产品的账号信息</p>
+	AccountInfoList []*SecretAccountInfo `json:"AccountInfoList,omitnil,omitempty" name:"AccountInfoList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -1808,6 +1818,20 @@ func (r *RotateProductSecretResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *RotateProductSecretResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type SecretAccountInfo struct {
+	// <p>账户名称</p>
+	AccountName *string `json:"AccountName,omitnil,omitempty" name:"AccountName"`
+
+	// <p>账户登录主机</p>
+	Host []*string `json:"Host,omitnil,omitempty" name:"Host"`
+
+	// <p>账号状态（生效中/待轮转）</p>
+	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
+
+	// <p>账号轮转时间</p>
+	RotatedTime *string `json:"RotatedTime,omitnil,omitempty" name:"RotatedTime"`
 }
 
 type SecretMetadata struct {

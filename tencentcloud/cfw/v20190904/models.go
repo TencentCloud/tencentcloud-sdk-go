@@ -150,26 +150,26 @@ type AclRegInfo struct {
 
 // Predefined struct for user
 type AddAclRuleRequestParams struct {
-	// <p>需要添加的访问控制规则列表</p>
+	// 待添加的互联网边界规则列表，不能为空。每条规则都解析并校验方向、源目的、动作、范围、协议端口和模板；整个请求还会校验规则配额及可下发规则数量。批量覆盖的删除方向例外地只取首条规则。
 	Rules []*CreateRuleItem `json:"Rules,omitnil,omitempty" name:"Rules"`
 
-	// <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+	// <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>。
 	CfwAiAgentOperationSource *string `json:"CfwAiAgentOperationSource,omitnil,omitempty" name:"CfwAiAgentOperationSource"`
 
-	// <p>添加规则的来源，一般不需要使用，值insert_rule 表示插入指定位置的规则；值batch_import 表示批量导入规则；为空时表示添加规则</p>
+	// 添加方式。省略或空字符串执行普通新增；insert_rule 标记为指定位置新增；batch_import 标记为批量导入；batch_import_cover 执行覆盖导入，在独立事务中先删除首条规则 Direction 对应的当前账号可操作分区旧规则，再插入 Rules；删除提交后，插入失败不会恢复旧规则。覆盖导入不会校验 Rules 的 Direction 全部相同，删除范围仍只由首条规则决定。其它字符串未由入口统一拒绝，但不属于本接口定义的支持合同，调用方不得依赖其行为。
 	From *string `json:"From,omitnil,omitempty" name:"From"`
 }
 
 type AddAclRuleRequest struct {
 	*tchttp.BaseRequest
 	
-	// <p>需要添加的访问控制规则列表</p>
+	// 待添加的互联网边界规则列表，不能为空。每条规则都解析并校验方向、源目的、动作、范围、协议端口和模板；整个请求还会校验规则配额及可下发规则数量。批量覆盖的删除方向例外地只取首条规则。
 	Rules []*CreateRuleItem `json:"Rules,omitnil,omitempty" name:"Rules"`
 
-	// <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+	// <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>。
 	CfwAiAgentOperationSource *string `json:"CfwAiAgentOperationSource,omitnil,omitempty" name:"CfwAiAgentOperationSource"`
 
-	// <p>添加规则的来源，一般不需要使用，值insert_rule 表示插入指定位置的规则；值batch_import 表示批量导入规则；为空时表示添加规则</p>
+	// 添加方式。省略或空字符串执行普通新增；insert_rule 标记为指定位置新增；batch_import 标记为批量导入；batch_import_cover 执行覆盖导入，在独立事务中先删除首条规则 Direction 对应的当前账号可操作分区旧规则，再插入 Rules；删除提交后，插入失败不会恢复旧规则。覆盖导入不会校验 Rules 的 Direction 全部相同，删除范围仍只由首条规则决定。其它字符串未由入口统一拒绝，但不属于本接口定义的支持合同，调用方不得依赖其行为。
 	From *string `json:"From,omitnil,omitempty" name:"From"`
 }
 
@@ -196,7 +196,7 @@ func (r *AddAclRuleRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AddAclRuleResponseParams struct {
-	// <p>创建成功后返回新策略ID列表</p>
+	// 数据库插入成功后返回的新规则数值 ID 列表，顺序与已插入的 Rules 顺序一致；不表示异步规则下发已经完成。
 	RuleUuid []*int64 `json:"RuleUuid,omitnil,omitempty" name:"RuleUuid"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -518,46 +518,45 @@ type AttachInsInfo struct {
 }
 
 type BanAndAllowRule struct {
-	// 规则评论
+	// 规则备注，最多 200 个字符。
 	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
 
-	// 自定义白名单规则
+	// 自定义放通规则详情。RuleType=6 时使用；其它规则类型不读取此字段。
 	CustomRule *CustomWhiteRule `json:"CustomRule,omitnil,omitempty" name:"CustomRule"`
 
-	// 0互联网出站 1互联网入站 5内网访问源 6内网访问目的
+	// 生效方向，使用逗号分隔的整数：0 互联网出站、1 互联网入站、2 双向、3 东西向、4 情报误报反馈、5 内网访问源、6 内网访问目的；每项都必须属于 0 至 6。该字段不可为空；RuleType=6 时通过初始校验后，处理器会根据 CustomRule 的源、目的地址重新计算方向。
 	DirectionList *string `json:"DirectionList,omitnil,omitempty" name:"DirectionList"`
 
-	// 规则截止时间
+	// 规则截止时间，必须使用 YYYY-MM-DD HH:MM:SS 格式且不得早于服务器处理时刻；3000-01-01 00:00:00 作为长期有效时间。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 放通的引擎: 1针对互联网边界 2针对nat防火墙 4针对vpc防火墙
+	// 自定义放通规则的生效引擎位图：1 互联网边界旁路、2 NAT 防火墙、4 VPC 防火墙、8 互联网边界串行、16 NDR，组合值按位相加。处理器接受 0 至 31。RuleType=6 时，非零值会按源、目的地址组合与适用引擎位求交，并保留 NDR 位 16；归一化结果大于 0 时使用该结果，结果为 0 时与省略或传 0 相同：任一地址为 IPv6 或私网 IPv4 则实际使用 6，否则实际使用 15。其它 RuleType 仅校验该字段而不使用其值。
 	FwType *int64 `json:"FwType,omitnil,omitempty" name:"FwType"`
 
-	// 封禁和放通对象
+	// 规则对象。RuleType=1 或 2 时必须是 IP 地址，RuleType=3 时必须是合法域名，RuleType=4 时不能为空，RuleType=5 时必须是资产表中存在的实例 ID；RuleType=6 时表示自定义规则 ID：新增时可省略并由处理器生成；修改时作为既有规则的查询和更新键，省略时不会命中既有规则。其它受理的 RuleType 不校验对象格式。
 	Ioc *string `json:"Ioc,omitnil,omitempty" name:"Ioc"`
 }
 
 type BanAndAllowRuleDel struct {
-	// 封禁和放通对象
-	Ioc *string `json:"Ioc,omitnil,omitempty" name:"Ioc"`
-
-	// 0互联网出站 1互联网入站 5内网访问源 6内网访问目的 （DeleteBlockIgnoreRuleNew接口，该字段无效）
+	// 规则适用方向，0 表示互联网出站，1 表示互联网入站，2 表示双向，3 表示东西向，4 表示情报误报反馈，5 表示内网访问源，6 表示内网访问目的；多个值以逗号分隔。
 	DirectionList *string `json:"DirectionList,omitnil,omitempty" name:"DirectionList"`
 
-	// 规则类型
-	// RuleType: 1黑名单 2外部IP 3域名 4情报 5资产 6自定义规则  7入侵防御规则
+	// 封禁或放通对象值。
+	Ioc *string `json:"Ioc,omitnil,omitempty" name:"Ioc"`
+
+	// 规则类型标识。服务端定义的常用值为：1 封禁 IP，2 放通 IP，3 放通域名，4 威胁情报地址，5 资产实例，6 自定义策略，7 入侵防御规则，8 扩展 IP 规则，9 扩展自定义规则。
 	RuleType *int64 `json:"RuleType,omitnil,omitempty" name:"RuleType"`
 }
 
 type BetaInfoByACL struct {
+	// 上次执行时间
+	LastTime *string `json:"LastTime,omitnil,omitempty" name:"LastTime"`
+
 	// 任务id
 	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 任务名称
 	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
-
-	// 上次执行时间
-	LastTime *string `json:"LastTime,omitnil,omitempty" name:"LastTime"`
 }
 
 type BlockIgnoreRule struct {
@@ -1282,32 +1281,32 @@ func (r *CreateAlertCenterIsolateResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateAlertCenterOmitRequestParams struct {
-	// <p>处置对象,ID列表，  IdLists和IpList二选一</p>
+	// <p>直接处置的记录 ID 列表，公共请求结构要求提供。TableType=AlertTable 时元素为告警日志 logid；TableType=InterceptionTable 时元素为拦截记录 unique_id。处理时会与 HandleEventIdList 解析出的日志 ID 合并，再删除空字符串并去重；因此仅按聚合事件处置时可传 [""] 作为空占位。HandleIdList 与 HandleEventIdList 不能同时为空。</p>
 	HandleIdList []*string `json:"HandleIdList,omitnil,omitempty" name:"HandleIdList"`
 
-	// <p>忽略数据来源：<br>AlertTable 告警中心  InterceptionTable拦截列表</p>
+	// <p>必填的忽略数据来源，只接受 AlertTable 或 InterceptionTable。AlertTable 更新租户告警表中 logid 命中的记录；InterceptionTable 更新租户拦截表中 unique_id 命中的记录。字段没有默认值，缺失、空字符串或其它值均返回参数错误。</p>
 	TableType *string `json:"TableType,omitnil,omitempty" name:"TableType"`
 
-	// <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+	// <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>。
 	CfwAiAgentOperationSource *string `json:"CfwAiAgentOperationSource,omitnil,omitempty" name:"CfwAiAgentOperationSource"`
 
-	// <p>处置对象,事件ID列表</p>
+	// <p>可选的告警聚合事件 ID 列表。处理时逐个事件 ID 查询其对应的告警日志 logid，并将查询结果并入 HandleIdList；无法解析的事件 ID 不会产生目标 ID。该解析不会改写 TableType：若 TableType=InterceptionTable，解析出的 logid 仍会作为 unique_id 查询拦截表。字段可省略或传空数组，但 HandleIdList 与本字段不能同时为空；若最终合并、去空和去重后没有目标 ID，业务状态为失败。</p>
 	HandleEventIdList []*string `json:"HandleEventIdList,omitnil,omitempty" name:"HandleEventIdList"`
 }
 
 type CreateAlertCenterOmitRequest struct {
 	*tchttp.BaseRequest
 	
-	// <p>处置对象,ID列表，  IdLists和IpList二选一</p>
+	// <p>直接处置的记录 ID 列表，公共请求结构要求提供。TableType=AlertTable 时元素为告警日志 logid；TableType=InterceptionTable 时元素为拦截记录 unique_id。处理时会与 HandleEventIdList 解析出的日志 ID 合并，再删除空字符串并去重；因此仅按聚合事件处置时可传 [""] 作为空占位。HandleIdList 与 HandleEventIdList 不能同时为空。</p>
 	HandleIdList []*string `json:"HandleIdList,omitnil,omitempty" name:"HandleIdList"`
 
-	// <p>忽略数据来源：<br>AlertTable 告警中心  InterceptionTable拦截列表</p>
+	// <p>必填的忽略数据来源，只接受 AlertTable 或 InterceptionTable。AlertTable 更新租户告警表中 logid 命中的记录；InterceptionTable 更新租户拦截表中 unique_id 命中的记录。字段没有默认值，缺失、空字符串或其它值均返回参数错误。</p>
 	TableType *string `json:"TableType,omitnil,omitempty" name:"TableType"`
 
-	// <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+	// <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>。
 	CfwAiAgentOperationSource *string `json:"CfwAiAgentOperationSource,omitnil,omitempty" name:"CfwAiAgentOperationSource"`
 
-	// <p>处置对象,事件ID列表</p>
+	// <p>可选的告警聚合事件 ID 列表。处理时逐个事件 ID 查询其对应的告警日志 logid，并将查询结果并入 HandleIdList；无法解析的事件 ID 不会产生目标 ID。该解析不会改写 TableType：若 TableType=InterceptionTable，解析出的 logid 仍会作为 unique_id 查询拦截表。字段可省略或传空数组，但 HandleIdList 与本字段不能同时为空；若最终合并、去空和去重后没有目标 ID，业务状态为失败。</p>
 	HandleEventIdList []*string `json:"HandleEventIdList,omitnil,omitempty" name:"HandleEventIdList"`
 }
 
@@ -1335,13 +1334,13 @@ func (r *CreateAlertCenterOmitRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateAlertCenterOmitResponseParams struct {
-	// <p>返回状态码：<br>0 成功<br>非0 失败</p>
+	// <p>Cloud API 处理返回码。0 表示 Action 处理函数未返回顶层错误，-1 表示入口参数校验或路由处理失败。忽略记录的数据库处理结果由 Status 表示；ReturnCode=0 不代表一定有记录被更新。</p>
 	ReturnCode *int64 `json:"ReturnCode,omitnil,omitempty" name:"ReturnCode"`
 
-	// <p>返回信息：<br>success 成功<br>其他</p>
+	// <p>Cloud API 处理信息。Action 处理函数未返回顶层错误时为 success；入口参数校验或路由处理失败时为 failed，并同时返回 Error。</p>
 	ReturnMsg *string `json:"ReturnMsg,omitnil,omitempty" name:"ReturnMsg"`
 
-	// <p>处置状态码：<br>0  处置成功<br>-1 通用错误，不用处理<br>-3 表示重复，需重新刷新列表<br>其他</p>
+	// <p>忽略处理状态。0 表示目标表更新语句执行时未返回数据库错误，但接口不检查受影响行数，因此不保证有记录命中；-1 表示参数归一化后无有效目标或下游处理失败；-3 表示下游报告重复记录错误。应结合 ReturnCode 判断入口校验是否通过。</p>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2237,105 +2236,100 @@ func (r *CreateNatFwInstanceWithDomainResponse) FromJsonString(s string) error {
 }
 
 type CreateNatRuleItem struct {
-	// <p>访问源示例： net：IP/CIDR(192.168.0.2)</p>
-	SourceContent *string `json:"SourceContent,omitnil,omitempty" name:"SourceContent"`
-
-	// <p>访问源类型：入向规则时类型可以为 ip,net,template,location；出向规则时可以为 ip,net,template,instance,group,tag</p>
-	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
-
-	// <p>访问目的示例： net：IP/CIDR(192.168.0.2) domain：域名规则，例如*.qq.com</p>
-	TargetContent *string `json:"TargetContent,omitnil,omitempty" name:"TargetContent"`
-
-	// <p>访问目的类型：入向规则时类型可以为ip,net,template,instance,group,tag；出向规则时可以为  ip,net,domain,template,location</p>
-	TargetType *string `json:"TargetType,omitnil,omitempty" name:"TargetType"`
-
-	// <p>协议，可选的值： TCP UDP ICMP ANY HTTP HTTPS HTTP/HTTPS SMTP SMTPS SMTP/SMTPS FTP DNS</p>
-	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
-
-	// <p>访问控制策略中设置的流量通过云防火墙的方式。取值： accept：放行 drop：拒绝 log：观察</p>
-	RuleAction *string `json:"RuleAction,omitnil,omitempty" name:"RuleAction"`
-
-	// <p>访问控制策略的端口。取值： -1/-1：全部端口 80：80端口</p>
-	Port *string `json:"Port,omitnil,omitempty" name:"Port"`
-
-	// <p>规则方向：1，入站；0，出站</p>
+	// <p>规则方向，JSON 整数：0 表示出站，1 表示入站；其他值被拒绝。方向决定可用的源和目的类型及协议组合。</p>
 	Direction *uint64 `json:"Direction,omitnil,omitempty" name:"Direction"`
 
-	// <p>规则序号</p>
+	// <p>规则序号。入口按 int64 读取后转换为 uint32，转换结果为 0 时归一化为 1；负值不会被单独拒绝，而会按 uint32 转换。写入中间分区时，序号为 1 或不大于当前同方向最大序号会按该位置插入并后移原规则，超过最大序号时通常归一化为末尾序号。新增且 From 不等于 insert_rule 时，如果本批首条规则转换后的序号为 1，则批内后续规则即使超过最大序号也按各自转换后的序号直接插入。</p>
 	OrderIndex *int64 `json:"OrderIndex,omitnil,omitempty" name:"OrderIndex"`
 
-	// <p>规则状态，true表示启用，false表示禁用</p>
-	Enable *string `json:"Enable,omitnil,omitempty" name:"Enable"`
+	// <p>目的端口字符串。支持逗号分隔的单端口或以斜杠分隔的起止范围，例如 80、80,443、80/443；-1/-1 表示全部端口。单端口必须是大于 0 的整数；范围只要求两个端点均为整数且起点不大于终点。Protocol 归一化为 ICMP 时忽略该字段并保存为空字符串；FTP 只接受单端口，不接受逗号列表或斜杠范围。</p>
+	Port *string `json:"Port,omitnil,omitempty" name:"Port"`
 
-	// <p>规则对应的唯一id，创建规则AddNatAcRule时无需填写；修改规则ModifyNatAcRule时必须填写</p><p>创建规则AddNatAcRule时无需填写；修改规则ModifyNatAcRule时必须填写</p>
-	Uuid *int64 `json:"Uuid,omitnil,omitempty" name:"Uuid"`
+	// <p>协议，大小写不敏感并归一化为大写。四层值为 TCP、UDP、ICMP、ICMPV6、ANY；应用层值为 HTTP、HTTPS、HTTP/HTTPS、TLS/SSL、SMTP、SMTPS、SMTP/SMTPS、FTP、DNS，其中 domain、tls、ssl 也归一化为 TLS/SSL；ANY 同时可按四层协议和应用协议解析。入站仅允许 ANY、TCP、UDP；domain 目的及解析为域名模板的 template 目的接受上述应用层协议及 ANY，但不接受 FTP；dnsparse 和 domainiptwoverify 目的仅允许 TCP 或 UDP；其他目的不接受 FTP 和 ANY 之外的应用层协议。Protocol=DNS 且目的不是域名模板或单独的 * 时，目的列表只能包含域名，不能包含 IP。</p>
+	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
-	// <p>描述</p>
+	// <p>流量处理方式，大小写不敏感：accept 表示放行，drop 表示拒绝，log 表示观察；isolateinaccept、isolateoutaccept 归一化为 accept，isolateindrop、isolateoutdrop 归一化为 drop。</p>
+	RuleAction *string `json:"RuleAction,omitnil,omitempty" name:"RuleAction"`
+
+	// <p>访问源内容，格式由 SourceType 和 Direction 决定。net/ip 使用合法 IP 或 CIDR 的逗号列表，最多 10 项；location 使用地域 code，空字符串归一化为默认全地域掩码；vendor 使用 tencent、aliyun、aws、huawei、azure 或 all，可用逗号分隔；template 使用当前账号可解析的地址模板标识；instance 和 tag 必须引用当前账号已有对象；group 使用资源组标识，入口不校验其是否存在。</p>
+	SourceContent *string `json:"SourceContent,omitnil,omitempty" name:"SourceContent"`
+
+	// <p>访问源类型，大小写不敏感。入站支持 net、ip、template、location、vendor；出站支持 net、ip、template、instance、group、tag。ip 和 net 均归一化为 IP 类型；template 会解析为模板的实际类型。</p>
+	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
+
+	// <p>访问目的内容，格式由 TargetType 和 Direction 决定。net/ip 使用合法 IP 或 CIDR 的逗号列表；domain 使用合法域名或 IP 的逗号列表，也接受单独的 *，标准泛域名和段内通配域名最多 5 级，段内通配域名还要求对应引擎版本支持；dnsparse 使用单个精确域名、最多 5 级的标准泛域名或相应域名模板，不接受单独的 *、段内通配域名、IP 或逗号列表；domainiptwoverify 使用单个精确域名或不含通配符的相应域名模板，不接受单独的 *、任何通配域名、IP 或逗号列表；location 使用地域 code，空字符串归一化为默认全地域掩码；vendor 使用 tencent、aliyun、aws、huawei、azure 或 all，可用逗号分隔；template 使用当前账号可解析的地址模板标识；instance 和 tag 必须引用当前账号已有对象；group 使用资源组标识，入口不校验其是否存在。解析后的目的内容最长 1023 字节；IP 或 domain 目的最多包含 10 个逗号分隔项。</p>
+	TargetContent *string `json:"TargetContent,omitnil,omitempty" name:"TargetContent"`
+
+	// <p>访问目的类型，大小写不敏感。入站支持 net、ip、template、instance、group、tag；出站支持 net、ip、template、domain、dnsparse、domainiptwoverify、location、vendor。ip 和 net 均归一化为 IP 类型；template 会解析为模板的实际类型，入站解析为域名模板时被拒绝。dnsparse 和 domainiptwoverify 分别要求对应引擎版本支持；domainiptwoverify 使用域名模板时还要求严格模式域名模板版本支持；domain 目的使用段内通配域名时要求段内通配域名版本支持。</p>
+	TargetType *string `json:"TargetType,omitnil,omitempty" name:"TargetType"`
+
+	// <p>规则描述。省略或传空字符串时保存为空；入口不裁剪内容，也不执行长度归一化或字符数校验。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// <p>端口协议组ID</p>
-	ParamTemplateId *string `json:"ParamTemplateId,omitnil,omitempty" name:"ParamTemplateId"`
+	// <p>规则状态。字符串 true 表示启用，false 表示禁用，大小写不敏感。省略或传空字符串时读取当前账号的访问控制规则默认状态；配置不存在或无法解析时默认为启用。</p>
+	Enable *string `json:"Enable,omitnil,omitempty" name:"Enable"`
 
-	// <p>内部id</p>
+	// <p>规则内部 UUID。新增请求仅在 From=batch_import_cover 时采用正整数值替换自动生成的内部 UUID；其他新增路径和修改请求忽略该字段。</p>
 	InternalUuid *int64 `json:"InternalUuid,omitnil,omitempty" name:"InternalUuid"`
 
-	// <p>规则生效的范围：ALL，全局生效；ap-guangzhou，生效的地域；cfwnat-xxx，生效基于实例维度</p>
+	// <p>端口协议模板 ID。省略或传空字符串时直接使用请求中的 Protocol 和 Port；非空时必须指向当前账号已有的端口协议模板，模板条目会逐项参与协议与目的类型联动校验。使用模板时，入口仍先校验请求中的 Protocol，并在该协议不是 ICMP 时校验请求中的 Port；请求值不要求固定为 ANY 和 -1/-1。</p>
+	ParamTemplateId *string `json:"ParamTemplateId,omitnil,omitempty" name:"ParamTemplateId"`
+
+	// <p>规则生效范围，值中不能含空白字符。ALL 表示全部 NAT 实例；地域 ID（如 ap-guangzhou）表示地域范围；cfwnat- 或 nat- 开头的实例 ID 表示实例范围。非空值必须是已知地域或当前账号已有的 NAT 实例。省略或传空字符串时，有请求 Region 则使用 Region，否则归一化为 ALL。</p>
 	Scope *string `json:"Scope,omitnil,omitempty" name:"Scope"`
+
+	// <p>规则数据库 ID。普通新增、insert_rule 和 batch_import 忽略该字段；batch_import_cover 新增会采用正整数值作为待写入记录 ID。修改请求使用正整数定位中间分区中的现有规则，先删除该记录再以同一 Uuid 重建并返回该 ID；省略、0 或负值无法定位修改目标。</p>
+	Uuid *int64 `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 }
 
 type CreateRuleItem struct {
-	// 访问源示例： net：IP/CIDR(192.168.0.2)
-	SourceContent *string `json:"SourceContent,omitnil,omitempty" name:"SourceContent"`
-
-	// 访问源类型：入向规则时类型可以为 ip,net,template,location；出向规则时可以为 ip,net,template,instance,group,tag
-	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
-
-	// 访问目的示例： net：IP/CIDR(192.168.0.2) domain：域名规则，例如*.qq.com
-	TargetContent *string `json:"TargetContent,omitnil,omitempty" name:"TargetContent"`
-
-	// 访问目的类型：入向规则时类型可以为ip,net,template,instance,group,tag；出向规则时可以为  ip,net,domain,template,location
-	TargetType *string `json:"TargetType,omitnil,omitempty" name:"TargetType"`
-
-	// 协议，可选的值： TCP UDP ICMP ANY HTTP HTTPS HTTP/HTTPS SMTP SMTPS SMTP/SMTPS FTP DNS
-	// 1. 入方向  旁路防火墙/全局规则 仅支持TCP
-	// 
-	// 2.出方向  旁路防火墙/全局规则 仅支持TCP HTTP/HTTPS TLS/SSL
-	// 
-	// 3.domain  请选择七层协议 如HTTP/HTTPS
-	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
-
-	// 访问控制策略中设置的流量通过云防火墙的方式。取值： accept：放行 drop：拒绝 log：观察
-	RuleAction *string `json:"RuleAction,omitnil,omitempty" name:"RuleAction"`
-
-	// 访问控制策略的端口。取值： -1/-1：全部端口 80：80端口
-	Port *string `json:"Port,omitnil,omitempty" name:"Port"`
-
-	// 规则方向：1，入站；0，出站
+	// 规则方向：1 表示入站，0 表示出站；其它整数或省略会校验失败。方向还决定 SourceType、TargetType、Scope 与 Protocol 的可用组合。
 	Direction *uint64 `json:"Direction,omitnil,omitempty" name:"Direction"`
 
-	// 规则序号
+	// 规则在当前方向可操作分区内的序号。Handler 先把 int64 转为 uint32：转换结果 0 归一化为 1；结果不超过当前最大序号时在该位置插入并顺延后续规则，否则追加到末尾。省略或传 -1 会追加；超出 uint32 范围的整数会绕回，调用方不应依赖该转换。当 Rules 含多条规则时，只用首条规则的序号和方向决定整批进入插入或追加分支：追加时整批改写为该方向末尾的连续序号，插入时其余规则保留各自解析后的序号。
 	OrderIndex *int64 `json:"OrderIndex,omitnil,omitempty" name:"OrderIndex"`
 
-	// 规则对应的唯一id，创建规则时无需填写
-	Uuid *int64 `json:"Uuid,omitnil,omitempty" name:"Uuid"`
+	// 目的端口。Protocol 归一化为 ICMP 时本字段被忽略并保存为空字符串；其它协议必须提供可解析字符串，按逗号分隔为单个正整数或“起始/结束”整数范围，范围起始值不得大于结束值，Handler 未对范围端点设置显式上下界，-1/-1 表示全部端口。FTP 只接受不含逗号和斜杠的单个正整数。domain 或域名模板目的在 side 或 all 范围下不接受除 -1/-1、0/65535 之外的端口范围。
+	Port *string `json:"Port,omitnil,omitempty" name:"Port"`
 
-	// 规则状态，true表示启用，false表示禁用
-	Enable *string `json:"Enable,omitnil,omitempty" name:"Enable"`
+	// 协议，解析不区分大小写。四层值 TCP、UDP、ICMP、ICMPV6、ANY 归一化为大写；应用层值 HTTP、HTTPS、HTTP/HTTPS、SMTP、SMTPS、SMTP/SMTPS、FTP、DNS、TLS/SSL 及别名 domain、TLS、SSL 归一化为对应标准值。ANY 同时属于可解析的四层协议和应用协议，domain、TLS、SSL 均归一化为 TLS/SSL。domain 或域名模板目的接受上述应用层协议及 ANY，但不接受 FTP 和其它四层协议；dnsparse、domainiptwoverify 仅接受 TCP 或 UDP 且仅支持 serial；其它目的在公有云环境不接受 FTP、ANY 之外的应用层协议。side 或 all 范围下，入站仅接受 TCP，出站仅接受 TCP、HTTP/HTTPS 或 TLS/SSL。DNS 用于非 domain 目的且目的不是 * 时，目的内容还必须是非 IP 的合法域名规则列表。使用协议端口模板时，模板中的每组协议和端口也执行这些联动校验。
+	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
-	// 描述
+	// 流量处理动作，解析不区分大小写。accept 表示放行，drop 表示拒绝，log 表示观察；isolateinaccept、isolateoutaccept 归一化为放行，isolateindrop、isolateoutdrop 归一化为拒绝。drop 及其拒绝别名还会校验当前账号是否具备互联网边界阻断能力。
+	RuleAction *string `json:"RuleAction,omitnil,omitempty" name:"RuleAction"`
+
+	// 访问源内容。ip 或 net 使用合法 IP/CIDR 列表，普通列表最多 10 项；template 使用当前账号可解析的地址模板标识；Direction=0 时，instance、group、tag 使用相应资源标识，其中 instance 必须能解析到公网 IP，tag 必须存在；Direction=1 时，location 使用地域 code CSV 并须通过当前账号的新地域规则能力校验，vendor 使用 tencent、aliyun、aws、huawei、azure 或 all 的 CSV。location、vendor 保存时会转换为地域或厂商匹配信息。
+	SourceContent *string `json:"SourceContent,omitnil,omitempty" name:"SourceContent"`
+
+	// 访问源类型，解析不区分大小写。Direction=1 接受 ip、net、template、location、vendor；Direction=0 接受 ip、net、template、instance、group、tag。ip 与 net 归一化为同一 IP/CIDR 类型；其它已解析但不在对应方向处理分支中的类型会校验失败。
+	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
+
+	// 访问目的内容。ip 或 net 使用合法 IP/CIDR 列表；domain 使用后端域名规则校验接受的列表（包括 IP、普通域名和通配域名）或 *；普通 IP/CIDR/domain 列表最多 10 项，通配域名最多 5 级。domain 配合 DNS 协议时例外地不接受 IP。dnsparse 使用单个合法域名、泛域名或当前账号可解析的 mb_ 域名模板，domainiptwoverify 使用单个不含任何通配符的合法域名或此类 mb_ 域名模板；两者都不接受单独的 *、IP、逗号列表或段内通配域名。串行 domain 段内通配和串行 domainiptwoverify 的 mb_ 域名模板分别要求对应集群引擎版本支持。template 使用当前账号可解析的地址模板标识；Direction=1 时，instance、group、tag 使用相应资源标识，其中 instance 必须能解析到公网 IP，tag 必须存在；Direction=0 时，location 使用地域 code CSV 并须通过当前账号的新地域规则能力校验，vendor 使用 tencent、aliyun、aws、huawei、azure 或 all 的 CSV。解析并归一化后的目的内容长度不得超过 1023。
+	TargetContent *string `json:"TargetContent,omitnil,omitempty" name:"TargetContent"`
+
+	// 访问目的类型，解析不区分大小写。Direction=1 接受 ip、net、template、domain、instance、group、tag；Direction=0 接受 ip、net、template、domain、dnsparse、domainiptwoverify、location、vendor。ip 与 net 归一化为同一 IP/CIDR 类型；其它已解析但不在对应方向处理分支中的类型会校验失败。
+	TargetType *string `json:"TargetType,omitnil,omitempty" name:"TargetType"`
+
+	// 规则描述。省略或传空字符串时保存为空；替换现有规则时不继承旧值。Handler 未对字符数设置显式限制。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// all
-	Scope *string `json:"Scope,omitnil,omitempty" name:"Scope"`
+	// 启用状态。非空值不区分大小写接受字符串 true 或 false，并归一化为启用或停用；省略或传空字符串时读取当前账号的访问控制默认启用配置，该配置不可用时默认启用。替换现有规则时不继承旧值。
+	Enable *string `json:"Enable,omitnil,omitempty" name:"Enable"`
 
-	// 0，正常规则添加；1，入侵检测添加
-	RuleSource *int64 `json:"RuleSource,omitnil,omitempty" name:"RuleSource"`
-
-	// 告警Id
+	// 关联告警或来源事件 ID。省略或传空字符串时保存为空，替换现有规则时不继承旧值；From=batch_import_cover 时，非空值还会作为覆盖导入后规则的内部字符串 UUID 复用。
 	LogId *string `json:"LogId,omitnil,omitempty" name:"LogId"`
 
-	// 端都协议组ID
+	// 协议端口模板 ID。省略或传空字符串表示不使用模板；非空时按当前账号和 ID 加载模板，找不到会失败。受支持输入应指向内容格式为“协议:端口”的协议端口模板；其中格式有效的每组协议和端口都会执行 Direction、TargetType 与 Scope 联动校验，异常模板内容不属于受支持输入。Protocol 和 Port 仍会在加载模板前按各自字段规则解析，原生 Handler 不要求固定填写 ANY、-1/-1 或 serial。
 	ParamTemplateId *string `json:"ParamTemplateId,omitnil,omitempty" name:"ParamTemplateId"`
+
+	// 规则来源。整数 2 原样保存；省略或传入其它整数均归一化为 0。
+	RuleSource *int64 `json:"RuleSource,omitnil,omitempty" name:"RuleSource"`
+
+	// 生效范围，解析不区分大小写：serial 表示串行，side 表示旁路，all 表示全局；省略、空字符串或其它值会校验失败。国际站环境会将有效输入统一归一化为 serial。协议、端口、目的类型及协议端口模板的联动限制见 Protocol、Port 和 ParamTemplateId。
+	Scope *string `json:"Scope,omitnil,omitempty" name:"Scope"`
+
+	// 规则数值 ID。普通新增、指定位置新增和批量导入会忽略该字段；From=batch_import_cover 时正整数 ID 会作为覆盖导入后的规则 ID 复用；修改时必须提供当前账号可操作分区内已存在的正整数 ID，用于定位并替换原规则，省略、非正整数或不存在的 ID 会导致规则查询失败。
+	Uuid *int64 `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 }
 
 // Predefined struct for user
@@ -2523,16 +2517,16 @@ func (r *CreateVpcFwGroupResponse) FromJsonString(s string) error {
 }
 
 type CustomWhiteRule struct {
-	// 访问目的
+	// 自定义规则的目的地址。SrcIP、DstIP 至少一项必须是具体 IP；本字段仅在 SrcIP 为具体 IP 时可省略或使用与 SrcIP 同版本的通配网段。两项均为具体 IP 时，源 IPv6、目的 IPv4 会被拒绝，源 IPv4、目的 IPv6 当前不受该版本检查限制。私网 IPv4 和任意 IPv6 直接通过资产判定，公网 IPv4 必须存在于当前账号 cfw_public_ip；是否要求通过资产判定由两侧地址与实际 FwType 联动决定。
 	DstIP *string `json:"DstIP,omitnil,omitempty" name:"DstIP"`
 
-	// 规则ID
+	// 自定义规则关联的入侵防御规则 ID；必须是可转换为整数且在入侵防御规则模板中存在的 ID。
 	IdsRuleId *string `json:"IdsRuleId,omitnil,omitempty" name:"IdsRuleId"`
 
-	// 规则名称
+	// 自定义规则名称；处理器不对内容做额外校验。
 	IdsRuleName *string `json:"IdsRuleName,omitnil,omitempty" name:"IdsRuleName"`
 
-	// 访问源
+	// 自定义规则的源地址。SrcIP、DstIP 至少一项必须是具体 IP；本字段仅在 DstIP 为具体 IP 时可省略或使用与 DstIP 同版本的通配网段。两项均为具体 IP 时，源 IPv6、目的 IPv4 会被拒绝，源 IPv4、目的 IPv6 当前不受该版本检查限制。私网 IPv4 和任意 IPv6 直接通过资产判定，公网 IPv4 必须存在于当前账号 cfw_public_ip；是否要求通过资产判定由两侧地址与实际 FwType 联动决定。
 	SrcIP *string `json:"SrcIP,omitnil,omitempty" name:"SrcIP"`
 }
 
@@ -14647,75 +14641,52 @@ type SecurityGroupOrderIndexData struct {
 }
 
 type SecurityGroupRule struct {
-	// 访问源示例：
-	// net：IP/CIDR(192.168.0.2)
-	// template：参数模板id(ipm-dyodhpby)
-	// instance：资产实例id(ins-123456)
-	// resourcegroup：资产分组id(cfwrg-xxxx)
-	// tag：资源标签({\"Key\":\"标签key值\",\"Value\":\"标签Value值\"})
-	// region：地域(ap-gaungzhou)
-	SourceContent *string `json:"SourceContent,omitnil,omitempty" name:"SourceContent"`
-
-	// 访问源类型，类型可以为以下6种：net|template|instance|resourcegroup|tag|region
-	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
-
-	// 访问目的示例：
-	// net：IP/CIDR(192.168.0.2)
-	// template：参数模板id(ipm-dyodhpby)
-	// instance：资产实例id(ins-123456)
-	// resourcegroup：资产分组id(cfwrg-xxxx)
-	// tag：资源标签({\"Key\":\"标签key值\",\"Value\":\"标签Value值\"})
-	// region：地域(ap-gaungzhou)
-	DestContent *string `json:"DestContent,omitnil,omitempty" name:"DestContent"`
-
-	// 访问目的类型，类型可以为以下6种：net|template|instance|resourcegroup|tag|region
-	DestType *string `json:"DestType,omitnil,omitempty" name:"DestType"`
-
-	// 访问控制策略中设置的流量通过云防火墙的方式。取值：
-	// accept：放行
-	// drop：拒绝
-	RuleAction *string `json:"RuleAction,omitnil,omitempty" name:"RuleAction"`
-
-	// 规则描述 用于规则使用或者场景的描述，最多支持50个字符
+	// 规则用途或使用场景的描述，不能为空，最多 100 个 Unicode 字符。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 规则顺序，-1表示最低，1表示最高，请勿和外层Type冲突（和外层的Type配合使用，当中间插入时，指定添加位置）
+	// 访问目的内容，非空且最多 512 字节，格式由 DestType 决定：net 使用 IPv4 IP/CIDR，且不接受裸地址 0.0.0.0，表示全部 IPv4 地址时使用 0.0.0.0/0；template 使用可用的地址模板 ID；instance 使用属于当前账号的资产实例 ID；resourcegroup 使用当前账号的资产分组 ID；tag 使用当前账号已存在的资源标签 JSON 字符串，例如 {\"Key\":\"标签键\",\"Value\":\"标签值\"}；region 使用支持的地域标识；dnsparse 使用合法域名。DestType=dnsparse 时服务端将内容转换为小写，并检查域名格式和域名解析配额。
+	DestContent *string `json:"DestContent,omitnil,omitempty" name:"DestContent"`
+
+	// 访问目的类型，不区分大小写，可传 net、template、instance、resourcegroup、tag、region 或 dnsparse。instance 的具体资产类型由 DestContent 的实例 ID 前缀识别；template、instance、resourcegroup、tag、region 对应的内容必须对当前账号有效。
+	DestType *string `json:"DestType,omitnil,omitempty" name:"DestType"`
+
+	// 规则顺序的十进制整数字符串；-1 转换为 uint32 最大值。新增时 Type=0 或 1 会按 Data 数组顺序重新计算最终 Sequence；Type=2 使用首条规则的 OrderIndex 作为插入位置，超过当前最大 Sequence 时按末尾新增处理。修改规则内容时 -1 会被拒绝，超过当前最大 Sequence 的值归一化为当前最大 Sequence。
 	OrderIndex *string `json:"OrderIndex,omitnil,omitempty" name:"OrderIndex"`
 
-	// 协议；TCP/UDP/ICMP/ICMPv6/ANY
-	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
+	// 访问控制动作，不区分大小写。accept 表示放行，drop 表示拒绝，log 表示仅记录；isolateinaccept、isolateoutaccept 分别按放行动作写入并标记入向或出向隔离来源，isolateindrop、isolateoutdrop 分别按拒绝动作写入并标记入向或出向隔离来源。
+	RuleAction *string `json:"RuleAction,omitnil,omitempty" name:"RuleAction"`
 
-	// 访问控制策略的端口。取值：
-	// -1/-1：全部端口
-	// 80：80端口
-	Port *string `json:"Port,omitnil,omitempty" name:"Port"`
+	// 访问源内容，非空且最多 512 字节，格式由 SourceType 决定：net 使用 IPv4 IP/CIDR，且不接受裸地址 0.0.0.0，表示全部 IPv4 地址时使用 0.0.0.0/0；template 使用可用的地址模板 ID；instance 使用属于当前账号的资产实例 ID；resourcegroup 使用当前账号的资产分组 ID；tag 使用当前账号已存在的资源标签 JSON 字符串，例如 {\"Key\":\"标签键\",\"Value\":\"标签值\"}；region 使用支持的地域标识；dnsparse 使用字符串内容。SourceType=dnsparse 时，服务端接受该类型，但不执行目的域名的小写归一化、域名格式校验或域名解析配额检查。
+	SourceContent *string `json:"SourceContent,omitnil,omitempty" name:"SourceContent"`
 
-	// 端口协议类型参数模板id；协议端口模板id；与Protocol,Port互斥
-	ServiceTemplateId *string `json:"ServiceTemplateId,omitnil,omitempty" name:"ServiceTemplateId"`
+	// 访问源类型，不区分大小写，可传 net、template、instance、resourcegroup、tag、region 或 dnsparse。instance 的具体资产类型由 SourceContent 的实例 ID 前缀识别；template、instance、resourcegroup、tag、region 对应的内容必须对当前账号有效。dnsparse 作为访问源时不执行目的域名的小写归一化、域名格式校验或域名解析配额检查。
+	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
 
-	// （入参时无需填写，自动生成）规则对应的唯一id
-	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
-
-	// （入参时Enable无意义；由通用配置中新增规则启用状态控制）
-	// 规则状态，true表示启用，false表示禁用
+	// 规则状态字符串，不区分大小写；true 表示启用，false 表示禁用，省略或空字符串在结构转换时按 true 解析。普通新增最终使用账号的新增规则默认状态；batch_import 和 batch_import_cover 新增保留 Data.Enable 的解析结果；修改规则内容时保留原规则状态，因此 Data.Enable 不改变该修改的启停结果。
 	Enable *string `json:"Enable,omitnil,omitempty" name:"Enable"`
 
-	// 规则对应的唯一内部id
-	Uid *string `json:"Uid,omitnil,omitempty" name:"Uid"`
+	// 规则数据库数值 ID。普通新增由服务端生成；新增请求仅在 IsUseId=1 时采用 Data.Id。修改规则内容时 Data.Id 不改变目标规则 ID，服务端保留由外层 RuleUuid 定位的原 ID。当前 Schema 将本字段声明为字符串，而后端请求结构按 JSON 整数解析；传入字符串会导致请求解析失败。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 规则生效范围，SG安全组，LH轻量服务器
+	// 访问控制端口字符串，最多 200 字节。未使用服务模板时不能为空，可传 1..65535 的单端口、以斜杠连接且两端分别位于 1..65535 的范围、最多 15 个逗号分隔项，或以 -1/-1 表示全部端口；Protocol 为 ANY 或 ICMP 时必须为 -1/-1。使用服务模板时 Protocol、Port 可同时省略或留空；若任一字段非空，则只接受 Protocol=ANY 且 Port=-1/-1。
+	Port *string `json:"Port,omitnil,omitempty" name:"Port"`
+
+	// IPv4 企业安全组协议，区分大小写。未使用服务模板时必须填写 ANY、TCP、UDP 或 ICMP；ANY 和 ICMP 仅支持 Port=-1/-1。使用服务模板时 Protocol、Port 可同时省略或留空；若填写则只接受 Protocol=ANY 且 Port=-1/-1。ICMPv6 由独立的 IPv6 企业安全组接口处理。
+	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
+
+	// 规则生效范围，使用大写 SG、LH 或无空格的逗号分隔组合；SG 表示安全组，LH 表示轻量应用服务器。新增时省略默认补为 SG；修改规则内容时省略表示保留原范围。范围包含 LH 时，SourceType、DestType 均不能为 template，且不能使用 ServiceTemplateId。
 	Scope *string `json:"Scope,omitnil,omitempty" name:"Scope"`
+
+	// 协议端口模板 ID，最多 50 字节，必须属于当前账号或为当前账号可用的公共模板。非空时 Protocol、Port 可同时省略或留空；若任一字段非空，则只接受 Protocol=ANY 且 Port=-1/-1。Scope 包含 LH 时不能使用服务模板。
+	ServiceTemplateId *string `json:"ServiceTemplateId,omitnil,omitempty" name:"ServiceTemplateId"`
+
+	// Schema 中声明的规则内部 UUID 字段。当前新增和修改请求结构绑定的 JSON 键名为 UuId 而不是 Uid，因此传入本字段不会参与这两个接口的内部 UUID 生成或复用。
+	Uid *string `json:"Uid,omitnil,omitempty" name:"Uid"`
 }
 
 type SecurityGroupSimplifyRule struct {
-	// 访问源示例：
-	// net：IP/CIDR(192.168.0.2)
-	// template：参数模板(ipm-dyodhpby)
-	// instance：资产实例(ins-123456)
-	// resourcegroup：资产分组(/全部分组/分组1/子分组1)
-	// tag：资源标签({"Key":"标签key值","Value":"标签Value值"})
-	// region：地域(ap-gaungzhou)
-	SourceContent *string `json:"SourceContent,omitnil,omitempty" name:"SourceContent"`
+	// 写入规则的描述。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 访问目的示例：
 	// net：IP/CIDR(192.168.0.2)
@@ -14726,20 +14697,26 @@ type SecurityGroupSimplifyRule struct {
 	// region：地域(ap-gaungzhou)
 	DestContent *string `json:"DestContent,omitnil,omitempty" name:"DestContent"`
 
-	// 协议；TCP/UDP/ICMP/ANY
+	// 写入规则的协议。普通 IPv4 规则返回 ANY、TCP、UDP 或 ICMP；使用服务模板时，Protocol 可省略或留空，此时返回空字符串；若仍显式填写 Protocol，则只接受 ANY 并返回 ANY。
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
-	// 描述
-	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
-
-	// 规则对应的唯一id
+	// 服务端写入后生成或采用的规则数据库 ID。
 	RuleUuid *int64 `json:"RuleUuid,omitnil,omitempty" name:"RuleUuid"`
 
-	// 规则序号
+	// 写入后的规则生效范围；SG 表示安全组，LH 表示轻量应用服务器，组合范围以逗号分隔。
+	Scope *string `json:"Scope,omitnil,omitempty" name:"Scope"`
+
+	// 服务端写入后的实际规则顺序。
 	Sequence *int64 `json:"Sequence,omitnil,omitempty" name:"Sequence"`
 
-	// 规则生效范围，SG安全组，LH轻量服务器
-	Scope *string `json:"Scope,omitnil,omitempty" name:"Scope"`
+	// 访问源示例：
+	// net：IP/CIDR(192.168.0.2)
+	// template：参数模板(ipm-dyodhpby)
+	// instance：资产实例(ins-123456)
+	// resourcegroup：资产分组(/全部分组/分组1/子分组1)
+	// tag：资源标签({"Key":"标签key值","Value":"标签Value值"})
+	// region：地域(ap-gaungzhou)
+	SourceContent *string `json:"SourceContent,omitnil,omitempty" name:"SourceContent"`
 }
 
 type SequenceData struct {
@@ -15632,113 +15609,92 @@ type VpcFwJoinInstanceType struct {
 }
 
 type VpcRuleItem struct {
-	// 访问源示例：
-	// net：IP/CIDR(192.168.0.2)
-	SourceContent *string `json:"SourceContent,omitnil,omitempty" name:"SourceContent"`
-
-	// 访问源类型，类型可以为：net
-	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
-
-	// 访问目的示例：
-	// net：IP/CIDR(192.168.0.2)
-	// domain：域名规则，例如*.qq.com
-	DestContent *string `json:"DestContent,omitnil,omitempty" name:"DestContent"`
-
-	// 访问目的类型，类型可以为：net，domain，dnsparse
-	DestType *string `json:"DestType,omitnil,omitempty" name:"DestType"`
-
-	// 协议，可选的值：
-	// TCP
-	// UDP
-	// ICMP
-	// ANY
-	// HTTP
-	// HTTPS
-	// HTTP/HTTPS
-	// SMTP
-	// SMTPS
-	// SMTP/SMTPS
-	// FTP
-	// DNS
-	// TLS/SSL
-	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
-
-	// 访问控制策略中设置的流量通过云防火墙的方式。取值：
-	// accept：放行
-	// drop：拒绝
-	// log：观察
-	RuleAction *string `json:"RuleAction,omitnil,omitempty" name:"RuleAction"`
-
-	// 访问控制策略的端口。取值：
-	// -1/-1：全部端口
-	// 80：80端口
-	Port *string `json:"Port,omitnil,omitempty" name:"Port"`
-
-	// 描述
+	// <p>规则描述。新增和修改按请求中的字符串保存。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 规则顺序，-1表示最低，1表示最高
-	OrderIndex *int64 `json:"OrderIndex,omitnil,omitempty" name:"OrderIndex"`
+	// <p>访问目的内容，由 DestType 决定格式和校验。net/ip 接受合法 IP 或 CIDR 的逗号分隔列表，最多 10 项；domain 接受合法域名的逗号分隔列表或单独的 *，最多 10 项，通配域名最多 5 级，段内通配域名还要求引擎支持对应能力；template 接受当前租户的地址模板标识并归一化为模板 UUID，IP 地址模板必须与 IpVersion 一致，域名地址模板按域名目的校验；dnsparse 接受单个非 IP 域名或当前租户的域名模板，可使用符合级数限制的 *. 前缀泛域名，但不接受单独的 * 或段内通配；domainiptwoverify 接受单个非 IP 精确域名或不含任何通配符的当前租户域名模板；instance 和 tag 必须在当前租户存在，其中 instance 必须具有 IpVersion 对应的私网地址；group 接受资源组标识。location 会校验地域代码，但解析出的地域代码未写入 VPC 规则且目的内容保存为空；vendor 会校验厂商名称并将其归一化代码写入目的内容。归一化后的目的内容超过 1023 字节时请求失败。</p>
+	DestContent *string `json:"DestContent,omitnil,omitempty" name:"DestContent"`
 
-	// 规则状态，true表示启用，false表示禁用
-	Enable *string `json:"Enable,omitnil,omitempty" name:"Enable"`
+	// <p>访问目的类型，不区分大小写。VPC 规则可用 net（ip 为同义值）、domain、template、dnsparse、domainiptwoverify、instance、tag、group、location 或 vendor；url 虽可被通用类型映射识别，但 VPC 出向内容解析不支持。地址模板、dnsparse、domainiptwoverify、严格模式域名模板和段内通配域名分别要求当前 VPC 防火墙引擎支持对应能力，否则返回 UnsupportedOperation。类型及地址模板查询到的实际类型共同决定 DestContent 和 Protocol 的校验。</p>
+	DestType *string `json:"DestType,omitnil,omitempty" name:"DestType"`
 
-	// 规则生效的范围，是在哪对vpc之间还是针对所有vpc间生效
+	// <p>规则生效的 VPC 边范围，不区分大小写。ALL 表示全部 VPC 间，cfws- 前缀表示指定 VPC 边；其它格式返回参数错误。ALL 还要求相关 VPC 防火墙引擎支持全局规则，否则返回 UnsupportedOperation。</p>
 	EdgeId *string `json:"EdgeId,omitnil,omitempty" name:"EdgeId"`
 
-	// 规则对应的唯一id，添加规则时忽略该字段，修改该规则时需要填写Uuid;查询返回时会返回该参数
-	Uuid *int64 `json:"Uuid,omitnil,omitempty" name:"Uuid"`
+	// <p>规则状态。字符串 true 表示启用，false 表示禁用，大小写不敏感；省略或传空字符串时使用租户通知配置中的默认规则状态，该配置没有可用值时默认启用；其它字符串返回参数错误。</p>
+	Enable *string `json:"Enable,omitnil,omitempty" name:"Enable"`
 
-	// 规则的命中次数，增删改查规则时无需传入此参数，主要用于返回查询结果数据
-	DetectedTimes *int64 `json:"DetectedTimes,omitnil,omitempty" name:"DetectedTimes"`
+	// <p>规则在相同 IpVersion 的中间分区内的顺序。请求整数先转换为 uint32，0 归一化为 1，负整数及超出 uint32 范围的整数按该转换结果处理；写入时，顺序为 1 或不大于当前最大顺序的规则在该位置插入并将现有规则后移，通常大于当前最大顺序的值归一化为末尾。例外是 AddVpcAcRule 未使用精确值 insert_rule 且首条规则解析后的顺序为 1 时，本批每条规则都保留其解析后顺序并按该值移动现有规则，因此后续规则即使大于当前最大顺序也不会归一化为末尾。</p>
+	OrderIndex *int64 `json:"OrderIndex,omitnil,omitempty" name:"OrderIndex"`
 
-	// EdgeId对应的这对VPC间防火墙的描述
-	EdgeName *string `json:"EdgeName,omitnil,omitempty" name:"EdgeName"`
+	// <p>访问控制策略的端口。除 ICMP 和 ICMPV6 外，该字段按逗号拆分；每项可以是正整数单端口，或以斜杠分隔且起点不大于终点的两个整数，-1/-1 表示全部端口。ICMP 和 ICMPV6 忽略请求值并保存为空字符串；其它协议的空值或非法格式返回参数错误。FTP 只接受正整数单端口，不接受逗号组合或斜杠区间。</p>
+	Port *string `json:"Port,omitnil,omitempty" name:"Port"`
 
-	// 内部使用的uuid，一般情况下不会使用到该字段
-	InternalUuid *int64 `json:"InternalUuid,omitnil,omitempty" name:"InternalUuid"`
+	// <p>协议名称，不区分大小写并归一化。IP、instance、tag、group、location、vendor 及 IP 地址模板目的支持 TCP、UDP、ICMP、ICMPV6、ANY 和 FTP，其中 FTP 只接受单端口；domain 及域名地址模板目的支持 ANY、HTTP、HTTPS、HTTP/HTTPS、TLS/SSL、SMTP、SMTPS、SMTP/SMTPS 和 DNS，不支持 FTP，domain、tls、ssl 归一化为 TLS/SSL；dnsparse 和 domainiptwoverify 仅支持 TCP 或 UDP。template 按查询到的实际模板类型应用上述限制；填写 ParamTemplateId 时，组内每个协议端口项还会应用相同的目的类型限制。</p>
+	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
-	// 规则被删除：1，已删除；0，未删除
-	Deleted *int64 `json:"Deleted,omitnil,omitempty" name:"Deleted"`
+	// <p>流量通过云防火墙时的处理方式，不区分大小写。accept 表示放行，drop 表示拒绝，log 表示观察；isolateinaccept 和 isolateoutaccept 归一化为放行，isolateindrop 和 isolateoutdrop 归一化为拒绝；其它值返回参数错误。</p>
+	RuleAction *string `json:"RuleAction,omitnil,omitempty" name:"RuleAction"`
 
-	// 规则生效的防火墙实例ID
-	FwGroupId *string `json:"FwGroupId,omitnil,omitempty" name:"FwGroupId"`
+	// <p>访问源内容，由 SourceType 决定格式和校验。net/ip 接受合法 IP 或 CIDR 的逗号分隔列表，最多 10 项；template 接受当前租户的地址模板标识并归一化为模板 UUID，只允许与 IpVersion 一致的 IP 地址模板，域名地址模板不能作为访问源；instance 和 tag 必须在当前租户存在，其中 instance 必须具有 IpVersion 对应的私网地址；group 接受资源组标识。</p>
+	SourceContent *string `json:"SourceContent,omitnil,omitempty" name:"SourceContent"`
 
-	// 防火墙名称
-	FwGroupName *string `json:"FwGroupName,omitnil,omitempty" name:"FwGroupName"`
+	// <p>访问源类型，不区分大小写。VPC 规则可用 net（ip 为同义值）、template、instance、tag 或 group；url、location 和 vendor 虽可被通用类型映射识别，但 VPC 出向源内容解析不支持。使用 template 要求当前 VPC 防火墙引擎支持地址模板能力。类型及模板查询到的实际类型共同决定 SourceContent 的校验。</p>
+	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
 
-	// beta任务详情
+	// <p>规则关联的 beta 任务详情。请求中的该字段不参与新增或修改规则构造，主要用于查询返回。</p>
 	BetaList []*BetaInfoByACL `json:"BetaList,omitnil,omitempty" name:"BetaList"`
 
-	// 端口协议组ID
-	ParamTemplateId *string `json:"ParamTemplateId,omitnil,omitempty" name:"ParamTemplateId"`
-
-	// 端口协议组名称
-	ParamTemplateName *string `json:"ParamTemplateName,omitnil,omitempty" name:"ParamTemplateName"`
-
-	// 访问目的名称
-	TargetName *string `json:"TargetName,omitnil,omitempty" name:"TargetName"`
-
-	// 访问源名称
-	SourceName *string `json:"SourceName,omitnil,omitempty" name:"SourceName"`
-
-	// Ip版本，0：IPv4，1：IPv6，默认为IPv4
-	IpVersion *int64 `json:"IpVersion,omitnil,omitempty" name:"IpVersion"`
-
-	// 是否是无效规则，0 表示有效规则，1 表示无效规则，出参场景返回使用
-	Invalid *int64 `json:"Invalid,omitnil,omitempty" name:"Invalid"`
-
-	// 规则创建时间
+	// <p>规则创建时间。请求中的该字段不参与新增或修改规则构造，主要用于查询返回。</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 规则最近更新时间
-	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+	// <p>规则删除标记，1 表示已删除，0 表示未删除。请求中的该字段不参与新增或修改规则构造，主要用于查询返回。</p>
+	Deleted *int64 `json:"Deleted,omitnil,omitempty" name:"Deleted"`
 
-	// 目的值的类型，与TargetType或DestType所代表的目的类型含义有所不同，如目的类型是template,但template分ip模板和域名模板，故需通过DestValueType进一步区分
+	// <p>查询结果中对目的实际类型的补充提示，例如 template 可区分 IP 地址模板和域名地址模板。新增和修改处理程序不读取请求中的该字段；实际目的类型由 DestType、DestContent 和模板查询结果确定。</p>
 	DestValueType *string `json:"DestValueType,omitnil,omitempty" name:"DestValueType"`
 
-	// 规则分区，1最前分区，2中间分区，3最后分区，增删改查规则时无需传入此参数
+	// <p>规则命中次数。请求中的该字段不参与新增或修改规则构造，主要用于查询返回。</p>
+	DetectedTimes *int64 `json:"DetectedTimes,omitnil,omitempty" name:"DetectedTimes"`
+
+	// <p>EdgeId 对应的 VPC 边名称。请求中的该字段不参与新增或修改规则构造，主要用于查询返回和操作记录展示。</p>
+	EdgeName *string `json:"EdgeName,omitnil,omitempty" name:"EdgeName"`
+
+	// <p>规则生效的防火墙组或 CCN 范围，格式比较不区分大小写。ALL 归一化为大写 ALL；cfwg- 前缀和 ccn- 前缀的值保留请求原文；省略、空字符串或其它格式归一化为 ALL，处理程序不因格式无效而返回错误。</p>
+	FwGroupId *string `json:"FwGroupId,omitnil,omitempty" name:"FwGroupId"`
+
+	// <p>防火墙组或 CCN 名称。请求中的该字段不参与新增或修改规则构造，主要用于查询返回和操作记录展示。</p>
+	FwGroupName *string `json:"FwGroupName,omitnil,omitempty" name:"FwGroupName"`
+
+	// <p>内部规则标识。AddVpcAcRule 的精确 batch_import_cover 分支会采用正整数 InternalUuid 替换自动生成的内部标识；其它新增分支和 ModifyVpcAcRule 不读取请求中的该字段。</p>
+	InternalUuid *int64 `json:"InternalUuid,omitnil,omitempty" name:"InternalUuid"`
+
+	// <p>查询结果中的规则有效性标记，0 表示有效，1 表示无效。请求中的该字段不参与新增或修改规则构造。</p>
+	Invalid *int64 `json:"Invalid,omitnil,omitempty" name:"Invalid"`
+
+	// <p>IP 版本，0 表示 IPv4，1 表示 IPv6。省略或传入 0、1 以外的整数时按 IPv4 处理；instance 必须具有对应版本的私网地址，IP 地址模板必须与解析后的版本一致。处理程序不使用该字段校验直接填写的 net IP/CIDR 版本。</p>
+	IpVersion *int64 `json:"IpVersion,omitnil,omitempty" name:"IpVersion"`
+
+	// <p>端口协议组 ID。省略或传空字符串时直接使用 Protocol 和 Port；非空时查询当前租户的端口协议组并用组内协议端口项执行目的类型和协议类别校验，模板查询失败时请求失败。无论是否填写该字段，请求中的 Protocol 和非 ICMP/ICMPV6 Port 都会先按普通规则解析，格式无效时请求失败。</p>
+	ParamTemplateId *string `json:"ParamTemplateId,omitnil,omitempty" name:"ParamTemplateId"`
+
+	// <p>端口协议组名称。请求中的该字段不参与新增或修改规则构造，主要用于查询返回。</p>
+	ParamTemplateName *string `json:"ParamTemplateName,omitnil,omitempty" name:"ParamTemplateName"`
+
+	// <p>规则分区展示值，1 表示最前分区，2 表示中间分区，3 表示最后分区。新增和修改处理程序不读取请求中的该字段，写入时固定为中间分区；ModifyVpcAcRule 只能定位并替换中间分区中的现有规则。</p>
 	RulePartition *int64 `json:"RulePartition,omitnil,omitempty" name:"RulePartition"`
+
+	// <p>访问源名称。请求中的该字段不参与新增或修改规则构造，主要用于查询返回和操作记录展示。</p>
+	SourceName *string `json:"SourceName,omitnil,omitempty" name:"SourceName"`
+
+	// <p>访问目的名称。请求中的该字段不参与新增或修改规则构造，主要用于查询返回和操作记录展示。</p>
+	TargetName *string `json:"TargetName,omitnil,omitempty" name:"TargetName"`
+
+	// <p>规则最近更新时间。请求中的该字段不参与新增或修改规则构造，主要用于查询返回。</p>
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// <p>规则数据库 ID。ModifyVpcAcRule 必须传当前租户中间分区内既有规则的正整数 Uuid；处理程序按该 ID 删除原记录并以同一 ID 插入替换后的规则。AddVpcAcRule 的普通新增、insert_rule 和 batch_import 分支忽略该字段；精确 batch_import_cover 分支会采用正整数 Uuid 作为新记录 ID，非正数值仍由数据库生成 ID。</p>
+	Uuid *int64 `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 }
 
 type VpcZoneData struct {

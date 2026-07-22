@@ -2509,9 +2509,17 @@ type AigcVideoRedrawTask struct {
 	SessionContext *string `json:"SessionContext,omitnil,omitempty" name:"SessionContext"`
 }
 
+type AigcVideoRedrawTaskInfo struct {
+	// <p>用于描述转绘风格。限制50字符。</p>
+	Style *string `json:"Style,omitnil,omitempty" name:"Style"`
+}
+
 type AigcVideoRedrawTaskInput struct {
 	// <p>AIGC 视频转绘任务输入文件信息。</p>
 	FileInfo *AigcVideoRedrawTaskInputFileInfo `json:"FileInfo,omitnil,omitempty" name:"FileInfo"`
+
+	// <p>AIGC 视频转绘任务参数信息。</p>
+	TaskInfo *AigcVideoRedrawTaskInfo `json:"TaskInfo,omitnil,omitempty" name:"TaskInfo"`
 
 	// <p>AIGC 视频转绘输出配置。</p>
 	OutputConfig *AigcVideoRedrawOutputConfig `json:"OutputConfig,omitnil,omitempty" name:"OutputConfig"`

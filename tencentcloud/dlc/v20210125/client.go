@@ -385,6 +385,66 @@ func (c *Client) AlterDMSTableWithContext(ctx context.Context, request *AlterDMS
     return
 }
 
+func NewAlterTableCommentRequest() (request *AlterTableCommentRequest) {
+    request = &AlterTableCommentRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "AlterTableComment")
+    
+    
+    return
+}
+
+func NewAlterTableCommentResponse() (response *AlterTableCommentResponse) {
+    response = &AlterTableCommentResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// AlterTableComment
+// 修改表备注
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_GOVERNERROR = "FailedOperation.GovernError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMETERNOTFOUNDORBENONE = "InvalidParameter.ParameterNotFoundOrBeNone"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) AlterTableComment(request *AlterTableCommentRequest) (response *AlterTableCommentResponse, err error) {
+    return c.AlterTableCommentWithContext(context.Background(), request)
+}
+
+// AlterTableComment
+// 修改表备注
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_GOVERNERROR = "FailedOperation.GovernError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMETERNOTFOUNDORBENONE = "InvalidParameter.ParameterNotFoundOrBeNone"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) AlterTableCommentWithContext(ctx context.Context, request *AlterTableCommentRequest) (response *AlterTableCommentResponse, err error) {
+    if request == nil {
+        request = NewAlterTableCommentRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "AlterTableComment")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AlterTableComment require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAlterTableCommentResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAssignMangedTablePropertiesRequest() (request *AssignMangedTablePropertiesRequest) {
     request = &AssignMangedTablePropertiesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2071,6 +2131,92 @@ func (c *Client) CreateInternalTableWithContext(ctx context.Context, request *Cr
     request.SetContext(ctx)
     
     response = NewCreateInternalTableResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateMetaDatabaseRequest() (request *CreateMetaDatabaseRequest) {
+    request = &CreateMetaDatabaseRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "CreateMetaDatabase")
+    
+    
+    return
+}
+
+func NewCreateMetaDatabaseResponse() (response *CreateMetaDatabaseResponse) {
+    response = &CreateMetaDatabaseResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateMetaDatabase
+// 本接口（CreateMetaDatabase）用于创建元数据库
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_GOVERNERROR = "FailedOperation.GovernError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDDATAENGINENAME = "InvalidParameter.InvalidDataEngineName"
+//  INVALIDPARAMETER_INVALIDFAILURETOLERANCE = "InvalidParameter.InvalidFailureTolerance"
+//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+//  INVALIDPARAMETER_INVALIDSQLNUM = "InvalidParameter.InvalidSQLNum"
+//  INVALIDPARAMETER_INVALIDSTORELOCATION = "InvalidParameter.InvalidStoreLocation"
+//  INVALIDPARAMETER_INVALIDTASKTYPE = "InvalidParameter.InvalidTaskType"
+//  INVALIDPARAMETER_SQLBASE64DECODEFAIL = "InvalidParameter.SQLBase64DecodeFail"
+//  INVALIDPARAMETER_SQLPARAMETERPREPROCESSINGFAILED = "InvalidParameter.SQLParameterPreprocessingFailed"
+//  RESOURCENOTFOUND_DATAENGINENOTFOUND = "ResourceNotFound.DataEngineNotFound"
+//  RESOURCENOTFOUND_DATAENGINENOTRUNNING = "ResourceNotFound.DataEngineNotRunning"
+//  RESOURCENOTFOUND_DATAENGINENOTUNIQUE = "ResourceNotFound.DataEngineNotUnique"
+//  RESOURCENOTFOUND_DEFAULTDATAENGINENOTFOUND = "ResourceNotFound.DefaultDataEngineNotFound"
+//  RESOURCENOTFOUND_SYSTEMCONFIGNOTFOUND = "ResourceNotFound.SystemConfigNotFound"
+//  RESOURCEUNAVAILABLE_BALANCEINSUFFICIENT = "ResourceUnavailable.BalanceInsufficient"
+func (c *Client) CreateMetaDatabase(request *CreateMetaDatabaseRequest) (response *CreateMetaDatabaseResponse, err error) {
+    return c.CreateMetaDatabaseWithContext(context.Background(), request)
+}
+
+// CreateMetaDatabase
+// 本接口（CreateMetaDatabase）用于创建元数据库
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_GOVERNERROR = "FailedOperation.GovernError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDDATAENGINENAME = "InvalidParameter.InvalidDataEngineName"
+//  INVALIDPARAMETER_INVALIDFAILURETOLERANCE = "InvalidParameter.InvalidFailureTolerance"
+//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+//  INVALIDPARAMETER_INVALIDSQLNUM = "InvalidParameter.InvalidSQLNum"
+//  INVALIDPARAMETER_INVALIDSTORELOCATION = "InvalidParameter.InvalidStoreLocation"
+//  INVALIDPARAMETER_INVALIDTASKTYPE = "InvalidParameter.InvalidTaskType"
+//  INVALIDPARAMETER_SQLBASE64DECODEFAIL = "InvalidParameter.SQLBase64DecodeFail"
+//  INVALIDPARAMETER_SQLPARAMETERPREPROCESSINGFAILED = "InvalidParameter.SQLParameterPreprocessingFailed"
+//  RESOURCENOTFOUND_DATAENGINENOTFOUND = "ResourceNotFound.DataEngineNotFound"
+//  RESOURCENOTFOUND_DATAENGINENOTRUNNING = "ResourceNotFound.DataEngineNotRunning"
+//  RESOURCENOTFOUND_DATAENGINENOTUNIQUE = "ResourceNotFound.DataEngineNotUnique"
+//  RESOURCENOTFOUND_DEFAULTDATAENGINENOTFOUND = "ResourceNotFound.DefaultDataEngineNotFound"
+//  RESOURCENOTFOUND_SYSTEMCONFIGNOTFOUND = "ResourceNotFound.SystemConfigNotFound"
+//  RESOURCEUNAVAILABLE_BALANCEINSUFFICIENT = "ResourceUnavailable.BalanceInsufficient"
+func (c *Client) CreateMetaDatabaseWithContext(ctx context.Context, request *CreateMetaDatabaseRequest) (response *CreateMetaDatabaseResponse, err error) {
+    if request == nil {
+        request = NewCreateMetaDatabaseRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "CreateMetaDatabase")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateMetaDatabase require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateMetaDatabaseResponse()
     err = c.Send(request, response)
     return
 }
@@ -3931,6 +4077,88 @@ func (c *Client) DeleteDataMaskStrategyWithContext(ctx context.Context, request 
     return
 }
 
+func NewDeleteMetaDatabaseRequest() (request *DeleteMetaDatabaseRequest) {
+    request = &DeleteMetaDatabaseRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DeleteMetaDatabase")
+    
+    
+    return
+}
+
+func NewDeleteMetaDatabaseResponse() (response *DeleteMetaDatabaseResponse) {
+    response = &DeleteMetaDatabaseResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteMetaDatabase
+// 本接口（DeleteMetaDatabase）用于一键删除元数据库
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDDATAENGINENAME = "InvalidParameter.InvalidDataEngineName"
+//  INVALIDPARAMETER_INVALIDFAILURETOLERANCE = "InvalidParameter.InvalidFailureTolerance"
+//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+//  INVALIDPARAMETER_INVALIDSQLNUM = "InvalidParameter.InvalidSQLNum"
+//  INVALIDPARAMETER_INVALIDSTORELOCATION = "InvalidParameter.InvalidStoreLocation"
+//  INVALIDPARAMETER_INVALIDTASKTYPE = "InvalidParameter.InvalidTaskType"
+//  INVALIDPARAMETER_SQLBASE64DECODEFAIL = "InvalidParameter.SQLBase64DecodeFail"
+//  INVALIDPARAMETER_SQLPARAMETERPREPROCESSINGFAILED = "InvalidParameter.SQLParameterPreprocessingFailed"
+//  RESOURCENOTFOUND_DATAENGINENOTFOUND = "ResourceNotFound.DataEngineNotFound"
+//  RESOURCENOTFOUND_DATAENGINENOTRUNNING = "ResourceNotFound.DataEngineNotRunning"
+//  RESOURCENOTFOUND_DATAENGINENOTUNIQUE = "ResourceNotFound.DataEngineNotUnique"
+//  RESOURCENOTFOUND_DEFAULTDATAENGINENOTFOUND = "ResourceNotFound.DefaultDataEngineNotFound"
+//  RESOURCEUNAVAILABLE_BALANCEINSUFFICIENT = "ResourceUnavailable.BalanceInsufficient"
+func (c *Client) DeleteMetaDatabase(request *DeleteMetaDatabaseRequest) (response *DeleteMetaDatabaseResponse, err error) {
+    return c.DeleteMetaDatabaseWithContext(context.Background(), request)
+}
+
+// DeleteMetaDatabase
+// 本接口（DeleteMetaDatabase）用于一键删除元数据库
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDDATAENGINENAME = "InvalidParameter.InvalidDataEngineName"
+//  INVALIDPARAMETER_INVALIDFAILURETOLERANCE = "InvalidParameter.InvalidFailureTolerance"
+//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+//  INVALIDPARAMETER_INVALIDSQLNUM = "InvalidParameter.InvalidSQLNum"
+//  INVALIDPARAMETER_INVALIDSTORELOCATION = "InvalidParameter.InvalidStoreLocation"
+//  INVALIDPARAMETER_INVALIDTASKTYPE = "InvalidParameter.InvalidTaskType"
+//  INVALIDPARAMETER_SQLBASE64DECODEFAIL = "InvalidParameter.SQLBase64DecodeFail"
+//  INVALIDPARAMETER_SQLPARAMETERPREPROCESSINGFAILED = "InvalidParameter.SQLParameterPreprocessingFailed"
+//  RESOURCENOTFOUND_DATAENGINENOTFOUND = "ResourceNotFound.DataEngineNotFound"
+//  RESOURCENOTFOUND_DATAENGINENOTRUNNING = "ResourceNotFound.DataEngineNotRunning"
+//  RESOURCENOTFOUND_DATAENGINENOTUNIQUE = "ResourceNotFound.DataEngineNotUnique"
+//  RESOURCENOTFOUND_DEFAULTDATAENGINENOTFOUND = "ResourceNotFound.DefaultDataEngineNotFound"
+//  RESOURCEUNAVAILABLE_BALANCEINSUFFICIENT = "ResourceUnavailable.BalanceInsufficient"
+func (c *Client) DeleteMetaDatabaseWithContext(ctx context.Context, request *DeleteMetaDatabaseRequest) (response *DeleteMetaDatabaseResponse, err error) {
+    if request == nil {
+        request = NewDeleteMetaDatabaseRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "DeleteMetaDatabase")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteMetaDatabase require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteMetaDatabaseResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteNativeSparkSessionRequest() (request *DeleteNativeSparkSessionRequest) {
     request = &DeleteNativeSparkSessionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5513,6 +5741,66 @@ func (c *Client) DescribeDataMaskStrategiesWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewDescribeDataMaskStrategiesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDatabaseRequest() (request *DescribeDatabaseRequest) {
+    request = &DescribeDatabaseRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeDatabase")
+    
+    
+    return
+}
+
+func NewDescribeDatabaseResponse() (response *DescribeDatabaseResponse) {
+    response = &DescribeDatabaseResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDatabase
+// 本接口（DescribeDatabase）,查询数据库详细信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_METASTOREERROR = "FailedOperation.MetastoreError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION_UNSUPPORTEDDATASOURCECONNECTIONTYPE = "UnsupportedOperation.UnsupportedDatasourceConnectionType"
+func (c *Client) DescribeDatabase(request *DescribeDatabaseRequest) (response *DescribeDatabaseResponse, err error) {
+    return c.DescribeDatabaseWithContext(context.Background(), request)
+}
+
+// DescribeDatabase
+// 本接口（DescribeDatabase）,查询数据库详细信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_METASTOREERROR = "FailedOperation.MetastoreError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION_UNSUPPORTEDDATASOURCECONNECTIONTYPE = "UnsupportedOperation.UnsupportedDatasourceConnectionType"
+func (c *Client) DescribeDatabaseWithContext(ctx context.Context, request *DescribeDatabaseRequest) (response *DescribeDatabaseResponse, err error) {
+    if request == nil {
+        request = NewDescribeDatabaseRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "DescribeDatabase")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDatabase require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDatabaseResponse()
     err = c.Send(request, response)
     return
 }
@@ -9779,6 +10067,66 @@ func (c *Client) GenerateCreateMangedTableSqlWithContext(ctx context.Context, re
     request.SetContext(ctx)
     
     response = NewGenerateCreateMangedTableSqlResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGenerateInternalTableRequest() (request *GenerateInternalTableRequest) {
+    request = &GenerateInternalTableRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "GenerateInternalTable")
+    
+    
+    return
+}
+
+func NewGenerateInternalTableResponse() (response *GenerateInternalTableResponse) {
+    response = &GenerateInternalTableResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GenerateInternalTable
+// 建表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) GenerateInternalTable(request *GenerateInternalTableRequest) (response *GenerateInternalTableResponse, err error) {
+    return c.GenerateInternalTableWithContext(context.Background(), request)
+}
+
+// GenerateInternalTable
+// 建表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) GenerateInternalTableWithContext(ctx context.Context, request *GenerateInternalTableRequest) (response *GenerateInternalTableResponse, err error) {
+    if request == nil {
+        request = NewGenerateInternalTableRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "GenerateInternalTable")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GenerateInternalTable require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGenerateInternalTableResponse()
     err = c.Send(request, response)
     return
 }

@@ -689,6 +689,9 @@ const (
 	// 任务资源不足，请调整driver或executor指定规格大小
 	RESOURCENOTFOUND_SPARKJOBINSUFFICIENTRESOURCES = "ResourceNotFound.SparkJobInsufficientResources"
 
+	// 系统文件错误，请重试，或者提交工单联系我们
+	RESOURCENOTFOUND_SYSTEMCONFIGNOTFOUND = "ResourceNotFound.SystemConfigNotFound"
+
 	// 表不存在，请重试，或者提交工单联系我们
 	RESOURCENOTFOUND_TABLENOTFOUND = "ResourceNotFound.TableNotFound"
 

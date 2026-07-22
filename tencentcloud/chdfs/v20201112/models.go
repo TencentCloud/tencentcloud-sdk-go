@@ -513,6 +513,81 @@ func (r *CreateMountPointResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreatePathProtectionRuleRequestParams struct {
+	// 文件系统ID
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// 规则名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 指定保护路径
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
+
+	// 规则状态（1：打开；2：关闭）
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+type CreatePathProtectionRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 文件系统ID
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// 规则名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 指定保护路径
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
+
+	// 规则状态（1：打开；2：关闭）
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+func (r *CreatePathProtectionRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePathProtectionRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileSystemId")
+	delete(f, "Name")
+	delete(f, "Path")
+	delete(f, "Status")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePathProtectionRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreatePathProtectionRuleResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreatePathProtectionRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *CreatePathProtectionRuleResponseParams `json:"Response"`
+}
+
+func (r *CreatePathProtectionRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePathProtectionRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateRestoreTasksRequestParams struct {
 	// 文件系统ID
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
@@ -915,6 +990,60 @@ func (r *DeleteMountPointResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteMountPointResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeletePathProtectionRuleRequestParams struct {
+	// 路径保护规则ID
+	PathProtectionRuleId *uint64 `json:"PathProtectionRuleId,omitnil,omitempty" name:"PathProtectionRuleId"`
+}
+
+type DeletePathProtectionRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 路径保护规则ID
+	PathProtectionRuleId *uint64 `json:"PathProtectionRuleId,omitnil,omitempty" name:"PathProtectionRuleId"`
+}
+
+func (r *DeletePathProtectionRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeletePathProtectionRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PathProtectionRuleId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeletePathProtectionRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeletePathProtectionRuleResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeletePathProtectionRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *DeletePathProtectionRuleResponseParams `json:"Response"`
+}
+
+func (r *DeletePathProtectionRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeletePathProtectionRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1487,6 +1616,63 @@ func (r *DescribeMountPointsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeMountPointsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePathProtectionRulesRequestParams struct {
+	// 文件系统ID
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+}
+
+type DescribePathProtectionRulesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 文件系统ID
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+}
+
+func (r *DescribePathProtectionRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePathProtectionRulesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileSystemId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePathProtectionRulesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePathProtectionRulesResponseParams struct {
+	// 路径保护规则列表
+	PathProtectionRules []*PathProtectionRule `json:"PathProtectionRules,omitnil,omitempty" name:"PathProtectionRules"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribePathProtectionRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePathProtectionRulesResponseParams `json:"Response"`
+}
+
+func (r *DescribePathProtectionRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePathProtectionRulesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2152,6 +2338,81 @@ func (r *ModifyMountPointResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyPathProtectionRuleRequestParams struct {
+	// 路径保护规则ID
+	PathProtectionRuleId *uint64 `json:"PathProtectionRuleId,omitnil,omitempty" name:"PathProtectionRuleId"`
+
+	// 规则名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 指定保护路径
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
+
+	// 规则状态（1：打开；2：关闭）
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+type ModifyPathProtectionRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 路径保护规则ID
+	PathProtectionRuleId *uint64 `json:"PathProtectionRuleId,omitnil,omitempty" name:"PathProtectionRuleId"`
+
+	// 规则名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 指定保护路径
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
+
+	// 规则状态（1：打开；2：关闭）
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+func (r *ModifyPathProtectionRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyPathProtectionRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PathProtectionRuleId")
+	delete(f, "Name")
+	delete(f, "Path")
+	delete(f, "Status")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyPathProtectionRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyPathProtectionRuleResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyPathProtectionRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyPathProtectionRuleResponseParams `json:"Response"`
+}
+
+func (r *ModifyPathProtectionRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyPathProtectionRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyResourceTagsRequestParams struct {
 	// 文件系统ID
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
@@ -2298,6 +2559,23 @@ type MountPoint struct {
 
 	// 绑定的权限组ID列表
 	AccessGroupIds []*string `json:"AccessGroupIds,omitnil,omitempty" name:"AccessGroupIds"`
+}
+
+type PathProtectionRule struct {
+	// 路径保护规则ID
+	PathProtectionRuleId *uint64 `json:"PathProtectionRuleId,omitnil,omitempty" name:"PathProtectionRuleId"`
+
+	// 规则名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 指定保护路径
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
+
+	// 规则状态（1：打开；2：关闭）
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 }
 
 type RestoreTask struct {

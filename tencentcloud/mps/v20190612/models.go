@@ -5504,6 +5504,20 @@ func (r *CreateDocToVideoTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateImageConfig struct {
+	// <p>生图模型</p><p>枚举值：</p><ul><li>WAND-create-1.0-lite： 轻量生图模型</li><li>WAND-create-1.0-flash： 质量-速度平衡生图模型</li><li>WAND-create-1.0-pro： 高质量生图模型</li></ul>
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+
+	// <p>生图指令</p>
+	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
+
+	// <p>输出图片的分辨率</p><p>枚举值：</p><ul><li>1K： 短边分辨率 1080</li><li>2K： 短边分辨率 1440</li><li>4K： 短边分辨率 2160</li></ul><p>默认值：1K</p>
+	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
+
+	// <p>输出图片的宽高比</p><p>枚举值：</p><ul><li>1:1： 宽高比 1:1</li><li>2:3： 宽高比 2:3</li><li>3:2： 宽高比 3:2</li><li>3:4： 宽高比 3:4</li><li>4:3： 宽高比 4:3</li><li>9:16： 宽高比 9:16</li><li>16:9： 宽高比 16:9</li></ul><p>默认值：1:1</p>
+	AspectRatio *string `json:"AspectRatio,omitnil,omitempty" name:"AspectRatio"`
+}
+
 // Predefined struct for user
 type CreateImageSpriteTemplateRequestParams struct {
 	// 采样类型，取值：
@@ -11019,6 +11033,91 @@ func (r *DescribeAigcImageTaskResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAigcImageTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAigcTaskStatusRequestParams struct {
+	// <p>任务ID</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type DescribeAigcTaskStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>任务ID</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *DescribeAigcTaskStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAigcTaskStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAigcTaskStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAigcTaskStatusResponseParams struct {
+	// <p>任务ID</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>任务状态描述</p><p>枚举值：</p><ul><li>PENDING： 任务等待调度</li><li>RUNNING： 任务运行中</li><li>FINISHED： 任务执行成功</li><li>STOP： 任务被中止</li><li>FAILED： 任务失败</li><li>TIMEOUT： 任务超时</li></ul>
+	TaskStatus *string `json:"TaskStatus,omitnil,omitempty" name:"TaskStatus"`
+
+	// <p>输出url</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OutputUrl *string `json:"OutputUrl,omitnil,omitempty" name:"OutputUrl"`
+
+	// <p>任务创建时间</p>
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>任务调度时间</p>
+	ScheduledTime *string `json:"ScheduledTime,omitnil,omitempty" name:"ScheduledTime"`
+
+	// <p>任务完成时间</p>
+	FinishedTime *string `json:"FinishedTime,omitnil,omitempty" name:"FinishedTime"`
+
+	// <p>任务错误码</p>
+	TaskResultCode *int64 `json:"TaskResultCode,omitnil,omitempty" name:"TaskResultCode"`
+
+	// <p>任务返回错误信息</p>
+	TaskResultMsg *string `json:"TaskResultMsg,omitnil,omitempty" name:"TaskResultMsg"`
+
+	// <p>请求结构体</p>
+	RequestBody *string `json:"RequestBody,omitnil,omitempty" name:"RequestBody"`
+
+	// <p>任务类型</p>
+	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAigcTaskStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAigcTaskStatusResponseParams `json:"Response"`
+}
+
+func (r *DescribeAigcTaskStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAigcTaskStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -19189,6 +19288,9 @@ type ImageTaskInput struct {
 
 	// <p>Ai套图配置。</p>
 	AiPosterSuiteConfig *AiPosterSuiteConfig `json:"AiPosterSuiteConfig,omitnil,omitempty" name:"AiPosterSuiteConfig"`
+
+	// <p>生图任务配置</p>
+	CreateImageConfig *CreateImageConfig `json:"CreateImageConfig,omitnil,omitempty" name:"CreateImageConfig"`
 }
 
 type ImageTransformConfig struct {

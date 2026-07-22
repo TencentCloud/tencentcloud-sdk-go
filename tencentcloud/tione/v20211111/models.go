@@ -4791,6 +4791,9 @@ type DescribeModelServiceGroupRequestParams struct {
 	// 服务组ID
 	ServiceGroupId *string `json:"ServiceGroupId,omitnil,omitempty" name:"ServiceGroupId"`
 
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
 	// 服务分类
 	//
 	// Deprecated: ServiceCategory is deprecated.
@@ -4802,6 +4805,9 @@ type DescribeModelServiceGroupRequest struct {
 	
 	// 服务组ID
 	ServiceGroupId *string `json:"ServiceGroupId,omitnil,omitempty" name:"ServiceGroupId"`
+
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 
 	// 服务分类
 	ServiceCategory *string `json:"ServiceCategory,omitnil,omitempty" name:"ServiceCategory"`
@@ -4820,6 +4826,7 @@ func (r *DescribeModelServiceGroupRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "ServiceGroupId")
+	delete(f, "TiProjectId")
 	delete(f, "ServiceCategory")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeModelServiceGroupRequest has unknown keys!", "")
@@ -5045,6 +5052,9 @@ type DescribeModelServiceRequestParams struct {
 	// 服务id
 	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
 
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
 	// 服务分类
 	//
 	// Deprecated: ServiceCategory is deprecated.
@@ -5056,6 +5066,9 @@ type DescribeModelServiceRequest struct {
 	
 	// 服务id
 	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 
 	// 服务分类
 	ServiceCategory *string `json:"ServiceCategory,omitnil,omitempty" name:"ServiceCategory"`
@@ -5074,6 +5087,7 @@ func (r *DescribeModelServiceRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "ServiceId")
+	delete(f, "TiProjectId")
 	delete(f, "ServiceCategory")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeModelServiceRequest has unknown keys!", "")

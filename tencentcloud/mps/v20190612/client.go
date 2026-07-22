@@ -5463,6 +5463,58 @@ func (c *Client) DescribeAigcImageTaskWithContext(ctx context.Context, request *
     return
 }
 
+func NewDescribeAigcTaskStatusRequest() (request *DescribeAigcTaskStatusRequest) {
+    request = &DescribeAigcTaskStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "DescribeAigcTaskStatus")
+    
+    
+    return
+}
+
+func NewDescribeAigcTaskStatusResponse() (response *DescribeAigcTaskStatusResponse) {
+    response = &DescribeAigcTaskStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAigcTaskStatus
+// 查询AIGC场景任务接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYAIGCTASKFAILED = "FailedOperation.QueryAIGCTaskFailed"
+//  RESOURCENOTFOUND_TASKNOTFOUND = "ResourceNotFound.TaskNotFound"
+func (c *Client) DescribeAigcTaskStatus(request *DescribeAigcTaskStatusRequest) (response *DescribeAigcTaskStatusResponse, err error) {
+    return c.DescribeAigcTaskStatusWithContext(context.Background(), request)
+}
+
+// DescribeAigcTaskStatus
+// 查询AIGC场景任务接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYAIGCTASKFAILED = "FailedOperation.QueryAIGCTaskFailed"
+//  RESOURCENOTFOUND_TASKNOTFOUND = "ResourceNotFound.TaskNotFound"
+func (c *Client) DescribeAigcTaskStatusWithContext(ctx context.Context, request *DescribeAigcTaskStatusRequest) (response *DescribeAigcTaskStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeAigcTaskStatusRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DescribeAigcTaskStatus")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAigcTaskStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAigcTaskStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAigcVideoTaskRequest() (request *DescribeAigcVideoTaskRequest) {
     request = &DescribeAigcVideoTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5486,12 +5538,8 @@ func NewDescribeAigcVideoTaskResponse() (response *DescribeAigcVideoTaskResponse
 // 调用该接口，用于查询AIGC生视频任务的进度以及获取生成结果。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETERVALUE_DEFINITIONS = "InvalidParameterValue.Definitions"
-//  INVALIDPARAMETERVALUE_LIMIT = "InvalidParameterValue.Limit"
-//  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  FAILEDOPERATION_QUERYAIGCTASKFAILED = "FailedOperation.QueryAIGCTaskFailed"
+//  RESOURCENOTFOUND_TASKNOTFOUND = "ResourceNotFound.TaskNotFound"
 func (c *Client) DescribeAigcVideoTask(request *DescribeAigcVideoTaskRequest) (response *DescribeAigcVideoTaskResponse, err error) {
     return c.DescribeAigcVideoTaskWithContext(context.Background(), request)
 }
@@ -5500,12 +5548,8 @@ func (c *Client) DescribeAigcVideoTask(request *DescribeAigcVideoTaskRequest) (r
 // 调用该接口，用于查询AIGC生视频任务的进度以及获取生成结果。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETERVALUE_DEFINITIONS = "InvalidParameterValue.Definitions"
-//  INVALIDPARAMETERVALUE_LIMIT = "InvalidParameterValue.Limit"
-//  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  FAILEDOPERATION_QUERYAIGCTASKFAILED = "FailedOperation.QueryAIGCTaskFailed"
+//  RESOURCENOTFOUND_TASKNOTFOUND = "ResourceNotFound.TaskNotFound"
 func (c *Client) DescribeAigcVideoTaskWithContext(ctx context.Context, request *DescribeAigcVideoTaskRequest) (response *DescribeAigcVideoTaskResponse, err error) {
     if request == nil {
         request = NewDescribeAigcVideoTaskRequest()
@@ -12257,6 +12301,10 @@ func NewProcessImageResponse() (response *ProcessImageResponse) {
 //
 // 3. 图像擦除;
 //
+// 4. 数字水印；
+//
+// 5. 美颜滤镜；
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
 //  INTERNALERROR = "InternalError"
@@ -12276,6 +12324,10 @@ func (c *Client) ProcessImage(request *ProcessImageRequest) (response *ProcessIm
 // 2. 图像增强；
 //
 // 3. 图像擦除;
+//
+// 4. 数字水印；
+//
+// 5. 美颜滤镜；
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"

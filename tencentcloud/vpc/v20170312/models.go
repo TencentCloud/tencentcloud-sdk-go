@@ -21102,14 +21102,14 @@ func (r *DescribeSpecificTrafficPackageUsedDetailsResponse) FromJsonString(s str
 
 // Predefined struct for user
 type DescribeSubnetResourceDashboardRequestParams struct {
-	// Subnet实例ID，例如：subnet-f1xjkw1b。
+	// <p>Subnet实例ID，例如：subnet-f1xjkw1b。</p>
 	SubnetIds []*string `json:"SubnetIds,omitnil,omitempty" name:"SubnetIds"`
 }
 
 type DescribeSubnetResourceDashboardRequest struct {
 	*tchttp.BaseRequest
 	
-	// Subnet实例ID，例如：subnet-f1xjkw1b。
+	// <p>Subnet实例ID，例如：subnet-f1xjkw1b。</p>
 	SubnetIds []*string `json:"SubnetIds,omitnil,omitempty" name:"SubnetIds"`
 }
 
@@ -21134,7 +21134,7 @@ func (r *DescribeSubnetResourceDashboardRequest) FromJsonString(s string) error 
 
 // Predefined struct for user
 type DescribeSubnetResourceDashboardResponseParams struct {
-	// 资源统计结果。
+	// <p>资源统计结果。</p>
 	ResourceStatisticsSet []*ResourceStatistics `json:"ResourceStatisticsSet,omitnil,omitempty" name:"ResourceStatisticsSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -22644,14 +22644,14 @@ func (r *DescribeVpcPrivateIpAddressesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeVpcResourceDashboardRequestParams struct {
-	// Vpc实例ID，例如：vpc-f1xjkw1b。
+	// <p>Vpc实例ID，例如：vpc-f1xjkw1b。</p>
 	VpcIds []*string `json:"VpcIds,omitnil,omitempty" name:"VpcIds"`
 }
 
 type DescribeVpcResourceDashboardRequest struct {
 	*tchttp.BaseRequest
 	
-	// Vpc实例ID，例如：vpc-f1xjkw1b。
+	// <p>Vpc实例ID，例如：vpc-f1xjkw1b。</p>
 	VpcIds []*string `json:"VpcIds,omitnil,omitempty" name:"VpcIds"`
 }
 
@@ -22676,7 +22676,7 @@ func (r *DescribeVpcResourceDashboardRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeVpcResourceDashboardResponseParams struct {
-	// 资源对象列表。
+	// <p>资源对象列表。</p>
 	ResourceDashboardSet []*ResourceDashboard `json:"ResourceDashboardSet,omitnil,omitempty" name:"ResourceDashboardSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

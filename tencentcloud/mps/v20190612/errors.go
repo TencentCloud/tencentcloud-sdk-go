@@ -47,6 +47,9 @@ const (
 	// 操作失败：网络错误。
 	FAILEDOPERATION_NETWORKERROR = "FailedOperation.NetWorkError"
 
+	// 查询任务发生错误
+	FAILEDOPERATION_QUERYAIGCTASKFAILED = "FailedOperation.QueryAIGCTaskFailed"
+
 	// 操作失败：设置源通知错误。
 	FAILEDOPERATION_SETSOURCENOTIFY = "FailedOperation.SetSourceNotify"
 
@@ -580,6 +583,9 @@ const (
 
 	// 资源不存在：人物。
 	RESOURCENOTFOUND_PERSON = "ResourceNotFound.Person"
+
+	// 任务不存在
+	RESOURCENOTFOUND_TASKNOTFOUND = "ResourceNotFound.TaskNotFound"
 
 	// 资源不存在：模板不存在。
 	RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"

@@ -563,6 +563,60 @@ func (r *AlterDMSTableResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type AlterTableCommentRequestParams struct {
+	// 修改表的基本信息
+	TableBaseInfo *TableBaseInfo `json:"TableBaseInfo,omitnil,omitempty" name:"TableBaseInfo"`
+}
+
+type AlterTableCommentRequest struct {
+	*tchttp.BaseRequest
+	
+	// 修改表的基本信息
+	TableBaseInfo *TableBaseInfo `json:"TableBaseInfo,omitnil,omitempty" name:"TableBaseInfo"`
+}
+
+func (r *AlterTableCommentRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AlterTableCommentRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TableBaseInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AlterTableCommentRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AlterTableCommentResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type AlterTableCommentResponse struct {
+	*tchttp.BaseResponse
+	Response *AlterTableCommentResponseParams `json:"Response"`
+}
+
+func (r *AlterTableCommentResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AlterTableCommentResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type AnalysisTaskResults struct {
 	// <p>任务Id</p>
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
@@ -2925,6 +2979,87 @@ func (r *CreateInternalTableResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateInternalTableResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateMetaDatabaseRequestParams struct {
+	// 数据源名称，默认DataLakeCatalog
+	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitnil,omitempty" name:"DatasourceConnectionName"`
+
+	// 元数据库基本信息
+	MetaDatabaseInfo *MetaDatabaseInfo `json:"MetaDatabaseInfo,omitnil,omitempty" name:"MetaDatabaseInfo"`
+
+	// 数据治理配置项
+	GovernPolicy *DataGovernPolicy `json:"GovernPolicy,omitnil,omitempty" name:"GovernPolicy"`
+
+	// 智能数据治理配置
+	SmartPolicy *SmartPolicy `json:"SmartPolicy,omitnil,omitempty" name:"SmartPolicy"`
+}
+
+type CreateMetaDatabaseRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据源名称，默认DataLakeCatalog
+	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitnil,omitempty" name:"DatasourceConnectionName"`
+
+	// 元数据库基本信息
+	MetaDatabaseInfo *MetaDatabaseInfo `json:"MetaDatabaseInfo,omitnil,omitempty" name:"MetaDatabaseInfo"`
+
+	// 数据治理配置项
+	GovernPolicy *DataGovernPolicy `json:"GovernPolicy,omitnil,omitempty" name:"GovernPolicy"`
+
+	// 智能数据治理配置
+	SmartPolicy *SmartPolicy `json:"SmartPolicy,omitnil,omitempty" name:"SmartPolicy"`
+}
+
+func (r *CreateMetaDatabaseRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateMetaDatabaseRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DatasourceConnectionName")
+	delete(f, "MetaDatabaseInfo")
+	delete(f, "GovernPolicy")
+	delete(f, "SmartPolicy")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateMetaDatabaseRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateMetaDatabaseResponseParams struct {
+	// 本批次提交的任务的批次Id
+	BatchId *string `json:"BatchId,omitnil,omitempty" name:"BatchId"`
+
+	// 任务Id集合，按照执行顺序排列
+	TaskIdSet []*string `json:"TaskIdSet,omitnil,omitempty" name:"TaskIdSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateMetaDatabaseResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateMetaDatabaseResponseParams `json:"Response"`
+}
+
+func (r *CreateMetaDatabaseResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateMetaDatabaseResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6300,6 +6435,73 @@ func (r *DeleteDataMaskStrategyResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteMetaDatabaseRequestParams struct {
+	// 数据库名称
+	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
+
+	// 数据源名称，默认DataLakeCatalog
+	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitnil,omitempty" name:"DatasourceConnectionName"`
+}
+
+type DeleteMetaDatabaseRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据库名称
+	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
+
+	// 数据源名称，默认DataLakeCatalog
+	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitnil,omitempty" name:"DatasourceConnectionName"`
+}
+
+func (r *DeleteMetaDatabaseRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteMetaDatabaseRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DatabaseName")
+	delete(f, "DatasourceConnectionName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteMetaDatabaseRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteMetaDatabaseResponseParams struct {
+	// 本批次提交的任务的批次Id
+	BatchId *string `json:"BatchId,omitnil,omitempty" name:"BatchId"`
+
+	// 任务Id集合，按照执行顺序排列
+	TaskIdSet []*string `json:"TaskIdSet,omitnil,omitempty" name:"TaskIdSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteMetaDatabaseResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteMetaDatabaseResponseParams `json:"Response"`
+}
+
+func (r *DeleteMetaDatabaseResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteMetaDatabaseResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteNativeSparkSessionRequestParams struct {
 	// 引擎id
 	DataEngineId *string `json:"DataEngineId,omitnil,omitempty" name:"DataEngineId"`
@@ -8368,6 +8570,70 @@ func (r *DescribeDataMaskStrategiesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeDataMaskStrategiesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDatabaseRequestParams struct {
+	// 数据库名称
+	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
+
+	// 数据连接名称，不填默认为DataLakeCatalog
+	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitnil,omitempty" name:"DatasourceConnectionName"`
+}
+
+type DescribeDatabaseRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据库名称
+	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
+
+	// 数据连接名称，不填默认为DataLakeCatalog
+	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitnil,omitempty" name:"DatasourceConnectionName"`
+}
+
+func (r *DescribeDatabaseRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDatabaseRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DatabaseName")
+	delete(f, "DatasourceConnectionName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDatabaseRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDatabaseResponseParams struct {
+	// 数据库信息
+	DatabaseInfo *DatabaseResponseInfo `json:"DatabaseInfo,omitnil,omitempty" name:"DatabaseInfo"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDatabaseResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDatabaseResponseParams `json:"Response"`
+}
+
+func (r *DescribeDatabaseResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDatabaseResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -14198,6 +14464,94 @@ func (r *GenerateCreateMangedTableSqlResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type GenerateInternalTableRequestParams struct {
+	// 表基本信息
+	TableBaseInfo *TableBaseInfo `json:"TableBaseInfo,omitnil,omitempty" name:"TableBaseInfo"`
+
+	// 字段信息
+	Columns []*TColumn `json:"Columns,omitnil,omitempty" name:"Columns"`
+
+	// 分区信息
+	Partitions []*TPartition `json:"Partitions,omitnil,omitempty" name:"Partitions"`
+
+	// 属性
+	Properties []*Property `json:"Properties,omitnil,omitempty" name:"Properties"`
+
+	// V2 upsert表 upsert键
+	UpsertKeys []*string `json:"UpsertKeys,omitnil,omitempty" name:"UpsertKeys"`
+}
+
+type GenerateInternalTableRequest struct {
+	*tchttp.BaseRequest
+	
+	// 表基本信息
+	TableBaseInfo *TableBaseInfo `json:"TableBaseInfo,omitnil,omitempty" name:"TableBaseInfo"`
+
+	// 字段信息
+	Columns []*TColumn `json:"Columns,omitnil,omitempty" name:"Columns"`
+
+	// 分区信息
+	Partitions []*TPartition `json:"Partitions,omitnil,omitempty" name:"Partitions"`
+
+	// 属性
+	Properties []*Property `json:"Properties,omitnil,omitempty" name:"Properties"`
+
+	// V2 upsert表 upsert键
+	UpsertKeys []*string `json:"UpsertKeys,omitnil,omitempty" name:"UpsertKeys"`
+}
+
+func (r *GenerateInternalTableRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GenerateInternalTableRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TableBaseInfo")
+	delete(f, "Columns")
+	delete(f, "Partitions")
+	delete(f, "Properties")
+	delete(f, "UpsertKeys")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GenerateInternalTableRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GenerateInternalTableResponseParams struct {
+	// 返回sql
+	Execution *Execution `json:"Execution,omitnil,omitempty" name:"Execution"`
+
+	// 是否tciceberg
+	IsTIcebergSql *bool `json:"IsTIcebergSql,omitnil,omitempty" name:"IsTIcebergSql"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GenerateInternalTableResponse struct {
+	*tchttp.BaseResponse
+	Response *GenerateInternalTableResponseParams `json:"Response"`
+}
+
+func (r *GenerateInternalTableResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GenerateInternalTableResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type GetOptimizerPolicyRequestParams struct {
 	// 策略描述
 	SmartPolicy *SmartPolicy `json:"SmartPolicy,omitnil,omitempty" name:"SmartPolicy"`
@@ -15092,6 +15446,15 @@ type MCPTaskResultInfo struct {
 
 	// <p>是否超大</p>
 	IsResultOversize *bool `json:"IsResultOversize,omitnil,omitempty" name:"IsResultOversize"`
+}
+
+type MetaDatabaseInfo struct {
+	// 数据库名称。
+	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
+
+	// 数据库描述信息，长度 0~2048。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
 }
 
 type MixedTablePartitions struct {
