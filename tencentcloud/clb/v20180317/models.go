@@ -16155,6 +16155,15 @@ type UserGroupInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BudgetName *string `json:"BudgetName,omitnil,omitempty" name:"BudgetName"`
 
+	// <p>关联的提示词 ID。</p><p>未关联时为空；「未分组」虚拟分组恒为空。</p><p>参数格式：pmt-1a2b3c4d</p>
+	PromptId *string `json:"PromptId,omitnil,omitempty" name:"PromptId"`
+
+	// <p>关联的提示词版本。</p><p>未关联时为空；「未分组」虚拟分组恒为空。</p>
+	PromptVersion *string `json:"PromptVersion,omitnil,omitempty" name:"PromptVersion"`
+
+	// <p>关联的提示词名称。</p><p>未关联时为空；「未分组」虚拟分组恒为空。</p>
+	PromptName *string `json:"PromptName,omitnil,omitempty" name:"PromptName"`
+
 	// <p>用户组多刷新周期 Credit 使用情况。</p><p>无多周期预算时为空数组。</p>
 	CreditUsageSet []*CreditUsage `json:"CreditUsageSet,omitnil,omitempty" name:"CreditUsageSet"`
 

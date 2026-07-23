@@ -3794,26 +3794,26 @@ func (r *CreateSparkAppResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateSparkAppTaskRequestParams struct {
-	// spark作业名
+	// <p>spark作业名</p>
 	JobName *string `json:"JobName,omitnil,omitempty" name:"JobName"`
 
-	// spark作业程序入参，以空格分隔；一般用于周期性调用使用
+	// <p>spark作业程序入参，以空格分隔；一般用于周期性调用使用</p>
 	CmdArgs *string `json:"CmdArgs,omitnil,omitempty" name:"CmdArgs"`
 
-	// 任务来源信息
+	// <p>任务来源信息</p>
 	SourceInfo []*KVPair `json:"SourceInfo,omitnil,omitempty" name:"SourceInfo"`
 }
 
 type CreateSparkAppTaskRequest struct {
 	*tchttp.BaseRequest
 	
-	// spark作业名
+	// <p>spark作业名</p>
 	JobName *string `json:"JobName,omitnil,omitempty" name:"JobName"`
 
-	// spark作业程序入参，以空格分隔；一般用于周期性调用使用
+	// <p>spark作业程序入参，以空格分隔；一般用于周期性调用使用</p>
 	CmdArgs *string `json:"CmdArgs,omitnil,omitempty" name:"CmdArgs"`
 
-	// 任务来源信息
+	// <p>任务来源信息</p>
 	SourceInfo []*KVPair `json:"SourceInfo,omitnil,omitempty" name:"SourceInfo"`
 }
 
@@ -3840,10 +3840,10 @@ func (r *CreateSparkAppTaskRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateSparkAppTaskResponseParams struct {
-	// 批Id
+	// <p>批Id</p>
 	BatchId *string `json:"BatchId,omitnil,omitempty" name:"BatchId"`
 
-	// 任务Id
+	// <p>任务Id</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

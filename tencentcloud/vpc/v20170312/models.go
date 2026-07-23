@@ -18005,46 +18005,32 @@ func (r *DescribeNetworkAccountTypeResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeNetworkAclQuintupleEntriesRequestParams struct {
-	// 网络ACL实例ID。形如：acl-12345678。
+	// <p>网络ACL实例ID。形如：acl-12345678。</p>
 	NetworkAclId *string `json:"NetworkAclId,omitnil,omitempty" name:"NetworkAclId"`
 
-	// 偏移量，默认为0。
+	// <p>偏移量，默认为0。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，默认为20，最小值为1，最大值为100。
+	// <p>返回数量，默认为20，最小值为1，最大值为100。</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 过滤条件，参数不支持同时指定`NetworkAclId`和`Filters`。
-	// <li>protocol - String - 协议，形如：`TCP`。</li>
-	// <li>description - String - 描述。</li>
-	// <li>destination-cidr - String - 目的CIDR， 形如：'192.168.0.0/24'。</li>
-	// <li>source-cidr- String - 源CIDR， 形如：'192.168.0.0/24'。</li>
-	// <li>action - String - 动作，形如ACCEPT或DROP。</li>
-	// <li>network-acl-quintuple-entry-id - String - 五元组唯一ID，形如：'acli45-ahnu4rv5'。</li>
-	// <li>network-acl-direction - String - 方向，形如：'INGRESS'或'EGRESS'。</li>
+	// <p>过滤条件，参数不支持同时指定<code>NetworkAclId</code>和<code>Filters</code>。</p><li>protocol - String - 协议，形如：<code>TCP</code>。</li><li>description - String - 描述。</li><li>destination-cidr - String - 目的CIDR， 形如：'192.168.0.0/24'。</li><li>source-cidr- String - 源CIDR， 形如：'192.168.0.0/24'。</li><li>action - String - 动作，形如ACCEPT或DROP。</li><li>network-acl-quintuple-entry-id - String - 五元组唯一ID，形如：'acli45-ahnu4rv5'。</li><li>network-acl-direction - String - 方向，形如：'INGRESS'或'EGRESS'。</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeNetworkAclQuintupleEntriesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 网络ACL实例ID。形如：acl-12345678。
+	// <p>网络ACL实例ID。形如：acl-12345678。</p>
 	NetworkAclId *string `json:"NetworkAclId,omitnil,omitempty" name:"NetworkAclId"`
 
-	// 偏移量，默认为0。
+	// <p>偏移量，默认为0。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，默认为20，最小值为1，最大值为100。
+	// <p>返回数量，默认为20，最小值为1，最大值为100。</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 过滤条件，参数不支持同时指定`NetworkAclId`和`Filters`。
-	// <li>protocol - String - 协议，形如：`TCP`。</li>
-	// <li>description - String - 描述。</li>
-	// <li>destination-cidr - String - 目的CIDR， 形如：'192.168.0.0/24'。</li>
-	// <li>source-cidr- String - 源CIDR， 形如：'192.168.0.0/24'。</li>
-	// <li>action - String - 动作，形如ACCEPT或DROP。</li>
-	// <li>network-acl-quintuple-entry-id - String - 五元组唯一ID，形如：'acli45-ahnu4rv5'。</li>
-	// <li>network-acl-direction - String - 方向，形如：'INGRESS'或'EGRESS'。</li>
+	// <p>过滤条件，参数不支持同时指定<code>NetworkAclId</code>和<code>Filters</code>。</p><li>protocol - String - 协议，形如：<code>TCP</code>。</li><li>description - String - 描述。</li><li>destination-cidr - String - 目的CIDR， 形如：'192.168.0.0/24'。</li><li>source-cidr- String - 源CIDR， 形如：'192.168.0.0/24'。</li><li>action - String - 动作，形如ACCEPT或DROP。</li><li>network-acl-quintuple-entry-id - String - 五元组唯一ID，形如：'acli45-ahnu4rv5'。</li><li>network-acl-direction - String - 方向，形如：'INGRESS'或'EGRESS'。</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -18072,10 +18058,10 @@ func (r *DescribeNetworkAclQuintupleEntriesRequest) FromJsonString(s string) err
 
 // Predefined struct for user
 type DescribeNetworkAclQuintupleEntriesResponseParams struct {
-	// 网络ACL条目列表（NetworkAclTuple5Entry）
+	// <p>网络ACL条目列表（NetworkAclTuple5Entry）</p>
 	NetworkAclQuintupleSet []*NetworkAclQuintupleEntry `json:"NetworkAclQuintupleSet,omitnil,omitempty" name:"NetworkAclQuintupleSet"`
 
-	// 符合条件的实例数量。
+	// <p>符合条件的实例数量。</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -18100,50 +18086,44 @@ func (r *DescribeNetworkAclQuintupleEntriesResponse) FromJsonString(s string) er
 
 // Predefined struct for user
 type DescribeNetworkAclsRequestParams struct {
-	// 过滤条件，参数不支持同时指定NetworkAclIds和Filters。
-	// <li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-12345678。</li>
-	// <li>network-acl-id - String - （过滤条件）网络ACL实例ID，形如：acl-12345678。</li>
-	// <li>network-acl-name - String - （过滤条件）网络ACL实例名称。</li>
+	// <p>过滤条件，参数不支持同时指定NetworkAclIds和Filters。</p><li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-12345678。</li><li>network-acl-id - String - （过滤条件）网络ACL实例ID，形如：acl-12345678。</li><li>network-acl-name - String - （过滤条件）网络ACL实例名称。</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 网络ACL实例ID数组。形如：[acl-12345678]。每次请求的实例的上限为100。参数不支持同时指定NetworkAclIds和Filters。
+	// <p>网络ACL实例ID数组。形如：[acl-12345678]。每次请求的实例的上限为100。参数不支持同时指定NetworkAclIds和Filters。</p>
 	NetworkAclIds []*string `json:"NetworkAclIds,omitnil,omitempty" name:"NetworkAclIds"`
 
-	// 偏移量，默认为0。
+	// <p>偏移量，默认为0。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，默认为20，最小值为1，最大值为100。
+	// <p>返回数量，默认为20，最小值为1，最大值为100。</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 排序字段。支持：NetworkAclId,NetworkAclName,CreatedTime
+	// <p>排序字段。支持：NetworkAclId,NetworkAclName,CreatedTime,ModifyTime</p>
 	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
 
-	// 排序方法。顺序：ASC，倒序：DESC。
+	// <p>排序方法。顺序：ASC，倒序：DESC。</p>
 	OrderDirection *string `json:"OrderDirection,omitnil,omitempty" name:"OrderDirection"`
 }
 
 type DescribeNetworkAclsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 过滤条件，参数不支持同时指定NetworkAclIds和Filters。
-	// <li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-12345678。</li>
-	// <li>network-acl-id - String - （过滤条件）网络ACL实例ID，形如：acl-12345678。</li>
-	// <li>network-acl-name - String - （过滤条件）网络ACL实例名称。</li>
+	// <p>过滤条件，参数不支持同时指定NetworkAclIds和Filters。</p><li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-12345678。</li><li>network-acl-id - String - （过滤条件）网络ACL实例ID，形如：acl-12345678。</li><li>network-acl-name - String - （过滤条件）网络ACL实例名称。</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 网络ACL实例ID数组。形如：[acl-12345678]。每次请求的实例的上限为100。参数不支持同时指定NetworkAclIds和Filters。
+	// <p>网络ACL实例ID数组。形如：[acl-12345678]。每次请求的实例的上限为100。参数不支持同时指定NetworkAclIds和Filters。</p>
 	NetworkAclIds []*string `json:"NetworkAclIds,omitnil,omitempty" name:"NetworkAclIds"`
 
-	// 偏移量，默认为0。
+	// <p>偏移量，默认为0。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，默认为20，最小值为1，最大值为100。
+	// <p>返回数量，默认为20，最小值为1，最大值为100。</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 排序字段。支持：NetworkAclId,NetworkAclName,CreatedTime
+	// <p>排序字段。支持：NetworkAclId,NetworkAclName,CreatedTime,ModifyTime</p>
 	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
 
-	// 排序方法。顺序：ASC，倒序：DESC。
+	// <p>排序方法。顺序：ASC，倒序：DESC。</p>
 	OrderDirection *string `json:"OrderDirection,omitnil,omitempty" name:"OrderDirection"`
 }
 
@@ -18173,10 +18153,10 @@ func (r *DescribeNetworkAclsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeNetworkAclsResponseParams struct {
-	// 实例详细信息列表。
+	// <p>实例详细信息列表。</p>
 	NetworkAclSet []*NetworkAcl `json:"NetworkAclSet,omitnil,omitempty" name:"NetworkAclSet"`
 
-	// 符合条件的实例数量。
+	// <p>符合条件的实例数量。</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -18273,76 +18253,32 @@ func (r *DescribeNetworkInterfaceLimitResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeNetworkInterfacesRequestParams struct {
-	// 弹性网卡实例ID查询。形如：eni-pxir56ns。每次请求的实例的上限为100。参数不支持同时指定NetworkInterfaceIds和Filters。可通过[DescribeNetworkInterfaces](https://cloud.tencent.com/document/product/215/15817)接口获取。
+	// <p>弹性网卡实例ID查询。形如：eni-pxir56ns。每次请求的实例的上限为100。参数不支持同时指定NetworkInterfaceIds和Filters。可通过<a href="https://cloud.tencent.com/document/product/215/15817">DescribeNetworkInterfaces</a>接口获取。</p>
 	NetworkInterfaceIds []*string `json:"NetworkInterfaceIds,omitnil,omitempty" name:"NetworkInterfaceIds"`
 
-	// 过滤条件，参数不支持同时指定NetworkInterfaceIds和Filters。
-	// <li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。可通过可通过[DescribeVpcs](https://cloud.tencent.com/document/product/215/15778)接口获取。
-	// </li>
-	// <li>subnet-id - String - （过滤条件）所属子网实例ID，形如：subnet-f49l6u0z。可通过[DescribeSubnets](https://cloud.tencent.com/document/product/215/15784)接口获取。
-	// </li>
-	// <li>network-interface-id - String - （过滤条件）弹性网卡实例ID，形如：eni-5k56k7k7。可通过[DescribeNetworkInterfaces](https://cloud.tencent.com/document/product/215/15817)接口获取。
-	// </li>
-	// <li>attachment.instance-id - String - （过滤条件）绑定的云服务器实例ID，形如：ins-3nqpdn3i。可通过[DescribeInstances](https://cloud.tencent.com/document/product/213/15728)接口获取。
-	// </li>
-	// <li>groups.security-group-id - String - （过滤条件）绑定的安全组实例ID，例如：sg-f9ekbxeq。可通过[DescribeSecurityGroups](https://cloud.tencent.com/document/product/215/15808)接口获取。
-	// </li>
-	// <li>network-interface-name - String - （过滤条件）网卡实例名称。</li>
-	// <li>network-interface-description - String - （过滤条件）网卡实例描述。</li>
-	// <li>address-ip - String - （过滤条件）内网IPv4地址，单IP后缀模糊匹配，多IP精确匹配。可以与`ip-exact-match`配合做单IP的精确匹配查询。</li>
-	// <li>ip-exact-match - Boolean - （过滤条件）内网IPv4精确匹配查询，存在多值情况，只取第一个。</li>
-	// <li>tag-key - String -是否必填：否- （过滤条件）按照标签键进行过滤。使用请参考示例2</li>
-	// <li>tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例2。</li>
-	// <li>is-primary - Boolean - 是否必填：否 - （过滤条件）按照是否主网卡进行过滤。值为true时，仅过滤主网卡；值为false时，仅过滤辅助网卡；此过滤参数未提供时，同时过滤主网卡和辅助网卡。</li>
-	// <li>eni-type - String -是否必填：否- （过滤条件）按照网卡类型进行过滤。“0”-辅助网卡，“1”-主网卡，“2”：中继网卡。</li>
-	// <li>eni-qos - String -是否必填：否- （过滤条件）按照网卡服务质量进行过滤。PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。</li>
-	// <li>address-ipv6 - String - 是否必填：否 -（过滤条件）内网IPv6地址过滤，支持多ipv6地址查询，如果和address-ip一起使用取交集。</li>
-	// <li>public-address-ip - String - （过滤条件）公网IPv4地址，精确匹配。</li>
-	// <li>address-type - String - （过滤条件）IPv6 Cidr 的类型，精确匹配。`GUA`(全球单播地址), `ULA`(唯一本地地址)。</li>
+	// <p>过滤条件，参数不支持同时指定NetworkInterfaceIds和Filters。</p><li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。可通过可通过[DescribeVpcs](https://cloud.tencent.com/document/product/215/15778)接口获取。</li><li>subnet-id - String - （过滤条件）所属子网实例ID，形如：subnet-f49l6u0z。可通过[DescribeSubnets](https://cloud.tencent.com/document/product/215/15784)接口获取。</li><li>network-interface-id - String - （过滤条件）弹性网卡实例ID，形如：eni-5k56k7k7。可通过[DescribeNetworkInterfaces](https://cloud.tencent.com/document/product/215/15817)接口获取。</li><li>attachment.instance-id - String - （过滤条件）绑定的云服务器实例ID，形如：ins-3nqpdn3i。可通过[DescribeInstances](https://cloud.tencent.com/document/product/213/15728)接口获取。</li><li>groups.security-group-id - String - （过滤条件）绑定的安全组实例ID，例如：sg-f9ekbxeq。可通过[DescribeSecurityGroups](https://cloud.tencent.com/document/product/215/15808)接口获取。</li><li>network-interface-name - String - （过滤条件）网卡实例名称。</li><li>network-interface-description - String - （过滤条件）网卡实例描述。</li><li>address-ip - String - （过滤条件）内网IPv4地址，单IP后缀模糊匹配，多IP精确匹配。可以与<code>ip-exact-match</code>配合做单IP的精确匹配查询。</li><li>ip-exact-match - Boolean - （过滤条件）内网IPv4精确匹配查询，存在多值情况，只取第一个。</li><li>tag-key - String -是否必填：否- （过滤条件）按照标签键进行过滤。使用请参考示例2</li><li>tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例2。</li><li>is-primary - Boolean - 是否必填：否 - （过滤条件）按照是否主网卡进行过滤。值为true时，仅过滤主网卡；值为false时，仅过滤辅助网卡；此过滤参数未提供时，同时过滤主网卡和辅助网卡。</li><li>eni-type - String -是否必填：否- （过滤条件）按照网卡类型进行过滤。“0”-辅助网卡，“1”-主网卡，“2”：中继网卡。</li><li>eni-qos - String -是否必填：否- （过滤条件）按照网卡服务质量进行过滤。PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。</li><li>address-ipv6 - String - 是否必填：否 -（过滤条件）内网IPv6地址过滤，支持多ipv6地址查询，如果和address-ip一起使用取交集。</li><li>public-address-ip - String - （过滤条件）公网IPv4地址，精确匹配。</li><li>address-type - String - （过滤条件）IPv6 Cidr 的类型，精确匹配。<code>GUA</code>(全球单播地址), <code>ULA</code>(唯一本地地址)。</li><li>termination-protection - String - 删除保护。取值: true; false。</li><li>traffic-protection - String - 流量保护。取值: true; false。</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 偏移量，默认为0。
+	// <p>偏移量，默认为0。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，默认为20，最大值为100。
+	// <p>返回数量，默认为20，最大值为100。</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeNetworkInterfacesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 弹性网卡实例ID查询。形如：eni-pxir56ns。每次请求的实例的上限为100。参数不支持同时指定NetworkInterfaceIds和Filters。可通过[DescribeNetworkInterfaces](https://cloud.tencent.com/document/product/215/15817)接口获取。
+	// <p>弹性网卡实例ID查询。形如：eni-pxir56ns。每次请求的实例的上限为100。参数不支持同时指定NetworkInterfaceIds和Filters。可通过<a href="https://cloud.tencent.com/document/product/215/15817">DescribeNetworkInterfaces</a>接口获取。</p>
 	NetworkInterfaceIds []*string `json:"NetworkInterfaceIds,omitnil,omitempty" name:"NetworkInterfaceIds"`
 
-	// 过滤条件，参数不支持同时指定NetworkInterfaceIds和Filters。
-	// <li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。可通过可通过[DescribeVpcs](https://cloud.tencent.com/document/product/215/15778)接口获取。
-	// </li>
-	// <li>subnet-id - String - （过滤条件）所属子网实例ID，形如：subnet-f49l6u0z。可通过[DescribeSubnets](https://cloud.tencent.com/document/product/215/15784)接口获取。
-	// </li>
-	// <li>network-interface-id - String - （过滤条件）弹性网卡实例ID，形如：eni-5k56k7k7。可通过[DescribeNetworkInterfaces](https://cloud.tencent.com/document/product/215/15817)接口获取。
-	// </li>
-	// <li>attachment.instance-id - String - （过滤条件）绑定的云服务器实例ID，形如：ins-3nqpdn3i。可通过[DescribeInstances](https://cloud.tencent.com/document/product/213/15728)接口获取。
-	// </li>
-	// <li>groups.security-group-id - String - （过滤条件）绑定的安全组实例ID，例如：sg-f9ekbxeq。可通过[DescribeSecurityGroups](https://cloud.tencent.com/document/product/215/15808)接口获取。
-	// </li>
-	// <li>network-interface-name - String - （过滤条件）网卡实例名称。</li>
-	// <li>network-interface-description - String - （过滤条件）网卡实例描述。</li>
-	// <li>address-ip - String - （过滤条件）内网IPv4地址，单IP后缀模糊匹配，多IP精确匹配。可以与`ip-exact-match`配合做单IP的精确匹配查询。</li>
-	// <li>ip-exact-match - Boolean - （过滤条件）内网IPv4精确匹配查询，存在多值情况，只取第一个。</li>
-	// <li>tag-key - String -是否必填：否- （过滤条件）按照标签键进行过滤。使用请参考示例2</li>
-	// <li>tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例2。</li>
-	// <li>is-primary - Boolean - 是否必填：否 - （过滤条件）按照是否主网卡进行过滤。值为true时，仅过滤主网卡；值为false时，仅过滤辅助网卡；此过滤参数未提供时，同时过滤主网卡和辅助网卡。</li>
-	// <li>eni-type - String -是否必填：否- （过滤条件）按照网卡类型进行过滤。“0”-辅助网卡，“1”-主网卡，“2”：中继网卡。</li>
-	// <li>eni-qos - String -是否必填：否- （过滤条件）按照网卡服务质量进行过滤。PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。</li>
-	// <li>address-ipv6 - String - 是否必填：否 -（过滤条件）内网IPv6地址过滤，支持多ipv6地址查询，如果和address-ip一起使用取交集。</li>
-	// <li>public-address-ip - String - （过滤条件）公网IPv4地址，精确匹配。</li>
-	// <li>address-type - String - （过滤条件）IPv6 Cidr 的类型，精确匹配。`GUA`(全球单播地址), `ULA`(唯一本地地址)。</li>
+	// <p>过滤条件，参数不支持同时指定NetworkInterfaceIds和Filters。</p><li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。可通过可通过[DescribeVpcs](https://cloud.tencent.com/document/product/215/15778)接口获取。</li><li>subnet-id - String - （过滤条件）所属子网实例ID，形如：subnet-f49l6u0z。可通过[DescribeSubnets](https://cloud.tencent.com/document/product/215/15784)接口获取。</li><li>network-interface-id - String - （过滤条件）弹性网卡实例ID，形如：eni-5k56k7k7。可通过[DescribeNetworkInterfaces](https://cloud.tencent.com/document/product/215/15817)接口获取。</li><li>attachment.instance-id - String - （过滤条件）绑定的云服务器实例ID，形如：ins-3nqpdn3i。可通过[DescribeInstances](https://cloud.tencent.com/document/product/213/15728)接口获取。</li><li>groups.security-group-id - String - （过滤条件）绑定的安全组实例ID，例如：sg-f9ekbxeq。可通过[DescribeSecurityGroups](https://cloud.tencent.com/document/product/215/15808)接口获取。</li><li>network-interface-name - String - （过滤条件）网卡实例名称。</li><li>network-interface-description - String - （过滤条件）网卡实例描述。</li><li>address-ip - String - （过滤条件）内网IPv4地址，单IP后缀模糊匹配，多IP精确匹配。可以与<code>ip-exact-match</code>配合做单IP的精确匹配查询。</li><li>ip-exact-match - Boolean - （过滤条件）内网IPv4精确匹配查询，存在多值情况，只取第一个。</li><li>tag-key - String -是否必填：否- （过滤条件）按照标签键进行过滤。使用请参考示例2</li><li>tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例2。</li><li>is-primary - Boolean - 是否必填：否 - （过滤条件）按照是否主网卡进行过滤。值为true时，仅过滤主网卡；值为false时，仅过滤辅助网卡；此过滤参数未提供时，同时过滤主网卡和辅助网卡。</li><li>eni-type - String -是否必填：否- （过滤条件）按照网卡类型进行过滤。“0”-辅助网卡，“1”-主网卡，“2”：中继网卡。</li><li>eni-qos - String -是否必填：否- （过滤条件）按照网卡服务质量进行过滤。PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。</li><li>address-ipv6 - String - 是否必填：否 -（过滤条件）内网IPv6地址过滤，支持多ipv6地址查询，如果和address-ip一起使用取交集。</li><li>public-address-ip - String - （过滤条件）公网IPv4地址，精确匹配。</li><li>address-type - String - （过滤条件）IPv6 Cidr 的类型，精确匹配。<code>GUA</code>(全球单播地址), <code>ULA</code>(唯一本地地址)。</li><li>termination-protection - String - 删除保护。取值: true; false。</li><li>traffic-protection - String - 流量保护。取值: true; false。</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 偏移量，默认为0。
+	// <p>偏移量，默认为0。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，默认为20，最大值为100。
+	// <p>返回数量，默认为20，最大值为100。</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
@@ -18370,10 +18306,10 @@ func (r *DescribeNetworkInterfacesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeNetworkInterfacesResponseParams struct {
-	// 实例详细信息列表。
+	// <p>实例详细信息列表。</p>
 	NetworkInterfaceSet []*NetworkInterface `json:"NetworkInterfaceSet,omitnil,omitempty" name:"NetworkInterfaceSet"`
 
-	// 符合条件的实例数量。
+	// <p>符合条件的实例数量。</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -19612,82 +19548,38 @@ func (r *DescribeRouteTableSelectionPoliciesResponse) FromJsonString(s string) e
 
 // Predefined struct for user
 type DescribeRouteTablesRequestParams struct {
-	// 过滤条件，参数不支持同时指定RouteTableIds和Filters。
-	// <li>route-table-id - String - （过滤条件）路由表实例ID。</li>
-	// <li>route-table-name - String - （过滤条件）路由表名称。</li>
-	// <li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。</li>
-	// <li>association.main - String - （过滤条件）是否主路由表。</li>
-	// <li>tag-key - String -是否必填：否 - （过滤条件）按照标签键进行过滤。</li>
-	// <li>tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例2。</li>
-	// <li>visible - String - （过滤条件）是否可见。</li>
-	// <li>next-hop-type - String - 是否必填：否 - （过滤条件）按下一跳类型进行过滤。使用next-hop-type进行过滤时，必须同时携带route-table-id与vpc-id。
-	// 目前我们支持的类型有：
-	// LOCAL: 本地路由
-	// CVM：公网网关类型的云服务器；
-	// VPN：VPN网关；
-	// DIRECTCONNECT：专线网关；
-	// PEERCONNECTION：对等连接；
-	// HAVIP：高可用虚拟IP；
-	// NAT：NAT网关; 
-	// NORMAL_CVM：普通云服务器；
-	// EIP：云服务器的公网IP；
-	// CCN：云联网；
-	// LOCAL_GATEWAY：本地网关。
-	// GWLB_ENDPOINT：网关负载均衡终端节点。
-	// </li>
+	// <p>过滤条件，参数不支持同时指定RouteTableIds和Filters。</p><li>route-table-id - String - （过滤条件）路由表实例ID。</li><li>route-table-name - String - （过滤条件）路由表名称。</li><li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。</li><li>association.main - String - （过滤条件）是否主路由表。</li><li>tag-key - String -是否必填：否 - （过滤条件）按照标签键进行过滤。</li><li>tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例2。</li><li>visible - String - （过滤条件）是否可见。</li><li>next-hop-type - String - 是否必填：否 - （过滤条件）按下一跳类型进行过滤。使用next-hop-type进行过滤时，必须同时携带route-table-id与vpc-id。目前我们支持的类型有：LOCAL: 本地路由CVM：公网网关类型的云服务器；VPN：VPN网关；DIRECTCONNECT：专线网关；PEERCONNECTION：对等连接；HAVIP：高可用虚拟IP；NAT：NAT网关; NORMAL_CVM：普通云服务器；EIP：云服务器的公网IP；CCN：云联网；LOCAL_GATEWAY：本地网关。GWLB_ENDPOINT：网关负载均衡终端节点。</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 路由表实例ID，例如：rtb-azd4dt1c。
+	// <p>路由表实例ID，例如：rtb-azd4dt1c。</p>
 	RouteTableIds []*string `json:"RouteTableIds,omitnil,omitempty" name:"RouteTableIds"`
 
-	// 偏移量。
+	// <p>偏移量。</p>
 	Offset *string `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，默认为20，最大值为100。
+	// <p>返回数量，默认为20，最大值为100。</p>
 	Limit *string `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 是否需要获取路由策略信息，默认获取，当控制台不需要拉取路由策略信息时，改为False。
+	// <p>是否需要获取路由策略信息，默认获取，当控制台不需要拉取路由策略信息时，改为False。</p>
 	NeedRouterInfo *bool `json:"NeedRouterInfo,omitnil,omitempty" name:"NeedRouterInfo"`
 }
 
 type DescribeRouteTablesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 过滤条件，参数不支持同时指定RouteTableIds和Filters。
-	// <li>route-table-id - String - （过滤条件）路由表实例ID。</li>
-	// <li>route-table-name - String - （过滤条件）路由表名称。</li>
-	// <li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。</li>
-	// <li>association.main - String - （过滤条件）是否主路由表。</li>
-	// <li>tag-key - String -是否必填：否 - （过滤条件）按照标签键进行过滤。</li>
-	// <li>tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例2。</li>
-	// <li>visible - String - （过滤条件）是否可见。</li>
-	// <li>next-hop-type - String - 是否必填：否 - （过滤条件）按下一跳类型进行过滤。使用next-hop-type进行过滤时，必须同时携带route-table-id与vpc-id。
-	// 目前我们支持的类型有：
-	// LOCAL: 本地路由
-	// CVM：公网网关类型的云服务器；
-	// VPN：VPN网关；
-	// DIRECTCONNECT：专线网关；
-	// PEERCONNECTION：对等连接；
-	// HAVIP：高可用虚拟IP；
-	// NAT：NAT网关; 
-	// NORMAL_CVM：普通云服务器；
-	// EIP：云服务器的公网IP；
-	// CCN：云联网；
-	// LOCAL_GATEWAY：本地网关。
-	// GWLB_ENDPOINT：网关负载均衡终端节点。
-	// </li>
+	// <p>过滤条件，参数不支持同时指定RouteTableIds和Filters。</p><li>route-table-id - String - （过滤条件）路由表实例ID。</li><li>route-table-name - String - （过滤条件）路由表名称。</li><li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。</li><li>association.main - String - （过滤条件）是否主路由表。</li><li>tag-key - String -是否必填：否 - （过滤条件）按照标签键进行过滤。</li><li>tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例2。</li><li>visible - String - （过滤条件）是否可见。</li><li>next-hop-type - String - 是否必填：否 - （过滤条件）按下一跳类型进行过滤。使用next-hop-type进行过滤时，必须同时携带route-table-id与vpc-id。目前我们支持的类型有：LOCAL: 本地路由CVM：公网网关类型的云服务器；VPN：VPN网关；DIRECTCONNECT：专线网关；PEERCONNECTION：对等连接；HAVIP：高可用虚拟IP；NAT：NAT网关; NORMAL_CVM：普通云服务器；EIP：云服务器的公网IP；CCN：云联网；LOCAL_GATEWAY：本地网关。GWLB_ENDPOINT：网关负载均衡终端节点。</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 路由表实例ID，例如：rtb-azd4dt1c。
+	// <p>路由表实例ID，例如：rtb-azd4dt1c。</p>
 	RouteTableIds []*string `json:"RouteTableIds,omitnil,omitempty" name:"RouteTableIds"`
 
-	// 偏移量。
+	// <p>偏移量。</p>
 	Offset *string `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，默认为20，最大值为100。
+	// <p>返回数量，默认为20，最大值为100。</p>
 	Limit *string `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 是否需要获取路由策略信息，默认获取，当控制台不需要拉取路由策略信息时，改为False。
+	// <p>是否需要获取路由策略信息，默认获取，当控制台不需要拉取路由策略信息时，改为False。</p>
 	NeedRouterInfo *bool `json:"NeedRouterInfo,omitnil,omitempty" name:"NeedRouterInfo"`
 }
 
@@ -19716,10 +19608,10 @@ func (r *DescribeRouteTablesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRouteTablesResponseParams struct {
-	// 符合条件的实例数量。
+	// <p>符合条件的实例数量。</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 路由表对象。
+	// <p>路由表对象。</p>
 	RouteTableSet []*RouteTable `json:"RouteTableSet,omitnil,omitempty" name:"RouteTableSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -21159,72 +21051,44 @@ func (r *DescribeSubnetResourceDashboardResponse) FromJsonString(s string) error
 
 // Predefined struct for user
 type DescribeSubnetsRequestParams struct {
-	// 子网实例ID查询。形如：subnet-pxir56ns。每次请求的实例的上限为100（该参数指定的子网是否返回，需要结合分页拉取参数Limit和Offset）。参数不支持同时指定SubnetIds和Filters。
+	// <p>子网实例ID查询。形如：subnet-pxir56ns。每次请求的实例的上限为100（该参数指定的子网是否返回，需要结合分页拉取参数Limit和Offset）。参数不支持同时指定SubnetIds和Filters。</p>
 	SubnetIds []*string `json:"SubnetIds,omitnil,omitempty" name:"SubnetIds"`
 
-	// 过滤条件，参数不支持同时指定SubnetIds和Filters。
-	// <li>subnet-id - String - （过滤条件）Subnet实例名称。</li>
-	// <li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。</li>
-	// <li>cidr-block - String - （过滤条件）子网网段，形如: 192.168.1.0 。</li>
-	// <li>is-default - Boolean - （过滤条件）是否是默认子网。</li>
-	// <li>is-remote-vpc-snat - Boolean - （过滤条件）是否为VPC SNAT地址池子网。</li>
-	// <li>subnet-name - String - （过滤条件）子网名称。</li>
-	// <li>zone - String - （过滤条件）可用区。</li>
-	// <li>tag-key - String -是否必填：否- （过滤条件）按照标签键进行过滤。</li>
-	// <li>tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例2。</li>
-	// <li>cdc-id - String - 是否必填：否 - （过滤条件）按照cdc信息进行过滤。过滤出来制定cdc下的子网。</li>
-	// <li>is-cdc-subnet - String - 是否必填：否 - （过滤条件）按照是否是cdc子网进行过滤。取值：“0”-非cdc子网，“1”--cdc子网</li>
-	// <li>ipv6-cidr-block - String - （过滤条件）IPv6子网网段，形如: 2402:4e00:1717:8700::/64 。</li>
-	// <li>isp-type  - String - （过滤条件）运营商类型，形如: BGP 。</li>
-	// <li>address-type - String - （过滤条件）IPv6 Cidr 的类型，精确匹配。`GUA`(全球单播地址), `ULA`(唯一本地地址)。</li>
+	// <p>过滤条件，参数不支持同时指定SubnetIds和Filters。</p><li>subnet-id - String - （过滤条件）Subnet实例名称。</li><li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。</li><li>cidr-block - String - （过滤条件）子网网段，形如: 192.168.1.0 。</li><li>is-default - Boolean - （过滤条件）是否是默认子网。</li><li>is-remote-vpc-snat - Boolean - （过滤条件）是否为VPC SNAT地址池子网。</li><li>subnet-name - String - （过滤条件）子网名称。</li><li>zone - String - （过滤条件）可用区。</li><li>tag-key - String -是否必填：否- （过滤条件）按照标签键进行过滤。</li><li>tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例2。</li><li>cdc-id - String - 是否必填：否 - （过滤条件）按照cdc信息进行过滤。过滤出来制定cdc下的子网。</li><li>is-cdc-subnet - String - 是否必填：否 - （过滤条件）按照是否是cdc子网进行过滤。取值：“0”-非cdc子网，“1”--cdc子网</li><li>ipv6-cidr-block - String - （过滤条件）IPv6子网网段，形如: 2402:4e00:1717:8700::/64 。</li><li>isp-type  - String - （过滤条件）运营商类型，形如: BGP 。</li><li>address-type - String - （过滤条件）IPv6 Cidr 的类型，精确匹配。<code>GUA</code>(全球单播地址), <code>ULA</code>(唯一本地地址)。</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 偏移量，默认为0。
+	// <p>偏移量，默认为0。</p>
 	Offset *string `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，默认为20，最大值为100。
+	// <p>返回数量，默认为20，最大值为100。</p>
 	Limit *string `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 每次调用返回的最大结果数。如果查询返回的时候有NextToken返回，您可以使用NextToken值获取更多页结果， 当NextToke返回空或者返回的结果数量小于MaxResults时，表示没有更多数据了。允许的最大页面大小为 100。
+	// <p>每次调用返回的最大结果数。如果查询返回的时候有NextToken返回，您可以使用NextToken值获取更多页结果， 当NextToke返回空或者返回的结果数量小于MaxResults时，表示没有更多数据了。允许的最大页面大小为 100。</p>
 	MaxResults *uint64 `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
 
-	// 如果NextToken返回非空字符串 ，表示还有更多可用结果。 NextToken是每个页面唯一的分页令牌。使用返回的令牌再次调用以检索下一页。需要保持所有其他参数不变。每个分页令牌在 24 小时后过期。
+	// <p>如果NextToken返回非空字符串 ，表示还有更多可用结果。 NextToken是每个页面唯一的分页令牌。使用返回的令牌再次调用以检索下一页。需要保持所有其他参数不变。每个分页令牌在 24 小时后过期。</p>
 	NextToken *string `json:"NextToken,omitnil,omitempty" name:"NextToken"`
 }
 
 type DescribeSubnetsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 子网实例ID查询。形如：subnet-pxir56ns。每次请求的实例的上限为100（该参数指定的子网是否返回，需要结合分页拉取参数Limit和Offset）。参数不支持同时指定SubnetIds和Filters。
+	// <p>子网实例ID查询。形如：subnet-pxir56ns。每次请求的实例的上限为100（该参数指定的子网是否返回，需要结合分页拉取参数Limit和Offset）。参数不支持同时指定SubnetIds和Filters。</p>
 	SubnetIds []*string `json:"SubnetIds,omitnil,omitempty" name:"SubnetIds"`
 
-	// 过滤条件，参数不支持同时指定SubnetIds和Filters。
-	// <li>subnet-id - String - （过滤条件）Subnet实例名称。</li>
-	// <li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。</li>
-	// <li>cidr-block - String - （过滤条件）子网网段，形如: 192.168.1.0 。</li>
-	// <li>is-default - Boolean - （过滤条件）是否是默认子网。</li>
-	// <li>is-remote-vpc-snat - Boolean - （过滤条件）是否为VPC SNAT地址池子网。</li>
-	// <li>subnet-name - String - （过滤条件）子网名称。</li>
-	// <li>zone - String - （过滤条件）可用区。</li>
-	// <li>tag-key - String -是否必填：否- （过滤条件）按照标签键进行过滤。</li>
-	// <li>tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例2。</li>
-	// <li>cdc-id - String - 是否必填：否 - （过滤条件）按照cdc信息进行过滤。过滤出来制定cdc下的子网。</li>
-	// <li>is-cdc-subnet - String - 是否必填：否 - （过滤条件）按照是否是cdc子网进行过滤。取值：“0”-非cdc子网，“1”--cdc子网</li>
-	// <li>ipv6-cidr-block - String - （过滤条件）IPv6子网网段，形如: 2402:4e00:1717:8700::/64 。</li>
-	// <li>isp-type  - String - （过滤条件）运营商类型，形如: BGP 。</li>
-	// <li>address-type - String - （过滤条件）IPv6 Cidr 的类型，精确匹配。`GUA`(全球单播地址), `ULA`(唯一本地地址)。</li>
+	// <p>过滤条件，参数不支持同时指定SubnetIds和Filters。</p><li>subnet-id - String - （过滤条件）Subnet实例名称。</li><li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。</li><li>cidr-block - String - （过滤条件）子网网段，形如: 192.168.1.0 。</li><li>is-default - Boolean - （过滤条件）是否是默认子网。</li><li>is-remote-vpc-snat - Boolean - （过滤条件）是否为VPC SNAT地址池子网。</li><li>subnet-name - String - （过滤条件）子网名称。</li><li>zone - String - （过滤条件）可用区。</li><li>tag-key - String -是否必填：否- （过滤条件）按照标签键进行过滤。</li><li>tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例2。</li><li>cdc-id - String - 是否必填：否 - （过滤条件）按照cdc信息进行过滤。过滤出来制定cdc下的子网。</li><li>is-cdc-subnet - String - 是否必填：否 - （过滤条件）按照是否是cdc子网进行过滤。取值：“0”-非cdc子网，“1”--cdc子网</li><li>ipv6-cidr-block - String - （过滤条件）IPv6子网网段，形如: 2402:4e00:1717:8700::/64 。</li><li>isp-type  - String - （过滤条件）运营商类型，形如: BGP 。</li><li>address-type - String - （过滤条件）IPv6 Cidr 的类型，精确匹配。<code>GUA</code>(全球单播地址), <code>ULA</code>(唯一本地地址)。</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 偏移量，默认为0。
+	// <p>偏移量，默认为0。</p>
 	Offset *string `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，默认为20，最大值为100。
+	// <p>返回数量，默认为20，最大值为100。</p>
 	Limit *string `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 每次调用返回的最大结果数。如果查询返回的时候有NextToken返回，您可以使用NextToken值获取更多页结果， 当NextToke返回空或者返回的结果数量小于MaxResults时，表示没有更多数据了。允许的最大页面大小为 100。
+	// <p>每次调用返回的最大结果数。如果查询返回的时候有NextToken返回，您可以使用NextToken值获取更多页结果， 当NextToke返回空或者返回的结果数量小于MaxResults时，表示没有更多数据了。允许的最大页面大小为 100。</p>
 	MaxResults *uint64 `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
 
-	// 如果NextToken返回非空字符串 ，表示还有更多可用结果。 NextToken是每个页面唯一的分页令牌。使用返回的令牌再次调用以检索下一页。需要保持所有其他参数不变。每个分页令牌在 24 小时后过期。
+	// <p>如果NextToken返回非空字符串 ，表示还有更多可用结果。 NextToken是每个页面唯一的分页令牌。使用返回的令牌再次调用以检索下一页。需要保持所有其他参数不变。每个分页令牌在 24 小时后过期。</p>
 	NextToken *string `json:"NextToken,omitnil,omitempty" name:"NextToken"`
 }
 
@@ -21254,13 +21118,13 @@ func (r *DescribeSubnetsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSubnetsResponseParams struct {
-	// 符合条件的实例数量。
+	// <p>符合条件的实例数量。</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 子网对象。
+	// <p>子网对象。</p>
 	SubnetSet []*Subnet `json:"SubnetSet,omitnil,omitempty" name:"SubnetSet"`
 
-	// 如果NextToken返回非空字符串 ，表示还有更多可用结果。 NextToken是每个页面唯一的分页令牌。使用返回的令牌再次调用以检索下一页。需要保持所有其他参数不变。每个分页令牌在 24 小时后过期。
+	// <p>如果NextToken返回非空字符串 ，表示还有更多可用结果。 NextToken是每个页面唯一的分页令牌。使用返回的令牌再次调用以检索下一页。需要保持所有其他参数不变。每个分页令牌在 24 小时后过期。</p>
 	NextToken *string `json:"NextToken,omitnil,omitempty" name:"NextToken"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -22764,54 +22628,32 @@ func (r *DescribeVpcTaskResultResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeVpcsRequestParams struct {
-	// VPC实例ID。形如：vpc-f49l6u0z。每次请求的实例的上限为100。参数不支持同时指定VpcIds和Filters。
+	// <p>VPC实例ID。形如：vpc-f49l6u0z。每次请求的实例的上限为100。参数不支持同时指定VpcIds和Filters。</p>
 	VpcIds []*string `json:"VpcIds,omitnil,omitempty" name:"VpcIds"`
 
-	// 过滤条件，不支持同时指定VpcIds和Filters参数。
-	// 支持的过滤条件如下：
-	// <li>vpc-name：VPC实例名称，支持模糊查询。</li>
-	// <li>is-default ：是否默认VPC。</li>
-	// <li>vpc-id ：VPC实例ID，例如：vpc-f49l6u0z。</li>
-	// <li>cidr-block：VPC的CIDR。</li>
-	// <li>tag-key ：按照标签键进行过滤，非必填参数。</li>
-	// <li>tag:tag-key：按照标签键值对进行过滤，非必填参数。 其中 tag-key 请使用具体的标签键进行替换，可参考示例2。</li>
-	//   **说明：**若同一个过滤条件（Filter）存在多个Values，则同一Filter下Values间的关系为逻辑或（OR）关系；若存在多个过滤条件（Filter），Filter之间的关系为逻辑与（AND）关系。
-	// <li>ipv6-cidr-block - String - （过滤条件）IPv6子网网段，形如: 2402:4e00:1717:8700::/64 。</li>
-	// <li>isp-type  - String - （过滤条件）运营商类型，形如: BGP 取值范围：'BGP'-默认, 'CMCC'-中国移动, 'CTCC'-中国电信, 'CUCC'-中国联通。</li>
-	// <li>address-type - String - （过滤条件）IPv6 Cidr 的类型，精确匹配。`GUA`(全球单播地址), `ULA`(唯一本地地址)。</li>
+	// <p>过滤条件，不支持同时指定VpcIds和Filters参数。<br>支持的过滤条件如下：</p><li>vpc-name：VPC实例名称，支持模糊查询。</li><li>is-default ：是否默认VPC。</li><li>vpc-id ：VPC实例ID，例如：vpc-f49l6u0z。</li><li>cidr-block：VPC的CIDR。</li><li>tag-key ：按照标签键进行过滤，非必填参数。</li><li>tag:tag-key：按照标签键值对进行过滤，非必填参数。 其中 tag-key 请使用具体的标签键进行替换，可参考示例2。</li>  **说明：**若同一个过滤条件（Filter）存在多个Values，则同一Filter下Values间的关系为逻辑或（OR）关系；若存在多个过滤条件（Filter），Filter之间的关系为逻辑与（AND）关系。<li>ipv6-cidr-block - String - （过滤条件）IPv6子网网段，形如: 2402:4e00:1717:8700::/64 。</li><li>isp-type  - String - （过滤条件）运营商类型，形如: BGP 取值范围：'BGP'-默认, 'CMCC'-中国移动, 'CTCC'-中国电信, 'CUCC'-中国联通。</li><li>address-type - String - （过滤条件）IPv6 Cidr 的类型，精确匹配。<code>GUA</code>(全球单播地址), <code>ULA</code>(唯一本地地址)。</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 偏移量，默认为0。
+	// <p>偏移量，默认为0。</p>
 	Offset *string `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，默认为20，最大值为100。
+	// <p>返回数量，默认为20，最大值为100。</p>
 	Limit *string `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeVpcsRequest struct {
 	*tchttp.BaseRequest
 	
-	// VPC实例ID。形如：vpc-f49l6u0z。每次请求的实例的上限为100。参数不支持同时指定VpcIds和Filters。
+	// <p>VPC实例ID。形如：vpc-f49l6u0z。每次请求的实例的上限为100。参数不支持同时指定VpcIds和Filters。</p>
 	VpcIds []*string `json:"VpcIds,omitnil,omitempty" name:"VpcIds"`
 
-	// 过滤条件，不支持同时指定VpcIds和Filters参数。
-	// 支持的过滤条件如下：
-	// <li>vpc-name：VPC实例名称，支持模糊查询。</li>
-	// <li>is-default ：是否默认VPC。</li>
-	// <li>vpc-id ：VPC实例ID，例如：vpc-f49l6u0z。</li>
-	// <li>cidr-block：VPC的CIDR。</li>
-	// <li>tag-key ：按照标签键进行过滤，非必填参数。</li>
-	// <li>tag:tag-key：按照标签键值对进行过滤，非必填参数。 其中 tag-key 请使用具体的标签键进行替换，可参考示例2。</li>
-	//   **说明：**若同一个过滤条件（Filter）存在多个Values，则同一Filter下Values间的关系为逻辑或（OR）关系；若存在多个过滤条件（Filter），Filter之间的关系为逻辑与（AND）关系。
-	// <li>ipv6-cidr-block - String - （过滤条件）IPv6子网网段，形如: 2402:4e00:1717:8700::/64 。</li>
-	// <li>isp-type  - String - （过滤条件）运营商类型，形如: BGP 取值范围：'BGP'-默认, 'CMCC'-中国移动, 'CTCC'-中国电信, 'CUCC'-中国联通。</li>
-	// <li>address-type - String - （过滤条件）IPv6 Cidr 的类型，精确匹配。`GUA`(全球单播地址), `ULA`(唯一本地地址)。</li>
+	// <p>过滤条件，不支持同时指定VpcIds和Filters参数。<br>支持的过滤条件如下：</p><li>vpc-name：VPC实例名称，支持模糊查询。</li><li>is-default ：是否默认VPC。</li><li>vpc-id ：VPC实例ID，例如：vpc-f49l6u0z。</li><li>cidr-block：VPC的CIDR。</li><li>tag-key ：按照标签键进行过滤，非必填参数。</li><li>tag:tag-key：按照标签键值对进行过滤，非必填参数。 其中 tag-key 请使用具体的标签键进行替换，可参考示例2。</li>  **说明：**若同一个过滤条件（Filter）存在多个Values，则同一Filter下Values间的关系为逻辑或（OR）关系；若存在多个过滤条件（Filter），Filter之间的关系为逻辑与（AND）关系。<li>ipv6-cidr-block - String - （过滤条件）IPv6子网网段，形如: 2402:4e00:1717:8700::/64 。</li><li>isp-type  - String - （过滤条件）运营商类型，形如: BGP 取值范围：'BGP'-默认, 'CMCC'-中国移动, 'CTCC'-中国电信, 'CUCC'-中国联通。</li><li>address-type - String - （过滤条件）IPv6 Cidr 的类型，精确匹配。<code>GUA</code>(全球单播地址), <code>ULA</code>(唯一本地地址)。</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 偏移量，默认为0。
+	// <p>偏移量，默认为0。</p>
 	Offset *string `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，默认为20，最大值为100。
+	// <p>返回数量，默认为20，最大值为100。</p>
 	Limit *string `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
@@ -22839,10 +22681,10 @@ func (r *DescribeVpcsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeVpcsResponseParams struct {
-	// 符合条件的对象数。
+	// <p>符合条件的对象数。</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// VPC对象。
+	// <p>VPC对象。</p>
 	VpcSet []*Vpc `json:"VpcSet,omitnil,omitempty" name:"VpcSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -32931,31 +32773,31 @@ type NetDetectState struct {
 }
 
 type NetworkAcl struct {
-	// `VPC`实例`ID`。
+	// <p><code>VPC</code>实例<code>ID</code>。</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 网络ACL实例`ID`。
+	// <p>网络ACL实例<code>ID</code>。</p>
 	NetworkAclId *string `json:"NetworkAclId,omitnil,omitempty" name:"NetworkAclId"`
 
-	// 网络ACL名称，最大长度为60。
+	// <p>网络ACL名称，最大长度为60。</p>
 	NetworkAclName *string `json:"NetworkAclName,omitnil,omitempty" name:"NetworkAclName"`
 
-	// 创建时间。
+	// <p>创建时间。</p>
 	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
 
-	// 网络ACL关联的子网数组。
+	// <p>网络ACL关联的子网数组。</p>
 	SubnetSet []*Subnet `json:"SubnetSet,omitnil,omitempty" name:"SubnetSet"`
 
-	// 该参数仅对三元组ACL有效，网络ACl入站规则。
+	// <p>该参数仅对三元组ACL有效，网络ACl入站规则。</p>
 	IngressEntries []*NetworkAclEntry `json:"IngressEntries,omitnil,omitempty" name:"IngressEntries"`
 
-	// 该参数仅对三元组ACL有效，网络ACL出站规则。
+	// <p>该参数仅对三元组ACL有效，网络ACL出站规则。</p>
 	EgressEntries []*NetworkAclEntry `json:"EgressEntries,omitnil,omitempty" name:"EgressEntries"`
 
-	// 网络ACL类型。三元组：'TRIPLE'   五元组：'QUINTUPLE'
+	// <p>网络ACL类型。三元组：&#39;TRIPLE&#39;   五元组：&#39;QUINTUPLE&#39;</p>
 	NetworkAclType *string `json:"NetworkAclType,omitnil,omitempty" name:"NetworkAclType"`
 
-	// 标签键值对
+	// <p>标签键值对</p>
 	TagSet []*Tag `json:"TagSet,omitnil,omitempty" name:"TagSet"`
 }
 
@@ -36146,31 +35988,31 @@ type RouteSelectionPolicy struct {
 }
 
 type RouteTable struct {
-	// VPC实例ID。
+	// <p>VPC实例ID。</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 路由表实例ID，例如：rtb-azd4dt1c。
+	// <p>路由表实例ID，例如：rtb-azd4dt1c。</p>
 	RouteTableId *string `json:"RouteTableId,omitnil,omitempty" name:"RouteTableId"`
 
-	// 路由表名称。
+	// <p>路由表名称。</p>
 	RouteTableName *string `json:"RouteTableName,omitnil,omitempty" name:"RouteTableName"`
 
-	// 路由表关联关系。
+	// <p>路由表关联关系。</p>
 	AssociationSet []*RouteTableAssociation `json:"AssociationSet,omitnil,omitempty" name:"AssociationSet"`
 
-	// IPv4路由策略集合。
+	// <p>IPv4路由策略集合。</p>
 	RouteSet []*Route `json:"RouteSet,omitnil,omitempty" name:"RouteSet"`
 
-	// 是否默认路由表。
+	// <p>是否默认路由表。</p>
 	Main *bool `json:"Main,omitnil,omitempty" name:"Main"`
 
-	// 创建时间。
+	// <p>创建时间。</p>
 	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
 
-	// 标签键值对。
+	// <p>标签键值对。</p>
 	TagSet []*Tag `json:"TagSet,omitnil,omitempty" name:"TagSet"`
 
-	// local路由是否发布云联网。
+	// <p>local路由是否发布云联网。</p>
 	LocalCidrForCcn []*CidrForCcn `json:"LocalCidrForCcn,omitnil,omitempty" name:"LocalCidrForCcn"`
 }
 
@@ -36860,55 +36702,55 @@ func (r *StopTrafficMirrorResponse) FromJsonString(s string) error {
 }
 
 type Subnet struct {
-	// `VPC`实例`ID`。
+	// <p><code>VPC</code>实例<code>ID</code>。</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 子网实例`ID`，例如：subnet-bthucmmy。
+	// <p>子网实例<code>ID</code>，例如：subnet-bthucmmy。</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 子网名称。
+	// <p>子网名称。</p>
 	SubnetName *string `json:"SubnetName,omitnil,omitempty" name:"SubnetName"`
 
-	// 子网的 `IPv4` `CIDR`。
+	// <p>子网的 <code>IPv4</code> <code>CIDR</code>。</p>
 	CidrBlock *string `json:"CidrBlock,omitnil,omitempty" name:"CidrBlock"`
 
-	// 是否默认子网。
+	// <p>是否默认子网。</p>
 	IsDefault *bool `json:"IsDefault,omitnil,omitempty" name:"IsDefault"`
 
-	// 是否开启广播。
+	// <p>是否开启广播。</p>
 	EnableBroadcast *bool `json:"EnableBroadcast,omitnil,omitempty" name:"EnableBroadcast"`
 
-	// 可用区。
+	// <p>可用区。</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 路由表实例ID，例如：rtb-l2h8d7c2。
+	// <p>路由表实例ID，例如：rtb-l2h8d7c2。</p>
 	RouteTableId *string `json:"RouteTableId,omitnil,omitempty" name:"RouteTableId"`
 
-	// 创建时间。
+	// <p>创建时间。</p>
 	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
 
-	// 可用`IPv4`数。
+	// <p>可用<code>IPv4</code>数。</p>
 	AvailableIpAddressCount *uint64 `json:"AvailableIpAddressCount,omitnil,omitempty" name:"AvailableIpAddressCount"`
 
-	// 子网的 `IPv6` `CIDR`。
+	// <p>子网的 <code>IPv6</code> <code>CIDR</code>。</p>
 	Ipv6CidrBlock *string `json:"Ipv6CidrBlock,omitnil,omitempty" name:"Ipv6CidrBlock"`
 
-	// 关联`ACL`ID
+	// <p>关联<code>ACL</code>ID</p>
 	NetworkAclId *string `json:"NetworkAclId,omitnil,omitempty" name:"NetworkAclId"`
 
-	// 是否为 `SNAT` 地址池子网。
+	// <p>是否为 <code>SNAT</code> 地址池子网。</p>
 	IsRemoteVpcSnat *bool `json:"IsRemoteVpcSnat,omitnil,omitempty" name:"IsRemoteVpcSnat"`
 
-	// 子网`IPv4`总数。
+	// <p>子网<code>IPv4</code>总数。</p>
 	TotalIpAddressCount *uint64 `json:"TotalIpAddressCount,omitnil,omitempty" name:"TotalIpAddressCount"`
 
-	// 标签键值对。
+	// <p>标签键值对。</p>
 	TagSet []*Tag `json:"TagSet,omitnil,omitempty" name:"TagSet"`
 
-	// CDC实例ID。
+	// <p>CDC实例ID。</p>
 	CdcId *string `json:"CdcId,omitnil,omitempty" name:"CdcId"`
 
-	// 是否是CDC所属子网。0:否 1:是
+	// <p>是否是CDC所属子网。0:否 1:是</p>
 	IsCdcSubnet *int64 `json:"IsCdcSubnet,omitnil,omitempty" name:"IsCdcSubnet"`
 }
 
@@ -37929,52 +37771,52 @@ type UsedDetail struct {
 }
 
 type Vpc struct {
-	// `VPC`名称。
+	// <p><code>VPC</code>名称。</p>
 	VpcName *string `json:"VpcName,omitnil,omitempty" name:"VpcName"`
 
-	// `VPC`实例`ID`，例如：vpc-azd4dt1c。
+	// <p><code>VPC</code>实例<code>ID</code>，例如：vpc-azd4dt1c。</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// `VPC`的`IPv4` `CIDR`。
+	// <p><code>VPC</code>的<code>IPv4</code> <code>CIDR</code>。</p>
 	CidrBlock *string `json:"CidrBlock,omitnil,omitempty" name:"CidrBlock"`
 
-	// 是否默认`VPC`。
+	// <p>是否默认<code>VPC</code>。</p>
 	IsDefault *bool `json:"IsDefault,omitnil,omitempty" name:"IsDefault"`
 
-	// 是否开启组播。
+	// <p>是否开启组播。</p>
 	EnableMulticast *bool `json:"EnableMulticast,omitnil,omitempty" name:"EnableMulticast"`
 
-	// 创建时间。
+	// <p>创建时间。</p>
 	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
 
-	// `DNS`列表。
+	// <p><code>DNS</code>列表。</p>
 	DnsServerSet []*string `json:"DnsServerSet,omitnil,omitempty" name:"DnsServerSet"`
 
-	// `DHCP`域名选项值。
+	// <p><code>DHCP</code>域名选项值。</p>
 	DomainName *string `json:"DomainName,omitnil,omitempty" name:"DomainName"`
 
-	// `DHCP`选项集`ID`。
+	// <p><code>DHCP</code>选项集<code>ID</code>。</p>
 	DhcpOptionsId *string `json:"DhcpOptionsId,omitnil,omitempty" name:"DhcpOptionsId"`
 
-	// 是否开启`DHCP`。
+	// <p>是否开启<code>DHCP</code>。</p>
 	EnableDhcp *bool `json:"EnableDhcp,omitnil,omitempty" name:"EnableDhcp"`
 
-	// `VPC`的`IPv6` `CIDR`。
+	// <p><code>VPC</code>的<code>IPv6</code> <code>CIDR</code>。</p>
 	Ipv6CidrBlock *string `json:"Ipv6CidrBlock,omitnil,omitempty" name:"Ipv6CidrBlock"`
 
-	// 标签键值对
+	// <p>标签键值对</p>
 	TagSet []*Tag `json:"TagSet,omitnil,omitempty" name:"TagSet"`
 
-	// 辅助CIDR
+	// <p>辅助CIDR</p>
 	AssistantCidrSet []*AssistantCidr `json:"AssistantCidrSet,omitnil,omitempty" name:"AssistantCidrSet"`
 
-	// vpc关联云联网时路由发布策略， true：开启cidr路由发布，false：开启subnet子网路由发布。创建vpc时默认为子网路由发布，当选择cidr路由发布时,请通过工单加入白名单
+	// <p>vpc关联云联网时路由发布策略， true：开启cidr路由发布，false：开启subnet子网路由发布。创建vpc时默认为子网路由发布，当选择cidr路由发布时,请通过工单加入白名单</p>
 	EnableRouteVpcPublish *bool `json:"EnableRouteVpcPublish,omitnil,omitempty" name:"EnableRouteVpcPublish"`
 
-	// 返回多运营商IPv6 Cidr Block
+	// <p>返回多运营商IPv6 Cidr Block</p>
 	Ipv6CidrBlockSet []*ISPIPv6CidrBlock `json:"Ipv6CidrBlockSet,omitnil,omitempty" name:"Ipv6CidrBlockSet"`
 
-	// vpc关联云联网时IPv6类型路由发布策略， true：开启cidr路由发布，false：开启subnet子网路由发布。创建vpc时默认为子网路由发布，当选择cidr路由发布时，请通过工单加入白名单。
+	// <p>vpc关联云联网时IPv6类型路由发布策略， true：开启cidr路由发布，false：开启subnet子网路由发布。创建vpc时默认为子网路由发布，当选择cidr路由发布时，请通过工单加入白名单。</p>
 	EnableRouteVpcPublishIpv6 *bool `json:"EnableRouteVpcPublishIpv6,omitnil,omitempty" name:"EnableRouteVpcPublishIpv6"`
 }
 

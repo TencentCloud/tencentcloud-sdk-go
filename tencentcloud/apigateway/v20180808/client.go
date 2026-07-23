@@ -2425,7 +2425,7 @@ func NewDescribeApiResponse() (response *DescribeApiResponse) {
 }
 
 // DescribeApi
-// 本接口（DescribeApi）用于查询用户 API 网关的 API 接口的详细信息。​
+// 本接口（DescribeApi）用于查询用户 API 网关的 API 接口的详细信息。u200b
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_APIERROR = "FailedOperation.ApiError"
@@ -2445,7 +2445,7 @@ func (c *Client) DescribeApi(request *DescribeApiRequest) (response *DescribeApi
 }
 
 // DescribeApi
-// 本接口（DescribeApi）用于查询用户 API 网关的 API 接口的详细信息。​
+// 本接口（DescribeApi）用于查询用户 API 网关的 API 接口的详细信息。u200b
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_APIERROR = "FailedOperation.ApiError"

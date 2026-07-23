@@ -2446,6 +2446,74 @@ func (r *ModifyDataRepositoryBandwidthResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyDataRepositoryTaskStatusRequestParams struct {
+	// <p>文件系统ID</p>
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// <p>数据流动任务ID</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>修改数据流动任务目标状态对应的类型，仅支持任务暂停和恢复（暂停对应pause，恢复对应resume）</p><p>枚举值：</p><ul><li>pause： 暂停</li><li>resume： 恢复</li></ul>
+	ModifyType *string `json:"ModifyType,omitnil,omitempty" name:"ModifyType"`
+}
+
+type ModifyDataRepositoryTaskStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>文件系统ID</p>
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// <p>数据流动任务ID</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>修改数据流动任务目标状态对应的类型，仅支持任务暂停和恢复（暂停对应pause，恢复对应resume）</p><p>枚举值：</p><ul><li>pause： 暂停</li><li>resume： 恢复</li></ul>
+	ModifyType *string `json:"ModifyType,omitnil,omitempty" name:"ModifyType"`
+}
+
+func (r *ModifyDataRepositoryTaskStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDataRepositoryTaskStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileSystemId")
+	delete(f, "TaskId")
+	delete(f, "ModifyType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDataRepositoryTaskStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDataRepositoryTaskStatusResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyDataRepositoryTaskStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyDataRepositoryTaskStatusResponseParams `json:"Response"`
+}
+
+func (r *ModifyDataRepositoryTaskStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDataRepositoryTaskStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type MountMultipleStorageFileSystemRequestParams struct {
 	// 客户端集群所属的文件系统id
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`

@@ -359,6 +359,174 @@ func (c *Client) AddVpcAcRuleWithContext(ctx context.Context, request *AddVpcAcR
     return
 }
 
+func NewCheckClusterNatFwPreAccessRequest() (request *CheckClusterNatFwPreAccessRequest) {
+    request = &CheckClusterNatFwPreAccessRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "CheckClusterNatFwPreAccess")
+    
+    
+    return
+}
+
+func NewCheckClusterNatFwPreAccessResponse() (response *CheckClusterNatFwPreAccessResponse) {
+    response = &CheckClusterNatFwPreAccessResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CheckClusterNatFwPreAccess
+// 发起 NAT CCN 集群模式防火墙预接入检查（仅支持自动接入模式）。入参与 OpenClusterNatFwSwitch 完全相同，传入相同的 NatCcnSwitch 配置 JSON 即可发起检查。检查为异步执行：接口立即返回 CheckItems 检查项清单，前端轮询 DescribeClusterNatCcnFwSwitchList 接口读取 CheckResult 获取各阶段的通过/失败状态。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CheckClusterNatFwPreAccess(request *CheckClusterNatFwPreAccessRequest) (response *CheckClusterNatFwPreAccessResponse, err error) {
+    return c.CheckClusterNatFwPreAccessWithContext(context.Background(), request)
+}
+
+// CheckClusterNatFwPreAccess
+// 发起 NAT CCN 集群模式防火墙预接入检查（仅支持自动接入模式）。入参与 OpenClusterNatFwSwitch 完全相同，传入相同的 NatCcnSwitch 配置 JSON 即可发起检查。检查为异步执行：接口立即返回 CheckItems 检查项清单，前端轮询 DescribeClusterNatCcnFwSwitchList 接口读取 CheckResult 获取各阶段的通过/失败状态。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CheckClusterNatFwPreAccessWithContext(ctx context.Context, request *CheckClusterNatFwPreAccessRequest) (response *CheckClusterNatFwPreAccessResponse, err error) {
+    if request == nil {
+        request = NewCheckClusterNatFwPreAccessRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "CheckClusterNatFwPreAccess")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CheckClusterNatFwPreAccess require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCheckClusterNatFwPreAccessResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCheckClusterVpcFwPreAccessRequest() (request *CheckClusterVpcFwPreAccessRequest) {
+    request = &CheckClusterVpcFwPreAccessRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "CheckClusterVpcFwPreAccess")
+    
+    
+    return
+}
+
+func NewCheckClusterVpcFwPreAccessResponse() (response *CheckClusterVpcFwPreAccessResponse) {
+    response = &CheckClusterVpcFwPreAccessResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CheckClusterVpcFwPreAccess
+// 发起 VPC 集群防火墙预接入检查（仅支持自动接入模式）。入参与 ModifyClusterVpcFwSwitch 完全相同，传入相同的 CcnSwitch 配置 JSON 即可发起检查。检查为异步执行：接口立即返回 CheckItems 检查项清单，前端轮询 DescribeClusterVpcFwSwitchs 接口读取 CheckResult 获取各阶段的通过/失败状态。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CheckClusterVpcFwPreAccess(request *CheckClusterVpcFwPreAccessRequest) (response *CheckClusterVpcFwPreAccessResponse, err error) {
+    return c.CheckClusterVpcFwPreAccessWithContext(context.Background(), request)
+}
+
+// CheckClusterVpcFwPreAccess
+// 发起 VPC 集群防火墙预接入检查（仅支持自动接入模式）。入参与 ModifyClusterVpcFwSwitch 完全相同，传入相同的 CcnSwitch 配置 JSON 即可发起检查。检查为异步执行：接口立即返回 CheckItems 检查项清单，前端轮询 DescribeClusterVpcFwSwitchs 接口读取 CheckResult 获取各阶段的通过/失败状态。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CheckClusterVpcFwPreAccessWithContext(ctx context.Context, request *CheckClusterVpcFwPreAccessRequest) (response *CheckClusterVpcFwPreAccessResponse, err error) {
+    if request == nil {
+        request = NewCheckClusterVpcFwPreAccessRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "CheckClusterVpcFwPreAccess")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CheckClusterVpcFwPreAccess require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCheckClusterVpcFwPreAccessResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCloseClusterNatFwSwitchRequest() (request *CloseClusterNatFwSwitchRequest) {
     request = &CloseClusterNatFwSwitchRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2561,6 +2729,88 @@ func (c *Client) DescribeBlockIgnoreListWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeBlockListRequest() (request *DescribeBlockListRequest) {
+    request = &DescribeBlockListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "DescribeBlockList")
+    
+    
+    return
+}
+
+func NewDescribeBlockListResponse() (response *DescribeBlockListResponse) {
+    response = &DescribeBlockListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeBlockList
+// DescribeBlockList 告警中心阻断资产视图列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeBlockList(request *DescribeBlockListRequest) (response *DescribeBlockListResponse, err error) {
+    return c.DescribeBlockListWithContext(context.Background(), request)
+}
+
+// DescribeBlockList
+// DescribeBlockList 告警中心阻断资产视图列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeBlockListWithContext(ctx context.Context, request *DescribeBlockListRequest) (response *DescribeBlockListResponse, err error) {
+    if request == nil {
+        request = NewDescribeBlockListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeBlockList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBlockList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBlockListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBlockStaticListRequest() (request *DescribeBlockStaticListRequest) {
     request = &DescribeBlockStaticListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4107,6 +4357,90 @@ func (c *Client) DescribeFwEdgeIpsWithContext(ctx context.Context, request *Desc
     return
 }
 
+func NewDescribeFwGroupIdNamesRequest() (request *DescribeFwGroupIdNamesRequest) {
+    request = &DescribeFwGroupIdNamesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "DescribeFwGroupIdNames")
+    
+    
+    return
+}
+
+func NewDescribeFwGroupIdNamesResponse() (response *DescribeFwGroupIdNamesResponse) {
+    response = &DescribeFwGroupIdNamesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeFwGroupIdNames
+// 获取用户防火墙(组)的ID名称列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeFwGroupIdNames(request *DescribeFwGroupIdNamesRequest) (response *DescribeFwGroupIdNamesResponse, err error) {
+    return c.DescribeFwGroupIdNamesWithContext(context.Background(), request)
+}
+
+// DescribeFwGroupIdNames
+// 获取用户防火墙(组)的ID名称列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeFwGroupIdNamesWithContext(ctx context.Context, request *DescribeFwGroupIdNamesRequest) (response *DescribeFwGroupIdNamesResponse, err error) {
+    if request == nil {
+        request = NewDescribeFwGroupIdNamesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeFwGroupIdNames")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFwGroupIdNames require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeFwGroupIdNamesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeFwGroupInstanceInfoRequest() (request *DescribeFwGroupInstanceInfoRequest) {
     request = &DescribeFwGroupInstanceInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4465,6 +4799,62 @@ func (c *Client) DescribeIpsModeSwitchWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewDescribeIpsModeSwitchResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeIpsRuleListNewRequest() (request *DescribeIpsRuleListNewRequest) {
+    request = &DescribeIpsRuleListNewRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "DescribeIpsRuleListNew")
+    
+    
+    return
+}
+
+func NewDescribeIpsRuleListNewResponse() (response *DescribeIpsRuleListNewResponse) {
+    response = &DescribeIpsRuleListNewResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeIpsRuleListNew
+// IPS规则查询接口新
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeIpsRuleListNew(request *DescribeIpsRuleListNewRequest) (response *DescribeIpsRuleListNewResponse, err error) {
+    return c.DescribeIpsRuleListNewWithContext(context.Background(), request)
+}
+
+// DescribeIpsRuleListNew
+// IPS规则查询接口新
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeIpsRuleListNewWithContext(ctx context.Context, request *DescribeIpsRuleListNewRequest) (response *DescribeIpsRuleListNewResponse, err error) {
+    if request == nil {
+        request = NewDescribeIpsRuleListNewRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeIpsRuleListNew")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeIpsRuleListNew require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeIpsRuleListNewResponse()
     err = c.Send(request, response)
     return
 }
@@ -5541,6 +5931,62 @@ func (c *Client) DescribeNatFwVpcDnsLstWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribeNatRuleScopesRequest() (request *DescribeNatRuleScopesRequest) {
+    request = &DescribeNatRuleScopesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "DescribeNatRuleScopes")
+    
+    
+    return
+}
+
+func NewDescribeNatRuleScopesResponse() (response *DescribeNatRuleScopesResponse) {
+    response = &DescribeNatRuleScopesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeNatRuleScopes
+// 查询nat规则的配额和使用情况
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeNatRuleScopes(request *DescribeNatRuleScopesRequest) (response *DescribeNatRuleScopesResponse, err error) {
+    return c.DescribeNatRuleScopesWithContext(context.Background(), request)
+}
+
+// DescribeNatRuleScopes
+// 查询nat规则的配额和使用情况
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeNatRuleScopesWithContext(ctx context.Context, request *DescribeNatRuleScopesRequest) (response *DescribeNatRuleScopesResponse, err error) {
+    if request == nil {
+        request = NewDescribeNatRuleScopesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeNatRuleScopes")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNatRuleScopes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeNatRuleScopesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeOfflineExportTaskRequest() (request *DescribeOfflineExportTaskRequest) {
     request = &DescribeOfflineExportTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5564,24 +6010,10 @@ func NewDescribeOfflineExportTaskResponse() (response *DescribeOfflineExportTask
 // 获取日志离线导出任务列表
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeOfflineExportTask(request *DescribeOfflineExportTaskRequest) (response *DescribeOfflineExportTaskResponse, err error) {
     return c.DescribeOfflineExportTaskWithContext(context.Background(), request)
 }
@@ -5590,24 +6022,10 @@ func (c *Client) DescribeOfflineExportTask(request *DescribeOfflineExportTaskReq
 // 获取日志离线导出任务列表
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeOfflineExportTaskWithContext(ctx context.Context, request *DescribeOfflineExportTaskRequest) (response *DescribeOfflineExportTaskResponse, err error) {
     if request == nil {
         request = NewDescribeOfflineExportTaskRequest()
@@ -5648,24 +6066,10 @@ func NewDescribeOfflineExportTemporaryCredentialsResponse() (response *DescribeO
 // 获取日志离线导出任务文件下载临时凭证
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeOfflineExportTemporaryCredentials(request *DescribeOfflineExportTemporaryCredentialsRequest) (response *DescribeOfflineExportTemporaryCredentialsResponse, err error) {
     return c.DescribeOfflineExportTemporaryCredentialsWithContext(context.Background(), request)
 }
@@ -5674,24 +6078,10 @@ func (c *Client) DescribeOfflineExportTemporaryCredentials(request *DescribeOffl
 // 获取日志离线导出任务文件下载临时凭证
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeOfflineExportTemporaryCredentialsWithContext(ctx context.Context, request *DescribeOfflineExportTemporaryCredentialsRequest) (response *DescribeOfflineExportTemporaryCredentialsResponse, err error) {
     if request == nil {
         request = NewDescribeOfflineExportTemporaryCredentialsRequest()
@@ -5985,6 +6375,62 @@ func (c *Client) DescribeSecurityGroupListWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewDescribeSecurityGroupListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSecurityGroupRegionListRequest() (request *DescribeSecurityGroupRegionListRequest) {
+    request = &DescribeSecurityGroupRegionListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "DescribeSecurityGroupRegionList")
+    
+    
+    return
+}
+
+func NewDescribeSecurityGroupRegionListResponse() (response *DescribeSecurityGroupRegionListResponse) {
+    response = &DescribeSecurityGroupRegionListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSecurityGroupRegionList
+// 查询地域配置信息-DescribeAllRegionList
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeSecurityGroupRegionList(request *DescribeSecurityGroupRegionListRequest) (response *DescribeSecurityGroupRegionListResponse, err error) {
+    return c.DescribeSecurityGroupRegionListWithContext(context.Background(), request)
+}
+
+// DescribeSecurityGroupRegionList
+// 查询地域配置信息-DescribeAllRegionList
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeSecurityGroupRegionListWithContext(ctx context.Context, request *DescribeSecurityGroupRegionListRequest) (response *DescribeSecurityGroupRegionListResponse, err error) {
+    if request == nil {
+        request = NewDescribeSecurityGroupRegionListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeSecurityGroupRegionList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSecurityGroupRegionList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSecurityGroupRegionListResponse()
     err = c.Send(request, response)
     return
 }
@@ -6559,6 +7005,62 @@ func (c *Client) DescribeVpcAcRuleWithContext(ctx context.Context, request *Desc
     request.SetContext(ctx)
     
     response = NewDescribeVpcAcRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeVpcAclEdgeRangeRequest() (request *DescribeVpcAclEdgeRangeRequest) {
+    request = &DescribeVpcAclEdgeRangeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "DescribeVpcAclEdgeRange")
+    
+    
+    return
+}
+
+func NewDescribeVpcAclEdgeRangeResponse() (response *DescribeVpcAclEdgeRangeResponse) {
+    response = &DescribeVpcAclEdgeRangeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeVpcAclEdgeRange
+// 查询内网间访问控制规则的生效范围
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeVpcAclEdgeRange(request *DescribeVpcAclEdgeRangeRequest) (response *DescribeVpcAclEdgeRangeResponse, err error) {
+    return c.DescribeVpcAclEdgeRangeWithContext(context.Background(), request)
+}
+
+// DescribeVpcAclEdgeRange
+// 查询内网间访问控制规则的生效范围
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeVpcAclEdgeRangeWithContext(ctx context.Context, request *DescribeVpcAclEdgeRangeRequest) (response *DescribeVpcAclEdgeRangeResponse, err error) {
+    if request == nil {
+        request = NewDescribeVpcAclEdgeRangeRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeVpcAclEdgeRange")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVpcAclEdgeRange require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeVpcAclEdgeRangeResponse()
     err = c.Send(request, response)
     return
 }

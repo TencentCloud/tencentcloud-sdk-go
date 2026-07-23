@@ -851,13 +851,13 @@ type CreateListenerRequestParams struct {
 	// <p>全球加速实例ID。</p>
 	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
 
-	// <p>名称，最大长度不能超过60个字节。</p>
+	// <p>名称，最大长度不能超过128个字符。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// <p>端口范围。</p>
 	PortRanges *PortRanges `json:"PortRanges,omitnil,omitempty" name:"PortRanges"`
 
-	// <p>描述信息，最大长度不能超过100个字节。</p>
+	// <p>描述信息，最大长度不能超过100个字符。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// <p>监听类型，默认为智能路由。</p><p>枚举值：</p><ul><li>Standard： 智能路由。</li></ul>
@@ -903,13 +903,13 @@ type CreateListenerRequest struct {
 	// <p>全球加速实例ID。</p>
 	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
 
-	// <p>名称，最大长度不能超过60个字节。</p>
+	// <p>名称，最大长度不能超过128个字符。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// <p>端口范围。</p>
 	PortRanges *PortRanges `json:"PortRanges,omitnil,omitempty" name:"PortRanges"`
 
-	// <p>描述信息，最大长度不能超过100个字节。</p>
+	// <p>描述信息，最大长度不能超过100个字符。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// <p>监听类型，默认为智能路由。</p><p>枚举值：</p><ul><li>Standard： 智能路由。</li></ul>

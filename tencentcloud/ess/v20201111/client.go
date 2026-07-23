@@ -8375,7 +8375,7 @@ func NewCreatePartnerAutoSignAuthUrlResponse() (response *CreatePartnerAutoSignA
 //
 // 3. 授权企业和被授权企业必须都是已认证企业
 //
-// 4. <font color='red'>需要授权企业或被授权企业的超管或者法人打开链接</font>走开通逻辑。
+// 4. <font color='red'>需要授权企业的超管或者法人打开链接</font>走开通逻辑。
 //
 // 
 //
@@ -8411,7 +8411,7 @@ func (c *Client) CreatePartnerAutoSignAuthUrl(request *CreatePartnerAutoSignAuth
 //
 // 3. 授权企业和被授权企业必须都是已认证企业
 //
-// 4. <font color='red'>需要授权企业或被授权企业的超管或者法人打开链接</font>走开通逻辑。
+// 4. <font color='red'>需要授权企业的超管或者法人打开链接</font>走开通逻辑。
 //
 // 
 //

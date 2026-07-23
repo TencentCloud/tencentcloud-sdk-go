@@ -6510,6 +6510,9 @@ type CreateTopicRequestParams struct {
 	// <p>加密相关参数。 支持加密地域并且开白用户可以传此参数，其他场景不能传递该参数。<br>0或者不传： 不加密<br>1：kms-cls 云产品密钥加密</p><p>支持地域：ap-beijing,ap-guangzhou,ap-shanghai,ap-singapore,ap-bangkok,ap-jakarta,eu-frankfurt,ap-seoul,ap-tokyo</p>
 	Encryption *uint64 `json:"Encryption,omitnil,omitempty" name:"Encryption"`
 
+	// <p>用户自定义 KMS 密钥信息；为空则使用默认密钥（别名 KMS-CLS）</p><p>当参数 Encryption为 1 时有效。</p>
+	CustomKmsInfo *CustomKmsInfo `json:"CustomKmsInfo,omitnil,omitempty" name:"CustomKmsInfo"`
+
 	// <p>主题类型</p><ul><li>0:日志主题，默认值</li><li>1:指标主题</li></ul>
 	BizType *uint64 `json:"BizType,omitnil,omitempty" name:"BizType"`
 
@@ -6565,6 +6568,9 @@ type CreateTopicRequest struct {
 	// <p>加密相关参数。 支持加密地域并且开白用户可以传此参数，其他场景不能传递该参数。<br>0或者不传： 不加密<br>1：kms-cls 云产品密钥加密</p><p>支持地域：ap-beijing,ap-guangzhou,ap-shanghai,ap-singapore,ap-bangkok,ap-jakarta,eu-frankfurt,ap-seoul,ap-tokyo</p>
 	Encryption *uint64 `json:"Encryption,omitnil,omitempty" name:"Encryption"`
 
+	// <p>用户自定义 KMS 密钥信息；为空则使用默认密钥（别名 KMS-CLS）</p><p>当参数 Encryption为 1 时有效。</p>
+	CustomKmsInfo *CustomKmsInfo `json:"CustomKmsInfo,omitnil,omitempty" name:"CustomKmsInfo"`
+
 	// <p>主题类型</p><ul><li>0:日志主题，默认值</li><li>1:指标主题</li></ul>
 	BizType *uint64 `json:"BizType,omitnil,omitempty" name:"BizType"`
 
@@ -6607,6 +6613,7 @@ func (r *CreateTopicRequest) FromJsonString(s string) error {
 	delete(f, "Describes")
 	delete(f, "HotPeriod")
 	delete(f, "Encryption")
+	delete(f, "CustomKmsInfo")
 	delete(f, "BizType")
 	delete(f, "TopicId")
 	delete(f, "IsWebTracking")
@@ -6753,6 +6760,14 @@ type CsvInfo struct {
 
 	// 对于上面指定的不存在字段使用该内容填充
 	NonExistingField *string `json:"NonExistingField,omitnil,omitempty" name:"NonExistingField"`
+}
+
+type CustomKmsInfo struct {
+	// <p>KMS支持的地域，详见 腾讯云-密钥管理系统 官方文档</p><p>参数格式：ap-guangzhou</p>
+	KmsRegion *string `json:"KmsRegion,omitnil,omitempty" name:"KmsRegion"`
+
+	// <p>KMS秘钥ID</p>
+	KmsKeyId *string `json:"KmsKeyId,omitnil,omitempty" name:"KmsKeyId"`
 }
 
 type CustomLabel struct {
@@ -14994,64 +15009,38 @@ func (r *DescribeTopicMetricConfigsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTopicsRequestParams struct {
-	// <ul><li>topicName 按照【主题名称】进行过滤，默认为模糊匹配，可使用 PreciseSearch 参数设置为精确匹配。类型：String。必选：否</li>
-	// <li>logsetName 按照【日志集名称】进行过滤，默认为模糊匹配，可使用 PreciseSearch 参数设置为精确匹配。类型：String。必选：否</li>
-	// <li>topicId 按照【主题ID】进行过滤。类型：String。必选：否</li>
-	// <li>logsetId 按照【日志集ID】进行过滤，可通过调用 <a href="https://cloud.tencent.com/document/product/614/58624">DescribeLogsets</a> 查询已创建的日志集列表或登录控制台进行查看；也可以调用<a href="https://cloud.tencent.com/document/product/614/58626">CreateLogset</a> 创建新的日志集。类型：String。必选：否</li>
-	// <li>tagKey 按照【标签键】进行过滤。类型：String。必选：否</li>
-	// <li>tag:tagKey 按照【标签键值对】进行过滤。tagKey 使用具体的标签键进行替换，例如 tag:exampleKey。类型：String。必选：否</li>
-	// <li>storageType 按照【主题的存储类型】进行过滤。可选值 hot（标准存储），cold（低频存储）类型：String。必选：否</li></ul>
-	// 注意：每次请求的 Filters 的上限为10，Filter.Values 的上限为100。
+	// <ul><li>topicName 按照【主题名称】进行过滤，默认为模糊匹配，可使用 PreciseSearch 参数设置为精确匹配。类型：String。必选：否</li><li>logsetName 按照【日志集名称】进行过滤，默认为模糊匹配，可使用 PreciseSearch 参数设置为精确匹配。类型：String。必选：否</li><li>topicId 按照【主题ID】进行过滤。类型：String。必选：否</li><li>logsetId 按照【日志集ID】进行过滤，可通过调用 <a href="https://cloud.tencent.com/document/product/614/58624">DescribeLogsets</a> 查询已创建的日志集列表或登录控制台进行查看；也可以调用<a href="https://cloud.tencent.com/document/product/614/58626">CreateLogset</a> 创建新的日志集。类型：String。必选：否</li><li>tagKey 按照【标签键】进行过滤。类型：String。必选：否</li><li>tag:tagKey 按照【标签键值对】进行过滤。tagKey 使用具体的标签键进行替换，例如 tag:exampleKey。类型：String。必选：否</li><li>storageType 按照【主题的存储类型】进行过滤。可选值 hot（标准存储），cold（低频存储）类型：String。必选：否</li></ul>注意：每次请求的 Filters 的上限为10，Filter.Values 的上限为100。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 分页的偏移量，默认值为0。
+	// <p>分页的偏移量，默认值为0。</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页单页限制数目，默认值为20，最大值100。
+	// <p>分页单页限制数目，默认值为20，最大值100。</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 控制Filters相关字段是否为精确匹配。
-	// <ul><li>0: 默认值，topicName 和 logsetName 模糊匹配</li>
-	// <li>1: topicName   精确匹配</li>
-	// <li>2: logsetName精确匹配</li>
-	// <li>3: topicName 和logsetName 都精确匹配</li></ul>
+	// <p>控制Filters相关字段是否为精确匹配。</p><ul><li>0: 默认值，topicName 和 logsetName 模糊匹配</li><li>1: topicName   精确匹配</li><li>2: logsetName精确匹配</li><li>3: topicName 和logsetName 都精确匹配</li></ul>
 	PreciseSearch *uint64 `json:"PreciseSearch,omitnil,omitempty" name:"PreciseSearch"`
 
-	// 主题类型
-	// - 0:日志主题，默认值
-	// - 1:指标主题
+	// <p>主题类型</p><ul><li>0:日志主题，默认值</li><li>1:指标主题</li></ul>
 	BizType *uint64 `json:"BizType,omitnil,omitempty" name:"BizType"`
 }
 
 type DescribeTopicsRequest struct {
 	*tchttp.BaseRequest
 	
-	// <ul><li>topicName 按照【主题名称】进行过滤，默认为模糊匹配，可使用 PreciseSearch 参数设置为精确匹配。类型：String。必选：否</li>
-	// <li>logsetName 按照【日志集名称】进行过滤，默认为模糊匹配，可使用 PreciseSearch 参数设置为精确匹配。类型：String。必选：否</li>
-	// <li>topicId 按照【主题ID】进行过滤。类型：String。必选：否</li>
-	// <li>logsetId 按照【日志集ID】进行过滤，可通过调用 <a href="https://cloud.tencent.com/document/product/614/58624">DescribeLogsets</a> 查询已创建的日志集列表或登录控制台进行查看；也可以调用<a href="https://cloud.tencent.com/document/product/614/58626">CreateLogset</a> 创建新的日志集。类型：String。必选：否</li>
-	// <li>tagKey 按照【标签键】进行过滤。类型：String。必选：否</li>
-	// <li>tag:tagKey 按照【标签键值对】进行过滤。tagKey 使用具体的标签键进行替换，例如 tag:exampleKey。类型：String。必选：否</li>
-	// <li>storageType 按照【主题的存储类型】进行过滤。可选值 hot（标准存储），cold（低频存储）类型：String。必选：否</li></ul>
-	// 注意：每次请求的 Filters 的上限为10，Filter.Values 的上限为100。
+	// <ul><li>topicName 按照【主题名称】进行过滤，默认为模糊匹配，可使用 PreciseSearch 参数设置为精确匹配。类型：String。必选：否</li><li>logsetName 按照【日志集名称】进行过滤，默认为模糊匹配，可使用 PreciseSearch 参数设置为精确匹配。类型：String。必选：否</li><li>topicId 按照【主题ID】进行过滤。类型：String。必选：否</li><li>logsetId 按照【日志集ID】进行过滤，可通过调用 <a href="https://cloud.tencent.com/document/product/614/58624">DescribeLogsets</a> 查询已创建的日志集列表或登录控制台进行查看；也可以调用<a href="https://cloud.tencent.com/document/product/614/58626">CreateLogset</a> 创建新的日志集。类型：String。必选：否</li><li>tagKey 按照【标签键】进行过滤。类型：String。必选：否</li><li>tag:tagKey 按照【标签键值对】进行过滤。tagKey 使用具体的标签键进行替换，例如 tag:exampleKey。类型：String。必选：否</li><li>storageType 按照【主题的存储类型】进行过滤。可选值 hot（标准存储），cold（低频存储）类型：String。必选：否</li></ul>注意：每次请求的 Filters 的上限为10，Filter.Values 的上限为100。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 分页的偏移量，默认值为0。
+	// <p>分页的偏移量，默认值为0。</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页单页限制数目，默认值为20，最大值100。
+	// <p>分页单页限制数目，默认值为20，最大值100。</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 控制Filters相关字段是否为精确匹配。
-	// <ul><li>0: 默认值，topicName 和 logsetName 模糊匹配</li>
-	// <li>1: topicName   精确匹配</li>
-	// <li>2: logsetName精确匹配</li>
-	// <li>3: topicName 和logsetName 都精确匹配</li></ul>
+	// <p>控制Filters相关字段是否为精确匹配。</p><ul><li>0: 默认值，topicName 和 logsetName 模糊匹配</li><li>1: topicName   精确匹配</li><li>2: logsetName精确匹配</li><li>3: topicName 和logsetName 都精确匹配</li></ul>
 	PreciseSearch *uint64 `json:"PreciseSearch,omitnil,omitempty" name:"PreciseSearch"`
 
-	// 主题类型
-	// - 0:日志主题，默认值
-	// - 1:指标主题
+	// <p>主题类型</p><ul><li>0:日志主题，默认值</li><li>1:指标主题</li></ul>
 	BizType *uint64 `json:"BizType,omitnil,omitempty" name:"BizType"`
 }
 
@@ -15080,10 +15069,10 @@ func (r *DescribeTopicsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTopicsResponseParams struct {
-	// 主题列表
+	// <p>主题列表</p>
 	Topics []*TopicInfo `json:"Topics,omitnil,omitempty" name:"Topics"`
 
-	// 总数目
+	// <p>总数目</p>
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -21386,6 +21375,9 @@ type ModifyTopicRequestParams struct {
 	// <p>加密相关参数。 支持加密地域并且开白用户可以传此参数，其他场景不能传递该参数。<br>只支持传入1：kms-cls 云产品秘钥加密</p>
 	Encryption *uint64 `json:"Encryption,omitnil,omitempty" name:"Encryption"`
 
+	// <p>用户自定义 KMS 密钥信息；为空则使用默认密钥（别名 KMS-CLS）</p><p>当参数 Encryption为 1 时生效</p>
+	CustomKmsInfo *CustomKmsInfo `json:"CustomKmsInfo,omitnil,omitempty" name:"CustomKmsInfo"`
+
 	// <p>开启记录公网来源ip和服务端接收时间</p>
 	IsSourceFrom *bool `json:"IsSourceFrom,omitnil,omitempty" name:"IsSourceFrom"`
 
@@ -21441,6 +21433,9 @@ type ModifyTopicRequest struct {
 	// <p>加密相关参数。 支持加密地域并且开白用户可以传此参数，其他场景不能传递该参数。<br>只支持传入1：kms-cls 云产品秘钥加密</p>
 	Encryption *uint64 `json:"Encryption,omitnil,omitempty" name:"Encryption"`
 
+	// <p>用户自定义 KMS 密钥信息；为空则使用默认密钥（别名 KMS-CLS）</p><p>当参数 Encryption为 1 时生效</p>
+	CustomKmsInfo *CustomKmsInfo `json:"CustomKmsInfo,omitnil,omitempty" name:"CustomKmsInfo"`
+
 	// <p>开启记录公网来源ip和服务端接收时间</p>
 	IsSourceFrom *bool `json:"IsSourceFrom,omitnil,omitempty" name:"IsSourceFrom"`
 
@@ -21475,6 +21470,7 @@ func (r *ModifyTopicRequest) FromJsonString(s string) error {
 	delete(f, "PartitionCount")
 	delete(f, "CancelTopicAsyncTaskID")
 	delete(f, "Encryption")
+	delete(f, "CustomKmsInfo")
 	delete(f, "IsSourceFrom")
 	delete(f, "BillingMode")
 	if len(f) > 0 {
@@ -24102,8 +24098,11 @@ type TopicInfo struct {
 	// <p>开启日志沉降，标准存储的生命周期， hotPeriod &lt; Period。<br>标准存储为 hotPeriod, 低频存储则为 Period-hotPeriod。（主题类型需为日志主题）<br>HotPeriod=0为没有开启日志沉降。</p>
 	HotPeriod *uint64 `json:"HotPeriod,omitnil,omitempty" name:"HotPeriod"`
 
-	// <p>kms-cls服务秘钥id</p>
+	// <p>kms-cls服务秘钥id</p><p>CustomKmsInfo为空时为系统默认密钥，CustomKmsInfo不为空时为用户自定义密钥</p>
 	KeyId *string `json:"KeyId,omitnil,omitempty" name:"KeyId"`
+
+	// <p>用户自定义 KMS 密钥信息</p>
+	CustomKmsInfo *CustomKmsInfo `json:"CustomKmsInfo,omitnil,omitempty" name:"CustomKmsInfo"`
 
 	// <p>主题类型。</p><ul><li>0: 日志主题 </li><li>1: 指标主题</li></ul>
 	BizType *uint64 `json:"BizType,omitnil,omitempty" name:"BizType"`

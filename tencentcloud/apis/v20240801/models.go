@@ -592,153 +592,159 @@ func (r *CreateAgentCredentialResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateMcpServerRequestParams struct {
-	// 模式：proxy代理模式； wrap封装模式；
+	// <p>模式：proxy代理模式； wrap封装模式；</p>
 	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
 
-	// 版本号：2024-11-05 2025-03-26
+	// <p>版本号：2024-11-05 2025-03-26</p>
 	McpVersion *string `json:"McpVersion,omitnil,omitempty" name:"McpVersion"`
 
-	// 实例ID
+	// <p>实例ID</p>
 	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
 
-	// 名称
+	// <p>名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 描述
+	// <p>描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 封装服务列表
+	// <p>封装服务列表</p>
 	WrapServices []*string `json:"WrapServices,omitnil,omitempty" name:"WrapServices"`
 
-	// 负载方式，robin random consistentHash
+	// <p>负载方式，robin random consistentHash</p>
 	TargetSelect *string `json:"TargetSelect,omitnil,omitempty" name:"TargetSelect"`
 
-	// 目标服务器
+	// <p>目标服务器</p>
 	TargetHosts []*TargetHostDTO `json:"TargetHosts,omitnil,omitempty" name:"TargetHosts"`
 
-	// 后端协议：http https
+	// <p>后端协议：http https</p>
 	HttpProtocolType *string `json:"HttpProtocolType,omitnil,omitempty" name:"HttpProtocolType"`
 
-	// 证书检查
+	// <p>证书检查</p>
 	CheckTargetCertsError *bool `json:"CheckTargetCertsError,omitnil,omitempty" name:"CheckTargetCertsError"`
 
-	// 目标路径
+	// <p>目标路径</p>
 	TargetPath *string `json:"TargetPath,omitnil,omitempty" name:"TargetPath"`
 
-	// 流量控制开启状态
+	// <p>流量控制开启状态</p>
 	InvokeLimitConfigStatus *bool `json:"InvokeLimitConfigStatus,omitnil,omitempty" name:"InvokeLimitConfigStatus"`
 
-	// 流量控制配置
+	// <p>流量控制配置</p>
 	InvokeLimitConfig *InvokeLimitConfigDTO `json:"InvokeLimitConfig,omitnil,omitempty" name:"InvokeLimitConfig"`
 
-	// IP白名单开启状态
+	// <p>IP白名单开启状态</p>
 	IpWhiteStatus *bool `json:"IpWhiteStatus,omitnil,omitempty" name:"IpWhiteStatus"`
 
-	// IP白名单配置
+	// <p>IP白名单配置</p>
 	IpWhiteConfig *IpConfig `json:"IpWhiteConfig,omitnil,omitempty" name:"IpWhiteConfig"`
 
-	// IP黑名单开启状态
+	// <p>IP黑名单开启状态</p>
 	IpBlackStatus *bool `json:"IpBlackStatus,omitnil,omitempty" name:"IpBlackStatus"`
 
-	// IP黑名单配置
+	// <p>IP黑名单配置</p>
 	IpBlackConfig *IpConfig `json:"IpBlackConfig,omitnil,omitempty" name:"IpBlackConfig"`
 
-	// 自定义host
+	// <p>自定义host</p>
 	CustomHttpHost *string `json:"CustomHttpHost,omitnil,omitempty" name:"CustomHttpHost"`
 
-	// Http 请求host类型：useRequestHost 保持源请求；host targetHost 修正为源站host；  customHost 自定义host
+	// <p>Http 请求host类型：useRequestHost 保持源请求；host targetHost 修正为源站host；  customHost 自定义host</p>
 	HttpHostType *string `json:"HttpHostType,omitnil,omitempty" name:"HttpHostType"`
 
-	// 请求的超时时间
+	// <p>请求的超时时间</p>
 	Timeout *uint64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
 
-	// 安全规则集
+	// <p>安全规则集</p>
 	McpSecurityRules []*McpSecurityRule `json:"McpSecurityRules,omitnil,omitempty" name:"McpSecurityRules"`
 
-	// 工具集配置（openapi时或许用的是）
+	// <p>工具集配置（openapi时或许用的是）</p>
 	ToolConfigs []*ToolConfigDTO `json:"ToolConfigs,omitnil,omitempty" name:"ToolConfigs"`
 
-	// 封装的API分组ID
+	// <p>封装的API分组ID</p>
 	WrapPaasID *string `json:"WrapPaasID,omitnil,omitempty" name:"WrapPaasID"`
 
-	// 插件配置
+	// <p>插件配置</p>
 	PluginConfigs []*PluginConfigDTO `json:"PluginConfigs,omitnil,omitempty" name:"PluginConfigs"`
+
+	// <p>是否忽略健康检查</p>
+	IgnoreHealthCheck *bool `json:"IgnoreHealthCheck,omitnil,omitempty" name:"IgnoreHealthCheck"`
 }
 
 type CreateMcpServerRequest struct {
 	*tchttp.BaseRequest
 	
-	// 模式：proxy代理模式； wrap封装模式；
+	// <p>模式：proxy代理模式； wrap封装模式；</p>
 	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
 
-	// 版本号：2024-11-05 2025-03-26
+	// <p>版本号：2024-11-05 2025-03-26</p>
 	McpVersion *string `json:"McpVersion,omitnil,omitempty" name:"McpVersion"`
 
-	// 实例ID
+	// <p>实例ID</p>
 	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
 
-	// 名称
+	// <p>名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 描述
+	// <p>描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 封装服务列表
+	// <p>封装服务列表</p>
 	WrapServices []*string `json:"WrapServices,omitnil,omitempty" name:"WrapServices"`
 
-	// 负载方式，robin random consistentHash
+	// <p>负载方式，robin random consistentHash</p>
 	TargetSelect *string `json:"TargetSelect,omitnil,omitempty" name:"TargetSelect"`
 
-	// 目标服务器
+	// <p>目标服务器</p>
 	TargetHosts []*TargetHostDTO `json:"TargetHosts,omitnil,omitempty" name:"TargetHosts"`
 
-	// 后端协议：http https
+	// <p>后端协议：http https</p>
 	HttpProtocolType *string `json:"HttpProtocolType,omitnil,omitempty" name:"HttpProtocolType"`
 
-	// 证书检查
+	// <p>证书检查</p>
 	CheckTargetCertsError *bool `json:"CheckTargetCertsError,omitnil,omitempty" name:"CheckTargetCertsError"`
 
-	// 目标路径
+	// <p>目标路径</p>
 	TargetPath *string `json:"TargetPath,omitnil,omitempty" name:"TargetPath"`
 
-	// 流量控制开启状态
+	// <p>流量控制开启状态</p>
 	InvokeLimitConfigStatus *bool `json:"InvokeLimitConfigStatus,omitnil,omitempty" name:"InvokeLimitConfigStatus"`
 
-	// 流量控制配置
+	// <p>流量控制配置</p>
 	InvokeLimitConfig *InvokeLimitConfigDTO `json:"InvokeLimitConfig,omitnil,omitempty" name:"InvokeLimitConfig"`
 
-	// IP白名单开启状态
+	// <p>IP白名单开启状态</p>
 	IpWhiteStatus *bool `json:"IpWhiteStatus,omitnil,omitempty" name:"IpWhiteStatus"`
 
-	// IP白名单配置
+	// <p>IP白名单配置</p>
 	IpWhiteConfig *IpConfig `json:"IpWhiteConfig,omitnil,omitempty" name:"IpWhiteConfig"`
 
-	// IP黑名单开启状态
+	// <p>IP黑名单开启状态</p>
 	IpBlackStatus *bool `json:"IpBlackStatus,omitnil,omitempty" name:"IpBlackStatus"`
 
-	// IP黑名单配置
+	// <p>IP黑名单配置</p>
 	IpBlackConfig *IpConfig `json:"IpBlackConfig,omitnil,omitempty" name:"IpBlackConfig"`
 
-	// 自定义host
+	// <p>自定义host</p>
 	CustomHttpHost *string `json:"CustomHttpHost,omitnil,omitempty" name:"CustomHttpHost"`
 
-	// Http 请求host类型：useRequestHost 保持源请求；host targetHost 修正为源站host；  customHost 自定义host
+	// <p>Http 请求host类型：useRequestHost 保持源请求；host targetHost 修正为源站host；  customHost 自定义host</p>
 	HttpHostType *string `json:"HttpHostType,omitnil,omitempty" name:"HttpHostType"`
 
-	// 请求的超时时间
+	// <p>请求的超时时间</p>
 	Timeout *uint64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
 
-	// 安全规则集
+	// <p>安全规则集</p>
 	McpSecurityRules []*McpSecurityRule `json:"McpSecurityRules,omitnil,omitempty" name:"McpSecurityRules"`
 
-	// 工具集配置（openapi时或许用的是）
+	// <p>工具集配置（openapi时或许用的是）</p>
 	ToolConfigs []*ToolConfigDTO `json:"ToolConfigs,omitnil,omitempty" name:"ToolConfigs"`
 
-	// 封装的API分组ID
+	// <p>封装的API分组ID</p>
 	WrapPaasID *string `json:"WrapPaasID,omitnil,omitempty" name:"WrapPaasID"`
 
-	// 插件配置
+	// <p>插件配置</p>
 	PluginConfigs []*PluginConfigDTO `json:"PluginConfigs,omitnil,omitempty" name:"PluginConfigs"`
+
+	// <p>是否忽略健康检查</p>
+	IgnoreHealthCheck *bool `json:"IgnoreHealthCheck,omitnil,omitempty" name:"IgnoreHealthCheck"`
 }
 
 func (r *CreateMcpServerRequest) ToJsonString() string {
@@ -777,6 +783,7 @@ func (r *CreateMcpServerRequest) FromJsonString(s string) error {
 	delete(f, "ToolConfigs")
 	delete(f, "WrapPaasID")
 	delete(f, "PluginConfigs")
+	delete(f, "IgnoreHealthCheck")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateMcpServerRequest has unknown keys!", "")
 	}
@@ -785,7 +792,7 @@ func (r *CreateMcpServerRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateMcpServerResponseParams struct {
-	// mcp server ID
+	// <p>mcp server ID</p>
 	Data *ResultIDVO `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2571,160 +2578,163 @@ func (r *DescribeMcpServerResponse) FromJsonString(s string) error {
 }
 
 type DescribeMcpServerResponseVO struct {
-	// 实例ID
+	// <p>实例ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
 
-	// 名称
+	// <p>名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 描述
+	// <p>描述</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 标签ID数组
+	// <p>标签ID数组</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LabelIDs []*string `json:"LabelIDs,omitnil,omitempty" name:"LabelIDs"`
 
-	// 目录ID数组
+	// <p>目录ID数组</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CategoryIDs []*string `json:"CategoryIDs,omitnil,omitempty" name:"CategoryIDs"`
 
-	// 负载方式，robin random consistentHash
+	// <p>负载方式，robin random consistentHash</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TargetSelect *string `json:"TargetSelect,omitnil,omitempty" name:"TargetSelect"`
 
-	// 目标服务器
+	// <p>目标服务器</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TargetHosts []*TargetHostDTO `json:"TargetHosts,omitnil,omitempty" name:"TargetHosts"`
 
-	// 后端协议：http https
+	// <p>后端协议：http https</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HttpProtocolType *string `json:"HttpProtocolType,omitnil,omitempty" name:"HttpProtocolType"`
 
-	// 证书检查
+	// <p>证书检查</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CheckTargetCertsError *bool `json:"CheckTargetCertsError,omitnil,omitempty" name:"CheckTargetCertsError"`
 
-	// 目标路径
+	// <p>目标路径</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TargetPath *string `json:"TargetPath,omitnil,omitempty" name:"TargetPath"`
 
-	// 流量控制状态
+	// <p>流量控制状态</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InvokeLimitConfigStatus *bool `json:"InvokeLimitConfigStatus,omitnil,omitempty" name:"InvokeLimitConfigStatus"`
 
-	// 流量控制配置
+	// <p>流量控制配置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InvokeLimitConfig *InvokeLimitConfigDTO `json:"InvokeLimitConfig,omitnil,omitempty" name:"InvokeLimitConfig"`
 
-	// IP白名单开启状态
+	// <p>IP白名单开启状态</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IpWhiteStatus *bool `json:"IpWhiteStatus,omitnil,omitempty" name:"IpWhiteStatus"`
 
-	// IP白名单配置
+	// <p>IP白名单配置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IpWhiteConfig *IpConfig `json:"IpWhiteConfig,omitnil,omitempty" name:"IpWhiteConfig"`
 
-	// IP黑名单开启状态
+	// <p>IP黑名单开启状态</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IpBlackStatus *bool `json:"IpBlackStatus,omitnil,omitempty" name:"IpBlackStatus"`
 
-	// IP黑名单配置
+	// <p>IP黑名单配置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IpBlackConfig *IpConfig `json:"IpBlackConfig,omitnil,omitempty" name:"IpBlackConfig"`
 
-	// mcp server ID
+	// <p>mcp server ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
 
-	// 状态
+	// <p>状态</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 预览地址
+	// <p>预览地址</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
-	// 应用
+	// <p>应用</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	App *IDNameVO `json:"App,omitnil,omitempty" name:"App"`
 
-	// 目录
+	// <p>目录</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Catalogs []*IDNameVO `json:"Catalogs,omitnil,omitempty" name:"Catalogs"`
 
-	// 标签
+	// <p>标签</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Labels []*IDNameVO `json:"Labels,omitnil,omitempty" name:"Labels"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 最后修改时间
+	// <p>最后修改时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastUpdateTime *string `json:"LastUpdateTime,omitnil,omitempty" name:"LastUpdateTime"`
 
-	// 用户appID
+	// <p>用户appID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppID *int64 `json:"AppID,omitnil,omitempty" name:"AppID"`
 
-	// 用户ID
+	// <p>用户ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 
-	// 自定义host
+	// <p>自定义host</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CustomHttpHost *string `json:"CustomHttpHost,omitnil,omitempty" name:"CustomHttpHost"`
 
-	//  Http 请求host类型 useRequestHost 保持源请求host targetHost 修正为源站host  customHost 自定义host
+	// <p>Http 请求host类型 useRequestHost 保持源请求host targetHost 修正为源站host  customHost 自定义host</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HttpHostType *string `json:"HttpHostType,omitnil,omitempty" name:"HttpHostType"`
 
-	// 请求的超时时间
+	// <p>请求的超时时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Timeout *uint64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
 
-	// mcp server模式
+	// <p>mcp server模式</p>
 	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
 
-	// mcp version
+	// <p>mcp version</p>
 	McpVersion *string `json:"McpVersion,omitnil,omitempty" name:"McpVersion"`
 
-	// 封装模式下绑定的服务ID列表
+	// <p>封装模式下绑定的服务ID列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WrapServices []*string `json:"WrapServices,omitnil,omitempty" name:"WrapServices"`
 
-	// 工具数量
+	// <p>工具数量</p>
 	ToolNum *int64 `json:"ToolNum,omitnil,omitempty" name:"ToolNum"`
 
-	// 安全规则集响应
+	// <p>安全规则集响应</p>
 	McpSecurityRulesVO []*McpSecurityRulesVO `json:"McpSecurityRulesVO,omitnil,omitempty" name:"McpSecurityRulesVO"`
 
-	// 真实工具级别配置，实时拉取了tool/list做渲染的，如果tool/list不通，就拉不到。
+	// <p>真实工具级别配置，实时拉取了tool/list做渲染的，如果tool/list不通，就拉不到。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ToolConfigs []*ToolConfigVO `json:"ToolConfigs,omitnil,omitempty" name:"ToolConfigs"`
 
-	// 访问URL
+	// <p>访问URL</p>
 	UrlObj *McpUrlObj `json:"UrlObj,omitnil,omitempty" name:"UrlObj"`
 
-	// 后端mcp服务是否正常
+	// <p>后端mcp服务是否正常</p>
 	ToolMessage *string `json:"ToolMessage,omitnil,omitempty" name:"ToolMessage"`
 
-	// 后端mcp服务的工具列表
+	// <p>后端mcp服务的工具列表</p>
 	Tools []*McpTool `json:"Tools,omitnil,omitempty" name:"Tools"`
 
-	// 封装的API分组ID
+	// <p>封装的API分组ID</p>
 	WrapPaasID *string `json:"WrapPaasID,omitnil,omitempty" name:"WrapPaasID"`
 
-	// 关联的agentApp数量
+	// <p>关联的agentApp数量</p>
 	RelateAgentAppNum *int64 `json:"RelateAgentAppNum,omitnil,omitempty" name:"RelateAgentAppNum"`
 
-	// 插件配置
+	// <p>插件配置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PluginConfigs []*PluginConfigDTO `json:"PluginConfigs,omitnil,omitempty" name:"PluginConfigs"`
+
+	// <p>是否忽略健康检查</p>
+	IgnoreHealthCheck *bool `json:"IgnoreHealthCheck,omitnil,omitempty" name:"IgnoreHealthCheck"`
 }
 
 // Predefined struct for user
@@ -3983,165 +3993,171 @@ func (r *ModifyAgentCredentialResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyMcpServerRequestParams struct {
-	// mcp server ID
+	// <p>mcp server ID</p>
 	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
 
-	// 模式：proxy代理模式； wrap封装模式；
+	// <p>模式：proxy代理模式； wrap封装模式；</p>
 	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
 
-	// 版本号：2024-11-05 2025-03-26
+	// <p>版本号：2024-11-05 2025-03-26</p>
 	McpVersion *string `json:"McpVersion,omitnil,omitempty" name:"McpVersion"`
 
-	// 实例ID
+	// <p>实例ID</p>
 	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
 
-	// 名称
+	// <p>名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 描述
+	// <p>描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 封装服务列表
+	// <p>封装服务列表</p>
 	WrapServices []*string `json:"WrapServices,omitnil,omitempty" name:"WrapServices"`
 
-	// 负载方式，robin random consistentHash
+	// <p>负载方式，robin random consistentHash</p>
 	TargetSelect *string `json:"TargetSelect,omitnil,omitempty" name:"TargetSelect"`
 
-	// 目标服务器
+	// <p>目标服务器</p>
 	TargetHosts []*TargetHostDTO `json:"TargetHosts,omitnil,omitempty" name:"TargetHosts"`
 
-	// 后端协议：http https
+	// <p>后端协议：http https</p>
 	HttpProtocolType *string `json:"HttpProtocolType,omitnil,omitempty" name:"HttpProtocolType"`
 
-	// 证书检查
+	// <p>证书检查</p>
 	CheckTargetCertsError *bool `json:"CheckTargetCertsError,omitnil,omitempty" name:"CheckTargetCertsError"`
 
-	// 目标路径
+	// <p>目标路径</p>
 	TargetPath *string `json:"TargetPath,omitnil,omitempty" name:"TargetPath"`
 
-	// 流量控制开启状态
+	// <p>流量控制开启状态</p>
 	InvokeLimitConfigStatus *bool `json:"InvokeLimitConfigStatus,omitnil,omitempty" name:"InvokeLimitConfigStatus"`
 
-	// 流量控制配置
+	// <p>流量控制配置</p>
 	InvokeLimitConfig *InvokeLimitConfigDTO `json:"InvokeLimitConfig,omitnil,omitempty" name:"InvokeLimitConfig"`
 
-	// IP白名单开启状态
+	// <p>IP白名单开启状态</p>
 	IpWhiteStatus *bool `json:"IpWhiteStatus,omitnil,omitempty" name:"IpWhiteStatus"`
 
-	// IP白名单配置
+	// <p>IP白名单配置</p>
 	IpWhiteConfig *IpConfig `json:"IpWhiteConfig,omitnil,omitempty" name:"IpWhiteConfig"`
 
-	// IP黑名单开启状态
+	// <p>IP黑名单开启状态</p>
 	IpBlackStatus *bool `json:"IpBlackStatus,omitnil,omitempty" name:"IpBlackStatus"`
 
-	// IP黑名单配置
+	// <p>IP黑名单配置</p>
 	IpBlackConfig *IpConfig `json:"IpBlackConfig,omitnil,omitempty" name:"IpBlackConfig"`
 
-	// 目标Host类型 0 默认 1 vpc
+	// <p>目标Host类型 0 默认 1 vpc</p>
 	TargetHostType *int64 `json:"TargetHostType,omitnil,omitempty" name:"TargetHostType"`
 
-	// 自定义host
+	// <p>自定义host</p>
 	CustomHttpHost *string `json:"CustomHttpHost,omitnil,omitempty" name:"CustomHttpHost"`
 
-	// Http 请求host类型：useRequestHost 保持源请求；host targetHost 修正为源站host； customHost 自定义host
+	// <p>Http 请求host类型：useRequestHost 保持源请求；host targetHost 修正为源站host； customHost 自定义host</p>
 	HttpHostType *string `json:"HttpHostType,omitnil,omitempty" name:"HttpHostType"`
 
-	// 请求的超时时间
+	// <p>请求的超时时间</p>
 	Timeout *uint64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
 
-	// 安全规则集
+	// <p>安全规则集</p>
 	McpSecurityRules []*McpSecurityRule `json:"McpSecurityRules,omitnil,omitempty" name:"McpSecurityRules"`
 
-	// 工具集配置（openapi可能会用到）
+	// <p>工具集配置（openapi可能会用到）</p>
 	ToolConfigs []*ToolConfigDTO `json:"ToolConfigs,omitnil,omitempty" name:"ToolConfigs"`
 
-	// 封装的API分组ID
+	// <p>封装的API分组ID</p>
 	WrapPaasID *string `json:"WrapPaasID,omitnil,omitempty" name:"WrapPaasID"`
 
-	// 插件配置
+	// <p>插件配置</p>
 	PluginConfigs []*PluginConfigDTO `json:"PluginConfigs,omitnil,omitempty" name:"PluginConfigs"`
+
+	// <p>是否忽略健康检查</p>
+	IgnoreHealthCheck *bool `json:"IgnoreHealthCheck,omitnil,omitempty" name:"IgnoreHealthCheck"`
 }
 
 type ModifyMcpServerRequest struct {
 	*tchttp.BaseRequest
 	
-	// mcp server ID
+	// <p>mcp server ID</p>
 	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
 
-	// 模式：proxy代理模式； wrap封装模式；
+	// <p>模式：proxy代理模式； wrap封装模式；</p>
 	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
 
-	// 版本号：2024-11-05 2025-03-26
+	// <p>版本号：2024-11-05 2025-03-26</p>
 	McpVersion *string `json:"McpVersion,omitnil,omitempty" name:"McpVersion"`
 
-	// 实例ID
+	// <p>实例ID</p>
 	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
 
-	// 名称
+	// <p>名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 描述
+	// <p>描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 封装服务列表
+	// <p>封装服务列表</p>
 	WrapServices []*string `json:"WrapServices,omitnil,omitempty" name:"WrapServices"`
 
-	// 负载方式，robin random consistentHash
+	// <p>负载方式，robin random consistentHash</p>
 	TargetSelect *string `json:"TargetSelect,omitnil,omitempty" name:"TargetSelect"`
 
-	// 目标服务器
+	// <p>目标服务器</p>
 	TargetHosts []*TargetHostDTO `json:"TargetHosts,omitnil,omitempty" name:"TargetHosts"`
 
-	// 后端协议：http https
+	// <p>后端协议：http https</p>
 	HttpProtocolType *string `json:"HttpProtocolType,omitnil,omitempty" name:"HttpProtocolType"`
 
-	// 证书检查
+	// <p>证书检查</p>
 	CheckTargetCertsError *bool `json:"CheckTargetCertsError,omitnil,omitempty" name:"CheckTargetCertsError"`
 
-	// 目标路径
+	// <p>目标路径</p>
 	TargetPath *string `json:"TargetPath,omitnil,omitempty" name:"TargetPath"`
 
-	// 流量控制开启状态
+	// <p>流量控制开启状态</p>
 	InvokeLimitConfigStatus *bool `json:"InvokeLimitConfigStatus,omitnil,omitempty" name:"InvokeLimitConfigStatus"`
 
-	// 流量控制配置
+	// <p>流量控制配置</p>
 	InvokeLimitConfig *InvokeLimitConfigDTO `json:"InvokeLimitConfig,omitnil,omitempty" name:"InvokeLimitConfig"`
 
-	// IP白名单开启状态
+	// <p>IP白名单开启状态</p>
 	IpWhiteStatus *bool `json:"IpWhiteStatus,omitnil,omitempty" name:"IpWhiteStatus"`
 
-	// IP白名单配置
+	// <p>IP白名单配置</p>
 	IpWhiteConfig *IpConfig `json:"IpWhiteConfig,omitnil,omitempty" name:"IpWhiteConfig"`
 
-	// IP黑名单开启状态
+	// <p>IP黑名单开启状态</p>
 	IpBlackStatus *bool `json:"IpBlackStatus,omitnil,omitempty" name:"IpBlackStatus"`
 
-	// IP黑名单配置
+	// <p>IP黑名单配置</p>
 	IpBlackConfig *IpConfig `json:"IpBlackConfig,omitnil,omitempty" name:"IpBlackConfig"`
 
-	// 目标Host类型 0 默认 1 vpc
+	// <p>目标Host类型 0 默认 1 vpc</p>
 	TargetHostType *int64 `json:"TargetHostType,omitnil,omitempty" name:"TargetHostType"`
 
-	// 自定义host
+	// <p>自定义host</p>
 	CustomHttpHost *string `json:"CustomHttpHost,omitnil,omitempty" name:"CustomHttpHost"`
 
-	// Http 请求host类型：useRequestHost 保持源请求；host targetHost 修正为源站host； customHost 自定义host
+	// <p>Http 请求host类型：useRequestHost 保持源请求；host targetHost 修正为源站host； customHost 自定义host</p>
 	HttpHostType *string `json:"HttpHostType,omitnil,omitempty" name:"HttpHostType"`
 
-	// 请求的超时时间
+	// <p>请求的超时时间</p>
 	Timeout *uint64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
 
-	// 安全规则集
+	// <p>安全规则集</p>
 	McpSecurityRules []*McpSecurityRule `json:"McpSecurityRules,omitnil,omitempty" name:"McpSecurityRules"`
 
-	// 工具集配置（openapi可能会用到）
+	// <p>工具集配置（openapi可能会用到）</p>
 	ToolConfigs []*ToolConfigDTO `json:"ToolConfigs,omitnil,omitempty" name:"ToolConfigs"`
 
-	// 封装的API分组ID
+	// <p>封装的API分组ID</p>
 	WrapPaasID *string `json:"WrapPaasID,omitnil,omitempty" name:"WrapPaasID"`
 
-	// 插件配置
+	// <p>插件配置</p>
 	PluginConfigs []*PluginConfigDTO `json:"PluginConfigs,omitnil,omitempty" name:"PluginConfigs"`
+
+	// <p>是否忽略健康检查</p>
+	IgnoreHealthCheck *bool `json:"IgnoreHealthCheck,omitnil,omitempty" name:"IgnoreHealthCheck"`
 }
 
 func (r *ModifyMcpServerRequest) ToJsonString() string {
@@ -4182,6 +4198,7 @@ func (r *ModifyMcpServerRequest) FromJsonString(s string) error {
 	delete(f, "ToolConfigs")
 	delete(f, "WrapPaasID")
 	delete(f, "PluginConfigs")
+	delete(f, "IgnoreHealthCheck")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyMcpServerRequest has unknown keys!", "")
 	}
@@ -4190,7 +4207,7 @@ func (r *ModifyMcpServerRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyMcpServerResponseParams struct {
-	// mcp server ID
+	// <p>mcp server ID</p>
 	Data *ResultIDVO `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

@@ -5962,6 +5962,9 @@ type CreateAigcVideoRedrawTaskRequestParams struct {
 	// <p>AIGC 视频转绘任务的输入视频的文件信息。输入视频时长需短于 90 秒，大小在2GB内。</p>
 	FileInfo *AigcVideoRedrawTaskInputFileInfo `json:"FileInfo,omitnil,omitempty" name:"FileInfo"`
 
+	// <p>AIGC 视频转绘任务参数信息。</p>
+	TaskInfo *AigcVideoRedrawTaskInfo `json:"TaskInfo,omitnil,omitempty" name:"TaskInfo"`
+
 	// <p>AIGC 视频转绘任务的输出媒体文件配置。</p>
 	OutputConfig *AigcVideoRedrawOutputConfig `json:"OutputConfig,omitnil,omitempty" name:"OutputConfig"`
 
@@ -5986,6 +5989,9 @@ type CreateAigcVideoRedrawTaskRequest struct {
 
 	// <p>AIGC 视频转绘任务的输入视频的文件信息。输入视频时长需短于 90 秒，大小在2GB内。</p>
 	FileInfo *AigcVideoRedrawTaskInputFileInfo `json:"FileInfo,omitnil,omitempty" name:"FileInfo"`
+
+	// <p>AIGC 视频转绘任务参数信息。</p>
+	TaskInfo *AigcVideoRedrawTaskInfo `json:"TaskInfo,omitnil,omitempty" name:"TaskInfo"`
 
 	// <p>AIGC 视频转绘任务的输出媒体文件配置。</p>
 	OutputConfig *AigcVideoRedrawOutputConfig `json:"OutputConfig,omitnil,omitempty" name:"OutputConfig"`
@@ -6017,6 +6023,7 @@ func (r *CreateAigcVideoRedrawTaskRequest) FromJsonString(s string) error {
 	}
 	delete(f, "SubAppId")
 	delete(f, "FileInfo")
+	delete(f, "TaskInfo")
 	delete(f, "OutputConfig")
 	delete(f, "SessionId")
 	delete(f, "SessionContext")
@@ -8034,92 +8041,104 @@ func (r *CreateProcessImageAsyncTemplateResponse) FromJsonString(s string) error
 
 // Predefined struct for user
 type CreateQualityInspectTemplateRequestParams struct {
-	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	// <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 
-	// 音画质检测模板名称。
+	// <p>音画质检测模板名称。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 音画质检测模板描述。
+	// <p>音画质检测模板描述。</p>
 	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
 
-	// 截帧间隔，单位为秒，最小值为 1。当不填时，默认截帧间隔为 1 秒。
+	// <p>音画质检测配置参数。</p>
+	Configs []*QualityInspectConfig `json:"Configs,omitnil,omitempty" name:"Configs"`
+
+	// <p>音画质检测的抽检策略参数。</p>
+	Strategy *QualityInspectStrategy `json:"Strategy,omitnil,omitempty" name:"Strategy"`
+
+	// <p>（不推荐，使用 Configs 替代）截帧间隔，单位为秒，最小值为 1。当不填时，默认截帧间隔为 1 秒。</p>
 	ScreenshotInterval *float64 `json:"ScreenshotInterval,omitnil,omitempty" name:"ScreenshotInterval"`
 
-	// 视频画面抖动重影检测的控制参数。
+	// <p>（不推荐，使用 Configs 替代）视频画面抖动重影检测的控制参数。</p>
 	JitterConfigure *JitterConfigureInfo `json:"JitterConfigure,omitnil,omitempty" name:"JitterConfigure"`
 
-	// 视频画面模糊检测的控制参数。
+	// <p>（不推荐，使用 Configs 替代）视频画面模糊检测的控制参数。</p>
 	BlurConfigure *BlurConfigureInfo `json:"BlurConfigure,omitnil,omitempty" name:"BlurConfigure"`
 
-	// 视频画面低光、过曝检测的控制参数。
+	// <p>（不推荐，使用 Configs 替代）视频画面低光、过曝检测的控制参数。</p>
 	AbnormalLightingConfigure *AbnormalLightingConfigureInfo `json:"AbnormalLightingConfigure,omitnil,omitempty" name:"AbnormalLightingConfigure"`
 
-	// 视频画面花屏检测的控制参数。
+	// <p>（不推荐，使用 Configs 替代）视频画面花屏检测的控制参数。</p>
 	CrashScreenConfigure *CrashScreenConfigureInfo `json:"CrashScreenConfigure,omitnil,omitempty" name:"CrashScreenConfigure"`
 
-	// 视频画面黑边、白边、黑屏、白屏检测的控制参数。
+	// <p>（不推荐，使用 Configs 替代）视频画面黑边、白边、黑屏、白屏检测的控制参数。</p>
 	BlackWhiteEdgeConfigure *BlackWhiteEdgeConfigureInfo `json:"BlackWhiteEdgeConfigure,omitnil,omitempty" name:"BlackWhiteEdgeConfigure"`
 
-	// 视频画面噪点检测的控制参数。
+	// <p>（不推荐，使用 Configs 替代）视频画面噪点检测的控制参数。</p>
 	NoiseConfigure *NoiseConfigureInfo `json:"NoiseConfigure,omitnil,omitempty" name:"NoiseConfigure"`
 
-	// 视频画面马赛克检测的控制参数。
+	// <p>（不推荐，使用 Configs 替代）视频画面马赛克检测的控制参数。</p>
 	MosaicConfigure *MosaicConfigureInfo `json:"MosaicConfigure,omitnil,omitempty" name:"MosaicConfigure"`
 
-	// 视频画面二维码检测的控制参数。
+	// <p>（不推荐，使用 Configs 替代）视频画面二维码检测的控制参数。</p>
 	QRCodeConfigure *QRCodeConfigureInfo `json:"QRCodeConfigure,omitnil,omitempty" name:"QRCodeConfigure"`
 
-	// 音频（静音、低音、爆音）检测的控制参数。
+	// <p>（不推荐，使用 Configs 替代）音频（静音、低音、爆音）检测的控制参数。</p>
 	VoiceConfigure *VoiceConfigureInfo `json:"VoiceConfigure,omitnil,omitempty" name:"VoiceConfigure"`
 
-	// 视频画面质量评价的控制参数。
+	// <p>（不推荐，使用 Configs 替代）视频画面质量评价的控制参数。</p>
 	QualityEvaluationConfigure *QualityEvaluationConfigureInfo `json:"QualityEvaluationConfigure,omitnil,omitempty" name:"QualityEvaluationConfigure"`
 }
 
 type CreateQualityInspectTemplateRequest struct {
 	*tchttp.BaseRequest
 	
-	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	// <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 
-	// 音画质检测模板名称。
+	// <p>音画质检测模板名称。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 音画质检测模板描述。
+	// <p>音画质检测模板描述。</p>
 	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
 
-	// 截帧间隔，单位为秒，最小值为 1。当不填时，默认截帧间隔为 1 秒。
+	// <p>音画质检测配置参数。</p>
+	Configs []*QualityInspectConfig `json:"Configs,omitnil,omitempty" name:"Configs"`
+
+	// <p>音画质检测的抽检策略参数。</p>
+	Strategy *QualityInspectStrategy `json:"Strategy,omitnil,omitempty" name:"Strategy"`
+
+	// <p>（不推荐，使用 Configs 替代）截帧间隔，单位为秒，最小值为 1。当不填时，默认截帧间隔为 1 秒。</p>
 	ScreenshotInterval *float64 `json:"ScreenshotInterval,omitnil,omitempty" name:"ScreenshotInterval"`
 
-	// 视频画面抖动重影检测的控制参数。
+	// <p>（不推荐，使用 Configs 替代）视频画面抖动重影检测的控制参数。</p>
 	JitterConfigure *JitterConfigureInfo `json:"JitterConfigure,omitnil,omitempty" name:"JitterConfigure"`
 
-	// 视频画面模糊检测的控制参数。
+	// <p>（不推荐，使用 Configs 替代）视频画面模糊检测的控制参数。</p>
 	BlurConfigure *BlurConfigureInfo `json:"BlurConfigure,omitnil,omitempty" name:"BlurConfigure"`
 
-	// 视频画面低光、过曝检测的控制参数。
+	// <p>（不推荐，使用 Configs 替代）视频画面低光、过曝检测的控制参数。</p>
 	AbnormalLightingConfigure *AbnormalLightingConfigureInfo `json:"AbnormalLightingConfigure,omitnil,omitempty" name:"AbnormalLightingConfigure"`
 
-	// 视频画面花屏检测的控制参数。
+	// <p>（不推荐，使用 Configs 替代）视频画面花屏检测的控制参数。</p>
 	CrashScreenConfigure *CrashScreenConfigureInfo `json:"CrashScreenConfigure,omitnil,omitempty" name:"CrashScreenConfigure"`
 
-	// 视频画面黑边、白边、黑屏、白屏检测的控制参数。
+	// <p>（不推荐，使用 Configs 替代）视频画面黑边、白边、黑屏、白屏检测的控制参数。</p>
 	BlackWhiteEdgeConfigure *BlackWhiteEdgeConfigureInfo `json:"BlackWhiteEdgeConfigure,omitnil,omitempty" name:"BlackWhiteEdgeConfigure"`
 
-	// 视频画面噪点检测的控制参数。
+	// <p>（不推荐，使用 Configs 替代）视频画面噪点检测的控制参数。</p>
 	NoiseConfigure *NoiseConfigureInfo `json:"NoiseConfigure,omitnil,omitempty" name:"NoiseConfigure"`
 
-	// 视频画面马赛克检测的控制参数。
+	// <p>（不推荐，使用 Configs 替代）视频画面马赛克检测的控制参数。</p>
 	MosaicConfigure *MosaicConfigureInfo `json:"MosaicConfigure,omitnil,omitempty" name:"MosaicConfigure"`
 
-	// 视频画面二维码检测的控制参数。
+	// <p>（不推荐，使用 Configs 替代）视频画面二维码检测的控制参数。</p>
 	QRCodeConfigure *QRCodeConfigureInfo `json:"QRCodeConfigure,omitnil,omitempty" name:"QRCodeConfigure"`
 
-	// 音频（静音、低音、爆音）检测的控制参数。
+	// <p>（不推荐，使用 Configs 替代）音频（静音、低音、爆音）检测的控制参数。</p>
 	VoiceConfigure *VoiceConfigureInfo `json:"VoiceConfigure,omitnil,omitempty" name:"VoiceConfigure"`
 
-	// 视频画面质量评价的控制参数。
+	// <p>（不推荐，使用 Configs 替代）视频画面质量评价的控制参数。</p>
 	QualityEvaluationConfigure *QualityEvaluationConfigureInfo `json:"QualityEvaluationConfigure,omitnil,omitempty" name:"QualityEvaluationConfigure"`
 }
 
@@ -8138,6 +8157,8 @@ func (r *CreateQualityInspectTemplateRequest) FromJsonString(s string) error {
 	delete(f, "SubAppId")
 	delete(f, "Name")
 	delete(f, "Comment")
+	delete(f, "Configs")
+	delete(f, "Strategy")
 	delete(f, "ScreenshotInterval")
 	delete(f, "JitterConfigure")
 	delete(f, "BlurConfigure")
@@ -8157,7 +8178,7 @@ func (r *CreateQualityInspectTemplateRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateQualityInspectTemplateResponseParams struct {
-	// 音画质检测模板 ID。
+	// <p>音画质检测模板 ID。</p>
 	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -24835,98 +24856,110 @@ func (r *ModifyProcessImageAsyncTemplateResponse) FromJsonString(s string) error
 
 // Predefined struct for user
 type ModifyQualityInspectTemplateRequestParams struct {
-	// 模板 ID。
+	// <p>模板 ID。</p>
 	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
 
-	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	// <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 
-	// 模板名称，长度限制：64 个字符。
+	// <p>模板名称，长度限制：64 个字符。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 模板描述信息，长度限制：256 个字符。
+	// <p>模板描述信息，长度限制：256 个字符。</p>
 	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
 
-	// 截帧间隔，单位为秒，最小值为 1。
+	// <p>音画质检测的配置参数。</p>
+	Configs []*QualityInspectConfig `json:"Configs,omitnil,omitempty" name:"Configs"`
+
+	// <p>音画质检测的抽检策略。</p>
+	Strategy *QualityInspectStrategy `json:"Strategy,omitnil,omitempty" name:"Strategy"`
+
+	// <p>（不推荐，使用 Configs 替代）截帧间隔，单位为秒，最小值为 1。</p>
 	ScreenshotInterval *float64 `json:"ScreenshotInterval,omitnil,omitempty" name:"ScreenshotInterval"`
 
-	// 视频画面抖动重影检测的控制参数。
+	// <p>（不推荐，使用 Configs 替代）视频画面抖动重影检测的控制参数。</p>
 	JitterConfigure *JitterConfigureInfoForUpdate `json:"JitterConfigure,omitnil,omitempty" name:"JitterConfigure"`
 
-	// 视频画面模糊检测的控制参数。
+	// <p>（不推荐，使用 Configs 替代）视频画面模糊检测的控制参数。</p>
 	BlurConfigure *BlurConfigureInfoForUpdate `json:"BlurConfigure,omitnil,omitempty" name:"BlurConfigure"`
 
-	// 视频画面低光、过曝检测的控制参数。
+	// <p>（不推荐，使用 Configs 替代）视频画面低光、过曝检测的控制参数。</p>
 	AbnormalLightingConfigure *AbnormalLightingConfigureInfoForUpdate `json:"AbnormalLightingConfigure,omitnil,omitempty" name:"AbnormalLightingConfigure"`
 
-	// 视频画面花屏检测的控制参数。
+	// <p>（不推荐，使用 Configs 替代）视频画面花屏检测的控制参数。</p>
 	CrashScreenConfigure *CrashScreenConfigureInfoForUpdate `json:"CrashScreenConfigure,omitnil,omitempty" name:"CrashScreenConfigure"`
 
-	// 视频画面黑边、白边、黑屏、白屏检测的控制参数。
+	// <p>（不推荐，使用 Configs 替代）视频画面黑边、白边、黑屏、白屏检测的控制参数。</p>
 	BlackWhiteEdgeConfigure *BlackWhiteEdgeConfigureInfoForUpdate `json:"BlackWhiteEdgeConfigure,omitnil,omitempty" name:"BlackWhiteEdgeConfigure"`
 
-	// 视频画面噪点检测的控制参数。
+	// <p>（不推荐，使用 Configs 替代）视频画面噪点检测的控制参数。</p>
 	NoiseConfigure *NoiseConfigureInfoForUpdate `json:"NoiseConfigure,omitnil,omitempty" name:"NoiseConfigure"`
 
-	// 视频画面马赛克检测的控制参数。
+	// <p>（不推荐，使用 Configs 替代）视频画面马赛克检测的控制参数。</p>
 	MosaicConfigure *MosaicConfigureInfoForUpdate `json:"MosaicConfigure,omitnil,omitempty" name:"MosaicConfigure"`
 
-	// 视频画面二维码检测的控制参数。
+	// <p>（不推荐，使用 Configs 替代）视频画面二维码检测的控制参数。</p>
 	QRCodeConfigure *QRCodeConfigureInfoForUpdate `json:"QRCodeConfigure,omitnil,omitempty" name:"QRCodeConfigure"`
 
-	// 音频（静音、低音、爆音）检测的控制参数。
+	// <p>（不推荐，使用 Configs 替代）音频（静音、低音、爆音）检测的控制参数。</p>
 	VoiceConfigure *VoiceConfigureInfoForUpdate `json:"VoiceConfigure,omitnil,omitempty" name:"VoiceConfigure"`
 
-	// 视频画面质量评价的控制参数。
+	// <p>（不推荐，使用 Configs 替代）视频画面质量评价的控制参数。</p>
 	QualityEvaluationConfigure *QualityEvaluationConfigureInfoForUpdate `json:"QualityEvaluationConfigure,omitnil,omitempty" name:"QualityEvaluationConfigure"`
 }
 
 type ModifyQualityInspectTemplateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 模板 ID。
+	// <p>模板 ID。</p>
 	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
 
-	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	// <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 
-	// 模板名称，长度限制：64 个字符。
+	// <p>模板名称，长度限制：64 个字符。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 模板描述信息，长度限制：256 个字符。
+	// <p>模板描述信息，长度限制：256 个字符。</p>
 	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
 
-	// 截帧间隔，单位为秒，最小值为 1。
+	// <p>音画质检测的配置参数。</p>
+	Configs []*QualityInspectConfig `json:"Configs,omitnil,omitempty" name:"Configs"`
+
+	// <p>音画质检测的抽检策略。</p>
+	Strategy *QualityInspectStrategy `json:"Strategy,omitnil,omitempty" name:"Strategy"`
+
+	// <p>（不推荐，使用 Configs 替代）截帧间隔，单位为秒，最小值为 1。</p>
 	ScreenshotInterval *float64 `json:"ScreenshotInterval,omitnil,omitempty" name:"ScreenshotInterval"`
 
-	// 视频画面抖动重影检测的控制参数。
+	// <p>（不推荐，使用 Configs 替代）视频画面抖动重影检测的控制参数。</p>
 	JitterConfigure *JitterConfigureInfoForUpdate `json:"JitterConfigure,omitnil,omitempty" name:"JitterConfigure"`
 
-	// 视频画面模糊检测的控制参数。
+	// <p>（不推荐，使用 Configs 替代）视频画面模糊检测的控制参数。</p>
 	BlurConfigure *BlurConfigureInfoForUpdate `json:"BlurConfigure,omitnil,omitempty" name:"BlurConfigure"`
 
-	// 视频画面低光、过曝检测的控制参数。
+	// <p>（不推荐，使用 Configs 替代）视频画面低光、过曝检测的控制参数。</p>
 	AbnormalLightingConfigure *AbnormalLightingConfigureInfoForUpdate `json:"AbnormalLightingConfigure,omitnil,omitempty" name:"AbnormalLightingConfigure"`
 
-	// 视频画面花屏检测的控制参数。
+	// <p>（不推荐，使用 Configs 替代）视频画面花屏检测的控制参数。</p>
 	CrashScreenConfigure *CrashScreenConfigureInfoForUpdate `json:"CrashScreenConfigure,omitnil,omitempty" name:"CrashScreenConfigure"`
 
-	// 视频画面黑边、白边、黑屏、白屏检测的控制参数。
+	// <p>（不推荐，使用 Configs 替代）视频画面黑边、白边、黑屏、白屏检测的控制参数。</p>
 	BlackWhiteEdgeConfigure *BlackWhiteEdgeConfigureInfoForUpdate `json:"BlackWhiteEdgeConfigure,omitnil,omitempty" name:"BlackWhiteEdgeConfigure"`
 
-	// 视频画面噪点检测的控制参数。
+	// <p>（不推荐，使用 Configs 替代）视频画面噪点检测的控制参数。</p>
 	NoiseConfigure *NoiseConfigureInfoForUpdate `json:"NoiseConfigure,omitnil,omitempty" name:"NoiseConfigure"`
 
-	// 视频画面马赛克检测的控制参数。
+	// <p>（不推荐，使用 Configs 替代）视频画面马赛克检测的控制参数。</p>
 	MosaicConfigure *MosaicConfigureInfoForUpdate `json:"MosaicConfigure,omitnil,omitempty" name:"MosaicConfigure"`
 
-	// 视频画面二维码检测的控制参数。
+	// <p>（不推荐，使用 Configs 替代）视频画面二维码检测的控制参数。</p>
 	QRCodeConfigure *QRCodeConfigureInfoForUpdate `json:"QRCodeConfigure,omitnil,omitempty" name:"QRCodeConfigure"`
 
-	// 音频（静音、低音、爆音）检测的控制参数。
+	// <p>（不推荐，使用 Configs 替代）音频（静音、低音、爆音）检测的控制参数。</p>
 	VoiceConfigure *VoiceConfigureInfoForUpdate `json:"VoiceConfigure,omitnil,omitempty" name:"VoiceConfigure"`
 
-	// 视频画面质量评价的控制参数。
+	// <p>（不推荐，使用 Configs 替代）视频画面质量评价的控制参数。</p>
 	QualityEvaluationConfigure *QualityEvaluationConfigureInfoForUpdate `json:"QualityEvaluationConfigure,omitnil,omitempty" name:"QualityEvaluationConfigure"`
 }
 
@@ -24946,6 +24979,8 @@ func (r *ModifyQualityInspectTemplateRequest) FromJsonString(s string) error {
 	delete(f, "SubAppId")
 	delete(f, "Name")
 	delete(f, "Comment")
+	delete(f, "Configs")
+	delete(f, "Strategy")
 	delete(f, "ScreenshotInterval")
 	delete(f, "JitterConfigure")
 	delete(f, "BlurConfigure")
@@ -28649,6 +28684,40 @@ type QualityEvaluationConfigureInfoForUpdate struct {
 	Score *int64 `json:"Score,omitnil,omitempty" name:"Score"`
 }
 
+type QualityInspectConfig struct {
+	// <p>检测项名称。</p><p>枚举值：</p><ul><li>LowEvaluation： 视频无参考评分（MOS）</li><li>AudioEvaluation： 音频无参考评分（MOS）</li><li>Mosaic： 马赛克检测</li><li>CrashScreen： 花屏检测</li><li>Blur： 模糊检测</li><li>Jitter： 抖动检测</li><li>Noise： 噪点检测</li><li>QRCode： 二维码检测</li><li>BarCode： 条形码检测</li><li>AppletCode： 小程序码检测</li><li>BlackWhiteEdge： 黑白边检测</li><li>SolidColorScreen： 纯色屏检测</li><li>LowLighting： 低光照</li><li>HighLighting： 过曝</li><li>NoVoice： 静音检测</li><li>LowVoice： 低音检测</li><li>HighVoice： 爆音检测</li><li>AudioNoise： 音频噪声检测</li><li>VideoResolutionChanged： 视频分辨率变化</li><li>AudioSampleRateChanged： 音频采样率变化</li><li>AudioChannelsChanged： 音频通道数变化</li><li>ParameterSetsChanged： 流参数集信息发生变化</li><li>DarOrSarInvalid： 视频的宽高比异常</li><li>TimestampFallback： DTS时间戳回退</li><li>DtsJitter： DTS抖动过大</li><li>PtsJitter： PTS抖动过大</li><li>AACDurationDeviation： AAC帧时间戳间隔不合理</li><li>AudioDroppingFrames： 音频丢帧</li><li>VideoDroppingFrames： 视频丢帧</li><li>AVTimestampInterleave： 音视频交织不合理</li><li>PtsLessThanDts： 媒体流的 pts 小于 dts</li><li>ReceiveFpsJitter： 网络接收帧率抖动过大</li><li>ReceiveFpsTooSmall： 网络接收视频帧率过小</li><li>FpsJitter： 通过PTS计算得到的流帧率抖动过大</li><li>StreamOpenFailed： 流打开失败</li><li>StreamEnd： 流结束</li><li>StreamParseFailed： 流解析失败</li><li>VideoFirstFrameNotIdr： 首帧不是IDR帧</li><li>StreamNALUError： NALU起始码错误</li><li>TsStreamNoAud： mpegts的H26x流缺失 AUD NALU</li><li>AudioStreamLack： 无音频流</li><li>VideoStreamLack： 无视频流</li><li>LackAudioRecover： 缺失音频流恢复</li><li>LackVideoRecover： 缺失视频流恢复</li><li>VideoBitrateOutofRange： 视频流码率(kbps)超出范围</li><li>AudioBitrateOutofRange： 音频流码率(kbps)超出范围</li><li>VideoDecodeFailed： 视频解码错误</li><li>AudioDecodeFailed： 音频解码错误</li><li>AudioOutOfPhase： 双通道音频相位相反</li><li>VideoDuplicatedFrame： 视频流中存在重复帧</li><li>AudioDuplicatedFrame： 音频流中存在重复帧</li><li>VideoRotation： 视频画面旋转</li><li>TsMultiPrograms： MPEG2-TS流有多个program</li><li>Mp4InvalidCodecFourcc： MP4中codec fourcc不符合Apple HLS要求</li><li>HLSBadM3u8Format： 无效的m3u8文件</li><li>HLSInvalidMasterM3u8： 无效的main m3u8文件</li><li>HLSInvalidMediaM3u8： 无效的media m3u8文件</li><li>HLSMasterM3u8Recommended： main m3u8缺少标准推荐的参数</li><li>HLSMediaM3u8Recommended： media m3u8缺少标准推荐的参数</li><li>HLSMediaM3u8DiscontinuityExist： media m3u8存在EXT-X-DISCONTINUITY</li><li>HLSMediaSegmentsStreamNumChange： 切片的流数目发生变化</li><li>HLSMediaSegmentsPTSJitterDeviation： 切片间PTS跳变且没有EXT-X-DISCONTINUITY</li><li>HLSMediaSegmentsDTSJitterDeviation： 切片间DTS跳变且没有EXT-X-DISCONTINUITY</li><li>TimecodeTrackExist： MP4存在tmcd轨道</li><li>BodyPoseCheck： 人体姿态异常</li><li>BodyDetailCheck： 人体细节异常</li><li>PhysicRulesCheck： 物理规律违反</li><li>ObjectConsistencyCheck： 物体一致性异常</li><li>FormatCheck： 格式异常</li><li>AudioReverb： 混响程度</li><li>AudioDiscontinuity： 音频不连续</li><li>AudioSpeechQuality： 语音清晰度</li><li>AudioHighLoudness： 响度失真</li><li>AudioLoudnessJitter： 音量变化剧烈</li><li>BackgroundMusic： 存在背景音乐</li><li>NoBackgroundMusic： 不存在背景音乐</li><li>VideoAesthetic： 视频美学评分</li><li>AudioVideoAsync： 音画不同步</li><li>AudioSubtitleAsync： 音频与字幕不同步</li></ul>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>能力配置开关。</p><p>枚举值：</p><ul><li>ON： 开启。</li><li>OFF： 关闭。</li></ul><p>默认值：ON</p>
+	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
+
+	// <p>采样方式</p><p>枚举值：</p><ul><li>Time： 根据时间间隔采样。</li></ul>
+	Sampling *string `json:"Sampling,omitnil,omitempty" name:"Sampling"`
+
+	// <p>采样间隔时间</p><p>单位：毫秒。</p>
+	IntervalTime *int64 `json:"IntervalTime,omitnil,omitempty" name:"IntervalTime"`
+
+	// <p>异常持续时间。</p><p>单位：毫秒。</p>
+	Duration *int64 `json:"Duration,omitnil,omitempty" name:"Duration"`
+
+	// <p>检测项对应的阈值，不同检测项对应阈值不同。</p>
+	Threshold *string `json:"Threshold,omitnil,omitempty" name:"Threshold"`
+}
+
+type QualityInspectContainerDiagnoseResultItem struct {
+	// <p>诊断出的异常类别</p><p>枚举值：</p><ul><li>DecodeParamException： 解码参数异常。</li><li>TimeStampException： 时间戳异常。</li><li>FrameException： 帧率异常。</li><li>StreamStatusException： 流状态异常。</li><li>StreamInfo： 流信息异常。</li><li>StreamAbnormalCharacteristics： 流特征异常。</li><li>DecodeException： 解码异常。</li><li>HLSRequirements： HLS 格式异常。</li></ul>
+	Category *string `json:"Category,omitnil,omitempty" name:"Category"`
+
+	// <p>诊断出的具体异常类型。</p><p>枚举值：</p><ul><li>VideoResolutionChanged： 视频分辨率变化。</li><li>AudioSampleRateChanged： 音频采样率变化。</li><li>AudioChannelsChanged： 音频通道数变化。</li><li>ParameterSetsChanged： 流参数集信息发生变化。</li><li>DarOrSarInvalid： 视频的宽高比异常。</li><li>TimestampFallback： DTS时间戳回退。</li><li>DtsJitter： DTS抖动过大。</li><li>PtsJitter： PTS抖动过大。</li><li>AACDurationDeviation： AAC帧时间戳间隔不合理。</li><li>AudioDroppingFrames： 音频丢帧。</li><li>VideoDroppingFrames： 视频丢帧。</li><li>AVTimestampInterleave： 音视频交织不合理。</li><li>PtsLessThanDts： 媒体流的 pts 小于 dts。</li><li>ReceiveFpsJitter： 网络接收帧率抖动过大。</li><li>ReceiveFpsTooSmall： 网络接收视频帧率过小。</li><li>FpsJitter： 通过PTS计算得到的流帧率抖动过大。</li><li>StreamOpenFailed： 流打开失败。</li><li>StreamEnd： 流结束。</li><li>StreamParseFailed： 流解析失败。</li><li>VideoFirstFrameNotIdr： 首帧不是IDR帧。</li><li>StreamNALUError： NALU起始码错误。</li><li>TsStreamNoAud： mpegts 的 H26x 流缺失 AUD NALU。</li><li>AudioStreamLack： 无音频流。</li><li>VideoStreamLack： 无视频流。</li><li>LackAudioRecover： 缺失音频流恢复。</li><li>LackVideoRecover： 缺失视频流恢复。</li><li>VideoBitrateOutofRange： 视频流码率(kbps)超出范围。</li><li>AudioBitrateOutofRange： 音频流码率(kbps)超出范围。</li><li>VideoDecodeFailed： 视频解码错误。</li><li>AudioDecodeFailed： 音频解码错误。</li><li>AudioOutOfPhase： 双通道音频相位相反。</li><li>VideoDuplicatedFrame： 视频流中存在重复帧。</li><li>AudioDuplicatedFrame： 音频流中存在重复帧。</li><li>VideoRotation： 视频画面旋转。</li><li>TsMultiPrograms： MPEG2-TS流有多个program。</li><li>Mp4InvalidCodecFourcc： MP4中codec fourcc不符合Apple HLS要求。</li><li>HLSBadM3u8Format： 无效的m3u8文件。</li><li>HLSInvalidMasterM3u8： 无效的main m3u8文件。</li><li>HLSInvalidMediaM3u8： 无效的media m3u8文件。</li><li>HLSMasterM3u8Recommended： main m3u8缺少标准推荐的参数。</li><li>HLSMediaM3u8Recommended： media m3u8缺少标准推荐的参数。</li><li>HLSMediaM3u8DiscontinuityExist： media m3u8存在 EXT-X-DISCONTINUITY。</li><li>HLSMediaSegmentsStreamNumChange： 切片的流数目发生变化。</li><li>HLSMediaSegmentsPTSJitterDeviation： 切片间 PTS 跳变且没有 EXT-X-DISCONTINUITY。</li><li>HLSMediaSegmentsDTSJitterDeviation： 切片间 DTS 跳变且没有 EXT-X-DISCONTINUITY。</li><li>TimecodeTrackExist： MP4存在tmcd轨道</li></ul>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>诊断出的异常级别。</p><p>枚举值：</p><ul><li>Fatal： 影响后续播放和解析。</li><li>Error： 可能会影响播放。</li><li>Warning： 可能会有潜在风险，但不一定会影响播放。</li><li>Notice： 比较重要的流信息。</li><li>Info： 一般性的流信息。</li></ul>
+	SeverityLevel *string `json:"SeverityLevel,omitnil,omitempty" name:"SeverityLevel"`
+
+	// <p>时间戳。</p>
+	TimestampSet []*float64 `json:"TimestampSet,omitnil,omitempty" name:"TimestampSet"`
+}
+
 type QualityInspectItem struct {
 	// 异常片段起始的偏移时间，单位：秒。
 	StartTimeOffset *float64 `json:"StartTimeOffset,omitnil,omitempty" name:"StartTimeOffset"`
@@ -28674,35 +28743,77 @@ type QualityInspectItem struct {
 	Confidence *uint64 `json:"Confidence,omitnil,omitempty" name:"Confidence"`
 }
 
-type QualityInspectResultItem struct {
-	// 异常类型，取值范围：
-	// <li>Jitter：抖动；</li>
-	// <li>Blur：模糊；</li>
-	// <li>LowLighting：低光照；</li>
-	// <li>HighLighting：过曝；</li>
-	// <li>CrashScreen：花屏；</li>
-	// <li>BlackWhiteEdge：黑白边；</li>
-	// <li>SolidColorScreen：纯色屏；</li>
-	// <li>Noise：噪点；</li>
-	// <li>Mosaic：马赛克；</li>
-	// <li>QRCode：二维码；</li>
-	// <li>AppletCode：小程序码；</li>
-	// <li>BarCode：条形码；</li>
-	// <li>LowVoice：低音；</li>
-	// <li>HighVoice：爆音；</li>
-	// <li>NoVoice：静音；</li>
-	// <li>LowEvaluation：无参考打分低于阈值。</li>
+type QualityInspectLLMDetectionIssue struct {
+	// <p>问题分类标签。</p>
+	Tag *string `json:"Tag,omitnil,omitempty" name:"Tag"`
+
+	// <p>问题描述。</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>该问题的质量得分</p><p>取值范围：[0, 100]</p>
+	Score *float64 `json:"Score,omitnil,omitempty" name:"Score"`
+
+	// <p>该问题的判断置信度</p><p>取值范围：[0, 100]</p>
+	Confidence *float64 `json:"Confidence,omitnil,omitempty" name:"Confidence"`
+
+	// <p>问题起始时间。</p><p>单位：毫秒。</p>
+	StartTimeMs *int64 `json:"StartTimeMs,omitnil,omitempty" name:"StartTimeMs"`
+
+	// <p>问题结束时间。</p><p>单位：毫秒。</p>
+	EndTimeMs *int64 `json:"EndTimeMs,omitnil,omitempty" name:"EndTimeMs"`
+
+	// <p>附加数据（JSON 格式），如严重程度等补充信息。</p>
+	ExtraData *string `json:"ExtraData,omitnil,omitempty" name:"ExtraData"`
+}
+
+type QualityInspectLLMDetectionReport struct {
+	// <p>检测结果数量。</p>
+	ResultCount *int64 `json:"ResultCount,omitnil,omitempty" name:"ResultCount"`
+
+	// <p>各检测项结果列表。</p>
+	ResultSet []*QualityInspectLLMDetectionResultItem `json:"ResultSet,omitnil,omitempty" name:"ResultSet"`
+}
+
+type QualityInspectLLMDetectionResultItem struct {
+	// <p>检测分类。</p><p>枚举值：</p><ul><li>AIGCQualityCharacteristics： AIGC 质量特征。</li></ul>
+	Category *string `json:"Category,omitnil,omitempty" name:"Category"`
+
+	// <p>检测分组。</p><p>枚举值：</p><ul><li>AIGCAuthenticity： AIGC 真实性，包括人体合理性、物理合理性、跨帧一致性等。</li><li>AIGCTechQuality： AIGC 技术质量，包括画幅、黑边、强行竖屏等。</li></ul>
+	Group *string `json:"Group,omitnil,omitempty" name:"Group"`
+
+	// <p>检测类型名称。</p><p>枚举值：</p><ul><li>BodyPoseCheck： 人体姿态合理性，属于 AIGCAuthenticity。</li><li>BodyDetailCheck： 人体细节合理性，包括手指数、五官对称等，属于 AIGCAuthenticity。</li><li>PhysicRulesCheck： 物理规律合理性，包括透视、光影、重力等，属于 AIGCAuthenticity。</li><li>ObjectConsistencyCheck： 跨帧物体一致性，属于 AIGCAuthenticity。</li><li>FormatCheck： 画幅、黑边、强行竖屏等格式问题，属于 AIGCTechQuality。</li></ul>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 异常片段列表。
-	// <font color=red>注意：</font> 该列表最多仅展示前 100 个元素。如希望获得完整结果，请从 SegmentSetFileUrl 对应的文件中获取。
+	// <p>整体质量得分，范围 [0, 100]，越高表示越好。</p>
+	Score *float64 `json:"Score,omitnil,omitempty" name:"Score"`
+
+	// <p>判断置信度，范围 [0, 100]，越高表示越确定。</p>
+	Confidence *float64 `json:"Confidence,omitnil,omitempty" name:"Confidence"`
+
+	// <p>检测发现的问题列表，无问题时为空。</p>
+	IssueSet []*QualityInspectLLMDetectionIssue `json:"IssueSet,omitnil,omitempty" name:"IssueSet"`
+}
+
+type QualityInspectResultItem struct {
+	// <p>异常类型，取值范围：</p><li>Jitter：抖动；</li><li>Blur：模糊；</li><li>LowLighting：低光照；</li><li>HighLighting：过曝；</li><li>CrashScreen：花屏；</li><li>BlackWhiteEdge：黑白边；</li><li>SolidColorScreen：纯色屏；</li><li>Noise：噪点；</li><li>Mosaic：马赛克；</li><li>QRCode：二维码；</li><li>AppletCode：小程序码；</li><li>BarCode：条形码；</li><li>LowVoice：低音；</li><li>HighVoice：爆音；</li><li>NoVoice：静音；</li><li>LowEvaluation：无参考打分低于阈值。</li><li> LowColorfulness：色彩丰富度信息。</li><li> AudioVideoAsync：音画不同步。</li><li> AudioSubtitleAsync：音频与字幕不同步。</li><li> VideoAesthetic：视频美学评分低。</li><li> AudioDiscontinuity：音频不连续。</li><li> AudioVolume：音量信息。</li><li> AudioLoudnessJitter：音量变化剧烈。</li><li> BackgroundMusic：存在背景音乐。</li><li> AudioEvaluation：低音质。</li><li> AudioNoise：噪声。</li><li> AudioSpeechQuality：语音清晰度低。</li><li> AudioReverb：混响程度高。</li><li> AudioHighLoudness：响度失真。</li>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>异常片段列表。<br><font color="red">注意：</font> 该列表最多仅展示前 100 个元素。如希望获得完整结果，请从 SegmentSetFileUrl 对应的文件中获取。</p>
 	SegmentSet []*QualityInspectItem `json:"SegmentSet,omitnil,omitempty" name:"SegmentSet"`
 
-	// 异常片段列表文件 URL。文件 内容 为  JSON，数据结构与 SegmentSet 字段一致。（文件不会永久存储，到达SegmentSetFileUrlExpireTime 时间点后文件将被删除）。
+	// <p>异常片段列表文件 URL。文件 内容 为  JSON，数据结构与 SegmentSet 字段一致。（文件不会永久存储，到达SegmentSetFileUrlExpireTime 时间点后文件将被删除）。</p>
 	SegmentSetFileUrl *string `json:"SegmentSetFileUrl,omitnil,omitempty" name:"SegmentSetFileUrl"`
 
-	// 异常片段列表文件 URL 失效时间，使用  [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	// <p>异常片段列表文件 URL 失效时间，使用  <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式</a>。</p>
 	SegmentSetFileUrlExpireTime *string `json:"SegmentSetFileUrlExpireTime,omitnil,omitempty" name:"SegmentSetFileUrlExpireTime"`
+}
+
+type QualityInspectStrategy struct {
+	// <p>策略类型。</p><p>枚举值：</p><ul><li>TimeSpotCheck： 根据时间的抽检策略。</li></ul>
+	StrategyType *string `json:"StrategyType,omitnil,omitempty" name:"StrategyType"`
+
+	// <p>根据时间的抽检策略参数，当 StrategyType 为 TimeSpotCheck 时有效。</p>
+	TimeSpotCheck *QualityInspectTimeSpotCheck `json:"TimeSpotCheck,omitnil,omitempty" name:"TimeSpotCheck"`
 }
 
 type QualityInspectTask struct {
@@ -28746,76 +28857,102 @@ type QualityInspectTaskInput struct {
 }
 
 type QualityInspectTaskOutput struct {
-	// 媒体文件是否无音频轨，取值范围：
-	// <li>0：否，即有音频轨；</li>
-	// <li>1：是，即无音频轨。</li>
+	// <p>媒体文件是否无音频轨，取值范围：</p><li>0：否，即有音频轨；</li><li>1：是，即无音频轨。</li>
 	NoAudio *int64 `json:"NoAudio,omitnil,omitempty" name:"NoAudio"`
 
-	// 媒体文件是否无视频轨，取值范围：
-	// <li>0：否，即有视频轨；</li>
-	// <li>1：是，即无视频轨。</li>
+	// <p>媒体文件是否无视频轨，取值范围：</p><li>0：否，即有视频轨；</li><li>1：是，即无视频轨。</li>
 	NoVideo *int64 `json:"NoVideo,omitnil,omitempty" name:"NoVideo"`
 
-	// 视频画面质量评分，取值范围：[0, 100]。
+	// <p>视频画面质量评分，取值范围：[0, 100]。</p>
 	QualityEvaluationScore *uint64 `json:"QualityEvaluationScore,omitnil,omitempty" name:"QualityEvaluationScore"`
 
-	// 音画质检测出的异常项列表。
+	// <p>音画质检测出的异常项列表。</p>
 	QualityInspectResultSet []*QualityInspectResultItem `json:"QualityInspectResultSet,omitnil,omitempty" name:"QualityInspectResultSet"`
+
+	// <p>视频无参考质量评分，MOS分数。</p>
+	QualityEvaluationMeanOpinionScore *float64 `json:"QualityEvaluationMeanOpinionScore,omitnil,omitempty" name:"QualityEvaluationMeanOpinionScore"`
+
+	// <p>视频美学评分，范围：[0,100]。</p>
+	AestheticEvaluationScore *int64 `json:"AestheticEvaluationScore,omitnil,omitempty" name:"AestheticEvaluationScore"`
+
+	// <p>格式诊断检出异常项。</p>
+	ContainerDiagnoseResultSet []*QualityInspectContainerDiagnoseResultItem `json:"ContainerDiagnoseResultSet,omitnil,omitempty" name:"ContainerDiagnoseResultSet"`
+
+	// <p>LLM 大模型 AIGC 质量检测结果。</p>
+	LLMDetectionReport *QualityInspectLLMDetectionReport `json:"LLMDetectionReport,omitnil,omitempty" name:"LLMDetectionReport"`
 }
 
 type QualityInspectTemplateItem struct {
-	// 模板 ID。
+	// <p>模板 ID。</p>
 	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
 
-	// 模板类型，可选值：
-	// <li>Preset：系统预置模板；</li>
-	// <li>Custom：用户自定义模板。</li>
+	// <p>模板类型，可选值：</p><li>Preset：系统预置模板；</li><li>Custom：用户自定义模板。</li>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 模板名称。
+	// <p>模板名称。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 模板描述。
+	// <p>模板描述。</p>
 	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
 
-	// 截帧间隔，单位为秒。
-	ScreenshotInterval *float64 `json:"ScreenshotInterval,omitnil,omitempty" name:"ScreenshotInterval"`
+	// <p>音画质检测的配置参数。</p>
+	Configs []*QualityInspectConfig `json:"Configs,omitnil,omitempty" name:"Configs"`
 
-	// 视频画面抖动重影检测的控制参数。
-	JitterConfigure *JitterConfigureInfo `json:"JitterConfigure,omitnil,omitempty" name:"JitterConfigure"`
+	// <p>音画质检测的抽检策略。</p>
+	Strategy *QualityInspectStrategy `json:"Strategy,omitnil,omitempty" name:"Strategy"`
 
-	// 视频画面模糊检测的控制参数。
-	BlurConfigure *BlurConfigureInfo `json:"BlurConfigure,omitnil,omitempty" name:"BlurConfigure"`
-
-	// 视频画面低光、过曝检测的控制参数。
-	AbnormalLightingConfigure *AbnormalLightingConfigureInfo `json:"AbnormalLightingConfigure,omitnil,omitempty" name:"AbnormalLightingConfigure"`
-
-	// 视频画面花屏检测的控制参数。
-	CrashScreenConfigure *CrashScreenConfigureInfo `json:"CrashScreenConfigure,omitnil,omitempty" name:"CrashScreenConfigure"`
-
-	// 视频画面黑边、白边、黑屏、白屏检测的控制参数。
-	BlackWhiteEdgeConfigure *BlackWhiteEdgeConfigureInfo `json:"BlackWhiteEdgeConfigure,omitnil,omitempty" name:"BlackWhiteEdgeConfigure"`
-
-	// 视频画面噪点检测的控制参数。
-	NoiseConfigure *NoiseConfigureInfo `json:"NoiseConfigure,omitnil,omitempty" name:"NoiseConfigure"`
-
-	// 视频画面马赛克检测的控制参数。
-	MosaicConfigure *MosaicConfigureInfo `json:"MosaicConfigure,omitnil,omitempty" name:"MosaicConfigure"`
-
-	// 视频画面二维码检测的控制参数。
-	QRCodeConfigure *QRCodeConfigureInfo `json:"QRCodeConfigure,omitnil,omitempty" name:"QRCodeConfigure"`
-
-	// 视频画面质量评价的控制参数。
-	QualityEvaluationConfigure *QualityEvaluationConfigureInfo `json:"QualityEvaluationConfigure,omitnil,omitempty" name:"QualityEvaluationConfigure"`
-
-	// 音频（静音、低音、爆音）检测的控制参数。
-	VoiceConfigure *VoiceConfigureInfo `json:"VoiceConfigure,omitnil,omitempty" name:"VoiceConfigure"`
-
-	// 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	// <p>模板创建时间，使用 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式</a>。</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	// <p>模板最后修改时间，使用 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式</a>。</p>
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// <p>（不推荐，使用 Configs 替代）截帧间隔，单位为秒。</p>
+	ScreenshotInterval *float64 `json:"ScreenshotInterval,omitnil,omitempty" name:"ScreenshotInterval"`
+
+	// <p>（不推荐，使用 Configs 替代）视频画面抖动重影检测的控制参数。</p>
+	JitterConfigure *JitterConfigureInfo `json:"JitterConfigure,omitnil,omitempty" name:"JitterConfigure"`
+
+	// <p>（不推荐，使用 Configs 替代）视频画面模糊检测的控制参数。</p>
+	BlurConfigure *BlurConfigureInfo `json:"BlurConfigure,omitnil,omitempty" name:"BlurConfigure"`
+
+	// <p>（不推荐，使用 Configs 替代）视频画面低光、过曝检测的控制参数。</p>
+	AbnormalLightingConfigure *AbnormalLightingConfigureInfo `json:"AbnormalLightingConfigure,omitnil,omitempty" name:"AbnormalLightingConfigure"`
+
+	// <p>（不推荐，使用 Configs 替代）视频画面花屏检测的控制参数。</p>
+	CrashScreenConfigure *CrashScreenConfigureInfo `json:"CrashScreenConfigure,omitnil,omitempty" name:"CrashScreenConfigure"`
+
+	// <p>视频画面黑边、白边、黑屏、白屏检测的控制参数。</p>
+	BlackWhiteEdgeConfigure *BlackWhiteEdgeConfigureInfo `json:"BlackWhiteEdgeConfigure,omitnil,omitempty" name:"BlackWhiteEdgeConfigure"`
+
+	// <p>（不推荐，使用 Configs 替代）视频画面噪点检测的控制参数。</p>
+	NoiseConfigure *NoiseConfigureInfo `json:"NoiseConfigure,omitnil,omitempty" name:"NoiseConfigure"`
+
+	// <p>（不推荐，使用 Configs 替代）视频画面马赛克检测的控制参数。</p>
+	MosaicConfigure *MosaicConfigureInfo `json:"MosaicConfigure,omitnil,omitempty" name:"MosaicConfigure"`
+
+	// <p>（不推荐，使用 Configs 替代）视频画面二维码检测的控制参数。</p>
+	QRCodeConfigure *QRCodeConfigureInfo `json:"QRCodeConfigure,omitnil,omitempty" name:"QRCodeConfigure"`
+
+	// <p>（不推荐，使用 Configs 替代）视频画面质量评价的控制参数。</p>
+	QualityEvaluationConfigure *QualityEvaluationConfigureInfo `json:"QualityEvaluationConfigure,omitnil,omitempty" name:"QualityEvaluationConfigure"`
+
+	// <p>（不推荐，使用 Configs 替代）音频（静音、低音、爆音）检测的控制参数。</p>
+	VoiceConfigure *VoiceConfigureInfo `json:"VoiceConfigure,omitnil,omitempty" name:"VoiceConfigure"`
+}
+
+type QualityInspectTimeSpotCheck struct {
+	// <p>每次循环检测的时长。</p><p>取值范围：[10, 86400]</p><p>单位：秒。</p>
+	CheckDuration *int64 `json:"CheckDuration,omitnil,omitempty" name:"CheckDuration"`
+
+	// <p>抽检间隔，表示在一次检测结束后，等待多长时间后，再次检测</p><p>取值范围：[10, 3600]</p><p>单位：秒。</p>
+	CheckInterval *int64 `json:"CheckInterval,omitnil,omitempty" name:"CheckInterval"`
+
+	// <p>片头跳过时长。</p><p>取值范围：[1, 1800]</p><p>单位：秒。</p>
+	SkipDuration *int64 `json:"SkipDuration,omitnil,omitempty" name:"SkipDuration"`
+
+	// <p>循环次数。</p><p>取值范围：[0, 1000]</p>
+	CirclesNumber *int64 `json:"CirclesNumber,omitnil,omitempty" name:"CirclesNumber"`
 }
 
 type RebuildAudioInfo struct {

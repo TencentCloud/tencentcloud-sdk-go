@@ -25,7 +25,7 @@ type AssessDeviceRiskPremiumProRequestParams struct {
 	// <p>用户设备指纹token标识，在您的网站或者应用程序中集成设备指纹的SDK后获取</p>
 	DeviceToken *string `json:"DeviceToken,omitnil,omitempty" name:"DeviceToken"`
 
-	// <p>客户端 IP 地址</p>
+	// <p>客户端 IP 地址（IPv4或IPv6）</p>
 	UserIp *string `json:"UserIp,omitnil,omitempty" name:"UserIp"`
 }
 
@@ -35,7 +35,7 @@ type AssessDeviceRiskPremiumProRequest struct {
 	// <p>用户设备指纹token标识，在您的网站或者应用程序中集成设备指纹的SDK后获取</p>
 	DeviceToken *string `json:"DeviceToken,omitnil,omitempty" name:"DeviceToken"`
 
-	// <p>客户端 IP 地址</p>
+	// <p>客户端 IP 地址（IPv4或IPv6）</p>
 	UserIp *string `json:"UserIp,omitnil,omitempty" name:"UserIp"`
 }
 
@@ -104,7 +104,7 @@ type AssessDeviceRiskProRequestParams struct {
 	// <p>用户设备指纹token标识，在您的网站或者应用程序中集成设备指纹的SDK后获取</p>
 	DeviceToken *string `json:"DeviceToken,omitnil,omitempty" name:"DeviceToken"`
 
-	// <p>客户端 IP 地址</p>
+	// <p>客户端 IP 地址（IPv4或IPv6）</p>
 	UserIp *string `json:"UserIp,omitnil,omitempty" name:"UserIp"`
 }
 
@@ -114,7 +114,7 @@ type AssessDeviceRiskProRequest struct {
 	// <p>用户设备指纹token标识，在您的网站或者应用程序中集成设备指纹的SDK后获取</p>
 	DeviceToken *string `json:"DeviceToken,omitnil,omitempty" name:"DeviceToken"`
 
-	// <p>客户端 IP 地址</p>
+	// <p>客户端 IP 地址（IPv4或IPv6）</p>
 	UserIp *string `json:"UserIp,omitnil,omitempty" name:"UserIp"`
 }
 
@@ -173,14 +173,14 @@ type AssessDeviceRiskRsp struct {
 
 // Predefined struct for user
 type AssessEnvironmentRiskRequestParams struct {
-	// <p>客户端 IP 地址</p>
+	// <p>客户端 IP 地址（IPv4或IPv6）</p>
 	UserIp *string `json:"UserIp,omitnil,omitempty" name:"UserIp"`
 }
 
 type AssessEnvironmentRiskRequest struct {
 	*tchttp.BaseRequest
 	
-	// <p>客户端 IP 地址</p>
+	// <p>客户端 IP 地址（IPv4或IPv6）</p>
 	UserIp *string `json:"UserIp,omitnil,omitempty" name:"UserIp"`
 }
 

@@ -1845,6 +1845,74 @@ func (c *Client) ModifyDataRepositoryBandwidthWithContext(ctx context.Context, r
     return
 }
 
+func NewModifyDataRepositoryTaskStatusRequest() (request *ModifyDataRepositoryTaskStatusRequest) {
+    request = &ModifyDataRepositoryTaskStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("goosefs", APIVersion, "ModifyDataRepositoryTaskStatus")
+    
+    
+    return
+}
+
+func NewModifyDataRepositoryTaskStatusResponse() (response *ModifyDataRepositoryTaskStatusResponse) {
+    response = &ModifyDataRepositoryTaskStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyDataRepositoryTaskStatus
+// 修改数据流动任务状态，目前支持任务暂停/恢复
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyDataRepositoryTaskStatus(request *ModifyDataRepositoryTaskStatusRequest) (response *ModifyDataRepositoryTaskStatusResponse, err error) {
+    return c.ModifyDataRepositoryTaskStatusWithContext(context.Background(), request)
+}
+
+// ModifyDataRepositoryTaskStatus
+// 修改数据流动任务状态，目前支持任务暂停/恢复
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyDataRepositoryTaskStatusWithContext(ctx context.Context, request *ModifyDataRepositoryTaskStatusRequest) (response *ModifyDataRepositoryTaskStatusResponse, err error) {
+    if request == nil {
+        request = NewModifyDataRepositoryTaskStatusRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "goosefs", APIVersion, "ModifyDataRepositoryTaskStatus")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDataRepositoryTaskStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDataRepositoryTaskStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewMountMultipleStorageFileSystemRequest() (request *MountMultipleStorageFileSystemRequest) {
     request = &MountMultipleStorageFileSystemRequest{
         BaseRequest: &tchttp.BaseRequest{},

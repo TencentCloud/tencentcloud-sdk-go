@@ -16824,6 +16824,9 @@ type DescribeVoicesResponseParams struct {
 	// <p>错误信息，成功时返回success</p>
 	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
 
+	// <p>符合查询条件的音色总数</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
 	// <p>可用音色列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Voices []*VoiceInfo `json:"Voices,omitnil,omitempty" name:"Voices"`

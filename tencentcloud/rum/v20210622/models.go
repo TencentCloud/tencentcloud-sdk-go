@@ -10491,26 +10491,26 @@ func (r *DescribeRumLogExportsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRumLogExportsV2RequestParams struct {
-	// <p>Page size</p>
+	// <p>每页返回任务数</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// <p>Page number</p>
+	// <p>当前页码</p>
 	PageNum *int64 `json:"PageNum,omitnil,omitempty" name:"PageNum"`
 
-	// <p>Project ID</p>
+	// <p>项目ID</p>
 	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
 }
 
 type DescribeRumLogExportsV2Request struct {
 	*tchttp.BaseRequest
 	
-	// <p>Page size</p>
+	// <p>每页返回任务数</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// <p>Page number</p>
+	// <p>当前页码</p>
 	PageNum *int64 `json:"PageNum,omitnil,omitempty" name:"PageNum"`
 
-	// <p>Project ID</p>
+	// <p>项目ID</p>
 	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
 }
 
