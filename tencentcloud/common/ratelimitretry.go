@@ -8,7 +8,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
+	tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
 	tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
@@ -17,7 +17,10 @@ const (
 	tplRateLimitRetry = "[WARN] rate limit exceeded, retrying (%d/%d) in %f seconds: %s"
 )
 
-func (c *Client) sendWithRateLimitRetry(req *http.Request, retryable bool) (resp *http.Response, err error) {
+func (c *Client) sendWithRateLimitRetry(req *http.Request) (resp *http.Response, err error) {
+	tcr := tchttp.RequestFromContext(req.Context())
+	retryable := tcr != nil && isRetryable(tcr)
+
 	// make sure maxRetries is more than 0
 	maxRetries := maxInt(c.profile.RateLimitExceededMaxRetries, 0)
 	durationFunc := safeDurationFunc(c.profile.RateLimitExceededRetryDuration)
@@ -36,7 +39,6 @@ func (c *Client) sendWithRateLimitRetry(req *http.Request, retryable bool) (resp
 		if err != nil {
 			return
 		}
-
 		err = decompressBodyReader(resp)
 		if err != nil {
 			return resp, err
@@ -44,7 +46,7 @@ func (c *Client) sendWithRateLimitRetry(req *http.Request, retryable bool) (resp
 
 		err = tchttp.TryReadErr(resp)
 		// should not sleep on last request
-		if err, ok := err.(*errors.TencentCloudSDKError); ok && err.Code == codeLimitExceeded && idx < maxRetries {
+		if err, ok := err.(*tcerr.TencentCloudSDKError); ok && err.Code == codeLimitExceeded && idx < maxRetries {
 			duration := durationFunc(idx)
 			if c.debug {
 				c.logger.Printf(tplRateLimitRetry, idx, maxRetries, duration.Seconds(), err.Error())

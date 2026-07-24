@@ -14,8 +14,7 @@ type value struct {
 func (v *value) int() (int, error) {
 	i, e := strconv.Atoi(v.raw)
 	if e != nil {
-		msg := fmt.Sprintf("failed to parsing %s to int: %s", v.raw, e.Error())
-		e = tcerr.NewTencentCloudSDKError(iniErr, msg, "")
+		e = tcerr.NewTencentCloudSDKErrorWithCause(iniErr, fmt.Sprintf("failed to parsing %s to int", v.raw), "", e)
 	}
 	return i, e
 }
@@ -23,8 +22,7 @@ func (v *value) int() (int, error) {
 func (v *value) int64() (int64, error) {
 	i, e := strconv.ParseInt(v.raw, 10, 64)
 	if e != nil {
-		msg := fmt.Sprintf("failed to parsing %s to int64: %s", v.raw, e.Error())
-		e = tcerr.NewTencentCloudSDKError(iniErr, msg, "")
+		e = tcerr.NewTencentCloudSDKErrorWithCause(iniErr, fmt.Sprintf("failed to parsing %s to int64", v.raw), "", e)
 	}
 	return i, e
 }
@@ -47,16 +45,14 @@ func (v *value) bool() (bool, error) {
 func (v *value) float32() (float32, error) {
 	f, e := strconv.ParseFloat(v.raw, 32)
 	if e != nil {
-		msg := fmt.Sprintf("failed to parse %s to Float32: %s", v.raw, e.Error())
-		e = tcerr.NewTencentCloudSDKError(iniErr, msg, "")
+		e = tcerr.NewTencentCloudSDKErrorWithCause(iniErr, fmt.Sprintf("failed to parse %s to Float32", v.raw), "", e)
 	}
 	return float32(f), e
 }
 func (v *value) float64() (float64, error) {
 	f, e := strconv.ParseFloat(v.raw, 64)
 	if e != nil {
-		msg := fmt.Sprintf("failed to parse %s to Float64: %s", v.raw, e.Error())
-		e = tcerr.NewTencentCloudSDKError(iniErr, msg, "")
+		e = tcerr.NewTencentCloudSDKErrorWithCause(iniErr, fmt.Sprintf("failed to parse %s to Float64", v.raw), "", e)
 	}
 
 	return f, e

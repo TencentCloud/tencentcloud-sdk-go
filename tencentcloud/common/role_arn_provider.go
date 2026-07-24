@@ -94,7 +94,7 @@ func (r *RoleArnProvider) GetCredential() (CredentialIface, error) {
 	rspSt := new(stsRsp)
 
 	if err = json.Unmarshal(response.GetBody(), rspSt); err != nil {
-		return nil, tcerr.NewTencentCloudSDKError(creErr, err.Error(), "")
+		return nil, tcerr.NewTencentCloudSDKErrorWithCause(creErr, "failed to unmarshal sts response", "", err)
 	}
 
 	return &RoleArnCredential{

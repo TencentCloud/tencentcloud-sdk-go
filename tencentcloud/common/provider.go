@@ -11,10 +11,11 @@ var (
 // Provider provide credential to build client.
 //
 // Now there are four kinds provider:
-//  EnvProvider : get credential from your Variable environment
-//  ProfileProvider : get credential from your profile
+//
+//	EnvProvider : get credential from your Variable environment
+//	ProfileProvider : get credential from your profile
 //	CvmRoleProvider : get credential from your cvm role
-//  RoleArnProvider : get credential from your role arn
+//	RoleArnProvider : get credential from your role arn
 type Provider interface {
 	// GetCredential get the credential interface
 	GetCredential() (CredentialIface, error)

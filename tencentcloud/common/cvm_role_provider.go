@@ -80,7 +80,7 @@ func (r *CvmRoleProvider) GetCredential() (CredentialIface, error) {
 	}
 	rspSt := new(roleRsp)
 	if err = json.Unmarshal(body, rspSt); err != nil {
-		return nil, tcerr.NewTencentCloudSDKError(creErr, err.Error(), "")
+		return nil, tcerr.NewTencentCloudSDKErrorWithCause(creErr, "failed to unmarshal cvm role response", "", err)
 	}
 	if rspSt.Code != "Success" {
 		return nil, tcerr.NewTencentCloudSDKError(creErr, "Get credential from metadata server by role name "+roleName+" failed, code="+rspSt.Code, "")
