@@ -265,7 +265,7 @@ func CompleteCommonParams(request Request, region string, requestClient string) 
 	params["Action"] = request.GetAction()
 	params["Timestamp"] = strconv.FormatInt(time.Now().Unix(), 10)
 	params["Nonce"] = strconv.Itoa(rand.Int())
-	params["RequestClient"] = "SDK_GO_1.3.142"
+	params["RequestClient"] = "SDK_GO_1.0.1252"
 	if requestClient != "" {
 		params["RequestClient"] += ": " + requestClient
 	}
@@ -346,4 +346,20 @@ func flatStructure(value reflect.Value, request Request, prefix string) (err err
 		}
 	}
 	return
+}
+
+type requestKeyType struct{}
+
+// requestKey is the context key for stashing the originating Request on a
+// context.Context (typically an *http.Request's), so later pipeline stages
+// can access it without carrying it as a separate parameter.
+var requestKey requestKeyType
+
+func WithRequest(ctx context.Context, request Request) context.Context {
+	return context.WithValue(ctx, &requestKey, request)
+}
+
+func RequestFromContext(ctx context.Context) Request {
+	request, _ := ctx.Value(&requestKey).(Request)
+	return request
 }

@@ -14,7 +14,6 @@ import (
 	"strings"
 	"time"
 
-	tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
 	tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -54,9 +53,6 @@ type Client struct {
 	// Enables debug logging.
 	debug bool
 
-	// The circuit breaker for handling service unavailability.
-	rb *circuitBreaker
-
 	// The logger for logging messages.
 	logger Logger
 
@@ -79,11 +75,8 @@ func (c *Client) Send(request tchttp.Request, response tchttp.Response) (err err
 	if request.GetSkipSign() {
 		// Some APIs allow skipping the signature process.
 		return c.sendWithoutSignature(request, response)
-	} else if c.profile.DisableRegionBreaker == true || c.rb == nil {
-		return c.sendWithSignature(request, response)
-	} else {
-		return c.sendWithRegionBreaker(request, response)
 	}
+	return c.sendWithSignature(request, response)
 }
 
 // completeRequest fills in any missing request parameters with default values
@@ -127,33 +120,6 @@ func (c *Client) completeRequest(request tchttp.Request) {
 		header["X-Idempotency-Key"] = "x"
 		request.SetHeader(header)
 	}
-}
-
-func (c *Client) sendWithRegionBreaker(request tchttp.Request, response tchttp.Response) (err error) {
-	defer func() {
-		e := recover()
-		if e != nil {
-			msg := fmt.Sprintf("%s", e)
-			err = tcerr.NewTencentCloudSDKError("ClientError.CircuitBreakerError", msg, "")
-		}
-	}()
-
-	ge, err := c.rb.beforeRequest()
-
-	if err == errOpenState {
-		newEndpoint := request.GetService() + "." + c.rb.backupEndpoint
-		request.SetDomain(newEndpoint)
-	}
-	err = c.sendWithSignature(request, response)
-	isSuccess := false
-	// Success is considered only when the server returns an effective response (have requestId and the code is not InternalError )
-	if e, ok := err.(*tcerr.TencentCloudSDKError); ok {
-		if e.GetRequestId() != "" && e.GetCode() != "InternalError" {
-			isSuccess = true
-		}
-	}
-	c.rb.afterRequest(ge, isSuccess)
-	return err
 }
 
 func (c *Client) sendWithSignature(request tchttp.Request, response tchttp.Response) (err error) {
@@ -264,7 +230,8 @@ func (c *Client) sendWithoutSignature(request tchttp.Request, response tchttp.Re
 	if err != nil {
 		return err
 	}
-	httpRequest = httpRequest.WithContext(request.GetContext())
+	httpRequest = httpRequest.WithContext(tchttp.WithRequest(request.GetContext(), request))
+	httpRequest = httpRequest.WithContext(withRequestBuilder(httpRequest.Context(), newRequestBuilderFromRequest(c, request)))
 	for k, v := range headers {
 		if strings.EqualFold(k, "Host") {
 			httpRequest.Host = v
@@ -272,7 +239,7 @@ func (c *Client) sendWithoutSignature(request tchttp.Request, response tchttp.Re
 			httpRequest.Header.Set(k, v)
 		}
 	}
-	httpResponse, err := c.sendWithRateLimitRetry(httpRequest, isRetryable(request))
+	httpResponse, err := c.sendWithRateLimitRetry(httpRequest)
 	if err != nil {
 		return err
 	}
@@ -295,7 +262,8 @@ func (c *Client) sendWithSignatureV1(request tchttp.Request, response tchttp.Res
 	if err != nil {
 		return err
 	}
-	httpRequest = httpRequest.WithContext(request.GetContext())
+	httpRequest = httpRequest.WithContext(tchttp.WithRequest(request.GetContext(), request))
+	httpRequest = httpRequest.WithContext(withRequestBuilder(httpRequest.Context(), newRequestBuilderFromRequest(c, request)))
 	if request.GetHttpMethod() == "POST" {
 		httpRequest.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 	}
@@ -308,7 +276,7 @@ func (c *Client) sendWithSignatureV1(request tchttp.Request, response tchttp.Res
 		}
 	}
 
-	httpResponse, err := c.sendWithRateLimitRetry(httpRequest, isRetryable(request))
+	httpResponse, err := c.sendWithRateLimitRetry(httpRequest)
 	if err != nil {
 		return err
 	}
@@ -523,7 +491,8 @@ func (c *Client) sendWithSignatureV3(request tchttp.Request, response tchttp.Res
 	if err != nil {
 		return err
 	}
-	httpRequest = httpRequest.WithContext(request.GetContext())
+	httpRequest = httpRequest.WithContext(tchttp.WithRequest(request.GetContext(), request))
+	httpRequest = httpRequest.WithContext(withRequestBuilder(httpRequest.Context(), newRequestBuilderFromRequest(c, request)))
 
 	// Set all the headers on the request.
 	for k, v := range headers {
@@ -534,8 +503,7 @@ func (c *Client) sendWithSignatureV3(request tchttp.Request, response tchttp.Res
 		}
 	}
 
-	// Send the HTTP request with rate limit retry logic.
-	httpResponse, err := c.sendWithRateLimitRetry(httpRequest, isRetryable(request))
+	httpResponse, err := c.sendWithRateLimitRetry(httpRequest)
 	if err != nil {
 		return err
 	}
@@ -556,7 +524,7 @@ func (c *Client) sendHttp(request *http.Request) (response *http.Response, err e
 		if err != nil {
 			c.logger.Printf("[ERROR] dump request failed: %s", err)
 		} else {
-			c.logger.Printf("[DEBUG] http request: %s", outBytes)
+			c.logger.Printf("[DEBUG] http request: %s\n%s", request.URL.String(), outBytes)
 		}
 	}
 
@@ -652,9 +620,6 @@ func (c *Client) GetCredential() CredentialIface {
 
 func (c *Client) WithProfile(clientProfile *profile.ClientProfile) *Client {
 	c.profile = clientProfile
-	if c.profile.DisableRegionBreaker == false {
-		c.withRegionBreaker()
-	}
 	c.signMethod = clientProfile.SignMethod
 	c.unsignedPayload = clientProfile.UnsignedPayload
 	c.httpProfile = clientProfile.HttpProfile
@@ -676,6 +641,7 @@ func (c *Client) WithProfile(clientProfile *profile.ClientProfile) *Client {
 			c.logger.Printf("setting proxy while httpClient.Transport is not a http.Transport is not supported")
 		}
 	}
+
 	return c
 }
 
@@ -701,17 +667,6 @@ func (c *Client) WithProvider(provider Provider) (*Client, error) {
 		return nil, err
 	}
 	return c.WithCredential(cred), nil
-}
-
-func (c *Client) withRegionBreaker() *Client {
-	rb := defaultRegionBreaker()
-	if c.profile.BackupEndpoint != "" {
-		rb.backupEndpoint = c.profile.BackupEndpoint
-	} else if c.profile.BackupEndPoint != "" {
-		rb.backupEndpoint = c.profile.BackupEndPoint
-	}
-	c.rb = rb
-	return c
 }
 
 func NewClientWithSecretId(secretId, secretKey, region string) (client *Client, err error) {

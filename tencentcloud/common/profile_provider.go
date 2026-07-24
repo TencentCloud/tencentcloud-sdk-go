@@ -19,7 +19,7 @@ type ProfileProvider struct {
 // profile path :
 //  1. The value of the environment variable TENCENTCLOUD_CREDENTIALS_FILE
 //  2. linux: ~/.tencentcloud/credentials
-// 	  windows: \c:\Users\NAME\.tencentcloud\credentials
+//     windows: \c:\Users\NAME\.tencentcloud\credentials
 func DefaultProfileProvider() *ProfileProvider {
 	return &ProfileProvider{}
 }
@@ -66,7 +66,7 @@ func (p *ProfileProvider) GetCredential() (CredentialIface, error) {
 		path, err = checkDefaultFile()
 		// only when the file exist but failed read it the err is not nil
 		if err != nil {
-			return nil, tcerr.NewTencentCloudSDKError(creErr, "Failed to find profile file,"+err.Error(), "")
+			return nil, tcerr.NewTencentCloudSDKErrorWithCause(creErr, "Failed to find profile file", "", err)
 		}
 		// when the path is "" means the file dose not exist
 		if path == "" {

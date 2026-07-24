@@ -14,6 +14,7 @@ type HttpProfile struct {
 
 	// Deprecated: Use Scheme instead.
 	Protocol string
+
 	// Scheme specifies the protocol scheme to use for the request (e.g., "HTTP", "HTTPS").
 	// Default: "HTTPS".
 	Scheme string
