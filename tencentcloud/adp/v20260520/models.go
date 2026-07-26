@@ -820,6 +820,273 @@ type AppToolConfig struct {
 	Outputs []*ResponseParam `json:"Outputs,omitnil,omitempty" name:"Outputs"`
 }
 
+type AppTrigger struct {
+
+	TriggerId *string `json:"TriggerId,omitnil,omitempty" name:"TriggerId"`
+
+
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+
+	TriggerName *string `json:"TriggerName,omitnil,omitempty" name:"TriggerName"`
+
+	// <table><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>APP_TRIGGER_TYPE_UNSPECIFIED</td><td>0</td><td>未指定</td></tr><tr><td>APP_TRIGGER_TYPE_SCHEDULED</td><td>1</td><td>定时触发</td></tr><tr><td>APP_TRIGGER_TYPE_WEBHOOK</td><td>2</td><td>Webhook 触发</td></tr></table>
+	TriggerType *int64 `json:"TriggerType,omitnil,omitempty" name:"TriggerType"`
+
+	// <table><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>APP_TRIGGER_EXECUTE_TYPE_UNSPECIFIED</td><td>0</td><td>未指定</td></tr><tr><td>APP_TRIGGER_EXECUTE_TYPE_PROMPT</td><td>1</td><td>指令执行</td></tr><tr><td>APP_TRIGGER_EXECUTE_TYPE_WORKFLOW</td><td>2</td><td>工作流执行</td></tr></table>
+	ExecuteType *int64 `json:"ExecuteType,omitnil,omitempty" name:"ExecuteType"`
+
+
+	PushConfig *TimerPushConfig `json:"PushConfig,omitnil,omitempty" name:"PushConfig"`
+
+	// <table><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>APP_TRIGGER_STATUS_UNSPECIFIED</td><td>0</td><td>未指定</td></tr><tr><td>APP_TRIGGER_STATUS_ENABLED</td><td>1</td><td>启用</td></tr><tr><td>APP_TRIGGER_STATUS_PAUSED</td><td>2</td><td>暂停</td></tr><tr><td>APP_TRIGGER_STATUS_DELETED</td><td>3</td><td>已删除</td></tr></table>
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+
+	SuccessCount *string `json:"SuccessCount,omitnil,omitempty" name:"SuccessCount"`
+
+
+	FailedCount *string `json:"FailedCount,omitnil,omitempty" name:"FailedCount"`
+
+
+	TriggerConfig *TriggerConfig `json:"TriggerConfig,omitnil,omitempty" name:"TriggerConfig"`
+
+
+	ExecuteConfig *ExecuteConfig `json:"ExecuteConfig,omitnil,omitempty" name:"ExecuteConfig"`
+
+
+	TriggerStatus *TriggerStatus `json:"TriggerStatus,omitnil,omitempty" name:"TriggerStatus"`
+}
+
+type AppTriggerInstance struct {
+
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+
+	ConversationId *string `json:"ConversationId,omitnil,omitempty" name:"ConversationId"`
+
+
+	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
+
+
+	FinishedAt *string `json:"FinishedAt,omitnil,omitempty" name:"FinishedAt"`
+
+
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+
+
+	ResultCode *string `json:"ResultCode,omitnil,omitempty" name:"ResultCode"`
+
+
+	ResultSummary *string `json:"ResultSummary,omitnil,omitempty" name:"ResultSummary"`
+
+
+	RunId *string `json:"RunId,omitnil,omitempty" name:"RunId"`
+
+	// <table><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>APP_TRIGGER_INSTANCE_SOURCE_UNSPECIFIED</td><td>0</td><td>未指定</td></tr><tr><td>APP_TRIGGER_INSTANCE_SOURCE_APP_TRIGGER</td><td>1</td><td>来源于应用触发器</td></tr></table>
+	Source *int64 `json:"Source,omitnil,omitempty" name:"Source"`
+
+
+	StartedAt *string `json:"StartedAt,omitnil,omitempty" name:"StartedAt"`
+
+	// <table><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>TIMER_RUN_STATUS_UNSPECIFIED</td><td>0</td><td>未指定</td></tr><tr><td>TIMER_RUN_STATUS_PENDING</td><td>1</td><td>等待执行</td></tr><tr><td>TIMER_RUN_STATUS_RUNNING</td><td>2</td><td>执行中</td></tr><tr><td>TIMER_RUN_STATUS_RETRY_WAIT</td><td>3</td><td>等待重试</td></tr><tr><td>TIMER_RUN_STATUS_SUCCESS</td><td>4</td><td>成功</td></tr><tr><td>TIMER_RUN_STATUS_DEAD</td><td>5</td><td>失败终态 (重试耗尽 / 不可重试)</td></tr><tr><td>TIMER_RUN_STATUS_CANCELLED</td><td>6</td><td>被任务暂停/删除/修改取消</td></tr></table>
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+
+	TraceId *string `json:"TraceId,omitnil,omitempty" name:"TraceId"`
+
+
+	TriggerId *string `json:"TriggerId,omitnil,omitempty" name:"TriggerId"`
+
+
+	WorkflowRunId *string `json:"WorkflowRunId,omitnil,omitempty" name:"WorkflowRunId"`
+}
+
+type AppTriggerParamBinding struct {
+	// <p>参数名字</p>
+	ParamName *string `json:"ParamName,omitnil,omitempty" name:"ParamName"`
+
+	// <p>参数类型</p><p>枚举值：</p><ul><li>0： 字符串</li><li>1： 整数</li><li>2： 浮点数</li><li>4： 对象</li><li>5： 字符串数组</li><li>6： 整数数组</li><li>7： 浮点数数组</li><li>8： 布尔值数组</li><li>3： 布尔值</li><li>9： 对象数组</li><li>10： 文件</li><li>11： 文档</li><li>12： 图片</li><li>13： 音频</li><li>14： 视频</li><li>15： 文件数组</li><li>16： 文档数组</li><li>17： 图片数组</li><li>18： 音频数组</li><li>19： 视频数组</li><li>20： 数组嵌套</li><li>22： 密钥</li><li>99： 空值</li><li>100： 未指定类型，用于OneOf和AnyOf场景</li></ul>
+	ParamType *int64 `json:"ParamType,omitnil,omitempty" name:"ParamType"`
+
+	// <p>参数值</p>
+	Value *AppTriggerParamBindingValue `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type AppTriggerParamBindingConfig struct {
+
+	ParamList []*AppTriggerParamBinding `json:"ParamList,omitnil,omitempty" name:"ParamList"`
+}
+
+type AppTriggerParamBindingValue struct {
+	// <p>参数值</p>
+	ParamValue *string `json:"ParamValue,omitnil,omitempty" name:"ParamValue"`
+
+	// <p>应用变量名</p>
+	VariableName *string `json:"VariableName,omitnil,omitempty" name:"VariableName"`
+}
+
+type AppTriggerParamSchema struct {
+
+	ParamName *string `json:"ParamName,omitnil,omitempty" name:"ParamName"`
+
+	// <table><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>PARAM_TYPE_STRING</td><td>0</td><td>字符串</td></tr><tr><td>PARAM_TYPE_INT</td><td>1</td><td>整数</td></tr><tr><td>PARAM_TYPE_FLOAT</td><td>2</td><td>浮点数</td></tr><tr><td>PARAM_TYPE_BOOL</td><td>3</td><td>布尔值</td></tr><tr><td>PARAM_TYPE_OBJECT</td><td>4</td><td>对象</td></tr><tr><td>PARAM_TYPE_ARRAY_STRING</td><td>5</td><td>字符串数组</td></tr><tr><td>PARAM_TYPE_ARRAY_INT</td><td>6</td><td>整数数组</td></tr><tr><td>PARAM_TYPE_ARRAY_FLOAT</td><td>7</td><td>浮点数数组</td></tr><tr><td>PARAM_TYPE_ARRAY_BOOL</td><td>8</td><td>布尔值数组</td></tr><tr><td>PARAM_TYPE_ARRAY_OBJECT</td><td>9</td><td>对象数组</td></tr><tr><td>PARAM_TYPE_ARRAY_ARRAY</td><td>20</td><td>数组嵌套</td></tr><tr><td>PARAM_TYPE_NULL</td><td>99</td><td>空值</td></tr><tr><td>PARAM_TYPE_UNSPECIFIED</td><td>100</td><td>未指定类型，用于OneOf和AnyOf场景</td></tr></table>
+	ParamType *int64 `json:"ParamType,omitnil,omitempty" name:"ParamType"`
+
+
+	Required *bool `json:"Required,omitnil,omitempty" name:"Required"`
+
+
+	SubParamList []*AppTriggerParamSchema `json:"SubParamList,omitnil,omitempty" name:"SubParamList"`
+}
+
+type AppTriggerPromptExecuteConfig struct {
+
+	ExecutePrompt *string `json:"ExecutePrompt,omitnil,omitempty" name:"ExecutePrompt"`
+
+
+	ParamBindingsApi *AppTriggerParamBindingConfig `json:"ParamBindingsApi,omitnil,omitempty" name:"ParamBindingsApi"`
+}
+
+type AppTriggerRunLog struct {
+
+	ConversationId *string `json:"ConversationId,omitnil,omitempty" name:"ConversationId"`
+
+
+	DurationMs *string `json:"DurationMs,omitnil,omitempty" name:"DurationMs"`
+
+
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <table><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>APP_TRIGGER_FIRE_TYPE_UNSPECIFIED</td><td>0</td><td>未指定</td></tr><tr><td>APP_TRIGGER_FIRE_TYPE_SCHEDULED</td><td>1</td><td>定时触发</td></tr><tr><td>APP_TRIGGER_FIRE_TYPE_WEBHOOK</td><td>2</td><td>Webhook 触发</td></tr><tr><td>APP_TRIGGER_FIRE_TYPE_MANUAL_RUN</td><td>3</td><td>手动立即执行</td></tr><tr><td>APP_TRIGGER_FIRE_TYPE_TEST_RUN</td><td>4</td><td>测试执行</td></tr></table>
+	FireType *int64 `json:"FireType,omitnil,omitempty" name:"FireType"`
+
+
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <table><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>TIMER_RUN_PUSH_STATUS_UNSPECIFIED</td><td>0</td><td>未指定</td></tr><tr><td>TIMER_RUN_PUSH_STATUS_NONE</td><td>1</td><td>未配置推送</td></tr><tr><td>TIMER_RUN_PUSH_STATUS_WAITING</td><td>2</td><td>等待推送</td></tr><tr><td>TIMER_RUN_PUSH_STATUS_SUCCESS</td><td>3</td><td>推送成功</td></tr><tr><td>TIMER_RUN_PUSH_STATUS_FAILED</td><td>4</td><td>推送失败</td></tr></table>
+	PushStatus *int64 `json:"PushStatus,omitnil,omitempty" name:"PushStatus"`
+
+
+	ResultCode *string `json:"ResultCode,omitnil,omitempty" name:"ResultCode"`
+
+
+	ResultSummary *string `json:"ResultSummary,omitnil,omitempty" name:"ResultSummary"`
+
+
+	RunId *string `json:"RunId,omitnil,omitempty" name:"RunId"`
+
+
+	ScheduledFireTime *string `json:"ScheduledFireTime,omitnil,omitempty" name:"ScheduledFireTime"`
+
+
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <table><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>TIMER_RUN_STATUS_UNSPECIFIED</td><td>0</td><td>未指定</td></tr><tr><td>TIMER_RUN_STATUS_PENDING</td><td>1</td><td>等待执行</td></tr><tr><td>TIMER_RUN_STATUS_RUNNING</td><td>2</td><td>执行中</td></tr><tr><td>TIMER_RUN_STATUS_RETRY_WAIT</td><td>3</td><td>等待重试</td></tr><tr><td>TIMER_RUN_STATUS_SUCCESS</td><td>4</td><td>成功</td></tr><tr><td>TIMER_RUN_STATUS_DEAD</td><td>5</td><td>失败终态 (重试耗尽 / 不可重试)</td></tr><tr><td>TIMER_RUN_STATUS_CANCELLED</td><td>6</td><td>被任务暂停/删除/修改取消</td></tr></table>
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+
+	TriggerId *string `json:"TriggerId,omitnil,omitempty" name:"TriggerId"`
+
+
+	Unread *bool `json:"Unread,omitnil,omitempty" name:"Unread"`
+
+
+	WorkflowRunId *string `json:"WorkflowRunId,omitnil,omitempty" name:"WorkflowRunId"`
+}
+
+type AppTriggerScheduleConfig struct {
+
+	Schedule *TimerScheduleConfig `json:"Schedule,omitnil,omitempty" name:"Schedule"`
+}
+
+type AppTriggerScheduleStatus struct {
+
+	LastFireTime *string `json:"LastFireTime,omitnil,omitempty" name:"LastFireTime"`
+
+
+	NextFireTime *string `json:"NextFireTime,omitnil,omitempty" name:"NextFireTime"`
+
+
+	PolicySummary *string `json:"PolicySummary,omitnil,omitempty" name:"PolicySummary"`
+}
+
+type AppTriggerSummary struct {
+
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <table><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>APP_TRIGGER_EXECUTE_TYPE_UNSPECIFIED</td><td>0</td><td>未指定</td></tr><tr><td>APP_TRIGGER_EXECUTE_TYPE_PROMPT</td><td>1</td><td>指令执行</td></tr><tr><td>APP_TRIGGER_EXECUTE_TYPE_WORKFLOW</td><td>2</td><td>工作流执行</td></tr></table>
+	ExecuteType *int64 `json:"ExecuteType,omitnil,omitempty" name:"ExecuteType"`
+
+
+	FailedCount *string `json:"FailedCount,omitnil,omitempty" name:"FailedCount"`
+
+
+	LastSessionId *string `json:"LastSessionId,omitnil,omitempty" name:"LastSessionId"`
+
+	// <table><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>APP_TRIGGER_STATUS_UNSPECIFIED</td><td>0</td><td>未指定</td></tr><tr><td>APP_TRIGGER_STATUS_ENABLED</td><td>1</td><td>启用</td></tr><tr><td>APP_TRIGGER_STATUS_PAUSED</td><td>2</td><td>暂停</td></tr><tr><td>APP_TRIGGER_STATUS_DELETED</td><td>3</td><td>已删除</td></tr></table>
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+
+	SuccessCount *string `json:"SuccessCount,omitnil,omitempty" name:"SuccessCount"`
+
+
+	TriggerId *string `json:"TriggerId,omitnil,omitempty" name:"TriggerId"`
+
+
+	TriggerName *string `json:"TriggerName,omitnil,omitempty" name:"TriggerName"`
+
+
+	TriggerStatus *TriggerStatus `json:"TriggerStatus,omitnil,omitempty" name:"TriggerStatus"`
+
+	// <table><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>APP_TRIGGER_TYPE_UNSPECIFIED</td><td>0</td><td>未指定</td></tr><tr><td>APP_TRIGGER_TYPE_SCHEDULED</td><td>1</td><td>定时触发</td></tr><tr><td>APP_TRIGGER_TYPE_WEBHOOK</td><td>2</td><td>Webhook 触发</td></tr></table>
+	TriggerType *int64 `json:"TriggerType,omitnil,omitempty" name:"TriggerType"`
+
+
+	UnreadRunLogCount *string `json:"UnreadRunLogCount,omitnil,omitempty" name:"UnreadRunLogCount"`
+}
+
+type AppTriggerWebhookConfig struct {
+
+	ParamSchemaConfig *AppTriggerWebhookParamSchemaConfig `json:"ParamSchemaConfig,omitnil,omitempty" name:"ParamSchemaConfig"`
+
+
+	WebhookKey *string `json:"WebhookKey,omitnil,omitempty" name:"WebhookKey"`
+
+
+	WebhookToken *string `json:"WebhookToken,omitnil,omitempty" name:"WebhookToken"`
+
+
+	WebhookUrl *string `json:"WebhookUrl,omitnil,omitempty" name:"WebhookUrl"`
+}
+
+type AppTriggerWebhookParamSchemaConfig struct {
+
+	SchemaList []*AppTriggerParamSchema `json:"SchemaList,omitnil,omitempty" name:"SchemaList"`
+}
+
+type AppTriggerWebhookStatus struct {
+
+	WebhookUrl *string `json:"WebhookUrl,omitnil,omitempty" name:"WebhookUrl"`
+}
+
+type AppTriggerWorkflowExecuteConfig struct {
+	// <p>工作流API参数绑定</p>
+	ParamBindingsApi *AppTriggerParamBindingConfig `json:"ParamBindingsApi,omitnil,omitempty" name:"ParamBindingsApi"`
+
+	// <p>工作流参数绑定</p>
+	ParamBindingsWorkflow *AppTriggerParamBindingConfig `json:"ParamBindingsWorkflow,omitnil,omitempty" name:"ParamBindingsWorkflow"`
+
+	// <p>工作流ID</p>
+	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+
+	// <p>工作流名字</p>
+	WorkflowName *string `json:"WorkflowName,omitnil,omitempty" name:"WorkflowName"`
+}
+
 type AppWebSearchConfig struct {
 	// API密钥
 	ApiKey *string `json:"ApiKey,omitnil,omitempty" name:"ApiKey"`
@@ -1529,6 +1796,105 @@ func (r *CreateAppResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateAppTriggerRequestParams struct {
+	// <p>应用ID</p>
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>应用触发器执行配置</p>
+	ExecuteConfig *ExecuteConfig `json:"ExecuteConfig,omitnil,omitempty" name:"ExecuteConfig"`
+
+	// <table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>APP_TRIGGER_EXECUTE_TYPE_UNSPECIFIED</td><td>0</td><td>未指定</td></tr><tr><td>APP_TRIGGER_EXECUTE_TYPE_PROMPT</td><td>1</td><td>指令执行</td></tr><tr><td>APP_TRIGGER_EXECUTE_TYPE_WORKFLOW</td><td>2</td><td>工作流执行</td></tr></tbody></table>
+	ExecuteType *int64 `json:"ExecuteType,omitnil,omitempty" name:"ExecuteType"`
+
+	// <p>第三方推送配置</p>
+	PushConfig *TimerPushConfig `json:"PushConfig,omitnil,omitempty" name:"PushConfig"`
+
+	// <p>触发器配置</p>
+	TriggerConfig *TriggerConfig `json:"TriggerConfig,omitnil,omitempty" name:"TriggerConfig"`
+
+	// <p>触发器名字</p>
+	TriggerName *string `json:"TriggerName,omitnil,omitempty" name:"TriggerName"`
+
+	// <table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>APP_TRIGGER_TYPE_UNSPECIFIED</td><td>0</td><td>未指定</td></tr><tr><td>APP_TRIGGER_TYPE_SCHEDULED</td><td>1</td><td>定时触发</td></tr><tr><td>APP_TRIGGER_TYPE_WEBHOOK</td><td>2</td><td>Webhook 触发</td></tr></tbody></table>
+	TriggerType *int64 `json:"TriggerType,omitnil,omitempty" name:"TriggerType"`
+}
+
+type CreateAppTriggerRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>应用ID</p>
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>应用触发器执行配置</p>
+	ExecuteConfig *ExecuteConfig `json:"ExecuteConfig,omitnil,omitempty" name:"ExecuteConfig"`
+
+	// <table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>APP_TRIGGER_EXECUTE_TYPE_UNSPECIFIED</td><td>0</td><td>未指定</td></tr><tr><td>APP_TRIGGER_EXECUTE_TYPE_PROMPT</td><td>1</td><td>指令执行</td></tr><tr><td>APP_TRIGGER_EXECUTE_TYPE_WORKFLOW</td><td>2</td><td>工作流执行</td></tr></tbody></table>
+	ExecuteType *int64 `json:"ExecuteType,omitnil,omitempty" name:"ExecuteType"`
+
+	// <p>第三方推送配置</p>
+	PushConfig *TimerPushConfig `json:"PushConfig,omitnil,omitempty" name:"PushConfig"`
+
+	// <p>触发器配置</p>
+	TriggerConfig *TriggerConfig `json:"TriggerConfig,omitnil,omitempty" name:"TriggerConfig"`
+
+	// <p>触发器名字</p>
+	TriggerName *string `json:"TriggerName,omitnil,omitempty" name:"TriggerName"`
+
+	// <table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>APP_TRIGGER_TYPE_UNSPECIFIED</td><td>0</td><td>未指定</td></tr><tr><td>APP_TRIGGER_TYPE_SCHEDULED</td><td>1</td><td>定时触发</td></tr><tr><td>APP_TRIGGER_TYPE_WEBHOOK</td><td>2</td><td>Webhook 触发</td></tr></tbody></table>
+	TriggerType *int64 `json:"TriggerType,omitnil,omitempty" name:"TriggerType"`
+}
+
+func (r *CreateAppTriggerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAppTriggerRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AppId")
+	delete(f, "ExecuteConfig")
+	delete(f, "ExecuteType")
+	delete(f, "PushConfig")
+	delete(f, "TriggerConfig")
+	delete(f, "TriggerName")
+	delete(f, "TriggerType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAppTriggerRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAppTriggerResponseParams struct {
+	// <p>应用触发器ID</p>
+	TriggerId *string `json:"TriggerId,omitnil,omitempty" name:"TriggerId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateAppTriggerResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateAppTriggerResponseParams `json:"Response"`
+}
+
+func (r *CreateAppTriggerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAppTriggerResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateConversationRequestParams struct {
 	// <p>会话类型 枚举值: 0-CONVERSATION_TYPE_UNSPECIFIED(未指定；列表查询时表示全部), 1-CONVERSATION_TYPE_VISITOR(访客端体验), 2-CONVERSATION_TYPE_EVALUATION(评测), 5-CONVERSATION_TYPE_API(API 接入), 10-CONVERSATION_TYPE_WORKFLOW(工作流调试), 20-CONVERSATION_TYPE_SHARE(分享链接)</p>
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
@@ -2087,6 +2453,159 @@ func (r *CreateSpaceResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateTimerTaskRequestParams struct {
+	// 
+	// 枚举值:
+	// | uint | 描述 |
+	// | --- | --- |
+	// | 0 |  |
+	// | 1 | 页面手动创建 |
+	// | 2 | 自然语言对话创建 |
+	CreateSource *int64 `json:"CreateSource,omitnil,omitempty" name:"CreateSource"`
+
+	// 输入上下文
+	InputContextSnapshot *string `json:"InputContextSnapshot,omitnil,omitempty" name:"InputContextSnapshot"`
+
+	// 模型
+	ModelId *string `json:"ModelId,omitnil,omitempty" name:"ModelId"`
+
+	// 提示词
+	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
+
+	// 推送配置
+	PushConfig *TimerPushConfig `json:"PushConfig,omitnil,omitempty" name:"PushConfig"`
+
+	// 定时配置
+	Schedule *TimerScheduleConfig `json:"Schedule,omitnil,omitempty" name:"Schedule"`
+
+	// skill
+	SkillSnapshot *string `json:"SkillSnapshot,omitnil,omitempty" name:"SkillSnapshot"`
+
+	// 空间
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// 任务名称
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// 工具
+	ToolSnapshot *string `json:"ToolSnapshot,omitnil,omitempty" name:"ToolSnapshot"`
+
+	// 工作空间
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// 主用户
+	LoginUin *string `json:"LoginUin,omitnil,omitempty" name:"LoginUin"`
+
+	// 子用户
+	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
+}
+
+type CreateTimerTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 
+	// 枚举值:
+	// | uint | 描述 |
+	// | --- | --- |
+	// | 0 |  |
+	// | 1 | 页面手动创建 |
+	// | 2 | 自然语言对话创建 |
+	CreateSource *int64 `json:"CreateSource,omitnil,omitempty" name:"CreateSource"`
+
+	// 输入上下文
+	InputContextSnapshot *string `json:"InputContextSnapshot,omitnil,omitempty" name:"InputContextSnapshot"`
+
+	// 模型
+	ModelId *string `json:"ModelId,omitnil,omitempty" name:"ModelId"`
+
+	// 提示词
+	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
+
+	// 推送配置
+	PushConfig *TimerPushConfig `json:"PushConfig,omitnil,omitempty" name:"PushConfig"`
+
+	// 定时配置
+	Schedule *TimerScheduleConfig `json:"Schedule,omitnil,omitempty" name:"Schedule"`
+
+	// skill
+	SkillSnapshot *string `json:"SkillSnapshot,omitnil,omitempty" name:"SkillSnapshot"`
+
+	// 空间
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// 任务名称
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// 工具
+	ToolSnapshot *string `json:"ToolSnapshot,omitnil,omitempty" name:"ToolSnapshot"`
+
+	// 工作空间
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// 主用户
+	LoginUin *string `json:"LoginUin,omitnil,omitempty" name:"LoginUin"`
+
+	// 子用户
+	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
+}
+
+func (r *CreateTimerTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateTimerTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CreateSource")
+	delete(f, "InputContextSnapshot")
+	delete(f, "ModelId")
+	delete(f, "Prompt")
+	delete(f, "PushConfig")
+	delete(f, "Schedule")
+	delete(f, "SkillSnapshot")
+	delete(f, "SpaceId")
+	delete(f, "TaskName")
+	delete(f, "ToolSnapshot")
+	delete(f, "WorkspaceId")
+	delete(f, "LoginUin")
+	delete(f, "LoginSubAccountUin")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTimerTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateTimerTaskResponseParams struct {
+	// 任务ID
+	TimerId *string `json:"TimerId,omitnil,omitempty" name:"TimerId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateTimerTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateTimerTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateTimerTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateTimerTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateVariableRequestParams struct {
 	// app_id
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
@@ -2362,6 +2881,16 @@ func (r *CreateWorkspaceCredentialResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CronSchedule struct {
+	// cron表达式
+	Expression *string `json:"Expression,omitnil,omitempty" name:"Expression"`
+}
+
+type DailySchedule struct {
+	// 时间
+	TimeOfDay *string `json:"TimeOfDay,omitnil,omitempty" name:"TimeOfDay"`
+}
+
 // Predefined struct for user
 type DeleteAgentRequestParams struct {
 	// <p>应用Id</p>
@@ -2488,6 +3017,67 @@ func (r *DeleteAppResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteAppResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAppTriggerRequestParams struct {
+	// <p>应用ID</p>
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>触发器ID</p>
+	TriggerId *string `json:"TriggerId,omitnil,omitempty" name:"TriggerId"`
+}
+
+type DeleteAppTriggerRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>应用ID</p>
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>触发器ID</p>
+	TriggerId *string `json:"TriggerId,omitnil,omitempty" name:"TriggerId"`
+}
+
+func (r *DeleteAppTriggerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAppTriggerRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AppId")
+	delete(f, "TriggerId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAppTriggerRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAppTriggerResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteAppTriggerResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteAppTriggerResponseParams `json:"Response"`
+}
+
+func (r *DeleteAppTriggerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAppTriggerResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2838,6 +3428,81 @@ func (r *DeleteSpaceResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteSpaceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteTimerTaskRequestParams struct {
+	// 空间ID
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// 任务ID
+	TimerId *string `json:"TimerId,omitnil,omitempty" name:"TimerId"`
+
+	// 主用户
+	LoginUin *string `json:"LoginUin,omitnil,omitempty" name:"LoginUin"`
+
+	// 子用户
+	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
+}
+
+type DeleteTimerTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 空间ID
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// 任务ID
+	TimerId *string `json:"TimerId,omitnil,omitempty" name:"TimerId"`
+
+	// 主用户
+	LoginUin *string `json:"LoginUin,omitnil,omitempty" name:"LoginUin"`
+
+	// 子用户
+	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
+}
+
+func (r *DeleteTimerTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteTimerTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SpaceId")
+	delete(f, "TimerId")
+	delete(f, "LoginUin")
+	delete(f, "LoginSubAccountUin")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteTimerTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteTimerTaskResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteTimerTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteTimerTaskResponseParams `json:"Response"`
+}
+
+func (r *DeleteTimerTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteTimerTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3386,6 +4051,310 @@ func (r *DescribeAppSummaryListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAppSummaryListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAppTriggerInstanceRequestParams struct {
+	// <p>应用ID</p>
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>触发器运行实例ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+type DescribeAppTriggerInstanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>应用ID</p>
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>触发器运行实例ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeAppTriggerInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAppTriggerInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AppId")
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAppTriggerInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAppTriggerInstanceResponseParams struct {
+	// <p>应用触发器实例</p>
+	Instance *AppTriggerInstance `json:"Instance,omitnil,omitempty" name:"Instance"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAppTriggerInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAppTriggerInstanceResponseParams `json:"Response"`
+}
+
+func (r *DescribeAppTriggerInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAppTriggerInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAppTriggerRequestParams struct {
+	// <p>应用ID</p>
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>应用触发器ID</p>
+	TriggerId *string `json:"TriggerId,omitnil,omitempty" name:"TriggerId"`
+}
+
+type DescribeAppTriggerRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>应用ID</p>
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>应用触发器ID</p>
+	TriggerId *string `json:"TriggerId,omitnil,omitempty" name:"TriggerId"`
+}
+
+func (r *DescribeAppTriggerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAppTriggerRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AppId")
+	delete(f, "TriggerId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAppTriggerRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAppTriggerResponseParams struct {
+	// <p>应用触发器信息</p>
+	Trigger *AppTrigger `json:"Trigger,omitnil,omitempty" name:"Trigger"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAppTriggerResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAppTriggerResponseParams `json:"Response"`
+}
+
+func (r *DescribeAppTriggerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAppTriggerResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAppTriggerRunLogListRequestParams struct {
+	// <p>应用ID</p>
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>过滤参数</p>
+	FilterList []*Filter `json:"FilterList,omitnil,omitempty" name:"FilterList"`
+
+	// <p>页码</p><p>取值范围：[1, 1000000]</p>
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// <p>每页数据量</p><p>取值范围：[1, 100]</p>
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// <p>应用触发器ID</p>
+	TriggerId *string `json:"TriggerId,omitnil,omitempty" name:"TriggerId"`
+}
+
+type DescribeAppTriggerRunLogListRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>应用ID</p>
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>过滤参数</p>
+	FilterList []*Filter `json:"FilterList,omitnil,omitempty" name:"FilterList"`
+
+	// <p>页码</p><p>取值范围：[1, 1000000]</p>
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// <p>每页数据量</p><p>取值范围：[1, 100]</p>
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// <p>应用触发器ID</p>
+	TriggerId *string `json:"TriggerId,omitnil,omitempty" name:"TriggerId"`
+}
+
+func (r *DescribeAppTriggerRunLogListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAppTriggerRunLogListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AppId")
+	delete(f, "FilterList")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	delete(f, "TriggerId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAppTriggerRunLogListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAppTriggerRunLogListResponseParams struct {
+	// <p>日志列表</p>
+	RunLogList []*AppTriggerRunLog `json:"RunLogList,omitnil,omitempty" name:"RunLogList"`
+
+	// <p>日志列表数量</p>
+	TotalCount *string `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAppTriggerRunLogListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAppTriggerRunLogListResponseParams `json:"Response"`
+}
+
+func (r *DescribeAppTriggerRunLogListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAppTriggerRunLogListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAppTriggerSummaryListRequestParams struct {
+	// <p>应用ID</p>
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>参数过滤列表</p>
+	FilterList []*Filter `json:"FilterList,omitnil,omitempty" name:"FilterList"`
+
+	// <p>页码</p><p>取值范围：[1, 1000000]</p>
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// <p>每页大小</p><p>取值范围：[1, 100]</p>
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// <p>模糊查询字符串</p>
+	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
+}
+
+type DescribeAppTriggerSummaryListRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>应用ID</p>
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>参数过滤列表</p>
+	FilterList []*Filter `json:"FilterList,omitnil,omitempty" name:"FilterList"`
+
+	// <p>页码</p><p>取值范围：[1, 1000000]</p>
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// <p>每页大小</p><p>取值范围：[1, 100]</p>
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// <p>模糊查询字符串</p>
+	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
+}
+
+func (r *DescribeAppTriggerSummaryListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAppTriggerSummaryListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AppId")
+	delete(f, "FilterList")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	delete(f, "Query")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAppTriggerSummaryListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAppTriggerSummaryListResponseParams struct {
+	// <p>应用触发器数量</p>
+	TotalCount *string `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>应用触发器列表</p>
+	TriggerList []*AppTriggerSummary `json:"TriggerList,omitnil,omitempty" name:"TriggerList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAppTriggerSummaryListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAppTriggerSummaryListResponseParams `json:"Response"`
+}
+
+func (r *DescribeAppTriggerSummaryListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAppTriggerSummaryListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4838,6 +5807,282 @@ func (r *DescribeSystemVariableListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeTimerTaskRequestParams struct {
+	// 空间id
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// 任务id
+	TimerId *string `json:"TimerId,omitnil,omitempty" name:"TimerId"`
+
+	// <p>主用户Uin</p>
+	LoginUin *string `json:"LoginUin,omitnil,omitempty" name:"LoginUin"`
+
+	// <p>子用户Uin</p>
+	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
+}
+
+type DescribeTimerTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 空间id
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// 任务id
+	TimerId *string `json:"TimerId,omitnil,omitempty" name:"TimerId"`
+
+	// <p>主用户Uin</p>
+	LoginUin *string `json:"LoginUin,omitnil,omitempty" name:"LoginUin"`
+
+	// <p>子用户Uin</p>
+	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
+}
+
+func (r *DescribeTimerTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTimerTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SpaceId")
+	delete(f, "TimerId")
+	delete(f, "LoginUin")
+	delete(f, "LoginSubAccountUin")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTimerTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTimerTaskResponseParams struct {
+	// 任务
+	Task *TimerTask `json:"Task,omitnil,omitempty" name:"Task"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeTimerTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTimerTaskResponseParams `json:"Response"`
+}
+
+func (r *DescribeTimerTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTimerTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTimerTaskRunLogListRequestParams struct {
+	// 工作空间ID
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// 定时任务ID，必须按任务维度查询
+	TimerId *string `json:"TimerId,omitnil,omitempty" name:"TimerId"`
+
+	// 过滤条件，支持: Status(执行状态，值为枚举int); Unread(仅未读，值为"true"/"false")
+	FilterList []*Filter `json:"FilterList,omitnil,omitempty" name:"FilterList"`
+
+	// <p>子用户Uin</p>
+	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
+
+	// <p>主用户Uin</p>
+	LoginUin *string `json:"LoginUin,omitnil,omitempty" name:"LoginUin"`
+
+	// 页码，从0开始
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 每页数目，最大100
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+type DescribeTimerTaskRunLogListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 工作空间ID
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// 定时任务ID，必须按任务维度查询
+	TimerId *string `json:"TimerId,omitnil,omitempty" name:"TimerId"`
+
+	// 过滤条件，支持: Status(执行状态，值为枚举int); Unread(仅未读，值为"true"/"false")
+	FilterList []*Filter `json:"FilterList,omitnil,omitempty" name:"FilterList"`
+
+	// <p>子用户Uin</p>
+	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
+
+	// <p>主用户Uin</p>
+	LoginUin *string `json:"LoginUin,omitnil,omitempty" name:"LoginUin"`
+
+	// 页码，从0开始
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 每页数目，最大100
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+func (r *DescribeTimerTaskRunLogListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTimerTaskRunLogListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SpaceId")
+	delete(f, "TimerId")
+	delete(f, "FilterList")
+	delete(f, "LoginSubAccountUin")
+	delete(f, "LoginUin")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTimerTaskRunLogListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTimerTaskRunLogListResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeTimerTaskRunLogListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTimerTaskRunLogListResponseParams `json:"Response"`
+}
+
+func (r *DescribeTimerTaskRunLogListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTimerTaskRunLogListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTimerTaskSummaryListRequestParams struct {
+	// 查询条件
+	FilterList []*Filter `json:"FilterList,omitnil,omitempty" name:"FilterList"`
+
+	// 页码
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 页大小
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 查询关键字
+	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
+
+	// 空间ID
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// <p>子用户Uin</p>
+	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
+
+	// <p>主用户Uin</p>
+	LoginUin *string `json:"LoginUin,omitnil,omitempty" name:"LoginUin"`
+}
+
+type DescribeTimerTaskSummaryListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 查询条件
+	FilterList []*Filter `json:"FilterList,omitnil,omitempty" name:"FilterList"`
+
+	// 页码
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 页大小
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 查询关键字
+	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
+
+	// 空间ID
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// <p>子用户Uin</p>
+	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
+
+	// <p>主用户Uin</p>
+	LoginUin *string `json:"LoginUin,omitnil,omitempty" name:"LoginUin"`
+}
+
+func (r *DescribeTimerTaskSummaryListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTimerTaskSummaryListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FilterList")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	delete(f, "Query")
+	delete(f, "SpaceId")
+	delete(f, "LoginSubAccountUin")
+	delete(f, "LoginUin")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTimerTaskSummaryListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTimerTaskSummaryListResponseParams struct {
+	// 任务列表
+	TaskList []*TimerTaskSummary `json:"TaskList,omitnil,omitempty" name:"TaskList"`
+
+	// 总数量
+	TotalCount *string `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeTimerTaskSummaryListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTimerTaskSummaryListResponseParams `json:"Response"`
+}
+
+func (r *DescribeTimerTaskSummaryListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTimerTaskSummaryListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeVariableListRequestParams struct {
 	// 应用ID
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
@@ -5041,6 +6286,14 @@ type DuplexBilling struct {
 	OutputPuPrice *float64 `json:"OutputPuPrice,omitnil,omitempty" name:"OutputPuPrice"`
 }
 
+type ExecuteConfig struct {
+	// <p>Prompt配置</p>
+	PromptConfig *AppTriggerPromptExecuteConfig `json:"PromptConfig,omitnil,omitempty" name:"PromptConfig"`
+
+	// <p>工作流配置</p>
+	WorkflowConfig *AppTriggerWorkflowExecuteConfig `json:"WorkflowConfig,omitnil,omitempty" name:"WorkflowConfig"`
+}
+
 // Predefined struct for user
 type FavoritePluginRequestParams struct {
 	// <p>插件id</p>
@@ -5230,6 +6483,23 @@ type IntentAchievementInfo struct {
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
+type IntervalSchedule struct {
+	// 开始时间
+	StartAt *string `json:"StartAt,omitnil,omitempty" name:"StartAt"`
+
+	// 
+	// 枚举值:
+	// | 枚举值 | uint |
+	// | --- | --- |
+	// | INTERVAL_UNIT_UNSPECIFIED | 0 |
+	// | INTERVAL_UNIT_HOUR | 1 |
+	// | INTERVAL_UNIT_DAY | 2 |
+	Unit *int64 `json:"Unit,omitnil,omitempty" name:"Unit"`
+
+	// 值
+	Value *int64 `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
 type MCPPluginConfig struct {
 	// <p>MCP插件外部访问地址</p>
 	ExternalMCPServerUrl *string `json:"ExternalMCPServerUrl,omitnil,omitempty" name:"ExternalMCPServerUrl"`
@@ -5262,6 +6532,167 @@ type MCPToolConfig struct {
 
 	// <p>输出参数</p>
 	Outputs []*ResponseParam `json:"Outputs,omitnil,omitempty" name:"Outputs"`
+}
+
+type ManualOnlySchedule struct {
+	// 启用
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+}
+
+// Predefined struct for user
+type MarkAppTriggerRunLogReadRequestParams struct {
+	// <p>应用ID</p>
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>应用触发器运行实例ID列表</p>
+	InstanceIdList []*string `json:"InstanceIdList,omitnil,omitempty" name:"InstanceIdList"`
+
+	// <p>应用触发器ID</p>
+	TriggerId *string `json:"TriggerId,omitnil,omitempty" name:"TriggerId"`
+}
+
+type MarkAppTriggerRunLogReadRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>应用ID</p>
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>应用触发器运行实例ID列表</p>
+	InstanceIdList []*string `json:"InstanceIdList,omitnil,omitempty" name:"InstanceIdList"`
+
+	// <p>应用触发器ID</p>
+	TriggerId *string `json:"TriggerId,omitnil,omitempty" name:"TriggerId"`
+}
+
+func (r *MarkAppTriggerRunLogReadRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *MarkAppTriggerRunLogReadRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AppId")
+	delete(f, "InstanceIdList")
+	delete(f, "TriggerId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "MarkAppTriggerRunLogReadRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type MarkAppTriggerRunLogReadResponseParams struct {
+	// <p>成功标记个数</p>
+	MarkedCount *uint64 `json:"MarkedCount,omitnil,omitempty" name:"MarkedCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type MarkAppTriggerRunLogReadResponse struct {
+	*tchttp.BaseResponse
+	Response *MarkAppTriggerRunLogReadResponseParams `json:"Response"`
+}
+
+func (r *MarkAppTriggerRunLogReadResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *MarkAppTriggerRunLogReadResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type MarkTimerTaskRunLogReadRequestParams struct {
+	// 实例列表
+	FireInstanceIdList []*string `json:"FireInstanceIdList,omitnil,omitempty" name:"FireInstanceIdList"`
+
+	// 空间ID
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// 任务ID
+	TimerId *string `json:"TimerId,omitnil,omitempty" name:"TimerId"`
+
+	// 主用户
+	LoginUin *string `json:"LoginUin,omitnil,omitempty" name:"LoginUin"`
+
+	// 子用户
+	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
+}
+
+type MarkTimerTaskRunLogReadRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例列表
+	FireInstanceIdList []*string `json:"FireInstanceIdList,omitnil,omitempty" name:"FireInstanceIdList"`
+
+	// 空间ID
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// 任务ID
+	TimerId *string `json:"TimerId,omitnil,omitempty" name:"TimerId"`
+
+	// 主用户
+	LoginUin *string `json:"LoginUin,omitnil,omitempty" name:"LoginUin"`
+
+	// 子用户
+	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
+}
+
+func (r *MarkTimerTaskRunLogReadRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *MarkTimerTaskRunLogReadRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FireInstanceIdList")
+	delete(f, "SpaceId")
+	delete(f, "TimerId")
+	delete(f, "LoginUin")
+	delete(f, "LoginSubAccountUin")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "MarkTimerTaskRunLogReadRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type MarkTimerTaskRunLogReadResponseParams struct {
+	// 标记为已读的数量
+	MarkedCount *uint64 `json:"MarkedCount,omitnil,omitempty" name:"MarkedCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type MarkTimerTaskRunLogReadResponse struct {
+	*tchttp.BaseResponse
+	Response *MarkTimerTaskRunLogReadResponseParams `json:"Response"`
+}
+
+func (r *MarkTimerTaskRunLogReadResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *MarkTimerTaskRunLogReadResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type Model struct {
@@ -5635,6 +7066,81 @@ func (r *ModifyAppResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyAppResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAppTriggerRequestParams struct {
+	// <p>应用ID</p>
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>触发器信息</p>
+	Trigger *AppTrigger `json:"Trigger,omitnil,omitempty" name:"Trigger"`
+
+	// <p>触发器唯一ID</p>
+	TriggerId *string `json:"TriggerId,omitnil,omitempty" name:"TriggerId"`
+
+	// <p>修改字段</p>
+	UpdateMask *FieldMask `json:"UpdateMask,omitnil,omitempty" name:"UpdateMask"`
+}
+
+type ModifyAppTriggerRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>应用ID</p>
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>触发器信息</p>
+	Trigger *AppTrigger `json:"Trigger,omitnil,omitempty" name:"Trigger"`
+
+	// <p>触发器唯一ID</p>
+	TriggerId *string `json:"TriggerId,omitnil,omitempty" name:"TriggerId"`
+
+	// <p>修改字段</p>
+	UpdateMask *FieldMask `json:"UpdateMask,omitnil,omitempty" name:"UpdateMask"`
+}
+
+func (r *ModifyAppTriggerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAppTriggerRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AppId")
+	delete(f, "Trigger")
+	delete(f, "TriggerId")
+	delete(f, "UpdateMask")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAppTriggerRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAppTriggerResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyAppTriggerResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyAppTriggerResponseParams `json:"Response"`
+}
+
+func (r *ModifyAppTriggerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAppTriggerResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6030,6 +7536,98 @@ func (r *ModifySpaceResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyTimerTaskRequestParams struct {
+	// 空间ID
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// 任务ID
+	TimerId *string `json:"TimerId,omitnil,omitempty" name:"TimerId"`
+
+	// 任务
+	TimerTask *TimerTask `json:"TimerTask,omitnil,omitempty" name:"TimerTask"`
+
+	// 修改的内容
+	UpdateMask *FieldMask `json:"UpdateMask,omitnil,omitempty" name:"UpdateMask"`
+
+	// <p>主用户Uin</p>
+	LoginUin *string `json:"LoginUin,omitnil,omitempty" name:"LoginUin"`
+
+	// <p>子用户Uin</p>
+	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
+}
+
+type ModifyTimerTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 空间ID
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// 任务ID
+	TimerId *string `json:"TimerId,omitnil,omitempty" name:"TimerId"`
+
+	// 任务
+	TimerTask *TimerTask `json:"TimerTask,omitnil,omitempty" name:"TimerTask"`
+
+	// 修改的内容
+	UpdateMask *FieldMask `json:"UpdateMask,omitnil,omitempty" name:"UpdateMask"`
+
+	// <p>主用户Uin</p>
+	LoginUin *string `json:"LoginUin,omitnil,omitempty" name:"LoginUin"`
+
+	// <p>子用户Uin</p>
+	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
+}
+
+func (r *ModifyTimerTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyTimerTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SpaceId")
+	delete(f, "TimerId")
+	delete(f, "TimerTask")
+	delete(f, "UpdateMask")
+	delete(f, "LoginUin")
+	delete(f, "LoginSubAccountUin")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyTimerTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyTimerTaskResponseParams struct {
+	// 下次触发时间
+	NextFireTime *string `json:"NextFireTime,omitnil,omitempty" name:"NextFireTime"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyTimerTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyTimerTaskResponseParams `json:"Response"`
+}
+
+func (r *ModifyTimerTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyTimerTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyVariableRequestParams struct {
 	// app_id
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
@@ -6123,6 +7721,147 @@ type OAuthConfig struct {
 
 	// 获取access token的url地址
 	TokenUrl *string `json:"TokenUrl,omitnil,omitempty" name:"TokenUrl"`
+}
+
+type OnceSchedule struct {
+	// 触发时间
+	FireTime *string `json:"FireTime,omitnil,omitempty" name:"FireTime"`
+}
+
+// Predefined struct for user
+type PauseAppTriggerRequestParams struct {
+	// <p>应用ID</p>
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>应用触发器ID</p>
+	TriggerId *string `json:"TriggerId,omitnil,omitempty" name:"TriggerId"`
+}
+
+type PauseAppTriggerRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>应用ID</p>
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>应用触发器ID</p>
+	TriggerId *string `json:"TriggerId,omitnil,omitempty" name:"TriggerId"`
+}
+
+func (r *PauseAppTriggerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PauseAppTriggerRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AppId")
+	delete(f, "TriggerId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PauseAppTriggerRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type PauseAppTriggerResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type PauseAppTriggerResponse struct {
+	*tchttp.BaseResponse
+	Response *PauseAppTriggerResponseParams `json:"Response"`
+}
+
+func (r *PauseAppTriggerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PauseAppTriggerResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type PauseTimerTaskRequestParams struct {
+	// 空间ID
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// 任务ID
+	TimerId *string `json:"TimerId,omitnil,omitempty" name:"TimerId"`
+
+	// 主用户
+	LoginUin *string `json:"LoginUin,omitnil,omitempty" name:"LoginUin"`
+
+	// 子用户
+	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
+}
+
+type PauseTimerTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 空间ID
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// 任务ID
+	TimerId *string `json:"TimerId,omitnil,omitempty" name:"TimerId"`
+
+	// 主用户
+	LoginUin *string `json:"LoginUin,omitnil,omitempty" name:"LoginUin"`
+
+	// 子用户
+	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
+}
+
+func (r *PauseTimerTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PauseTimerTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SpaceId")
+	delete(f, "TimerId")
+	delete(f, "LoginUin")
+	delete(f, "LoginSubAccountUin")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PauseTimerTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type PauseTimerTaskResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type PauseTimerTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *PauseTimerTaskResponseParams `json:"Response"`
+}
+
+func (r *PauseTimerTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PauseTimerTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type Plugin struct {
@@ -6562,6 +8301,142 @@ type ResponseParam struct {
 }
 
 // Predefined struct for user
+type ResumeAppTriggerRequestParams struct {
+	// <p>应用ID</p>
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>应用触发器ID</p>
+	TriggerId *string `json:"TriggerId,omitnil,omitempty" name:"TriggerId"`
+}
+
+type ResumeAppTriggerRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>应用ID</p>
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>应用触发器ID</p>
+	TriggerId *string `json:"TriggerId,omitnil,omitempty" name:"TriggerId"`
+}
+
+func (r *ResumeAppTriggerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResumeAppTriggerRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AppId")
+	delete(f, "TriggerId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ResumeAppTriggerRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ResumeAppTriggerResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ResumeAppTriggerResponse struct {
+	*tchttp.BaseResponse
+	Response *ResumeAppTriggerResponseParams `json:"Response"`
+}
+
+func (r *ResumeAppTriggerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResumeAppTriggerResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ResumeTimerTaskRequestParams struct {
+	// 空间ID
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// 任务ID
+	TimerId *string `json:"TimerId,omitnil,omitempty" name:"TimerId"`
+
+	// 主用户
+	LoginUin *string `json:"LoginUin,omitnil,omitempty" name:"LoginUin"`
+
+	// 子用户
+	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
+}
+
+type ResumeTimerTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 空间ID
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// 任务ID
+	TimerId *string `json:"TimerId,omitnil,omitempty" name:"TimerId"`
+
+	// 主用户
+	LoginUin *string `json:"LoginUin,omitnil,omitempty" name:"LoginUin"`
+
+	// 子用户
+	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
+}
+
+func (r *ResumeTimerTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResumeTimerTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SpaceId")
+	delete(f, "TimerId")
+	delete(f, "LoginUin")
+	delete(f, "LoginSubAccountUin")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ResumeTimerTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ResumeTimerTaskResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ResumeTimerTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *ResumeTimerTaskResponseParams `json:"Response"`
+}
+
+func (r *ResumeTimerTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResumeTimerTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type RetryReleaseRequestParams struct {
 	// 应用ID
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
@@ -6685,6 +8560,148 @@ func (r *RollbackReleaseResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *RollbackReleaseResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RunAppTriggerNowRequestParams struct {
+	// <p>应用ID</p>
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>应用触发器ID</p>
+	TriggerId *string `json:"TriggerId,omitnil,omitempty" name:"TriggerId"`
+}
+
+type RunAppTriggerNowRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>应用ID</p>
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>应用触发器ID</p>
+	TriggerId *string `json:"TriggerId,omitnil,omitempty" name:"TriggerId"`
+}
+
+func (r *RunAppTriggerNowRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RunAppTriggerNowRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AppId")
+	delete(f, "TriggerId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RunAppTriggerNowRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RunAppTriggerNowResponseParams struct {
+	// <p>应用触发器实例ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RunAppTriggerNowResponse struct {
+	*tchttp.BaseResponse
+	Response *RunAppTriggerNowResponseParams `json:"Response"`
+}
+
+func (r *RunAppTriggerNowResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RunAppTriggerNowResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RunTimerTaskNowRequestParams struct {
+	// 空间ID
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// 任务ID
+	TimerId *string `json:"TimerId,omitnil,omitempty" name:"TimerId"`
+
+	// 主用户
+	LoginUin *string `json:"LoginUin,omitnil,omitempty" name:"LoginUin"`
+
+	// 子用户
+	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
+}
+
+type RunTimerTaskNowRequest struct {
+	*tchttp.BaseRequest
+	
+	// 空间ID
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// 任务ID
+	TimerId *string `json:"TimerId,omitnil,omitempty" name:"TimerId"`
+
+	// 主用户
+	LoginUin *string `json:"LoginUin,omitnil,omitempty" name:"LoginUin"`
+
+	// 子用户
+	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
+}
+
+func (r *RunTimerTaskNowRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RunTimerTaskNowRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SpaceId")
+	delete(f, "TimerId")
+	delete(f, "LoginUin")
+	delete(f, "LoginSubAccountUin")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RunTimerTaskNowRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RunTimerTaskNowResponseParams struct {
+	// 实例ID
+	FireInstanceId *string `json:"FireInstanceId,omitnil,omitempty" name:"FireInstanceId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RunTimerTaskNowResponse struct {
+	*tchttp.BaseResponse
+	Response *RunTimerTaskNowResponseParams `json:"Response"`
+}
+
+func (r *RunTimerTaskNowResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RunTimerTaskNowResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -7049,6 +9066,182 @@ type ThinkModel struct {
 	Model *ModelDetailInfo `json:"Model,omitnil,omitempty" name:"Model"`
 }
 
+type TimerConfig struct {
+	// 推送配置
+	PushConfig *TimerPushConfig `json:"PushConfig,omitnil,omitempty" name:"PushConfig"`
+
+	// 定时配置
+	Schedule *TimerScheduleConfig `json:"Schedule,omitnil,omitempty" name:"Schedule"`
+}
+
+type TimerProfile struct {
+	// 
+	// 枚举值:
+	// | uint | 描述 |
+	// | --- | --- |
+	// | 0 |  |
+	// | 1 | 页面手动创建 |
+	// | 2 | 自然语言对话创建 |
+	CreateSource *int64 `json:"CreateSource,omitnil,omitempty" name:"CreateSource"`
+
+	// 输入上下文快照
+	InputContextSnapshot *string `json:"InputContextSnapshot,omitnil,omitempty" name:"InputContextSnapshot"`
+
+	// 模型
+	ModelId *string `json:"ModelId,omitnil,omitempty" name:"ModelId"`
+
+	// 提示词
+	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
+
+	// skill快照
+	SkillSnapshot *string `json:"SkillSnapshot,omitnil,omitempty" name:"SkillSnapshot"`
+
+	// 任务名称
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// 工具快照
+	ToolSnapshot *string `json:"ToolSnapshot,omitnil,omitempty" name:"ToolSnapshot"`
+
+	// 工作目录
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+}
+
+type TimerPushConfig struct {
+	// 
+	// 枚举值:
+	// | uint | 描述 |
+	// | --- | --- |
+	// | 0 |  |
+	// | 1 | 不推送 |
+	// | 2 | 微信公众号 |
+	// | 3 | 企业微信 AI 机器人 |
+	PushChannel *int64 `json:"PushChannel,omitnil,omitempty" name:"PushChannel"`
+
+	// 推送会话ID
+	PushTargetId *string `json:"PushTargetId,omitnil,omitempty" name:"PushTargetId"`
+
+	// 
+	// 枚举值:
+	// | uint | 描述 |
+	// | --- | --- |
+	// | 0 |  |
+	// | 1 | 用户 (微信公众号 openid) |
+	// | 2 | 群聊 (企微机器人 chat_id) |
+	PushTargetType *int64 `json:"PushTargetType,omitnil,omitempty" name:"PushTargetType"`
+
+
+	PushWebhookUrl *string `json:"PushWebhookUrl,omitnil,omitempty" name:"PushWebhookUrl"`
+}
+
+type TimerScheduleConfig struct {
+	// cron配置
+	Cron *CronSchedule `json:"Cron,omitnil,omitempty" name:"Cron"`
+
+	// 每日触发
+	Daily *DailySchedule `json:"Daily,omitnil,omitempty" name:"Daily"`
+
+	// 固定间隔
+	Interval *IntervalSchedule `json:"Interval,omitnil,omitempty" name:"Interval"`
+
+	// 仅手动
+	ManualOnly *ManualOnlySchedule `json:"ManualOnly,omitnil,omitempty" name:"ManualOnly"`
+
+	// 单次
+	Once *OnceSchedule `json:"Once,omitnil,omitempty" name:"Once"`
+
+	// 
+	// 枚举值:
+	// | uint | 描述 |
+	// | --- | --- |
+	// | 0 |  |
+	// | 1 | 仅手动 |
+	// | 2 | 每天 |
+	// | 3 | 每周 |
+	// | 4 | 按间隔 |
+	// | 5 | 一次性 |
+	// | 6 | Cron |
+	ScheduleType *int64 `json:"ScheduleType,omitnil,omitempty" name:"ScheduleType"`
+
+	// 时区
+	Timezone *string `json:"Timezone,omitnil,omitempty" name:"Timezone"`
+
+	// 每周固定时间触发
+	Weekly *WeeklySchedule `json:"Weekly,omitnil,omitempty" name:"Weekly"`
+}
+
+type TimerStatus struct {
+	// 失败次数
+	FailedCount *string `json:"FailedCount,omitnil,omitempty" name:"FailedCount"`
+
+	// 上次触发时间
+	LastFireTime *string `json:"LastFireTime,omitnil,omitempty" name:"LastFireTime"`
+
+	// 最近一次会话ID
+	LastSessionId *string `json:"LastSessionId,omitnil,omitempty" name:"LastSessionId"`
+
+	// 下次触发时间
+	NextFireTime *string `json:"NextFireTime,omitnil,omitempty" name:"NextFireTime"`
+
+	// 
+	// 枚举值:
+	// | uint | 描述 |
+	// | --- | --- |
+	// | 0 |  |
+	// | 1 | 启用 |
+	// | 2 | 暂停 |
+	// | 3 | 一次性任务已完成 |
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 成功次数
+	SuccessCount *string `json:"SuccessCount,omitnil,omitempty" name:"SuccessCount"`
+
+	// 未读数量
+	UnreadRunLogCount *string `json:"UnreadRunLogCount,omitnil,omitempty" name:"UnreadRunLogCount"`
+}
+
+type TimerTask struct {
+	// 任务配置
+	Config *TimerConfig `json:"Config,omitnil,omitempty" name:"Config"`
+
+	// staffBizId
+	OwnerUserId *string `json:"OwnerUserId,omitnil,omitempty" name:"OwnerUserId"`
+
+	// 定时配置概要
+	PolicySummary *string `json:"PolicySummary,omitnil,omitempty" name:"PolicySummary"`
+
+	// 概要信息
+	Profile *TimerProfile `json:"Profile,omitnil,omitempty" name:"Profile"`
+
+	// 空间ID
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// 任务状态
+	Status *TimerStatus `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 任务ID
+	TimerId *string `json:"TimerId,omitnil,omitempty" name:"TimerId"`
+}
+
+type TimerTaskSummary struct {
+	// OwnerUserId
+	OwnerUserId *string `json:"OwnerUserId,omitnil,omitempty" name:"OwnerUserId"`
+
+	// 定时配置概要
+	PolicySummary *string `json:"PolicySummary,omitnil,omitempty" name:"PolicySummary"`
+
+	// 空间ID
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// 任务相关状态
+	Status *TimerStatus `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 任务名称
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// 任务ID
+	TimerId *string `json:"TimerId,omitnil,omitempty" name:"TimerId"`
+}
+
 type Tool struct {
 	// <p>工具计费信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -7116,6 +9309,22 @@ type ToolExample struct {
 type ToolSummary struct {
 	// <p>工具Id</p>
 	ToolId *string `json:"ToolId,omitnil,omitempty" name:"ToolId"`
+}
+
+type TriggerConfig struct {
+	// <p>定时器配置</p>
+	ScheduledConfig *AppTriggerScheduleConfig `json:"ScheduledConfig,omitnil,omitempty" name:"ScheduledConfig"`
+
+	// <p>Webhook配置</p>
+	WebhookConfig *AppTriggerWebhookConfig `json:"WebhookConfig,omitnil,omitempty" name:"WebhookConfig"`
+}
+
+type TriggerStatus struct {
+	// <p>定时器状态</p>
+	ScheduledStatus *AppTriggerScheduleStatus `json:"ScheduledStatus,omitnil,omitempty" name:"ScheduledStatus"`
+
+	// <p>Webhook状态</p>
+	WebhookStatus *AppTriggerWebhookStatus `json:"WebhookStatus,omitnil,omitempty" name:"WebhookStatus"`
 }
 
 // Predefined struct for user
@@ -7278,4 +9487,17 @@ type VoiceConfig struct {
 
 	// 公有云音色id
 	VoiceType *uint64 `json:"VoiceType,omitnil,omitempty" name:"VoiceType"`
+}
+
+type WeeklySchedule struct {
+	// 定时配置（星期）
+	Times []*WeeklyTime `json:"Times,omitnil,omitempty" name:"Times"`
+}
+
+type WeeklyTime struct {
+	// 时间
+	TimeOfDay *string `json:"TimeOfDay,omitnil,omitempty" name:"TimeOfDay"`
+
+	// 周几
+	Weekday *int64 `json:"Weekday,omitnil,omitempty" name:"Weekday"`
 }

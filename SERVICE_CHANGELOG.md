@@ -1,92 +1,81 @@
-# Release v1.3.142
+# Release v1.3.143
 
-## AI Agent 安全网关(apis) 版本：2024-08-01
+## 腾讯云智能体开发平台(adp) 版本：2026-05-20
 
-### 第 11 次发布
+### 第 12 次发布
 
-发布时间：2026-07-24 01:12:00
+发布时间：2026-07-24 13:13:21
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+新增接口：
 
-* [CreateMcpServer](https://cloud.tencent.com/document/api/1627/129634)
+* [CreateAppTrigger](https://cloud.tencent.com/document/api/1759/135012)
+* [CreateTimerTask](https://cloud.tencent.com/document/api/1759/135011)
+* [DeleteAppTrigger](https://cloud.tencent.com/document/api/1759/135010)
+* [DeleteTimerTask](https://cloud.tencent.com/document/api/1759/135009)
+* [DescribeAppTrigger](https://cloud.tencent.com/document/api/1759/135008)
+* [DescribeAppTriggerInstance](https://cloud.tencent.com/document/api/1759/135007)
+* [DescribeAppTriggerRunLogList](https://cloud.tencent.com/document/api/1759/135006)
+* [DescribeAppTriggerSummaryList](https://cloud.tencent.com/document/api/1759/135005)
+* [DescribeTimerTask](https://cloud.tencent.com/document/api/1759/135004)
+* [DescribeTimerTaskRunLogList](https://cloud.tencent.com/document/api/1759/135003)
+* [DescribeTimerTaskSummaryList](https://cloud.tencent.com/document/api/1759/135002)
+* [MarkAppTriggerRunLogRead](https://cloud.tencent.com/document/api/1759/135001)
+* [MarkTimerTaskRunLogRead](https://cloud.tencent.com/document/api/1759/135000)
+* [ModifyAppTrigger](https://cloud.tencent.com/document/api/1759/134999)
+* [ModifyTimerTask](https://cloud.tencent.com/document/api/1759/134998)
+* [PauseAppTrigger](https://cloud.tencent.com/document/api/1759/134997)
+* [PauseTimerTask](https://cloud.tencent.com/document/api/1759/134996)
+* [ResumeAppTrigger](https://cloud.tencent.com/document/api/1759/134995)
+* [ResumeTimerTask](https://cloud.tencent.com/document/api/1759/134994)
+* [RunAppTriggerNow](https://cloud.tencent.com/document/api/1759/134993)
+* [RunTimerTaskNow](https://cloud.tencent.com/document/api/1759/134992)
 
-	* 新增入参：IgnoreHealthCheck
+新增数据结构：
 
-* [ModifyMcpServer](https://cloud.tencent.com/document/api/1627/129630)
-
-	* 新增入参：IgnoreHealthCheck
-
-
-修改数据结构：
-
-* [DescribeMcpServerResponseVO](https://cloud.tencent.com/document/api/1627/129635#DescribeMcpServerResponseVO)
-
-	* 新增成员：IgnoreHealthCheck
-
+* [AppTrigger](https://cloud.tencent.com/document/api/1759/132545#AppTrigger)
+* [AppTriggerInstance](https://cloud.tencent.com/document/api/1759/132545#AppTriggerInstance)
+* [AppTriggerParamBinding](https://cloud.tencent.com/document/api/1759/132545#AppTriggerParamBinding)
+* [AppTriggerParamBindingConfig](https://cloud.tencent.com/document/api/1759/132545#AppTriggerParamBindingConfig)
+* [AppTriggerParamBindingValue](https://cloud.tencent.com/document/api/1759/132545#AppTriggerParamBindingValue)
+* [AppTriggerParamSchema](https://cloud.tencent.com/document/api/1759/132545#AppTriggerParamSchema)
+* [AppTriggerPromptExecuteConfig](https://cloud.tencent.com/document/api/1759/132545#AppTriggerPromptExecuteConfig)
+* [AppTriggerRunLog](https://cloud.tencent.com/document/api/1759/132545#AppTriggerRunLog)
+* [AppTriggerScheduleConfig](https://cloud.tencent.com/document/api/1759/132545#AppTriggerScheduleConfig)
+* [AppTriggerScheduleStatus](https://cloud.tencent.com/document/api/1759/132545#AppTriggerScheduleStatus)
+* [AppTriggerSummary](https://cloud.tencent.com/document/api/1759/132545#AppTriggerSummary)
+* [AppTriggerWebhookConfig](https://cloud.tencent.com/document/api/1759/132545#AppTriggerWebhookConfig)
+* [AppTriggerWebhookParamSchemaConfig](https://cloud.tencent.com/document/api/1759/132545#AppTriggerWebhookParamSchemaConfig)
+* [AppTriggerWebhookStatus](https://cloud.tencent.com/document/api/1759/132545#AppTriggerWebhookStatus)
+* [AppTriggerWorkflowExecuteConfig](https://cloud.tencent.com/document/api/1759/132545#AppTriggerWorkflowExecuteConfig)
+* [CronSchedule](https://cloud.tencent.com/document/api/1759/132545#CronSchedule)
+* [DailySchedule](https://cloud.tencent.com/document/api/1759/132545#DailySchedule)
+* [ExecuteConfig](https://cloud.tencent.com/document/api/1759/132545#ExecuteConfig)
+* [IntervalSchedule](https://cloud.tencent.com/document/api/1759/132545#IntervalSchedule)
+* [ManualOnlySchedule](https://cloud.tencent.com/document/api/1759/132545#ManualOnlySchedule)
+* [OnceSchedule](https://cloud.tencent.com/document/api/1759/132545#OnceSchedule)
+* [TimerConfig](https://cloud.tencent.com/document/api/1759/132545#TimerConfig)
+* [TimerProfile](https://cloud.tencent.com/document/api/1759/132545#TimerProfile)
+* [TimerPushConfig](https://cloud.tencent.com/document/api/1759/132545#TimerPushConfig)
+* [TimerScheduleConfig](https://cloud.tencent.com/document/api/1759/132545#TimerScheduleConfig)
+* [TimerStatus](https://cloud.tencent.com/document/api/1759/132545#TimerStatus)
+* [TimerTask](https://cloud.tencent.com/document/api/1759/132545#TimerTask)
+* [TimerTaskSummary](https://cloud.tencent.com/document/api/1759/132545#TimerTaskSummary)
+* [TriggerConfig](https://cloud.tencent.com/document/api/1759/132545#TriggerConfig)
+* [TriggerStatus](https://cloud.tencent.com/document/api/1759/132545#TriggerStatus)
+* [WeeklySchedule](https://cloud.tencent.com/document/api/1759/132545#WeeklySchedule)
+* [WeeklyTime](https://cloud.tencent.com/document/api/1759/132545#WeeklyTime)
 
 
 
 ## 云防火墙(cfw) 版本：2019-09-04
 
-### 第 110 次发布
+### 第 111 次发布
 
-发布时间：2026-07-24 01:25:40
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CheckClusterNatFwPreAccess](https://cloud.tencent.com/document/api/1132/134978)
-* [CheckClusterVpcFwPreAccess](https://cloud.tencent.com/document/api/1132/134977)
-* [DescribeBlockList](https://cloud.tencent.com/document/api/1132/134984)
-* [DescribeFwGroupIdNames](https://cloud.tencent.com/document/api/1132/134983)
-* [DescribeIpsRuleListNew](https://cloud.tencent.com/document/api/1132/134982)
-* [DescribeNatRuleScopes](https://cloud.tencent.com/document/api/1132/134981)
-* [DescribeSecurityGroupRegionList](https://cloud.tencent.com/document/api/1132/134979)
-* [DescribeVpcAclEdgeRange](https://cloud.tencent.com/document/api/1132/134980)
-
-新增数据结构：
-
-* [BlockInfo](https://cloud.tencent.com/document/api/1132/49071#BlockInfo)
-* [ClusterFwPreAccessCheckItem](https://cloud.tencent.com/document/api/1132/49071#ClusterFwPreAccessCheckItem)
-* [EdgeRange](https://cloud.tencent.com/document/api/1132/49071#EdgeRange)
-* [FwGroupIdName](https://cloud.tencent.com/document/api/1132/49071#FwGroupIdName)
-* [IpsRuleDetailNew](https://cloud.tencent.com/document/api/1132/49071#IpsRuleDetailNew)
-* [RuleScopeInfo](https://cloud.tencent.com/document/api/1132/49071#RuleScopeInfo)
-* [SecurityGroupRegion](https://cloud.tencent.com/document/api/1132/49071#SecurityGroupRegion)
-
-
-
-## 负载均衡(clb) 版本：2018-03-17
-
-### 第 155 次发布
-
-发布时间：2026-07-24 01:29:42
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [UserGroupInfo](https://cloud.tencent.com/document/api/214/30694#UserGroupInfo)
-
-	* 新增成员：PromptId, PromptVersion, PromptName
-
-
-
-
-## 日志服务(cls) 版本：2020-10-16
-
-### 第 169 次发布
-
-发布时间：2026-07-24 01:32:15
+发布时间：2026-07-27 01:25:36
 
 本次发布包含了以下内容：
 
@@ -94,112 +83,76 @@
 
 修改接口：
 
-* [CreateTopic](https://cloud.tencent.com/document/api/614/56456)
+* [DeleteBlockIgnoreRuleNew](https://cloud.tencent.com/document/api/1132/104037)
 
-	* 新增入参：CustomKmsInfo
-
-* [ModifyTopic](https://cloud.tencent.com/document/api/614/56453)
-
-	* 新增入参：CustomKmsInfo
-
-
-新增数据结构：
-
-* [CustomKmsInfo](https://cloud.tencent.com/document/api/614/56471#CustomKmsInfo)
-
-修改数据结构：
-
-* [TopicInfo](https://cloud.tencent.com/document/api/614/56471#TopicInfo)
-
-	* 新增成员：CustomKmsInfo
+	* <font color="#dd0000">**修改入参**：</font>ShowType
 
 
 
 
-## 数据加速器 GooseFS(goosefs) 版本：2022-05-19
+## 腾讯电子签企业版(ess) 版本：2020-11-11
 
-### 第 20 次发布
+### 第 310 次发布
 
-发布时间：2026-07-24 02:12:17
+发布时间：2026-07-27 02:00:17
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+修改接口：
 
-* [ModifyDataRepositoryTaskStatus](https://cloud.tencent.com/document/api/1424/134985)
+* [ModifyPartnerAutoSignAuthUrl](https://cloud.tencent.com/document/api/1323/120051)
+
+	* 新增入参：SealTypes
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 267 次发布
+
+发布时间：2026-07-27 02:02:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyPartnerAutoSignAuthUrl](https://cloud.tencent.com/document/api/1420/120052)
+
+	* 新增入参：SealTypes
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
 
 
 
 ## 媒体处理(mps) 版本：2019-06-12
 
-### 第 223 次发布
+### 第 224 次发布
 
-发布时间：2026-07-24 02:36:35
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeVoices](https://cloud.tencent.com/document/api/862/130123)
-
-	* 新增出参：TotalCount
-
-
-
-
-## 云点播(vod) 版本：2024-07-18
-
-
-
-## 云点播(vod) 版本：2018-07-17
-
-### 第 275 次发布
-
-发布时间：2026-07-24 03:24:46
+发布时间：2026-07-24 18:05:05
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+新增接口：
 
-* [CreateAigcVideoRedrawTask](https://cloud.tencent.com/document/api/266/130726)
-
-	* 新增入参：TaskInfo
-
-* [CreateQualityInspectTemplate](https://cloud.tencent.com/document/api/266/94246)
-
-	* 新增入参：Configs, Strategy
-
-* [ModifyQualityInspectTemplate](https://cloud.tencent.com/document/api/266/94243)
-
-	* 新增入参：Configs, Strategy
-
+* [CloneViral](https://cloud.tencent.com/document/api/862/135033)
+* [DescribeCloneViralTask](https://cloud.tencent.com/document/api/862/135032)
 
 新增数据结构：
 
-* [QualityInspectConfig](https://cloud.tencent.com/document/api/266/31773#QualityInspectConfig)
-* [QualityInspectContainerDiagnoseResultItem](https://cloud.tencent.com/document/api/266/31773#QualityInspectContainerDiagnoseResultItem)
-* [QualityInspectLLMDetectionIssue](https://cloud.tencent.com/document/api/266/31773#QualityInspectLLMDetectionIssue)
-* [QualityInspectLLMDetectionReport](https://cloud.tencent.com/document/api/266/31773#QualityInspectLLMDetectionReport)
-* [QualityInspectLLMDetectionResultItem](https://cloud.tencent.com/document/api/266/31773#QualityInspectLLMDetectionResultItem)
-* [QualityInspectStrategy](https://cloud.tencent.com/document/api/266/31773#QualityInspectStrategy)
-* [QualityInspectTimeSpotCheck](https://cloud.tencent.com/document/api/266/31773#QualityInspectTimeSpotCheck)
-
-修改数据结构：
-
-* [QualityInspectTaskOutput](https://cloud.tencent.com/document/api/266/31773#QualityInspectTaskOutput)
-
-	* 新增成员：QualityEvaluationMeanOpinionScore, AestheticEvaluationScore, ContainerDiagnoseResultSet, LLMDetectionReport
-
-* [QualityInspectTemplateItem](https://cloud.tencent.com/document/api/266/31773#QualityInspectTemplateItem)
-
-	* 新增成员：Configs, Strategy
-
+* [CloneViralAIGC](https://cloud.tencent.com/document/api/862/37615#CloneViralAIGC)
+* [CloneViralContent](https://cloud.tencent.com/document/api/862/37615#CloneViralContent)
+* [CloneViralPersona](https://cloud.tencent.com/document/api/862/37615#CloneViralPersona)
+* [CloneViralProduct](https://cloud.tencent.com/document/api/862/37615#CloneViralProduct)
 
 
 

@@ -373,6 +373,60 @@ func (c *Client) BatchStopStreamLinkFlowWithContext(ctx context.Context, request
     return
 }
 
+func NewCloneViralRequest() (request *CloneViralRequest) {
+    request = &CloneViralRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "CloneViral")
+    
+    
+    return
+}
+
+func NewCloneViralResponse() (response *CloneViralResponse) {
+    response = &CloneViralResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CloneViral
+// 爆款复刻。输入爆款参考视频+商品图，生成风格/节奏对齐的视频
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_STATE = "InvalidParameter.State"
+func (c *Client) CloneViral(request *CloneViralRequest) (response *CloneViralResponse, err error) {
+    return c.CloneViralWithContext(context.Background(), request)
+}
+
+// CloneViral
+// 爆款复刻。输入爆款参考视频+商品图，生成风格/节奏对齐的视频
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_STATE = "InvalidParameter.State"
+func (c *Client) CloneViralWithContext(ctx context.Context, request *CloneViralRequest) (response *CloneViralResponse, err error) {
+    if request == nil {
+        request = NewCloneViralRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "CloneViral")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CloneViral require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCloneViralResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAIAnalysisTemplateRequest() (request *CreateAIAnalysisTemplateRequest) {
     request = &CreateAIAnalysisTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5841,6 +5895,66 @@ func (c *Client) DescribeBlindWatermarkTemplatesWithContext(ctx context.Context,
     request.SetContext(ctx)
     
     response = NewDescribeBlindWatermarkTemplatesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCloneViralTaskRequest() (request *DescribeCloneViralTaskRequest) {
+    request = &DescribeCloneViralTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "DescribeCloneViralTask")
+    
+    
+    return
+}
+
+func NewDescribeCloneViralTaskResponse() (response *DescribeCloneViralTaskResponse) {
+    response = &DescribeCloneViralTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCloneViralTask
+// 查询爆款复刻任务结果
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_DEFINITIONS = "InvalidParameterValue.Definitions"
+//  INVALIDPARAMETERVALUE_LIMIT = "InvalidParameterValue.Limit"
+//  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+func (c *Client) DescribeCloneViralTask(request *DescribeCloneViralTaskRequest) (response *DescribeCloneViralTaskResponse, err error) {
+    return c.DescribeCloneViralTaskWithContext(context.Background(), request)
+}
+
+// DescribeCloneViralTask
+// 查询爆款复刻任务结果
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_DEFINITIONS = "InvalidParameterValue.Definitions"
+//  INVALIDPARAMETERVALUE_LIMIT = "InvalidParameterValue.Limit"
+//  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+func (c *Client) DescribeCloneViralTaskWithContext(ctx context.Context, request *DescribeCloneViralTaskRequest) (response *DescribeCloneViralTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloneViralTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DescribeCloneViralTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCloneViralTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCloneViralTaskResponse()
     err = c.Send(request, response)
     return
 }

@@ -3543,6 +3543,150 @@ type ClipRangeInfo struct {
 	EndOffset *uint64 `json:"EndOffset,omitnil,omitempty" name:"EndOffset"`
 }
 
+type CloneViralAIGC struct {
+	// <p>视频时长</p><p>取值范围：[4, 15]</p>
+	Duration *int64 `json:"Duration,omitnil,omitempty" name:"Duration"`
+
+	// <p>宽高比。可选 16:9/4:3/1:1/3:4/9:16/21:9/adaptive</p>
+	AspectRatio *string `json:"AspectRatio,omitnil,omitempty" name:"AspectRatio"`
+
+	// <p>分辨率。支持720p（默认）/1080p/2k/4k</p>
+	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
+
+	// <p>模型等级。flagship（VS2.0，默认）、standard（Kling3.0-Omni）</p>
+	ModelTier *string `json:"ModelTier,omitnil,omitempty" name:"ModelTier"`
+}
+
+type CloneViralContent struct {
+	// <p>自定义提示词，对生成视频的要求</p>
+	UserPrompt *string `json:"UserPrompt,omitnil,omitempty" name:"UserPrompt"`
+
+	// <p>生成视频的目标语言，默认不指定，支持zh / en / ja / ko / es / pt / instrumental（纯音乐无口播）</p>
+	Language *string `json:"Language,omitnil,omitempty" name:"Language"`
+
+	// <p>目标市场，默认不指定。可选north_america / europe / china / japan / korea / sea / brazil</p>
+	Market *string `json:"Market,omitnil,omitempty" name:"Market"`
+
+	// <p>裂变程度。exact/low/medium/high，默认exact 1:1复刻</p>
+	FissionLevel *string `json:"FissionLevel,omitnil,omitempty" name:"FissionLevel"`
+}
+
+type CloneViralPersona struct {
+	// <p>模特性别。male/female/any</p>
+	Gender *string `json:"Gender,omitnil,omitempty" name:"Gender"`
+
+	// <p>年龄段。teenager/youth/middle_aged/senior</p>
+	Age *string `json:"Age,omitnil,omitempty" name:"Age"`
+
+	// <p>外观特征。caucasian/asian/latino/african/middle_eastern</p>
+	Ethnicity *string `json:"Ethnicity,omitnil,omitempty" name:"Ethnicity"`
+
+	// <p>体型。slim / standard / athletic / chubby</p>
+	BodyType *string `json:"BodyType,omitnil,omitempty" name:"BodyType"`
+}
+
+type CloneViralProduct struct {
+	// <p>产品图</p>
+	Images []*string `json:"Images,omitnil,omitempty" name:"Images"`
+
+	// <p>产品名</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>产品描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+// Predefined struct for user
+type CloneViralRequestParams struct {
+	// <p>爆款视频Url</p>
+	VideoUrl *string `json:"VideoUrl,omitnil,omitempty" name:"VideoUrl"`
+
+	// <p>产品信息</p>
+	Product *CloneViralProduct `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// <p>AIGC生视频相关参数</p>
+	AIGCParam *CloneViralAIGC `json:"AIGCParam,omitnil,omitempty" name:"AIGCParam"`
+
+	// <p>内容/风格相关参数</p>
+	ContentParam *CloneViralContent `json:"ContentParam,omitnil,omitempty" name:"ContentParam"`
+
+	// <p>模特形象</p>
+	Persona *CloneViralPersona `json:"Persona,omitnil,omitempty" name:"Persona"`
+}
+
+type CloneViralRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>爆款视频Url</p>
+	VideoUrl *string `json:"VideoUrl,omitnil,omitempty" name:"VideoUrl"`
+
+	// <p>产品信息</p>
+	Product *CloneViralProduct `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// <p>AIGC生视频相关参数</p>
+	AIGCParam *CloneViralAIGC `json:"AIGCParam,omitnil,omitempty" name:"AIGCParam"`
+
+	// <p>内容/风格相关参数</p>
+	ContentParam *CloneViralContent `json:"ContentParam,omitnil,omitempty" name:"ContentParam"`
+
+	// <p>模特形象</p>
+	Persona *CloneViralPersona `json:"Persona,omitnil,omitempty" name:"Persona"`
+}
+
+func (r *CloneViralRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CloneViralRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VideoUrl")
+	delete(f, "Product")
+	delete(f, "AIGCParam")
+	delete(f, "ContentParam")
+	delete(f, "Persona")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CloneViralRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CloneViralResponseParams struct {
+	// <p>任务状态，失败时返回FAIL</p>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>失败时返回错误信息</p>
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// <p>任务创建成功后，返回的任务ID。 调用查询接口，轮询获取任务进度及生成结果。</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CloneViralResponse struct {
+	*tchttp.BaseResponse
+	Response *CloneViralResponseParams `json:"Response"`
+}
+
+func (r *CloneViralResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CloneViralResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ColorEnhanceConfig struct {
 	// 能力配置开关，可选值：
 	// <li>ON：开启；</li>
@@ -11730,6 +11874,69 @@ func (r *DescribeBlindWatermarkTemplatesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeBlindWatermarkTemplatesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCloneViralTaskRequestParams struct {
+	// <p>创建爆款复刻任务返回的任务ID</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type DescribeCloneViralTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>创建爆款复刻任务返回的任务ID</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *DescribeCloneViralTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCloneViralTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCloneViralTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCloneViralTaskResponseParams struct {
+	// <p>任务状态</p><p>枚举值：</p><ul><li>WAIT： 等待中</li><li>RUN： 执行中</li><li>FAIL： 任务失败</li><li>DONE： 任务成功</li></ul>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>失败时返回错误信息</p>
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// <p>当任务状态为 DONE时，返回视频Url列表，视频存储24小时</p>
+	VideoUrls []*string `json:"VideoUrls,omitnil,omitempty" name:"VideoUrls"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeCloneViralTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCloneViralTaskResponseParams `json:"Response"`
+}
+
+func (r *DescribeCloneViralTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCloneViralTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
