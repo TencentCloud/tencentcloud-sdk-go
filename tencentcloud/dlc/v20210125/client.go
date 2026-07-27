@@ -2661,6 +2661,78 @@ func (c *Client) CreateSparkAppWithContext(ctx context.Context, request *CreateS
     return
 }
 
+func NewCreateSparkAppForTDLCRequest() (request *CreateSparkAppForTDLCRequest) {
+    request = &CreateSparkAppForTDLCRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "CreateSparkAppForTDLC")
+    
+    
+    return
+}
+
+func NewCreateSparkAppForTDLCResponse() (response *CreateSparkAppForTDLCResponse) {
+    response = &CreateSparkAppForTDLCResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateSparkAppForTDLC
+// 创建tdlc spark作业
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+//  INVALIDPARAMETER_INVALIDAPPFILEFORMAT = "InvalidParameter.InvalidAppFileFormat"
+//  INVALIDPARAMETER_INVALIDDRIVERSIZE = "InvalidParameter.InvalidDriverSize"
+//  INVALIDPARAMETER_INVALIDEXECUTORSIZE = "InvalidParameter.InvalidExecutorSize"
+//  INVALIDPARAMETER_INVALIDFILEPATHFORMAT = "InvalidParameter.InvalidFilePathFormat"
+//  INVALIDPARAMETER_INVALIDROLEARN = "InvalidParameter.InvalidRoleArn"
+//  INVALIDPARAMETER_SPARKJOBNOTUNIQUE = "InvalidParameter.SparkJobNotUnique"
+//  INVALIDPARAMETER_SPARKJOBONLYSUPPORTSPARKBATCHENGINE = "InvalidParameter.SparkJobOnlySupportSparkBatchEngine"
+//  RESOURCEINSUFFICIENT_SPARKJOBINSUFFICIENTRESOURCES = "ResourceInsufficient.SparkJobInsufficientResources"
+//  RESOURCENOTFOUND_DATAENGINENOTFOUND = "ResourceNotFound.DataEngineNotFound"
+//  RESOURCENOTFOUND_SESSIONINSUFFICIENTRESOURCES = "ResourceNotFound.SessionInsufficientResources"
+func (c *Client) CreateSparkAppForTDLC(request *CreateSparkAppForTDLCRequest) (response *CreateSparkAppForTDLCResponse, err error) {
+    return c.CreateSparkAppForTDLCWithContext(context.Background(), request)
+}
+
+// CreateSparkAppForTDLC
+// 创建tdlc spark作业
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+//  INVALIDPARAMETER_INVALIDAPPFILEFORMAT = "InvalidParameter.InvalidAppFileFormat"
+//  INVALIDPARAMETER_INVALIDDRIVERSIZE = "InvalidParameter.InvalidDriverSize"
+//  INVALIDPARAMETER_INVALIDEXECUTORSIZE = "InvalidParameter.InvalidExecutorSize"
+//  INVALIDPARAMETER_INVALIDFILEPATHFORMAT = "InvalidParameter.InvalidFilePathFormat"
+//  INVALIDPARAMETER_INVALIDROLEARN = "InvalidParameter.InvalidRoleArn"
+//  INVALIDPARAMETER_SPARKJOBNOTUNIQUE = "InvalidParameter.SparkJobNotUnique"
+//  INVALIDPARAMETER_SPARKJOBONLYSUPPORTSPARKBATCHENGINE = "InvalidParameter.SparkJobOnlySupportSparkBatchEngine"
+//  RESOURCEINSUFFICIENT_SPARKJOBINSUFFICIENTRESOURCES = "ResourceInsufficient.SparkJobInsufficientResources"
+//  RESOURCENOTFOUND_DATAENGINENOTFOUND = "ResourceNotFound.DataEngineNotFound"
+//  RESOURCENOTFOUND_SESSIONINSUFFICIENTRESOURCES = "ResourceNotFound.SessionInsufficientResources"
+func (c *Client) CreateSparkAppForTDLCWithContext(ctx context.Context, request *CreateSparkAppForTDLCRequest) (response *CreateSparkAppForTDLCResponse, err error) {
+    if request == nil {
+        request = NewCreateSparkAppForTDLCRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "CreateSparkAppForTDLC")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateSparkAppForTDLC require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateSparkAppForTDLCResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateSparkAppTaskRequest() (request *CreateSparkAppTaskRequest) {
     request = &CreateSparkAppTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6335,6 +6407,56 @@ func (c *Client) DescribeLakeFsTaskResultWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewDescribeLakeFsTaskResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeMCPSubUinRequest() (request *DescribeMCPSubUinRequest) {
+    request = &DescribeMCPSubUinRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeMCPSubUin")
+    
+    
+    return
+}
+
+func NewDescribeMCPSubUinResponse() (response *DescribeMCPSubUinResponse) {
+    response = &DescribeMCPSubUinResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMCPSubUin
+// 获取账户子账户信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeMCPSubUin(request *DescribeMCPSubUinRequest) (response *DescribeMCPSubUinResponse, err error) {
+    return c.DescribeMCPSubUinWithContext(context.Background(), request)
+}
+
+// DescribeMCPSubUin
+// 获取账户子账户信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeMCPSubUinWithContext(ctx context.Context, request *DescribeMCPSubUinRequest) (response *DescribeMCPSubUinResponse, err error) {
+    if request == nil {
+        request = NewDescribeMCPSubUinRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "DescribeMCPSubUin")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMCPSubUin require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMCPSubUinResponse()
     err = c.Send(request, response)
     return
 }
@@ -10855,6 +10977,80 @@ func (c *Client) ModifySparkAppBatchWithContext(ctx context.Context, request *Mo
     request.SetContext(ctx)
     
     response = NewModifySparkAppBatchResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifySparkAppForTDLCRequest() (request *ModifySparkAppForTDLCRequest) {
+    request = &ModifySparkAppForTDLCRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "ModifySparkAppForTDLC")
+    
+    
+    return
+}
+
+func NewModifySparkAppForTDLCResponse() (response *ModifySparkAppForTDLCResponse) {
+    response = &ModifySparkAppForTDLCResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifySparkAppForTDLC
+// 更新tdlc spark作业
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+//  INVALIDPARAMETER_INVALIDAPPFILEFORMAT = "InvalidParameter.InvalidAppFileFormat"
+//  INVALIDPARAMETER_INVALIDDATAENGINENAME = "InvalidParameter.InvalidDataEngineName"
+//  INVALIDPARAMETER_INVALIDDRIVERSIZE = "InvalidParameter.InvalidDriverSize"
+//  INVALIDPARAMETER_INVALIDEXECUTORSIZE = "InvalidParameter.InvalidExecutorSize"
+//  INVALIDPARAMETER_INVALIDFILECOMPRESSIONFORMAT = "InvalidParameter.InvalidFileCompressionFormat"
+//  INVALIDPARAMETER_INVALIDFILEPATHFORMAT = "InvalidParameter.InvalidFilePathFormat"
+//  INVALIDPARAMETER_SQLBASE64DECODEFAIL = "InvalidParameter.SQLBase64DecodeFail"
+//  INVALIDPARAMETER_SPARKJOBNOTFOUND = "InvalidParameter.SparkJobNotFound"
+//  INVALIDPARAMETER_SPARKJOBONLYSUPPORTSPARKBATCHENGINE = "InvalidParameter.SparkJobOnlySupportSparkBatchEngine"
+//  RESOURCEINSUFFICIENT_SPARKJOBINSUFFICIENTRESOURCES = "ResourceInsufficient.SparkJobInsufficientResources"
+//  RESOURCENOTFOUND_DATAENGINENOTFOUND = "ResourceNotFound.DataEngineNotFound"
+func (c *Client) ModifySparkAppForTDLC(request *ModifySparkAppForTDLCRequest) (response *ModifySparkAppForTDLCResponse, err error) {
+    return c.ModifySparkAppForTDLCWithContext(context.Background(), request)
+}
+
+// ModifySparkAppForTDLC
+// 更新tdlc spark作业
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+//  INVALIDPARAMETER_INVALIDAPPFILEFORMAT = "InvalidParameter.InvalidAppFileFormat"
+//  INVALIDPARAMETER_INVALIDDATAENGINENAME = "InvalidParameter.InvalidDataEngineName"
+//  INVALIDPARAMETER_INVALIDDRIVERSIZE = "InvalidParameter.InvalidDriverSize"
+//  INVALIDPARAMETER_INVALIDEXECUTORSIZE = "InvalidParameter.InvalidExecutorSize"
+//  INVALIDPARAMETER_INVALIDFILECOMPRESSIONFORMAT = "InvalidParameter.InvalidFileCompressionFormat"
+//  INVALIDPARAMETER_INVALIDFILEPATHFORMAT = "InvalidParameter.InvalidFilePathFormat"
+//  INVALIDPARAMETER_SQLBASE64DECODEFAIL = "InvalidParameter.SQLBase64DecodeFail"
+//  INVALIDPARAMETER_SPARKJOBNOTFOUND = "InvalidParameter.SparkJobNotFound"
+//  INVALIDPARAMETER_SPARKJOBONLYSUPPORTSPARKBATCHENGINE = "InvalidParameter.SparkJobOnlySupportSparkBatchEngine"
+//  RESOURCEINSUFFICIENT_SPARKJOBINSUFFICIENTRESOURCES = "ResourceInsufficient.SparkJobInsufficientResources"
+//  RESOURCENOTFOUND_DATAENGINENOTFOUND = "ResourceNotFound.DataEngineNotFound"
+func (c *Client) ModifySparkAppForTDLCWithContext(ctx context.Context, request *ModifySparkAppForTDLCRequest) (response *ModifySparkAppForTDLCResponse, err error) {
+    if request == nil {
+        request = NewModifySparkAppForTDLCRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "ModifySparkAppForTDLC")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifySparkAppForTDLC require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifySparkAppForTDLCResponse()
     err = c.Send(request, response)
     return
 }

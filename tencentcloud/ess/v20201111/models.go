@@ -218,6 +218,9 @@ type ApproverOption struct {
 
 	// <p>签署人手机号传参模式</p><p>枚举值：</p><ul><li>REPLACE： 接受已有认证手机号并替换</li><li>GIVEN： 以客户入参输入手机号为主</li><li>VALIDATE： 若与认证手机号不一致则报错</li><li>&quot;&quot;： 不走手机号传参模式</li></ul><p>默认值：&quot;&quot;</p><p>会触发手机号传参模式的前提是：签署人是指定了具体身份信息的</p><ul><li>在指定签署人姓名，证件号的情况下会触发</li></ul>
 	ApproverMobileMode *string `json:"ApproverMobileMode,omitnil,omitempty" name:"ApproverMobileMode"`
+
+	// <p>在嵌入式文件发起下,若合同是通过文件,当签署人控件指定了印章类型（或印章Id）,在嵌入页面上是否能修改</p>
+	ForbidModifySealInfos *bool `json:"ForbidModifySealInfos,omitnil,omitempty" name:"ForbidModifySealInfos"`
 }
 
 type ApproverRestriction struct {

@@ -572,6 +572,7 @@ func NewCreateAccelerationDomainResponse() (response *CreateAccelerationDomainRe
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_CONFIGLOCKED = "InternalError.ConfigLocked"
+//  INVALIDPARAMETER_ADVANCEDORIGINROUTINGNOTSUPPORTNEWLYADDEDHOST = "InvalidParameter.AdvancedOriginRoutingNotSupportNewlyAddedHost"
 //  INVALIDPARAMETER_CONFLICTHOSTORIGIN = "InvalidParameter.ConflictHostOrigin"
 //  INVALIDPARAMETER_ERRINVALIDACTIONPARAM = "InvalidParameter.ErrInvalidActionParam"
 //  INVALIDPARAMETER_INVALIDACCELERATETYPE = "InvalidParameter.InvalidAccelerateType"
@@ -636,6 +637,7 @@ func (c *Client) CreateAccelerationDomain(request *CreateAccelerationDomainReque
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_CONFIGLOCKED = "InternalError.ConfigLocked"
+//  INVALIDPARAMETER_ADVANCEDORIGINROUTINGNOTSUPPORTNEWLYADDEDHOST = "InvalidParameter.AdvancedOriginRoutingNotSupportNewlyAddedHost"
 //  INVALIDPARAMETER_CONFLICTHOSTORIGIN = "InvalidParameter.ConflictHostOrigin"
 //  INVALIDPARAMETER_ERRINVALIDACTIONPARAM = "InvalidParameter.ErrInvalidActionParam"
 //  INVALIDPARAMETER_INVALIDACCELERATETYPE = "InvalidParameter.InvalidAccelerateType"

@@ -120,95 +120,107 @@ type AttachCBSSpec struct {
 }
 
 type BackUpJobDisplay struct {
-	// 备份实例id
+	// <p>备份实例id</p>
 	JobId *int64 `json:"JobId,omitnil,omitempty" name:"JobId"`
 
-	// 备份实例名
+	// <p>备份实例名</p>
 	Snapshot *string `json:"Snapshot,omitnil,omitempty" name:"Snapshot"`
 
-	// 备份数据量
+	// <p>备份数据量</p>
 	BackUpSize *int64 `json:"BackUpSize,omitnil,omitempty" name:"BackUpSize"`
 
-	// 备份单副本数据量
+	// <p>备份单副本数据量</p>
 	BackUpSingleSize *int64 `json:"BackUpSingleSize,omitnil,omitempty" name:"BackUpSingleSize"`
 
-	// 实例创建时间
+	// <p>实例创建时间</p>
 	BackUpTime *string `json:"BackUpTime,omitnil,omitempty" name:"BackUpTime"`
 
-	// 实例过期时间
+	// <p>实例过期时间</p>
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
-	// 实例状态
+	// <p>实例状态</p>
 	JobStatus *string `json:"JobStatus,omitnil,omitempty" name:"JobStatus"`
 
-	// 0为默认。1时是对远端的doris进行备份，不周期，一次性
+	// <p>0为默认。1时是对远端的doris进行备份，不周期，一次性</p>
 	BackupType *int64 `json:"BackupType,omitnil,omitempty" name:"BackupType"`
 
-	// 0为默认。1时是立即备份。2时是迁移
+	// <p>0为默认。1时是立即备份。2时是迁移</p>
 	BackupTimeType *int64 `json:"BackupTimeType,omitnil,omitempty" name:"BackupTimeType"`
 
-	// 远端doris的连接信息
+	// <p>远端doris的连接信息</p>
 	DorisSourceInfo *DorisSourceInfo `json:"DorisSourceInfo,omitnil,omitempty" name:"DorisSourceInfo"`
 
-	// 实例状态对应的数值
+	// <p>实例状态对应的数值</p>
 	JobStatusNum *int64 `json:"JobStatusNum,omitnil,omitempty" name:"JobStatusNum"`
 
-	// 备份实例中关于cos的信息	
+	// <p>备份实例中关于cos的信息</p>
 	BackupCosInfo *BackupCosInfo `json:"BackupCosInfo,omitnil,omitempty" name:"BackupCosInfo"`
 
-	// 是否使用的自定义桶
+	// <p>是否使用的自定义桶</p>
 	IsUserDefineBucket *bool `json:"IsUserDefineBucket,omitnil,omitempty" name:"IsUserDefineBucket"`
 
-	// 错误原因
+	// <p>错误原因</p>
 	ErrorReason *string `json:"ErrorReason,omitnil,omitempty" name:"ErrorReason"`
 
-	// 快照保留策略
+	// <p>快照保留策略</p>
 	SnapshotRemainPolicy *SnapshotRemainPolicy `json:"SnapshotRemainPolicy,omitnil,omitempty" name:"SnapshotRemainPolicy"`
 
-	// 隔离次数
+	// <p>隔离次数</p>
 	IsolationCount *int64 `json:"IsolationCount,omitnil,omitempty" name:"IsolationCount"`
 
-	// 是否开启安全锁
+	// <p>是否开启安全锁</p>
 	EnableSecurityLock *uint64 `json:"EnableSecurityLock,omitnil,omitempty" name:"EnableSecurityLock"`
 
-	// 宽限期天数
+	// <p>宽限期天数</p>
 	GracePeriod *uint64 `json:"GracePeriod,omitnil,omitempty" name:"GracePeriod"`
 
-	// 宽限期开始时间
+	// <p>宽限期开始时间</p>
 	GraceStartTime *string `json:"GraceStartTime,omitnil,omitempty" name:"GraceStartTime"`
 
-	// 是否在宽限期内
+	// <p>是否在宽限期内</p>
 	IsWithinGracePeriod *bool `json:"IsWithinGracePeriod,omitnil,omitempty" name:"IsWithinGracePeriod"`
 
-	// 是否使用托管桶
+	// <p>是否使用托管桶</p>
 	UseManagedBucket *bool `json:"UseManagedBucket,omitnil,omitempty" name:"UseManagedBucket"`
 
-	// 实例ID
+	// <p>实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 实例名称
+	// <p>实例名称</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 实例状态
+	// <p>实例状态</p>
 	InstanceStatus *string `json:"InstanceStatus,omitnil,omitempty" name:"InstanceStatus"`
 
-	// 实例状态描述
+	// <p>实例状态描述</p>
 	InstanceStatusDesc *string `json:"InstanceStatusDesc,omitnil,omitempty" name:"InstanceStatusDesc"`
 
-	// 备份远程桶地域
+	// <p>备份远程桶地域</p>
 	DataRemoteRegion *string `json:"DataRemoteRegion,omitnil,omitempty" name:"DataRemoteRegion"`
 
-	// 桶加密状态信息
+	// <p>桶加密状态信息</p>
 	BucketEncryption *BucketEncryptionInfo `json:"BucketEncryption,omitnil,omitempty" name:"BucketEncryption"`
 
-	// 备份任务创建时记录的加密类型：SSE-COS/SSE-KMS/disabled
+	// <p>备份任务创建时记录的加密类型：SSE-COS/SSE-KMS/disabled</p>
 	Encryption *string `json:"Encryption,omitnil,omitempty" name:"Encryption"`
 
-	// 是否开通加密存储：0-未开通，1-已开通
+	// <p>是否开通加密存储：0-未开通，1-已开通</p>
 	EncryptionEnabled *bool `json:"EncryptionEnabled,omitnil,omitempty" name:"EncryptionEnabled"`
 
-	// 任务调度id
+	// <p>任务调度id</p>
 	ScheduleId *int64 `json:"ScheduleId,omitnil,omitempty" name:"ScheduleId"`
+
+	// <p>总任务数（库数）</p>
+	TotalTasks *int64 `json:"TotalTasks,omitnil,omitempty" name:"TotalTasks"`
+
+	// <p>已完成任务数</p>
+	CompletedTasks *int64 `json:"CompletedTasks,omitnil,omitempty" name:"CompletedTasks"`
+
+	// <p>失败任务数</p>
+	FailedTasks *int64 `json:"FailedTasks,omitnil,omitempty" name:"FailedTasks"`
+
+	// <p>备份进度描述，如 3/5</p>
+	BackupProgress *string `json:"BackupProgress,omitnil,omitempty" name:"BackupProgress"`
 }
 
 type BackupCosInfo struct {
@@ -226,56 +238,55 @@ type BackupCosInfo struct {
 }
 
 type BackupScheduleInfo struct {
-	// 迁移类型：
-	// 1-远端集群迁移；2-COS迁移
+	// <p>迁移类型：<br>1-远端集群迁移；2-COS迁移</p>
 	BackupType *int64 `json:"BackupType,omitnil,omitempty" name:"BackupType"`
 
-	// 当前任务现存实例数
+	// <p>当前任务现存实例数</p>
 	ExistCount *int64 `json:"ExistCount,omitnil,omitempty" name:"ExistCount"`
 
-	// cos信息
+	// <p>cos信息</p>
 	CosSourceInfo *string `json:"CosSourceInfo,omitnil,omitempty" name:"CosSourceInfo"`
 
-	// doris信息
+	// <p>doris信息</p>
 	DorisSourceInfo *string `json:"DorisSourceInfo,omitnil,omitempty" name:"DorisSourceInfo"`
 
-	// 恢复类型
+	// <p>恢复类型</p>
 	RestoreType *int64 `json:"RestoreType,omitnil,omitempty" name:"RestoreType"`
 
-	// 快照保留策略
+	// <p>快照保留策略</p>
 	SnapshotRemainPolicy *SnapshotRemainPolicy `json:"SnapshotRemainPolicy,omitnil,omitempty" name:"SnapshotRemainPolicy"`
 
-	// 远程备份地域
+	// <p>远程备份地域</p>
 	DataRemoteRegion *string `json:"DataRemoteRegion,omitnil,omitempty" name:"DataRemoteRegion"`
 
-	// 是否在宽限期内
+	// <p>是否在宽限期内</p>
 	IsWithinGracePeriod *bool `json:"IsWithinGracePeriod,omitnil,omitempty" name:"IsWithinGracePeriod"`
 
-	// 宽限期（天数）
+	// <p>宽限期（天数）</p>
 	GracePeriod *int64 `json:"GracePeriod,omitnil,omitempty" name:"GracePeriod"`
 
-	// 宽限开始时间
+	// <p>宽限开始时间</p>
 	GraceStartTime *string `json:"GraceStartTime,omitnil,omitempty" name:"GraceStartTime"`
 
-	// 托管桶类型：standard-标准，多可用区-MAZ
+	// <p>托管桶类型：standard-标准，多可用区-MAZ</p>
 	BucketType *string `json:"BucketType,omitnil,omitempty" name:"BucketType"`
 
-	// 是否开启安全锁：0-未开启，1-已开启
+	// <p>是否开启安全锁：0-未开启，1-已开启</p>
 	EnableSecurityLock *uint64 `json:"EnableSecurityLock,omitnil,omitempty" name:"EnableSecurityLock"`
 
-	// 实例ID
+	// <p>实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 实例名
+	// <p>实例名</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 实例状态
+	// <p>实例状态</p>
 	InstanceStatus *string `json:"InstanceStatus,omitnil,omitempty" name:"InstanceStatus"`
 
-	// 实例状态描述
+	// <p>实例状态描述</p>
 	InstanceStatusDesc *string `json:"InstanceStatusDesc,omitnil,omitempty" name:"InstanceStatusDesc"`
 
-	// 桶加密状态信息
+	// <p>桶加密状态信息</p>
 	BucketEncryption *BucketEncryptionInfo `json:"BucketEncryption,omitnil,omitempty" name:"BucketEncryption"`
 }
 

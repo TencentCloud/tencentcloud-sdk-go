@@ -194,6 +194,9 @@ const (
 	// 当前域名不支持同时开启高级回源优化和多层架构。
 	INVALIDPARAMETER_ADVANCEDORIGINROUTINGNOTSUPPORTMULTIPLYLAYER = "InvalidParameter.AdvancedOriginRoutingNotSupportMultiplyLayer"
 
+	// 新增域名过程中不支持开启高级回源优化，请关闭高级回源优化配置后重试。
+	INVALIDPARAMETER_ADVANCEDORIGINROUTINGNOTSUPPORTNEWLYADDEDHOST = "InvalidParameter.AdvancedOriginRoutingNotSupportNewlyAddedHost"
+
 	// 当前域名不支持同时开启高级回源优化和OC互转。
 	INVALIDPARAMETER_ADVANCEDORIGINROUTINGNOTSUPPORTOCDIRECTORIGIN = "InvalidParameter.AdvancedOriginRoutingNotSupportOCDirectOrigin"
 

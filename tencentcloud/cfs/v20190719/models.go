@@ -1388,104 +1388,104 @@ func (r *CreateLifecyclePolicyResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateMigrationTaskRequestParams struct {
-	// 迁移任务名称
+	// <p>迁移任务名称</p>
 	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
 
-	// 迁移方式标志位，默认为0。0：桶迁移；1：清单迁移
+	// <p>迁移方式标志位，默认为0。0：桶迁移；1：清单迁移</p>
 	MigrationType *uint64 `json:"MigrationType,omitnil,omitempty" name:"MigrationType"`
 
-	// 迁移模式，默认为0。0: 全量迁移
+	// <p>迁移模式，默认为0。0: 全量迁移</p>
 	MigrationMode *uint64 `json:"MigrationMode,omitnil,omitempty" name:"MigrationMode"`
 
-	// 数据源账号的 SecretId
+	// <p>数据源账号的 SecretId</p>
 	SrcSecretId *string `json:"SrcSecretId,omitnil,omitempty" name:"SrcSecretId"`
 
-	// 数据源账号的 SecretKey
+	// <p>数据源账号的 SecretKey</p>
 	SrcSecretKey *string `json:"SrcSecretKey,omitnil,omitempty" name:"SrcSecretKey"`
 
-	// 文件系统实例 ID，通过查询文件系统 [DescribeCfsFileSystems](https://cloud.tencent.com/document/product/582/38170) 获取
+	// <p>文件系统实例 ID，通过查询文件系统 <a href="https://cloud.tencent.com/document/product/582/38170">DescribeCfsFileSystems</a> 获取</p>
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
-	// 文件系统路径
+	// <p>文件系统路径</p>
 	FsPath *string `json:"FsPath,omitnil,omitempty" name:"FsPath"`
 
-	// 同名文件迁移时覆盖策略，默认为0。0: 最后修改时间优先；1: 全覆盖；2: 不覆盖
+	// <p>同名文件迁移时覆盖策略，默认为0。0: 最后修改时间优先；1: 全覆盖；2: 不覆盖</p>
 	CoverType *uint64 `json:"CoverType,omitnil,omitempty" name:"CoverType"`
 
-	// 数据源服务商。COS：腾讯云COS，OSS：阿里云OSS，OBS：华为云OBS
+	// <p>数据源服务商</p><p>枚举值：</p><ul><li>COS： 腾讯云COS</li><li>OSS： 阿里云OSS</li><li>OBS： 华为云OBS</li><li>BOS： 百度云BOS</li><li>TOS： 火山引擎TOS</li></ul>
 	SrcService *string `json:"SrcService,omitnil,omitempty" name:"SrcService"`
 
-	// 数据源桶名称；桶迁移时，BucketName 和 BucketAddress 必填其一，清单迁移时无需填写此参数
+	// <p>数据源桶名称；桶迁移时，BucketName 和 BucketAddress 必填其一，清单迁移时无需填写此参数</p>
 	BucketName *string `json:"BucketName,omitnil,omitempty" name:"BucketName"`
 
-	// 数据源桶地域
+	// <p>数据源桶地域</p>
 	BucketRegion *string `json:"BucketRegion,omitnil,omitempty" name:"BucketRegion"`
 
-	// 数据源桶地址；桶迁移时，BucketName 和 BucketAddress 必填其一，清单迁移时无需填写此参数
+	// <p>数据源桶地址；桶迁移时，BucketName 和 BucketAddress 必填其一，清单迁移时无需填写此参数</p>
 	BucketAddress *string `json:"BucketAddress,omitnil,omitempty" name:"BucketAddress"`
 
-	// 清单地址，迁移方式为清单迁移时必填
+	// <p>清单地址，迁移方式为清单迁移时必填</p>
 	ListAddress *string `json:"ListAddress,omitnil,omitempty" name:"ListAddress"`
 
-	// 目标文件系统名称
+	// <p>目标文件系统名称</p>
 	FsName *string `json:"FsName,omitnil,omitempty" name:"FsName"`
 
-	// 源桶路径，默认为 /
+	// <p>源桶路径，默认为 /</p>
 	BucketPath *string `json:"BucketPath,omitnil,omitempty" name:"BucketPath"`
 
-	// 迁移方向；0：对象存储迁移至文件系统，1：文件系统迁移至对象存储。默认为0
+	// <p>迁移方向；0：对象存储迁移至文件系统，1：文件系统迁移至对象存储。默认为0</p>
 	Direction *uint64 `json:"Direction,omitnil,omitempty" name:"Direction"`
 }
 
 type CreateMigrationTaskRequest struct {
 	*tchttp.BaseRequest
 	
-	// 迁移任务名称
+	// <p>迁移任务名称</p>
 	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
 
-	// 迁移方式标志位，默认为0。0：桶迁移；1：清单迁移
+	// <p>迁移方式标志位，默认为0。0：桶迁移；1：清单迁移</p>
 	MigrationType *uint64 `json:"MigrationType,omitnil,omitempty" name:"MigrationType"`
 
-	// 迁移模式，默认为0。0: 全量迁移
+	// <p>迁移模式，默认为0。0: 全量迁移</p>
 	MigrationMode *uint64 `json:"MigrationMode,omitnil,omitempty" name:"MigrationMode"`
 
-	// 数据源账号的 SecretId
+	// <p>数据源账号的 SecretId</p>
 	SrcSecretId *string `json:"SrcSecretId,omitnil,omitempty" name:"SrcSecretId"`
 
-	// 数据源账号的 SecretKey
+	// <p>数据源账号的 SecretKey</p>
 	SrcSecretKey *string `json:"SrcSecretKey,omitnil,omitempty" name:"SrcSecretKey"`
 
-	// 文件系统实例 ID，通过查询文件系统 [DescribeCfsFileSystems](https://cloud.tencent.com/document/product/582/38170) 获取
+	// <p>文件系统实例 ID，通过查询文件系统 <a href="https://cloud.tencent.com/document/product/582/38170">DescribeCfsFileSystems</a> 获取</p>
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
-	// 文件系统路径
+	// <p>文件系统路径</p>
 	FsPath *string `json:"FsPath,omitnil,omitempty" name:"FsPath"`
 
-	// 同名文件迁移时覆盖策略，默认为0。0: 最后修改时间优先；1: 全覆盖；2: 不覆盖
+	// <p>同名文件迁移时覆盖策略，默认为0。0: 最后修改时间优先；1: 全覆盖；2: 不覆盖</p>
 	CoverType *uint64 `json:"CoverType,omitnil,omitempty" name:"CoverType"`
 
-	// 数据源服务商。COS：腾讯云COS，OSS：阿里云OSS，OBS：华为云OBS
+	// <p>数据源服务商</p><p>枚举值：</p><ul><li>COS： 腾讯云COS</li><li>OSS： 阿里云OSS</li><li>OBS： 华为云OBS</li><li>BOS： 百度云BOS</li><li>TOS： 火山引擎TOS</li></ul>
 	SrcService *string `json:"SrcService,omitnil,omitempty" name:"SrcService"`
 
-	// 数据源桶名称；桶迁移时，BucketName 和 BucketAddress 必填其一，清单迁移时无需填写此参数
+	// <p>数据源桶名称；桶迁移时，BucketName 和 BucketAddress 必填其一，清单迁移时无需填写此参数</p>
 	BucketName *string `json:"BucketName,omitnil,omitempty" name:"BucketName"`
 
-	// 数据源桶地域
+	// <p>数据源桶地域</p>
 	BucketRegion *string `json:"BucketRegion,omitnil,omitempty" name:"BucketRegion"`
 
-	// 数据源桶地址；桶迁移时，BucketName 和 BucketAddress 必填其一，清单迁移时无需填写此参数
+	// <p>数据源桶地址；桶迁移时，BucketName 和 BucketAddress 必填其一，清单迁移时无需填写此参数</p>
 	BucketAddress *string `json:"BucketAddress,omitnil,omitempty" name:"BucketAddress"`
 
-	// 清单地址，迁移方式为清单迁移时必填
+	// <p>清单地址，迁移方式为清单迁移时必填</p>
 	ListAddress *string `json:"ListAddress,omitnil,omitempty" name:"ListAddress"`
 
-	// 目标文件系统名称
+	// <p>目标文件系统名称</p>
 	FsName *string `json:"FsName,omitnil,omitempty" name:"FsName"`
 
-	// 源桶路径，默认为 /
+	// <p>源桶路径，默认为 /</p>
 	BucketPath *string `json:"BucketPath,omitnil,omitempty" name:"BucketPath"`
 
-	// 迁移方向；0：对象存储迁移至文件系统，1：文件系统迁移至对象存储。默认为0
+	// <p>迁移方向；0：对象存储迁移至文件系统，1：文件系统迁移至对象存储。默认为0</p>
 	Direction *uint64 `json:"Direction,omitnil,omitempty" name:"Direction"`
 }
 
@@ -1525,7 +1525,7 @@ func (r *CreateMigrationTaskRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateMigrationTaskResponseParams struct {
-	// 迁移任务 ID
+	// <p>迁移任务 ID</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4136,83 +4136,86 @@ type LifecycleRule struct {
 }
 
 type MigrationTaskInfo struct {
-	// 迁移任务名称
+	// <p>迁移任务名称</p>
 	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
 
-	// 迁移任务id
+	// <p>迁移任务id</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 迁移方式标志位，默认为0。0: 桶迁移；1: 清单迁移
+	// <p>迁移方式标志位，默认为0。0: 桶迁移；1: 清单迁移</p>
 	MigrationType *uint64 `json:"MigrationType,omitnil,omitempty" name:"MigrationType"`
 
-	// 迁移模式，默认为0。0: 全量迁移
+	// <p>迁移模式，默认为0。0: 全量迁移</p>
 	MigrationMode *uint64 `json:"MigrationMode,omitnil,omitempty" name:"MigrationMode"`
 
-	// 数据源桶名称
+	// <p>数据源桶名称</p>
 	BucketName *string `json:"BucketName,omitnil,omitempty" name:"BucketName"`
 
-	// 数据源桶地域
+	// <p>数据源桶地域</p>
 	BucketRegion *string `json:"BucketRegion,omitnil,omitempty" name:"BucketRegion"`
 
-	// 数据源桶地址
+	// <p>数据源桶地址</p>
 	BucketAddress *string `json:"BucketAddress,omitnil,omitempty" name:"BucketAddress"`
 
-	// 清单地址
+	// <p>清单地址</p>
 	ListAddress *string `json:"ListAddress,omitnil,omitempty" name:"ListAddress"`
 
-	// 文件系统实例名称
+	// <p>文件系统实例名称</p>
 	FsName *string `json:"FsName,omitnil,omitempty" name:"FsName"`
 
-	// 文件系统实例Id
+	// <p>文件系统实例Id</p>
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
-	// 文件系统路径
+	// <p>文件系统路径</p>
 	FsPath *string `json:"FsPath,omitnil,omitempty" name:"FsPath"`
 
-	// 同名文件迁移时覆盖策略，默认为0。0: 最后修改时间优先；1: 全覆盖；2: 不覆盖
+	// <p>同名文件迁移时覆盖策略，默认为0。0: 最后修改时间优先；1: 全覆盖；2: 不覆盖</p>
 	CoverType *uint64 `json:"CoverType,omitnil,omitempty" name:"CoverType"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	CreateTime *int64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 完成/终止时间
+	// <p>完成/终止时间</p>
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 迁移状态。0: 已完成；1: 创建中；2: 运行中；3: 终止中；4: 已终止；5: 创建失败；6: 运行失败；7: 结束中；8: 删除中；9: 等待中
+	// <p>迁移状态。0: 已完成；1: 创建中；2: 运行中；3: 终止中；4: 已终止；5: 创建失败；6: 运行失败；7: 结束中；8: 删除中；9: 等待中</p>
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 文件数量
+	// <p>文件数量</p>
 	FileTotalCount *uint64 `json:"FileTotalCount,omitnil,omitempty" name:"FileTotalCount"`
 
-	// 已迁移文件数量
+	// <p>已迁移文件数量</p>
 	FileMigratedCount *uint64 `json:"FileMigratedCount,omitnil,omitempty" name:"FileMigratedCount"`
 
-	// 迁移失败文件数量
+	// <p>迁移失败文件数量</p>
 	FileFailedCount *uint64 `json:"FileFailedCount,omitnil,omitempty" name:"FileFailedCount"`
 
-	// 文件容量，单位Byte
+	// <p>文件容量，单位Byte</p>
 	FileTotalSize *int64 `json:"FileTotalSize,omitnil,omitempty" name:"FileTotalSize"`
 
-	// 已迁移文件容量，单位Byte
+	// <p>已迁移文件容量，单位Byte</p>
 	FileMigratedSize *int64 `json:"FileMigratedSize,omitnil,omitempty" name:"FileMigratedSize"`
 
-	// 迁移失败文件容量，单位Byte
+	// <p>迁移失败文件容量，单位Byte</p>
 	FileFailedSize *int64 `json:"FileFailedSize,omitnil,omitempty" name:"FileFailedSize"`
 
-	// 全部清单
+	// <p>全部清单</p>
 	FileTotalList *string `json:"FileTotalList,omitnil,omitempty" name:"FileTotalList"`
 
-	// 已完成文件清单
+	// <p>已完成文件清单</p>
 	FileCompletedList *string `json:"FileCompletedList,omitnil,omitempty" name:"FileCompletedList"`
 
-	// 失败文件清单
+	// <p>失败文件清单</p>
 	FileFailedList *string `json:"FileFailedList,omitnil,omitempty" name:"FileFailedList"`
 
-	// 源桶路径
+	// <p>源桶路径</p>
 	BucketPath *string `json:"BucketPath,omitnil,omitempty" name:"BucketPath"`
 
-	// 迁移方向。0: 对象存储迁移至文件系统，1: 文件系统迁移至对象存储。默认 0
+	// <p>迁移方向。0: 对象存储迁移至文件系统，1: 文件系统迁移至对象存储。默认 0</p>
 	Direction *uint64 `json:"Direction,omitnil,omitempty" name:"Direction"`
+
+	// <p>数据源服务商</p><p>枚举值：</p><ul><li>COS： 腾讯云COS</li><li>OSS： 阿里云OSS</li><li>OBS： 华为云OBS</li><li>BOS： 百度云BOS</li><li>TOS： 火山引擎TOS</li></ul>
+	SrcService *string `json:"SrcService,omitnil,omitempty" name:"SrcService"`
 }
 
 // Predefined struct for user

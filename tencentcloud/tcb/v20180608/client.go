@@ -971,6 +971,7 @@ func NewCreateHTTPServiceRouteResponse() (response *CreateHTTPServiceRouteRespon
 //  INVALIDPARAMETER_HTTPSERVICEDOMAINVERIFYFAILED = "InvalidParameter.HTTPServiceDomainVerifyFailed"
 //  LIMITEXCEEDED_HTTPSERVICEDOMAIN = "LimitExceeded.HTTPServiceDomain"
 //  LIMITEXCEEDED_HTTPSERVICEROUTE = "LimitExceeded.HTTPServiceRoute"
+//  OPERATIONDENIED_HTTPSERVICEDOMAINEOFROZEN = "OperationDenied.HTTPServiceDomainEOFrozen"
 //  OPERATIONDENIED_HTTPSERVICEDOMAININBLACKLIST = "OperationDenied.HTTPServiceDomainInBlacklist"
 //  OPERATIONDENIED_NONINTERNALACCOUNT = "OperationDenied.NonInternalAccount"
 //  RESOURCEINUSE_HTTPSERVICEDOMAIN = "ResourceInUse.HTTPServiceDomain"
@@ -991,6 +992,7 @@ func (c *Client) CreateHTTPServiceRoute(request *CreateHTTPServiceRouteRequest) 
 //  INVALIDPARAMETER_HTTPSERVICEDOMAINVERIFYFAILED = "InvalidParameter.HTTPServiceDomainVerifyFailed"
 //  LIMITEXCEEDED_HTTPSERVICEDOMAIN = "LimitExceeded.HTTPServiceDomain"
 //  LIMITEXCEEDED_HTTPSERVICEROUTE = "LimitExceeded.HTTPServiceRoute"
+//  OPERATIONDENIED_HTTPSERVICEDOMAINEOFROZEN = "OperationDenied.HTTPServiceDomainEOFrozen"
 //  OPERATIONDENIED_HTTPSERVICEDOMAININBLACKLIST = "OperationDenied.HTTPServiceDomainInBlacklist"
 //  OPERATIONDENIED_NONINTERNALACCOUNT = "OperationDenied.NonInternalAccount"
 //  RESOURCEINUSE_HTTPSERVICEDOMAIN = "ResourceInUse.HTTPServiceDomain"
@@ -5020,6 +5022,7 @@ func NewModifyHTTPServiceRouteResponse() (response *ModifyHTTPServiceRouteRespon
 //  INVALIDPARAMETER_CERTVERIFYFAILED = "InvalidParameter.CertVerifyFailed"
 //  INVALIDPARAMETER_ENVID = "InvalidParameter.EnvId"
 //  LIMITEXCEEDED_HTTPSERVICEROUTE = "LimitExceeded.HTTPServiceRoute"
+//  OPERATIONDENIED_HTTPSERVICEDOMAINEOFROZEN = "OperationDenied.HTTPServiceDomainEOFrozen"
 //  OPERATIONDENIED_HTTPSERVICEDOMAINPROCESSING = "OperationDenied.HTTPServiceDomainProcessing"
 func (c *Client) ModifyHTTPServiceRoute(request *ModifyHTTPServiceRouteRequest) (response *ModifyHTTPServiceRouteResponse, err error) {
     return c.ModifyHTTPServiceRouteWithContext(context.Background(), request)
@@ -5033,6 +5036,7 @@ func (c *Client) ModifyHTTPServiceRoute(request *ModifyHTTPServiceRouteRequest) 
 //  INVALIDPARAMETER_CERTVERIFYFAILED = "InvalidParameter.CertVerifyFailed"
 //  INVALIDPARAMETER_ENVID = "InvalidParameter.EnvId"
 //  LIMITEXCEEDED_HTTPSERVICEROUTE = "LimitExceeded.HTTPServiceRoute"
+//  OPERATIONDENIED_HTTPSERVICEDOMAINEOFROZEN = "OperationDenied.HTTPServiceDomainEOFrozen"
 //  OPERATIONDENIED_HTTPSERVICEDOMAINPROCESSING = "OperationDenied.HTTPServiceDomainProcessing"
 func (c *Client) ModifyHTTPServiceRouteWithContext(ctx context.Context, request *ModifyHTTPServiceRouteRequest) (response *ModifyHTTPServiceRouteResponse, err error) {
     if request == nil {

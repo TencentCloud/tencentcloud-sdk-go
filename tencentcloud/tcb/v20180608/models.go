@@ -1370,20 +1370,20 @@ func (r *CreateEnvResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateHTTPServiceRouteRequestParams struct {
-	// 环境ID
+	// <p>环境ID</p>
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 
-	// 域名路由信息
+	// <p>域名路由信息</p>
 	Domain *HTTPServiceDomainParam `json:"Domain,omitnil,omitempty" name:"Domain"`
 }
 
 type CreateHTTPServiceRouteRequest struct {
 	*tchttp.BaseRequest
 	
-	// 环境ID
+	// <p>环境ID</p>
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 
-	// 域名路由信息
+	// <p>域名路由信息</p>
 	Domain *HTTPServiceDomainParam `json:"Domain,omitnil,omitempty" name:"Domain"`
 }
 
@@ -1409,6 +1409,9 @@ func (r *CreateHTTPServiceRouteRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateHTTPServiceRouteResponseParams struct {
+	// <p>归属权校验不通过返回信息，根据校验信息配置dns或者文件验证，可通过VerifyHTTPServiceRoute接口验证归属权是否通过</p>
+	OwnershipVerification *OwnershipVerificationInfo `json:"OwnershipVerification,omitnil,omitempty" name:"OwnershipVerification"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -6166,7 +6169,7 @@ type HTTPServiceDomainParam struct {
 	// <p>域名。全局唯一。如果域名在其他环境下占用或者腾讯云CDN占用，可能会导致创建失败</p>
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// <p>绑定类型</p><p>枚举值：</p><ul><li>DIRECT： 直连到HTTP访问服务</li><li>CDN： 接入云开发CDN</li><li>CUSTOM： 自定义接入类型（CDN、EO、WAF等接入）</li></ul><p>默认值：DIRECT</p>
+	// <p>绑定类型</p><p>枚举值：</p><ul><li>DIRECT： 直连到HTTP访问服务</li><li>CDN： 接入云开发CDN（即将下线）</li><li>CUSTOM： 自定义接入类型（CDN、EO、WAF等接入）</li><li>EO： 接入云开发EdgeOne</li></ul><p>默认值：DIRECT</p>
 	AccessType *string `json:"AccessType,omitnil,omitempty" name:"AccessType"`
 
 	// <p>证书ID。当前账户下SSL平台的证书ID，无证书无法使用https访问</p>
@@ -6273,10 +6276,10 @@ type HTTPServiceRouteParam struct {
 	// <p>路径</p>
 	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 
-	// <p>上游服务类型。创建时必填，修改时可选填</p><p>枚举值：</p><ul><li>SCF： 云函数</li><li>CBR： 云托管</li><li>STATIC_STORE： 静态托管</li><li>WEB_SCF： web云函数</li><li>LH： Lighthouse</li></ul>
+	// <p>上游服务类型。创建时必填，修改时可选填</p><p>枚举值：</p><ul><li>SCF： 云函数</li><li>CBR： 云托管</li><li>STATIC_STORE： 静态托管</li><li>WEB_SCF： web云函数</li><li>LH： Lighthouse</li><li>STORAGE： 云存储</li></ul>
 	UpstreamResourceType *string `json:"UpstreamResourceType,omitnil,omitempty" name:"UpstreamResourceType"`
 
-	// <p>上游服务名。创建时必填，修改时可选填</p>
+	// <p>上游服务名。创建时必填，修改时可选填。HTTPServiceRouteServiceType类型为STATIC_STORE时，可不填，默认staticstore；HTTPServiceRouteServiceType类型为STORAGE时，可不填，默认storage。其他上游类型必须填写准确的服务名</p>
 	UpstreamResourceName *string `json:"UpstreamResourceName,omitnil,omitempty" name:"UpstreamResourceName"`
 
 	// <p>路径重写</p>
@@ -8122,6 +8125,36 @@ type OrderInfo struct {
 
 	// 下单时的参数
 	ReqBody *string `json:"ReqBody,omitnil,omitempty" name:"ReqBody"`
+}
+
+type OwnershipVerificationDnsInfo struct {
+	// <p>归属权校验dns子域名</p>
+	Subdomain *string `json:"Subdomain,omitnil,omitempty" name:"Subdomain"`
+
+	// <p>归属权校验dns记录类型</p>
+	RecordType *string `json:"RecordType,omitnil,omitempty" name:"RecordType"`
+
+	// <p>归属权校验dns记录值</p>
+	RecordValue *string `json:"RecordValue,omitnil,omitempty" name:"RecordValue"`
+}
+
+type OwnershipVerificationFileInfo struct {
+	// <p>归属权校验文件路径</p>
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
+
+	// <p>归属权校验文件内容</p>
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+}
+
+type OwnershipVerificationInfo struct {
+	// <p>归属权校验的域名</p>
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// <p>归属权校验dns校验信息</p>
+	DnsVerification []*OwnershipVerificationDnsInfo `json:"DnsVerification,omitnil,omitempty" name:"DnsVerification"`
+
+	// <p>归属权校验文件校验信息</p>
+	FileVerification []*OwnershipVerificationFileInfo `json:"FileVerification,omitnil,omitempty" name:"FileVerification"`
 }
 
 type Pager struct {

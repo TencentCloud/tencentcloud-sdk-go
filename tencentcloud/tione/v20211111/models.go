@@ -959,6 +959,9 @@ type CreateModelServiceRequestParams struct {
 
 	// <p>网关相关配置</p>
 	GatewayConfig *GatewayConfig `json:"GatewayConfig,omitnil,omitempty" name:"GatewayConfig"`
+
+	// <p>资源供应属性(潮汐/竞价等供应模式);空表示常规按量后付费</p>
+	ResourceSupplyAttribute *ResourceSupplyAttribute `json:"ResourceSupplyAttribute,omitnil,omitempty" name:"ResourceSupplyAttribute"`
 }
 
 type CreateModelServiceRequest struct {
@@ -1101,6 +1104,9 @@ type CreateModelServiceRequest struct {
 
 	// <p>网关相关配置</p>
 	GatewayConfig *GatewayConfig `json:"GatewayConfig,omitnil,omitempty" name:"GatewayConfig"`
+
+	// <p>资源供应属性(潮汐/竞价等供应模式);空表示常规按量后付费</p>
+	ResourceSupplyAttribute *ResourceSupplyAttribute `json:"ResourceSupplyAttribute,omitnil,omitempty" name:"ResourceSupplyAttribute"`
 }
 
 func (r *CreateModelServiceRequest) ToJsonString() string {
@@ -1161,6 +1167,7 @@ func (r *CreateModelServiceRequest) FromJsonString(s string) error {
 	delete(f, "SchedulingStrategy")
 	delete(f, "GatewayLogConfig")
 	delete(f, "GatewayConfig")
+	delete(f, "ResourceSupplyAttribute")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateModelServiceRequest has unknown keys!", "")
 	}
@@ -9235,6 +9242,11 @@ type ResourceSpec struct {
 	SpecName *string `json:"SpecName,omitnil,omitempty" name:"SpecName"`
 }
 
+type ResourceSupplyAttribute struct {
+	// <p>资源供应类型。TIDE:潮汐;SPOT:竞价;空:常规按量后付费</p>
+	SupplyType *string `json:"SupplyType,omitnil,omitempty" name:"SupplyType"`
+}
+
 type RollingUpdate struct {
 	// 滚动更新的最大不可用
 	MaxUnavailable *NumOrPercent `json:"MaxUnavailable,omitnil,omitempty" name:"MaxUnavailable"`
@@ -9450,6 +9462,10 @@ type Service struct {
 
 	// <p>变更服务的子账户名称</p>
 	ChangerName *string `json:"ChangerName,omitnil,omitempty" name:"ChangerName"`
+
+	// <p>资源供应属性(潮汐/竞价等供应模式);空表示常规按量后付费</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceSupplyAttribute *ResourceSupplyAttribute `json:"ResourceSupplyAttribute,omitnil,omitempty" name:"ResourceSupplyAttribute"`
 }
 
 type ServiceCallInfo struct {

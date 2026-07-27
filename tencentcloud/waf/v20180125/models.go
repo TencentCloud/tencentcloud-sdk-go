@@ -14744,17 +14744,16 @@ type ExportInfo struct {
 }
 
 type FieldWriteConfig struct {
-	// 1:开启 0:不开启
+	// <p>1:开启 0:不开启</p>
 	EnableHeaders *int64 `json:"EnableHeaders,omitnil,omitempty" name:"EnableHeaders"`
 
-	// 1:开启 0:不开启
+	// <p>1:开启 0:不开启</p>
 	EnableBody *int64 `json:"EnableBody,omitnil,omitempty" name:"EnableBody"`
 
-	// 1:开启 0:不开启
+	// <p>1:开启 0:不开启</p>
 	EnableBot *int64 `json:"EnableBot,omitnil,omitempty" name:"EnableBot"`
 
-	// 响应方向body
-	// 1:开启 0:不开启
+	// <p>响应方向body<br>1:开启 0:不开启</p>
 	EnableResponse *int64 `json:"EnableResponse,omitnil,omitempty" name:"EnableResponse"`
 }
 

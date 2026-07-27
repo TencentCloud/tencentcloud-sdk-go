@@ -104,7 +104,7 @@ const (
 	// 系统内部异常。
 	INTERNALERROR_SYS_ERR = "InternalError.SYS_ERR"
 
-	// 参数错误。
+	// 参数格式或类型错误，如 Uin、EnvId、Domain 缺失或非法。
 	INVALIDPARAMETER = "InvalidParameter"
 
 	// 接口名非法。
@@ -193,6 +193,9 @@ const (
 
 	// 免费套餐拒绝此操作
 	OPERATIONDENIED_FREEPACKAGEDENIED = "OperationDenied.FreePackageDenied"
+
+	// 当前环境EO域名功能已经冻结，不允许创建EO加速域名，请查看云开发资源点进行充正后再试
+	OPERATIONDENIED_HTTPSERVICEDOMAINEOFROZEN = "OperationDenied.HTTPServiceDomainEOFrozen"
 
 	// 域名在黑名单中，无法创建
 	OPERATIONDENIED_HTTPSERVICEDOMAININBLACKLIST = "OperationDenied.HTTPServiceDomainInBlacklist"

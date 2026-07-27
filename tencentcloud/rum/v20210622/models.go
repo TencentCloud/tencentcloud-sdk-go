@@ -10027,16 +10027,16 @@ type DescribeRumGroupLogV2RequestParams struct {
 	// <p>排序方式 desc asc（必填）</p>
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// <p>开始时间（必填）</p>
+	// <p>查询日志开始时间（必填）</p>
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// <p>单次查询返回的原始日志条数，最大值为100（必填）</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// <p>过滤条件</p>
+	// <p>过滤条件，其中key与运算符(Operator)对应可选字段枚举值与示例查看文档：https://cloud.tencent.com/document/product/248/87223</p>
 	Filter *string `json:"Filter,omitnil,omitempty" name:"Filter"`
 
-	// <p>结束时间（必填）</p>
+	// <p>查询日志结束时间（必填）</p>
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// <p>项目ID（必填）</p>
@@ -10055,16 +10055,16 @@ type DescribeRumGroupLogV2Request struct {
 	// <p>排序方式 desc asc（必填）</p>
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// <p>开始时间（必填）</p>
+	// <p>查询日志开始时间（必填）</p>
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// <p>单次查询返回的原始日志条数，最大值为100（必填）</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// <p>过滤条件</p>
+	// <p>过滤条件，其中key与运算符(Operator)对应可选字段枚举值与示例查看文档：https://cloud.tencent.com/document/product/248/87223</p>
 	Filter *string `json:"Filter,omitnil,omitempty" name:"Filter"`
 
-	// <p>结束时间（必填）</p>
+	// <p>查询日志结束时间（必填）</p>
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// <p>项目ID（必填）</p>
@@ -10105,7 +10105,7 @@ func (r *DescribeRumGroupLogV2Request) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRumGroupLogV2ResponseParams struct {
-	// <p>Query result in JSON string format</p>
+	// <p>日志聚合结果</p>
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -10130,56 +10130,56 @@ func (r *DescribeRumGroupLogV2Response) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRumLogDetailsV2RequestParams struct {
-	// 排序方式 desc asc
+	// <p>排序方式 desc asc</p>
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 开始时间（必填）格式为时间戳 毫秒
+	// <p>查询日志开始时间（必填）格式为时间戳 毫秒</p>
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 单次查询返回的原始日志条数，最大值为100（必填）
+	// <p>单次查询返回的原始日志条数，最大值为100（必填）</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 查询的相关参数
+	// <p>过滤条件，其中key与运算符(Operator)对应可选字段枚举值与示例查看文档：https://cloud.tencent.com/document/product/248/87223</p>
 	Filter *string `json:"Filter,omitnil,omitempty" name:"Filter"`
 
-	// 结束时间（必填）格式为时间戳 毫秒
+	// <p>查询日志结束时间（必填）格式为时间戳 毫秒</p>
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 项目ID（必填）
+	// <p>项目ID（必填）</p>
 	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
 
-	// 上次查询的最后一个日志的时间戳
+	// <p>上次查询的最后一个日志的时间戳</p>
 	LastTime *int64 `json:"LastTime,omitnil,omitempty" name:"LastTime"`
 
-	// 上次查询的最后一个日志的rowId
+	// <p>上次查询的最后一个日志的rowId</p>
 	LastRowId *int64 `json:"LastRowId,omitnil,omitempty" name:"LastRowId"`
 }
 
 type DescribeRumLogDetailsV2Request struct {
 	*tchttp.BaseRequest
 	
-	// 排序方式 desc asc
+	// <p>排序方式 desc asc</p>
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 开始时间（必填）格式为时间戳 毫秒
+	// <p>查询日志开始时间（必填）格式为时间戳 毫秒</p>
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 单次查询返回的原始日志条数，最大值为100（必填）
+	// <p>单次查询返回的原始日志条数，最大值为100（必填）</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 查询的相关参数
+	// <p>过滤条件，其中key与运算符(Operator)对应可选字段枚举值与示例查看文档：https://cloud.tencent.com/document/product/248/87223</p>
 	Filter *string `json:"Filter,omitnil,omitempty" name:"Filter"`
 
-	// 结束时间（必填）格式为时间戳 毫秒
+	// <p>查询日志结束时间（必填）格式为时间戳 毫秒</p>
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 项目ID（必填）
+	// <p>项目ID（必填）</p>
 	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
 
-	// 上次查询的最后一个日志的时间戳
+	// <p>上次查询的最后一个日志的时间戳</p>
 	LastTime *int64 `json:"LastTime,omitnil,omitempty" name:"LastTime"`
 
-	// 上次查询的最后一个日志的rowId
+	// <p>上次查询的最后一个日志的rowId</p>
 	LastRowId *int64 `json:"LastRowId,omitnil,omitempty" name:"LastRowId"`
 }
 
@@ -10211,7 +10211,7 @@ func (r *DescribeRumLogDetailsV2Request) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRumLogDetailsV2ResponseParams struct {
-	// 日志明细
+	// <p>日志明细</p>
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -10328,44 +10328,44 @@ func (r *DescribeRumLogExportResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRumLogExportV2RequestParams struct {
-	// Export name
+	// <p>Name（string，必填）：导出任务名称标识，需要在使用API创建导出任务时填写。此字段为后续能力扩展预留，不在查询结果中返回。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// Start time
+	// <p>查询日志开始时间(必填)</p>
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// Query statement
+	// <p>过滤条件，其中key与运算符(Operator)对应可选字段枚举值与示例查看文档：https://cloud.tencent.com/document/product/248/87223</p>
 	Filter *string `json:"Filter,omitnil,omitempty" name:"Filter"`
 
-	// End time
+	// <p>查询日志结束时间(必填)</p>
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// Project ID
+	// <p>项目ID</p>
 	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
 
-	// c字段
+	// <p>注意：这个字段必选，不能为空！选择要导出哪些字段的参数，对应日志的列，可查看文档：https://cloud.tencent.com/document/product/248/87223</p><p>枚举值：</p><ul><li>level： 日志类型</li><li>url： URL</li><li>ip： 用户终端IP</li><li>version： 版本</li></ul>
 	Fields []*string `json:"Fields,omitnil,omitempty" name:"Fields"`
 }
 
 type DescribeRumLogExportV2Request struct {
 	*tchttp.BaseRequest
 	
-	// Export name
+	// <p>Name（string，必填）：导出任务名称标识，需要在使用API创建导出任务时填写。此字段为后续能力扩展预留，不在查询结果中返回。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// Start time
+	// <p>查询日志开始时间(必填)</p>
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// Query statement
+	// <p>过滤条件，其中key与运算符(Operator)对应可选字段枚举值与示例查看文档：https://cloud.tencent.com/document/product/248/87223</p>
 	Filter *string `json:"Filter,omitnil,omitempty" name:"Filter"`
 
-	// End time
+	// <p>查询日志结束时间(必填)</p>
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// Project ID
+	// <p>项目ID</p>
 	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
 
-	// c字段
+	// <p>注意：这个字段必选，不能为空！选择要导出哪些字段的参数，对应日志的列，可查看文档：https://cloud.tencent.com/document/product/248/87223</p><p>枚举值：</p><ul><li>level： 日志类型</li><li>url： URL</li><li>ip： 用户终端IP</li><li>version： 版本</li></ul>
 	Fields []*string `json:"Fields,omitnil,omitempty" name:"Fields"`
 }
 
@@ -10395,7 +10395,7 @@ func (r *DescribeRumLogExportV2Request) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRumLogExportV2ResponseParams struct {
-	// Query result in JSON string format
+	// <p>日志导出任务TaskId</p>
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -10661,56 +10661,56 @@ func (r *DescribeRumLogListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRumLogTotalV2RequestParams struct {
-	// 排序方式 desc asc
+	// <p>排序方式 desc asc</p>
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 开始时间（必填）格式为时间戳 毫秒
+	// <p>查询日志开始时间（必填）格式为时间戳 毫秒</p>
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 单次查询返回的原始日志条数，最大值为100（必填）
+	// <p>单次查询返回的原始日志条数，最大值为100（必填）</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 查询的相关参数
+	// <p>过滤条件，其中key与运算符(Operator)对应可选字段枚举值与示例查看文档：https://cloud.tencent.com/document/product/248/87223</p>
 	Filter *string `json:"Filter,omitnil,omitempty" name:"Filter"`
 
-	// 结束时间（必填）格式为时间戳 毫秒
+	// <p>查询日志结束时间（必填）格式为时间戳 毫秒</p>
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 项目ID（必填）
+	// <p>项目ID（必填）</p>
 	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
 
-	// 上次查询的最后一个日志的时间戳
+	// <p>上次查询的最后一个日志的时间戳</p>
 	LastTime *int64 `json:"LastTime,omitnil,omitempty" name:"LastTime"`
 
-	// 上次查询的最后一个日志的rowId
+	// <p>上次查询的最后一个日志的rowId</p>
 	LastRowId *int64 `json:"LastRowId,omitnil,omitempty" name:"LastRowId"`
 }
 
 type DescribeRumLogTotalV2Request struct {
 	*tchttp.BaseRequest
 	
-	// 排序方式 desc asc
+	// <p>排序方式 desc asc</p>
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 开始时间（必填）格式为时间戳 毫秒
+	// <p>查询日志开始时间（必填）格式为时间戳 毫秒</p>
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 单次查询返回的原始日志条数，最大值为100（必填）
+	// <p>单次查询返回的原始日志条数，最大值为100（必填）</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 查询的相关参数
+	// <p>过滤条件，其中key与运算符(Operator)对应可选字段枚举值与示例查看文档：https://cloud.tencent.com/document/product/248/87223</p>
 	Filter *string `json:"Filter,omitnil,omitempty" name:"Filter"`
 
-	// 结束时间（必填）格式为时间戳 毫秒
+	// <p>查询日志结束时间（必填）格式为时间戳 毫秒</p>
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 项目ID（必填）
+	// <p>项目ID（必填）</p>
 	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
 
-	// 上次查询的最后一个日志的时间戳
+	// <p>上次查询的最后一个日志的时间戳</p>
 	LastTime *int64 `json:"LastTime,omitnil,omitempty" name:"LastTime"`
 
-	// 上次查询的最后一个日志的rowId
+	// <p>上次查询的最后一个日志的rowId</p>
 	LastRowId *int64 `json:"LastRowId,omitnil,omitempty" name:"LastRowId"`
 }
 
@@ -10742,7 +10742,7 @@ func (r *DescribeRumLogTotalV2Request) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRumLogTotalV2ResponseParams struct {
-	// 日志总量
+	// <p>日志总量</p>
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -10852,38 +10852,38 @@ func (r *DescribeRumStatsLogListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRumStatsLogListV2RequestParams struct {
-	// 开始时间（必填）
+	// <p>查询日志开始时间（必填）</p>
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 单次查询返回的原始日志条数，最大值为100（必填）
+	// <p>单次查询返回的原始日志条数，最大值为100（必填）</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 过滤条件
+	// <p>过滤条件，其中key与运算符(Operator)对应可选字段枚举值与示例查看文档：https://cloud.tencent.com/document/product/248/87223</p>
 	Filter *string `json:"Filter,omitnil,omitempty" name:"Filter"`
 
-	// 结束时间（必填）
+	// <p>查询日志结束时间（必填）</p>
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 项目ID（必填）
+	// <p>项目ID（必填）</p>
 	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
 }
 
 type DescribeRumStatsLogListV2Request struct {
 	*tchttp.BaseRequest
 	
-	// 开始时间（必填）
+	// <p>查询日志开始时间（必填）</p>
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 单次查询返回的原始日志条数，最大值为100（必填）
+	// <p>单次查询返回的原始日志条数，最大值为100（必填）</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 过滤条件
+	// <p>过滤条件，其中key与运算符(Operator)对应可选字段枚举值与示例查看文档：https://cloud.tencent.com/document/product/248/87223</p>
 	Filter *string `json:"Filter,omitnil,omitempty" name:"Filter"`
 
-	// 结束时间（必填）
+	// <p>查询日志结束时间（必填）</p>
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 项目ID（必填）
+	// <p>项目ID（必填）</p>
 	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
 }
 
@@ -10912,7 +10912,7 @@ func (r *DescribeRumStatsLogListV2Request) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRumStatsLogListV2ResponseParams struct {
-	// Query result in JSON string format
+	// <p>日志时间分布</p>
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
