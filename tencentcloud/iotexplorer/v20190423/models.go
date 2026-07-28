@@ -2410,33 +2410,39 @@ func (r *CreateDeviceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateDeviceSDPAnswerRequestParams struct {
-	// 产品ID
+	// <p>产品ID</p>
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
-	// 设备名称
+	// <p>设备名称</p>
 	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
 
-	// SDP提议
+	// <p>SDP提议</p>
 	SDPOffer *string `json:"SDPOffer,omitnil,omitempty" name:"SDPOffer"`
 
-	// 客户自定义拉流标识
+	// <p>客户自定义拉流标识</p>
 	RequesterTag *string `json:"RequesterTag,omitnil,omitempty" name:"RequesterTag"`
+
+	// <p>默认值：0，如果需要webrtc推流拉流在同一个SDP中，需要值为1，常用于单PC模式</p><p>枚举值：</p><ul><li>0： 默认值，传统多pc推流模式</li><li>1： 单pc模式，如果需要webrtc单pc推拉流，采用此模式，此模式下注意SDP需要包含推拉流全部信息</li></ul><p>默认值：0</p>
+	EnableSubPub *uint64 `json:"EnableSubPub,omitnil,omitempty" name:"EnableSubPub"`
 }
 
 type CreateDeviceSDPAnswerRequest struct {
 	*tchttp.BaseRequest
 	
-	// 产品ID
+	// <p>产品ID</p>
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
-	// 设备名称
+	// <p>设备名称</p>
 	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
 
-	// SDP提议
+	// <p>SDP提议</p>
 	SDPOffer *string `json:"SDPOffer,omitnil,omitempty" name:"SDPOffer"`
 
-	// 客户自定义拉流标识
+	// <p>客户自定义拉流标识</p>
 	RequesterTag *string `json:"RequesterTag,omitnil,omitempty" name:"RequesterTag"`
+
+	// <p>默认值：0，如果需要webrtc推流拉流在同一个SDP中，需要值为1，常用于单PC模式</p><p>枚举值：</p><ul><li>0： 默认值，传统多pc推流模式</li><li>1： 单pc模式，如果需要webrtc单pc推拉流，采用此模式，此模式下注意SDP需要包含推拉流全部信息</li></ul><p>默认值：0</p>
+	EnableSubPub *uint64 `json:"EnableSubPub,omitnil,omitempty" name:"EnableSubPub"`
 }
 
 func (r *CreateDeviceSDPAnswerRequest) ToJsonString() string {
@@ -2455,6 +2461,7 @@ func (r *CreateDeviceSDPAnswerRequest) FromJsonString(s string) error {
 	delete(f, "DeviceName")
 	delete(f, "SDPOffer")
 	delete(f, "RequesterTag")
+	delete(f, "EnableSubPub")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDeviceSDPAnswerRequest has unknown keys!", "")
 	}
@@ -2463,7 +2470,7 @@ func (r *CreateDeviceSDPAnswerRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateDeviceSDPAnswerResponseParams struct {
-	// SDP应答
+	// <p>SDP应答</p>
 	SDPAnswer *string `json:"SDPAnswer,omitnil,omitempty" name:"SDPAnswer"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

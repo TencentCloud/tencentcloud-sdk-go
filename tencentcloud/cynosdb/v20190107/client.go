@@ -1827,6 +1827,7 @@ func NewCreateCLSDeliveryResponse() (response *CreateCLSDeliveryResponse) {
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  RESOURCENOTFOUND_RESOURCEERROR = "ResourceNotFound.ResourceError"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+//  UNAUTHORIZEDOPERATION_ROLEUNAUTHORIZED = "UnauthorizedOperation.RoleUnauthorized"
 func (c *Client) CreateCLSDelivery(request *CreateCLSDeliveryRequest) (response *CreateCLSDeliveryResponse, err error) {
     return c.CreateCLSDeliveryWithContext(context.Background(), request)
 }
@@ -1838,6 +1839,7 @@ func (c *Client) CreateCLSDelivery(request *CreateCLSDeliveryRequest) (response 
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  RESOURCENOTFOUND_RESOURCEERROR = "ResourceNotFound.ResourceError"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+//  UNAUTHORIZEDOPERATION_ROLEUNAUTHORIZED = "UnauthorizedOperation.RoleUnauthorized"
 func (c *Client) CreateCLSDeliveryWithContext(ctx context.Context, request *CreateCLSDeliveryRequest) (response *CreateCLSDeliveryResponse, err error) {
     if request == nil {
         request = NewCreateCLSDeliveryRequest()
@@ -2680,12 +2682,7 @@ func NewCreateVaultResponse() (response *CreateVaultResponse) {
 // 创建备份保险箱
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_CREATESOURCEPACKAGEERROR = "FailedOperation.CreateSourcePackageError"
-//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
-//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
-//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+//  UNAUTHORIZEDOPERATION_ROLEUNAUTHORIZED = "UnauthorizedOperation.RoleUnauthorized"
 func (c *Client) CreateVault(request *CreateVaultRequest) (response *CreateVaultResponse, err error) {
     return c.CreateVaultWithContext(context.Background(), request)
 }
@@ -2694,12 +2691,7 @@ func (c *Client) CreateVault(request *CreateVaultRequest) (response *CreateVault
 // 创建备份保险箱
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_CREATESOURCEPACKAGEERROR = "FailedOperation.CreateSourcePackageError"
-//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
-//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
-//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+//  UNAUTHORIZEDOPERATION_ROLEUNAUTHORIZED = "UnauthorizedOperation.RoleUnauthorized"
 func (c *Client) CreateVaultWithContext(ctx context.Context, request *CreateVaultRequest) (response *CreateVaultResponse, err error) {
     if request == nil {
         request = NewCreateVaultRequest()
@@ -5920,18 +5912,7 @@ func NewDescribeClusterTransparentEncryptInfoResponse() (response *DescribeClust
 // 查询集群透明加密信息
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
-//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
-//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
-//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
-//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
-//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
-//  INVALIDPARAMETERVALUE_INSTANCENOTFOUND = "InvalidParameterValue.InstanceNotFound"
-//  OPERATIONDENIED_CLUSTEROPNOTALLOWEDERROR = "OperationDenied.ClusterOpNotAllowedError"
-//  OPERATIONDENIED_SERVERLESSCLUSTERSTATUSDENIED = "OperationDenied.ServerlessClusterStatusDenied"
-//  OPERATIONDENIED_SERVERLESSINSTANCESTATUSDENIED = "OperationDenied.ServerlessInstanceStatusDenied"
-//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
-//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+//  UNAUTHORIZEDOPERATION_ROLEUNAUTHORIZED = "UnauthorizedOperation.RoleUnauthorized"
 func (c *Client) DescribeClusterTransparentEncryptInfo(request *DescribeClusterTransparentEncryptInfoRequest) (response *DescribeClusterTransparentEncryptInfoResponse, err error) {
     return c.DescribeClusterTransparentEncryptInfoWithContext(context.Background(), request)
 }
@@ -5940,18 +5921,7 @@ func (c *Client) DescribeClusterTransparentEncryptInfo(request *DescribeClusterT
 // 查询集群透明加密信息
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
-//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
-//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
-//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
-//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
-//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
-//  INVALIDPARAMETERVALUE_INSTANCENOTFOUND = "InvalidParameterValue.InstanceNotFound"
-//  OPERATIONDENIED_CLUSTEROPNOTALLOWEDERROR = "OperationDenied.ClusterOpNotAllowedError"
-//  OPERATIONDENIED_SERVERLESSCLUSTERSTATUSDENIED = "OperationDenied.ServerlessClusterStatusDenied"
-//  OPERATIONDENIED_SERVERLESSINSTANCESTATUSDENIED = "OperationDenied.ServerlessInstanceStatusDenied"
-//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
-//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+//  UNAUTHORIZEDOPERATION_ROLEUNAUTHORIZED = "UnauthorizedOperation.RoleUnauthorized"
 func (c *Client) DescribeClusterTransparentEncryptInfoWithContext(ctx context.Context, request *DescribeClusterTransparentEncryptInfoRequest) (response *DescribeClusterTransparentEncryptInfoResponse, err error) {
     if request == nil {
         request = NewDescribeClusterTransparentEncryptInfoRequest()
@@ -6183,6 +6153,7 @@ func NewDescribeInstanceCLSLogDeliveryResponse() (response *DescribeInstanceCLSL
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  OPERATIONDENIED_CLUSTERSTATUSDENIEDERROR = "OperationDenied.ClusterStatusDeniedError"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+//  UNAUTHORIZEDOPERATION_ROLEUNAUTHORIZED = "UnauthorizedOperation.RoleUnauthorized"
 func (c *Client) DescribeInstanceCLSLogDelivery(request *DescribeInstanceCLSLogDeliveryRequest) (response *DescribeInstanceCLSLogDeliveryResponse, err error) {
     return c.DescribeInstanceCLSLogDeliveryWithContext(context.Background(), request)
 }
@@ -6196,6 +6167,7 @@ func (c *Client) DescribeInstanceCLSLogDelivery(request *DescribeInstanceCLSLogD
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  OPERATIONDENIED_CLUSTERSTATUSDENIEDERROR = "OperationDenied.ClusterStatusDeniedError"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+//  UNAUTHORIZEDOPERATION_ROLEUNAUTHORIZED = "UnauthorizedOperation.RoleUnauthorized"
 func (c *Client) DescribeInstanceCLSLogDeliveryWithContext(ctx context.Context, request *DescribeInstanceCLSLogDeliveryRequest) (response *DescribeInstanceCLSLogDeliveryResponse, err error) {
     if request == nil {
         request = NewDescribeInstanceCLSLogDeliveryRequest()
@@ -11350,10 +11322,7 @@ func NewModifyClusterGlobalEncryptionResponse() (response *ModifyClusterGlobalEn
 // 开关全局加密
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
-//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
-//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+//  UNAUTHORIZEDOPERATION_ROLEUNAUTHORIZED = "UnauthorizedOperation.RoleUnauthorized"
 func (c *Client) ModifyClusterGlobalEncryption(request *ModifyClusterGlobalEncryptionRequest) (response *ModifyClusterGlobalEncryptionResponse, err error) {
     return c.ModifyClusterGlobalEncryptionWithContext(context.Background(), request)
 }
@@ -11362,10 +11331,7 @@ func (c *Client) ModifyClusterGlobalEncryption(request *ModifyClusterGlobalEncry
 // 开关全局加密
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
-//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
-//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+//  UNAUTHORIZEDOPERATION_ROLEUNAUTHORIZED = "UnauthorizedOperation.RoleUnauthorized"
 func (c *Client) ModifyClusterGlobalEncryptionWithContext(ctx context.Context, request *ModifyClusterGlobalEncryptionRequest) (response *ModifyClusterGlobalEncryptionResponse, err error) {
     if request == nil {
         request = NewModifyClusterGlobalEncryptionRequest()
@@ -13273,6 +13239,7 @@ func NewModifyVaultResponse() (response *ModifyVaultResponse) {
 //
 // 可能返回的错误码:
 //  OPERATIONDENIED_BACKUPVAULTTASKCONFLICTERROR = "OperationDenied.BackupVaultTaskConflictError"
+//  UNAUTHORIZEDOPERATION_ROLEUNAUTHORIZED = "UnauthorizedOperation.RoleUnauthorized"
 func (c *Client) ModifyVault(request *ModifyVaultRequest) (response *ModifyVaultResponse, err error) {
     return c.ModifyVaultWithContext(context.Background(), request)
 }
@@ -13282,6 +13249,7 @@ func (c *Client) ModifyVault(request *ModifyVaultRequest) (response *ModifyVault
 //
 // 可能返回的错误码:
 //  OPERATIONDENIED_BACKUPVAULTTASKCONFLICTERROR = "OperationDenied.BackupVaultTaskConflictError"
+//  UNAUTHORIZEDOPERATION_ROLEUNAUTHORIZED = "UnauthorizedOperation.RoleUnauthorized"
 func (c *Client) ModifyVaultWithContext(ctx context.Context, request *ModifyVaultRequest) (response *ModifyVaultResponse, err error) {
     if request == nil {
         request = NewModifyVaultRequest()
@@ -13914,13 +13882,8 @@ func NewOpenClusterTransparentEncryptResponse() (response *OpenClusterTransparen
 // 开通集群透明加密
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
-//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
-//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
-//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
-//  INVALIDPARAMETERVALUE_PARAMERROR = "InvalidParameterValue.ParamError"
-//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+//  INTERNALERROR_GETROLEERROR = "InternalError.GetRoleError"
+//  UNAUTHORIZEDOPERATION_ROLEUNAUTHORIZED = "UnauthorizedOperation.RoleUnauthorized"
 func (c *Client) OpenClusterTransparentEncrypt(request *OpenClusterTransparentEncryptRequest) (response *OpenClusterTransparentEncryptResponse, err error) {
     return c.OpenClusterTransparentEncryptWithContext(context.Background(), request)
 }
@@ -13929,13 +13892,8 @@ func (c *Client) OpenClusterTransparentEncrypt(request *OpenClusterTransparentEn
 // 开通集群透明加密
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
-//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
-//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
-//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
-//  INVALIDPARAMETERVALUE_PARAMERROR = "InvalidParameterValue.ParamError"
-//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+//  INTERNALERROR_GETROLEERROR = "InternalError.GetRoleError"
+//  UNAUTHORIZEDOPERATION_ROLEUNAUTHORIZED = "UnauthorizedOperation.RoleUnauthorized"
 func (c *Client) OpenClusterTransparentEncryptWithContext(ctx context.Context, request *OpenClusterTransparentEncryptRequest) (response *OpenClusterTransparentEncryptResponse, err error) {
     if request == nil {
         request = NewOpenClusterTransparentEncryptRequest()
@@ -15655,6 +15613,7 @@ func NewStartCLSDeliveryResponse() (response *StartCLSDeliveryResponse) {
 //
 // 可能返回的错误码:
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+//  UNAUTHORIZEDOPERATION_ROLEUNAUTHORIZED = "UnauthorizedOperation.RoleUnauthorized"
 func (c *Client) StartCLSDelivery(request *StartCLSDeliveryRequest) (response *StartCLSDeliveryResponse, err error) {
     return c.StartCLSDeliveryWithContext(context.Background(), request)
 }
@@ -15664,6 +15623,7 @@ func (c *Client) StartCLSDelivery(request *StartCLSDeliveryRequest) (response *S
 //
 // 可能返回的错误码:
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+//  UNAUTHORIZEDOPERATION_ROLEUNAUTHORIZED = "UnauthorizedOperation.RoleUnauthorized"
 func (c *Client) StartCLSDeliveryWithContext(ctx context.Context, request *StartCLSDeliveryRequest) (response *StartCLSDeliveryResponse, err error) {
     if request == nil {
         request = NewStartCLSDeliveryRequest()

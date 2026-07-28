@@ -33,6 +33,21 @@ type AddNodesToDBCustomClusterRequestParams struct {
 
 	// <p>实例登录设置。通过该参数可以设置实例的登录方式密码、密钥或保持镜像的原始登录设置。</p><p>入参限制：若选择密钥方式，KeyIds 仅支持单个 ID。三种方式必须且仅可以设置其中一种。</p>
 	LoginSettings *LoginSettings `json:"LoginSettings,omitnil,omitempty" name:"LoginSettings"`
+
+	// <p>节点上架成功后初始化新增的自定义 Label</p><p>入参限制：单次 ≤ 20 对</p>
+	Labels []*Label `json:"Labels,omitnil,omitempty" name:"Labels"`
+
+	// <p>节点上架成功后初始化下发的Taint</p><p>入参限制：单次 ≤ 5 对</p>
+	Taints []*Taint `json:"Taints,omitnil,omitempty" name:"Taints"`
+
+	// <p>主机hostname ，仅 HostNameType=1 时必填，其余情况忽略；不支持大写字母</p><p>入参限制：- 点号（.）和短横线（-）不能作为 HostName 的首尾字符，不能连续使用。不允许使用下划线(_)。</p><ul><li>Windows 节点：主机名名字符长度为[2, 15]，允许字母（不限制大小写）、数字和短横线（-）组成，不支持点号（.），不能全是数字。</li><li>其他类型（Linux 等）节点：主机名字符长度为[2, 60]，允许支持多个点号，点之间为一段，每段允许字母（不限制大小写）、数字和短横线（-）组成。</li><li>上架多台节点时：</li><li>指定模式串 {R:x}：表示生成数字序列 [x, x+n-1]，其中 n为购买节点的数量。例如：输入 server_{R:3}，购买1台时，节点主机名为 server_3；购买2台时，主机名分别为 server_3、server_4。</li><li>指定模式串 {R:x,F:y}：y表示固定位数（可选），取值范围为 [0,8]，默认值 0表示不固定位数（等效于 {R:x}）。不足位时自动补零，例如：输入server_{R:3,F:3}，购买2台时，节点主机名为 server_003、server_004。若数字位数超过 y（如 {R:99,F:2}），以实际位数为准，例如：app_{R:99,F:2}，购买2台时，节点主机名为 app_99、app_100。</li><li>指定模式串 {IP}：自动替换为节点的内网IP地址。例如：输入 node-{IP}，节点主机名为 node-10.0.12.8；支持与序号模式串混合使用，例如：输入 web-{IP}-{R:1}，购买2台时，节点主机名分别为 web-10.0.12.8-1、web-10.0.12.9-2。</li><li>模式串需严格遵循 {R:x,F:y}、{R:x} 或 {IP} 格式，无效格式（如 {}）视为普通文本。支持多个模式串。</li><li>未指定模式串：节点主机名添加后缀 1、2...n，其中n表示购买节点的数量，例如 server_购买2台时生成 server_1、server_2。</li></ul>
+	HostName *string `json:"HostName,omitnil,omitempty" name:"HostName"`
+
+	// <p>HostName 来源类型</p><p>枚举值：</p><ul><li>0： 复用节点创建时设置的 hostname，为空则报错</li><li>1： 重新指定 HostName，需同时传 HostName 字段（支持模式串 {R:x}、{R:x,F:y}、{IP}）</li><li>2： 系统自动分配，用 NodeId 作为 HostName</li></ul>
+	HostNameType *int64 `json:"HostNameType,omitnil,omitempty" name:"HostNameType"`
+
+	// <p>试运行开关，true 时只执行参数校验，不发起上架流程</p><p>默认值：false</p>
+	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
 }
 
 type AddNodesToDBCustomClusterRequest struct {
@@ -49,6 +64,21 @@ type AddNodesToDBCustomClusterRequest struct {
 
 	// <p>实例登录设置。通过该参数可以设置实例的登录方式密码、密钥或保持镜像的原始登录设置。</p><p>入参限制：若选择密钥方式，KeyIds 仅支持单个 ID。三种方式必须且仅可以设置其中一种。</p>
 	LoginSettings *LoginSettings `json:"LoginSettings,omitnil,omitempty" name:"LoginSettings"`
+
+	// <p>节点上架成功后初始化新增的自定义 Label</p><p>入参限制：单次 ≤ 20 对</p>
+	Labels []*Label `json:"Labels,omitnil,omitempty" name:"Labels"`
+
+	// <p>节点上架成功后初始化下发的Taint</p><p>入参限制：单次 ≤ 5 对</p>
+	Taints []*Taint `json:"Taints,omitnil,omitempty" name:"Taints"`
+
+	// <p>主机hostname ，仅 HostNameType=1 时必填，其余情况忽略；不支持大写字母</p><p>入参限制：- 点号（.）和短横线（-）不能作为 HostName 的首尾字符，不能连续使用。不允许使用下划线(_)。</p><ul><li>Windows 节点：主机名名字符长度为[2, 15]，允许字母（不限制大小写）、数字和短横线（-）组成，不支持点号（.），不能全是数字。</li><li>其他类型（Linux 等）节点：主机名字符长度为[2, 60]，允许支持多个点号，点之间为一段，每段允许字母（不限制大小写）、数字和短横线（-）组成。</li><li>上架多台节点时：</li><li>指定模式串 {R:x}：表示生成数字序列 [x, x+n-1]，其中 n为购买节点的数量。例如：输入 server_{R:3}，购买1台时，节点主机名为 server_3；购买2台时，主机名分别为 server_3、server_4。</li><li>指定模式串 {R:x,F:y}：y表示固定位数（可选），取值范围为 [0,8]，默认值 0表示不固定位数（等效于 {R:x}）。不足位时自动补零，例如：输入server_{R:3,F:3}，购买2台时，节点主机名为 server_003、server_004。若数字位数超过 y（如 {R:99,F:2}），以实际位数为准，例如：app_{R:99,F:2}，购买2台时，节点主机名为 app_99、app_100。</li><li>指定模式串 {IP}：自动替换为节点的内网IP地址。例如：输入 node-{IP}，节点主机名为 node-10.0.12.8；支持与序号模式串混合使用，例如：输入 web-{IP}-{R:1}，购买2台时，节点主机名分别为 web-10.0.12.8-1、web-10.0.12.9-2。</li><li>模式串需严格遵循 {R:x,F:y}、{R:x} 或 {IP} 格式，无效格式（如 {}）视为普通文本。支持多个模式串。</li><li>未指定模式串：节点主机名添加后缀 1、2...n，其中n表示购买节点的数量，例如 server_购买2台时生成 server_1、server_2。</li></ul>
+	HostName *string `json:"HostName,omitnil,omitempty" name:"HostName"`
+
+	// <p>HostName 来源类型</p><p>枚举值：</p><ul><li>0： 复用节点创建时设置的 hostname，为空则报错</li><li>1： 重新指定 HostName，需同时传 HostName 字段（支持模式串 {R:x}、{R:x,F:y}、{IP}）</li><li>2： 系统自动分配，用 NodeId 作为 HostName</li></ul>
+	HostNameType *int64 `json:"HostNameType,omitnil,omitempty" name:"HostNameType"`
+
+	// <p>试运行开关，true 时只执行参数校验，不发起上架流程</p><p>默认值：false</p>
+	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
 }
 
 func (r *AddNodesToDBCustomClusterRequest) ToJsonString() string {
@@ -67,6 +97,11 @@ func (r *AddNodesToDBCustomClusterRequest) FromJsonString(s string) error {
 	delete(f, "NodeIds")
 	delete(f, "ImageId")
 	delete(f, "LoginSettings")
+	delete(f, "Labels")
+	delete(f, "Taints")
+	delete(f, "HostName")
+	delete(f, "HostNameType")
+	delete(f, "DryRun")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddNodesToDBCustomClusterRequest has unknown keys!", "")
 	}
@@ -179,7 +214,7 @@ type CreateDBCustomClusterRequestParams struct {
 	// <p>容器网络，在此集群的所有 POD 与此网络连通</p>
 	ContainerNetwork *ContainerNetwork `json:"ContainerNetwork,omitnil,omitempty" name:"ContainerNetwork"`
 
-	// <p>集群名称</p><p>入参限制：最长128个字符，只能为中文，英文，下划线。</p>
+	// <p>集群名称</p><p>入参限制：最长128个字符。</p>
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
 	// <p>集群的API Server的网络信息</p><p>入参限制：必须为此账号下拥有的网络地址，可以与容器网络保持一致。</p>
@@ -193,6 +228,9 @@ type CreateDBCustomClusterRequestParams struct {
 
 	// <p>客户端Token</p>
 	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
+
+	// <p>试运行开关，true 时只执行参数校验，不发起创建流程，默认 false</p>
+	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
 }
 
 type CreateDBCustomClusterRequest struct {
@@ -201,7 +239,7 @@ type CreateDBCustomClusterRequest struct {
 	// <p>容器网络，在此集群的所有 POD 与此网络连通</p>
 	ContainerNetwork *ContainerNetwork `json:"ContainerNetwork,omitnil,omitempty" name:"ContainerNetwork"`
 
-	// <p>集群名称</p><p>入参限制：最长128个字符，只能为中文，英文，下划线。</p>
+	// <p>集群名称</p><p>入参限制：最长128个字符。</p>
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
 	// <p>集群的API Server的网络信息</p><p>入参限制：必须为此账号下拥有的网络地址，可以与容器网络保持一致。</p>
@@ -215,6 +253,9 @@ type CreateDBCustomClusterRequest struct {
 
 	// <p>客户端Token</p>
 	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
+
+	// <p>试运行开关，true 时只执行参数校验，不发起创建流程，默认 false</p>
+	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
 }
 
 func (r *CreateDBCustomClusterRequest) ToJsonString() string {
@@ -235,6 +276,7 @@ func (r *CreateDBCustomClusterRequest) FromJsonString(s string) error {
 	delete(f, "ClusterDescription")
 	delete(f, "Tags")
 	delete(f, "ClientToken")
+	delete(f, "DryRun")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDBCustomClusterRequest has unknown keys!", "")
 	}
@@ -283,17 +325,17 @@ type CreateDBCustomNodesRequestParams struct {
 	// <p>为节点打通SSH连接的VPC 子网 ID。 </p><p>参数格式：subnet-t13dtest</p><p>入参限制：必须是VPC之下的子网，子网必须与可用区对应。</p><p>取值参考：可通过【查询子网列表】接口获取：https://cloud.tencent.com/document/product/215/15784</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// <p>购买时长(月): 1/2/3/4/5/6/7/8/9/10/11/12/24/36</p><p>取值范围：[1, 36]</p><p>单位：月</p><p>默认值：1</p>
-	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
-
 	// <p>节点机型</p><p>枚举值：</p><ul><li>DB.AT5.32XLARGE512： 高IO型服务器：128核心512GB内存，8*7180GB本地NvME SSDB。</li><li>DB.AT5.64XLARGE1152： 高IO型服务器：256核心1152GB内存，12*7180GB本地NvME SSDB。</li><li>DB.AT5.128XLARGE2304： 高IO型服务器：512核心2304GB内存，24*7180GB本地NvME SSDB。</li><li>DB.AT5.16XLARGE256： 高IO型服务器：64核心256GB内存，4*7180GB本地NvME SSDB。</li><li>DB.AT5.8XLARGE128： 高IO型服务器：32核心128GB内存，2*7180GB本地NvME SSDB。</li></ul>
 	NodeType *string `json:"NodeType,omitnil,omitempty" name:"NodeType"`
 
 	// <p>购买的节点数量</p><p>取值范围：[1, 20]</p>
 	NodeCount *int64 `json:"NodeCount,omitnil,omitempty" name:"NodeCount"`
 
-	// <p>实例登录设置。通过该参数可以设置实例的登录方式密码、密钥或保持镜像的原始登录设置。</p><p>入参限制：若选择密钥方式，KeyIds 仅支持单个 ID。三种方式必须且仅可以设置其中一种。</p>
+	// <p>节点登录设置。通过该参数可以设置节点的登录方式密码、密钥或保持镜像的原始登录设置。</p><p>入参限制：若选择密钥方式，KeyIds 仅支持单个 ID。三种方式必须且仅可以设置其中一种。</p>
 	LoginSettings *LoginSettings `json:"LoginSettings,omitnil,omitempty" name:"LoginSettings"`
+
+	// <p>购买时长(月): 1/2/3/4/5/6/7/8/9/10/11/12/24/36</p><p>取值范围：[1, 36]</p><p>单位：月</p><p>默认值：1</p>
+	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
 
 	// <p>自动续费配置</p><p>枚举值：</p><ul><li>1： 自动续费</li><li>2： 不自动续费</li></ul><p>默认值：不自动续费</p>
 	AutoRenew *int64 `json:"AutoRenew,omitnil,omitempty" name:"AutoRenew"`
@@ -312,6 +354,27 @@ type CreateDBCustomNodesRequestParams struct {
 
 	// <p>用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。</p>
 	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
+
+	// <p>计费模式</p><p>枚举值：</p><ul><li>PREPAID： 包年包月</li><li>POSTPAID： 按量付费</li></ul><p>默认值：默认为包年包月(PREPAID)</p>
+	ChargeType *string `json:"ChargeType,omitnil,omitempty" name:"ChargeType"`
+
+	// <p>访问主机的网络模式</p><p>枚举值：</p><ul><li>privatelink： 四层网络联通，放通SSH 通路</li><li>cross_tenant_eni： 三层网络联通，双网卡模式</li></ul><p>默认值：默认值为：privatelink</p>
+	NetworkMode *string `json:"NetworkMode,omitnil,omitempty" name:"NetworkMode"`
+
+	// <p>系统盘配置</p><p>入参限制：仅云盘版机型支持，如DB.SA5机型。本地盘机型DB.AT5机型不支持设置</p>
+	SystemDisk *SystemDisk `json:"SystemDisk,omitnil,omitempty" name:"SystemDisk"`
+
+	// <p>数据库盘配置</p><p>入参限制：仅云盘版机型支持，如DB.SA5机型。本地盘机型DB.AT5机型不支持设置</p>
+	DataDisks []*DataDisk `json:"DataDisks,omitnil,omitempty" name:"DataDisks"`
+
+	// <p>主机的hostname。</p><p>参数格式：字符串或者指定模式串</p><p>入参限制：- 点号（.）和短横线（-）不能作为 HostName 的首尾字符，不能连续使用。不允许使用下划线(_)。</p><ul><li>Windows 节点：主机名名字符长度为[2, 15]，允许字母（不限制大小写）、数字和短横线（-）组成，不支持点号（.），不能全是数字。</li><li>其他类型（Linux 等）节点：主机名字符长度为[2, 60]，允许支持多个点号，点之间为一段，每段允许字母（不限制大小写）、数字和短横线（-）组成。</li><li>购买多台节点时：</li><li>指定模式串 {R:x}：表示生成数字序列 [x, x+n-1]，其中 n为购买节点的数量。例如：输入 server_{R:3}，购买1台时，节点主机名为 server_3；购买2台时，主机名分别为 server_3、server_4。</li><li>指定模式串 {R:x,F:y}：y表示固定位数（可选），取值范围为 [0,8]，默认值 0表示不固定位数（等效于 {R:x}）。不足位时自动补零，例如：输入server_{R:3,F:3}，购买2台时，节点主机名为 server_003、server_004。若数字位数超过 y（如 {R:99,F:2}），以实际位数为准，例如：app_{R:99,F:2}，购买2台时，节点主机名为 app_99、app_100。</li><li>指定模式串 {IP}：自动替换为节点的内网IP地址。例如：输入 node-{IP}，节点主机名为 node-10.0.12.8；支持与序号模式串混合使用，例如：输入 web-{IP}-{R:1}，购买2台时，节点主机名分别为 web-10.0.12.8-1、web-10.0.12.9-2。</li><li>模式串需严格遵循 {R:x,F:y}、{R:x} 或 {IP} 格式，无效格式（如 {}）视为普通文本。支持多个模式串。</li><li>未指定模式串：节点主机名添加后缀 1、2...n，其中n表示购买节点的数量，例如 server_购买2台时生成 server_1、server_2。</li></ul>
+	HostName *string `json:"HostName,omitnil,omitempty" name:"HostName"`
+
+	// <p>试运行开关。</p><p>枚举值：</p><ul><li>true： 为 true 时接口只执行参数校验与资源申请检查（库存、配额、网络等），完成后立即返回空响应，不会真正下单，也不会创建节点记录。用于调用方在真正下单前做一次可行性预检。</li><li>false： 不预检查</li></ul><p>默认值：false</p>
+	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
+
+	// <p>设置节点安全组</p><p>参数格式：设置需要与节点绑定的多个安全组ID，以数组形式配置。</p>
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
 }
 
 type CreateDBCustomNodesRequest struct {
@@ -329,17 +392,17 @@ type CreateDBCustomNodesRequest struct {
 	// <p>为节点打通SSH连接的VPC 子网 ID。 </p><p>参数格式：subnet-t13dtest</p><p>入参限制：必须是VPC之下的子网，子网必须与可用区对应。</p><p>取值参考：可通过【查询子网列表】接口获取：https://cloud.tencent.com/document/product/215/15784</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// <p>购买时长(月): 1/2/3/4/5/6/7/8/9/10/11/12/24/36</p><p>取值范围：[1, 36]</p><p>单位：月</p><p>默认值：1</p>
-	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
-
 	// <p>节点机型</p><p>枚举值：</p><ul><li>DB.AT5.32XLARGE512： 高IO型服务器：128核心512GB内存，8*7180GB本地NvME SSDB。</li><li>DB.AT5.64XLARGE1152： 高IO型服务器：256核心1152GB内存，12*7180GB本地NvME SSDB。</li><li>DB.AT5.128XLARGE2304： 高IO型服务器：512核心2304GB内存，24*7180GB本地NvME SSDB。</li><li>DB.AT5.16XLARGE256： 高IO型服务器：64核心256GB内存，4*7180GB本地NvME SSDB。</li><li>DB.AT5.8XLARGE128： 高IO型服务器：32核心128GB内存，2*7180GB本地NvME SSDB。</li></ul>
 	NodeType *string `json:"NodeType,omitnil,omitempty" name:"NodeType"`
 
 	// <p>购买的节点数量</p><p>取值范围：[1, 20]</p>
 	NodeCount *int64 `json:"NodeCount,omitnil,omitempty" name:"NodeCount"`
 
-	// <p>实例登录设置。通过该参数可以设置实例的登录方式密码、密钥或保持镜像的原始登录设置。</p><p>入参限制：若选择密钥方式，KeyIds 仅支持单个 ID。三种方式必须且仅可以设置其中一种。</p>
+	// <p>节点登录设置。通过该参数可以设置节点的登录方式密码、密钥或保持镜像的原始登录设置。</p><p>入参限制：若选择密钥方式，KeyIds 仅支持单个 ID。三种方式必须且仅可以设置其中一种。</p>
 	LoginSettings *LoginSettings `json:"LoginSettings,omitnil,omitempty" name:"LoginSettings"`
+
+	// <p>购买时长(月): 1/2/3/4/5/6/7/8/9/10/11/12/24/36</p><p>取值范围：[1, 36]</p><p>单位：月</p><p>默认值：1</p>
+	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
 
 	// <p>自动续费配置</p><p>枚举值：</p><ul><li>1： 自动续费</li><li>2： 不自动续费</li></ul><p>默认值：不自动续费</p>
 	AutoRenew *int64 `json:"AutoRenew,omitnil,omitempty" name:"AutoRenew"`
@@ -358,6 +421,27 @@ type CreateDBCustomNodesRequest struct {
 
 	// <p>用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。</p>
 	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
+
+	// <p>计费模式</p><p>枚举值：</p><ul><li>PREPAID： 包年包月</li><li>POSTPAID： 按量付费</li></ul><p>默认值：默认为包年包月(PREPAID)</p>
+	ChargeType *string `json:"ChargeType,omitnil,omitempty" name:"ChargeType"`
+
+	// <p>访问主机的网络模式</p><p>枚举值：</p><ul><li>privatelink： 四层网络联通，放通SSH 通路</li><li>cross_tenant_eni： 三层网络联通，双网卡模式</li></ul><p>默认值：默认值为：privatelink</p>
+	NetworkMode *string `json:"NetworkMode,omitnil,omitempty" name:"NetworkMode"`
+
+	// <p>系统盘配置</p><p>入参限制：仅云盘版机型支持，如DB.SA5机型。本地盘机型DB.AT5机型不支持设置</p>
+	SystemDisk *SystemDisk `json:"SystemDisk,omitnil,omitempty" name:"SystemDisk"`
+
+	// <p>数据库盘配置</p><p>入参限制：仅云盘版机型支持，如DB.SA5机型。本地盘机型DB.AT5机型不支持设置</p>
+	DataDisks []*DataDisk `json:"DataDisks,omitnil,omitempty" name:"DataDisks"`
+
+	// <p>主机的hostname。</p><p>参数格式：字符串或者指定模式串</p><p>入参限制：- 点号（.）和短横线（-）不能作为 HostName 的首尾字符，不能连续使用。不允许使用下划线(_)。</p><ul><li>Windows 节点：主机名名字符长度为[2, 15]，允许字母（不限制大小写）、数字和短横线（-）组成，不支持点号（.），不能全是数字。</li><li>其他类型（Linux 等）节点：主机名字符长度为[2, 60]，允许支持多个点号，点之间为一段，每段允许字母（不限制大小写）、数字和短横线（-）组成。</li><li>购买多台节点时：</li><li>指定模式串 {R:x}：表示生成数字序列 [x, x+n-1]，其中 n为购买节点的数量。例如：输入 server_{R:3}，购买1台时，节点主机名为 server_3；购买2台时，主机名分别为 server_3、server_4。</li><li>指定模式串 {R:x,F:y}：y表示固定位数（可选），取值范围为 [0,8]，默认值 0表示不固定位数（等效于 {R:x}）。不足位时自动补零，例如：输入server_{R:3,F:3}，购买2台时，节点主机名为 server_003、server_004。若数字位数超过 y（如 {R:99,F:2}），以实际位数为准，例如：app_{R:99,F:2}，购买2台时，节点主机名为 app_99、app_100。</li><li>指定模式串 {IP}：自动替换为节点的内网IP地址。例如：输入 node-{IP}，节点主机名为 node-10.0.12.8；支持与序号模式串混合使用，例如：输入 web-{IP}-{R:1}，购买2台时，节点主机名分别为 web-10.0.12.8-1、web-10.0.12.9-2。</li><li>模式串需严格遵循 {R:x,F:y}、{R:x} 或 {IP} 格式，无效格式（如 {}）视为普通文本。支持多个模式串。</li><li>未指定模式串：节点主机名添加后缀 1、2...n，其中n表示购买节点的数量，例如 server_购买2台时生成 server_1、server_2。</li></ul>
+	HostName *string `json:"HostName,omitnil,omitempty" name:"HostName"`
+
+	// <p>试运行开关。</p><p>枚举值：</p><ul><li>true： 为 true 时接口只执行参数校验与资源申请检查（库存、配额、网络等），完成后立即返回空响应，不会真正下单，也不会创建节点记录。用于调用方在真正下单前做一次可行性预检。</li><li>false： 不预检查</li></ul><p>默认值：false</p>
+	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
+
+	// <p>设置节点安全组</p><p>参数格式：设置需要与节点绑定的多个安全组ID，以数组形式配置。</p>
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
 }
 
 func (r *CreateDBCustomNodesRequest) ToJsonString() string {
@@ -376,16 +460,23 @@ func (r *CreateDBCustomNodesRequest) FromJsonString(s string) error {
 	delete(f, "ImageId")
 	delete(f, "VpcId")
 	delete(f, "SubnetId")
-	delete(f, "Period")
 	delete(f, "NodeType")
 	delete(f, "NodeCount")
 	delete(f, "LoginSettings")
+	delete(f, "Period")
 	delete(f, "AutoRenew")
 	delete(f, "NodeName")
 	delete(f, "AutoVoucher")
 	delete(f, "VoucherIds")
 	delete(f, "Tags")
 	delete(f, "ClientToken")
+	delete(f, "ChargeType")
+	delete(f, "NetworkMode")
+	delete(f, "SystemDisk")
+	delete(f, "DataDisks")
+	delete(f, "HostName")
+	delete(f, "DryRun")
+	delete(f, "SecurityGroupIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDBCustomNodesRequest has unknown keys!", "")
 	}
@@ -474,6 +565,14 @@ type DBCustomClusterNode struct {
 
 	// <p>节点类型</p><p>枚举值：</p><ul><li>DB.AT5.32XLARGE512： 高IO型服务器：128核心512GB内存，8*7180GB本地NvME SSDB。</li><li>DB.AT5.64XLARGE1152： 高IO型服务器：256核心1152GB内存，12*7180GB本地NvME SSDB。</li><li>DB.AT5.128XLARGE2304： 高IO型服务器：512核心2304GB内存，24*7180GB本地NvME SSDB。</li><li>DB.AT5.16XLARGE256： 高IO型服务器：64核心256GB内存，4*7180GB本地NvME SSDB。</li><li>DB.AT5.8XLARGE128： 高IO型服务器：32核心128GB内存，2*7180GB本地NvME SSDB。</li></ul>
 	NodeType *string `json:"NodeType,omitnil,omitempty" name:"NodeType"`
+
+	// <p>网络模式</p><p>枚举值：</p><ul><li>privatelink： 四层网络联通，放通SSH 通路</li><li>cross_tenant_eni： 三层网络联通，双网卡模式</li></ul>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NetworkMode *string `json:"NetworkMode,omitnil,omitempty" name:"NetworkMode"`
+
+	// <p>当选择网络模式为三层网络联通模式时，此处的IP地址则为用户可访问的地址。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EniIP *string `json:"EniIP,omitnil,omitempty" name:"EniIP"`
 }
 
 type DBCustomImage struct {
@@ -488,6 +587,9 @@ type DBCustomImage struct {
 
 	// <p>操作系统架构</p><p>枚举值：</p><ul><li>x86_64： X86 64位架构</li><li>arm64： ARM 64位机构</li></ul>
 	Architecture *string `json:"Architecture,omitnil,omitempty" name:"Architecture"`
+
+	// <p>操作系统类型</p><p>枚举值：</p><ul><li>windows： windows</li><li>linux： linux</li></ul>
+	OsType *string `json:"OsType,omitnil,omitempty" name:"OsType"`
 }
 
 type DBCustomNode struct {
@@ -568,6 +670,12 @@ type DBCustomNode struct {
 
 	// <p>底层物理机IP（已加密）</p>
 	HostIp *string `json:"HostIp,omitnil,omitempty" name:"HostIp"`
+
+	// <p>网络模式</p><p>枚举值：</p><ul><li>NetworkModePrivateLink： 四层 SSH 服务联通模式</li><li>NetworkModeCrossTenantENI：  三层双网卡访问方式</li></ul>
+	NetworkMode *string `json:"NetworkMode,omitnil,omitempty" name:"NetworkMode"`
+
+	// <p>当选择NetworkModeCrossTenantENI模式时，节点的访问IP地址</p>
+	EniIP *string `json:"EniIP,omitnil,omitempty" name:"EniIP"`
 }
 
 type DBInstanceDetail struct {
@@ -645,7 +753,7 @@ type DataDisk struct {
 	// <p>磁盘大小</p><p>单位：GiB</p>
 	DiskSize *int64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
 
-	// <p>磁盘名称</p>
+	// <p>磁盘名称</p><p>DataDisk 作为输入参数时，DiskName 无效。</p>
 	DiskName *string `json:"DiskName,omitnil,omitempty" name:"DiskName"`
 }
 
@@ -970,6 +1078,9 @@ func (r *DescribeDBCustomClustersResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDBCustomImagesRequestParams struct {
+	// <p>支持镜像过滤的选项</p><p>取值参考：</p><ul><li>image-id,按镜像 ID 过滤    </li><li>os-type,按操作系统类型过滤(linux / windows)</li><li>image-type，按镜像类型过滤（PUBLIC_IMAGE（公共镜像）/ PRIVATE_IMAGE（私有镜像））</li><li>architecture，按架构过滤（x86_64 / arm64）</li></ul>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
 	// <p>偏移量</p><p>默认值：0</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
@@ -980,6 +1091,9 @@ type DescribeDBCustomImagesRequestParams struct {
 type DescribeDBCustomImagesRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>支持镜像过滤的选项</p><p>取值参考：</p><ul><li>image-id,按镜像 ID 过滤    </li><li>os-type,按操作系统类型过滤(linux / windows)</li><li>image-type，按镜像类型过滤（PUBLIC_IMAGE（公共镜像）/ PRIVATE_IMAGE（私有镜像））</li><li>architecture，按架构过滤（x86_64 / arm64）</li></ul>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
 	// <p>偏移量</p><p>默认值：0</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
@@ -999,6 +1113,7 @@ func (r *DescribeDBCustomImagesRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "Filters")
 	delete(f, "Offset")
 	delete(f, "Limit")
 	if len(f) > 0 {
@@ -2194,6 +2309,14 @@ func (r *IsolateDBCustomNodeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type Label struct {
+	// <p>在集群内的节点Label键</p>
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// <p>在集群内的节点Label键值</p>
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
 type LoginSettings struct {
 	// <p>实例登录密码。不同操作系统类型密码复杂度限制不一样，具体如下： Linux实例密码必须8到30位，至少包括两项[a-z]，[A-Z]、[0-9] 和 [( ) <code>~ ! @ # $ % ^ &amp; * - + = | { } [ ] : ; &#39; , . ? / ]中的特殊符号。 Windows实例密码必须12到30位，至少包括三项[a-z]，[A-Z]，[0-9] 和 [( )</code> ~ ! @ # $ % ^ &amp; * - + = | { } [ ] : ; &#39; , . ? /]中的特殊符号。</p>
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
@@ -2409,6 +2532,9 @@ type RemoveNodesFromDBCustomClusterRequestParams struct {
 
 	// <p>要下架的 DB Custom 节点ID列表</p>
 	NodeIds []*string `json:"NodeIds,omitnil,omitempty" name:"NodeIds"`
+
+	// <p>节点的登录参数</p>
+	LoginSettings *LoginSettings `json:"LoginSettings,omitnil,omitempty" name:"LoginSettings"`
 }
 
 type RemoveNodesFromDBCustomClusterRequest struct {
@@ -2419,6 +2545,9 @@ type RemoveNodesFromDBCustomClusterRequest struct {
 
 	// <p>要下架的 DB Custom 节点ID列表</p>
 	NodeIds []*string `json:"NodeIds,omitnil,omitempty" name:"NodeIds"`
+
+	// <p>节点的登录参数</p>
+	LoginSettings *LoginSettings `json:"LoginSettings,omitnil,omitempty" name:"LoginSettings"`
 }
 
 func (r *RemoveNodesFromDBCustomClusterRequest) ToJsonString() string {
@@ -2435,6 +2564,7 @@ func (r *RemoveNodesFromDBCustomClusterRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ClusterId")
 	delete(f, "NodeIds")
+	delete(f, "LoginSettings")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RemoveNodesFromDBCustomClusterRequest has unknown keys!", "")
 	}
@@ -2569,5 +2699,16 @@ type Tag struct {
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
 	// <p>标签值</p>
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type Taint struct {
+	// <p>Taint 的键，格式对齐 K8s 原生约束（prefix DNS 子域 ≤ 253 字符，name ≤ 63 字符），不可使用系统保留前缀</p>
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// <p>污点效果</p><p>枚举值：</p><ul><li>NoSchedule： 不允许新 Pod 调度到该节点（已运行 Pod 不受影响）</li><li>PreferNoSchedule： 尽量不调度，无法满足时仍可调度</li><li>NoExecute： 不允许调度，且会驱逐已在节点上运行的不容忍该 Taint 的 Pod</li></ul>
+	Effect *string `json:"Effect,omitnil,omitempty" name:"Effect"`
+
+	// <p>Taint 的值，≤ 63 字符，可为空</p>
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }

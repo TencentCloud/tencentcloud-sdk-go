@@ -1883,6 +1883,12 @@ type CreateTrainingTaskRequestParams struct {
 
 	// <p>环境变量</p>
 	Envs []*EnvVar `json:"Envs,omitnil,omitempty" name:"Envs"`
+
+	// <p>训练诊断工具配置</p>
+	TrainToolConfig *TrainToolConfig `json:"TrainToolConfig,omitnil,omitempty" name:"TrainToolConfig"`
+
+	// <p>资源供应属性</p>
+	ResourceSupplyAttribute *ResourceSupplyAttribute `json:"ResourceSupplyAttribute,omitnil,omitempty" name:"ResourceSupplyAttribute"`
 }
 
 type CreateTrainingTaskRequest struct {
@@ -1968,6 +1974,12 @@ type CreateTrainingTaskRequest struct {
 
 	// <p>环境变量</p>
 	Envs []*EnvVar `json:"Envs,omitnil,omitempty" name:"Envs"`
+
+	// <p>训练诊断工具配置</p>
+	TrainToolConfig *TrainToolConfig `json:"TrainToolConfig,omitnil,omitempty" name:"TrainToolConfig"`
+
+	// <p>资源供应属性</p>
+	ResourceSupplyAttribute *ResourceSupplyAttribute `json:"ResourceSupplyAttribute,omitnil,omitempty" name:"ResourceSupplyAttribute"`
 }
 
 func (r *CreateTrainingTaskRequest) ToJsonString() string {
@@ -2009,6 +2021,8 @@ func (r *CreateTrainingTaskRequest) FromJsonString(s string) error {
 	delete(f, "CodeRepos")
 	delete(f, "ExposeNetworkConfig")
 	delete(f, "Envs")
+	delete(f, "TrainToolConfig")
+	delete(f, "ResourceSupplyAttribute")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTrainingTaskRequest has unknown keys!", "")
 	}
@@ -4427,6 +4441,9 @@ type DescribeLogsRequestParams struct {
 
 	// <p>使用OFFSET分页查询时，指定返回的数据偏移量，默认为0</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>日志类别</p><p>枚举值：</p><ul><li>stdout： stdout</li><li>stderr： stderr</li></ul><p>默认值：&quot;&quot;</p>
+	LogStream *string `json:"LogStream,omitnil,omitempty" name:"LogStream"`
 }
 
 type DescribeLogsRequest struct {
@@ -4467,6 +4484,9 @@ type DescribeLogsRequest struct {
 
 	// <p>使用OFFSET分页查询时，指定返回的数据偏移量，默认为0</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>日志类别</p><p>枚举值：</p><ul><li>stdout： stdout</li><li>stderr： stderr</li></ul><p>默认值：&quot;&quot;</p>
+	LogStream *string `json:"LogStream,omitnil,omitempty" name:"LogStream"`
 }
 
 func (r *DescribeLogsRequest) ToJsonString() string {
@@ -4493,6 +4513,7 @@ func (r *DescribeLogsRequest) FromJsonString(s string) error {
 	delete(f, "Context")
 	delete(f, "Filters")
 	delete(f, "Offset")
+	delete(f, "LogStream")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLogsRequest has unknown keys!", "")
 	}
@@ -6967,21 +6988,27 @@ type LogConfig struct {
 }
 
 type LogIdentity struct {
-	// 单条日志的ID
+	// <p>单条日志的ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 单条日志的内容
+	// <p>单条日志的内容</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
-	// 这条日志对应的Pod名称
+	// <p>这条日志对应的Pod名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PodName *string `json:"PodName,omitnil,omitempty" name:"PodName"`
 
-	// 日志的时间戳（RFC3339格式的时间字符串）
+	// <p>日志的时间戳（RFC3339格式的时间字符串）</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Timestamp *string `json:"Timestamp,omitnil,omitempty" name:"Timestamp"`
+
+	// <p>日志上报请求包的ID</p>
+	PkgId *string `json:"PkgId,omitnil,omitempty" name:"PkgId"`
+
+	// <p>请求包内日志的ID</p>
+	PkgLogId *string `json:"PkgLogId,omitnil,omitempty" name:"PkgLogId"`
 }
 
 type MaterialInfo struct {
@@ -10314,6 +10341,17 @@ type TrainParam struct {
 
 	// 参数选项
 	Enum []*string `json:"Enum,omitnil,omitempty" name:"Enum"`
+}
+
+type TrainToolConfig struct {
+	// <p>是否开启 Hang 检测</p><p>默认值：false</p>
+	EnableHangMonitor *bool `json:"EnableHangMonitor,omitnil,omitempty" name:"EnableHangMonitor"`
+
+	// <p>Hang 检测的节点列表</p>
+	HangMonitorNodes []*string `json:"HangMonitorNodes,omitnil,omitempty" name:"HangMonitorNodes"`
+
+	// <p>Hang 超时时间</p><p>取值范围：[1, 14400]</p><p>单位：分</p>
+	LogHangTimeoutInMinute *uint64 `json:"LogHangTimeoutInMinute,omitnil,omitempty" name:"LogHangTimeoutInMinute"`
 }
 
 type TrainingModelVersionDTO struct {

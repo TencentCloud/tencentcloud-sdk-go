@@ -20515,10 +20515,10 @@ func (r *ManageTaskResponse) FromJsonString(s string) error {
 }
 
 type ManifestInfo struct {
-	// 单位秒。
+	// <p>单位秒。</p>
 	Windows *uint64 `json:"Windows,omitnil,omitempty" name:"Windows"`
 
-	// 打到output广告标签的格式，可选Date Range和Enhanced SCTE-35。
+	// <p>打到output广告标签的格式，可选Date Range、Enhanced SCTE-35和Standard SCTE-35。</p>
 	AdMarkupType *string `json:"AdMarkupType,omitnil,omitempty" name:"AdMarkupType"`
 }
 

@@ -1070,6 +1070,105 @@ func (r *CreateCloudTranscriptionResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateLiveStreamModerationRequestParams struct {
+	// <p>TRTC的<a href="https://cloud.tencent.com/document/product/647/46351#sdkappid">SdkAppId</a>。</p>
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// <p>直播流输入源</p>
+	Input *Input `json:"Input,omitnil,omitempty" name:"Input"`
+
+	// <p>直播流ai理解审核参数</p>
+	LiveModerationParams *LiveModerationParams `json:"LiveModerationParams,omitnil,omitempty" name:"LiveModerationParams"`
+
+	// <p>业务自定义唯一标识，原样透传到回调</p><p>入参限制：长度限制60字符</p>
+	DataId *string `json:"DataId,omitnil,omitempty" name:"DataId"`
+
+	// <p>额外信息透传结构体（房间/主播/业务自定义），原样回带到回调</p>
+	SourceInfo *SourceInfo `json:"SourceInfo,omitnil,omitempty" name:"SourceInfo"`
+
+	// <p>直播流ai理解转存文件存储参数</p>
+	LiveModerationStorageParams *LiveModerationStorageParams `json:"LiveModerationStorageParams,omitnil,omitempty" name:"LiveModerationStorageParams"`
+
+	// <p>单路任务最大的生命周期</p><p>取值范围：[1, 72]</p><p>单位：小时</p><p>默认值：48</p>
+	ResourceExpiredHour *uint64 `json:"ResourceExpiredHour,omitnil,omitempty" name:"ResourceExpiredHour"`
+}
+
+type CreateLiveStreamModerationRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>TRTC的<a href="https://cloud.tencent.com/document/product/647/46351#sdkappid">SdkAppId</a>。</p>
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// <p>直播流输入源</p>
+	Input *Input `json:"Input,omitnil,omitempty" name:"Input"`
+
+	// <p>直播流ai理解审核参数</p>
+	LiveModerationParams *LiveModerationParams `json:"LiveModerationParams,omitnil,omitempty" name:"LiveModerationParams"`
+
+	// <p>业务自定义唯一标识，原样透传到回调</p><p>入参限制：长度限制60字符</p>
+	DataId *string `json:"DataId,omitnil,omitempty" name:"DataId"`
+
+	// <p>额外信息透传结构体（房间/主播/业务自定义），原样回带到回调</p>
+	SourceInfo *SourceInfo `json:"SourceInfo,omitnil,omitempty" name:"SourceInfo"`
+
+	// <p>直播流ai理解转存文件存储参数</p>
+	LiveModerationStorageParams *LiveModerationStorageParams `json:"LiveModerationStorageParams,omitnil,omitempty" name:"LiveModerationStorageParams"`
+
+	// <p>单路任务最大的生命周期</p><p>取值范围：[1, 72]</p><p>单位：小时</p><p>默认值：48</p>
+	ResourceExpiredHour *uint64 `json:"ResourceExpiredHour,omitnil,omitempty" name:"ResourceExpiredHour"`
+}
+
+func (r *CreateLiveStreamModerationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateLiveStreamModerationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "Input")
+	delete(f, "LiveModerationParams")
+	delete(f, "DataId")
+	delete(f, "SourceInfo")
+	delete(f, "LiveModerationStorageParams")
+	delete(f, "ResourceExpiredHour")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLiveStreamModerationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateLiveStreamModerationResponseParams struct {
+	// <p>AI 内容理解服务分配的任务ID。任务ID是对一次切片任务生命周期过程的唯一标识，结束任务时会失去意义。任务ID需要业务保存下来，作为下次针对这个任务操作的参数</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateLiveStreamModerationResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateLiveStreamModerationResponseParams `json:"Response"`
+}
+
+func (r *CreateLiveStreamModerationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateLiveStreamModerationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreatePictureRequestParams struct {
 	// 应用id
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
@@ -1485,6 +1584,70 @@ func (r *DeleteCloudTranscriptionResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteCloudTranscriptionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteLiveStreamModerationRequestParams struct {
+	// <p>TRTC的SDKAppId，和TRTC的房间所对应的SDKAppId相同。</p>
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// <p>AI 内容理解任务的唯一Id，在启动切片任务成功后会返回。</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type DeleteLiveStreamModerationRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>TRTC的SDKAppId，和TRTC的房间所对应的SDKAppId相同。</p>
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// <p>AI 内容理解任务的唯一Id，在启动切片任务成功后会返回。</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *DeleteLiveStreamModerationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteLiveStreamModerationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteLiveStreamModerationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteLiveStreamModerationResponseParams struct {
+	// <p>AI 内容理解任务的唯一Id，在启动切片任务成功后会返回。</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteLiveStreamModerationResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteLiveStreamModerationResponseParams `json:"Response"`
+}
+
+func (r *DeleteLiveStreamModerationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteLiveStreamModerationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2289,6 +2452,73 @@ func (r *DescribeCloudTranscriptionResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCloudTranscriptionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLiveStreamModerationRequestParams struct {
+	// <p>TRTC的SDKAppId，和录制的房间所对应的SDKAppId相同。</p>
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// <p>AI 内容理解任务的唯一Id，在启动切片任务成功后会返回。</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type DescribeLiveStreamModerationRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>TRTC的SDKAppId，和录制的房间所对应的SDKAppId相同。</p>
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// <p>AI 内容理解任务的唯一Id，在启动切片任务成功后会返回。</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *DescribeLiveStreamModerationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLiveStreamModerationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLiveStreamModerationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLiveStreamModerationResponseParams struct {
+	// <p>AI 内容理解任务的唯一Id，在启动切片任务成功后会返回。</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>AI内容理解任务的状态信息。Idle:表示当前任务空闲中,InProgress:表示当前任务正在进行中,Exited:表示当前任务正在退出的过程中。</p><p>枚举值：</p><ul><li>InProgress： 进行中</li></ul>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeLiveStreamModerationResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLiveStreamModerationResponseParams `json:"Response"`
+}
+
+func (r *DescribeLiveStreamModerationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLiveStreamModerationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4475,6 +4705,14 @@ type EventMessage struct {
 	ParamTwo *int64 `json:"ParamTwo,omitnil,omitempty" name:"ParamTwo"`
 }
 
+type Input struct {
+	// <p>直播拉流地址</p><p>入参限制：字符长度小于2048</p>
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// <p>显式协议</p><p>枚举值：</p><ul><li>rtmp： rtmp协议</li></ul>
+	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
+}
+
 type InvokeLLM struct {
 	// 请求LLM的内容
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
@@ -4519,6 +4757,31 @@ type LayoutParams struct {
 
 	// 屏幕分享模板、悬浮模板、九宫格模板、画中画模版有效，画面在输出时的显示模式：0为裁剪，1为缩放，2为缩放并显示黑底，不填采用后台的默认渲染方式（屏幕分享大画面为缩放，其他为裁剪）。若此参数不生效，请提交工单寻求帮助。
 	RenderMode *uint64 `json:"RenderMode,omitnil,omitempty" name:"RenderMode"`
+}
+
+type LiveModerationParams struct {
+	// <p>AI 内容理解任务类型</p><p>枚举值：</p><ul><li>1： 音频切片理解</li><li>2： 视频截帧理解</li><li>3： 音视切片+视频截帧理解 </li></ul><p>默认值：3</p>
+	ModerationType *uint64 `json:"ModerationType,omitnil,omitempty" name:"ModerationType"`
+
+	// <p>持续没有上行推流的状态超过MaxIdleTime的时长，自动停止切片。</p><p>取值范围：[30, 1800]</p><p>单位：秒</p><p>默认值：30</p>
+	MaxIdleTime *uint64 `json:"MaxIdleTime,omitnil,omitempty" name:"MaxIdleTime"`
+
+	// <p>视频截帧间隔</p><p>取值范围：[1, 60]</p><p>单位：秒</p><p>默认值：5</p>
+	SliceVideo *uint64 `json:"SliceVideo,omitnil,omitempty" name:"SliceVideo"`
+
+	// <p>音频切片时长</p><p>取值范围：[5, 60]</p><p>单位：秒</p><p>默认值：15</p>
+	SliceAudio *uint64 `json:"SliceAudio,omitnil,omitempty" name:"SliceAudio"`
+
+	// <p>是否保存文件</p><p>枚举值：</p><ul><li>0： 0不保存</li><li>1： 1保存所有</li><li>2： 仅命中</li></ul><p>默认值：1</p>
+	SaveModerationFile *uint64 `json:"SaveModerationFile,omitnil,omitempty" name:"SaveModerationFile"`
+
+	// <p>是否回调所有内容理解结果</p><p>枚举值：</p><ul><li>0： 回调所有结果</li><li>1： 仅回调命中结果</li></ul><p>默认值：0</p>
+	CallbackAllResults *uint64 `json:"CallbackAllResults,omitnil,omitempty" name:"CallbackAllResults"`
+}
+
+type LiveModerationStorageParams struct {
+	// <p>直播流ai理解文件转存</p>
+	CloudModerationStorage *CloudModerationStorage `json:"CloudModerationStorage,omitnil,omitempty" name:"CloudModerationStorage"`
 }
 
 type MaxVideoUser struct {
@@ -6083,6 +6346,17 @@ type SmallVideoLayoutParams struct {
 
 	// 小画面在输出时的Y偏移，单位为像素值，LocationY与ImageHeight之和不能超过混流输出的总高度，不填默认为0。
 	LocationY *uint64 `json:"LocationY,omitnil,omitempty" name:"LocationY"`
+}
+
+type SourceInfo struct {
+	// <p>直播间 ID（用于结果透传与去重；数字房间号也用 string 传）</p>
+	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+
+	// <p>房间号类型</p><p>枚举值：</p><ul><li>0： 字符串房间号</li><li>1： 数字房间号</li></ul>
+	RoomIdType *uint64 `json:"RoomIdType,omitnil,omitempty" name:"RoomIdType"`
+
+	// <p>主播/被审核方 ID</p>
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 }
 
 // Predefined struct for user

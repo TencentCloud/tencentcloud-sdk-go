@@ -128,6 +128,9 @@ const (
 	// 修改只读组配置失败。
 	FAILEDOPERATION_MODIFYROGROUPERROR = "FailedOperation.ModifyROGroupError"
 
+	// 实例配置变更失败，请稍后重试。如果持续不成功，请联系客服进行处理。
+	FAILEDOPERATION_MODIFYRESOURCEERROR = "FailedOperation.ModifyResourceError"
+
 	// 不符合资源所拥有的网络数量要求。
 	FAILEDOPERATION_NETWORKNUMLIMITERROR = "FailedOperation.NetworkNumLimitError"
 
@@ -340,6 +343,9 @@ const (
 
 	// 当前实例所要扩容的规格目前不售卖。
 	INVALIDPARAMETERVALUE_BADSPEC = "InvalidParameterValue.BadSpec"
+
+	// 参数值无效
+	INVALIDPARAMETERVALUE_BIZINVALIDPARAMETERVALUEERROR = "InvalidParameterValue.BizInvalidParameterValueError"
 
 	// 数据库字符集错误。
 	INVALIDPARAMETERVALUE_CHARSETNOTFOUNDERROR = "InvalidParameterValue.CharsetNotFoundError"

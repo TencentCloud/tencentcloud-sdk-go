@@ -711,6 +711,82 @@ func (c *Client) CreateCloudTranscriptionWithContext(ctx context.Context, reques
     return
 }
 
+func NewCreateLiveStreamModerationRequest() (request *CreateLiveStreamModerationRequest) {
+    request = &CreateLiveStreamModerationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trtc", APIVersion, "CreateLiveStreamModeration")
+    
+    
+    return
+}
+
+func NewCreateLiveStreamModerationResponse() (response *CreateLiveStreamModerationResponse) {
+    response = &CreateLiveStreamModerationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateLiveStreamModeration
+// 启动一路直播流审核。服务端异步拉流、定频截帧、音频切片、送审，通过回调返回结果。一次一个任务（一路流）。您可以通过此接口实现如下目标：
+//
+// ●指定内容参数（LiveModerationParams）来指定内容理解需要的详细参数。
+//
+// ●指定存储参数（LiveModerationStorageParams）将命中的切片文件指定上传到您希望的云存储，目前支持腾讯云（对象存储COS）以及第三方AWS（S3）和阿里云（OSS）
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNREALNAMEAUTHENTICATED = "AuthFailure.UnRealNameAuthenticated"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  AUTHFAILURE_UNSUPPORTEDOPERATION = "AuthFailure.UnsupportedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESTRICTEDCONCURRENCY = "FailedOperation.RestrictedConcurrency"
+//  INVALIDPARAMETER_OUTOFRANGE = "InvalidParameter.OutOfRange"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateLiveStreamModeration(request *CreateLiveStreamModerationRequest) (response *CreateLiveStreamModerationResponse, err error) {
+    return c.CreateLiveStreamModerationWithContext(context.Background(), request)
+}
+
+// CreateLiveStreamModeration
+// 启动一路直播流审核。服务端异步拉流、定频截帧、音频切片、送审，通过回调返回结果。一次一个任务（一路流）。您可以通过此接口实现如下目标：
+//
+// ●指定内容参数（LiveModerationParams）来指定内容理解需要的详细参数。
+//
+// ●指定存储参数（LiveModerationStorageParams）将命中的切片文件指定上传到您希望的云存储，目前支持腾讯云（对象存储COS）以及第三方AWS（S3）和阿里云（OSS）
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNREALNAMEAUTHENTICATED = "AuthFailure.UnRealNameAuthenticated"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  AUTHFAILURE_UNSUPPORTEDOPERATION = "AuthFailure.UnsupportedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESTRICTEDCONCURRENCY = "FailedOperation.RestrictedConcurrency"
+//  INVALIDPARAMETER_OUTOFRANGE = "InvalidParameter.OutOfRange"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateLiveStreamModerationWithContext(ctx context.Context, request *CreateLiveStreamModerationRequest) (response *CreateLiveStreamModerationResponse, err error) {
+    if request == nil {
+        request = NewCreateLiveStreamModerationRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "CreateLiveStreamModeration")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateLiveStreamModeration require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateLiveStreamModerationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreatePictureRequest() (request *CreatePictureRequest) {
     request = &CreatePictureRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1147,6 +1223,70 @@ func (c *Client) DeleteCloudTranscriptionWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewDeleteCloudTranscriptionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteLiveStreamModerationRequest() (request *DeleteLiveStreamModerationRequest) {
+    request = &DeleteLiveStreamModerationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trtc", APIVersion, "DeleteLiveStreamModeration")
+    
+    
+    return
+}
+
+func NewDeleteLiveStreamModerationResponse() (response *DeleteLiveStreamModerationResponse) {
+    response = &DeleteLiveStreamModerationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteLiveStreamModeration
+// 成功开启直播流AI 内容理解任务后，可以使用此接口来停止进行内容识别。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNREALNAMEAUTHENTICATED = "AuthFailure.UnRealNameAuthenticated"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  AUTHFAILURE_UNSUPPORTEDOPERATION = "AuthFailure.UnsupportedOperation"
+//  INVALIDPARAMETER_OUTOFRANGE = "InvalidParameter.OutOfRange"
+//  MISSINGPARAMETER_TASKID = "MissingParameter.TaskId"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_RESOURCENOTFOUND = "ResourceNotFound.ResourceNotFound"
+func (c *Client) DeleteLiveStreamModeration(request *DeleteLiveStreamModerationRequest) (response *DeleteLiveStreamModerationResponse, err error) {
+    return c.DeleteLiveStreamModerationWithContext(context.Background(), request)
+}
+
+// DeleteLiveStreamModeration
+// 成功开启直播流AI 内容理解任务后，可以使用此接口来停止进行内容识别。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNREALNAMEAUTHENTICATED = "AuthFailure.UnRealNameAuthenticated"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  AUTHFAILURE_UNSUPPORTEDOPERATION = "AuthFailure.UnsupportedOperation"
+//  INVALIDPARAMETER_OUTOFRANGE = "InvalidParameter.OutOfRange"
+//  MISSINGPARAMETER_TASKID = "MissingParameter.TaskId"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_RESOURCENOTFOUND = "ResourceNotFound.ResourceNotFound"
+func (c *Client) DeleteLiveStreamModerationWithContext(ctx context.Context, request *DeleteLiveStreamModerationRequest) (response *DeleteLiveStreamModerationResponse, err error) {
+    if request == nil {
+        request = NewDeleteLiveStreamModerationRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "DeleteLiveStreamModeration")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteLiveStreamModeration require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteLiveStreamModerationResponse()
     err = c.Send(request, response)
     return
 }
@@ -1841,6 +1981,70 @@ func (c *Client) DescribeCloudTranscriptionWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewDescribeCloudTranscriptionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeLiveStreamModerationRequest() (request *DescribeLiveStreamModerationRequest) {
+    request = &DescribeLiveStreamModerationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trtc", APIVersion, "DescribeLiveStreamModeration")
+    
+    
+    return
+}
+
+func NewDescribeLiveStreamModerationResponse() (response *DescribeLiveStreamModerationResponse) {
+    response = &DescribeLiveStreamModerationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeLiveStreamModeration
+// 成功开启直播流AI 内容理解任务后，可以使用此接口来查询AI 内容理解任务状态，仅在任务进行时有效，任务退出后查询将会返回错误。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNREALNAMEAUTHENTICATED = "AuthFailure.UnRealNameAuthenticated"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  AUTHFAILURE_UNSUPPORTEDOPERATION = "AuthFailure.UnsupportedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_OUTOFRANGE = "InvalidParameter.OutOfRange"
+//  MISSINGPARAMETER_TASKID = "MissingParameter.TaskId"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeLiveStreamModeration(request *DescribeLiveStreamModerationRequest) (response *DescribeLiveStreamModerationResponse, err error) {
+    return c.DescribeLiveStreamModerationWithContext(context.Background(), request)
+}
+
+// DescribeLiveStreamModeration
+// 成功开启直播流AI 内容理解任务后，可以使用此接口来查询AI 内容理解任务状态，仅在任务进行时有效，任务退出后查询将会返回错误。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNREALNAMEAUTHENTICATED = "AuthFailure.UnRealNameAuthenticated"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  AUTHFAILURE_UNSUPPORTEDOPERATION = "AuthFailure.UnsupportedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_OUTOFRANGE = "InvalidParameter.OutOfRange"
+//  MISSINGPARAMETER_TASKID = "MissingParameter.TaskId"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeLiveStreamModerationWithContext(ctx context.Context, request *DescribeLiveStreamModerationRequest) (response *DescribeLiveStreamModerationResponse, err error) {
+    if request == nil {
+        request = NewDescribeLiveStreamModerationRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "DescribeLiveStreamModeration")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLiveStreamModeration require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLiveStreamModerationResponse()
     err = c.Send(request, response)
     return
 }

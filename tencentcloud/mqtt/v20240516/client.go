@@ -1813,6 +1813,56 @@ func (c *Client) DescribeDeviceCertificateWithContext(ctx context.Context, reque
     return
 }
 
+func NewDescribeDeviceCertificateBackupHistoryRequest() (request *DescribeDeviceCertificateBackupHistoryRequest) {
+    request = &DescribeDeviceCertificateBackupHistoryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mqtt", APIVersion, "DescribeDeviceCertificateBackupHistory")
+    
+    
+    return
+}
+
+func NewDescribeDeviceCertificateBackupHistoryResponse() (response *DescribeDeviceCertificateBackupHistoryResponse) {
+    response = &DescribeDeviceCertificateBackupHistoryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDeviceCertificateBackupHistory
+// 跨集群灾备场景下查询设备证书同步记录
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+func (c *Client) DescribeDeviceCertificateBackupHistory(request *DescribeDeviceCertificateBackupHistoryRequest) (response *DescribeDeviceCertificateBackupHistoryResponse, err error) {
+    return c.DescribeDeviceCertificateBackupHistoryWithContext(context.Background(), request)
+}
+
+// DescribeDeviceCertificateBackupHistory
+// 跨集群灾备场景下查询设备证书同步记录
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+func (c *Client) DescribeDeviceCertificateBackupHistoryWithContext(ctx context.Context, request *DescribeDeviceCertificateBackupHistoryRequest) (response *DescribeDeviceCertificateBackupHistoryResponse, err error) {
+    if request == nil {
+        request = NewDescribeDeviceCertificateBackupHistoryRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "DescribeDeviceCertificateBackupHistory")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDeviceCertificateBackupHistory require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDeviceCertificateBackupHistoryResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDeviceCertificatesRequest() (request *DescribeDeviceCertificatesRequest) {
     request = &DescribeDeviceCertificatesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1836,7 +1886,7 @@ func NewDescribeDeviceCertificatesResponse() (response *DescribeDeviceCertificat
 // 分页查询设备证书
 //
 // 可能返回的错误码:
-//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
 func (c *Client) DescribeDeviceCertificates(request *DescribeDeviceCertificatesRequest) (response *DescribeDeviceCertificatesResponse, err error) {
     return c.DescribeDeviceCertificatesWithContext(context.Background(), request)
 }
@@ -1845,7 +1895,7 @@ func (c *Client) DescribeDeviceCertificates(request *DescribeDeviceCertificatesR
 // 分页查询设备证书
 //
 // 可能返回的错误码:
-//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
 func (c *Client) DescribeDeviceCertificatesWithContext(ctx context.Context, request *DescribeDeviceCertificatesRequest) (response *DescribeDeviceCertificatesResponse, err error) {
     if request == nil {
         request = NewDescribeDeviceCertificatesRequest()
@@ -1965,6 +2015,56 @@ func (c *Client) DescribeDeviceIdentityWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribeDeviceIdentityBackupHistoryRequest() (request *DescribeDeviceIdentityBackupHistoryRequest) {
+    request = &DescribeDeviceIdentityBackupHistoryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mqtt", APIVersion, "DescribeDeviceIdentityBackupHistory")
+    
+    
+    return
+}
+
+func NewDescribeDeviceIdentityBackupHistoryResponse() (response *DescribeDeviceIdentityBackupHistoryResponse) {
+    response = &DescribeDeviceIdentityBackupHistoryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDeviceIdentityBackupHistory
+// 跨集群容灾场景下查询设备标识同步记录
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+func (c *Client) DescribeDeviceIdentityBackupHistory(request *DescribeDeviceIdentityBackupHistoryRequest) (response *DescribeDeviceIdentityBackupHistoryResponse, err error) {
+    return c.DescribeDeviceIdentityBackupHistoryWithContext(context.Background(), request)
+}
+
+// DescribeDeviceIdentityBackupHistory
+// 跨集群容灾场景下查询设备标识同步记录
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+func (c *Client) DescribeDeviceIdentityBackupHistoryWithContext(ctx context.Context, request *DescribeDeviceIdentityBackupHistoryRequest) (response *DescribeDeviceIdentityBackupHistoryResponse, err error) {
+    if request == nil {
+        request = NewDescribeDeviceIdentityBackupHistoryRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "DescribeDeviceIdentityBackupHistory")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDeviceIdentityBackupHistory require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDeviceIdentityBackupHistoryResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeInsPublicEndpointsRequest() (request *DescribeInsPublicEndpointsRequest) {
     request = &DescribeInsPublicEndpointsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1989,7 +2089,6 @@ func NewDescribeInsPublicEndpointsResponse() (response *DescribeInsPublicEndpoin
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
-//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeInsPublicEndpoints(request *DescribeInsPublicEndpointsRequest) (response *DescribeInsPublicEndpointsResponse, err error) {
     return c.DescribeInsPublicEndpointsWithContext(context.Background(), request)
 }
@@ -1999,7 +2098,6 @@ func (c *Client) DescribeInsPublicEndpoints(request *DescribeInsPublicEndpointsR
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
-//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeInsPublicEndpointsWithContext(ctx context.Context, request *DescribeInsPublicEndpointsRequest) (response *DescribeInsPublicEndpointsResponse, err error) {
     if request == nil {
         request = NewDescribeInsPublicEndpointsRequest()
@@ -2041,7 +2139,6 @@ func NewDescribeInsVPCEndpointsResponse() (response *DescribeInsVPCEndpointsResp
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
-//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeInsVPCEndpoints(request *DescribeInsVPCEndpointsRequest) (response *DescribeInsVPCEndpointsResponse, err error) {
     return c.DescribeInsVPCEndpointsWithContext(context.Background(), request)
 }
@@ -2051,7 +2148,6 @@ func (c *Client) DescribeInsVPCEndpoints(request *DescribeInsVPCEndpointsRequest
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
-//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeInsVPCEndpointsWithContext(ctx context.Context, request *DescribeInsVPCEndpointsRequest) (response *DescribeInsVPCEndpointsResponse, err error) {
     if request == nil {
         request = NewDescribeInsVPCEndpointsRequest()
@@ -2883,6 +2979,58 @@ func (c *Client) DescribeUserListWithContext(ctx context.Context, request *Descr
     request.SetContext(ctx)
     
     response = NewDescribeUserListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeWillMessageRequest() (request *DescribeWillMessageRequest) {
+    request = &DescribeWillMessageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mqtt", APIVersion, "DescribeWillMessage")
+    
+    
+    return
+}
+
+func NewDescribeWillMessageResponse() (response *DescribeWillMessageResponse) {
+    response = &DescribeWillMessageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeWillMessage
+// 遗嘱消息查询
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeWillMessage(request *DescribeWillMessageRequest) (response *DescribeWillMessageResponse, err error) {
+    return c.DescribeWillMessageWithContext(context.Background(), request)
+}
+
+// DescribeWillMessage
+// 遗嘱消息查询
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeWillMessageWithContext(ctx context.Context, request *DescribeWillMessageRequest) (response *DescribeWillMessageResponse, err error) {
+    if request == nil {
+        request = NewDescribeWillMessageRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "DescribeWillMessage")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeWillMessage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeWillMessageResponse()
     err = c.Send(request, response)
     return
 }

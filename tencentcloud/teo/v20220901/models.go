@@ -1861,39 +1861,34 @@ type ClientAttestationRules struct {
 }
 
 type ClientAttester struct {
-	// 认证选项 ID。
+	// <p>认证选项 ID。</p>
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 认证选项名称。
+	// <p>认证选项名称。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 认证规则类型。仅出参返回，取值有：
-	// <li>PRESET: 系统预置规则，仅允许修改 AttesterDuration；</li>
-	// <li>CUSTOM: 用户自定义规则。</li>
+	// <p>认证规则类型。仅出参返回，取值有：</p><li>PRESET: 系统预置规则，仅允许修改 AttesterDuration；</li><li>CUSTOM: 用户自定义规则。</li>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 认证方法。取值有：
-	// <li>TC-RCE: 使用风险识别 RCE 进行认证；</li>
-	// <li>TC-CAPTCHA: 使用天御验证码进行认证；</li>
-	// <li>TC-EO-CAPTCHA: 使用 EdgeOne 人机校验进行认证。</li>
+	// <p>认证方法。取值有：</p><li>TC-RCE: 使用风险识别 RCE 进行认证；</li><li>TC-CAPTCHA: 使用天御验证码进行认证；</li><li>TC-EO-CAPTCHA: 使用 EdgeOne 人机校验进行认证。</li>
 	AttesterSource *string `json:"AttesterSource,omitnil,omitempty" name:"AttesterSource"`
 
-	// 认证有效时间。默认为 60s，支持的单位有：
-	// <li>s：秒，取值范围 60～43200；</li>
-	// <li>m：分，取值范围 1～720；</li>
-	// <li>h：小时，取值范围 1～12。</li>
+	// <p>认证有效时间。默认为 60s，支持的单位有：</p><li>s：秒，取值范围 60～43200；</li><li>m：分，取值范围 1～720；</li><li>h：小时，取值范围 1～12。</li>
 	AttesterDuration *string `json:"AttesterDuration,omitnil,omitempty" name:"AttesterDuration"`
 
-	// TC-RCE 认证的配置信息。
-	// <li>当 AttesterSource 参数值为 TC-RCE 时，此字段必填。</li>
+	// <p>是否开启认证结果使用限制。 </p><p>枚举值：</p><ul><li>on： 开启</li><li>off： 关闭</li></ul><p>默认值：off</p>
+	UsageLimit *string `json:"UsageLimit,omitnil,omitempty" name:"UsageLimit"`
+
+	// <p>认证结果最大使用次数。当 UsageLimit 为 on 时，此字段必填。</p><p>取值范围：[1, 100000]</p>
+	MaxUsageCount *int64 `json:"MaxUsageCount,omitnil,omitempty" name:"MaxUsageCount"`
+
+	// <p>TC-RCE 认证的配置信息。</p><li>当 AttesterSource 参数值为 TC-RCE 时，此字段必填。</li>
 	TCRCEOption *TCRCEOption `json:"TCRCEOption,omitnil,omitempty" name:"TCRCEOption"`
 
-	// TC-CAPTCHA 认证的配置信息。
-	// <li>当 AttesterSource 参数值为 TC-CAPTCHA 时，此字段必填。</li>
+	// <p>TC-CAPTCHA 认证的配置信息。</p><li>当 AttesterSource 参数值为 TC-CAPTCHA 时，此字段必填。</li>
 	TCCaptchaOption *TCCaptchaOption `json:"TCCaptchaOption,omitnil,omitempty" name:"TCCaptchaOption"`
 
-	// TC-EO-CAPTCHA 认证的配置信息。
-	// <li>当 AttesterSource 参数值为 TC-EO-CAPTCHA 时，此字段必填。</li>
+	// <p>TC-EO-CAPTCHA 认证的配置信息。</p><li>当 AttesterSource 参数值为 TC-EO-CAPTCHA 时，此字段必填。</li>
 	TCEOCaptchaOption *TCEOCaptchaOption `json:"TCEOCaptchaOption,omitnil,omitempty" name:"TCEOCaptchaOption"`
 }
 

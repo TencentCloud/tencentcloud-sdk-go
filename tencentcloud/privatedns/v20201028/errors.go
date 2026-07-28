@@ -89,6 +89,9 @@ const (
 	// 已经存在绑定的账号。
 	INVALIDPARAMETER_ACCOUNTEXIST = "InvalidParameter.AccountExist"
 
+	// 跨账号uin绑定数量超过限制
+	INVALIDPARAMETER_CROSSACCOUNTCOUNTEXCEED = "InvalidParameter.CrossAccountCountExceed"
+
 	// 终端节点已经绑定了转发规则。
 	INVALIDPARAMETER_ENDPOINTBINDFORWARDRULE = "InvalidParameter.EndPointBindForwardRule"
 

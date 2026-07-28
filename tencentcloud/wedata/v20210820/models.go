@@ -14503,6 +14503,71 @@ func (r *DescribeInstanceLogResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeInstancesByExecutorsRequestParams struct {
+	// <p>项目ID</p>
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// <p>执行资源组ID</p>
+	ExecutorGroupIdList []*string `json:"ExecutorGroupIdList,omitnil,omitempty" name:"ExecutorGroupIdList"`
+}
+
+type DescribeInstancesByExecutorsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>项目ID</p>
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// <p>执行资源组ID</p>
+	ExecutorGroupIdList []*string `json:"ExecutorGroupIdList,omitnil,omitempty" name:"ExecutorGroupIdList"`
+}
+
+func (r *DescribeInstancesByExecutorsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstancesByExecutorsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "ExecutorGroupIdList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstancesByExecutorsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInstancesByExecutorsResponseParams struct {
+	// <p>实例状态统计结果</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data []*ExecutorTaskInstanceCount `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeInstancesByExecutorsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeInstancesByExecutorsResponseParams `json:"Response"`
+}
+
+func (r *DescribeInstancesByExecutorsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstancesByExecutorsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeIntegrationNodeRequestParams struct {
 	// 节点id
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
@@ -25773,6 +25838,36 @@ type ExecutorResourcePackageUsageInfo struct {
 	// 资源使用趋势列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UsageTrendList []*ExecutorUsageTrendInfo `json:"UsageTrendList,omitnil,omitempty" name:"UsageTrendList"`
+}
+
+type ExecutorTaskInstanceCount struct {
+	// 执行资源组ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutorGroupId *string `json:"ExecutorGroupId,omitnil,omitempty" name:"ExecutorGroupId"`
+
+	// 数据开发中的任务类型绑定的资源组数量等待调度的任务实例数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SchedulingTaskCount *int64 `json:"SchedulingTaskCount,omitnil,omitempty" name:"SchedulingTaskCount"`
+
+	// 数据开发中的任务类型绑定的资源组数量运行中的人物实例数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RunningInstanceCount *int64 `json:"RunningInstanceCount,omitnil,omitempty" name:"RunningInstanceCount"`
+
+	// 数据开发中的任务类型绑定的资源组数量等待运行的任务实例数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WaitingInstanceCount *int64 `json:"WaitingInstanceCount,omitnil,omitempty" name:"WaitingInstanceCount"`
+
+	// 非离线开发调度中任务数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OthersTaskTypeSchedulingTaskCount *int64 `json:"OthersTaskTypeSchedulingTaskCount,omitnil,omitempty" name:"OthersTaskTypeSchedulingTaskCount"`
+
+	// 非离线开发运行中实例数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OthersTaskTypeRunningInstanceCount *int64 `json:"OthersTaskTypeRunningInstanceCount,omitnil,omitempty" name:"OthersTaskTypeRunningInstanceCount"`
+
+	// 非离线开发等待运行实例数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OthersTaskTypeWaitingInstanceCount *string `json:"OthersTaskTypeWaitingInstanceCount,omitnil,omitempty" name:"OthersTaskTypeWaitingInstanceCount"`
 }
 
 type ExecutorUsageTrendInfo struct {

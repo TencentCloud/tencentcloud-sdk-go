@@ -37,63 +37,63 @@ type AIOptimizerTaskData struct {
 }
 
 type Ability struct {
-	// 是否支持从可用区
+	// <p>是否支持从可用区</p>
 	IsSupportSlaveZone *string `json:"IsSupportSlaveZone,omitnil,omitempty" name:"IsSupportSlaveZone"`
 
-	// 不支持从可用区的原因
+	// <p>不支持从可用区的原因</p>
 	NonsupportSlaveZoneReason *string `json:"NonsupportSlaveZoneReason,omitnil,omitempty" name:"NonsupportSlaveZoneReason"`
 
-	// 是否支持RO实例
+	// <p>是否支持RO实例</p>
 	IsSupportRo *string `json:"IsSupportRo,omitnil,omitempty" name:"IsSupportRo"`
 
-	// 不支持RO实例的原因
+	// <p>不支持RO实例的原因</p>
 	NonsupportRoReason *string `json:"NonsupportRoReason,omitnil,omitempty" name:"NonsupportRoReason"`
 
-	// 是否支持手动发起快照备份
+	// <p>是否支持手动发起快照备份</p>
 	IsSupportManualSnapshot *string `json:"IsSupportManualSnapshot,omitnil,omitempty" name:"IsSupportManualSnapshot"`
 
-	// 是否支持透明数据加密
+	// <p>是否支持透明数据加密</p>
 	IsSupportTransparentDataEncryption *string `json:"IsSupportTransparentDataEncryption,omitnil,omitempty" name:"IsSupportTransparentDataEncryption"`
 
-	// 不支持透明数据加密原因
+	// <p>不支持透明数据加密原因</p>
 	NoSupportTransparentDataEncryptionReason *string `json:"NoSupportTransparentDataEncryptionReason,omitnil,omitempty" name:"NoSupportTransparentDataEncryptionReason"`
 
-	// 是否支持手动发起逻辑备份
+	// <p>是否支持手动发起逻辑备份</p>
 	IsSupportManualLogic *string `json:"IsSupportManualLogic,omitnil,omitempty" name:"IsSupportManualLogic"`
 
-	// 是否支持开启全局加密
+	// <p>是否支持开启全局加密</p>
 	IsSupportGlobalEncryption *string `json:"IsSupportGlobalEncryption,omitnil,omitempty" name:"IsSupportGlobalEncryption"`
 
-	// 不支持全局加密的原因
+	// <p>不支持全局加密的原因</p>
 	NoSupportGlobalEncryptionReason *string `json:"NoSupportGlobalEncryptionReason,omitnil,omitempty" name:"NoSupportGlobalEncryptionReason"`
 
-	// 不支持透明加密原因状态码
+	// <p>不支持透明加密原因状态码</p>
 	NoSupportTransparentDataEncryptionReasonCode *string `json:"NoSupportTransparentDataEncryptionReasonCode,omitnil,omitempty" name:"NoSupportTransparentDataEncryptionReasonCode"`
 
-	// 不支持全局加密原因状态码
+	// <p>不支持全局加密原因状态码</p>
 	NoSupportGlobalEncryptionReasonCode *string `json:"NoSupportGlobalEncryptionReasonCode,omitnil,omitempty" name:"NoSupportGlobalEncryptionReasonCode"`
 }
 
 type Account struct {
-	// 数据库账号名
+	// <p>数据库账号名</p>
 	AccountName *string `json:"AccountName,omitnil,omitempty" name:"AccountName"`
 
-	// 主机
+	// <p>主机</p>
 	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
 
-	// 数据库账号描述
+	// <p>数据库账号描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 更新时间
+	// <p>更新时间</p>
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 用户最大连接数
+	// <p>用户最大连接数</p>
 	MaxUserConnections *int64 `json:"MaxUserConnections,omitnil,omitempty" name:"MaxUserConnections"`
 
-	// 是否开启密码轮转(0:关闭;1:开启)
+	// <p>是否开启密码轮转(0:关闭;1:开启)</p>
 	PasswordRotation *int64 `json:"PasswordRotation,omitnil,omitempty" name:"PasswordRotation"`
 }
 
@@ -2786,20 +2786,20 @@ func (r *CopyClusterPasswordComplexityResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateAccountsRequestParams struct {
-	// 集群id
+	// <p>集群id</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 新账户列表
+	// <p>新账户列表</p>
 	Accounts []*NewAccount `json:"Accounts,omitnil,omitempty" name:"Accounts"`
 }
 
 type CreateAccountsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群id
+	// <p>集群id</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 新账户列表
+	// <p>新账户列表</p>
 	Accounts []*NewAccount `json:"Accounts,omitnil,omitempty" name:"Accounts"`
 }
 
@@ -5886,20 +5886,20 @@ type DbTable struct {
 
 // Predefined struct for user
 type DeleteAccountsRequestParams struct {
-	// 集群ID
+	// <p>集群ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 账号数组，包含account和host
+	// <p>账号数组，包含account和host</p>
 	Accounts []*InputAccount `json:"Accounts,omitnil,omitempty" name:"Accounts"`
 }
 
 type DeleteAccountsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群ID
+	// <p>集群ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 账号数组，包含account和host
+	// <p>账号数组，包含account和host</p>
 	Accounts []*InputAccount `json:"Accounts,omitnil,omitempty" name:"Accounts"`
 }
 
@@ -20409,22 +20409,22 @@ type NetAddr struct {
 }
 
 type NewAccount struct {
-	// 账户名，包含字母数字_,以字母开头，字母或数字结尾，长度1-30
+	// <p>账户名，包含字母数字_,以字母开头，字母或数字结尾，长度1-30</p>
 	AccountName *string `json:"AccountName,omitnil,omitempty" name:"AccountName"`
 
-	// 主机(%或ipv4地址)
+	// <p>主机(%或ipv4地址)</p>
 	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
 
-	// 密码，密码长度范围为8到64个字符
+	// <p>密码，密码长度范围为8到64个字符</p>
 	AccountPassword *string `json:"AccountPassword,omitnil,omitempty" name:"AccountPassword"`
 
-	// 是否开启密码轮转(0:关闭;1:开启)
+	// <p>是否开启密码轮转(0:关闭;1:开启)</p>
 	PasswordRotation *int64 `json:"PasswordRotation,omitnil,omitempty" name:"PasswordRotation"`
 
-	// 描述
+	// <p>描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 用户最大连接数，不能大于10240
+	// <p>用户最大连接数，不能大于10240</p>
 	MaxUserConnections *int64 `json:"MaxUserConnections,omitnil,omitempty" name:"MaxUserConnections"`
 }
 

@@ -4409,69 +4409,75 @@ func (r *CreateMaliciousRequestWhiteListResponse) FromJsonString(s string) error
 
 // Predefined struct for user
 type CreateMalwareWhiteListRequestParams struct {
-	// 白名单模式； 0 MD5白名单，1自定义
+	// <p>白名单模式； 0 MD5白名单，1自定义</p>
 	Mode *uint64 `json:"Mode,omitnil,omitempty" name:"Mode"`
 
-	// quuid 列表
+	// <p>quuid 列表</p>
 	QuuidList []*string `json:"QuuidList,omitnil,omitempty" name:"QuuidList"`
 
-	// 是否全部主机； 0否，1是。
+	// <p>是否全部主机； 0否，1是。</p>
 	IsGlobal *uint64 `json:"IsGlobal,omitnil,omitempty" name:"IsGlobal"`
 
-	// 匹配模式 ；0 精确匹配，1模糊匹配（废弃）
+	// <p>匹配模式 ；0 精确匹配，1模糊匹配（废弃）</p>
 	MatchType *uint64 `json:"MatchType,omitnil,omitempty" name:"MatchType"`
 
-	// 文件名称(正则)；长度不超过200个
+	// <p>文件名称(正则)；长度不超过200个</p>
 	FileName []*string `json:"FileName,omitnil,omitempty" name:"FileName"`
 
-	// 文件目录(正则)；长度不超过200个,内容base64转义
+	// <p>文件目录(正则)；长度不超过200个,内容base64转义</p>
 	FileDirectory []*string `json:"FileDirectory,omitnil,omitempty" name:"FileDirectory"`
 
-	// 文件后缀；长度不超过200个,内容base64转义（废弃）
+	// <p>文件后缀；长度不超过200个,内容base64转义（废弃）</p>
 	FileExtension []*string `json:"FileExtension,omitnil,omitempty" name:"FileExtension"`
 
-	// MD5列表
+	// <p>MD5列表</p>
 	Md5List []*string `json:"Md5List,omitnil,omitempty" name:"Md5List"`
 
-	// 木马事件ID
+	// <p>木马事件ID</p>
 	EventId *uint64 `json:"EventId,omitnil,omitempty" name:"EventId"`
 
-	// 对历史待处理执行加白操作；0是不处理，1是处理
+	// <p>对历史待处理执行加白操作；0是不处理，1是处理</p>
 	IsHandleHistoryEvents *uint64 `json:"IsHandleHistoryEvents,omitnil,omitempty" name:"IsHandleHistoryEvents"`
+
+	// <p>恶意进程告警id</p>
+	ProcessEventID *uint64 `json:"ProcessEventID,omitnil,omitempty" name:"ProcessEventID"`
 }
 
 type CreateMalwareWhiteListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 白名单模式； 0 MD5白名单，1自定义
+	// <p>白名单模式； 0 MD5白名单，1自定义</p>
 	Mode *uint64 `json:"Mode,omitnil,omitempty" name:"Mode"`
 
-	// quuid 列表
+	// <p>quuid 列表</p>
 	QuuidList []*string `json:"QuuidList,omitnil,omitempty" name:"QuuidList"`
 
-	// 是否全部主机； 0否，1是。
+	// <p>是否全部主机； 0否，1是。</p>
 	IsGlobal *uint64 `json:"IsGlobal,omitnil,omitempty" name:"IsGlobal"`
 
-	// 匹配模式 ；0 精确匹配，1模糊匹配（废弃）
+	// <p>匹配模式 ；0 精确匹配，1模糊匹配（废弃）</p>
 	MatchType *uint64 `json:"MatchType,omitnil,omitempty" name:"MatchType"`
 
-	// 文件名称(正则)；长度不超过200个
+	// <p>文件名称(正则)；长度不超过200个</p>
 	FileName []*string `json:"FileName,omitnil,omitempty" name:"FileName"`
 
-	// 文件目录(正则)；长度不超过200个,内容base64转义
+	// <p>文件目录(正则)；长度不超过200个,内容base64转义</p>
 	FileDirectory []*string `json:"FileDirectory,omitnil,omitempty" name:"FileDirectory"`
 
-	// 文件后缀；长度不超过200个,内容base64转义（废弃）
+	// <p>文件后缀；长度不超过200个,内容base64转义（废弃）</p>
 	FileExtension []*string `json:"FileExtension,omitnil,omitempty" name:"FileExtension"`
 
-	// MD5列表
+	// <p>MD5列表</p>
 	Md5List []*string `json:"Md5List,omitnil,omitempty" name:"Md5List"`
 
-	// 木马事件ID
+	// <p>木马事件ID</p>
 	EventId *uint64 `json:"EventId,omitnil,omitempty" name:"EventId"`
 
-	// 对历史待处理执行加白操作；0是不处理，1是处理
+	// <p>对历史待处理执行加白操作；0是不处理，1是处理</p>
 	IsHandleHistoryEvents *uint64 `json:"IsHandleHistoryEvents,omitnil,omitempty" name:"IsHandleHistoryEvents"`
+
+	// <p>恶意进程告警id</p>
+	ProcessEventID *uint64 `json:"ProcessEventID,omitnil,omitempty" name:"ProcessEventID"`
 }
 
 func (r *CreateMalwareWhiteListRequest) ToJsonString() string {
@@ -4496,6 +4502,7 @@ func (r *CreateMalwareWhiteListRequest) FromJsonString(s string) error {
 	delete(f, "Md5List")
 	delete(f, "EventId")
 	delete(f, "IsHandleHistoryEvents")
+	delete(f, "ProcessEventID")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateMalwareWhiteListRequest has unknown keys!", "")
 	}
@@ -46659,65 +46666,71 @@ type RiskMainClass struct {
 }
 
 type RiskProcessEvent struct {
-	// 事件ID
+	// <p>事件ID</p>
 	EventId *int64 `json:"EventId,omitnil,omitempty" name:"EventId"`
 
-	// 主机名称
+	// <p>主机名称</p>
 	HostName *string `json:"HostName,omitnil,omitempty" name:"HostName"`
 
-	// 主机IP
+	// <p>主机IP</p>
 	HostIp *string `json:"HostIp,omitnil,omitempty" name:"HostIp"`
 
-	// 外网IP
+	// <p>外网IP</p>
 	WanIp *string `json:"WanIp,omitnil,omitempty" name:"WanIp"`
 
-	// 进程ID
+	// <p>进程ID</p>
 	ProcessId *int64 `json:"ProcessId,omitnil,omitempty" name:"ProcessId"`
 
-	// 文件路径
+	// <p>文件路径</p>
 	FilePath *string `json:"FilePath,omitnil,omitempty" name:"FilePath"`
 
-	// 执行命令
+	// <p>执行命令</p>
 	CmdLine *string `json:"CmdLine,omitnil,omitempty" name:"CmdLine"`
 
-	// 进程启动时间
+	// <p>进程启动时间</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 最近检测时间
+	// <p>最近检测时间</p>
 	DetectTime *string `json:"DetectTime,omitnil,omitempty" name:"DetectTime"`
 
-	// 病毒名称
+	// <p>病毒名称</p>
 	VirusName *string `json:"VirusName,omitnil,omitempty" name:"VirusName"`
 
-	// 木马检测平台 [1:云查杀引擎|2:TAV|3:binaryAi|4:异常行为|5:威胁情报]
+	// <p>木马检测平台 [1:云查杀引擎|2:TAV|3:binaryAi|4:异常行为|5:威胁情报]</p>
 	CheckPlatform []*string `json:"CheckPlatform,omitnil,omitempty" name:"CheckPlatform"`
 
-	// 病毒标签
+	// <p>病毒标签</p>
 	VirusTags []*string `json:"VirusTags,omitnil,omitempty" name:"VirusTags"`
 
-	// 威胁描述
+	// <p>威胁描述</p>
 	ThreatDesc *string `json:"ThreatDesc,omitnil,omitempty" name:"ThreatDesc"`
 
-	// 建议方案
+	// <p>建议方案</p>
 	SuggestSolution *string `json:"SuggestSolution,omitnil,omitempty" name:"SuggestSolution"`
 
-	// 参考链接
+	// <p>参考链接</p>
 	ReferenceLink *string `json:"ReferenceLink,omitnil,omitempty" name:"ReferenceLink"`
 
-	// 处理状态[0待处理;1已处理;2查杀中;3已查杀;4已退出;5忽略]
+	// <p>处理状态[0待处理;1已处理;2查杀中;3已查杀;4已退出;5忽略]</p>
 	HandleStatus *int64 `json:"HandleStatus,omitnil,omitempty" name:"HandleStatus"`
 
-	// 主机在线状态
+	// <p>主机在线状态</p>
 	OnlineStatus *int64 `json:"OnlineStatus,omitnil,omitempty" name:"OnlineStatus"`
 
-	// 附加信息
+	// <p>附加信息</p>
 	MachineExtraInfo *MachineExtraInfo `json:"MachineExtraInfo,omitnil,omitempty" name:"MachineExtraInfo"`
 
-	// 主机uuid
+	// <p>主机uuid</p>
 	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 
-	// 首次检出方式 0扫描;1实时监控
+	// <p>首次检出方式 0扫描;1实时监控</p>
 	FirstDetectionMethod *uint64 `json:"FirstDetectionMethod,omitnil,omitempty" name:"FirstDetectionMethod"`
+
+	// <p>quuid</p>
+	QUUID *string `json:"QUUID,omitnil,omitempty" name:"QUUID"`
+
+	// <p>进程md5</p>
+	ExeMd5 *string `json:"ExeMd5,omitnil,omitempty" name:"ExeMd5"`
 }
 
 type RuleInfo struct {

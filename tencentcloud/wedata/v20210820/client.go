@@ -6453,6 +6453,56 @@ func (c *Client) DescribeInstanceLogListWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeInstancesByExecutorsRequest() (request *DescribeInstancesByExecutorsRequest) {
+    request = &DescribeInstancesByExecutorsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeInstancesByExecutors")
+    
+    
+    return
+}
+
+func NewDescribeInstancesByExecutorsResponse() (response *DescribeInstancesByExecutorsResponse) {
+    response = &DescribeInstancesByExecutorsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeInstancesByExecutors
+// 按执行资源组查询任务调度与运行实例数量统计
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeInstancesByExecutors(request *DescribeInstancesByExecutorsRequest) (response *DescribeInstancesByExecutorsResponse, err error) {
+    return c.DescribeInstancesByExecutorsWithContext(context.Background(), request)
+}
+
+// DescribeInstancesByExecutors
+// 按执行资源组查询任务调度与运行实例数量统计
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeInstancesByExecutorsWithContext(ctx context.Context, request *DescribeInstancesByExecutorsRequest) (response *DescribeInstancesByExecutorsResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstancesByExecutorsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "wedata", APIVersion, "DescribeInstancesByExecutors")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstancesByExecutors require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeInstancesByExecutorsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeIntegrationNodeRequest() (request *DescribeIntegrationNodeRequest) {
     request = &DescribeIntegrationNodeRequest{
         BaseRequest: &tchttp.BaseRequest{},

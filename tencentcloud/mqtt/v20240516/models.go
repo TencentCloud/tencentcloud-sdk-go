@@ -2653,6 +2653,105 @@ func (r *DescribeClientListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeDeviceCertificateBackupHistoryRequestParams struct {
+	// <p>腾讯云MQTT实例ID，从 <a href="https://cloud.tencent.com/document/api/1778/111029">DescribeInstanceList</a>接口或控制台获得。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>目标集群的集群ID</p>
+	Destination *string `json:"Destination,omitnil,omitempty" name:"Destination"`
+
+	// <p>CA证书的SN</p>
+	CaSn *string `json:"CaSn,omitnil,omitempty" name:"CaSn"`
+
+	// <p>设备证书的SN</p>
+	DeviceCertificateSn *string `json:"DeviceCertificateSn,omitnil,omitempty" name:"DeviceCertificateSn"`
+
+	// <p>同步发生开始时间（毫秒级时间戳）</p>
+	ModificationTimeStart *int64 `json:"ModificationTimeStart,omitnil,omitempty" name:"ModificationTimeStart"`
+
+	// <p>同步结束时间（毫秒级时间戳）</p>
+	ModificationTimeEnd *int64 `json:"ModificationTimeEnd,omitnil,omitempty" name:"ModificationTimeEnd"`
+
+	// <p>查询条数，默认20，最大1024</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeDeviceCertificateBackupHistoryRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>腾讯云MQTT实例ID，从 <a href="https://cloud.tencent.com/document/api/1778/111029">DescribeInstanceList</a>接口或控制台获得。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>目标集群的集群ID</p>
+	Destination *string `json:"Destination,omitnil,omitempty" name:"Destination"`
+
+	// <p>CA证书的SN</p>
+	CaSn *string `json:"CaSn,omitnil,omitempty" name:"CaSn"`
+
+	// <p>设备证书的SN</p>
+	DeviceCertificateSn *string `json:"DeviceCertificateSn,omitnil,omitempty" name:"DeviceCertificateSn"`
+
+	// <p>同步发生开始时间（毫秒级时间戳）</p>
+	ModificationTimeStart *int64 `json:"ModificationTimeStart,omitnil,omitempty" name:"ModificationTimeStart"`
+
+	// <p>同步结束时间（毫秒级时间戳）</p>
+	ModificationTimeEnd *int64 `json:"ModificationTimeEnd,omitnil,omitempty" name:"ModificationTimeEnd"`
+
+	// <p>查询条数，默认20，最大1024</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeDeviceCertificateBackupHistoryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeviceCertificateBackupHistoryRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Destination")
+	delete(f, "CaSn")
+	delete(f, "DeviceCertificateSn")
+	delete(f, "ModificationTimeStart")
+	delete(f, "ModificationTimeEnd")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDeviceCertificateBackupHistoryRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDeviceCertificateBackupHistoryResponseParams struct {
+	// <p>设备证书列表</p>
+	Data []*DeviceCertificateBackupHistoryItem `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDeviceCertificateBackupHistoryResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDeviceCertificateBackupHistoryResponseParams `json:"Response"`
+}
+
+func (r *DescribeDeviceCertificateBackupHistoryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeviceCertificateBackupHistoryResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeDeviceCertificateRequestParams struct {
 	// 设备证书的SN序列号，用于唯一标识一个设备证书。
 	DeviceCertificateSn *string `json:"DeviceCertificateSn,omitnil,omitempty" name:"DeviceCertificateSn"`
@@ -2944,6 +3043,98 @@ func (r *DescribeDeviceIdentitiesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeDeviceIdentitiesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDeviceIdentityBackupHistoryRequestParams struct {
+	// <p>集群id</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>灾备集群的集群ID</p>
+	Destination *string `json:"Destination,omitnil,omitempty" name:"Destination"`
+
+	// <p>设备ID</p>
+	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
+
+	// <p>同步发生的开始时间</p>
+	ModificationTimeStart *int64 `json:"ModificationTimeStart,omitnil,omitempty" name:"ModificationTimeStart"`
+
+	// <p>同步发生的结束时间</p>
+	ModificationTimeEnd *int64 `json:"ModificationTimeEnd,omitnil,omitempty" name:"ModificationTimeEnd"`
+
+	// <p>查询条数</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeDeviceIdentityBackupHistoryRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>集群id</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>灾备集群的集群ID</p>
+	Destination *string `json:"Destination,omitnil,omitempty" name:"Destination"`
+
+	// <p>设备ID</p>
+	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
+
+	// <p>同步发生的开始时间</p>
+	ModificationTimeStart *int64 `json:"ModificationTimeStart,omitnil,omitempty" name:"ModificationTimeStart"`
+
+	// <p>同步发生的结束时间</p>
+	ModificationTimeEnd *int64 `json:"ModificationTimeEnd,omitnil,omitempty" name:"ModificationTimeEnd"`
+
+	// <p>查询条数</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeDeviceIdentityBackupHistoryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeviceIdentityBackupHistoryRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Destination")
+	delete(f, "DeviceId")
+	delete(f, "ModificationTimeStart")
+	delete(f, "ModificationTimeEnd")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDeviceIdentityBackupHistoryRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDeviceIdentityBackupHistoryResponseParams struct {
+	// <p>返回的设备标识列表</p>
+	Data []*DeviceIdentityBackupHistoryItem `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDeviceIdentityBackupHistoryResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDeviceIdentityBackupHistoryResponseParams `json:"Response"`
+}
+
+func (r *DescribeDeviceIdentityBackupHistoryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeviceIdentityBackupHistoryResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4411,6 +4602,156 @@ func (r *DescribeUserListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeWillMessageRequestParams struct {
+	// <p>实例ID，从 <a href="https://cloud.tencent.com/document/api/1778/111029">DescribeInstanceList</a>接口或控制台获得。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>客户端id</p>
+	ClientId *string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
+}
+
+type DescribeWillMessageRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>实例ID，从 <a href="https://cloud.tencent.com/document/api/1778/111029">DescribeInstanceList</a>接口或控制台获得。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>客户端id</p>
+	ClientId *string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
+}
+
+func (r *DescribeWillMessageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWillMessageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "ClientId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeWillMessageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeWillMessageResponseParams struct {
+	// <p>保留消息Topic</p>
+	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
+
+	// <p>消息服务质量</p>
+	Qos *int64 `json:"Qos,omitnil,omitempty" name:"Qos"`
+
+	// <p>是否保留消息</p>
+	Retained *bool `json:"Retained,omitnil,omitempty" name:"Retained"`
+
+	// <p>消息负载(Base64编码)</p>
+	Payload *string `json:"Payload,omitnil,omitempty" name:"Payload"`
+
+	// <p>创建时间，毫秒级时间戳 。</p>
+	CreateTime *int64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>更新时间，毫秒级时间戳 。</p>
+	UpdateTime *int64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// <p>遗嘱消息延迟时间，单位秒</p>
+	WillDelayInterval *int64 `json:"WillDelayInterval,omitnil,omitempty" name:"WillDelayInterval"`
+
+	// <p>响应内容类型</p>
+	ContentType *string `json:"ContentType,omitnil,omitempty" name:"ContentType"`
+
+	// <p>响应主题</p>
+	ResponseTopic *string `json:"ResponseTopic,omitnil,omitempty" name:"ResponseTopic"`
+
+	// <p>关联数据（Base64编码）</p>
+	CorrelationData *string `json:"CorrelationData,omitnil,omitempty" name:"CorrelationData"`
+
+	// <p>消息过期时间，单位秒</p>
+	MessageExpiryInterval *int64 `json:"MessageExpiryInterval,omitnil,omitempty" name:"MessageExpiryInterval"`
+
+	// <p>负载格式指示器 1:UTF-8文本</p>
+	PayloadFormatIndicator *int64 `json:"PayloadFormatIndicator,omitnil,omitempty" name:"PayloadFormatIndicator"`
+
+	// <p>用户属性</p>
+	UserProperties []*UserProperty `json:"UserProperties,omitnil,omitempty" name:"UserProperties"`
+
+	// <p>遗嘱消息发布时间</p>
+	PublishAfter *int64 `json:"PublishAfter,omitnil,omitempty" name:"PublishAfter"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeWillMessageResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeWillMessageResponseParams `json:"Response"`
+}
+
+func (r *DescribeWillMessageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWillMessageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeviceCertificateBackupHistoryItem struct {
+	// <p>客户端id</p>
+	ClientId *string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
+
+	// <p>设备证书</p>
+	DeviceCertificate *string `json:"DeviceCertificate,omitnil,omitempty" name:"DeviceCertificate"`
+
+	// <p>设备证书SN序列号，用于唯一标识一个设备证书</p>
+	DeviceCertificateSn *string `json:"DeviceCertificateSn,omitnil,omitempty" name:"DeviceCertificateSn"`
+
+	// <p>设备证书Cn</p>
+	DeviceCertificateCn *string `json:"DeviceCertificateCn,omitnil,omitempty" name:"DeviceCertificateCn"`
+
+	// <p>签发该证书的CA证书的序列号</p>
+	CaSn *string `json:"CaSn,omitnil,omitempty" name:"CaSn"`
+
+	// <p>证书格式，当前仅支持PEM</p>
+	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
+
+	// <p>设备证书状态<br>    ACTIVE：激活<br>    INACTIVE：未激活<br>    REVOKED：吊销<br>    PENDING_ACTIVATION：注册待激活</p>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>组织单位</p>
+	OrganizationalUnit *string `json:"OrganizationalUnit,omitnil,omitempty" name:"OrganizationalUnit"`
+
+	// <p>上次激活时间，毫秒级时间戳 。</p>
+	LastActivationTime *int64 `json:"LastActivationTime,omitnil,omitempty" name:"LastActivationTime"`
+
+	// <p>上次取消激活时间，毫秒级时间戳 。</p>
+	LastInactivationTime *int64 `json:"LastInactivationTime,omitnil,omitempty" name:"LastInactivationTime"`
+
+	// <p>证书来源：<br>API, 手动注册<br>JITP 自动注册</p>
+	CertificateSource *string `json:"CertificateSource,omitnil,omitempty" name:"CertificateSource"`
+
+	// <p>证书失效日期，毫秒级时间戳 。</p>
+	NotAfterTime *int64 `json:"NotAfterTime,omitnil,omitempty" name:"NotAfterTime"`
+
+	// <p>证书生效开始日期，毫秒级时间戳 。</p>
+	NotBeforeTime *int64 `json:"NotBeforeTime,omitnil,omitempty" name:"NotBeforeTime"`
+
+	// <p>数据来源</p>
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// <p>修改时间</p><p>单位：毫秒级时间戳</p>
+	ModificationTime *int64 `json:"ModificationTime,omitnil,omitempty" name:"ModificationTime"`
+}
+
 type DeviceCertificateItem struct {
 	// 客户端id
 	ClientId *string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
@@ -4462,6 +4803,29 @@ type DeviceCertificateItem struct {
 
 	// 证书生效开始日期，毫秒级时间戳 。
 	NotBeforeTime *int64 `json:"NotBeforeTime,omitnil,omitempty" name:"NotBeforeTime"`
+}
+
+type DeviceIdentityBackupHistoryItem struct {
+	// <p>设备id</p>
+	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
+
+	// <p>1:ENABLED-可用2:DISABLE-不可用</p>
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>主要签名key（Base64编码）</p>
+	PrimaryKey *string `json:"PrimaryKey,omitnil,omitempty" name:"PrimaryKey"`
+
+	// <p>次要签名key（Base64编码）</p>
+	SecondaryKey *string `json:"SecondaryKey,omitnil,omitempty" name:"SecondaryKey"`
+
+	// <p>传播属性列表</p>
+	PropagatingProperties []*PropagatingProperty `json:"PropagatingProperties,omitnil,omitempty" name:"PropagatingProperties"`
+
+	// <p>数据来源</p>
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// <p>修改时间</p><p>单位：毫秒级时间戳</p>
+	ModificationTime *int64 `json:"ModificationTime,omitnil,omitempty" name:"ModificationTime"`
 }
 
 type DeviceIdentityItem struct {

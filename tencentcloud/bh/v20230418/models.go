@@ -6898,17 +6898,20 @@ type LoginEvent struct {
 }
 
 type LoginSetting struct {
-	// 登录会话超时，10分钟，20分钟，30分钟，默认20分钟
+	// <p>登录会话超时，10分钟，20分钟，30分钟，默认20分钟</p>
 	TimeOut *uint64 `json:"TimeOut,omitnil,omitempty" name:"TimeOut"`
 
-	// 连续密码错误次数，超过锁定账号，3-5
+	// <p>连续密码错误次数，超过锁定账号，3-5</p>
 	LockThreshold *uint64 `json:"LockThreshold,omitnil,omitempty" name:"LockThreshold"`
 
-	// 账号锁定时长，10分钟，20分钟，30分钟
+	// <p>账号锁定时长，10分钟，20分钟，30分钟</p>
 	LockTime *uint64 `json:"LockTime,omitnil,omitempty" name:"LockTime"`
 
-	// 用户多少天不活跃，账号自动锁定
+	// <p>用户多少天不活跃，账号自动锁定</p>
 	InactiveUserLock *uint64 `json:"InactiveUserLock,omitnil,omitempty" name:"InactiveUserLock"`
+
+	// <p>运维账号单点登录开关：0-关闭，1-开启</p>
+	EnableSingleLogin *uint64 `json:"EnableSingleLogin,omitnil,omitempty" name:"EnableSingleLogin"`
 }
 
 // Predefined struct for user

@@ -65,7 +65,7 @@ func NewAddNodesToDBCustomClusterResponse() (response *AddNodesToDBCustomCluster
 }
 
 // AddNodesToDBCustomCluster
-// 该接口（AddNodesToDBCustomCluster）用于为 DB Custom 集群上架节点。
+// 该接口（AddNodesToDBCustomCluster）用于为 DB Custom 集群添加已存在的节点。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -77,7 +77,7 @@ func (c *Client) AddNodesToDBCustomCluster(request *AddNodesToDBCustomClusterReq
 }
 
 // AddNodesToDBCustomCluster
-// 该接口（AddNodesToDBCustomCluster）用于为 DB Custom 集群上架节点。
+// 该接口（AddNodesToDBCustomCluster）用于为 DB Custom 集群添加已存在的节点。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -457,7 +457,7 @@ func NewDescribeDBCustomClustersResponse() (response *DescribeDBCustomClustersRe
 }
 
 // DescribeDBCustomClusters
-// 该接口（DescribeDBCustomClusters）为DB Custom 集群列表查询接口。
+// 该接口（DescribeDBCustomClusters）为 DB Custom 集群列表查询接口。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -469,7 +469,7 @@ func (c *Client) DescribeDBCustomClusters(request *DescribeDBCustomClustersReque
 }
 
 // DescribeDBCustomClusters
-// 该接口（DescribeDBCustomClusters）为DB Custom 集群列表查询接口。
+// 该接口（DescribeDBCustomClusters）为 DB Custom 集群列表查询接口。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1143,7 +1143,7 @@ func NewModifyDBCustomClusterTagsResponse() (response *ModifyDBCustomClusterTags
 }
 
 // ModifyDBCustomClusterTags
-// 该接口（ModifyDBCustomClusterTags）用于修改 DB Custom 集群的标签配置。
+// 该接口（ModifyDBCustomClusterTags）用于修改 DB Custom 集群绑定的标签。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1155,7 +1155,7 @@ func (c *Client) ModifyDBCustomClusterTags(request *ModifyDBCustomClusterTagsReq
 }
 
 // ModifyDBCustomClusterTags
-// 该接口（ModifyDBCustomClusterTags）用于修改 DB Custom 集群的标签配置。
+// 该接口（ModifyDBCustomClusterTags）用于修改 DB Custom 集群绑定的标签。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1199,7 +1199,7 @@ func NewModifyDBCustomNodeTagsResponse() (response *ModifyDBCustomNodeTagsRespon
 }
 
 // ModifyDBCustomNodeTags
-// 该接口（ModifyDBCustomNodeTags）用于修改 DB Custom 节点的标签配置。
+// 该接口（ModifyDBCustomNodeTags）用于修改 DB Custom 节点绑定的标签。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1211,7 +1211,7 @@ func (c *Client) ModifyDBCustomNodeTags(request *ModifyDBCustomNodeTagsRequest) 
 }
 
 // ModifyDBCustomNodeTags
-// 该接口（ModifyDBCustomNodeTags）用于修改 DB Custom 节点的标签配置。
+// 该接口（ModifyDBCustomNodeTags）用于修改 DB Custom 节点绑定的标签。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1313,7 +1313,7 @@ func NewRemoveNodesFromDBCustomClusterResponse() (response *RemoveNodesFromDBCus
 }
 
 // RemoveNodesFromDBCustomCluster
-// 该接口（RemoveNodesFromDBCustomCluster）用于从 DB Custom 集群移除节点。
+// 该接口（RemoveNodesFromDBCustomCluster）用于从 DB Custom 集群移出节点。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1325,7 +1325,7 @@ func (c *Client) RemoveNodesFromDBCustomCluster(request *RemoveNodesFromDBCustom
 }
 
 // RemoveNodesFromDBCustomCluster
-// 该接口（RemoveNodesFromDBCustomCluster）用于从 DB Custom 集群移除节点。
+// 该接口（RemoveNodesFromDBCustomCluster）用于从 DB Custom 集群移出节点。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1369,7 +1369,7 @@ func NewRenewDBCustomNodeResponse() (response *RenewDBCustomNodeResponse) {
 }
 
 // RenewDBCustomNode
-// 该接口（RenewDBCustomNode）用于给 DB Custom 节点续费。
+// 该接口（RenewDBCustomNode）用于给 DB Custom 节点续费，或者给已经隔离的实例解除隔离。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1381,7 +1381,7 @@ func (c *Client) RenewDBCustomNode(request *RenewDBCustomNodeRequest) (response 
 }
 
 // RenewDBCustomNode
-// 该接口（RenewDBCustomNode）用于给 DB Custom 节点续费。
+// 该接口（RenewDBCustomNode）用于给 DB Custom 节点续费，或者给已经隔离的实例解除隔离。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

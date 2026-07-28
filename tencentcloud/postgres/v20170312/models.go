@@ -1327,6 +1327,108 @@ func (r *CreateDBInstanceNetworkAccessResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateDBProxyRequestParams struct {
+	// <p>实例 ID，格式形如：postgres-xxxxxxxx</p>
+	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
+
+	// <p>Proxy 所在私有网络 ID，需与主实例所在 VPC 一致</p>
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// <p>Proxy 所在私有网络子网 ID</p>
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// <p>Proxy 节点自定义规格列表，至少一个元素，按可用区分组</p>
+	ProxyNodeCustom []*ProxyNodeCustom `json:"ProxyNodeCustom,omitnil,omitempty" name:"ProxyNodeCustom"`
+
+	// <p>Proxy 关联的安全组 ID 列表</p>
+	SecurityGroup []*string `json:"SecurityGroup,omitnil,omitempty" name:"SecurityGroup"`
+
+	// <p>Proxy 描述信息</p><p>长度范围：[0, 256]</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>连接池阈值（连接数），单位：个</p>
+	ConnectionPoolLimit *int64 `json:"ConnectionPoolLimit,omitnil,omitempty" name:"ConnectionPoolLimit"`
+}
+
+type CreateDBProxyRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>实例 ID，格式形如：postgres-xxxxxxxx</p>
+	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
+
+	// <p>Proxy 所在私有网络 ID，需与主实例所在 VPC 一致</p>
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// <p>Proxy 所在私有网络子网 ID</p>
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// <p>Proxy 节点自定义规格列表，至少一个元素，按可用区分组</p>
+	ProxyNodeCustom []*ProxyNodeCustom `json:"ProxyNodeCustom,omitnil,omitempty" name:"ProxyNodeCustom"`
+
+	// <p>Proxy 关联的安全组 ID 列表</p>
+	SecurityGroup []*string `json:"SecurityGroup,omitnil,omitempty" name:"SecurityGroup"`
+
+	// <p>Proxy 描述信息</p><p>长度范围：[0, 256]</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>连接池阈值（连接数），单位：个</p>
+	ConnectionPoolLimit *int64 `json:"ConnectionPoolLimit,omitnil,omitempty" name:"ConnectionPoolLimit"`
+}
+
+func (r *CreateDBProxyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDBProxyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DBInstanceId")
+	delete(f, "VpcId")
+	delete(f, "SubnetId")
+	delete(f, "ProxyNodeCustom")
+	delete(f, "SecurityGroup")
+	delete(f, "Description")
+	delete(f, "ConnectionPoolLimit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDBProxyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateDBProxyResponseParams struct {
+	// <p>订单号，下单成功返回。</p>
+	DealName *string `json:"DealName,omitnil,omitempty" name:"DealName"`
+
+	// <p>创建出的 Proxy 实例 ID，格式形如：proxy-xxxxxxxx。</p>
+	ProxyGroupId *string `json:"ProxyGroupId,omitnil,omitempty" name:"ProxyGroupId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateDBProxyResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateDBProxyResponseParams `json:"Response"`
+}
+
+func (r *CreateDBProxyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDBProxyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateDatabaseRequestParams struct {
 	// 实例ID，形如postgres-6fego161。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
@@ -4924,6 +5026,136 @@ func (r *DescribeDBInstancesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeDBProxyRequestParams struct {
+	// <p>实例 ID，格式形如：postgres-xxxxxxxx</p>
+	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
+
+	// <p>Proxy 实例 ID，格式形如：proxy-xxxxxxxx；不传则查询该实例下全部 Proxy</p>
+	ProxyGroupId *string `json:"ProxyGroupId,omitnil,omitempty" name:"ProxyGroupId"`
+}
+
+type DescribeDBProxyRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>实例 ID，格式形如：postgres-xxxxxxxx</p>
+	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
+
+	// <p>Proxy 实例 ID，格式形如：proxy-xxxxxxxx；不传则查询该实例下全部 Proxy</p>
+	ProxyGroupId *string `json:"ProxyGroupId,omitnil,omitempty" name:"ProxyGroupId"`
+}
+
+func (r *DescribeDBProxyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDBProxyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DBInstanceId")
+	delete(f, "ProxyGroupId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDBProxyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDBProxyResponseParams struct {
+	// <p>Proxy 实例数量。</p>
+	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
+
+	// <p>Proxy 实例详情列表。</p>
+	ProxyInfos []*ProxyGroupInfo `json:"ProxyInfos,omitnil,omitempty" name:"ProxyInfos"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDBProxyResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDBProxyResponseParams `json:"Response"`
+}
+
+func (r *DescribeDBProxyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDBProxyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDBProxySpecsRequestParams struct {
+	// <p>实例ID。传入时返回该实例的 Proxy 支持情况和可用区</p>
+	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
+}
+
+type DescribeDBProxySpecsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>实例ID。传入时返回该实例的 Proxy 支持情况和可用区</p>
+	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
+}
+
+func (r *DescribeDBProxySpecsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDBProxySpecsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DBInstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDBProxySpecsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDBProxySpecsResponseParams struct {
+	// <p>规格列表</p>
+	SpecSet []*ProxySpecItem `json:"SpecSet,omitnil,omitempty" name:"SpecSet"`
+
+	// <p>该实例是否支持开通 Proxy（仅传 DBInstanceId 时返回）</p>
+	SupportProxy *bool `json:"SupportProxy,omitnil,omitempty" name:"SupportProxy"`
+
+	// <p>可部署可用区列表（仅传 DBInstanceId 时返回）</p>
+	AvailableZones []*string `json:"AvailableZones,omitnil,omitempty" name:"AvailableZones"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDBProxySpecsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDBProxySpecsResponseParams `json:"Response"`
+}
+
+func (r *DescribeDBProxySpecsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDBProxySpecsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeDBVersionsRequestParams struct {
 	// <p>实例存储类型，根据磁盘类型返回支持的版本</p><p>枚举值：</p><ul><li>PHYSICAL_LOCAL_SSD： 物理机本地ssd硬盘</li><li>CLOUD_PREMIUM： 高性能云硬盘</li><li>CLOUD_SSD： ssd云硬盘</li><li>CLOUD_HSSD： 增强型ssd云硬盘</li></ul><p>默认值：PHYSICAL_LOCAL_SSD</p>
 	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
@@ -6561,6 +6793,67 @@ func (r *DestroyDBInstanceResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DestroyDBInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DestroyDBProxyRequestParams struct {
+	// <p>实例 ID，格式形如：postgres-xxxxxxxx</p>
+	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
+
+	// <p>Proxy 实例 ID，格式形如：proxy-xxxxxxxx；不传时若实例下仅有一个 Proxy 则销毁该 Proxy，存在多个 Proxy 必须显式传入</p>
+	ProxyGroupId *string `json:"ProxyGroupId,omitnil,omitempty" name:"ProxyGroupId"`
+}
+
+type DestroyDBProxyRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>实例 ID，格式形如：postgres-xxxxxxxx</p>
+	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
+
+	// <p>Proxy 实例 ID，格式形如：proxy-xxxxxxxx；不传时若实例下仅有一个 Proxy 则销毁该 Proxy，存在多个 Proxy 必须显式传入</p>
+	ProxyGroupId *string `json:"ProxyGroupId,omitnil,omitempty" name:"ProxyGroupId"`
+}
+
+func (r *DestroyDBProxyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DestroyDBProxyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DBInstanceId")
+	delete(f, "ProxyGroupId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DestroyDBProxyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DestroyDBProxyResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DestroyDBProxyResponse struct {
+	*tchttp.BaseResponse
+	Response *DestroyDBProxyResponseParams `json:"Response"`
+}
+
+func (r *DestroyDBProxyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DestroyDBProxyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -8651,6 +8944,194 @@ func (r *ModifyDBInstancesProjectResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyDBProxyAddressRequestParams struct {
+	// <p>实例ID</p>
+	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
+
+	// <p>Proxy地址ID</p>
+	AddressId *string `json:"AddressId,omitnil,omitempty" name:"AddressId"`
+
+	// <p>Proxy代理组 ID（不传则默认操作该实例下唯一的代理）</p>
+	ProxyGroupId *string `json:"ProxyGroupId,omitnil,omitempty" name:"ProxyGroupId"`
+
+	// <p>地址描述/备注（最多 256 字符）</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>连接池开关</p><p>枚举值：</p><ul><li>true： 开启</li><li>false： 关闭</li></ul>
+	ConnectionPool *bool `json:"ConnectionPool,omitnil,omitempty" name:"ConnectionPool"`
+}
+
+type ModifyDBProxyAddressRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>实例ID</p>
+	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
+
+	// <p>Proxy地址ID</p>
+	AddressId *string `json:"AddressId,omitnil,omitempty" name:"AddressId"`
+
+	// <p>Proxy代理组 ID（不传则默认操作该实例下唯一的代理）</p>
+	ProxyGroupId *string `json:"ProxyGroupId,omitnil,omitempty" name:"ProxyGroupId"`
+
+	// <p>地址描述/备注（最多 256 字符）</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>连接池开关</p><p>枚举值：</p><ul><li>true： 开启</li><li>false： 关闭</li></ul>
+	ConnectionPool *bool `json:"ConnectionPool,omitnil,omitempty" name:"ConnectionPool"`
+}
+
+func (r *ModifyDBProxyAddressRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDBProxyAddressRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DBInstanceId")
+	delete(f, "AddressId")
+	delete(f, "ProxyGroupId")
+	delete(f, "Description")
+	delete(f, "ConnectionPool")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDBProxyAddressRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDBProxyAddressResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyDBProxyAddressResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyDBProxyAddressResponseParams `json:"Response"`
+}
+
+func (r *ModifyDBProxyAddressResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDBProxyAddressResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDBProxyRequestParams struct {
+	// <p>实例 ID，格式形如：postgres-xxxxxxxx</p>
+	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
+
+	// <p>Proxy 实例 ID，格式形如：proxy-xxxxxxxx；不传时若实例下仅有一个 Proxy 则修改该 Proxy</p>
+	ProxyGroupId *string `json:"ProxyGroupId,omitnil,omitempty" name:"ProxyGroupId"`
+
+	// <p>Proxy 描述信息，长度范围 [0, 256]</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>Proxy 节点变配规格列表，按可用区分组；变配时必填</p>
+	ProxyNodeCustom []*ProxyNodeCustom `json:"ProxyNodeCustom,omitnil,omitempty" name:"ProxyNodeCustom"`
+
+	// <p>负载均衡刷新策略：auto-自动；manual-手动；默认 auto</p>
+	ReloadBalance *string `json:"ReloadBalance,omitnil,omitempty" name:"ReloadBalance"`
+
+	// <p>变配执行时机：0-立即执行（默认），1-维护时间窗内执行，2-指定时间窗执行（需配合 SwitchStartTime/SwitchEndTime）</p>
+	SwitchTag *int64 `json:"SwitchTag,omitnil,omitempty" name:"SwitchTag"`
+
+	// <p>指定时间窗执行的开始时间，格式 HH:MM:SS，仅 SwitchTag=2 时生效</p>
+	SwitchStartTime *string `json:"SwitchStartTime,omitnil,omitempty" name:"SwitchStartTime"`
+
+	// <p>指定时间窗执行的结束时间，格式 HH:MM:SS，仅 SwitchTag=2 时生效</p>
+	SwitchEndTime *string `json:"SwitchEndTime,omitnil,omitempty" name:"SwitchEndTime"`
+}
+
+type ModifyDBProxyRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>实例 ID，格式形如：postgres-xxxxxxxx</p>
+	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
+
+	// <p>Proxy 实例 ID，格式形如：proxy-xxxxxxxx；不传时若实例下仅有一个 Proxy 则修改该 Proxy</p>
+	ProxyGroupId *string `json:"ProxyGroupId,omitnil,omitempty" name:"ProxyGroupId"`
+
+	// <p>Proxy 描述信息，长度范围 [0, 256]</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>Proxy 节点变配规格列表，按可用区分组；变配时必填</p>
+	ProxyNodeCustom []*ProxyNodeCustom `json:"ProxyNodeCustom,omitnil,omitempty" name:"ProxyNodeCustom"`
+
+	// <p>负载均衡刷新策略：auto-自动；manual-手动；默认 auto</p>
+	ReloadBalance *string `json:"ReloadBalance,omitnil,omitempty" name:"ReloadBalance"`
+
+	// <p>变配执行时机：0-立即执行（默认），1-维护时间窗内执行，2-指定时间窗执行（需配合 SwitchStartTime/SwitchEndTime）</p>
+	SwitchTag *int64 `json:"SwitchTag,omitnil,omitempty" name:"SwitchTag"`
+
+	// <p>指定时间窗执行的开始时间，格式 HH:MM:SS，仅 SwitchTag=2 时生效</p>
+	SwitchStartTime *string `json:"SwitchStartTime,omitnil,omitempty" name:"SwitchStartTime"`
+
+	// <p>指定时间窗执行的结束时间，格式 HH:MM:SS，仅 SwitchTag=2 时生效</p>
+	SwitchEndTime *string `json:"SwitchEndTime,omitnil,omitempty" name:"SwitchEndTime"`
+}
+
+func (r *ModifyDBProxyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDBProxyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DBInstanceId")
+	delete(f, "ProxyGroupId")
+	delete(f, "Description")
+	delete(f, "ProxyNodeCustom")
+	delete(f, "ReloadBalance")
+	delete(f, "SwitchTag")
+	delete(f, "SwitchStartTime")
+	delete(f, "SwitchEndTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDBProxyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDBProxyResponseParams struct {
+	// <p>订单号，仅变配（节点规格/数量变更）下单成功时返回；仅修改 Description 时不下单，本字段为空。</p>
+	DealName *string `json:"DealName,omitnil,omitempty" name:"DealName"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyDBProxyResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyDBProxyResponseParams `json:"Response"`
+}
+
+func (r *ModifyDBProxyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDBProxyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyDatabaseOwnerRequestParams struct {
 	// 实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
@@ -9534,6 +10015,126 @@ type PolicyRule struct {
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
+type ProxyAddress struct {
+	// <p>Proxy 接入地址 ID</p>
+	AddressId *string `json:"AddressId,omitnil,omitempty" name:"AddressId"`
+
+	// <p>Proxy 接入地址 IP</p>
+	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
+
+	// <p>Proxy 接入地址端口</p>
+	Vport *int64 `json:"Vport,omitnil,omitempty" name:"Vport"`
+
+	// <p>VPC ID</p>
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// <p>子网 ID</p>
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// <p>接入地址描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>是否开启连接池：0-未开启，1-开启</p>
+	ConnectionPool *bool `json:"ConnectionPool,omitnil,omitempty" name:"ConnectionPool"`
+
+	// <p>路由列表</p>
+	Routes []*ProxyRoute `json:"Routes,omitnil,omitempty" name:"Routes"`
+
+	// <p>连接池大小</p>
+	ConnectionPoolLimit *uint64 `json:"ConnectionPoolLimit,omitnil,omitempty" name:"ConnectionPoolLimit"`
+}
+
+type ProxyGroupInfo struct {
+	// <p>Proxy 实例 ID，格式形如：proxygroup-xxxxxxxx</p>
+	ProxyGroupId *string `json:"ProxyGroupId,omitnil,omitempty" name:"ProxyGroupId"`
+
+	// <p>Proxy 状态：running/isolated/offline 等</p>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>Proxy 任务状态，无任务时为空</p>
+	TaskStatus *string `json:"TaskStatus,omitnil,omitempty" name:"TaskStatus"`
+
+	// <p>Proxy 描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>Proxy 内核版本号</p>
+	ProxyVersion *string `json:"ProxyVersion,omitnil,omitempty" name:"ProxyVersion"`
+
+	// <p>连接池阈值（连接数）</p>
+	ConnectionPoolLimit *int64 `json:"ConnectionPoolLimit,omitnil,omitempty" name:"ConnectionPoolLimit"`
+
+	// <p>Proxy 节点列表</p>
+	ProxyNodeSet []*ProxyNode `json:"ProxyNodeSet,omitnil,omitempty" name:"ProxyNodeSet"`
+
+	// <p>Proxy 接入地址列表</p>
+	ProxyAddressSet []*ProxyAddress `json:"ProxyAddressSet,omitnil,omitempty" name:"ProxyAddressSet"`
+
+	// <p>创建时间，格式：YYYY-MM-DD HH:MM:SS</p>
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+}
+
+type ProxyNode struct {
+	// <p>Proxy 节点 ID</p>
+	ProxyNodeId *string `json:"ProxyNodeId,omitnil,omitempty" name:"ProxyNodeId"`
+
+	// <p>Proxy 节点所在可用区</p>
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+
+	// <p>节点 CPU 核数（核）</p>
+	Cpu *int64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
+
+	// <p>节点内存大小（MB）</p><p>单位：MB</p>
+	Mem *int64 `json:"Mem,omitnil,omitempty" name:"Mem"`
+
+	// <p>节点状态：running/isolated/abnormal 等</p>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>节点当前连接数</p>
+	Connection *int64 `json:"Connection,omitnil,omitempty" name:"Connection"`
+}
+
+type ProxyNodeCustom struct {
+	// <p>该可用区下的 Proxy 节点数量</p><p>取值范围：[1, 16]</p>
+	NodeCount *int64 `json:"NodeCount,omitnil,omitempty" name:"NodeCount"`
+
+	// <p>Proxy 节点所在可用区</p>
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+
+	// <p>Proxy 节点 CPU 核数（核）</p>
+	Cpu *int64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
+
+	// <p>Proxy 节点内存大小（MB）</p><p>单位：MB</p>
+	Mem *int64 `json:"Mem,omitnil,omitempty" name:"Mem"`
+}
+
+type ProxyRoute struct {
+	// <p>路由指向的 PG 节点 ID（实例或只读节点 ID）</p>
+	NodeId *string `json:"NodeId,omitnil,omitempty" name:"NodeId"`
+
+	// <p>节点角色：master/slave/readonly</p>
+	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
+
+	// <p>路由权重，取值范围 [0, 100]</p>
+	Weight *int64 `json:"Weight,omitnil,omitempty" name:"Weight"`
+
+	// <p>路由状态：available/unavailable</p>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+type ProxySpecItem struct {
+	// <p>CPU 核数</p><p>单位：核</p>
+	Cpu *uint64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
+
+	// <p>内存大小</p><p>单位：MB</p>
+	Memory *uint64 `json:"Memory,omitnil,omitempty" name:"Memory"`
+
+	// <p>最小节点数</p>
+	MinNodeNum *uint64 `json:"MinNodeNum,omitnil,omitempty" name:"MinNodeNum"`
+
+	// <p>最大节点数</p>
+	MaxNodeNum *uint64 `json:"MaxNodeNum,omitnil,omitempty" name:"MaxNodeNum"`
+}
+
 type RawSlowQuery struct {
 	// <p>慢SQL 语句</p>
 	RawQuery *string `json:"RawQuery,omitnil,omitempty" name:"RawQuery"`
@@ -9761,6 +10362,74 @@ type RegionInfo struct {
 
 	// 该地域是否支持国际站售卖，0：不支持，1：支持
 	SupportInternational *uint64 `json:"SupportInternational,omitnil,omitempty" name:"SupportInternational"`
+}
+
+// Predefined struct for user
+type ReloadBalanceDBProxyNodeRequestParams struct {
+	// <p>实例ID</p>
+	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
+
+	// <p>Proxy代理组ID（不传则默认操作该实例下唯一的代理）</p>
+	ProxyGroupId *string `json:"ProxyGroupId,omitnil,omitempty" name:"ProxyGroupId"`
+
+	// <p>Proxy地址ID。传入时校验归属，实际重平衡为代理组维度</p>
+	AddressId *string `json:"AddressId,omitnil,omitempty" name:"AddressId"`
+}
+
+type ReloadBalanceDBProxyNodeRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>实例ID</p>
+	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
+
+	// <p>Proxy代理组ID（不传则默认操作该实例下唯一的代理）</p>
+	ProxyGroupId *string `json:"ProxyGroupId,omitnil,omitempty" name:"ProxyGroupId"`
+
+	// <p>Proxy地址ID。传入时校验归属，实际重平衡为代理组维度</p>
+	AddressId *string `json:"AddressId,omitnil,omitempty" name:"AddressId"`
+}
+
+func (r *ReloadBalanceDBProxyNodeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ReloadBalanceDBProxyNodeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DBInstanceId")
+	delete(f, "ProxyGroupId")
+	delete(f, "AddressId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ReloadBalanceDBProxyNodeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ReloadBalanceDBProxyNodeResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ReloadBalanceDBProxyNodeResponse struct {
+	*tchttp.BaseResponse
+	Response *ReloadBalanceDBProxyNodeResponseParams `json:"Response"`
+}
+
+func (r *ReloadBalanceDBProxyNodeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ReloadBalanceDBProxyNodeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
