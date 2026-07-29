@@ -683,6 +683,66 @@ func (c *Client) CreateBillDealWithContext(ctx context.Context, request *CreateB
     return
 }
 
+func NewCreateCloudAppRequest() (request *CreateCloudAppRequest) {
+    request = &CreateCloudAppRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "CreateCloudApp")
+    
+    
+    return
+}
+
+func NewCreateCloudAppResponse() (response *CreateCloudAppResponse) {
+    response = &CreateCloudAppResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateCloudApp
+// 创建云应用
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED_ERRNAMESPACEMAXLIMIT = "LimitExceeded.ErrNamespaceMaxLimit"
+//  LIMITEXCEEDED_ERRREPOMAXLIMIT = "LimitExceeded.ErrRepoMaxLimit"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateCloudApp(request *CreateCloudAppRequest) (response *CreateCloudAppResponse, err error) {
+    return c.CreateCloudAppWithContext(context.Background(), request)
+}
+
+// CreateCloudApp
+// 创建云应用
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED_ERRNAMESPACEMAXLIMIT = "LimitExceeded.ErrNamespaceMaxLimit"
+//  LIMITEXCEEDED_ERRREPOMAXLIMIT = "LimitExceeded.ErrRepoMaxLimit"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateCloudAppWithContext(ctx context.Context, request *CreateCloudAppRequest) (response *CreateCloudAppResponse, err error) {
+    if request == nil {
+        request = NewCreateCloudAppRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "CreateCloudApp")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCloudApp require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateCloudAppResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateCustomLoginKeyRequest() (request *CreateCustomLoginKeyRequest) {
     request = &CreateCustomLoginKeyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1617,6 +1677,118 @@ func (c *Client) DeleteAuthDomainWithContext(ctx context.Context, request *Delet
     return
 }
 
+func NewDeleteCloudAppRequest() (request *DeleteCloudAppRequest) {
+    request = &DeleteCloudAppRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "DeleteCloudApp")
+    
+    
+    return
+}
+
+func NewDeleteCloudAppResponse() (response *DeleteCloudAppResponse) {
+    response = &DeleteCloudAppResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteCloudApp
+// 删除云应用服务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteCloudApp(request *DeleteCloudAppRequest) (response *DeleteCloudAppResponse, err error) {
+    return c.DeleteCloudAppWithContext(context.Background(), request)
+}
+
+// DeleteCloudApp
+// 删除云应用服务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteCloudAppWithContext(ctx context.Context, request *DeleteCloudAppRequest) (response *DeleteCloudAppResponse, err error) {
+    if request == nil {
+        request = NewDeleteCloudAppRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DeleteCloudApp")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteCloudApp require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteCloudAppResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteCloudAppVersionRequest() (request *DeleteCloudAppVersionRequest) {
+    request = &DeleteCloudAppVersionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "DeleteCloudAppVersion")
+    
+    
+    return
+}
+
+func NewDeleteCloudAppVersionResponse() (response *DeleteCloudAppVersionResponse) {
+    response = &DeleteCloudAppVersionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteCloudAppVersion
+// 删除云应用服务版本
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteCloudAppVersion(request *DeleteCloudAppVersionRequest) (response *DeleteCloudAppVersionResponse, err error) {
+    return c.DeleteCloudAppVersionWithContext(context.Background(), request)
+}
+
+// DeleteCloudAppVersion
+// 删除云应用服务版本
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteCloudAppVersionWithContext(ctx context.Context, request *DeleteCloudAppVersionRequest) (response *DeleteCloudAppVersionResponse, err error) {
+    if request == nil {
+        request = NewDeleteCloudAppVersionRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DeleteCloudAppVersion")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteCloudAppVersion require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteCloudAppVersionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteHTTPServiceRouteRequest() (request *DeleteHTTPServiceRouteRequest) {
     request = &DeleteHTTPServiceRouteRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2303,6 +2475,118 @@ func (c *Client) DescribeClientWithContext(ctx context.Context, request *Describ
     return
 }
 
+func NewDescribeCloudAppCosInfoRequest() (request *DescribeCloudAppCosInfoRequest) {
+    request = &DescribeCloudAppCosInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeCloudAppCosInfo")
+    
+    
+    return
+}
+
+func NewDescribeCloudAppCosInfoResponse() (response *DescribeCloudAppCosInfoResponse) {
+    response = &DescribeCloudAppCosInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCloudAppCosInfo
+// 获取云应用cos信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SERVICENOTEXIST = "InvalidParameter.ServiceNotExist"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeCloudAppCosInfo(request *DescribeCloudAppCosInfoRequest) (response *DescribeCloudAppCosInfoResponse, err error) {
+    return c.DescribeCloudAppCosInfoWithContext(context.Background(), request)
+}
+
+// DescribeCloudAppCosInfo
+// 获取云应用cos信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SERVICENOTEXIST = "InvalidParameter.ServiceNotExist"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeCloudAppCosInfoWithContext(ctx context.Context, request *DescribeCloudAppCosInfoRequest) (response *DescribeCloudAppCosInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudAppCosInfoRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeCloudAppCosInfo")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCloudAppCosInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCloudAppCosInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCloudAppInfoRequest() (request *DescribeCloudAppInfoRequest) {
+    request = &DescribeCloudAppInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeCloudAppInfo")
+    
+    
+    return
+}
+
+func NewDescribeCloudAppInfoResponse() (response *DescribeCloudAppInfoResponse) {
+    response = &DescribeCloudAppInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCloudAppInfo
+// 查询应用服务信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeCloudAppInfo(request *DescribeCloudAppInfoRequest) (response *DescribeCloudAppInfoResponse, err error) {
+    return c.DescribeCloudAppInfoWithContext(context.Background(), request)
+}
+
+// DescribeCloudAppInfo
+// 查询应用服务信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeCloudAppInfoWithContext(ctx context.Context, request *DescribeCloudAppInfoRequest) (response *DescribeCloudAppInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudAppInfoRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeCloudAppInfo")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCloudAppInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCloudAppInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCloudAppListRequest() (request *DescribeCloudAppListRequest) {
     request = &DescribeCloudAppListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2355,6 +2639,118 @@ func (c *Client) DescribeCloudAppListWithContext(ctx context.Context, request *D
     request.SetContext(ctx)
     
     response = NewDescribeCloudAppListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCloudAppVersionRequest() (request *DescribeCloudAppVersionRequest) {
+    request = &DescribeCloudAppVersionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeCloudAppVersion")
+    
+    
+    return
+}
+
+func NewDescribeCloudAppVersionResponse() (response *DescribeCloudAppVersionResponse) {
+    response = &DescribeCloudAppVersionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCloudAppVersion
+// 查询云应用服务版本信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeCloudAppVersion(request *DescribeCloudAppVersionRequest) (response *DescribeCloudAppVersionResponse, err error) {
+    return c.DescribeCloudAppVersionWithContext(context.Background(), request)
+}
+
+// DescribeCloudAppVersion
+// 查询云应用服务版本信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeCloudAppVersionWithContext(ctx context.Context, request *DescribeCloudAppVersionRequest) (response *DescribeCloudAppVersionResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudAppVersionRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeCloudAppVersion")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCloudAppVersion require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCloudAppVersionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCloudAppVersionListRequest() (request *DescribeCloudAppVersionListRequest) {
+    request = &DescribeCloudAppVersionListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeCloudAppVersionList")
+    
+    
+    return
+}
+
+func NewDescribeCloudAppVersionListResponse() (response *DescribeCloudAppVersionListResponse) {
+    response = &DescribeCloudAppVersionListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCloudAppVersionList
+// 查询云应用服务版本列表信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeCloudAppVersionList(request *DescribeCloudAppVersionListRequest) (response *DescribeCloudAppVersionListResponse, err error) {
+    return c.DescribeCloudAppVersionListWithContext(context.Background(), request)
+}
+
+// DescribeCloudAppVersionList
+// 查询云应用服务版本列表信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeCloudAppVersionListWithContext(ctx context.Context, request *DescribeCloudAppVersionListRequest) (response *DescribeCloudAppVersionListResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudAppVersionListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeCloudAppVersionList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCloudAppVersionList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCloudAppVersionListResponse()
     err = c.Send(request, response)
     return
 }

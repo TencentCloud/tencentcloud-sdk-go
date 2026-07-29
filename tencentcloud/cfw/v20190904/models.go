@@ -524,7 +524,7 @@ type BanAndAllowRule struct {
 	// 自定义放通规则详情。RuleType=6 时使用；其它规则类型不读取此字段。
 	CustomRule *CustomWhiteRule `json:"CustomRule,omitnil,omitempty" name:"CustomRule"`
 
-	// 生效方向，使用逗号分隔的整数：0 互联网出站、1 互联网入站、2 双向、3 东西向、4 情报误报反馈、5 内网访问源、6 内网访问目的。所有 RuleType 均须显式传入非空值。RuleType=6 会先校验本字段，再根据 CustomRule 重新计算最终方向；例如私网源到私网目的可传 5,6，创建后应查询确认最终方向。
+	// 生效方向，多个取值以逗号分隔：0 互联网出向、1 互联网入向、5 内网访问源、6 内网访问目的。互联网双向传 "1,0"，内网双向传 "5,6"。RuleType=1 时传 0、1 或 "1,0"；RuleType=2 时，公网 IP 传 0、1 或 "1,0"，私网 IP 传 5、6 或 "5,6"；RuleType=3 时传 0、6 或 "0,6"；RuleType=4 时传 "1,0"；RuleType=5 时传 5、6 或 "5,6"；RuleType=6 时按规则适用方向组合 0、1、5、6，并在创建后查询最终方向。所有 RuleType 均须显式传入非空值。
 	DirectionList *string `json:"DirectionList,omitnil,omitempty" name:"DirectionList"`
 
 	// 规则截止时间，使用北京时间（UTC+8）的 YYYY-MM-DD HH:MM:SS 格式，且不得早于服务器处理时刻；3000-01-01 00:00:00 表示长期有效。

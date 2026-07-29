@@ -3559,7 +3559,7 @@ type CloneViralAIGC struct {
 	// <p>分辨率。支持720p（默认）/1080p/2k/4k</p>
 	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
 
-	// <p>模型等级。flagship（VS2.0，默认）、standard（Kling3.0-Omni）</p>
+	// <p>模型等级。flagship（默认）、standard</p>
 	ModelTier *string `json:"ModelTier,omitnil,omitempty" name:"ModelTier"`
 }
 

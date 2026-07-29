@@ -327,44 +327,6 @@ type AudioParams struct {
 	BitRate *uint64 `json:"BitRate,omitnil,omitempty" name:"BitRate"`
 }
 
-type AuditStorageParams struct {
-	// 腾讯云对象存储COS以及第三方云存储的账号信息
-	CloudAuditStorage *CloudAuditStorage `json:"CloudAuditStorage,omitnil,omitempty" name:"CloudAuditStorage"`
-}
-
-type CloudAuditStorage struct {
-	// 腾讯云对象存储COS以及第三方云存储账号信息
-	// 0：腾讯云对象存储 COS
-	// 1：AWS
-	// 【注意】目前第三方云存储仅支持AWS，更多第三方云存储陆续支持中
-	// 示例值：0
-	Vendor *uint64 `json:"Vendor,omitnil,omitempty" name:"Vendor"`
-
-	// 腾讯云对象存储的[地域信息]（https://cloud.tencent.com/document/product/436/6224#.E5.9C.B0.E5.9F.9F）。
-	// 示例值：cn-shanghai-1
-	// 
-	// AWS S3[地域信息]（https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-regions）
-	// 示例值：ap-southeast-3	
-	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
-
-	// 云存储桶名称。
-	Bucket *string `json:"Bucket,omitnil,omitempty" name:"Bucket"`
-
-	// 云存储的access_key账号信息。
-	// 若存储至腾讯云对象存储COS，请前往https://console.cloud.tencent.com/cam/capi 查看或创建，对应链接中密钥字段的SecretId值。
-	// 示例值：test-accesskey
-	AccessKey *string `json:"AccessKey,omitnil,omitempty" name:"AccessKey"`
-
-	// 云存储的secret_key账号信息。
-	// 若存储至腾讯云对象存储COS，请前往https://console.cloud.tencent.com/cam/capi 查看或创建，对应链接中密钥字段的SecretKey值。
-	// 示例值：test-secretkey
-	SecretKey *string `json:"SecretKey,omitnil,omitempty" name:"SecretKey"`
-
-	// 云存储bucket 的指定位置，由字符串数组组成。合法的字符串范围az,AZ,0~9,'_'和'-'，举个例子，录制文件xxx.m3u8在 ["prefix1", "prefix2"]作用下，会变成prefix1/prefix2/TaskId/xxx.m3u8。
-	// 示例值：["prefix1", "prefix2"]
-	FileNamePrefix []*string `json:"FileNamePrefix,omitnil,omitempty" name:"FileNamePrefix"`
-}
-
 type CloudModerationStorage struct {
 	// 腾讯云对象存储COS以及第三方云存储账号信息
 	// 0：腾讯云对象存储 COS
@@ -526,91 +488,6 @@ func (r *ControlAIConversationResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ControlAIConversationResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type CreateBasicModerationRequestParams struct {
-	// TRTC的[SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid)，和TRTC的房间所对应的SdkAppId相同。
-	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
-
-	// TRTC的[RoomId](https://cloud.tencent.com/document/product/647/46351#roomid)，为TRTC房间所对应的RoomId。
-	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
-
-	// 目标审核用户id
-	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
-
-	// TRTC房间号的类型。【*注意】必须和TRTC的房间所对应的RoomId类型相同:0: 字符串类型的RoomId1: 32位整型的RoomId（默认）
-	RoomIdType *uint64 `json:"RoomIdType,omitnil,omitempty" name:"RoomIdType"`
-
-	// 音频文件上传到云存储的参数
-	AuditStorageParams *AuditStorageParams `json:"AuditStorageParams,omitnil,omitempty" name:"AuditStorageParams"`
-}
-
-type CreateBasicModerationRequest struct {
-	*tchttp.BaseRequest
-	
-	// TRTC的[SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid)，和TRTC的房间所对应的SdkAppId相同。
-	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
-
-	// TRTC的[RoomId](https://cloud.tencent.com/document/product/647/46351#roomid)，为TRTC房间所对应的RoomId。
-	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
-
-	// 目标审核用户id
-	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
-
-	// TRTC房间号的类型。【*注意】必须和TRTC的房间所对应的RoomId类型相同:0: 字符串类型的RoomId1: 32位整型的RoomId（默认）
-	RoomIdType *uint64 `json:"RoomIdType,omitnil,omitempty" name:"RoomIdType"`
-
-	// 音频文件上传到云存储的参数
-	AuditStorageParams *AuditStorageParams `json:"AuditStorageParams,omitnil,omitempty" name:"AuditStorageParams"`
-}
-
-func (r *CreateBasicModerationRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *CreateBasicModerationRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "SdkAppId")
-	delete(f, "RoomId")
-	delete(f, "UserId")
-	delete(f, "RoomIdType")
-	delete(f, "AuditStorageParams")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBasicModerationRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type CreateBasicModerationResponseParams struct {
-	// 审核服务分配的任务ID。任务ID是对一次审核任务生命周期过程的唯一标识，结束任务时会失去意义。任务ID需要业务保存下来，作为下次针对这个任务操作的参数
-	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type CreateBasicModerationResponse struct {
-	*tchttp.BaseResponse
-	Response *CreateBasicModerationResponseParams `json:"Response"`
-}
-
-func (r *CreateBasicModerationResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *CreateBasicModerationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1264,70 +1141,6 @@ func (r *CreatePictureResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreatePictureResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DeleteBasicModerationRequestParams struct {
-	// TRTC的SDKAppId，和TRTC的房间所使用的SDKAppId相同。
-	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
-
-	// 审核任务的唯一Id，在启动审核任务成功后会返回。
-	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
-}
-
-type DeleteBasicModerationRequest struct {
-	*tchttp.BaseRequest
-	
-	// TRTC的SDKAppId，和TRTC的房间所使用的SDKAppId相同。
-	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
-
-	// 审核任务的唯一Id，在启动审核任务成功后会返回。
-	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
-}
-
-func (r *DeleteBasicModerationRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DeleteBasicModerationRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "SdkAppId")
-	delete(f, "TaskId")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteBasicModerationRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DeleteBasicModerationResponseParams struct {
-	// 审核任务的唯一Id。
-	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DeleteBasicModerationResponse struct {
-	*tchttp.BaseResponse
-	Response *DeleteBasicModerationResponseParams `json:"Response"`
-}
-
-func (r *DeleteBasicModerationResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DeleteBasicModerationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

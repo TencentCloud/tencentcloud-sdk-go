@@ -16788,47 +16788,47 @@ type HealthCheckConfig struct {
 }
 
 type HealthCheckSetting struct {
-	// 健康检查方法。HTTP：通过 HTTP 接口检查；CMD：通过执行命令检查；TCP：通过建立 TCP 连接检查。
+	// <p>健康检查方法。HTTP：通过 HTTP 接口检查；CMD：通过执行命令检查；TCP：通过建立 TCP 连接检查。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ActionType *string `json:"ActionType,omitnil,omitempty" name:"ActionType"`
 
-	// 容器延时启动健康检查的时间，单位秒。
+	// <p>容器延时启动健康检查的时间，单位秒。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InitialDelaySeconds *uint64 `json:"InitialDelaySeconds,omitnil,omitempty" name:"InitialDelaySeconds"`
 
-	// 每次健康检查响应的最大超时时间，单位秒。
+	// <p>每次健康检查响应的最大超时时间，单位秒。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TimeoutSeconds *uint64 `json:"TimeoutSeconds,omitnil,omitempty" name:"TimeoutSeconds"`
 
-	// 进行健康检查的时间间隔，单位秒。
+	// <p>进行健康检查的时间间隔，单位秒。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PeriodSeconds *uint64 `json:"PeriodSeconds,omitnil,omitempty" name:"PeriodSeconds"`
 
-	// 表示后端容器从失败到成功的连续健康检查成功次数。
+	// <p>表示后端容器从失败到成功的连续健康检查成功次数。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SuccessThreshold *uint64 `json:"SuccessThreshold,omitnil,omitempty" name:"SuccessThreshold"`
 
-	// 表示后端容器从成功到失败的连续健康检查成功次数。
+	// <p>表示后端容器从成功到失败的连续健康检查成功次数。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailureThreshold *uint64 `json:"FailureThreshold,omitnil,omitempty" name:"FailureThreshold"`
 
-	// HTTP 健康检查方法使用的检查协议。支持HTTP、HTTPS。
+	// <p>HTTP 健康检查方法使用的检查协议。支持HTTP、HTTPS。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Scheme *string `json:"Scheme,omitnil,omitempty" name:"Scheme"`
 
-	// 健康检查端口，范围 1~65535 。
+	// <p>健康检查端口，范围 1~65535 。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Port *uint64 `json:"Port,omitnil,omitempty" name:"Port"`
 
-	// HTTP 健康检查接口的请求路径。
+	// <p>HTTP 健康检查接口的请求路径。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 
-	// 执行命令检查方式，执行的命令。
+	// <p>执行命令检查方式，执行的命令。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Command []*string `json:"Command,omitnil,omitempty" name:"Command"`
 
-	// TSF_DEFAULT：tsf 默认就绪探针。K8S_NATIVE：k8s 原生探针。不填默认为 k8s 原生探针。
+	// <p>TSF_DEFAULT：tsf 默认就绪探针。K8S_NATIVE：k8s 原生探针。不填默认为 k8s 原生探针。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }

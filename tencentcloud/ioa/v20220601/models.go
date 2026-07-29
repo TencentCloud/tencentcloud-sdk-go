@@ -2493,56 +2493,59 @@ func (r *DescribeDeviceDetailListResponse) FromJsonString(s string) error {
 }
 
 type DescribeDeviceHardwareInfoItem struct {
-	// 设备ID
+	// <p>设备ID</p>
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 设备唯一标识符
+	// <p>设备唯一标识符</p>
 	Mid *string `json:"Mid,omitnil,omitempty" name:"Mid"`
 
-	// OS平台 0 Windows 1 Linux 2 macOS 4 Android 5 iOS
+	// <p>OS平台 0 Windows 1 Linux 2 macOS 4 Android 5 iOS</p>
 	OsType *int64 `json:"OsType,omitnil,omitempty" name:"OsType"`
 
-	// 终端名
+	// <p>终端名</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 终端用户名
+	// <p>终端用户名</p>
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
-	// 授权状态（ 4未授权 5已授权）
+	// <p>授权状态（ 4未授权 5已授权）</p>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 设备所属分组ID
+	// <p>设备所属分组ID</p>
 	GroupId *int64 `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 设备所属分组名
+	// <p>设备所属分组名</p>
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
-	// 设备所属分组路径
+	// <p>设备所属分组路径</p>
 	GroupNamePath *string `json:"GroupNamePath,omitnil,omitempty" name:"GroupNamePath"`
 
-	// 最近登录账户的姓名
+	// <p>最近登录账户的姓名</p>
 	AccountName *string `json:"AccountName,omitnil,omitempty" name:"AccountName"`
 
-	// 出口IP
+	// <p>出口IP</p>
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
-	// MAC地址
+	// <p>MAC地址</p>
 	MacAddr *string `json:"MacAddr,omitnil,omitempty" name:"MacAddr"`
 
-	// CPU品牌型号
+	// <p>CPU品牌型号</p>
 	Cpu *string `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 
-	// 内存信息
+	// <p>内存信息</p>
 	Memory *string `json:"Memory,omitnil,omitempty" name:"Memory"`
 
-	// 硬盘信息
+	// <p>硬盘信息</p>
 	HardDiskSize *string `json:"HardDiskSize,omitnil,omitempty" name:"HardDiskSize"`
 
-	// 显示器品牌型号
+	// <p>显示器品牌型号</p>
 	Monitor *string `json:"Monitor,omitnil,omitempty" name:"Monitor"`
 
-	// 终端备注名
+	// <p>终端备注名</p>
 	RemarkName *string `json:"RemarkName,omitnil,omitempty" name:"RemarkName"`
+
+	// <p>BiosUUID（启动盘标识符）</p>
+	BiosUuid *string `json:"BiosUuid,omitnil,omitempty" name:"BiosUuid"`
 }
 
 // Predefined struct for user
@@ -3905,6 +3908,9 @@ type DeviceDetail struct {
 
 	// <p>终端备注名</p>
 	RemarkName *string `json:"RemarkName,omitnil,omitempty" name:"RemarkName"`
+
+	// <p>BiosUUID（启动盘标识符）</p>
+	BiosUuid *string `json:"BiosUuid,omitnil,omitempty" name:"BiosUuid"`
 }
 
 type DeviceDownloadTask struct {

@@ -548,6 +548,70 @@ func (r *BindStorageSourceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type BuildCommands struct {
+	// <p>平台生成默认 install step 时执行</p>
+	InstallCmd *string `json:"InstallCmd,omitnil,omitempty" name:"InstallCmd"`
+
+	// <p>平台生成默认build step 时执行</p>
+	BuildCmd *string `json:"BuildCmd,omitnil,omitempty" name:"BuildCmd"`
+
+	// <p>平台生成默认deploy step 时执行</p>
+	DeployCmd *string `json:"DeployCmd,omitnil,omitempty" name:"DeployCmd"`
+}
+
+type BuildSecret struct {
+	// <p>标准化为 DNS Label 风格；构建时注入为 $SECRET_&lt;NAME&gt;（同时也提供原大写形式 $SECRET_&lt;NAME_UPPERCASE&gt;）</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>平台 AES 加密落库；DescribeVersion 永不回显明文</p>
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type BuildSource struct {
+	// <p>源码来源类型，取值：&quot;git&quot; &quot;zip&quot;</p>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>Git 仓库 HTTPS URL；或 COS 下载完整 URL；与 CodeUrlWithAuth / CosTimestamp 之一非空（zip 二阶段上传时可留空）</p>
+	Repo *string `json:"Repo,omitnil,omitempty" name:"Repo"`
+
+	// <p>分支 tag commit；Git 默认 main，zip 模式下忽略</p>
+	Ref *string `json:"Ref,omitnil,omitempty" name:"Ref"`
+
+	// <p>&quot;git&quot; &quot;github&quot; &quot;gitlab&quot; &quot;gitee&quot; &quot;coding&quot;；私有仓必填，平台据此走 OAuth 鉴权</p>
+	Channel *string `json:"Channel,omitnil,omitempty" name:"Channel"`
+
+	// <p>是否私有仓；true 时平台自动注入 CodeUrlWithAuth</p>
+	IsPrivate *bool `json:"IsPrivate,omitnil,omitempty" name:"IsPrivate"`
+
+	// <p>调用方显式传入的带鉴权 clone URL 或带签名的 zip 下载直链（优先级最高，会覆盖平台 OAuth / 自动签名）</p>
+	CodeUrlWithAuth *string `json:"CodeUrlWithAuth,omitnil,omitempty" name:"CodeUrlWithAuth"`
+
+	// <p>仅 Type=zip/cos 时使用。配合 zip 二阶段上传：填 DescribeCloudAppCosInfo 返回的 UnixTimestamp，平台据此自动签名出 ZIP_FILE_URL</p>
+	CosTimestamp *string `json:"CosTimestamp,omitnil,omitempty" name:"CosTimestamp"`
+
+	// <p>仅 Type=zip/cos 时使用。zip 文件后缀，默认 .zip；与 CosTimestamp 配合定位 COS 对象</p>
+	CosSuffix *string `json:"CosSuffix,omitnil,omitempty" name:"CosSuffix"`
+}
+
+type BuildStep struct {
+	// <p>步骤名（建议 kebab-case，如 build-image），出现在 DescribeCloudAppVersion.Steps[].Name</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>shell 脚本，支持单行或多行</p>
+	Command *string `json:"Command,omitnil,omitempty" name:"Command"`
+}
+
+type BuildStepStatus struct {
+	// <p>构建步骤名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>构建状态</p>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>构建耗时</p>
+	Duration *string `json:"Duration,omitnil,omitempty" name:"Duration"`
+}
+
 // Predefined struct for user
 type CheckTcbServiceRequestParams struct {
 
@@ -629,6 +693,33 @@ type CloudAppServiceItem struct {
 
 	// 部署类型
 	DeployType *string `json:"DeployType,omitnil,omitempty" name:"DeployType"`
+}
+
+type CloudAppVersionItem struct {
+	// <p>版本名</p>
+	VersionName *string `json:"VersionName,omitnil,omitempty" name:"VersionName"`
+
+	// <p>构建方式</p>
+	BuildType *string `json:"BuildType,omitnil,omitempty" name:"BuildType"`
+
+	// <p>构建Id</p>
+	BuildId *string `json:"BuildId,omitnil,omitempty" name:"BuildId"`
+
+	// <p>构建状态</p>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>框架名</p>
+	Framework *string `json:"Framework,omitnil,omitempty" name:"Framework"`
+
+	// <p>构建配置</p>
+	StaticConfig *StaticConfig `json:"StaticConfig,omitnil,omitempty" name:"StaticConfig"`
+
+	// <p>构建时间</p>
+	BuildTime *string `json:"BuildTime,omitnil,omitempty" name:"BuildTime"`
+
+	// <p>构建步骤</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Steps []*BuildStepStatus `json:"Steps,omitnil,omitempty" name:"Steps"`
 }
 
 type ClsInfo struct {
@@ -1131,6 +1222,132 @@ func (r *CreateBillDealResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateBillDealResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateCloudAppRequestParams struct {
+	// <p>环境ID</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// <p>服务名</p>
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// <p>部署类型</p>
+	DeployType *string `json:"DeployType,omitnil,omitempty" name:"DeployType"`
+
+	// <p>构建类型</p>
+	BuildType *string `json:"BuildType,omitnil,omitempty" name:"BuildType"`
+
+	// <p>静态应用创建配置信息</p>
+	StaticConfig *StaticConfig `json:"StaticConfig,omitnil,omitempty" name:"StaticConfig"`
+
+	// <p>源码定义</p>
+	Source *BuildSource `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// <p>Commands 与 CustomSteps 至少填一个</p>
+	Commands *BuildCommands `json:"Commands,omitnil,omitempty" name:"Commands"`
+
+	// <p>Commands 与 CustomSteps 至少填一个，docker 镜像构建场景强烈建议用 CustomSteps</p>
+	Env []*Variable `json:"Env,omitnil,omitempty" name:"Env"`
+
+	// <p>非敏感环境变量，构建容器中以 $KEY 引用</p>
+	CustomSteps []*BuildStep `json:"CustomSteps,omitnil,omitempty" name:"CustomSteps"`
+
+	// <p>敏感凭证（AES 加密落库），构建容器中以 $SECRET_NAME 引用</p>
+	Secrets []*BuildSecret `json:"Secrets,omitnil,omitempty" name:"Secrets"`
+}
+
+type CreateCloudAppRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>环境ID</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// <p>服务名</p>
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// <p>部署类型</p>
+	DeployType *string `json:"DeployType,omitnil,omitempty" name:"DeployType"`
+
+	// <p>构建类型</p>
+	BuildType *string `json:"BuildType,omitnil,omitempty" name:"BuildType"`
+
+	// <p>静态应用创建配置信息</p>
+	StaticConfig *StaticConfig `json:"StaticConfig,omitnil,omitempty" name:"StaticConfig"`
+
+	// <p>源码定义</p>
+	Source *BuildSource `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// <p>Commands 与 CustomSteps 至少填一个</p>
+	Commands *BuildCommands `json:"Commands,omitnil,omitempty" name:"Commands"`
+
+	// <p>Commands 与 CustomSteps 至少填一个，docker 镜像构建场景强烈建议用 CustomSteps</p>
+	Env []*Variable `json:"Env,omitnil,omitempty" name:"Env"`
+
+	// <p>非敏感环境变量，构建容器中以 $KEY 引用</p>
+	CustomSteps []*BuildStep `json:"CustomSteps,omitnil,omitempty" name:"CustomSteps"`
+
+	// <p>敏感凭证（AES 加密落库），构建容器中以 $SECRET_NAME 引用</p>
+	Secrets []*BuildSecret `json:"Secrets,omitnil,omitempty" name:"Secrets"`
+}
+
+func (r *CreateCloudAppRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCloudAppRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "ServiceName")
+	delete(f, "DeployType")
+	delete(f, "BuildType")
+	delete(f, "StaticConfig")
+	delete(f, "Source")
+	delete(f, "Commands")
+	delete(f, "Env")
+	delete(f, "CustomSteps")
+	delete(f, "Secrets")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCloudAppRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateCloudAppResponseParams struct {
+	// <p>构建Id</p>
+	BuildId *string `json:"BuildId,omitnil,omitempty" name:"BuildId"`
+
+	// <p>版本名称</p>
+	VersionName *string `json:"VersionName,omitnil,omitempty" name:"VersionName"`
+
+	// <p>服务名称</p>
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateCloudAppResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateCloudAppResponseParams `json:"Response"`
+}
+
+func (r *CreateCloudAppResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCloudAppResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2223,6 +2440,155 @@ func (r *DeleteAuthDomainResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteCloudAppRequestParams struct {
+	// 环境ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// 部署类型
+	DeployType *string `json:"DeployType,omitnil,omitempty" name:"DeployType"`
+
+	// 服务名
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+}
+
+type DeleteCloudAppRequest struct {
+	*tchttp.BaseRequest
+	
+	// 环境ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// 部署类型
+	DeployType *string `json:"DeployType,omitnil,omitempty" name:"DeployType"`
+
+	// 服务名
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+}
+
+func (r *DeleteCloudAppRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCloudAppRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "DeployType")
+	delete(f, "ServiceName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCloudAppRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteCloudAppResponseParams struct {
+	// 是否删除成功
+	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteCloudAppResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteCloudAppResponseParams `json:"Response"`
+}
+
+func (r *DeleteCloudAppResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCloudAppResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteCloudAppVersionRequestParams struct {
+	// 环境ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// 部署类型
+	DeployType *string `json:"DeployType,omitnil,omitempty" name:"DeployType"`
+
+	// 服务名
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// 版本名
+	VersionName *string `json:"VersionName,omitnil,omitempty" name:"VersionName"`
+}
+
+type DeleteCloudAppVersionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 环境ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// 部署类型
+	DeployType *string `json:"DeployType,omitnil,omitempty" name:"DeployType"`
+
+	// 服务名
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// 版本名
+	VersionName *string `json:"VersionName,omitnil,omitempty" name:"VersionName"`
+}
+
+func (r *DeleteCloudAppVersionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCloudAppVersionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "DeployType")
+	delete(f, "ServiceName")
+	delete(f, "VersionName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCloudAppVersionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteCloudAppVersionResponseParams struct {
+	// 是否删除成功
+	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteCloudAppVersionResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteCloudAppVersionResponseParams `json:"Response"`
+}
+
+func (r *DeleteCloudAppVersionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCloudAppVersionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteHTTPServiceRouteRequestParams struct {
 	// 环境ID
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
@@ -3039,6 +3405,188 @@ func (r *DescribeClientResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeCloudAppCosInfoRequestParams struct {
+	// 环境id
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// 服务名
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// 部署类型
+	DeployType *string `json:"DeployType,omitnil,omitempty" name:"DeployType"`
+
+	// 时间戳
+	UnixTimestamp *string `json:"UnixTimestamp,omitnil,omitempty" name:"UnixTimestamp"`
+
+	// 文件后缀
+	Suffix *string `json:"Suffix,omitnil,omitempty" name:"Suffix"`
+
+	// 是否需要下载
+	NeedDownload *bool `json:"NeedDownload,omitnil,omitempty" name:"NeedDownload"`
+}
+
+type DescribeCloudAppCosInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 环境id
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// 服务名
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// 部署类型
+	DeployType *string `json:"DeployType,omitnil,omitempty" name:"DeployType"`
+
+	// 时间戳
+	UnixTimestamp *string `json:"UnixTimestamp,omitnil,omitempty" name:"UnixTimestamp"`
+
+	// 文件后缀
+	Suffix *string `json:"Suffix,omitnil,omitempty" name:"Suffix"`
+
+	// 是否需要下载
+	NeedDownload *bool `json:"NeedDownload,omitnil,omitempty" name:"NeedDownload"`
+}
+
+func (r *DescribeCloudAppCosInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCloudAppCosInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "ServiceName")
+	delete(f, "DeployType")
+	delete(f, "UnixTimestamp")
+	delete(f, "Suffix")
+	delete(f, "NeedDownload")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCloudAppCosInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCloudAppCosInfoResponseParams struct {
+	// 上传url
+	UploadUrl *string `json:"UploadUrl,omitnil,omitempty" name:"UploadUrl"`
+
+	// 上传header
+	UploadHeaders []*KVPair `json:"UploadHeaders,omitnil,omitempty" name:"UploadHeaders"`
+
+	// 下载链接
+	DownloadUrl *string `json:"DownloadUrl,omitnil,omitempty" name:"DownloadUrl"`
+
+	// 下载Httpheader
+	DownloadHeaders []*KVPair `json:"DownloadHeaders,omitnil,omitempty" name:"DownloadHeaders"`
+
+	// 时间戳
+	UnixTimestamp *string `json:"UnixTimestamp,omitnil,omitempty" name:"UnixTimestamp"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeCloudAppCosInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCloudAppCosInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeCloudAppCosInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCloudAppCosInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCloudAppInfoRequestParams struct {
+
+}
+
+type DescribeCloudAppInfoRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeCloudAppInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCloudAppInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCloudAppInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCloudAppInfoResponseParams struct {
+	// <p>服务名称</p>
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// <p>框架名称</p>
+	Framework *string `json:"Framework,omitnil,omitempty" name:"Framework"`
+
+	// <p>域名</p>
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// <p>构建路径</p>
+	AppPath *string `json:"AppPath,omitnil,omitempty" name:"AppPath"`
+
+	// <p>服务创建时间</p>
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>最新版本名</p>
+	LatestVersionName *string `json:"LatestVersionName,omitnil,omitempty" name:"LatestVersionName"`
+
+	// <p>最新版本状态</p>
+	LatestStatus *string `json:"LatestStatus,omitnil,omitempty" name:"LatestStatus"`
+
+	// <p>最新版本构建时间</p>
+	LatestBuildTime *string `json:"LatestBuildTime,omitnil,omitempty" name:"LatestBuildTime"`
+
+	// <p>部署类型</p>
+	DeployType *string `json:"DeployType,omitnil,omitempty" name:"DeployType"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeCloudAppInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCloudAppInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeCloudAppInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCloudAppInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeCloudAppListRequestParams struct {
 	// <p>环境ID</p>
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
@@ -3123,6 +3671,197 @@ func (r *DescribeCloudAppListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCloudAppListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCloudAppVersionListRequestParams struct {
+	// <p>环境ID</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// <p>部署类型</p>
+	DeployType *string `json:"DeployType,omitnil,omitempty" name:"DeployType"`
+
+	// <p>服务名</p>
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// <p>页大小</p>
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// <p>页号</p>
+	PageNo *int64 `json:"PageNo,omitnil,omitempty" name:"PageNo"`
+}
+
+type DescribeCloudAppVersionListRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>环境ID</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// <p>部署类型</p>
+	DeployType *string `json:"DeployType,omitnil,omitempty" name:"DeployType"`
+
+	// <p>服务名</p>
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// <p>页大小</p>
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// <p>页号</p>
+	PageNo *int64 `json:"PageNo,omitnil,omitempty" name:"PageNo"`
+}
+
+func (r *DescribeCloudAppVersionListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCloudAppVersionListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "DeployType")
+	delete(f, "ServiceName")
+	delete(f, "PageSize")
+	delete(f, "PageNo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCloudAppVersionListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCloudAppVersionListResponseParams struct {
+	// <p>版本列表</p>
+	VersionList []*CloudAppVersionItem `json:"VersionList,omitnil,omitempty" name:"VersionList"`
+
+	// <p>总数</p>
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeCloudAppVersionListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCloudAppVersionListResponseParams `json:"Response"`
+}
+
+func (r *DescribeCloudAppVersionListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCloudAppVersionListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCloudAppVersionRequestParams struct {
+	// <p>环境ID</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// <p>服务名</p>
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// <p>部署类型</p>
+	DeployType *string `json:"DeployType,omitnil,omitempty" name:"DeployType"`
+
+	// <p>版本名</p>
+	VersionName *string `json:"VersionName,omitnil,omitempty" name:"VersionName"`
+
+	// <p>构建id</p>
+	BuildId *string `json:"BuildId,omitnil,omitempty" name:"BuildId"`
+}
+
+type DescribeCloudAppVersionRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>环境ID</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// <p>服务名</p>
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// <p>部署类型</p>
+	DeployType *string `json:"DeployType,omitnil,omitempty" name:"DeployType"`
+
+	// <p>版本名</p>
+	VersionName *string `json:"VersionName,omitnil,omitempty" name:"VersionName"`
+
+	// <p>构建id</p>
+	BuildId *string `json:"BuildId,omitnil,omitempty" name:"BuildId"`
+}
+
+func (r *DescribeCloudAppVersionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCloudAppVersionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "ServiceName")
+	delete(f, "DeployType")
+	delete(f, "VersionName")
+	delete(f, "BuildId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCloudAppVersionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCloudAppVersionResponseParams struct {
+	// <p>构建类型</p>
+	BuildType *string `json:"BuildType,omitnil,omitempty" name:"BuildType"`
+
+	// <p>构建Id</p>
+	BuildId *string `json:"BuildId,omitnil,omitempty" name:"BuildId"`
+
+	// <p>构建状态</p>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>框架</p>
+	Framework *string `json:"Framework,omitnil,omitempty" name:"Framework"`
+
+	// <p>静态托管配置信息</p>
+	StaticConfig *StaticConfig `json:"StaticConfig,omitnil,omitempty" name:"StaticConfig"`
+
+	// <p>构建时间</p>
+	BuildTime *string `json:"BuildTime,omitnil,omitempty" name:"BuildTime"`
+
+	// <p>[]BuildStepStatus 的 JSON 序列化</p>
+	Steps []*BuildStepStatus `json:"Steps,omitnil,omitempty" name:"Steps"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeCloudAppVersionResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCloudAppVersionResponseParams `json:"Response"`
+}
+
+func (r *DescribeCloudAppVersionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCloudAppVersionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -9157,6 +9896,73 @@ func (r *SearchClsLogResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type StaticCmd struct {
+	// 构建命令
+	BuildCmd *string `json:"BuildCmd,omitnil,omitempty" name:"BuildCmd"`
+
+	// 安装命令
+	InstallCmd *string `json:"InstallCmd,omitnil,omitempty" name:"InstallCmd"`
+
+	// 部署命令
+	DeployCmd *string `json:"DeployCmd,omitnil,omitempty" name:"DeployCmd"`
+}
+
+type StaticConfig struct {
+	// 框架类型：vue、react、nextjs 等
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Framework *string `json:"Framework,omitnil,omitempty" name:"Framework"`
+
+	// Node.js 版本，默认 20
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeJsVersion *string `json:"NodeJsVersion,omitnil,omitempty" name:"NodeJsVersion"`
+
+	// 访问路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppPath *string `json:"AppPath,omitnil,omitempty" name:"AppPath"`
+
+	// 构建目录
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BuildPath *string `json:"BuildPath,omitnil,omitempty" name:"BuildPath"`
+
+	// ZIP 文件地址（BuildType=ZIP/TEMPLATE 时使用）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ZipFileUrl *string `json:"ZipFileUrl,omitnil,omitempty" name:"ZipFileUrl"`
+
+	// COS 时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CosTimestamp *string `json:"CosTimestamp,omitnil,omitempty" name:"CosTimestamp"`
+
+	// COS 文件后缀
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CosSuffix *string `json:"CosSuffix,omitnil,omitempty" name:"CosSuffix"`
+
+	// 代码源平台：github、gitlab、gitee
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CodeSource *string `json:"CodeSource,omitnil,omitempty" name:"CodeSource"`
+
+	// 代码仓库
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CodeRepo *string `json:"CodeRepo,omitnil,omitempty" name:"CodeRepo"`
+
+	// 代码分支
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CodeBranch *string `json:"CodeBranch,omitnil,omitempty" name:"CodeBranch"`
+
+	// 构建参数 JSON 字符串
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StaticCmd *StaticCmd `json:"StaticCmd,omitnil,omitempty" name:"StaticCmd"`
+
+	// 构建环境变量 JSON 字符串
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StaticEnv *StaticEnvironment `json:"StaticEnv,omitnil,omitempty" name:"StaticEnv"`
+}
+
+type StaticEnvironment struct {
+	// 环境变量数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Variables []*Variable `json:"Variables,omitnil,omitempty" name:"Variables"`
+}
+
 type StaticStorageInfo struct {
 	// <p>静态CDN域名</p>
 	StaticDomain *string `json:"StaticDomain,omitnil,omitempty" name:"StaticDomain"`
@@ -9610,6 +10416,14 @@ type ValueDetail struct {
 
 	// <p>资源点按量用量</p>
 	ReportValue *float64 `json:"ReportValue,omitnil,omitempty" name:"ReportValue"`
+}
+
+type Variable struct {
+	// 变量的名称
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 变量的值
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 type VerificationConfig struct {

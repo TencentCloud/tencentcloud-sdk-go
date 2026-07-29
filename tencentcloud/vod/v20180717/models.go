@@ -238,8 +238,11 @@ type AdaptiveDynamicStreamingTemplate struct {
 	// <p>模板最后修改时间，使用 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式</a>。</p>
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// <p>切片类型，仅当 Format 为 HLS 时有效。</p>
+	// <p>切片类型。</p><p>ts: HLS，内部映射为ts-segment</p><p>fmp4: HLS/DASH，HLS情况下内部映射为mp4-mp4-segment，DASH情况下内部映射为mp4-mp4-byterange</p><p>ts-segment：HLS+TS 切片</p><p>ts-byterange：HLS+TS byte range</p><p>mp4-segment：HLS+MP4 切片</p><p>mp4-byterange：HLS+MP4 byte range</p><p>ts-packed-audio：HLS+TS+Packed Audio 切片</p><p>mp4-packed-audio：HLS+MP4+Packed Audio 切片</p><p>ts-ts-segment：HLS+TS+TS 切片</p><p>ts-ts-byterange：HLS+TS+TS byte range</p><p>mp4-mp4-segment：HLS+MP4+MP4 切片</p><p>mp4-mp4-byterange：HLS/DASH+MP4+MP4 byte range</p><p>ts-packed-audio-byterange：HLS+TS+Packed Audio byte range</p><p>mp4-packed-audio-byterange：HLS+MP4+Packed Audio byte range<br> 默认值：ts-segment 注：自适应码流的分片格式以此字段为准。DASH格式下SegmentType只能为mp4-mp4-byterange。</p>
 	SegmentType *string `json:"SegmentType,omitnil,omitempty" name:"SegmentType"`
+
+	// <p>切片平均时长</p><p>单位：秒</p><p>默认值：6</p><p>转自适应码流使用SegmentDuration设置分片时长，而非HlsTime字段.</p>
+	SegmentDuration *int64 `json:"SegmentDuration,omitnil,omitempty" name:"SegmentDuration"`
 }
 
 type AdaptiveStreamTemplate struct {
@@ -32825,7 +32828,7 @@ type TextWatermarkTemplateInputForUpdate struct {
 }
 
 type ThirdPartyDrmInfo struct {
-	// <p>加密类型：</p><ul><li>FairPlay：只能用于HLS，切片格式只能是mp4</li><li>Widevine：可以用于HLS和DASH，切片格式只能是mp4</li><li>PlayReady：可以用于HLS和DASH，切片格式只能是mp4</li><li>Widevine+FairPlay，PlayReady+FairPlay，Widevine PlayReady FairPlay组合: 只能用于HLS，切片格式只能是mp4</li><li>Widevine PlayReady组合: 可用于HLS、MPEG-DASH，切片格式只能是mp4</li></ul>
+	// <p>加密类型：</p><ul><li>FairPlay：只能用于HLS，切片格式只能是mp4或mp4-mp4-segment</li><li>Widevine：可以用于HLS和DASH，HLS下切片格式只能是mp4或mp4-mp4-segment，DASH下切片格式只能是mp4或mp4-mp4-byterange</li><li>PlayReady：可以用于HLS和DASH，HLS下切片格式只能是mp4或mp4-mp4-segment，DASH下切片格式只能是mp4或mp4-mp4-byterange</li><li>Widevine+FairPlay，PlayReady+FairPlay，Widevine PlayReady FairPlay组合: 只能用于HLS，切片格式只能是mp4或mp4-mp4-segment</li><li>Widevine PlayReady组合: 可用于HLS和DASH，HLS下切片格式只能是mp4或mp4-mp4-segment，DASH下切片格式只能是mp4或mp4-mp4-byterange</li></ul>
 	DrmTypes []*string `json:"DrmTypes,omitnil,omitempty" name:"DrmTypes"`
 
 	// <p>第三方DRM厂商信息。</p>

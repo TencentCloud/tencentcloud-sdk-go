@@ -699,77 +699,80 @@ type DataKey struct {
 }
 
 type DataKeyMetadata struct {
-	// DataKey的全局唯一标识
+	// <p>DataKey的全局唯一标识</p>
 	DataKeyId *string `json:"DataKeyId,omitnil,omitempty" name:"DataKeyId"`
 
-	// CMK的全局唯一标识
+	// <p>CMK的全局唯一标识</p>
 	KeyId *string `json:"KeyId,omitnil,omitempty" name:"KeyId"`
 
-	// CMK的名称
+	// <p>CMK的名称</p>
 	KeyName *string `json:"KeyName,omitnil,omitempty" name:"KeyName"`
 
-	// 作为密钥更容易辨识，更容易被人看懂的数据密钥名称
+	// <p>作为密钥更容易辨识，更容易被人看懂的数据密钥名称</p>
 	DataKeyName *string `json:"DataKeyName,omitnil,omitempty" name:"DataKeyName"`
 
-	// 数据密钥的长度,单位字节
+	// <p>数据密钥的长度,单位字节</p>
 	NumberOfBytes *uint64 `json:"NumberOfBytes,omitnil,omitempty" name:"NumberOfBytes"`
 
-	// 密钥创建时间
+	// <p>密钥创建时间</p>
 	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// DataKey的描述
+	// <p>DataKey的描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// DataKey的状态， 取值为：Enabled | Disabled | PendingDelete
+	// <p>DataKey的状态， 取值为：Enabled | Disabled | PendingDelete</p>
 	KeyState *string `json:"KeyState,omitnil,omitempty" name:"KeyState"`
 
-	// 创建者
+	// <p>创建者</p>
 	CreatorUin *uint64 `json:"CreatorUin,omitnil,omitempty" name:"CreatorUin"`
 
-	// 数据密钥的创建者，用户创建的为 user，授权各云产品自动创建的为对应的产品名
+	// <p>数据密钥的创建者，用户创建的为 user，授权各云产品自动创建的为对应的产品名</p>
 	Owner *string `json:"Owner,omitnil,omitempty" name:"Owner"`
 
-	// 计划删除的时间
+	// <p>计划删除的时间</p>
 	DeletionDate *uint64 `json:"DeletionDate,omitnil,omitempty" name:"DeletionDate"`
 
-	// DataKey 密钥材料类型，由KMS创建的为： TENCENT_KMS， 由用户导入的类型为：EXTERNAL
+	// <p>DataKey 密钥材料类型，由KMS创建的为： TENCENT_KMS， 由用户导入的类型为：EXTERNAL</p>
 	Origin *string `json:"Origin,omitnil,omitempty" name:"Origin"`
 
-	// HSM 集群 ID（仅对 KMS 独占版/托管版服务实例有效）
+	// <p>HSM 集群 ID（仅对 KMS 独占版/托管版服务实例有效）</p>
 	HsmClusterId *string `json:"HsmClusterId,omitnil,omitempty" name:"HsmClusterId"`
 
-	// 资源ID，格式：creatorUin/$creatorUin/$dataKeyId
+	// <p>资源ID，格式：creatorUin/$creatorUin/$dataKeyId</p>
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
-	// 密钥是否是主副本。0:主本，1:同步副本。
+	// <p>密钥是否是主副本。0:主本，1:同步副本。</p>
 	IsSyncReplica *int64 `json:"IsSyncReplica,omitnil,omitempty" name:"IsSyncReplica"`
 
-	// 同步的原始地域
+	// <p>同步的原始地域</p>
 	SourceRegion *string `json:"SourceRegion,omitnil,omitempty" name:"SourceRegion"`
 
-	// 密钥同步的状态，0:未同步，1:同步成功，2:同步失败，3:同步中。
+	// <p>密钥同步的状态，0:未同步，1:同步成功，2:同步失败，3:同步中。</p>
 	SyncStatus *int64 `json:"SyncStatus,omitnil,omitempty" name:"SyncStatus"`
 
-	// 同步的结果描述
+	// <p>同步的结果描述</p>
 	SyncMessages *string `json:"SyncMessages,omitnil,omitempty" name:"SyncMessages"`
 
-	// 同步的开始时间
+	// <p>同步的开始时间</p>
 	SyncStartTime *uint64 `json:"SyncStartTime,omitnil,omitempty" name:"SyncStartTime"`
 
-	// 同步的结束时间
+	// <p>同步的结束时间</p>
 	SyncEndTime *uint64 `json:"SyncEndTime,omitnil,omitempty" name:"SyncEndTime"`
 
-	// 同步的原始集群，如果为空，是公有云公共集群
+	// <p>同步的原始集群，如果为空，是公有云公共集群</p>
 	SourceHsmClusterId *string `json:"SourceHsmClusterId,omitnil,omitempty" name:"SourceHsmClusterId"`
 
-	// 成员账号appId
+	// <p>成员账号appId</p>
 	AccountAppId *uint64 `json:"AccountAppId,omitnil,omitempty" name:"AccountAppId"`
 
-	// 成员账号uin
+	// <p>成员账号uin</p>
 	AccountUin *uint64 `json:"AccountUin,omitnil,omitempty" name:"AccountUin"`
 
-	// 成员账号名称
+	// <p>成员账号名称</p>
 	AccountName *string `json:"AccountName,omitnil,omitempty" name:"AccountName"`
+
+	// <p>创建者UIN</p>
+	CreatorUinString *string `json:"CreatorUinString,omitnil,omitempty" name:"CreatorUinString"`
 }
 
 // Predefined struct for user
@@ -3219,6 +3222,12 @@ type GetServiceStatusResponseParams struct {
 	// <p>地域下的QPS</p>
 	RegionsQps []*RegionQps `json:"RegionsQps,omitnil,omitempty" name:"RegionsQps"`
 
+	// <p>资源的地域信息</p>
+	ResourceZone *uint64 `json:"ResourceZone,omitnil,omitempty" name:"ResourceZone"`
+
+	// <p>资源的地域可用区信息</p>
+	ResourceRegion *uint64 `json:"ResourceRegion,omitnil,omitempty" name:"ResourceRegion"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -3513,6 +3522,9 @@ type KeyMetadata struct {
 
 	// <p>成员账号名称</p>
 	AccountName *string `json:"AccountName,omitnil,omitempty" name:"AccountName"`
+
+	// <p>创建者UIN</p>
+	CreatorUinString *string `json:"CreatorUinString,omitnil,omitempty" name:"CreatorUinString"`
 }
 
 // Predefined struct for user

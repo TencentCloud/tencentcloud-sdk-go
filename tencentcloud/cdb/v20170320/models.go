@@ -17729,6 +17729,70 @@ type UpgradeEngineVersionParams struct {
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
+// Predefined struct for user
+type UpgradeRoGroupRequestParams struct {
+	// 实例id。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// RO组的ID。
+	UniqRoGroupId *string `json:"UniqRoGroupId,omitnil,omitempty" name:"UniqRoGroupId"`
+}
+
+type UpgradeRoGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例id。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// RO组的ID。
+	UniqRoGroupId *string `json:"UniqRoGroupId,omitnil,omitempty" name:"UniqRoGroupId"`
+}
+
+func (r *UpgradeRoGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpgradeRoGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "UniqRoGroupId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpgradeRoGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpgradeRoGroupResponseParams struct {
+	// 异步任务ID。
+	AsyncRequestId *string `json:"AsyncRequestId,omitnil,omitempty" name:"AsyncRequestId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpgradeRoGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *UpgradeRoGroupResponseParams `json:"Response"`
+}
+
+func (r *UpgradeRoGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpgradeRoGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type UploadInfo struct {
 	// 文件所有分片数
 	AllSliceNum *int64 `json:"AllSliceNum,omitnil,omitempty" name:"AllSliceNum"`

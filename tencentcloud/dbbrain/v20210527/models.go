@@ -1023,6 +1023,75 @@ func (r *CreateDBDiagReportUrlResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateDBDiagReportUrlsRequestParams struct {
+	// <p>服务产品类型，支持值包括：&quot;mysql&quot; - 云数据库 MySQL，&quot;redis&quot; - 云数据库 Redis，&quot;cynosdb&quot; - 云数据库 TDSQL-C for MySQL，&quot;mongodb&quot; - 云数据库 MongoDB，&quot;postgres&quot; - 云数据库 PostgreSQL。</p>
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// <p>异步任务ID列表。</p>
+	AsyncRequestIds []*int64 `json:"AsyncRequestIds,omitnil,omitempty" name:"AsyncRequestIds"`
+}
+
+type CreateDBDiagReportUrlsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>服务产品类型，支持值包括：&quot;mysql&quot; - 云数据库 MySQL，&quot;redis&quot; - 云数据库 Redis，&quot;cynosdb&quot; - 云数据库 TDSQL-C for MySQL，&quot;mongodb&quot; - 云数据库 MongoDB，&quot;postgres&quot; - 云数据库 PostgreSQL。</p>
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// <p>异步任务ID列表。</p>
+	AsyncRequestIds []*int64 `json:"AsyncRequestIds,omitnil,omitempty" name:"AsyncRequestIds"`
+}
+
+func (r *CreateDBDiagReportUrlsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDBDiagReportUrlsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Product")
+	delete(f, "AsyncRequestIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDBDiagReportUrlsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateDBDiagReportUrlsResponseParams struct {
+	// <p>URL条目总数。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>报告URL信息列表。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*DiagReportUrlItem `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateDBDiagReportUrlsResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateDBDiagReportUrlsResponseParams `json:"Response"`
+}
+
+func (r *CreateDBDiagReportUrlsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDBDiagReportUrlsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateIgnoreDiagRecordRequestParams struct {
 	// <p>实例ID。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -3455,63 +3524,69 @@ func (r *DescribeDBDiagReportContentResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDBDiagReportTasksRequestParams struct {
-	// 第一个任务的开始时间，用于范围查询，时间格式如：2019-09-10 12:13:14。
+	// <p>第一个任务的开始时间，用于范围查询，时间格式如：2019-09-10 12:13:14。</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 最后一个任务的开始时间，用于范围查询，时间格式如：2019-09-10 12:13:14。
+	// <p>最后一个任务的开始时间，用于范围查询，时间格式如：2019-09-10 12:13:14。</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 实例ID数组，用于筛选指定实例的任务列表。
+	// <p>实例ID数组，用于筛选指定实例的任务列表。。可通过 <a href="https://cloud.tencent.com/document/api/1130/57798">DescribeDiagDBInstances</a> 接口获取。</p>
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 任务的触发来源，支持的取值包括："DAILY_INSPECTION" - 实例巡检；"SCHEDULED" - 计划任务；"MANUAL" - 手动触发。
+	// <p>任务的触发来源，支持的取值包括：&quot;DAILY_INSPECTION&quot; - 实例巡检；&quot;SCHEDULED&quot; - 计划任务；&quot;MANUAL&quot; - 手动触发。</p>
 	Sources []*string `json:"Sources,omitnil,omitempty" name:"Sources"`
 
-	// 报告的健康等级，支持的取值包括："HEALTH" - 健康；"SUB_HEALTH" - 亚健康；"RISK" - 危险；"HIGH_RISK" - 高危。
+	// <p>报告的健康等级，支持的取值包括：&quot;HEALTH&quot; - 健康；&quot;SUB_HEALTH&quot; - 亚健康；&quot;RISK&quot; - 危险；&quot;HIGH_RISK&quot; - 高危。</p>
 	HealthLevels *string `json:"HealthLevels,omitnil,omitempty" name:"HealthLevels"`
 
-	// 任务的状态，支持的取值包括："created" - 新建；"chosen" - 待执行； "running" - 执行中；"failed" - 失败；"finished" - 已完成。
+	// <p>任务的状态，支持的取值包括：&quot;created&quot; - 新建；&quot;chosen&quot; - 待执行； &quot;running&quot; - 执行中；&quot;failed&quot; - 失败；&quot;finished&quot; - 已完成。</p>
 	TaskStatuses *string `json:"TaskStatuses,omitnil,omitempty" name:"TaskStatuses"`
 
-	// 偏移量，默认0。
+	// <p>偏移量，默认0。</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，默认20，最大值为100。
+	// <p>返回数量，默认20，最大值为100。</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，"redis" - 云数据库 Redis，默认为"mysql"。
+	// <p>服务产品类型，支持值：&quot;mysql&quot; - 云数据库 MySQL；&quot;cynosdb&quot; - 云数据库 TDSQL-C for MySQL，&quot;redis&quot; - 云数据库 Redis，默认为&quot;mysql&quot;。</p>
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// <p>根据任务所属实例的标签信息进行过滤</p>
+	TagFilters []*TagFilterGroup `json:"TagFilters,omitnil,omitempty" name:"TagFilters"`
 }
 
 type DescribeDBDiagReportTasksRequest struct {
 	*tchttp.BaseRequest
 	
-	// 第一个任务的开始时间，用于范围查询，时间格式如：2019-09-10 12:13:14。
+	// <p>第一个任务的开始时间，用于范围查询，时间格式如：2019-09-10 12:13:14。</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 最后一个任务的开始时间，用于范围查询，时间格式如：2019-09-10 12:13:14。
+	// <p>最后一个任务的开始时间，用于范围查询，时间格式如：2019-09-10 12:13:14。</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 实例ID数组，用于筛选指定实例的任务列表。
+	// <p>实例ID数组，用于筛选指定实例的任务列表。。可通过 <a href="https://cloud.tencent.com/document/api/1130/57798">DescribeDiagDBInstances</a> 接口获取。</p>
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 任务的触发来源，支持的取值包括："DAILY_INSPECTION" - 实例巡检；"SCHEDULED" - 计划任务；"MANUAL" - 手动触发。
+	// <p>任务的触发来源，支持的取值包括：&quot;DAILY_INSPECTION&quot; - 实例巡检；&quot;SCHEDULED&quot; - 计划任务；&quot;MANUAL&quot; - 手动触发。</p>
 	Sources []*string `json:"Sources,omitnil,omitempty" name:"Sources"`
 
-	// 报告的健康等级，支持的取值包括："HEALTH" - 健康；"SUB_HEALTH" - 亚健康；"RISK" - 危险；"HIGH_RISK" - 高危。
+	// <p>报告的健康等级，支持的取值包括：&quot;HEALTH&quot; - 健康；&quot;SUB_HEALTH&quot; - 亚健康；&quot;RISK&quot; - 危险；&quot;HIGH_RISK&quot; - 高危。</p>
 	HealthLevels *string `json:"HealthLevels,omitnil,omitempty" name:"HealthLevels"`
 
-	// 任务的状态，支持的取值包括："created" - 新建；"chosen" - 待执行； "running" - 执行中；"failed" - 失败；"finished" - 已完成。
+	// <p>任务的状态，支持的取值包括：&quot;created&quot; - 新建；&quot;chosen&quot; - 待执行； &quot;running&quot; - 执行中；&quot;failed&quot; - 失败；&quot;finished&quot; - 已完成。</p>
 	TaskStatuses *string `json:"TaskStatuses,omitnil,omitempty" name:"TaskStatuses"`
 
-	// 偏移量，默认0。
+	// <p>偏移量，默认0。</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，默认20，最大值为100。
+	// <p>返回数量，默认20，最大值为100。</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，"redis" - 云数据库 Redis，默认为"mysql"。
+	// <p>服务产品类型，支持值：&quot;mysql&quot; - 云数据库 MySQL；&quot;cynosdb&quot; - 云数据库 TDSQL-C for MySQL，&quot;redis&quot; - 云数据库 Redis，默认为&quot;mysql&quot;。</p>
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// <p>根据任务所属实例的标签信息进行过滤</p>
+	TagFilters []*TagFilterGroup `json:"TagFilters,omitnil,omitempty" name:"TagFilters"`
 }
 
 func (r *DescribeDBDiagReportTasksRequest) ToJsonString() string {
@@ -3535,6 +3610,7 @@ func (r *DescribeDBDiagReportTasksRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "Product")
+	delete(f, "TagFilters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDBDiagReportTasksRequest has unknown keys!", "")
 	}
@@ -3543,10 +3619,10 @@ func (r *DescribeDBDiagReportTasksRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDBDiagReportTasksResponseParams struct {
-	// 任务总数目。
+	// <p>任务总数目。</p>
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 任务列表。
+	// <p>任务列表。</p>
 	Tasks []*HealthReportTask `json:"Tasks,omitnil,omitempty" name:"Tasks"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3566,6 +3642,63 @@ func (r *DescribeDBDiagReportTasksResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeDBDiagReportTasksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDBInstancesRequestParams struct {
+	// <p>实例ID列表，最多支持100个。支持多种数据库产品的实例ID，系统会根据实例ID前缀自动识别产品类型。</p>
+	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
+}
+
+type DescribeDBInstancesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>实例ID列表，最多支持100个。支持多种数据库产品的实例ID，系统会根据实例ID前缀自动识别产品类型。</p>
+	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
+}
+
+func (r *DescribeDBInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDBInstancesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDBInstancesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDBInstancesResponseParams struct {
+	// <p>实例列表。</p>
+	Items []*InstanceItem `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDBInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDBInstancesResponseParams `json:"Response"`
+}
+
+func (r *DescribeDBInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDBInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -7483,6 +7616,20 @@ type DiagHistoryEventItem struct {
 	Vport *int64 `json:"Vport,omitnil,omitempty" name:"Vport"`
 }
 
+type DiagReportUrlItem struct {
+	// 异步任务ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AsyncRequestId *int64 `json:"AsyncRequestId,omitnil,omitempty" name:"AsyncRequestId"`
+
+	// 报告下载地址。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReportUrl *string `json:"ReportUrl,omitnil,omitempty" name:"ReportUrl"`
+
+	// 链接过期时间，Unix时间戳（秒），-1表示永不过期。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpireTime *int64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+}
+
 type EventInfo struct {
 	// 事件 ID 。
 	EventId *int64 `json:"EventId,omitnil,omitempty" name:"EventId"`
@@ -7524,29 +7671,32 @@ type GroupItem struct {
 }
 
 type HealthReportTask struct {
-	// 异步任务请求 ID。
+	// <p>异步任务请求 ID。</p>
 	AsyncRequestId *int64 `json:"AsyncRequestId,omitnil,omitempty" name:"AsyncRequestId"`
 
-	// 任务的触发来源，支持的取值包括："DAILY_INSPECTION" - 实例巡检；"SCHEDULED" - 定时生成；"MANUAL" - 手动触发。
+	// <p>任务的触发来源，支持的取值包括：&quot;DAILY_INSPECTION&quot; - 实例巡检；&quot;SCHEDULED&quot; - 定时生成；&quot;MANUAL&quot; - 手动触发。</p>
 	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 
-	// 任务完成进度，单位%。
+	// <p>任务完成进度，单位%。</p>
 	Progress *int64 `json:"Progress,omitnil,omitempty" name:"Progress"`
 
-	// 任务创建时间。
+	// <p>任务创建时间，如“2025-09-30 12:13:14”。</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 任务开始执行时间。
+	// <p>任务开始执行时间，如“2025-09-30 13:13:14”。</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 任务完成执行时间。
+	// <p>任务完成执行时间，如“2025-09-30 14:13:14”。</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 任务所属实例的基础信息。
+	// <p>任务所属实例的基础信息。</p>
 	InstanceInfo *InstanceBasicInfo `json:"InstanceInfo,omitnil,omitempty" name:"InstanceInfo"`
 
-	// 健康报告中的健康信息。
+	// <p>健康报告中的健康信息。</p>
 	HealthStatus *HealthStatus `json:"HealthStatus,omitnil,omitempty" name:"HealthStatus"`
+
+	// <p>任务所属实例的标签信息</p>
+	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type HealthScoreInfo struct {
@@ -7670,7 +7820,8 @@ type InstanceBasicInfo struct {
 	// CPU数量，对于Redis为0。
 	Cpu *int64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 
-	// 实例部署模式。
+	// 实例部署模式。MySQL 实例类型取值包括"STANDARD"-标准类型,"CUSTOM"-普通类型, "EXCLUSIVE"-独占类型, "CUSTOMER_AGENT"-用户代理类型, "CUSTOMER_DIRECT"-用户直连类型,
+	// "CLOUD_NATIVE_CLUSTER_EXCLUSIVE"-云原生独占集群, "CLOUD_NATIVE_CLUSTER"-云原生集群。
 	DeployMode *string `json:"DeployMode,omitnil,omitempty" name:"DeployMode"`
 
 	// 实例内存配置。
@@ -7822,6 +7973,37 @@ type InstanceInfo struct {
 
 	// 自建MySQL的实例状态，"not_attached" - 未连接，"attached" - 连接正常，"failed" - 连接失败，"stopped" - 停止监控，unknown- 未知。
 	InstanceStatus *string `json:"InstanceStatus,omitnil,omitempty" name:"InstanceStatus"`
+}
+
+type InstanceItem struct {
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 数据库类型，如 mysql、cynosdb、mariadb、dcdb、mongodb、postgres、redis、dbbrain-mysql、tdstore。
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// 地域英文ID。
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// 集群ID，仅集群类产品返回。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 引擎版本。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EngineVersion *string `json:"EngineVersion,omitnil,omitempty" name:"EngineVersion"`
+
+	// 实例状态，1表示运行中。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 实例创建时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 实例到期时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeadlineTime *string `json:"DeadlineTime,omitnil,omitempty" name:"DeadlineTime"`
 }
 
 type IssueTypeInfo struct {
@@ -9280,6 +9462,27 @@ type TableSpaceTimeSeries struct {
 
 	// 单位时间间隔内的空间指标数据。
 	SeriesData *MonitorFloatMetricSeriesData `json:"SeriesData,omitnil,omitempty" name:"SeriesData"`
+}
+
+type TagFilterGroup struct {
+	// <p>过滤条件-标签组</p>
+	TagPairs []*TagPair `json:"TagPairs,omitnil,omitempty" name:"TagPairs"`
+}
+
+type TagInfo struct {
+	// <p>实例标签key</p>
+	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
+
+	// <p>实例标签value</p>
+	TagValue *string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
+}
+
+type TagPair struct {
+	// <p>过滤条件-标签key</p>
+	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
+
+	// <p>过滤条件标签-value</p>
+	TagValue []*string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
 }
 
 type TaskInfo struct {

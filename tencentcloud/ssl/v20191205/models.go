@@ -432,30 +432,36 @@ type Certificate struct {
 }
 
 type CertificateExtra struct {
-	// 证书可配置域名数量。
+	// <p>证书可配置域名数量。</p>
 	DomainNumber *string `json:"DomainNumber,omitnil,omitempty" name:"DomainNumber"`
 
-	// 续费原证书 ID。
+	// <p>续费原证书 ID。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OriginCertificateId *string `json:"OriginCertificateId,omitnil,omitempty" name:"OriginCertificateId"`
 
-	// 重颁发证书原始 ID。
+	// <p>重颁发证书原始 ID。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReplacedBy *string `json:"ReplacedBy,omitnil,omitempty" name:"ReplacedBy"`
 
-	// 重颁发证书ID。
+	// <p>重颁发证书ID。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReplacedFor *string `json:"ReplacedFor,omitnil,omitempty" name:"ReplacedFor"`
 
-	// 续费证书 ID。
+	// <p>续费证书 ID。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RenewOrder *string `json:"RenewOrder,omitnil,omitempty" name:"RenewOrder"`
 
-	// 是否是国密证书
+	// <p>是否是国密证书</p>
 	SMCert *int64 `json:"SMCert,omitnil,omitempty" name:"SMCert"`
 
-	// 公司类型，取值：1（个人）；2（公司）
+	// <p>公司类型，取值：1（个人）；2（公司）</p>
 	CompanyType *int64 `json:"CompanyType,omitnil,omitempty" name:"CompanyType"`
+
+	// <p>下一张订阅服务续期证书ID</p>
+	ServiceRenewCertificateId *string `json:"ServiceRenewCertificateId,omitnil,omitempty" name:"ServiceRenewCertificateId"`
+
+	// <p>上一张订阅服务来源证书ID</p>
+	ServiceOriginCertificateId *string `json:"ServiceOriginCertificateId,omitnil,omitempty" name:"ServiceOriginCertificateId"`
 }
 
 // Predefined struct for user
@@ -931,10 +937,10 @@ type Certificates struct {
 	// <p>项目 ID。</p>
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// <p>证书来源：trustasia：亚洲诚信，upload：用户上传。wosign：沃通sheca：上海CA</p>
+	// <p>证书来源：<br>trustasia：亚洲诚信，<br>upload：用户上传。<br>wosign：沃通<br>sheca：上海CA</p>
 	From *string `json:"From,omitnil,omitempty" name:"From"`
 
-	// <p>证书套餐类型：null：用户上传证书（没有套餐类型），2：TrustAsia TLS RSA CA， 3：SecureSite 增强型企业版（EV Pro）， 4：SecureSite 增强型（EV）， 5：SecureSite 企业型专业版（OV Pro），6：SecureSite 企业型（OV）， 7：SecureSite 企业型（OV）通配符， 8：Geotrust 增强型（EV）， 9：Geotrust 企业型（OV）， 10：Geotrust 企业型（OV）通配符， 11：TrustAsia 域名型多域名 SSL 证书， 12：TrustAsia 域名型（DV）通配符， 13：TrustAsia 企业型通配符（OV）SSL 证书（D3）， 14：TrustAsia 企业型（OV）SSL 证书（D3）， 15：TrustAsia 企业型多域名 （OV）SSL 证书（D3）， 16：TrustAsia 增强型 （EV）SSL 证书（D3）， 17：TrustAsia 增强型多域名（EV）SSL 证书（D3）， 18：GlobalSign 企业型（OV）SSL 证书， 19：GlobalSign 企业型通配符 （OV）SSL 证书， 20：GlobalSign 增强型 （EV）SSL 证书， 21：TrustAsia 企业型通配符多域名（OV）SSL 证书（D3）， 22：GlobalSign 企业型多域名（OV）SSL 证书， 23：GlobalSign 企业型通配符多域名（OV）SSL 证书，24：GlobalSign 增强型多域名（EV）SSL 证书，25：Wotrus 域名型证书，26：Wotrus 域名型多域名证书，27：Wotrus 域名型通配符证书，28：Wotrus 企业型证书，29：Wotrus 企业型多域名证书，30：Wotrus 企业型通配符证书，31：Wotrus 增强型证书，32：Wotrus 增强型多域名证书，33：WoTrus-国密域名型证书，34：WoTrus-国密域名型证书（多域名），35：WoTrus-国密域名型证书（通配符），37：WoTrus-国密企业型证书，38：WoTrus-国密企业型证书（多域名），39：WoTrus-国密企业型证书（通配符），40：WoTrus-国密增强型证书，41：WoTrus-国密增强型证书（多域名），42：TrustAsia-域名型证书（通配符多域名），43：DNSPod-企业型(OV)SSL证书44：DNSPod-企业型(OV)通配符SSL证书45：DNSPod-企业型(OV)多域名SSL证书46：DNSPod-增强型(EV)SSL证书47：DNSPod-增强型(EV)多域名SSL证书48：DNSPod-域名型(DV)SSL证书49：DNSPod-域名型(DV)通配符SSL证书50：DNSPod-域名型(DV)多域名SSL证书51：DNSPod（国密）-企业型(OV)SSL证书52：DNSPod（国密）-企业型(OV)通配符SSL证书53：DNSPod（国密）-企业型(OV)多域名SSL证书54：DNSPod（国密）-域名型(DV)SSL证书55：DNSPod（国密）-域名型(DV)通配符SSL证书56：DNSPod（国密）-域名型(DV)多域名SSL证书57：SecureSite 企业型专业版多域名(OV Pro)58：SecureSite 企业型多域名(OV)59：SecureSite 增强型专业版多域名(EV Pro)60：SecureSite 增强型多域名(EV)61：Geotrust 增强型多域名(EV)75：SecureSite 企业型(OV)76：SecureSite 企业型(OV)通配符77：SecureSite 增强型(EV)78：Geotrust 企业型(OV)79：Geotrust 企业型(OV)通配符80：Geotrust 增强型(EV)81：GlobalSign 企业型（OV）SSL证书82：GlobalSign 企业型通配符 （OV）SSL证书83：TrustAsia C1 DV Free85：GlobalSign 增强型 （EV）SSL证书88：GlobalSign 企业型通配符多域名 （OV）SSL证书89：GlobalSign 企业型多域名 （OV）SSL证书90：GlobalSign 增强型多域名（EV） SSL证书91：Geotrust 增强型多域名(EV)92：SecureSite 企业型专业版多域名(OV Pro)93：SecureSite 企业型多域名(OV)94：SecureSite 增强型专业版多域名(EV Pro)95：SecureSite 增强型多域名(EV)96：SecureSite 增强型专业版(EV Pro)97：SecureSite 企业型专业版(OV Pro)98：CFCA 企业型(OV)SSL证书99：CFCA 企业型多域名(OV)SSL证书100：CFCA 企业型通配符(OV)SSL证书101：CFCA 增强型(EV)SSL证书</p>
+	// <p>证书套餐类型：<br>null：用户上传证书（没有套餐类型），<br>2：TrustAsia TLS RSA CA，<br>3：SecureSite 增强型企业版（EV Pro），<br>4：SecureSite 增强型（EV），<br>5：SecureSite 企业型专业版（OV Pro），<br>6：SecureSite 企业型（OV），<br>7：SecureSite 企业型（OV）通配符，<br>8：Geotrust 增强型（EV），<br>9：Geotrust 企业型（OV），<br>10：Geotrust 企业型（OV）通配符，<br>11：TrustAsia 域名型多域名 SSL 证书，<br>12：TrustAsia 域名型（DV）通配符，<br>13：TrustAsia 企业型通配符（OV）SSL 证书（D3），<br>14：TrustAsia 企业型（OV）SSL 证书（D3），<br>15：TrustAsia 企业型多域名 （OV）SSL 证书（D3），<br>16：TrustAsia 增强型 （EV）SSL 证书（D3），<br>17：TrustAsia 增强型多域名（EV）SSL 证书（D3），<br>18：GlobalSign 企业型（OV）SSL 证书，<br>19：GlobalSign 企业型通配符 （OV）SSL 证书，<br>20：GlobalSign 增强型 （EV）SSL 证书，<br>21：TrustAsia 企业型通配符多域名（OV）SSL 证书（D3），<br>22：GlobalSign 企业型多域名（OV）SSL 证书，<br>23：GlobalSign 企业型通配符多域名（OV）SSL 证书，<br>24：GlobalSign 增强型多域名（EV）SSL 证书，<br>25：Wotrus 域名型证书，<br>26：Wotrus 域名型多域名证书，<br>27：Wotrus 域名型通配符证书，<br>28：Wotrus 企业型证书，<br>29：Wotrus 企业型多域名证书，<br>30：Wotrus 企业型通配符证书，<br>31：Wotrus 增强型证书，<br>32：Wotrus 增强型多域名证书，<br>33：WoTrus-国密域名型证书，<br>34：WoTrus-国密域名型证书（多域名），<br>35：WoTrus-国密域名型证书（通配符），<br>37：WoTrus-国密企业型证书，<br>38：WoTrus-国密企业型证书（多域名），<br>39：WoTrus-国密企业型证书（通配符），<br>40：WoTrus-国密增强型证书，<br>41：WoTrus-国密增强型证书（多域名），<br>42：TrustAsia-域名型证书（通配符多域名），<br>43：DNSPod-企业型(OV)SSL证书<br>44：DNSPod-企业型(OV)通配符SSL证书<br>45：DNSPod-企业型(OV)多域名SSL证书<br>46：DNSPod-增强型(EV)SSL证书<br>47：DNSPod-增强型(EV)多域名SSL证书<br>48：DNSPod-域名型(DV)SSL证书<br>49：DNSPod-域名型(DV)通配符SSL证书<br>50：DNSPod-域名型(DV)多域名SSL证书<br>51：DNSPod（国密）-企业型(OV)SSL证书<br>52：DNSPod（国密）-企业型(OV)通配符SSL证书<br>53：DNSPod（国密）-企业型(OV)多域名SSL证书<br>54：DNSPod（国密）-域名型(DV)SSL证书<br>55：DNSPod（国密）-域名型(DV)通配符SSL证书<br>56：DNSPod（国密）-域名型(DV)多域名SSL证书<br>57：SecureSite 企业型专业版多域名(OV Pro)<br>58：SecureSite 企业型多域名(OV)<br>59：SecureSite 增强型专业版多域名(EV Pro)<br>60：SecureSite 增强型多域名(EV)<br>61：Geotrust 增强型多域名(EV)<br>75：SecureSite 企业型(OV)<br>76：SecureSite 企业型(OV)通配符<br>77：SecureSite 增强型(EV)<br>78：Geotrust 企业型(OV)<br>79：Geotrust 企业型(OV)通配符<br>80：Geotrust 增强型(EV)<br>81：GlobalSign 企业型（OV）SSL证书<br>82：GlobalSign 企业型通配符 （OV）SSL证书<br>83：TrustAsia C1 DV Free<br>85：GlobalSign 增强型 （EV）SSL证书<br>88：GlobalSign 企业型通配符多域名 （OV）SSL证书<br>89：GlobalSign 企业型多域名 （OV）SSL证书<br>90：GlobalSign 增强型多域名（EV） SSL证书<br>91：Geotrust 增强型多域名(EV)<br>92：SecureSite 企业型专业版多域名(OV Pro)<br>93：SecureSite 企业型多域名(OV)<br>94：SecureSite 增强型专业版多域名(EV Pro)<br>95：SecureSite 增强型多域名(EV)<br>96：SecureSite 增强型专业版(EV Pro)<br>97：SecureSite 企业型专业版(OV Pro)<br>98：CFCA 企业型(OV)SSL证书<br>99：CFCA 企业型多域名(OV)SSL证书<br>100：CFCA 企业型通配符(OV)SSL证书<br>101：CFCA 增强型(EV)SSL证书</p>
 	PackageType *string `json:"PackageType,omitnil,omitempty" name:"PackageType"`
 
 	// <p>证书类型：CA = 客户端证书，SVR = 服务器证书。</p>
@@ -1039,7 +1045,7 @@ type Certificates struct {
 	// <p>是否自动续费</p>
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 
-	// <p>托管状态，0，托管中，5，资源替换中， 10， 托管完成， -1未托管 </p>
+	// <p>托管状态，0，托管中，5，资源替换中， 10， 托管完成， -1未托管</p>
 	HostingStatus *int64 `json:"HostingStatus,omitnil,omitempty" name:"HostingStatus"`
 
 	// <p>托管完成时间</p>
@@ -1100,7 +1106,7 @@ type Certificates struct {
 	// <p>订阅服务ID</p>
 	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
 
-	// <p>订阅服务状态</p>枚举值：<ul><li> initing： 未激活</li><li> running： 生效中</li><li> expired： 已过期</li><li> refunded： 已退款</li><li> nearExpire： 即将到期</li></ul>
+	// <p>订阅服务状态</p><p>枚举值：</p><ul><li>initing： 未激活</li><li>running： 生效中</li><li>expired： 已过期</li><li>refunded： 已退款</li><li>nearExpire： 即将到期</li></ul>
 	ServiceStatus *string `json:"ServiceStatus,omitnil,omitempty" name:"ServiceStatus"`
 
 	// <p>订阅服务开始时间</p>
@@ -1108,6 +1114,12 @@ type Certificates struct {
 
 	// <p>订阅服务结束时间</p>
 	CertServiceEndTime *string `json:"CertServiceEndTime,omitnil,omitempty" name:"CertServiceEndTime"`
+
+	// <p>是否开启订阅服务共享</p>
+	CertServiceShareEnabled *bool `json:"CertServiceShareEnabled,omitnil,omitempty" name:"CertServiceShareEnabled"`
+
+	// <p>当前订阅服务下已经签发未过期的证书数量</p>
+	CertServiceValidCertificateCount *int64 `json:"CertServiceValidCertificateCount,omitnil,omitempty" name:"CertServiceValidCertificateCount"`
 }
 
 // Predefined struct for user
@@ -8505,39 +8517,45 @@ func (r *UploadRevokeLetterResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UploadUpdateCertificateInstanceRequestParams struct {
-	// 一键更新的旧证书ID。 通过查询该证书ID绑定的云资源，然后使用新证书对这些云资源进行更新
+	// <p>一键更新的旧证书ID。 通过查询该证书ID绑定的云资源，然后使用新证书对这些云资源进行更新</p>
 	OldCertificateId *string `json:"OldCertificateId,omitnil,omitempty" name:"OldCertificateId"`
 
-	// 需要部署的资源类型，参数值可选（小写）：clb
+	// <p>需要部署的资源类型，参数值可选（小写）：clb</p>
 	ResourceTypes []*string `json:"ResourceTypes,omitnil,omitempty" name:"ResourceTypes"`
 
-	// 公钥证书
+	// <p>公钥证书</p>
 	CertificatePublicKey *string `json:"CertificatePublicKey,omitnil,omitempty" name:"CertificatePublicKey"`
 
-	// 私钥证书
+	// <p>私钥证书</p>
 	CertificatePrivateKey *string `json:"CertificatePrivateKey,omitnil,omitempty" name:"CertificatePrivateKey"`
 
-	// 云资源需要部署的地域列表，支持地域的云资源类型必传，取值：clb
+	// <p>云资源需要部署的地域列表，支持地域的云资源类型必传，取值：clb</p>
 	ResourceTypesRegions []*ResourceTypeRegions `json:"ResourceTypesRegions,omitnil,omitempty" name:"ResourceTypesRegions"`
+
+	// <p>证书ID</p>
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 }
 
 type UploadUpdateCertificateInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 一键更新的旧证书ID。 通过查询该证书ID绑定的云资源，然后使用新证书对这些云资源进行更新
+	// <p>一键更新的旧证书ID。 通过查询该证书ID绑定的云资源，然后使用新证书对这些云资源进行更新</p>
 	OldCertificateId *string `json:"OldCertificateId,omitnil,omitempty" name:"OldCertificateId"`
 
-	// 需要部署的资源类型，参数值可选（小写）：clb
+	// <p>需要部署的资源类型，参数值可选（小写）：clb</p>
 	ResourceTypes []*string `json:"ResourceTypes,omitnil,omitempty" name:"ResourceTypes"`
 
-	// 公钥证书
+	// <p>公钥证书</p>
 	CertificatePublicKey *string `json:"CertificatePublicKey,omitnil,omitempty" name:"CertificatePublicKey"`
 
-	// 私钥证书
+	// <p>私钥证书</p>
 	CertificatePrivateKey *string `json:"CertificatePrivateKey,omitnil,omitempty" name:"CertificatePrivateKey"`
 
-	// 云资源需要部署的地域列表，支持地域的云资源类型必传，取值：clb
+	// <p>云资源需要部署的地域列表，支持地域的云资源类型必传，取值：clb</p>
 	ResourceTypesRegions []*ResourceTypeRegions `json:"ResourceTypesRegions,omitnil,omitempty" name:"ResourceTypesRegions"`
+
+	// <p>证书ID</p>
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 }
 
 func (r *UploadUpdateCertificateInstanceRequest) ToJsonString() string {
@@ -8557,6 +8575,7 @@ func (r *UploadUpdateCertificateInstanceRequest) FromJsonString(s string) error 
 	delete(f, "CertificatePublicKey")
 	delete(f, "CertificatePrivateKey")
 	delete(f, "ResourceTypesRegions")
+	delete(f, "CertificateId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UploadUpdateCertificateInstanceRequest has unknown keys!", "")
 	}
@@ -8565,13 +8584,13 @@ func (r *UploadUpdateCertificateInstanceRequest) FromJsonString(s string) error 
 
 // Predefined struct for user
 type UploadUpdateCertificateInstanceResponseParams struct {
-	// 云资源更新任务ID， DeployRecordId为0表示任务进行中， 重复请求这个接口， 当返回DeployRecordId大于0则表示任务创建成功。 未创建成功则会抛出异常
+	// <p>云资源更新任务ID， DeployRecordId为0表示任务进行中， 重复请求这个接口， 当返回DeployRecordId大于0则表示任务创建成功。 未创建成功则会抛出异常</p>
 	DeployRecordId *uint64 `json:"DeployRecordId,omitnil,omitempty" name:"DeployRecordId"`
 
-	// 更新任务创建状态；1表示创建成功； 0表示当前存在更新中的任务，未创建新的更新任务；返回值DeployRecordId为更新中的任务ID
+	// <p>更新任务创建状态；1表示创建成功； 0表示当前存在更新中的任务，未创建新的更新任务；返回值DeployRecordId为更新中的任务ID</p>
 	DeployStatus *int64 `json:"DeployStatus,omitnil,omitempty" name:"DeployStatus"`
 
-	// 更新异步创建任务进度详情
+	// <p>更新异步创建任务进度详情</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateSyncProgress []*UpdateSyncProgress `json:"UpdateSyncProgress,omitnil,omitempty" name:"UpdateSyncProgress"`
 

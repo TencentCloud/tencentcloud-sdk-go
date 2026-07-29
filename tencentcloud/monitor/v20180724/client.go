@@ -3675,6 +3675,70 @@ func (c *Client) DescribeAlarmNoticeCallbacksWithContext(ctx context.Context, re
     return
 }
 
+func NewDescribeAlarmNoticeOnCallUsersFromPrometheusAlertIDRequest() (request *DescribeAlarmNoticeOnCallUsersFromPrometheusAlertIDRequest) {
+    request = &DescribeAlarmNoticeOnCallUsersFromPrometheusAlertIDRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("monitor", APIVersion, "DescribeAlarmNoticeOnCallUsersFromPrometheusAlertID")
+    
+    
+    return
+}
+
+func NewDescribeAlarmNoticeOnCallUsersFromPrometheusAlertIDResponse() (response *DescribeAlarmNoticeOnCallUsersFromPrometheusAlertIDResponse) {
+    response = &DescribeAlarmNoticeOnCallUsersFromPrometheusAlertIDResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAlarmNoticeOnCallUsersFromPrometheusAlertID
+// 查询通知模板中配置的发送用户信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DOHTTPTRANSFERFAILED = "FailedOperation.DoHTTPTransferFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeAlarmNoticeOnCallUsersFromPrometheusAlertID(request *DescribeAlarmNoticeOnCallUsersFromPrometheusAlertIDRequest) (response *DescribeAlarmNoticeOnCallUsersFromPrometheusAlertIDResponse, err error) {
+    return c.DescribeAlarmNoticeOnCallUsersFromPrometheusAlertIDWithContext(context.Background(), request)
+}
+
+// DescribeAlarmNoticeOnCallUsersFromPrometheusAlertID
+// 查询通知模板中配置的发送用户信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DOHTTPTRANSFERFAILED = "FailedOperation.DoHTTPTransferFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeAlarmNoticeOnCallUsersFromPrometheusAlertIDWithContext(ctx context.Context, request *DescribeAlarmNoticeOnCallUsersFromPrometheusAlertIDRequest) (response *DescribeAlarmNoticeOnCallUsersFromPrometheusAlertIDResponse, err error) {
+    if request == nil {
+        request = NewDescribeAlarmNoticeOnCallUsersFromPrometheusAlertIDRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "monitor", APIVersion, "DescribeAlarmNoticeOnCallUsersFromPrometheusAlertID")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAlarmNoticeOnCallUsersFromPrometheusAlertID require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAlarmNoticeOnCallUsersFromPrometheusAlertIDResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAlarmNoticesRequest() (request *DescribeAlarmNoticesRequest) {
     request = &DescribeAlarmNoticesRequest{
         BaseRequest: &tchttp.BaseRequest{},

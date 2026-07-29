@@ -5576,6 +5576,63 @@ func (r *DescribeAlarmNoticeCallbacksResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeAlarmNoticeOnCallUsersFromPrometheusAlertIDRequestParams struct {
+	// <p>prometheus告警分组ID</p><p>参数格式：alert-xxxxxxxx</p>
+	AlertId *string `json:"AlertId,omitnil,omitempty" name:"AlertId"`
+}
+
+type DescribeAlarmNoticeOnCallUsersFromPrometheusAlertIDRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>prometheus告警分组ID</p><p>参数格式：alert-xxxxxxxx</p>
+	AlertId *string `json:"AlertId,omitnil,omitempty" name:"AlertId"`
+}
+
+func (r *DescribeAlarmNoticeOnCallUsersFromPrometheusAlertIDRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAlarmNoticeOnCallUsersFromPrometheusAlertIDRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AlertId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAlarmNoticeOnCallUsersFromPrometheusAlertIDRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAlarmNoticeOnCallUsersFromPrometheusAlertIDResponseParams struct {
+	// <p>告警通知模板列表</p>
+	Notices []*NoticeOnCallUsersInfo `json:"Notices,omitnil,omitempty" name:"Notices"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAlarmNoticeOnCallUsersFromPrometheusAlertIDResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAlarmNoticeOnCallUsersFromPrometheusAlertIDResponseParams `json:"Response"`
+}
+
+func (r *DescribeAlarmNoticeOnCallUsersFromPrometheusAlertIDResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAlarmNoticeOnCallUsersFromPrometheusAlertIDResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeAlarmNoticeRequestParams struct {
 	// <p>模块名，这里填“monitor”</p>
 	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
@@ -14662,6 +14719,30 @@ type NoticeContentTmplBindInfo struct {
 
 	// 通知模板ID
 	NoticeID *string `json:"NoticeID,omitnil,omitempty" name:"NoticeID"`
+}
+
+type NoticeOnCallUsersInfo struct {
+	// <p>通知模板id</p><p>参数格式：notice-xxxxxxxx</p>
+	NoticeId *string `json:"NoticeId,omitnil,omitempty" name:"NoticeId"`
+
+	// <p>发送组信息，对应通知模板中的每项配置</p>
+	SendGroups []*NoticeSendGroup `json:"SendGroups,omitnil,omitempty" name:"SendGroups"`
+}
+
+type NoticeSendGroup struct {
+	// <p>发送组类型</p><p>枚举值：</p><ul><li>USER： 用户</li><li>GROUP： 用户组</li><li>OnCallForm： 值班表</li></ul>
+	ReceiverType *string `json:"ReceiverType,omitnil,omitempty" name:"ReceiverType"`
+
+	// <p>通知人信息</p>
+	Users []*NoticeUserInfo `json:"Users,omitnil,omitempty" name:"Users"`
+}
+
+type NoticeUserInfo struct {
+	// <p>腾讯云用户id，<strong>不是账号uin</strong></p>
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// <p>用户名</p>
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 }
 
 type NotificationContentTemplateSupport struct {

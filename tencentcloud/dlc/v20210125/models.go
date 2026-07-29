@@ -3534,12 +3534,189 @@ func (r *CreateScriptResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateSparkAppForTDLCRequestParams struct {
+	// <p>spark作业名</p>
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
+	// <p>spark作业类型，1代表spark jar作业，2代表spark streaming作业</p>
+	AppType *int64 `json:"AppType,omitnil,omitempty" name:"AppType"`
+
+	// <p>执行spark作业的数据引擎名称</p>
+	DataEngine *string `json:"DataEngine,omitnil,omitempty" name:"DataEngine"`
+
+	// <p>spark作业程序包文件路径</p>
+	AppFile *string `json:"AppFile,omitnil,omitempty" name:"AppFile"`
+
+	// <p>数据访问策略，CAM Role arn，控制台通过数据作业—&gt;作业配置获取，SDK通过DescribeUserRoles接口获取对应的值；</p>
+	RoleArn *int64 `json:"RoleArn,omitnil,omitempty" name:"RoleArn"`
+
+	// <p>指定的Driver规格，当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu）</p>
+	AppDriverSize *string `json:"AppDriverSize,omitnil,omitempty" name:"AppDriverSize"`
+
+	// <p>指定的Executor规格，当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu）</p>
+	AppExecutorSize *string `json:"AppExecutorSize,omitnil,omitempty" name:"AppExecutorSize"`
+
+	// <p>spark作业executor个数</p>
+	AppExecutorNums *int64 `json:"AppExecutorNums,omitnil,omitempty" name:"AppExecutorNums"`
+
+	// <p>该字段已下线，请使用字段Datasource</p>
+	Eni *string `json:"Eni,omitnil,omitempty" name:"Eni"`
+
+	// <p>spark作业程序包是否本地上传，cos：存放与cos，lakefs：本地上传（控制台使用，该方式不支持直接接口调用）</p>
+	IsLocal *string `json:"IsLocal,omitnil,omitempty" name:"IsLocal"`
+
+	// <p>spark作业主类</p>
+	MainClass *string `json:"MainClass,omitnil,omitempty" name:"MainClass"`
+
+	// <p>spark配置，以换行符分隔</p>
+	AppConf *string `json:"AppConf,omitnil,omitempty" name:"AppConf"`
+
+	// <p>spark 作业依赖jar包是否本地上传，cos：存放与cos，lakefs：本地上传（控制台使用，该方式不支持直接接口调用）</p>
+	IsLocalJars *string `json:"IsLocalJars,omitnil,omitempty" name:"IsLocalJars"`
+
+	// <p>spark 作业依赖jar包（--jars），以逗号分隔</p>
+	AppJars *string `json:"AppJars,omitnil,omitempty" name:"AppJars"`
+
+	// <p>spark作业依赖文件资源是否本地上传，cos：存放与cos，lakefs：本地上传（控制台使用，该方式不支持直接接口调用）</p>
+	IsLocalFiles *string `json:"IsLocalFiles,omitnil,omitempty" name:"IsLocalFiles"`
+
+	// <p>spark作业依赖文件资源（--files）（非jar、zip），以逗号分隔</p>
+	AppFiles *string `json:"AppFiles,omitnil,omitempty" name:"AppFiles"`
+
+	// <p>spark作业程序入参，空格分割</p>
+	CmdArgs *string `json:"CmdArgs,omitnil,omitempty" name:"CmdArgs"`
+
+	// <p>最大重试次数，只对spark流任务生效</p>
+	MaxRetries *int64 `json:"MaxRetries,omitnil,omitempty" name:"MaxRetries"`
+
+	// <p>数据源名称</p>
+	DataSource *string `json:"DataSource,omitnil,omitempty" name:"DataSource"`
+
+	// <p>pyspark：依赖上传方式，cos：存放与cos，lakefs：本地上传（控制台使用，该方式不支持直接接口调用）</p>
+	IsLocalPythonFiles *string `json:"IsLocalPythonFiles,omitnil,omitempty" name:"IsLocalPythonFiles"`
+
+	// <p>pyspark作业依赖python资源（--py-files），支持py/zip/egg等归档格式，多文件以逗号分隔</p>
+	AppPythonFiles *string `json:"AppPythonFiles,omitnil,omitempty" name:"AppPythonFiles"`
+
+	// <p>spark作业依赖archives资源是否本地上传，cos：存放与cos，lakefs：本地上传（控制台使用，该方式不支持直接接口调用）</p>
+	IsLocalArchives *string `json:"IsLocalArchives,omitnil,omitempty" name:"IsLocalArchives"`
+
+	// <p>spark作业依赖archives资源（--archives），支持tar.gz/tgz/tar等归档格式，以逗号分隔</p>
+	AppArchives *string `json:"AppArchives,omitnil,omitempty" name:"AppArchives"`
+
+	// <p>Spark Image 版本号</p>
+	SparkImage *string `json:"SparkImage,omitnil,omitempty" name:"SparkImage"`
+
+	// <p>Spark Image 版本名称</p>
+	SparkImageVersion *string `json:"SparkImageVersion,omitnil,omitempty" name:"SparkImageVersion"`
+
+	// <p>指定的Executor数量（最大值），默认为1，当开启动态分配有效，若未开启，则该值等于AppExecutorNums</p>
+	AppExecutorMaxNumbers *int64 `json:"AppExecutorMaxNumbers,omitnil,omitempty" name:"AppExecutorMaxNumbers"`
+
+	// <p>关联dlc查询脚本id</p>
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// <p>任务资源配置是否继承集群模板，0（默认）不继承，1：继承</p>
+	IsInherit *uint64 `json:"IsInherit,omitnil,omitempty" name:"IsInherit"`
+
+	// <p>是否使用session脚本的sql运行任务：false：否，true：是</p>
+	IsSessionStarted *bool `json:"IsSessionStarted,omitnil,omitempty" name:"IsSessionStarted"`
+
+	// <p>依赖包信息</p>
+	DependencyPackages []*DependencyPackage `json:"DependencyPackages,omitnil,omitempty" name:"DependencyPackages"`
 }
 
 type CreateSparkAppForTDLCRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>spark作业名</p>
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
+
+	// <p>spark作业类型，1代表spark jar作业，2代表spark streaming作业</p>
+	AppType *int64 `json:"AppType,omitnil,omitempty" name:"AppType"`
+
+	// <p>执行spark作业的数据引擎名称</p>
+	DataEngine *string `json:"DataEngine,omitnil,omitempty" name:"DataEngine"`
+
+	// <p>spark作业程序包文件路径</p>
+	AppFile *string `json:"AppFile,omitnil,omitempty" name:"AppFile"`
+
+	// <p>数据访问策略，CAM Role arn，控制台通过数据作业—&gt;作业配置获取，SDK通过DescribeUserRoles接口获取对应的值；</p>
+	RoleArn *int64 `json:"RoleArn,omitnil,omitempty" name:"RoleArn"`
+
+	// <p>指定的Driver规格，当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu）</p>
+	AppDriverSize *string `json:"AppDriverSize,omitnil,omitempty" name:"AppDriverSize"`
+
+	// <p>指定的Executor规格，当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu）</p>
+	AppExecutorSize *string `json:"AppExecutorSize,omitnil,omitempty" name:"AppExecutorSize"`
+
+	// <p>spark作业executor个数</p>
+	AppExecutorNums *int64 `json:"AppExecutorNums,omitnil,omitempty" name:"AppExecutorNums"`
+
+	// <p>该字段已下线，请使用字段Datasource</p>
+	Eni *string `json:"Eni,omitnil,omitempty" name:"Eni"`
+
+	// <p>spark作业程序包是否本地上传，cos：存放与cos，lakefs：本地上传（控制台使用，该方式不支持直接接口调用）</p>
+	IsLocal *string `json:"IsLocal,omitnil,omitempty" name:"IsLocal"`
+
+	// <p>spark作业主类</p>
+	MainClass *string `json:"MainClass,omitnil,omitempty" name:"MainClass"`
+
+	// <p>spark配置，以换行符分隔</p>
+	AppConf *string `json:"AppConf,omitnil,omitempty" name:"AppConf"`
+
+	// <p>spark 作业依赖jar包是否本地上传，cos：存放与cos，lakefs：本地上传（控制台使用，该方式不支持直接接口调用）</p>
+	IsLocalJars *string `json:"IsLocalJars,omitnil,omitempty" name:"IsLocalJars"`
+
+	// <p>spark 作业依赖jar包（--jars），以逗号分隔</p>
+	AppJars *string `json:"AppJars,omitnil,omitempty" name:"AppJars"`
+
+	// <p>spark作业依赖文件资源是否本地上传，cos：存放与cos，lakefs：本地上传（控制台使用，该方式不支持直接接口调用）</p>
+	IsLocalFiles *string `json:"IsLocalFiles,omitnil,omitempty" name:"IsLocalFiles"`
+
+	// <p>spark作业依赖文件资源（--files）（非jar、zip），以逗号分隔</p>
+	AppFiles *string `json:"AppFiles,omitnil,omitempty" name:"AppFiles"`
+
+	// <p>spark作业程序入参，空格分割</p>
+	CmdArgs *string `json:"CmdArgs,omitnil,omitempty" name:"CmdArgs"`
+
+	// <p>最大重试次数，只对spark流任务生效</p>
+	MaxRetries *int64 `json:"MaxRetries,omitnil,omitempty" name:"MaxRetries"`
+
+	// <p>数据源名称</p>
+	DataSource *string `json:"DataSource,omitnil,omitempty" name:"DataSource"`
+
+	// <p>pyspark：依赖上传方式，cos：存放与cos，lakefs：本地上传（控制台使用，该方式不支持直接接口调用）</p>
+	IsLocalPythonFiles *string `json:"IsLocalPythonFiles,omitnil,omitempty" name:"IsLocalPythonFiles"`
+
+	// <p>pyspark作业依赖python资源（--py-files），支持py/zip/egg等归档格式，多文件以逗号分隔</p>
+	AppPythonFiles *string `json:"AppPythonFiles,omitnil,omitempty" name:"AppPythonFiles"`
+
+	// <p>spark作业依赖archives资源是否本地上传，cos：存放与cos，lakefs：本地上传（控制台使用，该方式不支持直接接口调用）</p>
+	IsLocalArchives *string `json:"IsLocalArchives,omitnil,omitempty" name:"IsLocalArchives"`
+
+	// <p>spark作业依赖archives资源（--archives），支持tar.gz/tgz/tar等归档格式，以逗号分隔</p>
+	AppArchives *string `json:"AppArchives,omitnil,omitempty" name:"AppArchives"`
+
+	// <p>Spark Image 版本号</p>
+	SparkImage *string `json:"SparkImage,omitnil,omitempty" name:"SparkImage"`
+
+	// <p>Spark Image 版本名称</p>
+	SparkImageVersion *string `json:"SparkImageVersion,omitnil,omitempty" name:"SparkImageVersion"`
+
+	// <p>指定的Executor数量（最大值），默认为1，当开启动态分配有效，若未开启，则该值等于AppExecutorNums</p>
+	AppExecutorMaxNumbers *int64 `json:"AppExecutorMaxNumbers,omitnil,omitempty" name:"AppExecutorMaxNumbers"`
+
+	// <p>关联dlc查询脚本id</p>
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// <p>任务资源配置是否继承集群模板，0（默认）不继承，1：继承</p>
+	IsInherit *uint64 `json:"IsInherit,omitnil,omitempty" name:"IsInherit"`
+
+	// <p>是否使用session脚本的sql运行任务：false：否，true：是</p>
+	IsSessionStarted *bool `json:"IsSessionStarted,omitnil,omitempty" name:"IsSessionStarted"`
+
+	// <p>依赖包信息</p>
+	DependencyPackages []*DependencyPackage `json:"DependencyPackages,omitnil,omitempty" name:"DependencyPackages"`
 }
 
 func (r *CreateSparkAppForTDLCRequest) ToJsonString() string {
@@ -3554,7 +3731,36 @@ func (r *CreateSparkAppForTDLCRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "AppName")
+	delete(f, "AppType")
+	delete(f, "DataEngine")
+	delete(f, "AppFile")
+	delete(f, "RoleArn")
+	delete(f, "AppDriverSize")
+	delete(f, "AppExecutorSize")
+	delete(f, "AppExecutorNums")
+	delete(f, "Eni")
+	delete(f, "IsLocal")
+	delete(f, "MainClass")
+	delete(f, "AppConf")
+	delete(f, "IsLocalJars")
+	delete(f, "AppJars")
+	delete(f, "IsLocalFiles")
+	delete(f, "AppFiles")
+	delete(f, "CmdArgs")
+	delete(f, "MaxRetries")
+	delete(f, "DataSource")
+	delete(f, "IsLocalPythonFiles")
+	delete(f, "AppPythonFiles")
+	delete(f, "IsLocalArchives")
+	delete(f, "AppArchives")
+	delete(f, "SparkImage")
+	delete(f, "SparkImageVersion")
+	delete(f, "AppExecutorMaxNumbers")
+	delete(f, "SessionId")
+	delete(f, "IsInherit")
+	delete(f, "IsSessionStarted")
+	delete(f, "DependencyPackages")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSparkAppForTDLCRequest has unknown keys!", "")
 	}

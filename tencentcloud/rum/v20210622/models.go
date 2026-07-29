@@ -10033,7 +10033,7 @@ type DescribeRumGroupLogV2RequestParams struct {
 	// <p>单次查询返回的原始日志条数，最大值为100（必填）</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// <p>过滤条件，其中key与运算符(Operator)对应可选字段枚举值与示例查看文档：https://cloud.tencent.com/document/product/248/87223</p>
+	// <p>过滤条件，其中key与运算符(Operator)对应可选字段枚举值与示例查看文档：<a href="https://cloud.tencent.com/document/product/248/87223">日志查询相关</a></p>
 	Filter *string `json:"Filter,omitnil,omitempty" name:"Filter"`
 
 	// <p>查询日志结束时间（必填）</p>
@@ -10061,7 +10061,7 @@ type DescribeRumGroupLogV2Request struct {
 	// <p>单次查询返回的原始日志条数，最大值为100（必填）</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// <p>过滤条件，其中key与运算符(Operator)对应可选字段枚举值与示例查看文档：https://cloud.tencent.com/document/product/248/87223</p>
+	// <p>过滤条件，其中key与运算符(Operator)对应可选字段枚举值与示例查看文档：<a href="https://cloud.tencent.com/document/product/248/87223">日志查询相关</a></p>
 	Filter *string `json:"Filter,omitnil,omitempty" name:"Filter"`
 
 	// <p>查询日志结束时间（必填）</p>
@@ -10139,7 +10139,7 @@ type DescribeRumLogDetailsV2RequestParams struct {
 	// <p>单次查询返回的原始日志条数，最大值为100（必填）</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// <p>过滤条件，其中key与运算符(Operator)对应可选字段枚举值与示例查看文档：https://cloud.tencent.com/document/product/248/87223</p>
+	// <p>过滤条件，其中key与运算符(Operator)对应可选字段枚举值与示例查看文档：<a href="https://cloud.tencent.com/document/product/248/87223">日志查询相关</a></p>
 	Filter *string `json:"Filter,omitnil,omitempty" name:"Filter"`
 
 	// <p>查询日志结束时间（必填）格式为时间戳 毫秒</p>
@@ -10167,7 +10167,7 @@ type DescribeRumLogDetailsV2Request struct {
 	// <p>单次查询返回的原始日志条数，最大值为100（必填）</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// <p>过滤条件，其中key与运算符(Operator)对应可选字段枚举值与示例查看文档：https://cloud.tencent.com/document/product/248/87223</p>
+	// <p>过滤条件，其中key与运算符(Operator)对应可选字段枚举值与示例查看文档：<a href="https://cloud.tencent.com/document/product/248/87223">日志查询相关</a></p>
 	Filter *string `json:"Filter,omitnil,omitempty" name:"Filter"`
 
 	// <p>查询日志结束时间（必填）格式为时间戳 毫秒</p>
@@ -10334,7 +10334,7 @@ type DescribeRumLogExportV2RequestParams struct {
 	// <p>查询日志开始时间(必填)</p>
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// <p>过滤条件，其中key与运算符(Operator)对应可选字段枚举值与示例查看文档：https://cloud.tencent.com/document/product/248/87223</p>
+	// <p>过滤条件，其中key与运算符(Operator)对应可选字段枚举值与示例查看文档：<a href="https://cloud.tencent.com/document/product/248/87223">日志查询相关</a></p>
 	Filter *string `json:"Filter,omitnil,omitempty" name:"Filter"`
 
 	// <p>查询日志结束时间(必填)</p>
@@ -10343,7 +10343,7 @@ type DescribeRumLogExportV2RequestParams struct {
 	// <p>项目ID</p>
 	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
 
-	// <p>注意：这个字段必选，不能为空！选择要导出哪些字段的参数，对应日志的列，可查看文档：https://cloud.tencent.com/document/product/248/87223</p><p>枚举值：</p><ul><li>level： 日志类型</li><li>url： URL</li><li>ip： 用户终端IP</li><li>version： 版本</li></ul>
+	// <p>注意：这个字段必选，不能为空！选择要导出哪些字段的参数，对应日志的列，可查看文档：<a href="https://cloud.tencent.com/document/product/248/87223">日志查询相关</a></p><p>枚举值：</p><ul><li>level： 日志类型</li><li>url： URL</li><li>ip： 用户终端IP</li><li>version： 版本</li></ul>
 	Fields []*string `json:"Fields,omitnil,omitempty" name:"Fields"`
 }
 
@@ -10356,7 +10356,7 @@ type DescribeRumLogExportV2Request struct {
 	// <p>查询日志开始时间(必填)</p>
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// <p>过滤条件，其中key与运算符(Operator)对应可选字段枚举值与示例查看文档：https://cloud.tencent.com/document/product/248/87223</p>
+	// <p>过滤条件，其中key与运算符(Operator)对应可选字段枚举值与示例查看文档：<a href="https://cloud.tencent.com/document/product/248/87223">日志查询相关</a></p>
 	Filter *string `json:"Filter,omitnil,omitempty" name:"Filter"`
 
 	// <p>查询日志结束时间(必填)</p>
@@ -10365,7 +10365,7 @@ type DescribeRumLogExportV2Request struct {
 	// <p>项目ID</p>
 	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
 
-	// <p>注意：这个字段必选，不能为空！选择要导出哪些字段的参数，对应日志的列，可查看文档：https://cloud.tencent.com/document/product/248/87223</p><p>枚举值：</p><ul><li>level： 日志类型</li><li>url： URL</li><li>ip： 用户终端IP</li><li>version： 版本</li></ul>
+	// <p>注意：这个字段必选，不能为空！选择要导出哪些字段的参数，对应日志的列，可查看文档：<a href="https://cloud.tencent.com/document/product/248/87223">日志查询相关</a></p><p>枚举值：</p><ul><li>level： 日志类型</li><li>url： URL</li><li>ip： 用户终端IP</li><li>version： 版本</li></ul>
 	Fields []*string `json:"Fields,omitnil,omitempty" name:"Fields"`
 }
 
@@ -10670,7 +10670,7 @@ type DescribeRumLogTotalV2RequestParams struct {
 	// <p>单次查询返回的原始日志条数，最大值为100（必填）</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// <p>过滤条件，其中key与运算符(Operator)对应可选字段枚举值与示例查看文档：https://cloud.tencent.com/document/product/248/87223</p>
+	// <p>过滤条件，其中key与运算符(Operator)对应可选字段枚举值与示例查看文档：<a href="https://cloud.tencent.com/document/product/248/87223">日志查询相关</a></p>
 	Filter *string `json:"Filter,omitnil,omitempty" name:"Filter"`
 
 	// <p>查询日志结束时间（必填）格式为时间戳 毫秒</p>
@@ -10698,7 +10698,7 @@ type DescribeRumLogTotalV2Request struct {
 	// <p>单次查询返回的原始日志条数，最大值为100（必填）</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// <p>过滤条件，其中key与运算符(Operator)对应可选字段枚举值与示例查看文档：https://cloud.tencent.com/document/product/248/87223</p>
+	// <p>过滤条件，其中key与运算符(Operator)对应可选字段枚举值与示例查看文档：<a href="https://cloud.tencent.com/document/product/248/87223">日志查询相关</a></p>
 	Filter *string `json:"Filter,omitnil,omitempty" name:"Filter"`
 
 	// <p>查询日志结束时间（必填）格式为时间戳 毫秒</p>
@@ -10858,7 +10858,7 @@ type DescribeRumStatsLogListV2RequestParams struct {
 	// <p>单次查询返回的原始日志条数，最大值为100（必填）</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// <p>过滤条件，其中key与运算符(Operator)对应可选字段枚举值与示例查看文档：https://cloud.tencent.com/document/product/248/87223</p>
+	// <p>过滤条件，其中key与运算符(Operator)对应可选字段枚举值与示例查看文档：<a href="https://cloud.tencent.com/document/product/248/87223">日志查询相关</a></p>
 	Filter *string `json:"Filter,omitnil,omitempty" name:"Filter"`
 
 	// <p>查询日志结束时间（必填）</p>
@@ -10877,7 +10877,7 @@ type DescribeRumStatsLogListV2Request struct {
 	// <p>单次查询返回的原始日志条数，最大值为100（必填）</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// <p>过滤条件，其中key与运算符(Operator)对应可选字段枚举值与示例查看文档：https://cloud.tencent.com/document/product/248/87223</p>
+	// <p>过滤条件，其中key与运算符(Operator)对应可选字段枚举值与示例查看文档：<a href="https://cloud.tencent.com/document/product/248/87223">日志查询相关</a></p>
 	Filter *string `json:"Filter,omitnil,omitempty" name:"Filter"`
 
 	// <p>查询日志结束时间（必填）</p>

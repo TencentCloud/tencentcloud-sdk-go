@@ -11913,6 +11913,76 @@ func (c *Client) UpgradeDBInstanceEngineVersionWithContext(ctx context.Context, 
     return
 }
 
+func NewUpgradeRoGroupRequest() (request *UpgradeRoGroupRequest) {
+    request = &UpgradeRoGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdb", APIVersion, "UpgradeRoGroup")
+    
+    
+    return
+}
+
+func NewUpgradeRoGroupResponse() (response *UpgradeRoGroupResponse) {
+    response = &UpgradeRoGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpgradeRoGroup
+// 该接口（UpgradeRoGroup）用于只读组升级为纯网络转发模式。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_STATUSCONFLICT = "FailedOperation.StatusConflict"
+//  INTERNALERROR_CDBERROR = "InternalError.CdbError"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_FTPERROR = "InternalError.FtpError"
+//  INTERNALERROR_TRADEERROR = "InternalError.TradeError"
+//  INTERNALERROR_UNDEFINEDERROR = "InternalError.UndefinedError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACTIONNOTSUPPORT = "OperationDenied.ActionNotSupport"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+func (c *Client) UpgradeRoGroup(request *UpgradeRoGroupRequest) (response *UpgradeRoGroupResponse, err error) {
+    return c.UpgradeRoGroupWithContext(context.Background(), request)
+}
+
+// UpgradeRoGroup
+// 该接口（UpgradeRoGroup）用于只读组升级为纯网络转发模式。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_STATUSCONFLICT = "FailedOperation.StatusConflict"
+//  INTERNALERROR_CDBERROR = "InternalError.CdbError"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_FTPERROR = "InternalError.FtpError"
+//  INTERNALERROR_TRADEERROR = "InternalError.TradeError"
+//  INTERNALERROR_UNDEFINEDERROR = "InternalError.UndefinedError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACTIONNOTSUPPORT = "OperationDenied.ActionNotSupport"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+func (c *Client) UpgradeRoGroupWithContext(ctx context.Context, request *UpgradeRoGroupRequest) (response *UpgradeRoGroupResponse, err error) {
+    if request == nil {
+        request = NewUpgradeRoGroupRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cdb", APIVersion, "UpgradeRoGroup")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpgradeRoGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpgradeRoGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewVerifyRootAccountRequest() (request *VerifyRootAccountRequest) {
     request = &VerifyRootAccountRequest{
         BaseRequest: &tchttp.BaseRequest{},
