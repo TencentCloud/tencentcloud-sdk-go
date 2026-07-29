@@ -881,6 +881,12 @@ type AiAnalysisTaskDelLogoOutput struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VoiceClonedMarkFile *string `json:"VoiceClonedMarkFile,omitnil,omitempty" name:"VoiceClonedMarkFile"`
 
+	// <p>仅做擦除的视频结果路径</p>
+	ErasedVideoPath *string `json:"ErasedVideoPath,omitnil,omitempty" name:"ErasedVideoPath"`
+
+	// <p>音色克隆编辑信息</p><p>用于音色克隆二次修改的编辑信息</p>
+	DubbingEditInfoUrl *string `json:"DubbingEditInfoUrl,omitnil,omitempty" name:"DubbingEditInfoUrl"`
+
 	// <p>擦除后文件的FileId。</p>
 	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
 
