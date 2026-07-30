@@ -3345,6 +3345,8 @@ func NewCreateLiveWatermarkRuleResponse() (response *CreateLiveWatermarkRuleResp
 // CreateLiveWatermarkRule
 // 创建水印规则，需要先调用[AddLiveWatermark](/document/product/267/30154)接口添加水印，将返回的水印id绑定到流使用。
 //
+// 创建规则后生效时间为10分钟，规则仅对推流时间晚于配置生效时间的流有效，对正在直播的流不生效。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION_RULEALREADYEXIST = "FailedOperation.RuleAlreadyExist"
 //  INTERNALERROR = "InternalError"
@@ -3372,6 +3374,8 @@ func (c *Client) CreateLiveWatermarkRule(request *CreateLiveWatermarkRuleRequest
 
 // CreateLiveWatermarkRule
 // 创建水印规则，需要先调用[AddLiveWatermark](/document/product/267/30154)接口添加水印，将返回的水印id绑定到流使用。
+//
+// 创建规则后生效时间为10分钟，规则仅对推流时间晚于配置生效时间的流有效，对正在直播的流不生效。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_RULEALREADYEXIST = "FailedOperation.RuleAlreadyExist"
@@ -13531,6 +13535,8 @@ func NewDescribeUploadStreamNumsResponse() (response *DescribeUploadStreamNumsRe
 // DescribeUploadStreamNums
 // 直播上行路数查询。
 //
+// 数据延迟3小时左右。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -13545,6 +13551,8 @@ func (c *Client) DescribeUploadStreamNums(request *DescribeUploadStreamNumsReque
 
 // DescribeUploadStreamNums
 // 直播上行路数查询。
+//
+// 数据延迟3小时左右。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

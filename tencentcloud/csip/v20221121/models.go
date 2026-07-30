@@ -23638,7 +23638,7 @@ type FilterDataObject struct {
 }
 
 type Filters struct {
-	// 过滤条件名称。取值：TaskID（任务ID，精确匹配）、TaskStatus（任务状态，Values: INIT/SCANNING/SUCCESS/FAILED）、TaskType（任务类型，Values: PERIODIC/MANUAL）
+	// 过滤条件名称。取值：ResultStatus（通过状态，Values: PASS/NOT_PASS）、AssetName（资产名称/ID，模糊匹配）、IP（IP地址，模糊匹配）、Tag（资产标签，模糊匹配）
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 过滤条件值列表

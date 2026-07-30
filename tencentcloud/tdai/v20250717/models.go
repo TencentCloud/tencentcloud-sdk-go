@@ -1934,6 +1934,12 @@ type MemoryPlusInfo struct {
 	// <p>地域</p>
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
+	// <p>计费模式</p><p>枚举值：</p><ul><li>-1： 免费版</li><li>0： 按量付费</li><li>1： 包年包月</li></ul>
+	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
+
+	// <p>是否自动续费</p><p>枚举值：</p><ul><li>0： 不自动续费</li><li>1： 自动续费</li></ul>
+	AutoRenew *int64 `json:"AutoRenew,omitnil,omitempty" name:"AutoRenew"`
+
 	// <p>记忆条数</p>
 	MemoryUsage *int64 `json:"MemoryUsage,omitnil,omitempty" name:"MemoryUsage"`
 
@@ -1942,6 +1948,9 @@ type MemoryPlusInfo struct {
 
 	// <p>资源标签</p>
 	ResourceTags []*ResourceTag `json:"ResourceTags,omitnil,omitempty" name:"ResourceTags"`
+
+	// <p>版本号</p>
+	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
 
 	// <p>创建时间</p>
 	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`

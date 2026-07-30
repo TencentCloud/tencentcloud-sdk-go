@@ -544,62 +544,56 @@ func (r *AddLiveDomainResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AddLiveWatermarkRequestParams struct {
-	// 水印图片 URL。
-	// URL中禁止包含的字符：
-	//  ;(){}$>`#"\'|
+	// <p>水印图片 URL。<br>URL中禁止包含的字符：<br> ;(){}$&gt;`#&quot;'|</p>
 	PictureUrl *string `json:"PictureUrl,omitnil,omitempty" name:"PictureUrl"`
 
-	// 水印名称。
-	// 最长30字节。
+	// <p>水印名称。<br>最长30字节。</p>
 	WatermarkName *string `json:"WatermarkName,omitnil,omitempty" name:"WatermarkName"`
 
-	// 显示位置，X轴偏移，单位是百分比，默认 0。
+	// <p>显示位置，X轴偏移，单位是百分比，默认 0。</p>
 	XPosition *int64 `json:"XPosition,omitnil,omitempty" name:"XPosition"`
 
-	// 显示位置，Y轴偏移，单位是百分比，默认 0。
+	// <p>显示位置，Y轴偏移，单位是百分比，默认 0。</p>
 	YPosition *int64 `json:"YPosition,omitnil,omitempty" name:"YPosition"`
 
-	// 水印宽度，占直播原始画面宽度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。默认原始宽度。
+	// <p>水印宽度，占直播原始画面宽度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。默认原始宽度。</p>
 	Width *int64 `json:"Width,omitnil,omitempty" name:"Width"`
 
-	// 水印高度，占直播原始画面高度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。默认原始高度。
+	// <p>水印高度，占直播原始画面高度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。默认原始高度。</p>
 	Height *int64 `json:"Height,omitnil,omitempty" name:"Height"`
 
-	// 背景水印宽度。默认宽度1920。
+	// <p>背景水印宽度。默认宽度1920。</p><p>取值范围：[360, 4096]</p><p>单位：px</p>
 	BackgroundWidth *int64 `json:"BackgroundWidth,omitnil,omitempty" name:"BackgroundWidth"`
 
-	// 背景水印高度。默认高度1080。
+	// <p>背景水印高度。默认高度1080。</p><p>取值范围：[360, 4096]</p><p>单位：px</p>
 	BackgroundHeight *int64 `json:"BackgroundHeight,omitnil,omitempty" name:"BackgroundHeight"`
 }
 
 type AddLiveWatermarkRequest struct {
 	*tchttp.BaseRequest
 	
-	// 水印图片 URL。
-	// URL中禁止包含的字符：
-	//  ;(){}$>`#"\'|
+	// <p>水印图片 URL。<br>URL中禁止包含的字符：<br> ;(){}$&gt;`#&quot;'|</p>
 	PictureUrl *string `json:"PictureUrl,omitnil,omitempty" name:"PictureUrl"`
 
-	// 水印名称。
-	// 最长30字节。
+	// <p>水印名称。<br>最长30字节。</p>
 	WatermarkName *string `json:"WatermarkName,omitnil,omitempty" name:"WatermarkName"`
 
-	// 显示位置，X轴偏移，单位是百分比，默认 0。
+	// <p>显示位置，X轴偏移，单位是百分比，默认 0。</p>
 	XPosition *int64 `json:"XPosition,omitnil,omitempty" name:"XPosition"`
 
-	// 显示位置，Y轴偏移，单位是百分比，默认 0。
+	// <p>显示位置，Y轴偏移，单位是百分比，默认 0。</p>
 	YPosition *int64 `json:"YPosition,omitnil,omitempty" name:"YPosition"`
 
-	// 水印宽度，占直播原始画面宽度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。默认原始宽度。
+	// <p>水印宽度，占直播原始画面宽度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。默认原始宽度。</p>
 	Width *int64 `json:"Width,omitnil,omitempty" name:"Width"`
 
-	// 水印高度，占直播原始画面高度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。默认原始高度。
+	// <p>水印高度，占直播原始画面高度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。默认原始高度。</p>
 	Height *int64 `json:"Height,omitnil,omitempty" name:"Height"`
 
-	// 背景水印宽度。默认宽度1920。
+	// <p>背景水印宽度。默认宽度1920。</p><p>取值范围：[360, 4096]</p><p>单位：px</p>
 	BackgroundWidth *int64 `json:"BackgroundWidth,omitnil,omitempty" name:"BackgroundWidth"`
 
-	// 背景水印高度。默认高度1080。
+	// <p>背景水印高度。默认高度1080。</p><p>取值范围：[360, 4096]</p><p>单位：px</p>
 	BackgroundHeight *int64 `json:"BackgroundHeight,omitnil,omitempty" name:"BackgroundHeight"`
 }
 
@@ -631,7 +625,7 @@ func (r *AddLiveWatermarkRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AddLiveWatermarkResponseParams struct {
-	// 水印ID。
+	// <p>水印ID。</p>
 	WatermarkId *uint64 `json:"WatermarkId,omitnil,omitempty" name:"WatermarkId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

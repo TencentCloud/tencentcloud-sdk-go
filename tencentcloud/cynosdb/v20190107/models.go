@@ -3586,6 +3586,12 @@ type CreateClustersRequestParams struct {
 
 	// <p>内核小版本号</p>
 	CynosVersion *string `json:"CynosVersion,omitnil,omitempty" name:"CynosVersion"`
+
+	// <p>同步方式。可选值：async、semisync、sync。</p>
+	SyncWay *string `json:"SyncWay,omitnil,omitempty" name:"SyncWay"`
+
+	// <p>半同步超时时间，单位ms。为保证业务稳定性，半同步复制存在退化逻辑，当主可用区集群在等待备可用区集群确认事务时若超过该超时时间，复制方式将降为异步复制。</p><p>取值范围：[1000, 4294967295]</p><p>单位：毫秒</p><p>默认值：10000</p>
+	SemiSyncTimeout *int64 `json:"SemiSyncTimeout,omitnil,omitempty" name:"SemiSyncTimeout"`
 }
 
 type CreateClustersRequest struct {
@@ -3731,6 +3737,12 @@ type CreateClustersRequest struct {
 
 	// <p>内核小版本号</p>
 	CynosVersion *string `json:"CynosVersion,omitnil,omitempty" name:"CynosVersion"`
+
+	// <p>同步方式。可选值：async、semisync、sync。</p>
+	SyncWay *string `json:"SyncWay,omitnil,omitempty" name:"SyncWay"`
+
+	// <p>半同步超时时间，单位ms。为保证业务稳定性，半同步复制存在退化逻辑，当主可用区集群在等待备可用区集群确认事务时若超过该超时时间，复制方式将降为异步复制。</p><p>取值范围：[1000, 4294967295]</p><p>单位：毫秒</p><p>默认值：10000</p>
+	SemiSyncTimeout *int64 `json:"SemiSyncTimeout,omitnil,omitempty" name:"SemiSyncTimeout"`
 }
 
 func (r *CreateClustersRequest) ToJsonString() string {
@@ -3792,6 +3804,8 @@ func (r *CreateClustersRequest) FromJsonString(s string) error {
 	delete(f, "AutoArchiveDelayHours")
 	delete(f, "ClusterLevel")
 	delete(f, "CynosVersion")
+	delete(f, "SyncWay")
+	delete(f, "SemiSyncTimeout")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateClustersRequest has unknown keys!", "")
 	}
@@ -23372,6 +23386,15 @@ type RollbackToNewClusterRequestParams struct {
 
 	// <p>是否从保存备份中恢复</p>
 	FromSaveBackup *bool `json:"FromSaveBackup,omitnil,omitempty" name:"FromSaveBackup"`
+
+	// <p>同步方式。可选值：async、semisync、sync，默认异步。</p>
+	SyncWay *string `json:"SyncWay,omitnil,omitempty" name:"SyncWay"`
+
+	// <p>半同步超时时间，单位ms。为保证业务稳定性，半同步复制存在退化逻辑，当主可用区集群在等待备可用区集群确认事务时若超过该超时时间，复制方式将降为异步复制。</p><p>取值范围：[1000, 4294967295]</p><p>单位：毫秒</p><p>默认值：10000</p>
+	SemiSyncTimeout *int64 `json:"SemiSyncTimeout,omitnil,omitempty" name:"SemiSyncTimeout"`
+
+	// <p>备可用区</p>
+	SlaveZone *string `json:"SlaveZone,omitnil,omitempty" name:"SlaveZone"`
 }
 
 type RollbackToNewClusterRequest struct {
@@ -23463,6 +23486,15 @@ type RollbackToNewClusterRequest struct {
 
 	// <p>是否从保存备份中恢复</p>
 	FromSaveBackup *bool `json:"FromSaveBackup,omitnil,omitempty" name:"FromSaveBackup"`
+
+	// <p>同步方式。可选值：async、semisync、sync，默认异步。</p>
+	SyncWay *string `json:"SyncWay,omitnil,omitempty" name:"SyncWay"`
+
+	// <p>半同步超时时间，单位ms。为保证业务稳定性，半同步复制存在退化逻辑，当主可用区集群在等待备可用区集群确认事务时若超过该超时时间，复制方式将降为异步复制。</p><p>取值范围：[1000, 4294967295]</p><p>单位：毫秒</p><p>默认值：10000</p>
+	SemiSyncTimeout *int64 `json:"SemiSyncTimeout,omitnil,omitempty" name:"SemiSyncTimeout"`
+
+	// <p>备可用区</p>
+	SlaveZone *string `json:"SlaveZone,omitnil,omitempty" name:"SlaveZone"`
 }
 
 func (r *RollbackToNewClusterRequest) ToJsonString() string {
@@ -23506,6 +23538,9 @@ func (r *RollbackToNewClusterRequest) FromJsonString(s string) error {
 	delete(f, "ProjectId")
 	delete(f, "AutoArchive")
 	delete(f, "FromSaveBackup")
+	delete(f, "SyncWay")
+	delete(f, "SemiSyncTimeout")
+	delete(f, "SlaveZone")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RollbackToNewClusterRequest has unknown keys!", "")
 	}

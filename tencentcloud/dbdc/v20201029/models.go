@@ -3199,7 +3199,7 @@ type PolicyRule struct {
 	// <p>IP 地址模板 ID</p>
 	AddressModule *string `json:"AddressModule,omitnil,omitempty" name:"AddressModule"`
 
-	// <p>规则 ID</p>
+	// <p>安全组 ID</p>
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// <p>规则备注描述</p>

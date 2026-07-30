@@ -50,6 +50,9 @@ const (
 	// 资源删除操作失败。
 	FAILEDOPERATION_DELETERESOURCESFAILED = "FailedOperation.DeleteResourcesFailed"
 
+	// 查询镜像套餐失败，请稍后重新操作。
+	FAILEDOPERATION_DESCRIBEBLUEPRINTBUNDLESFAILED = "FailedOperation.DescribeBlueprintBundlesFailed"
+
 	// 查询镜像配额失败。
 	FAILEDOPERATION_DESCRIBEBLUEPRINTQUOTAFAILED = "FailedOperation.DescribeBlueprintQuotaFailed"
 

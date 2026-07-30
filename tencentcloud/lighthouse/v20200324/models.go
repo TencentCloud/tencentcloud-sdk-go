@@ -519,6 +519,64 @@ type Blueprint struct {
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
+type BlueprintBundle struct {
+	// 套餐ID。可以通过[DescribeBundles](https://cloud.tencent.com/document/product/1207/47575)接口返回的BundleId获取。
+	BundleId *string `json:"BundleId,omitnil,omitempty" name:"BundleId"`
+
+	// 是否支持 Linux/Unix 平台。
+	SupportLinuxUnixPlatform *bool `json:"SupportLinuxUnixPlatform,omitnil,omitempty" name:"SupportLinuxUnixPlatform"`
+
+	// 是否支持 Windows 平台。
+	SupportWindowsPlatform *bool `json:"SupportWindowsPlatform,omitnil,omitempty" name:"SupportWindowsPlatform"`
+
+	// 套餐当前单位价格信息。
+	Price *Price `json:"Price,omitnil,omitempty" name:"Price"`
+
+	// 套餐售卖状态,取值:‘AVAILABLE’(可用) , ‘SOLD_OUT’(售罄)。
+	BundleSalesState *string `json:"BundleSalesState,omitnil,omitempty" name:"BundleSalesState"`
+
+	// 套餐类型。
+	BundleType *string `json:"BundleType,omitnil,omitempty" name:"BundleType"`
+
+	// 套餐类型描述信息。
+	BundleTypeDescription *string `json:"BundleTypeDescription,omitnil,omitempty" name:"BundleTypeDescription"`
+
+	// 套餐类型权重。取值越小排序越靠前。
+	BundleTypePriority *int64 `json:"BundleTypePriority,omitnil,omitempty" name:"BundleTypePriority"`
+
+	// 套餐展示标签。
+	BundleDisplayLabel *string `json:"BundleDisplayLabel,omitnil,omitempty" name:"BundleDisplayLabel"`
+
+	// 支持人数。
+	SupportSlot *int64 `json:"SupportSlot,omitnil,omitempty" name:"SupportSlot"`
+
+	// 内存大小，单位 GB。
+	Memory *int64 `json:"Memory,omitnil,omitempty" name:"Memory"`
+
+	// 系统盘类型。
+	// 取值范围： 
+	// <li> CLOUD_SSD：SSD 云硬盘</li><li> CLOUD_PREMIUM：高性能云硬盘</li>
+	SystemDiskType *string `json:"SystemDiskType,omitnil,omitempty" name:"SystemDiskType"`
+
+	// 系统盘大小。单位GB。
+	SystemDiskSize *int64 `json:"SystemDiskSize,omitnil,omitempty" name:"SystemDiskSize"`
+
+	// 每月网络流量，单位 GB。
+	MonthlyTraffic *int64 `json:"MonthlyTraffic,omitnil,omitempty" name:"MonthlyTraffic"`
+
+	// CPU 核数。
+	CPU *int64 `json:"CPU,omitnil,omitempty" name:"CPU"`
+
+	// 峰值带宽，单位 Mbps。
+	InternetMaxBandwidthOut *uint64 `json:"InternetMaxBandwidthOut,omitnil,omitempty" name:"InternetMaxBandwidthOut"`
+
+	// 网络计费类型。
+	InternetChargeType *string `json:"InternetChargeType,omitnil,omitempty" name:"InternetChargeType"`
+
+	// 流量是否无上限。
+	TrafficUnlimited *bool `json:"TrafficUnlimited,omitnil,omitempty" name:"TrafficUnlimited"`
+}
+
 type BlueprintInstance struct {
 	// 镜像信息。
 	Blueprint *Blueprint `json:"Blueprint,omitnil,omitempty" name:"Blueprint"`
@@ -2140,6 +2198,87 @@ func (r *DescribeAllScenesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAllScenesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBlueprintBundlesRequestParams struct {
+	// 镜像ID。可以通过[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)接口返回的BlueprintId获取。当前仅支持传入镜像类型为游戏专区(“GAME_PORTAL”)的镜像Id。
+	BlueprintId *string `json:"BlueprintId,omitnil,omitempty" name:"BlueprintId"`
+
+	// 套餐ID列表。可以通过DescribeBlueprintBundles接口返回的BundleId获取。
+	BundleIds []*string `json:"BundleIds,omitnil,omitempty" name:"BundleIds"`
+
+	// 返回数量，默认为 20，最大值为 100。关于Limit的更进一步介绍请参考 API 简介中的相关小节。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量，默认为 0。关于Offset的更进一步介绍请参考 API 简介中的相关小节。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+type DescribeBlueprintBundlesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 镜像ID。可以通过[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)接口返回的BlueprintId获取。当前仅支持传入镜像类型为游戏专区(“GAME_PORTAL”)的镜像Id。
+	BlueprintId *string `json:"BlueprintId,omitnil,omitempty" name:"BlueprintId"`
+
+	// 套餐ID列表。可以通过DescribeBlueprintBundles接口返回的BundleId获取。
+	BundleIds []*string `json:"BundleIds,omitnil,omitempty" name:"BundleIds"`
+
+	// 返回数量，默认为 20，最大值为 100。关于Limit的更进一步介绍请参考 API 简介中的相关小节。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量，默认为 0。关于Offset的更进一步介绍请参考 API 简介中的相关小节。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+func (r *DescribeBlueprintBundlesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBlueprintBundlesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BlueprintId")
+	delete(f, "BundleIds")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBlueprintBundlesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBlueprintBundlesResponseParams struct {
+	// 镜像套餐详细信息列表。 
+	BlueprintBundleSet []*BlueprintBundle `json:"BlueprintBundleSet,omitnil,omitempty" name:"BlueprintBundleSet"`
+
+	// 符合要求的套餐总数，用于分页展示。
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeBlueprintBundlesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBlueprintBundlesResponseParams `json:"Response"`
+}
+
+func (r *DescribeBlueprintBundlesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBlueprintBundlesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

@@ -223,7 +223,7 @@ func NewCreateGlossaryResponse() (response *CreateGlossaryResponse) {
 }
 
 // CreateGlossary
-// 创建术语库。(单个用户默认最多可以创建50个术语库，支持加白)
+// 创建术语库。(单个用户默认最多可以创建50个术语库)
 //
 // 
 //
@@ -240,7 +240,7 @@ func (c *Client) CreateGlossary(request *CreateGlossaryRequest) (response *Creat
 }
 
 // CreateGlossary
-// 创建术语库。(单个用户默认最多可以创建50个术语库，支持加白)
+// 创建术语库。(单个用户默认最多可以创建50个术语库)
 //
 // 
 //

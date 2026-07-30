@@ -2962,10 +2962,10 @@ type GlobalAcceleratorSet struct {
 }
 
 type HideResponseHeaders struct {
-	// <p>key</p><p>入参限制：长度不能超过128</p><p>如果字符串包含$，那仅能配置&#39;$remote_addr&#39;, &#39;$remote_port&#39;，否则不支持。</p>
+	// <p>key</p><p>参数格式：1、字符串只包含可打印的ASCII字符 2、不能包含这些字符()&lt;&gt;@,;:\&quot;/[ ]?={ }</p><p>入参限制：长度在1-40。</p>
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
-	// <p>value</p><p>当前传&#39;&#39;值即可。</p>
+	// <p>value</p><p>当前仅支持传空字符串&quot;&quot;</p>
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 

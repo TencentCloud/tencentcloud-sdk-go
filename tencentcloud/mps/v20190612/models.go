@@ -1437,6 +1437,17 @@ type AiContentReviewTaskInput struct {
 	Definition *uint64 `json:"Definition,omitnil,omitempty" name:"Definition"`
 }
 
+type AiCutoutConfig struct {
+	// <p>能力配置开关，可选值：  ON：开启； OFF：关闭。 默认值：ON。</p>
+	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
+
+	// <p>抠图目标类型指定：&quot;foreground&quot;（默认）/ &quot;pattern&quot;</p>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>图案抠图配置。仅在Type为pattern时生效。</p>
+	PatternConfig *PatternConfig `json:"PatternConfig,omitnil,omitempty" name:"PatternConfig"`
+}
+
 type AiDramaInput struct {
 	// <p>ai漫剧剧本</p><p>参数格式：无</p><p>入参限制：无</p>
 	Script *string `json:"Script,omitnil,omitempty" name:"Script"`
@@ -1449,6 +1460,20 @@ type AiDramaInput struct {
 
 	// <p>输出视频分辨率</p><p>枚举值：</p><ul><li>720p： 720p</li><li>1080p： 1080p</li></ul><p>默认值：720p</p>
 	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
+}
+
+type AiExpansionConfig struct {
+	// <p>能力配置开关，可选值：  ON：开启； OFF：关闭。 默认值：ON。</p>
+	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
+
+	// <p>目标比例，如 &quot;16:9&quot;</p>
+	AspectRatio *string `json:"AspectRatio,omitnil,omitempty" name:"AspectRatio"`
+
+	// <p>目标宽度（像素）</p><p>取值范围：[0, 2048]</p>
+	Width *int64 `json:"Width,omitnil,omitempty" name:"Width"`
+
+	// <p>目标高度（像素）</p><p>取值范围：[0, 2048]</p>
+	Height *int64 `json:"Height,omitnil,omitempty" name:"Height"`
 }
 
 type AiParagraphInfo struct {
@@ -2516,6 +2541,14 @@ type AiSampleWordInfo struct {
 	// <li>数组长度限制：20 个标签；</li>
 	// <li>单个标签长度限制：128 个字符。</li>
 	Tags []*string `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
+type AiStoryboardConfig struct {
+	// <p>能力配置开关，可选值：  ON：开启； OFF：关闭。 默认值：ON。</p>
+	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
+
+	// <p>指定提取的分镜图的序号，从0开始计数，不填写则返回所有分镜图。</p>
+	ProcessIndex *int64 `json:"ProcessIndex,omitnil,omitempty" name:"ProcessIndex"`
 }
 
 type AiTryOnConfig struct {
@@ -19507,6 +19540,15 @@ type ImageTaskInput struct {
 
 	// <p>生图任务配置</p>
 	CreateImageConfig *CreateImageConfig `json:"CreateImageConfig,omitnil,omitempty" name:"CreateImageConfig"`
+
+	// <p>Ai抠图配置</p>
+	AiCutoutConfig *AiCutoutConfig `json:"AiCutoutConfig,omitnil,omitempty" name:"AiCutoutConfig"`
+
+	// <p>Ai扩图配置</p>
+	AiExpansionConfig *AiExpansionConfig `json:"AiExpansionConfig,omitnil,omitempty" name:"AiExpansionConfig"`
+
+	// <p>Ai分镜拆解配置</p>
+	AiStoryboardConfig *AiStoryboardConfig `json:"AiStoryboardConfig,omitnil,omitempty" name:"AiStoryboardConfig"`
 }
 
 type ImageTransformConfig struct {
@@ -24925,6 +24967,23 @@ func (r *ParseNotificationResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ParseNotificationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type PatternConfig struct {
+	// <p>透明度阈值</p><p>取值范围：[0, 255]</p><p>默认值：30</p>
+	TransparencyThreshold *int64 `json:"TransparencyThreshold,omitnil,omitempty" name:"TransparencyThreshold"`
+
+	// <p>不透明阈值，必须大于TransparencyThreshold</p><p>取值范围：[0, 255]</p><p>默认值：127</p>
+	OpaqueThreshold *int64 `json:"OpaqueThreshold,omitnil,omitempty" name:"OpaqueThreshold"`
+
+	// <p>边缘采样步数，默认5</p><p>取值范围：[1, 10]</p>
+	EdgeSamplingStep *int64 `json:"EdgeSamplingStep,omitnil,omitempty" name:"EdgeSamplingStep"`
+
+	// <p>边缘扩展步数，默认5</p>
+	EdgeExpansionStep *int64 `json:"EdgeExpansionStep,omitnil,omitempty" name:"EdgeExpansionStep"`
+
+	// <p>边缘融合强度，默认0.5</p><p>取值范围：[0, 1.0]</p>
+	EdgeBlendingIntensity *float64 `json:"EdgeBlendingIntensity,omitnil,omitempty" name:"EdgeBlendingIntensity"`
 }
 
 type PidSelector struct {

@@ -9750,6 +9750,293 @@ func (r *UpdateIndexResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type UpdateInstancePublicAccessRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 实例名称（1-50 个英文、汉字、数字、连接线-或下划线_）
+	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
+
+	// 已废弃请使用NodeInfoList
+	// 节点个数（2-50个）
+	NodeNum *uint64 `json:"NodeNum,omitnil,omitempty" name:"NodeNum"`
+
+	// ES配置项（JSON格式字符串）
+	EsConfig *string `json:"EsConfig,omitnil,omitempty" name:"EsConfig"`
+
+	// 默认用户elastic的密码（8到16位，至少包括两项（[a-z,A-Z],[0-9]和[-!@#$%&^*+=_:;,.?]的特殊符号）
+	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+
+	// 访问控制列表
+	EsAcl *EsAcl `json:"EsAcl,omitnil,omitempty" name:"EsAcl"`
+
+	// 已废弃请使用NodeInfoList
+	// 磁盘大小（单位GB）
+	DiskSize *uint64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
+
+	// 已废弃请使用NodeInfoList
+	// 节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
+	NodeType *string `json:"NodeType,omitnil,omitempty" name:"NodeType"`
+
+	// 已废弃请使用NodeInfoList
+	// 专用主节点个数（只支持3个或5个）
+	MasterNodeNum *uint64 `json:"MasterNodeNum,omitnil,omitempty" name:"MasterNodeNum"`
+
+	// 已废弃请使用NodeInfoList
+	// 专用主节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
+	MasterNodeType *string `json:"MasterNodeType,omitnil,omitempty" name:"MasterNodeType"`
+
+	// 已废弃请使用NodeInfoList
+	// 专用主节点磁盘大小（单位GB系统默认配置为50GB,暂不支持自定义）
+	MasterNodeDiskSize *uint64 `json:"MasterNodeDiskSize,omitnil,omitempty" name:"MasterNodeDiskSize"`
+
+	// 更新配置时是否强制重启<li>true强制重启</li><li>false不强制重启</li>当前仅更新EsConfig时需要设置，默认值为false
+	ForceRestart *bool `json:"ForceRestart,omitnil,omitempty" name:"ForceRestart"`
+
+	// COS自动备份信息
+	CosBackup *CosBackup `json:"CosBackup,omitnil,omitempty" name:"CosBackup"`
+
+	// 节点信息列表，可以只传递要更新的节点及其对应的规格信息。支持的操作包括<li>修改一种节点的个数</li><li>修改一种节点的节点规格及磁盘大小</li><li>增加一种节点类型（需要同时指定该节点的类型，个数，规格，磁盘等信息）</li>上述操作一次只能进行一种，且磁盘类型不支持修改
+	NodeInfoList []*NodeInfo `json:"NodeInfoList,omitnil,omitempty" name:"NodeInfoList"`
+
+	// 公网访问状态
+	PublicAccess *string `json:"PublicAccess,omitnil,omitempty" name:"PublicAccess"`
+
+	// 公网访问控制列表
+	EsPublicAcl *EsPublicAcl `json:"EsPublicAcl,omitnil,omitempty" name:"EsPublicAcl"`
+
+	// Kibana公网访问状态
+	KibanaPublicAccess *string `json:"KibanaPublicAccess,omitnil,omitempty" name:"KibanaPublicAccess"`
+
+	// Kibana内网访问状态
+	KibanaPrivateAccess *string `json:"KibanaPrivateAccess,omitnil,omitempty" name:"KibanaPrivateAccess"`
+
+	// ES 6.8及以上版本基础版开启或关闭用户认证
+	BasicSecurityType *int64 `json:"BasicSecurityType,omitnil,omitempty" name:"BasicSecurityType"`
+
+	// Kibana内网端口
+	KibanaPrivatePort *uint64 `json:"KibanaPrivatePort,omitnil,omitempty" name:"KibanaPrivatePort"`
+
+	// 0: 蓝绿变更方式扩容，集群不重启 （默认） 1: 磁盘解挂载扩容，集群滚动重启
+	ScaleType *int64 `json:"ScaleType,omitnil,omitempty" name:"ScaleType"`
+
+	// 多可用区部署
+	MultiZoneInfo []*ZoneDetail `json:"MultiZoneInfo,omitnil,omitempty" name:"MultiZoneInfo"`
+
+	// 场景化模板类型 -1：不启用 1：通用 2：日志 3：搜索
+	SceneType *int64 `json:"SceneType,omitnil,omitempty" name:"SceneType"`
+
+	// Kibana配置项（JSON格式字符串）
+	KibanaConfig *string `json:"KibanaConfig,omitnil,omitempty" name:"KibanaConfig"`
+
+	// 可视化节点配置
+	WebNodeTypeInfo *WebNodeTypeInfo `json:"WebNodeTypeInfo,omitnil,omitempty" name:"WebNodeTypeInfo"`
+
+	// 切换到新网络架构
+	SwitchPrivateLink *string `json:"SwitchPrivateLink,omitnil,omitempty" name:"SwitchPrivateLink"`
+
+	// 启用Cerebro
+	EnableCerebro *bool `json:"EnableCerebro,omitnil,omitempty" name:"EnableCerebro"`
+
+	// Cerebro公网访问状态
+	CerebroPublicAccess *string `json:"CerebroPublicAccess,omitnil,omitempty" name:"CerebroPublicAccess"`
+
+	// Cerebro内网访问状态
+	CerebroPrivateAccess *string `json:"CerebroPrivateAccess,omitnil,omitempty" name:"CerebroPrivateAccess"`
+
+	// 新增或修改的配置组信息
+	EsConfigSet *EsConfigSetInfo `json:"EsConfigSet,omitnil,omitempty" name:"EsConfigSet"`
+
+	// 可维护时间段
+	OperationDuration *OperationDurationUpdated `json:"OperationDuration,omitnil,omitempty" name:"OperationDuration"`
+
+	// 是否开启Altering 外网告警输出
+	KibanaAlteringPublicAccess []*string `json:"KibanaAlteringPublicAccess,omitnil,omitempty" name:"KibanaAlteringPublicAccess"`
+}
+
+type UpdateInstancePublicAccessRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 实例名称（1-50 个英文、汉字、数字、连接线-或下划线_）
+	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
+
+	// 已废弃请使用NodeInfoList
+	// 节点个数（2-50个）
+	NodeNum *uint64 `json:"NodeNum,omitnil,omitempty" name:"NodeNum"`
+
+	// ES配置项（JSON格式字符串）
+	EsConfig *string `json:"EsConfig,omitnil,omitempty" name:"EsConfig"`
+
+	// 默认用户elastic的密码（8到16位，至少包括两项（[a-z,A-Z],[0-9]和[-!@#$%&^*+=_:;,.?]的特殊符号）
+	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+
+	// 访问控制列表
+	EsAcl *EsAcl `json:"EsAcl,omitnil,omitempty" name:"EsAcl"`
+
+	// 已废弃请使用NodeInfoList
+	// 磁盘大小（单位GB）
+	DiskSize *uint64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
+
+	// 已废弃请使用NodeInfoList
+	// 节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
+	NodeType *string `json:"NodeType,omitnil,omitempty" name:"NodeType"`
+
+	// 已废弃请使用NodeInfoList
+	// 专用主节点个数（只支持3个或5个）
+	MasterNodeNum *uint64 `json:"MasterNodeNum,omitnil,omitempty" name:"MasterNodeNum"`
+
+	// 已废弃请使用NodeInfoList
+	// 专用主节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
+	MasterNodeType *string `json:"MasterNodeType,omitnil,omitempty" name:"MasterNodeType"`
+
+	// 已废弃请使用NodeInfoList
+	// 专用主节点磁盘大小（单位GB系统默认配置为50GB,暂不支持自定义）
+	MasterNodeDiskSize *uint64 `json:"MasterNodeDiskSize,omitnil,omitempty" name:"MasterNodeDiskSize"`
+
+	// 更新配置时是否强制重启<li>true强制重启</li><li>false不强制重启</li>当前仅更新EsConfig时需要设置，默认值为false
+	ForceRestart *bool `json:"ForceRestart,omitnil,omitempty" name:"ForceRestart"`
+
+	// COS自动备份信息
+	CosBackup *CosBackup `json:"CosBackup,omitnil,omitempty" name:"CosBackup"`
+
+	// 节点信息列表，可以只传递要更新的节点及其对应的规格信息。支持的操作包括<li>修改一种节点的个数</li><li>修改一种节点的节点规格及磁盘大小</li><li>增加一种节点类型（需要同时指定该节点的类型，个数，规格，磁盘等信息）</li>上述操作一次只能进行一种，且磁盘类型不支持修改
+	NodeInfoList []*NodeInfo `json:"NodeInfoList,omitnil,omitempty" name:"NodeInfoList"`
+
+	// 公网访问状态
+	PublicAccess *string `json:"PublicAccess,omitnil,omitempty" name:"PublicAccess"`
+
+	// 公网访问控制列表
+	EsPublicAcl *EsPublicAcl `json:"EsPublicAcl,omitnil,omitempty" name:"EsPublicAcl"`
+
+	// Kibana公网访问状态
+	KibanaPublicAccess *string `json:"KibanaPublicAccess,omitnil,omitempty" name:"KibanaPublicAccess"`
+
+	// Kibana内网访问状态
+	KibanaPrivateAccess *string `json:"KibanaPrivateAccess,omitnil,omitempty" name:"KibanaPrivateAccess"`
+
+	// ES 6.8及以上版本基础版开启或关闭用户认证
+	BasicSecurityType *int64 `json:"BasicSecurityType,omitnil,omitempty" name:"BasicSecurityType"`
+
+	// Kibana内网端口
+	KibanaPrivatePort *uint64 `json:"KibanaPrivatePort,omitnil,omitempty" name:"KibanaPrivatePort"`
+
+	// 0: 蓝绿变更方式扩容，集群不重启 （默认） 1: 磁盘解挂载扩容，集群滚动重启
+	ScaleType *int64 `json:"ScaleType,omitnil,omitempty" name:"ScaleType"`
+
+	// 多可用区部署
+	MultiZoneInfo []*ZoneDetail `json:"MultiZoneInfo,omitnil,omitempty" name:"MultiZoneInfo"`
+
+	// 场景化模板类型 -1：不启用 1：通用 2：日志 3：搜索
+	SceneType *int64 `json:"SceneType,omitnil,omitempty" name:"SceneType"`
+
+	// Kibana配置项（JSON格式字符串）
+	KibanaConfig *string `json:"KibanaConfig,omitnil,omitempty" name:"KibanaConfig"`
+
+	// 可视化节点配置
+	WebNodeTypeInfo *WebNodeTypeInfo `json:"WebNodeTypeInfo,omitnil,omitempty" name:"WebNodeTypeInfo"`
+
+	// 切换到新网络架构
+	SwitchPrivateLink *string `json:"SwitchPrivateLink,omitnil,omitempty" name:"SwitchPrivateLink"`
+
+	// 启用Cerebro
+	EnableCerebro *bool `json:"EnableCerebro,omitnil,omitempty" name:"EnableCerebro"`
+
+	// Cerebro公网访问状态
+	CerebroPublicAccess *string `json:"CerebroPublicAccess,omitnil,omitempty" name:"CerebroPublicAccess"`
+
+	// Cerebro内网访问状态
+	CerebroPrivateAccess *string `json:"CerebroPrivateAccess,omitnil,omitempty" name:"CerebroPrivateAccess"`
+
+	// 新增或修改的配置组信息
+	EsConfigSet *EsConfigSetInfo `json:"EsConfigSet,omitnil,omitempty" name:"EsConfigSet"`
+
+	// 可维护时间段
+	OperationDuration *OperationDurationUpdated `json:"OperationDuration,omitnil,omitempty" name:"OperationDuration"`
+
+	// 是否开启Altering 外网告警输出
+	KibanaAlteringPublicAccess []*string `json:"KibanaAlteringPublicAccess,omitnil,omitempty" name:"KibanaAlteringPublicAccess"`
+}
+
+func (r *UpdateInstancePublicAccessRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateInstancePublicAccessRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "InstanceName")
+	delete(f, "NodeNum")
+	delete(f, "EsConfig")
+	delete(f, "Password")
+	delete(f, "EsAcl")
+	delete(f, "DiskSize")
+	delete(f, "NodeType")
+	delete(f, "MasterNodeNum")
+	delete(f, "MasterNodeType")
+	delete(f, "MasterNodeDiskSize")
+	delete(f, "ForceRestart")
+	delete(f, "CosBackup")
+	delete(f, "NodeInfoList")
+	delete(f, "PublicAccess")
+	delete(f, "EsPublicAcl")
+	delete(f, "KibanaPublicAccess")
+	delete(f, "KibanaPrivateAccess")
+	delete(f, "BasicSecurityType")
+	delete(f, "KibanaPrivatePort")
+	delete(f, "ScaleType")
+	delete(f, "MultiZoneInfo")
+	delete(f, "SceneType")
+	delete(f, "KibanaConfig")
+	delete(f, "WebNodeTypeInfo")
+	delete(f, "SwitchPrivateLink")
+	delete(f, "EnableCerebro")
+	delete(f, "CerebroPublicAccess")
+	delete(f, "CerebroPrivateAccess")
+	delete(f, "EsConfigSet")
+	delete(f, "OperationDuration")
+	delete(f, "KibanaAlteringPublicAccess")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateInstancePublicAccessRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateInstancePublicAccessResponseParams struct {
+	// 订单号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DealName *string `json:"DealName,omitnil,omitempty" name:"DealName"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateInstancePublicAccessResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateInstancePublicAccessResponseParams `json:"Response"`
+}
+
+func (r *UpdateInstancePublicAccessResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateInstancePublicAccessResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type UpdateInstanceRequestParams struct {
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`

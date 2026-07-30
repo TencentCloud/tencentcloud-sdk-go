@@ -278,6 +278,9 @@ const (
 	// 数据样例JSON SampleJson的取值和预期不符。
 	INVALIDPARAMETER_INVALIDSAMPLEJSON = "InvalidParameter.InvalidSampleJson"
 
+	// 场景化模版类型SceneType的取值和预期不符。
+	INVALIDPARAMETER_INVALIDSCENETYPE = "InvalidParameter.InvalidSceneType"
+
 	// 安全组id列表SecurityGroupIds的取值和预期不符。
 	INVALIDPARAMETER_INVALIDSECURITYGROUPIDS = "InvalidParameter.InvalidSecurityGroupIds"
 
@@ -542,6 +545,9 @@ const (
 	// 密钥管理系统资源获取失败。
 	RESOURCENOTFOUND_KMSNOTFOUND = "ResourceNotFound.KMSNotFound"
 
+	// 网络资源获取失败。
+	RESOURCENOTFOUND_NETWORKINFONOTFOUND = "ResourceNotFound.NetWorkInfoNotFound"
+
 	// 获取oss资源失败。
 	RESOURCENOTFOUND_OSSINFONOTFOUND = "ResourceNotFound.OssInfoNotFound"
 
@@ -691,6 +697,9 @@ const (
 
 	// 不支持该操作，实例状态有误。
 	UNSUPPORTEDOPERATION_STATUSNOTSUPPORT = "UnsupportedOperation.StatusNotSupport"
+
+	// 不支持切换PrivateLink架构。
+	UNSUPPORTEDOPERATION_SWITCHPRIVATELINK = "UnsupportedOperation.SwitchPrivateLink"
 
 	// 节点或磁盘数变更时不支持更新磁盘加密信息。
 	UNSUPPORTEDOPERATION_UPDATEDISKENCRYPT = "UnsupportedOperation.UpdateDiskEncrypt"

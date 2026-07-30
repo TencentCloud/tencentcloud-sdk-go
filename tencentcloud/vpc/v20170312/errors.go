@@ -896,6 +896,9 @@ const (
 	// 该带宽包不支持此操作。
 	UNSUPPORTEDOPERATION_BANDWIDTHPACKAGEIDNOTSUPPORTED = "UnsupportedOperation.BandwidthPackageIdNotSupported"
 
+	// 抱歉，您的操作暂时无法完成，请稍后重试或联系客服。
+	UNSUPPORTEDOPERATION_BILLINGFAILED = "UnsupportedOperation.BillingFailed"
+
 	// 绑定了防火墙，请先到防火墙页面解绑。
 	UNSUPPORTEDOPERATION_BINDCLOUDFIREWALL = "UnsupportedOperation.BindCloudFirewall"
 

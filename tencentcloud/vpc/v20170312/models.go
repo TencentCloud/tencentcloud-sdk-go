@@ -8714,11 +8714,14 @@ func (r *CreateVpcResponse) FromJsonString(s string) error {
 }
 
 type CreateVpnConnRoute struct {
-	// 目的端IDC网段
+	// <p>目的端IDC网段</p>
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitnil,omitempty" name:"DestinationCidrBlock"`
 
-	// 优先级；可选值0，100。
+	// <p>优先级；可选值0，100。</p>
 	Priority *uint64 `json:"Priority,omitnil,omitempty" name:"Priority"`
+
+	// <p>路由备注；可选值</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 // Predefined struct for user
@@ -8915,74 +8918,74 @@ func (r *CreateVpnConnectionResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateVpnGatewayRequestParams struct {
-	// VPC实例ID。可通过[DescribeVpcs](https://cloud.tencent.com/document/product/215/15778)接口返回值中的VpcId获取。
+	// <p>VPC实例ID。可通过<a href="https://cloud.tencent.com/document/product/215/15778">DescribeVpcs</a>。接口返回值中的VpcId获取</p><p>入参限制：当Type为CCN/SSL_CCN 类型时传 &quot;&quot;，IPSEC/SSL 类型必须传对应VPC实例ID。</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// VPN网关名称，最大长度不能超过60个字节。
+	// <p>VPN网关名称，最大长度不能超过60个字节。</p>
 	VpnGatewayName *string `json:"VpnGatewayName,omitnil,omitempty" name:"VpnGatewayName"`
 
-	// 公网带宽设置。可选带宽规格：5, 10, 20, 50, 100, 200, 500, 1000, 3000；单位：Mbps。
+	// <p>公网带宽设置。可选带宽规格：5, 10, 20, 50, 100, 200, 500, 1000, 3000；单位：Mbps。</p>
 	InternetMaxBandwidthOut *uint64 `json:"InternetMaxBandwidthOut,omitnil,omitempty" name:"InternetMaxBandwidthOut"`
 
-	// VPN网关计费模式，PREPAID：表示预付费，即包年包月，POSTPAID_BY_HOUR：表示后付费，即按量计费。默认：POSTPAID_BY_HOUR，如果指定预付费模式，参数InstanceChargePrepaid必填。
+	// <p>VPN网关计费模式，PREPAID：表示预付费，即包年包月，POSTPAID_BY_HOUR：表示后付费，即按量计费。默认：POSTPAID_BY_HOUR，如果指定预付费模式，参数InstanceChargePrepaid必填。</p>
 	InstanceChargeType *string `json:"InstanceChargeType,omitnil,omitempty" name:"InstanceChargeType"`
 
-	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
+	// <p>预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。</p>
 	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid,omitnil,omitempty" name:"InstanceChargePrepaid"`
 
-	// 可用区，如：ap-guangzhou-2。
+	// <p>可用区，如：ap-guangzhou-2。</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// VPN网关类型，默认为IPSEC。值“IPSEC”为VPC型IPSEC VPN网关，值“SSL”为VPC型SSL VPN网关，值“CCN”为云联网型IPSEC VPN网关，值“SSL_CCN”为云联网型SSL VPN网关。
+	// <p>VPN网关类型，默认为IPSEC。值“IPSEC”为VPC型IPSEC VPN网关，值“SSL”为VPC型SSL VPN网关，值“CCN”为云联网型IPSEC VPN网关，值“SSL_CCN”为云联网型SSL VPN网关。</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
+	// <p>指定绑定的标签列表，例如：[{&quot;Key&quot;: &quot;city&quot;, &quot;Value&quot;: &quot;shanghai&quot;}]。</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// CDC实例ID。
+	// <p>CDC实例ID。</p>
 	CdcId *string `json:"CdcId,omitnil,omitempty" name:"CdcId"`
 
-	// SSL VPN连接数设置，可选规格：5, 10, 20, 50, 100, 200, 500, 1000；单位：个。仅 SSL / SSL_CCN 类型需要选这个参数。
+	// <p>SSL VPN连接数设置，可选规格：5, 10, 20, 50, 100, 200, 500, 1000；</p><p>单位：个</p><p>默认值：5</p><p>仅 SSL / SSL_CCN 类型需要填这个参数。</p>
 	MaxConnection *uint64 `json:"MaxConnection,omitnil,omitempty" name:"MaxConnection"`
 
-	// BGP ASN。
+	// <p>BGP ASN。</p>
 	BgpAsn *uint64 `json:"BgpAsn,omitnil,omitempty" name:"BgpAsn"`
 }
 
 type CreateVpnGatewayRequest struct {
 	*tchttp.BaseRequest
 	
-	// VPC实例ID。可通过[DescribeVpcs](https://cloud.tencent.com/document/product/215/15778)接口返回值中的VpcId获取。
+	// <p>VPC实例ID。可通过<a href="https://cloud.tencent.com/document/product/215/15778">DescribeVpcs</a>。接口返回值中的VpcId获取</p><p>入参限制：当Type为CCN/SSL_CCN 类型时传 &quot;&quot;，IPSEC/SSL 类型必须传对应VPC实例ID。</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// VPN网关名称，最大长度不能超过60个字节。
+	// <p>VPN网关名称，最大长度不能超过60个字节。</p>
 	VpnGatewayName *string `json:"VpnGatewayName,omitnil,omitempty" name:"VpnGatewayName"`
 
-	// 公网带宽设置。可选带宽规格：5, 10, 20, 50, 100, 200, 500, 1000, 3000；单位：Mbps。
+	// <p>公网带宽设置。可选带宽规格：5, 10, 20, 50, 100, 200, 500, 1000, 3000；单位：Mbps。</p>
 	InternetMaxBandwidthOut *uint64 `json:"InternetMaxBandwidthOut,omitnil,omitempty" name:"InternetMaxBandwidthOut"`
 
-	// VPN网关计费模式，PREPAID：表示预付费，即包年包月，POSTPAID_BY_HOUR：表示后付费，即按量计费。默认：POSTPAID_BY_HOUR，如果指定预付费模式，参数InstanceChargePrepaid必填。
+	// <p>VPN网关计费模式，PREPAID：表示预付费，即包年包月，POSTPAID_BY_HOUR：表示后付费，即按量计费。默认：POSTPAID_BY_HOUR，如果指定预付费模式，参数InstanceChargePrepaid必填。</p>
 	InstanceChargeType *string `json:"InstanceChargeType,omitnil,omitempty" name:"InstanceChargeType"`
 
-	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
+	// <p>预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。</p>
 	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid,omitnil,omitempty" name:"InstanceChargePrepaid"`
 
-	// 可用区，如：ap-guangzhou-2。
+	// <p>可用区，如：ap-guangzhou-2。</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// VPN网关类型，默认为IPSEC。值“IPSEC”为VPC型IPSEC VPN网关，值“SSL”为VPC型SSL VPN网关，值“CCN”为云联网型IPSEC VPN网关，值“SSL_CCN”为云联网型SSL VPN网关。
+	// <p>VPN网关类型，默认为IPSEC。值“IPSEC”为VPC型IPSEC VPN网关，值“SSL”为VPC型SSL VPN网关，值“CCN”为云联网型IPSEC VPN网关，值“SSL_CCN”为云联网型SSL VPN网关。</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
+	// <p>指定绑定的标签列表，例如：[{&quot;Key&quot;: &quot;city&quot;, &quot;Value&quot;: &quot;shanghai&quot;}]。</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// CDC实例ID。
+	// <p>CDC实例ID。</p>
 	CdcId *string `json:"CdcId,omitnil,omitempty" name:"CdcId"`
 
-	// SSL VPN连接数设置，可选规格：5, 10, 20, 50, 100, 200, 500, 1000；单位：个。仅 SSL / SSL_CCN 类型需要选这个参数。
+	// <p>SSL VPN连接数设置，可选规格：5, 10, 20, 50, 100, 200, 500, 1000；</p><p>单位：个</p><p>默认值：5</p><p>仅 SSL / SSL_CCN 类型需要填这个参数。</p>
 	MaxConnection *uint64 `json:"MaxConnection,omitnil,omitempty" name:"MaxConnection"`
 
-	// BGP ASN。
+	// <p>BGP ASN。</p>
 	BgpAsn *uint64 `json:"BgpAsn,omitnil,omitempty" name:"BgpAsn"`
 }
 
@@ -9017,7 +9020,7 @@ func (r *CreateVpnGatewayRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateVpnGatewayResponseParams struct {
-	// VPN网关对象
+	// <p>VPN网关对象</p>
 	VpnGateway *VpnGateway `json:"VpnGateway,omitnil,omitempty" name:"VpnGateway"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -25899,18 +25902,18 @@ type IKEOptionsSpecification struct {
 	// <p>DH group，指定IKE交换密钥时使用的DH组，可选值：&#39;GROUP1&#39;, &#39;GROUP2&#39;, &#39;GROUP5&#39;, &#39;GROUP14&#39;, &#39;GROUP15&#39;, &#39;GROUP16&#39;, &#39;GROUP19&#39;, &#39;GROUP20&#39;, &#39;GROUP21&#39;, &#39;GROUP24&#39;，默认是GROUP1。</p>
 	DhGroupName *string `json:"DhGroupName,omitnil,omitempty" name:"DhGroupName"`
 
-	// <p>IKE SA Lifetime，单位：秒，设置IKE SA的生存周期，取值范围：60-604800</p>
+	// <p>IKE SA Lifetime，单位：秒，设置IKE SA的生存周期</p><p>取值范围：[60, 604800]</p><p>默认值：86400</p>
 	IKESaLifetimeSeconds *uint64 `json:"IKESaLifetimeSeconds,omitnil,omitempty" name:"IKESaLifetimeSeconds"`
 
-	// <p>IKE版本</p>
+	// <p>IKE版本</p><p>枚举值：</p><ul><li>IKEV1： IKEV1版本</li><li>IKEV2： IKEV2版本</li></ul><p>默认值：IKEV1</p>
 	IKEVersion *string `json:"IKEVersion,omitnil,omitempty" name:"IKEVersion"`
 }
 
 type IPSECOptionsSpecification struct {
-	// <p>加密算法，可选值：&#39;3DES-CBC&#39;, &#39;AES-CBC-128&#39;, &#39;AES-CBC-192&#39;, &#39;AES-CBC-256&#39;, &#39;DES-CBC&#39;, &#39;SM4&#39;, &#39;NULL&#39;， 默认为AES-CBC-128</p>
+	// <p>加密算法，可选值：&#39;3DES-CBC&#39;, &#39;AES-CBC-128&#39;, &#39;AES-CBC-192&#39;, &#39;AES-CBC-256&#39;, &#39;DES-CBC&#39;, &#39;SM4&#39;, &#39;NULL&#39;</p><p>默认值：AES-CBC-128</p>
 	EncryptAlgorithm *string `json:"EncryptAlgorithm,omitnil,omitempty" name:"EncryptAlgorithm"`
 
-	// <p>认证算法：可选值：&#39;MD5&#39;, &#39;SHA1&#39;，&#39;SHA-256&#39; 默认为</p>
+	// <p>认证算法：可选值：&#39;MD5&#39;, &#39;SHA1&#39;, &#39;SHA-256&#39;, &#39;SHA-512&#39;, &#39;SHA-384&#39;, &#39;SM3&#39;</p><p>默认值：SHA1</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	//
 	// Deprecated: IntegrityAlgorith is deprecated.
@@ -31944,104 +31947,104 @@ func (r *ModifyVpcPeeringConnectionResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyVpnConnectionAttributeRequestParams struct {
-	// VPN通道实例ID。形如：vpnx-f49l6u0z。
+	// <p>VPN通道实例ID。形如：vpnx-f49l6u0z。</p>
 	VpnConnectionId *string `json:"VpnConnectionId,omitnil,omitempty" name:"VpnConnectionId"`
 
-	// VPN通道名称，可任意命名，但不得超过60个字符。
+	// <p>VPN通道名称，可任意命名，但不得超过60个字符。</p>
 	VpnConnectionName *string `json:"VpnConnectionName,omitnil,omitempty" name:"VpnConnectionName"`
 
-	// 预共享密钥。
+	// <p>预共享密钥。</p>
 	PreShareKey *string `json:"PreShareKey,omitnil,omitempty" name:"PreShareKey"`
 
-	// SPD策略组，例如：{"10.0.0.5/24":["172.123.10.5/16"]}，10.0.0.5/24是vpc内网段，172.123.10.5/16是IDC网段。用户指定VPC内哪些网段可以和您IDC中哪些网段通信。
+	// <p>SPD策略组，例如：{&quot;10.0.0.5/24&quot;:[&quot;172.123.10.5/16&quot;]}，10.0.0.5/24是vpc内网段，172.123.10.5/16是IDC网段。用户指定VPC内哪些网段可以和您IDC中哪些网段通信。</p>
 	SecurityPolicyDatabases []*SecurityPolicyDatabase `json:"SecurityPolicyDatabases,omitnil,omitempty" name:"SecurityPolicyDatabases"`
 
-	// IKE配置（Internet Key Exchange，因特网密钥交换），IKE具有一套自我保护机制，用户配置网络安全协议。
+	// <p>IKE配置（Internet Key Exchange，因特网密钥交换），IKE具有一套自我保护机制，用户配置网络安全协议。</p>
 	IKEOptionsSpecification *IKEOptionsSpecification `json:"IKEOptionsSpecification,omitnil,omitempty" name:"IKEOptionsSpecification"`
 
-	// IPSec配置，腾讯云提供IPSec安全会话设置。
+	// <p>IPSec配置，腾讯云提供IPSec安全会话设置。</p>
 	IPSECOptionsSpecification *IPSECOptionsSpecification `json:"IPSECOptionsSpecification,omitnil,omitempty" name:"IPSECOptionsSpecification"`
 
-	// 是否启用通道健康检查，默认为False。
+	// <p>是否启用通道健康检查，默认为False。</p>
 	EnableHealthCheck *bool `json:"EnableHealthCheck,omitnil,omitempty" name:"EnableHealthCheck"`
 
-	// 本端通道探测IP。
+	// <p>本端通道探测IP。</p>
 	HealthCheckLocalIp *string `json:"HealthCheckLocalIp,omitnil,omitempty" name:"HealthCheckLocalIp"`
 
-	// 对端通道探测IP。
+	// <p>对端通道探测IP。</p>
 	HealthCheckRemoteIp *string `json:"HealthCheckRemoteIp,omitnil,omitempty" name:"HealthCheckRemoteIp"`
 
-	// 协商类型，默认为active（主动协商）。可选值：active（主动协商），passive（被动协商），flowTrigger（流量协商）
+	// <p>协商类型，默认为active（主动协商）。可选值：active（主动协商），passive（被动协商），flowTrigger（流量协商）</p>
 	NegotiationType *string `json:"NegotiationType,omitnil,omitempty" name:"NegotiationType"`
 
-	// DPD探测开关。默认为0，表示关闭DPD探测。可选值：0（关闭），1（开启）
+	// <p>DPD探测开关。默认为0，表示关闭DPD探测。可选值：0（关闭），1（开启）</p>
 	DpdEnable *int64 `json:"DpdEnable,omitnil,omitempty" name:"DpdEnable"`
 
-	// DPD超时时间。即探测确认对端不存在需要的时间。dpdEnable为1（开启）时有效。默认30，单位为秒
+	// <p>DPD超时时间。即探测确认对端不存在需要的时间。dpdEnable为1（开启）时有效。默认30，单位为秒</p>
 	DpdTimeout *string `json:"DpdTimeout,omitnil,omitempty" name:"DpdTimeout"`
 
-	// DPD超时后的动作。默认为clear。dpdEnable为1（开启）时有效。可取值为clear（断开）和restart（重试）
+	// <p>DPD超时后的动作。默认为clear。dpdEnable为1（开启）时有效。可取值为clear（断开）和restart（重试）</p><p>默认值：restart</p>
 	DpdAction *string `json:"DpdAction,omitnil,omitempty" name:"DpdAction"`
 
-	// 对端网关ID，4.0及以上网关下的通道支持更新。
+	// <p>对端网关ID，4.0及以上网关下的通道支持更新。</p>
 	CustomerGatewayId *string `json:"CustomerGatewayId,omitnil,omitempty" name:"CustomerGatewayId"`
 
-	// 健康检查配置
+	// <p>健康检查配置</p>
 	HealthCheckConfig *HealthCheckConfig `json:"HealthCheckConfig,omitnil,omitempty" name:"HealthCheckConfig"`
 
-	// BGP隧道配置
+	// <p>BGP隧道配置</p>
 	BgpConfig *BgpConfig `json:"BgpConfig,omitnil,omitempty" name:"BgpConfig"`
 }
 
 type ModifyVpnConnectionAttributeRequest struct {
 	*tchttp.BaseRequest
 	
-	// VPN通道实例ID。形如：vpnx-f49l6u0z。
+	// <p>VPN通道实例ID。形如：vpnx-f49l6u0z。</p>
 	VpnConnectionId *string `json:"VpnConnectionId,omitnil,omitempty" name:"VpnConnectionId"`
 
-	// VPN通道名称，可任意命名，但不得超过60个字符。
+	// <p>VPN通道名称，可任意命名，但不得超过60个字符。</p>
 	VpnConnectionName *string `json:"VpnConnectionName,omitnil,omitempty" name:"VpnConnectionName"`
 
-	// 预共享密钥。
+	// <p>预共享密钥。</p>
 	PreShareKey *string `json:"PreShareKey,omitnil,omitempty" name:"PreShareKey"`
 
-	// SPD策略组，例如：{"10.0.0.5/24":["172.123.10.5/16"]}，10.0.0.5/24是vpc内网段，172.123.10.5/16是IDC网段。用户指定VPC内哪些网段可以和您IDC中哪些网段通信。
+	// <p>SPD策略组，例如：{&quot;10.0.0.5/24&quot;:[&quot;172.123.10.5/16&quot;]}，10.0.0.5/24是vpc内网段，172.123.10.5/16是IDC网段。用户指定VPC内哪些网段可以和您IDC中哪些网段通信。</p>
 	SecurityPolicyDatabases []*SecurityPolicyDatabase `json:"SecurityPolicyDatabases,omitnil,omitempty" name:"SecurityPolicyDatabases"`
 
-	// IKE配置（Internet Key Exchange，因特网密钥交换），IKE具有一套自我保护机制，用户配置网络安全协议。
+	// <p>IKE配置（Internet Key Exchange，因特网密钥交换），IKE具有一套自我保护机制，用户配置网络安全协议。</p>
 	IKEOptionsSpecification *IKEOptionsSpecification `json:"IKEOptionsSpecification,omitnil,omitempty" name:"IKEOptionsSpecification"`
 
-	// IPSec配置，腾讯云提供IPSec安全会话设置。
+	// <p>IPSec配置，腾讯云提供IPSec安全会话设置。</p>
 	IPSECOptionsSpecification *IPSECOptionsSpecification `json:"IPSECOptionsSpecification,omitnil,omitempty" name:"IPSECOptionsSpecification"`
 
-	// 是否启用通道健康检查，默认为False。
+	// <p>是否启用通道健康检查，默认为False。</p>
 	EnableHealthCheck *bool `json:"EnableHealthCheck,omitnil,omitempty" name:"EnableHealthCheck"`
 
-	// 本端通道探测IP。
+	// <p>本端通道探测IP。</p>
 	HealthCheckLocalIp *string `json:"HealthCheckLocalIp,omitnil,omitempty" name:"HealthCheckLocalIp"`
 
-	// 对端通道探测IP。
+	// <p>对端通道探测IP。</p>
 	HealthCheckRemoteIp *string `json:"HealthCheckRemoteIp,omitnil,omitempty" name:"HealthCheckRemoteIp"`
 
-	// 协商类型，默认为active（主动协商）。可选值：active（主动协商），passive（被动协商），flowTrigger（流量协商）
+	// <p>协商类型，默认为active（主动协商）。可选值：active（主动协商），passive（被动协商），flowTrigger（流量协商）</p>
 	NegotiationType *string `json:"NegotiationType,omitnil,omitempty" name:"NegotiationType"`
 
-	// DPD探测开关。默认为0，表示关闭DPD探测。可选值：0（关闭），1（开启）
+	// <p>DPD探测开关。默认为0，表示关闭DPD探测。可选值：0（关闭），1（开启）</p>
 	DpdEnable *int64 `json:"DpdEnable,omitnil,omitempty" name:"DpdEnable"`
 
-	// DPD超时时间。即探测确认对端不存在需要的时间。dpdEnable为1（开启）时有效。默认30，单位为秒
+	// <p>DPD超时时间。即探测确认对端不存在需要的时间。dpdEnable为1（开启）时有效。默认30，单位为秒</p>
 	DpdTimeout *string `json:"DpdTimeout,omitnil,omitempty" name:"DpdTimeout"`
 
-	// DPD超时后的动作。默认为clear。dpdEnable为1（开启）时有效。可取值为clear（断开）和restart（重试）
+	// <p>DPD超时后的动作。默认为clear。dpdEnable为1（开启）时有效。可取值为clear（断开）和restart（重试）</p><p>默认值：restart</p>
 	DpdAction *string `json:"DpdAction,omitnil,omitempty" name:"DpdAction"`
 
-	// 对端网关ID，4.0及以上网关下的通道支持更新。
+	// <p>对端网关ID，4.0及以上网关下的通道支持更新。</p>
 	CustomerGatewayId *string `json:"CustomerGatewayId,omitnil,omitempty" name:"CustomerGatewayId"`
 
-	// 健康检查配置
+	// <p>健康检查配置</p>
 	HealthCheckConfig *HealthCheckConfig `json:"HealthCheckConfig,omitnil,omitempty" name:"HealthCheckConfig"`
 
-	// BGP隧道配置
+	// <p>BGP隧道配置</p>
 	BgpConfig *BgpConfig `json:"BgpConfig,omitnil,omitempty" name:"BgpConfig"`
 }
 

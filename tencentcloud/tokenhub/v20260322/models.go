@@ -3222,46 +3222,49 @@ type TokenPlanApiKeyListItem struct {
 }
 
 type TokenPlanListItem struct {
-	// 套餐 ID。
+	// <p>套餐 ID。</p>
 	TeamId *string `json:"TeamId,omitnil,omitempty" name:"TeamId"`
 
-	// 套餐类型。取值：enterprise（企业版专业套餐）、enterprise-auto（企业版轻享套餐）
+	// <p>套餐类型。取值：enterprise（企业版专业套餐）、enterprise-auto（企业版轻享套餐）</p>
 	ProductType *string `json:"ProductType,omitnil,omitempty" name:"ProductType"`
 
-	// 套餐名称。最大 128 字符。
+	// <p>套餐名称。最大 128 字符。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 账号 APP ID。
+	// <p>账号 APP ID。</p>
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
 
-	// 主账号 UIN。
+	// <p>主账号 UIN。</p>
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 
-	// 套餐状态。取值：enable（启用）、disable（停用）。
+	// <p>套餐状态。取值：enable（启用）、disable（停用）。</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 套餐关停原因。取值：NORMAL（正常）、ISOLATED（隔离/欠费）、FROZEN（冻结）、EXHAUSTED（额度耗尽）、DESTROYED（已销毁）
+	// <p>套餐关停原因。取值：NORMAL（正常）、ISOLATED（隔离/欠费）、FROZEN（冻结）、EXHAUSTED（额度耗尽）、DESTROYED（已销毁）</p>
 	StopReason *string `json:"StopReason,omitnil,omitempty" name:"StopReason"`
 
-	// 可创建 API Key 上限。
+	// <p>可创建 API Key 上限。</p>
 	ApiKeyMax *int64 `json:"ApiKeyMax,omitnil,omitempty" name:"ApiKeyMax"`
 
-	// 云计费预付费资源包 ID。
+	// <p>当前已创建的 APIKey 数量</p>
+	ApiKeyCount *int64 `json:"ApiKeyCount,omitnil,omitempty" name:"ApiKeyCount"`
+
+	// <p>云计费预付费资源包 ID。</p>
 	PrepayResourceID *string `json:"PrepayResourceID,omitnil,omitempty" name:"PrepayResourceID"`
 
-	// 创建人。若为子账号创建的套餐，则该值为子账号UIN。
+	// <p>创建人。若为子账号创建的套餐，则该值为子账号UIN。</p>
 	Creator *string `json:"Creator,omitnil,omitempty" name:"Creator"`
 
-	// 创建时间。
+	// <p>创建时间。</p>
 	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
 
-	// 更新时间。
+	// <p>更新时间。</p>
 	UpdatedAt *string `json:"UpdatedAt,omitnil,omitempty" name:"UpdatedAt"`
 
-	// 套餐包基本信息。
+	// <p>套餐包基本信息。</p>
 	PackageInfo *TokenPlanPackageInfo `json:"PackageInfo,omitnil,omitempty" name:"PackageInfo"`
 
-	// 是否开启自动续费。取值：0（未开启），1（开启）
+	// <p>是否开启自动续费。取值：0（未开启），1（开启）</p>
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 }
 

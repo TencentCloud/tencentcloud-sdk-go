@@ -663,6 +663,9 @@ type ApmInstanceDetail struct {
 
 	// <p>spanId的索引key: 当CLS索引类型为键值索引时生效</p>
 	LogSpanIdKey *string `json:"LogSpanIdKey,omitnil,omitempty" name:"LogSpanIdKey"`
+
+	// <p>是否禁用 AI 能力</p><p>单位：无</p>
+	DisableAiAbility *int64 `json:"DisableAiAbility,omitnil,omitempty" name:"DisableAiAbility"`
 }
 
 type ApmMetricRecord struct {
@@ -4077,14 +4080,17 @@ type ModifyApmInstanceRequestParams struct {
 	// <p>spanId的索引key: 当CLS索引类型为键值索引时生效</p>
 	LogSpanIdKey *string `json:"LogSpanIdKey,omitnil,omitempty" name:"LogSpanIdKey"`
 
-	// <p>是否开启探针头采样</p>
+	// <p>是否开启探针头采样</p><p>（受限）</p>
 	EnableHeadSampler *bool `json:"EnableHeadSampler,omitnil,omitempty" name:"EnableHeadSampler"`
 
-	// <p>头采类型</p><p>枚举值：</p><ul><li>parentbased_traceidratio： 默认</li></ul>
+	// <p>头采类型</p><p>枚举值：</p><ul><li>parentbased_traceidratio： 默认</li></ul><p>（受限）</p>
 	HeadSamplerType *string `json:"HeadSamplerType,omitnil,omitempty" name:"HeadSamplerType"`
 
-	// <p>头采采样率</p><p>取值范围：[0, 100]</p>
+	// <p>头采采样率</p><p>取值范围：[0, 100]</p><p>（受限）</p>
 	HeadSamplerArg *int64 `json:"HeadSamplerArg,omitnil,omitempty" name:"HeadSamplerArg"`
+
+	// <p>是否禁用 AI 能力</p><p>单位：无</p>
+	DisableAiAbility *int64 `json:"DisableAiAbility,omitnil,omitempty" name:"DisableAiAbility"`
 }
 
 type ModifyApmInstanceRequest struct {
@@ -4219,14 +4225,17 @@ type ModifyApmInstanceRequest struct {
 	// <p>spanId的索引key: 当CLS索引类型为键值索引时生效</p>
 	LogSpanIdKey *string `json:"LogSpanIdKey,omitnil,omitempty" name:"LogSpanIdKey"`
 
-	// <p>是否开启探针头采样</p>
+	// <p>是否开启探针头采样</p><p>（受限）</p>
 	EnableHeadSampler *bool `json:"EnableHeadSampler,omitnil,omitempty" name:"EnableHeadSampler"`
 
-	// <p>头采类型</p><p>枚举值：</p><ul><li>parentbased_traceidratio： 默认</li></ul>
+	// <p>头采类型</p><p>枚举值：</p><ul><li>parentbased_traceidratio： 默认</li></ul><p>（受限）</p>
 	HeadSamplerType *string `json:"HeadSamplerType,omitnil,omitempty" name:"HeadSamplerType"`
 
-	// <p>头采采样率</p><p>取值范围：[0, 100]</p>
+	// <p>头采采样率</p><p>取值范围：[0, 100]</p><p>（受限）</p>
 	HeadSamplerArg *int64 `json:"HeadSamplerArg,omitnil,omitempty" name:"HeadSamplerArg"`
+
+	// <p>是否禁用 AI 能力</p><p>单位：无</p>
+	DisableAiAbility *int64 `json:"DisableAiAbility,omitnil,omitempty" name:"DisableAiAbility"`
 }
 
 func (r *ModifyApmInstanceRequest) ToJsonString() string {
@@ -4287,6 +4296,7 @@ func (r *ModifyApmInstanceRequest) FromJsonString(s string) error {
 	delete(f, "EnableHeadSampler")
 	delete(f, "HeadSamplerType")
 	delete(f, "HeadSamplerArg")
+	delete(f, "DisableAiAbility")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyApmInstanceRequest has unknown keys!", "")
 	}
