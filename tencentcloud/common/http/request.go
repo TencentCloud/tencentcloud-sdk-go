@@ -21,6 +21,8 @@ const (
 
 	RootDomain = "tencentcloudapi.com"
 	Path       = "/"
+
+	InternalServiceRootDomain = "tencentcloudapi.woa.com"
 )
 
 type Request interface {
@@ -28,7 +30,9 @@ type Request interface {
 	GetBodyReader() io.Reader
 	GetScheme() string
 	GetRootDomain() string
+	GetInternalServiceRootDomain() string
 	GetServiceDomain(string) string
+	GetInternalServiceDomain(string, string) string
 	GetDomain() string
 	GetHttpMethod() string
 	GetParams() map[string]string
@@ -39,12 +43,15 @@ type Request interface {
 	GetVersion() string
 	GetContentType() string
 	GetContext() context.Context
+	IsInternalServiceAction() bool
 	GetHeader() map[string]string
 	GetSkipSign() bool
 	SetScheme(string)
 	SetRootDomain(string)
+	SetInternalServiceRootDomain(string)
 	SetDomain(string)
 	SetHttpMethod(string)
+	SetInternalServiceAction()
 	SetPath(string)
 	SetContentType(string)
 	SetBody([]byte)
@@ -54,23 +61,25 @@ type Request interface {
 }
 
 type BaseRequest struct {
-	context    context.Context
-	httpMethod string
-	scheme     string
-	rootDomain string
-	domain     string
-	path       string
-	skipSign   bool
-	params     map[string]string
-	formParams map[string]string
-	header     map[string]string
+	internalServiceRootDomain string
+	context                   context.Context
+	httpMethod                string
+	scheme                    string
+	rootDomain                string
+	domain                    string
+	path                      string
+	skipSign                  bool
+	params                    map[string]string
+	formParams                map[string]string
+	header                    map[string]string
 
 	service string
 	version string
 	action  string
 
-	contentType string
-	body        []byte
+	isInternalServiceAction bool
+	contentType             string
+	body                    []byte
 }
 
 func (r *BaseRequest) GetAction() string {
@@ -101,6 +110,10 @@ func (r *BaseRequest) GetRootDomain() string {
 	return r.rootDomain
 }
 
+func (r *BaseRequest) GetInternalServiceRootDomain() string {
+	return r.internalServiceRootDomain
+}
+
 func (r *BaseRequest) GetServiceDomain(service string) (domain string) {
 	rootDomain := r.rootDomain
 	if rootDomain == "" {
@@ -108,6 +121,30 @@ func (r *BaseRequest) GetServiceDomain(service string) (domain string) {
 	}
 	domain = service + "." + rootDomain
 	return
+}
+
+func (r *BaseRequest) GetInternalServiceDomain(service, region string) (domain string) {
+	internalServiceRootDomain := r.internalServiceRootDomain
+	if internalServiceRootDomain == "" {
+		internalServiceRootDomain = InternalServiceRootDomain
+	}
+	regionSet := []string{"ap-beijing", "ap-shanghai", "ap-guangzhou", "ap-singapore", "eu-frankfurt"}
+	isValid := false
+	for _, item := range regionSet {
+		if region == item {
+			isValid = true
+		}
+	}
+	if isValid {
+		domain = service + "." + region + "." + internalServiceRootDomain
+	} else {
+		domain = service + ".ap-guangzhou." + internalServiceRootDomain
+	}
+	return
+}
+
+func (r *BaseRequest) IsInternalServiceAction() bool {
+	return r.isInternalServiceAction
 }
 
 func (r *BaseRequest) GetBody() []byte {
@@ -142,6 +179,14 @@ func (r *BaseRequest) SetScheme(scheme string) {
 
 func (r *BaseRequest) SetRootDomain(rootDomain string) {
 	r.rootDomain = rootDomain
+}
+
+func (r *BaseRequest) SetInternalServiceRootDomain(internalServiceRootDomain string) {
+	r.internalServiceRootDomain = internalServiceRootDomain
+}
+
+func (r *BaseRequest) SetInternalServiceAction() {
+	r.isInternalServiceAction = true
 }
 
 func (r *BaseRequest) SetHttpMethod(method string) {
@@ -346,4 +391,20 @@ func flatStructure(value reflect.Value, request Request, prefix string) (err err
 		}
 	}
 	return
+}
+
+type requestKeyType struct{}
+
+// requestKey is the context key for stashing the originating Request on a
+// context.Context (typically an *http.Request's), so later pipeline stages
+// can access it without carrying it as a separate parameter.
+var requestKey requestKeyType
+
+func WithRequest(ctx context.Context, request Request) context.Context {
+	return context.WithValue(ctx, &requestKey, request)
+}
+
+func RequestFromContext(ctx context.Context) Request {
+	request, _ := ctx.Value(&requestKey).(Request)
+	return request
 }
