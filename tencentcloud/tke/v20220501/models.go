@@ -265,6 +265,9 @@ type CreateNodePoolRequestParams struct {
 
 	// <p>节点 Annotation 列表</p>
 	Annotations []*Annotation `json:"Annotations,omitnil,omitempty" name:"Annotations"`
+
+	// <p>跳过校验选项，支持 &quot;VpcDnsCheck&quot;</p>
+	SkipValidateOptions []*string `json:"SkipValidateOptions,omitnil,omitempty" name:"SkipValidateOptions"`
 }
 
 type CreateNodePoolRequest struct {
@@ -299,6 +302,9 @@ type CreateNodePoolRequest struct {
 
 	// <p>节点 Annotation 列表</p>
 	Annotations []*Annotation `json:"Annotations,omitnil,omitempty" name:"Annotations"`
+
+	// <p>跳过校验选项，支持 &quot;VpcDnsCheck&quot;</p>
+	SkipValidateOptions []*string `json:"SkipValidateOptions,omitnil,omitempty" name:"SkipValidateOptions"`
 }
 
 func (r *CreateNodePoolRequest) ToJsonString() string {
@@ -323,6 +329,7 @@ func (r *CreateNodePoolRequest) FromJsonString(s string) error {
 	delete(f, "Unschedulable")
 	delete(f, "Native")
 	delete(f, "Annotations")
+	delete(f, "SkipValidateOptions")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateNodePoolRequest has unknown keys!", "")
 	}

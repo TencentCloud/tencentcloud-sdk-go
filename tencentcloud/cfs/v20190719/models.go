@@ -4593,43 +4593,47 @@ func (r *ModifyLifecyclePolicyResponse) FromJsonString(s string) error {
 }
 
 type MountInfo struct {
-	// 文件系统 ID
+	// <p>文件系统 ID</p>
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
-	// 挂载点 ID
+	// <p>挂载点 ID</p>
 	MountTargetId *string `json:"MountTargetId,omitnil,omitempty" name:"MountTargetId"`
 
-	// 挂载点 IP
+	// <p>挂载点 IP</p>
 	IpAddress *string `json:"IpAddress,omitnil,omitempty" name:"IpAddress"`
 
-	// 挂载根目录
+	// <p>挂载根目录</p>
 	FSID *string `json:"FSID,omitnil,omitempty" name:"FSID"`
 
-	// 挂载点状态，包括creating：创建中；available：运行中；
-	// deleting：删除中；
-	// create_failed： 创建失败
+	// <p>挂载点状态，包括creating：创建中；available：运行中；<br>deleting：删除中；<br>create_failed： 创建失败</p>
 	LifeCycleState *string `json:"LifeCycleState,omitnil,omitempty" name:"LifeCycleState"`
 
-	// 网络类型，包括VPC,CCN
+	// <p>网络类型，包括VPC,CCN</p>
 	NetworkInterface *string `json:"NetworkInterface,omitnil,omitempty" name:"NetworkInterface"`
 
-	// 私有网络 ID
+	// <p>私有网络 ID</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 私有网络名称
+	// <p>私有网络名称</p>
 	VpcName *string `json:"VpcName,omitnil,omitempty" name:"VpcName"`
 
-	// 子网 Id
+	// <p>子网 Id</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 子网名称
+	// <p>子网名称</p>
 	SubnetName *string `json:"SubnetName,omitnil,omitempty" name:"SubnetName"`
 
-	// CFS Turbo使用的云联网ID
+	// <p>CFS Turbo使用的云联网ID</p>
 	CcnID *string `json:"CcnID,omitnil,omitempty" name:"CcnID"`
 
-	// 云联网中CFS Turbo使用的网段
+	// <p>云联网中CFS Turbo使用的网段</p>
 	CidrBlock *string `json:"CidrBlock,omitnil,omitempty" name:"CidrBlock"`
+
+	// <p>占用用户ip列表</p>
+	ServerList []*string `json:"ServerList,omitnil,omitempty" name:"ServerList"`
+
+	// <p>是否占用超过200个ip</p>
+	ServerListTruncated *bool `json:"ServerListTruncated,omitnil,omitempty" name:"ServerListTruncated"`
 }
 
 // Predefined struct for user

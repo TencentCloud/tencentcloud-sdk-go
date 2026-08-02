@@ -2215,6 +2215,9 @@ type CreateClusterNodePoolRequestParams struct {
 
 	// <p>删除保护开关</p>
 	DeletionProtection *bool `json:"DeletionProtection,omitnil,omitempty" name:"DeletionProtection"`
+
+	// <p>跳过校验选项，目前支持 &quot;VpcDnsCheck&quot;</p>
+	SkipValidateOptions []*string `json:"SkipValidateOptions,omitnil,omitempty" name:"SkipValidateOptions"`
 }
 
 type CreateClusterNodePoolRequest struct {
@@ -2264,6 +2267,9 @@ type CreateClusterNodePoolRequest struct {
 
 	// <p>删除保护开关</p>
 	DeletionProtection *bool `json:"DeletionProtection,omitnil,omitempty" name:"DeletionProtection"`
+
+	// <p>跳过校验选项，目前支持 &quot;VpcDnsCheck&quot;</p>
+	SkipValidateOptions []*string `json:"SkipValidateOptions,omitnil,omitempty" name:"SkipValidateOptions"`
 }
 
 func (r *CreateClusterNodePoolRequest) ToJsonString() string {
@@ -2293,6 +2299,7 @@ func (r *CreateClusterNodePoolRequest) FromJsonString(s string) error {
 	delete(f, "OsCustomizeType")
 	delete(f, "Tags")
 	delete(f, "DeletionProtection")
+	delete(f, "SkipValidateOptions")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateClusterNodePoolRequest has unknown keys!", "")
 	}

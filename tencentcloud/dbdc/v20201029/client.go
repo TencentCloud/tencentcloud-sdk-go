@@ -1627,6 +1627,62 @@ func (c *Client) ModifyDBCustomClusterTagsWithContext(ctx context.Context, reque
     return
 }
 
+func NewModifyDBCustomNodeAttributesRequest() (request *ModifyDBCustomNodeAttributesRequest) {
+    request = &ModifyDBCustomNodeAttributesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dbdc", APIVersion, "ModifyDBCustomNodeAttributes")
+    
+    
+    return
+}
+
+func NewModifyDBCustomNodeAttributesResponse() (response *ModifyDBCustomNodeAttributesResponse) {
+    response = &ModifyDBCustomNodeAttributesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyDBCustomNodeAttributes
+// 该接口（ModifyDBCustomNodeAttributes）用于修改 DB Custom 节点的属性。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) ModifyDBCustomNodeAttributes(request *ModifyDBCustomNodeAttributesRequest) (response *ModifyDBCustomNodeAttributesResponse, err error) {
+    return c.ModifyDBCustomNodeAttributesWithContext(context.Background(), request)
+}
+
+// ModifyDBCustomNodeAttributes
+// 该接口（ModifyDBCustomNodeAttributes）用于修改 DB Custom 节点的属性。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) ModifyDBCustomNodeAttributesWithContext(ctx context.Context, request *ModifyDBCustomNodeAttributesRequest) (response *ModifyDBCustomNodeAttributesResponse, err error) {
+    if request == nil {
+        request = NewModifyDBCustomNodeAttributesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dbdc", APIVersion, "ModifyDBCustomNodeAttributes")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDBCustomNodeAttributes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDBCustomNodeAttributesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyDBCustomNodeSecurityGroupsRequest() (request *ModifyDBCustomNodeSecurityGroupsRequest) {
     request = &ModifyDBCustomNodeSecurityGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},

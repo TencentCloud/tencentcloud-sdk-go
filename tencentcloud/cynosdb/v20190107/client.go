@@ -15877,6 +15877,70 @@ func (c *Client) SwitchProxyVpcWithContext(ctx context.Context, request *SwitchP
     return
 }
 
+func NewTransferClusterPrepayToPostpayRequest() (request *TransferClusterPrepayToPostpayRequest) {
+    request = &TransferClusterPrepayToPostpayRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "TransferClusterPrepayToPostpay")
+    
+    
+    return
+}
+
+func NewTransferClusterPrepayToPostpayResponse() (response *TransferClusterPrepayToPostpayResponse) {
+    response = &TransferClusterPrepayToPostpayResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// TransferClusterPrepayToPostpay
+// 本接口（TransferClusterPrepayToPostpay）用于将预付费集群转为后付费集群
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  INVALIDPARAMETERVALUE_PARAMERROR = "InvalidParameterValue.ParamError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) TransferClusterPrepayToPostpay(request *TransferClusterPrepayToPostpayRequest) (response *TransferClusterPrepayToPostpayResponse, err error) {
+    return c.TransferClusterPrepayToPostpayWithContext(context.Background(), request)
+}
+
+// TransferClusterPrepayToPostpay
+// 本接口（TransferClusterPrepayToPostpay）用于将预付费集群转为后付费集群
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  INVALIDPARAMETERVALUE_PARAMERROR = "InvalidParameterValue.ParamError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) TransferClusterPrepayToPostpayWithContext(ctx context.Context, request *TransferClusterPrepayToPostpayRequest) (response *TransferClusterPrepayToPostpayResponse, err error) {
+    if request == nil {
+        request = NewTransferClusterPrepayToPostpayRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "TransferClusterPrepayToPostpay")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TransferClusterPrepayToPostpay require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewTransferClusterPrepayToPostpayResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewTransferClusterZoneRequest() (request *TransferClusterZoneRequest) {
     request = &TransferClusterZoneRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -15937,6 +16001,62 @@ func (c *Client) TransferClusterZoneWithContext(ctx context.Context, request *Tr
     request.SetContext(ctx)
     
     response = NewTransferClusterZoneResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewTransferStoragePrepayToPostpayRequest() (request *TransferStoragePrepayToPostpayRequest) {
+    request = &TransferStoragePrepayToPostpayRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "TransferStoragePrepayToPostpay")
+    
+    
+    return
+}
+
+func NewTransferStoragePrepayToPostpayResponse() (response *TransferStoragePrepayToPostpayResponse) {
+    response = &TransferStoragePrepayToPostpayResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// TransferStoragePrepayToPostpay
+// 本接口（TransferStoragePrepayToPostpay）用于将预付费存储转为后付费存储
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INVALIDPARAMETERVALUE_INVALIDREGIONIDERROR = "InvalidParameterValue.InvalidRegionIdError"
+//  OPERATIONDENIED_CLUSTERSTATUSDENIEDERROR = "OperationDenied.ClusterStatusDeniedError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+func (c *Client) TransferStoragePrepayToPostpay(request *TransferStoragePrepayToPostpayRequest) (response *TransferStoragePrepayToPostpayResponse, err error) {
+    return c.TransferStoragePrepayToPostpayWithContext(context.Background(), request)
+}
+
+// TransferStoragePrepayToPostpay
+// 本接口（TransferStoragePrepayToPostpay）用于将预付费存储转为后付费存储
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INVALIDPARAMETERVALUE_INVALIDREGIONIDERROR = "InvalidParameterValue.InvalidRegionIdError"
+//  OPERATIONDENIED_CLUSTERSTATUSDENIEDERROR = "OperationDenied.ClusterStatusDeniedError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+func (c *Client) TransferStoragePrepayToPostpayWithContext(ctx context.Context, request *TransferStoragePrepayToPostpayRequest) (response *TransferStoragePrepayToPostpayResponse, err error) {
+    if request == nil {
+        request = NewTransferStoragePrepayToPostpayRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "TransferStoragePrepayToPostpay")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TransferStoragePrepayToPostpay require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewTransferStoragePrepayToPostpayResponse()
     err = c.Send(request, response)
     return
 }

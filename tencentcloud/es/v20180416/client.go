@@ -89,6 +89,220 @@ func (c *Client) CheckMigrateIndexMetaDataWithContext(ctx context.Context, reque
     return
 }
 
+func NewCheckUpdateInstanceRequest() (request *CheckUpdateInstanceRequest) {
+    request = &CheckUpdateInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("es", APIVersion, "CheckUpdateInstance")
+    
+    
+    return
+}
+
+func NewCheckUpdateInstanceResponse() (response *CheckUpdateInstanceResponse) {
+    response = &CheckUpdateInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CheckUpdateInstance
+// 检查实例变配操作是否可以发起
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLUSTERRESOURCELIMITERROR = "FailedOperation.ClusterResourceLimitError"
+//  FAILEDOPERATION_DISKCOUNTPARAMERROR = "FailedOperation.DiskCountParamError"
+//  FAILEDOPERATION_ERRORCLUSTERSTATE = "FailedOperation.ErrorClusterState"
+//  FAILEDOPERATION_ERRORCLUSTERSTATENOREPLICATION = "FailedOperation.ErrorClusterStateNoReplication"
+//  FAILEDOPERATION_ERRORCLUSTERSTATEUNHEALTH = "FailedOperation.ErrorClusterStateUnhealth"
+//  FAILEDOPERATION_UNSUPPORTEDLOCALDISKROLLUPSCALEUPORDOWN = "FailedOperation.UnsupportedLocalDiskRollUpScaleUpOrDown"
+//  FAILEDOPERATION_UNSUPPORTEDRESETNODETYPEANDSCALEOUTDISK = "FailedOperation.UnsupportedResetNodeTypeAndScaleOutDisk"
+//  FAILEDOPERATION_UNSUPPORTEDRESTSCALEDOWNANDMODIFYDISK = "FailedOperation.UnsupportedRestScaleDownAndModifyDisk"
+//  FAILEDOPERATION_UNSUPPORTEDREVERSEREGULATIONNODETYPEANDDISK = "FailedOperation.UnsupportedReverseRegulationNodeTypeAndDisk"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDCOSBACKUPINFO = "InvalidParameter.InvalidCosBackupInfo"
+//  INVALIDPARAMETER_INVALIDDISKCOUNT = "InvalidParameter.InvalidDiskCount"
+//  INVALIDPARAMETER_INVALIDDISKENCRYPT = "InvalidParameter.InvalidDiskEncrypt"
+//  INVALIDPARAMETER_INVALIDDISKSIZE = "InvalidParameter.InvalidDiskSize"
+//  INVALIDPARAMETER_INVALIDDISKTYPE = "InvalidParameter.InvalidDiskType"
+//  INVALIDPARAMETER_INVALIDESACL = "InvalidParameter.InvalidEsACL"
+//  INVALIDPARAMETER_INVALIDINSTANCEID = "InvalidParameter.InvalidInstanceId"
+//  INVALIDPARAMETER_INVALIDKIBANAPRIVATEPORT = "InvalidParameter.InvalidKibanaPrivatePort"
+//  INVALIDPARAMETER_INVALIDMULTIZONEINFO = "InvalidParameter.InvalidMultiZoneInfo"
+//  INVALIDPARAMETER_INVALIDNODENUM = "InvalidParameter.InvalidNodeNum"
+//  INVALIDPARAMETER_INVALIDNODETYPE = "InvalidParameter.InvalidNodeType"
+//  INVALIDPARAMETER_INVALIDPRIVATEACCESS = "InvalidParameter.InvalidPrivateAccess"
+//  INVALIDPARAMETER_INVALIDPUBLICACCESS = "InvalidParameter.InvalidPublicAccess"
+//  INVALIDPARAMETER_INVALIDSCALEDISKSAFEFACTOR = "InvalidParameter.InvalidScaleDiskSafeFactor"
+//  INVALIDPARAMETER_INVALIDSCENETYPE = "InvalidParameter.InvalidSceneType"
+//  INVALIDPARAMETER_INVALIDSUBNETID = "InvalidParameter.InvalidSubnetId"
+//  INVALIDPARAMETER_INVALIDTYPE = "InvalidParameter.InvalidType"
+//  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
+//  INVALIDPARAMETER_INVALIDUPDATETYPE = "InvalidParameter.InvalidUpdateType"
+//  INVALIDPARAMETER_INVALIDZONE = "InvalidParameter.InvalidZone"
+//  INVALIDPARAMETERVALUE_CONFIGINFO = "InvalidParameterValue.ConfigInfo"
+//  INVALIDPARAMETERVALUE_ESCONFIGTYPE = "InvalidParameterValue.EsConfigType"
+//  INVALIDPARAMETERVALUE_INSTANCENAME = "InvalidParameterValue.InstanceName"
+//  INVALIDPARAMETERVALUE_INVALIDDEADLINE = "InvalidParameterValue.InvalidDeadline"
+//  INVALIDPARAMETERVALUE_PASSWORD = "InvalidParameterValue.Password"
+//  LIMITEXCEEDED_RESOURCELIMIT = "LimitExceeded.ResourceLimit"
+//  LIMITEXCEEDED_UPDATEITEMLIMIT = "LimitExceeded.UpdateItemLimit"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEINSUFFICIENT_DISK = "ResourceInsufficient.Disk"
+//  RESOURCEINSUFFICIENT_SUBNET = "ResourceInsufficient.Subnet"
+//  RESOURCEINSUFFICIENT_SUBNETIP = "ResourceInsufficient.SubnetIp"
+//  RESOURCEINSUFFICIENT_ZONE = "ResourceInsufficient.Zone"
+//  RESOURCENOTFOUND_CVMINFONOTFOUND = "ResourceNotFound.CVMInfoNotFound"
+//  RESOURCENOTFOUND_CLUSTERINFONOTFOUND = "ResourceNotFound.ClusterInfoNotFound"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+//  RESOURCENOTFOUND_DATANODENOTFOUND = "ResourceNotFound.DataNodeNotFound"
+//  RESOURCENOTFOUND_DISKINFONOTFOUND = "ResourceNotFound.DiskInfoNotFound"
+//  RESOURCENOTFOUND_NETWORKINFONOTFOUND = "ResourceNotFound.NetWorkInfoNotFound"
+//  RESOURCENOTFOUND_OSSINFONOTFOUND = "ResourceNotFound.OssInfoNotFound"
+//  RESOURCENOTFOUND_WHITELISTNOTFOUND = "ResourceNotFound.WhiteListNotFound"
+//  UNAUTHORIZEDOPERATION_UINNOTINWHITELIST = "UnauthorizedOperation.UinNotInWhiteList"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_BASICSECURITYTYPE = "UnsupportedOperation.BasicSecurityType"
+//  UNSUPPORTEDOPERATION_CHANGENODETYPE = "UnsupportedOperation.ChangeNodeType"
+//  UNSUPPORTEDOPERATION_CLUSTERSHARDNUM = "UnsupportedOperation.ClusterShardNum"
+//  UNSUPPORTEDOPERATION_CLUSTERSTATECLOSE = "UnsupportedOperation.ClusterStateClose"
+//  UNSUPPORTEDOPERATION_CLUSTERSTATENOREPLICATION = "UnsupportedOperation.ClusterStateNoReplication"
+//  UNSUPPORTEDOPERATION_CLUSTERSTATEUNHEALTH = "UnsupportedOperation.ClusterStateUnHealth"
+//  UNSUPPORTEDOPERATION_CVMSTATENOTSUPPORTED = "UnsupportedOperation.CvmStateNotSupported"
+//  UNSUPPORTEDOPERATION_DATANODEJVMHEAPTOOSMALL = "UnsupportedOperation.DataNodeJvmHeapTooSmall"
+//  UNSUPPORTEDOPERATION_DISKNOTPORTABLE = "UnsupportedOperation.DiskNotPortable"
+//  UNSUPPORTEDOPERATION_DISKSTATENOTSUPPORTED = "UnsupportedOperation.DiskStateNotSupported"
+//  UNSUPPORTEDOPERATION_DISKTYPECHANGEPATHNOTSUPPORTED = "UnsupportedOperation.DiskTypeChangePathNotSupported"
+//  UNSUPPORTEDOPERATION_HETEROSCALINGEXECUTING = "UnsupportedOperation.HeteroScalingExecuting"
+//  UNSUPPORTEDOPERATION_INDEXSETTINGSREQUIRESET = "UnsupportedOperation.IndexSettingsRequireSet"
+//  UNSUPPORTEDOPERATION_INSTANCETYPEERROR = "UnsupportedOperation.InstanceTypeError"
+//  UNSUPPORTEDOPERATION_LICENSEERROR = "UnsupportedOperation.LicenseError"
+//  UNSUPPORTEDOPERATION_LOCALDISK = "UnsupportedOperation.LocalDisk"
+//  UNSUPPORTEDOPERATION_MULTIZONESUPGRADE = "UnsupportedOperation.MultiZonesUpgrade"
+//  UNSUPPORTEDOPERATION_NOTDATADISK = "UnsupportedOperation.NotDataDisk"
+//  UNSUPPORTEDOPERATION_PLUGIN = "UnsupportedOperation.Plugin"
+//  UNSUPPORTEDOPERATION_SCALEDOWNTOOMUCH = "UnsupportedOperation.ScaleDownTooMuch"
+//  UNSUPPORTEDOPERATION_SCALEINTOOMUCH = "UnsupportedOperation.ScaleInTooMuch"
+//  UNSUPPORTEDOPERATION_SINGLENODECLUSTERNOTSUPPORT = "UnsupportedOperation.SingleNodeClusterNotSupport"
+//  UNSUPPORTEDOPERATION_STATUSNOTNORMAL = "UnsupportedOperation.StatusNotNormal"
+//  UNSUPPORTEDOPERATION_STATUSNOTSUPPORT = "UnsupportedOperation.StatusNotSupport"
+//  UNSUPPORTEDOPERATION_SWITCHPRIVATELINK = "UnsupportedOperation.SwitchPrivateLink"
+//  UNSUPPORTEDOPERATION_TOTALSTORAGE = "UnsupportedOperation.TotalStorage"
+//  UNSUPPORTEDOPERATION_VPCINFONOTFOUND = "UnsupportedOperation.VPCInfoNotFound"
+func (c *Client) CheckUpdateInstance(request *CheckUpdateInstanceRequest) (response *CheckUpdateInstanceResponse, err error) {
+    return c.CheckUpdateInstanceWithContext(context.Background(), request)
+}
+
+// CheckUpdateInstance
+// 检查实例变配操作是否可以发起
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLUSTERRESOURCELIMITERROR = "FailedOperation.ClusterResourceLimitError"
+//  FAILEDOPERATION_DISKCOUNTPARAMERROR = "FailedOperation.DiskCountParamError"
+//  FAILEDOPERATION_ERRORCLUSTERSTATE = "FailedOperation.ErrorClusterState"
+//  FAILEDOPERATION_ERRORCLUSTERSTATENOREPLICATION = "FailedOperation.ErrorClusterStateNoReplication"
+//  FAILEDOPERATION_ERRORCLUSTERSTATEUNHEALTH = "FailedOperation.ErrorClusterStateUnhealth"
+//  FAILEDOPERATION_UNSUPPORTEDLOCALDISKROLLUPSCALEUPORDOWN = "FailedOperation.UnsupportedLocalDiskRollUpScaleUpOrDown"
+//  FAILEDOPERATION_UNSUPPORTEDRESETNODETYPEANDSCALEOUTDISK = "FailedOperation.UnsupportedResetNodeTypeAndScaleOutDisk"
+//  FAILEDOPERATION_UNSUPPORTEDRESTSCALEDOWNANDMODIFYDISK = "FailedOperation.UnsupportedRestScaleDownAndModifyDisk"
+//  FAILEDOPERATION_UNSUPPORTEDREVERSEREGULATIONNODETYPEANDDISK = "FailedOperation.UnsupportedReverseRegulationNodeTypeAndDisk"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDCOSBACKUPINFO = "InvalidParameter.InvalidCosBackupInfo"
+//  INVALIDPARAMETER_INVALIDDISKCOUNT = "InvalidParameter.InvalidDiskCount"
+//  INVALIDPARAMETER_INVALIDDISKENCRYPT = "InvalidParameter.InvalidDiskEncrypt"
+//  INVALIDPARAMETER_INVALIDDISKSIZE = "InvalidParameter.InvalidDiskSize"
+//  INVALIDPARAMETER_INVALIDDISKTYPE = "InvalidParameter.InvalidDiskType"
+//  INVALIDPARAMETER_INVALIDESACL = "InvalidParameter.InvalidEsACL"
+//  INVALIDPARAMETER_INVALIDINSTANCEID = "InvalidParameter.InvalidInstanceId"
+//  INVALIDPARAMETER_INVALIDKIBANAPRIVATEPORT = "InvalidParameter.InvalidKibanaPrivatePort"
+//  INVALIDPARAMETER_INVALIDMULTIZONEINFO = "InvalidParameter.InvalidMultiZoneInfo"
+//  INVALIDPARAMETER_INVALIDNODENUM = "InvalidParameter.InvalidNodeNum"
+//  INVALIDPARAMETER_INVALIDNODETYPE = "InvalidParameter.InvalidNodeType"
+//  INVALIDPARAMETER_INVALIDPRIVATEACCESS = "InvalidParameter.InvalidPrivateAccess"
+//  INVALIDPARAMETER_INVALIDPUBLICACCESS = "InvalidParameter.InvalidPublicAccess"
+//  INVALIDPARAMETER_INVALIDSCALEDISKSAFEFACTOR = "InvalidParameter.InvalidScaleDiskSafeFactor"
+//  INVALIDPARAMETER_INVALIDSCENETYPE = "InvalidParameter.InvalidSceneType"
+//  INVALIDPARAMETER_INVALIDSUBNETID = "InvalidParameter.InvalidSubnetId"
+//  INVALIDPARAMETER_INVALIDTYPE = "InvalidParameter.InvalidType"
+//  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
+//  INVALIDPARAMETER_INVALIDUPDATETYPE = "InvalidParameter.InvalidUpdateType"
+//  INVALIDPARAMETER_INVALIDZONE = "InvalidParameter.InvalidZone"
+//  INVALIDPARAMETERVALUE_CONFIGINFO = "InvalidParameterValue.ConfigInfo"
+//  INVALIDPARAMETERVALUE_ESCONFIGTYPE = "InvalidParameterValue.EsConfigType"
+//  INVALIDPARAMETERVALUE_INSTANCENAME = "InvalidParameterValue.InstanceName"
+//  INVALIDPARAMETERVALUE_INVALIDDEADLINE = "InvalidParameterValue.InvalidDeadline"
+//  INVALIDPARAMETERVALUE_PASSWORD = "InvalidParameterValue.Password"
+//  LIMITEXCEEDED_RESOURCELIMIT = "LimitExceeded.ResourceLimit"
+//  LIMITEXCEEDED_UPDATEITEMLIMIT = "LimitExceeded.UpdateItemLimit"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEINSUFFICIENT_DISK = "ResourceInsufficient.Disk"
+//  RESOURCEINSUFFICIENT_SUBNET = "ResourceInsufficient.Subnet"
+//  RESOURCEINSUFFICIENT_SUBNETIP = "ResourceInsufficient.SubnetIp"
+//  RESOURCEINSUFFICIENT_ZONE = "ResourceInsufficient.Zone"
+//  RESOURCENOTFOUND_CVMINFONOTFOUND = "ResourceNotFound.CVMInfoNotFound"
+//  RESOURCENOTFOUND_CLUSTERINFONOTFOUND = "ResourceNotFound.ClusterInfoNotFound"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+//  RESOURCENOTFOUND_DATANODENOTFOUND = "ResourceNotFound.DataNodeNotFound"
+//  RESOURCENOTFOUND_DISKINFONOTFOUND = "ResourceNotFound.DiskInfoNotFound"
+//  RESOURCENOTFOUND_NETWORKINFONOTFOUND = "ResourceNotFound.NetWorkInfoNotFound"
+//  RESOURCENOTFOUND_OSSINFONOTFOUND = "ResourceNotFound.OssInfoNotFound"
+//  RESOURCENOTFOUND_WHITELISTNOTFOUND = "ResourceNotFound.WhiteListNotFound"
+//  UNAUTHORIZEDOPERATION_UINNOTINWHITELIST = "UnauthorizedOperation.UinNotInWhiteList"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_BASICSECURITYTYPE = "UnsupportedOperation.BasicSecurityType"
+//  UNSUPPORTEDOPERATION_CHANGENODETYPE = "UnsupportedOperation.ChangeNodeType"
+//  UNSUPPORTEDOPERATION_CLUSTERSHARDNUM = "UnsupportedOperation.ClusterShardNum"
+//  UNSUPPORTEDOPERATION_CLUSTERSTATECLOSE = "UnsupportedOperation.ClusterStateClose"
+//  UNSUPPORTEDOPERATION_CLUSTERSTATENOREPLICATION = "UnsupportedOperation.ClusterStateNoReplication"
+//  UNSUPPORTEDOPERATION_CLUSTERSTATEUNHEALTH = "UnsupportedOperation.ClusterStateUnHealth"
+//  UNSUPPORTEDOPERATION_CVMSTATENOTSUPPORTED = "UnsupportedOperation.CvmStateNotSupported"
+//  UNSUPPORTEDOPERATION_DATANODEJVMHEAPTOOSMALL = "UnsupportedOperation.DataNodeJvmHeapTooSmall"
+//  UNSUPPORTEDOPERATION_DISKNOTPORTABLE = "UnsupportedOperation.DiskNotPortable"
+//  UNSUPPORTEDOPERATION_DISKSTATENOTSUPPORTED = "UnsupportedOperation.DiskStateNotSupported"
+//  UNSUPPORTEDOPERATION_DISKTYPECHANGEPATHNOTSUPPORTED = "UnsupportedOperation.DiskTypeChangePathNotSupported"
+//  UNSUPPORTEDOPERATION_HETEROSCALINGEXECUTING = "UnsupportedOperation.HeteroScalingExecuting"
+//  UNSUPPORTEDOPERATION_INDEXSETTINGSREQUIRESET = "UnsupportedOperation.IndexSettingsRequireSet"
+//  UNSUPPORTEDOPERATION_INSTANCETYPEERROR = "UnsupportedOperation.InstanceTypeError"
+//  UNSUPPORTEDOPERATION_LICENSEERROR = "UnsupportedOperation.LicenseError"
+//  UNSUPPORTEDOPERATION_LOCALDISK = "UnsupportedOperation.LocalDisk"
+//  UNSUPPORTEDOPERATION_MULTIZONESUPGRADE = "UnsupportedOperation.MultiZonesUpgrade"
+//  UNSUPPORTEDOPERATION_NOTDATADISK = "UnsupportedOperation.NotDataDisk"
+//  UNSUPPORTEDOPERATION_PLUGIN = "UnsupportedOperation.Plugin"
+//  UNSUPPORTEDOPERATION_SCALEDOWNTOOMUCH = "UnsupportedOperation.ScaleDownTooMuch"
+//  UNSUPPORTEDOPERATION_SCALEINTOOMUCH = "UnsupportedOperation.ScaleInTooMuch"
+//  UNSUPPORTEDOPERATION_SINGLENODECLUSTERNOTSUPPORT = "UnsupportedOperation.SingleNodeClusterNotSupport"
+//  UNSUPPORTEDOPERATION_STATUSNOTNORMAL = "UnsupportedOperation.StatusNotNormal"
+//  UNSUPPORTEDOPERATION_STATUSNOTSUPPORT = "UnsupportedOperation.StatusNotSupport"
+//  UNSUPPORTEDOPERATION_SWITCHPRIVATELINK = "UnsupportedOperation.SwitchPrivateLink"
+//  UNSUPPORTEDOPERATION_TOTALSTORAGE = "UnsupportedOperation.TotalStorage"
+//  UNSUPPORTEDOPERATION_VPCINFONOTFOUND = "UnsupportedOperation.VPCInfoNotFound"
+func (c *Client) CheckUpdateInstanceWithContext(ctx context.Context, request *CheckUpdateInstanceRequest) (response *CheckUpdateInstanceResponse, err error) {
+    if request == nil {
+        request = NewCheckUpdateInstanceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "CheckUpdateInstance")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CheckUpdateInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCheckUpdateInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAutoBackUpStrategyRequest() (request *CreateAutoBackUpStrategyRequest) {
     request = &CreateAutoBackUpStrategyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4109,6 +4323,68 @@ func (c *Client) ModifyAutoBackUpStrategyWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewModifyAutoBackUpStrategyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyAutoScaleDiskInfoRequest() (request *ModifyAutoScaleDiskInfoRequest) {
+    request = &ModifyAutoScaleDiskInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("es", APIVersion, "ModifyAutoScaleDiskInfo")
+    
+    
+    return
+}
+
+func NewModifyAutoScaleDiskInfoResponse() (response *ModifyAutoScaleDiskInfoResponse) {
+    response = &ModifyAutoScaleDiskInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyAutoScaleDiskInfo
+// 修改自动扩盘参数
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_LOCALDISK = "UnsupportedOperation.LocalDisk"
+func (c *Client) ModifyAutoScaleDiskInfo(request *ModifyAutoScaleDiskInfoRequest) (response *ModifyAutoScaleDiskInfoResponse, err error) {
+    return c.ModifyAutoScaleDiskInfoWithContext(context.Background(), request)
+}
+
+// ModifyAutoScaleDiskInfo
+// 修改自动扩盘参数
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_LOCALDISK = "UnsupportedOperation.LocalDisk"
+func (c *Client) ModifyAutoScaleDiskInfoWithContext(ctx context.Context, request *ModifyAutoScaleDiskInfoRequest) (response *ModifyAutoScaleDiskInfoResponse, err error) {
+    if request == nil {
+        request = NewModifyAutoScaleDiskInfoRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "ModifyAutoScaleDiskInfo")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAutoScaleDiskInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyAutoScaleDiskInfoResponse()
     err = c.Send(request, response)
     return
 }

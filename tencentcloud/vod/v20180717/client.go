@@ -2237,6 +2237,62 @@ func (c *Client) CreateJustInTimeTranscodeTemplateWithContext(ctx context.Contex
     return
 }
 
+func NewCreateKnowledgeBaseRequest() (request *CreateKnowledgeBaseRequest) {
+    request = &CreateKnowledgeBaseRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "CreateKnowledgeBase")
+    
+    
+    return
+}
+
+func NewCreateKnowledgeBaseResponse() (response *CreateKnowledgeBaseResponse) {
+    response = &CreateKnowledgeBaseResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateKnowledgeBase
+// 创建知识库。用于为智能媒资功能创建一个新的知识库，每个用户最多可创建的20个知识库。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) CreateKnowledgeBase(request *CreateKnowledgeBaseRequest) (response *CreateKnowledgeBaseResponse, err error) {
+    return c.CreateKnowledgeBaseWithContext(context.Background(), request)
+}
+
+// CreateKnowledgeBase
+// 创建知识库。用于为智能媒资功能创建一个新的知识库，每个用户最多可创建的20个知识库。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) CreateKnowledgeBaseWithContext(ctx context.Context, request *CreateKnowledgeBaseRequest) (response *CreateKnowledgeBaseResponse, err error) {
+    if request == nil {
+        request = NewCreateKnowledgeBaseRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vod", APIVersion, "CreateKnowledgeBase")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateKnowledgeBase require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateKnowledgeBaseResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateLLMComprehendTemplateRequest() (request *CreateLLMComprehendTemplateRequest) {
     request = &CreateLLMComprehendTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4561,6 +4617,64 @@ func (c *Client) DeleteJustInTimeTranscodeTemplateWithContext(ctx context.Contex
     request.SetContext(ctx)
     
     response = NewDeleteJustInTimeTranscodeTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteKnowledgeBaseRequest() (request *DeleteKnowledgeBaseRequest) {
+    request = &DeleteKnowledgeBaseRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "DeleteKnowledgeBase")
+    
+    
+    return
+}
+
+func NewDeleteKnowledgeBaseResponse() (response *DeleteKnowledgeBaseResponse) {
+    response = &DeleteKnowledgeBaseResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteKnowledgeBase
+// 删除知识库。
+//
+// 调用接口后，知识库会处于“删除中”状态，并在后台执行删除操作。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) DeleteKnowledgeBase(request *DeleteKnowledgeBaseRequest) (response *DeleteKnowledgeBaseResponse, err error) {
+    return c.DeleteKnowledgeBaseWithContext(context.Background(), request)
+}
+
+// DeleteKnowledgeBase
+// 删除知识库。
+//
+// 调用接口后，知识库会处于“删除中”状态，并在后台执行删除操作。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) DeleteKnowledgeBaseWithContext(ctx context.Context, request *DeleteKnowledgeBaseRequest) (response *DeleteKnowledgeBaseResponse, err error) {
+    if request == nil {
+        request = NewDeleteKnowledgeBaseRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vod", APIVersion, "DeleteKnowledgeBase")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteKnowledgeBase require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteKnowledgeBaseResponse()
     err = c.Send(request, response)
     return
 }
@@ -7925,6 +8039,60 @@ func (c *Client) DescribeJustInTimeTranscodeTemplatesWithContext(ctx context.Con
     request.SetContext(ctx)
     
     response = NewDescribeJustInTimeTranscodeTemplatesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeKnowledgeBasesRequest() (request *DescribeKnowledgeBasesRequest) {
+    request = &DescribeKnowledgeBasesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "DescribeKnowledgeBases")
+    
+    
+    return
+}
+
+func NewDescribeKnowledgeBasesResponse() (response *DescribeKnowledgeBasesResponse) {
+    response = &DescribeKnowledgeBasesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeKnowledgeBases
+// 查询知识库列表。返回指定用户下的所有知识库信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) DescribeKnowledgeBases(request *DescribeKnowledgeBasesRequest) (response *DescribeKnowledgeBasesResponse, err error) {
+    return c.DescribeKnowledgeBasesWithContext(context.Background(), request)
+}
+
+// DescribeKnowledgeBases
+// 查询知识库列表。返回指定用户下的所有知识库信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) DescribeKnowledgeBasesWithContext(ctx context.Context, request *DescribeKnowledgeBasesRequest) (response *DescribeKnowledgeBasesResponse, err error) {
+    if request == nil {
+        request = NewDescribeKnowledgeBasesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vod", APIVersion, "DescribeKnowledgeBases")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeKnowledgeBases require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeKnowledgeBasesResponse()
     err = c.Send(request, response)
     return
 }
@@ -11881,6 +12049,60 @@ func (c *Client) ModifyJustInTimeTranscodeTemplateWithContext(ctx context.Contex
     request.SetContext(ctx)
     
     response = NewModifyJustInTimeTranscodeTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyKnowledgeBaseRequest() (request *ModifyKnowledgeBaseRequest) {
+    request = &ModifyKnowledgeBaseRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "ModifyKnowledgeBase")
+    
+    
+    return
+}
+
+func NewModifyKnowledgeBaseResponse() (response *ModifyKnowledgeBaseResponse) {
+    response = &ModifyKnowledgeBaseResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyKnowledgeBase
+// 修改知识库。可以修改知识库的名称和/或描述。至少需要提供 Name 或 Description 中的一个字段。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) ModifyKnowledgeBase(request *ModifyKnowledgeBaseRequest) (response *ModifyKnowledgeBaseResponse, err error) {
+    return c.ModifyKnowledgeBaseWithContext(context.Background(), request)
+}
+
+// ModifyKnowledgeBase
+// 修改知识库。可以修改知识库的名称和/或描述。至少需要提供 Name 或 Description 中的一个字段。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) ModifyKnowledgeBaseWithContext(ctx context.Context, request *ModifyKnowledgeBaseRequest) (response *ModifyKnowledgeBaseResponse, err error) {
+    if request == nil {
+        request = NewModifyKnowledgeBaseRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vod", APIVersion, "ModifyKnowledgeBase")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyKnowledgeBase require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyKnowledgeBaseResponse()
     err = c.Send(request, response)
     return
 }

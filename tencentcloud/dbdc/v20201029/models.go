@@ -2991,6 +2991,85 @@ func (r *ModifyDBCustomClusterTagsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyDBCustomNodeAttributesRequestParams struct {
+	// <p>节点ID</p><p>参数格式：dbcn-hq98qjym</p>
+	NodeId *string `json:"NodeId,omitnil,omitempty" name:"NodeId"`
+
+	// <p>主机 HostName</p><p>入参限制：参数设置规则参见：<a href="https://cloud.tencent.com/document/api/1322/132929">创建 DB Custom 节点接口</a>的 HostName 参数说明。</p><p>注意：节点在没有加入到集群之前才支持修改主机 HostName。</p>
+	HostName *string `json:"HostName,omitnil,omitempty" name:"HostName"`
+
+	// <p>节点名称</p><p>入参限制：参数设置规则参见：<a href="https://cloud.tencent.com/document/api/1322/132929">创建 DB Custom 节点接口</a>的 NodeName 参数说明。</p>
+	NodeName *string `json:"NodeName,omitnil,omitempty" name:"NodeName"`
+
+	// <p>修改实例 HostName 是否自动重启实例，不传默认自动重启。</p><p>枚举值：</p><ul><li>true： 修改主机 HostName，并自动重启主机</li><li>false： 修改主机 HostName，不自动重启主机，需要手动重启使新主机 HostName 生效</li></ul><p>默认值：true</p>
+	AutoReboot *bool `json:"AutoReboot,omitnil,omitempty" name:"AutoReboot"`
+}
+
+type ModifyDBCustomNodeAttributesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>节点ID</p><p>参数格式：dbcn-hq98qjym</p>
+	NodeId *string `json:"NodeId,omitnil,omitempty" name:"NodeId"`
+
+	// <p>主机 HostName</p><p>入参限制：参数设置规则参见：<a href="https://cloud.tencent.com/document/api/1322/132929">创建 DB Custom 节点接口</a>的 HostName 参数说明。</p><p>注意：节点在没有加入到集群之前才支持修改主机 HostName。</p>
+	HostName *string `json:"HostName,omitnil,omitempty" name:"HostName"`
+
+	// <p>节点名称</p><p>入参限制：参数设置规则参见：<a href="https://cloud.tencent.com/document/api/1322/132929">创建 DB Custom 节点接口</a>的 NodeName 参数说明。</p>
+	NodeName *string `json:"NodeName,omitnil,omitempty" name:"NodeName"`
+
+	// <p>修改实例 HostName 是否自动重启实例，不传默认自动重启。</p><p>枚举值：</p><ul><li>true： 修改主机 HostName，并自动重启主机</li><li>false： 修改主机 HostName，不自动重启主机，需要手动重启使新主机 HostName 生效</li></ul><p>默认值：true</p>
+	AutoReboot *bool `json:"AutoReboot,omitnil,omitempty" name:"AutoReboot"`
+}
+
+func (r *ModifyDBCustomNodeAttributesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDBCustomNodeAttributesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "NodeId")
+	delete(f, "HostName")
+	delete(f, "NodeName")
+	delete(f, "AutoReboot")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDBCustomNodeAttributesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDBCustomNodeAttributesResponseParams struct {
+	// <p>上架节点的任务ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *uint64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyDBCustomNodeAttributesResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyDBCustomNodeAttributesResponseParams `json:"Response"`
+}
+
+func (r *ModifyDBCustomNodeAttributesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDBCustomNodeAttributesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyDBCustomNodeSecurityGroupsRequestParams struct {
 	// <p>节点id</p>
 	NodeId *string `json:"NodeId,omitnil,omitempty" name:"NodeId"`

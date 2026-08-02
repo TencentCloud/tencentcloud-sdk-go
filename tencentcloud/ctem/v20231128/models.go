@@ -7154,6 +7154,9 @@ type DisplayHttp struct {
 
 	// <p>聚合视角下该组真实子项总数；非聚合视角为 0</p>
 	AggregationCount *int64 `json:"AggregationCount,omitnil,omitempty" name:"AggregationCount"`
+
+	// <p>可用性标签：解析已失效/端口连接超时/网站请求超时/服务错误（5xx）/高延迟（非宕机）</p>
+	AvailabilityTag *string `json:"AvailabilityTag,omitnil,omitempty" name:"AvailabilityTag"`
 }
 
 type DisplayJobRecord struct {
@@ -7558,6 +7561,9 @@ type DisplaySubDomain struct {
 
 	// <p>聚合视角下该组真实子项总数；非聚合视角为 0</p>
 	AggregationCount *int64 `json:"AggregationCount,omitnil,omitempty" name:"AggregationCount"`
+
+	// <p>可用性标签：解析已失效/端口连接超时/网站请求超时/服务错误（5xx）/高延迟（非宕机）</p>
+	AvailabilityTag *string `json:"AvailabilityTag,omitnil,omitempty" name:"AvailabilityTag"`
 }
 
 type DisplaySuspiciousAsset struct {

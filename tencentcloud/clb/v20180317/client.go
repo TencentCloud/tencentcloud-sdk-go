@@ -340,12 +340,15 @@ func NewAssociateModelsToModelRouterResponse() (response *AssociateModelsToModel
 // 将模型关联到模型路由实例
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ASSOCIATIONNOTACTIVE = "FailedOperation.AssociationNotActive"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ASSOCIATIONREFERENCEINVALID = "InternalError.AssociationReferenceInvalid"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  LIMITEXCEEDED = "LimitExceeded"
+//  INVALIDPARAMETER_MINORDERALLZERO = "InvalidParameter.MinOrderAllZero"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNSUPPORTEDOPERATION_INVALIDMODELROUTERSTATUS = "UnsupportedOperation.InvalidModelRouterStatus"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNSUPPORTEDOPERATION_VPCMISMATCH = "UnsupportedOperation.VPCMismatch"
 func (c *Client) AssociateModelsToModelRouter(request *AssociateModelsToModelRouterRequest) (response *AssociateModelsToModelRouterResponse, err error) {
     return c.AssociateModelsToModelRouterWithContext(context.Background(), request)
 }
@@ -354,12 +357,15 @@ func (c *Client) AssociateModelsToModelRouter(request *AssociateModelsToModelRou
 // 将模型关联到模型路由实例
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ASSOCIATIONNOTACTIVE = "FailedOperation.AssociationNotActive"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ASSOCIATIONREFERENCEINVALID = "InternalError.AssociationReferenceInvalid"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  LIMITEXCEEDED = "LimitExceeded"
+//  INVALIDPARAMETER_MINORDERALLZERO = "InvalidParameter.MinOrderAllZero"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNSUPPORTEDOPERATION_INVALIDMODELROUTERSTATUS = "UnsupportedOperation.InvalidModelRouterStatus"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNSUPPORTEDOPERATION_VPCMISMATCH = "UnsupportedOperation.VPCMismatch"
 func (c *Client) AssociateModelsToModelRouterWithContext(ctx context.Context, request *AssociateModelsToModelRouterRequest) (response *AssociateModelsToModelRouterResponse, err error) {
     if request == nil {
         request = NewAssociateModelsToModelRouterRequest()
@@ -2730,14 +2736,10 @@ func NewDeleteModelRoutersResponse() (response *DeleteModelRoutersResponse) {
 // 删除模型路由实例
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_RESOURCEINOPERATING = "FailedOperation.ResourceInOperating"
-//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
-//  INVALIDPARAMETER_LBIDNOTFOUND = "InvalidParameter.LBIdNotFound"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_INVALIDSTATETRANSITION = "UnsupportedOperation.InvalidStateTransition"
 func (c *Client) DeleteModelRouters(request *DeleteModelRoutersRequest) (response *DeleteModelRoutersResponse, err error) {
     return c.DeleteModelRoutersWithContext(context.Background(), request)
 }
@@ -2746,14 +2748,10 @@ func (c *Client) DeleteModelRouters(request *DeleteModelRoutersRequest) (respons
 // 删除模型路由实例
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_RESOURCEINOPERATING = "FailedOperation.ResourceInOperating"
-//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
-//  INVALIDPARAMETER_LBIDNOTFOUND = "InvalidParameter.LBIdNotFound"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_INVALIDSTATETRANSITION = "UnsupportedOperation.InvalidStateTransition"
 func (c *Client) DeleteModelRoutersWithContext(ctx context.Context, request *DeleteModelRoutersRequest) (response *DeleteModelRoutersResponse, err error) {
     if request == nil {
         request = NewDeleteModelRoutersRequest()
@@ -5348,15 +5346,9 @@ func NewDescribeModelAssociationsResponse() (response *DescribeModelAssociations
 // 查询实例关联的模型列表
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
-//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
-//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeModelAssociations(request *DescribeModelAssociationsRequest) (response *DescribeModelAssociationsResponse, err error) {
     return c.DescribeModelAssociationsWithContext(context.Background(), request)
 }
@@ -5365,15 +5357,9 @@ func (c *Client) DescribeModelAssociations(request *DescribeModelAssociationsReq
 // 查询实例关联的模型列表
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
-//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
-//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeModelAssociationsWithContext(ctx context.Context, request *DescribeModelAssociationsRequest) (response *DescribeModelAssociationsResponse, err error) {
     if request == nil {
         request = NewDescribeModelAssociationsRequest()
@@ -5414,15 +5400,9 @@ func NewDescribeModelKeysResponse() (response *DescribeModelKeysResponse) {
 // 查询 BYOK 模型列表及 Key 信息
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
-//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
-//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeModelKeys(request *DescribeModelKeysRequest) (response *DescribeModelKeysResponse, err error) {
     return c.DescribeModelKeysWithContext(context.Background(), request)
 }
@@ -5431,15 +5411,9 @@ func (c *Client) DescribeModelKeys(request *DescribeModelKeysRequest) (response 
 // 查询 BYOK 模型列表及 Key 信息
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
-//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
-//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeModelKeysWithContext(ctx context.Context, request *DescribeModelKeysRequest) (response *DescribeModelKeysResponse, err error) {
     if request == nil {
         request = NewDescribeModelKeysRequest()
@@ -5480,15 +5454,9 @@ func NewDescribeModelNamesResponse() (response *DescribeModelNamesResponse) {
 // 查询模型标识聚合列表
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
-//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
-//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeModelNames(request *DescribeModelNamesRequest) (response *DescribeModelNamesResponse, err error) {
     return c.DescribeModelNamesWithContext(context.Background(), request)
 }
@@ -5497,15 +5465,9 @@ func (c *Client) DescribeModelNames(request *DescribeModelNamesRequest) (respons
 // 查询模型标识聚合列表
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
-//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
-//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeModelNamesWithContext(ctx context.Context, request *DescribeModelNamesRequest) (response *DescribeModelNamesResponse, err error) {
     if request == nil {
         request = NewDescribeModelNamesRequest()
@@ -5546,15 +5508,9 @@ func NewDescribeModelRewriteResponse() (response *DescribeModelRewriteResponse) 
 // 查询模型路由实例上的全部模型重写规则（Model Rewrite），或按 SourceModel 精确过滤后的单条规则。该接口为同步只读接口。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
-//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
-//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeModelRewrite(request *DescribeModelRewriteRequest) (response *DescribeModelRewriteResponse, err error) {
     return c.DescribeModelRewriteWithContext(context.Background(), request)
 }
@@ -5563,15 +5519,9 @@ func (c *Client) DescribeModelRewrite(request *DescribeModelRewriteRequest) (res
 // 查询模型路由实例上的全部模型重写规则（Model Rewrite），或按 SourceModel 精确过滤后的单条规则。该接口为同步只读接口。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
-//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
-//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeModelRewriteWithContext(ctx context.Context, request *DescribeModelRewriteRequest) (response *DescribeModelRewriteResponse, err error) {
     if request == nil {
         request = NewDescribeModelRewriteRequest()
@@ -5612,15 +5562,8 @@ func NewDescribeModelRouterDetailResponse() (response *DescribeModelRouterDetail
 // 查询模型路由详细信息
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
-//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
-//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeModelRouterDetail(request *DescribeModelRouterDetailRequest) (response *DescribeModelRouterDetailResponse, err error) {
     return c.DescribeModelRouterDetailWithContext(context.Background(), request)
 }
@@ -5629,15 +5572,8 @@ func (c *Client) DescribeModelRouterDetail(request *DescribeModelRouterDetailReq
 // 查询模型路由详细信息
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
-//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
-//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeModelRouterDetailWithContext(ctx context.Context, request *DescribeModelRouterDetailRequest) (response *DescribeModelRouterDetailResponse, err error) {
     if request == nil {
         request = NewDescribeModelRouterDetailRequest()
@@ -5964,11 +5900,7 @@ func NewDescribeModelRoutersResponse() (response *DescribeModelRoutersResponse) 
 // 查询模型路由列表页
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeModelRouters(request *DescribeModelRoutersRequest) (response *DescribeModelRoutersResponse, err error) {
     return c.DescribeModelRoutersWithContext(context.Background(), request)
 }
@@ -5977,11 +5909,7 @@ func (c *Client) DescribeModelRouters(request *DescribeModelRoutersRequest) (res
 // 查询模型路由列表页
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeModelRoutersWithContext(ctx context.Context, request *DescribeModelRoutersRequest) (response *DescribeModelRoutersResponse, err error) {
     if request == nil {
         request = NewDescribeModelRoutersRequest()
@@ -7102,11 +7030,13 @@ func NewDisassociateModelsFromModelRouterResponse() (response *DisassociateModel
 // 将模型从模型路由实例解除关联
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ASSOCIATIONNOTACTIVE = "FailedOperation.AssociationNotActive"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ASSOCIATIONREFERENCEINVALID = "InternalError.AssociationReferenceInvalid"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNSUPPORTEDOPERATION_INVALIDMODELROUTERSTATUS = "UnsupportedOperation.InvalidModelRouterStatus"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DisassociateModelsFromModelRouter(request *DisassociateModelsFromModelRouterRequest) (response *DisassociateModelsFromModelRouterResponse, err error) {
     return c.DisassociateModelsFromModelRouterWithContext(context.Background(), request)
 }
@@ -7115,11 +7045,13 @@ func (c *Client) DisassociateModelsFromModelRouter(request *DisassociateModelsFr
 // 将模型从模型路由实例解除关联
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ASSOCIATIONNOTACTIVE = "FailedOperation.AssociationNotActive"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ASSOCIATIONREFERENCEINVALID = "InternalError.AssociationReferenceInvalid"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNSUPPORTEDOPERATION_INVALIDMODELROUTERSTATUS = "UnsupportedOperation.InvalidModelRouterStatus"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DisassociateModelsFromModelRouterWithContext(ctx context.Context, request *DisassociateModelsFromModelRouterRequest) (response *DisassociateModelsFromModelRouterResponse, err error) {
     if request == nil {
         request = NewDisassociateModelsFromModelRouterRequest()
@@ -8824,8 +8756,12 @@ func NewModifyModelRouterAttributesResponse() (response *ModifyModelRouterAttrib
 // 修改模型路由属性。支持修改实例名称、限速配置、路由配置，以及替换企业型实例 HTTPS 服务端点绑定的证书（CertId）。每次调用至少传入一个待修改的属性字段，未传入的字段保持原值不变。其中证书替换在请求内同步完成，成功返回即已生效；其余属性修改异步生效，可通过 DescribeModelRouterDetail 接口查询修改结果。
 //
 // 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyModelRouterAttributes(request *ModifyModelRouterAttributesRequest) (response *ModifyModelRouterAttributesResponse, err error) {
     return c.ModifyModelRouterAttributesWithContext(context.Background(), request)
 }
@@ -8834,8 +8770,12 @@ func (c *Client) ModifyModelRouterAttributes(request *ModifyModelRouterAttribute
 // 修改模型路由属性。支持修改实例名称、限速配置、路由配置，以及替换企业型实例 HTTPS 服务端点绑定的证书（CertId）。每次调用至少传入一个待修改的属性字段，未传入的字段保持原值不变。其中证书替换在请求内同步完成，成功返回即已生效；其余属性修改异步生效，可通过 DescribeModelRouterDetail 接口查询修改结果。
 //
 // 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyModelRouterAttributesWithContext(ctx context.Context, request *ModifyModelRouterAttributesRequest) (response *ModifyModelRouterAttributesResponse, err error) {
     if request == nil {
         request = NewModifyModelRouterAttributesRequest()

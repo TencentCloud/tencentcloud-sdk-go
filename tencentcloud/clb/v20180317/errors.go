@@ -29,6 +29,9 @@ const (
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
 
+	// 已有绑定关系当前状态不允许操作。
+	FAILEDOPERATION_ASSOCIATIONNOTACTIVE = "FailedOperation.AssociationNotActive"
+
 	// 该实例绑定的EIP资源业务带宽超过防误操作检测阈值，执行操作可能存在风险，如仍想继续，请在EIP控制台关闭对应EIP的防误操作检测开关后重试。
 	FAILEDOPERATION_EIPTRAFFICCHECKRISK = "FailedOperation.EipTrafficCheckRisk"
 
@@ -74,6 +77,9 @@ const (
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 
+	// 绑定关系绑定对象不可靠
+	INTERNALERROR_ASSOCIATIONREFERENCEINVALID = "InternalError.AssociationReferenceInvalid"
+
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
 
@@ -109,6 +115,9 @@ const (
 
 	// 查找不到符合条件的转发规则。
 	INVALIDPARAMETER_LOCATIONNOTFOUND = "InvalidParameter.LocationNotFound"
+
+	// 最小Order层全部BYOK实例的Weight为0。
+	INVALIDPARAMETER_MINORDERALLZERO = "InvalidParameter.MinOrderAllZero"
 
 	// 监听器端口检查失败，比如端口冲突。
 	INVALIDPARAMETER_PORTCHECKFAILED = "InvalidParameter.PortCheckFailed"
@@ -173,6 +182,9 @@ const (
 	// BYOK 实例下指定 ModelName 的模型未找到。
 	RESOURCENOTFOUND_SERVICEPROVIDERMODEL = "ResourceNotFound.ServiceProviderModel"
 
+	// 资源不可用。
+	RESOURCEUNAVAILABLE = "ResourceUnavailable"
+
 	// 资源售罄。
 	RESOURCESSOLDOUT = "ResourcesSoldOut"
 
@@ -185,6 +197,9 @@ const (
 	// UnsupportedOperation.InvalidModelRouterStatus
 	UNSUPPORTEDOPERATION_INVALIDMODELROUTERSTATUS = "UnsupportedOperation.InvalidModelRouterStatus"
 
+	// 无效的状态转换。
+	UNSUPPORTEDOPERATION_INVALIDSTATETRANSITION = "UnsupportedOperation.InvalidStateTransition"
+
 	// 模型路由资源包已开启自动续订，请先关闭自动续订后再发起退款。
 	UNSUPPORTEDOPERATION_MODELROUTERRESOURCEPACKAGEAUTOPURCHASEENABLED = "UnsupportedOperation.ModelRouterResourcePackageAutoPurchaseEnabled"
 
@@ -193,4 +208,7 @@ const (
 
 	// 当前byok实例（serviceprovider）的状态不支持该操作。
 	UNSUPPORTEDOPERATION_SERVICEPROVIDERSTATUS = "UnsupportedOperation.ServiceProviderStatus"
+
+	// BYOK 的 VPC 和 CMR 实例的 VPC 不一致。
+	UNSUPPORTEDOPERATION_VPCMISMATCH = "UnsupportedOperation.VPCMismatch"
 )

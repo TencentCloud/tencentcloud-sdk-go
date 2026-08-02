@@ -427,6 +427,60 @@ func (c *Client) CloneViralWithContext(ctx context.Context, request *CloneViralR
     return
 }
 
+func NewCloneVoiceRequest() (request *CloneVoiceRequest) {
+    request = &CloneVoiceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "CloneVoice")
+    
+    
+    return
+}
+
+func NewCloneVoiceResponse() (response *CloneVoiceResponse) {
+    response = &CloneVoiceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CloneVoice
+// 同步接口，使用该接口从参考音频克隆一个音色
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_STATE = "InvalidParameter.State"
+func (c *Client) CloneVoice(request *CloneVoiceRequest) (response *CloneVoiceResponse, err error) {
+    return c.CloneVoiceWithContext(context.Background(), request)
+}
+
+// CloneVoice
+// 同步接口，使用该接口从参考音频克隆一个音色
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_STATE = "InvalidParameter.State"
+func (c *Client) CloneVoiceWithContext(ctx context.Context, request *CloneVoiceRequest) (response *CloneVoiceResponse, err error) {
+    if request == nil {
+        request = NewCloneVoiceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "CloneVoice")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CloneVoice require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCloneVoiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAIAnalysisTemplateRequest() (request *CreateAIAnalysisTemplateRequest) {
     request = &CreateAIAnalysisTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -717,6 +771,56 @@ func (c *Client) CreateAiDramaTaskWithContext(ctx context.Context, request *Crea
     request.SetContext(ctx)
     
     response = NewCreateAiDramaTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateAiFissionTaskRequest() (request *CreateAiFissionTaskRequest) {
+    request = &CreateAiFissionTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "CreateAiFissionTask")
+    
+    
+    return
+}
+
+func NewCreateAiFissionTaskResponse() (response *CreateAiFissionTaskResponse) {
+    response = &CreateAiFissionTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateAiFissionTask
+// 创建ai视频裂变任务
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_VIOLATIONCONTENT = "InvalidParameter.ViolationContent"
+func (c *Client) CreateAiFissionTask(request *CreateAiFissionTaskRequest) (response *CreateAiFissionTaskResponse, err error) {
+    return c.CreateAiFissionTaskWithContext(context.Background(), request)
+}
+
+// CreateAiFissionTask
+// 创建ai视频裂变任务
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_VIOLATIONCONTENT = "InvalidParameter.ViolationContent"
+func (c *Client) CreateAiFissionTaskWithContext(ctx context.Context, request *CreateAiFissionTaskRequest) (response *CreateAiFissionTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateAiFissionTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "CreateAiFissionTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAiFissionTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateAiFissionTaskResponse()
     err = c.Send(request, response)
     return
 }
@@ -13185,6 +13289,64 @@ func (c *Client) SyncDubbingWithContext(ctx context.Context, request *SyncDubbin
     request.SetContext(ctx)
     
     response = NewSyncDubbingResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewTextToSpeechRequest() (request *TextToSpeechRequest) {
+    request = &TextToSpeechRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "TextToSpeech")
+    
+    
+    return
+}
+
+func NewTextToSpeechResponse() (response *TextToSpeechResponse) {
+    response = &TextToSpeechResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// TextToSpeech
+// 同步语音合成，根据输入文本和指定音色生成语音
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_CACHEINFO = "InvalidParameter.CacheInfo"
+//  INVALIDPARAMETER_EXCEEDEDQUANTITYLIMIT = "InvalidParameter.ExceededQuantityLimit"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_PROTOCOL = "InvalidParameter.Protocol"
+func (c *Client) TextToSpeech(request *TextToSpeechRequest) (response *TextToSpeechResponse, err error) {
+    return c.TextToSpeechWithContext(context.Background(), request)
+}
+
+// TextToSpeech
+// 同步语音合成，根据输入文本和指定音色生成语音
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_CACHEINFO = "InvalidParameter.CacheInfo"
+//  INVALIDPARAMETER_EXCEEDEDQUANTITYLIMIT = "InvalidParameter.ExceededQuantityLimit"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_PROTOCOL = "InvalidParameter.Protocol"
+func (c *Client) TextToSpeechWithContext(ctx context.Context, request *TextToSpeechRequest) (response *TextToSpeechResponse, err error) {
+    if request == nil {
+        request = NewTextToSpeechRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "TextToSpeech")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TextToSpeech require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewTextToSpeechResponse()
     err = c.Send(request, response)
     return
 }

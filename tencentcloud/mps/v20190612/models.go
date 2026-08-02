@@ -1476,6 +1476,14 @@ type AiExpansionConfig struct {
 	Height *int64 `json:"Height,omitnil,omitempty" name:"Height"`
 }
 
+type AiFissionInput struct {
+	// <p>视频裂变参考图url</p>
+	ImageUrls []*string `json:"ImageUrls,omitnil,omitempty" name:"ImageUrls"`
+
+	// <p>视频裂变商品信息参考文案</p>
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+}
+
 type AiParagraphInfo struct {
 	// 分段摘要
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3726,6 +3734,124 @@ func (r *CloneViralResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CloneVoiceRequestParams struct {
+	// <p>克隆音频base64编码</p>
+	AudioData *string `json:"AudioData,omitnil,omitempty" name:"AudioData"`
+
+	// <p>克隆音频Url，AudioData为空时有效</p>
+	AudioUrl *string `json:"AudioUrl,omitnil,omitempty" name:"AudioUrl"`
+
+	// <p>克隆音频语言，默认中文。 当前支持语言同语音合成TextLang</p>
+	AudioLang *string `json:"AudioLang,omitnil,omitempty" name:"AudioLang"`
+
+	// <p>音色属性。音色查询和匹配使用</p>
+	VoiceProfile *VoiceProfile `json:"VoiceProfile,omitnil,omitempty" name:"VoiceProfile"`
+
+	// <p>试听文本</p>
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+
+	// <p>试听文本语言，不填默认自动检测。当前支持语言同语音合成</p>
+	TextLang *string `json:"TextLang,omitnil,omitempty" name:"TextLang"`
+
+	// <p>输出相关参数，可以指定输出音频形式等。默认输出音频base64。</p>
+	Output *SyncDubbingOutputOption `json:"Output,omitnil,omitempty" name:"Output"`
+
+	// <p>扩展参数，json字符串</p>
+	ExtParam *string `json:"ExtParam,omitnil,omitempty" name:"ExtParam"`
+}
+
+type CloneVoiceRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>克隆音频base64编码</p>
+	AudioData *string `json:"AudioData,omitnil,omitempty" name:"AudioData"`
+
+	// <p>克隆音频Url，AudioData为空时有效</p>
+	AudioUrl *string `json:"AudioUrl,omitnil,omitempty" name:"AudioUrl"`
+
+	// <p>克隆音频语言，默认中文。 当前支持语言同语音合成TextLang</p>
+	AudioLang *string `json:"AudioLang,omitnil,omitempty" name:"AudioLang"`
+
+	// <p>音色属性。音色查询和匹配使用</p>
+	VoiceProfile *VoiceProfile `json:"VoiceProfile,omitnil,omitempty" name:"VoiceProfile"`
+
+	// <p>试听文本</p>
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+
+	// <p>试听文本语言，不填默认自动检测。当前支持语言同语音合成</p>
+	TextLang *string `json:"TextLang,omitnil,omitempty" name:"TextLang"`
+
+	// <p>输出相关参数，可以指定输出音频形式等。默认输出音频base64。</p>
+	Output *SyncDubbingOutputOption `json:"Output,omitnil,omitempty" name:"Output"`
+
+	// <p>扩展参数，json字符串</p>
+	ExtParam *string `json:"ExtParam,omitnil,omitempty" name:"ExtParam"`
+}
+
+func (r *CloneVoiceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CloneVoiceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AudioData")
+	delete(f, "AudioUrl")
+	delete(f, "AudioLang")
+	delete(f, "VoiceProfile")
+	delete(f, "Text")
+	delete(f, "TextLang")
+	delete(f, "Output")
+	delete(f, "ExtParam")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CloneVoiceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CloneVoiceResponseParams struct {
+	// <p>错误码，成功时返回0</p>
+	ErrorCode *int64 `json:"ErrorCode,omitnil,omitempty" name:"ErrorCode"`
+
+	// <p>错误信息，成功时返回success</p>
+	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
+
+	// <p>克隆生成的音色ID</p>
+	VoiceId *string `json:"VoiceId,omitnil,omitempty" name:"VoiceId"`
+
+	// <p>合成音频的base64编码</p>
+	AudioData *string `json:"AudioData,omitnil,omitempty" name:"AudioData"`
+
+	// <p>合成音频Url，有效期24小时</p>
+	AudioUrl *string `json:"AudioUrl,omitnil,omitempty" name:"AudioUrl"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CloneVoiceResponse struct {
+	*tchttp.BaseResponse
+	Response *CloneVoiceResponseParams `json:"Response"`
+}
+
+func (r *CloneVoiceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CloneVoiceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ColorEnhanceConfig struct {
 	// 能力配置开关，可选值：
 	// <li>ON：开启；</li>
@@ -4782,6 +4908,77 @@ func (r *CreateAiDramaTaskResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateAiDramaTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAiFissionTaskRequestParams struct {
+	// <p>ai视频裂变输入信息</p>
+	Input *AiFissionInput `json:"Input,omitnil,omitempty" name:"Input"`
+
+	// <p>用户cos信息</p>
+	CosInfo *VideoDramaCosInfo `json:"CosInfo,omitnil,omitempty" name:"CosInfo"`
+
+	// <p>ai视频裂变任务信息</p>
+	TaskInfo *FissionTaskInfo `json:"TaskInfo,omitnil,omitempty" name:"TaskInfo"`
+}
+
+type CreateAiFissionTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>ai视频裂变输入信息</p>
+	Input *AiFissionInput `json:"Input,omitnil,omitempty" name:"Input"`
+
+	// <p>用户cos信息</p>
+	CosInfo *VideoDramaCosInfo `json:"CosInfo,omitnil,omitempty" name:"CosInfo"`
+
+	// <p>ai视频裂变任务信息</p>
+	TaskInfo *FissionTaskInfo `json:"TaskInfo,omitnil,omitempty" name:"TaskInfo"`
+}
+
+func (r *CreateAiFissionTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAiFissionTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Input")
+	delete(f, "CosInfo")
+	delete(f, "TaskInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAiFissionTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAiFissionTaskResponseParams struct {
+	// <p>任务id</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateAiFissionTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateAiFissionTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateAiFissionTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAiFissionTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -8810,6 +9007,20 @@ func (r *CreateWorkflowResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *CreateWorkflowResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type CustomModel struct {
+	// <p>性别</p><p>枚举值：</p><ul><li>male： 男性</li><li>female： 女性</li><li>any： 不限</li></ul>
+	Gender *string `json:"Gender,omitnil,omitempty" name:"Gender"`
+
+	// <p>年龄范围</p><p>枚举值：</p><ul><li>teen： 青年</li><li>young_adult： 成年</li><li>middle_aged： 中年</li><li>mature： 成熟</li></ul>
+	Age *string `json:"Age,omitnil,omitempty" name:"Age"`
+
+	// <p>外貌</p><p>枚举值：</p><ul><li>caucasian： 白人</li><li>asian： 亚裔</li><li>latino： 拉丁裔</li><li>african： 非裔</li><li>middle_eastern： 中东</li></ul>
+	Appearance *string `json:"Appearance,omitnil,omitempty" name:"Appearance"`
+
+	// <p>身材</p><p>枚举值：</p><ul><li>slim： 苗条</li><li>standard： 标准</li><li>athletic： 健壮</li><li>chubby： 丰满</li></ul>
+	BodyType *string `json:"BodyType,omitnil,omitempty" name:"BodyType"`
 }
 
 type CustomVariable struct {
@@ -18743,6 +18954,35 @@ type FaceEnhanceConfig struct {
 type FailOverOption struct {
 	// 热备
 	FailOverType *string `json:"FailOverType,omitnil,omitempty" name:"FailOverType"`
+}
+
+type FissionTaskInfo struct {
+	// <p>视频输出时长</p><p>取值范围：[1, 15]</p><p>单位：秒</p><p>默认值：15</p>
+	Duration *uint64 `json:"Duration,omitnil,omitempty" name:"Duration"`
+
+	// <p>模型档位</p><p>枚举值：</p><ul><li>standard： 标准版</li><li>flagship： 旗舰版</li></ul>
+	ModelTier *string `json:"ModelTier,omitnil,omitempty" name:"ModelTier"`
+
+	// <p>视频画面比例</p><p>枚举值：</p><ul><li>9:16： 9:16</li><li>16:9： 16:9</li><li>1:1： 1:1</li><li>3:4： 3:4</li><li>4:3： 4:3</li></ul>
+	Ratio *string `json:"Ratio,omitnil,omitempty" name:"Ratio"`
+
+	// <p>输出分辨率</p><p>枚举值：</p><ul><li>720p： 720p</li><li>1080p： 1080p</li><li>2k： 2k</li><li>4k： 4k</li></ul>
+	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
+
+	// <p>目标市场</p><p>枚举值：</p><ul><li>north_america： 北美</li><li>europe： 欧洲</li><li>china： 中国</li><li>japan： 日本</li><li>korea： 韩国</li><li>southeast_asia： 东南亚</li><li>brazil： 巴西</li><li>global： 全球</li><li>other： 其他</li></ul><p>影响默认出镜模特族裔与本地化风格；未指定 CustomModel 时按市场自动决定人种</p>
+	Market *string `json:"Market,omitnil,omitempty" name:"Market"`
+
+	// <p>口播/字幕语言</p><p>枚举值：</p><ul><li>english： 英文</li><li>chinese： 中文</li><li>japanese： 日语</li><li>korean： 汉语</li><li>spanish： 西班牙语</li><li>portuguese： 葡萄牙语</li><li>music_only： 纯音乐无口播</li></ul>
+	Language *string `json:"Language,omitnil,omitempty" name:"Language"`
+
+	// <p>视频类型</p><p>枚举值：</p><ul><li>ugc： UGC种草</li><li>talk： 产品口播</li><li>display： 产品展示（纯商品、无人声）</li><li>unboxing： 开箱分享</li><li>reaction： 反应展示</li></ul>
+	VideoType *string `json:"VideoType,omitnil,omitempty" name:"VideoType"`
+
+	// <p>裂变数量</p><p>取值范围：[0, 1]</p><p>单位：个</p>
+	SplitCount *uint64 `json:"SplitCount,omitnil,omitempty" name:"SplitCount"`
+
+	// <p>定制出镜模特</p>
+	CustomModel *CustomModel `json:"CustomModel,omitnil,omitempty" name:"CustomModel"`
 }
 
 type FlowAudio struct {
@@ -29782,6 +30022,103 @@ func (r *TextToSpeechAsyncResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *TextToSpeechAsyncResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type TextToSpeechRequestParams struct {
+	// <p>语音合成文本</p>
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+
+	// <p>音色ID</p>
+	VoiceId *string `json:"VoiceId,omitnil,omitempty" name:"VoiceId"`
+
+	// <p>文本语言。不填默认自动识别<br>当前支持语言：<br>zh 中文 (Chinese)<br>en 英语 (English)<br>ja 日语 (Japanese)<br>de 德语 (German)<br>fr 法语 (French)<br>ko 韩语 (Korean)<br>ru 俄语 (Russian)<br>uk 乌克兰语 (Ukrainian)<br>pt 葡萄牙语 (Portuguese)<br>it 意大利语 (Italian)<br>es 西班牙语 (Spanish)<br>id 印度尼西亚语 (Indonesian)<br>nl 荷兰语 (Dutch)<br>tr 土耳其语 (Turkish)<br>fil 菲律宾语 (Filipino)<br>ms 马来语 (Malay)<br>el 希腊语 (Greek)<br>fi 芬兰语 (Finnish)<br>hr 克罗地亚语 (Croatian)<br>sk 斯洛伐克语 (Slovak)<br>pl 波兰语 (Polish)<br>sv 瑞典语 (Swedish)<br>hi 印地语 (Hindi)<br>bg 保加利亚语 (Bulgarian)<br>ro 罗马尼亚语 (Romanian)<br>ar 阿拉伯语 (Arabic)<br>cs 捷克语 (Czech)<br>da 丹麦语 (Danish)<br>ta 泰米尔语 (Tamil)<br>hun 匈牙利语（Hungarian）<br>vi 越南语（Vietnamese）<br>no 挪威语（Norwegian）<br>yue 粤语（Cantonese）<br>th 泰语（Thai）<br>he 希伯来语（Hebrew）<br>ca 加泰罗尼亚语（Catalan）<br>nn 尼诺斯克语（Nynorsk）<br>af 阿非利卡语（Afrikaans）<br>fa 波斯语（Persian）<br>sl 斯洛文尼亚语（Slovenian）</p>
+	TextLang *string `json:"TextLang,omitnil,omitempty" name:"TextLang"`
+
+	// <p>输出相关参数</p>
+	Output *SyncDubbingOutputOption `json:"Output,omitnil,omitempty" name:"Output"`
+
+	// <p>扩展参数，json字符串</p><p><strong>synExt</strong> Object 语音合成扩展参数<br>   <strong>duration</strong> Float 合成音频时长（单位秒），默认不控制时长。示例：5.2<br>   <strong>format</strong> String 输出音频格式，默认wav，支持wav、mp3<br>   <strong>sampleRate</strong> Integer 合成音频采样率，默认16000，支持[8000,16000,22050,24000,32000,44100]</p>
+	ExtParam *string `json:"ExtParam,omitnil,omitempty" name:"ExtParam"`
+}
+
+type TextToSpeechRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>语音合成文本</p>
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+
+	// <p>音色ID</p>
+	VoiceId *string `json:"VoiceId,omitnil,omitempty" name:"VoiceId"`
+
+	// <p>文本语言。不填默认自动识别<br>当前支持语言：<br>zh 中文 (Chinese)<br>en 英语 (English)<br>ja 日语 (Japanese)<br>de 德语 (German)<br>fr 法语 (French)<br>ko 韩语 (Korean)<br>ru 俄语 (Russian)<br>uk 乌克兰语 (Ukrainian)<br>pt 葡萄牙语 (Portuguese)<br>it 意大利语 (Italian)<br>es 西班牙语 (Spanish)<br>id 印度尼西亚语 (Indonesian)<br>nl 荷兰语 (Dutch)<br>tr 土耳其语 (Turkish)<br>fil 菲律宾语 (Filipino)<br>ms 马来语 (Malay)<br>el 希腊语 (Greek)<br>fi 芬兰语 (Finnish)<br>hr 克罗地亚语 (Croatian)<br>sk 斯洛伐克语 (Slovak)<br>pl 波兰语 (Polish)<br>sv 瑞典语 (Swedish)<br>hi 印地语 (Hindi)<br>bg 保加利亚语 (Bulgarian)<br>ro 罗马尼亚语 (Romanian)<br>ar 阿拉伯语 (Arabic)<br>cs 捷克语 (Czech)<br>da 丹麦语 (Danish)<br>ta 泰米尔语 (Tamil)<br>hun 匈牙利语（Hungarian）<br>vi 越南语（Vietnamese）<br>no 挪威语（Norwegian）<br>yue 粤语（Cantonese）<br>th 泰语（Thai）<br>he 希伯来语（Hebrew）<br>ca 加泰罗尼亚语（Catalan）<br>nn 尼诺斯克语（Nynorsk）<br>af 阿非利卡语（Afrikaans）<br>fa 波斯语（Persian）<br>sl 斯洛文尼亚语（Slovenian）</p>
+	TextLang *string `json:"TextLang,omitnil,omitempty" name:"TextLang"`
+
+	// <p>输出相关参数</p>
+	Output *SyncDubbingOutputOption `json:"Output,omitnil,omitempty" name:"Output"`
+
+	// <p>扩展参数，json字符串</p><p><strong>synExt</strong> Object 语音合成扩展参数<br>   <strong>duration</strong> Float 合成音频时长（单位秒），默认不控制时长。示例：5.2<br>   <strong>format</strong> String 输出音频格式，默认wav，支持wav、mp3<br>   <strong>sampleRate</strong> Integer 合成音频采样率，默认16000，支持[8000,16000,22050,24000,32000,44100]</p>
+	ExtParam *string `json:"ExtParam,omitnil,omitempty" name:"ExtParam"`
+}
+
+func (r *TextToSpeechRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TextToSpeechRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Text")
+	delete(f, "VoiceId")
+	delete(f, "TextLang")
+	delete(f, "Output")
+	delete(f, "ExtParam")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TextToSpeechRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type TextToSpeechResponseParams struct {
+	// <p>错误码，成功时返回0</p>
+	ErrorCode *int64 `json:"ErrorCode,omitnil,omitempty" name:"ErrorCode"`
+
+	// <p>错误信息，成功时返回success</p>
+	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
+
+	// <p>合成音频的base64编码，默认wav格式</p>
+	AudioData *string `json:"AudioData,omitnil,omitempty" name:"AudioData"`
+
+	// <p>合成音频url，有效期24小时</p>
+	AudioUrl *string `json:"AudioUrl,omitnil,omitempty" name:"AudioUrl"`
+
+	// <p>扩展信息，json字符串  duration: 结果音频时长，单位秒</p>
+	ExtInfo *string `json:"ExtInfo,omitnil,omitempty" name:"ExtInfo"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type TextToSpeechResponse struct {
+	*tchttp.BaseResponse
+	Response *TextToSpeechResponseParams `json:"Response"`
+}
+
+func (r *TextToSpeechResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TextToSpeechResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

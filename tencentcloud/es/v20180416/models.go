@@ -180,6 +180,167 @@ func (r *CheckMigrateIndexMetaDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CheckUpdateInstanceRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 已废弃，请使用NodeInfoList
+	// 变配后的节点个数（2-50个）
+	NodeNum *uint64 `json:"NodeNum,omitnil,omitempty" name:"NodeNum"`
+
+	// 已废弃，请使用NodeInfoList
+	// 变配后的节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
+	NodeType *string `json:"NodeType,omitnil,omitempty" name:"NodeType"`
+
+	// 已废弃，请使用NodeInfoList
+	// 变配后的磁盘大小（单位GB）
+	DiskSize *uint64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
+
+	// 已废弃，请使用NodeInfoList
+	// 变配后的专用主节点个数（仅支持3个和5个）
+	MasterNodeNum *uint64 `json:"MasterNodeNum,omitnil,omitempty" name:"MasterNodeNum"`
+
+	// 已废弃，请使用NodeInfoList
+	// 变配后的专用主节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
+	MasterNodeType *string `json:"MasterNodeType,omitnil,omitempty" name:"MasterNodeType"`
+
+	// 节点信息列表，可以只传递要更新的节点及其对应的规格信息。支持的操作包括<li>修改一种节点的个数</li><li>修改一种节点的节点规格及磁盘大小</li><li>增加一种节点类型（需要同时指定该节点的类型，个数，规格，磁盘等信息）</li>上述操作一次只能进行一种，且磁盘类型不支持修改
+	NodeInfoList []*NodeInfo `json:"NodeInfoList,omitnil,omitempty" name:"NodeInfoList"`
+
+	// 更新配置时是否强制重启<li>true强制重启</li><li>false不强制重启</li>默认值为false
+	ForceRestart *bool `json:"ForceRestart,omitnil,omitempty" name:"ForceRestart"`
+
+	// 0: 蓝绿变更方式扩容，集群不重启 （默认） 1: 磁盘解挂载扩容，集群滚动重启
+	ScaleType *int64 `json:"ScaleType,omitnil,omitempty" name:"ScaleType"`
+
+	// 多可用区部署
+	MultiZoneInfo []*ZoneDetail `json:"MultiZoneInfo,omitnil,omitempty" name:"MultiZoneInfo"`
+
+	// 可视化节点配置
+	WebNodeTypeInfo *WebNodeTypeInfo `json:"WebNodeTypeInfo,omitnil,omitempty" name:"WebNodeTypeInfo"`
+
+	// COS自动备份信息
+	CosBackup *CosBackup `json:"CosBackup,omitnil,omitempty" name:"CosBackup"`
+
+	// 读写分离模式：-1-不开启，1-本地读写分离，2-远端读写分离
+	ReadWriteMode *int64 `json:"ReadWriteMode,omitnil,omitempty" name:"ReadWriteMode"`
+}
+
+type CheckUpdateInstanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 已废弃，请使用NodeInfoList
+	// 变配后的节点个数（2-50个）
+	NodeNum *uint64 `json:"NodeNum,omitnil,omitempty" name:"NodeNum"`
+
+	// 已废弃，请使用NodeInfoList
+	// 变配后的节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
+	NodeType *string `json:"NodeType,omitnil,omitempty" name:"NodeType"`
+
+	// 已废弃，请使用NodeInfoList
+	// 变配后的磁盘大小（单位GB）
+	DiskSize *uint64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
+
+	// 已废弃，请使用NodeInfoList
+	// 变配后的专用主节点个数（仅支持3个和5个）
+	MasterNodeNum *uint64 `json:"MasterNodeNum,omitnil,omitempty" name:"MasterNodeNum"`
+
+	// 已废弃，请使用NodeInfoList
+	// 变配后的专用主节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
+	MasterNodeType *string `json:"MasterNodeType,omitnil,omitempty" name:"MasterNodeType"`
+
+	// 节点信息列表，可以只传递要更新的节点及其对应的规格信息。支持的操作包括<li>修改一种节点的个数</li><li>修改一种节点的节点规格及磁盘大小</li><li>增加一种节点类型（需要同时指定该节点的类型，个数，规格，磁盘等信息）</li>上述操作一次只能进行一种，且磁盘类型不支持修改
+	NodeInfoList []*NodeInfo `json:"NodeInfoList,omitnil,omitempty" name:"NodeInfoList"`
+
+	// 更新配置时是否强制重启<li>true强制重启</li><li>false不强制重启</li>默认值为false
+	ForceRestart *bool `json:"ForceRestart,omitnil,omitempty" name:"ForceRestart"`
+
+	// 0: 蓝绿变更方式扩容，集群不重启 （默认） 1: 磁盘解挂载扩容，集群滚动重启
+	ScaleType *int64 `json:"ScaleType,omitnil,omitempty" name:"ScaleType"`
+
+	// 多可用区部署
+	MultiZoneInfo []*ZoneDetail `json:"MultiZoneInfo,omitnil,omitempty" name:"MultiZoneInfo"`
+
+	// 可视化节点配置
+	WebNodeTypeInfo *WebNodeTypeInfo `json:"WebNodeTypeInfo,omitnil,omitempty" name:"WebNodeTypeInfo"`
+
+	// COS自动备份信息
+	CosBackup *CosBackup `json:"CosBackup,omitnil,omitempty" name:"CosBackup"`
+
+	// 读写分离模式：-1-不开启，1-本地读写分离，2-远端读写分离
+	ReadWriteMode *int64 `json:"ReadWriteMode,omitnil,omitempty" name:"ReadWriteMode"`
+}
+
+func (r *CheckUpdateInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CheckUpdateInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "NodeNum")
+	delete(f, "NodeType")
+	delete(f, "DiskSize")
+	delete(f, "MasterNodeNum")
+	delete(f, "MasterNodeType")
+	delete(f, "NodeInfoList")
+	delete(f, "ForceRestart")
+	delete(f, "ScaleType")
+	delete(f, "MultiZoneInfo")
+	delete(f, "WebNodeTypeInfo")
+	delete(f, "CosBackup")
+	delete(f, "ReadWriteMode")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CheckUpdateInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CheckUpdateInstanceResponseParams struct {
+	// 是否允许变配操作
+	AllowUpdate *bool `json:"AllowUpdate,omitnil,omitempty" name:"AllowUpdate"`
+
+	// 不允许变配的原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrMsg *string `json:"ErrMsg,omitnil,omitempty" name:"ErrMsg"`
+
+	// 是否需要设置分片迁移并发相关参数
+	NeedSetShards *bool `json:"NeedSetShards,omitnil,omitempty" name:"NeedSetShards"`
+
+	// 是否需要开启置放群组异步任务
+	EnableScheduleRecoverGroupTask *bool `json:"EnableScheduleRecoverGroupTask,omitnil,omitempty" name:"EnableScheduleRecoverGroupTask"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CheckUpdateInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *CheckUpdateInstanceResponseParams `json:"Response"`
+}
+
+func (r *CheckUpdateInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CheckUpdateInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ClusterView struct {
 	// 集群健康状态
 	Health *float64 `json:"Health,omitnil,omitempty" name:"Health"`
@@ -7471,6 +7632,77 @@ func (r *ModifyAutoBackUpStrategyResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyAutoBackUpStrategyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAutoScaleDiskInfoRequestParams struct {
+	// 实例名称
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 自动扩盘参数列表
+	AutoScaleDiskInfoList []*AutoScaleDiskInfo `json:"AutoScaleDiskInfoList,omitnil,omitempty" name:"AutoScaleDiskInfoList"`
+
+	// 需要删除的自动扩盘节点类型
+	DeleteNodeTypeList []*string `json:"DeleteNodeTypeList,omitnil,omitempty" name:"DeleteNodeTypeList"`
+}
+
+type ModifyAutoScaleDiskInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例名称
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 自动扩盘参数列表
+	AutoScaleDiskInfoList []*AutoScaleDiskInfo `json:"AutoScaleDiskInfoList,omitnil,omitempty" name:"AutoScaleDiskInfoList"`
+
+	// 需要删除的自动扩盘节点类型
+	DeleteNodeTypeList []*string `json:"DeleteNodeTypeList,omitnil,omitempty" name:"DeleteNodeTypeList"`
+}
+
+func (r *ModifyAutoScaleDiskInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAutoScaleDiskInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "AutoScaleDiskInfoList")
+	delete(f, "DeleteNodeTypeList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAutoScaleDiskInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAutoScaleDiskInfoResponseParams struct {
+	// true 成功; false 失败
+	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyAutoScaleDiskInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyAutoScaleDiskInfoResponseParams `json:"Response"`
+}
+
+func (r *ModifyAutoScaleDiskInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAutoScaleDiskInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

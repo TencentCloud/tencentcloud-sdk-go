@@ -201,6 +201,20 @@ func (r *ActivateTWeTalkResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ActivationLicense struct {
+	// <p>激活码类型</p>
+	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
+
+	// <p>支付模式</p>
+	TotalLicenseNum *int64 `json:"TotalLicenseNum,omitnil,omitempty" name:"TotalLicenseNum"`
+
+	// <p>计费标签项</p>
+	UsedLicenseNum *int64 `json:"UsedLicenseNum,omitnil,omitempty" name:"UsedLicenseNum"`
+
+	// <p>计费标识</p>
+	Period *string `json:"Period,omitnil,omitempty" name:"Period"`
+}
+
 type AppDeviceInfo struct {
 	// 产品ID/设备名
 	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
@@ -4611,6 +4625,9 @@ type CreateTWeTalkAgentRequestParams struct {
 
 	// <p>元信息扩展JSON对象字符串</p>
 	Metadata *string `json:"Metadata,omitnil,omitempty" name:"Metadata"`
+
+	// <p>回调配置</p>
+	EventCallbackConfig *TalkEventCallbackConfig `json:"EventCallbackConfig,omitnil,omitempty" name:"EventCallbackConfig"`
 }
 
 type CreateTWeTalkAgentRequest struct {
@@ -4648,6 +4665,9 @@ type CreateTWeTalkAgentRequest struct {
 
 	// <p>元信息扩展JSON对象字符串</p>
 	Metadata *string `json:"Metadata,omitnil,omitempty" name:"Metadata"`
+
+	// <p>回调配置</p>
+	EventCallbackConfig *TalkEventCallbackConfig `json:"EventCallbackConfig,omitnil,omitempty" name:"EventCallbackConfig"`
 }
 
 func (r *CreateTWeTalkAgentRequest) ToJsonString() string {
@@ -4673,6 +4693,7 @@ func (r *CreateTWeTalkAgentRequest) FromJsonString(s string) error {
 	delete(f, "IOTTools")
 	delete(f, "WebhookTools")
 	delete(f, "Metadata")
+	delete(f, "EventCallbackConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTWeTalkAgentRequest has unknown keys!", "")
 	}
@@ -9829,14 +9850,14 @@ func (r *DescribeInstanceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeLicenseOverviewRequestParams struct {
-	// 实例ID
+	// <p>实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type DescribeLicenseOverviewRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// <p>实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
@@ -9861,6 +9882,10 @@ func (r *DescribeLicenseOverviewRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeLicenseOverviewResponseParams struct {
+	// <p>实例概览</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data []*LicenseOverview `json:"Data,omitnil,omitempty" name:"Data"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -15945,6 +15970,14 @@ type IotApplication struct {
 	InterconnectionProducts *string `json:"InterconnectionProducts,omitnil,omitempty" name:"InterconnectionProducts"`
 }
 
+type LicenseOverview struct {
+	// <p>激活码统计信息</p>
+	ActivationLicense []*ActivationLicense `json:"ActivationLicense,omitnil,omitempty" name:"ActivationLicense"`
+
+	// <p>激活码类型</p>
+	LicenseType *string `json:"LicenseType,omitnil,omitempty" name:"LicenseType"`
+}
+
 type LicenseServiceNumInfo struct {
 	// 服务类型
 	LicenseType *string `json:"LicenseType,omitnil,omitempty" name:"LicenseType"`
@@ -18382,6 +18415,9 @@ type ModifyTWeTalkAgentRequestParams struct {
 
 	// <p>元信息扩展JSON对象字符串</p>
 	Metadata *string `json:"Metadata,omitnil,omitempty" name:"Metadata"`
+
+	// <p>回调配置</p>
+	EventCallbackConfig *TalkEventCallbackConfig `json:"EventCallbackConfig,omitnil,omitempty" name:"EventCallbackConfig"`
 }
 
 type ModifyTWeTalkAgentRequest struct {
@@ -18419,6 +18455,9 @@ type ModifyTWeTalkAgentRequest struct {
 
 	// <p>元信息扩展JSON对象字符串</p>
 	Metadata *string `json:"Metadata,omitnil,omitempty" name:"Metadata"`
+
+	// <p>回调配置</p>
+	EventCallbackConfig *TalkEventCallbackConfig `json:"EventCallbackConfig,omitnil,omitempty" name:"EventCallbackConfig"`
 }
 
 func (r *ModifyTWeTalkAgentRequest) ToJsonString() string {
@@ -18444,6 +18483,7 @@ func (r *ModifyTWeTalkAgentRequest) FromJsonString(s string) error {
 	delete(f, "IOTTools")
 	delete(f, "WebhookTools")
 	delete(f, "Metadata")
+	delete(f, "EventCallbackConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyTWeTalkAgentRequest has unknown keys!", "")
 	}
@@ -21069,56 +21109,59 @@ type TalkAgentConfigInfo struct {
 }
 
 type TalkAgentInfo struct {
-	// 主账号UIN
+	// <p>主账号UIN</p>
 	Uin *int64 `json:"Uin,omitnil,omitempty" name:"Uin"`
 
-	// 账号AppId
+	// <p>账号AppId</p>
 	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 
-	// 实例 ID
+	// <p>实例 ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 智能体ID
+	// <p>智能体ID</p>
 	AgentId *string `json:"AgentId,omitnil,omitempty" name:"AgentId"`
 
-	// 智能体名称
+	// <p>智能体名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 智能体描述
+	// <p>智能体描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 语音识别配置
+	// <p>语音识别配置</p>
 	STTConfig *TalkSTTConfig `json:"STTConfig,omitnil,omitempty" name:"STTConfig"`
 
-	// 大模型配置
+	// <p>大模型配置</p>
 	LLMConfig *TalkLLMConfig `json:"LLMConfig,omitnil,omitempty" name:"LLMConfig"`
 
-	// 语音合成配置
+	// <p>语音合成配置</p>
 	TTSConfig *TalkTTSConfig `json:"TTSConfig,omitnil,omitempty" name:"TTSConfig"`
 
-	// 对话行为配置
+	// <p>对话行为配置</p>
 	ConversationConfig *TalkConversationConfig `json:"ConversationConfig,omitnil,omitempty" name:"ConversationConfig"`
 
-	// 长期记忆配置
+	// <p>长期记忆配置</p>
 	MemoryConfig *TalkMemoryConfig `json:"MemoryConfig,omitnil,omitempty" name:"MemoryConfig"`
 
-	// IoT 工具列表
+	// <p>IoT 工具列表</p>
 	IOTTools []*TalkIOTTool `json:"IOTTools,omitnil,omitempty" name:"IOTTools"`
 
-	// Webhook 工具列表
+	// <p>Webhook 工具列表</p>
 	WebhookTools []*TalkWebhookTool `json:"WebhookTools,omitnil,omitempty" name:"WebhookTools"`
 
-	// 元信息JSON object 字符串
+	// <p>元信息JSON object 字符串</p>
 	Metadata *string `json:"Metadata,omitnil,omitempty" name:"Metadata"`
 
-	// 绑定关系列表
+	// <p>绑定关系列表</p>
 	Bindings []*TalkAgentBinding `json:"Bindings,omitnil,omitempty" name:"Bindings"`
 
-	// 创建时间，Unix 秒
+	// <p>创建时间，Unix 秒</p>
 	CreateTime *int64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 更新时间，Unix 秒
+	// <p>更新时间，Unix 秒</p>
 	UpdateTime *int64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// <p>事件回调配置</p>
+	EventCallbackConfig *TalkEventCallbackConfig `json:"EventCallbackConfig,omitnil,omitempty" name:"EventCallbackConfig"`
 }
 
 type TalkBasicConfigInfo struct {
@@ -21170,6 +21213,14 @@ type TalkConversationConfigInfo struct {
 
 	// 是否启用噪声过滤
 	NoiseFilterEnabled *bool `json:"NoiseFilterEnabled,omitnil,omitempty" name:"NoiseFilterEnabled"`
+}
+
+type TalkEventCallbackConfig struct {
+	// <p>是否开启</p>
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// <p>Topic 名称</p>
+	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
 }
 
 type TalkIOTTool struct {
@@ -21527,7 +21578,7 @@ type TalkWebhookAuth struct {
 }
 
 type TalkWebhookEndpoint struct {
-	// <p>Webhook地址，仅支持 80 和 443 端口</p>
+	// <p>Webhook地址</p>
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// <p>超时时间，0~30 秒</p><p>取值范围：[0, 30]</p>

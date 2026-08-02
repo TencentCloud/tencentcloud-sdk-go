@@ -1653,6 +1653,14 @@ type ClusterInfo struct {
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 }
 
+type ClusterInfoInput struct {
+	// <p>集群ID</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// <p>集群类型</p><p>枚举值：</p><ul><li>Exclusive： 独占集群</li><li>Public： 公有云共享集群</li></ul>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
 type ClusterItem struct {
 	// 集群唯一ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
@@ -1701,6 +1709,9 @@ type ClustersZone struct {
 type Coefficient struct {
 	// <p>缓存命中输入积分系数。</p><p>用于 provider prompt cache 命中的输入 token。</p><p>取值范围：[0, 5000]</p><p>默认值：3</p>
 	InputCachedCoefficient *float64 `json:"InputCachedCoefficient,omitnil,omitempty" name:"InputCachedCoefficient"`
+
+	// <p>缓存创建积分系数</p>
+	InputCacheCreationCoefficient *float64 `json:"InputCacheCreationCoefficient,omitnil,omitempty" name:"InputCacheCreationCoefficient"`
 
 	// <p>输入积分系数。</p><p>取值范围：[1, 5000]</p><p>默认值：25</p>
 	InputCoefficient *float64 `json:"InputCoefficient,omitnil,omitempty" name:"InputCoefficient"`
@@ -2981,11 +2992,11 @@ type CreateModelRouterRequestParams struct {
 	// <p>关联的积分预算ID</p>
 	BudgetId *string `json:"BudgetId,omitnil,omitempty" name:"BudgetId"`
 
-	// <p>证书ID</p><p>入参限制：当Schema为HTTPS时，该参数必传</p>
+	// <p>证书ID</p><p>入参限制：当Scheme为HTTPS时，该参数必传</p>
 	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
 
 	// <p>集群信息</p>
-	ClusterInfo *ClusterInfo `json:"ClusterInfo,omitnil,omitempty" name:"ClusterInfo"`
+	ClusterInfo *ClusterInfoInput `json:"ClusterInfo,omitnil,omitempty" name:"ClusterInfo"`
 
 	// <p>模型路由实例名称</p><p>默认值：-</p>
 	ModelRouterName *string `json:"ModelRouterName,omitnil,omitempty" name:"ModelRouterName"`
@@ -3013,6 +3024,12 @@ type CreateModelRouterRequestParams struct {
 
 	// <p>模型路由实例所属VPC的ID</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// <p>模型路由实例计费信息</p>
+	ModelRouterBillingConfig *ModelRouterBillingConfigInput `json:"ModelRouterBillingConfig,omitnil,omitempty" name:"ModelRouterBillingConfig"`
+
+	// <p>客户端Token，用于保证请求的幂等性。  从您的客户端生成一个参数值，确保不同请求间该参数值唯一。ClientToken只支持ASCII字符。</p>
+	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
 }
 
 type CreateModelRouterRequest struct {
@@ -3024,11 +3041,11 @@ type CreateModelRouterRequest struct {
 	// <p>关联的积分预算ID</p>
 	BudgetId *string `json:"BudgetId,omitnil,omitempty" name:"BudgetId"`
 
-	// <p>证书ID</p><p>入参限制：当Schema为HTTPS时，该参数必传</p>
+	// <p>证书ID</p><p>入参限制：当Scheme为HTTPS时，该参数必传</p>
 	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
 
 	// <p>集群信息</p>
-	ClusterInfo *ClusterInfo `json:"ClusterInfo,omitnil,omitempty" name:"ClusterInfo"`
+	ClusterInfo *ClusterInfoInput `json:"ClusterInfo,omitnil,omitempty" name:"ClusterInfo"`
 
 	// <p>模型路由实例名称</p><p>默认值：-</p>
 	ModelRouterName *string `json:"ModelRouterName,omitnil,omitempty" name:"ModelRouterName"`
@@ -3056,6 +3073,12 @@ type CreateModelRouterRequest struct {
 
 	// <p>模型路由实例所属VPC的ID</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// <p>模型路由实例计费信息</p>
+	ModelRouterBillingConfig *ModelRouterBillingConfigInput `json:"ModelRouterBillingConfig,omitnil,omitempty" name:"ModelRouterBillingConfig"`
+
+	// <p>客户端Token，用于保证请求的幂等性。  从您的客户端生成一个参数值，确保不同请求间该参数值唯一。ClientToken只支持ASCII字符。</p>
+	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
 }
 
 func (r *CreateModelRouterRequest) ToJsonString() string {
@@ -3083,6 +3106,8 @@ func (r *CreateModelRouterRequest) FromJsonString(s string) error {
 	delete(f, "SubnetId")
 	delete(f, "Tags")
 	delete(f, "VpcId")
+	delete(f, "ModelRouterBillingConfig")
+	delete(f, "ClientToken")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateModelRouterRequest has unknown keys!", "")
 	}
@@ -9442,7 +9467,7 @@ type DisassociateModelsFromModelRouterRequestParams struct {
 	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
 
 	// <p>需要解除关联的模型信息</p>
-	Models []*ModelRouterModel `json:"Models,omitnil,omitempty" name:"Models"`
+	Models []*ModelRouterModelToDisassociate `json:"Models,omitnil,omitempty" name:"Models"`
 }
 
 type DisassociateModelsFromModelRouterRequest struct {
@@ -9452,7 +9477,7 @@ type DisassociateModelsFromModelRouterRequest struct {
 	ModelRouterId *string `json:"ModelRouterId,omitnil,omitempty" name:"ModelRouterId"`
 
 	// <p>需要解除关联的模型信息</p>
-	Models []*ModelRouterModel `json:"Models,omitnil,omitempty" name:"Models"`
+	Models []*ModelRouterModelToDisassociate `json:"Models,omitnil,omitempty" name:"Models"`
 }
 
 func (r *DisassociateModelsFromModelRouterRequest) ToJsonString() string {
@@ -11256,6 +11281,17 @@ type ModelNameAggregatedItem struct {
 	InputModalitiesUnion []*string `json:"InputModalitiesUnion,omitnil,omitempty" name:"InputModalitiesUnion"`
 }
 
+type ModelRouterBillingConfigInput struct {
+	// <p>模型路由计费模式</p><p>枚举值：</p><ul><li>POSTPAID_BY_HOUR： 按量计费</li><li>RESOURCE_PACKAGE： 按资源包抵扣</li></ul>
+	ChargeType *string `json:"ChargeType,omitnil,omitempty" name:"ChargeType"`
+
+	// <p>实例规格</p><p>枚举值：</p><ul><li>t1.nano-01： 入门版</li><li>t1.nano-02： 轻量版</li><li>t1.nano-03： 轻量增强版</li><li>t1.micro-01： 微型版</li><li>t1.micro-02： 基础版</li><li>t1.small-01： 标准版</li><li>t1.small-02： 标准增强版</li><li>t1.medium-01： 进阶版</li><li>t1.medium-02： 进阶增强版</li><li>t1.large-01： 专业版</li><li>t1.large-02： 专业增强版</li><li>t1.xlarge-01： 旗舰版</li><li>t1.xlarge-02： 至尊版</li></ul>
+	SlaType *string `json:"SlaType,omitnil,omitempty" name:"SlaType"`
+
+	// <p>是否关联资源包抵扣</p><p>枚举值：</p><ul><li>true： 关联</li><li>false： 不关联</li></ul>
+	AssociateResourcePackage *bool `json:"AssociateResourcePackage,omitnil,omitempty" name:"AssociateResourcePackage"`
+}
+
 type ModelRouterDetail struct {
 	// <p>模型路由实例关联的Budget ID。</p><p>未关联Budget时返回空字符串。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -11325,6 +11361,12 @@ type ModelRouterDetail struct {
 
 	// <p>模型路由实例所属VPC的ID</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// <p>带宽</p><p>单位：Mbps</p>
+	Bandwidth *uint64 `json:"Bandwidth,omitnil,omitempty" name:"Bandwidth"`
+
+	// <p>弹性公网IP的ID</p>
+	EipAddressId *string `json:"EipAddressId,omitnil,omitempty" name:"EipAddressId"`
 }
 
 type ModelRouterLog struct {
@@ -11375,7 +11417,27 @@ type ModelRouterModel struct {
 	// <p>模型类型。</p><p>枚举值：</p><ul><li>BYOK： BYOK类型</li><li>Platform： 平台类型</li></ul>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// <p>服务商/模型 ID（byok_model.model_id，形如 model-xxxxxxxx；Platform 类型不传）</p>
+	// <p>BYOK实例ID</p>
+	ServiceProviderId *string `json:"ServiceProviderId,omitnil,omitempty" name:"ServiceProviderId"`
+
+	// <p>当前 CMR、当前绑定模型下该 BYOK实例的调度优先级。</p><p>取值范围：[0, 2]</p><p>默认值：0</p>
+	Order *uint64 `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// <p>当前CMR、当前绑定模型的同一有效Order层内，BYOK实例之间的相对选择权重。</p><p>取值范围：[0, 100]</p><p>默认值：10</p>
+	Weight *uint64 `json:"Weight,omitnil,omitempty" name:"Weight"`
+}
+
+type ModelRouterModelToDisassociate struct {
+	// <p>模型名称</p>
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
+	// <p>所属厂商</p>
+	Provider *string `json:"Provider,omitnil,omitempty" name:"Provider"`
+
+	// <p>模型类型。</p><p>枚举值：</p><ul><li>BYOK： BYOK类型</li><li>Platform： 平台类型</li></ul>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>BYOK实例ID</p>
 	ServiceProviderId *string `json:"ServiceProviderId,omitnil,omitempty" name:"ServiceProviderId"`
 }
 
@@ -11526,6 +11588,12 @@ type ModelRouterSet struct {
 
 	// <p>模型路由实例所属VPC的ID</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// <p>带宽</p><p>单位：Mbps</p>
+	Bandwidth *uint64 `json:"Bandwidth,omitnil,omitempty" name:"Bandwidth"`
+
+	// <p>弹性公网IP的ID</p>
+	EipAddressId *string `json:"EipAddressId,omitnil,omitempty" name:"EipAddressId"`
 }
 
 type ModelTestResult struct {
@@ -12979,6 +13047,9 @@ type ModifyModelRouterAttributesRequestParams struct {
 
 	// <p>路由配置</p>
 	RouterSetting *RouterSettingWithFallBack `json:"RouterSetting,omitnil,omitempty" name:"RouterSetting"`
+
+	// <p>带宽</p><p>取值范围：[1, 2048]</p><p>单位：Mbps</p>
+	Bandwidth *uint64 `json:"Bandwidth,omitnil,omitempty" name:"Bandwidth"`
 }
 
 type ModifyModelRouterAttributesRequest struct {
@@ -12998,6 +13069,9 @@ type ModifyModelRouterAttributesRequest struct {
 
 	// <p>路由配置</p>
 	RouterSetting *RouterSettingWithFallBack `json:"RouterSetting,omitnil,omitempty" name:"RouterSetting"`
+
+	// <p>带宽</p><p>取值范围：[1, 2048]</p><p>单位：Mbps</p>
+	Bandwidth *uint64 `json:"Bandwidth,omitnil,omitempty" name:"Bandwidth"`
 }
 
 func (r *ModifyModelRouterAttributesRequest) ToJsonString() string {
@@ -13017,6 +13091,7 @@ func (r *ModifyModelRouterAttributesRequest) FromJsonString(s string) error {
 	delete(f, "ModelRouterName")
 	delete(f, "RateLimitConfig")
 	delete(f, "RouterSetting")
+	delete(f, "Bandwidth")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyModelRouterAttributesRequest has unknown keys!", "")
 	}
@@ -14808,7 +14883,7 @@ type RewriteTarget struct {
 }
 
 type RouterSettingWithFallBack struct {
-	// <p>模型间路由策略。</p><p>枚举值：</p><ul><li>SimpleShuffle： 简单随机路由</li><li>LowestCost： 最低积分路由</li></ul>
+	// <p>模型间路由策略。</p><p>枚举值：</p><ul><li>SimpleShuffle： 简单随机路由</li><li>CostBasedRouting： 最低积分路由</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CrossModelGroupRoutingStrategy *string `json:"CrossModelGroupRoutingStrategy,omitnil,omitempty" name:"CrossModelGroupRoutingStrategy"`
 
@@ -14819,11 +14894,42 @@ type RouterSettingWithFallBack struct {
 	// <p>模型内路由策略</p><p>枚举值：</p><ul><li>SimpleShuffle： 简单随机路由</li><li>LeastBusy： 最低繁忙路由</li><li>LatencyBasedRouting： 最低延迟路由</li><li>UsageBasedRouting： 用量均衡路由</li><li>CostBasedRouting： 最低积分路由</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RoutingStrategy *string `json:"RoutingStrategy,omitnil,omitempty" name:"RoutingStrategy"`
+
+	// <p>CMR实例级别请求组内重试次数</p><p>取值范围：[0, 5]</p><p>默认值：2</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NumRetries *uint64 `json:"NumRetries,omitnil,omitempty" name:"NumRetries"`
+
+	// <p>L2模型组内路由调度算法参数</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RoutingStrategyArgs *RoutingStrategyArgs `json:"RoutingStrategyArgs,omitnil,omitempty" name:"RoutingStrategyArgs"`
 }
 
 type RouterSettingWithoutFallBack struct {
 	// <p>路由策略</p><p>枚举值：</p><ul><li>SimpleShuffle： 简单随机路由</li><li>LeastBusy： 最低繁忙路由</li><li>LatencyBasedRouting： 最低延迟路由</li><li>UsageBasedRouting： 用量均衡路由</li><li>CostBasedRouting： 最低积分路由</li></ul>
 	RoutingStrategy *string `json:"RoutingStrategy,omitnil,omitempty" name:"RoutingStrategy"`
+
+	// <p>模型间路由策略。</p><p>枚举值：</p><ul><li>SimpleShuffle： 简单随机路由</li><li>CostBasedRouting： 最低积分路由</li></ul>
+	CrossModelGroupRoutingStrategy *string `json:"CrossModelGroupRoutingStrategy,omitnil,omitempty" name:"CrossModelGroupRoutingStrategy"`
+
+	// <p>L2模型组内路由调度算法参数</p>
+	RoutingStrategyArgs *RoutingStrategyArgs `json:"RoutingStrategyArgs,omitnil,omitempty" name:"RoutingStrategyArgs"`
+
+	// <p>CMR实例级别请求组内重试次数</p><p>取值范围：[0, 5]</p><p>默认值：2</p>
+	NumRetries *uint64 `json:"NumRetries,omitnil,omitempty" name:"NumRetries"`
+}
+
+type RoutingStrategyArgs struct {
+	// <p>最低繁忙路由算法相对近优容差。</p><p>取值范围：[0, 100]</p><p>默认值：0</p><p>仅最低繁忙路由算法生效。0 表示请求仅会路由到在途数最小的上游大模型部署，0.10 表示请求路由到的上游大模型部署在途请求数最多比最小在途数高10%，依次类推。</p>
+	LeastBusyBuffer *float64 `json:"LeastBusyBuffer,omitnil,omitempty" name:"LeastBusyBuffer"`
+
+	// <p>用量均衡路由算法相对近优容差</p><p>取值范围：[0, 100]</p><p>默认值：0</p><p>仅用量均衡路由算法生效。0 表示请求仅会路由到TPM最低的上游大模型部署；0.10 表示请求最多会路由到比TPM最小值高10%的上游大模型部署，依次类推。</p>
+	UsageBasedBuffer *float64 `json:"UsageBasedBuffer,omitnil,omitempty" name:"UsageBasedBuffer"`
+
+	// <p>最低延迟路由算法相对近优容差</p><p>取值范围：[0, 100]</p><p>默认值：0</p><p>仅最低延迟路由算法生效。0 表示请求仅会路由到延迟最低的上游大模型部署；0.10 表示请求最多会路由到比延迟最小值高10%的上游大模型部署，依次类推。</p>
+	LowestLatencyBuffer *float64 `json:"LowestLatencyBuffer,omitnil,omitempty" name:"LowestLatencyBuffer"`
+
+	// <p>最低积分系数路由算法相对近优容差</p><p>取值范围：[0, 100]</p><p>默认值：0</p><p>仅最低积分系数路由算法生效。0 表示请求仅会路由到积分系数最低的上游大模型部署；0.10 表示请求最多会路由到比积分系数最小值高10%的上游大模型部署，依次类推。</p>
+	LowestCostBuffer *float64 `json:"LowestCostBuffer,omitnil,omitempty" name:"LowestCostBuffer"`
 }
 
 type RsTagRule struct {
@@ -15075,6 +15181,15 @@ type ServiceProvider struct {
 
 	// <p>BYOK名称</p>
 	ServiceProviderName *string `json:"ServiceProviderName,omitnil,omitempty" name:"ServiceProviderName"`
+
+	// <p>绑定的指定模型组内BYOK实例的调度优先级</p><p>取值范围[0,2]，优先级随数值增大而降低。</p>
+	Order *uint64 `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// <p>绑定的指定模型组Order相同层级内BYOK实例的调度权重</p>
+	Weight *uint64 `json:"Weight,omitnil,omitempty" name:"Weight"`
+
+	// <p>CMR实例-BYOK实例的模型调度绑定关系状态</p><p>枚举值：</p><ul><li>Configuring： 变配中</li><li>ConfigureFailed： 变配失败</li><li>Deleting： 删除中</li><li>Provisioning： 创建中</li><li>Active： 正常可用</li><li>ProvisionFailed： 创建失败</li><li>DeletionFailed： 删除失败</li></ul>
+	AssociationStatus *string `json:"AssociationStatus,omitnil,omitempty" name:"AssociationStatus"`
 }
 
 type ServiceProviderCoefficient struct {

@@ -1846,55 +1846,58 @@ type DBOpFilter struct {
 }
 
 type Database struct {
-	// 需要迁移或同步的库名，当ObjectMode为Partial时，此项必填
+	// <p>需要迁移或同步的库名，当ObjectMode为Partial时，此项必填</p>
 	DbName *string `json:"DbName,omitnil,omitempty" name:"DbName"`
 
-	// 迁移或同步后的库名，默认与源库相同
+	// <p>迁移或同步后的库名，默认与源库相同</p>
 	NewDbName *string `json:"NewDbName,omitnil,omitempty" name:"NewDbName"`
 
-	// DB选择模式: All(为当前对象下的所有对象)，Partial(部分对象)，当Mode为Partial时，此项必填。注意，高级对象的同步不依赖此值，如果整库同步此处应该为All。
+	// <p>DB选择模式: All(为当前对象下的所有对象)，Partial(部分对象)，当Mode为Partial时，此项必填。注意，高级对象的同步不依赖此值，如果整库同步此处应该为All。</p>
 	DbMode *string `json:"DbMode,omitnil,omitempty" name:"DbMode"`
 
-	// 迁移或同步的 schema
+	// <p>迁移或同步的 schema</p>
 	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
 
-	// 迁移或同步后的 schema name
+	// <p>迁移或同步后的 schema name</p>
 	NewSchemaName *string `json:"NewSchemaName,omitnil,omitempty" name:"NewSchemaName"`
 
-	// 表选择模式: All(为当前对象下的所有对象)，Partial(部分对象)，当DBMode为Partial时此项必填，如果整库同步此处应该为All。
+	// <p>schema选择模式，pg和sqlserver需要使用</p><p>枚举值：</p><ul><li>All： 当前对象下的所有对象</li><li>Partial： 部分对象</li></ul>
+	SchemaMode *string `json:"SchemaMode,omitnil,omitempty" name:"SchemaMode"`
+
+	// <p>表选择模式: All(为当前对象下的所有对象)，Partial(部分对象)，当DBMode为Partial时此项必填，如果整库同步此处应该为All。</p>
 	TableMode *string `json:"TableMode,omitnil,omitempty" name:"TableMode"`
 
-	// 表图对象集合，当 TableMode 为 Partial 时，此项需要填写
+	// <p>表图对象集合，当 TableMode 为 Partial 时，此项需要填写</p>
 	Tables []*Table `json:"Tables,omitnil,omitempty" name:"Tables"`
 
-	// 视图选择模式: All 为当前对象下的所有视图对象,Partial 为部分视图对象，如果整库同步此处应该为All。
+	// <p>视图选择模式: All 为当前对象下的所有视图对象,Partial 为部分视图对象，如果整库同步此处应该为All。</p>
 	ViewMode *string `json:"ViewMode,omitnil,omitempty" name:"ViewMode"`
 
-	// 视图对象集合，当 ViewMode 为 Partial 时， 此项需要填写
+	// <p>视图对象集合，当 ViewMode 为 Partial 时， 此项需要填写</p>
 	Views []*View `json:"Views,omitnil,omitempty" name:"Views"`
 
-	// 选择要同步的模式，Partial为部分，All为整选，如果整库同步此处应该为All。
+	// <p>选择要同步的模式，Partial为部分，All为整选，如果整库同步此处应该为All。</p>
 	FunctionMode *string `json:"FunctionMode,omitnil,omitempty" name:"FunctionMode"`
 
-	// FunctionMode取值为Partial时需要填写
+	// <p>FunctionMode取值为Partial时需要填写</p>
 	Functions []*string `json:"Functions,omitnil,omitempty" name:"Functions"`
 
-	// 选择要同步的模式，Partial为部分，All为整选，如果整库同步此处应该为All。
+	// <p>选择要同步的模式，Partial为部分，All为整选，如果整库同步此处应该为All。</p>
 	ProcedureMode *string `json:"ProcedureMode,omitnil,omitempty" name:"ProcedureMode"`
 
-	// ProcedureMode取值为Partial时需要填写
+	// <p>ProcedureMode取值为Partial时需要填写</p>
 	Procedures []*string `json:"Procedures,omitnil,omitempty" name:"Procedures"`
 
-	// 触发器迁移模式，All(为当前对象下的所有对象)，Partial(部分对象)，如果整库同步此处应该为All。数据同步暂不支持此高级对象。
+	// <p>触发器迁移模式，All(为当前对象下的所有对象)，Partial(部分对象)，如果整库同步此处应该为All。数据同步暂不支持此高级对象。</p>
 	TriggerMode *string `json:"TriggerMode,omitnil,omitempty" name:"TriggerMode"`
 
-	// 当TriggerMode为partial，指定要迁移的触发器名称
+	// <p>当TriggerMode为partial，指定要迁移的触发器名称</p>
 	Triggers []*string `json:"Triggers,omitnil,omitempty" name:"Triggers"`
 
-	// 事件迁移模式，All(为当前对象下的所有对象)，Partial(部分对象)，如果整库同步此处应该为All。数据同步暂不支持此高级对象。
+	// <p>事件迁移模式，All(为当前对象下的所有对象)，Partial(部分对象)，如果整库同步此处应该为All。数据同步暂不支持此高级对象。</p>
 	EventMode *string `json:"EventMode,omitnil,omitempty" name:"EventMode"`
 
-	// 当EventMode为partial，指定要迁移的事件名称
+	// <p>当EventMode为partial，指定要迁移的事件名称</p>
 	Events []*string `json:"Events,omitnil,omitempty" name:"Events"`
 }
 
