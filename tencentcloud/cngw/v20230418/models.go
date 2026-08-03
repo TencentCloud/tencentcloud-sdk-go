@@ -171,17 +171,17 @@ type AIGWJWTAuthPluginConfig struct {
 }
 
 type AIGWJWTCredentialConfig struct {
-	// <p>JWT 消费者标识，iss claim</p>
-	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
-
 	// <p>签名算法，取值：HS256 HS384 HS512 RS256 RS384 RS512 ES256 ES384 ES512</p>
 	Algorithm *string `json:"Algorithm,omitnil,omitempty" name:"Algorithm"`
 
-	// <p>HS 对称密钥，仅 Algorithm 为 HS256/HS384/HS512 时必填；RS/ES* 时留空</p>
-	Secret *string `json:"Secret,omitnil,omitempty" name:"Secret"`
+	// <p>JWT 消费者标识，iss claim</p>
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
 	// <p>RS/ES PEM 格式公钥，仅 Algorithm 为 RS256/RS384/RS512/ES256/ES384/ES512 时必填；HS* 时留空</p>
 	RSAPublicKey *string `json:"RSAPublicKey,omitnil,omitempty" name:"RSAPublicKey"`
+
+	// <p>HS 对称密钥，仅 Algorithm 为 HS256/HS384/HS512 时必填；RS/ES* 时留空</p>
+	Secret *string `json:"Secret,omitnil,omitempty" name:"Secret"`
 }
 
 type AIGWKVMatch struct {
@@ -223,6 +223,9 @@ type AIGWLLMQuotaLimit struct {
 
 	// <p>该模型服务每分钟 Token 数上限，0 表示该维度不限</p>
 	TPMLimit *int64 `json:"TPMLimit,omitnil,omitempty" name:"TPMLimit"`
+
+	// <p>并发数限流</p>
+	ConcurrentCountLimit *int64 `json:"ConcurrentCountLimit,omitnil,omitempty" name:"ConcurrentCountLimit"`
 }
 
 type AIGWLLMTokenUsageItem struct {
@@ -575,11 +578,14 @@ type AIGWOAuthAuthPluginConfig struct {
 }
 
 type AIGWOAuthCredentialConfig struct {
-	// <p>客户端ID</p>
+	// <p>OAuth2 client_id</p>
 	ClientId *string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
 
-	// <p>客户端密钥</p>
+	// <p>OAuth2 client_secret</p>
 	ClientSecret *string `json:"ClientSecret,omitnil,omitempty" name:"ClientSecret"`
+
+	// <p>OAuth2 授权回调地址</p>
+	RedirectURIs *string `json:"RedirectURIs,omitnil,omitempty" name:"RedirectURIs"`
 }
 
 type AIGWOIDCAuthPluginConfig struct {
@@ -624,7 +630,7 @@ type AIGWOIDCCredentialConfig struct {
 	// <p>IdP 注册的 client_id</p>
 	ClientId *string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
 
-	// <p>客户端密钥</p><p>参数格式：IdP 注册的 client_secret</p>
+	// <p>IdP 注册的 client_secret</p>
 	ClientSecret *string `json:"ClientSecret,omitnil,omitempty" name:"ClientSecret"`
 
 	// <p>IdP Issuer URL</p>
@@ -646,6 +652,12 @@ type AIGWRedisConfig struct {
 
 	// <p>密码</p>
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+
+	// <p>Redis配置ID</p>
+	RedisConfigId *string `json:"RedisConfigId,omitnil,omitempty" name:"RedisConfigId"`
+
+	// <p>Redis部署类型，如standalone（单机）、cluster（集群）</p>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
 type AIGWRouteModelServiceConfig struct {
@@ -965,11 +977,11 @@ type CNAPIGwConsumerGroup struct {
 }
 
 type CNAPIGwCreateCommonResult struct {
-	// 是否成功
-	Success *bool `json:"Success,omitnil,omitempty" name:"Success"`
-
 	// 对应的id 值
 	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// 是否成功
+	Success *bool `json:"Success,omitnil,omitempty" name:"Success"`
 }
 
 type CNAPIGwMCPTool struct {
@@ -1051,24 +1063,66 @@ type CNAPIGwMCPToolParam struct {
 	BackendName *string `json:"BackendName,omitnil,omitempty" name:"BackendName"`
 }
 
-type CNAPIGwSecretKey struct {
-	// <p>密钥id</p>
-	SecretKeyId *string `json:"SecretKeyId,omitnil,omitempty" name:"SecretKeyId"`
+type CNAPIGwMCPToolPreview struct {
+	// <p>MCP Tool入参的ContentType</p><p>枚举值：</p><ul><li>application/json： json格式</li><li>application/x-www-form-urlencoded： 表单格式</li></ul>
+	ContentType *string `json:"ContentType,omitnil,omitempty" name:"ContentType"`
 
-	// <p>密钥名字</p>
+	// <p>MCP Tool的描述</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>MCP Tool的参数</p>
+	InputParams []*CNAPIGwMCPToolParam `json:"InputParams,omitnil,omitempty" name:"InputParams"`
+
+	// <p>MCP Tool的请求方法</p>
+	Method *string `json:"Method,omitnil,omitempty" name:"Method"`
+
+	// <p>MCP Tool名字</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// <p>密钥协议类型。</p>
-	SecretType *string `json:"SecretType,omitnil,omitempty" name:"SecretType"`
+	// <p>MCP Tool的请求路径</p>
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 
-	// <p>状态。</p><p>枚举值：</p><ul><li>Enable： 启用</li><li>Disable： 禁用</li></ul>
+	// <p>MCP Tool的状态</p><p>枚举值：</p><ul><li>Valid： 可导入</li><li>Invalid： 不可导入</li></ul>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>不可导入的原因</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StatusMessage *string `json:"StatusMessage,omitnil,omitempty" name:"StatusMessage"`
+
+	// <p>虚拟MCP Server的tools的完整url路径</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpstreamUrl *string `json:"UpstreamUrl,omitnil,omitempty" name:"UpstreamUrl"`
+}
+
+type CNAPIGwParseMCPToolsResult struct {
+	// <p>MCP Tools列表</p>
+	DataList []*CNAPIGwMCPToolPreview `json:"DataList,omitnil,omitempty" name:"DataList"`
+
+	// <p>MCP tools的数量</p>
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+}
+
+type CNAPIGwSecretKey struct {
+	// <p>绑定数</p>
+	BindCount *uint64 `json:"BindCount,omitnil,omitempty" name:"BindCount"`
+
+	// <p>是否可以绑定</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CanBind *bool `json:"CanBind,omitnil,omitempty" name:"CanBind"`
+
+	// <p>创建时间</p>
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>描述</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// <p>密钥生成方式。</p><p>枚举值：</p><ul><li>System： 系统自动生成</li><li>Custom： 用户自定义</li><li>KMS： 使用 KMS 密钥</li></ul>
 	GenerateType *string `json:"GenerateType,omitnil,omitempty" name:"GenerateType"`
 
-	// <p>密钥明文</p>
-	SecretValue *string `json:"SecretValue,omitnil,omitempty" name:"SecretValue"`
+	// <p>JWT凭证配置</p>
+	JWTCredentialConfig *AIGWJWTCredentialConfig `json:"JWTCredentialConfig,omitnil,omitempty" name:"JWTCredentialConfig"`
 
 	// <p>KMS凭证名字</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1078,37 +1132,35 @@ type CNAPIGwSecretKey struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	KmsKeyVersion *string `json:"KmsKeyVersion,omitnil,omitempty" name:"KmsKeyVersion"`
 
-	// <p>描述</p>
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
-
-	// <p>是否可以绑定</p>
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	CanBind *bool `json:"CanBind,omitnil,omitempty" name:"CanBind"`
-
-	// <p>创建时间</p>
-	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
-
 	// <p>修改时间</p>
 	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 
-	// <p>绑定数</p>
-	BindCount *uint64 `json:"BindCount,omitnil,omitempty" name:"BindCount"`
+	// <p>密钥名字</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// <p>密钥归属资源类型。</p><p>枚举值：</p><ul><li>Consumer： 消费者</li><li>ModelService： 模型服务</li></ul>
-	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
-
-	// <p>JWT凭证配置</p>
-	JWTCredentialConfig *AIGWJWTCredentialConfig `json:"JWTCredentialConfig,omitnil,omitempty" name:"JWTCredentialConfig"`
-
-	// <p>OAuth2凭证配置</p>
+	// <p>OAuth凭证配置</p>
 	OAuthCredentialConfig *AIGWOAuthCredentialConfig `json:"OAuthCredentialConfig,omitnil,omitempty" name:"OAuthCredentialConfig"`
 
 	// <p>OIDC凭证配置</p>
 	OIDCCredentialConfig *AIGWOIDCCredentialConfig `json:"OIDCCredentialConfig,omitnil,omitempty" name:"OIDCCredentialConfig"`
 
-	// <p>Agent 密钥类型</p>
+	// <p>secret key provider方</p><p>枚举值：</p><ul><li>Dify： Dify</li></ul>
 	Provider *string `json:"Provider,omitnil,omitempty" name:"Provider"`
+
+	// <p>密钥归属资源类型。</p><p>枚举值：</p><ul><li>Consumer： 消费者</li><li>ModelService： 模型服务</li></ul>
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// <p>密钥id</p>
+	SecretKeyId *string `json:"SecretKeyId,omitnil,omitempty" name:"SecretKeyId"`
+
+	// <p>密钥协议类型。</p>
+	SecretType *string `json:"SecretType,omitnil,omitempty" name:"SecretType"`
+
+	// <p>密钥明文</p>
+	SecretValue *string `json:"SecretValue,omitnil,omitempty" name:"SecretValue"`
+
+	// <p>状态。</p><p>枚举值：</p><ul><li>Enable： 启用</li><li>Disable： 禁用</li></ul>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 type CloudNativeAPIGatewayLLMModelAPI struct {
@@ -1151,7 +1203,7 @@ type CloudNativeAPIGatewayLLMModelAPI struct {
 	// <p>模型服务路由策略（是指如何路由到模型服务）</p>
 	ModelServiceRoute *CloudNativeAPIGatewayLLMModelServiceRoute `json:"ModelServiceRoute,omitnil,omitempty" name:"ModelServiceRoute"`
 
-	// <p>无</p>
+	// <p>HTTP 请求头匹配规则，用于按请求头路由到不同模型服务。</p>
 	MatchHeaders []*AIGWKVMatch `json:"MatchHeaders,omitnil,omitempty" name:"MatchHeaders"`
 
 	// <p>是否开启跨服务fallback</p>
@@ -1720,6 +1772,18 @@ type CreateCloudNativeAPIGatewayLLMModelServiceRequestParams struct {
 
 	// <p>密钥轮转周期</p><p>单位：天数</p>
 	KeyRotationPeriodDays *uint64 `json:"KeyRotationPeriodDays,omitnil,omitempty" name:"KeyRotationPeriodDays"`
+
+	// <p>来源服务 ID。</p>
+	SourceId *string `json:"SourceId,omitnil,omitempty" name:"SourceId"`
+
+	// <p>命名空间。</p>
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+
+	// <p>服务名称。</p>
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// <p>协议类型，如 OpenAI、Custom。</p>
+	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 }
 
 type CreateCloudNativeAPIGatewayLLMModelServiceRequest struct {
@@ -1808,6 +1872,18 @@ type CreateCloudNativeAPIGatewayLLMModelServiceRequest struct {
 
 	// <p>密钥轮转周期</p><p>单位：天数</p>
 	KeyRotationPeriodDays *uint64 `json:"KeyRotationPeriodDays,omitnil,omitempty" name:"KeyRotationPeriodDays"`
+
+	// <p>来源服务 ID。</p>
+	SourceId *string `json:"SourceId,omitnil,omitempty" name:"SourceId"`
+
+	// <p>命名空间。</p>
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+
+	// <p>服务名称。</p>
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// <p>协议类型，如 OpenAI、Custom。</p>
+	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 }
 
 func (r *CreateCloudNativeAPIGatewayLLMModelServiceRequest) ToJsonString() string {
@@ -1850,6 +1926,10 @@ func (r *CreateCloudNativeAPIGatewayLLMModelServiceRequest) FromJsonString(s str
 	delete(f, "ExtParams")
 	delete(f, "KeyRotationEnabled")
 	delete(f, "KeyRotationPeriodDays")
+	delete(f, "SourceId")
+	delete(f, "Namespace")
+	delete(f, "ServiceName")
+	delete(f, "Protocol")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCloudNativeAPIGatewayLLMModelServiceRequest has unknown keys!", "")
 	}
@@ -2101,26 +2181,17 @@ type CreateCloudNativeAPIGatewaySecretKeyRequestParams struct {
 	// <p>实例 ID</p>
 	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
 
-	// <p>密钥协议类型。</p><p>枚举值：</p><ul><li>ApiKey</li><li>Basic</li><li>Hmac</li><li>OAuth2</li><li>JWT</li></ul>
-	SecretType *string `json:"SecretType,omitnil,omitempty" name:"SecretType"`
+	// <p>密钥生成方式。</p><p>枚举值：</p><ul><li>System：系统自动生成</li><li>Custom：用户自定义（需传 SecretValue）</li><li>KMS：使用 KMS 密钥（需传 KmsKeyName 与 KmsKeyVersion）</li></ul>
+	GenerateType *string `json:"GenerateType,omitnil,omitempty" name:"GenerateType"`
 
 	// <p>密钥名称，2-60 字符。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// <p>密钥生成方式。</p><p>枚举值：</p><ul><li>System：系统自动生成</li><li>Custom：用户自定义（需传 SecretValue）</li><li>KMS：使用 KMS 密钥（需传 KmsKeyName 与 KmsKeyVersion）</li></ul>
-	GenerateType *string `json:"GenerateType,omitnil,omitempty" name:"GenerateType"`
-
 	// <p>密钥归属资源类型。</p><p>枚举值：</p><ul><li>Consumer：消费者</li><li>ModelService：模型服务</li></ul>
 	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
-	// <p>KMS 密钥名称。GenerateType=KMS 时必填。</p>
-	KmsKeyName *string `json:"KmsKeyName,omitnil,omitempty" name:"KmsKeyName"`
-
-	// <p>KMS 密钥版本。GenerateType=KMS 时必填。</p>
-	KmsKeyVersion *string `json:"KmsKeyVersion,omitnil,omitempty" name:"KmsKeyVersion"`
-
-	// <p>密钥值，长度 8-256。GenerateType=Custom 时必填。</p>
-	SecretValue *string `json:"SecretValue,omitnil,omitempty" name:"SecretValue"`
+	// <p>密钥协议类型。</p><p>枚举值：</p><ul><li>ApiKey</li><li>Basic</li><li>Hmac</li><li>OAuth2</li><li>JWT</li></ul>
+	SecretType *string `json:"SecretType,omitnil,omitempty" name:"SecretType"`
 
 	// <p>密钥描述。最长 200 字符。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
@@ -2128,11 +2199,23 @@ type CreateCloudNativeAPIGatewaySecretKeyRequestParams struct {
 	// <p>JWT凭证配置</p>
 	JWTCredentialConfig *AIGWJWTCredentialConfig `json:"JWTCredentialConfig,omitnil,omitempty" name:"JWTCredentialConfig"`
 
-	// <p>Oauth2凭证配置</p>
+	// <p>KMS 密钥名称。GenerateType=KMS 时必填。</p>
+	KmsKeyName *string `json:"KmsKeyName,omitnil,omitempty" name:"KmsKeyName"`
+
+	// <p>KMS 密钥版本。GenerateType=KMS 时必填。</p>
+	KmsKeyVersion *string `json:"KmsKeyVersion,omitnil,omitempty" name:"KmsKeyVersion"`
+
+	// <p>OAuth2.0凭证配置</p>
 	OAuthCredentialConfig *AIGWOAuthCredentialConfig `json:"OAuthCredentialConfig,omitnil,omitempty" name:"OAuthCredentialConfig"`
 
 	// <p>OIDC凭证配置</p>
 	OIDCCredentialConfig *AIGWOIDCCredentialConfig `json:"OIDCCredentialConfig,omitnil,omitempty" name:"OIDCCredentialConfig"`
+
+	// <p>第三方平台类型</p><p>枚举值：</p><ul><li>Dify： Dify平台</li></ul>
+	Provider *string `json:"Provider,omitnil,omitempty" name:"Provider"`
+
+	// <p>密钥值，长度 8-256。GenerateType=Custom 时必填。</p>
+	SecretValue *string `json:"SecretValue,omitnil,omitempty" name:"SecretValue"`
 }
 
 type CreateCloudNativeAPIGatewaySecretKeyRequest struct {
@@ -2141,26 +2224,17 @@ type CreateCloudNativeAPIGatewaySecretKeyRequest struct {
 	// <p>实例 ID</p>
 	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
 
-	// <p>密钥协议类型。</p><p>枚举值：</p><ul><li>ApiKey</li><li>Basic</li><li>Hmac</li><li>OAuth2</li><li>JWT</li></ul>
-	SecretType *string `json:"SecretType,omitnil,omitempty" name:"SecretType"`
+	// <p>密钥生成方式。</p><p>枚举值：</p><ul><li>System：系统自动生成</li><li>Custom：用户自定义（需传 SecretValue）</li><li>KMS：使用 KMS 密钥（需传 KmsKeyName 与 KmsKeyVersion）</li></ul>
+	GenerateType *string `json:"GenerateType,omitnil,omitempty" name:"GenerateType"`
 
 	// <p>密钥名称，2-60 字符。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// <p>密钥生成方式。</p><p>枚举值：</p><ul><li>System：系统自动生成</li><li>Custom：用户自定义（需传 SecretValue）</li><li>KMS：使用 KMS 密钥（需传 KmsKeyName 与 KmsKeyVersion）</li></ul>
-	GenerateType *string `json:"GenerateType,omitnil,omitempty" name:"GenerateType"`
-
 	// <p>密钥归属资源类型。</p><p>枚举值：</p><ul><li>Consumer：消费者</li><li>ModelService：模型服务</li></ul>
 	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
-	// <p>KMS 密钥名称。GenerateType=KMS 时必填。</p>
-	KmsKeyName *string `json:"KmsKeyName,omitnil,omitempty" name:"KmsKeyName"`
-
-	// <p>KMS 密钥版本。GenerateType=KMS 时必填。</p>
-	KmsKeyVersion *string `json:"KmsKeyVersion,omitnil,omitempty" name:"KmsKeyVersion"`
-
-	// <p>密钥值，长度 8-256。GenerateType=Custom 时必填。</p>
-	SecretValue *string `json:"SecretValue,omitnil,omitempty" name:"SecretValue"`
+	// <p>密钥协议类型。</p><p>枚举值：</p><ul><li>ApiKey</li><li>Basic</li><li>Hmac</li><li>OAuth2</li><li>JWT</li></ul>
+	SecretType *string `json:"SecretType,omitnil,omitempty" name:"SecretType"`
 
 	// <p>密钥描述。最长 200 字符。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
@@ -2168,11 +2242,23 @@ type CreateCloudNativeAPIGatewaySecretKeyRequest struct {
 	// <p>JWT凭证配置</p>
 	JWTCredentialConfig *AIGWJWTCredentialConfig `json:"JWTCredentialConfig,omitnil,omitempty" name:"JWTCredentialConfig"`
 
-	// <p>Oauth2凭证配置</p>
+	// <p>KMS 密钥名称。GenerateType=KMS 时必填。</p>
+	KmsKeyName *string `json:"KmsKeyName,omitnil,omitempty" name:"KmsKeyName"`
+
+	// <p>KMS 密钥版本。GenerateType=KMS 时必填。</p>
+	KmsKeyVersion *string `json:"KmsKeyVersion,omitnil,omitempty" name:"KmsKeyVersion"`
+
+	// <p>OAuth2.0凭证配置</p>
 	OAuthCredentialConfig *AIGWOAuthCredentialConfig `json:"OAuthCredentialConfig,omitnil,omitempty" name:"OAuthCredentialConfig"`
 
 	// <p>OIDC凭证配置</p>
 	OIDCCredentialConfig *AIGWOIDCCredentialConfig `json:"OIDCCredentialConfig,omitnil,omitempty" name:"OIDCCredentialConfig"`
+
+	// <p>第三方平台类型</p><p>枚举值：</p><ul><li>Dify： Dify平台</li></ul>
+	Provider *string `json:"Provider,omitnil,omitempty" name:"Provider"`
+
+	// <p>密钥值，长度 8-256。GenerateType=Custom 时必填。</p>
+	SecretValue *string `json:"SecretValue,omitnil,omitempty" name:"SecretValue"`
 }
 
 func (r *CreateCloudNativeAPIGatewaySecretKeyRequest) ToJsonString() string {
@@ -2188,17 +2274,18 @@ func (r *CreateCloudNativeAPIGatewaySecretKeyRequest) FromJsonString(s string) e
 		return err
 	}
 	delete(f, "GatewayId")
-	delete(f, "SecretType")
-	delete(f, "Name")
 	delete(f, "GenerateType")
+	delete(f, "Name")
 	delete(f, "ResourceType")
-	delete(f, "KmsKeyName")
-	delete(f, "KmsKeyVersion")
-	delete(f, "SecretValue")
+	delete(f, "SecretType")
 	delete(f, "Description")
 	delete(f, "JWTCredentialConfig")
+	delete(f, "KmsKeyName")
+	delete(f, "KmsKeyVersion")
 	delete(f, "OAuthCredentialConfig")
 	delete(f, "OIDCCredentialConfig")
+	delete(f, "Provider")
+	delete(f, "SecretValue")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCloudNativeAPIGatewaySecretKeyRequest has unknown keys!", "")
 	}
@@ -2898,6 +2985,9 @@ type DescribeCloudNativeAPIGatewayLLMModelAPIsRequestParams struct {
 
 	// <p>是否用于绑定场景。true 时仅返回可被绑定到指定消费者组的模型 API。</p>
 	UseToBind *bool `json:"UseToBind,omitnil,omitempty" name:"UseToBind"`
+
+	// <p>消费者 ID（以 consumer- 开头）。</p>
+	ConsumerId *string `json:"ConsumerId,omitnil,omitempty" name:"ConsumerId"`
 }
 
 type DescribeCloudNativeAPIGatewayLLMModelAPIsRequest struct {
@@ -2923,6 +3013,9 @@ type DescribeCloudNativeAPIGatewayLLMModelAPIsRequest struct {
 
 	// <p>是否用于绑定场景。true 时仅返回可被绑定到指定消费者组的模型 API。</p>
 	UseToBind *bool `json:"UseToBind,omitnil,omitempty" name:"UseToBind"`
+
+	// <p>消费者 ID（以 consumer- 开头）。</p>
+	ConsumerId *string `json:"ConsumerId,omitnil,omitempty" name:"ConsumerId"`
 }
 
 func (r *DescribeCloudNativeAPIGatewayLLMModelAPIsRequest) ToJsonString() string {
@@ -2944,6 +3037,7 @@ func (r *DescribeCloudNativeAPIGatewayLLMModelAPIsRequest) FromJsonString(s stri
 	delete(f, "Keyword")
 	delete(f, "ConsumerGroupId")
 	delete(f, "UseToBind")
+	delete(f, "ConsumerId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCloudNativeAPIGatewayLLMModelAPIsRequest has unknown keys!", "")
 	}
@@ -3803,6 +3897,84 @@ func (r *DescribeCloudNativeAPIGatewayMCPToolResponse) FromJsonString(s string) 
 }
 
 // Predefined struct for user
+type DescribeCloudNativeAPIGatewayMCPToolsFromFileRequestParams struct {
+	// <p>OpenAPI文件内容</p>
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// <p>文件内容格式</p>
+	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
+
+	// <p>网关实例ID</p>
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// <p>MCP Server ID</p>
+	MCPServerId *string `json:"MCPServerId,omitnil,omitempty" name:"MCPServerId"`
+}
+
+type DescribeCloudNativeAPIGatewayMCPToolsFromFileRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>OpenAPI文件内容</p>
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// <p>文件内容格式</p>
+	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
+
+	// <p>网关实例ID</p>
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// <p>MCP Server ID</p>
+	MCPServerId *string `json:"MCPServerId,omitnil,omitempty" name:"MCPServerId"`
+}
+
+func (r *DescribeCloudNativeAPIGatewayMCPToolsFromFileRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCloudNativeAPIGatewayMCPToolsFromFileRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Content")
+	delete(f, "Format")
+	delete(f, "GatewayId")
+	delete(f, "MCPServerId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCloudNativeAPIGatewayMCPToolsFromFileRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCloudNativeAPIGatewayMCPToolsFromFileResponseParams struct {
+	// <p>解析结果</p>
+	Result *CNAPIGwParseMCPToolsResult `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeCloudNativeAPIGatewayMCPToolsFromFileResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCloudNativeAPIGatewayMCPToolsFromFileResponseParams `json:"Response"`
+}
+
+func (r *DescribeCloudNativeAPIGatewayMCPToolsFromFileResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCloudNativeAPIGatewayMCPToolsFromFileResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeCloudNativeAPIGatewaySecretKeyRequestParams struct {
 	// <p>实例 ID</p>
 	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
@@ -3931,10 +4103,10 @@ func (r *DescribeCloudNativeAPIGatewaySecretKeyValueResponse) FromJsonString(s s
 }
 
 type Filter struct {
-	// 过滤参数名
+	// <p>过滤参数名</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 过滤参数值
+	// <p>过滤参数值</p>
 	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
 }
 
@@ -4326,6 +4498,18 @@ type ModifyCloudNativeAPIGatewayLLMModelServiceRequestParams struct {
 
 	// <p>密钥轮转周期</p><p>单位：天数</p>
 	KeyRotationPeriodDays *uint64 `json:"KeyRotationPeriodDays,omitnil,omitempty" name:"KeyRotationPeriodDays"`
+
+	// <p>来源服务 ID。</p>
+	SourceId *string `json:"SourceId,omitnil,omitempty" name:"SourceId"`
+
+	// <p>命名空间。</p>
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+
+	// <p>服务名称。</p>
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// <p>协议类型，如 OpenAI、Custom。</p>
+	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 }
 
 type ModifyCloudNativeAPIGatewayLLMModelServiceRequest struct {
@@ -4402,6 +4586,18 @@ type ModifyCloudNativeAPIGatewayLLMModelServiceRequest struct {
 
 	// <p>密钥轮转周期</p><p>单位：天数</p>
 	KeyRotationPeriodDays *uint64 `json:"KeyRotationPeriodDays,omitnil,omitempty" name:"KeyRotationPeriodDays"`
+
+	// <p>来源服务 ID。</p>
+	SourceId *string `json:"SourceId,omitnil,omitempty" name:"SourceId"`
+
+	// <p>命名空间。</p>
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+
+	// <p>服务名称。</p>
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// <p>协议类型，如 OpenAI、Custom。</p>
+	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 }
 
 func (r *ModifyCloudNativeAPIGatewayLLMModelServiceRequest) ToJsonString() string {
@@ -4440,6 +4636,10 @@ func (r *ModifyCloudNativeAPIGatewayLLMModelServiceRequest) FromJsonString(s str
 	delete(f, "ExtParams")
 	delete(f, "KeyRotationEnabled")
 	delete(f, "KeyRotationPeriodDays")
+	delete(f, "SourceId")
+	delete(f, "Namespace")
+	delete(f, "ServiceName")
+	delete(f, "Protocol")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCloudNativeAPIGatewayLLMModelServiceRequest has unknown keys!", "")
 	}
@@ -5418,5 +5618,76 @@ func (r *UnbindCloudNativeAPIGatewaySecretKeyResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UnbindCloudNativeAPIGatewaySecretKeyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateCloudNativeAPIGatewayMCPToolsRequestParams struct {
+	// <p>网关实例ID</p>
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// <p>MCP Server ID</p>
+	MCPServerId *string `json:"MCPServerId,omitnil,omitempty" name:"MCPServerId"`
+
+	// <p>待导入的MCP Tools列表</p>
+	Tools []*CNAPIGwMCPTool `json:"Tools,omitnil,omitempty" name:"Tools"`
+}
+
+type UpdateCloudNativeAPIGatewayMCPToolsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>网关实例ID</p>
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// <p>MCP Server ID</p>
+	MCPServerId *string `json:"MCPServerId,omitnil,omitempty" name:"MCPServerId"`
+
+	// <p>待导入的MCP Tools列表</p>
+	Tools []*CNAPIGwMCPTool `json:"Tools,omitnil,omitempty" name:"Tools"`
+}
+
+func (r *UpdateCloudNativeAPIGatewayMCPToolsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateCloudNativeAPIGatewayMCPToolsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GatewayId")
+	delete(f, "MCPServerId")
+	delete(f, "Tools")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateCloudNativeAPIGatewayMCPToolsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateCloudNativeAPIGatewayMCPToolsResponseParams struct {
+	// <p>导入任务的ID</p>
+	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateCloudNativeAPIGatewayMCPToolsResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateCloudNativeAPIGatewayMCPToolsResponseParams `json:"Response"`
+}
+
+func (r *UpdateCloudNativeAPIGatewayMCPToolsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateCloudNativeAPIGatewayMCPToolsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }

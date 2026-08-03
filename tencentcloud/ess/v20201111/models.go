@@ -4792,36 +4792,32 @@ func (r *CreateFlowEvidenceReportResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateFlowForwardsRequestParams struct {
-	// 执行本接口操作的员工信息。注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	// <p>执行本接口操作的员工信息。注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 合同对应参与方需要修改的目标经办人。其UserId可在企业控制台中组织管理里面找到。或者使用获取员工信息接口得到。
-	// 
-	// 注意：`需要保证目标经办人已经加入企业且已实名`
+	// <p>合同对应参与方需要修改的目标经办人。其UserId可在企业控制台中组织管理里面找到。或者使用获取员工信息接口得到。</p><p>注意：<code>需要保证目标经办人已经加入企业且已实名</code></p>
 	TargetUserId *string `json:"TargetUserId,omitnil,omitempty" name:"TargetUserId"`
 
-	// 企业签署方的合同及对应签署方
+	// <p>企业签署方的合同及对应签署方</p>
 	FlowForwardInfos []*FlowForwardInfo `json:"FlowForwardInfos,omitnil,omitempty" name:"FlowForwardInfos"`
 
-	// 代理企业和员工的信息。在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	// <p>代理企业和员工的信息。在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 }
 
 type CreateFlowForwardsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 执行本接口操作的员工信息。注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	// <p>执行本接口操作的员工信息。注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 合同对应参与方需要修改的目标经办人。其UserId可在企业控制台中组织管理里面找到。或者使用获取员工信息接口得到。
-	// 
-	// 注意：`需要保证目标经办人已经加入企业且已实名`
+	// <p>合同对应参与方需要修改的目标经办人。其UserId可在企业控制台中组织管理里面找到。或者使用获取员工信息接口得到。</p><p>注意：<code>需要保证目标经办人已经加入企业且已实名</code></p>
 	TargetUserId *string `json:"TargetUserId,omitnil,omitempty" name:"TargetUserId"`
 
-	// 企业签署方的合同及对应签署方
+	// <p>企业签署方的合同及对应签署方</p>
 	FlowForwardInfos []*FlowForwardInfo `json:"FlowForwardInfos,omitnil,omitempty" name:"FlowForwardInfos"`
 
-	// 代理企业和员工的信息。在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	// <p>代理企业和员工的信息。在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 }
 
@@ -4849,10 +4845,10 @@ func (r *CreateFlowForwardsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateFlowForwardsResponseParams struct {
-	// 失败的合同id以及错误详情
+	// <p>失败的合同id以及错误详情</p>
 	FailedFlows []*FlowForwardResult `json:"FailedFlows,omitnil,omitempty" name:"FailedFlows"`
 
-	// 成功的合同id
+	// <p>成功的合同id</p>
 	SuccessFlows []*string `json:"SuccessFlows,omitnil,omitempty" name:"SuccessFlows"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

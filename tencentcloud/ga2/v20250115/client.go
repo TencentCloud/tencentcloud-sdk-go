@@ -2272,6 +2272,8 @@ func NewModifyForwardingRuleResponse() (response *ModifyForwardingRuleResponse) 
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION_DEFAULTFORWARDINGPOLICYOPERATE = "UnsupportedOperation.DefaultForwardingPolicyOperate"
+//  UNSUPPORTEDOPERATION_DEFAULTFORWARDINGRULEOPERATE = "UnsupportedOperation.DefaultForwardingRuleOperate"
+//  UNSUPPORTEDOPERATION_FORWARDGROUPFORWARDINGRULEUNSUPPORTEDDEFAULTENDPOINTGROUP = "UnsupportedOperation.ForwardGroupForwardingRuleUnsupportedDefaultEndpointGroup"
 //  UNSUPPORTEDOPERATION_INSTANCENOTRUNNING = "UnsupportedOperation.InstanceNotRunning"
 //  UNSUPPORTEDOPERATION_TRANSPORTLAYERUNSUPPORTEDOPERATEFORWARDINGPOLICY = "UnsupportedOperation.TransportLayerUnsupportedOperateForwardingPolicy"
 func (c *Client) ModifyForwardingRule(request *ModifyForwardingRuleRequest) (response *ModifyForwardingRuleResponse, err error) {
@@ -2290,6 +2292,8 @@ func (c *Client) ModifyForwardingRule(request *ModifyForwardingRuleRequest) (res
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION_DEFAULTFORWARDINGPOLICYOPERATE = "UnsupportedOperation.DefaultForwardingPolicyOperate"
+//  UNSUPPORTEDOPERATION_DEFAULTFORWARDINGRULEOPERATE = "UnsupportedOperation.DefaultForwardingRuleOperate"
+//  UNSUPPORTEDOPERATION_FORWARDGROUPFORWARDINGRULEUNSUPPORTEDDEFAULTENDPOINTGROUP = "UnsupportedOperation.ForwardGroupForwardingRuleUnsupportedDefaultEndpointGroup"
 //  UNSUPPORTEDOPERATION_INSTANCENOTRUNNING = "UnsupportedOperation.InstanceNotRunning"
 //  UNSUPPORTEDOPERATION_TRANSPORTLAYERUNSUPPORTEDOPERATEFORWARDINGPOLICY = "UnsupportedOperation.TransportLayerUnsupportedOperateForwardingPolicy"
 func (c *Client) ModifyForwardingRuleWithContext(ctx context.Context, request *ModifyForwardingRuleRequest) (response *ModifyForwardingRuleResponse, err error) {

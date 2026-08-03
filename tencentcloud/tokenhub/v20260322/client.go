@@ -1947,7 +1947,9 @@ func NewModifyEndpointResponse() (response *ModifyEndpointResponse) {
 //  INVALIDPARAMETER_TPMOUTPUTBELOWQUOTA = "InvalidParameter.TPMOutputBelowQuota"
 //  INVALIDPARAMETER_TPMOUTPUTLIMITEXCEEDED = "InvalidParameter.TPMOutputLimitExceeded"
 //  INVALIDPARAMETER_TPMPREQUOTAMODIFYNOTSUPPORTED = "InvalidParameter.TPMPreQuotaModifyNotSupported"
+//  OPERATIONDENIED_INSUFFICIENTBALANCE = "OperationDenied.InsufficientBalance"
 //  OPERATIONDENIED_OPERATIONDENIED = "OperationDenied.OperationDenied"
+//  OPERATIONDENIED_QUOTALIMITEXCEEDED = "OperationDenied.QuotaLimitExceeded"
 //  RESOURCENOTFOUND_ENDPOINTNOTFOUND = "ResourceNotFound.EndpointNotFound"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) ModifyEndpoint(request *ModifyEndpointRequest) (response *ModifyEndpointResponse, err error) {
@@ -1987,7 +1989,9 @@ func (c *Client) ModifyEndpoint(request *ModifyEndpointRequest) (response *Modif
 //  INVALIDPARAMETER_TPMOUTPUTBELOWQUOTA = "InvalidParameter.TPMOutputBelowQuota"
 //  INVALIDPARAMETER_TPMOUTPUTLIMITEXCEEDED = "InvalidParameter.TPMOutputLimitExceeded"
 //  INVALIDPARAMETER_TPMPREQUOTAMODIFYNOTSUPPORTED = "InvalidParameter.TPMPreQuotaModifyNotSupported"
+//  OPERATIONDENIED_INSUFFICIENTBALANCE = "OperationDenied.InsufficientBalance"
 //  OPERATIONDENIED_OPERATIONDENIED = "OperationDenied.OperationDenied"
+//  OPERATIONDENIED_QUOTALIMITEXCEEDED = "OperationDenied.QuotaLimitExceeded"
 //  RESOURCENOTFOUND_ENDPOINTNOTFOUND = "ResourceNotFound.EndpointNotFound"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) ModifyEndpointWithContext(ctx context.Context, request *ModifyEndpointRequest) (response *ModifyEndpointResponse, err error) {

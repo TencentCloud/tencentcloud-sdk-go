@@ -100,6 +100,17 @@ func (r *AcquireSandboxInstanceTokenResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type AgentBucketStorageSource struct {
+	// <p>用于传入 AgentBucket 的 LibraryID</p>
+	LibraryId *string `json:"LibraryId,omitnil,omitempty" name:"LibraryId"`
+
+	// <p>用于传入 AgentBucket 的 spaceId</p>
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// <p>用于传入 AgentBucket 的 AccessDomain</p>
+	AccessDomain *string `json:"AccessDomain,omitnil,omitempty" name:"AccessDomain"`
+}
+
 type CLSConfig struct {
 	// 沙箱工具日志推送所使用的CLS日志主题ID
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
@@ -194,9 +205,6 @@ type CreatePreCacheImageTaskRequestParams struct {
 
 	// <p>镜像仓库类型：<code>enterprise</code>、<code>personal</code>、<code>custom</code></p><p>枚举值：</p><ul><li>enterprise： tcr 企业容器镜像服务</li><li>personal： ccr 个人容器镜像服务</li></ul>
 	ImageRegistryType *string `json:"ImageRegistryType,omitnil,omitempty" name:"ImageRegistryType"`
-
-	// <p>预热超时时长</p>
-	TimeoutMinutes *int64 `json:"TimeoutMinutes,omitnil,omitempty" name:"TimeoutMinutes"`
 }
 
 type CreatePreCacheImageTaskRequest struct {
@@ -207,9 +215,6 @@ type CreatePreCacheImageTaskRequest struct {
 
 	// <p>镜像仓库类型：<code>enterprise</code>、<code>personal</code>、<code>custom</code></p><p>枚举值：</p><ul><li>enterprise： tcr 企业容器镜像服务</li><li>personal： ccr 个人容器镜像服务</li></ul>
 	ImageRegistryType *string `json:"ImageRegistryType,omitnil,omitempty" name:"ImageRegistryType"`
-
-	// <p>预热超时时长</p>
-	TimeoutMinutes *int64 `json:"TimeoutMinutes,omitnil,omitempty" name:"TimeoutMinutes"`
 }
 
 func (r *CreatePreCacheImageTaskRequest) ToJsonString() string {
@@ -226,7 +231,6 @@ func (r *CreatePreCacheImageTaskRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Image")
 	delete(f, "ImageRegistryType")
-	delete(f, "TimeoutMinutes")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePreCacheImageTaskRequest has unknown keys!", "")
 	}
@@ -402,7 +406,7 @@ type CustomConfiguration struct {
 	// <p>镜像地址</p>
 	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
 
-	// <p>镜像仓库类型：<code>enterprise</code>、<code>personal</code>。</p>
+	// <p>镜像仓库类型：<code>enterprise</code>、<code>personal</code>、<code>custom</code></p><p>枚举值：</p><ul><li>enterprise： tcr 企业容器镜像服务</li><li>personal： ccr 个人容器镜像服务</li></ul>
 	ImageRegistryType *string `json:"ImageRegistryType,omitnil,omitempty" name:"ImageRegistryType"`
 
 	// <p>启动命令</p>
@@ -431,7 +435,7 @@ type CustomConfigurationDetail struct {
 	// <p>镜像地址</p>
 	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
 
-	// <p>镜像仓库类型：<code>TCR</code>、<code>CCR</code>。</p>
+	// <p>镜像仓库类型：<code>enterprise</code>、<code>personal</code>、<code>custom</code>。</p><p>枚举值：</p><ul><li>enterprise： TCR 企业容器镜像服务</li><li>personal： CCR 个人容器镜像服务</li></ul>
 	ImageRegistryType *string `json:"ImageRegistryType,omitnil,omitempty" name:"ImageRegistryType"`
 
 	// <p>镜像 Digest</p>
@@ -637,26 +641,26 @@ func (r *DescribeAPIKeyListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribePreCacheImageTaskRequestParams struct {
-	// 镜像地址
+	// <p>镜像地址</p>
 	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
 
-	// 镜像 Digest
+	// <p>镜像 Digest</p>
 	ImageDigest *string `json:"ImageDigest,omitnil,omitempty" name:"ImageDigest"`
 
-	// 镜像仓库类型：`enterprise`、`personal`。
+	// <p>镜像仓库类型：<code>enterprise</code>、<code>personal</code>、<code>custom</code> 。</p><p>枚举值：</p><ul><li>enterprise： tcr 企业容器镜像服务</li><li>personal： ccr 个人容器镜像服务</li></ul>
 	ImageRegistryType *string `json:"ImageRegistryType,omitnil,omitempty" name:"ImageRegistryType"`
 }
 
 type DescribePreCacheImageTaskRequest struct {
 	*tchttp.BaseRequest
 	
-	// 镜像地址
+	// <p>镜像地址</p>
 	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
 
-	// 镜像 Digest
+	// <p>镜像 Digest</p>
 	ImageDigest *string `json:"ImageDigest,omitnil,omitempty" name:"ImageDigest"`
 
-	// 镜像仓库类型：`enterprise`、`personal`。
+	// <p>镜像仓库类型：<code>enterprise</code>、<code>personal</code>、<code>custom</code> 。</p><p>枚举值：</p><ul><li>enterprise： tcr 企业容器镜像服务</li><li>personal： ccr 个人容器镜像服务</li></ul>
 	ImageRegistryType *string `json:"ImageRegistryType,omitnil,omitempty" name:"ImageRegistryType"`
 }
 
@@ -683,19 +687,19 @@ func (r *DescribePreCacheImageTaskRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribePreCacheImageTaskResponseParams struct {
-	// 镜像地址
+	// <p>镜像地址</p>
 	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
 
-	// 镜像 Digest
+	// <p>镜像 Digest</p>
 	ImageDigest *string `json:"ImageDigest,omitnil,omitempty" name:"ImageDigest"`
 
-	// 镜像仓库类型：`enterprise`、`personal`。
+	// <p>镜像仓库类型：<code>enterprise</code>、<code>personal</code>。</p>
 	ImageRegistryType *string `json:"ImageRegistryType,omitnil,omitempty" name:"ImageRegistryType"`
 
-	// 镜像预热状态
+	// <p>镜像预热状态</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 镜像预热状态描述
+	// <p>镜像预热状态描述</p>
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -915,16 +919,16 @@ type HttpGetAction struct {
 }
 
 type ImageStorageSource struct {
-	// 镜像地址
+	// <p>镜像地址</p>
 	Reference *string `json:"Reference,omitnil,omitempty" name:"Reference"`
 
-	// 镜像仓库类型：`enterprise`、`personal`。
+	// <p>镜像仓库类型：<code>enterprise</code>、<code>personal</code>。</p>
 	ImageRegistryType *string `json:"ImageRegistryType,omitnil,omitempty" name:"ImageRegistryType"`
 
-	// 镜像内部的路径
+	// <p>镜像内部的路径</p>
 	SubPath *string `json:"SubPath,omitnil,omitempty" name:"SubPath"`
 
-	// 镜像 Digest，请求时无需传入
+	// <p>镜像 Digest，请求时无需传入</p>
 	Digest *string `json:"Digest,omitnil,omitempty" name:"Digest"`
 }
 
@@ -976,6 +980,9 @@ type NetworkConfiguration struct {
 type PauseSandboxInstanceRequestParams struct {
 	// <p>沙箱实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>可选。带内存暂停，恢复后保留进程和内存状态。true=带内存；false=仅磁盘；不传=系统默认（当前默认 true，带内存）。</p>
+	Memory *bool `json:"Memory,omitnil,omitempty" name:"Memory"`
 }
 
 type PauseSandboxInstanceRequest struct {
@@ -983,6 +990,9 @@ type PauseSandboxInstanceRequest struct {
 	
 	// <p>沙箱实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>可选。带内存暂停，恢复后保留进程和内存状态。true=带内存；false=仅磁盘；不传=系统默认（当前默认 true，带内存）。</p>
+	Memory *bool `json:"Memory,omitnil,omitempty" name:"Memory"`
 }
 
 func (r *PauseSandboxInstanceRequest) ToJsonString() string {
@@ -998,6 +1008,7 @@ func (r *PauseSandboxInstanceRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "InstanceId")
+	delete(f, "Memory")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PauseSandboxInstanceRequest has unknown keys!", "")
 	}
@@ -1074,15 +1085,21 @@ type ResourceConfiguration struct {
 
 // Predefined struct for user
 type ResumeSandboxInstanceRequestParams struct {
-	// 沙箱实例ID
+	// <p>沙箱实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>超时时间，超过这个时间就自动回收实例。支持格式：5m、300s、1h 等，默认 5m。最小 30s，最大 24h</p>
+	Timeout *string `json:"Timeout,omitnil,omitempty" name:"Timeout"`
 }
 
 type ResumeSandboxInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 沙箱实例ID
+	// <p>沙箱实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>超时时间，超过这个时间就自动回收实例。支持格式：5m、300s、1h 等，默认 5m。最小 30s，最大 24h</p>
+	Timeout *string `json:"Timeout,omitnil,omitempty" name:"Timeout"`
 }
 
 func (r *ResumeSandboxInstanceRequest) ToJsonString() string {
@@ -1098,6 +1115,7 @@ func (r *ResumeSandboxInstanceRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "InstanceId")
+	delete(f, "Timeout")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ResumeSandboxInstanceRequest has unknown keys!", "")
 	}
@@ -1243,7 +1261,7 @@ type StartSandboxInstanceRequestParams struct {
 	// <p>沙箱实例自定义配置</p>
 	CustomConfiguration *CustomConfiguration `json:"CustomConfiguration,omitnil,omitempty" name:"CustomConfiguration"`
 
-	// <p>沙箱访问认证模式</p><p>枚举值：</p><ul><li>DEFAULT： 默认，即 TOKEN 认证</li><li>TOKEN： Token认证，即所有端口访问都需携带TOKEN</li><li>NONE： 免认证，即所有端口访问无需携带TOKEN</li><li>PUBLIC： 公开模式，即ENVD管理端口（49983）访问需携带TOKEN，其他端口无需携带TOKEN</li></ul><p>默认值：DEFAULT</p>
+	// <p>沙箱访问认证模式</p><p>枚举值：</p><ul><li>DEFAULT： 默认，即TOKEN认证</li><li>TOKEN： Token认证，即所有端口访问都需携带Token</li><li>NONE： 免认证，即所有端口访问无需携带Token</li><li>PUBLIC： 公开模式，即ENVD管理端口（49983）访问需携带Token，其他端口无需携带Token</li></ul><p>默认值：DEFAULT</p>
 	AuthMode *string `json:"AuthMode,omitnil,omitempty" name:"AuthMode"`
 
 	// <p>沙箱元数据</p>
@@ -1271,7 +1289,7 @@ type StartSandboxInstanceRequest struct {
 	// <p>沙箱实例自定义配置</p>
 	CustomConfiguration *CustomConfiguration `json:"CustomConfiguration,omitnil,omitempty" name:"CustomConfiguration"`
 
-	// <p>沙箱访问认证模式</p><p>枚举值：</p><ul><li>DEFAULT： 默认，即 TOKEN 认证</li><li>TOKEN： Token认证，即所有端口访问都需携带TOKEN</li><li>NONE： 免认证，即所有端口访问无需携带TOKEN</li><li>PUBLIC： 公开模式，即ENVD管理端口（49983）访问需携带TOKEN，其他端口无需携带TOKEN</li></ul><p>默认值：DEFAULT</p>
+	// <p>沙箱访问认证模式</p><p>枚举值：</p><ul><li>DEFAULT： 默认，即TOKEN认证</li><li>TOKEN： Token认证，即所有端口访问都需携带Token</li><li>NONE： 免认证，即所有端口访问无需携带Token</li><li>PUBLIC： 公开模式，即ENVD管理端口（49983）访问需携带Token，其他端口无需携带Token</li></ul><p>默认值：DEFAULT</p>
 	AuthMode *string `json:"AuthMode,omitnil,omitempty" name:"AuthMode"`
 
 	// <p>沙箱元数据</p>
@@ -1384,16 +1402,17 @@ func (r *StopSandboxInstanceResponse) FromJsonString(s string) error {
 }
 
 type StorageMount struct {
-	// 存储挂载配置名称
+	// <p>存储挂载配置名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 存储配置
+	// <p>存储配置</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	StorageSource *StorageSource `json:"StorageSource,omitnil,omitempty" name:"StorageSource"`
 
-	// 沙箱实例本地挂载路径
+	// <p>沙箱实例本地挂载路径</p>
 	MountPath *string `json:"MountPath,omitnil,omitempty" name:"MountPath"`
 
-	// 存储挂载读写权限配置，默认为false
+	// <p>存储挂载读写权限配置，默认为false</p>
 	ReadOnly *bool `json:"ReadOnly,omitnil,omitempty" name:"ReadOnly"`
 }
 
@@ -1406,6 +1425,9 @@ type StorageSource struct {
 
 	// <p>文件存储配置</p>
 	Cfs *CfsStorageSource `json:"Cfs,omitnil,omitempty" name:"Cfs"`
+
+	// <p>AgentBucket 存储配置</p>
+	AgentBucket *AgentBucketStorageSource `json:"AgentBucket,omitnil,omitempty" name:"AgentBucket"`
 }
 
 type Tag struct {

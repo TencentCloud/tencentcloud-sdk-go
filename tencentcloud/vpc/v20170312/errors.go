@@ -1331,6 +1331,9 @@ const (
 	// 仅支持专业版Ckafka。
 	UNSUPPORTEDOPERATION_ONLYSUPPORTPROFESSIONKAFKA = "UnsupportedOperation.OnlySupportProfessionKafka"
 
+	// 参数 `SslVpnProtocol` 不支持修改。
+	UNSUPPORTEDOPERATION_PARAMETERSSLVPNPROTOCOL = "UnsupportedOperation.ParameterSslVpnProtocol"
+
 	// 预付费云联网只支持带宽计量类型
 	UNSUPPORTEDOPERATION_PREPAIDCCNONLYSUPPORTBANDWIDTHMETERING = "UnsupportedOperation.PrepaidCcnOnlySupportBandwidthMetering"
 

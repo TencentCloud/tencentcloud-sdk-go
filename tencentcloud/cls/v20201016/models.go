@@ -23998,6 +23998,9 @@ type ToolCall struct {
 
 	// <p>索引值</p>
 	Index *uint64 `json:"Index,omitnil,omitempty" name:"Index"`
+
+	// <p>模型返回的思考签名，执行工具后需在后续请求中原样回传</p>
+	ThoughtSignature *string `json:"ThoughtSignature,omitnil,omitempty" name:"ThoughtSignature"`
 }
 
 type ToolCallFunction struct {

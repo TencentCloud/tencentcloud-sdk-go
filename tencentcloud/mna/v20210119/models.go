@@ -3755,20 +3755,20 @@ func (r *ModifyDeviceAccessRegionsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyPackageRenewFlagRequestParams struct {
-	// 流量包的唯一资源ID
+	// <p>流量包的唯一资源ID</p>
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
-	// 自动续费标识。true代表自动续费，false代表不自动续费
+	// <p>自动续费标识。true代表自动续费，false代表不自动续费</p>
 	RenewFlag *bool `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 }
 
 type ModifyPackageRenewFlagRequest struct {
 	*tchttp.BaseRequest
 	
-	// 流量包的唯一资源ID
+	// <p>流量包的唯一资源ID</p>
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
-	// 自动续费标识。true代表自动续费，false代表不自动续费
+	// <p>自动续费标识。true代表自动续费，false代表不自动续费</p>
 	RenewFlag *bool `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 }
 
@@ -4586,38 +4586,38 @@ func (r *UpdateHardwareResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateL3CidrRequestParams struct {
-	// 互通规则ID
+	// <p>互通规则ID</p>
 	L3ConnId *string `json:"L3ConnId,omitnil,omitempty" name:"L3ConnId"`
 
-	// 互通规则CIDR
+	// <p>互通规则CIDR</p>
 	Cidr1 *string `json:"Cidr1,omitnil,omitempty" name:"Cidr1"`
 
-	// 互通设备ID
+	// <p>互通设备ID</p>
 	DeviceId1 *string `json:"DeviceId1,omitnil,omitempty" name:"DeviceId1"`
 
-	// 互通设备ID
+	// <p>互通设备ID</p>
 	DeviceId2 *string `json:"DeviceId2,omitnil,omitempty" name:"DeviceId2"`
 
-	// 互通规则CIDR
+	// <p>互通规则CIDR</p>
 	Cidr2 *string `json:"Cidr2,omitnil,omitempty" name:"Cidr2"`
 }
 
 type UpdateL3CidrRequest struct {
 	*tchttp.BaseRequest
 	
-	// 互通规则ID
+	// <p>互通规则ID</p>
 	L3ConnId *string `json:"L3ConnId,omitnil,omitempty" name:"L3ConnId"`
 
-	// 互通规则CIDR
+	// <p>互通规则CIDR</p>
 	Cidr1 *string `json:"Cidr1,omitnil,omitempty" name:"Cidr1"`
 
-	// 互通设备ID
+	// <p>互通设备ID</p>
 	DeviceId1 *string `json:"DeviceId1,omitnil,omitempty" name:"DeviceId1"`
 
-	// 互通设备ID
+	// <p>互通设备ID</p>
 	DeviceId2 *string `json:"DeviceId2,omitnil,omitempty" name:"DeviceId2"`
 
-	// 互通规则CIDR
+	// <p>互通规则CIDR</p>
 	Cidr2 *string `json:"Cidr2,omitnil,omitempty" name:"Cidr2"`
 }
 
@@ -4729,20 +4729,20 @@ func (r *UpdateL3ConnResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateL3SwitchRequestParams struct {
-	// 互通规则ID
+	// <p>互通规则ID</p>
 	L3ConnId *string `json:"L3ConnId,omitnil,omitempty" name:"L3ConnId"`
 
-	// 互通规则开关
+	// <p>互通规则开关</p>
 	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
 }
 
 type UpdateL3SwitchRequest struct {
 	*tchttp.BaseRequest
 	
-	// 互通规则ID
+	// <p>互通规则ID</p>
 	L3ConnId *string `json:"L3ConnId,omitnil,omitempty" name:"L3ConnId"`
 
-	// 互通规则开关
+	// <p>互通规则开关</p>
 	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
 }
 

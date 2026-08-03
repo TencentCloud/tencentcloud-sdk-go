@@ -4647,16 +4647,16 @@ type McuCustomCrop struct {
 }
 
 type McuFeedBackRoomParams struct {
-	// 回推房间的RoomId。
+	// <p>回推房间的RoomId。</p>
 	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 
-	// 房间类型，必须和回推房间所对应的RoomId类型相同，0为整形房间号，1为字符串房间号。
+	// <p>房间类型，必须和回推房间所对应的RoomId类型相同，0为整形房间号，1为字符串房间号。</p>
 	RoomIdType *uint64 `json:"RoomIdType,omitnil,omitempty" name:"RoomIdType"`
 
-	// 回推房间使用的UserId(https://cloud.tencent.com/document/product/647/46351#userid)，注意这个userId不能与其他TRTC或者转推服务等已经使用的UserId重复，建议可以把房间ID作为userId的标识的一部分。
+	// <p>回推房间使用的UserId(https://cloud.tencent.com/document/product/647/46351#userid)，注意这个userId不能与其他TRTC或者转推服务等已经使用的UserId重复，建议可以把房间ID作为userId的标识的一部分。</p>
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
-	// 回推房间UserId对应的用户签名，相当于登录密码，具体计算方法请参考TRTC计算[UserSig](https://cloud.tencent.com/document/product/647/45910#UserSig)的方案。
+	// <p>回推房间UserId对应的用户签名，相当于登录密码，具体计算方法请参考TRTC计算<a href="https://cloud.tencent.com/document/product/647/45910#UserSig">UserSig</a>的方案。</p>
 	UserSig *string `json:"UserSig,omitnil,omitempty" name:"UserSig"`
 }
 

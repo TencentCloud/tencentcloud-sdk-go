@@ -248,10 +248,12 @@ func NewCreateSandboxToolResponse() (response *CreateSandboxToolResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_DEPENDENCYUNAVAILABLE = "FailedOperation.DependencyUnavailable"
 //  FAILEDOPERATION_DUPLICATEREQUEST = "FailedOperation.DuplicateRequest"
 //  FAILEDOPERATION_REQUESTINPROGRESS = "FailedOperation.RequestInProgress"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_NETWORKSETUPFAILED = "InternalError.NetworkSetupFailed"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 //  INTERNALERROR_VPCSERVICEUNAVAILABLE = "InternalError.VPCServiceUnavailable"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_ROLEARN = "InvalidParameterValue.RoleArn"
@@ -264,9 +266,12 @@ func NewCreateSandboxToolResponse() (response *CreateSandboxToolResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  MISSINGPARAMETER_ROLEARN = "MissingParameter.RoleArn"
 //  MISSINGPARAMETER_VPCPARAMETERS = "MissingParameter.VPCParameters"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_SECURITYGROUP = "ResourceNotFound.SecurityGroup"
 //  RESOURCENOTFOUND_STORAGEMOUNT = "ResourceNotFound.StorageMount"
 //  RESOURCENOTFOUND_SUBNET = "ResourceNotFound.Subnet"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateSandboxTool(request *CreateSandboxToolRequest) (response *CreateSandboxToolResponse, err error) {
     return c.CreateSandboxToolWithContext(context.Background(), request)
 }
@@ -277,10 +282,12 @@ func (c *Client) CreateSandboxTool(request *CreateSandboxToolRequest) (response 
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_DEPENDENCYUNAVAILABLE = "FailedOperation.DependencyUnavailable"
 //  FAILEDOPERATION_DUPLICATEREQUEST = "FailedOperation.DuplicateRequest"
 //  FAILEDOPERATION_REQUESTINPROGRESS = "FailedOperation.RequestInProgress"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_NETWORKSETUPFAILED = "InternalError.NetworkSetupFailed"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 //  INTERNALERROR_VPCSERVICEUNAVAILABLE = "InternalError.VPCServiceUnavailable"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_ROLEARN = "InvalidParameterValue.RoleArn"
@@ -293,9 +300,12 @@ func (c *Client) CreateSandboxTool(request *CreateSandboxToolRequest) (response 
 //  MISSINGPARAMETER = "MissingParameter"
 //  MISSINGPARAMETER_ROLEARN = "MissingParameter.RoleArn"
 //  MISSINGPARAMETER_VPCPARAMETERS = "MissingParameter.VPCParameters"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_SECURITYGROUP = "ResourceNotFound.SecurityGroup"
 //  RESOURCENOTFOUND_STORAGEMOUNT = "ResourceNotFound.StorageMount"
 //  RESOURCENOTFOUND_SUBNET = "ResourceNotFound.Subnet"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateSandboxToolWithContext(ctx context.Context, request *CreateSandboxToolRequest) (response *CreateSandboxToolResponse, err error) {
     if request == nil {
         request = NewCreateSandboxToolRequest()
@@ -790,19 +800,26 @@ func NewStartSandboxInstanceResponse() (response *StartSandboxInstanceResponse) 
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_DEPENDENCYUNAVAILABLE = "FailedOperation.DependencyUnavailable"
 //  FAILEDOPERATION_DUPLICATEREQUEST = "FailedOperation.DuplicateRequest"
 //  FAILEDOPERATION_REQUESTINPROGRESS = "FailedOperation.RequestInProgress"
 //  FAILEDOPERATION_STORAGEMOUNT = "FailedOperation.StorageMount"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_MOUNTOPTION = "InvalidParameterValue.MountOption"
 //  INVALIDPARAMETERVALUE_STORAGEMOUNT = "InvalidParameterValue.StorageMount"
 //  INVALIDPARAMETERVALUE_TIMEOUT = "InvalidParameterValue.Timeout"
 //  LIMITEXCEEDED_SANDBOXINSTANCE = "LimitExceeded.SandboxInstance"
 //  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_ROLEARN = "MissingParameter.RoleArn"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_SANDBOXTOOL = "ResourceNotFound.SandboxTool"
 //  RESOURCENOTFOUND_STORAGEMOUNT = "ResourceNotFound.StorageMount"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  RESOURCEUNAVAILABLE_SANDBOXTOOL = "ResourceUnavailable.SandboxTool"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) StartSandboxInstance(request *StartSandboxInstanceRequest) (response *StartSandboxInstanceResponse, err error) {
     return c.StartSandboxInstanceWithContext(context.Background(), request)
 }
@@ -813,19 +830,26 @@ func (c *Client) StartSandboxInstance(request *StartSandboxInstanceRequest) (res
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_DEPENDENCYUNAVAILABLE = "FailedOperation.DependencyUnavailable"
 //  FAILEDOPERATION_DUPLICATEREQUEST = "FailedOperation.DuplicateRequest"
 //  FAILEDOPERATION_REQUESTINPROGRESS = "FailedOperation.RequestInProgress"
 //  FAILEDOPERATION_STORAGEMOUNT = "FailedOperation.StorageMount"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_MOUNTOPTION = "InvalidParameterValue.MountOption"
 //  INVALIDPARAMETERVALUE_STORAGEMOUNT = "InvalidParameterValue.StorageMount"
 //  INVALIDPARAMETERVALUE_TIMEOUT = "InvalidParameterValue.Timeout"
 //  LIMITEXCEEDED_SANDBOXINSTANCE = "LimitExceeded.SandboxInstance"
 //  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_ROLEARN = "MissingParameter.RoleArn"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_SANDBOXTOOL = "ResourceNotFound.SandboxTool"
 //  RESOURCENOTFOUND_STORAGEMOUNT = "ResourceNotFound.StorageMount"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  RESOURCEUNAVAILABLE_SANDBOXTOOL = "ResourceUnavailable.SandboxTool"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) StartSandboxInstanceWithContext(ctx context.Context, request *StartSandboxInstanceRequest) (response *StartSandboxInstanceResponse, err error) {
     if request == nil {
         request = NewStartSandboxInstanceRequest()
@@ -922,11 +946,16 @@ func NewUpdateSandboxInstanceResponse() (response *UpdateSandboxInstanceResponse
 // 更新沙箱实例
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DEPENDENCYUNAVAILABLE = "FailedOperation.DependencyUnavailable"
+//  FAILEDOPERATION_REQUESTINPROGRESS = "FailedOperation.RequestInProgress"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_TIMEOUT = "InvalidParameterValue.Timeout"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_SANDBOXINSTANCE = "ResourceNotFound.SandboxInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNSUPPORTEDOPERATION_SANDBOXINSTANCE = "UnsupportedOperation.SandboxInstance"
 func (c *Client) UpdateSandboxInstance(request *UpdateSandboxInstanceRequest) (response *UpdateSandboxInstanceResponse, err error) {
     return c.UpdateSandboxInstanceWithContext(context.Background(), request)
@@ -936,11 +965,16 @@ func (c *Client) UpdateSandboxInstance(request *UpdateSandboxInstanceRequest) (r
 // 更新沙箱实例
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DEPENDENCYUNAVAILABLE = "FailedOperation.DependencyUnavailable"
+//  FAILEDOPERATION_REQUESTINPROGRESS = "FailedOperation.RequestInProgress"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_TIMEOUT = "InvalidParameterValue.Timeout"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_SANDBOXINSTANCE = "ResourceNotFound.SandboxInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNSUPPORTEDOPERATION_SANDBOXINSTANCE = "UnsupportedOperation.SandboxInstance"
 func (c *Client) UpdateSandboxInstanceWithContext(ctx context.Context, request *UpdateSandboxInstanceRequest) (response *UpdateSandboxInstanceResponse, err error) {
     if request == nil {
@@ -982,10 +1016,15 @@ func NewUpdateSandboxToolResponse() (response *UpdateSandboxToolResponse) {
 // 更新沙箱工具
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_DEPENDENCYUNAVAILABLE = "FailedOperation.DependencyUnavailable"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_SANDBOXTOOL = "ResourceNotFound.SandboxTool"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) UpdateSandboxTool(request *UpdateSandboxToolRequest) (response *UpdateSandboxToolResponse, err error) {
     return c.UpdateSandboxToolWithContext(context.Background(), request)
 }
@@ -994,10 +1033,15 @@ func (c *Client) UpdateSandboxTool(request *UpdateSandboxToolRequest) (response 
 // 更新沙箱工具
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_DEPENDENCYUNAVAILABLE = "FailedOperation.DependencyUnavailable"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_SANDBOXTOOL = "ResourceNotFound.SandboxTool"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) UpdateSandboxToolWithContext(ctx context.Context, request *UpdateSandboxToolRequest) (response *UpdateSandboxToolResponse, err error) {
     if request == nil {
         request = NewUpdateSandboxToolRequest()

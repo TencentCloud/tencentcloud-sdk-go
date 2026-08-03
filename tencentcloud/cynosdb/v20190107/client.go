@@ -15716,11 +15716,14 @@ func NewSwitchClusterVpcResponse() (response *SwitchClusterVpcResponse) {
 // 本接口（SwitchClusterVpc）用于更换集群vpc。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CHECKVPCANDSUBNETERROR = "FailedOperation.CheckVpcAndSubnetError"
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
 //  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
 //  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  INVALIDPARAMETERVALUE_PARAMERROR = "InvalidParameterValue.ParamError"
+//  OPERATIONDENIED_USERRESOURCETASKCONFLICTERROR = "OperationDenied.UserResourceTaskConflictError"
 //  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) SwitchClusterVpc(request *SwitchClusterVpcRequest) (response *SwitchClusterVpcResponse, err error) {
@@ -15731,11 +15734,14 @@ func (c *Client) SwitchClusterVpc(request *SwitchClusterVpcRequest) (response *S
 // 本接口（SwitchClusterVpc）用于更换集群vpc。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CHECKVPCANDSUBNETERROR = "FailedOperation.CheckVpcAndSubnetError"
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
 //  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
 //  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  INVALIDPARAMETERVALUE_PARAMERROR = "InvalidParameterValue.ParamError"
+//  OPERATIONDENIED_USERRESOURCETASKCONFLICTERROR = "OperationDenied.UserResourceTaskConflictError"
 //  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) SwitchClusterVpcWithContext(ctx context.Context, request *SwitchClusterVpcRequest) (response *SwitchClusterVpcResponse, err error) {
@@ -15836,12 +15842,15 @@ func NewSwitchProxyVpcResponse() (response *SwitchProxyVpcResponse) {
 // 本接口（SwitchProxyVpc）用于更换数据库代理vpc。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CHECKVPCANDSUBNETERROR = "FailedOperation.CheckVpcAndSubnetError"
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
 //  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
 //  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  FAILEDOPERATION_PROXYCHECKERROR = "FailedOperation.ProxyCheckError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  INVALIDPARAMETERVALUE_PARAMERROR = "InvalidParameterValue.ParamError"
+//  OPERATIONDENIED_USERRESOURCETASKCONFLICTERROR = "OperationDenied.UserResourceTaskConflictError"
 //  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) SwitchProxyVpc(request *SwitchProxyVpcRequest) (response *SwitchProxyVpcResponse, err error) {
@@ -15852,12 +15861,15 @@ func (c *Client) SwitchProxyVpc(request *SwitchProxyVpcRequest) (response *Switc
 // 本接口（SwitchProxyVpc）用于更换数据库代理vpc。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CHECKVPCANDSUBNETERROR = "FailedOperation.CheckVpcAndSubnetError"
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
 //  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
 //  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  FAILEDOPERATION_PROXYCHECKERROR = "FailedOperation.ProxyCheckError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  INVALIDPARAMETERVALUE_PARAMERROR = "InvalidParameterValue.ParamError"
+//  OPERATIONDENIED_USERRESOURCETASKCONFLICTERROR = "OperationDenied.UserResourceTaskConflictError"
 //  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) SwitchProxyVpcWithContext(ctx context.Context, request *SwitchProxyVpcRequest) (response *SwitchProxyVpcResponse, err error) {
@@ -15900,12 +15912,15 @@ func NewTransferClusterPrepayToPostpayResponse() (response *TransferClusterPrepa
 // 本接口（TransferClusterPrepayToPostpay）用于将预付费集群转为后付费集群
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CHECKVPCANDSUBNETERROR = "FailedOperation.CheckVpcAndSubnetError"
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
 //  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
 //  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  FAILEDOPERATION_PROXYCHECKERROR = "FailedOperation.ProxyCheckError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  INVALIDPARAMETERVALUE_PARAMERROR = "InvalidParameterValue.ParamError"
+//  OPERATIONDENIED_USERRESOURCETASKCONFLICTERROR = "OperationDenied.UserResourceTaskConflictError"
 //  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) TransferClusterPrepayToPostpay(request *TransferClusterPrepayToPostpayRequest) (response *TransferClusterPrepayToPostpayResponse, err error) {
@@ -15916,12 +15931,15 @@ func (c *Client) TransferClusterPrepayToPostpay(request *TransferClusterPrepayTo
 // 本接口（TransferClusterPrepayToPostpay）用于将预付费集群转为后付费集群
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CHECKVPCANDSUBNETERROR = "FailedOperation.CheckVpcAndSubnetError"
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
 //  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
 //  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  FAILEDOPERATION_PROXYCHECKERROR = "FailedOperation.ProxyCheckError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  INVALIDPARAMETERVALUE_PARAMERROR = "InvalidParameterValue.ParamError"
+//  OPERATIONDENIED_USERRESOURCETASKCONFLICTERROR = "OperationDenied.UserResourceTaskConflictError"
 //  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) TransferClusterPrepayToPostpayWithContext(ctx context.Context, request *TransferClusterPrepayToPostpayRequest) (response *TransferClusterPrepayToPostpayResponse, err error) {
@@ -15964,12 +15982,15 @@ func NewTransferClusterZoneResponse() (response *TransferClusterZoneResponse) {
 // 本接口（TransferClusterZone）用于发起跨可用区迁移。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CHECKVPCANDSUBNETERROR = "FailedOperation.CheckVpcAndSubnetError"
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
 //  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
 //  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  FAILEDOPERATION_PROXYCHECKERROR = "FailedOperation.ProxyCheckError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  INVALIDPARAMETERVALUE_PARAMERROR = "InvalidParameterValue.ParamError"
+//  OPERATIONDENIED_USERRESOURCETASKCONFLICTERROR = "OperationDenied.UserResourceTaskConflictError"
 //  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) TransferClusterZone(request *TransferClusterZoneRequest) (response *TransferClusterZoneResponse, err error) {
@@ -15980,12 +16001,15 @@ func (c *Client) TransferClusterZone(request *TransferClusterZoneRequest) (respo
 // 本接口（TransferClusterZone）用于发起跨可用区迁移。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CHECKVPCANDSUBNETERROR = "FailedOperation.CheckVpcAndSubnetError"
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
 //  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
 //  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  FAILEDOPERATION_PROXYCHECKERROR = "FailedOperation.ProxyCheckError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  INVALIDPARAMETERVALUE_PARAMERROR = "InvalidParameterValue.ParamError"
+//  OPERATIONDENIED_USERRESOURCETASKCONFLICTERROR = "OperationDenied.UserResourceTaskConflictError"
 //  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) TransferClusterZoneWithContext(ctx context.Context, request *TransferClusterZoneRequest) (response *TransferClusterZoneResponse, err error) {

@@ -35,6 +35,9 @@ const (
 	// 鉴权失败，请稍后重试。如果持续不成功，请联系客服进行处理。
 	FAILEDOPERATION_CAMSIGANDAUTHERROR = "FailedOperation.CamSigAndAuthError"
 
+	// VPC/子网校验失败：{{1}}
+	FAILEDOPERATION_CHECKVPCANDSUBNETERROR = "FailedOperation.CheckVpcAndSubnetError"
+
 	// 创建审计失败
 	FAILEDOPERATION_CREATEAUDITFAILERROR = "FailedOperation.CreateAuditFailError"
 
@@ -79,6 +82,9 @@ const (
 
 	// 操作失败，请稍后重试。如果持续不成功，请联系客服进行处理。
 	FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+
+	// Proxy校验失败：{{1}}。
+	FAILEDOPERATION_PROXYCHECKERROR = "FailedOperation.ProxyCheckError"
 
 	// 查询资源包消耗明细失败
 	FAILEDOPERATION_QUERYSOURCEPACKAGEDETAILERROR = "FailedOperation.QuerySourcePackageDetailError"

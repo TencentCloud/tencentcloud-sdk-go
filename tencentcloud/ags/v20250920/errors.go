@@ -26,6 +26,9 @@ const (
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
 
+	// 依赖服务不可用或超时
+	FAILEDOPERATION_DEPENDENCYUNAVAILABLE = "FailedOperation.DependencyUnavailable"
+
 	// 重复请求（幂等性检查）
 	FAILEDOPERATION_DUPLICATEREQUEST = "FailedOperation.DuplicateRequest"
 
@@ -40,6 +43,9 @@ const (
 
 	// 网络初始化失败
 	INTERNALERROR_NETWORKSETUPFAILED = "InternalError.NetworkSetupFailed"
+
+	// 未分类内部错误
+	INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 
 	// VPC服务不可用
 	INTERNALERROR_VPCSERVICEUNAVAILABLE = "InternalError.VPCServiceUnavailable"
@@ -95,6 +101,9 @@ const (
 	// VPC网络模式缺少必需参数
 	MISSINGPARAMETER_VPCPARAMETERS = "MissingParameter.VPCParameters"
 
+	// 资源被占用。
+	RESOURCEINUSE = "ResourceInUse"
+
 	// 沙箱工具正在使用中
 	RESOURCEINUSE_SANDBOXTOOL = "ResourceInUse.SandboxTool"
 
@@ -115,6 +124,9 @@ const (
 
 	// 子网不存在或不属于用户
 	RESOURCENOTFOUND_SUBNET = "ResourceNotFound.Subnet"
+
+	// 资源不可用。
+	RESOURCEUNAVAILABLE = "ResourceUnavailable"
 
 	// 沙箱工具不可用
 	RESOURCEUNAVAILABLE_SANDBOXTOOL = "ResourceUnavailable.SandboxTool"

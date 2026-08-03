@@ -2654,14 +2654,14 @@ func (r *ModifyApiKeyStatusResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyEndpointRequestParams struct {
-	// 自动调整配额
+	// <p>自动调整配额</p>
 	AutoAdjustQuota *int64 `json:"AutoAdjustQuota,omitnil,omitempty" name:"AutoAdjustQuota"`
 }
 
 type ModifyEndpointRequest struct {
 	*tchttp.BaseRequest
 	
-	// 自动调整配额
+	// <p>自动调整配额</p>
 	AutoAdjustQuota *int64 `json:"AutoAdjustQuota,omitnil,omitempty" name:"AutoAdjustQuota"`
 }
 

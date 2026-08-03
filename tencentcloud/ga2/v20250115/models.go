@@ -682,13 +682,13 @@ func (r *CreateGlobalAcceleratorAclRuleResponse) FromJsonString(s string) error 
 
 // Predefined struct for user
 type CreateGlobalAcceleratorRequestParams struct {
-	// <p>名称，最大长度不能超过128个字节，不能为空。</p><p>参数格式：满足正则 ^[a-zA-Z\u4e00-\u9fa5]（首字符是英文字母或汉字），并且不满足正则 ^[\d._-]*$（整串不能只由数字/./_/-组成）。</p>
+	// <p>名称。</p><p>参数格式：以字母或中文开头，长度 2–128 个字符，支持字母、数字、中文、. - _</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// <p>计费模式，PREPAID：表示预付费，即包年包月，POSTPAID：表示后付费，即按量计费。默认：POSTPAID。当前仅支持后付费。</p>
 	InstanceChargeType *string `json:"InstanceChargeType,omitnil,omitempty" name:"InstanceChargeType"`
 
-	// <p>描述信息，最大长度不能超过100个字节。</p>
+	// <p>描述信息。</p><p>参数格式：最大长度不超过100 个字符。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// <p>跨境类型；HighQuality：精品BGP-IP跨境；Unicom：联通专线跨境。</p>
@@ -704,13 +704,13 @@ type CreateGlobalAcceleratorRequestParams struct {
 type CreateGlobalAcceleratorRequest struct {
 	*tchttp.BaseRequest
 	
-	// <p>名称，最大长度不能超过128个字节，不能为空。</p><p>参数格式：满足正则 ^[a-zA-Z\u4e00-\u9fa5]（首字符是英文字母或汉字），并且不满足正则 ^[\d._-]*$（整串不能只由数字/./_/-组成）。</p>
+	// <p>名称。</p><p>参数格式：以字母或中文开头，长度 2–128 个字符，支持字母、数字、中文、. - _</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// <p>计费模式，PREPAID：表示预付费，即包年包月，POSTPAID：表示后付费，即按量计费。默认：POSTPAID。当前仅支持后付费。</p>
 	InstanceChargeType *string `json:"InstanceChargeType,omitnil,omitempty" name:"InstanceChargeType"`
 
-	// <p>描述信息，最大长度不能超过100个字节。</p>
+	// <p>描述信息。</p><p>参数格式：最大长度不超过100 个字符。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// <p>跨境类型；HighQuality：精品BGP-IP跨境；Unicom：联通专线跨境。</p>
@@ -851,7 +851,7 @@ type CreateListenerRequestParams struct {
 	// <p>全球加速实例ID。</p>
 	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
 
-	// <p>名称，最大长度不能超过128个字符。</p>
+	// <p>名称。</p><p>参数格式：以字母或中文开头，长度 2–128 个字符，支持字母、数字、中文、. - _</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// <p>端口范围。</p>
@@ -872,7 +872,7 @@ type CreateListenerRequestParams struct {
 	// <p>四层获取源IP方式，支持&#39;TOA&#39;, &#39;ProxyProtocol&#39;, &#39;ProxyProtocolV2&#39;。</p><p>需要开启四层获取源IP方式，才填写此参数。</p>
 	GetRealIpType *string `json:"GetRealIpType,omitnil,omitempty" name:"GetRealIpType"`
 
-	// <p>是否开启会话保持。支持配置&#39;Open&#39;, &#39;Close&#39;。</p><p>枚举值：</p><ul><li>Open： 开启。</li><li>Close： 关闭。</li></ul>
+	// <p>是否开启会话保持。支持配置&#39;Open&#39;, &#39;Close&#39;。</p><p>枚举值：</p><ul><li>Open： 开启。</li><li>Close： 关闭。</li></ul><p>仅支持4层监听器 ，7层不支持修改</p>
 	ClientAffinity *string `json:"ClientAffinity,omitnil,omitempty" name:"ClientAffinity"`
 
 	// <p>请求超时时间。</p><p>取值范围：[1, 180]</p><p>默认值：60</p><p>当HTTPS监听器时才可配置此参数。</p>
@@ -887,10 +887,10 @@ type CreateListenerRequestParams struct {
 	// <p>加密算法套件。支持配置&#39;tls_policy_1.0-2&#39;, &#39;tls_policy_1.1-2&#39;, &#39;tls_policy_1.2&#39;, &#39;tls_policy_1.2_strict&#39;, &#39;tls_policy_1.2_strict-1.3&#39;。</p>
 	CipherPolicyId *string `json:"CipherPolicyId,omitnil,omitempty" name:"CipherPolicyId"`
 
-	// <p>服务器证书。</p><p>当是HTTPS监听器时，此字段必传。</p>
+	// <p>服务器证书。</p><p>入参限制：当前仅支持传入一本证书；如果要使用多本证书，使用证书接口CreateListenerAdditionalCert来加其他证书。</p><p>当是HTTPS监听器时，此字段必传。</p>
 	ServerCertificates []*string `json:"ServerCertificates,omitnil,omitempty" name:"ServerCertificates"`
 
-	// <p>客户端证书。</p><p>当时HTTPS监听器且开启双向认证时，此字段必传。</p>
+	// <p>客户端证书。</p><p>入参限制：1、当前仅支持传入一本证书；如果要使用多本证书，使用证书接口CreateListenerAdditionalCert来加其他证书。2、证书必须为CA证书。</p><p>当时HTTPS监听器且开启双向认证时，此字段必传。</p>
 	ClientCaCertificates []*string `json:"ClientCaCertificates,omitnil,omitempty" name:"ClientCaCertificates"`
 
 	// <p>HTTPS监听器支持选择版本</p><p>枚举值：</p><ul><li>HTTP/1.1： HTTP/1.1</li><li>HTTP/2： HTTP/2</li></ul>
@@ -903,7 +903,7 @@ type CreateListenerRequest struct {
 	// <p>全球加速实例ID。</p>
 	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
 
-	// <p>名称，最大长度不能超过128个字符。</p>
+	// <p>名称。</p><p>参数格式：以字母或中文开头，长度 2–128 个字符，支持字母、数字、中文、. - _</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// <p>端口范围。</p>
@@ -924,7 +924,7 @@ type CreateListenerRequest struct {
 	// <p>四层获取源IP方式，支持&#39;TOA&#39;, &#39;ProxyProtocol&#39;, &#39;ProxyProtocolV2&#39;。</p><p>需要开启四层获取源IP方式，才填写此参数。</p>
 	GetRealIpType *string `json:"GetRealIpType,omitnil,omitempty" name:"GetRealIpType"`
 
-	// <p>是否开启会话保持。支持配置&#39;Open&#39;, &#39;Close&#39;。</p><p>枚举值：</p><ul><li>Open： 开启。</li><li>Close： 关闭。</li></ul>
+	// <p>是否开启会话保持。支持配置&#39;Open&#39;, &#39;Close&#39;。</p><p>枚举值：</p><ul><li>Open： 开启。</li><li>Close： 关闭。</li></ul><p>仅支持4层监听器 ，7层不支持修改</p>
 	ClientAffinity *string `json:"ClientAffinity,omitnil,omitempty" name:"ClientAffinity"`
 
 	// <p>请求超时时间。</p><p>取值范围：[1, 180]</p><p>默认值：60</p><p>当HTTPS监听器时才可配置此参数。</p>
@@ -939,10 +939,10 @@ type CreateListenerRequest struct {
 	// <p>加密算法套件。支持配置&#39;tls_policy_1.0-2&#39;, &#39;tls_policy_1.1-2&#39;, &#39;tls_policy_1.2&#39;, &#39;tls_policy_1.2_strict&#39;, &#39;tls_policy_1.2_strict-1.3&#39;。</p>
 	CipherPolicyId *string `json:"CipherPolicyId,omitnil,omitempty" name:"CipherPolicyId"`
 
-	// <p>服务器证书。</p><p>当是HTTPS监听器时，此字段必传。</p>
+	// <p>服务器证书。</p><p>入参限制：当前仅支持传入一本证书；如果要使用多本证书，使用证书接口CreateListenerAdditionalCert来加其他证书。</p><p>当是HTTPS监听器时，此字段必传。</p>
 	ServerCertificates []*string `json:"ServerCertificates,omitnil,omitempty" name:"ServerCertificates"`
 
-	// <p>客户端证书。</p><p>当时HTTPS监听器且开启双向认证时，此字段必传。</p>
+	// <p>客户端证书。</p><p>入参限制：1、当前仅支持传入一本证书；如果要使用多本证书，使用证书接口CreateListenerAdditionalCert来加其他证书。2、证书必须为CA证书。</p><p>当时HTTPS监听器且开启双向认证时，此字段必传。</p>
 	ClientCaCertificates []*string `json:"ClientCaCertificates,omitnil,omitempty" name:"ClientCaCertificates"`
 
 	// <p>HTTPS监听器支持选择版本</p><p>枚举值：</p><ul><li>HTTP/1.1： HTTP/1.1</li><li>HTTP/2： HTTP/2</li></ul>
@@ -2659,7 +2659,7 @@ type EndpointConfigurations struct {
 }
 
 type EndpointGroupConfiguration struct {
-	// <p>终端节点组名称。</p><p>最大长度不能超过128个字节。必须以字母（a-z, A-Z）或中文字符开头。</p>
+	// <p>终端节点组名称。</p><p>参数格式：以字母或中文开头，长度 2–128 个字符，支持字母、数字、中文、. - _</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// <p>终端节点组所在地域。</p>
@@ -3191,7 +3191,7 @@ type ModifyEndpointGroupRequestParams struct {
 	// <p>终端节点配置。</p>
 	EndpointConfigurations []*EndpointConfigurations `json:"EndpointConfigurations,omitnil,omitempty" name:"EndpointConfigurations"`
 
-	// <p>名称。</p><p>入参限制：最大长度不能超过128个字节。</p><p>以大小写字母或中文开头。</p>
+	// <p>名称。</p><p>参数格式：以字母或中文开头，长度 2–128 个字符，支持字母、数字、中文、. - _</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// <p>描述信息。</p><p>入参限制：最大长度不能超过100个字节。</p>
@@ -3267,7 +3267,7 @@ type ModifyEndpointGroupRequest struct {
 	// <p>终端节点配置。</p>
 	EndpointConfigurations []*EndpointConfigurations `json:"EndpointConfigurations,omitnil,omitempty" name:"EndpointConfigurations"`
 
-	// <p>名称。</p><p>入参限制：最大长度不能超过128个字节。</p><p>以大小写字母或中文开头。</p>
+	// <p>名称。</p><p>参数格式：以字母或中文开头，长度 2–128 个字符，支持字母、数字、中文、. - _</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// <p>描述信息。</p><p>入参限制：最大长度不能超过100个字节。</p>
@@ -3778,7 +3778,7 @@ type ModifyGlobalAcceleratorAclRuleRequestParams struct {
 	// <p>Acl规则ID。</p>
 	GlobalAcceleratorAclRuleId *string `json:"GlobalAcceleratorAclRuleId,omitnil,omitempty" name:"GlobalAcceleratorAclRuleId"`
 
-	// <p>协议。</p><p>入参限制：支持选择&#39;TCP&#39;, &#39;UDP&#39;, &#39;ALL&#39;。</p>
+	// <p>协议。</p><p>入参限制：支持选择&#39;TCP&#39;, &#39;UDP&#39;。</p>
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// <p>端口。</p>
@@ -3806,7 +3806,7 @@ type ModifyGlobalAcceleratorAclRuleRequest struct {
 	// <p>Acl规则ID。</p>
 	GlobalAcceleratorAclRuleId *string `json:"GlobalAcceleratorAclRuleId,omitnil,omitempty" name:"GlobalAcceleratorAclRuleId"`
 
-	// <p>协议。</p><p>入参限制：支持选择&#39;TCP&#39;, &#39;UDP&#39;, &#39;ALL&#39;。</p>
+	// <p>协议。</p><p>入参限制：支持选择&#39;TCP&#39;, &#39;UDP&#39;。</p>
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// <p>端口。</p>
@@ -3878,10 +3878,10 @@ type ModifyGlobalAcceleratorRequestParams struct {
 	// <p>全球加速实例ID。</p>
 	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
 
-	// <p>名称，最大长度不能超过60个字节。</p>
+	// <p>名称。</p><p>参数格式：以字母或中文开头，长度 2–128 个字符，支持字母、数字、中文、. - _</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// <p>描述信息，最大长度不能超过100个字节。</p>
+	// <p>描述信息。</p><p>参数格式：最大长度不超过100 个字符。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// <p>跨境类型。</p><p>枚举值：</p><ul><li>HighQuality： 精品跨境。</li><li>Unicom： 联通跨境。</li></ul>
@@ -3897,10 +3897,10 @@ type ModifyGlobalAcceleratorRequest struct {
 	// <p>全球加速实例ID。</p>
 	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
 
-	// <p>名称，最大长度不能超过60个字节。</p>
+	// <p>名称。</p><p>参数格式：以字母或中文开头，长度 2–128 个字符，支持字母、数字、中文、. - _</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// <p>描述信息，最大长度不能超过100个字节。</p>
+	// <p>描述信息。</p><p>参数格式：最大长度不超过100 个字符。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// <p>跨境类型。</p><p>枚举值：</p><ul><li>HighQuality： 精品跨境。</li><li>Unicom： 联通跨境。</li></ul>
@@ -3966,7 +3966,7 @@ type ModifyListenerRequestParams struct {
 	// <p>监听器ID。</p>
 	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
 
-	// <p>名称，最大长度不能超过60个字节。</p>
+	// <p>名称。</p><p>参数格式：以字母或中文开头，长度 2–128 个字符，支持字母、数字、中文、. - _</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// <p>描述信息，最大长度不能超过100个字节。</p>
@@ -3993,10 +3993,10 @@ type ModifyListenerRequestParams struct {
 	// <p>加密算法套件。</p><p>入参限制：支持选择tls_policy_1.0-2&#39;, &#39;tls_policy_1.1-2&#39;, &#39;tls_policy_1.2&#39;, &#39;tls_policy_1.2_strict&#39;, &#39;tls_policy_1.2_strict-1.3&#39;。</p><p>HTTPS监听器才支持此参数修改。</p>
 	CipherPolicyId *string `json:"CipherPolicyId,omitnil,omitempty" name:"CipherPolicyId"`
 
-	// <p>服务器证书。</p><p>HTTPS监听器才支持此参数修改。</p>
+	// <p>服务器证书。</p><p>入参限制：当前仅支持传入一本证书；如果要使用多本证书，使用证书接口CreateListenerAdditionalCert来加其他证书。</p><p>HTTPS监听器才支持此参数修改。</p>
 	ServerCertificates []*string `json:"ServerCertificates,omitnil,omitempty" name:"ServerCertificates"`
 
-	// <p>客户端证书。</p><p>HTTPS监听器才支持此参数修改，并且开启双向认证。</p>
+	// <p>客户端证书。</p><p>入参限制：1、当前仅支持传入一本证书；如果要使用多本证书，使用证书接口CreateListenerAdditionalCert来加其他证书。2、证书必须为CA证书。</p><p>HTTPS监听器才支持此参数修改，并且开启双向认证。</p>
 	ClientCaCertificates []*string `json:"ClientCaCertificates,omitnil,omitempty" name:"ClientCaCertificates"`
 
 	// <p>获取源IP方式。</p><p>入参限制：支持选择&#39;ProxyProtocol&#39;, &#39;Close&#39;, &#39;ProxyProtocolV2&#39;, &#39;TOA&#39;。</p><p>TCP监听器才支持此参数修改。</p>
@@ -4012,7 +4012,7 @@ type ModifyListenerRequest struct {
 	// <p>监听器ID。</p>
 	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
 
-	// <p>名称，最大长度不能超过60个字节。</p>
+	// <p>名称。</p><p>参数格式：以字母或中文开头，长度 2–128 个字符，支持字母、数字、中文、. - _</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// <p>描述信息，最大长度不能超过100个字节。</p>
@@ -4039,10 +4039,10 @@ type ModifyListenerRequest struct {
 	// <p>加密算法套件。</p><p>入参限制：支持选择tls_policy_1.0-2&#39;, &#39;tls_policy_1.1-2&#39;, &#39;tls_policy_1.2&#39;, &#39;tls_policy_1.2_strict&#39;, &#39;tls_policy_1.2_strict-1.3&#39;。</p><p>HTTPS监听器才支持此参数修改。</p>
 	CipherPolicyId *string `json:"CipherPolicyId,omitnil,omitempty" name:"CipherPolicyId"`
 
-	// <p>服务器证书。</p><p>HTTPS监听器才支持此参数修改。</p>
+	// <p>服务器证书。</p><p>入参限制：当前仅支持传入一本证书；如果要使用多本证书，使用证书接口CreateListenerAdditionalCert来加其他证书。</p><p>HTTPS监听器才支持此参数修改。</p>
 	ServerCertificates []*string `json:"ServerCertificates,omitnil,omitempty" name:"ServerCertificates"`
 
-	// <p>客户端证书。</p><p>HTTPS监听器才支持此参数修改，并且开启双向认证。</p>
+	// <p>客户端证书。</p><p>入参限制：1、当前仅支持传入一本证书；如果要使用多本证书，使用证书接口CreateListenerAdditionalCert来加其他证书。2、证书必须为CA证书。</p><p>HTTPS监听器才支持此参数修改，并且开启双向认证。</p>
 	ClientCaCertificates []*string `json:"ClientCaCertificates,omitnil,omitempty" name:"ClientCaCertificates"`
 
 	// <p>获取源IP方式。</p><p>入参限制：支持选择&#39;ProxyProtocol&#39;, &#39;Close&#39;, &#39;ProxyProtocolV2&#39;, &#39;TOA&#39;。</p><p>TCP监听器才支持此参数修改。</p>

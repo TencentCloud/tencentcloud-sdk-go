@@ -7740,30 +7740,26 @@ func (r *CreateFlowBlockchainEvidenceUrlResponse) FromJsonString(s string) error
 
 // Predefined struct for user
 type CreateFlowForwardsRequestParams struct {
-	// 合同对应参与方需要修改的目标经办人对应的OpenId。
-	// 
-	// 注意：`需要保证目标经办人已经加入企业且已实名`
+	// <p>合同对应参与方需要修改的目标经办人对应的OpenId。</p><p>注意：<code>需要保证目标经办人已经加入企业且已实名</code></p>
 	TargetOpenId *string `json:"TargetOpenId,omitnil,omitempty" name:"TargetOpenId"`
 
-	// 企业签署方的合同及对应签署方
+	// <p>企业签署方的合同及对应签署方</p>
 	FlowForwardInfos []*FlowForwardInfo `json:"FlowForwardInfos,omitnil,omitempty" name:"FlowForwardInfos"`
 
-	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。此接口下面信息必填。<ul><li>渠道应用标识:  Agent.AppId</li><li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li><li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li></ul>第三方平台子客企业和员工必须已经经过实名认证
+	// <p>关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。此接口下面信息必填。<ul><li>渠道应用标识:  Agent.AppId</li><li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li><li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li></ul>第三方平台子客企业和员工必须已经经过实名认证</p>
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 }
 
 type CreateFlowForwardsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 合同对应参与方需要修改的目标经办人对应的OpenId。
-	// 
-	// 注意：`需要保证目标经办人已经加入企业且已实名`
+	// <p>合同对应参与方需要修改的目标经办人对应的OpenId。</p><p>注意：<code>需要保证目标经办人已经加入企业且已实名</code></p>
 	TargetOpenId *string `json:"TargetOpenId,omitnil,omitempty" name:"TargetOpenId"`
 
-	// 企业签署方的合同及对应签署方
+	// <p>企业签署方的合同及对应签署方</p>
 	FlowForwardInfos []*FlowForwardInfo `json:"FlowForwardInfos,omitnil,omitempty" name:"FlowForwardInfos"`
 
-	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。此接口下面信息必填。<ul><li>渠道应用标识:  Agent.AppId</li><li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li><li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li></ul>第三方平台子客企业和员工必须已经经过实名认证
+	// <p>关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。此接口下面信息必填。<ul><li>渠道应用标识:  Agent.AppId</li><li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li><li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li></ul>第三方平台子客企业和员工必须已经经过实名认证</p>
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 }
 
@@ -7790,10 +7786,10 @@ func (r *CreateFlowForwardsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateFlowForwardsResponseParams struct {
-	// 失败的合同id以及错误详情
+	// <p>失败的合同id以及错误详情</p>
 	FailedFlows []*FlowForwardResult `json:"FailedFlows,omitnil,omitempty" name:"FailedFlows"`
 
-	// 成功的合同id
+	// <p>成功的合同id</p>
 	SuccessFlows []*string `json:"SuccessFlows,omitnil,omitempty" name:"SuccessFlows"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

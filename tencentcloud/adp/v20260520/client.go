@@ -535,56 +535,6 @@ func (c *Client) CreateSpaceWithContext(ctx context.Context, request *CreateSpac
     return
 }
 
-func NewCreateTimerTaskRequest() (request *CreateTimerTaskRequest) {
-    request = &CreateTimerTaskRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("adp", APIVersion, "CreateTimerTask")
-    
-    
-    return
-}
-
-func NewCreateTimerTaskResponse() (response *CreateTimerTaskResponse) {
-    response = &CreateTimerTaskResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// CreateTimerTask
-// CreateTimerTask
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) CreateTimerTask(request *CreateTimerTaskRequest) (response *CreateTimerTaskResponse, err error) {
-    return c.CreateTimerTaskWithContext(context.Background(), request)
-}
-
-// CreateTimerTask
-// CreateTimerTask
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) CreateTimerTaskWithContext(ctx context.Context, request *CreateTimerTaskRequest) (response *CreateTimerTaskResponse, err error) {
-    if request == nil {
-        request = NewCreateTimerTaskRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "CreateTimerTask")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("CreateTimerTask require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewCreateTimerTaskResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewCreateVariableRequest() (request *CreateVariableRequest) {
     request = &CreateVariableRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1131,56 +1081,6 @@ func (c *Client) DeleteSpaceWithContext(ctx context.Context, request *DeleteSpac
     request.SetContext(ctx)
     
     response = NewDeleteSpaceResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDeleteTimerTaskRequest() (request *DeleteTimerTaskRequest) {
-    request = &DeleteTimerTaskRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("adp", APIVersion, "DeleteTimerTask")
-    
-    
-    return
-}
-
-func NewDeleteTimerTaskResponse() (response *DeleteTimerTaskResponse) {
-    response = &DeleteTimerTaskResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DeleteTimerTask
-// DeleteTimerTask
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DeleteTimerTask(request *DeleteTimerTaskRequest) (response *DeleteTimerTaskResponse, err error) {
-    return c.DeleteTimerTaskWithContext(context.Background(), request)
-}
-
-// DeleteTimerTask
-// DeleteTimerTask
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DeleteTimerTaskWithContext(ctx context.Context, request *DeleteTimerTaskRequest) (response *DeleteTimerTaskResponse, err error) {
-    if request == nil {
-        request = NewDeleteTimerTaskRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "DeleteTimerTask")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DeleteTimerTask require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDeleteTimerTaskResponse()
     err = c.Send(request, response)
     return
 }
@@ -2617,156 +2517,6 @@ func (c *Client) DescribeSystemVariableListWithContext(ctx context.Context, requ
     return
 }
 
-func NewDescribeTimerTaskRequest() (request *DescribeTimerTaskRequest) {
-    request = &DescribeTimerTaskRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("adp", APIVersion, "DescribeTimerTask")
-    
-    
-    return
-}
-
-func NewDescribeTimerTaskResponse() (response *DescribeTimerTaskResponse) {
-    response = &DescribeTimerTaskResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeTimerTask
-// DescribeTimerTask
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeTimerTask(request *DescribeTimerTaskRequest) (response *DescribeTimerTaskResponse, err error) {
-    return c.DescribeTimerTaskWithContext(context.Background(), request)
-}
-
-// DescribeTimerTask
-// DescribeTimerTask
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeTimerTaskWithContext(ctx context.Context, request *DescribeTimerTaskRequest) (response *DescribeTimerTaskResponse, err error) {
-    if request == nil {
-        request = NewDescribeTimerTaskRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "DescribeTimerTask")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeTimerTask require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeTimerTaskResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeTimerTaskRunLogListRequest() (request *DescribeTimerTaskRunLogListRequest) {
-    request = &DescribeTimerTaskRunLogListRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("adp", APIVersion, "DescribeTimerTaskRunLogList")
-    
-    
-    return
-}
-
-func NewDescribeTimerTaskRunLogListResponse() (response *DescribeTimerTaskRunLogListResponse) {
-    response = &DescribeTimerTaskRunLogListResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeTimerTaskRunLogList
-// 查询定时任务执行记录列表
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeTimerTaskRunLogList(request *DescribeTimerTaskRunLogListRequest) (response *DescribeTimerTaskRunLogListResponse, err error) {
-    return c.DescribeTimerTaskRunLogListWithContext(context.Background(), request)
-}
-
-// DescribeTimerTaskRunLogList
-// 查询定时任务执行记录列表
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeTimerTaskRunLogListWithContext(ctx context.Context, request *DescribeTimerTaskRunLogListRequest) (response *DescribeTimerTaskRunLogListResponse, err error) {
-    if request == nil {
-        request = NewDescribeTimerTaskRunLogListRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "DescribeTimerTaskRunLogList")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeTimerTaskRunLogList require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeTimerTaskRunLogListResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeTimerTaskSummaryListRequest() (request *DescribeTimerTaskSummaryListRequest) {
-    request = &DescribeTimerTaskSummaryListRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("adp", APIVersion, "DescribeTimerTaskSummaryList")
-    
-    
-    return
-}
-
-func NewDescribeTimerTaskSummaryListResponse() (response *DescribeTimerTaskSummaryListResponse) {
-    response = &DescribeTimerTaskSummaryListResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeTimerTaskSummaryList
-// 查询定时任务列表
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeTimerTaskSummaryList(request *DescribeTimerTaskSummaryListRequest) (response *DescribeTimerTaskSummaryListResponse, err error) {
-    return c.DescribeTimerTaskSummaryListWithContext(context.Background(), request)
-}
-
-// DescribeTimerTaskSummaryList
-// 查询定时任务列表
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeTimerTaskSummaryListWithContext(ctx context.Context, request *DescribeTimerTaskSummaryListRequest) (response *DescribeTimerTaskSummaryListResponse, err error) {
-    if request == nil {
-        request = NewDescribeTimerTaskSummaryListRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "DescribeTimerTaskSummaryList")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeTimerTaskSummaryList require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeTimerTaskSummaryListResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeVariableRequest() (request *DescribeVariableRequest) {
     request = &DescribeVariableRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2963,106 +2713,6 @@ func (c *Client) FavoriteSkillWithContext(ctx context.Context, request *Favorite
     request.SetContext(ctx)
     
     response = NewFavoriteSkillResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewMarkAppTriggerRunLogReadRequest() (request *MarkAppTriggerRunLogReadRequest) {
-    request = &MarkAppTriggerRunLogReadRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("adp", APIVersion, "MarkAppTriggerRunLogRead")
-    
-    
-    return
-}
-
-func NewMarkAppTriggerRunLogReadResponse() (response *MarkAppTriggerRunLogReadResponse) {
-    response = &MarkAppTriggerRunLogReadResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// MarkAppTriggerRunLogRead
-// MarkAppTriggerRunLogRead
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) MarkAppTriggerRunLogRead(request *MarkAppTriggerRunLogReadRequest) (response *MarkAppTriggerRunLogReadResponse, err error) {
-    return c.MarkAppTriggerRunLogReadWithContext(context.Background(), request)
-}
-
-// MarkAppTriggerRunLogRead
-// MarkAppTriggerRunLogRead
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) MarkAppTriggerRunLogReadWithContext(ctx context.Context, request *MarkAppTriggerRunLogReadRequest) (response *MarkAppTriggerRunLogReadResponse, err error) {
-    if request == nil {
-        request = NewMarkAppTriggerRunLogReadRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "MarkAppTriggerRunLogRead")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("MarkAppTriggerRunLogRead require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewMarkAppTriggerRunLogReadResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewMarkTimerTaskRunLogReadRequest() (request *MarkTimerTaskRunLogReadRequest) {
-    request = &MarkTimerTaskRunLogReadRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("adp", APIVersion, "MarkTimerTaskRunLogRead")
-    
-    
-    return
-}
-
-func NewMarkTimerTaskRunLogReadResponse() (response *MarkTimerTaskRunLogReadResponse) {
-    response = &MarkTimerTaskRunLogReadResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// MarkTimerTaskRunLogRead
-// MarkTimerTaskRunLogRead
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) MarkTimerTaskRunLogRead(request *MarkTimerTaskRunLogReadRequest) (response *MarkTimerTaskRunLogReadResponse, err error) {
-    return c.MarkTimerTaskRunLogReadWithContext(context.Background(), request)
-}
-
-// MarkTimerTaskRunLogRead
-// MarkTimerTaskRunLogRead
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) MarkTimerTaskRunLogReadWithContext(ctx context.Context, request *MarkTimerTaskRunLogReadRequest) (response *MarkTimerTaskRunLogReadResponse, err error) {
-    if request == nil {
-        request = NewMarkTimerTaskRunLogReadRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "MarkTimerTaskRunLogRead")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("MarkTimerTaskRunLogRead require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewMarkTimerTaskRunLogReadResponse()
     err = c.Send(request, response)
     return
 }
@@ -3417,56 +3067,6 @@ func (c *Client) ModifySpaceWithContext(ctx context.Context, request *ModifySpac
     return
 }
 
-func NewModifyTimerTaskRequest() (request *ModifyTimerTaskRequest) {
-    request = &ModifyTimerTaskRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("adp", APIVersion, "ModifyTimerTask")
-    
-    
-    return
-}
-
-func NewModifyTimerTaskResponse() (response *ModifyTimerTaskResponse) {
-    response = &ModifyTimerTaskResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// ModifyTimerTask
-// ModifyTimerTask
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) ModifyTimerTask(request *ModifyTimerTaskRequest) (response *ModifyTimerTaskResponse, err error) {
-    return c.ModifyTimerTaskWithContext(context.Background(), request)
-}
-
-// ModifyTimerTask
-// ModifyTimerTask
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) ModifyTimerTaskWithContext(ctx context.Context, request *ModifyTimerTaskRequest) (response *ModifyTimerTaskResponse, err error) {
-    if request == nil {
-        request = NewModifyTimerTaskRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "ModifyTimerTask")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("ModifyTimerTask require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewModifyTimerTaskResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewModifyVariableRequest() (request *ModifyVariableRequest) {
     request = &ModifyVariableRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3567,56 +3167,6 @@ func (c *Client) PauseAppTriggerWithContext(ctx context.Context, request *PauseA
     return
 }
 
-func NewPauseTimerTaskRequest() (request *PauseTimerTaskRequest) {
-    request = &PauseTimerTaskRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("adp", APIVersion, "PauseTimerTask")
-    
-    
-    return
-}
-
-func NewPauseTimerTaskResponse() (response *PauseTimerTaskResponse) {
-    response = &PauseTimerTaskResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// PauseTimerTask
-// PauseTimerTask
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) PauseTimerTask(request *PauseTimerTaskRequest) (response *PauseTimerTaskResponse, err error) {
-    return c.PauseTimerTaskWithContext(context.Background(), request)
-}
-
-// PauseTimerTask
-// PauseTimerTask
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) PauseTimerTaskWithContext(ctx context.Context, request *PauseTimerTaskRequest) (response *PauseTimerTaskResponse, err error) {
-    if request == nil {
-        request = NewPauseTimerTaskRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "PauseTimerTask")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("PauseTimerTask require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewPauseTimerTaskResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewReleaseSkillRequest() (request *ReleaseSkillRequest) {
     request = &ReleaseSkillRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3689,6 +3239,8 @@ func NewResetConversationResponse() (response *ResetConversationResponse) {
 // ResetConversation
 // 重置会话
 //
+// 注意：当前Claw模式应用会话不支持重置
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 func (c *Client) ResetConversation(request *ResetConversationRequest) (response *ResetConversationResponse, err error) {
@@ -3697,6 +3249,8 @@ func (c *Client) ResetConversation(request *ResetConversationRequest) (response 
 
 // ResetConversation
 // 重置会话
+//
+// 注意：当前Claw模式应用会话不支持重置
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3763,56 +3317,6 @@ func (c *Client) ResumeAppTriggerWithContext(ctx context.Context, request *Resum
     request.SetContext(ctx)
     
     response = NewResumeAppTriggerResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewResumeTimerTaskRequest() (request *ResumeTimerTaskRequest) {
-    request = &ResumeTimerTaskRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("adp", APIVersion, "ResumeTimerTask")
-    
-    
-    return
-}
-
-func NewResumeTimerTaskResponse() (response *ResumeTimerTaskResponse) {
-    response = &ResumeTimerTaskResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// ResumeTimerTask
-// ResumeTimerTask
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) ResumeTimerTask(request *ResumeTimerTaskRequest) (response *ResumeTimerTaskResponse, err error) {
-    return c.ResumeTimerTaskWithContext(context.Background(), request)
-}
-
-// ResumeTimerTask
-// ResumeTimerTask
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) ResumeTimerTaskWithContext(ctx context.Context, request *ResumeTimerTaskRequest) (response *ResumeTimerTaskResponse, err error) {
-    if request == nil {
-        request = NewResumeTimerTaskRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "ResumeTimerTask")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("ResumeTimerTask require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewResumeTimerTaskResponse()
     err = c.Send(request, response)
     return
 }
@@ -3963,56 +3467,6 @@ func (c *Client) RunAppTriggerNowWithContext(ctx context.Context, request *RunAp
     request.SetContext(ctx)
     
     response = NewRunAppTriggerNowResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewRunTimerTaskNowRequest() (request *RunTimerTaskNowRequest) {
-    request = &RunTimerTaskNowRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("adp", APIVersion, "RunTimerTaskNow")
-    
-    
-    return
-}
-
-func NewRunTimerTaskNowResponse() (response *RunTimerTaskNowResponse) {
-    response = &RunTimerTaskNowResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// RunTimerTaskNow
-// RunTimerTaskNow
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) RunTimerTaskNow(request *RunTimerTaskNowRequest) (response *RunTimerTaskNowResponse, err error) {
-    return c.RunTimerTaskNowWithContext(context.Background(), request)
-}
-
-// RunTimerTaskNow
-// RunTimerTaskNow
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) RunTimerTaskNowWithContext(ctx context.Context, request *RunTimerTaskNowRequest) (response *RunTimerTaskNowResponse, err error) {
-    if request == nil {
-        request = NewRunTimerTaskNowRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "RunTimerTaskNow")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("RunTimerTaskNow require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewRunTimerTaskNowResponse()
     err = c.Send(request, response)
     return
 }

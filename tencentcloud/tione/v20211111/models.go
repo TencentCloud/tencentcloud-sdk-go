@@ -2553,21 +2553,27 @@ func (r *DeleteDataSourceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteDatasetRequestParams struct {
-	// 数据集id
+	// <p>数据集id</p>
 	DatasetId *string `json:"DatasetId,omitnil,omitempty" name:"DatasetId"`
 
-	// 是否删除cos标签文件
+	// <p>是否删除cos标签文件</p>
 	DeleteLabelEnable *bool `json:"DeleteLabelEnable,omitnil,omitempty" name:"DeleteLabelEnable"`
+
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 }
 
 type DeleteDatasetRequest struct {
 	*tchttp.BaseRequest
 	
-	// 数据集id
+	// <p>数据集id</p>
 	DatasetId *string `json:"DatasetId,omitnil,omitempty" name:"DatasetId"`
 
-	// 是否删除cos标签文件
+	// <p>是否删除cos标签文件</p>
 	DeleteLabelEnable *bool `json:"DeleteLabelEnable,omitnil,omitempty" name:"DeleteLabelEnable"`
+
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 }
 
 func (r *DeleteDatasetRequest) ToJsonString() string {
@@ -2584,6 +2590,7 @@ func (r *DeleteDatasetRequest) FromJsonString(s string) error {
 	}
 	delete(f, "DatasetId")
 	delete(f, "DeleteLabelEnable")
+	delete(f, "TiProjectId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteDatasetRequest has unknown keys!", "")
 	}
@@ -2592,7 +2599,7 @@ func (r *DeleteDatasetRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteDatasetResponseParams struct {
-	// 删除的datasetId
+	// <p>删除的datasetId</p>
 	DatasetId *string `json:"DatasetId,omitnil,omitempty" name:"DatasetId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3181,6 +3188,9 @@ type DescribeAnnotatedTaskListRequestParams struct {
 	// 页面大小，默认为10
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
 	// 过滤条件数组，支持数据集ID，标注场景、任务状态、数据集名称、人物名称的过滤，后面两个支持模糊查询
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
@@ -3202,6 +3212,9 @@ type DescribeAnnotatedTaskListRequest struct {
 
 	// 页面大小，默认为10
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 
 	// 过滤条件数组，支持数据集ID，标注场景、任务状态、数据集名称、人物名称的过滤，后面两个支持模糊查询
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
@@ -3230,6 +3243,7 @@ func (r *DescribeAnnotatedTaskListRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "TiProjectId")
 	delete(f, "Filters")
 	delete(f, "TagFilters")
 	delete(f, "Order")
