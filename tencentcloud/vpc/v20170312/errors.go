@@ -1556,8 +1556,14 @@ const (
 	// VPN SPD通道不支持配置健康检查
 	UNSUPPORTEDOPERATION_VPNCONNCIDRNOTSUPPORTEDHEALTHCHECK = "UnsupportedOperation.VpnConnCidrNotSupportedHealthCheck"
 
+	// 私网VPN通道目的网段与私网VPN网关的私网网段冲突，请修改后重试。
+	UNSUPPORTEDOPERATION_VPNCONNDESTCIDRCONFLICTWITHPRIVATENET = "UnsupportedOperation.VpnConnDestCidrConflictWithPrivateNet"
+
 	// 当前通道为非可用状态，不支持该操作。
 	UNSUPPORTEDOPERATION_VPNCONNINVALIDSTATE = "UnsupportedOperation.VpnConnInvalidState"
+
+	// VPN网关下的通道不支持动态路由与非动态路由混用，请检查后重试。
+	UNSUPPORTEDOPERATION_VPNCONNROUTETYPEMIXED = "UnsupportedOperation.VpnConnRouteTypeMixed"
 
 	// SPD本端网段冲突，请检查后重试。
 	UNSUPPORTEDOPERATION_VPNCONNSPDOVERLAP = "UnsupportedOperation.VpnConnSPDOverlap"

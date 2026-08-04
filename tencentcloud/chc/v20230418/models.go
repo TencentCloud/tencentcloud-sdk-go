@@ -1771,14 +1771,14 @@ func (r *DescribeDeviceListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDeviceWorkOrderDetailRequestParams struct {
-	// 工单ID
+	// <p>工单ID</p>
 	OrderId *string `json:"OrderId,omitnil,omitempty" name:"OrderId"`
 }
 
 type DescribeDeviceWorkOrderDetailRequest struct {
 	*tchttp.BaseRequest
 	
-	// 工单ID
+	// <p>工单ID</p>
 	OrderId *string `json:"OrderId,omitnil,omitempty" name:"OrderId"`
 }
 
@@ -1803,29 +1803,35 @@ func (r *DescribeDeviceWorkOrderDetailRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDeviceWorkOrderDetailResponseParams struct {
-	// 工单ID
+	// <p>工单ID</p>
 	OrderId *string `json:"OrderId,omitnil,omitempty" name:"OrderId"`
 
-	// 服务类型
+	// <p>服务类型</p>
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
-	// 工单类型
+	// <p>工单类型</p>
 	OrderType *string `json:"OrderType,omitnil,omitempty" name:"OrderType"`
 
-	// 工单状态
+	// <p>工单状态</p>
 	OrderStatus *string `json:"OrderStatus,omitnil,omitempty" name:"OrderStatus"`
 
-	// 工单流程状态
+	// <p>工单流程状态</p>
 	StepSet []*OrderStep `json:"StepSet,omitnil,omitempty" name:"StepSet"`
 
-	// 工单设备信息
+	// <p>工单设备信息</p>
 	DeviceSet []*DeviceHistory `json:"DeviceSet,omitnil,omitempty" name:"DeviceSet"`
 
-	// 工单的入参信息
+	// <p>工单的入参信息</p>
 	BaseInfo *DeviceOrderBaseInfo `json:"BaseInfo,omitnil,omitempty" name:"BaseInfo"`
 
-	// 工单的拒绝原因，工单状态为reject的时候返回
+	// <p>工单的拒绝原因，工单状态为reject的时候返回</p>
 	RejectReason *string `json:"RejectReason,omitnil,omitempty" name:"RejectReason"`
+
+	// <p>工单 SLA 信息</p>
+	SLAInfo *SLAInfo `json:"SLAInfo,omitnil,omitempty" name:"SLAInfo"`
+
+	// <p>前序未完成的工单号</p>
+	PreOrderSet []*string `json:"PreOrderSet,omitnil,omitempty" name:"PreOrderSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -4022,6 +4028,23 @@ type RackUsage struct {
 	UsedRate *float64 `json:"UsedRate,omitnil,omitempty" name:"UsedRate"`
 }
 
+type SLAInfo struct {
+	// <p>SLA 状态</p><p>枚举值：</p><ul><li>InSLA： SLA 内</li><li>Overdue： 已超时</li><li>Completed： 已完成</li></ul>
+	SLAStatus *string `json:"SLAStatus,omitnil,omitempty" name:"SLAStatus"`
+
+	// <p>到期时间</p>
+	DueTime *string `json:"DueTime,omitnil,omitempty" name:"DueTime"`
+
+	// <p>剩余时长</p><p>单位：小时</p>
+	RemainingHours *float64 `json:"RemainingHours,omitnil,omitempty" name:"RemainingHours"`
+
+	// <p>超时时长</p><p>单位：小时</p>
+	OverdueHours *float64 `json:"OverdueHours,omitnil,omitempty" name:"OverdueHours"`
+
+	// <p>SLA 工作日天数</p><p>单位：天</p>
+	SLADays *uint64 `json:"SLADays,omitnil,omitempty" name:"SLADays"`
+}
+
 type SelfOperation struct {
 	// 联系人员电话
 	StuffContact *string `json:"StuffContact,omitnil,omitempty" name:"StuffContact"`
@@ -4179,29 +4202,32 @@ type WireReceivingInfo struct {
 }
 
 type WorkOrderData struct {
-	// 工单号
+	// <p>工单号</p>
 	WorkOrderId *string `json:"WorkOrderId,omitnil,omitempty" name:"WorkOrderId"`
 
-	// 服务类型，一个服务可能会产生多个工单
+	// <p>服务类型，一个服务可能会产生多个工单</p>
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
-	// 工单类型
+	// <p>工单类型</p>
 	OrderType *string `json:"OrderType,omitnil,omitempty" name:"OrderType"`
 
-	// 工单状态
+	// <p>工单状态</p>
 	OrderStatus *string `json:"OrderStatus,omitnil,omitempty" name:"OrderStatus"`
 
-	// 工单创建人
+	// <p>工单创建人</p>
 	Creator *string `json:"Creator,omitnil,omitempty" name:"Creator"`
 
-	// 工单创建时间
+	// <p>工单创建时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 工单完成时间
+	// <p>工单完成时间</p>
 	FinishTime *string `json:"FinishTime,omitnil,omitempty" name:"FinishTime"`
 
-	// 工单关联的dcops单号
+	// <p>工单关联的dcops单号</p>
 	TicketId *string `json:"TicketId,omitnil,omitempty" name:"TicketId"`
+
+	// <p>SLA</p>
+	SLAInfo *SLAInfo `json:"SLAInfo,omitnil,omitempty" name:"SLAInfo"`
 }
 
 type WorkOrderFamilyDetail struct {

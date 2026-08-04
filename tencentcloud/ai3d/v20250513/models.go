@@ -553,8 +553,11 @@ type QueryHunyuan3DPartJobResponseParams struct {
 	// <p>生成文件的URL地址，有效期1天。</p>
 	ResultFile3Ds []*File3D `json:"ResultFile3Ds,omitnil,omitempty" name:"ResultFile3Ds"`
 
-	// <p>是否分步骤进行组件生成；<br>开启后，输入原始模型后，可生成带分割信息的模型以及分割数据，可对此信息编辑后再传入带有分割信息的模型和分割数据进行编辑后的组件生成；<br>此参数默认关闭。</p>
+	// <p>是否分步骤进行组件生成；<br>开启后，输入原始模型后，可生成带分割信息的模型以及分割数据，可对此信息编辑后再传入带有分割信息的模型和分割数据进行编辑后的组件生成；<br>此参数默认关闭。</p><p>该参数废弃， 超过 9MB 不返回， 请使用 PartSegmentationInfoUrl 下载</p>
 	PartSegmentationInfo *string `json:"PartSegmentationInfo,omitnil,omitempty" name:"PartSegmentationInfo"`
+
+	// <p>PartSegmentationInfo 下载地址</p>
+	PartSegmentationInfoUrl *string `json:"PartSegmentationInfoUrl,omitnil,omitempty" name:"PartSegmentationInfoUrl"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -789,8 +792,11 @@ type SubmitHunyuan3DPartJobRequestParams struct {
 	// <p>是否分步骤进行组件生成；<br>开启后，输入原始模型后，可生成带分割信息的模型以及分割数据，可对此信息编辑后再传入带有分割信息的模型和分割数据进行编辑后的组件生成；<br>此参数默认关闭。</p>
 	PartSegmentationInfo *string `json:"PartSegmentationInfo,omitnil,omitempty" name:"PartSegmentationInfo"`
 
-	// <p>是否开启后处理，开启后将只输出一个模型链接，默认关闭。 （开启此接口后，需额外增加20积分）</p>
+	// <p>是否分步骤进行组件生成；<br>开启后，输入原始模型后，可生成带分割信息的模型以及分割数据，可对此信息编辑后再传入带有分割信息的模型和分割数据进行编辑后的组件生成；<br>此参数默认关闭。</p>
 	EnableStagedGeneration *bool `json:"EnableStagedGeneration,omitnil,omitempty" name:"EnableStagedGeneration"`
+
+	// <p>是否开启后处理，开启后将只输出一个模型链接，默认关闭。 （开启此接口后，需额外增加20积分）</p>
+	EnablePostProcess *bool `json:"EnablePostProcess,omitnil,omitempty" name:"EnablePostProcess"`
 }
 
 type SubmitHunyuan3DPartJobRequest struct {
@@ -805,8 +811,11 @@ type SubmitHunyuan3DPartJobRequest struct {
 	// <p>是否分步骤进行组件生成；<br>开启后，输入原始模型后，可生成带分割信息的模型以及分割数据，可对此信息编辑后再传入带有分割信息的模型和分割数据进行编辑后的组件生成；<br>此参数默认关闭。</p>
 	PartSegmentationInfo *string `json:"PartSegmentationInfo,omitnil,omitempty" name:"PartSegmentationInfo"`
 
-	// <p>是否开启后处理，开启后将只输出一个模型链接，默认关闭。 （开启此接口后，需额外增加20积分）</p>
+	// <p>是否分步骤进行组件生成；<br>开启后，输入原始模型后，可生成带分割信息的模型以及分割数据，可对此信息编辑后再传入带有分割信息的模型和分割数据进行编辑后的组件生成；<br>此参数默认关闭。</p>
 	EnableStagedGeneration *bool `json:"EnableStagedGeneration,omitnil,omitempty" name:"EnableStagedGeneration"`
+
+	// <p>是否开启后处理，开启后将只输出一个模型链接，默认关闭。 （开启此接口后，需额外增加20积分）</p>
+	EnablePostProcess *bool `json:"EnablePostProcess,omitnil,omitempty" name:"EnablePostProcess"`
 }
 
 func (r *SubmitHunyuan3DPartJobRequest) ToJsonString() string {
@@ -825,6 +834,7 @@ func (r *SubmitHunyuan3DPartJobRequest) FromJsonString(s string) error {
 	delete(f, "Model")
 	delete(f, "PartSegmentationInfo")
 	delete(f, "EnableStagedGeneration")
+	delete(f, "EnablePostProcess")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitHunyuan3DPartJobRequest has unknown keys!", "")
 	}

@@ -1791,7 +1791,7 @@ type AuditLogInfo struct {
 	// 影响行数
 	EffectRow *uint64 `json:"EffectRow,omitnil,omitempty" name:"EffectRow"`
 
-	// 执行时间
+	// 执行时间,单位：毫秒
 	ExecTime *uint64 `json:"ExecTime,omitnil,omitempty" name:"ExecTime"`
 
 	// 命中规则
@@ -5273,63 +5273,69 @@ func (r *CreateDspmRiskExportJobResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateDspmWhitelistStrategyRequestParams struct {
-	// 策略类型
+	// <p>策略类型</p>
 	StrategyType *string `json:"StrategyType,omitnil,omitempty" name:"StrategyType"`
 
-	// 集团账号的成员id
+	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
-	// 白名单
+	// <p>白名单</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 规则
+	// <p>规则</p>
 	Rule *string `json:"Rule,omitnil,omitempty" name:"Rule"`
 
-	// 资产id
+	// <p>资产id</p>
 	AssetId *string `json:"AssetId,omitnil,omitempty" name:"AssetId"`
 
-	// 账号
+	// <p>账号</p>
 	Account *string `json:"Account,omitnil,omitempty" name:"Account"`
 
-	// 主机
+	// <p>主机</p>
 	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
 
-	// 风险id
+	// <p>风险id</p>
 	RiskId *string `json:"RiskId,omitnil,omitempty" name:"RiskId"`
 
-	// 备注
+	// <p>备注</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// <p>白名单的类型</p><p>枚举值：</p><ul><li>static_risk： 静态配置扫描的白名单规则</li><li>audit： 审计白名单规则</li><li>ueba： ueba相关的白名单规则</li></ul>
+	WhitelistType *string `json:"WhitelistType,omitnil,omitempty" name:"WhitelistType"`
 }
 
 type CreateDspmWhitelistStrategyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 策略类型
+	// <p>策略类型</p>
 	StrategyType *string `json:"StrategyType,omitnil,omitempty" name:"StrategyType"`
 
-	// 集团账号的成员id
+	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
-	// 白名单
+	// <p>白名单</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 规则
+	// <p>规则</p>
 	Rule *string `json:"Rule,omitnil,omitempty" name:"Rule"`
 
-	// 资产id
+	// <p>资产id</p>
 	AssetId *string `json:"AssetId,omitnil,omitempty" name:"AssetId"`
 
-	// 账号
+	// <p>账号</p>
 	Account *string `json:"Account,omitnil,omitempty" name:"Account"`
 
-	// 主机
+	// <p>主机</p>
 	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
 
-	// 风险id
+	// <p>风险id</p>
 	RiskId *string `json:"RiskId,omitnil,omitempty" name:"RiskId"`
 
-	// 备注
+	// <p>备注</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// <p>白名单的类型</p><p>枚举值：</p><ul><li>static_risk： 静态配置扫描的白名单规则</li><li>audit： 审计白名单规则</li><li>ueba： ueba相关的白名单规则</li></ul>
+	WhitelistType *string `json:"WhitelistType,omitnil,omitempty" name:"WhitelistType"`
 }
 
 func (r *CreateDspmWhitelistStrategyRequest) ToJsonString() string {
@@ -5353,6 +5359,7 @@ func (r *CreateDspmWhitelistStrategyRequest) FromJsonString(s string) error {
 	delete(f, "Host")
 	delete(f, "RiskId")
 	delete(f, "Remark")
+	delete(f, "WhitelistType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDspmWhitelistStrategyRequest has unknown keys!", "")
 	}
@@ -5361,7 +5368,7 @@ func (r *CreateDspmWhitelistStrategyRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateDspmWhitelistStrategyResponseParams struct {
-	// 白名单id
+	// <p>白名单id</p>
 	WhitelistStrategyId *string `json:"WhitelistStrategyId,omitnil,omitempty" name:"WhitelistStrategyId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6965,7 +6972,7 @@ func (r *DeleteDspmRestoreLogListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteDspmWhitelistStrategyRequestParams struct {
-	// 集团账号的成员id
+	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
 	// 白名单id
@@ -6975,7 +6982,7 @@ type DeleteDspmWhitelistStrategyRequestParams struct {
 type DeleteDspmWhitelistStrategyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集团账号的成员id
+	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
 	// 白名单id
@@ -14869,7 +14876,7 @@ func (r *DescribeDspmIdentifyRuleTestResultResponse) FromJsonString(s string) er
 
 // Predefined struct for user
 type DescribeDspmLogListRequestParams struct {
-	// 集团账号的成员id
+	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
 	// 限制数目
@@ -14947,7 +14954,7 @@ type DescribeDspmLogListRequestParams struct {
 	// 影响行数最大值
 	RowNumMax *int64 `json:"RowNumMax,omitnil,omitempty" name:"RowNumMax"`
 
-	// 数据库类型
+	// 数据库类型, 支持的值：cdb，mariadb
 	DbTypes []*string `json:"DbTypes,omitnil,omitempty" name:"DbTypes"`
 
 	// 返回码
@@ -14978,7 +14985,7 @@ type DescribeDspmLogListRequestParams struct {
 type DescribeDspmLogListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集团账号的成员id
+	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
 	// 限制数目
@@ -15056,7 +15063,7 @@ type DescribeDspmLogListRequest struct {
 	// 影响行数最大值
 	RowNumMax *int64 `json:"RowNumMax,omitnil,omitempty" name:"RowNumMax"`
 
-	// 数据库类型
+	// 数据库类型, 支持的值：cdb，mariadb
 	DbTypes []*string `json:"DbTypes,omitnil,omitempty" name:"DbTypes"`
 
 	// 返回码
@@ -15637,7 +15644,7 @@ func (r *DescribeDspmRiskResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDspmRiskStrategyGroupRequestParams struct {
-	// 集团账号的成员id
+	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
 	// 过滤器
@@ -15647,7 +15654,7 @@ type DescribeDspmRiskStrategyGroupRequestParams struct {
 type DescribeDspmRiskStrategyGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集团账号的成员id
+	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
 	// 过滤器
@@ -15704,7 +15711,7 @@ func (r *DescribeDspmRiskStrategyGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDspmRiskStrategyRequestParams struct {
-	// 集团账号的成员id
+	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
 	// 过滤器
@@ -15714,7 +15721,7 @@ type DescribeDspmRiskStrategyRequestParams struct {
 type DescribeDspmRiskStrategyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集团账号的成员id
+	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
 	// 过滤器
@@ -16083,7 +16090,7 @@ func (r *DescribeDspmSyncUsersStatusResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDspmWhitelistStrategyRequestParams struct {
-	// 集团账号的成员id
+	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
 	// 过滤器
@@ -16093,7 +16100,7 @@ type DescribeDspmWhitelistStrategyRequestParams struct {
 type DescribeDspmWhitelistStrategyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集团账号的成员id
+	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
 	// 过滤器
@@ -22808,70 +22815,84 @@ type DspmRiskCount struct {
 }
 
 type DspmRiskStrategy struct {
-	// 策略类型
+	// <p>策略类型</p>
 	StrategyType *string `json:"StrategyType,omitnil,omitempty" name:"StrategyType"`
 
-	// 策略名
+	// <p>策略名</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 策略类型
+	// <p>策略类型</p>
 	StrategyCategory *string `json:"StrategyCategory,omitnil,omitempty" name:"StrategyCategory"`
 
-	// 是否启用。0-禁用 1-启用
+	// <p>是否启用。0-禁用 1-启用</p>
 	IsEnabled *int64 `json:"IsEnabled,omitnil,omitempty" name:"IsEnabled"`
 
-	// 风险等级。
+	// <p>风险等级。</p>
 	RiskLevel *string `json:"RiskLevel,omitnil,omitempty" name:"RiskLevel"`
 
-	// 策略规则
+	// <p>策略规则</p>
 	Rule *string `json:"Rule,omitnil,omitempty" name:"Rule"`
 
-	// 备注
+	// <p>备注</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 策略内容
+	// <p>策略内容</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 命中次数
+	// <p>命中次数</p>
 	HitCount *int64 `json:"HitCount,omitnil,omitempty" name:"HitCount"`
 
-	// 风险类型。risk-风险；alarm-告警。
+	// <p>风险类型。risk-风险；alarm-告警。</p>
 	RiskType *string `json:"RiskType,omitnil,omitempty" name:"RiskType"`
 
-	// 资产所属账号app id
+	// <p>资产所属账号app id</p>
 	AppId *uint64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 
-	// 账号昵称
+	// <p>账号昵称</p>
 	NickName *string `json:"NickName,omitnil,omitempty" name:"NickName"`
 
-	// 资产所属账号uin
+	// <p>资产所属账号uin</p>
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 
-	// 策略id
+	// <p>策略id</p>
 	StrategyId *uint64 `json:"StrategyId,omitnil,omitempty" name:"StrategyId"`
+
+	// <p>规则来源</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleSource *string `json:"RuleSource,omitnil,omitempty" name:"RuleSource"`
+
+	// <p>支持的资产类型</p>
+	AssetTypes []*string `json:"AssetTypes,omitnil,omitempty" name:"AssetTypes"`
+
+	// <p>风险描述</p>
+	RiskDescription *string `json:"RiskDescription,omitnil,omitempty" name:"RiskDescription"`
 }
 
 type DspmRiskStrategyGroup struct {
-	// 策略类型
+	// <p>策略类型</p>
 	StrategyType *string `json:"StrategyType,omitnil,omitempty" name:"StrategyType"`
 
-	// 策略名
+	// <p>策略名</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 策略类型
+	// <p>策略类型</p>
 	StrategyCategory *string `json:"StrategyCategory,omitnil,omitempty" name:"StrategyCategory"`
 
-	// 是否启用。0-禁用 1-启用
+	// <p>是否启用。0-禁用 1-启用</p>
 	IsEnabled *int64 `json:"IsEnabled,omitnil,omitempty" name:"IsEnabled"`
 
-	// 命中次数
+	// <p>命中次数</p>
 	HitCount *int64 `json:"HitCount,omitnil,omitempty" name:"HitCount"`
 
-	// 风险类型。risk-风险；alarm-告警。
+	// <p>风险类型。risk-风险；alarm-告警。</p>
 	RiskType *string `json:"RiskType,omitnil,omitempty" name:"RiskType"`
 
-	// 策略列表
+	// <p>策略列表</p>
 	StrategyList []*DspmRiskStrategy `json:"StrategyList,omitnil,omitempty" name:"StrategyList"`
+
+	// <p>规则来源</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleSource *string `json:"RuleSource,omitnil,omitempty" name:"RuleSource"`
 }
 
 type DspmRiskTendency struct {
@@ -23007,50 +23028,53 @@ type DspmUinUser struct {
 }
 
 type DspmWhitelistStrategy struct {
-	// 白名单策略id
+	// <p>白名单策略id</p>
 	WhitelistStrategyId *string `json:"WhitelistStrategyId,omitnil,omitempty" name:"WhitelistStrategyId"`
 
-	// 策略类型
+	// <p>策略类型</p>
 	StrategyType *string `json:"StrategyType,omitnil,omitempty" name:"StrategyType"`
 
-	// 白名单策略名
+	// <p>白名单策略名</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 策略类型
+	// <p>策略类型</p>
 	StrategyCategory *string `json:"StrategyCategory,omitnil,omitempty" name:"StrategyCategory"`
 
-	// 策略规则
+	// <p>策略规则</p>
 	Rule *string `json:"Rule,omitnil,omitempty" name:"Rule"`
 
-	// 备注
+	// <p>备注</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 修改时间
+	// <p>修改时间</p>
 	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 
-	// 资产id
+	// <p>资产id</p>
 	AssetId *string `json:"AssetId,omitnil,omitempty" name:"AssetId"`
 
-	// 账号
+	// <p>账号</p>
 	Account *string `json:"Account,omitnil,omitempty" name:"Account"`
 
-	// 主机
+	// <p>主机</p>
 	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
 
-	// 策略规则内容描述
+	// <p>策略规则内容描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 白名单类型。risk-风险白名单；alarm-告警白名单。
+	// <p>白名单类型。risk-风险白名单；alarm-告警白名单。</p>
 	RiskType *string `json:"RiskType,omitnil,omitempty" name:"RiskType"`
 
-	// 资产所属账号app id
+	// <p>资产所属账号app id</p>
 	AppId *uint64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 
-	// 账号昵称
+	// <p>账号昵称</p>
 	NickName *string `json:"NickName,omitnil,omitempty" name:"NickName"`
 
-	// 资产所属账号uin
+	// <p>资产所属账号uin</p>
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
+
+	// <p>白名单类型</p>
+	WhitelistType *string `json:"WhitelistType,omitnil,omitempty" name:"WhitelistType"`
 }
 
 type EDRFilter struct {
@@ -26734,45 +26758,63 @@ func (r *ModifyDspmRiskInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyDspmRiskStrategyRequestParams struct {
-	// 集团账号的成员id
+	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
-	// 风险策略类型
+	// <p>风险策略类型</p>
 	StrategyType *string `json:"StrategyType,omitnil,omitempty" name:"StrategyType"`
 
-	// 是否启用
+	// <p>是否启用</p>
 	IsEnabled *int64 `json:"IsEnabled,omitnil,omitempty" name:"IsEnabled"`
 
-	// 策略内容，如：{     ThresholdValue: "100" }
+	// <p>策略内容，如：{     ThresholdValue: &quot;100&quot; }</p>
 	Rule *string `json:"Rule,omitnil,omitempty" name:"Rule"`
 
-	// 可选值：Info/Low/Medium/High
+	// <p>可选值：Info/Low/Medium/High</p>
 	RiskLevel *string `json:"RiskLevel,omitnil,omitempty" name:"RiskLevel"`
 
-	// 策略id
+	// <p>策略id</p>
 	StrategyId []*uint64 `json:"StrategyId,omitnil,omitempty" name:"StrategyId"`
+
+	// <p>策略名</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>策略描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>支持的数据库类型</p>
+	DbTypes *string `json:"DbTypes,omitnil,omitempty" name:"DbTypes"`
 }
 
 type ModifyDspmRiskStrategyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集团账号的成员id
+	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
-	// 风险策略类型
+	// <p>风险策略类型</p>
 	StrategyType *string `json:"StrategyType,omitnil,omitempty" name:"StrategyType"`
 
-	// 是否启用
+	// <p>是否启用</p>
 	IsEnabled *int64 `json:"IsEnabled,omitnil,omitempty" name:"IsEnabled"`
 
-	// 策略内容，如：{     ThresholdValue: "100" }
+	// <p>策略内容，如：{     ThresholdValue: &quot;100&quot; }</p>
 	Rule *string `json:"Rule,omitnil,omitempty" name:"Rule"`
 
-	// 可选值：Info/Low/Medium/High
+	// <p>可选值：Info/Low/Medium/High</p>
 	RiskLevel *string `json:"RiskLevel,omitnil,omitempty" name:"RiskLevel"`
 
-	// 策略id
+	// <p>策略id</p>
 	StrategyId []*uint64 `json:"StrategyId,omitnil,omitempty" name:"StrategyId"`
+
+	// <p>策略名</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>策略描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>支持的数据库类型</p>
+	DbTypes *string `json:"DbTypes,omitnil,omitempty" name:"DbTypes"`
 }
 
 func (r *ModifyDspmRiskStrategyRequest) ToJsonString() string {
@@ -26793,6 +26835,9 @@ func (r *ModifyDspmRiskStrategyRequest) FromJsonString(s string) error {
 	delete(f, "Rule")
 	delete(f, "RiskLevel")
 	delete(f, "StrategyId")
+	delete(f, "Name")
+	delete(f, "Description")
+	delete(f, "DbTypes")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDspmRiskStrategyRequest has unknown keys!", "")
 	}
@@ -26823,7 +26868,7 @@ func (r *ModifyDspmRiskStrategyResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyDspmWhitelistStrategyRequestParams struct {
-	// 集团账号的成员id
+	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
 	// 白名单id
@@ -26842,7 +26887,7 @@ type ModifyDspmWhitelistStrategyRequestParams struct {
 type ModifyDspmWhitelistStrategyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集团账号的成员id
+	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
 	// 白名单id

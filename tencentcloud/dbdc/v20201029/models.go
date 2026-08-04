@@ -231,6 +231,9 @@ type CreateDBCustomClusterRequestParams struct {
 
 	// <p>试运行开关，true 时只执行参数校验，不发起创建流程，默认 false</p>
 	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
+
+	// <p>是否启用集群删除保护</p><p>枚举值：</p><ul><li>true： 启用</li><li>false： 不启用</li></ul><p>默认值：true</p>
+	DeletionProtection *bool `json:"DeletionProtection,omitnil,omitempty" name:"DeletionProtection"`
 }
 
 type CreateDBCustomClusterRequest struct {
@@ -256,6 +259,9 @@ type CreateDBCustomClusterRequest struct {
 
 	// <p>试运行开关，true 时只执行参数校验，不发起创建流程，默认 false</p>
 	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
+
+	// <p>是否启用集群删除保护</p><p>枚举值：</p><ul><li>true： 启用</li><li>false： 不启用</li></ul><p>默认值：true</p>
+	DeletionProtection *bool `json:"DeletionProtection,omitnil,omitempty" name:"DeletionProtection"`
 }
 
 func (r *CreateDBCustomClusterRequest) ToJsonString() string {
@@ -277,6 +283,7 @@ func (r *CreateDBCustomClusterRequest) FromJsonString(s string) error {
 	delete(f, "Tags")
 	delete(f, "ClientToken")
 	delete(f, "DryRun")
+	delete(f, "DeletionProtection")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDBCustomClusterRequest has unknown keys!", "")
 	}
@@ -542,6 +549,9 @@ type DBCustomCluster struct {
 	// <p>集群的标签信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>是否启用集群删除保护</p><p>枚举值：</p><ul><li>true： 启用</li><li>false： 不启用</li></ul>
+	DeletionProtection *bool `json:"DeletionProtection,omitnil,omitempty" name:"DeletionProtection"`
 }
 
 type DBCustomClusterNode struct {
@@ -893,6 +903,9 @@ type DescribeDBCustomClusterDetailResponseParams struct {
 	// <p>容器网络，在此集群中的所有Pod将与此网络连通</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContainerNetwork *ContainerNetwork `json:"ContainerNetwork,omitnil,omitempty" name:"ContainerNetwork"`
+
+	// <p>是否启用集群删除保护</p><p>枚举值：</p><ul><li>true： 启用</li><li>false： 不启用</li></ul>
+	DeletionProtection *bool `json:"DeletionProtection,omitnil,omitempty" name:"DeletionProtection"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

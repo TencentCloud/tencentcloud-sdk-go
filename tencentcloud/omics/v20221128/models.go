@@ -376,6 +376,77 @@ type DatabaseOption struct {
 }
 
 // Predefined struct for user
+type DeleteEnvironmentCacheRequestParams struct {
+	// <p>环境ID。</p>
+	EnvironmentId *string `json:"EnvironmentId,omitnil,omitempty" name:"EnvironmentId"`
+
+	// <p>缓存类型</p><p>枚举值：</p><ul><li>RUNTIME： 清理默认缓存卷的运行缓存目录</li><li>INPUT： 清理默认缓存卷的输入缓存目录</li><li>ALL： 清空环境下全部有效缓存卷</li><li>PATH： 指定缓存卷下指定路径，需要在Path中填入实际绝对路径</li></ul>
+	CacheType *string `json:"CacheType,omitnil,omitempty" name:"CacheType"`
+
+	// <p>指定路径删除</p><p>入参限制：以盘符开头的绝对路径地址</p>
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
+}
+
+type DeleteEnvironmentCacheRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>环境ID。</p>
+	EnvironmentId *string `json:"EnvironmentId,omitnil,omitempty" name:"EnvironmentId"`
+
+	// <p>缓存类型</p><p>枚举值：</p><ul><li>RUNTIME： 清理默认缓存卷的运行缓存目录</li><li>INPUT： 清理默认缓存卷的输入缓存目录</li><li>ALL： 清空环境下全部有效缓存卷</li><li>PATH： 指定缓存卷下指定路径，需要在Path中填入实际绝对路径</li></ul>
+	CacheType *string `json:"CacheType,omitnil,omitempty" name:"CacheType"`
+
+	// <p>指定路径删除</p><p>入参限制：以盘符开头的绝对路径地址</p>
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
+}
+
+func (r *DeleteEnvironmentCacheRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteEnvironmentCacheRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvironmentId")
+	delete(f, "CacheType")
+	delete(f, "Path")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteEnvironmentCacheRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteEnvironmentCacheResponseParams struct {
+	// <p>工作流UUID。</p>
+	WorkflowUuid *string `json:"WorkflowUuid,omitnil,omitempty" name:"WorkflowUuid"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteEnvironmentCacheResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteEnvironmentCacheResponseParams `json:"Response"`
+}
+
+func (r *DeleteEnvironmentCacheResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteEnvironmentCacheResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteEnvironmentRequestParams struct {
 	// 环境ID。
 	EnvironmentId *string `json:"EnvironmentId,omitnil,omitempty" name:"EnvironmentId"`

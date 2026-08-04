@@ -4458,6 +4458,70 @@ type RegionQps struct {
 }
 
 // Predefined struct for user
+type RotateKeyRequestParams struct {
+	// <p>CMK的全局唯一标识符</p>
+	KeyId *string `json:"KeyId,omitnil,omitempty" name:"KeyId"`
+
+	// <p>成员账号信息，用于多账号场景</p>
+	MemberAccount *MemberAccount `json:"MemberAccount,omitnil,omitempty" name:"MemberAccount"`
+}
+
+type RotateKeyRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>CMK的全局唯一标识符</p>
+	KeyId *string `json:"KeyId,omitnil,omitempty" name:"KeyId"`
+
+	// <p>成员账号信息，用于多账号场景</p>
+	MemberAccount *MemberAccount `json:"MemberAccount,omitnil,omitempty" name:"MemberAccount"`
+}
+
+func (r *RotateKeyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RotateKeyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "KeyId")
+	delete(f, "MemberAccount")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RotateKeyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RotateKeyResponseParams struct {
+	// <p>轮转任务ID，用于标识本次轮转任务。可以通过调用DescribeKey，返回上次轮转时间和下次轮转时间，判断是否轮转成功。</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RotateKeyResponse struct {
+	*tchttp.BaseResponse
+	Response *RotateKeyResponseParams `json:"Response"`
+}
+
+func (r *RotateKeyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RotateKeyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ScheduleDataKeyDeletionRequestParams struct {
 	// 数据密钥的唯一标志符
 	DataKeyId *string `json:"DataKeyId,omitnil,omitempty" name:"DataKeyId"`

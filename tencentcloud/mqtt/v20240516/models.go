@@ -345,6 +345,32 @@ type AuthorizationPolicyPriority struct {
 	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
 }
 
+type BlockRuleItem struct {
+	// <p>封禁策略名</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>封禁策略类型</p>
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>备注信息</p>
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// <p>包含规则</p>
+	Include *string `json:"Include,omitnil,omitempty" name:"Include"`
+
+	// <p>排除规则</p>
+	Excludes []*string `json:"Excludes,omitnil,omitempty" name:"Excludes"`
+
+	// <p>过期时间，毫秒级时间戳 。</p>
+	ExpireTime *int64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// <p>修改时间，毫秒级时间戳 。</p>
+	UpdateTime *int64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// <p>创建时间，毫秒级时间戳 。</p>
+	CreateTime *int64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+}
+
 type BodyItem struct {
 	// body key
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
@@ -565,6 +591,114 @@ func (r *CreateAuthorizationPolicyResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateAuthorizationPolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateBlockRuleRequestParams struct {
+	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 封禁规则名，不可重复，只支持数字字母中划线
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 封禁规则类型
+	//     CLIENT_ID(1), 默认值
+	//     USERNAME(2),
+	//     IP_ADDRESS(3);
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 包含表达式支持*（多个字符）和？（一个字符）
+	Include *string `json:"Include,omitnil,omitempty" name:"Include"`
+
+	// 排除表达式支持*（多个字符）和？（一个字符），最多三条。
+	Excludes []*string `json:"Excludes,omitnil,omitempty" name:"Excludes"`
+
+	// 过期时间，毫秒级时间戳
+	ExpireTime *int64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 备注，最长 128 字符
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+}
+
+type CreateBlockRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 封禁规则名，不可重复，只支持数字字母中划线
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 封禁规则类型
+	//     CLIENT_ID(1), 默认值
+	//     USERNAME(2),
+	//     IP_ADDRESS(3);
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 包含表达式支持*（多个字符）和？（一个字符）
+	Include *string `json:"Include,omitnil,omitempty" name:"Include"`
+
+	// 排除表达式支持*（多个字符）和？（一个字符），最多三条。
+	Excludes []*string `json:"Excludes,omitnil,omitempty" name:"Excludes"`
+
+	// 过期时间，毫秒级时间戳
+	ExpireTime *int64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 备注，最长 128 字符
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+}
+
+func (r *CreateBlockRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBlockRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Name")
+	delete(f, "Type")
+	delete(f, "Include")
+	delete(f, "Excludes")
+	delete(f, "ExpireTime")
+	delete(f, "Remark")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBlockRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateBlockRuleResponseParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 封禁规则名
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateBlockRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateBlockRuleResponseParams `json:"Response"`
+}
+
+func (r *CreateBlockRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBlockRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1737,6 +1871,67 @@ func (r *DeleteAuthorizationPolicyResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteBlockRuleRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 封禁规则名
+	BlockRuleName *string `json:"BlockRuleName,omitnil,omitempty" name:"BlockRuleName"`
+}
+
+type DeleteBlockRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 封禁规则名
+	BlockRuleName *string `json:"BlockRuleName,omitnil,omitempty" name:"BlockRuleName"`
+}
+
+func (r *DeleteBlockRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteBlockRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "BlockRuleName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteBlockRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteBlockRuleResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteBlockRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteBlockRuleResponseParams `json:"Response"`
+}
+
+func (r *DeleteBlockRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteBlockRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteCaCertificateRequestParams struct {
 	// 实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -2402,6 +2597,66 @@ func (r *DescribeAuthorizationPoliciesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAuthorizationPoliciesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBlockRuleListRequestParams struct {
+	// 实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+type DescribeBlockRuleListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeBlockRuleListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBlockRuleListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBlockRuleListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBlockRuleListResponseParams struct {
+	// 总数
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 封禁规则列表
+	Data []*BlockRuleItem `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeBlockRuleListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBlockRuleListResponseParams `json:"Response"`
+}
+
+func (r *DescribeBlockRuleListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBlockRuleListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5463,6 +5718,95 @@ func (r *ModifyAuthorizationPolicyResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyAuthorizationPolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyBlockRuleRequestParams struct {
+	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 待修改的封禁规则名
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 包含表达式支持*（多个字符）和？（一个字符）
+	Include *string `json:"Include,omitnil,omitempty" name:"Include"`
+
+	// 排除表达式支持*（多个字符）和？（一个字符），最多三条。
+	Excludes []*string `json:"Excludes,omitnil,omitempty" name:"Excludes"`
+
+	// 过期时间，毫秒级时间戳
+	ExpireTime *int64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 备注，最长 128 字符
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+}
+
+type ModifyBlockRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 待修改的封禁规则名
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 包含表达式支持*（多个字符）和？（一个字符）
+	Include *string `json:"Include,omitnil,omitempty" name:"Include"`
+
+	// 排除表达式支持*（多个字符）和？（一个字符），最多三条。
+	Excludes []*string `json:"Excludes,omitnil,omitempty" name:"Excludes"`
+
+	// 过期时间，毫秒级时间戳
+	ExpireTime *int64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 备注，最长 128 字符
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+}
+
+func (r *ModifyBlockRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyBlockRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Name")
+	delete(f, "Include")
+	delete(f, "Excludes")
+	delete(f, "ExpireTime")
+	delete(f, "Remark")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyBlockRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyBlockRuleResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyBlockRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyBlockRuleResponseParams `json:"Response"`
+}
+
+func (r *ModifyBlockRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyBlockRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

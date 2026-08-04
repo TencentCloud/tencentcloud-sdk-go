@@ -8229,49 +8229,57 @@ func (r *CreatePersonAuthCertificateImageResponse) FromJsonString(s string) erro
 
 // Predefined struct for user
 type CreatePrepareFlowGroupRequestParams struct {
-	// 执行本接口操作的员工信息。
-	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	// <p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 合同（流程）组名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
+	// <p>合同（流程）组名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。</p>
 	FlowGroupName *string `json:"FlowGroupName,omitnil,omitempty" name:"FlowGroupName"`
 
-	// 合同（流程）组的子合同信息，支持2-50个子合同
+	// <p>合同（流程）组的子合同信息，支持2-50个子合同</p>
 	FlowGroupInfos []*FlowGroupInfo `json:"FlowGroupInfos,omitnil,omitempty" name:"FlowGroupInfos"`
 
-	// 资源类型，取值有： <ul><li> **1**：模板</li> <li> **2**：文件</li></ul>
+	// <p>资源类型，取值有： <ul><li> <strong>1</strong>：模板</li> <li> <strong>2</strong>：文件</li></ul></p>
 	ResourceType *int64 `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
-	// 代理企业和员工的信息。
-	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	// <p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
-	// 合同组发起控制参数，当前仅支持FlowGroupNeedWorkflow，表示开启嵌入式合同组发起审批
+	// <p>合同组发起控制参数，例如FlowGroupNeedWorkflow，表示开启嵌入式合同组发起审批</p>
 	FlowGroupOptions *FlowGroupOptions `json:"FlowGroupOptions,omitnil,omitempty" name:"FlowGroupOptions"`
+
+	// <p>合同组类型，发起合同组后会应用到所有子合同</p>
+	FlowGroupType *string `json:"FlowGroupType,omitnil,omitempty" name:"FlowGroupType"`
+
+	// <p>合同组过期时间，发起合同组后会应用到所有子合同</p>
+	FlowGroupDeadline *int64 `json:"FlowGroupDeadline,omitnil,omitempty" name:"FlowGroupDeadline"`
 }
 
 type CreatePrepareFlowGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 执行本接口操作的员工信息。
-	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	// <p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 合同（流程）组名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
+	// <p>合同（流程）组名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。</p>
 	FlowGroupName *string `json:"FlowGroupName,omitnil,omitempty" name:"FlowGroupName"`
 
-	// 合同（流程）组的子合同信息，支持2-50个子合同
+	// <p>合同（流程）组的子合同信息，支持2-50个子合同</p>
 	FlowGroupInfos []*FlowGroupInfo `json:"FlowGroupInfos,omitnil,omitempty" name:"FlowGroupInfos"`
 
-	// 资源类型，取值有： <ul><li> **1**：模板</li> <li> **2**：文件</li></ul>
+	// <p>资源类型，取值有： <ul><li> <strong>1</strong>：模板</li> <li> <strong>2</strong>：文件</li></ul></p>
 	ResourceType *int64 `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
-	// 代理企业和员工的信息。
-	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	// <p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
-	// 合同组发起控制参数，当前仅支持FlowGroupNeedWorkflow，表示开启嵌入式合同组发起审批
+	// <p>合同组发起控制参数，例如FlowGroupNeedWorkflow，表示开启嵌入式合同组发起审批</p>
 	FlowGroupOptions *FlowGroupOptions `json:"FlowGroupOptions,omitnil,omitempty" name:"FlowGroupOptions"`
+
+	// <p>合同组类型，发起合同组后会应用到所有子合同</p>
+	FlowGroupType *string `json:"FlowGroupType,omitnil,omitempty" name:"FlowGroupType"`
+
+	// <p>合同组过期时间，发起合同组后会应用到所有子合同</p>
+	FlowGroupDeadline *int64 `json:"FlowGroupDeadline,omitnil,omitempty" name:"FlowGroupDeadline"`
 }
 
 func (r *CreatePrepareFlowGroupRequest) ToJsonString() string {
@@ -8292,6 +8300,8 @@ func (r *CreatePrepareFlowGroupRequest) FromJsonString(s string) error {
 	delete(f, "ResourceType")
 	delete(f, "Agent")
 	delete(f, "FlowGroupOptions")
+	delete(f, "FlowGroupType")
+	delete(f, "FlowGroupDeadline")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePrepareFlowGroupRequest has unknown keys!", "")
 	}
@@ -8300,10 +8310,10 @@ func (r *CreatePrepareFlowGroupRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreatePrepareFlowGroupResponseParams struct {
-	// 合同(流程)组的合同组Id
+	// <p>合同(流程)组的合同组Id</p>
 	FlowGroupId *string `json:"FlowGroupId,omitnil,omitempty" name:"FlowGroupId"`
 
-	// 嵌入式合同组发起链接
+	// <p>嵌入式合同组发起链接</p>
 	PrepareUrl *string `json:"PrepareUrl,omitnil,omitempty" name:"PrepareUrl"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -16377,24 +16387,41 @@ type FlowGroupInfo struct {
 }
 
 type FlowGroupOptions struct {
-	// 签署人校验方式,支持以下类型
-	// <ul><li>VerifyCheck : 人脸识别 (默认值)</li>
-	// <li>MobileCheck : 手机号验证</li></ul>
-	// 参数说明：此参数仅在合同组文件发起有效，可选人脸识别或手机号验证两种方式，若选择后者，未实名个人签署方在签署合同时，无需经过实名认证和意愿确认两次人脸识别，该能力仅适用于个人签署方。
+	// <p>签署人校验方式,支持以下类型</p><ul><li>VerifyCheck : 人脸识别 (默认值)</li><li>MobileCheck : 手机号验证</li></ul>参数说明：此参数仅在合同组文件发起有效，可选人脸识别或手机号验证两种方式，若选择后者，未实名个人签署方在签署合同时，无需经过实名认证和意愿确认两次人脸识别，该能力仅适用于个人签署方。
 	ApproverVerifyType *string `json:"ApproverVerifyType,omitnil,omitempty" name:"ApproverVerifyType"`
 
-	// 发起合同（流程）组本方企业经办人通知方式
-	// 签署通知类型，支持以下类型
-	// <ul><li>sms : 短信 (默认值)</li><li>none : 不通知</li></ul>
+	// <p>发起合同（流程）组本方企业经办人通知方式<br>签署通知类型，支持以下类型</p><ul><li>sms : 短信 (默认值)</li><li>none : 不通知</li></ul>
 	SelfOrganizationApproverNotifyType *string `json:"SelfOrganizationApproverNotifyType,omitnil,omitempty" name:"SelfOrganizationApproverNotifyType"`
 
-	// 发起合同（流程）组他方经办人通知方式
-	// 签署通知类型，支持以下类型
-	// <ul><li>sms : 短信 (默认值)</li><li>none : 不通知</li></ul>
+	// <p>发起合同（流程）组他方经办人通知方式<br>签署通知类型，支持以下类型</p><ul><li>sms : 短信 (默认值)</li><li>none : 不通知</li></ul>
 	OtherApproverNotifyType *string `json:"OtherApproverNotifyType,omitnil,omitempty" name:"OtherApproverNotifyType"`
 
-	// 是否开启发起合同组的发起审批，默认：false(不开启)，开启后，发起合同组会提交电子签内置审批流
+	// <p>是否开启发起合同组的发起审批，默认：false(不开启)，开启后，发起合同组会提交电子签内置审批流</p>
 	FlowGroupNeedWorkflow *bool `json:"FlowGroupNeedWorkflow,omitnil,omitempty" name:"FlowGroupNeedWorkflow"`
+
+	// <p>是否不可编辑合同名称 true-不可编辑 false-可编辑(默认)</p>
+	NoEditFlowName *bool `json:"NoEditFlowName,omitnil,omitempty" name:"NoEditFlowName"`
+
+	// <p>是否不可编辑合同类型 true-不可编辑 false-可编辑(默认)</p>
+	NoEditFlowType *bool `json:"NoEditFlowType,omitnil,omitempty" name:"NoEditFlowType"`
+
+	// <p>是否不可编辑合同截止日期 true-不可编辑 false-可编辑(默认)</p>
+	NoEditDeadline *bool `json:"NoEditDeadline,omitnil,omitempty" name:"NoEditDeadline"`
+
+	// <p>签署控件配置(如是否默认展示日期)，用于嵌入式发起页面配置</p>
+	SignComponentConfig *SignComponentConfig `json:"SignComponentConfig,omitnil,omitempty" name:"SignComponentConfig"`
+
+	// <p>是否禁止编辑水印控件属性 true-禁止 false-否(默认)</p>
+	ForbidEditWatermark *bool `json:"ForbidEditWatermark,omitnil,omitempty" name:"ForbidEditWatermark"`
+
+	// <p>发起成功后是否隐藏签署码 true-隐藏 false-否(默认)</p>
+	HideSignCodeAfterStart *bool `json:"HideSignCodeAfterStart,omitnil,omitempty" name:"HideSignCodeAfterStart"`
+
+	// <p>发起成功后是否签署合同,仅当前经办人为签署人时生效 true-展示签署 false-否(默认)</p>
+	SignAfterStart *bool `json:"SignAfterStart,omitnil,omitempty" name:"SignAfterStart"`
+
+	// <p>发起成功后是否预览合同 true-展示预览按钮 false-否(默认)</p>
+	PreviewAfterStart *bool `json:"PreviewAfterStart,omitnil,omitempty" name:"PreviewAfterStart"`
 }
 
 type FlowGroupUrlInfo struct {

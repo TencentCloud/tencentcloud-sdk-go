@@ -608,6 +608,15 @@ const (
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
 
+	// 队列 Id 与 PartitionCode/QueueName 不一致
+	INVALIDPARAMETERVALUE_QUEUEIDMISMATCH = "InvalidParameterValue.QueueIdMismatch"
+
+	// 队列名称格式不合法
+	INVALIDPARAMETERVALUE_QUEUENAME = "InvalidParameterValue.QueueName"
+
+	// 申请资源配额超过分区可用额度
+	INVALIDPARAMETERVALUE_QUOTAEXCEEDED = "InvalidParameterValue.QuotaExceeded"
+
 	// 超过配额限制。
 	LIMITEXCEEDED = "LimitExceeded"
 
@@ -617,11 +626,20 @@ const (
 	// 操作被拒绝。
 	OPERATIONDENIED = "OperationDenied"
 
+	// 默认队列不允许删除
+	OPERATIONDENIED_DEFAULTQUEUEDELETEFORBIDDEN = "OperationDenied.DefaultQueueDeleteForbidden"
+
+	// 资源分区当前状态不允许该操作
+	OPERATIONDENIED_PARTITIONNOTREADY = "OperationDenied.PartitionNotReady"
+
 	// 地域错误
 	REGIONERROR = "RegionError"
 
 	// 资源被占用。
 	RESOURCEINUSE = "ResourceInUse"
+
+	// 同一分区下队列名称已存在
+	RESOURCEINUSE_QUEUENAME = "ResourceInUse.QueueName"
 
 	// 有SQL任务尚未执行完成。
 	RESOURCEINUSE_UNFINISHEDSQLS = "ResourceInUse.UnfinishedSQLs"
@@ -691,6 +709,12 @@ const (
 
 	// 该网络连接不存在
 	RESOURCENOTFOUND_NETWORKCONNECTIONNOTFOUND = "ResourceNotFound.NetworkConnectionNotFound"
+
+	// 资源包Partition不存在
+	RESOURCENOTFOUND_PARTITION = "ResourceNotFound.Partition"
+
+	// 资源组不存在
+	RESOURCENOTFOUND_PARTITIONQUEUE = "ResourceNotFound.PartitionQueue"
 
 	// 网关不存在
 	RESOURCENOTFOUND_RESOURCENOTFOUNDCODE_GATEWAYNOTFOUND = "ResourceNotFound.ResourceNotFoundCode_GatewayNotFound"

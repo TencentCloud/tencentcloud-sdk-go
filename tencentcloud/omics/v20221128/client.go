@@ -243,6 +243,72 @@ func (c *Client) DeleteEnvironmentWithContext(ctx context.Context, request *Dele
     return
 }
 
+func NewDeleteEnvironmentCacheRequest() (request *DeleteEnvironmentCacheRequest) {
+    request = &DeleteEnvironmentCacheRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("omics", APIVersion, "DeleteEnvironmentCache")
+    
+    
+    return
+}
+
+func NewDeleteEnvironmentCacheResponse() (response *DeleteEnvironmentCacheResponse) {
+    response = &DeleteEnvironmentCacheResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteEnvironmentCache
+// 删除环境缓存。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DeleteEnvironmentCache(request *DeleteEnvironmentCacheRequest) (response *DeleteEnvironmentCacheResponse, err error) {
+    return c.DeleteEnvironmentCacheWithContext(context.Background(), request)
+}
+
+// DeleteEnvironmentCache
+// 删除环境缓存。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DeleteEnvironmentCacheWithContext(ctx context.Context, request *DeleteEnvironmentCacheRequest) (response *DeleteEnvironmentCacheResponse, err error) {
+    if request == nil {
+        request = NewDeleteEnvironmentCacheRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "omics", APIVersion, "DeleteEnvironmentCache")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteEnvironmentCache require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteEnvironmentCacheResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteVolumeRequest() (request *DeleteVolumeRequest) {
     request = &DeleteVolumeRequest{
         BaseRequest: &tchttp.BaseRequest{},

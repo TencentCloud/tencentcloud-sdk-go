@@ -309,6 +309,66 @@ func (c *Client) CreateAuthorizationPolicyWithContext(ctx context.Context, reque
     return
 }
 
+func NewCreateBlockRuleRequest() (request *CreateBlockRuleRequest) {
+    request = &CreateBlockRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mqtt", APIVersion, "CreateBlockRule")
+    
+    
+    return
+}
+
+func NewCreateBlockRuleResponse() (response *CreateBlockRuleResponse) {
+    response = &CreateBlockRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateBlockRule
+// 创建封禁规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+//  LIMITEXCEEDED_TOPICNUM = "LimitExceeded.TopicNum"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  UNSUPPORTEDOPERATION_RESOURCEALREADYEXISTS = "UnsupportedOperation.ResourceAlreadyExists"
+func (c *Client) CreateBlockRule(request *CreateBlockRuleRequest) (response *CreateBlockRuleResponse, err error) {
+    return c.CreateBlockRuleWithContext(context.Background(), request)
+}
+
+// CreateBlockRule
+// 创建封禁规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+//  LIMITEXCEEDED_TOPICNUM = "LimitExceeded.TopicNum"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  UNSUPPORTEDOPERATION_RESOURCEALREADYEXISTS = "UnsupportedOperation.ResourceAlreadyExists"
+func (c *Client) CreateBlockRuleWithContext(ctx context.Context, request *CreateBlockRuleRequest) (response *CreateBlockRuleResponse, err error) {
+    if request == nil {
+        request = NewCreateBlockRuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "CreateBlockRule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateBlockRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateBlockRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateDeviceIdentityRequest() (request *CreateDeviceIdentityRequest) {
     request = &CreateDeviceIdentityRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1029,6 +1089,56 @@ func (c *Client) DeleteAuthorizationPolicyWithContext(ctx context.Context, reque
     return
 }
 
+func NewDeleteBlockRuleRequest() (request *DeleteBlockRuleRequest) {
+    request = &DeleteBlockRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mqtt", APIVersion, "DeleteBlockRule")
+    
+    
+    return
+}
+
+func NewDeleteBlockRuleResponse() (response *DeleteBlockRuleResponse) {
+    response = &DeleteBlockRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteBlockRule
+// 删除封禁规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DeleteBlockRule(request *DeleteBlockRuleRequest) (response *DeleteBlockRuleResponse, err error) {
+    return c.DeleteBlockRuleWithContext(context.Background(), request)
+}
+
+// DeleteBlockRule
+// 删除封禁规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DeleteBlockRuleWithContext(ctx context.Context, request *DeleteBlockRuleRequest) (response *DeleteBlockRuleResponse, err error) {
+    if request == nil {
+        request = NewDeleteBlockRuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "DeleteBlockRule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteBlockRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteBlockRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteCaCertificateRequest() (request *DeleteCaCertificateRequest) {
     request = &DeleteCaCertificateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1613,6 +1723,58 @@ func (c *Client) DescribeAuthorizationPoliciesWithContext(ctx context.Context, r
     return
 }
 
+func NewDescribeBlockRuleListRequest() (request *DescribeBlockRuleListRequest) {
+    request = &DescribeBlockRuleListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mqtt", APIVersion, "DescribeBlockRuleList")
+    
+    
+    return
+}
+
+func NewDescribeBlockRuleListResponse() (response *DescribeBlockRuleListResponse) {
+    response = &DescribeBlockRuleListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeBlockRuleList
+// 封禁规则列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DescribeBlockRuleList(request *DescribeBlockRuleListRequest) (response *DescribeBlockRuleListResponse, err error) {
+    return c.DescribeBlockRuleListWithContext(context.Background(), request)
+}
+
+// DescribeBlockRuleList
+// 封禁规则列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DescribeBlockRuleListWithContext(ctx context.Context, request *DescribeBlockRuleListRequest) (response *DescribeBlockRuleListResponse, err error) {
+    if request == nil {
+        request = NewDescribeBlockRuleListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "DescribeBlockRuleList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBlockRuleList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBlockRuleListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCaCertificateRequest() (request *DescribeCaCertificateRequest) {
     request = &DescribeCaCertificateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1636,6 +1798,7 @@ func NewDescribeCaCertificateResponse() (response *DescribeCaCertificateResponse
 // 查询Ca证书详情接口
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
 func (c *Client) DescribeCaCertificate(request *DescribeCaCertificateRequest) (response *DescribeCaCertificateResponse, err error) {
     return c.DescribeCaCertificateWithContext(context.Background(), request)
@@ -1645,6 +1808,7 @@ func (c *Client) DescribeCaCertificate(request *DescribeCaCertificateRequest) (r
 // 查询Ca证书详情接口
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
 func (c *Client) DescribeCaCertificateWithContext(ctx context.Context, request *DescribeCaCertificateRequest) (response *DescribeCaCertificateResponse, err error) {
     if request == nil {
@@ -1686,6 +1850,7 @@ func NewDescribeCaCertificatesResponse() (response *DescribeCaCertificatesRespon
 // 查询集群下的ca证书信息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
 func (c *Client) DescribeCaCertificates(request *DescribeCaCertificatesRequest) (response *DescribeCaCertificatesResponse, err error) {
     return c.DescribeCaCertificatesWithContext(context.Background(), request)
@@ -1695,6 +1860,7 @@ func (c *Client) DescribeCaCertificates(request *DescribeCaCertificatesRequest) 
 // 查询集群下的ca证书信息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
 func (c *Client) DescribeCaCertificatesWithContext(ctx context.Context, request *DescribeCaCertificatesRequest) (response *DescribeCaCertificatesResponse, err error) {
     if request == nil {
@@ -1736,6 +1902,7 @@ func NewDescribeClientListResponse() (response *DescribeClientListResponse) {
 // 查询 MQTT 客户端详情
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
 func (c *Client) DescribeClientList(request *DescribeClientListRequest) (response *DescribeClientListResponse, err error) {
     return c.DescribeClientListWithContext(context.Background(), request)
@@ -1745,6 +1912,7 @@ func (c *Client) DescribeClientList(request *DescribeClientListRequest) (respons
 // 查询 MQTT 客户端详情
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
 func (c *Client) DescribeClientListWithContext(ctx context.Context, request *DescribeClientListRequest) (response *DescribeClientListResponse, err error) {
     if request == nil {
@@ -1786,6 +1954,7 @@ func NewDescribeDeviceCertificateResponse() (response *DescribeDeviceCertificate
 // 查询设备证书详情接口
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
 func (c *Client) DescribeDeviceCertificate(request *DescribeDeviceCertificateRequest) (response *DescribeDeviceCertificateResponse, err error) {
     return c.DescribeDeviceCertificateWithContext(context.Background(), request)
@@ -1795,6 +1964,7 @@ func (c *Client) DescribeDeviceCertificate(request *DescribeDeviceCertificateReq
 // 查询设备证书详情接口
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
 func (c *Client) DescribeDeviceCertificateWithContext(ctx context.Context, request *DescribeDeviceCertificateRequest) (response *DescribeDeviceCertificateResponse, err error) {
     if request == nil {
@@ -3135,6 +3305,58 @@ func (c *Client) ModifyAuthorizationPolicyWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewModifyAuthorizationPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyBlockRuleRequest() (request *ModifyBlockRuleRequest) {
+    request = &ModifyBlockRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mqtt", APIVersion, "ModifyBlockRule")
+    
+    
+    return
+}
+
+func NewModifyBlockRuleResponse() (response *ModifyBlockRuleResponse) {
+    response = &ModifyBlockRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyBlockRule
+// 修改封禁规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) ModifyBlockRule(request *ModifyBlockRuleRequest) (response *ModifyBlockRuleResponse, err error) {
+    return c.ModifyBlockRuleWithContext(context.Background(), request)
+}
+
+// ModifyBlockRule
+// 修改封禁规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) ModifyBlockRuleWithContext(ctx context.Context, request *ModifyBlockRuleRequest) (response *ModifyBlockRuleResponse, err error) {
+    if request == nil {
+        request = NewModifyBlockRuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "ModifyBlockRule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyBlockRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyBlockRuleResponse()
     err = c.Send(request, response)
     return
 }

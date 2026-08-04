@@ -35,6 +35,9 @@ const (
 	// 加密操作失败。
 	FAILEDOPERATION_ENCRYPTIONERROR = "FailedOperation.EncryptionError"
 
+	// 已有正在进行的轮转任务
+	FAILEDOPERATION_ROTATETASKRUNNING = "FailedOperation.RotateTaskRunning"
+
 	// 标签服务错误。
 	FAILEDOPERATION_TAGGINGERROR = "FailedOperation.TaggingError"
 
@@ -119,6 +122,9 @@ const (
 	// 缺少参数错误。
 	MISSINGPARAMETER = "MissingParameter"
 
+	// 轮转操作触发限频，默认24小时内仅可轮转一次
+	REQUESTLIMITEXCEEDED_ROTATERATELIMITED = "RequestLimitExceeded.RotateRateLimited"
+
 	// 资源不存在。
 	RESOURCENOTFOUND = "ResourceNotFound"
 
@@ -187,6 +193,9 @@ const (
 
 	// 仅支持对用户自己创建的CMK做更新。
 	UNSUPPORTEDOPERATION_NOTUSERCREATEDCMK = "UnsupportedOperation.NotUserCreatedCmk"
+
+	// 不支持轮转（未开启轮转、外部密钥、副本密钥）
+	UNSUPPORTEDOPERATION_ROTATENOTSUPPORTED = "UnsupportedOperation.RotateNotSupported"
 
 	// 服务暂时不可用。
 	UNSUPPORTEDOPERATION_SERVICETEMPORARYUNAVAILABLE = "UnsupportedOperation.ServiceTemporaryUnavailable"
