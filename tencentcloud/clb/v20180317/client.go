@@ -154,12 +154,20 @@ func NewAssociateBudgetResponse() (response *AssociateBudgetResponse) {
 
 // AssociateBudget
 // 将Budget关联到企业型模型路由实例或企业型实例下的Key。资源已关联其他Budget时，本次请求会替换为新的Budget。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNSUPPORTEDOPERATION_BUDGETONLYSUPPORTSENTERPRISE = "UnsupportedOperation.BudgetOnlySupportsEnterprise"
 func (c *Client) AssociateBudget(request *AssociateBudgetRequest) (response *AssociateBudgetResponse, err error) {
     return c.AssociateBudgetWithContext(context.Background(), request)
 }
 
 // AssociateBudget
 // 将Budget关联到企业型模型路由实例或企业型实例下的Key。资源已关联其他Budget时，本次请求会替换为新的Budget。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNSUPPORTEDOPERATION_BUDGETONLYSUPPORTSENTERPRISE = "UnsupportedOperation.BudgetOnlySupportsEnterprise"
 func (c *Client) AssociateBudgetWithContext(ctx context.Context, request *AssociateBudgetRequest) (response *AssociateBudgetResponse, err error) {
     if request == nil {
         request = NewAssociateBudgetRequest()

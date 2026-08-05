@@ -117,6 +117,29 @@ type AgentParams struct {
 	MaxIdleTime *uint64 `json:"MaxIdleTime,omitnil,omitempty" name:"MaxIdleTime"`
 }
 
+type AgoraParam struct {
+	// <p>声网提供的应用标识</p>
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>声网提供的频道名</p>
+	Channel *string `json:"Channel,omitnil,omitempty" name:"Channel"`
+
+	// <p>声网录制的频道模式， 可选值如下：（默认值为0） 0: 通信（默认）,即常见的 1 对 1 单聊或群聊， 频道内任何用户可以自由说话； 1: 直播，有两种用户角色: 主播和观众。</p><p>枚举值：</p><ul><li>0:： 通信（默认）</li><li>1： 直播</li></ul>
+	ChannelProfile *uint64 `json:"ChannelProfile,omitnil,omitempty" name:"ChannelProfile"`
+
+	// <p>绑定频道生成的临时Token</p>
+	Token *string `json:"Token,omitnil,omitempty" name:"Token"`
+
+	// <p>用户ID</p>
+	Uid *uint64 `json:"Uid,omitnil,omitempty" name:"Uid"`
+
+	// <p>信任用户的列表</p>
+	TrustedUserIdList []*uint64 `json:"TrustedUserIdList,omitnil,omitempty" name:"TrustedUserIdList"`
+
+	// <p>非信任用户的列表</p>
+	UntrustedUserIdList []*uint64 `json:"UntrustedUserIdList,omitnil,omitempty" name:"UntrustedUserIdList"`
+}
+
 type AlignmentItem struct {
 	// <p>字幕文本</p>
 	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
@@ -4524,6 +4547,9 @@ type Input struct {
 
 	// <p>显式协议</p><p>枚举值：</p><ul><li>rtmp： rtmp协议</li></ul>
 	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
+
+	// <p>声网拉流进房参数</p>
+	AgoraParam *AgoraParam `json:"AgoraParam,omitnil,omitempty" name:"AgoraParam"`
 }
 
 type InvokeLLM struct {

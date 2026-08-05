@@ -50,6 +50,9 @@ const (
 	// 低频不支持配置kv和tag索引。
 	FAILEDOPERATION_INVALIDINDEXRULEFORSEARCHLOW = "FailedOperation.InValidIndexRuleForSearchLow"
 
+	// 目标索引不支持 update/delete
+	FAILEDOPERATION_INDEXSEGMENTOFFLOADED = "FailedOperation.IndexSegmentOffloaded"
+
 	// 该告警策略状态异常，请检查下日志主题ID是否都存在。
 	FAILEDOPERATION_INVALIDALARM = "FailedOperation.InvalidAlarm"
 
@@ -67,6 +70,9 @@ const (
 
 	// 无效的Content。
 	FAILEDOPERATION_MISSINGCONTENT = "FailedOperation.MissingContent"
+
+	// 不能修改系统字段
+	FAILEDOPERATION_MODIFYSYSTEMFIELD = "FailedOperation.ModifySystemField"
 
 	// 修改的生命周期被禁止。
 	FAILEDOPERATION_PERIODMODIFYFORBIDDEN = "FailedOperation.PeriodModifyForbidden"
@@ -109,6 +115,9 @@ const (
 
 	// 日志主题已隔离。
 	FAILEDOPERATION_TOPICISOLATED = "FailedOperation.TopicIsolated"
+
+	// 命中文档数超过 10000 上限
+	FAILEDOPERATION_WRITEBYQUERYREACHLIMIT = "FailedOperation.WriteByQueryReachLimit"
 
 	// 写qps超过限制。
 	FAILEDOPERATION_WRITEQPSLIMIT = "FailedOperation.WriteQpsLimit"

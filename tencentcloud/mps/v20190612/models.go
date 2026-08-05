@@ -1446,6 +1446,9 @@ type AiCutoutConfig struct {
 
 	// <p>图案抠图配置。仅在Type为pattern时生效。</p>
 	PatternConfig *PatternConfig `json:"PatternConfig,omitnil,omitempty" name:"PatternConfig"`
+
+	// <p>抠图模型选择，可不填。</p><p>枚举值：</p><ul><li>auto： 自动选择合适的模型</li><li>WAND-cutout-1.0-lite： 标准版，速度最快</li><li>WAND-cutout-2.0-lite： 增强版，速度最快</li><li>WAND-cutout-2.0-flash： 增强版，质量-速度平衡</li></ul>
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
 }
 
 type AiDramaInput struct {
@@ -5827,6 +5830,9 @@ type CreateDocToVideoTaskRequestParams struct {
 
 	// <p>用户cos信息，用于保存生成结果</p>
 	CosInfo *DocToVideoCosInfo `json:"CosInfo,omitnil,omitempty" name:"CosInfo"`
+
+	// <p>资源ID，需要保证对应资源是开启状态。默认为账号主资源ID。</p>
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 }
 
 type CreateDocToVideoTaskRequest struct {
@@ -5837,6 +5843,9 @@ type CreateDocToVideoTaskRequest struct {
 
 	// <p>用户cos信息，用于保存生成结果</p>
 	CosInfo *DocToVideoCosInfo `json:"CosInfo,omitnil,omitempty" name:"CosInfo"`
+
+	// <p>资源ID，需要保证对应资源是开启状态。默认为账号主资源ID。</p>
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 }
 
 func (r *CreateDocToVideoTaskRequest) ToJsonString() string {
@@ -5853,6 +5862,7 @@ func (r *CreateDocToVideoTaskRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Input")
 	delete(f, "CosInfo")
+	delete(f, "ResourceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDocToVideoTaskRequest has unknown keys!", "")
 	}

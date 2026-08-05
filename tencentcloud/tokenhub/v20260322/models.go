@@ -2337,7 +2337,7 @@ type Model struct {
 	// <p>模型供应商。</p>
 	Provider *string `json:"Provider,omitnil,omitempty" name:"Provider"`
 
-	// <p>模型状态。取值：online（上线）、offline（下线）。</p><p>枚举值：</p><ul><li>online ： 上线</li><li>pre-offline： 预下线</li></ul>
+	// <p>模型状态。取值：online（上线）、offline（下线）。</p><p>枚举值：</p><ul><li>online ： 上线</li><li>pre-offline： 预下线</li><li>discontinued： 停止新购</li><li>maintenance： 维护中</li></ul>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// <p>标签列表。</p>
@@ -2363,6 +2363,9 @@ type Model struct {
 
 	// <p>模型下线时间，Status=pre-offline 时，会配置模型下线时间</p>
 	OfflineAt *string `json:"OfflineAt,omitnil,omitempty" name:"OfflineAt"`
+
+	// <p>停止新购时间</p>
+	DiscontinuedAt *string `json:"DiscontinuedAt,omitnil,omitempty" name:"DiscontinuedAt"`
 }
 
 type ModelAccessInfo struct {

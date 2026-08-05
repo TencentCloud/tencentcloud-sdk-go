@@ -8431,6 +8431,84 @@ func (r *DeleteKafkaRechargeResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteLogRequestParams struct {
+	// <p>日志主题id</p>
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// <p>检索时间范围-开始时间</p><p>单位：ms</p>
+	From *int64 `json:"From,omitnil,omitempty" name:"From"`
+
+	// <p>检索时间范围-结束时间</p><p>单位：ms</p>
+	To *int64 `json:"To,omitnil,omitempty" name:"To"`
+
+	// <p>日志检索条件，仅支持 CQL 语法，不支持 Lucene 语法</p><p>对符合检索条件的日志进行删除</p>
+	QueryString *string `json:"QueryString,omitnil,omitempty" name:"QueryString"`
+}
+
+type DeleteLogRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>日志主题id</p>
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// <p>检索时间范围-开始时间</p><p>单位：ms</p>
+	From *int64 `json:"From,omitnil,omitempty" name:"From"`
+
+	// <p>检索时间范围-结束时间</p><p>单位：ms</p>
+	To *int64 `json:"To,omitnil,omitempty" name:"To"`
+
+	// <p>日志检索条件，仅支持 CQL 语法，不支持 Lucene 语法</p><p>对符合检索条件的日志进行删除</p>
+	QueryString *string `json:"QueryString,omitnil,omitempty" name:"QueryString"`
+}
+
+func (r *DeleteLogRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteLogRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TopicId")
+	delete(f, "From")
+	delete(f, "To")
+	delete(f, "QueryString")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteLogRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteLogResponseParams struct {
+	// <p>影响日志条数</p>
+	AffectedRows *int64 `json:"AffectedRows,omitnil,omitempty" name:"AffectedRows"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteLogResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteLogResponseParams `json:"Response"`
+}
+
+func (r *DeleteLogResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteLogResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteLogsetRequestParams struct {
 	// 日志集Id。通过 [获取日志集列表](https://cloud.tencent.com/document/product/614/58624)获取日志集Id。
 	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
@@ -19658,6 +19736,98 @@ func (r *ModifyKafkaRechargeResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyKafkaRechargeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyLogRequestParams struct {
+	// <p>日志主题id</p>
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// <p>检索时间范围-开始时间</p><p>单位：ms</p>
+	From *int64 `json:"From,omitnil,omitempty" name:"From"`
+
+	// <p>检索时间范围-结束时间</p><p>单位：ms</p>
+	To *int64 `json:"To,omitnil,omitempty" name:"To"`
+
+	// <p>日志检索条件，仅支持 CQL 语法，不支持 Lucene 语法</p><p>对符合检索条件的日志进行修改</p>
+	QueryString *string `json:"QueryString,omitnil,omitempty" name:"QueryString"`
+
+	// <p>修改模式</p><p>枚举值：</p><ul><li>PARTIAL： 只修改指定的日志字段</li><li>REPLACE： 整体替换原有日志（不包含预置字段及元数据字段）</li></ul>
+	ModifyMode *string `json:"ModifyMode,omitnil,omitempty" name:"ModifyMode"`
+
+	// <p>修改内容</p><p>不支持修改预置字段(__FILENAME__、__SOURCE__等，但不包括__CONTENT__)及元数据字段(__TAG__开头的字段)</p>
+	ModifyContent *string `json:"ModifyContent,omitnil,omitempty" name:"ModifyContent"`
+}
+
+type ModifyLogRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>日志主题id</p>
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// <p>检索时间范围-开始时间</p><p>单位：ms</p>
+	From *int64 `json:"From,omitnil,omitempty" name:"From"`
+
+	// <p>检索时间范围-结束时间</p><p>单位：ms</p>
+	To *int64 `json:"To,omitnil,omitempty" name:"To"`
+
+	// <p>日志检索条件，仅支持 CQL 语法，不支持 Lucene 语法</p><p>对符合检索条件的日志进行修改</p>
+	QueryString *string `json:"QueryString,omitnil,omitempty" name:"QueryString"`
+
+	// <p>修改模式</p><p>枚举值：</p><ul><li>PARTIAL： 只修改指定的日志字段</li><li>REPLACE： 整体替换原有日志（不包含预置字段及元数据字段）</li></ul>
+	ModifyMode *string `json:"ModifyMode,omitnil,omitempty" name:"ModifyMode"`
+
+	// <p>修改内容</p><p>不支持修改预置字段(__FILENAME__、__SOURCE__等，但不包括__CONTENT__)及元数据字段(__TAG__开头的字段)</p>
+	ModifyContent *string `json:"ModifyContent,omitnil,omitempty" name:"ModifyContent"`
+}
+
+func (r *ModifyLogRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyLogRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TopicId")
+	delete(f, "From")
+	delete(f, "To")
+	delete(f, "QueryString")
+	delete(f, "ModifyMode")
+	delete(f, "ModifyContent")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLogRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyLogResponseParams struct {
+	// <p>影响日志条数</p>
+	AffectedRows *int64 `json:"AffectedRows,omitnil,omitempty" name:"AffectedRows"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyLogResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyLogResponseParams `json:"Response"`
+}
+
+func (r *ModifyLogResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyLogResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

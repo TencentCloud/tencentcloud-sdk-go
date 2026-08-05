@@ -10448,6 +10448,111 @@ type VerificationConfig struct {
 	TemplateProvider *SMSProviderTemplateConfig `json:"TemplateProvider,omitnil,omitempty" name:"TemplateProvider"`
 }
 
+type VerifyHTTPServiceRouteCheckItem struct {
+	// <p>检查状态</p><p>枚举值：</p><ul><li>PASS： 通过</li><li>SKIPPED： 跳过（无需校验，视为通过）</li><li>FAIL： 失败</li></ul><p>默认值：SKIPPED</p>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>前置校验子项失败原因枚举，仅在 Status=FAIL 时有值，供前端根据 Code 精确渲染提示与操作指引</p><p>枚举值：</p><ul><li>INTERNAL_CHECK_ERROR： 预检过程中依赖服务/内部资源异常</li><li>OWNERSHIP_DNS_LOOKUP_FAILED： DNS解析失败</li><li>OWNERSHIP_VERIFY_FAILED： DNS记录内容与预期dns记录值不匹配</li><li>CERT_VERIFY_FAILED： 证书校验失败：不匹配当前域名 / 已过期 / 不属于当前 uin 等</li><li>QUOTA_EXCEEDED： 域名或路径数量超出配额限制</li><li>ROUTE_CONFLICT： 存在同域名下已被占用的路径，前端应提示用户修改路径</li><li>DOMAIN_IN_USE： 域名已被其他环境占用，无法在当前环境接入</li><li>NON_INTERNAL_ACCOUNT： 使用了内部域名但当前账号不是内部账号</li><li>DOMAIN_IN_BLACKLIST： 域名被列入黑名单，禁止接入</li><li>CDN_RESOURCE_PROCESSING： CDN 资源正处于变更中，需稍后重试</li><li>CDN_RESOURCE_OFFLINE： CDN 资源已下线，需重新上线后才能绑定</li><li>EO_OWNERSHIP_VERIFY_FAILED： EdgeOne 侧归属权未通过，响应体中 OwnershipVerification 会给出，EdgeOne要求配置的 DNS/文件 verification 指引</li><li>EO_DOMAIN_NOT_ICP： EdgeOne 检测到域名未备案</li><li>EO_DOMAIN_IN_USE： EdgeOne 检测到域名已被其他账号接入 EdgeOne</li></ul>
+	Code *string `json:"Code,omitnil,omitempty" name:"Code"`
+
+	// <p>详细描述；Skipped 时给出跳过原因；Pass 时可为空</p>
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// <p>域名归属权验证指引信息，仅在所有权校验未通过时有值</p>
+	OwnershipVerification *OwnershipVerificationInfo `json:"OwnershipVerification,omitnil,omitempty" name:"OwnershipVerification"`
+}
+
+// Predefined struct for user
+type VerifyHTTPServiceRouteRequestParams struct {
+	// <p>环境ID</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// <p>域名路由信息</p>
+	Domain *HTTPServiceDomainParam `json:"Domain,omitnil,omitempty" name:"Domain"`
+}
+
+type VerifyHTTPServiceRouteRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>环境ID</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// <p>域名路由信息</p>
+	Domain *HTTPServiceDomainParam `json:"Domain,omitnil,omitempty" name:"Domain"`
+}
+
+func (r *VerifyHTTPServiceRouteRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *VerifyHTTPServiceRouteRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "Domain")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VerifyHTTPServiceRouteRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type VerifyHTTPServiceRouteResponseParams struct {
+	// <p>前置校验总开关。所有启用的检查项均为 PASS 或 SKIPPED 时为 true，任一检查项为 FAIL 时为 false。当为 false 时，前端应根据各 CheckItem 的 Code 精确渲染错误提示和操作指引；当为 true 时可继续调用 CreateHTTPServiceRoute 完成创建。 示例值：false</p>
+	Passed *bool `json:"Passed,omitnil,omitempty" name:"Passed"`
+
+	// <p>域名归属权校验结果</p>
+	Ownership *VerifyHTTPServiceRouteCheckItem `json:"Ownership,omitnil,omitempty" name:"Ownership"`
+
+	// <p>证书校验结果；CertId 为空时 Status=SKIPPED</p>
+	Cert *VerifyHTTPServiceRouteCheckItem `json:"Cert,omitnil,omitempty" name:"Cert"`
+
+	// <p>域名/路径数量配额校验结果</p>
+	Quota *VerifyHTTPServiceRouteCheckItem `json:"Quota,omitnil,omitempty" name:"Quota"`
+
+	// <p>同域名下路由路径冲突校验结果</p>
+	RouteConflict *VerifyHTTPServiceRouteCheckItem `json:"RouteConflict,omitnil,omitempty" name:"RouteConflict"`
+
+	// <p>域名被其他环境占用校验结果</p>
+	DomainConflict *VerifyHTTPServiceRouteCheckItem `json:"DomainConflict,omitnil,omitempty" name:"DomainConflict"`
+
+	// <p>内部域名且非内部账号校验结果</p>
+	InternalAccount *VerifyHTTPServiceRouteCheckItem `json:"InternalAccount,omitnil,omitempty" name:"InternalAccount"`
+
+	// <p>域名黑名单校验结果</p>
+	Blacklist *VerifyHTTPServiceRouteCheckItem `json:"Blacklist,omitnil,omitempty" name:"Blacklist"`
+
+	// <p>AccessType=CDN 时 CDN 资源存在性 / 状态校验结果（含 ICP 未备案的提示）</p>
+	CDNResource *VerifyHTTPServiceRouteCheckItem `json:"CDNResource,omitnil,omitempty" name:"CDNResource"`
+
+	// <p>AccessType=EO 时的 EdgeOne 预检结果（域名冲突/备案/归属权）</p>
+	EO *VerifyHTTPServiceRouteCheckItem `json:"EO,omitnil,omitempty" name:"EO"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type VerifyHTTPServiceRouteResponse struct {
+	*tchttp.BaseResponse
+	Response *VerifyHTTPServiceRouteResponseParams `json:"Response"`
+}
+
+func (r *VerifyHTTPServiceRouteResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *VerifyHTTPServiceRouteResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type VmInstance struct {
 	// 实例id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`

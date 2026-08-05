@@ -2427,6 +2427,56 @@ func (c *Client) CreateInferenceModelWithContext(ctx context.Context, request *C
     return
 }
 
+func NewCreateInferenceServiceRequest() (request *CreateInferenceServiceRequest) {
+    request = &CreateInferenceServiceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "CreateInferenceService")
+    
+    
+    return
+}
+
+func NewCreateInferenceServiceResponse() (response *CreateInferenceServiceResponse) {
+    response = &CreateInferenceServiceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateInferenceService
+// 创建推理服务（含默认部署）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) CreateInferenceService(request *CreateInferenceServiceRequest) (response *CreateInferenceServiceResponse, err error) {
+    return c.CreateInferenceServiceWithContext(context.Background(), request)
+}
+
+// CreateInferenceService
+// 创建推理服务（含默认部署）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) CreateInferenceServiceWithContext(ctx context.Context, request *CreateInferenceServiceRequest) (response *CreateInferenceServiceResponse, err error) {
+    if request == nil {
+        request = NewCreateInferenceServiceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "CreateInferenceService")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateInferenceService require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateInferenceServiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateInternalTableRequest() (request *CreateInternalTableRequest) {
     request = &CreateInternalTableRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2669,6 +2719,56 @@ func (c *Client) CreateMetaDatabaseWithContext(ctx context.Context, request *Cre
     request.SetContext(ctx)
     
     response = NewCreateMetaDatabaseResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateModelVersionRequest() (request *CreateModelVersionRequest) {
+    request = &CreateModelVersionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "CreateModelVersion")
+    
+    
+    return
+}
+
+func NewCreateModelVersionResponse() (response *CreateModelVersionResponse) {
+    response = &CreateModelVersionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateModelVersion
+// 创建模型新版本
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) CreateModelVersion(request *CreateModelVersionRequest) (response *CreateModelVersionResponse, err error) {
+    return c.CreateModelVersionWithContext(context.Background(), request)
+}
+
+// CreateModelVersion
+// 创建模型新版本
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) CreateModelVersionWithContext(ctx context.Context, request *CreateModelVersionRequest) (response *CreateModelVersionResponse, err error) {
+    if request == nil {
+        request = NewCreateModelVersionRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "CreateModelVersion")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateModelVersion require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateModelVersionResponse()
     err = c.Send(request, response)
     return
 }
@@ -11877,6 +11977,56 @@ func (c *Client) GetInferenceModelWithContext(ctx context.Context, request *GetI
     return
 }
 
+func NewGetInferenceServiceRequest() (request *GetInferenceServiceRequest) {
+    request = &GetInferenceServiceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "GetInferenceService")
+    
+    
+    return
+}
+
+func NewGetInferenceServiceResponse() (response *GetInferenceServiceResponse) {
+    response = &GetInferenceServiceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetInferenceService
+// 获取单个推理服务详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) GetInferenceService(request *GetInferenceServiceRequest) (response *GetInferenceServiceResponse, err error) {
+    return c.GetInferenceServiceWithContext(context.Background(), request)
+}
+
+// GetInferenceService
+// 获取单个推理服务详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) GetInferenceServiceWithContext(ctx context.Context, request *GetInferenceServiceRequest) (response *GetInferenceServiceResponse, err error) {
+    if request == nil {
+        request = NewGetInferenceServiceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "GetInferenceService")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetInferenceService require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetInferenceServiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetJobSpecRequest() (request *GetJobSpecRequest) {
     request = &GetJobSpecRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -12281,6 +12431,156 @@ func (c *Client) GetLabYamlWithContext(ctx context.Context, request *GetLabYamlR
     request.SetContext(ctx)
     
     response = NewGetLabYamlResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetModelConfigRequest() (request *GetModelConfigRequest) {
+    request = &GetModelConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "GetModelConfig")
+    
+    
+    return
+}
+
+func NewGetModelConfigResponse() (response *GetModelConfigResponse) {
+    response = &GetModelConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetModelConfig
+// 获取模型 config.json 配置（默认最新版本）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) GetModelConfig(request *GetModelConfigRequest) (response *GetModelConfigResponse, err error) {
+    return c.GetModelConfigWithContext(context.Background(), request)
+}
+
+// GetModelConfig
+// 获取模型 config.json 配置（默认最新版本）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) GetModelConfigWithContext(ctx context.Context, request *GetModelConfigRequest) (response *GetModelConfigResponse, err error) {
+    if request == nil {
+        request = NewGetModelConfigRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "GetModelConfig")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetModelConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetModelConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetModelFilesRequest() (request *GetModelFilesRequest) {
+    request = &GetModelFilesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "GetModelFiles")
+    
+    
+    return
+}
+
+func NewGetModelFilesResponse() (response *GetModelFilesResponse) {
+    response = &GetModelFilesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetModelFiles
+// 获取模型文件树（默认最新版本）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) GetModelFiles(request *GetModelFilesRequest) (response *GetModelFilesResponse, err error) {
+    return c.GetModelFilesWithContext(context.Background(), request)
+}
+
+// GetModelFiles
+// 获取模型文件树（默认最新版本）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) GetModelFilesWithContext(ctx context.Context, request *GetModelFilesRequest) (response *GetModelFilesResponse, err error) {
+    if request == nil {
+        request = NewGetModelFilesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "GetModelFiles")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetModelFiles require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetModelFilesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetModelReadmeRequest() (request *GetModelReadmeRequest) {
+    request = &GetModelReadmeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "GetModelReadme")
+    
+    
+    return
+}
+
+func NewGetModelReadmeResponse() (response *GetModelReadmeResponse) {
+    response = &GetModelReadmeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetModelReadme
+// 获取模型 README 信息（默认最新版本）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) GetModelReadme(request *GetModelReadmeRequest) (response *GetModelReadmeResponse, err error) {
+    return c.GetModelReadmeWithContext(context.Background(), request)
+}
+
+// GetModelReadme
+// 获取模型 README 信息（默认最新版本）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) GetModelReadmeWithContext(ctx context.Context, request *GetModelReadmeRequest) (response *GetModelReadmeResponse, err error) {
+    if request == nil {
+        request = NewGetModelReadmeRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "GetModelReadme")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetModelReadme require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetModelReadmeResponse()
     err = c.Send(request, response)
     return
 }
@@ -13447,6 +13747,56 @@ func (c *Client) ListExamplesWithContext(ctx context.Context, request *ListExamp
     return
 }
 
+func NewListInferenceEnginesRequest() (request *ListInferenceEnginesRequest) {
+    request = &ListInferenceEnginesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "ListInferenceEngines")
+    
+    
+    return
+}
+
+func NewListInferenceEnginesResponse() (response *ListInferenceEnginesResponse) {
+    response = &ListInferenceEnginesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListInferenceEngines
+// 列出推理引擎
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OTHEREXCEPTION = "FailedOperation.OtherException"
+func (c *Client) ListInferenceEngines(request *ListInferenceEnginesRequest) (response *ListInferenceEnginesResponse, err error) {
+    return c.ListInferenceEnginesWithContext(context.Background(), request)
+}
+
+// ListInferenceEngines
+// 列出推理引擎
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OTHEREXCEPTION = "FailedOperation.OtherException"
+func (c *Client) ListInferenceEnginesWithContext(ctx context.Context, request *ListInferenceEnginesRequest) (response *ListInferenceEnginesResponse, err error) {
+    if request == nil {
+        request = NewListInferenceEnginesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "ListInferenceEngines")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListInferenceEngines require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListInferenceEnginesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewListInferenceModelsRequest() (request *ListInferenceModelsRequest) {
     request = &ListInferenceModelsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -13493,6 +13843,56 @@ func (c *Client) ListInferenceModelsWithContext(ctx context.Context, request *Li
     request.SetContext(ctx)
     
     response = NewListInferenceModelsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListInferenceServicesRequest() (request *ListInferenceServicesRequest) {
+    request = &ListInferenceServicesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "ListInferenceServices")
+    
+    
+    return
+}
+
+func NewListInferenceServicesResponse() (response *ListInferenceServicesResponse) {
+    response = &ListInferenceServicesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListInferenceServices
+// 列出推理服务（支持关键词和状态过滤 + 分页）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) ListInferenceServices(request *ListInferenceServicesRequest) (response *ListInferenceServicesResponse, err error) {
+    return c.ListInferenceServicesWithContext(context.Background(), request)
+}
+
+// ListInferenceServices
+// 列出推理服务（支持关键词和状态过滤 + 分页）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) ListInferenceServicesWithContext(ctx context.Context, request *ListInferenceServicesRequest) (response *ListInferenceServicesResponse, err error) {
+    if request == nil {
+        request = NewListInferenceServicesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "ListInferenceServices")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListInferenceServices require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListInferenceServicesResponse()
     err = c.Send(request, response)
     return
 }
@@ -13643,6 +14043,56 @@ func (c *Client) ListLabsWithContext(ctx context.Context, request *ListLabsReque
     request.SetContext(ctx)
     
     response = NewListLabsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListModelVersionsRequest() (request *ListModelVersionsRequest) {
+    request = &ListModelVersionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "ListModelVersions")
+    
+    
+    return
+}
+
+func NewListModelVersionsResponse() (response *ListModelVersionsResponse) {
+    response = &ListModelVersionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListModelVersions
+// 列出模型所有版本
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) ListModelVersions(request *ListModelVersionsRequest) (response *ListModelVersionsResponse, err error) {
+    return c.ListModelVersionsWithContext(context.Background(), request)
+}
+
+// ListModelVersions
+// 列出模型所有版本
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) ListModelVersionsWithContext(ctx context.Context, request *ListModelVersionsRequest) (response *ListModelVersionsResponse, err error) {
+    if request == nil {
+        request = NewListModelVersionsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "ListModelVersions")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListModelVersions require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListModelVersionsResponse()
     err = c.Send(request, response)
     return
 }
@@ -14891,6 +15341,130 @@ func (c *Client) PauseStandardEngineResourceGroupsWithContext(ctx context.Contex
     return
 }
 
+func NewQueryDashboardOverviewRequest() (request *QueryDashboardOverviewRequest) {
+    request = &QueryDashboardOverviewRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "QueryDashboardOverview")
+    
+    
+    return
+}
+
+func NewQueryDashboardOverviewResponse() (response *QueryDashboardOverviewResponse) {
+    response = &QueryDashboardOverviewResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// QueryDashboardOverview
+// 返回指定时间范围内所有推理服务的聚合 KPI 值。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_DATAENGINENOTFOUND = "ResourceNotFound.DataEngineNotFound"
+//  RESOURCENOTFOUND_RESOURCENOTFOUNDCODE_GATEWAYNOTFOUND = "ResourceNotFound.ResourceNotFoundCode_GatewayNotFound"
+//  RESOURCEUNAVAILABLE_RESOURCEUNAVAILABLECODE_GATEWAYNOTRUNNING = "ResourceUnavailable.ResourceUnavailableCode_GatewayNotRunning"
+func (c *Client) QueryDashboardOverview(request *QueryDashboardOverviewRequest) (response *QueryDashboardOverviewResponse, err error) {
+    return c.QueryDashboardOverviewWithContext(context.Background(), request)
+}
+
+// QueryDashboardOverview
+// 返回指定时间范围内所有推理服务的聚合 KPI 值。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_DATAENGINENOTFOUND = "ResourceNotFound.DataEngineNotFound"
+//  RESOURCENOTFOUND_RESOURCENOTFOUNDCODE_GATEWAYNOTFOUND = "ResourceNotFound.ResourceNotFoundCode_GatewayNotFound"
+//  RESOURCEUNAVAILABLE_RESOURCEUNAVAILABLECODE_GATEWAYNOTRUNNING = "ResourceUnavailable.ResourceUnavailableCode_GatewayNotRunning"
+func (c *Client) QueryDashboardOverviewWithContext(ctx context.Context, request *QueryDashboardOverviewRequest) (response *QueryDashboardOverviewResponse, err error) {
+    if request == nil {
+        request = NewQueryDashboardOverviewRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "QueryDashboardOverview")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryDashboardOverview require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryDashboardOverviewResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryDashboardServiceListRequest() (request *QueryDashboardServiceListRequest) {
+    request = &QueryDashboardServiceListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "QueryDashboardServiceList")
+    
+    
+    return
+}
+
+func NewQueryDashboardServiceListResponse() (response *QueryDashboardServiceListResponse) {
+    response = &QueryDashboardServiceListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// QueryDashboardServiceList
+// 查询监控大盘服务列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_DATAENGINENOTFOUND = "ResourceNotFound.DataEngineNotFound"
+//  RESOURCENOTFOUND_RESOURCENOTFOUNDCODE_GATEWAYNOTFOUND = "ResourceNotFound.ResourceNotFoundCode_GatewayNotFound"
+//  RESOURCEUNAVAILABLE_RESOURCEUNAVAILABLECODE_GATEWAYNOTRUNNING = "ResourceUnavailable.ResourceUnavailableCode_GatewayNotRunning"
+func (c *Client) QueryDashboardServiceList(request *QueryDashboardServiceListRequest) (response *QueryDashboardServiceListResponse, err error) {
+    return c.QueryDashboardServiceListWithContext(context.Background(), request)
+}
+
+// QueryDashboardServiceList
+// 查询监控大盘服务列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_DATAENGINENOTFOUND = "ResourceNotFound.DataEngineNotFound"
+//  RESOURCENOTFOUND_RESOURCENOTFOUNDCODE_GATEWAYNOTFOUND = "ResourceNotFound.ResourceNotFoundCode_GatewayNotFound"
+//  RESOURCEUNAVAILABLE_RESOURCEUNAVAILABLECODE_GATEWAYNOTRUNNING = "ResourceUnavailable.ResourceUnavailableCode_GatewayNotRunning"
+func (c *Client) QueryDashboardServiceListWithContext(ctx context.Context, request *QueryDashboardServiceListRequest) (response *QueryDashboardServiceListResponse, err error) {
+    if request == nil {
+        request = NewQueryDashboardServiceListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "QueryDashboardServiceList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryDashboardServiceList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryDashboardServiceListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewQueryInternalTableWarehouseRequest() (request *QueryInternalTableWarehouseRequest) {
     request = &QueryInternalTableWarehouseRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -14945,6 +15519,64 @@ func (c *Client) QueryInternalTableWarehouseWithContext(ctx context.Context, req
     request.SetContext(ctx)
     
     response = NewQueryInternalTableWarehouseResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryMonitorOverviewRequest() (request *QueryMonitorOverviewRequest) {
+    request = &QueryMonitorOverviewRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "QueryMonitorOverview")
+    
+    
+    return
+}
+
+func NewQueryMonitorOverviewResponse() (response *QueryMonitorOverviewResponse) {
+    response = &QueryMonitorOverviewResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// QueryMonitorOverview
+// 查询监控概览数据（瞬时值）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) QueryMonitorOverview(request *QueryMonitorOverviewRequest) (response *QueryMonitorOverviewResponse, err error) {
+    return c.QueryMonitorOverviewWithContext(context.Background(), request)
+}
+
+// QueryMonitorOverview
+// 查询监控概览数据（瞬时值）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) QueryMonitorOverviewWithContext(ctx context.Context, request *QueryMonitorOverviewRequest) (response *QueryMonitorOverviewResponse, err error) {
+    if request == nil {
+        request = NewQueryMonitorOverviewRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "QueryMonitorOverview")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryMonitorOverview require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryMonitorOverviewResponse()
     err = c.Send(request, response)
     return
 }
@@ -15305,6 +15937,56 @@ func (c *Client) RestartDataEngineWithContext(ctx context.Context, request *Rest
     return
 }
 
+func NewRestartInferenceServiceRequest() (request *RestartInferenceServiceRequest) {
+    request = &RestartInferenceServiceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "RestartInferenceService")
+    
+    
+    return
+}
+
+func NewRestartInferenceServiceResponse() (response *RestartInferenceServiceResponse) {
+    response = &RestartInferenceServiceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RestartInferenceService
+// 重启推理服务（操作所有部署）。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) RestartInferenceService(request *RestartInferenceServiceRequest) (response *RestartInferenceServiceResponse, err error) {
+    return c.RestartInferenceServiceWithContext(context.Background(), request)
+}
+
+// RestartInferenceService
+// 重启推理服务（操作所有部署）。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) RestartInferenceServiceWithContext(ctx context.Context, request *RestartInferenceServiceRequest) (response *RestartInferenceServiceResponse, err error) {
+    if request == nil {
+        request = NewRestartInferenceServiceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "RestartInferenceService")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RestartInferenceService require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRestartInferenceServiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRevokeDLCCatalogAccessRequest() (request *RevokeDLCCatalogAccessRequest) {
     request = &RevokeDLCCatalogAccessRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -15328,14 +16010,7 @@ func NewRevokeDLCCatalogAccessResponse() (response *RevokeDLCCatalogAccessRespon
 // 撤销DLC Catalog访问权限
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_NOPERMISSIONTOUSETHEDATAENGINE = "FailedOperation.NoPermissionToUseTheDataEngine"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
-//  RESOURCENOTFOUND_DATAENGINENOTACTIVITY = "ResourceNotFound.DataEngineNotActivity"
-//  RESOURCENOTFOUND_DATAENGINENOTRUNNING = "ResourceNotFound.DataEngineNotRunning"
-//  RESOURCENOTFOUND_DEFAULTDATAENGINENOTFOUND = "ResourceNotFound.DefaultDataEngineNotFound"
-//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATIONCODE_NOENGINECAMPERMISSIONS = "UnauthorizedOperation.UnauthorizedOperationCode_NoEngineCamPermissions"
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
 func (c *Client) RevokeDLCCatalogAccess(request *RevokeDLCCatalogAccessRequest) (response *RevokeDLCCatalogAccessResponse, err error) {
     return c.RevokeDLCCatalogAccessWithContext(context.Background(), request)
 }
@@ -15344,14 +16019,7 @@ func (c *Client) RevokeDLCCatalogAccess(request *RevokeDLCCatalogAccessRequest) 
 // 撤销DLC Catalog访问权限
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_NOPERMISSIONTOUSETHEDATAENGINE = "FailedOperation.NoPermissionToUseTheDataEngine"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
-//  RESOURCENOTFOUND_DATAENGINENOTACTIVITY = "ResourceNotFound.DataEngineNotActivity"
-//  RESOURCENOTFOUND_DATAENGINENOTRUNNING = "ResourceNotFound.DataEngineNotRunning"
-//  RESOURCENOTFOUND_DEFAULTDATAENGINENOTFOUND = "ResourceNotFound.DefaultDataEngineNotFound"
-//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATIONCODE_NOENGINECAMPERMISSIONS = "UnauthorizedOperation.UnauthorizedOperationCode_NoEngineCamPermissions"
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
 func (c *Client) RevokeDLCCatalogAccessWithContext(ctx context.Context, request *RevokeDLCCatalogAccessRequest) (response *RevokeDLCCatalogAccessResponse, err error) {
     if request == nil {
         request = NewRevokeDLCCatalogAccessRequest()
@@ -15669,6 +16337,56 @@ func (c *Client) StartRayClusterWithContext(ctx context.Context, request *StartR
     request.SetContext(ctx)
     
     response = NewStartRayClusterResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStopInferenceServiceRequest() (request *StopInferenceServiceRequest) {
+    request = &StopInferenceServiceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "StopInferenceService")
+    
+    
+    return
+}
+
+func NewStopInferenceServiceResponse() (response *StopInferenceServiceResponse) {
+    response = &StopInferenceServiceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// StopInferenceService
+// 停止推理服务（操作所有部署）。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) StopInferenceService(request *StopInferenceServiceRequest) (response *StopInferenceServiceResponse, err error) {
+    return c.StopInferenceServiceWithContext(context.Background(), request)
+}
+
+// StopInferenceService
+// 停止推理服务（操作所有部署）。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) StopInferenceServiceWithContext(ctx context.Context, request *StopInferenceServiceRequest) (response *StopInferenceServiceResponse, err error) {
+    if request == nil {
+        request = NewStopInferenceServiceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "StopInferenceService")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StopInferenceService require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStopInferenceServiceResponse()
     err = c.Send(request, response)
     return
 }

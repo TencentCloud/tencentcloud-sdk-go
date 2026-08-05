@@ -261,7 +261,21 @@ func NewCancelFlowResponse() (response *CancelFlowResponse) {
 //
 // 
 //
-// 注:
+// 
+//
+// **合同额度返还规则**:
+//
+// 
+//
+// 1.撤销服务按照合同份额 1:1赠送免费撤销次数。例如购买 100 份合同，赠送 100 次免费撤销额度。
+//
+// 2.仅当没有任何参与方签署过，或仅自动签署完成的合同，撤销后才会使用免费撤销额度。
+//
+// 3.当赠送的免费撤销额度使用完后，后续仍可撤销合同，但不会返还合同额度。
+//
+// 
+//
+// **注**:
 //
 // 1. 如果合同流程中的参与方均已签署完毕，则无法通过该接口撤销合同，签署完毕的合同需要双方走解除流程将合同作废，可以参考<a href="https://qian.tencent.com/developers/companyApis/operateFlows/CreateReleaseFlow" target="_blank">发起解除合同流程</a>接口。
 //
@@ -284,14 +298,6 @@ func NewCancelFlowResponse() (response *CancelFlowResponse) {
 //     - 撤销人与发起人<font color='red'>**不在**</font>同一个部门：<font color='red'>（确保已授予查询合同 - 企业全部合同权限）</font>
 //
 //     - 撤销人与发起人<font color='red'>**在**</font>用一个部门：<font color='red'>（确保授予查询合同 - 本部门全部合同权限 或 企业全部合同权限）</font>
-//
-// 
-//
-// 
-//
-// 3. <font color='red'>**只有撤销没有参与方签署过或只有自动签署签署过的合同，才会返还合同额度。**</font>
-//
-// 
 //
 // 4.  撤销后可以看合同PDF内容的人员： 发起方的超管， 发起方自己，发起方撤销合同的操作人员，已经签署合同、已经填写合同、邀请填写已经补充信息的参与人员， 其他参与人员看不到合同的内容。
 //
@@ -328,7 +334,21 @@ func (c *Client) CancelFlow(request *CancelFlowRequest) (response *CancelFlowRes
 //
 // 
 //
-// 注:
+// 
+//
+// **合同额度返还规则**:
+//
+// 
+//
+// 1.撤销服务按照合同份额 1:1赠送免费撤销次数。例如购买 100 份合同，赠送 100 次免费撤销额度。
+//
+// 2.仅当没有任何参与方签署过，或仅自动签署完成的合同，撤销后才会使用免费撤销额度。
+//
+// 3.当赠送的免费撤销额度使用完后，后续仍可撤销合同，但不会返还合同额度。
+//
+// 
+//
+// **注**:
 //
 // 1. 如果合同流程中的参与方均已签署完毕，则无法通过该接口撤销合同，签署完毕的合同需要双方走解除流程将合同作废，可以参考<a href="https://qian.tencent.com/developers/companyApis/operateFlows/CreateReleaseFlow" target="_blank">发起解除合同流程</a>接口。
 //
@@ -351,14 +371,6 @@ func (c *Client) CancelFlow(request *CancelFlowRequest) (response *CancelFlowRes
 //     - 撤销人与发起人<font color='red'>**不在**</font>同一个部门：<font color='red'>（确保已授予查询合同 - 企业全部合同权限）</font>
 //
 //     - 撤销人与发起人<font color='red'>**在**</font>用一个部门：<font color='red'>（确保授予查询合同 - 本部门全部合同权限 或 企业全部合同权限）</font>
-//
-// 
-//
-// 
-//
-// 3. <font color='red'>**只有撤销没有参与方签署过或只有自动签署签署过的合同，才会返还合同额度。**</font>
-//
-// 
 //
 // 4.  撤销后可以看合同PDF内容的人员： 发起方的超管， 发起方自己，发起方撤销合同的操作人员，已经签署合同、已经填写合同、邀请填写已经补充信息的参与人员， 其他参与人员看不到合同的内容。
 //
@@ -1001,7 +1013,19 @@ func NewCreateBatchCancelFlowUrlResponse() (response *CreateBatchCancelFlowUrlRe
 //
 // 
 //
-// 注：
+// **合同额度返还规则**:
+//
+// 
+//
+// 1.撤销服务按照合同份额 1:1赠送免费撤销次数。例如购买 100 份合同，赠送 100 次免费撤销额度。
+//
+// 2.仅当没有任何参与方签署过，或仅自动签署完成的合同，撤销后才会使用免费撤销额度。
+//
+// 3.当赠送的免费撤销额度使用完后，后续仍可撤销合同，但不会返还合同额度。
+//
+// 
+//
+// **注**：
 //
 // 1. 如果合同流程中的参与方均已签署完毕，则无法通过该接口撤销合同，签署完毕的合同需要双方走解除流程将合同作废，可以参考<a href="https://qian.tencent.com/developers/companyApis/operateFlows/CreateReleaseFlow" target="_blank">发起解除合同流程</a>接口。
 //
@@ -1024,12 +1048,6 @@ func NewCreateBatchCancelFlowUrlResponse() (response *CreateBatchCancelFlowUrlRe
 //     - 撤销人与发起人<font color='red'>**不在**</font>同一个部门：<font color='red'>（确保已授予查询合同 - 企业全部合同权限）</font>
 //
 //     - 撤销人与发起人<font color='red'>**在**</font>用一个部门：<font color='red'>（确保授予查询合同 - 本部门全部合同权限 或 企业全部合同权限）</font>
-//
-// 
-//
-// 
-//
-// 3. <font color='red'>**只有撤销没有参与方签署过或只有自动签署签署过的合同，才会返还合同额度。**</font>
 //
 // 
 //
@@ -1069,7 +1087,19 @@ func (c *Client) CreateBatchCancelFlowUrl(request *CreateBatchCancelFlowUrlReque
 //
 // 
 //
-// 注：
+// **合同额度返还规则**:
+//
+// 
+//
+// 1.撤销服务按照合同份额 1:1赠送免费撤销次数。例如购买 100 份合同，赠送 100 次免费撤销额度。
+//
+// 2.仅当没有任何参与方签署过，或仅自动签署完成的合同，撤销后才会使用免费撤销额度。
+//
+// 3.当赠送的免费撤销额度使用完后，后续仍可撤销合同，但不会返还合同额度。
+//
+// 
+//
+// **注**：
 //
 // 1. 如果合同流程中的参与方均已签署完毕，则无法通过该接口撤销合同，签署完毕的合同需要双方走解除流程将合同作废，可以参考<a href="https://qian.tencent.com/developers/companyApis/operateFlows/CreateReleaseFlow" target="_blank">发起解除合同流程</a>接口。
 //
@@ -1092,12 +1122,6 @@ func (c *Client) CreateBatchCancelFlowUrl(request *CreateBatchCancelFlowUrlReque
 //     - 撤销人与发起人<font color='red'>**不在**</font>同一个部门：<font color='red'>（确保已授予查询合同 - 企业全部合同权限）</font>
 //
 //     - 撤销人与发起人<font color='red'>**在**</font>用一个部门：<font color='red'>（确保授予查询合同 - 本部门全部合同权限 或 企业全部合同权限）</font>
-//
-// 
-//
-// 
-//
-// 3. <font color='red'>**只有撤销没有参与方签署过或只有自动签署签署过的合同，才会返还合同额度。**</font>
 //
 // 
 //

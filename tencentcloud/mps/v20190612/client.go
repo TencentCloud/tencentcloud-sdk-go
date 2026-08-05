@@ -1257,7 +1257,9 @@ func NewCreateDocToVideoTaskResponse() (response *CreateDocToVideoTaskResponse) 
 }
 
 // CreateDocToVideoTask
-// 创建 AiGC 文档生成视频任务
+// 创建 AIGC 文档生成视频任务
+//
+// （使用 DescribeAigcTaskStatus 接口进行任务查询）
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEAIGCTASKFAILED = "FailedOperation.CreateAIGCTaskFailed"
@@ -1269,7 +1271,9 @@ func (c *Client) CreateDocToVideoTask(request *CreateDocToVideoTaskRequest) (res
 }
 
 // CreateDocToVideoTask
-// 创建 AiGC 文档生成视频任务
+// 创建 AIGC 文档生成视频任务
+//
+// （使用 DescribeAigcTaskStatus 接口进行任务查询）
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEAIGCTASKFAILED = "FailedOperation.CreateAIGCTaskFailed"

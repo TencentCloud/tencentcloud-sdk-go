@@ -104,6 +104,9 @@ const (
 	// 对防火墙规则的操作失败。
 	FAILEDOPERATION_FIREWALLRULESOPERATIONFAILED = "FailedOperation.FirewallRulesOperationFailed"
 
+	// 快照配额锁获取失败。
+	FAILEDOPERATION_GETSNAPSHOTALLOCQUOTALOCKERROR = "FailedOperation.GetSnapshotAllocQuotaLockError"
+
 	// 操作镜像失败。
 	FAILEDOPERATION_IMAGEOPERATIONFAILED = "FailedOperation.ImageOperationFailed"
 

@@ -583,6 +583,10 @@ type DBCustomClusterNode struct {
 	// <p>当选择网络模式为三层网络联通模式时，此处的IP地址则为用户可访问的地址。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EniIP *string `json:"EniIP,omitnil,omitempty" name:"EniIP"`
+
+	// <p>节点绑定的安全组</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
 }
 
 type DBCustomClusterNodeConfig struct {
@@ -724,6 +728,10 @@ type DBCustomNode struct {
 
 	// <p>当选择NetworkModeCrossTenantENI模式时，节点的访问IP地址</p>
 	EniIP *string `json:"EniIP,omitnil,omitempty" name:"EniIP"`
+
+	// <p>节点绑定的安全组</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
 }
 
 type DBCustomNodeTypeInfo struct {

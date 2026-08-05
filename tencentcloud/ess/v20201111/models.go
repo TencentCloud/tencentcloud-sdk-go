@@ -3385,86 +3385,62 @@ func (r *CreateDigitalDataSignResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateDocumentRequestParams struct {
-	// 本合同的发起人，<a href="https://qcloudimg.tencent-cloud.cn/raw/f850cfbe163a1cb38439a9f551c2505c.png" target="_blank">点击查看合同发起人展示的位置</a>
-	// 
-	// 注：支持填入集团子公司经办人 userId代发合同。
+	// <p>本合同的发起人，<a href="https://qcloudimg.tencent-cloud.cn/raw/f850cfbe163a1cb38439a9f551c2505c.png" target="_blank">点击查看合同发起人展示的位置</a></p><p>注：支持填入集团子公司经办人 userId代发合同。</p>
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 用户配置的合同模板ID，会基于此模板创建合同文档，为32位字符串。
-	// 
-	// [点击查看模板Id在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/253071cc2f7becb063c7cf71b37b7861.png)
+	// <p>用户配置的合同模板ID，会基于此模板创建合同文档，为32位字符串。</p><p><a href="https://qcloudimg.tencent-cloud.cn/raw/253071cc2f7becb063c7cf71b37b7861.png">点击查看模板Id在控制台上的位置</a></p>
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
-	// 合同流程ID，为32位字符串。
-	// 此接口的合同流程ID需要由[创建签署流程](https://qian.tencent.com/developers/companyApis/startFlows/CreateFlow)接口创建得到。
+	// <p>合同流程ID，为32位字符串。<br>此接口的合同流程ID需要由<a href="https://qian.tencent.com/developers/companyApis/startFlows/CreateFlow">创建签署流程</a>接口创建得到。</p>
 	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
-	// 文件名列表，单个文件名最大长度200个字符，暂时仅支持单文件发起。设置后流程对应的文件名称当前设置的值。
+	// <p>文件名列表，单个文件名最大长度200个字符，暂时仅支持单文件发起。设置后流程对应的文件名称当前设置的值。</p>
 	FileNames []*string `json:"FileNames,omitnil,omitempty" name:"FileNames"`
 
-	// 电子文档的填写控件的填充内容。具体方式可以参考[FormField](https://qian.tencent.com/developers/companyApis/dataTypes/#formfield)结构体的定义。
-	// <ul>
-	// <li>支持自动签传递印章，可通过指定自动签控件id，指定印章id来完成</li>
-	// <li>附件控件支持传入图片、文件资源id，并将内容合成到合同文件中。支持的文件类型有doc、docx、xls、xlsx、html、jpg、jpeg、png、bmp、txt、pdf。需要注意如果传入的资源类型都是图片类型，图片资源会放置在合同文件的末尾，如果传入的资源有非图片类型资源，会将资源放置在附件控件所在页面的下一页。</li>
-	// </ul>
-	// 注：只有在控制台编辑模板时，<font color="red">归属给发起方</font>的填写控件（如下图）才能在创建文档的时候进行内容填充。
-	// ![image](https://qcloudimg.tencent-cloud.cn/raw/a54a76a58c454593d06d8e9883ecc9b3.png)
+	// <p>电子文档的填写控件的填充内容。具体方式可以参考<a href="https://qian.tencent.com/developers/companyApis/dataTypes/#formfield">FormField</a>结构体的定义。</p><ul><li>支持自动签传递印章，可通过指定自动签控件id，指定印章id来完成</li><li>附件控件支持传入图片、文件资源id，并将内容合成到合同文件中。支持的文件类型有doc、docx、xls、xlsx、html、jpg、jpeg、png、bmp、txt、pdf。需要注意如果传入的资源类型都是图片类型，图片资源会放置在合同文件的末尾，如果传入的资源有非图片类型资源，会将资源放置在附件控件所在页面的下一页。</li></ul>注：只有在控制台编辑模板时，<font color="red">归属给发起方</font>的填写控件（如下图）才能在创建文档的时候进行内容填充。![image](https://qcloudimg.tencent-cloud.cn/raw/a54a76a58c454593d06d8e9883ecc9b3.png)
 	FormFields []*FormField `json:"FormFields,omitnil,omitempty" name:"FormFields"`
 
-	// 是否为预览模式，取值如下：<ul><li> **false**：非预览模式（默认），会产生合同流程并返回合同流程编号FlowId。</li> <li> **true**：预览模式，不产生合同流程，不返回合同流程编号FlowId，而是返回预览链接PreviewUrl，有效期为300秒，用于查看真实发起后合同的样子。 <font color="red">注意： 1.以预览模式创建的合同仅供查看，因此参与方无法进行签署操作;；2.以预览模式调用该接口返回的FlowId为临时Flowld，无法用于发起和拉取信息。</font> </li></ul>注: `当使用的模板中存在动态表格控件时，预览结果中没有动态表格的填写内容，动态表格合成完后会触发文档合成完成的回调通知`
+	// <p>是否为预览模式，取值如下：<ul><li> <strong>false</strong>：非预览模式（默认），会产生合同流程并返回合同流程编号FlowId。</li> <li> <strong>true</strong>：预览模式，不产生合同流程，不返回合同流程编号FlowId，而是返回预览链接PreviewUrl，有效期为300秒，用于查看真实发起后合同的样子。 <font color="red">注意： 1.以预览模式创建的合同仅供查看，因此参与方无法进行签署操作;；2.以预览模式调用该接口返回的FlowId为临时Flowld，无法用于发起和拉取信息。</font> </li></ul></p><p><strong>注1</strong>: <code>当使用的模板中存在动态表格控件时，预览结果中没有动态表格的填写内容，动态表格合成完后会触发文档合成完成的回调通知</code><br><strong>注2</strong>: 预览服务按照合同份额 1:2的比例赠送预览次数。例如：购买 100 份合同，将赠送 200 次合同预览额度。当赠送的预览额度使用完后，如需继续使用预览服务，则需要单独购买预览服务额度。</p>
 	NeedPreview *bool `json:"NeedPreview,omitnil,omitempty" name:"NeedPreview"`
 
-	// 预览模式下产生的预览链接类型 <ul><li> **0** :(默认) 文件流 ,点开后下载预览的合同PDF文件 </li><li> **1** :H5链接 ,点开后在浏览器中展示合同的样子。</li></ul>注: `1.此参数在NeedPreview 为true时有效`
+	// <p>预览模式下产生的预览链接类型 <ul><li> <strong>0</strong> :(默认) 文件流 ,点开后下载预览的合同PDF文件 </li><li> <strong>1</strong> :H5链接 ,点开后在浏览器中展示合同的样子。</li></ul>注: <code>1.此参数在NeedPreview 为true时有效</code></p>
 	PreviewType *int64 `json:"PreviewType,omitnil,omitempty" name:"PreviewType"`
 
-	// 代理企业和员工的信息。
-	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	// <p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
-	// 该字段已不再使用
+	// <p>该字段已不再使用</p>
 	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
 }
 
 type CreateDocumentRequest struct {
 	*tchttp.BaseRequest
 	
-	// 本合同的发起人，<a href="https://qcloudimg.tencent-cloud.cn/raw/f850cfbe163a1cb38439a9f551c2505c.png" target="_blank">点击查看合同发起人展示的位置</a>
-	// 
-	// 注：支持填入集团子公司经办人 userId代发合同。
+	// <p>本合同的发起人，<a href="https://qcloudimg.tencent-cloud.cn/raw/f850cfbe163a1cb38439a9f551c2505c.png" target="_blank">点击查看合同发起人展示的位置</a></p><p>注：支持填入集团子公司经办人 userId代发合同。</p>
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 用户配置的合同模板ID，会基于此模板创建合同文档，为32位字符串。
-	// 
-	// [点击查看模板Id在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/253071cc2f7becb063c7cf71b37b7861.png)
+	// <p>用户配置的合同模板ID，会基于此模板创建合同文档，为32位字符串。</p><p><a href="https://qcloudimg.tencent-cloud.cn/raw/253071cc2f7becb063c7cf71b37b7861.png">点击查看模板Id在控制台上的位置</a></p>
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
-	// 合同流程ID，为32位字符串。
-	// 此接口的合同流程ID需要由[创建签署流程](https://qian.tencent.com/developers/companyApis/startFlows/CreateFlow)接口创建得到。
+	// <p>合同流程ID，为32位字符串。<br>此接口的合同流程ID需要由<a href="https://qian.tencent.com/developers/companyApis/startFlows/CreateFlow">创建签署流程</a>接口创建得到。</p>
 	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
-	// 文件名列表，单个文件名最大长度200个字符，暂时仅支持单文件发起。设置后流程对应的文件名称当前设置的值。
+	// <p>文件名列表，单个文件名最大长度200个字符，暂时仅支持单文件发起。设置后流程对应的文件名称当前设置的值。</p>
 	FileNames []*string `json:"FileNames,omitnil,omitempty" name:"FileNames"`
 
-	// 电子文档的填写控件的填充内容。具体方式可以参考[FormField](https://qian.tencent.com/developers/companyApis/dataTypes/#formfield)结构体的定义。
-	// <ul>
-	// <li>支持自动签传递印章，可通过指定自动签控件id，指定印章id来完成</li>
-	// <li>附件控件支持传入图片、文件资源id，并将内容合成到合同文件中。支持的文件类型有doc、docx、xls、xlsx、html、jpg、jpeg、png、bmp、txt、pdf。需要注意如果传入的资源类型都是图片类型，图片资源会放置在合同文件的末尾，如果传入的资源有非图片类型资源，会将资源放置在附件控件所在页面的下一页。</li>
-	// </ul>
-	// 注：只有在控制台编辑模板时，<font color="red">归属给发起方</font>的填写控件（如下图）才能在创建文档的时候进行内容填充。
-	// ![image](https://qcloudimg.tencent-cloud.cn/raw/a54a76a58c454593d06d8e9883ecc9b3.png)
+	// <p>电子文档的填写控件的填充内容。具体方式可以参考<a href="https://qian.tencent.com/developers/companyApis/dataTypes/#formfield">FormField</a>结构体的定义。</p><ul><li>支持自动签传递印章，可通过指定自动签控件id，指定印章id来完成</li><li>附件控件支持传入图片、文件资源id，并将内容合成到合同文件中。支持的文件类型有doc、docx、xls、xlsx、html、jpg、jpeg、png、bmp、txt、pdf。需要注意如果传入的资源类型都是图片类型，图片资源会放置在合同文件的末尾，如果传入的资源有非图片类型资源，会将资源放置在附件控件所在页面的下一页。</li></ul>注：只有在控制台编辑模板时，<font color="red">归属给发起方</font>的填写控件（如下图）才能在创建文档的时候进行内容填充。![image](https://qcloudimg.tencent-cloud.cn/raw/a54a76a58c454593d06d8e9883ecc9b3.png)
 	FormFields []*FormField `json:"FormFields,omitnil,omitempty" name:"FormFields"`
 
-	// 是否为预览模式，取值如下：<ul><li> **false**：非预览模式（默认），会产生合同流程并返回合同流程编号FlowId。</li> <li> **true**：预览模式，不产生合同流程，不返回合同流程编号FlowId，而是返回预览链接PreviewUrl，有效期为300秒，用于查看真实发起后合同的样子。 <font color="red">注意： 1.以预览模式创建的合同仅供查看，因此参与方无法进行签署操作;；2.以预览模式调用该接口返回的FlowId为临时Flowld，无法用于发起和拉取信息。</font> </li></ul>注: `当使用的模板中存在动态表格控件时，预览结果中没有动态表格的填写内容，动态表格合成完后会触发文档合成完成的回调通知`
+	// <p>是否为预览模式，取值如下：<ul><li> <strong>false</strong>：非预览模式（默认），会产生合同流程并返回合同流程编号FlowId。</li> <li> <strong>true</strong>：预览模式，不产生合同流程，不返回合同流程编号FlowId，而是返回预览链接PreviewUrl，有效期为300秒，用于查看真实发起后合同的样子。 <font color="red">注意： 1.以预览模式创建的合同仅供查看，因此参与方无法进行签署操作;；2.以预览模式调用该接口返回的FlowId为临时Flowld，无法用于发起和拉取信息。</font> </li></ul></p><p><strong>注1</strong>: <code>当使用的模板中存在动态表格控件时，预览结果中没有动态表格的填写内容，动态表格合成完后会触发文档合成完成的回调通知</code><br><strong>注2</strong>: 预览服务按照合同份额 1:2的比例赠送预览次数。例如：购买 100 份合同，将赠送 200 次合同预览额度。当赠送的预览额度使用完后，如需继续使用预览服务，则需要单独购买预览服务额度。</p>
 	NeedPreview *bool `json:"NeedPreview,omitnil,omitempty" name:"NeedPreview"`
 
-	// 预览模式下产生的预览链接类型 <ul><li> **0** :(默认) 文件流 ,点开后下载预览的合同PDF文件 </li><li> **1** :H5链接 ,点开后在浏览器中展示合同的样子。</li></ul>注: `1.此参数在NeedPreview 为true时有效`
+	// <p>预览模式下产生的预览链接类型 <ul><li> <strong>0</strong> :(默认) 文件流 ,点开后下载预览的合同PDF文件 </li><li> <strong>1</strong> :H5链接 ,点开后在浏览器中展示合同的样子。</li></ul>注: <code>1.此参数在NeedPreview 为true时有效</code></p>
 	PreviewType *int64 `json:"PreviewType,omitnil,omitempty" name:"PreviewType"`
 
-	// 代理企业和员工的信息。
-	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	// <p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
-	// 该字段已不再使用
+	// <p>该字段已不再使用</p>
 	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
 }
 
@@ -3497,19 +3473,13 @@ func (r *CreateDocumentRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateDocumentResponseParams struct {
-	// 合同流程的底层电子文档ID，为32位字符串。
-	// 
-	// 注:
-	// 后续需用同样的FlowId再次调用[发起签署流程](https://qian.tencent.com/developers/companyApis/startFlows/StartFlow)，合同才能进入签署环节
+	// <p>合同流程的底层电子文档ID，为32位字符串。</p><p>注:<br>后续需用同样的FlowId再次调用<a href="https://qian.tencent.com/developers/companyApis/startFlows/StartFlow">发起签署流程</a>，合同才能进入签署环节</p>
 	DocumentId *string `json:"DocumentId,omitnil,omitempty" name:"DocumentId"`
 
-	// 合同预览链接URL。
-	// 
-	// 注: `1.如果是预览模式(即NeedPreview设置为true)时, 才会有此预览链接URL`
-	// `2.当使用的模板中存在动态表格控件时，预览结果中没有动态表格的填写内容,完整的预览链接需通过[合同文档合成完成回调](https://qian.tencent.com/developers/company/callback_types_contracts_sign/#%E4%B9%9D-%E5%90%88%E5%90%8C%E6%96%87%E6%A1%A3%E5%90%88%E6%88%90%E5%AE%8C%E6%88%90%E5%9B%9E%E8%B0%83)获取。
+	// <p>合同预览链接URL。</p><p>注: <code>1.如果是预览模式(即NeedPreview设置为true)时, 才会有此预览链接URL</code><br>`2.当使用的模板中存在动态表格控件时，预览结果中没有动态表格的填写内容,完整的预览链接需通过<a href="https://qian.tencent.com/developers/company/callback_types_contracts_sign/#%E4%B9%9D-%E5%90%88%E5%90%8C%E6%96%87%E6%A1%A3%E5%90%88%E6%88%90%E5%AE%8C%E6%88%90%E5%9B%9E%E8%B0%83">合同文档合成完成回调</a>获取。</p>
 	PreviewFileUrl *string `json:"PreviewFileUrl,omitnil,omitempty" name:"PreviewFileUrl"`
 
-	// 签署方信息，如角色ID、角色名称等
+	// <p>签署方信息，如角色ID、角色名称等</p>
 	Approvers []*ApproverItem `json:"Approvers,omitnil,omitempty" name:"Approvers"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4492,7 +4462,7 @@ type CreateFlowByFilesRequestParams struct {
 	// <p>可以设置以下时间节点来给抄送人发送短信通知来查看合同内容：</p><ul><li> **0**：合同发起时通知（默认值）</li><li> **1**：签署完成后通知</li></ul>
 	CcNotifyType *int64 `json:"CcNotifyType,omitnil,omitempty" name:"CcNotifyType"`
 
-	// <p>是否为预览模式，取值如下：</p><ul><li> **false**：非预览模式（默认），会产生合同流程并返回合同流程编号FlowId。</li><li> **true**：预览模式，不产生合同流程，不返回合同流程编号FlowId，而是返回预览链接PreviewUrl，有效期为300秒，用于查看真实发起后合同的样子。</li></ul>
+	// <p>是否为预览模式，取值如下：</p><ul><li> **false**：非预览模式（默认），会产生合同流程并返回合同流程编号FlowId。</li><li> **true**：预览模式，不产生合同流程，不返回合同流程编号FlowId，而是返回预览链接PreviewUrl，有效期为300秒，用于查看真实发起后合同的样子。</li></ul><p><strong>注</strong>: 预览服务按照合同份额 1:2的比例赠送预览次数。例如：购买 100 份合同，将赠送 200 次合同预览额度。当赠送的预览额度使用完后，如需继续使用预览服务，则需要单独购买预览服务额度。</p>
 	NeedPreview *bool `json:"NeedPreview,omitnil,omitempty" name:"NeedPreview"`
 
 	// <p>预览模式下产生的预览链接类型 </p><ul><li> **0** :(默认) 文件流 ,点开后下载预览的合同PDF文件 </li><li> **1** :H5链接 ,点开后在浏览器中展示合同的样子</li></ul>注: <code>此参数在NeedPreview 为true时有效</code>
@@ -4571,7 +4541,7 @@ type CreateFlowByFilesRequest struct {
 	// <p>可以设置以下时间节点来给抄送人发送短信通知来查看合同内容：</p><ul><li> **0**：合同发起时通知（默认值）</li><li> **1**：签署完成后通知</li></ul>
 	CcNotifyType *int64 `json:"CcNotifyType,omitnil,omitempty" name:"CcNotifyType"`
 
-	// <p>是否为预览模式，取值如下：</p><ul><li> **false**：非预览模式（默认），会产生合同流程并返回合同流程编号FlowId。</li><li> **true**：预览模式，不产生合同流程，不返回合同流程编号FlowId，而是返回预览链接PreviewUrl，有效期为300秒，用于查看真实发起后合同的样子。</li></ul>
+	// <p>是否为预览模式，取值如下：</p><ul><li> **false**：非预览模式（默认），会产生合同流程并返回合同流程编号FlowId。</li><li> **true**：预览模式，不产生合同流程，不返回合同流程编号FlowId，而是返回预览链接PreviewUrl，有效期为300秒，用于查看真实发起后合同的样子。</li></ul><p><strong>注</strong>: 预览服务按照合同份额 1:2的比例赠送预览次数。例如：购买 100 份合同，将赠送 200 次合同预览额度。当赠送的预览额度使用完后，如需继续使用预览服务，则需要单独购买预览服务额度。</p>
 	NeedPreview *bool `json:"NeedPreview,omitnil,omitempty" name:"NeedPreview"`
 
 	// <p>预览模式下产生的预览链接类型 </p><ul><li> **0** :(默认) 文件流 ,点开后下载预览的合同PDF文件 </li><li> **1** :H5链接 ,点开后在浏览器中展示合同的样子</li></ul>注: <code>此参数在NeedPreview 为true时有效</code>
@@ -9437,6 +9407,9 @@ type CreateSealRequestParams struct {
 	// <p>电子印章类型 , 可选类型如下: <ul><li><strong>OFFICIAL</strong>: (默认)公章</li><li><strong>CONTRACT</strong>: 合同专用章;</li><li><strong>FINANCE</strong>: 财务专用章;</li><li><strong>PERSONNEL</strong>: 人事专用章</li><li><strong>INVOICE</strong>: 发票专用章</li><li><strong>OTHER</strong>: 其他</li></ul>注: 同企业下只能有<font color="red">一个</font>公章, 重复创建会报错</p>
 	SealType *string `json:"SealType,omitnil,omitempty" name:"SealType"`
 
+	// <p>  印章其他子类型。仅当 <code>SealType=OTHER</code> 且 <code>GenerateSource=SealGenerateSourceSystem</code> 时生效（ <font color="red">不支持图片上传方式创建子类型印章</font>）。<br> <b>注1：</b>调用时请勿传入 <code>SealHorizontalText</code> 字段，系统将自动使用子印章类型名称填充该字段。<br>  <b>注2：</b>本字段为白名单受控功能。如需使用，请联系客服开通并获取支持的子类型枚举值。</p>
+	SubSealType *string `json:"SubSealType,omitnil,omitempty" name:"SubSealType"`
+
 	// <p>电子印章图片文件名称，1-50个中文字符。</p>
 	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
 
@@ -9498,6 +9471,9 @@ type CreateSealRequest struct {
 	// <p>电子印章类型 , 可选类型如下: <ul><li><strong>OFFICIAL</strong>: (默认)公章</li><li><strong>CONTRACT</strong>: 合同专用章;</li><li><strong>FINANCE</strong>: 财务专用章;</li><li><strong>PERSONNEL</strong>: 人事专用章</li><li><strong>INVOICE</strong>: 发票专用章</li><li><strong>OTHER</strong>: 其他</li></ul>注: 同企业下只能有<font color="red">一个</font>公章, 重复创建会报错</p>
 	SealType *string `json:"SealType,omitnil,omitempty" name:"SealType"`
 
+	// <p>  印章其他子类型。仅当 <code>SealType=OTHER</code> 且 <code>GenerateSource=SealGenerateSourceSystem</code> 时生效（ <font color="red">不支持图片上传方式创建子类型印章</font>）。<br> <b>注1：</b>调用时请勿传入 <code>SealHorizontalText</code> 字段，系统将自动使用子印章类型名称填充该字段。<br>  <b>注2：</b>本字段为白名单受控功能。如需使用，请联系客服开通并获取支持的子类型枚举值。</p>
+	SubSealType *string `json:"SubSealType,omitnil,omitempty" name:"SubSealType"`
+
 	// <p>电子印章图片文件名称，1-50个中文字符。</p>
 	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
 
@@ -9558,6 +9534,7 @@ func (r *CreateSealRequest) FromJsonString(s string) error {
 	delete(f, "Agent")
 	delete(f, "GenerateSource")
 	delete(f, "SealType")
+	delete(f, "SubSealType")
 	delete(f, "FileName")
 	delete(f, "Image")
 	delete(f, "Width")
@@ -14449,86 +14426,56 @@ func (r *DescribeOrganizationGroupOrganizationsResponse) FromJsonString(s string
 
 // Predefined struct for user
 type DescribeOrganizationSealsRequestParams struct {
-	// 执行本接口操作的员工信息。
-	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	// <p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 指定分页每页返回的数据条数，如果不传默认为 20，单页最大支持 200。
+	// <p>指定分页每页返回的数据条数，如果不传默认为 20，单页最大支持 200。</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 指定分页返回第几页的数据，如果不传默认返回第一页，页码从 0 开始，即首页为 0，最大 20000。
+	// <p>指定分页返回第几页的数据，如果不传默认返回第一页，页码从 0 开始，即首页为 0，最大 20000。</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 查询授权用户信息类型，取值如下：
-	// 
-	// <ul> <li><b>0</b>：（默认）不返回授权用户信息</li> <li><b>1</b>：返回授权用户的信息</li> </ul>
+	// <p>查询授权用户信息类型，取值如下：</p><ul> <li><b>0</b>：（默认）不返回授权用户信息</li> <li><b>1</b>：返回授权用户的信息</li> </ul>
 	InfoType *int64 `json:"InfoType,omitnil,omitempty" name:"InfoType"`
 
-	// 印章id，是否查询特定的印章（没有输入返回所有）
+	// <p>印章id，是否查询特定的印章（没有输入返回所有）</p>
 	SealId *string `json:"SealId,omitnil,omitempty" name:"SealId"`
 
-	// 印章种类列表（均为组织机构印章）。 若无特定需求，将展示所有类型的印章。 目前支持以下几种：<ul> <li><strong>OFFICIAL</strong>：企业公章；</li> <li><strong>CONTRACT</strong>：合同专用章；</li> <li><strong>FINANCE</strong>：财务专用章；</li> <li><strong>PERSONNEL</strong>：人事专用章；</li><li><strong>INVOICE</strong>：发票专用章；</li><li><strong>LEGAL_PERSON_SEAL</strong>：法定代表人章。</li> <li><strong>EMPLOYEE_QUALIFICATION_SEAL</strong>：员工执业章。</li><li><strong>OTHER</strong>其他类型印章</li> </ul>
+	// <p>印章种类列表（均为组织机构印章）。 若无特定需求，将展示所有类型的印章。 目前支持以下几种：<ul> <li><strong>OFFICIAL</strong>：企业公章；</li> <li><strong>CONTRACT</strong>：合同专用章；</li> <li><strong>FINANCE</strong>：财务专用章；</li> <li><strong>PERSONNEL</strong>：人事专用章；</li><li><strong>INVOICE</strong>：发票专用章；</li><li><strong>LEGAL_PERSON_SEAL</strong>：法定代表人章。</li> <li><strong>EMPLOYEE_QUALIFICATION_SEAL</strong>：员工执业章。</li><li><strong>OTHER</strong>其他类型印章</li> <li><strong>OTHER_xx</strong>其他印章子类型</li> </ul><br>注:  <code>1.为空时查询所有类型的印章。</code><br>注:  <code>2.OTHER_XX该类型为其他印章子类型，如需使用，请联系对接客服申请开通。具体可传入的子类型值，需在申请开通后由客服提供。</code></p>
 	SealTypes []*string `json:"SealTypes,omitnil,omitempty" name:"SealTypes"`
 
-	// 代理企业和员工的信息。
-	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	// <p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
-	// 需查询的印章状态列表。
-	// <ul>
-	// <li>空：（默认）仅查询启用状态的印章；</li>
-	// <li><strong>ALL</strong>：查询所有状态的印章；</li>
-	// <li><strong>CHECKING</strong>：查询待审核的印章；</li>
-	// <li><strong>SUCCESS</strong>：查询启用状态的印章；</li>
-	// <li><strong>FAIL</strong>：查询印章审核拒绝的印章；</li>
-	// <li><strong>DISABLE</strong>：查询已停用的印章；</li>
-	// <li><strong>STOPPED</strong>：查询已终止的印章；</li>
-	// <li><strong>VOID</strong>：查询已作废的印章；</li>
-	// <li><strong>INVALID</strong>：查询已失效的印章。</li>
-	// </ul>
+	// <p>需查询的印章状态列表。</p><ul><li>空：（默认）仅查询启用状态的印章；</li><li><strong>ALL</strong>：查询所有状态的印章；</li><li><strong>CHECKING</strong>：查询待审核的印章；</li><li><strong>SUCCESS</strong>：查询启用状态的印章；</li><li><strong>FAIL</strong>：查询印章审核拒绝的印章；</li><li><strong>DISABLE</strong>：查询已停用的印章；</li><li><strong>STOPPED</strong>：查询已终止的印章；</li><li><strong>VOID</strong>：查询已作废的印章；</li><li><strong>INVALID</strong>：查询已失效的印章。</li></ul>
 	SealStatuses []*string `json:"SealStatuses,omitnil,omitempty" name:"SealStatuses"`
 }
 
 type DescribeOrganizationSealsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 执行本接口操作的员工信息。
-	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	// <p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 指定分页每页返回的数据条数，如果不传默认为 20，单页最大支持 200。
+	// <p>指定分页每页返回的数据条数，如果不传默认为 20，单页最大支持 200。</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 指定分页返回第几页的数据，如果不传默认返回第一页，页码从 0 开始，即首页为 0，最大 20000。
+	// <p>指定分页返回第几页的数据，如果不传默认返回第一页，页码从 0 开始，即首页为 0，最大 20000。</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 查询授权用户信息类型，取值如下：
-	// 
-	// <ul> <li><b>0</b>：（默认）不返回授权用户信息</li> <li><b>1</b>：返回授权用户的信息</li> </ul>
+	// <p>查询授权用户信息类型，取值如下：</p><ul> <li><b>0</b>：（默认）不返回授权用户信息</li> <li><b>1</b>：返回授权用户的信息</li> </ul>
 	InfoType *int64 `json:"InfoType,omitnil,omitempty" name:"InfoType"`
 
-	// 印章id，是否查询特定的印章（没有输入返回所有）
+	// <p>印章id，是否查询特定的印章（没有输入返回所有）</p>
 	SealId *string `json:"SealId,omitnil,omitempty" name:"SealId"`
 
-	// 印章种类列表（均为组织机构印章）。 若无特定需求，将展示所有类型的印章。 目前支持以下几种：<ul> <li><strong>OFFICIAL</strong>：企业公章；</li> <li><strong>CONTRACT</strong>：合同专用章；</li> <li><strong>FINANCE</strong>：财务专用章；</li> <li><strong>PERSONNEL</strong>：人事专用章；</li><li><strong>INVOICE</strong>：发票专用章；</li><li><strong>LEGAL_PERSON_SEAL</strong>：法定代表人章。</li> <li><strong>EMPLOYEE_QUALIFICATION_SEAL</strong>：员工执业章。</li><li><strong>OTHER</strong>其他类型印章</li> </ul>
+	// <p>印章种类列表（均为组织机构印章）。 若无特定需求，将展示所有类型的印章。 目前支持以下几种：<ul> <li><strong>OFFICIAL</strong>：企业公章；</li> <li><strong>CONTRACT</strong>：合同专用章；</li> <li><strong>FINANCE</strong>：财务专用章；</li> <li><strong>PERSONNEL</strong>：人事专用章；</li><li><strong>INVOICE</strong>：发票专用章；</li><li><strong>LEGAL_PERSON_SEAL</strong>：法定代表人章。</li> <li><strong>EMPLOYEE_QUALIFICATION_SEAL</strong>：员工执业章。</li><li><strong>OTHER</strong>其他类型印章</li> <li><strong>OTHER_xx</strong>其他印章子类型</li> </ul><br>注:  <code>1.为空时查询所有类型的印章。</code><br>注:  <code>2.OTHER_XX该类型为其他印章子类型，如需使用，请联系对接客服申请开通。具体可传入的子类型值，需在申请开通后由客服提供。</code></p>
 	SealTypes []*string `json:"SealTypes,omitnil,omitempty" name:"SealTypes"`
 
-	// 代理企业和员工的信息。
-	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	// <p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
-	// 需查询的印章状态列表。
-	// <ul>
-	// <li>空：（默认）仅查询启用状态的印章；</li>
-	// <li><strong>ALL</strong>：查询所有状态的印章；</li>
-	// <li><strong>CHECKING</strong>：查询待审核的印章；</li>
-	// <li><strong>SUCCESS</strong>：查询启用状态的印章；</li>
-	// <li><strong>FAIL</strong>：查询印章审核拒绝的印章；</li>
-	// <li><strong>DISABLE</strong>：查询已停用的印章；</li>
-	// <li><strong>STOPPED</strong>：查询已终止的印章；</li>
-	// <li><strong>VOID</strong>：查询已作废的印章；</li>
-	// <li><strong>INVALID</strong>：查询已失效的印章。</li>
-	// </ul>
+	// <p>需查询的印章状态列表。</p><ul><li>空：（默认）仅查询启用状态的印章；</li><li><strong>ALL</strong>：查询所有状态的印章；</li><li><strong>CHECKING</strong>：查询待审核的印章；</li><li><strong>SUCCESS</strong>：查询启用状态的印章；</li><li><strong>FAIL</strong>：查询印章审核拒绝的印章；</li><li><strong>DISABLE</strong>：查询已停用的印章；</li><li><strong>STOPPED</strong>：查询已终止的印章；</li><li><strong>VOID</strong>：查询已作废的印章；</li><li><strong>INVALID</strong>：查询已失效的印章。</li></ul>
 	SealStatuses []*string `json:"SealStatuses,omitnil,omitempty" name:"SealStatuses"`
 }
 
@@ -14560,10 +14507,10 @@ func (r *DescribeOrganizationSealsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeOrganizationSealsResponseParams struct {
-	// 在设定了SealId时，返回值为0或1；若未设定SealId，则返回公司的总印章数量
+	// <p>在设定了SealId时，返回值为0或1；若未设定SealId，则返回公司的总印章数量</p>
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 查询到的印章结果数组
+	// <p>查询到的印章结果数组</p>
 	Seals []*OccupiedSeal `json:"Seals,omitnil,omitempty" name:"Seals"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

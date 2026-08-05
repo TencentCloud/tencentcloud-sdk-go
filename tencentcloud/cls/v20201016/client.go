@@ -4957,6 +4957,64 @@ func (c *Client) DeleteKafkaRechargeWithContext(ctx context.Context, request *De
     return
 }
 
+func NewDeleteLogRequest() (request *DeleteLogRequest) {
+    request = &DeleteLogRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "DeleteLog")
+    
+    
+    return
+}
+
+func NewDeleteLogResponse() (response *DeleteLogResponse) {
+    response = &DeleteLogResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteLog
+// 修改日志信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INDEXSEGMENTOFFLOADED = "FailedOperation.IndexSegmentOffloaded"
+//  FAILEDOPERATION_MODIFYSYSTEMFIELD = "FailedOperation.ModifySystemField"
+//  FAILEDOPERATION_WRITEBYQUERYREACHLIMIT = "FailedOperation.WriteByQueryReachLimit"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) DeleteLog(request *DeleteLogRequest) (response *DeleteLogResponse, err error) {
+    return c.DeleteLogWithContext(context.Background(), request)
+}
+
+// DeleteLog
+// 修改日志信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INDEXSEGMENTOFFLOADED = "FailedOperation.IndexSegmentOffloaded"
+//  FAILEDOPERATION_MODIFYSYSTEMFIELD = "FailedOperation.ModifySystemField"
+//  FAILEDOPERATION_WRITEBYQUERYREACHLIMIT = "FailedOperation.WriteByQueryReachLimit"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) DeleteLogWithContext(ctx context.Context, request *DeleteLogRequest) (response *DeleteLogResponse, err error) {
+    if request == nil {
+        request = NewDeleteLogRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DeleteLog")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteLog require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteLogResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteLogsetRequest() (request *DeleteLogsetRequest) {
     request = &DeleteLogsetRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -12593,6 +12651,64 @@ func (c *Client) ModifyKafkaRechargeWithContext(ctx context.Context, request *Mo
     request.SetContext(ctx)
     
     response = NewModifyKafkaRechargeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyLogRequest() (request *ModifyLogRequest) {
+    request = &ModifyLogRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "ModifyLog")
+    
+    
+    return
+}
+
+func NewModifyLogResponse() (response *ModifyLogResponse) {
+    response = &ModifyLogResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyLog
+// 修改日志信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INDEXSEGMENTOFFLOADED = "FailedOperation.IndexSegmentOffloaded"
+//  FAILEDOPERATION_MODIFYSYSTEMFIELD = "FailedOperation.ModifySystemField"
+//  FAILEDOPERATION_WRITEBYQUERYREACHLIMIT = "FailedOperation.WriteByQueryReachLimit"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) ModifyLog(request *ModifyLogRequest) (response *ModifyLogResponse, err error) {
+    return c.ModifyLogWithContext(context.Background(), request)
+}
+
+// ModifyLog
+// 修改日志信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INDEXSEGMENTOFFLOADED = "FailedOperation.IndexSegmentOffloaded"
+//  FAILEDOPERATION_MODIFYSYSTEMFIELD = "FailedOperation.ModifySystemField"
+//  FAILEDOPERATION_WRITEBYQUERYREACHLIMIT = "FailedOperation.WriteByQueryReachLimit"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) ModifyLogWithContext(ctx context.Context, request *ModifyLogRequest) (response *ModifyLogResponse, err error) {
+    if request == nil {
+        request = NewModifyLogRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "ModifyLog")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyLog require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyLogResponse()
     err = c.Send(request, response)
     return
 }

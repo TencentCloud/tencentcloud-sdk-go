@@ -852,6 +852,9 @@ type CloneInstancesRequestParams struct {
 
 	// <p>开启 SSL 时，是否将实例的内网 IPv4 地址写入证书的域名别名（SAN）中。仅在 EnableSSL 为 true 时生效。</p><p>枚举值：</p><ul><li>true： 允许使用内网 IP 进行 SSL 证书校验。</li><li>false： 不添加证书的 SAN 扩展信息。</li></ul><p>默认值：false</p>
 	SSLBindPrivateIPv4 *bool `json:"SSLBindPrivateIPv4,omitnil,omitempty" name:"SSLBindPrivateIPv4"`
+
+	// <p>指实例类型</p><p>枚举值：</p><ul><li>local： 通用 I 型</li><li>localv2： 通用 II 型</li></ul><p>不传则默认和原实例类型保持一致</p>
+	ProductVersion *string `json:"ProductVersion,omitnil,omitempty" name:"ProductVersion"`
 }
 
 type CloneInstancesRequest struct {
@@ -928,6 +931,9 @@ type CloneInstancesRequest struct {
 
 	// <p>开启 SSL 时，是否将实例的内网 IPv4 地址写入证书的域名别名（SAN）中。仅在 EnableSSL 为 true 时生效。</p><p>枚举值：</p><ul><li>true： 允许使用内网 IP 进行 SSL 证书校验。</li><li>false： 不添加证书的 SAN 扩展信息。</li></ul><p>默认值：false</p>
 	SSLBindPrivateIPv4 *bool `json:"SSLBindPrivateIPv4,omitnil,omitempty" name:"SSLBindPrivateIPv4"`
+
+	// <p>指实例类型</p><p>枚举值：</p><ul><li>local： 通用 I 型</li><li>localv2： 通用 II 型</li></ul><p>不传则默认和原实例类型保持一致</p>
+	ProductVersion *string `json:"ProductVersion,omitnil,omitempty" name:"ProductVersion"`
 }
 
 func (r *CloneInstancesRequest) ToJsonString() string {
@@ -966,6 +972,7 @@ func (r *CloneInstancesRequest) FromJsonString(s string) error {
 	delete(f, "PasswordPolicy")
 	delete(f, "EnableSSL")
 	delete(f, "SSLBindPrivateIPv4")
+	delete(f, "ProductVersion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CloneInstancesRequest has unknown keys!", "")
 	}

@@ -4912,6 +4912,15 @@ type JobV1 struct {
 	// <p>新的桶类型</p><p>枚举值：</p><ul><li>0： 普通桶</li><li>1： 加速桶</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NewStateCOSBucketType *int64 `json:"NewStateCOSBucketType,omitnil,omitempty" name:"NewStateCOSBucketType"`
+
+	// <p>健康分数</p>
+	HealthScore *int64 `json:"HealthScore,omitnil,omitempty" name:"HealthScore"`
+
+	// <p>最新诊断时间</p><p>参数格式：RFC3339</p>
+	LastDiagnoseTime *string `json:"LastDiagnoseTime,omitnil,omitempty" name:"LastDiagnoseTime"`
+
+	// <p>负责人Uin</p>
+	ManagerUin *string `json:"ManagerUin,omitnil,omitempty" name:"ManagerUin"`
 }
 
 type LogContent struct {

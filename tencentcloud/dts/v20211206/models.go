@@ -1997,6 +1997,9 @@ type DeleteConsumerGroupRequestParams struct {
 	// 账号名称。实际的账户全称形如：account-#{SubscribeId}-#{AccountName}。
 	// 请务必保证账户名称正确。可通过[DescribeConsumerGroups](https://cloud.tencent.com/document/product/571/102947)接口获取。
 	AccountName *string `json:"AccountName,omitnil,omitempty" name:"AccountName"`
+
+
+	BackendJobId *string `json:"BackendJobId,omitnil,omitempty" name:"BackendJobId"`
 }
 
 type DeleteConsumerGroupRequest struct {
@@ -2012,6 +2015,8 @@ type DeleteConsumerGroupRequest struct {
 	// 账号名称。实际的账户全称形如：account-#{SubscribeId}-#{AccountName}。
 	// 请务必保证账户名称正确。可通过[DescribeConsumerGroups](https://cloud.tencent.com/document/product/571/102947)接口获取。
 	AccountName *string `json:"AccountName,omitnil,omitempty" name:"AccountName"`
+
+	BackendJobId *string `json:"BackendJobId,omitnil,omitempty" name:"BackendJobId"`
 }
 
 func (r *DeleteConsumerGroupRequest) ToJsonString() string {
@@ -2029,6 +2034,7 @@ func (r *DeleteConsumerGroupRequest) FromJsonString(s string) error {
 	delete(f, "SubscribeId")
 	delete(f, "ConsumerGroupName")
 	delete(f, "AccountName")
+	delete(f, "BackendJobId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteConsumerGroupRequest has unknown keys!", "")
 	}
@@ -2511,26 +2517,26 @@ func (r *DescribeCompareTasksResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeConsumerGroupsRequestParams struct {
-	// 订阅实例id，可通过[DescribeSubscribeJobs](https://cloud.tencent.com/document/product/571/102943)接口获取。
+	// <p>订阅实例id，可通过<a href="https://cloud.tencent.com/document/product/571/102943">DescribeSubscribeJobs</a>接口获取。</p>
 	SubscribeId *string `json:"SubscribeId,omitnil,omitempty" name:"SubscribeId"`
 
-	// 返回记录的起始偏移量。默认0
+	// <p>返回记录的起始偏移量。默认0</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 单次返回的记录数量。默认10
+	// <p>单次返回的记录数量。默认10</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeConsumerGroupsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 订阅实例id，可通过[DescribeSubscribeJobs](https://cloud.tencent.com/document/product/571/102943)接口获取。
+	// <p>订阅实例id，可通过<a href="https://cloud.tencent.com/document/product/571/102943">DescribeSubscribeJobs</a>接口获取。</p>
 	SubscribeId *string `json:"SubscribeId,omitnil,omitempty" name:"SubscribeId"`
 
-	// 返回记录的起始偏移量。默认0
+	// <p>返回记录的起始偏移量。默认0</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 单次返回的记录数量。默认10
+	// <p>单次返回的记录数量。默认10</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
@@ -2557,10 +2563,10 @@ func (r *DescribeConsumerGroupsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeConsumerGroupsResponseParams struct {
-	// 指定实例下的消费者组总数
+	// <p>指定实例下的消费者组总数</p>
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 消费者组列表
+	// <p>消费者组列表</p>
 	Items []*GroupInfo `json:"Items,omitnil,omitempty" name:"Items"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3350,14 +3356,14 @@ func (r *DescribeSubscribeCheckJobResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSubscribeDetailRequestParams struct {
-	// 订阅实例ID，可通过[DescribeSubscribeJobs](https://cloud.tencent.com/document/product/571/102943)接口获取。
+	// <p>订阅实例ID，可通过<a href="https://cloud.tencent.com/document/product/571/102943">DescribeSubscribeJobs</a>接口获取。</p>
 	SubscribeId *string `json:"SubscribeId,omitnil,omitempty" name:"SubscribeId"`
 }
 
 type DescribeSubscribeDetailRequest struct {
 	*tchttp.BaseRequest
 	
-	// 订阅实例ID，可通过[DescribeSubscribeJobs](https://cloud.tencent.com/document/product/571/102943)接口获取。
+	// <p>订阅实例ID，可通过<a href="https://cloud.tencent.com/document/product/571/102943">DescribeSubscribeJobs</a>接口获取。</p>
 	SubscribeId *string `json:"SubscribeId,omitnil,omitempty" name:"SubscribeId"`
 }
 
@@ -3382,103 +3388,101 @@ func (r *DescribeSubscribeDetailRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSubscribeDetailResponseParams struct {
-	// 数据订阅的ID，形如subs-b6x64o31tm
+	// <p>数据订阅的ID，形如subs-b6x64o31tm</p>
 	SubscribeId *string `json:"SubscribeId,omitnil,omitempty" name:"SubscribeId"`
 
-	// 数据订阅实例的名称
+	// <p>数据订阅实例的名称</p>
 	SubscribeName *string `json:"SubscribeName,omitnil,omitempty" name:"SubscribeName"`
 
-	// 订阅的数据库类型，目前支持 cynosdbmysql(tdsql-c mysql版),mariadb,mongodb,mysql,percona,tdpg(tdsql postgresql版),tdsqlpercona(tdsql mysql版)
+	// <p>订阅的数据库类型，目前支持 cynosdbmysql(tdsql-c mysql版),mariadb,mongodb,mysql,percona,tdpg(tdsql postgresql版),tdsqlpercona(tdsql mysql版)</p>
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 
-	// 订阅的云数据库实例ID，只有订阅云数据库该值才有意义
+	// <p>订阅的云数据库实例ID，只有订阅云数据库该值才有意义</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 订阅的云数据库实例状态，只有订阅云数据库该值才有意义。可能值为：running, isolated, offline
+	// <p>订阅的云数据库实例状态，只有订阅云数据库该值才有意义。可能值为：running, isolated, offline</p>
 	InstanceStatus *string `json:"InstanceStatus,omitnil,omitempty" name:"InstanceStatus"`
 
-	// 订阅任务计费状态，可能值为：正常normal, 隔离中isolating, 已隔离isolated, 下线中offlining, 按量转包年包月中 post2PrePayIng
+	// <p>订阅任务计费状态，可能值为：正常normal, 隔离中isolating, 已隔离isolated, 下线中offlining, 按量转包年包月中 post2PrePayIng</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 订阅任务状态，可能值为：未启动notStarted, 校验中checking, 校验不通过checkNotPass, 校验通过checkPass, 启动中starting, 运行中running, 异常出错error
+	// <p>订阅任务状态，可能值为：未启动notStarted, 校验中checking, 校验不通过checkNotPass, 校验通过checkPass, 启动中starting, 运行中running, 异常出错error</p>
 	SubsStatus *string `json:"SubsStatus,omitnil,omitempty" name:"SubsStatus"`
 
-	// 修改时间，时间格式如：Y-m-d h:m:s
+	// <p>修改时间。</p>
 	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 
-	// 创建时间，时间格式如：Y-m-d h:m:s
+	// <p>创建时间。</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 隔离时间，时间格式如：Y-m-d h:m:s。默认：0000-00-00 00:00:00
+	// <p>隔离时间。</p>
 	IsolateTime *string `json:"IsolateTime,omitnil,omitempty" name:"IsolateTime"`
 
-	// 包年包月任务的到期时间，时间格式如：Y-m-d h:m:s。默认：0000-00-00 00:00:00
+	// <p>包年包月任务的到期时间。</p>
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
-	// 下线时间，时间格式如：Y-m-d h:m:s。默认：0000-00-00 00:00:00
+	// <p>下线时间。</p>
 	OfflineTime *string `json:"OfflineTime,omitnil,omitempty" name:"OfflineTime"`
 
-	// 付费方式，可能值为：0-包年包月，1-按量计费
+	// <p>付费方式，可能值为：0-包年包月，1-按量计费</p>
 	PayType *int64 `json:"PayType,omitnil,omitempty" name:"PayType"`
 
-	// 自动续费标识。只有当 PayType=0，该值才有意义。枚举值：0-不自动续费，1-自动续费
+	// <p>自动续费标识。只有当 PayType=0，该值才有意义。枚举值：0-不自动续费，1-自动续费</p>
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 
-	// 任务所在地域
+	// <p>任务所在地域</p>
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// Kafka topic
+	// <p>Kafka topic</p>
 	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
 
-	// Kafka服务Broker地址
+	// <p>Kafka服务Broker地址</p>
 	Broker *string `json:"Broker,omitnil,omitempty" name:"Broker"`
 
-	// 数据订阅的类型，当 Product 不为 mongodb 时，可能值为：all-全实例更新；dml-数据更新；ddl-结构更新；dmlAndDdl-数据更新+结构更新。当 Product 为 mongodb 时，可能值为 all-全实例更新；database-订阅单库；collection-订阅单集合
+	// <p>数据订阅的类型，当 Product 不为 mongodb 时，可能值为：all-全实例更新；dml-数据更新；ddl-结构更新；dmlAndDdl-数据更新+结构更新。当 Product 为 mongodb 时，可能值为 all-全实例更新；database-订阅单库；collection-订阅单集合</p>
 	SubscribeMode *string `json:"SubscribeMode,omitnil,omitempty" name:"SubscribeMode"`
 
-	// 订阅数据格式。如果为空则用的默认格式: mysql\cynosdbmysql\mariadb\percona\tdsqlpercona\tdpg是protobuf，mongo是json。当 DatabaseType 为 mysql和cynosdbmysql 时有三种可选协议：protobuf\avro\json。数据格式详情参考官网的消费demo文档
+	// <p>订阅数据格式。如果为空则用的默认格式: mysql\cynosdbmysql\mariadb\percona\tdsqlpercona\tdpg是protobuf，mongo是json。当 DatabaseType 为 mysql和cynosdbmysql 时有三种可选协议：protobuf\avro\json。数据格式详情参考官网的消费demo文档</p>
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
-	// 订阅的数据库表信息
+	// <p>订阅的数据库表信息</p>
 	SubscribeObjects []*SubscribeObject `json:"SubscribeObjects,omitnil,omitempty" name:"SubscribeObjects"`
 
-	// kafka配置信息
+	// <p>kafka配置信息</p>
 	KafkaConfig *SubscribeKafkaConfig `json:"KafkaConfig,omitnil,omitempty" name:"KafkaConfig"`
 
-	// 订阅内置kafka的版本信息
+	// <p>订阅内置kafka的版本信息</p>
 	KafkaVersion *string `json:"KafkaVersion,omitnil,omitempty" name:"KafkaVersion"`
 
-	// 源数据库接入类型，如：extranet(公网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、cdb(云数据库)、cvm(云服务器自建)、intranet(自研上云)、vpc(私有网络vpc)。注意具体可选值依赖当前链路支持能力
+	// <p>源数据库接入类型，如：extranet(公网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、cdb(云数据库)、cvm(云服务器自建)、intranet(自研上云)、vpc(私有网络vpc)。注意具体可选值依赖当前链路支持能力</p>
 	AccessType *string `json:"AccessType,omitnil,omitempty" name:"AccessType"`
 
-	// 接入类型信息
+	// <p>接入类型信息</p>
 	Endpoints []*EndpointItem `json:"Endpoints,omitnil,omitempty" name:"Endpoints"`
 
-	// mongo输出聚合设置
+	// <p>mongo输出聚合设置</p>
 	PipelineInfo []*PipelineInfo `json:"PipelineInfo,omitnil,omitempty" name:"PipelineInfo"`
 
-	// 标签
+	// <p>标签</p>
 	Tags []*TagItem `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 订阅任务报错信息
+	// <p>订阅任务报错信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Errors []*SubsErr `json:"Errors,omitnil,omitempty" name:"Errors"`
 
-	// 为业务添加的额外信息。参数名作key，参数值作value。
-	// mysql选填参数：ProcessXA-是否处理XA事务，为true处理，其他不处理。
-	// mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream。
+	// <p>为业务添加的额外信息。参数名作key，参数值作value。<br>mysql选填参数：ProcessXA-是否处理XA事务，为true处理，其他不处理。<br>mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream。</p>
 	ExtraAttr []*KeyValuePairOption `json:"ExtraAttr,omitnil,omitempty" name:"ExtraAttr"`
 
-	// 数据订阅版本, 当前支持kafka和kafkaPro（专业版）
+	// <p>数据订阅版本, 当前支持kafka和kafkaPro（专业版）</p>
 	SubscribeVersion *string `json:"SubscribeVersion,omitnil,omitempty" name:"SubscribeVersion"`
 
-	// 消费端地址所在vpc
+	// <p>消费端地址所在vpc</p>
 	ConsumerVpcId *string `json:"ConsumerVpcId,omitnil,omitempty" name:"ConsumerVpcId"`
 
-	// 消费端地址所在子网
+	// <p>消费端地址所在子网</p>
 	ConsumerSubnetId *string `json:"ConsumerSubnetId,omitnil,omitempty" name:"ConsumerSubnetId"`
 
-	// 订阅实例规格
+	// <p>订阅实例规格</p>
 	InstanceClass *string `json:"InstanceClass,omitnil,omitempty" name:"InstanceClass"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4857,37 +4861,37 @@ type ErrorInfoItem struct {
 }
 
 type GroupInfo struct {
-	// 消费者组账号
+	// <p>消费者组账号</p>
 	Account *string `json:"Account,omitnil,omitempty" name:"Account"`
 
-	// 消费者组名称
+	// <p>消费者组名称</p>
 	ConsumerGroupName *string `json:"ConsumerGroupName,omitnil,omitempty" name:"ConsumerGroupName"`
 
-	// 消费者组备注
+	// <p>消费者组备注</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 消费组偏移量。该字段是为了兼容以前单Partition的情况，取值为最后一个分区的偏移量。各分区的偏移量详见StateOfPartition字段
+	// <p>消费组偏移量。该字段是为了兼容以前单Partition的情况，取值为最后一个分区的偏移量。各分区的偏移量详见StateOfPartition字段</p>
 	ConsumerGroupOffset *int64 `json:"ConsumerGroupOffset,omitnil,omitempty" name:"ConsumerGroupOffset"`
 
-	// 消费组未消费的数据量。该字段是为了兼容以前单Partition的情况，取值为最后一个分区未消费的数据量。各分区未消费数据量详见StateOfPartition字段
+	// <p>消费组未消费的数据量。该字段是为了兼容以前单Partition的情况，取值为最后一个分区未消费的数据量。各分区未消费数据量详见StateOfPartition字段</p>
 	ConsumerGroupLag *int64 `json:"ConsumerGroupLag,omitnil,omitempty" name:"ConsumerGroupLag"`
 
-	// 消费延迟(单位为秒)
+	// <p>消费延迟(单位为秒)</p>
 	Latency *int64 `json:"Latency,omitnil,omitempty" name:"Latency"`
 
-	// 各分区的消费状态
+	// <p>各分区的消费状态</p>
 	StateOfPartition []*MonitorInfo `json:"StateOfPartition,omitnil,omitempty" name:"StateOfPartition"`
 
-	// 消费者组创建时间，格式为YYYY-MM-DD hh:mm:ss
+	// <p>消费者组创建时间。</p>
 	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
 
-	// 消费者组修改时间，格式为YYYY-MM-DD hh:mm:ss
+	// <p>消费者组修改时间。</p>
 	UpdatedAt *string `json:"UpdatedAt,omitnil,omitempty" name:"UpdatedAt"`
 
-	// 消费者组状态，包括Dead、Empty、Stable等，只有Dead和Empty两种状态可以执行reset操作
+	// <p>消费者组状态，包括Dead、Empty、Stable等，只有Dead和Empty两种状态可以执行reset操作</p>
 	ConsumerGroupState *string `json:"ConsumerGroupState,omitnil,omitempty" name:"ConsumerGroupState"`
 
-	// 每个消费者正在消费的分区
+	// <p>每个消费者正在消费的分区</p>
 	PartitionAssignment []*PartitionAssignment `json:"PartitionAssignment,omitnil,omitempty" name:"PartitionAssignment"`
 }
 
@@ -8220,73 +8224,76 @@ type SubscribeCheckStepTip struct {
 }
 
 type SubscribeInfo struct {
-	// 数据订阅的实例ID
+	// <p>数据订阅的实例ID</p>
 	SubscribeId *string `json:"SubscribeId,omitnil,omitempty" name:"SubscribeId"`
 
-	// 数据订阅实例的名称
+	// <p>数据订阅实例的名称</p>
 	SubscribeName *string `json:"SubscribeName,omitnil,omitempty" name:"SubscribeName"`
 
-	// 订阅实例发送数据的kafka topic
+	// <p>订阅实例发送数据的kafka topic</p>
 	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
 
-	// 订阅实例的类型，目前支持 cynosdbmysql,mariadb,mongodb,mysql,percona,tdpg,tdsqlpercona(tdsqlmysql)
+	// <p>订阅实例的类型，目前支持 cynosdbmysql,mariadb,mongodb,mysql,percona,tdpg,tdsqlpercona(tdsqlmysql)</p>
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 
-	// 订阅的数据库实例ID（如果订阅的是云数据库）如果实例不是腾讯云上的，此值为空。
+	// <p>订阅的数据库实例ID（如果订阅的是云数据库）如果实例不是腾讯云上的，此值为空。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 云数据库状态：running 运行中，isolated 已隔离，offline 已下线。如果不是云上，此值为空
+	// <p>云数据库状态：running 运行中，isolated 已隔离，offline 已下线。如果不是云上，此值为空</p>
 	InstanceStatus *string `json:"InstanceStatus,omitnil,omitempty" name:"InstanceStatus"`
 
-	// 数据订阅生命周期状态，可能的值为：正常 normal, 隔离中 isolating, 已隔离 isolated, 下线中 offlining, 按量转包年包月中 post2PrePayIng
+	// <p>数据订阅生命周期状态，可能的值为：正常 normal, 隔离中 isolating, 已隔离 isolated, 下线中 offlining, 按量转包年包月中 post2PrePayIng</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 数据订阅状态，可能的值为：未启动 notStarted, 校验中 checking, 校验不通过 checkNotPass, 校验通过 checkPass, 启动中 starting, 运行中 running, 异常出错 error
+	// <p>数据订阅状态，可能的值为：未启动 notStarted, 校验中 checking, 校验不通过 checkNotPass, 校验通过 checkPass, 启动中 starting, 运行中 running, 异常出错 error</p>
 	SubsStatus *string `json:"SubsStatus,omitnil,omitempty" name:"SubsStatus"`
 
-	// 上次修改时间，时间格式如：Y-m-d h:m:s
+	// <p>上次修改时间，时间格式如：Y-m-d h:m:s</p>
 	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 
-	// 创建时间，时间格式如：Y-m-d h:m:s
+	// <p>创建时间，时间格式如：Y-m-d h:m:s</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 隔离时间，时间格式如：Y-m-d h:m:s。默认：0000-00-00 00:00:00
+	// <p>隔离时间，时间格式如：Y-m-d h:m:s。默认：0000-00-00 00:00:00</p>
 	IsolateTime *string `json:"IsolateTime,omitnil,omitempty" name:"IsolateTime"`
 
-	// 包年包月任务的到期时间，时间格式如：Y-m-d h:m:s。默认：0000-00-00 00:00:00
+	// <p>包年包月任务的到期时间，时间格式如：Y-m-d h:m:s。默认：0000-00-00 00:00:00</p>
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
-	// 下线时间，时间格式如：Y-m-d h:m:s。默认：0000-00-00 00:00:00
+	// <p>下线时间，时间格式如：Y-m-d h:m:s。默认：0000-00-00 00:00:00</p>
 	OfflineTime *string `json:"OfflineTime,omitnil,omitempty" name:"OfflineTime"`
 
-	// 计费方式，0 - 包年包月，1 - 按量计费
+	// <p>计费方式，0 - 包年包月，1 - 按量计费</p>
 	PayType *int64 `json:"PayType,omitnil,omitempty" name:"PayType"`
 
-	// 自动续费标识。只有当 PayType=0，该值才有意义。枚举值：0-不自动续费，1-自动续费
+	// <p>自动续费标识。只有当 PayType=0，该值才有意义。枚举值：0-不自动续费，1-自动续费</p>
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 
-	// 数据订阅实例所属地域
+	// <p>数据订阅实例所属地域</p>
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 接入方式。枚举值：extranet(公网) vpncloud(vpn接入) dcg(专线接入) ccn(云联网) cdb(云数据库) cvm(云主机自建) intranet(自研上云) vpc(私有网络vpc)
+	// <p>接入方式。枚举值：extranet(公网) vpncloud(vpn接入) dcg(专线接入) ccn(云联网) cdb(云数据库) cvm(云主机自建) intranet(自研上云) vpc(私有网络vpc)</p>
 	AccessType *string `json:"AccessType,omitnil,omitempty" name:"AccessType"`
 
-	// 数据库节点信息
+	// <p>数据库节点信息</p>
 	Endpoints []*EndpointItem `json:"Endpoints,omitnil,omitempty" name:"Endpoints"`
 
-	// 数据订阅版本, 当前支持kafka和kafkaPro（专业版）
+	// <p>数据订阅版本, 当前支持kafka和kafkaPro（专业版）</p>
 	SubscribeVersion *string `json:"SubscribeVersion,omitnil,omitempty" name:"SubscribeVersion"`
 
-	// 标签
+	// <p>标签</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*TagItem `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 任务报错信息，如果有的话。
+	// <p>任务报错信息，如果有的话。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Errors []*SubsErr `json:"Errors,omitnil,omitempty" name:"Errors"`
 
-	// 订阅实例规格
+	// <p>订阅实例规格</p>
 	InstanceClass *string `json:"InstanceClass,omitnil,omitempty" name:"InstanceClass"`
+
+	// <p>新版订阅消费端路由阶段</p>
+	ConsumerRoutePhase *string `json:"ConsumerRoutePhase,omitnil,omitempty" name:"ConsumerRoutePhase"`
 }
 
 type SubscribeKafkaConfig struct {

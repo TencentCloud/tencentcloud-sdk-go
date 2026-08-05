@@ -1155,6 +1155,7 @@ func NewCreateInstanceSnapshotResponse() (response *CreateInstanceSnapshotRespon
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DESCRIBEINSTANCESTATUS = "FailedOperation.DescribeInstanceStatus"
+//  FAILEDOPERATION_GETSNAPSHOTALLOCQUOTALOCKERROR = "FailedOperation.GetSnapshotAllocQuotaLockError"
 //  INTERNALERROR_DESCRIBEINSTANCESTATUS = "InternalError.DescribeInstanceStatus"
 //  INTERNALERROR_GETSNAPSHOTALLOCQUOTALOCKERROR = "InternalError.GetSnapshotAllocQuotaLockError"
 //  INVALIDPARAMETERVALUE_INSTANCEIDMALFORMED = "InvalidParameterValue.InstanceIdMalformed"
@@ -1180,6 +1181,7 @@ func (c *Client) CreateInstanceSnapshot(request *CreateInstanceSnapshotRequest) 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DESCRIBEINSTANCESTATUS = "FailedOperation.DescribeInstanceStatus"
+//  FAILEDOPERATION_GETSNAPSHOTALLOCQUOTALOCKERROR = "FailedOperation.GetSnapshotAllocQuotaLockError"
 //  INTERNALERROR_DESCRIBEINSTANCESTATUS = "InternalError.DescribeInstanceStatus"
 //  INTERNALERROR_GETSNAPSHOTALLOCQUOTALOCKERROR = "InternalError.GetSnapshotAllocQuotaLockError"
 //  INVALIDPARAMETERVALUE_INSTANCEIDMALFORMED = "InvalidParameterValue.InstanceIdMalformed"

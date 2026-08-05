@@ -2829,6 +2829,112 @@ func (r *CreateRouteResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateThrottleRuleRequestParams struct {
+	// <p>实例Id</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>限流类型:</p><p>枚举值：</p><ul><li>1： 用户/客户端限流</li><li>2： 消费组维度限流</li><li>3： Topic限流</li></ul>
+	ThrottleType *int64 `json:"ThrottleType,omitnil,omitempty" name:"ThrottleType"`
+
+	// <p>消费组名</p>
+	GroupNameList []*string `json:"GroupNameList,omitnil,omitempty" name:"GroupNameList"`
+
+	// <p>消费限流值,生产消费限流值,必填一个单位MB/s</p>
+	ConsumeThrottle *uint64 `json:"ConsumeThrottle,omitnil,omitempty" name:"ConsumeThrottle"`
+
+	// <p>生产限流值,生产消费限流值,单位MB/s</p>
+	ProduceThrottle *uint64 `json:"ProduceThrottle,omitnil,omitempty" name:"ProduceThrottle"`
+
+	// <p>用户客户端id</p>
+	ClientIdList []*string `json:"ClientIdList,omitnil,omitempty" name:"ClientIdList"`
+
+	// <p>用户名</p>
+	UserNameList []*string `json:"UserNameList,omitnil,omitempty" name:"UserNameList"`
+
+	// <p>topic名称</p>
+	TopicNameList []*string `json:"TopicNameList,omitnil,omitempty" name:"TopicNameList"`
+}
+
+type CreateThrottleRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>实例Id</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>限流类型:</p><p>枚举值：</p><ul><li>1： 用户/客户端限流</li><li>2： 消费组维度限流</li><li>3： Topic限流</li></ul>
+	ThrottleType *int64 `json:"ThrottleType,omitnil,omitempty" name:"ThrottleType"`
+
+	// <p>消费组名</p>
+	GroupNameList []*string `json:"GroupNameList,omitnil,omitempty" name:"GroupNameList"`
+
+	// <p>消费限流值,生产消费限流值,必填一个单位MB/s</p>
+	ConsumeThrottle *uint64 `json:"ConsumeThrottle,omitnil,omitempty" name:"ConsumeThrottle"`
+
+	// <p>生产限流值,生产消费限流值,单位MB/s</p>
+	ProduceThrottle *uint64 `json:"ProduceThrottle,omitnil,omitempty" name:"ProduceThrottle"`
+
+	// <p>用户客户端id</p>
+	ClientIdList []*string `json:"ClientIdList,omitnil,omitempty" name:"ClientIdList"`
+
+	// <p>用户名</p>
+	UserNameList []*string `json:"UserNameList,omitnil,omitempty" name:"UserNameList"`
+
+	// <p>topic名称</p>
+	TopicNameList []*string `json:"TopicNameList,omitnil,omitempty" name:"TopicNameList"`
+}
+
+func (r *CreateThrottleRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateThrottleRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "ThrottleType")
+	delete(f, "GroupNameList")
+	delete(f, "ConsumeThrottle")
+	delete(f, "ProduceThrottle")
+	delete(f, "ClientIdList")
+	delete(f, "UserNameList")
+	delete(f, "TopicNameList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateThrottleRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateThrottleRuleResponseParams struct {
+	// <p>返回信息</p>
+	Result *JgwOperateResponse `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateThrottleRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateThrottleRuleResponseParams `json:"Response"`
+}
+
+func (r *CreateThrottleRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateThrottleRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateTokenRequestParams struct {
 	// ckafka集群实例Id,可通过[DescribeInstances](https://cloud.tencent.com/document/product/597/40835)接口获取
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -4199,6 +4305,70 @@ func (r *DeleteRouteTriggerTimeResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteRouteTriggerTimeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteThrottleRuleRequestParams struct {
+	// 限流规则Id
+	ThrottleRuleId *string `json:"ThrottleRuleId,omitnil,omitempty" name:"ThrottleRuleId"`
+
+	// 实例标识
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+type DeleteThrottleRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 限流规则Id
+	ThrottleRuleId *string `json:"ThrottleRuleId,omitnil,omitempty" name:"ThrottleRuleId"`
+
+	// 实例标识
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+func (r *DeleteThrottleRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteThrottleRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ThrottleRuleId")
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteThrottleRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteThrottleRuleResponseParams struct {
+	// 返回信息
+	Result *JgwOperateResponse `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteThrottleRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteThrottleRuleResponseParams `json:"Response"`
+}
+
+func (r *DeleteThrottleRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteThrottleRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6649,6 +6819,91 @@ func (r *DescribeTaskStatusResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeTaskStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeThrottleRulesRequestParams struct {
+	// <p>实例Id</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>关键字</p>
+	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
+
+	// <p>返回数量，不填则默认为20，最大值200</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>偏移数，默认为0</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>限流维度</p><p>枚举值：</p><ul><li>1： 实例维度限流</li><li>2： topic维度限流</li></ul><p>默认值：1</p>
+	ThrottleDimension *int64 `json:"ThrottleDimension,omitnil,omitempty" name:"ThrottleDimension"`
+}
+
+type DescribeThrottleRulesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>实例Id</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>关键字</p>
+	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
+
+	// <p>返回数量，不填则默认为20，最大值200</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>偏移数，默认为0</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>限流维度</p><p>枚举值：</p><ul><li>1： 实例维度限流</li><li>2： topic维度限流</li></ul><p>默认值：1</p>
+	ThrottleDimension *int64 `json:"ThrottleDimension,omitnil,omitempty" name:"ThrottleDimension"`
+}
+
+func (r *DescribeThrottleRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeThrottleRulesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "SearchWord")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "ThrottleDimension")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeThrottleRulesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeThrottleRulesResponseParams struct {
+	// <p>返回信息</p>
+	Result *ThrottleRuleResult `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeThrottleRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeThrottleRulesResponseParams `json:"Response"`
+}
+
+func (r *DescribeThrottleRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeThrottleRulesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -10338,6 +10593,77 @@ func (r *ModifyRoutineMaintenanceTaskResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyThrottleRuleRequestParams struct {
+	// 规则标识
+	ThrottleRuleId *uint64 `json:"ThrottleRuleId,omitnil,omitempty" name:"ThrottleRuleId"`
+
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 消费限流值单位MB/s
+	ConsumeThrottle *uint64 `json:"ConsumeThrottle,omitnil,omitempty" name:"ConsumeThrottle"`
+}
+
+type ModifyThrottleRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 规则标识
+	ThrottleRuleId *uint64 `json:"ThrottleRuleId,omitnil,omitempty" name:"ThrottleRuleId"`
+
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 消费限流值单位MB/s
+	ConsumeThrottle *uint64 `json:"ConsumeThrottle,omitnil,omitempty" name:"ConsumeThrottle"`
+}
+
+func (r *ModifyThrottleRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyThrottleRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ThrottleRuleId")
+	delete(f, "InstanceId")
+	delete(f, "ConsumeThrottle")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyThrottleRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyThrottleRuleResponseParams struct {
+	// 返回信息
+	Result *JgwOperateResponse `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyThrottleRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyThrottleRuleResponseParams `json:"Response"`
+}
+
+func (r *ModifyThrottleRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyThrottleRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyTopicAttributesRequestParams struct {
 	// <p>ckafka集群实例Id</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/597/40835">DescribeInstances</a></p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -11694,6 +12020,40 @@ type TdwParam struct {
 
 	// <p>TDW端口，默认8099</p>
 	TdwPort *int64 `json:"TdwPort,omitnil,omitempty" name:"TdwPort"`
+}
+
+type ThrottleRuleDetail struct {
+	// <p>限流规则标识</p>
+	ThrottleRuleId *uint64 `json:"ThrottleRuleId,omitnil,omitempty" name:"ThrottleRuleId"`
+
+	// <p>限流类型</p><p>枚举值：</p><ul><li>1： 用户/客户端限流</li><li>2： 消费组限流</li><li>3： topic限流</li></ul>
+	ThrottleType *int64 `json:"ThrottleType,omitnil,omitempty" name:"ThrottleType"`
+
+	// <p>客户端id</p>
+	ClientId *string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
+
+	// <p>用户名</p>
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// <p>消费限流值,单位MB/s</p>
+	ConsumeThrottle *uint64 `json:"ConsumeThrottle,omitnil,omitempty" name:"ConsumeThrottle"`
+
+	// <p>更新时间</p>
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// <p>topic名称</p>
+	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
+
+	// <p>topicId</p>
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+}
+
+type ThrottleRuleResult struct {
+	// 总数量
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 规则列表
+	ThrottleRuleList []*ThrottleRuleDetail `json:"ThrottleRuleList,omitnil,omitempty" name:"ThrottleRuleList"`
 }
 
 type Topic struct {

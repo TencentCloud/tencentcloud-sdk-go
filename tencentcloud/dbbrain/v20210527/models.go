@@ -7976,32 +7976,32 @@ type InstanceInfo struct {
 }
 
 type InstanceItem struct {
-	// 实例ID。
+	// <p>实例ID。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 数据库类型，如 mysql、cynosdb、mariadb、dcdb、mongodb、postgres、redis、dbbrain-mysql、tdstore。
+	// <p>数据库类型，如 mysql、cynosdb、mariadb、dcdb、mongodb、postgres、redis、dbbrain-mysql、tdstore。</p>
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 
-	// 地域英文ID。
+	// <p>地域英文ID。</p>
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 集群ID，仅集群类产品返回。
+	// <p>集群ID，仅集群类产品返回。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 引擎版本。
+	// <p>引擎版本。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EngineVersion *string `json:"EngineVersion,omitnil,omitempty" name:"EngineVersion"`
 
-	// 实例状态，1表示运行中。
+	// <p>实例状态，1表示运行中。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 实例创建时间。
+	// <p>实例创建时间。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 实例到期时间。
+	// <p>实例到期时间。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeadlineTime *string `json:"DeadlineTime,omitnil,omitempty" name:"DeadlineTime"`
 }
