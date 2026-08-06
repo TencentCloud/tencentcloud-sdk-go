@@ -5045,6 +5045,100 @@ func (c *Client) DescribeAutoScalerResourceStrategyBindingGroupsWithContext(ctx 
     return
 }
 
+func NewDescribeCNGWServicesWithRoutesRequest() (request *DescribeCNGWServicesWithRoutesRequest) {
+    request = &DescribeCNGWServicesWithRoutesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tse", APIVersion, "DescribeCNGWServicesWithRoutes")
+    
+    
+    return
+}
+
+func NewDescribeCNGWServicesWithRoutesResponse() (response *DescribeCNGWServicesWithRoutesResponse) {
+    response = &DescribeCNGWServicesWithRoutesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCNGWServicesWithRoutes
+// 查询云原生网关服务和路由列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
+//  FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
+//  FAILEDOPERATION_ROLE = "FailedOperation.Role"
+//  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
+//  INVALIDPARAMETERVALUE_REGION = "InvalidParameterValue.Region"
+//  INVALIDPARAMETERVALUE_RESOURCEALREADYEXIST = "InvalidParameterValue.ResourceAlreadyExist"
+//  INVALIDPARAMETERVALUE_SPECIFICATION = "InvalidParameterValue.Specification"
+//  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_RESOURCENOTFOUND = "ResourceNotFound.ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
+//  UNAUTHORIZEDOPERATION_CAMPASSROLENOTEXIST = "UnauthorizedOperation.CamPassRoleNotExist"
+//  UNAUTHORIZEDOPERATION_UIN = "UnauthorizedOperation.Uin"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) DescribeCNGWServicesWithRoutes(request *DescribeCNGWServicesWithRoutesRequest) (response *DescribeCNGWServicesWithRoutesResponse, err error) {
+    return c.DescribeCNGWServicesWithRoutesWithContext(context.Background(), request)
+}
+
+// DescribeCNGWServicesWithRoutes
+// 查询云原生网关服务和路由列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
+//  FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
+//  FAILEDOPERATION_ROLE = "FailedOperation.Role"
+//  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
+//  INVALIDPARAMETERVALUE_REGION = "InvalidParameterValue.Region"
+//  INVALIDPARAMETERVALUE_RESOURCEALREADYEXIST = "InvalidParameterValue.ResourceAlreadyExist"
+//  INVALIDPARAMETERVALUE_SPECIFICATION = "InvalidParameterValue.Specification"
+//  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_RESOURCENOTFOUND = "ResourceNotFound.ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
+//  UNAUTHORIZEDOPERATION_CAMPASSROLENOTEXIST = "UnauthorizedOperation.CamPassRoleNotExist"
+//  UNAUTHORIZEDOPERATION_UIN = "UnauthorizedOperation.Uin"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) DescribeCNGWServicesWithRoutesWithContext(ctx context.Context, request *DescribeCNGWServicesWithRoutesRequest) (response *DescribeCNGWServicesWithRoutesResponse, err error) {
+    if request == nil {
+        request = NewDescribeCNGWServicesWithRoutesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "DescribeCNGWServicesWithRoutes")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCNGWServicesWithRoutes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCNGWServicesWithRoutesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCloudNativeAPIGatewayRequest() (request *DescribeCloudNativeAPIGatewayRequest) {
     request = &DescribeCloudNativeAPIGatewayRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -2488,56 +2488,44 @@ func (r *DeleteWorkSpaceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeClustersRequestParams struct {
-	// 按照一个或者多个集群 ID 查询，每次请求的集群上限为 100
+	// <p>按照一个或者多个集群 ID 查询，每次请求的集群上限为 100</p>
 	ClusterIds []*string `json:"ClusterIds,omitnil,omitempty" name:"ClusterIds"`
 
-	// 偏移量，默认 0
+	// <p>偏移量，默认 0</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 请求的集群数量，默认 20，最大值 100
+	// <p>请求的集群数量，默认 20，最大值 100</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 集群信息结果排序规则，1 按时间降序，2 按照时间升序，3  按照状态排序
+	// <p>集群信息结果排序规则，1 按时间降序，2 按照时间升序，3  按照状态排序</p>
 	OrderType *int64 `json:"OrderType,omitnil,omitempty" name:"OrderType"`
 
-	// 过滤规则
-	//     
-	// - Name
-	//     按照集群的名字进行模糊查询。例如：测试
-	//     类型： String
-	//     必选： 否
-	//     
+	// <p>过滤规则</p><ul><li>Name<br>  按照集群的名字进行模糊查询。例如：测试<br>  类型： String<br>  必选： 否</li></ul>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 工作空间 SerialId
+	// <p>工作空间 SerialId</p>
 	WorkSpaceId *string `json:"WorkSpaceId,omitnil,omitempty" name:"WorkSpaceId"`
 }
 
 type DescribeClustersRequest struct {
 	*tchttp.BaseRequest
 	
-	// 按照一个或者多个集群 ID 查询，每次请求的集群上限为 100
+	// <p>按照一个或者多个集群 ID 查询，每次请求的集群上限为 100</p>
 	ClusterIds []*string `json:"ClusterIds,omitnil,omitempty" name:"ClusterIds"`
 
-	// 偏移量，默认 0
+	// <p>偏移量，默认 0</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 请求的集群数量，默认 20，最大值 100
+	// <p>请求的集群数量，默认 20，最大值 100</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 集群信息结果排序规则，1 按时间降序，2 按照时间升序，3  按照状态排序
+	// <p>集群信息结果排序规则，1 按时间降序，2 按照时间升序，3  按照状态排序</p>
 	OrderType *int64 `json:"OrderType,omitnil,omitempty" name:"OrderType"`
 
-	// 过滤规则
-	//     
-	// - Name
-	//     按照集群的名字进行模糊查询。例如：测试
-	//     类型： String
-	//     必选： 否
-	//     
+	// <p>过滤规则</p><ul><li>Name<br>  按照集群的名字进行模糊查询。例如：测试<br>  类型： String<br>  必选： 否</li></ul>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 工作空间 SerialId
+	// <p>工作空间 SerialId</p>
 	WorkSpaceId *string `json:"WorkSpaceId,omitnil,omitempty" name:"WorkSpaceId"`
 }
 
@@ -2567,10 +2555,10 @@ func (r *DescribeClustersRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeClustersResponseParams struct {
-	// 集群总数
+	// <p>集群总数</p>
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 集群列表
+	// <p>集群列表</p>
 	ClusterSet []*Cluster `json:"ClusterSet,omitnil,omitempty" name:"ClusterSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3203,50 +3191,50 @@ func (r *DescribeJobSubmissionLogResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeJobsRequestParams struct {
-	// 按照一个或者多个作业ID查询。作业ID形如：cql-11112222，每次请求的作业上限为100。参数不支持同时指定JobIds和Filters。
+	// <p>按照一个或者多个作业ID查询。作业ID形如：cql-11112222，每次请求的作业上限为100。参数不支持同时指定JobIds和Filters。</p>
 	JobIds []*string `json:"JobIds,omitnil,omitempty" name:"JobIds"`
 
-	// 过滤条件，支持的 Filter.Name 为：作业名 Name、作业状态 Status、所属集群 ClusterId、作业id JobId、集群名称 ClusterName。 每次请求的 Filters 个数的上限为 5，Filter.Values 的个数上限为 5。参数不支持同时指定 JobIds 和 Filters。
+	// <p>过滤条件，支持的 Filter.Name 为：作业名 Name、作业状态 Status、所属集群 ClusterId、作业id JobId、集群名称 ClusterName。 每次请求的 Filters 个数的上限为 5，Filter.Values 的个数上限为 5。参数不支持同时指定 JobIds 和 Filters。</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 偏移量，默认为0
+	// <p>偏移量，默认为0</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页大小，默认为20，最大值为100
+	// <p>分页大小，默认为20，最大值为100</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 工作空间 SerialId
+	// <p>工作空间 SerialId</p>
 	WorkSpaceId *string `json:"WorkSpaceId,omitnil,omitempty" name:"WorkSpaceId"`
 
-	// 查询额外的作业信息,例如 JobEventInfo	
+	// <p>查询额外的作业信息,例如 JobEventInfo</p>
 	ExtraResult []*string `json:"ExtraResult,omitnil,omitempty" name:"ExtraResult"`
 
-	// 查询引用connector
+	// <p>查询引用connector</p>
 	ConnectorOptions *string `json:"ConnectorOptions,omitnil,omitempty" name:"ConnectorOptions"`
 }
 
 type DescribeJobsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 按照一个或者多个作业ID查询。作业ID形如：cql-11112222，每次请求的作业上限为100。参数不支持同时指定JobIds和Filters。
+	// <p>按照一个或者多个作业ID查询。作业ID形如：cql-11112222，每次请求的作业上限为100。参数不支持同时指定JobIds和Filters。</p>
 	JobIds []*string `json:"JobIds,omitnil,omitempty" name:"JobIds"`
 
-	// 过滤条件，支持的 Filter.Name 为：作业名 Name、作业状态 Status、所属集群 ClusterId、作业id JobId、集群名称 ClusterName。 每次请求的 Filters 个数的上限为 5，Filter.Values 的个数上限为 5。参数不支持同时指定 JobIds 和 Filters。
+	// <p>过滤条件，支持的 Filter.Name 为：作业名 Name、作业状态 Status、所属集群 ClusterId、作业id JobId、集群名称 ClusterName。 每次请求的 Filters 个数的上限为 5，Filter.Values 的个数上限为 5。参数不支持同时指定 JobIds 和 Filters。</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 偏移量，默认为0
+	// <p>偏移量，默认为0</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页大小，默认为20，最大值为100
+	// <p>分页大小，默认为20，最大值为100</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 工作空间 SerialId
+	// <p>工作空间 SerialId</p>
 	WorkSpaceId *string `json:"WorkSpaceId,omitnil,omitempty" name:"WorkSpaceId"`
 
-	// 查询额外的作业信息,例如 JobEventInfo	
+	// <p>查询额外的作业信息,例如 JobEventInfo</p>
 	ExtraResult []*string `json:"ExtraResult,omitnil,omitempty" name:"ExtraResult"`
 
-	// 查询引用connector
+	// <p>查询引用connector</p>
 	ConnectorOptions *string `json:"ConnectorOptions,omitnil,omitempty" name:"ConnectorOptions"`
 }
 
@@ -3277,10 +3265,10 @@ func (r *DescribeJobsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeJobsResponseParams struct {
-	// 作业总数
+	// <p>作业总数</p>
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 作业列表
+	// <p>作业列表</p>
 	JobSet []*JobV1 `json:"JobSet,omitnil,omitempty" name:"JobSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

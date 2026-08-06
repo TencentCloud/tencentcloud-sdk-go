@@ -1989,109 +1989,6 @@ func (r *DriverLicenseOCRResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-// Predefined struct for user
-type EduPaperOCRRequestParams struct {
-	// 图片的 Base64 值。
-	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
-	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
-	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
-
-	// 图片的 Url 地址。
-	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
-	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
-	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
-	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
-
-	// 扩展配置信息。
-	// 配置格式：{"option1":value1,"option2":value2}
-	// 1. task_type：任务类型【0: 关闭版式分析与处理 1: 开启版式分析处理】可选参数，Int32类型，默认值为1
-	// 2. is_structuralization：是否结构化输出【true：返回包体同时返回通用和结构化输出  false：返回包体返回通用输出】 可选参数，Bool类型，默认值为true
-	// 3. if_readable_format：是否按照版式整合通用文本/公式输出结果 可选参数，Bool类型，默认值为false
-	// 示例：
-	// {"task_type": 1,"is_structuralization": true,"if_readable_format": true}
-	Config *string `json:"Config,omitnil,omitempty" name:"Config"`
-}
-
-type EduPaperOCRRequest struct {
-	*tchttp.BaseRequest
-	
-	// 图片的 Base64 值。
-	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
-	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
-	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
-
-	// 图片的 Url 地址。
-	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
-	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
-	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
-	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
-
-	// 扩展配置信息。
-	// 配置格式：{"option1":value1,"option2":value2}
-	// 1. task_type：任务类型【0: 关闭版式分析与处理 1: 开启版式分析处理】可选参数，Int32类型，默认值为1
-	// 2. is_structuralization：是否结构化输出【true：返回包体同时返回通用和结构化输出  false：返回包体返回通用输出】 可选参数，Bool类型，默认值为true
-	// 3. if_readable_format：是否按照版式整合通用文本/公式输出结果 可选参数，Bool类型，默认值为false
-	// 示例：
-	// {"task_type": 1,"is_structuralization": true,"if_readable_format": true}
-	Config *string `json:"Config,omitnil,omitempty" name:"Config"`
-}
-
-func (r *EduPaperOCRRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *EduPaperOCRRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "ImageBase64")
-	delete(f, "ImageUrl")
-	delete(f, "Config")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EduPaperOCRRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type EduPaperOCRResponseParams struct {
-	// 检测到的文本信息，具体内容请点击左侧链接。
-	EduPaperInfos []*TextEduPaper `json:"EduPaperInfos,omitnil,omitempty" name:"EduPaperInfos"`
-
-	// 图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。
-	Angle *int64 `json:"Angle,omitnil,omitempty" name:"Angle"`
-
-	// 结构化方式输出，具体内容请点击左侧链接。
-	QuestionBlockInfos []*QuestionBlockObj `json:"QuestionBlockInfos,omitnil,omitempty" name:"QuestionBlockInfos"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type EduPaperOCRResponse struct {
-	*tchttp.BaseResponse
-	Response *EduPaperOCRResponseParams `json:"Response"`
-}
-
-func (r *EduPaperOCRResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *EduPaperOCRResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type ElectronicAirTransport struct {
 	// 发票代码
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3172,269 +3069,88 @@ func (r *ExtractDocBasicResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type ExtractDocMultiProRequestParams struct {
-	// 图片/PDF的 Url 地址。要求图片经Base64编码后不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
-	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
-
-	// 图片/PDF的 Base64 值。要求Base64不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
-	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
-
-	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为前3页。
-	PdfPageNumber *uint64 `json:"PdfPageNumber,omitnil,omitempty" name:"PdfPageNumber"`
-
-	// 自定义结构化功能需返回的字段名称，例：若客户想新增返回姓名、性别两个字段的识别结果，则输入ItemNames=["姓名","性别"]
-	ItemNames []*string `json:"ItemNames,omitnil,omitempty" name:"ItemNames"`
-
-	// true：仅输出自定义字段
-	// flase：输出默认字段+自定义字段
-	// 默认true
-	ItemNamesShowMode *bool `json:"ItemNamesShowMode,omitnil,omitempty" name:"ItemNamesShowMode"`
-
-	// 是否开启全文字段识别
-	ReturnFullText *bool `json:"ReturnFullText,omitnil,omitempty" name:"ReturnFullText"`
-
-	// 配置id支持：
-	// DispatchWeightNote -- 磅单发货单识别模板
-	// ReceiptWeightNote -- 磅单收货单识别模板
-	// 默认：DispatchWeightNote
-	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
-
-	// 是否开启全文字段坐标值的识别
-	EnableCoord *bool `json:"EnableCoord,omitnil,omitempty" name:"EnableCoord"`
-
-	// 是否开启父子key识别，默认是
-	OutputParentKey *bool `json:"OutputParentKey,omitnil,omitempty" name:"OutputParentKey"`
-
-	// 模板的单个属性配置
-	ConfigAdvanced *ConfigAdvanced `json:"ConfigAdvanced,omitnil,omitempty" name:"ConfigAdvanced"`
-}
-
-type ExtractDocMultiProRequest struct {
-	*tchttp.BaseRequest
-	
-	// 图片/PDF的 Url 地址。要求图片经Base64编码后不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
-	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
-
-	// 图片/PDF的 Base64 值。要求Base64不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
-	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
-
-	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为前3页。
-	PdfPageNumber *uint64 `json:"PdfPageNumber,omitnil,omitempty" name:"PdfPageNumber"`
-
-	// 自定义结构化功能需返回的字段名称，例：若客户想新增返回姓名、性别两个字段的识别结果，则输入ItemNames=["姓名","性别"]
-	ItemNames []*string `json:"ItemNames,omitnil,omitempty" name:"ItemNames"`
-
-	// true：仅输出自定义字段
-	// flase：输出默认字段+自定义字段
-	// 默认true
-	ItemNamesShowMode *bool `json:"ItemNamesShowMode,omitnil,omitempty" name:"ItemNamesShowMode"`
-
-	// 是否开启全文字段识别
-	ReturnFullText *bool `json:"ReturnFullText,omitnil,omitempty" name:"ReturnFullText"`
-
-	// 配置id支持：
-	// DispatchWeightNote -- 磅单发货单识别模板
-	// ReceiptWeightNote -- 磅单收货单识别模板
-	// 默认：DispatchWeightNote
-	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
-
-	// 是否开启全文字段坐标值的识别
-	EnableCoord *bool `json:"EnableCoord,omitnil,omitempty" name:"EnableCoord"`
-
-	// 是否开启父子key识别，默认是
-	OutputParentKey *bool `json:"OutputParentKey,omitnil,omitempty" name:"OutputParentKey"`
-
-	// 模板的单个属性配置
-	ConfigAdvanced *ConfigAdvanced `json:"ConfigAdvanced,omitnil,omitempty" name:"ConfigAdvanced"`
-}
-
-func (r *ExtractDocMultiProRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *ExtractDocMultiProRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "ImageUrl")
-	delete(f, "ImageBase64")
-	delete(f, "PdfPageNumber")
-	delete(f, "ItemNames")
-	delete(f, "ItemNamesShowMode")
-	delete(f, "ReturnFullText")
-	delete(f, "ConfigId")
-	delete(f, "EnableCoord")
-	delete(f, "OutputParentKey")
-	delete(f, "ConfigAdvanced")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ExtractDocMultiProRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type ExtractDocMultiProResponseParams struct {
-	// 图片旋转角度(角度制)，文本的水平方向为 0；顺时针为正，逆时针为负
-	Angle *float64 `json:"Angle,omitnil,omitempty" name:"Angle"`
-
-	// 配置结构化文本信息
-	StructuralList []*GroupInfo `json:"StructuralList,omitnil,omitempty" name:"StructuralList"`
-
-	// 还原文本信息
-	WordList []*WordItem `json:"WordList,omitnil,omitempty" name:"WordList"`
-
-	// 样本识别字段数
-	TokenNum *int64 `json:"TokenNum,omitnil,omitempty" name:"TokenNum"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type ExtractDocMultiProResponse struct {
-	*tchttp.BaseResponse
-	Response *ExtractDocMultiProResponseParams `json:"Response"`
-}
-
-func (r *ExtractDocMultiProResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *ExtractDocMultiProResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type ExtractDocMultiRequestParams struct {
-	// 图片/PDF的 Url 地址。要求图片经Base64编码后不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	// <p>图片/PDF的 Url 地址。要求图片经Base64编码后不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。</p>
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 
-	// 图片/PDF的 Base64 值。要求Base64不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	// <p>图片/PDF的 Base64 值。要求Base64不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。</p>
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
 
-	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，默认值为前3页。
+	// <p>需要识别的PDF页面的对应页码，仅支持PDF单页识别。</p>
 	PdfPageNumber *uint64 `json:"PdfPageNumber,omitnil,omitempty" name:"PdfPageNumber"`
 
-	// 自定义结构化功能需返回的字段名称，例：若客户想新增返回姓名、性别两个字段的识别结果，则输入ItemNames=["姓名","性别"]
+	// <p>自定义结构化功能需返回的字段名称，例：若客户想新增返回姓名、性别两个字段的识别结果，则输入ItemNames=[&quot;姓名&quot;,&quot;性别&quot;]</p>
 	ItemNames []*string `json:"ItemNames,omitnil,omitempty" name:"ItemNames"`
 
-	// true：仅输出自定义字段
-	// false：输出默认字段+自定义字段
-	// 默认true
+	// <p>true：仅输出自定义字段<br>false：输出默认字段+自定义字段<br>默认true</p>
 	ItemNamesShowMode *bool `json:"ItemNamesShowMode,omitnil,omitempty" name:"ItemNamesShowMode"`
 
-	// 是否开启全文字段识别
+	// <p>是否开启全文字段识别</p>
 	ReturnFullText *bool `json:"ReturnFullText,omitnil,omitempty" name:"ReturnFullText"`
 
-	// 配置id支持：
-	// General -- 通用场景 
-	// InvoiceEng -- 国际invoice模板 
-	// WayBillEng --海运订单模板
-	// CustomsDeclaration -- 进出口报关单
-	// WeightNote -- 磅单
-	// MedicalMeter -- 血压仪表识别
-	// BillOfLading -- 海运提单
-	// EntrustmentBook -- 海运托书
-	// Statement -- 对账单识别模板
-	// BookingConfirmation -- 配舱通知书识别模板
-	// AirWayBill -- 航空运单识别模板
-	// Table -- 表格模板
-	// SteelLabel -- 实物标签识别模板
-	// CarInsurance -- 车辆保险单识别模板
-	// MultiRealEstateCertificate -- 房产材料识别模板
-	// MultiRealEstateMaterial -- 房产证明识别模板
-	// HongKongUtilityBill -- 中国香港水电煤单识别模板
-	// OverseasCheques -- 海外支票
-	// RegistrationCertificate -- 备案证
-	// ​GridPhoto -- 电网系统照片
-	// ​SignaturePage -- 签署页
-	// ​SalesDeliveryNote -- 销售发货单
-	// 
-	// 
+	// <p>配置id支持：<br>General -- 通用场景<br>InvoiceEng -- 国际invoice模板<br>WayBillEng --海运订单模板<br>CustomsDeclaration -- 进出口报关单<br>WeightNote -- 磅单<br>MedicalMeter -- 血压仪表识别<br>BillOfLading -- 海运提单<br>EntrustmentBook -- 海运托书<br>Statement -- 对账单识别模板<br>BookingConfirmation -- 配舱通知书识别模板<br>AirWayBill -- 航空运单识别模板<br>Table -- 表格模板<br>SteelLabel -- 实物标签识别模板<br>CarInsurance -- 车辆保险单识别模板<br>MultiRealEstateCertificate -- 房产材料识别模板<br>MultiRealEstateMaterial -- 房产证明识别模板<br>HongKongUtilityBill -- 中国香港水电煤单识别模板<br>OverseasCheques -- 海外支票<br>RegistrationCertificate -- 备案证<br>u200bGridPhoto -- 电网系统照片<br>u200bSignaturePage -- 签署页<br>u200bSalesDeliveryNote -- 销售发货单</p>
 	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
 
-	// 是否开启全文字段坐标值的识别
+	// <p>是否开启全文字段坐标值的识别</p>
 	EnableCoord *bool `json:"EnableCoord,omitnil,omitempty" name:"EnableCoord"`
 
-	// 是否开启父子key识别，默认是
+	// <p>是否开启父子key识别，默认是</p>
 	OutputParentKey *bool `json:"OutputParentKey,omitnil,omitempty" name:"OutputParentKey"`
 
-	// 模板的单个属性配置
+	// <p>模板的单个属性配置</p>
 	ConfigAdvanced *ConfigAdvanced `json:"ConfigAdvanced,omitnil,omitempty" name:"ConfigAdvanced"`
 
-	// cn时，添加的key为中文  
-	// en时，添加的key为英语
+	// <p>cn时，添加的key为中文<br>en时，添加的key为英语</p>
 	OutputLanguage *string `json:"OutputLanguage,omitnil,omitempty" name:"OutputLanguage"`
+
+	// <p>自定义抽取需要的字段名称、字段类型、字段提示词</p>
+	NewItemNames []*ItemNames `json:"NewItemNames,omitnil,omitempty" name:"NewItemNames"`
+
+	// <p>文档抽取（多模态）识别服务所用的算法模型版本<br>-目前入参支持“1.0”和“2.0“两个输入。</p><ul><li>2026年7月20日开始，默认为“2.0”，之前使用过本接口的账号若未填写本参数默认为“1.0”。</li><li>2026年7月20日后开通服务的账号仅支持输入“2.0”。</li><li>不同算法模型版本对应的文档抽取识别算法不同，新版本的整体效果会优于旧版本，建议使用“2.0”版本。<br>示例值：2.0</li></ul>
+	MultiModelVersion *string `json:"MultiModelVersion,omitnil,omitempty" name:"MultiModelVersion"`
 }
 
 type ExtractDocMultiRequest struct {
 	*tchttp.BaseRequest
 	
-	// 图片/PDF的 Url 地址。要求图片经Base64编码后不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	// <p>图片/PDF的 Url 地址。要求图片经Base64编码后不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。</p>
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 
-	// 图片/PDF的 Base64 值。要求Base64不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	// <p>图片/PDF的 Base64 值。要求Base64不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。</p>
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
 
-	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，默认值为前3页。
+	// <p>需要识别的PDF页面的对应页码，仅支持PDF单页识别。</p>
 	PdfPageNumber *uint64 `json:"PdfPageNumber,omitnil,omitempty" name:"PdfPageNumber"`
 
-	// 自定义结构化功能需返回的字段名称，例：若客户想新增返回姓名、性别两个字段的识别结果，则输入ItemNames=["姓名","性别"]
+	// <p>自定义结构化功能需返回的字段名称，例：若客户想新增返回姓名、性别两个字段的识别结果，则输入ItemNames=[&quot;姓名&quot;,&quot;性别&quot;]</p>
 	ItemNames []*string `json:"ItemNames,omitnil,omitempty" name:"ItemNames"`
 
-	// true：仅输出自定义字段
-	// false：输出默认字段+自定义字段
-	// 默认true
+	// <p>true：仅输出自定义字段<br>false：输出默认字段+自定义字段<br>默认true</p>
 	ItemNamesShowMode *bool `json:"ItemNamesShowMode,omitnil,omitempty" name:"ItemNamesShowMode"`
 
-	// 是否开启全文字段识别
+	// <p>是否开启全文字段识别</p>
 	ReturnFullText *bool `json:"ReturnFullText,omitnil,omitempty" name:"ReturnFullText"`
 
-	// 配置id支持：
-	// General -- 通用场景 
-	// InvoiceEng -- 国际invoice模板 
-	// WayBillEng --海运订单模板
-	// CustomsDeclaration -- 进出口报关单
-	// WeightNote -- 磅单
-	// MedicalMeter -- 血压仪表识别
-	// BillOfLading -- 海运提单
-	// EntrustmentBook -- 海运托书
-	// Statement -- 对账单识别模板
-	// BookingConfirmation -- 配舱通知书识别模板
-	// AirWayBill -- 航空运单识别模板
-	// Table -- 表格模板
-	// SteelLabel -- 实物标签识别模板
-	// CarInsurance -- 车辆保险单识别模板
-	// MultiRealEstateCertificate -- 房产材料识别模板
-	// MultiRealEstateMaterial -- 房产证明识别模板
-	// HongKongUtilityBill -- 中国香港水电煤单识别模板
-	// OverseasCheques -- 海外支票
-	// RegistrationCertificate -- 备案证
-	// ​GridPhoto -- 电网系统照片
-	// ​SignaturePage -- 签署页
-	// ​SalesDeliveryNote -- 销售发货单
-	// 
-	// 
+	// <p>配置id支持：<br>General -- 通用场景<br>InvoiceEng -- 国际invoice模板<br>WayBillEng --海运订单模板<br>CustomsDeclaration -- 进出口报关单<br>WeightNote -- 磅单<br>MedicalMeter -- 血压仪表识别<br>BillOfLading -- 海运提单<br>EntrustmentBook -- 海运托书<br>Statement -- 对账单识别模板<br>BookingConfirmation -- 配舱通知书识别模板<br>AirWayBill -- 航空运单识别模板<br>Table -- 表格模板<br>SteelLabel -- 实物标签识别模板<br>CarInsurance -- 车辆保险单识别模板<br>MultiRealEstateCertificate -- 房产材料识别模板<br>MultiRealEstateMaterial -- 房产证明识别模板<br>HongKongUtilityBill -- 中国香港水电煤单识别模板<br>OverseasCheques -- 海外支票<br>RegistrationCertificate -- 备案证<br>u200bGridPhoto -- 电网系统照片<br>u200bSignaturePage -- 签署页<br>u200bSalesDeliveryNote -- 销售发货单</p>
 	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
 
-	// 是否开启全文字段坐标值的识别
+	// <p>是否开启全文字段坐标值的识别</p>
 	EnableCoord *bool `json:"EnableCoord,omitnil,omitempty" name:"EnableCoord"`
 
-	// 是否开启父子key识别，默认是
+	// <p>是否开启父子key识别，默认是</p>
 	OutputParentKey *bool `json:"OutputParentKey,omitnil,omitempty" name:"OutputParentKey"`
 
-	// 模板的单个属性配置
+	// <p>模板的单个属性配置</p>
 	ConfigAdvanced *ConfigAdvanced `json:"ConfigAdvanced,omitnil,omitempty" name:"ConfigAdvanced"`
 
-	// cn时，添加的key为中文  
-	// en时，添加的key为英语
+	// <p>cn时，添加的key为中文<br>en时，添加的key为英语</p>
 	OutputLanguage *string `json:"OutputLanguage,omitnil,omitempty" name:"OutputLanguage"`
+
+	// <p>自定义抽取需要的字段名称、字段类型、字段提示词</p>
+	NewItemNames []*ItemNames `json:"NewItemNames,omitnil,omitempty" name:"NewItemNames"`
+
+	// <p>文档抽取（多模态）识别服务所用的算法模型版本<br>-目前入参支持“1.0”和“2.0“两个输入。</p><ul><li>2026年7月20日开始，默认为“2.0”，之前使用过本接口的账号若未填写本参数默认为“1.0”。</li><li>2026年7月20日后开通服务的账号仅支持输入“2.0”。</li><li>不同算法模型版本对应的文档抽取识别算法不同，新版本的整体效果会优于旧版本，建议使用“2.0”版本。<br>示例值：2.0</li></ul>
+	MultiModelVersion *string `json:"MultiModelVersion,omitnil,omitempty" name:"MultiModelVersion"`
 }
 
 func (r *ExtractDocMultiRequest) ToJsonString() string {
@@ -3460,6 +3176,8 @@ func (r *ExtractDocMultiRequest) FromJsonString(s string) error {
 	delete(f, "OutputParentKey")
 	delete(f, "ConfigAdvanced")
 	delete(f, "OutputLanguage")
+	delete(f, "NewItemNames")
+	delete(f, "MultiModelVersion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ExtractDocMultiRequest has unknown keys!", "")
 	}
@@ -3468,16 +3186,16 @@ func (r *ExtractDocMultiRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ExtractDocMultiResponseParams struct {
-	// 图片旋转角度(角度制)，文本的水平方向为 0；顺时针为正，逆时针为负
+	// <p>图片旋转角度(角度制)，文本的水平方向为 0；顺时针为正，逆时针为负</p>
 	Angle *float64 `json:"Angle,omitnil,omitempty" name:"Angle"`
 
-	// 配置结构化文本信息
+	// <p>配置结构化文本信息</p>
 	StructuralList []*GroupInfo `json:"StructuralList,omitnil,omitempty" name:"StructuralList"`
 
-	// 还原文本信息
+	// <p>还原文本信息</p>
 	WordList []*WordItem `json:"WordList,omitnil,omitempty" name:"WordList"`
 
-	// 样本识别字段数
+	// <p>样本识别字段数</p>
 	TokenNum *int64 `json:"TokenNum,omitnil,omitempty" name:"TokenNum"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3662,96 +3380,6 @@ type FinancialBillItemDetails struct {
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 }
 
-type FlightInvoiceInfo struct {
-	// 识别出的字段名称(关键字)，支持以下字段：
-	// 票价、合计金额、填开日期、有效身份证件号码、电子客票号码、验证码、旅客姓名、填开单位、其他税费、燃油附加费、民航发展基金、保险费、销售单位代号、始发地、目的地、航班号、时间、日期、座位等级、承运人、发票消费类型、国内国际标签、印刷序号、客票级别/类别、客票生效日期、有效期截止日期、免费行李。
-	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
-
-	// 识别出的字段名称对应的值，也就是字段 Name 对应的字符串结果。
-	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
-
-	// 多个行程的字段所在行号，下标从0开始，非行字段或未能识别行号的该值返回-1。
-	Row *int64 `json:"Row,omitnil,omitempty" name:"Row"`
-}
-
-// Predefined struct for user
-type FlightInvoiceOCRRequestParams struct {
-	// 图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
-	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
-
-	// 图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
-	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
-
-	// 是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
-	IsPdf *bool `json:"IsPdf,omitnil,omitempty" name:"IsPdf"`
-
-	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
-	PdfPageNumber *int64 `json:"PdfPageNumber,omitnil,omitempty" name:"PdfPageNumber"`
-}
-
-type FlightInvoiceOCRRequest struct {
-	*tchttp.BaseRequest
-	
-	// 图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
-	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
-
-	// 图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
-	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
-
-	// 是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
-	IsPdf *bool `json:"IsPdf,omitnil,omitempty" name:"IsPdf"`
-
-	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
-	PdfPageNumber *int64 `json:"PdfPageNumber,omitnil,omitempty" name:"PdfPageNumber"`
-}
-
-func (r *FlightInvoiceOCRRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *FlightInvoiceOCRRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "ImageBase64")
-	delete(f, "ImageUrl")
-	delete(f, "IsPdf")
-	delete(f, "PdfPageNumber")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "FlightInvoiceOCRRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type FlightInvoiceOCRResponseParams struct {
-	// 机票行程单识别结果，具体内容请点击左侧链接。
-	FlightInvoiceInfos []*FlightInvoiceInfo `json:"FlightInvoiceInfos,omitnil,omitempty" name:"FlightInvoiceInfos"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type FlightInvoiceOCRResponse struct {
-	*tchttp.BaseResponse
-	Response *FlightInvoiceOCRResponseParams `json:"Response"`
-}
-
-func (r *FlightInvoiceOCRResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *FlightInvoiceOCRResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type FlightItem struct {
 	// 出发航站楼
 	TerminalGetOn *string `json:"TerminalGetOn,omitnil,omitempty" name:"TerminalGetOn"`
@@ -3820,73 +3448,6 @@ type FlightItemInfo struct {
 
 	// 有效截止日期
 	DateEnd *string `json:"DateEnd,omitnil,omitempty" name:"DateEnd"`
-}
-
-// Predefined struct for user
-type FormulaOCRRequestParams struct {
-	// 图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
-	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
-
-	// 图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
-	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
-}
-
-type FormulaOCRRequest struct {
-	*tchttp.BaseRequest
-	
-	// 图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
-	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
-
-	// 图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
-	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
-}
-
-func (r *FormulaOCRRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *FormulaOCRRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "ImageBase64")
-	delete(f, "ImageUrl")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "FormulaOCRRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type FormulaOCRResponseParams struct {
-	// 图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负
-	Angle *int64 `json:"Angle,omitnil,omitempty" name:"Angle"`
-
-	// 检测到的文本信息，具体内容请点击左侧链接。
-	FormulaInfos []*TextFormula `json:"FormulaInfos,omitnil,omitempty" name:"FormulaInfos"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type FormulaOCRResponse struct {
-	*tchttp.BaseResponse
-	Response *FormulaOCRResponseParams `json:"Response"`
-}
-
-func (r *FormulaOCRResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *FormulaOCRResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -5259,86 +4820,6 @@ type ImageSize struct {
 	Height *int64 `json:"Height,omitnil,omitempty" name:"Height"`
 }
 
-type InsuranceBillInfo struct {
-	// 识别出的字段名称(关键字)，支持以下字段：
-	// 【病案首页】
-	// 姓名、性别、出生日期、出院诊断、疾病编码、入院病情等。
-	// 【费用清单】
-	// 医疗参保人员类别、身份证号、入院方式、结账日期、项目、金额等。
-	// 【结算单】
-	// 名称、单价、数量、金额、医保内、医保外等。
-	// 【医疗发票】
-	// 姓名、性别、住院时间、收费项目、金额、合计等。
-	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
-
-	// 识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
-	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
-}
-
-// Predefined struct for user
-type InsuranceBillOCRRequestParams struct {
-	// 图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
-	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
-
-	// 图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
-	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
-}
-
-type InsuranceBillOCRRequest struct {
-	*tchttp.BaseRequest
-	
-	// 图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
-	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
-
-	// 图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
-	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
-}
-
-func (r *InsuranceBillOCRRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *InsuranceBillOCRRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "ImageBase64")
-	delete(f, "ImageUrl")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InsuranceBillOCRRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type InsuranceBillOCRResponseParams struct {
-	// 保险单据识别结果，具体内容请点击左侧链接。
-	InsuranceBillInfos []*InsuranceBillInfo `json:"InsuranceBillInfos,omitnil,omitempty" name:"InsuranceBillInfos"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type InsuranceBillOCRResponse struct {
-	*tchttp.BaseResponse
-	Response *InsuranceBillOCRResponseParams `json:"Response"`
-}
-
-func (r *InsuranceBillOCRResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *InsuranceBillOCRResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type InvoiceDetectInfo struct {
 	// 识别出的图片在混贴票据图片中的旋转角度。
 	Angle *float64 `json:"Angle,omitnil,omitempty" name:"Angle"`
@@ -5512,38 +4993,38 @@ type Key struct {
 }
 
 type LicensePlateInfo struct {
-	// 识别出的车牌号码。
+	// <p>识别出的车牌号码。</p>
 	Number *string `json:"Number,omitnil,omitempty" name:"Number"`
 
-	// 置信度，0 - 100 之间。
+	// <p>置信度，0 - 100 之间。</p>
 	Confidence *int64 `json:"Confidence,omitnil,omitempty" name:"Confidence"`
 
-	// 文本行在原图片中的像素坐标框。
+	// <p>文本行在原图片中的像素坐标框。</p>
 	Rect *Rect `json:"Rect,omitnil,omitempty" name:"Rect"`
 
-	// 识别出的车牌颜色，目前支持颜色包括 “白”、“黑”、“蓝”、“绿“、“黄”、“黄绿”、“临牌”、“喷漆”、“其它”。
+	// <p>识别出的车牌颜色，目前支持颜色包括 “白”、“黑”、“蓝”、“绿“、“黄”、“黄绿”、“临牌”、“喷漆”、“其它”。</p>
 	Color *string `json:"Color,omitnil,omitempty" name:"Color"`
 
-	// 车牌类别， 如： 实体车牌、非实体车牌
+	// <p>车牌类别， 如： 标准实体车牌、非标准实体车牌、临牌、喷漆车牌</p>
 	LicensePlateCategory *string `json:"LicensePlateCategory,omitnil,omitempty" name:"LicensePlateCategory"`
 }
 
 // Predefined struct for user
 type LicensePlateOCRRequestParams struct {
-	// 图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	// <p>图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。</p>
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
 
-	// 图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	// <p>图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。</p>
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 }
 
 type LicensePlateOCRRequest struct {
 	*tchttp.BaseRequest
 	
-	// 图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	// <p>图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。</p>
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
 
-	// 图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	// <p>图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。</p>
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 }
 
@@ -5569,22 +5050,22 @@ func (r *LicensePlateOCRRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type LicensePlateOCRResponseParams struct {
-	// 识别出的车牌号码。
+	// <p>识别出的车牌号码。</p>
 	Number *string `json:"Number,omitnil,omitempty" name:"Number"`
 
-	// 置信度，0 - 100 之间。
+	// <p>置信度，0 - 100 之间。</p>
 	Confidence *int64 `json:"Confidence,omitnil,omitempty" name:"Confidence"`
 
-	// 文本行在原图片中的像素坐标框。
+	// <p>文本行在原图片中的像素坐标框。</p>
 	Rect *Rect `json:"Rect,omitnil,omitempty" name:"Rect"`
 
-	// 识别出的车牌颜色，目前支持颜色包括 “白”、“黑”、“蓝”、“绿”、“黄”、“黄绿”、“临牌”、“喷漆”、“其它”。
+	// <p>识别出的车牌颜色，目前支持颜色包括 “白”、“黑”、“蓝”、“绿”、“黄”、“黄绿”、“临牌”、“喷漆”、“其它”。</p>
 	Color *string `json:"Color,omitnil,omitempty" name:"Color"`
 
-	// 全部车牌信息。
+	// <p>全部车牌信息。</p>
 	LicensePlateInfos []*LicensePlateInfo `json:"LicensePlateInfos,omitnil,omitempty" name:"LicensePlateInfos"`
 
-	// 车牌类别， 如： 实体车牌、非实体车牌 示例值：实体车牌
+	// <p>车牌类别， 如： 标准实体车牌、非标准实体车牌、临牌，喷漆车牌  示例值：实体车牌</p>
 	LicensePlateCategory *string `json:"LicensePlateCategory,omitnil,omitempty" name:"LicensePlateCategory"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6647,6 +6128,9 @@ type MultimodalDocParseRequestParams struct {
 
 	// <p>需要识别的页码范围，单次调用最多支持300页。</p><p>参数格式：1-10</p>
 	PageRange *string `json:"PageRange,omitnil,omitempty" name:"PageRange"`
+
+	// <p>任务类型</p><p>枚举值：</p><ul><li>0： 文档解析</li><li>1： 图片OCR识别</li><li>2： 切片文字识别</li><li>3： 切片表格识别</li><li>4： 切片代码识别</li></ul><p>默认值：0</p>
+	TaskType *int64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 }
 
 type MultimodalDocParseRequest struct {
@@ -6666,6 +6150,9 @@ type MultimodalDocParseRequest struct {
 
 	// <p>需要识别的页码范围，单次调用最多支持300页。</p><p>参数格式：1-10</p>
 	PageRange *string `json:"PageRange,omitnil,omitempty" name:"PageRange"`
+
+	// <p>任务类型</p><p>枚举值：</p><ul><li>0： 文档解析</li><li>1： 图片OCR识别</li><li>2： 切片文字识别</li><li>3： 切片表格识别</li><li>4： 切片代码识别</li></ul><p>默认值：0</p>
+	TaskType *int64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 }
 
 func (r *MultimodalDocParseRequest) ToJsonString() string {
@@ -6685,6 +6172,7 @@ func (r *MultimodalDocParseRequest) FromJsonString(s string) error {
 	delete(f, "ResultType")
 	delete(f, "EnableSubImg")
 	delete(f, "PageRange")
+	delete(f, "TaskType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "MultimodalDocParseRequest has unknown keys!", "")
 	}
@@ -7347,35 +6835,27 @@ type QrcodeResultsInfo struct {
 	Position *QrcodePositionObj `json:"Position,omitnil,omitempty" name:"Position"`
 }
 
-type QuestionBlockObj struct {
-	// 数学试题识别结构化信息数组
-	QuestionArr []*QuestionObj `json:"QuestionArr,omitnil,omitempty" name:"QuestionArr"`
-
-	// 题目主体区域检测框在图片中的像素坐标
-	QuestionBboxCoord *Rect `json:"QuestionBboxCoord,omitnil,omitempty" name:"QuestionBboxCoord"`
-}
-
 type QuestionInfo struct {
-	// 旋转角度
+	// <p>旋转角度</p>
 	Angle *float64 `json:"Angle,omitnil,omitempty" name:"Angle"`
 
-	// 预处理后图片高度
+	// <p>预处理后图片高度</p><p>单位：px</p>
 	Height *int64 `json:"Height,omitnil,omitempty" name:"Height"`
 
-	// 预处理后图片宽度
+	// <p>预处理后图片宽度</p><p>单位：px</p>
 	Width *int64 `json:"Width,omitnil,omitempty" name:"Width"`
 
-	// 文档元素
+	// <p>文档元素</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResultList []*ResultList `json:"ResultList,omitnil,omitempty" name:"ResultList"`
 
-	// 输入图片高度
+	// <p>输入图片高度</p><p>单位：px</p>
 	OrgHeight *int64 `json:"OrgHeight,omitnil,omitempty" name:"OrgHeight"`
 
-	// 输入图片宽度
+	// <p>输入图片宽度</p><p>单位：px</p>
 	OrgWidth *int64 `json:"OrgWidth,omitnil,omitempty" name:"OrgWidth"`
 
-	// 预处理后的图片base64编码
+	// <p>预处理后的图片base64编码</p>
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
 }
 
@@ -7462,29 +6942,6 @@ func (r *QuestionOCRResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *QuestionOCRResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
-}
-
-type QuestionObj struct {
-	// 题号
-	QuestionTextNo *string `json:"QuestionTextNo,omitnil,omitempty" name:"QuestionTextNo"`
-
-	// 题型：
-	// 1: "选择题"
-	// 2: "填空题"
-	// 3: "解答题"
-	QuestionTextType *int64 `json:"QuestionTextType,omitnil,omitempty" name:"QuestionTextType"`
-
-	// 题干
-	QuestionText *string `json:"QuestionText,omitnil,omitempty" name:"QuestionText"`
-
-	// 选择题选项，包含1个或多个option
-	QuestionOptions *string `json:"QuestionOptions,omitnil,omitempty" name:"QuestionOptions"`
-
-	// 所有子题的question属性
-	QuestionSubquestion *string `json:"QuestionSubquestion,omitnil,omitempty" name:"QuestionSubquestion"`
-
-	// 示意图检测框在的图片中的像素坐标
-	QuestionImageCoords []*Rect `json:"QuestionImageCoords,omitnil,omitempty" name:"QuestionImageCoords"`
 }
 
 // Predefined struct for user
@@ -10283,17 +9740,23 @@ type SubmitQuestionMarkAgentJobRequestParams struct {
 	// Deprecated: EnableDeepThink is deprecated.
 	EnableDeepThink *bool `json:"EnableDeepThink,omitnil,omitempty" name:"EnableDeepThink"`
 
-	// <p>题目信息输出配置，当key对应为true表示开启配置开关。</p><p>当key为KnowledgePoints value为true 表示输出每道题结构信息中输出知识点内容；<br>当key为TrueAnswer  value为true 表示输出每道题的正确答案 ；<br>当key为StepCorrection  value为true表示启用步骤级批改；</p><p> 设置方式参考  {&quot;KnowledgePoints&quot;:true,&quot;TrueAnswer&quot;:true}</p><p>参数格式：{&quot;KnowledgePoints&quot;:true,&quot;TrueAnswer&quot;:true}</p>
+	// <p>题目信息输出配置，当key对应为true表示开启配置开关。</p><p>当key为KnowledgePoints value为true 表示输出每道题结构信息中输出知识点内容；<br>当key为TrueAnswer value为true 表示输出每道题的正确答案 ；<br>当key为StepCorrection value为true表示启用步骤级批改；</p><p>当key为DisableAnswerAnalysis value为true表示不输出答案解析；</p><p>当key为OutputSubQuestionsAndCoords value为true表示输出子题干和插图坐标；</p><p>当key为UseCoordAssist value为true表示使用精调坐标辅助模型，false表示默认模型坐标（性能更优）；</p><p>参数格式：{&quot;KnowledgePoints&quot;:true,&quot;TrueAnswer&quot;:true}</p>
 	QuestionConfigMap *string `json:"QuestionConfigMap,omitnil,omitempty" name:"QuestionConfigMap"`
 
 	// <p>仅有单题有效，如果切题有多题则不生效，单题批改的时候作为参考答案输入到批改模型中</p>
 	ReferenceAnswer *string `json:"ReferenceAnswer,omitnil,omitempty" name:"ReferenceAnswer"`
 
-	// <p>图片/PDF的 Base64 列表值，最多三张。每张图片要求参考ImageBase64  1. 如果ImageBase64List或者ImageUrlList 都没值则取ImageBase64 或者ImageUrl  2.如果ImageBase64List或者ImageUrlList 有一个值，则不取ImageBase64 或者ImageUrl值，优先去list  3.如果ImageBase64List或者ImageUrlList 都有值，则取ImageUrlList</p>
+	// <p>批量base64图片入口，每个base64参考单独ImageBase64参数规则。</p><ol><li>当AssistMarkType为2时，用于提供题目相关的辅助批改图片信息.ImageBase64List.N/ImageUrlList.N来输入答题试卷和含正确解析试卷，最多两张</li><li>当AssistMarkType不为2时，ImageBase64List.N/ImageUrlList.N图片会执行拼接逻辑（解决单题跨页场景）</li></ol>
 	ImageBase64List []*string `json:"ImageBase64List,omitnil,omitempty" name:"ImageBase64List"`
 
-	// <p>图片/PDF的 Url 地址Base64 列表值，最多三张。每张图片要求参考ImageUrl。  图片生效规则同ImageBase64List</p>
+	// <p>批量ImageUrl图片入口，每个ImageUrl参考单独ImageUrl参数规则。</p><ol><li>当AssistMarkType为2时，用于提供题目相关的辅助批改图片信息.ImageBase64List.N/ImageUrlList.N 来输入答题试卷和含正确解析试卷，最多两张</li><li>当AssistMarkType不为2时，ImageBase64List.N/ImageUrlList.N图片会执行拼接逻辑（解决单题跨页场景）</li></ol>
 	ImageUrlList []*string `json:"ImageUrlList,omitnil,omitempty" name:"ImageUrlList"`
+
+	// <p>辅助批改类型</p><p>枚举值：</p><ul><li>0： 无辅助批改，直接模型批改</li><li>1： 单题文本辅助批改，配合AnswerAssistMap使用</li><li>2： 整页辅助批改，待批改试卷使用ImageUrl/ImageBase64，答案部分使用ImageBase64List.N/ImageUrlList.N</li></ul><p>默认值：0</p>
+	AssistMarkType *int64 `json:"AssistMarkType,omitnil,omitempty" name:"AssistMarkType"`
+
+	// <p>单题辅助批改文本内容列表，当AssistMarkType为1时生效，用于提供题目相关的辅助文本信息。</p><ol><li>当key为ReferenceAnswer，value可以输入单题的辅助答案文本。</li><li>当key为QuestionAuxStem，value可以输入单题的辅助题干。</li></ol>
+	AnswerAssistMap *string `json:"AnswerAssistMap,omitnil,omitempty" name:"AnswerAssistMap"`
 }
 
 type SubmitQuestionMarkAgentJobRequest struct {
@@ -10314,17 +9777,23 @@ type SubmitQuestionMarkAgentJobRequest struct {
 	// <p>默认false 表示关闭深度思考  true 表示打开深度思考，更深层次推理分析，速度更慢</p>
 	EnableDeepThink *bool `json:"EnableDeepThink,omitnil,omitempty" name:"EnableDeepThink"`
 
-	// <p>题目信息输出配置，当key对应为true表示开启配置开关。</p><p>当key为KnowledgePoints value为true 表示输出每道题结构信息中输出知识点内容；<br>当key为TrueAnswer  value为true 表示输出每道题的正确答案 ；<br>当key为StepCorrection  value为true表示启用步骤级批改；</p><p> 设置方式参考  {&quot;KnowledgePoints&quot;:true,&quot;TrueAnswer&quot;:true}</p><p>参数格式：{&quot;KnowledgePoints&quot;:true,&quot;TrueAnswer&quot;:true}</p>
+	// <p>题目信息输出配置，当key对应为true表示开启配置开关。</p><p>当key为KnowledgePoints value为true 表示输出每道题结构信息中输出知识点内容；<br>当key为TrueAnswer value为true 表示输出每道题的正确答案 ；<br>当key为StepCorrection value为true表示启用步骤级批改；</p><p>当key为DisableAnswerAnalysis value为true表示不输出答案解析；</p><p>当key为OutputSubQuestionsAndCoords value为true表示输出子题干和插图坐标；</p><p>当key为UseCoordAssist value为true表示使用精调坐标辅助模型，false表示默认模型坐标（性能更优）；</p><p>参数格式：{&quot;KnowledgePoints&quot;:true,&quot;TrueAnswer&quot;:true}</p>
 	QuestionConfigMap *string `json:"QuestionConfigMap,omitnil,omitempty" name:"QuestionConfigMap"`
 
 	// <p>仅有单题有效，如果切题有多题则不生效，单题批改的时候作为参考答案输入到批改模型中</p>
 	ReferenceAnswer *string `json:"ReferenceAnswer,omitnil,omitempty" name:"ReferenceAnswer"`
 
-	// <p>图片/PDF的 Base64 列表值，最多三张。每张图片要求参考ImageBase64  1. 如果ImageBase64List或者ImageUrlList 都没值则取ImageBase64 或者ImageUrl  2.如果ImageBase64List或者ImageUrlList 有一个值，则不取ImageBase64 或者ImageUrl值，优先去list  3.如果ImageBase64List或者ImageUrlList 都有值，则取ImageUrlList</p>
+	// <p>批量base64图片入口，每个base64参考单独ImageBase64参数规则。</p><ol><li>当AssistMarkType为2时，用于提供题目相关的辅助批改图片信息.ImageBase64List.N/ImageUrlList.N来输入答题试卷和含正确解析试卷，最多两张</li><li>当AssistMarkType不为2时，ImageBase64List.N/ImageUrlList.N图片会执行拼接逻辑（解决单题跨页场景）</li></ol>
 	ImageBase64List []*string `json:"ImageBase64List,omitnil,omitempty" name:"ImageBase64List"`
 
-	// <p>图片/PDF的 Url 地址Base64 列表值，最多三张。每张图片要求参考ImageUrl。  图片生效规则同ImageBase64List</p>
+	// <p>批量ImageUrl图片入口，每个ImageUrl参考单独ImageUrl参数规则。</p><ol><li>当AssistMarkType为2时，用于提供题目相关的辅助批改图片信息.ImageBase64List.N/ImageUrlList.N 来输入答题试卷和含正确解析试卷，最多两张</li><li>当AssistMarkType不为2时，ImageBase64List.N/ImageUrlList.N图片会执行拼接逻辑（解决单题跨页场景）</li></ol>
 	ImageUrlList []*string `json:"ImageUrlList,omitnil,omitempty" name:"ImageUrlList"`
+
+	// <p>辅助批改类型</p><p>枚举值：</p><ul><li>0： 无辅助批改，直接模型批改</li><li>1： 单题文本辅助批改，配合AnswerAssistMap使用</li><li>2： 整页辅助批改，待批改试卷使用ImageUrl/ImageBase64，答案部分使用ImageBase64List.N/ImageUrlList.N</li></ul><p>默认值：0</p>
+	AssistMarkType *int64 `json:"AssistMarkType,omitnil,omitempty" name:"AssistMarkType"`
+
+	// <p>单题辅助批改文本内容列表，当AssistMarkType为1时生效，用于提供题目相关的辅助文本信息。</p><ol><li>当key为ReferenceAnswer，value可以输入单题的辅助答案文本。</li><li>当key为QuestionAuxStem，value可以输入单题的辅助题干。</li></ol>
+	AnswerAssistMap *string `json:"AnswerAssistMap,omitnil,omitempty" name:"AnswerAssistMap"`
 }
 
 func (r *SubmitQuestionMarkAgentJobRequest) ToJsonString() string {
@@ -10348,6 +9817,8 @@ func (r *SubmitQuestionMarkAgentJobRequest) FromJsonString(s string) error {
 	delete(f, "ReferenceAnswer")
 	delete(f, "ImageBase64List")
 	delete(f, "ImageUrlList")
+	delete(f, "AssistMarkType")
+	delete(f, "AnswerAssistMap")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitQuestionMarkAgentJobRequest has unknown keys!", "")
 	}
@@ -10364,6 +9835,9 @@ type SubmitQuestionMarkAgentJobResponseParams struct {
 
 	// <p>题目切题数量，作为计费题目数总量</p>
 	QuestionCount *string `json:"QuestionCount,omitnil,omitempty" name:"QuestionCount"`
+
+	// <p>客户图片url</p>
+	OriginalImageUrl *string `json:"OriginalImageUrl,omitnil,omitempty" name:"OriginalImageUrl"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -10824,22 +10298,6 @@ type TextDetectionEn struct {
 
 	// 识别出来的单词信息（包括单词Character和单词置信度confidence）
 	Words []*Words `json:"Words,omitnil,omitempty" name:"Words"`
-}
-
-type TextEduPaper struct {
-	// 识别出的字段名称（关键字）
-	Item *string `json:"Item,omitnil,omitempty" name:"Item"`
-
-	// 识别出的字段名称对应的值，也就是字段Item对应的字符串结果
-	DetectedText *string `json:"DetectedText,omitnil,omitempty" name:"DetectedText"`
-
-	// 文本行在旋转纠正之后的图像中的像素坐标，表示为（左上角x, 左上角y，宽width，高height）
-	Itemcoord *ItemCoord `json:"Itemcoord,omitnil,omitempty" name:"Itemcoord"`
-}
-
-type TextFormula struct {
-	// 识别出的文本行内容
-	DetectedText *string `json:"DetectedText,omitnil,omitempty" name:"DetectedText"`
 }
 
 type TextFormulaInfo struct {

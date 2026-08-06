@@ -7182,6 +7182,84 @@ func (r *DescribeAutoScalerResourceStrategyBindingGroupsResponse) FromJsonString
 }
 
 // Predefined struct for user
+type DescribeCNGWServicesWithRoutesRequestParams struct {
+	// <p>网关ID</p>
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// <p>列表数量</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>列表 offset</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>过滤条件，多个过滤条件之间是与的关系，支持 name,upstreamType</p>
+	Filters []*ListFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type DescribeCNGWServicesWithRoutesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>网关ID</p>
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// <p>列表数量</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>列表 offset</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>过滤条件，多个过滤条件之间是与的关系，支持 name,upstreamType</p>
+	Filters []*ListFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *DescribeCNGWServicesWithRoutesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCNGWServicesWithRoutesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GatewayId")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCNGWServicesWithRoutesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCNGWServicesWithRoutesResponseParams struct {
+	// <p>无</p>
+	Result *KongServiceWithRoutes `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeCNGWServicesWithRoutesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCNGWServicesWithRoutesResponseParams `json:"Response"`
+}
+
+func (r *DescribeCNGWServicesWithRoutesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCNGWServicesWithRoutesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeCloudNativeAPIGatewayCORSRequestParams struct {
 	// 网关ID
 	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
@@ -8671,45 +8749,69 @@ func (r *DescribeCloudNativeAPIGatewayRouteRateLimitResponse) FromJsonString(s s
 
 // Predefined struct for user
 type DescribeCloudNativeAPIGatewayRoutesRequestParams struct {
-	// 网关ID
+	// <p>网关ID</p>
 	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
 
-	// 翻页单页查询限制数量[0,1000], 默认值0
+	// <p>翻页单页查询限制数量[0,1000], 默认值0</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 翻页单页偏移量，默认值0
+	// <p>翻页单页偏移量，默认值0</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 服务的名字，精确匹配
+	// <p>服务的名字，精确匹配</p>
 	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
 
-	// 路由的名字，精确匹配
+	// <p>路由的名字，精确匹配</p>
 	RouteName *string `json:"RouteName,omitnil,omitempty" name:"RouteName"`
 
-	// 过滤条件，多个过滤条件之间是与的关系，支持 name, path, host, method, service, protocol
+	// <p>过滤条件，多个过滤条件之间是与的关系，支持 name, path, host, method, service, protocol</p>
 	Filters []*ListFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>路由类型</p>
+	RouteTypes []*string `json:"RouteTypes,omitnil,omitempty" name:"RouteTypes"`
+
+	// <p>是否将灰度规则可能带来的路由排在原始路由前</p>
+	GrayRoutesFirst *bool `json:"GrayRoutesFirst,omitnil,omitempty" name:"GrayRoutesFirst"`
+
+	// <p>排序字段</p>
+	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
+
+	// <p>排序方式</p><p>枚举值：</p><ul><li>DESC： 降序</li><li>ASC： 升序</li></ul>
+	OrderType *string `json:"OrderType,omitnil,omitempty" name:"OrderType"`
 }
 
 type DescribeCloudNativeAPIGatewayRoutesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 网关ID
+	// <p>网关ID</p>
 	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
 
-	// 翻页单页查询限制数量[0,1000], 默认值0
+	// <p>翻页单页查询限制数量[0,1000], 默认值0</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 翻页单页偏移量，默认值0
+	// <p>翻页单页偏移量，默认值0</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 服务的名字，精确匹配
+	// <p>服务的名字，精确匹配</p>
 	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
 
-	// 路由的名字，精确匹配
+	// <p>路由的名字，精确匹配</p>
 	RouteName *string `json:"RouteName,omitnil,omitempty" name:"RouteName"`
 
-	// 过滤条件，多个过滤条件之间是与的关系，支持 name, path, host, method, service, protocol
+	// <p>过滤条件，多个过滤条件之间是与的关系，支持 name, path, host, method, service, protocol</p>
 	Filters []*ListFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>路由类型</p>
+	RouteTypes []*string `json:"RouteTypes,omitnil,omitempty" name:"RouteTypes"`
+
+	// <p>是否将灰度规则可能带来的路由排在原始路由前</p>
+	GrayRoutesFirst *bool `json:"GrayRoutesFirst,omitnil,omitempty" name:"GrayRoutesFirst"`
+
+	// <p>排序字段</p>
+	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
+
+	// <p>排序方式</p><p>枚举值：</p><ul><li>DESC： 降序</li><li>ASC： 升序</li></ul>
+	OrderType *string `json:"OrderType,omitnil,omitempty" name:"OrderType"`
 }
 
 func (r *DescribeCloudNativeAPIGatewayRoutesRequest) ToJsonString() string {
@@ -8730,6 +8832,10 @@ func (r *DescribeCloudNativeAPIGatewayRoutesRequest) FromJsonString(s string) er
 	delete(f, "ServiceName")
 	delete(f, "RouteName")
 	delete(f, "Filters")
+	delete(f, "RouteTypes")
+	delete(f, "GrayRoutesFirst")
+	delete(f, "OrderField")
+	delete(f, "OrderType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCloudNativeAPIGatewayRoutesRequest has unknown keys!", "")
 	}
@@ -8738,7 +8844,7 @@ func (r *DescribeCloudNativeAPIGatewayRoutesRequest) FromJsonString(s string) er
 
 // Predefined struct for user
 type DescribeCloudNativeAPIGatewayRoutesResponseParams struct {
-	// 无
+	// <p>无</p>
 	Result *KongServiceRouteList `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9111,33 +9217,45 @@ func (r *DescribeCloudNativeAPIGatewayServicesLightResponse) FromJsonString(s st
 
 // Predefined struct for user
 type DescribeCloudNativeAPIGatewayServicesRequestParams struct {
-	// 网关ID
+	// <p>网关ID</p>
 	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
 
-	// 列表数量
+	// <p>列表数量</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 列表 offset
+	// <p>列表 offset</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 过滤条件，多个过滤条件之间是与的关系，支持 name,upstreamType
+	// <p>过滤条件，多个过滤条件之间是与的关系，支持 name,upstreamType</p>
 	Filters []*ListFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>排序字段</p>
+	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
+
+	// <p>排序方式</p><p>枚举值：</p><ul><li>DESC： 降序</li><li>ASC： 升序</li></ul>
+	OrderType *string `json:"OrderType,omitnil,omitempty" name:"OrderType"`
 }
 
 type DescribeCloudNativeAPIGatewayServicesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 网关ID
+	// <p>网关ID</p>
 	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
 
-	// 列表数量
+	// <p>列表数量</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 列表 offset
+	// <p>列表 offset</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 过滤条件，多个过滤条件之间是与的关系，支持 name,upstreamType
+	// <p>过滤条件，多个过滤条件之间是与的关系，支持 name,upstreamType</p>
 	Filters []*ListFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>排序字段</p>
+	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
+
+	// <p>排序方式</p><p>枚举值：</p><ul><li>DESC： 降序</li><li>ASC： 升序</li></ul>
+	OrderType *string `json:"OrderType,omitnil,omitempty" name:"OrderType"`
 }
 
 func (r *DescribeCloudNativeAPIGatewayServicesRequest) ToJsonString() string {
@@ -9156,6 +9274,8 @@ func (r *DescribeCloudNativeAPIGatewayServicesRequest) FromJsonString(s string) 
 	delete(f, "Limit")
 	delete(f, "Offset")
 	delete(f, "Filters")
+	delete(f, "OrderField")
+	delete(f, "OrderType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCloudNativeAPIGatewayServicesRequest has unknown keys!", "")
 	}
@@ -9164,7 +9284,7 @@ func (r *DescribeCloudNativeAPIGatewayServicesRequest) FromJsonString(s string) 
 
 // Predefined struct for user
 type DescribeCloudNativeAPIGatewayServicesResponseParams struct {
-	// 无
+	// <p>无</p>
 	Result *KongServices `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -12927,17 +13047,20 @@ type KeyValue struct {
 }
 
 type KongActiveHealthCheck struct {
-	// 主动健康检查健康探测间隔，单位：秒，0表示不开启
+	// <p>主动健康检查健康探测间隔，单位：秒，0表示不开启</p>
 	HealthyInterval *uint64 `json:"HealthyInterval,omitnil,omitempty" name:"HealthyInterval"`
 
-	// 主动健康检查异常探测间隔，单位：秒，0表示不开启
+	// <p>主动健康检查异常探测间隔，单位：秒，0表示不开启</p>
 	UnHealthyInterval *uint64 `json:"UnHealthyInterval,omitnil,omitempty" name:"UnHealthyInterval"`
 
-	// 在 GET HTTP 请求中使用的路径，以作为主动运行状况检查的探测器运行。默认： ”/”。
+	// <p>在 GET HTTP 请求中使用的路径，以作为主动运行状况检查的探测器运行。默认： ”/”。</p>
 	HttpPath *string `json:"HttpPath,omitnil,omitempty" name:"HttpPath"`
 
-	// GET HTTP 请求的超时时间，单位：秒。默认 60。
+	// <p>GET HTTP 请求的超时时间，单位：秒。默认 60。</p>
 	Timeout *float64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
+
+	// <p>Host头</p>
+	HostHeader *string `json:"HostHeader,omitnil,omitempty" name:"HostHeader"`
 }
 
 type KongCertificate struct {
@@ -13003,68 +13126,71 @@ type KongPassiveHealthCheck struct {
 }
 
 type KongRoutePreview struct {
-	// 服务ID
+	// <p>服务ID</p>
 	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
 
-	// 服务名字
+	// <p>服务名字</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 无
+	// <p>无</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Methods []*string `json:"Methods,omitnil,omitempty" name:"Methods"`
 
-	// 无
+	// <p>无</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Paths []*string `json:"Paths,omitnil,omitempty" name:"Paths"`
 
-	// 无
+	// <p>无</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Hosts []*string `json:"Hosts,omitnil,omitempty" name:"Hosts"`
 
-	// 无
+	// <p>无</p>
 	Protocols []*string `json:"Protocols,omitnil,omitempty" name:"Protocols"`
 
-	// 无
+	// <p>无</p>
 	PreserveHost *bool `json:"PreserveHost,omitnil,omitempty" name:"PreserveHost"`
 
-	// 无
+	// <p>无</p>
 	HttpsRedirectStatusCode *int64 `json:"HttpsRedirectStatusCode,omitnil,omitempty" name:"HttpsRedirectStatusCode"`
 
-	// 无
+	// <p>无</p>
 	StripPath *bool `json:"StripPath,omitnil,omitempty" name:"StripPath"`
 
-	// 无
+	// <p>无</p>
 	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
 
-	// 是否开启了强制HTTPS
+	// <p>是否开启了强制HTTPS</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	//
 	// Deprecated: ForceHttps is deprecated.
 	ForceHttps *bool `json:"ForceHttps,omitnil,omitempty" name:"ForceHttps"`
 
-	// 服务名
+	// <p>服务名</p>
 	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
 
-	// 服务ID
+	// <p>服务ID</p>
 	ServiceID *string `json:"ServiceID,omitnil,omitempty" name:"ServiceID"`
 
-	// 目的端口
+	// <p>目的端口</p>
 	DestinationPorts []*uint64 `json:"DestinationPorts,omitnil,omitempty" name:"DestinationPorts"`
 
-	// 路由的Headers
+	// <p>路由的Headers</p>
 	Headers []*KVMapping `json:"Headers,omitnil,omitempty" name:"Headers"`
 
-	// 是否缓存请求body，默认true
+	// <p>是否缓存请求body，默认true</p>
 	RequestBuffering *bool `json:"RequestBuffering,omitnil,omitempty" name:"RequestBuffering"`
 
-	// 是否缓存响应body，默认true
+	// <p>是否缓存响应body，默认true</p>
 	ResponseBuffering *bool `json:"ResponseBuffering,omitnil,omitempty" name:"ResponseBuffering"`
 
-	// 正则优先级
+	// <p>正则优先级</p>
 	RegexPriority *int64 `json:"RegexPriority,omitnil,omitempty" name:"RegexPriority"`
 
-	// querystring参数
+	// <p>querystring参数</p>
 	QueryStringParameters []*KVMapping `json:"QueryStringParameters,omitnil,omitempty" name:"QueryStringParameters"`
+
+	// <p>路由来源</p>
+	RouteSource *string `json:"RouteSource,omitnil,omitempty" name:"RouteSource"`
 }
 
 type KongServiceDetail struct {
@@ -13135,35 +13261,57 @@ type KongServiceLightPreview struct {
 }
 
 type KongServicePreview struct {
-	// 服务ID
+	// <p>服务ID</p>
 	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
 
-	// 服务名字
+	// <p>服务名字</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 标签
+	// <p>标签</p>
 	Tags []*string `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 后端配置
+	// <p>后端配置</p>
 	UpstreamInfo *KongUpstreamInfo `json:"UpstreamInfo,omitnil,omitempty" name:"UpstreamInfo"`
 
-	// 后端类型
+	// <p>后端类型</p>
 	UpstreamType *string `json:"UpstreamType,omitnil,omitempty" name:"UpstreamType"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
 
-	// 是否可编辑
+	// <p>是否可编辑</p>
 	Editable *bool `json:"Editable,omitnil,omitempty" name:"Editable"`
 
-	// 请求路径
+	// <p>请求路径</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
+}
+
+type KongServiceRoute struct {
+	// <p>服务信息</p>
+	Service *KongServicePreview `json:"Service,omitnil,omitempty" name:"Service"`
+
+	// <p>路由总条数</p>
+	RouteTotalCount *int64 `json:"RouteTotalCount,omitnil,omitempty" name:"RouteTotalCount"`
+
+	// <p>是否有未返回的路由</p>
+	RouteHasMore *bool `json:"RouteHasMore,omitnil,omitempty" name:"RouteHasMore"`
+
+	// <p>路由信息</p>
+	Routes []*KongRoutePreview `json:"Routes,omitnil,omitempty" name:"Routes"`
 }
 
 type KongServiceRouteList struct {
 	// 无
 	RouteList []*KongRoutePreview `json:"RouteList,omitnil,omitempty" name:"RouteList"`
+
+	// 总数
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+}
+
+type KongServiceWithRoutes struct {
+
+	ServiceList []*KongServiceRoute `json:"ServiceList,omitnil,omitempty" name:"ServiceList"`
 
 	// 总数
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`

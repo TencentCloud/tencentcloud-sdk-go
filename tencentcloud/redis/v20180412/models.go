@@ -1338,7 +1338,7 @@ func (r *CreateInstanceAccountResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateInstancesRequestParams struct {
-	// <p>实例类型。</p><ul><li>2：Redis 2.8 内存版（标准架构）。</li><li>3：CKV 3.2 内存版（标准架构）。</li><li>4：CKV 3.2 内存版（集群架构）。</li><li>6：Redis 4.0 内存版（标准架构）。</li><li>7：Redis 4.0 内存版（集群架构）。</li><li>8：Redis 5.0 内存版（标准架构）。</li><li>9：Redis 5.0 内存版（集群架构）。</li><li>15：Redis 6.2 内存版（标准架构）。</li><li>16：Redis 6.2 内存版（集群架构）。</li><li>17：Redis 7.0 内存版（标准架构）。</li><li>18：Redis 7.0 内存版（集群架构）。</li><li>19：Valkey 8.0 内存版（标准架构）。</li><li>20：Valkey 8.0 内存版（集群架构）。</li><li>200：Memcached 1.6 内存版（集群架构）。<br><strong>说明</strong>：CKV 版本当前有存量用户使用，暂时保留。</li></ul>
+	// <p>实例类型。</p><ul><li>2：Redis 2.8 内存版（标准架构）。</li><li>3：CKV 3.2 内存版（标准架构）。</li><li>4：CKV 3.2 内存版（集群架构）。</li><li>6：Redis 4.0 内存版（标准架构）。</li><li>7：Redis 4.0 内存版（集群架构）。</li><li>8：Redis 5.0 内存版（标准架构）。</li><li>9：Redis 5.0 内存版（集群架构）。</li><li>15：Redis 6.2 内存版（标准架构）。</li><li>16：Redis 6.2 内存版（集群架构）。</li><li>17：Redis 7.0 内存版（标准架构）。</li><li>18：Redis 7.0 内存版（集群架构）。</li><li>19：Valkey 8.0 内存版（标准架构）。</li><li>20：Valkey 8.0 内存版（集群架构）。</li><li>21：Valkey 9.0 内存版（标准架构）。</li><li>22：Valkey 9.0 内存版（集群架构）。</li><li>200：Memcached 1.6 内存版（集群架构）。<br><strong>说明</strong>：CKV 版本当前有存量用户使用，暂时保留。</li></ul>
 	TypeId *uint64 `json:"TypeId,omitnil,omitempty" name:"TypeId"`
 
 	// <p>内存容量，单位为MB， 数值需为1024的整数倍。具体规格，请通过 <a href="https://cloud.tencent.com/document/api/239/30600">DescribeProductInfo</a> 接口查询全地域的售卖规格。</p><ul><li><strong>TypeId</strong>为标准架构时，<strong>MemSize</strong>是实例总内存容量；</li><li><strong>TypeId</strong>为集群架构时，<strong>MemSize</strong>是单分片内存容量。</li></ul>
@@ -1418,12 +1418,24 @@ type CreateInstancesRequestParams struct {
 
 	// <p>是否启用密码加密传输。</p><ul><li>true：加密。</li><li>false：不加密（默认值）。</li></ul>
 	EncryptPassword *bool `json:"EncryptPassword,omitnil,omitempty" name:"EncryptPassword"`
+
+	// <p>实例级密码复杂度策略。未传入或 Enabled=false 时，视为不启用策略，按系统默认规则校验。</p>
+	PasswordPolicy *PasswordPolicy `json:"PasswordPolicy,omitnil,omitempty" name:"PasswordPolicy"`
+
+	// <p>是否开启 SSL 加密传输。</p><ul><li>true：开启。</li><li>false：关闭（默认值）。</li></ul>
+	EnableSSL *bool `json:"EnableSSL,omitnil,omitempty" name:"EnableSSL"`
+
+	// <p>开启 SSL 时，是否将实例的内网 IPv4 地址写入证书的域名别名（SAN）中。仅在 EnableSSL 为 true 时生效。</p><ul><li>true：允许使用内网 IP 进行 SSL 证书校验。</li><li>false：不添加证书的 SAN 扩展信息。</li></ul>
+	SSLBindPrivateIPv4 *bool `json:"SSLBindPrivateIPv4,omitnil,omitempty" name:"SSLBindPrivateIPv4"`
+
+	// <p>实例连接访问模式。</p><ul><li>0：代理模式（Proxy Mode，默认值）。</li><li>1：直连模式（Direct Connect Mode）。</li></ul>
+	ConnectionMode *int64 `json:"ConnectionMode,omitnil,omitempty" name:"ConnectionMode"`
 }
 
 type CreateInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// <p>实例类型。</p><ul><li>2：Redis 2.8 内存版（标准架构）。</li><li>3：CKV 3.2 内存版（标准架构）。</li><li>4：CKV 3.2 内存版（集群架构）。</li><li>6：Redis 4.0 内存版（标准架构）。</li><li>7：Redis 4.0 内存版（集群架构）。</li><li>8：Redis 5.0 内存版（标准架构）。</li><li>9：Redis 5.0 内存版（集群架构）。</li><li>15：Redis 6.2 内存版（标准架构）。</li><li>16：Redis 6.2 内存版（集群架构）。</li><li>17：Redis 7.0 内存版（标准架构）。</li><li>18：Redis 7.0 内存版（集群架构）。</li><li>19：Valkey 8.0 内存版（标准架构）。</li><li>20：Valkey 8.0 内存版（集群架构）。</li><li>200：Memcached 1.6 内存版（集群架构）。<br><strong>说明</strong>：CKV 版本当前有存量用户使用，暂时保留。</li></ul>
+	// <p>实例类型。</p><ul><li>2：Redis 2.8 内存版（标准架构）。</li><li>3：CKV 3.2 内存版（标准架构）。</li><li>4：CKV 3.2 内存版（集群架构）。</li><li>6：Redis 4.0 内存版（标准架构）。</li><li>7：Redis 4.0 内存版（集群架构）。</li><li>8：Redis 5.0 内存版（标准架构）。</li><li>9：Redis 5.0 内存版（集群架构）。</li><li>15：Redis 6.2 内存版（标准架构）。</li><li>16：Redis 6.2 内存版（集群架构）。</li><li>17：Redis 7.0 内存版（标准架构）。</li><li>18：Redis 7.0 内存版（集群架构）。</li><li>19：Valkey 8.0 内存版（标准架构）。</li><li>20：Valkey 8.0 内存版（集群架构）。</li><li>21：Valkey 9.0 内存版（标准架构）。</li><li>22：Valkey 9.0 内存版（集群架构）。</li><li>200：Memcached 1.6 内存版（集群架构）。<br><strong>说明</strong>：CKV 版本当前有存量用户使用，暂时保留。</li></ul>
 	TypeId *uint64 `json:"TypeId,omitnil,omitempty" name:"TypeId"`
 
 	// <p>内存容量，单位为MB， 数值需为1024的整数倍。具体规格，请通过 <a href="https://cloud.tencent.com/document/api/239/30600">DescribeProductInfo</a> 接口查询全地域的售卖规格。</p><ul><li><strong>TypeId</strong>为标准架构时，<strong>MemSize</strong>是实例总内存容量；</li><li><strong>TypeId</strong>为集群架构时，<strong>MemSize</strong>是单分片内存容量。</li></ul>
@@ -1503,6 +1515,18 @@ type CreateInstancesRequest struct {
 
 	// <p>是否启用密码加密传输。</p><ul><li>true：加密。</li><li>false：不加密（默认值）。</li></ul>
 	EncryptPassword *bool `json:"EncryptPassword,omitnil,omitempty" name:"EncryptPassword"`
+
+	// <p>实例级密码复杂度策略。未传入或 Enabled=false 时，视为不启用策略，按系统默认规则校验。</p>
+	PasswordPolicy *PasswordPolicy `json:"PasswordPolicy,omitnil,omitempty" name:"PasswordPolicy"`
+
+	// <p>是否开启 SSL 加密传输。</p><ul><li>true：开启。</li><li>false：关闭（默认值）。</li></ul>
+	EnableSSL *bool `json:"EnableSSL,omitnil,omitempty" name:"EnableSSL"`
+
+	// <p>开启 SSL 时，是否将实例的内网 IPv4 地址写入证书的域名别名（SAN）中。仅在 EnableSSL 为 true 时生效。</p><ul><li>true：允许使用内网 IP 进行 SSL 证书校验。</li><li>false：不添加证书的 SAN 扩展信息。</li></ul>
+	SSLBindPrivateIPv4 *bool `json:"SSLBindPrivateIPv4,omitnil,omitempty" name:"SSLBindPrivateIPv4"`
+
+	// <p>实例连接访问模式。</p><ul><li>0：代理模式（Proxy Mode，默认值）。</li><li>1：直连模式（Direct Connect Mode）。</li></ul>
+	ConnectionMode *int64 `json:"ConnectionMode,omitnil,omitempty" name:"ConnectionMode"`
 }
 
 func (r *CreateInstancesRequest) ToJsonString() string {
@@ -1544,6 +1568,10 @@ func (r *CreateInstancesRequest) FromJsonString(s string) error {
 	delete(f, "RedisClusterId")
 	delete(f, "AlarmPolicyList")
 	delete(f, "EncryptPassword")
+	delete(f, "PasswordPolicy")
+	delete(f, "EnableSSL")
+	delete(f, "SSLBindPrivateIPv4")
+	delete(f, "ConnectionMode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInstancesRequest has unknown keys!", "")
 	}
@@ -7741,7 +7769,7 @@ type InstanceSet struct {
 	// Deprecated: SizeUsed is deprecated.
 	SizeUsed *float64 `json:"SizeUsed,omitnil,omitempty" name:"SizeUsed"`
 
-	// <p>实例类型。</p><p>枚举值：</p><ul><li>2： Redis 2.8 内存版（标准架构）。</li><li>3： CKV 3.2 内存版（标准架构）。</li><li>4： CKV 3.2 内存版（集群架构）。</li><li>5： Redis 2.8 内存版（单机）。</li><li>6： Redis 4.0 内存版（标准架构）。</li><li>7： Redis 4.0 内存版（集群架构）。</li><li>8： Redis 5.0 内存版（标准架构）。</li><li>9： Redis 5.0 内存版（集群架构）。</li><li>15： Redis 6.2 内存版（标准架构）。</li><li>16： Redis 6.2 内存版（集群架构）。</li><li>17： Redis 7.0 内存版（标准架构）。</li><li>18： Redis 7.0 内存版（集群架构）。</li><li>19： Valkey 8.0 内存版（标准架构）。</li><li>20： Valkey 8.0 内存版（集群架构）。</li><li>200： Memcached 1.6 内存版（集群架构）。</li></ul>
+	// <p>实例类型。</p><p>枚举值：</p><ul><li>2： Redis 2.8 内存版（标准架构）。</li><li>3： CKV 3.2 内存版（标准架构）。</li><li>4： CKV 3.2 内存版（集群架构）。</li><li>5： Redis 2.8 内存版（单机）。</li><li>6： Redis 4.0 内存版（标准架构）。</li><li>7： Redis 4.0 内存版（集群架构）。</li><li>8： Redis 5.0 内存版（标准架构）。</li><li>9： Redis 5.0 内存版（集群架构）。</li><li>15： Redis 6.2 内存版（标准架构）。</li><li>16： Redis 6.2 内存版（集群架构）。</li><li>17： Redis 7.0 内存版（标准架构）。</li><li>18： Redis 7.0 内存版（集群架构）。</li><li>19： Valkey 8.0 内存版（标准架构）。</li><li>20： Valkey 8.0 内存版（集群架构）。</li><li>21： Valkey 8.0 内存版（标准架构）。</li><li>22： Valkey 8.0 内存版（集群架构）。</li><li>200： Memcached 1.6 内存版（集群架构）。</li></ul>
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// <p>实例是否设置自动续费标识。<ul><li>1：设置自动续费。</li><li>0：未设置自动续费。</li></ul></p>

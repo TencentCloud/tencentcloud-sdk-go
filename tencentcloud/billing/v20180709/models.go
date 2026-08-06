@@ -8827,7 +8827,7 @@ type DescribeGatherResourceRequestParams struct {
 	// <p>分账单元唯一标识，用作筛选</p>
 	TreeNodeUniqKey *string `json:"TreeNodeUniqKey,omitnil,omitempty" name:"TreeNodeUniqKey"`
 
-	// <p>资源目录类别，枚举值如下：<br>all - 全部<br>none - 未归集</p>
+	// <p>资源目录类别，枚举值如下：<br>all - 全部<br>none - 未归集</p><p>枚举值：</p><ul><li>all： 全部</li><li>none： 未归集</li><li>allocation： 已公摊资源</li><li>gather： 已归集资源</li></ul>
 	GatherType *string `json:"GatherType,omitnil,omitempty" name:"GatherType"`
 
 	// <p>排序字段，枚举值如下：<br>realCost  - 折后总价<br>cashPayAmount - 现金金额<br>voucherPayAmount - 代金券金额<br>incentivePayAmount  - 赠送金金额<br>transferPayAmount -分成金金额</p>
@@ -8888,7 +8888,7 @@ type DescribeGatherResourceRequest struct {
 	// <p>分账单元唯一标识，用作筛选</p>
 	TreeNodeUniqKey *string `json:"TreeNodeUniqKey,omitnil,omitempty" name:"TreeNodeUniqKey"`
 
-	// <p>资源目录类别，枚举值如下：<br>all - 全部<br>none - 未归集</p>
+	// <p>资源目录类别，枚举值如下：<br>all - 全部<br>none - 未归集</p><p>枚举值：</p><ul><li>all： 全部</li><li>none： 未归集</li><li>allocation： 已公摊资源</li><li>gather： 已归集资源</li></ul>
 	GatherType *string `json:"GatherType,omitnil,omitempty" name:"GatherType"`
 
 	// <p>排序字段，枚举值如下：<br>realCost  - 折后总价<br>cashPayAmount - 现金金额<br>voucherPayAmount - 代金券金额<br>incentivePayAmount  - 赠送金金额<br>transferPayAmount -分成金金额</p>
@@ -9893,128 +9893,128 @@ type ExcludedProducts struct {
 }
 
 type GatherResourceSummary struct {
-	// 支付者 UIN：支付者的账号 ID，账号 ID 是用户在腾讯云的唯一账号标识
+	// <p>支付者 UIN：支付者的账号 ID，账号 ID 是用户在腾讯云的唯一账号标识</p>
 	PayerUin *string `json:"PayerUin,omitnil,omitempty" name:"PayerUin"`
 
-	// 使用者 UIN：实际使用资源的账号 ID
+	// <p>使用者 UIN：实际使用资源的账号 ID</p>
 	OwnerUin *string `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
 
-	// 操作者 UIN：操作者账号 ID（预付费资源下单或后付费操作开通资源账号的ID或者角色 ID）
+	// <p>操作者 UIN：操作者账号 ID（预付费资源下单或后付费操作开通资源账号的ID或者角色 ID）</p>
 	OperateUin *string `json:"OperateUin,omitnil,omitempty" name:"OperateUin"`
 
-	// 实例类型编码
+	// <p>实例类型编码</p>
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
-	// 实例类型：购买的产品服务对应的实例类型，包括资源包、RI、SP、竞价实例。常规实例默认展示“-”
+	// <p>实例类型：购买的产品服务对应的实例类型，包括资源包、RI、SP、竞价实例。常规实例默认展示“-”</p>
 	InstanceTypeName *string `json:"InstanceTypeName,omitnil,omitempty" name:"InstanceTypeName"`
 
-	// 资源ID：不同产品因资源形态不同，资源内容不完全相同，如云服务器 CVM 为对应的实例 ID； 若该产品被分拆，则展示产品分拆后的分拆项 ID，如 COS 桶 ID，CDN 域名
+	// <p>资源ID：不同产品因资源形态不同，资源内容不完全相同，如云服务器 CVM 为对应的实例 ID； 若该产品被分拆，则展示产品分拆后的分拆项 ID，如 COS 桶 ID，CDN 域名</p>
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
-	// 实例名称：用户在控制台为资源设置的名称，如未设置默认为空；若该产品被分拆，则展示分拆产品分拆后的分拆项资源别名
+	// <p>实例名称：用户在控制台为资源设置的名称，如未设置默认为空；若该产品被分拆，则展示分拆产品分拆后的分拆项资源别名</p>
 	ResourceName *string `json:"ResourceName,omitnil,omitempty" name:"ResourceName"`
 
-	// 分账单元唯一标识
+	// <p>分账单元唯一标识</p>
 	TreeNodeUniqKey *string `json:"TreeNodeUniqKey,omitnil,omitempty" name:"TreeNodeUniqKey"`
 
-	// 分账单元名称
+	// <p>分账单元名称</p>
 	TreeNodeUniqKeyName *string `json:"TreeNodeUniqKeyName,omitnil,omitempty" name:"TreeNodeUniqKeyName"`
 
-	// 资源命中公摊规则ID
+	// <p>资源命中公摊规则ID</p>
 	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
-	// 资源命中公摊规则名称
+	// <p>资源命中公摊规则名称</p>
 	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
 
-	// 产品编码
+	// <p>产品编码</p>
 	BusinessCode *string `json:"BusinessCode,omitnil,omitempty" name:"BusinessCode"`
 
-	// 产品名称：用户所采购的各类云产品
+	// <p>产品名称：用户所采购的各类云产品</p>
 	BusinessCodeName *string `json:"BusinessCodeName,omitnil,omitempty" name:"BusinessCodeName"`
 
-	// 组件名称编码
+	// <p>组件名称编码</p>
 	ItemCode *string `json:"ItemCode,omitnil,omitempty" name:"ItemCode"`
 
-	// 组件名称：用户购买的产品或服务，所包含的具体组件
+	// <p>组件名称：用户购买的产品或服务，所包含的具体组件</p>
 	ItemCodeName *string `json:"ItemCodeName,omitnil,omitempty" name:"ItemCodeName"`
 
-	// 地域ID
+	// <p>地域ID</p>
 	RegionId *uint64 `json:"RegionId,omitnil,omitempty" name:"RegionId"`
 
-	// 地域名称：资源所属地域
+	// <p>地域名称：资源所属地域</p>
 	RegionName *string `json:"RegionName,omitnil,omitempty" name:"RegionName"`
 
-	// 分账标签：资源绑定的标签
+	// <p>分账标签：资源绑定的标签</p>
 	Tag []*BillTag `json:"Tag,omitnil,omitempty" name:"Tag"`
 
-	// 优惠后总价：优惠后总价 =（原价 - 预留实例抵扣原价 - 节省计划抵扣原价）* 折扣率
+	// <p>优惠后总价：优惠后总价 =（原价 - 预留实例抵扣原价 - 节省计划抵扣原价）* 折扣率</p>
 	RealTotalCost *string `json:"RealTotalCost,omitnil,omitempty" name:"RealTotalCost"`
 
-	// 现金账户支出(元)：通过现金账户支付的金额
+	// <p>现金账户支出(元)：通过现金账户支付的金额</p>
 	CashPayAmount *string `json:"CashPayAmount,omitnil,omitempty" name:"CashPayAmount"`
 
-	// 代金券支出(元)：使用各类优惠券（如代金券、现金券等）支付的金额
+	// <p>代金券支出(元)：使用各类优惠券（如代金券、现金券等）支付的金额</p>
 	VoucherPayAmount *string `json:"VoucherPayAmount,omitnil,omitempty" name:"VoucherPayAmount"`
 
-	// 赠送账户支出(元)：使用赠送金支付的金额
+	// <p>赠送账户支出(元)：使用赠送金支付的金额</p>
 	IncentivePayAmount *string `json:"IncentivePayAmount,omitnil,omitempty" name:"IncentivePayAmount"`
 
-	// 分成账户支出(元)：通过分成金账户支付的金额
+	// <p>分成账户支出(元)：通过分成金账户支付的金额</p>
 	TransferPayAmount *string `json:"TransferPayAmount,omitnil,omitempty" name:"TransferPayAmount"`
 
-	// 费用归集类型：费用来源类型，分摊、归集、未分配
-	// 0 - 分摊
-	// 1 - 归集
-	// -1 - 未分配
+	// <p>费用归集类型：费用来源类型，分摊、归集、未分配<br>0 - 分摊<br>1 - 归集<br>-1 - 未分配</p>
 	AllocationType *int64 `json:"AllocationType,omitnil,omitempty" name:"AllocationType"`
 
-	// 当前归属单元信息
+	// <p>当前归属单元信息</p>
 	BelongTreeNodeUniqKey *AllocationTreeNode `json:"BelongTreeNodeUniqKey,omitnil,omitempty" name:"BelongTreeNodeUniqKey"`
 
-	// 当前资源命中公摊规则信息
+	// <p>当前资源命中公摊规则信息</p>
 	BelongRule *AllocationRule `json:"BelongRule,omitnil,omitempty" name:"BelongRule"`
 
-	// 其它归属单元信息
+	// <p>其它归属单元信息</p>
 	OtherTreeNodeUniqKeys []*AllocationTreeNode `json:"OtherTreeNodeUniqKeys,omitnil,omitempty" name:"OtherTreeNodeUniqKeys"`
 
-	// 其他命中规则信息
+	// <p>其他命中规则信息</p>
 	OtherRules []*AllocationRule `json:"OtherRules,omitnil,omitempty" name:"OtherRules"`
 
-	// 项目ID
+	// <p>项目ID</p>
 	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 项目名称：资源归属的项目，用户在控制台给资源自主分配项目，未分配则是默认项目
+	// <p>项目名称：资源归属的项目，用户在控制台给资源自主分配项目，未分配则是默认项目</p>
 	ProjectName *string `json:"ProjectName,omitnil,omitempty" name:"ProjectName"`
 
-	// 子产品编码
+	// <p>子产品编码</p>
 	ProductCode *string `json:"ProductCode,omitnil,omitempty" name:"ProductCode"`
 
-	// 子产品名称：用户采购的具体产品细分类型
+	// <p>子产品名称：用户采购的具体产品细分类型</p>
 	ProductCodeName *string `json:"ProductCodeName,omitnil,omitempty" name:"ProductCodeName"`
 
-	// 计费模式编码
+	// <p>计费模式编码</p>
 	PayMode *string `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// 计费模式：资源的计费模式，区分为包年包月和按量计费
+	// <p>计费模式：资源的计费模式，区分为包年包月和按量计费</p>
 	PayModeName *string `json:"PayModeName,omitnil,omitempty" name:"PayModeName"`
 
-	// 交易类型编码
+	// <p>交易类型编码</p>
 	ActionType *string `json:"ActionType,omitnil,omitempty" name:"ActionType"`
 
-	// 交易类型：明细交易类型
+	// <p>交易类型：明细交易类型</p>
 	ActionTypeName *string `json:"ActionTypeName,omitnil,omitempty" name:"ActionTypeName"`
 
-	// 分拆项 ID：涉及分拆产品的分拆后的分拆项 ID，如 COS 桶 ID，CDN 域名
+	// <p>分拆项 ID：涉及分拆产品的分拆后的分拆项 ID，如 COS 桶 ID，CDN 域名</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	//
 	// Deprecated: SplitItemId is deprecated.
 	SplitItemId *string `json:"SplitItemId,omitnil,omitempty" name:"SplitItemId"`
 
-	// 分拆项名称：涉及分拆产品的分拆后的分拆项
+	// <p>分拆项名称：涉及分拆产品的分拆后的分拆项</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	//
 	// Deprecated: SplitItemName is deprecated.
 	SplitItemName *string `json:"SplitItemName,omitnil,omitempty" name:"SplitItemName"`
+
+	// <p>归集方式</p><p>枚举值：</p><ul><li>0： 未归集</li><li>1： 自动命中</li><li>2： 手动分配待生效</li><li>3： 手动分配已生效</li></ul>
+	EffectiveMode *string `json:"EffectiveMode,omitnil,omitempty" name:"EffectiveMode"`
 }
 
 type GatherRuleSummary struct {

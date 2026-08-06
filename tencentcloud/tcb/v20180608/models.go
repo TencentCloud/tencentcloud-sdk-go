@@ -722,6 +722,24 @@ type CloudAppVersionItem struct {
 	Steps []*BuildStepStatus `json:"Steps,omitnil,omitempty" name:"Steps"`
 }
 
+type CloudBaseRunBuildLog struct {
+	// 总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 触达ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Delivered *int64 `json:"Delivered,omitnil,omitempty" name:"Delivered"`
+
+	// 文档
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+
+	// 是否更多
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	More *bool `json:"More,omitnil,omitempty" name:"More"`
+}
+
 type ClsInfo struct {
 	// cls所属地域
 	ClsRegion *string `json:"ClsRegion,omitnil,omitempty" name:"ClsRegion"`
@@ -3965,6 +3983,92 @@ func (r *DescribeCloudBaseBuildServiceResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCloudBaseBuildServiceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCloudBaseRunBuildLogRequestParams struct {
+	// 环境ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// 服务名称
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// 版本名称
+	ServiceVersion *string `json:"ServiceVersion,omitnil,omitempty" name:"ServiceVersion"`
+
+	// 构建ID
+	BuildId *int64 `json:"BuildId,omitnil,omitempty" name:"BuildId"`
+
+	// 偏移记录
+	Start *int64 `json:"Start,omitnil,omitempty" name:"Start"`
+}
+
+type DescribeCloudBaseRunBuildLogRequest struct {
+	*tchttp.BaseRequest
+	
+	// 环境ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// 服务名称
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// 版本名称
+	ServiceVersion *string `json:"ServiceVersion,omitnil,omitempty" name:"ServiceVersion"`
+
+	// 构建ID
+	BuildId *int64 `json:"BuildId,omitnil,omitempty" name:"BuildId"`
+
+	// 偏移记录
+	Start *int64 `json:"Start,omitnil,omitempty" name:"Start"`
+}
+
+func (r *DescribeCloudBaseRunBuildLogRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCloudBaseRunBuildLogRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "ServiceName")
+	delete(f, "ServiceVersion")
+	delete(f, "BuildId")
+	delete(f, "Start")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCloudBaseRunBuildLogRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCloudBaseRunBuildLogResponseParams struct {
+	// 日志
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Log *CloudBaseRunBuildLog `json:"Log,omitnil,omitempty" name:"Log"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeCloudBaseRunBuildLogResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCloudBaseRunBuildLogResponseParams `json:"Response"`
+}
+
+func (r *DescribeCloudBaseRunBuildLogResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCloudBaseRunBuildLogResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

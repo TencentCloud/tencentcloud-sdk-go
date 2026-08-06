@@ -6992,6 +6992,9 @@ type DeployContainerApplicationRequestParams struct {
 
 	// <p>镜像Secret列表</p>
 	ImagePullSecretList []*string `json:"ImagePullSecretList,omitnil,omitempty" name:"ImagePullSecretList"`
+
+	// <p>用于区分使用sidecar的版本是稳定版还是发行版</p><p>枚举值：</p><ul><li>stable： sidecar稳定版</li><li>release： sidecar发行版</li></ul>
+	MeshSidecarVersion *string `json:"MeshSidecarVersion,omitnil,omitempty" name:"MeshSidecarVersion"`
 }
 
 type DeployContainerApplicationRequest struct {
@@ -7188,6 +7191,9 @@ type DeployContainerApplicationRequest struct {
 
 	// <p>镜像Secret列表</p>
 	ImagePullSecretList []*string `json:"ImagePullSecretList,omitnil,omitempty" name:"ImagePullSecretList"`
+
+	// <p>用于区分使用sidecar的版本是稳定版还是发行版</p><p>枚举值：</p><ul><li>stable： sidecar稳定版</li><li>release： sidecar发行版</li></ul>
+	MeshSidecarVersion *string `json:"MeshSidecarVersion,omitnil,omitempty" name:"MeshSidecarVersion"`
 }
 
 func (r *DeployContainerApplicationRequest) ToJsonString() string {
@@ -7266,6 +7272,7 @@ func (r *DeployContainerApplicationRequest) FromJsonString(s string) error {
 	delete(f, "IncrementalDeployment")
 	delete(f, "DoNotStart")
 	delete(f, "ImagePullSecretList")
+	delete(f, "MeshSidecarVersion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeployContainerApplicationRequest has unknown keys!", "")
 	}

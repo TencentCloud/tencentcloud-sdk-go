@@ -1799,6 +1799,58 @@ func (c *Client) ListAggregateConfigRuleEvaluationResultsWithContext(ctx context
     return
 }
 
+func NewListAggregateConfigRuleResourceEvaluationResultsRequest() (request *ListAggregateConfigRuleResourceEvaluationResultsRequest) {
+    request = &ListAggregateConfigRuleResourceEvaluationResultsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("config", APIVersion, "ListAggregateConfigRuleResourceEvaluationResults")
+    
+    
+    return
+}
+
+func NewListAggregateConfigRuleResourceEvaluationResultsResponse() (response *ListAggregateConfigRuleResourceEvaluationResultsResponse) {
+    response = &ListAggregateConfigRuleResourceEvaluationResultsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListAggregateConfigRuleResourceEvaluationResults
+// 账号组查询配置规则资源评估结果列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ListAggregateConfigRuleResourceEvaluationResults(request *ListAggregateConfigRuleResourceEvaluationResultsRequest) (response *ListAggregateConfigRuleResourceEvaluationResultsResponse, err error) {
+    return c.ListAggregateConfigRuleResourceEvaluationResultsWithContext(context.Background(), request)
+}
+
+// ListAggregateConfigRuleResourceEvaluationResults
+// 账号组查询配置规则资源评估结果列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ListAggregateConfigRuleResourceEvaluationResultsWithContext(ctx context.Context, request *ListAggregateConfigRuleResourceEvaluationResultsRequest) (response *ListAggregateConfigRuleResourceEvaluationResultsResponse, err error) {
+    if request == nil {
+        request = NewListAggregateConfigRuleResourceEvaluationResultsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "config", APIVersion, "ListAggregateConfigRuleResourceEvaluationResults")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListAggregateConfigRuleResourceEvaluationResults require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListAggregateConfigRuleResourceEvaluationResultsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewListAggregateConfigRulesRequest() (request *ListAggregateConfigRulesRequest) {
     request = &ListAggregateConfigRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2107,6 +2159,58 @@ func (c *Client) ListConfigRuleEvaluationResultsWithContext(ctx context.Context,
     request.SetContext(ctx)
     
     response = NewListConfigRuleEvaluationResultsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListConfigRuleResourceEvaluationResultsRequest() (request *ListConfigRuleResourceEvaluationResultsRequest) {
+    request = &ListConfigRuleResourceEvaluationResultsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("config", APIVersion, "ListConfigRuleResourceEvaluationResults")
+    
+    
+    return
+}
+
+func NewListConfigRuleResourceEvaluationResultsResponse() (response *ListConfigRuleResourceEvaluationResultsResponse) {
+    response = &ListConfigRuleResourceEvaluationResultsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListConfigRuleResourceEvaluationResults
+// 查询配置规则资源评估结果列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ListConfigRuleResourceEvaluationResults(request *ListConfigRuleResourceEvaluationResultsRequest) (response *ListConfigRuleResourceEvaluationResultsResponse, err error) {
+    return c.ListConfigRuleResourceEvaluationResultsWithContext(context.Background(), request)
+}
+
+// ListConfigRuleResourceEvaluationResults
+// 查询配置规则资源评估结果列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ListConfigRuleResourceEvaluationResultsWithContext(ctx context.Context, request *ListConfigRuleResourceEvaluationResultsRequest) (response *ListConfigRuleResourceEvaluationResultsResponse, err error) {
+    if request == nil {
+        request = NewListConfigRuleResourceEvaluationResultsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "config", APIVersion, "ListConfigRuleResourceEvaluationResults")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListConfigRuleResourceEvaluationResults require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListConfigRuleResourceEvaluationResultsResponse()
     err = c.Send(request, response)
     return
 }

@@ -6866,29 +6866,35 @@ type InstanceStatus struct {
 }
 
 type InstanceTypeConfig struct {
-	// 可用区。
+	// <p>可用区。</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 实例机型。
+	// <p>实例机型。</p>
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
-	// 实例机型系列。
+	// <p>实例机型系列。</p>
 	InstanceFamily *string `json:"InstanceFamily,omitnil,omitempty" name:"InstanceFamily"`
 
-	// GPU核数，单位：核。
+	// <p>GPU核数，单位：核。</p>
 	GPU *int64 `json:"GPU,omitnil,omitempty" name:"GPU"`
 
-	// CPU核数，单位：核。
+	// <p>CPU核数，单位：核。</p>
 	CPU *int64 `json:"CPU,omitnil,omitempty" name:"CPU"`
 
-	// 内存容量，单位：`GiB`。
+	// <p>内存容量，单位：<code>GiB</code>。</p>
 	Memory *int64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
-	// FPGA核数，单位：核。
+	// <p>FPGA核数，单位：核。</p>
 	FPGA *int64 `json:"FPGA,omitnil,omitempty" name:"FPGA"`
 
-	// 实例机型映射的物理GPU卡数，单位：卡。vGPU卡型小于1，直通卡型大于等于1。vGPU是通过分片虚拟化技术，将物理GPU卡重新划分，同一块GPU卡经虚拟化分割后可分配至不同的实例使用。直通卡型会将GPU设备直接挂载给实例使用。
+	// <p>实例机型映射的物理GPU卡数，单位：卡。vGPU卡型小于1，直通卡型大于等于1。vGPU是通过分片虚拟化技术，将物理GPU卡重新划分，同一块GPU卡经虚拟化分割后可分配至不同的实例使用。直通卡型会将GPU设备直接挂载给实例使用。</p>
 	GpuCount *float64 `json:"GpuCount,omitnil,omitempty" name:"GpuCount"`
+
+	// <p>实例GPU类型</p>
+	GpuType *string `json:"GpuType,omitnil,omitempty" name:"GpuType"`
+
+	// <p>实例GPU单块显存,单位：GiB。</p>
+	GpuMemory *float64 `json:"GpuMemory,omitnil,omitempty" name:"GpuMemory"`
 }
 
 type InstanceTypeConfigStatus struct {

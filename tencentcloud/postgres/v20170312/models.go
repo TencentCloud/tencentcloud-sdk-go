@@ -1935,7 +1935,7 @@ type CreateReadOnlyDBInstanceRequestParams struct {
 	// <p>只读组ID。</p>
 	ReadOnlyGroupId *string `json:"ReadOnlyGroupId,omitnil,omitempty" name:"ReadOnlyGroupId"`
 
-	// <p>实例需要绑定的Tag信息，默认为空；可以通过调用 <a href="https://cloud.tencent.com/document/api/651/35316">DescribeTags</a> 返回值中的 Tags 字段来获取。</p>
+	// <p>实例需要绑定的Tag信息，默认为空；可以通过调用 <a href="https://cloud.tencent.com/document/api/651/35316">DescribeTags</a> 返回值中的 Tags 字段来获取。</p><p>当前字段未完整支持多个tag形式，不推荐使用，建议使用新字段Tags</p>
 	TagList *Tag `json:"TagList,omitnil,omitempty" name:"TagList"`
 
 	// <p>实例所属安全组，该参数可以通过调用 <a href="https://cloud.tencent.com/document/api/215/15808">DescribeSecurityGroups</a> 的返回值中的sgId字段来获取。若不指定该参数，则绑定默认安全组。</p>
@@ -1957,6 +1957,9 @@ type CreateReadOnlyDBInstanceRequestParams struct {
 
 	// <p>实例是否开启删除保护: true-开启删除保护；false-关闭删除保护。</p>
 	DeletionProtection *bool `json:"DeletionProtection,omitnil,omitempty" name:"DeletionProtection"`
+
+	// <p>实例需要绑定的Tag信息，默认为空；可以通过调用 <a href="https://cloud.tencent.com/document/api/651/35316">DescribeTags</a> 返回值中的 Tags 字段来获取。</p>
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type CreateReadOnlyDBInstanceRequest struct {
@@ -2007,7 +2010,7 @@ type CreateReadOnlyDBInstanceRequest struct {
 	// <p>只读组ID。</p>
 	ReadOnlyGroupId *string `json:"ReadOnlyGroupId,omitnil,omitempty" name:"ReadOnlyGroupId"`
 
-	// <p>实例需要绑定的Tag信息，默认为空；可以通过调用 <a href="https://cloud.tencent.com/document/api/651/35316">DescribeTags</a> 返回值中的 Tags 字段来获取。</p>
+	// <p>实例需要绑定的Tag信息，默认为空；可以通过调用 <a href="https://cloud.tencent.com/document/api/651/35316">DescribeTags</a> 返回值中的 Tags 字段来获取。</p><p>当前字段未完整支持多个tag形式，不推荐使用，建议使用新字段Tags</p>
 	TagList *Tag `json:"TagList,omitnil,omitempty" name:"TagList"`
 
 	// <p>实例所属安全组，该参数可以通过调用 <a href="https://cloud.tencent.com/document/api/215/15808">DescribeSecurityGroups</a> 的返回值中的sgId字段来获取。若不指定该参数，则绑定默认安全组。</p>
@@ -2027,6 +2030,9 @@ type CreateReadOnlyDBInstanceRequest struct {
 
 	// <p>实例是否开启删除保护: true-开启删除保护；false-关闭删除保护。</p>
 	DeletionProtection *bool `json:"DeletionProtection,omitnil,omitempty" name:"DeletionProtection"`
+
+	// <p>实例需要绑定的Tag信息，默认为空；可以通过调用 <a href="https://cloud.tencent.com/document/api/651/35316">DescribeTags</a> 返回值中的 Tags 字段来获取。</p>
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 func (r *CreateReadOnlyDBInstanceRequest) ToJsonString() string {
@@ -2063,6 +2069,7 @@ func (r *CreateReadOnlyDBInstanceRequest) FromJsonString(s string) error {
 	delete(f, "DBVersion")
 	delete(f, "DedicatedClusterId")
 	delete(f, "DeletionProtection")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateReadOnlyDBInstanceRequest has unknown keys!", "")
 	}
@@ -6575,56 +6582,56 @@ func (r *DescribeSlowQueryListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTasksRequestParams struct {
-	// 按照任务ID进行查询。其余云API中返回的FlowId和TaskId等价。
+	// <p>按照任务ID进行查询。其余云API中返回的FlowId和TaskId等价。</p>
 	TaskId *uint64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 按照数据库实例ID进行查询。
+	// <p>按照数据库实例ID进行查询。</p>
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
 
-	// 任务的最早开始时间，形如2024-08-23 00:00:00,默认只展示180天内的数据。
+	// <p>任务的最早开始时间，形如2024-08-23 00:00:00,默认只展示180天内的数据。</p>
 	MinStartTime *string `json:"MinStartTime,omitnil,omitempty" name:"MinStartTime"`
 
-	// 任务的最晚开始时间，形如2024-08-23 00:00:00，默认为当前时间。
+	// <p>任务的最晚开始时间，形如2024-08-23 00:00:00，默认为当前时间。</p>
 	MaxStartTime *string `json:"MaxStartTime,omitnil,omitempty" name:"MaxStartTime"`
 
-	// 每页显示数量，取值范围为1-100，默认为返回20条。
+	// <p>每页显示数量，取值范围为1-100，默认为返回20条。</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 数据偏移量，从0开始。
+	// <p>数据偏移量，从0开始。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 排序字段，支持StartTime,EndTime，默认为StartTime。
+	// <p>排序字段，支持StartTime,EndTime，默认为StartTime。</p>
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 排序方式，包括升序：asc，降序：desc，默认为desc。
+	// <p>排序方式，包括升序：asc，降序：desc，默认为desc。</p>
 	OrderByType *string `json:"OrderByType,omitnil,omitempty" name:"OrderByType"`
 }
 
 type DescribeTasksRequest struct {
 	*tchttp.BaseRequest
 	
-	// 按照任务ID进行查询。其余云API中返回的FlowId和TaskId等价。
+	// <p>按照任务ID进行查询。其余云API中返回的FlowId和TaskId等价。</p>
 	TaskId *uint64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 按照数据库实例ID进行查询。
+	// <p>按照数据库实例ID进行查询。</p>
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
 
-	// 任务的最早开始时间，形如2024-08-23 00:00:00,默认只展示180天内的数据。
+	// <p>任务的最早开始时间，形如2024-08-23 00:00:00,默认只展示180天内的数据。</p>
 	MinStartTime *string `json:"MinStartTime,omitnil,omitempty" name:"MinStartTime"`
 
-	// 任务的最晚开始时间，形如2024-08-23 00:00:00，默认为当前时间。
+	// <p>任务的最晚开始时间，形如2024-08-23 00:00:00，默认为当前时间。</p>
 	MaxStartTime *string `json:"MaxStartTime,omitnil,omitempty" name:"MaxStartTime"`
 
-	// 每页显示数量，取值范围为1-100，默认为返回20条。
+	// <p>每页显示数量，取值范围为1-100，默认为返回20条。</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 数据偏移量，从0开始。
+	// <p>数据偏移量，从0开始。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 排序字段，支持StartTime,EndTime，默认为StartTime。
+	// <p>排序字段，支持StartTime,EndTime，默认为StartTime。</p>
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 排序方式，包括升序：asc，降序：desc，默认为desc。
+	// <p>排序方式，包括升序：asc，降序：desc，默认为desc。</p>
 	OrderByType *string `json:"OrderByType,omitnil,omitempty" name:"OrderByType"`
 }
 
@@ -6656,10 +6663,10 @@ func (r *DescribeTasksRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTasksResponseParams struct {
-	// 查询到的任务数量
+	// <p>查询到的任务数量</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 任务信息列表
+	// <p>任务信息列表</p>
 	TaskSet []*TaskSet `json:"TaskSet,omitnil,omitempty" name:"TaskSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8744,83 +8751,75 @@ func (r *ModifyDBInstanceSecurityGroupsResponse) FromJsonString(s string) error 
 
 // Predefined struct for user
 type ModifyDBInstanceSpecRequestParams struct {
-	// 实例ID，形如：postgres-6bwgamo3。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+	// <p>实例ID，形如：postgres-6bwgamo3。可通过<a href="https://cloud.tencent.com/document/api/409/16773">DescribeDBInstances</a>接口获取</p>
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
 
-	// 修改后的实例内存大小，单位GiB。
+	// <p>修改后的实例内存大小，单位GB。</p>
 	Memory *uint64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
-	// 修改后的实例磁盘大小，单位GiB。该参数的设置步长为10。
+	// <p>修改后的实例磁盘大小，单位GB。该参数的设置步长为10。</p>
 	Storage *uint64 `json:"Storage,omitnil,omitempty" name:"Storage"`
 
-	// 是否自动使用代金券：
-	// <li>0：否</li>
-	// <li>1：是</li>
-	// 默认值：0
+	// <p>是否自动使用代金券：</p><li>0：否</li><li>1：是</li>默认值：0
 	AutoVoucher *uint64 `json:"AutoVoucher,omitnil,omitempty" name:"AutoVoucher"`
 
-	// 代金券ID列表，目前仅支持指定一张代金券。
+	// <p>代金券ID列表，目前仅支持指定一张代金券。</p>
 	VoucherIds []*string `json:"VoucherIds,omitnil,omitempty" name:"VoucherIds"`
 
-	// 活动ID。
+	// <p>活动ID。</p>
 	ActivityId *uint64 `json:"ActivityId,omitnil,omitempty" name:"ActivityId"`
 
-	// 指定实例配置完成变更后的切换时间。
-	// <li>0：立即切换 </li>
-	// <li>1：指定时间切换</li>
-	// <li>2：维护时间窗口内</li>切换
-	// 默认值：0 
+	// <p>指定实例配置完成变更后的切换时间。</p><li>0：立即切换 </li><li>1：指定时间切换</li><li>2：维护时间窗口内</li>切换默认值：0
 	SwitchTag *uint64 `json:"SwitchTag,omitnil,omitempty" name:"SwitchTag"`
 
-	// 切换开始时间，时间格式：HH:MM:SS，例如：01:00:00。当SwitchTag为0或2时，该参数失效。
+	// <p>切换开始时间，时间格式：HH:MM:SS，例如：01:00:00。当SwitchTag为0或2时，该参数失效。</p>
 	SwitchStartTime *string `json:"SwitchStartTime,omitnil,omitempty" name:"SwitchStartTime"`
 
-	// 切换截止时间，时间格式：HH:MM:SS，例如：01:30:00。当SwitchTag为0或2时，该参数失效。
+	// <p>切换截止时间，时间格式：HH:MM:SS，例如：01:30:00。当SwitchTag为0或2时，该参数失效。</p>
 	SwitchEndTime *string `json:"SwitchEndTime,omitnil,omitempty" name:"SwitchEndTime"`
 
-	// 修改后的实例CPU大小，单位Core。不填写该参数时，默认根据Memory确定Cpu大小。如Memory为2，支持的规格有1核2GiB，则不传入Cpu时，Cpu默认为1。
+	// <p>修改后的实例CPU大小，单位Core。不填写该参数时，默认根据Memory确定Cpu大小。如Memory为2，支持的规格有1核2GB，则不传入Cpu时，Cpu默认为1。</p>
 	Cpu *uint64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
+
+	// <p>变配时同步修改的参数列表</p>
+	SyncModifyParams []*ParamEntry `json:"SyncModifyParams,omitnil,omitempty" name:"SyncModifyParams"`
 }
 
 type ModifyDBInstanceSpecRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID，形如：postgres-6bwgamo3。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+	// <p>实例ID，形如：postgres-6bwgamo3。可通过<a href="https://cloud.tencent.com/document/api/409/16773">DescribeDBInstances</a>接口获取</p>
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
 
-	// 修改后的实例内存大小，单位GiB。
+	// <p>修改后的实例内存大小，单位GB。</p>
 	Memory *uint64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
-	// 修改后的实例磁盘大小，单位GiB。该参数的设置步长为10。
+	// <p>修改后的实例磁盘大小，单位GB。该参数的设置步长为10。</p>
 	Storage *uint64 `json:"Storage,omitnil,omitempty" name:"Storage"`
 
-	// 是否自动使用代金券：
-	// <li>0：否</li>
-	// <li>1：是</li>
-	// 默认值：0
+	// <p>是否自动使用代金券：</p><li>0：否</li><li>1：是</li>默认值：0
 	AutoVoucher *uint64 `json:"AutoVoucher,omitnil,omitempty" name:"AutoVoucher"`
 
-	// 代金券ID列表，目前仅支持指定一张代金券。
+	// <p>代金券ID列表，目前仅支持指定一张代金券。</p>
 	VoucherIds []*string `json:"VoucherIds,omitnil,omitempty" name:"VoucherIds"`
 
-	// 活动ID。
+	// <p>活动ID。</p>
 	ActivityId *uint64 `json:"ActivityId,omitnil,omitempty" name:"ActivityId"`
 
-	// 指定实例配置完成变更后的切换时间。
-	// <li>0：立即切换 </li>
-	// <li>1：指定时间切换</li>
-	// <li>2：维护时间窗口内</li>切换
-	// 默认值：0 
+	// <p>指定实例配置完成变更后的切换时间。</p><li>0：立即切换 </li><li>1：指定时间切换</li><li>2：维护时间窗口内</li>切换默认值：0
 	SwitchTag *uint64 `json:"SwitchTag,omitnil,omitempty" name:"SwitchTag"`
 
-	// 切换开始时间，时间格式：HH:MM:SS，例如：01:00:00。当SwitchTag为0或2时，该参数失效。
+	// <p>切换开始时间，时间格式：HH:MM:SS，例如：01:00:00。当SwitchTag为0或2时，该参数失效。</p>
 	SwitchStartTime *string `json:"SwitchStartTime,omitnil,omitempty" name:"SwitchStartTime"`
 
-	// 切换截止时间，时间格式：HH:MM:SS，例如：01:30:00。当SwitchTag为0或2时，该参数失效。
+	// <p>切换截止时间，时间格式：HH:MM:SS，例如：01:30:00。当SwitchTag为0或2时，该参数失效。</p>
 	SwitchEndTime *string `json:"SwitchEndTime,omitnil,omitempty" name:"SwitchEndTime"`
 
-	// 修改后的实例CPU大小，单位Core。不填写该参数时，默认根据Memory确定Cpu大小。如Memory为2，支持的规格有1核2GiB，则不传入Cpu时，Cpu默认为1。
+	// <p>修改后的实例CPU大小，单位Core。不填写该参数时，默认根据Memory确定Cpu大小。如Memory为2，支持的规格有1核2GB，则不传入Cpu时，Cpu默认为1。</p>
 	Cpu *uint64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
+
+	// <p>变配时同步修改的参数列表</p>
+	SyncModifyParams []*ParamEntry `json:"SyncModifyParams,omitnil,omitempty" name:"SyncModifyParams"`
 }
 
 func (r *ModifyDBInstanceSpecRequest) ToJsonString() string {
@@ -8845,6 +8844,7 @@ func (r *ModifyDBInstanceSpecRequest) FromJsonString(s string) error {
 	delete(f, "SwitchStartTime")
 	delete(f, "SwitchEndTime")
 	delete(f, "Cpu")
+	delete(f, "SyncModifyParams")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDBInstanceSpecRequest has unknown keys!", "")
 	}
@@ -8853,10 +8853,10 @@ func (r *ModifyDBInstanceSpecRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyDBInstanceSpecResponseParams struct {
-	// 订单号。
+	// <p>订单号。</p>
 	DealName *string `json:"DealName,omitnil,omitempty" name:"DealName"`
 
-	// 冻结流水号。
+	// <p>冻结流水号。</p>
 	BillId *string `json:"BillId,omitnil,omitempty" name:"BillId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

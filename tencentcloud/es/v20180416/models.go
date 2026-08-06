@@ -7016,32 +7016,35 @@ type KibanaPublicAcl struct {
 }
 
 type KibanaView struct {
-	// Kibana节点IP
+	// <p>Kibana节点IP</p>
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
-	// 节点总磁盘大小
+	// <p>节点总磁盘大小</p>
 	DiskSize *int64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
 
-	// 磁盘使用率
+	// <p>磁盘使用率</p>
 	DiskUsage *float64 `json:"DiskUsage,omitnil,omitempty" name:"DiskUsage"`
 
-	// 节点内存大小
+	// <p>节点内存大小</p>
 	MemSize *int64 `json:"MemSize,omitnil,omitempty" name:"MemSize"`
 
-	// 内存使用率
+	// <p>内存使用率</p>
 	MemUsage *float64 `json:"MemUsage,omitnil,omitempty" name:"MemUsage"`
 
-	// 节点cpu个数
+	// <p>节点cpu个数</p>
 	CpuNum *int64 `json:"CpuNum,omitnil,omitempty" name:"CpuNum"`
 
-	// cpu使用率
+	// <p>cpu使用率</p>
 	CpuUsage *float64 `json:"CpuUsage,omitnil,omitempty" name:"CpuUsage"`
 
-	// 可用区
+	// <p>可用区</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// ts-0noqayxu-az6-hot-03222010-0
+	// <p>ts-0noqayxu-az6-hot-03222010-0</p>
 	NodeId *string `json:"NodeId,omitnil,omitempty" name:"NodeId"`
+
+	// <p>客户侧Ip信息</p>
+	UserIp *string `json:"UserIp,omitnil,omitempty" name:"UserIp"`
 }
 
 type LocalDiskInfo struct {

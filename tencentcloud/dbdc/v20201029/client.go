@@ -1515,6 +1515,62 @@ func (c *Client) IsolateDBCustomNodeWithContext(ctx context.Context, request *Is
     return
 }
 
+func NewModifyDBCustomClusterAttributesRequest() (request *ModifyDBCustomClusterAttributesRequest) {
+    request = &ModifyDBCustomClusterAttributesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dbdc", APIVersion, "ModifyDBCustomClusterAttributes")
+    
+    
+    return
+}
+
+func NewModifyDBCustomClusterAttributesResponse() (response *ModifyDBCustomClusterAttributesResponse) {
+    response = &ModifyDBCustomClusterAttributesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyDBCustomClusterAttributes
+// 该接口（ModifyDBCustomClusterAttributes）用于修改 DB Custom 集群的属性。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) ModifyDBCustomClusterAttributes(request *ModifyDBCustomClusterAttributesRequest) (response *ModifyDBCustomClusterAttributesResponse, err error) {
+    return c.ModifyDBCustomClusterAttributesWithContext(context.Background(), request)
+}
+
+// ModifyDBCustomClusterAttributes
+// 该接口（ModifyDBCustomClusterAttributes）用于修改 DB Custom 集群的属性。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) ModifyDBCustomClusterAttributesWithContext(ctx context.Context, request *ModifyDBCustomClusterAttributesRequest) (response *ModifyDBCustomClusterAttributesResponse, err error) {
+    if request == nil {
+        request = NewModifyDBCustomClusterAttributesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dbdc", APIVersion, "ModifyDBCustomClusterAttributes")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDBCustomClusterAttributes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDBCustomClusterAttributesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyDBCustomClusterNodeConfigRequest() (request *ModifyDBCustomClusterNodeConfigRequest) {
     request = &ModifyDBCustomClusterNodeConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},

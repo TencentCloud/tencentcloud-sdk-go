@@ -14990,53 +14990,52 @@ type RuleHealth struct {
 }
 
 type RuleInput struct {
-	// 转发规则的路径。长度限制为：1~200。
+	// <p>转发规则的路径。长度限制为：1~200。</p>
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
-	// 转发规则的域名。长度限制为：1~80。Domain和Domains只需要传一个，单域名规则传Domain，多域名规则传Domains。
+	// <p>转发规则的域名。长度限制为：1~80。Domain和Domains只需要传一个，单域名规则传Domain，多域名规则传Domains。</p>
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 会话保持时间。设置为0表示关闭会话保持，开启会话保持可取值30~86400，单位：秒。
+	// <p>会话保持时间。设置为0表示关闭会话保持，开启会话保持可取值30~86400，单位：秒。</p>
 	SessionExpireTime *int64 `json:"SessionExpireTime,omitnil,omitempty" name:"SessionExpireTime"`
 
-	// 健康检查信息。详情请参见：[健康检查](https://cloud.tencent.com/document/product/214/6097)
+	// <p>健康检查信息。详情请参见：<a href="https://cloud.tencent.com/document/product/214/6097">健康检查</a></p>
 	HealthCheck *HealthCheck `json:"HealthCheck,omitnil,omitempty" name:"HealthCheck"`
 
-	// 证书信息；此参数和MultiCertInfo不能同时传入。
+	// <p>证书信息；此参数和MultiCertInfo不能同时传入。</p>
 	Certificate *CertificateInput `json:"Certificate,omitnil,omitempty" name:"Certificate"`
 
-	// 规则的请求转发方式，可选值：WRR、LEAST_CONN、IP_HASH
-	// 分别表示按权重轮询、最小连接数、按IP哈希， 默认为 WRR。
+	// <p>规则的请求转发方式，可选值：WRR、LEAST_CONN、IP_HASH<br>分别表示按权重轮询、最小连接数、按IP哈希， 默认为 WRR。</p>
 	Scheduler *string `json:"Scheduler,omitnil,omitempty" name:"Scheduler"`
 
-	// 负载均衡与后端服务之间的转发协议，目前支持 HTTP/HTTPS/GRPC/GRPCS/TRPC，TRPC暂未对外开放，默认HTTP。
+	// <p>负载均衡与后端服务之间的转发协议，目前支持 HTTP/HTTPS/GRPC/GRPCS/TRPC，TRPC暂未对外开放，默认HTTP。</p>
 	ForwardType *string `json:"ForwardType,omitnil,omitempty" name:"ForwardType"`
 
-	// 是否将该域名设为默认域名，注意，一个监听器下只能设置一个默认域名。
+	// <p>是否将该域名设为默认域名，注意，一个监听器下只能设置一个默认域名。</p>
 	DefaultServer *bool `json:"DefaultServer,omitnil,omitempty" name:"DefaultServer"`
 
-	// 是否开启Http2，注意，只有HTTPS域名才能开启Http2。
+	// <p>是否开启Http2，注意，只有HTTPS域名才能开启Http2。</p>
 	Http2 *bool `json:"Http2,omitnil,omitempty" name:"Http2"`
 
-	// 后端目标类型，NODE表示绑定普通节点，TARGETGROUP表示绑定目标组
+	// <p>后端目标类型，NODE表示绑定普通节点，TARGETGROUP表示绑定目标组</p><p>枚举值：</p><ul><li>NODE： 绑定普通节点</li><li>TARGETGROUP： 绑定目标组 v1</li><li>TARGETGROUP-V2： 绑定目标组 v2</li></ul>
 	TargetType *string `json:"TargetType,omitnil,omitempty" name:"TargetType"`
 
-	// TRPC被调服务器路由，ForwardType为TRPC时必填。目前暂未对外开放。
+	// <p>TRPC被调服务器路由，ForwardType为TRPC时必填。目前暂未对外开放。</p>
 	TrpcCallee *string `json:"TrpcCallee,omitnil,omitempty" name:"TrpcCallee"`
 
-	// TRPC调用服务接口，ForwardType为TRPC时必填。目前暂未对外开放
+	// <p>TRPC调用服务接口，ForwardType为TRPC时必填。目前暂未对外开放</p>
 	TrpcFunc *string `json:"TrpcFunc,omitnil,omitempty" name:"TrpcFunc"`
 
-	// 是否开启QUIC，注意，只有HTTPS域名才能开启QUIC
+	// <p>是否开启QUIC，注意，只有HTTPS域名才能开启QUIC</p>
 	Quic *bool `json:"Quic,omitnil,omitempty" name:"Quic"`
 
-	// 转发规则的域名列表。每个域名的长度限制为：1~80。Domain和Domains只需要传一个，单域名规则传Domain，多域名规则传Domains。
+	// <p>转发规则的域名列表。每个域名的长度限制为：1~80。Domain和Domains只需要传一个，单域名规则传Domain，多域名规则传Domains。</p>
 	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
 
-	// 证书信息，支持同时传入不同算法类型的多本服务端证书；此参数和Certificate不能同时传入。
+	// <p>证书信息，支持同时传入不同算法类型的多本服务端证书；此参数和Certificate不能同时传入。</p>
 	MultiCertInfo *MultiCertInfo `json:"MultiCertInfo,omitnil,omitempty" name:"MultiCertInfo"`
 
-	// 自定义cookie名
+	// <p>自定义cookie名</p>
 	CookieName *string `json:"CookieName,omitnil,omitempty" name:"CookieName"`
 }
 

@@ -2772,6 +2772,84 @@ func (r *DeleteCloudNativeAPIGatewaySecretKeyResponse) FromJsonString(s string) 
 }
 
 // Predefined struct for user
+type DescribeCNGWServicesWithRoutesRequestParams struct {
+	// <p>网关ID</p>
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// <p>列表数量</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>列表 offset</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>过滤条件，多个过滤条件之间是与的关系，支持 name,upstreamType</p>
+	Filters []*ListFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type DescribeCNGWServicesWithRoutesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>网关ID</p>
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// <p>列表数量</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>列表 offset</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>过滤条件，多个过滤条件之间是与的关系，支持 name,upstreamType</p>
+	Filters []*ListFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *DescribeCNGWServicesWithRoutesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCNGWServicesWithRoutesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GatewayId")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCNGWServicesWithRoutesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCNGWServicesWithRoutesResponseParams struct {
+	// <p>服务及路由查询结果</p>
+	Result *KongServiceWithRoutes `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeCNGWServicesWithRoutesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCNGWServicesWithRoutesResponseParams `json:"Response"`
+}
+
+func (r *DescribeCNGWServicesWithRoutesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCNGWServicesWithRoutesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeCloudNativeAPIGatewayConsumerGroupRequestParams struct {
 	// <p>网关实例id</p>
 	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
@@ -4110,12 +4188,238 @@ type Filter struct {
 	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
 }
 
+type KVMapping struct {
+	// 键值映射的键
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 键值映射的值
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
 type KeyValue struct {
 	// 条件的Key
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
 	// 条件的Value
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type KongRoutePreview struct {
+	// <p>服务ID</p>
+	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// <p>服务名字</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>请求方法列表</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Methods []*string `json:"Methods,omitnil,omitempty" name:"Methods"`
+
+	// <p>路由Paths列表</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Paths []*string `json:"Paths,omitnil,omitempty" name:"Paths"`
+
+	// <p>路由Hosts列表</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Hosts []*string `json:"Hosts,omitnil,omitempty" name:"Hosts"`
+
+	// <p>协议列表</p>
+	Protocols []*string `json:"Protocols,omitnil,omitempty" name:"Protocols"`
+
+	// <p>是否保留Host头</p>
+	PreserveHost *bool `json:"PreserveHost,omitnil,omitempty" name:"PreserveHost"`
+
+	// <p>HTTPS重定向状态码</p>
+	HttpsRedirectStatusCode *int64 `json:"HttpsRedirectStatusCode,omitnil,omitempty" name:"HttpsRedirectStatusCode"`
+
+	// <p>是否去除路径前缀</p>
+	StripPath *bool `json:"StripPath,omitnil,omitempty" name:"StripPath"`
+
+	// <p>创建时间</p>
+	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
+
+	// <p>强制转换 https</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: ForceHttps is deprecated.
+	ForceHttps *bool `json:"ForceHttps,omitnil,omitempty" name:"ForceHttps"`
+
+	// <p>服务名</p>
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// <p>服务ID</p>
+	ServiceID *string `json:"ServiceID,omitnil,omitempty" name:"ServiceID"`
+
+	// <p>目的端口</p>
+	DestinationPorts []*uint64 `json:"DestinationPorts,omitnil,omitempty" name:"DestinationPorts"`
+
+	// <p>headers</p>
+	Headers []*KVMapping `json:"Headers,omitnil,omitempty" name:"Headers"`
+
+	// <p>是否缓存请求body，默认true</p>
+	RequestBuffering *bool `json:"RequestBuffering,omitnil,omitempty" name:"RequestBuffering"`
+
+	// <p>是否缓存响应body，默认true</p>
+	ResponseBuffering *bool `json:"ResponseBuffering,omitnil,omitempty" name:"ResponseBuffering"`
+
+	// <p>正则优先级</p>
+	RegexPriority *int64 `json:"RegexPriority,omitnil,omitempty" name:"RegexPriority"`
+
+	// <p>querystring参数</p>
+	QueryStringParameters []*KVMapping `json:"QueryStringParameters,omitnil,omitempty" name:"QueryStringParameters"`
+
+	// <p>路由来源</p>
+	RouteSource *string `json:"RouteSource,omitnil,omitempty" name:"RouteSource"`
+}
+
+type KongServicePreview struct {
+	// 服务ID
+	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// 创建时间
+	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
+
+	// 是否可编辑
+	Editable *bool `json:"Editable,omitnil,omitempty" name:"Editable"`
+
+	// 服务名字
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 请求路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
+
+	// 标签
+	Tags []*string `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 后端配置
+	UpstreamInfo *KongUpstreamInfo `json:"UpstreamInfo,omitnil,omitempty" name:"UpstreamInfo"`
+
+	// 后端类型
+	UpstreamType *string `json:"UpstreamType,omitnil,omitempty" name:"UpstreamType"`
+}
+
+type KongServiceRoute struct {
+	// <p>服务信息</p>
+	Service *KongServicePreview `json:"Service,omitnil,omitempty" name:"Service"`
+
+	// <p>路由总数</p>
+	RouteTotalCount *int64 `json:"RouteTotalCount,omitnil,omitempty" name:"RouteTotalCount"`
+
+	// <p>是否还有更多路由</p>
+	RouteHasMore *bool `json:"RouteHasMore,omitnil,omitempty" name:"RouteHasMore"`
+
+	// <p>路由列表</p>
+	Routes []*KongRoutePreview `json:"Routes,omitnil,omitempty" name:"Routes"`
+}
+
+type KongServiceWithRoutes struct {
+	// 服务及路由列表
+	ServiceList []*KongServiceRoute `json:"ServiceList,omitnil,omitempty" name:"ServiceList"`
+
+	// 总数
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+}
+
+type KongTarget struct {
+	// 目标主机地址
+	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
+
+	// 端口
+	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
+
+	// 权重
+	Weight *int64 `json:"Weight,omitnil,omitempty" name:"Weight"`
+
+	// 创建时间
+	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
+
+	// CVM实例ID
+	CvmInstanceId *string `json:"CvmInstanceId,omitnil,omitempty" name:"CvmInstanceId"`
+
+	// CVM实例名称
+	CvmInstanceName *string `json:"CvmInstanceName,omitnil,omitempty" name:"CvmInstanceName"`
+
+	// 健康状态
+	Health *string `json:"Health,omitnil,omitempty" name:"Health"`
+
+	// Target的来源
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// target标签
+	Tags []*string `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
+type KongUpstreamInfo struct {
+	// 负载均衡算法，默认为 round-robin，还支持 least-connections，consisten_hashing
+	Algorithm *string `json:"Algorithm,omitnil,omitempty" name:"Algorithm"`
+
+	// CVM弹性伸缩组端口
+	AutoScalingCvmPort *uint64 `json:"AutoScalingCvmPort,omitnil,omitempty" name:"AutoScalingCvmPort"`
+
+	// CVM弹性伸缩组ID
+	AutoScalingGroupID *string `json:"AutoScalingGroupID,omitnil,omitempty" name:"AutoScalingGroupID"`
+
+	// CVM弹性伸缩组生命周期挂钩状态
+	AutoScalingHookStatus *string `json:"AutoScalingHookStatus,omitnil,omitempty" name:"AutoScalingHookStatus"`
+
+	// CVM弹性伸缩组使用的CVM TAT命令状态
+	AutoScalingTatCmdStatus *string `json:"AutoScalingTatCmdStatus,omitnil,omitempty" name:"AutoScalingTatCmdStatus"`
+
+	// upstream健康状态HEALTHY（健康）, UNHEALTHY（异常）, HEALTHCHECKS_OFF（未开启）和NONE（不支持健康检查）
+	HealthStatus *string `json:"HealthStatus,omitnil,omitempty" name:"HealthStatus"`
+
+	// IP或域名
+	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
+
+	// 命名空间
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+
+	// 端口
+	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
+
+	// 精确的服务来源类型，新建服务来源时候传入的类型
+	RealSourceType *string `json:"RealSourceType,omitnil,omitempty" name:"RealSourceType"`
+
+	// 云函数是否开启CAM鉴权，不填时默认为开启(true)
+	ScfCamAuthEnable *bool `json:"ScfCamAuthEnable,omitnil,omitempty" name:"ScfCamAuthEnable"`
+
+	// 云函数是否开启Base64编码，默认为false
+	ScfIsBase64Encoded *bool `json:"ScfIsBase64Encoded,omitnil,omitempty" name:"ScfIsBase64Encoded"`
+
+	// 云函数是否开启响应集成，默认为false
+	ScfIsIntegratedResponse *bool `json:"ScfIsIntegratedResponse,omitnil,omitempty" name:"ScfIsIntegratedResponse"`
+
+	// SCF函数名
+	ScfLambdaName *string `json:"ScfLambdaName,omitnil,omitempty" name:"ScfLambdaName"`
+
+	// SCF函数版本
+	ScfLambdaQualifier *string `json:"ScfLambdaQualifier,omitnil,omitempty" name:"ScfLambdaQualifier"`
+
+	// SCF函数命名空间
+	ScfNamespace *string `json:"ScfNamespace,omitnil,omitempty" name:"ScfNamespace"`
+
+	// SCF函数类型
+	ScfType *string `json:"ScfType,omitnil,omitempty" name:"ScfType"`
+
+	// 服务（注册中心或Kubernetes中的服务）名字
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// 冷启动时间，单位秒
+	SlowStart *int64 `json:"SlowStart,omitnil,omitempty" name:"SlowStart"`
+
+	// 服务来源ID
+	SourceID *string `json:"SourceID,omitnil,omitempty" name:"SourceID"`
+
+	// 服务来源的名字
+	SourceName *string `json:"SourceName,omitnil,omitempty" name:"SourceName"`
+
+	// 服务来源类型
+	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
+
+	// 服务后端类型是IPList时提供
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Targets []*KongTarget `json:"Targets,omitnil,omitempty" name:"Targets"`
 }
 
 type ListCloudNativeAPIGatewayLLMModelAPI struct {
@@ -4132,6 +4436,14 @@ type ListCloudNativeAPIGatewayLLMModelService struct {
 
 	// 模型服务列表。
 	DataList []*CloudNativeAPIGatewayLLMModelService `json:"DataList,omitnil,omitempty" name:"DataList"`
+}
+
+type ListFilter struct {
+	// 过滤字段
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 过滤值
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 // Predefined struct for user

@@ -1177,6 +1177,44 @@ type ConfigRule struct {
 	ManageTriggerType []*string `json:"ManageTriggerType,omitnil,omitempty" name:"ManageTriggerType"`
 }
 
+type ConfigRuleResourceEvaluationResult struct {
+	// 规则ID
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// 规则名称
+	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
+
+	// 规则身份标识
+	RuleIdentifier *string `json:"RuleIdentifier,omitnil,omitempty" name:"RuleIdentifier"`
+
+	// 规则描述
+	RuleDescription *string `json:"RuleDescription,omitnil,omitempty" name:"RuleDescription"`
+
+	// 规则归属账号
+	RuleOwnerId *int64 `json:"RuleOwnerId,omitnil,omitempty" name:"RuleOwnerId"`
+
+	// 规则风险等级
+	RuleRiskLevel *int64 `json:"RuleRiskLevel,omitnil,omitempty" name:"RuleRiskLevel"`
+
+	// 资源ID
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// 资源类型
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// 资源名称
+	ResourceName *string `json:"ResourceName,omitnil,omitempty" name:"ResourceName"`
+
+	// 资源地域
+	ResourceRegion *string `json:"ResourceRegion,omitnil,omitempty" name:"ResourceRegion"`
+
+	// 资源标签
+	ResourceTags []*Tag `json:"ResourceTags,omitnil,omitempty" name:"ResourceTags"`
+
+	// 合规详情
+	Annotation *Annotation `json:"Annotation,omitnil,omitempty" name:"Annotation"`
+}
+
 type Control struct {
 	// <p>规则编号</p>
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
@@ -3077,6 +3115,80 @@ func (r *ListAggregateConfigRuleEvaluationResultsResponse) FromJsonString(s stri
 }
 
 // Predefined struct for user
+type ListAggregateConfigRuleResourceEvaluationResultsRequestParams struct {
+	// <p>账号组Id</p>
+	AccountGroupId *string `json:"AccountGroupId,omitnil,omitempty" name:"AccountGroupId"`
+
+	// <p>返回数量，最大值1000，不填写返回全部</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>偏移量，默认为0</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+type ListAggregateConfigRuleResourceEvaluationResultsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>账号组Id</p>
+	AccountGroupId *string `json:"AccountGroupId,omitnil,omitempty" name:"AccountGroupId"`
+
+	// <p>返回数量，最大值1000，不填写返回全部</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>偏移量，默认为0</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+func (r *ListAggregateConfigRuleResourceEvaluationResultsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListAggregateConfigRuleResourceEvaluationResultsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AccountGroupId")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListAggregateConfigRuleResourceEvaluationResultsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListAggregateConfigRuleResourceEvaluationResultsResponseParams struct {
+	// <p>配置规则资源评估结果列表</p>
+	Items []*ConfigRuleResourceEvaluationResult `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// <p>总数</p>
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListAggregateConfigRuleResourceEvaluationResultsResponse struct {
+	*tchttp.BaseResponse
+	Response *ListAggregateConfigRuleResourceEvaluationResultsResponseParams `json:"Response"`
+}
+
+func (r *ListAggregateConfigRuleResourceEvaluationResultsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListAggregateConfigRuleResourceEvaluationResultsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ListAggregateConfigRulesRequestParams struct {
 	// <p>每页限制</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
@@ -3619,6 +3731,73 @@ func (r *ListConfigRuleEvaluationResultsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ListConfigRuleEvaluationResultsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListConfigRuleResourceEvaluationResultsRequestParams struct {
+	// <p>返回数量，最大值1000，不填写返回全部</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>偏移量，默认为0</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+type ListConfigRuleResourceEvaluationResultsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>返回数量，最大值1000，不填写返回全部</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>偏移量，默认为0</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+func (r *ListConfigRuleResourceEvaluationResultsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListConfigRuleResourceEvaluationResultsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListConfigRuleResourceEvaluationResultsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListConfigRuleResourceEvaluationResultsResponseParams struct {
+	// <p>配置规则资源评估结果列表</p>
+	Items []*ConfigRuleResourceEvaluationResult `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// <p>总数</p>
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListConfigRuleResourceEvaluationResultsResponse struct {
+	*tchttp.BaseResponse
+	Response *ListConfigRuleResourceEvaluationResultsResponseParams `json:"Response"`
+}
+
+func (r *ListConfigRuleResourceEvaluationResultsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListConfigRuleResourceEvaluationResultsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

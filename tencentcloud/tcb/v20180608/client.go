@@ -2819,6 +2819,60 @@ func (c *Client) DescribeCloudBaseBuildServiceWithContext(ctx context.Context, r
     return
 }
 
+func NewDescribeCloudBaseRunBuildLogRequest() (request *DescribeCloudBaseRunBuildLogRequest) {
+    request = &DescribeCloudBaseRunBuildLogRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeCloudBaseRunBuildLog")
+    
+    
+    return
+}
+
+func NewDescribeCloudBaseRunBuildLogResponse() (response *DescribeCloudBaseRunBuildLogResponse) {
+    response = &DescribeCloudBaseRunBuildLogResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCloudBaseRunBuildLog
+// 查询构建日志
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeCloudBaseRunBuildLog(request *DescribeCloudBaseRunBuildLogRequest) (response *DescribeCloudBaseRunBuildLogResponse, err error) {
+    return c.DescribeCloudBaseRunBuildLogWithContext(context.Background(), request)
+}
+
+// DescribeCloudBaseRunBuildLog
+// 查询构建日志
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeCloudBaseRunBuildLogWithContext(ctx context.Context, request *DescribeCloudBaseRunBuildLogRequest) (response *DescribeCloudBaseRunBuildLogResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudBaseRunBuildLogRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeCloudBaseRunBuildLog")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCloudBaseRunBuildLog require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCloudBaseRunBuildLogResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCloudBaseRunServerVersionRequest() (request *DescribeCloudBaseRunServerVersionRequest) {
     request = &DescribeCloudBaseRunServerVersionRequest{
         BaseRequest: &tchttp.BaseRequest{},

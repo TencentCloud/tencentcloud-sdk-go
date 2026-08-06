@@ -242,6 +242,10 @@ type DataScore struct {
 
 	// <p>风险标签</p>
 	RiskLabels []*RiskLabel `json:"RiskLabels,omitnil,omitempty" name:"RiskLabels"`
+
+	// <p>综合风险分数。</p><p>取值范围：[1, 1000]</p><p>数值越大，风险越大。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RiskScore *int64 `json:"RiskScore,omitnil,omitempty" name:"RiskScore"`
 }
 
 type Decision struct {
@@ -279,6 +283,12 @@ type Device struct {
 
 	// <p>SDK版本</p>
 	SdkBuildVersion *string `json:"SdkBuildVersion,omitnil,omitempty" name:"SdkBuildVersion"`
+
+	// <p>验签token，验签功能启用请联系我们。</p>
+	SignToken *string `json:"SignToken,omitnil,omitempty" name:"SignToken"`
+
+	// <p>token生成时间戳，毫秒级。</p>
+	TokenTime *string `json:"TokenTime,omitnil,omitempty" name:"TokenTime"`
 }
 
 type Environment struct {
