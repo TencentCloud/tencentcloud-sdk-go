@@ -1,7 +1,6 @@
 package common
 
 import (
-	"fmt"
 	"net"
 	"net/http"
 	"reflect"
@@ -33,7 +32,7 @@ func (c *Client) sendWithNetworkFailureRetry(req *http.Request, retryable bool) 
 			}
 		}
 
-		resp, err = c.sendHttp(req)
+		resp, err = c.sendWithEndpointFailover(req)
 
 		// retry when error occurred and retryable and not the last retry
 		// should not sleep on last retry even if it's retryable
@@ -50,8 +49,7 @@ func (c *Client) sendWithNetworkFailureRetry(req *http.Request, retryable bool) 
 		}
 
 		if err != nil {
-			msg := fmt.Sprintf("Fail to get response because %s", err)
-			err = errors.NewTencentCloudSDKError("ClientError.NetworkError", msg, "")
+			err = errors.NewTencentCloudSDKErrorWithCause("ClientError.NetworkError", "Fail to get response", "", err)
 		}
 
 		return resp, err
