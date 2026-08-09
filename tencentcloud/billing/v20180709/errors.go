@@ -59,6 +59,9 @@ const (
 	// 套餐订单需一起购买。
 	FAILEDOPERATION_NEEDPAYTOGETHER = "FailedOperation.NeedPayTogether"
 
+	// 不允许进行退款。
+	FAILEDOPERATION_NOTALLOWTOREFUND = "FailedOperation.NotAllowToRefund"
+
 	// 数量超过最大限制。
 	FAILEDOPERATION_NUMLIMITERROR = "FailedOperation.NumLimitError"
 
@@ -73,6 +76,9 @@ const (
 
 	// 查询数据失败
 	FAILEDOPERATION_QUERYDBFAILED = "FailedOperation.QueryDBFailed"
+
+	// 退款通用错误。
+	FAILEDOPERATION_RETURNCOMMONERROR = "FailedOperation.ReturnCommonError"
 
 	// 汇总数据正在构建中，请稍后再试。
 	FAILEDOPERATION_SUMMARYDATANOTREADY = "FailedOperation.SummaryDataNotReady"

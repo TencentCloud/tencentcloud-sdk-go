@@ -1432,6 +1432,197 @@ func (r *CreateJobResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateMetaDatabaseRequestParams struct {
+	// 无
+	CatalogId *int64 `json:"CatalogId,omitnil,omitempty" name:"CatalogId"`
+
+	// 库名
+	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
+
+	// 备注
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// 工作空间 SerialId
+	WorkSpaceId *string `json:"WorkSpaceId,omitnil,omitempty" name:"WorkSpaceId"`
+}
+
+type CreateMetaDatabaseRequest struct {
+	*tchttp.BaseRequest
+	
+	// 无
+	CatalogId *int64 `json:"CatalogId,omitnil,omitempty" name:"CatalogId"`
+
+	// 库名
+	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
+
+	// 备注
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// 工作空间 SerialId
+	WorkSpaceId *string `json:"WorkSpaceId,omitnil,omitempty" name:"WorkSpaceId"`
+}
+
+func (r *CreateMetaDatabaseRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateMetaDatabaseRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CatalogId")
+	delete(f, "DatabaseName")
+	delete(f, "Comment")
+	delete(f, "WorkSpaceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateMetaDatabaseRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateMetaDatabaseResponseParams struct {
+	// 无
+	DatabaseId *int64 `json:"DatabaseId,omitnil,omitempty" name:"DatabaseId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateMetaDatabaseResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateMetaDatabaseResponseParams `json:"Response"`
+}
+
+func (r *CreateMetaDatabaseResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateMetaDatabaseResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateMetaTableRequestParams struct {
+	// <p>Catalog Id</p>
+	CatalogId *int64 `json:"CatalogId,omitnil,omitempty" name:"CatalogId"`
+
+	// <p>库Id</p>
+	DatabaseId *int64 `json:"DatabaseId,omitnil,omitempty" name:"DatabaseId"`
+
+	// <p>建表语句</p><p>参数格式：需要base64加密</p>
+	SqlCode *string `json:"SqlCode,omitnil,omitempty" name:"SqlCode"`
+
+	// <p>备注</p>
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// <p>集群id</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// <p>引用资源</p>
+	ResourceRefs []*ResourceRef `json:"ResourceRefs,omitnil,omitempty" name:"ResourceRefs"`
+
+	// <p>Flink版本</p>
+	FlinkVersion *string `json:"FlinkVersion,omitnil,omitempty" name:"FlinkVersion"`
+
+	// <p>工作空间 SerialId</p>
+	WorkSpaceId *string `json:"WorkSpaceId,omitnil,omitempty" name:"WorkSpaceId"`
+
+	// <p>异步id</p>
+	AsyncTaskId *string `json:"AsyncTaskId,omitnil,omitempty" name:"AsyncTaskId"`
+}
+
+type CreateMetaTableRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>Catalog Id</p>
+	CatalogId *int64 `json:"CatalogId,omitnil,omitempty" name:"CatalogId"`
+
+	// <p>库Id</p>
+	DatabaseId *int64 `json:"DatabaseId,omitnil,omitempty" name:"DatabaseId"`
+
+	// <p>建表语句</p><p>参数格式：需要base64加密</p>
+	SqlCode *string `json:"SqlCode,omitnil,omitempty" name:"SqlCode"`
+
+	// <p>备注</p>
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// <p>集群id</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// <p>引用资源</p>
+	ResourceRefs []*ResourceRef `json:"ResourceRefs,omitnil,omitempty" name:"ResourceRefs"`
+
+	// <p>Flink版本</p>
+	FlinkVersion *string `json:"FlinkVersion,omitnil,omitempty" name:"FlinkVersion"`
+
+	// <p>工作空间 SerialId</p>
+	WorkSpaceId *string `json:"WorkSpaceId,omitnil,omitempty" name:"WorkSpaceId"`
+
+	// <p>异步id</p>
+	AsyncTaskId *string `json:"AsyncTaskId,omitnil,omitempty" name:"AsyncTaskId"`
+}
+
+func (r *CreateMetaTableRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateMetaTableRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CatalogId")
+	delete(f, "DatabaseId")
+	delete(f, "SqlCode")
+	delete(f, "Comment")
+	delete(f, "ClusterId")
+	delete(f, "ResourceRefs")
+	delete(f, "FlinkVersion")
+	delete(f, "WorkSpaceId")
+	delete(f, "AsyncTaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateMetaTableRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateMetaTableResponseParams struct {
+	// <p>表Id</p>
+	TableId *int64 `json:"TableId,omitnil,omitempty" name:"TableId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateMetaTableResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateMetaTableResponseParams `json:"Response"`
+}
+
+func (r *CreateMetaTableResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateMetaTableResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateOceanusClusterRequestParams struct {
 	// <p>集群名称</p><p>入参限制：支持1-50个英文、汉字、数字、连接线-或下划线_</p>
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
@@ -5221,6 +5412,95 @@ func (r *ModifyJobResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyMetaTableRequestParams struct {
+	// <p>集群唯一id</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// <p>元数据表唯一id</p>
+	TableId *string `json:"TableId,omitnil,omitempty" name:"TableId"`
+
+	// <p>SQL</p><p>参数格式：base64加密</p>
+	SqlCode *string `json:"SqlCode,omitnil,omitempty" name:"SqlCode"`
+
+	// <p>Flink版本</p>
+	FlinkVersion *string `json:"FlinkVersion,omitnil,omitempty" name:"FlinkVersion"`
+
+	// <p>空间唯一id</p>
+	WorkSpaceId *string `json:"WorkSpaceId,omitnil,omitempty" name:"WorkSpaceId"`
+
+	// <p>备注</p>
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+}
+
+type ModifyMetaTableRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>集群唯一id</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// <p>元数据表唯一id</p>
+	TableId *string `json:"TableId,omitnil,omitempty" name:"TableId"`
+
+	// <p>SQL</p><p>参数格式：base64加密</p>
+	SqlCode *string `json:"SqlCode,omitnil,omitempty" name:"SqlCode"`
+
+	// <p>Flink版本</p>
+	FlinkVersion *string `json:"FlinkVersion,omitnil,omitempty" name:"FlinkVersion"`
+
+	// <p>空间唯一id</p>
+	WorkSpaceId *string `json:"WorkSpaceId,omitnil,omitempty" name:"WorkSpaceId"`
+
+	// <p>备注</p>
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+}
+
+func (r *ModifyMetaTableRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyMetaTableRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "TableId")
+	delete(f, "SqlCode")
+	delete(f, "FlinkVersion")
+	delete(f, "WorkSpaceId")
+	delete(f, "Remark")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyMetaTableRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyMetaTableResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyMetaTableResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyMetaTableResponseParams `json:"Response"`
+}
+
+func (r *ModifyMetaTableResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyMetaTableResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyWorkSpaceRequestParams struct {
 	// 工作空间 SerialId
 	WorkSpaceId *string `json:"WorkSpaceId,omitnil,omitempty" name:"WorkSpaceId"`
@@ -5862,26 +6142,26 @@ func (r *RunJobsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RunSqlGatewayStatementRequestParams struct {
-	// 集群ID
+	// <p>集群ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 需要执行的sql，该sql会被Sql Gateway执行，当前支持的是paimon修改需求，因此主要是DDL语句
+	// <p>需要执行的sql，需要对其进行base64编译后传入</p>
 	Sql *string `json:"Sql,omitnil,omitempty" name:"Sql"`
 
-	// Sql Gateway会话ID，可不填，如果不填则会自动创建一个会话ID，每个会话ID都有一个存活时间，测试环境为10分钟，线上默认是30分钟
+	// <p>Sql Gateway会话ID，可不填，如果不填则会自动创建一个会话ID，每个会话ID都有一个存活时间，测试环境为10分钟，线上默认是30分钟</p>
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 }
 
 type RunSqlGatewayStatementRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群ID
+	// <p>集群ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 需要执行的sql，该sql会被Sql Gateway执行，当前支持的是paimon修改需求，因此主要是DDL语句
+	// <p>需要执行的sql，需要对其进行base64编译后传入</p>
 	Sql *string `json:"Sql,omitnil,omitempty" name:"Sql"`
 
-	// Sql Gateway会话ID，可不填，如果不填则会自动创建一个会话ID，每个会话ID都有一个存活时间，测试环境为10分钟，线上默认是30分钟
+	// <p>Sql Gateway会话ID，可不填，如果不填则会自动创建一个会话ID，每个会话ID都有一个存活时间，测试环境为10分钟，线上默认是30分钟</p>
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 }
 
@@ -5908,14 +6188,14 @@ func (r *RunSqlGatewayStatementRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RunSqlGatewayStatementResponseParams struct {
-	// 错误信息
+	// <p>错误信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorMessage []*string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
 
-	// 会话id，若入参未传，则返回自动创建的会话id，若入参已经传递，则返回值与原传入值一致
+	// <p>会话id，若入参未传，则返回自动创建的会话id，若入参已经传递，则返回值与原传入值一致</p>
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 
-	// 返回执行id，可以根据该执行id和会话id获取执行结果
+	// <p>返回执行id，可以根据该执行id和会话id获取执行结果</p>
 	OperationHandleId *string `json:"OperationHandleId,omitnil,omitempty" name:"OperationHandleId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

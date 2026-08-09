@@ -529,6 +529,134 @@ func (c *Client) CreateJobConfigWithContext(ctx context.Context, request *Create
     return
 }
 
+func NewCreateMetaDatabaseRequest() (request *CreateMetaDatabaseRequest) {
+    request = &CreateMetaDatabaseRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("oceanus", APIVersion, "CreateMetaDatabase")
+    
+    
+    return
+}
+
+func NewCreateMetaDatabaseResponse() (response *CreateMetaDatabaseResponse) {
+    response = &CreateMetaDatabaseResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateMetaDatabase
+// 创建元数据库
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.DB"
+//  INVALIDPARAMETERVALUE_METADATABASEEXISTED = "InvalidParameterValue.MetaDatabaseExisted"
+//  INVALIDPARAMETERVALUE_METADATABASENAME = "InvalidParameterValue.MetaDatabaseName"
+//  LIMITEXCEEDED_METADATABASE = "LimitExceeded.MetaDatabase"
+//  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
+func (c *Client) CreateMetaDatabase(request *CreateMetaDatabaseRequest) (response *CreateMetaDatabaseResponse, err error) {
+    return c.CreateMetaDatabaseWithContext(context.Background(), request)
+}
+
+// CreateMetaDatabase
+// 创建元数据库
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.DB"
+//  INVALIDPARAMETERVALUE_METADATABASEEXISTED = "InvalidParameterValue.MetaDatabaseExisted"
+//  INVALIDPARAMETERVALUE_METADATABASENAME = "InvalidParameterValue.MetaDatabaseName"
+//  LIMITEXCEEDED_METADATABASE = "LimitExceeded.MetaDatabase"
+//  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
+func (c *Client) CreateMetaDatabaseWithContext(ctx context.Context, request *CreateMetaDatabaseRequest) (response *CreateMetaDatabaseResponse, err error) {
+    if request == nil {
+        request = NewCreateMetaDatabaseRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "oceanus", APIVersion, "CreateMetaDatabase")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateMetaDatabase require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateMetaDatabaseResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateMetaTableRequest() (request *CreateMetaTableRequest) {
+    request = &CreateMetaTableRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("oceanus", APIVersion, "CreateMetaTable")
+    
+    
+    return
+}
+
+func NewCreateMetaTableResponse() (response *CreateMetaTableResponse) {
+    response = &CreateMetaTableResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateMetaTable
+// 创建元数据表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHECKDDLGRAMMAR = "FailedOperation.CheckDdlGrammar"
+//  FAILEDOPERATION_DDLPARSEFAILURE = "FailedOperation.DDLParseFailure"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.DB"
+//  INVALIDPARAMETERVALUE_METATABLEEXISTED = "InvalidParameterValue.MetaTableExisted"
+//  LIMITEXCEEDED_METATABLE = "LimitExceeded.MetaTable"
+//  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
+func (c *Client) CreateMetaTable(request *CreateMetaTableRequest) (response *CreateMetaTableResponse, err error) {
+    return c.CreateMetaTableWithContext(context.Background(), request)
+}
+
+// CreateMetaTable
+// 创建元数据表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHECKDDLGRAMMAR = "FailedOperation.CheckDdlGrammar"
+//  FAILEDOPERATION_DDLPARSEFAILURE = "FailedOperation.DDLParseFailure"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.DB"
+//  INVALIDPARAMETERVALUE_METATABLEEXISTED = "InvalidParameterValue.MetaTableExisted"
+//  LIMITEXCEEDED_METATABLE = "LimitExceeded.MetaTable"
+//  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
+func (c *Client) CreateMetaTableWithContext(ctx context.Context, request *CreateMetaTableRequest) (response *CreateMetaTableResponse, err error) {
+    if request == nil {
+        request = NewCreateMetaTableRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "oceanus", APIVersion, "CreateMetaTable")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateMetaTable require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateMetaTableResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateOceanusClusterRequest() (request *CreateOceanusClusterRequest) {
     request = &CreateOceanusClusterRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2797,6 +2925,74 @@ func (c *Client) ModifyJobWithContext(ctx context.Context, request *ModifyJobReq
     request.SetContext(ctx)
     
     response = NewModifyJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyMetaTableRequest() (request *ModifyMetaTableRequest) {
+    request = &ModifyMetaTableRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("oceanus", APIVersion, "ModifyMetaTable")
+    
+    
+    return
+}
+
+func NewModifyMetaTableResponse() (response *ModifyMetaTableResponse) {
+    response = &ModifyMetaTableResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyMetaTable
+// 修改元数据表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLUSTERNOTFOUND = "FailedOperation.ClusterNotFound"
+//  FAILEDOPERATION_DDLPARSEFAILURE = "FailedOperation.DDLParseFailure"
+//  FAILEDOPERATION_MODIFYCONNECTORFAILEDOPERATION = "FailedOperation.ModifyConnectorFailedOperation"
+//  FAILEDOPERATION_MODIFYTABLEFAILEDOPERATION = "FailedOperation.ModifyTableFailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_UNSUPPORTEDOPTIONS = "InvalidParameter.UnsupportedOptions"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+//  RESOURCENOTFOUND_METADATANOTFOUND = "ResourceNotFound.MetaDataNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ModifyMetaTable(request *ModifyMetaTableRequest) (response *ModifyMetaTableResponse, err error) {
+    return c.ModifyMetaTableWithContext(context.Background(), request)
+}
+
+// ModifyMetaTable
+// 修改元数据表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLUSTERNOTFOUND = "FailedOperation.ClusterNotFound"
+//  FAILEDOPERATION_DDLPARSEFAILURE = "FailedOperation.DDLParseFailure"
+//  FAILEDOPERATION_MODIFYCONNECTORFAILEDOPERATION = "FailedOperation.ModifyConnectorFailedOperation"
+//  FAILEDOPERATION_MODIFYTABLEFAILEDOPERATION = "FailedOperation.ModifyTableFailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_UNSUPPORTEDOPTIONS = "InvalidParameter.UnsupportedOptions"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+//  RESOURCENOTFOUND_METADATANOTFOUND = "ResourceNotFound.MetaDataNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ModifyMetaTableWithContext(ctx context.Context, request *ModifyMetaTableRequest) (response *ModifyMetaTableResponse, err error) {
+    if request == nil {
+        request = NewModifyMetaTableRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "oceanus", APIVersion, "ModifyMetaTable")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyMetaTable require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyMetaTableResponse()
     err = c.Send(request, response)
     return
 }
