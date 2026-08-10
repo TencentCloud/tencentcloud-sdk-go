@@ -151,15 +151,28 @@ type AgentAppServiceVO struct {
 	AgentCredentialVO *DescribeAgentCredentialResp `json:"AgentCredentialVO,omitnil,omitempty" name:"AgentCredentialVO"`
 }
 
+type AgentCredentialApiKeyDTO struct {
+	// <p>API Key</p>
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
 type AgentCredentialContentDTO struct {
-	// 如果认证类型为sts时，该项必填
+	// <p>如果认证类型为sts时，该项必填</p>
 	STSSystem *string `json:"STSSystem,omitnil,omitempty" name:"STSSystem"`
 
-	// 如果认证类型为sts时，该项必填
+	// <p>如果认证类型为sts时，该项必填</p>
 	STSService *string `json:"STSService,omitnil,omitempty" name:"STSService"`
 
-	// 如果认证类型为reqKey时，该项必填
+	// <p>如果认证类型为reqKey时，该项必填</p>
 	Headers []*AgentCredentialContentHeaderDTO `json:"Headers,omitnil,omitempty" name:"Headers"`
+
+	// <p>如果认证类型为apiKey时，该项必填</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApiKeys []*AgentCredentialApiKeyDTO `json:"ApiKeys,omitnil,omitempty" name:"ApiKeys"`
+
+	// <p>容错策略，仅Type为apiKey时支持</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FaultTolerance *FaultToleranceDTO `json:"FaultTolerance,omitnil,omitempty" name:"FaultTolerance"`
 }
 
 type AgentCredentialContentHeaderDTO struct {
@@ -1020,6 +1033,15 @@ type CreateModelServiceRequestParams struct {
 
 	// <p>自定义模型协议配置</p>
 	RawCustomModelProtocolConfig *string `json:"RawCustomModelProtocolConfig,omitnil,omitempty" name:"RawCustomModelProtocolConfig"`
+
+	// <p>路由策略</p><p>枚举值：</p><ul><li>weight： 权重</li><li>taskComplexity： 任务复杂度</li><li>tokenLength： token长度</li></ul>
+	RouteStrategy *string `json:"RouteStrategy,omitnil,omitempty" name:"RouteStrategy"`
+
+	// <p>token长度路由策略</p>
+	TokenLengthRoute []*TokenLengthRouteDTO `json:"TokenLengthRoute,omitnil,omitempty" name:"TokenLengthRoute"`
+
+	// <p>任务复杂度路由策略</p>
+	TaskComplexityRoute *TaskComplexityRouteDTO `json:"TaskComplexityRoute,omitnil,omitempty" name:"TaskComplexityRoute"`
 }
 
 type CreateModelServiceRequest struct {
@@ -1108,6 +1130,15 @@ type CreateModelServiceRequest struct {
 
 	// <p>自定义模型协议配置</p>
 	RawCustomModelProtocolConfig *string `json:"RawCustomModelProtocolConfig,omitnil,omitempty" name:"RawCustomModelProtocolConfig"`
+
+	// <p>路由策略</p><p>枚举值：</p><ul><li>weight： 权重</li><li>taskComplexity： 任务复杂度</li><li>tokenLength： token长度</li></ul>
+	RouteStrategy *string `json:"RouteStrategy,omitnil,omitempty" name:"RouteStrategy"`
+
+	// <p>token长度路由策略</p>
+	TokenLengthRoute []*TokenLengthRouteDTO `json:"TokenLengthRoute,omitnil,omitempty" name:"TokenLengthRoute"`
+
+	// <p>任务复杂度路由策略</p>
+	TaskComplexityRoute *TaskComplexityRouteDTO `json:"TaskComplexityRoute,omitnil,omitempty" name:"TaskComplexityRoute"`
 }
 
 func (r *CreateModelServiceRequest) ToJsonString() string {
@@ -1150,6 +1181,9 @@ func (r *CreateModelServiceRequest) FromJsonString(s string) error {
 	delete(f, "FallbackModels")
 	delete(f, "ModelProtocol")
 	delete(f, "RawCustomModelProtocolConfig")
+	delete(f, "RouteStrategy")
+	delete(f, "TokenLengthRoute")
+	delete(f, "TaskComplexityRoute")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateModelServiceRequest has unknown keys!", "")
 	}
@@ -3177,6 +3211,18 @@ type DescribeModelServiceResponseVO struct {
 
 	// <p>自定义模型协议配置</p>
 	RawCustomModelProtocolConfig *string `json:"RawCustomModelProtocolConfig,omitnil,omitempty" name:"RawCustomModelProtocolConfig"`
+
+	// <p>路由策略</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RouteStrategy *string `json:"RouteStrategy,omitnil,omitempty" name:"RouteStrategy"`
+
+	// <p>token长度路由配置</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TokenLengthRoute []*TokenLengthRouteDTO `json:"TokenLengthRoute,omitnil,omitempty" name:"TokenLengthRoute"`
+
+	// <p>任务复杂度路由配置</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskComplexityRoute *TaskComplexityRouteDTO `json:"TaskComplexityRoute,omitnil,omitempty" name:"TaskComplexityRoute"`
 }
 
 // Predefined struct for user
@@ -3556,6 +3602,26 @@ func (r *DescribeServicesResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DescribeServicesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type FaultToleranceDTO struct {
+	// <p>是否启用API Key容错配置</p>
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// <p>异常判定状态码，固定3位数字或字母</p>
+	ErrorCodes []*string `json:"ErrorCodes,omitnil,omitempty" name:"ErrorCodes"`
+
+	// <p>连续异常次数</p><p>单位：次</p>
+	ErrorCount *int64 `json:"ErrorCount,omitnil,omitempty" name:"ErrorCount"`
+
+	// <p>隔离时长</p><p>单位：秒</p>
+	IsolationTime *int64 `json:"IsolationTime,omitnil,omitempty" name:"IsolationTime"`
+
+	// <p>最多切换次数</p><p>置0为不开启自动切换</p>
+	MaxSwitchCount *int64 `json:"MaxSwitchCount,omitnil,omitempty" name:"MaxSwitchCount"`
+
+	// <p>切换总时间预算</p><p>单位：秒</p>
+	SwitchTimeout *int64 `json:"SwitchTimeout,omitnil,omitempty" name:"SwitchTimeout"`
 }
 
 type FieldValueDTO struct {
@@ -4442,6 +4508,15 @@ type ModifyModelServiceRequestParams struct {
 
 	// <p>自定义模型协议配置</p>
 	RawCustomModelProtocolConfig *string `json:"RawCustomModelProtocolConfig,omitnil,omitempty" name:"RawCustomModelProtocolConfig"`
+
+	// <p>路由策略</p><p>枚举值：</p><ul><li>weight： 权重</li><li>taskComplexity： 任务复杂度</li><li>tokenLength： token长度</li></ul>
+	RouteStrategy *string `json:"RouteStrategy,omitnil,omitempty" name:"RouteStrategy"`
+
+	// <p>token长度路由策略</p>
+	TokenLengthRoute []*TokenLengthRouteDTO `json:"TokenLengthRoute,omitnil,omitempty" name:"TokenLengthRoute"`
+
+	// <p>任务复杂度路由策略</p>
+	TaskComplexityRoute *TaskComplexityRouteDTO `json:"TaskComplexityRoute,omitnil,omitempty" name:"TaskComplexityRoute"`
 }
 
 type ModifyModelServiceRequest struct {
@@ -4530,6 +4605,15 @@ type ModifyModelServiceRequest struct {
 
 	// <p>自定义模型协议配置</p>
 	RawCustomModelProtocolConfig *string `json:"RawCustomModelProtocolConfig,omitnil,omitempty" name:"RawCustomModelProtocolConfig"`
+
+	// <p>路由策略</p><p>枚举值：</p><ul><li>weight： 权重</li><li>taskComplexity： 任务复杂度</li><li>tokenLength： token长度</li></ul>
+	RouteStrategy *string `json:"RouteStrategy,omitnil,omitempty" name:"RouteStrategy"`
+
+	// <p>token长度路由策略</p>
+	TokenLengthRoute []*TokenLengthRouteDTO `json:"TokenLengthRoute,omitnil,omitempty" name:"TokenLengthRoute"`
+
+	// <p>任务复杂度路由策略</p>
+	TaskComplexityRoute *TaskComplexityRouteDTO `json:"TaskComplexityRoute,omitnil,omitempty" name:"TaskComplexityRoute"`
 }
 
 func (r *ModifyModelServiceRequest) ToJsonString() string {
@@ -4572,6 +4656,9 @@ func (r *ModifyModelServiceRequest) FromJsonString(s string) error {
 	delete(f, "FallbackModels")
 	delete(f, "ModelProtocol")
 	delete(f, "RawCustomModelProtocolConfig")
+	delete(f, "RouteStrategy")
+	delete(f, "TokenLengthRoute")
+	delete(f, "TaskComplexityRoute")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyModelServiceRequest has unknown keys!", "")
 	}
@@ -5410,6 +5497,20 @@ type TargetServerGroupDTO struct {
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 }
 
+type TaskComplexityRouteDTO struct {
+	// <p>倾向度</p><p>取值范围：[0, 1]</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ComplexityBias *float64 `json:"ComplexityBias,omitnil,omitempty" name:"ComplexityBias"`
+
+	// <p>简单模型</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SimpleTargetModels []*TargetModelDTO `json:"SimpleTargetModels,omitnil,omitempty" name:"SimpleTargetModels"`
+
+	// <p>复杂模型</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ComplexTargetModels []*TargetModelDTO `json:"ComplexTargetModels,omitnil,omitempty" name:"ComplexTargetModels"`
+}
+
 type TmsConfigDTO struct {
 	// <p>检测范围,请求/响应</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -5438,6 +5539,20 @@ type TmsConfigDTO struct {
 	// <p>检测上下文</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContextScope *string `json:"ContextScope,omitnil,omitempty" name:"ContextScope"`
+}
+
+type TokenLengthRouteDTO struct {
+	// <p>Token 区间下限</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MinTokens *int64 `json:"MinTokens,omitnil,omitempty" name:"MinTokens"`
+
+	// <p>Token 区间上限</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxTokens *int64 `json:"MaxTokens,omitnil,omitempty" name:"MaxTokens"`
+
+	// <p>模型</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetModels []*TargetModelDTO `json:"TargetModels,omitnil,omitempty" name:"TargetModels"`
 }
 
 type TokenLimitConfigDTO struct {

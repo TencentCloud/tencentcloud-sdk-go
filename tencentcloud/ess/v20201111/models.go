@@ -7987,6 +7987,9 @@ type CreatePartnerAutoSignAuthUrlRequestParams struct {
 
 	// <p>在处理授权关系时，授权的方向</p><ul><li><strong>false</strong>（默认值）：表示我方授权他方。在这种情况下，<code>AuthorizedOrganizationName</code> 代表的是【被授权方】的企业名称，即接收授权的企业。</li><li><strong>true</strong>：表示他方授权我方。在这种情况下，<code>AuthorizedOrganizationName</code> 代表的是【授权方】的企业名称，即提供授权的企业。</li></ul>
 	AuthToMe *bool `json:"AuthToMe,omitnil,omitempty" name:"AuthToMe"`
+
+	// <p>限制授权方式</p><p>枚举值：</p><ul><li>0： 默认，授权页面展示全部授权方式</li><li>1： 仅按印章类型授权</li><li>2： 仅按印章id授权</li></ul>
+	LimitAuthType *uint64 `json:"LimitAuthType,omitnil,omitempty" name:"LimitAuthType"`
 }
 
 type CreatePartnerAutoSignAuthUrlRequest struct {
@@ -8009,6 +8012,9 @@ type CreatePartnerAutoSignAuthUrlRequest struct {
 
 	// <p>在处理授权关系时，授权的方向</p><ul><li><strong>false</strong>（默认值）：表示我方授权他方。在这种情况下，<code>AuthorizedOrganizationName</code> 代表的是【被授权方】的企业名称，即接收授权的企业。</li><li><strong>true</strong>：表示他方授权我方。在这种情况下，<code>AuthorizedOrganizationName</code> 代表的是【授权方】的企业名称，即提供授权的企业。</li></ul>
 	AuthToMe *bool `json:"AuthToMe,omitnil,omitempty" name:"AuthToMe"`
+
+	// <p>限制授权方式</p><p>枚举值：</p><ul><li>0： 默认，授权页面展示全部授权方式</li><li>1： 仅按印章类型授权</li><li>2： 仅按印章id授权</li></ul>
+	LimitAuthType *uint64 `json:"LimitAuthType,omitnil,omitempty" name:"LimitAuthType"`
 }
 
 func (r *CreatePartnerAutoSignAuthUrlRequest) ToJsonString() string {
@@ -8029,6 +8035,7 @@ func (r *CreatePartnerAutoSignAuthUrlRequest) FromJsonString(s string) error {
 	delete(f, "AuthorizedOrganizationName")
 	delete(f, "SealTypes")
 	delete(f, "AuthToMe")
+	delete(f, "LimitAuthType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePartnerAutoSignAuthUrlRequest has unknown keys!", "")
 	}
@@ -17610,6 +17617,9 @@ type ModifyPartnerAutoSignAuthUrlRequestParams struct {
 
 	// <p>在设置印章授权时，可以指定特定的印章类型，以确保在授权过程中只使用相应类型的印章。</p><p>枚举值：</p><ul><li>OFFICIAL： 企业公章，用于代表企业对外的正式文件和重要事务的认证</li><li>CONTRACT： 合同专用章，专门用于签署各类合同。</li><li>FINANCE： 财务专用章，用于企业的财务相关文件，如发票、收据等财务凭证的认证</li><li>PERSONNEL： 人事专用章，用于人事管理相关文件，如劳动合同、人事任命等。</li><li>OTHER： 其他类型印章，包含子类型</li></ul>
 	SealTypes []*string `json:"SealTypes,omitnil,omitempty" name:"SealTypes"`
+
+	// <p>限制授权方式</p><p>枚举值：</p><ul><li>0： 默认，授权页面展示全部授权方式 </li><li>1： 仅按印章类型授权</li><li>2： 仅按印章id授权</li></ul>
+	LimitAuthType *uint64 `json:"LimitAuthType,omitnil,omitempty" name:"LimitAuthType"`
 }
 
 type ModifyPartnerAutoSignAuthUrlRequest struct {
@@ -17632,6 +17642,9 @@ type ModifyPartnerAutoSignAuthUrlRequest struct {
 
 	// <p>在设置印章授权时，可以指定特定的印章类型，以确保在授权过程中只使用相应类型的印章。</p><p>枚举值：</p><ul><li>OFFICIAL： 企业公章，用于代表企业对外的正式文件和重要事务的认证</li><li>CONTRACT： 合同专用章，专门用于签署各类合同。</li><li>FINANCE： 财务专用章，用于企业的财务相关文件，如发票、收据等财务凭证的认证</li><li>PERSONNEL： 人事专用章，用于人事管理相关文件，如劳动合同、人事任命等。</li><li>OTHER： 其他类型印章，包含子类型</li></ul>
 	SealTypes []*string `json:"SealTypes,omitnil,omitempty" name:"SealTypes"`
+
+	// <p>限制授权方式</p><p>枚举值：</p><ul><li>0： 默认，授权页面展示全部授权方式 </li><li>1： 仅按印章类型授权</li><li>2： 仅按印章id授权</li></ul>
+	LimitAuthType *uint64 `json:"LimitAuthType,omitnil,omitempty" name:"LimitAuthType"`
 }
 
 func (r *ModifyPartnerAutoSignAuthUrlRequest) ToJsonString() string {
@@ -17652,6 +17665,7 @@ func (r *ModifyPartnerAutoSignAuthUrlRequest) FromJsonString(s string) error {
 	delete(f, "AuthorizedOrganizationName")
 	delete(f, "AuthToMe")
 	delete(f, "SealTypes")
+	delete(f, "LimitAuthType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyPartnerAutoSignAuthUrlRequest has unknown keys!", "")
 	}

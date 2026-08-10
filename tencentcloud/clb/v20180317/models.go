@@ -2880,6 +2880,9 @@ type CreateModelRequestParams struct {
 
 	// <p>是否校验服务提供商的SSL证书</p>
 	VerifySSL *bool `json:"VerifySSL,omitnil,omitempty" name:"VerifySSL"`
+
+	// <p>健康检查配置</p>
+	HealthCheckConfig *ServiceProviderHealthCheckConfigInput `json:"HealthCheckConfig,omitnil,omitempty" name:"HealthCheckConfig"`
 }
 
 type CreateModelRequest struct {
@@ -2923,6 +2926,9 @@ type CreateModelRequest struct {
 
 	// <p>是否校验服务提供商的SSL证书</p>
 	VerifySSL *bool `json:"VerifySSL,omitnil,omitempty" name:"VerifySSL"`
+
+	// <p>健康检查配置</p>
+	HealthCheckConfig *ServiceProviderHealthCheckConfigInput `json:"HealthCheckConfig,omitnil,omitempty" name:"HealthCheckConfig"`
 }
 
 func (r *CreateModelRequest) ToJsonString() string {
@@ -2950,6 +2956,7 @@ func (r *CreateModelRequest) FromJsonString(s string) error {
 	delete(f, "HostHeader")
 	delete(f, "Tags")
 	delete(f, "VerifySSL")
+	delete(f, "HealthCheckConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateModelRequest has unknown keys!", "")
 	}
@@ -7476,6 +7483,9 @@ type DescribeModelNamesRequestParams struct {
 
 	// <p>过滤PrivateCustom类型自建模型。如果传递了此参数，则只返回具有相同VPC Id的模型。</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// <p>过滤器，Name取值：</p><ul><li>ModelName：按照模型名称过滤。</li><li>ServiceProviderId：按照BYOK ID过滤。</li><li>InputModalitiesUnion：按照模态过滤。</li></ul>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeModelNamesRequest struct {
@@ -7489,6 +7499,9 @@ type DescribeModelNamesRequest struct {
 
 	// <p>过滤PrivateCustom类型自建模型。如果传递了此参数，则只返回具有相同VPC Id的模型。</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// <p>过滤器，Name取值：</p><ul><li>ModelName：按照模型名称过滤。</li><li>ServiceProviderId：按照BYOK ID过滤。</li><li>InputModalitiesUnion：按照模态过滤。</li></ul>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 func (r *DescribeModelNamesRequest) ToJsonString() string {
@@ -7506,6 +7519,7 @@ func (r *DescribeModelNamesRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "VpcId")
+	delete(f, "Filters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeModelNamesRequest has unknown keys!", "")
 	}
@@ -11252,7 +11266,7 @@ type ModelKeyInfoItem struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceProviderName *string `json:"ServiceProviderName,omitnil,omitempty" name:"ServiceProviderName"`
 
-	// <p>模型状态</p><p>枚举值：</p><ul><li>Active： 运行中</li><li>Provisioning： 创建中</li><li>Configuring： 变配中</li><li>Deleting： 删除中</li><li>ProvisionFailed： 创建失败</li><li>ConfigureFailed： 变配失败</li><li>DeletionFailed： 删除失败</li><li>Disabled： 已禁用</li></ul>
+	// <p>模型状态</p><p>枚举值：</p><ul><li>Active： 运行中</li><li>Provisioning： 创建中</li><li>Configuring： 变配中</li></ul>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// <p>子网 ID</p>
@@ -11268,6 +11282,9 @@ type ModelKeyInfoItem struct {
 	// <p>VPC 实例 ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// <p>健康检查配置</p>
+	HealthCheckConfig *ServiceProviderHealthCheckConfigOutput `json:"HealthCheckConfig,omitnil,omitempty" name:"HealthCheckConfig"`
 }
 
 type ModelNameAggregatedItem struct {
@@ -15201,6 +15218,16 @@ type ServiceProviderCoefficient struct {
 
 	// <p>BYOK 实例（ServiceProvider）名称。</p>
 	ServiceProviderName *string `json:"ServiceProviderName,omitnil,omitempty" name:"ServiceProviderName"`
+}
+
+type ServiceProviderHealthCheckConfigInput struct {
+	// <p>是否开启健康检查</p><p>枚举值：</p><ul><li>true： 是</li><li>false： 否</li></ul>
+	HealthCheckEnabled *bool `json:"HealthCheckEnabled,omitnil,omitempty" name:"HealthCheckEnabled"`
+}
+
+type ServiceProviderHealthCheckConfigOutput struct {
+	// <p>是否开启健康检查</p><p>枚举值：</p><ul><li>true： 是</li><li>false： 否</li></ul>
+	HealthCheckEnabled *bool `json:"HealthCheckEnabled,omitnil,omitempty" name:"HealthCheckEnabled"`
 }
 
 type ServiceProviderItem struct {

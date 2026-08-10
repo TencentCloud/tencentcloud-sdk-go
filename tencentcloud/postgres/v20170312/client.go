@@ -1927,6 +1927,114 @@ func (c *Client) DeleteDBInstanceNetworkAccessWithContext(ctx context.Context, r
     return
 }
 
+func NewDeleteDatabaseRequest() (request *DeleteDatabaseRequest) {
+    request = &DeleteDatabaseRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("postgres", APIVersion, "DeleteDatabase")
+    
+    
+    return
+}
+
+func NewDeleteDatabaseResponse() (response *DeleteDatabaseResponse) {
+    response = &DeleteDatabaseResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteDatabase
+// 本接口（DeleteDatabase）用于删除指定 PostgreSQL 实例中的数据库。删除操作会直接调用底层存储引擎执行，为保障数据安全和系统稳定，接口在执行前会进行多项前置校验。
+//
+// 使用限制
+//
+// 
+//
+// - 实例状态限制：仅允许对运行中的实例执行删除数据库操作。
+//
+// 
+//
+// - 只读实例限制：只读实例不支持删除数据库操作。由于只读实例的数据来源于主实例同步，不允许在只读侧执行库级别的删除变更。若对只读实例发起此请求，将直接被拦截并返回错误。
+//
+// 
+//
+// - 数据库名合法性限制：待删除的数据库名称必须通过以下校验，否则报错：
+//
+// 长度符合 PostgreSQL 命名规范
+//
+// 字符集合法（仅允许字母、数字、下划线，且不能以数字开头）
+//
+// 不能为系统保留库名（如 postgres、template0、template1 等）
+//
+// 不能为 PostgreSQL 关键字/保留字
+//
+// 
+//
+// - 不可逆操作：数据库一经删除，数据将无法恢复。执行前请确认已做好必要的数据备份。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  INVALIDPARAMETER_PARAMETERCHECKERROR = "InvalidParameter.ParameterCheckError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITOPERROR = "OperationDenied.InstanceStatusLimitOpError"
+func (c *Client) DeleteDatabase(request *DeleteDatabaseRequest) (response *DeleteDatabaseResponse, err error) {
+    return c.DeleteDatabaseWithContext(context.Background(), request)
+}
+
+// DeleteDatabase
+// 本接口（DeleteDatabase）用于删除指定 PostgreSQL 实例中的数据库。删除操作会直接调用底层存储引擎执行，为保障数据安全和系统稳定，接口在执行前会进行多项前置校验。
+//
+// 使用限制
+//
+// 
+//
+// - 实例状态限制：仅允许对运行中的实例执行删除数据库操作。
+//
+// 
+//
+// - 只读实例限制：只读实例不支持删除数据库操作。由于只读实例的数据来源于主实例同步，不允许在只读侧执行库级别的删除变更。若对只读实例发起此请求，将直接被拦截并返回错误。
+//
+// 
+//
+// - 数据库名合法性限制：待删除的数据库名称必须通过以下校验，否则报错：
+//
+// 长度符合 PostgreSQL 命名规范
+//
+// 字符集合法（仅允许字母、数字、下划线，且不能以数字开头）
+//
+// 不能为系统保留库名（如 postgres、template0、template1 等）
+//
+// 不能为 PostgreSQL 关键字/保留字
+//
+// 
+//
+// - 不可逆操作：数据库一经删除，数据将无法恢复。执行前请确认已做好必要的数据备份。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  INVALIDPARAMETER_PARAMETERCHECKERROR = "InvalidParameter.ParameterCheckError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITOPERROR = "OperationDenied.InstanceStatusLimitOpError"
+func (c *Client) DeleteDatabaseWithContext(ctx context.Context, request *DeleteDatabaseRequest) (response *DeleteDatabaseResponse, err error) {
+    if request == nil {
+        request = NewDeleteDatabaseRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "postgres", APIVersion, "DeleteDatabase")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteDatabase require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteDatabaseResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteLogBackupRequest() (request *DeleteLogBackupRequest) {
     request = &DeleteLogBackupRequest{
         BaseRequest: &tchttp.BaseRequest{},

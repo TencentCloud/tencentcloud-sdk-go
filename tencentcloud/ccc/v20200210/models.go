@@ -5973,70 +5973,74 @@ func (r *DescribeTelCallInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTelCdrRequestParams struct {
-	// 起始时间戳，Unix 秒级时间戳，最大支持近180天。
+	// <p>起始时间戳，Unix 秒级时间戳，最大支持近180天。</p>
 	StartTimeStamp *int64 `json:"StartTimeStamp,omitnil,omitempty" name:"StartTimeStamp"`
 
-	// 结束时间戳，Unix 秒级时间戳，结束时间与开始时间的区间范围小于90天。
+	// <p>结束时间戳，Unix 秒级时间戳，结束时间与开始时间的区间范围小于90天。</p>
 	EndTimeStamp *int64 `json:"EndTimeStamp,omitnil,omitempty" name:"EndTimeStamp"`
 
-	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	// <p>应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc</p>
 	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// 分页尺寸（必填），上限 100
+	// <p>分页尺寸（必填），上限 100</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 分页页码（必填），从 0 开始
+	// <p>分页页码（必填），从 0 开始</p>
 	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 实例 ID（废弃）
+	// <p>实例 ID（废弃）</p>
 	//
 	// Deprecated: InstanceId is deprecated.
 	InstanceId *int64 `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 返回数据条数，上限（废弃）
+	// <p>返回数据条数，上限（废弃）</p>
+	//
+	// Deprecated: Limit is deprecated.
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移（废弃）
+	// <p>偏移（废弃）</p>
+	//
+	// Deprecated: Offset is deprecated.
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 按手机号筛选
+	// <p>按手机号筛选</p>
 	Phones []*string `json:"Phones,omitnil,omitempty" name:"Phones"`
 
-	// 按SessionId筛选
+	// <p>按SessionId筛选</p>
 	SessionIds []*string `json:"SessionIds,omitnil,omitempty" name:"SessionIds"`
 }
 
 type DescribeTelCdrRequest struct {
 	*tchttp.BaseRequest
 	
-	// 起始时间戳，Unix 秒级时间戳，最大支持近180天。
+	// <p>起始时间戳，Unix 秒级时间戳，最大支持近180天。</p>
 	StartTimeStamp *int64 `json:"StartTimeStamp,omitnil,omitempty" name:"StartTimeStamp"`
 
-	// 结束时间戳，Unix 秒级时间戳，结束时间与开始时间的区间范围小于90天。
+	// <p>结束时间戳，Unix 秒级时间戳，结束时间与开始时间的区间范围小于90天。</p>
 	EndTimeStamp *int64 `json:"EndTimeStamp,omitnil,omitempty" name:"EndTimeStamp"`
 
-	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	// <p>应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc</p>
 	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// 分页尺寸（必填），上限 100
+	// <p>分页尺寸（必填），上限 100</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 分页页码（必填），从 0 开始
+	// <p>分页页码（必填），从 0 开始</p>
 	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 实例 ID（废弃）
+	// <p>实例 ID（废弃）</p>
 	InstanceId *int64 `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 返回数据条数，上限（废弃）
+	// <p>返回数据条数，上限（废弃）</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移（废弃）
+	// <p>偏移（废弃）</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 按手机号筛选
+	// <p>按手机号筛选</p>
 	Phones []*string `json:"Phones,omitnil,omitempty" name:"Phones"`
 
-	// 按SessionId筛选
+	// <p>按SessionId筛选</p>
 	SessionIds []*string `json:"SessionIds,omitnil,omitempty" name:"SessionIds"`
 }
 
@@ -6070,15 +6074,15 @@ func (r *DescribeTelCdrRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTelCdrResponseParams struct {
-	// 话单记录总数
+	// <p>话单记录总数</p>
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 话单记录
+	// <p>话单记录</p>
 	//
 	// Deprecated: TelCdrs is deprecated.
 	TelCdrs []*TelCdrInfo `json:"TelCdrs,omitnil,omitempty" name:"TelCdrs"`
 
-	// 话单记录
+	// <p>话单记录</p>
 	TelCdrList []*TelCdrInfo `json:"TelCdrList,omitnil,omitempty" name:"TelCdrList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8284,214 +8288,140 @@ func (r *StopAutoCalloutTaskResponse) FromJsonString(s string) error {
 }
 
 type TelCdrInfo struct {
-	// 主叫号码
+	// <p>主叫号码</p>
 	Caller *string `json:"Caller,omitnil,omitempty" name:"Caller"`
 
-	// 被叫号码
+	// <p>被叫号码</p>
 	Callee *string `json:"Callee,omitnil,omitempty" name:"Callee"`
 
-	// 呼叫发起时间戳，Unix 时间戳
+	// <p>呼叫发起时间戳，Unix 时间戳</p>
 	Time *int64 `json:"Time,omitnil,omitempty" name:"Time"`
 
-	// 呼入呼出方向 0 呼入 1 呼出
+	// <p>呼入呼出方向 0 呼入 1 呼出</p>
 	Direction *int64 `json:"Direction,omitnil,omitempty" name:"Direction"`
 
-	// 通话类型 1 呼出 2 呼入 3 音频呼入 5 预测式外呼 6 内线呼叫
+	// <p>通话类型 1 呼出 2 呼入 3 音频呼入 5 预测式外呼 6 内线呼叫</p>
 	CallType *int64 `json:"CallType,omitnil,omitempty" name:"CallType"`
 
-	// 通话时长
+	// <p>通话时长</p>
 	Duration *int64 `json:"Duration,omitnil,omitempty" name:"Duration"`
 
-	// 录音信息
+	// <p>录音信息</p>
 	RecordURL *string `json:"RecordURL,omitnil,omitempty" name:"RecordURL"`
 
-	// 录音 ID
+	// <p>录音 ID</p>
 	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
 
-	// 座席信息
+	// <p>座席信息</p>
 	SeatUser *SeatUserInfo `json:"SeatUser,omitnil,omitempty" name:"SeatUser"`
 
-	// EndStatus与EndStatusString一一对应，具体枚举如下：
-	// 
-	// **场景	         EndStatus	EndStatusString	状态说明**
-	// 
-	// 电话呼入&呼出	1	        ok	                        **正常通话**
-	// 
-	// 电话呼入	             102	        ivrGiveUp	        **IVR期间用户放弃**
-	// 
-	// 电话呼入	             103	        waitingGiveUp	       **排队时用户放弃**
-	// 
-	// 电话呼入	             104	        ringingGiveUp	       **振铃时用户放弃**
-	// 
-	// 电话呼入	             105	        noSeatOnline	       **无座席在线**
-	// 
-	// 电话呼入              106	       notWorkTime	       **非工作时间**   
-	// 
-	// 电话呼入	            107	       ivrEnd	               **IVR全自动结束(无人工介入)**
-	// 
-	// 电话呼入	            100	      blackList **黑名单(系统侧)**
-	// 
-	// 电话呼出             108	        restrictedCallee	**全局外呼风险号码拦截(系统侧)**
-	// 
-	// 电话呼出             109	        tooManyRequest	    **外呼频控拦截(系统侧)**
-	// 
-	// 电话呼出             110	        restrictedArea	    **外呼地域拦截(系统侧)**
-	// 
-	// 电话呼出             111	        restrictedTime	**外呼时段拦截(系统侧)**
-	//                          
-	// 电话呼出             202            notAnswer	 **被叫未接听**
-	// 
-	// 电话呼出            203	    userReject	**被叫拒接挂断**
-	// 
-	// 电话呼出	          204	    powerOff	**被叫关机**
-	// 
-	// 电话呼出           205            numberNotExist	**被叫空号**
-	// 
-	// 电话呼出	         206	           busy	**被叫忙**
-	// 
-	// 电话呼出   	        207	           outOfCredit	**被叫欠费**
-	// 
-	// 电话呼出	         208	           operatorError	**运营商线路异常**
-	// 
-	// 电话呼出         	209	           callerCancel	**主叫取消**
-	// 
-	// 电话呼出	        210	           notInService	**被叫不在服务区**
-	// 
-	// 电话呼入&呼出	211    clientError    **座席客户端错误**
-	// 
-	// 电话呼出        212     carrierBlocked      **运营商拦截**
-	// 
-	// 电话呼出        213     callReminder      **提示来电提醒**
-	// 
-	// 电话呼出        215     numberInvalid      **被叫号码无效**
-	// 
-	// 电话呼出        216     callRestricted      **提示呼叫受限**
-	// 
-	// 电话呼出        217     calleeRestricted      **被叫黑名单受限**
-	// 
-	// 电话呼出        218     areaRestricted      **被叫区域受限**
-	// 
-	// 电话呼出        219     promptCallForwarding      **提示呼叫转移**
-	// 
-	// 电话呼出        220     callerCancelWhileRing      **振铃中主叫取消**
-	// 
-	// 电话呼出        221     callerCancelWithoutRing      **未振铃被叫号码异常**
-	// 
-	// 电话呼出        222     voiceMailReached      **语音信箱挂断**
-	// 
-	// 音频呼入        501     callConflict      **VoIP用户呼叫冲突终止**
-	// 
-	// 音频呼入        502     clientTimeout      **VoIP用户客户端超时**
-	// 
-	// 音频呼入        503     voipClientError      **VoIP用户客户端错误**
-	// 
-	// 中文详情[参考](https://www.tencentcloud.com/zh/document/product/1229/71847)
-	// 
-	// 英文详情[参考](https://www.tencentcloud.com/document/product/1229/71847?lang=en)
+	// <p>EndStatus与EndStatusString一一对应，具体枚举如下：</p><p><strong>场景             EndStatus    EndStatusString    状态说明</strong></p><p>电话呼入&amp;呼出    1            ok                            <strong>正常通话</strong></p><p>电话呼入                 102            ivrGiveUp            <strong>IVR期间用户放弃</strong></p><p>电话呼入                 103            waitingGiveUp           <strong>排队时用户放弃</strong></p><p>电话呼入                 104            ringingGiveUp           <strong>振铃时用户放弃</strong></p><p>电话呼入                 105            noSeatOnline           <strong>无座席在线</strong></p><p>电话呼入              106           notWorkTime           <strong>非工作时间</strong>   </p><p>电话呼入                107           ivrEnd                   <strong>IVR全自动结束(无人工介入)</strong></p><p>电话呼入                100          blackList <strong>黑名单(系统侧)</strong></p><p>电话呼出             108            restrictedCallee    <strong>全局外呼风险号码拦截(系统侧)</strong></p><p>电话呼出             109            tooManyRequest        <strong>外呼频控拦截(系统侧)</strong></p><p>电话呼出             110            restrictedArea        <strong>外呼地域拦截(系统侧)</strong></p><p>电话呼出             111            restrictedTime    <strong>外呼时段拦截(系统侧)</strong></p><p>电话呼出             202            notAnswer     <strong>被叫未接听</strong></p><p>电话呼出            203        userReject    <strong>被叫拒接挂断</strong></p><p>电话呼出              204        powerOff    <strong>被叫关机</strong></p><p>电话呼出           205            numberNotExist    <strong>被叫空号</strong></p><p>电话呼出             206               busy    <strong>被叫忙</strong></p><p>电话呼出               207               outOfCredit    <strong>被叫欠费</strong></p><p>电话呼出             208               operatorError    <strong>运营商线路异常</strong></p><p>电话呼出             209               callerCancel    <strong>主叫取消</strong></p><p>电话呼出            210               notInService    <strong>被叫不在服务区</strong></p><p>电话呼入&amp;呼出    211    clientError    <strong>座席客户端错误</strong></p><p>电话呼出        212     carrierBlocked      <strong>运营商拦截</strong></p><p>电话呼出        213     callReminder      <strong>提示来电提醒</strong></p><p>电话呼出        215     numberInvalid      <strong>被叫号码无效</strong></p><p>电话呼出        216     callRestricted      <strong>提示呼叫受限</strong></p><p>电话呼出        217     calleeRestricted      <strong>被叫黑名单受限</strong></p><p>电话呼出        218     areaRestricted      <strong>被叫区域受限</strong></p><p>电话呼出        219     promptCallForwarding      <strong>提示呼叫转移</strong></p><p>电话呼出        220     callerCancelWhileRing      <strong>振铃中主叫取消</strong></p><p>电话呼出        221     callerCancelWithoutRing      <strong>未振铃被叫号码异常</strong></p><p>电话呼出        222     voiceMailReached      <strong>语音信箱挂断</strong></p><p>音频呼入        501     callConflict      <strong>VoIP用户呼叫冲突终止</strong></p><p>音频呼入        502     clientTimeout      <strong>VoIP用户客户端超时</strong></p><p>音频呼入        503     voipClientError      <strong>VoIP用户客户端错误</strong></p><p>中文详情<a href="https://www.tencentcloud.com/zh/document/product/1229/71847">参考</a></p><p>英文详情<a href="https://www.tencentcloud.com/document/product/1229/71847?lang=en">参考</a></p>
 	EndStatus *int64 `json:"EndStatus,omitnil,omitempty" name:"EndStatus"`
 
-	// 技能组名称
+	// <p>技能组名称</p>
 	SkillGroup *string `json:"SkillGroup,omitnil,omitempty" name:"SkillGroup"`
 
-	// 主叫归属地
+	// <p>主叫归属地</p>
 	CallerLocation *string `json:"CallerLocation,omitnil,omitempty" name:"CallerLocation"`
 
-	// IVR 阶段耗时
+	// <p>IVR 阶段耗时</p>
 	IVRDuration *int64 `json:"IVRDuration,omitnil,omitempty" name:"IVRDuration"`
 
-	// 振铃时间戳，UNIX 秒级时间戳
+	// <p>振铃时间戳，UNIX 秒级时间戳</p>
 	RingTimestamp *int64 `json:"RingTimestamp,omitnil,omitempty" name:"RingTimestamp"`
 
-	// 接听时间戳，UNIX 秒级时间戳
+	// <p>接听时间戳，UNIX 秒级时间戳</p>
 	AcceptTimestamp *int64 `json:"AcceptTimestamp,omitnil,omitempty" name:"AcceptTimestamp"`
 
-	// 结束时间戳，UNIX 秒级时间戳
+	// <p>结束时间戳，UNIX 秒级时间戳</p>
 	EndedTimestamp *int64 `json:"EndedTimestamp,omitnil,omitempty" name:"EndedTimestamp"`
 
-	// IVR 按键信息 ，e.g. ["1","2","3"]
+	// <p>IVR 按键信息 ，e.g. [&quot;1&quot;,&quot;2&quot;,&quot;3&quot;]</p>
+	//
+	// Deprecated: IVRKeyPressed is deprecated.
 	IVRKeyPressed []*string `json:"IVRKeyPressed,omitnil,omitempty" name:"IVRKeyPressed"`
 
-	// 挂机方 seat 座席 user 用户 system 系统
+	// <p>IVR按键信息（e.g.xa0[{&quot;Key&quot;:&quot;1&quot;,&quot;Label&quot;:&quot;非常满意&quot;}]）</p>
+	IVRKeyPressedEx []*IVRKeyPressedElement `json:"IVRKeyPressedEx,omitnil,omitempty" name:"IVRKeyPressedEx"`
+
+	// <p>挂机方 seat 座席 user 用户 system 系统</p>
 	HungUpSide *string `json:"HungUpSide,omitnil,omitempty" name:"HungUpSide"`
 
-	// 服务参与者列表
+	// <p>服务参与者列表</p>
 	ServeParticipants []*ServeParticipant `json:"ServeParticipants,omitnil,omitempty" name:"ServeParticipants"`
 
-	// 技能组ID
+	// <p>技能组ID</p>
 	SkillGroupId *int64 `json:"SkillGroupId,omitnil,omitempty" name:"SkillGroupId"`
 
-	// 参考 EndStatus 字段
+	// <p>参考 EndStatus 字段</p>
 	EndStatusString *string `json:"EndStatusString,omitnil,omitempty" name:"EndStatusString"`
 
-	// 会话开始时间戳，UNIX 秒级时间戳
+	// <p>会话开始时间戳，UNIX 秒级时间戳</p>
 	StartTimestamp *int64 `json:"StartTimestamp,omitnil,omitempty" name:"StartTimestamp"`
 
-	// 进入排队时间，Unix 秒级时间戳
+	// <p>进入排队时间，Unix 秒级时间戳</p>
 	QueuedTimestamp *int64 `json:"QueuedTimestamp,omitnil,omitempty" name:"QueuedTimestamp"`
 
-	// 后置IVR按键信息（e.g. [{"Key":"1","Label":"非常满意"}]）
+	// <p>后置IVR按键信息（e.g.xa0[{&quot;Key&quot;:&quot;1&quot;,&quot;Label&quot;:&quot;非常满意&quot;}]）</p>
+	//
+	// Deprecated: PostIVRKeyPressed is deprecated.
 	PostIVRKeyPressed []*IVRKeyPressedElement `json:"PostIVRKeyPressed,omitnil,omitempty" name:"PostIVRKeyPressed"`
 
-	// 排队技能组Id
+	// <p>满意度按键信息 Key 为 noInput 表示进入满意度但无按键</p>
+	PostIVRKeyPressedEx []*IVRKeyPressedElement `json:"PostIVRKeyPressedEx,omitnil,omitempty" name:"PostIVRKeyPressedEx"`
+
+	// <p>排队技能组Id</p>
 	QueuedSkillGroupId *int64 `json:"QueuedSkillGroupId,omitnil,omitempty" name:"QueuedSkillGroupId"`
 
-	// 会话 ID
+	// <p>会话 ID</p>
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 
-	// 主叫号码保护ID，开启号码保护映射功能时有效，且Caller字段置空
+	// <p>主叫号码保护ID，开启号码保护映射功能时有效，且Caller字段置空</p>
 	ProtectedCaller *string `json:"ProtectedCaller,omitnil,omitempty" name:"ProtectedCaller"`
 
-	// 被叫号码保护ID，开启号码保护映射功能时有效，且Callee字段置空
+	// <p>被叫号码保护ID，开启号码保护映射功能时有效，且Callee字段置空</p>
 	ProtectedCallee *string `json:"ProtectedCallee,omitnil,omitempty" name:"ProtectedCallee"`
 
-	// 客户自定义数据（User-to-User Interface）
+	// <p>客户自定义数据（User-to-User Interface）</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	//
 	// Deprecated: Uui is deprecated.
 	Uui *string `json:"Uui,omitnil,omitempty" name:"Uui"`
 
-	// 客户自定义数据（User-to-User Interface）
+	// <p>客户自定义数据（User-to-User Interface）</p>
 	UUI *string `json:"UUI,omitnil,omitempty" name:"UUI"`
 
-	// IVR按键信息（e.g. [{"Key":"1","Label":"非常满意"}]）
-	IVRKeyPressedEx []*IVRKeyPressedElement `json:"IVRKeyPressedEx,omitnil,omitempty" name:"IVRKeyPressedEx"`
-
-	// 获取录音ASR文本信息地址
+	// <p>获取录音ASR文本信息地址</p>
 	AsrUrl *string `json:"AsrUrl,omitnil,omitempty" name:"AsrUrl"`
 
-	// AsrUrl的状态：Complete
-	// 已完成;
-	// Processing
-	// 正在生成中;
-	// NotExists
-	// 无记录(未开启生成离线asr或者无套餐包)
+	// <p>AsrUrl的状态：Complete<br>已完成;<br>Processing<br>正在生成中;<br>NotExists<br>无记录(未开启生成离线asr或者无套餐包)</p>
 	AsrStatus *string `json:"AsrStatus,omitnil,omitempty" name:"AsrStatus"`
 
-	// 录音转存第三方COS地址
+	// <p>录音转存第三方COS地址</p>
 	CustomRecordURL *string `json:"CustomRecordURL,omitnil,omitempty" name:"CustomRecordURL"`
 
-	// 备注
+	// <p>备注</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 排队技能组名称
+	// <p>排队技能组名称</p>
 	QueuedSkillGroupName *string `json:"QueuedSkillGroupName,omitnil,omitempty" name:"QueuedSkillGroupName"`
 
-	// 通话中语音留言录音URL
+	// <p>通话中语音留言录音URL</p>
 	VoicemailRecordURL []*string `json:"VoicemailRecordURL,omitnil,omitempty" name:"VoicemailRecordURL"`
 
-	// 通话中语音留言ASR文本信息地址
+	// <p>通话中语音留言ASR文本信息地址</p>
 	VoicemailAsrURL []*string `json:"VoicemailAsrURL,omitnil,omitempty" name:"VoicemailAsrURL"`
 
-	// 如果是智能体相关通话，这里是智能体 ID
+	// <p>如果是智能体相关通话，这里是智能体 ID</p>
 	AIAgentId *int64 `json:"AIAgentId,omitnil,omitempty" name:"AIAgentId"`
 
-	// 如果是智能体相关通话，这里是智能体名称
+	// <p>如果是智能体相关通话，这里是智能体名称</p>
 	AIAgentName *string `json:"AIAgentName,omitnil,omitempty" name:"AIAgentName"`
 
-	// 接通后系统挂断原因，枚举类似
+	// <p>接通后系统挂断原因，枚举类似</p>
 	SysHangupReason *int64 `json:"SysHangupReason,omitnil,omitempty" name:"SysHangupReason"`
 
-	// 接通后系统挂断原因，文字描述信息
+	// <p>接通后系统挂断原因，文字描述信息</p>
 	SysHangupReasonString *string `json:"SysHangupReasonString,omitnil,omitempty" name:"SysHangupReasonString"`
 }
 

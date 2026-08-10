@@ -8800,28 +8800,37 @@ type PresetImageInfo struct {
 }
 
 type PrivateLinkInfo struct {
-	// 私有连接所在的VPCID
+	// <p>私有连接所在的VPCID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 私有连接所在的子网ID
+	// <p>私有连接所在的子网ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// HTTP内网调用地址
+	// <p>HTTP内网调用地址</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InnerHttpAddr []*string `json:"InnerHttpAddr,omitnil,omitempty" name:"InnerHttpAddr"`
 
-	// HTTPS内网调用地址
+	// <p>HTTPS内网调用地址</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InnerHttpsAddr []*string `json:"InnerHttpsAddr,omitnil,omitempty" name:"InnerHttpsAddr"`
 
-	// 私有连接状态
+	// <p>私有连接状态</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	State *string `json:"State,omitnil,omitempty" name:"State"`
 
-	// grpc内网调用地址
+	// <p>grpc内网调用地址</p>
 	InnerGrpcAddr []*string `json:"InnerGrpcAddr,omitnil,omitempty" name:"InnerGrpcAddr"`
+
+	// <p>创建者 UIN</p>
+	CreatedBy *string `json:"CreatedBy,omitnil,omitempty" name:"CreatedBy"`
+
+	// <p>创建时间</p>
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>子用户名称</p>
+	SubUinName *string `json:"SubUinName,omitnil,omitempty" name:"SubUinName"`
 }
 
 type Probe struct {

@@ -30164,6 +30164,9 @@ type TaskFullRespInfo struct {
 
 	// <p>排队时间</p><p>单位：毫秒</p>
 	QueueTime *int64 `json:"QueueTime,omitnil,omitempty" name:"QueueTime"`
+
+	// <p>资源组类型</p>
+	ResourceGroupType *string `json:"ResourceGroupType,omitnil,omitempty" name:"ResourceGroupType"`
 }
 
 type TaskMonitorInfo struct {

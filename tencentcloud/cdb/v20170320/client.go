@@ -9405,6 +9405,142 @@ func (c *Client) ModifyDBInstanceVipVportWithContext(ctx context.Context, reques
     return
 }
 
+func NewModifyInstanceChargeTypeRequest() (request *ModifyInstanceChargeTypeRequest) {
+    request = &ModifyInstanceChargeTypeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdb", APIVersion, "ModifyInstanceChargeType")
+    
+    
+    return
+}
+
+func NewModifyInstanceChargeTypeResponse() (response *ModifyInstanceChargeTypeResponse) {
+    response = &ModifyInstanceChargeTypeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyInstanceChargeType
+// 本接口(ModifyInstanceChargeType)用于将实例的计费模式从包年包月改为按量计费。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_STATUSCONFLICT = "FailedOperation.StatusConflict"
+//  INTERNALERROR_JSONERROR = "InternalError.JSONError"
+//  INTERNALERROR_NETWORKERROR = "InternalError.NetworkError"
+//  INTERNALERROR_VPCERROR = "InternalError.VpcError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) ModifyInstanceChargeType(request *ModifyInstanceChargeTypeRequest) (response *ModifyInstanceChargeTypeResponse, err error) {
+    return c.ModifyInstanceChargeTypeWithContext(context.Background(), request)
+}
+
+// ModifyInstanceChargeType
+// 本接口(ModifyInstanceChargeType)用于将实例的计费模式从包年包月改为按量计费。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_STATUSCONFLICT = "FailedOperation.StatusConflict"
+//  INTERNALERROR_JSONERROR = "InternalError.JSONError"
+//  INTERNALERROR_NETWORKERROR = "InternalError.NetworkError"
+//  INTERNALERROR_VPCERROR = "InternalError.VpcError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) ModifyInstanceChargeTypeWithContext(ctx context.Context, request *ModifyInstanceChargeTypeRequest) (response *ModifyInstanceChargeTypeResponse, err error) {
+    if request == nil {
+        request = NewModifyInstanceChargeTypeRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cdb", APIVersion, "ModifyInstanceChargeType")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyInstanceChargeType require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyInstanceChargeTypeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyInstanceDestroyProtectRequest() (request *ModifyInstanceDestroyProtectRequest) {
+    request = &ModifyInstanceDestroyProtectRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdb", APIVersion, "ModifyInstanceDestroyProtect")
+    
+    
+    return
+}
+
+func NewModifyInstanceDestroyProtectResponse() (response *ModifyInstanceDestroyProtectResponse) {
+    response = &ModifyInstanceDestroyProtectResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyInstanceDestroyProtect
+// 该接口（ModifyInstanceDestroyProtect）用于修改实例销毁保护状态。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  CDBERROR = "CdbError"
+//  INTERNALERROR_CDBERROR = "InternalError.CdbError"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) ModifyInstanceDestroyProtect(request *ModifyInstanceDestroyProtectRequest) (response *ModifyInstanceDestroyProtectResponse, err error) {
+    return c.ModifyInstanceDestroyProtectWithContext(context.Background(), request)
+}
+
+// ModifyInstanceDestroyProtect
+// 该接口（ModifyInstanceDestroyProtect）用于修改实例销毁保护状态。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  CDBERROR = "CdbError"
+//  INTERNALERROR_CDBERROR = "InternalError.CdbError"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) ModifyInstanceDestroyProtectWithContext(ctx context.Context, request *ModifyInstanceDestroyProtectRequest) (response *ModifyInstanceDestroyProtectResponse, err error) {
+    if request == nil {
+        request = NewModifyInstanceDestroyProtectRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cdb", APIVersion, "ModifyInstanceDestroyProtect")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyInstanceDestroyProtect require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyInstanceDestroyProtectResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyInstanceParamRequest() (request *ModifyInstanceParamRequest) {
     request = &ModifyInstanceParamRequest{
         BaseRequest: &tchttp.BaseRequest{},

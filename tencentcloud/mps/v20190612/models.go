@@ -19799,6 +19799,9 @@ type ImageTaskInput struct {
 
 	// <p>Ai分镜拆解配置</p>
 	AiStoryboardConfig *AiStoryboardConfig `json:"AiStoryboardConfig,omitnil,omitempty" name:"AiStoryboardConfig"`
+
+	// <p>图片理解配置</p>
+	UnderstandImageConfig *UnderstandImageConfig `json:"UnderstandImageConfig,omitnil,omitempty" name:"UnderstandImageConfig"`
 }
 
 type ImageTransformConfig struct {
@@ -30526,6 +30529,14 @@ type UnattachSecurityGroupInOutInfo struct {
 	FlowRegion *string `json:"FlowRegion,omitnil,omitempty" name:"FlowRegion"`
 }
 
+type UnderstandImageConfig struct {
+	// <p>图片理解模型</p><p>枚举值：</p><ul><li>WAND-understand-1.0-lite： 轻量理解模型</li><li>WAND-understand-1.0-flash： 质量-速度平衡理解模型</li><li>WAND-understand-1.0-pro： 高质量理解模型</li></ul>
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+
+	// <p>图片理解指令</p>
+	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
+}
+
 // Predefined struct for user
 type UpdateProjectRequestParams struct {
 	// <p>项目id</p>
@@ -31622,6 +31633,9 @@ type VoiceInfo struct {
 
 	// <p>推荐场景</p><p>如：教育</p>
 	Scenes []*string `json:"Scenes,omitnil,omitempty" name:"Scenes"`
+
+	// <p>音色所属引擎</p>
+	Engine *string `json:"Engine,omitnil,omitempty" name:"Engine"`
 }
 
 type VoiceProfile struct {

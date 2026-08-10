@@ -177,6 +177,56 @@ func (c *Client) AddNewBindRoleUserWithContext(ctx context.Context, request *Add
     return
 }
 
+func NewAddVulWhitelistRequest() (request *AddVulWhitelistRequest) {
+    request = &AddVulWhitelistRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "AddVulWhitelist")
+    
+    
+    return
+}
+
+func NewAddVulWhitelistResponse() (response *AddVulWhitelistResponse) {
+    response = &AddVulWhitelistResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// AddVulWhitelist
+// 添加漏洞白名单
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) AddVulWhitelist(request *AddVulWhitelistRequest) (response *AddVulWhitelistResponse, err error) {
+    return c.AddVulWhitelistWithContext(context.Background(), request)
+}
+
+// AddVulWhitelist
+// 添加漏洞白名单
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) AddVulWhitelistWithContext(ctx context.Context, request *AddVulWhitelistRequest) (response *AddVulWhitelistResponse, err error) {
+    if request == nil {
+        request = NewAddVulWhitelistRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "AddVulWhitelist")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddVulWhitelist require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAddVulWhitelistResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAccessKeyCheckTaskRequest() (request *CreateAccessKeyCheckTaskRequest) {
     request = &CreateAccessKeyCheckTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -200,15 +250,7 @@ func NewCreateAccessKeyCheckTaskResponse() (response *CreateAccessKeyCheckTaskRe
 // 检测AK 异步任务
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateAccessKeyCheckTask(request *CreateAccessKeyCheckTaskRequest) (response *CreateAccessKeyCheckTaskResponse, err error) {
     return c.CreateAccessKeyCheckTaskWithContext(context.Background(), request)
 }
@@ -217,15 +259,7 @@ func (c *Client) CreateAccessKeyCheckTask(request *CreateAccessKeyCheckTaskReque
 // 检测AK 异步任务
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateAccessKeyCheckTaskWithContext(ctx context.Context, request *CreateAccessKeyCheckTaskRequest) (response *CreateAccessKeyCheckTaskResponse, err error) {
     if request == nil {
         request = NewCreateAccessKeyCheckTaskRequest()
@@ -266,15 +300,7 @@ func NewCreateAccessKeySyncTaskResponse() (response *CreateAccessKeySyncTaskResp
 // 发起AK资产同步任务
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateAccessKeySyncTask(request *CreateAccessKeySyncTaskRequest) (response *CreateAccessKeySyncTaskResponse, err error) {
     return c.CreateAccessKeySyncTaskWithContext(context.Background(), request)
 }
@@ -283,15 +309,7 @@ func (c *Client) CreateAccessKeySyncTask(request *CreateAccessKeySyncTaskRequest
 // 发起AK资产同步任务
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateAccessKeySyncTaskWithContext(ctx context.Context, request *CreateAccessKeySyncTaskRequest) (response *CreateAccessKeySyncTaskResponse, err error) {
     if request == nil {
         request = NewCreateAccessKeySyncTaskRequest()
@@ -1857,6 +1875,64 @@ func (c *Client) CreateDspmWhitelistStrategyWithContext(ctx context.Context, req
     return
 }
 
+func NewCreateHostVulExportJobRequest() (request *CreateHostVulExportJobRequest) {
+    request = &CreateHostVulExportJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "CreateHostVulExportJob")
+    
+    
+    return
+}
+
+func NewCreateHostVulExportJobResponse() (response *CreateHostVulExportJobResponse) {
+    response = &CreateHostVulExportJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateHostVulExportJob
+// 创建主机列漏洞表导出任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) CreateHostVulExportJob(request *CreateHostVulExportJobRequest) (response *CreateHostVulExportJobResponse, err error) {
+    return c.CreateHostVulExportJobWithContext(context.Background(), request)
+}
+
+// CreateHostVulExportJob
+// 创建主机列漏洞表导出任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) CreateHostVulExportJobWithContext(ctx context.Context, request *CreateHostVulExportJobRequest) (response *CreateHostVulExportJobResponse, err error) {
+    if request == nil {
+        request = NewCreateHostVulExportJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "CreateHostVulExportJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateHostVulExportJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateHostVulExportJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateIaCAccessTokenRequest() (request *CreateIaCAccessTokenRequest) {
     request = &CreateIaCAccessTokenRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2181,6 +2257,326 @@ func (c *Client) CreateSkillScanWithContext(ctx context.Context, request *Create
     request.SetContext(ctx)
     
     response = NewCreateSkillScanResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateVulFixRetryTaskRequest() (request *CreateVulFixRetryTaskRequest) {
+    request = &CreateVulFixRetryTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "CreateVulFixRetryTask")
+    
+    
+    return
+}
+
+func NewCreateVulFixRetryTaskResponse() (response *CreateVulFixRetryTaskResponse) {
+    response = &CreateVulFixRetryTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateVulFixRetryTask
+// 对修复失败的漏洞修复任务进行重试，仅针对原任务中修复失败的主机重新下发修复指令。仅当任务状态为部分修复失败或全部修复失败时允许重试。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateVulFixRetryTask(request *CreateVulFixRetryTaskRequest) (response *CreateVulFixRetryTaskResponse, err error) {
+    return c.CreateVulFixRetryTaskWithContext(context.Background(), request)
+}
+
+// CreateVulFixRetryTask
+// 对修复失败的漏洞修复任务进行重试，仅针对原任务中修复失败的主机重新下发修复指令。仅当任务状态为部分修复失败或全部修复失败时允许重试。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateVulFixRetryTaskWithContext(ctx context.Context, request *CreateVulFixRetryTaskRequest) (response *CreateVulFixRetryTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateVulFixRetryTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "CreateVulFixRetryTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateVulFixRetryTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateVulFixRetryTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateVulFixTaskRequest() (request *CreateVulFixTaskRequest) {
+    request = &CreateVulFixTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "CreateVulFixTask")
+    
+    
+    return
+}
+
+func NewCreateVulFixTaskResponse() (response *CreateVulFixTaskResponse) {
+    response = &CreateVulFixTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateVulFixTask
+// 用户手动提交漏洞修复任务，指定需要修复的漏洞和目标主机，系统创建修复任务并下发执行。支持指定修复超时时间、是否创建快照等选项。通过FixItems数组精确控制每个漏洞/KB补丁修复哪些主机。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateVulFixTask(request *CreateVulFixTaskRequest) (response *CreateVulFixTaskResponse, err error) {
+    return c.CreateVulFixTaskWithContext(context.Background(), request)
+}
+
+// CreateVulFixTask
+// 用户手动提交漏洞修复任务，指定需要修复的漏洞和目标主机，系统创建修复任务并下发执行。支持指定修复超时时间、是否创建快照等选项。通过FixItems数组精确控制每个漏洞/KB补丁修复哪些主机。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateVulFixTaskWithContext(ctx context.Context, request *CreateVulFixTaskRequest) (response *CreateVulFixTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateVulFixTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "CreateVulFixTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateVulFixTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateVulFixTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateVulFixedExportJobRequest() (request *CreateVulFixedExportJobRequest) {
+    request = &CreateVulFixedExportJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "CreateVulFixedExportJob")
+    
+    
+    return
+}
+
+func NewCreateVulFixedExportJobResponse() (response *CreateVulFixedExportJobResponse) {
+    response = &CreateVulFixedExportJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateVulFixedExportJob
+// 创建已修复漏洞列表的导出任务。支持与 DescribeVulFixedList 相同的过滤条件，导出通过异步任务实现，返回 JobID 后前端轮询查询导出任务状态。导出字段包含漏洞ID、漏洞名称、漏洞等级、VPR评级、漏洞类型、CVE编号、主机名称、实例ID、关联组件&路径、修复时间。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateVulFixedExportJob(request *CreateVulFixedExportJobRequest) (response *CreateVulFixedExportJobResponse, err error) {
+    return c.CreateVulFixedExportJobWithContext(context.Background(), request)
+}
+
+// CreateVulFixedExportJob
+// 创建已修复漏洞列表的导出任务。支持与 DescribeVulFixedList 相同的过滤条件，导出通过异步任务实现，返回 JobID 后前端轮询查询导出任务状态。导出字段包含漏洞ID、漏洞名称、漏洞等级、VPR评级、漏洞类型、CVE编号、主机名称、实例ID、关联组件&路径、修复时间。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateVulFixedExportJobWithContext(ctx context.Context, request *CreateVulFixedExportJobRequest) (response *CreateVulFixedExportJobResponse, err error) {
+    if request == nil {
+        request = NewCreateVulFixedExportJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "CreateVulFixedExportJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateVulFixedExportJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateVulFixedExportJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateVulReScanRequest() (request *CreateVulReScanRequest) {
+    request = &CreateVulReScanRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "CreateVulReScan")
+    
+    
+    return
+}
+
+func NewCreateVulReScanResponse() (response *CreateVulReScanResponse) {
+    response = &CreateVulReScanResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateVulReScan
+// 创建漏洞重新扫描
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) CreateVulReScan(request *CreateVulReScanRequest) (response *CreateVulReScanResponse, err error) {
+    return c.CreateVulReScanWithContext(context.Background(), request)
+}
+
+// CreateVulReScan
+// 创建漏洞重新扫描
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) CreateVulReScanWithContext(ctx context.Context, request *CreateVulReScanRequest) (response *CreateVulReScanResponse, err error) {
+    if request == nil {
+        request = NewCreateVulReScanRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "CreateVulReScan")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateVulReScan require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateVulReScanResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateVulScanManualRequest() (request *CreateVulScanManualRequest) {
+    request = &CreateVulScanManualRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "CreateVulScanManual")
+    
+    
+    return
+}
+
+func NewCreateVulScanManualResponse() (response *CreateVulScanManualResponse) {
+    response = &CreateVulScanManualResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateVulScanManual
+// 创建漏洞扫描（一键扫描）
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) CreateVulScanManual(request *CreateVulScanManualRequest) (response *CreateVulScanManualResponse, err error) {
+    return c.CreateVulScanManualWithContext(context.Background(), request)
+}
+
+// CreateVulScanManual
+// 创建漏洞扫描（一键扫描）
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) CreateVulScanManualWithContext(ctx context.Context, request *CreateVulScanManualRequest) (response *CreateVulScanManualResponse, err error) {
+    if request == nil {
+        request = NewCreateVulScanManualRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "CreateVulScanManual")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateVulScanManual require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateVulScanManualResponse()
     err = c.Send(request, response)
     return
 }
@@ -3453,6 +3849,56 @@ func (c *Client) DeleteRiskScanTaskWithContext(ctx context.Context, request *Del
     return
 }
 
+func NewDeleteVulWhitelistRequest() (request *DeleteVulWhitelistRequest) {
+    request = &DeleteVulWhitelistRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DeleteVulWhitelist")
+    
+    
+    return
+}
+
+func NewDeleteVulWhitelistResponse() (response *DeleteVulWhitelistResponse) {
+    response = &DeleteVulWhitelistResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteVulWhitelist
+// 删除漏洞白名单
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DeleteVulWhitelist(request *DeleteVulWhitelistRequest) (response *DeleteVulWhitelistResponse, err error) {
+    return c.DeleteVulWhitelistWithContext(context.Background(), request)
+}
+
+// DeleteVulWhitelist
+// 删除漏洞白名单
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DeleteVulWhitelistWithContext(ctx context.Context, request *DeleteVulWhitelistRequest) (response *DeleteVulWhitelistResponse, err error) {
+    if request == nil {
+        request = NewDeleteVulWhitelistRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DeleteVulWhitelist")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteVulWhitelist require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteVulWhitelistResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAIAgentAssetListRequest() (request *DescribeAIAgentAssetListRequest) {
     request = &DescribeAIAgentAssetListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3476,24 +3922,7 @@ func NewDescribeAIAgentAssetListResponse() (response *DescribeAIAgentAssetListRe
 // 获取 AI agent 资产列表
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeAIAgentAssetList(request *DescribeAIAgentAssetListRequest) (response *DescribeAIAgentAssetListResponse, err error) {
     return c.DescribeAIAgentAssetListWithContext(context.Background(), request)
 }
@@ -3502,24 +3931,7 @@ func (c *Client) DescribeAIAgentAssetList(request *DescribeAIAgentAssetListReque
 // 获取 AI agent 资产列表
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeAIAgentAssetListWithContext(ctx context.Context, request *DescribeAIAgentAssetListRequest) (response *DescribeAIAgentAssetListResponse, err error) {
     if request == nil {
         request = NewDescribeAIAgentAssetListRequest()
@@ -12023,6 +12435,222 @@ func (c *Client) DescribeHighBaseLineRiskListWithContext(ctx context.Context, re
     return
 }
 
+func NewDescribeHostKBRiskListRequest() (request *DescribeHostKBRiskListRequest) {
+    request = &DescribeHostKBRiskListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeHostKBRiskList")
+    
+    
+    return
+}
+
+func NewDescribeHostKBRiskListResponse() (response *DescribeHostKBRiskListResponse) {
+    response = &DescribeHostKBRiskListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeHostKBRiskList
+// 获取主机kb风险列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeHostKBRiskList(request *DescribeHostKBRiskListRequest) (response *DescribeHostKBRiskListResponse, err error) {
+    return c.DescribeHostKBRiskListWithContext(context.Background(), request)
+}
+
+// DescribeHostKBRiskList
+// 获取主机kb风险列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeHostKBRiskListWithContext(ctx context.Context, request *DescribeHostKBRiskListRequest) (response *DescribeHostKBRiskListResponse, err error) {
+    if request == nil {
+        request = NewDescribeHostKBRiskListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeHostKBRiskList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeHostKBRiskList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeHostKBRiskListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeHostVulItemVPRInfoRequest() (request *DescribeHostVulItemVPRInfoRequest) {
+    request = &DescribeHostVulItemVPRInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeHostVulItemVPRInfo")
+    
+    
+    return
+}
+
+func NewDescribeHostVulItemVPRInfoResponse() (response *DescribeHostVulItemVPRInfoResponse) {
+    response = &DescribeHostVulItemVPRInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeHostVulItemVPRInfo
+// 获取主机漏洞VPR信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeHostVulItemVPRInfo(request *DescribeHostVulItemVPRInfoRequest) (response *DescribeHostVulItemVPRInfoResponse, err error) {
+    return c.DescribeHostVulItemVPRInfoWithContext(context.Background(), request)
+}
+
+// DescribeHostVulItemVPRInfo
+// 获取主机漏洞VPR信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeHostVulItemVPRInfoWithContext(ctx context.Context, request *DescribeHostVulItemVPRInfoRequest) (response *DescribeHostVulItemVPRInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeHostVulItemVPRInfoRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeHostVulItemVPRInfo")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeHostVulItemVPRInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeHostVulItemVPRInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeHostVulOverviewRequest() (request *DescribeHostVulOverviewRequest) {
+    request = &DescribeHostVulOverviewRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeHostVulOverview")
+    
+    
+    return
+}
+
+func NewDescribeHostVulOverviewResponse() (response *DescribeHostVulOverviewResponse) {
+    response = &DescribeHostVulOverviewResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeHostVulOverview
+// 获取主机漏洞概览
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeHostVulOverview(request *DescribeHostVulOverviewRequest) (response *DescribeHostVulOverviewResponse, err error) {
+    return c.DescribeHostVulOverviewWithContext(context.Background(), request)
+}
+
+// DescribeHostVulOverview
+// 获取主机漏洞概览
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeHostVulOverviewWithContext(ctx context.Context, request *DescribeHostVulOverviewRequest) (response *DescribeHostVulOverviewResponse, err error) {
+    if request == nil {
+        request = NewDescribeHostVulOverviewRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeHostVulOverview")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeHostVulOverview require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeHostVulOverviewResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeHostVulRiskListRequest() (request *DescribeHostVulRiskListRequest) {
+    request = &DescribeHostVulRiskListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeHostVulRiskList")
+    
+    
+    return
+}
+
+func NewDescribeHostVulRiskListResponse() (response *DescribeHostVulRiskListResponse) {
+    response = &DescribeHostVulRiskListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeHostVulRiskList
+// 获取主机漏洞风险列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeHostVulRiskList(request *DescribeHostVulRiskListRequest) (response *DescribeHostVulRiskListResponse, err error) {
+    return c.DescribeHostVulRiskListWithContext(context.Background(), request)
+}
+
+// DescribeHostVulRiskList
+// 获取主机漏洞风险列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeHostVulRiskListWithContext(ctx context.Context, request *DescribeHostVulRiskListRequest) (response *DescribeHostVulRiskListResponse, err error) {
+    if request == nil {
+        request = NewDescribeHostVulRiskListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeHostVulRiskList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeHostVulRiskList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeHostVulRiskListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeIaCFileListRequest() (request *DescribeIaCFileListRequest) {
     request = &DescribeIaCFileListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -12363,6 +12991,138 @@ func (c *Client) DescribeIpInvokeRecordDetailWithContext(ctx context.Context, re
     request.SetContext(ctx)
     
     response = NewDescribeIpInvokeRecordDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeKBDetailRequest() (request *DescribeKBDetailRequest) {
+    request = &DescribeKBDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeKBDetail")
+    
+    
+    return
+}
+
+func NewDescribeKBDetailResponse() (response *DescribeKBDetailResponse) {
+    response = &DescribeKBDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeKBDetail
+// 根据用户输入的 KB 内部 ID 查询单个 Windows KB 补丁的详情信息，返回 KB 基本信息、发布时间、是否需要重启，以及该 KB 关联的漏洞列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeKBDetail(request *DescribeKBDetailRequest) (response *DescribeKBDetailResponse, err error) {
+    return c.DescribeKBDetailWithContext(context.Background(), request)
+}
+
+// DescribeKBDetail
+// 根据用户输入的 KB 内部 ID 查询单个 Windows KB 补丁的详情信息，返回 KB 基本信息、发布时间、是否需要重启，以及该 KB 关联的漏洞列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeKBDetailWithContext(ctx context.Context, request *DescribeKBDetailRequest) (response *DescribeKBDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeKBDetailRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeKBDetail")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeKBDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeKBDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeKBUpdatableMachineListRequest() (request *DescribeKBUpdatableMachineListRequest) {
+    request = &DescribeKBUpdatableMachineListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeKBUpdatableMachineList")
+    
+    
+    return
+}
+
+func NewDescribeKBUpdatableMachineListResponse() (response *DescribeKBUpdatableMachineListResponse) {
+    response = &DescribeKBUpdatableMachineListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeKBUpdatableMachineList
+// 查询指定KB补丁可以更新的主机列表。用于Windows系统补丁修复场景，在用户提交KB补丁更新任务前，查询哪些主机缺少该补丁且支持自动更新。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeKBUpdatableMachineList(request *DescribeKBUpdatableMachineListRequest) (response *DescribeKBUpdatableMachineListResponse, err error) {
+    return c.DescribeKBUpdatableMachineListWithContext(context.Background(), request)
+}
+
+// DescribeKBUpdatableMachineList
+// 查询指定KB补丁可以更新的主机列表。用于Windows系统补丁修复场景，在用户提交KB补丁更新任务前，查询哪些主机缺少该补丁且支持自动更新。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeKBUpdatableMachineListWithContext(ctx context.Context, request *DescribeKBUpdatableMachineListRequest) (response *DescribeKBUpdatableMachineListResponse, err error) {
+    if request == nil {
+        request = NewDescribeKBUpdatableMachineListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeKBUpdatableMachineList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeKBUpdatableMachineList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeKBUpdatableMachineListResponse()
     err = c.Send(request, response)
     return
 }
@@ -16033,6 +16793,744 @@ func (c *Client) DescribeVpcAssetsWithContext(ctx context.Context, request *Desc
     return
 }
 
+func NewDescribeVulComponentRelateHostRequest() (request *DescribeVulComponentRelateHostRequest) {
+    request = &DescribeVulComponentRelateHostRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeVulComponentRelateHost")
+    
+    
+    return
+}
+
+func NewDescribeVulComponentRelateHostResponse() (response *DescribeVulComponentRelateHostResponse) {
+    response = &DescribeVulComponentRelateHostResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeVulComponentRelateHost
+// 获取漏洞组件关联主机
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeVulComponentRelateHost(request *DescribeVulComponentRelateHostRequest) (response *DescribeVulComponentRelateHostResponse, err error) {
+    return c.DescribeVulComponentRelateHostWithContext(context.Background(), request)
+}
+
+// DescribeVulComponentRelateHost
+// 获取漏洞组件关联主机
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeVulComponentRelateHostWithContext(ctx context.Context, request *DescribeVulComponentRelateHostRequest) (response *DescribeVulComponentRelateHostResponse, err error) {
+    if request == nil {
+        request = NewDescribeVulComponentRelateHostRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeVulComponentRelateHost")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVulComponentRelateHost require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeVulComponentRelateHostResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeVulFixTaskDetailRequest() (request *DescribeVulFixTaskDetailRequest) {
+    request = &DescribeVulFixTaskDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeVulFixTaskDetail")
+    
+    
+    return
+}
+
+func NewDescribeVulFixTaskDetailResponse() (response *DescribeVulFixTaskDetailResponse) {
+    response = &DescribeVulFixTaskDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeVulFixTaskDetail
+// 查询指定漏洞修复任务的详情信息，包含每台主机的修复状态、快照状态等明细数据，支持分页和筛选。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeVulFixTaskDetail(request *DescribeVulFixTaskDetailRequest) (response *DescribeVulFixTaskDetailResponse, err error) {
+    return c.DescribeVulFixTaskDetailWithContext(context.Background(), request)
+}
+
+// DescribeVulFixTaskDetail
+// 查询指定漏洞修复任务的详情信息，包含每台主机的修复状态、快照状态等明细数据，支持分页和筛选。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeVulFixTaskDetailWithContext(ctx context.Context, request *DescribeVulFixTaskDetailRequest) (response *DescribeVulFixTaskDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeVulFixTaskDetailRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeVulFixTaskDetail")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVulFixTaskDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeVulFixTaskDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeVulFixTaskListRequest() (request *DescribeVulFixTaskListRequest) {
+    request = &DescribeVulFixTaskListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeVulFixTaskList")
+    
+    
+    return
+}
+
+func NewDescribeVulFixTaskListResponse() (response *DescribeVulFixTaskListResponse) {
+    response = &DescribeVulFixTaskListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeVulFixTaskList
+// 分页查询漏洞修复任务记录列表，支持按修复状态、时间范围等条件筛选，展示每个修复任务的概要信息。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeVulFixTaskList(request *DescribeVulFixTaskListRequest) (response *DescribeVulFixTaskListResponse, err error) {
+    return c.DescribeVulFixTaskListWithContext(context.Background(), request)
+}
+
+// DescribeVulFixTaskList
+// 分页查询漏洞修复任务记录列表，支持按修复状态、时间范围等条件筛选，展示每个修复任务的概要信息。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeVulFixTaskListWithContext(ctx context.Context, request *DescribeVulFixTaskListRequest) (response *DescribeVulFixTaskListResponse, err error) {
+    if request == nil {
+        request = NewDescribeVulFixTaskListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeVulFixTaskList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVulFixTaskList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeVulFixTaskListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeVulFixableMachineListRequest() (request *DescribeVulFixableMachineListRequest) {
+    request = &DescribeVulFixableMachineListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeVulFixableMachineList")
+    
+    
+    return
+}
+
+func NewDescribeVulFixableMachineListResponse() (response *DescribeVulFixableMachineListResponse) {
+    response = &DescribeVulFixableMachineListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeVulFixableMachineList
+// 查询指定漏洞可以被修复的主机列表。在用户提交修复任务前，需要先查询哪些主机支持自动修复，为用户选择修复目标提供数据支持。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeVulFixableMachineList(request *DescribeVulFixableMachineListRequest) (response *DescribeVulFixableMachineListResponse, err error) {
+    return c.DescribeVulFixableMachineListWithContext(context.Background(), request)
+}
+
+// DescribeVulFixableMachineList
+// 查询指定漏洞可以被修复的主机列表。在用户提交修复任务前，需要先查询哪些主机支持自动修复，为用户选择修复目标提供数据支持。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeVulFixableMachineListWithContext(ctx context.Context, request *DescribeVulFixableMachineListRequest) (response *DescribeVulFixableMachineListResponse, err error) {
+    if request == nil {
+        request = NewDescribeVulFixableMachineListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeVulFixableMachineList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVulFixableMachineList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeVulFixableMachineListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeVulFixedHostDetailRequest() (request *DescribeVulFixedHostDetailRequest) {
+    request = &DescribeVulFixedHostDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeVulFixedHostDetail")
+    
+    
+    return
+}
+
+func NewDescribeVulFixedHostDetailResponse() (response *DescribeVulFixedHostDetailResponse) {
+    response = &DescribeVulFixedHostDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeVulFixedHostDetail
+// 查询某个已修复漏洞在指定主机上的修复详情，包含漏洞基本信息、修复主机信息以及关联组件&路径的详细列表（组件名称、命中版本、关联路径、修复命令）。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeVulFixedHostDetail(request *DescribeVulFixedHostDetailRequest) (response *DescribeVulFixedHostDetailResponse, err error) {
+    return c.DescribeVulFixedHostDetailWithContext(context.Background(), request)
+}
+
+// DescribeVulFixedHostDetail
+// 查询某个已修复漏洞在指定主机上的修复详情，包含漏洞基本信息、修复主机信息以及关联组件&路径的详细列表（组件名称、命中版本、关联路径、修复命令）。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeVulFixedHostDetailWithContext(ctx context.Context, request *DescribeVulFixedHostDetailRequest) (response *DescribeVulFixedHostDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeVulFixedHostDetailRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeVulFixedHostDetail")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVulFixedHostDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeVulFixedHostDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeVulFixedListRequest() (request *DescribeVulFixedListRequest) {
+    request = &DescribeVulFixedListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeVulFixedList")
+    
+    
+    return
+}
+
+func NewDescribeVulFixedListResponse() (response *DescribeVulFixedListResponse) {
+    response = &DescribeVulFixedListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeVulFixedList
+// 查询已被修复的漏洞列表，展示修复成功的漏洞信息及修复情况统计，帮助用户了解修复成效。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeVulFixedList(request *DescribeVulFixedListRequest) (response *DescribeVulFixedListResponse, err error) {
+    return c.DescribeVulFixedListWithContext(context.Background(), request)
+}
+
+// DescribeVulFixedList
+// 查询已被修复的漏洞列表，展示修复成功的漏洞信息及修复情况统计，帮助用户了解修复成效。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeVulFixedListWithContext(ctx context.Context, request *DescribeVulFixedListRequest) (response *DescribeVulFixedListResponse, err error) {
+    if request == nil {
+        request = NewDescribeVulFixedListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeVulFixedList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVulFixedList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeVulFixedListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeVulHostRelateComponentRequest() (request *DescribeVulHostRelateComponentRequest) {
+    request = &DescribeVulHostRelateComponentRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeVulHostRelateComponent")
+    
+    
+    return
+}
+
+func NewDescribeVulHostRelateComponentResponse() (response *DescribeVulHostRelateComponentResponse) {
+    response = &DescribeVulHostRelateComponentResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeVulHostRelateComponent
+// 获取漏洞主机关联组件
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeVulHostRelateComponent(request *DescribeVulHostRelateComponentRequest) (response *DescribeVulHostRelateComponentResponse, err error) {
+    return c.DescribeVulHostRelateComponentWithContext(context.Background(), request)
+}
+
+// DescribeVulHostRelateComponent
+// 获取漏洞主机关联组件
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeVulHostRelateComponentWithContext(ctx context.Context, request *DescribeVulHostRelateComponentRequest) (response *DescribeVulHostRelateComponentResponse, err error) {
+    if request == nil {
+        request = NewDescribeVulHostRelateComponentRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeVulHostRelateComponent")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVulHostRelateComponent require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeVulHostRelateComponentResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeVulIgnoreRuleListRequest() (request *DescribeVulIgnoreRuleListRequest) {
+    request = &DescribeVulIgnoreRuleListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeVulIgnoreRuleList")
+    
+    
+    return
+}
+
+func NewDescribeVulIgnoreRuleListResponse() (response *DescribeVulIgnoreRuleListResponse) {
+    response = &DescribeVulIgnoreRuleListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeVulIgnoreRuleList
+// 获取漏洞忽略列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeVulIgnoreRuleList(request *DescribeVulIgnoreRuleListRequest) (response *DescribeVulIgnoreRuleListResponse, err error) {
+    return c.DescribeVulIgnoreRuleListWithContext(context.Background(), request)
+}
+
+// DescribeVulIgnoreRuleList
+// 获取漏洞忽略列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeVulIgnoreRuleListWithContext(ctx context.Context, request *DescribeVulIgnoreRuleListRequest) (response *DescribeVulIgnoreRuleListResponse, err error) {
+    if request == nil {
+        request = NewDescribeVulIgnoreRuleListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeVulIgnoreRuleList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVulIgnoreRuleList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeVulIgnoreRuleListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeVulItemListRequest() (request *DescribeVulItemListRequest) {
+    request = &DescribeVulItemListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeVulItemList")
+    
+    
+    return
+}
+
+func NewDescribeVulItemListResponse() (response *DescribeVulItemListResponse) {
+    response = &DescribeVulItemListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeVulItemList
+// 获取漏洞列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeVulItemList(request *DescribeVulItemListRequest) (response *DescribeVulItemListResponse, err error) {
+    return c.DescribeVulItemListWithContext(context.Background(), request)
+}
+
+// DescribeVulItemList
+// 获取漏洞列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeVulItemListWithContext(ctx context.Context, request *DescribeVulItemListRequest) (response *DescribeVulItemListResponse, err error) {
+    if request == nil {
+        request = NewDescribeVulItemListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeVulItemList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVulItemList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeVulItemListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeVulLabelListRequest() (request *DescribeVulLabelListRequest) {
+    request = &DescribeVulLabelListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeVulLabelList")
+    
+    
+    return
+}
+
+func NewDescribeVulLabelListResponse() (response *DescribeVulLabelListResponse) {
+    response = &DescribeVulLabelListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeVulLabelList
+// 获取漏洞标签列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeVulLabelList(request *DescribeVulLabelListRequest) (response *DescribeVulLabelListResponse, err error) {
+    return c.DescribeVulLabelListWithContext(context.Background(), request)
+}
+
+// DescribeVulLabelList
+// 获取漏洞标签列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeVulLabelListWithContext(ctx context.Context, request *DescribeVulLabelListRequest) (response *DescribeVulLabelListResponse, err error) {
+    if request == nil {
+        request = NewDescribeVulLabelListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeVulLabelList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVulLabelList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeVulLabelListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeVulRiskListRequest() (request *DescribeVulRiskListRequest) {
     request = &DescribeVulRiskListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -16056,24 +17554,7 @@ func NewDescribeVulRiskListResponse() (response *DescribeVulRiskListResponse) {
 // 查询云边界分析-暴露路径下主机节点的漏洞列表
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeVulRiskList(request *DescribeVulRiskListRequest) (response *DescribeVulRiskListResponse, err error) {
     return c.DescribeVulRiskListWithContext(context.Background(), request)
 }
@@ -16082,24 +17563,7 @@ func (c *Client) DescribeVulRiskList(request *DescribeVulRiskListRequest) (respo
 // 查询云边界分析-暴露路径下主机节点的漏洞列表
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeVulRiskListWithContext(ctx context.Context, request *DescribeVulRiskListRequest) (response *DescribeVulRiskListResponse, err error) {
     if request == nil {
         request = NewDescribeVulRiskListRequest()
@@ -16113,6 +17577,256 @@ func (c *Client) DescribeVulRiskListWithContext(ctx context.Context, request *De
     request.SetContext(ctx)
     
     response = NewDescribeVulRiskListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeVulRiskRelateComponentRequest() (request *DescribeVulRiskRelateComponentRequest) {
+    request = &DescribeVulRiskRelateComponentRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeVulRiskRelateComponent")
+    
+    
+    return
+}
+
+func NewDescribeVulRiskRelateComponentResponse() (response *DescribeVulRiskRelateComponentResponse) {
+    response = &DescribeVulRiskRelateComponentResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeVulRiskRelateComponent
+// 获取漏洞关联组件
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeVulRiskRelateComponent(request *DescribeVulRiskRelateComponentRequest) (response *DescribeVulRiskRelateComponentResponse, err error) {
+    return c.DescribeVulRiskRelateComponentWithContext(context.Background(), request)
+}
+
+// DescribeVulRiskRelateComponent
+// 获取漏洞关联组件
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeVulRiskRelateComponentWithContext(ctx context.Context, request *DescribeVulRiskRelateComponentRequest) (response *DescribeVulRiskRelateComponentResponse, err error) {
+    if request == nil {
+        request = NewDescribeVulRiskRelateComponentRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeVulRiskRelateComponent")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVulRiskRelateComponent require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeVulRiskRelateComponentResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeVulRiskRelateHostRequest() (request *DescribeVulRiskRelateHostRequest) {
+    request = &DescribeVulRiskRelateHostRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeVulRiskRelateHost")
+    
+    
+    return
+}
+
+func NewDescribeVulRiskRelateHostResponse() (response *DescribeVulRiskRelateHostResponse) {
+    response = &DescribeVulRiskRelateHostResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeVulRiskRelateHost
+// 获取漏洞或KB关联的主机
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeVulRiskRelateHost(request *DescribeVulRiskRelateHostRequest) (response *DescribeVulRiskRelateHostResponse, err error) {
+    return c.DescribeVulRiskRelateHostWithContext(context.Background(), request)
+}
+
+// DescribeVulRiskRelateHost
+// 获取漏洞或KB关联的主机
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeVulRiskRelateHostWithContext(ctx context.Context, request *DescribeVulRiskRelateHostRequest) (response *DescribeVulRiskRelateHostResponse, err error) {
+    if request == nil {
+        request = NewDescribeVulRiskRelateHostRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeVulRiskRelateHost")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVulRiskRelateHost require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeVulRiskRelateHostResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeVulScanPeriodicRequest() (request *DescribeVulScanPeriodicRequest) {
+    request = &DescribeVulScanPeriodicRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeVulScanPeriodic")
+    
+    
+    return
+}
+
+func NewDescribeVulScanPeriodicResponse() (response *DescribeVulScanPeriodicResponse) {
+    response = &DescribeVulScanPeriodicResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeVulScanPeriodic
+// 获取漏洞扫描（周期扫描）
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeVulScanPeriodic(request *DescribeVulScanPeriodicRequest) (response *DescribeVulScanPeriodicResponse, err error) {
+    return c.DescribeVulScanPeriodicWithContext(context.Background(), request)
+}
+
+// DescribeVulScanPeriodic
+// 获取漏洞扫描（周期扫描）
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeVulScanPeriodicWithContext(ctx context.Context, request *DescribeVulScanPeriodicRequest) (response *DescribeVulScanPeriodicResponse, err error) {
+    if request == nil {
+        request = NewDescribeVulScanPeriodicRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeVulScanPeriodic")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVulScanPeriodic require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeVulScanPeriodicResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeVulScanTaskDetailRequest() (request *DescribeVulScanTaskDetailRequest) {
+    request = &DescribeVulScanTaskDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeVulScanTaskDetail")
+    
+    
+    return
+}
+
+func NewDescribeVulScanTaskDetailResponse() (response *DescribeVulScanTaskDetailResponse) {
+    response = &DescribeVulScanTaskDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeVulScanTaskDetail
+// 获取扫描漏洞任务详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeVulScanTaskDetail(request *DescribeVulScanTaskDetailRequest) (response *DescribeVulScanTaskDetailResponse, err error) {
+    return c.DescribeVulScanTaskDetailWithContext(context.Background(), request)
+}
+
+// DescribeVulScanTaskDetail
+// 获取扫描漏洞任务详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeVulScanTaskDetailWithContext(ctx context.Context, request *DescribeVulScanTaskDetailRequest) (response *DescribeVulScanTaskDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeVulScanTaskDetailRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeVulScanTaskDetail")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVulScanTaskDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeVulScanTaskDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeVulScanTaskListRequest() (request *DescribeVulScanTaskListRequest) {
+    request = &DescribeVulScanTaskListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeVulScanTaskList")
+    
+    
+    return
+}
+
+func NewDescribeVulScanTaskListResponse() (response *DescribeVulScanTaskListResponse) {
+    response = &DescribeVulScanTaskListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeVulScanTaskList
+// 获取漏洞扫描任务记录
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeVulScanTaskList(request *DescribeVulScanTaskListRequest) (response *DescribeVulScanTaskListResponse, err error) {
+    return c.DescribeVulScanTaskListWithContext(context.Background(), request)
+}
+
+// DescribeVulScanTaskList
+// 获取漏洞扫描任务记录
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeVulScanTaskListWithContext(ctx context.Context, request *DescribeVulScanTaskListRequest) (response *DescribeVulScanTaskListResponse, err error) {
+    if request == nil {
+        request = NewDescribeVulScanTaskListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeVulScanTaskList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVulScanTaskList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeVulScanTaskListResponse()
     err = c.Send(request, response)
     return
 }
@@ -19183,6 +20897,156 @@ func (c *Client) ModifyUebaRuleSwitchWithContext(ctx context.Context, request *M
     return
 }
 
+func NewModifyVulScanPeriodicRequest() (request *ModifyVulScanPeriodicRequest) {
+    request = &ModifyVulScanPeriodicRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "ModifyVulScanPeriodic")
+    
+    
+    return
+}
+
+func NewModifyVulScanPeriodicResponse() (response *ModifyVulScanPeriodicResponse) {
+    response = &ModifyVulScanPeriodicResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyVulScanPeriodic
+// 修改漏洞扫描（周期扫描）
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) ModifyVulScanPeriodic(request *ModifyVulScanPeriodicRequest) (response *ModifyVulScanPeriodicResponse, err error) {
+    return c.ModifyVulScanPeriodicWithContext(context.Background(), request)
+}
+
+// ModifyVulScanPeriodic
+// 修改漏洞扫描（周期扫描）
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) ModifyVulScanPeriodicWithContext(ctx context.Context, request *ModifyVulScanPeriodicRequest) (response *ModifyVulScanPeriodicResponse, err error) {
+    if request == nil {
+        request = NewModifyVulScanPeriodicRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "ModifyVulScanPeriodic")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyVulScanPeriodic require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyVulScanPeriodicResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyVulWhitelistConfigRequest() (request *ModifyVulWhitelistConfigRequest) {
+    request = &ModifyVulWhitelistConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "ModifyVulWhitelistConfig")
+    
+    
+    return
+}
+
+func NewModifyVulWhitelistConfigResponse() (response *ModifyVulWhitelistConfigResponse) {
+    response = &ModifyVulWhitelistConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyVulWhitelistConfig
+// 修改漏洞白名单配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) ModifyVulWhitelistConfig(request *ModifyVulWhitelistConfigRequest) (response *ModifyVulWhitelistConfigResponse, err error) {
+    return c.ModifyVulWhitelistConfigWithContext(context.Background(), request)
+}
+
+// ModifyVulWhitelistConfig
+// 修改漏洞白名单配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) ModifyVulWhitelistConfigWithContext(ctx context.Context, request *ModifyVulWhitelistConfigRequest) (response *ModifyVulWhitelistConfigResponse, err error) {
+    if request == nil {
+        request = NewModifyVulWhitelistConfigRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "ModifyVulWhitelistConfig")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyVulWhitelistConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyVulWhitelistConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyVulWhitelistSwitchRequest() (request *ModifyVulWhitelistSwitchRequest) {
+    request = &ModifyVulWhitelistSwitchRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "ModifyVulWhitelistSwitch")
+    
+    
+    return
+}
+
+func NewModifyVulWhitelistSwitchResponse() (response *ModifyVulWhitelistSwitchResponse) {
+    response = &ModifyVulWhitelistSwitchResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyVulWhitelistSwitch
+// 修改漏洞白名单开关
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) ModifyVulWhitelistSwitch(request *ModifyVulWhitelistSwitchRequest) (response *ModifyVulWhitelistSwitchResponse, err error) {
+    return c.ModifyVulWhitelistSwitchWithContext(context.Background(), request)
+}
+
+// ModifyVulWhitelistSwitch
+// 修改漏洞白名单开关
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) ModifyVulWhitelistSwitchWithContext(ctx context.Context, request *ModifyVulWhitelistSwitchRequest) (response *ModifyVulWhitelistSwitchResponse, err error) {
+    if request == nil {
+        request = NewModifyVulWhitelistSwitchRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "ModifyVulWhitelistSwitch")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyVulWhitelistSwitch require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyVulWhitelistSwitchResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewResetDspmAssetAccountPasswordRequest() (request *ResetDspmAssetAccountPasswordRequest) {
     request = &ResetDspmAssetAccountPasswordRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -19527,6 +21391,58 @@ func (c *Client) StopRiskCenterTaskWithContext(ctx context.Context, request *Sto
     request.SetContext(ctx)
     
     response = NewStopRiskCenterTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStopVulScanTaskRequest() (request *StopVulScanTaskRequest) {
+    request = &StopVulScanTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "StopVulScanTask")
+    
+    
+    return
+}
+
+func NewStopVulScanTaskResponse() (response *StopVulScanTaskResponse) {
+    response = &StopVulScanTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// StopVulScanTask
+// 停止漏洞扫描（任务扫描）
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) StopVulScanTask(request *StopVulScanTaskRequest) (response *StopVulScanTaskResponse, err error) {
+    return c.StopVulScanTaskWithContext(context.Background(), request)
+}
+
+// StopVulScanTask
+// 停止漏洞扫描（任务扫描）
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) StopVulScanTaskWithContext(ctx context.Context, request *StopVulScanTaskRequest) (response *StopVulScanTaskResponse, err error) {
+    if request == nil {
+        request = NewStopVulScanTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "StopVulScanTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StopVulScanTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStopVulScanTaskResponse()
     err = c.Send(request, response)
     return
 }

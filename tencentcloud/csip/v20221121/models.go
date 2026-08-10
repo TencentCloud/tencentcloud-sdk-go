@@ -420,6 +420,17 @@ type AccessKeyUser struct {
 	CloudType *int64 `json:"CloudType,omitnil,omitempty" name:"CloudType"`
 }
 
+type AccountBriefInfo struct {
+	// <p>账号 AppID</p>
+	AppID *uint64 `json:"AppID,omitnil,omitempty" name:"AppID"`
+
+	// <p>账号昵称</p>
+	Nick *string `json:"Nick,omitnil,omitempty" name:"Nick"`
+
+	// <p>账号 Uin</p>
+	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
+}
+
 // Predefined struct for user
 type AddDspmAssetManagerRequestParams struct {
 	// 管理员uin
@@ -532,6 +543,88 @@ func (r *AddNewBindRoleUserResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *AddNewBindRoleUserResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AddVulWhitelistRequestParams struct {
+	// <p>漏洞ID</p>
+	VulId []*uint64 `json:"VulId,omitnil,omitempty" name:"VulId"`
+
+	// <p>补丁ID</p>
+	KbId []*uint64 `json:"KbId,omitnil,omitempty" name:"KbId"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>备注</p>
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// <p>资产列表</p>
+	AssetList []*string `json:"AssetList,omitnil,omitempty" name:"AssetList"`
+}
+
+type AddVulWhitelistRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>漏洞ID</p>
+	VulId []*uint64 `json:"VulId,omitnil,omitempty" name:"VulId"`
+
+	// <p>补丁ID</p>
+	KbId []*uint64 `json:"KbId,omitnil,omitempty" name:"KbId"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>备注</p>
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// <p>资产列表</p>
+	AssetList []*string `json:"AssetList,omitnil,omitempty" name:"AssetList"`
+}
+
+func (r *AddVulWhitelistRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddVulWhitelistRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VulId")
+	delete(f, "KbId")
+	delete(f, "MemberId")
+	delete(f, "Remark")
+	delete(f, "AssetList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddVulWhitelistRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AddVulWhitelistResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type AddVulWhitelistResponse struct {
+	*tchttp.BaseResponse
+	Response *AddVulWhitelistResponseParams `json:"Response"`
+}
+
+func (r *AddVulWhitelistResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddVulWhitelistResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2476,6 +2569,20 @@ type CloudCountDesc struct {
 type CommandPluginState struct {
 	// <p>插件安装状态（上层聚合）<br>枚举值：<br>NONE：未安装<br>INSTALLING：安装中<br>INSTALLED：已安装<br>INSTALL_FAIL：安装失败</p>
 	InstallStatus *string `json:"InstallStatus,omitnil,omitempty" name:"InstallStatus"`
+}
+
+type ComponentDetailItem struct {
+	// 组件名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 命中版本
+	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
+
+	// 关联路径
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
+
+	// 修复命令
+	FixCommand *string `json:"FixCommand,omitnil,omitempty" name:"FixCommand"`
 }
 
 type ContainerEnvInfo struct {
@@ -5392,6 +5499,77 @@ func (r *CreateDspmWhitelistStrategyResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateHostVulExportJobRequestParams struct {
+	// <p>导出的action</p><p>枚举值：</p><ul><li>LinuxHostVulRiskList： linux漏洞风险列表</li><li>WebCmsHostVulRiskList： WebCms漏洞风险列表</li><li>AppHostVulRiskList： App漏洞风险列表</li><li>EmergencyHostVulRiskList： 紧急漏洞风险列表</li><li>KBRiskList： Windows kb风险列表</li><li>RelateHostList： 关联主机列表</li><li>WhiteList： 漏洞白名单</li></ul>
+	BusinessAction *string `json:"BusinessAction,omitnil,omitempty" name:"BusinessAction"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>筛选条件数组，多条件之间为 AND 关系<br>支持的 Filter.Name：<br>KbID：KB风险关联主机情况下需要额外加入KB风险ID<br>VulID：漏洞风险关联主机情况下需要额外加入vul风险ID</p>
+	Filters []*Filters `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type CreateHostVulExportJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>导出的action</p><p>枚举值：</p><ul><li>LinuxHostVulRiskList： linux漏洞风险列表</li><li>WebCmsHostVulRiskList： WebCms漏洞风险列表</li><li>AppHostVulRiskList： App漏洞风险列表</li><li>EmergencyHostVulRiskList： 紧急漏洞风险列表</li><li>KBRiskList： Windows kb风险列表</li><li>RelateHostList： 关联主机列表</li><li>WhiteList： 漏洞白名单</li></ul>
+	BusinessAction *string `json:"BusinessAction,omitnil,omitempty" name:"BusinessAction"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>筛选条件数组，多条件之间为 AND 关系<br>支持的 Filter.Name：<br>KbID：KB风险关联主机情况下需要额外加入KB风险ID<br>VulID：漏洞风险关联主机情况下需要额外加入vul风险ID</p>
+	Filters []*Filters `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *CreateHostVulExportJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateHostVulExportJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BusinessAction")
+	delete(f, "MemberId")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateHostVulExportJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateHostVulExportJobResponseParams struct {
+	// <p>任务ID</p>
+	JobID *string `json:"JobID,omitnil,omitempty" name:"JobID"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateHostVulExportJobResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateHostVulExportJobResponseParams `json:"Response"`
+}
+
+func (r *CreateHostVulExportJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateHostVulExportJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateIaCAccessTokenRequestParams struct {
 	// <p>CI/CD名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
@@ -5802,6 +5980,445 @@ func (r *CreateSkillScanResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateSkillScanResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateVulFixRetryTaskRequestParams struct {
+	// <p>需要重试的修复任务ID</p>
+	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>指定需要重试的主机实例ID列表，不传则对所有失败主机进行重试</p>
+	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
+
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+type CreateVulFixRetryTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>需要重试的修复任务ID</p>
+	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>指定需要重试的主机实例ID列表，不传则对所有失败主机进行重试</p>
+	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
+
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+func (r *CreateVulFixRetryTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateVulFixRetryTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "InstanceIds")
+	delete(f, "MemberId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateVulFixRetryTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateVulFixRetryTaskResponseParams struct {
+	// <p>重试生成的新任务ID，用于后续查询任务状态</p>
+	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>本次重试的主机数量</p>
+	RetryCount *int64 `json:"RetryCount,omitnil,omitempty" name:"RetryCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateVulFixRetryTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateVulFixRetryTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateVulFixRetryTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateVulFixRetryTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateVulFixTaskRequestParams struct {
+	// <p>修复项列表，每项指定一个漏洞/KB补丁及其需要修复的主机<br>入参限制：最多100项，总实例数不超过5000</p>
+	FixItems []*VulFixItem `json:"FixItems,omitnil,omitempty" name:"FixItems"`
+
+	// <p>最大修复时间<br>单位：秒<br>默认值：3600</p>
+	Timeout *int64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
+
+	// <p>是否在修复前创建磁盘快照<br>默认值：false</p>
+	CreateSnapshot *bool `json:"CreateSnapshot,omitnil,omitempty" name:"CreateSnapshot"`
+
+	// <p>快照名称，CreateSnapshot为true时有效<br>入参限制：最长128个字符</p>
+	SnapshotName *string `json:"SnapshotName,omitnil,omitempty" name:"SnapshotName"`
+
+	// <p>快照保存天数，CreateSnapshot为true时有效</p>
+	SaveDays *int64 `json:"SaveDays,omitnil,omitempty" name:"SaveDays"`
+
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+type CreateVulFixTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>修复项列表，每项指定一个漏洞/KB补丁及其需要修复的主机<br>入参限制：最多100项，总实例数不超过5000</p>
+	FixItems []*VulFixItem `json:"FixItems,omitnil,omitempty" name:"FixItems"`
+
+	// <p>最大修复时间<br>单位：秒<br>默认值：3600</p>
+	Timeout *int64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
+
+	// <p>是否在修复前创建磁盘快照<br>默认值：false</p>
+	CreateSnapshot *bool `json:"CreateSnapshot,omitnil,omitempty" name:"CreateSnapshot"`
+
+	// <p>快照名称，CreateSnapshot为true时有效<br>入参限制：最长128个字符</p>
+	SnapshotName *string `json:"SnapshotName,omitnil,omitempty" name:"SnapshotName"`
+
+	// <p>快照保存天数，CreateSnapshot为true时有效</p>
+	SaveDays *int64 `json:"SaveDays,omitnil,omitempty" name:"SaveDays"`
+
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+func (r *CreateVulFixTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateVulFixTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FixItems")
+	delete(f, "Timeout")
+	delete(f, "CreateSnapshot")
+	delete(f, "SnapshotName")
+	delete(f, "SaveDays")
+	delete(f, "MemberId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateVulFixTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateVulFixTaskResponseParams struct {
+	// <p>修复任务ID，用于后续查询任务状态</p>
+	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateVulFixTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateVulFixTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateVulFixTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateVulFixTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateVulFixedExportJobRequestParams struct {
+	// <p>过滤条件（与 DescribeVulFixedList 一致）<br>支持的Filter.Name：<br>Keyword - 模糊匹配，按关键字搜索（漏洞名称/CVE编号/主机名称/实例ID）<br>VulName - 模糊匹配，按漏洞名称搜索<br>Level - 精确匹配，按漏洞等级筛选：LOW-低危 MEDIUM-中危 HIGH-高危 CRITICAL-严重<br>VprLevel - 精确匹配，按VPR评级筛选：1-Low 2-Medium 3-High 4-Critical<br>VulCategory - 精确匹配，按漏洞类型筛选：LINUX-Linux软件漏洞 WINDOWS-Windows系统补丁漏洞 WEB_CMS-Web-CMS漏洞 APPLICATION-应用漏洞 EMERGENCY-应急漏洞<br>MachineName - 模糊匹配，按主机名称搜索<br>InstanceId - 模糊匹配，按实例ID搜索<br>FixTime - 范围匹配，修复时间范围，传入两个值表示起止时间</p>
+	Filters []*Filters `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>排序字段<br>枚举值：<br>FixTime：按修复时间排序<br>VulName：按漏洞名称排序</p>
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// <p>排序方式<br>枚举值：<br>asc：升序<br>desc：降序<br>默认值：desc</p>
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+type CreateVulFixedExportJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>过滤条件（与 DescribeVulFixedList 一致）<br>支持的Filter.Name：<br>Keyword - 模糊匹配，按关键字搜索（漏洞名称/CVE编号/主机名称/实例ID）<br>VulName - 模糊匹配，按漏洞名称搜索<br>Level - 精确匹配，按漏洞等级筛选：LOW-低危 MEDIUM-中危 HIGH-高危 CRITICAL-严重<br>VprLevel - 精确匹配，按VPR评级筛选：1-Low 2-Medium 3-High 4-Critical<br>VulCategory - 精确匹配，按漏洞类型筛选：LINUX-Linux软件漏洞 WINDOWS-Windows系统补丁漏洞 WEB_CMS-Web-CMS漏洞 APPLICATION-应用漏洞 EMERGENCY-应急漏洞<br>MachineName - 模糊匹配，按主机名称搜索<br>InstanceId - 模糊匹配，按实例ID搜索<br>FixTime - 范围匹配，修复时间范围，传入两个值表示起止时间</p>
+	Filters []*Filters `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>排序字段<br>枚举值：<br>FixTime：按修复时间排序<br>VulName：按漏洞名称排序</p>
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// <p>排序方式<br>枚举值：<br>asc：升序<br>desc：降序<br>默认值：desc</p>
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+func (r *CreateVulFixedExportJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateVulFixedExportJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "Order")
+	delete(f, "By")
+	delete(f, "MemberId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateVulFixedExportJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateVulFixedExportJobResponseParams struct {
+	// <p>导出任务ID<br>取值参考：前端轮询导出任务状态时使用</p>
+	JobID *string `json:"JobID,omitnil,omitempty" name:"JobID"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateVulFixedExportJobResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateVulFixedExportJobResponseParams `json:"Response"`
+}
+
+func (r *CreateVulFixedExportJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateVulFixedExportJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateVulReScanRequestParams struct {
+	// <p>漏洞ID</p>
+	VulId []*uint64 `json:"VulId,omitnil,omitempty" name:"VulId"`
+
+	// <p>补丁编号</p>
+	KbNo []*string `json:"KbNo,omitnil,omitempty" name:"KbNo"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>资产列表</p>
+	AssetList []*string `json:"AssetList,omitnil,omitempty" name:"AssetList"`
+}
+
+type CreateVulReScanRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>漏洞ID</p>
+	VulId []*uint64 `json:"VulId,omitnil,omitempty" name:"VulId"`
+
+	// <p>补丁编号</p>
+	KbNo []*string `json:"KbNo,omitnil,omitempty" name:"KbNo"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>资产列表</p>
+	AssetList []*string `json:"AssetList,omitnil,omitempty" name:"AssetList"`
+}
+
+func (r *CreateVulReScanRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateVulReScanRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VulId")
+	delete(f, "KbNo")
+	delete(f, "MemberId")
+	delete(f, "AssetList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateVulReScanRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateVulReScanResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateVulReScanResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateVulReScanResponseParams `json:"Response"`
+}
+
+func (r *CreateVulReScanResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateVulReScanResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateVulScanManualRequestParams struct {
+	// <p>超时时间（秒）</p>
+	Timeout *uint64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
+
+	// <p>资产范围（0-全部资产，1-自选资产，2-剔除资产，3-自动资产匹配）</p>
+	AssetRange *int64 `json:"AssetRange,omitnil,omitempty" name:"AssetRange"`
+
+	// <p>扫描方式（VersionCompare: 版本对比, POC: POC检测, VersionComparePOC: 版本对比+POC检测）</p>
+	Method []*string `json:"Method,omitnil,omitempty" name:"Method"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>漏洞id</p>
+	VulId []*uint64 `json:"VulId,omitnil,omitempty" name:"VulId"`
+
+	// <p>kb编号</p>
+	KbNo []*string `json:"KbNo,omitnil,omitempty" name:"KbNo"`
+
+	// <p>漏扫类型</p><p>枚举值：</p><ul><li>LINUX： Linux软件漏洞</li><li>WINDOWS： Windows系统补丁</li><li>WEB_CMS： Web-CMS漏洞</li><li>APPLICATION： 应用漏洞</li><li>EMERGENCY： 应急漏洞</li></ul>
+	VulCategory []*string `json:"VulCategory,omitnil,omitempty" name:"VulCategory"`
+
+	// <p>漏洞等级（INVALID: 无效, INFO: 提示, LOW: 低危, MEDIUM: 中危, HIGH: 高危, CRITICAL: 严重）</p>
+	Level []*string `json:"Level,omitnil,omitempty" name:"Level"`
+
+	// <p>资产列表（Quuid列表）</p>
+	AssetList []*string `json:"AssetList,omitnil,omitempty" name:"AssetList"`
+
+	// <p>标签id</p>
+	TagIds []*uint64 `json:"TagIds,omitnil,omitempty" name:"TagIds"`
+}
+
+type CreateVulScanManualRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>超时时间（秒）</p>
+	Timeout *uint64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
+
+	// <p>资产范围（0-全部资产，1-自选资产，2-剔除资产，3-自动资产匹配）</p>
+	AssetRange *int64 `json:"AssetRange,omitnil,omitempty" name:"AssetRange"`
+
+	// <p>扫描方式（VersionCompare: 版本对比, POC: POC检测, VersionComparePOC: 版本对比+POC检测）</p>
+	Method []*string `json:"Method,omitnil,omitempty" name:"Method"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>漏洞id</p>
+	VulId []*uint64 `json:"VulId,omitnil,omitempty" name:"VulId"`
+
+	// <p>kb编号</p>
+	KbNo []*string `json:"KbNo,omitnil,omitempty" name:"KbNo"`
+
+	// <p>漏扫类型</p><p>枚举值：</p><ul><li>LINUX： Linux软件漏洞</li><li>WINDOWS： Windows系统补丁</li><li>WEB_CMS： Web-CMS漏洞</li><li>APPLICATION： 应用漏洞</li><li>EMERGENCY： 应急漏洞</li></ul>
+	VulCategory []*string `json:"VulCategory,omitnil,omitempty" name:"VulCategory"`
+
+	// <p>漏洞等级（INVALID: 无效, INFO: 提示, LOW: 低危, MEDIUM: 中危, HIGH: 高危, CRITICAL: 严重）</p>
+	Level []*string `json:"Level,omitnil,omitempty" name:"Level"`
+
+	// <p>资产列表（Quuid列表）</p>
+	AssetList []*string `json:"AssetList,omitnil,omitempty" name:"AssetList"`
+
+	// <p>标签id</p>
+	TagIds []*uint64 `json:"TagIds,omitnil,omitempty" name:"TagIds"`
+}
+
+func (r *CreateVulScanManualRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateVulScanManualRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Timeout")
+	delete(f, "AssetRange")
+	delete(f, "Method")
+	delete(f, "MemberId")
+	delete(f, "VulId")
+	delete(f, "KbNo")
+	delete(f, "VulCategory")
+	delete(f, "Level")
+	delete(f, "AssetList")
+	delete(f, "TagIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateVulScanManualRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateVulScanManualResponseParams struct {
+	// <p>任务id</p>
+	TaskId *uint64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateVulScanManualResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateVulScanManualResponseParams `json:"Response"`
+}
+
+func (r *CreateVulScanManualResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateVulScanManualResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -7197,6 +7814,67 @@ func (r *DeleteRiskScanTaskResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteRiskScanTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteVulWhitelistRequestParams struct {
+	// <p>id列表</p>
+	Id []*uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+type DeleteVulWhitelistRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>id列表</p>
+	Id []*uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+func (r *DeleteVulWhitelistRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteVulWhitelistRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "MemberId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteVulWhitelistRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteVulWhitelistResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteVulWhitelistResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteVulWhitelistResponseParams `json:"Response"`
+}
+
+func (r *DeleteVulWhitelistResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteVulWhitelistResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -16847,6 +17525,320 @@ func (r *DescribeHighBaseLineRiskListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeHostKBRiskListRequestParams struct {
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>筛选条件数组，多条件之间为 AND 关系<br>支持的 Filter.Name：<br>Keyword：关键字模糊搜索（对 KB 编号/名称模糊匹配）<br>RiskStatus：修复状态<br>InstanceID：实例ID<br>NewestKB: 最新补丁(0/1)</p>
+	Filters []*Filters `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>每页返回数量<br>取值范围：[1, 100]<br>默认值：10</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>分页偏移量<br>取值范围：[0, +∞)<br>默认值：0</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>排序方向<br>枚举值：<br>ASC：升序<br>DESC：降序<br>默认值：DESC</p>
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// <p>排序字段<br>枚举值：<br>LatestScanTime：最近扫描时间<br>默认值：LatestScanTime</p>
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+}
+
+type DescribeHostKBRiskListRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>筛选条件数组，多条件之间为 AND 关系<br>支持的 Filter.Name：<br>Keyword：关键字模糊搜索（对 KB 编号/名称模糊匹配）<br>RiskStatus：修复状态<br>InstanceID：实例ID<br>NewestKB: 最新补丁(0/1)</p>
+	Filters []*Filters `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>每页返回数量<br>取值范围：[1, 100]<br>默认值：10</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>分页偏移量<br>取值范围：[0, +∞)<br>默认值：0</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>排序方向<br>枚举值：<br>ASC：升序<br>DESC：降序<br>默认值：DESC</p>
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// <p>排序字段<br>枚举值：<br>LatestScanTime：最近扫描时间<br>默认值：LatestScanTime</p>
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+}
+
+func (r *DescribeHostKBRiskListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHostKBRiskListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MemberId")
+	delete(f, "Filters")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Order")
+	delete(f, "By")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeHostKBRiskListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeHostKBRiskListResponseParams struct {
+	// <p>主机 KB 补丁风险列表</p>
+	List []*HostKBRisk `json:"List,omitnil,omitempty" name:"List"`
+
+	// <p>凭据总数</p>
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeHostKBRiskListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeHostKBRiskListResponseParams `json:"Response"`
+}
+
+func (r *DescribeHostKBRiskListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHostKBRiskListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeHostVulItemVPRInfoRequestParams struct {
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>漏洞ID</p>
+	VulID *uint64 `json:"VulID,omitnil,omitempty" name:"VulID"`
+}
+
+type DescribeHostVulItemVPRInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>漏洞ID</p>
+	VulID *uint64 `json:"VulID,omitnil,omitempty" name:"VulID"`
+}
+
+func (r *DescribeHostVulItemVPRInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHostVulItemVPRInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MemberId")
+	delete(f, "VulID")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeHostVulItemVPRInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeHostVulItemVPRInfoResponseParams struct {
+	// <p>VPR Label</p>
+	Label []*VPRLabel `json:"Label,omitnil,omitempty" name:"Label"`
+
+	// <p>VPR评级过程和结果</p>
+	VRPRatingInfo *VPRRatingInfo `json:"VRPRatingInfo,omitnil,omitempty" name:"VRPRatingInfo"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeHostVulItemVPRInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeHostVulItemVPRInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeHostVulItemVPRInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHostVulItemVPRInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeHostVulOverviewRequestParams struct {
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+type DescribeHostVulOverviewRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+func (r *DescribeHostVulOverviewRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHostVulOverviewRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MemberId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeHostVulOverviewRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeHostVulOverviewResponseParams struct {
+	// <p>主机漏洞概览数据</p>
+	Overview *HostVulOverview `json:"Overview,omitnil,omitempty" name:"Overview"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeHostVulOverviewResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeHostVulOverviewResponseParams `json:"Response"`
+}
+
+func (r *DescribeHostVulOverviewResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHostVulOverviewResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeHostVulRiskListRequestParams struct {
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>筛选条件数组，多条件之间为 AND 关系<br>支持的 Filter.Name：<br>CVSSLevel：CVSS level过滤<br>Keyword：关键字模糊搜索（多词使用｜分隔，对漏洞名/CVEID 模糊匹配）<br>Category：漏洞分类（LINUX/WEB_CMS/APPLICATION/EMERGENCY）<br>VPRLevel：VPR 评级<br>RiskStatus：修复状态<br>Label：VPR风险标签<br>InstanceID：实例ID<br>CheckMethod：检测方法</p>
+	Filters []*Filters `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>每页返回数量<br>取值范围：[1, 100]<br>默认值：10</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>分页偏移量<br>取值范围：[0, +∞)<br>默认值：0</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>排序方向<br>枚举值：<br>ASC：升序<br>DESC：降序<br>默认值：DESC</p>
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// <p>排序字段<br>枚举值：<br>LatestScanTime：最近扫描时间<br>默认值：LatestScanTime</p>
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+}
+
+type DescribeHostVulRiskListRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>筛选条件数组，多条件之间为 AND 关系<br>支持的 Filter.Name：<br>CVSSLevel：CVSS level过滤<br>Keyword：关键字模糊搜索（多词使用｜分隔，对漏洞名/CVEID 模糊匹配）<br>Category：漏洞分类（LINUX/WEB_CMS/APPLICATION/EMERGENCY）<br>VPRLevel：VPR 评级<br>RiskStatus：修复状态<br>Label：VPR风险标签<br>InstanceID：实例ID<br>CheckMethod：检测方法</p>
+	Filters []*Filters `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>每页返回数量<br>取值范围：[1, 100]<br>默认值：10</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>分页偏移量<br>取值范围：[0, +∞)<br>默认值：0</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>排序方向<br>枚举值：<br>ASC：升序<br>DESC：降序<br>默认值：DESC</p>
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// <p>排序字段<br>枚举值：<br>LatestScanTime：最近扫描时间<br>默认值：LatestScanTime</p>
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+}
+
+func (r *DescribeHostVulRiskListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHostVulRiskListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MemberId")
+	delete(f, "Filters")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Order")
+	delete(f, "By")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeHostVulRiskListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeHostVulRiskListResponseParams struct {
+	// <p>主机漏洞风险列表（按漏洞维度聚合）</p>
+	List []*HostVulRisk `json:"List,omitnil,omitempty" name:"List"`
+
+	// <p>凭据总数</p>
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeHostVulRiskListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeHostVulRiskListResponseParams `json:"Response"`
+}
+
+func (r *DescribeHostVulRiskListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHostVulRiskListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeIaCFileListRequestParams struct {
 	// <p>过滤条件</p>
 	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
@@ -17238,6 +18230,160 @@ func (r *DescribeIpInvokeRecordResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeIpInvokeRecordResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeKBDetailRequestParams struct {
+	// KB 补丁内部 ID（kb_info.id）
+	KBID *uint64 `json:"KBID,omitnil,omitempty" name:"KBID"`
+}
+
+type DescribeKBDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// KB 补丁内部 ID（kb_info.id）
+	KBID *uint64 `json:"KBID,omitnil,omitempty" name:"KBID"`
+}
+
+func (r *DescribeKBDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeKBDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "KBID")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeKBDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeKBDetailResponseParams struct {
+	// Windows KB 补丁详细信息
+	KBDetail *KBDetail `json:"KBDetail,omitnil,omitempty" name:"KBDetail"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeKBDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeKBDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeKBDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeKBDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeKBUpdatableMachineListRequestParams struct {
+	// <p>KB补丁ID列表，最多支持100个</p>
+	KBIds []*int64 `json:"KBIds,omitnil,omitempty" name:"KBIds"`
+
+	// <p>分页偏移量<br>取值范围：[0, +∞)<br>默认值：0</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>每页返回数量<br>取值范围：[1, 100]<br>默认值：10</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>过滤条件<br>支持的Filter.Name：<br>InstanceId - 精确匹配，按主机实例ID筛选<br>MachineName - 模糊匹配，按主机名称搜索<br>MachineIp - 模糊匹配，按主机IP搜索<br>SupportAutoFix - 精确匹配，按是否支持自动修复筛选：0-不支持 1-支持</p>
+	Filters []*Filters `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+type DescribeKBUpdatableMachineListRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>KB补丁ID列表，最多支持100个</p>
+	KBIds []*int64 `json:"KBIds,omitnil,omitempty" name:"KBIds"`
+
+	// <p>分页偏移量<br>取值范围：[0, +∞)<br>默认值：0</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>每页返回数量<br>取值范围：[1, 100]<br>默认值：10</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>过滤条件<br>支持的Filter.Name：<br>InstanceId - 精确匹配，按主机实例ID筛选<br>MachineName - 模糊匹配，按主机名称搜索<br>MachineIp - 模糊匹配，按主机IP搜索<br>SupportAutoFix - 精确匹配，按是否支持自动修复筛选：0-不支持 1-支持</p>
+	Filters []*Filters `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+func (r *DescribeKBUpdatableMachineListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeKBUpdatableMachineListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "KBIds")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	delete(f, "MemberId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeKBUpdatableMachineListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeKBUpdatableMachineListResponseParams struct {
+	// <p>可更新补丁主机列表</p>
+	Data []*KBUpdateMachineItem `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// <p>总数量</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>可一键修复的主机数量</p>
+	FixableCount *int64 `json:"FixableCount,omitnil,omitempty" name:"FixableCount"`
+
+	// <p>不可一键修复的主机数量</p>
+	NotFixableCount *int64 `json:"NotFixableCount,omitnil,omitempty" name:"NotFixableCount"`
+
+	// <p>KB补丁维度汇总信息，展示被修复的补丁列表概要</p>
+	KBSummary []*KBFixSummaryItem `json:"KBSummary,omitnil,omitempty" name:"KBSummary"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeKBUpdatableMachineListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeKBUpdatableMachineListResponseParams `json:"Response"`
+}
+
+func (r *DescribeKBUpdatableMachineListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeKBUpdatableMachineListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -21007,6 +22153,914 @@ func (r *DescribeVpcAssetsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeVulComponentRelateHostRequestParams struct {
+	// <p>漏洞 ID（vul_vuls.id）</p>
+	VulID *uint64 `json:"VulID,omitnil,omitempty" name:"VulID"`
+
+	// <p>组件名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>筛选条件数组，多条件之间为 AND 关系<br>支持的 Filter.Name：<br>Keyword：关键字模糊搜索（对主机名/IP/InstanceID 模糊匹配）</p>
+	Filters []*Filters `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>每页返回数量<br>取值范围：[1, 100]<br>默认值：10</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>分页偏移量<br>取值范围：[0, +∞)<br>默认值：0</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+type DescribeVulComponentRelateHostRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>漏洞 ID（vul_vuls.id）</p>
+	VulID *uint64 `json:"VulID,omitnil,omitempty" name:"VulID"`
+
+	// <p>组件名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>筛选条件数组，多条件之间为 AND 关系<br>支持的 Filter.Name：<br>Keyword：关键字模糊搜索（对主机名/IP/InstanceID 模糊匹配）</p>
+	Filters []*Filters `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>每页返回数量<br>取值范围：[1, 100]<br>默认值：10</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>分页偏移量<br>取值范围：[0, +∞)<br>默认值：0</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+func (r *DescribeVulComponentRelateHostRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVulComponentRelateHostRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VulID")
+	delete(f, "Name")
+	delete(f, "MemberId")
+	delete(f, "Filters")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVulComponentRelateHostRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVulComponentRelateHostResponseParams struct {
+	// <p>受该组件影响的主机列表</p>
+	List []*HostVulComponent `json:"List,omitnil,omitempty" name:"List"`
+
+	// <p>凭据总数</p>
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeVulComponentRelateHostResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeVulComponentRelateHostResponseParams `json:"Response"`
+}
+
+func (r *DescribeVulComponentRelateHostResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVulComponentRelateHostResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVulFixTaskDetailRequestParams struct {
+	// <p>修复任务ID</p>
+	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>分页偏移量<br>取值范围：[0, +∞)<br>默认值：0</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>每页返回数量<br>取值范围：[1, 100]<br>默认值：10</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>过滤条件<br>支持的Filter.Name：<br>InstanceId - 精确匹配，按主机实例ID筛选<br>VulId - 精确匹配，按漏洞ID筛选，过滤出某个漏洞下的主机<br>KBId - 精确匹配，按KB补丁ID筛选，过滤出某个KB补丁下的主机<br>Status - 精确匹配，按执行状态筛选：0-初始状态 1-已下发 11-客户端已确认 2-修复完成 3-客户端离线 4-超时 5-失败 6-不支持 9-等待快照创建完成中 10-快照创建失败<br>FixStatus - 精确匹配，按修复结果筛选：0-初始状态 1-修复成功 2-修复失败<br>SnapshotStatus - 精确匹配，按快照状态筛选：-1-无需创建快照 0-未开始 1-进行中 2-已完成 3-创建失败</p>
+	Filters []*Filters `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>排序字段<br>枚举值：<br>StartTime：按修复启动时间排序<br>EndTime：按修复结束时间排序</p>
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// <p>排序方式<br>枚举值：<br>asc：升序<br>desc：降序<br>默认值：desc</p>
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+type DescribeVulFixTaskDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>修复任务ID</p>
+	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>分页偏移量<br>取值范围：[0, +∞)<br>默认值：0</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>每页返回数量<br>取值范围：[1, 100]<br>默认值：10</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>过滤条件<br>支持的Filter.Name：<br>InstanceId - 精确匹配，按主机实例ID筛选<br>VulId - 精确匹配，按漏洞ID筛选，过滤出某个漏洞下的主机<br>KBId - 精确匹配，按KB补丁ID筛选，过滤出某个KB补丁下的主机<br>Status - 精确匹配，按执行状态筛选：0-初始状态 1-已下发 11-客户端已确认 2-修复完成 3-客户端离线 4-超时 5-失败 6-不支持 9-等待快照创建完成中 10-快照创建失败<br>FixStatus - 精确匹配，按修复结果筛选：0-初始状态 1-修复成功 2-修复失败<br>SnapshotStatus - 精确匹配，按快照状态筛选：-1-无需创建快照 0-未开始 1-进行中 2-已完成 3-创建失败</p>
+	Filters []*Filters `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>排序字段<br>枚举值：<br>StartTime：按修复启动时间排序<br>EndTime：按修复结束时间排序</p>
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// <p>排序方式<br>枚举值：<br>asc：升序<br>desc：降序<br>默认值：desc</p>
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+func (r *DescribeVulFixTaskDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVulFixTaskDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	delete(f, "Order")
+	delete(f, "By")
+	delete(f, "MemberId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVulFixTaskDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVulFixTaskDetailResponseParams struct {
+	// <p>任务明细列表</p>
+	Data []*VulFixTaskDetailItem `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// <p>总数量</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>任务概要信息</p>
+	TaskInfo *VulFixTaskInfo `json:"TaskInfo,omitnil,omitempty" name:"TaskInfo"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeVulFixTaskDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeVulFixTaskDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeVulFixTaskDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVulFixTaskDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVulFixTaskListRequestParams struct {
+	// <p>分页偏移量<br>取值范围：[0, +∞)<br>默认值：0</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>每页返回数量<br>取值范围：[1, 100]<br>默认值：10</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>过滤条件<br>支持的Filter.Name：<br>TaskId - 精确匹配，按任务ID筛选<br>JobId - 精确匹配，按任务JobId筛选，对应后台任务系统的任务ID<br>FixStatus - 精确匹配，按修复状态筛选：0-初始化 1-修复中 2-修复成功 3-部分修复失败 4-全部修复失败 5-停止修复<br>StartTime - 范围匹配，修复启动时间范围，传入两个值表示起止时间<br>AppId - 精确匹配，按创建者AppId筛选<br>VulCategory - 精确匹配，按漏洞类型筛选：LINUX-Linux软件漏洞 WINDOWS-Windows系统补丁漏洞 WEB_CMS-Web-CMS漏洞 APPLICATION-应用漏洞 EMERGENCY-应急漏洞<br>TaskName - 模糊匹配，按漏洞名称/CVE编号/KB补丁名称筛选，匹配任务关联的漏洞或KB补丁</p>
+	Filters []*Filters `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>排序字段<br>枚举值：<br>StartTime：按修复启动时间排序<br>EndTime：按修复结束时间排序<br>CreateTime：按创建时间排序</p>
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// <p>排序方式<br>枚举值：<br>asc：升序<br>desc：降序<br>默认值：desc</p>
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+type DescribeVulFixTaskListRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>分页偏移量<br>取值范围：[0, +∞)<br>默认值：0</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>每页返回数量<br>取值范围：[1, 100]<br>默认值：10</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>过滤条件<br>支持的Filter.Name：<br>TaskId - 精确匹配，按任务ID筛选<br>JobId - 精确匹配，按任务JobId筛选，对应后台任务系统的任务ID<br>FixStatus - 精确匹配，按修复状态筛选：0-初始化 1-修复中 2-修复成功 3-部分修复失败 4-全部修复失败 5-停止修复<br>StartTime - 范围匹配，修复启动时间范围，传入两个值表示起止时间<br>AppId - 精确匹配，按创建者AppId筛选<br>VulCategory - 精确匹配，按漏洞类型筛选：LINUX-Linux软件漏洞 WINDOWS-Windows系统补丁漏洞 WEB_CMS-Web-CMS漏洞 APPLICATION-应用漏洞 EMERGENCY-应急漏洞<br>TaskName - 模糊匹配，按漏洞名称/CVE编号/KB补丁名称筛选，匹配任务关联的漏洞或KB补丁</p>
+	Filters []*Filters `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>排序字段<br>枚举值：<br>StartTime：按修复启动时间排序<br>EndTime：按修复结束时间排序<br>CreateTime：按创建时间排序</p>
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// <p>排序方式<br>枚举值：<br>asc：升序<br>desc：降序<br>默认值：desc</p>
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+func (r *DescribeVulFixTaskListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVulFixTaskListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	delete(f, "Order")
+	delete(f, "By")
+	delete(f, "MemberId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVulFixTaskListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVulFixTaskListResponseParams struct {
+	// <p>修复任务列表</p>
+	Data []*VulFixTaskItem `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// <p>总数量</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeVulFixTaskListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeVulFixTaskListResponseParams `json:"Response"`
+}
+
+func (r *DescribeVulFixTaskListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVulFixTaskListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVulFixableMachineListRequestParams struct {
+	// <p>漏洞ID列表，最多支持100个</p>
+	VulIds []*int64 `json:"VulIds,omitnil,omitempty" name:"VulIds"`
+
+	// <p>分页偏移量<br>取值范围：[0, +∞)<br>默认值：0</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>每页返回数量<br>取值范围：[1, 100]<br>默认值：10</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>过滤条件<br>支持的Filter.Name：<br>Keyword - 模糊匹配，按资产ID、资产名称搜索<br>ComponentName - 模糊匹配，按关联组件名称搜索<br>InstanceId - 精确匹配，按主机实例ID筛选<br>MachineName - 模糊匹配，按主机名称搜索<br>MachineIp - 模糊匹配，按主机IP搜索<br>OsType - 精确匹配，按操作系统类型筛选：linux/windows<br>SupportAutoFix - 精确匹配，按是否支持自动修复筛选：0-不支持 1-支持<br>Tag - 精确匹配，按资产标签筛选<br>AppId - 精确匹配，按所属账号筛选</p>
+	Filters []*Filters `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+type DescribeVulFixableMachineListRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>漏洞ID列表，最多支持100个</p>
+	VulIds []*int64 `json:"VulIds,omitnil,omitempty" name:"VulIds"`
+
+	// <p>分页偏移量<br>取值范围：[0, +∞)<br>默认值：0</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>每页返回数量<br>取值范围：[1, 100]<br>默认值：10</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>过滤条件<br>支持的Filter.Name：<br>Keyword - 模糊匹配，按资产ID、资产名称搜索<br>ComponentName - 模糊匹配，按关联组件名称搜索<br>InstanceId - 精确匹配，按主机实例ID筛选<br>MachineName - 模糊匹配，按主机名称搜索<br>MachineIp - 模糊匹配，按主机IP搜索<br>OsType - 精确匹配，按操作系统类型筛选：linux/windows<br>SupportAutoFix - 精确匹配，按是否支持自动修复筛选：0-不支持 1-支持<br>Tag - 精确匹配，按资产标签筛选<br>AppId - 精确匹配，按所属账号筛选</p>
+	Filters []*Filters `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+func (r *DescribeVulFixableMachineListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVulFixableMachineListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VulIds")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	delete(f, "MemberId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVulFixableMachineListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVulFixableMachineListResponseParams struct {
+	// <p>可修复主机列表</p>
+	Data []*VulFixableMachineItem `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// <p>总数量</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>可一键修复的主机数量</p>
+	FixableCount *int64 `json:"FixableCount,omitnil,omitempty" name:"FixableCount"`
+
+	// <p>不可一键修复的主机数量</p>
+	NotFixableCount *int64 `json:"NotFixableCount,omitnil,omitempty" name:"NotFixableCount"`
+
+	// <p>漏洞维度汇总信息，展示被修复的漏洞列表概要</p>
+	VulSummary []*VulFixSummaryItem `json:"VulSummary,omitnil,omitempty" name:"VulSummary"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeVulFixableMachineListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeVulFixableMachineListResponseParams `json:"Response"`
+}
+
+func (r *DescribeVulFixableMachineListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVulFixableMachineListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVulFixedHostDetailRequestParams struct {
+	// <p>漏洞ID</p>
+	VulId *int64 `json:"VulId,omitnil,omitempty" name:"VulId"`
+
+	// <p>主机实例ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>分页偏移量，用于关联组件&amp;路径列表分页<br>取值范围：[0, +∞)<br>默认值：0</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>每页返回数量，用于关联组件&amp;路径列表分页<br>取值范围：[1, 100]<br>默认值：10</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+type DescribeVulFixedHostDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>漏洞ID</p>
+	VulId *int64 `json:"VulId,omitnil,omitempty" name:"VulId"`
+
+	// <p>主机实例ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>分页偏移量，用于关联组件&amp;路径列表分页<br>取值范围：[0, +∞)<br>默认值：0</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>每页返回数量，用于关联组件&amp;路径列表分页<br>取值范围：[1, 100]<br>默认值：10</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+func (r *DescribeVulFixedHostDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVulFixedHostDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VulId")
+	delete(f, "InstanceId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "MemberId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVulFixedHostDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVulFixedHostDetailResponseParams struct {
+	// <p>漏洞名称</p>
+	VulName *string `json:"VulName,omitnil,omitempty" name:"VulName"`
+
+	// <p>CVE编号</p>
+	CveId *string `json:"CveId,omitnil,omitempty" name:"CveId"`
+
+	// <p>漏洞类型<br>枚举值：<br>LINUX：Linux软件漏洞<br>WINDOWS：Windows系统补丁漏洞<br>WEB_CMS：Web-CMS漏洞<br>APPLICATION：应用漏洞</p>
+	VulCategory *string `json:"VulCategory,omitnil,omitempty" name:"VulCategory"`
+
+	// <p>修复完成时间<br>参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）</p>
+	FixTime *string `json:"FixTime,omitnil,omitempty" name:"FixTime"`
+
+	// <p>主机实例ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>主机名称</p>
+	MachineName *string `json:"MachineName,omitnil,omitempty" name:"MachineName"`
+
+	// <p>主机公网IP</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PublicIp *string `json:"PublicIp,omitnil,omitempty" name:"PublicIp"`
+
+	// <p>主机内网IP</p>
+	PrivateIp *string `json:"PrivateIp,omitnil,omitempty" name:"PrivateIp"`
+
+	// <p>关联组件&amp;路径详情列表</p>
+	ComponentDetails []*ComponentDetailItem `json:"ComponentDetails,omitnil,omitempty" name:"ComponentDetails"`
+
+	// <p>关联组件&amp;路径总数量</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeVulFixedHostDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeVulFixedHostDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeVulFixedHostDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVulFixedHostDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVulFixedListRequestParams struct {
+	// <p>分页偏移量<br>取值范围：[0, +∞)<br>默认值：0</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>每页返回数量<br>取值范围：[1, 100]<br>默认值：10</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>过滤条件<br>支持的Filter.Name：<br>Keyword - 模糊匹配，按关键字搜索（漏洞名称/CVE编号/主机名称/实例ID）<br>VulName - 模糊匹配，按漏洞名称搜索<br>Level - 精确匹配，按漏洞等级筛选：LOW-低危 MEDIUM-中危 HIGH-高危 CRITICAL-严重<br>VprLevel - 精确匹配，按VPR评级筛选：1-Low 2-Medium 3-High 4-Critical<br>VulCategory - 精确匹配，按漏洞类型筛选：LINUX-Linux软件漏洞 WINDOWS-Windows系统补丁漏洞 WEB_CMS-Web-CMS漏洞 APPLICATION-应用漏洞 EMERGENCY-应急漏洞<br>MachineName - 模糊匹配，按主机名称搜索<br>InstanceId - 模糊匹配，按实例ID搜索<br>FixTime - 范围匹配，修复时间范围，传入两个值表示起止时间</p>
+	Filters []*Filters `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>排序字段<br>枚举值：<br>FixTime：按修复时间排序<br>VulName：按漏洞名称排序</p>
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// <p>排序方式<br>枚举值：<br>asc：升序<br>desc：降序<br>默认值：desc</p>
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+type DescribeVulFixedListRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>分页偏移量<br>取值范围：[0, +∞)<br>默认值：0</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>每页返回数量<br>取值范围：[1, 100]<br>默认值：10</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>过滤条件<br>支持的Filter.Name：<br>Keyword - 模糊匹配，按关键字搜索（漏洞名称/CVE编号/主机名称/实例ID）<br>VulName - 模糊匹配，按漏洞名称搜索<br>Level - 精确匹配，按漏洞等级筛选：LOW-低危 MEDIUM-中危 HIGH-高危 CRITICAL-严重<br>VprLevel - 精确匹配，按VPR评级筛选：1-Low 2-Medium 3-High 4-Critical<br>VulCategory - 精确匹配，按漏洞类型筛选：LINUX-Linux软件漏洞 WINDOWS-Windows系统补丁漏洞 WEB_CMS-Web-CMS漏洞 APPLICATION-应用漏洞 EMERGENCY-应急漏洞<br>MachineName - 模糊匹配，按主机名称搜索<br>InstanceId - 模糊匹配，按实例ID搜索<br>FixTime - 范围匹配，修复时间范围，传入两个值表示起止时间</p>
+	Filters []*Filters `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>排序字段<br>枚举值：<br>FixTime：按修复时间排序<br>VulName：按漏洞名称排序</p>
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// <p>排序方式<br>枚举值：<br>asc：升序<br>desc：降序<br>默认值：desc</p>
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+func (r *DescribeVulFixedListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVulFixedListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	delete(f, "Order")
+	delete(f, "By")
+	delete(f, "MemberId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVulFixedListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVulFixedListResponseParams struct {
+	// <p>已修复漏洞列表</p>
+	Data []*VulFixedItem `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// <p>总数量</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeVulFixedListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeVulFixedListResponseParams `json:"Response"`
+}
+
+func (r *DescribeVulFixedListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVulFixedListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVulHostRelateComponentRequestParams struct {
+	// <p>漏洞 ID（vul_vuls.id）</p>
+	VulID *uint64 `json:"VulID,omitnil,omitempty" name:"VulID"`
+
+	// <p>实例ID</p>
+	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+type DescribeVulHostRelateComponentRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>漏洞 ID（vul_vuls.id）</p>
+	VulID *uint64 `json:"VulID,omitnil,omitempty" name:"VulID"`
+
+	// <p>实例ID</p>
+	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+func (r *DescribeVulHostRelateComponentRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVulHostRelateComponentRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VulID")
+	delete(f, "InstanceID")
+	delete(f, "MemberId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVulHostRelateComponentRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVulHostRelateComponentResponseParams struct {
+	// <p>受该组件影响的主机列表</p>
+	List []*HostVulComponent `json:"List,omitnil,omitempty" name:"List"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeVulHostRelateComponentResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeVulHostRelateComponentResponseParams `json:"Response"`
+}
+
+func (r *DescribeVulHostRelateComponentResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVulHostRelateComponentResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVulIgnoreRuleListRequestParams struct {
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>过滤条件，支持以下 Name：</p><li>Keyword - 漏洞名/备注，模糊匹配</li><li>Switch - 开关状态，过滤值：0（关闭）/ 1（开启）</li>
+	Filters []*Filters `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>分页大小，默认 10，最大 100</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>分页偏移，从 0 开始</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>排序方向：asc（升序）/ desc（降序），默认 desc</p>
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// <p>排序字段，默认按更新时间（UpdateTime）排序</p>
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+}
+
+type DescribeVulIgnoreRuleListRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>过滤条件，支持以下 Name：</p><li>Keyword - 漏洞名/备注，模糊匹配</li><li>Switch - 开关状态，过滤值：0（关闭）/ 1（开启）</li>
+	Filters []*Filters `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>分页大小，默认 10，最大 100</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>分页偏移，从 0 开始</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>排序方向：asc（升序）/ desc（降序），默认 desc</p>
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// <p>排序字段，默认按更新时间（UpdateTime）排序</p>
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+}
+
+func (r *DescribeVulIgnoreRuleListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVulIgnoreRuleListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MemberId")
+	delete(f, "Filters")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Order")
+	delete(f, "By")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVulIgnoreRuleListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVulIgnoreRuleListResponseParams struct {
+	// <p>白名单列表</p>
+	List []*VulWhitelist `json:"List,omitnil,omitempty" name:"List"`
+
+	// <p>总数</p>
+	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeVulIgnoreRuleListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeVulIgnoreRuleListResponseParams `json:"Response"`
+}
+
+func (r *DescribeVulIgnoreRuleListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVulIgnoreRuleListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVulItemListRequestParams struct {
+	// <p>筛选条件数组，多条件之间为 AND 关系<br>支持的 Filter.Name：<br>Keyword：关键字模糊搜索（对漏洞名/CVE/VulID 模糊匹配）<br>Category：漏洞分类（LINUX/WINDOWS/WEB_CMS/APPLICATION/EMERGENCY）<br>Level：威胁等级<br>VPRLevel：VPR 评级<br>Label：风险标签<br>CheckMethod：检测方式（VERSION_COMPARE/POC/VERSION_COMPARE_POC）<br>DefendStatus：漏洞防御状态（ENABLED/NOT_SUPPORTED/NOT_ENABLED）<br>SupportFix：是否支持一键修复（true/false）<br>Emergency:  紧急漏洞获取 (0/1)<br>Top5HotVul: 热点top 5 漏洞 (0/1)</p>
+	Filters []*Filters `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>每页返回数量<br>取值范围：[1, 100]<br>默认值：10</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>分页偏移量<br>取值范围：[0, +∞)<br>默认值：0</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>排序方向<br>枚举值：<br>ASC：升序<br>DESC：降序<br>默认值：DESC</p>
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// <p>排序字段<br>枚举值：<br>PublishTime：漏洞披露时间<br>默认值：PublishTime</p>
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+}
+
+type DescribeVulItemListRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>筛选条件数组，多条件之间为 AND 关系<br>支持的 Filter.Name：<br>Keyword：关键字模糊搜索（对漏洞名/CVE/VulID 模糊匹配）<br>Category：漏洞分类（LINUX/WINDOWS/WEB_CMS/APPLICATION/EMERGENCY）<br>Level：威胁等级<br>VPRLevel：VPR 评级<br>Label：风险标签<br>CheckMethod：检测方式（VERSION_COMPARE/POC/VERSION_COMPARE_POC）<br>DefendStatus：漏洞防御状态（ENABLED/NOT_SUPPORTED/NOT_ENABLED）<br>SupportFix：是否支持一键修复（true/false）<br>Emergency:  紧急漏洞获取 (0/1)<br>Top5HotVul: 热点top 5 漏洞 (0/1)</p>
+	Filters []*Filters `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>每页返回数量<br>取值范围：[1, 100]<br>默认值：10</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>分页偏移量<br>取值范围：[0, +∞)<br>默认值：0</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>排序方向<br>枚举值：<br>ASC：升序<br>DESC：降序<br>默认值：DESC</p>
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// <p>排序字段<br>枚举值：<br>PublishTime：漏洞披露时间<br>默认值：PublishTime</p>
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+}
+
+func (r *DescribeVulItemListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVulItemListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Order")
+	delete(f, "By")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVulItemListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVulItemListResponseParams struct {
+	// <p>漏洞条目列表</p>
+	List []*VulDetailInfo `json:"List,omitnil,omitempty" name:"List"`
+
+	// <p>凭据总数</p>
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeVulItemListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeVulItemListResponseParams `json:"Response"`
+}
+
+func (r *DescribeVulItemListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVulItemListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVulLabelListRequestParams struct {
+
+}
+
+type DescribeVulLabelListRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeVulLabelListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVulLabelListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVulLabelListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVulLabelListResponseParams struct {
+	// <p>漏洞条目列表</p>
+	List []*VPRLabel `json:"List,omitnil,omitempty" name:"List"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeVulLabelListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeVulLabelListResponseParams `json:"Response"`
+}
+
+func (r *DescribeVulLabelListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVulLabelListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeVulRiskListRequestParams struct {
 	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
@@ -21112,6 +23166,515 @@ func (r *DescribeVulRiskListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeVulRiskListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVulRiskRelateComponentRequestParams struct {
+	// <p>漏洞 ID（vul_vuls.id）</p>
+	VulID *uint64 `json:"VulID,omitnil,omitempty" name:"VulID"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>筛选条件数组，多条件之间为 AND 关系<br>支持的 Filter.Name：<br>Keyword：关键字模糊搜索（对组件名称模糊匹配）</p>
+	Filters []*Filters `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type DescribeVulRiskRelateComponentRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>漏洞 ID（vul_vuls.id）</p>
+	VulID *uint64 `json:"VulID,omitnil,omitempty" name:"VulID"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>筛选条件数组，多条件之间为 AND 关系<br>支持的 Filter.Name：<br>Keyword：关键字模糊搜索（对组件名称模糊匹配）</p>
+	Filters []*Filters `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *DescribeVulRiskRelateComponentRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVulRiskRelateComponentRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VulID")
+	delete(f, "MemberId")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVulRiskRelateComponentRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVulRiskRelateComponentResponseParams struct {
+	// <p>该漏洞影响的组件列表</p>
+	List []*VulComponentSummary `json:"List,omitnil,omitempty" name:"List"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeVulRiskRelateComponentResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeVulRiskRelateComponentResponseParams `json:"Response"`
+}
+
+func (r *DescribeVulRiskRelateComponentResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVulRiskRelateComponentResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVulRiskRelateHostRequestParams struct {
+	// <p>KB 补丁内部 ID（kb_info.id）</p>
+	KBID *uint64 `json:"KBID,omitnil,omitempty" name:"KBID"`
+
+	// <p>漏洞 ID（vul_vuls.id）</p>
+	VulID *uint64 `json:"VulID,omitnil,omitempty" name:"VulID"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>筛选条件数组，多条件之间为 AND 关系<br>支持的 Filter.Name：<br>Keyword：关键字模糊搜索（对主机名/IP/InstanceID 模糊匹配）<br>CloudTag: 云标签<br>Tag: 安全中心标签</p>
+	Filters []*Filters `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>每页返回数量<br>取值范围：[1, 100]<br>默认值：10</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>分页偏移量<br>取值范围：[0, +∞)<br>默认值：0</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>排序方向<br>枚举值：<br>ASC：升序<br>DESC：降序<br>默认值：DESC</p>
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// <p>排序字段<br>枚举值：<br>LatestScanTime：最近扫描时间<br>VPRLevel：VPR 评级<br>RiskStatus：修复状态<br>默认值：LatestScanTime</p>
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+}
+
+type DescribeVulRiskRelateHostRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>KB 补丁内部 ID（kb_info.id）</p>
+	KBID *uint64 `json:"KBID,omitnil,omitempty" name:"KBID"`
+
+	// <p>漏洞 ID（vul_vuls.id）</p>
+	VulID *uint64 `json:"VulID,omitnil,omitempty" name:"VulID"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>筛选条件数组，多条件之间为 AND 关系<br>支持的 Filter.Name：<br>Keyword：关键字模糊搜索（对主机名/IP/InstanceID 模糊匹配）<br>CloudTag: 云标签<br>Tag: 安全中心标签</p>
+	Filters []*Filters `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>每页返回数量<br>取值范围：[1, 100]<br>默认值：10</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>分页偏移量<br>取值范围：[0, +∞)<br>默认值：0</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>排序方向<br>枚举值：<br>ASC：升序<br>DESC：降序<br>默认值：DESC</p>
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// <p>排序字段<br>枚举值：<br>LatestScanTime：最近扫描时间<br>VPRLevel：VPR 评级<br>RiskStatus：修复状态<br>默认值：LatestScanTime</p>
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+}
+
+func (r *DescribeVulRiskRelateHostRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVulRiskRelateHostRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "KBID")
+	delete(f, "VulID")
+	delete(f, "MemberId")
+	delete(f, "Filters")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Order")
+	delete(f, "By")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVulRiskRelateHostRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVulRiskRelateHostResponseParams struct {
+	// <p>该漏洞影响的主机列表</p>
+	List []*VulHostBriefInfo `json:"List,omitnil,omitempty" name:"List"`
+
+	// <p>符合条件的总数</p>
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeVulRiskRelateHostResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeVulRiskRelateHostResponseParams `json:"Response"`
+}
+
+func (r *DescribeVulRiskRelateHostResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVulRiskRelateHostResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVulScanPeriodicRequestParams struct {
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+type DescribeVulScanPeriodicRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+func (r *DescribeVulScanPeriodicRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVulScanPeriodicRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MemberId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVulScanPeriodicRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVulScanPeriodicResponseParams struct {
+	// <p>周期扫描开关（0-关闭, 1-开启）</p>
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>漏洞类型</p><p>枚举值：</p><ul><li>LINUX： Linux软件漏洞</li><li>WINDOWS： Windows系统补丁</li><li>WEB_CMS： Web-CMS漏洞</li><li>APPLICATION： 应用漏洞</li><li>EMERGENCY： 应急漏洞</li></ul>
+	VulCategory []*string `json:"VulCategory,omitnil,omitempty" name:"VulCategory"`
+
+	// <p>漏洞等级（INVALID: 无效, INFO: 提示, LOW: 低危, MEDIUM: 中危, HIGH: 高危, CRITICAL: 严重）</p>
+	Level []*string `json:"Level,omitnil,omitempty" name:"Level"`
+
+	// <p>扫描方式（VersionCompare: 版本对比, POC: POC检测, VersionComparePOC: 版本对比+POC检测）</p>
+	Method *string `json:"Method,omitnil,omitempty" name:"Method"`
+
+	// <p>周期扫描类型</p><p>枚举值：</p><ul><li>1： 每天</li><li>2： 每周</li><li>3： 每月</li></ul>
+	CycleType *uint64 `json:"CycleType,omitnil,omitempty" name:"CycleType"`
+
+	// <p>开始时间（09:00:00）</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>结束时间（18:00:00）</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>资产范围（0-全部资产，1-自选资产，2-剔除资产）</p>
+	AssetRange *int64 `json:"AssetRange,omitnil,omitempty" name:"AssetRange"`
+
+	// <p>资产列表（instance_id列表）</p>
+	AssetList []*string `json:"AssetList,omitnil,omitempty" name:"AssetList"`
+
+	// <p>周期值</p><p>单位：周几或者每月几号</p>
+	CycleValue []*uint64 `json:"CycleValue,omitnil,omitempty" name:"CycleValue"`
+
+	// <p>超时时长</p><p>单位：秒</p>
+	Timeout *uint64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
+
+	// <p>是否运行被同步配置 0-不允许，1-允许</p>
+	AllowSync *uint64 `json:"AllowSync,omitnil,omitempty" name:"AllowSync"`
+
+	// <p>管理员账号是否开启了自动同步配置开关 0-关闭，1-开启</p>
+	EnableSync *uint64 `json:"EnableSync,omitnil,omitempty" name:"EnableSync"`
+
+	// <p>配置信息来自哪个账号，为空表示自己设置</p>
+	AdminInfo *AccountBriefInfo `json:"AdminInfo,omitnil,omitempty" name:"AdminInfo"`
+
+	// <p>标签id</p>
+	TagIds []*uint64 `json:"TagIds,omitnil,omitempty" name:"TagIds"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeVulScanPeriodicResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeVulScanPeriodicResponseParams `json:"Response"`
+}
+
+func (r *DescribeVulScanPeriodicResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVulScanPeriodicResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVulScanTaskDetailRequestParams struct {
+	// <p>任务id</p>
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>过滤条件，支持以下 Name：</p><li>InstanceId - 资产实例 ID，精确匹配</li><li>InstanceName - 资产实例名称，模糊匹配（ExactMatch=1 时精确匹配）</li><li>Ip - 资产 IP 地址，精确匹配</li><li>Status - 扫描状态，精确匹配</li>
+	Filters []*Filters `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>分页大小，默认 10，最大 100</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>分页偏移，从 0 开始</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>排序方向：asc（升序）/ desc（降序），默认 desc</p>
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// <p>排序字段，默认按创建时间（CreateTime）排序</p>
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+}
+
+type DescribeVulScanTaskDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>任务id</p>
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>过滤条件，支持以下 Name：</p><li>InstanceId - 资产实例 ID，精确匹配</li><li>InstanceName - 资产实例名称，模糊匹配（ExactMatch=1 时精确匹配）</li><li>Ip - 资产 IP 地址，精确匹配</li><li>Status - 扫描状态，精确匹配</li>
+	Filters []*Filters `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>分页大小，默认 10，最大 100</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>分页偏移，从 0 开始</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>排序方向：asc（升序）/ desc（降序），默认 desc</p>
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// <p>排序字段，默认按创建时间（CreateTime）排序</p>
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+}
+
+func (r *DescribeVulScanTaskDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVulScanTaskDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "MemberId")
+	delete(f, "Filters")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Order")
+	delete(f, "By")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVulScanTaskDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVulScanTaskDetailResponseParams struct {
+	// <p>任务详情列表</p>
+	List []*VulScanTaskDetail `json:"List,omitnil,omitempty" name:"List"`
+
+	// <p>总数</p>
+	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// <p>漏洞数量</p>
+	Vuls *uint64 `json:"Vuls,omitnil,omitempty" name:"Vuls"`
+
+	// <p>扫描数量</p>
+	Scanned *uint64 `json:"Scanned,omitnil,omitempty" name:"Scanned"`
+
+	// <p>风险数量</p>
+	Risk *uint64 `json:"Risk,omitnil,omitempty" name:"Risk"`
+
+	// <p>失败数量</p>
+	Failed *uint64 `json:"Failed,omitnil,omitempty" name:"Failed"`
+
+	// <p>扫描进度（0-100）</p>
+	Progress *uint64 `json:"Progress,omitnil,omitempty" name:"Progress"`
+
+	// <p>任务pdf报告地址</p>
+	TaskPdf *string `json:"TaskPdf,omitnil,omitempty" name:"TaskPdf"`
+
+	// <p>任务excel报告地址</p>
+	TaskExcel *string `json:"TaskExcel,omitnil,omitempty" name:"TaskExcel"`
+
+	// <p>任务开始时间，格式：2006-01-02T15:04:05+08:00</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>任务结束时间，格式：2006-01-02T15:04:05+08:00</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>漏洞ID</p>
+	VulId []*uint64 `json:"VulId,omitnil,omitempty" name:"VulId"`
+
+	// <p>KB编号</p>
+	KbNo []*string `json:"KbNo,omitnil,omitempty" name:"KbNo"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeVulScanTaskDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeVulScanTaskDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeVulScanTaskDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVulScanTaskDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVulScanTaskListRequestParams struct {
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>过滤条件，支持以下 Name：<li>JobId - 任务 ID 精确匹配</li><li>TaskType- 任务类型精确匹配</li></p>
+	Filters []*Filters `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>分页大小</p><p>取值范围：[1, 100]</p><p>单位：条</p><p>默认值：10</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>分页偏移</p><p>取值范围：[0, 99999]</p><p>单位：条</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>过滤方向</p><p>枚举值：</p><ul><li>DESC： 倒序</li><li>ASC： 正序</li></ul>
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// <p>排序字段</p><p>默认值：ScanTime</p>
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+}
+
+type DescribeVulScanTaskListRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>过滤条件，支持以下 Name：<li>JobId - 任务 ID 精确匹配</li><li>TaskType- 任务类型精确匹配</li></p>
+	Filters []*Filters `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>分页大小</p><p>取值范围：[1, 100]</p><p>单位：条</p><p>默认值：10</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>分页偏移</p><p>取值范围：[0, 99999]</p><p>单位：条</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>过滤方向</p><p>枚举值：</p><ul><li>DESC： 倒序</li><li>ASC： 正序</li></ul>
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// <p>排序字段</p><p>默认值：ScanTime</p>
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+}
+
+func (r *DescribeVulScanTaskListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVulScanTaskListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MemberId")
+	delete(f, "Filters")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Order")
+	delete(f, "By")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVulScanTaskListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVulScanTaskListResponseParams struct {
+	// <p>任务列表</p>
+	List []*VulScanTask `json:"List,omitnil,omitempty" name:"List"`
+
+	// <p>总数</p>
+	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeVulScanTaskListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeVulScanTaskListResponseParams `json:"Response"`
+}
+
+func (r *DescribeVulScanTaskListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVulScanTaskListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -23822,6 +26385,166 @@ type HitRules struct {
 	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
 }
 
+type HostBriefInfo struct {
+	// 云主机实例 ID
+	// 参数格式：形如 ins-instance
+	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
+
+	// 主机 QUUID（CWP 内部唯一标识）
+	QUUID *string `json:"QUUID,omitnil,omitempty" name:"QUUID"`
+
+	// 主机 UUID
+	UUID *string `json:"UUID,omitnil,omitempty" name:"UUID"`
+
+	// 公网 IP 地址
+	PublicIP *string `json:"PublicIP,omitnil,omitempty" name:"PublicIP"`
+
+	// 内网 IP 地址
+	PrivateIP *string `json:"PrivateIP,omitnil,omitempty" name:"PrivateIP"`
+
+	// CWP Agent 状态
+	// 枚举值：
+	// ONLINE：在线
+	// OFFLINE：离线
+	// UNINSTALLED：未安装
+	AgentStatus *string `json:"AgentStatus,omitnil,omitempty" name:"AgentStatus"`
+
+	// 云主机实例状态
+	// 枚举值：
+	// RUNNING：运行中
+	// STOPPED：已停止
+	// UNKNOWN：未知
+	InstanceStatus *string `json:"InstanceStatus,omitnil,omitempty" name:"InstanceStatus"`
+
+	// 主机名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 所属账号信息
+	Account *AccountBriefInfo `json:"Account,omitnil,omitempty" name:"Account"`
+
+	// 资产标签列表（CSIP 内部资产标签）
+	TagItem []*MiniTagItem `json:"TagItem,omitnil,omitempty" name:"TagItem"`
+
+	// 云上标签列表（云资产侧 Tag）
+	CloudTag []*Tag `json:"CloudTag,omitnil,omitempty" name:"CloudTag"`
+}
+
+type HostKBRisk struct {
+	// <p>风险记录 ID（kb_risk.id）</p>
+	RiskID *uint64 `json:"RiskID,omitnil,omitempty" name:"RiskID"`
+
+	// <p>Windows KB 补丁详细信息</p>
+	KBDetail *KBDetail `json:"KBDetail,omitnil,omitempty" name:"KBDetail"`
+
+	// <p>受影响主机数</p>
+	EffectHostCount *uint64 `json:"EffectHostCount,omitnil,omitempty" name:"EffectHostCount"`
+
+	// <p>最近扫描时间<br>参数格式：YYYY-MM-DDTHH:mm:ssZ</p>
+	LatestScanTime *string `json:"LatestScanTime,omitnil,omitempty" name:"LatestScanTime"`
+
+	// <p>所属账号列表</p>
+	Account []*AccountBriefInfo `json:"Account,omitnil,omitempty" name:"Account"`
+
+	// <p>修复状态<br>枚举值：<br>PENDING：待修复<br>SCANNING：扫描中<br>FIXED：已修复<br>IGNORED：已加白<br>FIXING：修复中<br>FIX_FAILED：修复失败</p>
+	RiskStatus *string `json:"RiskStatus,omitnil,omitempty" name:"RiskStatus"`
+}
+
+type HostVulComponent struct {
+	// <p>主机简要信息</p>
+	HostInfo *HostBriefInfo `json:"HostInfo,omitnil,omitempty" name:"HostInfo"`
+
+	// <p>受影响组件版本</p>
+	EffectVersion *string `json:"EffectVersion,omitnil,omitempty" name:"EffectVersion"`
+
+	// <p>组件在主机上的安装路径</p>
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
+
+	// <p>关联进程 ID</p>
+	ProcessID *string `json:"ProcessID,omitnil,omitempty" name:"ProcessID"`
+
+	// <p>修复命令（仅展示）</p>
+	FixCommand *string `json:"FixCommand,omitnil,omitempty" name:"FixCommand"`
+
+	// <p>组件名字</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+}
+
+type HostVulOverview struct {
+	// <p>需立即修复漏洞数（VPR 评级为 URGENT 的漏洞数量）</p>
+	UrgentRepairCount *uint64 `json:"UrgentRepairCount,omitnil,omitempty" name:"UrgentRepairCount"`
+
+	// <p>已开启漏洞防御的主机数</p>
+	DefendHostCount *uint64 `json:"DefendHostCount,omitnil,omitempty" name:"DefendHostCount"`
+
+	// <p>主机总数</p>
+	TotalHostCount *uint64 `json:"TotalHostCount,omitnil,omitempty" name:"TotalHostCount"`
+
+	// <p>已修复漏洞总次数</p>
+	FixedVulCount *uint64 `json:"FixedVulCount,omitnil,omitempty" name:"FixedVulCount"`
+
+	// <p>Linux 软件漏洞数</p>
+	LinuxVulCount *uint64 `json:"LinuxVulCount,omitnil,omitempty" name:"LinuxVulCount"`
+
+	// <p>Windows 系统补丁数</p>
+	WindowVulCount *uint64 `json:"WindowVulCount,omitnil,omitempty" name:"WindowVulCount"`
+
+	// <p>Web-CMS 漏洞数</p>
+	WebCMSVulCount *uint64 `json:"WebCMSVulCount,omitnil,omitempty" name:"WebCMSVulCount"`
+
+	// <p>应用漏洞数</p>
+	AppVulCount *uint64 `json:"AppVulCount,omitnil,omitempty" name:"AppVulCount"`
+
+	// <p>应急漏洞数</p>
+	EmergencyCount *uint64 `json:"EmergencyCount,omitnil,omitempty" name:"EmergencyCount"`
+
+	// <p>漏洞知识库总数</p>
+	VulItemCount *uint64 `json:"VulItemCount,omitnil,omitempty" name:"VulItemCount"`
+
+	// <p>最近扫描时间</p><p>参数格式：YYYY-MM-DDTHH:mm:ssZ</p>
+	LatestScanTime *string `json:"LatestScanTime,omitnil,omitempty" name:"LatestScanTime"`
+
+	// <p>是否开启周期扫描</p><p>枚举值：</p><ul><li>1： 开启</li><li>0： 未开启</li></ul>
+	EnableTimingScan *uint64 `json:"EnableTimingScan,omitnil,omitempty" name:"EnableTimingScan"`
+
+	// <p>严重修复数</p>
+	CriticalRepairCount *uint64 `json:"CriticalRepairCount,omitnil,omitempty" name:"CriticalRepairCount"`
+
+	// <p>严重修复Linux漏洞数</p>
+	CriticalRepairLinuxVulCount *uint64 `json:"CriticalRepairLinuxVulCount,omitnil,omitempty" name:"CriticalRepairLinuxVulCount"`
+
+	// <p>严重修复应用漏洞数</p>
+	CriticalRepairAppVulCount *uint64 `json:"CriticalRepairAppVulCount,omitnil,omitempty" name:"CriticalRepairAppVulCount"`
+
+	// <p>严重修复Web-CMS漏洞数</p>
+	CriticalRepairWebCMSVulCount *uint64 `json:"CriticalRepairWebCMSVulCount,omitnil,omitempty" name:"CriticalRepairWebCMSVulCount"`
+
+	// <p>严重修复紧急漏洞数</p>
+	CriticalRepairEmergencyCount *uint64 `json:"CriticalRepairEmergencyCount,omitnil,omitempty" name:"CriticalRepairEmergencyCount"`
+}
+
+type HostVulRisk struct {
+	// <p>风险记录 ID（host_vul_risk.id）</p>
+	RiskID *uint64 `json:"RiskID,omitnil,omitempty" name:"RiskID"`
+
+	// <p>受影响主机数</p>
+	EffectHostCount *uint64 `json:"EffectHostCount,omitnil,omitempty" name:"EffectHostCount"`
+
+	// <p>最近扫描时间<br>参数格式：YYYY-MM-DD HH:mm:ss</p>
+	LatestScanTime *string `json:"LatestScanTime,omitnil,omitempty" name:"LatestScanTime"`
+
+	// <p>所属账号列表</p>
+	Account []*AccountBriefInfo `json:"Account,omitnil,omitempty" name:"Account"`
+
+	// <p>漏洞防御状态<br>枚举值：<br>ENABLED：已开启<br>NOT_SUPPORTED：不支持<br>NOT_ENABLED：未开启</p>
+	DefendStatus *string `json:"DefendStatus,omitnil,omitempty" name:"DefendStatus"`
+
+	// <p>修复状态<br>枚举值：<br>PENDING：待修复<br>SCANNING：扫描中<br>FIXED：已修复<br>IGNORED：已加白<br>FIXING：修复中<br>FIX_FAILED：修复失败<br>NOTSCAN：未扫描<br>WITHOUT_RISK：无风险<br>NEED_REBOOT：修复待重启</p>
+	RiskStatus *string `json:"RiskStatus,omitnil,omitempty" name:"RiskStatus"`
+
+	// <p>漏洞详细信息</p>
+	VulDetail *VulDetailInfo `json:"VulDetail,omitnil,omitempty" name:"VulDetail"`
+}
+
 type IPIntelInfo struct {
 	// <p>情报标签（如常规木马、漏洞软件、窃密木马）</p>
 	Tags []*string `json:"Tags,omitnil,omitempty" name:"Tags"`
@@ -24021,6 +26744,102 @@ type IpAssetListVO struct {
 
 	// 资产认证状态，0-待认证，1-认证成功，2-认证中，3+-认证失败
 	VerifyStatus *int64 `json:"VerifyStatus,omitnil,omitempty" name:"VerifyStatus"`
+}
+
+type KBDetail struct {
+	// <p>KB 补丁内部 ID（kb_info.id）</p>
+	ID *uint64 `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// <p>KB 编号<br>参数格式：形如 KB5001234</p>
+	Number *string `json:"Number,omitnil,omitempty" name:"Number"`
+
+	// <p>KB 补丁名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>参考链接（微软官方文档地址）</p>
+	ReferUrl *string `json:"ReferUrl,omitnil,omitempty" name:"ReferUrl"`
+
+	// <p>发布时间<br>参数格式：YYYY-MM-DD HH:mm:ss</p>
+	PublishTime *string `json:"PublishTime,omitnil,omitempty" name:"PublishTime"`
+
+	// <p>安装该 KB 后是否需要重启<br>枚举值：<br>true：需要<br>false：不需要</p>
+	NeedRestart *bool `json:"NeedRestart,omitnil,omitempty" name:"NeedRestart"`
+
+	// <p>关联漏洞列表</p>
+	RelateVulList []*VulBriefInfo `json:"RelateVulList,omitnil,omitempty" name:"RelateVulList"`
+
+	// <p>关联漏洞总数</p>
+	RelateVulCount *int64 `json:"RelateVulCount,omitnil,omitempty" name:"RelateVulCount"`
+
+	// <p>关联os版本</p>
+	RelateProduct *string `json:"RelateProduct,omitnil,omitempty" name:"RelateProduct"`
+}
+
+type KBFixSummaryItem struct {
+	// KB补丁ID
+	KBId *int64 `json:"KBId,omitnil,omitempty" name:"KBId"`
+
+	// KB补丁名称
+	KBName *string `json:"KBName,omitnil,omitempty" name:"KBName"`
+
+	// KB编号（如 KB5001234）
+	KBNo *string `json:"KBNo,omitnil,omitempty" name:"KBNo"`
+
+	// 关联漏洞数
+	RelatedVulCount *int64 `json:"RelatedVulCount,omitnil,omitempty" name:"RelatedVulCount"`
+
+	// 受影响主机数
+	AffectedCount *int64 `json:"AffectedCount,omitnil,omitempty" name:"AffectedCount"`
+
+	// 修复后是否需要重启系统
+	NeedReboot *bool `json:"NeedReboot,omitnil,omitempty" name:"NeedReboot"`
+
+	// 前置依赖补丁（逗号分隔的KB编号列表）
+	KBPreCondition *string `json:"KBPreCondition,omitnil,omitempty" name:"KBPreCondition"`
+}
+
+type KBUpdateMachineItem struct {
+	// <p>KB补丁ID</p>
+	KBId *int64 `json:"KBId,omitnil,omitempty" name:"KBId"`
+
+	// <p>主机实例ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>主机名称</p>
+	MachineName *string `json:"MachineName,omitnil,omitempty" name:"MachineName"`
+
+	// <p>主机IP</p>
+	MachineIp *string `json:"MachineIp,omitnil,omitempty" name:"MachineIp"`
+
+	// <p>公网IP</p>
+	PublicIp *string `json:"PublicIp,omitnil,omitempty" name:"PublicIp"`
+
+	// <p>操作系统名称</p>
+	OsName *string `json:"OsName,omitnil,omitempty" name:"OsName"`
+
+	// <p>主机在线状态<br>枚举值：<br>ONLINE：在线<br>OFFLINE：离线</p>
+	MachineStatus *string `json:"MachineStatus,omitnil,omitempty" name:"MachineStatus"`
+
+	// <p>是否支持自动更新补丁<br>枚举值：<br>0：不支持<br>1：支持</p>
+	SupportAutoFix *int64 `json:"SupportAutoFix,omitnil,omitempty" name:"SupportAutoFix"`
+
+	// <p>当前修复状态<br>枚举值：<br>0：未修复<br>1：修复中<br>2：修复失败<br>3：修复成功<br>4：修复超时</p>
+	FixStatus *int64 `json:"FixStatus,omitnil,omitempty" name:"FixStatus"`
+
+	// <p>最近一次修复时间<br>参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）</p>
+	LatestFixTime *string `json:"LatestFixTime,omitnil,omitempty" name:"LatestFixTime"`
+
+	// <p>不可修复原因，SupportAutoFix为0时返回</p>
+	NotFixableReason *string `json:"NotFixableReason,omitnil,omitempty" name:"NotFixableReason"`
+
+	// <p>资产标签列表</p>
+	TagItems []*MiniTagItem `json:"TagItems,omitnil,omitempty" name:"TagItems"`
+
+	// <p>所属账号AppId</p>
+	AppId *uint64 `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>付费版本信息<br>枚举值：<br>BASIC：基础版<br>PRO：专业版<br>ULTIMATE：旗舰版</p>
+	PayVersion *string `json:"PayVersion,omitnil,omitempty" name:"PayVersion"`
 }
 
 type KeySandboxCredential struct {
@@ -27988,6 +30807,315 @@ func (r *ModifyUebaRuleSwitchResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyVulScanPeriodicRequestParams struct {
+	// <p>周期扫描开关（0-关闭, 1-开启）</p>
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>漏洞类型</p><p>枚举值：</p><ul><li>LINUX： Linux软件漏洞</li><li>WINDOWS： Windows系统补丁</li><li>WEB_CMS： Web-CMS漏洞</li><li>APPLICATION： 应用漏洞</li><li>EMERGENCY： 应急漏洞</li></ul>
+	VulCategory []*string `json:"VulCategory,omitnil,omitempty" name:"VulCategory"`
+
+	// <p>漏洞等级</p><p>枚举值：</p><ul><li>LOW： 低危</li><li>MEDIUM： 中危</li><li>HIGH： 高危</li><li>CRITICAL： 严重</li></ul>
+	Level []*string `json:"Level,omitnil,omitempty" name:"Level"`
+
+	// <p>扫描方式（VersionCompare: 版本对比, POC: POC检测, VersionComparePOC: 版本对比+POC检测）</p>
+	Method *string `json:"Method,omitnil,omitempty" name:"Method"`
+
+	// <p>开始时间（09:00:00）</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>结束时间（18:00:00）</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>资产范围（0-全部资产，1-自选资产，2-剔除资产，3-自动资产匹配）</p>
+	AssetRange *int64 `json:"AssetRange,omitnil,omitempty" name:"AssetRange"`
+
+	// <p>周期扫描类型</p><p>枚举值：</p><ul><li>1： 每天</li><li>2： 每周</li><li>3： 每月</li></ul>
+	CycleType *uint64 `json:"CycleType,omitnil,omitempty" name:"CycleType"`
+
+	// <p>扫描超时时长</p><p>单位：秒</p>
+	Timeout *uint64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
+
+	// <p>周期值</p><p>取值范围：[1, 31]</p><p>单位：周几或者每月几号</p>
+	CycleValue []*uint64 `json:"CycleValue,omitnil,omitempty" name:"CycleValue"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>资产列表（instance_id列表）</p>
+	AssetList []*string `json:"AssetList,omitnil,omitempty" name:"AssetList"`
+
+	// <p>是否运行被同步配置 0-不允许，1-允许</p>
+	AllowSync *uint64 `json:"AllowSync,omitnil,omitempty" name:"AllowSync"`
+
+	// <p>管理员账号是否开启了自动同步配置开关 0-关闭，1-开启</p>
+	EnableSync *uint64 `json:"EnableSync,omitnil,omitempty" name:"EnableSync"`
+
+	// <p>配置同步给哪些账号appid</p>
+	SyncTo []*uint64 `json:"SyncTo,omitnil,omitempty" name:"SyncTo"`
+
+	// <p>标签ID</p>
+	TagIds []*uint64 `json:"TagIds,omitnil,omitempty" name:"TagIds"`
+}
+
+type ModifyVulScanPeriodicRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>周期扫描开关（0-关闭, 1-开启）</p>
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>漏洞类型</p><p>枚举值：</p><ul><li>LINUX： Linux软件漏洞</li><li>WINDOWS： Windows系统补丁</li><li>WEB_CMS： Web-CMS漏洞</li><li>APPLICATION： 应用漏洞</li><li>EMERGENCY： 应急漏洞</li></ul>
+	VulCategory []*string `json:"VulCategory,omitnil,omitempty" name:"VulCategory"`
+
+	// <p>漏洞等级</p><p>枚举值：</p><ul><li>LOW： 低危</li><li>MEDIUM： 中危</li><li>HIGH： 高危</li><li>CRITICAL： 严重</li></ul>
+	Level []*string `json:"Level,omitnil,omitempty" name:"Level"`
+
+	// <p>扫描方式（VersionCompare: 版本对比, POC: POC检测, VersionComparePOC: 版本对比+POC检测）</p>
+	Method *string `json:"Method,omitnil,omitempty" name:"Method"`
+
+	// <p>开始时间（09:00:00）</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>结束时间（18:00:00）</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>资产范围（0-全部资产，1-自选资产，2-剔除资产，3-自动资产匹配）</p>
+	AssetRange *int64 `json:"AssetRange,omitnil,omitempty" name:"AssetRange"`
+
+	// <p>周期扫描类型</p><p>枚举值：</p><ul><li>1： 每天</li><li>2： 每周</li><li>3： 每月</li></ul>
+	CycleType *uint64 `json:"CycleType,omitnil,omitempty" name:"CycleType"`
+
+	// <p>扫描超时时长</p><p>单位：秒</p>
+	Timeout *uint64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
+
+	// <p>周期值</p><p>取值范围：[1, 31]</p><p>单位：周几或者每月几号</p>
+	CycleValue []*uint64 `json:"CycleValue,omitnil,omitempty" name:"CycleValue"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>资产列表（instance_id列表）</p>
+	AssetList []*string `json:"AssetList,omitnil,omitempty" name:"AssetList"`
+
+	// <p>是否运行被同步配置 0-不允许，1-允许</p>
+	AllowSync *uint64 `json:"AllowSync,omitnil,omitempty" name:"AllowSync"`
+
+	// <p>管理员账号是否开启了自动同步配置开关 0-关闭，1-开启</p>
+	EnableSync *uint64 `json:"EnableSync,omitnil,omitempty" name:"EnableSync"`
+
+	// <p>配置同步给哪些账号appid</p>
+	SyncTo []*uint64 `json:"SyncTo,omitnil,omitempty" name:"SyncTo"`
+
+	// <p>标签ID</p>
+	TagIds []*uint64 `json:"TagIds,omitnil,omitempty" name:"TagIds"`
+}
+
+func (r *ModifyVulScanPeriodicRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyVulScanPeriodicRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Status")
+	delete(f, "VulCategory")
+	delete(f, "Level")
+	delete(f, "Method")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "AssetRange")
+	delete(f, "CycleType")
+	delete(f, "Timeout")
+	delete(f, "CycleValue")
+	delete(f, "MemberId")
+	delete(f, "AssetList")
+	delete(f, "AllowSync")
+	delete(f, "EnableSync")
+	delete(f, "SyncTo")
+	delete(f, "TagIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyVulScanPeriodicRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyVulScanPeriodicResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyVulScanPeriodicResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyVulScanPeriodicResponseParams `json:"Response"`
+}
+
+func (r *ModifyVulScanPeriodicResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyVulScanPeriodicResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyVulWhitelistConfigRequestParams struct {
+	// <p>id列表</p>
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>备注</p>
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// <p>资产范围</p><p>枚举值：</p><ul><li>0： 全部资产</li><li>1： 自选资产</li><li>2： 全选剔除资产</li></ul>
+	AssetRange *uint64 `json:"AssetRange,omitnil,omitempty" name:"AssetRange"`
+
+	// <p>资产列表（Quuid列表）</p>
+	AssetList []*string `json:"AssetList,omitnil,omitempty" name:"AssetList"`
+}
+
+type ModifyVulWhitelistConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>id列表</p>
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>备注</p>
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// <p>资产范围</p><p>枚举值：</p><ul><li>0： 全部资产</li><li>1： 自选资产</li><li>2： 全选剔除资产</li></ul>
+	AssetRange *uint64 `json:"AssetRange,omitnil,omitempty" name:"AssetRange"`
+
+	// <p>资产列表（Quuid列表）</p>
+	AssetList []*string `json:"AssetList,omitnil,omitempty" name:"AssetList"`
+}
+
+func (r *ModifyVulWhitelistConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyVulWhitelistConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "MemberId")
+	delete(f, "Remark")
+	delete(f, "AssetRange")
+	delete(f, "AssetList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyVulWhitelistConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyVulWhitelistConfigResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyVulWhitelistConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyVulWhitelistConfigResponseParams `json:"Response"`
+}
+
+func (r *ModifyVulWhitelistConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyVulWhitelistConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyVulWhitelistSwitchRequestParams struct {
+	// <p>id列表</p>
+	Id []*uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>策略开关</p><p>枚举值：</p><ul><li>0： 关闭</li><li>1： 开启</li></ul>
+	Switch *uint64 `json:"Switch,omitnil,omitempty" name:"Switch"`
+}
+
+type ModifyVulWhitelistSwitchRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>id列表</p>
+	Id []*uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>策略开关</p><p>枚举值：</p><ul><li>0： 关闭</li><li>1： 开启</li></ul>
+	Switch *uint64 `json:"Switch,omitnil,omitempty" name:"Switch"`
+}
+
+func (r *ModifyVulWhitelistSwitchRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyVulWhitelistSwitchRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "MemberId")
+	delete(f, "Switch")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyVulWhitelistSwitchRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyVulWhitelistSwitchResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyVulWhitelistSwitchResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyVulWhitelistSwitchResponseParams `json:"Response"`
+}
+
+func (r *ModifyVulWhitelistSwitchResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyVulWhitelistSwitchResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type NICAsset struct {
 	// appid
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
@@ -29658,6 +32786,74 @@ func (r *StopRiskCenterTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type StopVulScanTaskRequestParams struct {
+	// <p>任务id</p>
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>停止扫描的资产instance_id</p>
+	AssetList []*string `json:"AssetList,omitnil,omitempty" name:"AssetList"`
+}
+
+type StopVulScanTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>任务id</p>
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>集团账号的成员id</p>
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>停止扫描的资产instance_id</p>
+	AssetList []*string `json:"AssetList,omitnil,omitempty" name:"AssetList"`
+}
+
+func (r *StopVulScanTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopVulScanTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "MemberId")
+	delete(f, "AssetList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopVulScanTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StopVulScanTaskResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type StopVulScanTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *StopVulScanTaskResponseParams `json:"Response"`
+}
+
+func (r *StopVulScanTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopVulScanTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type SubUserInfo struct {
 	// <p>主键ID，无业务意义仅作为唯一键</p>
 	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
@@ -30540,6 +33736,40 @@ type UserDspmInfo struct {
 	IsDataCleaning *bool `json:"IsDataCleaning,omitnil,omitempty" name:"IsDataCleaning"`
 }
 
+type VPRLabel struct {
+	// <p>标签名称<br>枚举值：<br>IN_THE_WILD：在野利用<br>EXP：有 EXP<br>POC：有 POC<br>INTERNET_EXPOSED：外网暴露<br>NO_RESTART：无需重启<br>HIGH_VALUE_ASSET：重要资产<br>MALWARE_WEAPONIZED：已武器化</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>标签等级<br>枚举值：<br>HIGH：高<br>MEDIUM：中<br>LOW：低</p>
+	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
+
+	// <p>标签说明</p>
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+}
+
+type VPRRatingInfo struct {
+	// VPR 评级结果
+	// 枚举值：
+	// URGENT：立即修复
+	// SUGGESTED：建议修复
+	// DEFERRABLE：可延迟修复
+	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 评级说明
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 分阶段评级详情列表
+	Stage []*VPRRatingStage `json:"Stage,omitnil,omitempty" name:"Stage"`
+}
+
+type VPRRatingStage struct {
+	// 阶段名称（例如：威胁活跃度、可利用性、漏洞严重性等）
+	Stage *string `json:"Stage,omitnil,omitempty" name:"Stage"`
+
+	// 该阶段的评级结果
+	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
+}
+
 type VULBaseInfo struct {
 	// 风险等级
 	// high 高危/ middle 中危 / low 低危 /info 提示
@@ -31030,6 +34260,553 @@ type Vpc struct {
 	IsCore *uint64 `json:"IsCore,omitnil,omitempty" name:"IsCore"`
 }
 
+type VulBriefInfo struct {
+	// 漏洞 ID（vul_vuls.id）
+	VulID *uint64 `json:"VulID,omitnil,omitempty" name:"VulID"`
+
+	// 漏洞名称
+	VulName *string `json:"VulName,omitnil,omitempty" name:"VulName"`
+
+	// CVE 编号
+	// 参数格式：形如 CVE-2018-5377
+	CVEID *string `json:"CVEID,omitnil,omitempty" name:"CVEID"`
+
+	// VPR 风险标签列表
+	Label []*VPRLabel `json:"Label,omitnil,omitempty" name:"Label"`
+
+	// CVSS 评分
+	// 取值范围：[0.0, 10.0]
+	CvssScore *float64 `json:"CvssScore,omitnil,omitempty" name:"CvssScore"`
+
+	// 威胁等级
+	// 枚举值：
+	// INVALID：无效
+	// INFO：提示
+	// LOW：低危
+	// MEDIUM：中危
+	// HIGH：高危
+	// CRITICAL：严重
+	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
+
+	// 漏洞披露时间
+	// 参数格式：YYYY-MM-DD HH:mm:ss
+	PublishTime *string `json:"PublishTime,omitnil,omitempty" name:"PublishTime"`
+}
+
+type VulComponentSummary struct {
+	// <p>组件名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>关联主机数</p>
+	RelateHostCount *uint64 `json:"RelateHostCount,omitnil,omitempty" name:"RelateHostCount"`
+}
+
+type VulDetailInfo struct {
+	// <p>漏洞ID</p>
+	ID *uint64 `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// <p>漏洞名字</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>CveID</p>
+	CVEID *string `json:"CVEID,omitnil,omitempty" name:"CVEID"`
+
+	// 漏洞分类
+	// 枚举值：
+	// LINUX：Linux 软件漏洞
+	// WINDOWS：Windows 系统补丁
+	// WEB_CMS：Web-CMS 漏洞
+	// APPLICATION：应用漏洞
+	// EMERGENCY：应急漏洞
+	Category *string `json:"Category,omitnil,omitempty" name:"Category"`
+
+	// 漏洞披露时间
+	// 参数格式：YYYY-MM-DD HH:mm:ss
+	PublishTime *string `json:"PublishTime,omitnil,omitempty" name:"PublishTime"`
+
+	// <p>检测方式</p><p>枚举值：</p><ul><li>VersionCompare： 版本对比</li><li>POC： POC检测</li></ul>
+	CheckMethod *string `json:"CheckMethod,omitnil,omitempty" name:"CheckMethod"`
+
+	// 漏洞防御状态
+	// 枚举值：
+	// ENABLED：已开启
+	// NOT_SUPPORTED：不支持
+	// NOT_ENABLED：未开启
+	DefendStatus *string `json:"DefendStatus,omitnil,omitempty" name:"DefendStatus"`
+
+	// 是否支持一键修复
+	// 枚举值：
+	// true：支持
+	// false：不支持
+	SupportFix *bool `json:"SupportFix,omitnil,omitempty" name:"SupportFix"`
+
+	// VPR 评级信息（包含评级结果、说明和分阶段评分）
+	VRPRatingInfo *VPRRatingInfo `json:"VRPRatingInfo,omitnil,omitempty" name:"VRPRatingInfo"`
+
+	// CVSS 评分
+	// 取值范围：[0.0, 10.0]
+	CvssScore *float64 `json:"CvssScore,omitnil,omitempty" name:"CvssScore"`
+
+	// VPR 风险标签列表（如在野利用、有 EXP、有 POC、外网暴露、无需重启等）
+	Label []*VPRLabel `json:"Label,omitnil,omitempty" name:"Label"`
+
+	// 漏洞备注
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 漏洞概述说明
+	Summary *string `json:"Summary,omitnil,omitempty" name:"Summary"`
+
+	// 已开启漏洞防御的主机数
+	DefendHostCount *uint64 `json:"DefendHostCount,omitnil,omitempty" name:"DefendHostCount"`
+
+	// 未开启漏洞防御的主机数
+	NotDefendHostCount *uint64 `json:"NotDefendHostCount,omitnil,omitempty" name:"NotDefendHostCount"`
+
+	// 最近扫描时间
+	// 参数格式：YYYY-MM-DD HH:mm:ss
+	LatestScanTime *string `json:"LatestScanTime,omitnil,omitempty" name:"LatestScanTime"`
+
+	// CVSS 危害等级
+	// 枚举值：
+	// INVALID：无效
+	// INFO：提示
+	// LOW：低危
+	// MEDIUM：中危
+	// HIGH：高危
+	// CRITICAL：严重
+	CVSSLevel *string `json:"CVSSLevel,omitnil,omitempty" name:"CVSSLevel"`
+
+	// 受影响软件描述列表（每项形如 openssl < 1.1.1k）
+	VulAffect []*string `json:"VulAffect,omitnil,omitempty" name:"VulAffect"`
+
+	// 是否被 KVE（已知被利用漏洞）库收录
+	// 枚举值：
+	// true：已收录
+	// false：未收录
+	KVERecord *bool `json:"KVERecord,omitnil,omitempty" name:"KVERecord"`
+
+	// KVE 收录时间
+	// 参数格式：YYYY-MM-DD HH:mm:ss
+	KVERecordTime *string `json:"KVERecordTime,omitnil,omitempty" name:"KVERecordTime"`
+
+	// EPSS 评分（漏洞利用概率预测）
+	// 取值范围：[0.0, 1.0]
+	EPSSScore *float64 `json:"EPSSScore,omitnil,omitempty" name:"EPSSScore"`
+
+	// 受影响厂商列表
+	AffectVendor []*string `json:"AffectVendor,omitnil,omitempty" name:"AffectVendor"`
+
+	// 受影响产品列表
+	AffectProduct []*string `json:"AffectProduct,omitnil,omitempty" name:"AffectProduct"`
+
+	// 漏洞利用机制说明
+	Mechanism *string `json:"Mechanism,omitnil,omitempty" name:"Mechanism"`
+
+	// 漏洞利用前置条件说明
+	Precondition *string `json:"Precondition,omitnil,omitempty" name:"Precondition"`
+
+	// 漏洞最新传播趋势数据列表（按日期）
+	LatestTrend []*VulSpreadTrend `json:"LatestTrend,omitnil,omitempty" name:"LatestTrend"`
+
+	// <p>修复方案</p>
+	FixSolution *string `json:"FixSolution,omitnil,omitempty" name:"FixSolution"`
+
+	// <p>参考链接</p>
+	RefLink *string `json:"RefLink,omitnil,omitempty" name:"RefLink"`
+
+	// <p>漏洞危害描述</p>
+	HarmDescription *string `json:"HarmDescription,omitnil,omitempty" name:"HarmDescription"`
+
+	// <p>漏洞影响产品</p>
+	AffectVendorProduct []*VulVendorProduct `json:"AffectVendorProduct,omitnil,omitempty" name:"AffectVendorProduct"`
+}
+
+type VulFixItem struct {
+	// <p>需要修复的主机实例ID列表<br>入参限制：单项最多1000个实例ID</p>
+	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
+
+	// <p>漏洞ID，VulId和KBId二选一</p>
+	VulId *int64 `json:"VulId,omitnil,omitempty" name:"VulId"`
+
+	// <p>KB补丁ID，VulId和KBId二选一</p>
+	KBId *int64 `json:"KBId,omitnil,omitempty" name:"KBId"`
+}
+
+type VulFixStatusItem struct {
+	// 漏洞ID（KB补丁修复任务时为空）
+	VulId *int64 `json:"VulId,omitnil,omitempty" name:"VulId"`
+
+	// KB补丁ID（漏洞修复任务时为空）
+	KBId *int64 `json:"KBId,omitnil,omitempty" name:"KBId"`
+
+	// 漏洞名称或KB补丁名称
+	VulName *string `json:"VulName,omitnil,omitempty" name:"VulName"`
+
+	// 该漏洞的修复状态
+	// 枚举值：
+	// 0：修复中
+	// 1：全部成功
+	// 2：部分失败
+	// 3：全部失败
+	FixStatus *int64 `json:"FixStatus,omitnil,omitempty" name:"FixStatus"`
+
+	// 该漏洞/KB补丁关联的主机总数
+	HostCount *int64 `json:"HostCount,omitnil,omitempty" name:"HostCount"`
+
+	// 该漏洞/KB补丁修复成功的主机数
+	SuccessHostCount *int64 `json:"SuccessHostCount,omitnil,omitempty" name:"SuccessHostCount"`
+
+	// 该漏洞/KB补丁修复失败的主机数
+	FailHostCount *int64 `json:"FailHostCount,omitnil,omitempty" name:"FailHostCount"`
+}
+
+type VulFixSummaryItem struct {
+	// <p>漏洞ID</p>
+	VulId *int64 `json:"VulId,omitnil,omitempty" name:"VulId"`
+
+	// <p>漏洞名称</p>
+	VulName *string `json:"VulName,omitnil,omitempty" name:"VulName"`
+
+	// <p>CVE编号</p>
+	CveId *string `json:"CveId,omitnil,omitempty" name:"CveId"`
+
+	// <p>受影响主机数</p>
+	AffectedCount *int64 `json:"AffectedCount,omitnil,omitempty" name:"AffectedCount"`
+
+	// <p>修复后是否需要重启系统</p>
+	NeedReboot *bool `json:"NeedReboot,omitnil,omitempty" name:"NeedReboot"`
+
+	// <p>是否支持一键修复true-支持 false-不支持</p>
+	FixSwitch *bool `json:"FixSwitch,omitnil,omitempty" name:"FixSwitch"`
+}
+
+type VulFixTaskDetailItem struct {
+	// <p>明细记录ID</p>
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>关联的修复任务ID</p>
+	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>修复的漏洞ID</p>
+	VulId *int64 `json:"VulId,omitnil,omitempty" name:"VulId"`
+
+	// <p>修复的KB补丁ID</p>
+	KBId *int64 `json:"KBId,omitnil,omitempty" name:"KBId"`
+
+	// <p>主机实例ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>主机名称</p>
+	MachineName *string `json:"MachineName,omitnil,omitempty" name:"MachineName"`
+
+	// <p>主机内网IP</p>
+	MachineIp *string `json:"MachineIp,omitnil,omitempty" name:"MachineIp"`
+
+	// <p>漏洞名称</p>
+	VulName *string `json:"VulName,omitnil,omitempty" name:"VulName"`
+
+	// <p>执行状态<br>枚举值：<br>0：初始状态<br>1：已下发任务<br>11：客户端已确认<br>2：修复完成<br>3：客户端离线<br>4：超时<br>5：失败<br>6：不支持<br>9：等待快照创建完成中<br>10：快照创建失败</p>
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>修复结果</p><p>枚举值：</p><ul><li>0： 初始状态</li><li>1： 修复成功</li><li>2： 修复失败</li><li>3： 修复中</li></ul>
+	FixStatus *int64 `json:"FixStatus,omitnil,omitempty" name:"FixStatus"`
+
+	// <p>快照状态<br>枚举值：<br>-1：无需创建快照<br>0：未开始<br>1：进行中<br>2：已完成<br>3：创建失败</p>
+	SnapshotStatus *int64 `json:"SnapshotStatus,omitnil,omitempty" name:"SnapshotStatus"`
+
+	// <p>异常提示信息</p>
+	ExceptionMessage *string `json:"ExceptionMessage,omitnil,omitempty" name:"ExceptionMessage"`
+
+	// <p>修复启动时间<br>参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>修复结束时间<br>参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>快照创建时间<br>参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）</p>
+	SnapshotCreateTime *string `json:"SnapshotCreateTime,omitnil,omitempty" name:"SnapshotCreateTime"`
+
+	// <p>快照到期时间<br>参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）</p>
+	SnapshotExpireTime *string `json:"SnapshotExpireTime,omitnil,omitempty" name:"SnapshotExpireTime"`
+
+	// <p>快照创建失败原因（当 SnapshotStatus=3 时有值）</p>
+	SnapshotFailReason *string `json:"SnapshotFailReason,omitnil,omitempty" name:"SnapshotFailReason"`
+}
+
+type VulFixTaskInfo struct {
+	// 修复任务主键ID
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 任务ID
+	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 修复状态
+	// 枚举值：
+	// 0：初始化
+	// 1：修复中
+	// 2：修复成功
+	// 3：部分修复失败
+	// 4：全部修复失败
+	// 5：停止修复
+	FixStatus *int64 `json:"FixStatus,omitnil,omitempty" name:"FixStatus"`
+
+	// 修复资产总数
+	AssetCount *int64 `json:"AssetCount,omitnil,omitempty" name:"AssetCount"`
+
+	// 修复成功数
+	SuccessCount *int64 `json:"SuccessCount,omitnil,omitempty" name:"SuccessCount"`
+
+	// 修复失败数
+	FailCount *int64 `json:"FailCount,omitnil,omitempty" name:"FailCount"`
+
+	// 修复中数量
+	FixingCount *int64 `json:"FixingCount,omitnil,omitempty" name:"FixingCount"`
+
+	// 排队中数量（等待下发或等待快照创建）
+	QueueCount *int64 `json:"QueueCount,omitnil,omitempty" name:"QueueCount"`
+
+	// 修复进度百分比
+	// 取值范围：[0, 100]
+	// 补充说明：计算方式为(SuccessCount+FailCount)/AssetCount×100
+	Progress *int64 `json:"Progress,omitnil,omitempty" name:"Progress"`
+
+	// 修复成功的漏洞数
+	SuccessVulCount *int64 `json:"SuccessVulCount,omitnil,omitempty" name:"SuccessVulCount"`
+
+	// 修复失败的漏洞数
+	FailVulCount *int64 `json:"FailVulCount,omitnil,omitempty" name:"FailVulCount"`
+
+	// 修复的漏洞名称列表
+	VulNames []*string `json:"VulNames,omitnil,omitempty" name:"VulNames"`
+
+	// 修复启动时间
+	// 参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 修复结束时间
+	// 参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 漏洞维度修复状态列表，每个漏洞的修复状态详情
+	VulFixStatusList []*VulFixStatusItem `json:"VulFixStatusList,omitnil,omitempty" name:"VulFixStatusList"`
+}
+
+type VulFixTaskItem struct {
+	// 修复任务主键ID
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 任务ID，用于交互的hash标识
+	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 任务JobId，对应后台任务系统的任务ID
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// 修复的漏洞ID列表
+	VulIds []*int64 `json:"VulIds,omitnil,omitempty" name:"VulIds"`
+
+	// 修复的KB补丁ID列表
+	KBIds []*int64 `json:"KBIds,omitnil,omitempty" name:"KBIds"`
+
+	// 修复资产总数
+	AssetCount *int64 `json:"AssetCount,omitnil,omitempty" name:"AssetCount"`
+
+	// 修复成功的主机数
+	SuccessCount *int64 `json:"SuccessCount,omitnil,omitempty" name:"SuccessCount"`
+
+	// 修复失败的主机数
+	FailCount *int64 `json:"FailCount,omitnil,omitempty" name:"FailCount"`
+
+	// 修复进度百分比
+	// 取值范围：[0, 100]
+	// 补充说明：计算方式为(SuccessCount+FailCount)/AssetCount×100
+	Progress *int64 `json:"Progress,omitnil,omitempty" name:"Progress"`
+
+	// 修复任务用户数
+	TargetAppIdsCount *int64 `json:"TargetAppIdsCount,omitnil,omitempty" name:"TargetAppIdsCount"`
+
+	// 修复状态
+	// 枚举值：
+	// 0：初始化
+	// 1：修复中
+	// 2：修复成功
+	// 3：部分修复失败
+	// 4：全部修复失败
+	// 5：停止修复
+	FixStatus *int64 `json:"FixStatus,omitnil,omitempty" name:"FixStatus"`
+
+	// 最大修复时间
+	// 单位：秒
+	Timeout *int64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
+
+	// 修复启动时间
+	// 参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 修复结束时间
+	// 参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 记录创建时间
+	// 参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 修复的漏洞名称列表，便于列表页直接展示
+	VulNames []*string `json:"VulNames,omitnil,omitempty" name:"VulNames"`
+
+	// 漏洞类型列表
+	// 枚举值：
+	// LINUX：Linux软件漏洞
+	// WINDOWS：Windows系统补丁漏洞
+	// WEB_CMS：Web-CMS漏洞
+	// APPLICATION：应用漏洞
+	// EMERGENCY：应急漏洞
+	VulCategory []*string `json:"VulCategory,omitnil,omitempty" name:"VulCategory"`
+
+	// 创建者AppId
+	AppId *uint64 `json:"AppId,omitnil,omitempty" name:"AppId"`
+}
+
+type VulFixableMachineItem struct {
+	// <p>漏洞ID列表，按 SupportAutoFix 维度分组：SupportAutoFix=1 时为可修复的漏洞ID，SupportAutoFix=0 时为不可修复的漏洞ID</p>
+	VulIds []*int64 `json:"VulIds,omitnil,omitempty" name:"VulIds"`
+
+	// <p>主机实例ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>主机名称</p>
+	MachineName *string `json:"MachineName,omitnil,omitempty" name:"MachineName"`
+
+	// <p>主机IP</p>
+	MachineIp *string `json:"MachineIp,omitnil,omitempty" name:"MachineIp"`
+
+	// <p>公网IP</p>
+	PublicIp *string `json:"PublicIp,omitnil,omitempty" name:"PublicIp"`
+
+	// <p>操作系统类型<br>枚举值：<br>linux：Linux操作系统<br>windows：Windows操作系统</p>
+	OsType *string `json:"OsType,omitnil,omitempty" name:"OsType"`
+
+	// <p>操作系统名称</p>
+	OsName *string `json:"OsName,omitnil,omitempty" name:"OsName"`
+
+	// <p>主机在线状态<br>枚举值：<br>ONLINE：在线<br>OFFLINE：离线</p>
+	MachineStatus *string `json:"MachineStatus,omitnil,omitempty" name:"MachineStatus"`
+
+	// <p>是否支持自动修复<br>枚举值：<br>0：不支持<br>1：支持</p>
+	SupportAutoFix *int64 `json:"SupportAutoFix,omitnil,omitempty" name:"SupportAutoFix"`
+
+	// <p>当前修复状态<br>枚举值：<br>0：未修复<br>1：修复中<br>2：修复失败<br>3：修复成功<br>4：修复超时</p>
+	FixStatus *int64 `json:"FixStatus,omitnil,omitempty" name:"FixStatus"`
+
+	// <p>最近一次修复时间<br>参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）</p>
+	LatestFixTime *string `json:"LatestFixTime,omitnil,omitempty" name:"LatestFixTime"`
+
+	// <p>不可修复原因，SupportAutoFix为0时返回</p>
+	NotFixableReason *string `json:"NotFixableReason,omitnil,omitempty" name:"NotFixableReason"`
+
+	// <p>修复命令列表，SupportAutoFix为1时返回</p>
+	FixCommands []*string `json:"FixCommands,omitnil,omitempty" name:"FixCommands"`
+
+	// <p>关联组件列表</p>
+	Components []*string `json:"Components,omitnil,omitempty" name:"Components"`
+
+	// <p>资产标签列表</p>
+	TagItems []*MiniTagItem `json:"TagItems,omitnil,omitempty" name:"TagItems"`
+
+	// <p>所属账号AppId</p>
+	AppId *uint64 `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>付费版本信息<br>枚举值：<br>BASIC：基础版<br>PRO：专业版<br>ULTIMATE：旗舰版</p>
+	PayVersion *string `json:"PayVersion,omitnil,omitempty" name:"PayVersion"`
+}
+
+type VulFixedItem struct {
+	// 漏洞ID
+	VulId *int64 `json:"VulId,omitnil,omitempty" name:"VulId"`
+
+	// 漏洞名称
+	VulName *string `json:"VulName,omitnil,omitempty" name:"VulName"`
+
+	// 漏洞等级
+	// 枚举值：
+	// LOW：低危
+	// MEDIUM：中危
+	// HIGH：高危
+	// CRITICAL：严重
+	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
+
+	// VPR 评级信息（包含评级结果、说明和分阶段评分），与 DescribeHostVulRiskList 一致
+	VRPRatingInfo *VPRRatingInfo `json:"VRPRatingInfo,omitnil,omitempty" name:"VRPRatingInfo"`
+
+	// 漏洞类型
+	// 枚举值：
+	// LINUX：Linux软件漏洞
+	// WINDOWS：Windows系统补丁漏洞
+	// WEB_CMS：Web-CMS漏洞
+	// APPLICATION：应用漏洞
+	// EMERGENCY：应急漏洞
+	VulCategory *string `json:"VulCategory,omitnil,omitempty" name:"VulCategory"`
+
+	// CVE编号
+	CveId *string `json:"CveId,omitnil,omitempty" name:"CveId"`
+
+	// 修复主机名称
+	MachineName *string `json:"MachineName,omitnil,omitempty" name:"MachineName"`
+
+	// 修复主机实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 关联组件&路径数量
+	ComponentCount *int64 `json:"ComponentCount,omitnil,omitempty" name:"ComponentCount"`
+
+	// 关联组件&路径列表
+	Components []*string `json:"Components,omitnil,omitempty" name:"Components"`
+
+	// 最近一次修复时间
+	// 参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）
+	LatestFixTime *string `json:"LatestFixTime,omitnil,omitempty" name:"LatestFixTime"`
+}
+
+type VulHostBriefInfo struct {
+	// <p>云主机实例 ID<br>参数格式：形如 ins-xxxxxxxx</p>
+	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
+
+	// <p>主机名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>公网 IP 地址</p>
+	PublicIP *string `json:"PublicIP,omitnil,omitempty" name:"PublicIP"`
+
+	// <p>内网 IP 地址</p>
+	PrivateIP *string `json:"PrivateIP,omitnil,omitempty" name:"PrivateIP"`
+
+	// <p>防护版本<br>枚举值：<br>NONE：无防护<br>BASIC：基础版<br>PRO：专业版<br>ULTIMATE：旗舰版<br>PRO_LH：轻量版</p>
+	DefendVersion *string `json:"DefendVersion,omitnil,omitempty" name:"DefendVersion"`
+
+	// <p>漏洞防御状态<br>枚举值：<br>ENABLED：已开启<br>NOT_SUPPORTED：不支持<br>NOT_ENABLED：未开启</p>
+	DefendStatus *string `json:"DefendStatus,omitnil,omitempty" name:"DefendStatus"`
+
+	// <p>所属账号信息</p>
+	Account *AccountBriefInfo `json:"Account,omitnil,omitempty" name:"Account"`
+
+	// <p>云主机实例状态<br>枚举值：<br>RUNNING：运行中<br>STOPPED：已停止<br>UNKNOWN：未知</p>
+	InstanceStatus *string `json:"InstanceStatus,omitnil,omitempty" name:"InstanceStatus"`
+
+	// <p>修复状态枚举值</p><p>枚举值：</p><ul><li>PENDING： 待修复</li><li>SCANNING： 扫描中</li><li>FIXED： 已修复</li><li>IGNORED： 已忽略</li><li>FIXING： 修复中</li><li>FIX_FAILED： 修复失败</li><li>NEED_REBOOT： 修复待重启</li></ul>
+	RiskStatus *string `json:"RiskStatus,omitnil,omitempty" name:"RiskStatus"`
+
+	// <p>VPR 评级信息（含评级结果与各维度详情）</p>
+	VPRRating *VPRRatingInfo `json:"VPRRating,omitnil,omitempty" name:"VPRRating"`
+
+	// <p>CWP Agent 状态<br>枚举值：<br>ONLINE：在线<br>OFFLINE：离线<br>UNINSTALLED：未安装</p>
+	AgentStatus *string `json:"AgentStatus,omitnil,omitempty" name:"AgentStatus"`
+
+	// <p>资产标签列表（CSIP 内部资产标签）</p>
+	TagItem []*MiniTagItem `json:"TagItem,omitnil,omitempty" name:"TagItem"`
+
+	// <p>云上标签列表（云资产侧 Tag）</p>
+	CloudTag []*Tag `json:"CloudTag,omitnil,omitempty" name:"CloudTag"`
+}
+
 type VulImpactComponentInfo struct {
 	// 组件名称
 	Component *string `json:"Component,omitnil,omitempty" name:"Component"`
@@ -31091,6 +34868,102 @@ type VulRiskItem struct {
 	AppID *uint64 `json:"AppID,omitnil,omitempty" name:"AppID"`
 }
 
+type VulScanTask struct {
+	// <p>任务id</p>
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>任务id</p>
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// <p>任务所属用户appid</p>
+	AppId *uint64 `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>任务类型</p><p>枚举值：</p><ul><li>0： 一键扫描</li><li>1： 周期扫描</li></ul>
+	TaskType *uint64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+
+	// <p>漏洞分类</p><p>枚举值：</p><ul><li>LINUX： Linux软件漏洞</li><li>WINDOWS： Windows系统补丁</li><li>WEB_CMS： Web-CMS漏洞</li><li>APPLICATION： 应用漏洞</li><li>EMERGENCY： 应急漏洞</li></ul>
+	VulCategory []*string `json:"VulCategory,omitnil,omitempty" name:"VulCategory"`
+
+	// <p>漏洞名称</p>
+	VulName []*string `json:"VulName,omitnil,omitempty" name:"VulName"`
+
+	// <p>kb名称</p>
+	KbName []*string `json:"KbName,omitnil,omitempty" name:"KbName"`
+
+	// <p>是否应急漏洞</p><p>枚举值：</p><ul><li>0： 否</li><li>1： 是</li></ul>
+	Emergency *uint64 `json:"Emergency,omitnil,omitempty" name:"Emergency"`
+
+	// <p>扫描账号数量（0: 全部账号, others: 账号数量）</p>
+	Account *uint64 `json:"Account,omitnil,omitempty" name:"Account"`
+
+	// <p>扫描开始时间</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>扫描结束时间</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>扫描状态（INITIALIZING: 初始化, SCANNING: 扫描中, SUCCESS: 扫描成功,  TOTAL_FAIL: 全部扫描失败）</p><p>枚举值：</p><ul><li>STOPPED： 已停止</li></ul>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>漏洞威胁等级</p><p>枚举值：</p><ul><li>LOW： 低危</li><li>MEDIUM： 中危</li><li>HIGH： 高危</li><li>CRITICAL： 严重</li></ul>
+	Level []*string `json:"Level,omitnil,omitempty" name:"Level"`
+
+	// <p>扫描方式</p><p>枚举值：</p><ul><li>VersionCompare： 版本对比</li><li>POC： POC检测</li><li>VersionComparePOC： 版本对比+POC检测</li></ul>
+	Method []*string `json:"Method,omitnil,omitempty" name:"Method"`
+
+	// <p>资产列表</p>
+	AssetList []*string `json:"AssetList,omitnil,omitempty" name:"AssetList"`
+
+	// <p>资产范围</p><p>枚举值：</p><ul><li>0： 所有资产</li><li>1： 自选资产</li><li>2： 自选排除资产</li></ul>
+	AssetRange *uint64 `json:"AssetRange,omitnil,omitempty" name:"AssetRange"`
+}
+
+type VulScanTaskDetail struct {
+	// <p>任务id</p>
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>创建者AppId</p>
+	AppId *uint64 `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>实例id</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>实例名称</p>
+	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
+
+	// <p>公网ip</p>
+	PublicIp *string `json:"PublicIp,omitnil,omitempty" name:"PublicIp"`
+
+	// <p>内网ip</p>
+	PrivateIp *string `json:"PrivateIp,omitnil,omitempty" name:"PrivateIp"`
+
+	// <p>操作系统</p>
+	OS *string `json:"OS,omitnil,omitempty" name:"OS"`
+
+	// <p>扫描状态（SUCCESS: 扫描完成/成功, OFFLINE: 客户端离线, TIMEOUT: 扫描超时, FAILED: 扫描失败, UNSUPPORTED: 客户端版本过低/不支持扫描, TERMINATED: 已终止, TERMINATING: 终止中）</p><p>枚举值：</p><ul><li>SCANNING： 扫描中</li></ul>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>扫描开始时间</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>扫描结束时间</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>漏洞数量</p>
+	Vuls *uint64 `json:"Vuls,omitnil,omitempty" name:"Vuls"`
+
+	// <p>失败原因</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+type VulSpreadTrend struct {
+	// <p>日期<br>参数格式：YYYY-MM-DD</p>
+	Date *string `json:"Date,omitnil,omitempty" name:"Date"`
+
+	// <p>该日期的传播趋势数值</p>
+	Trend *float64 `json:"Trend,omitnil,omitempty" name:"Trend"`
+}
+
 type VulTrend struct {
 	// 影响的资产数
 	AffectAssetCount *int64 `json:"AffectAssetCount,omitnil,omitempty" name:"AffectAssetCount"`
@@ -31103,6 +34976,49 @@ type VulTrend struct {
 
 	// 时间
 	Date *string `json:"Date,omitnil,omitempty" name:"Date"`
+}
+
+type VulVendorProduct struct {
+	// <p>供应商</p>
+	Vendor *string `json:"Vendor,omitnil,omitempty" name:"Vendor"`
+
+	// <p>产品名称</p>
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// <p>影响版本</p>
+	VersionRange []*string `json:"VersionRange,omitnil,omitempty" name:"VersionRange"`
+}
+
+type VulWhitelist struct {
+	// <p>id</p>
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>漏洞名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>备注</p>
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// <p>所属账号</p>
+	AppId *uint64 `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>资产列表</p>
+	AssetList []*string `json:"AssetList,omitnil,omitempty" name:"AssetList"`
+
+	// <p>更新时间</p>
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// <p>策略开关（0-关闭, 1-开启）</p>
+	Switch *int64 `json:"Switch,omitnil,omitempty" name:"Switch"`
+
+	// <p>资产范围</p><p>枚举值：</p><ul><li>0： 全部资产</li><li>1： 自选资产</li><li>2： 全选排除资产</li></ul>
+	AssetRange *uint64 `json:"AssetRange,omitnil,omitempty" name:"AssetRange"`
+
+	// <p>补丁KB id</p>
+	KBId *uint64 `json:"KBId,omitnil,omitempty" name:"KBId"`
+
+	// <p>漏洞Id</p>
+	VulId *uint64 `json:"VulId,omitnil,omitempty" name:"VulId"`
 }
 
 type WebsiteRisk struct {

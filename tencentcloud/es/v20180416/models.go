@@ -5133,27 +5133,33 @@ func (r *DescribeUpgradeResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeUserCosSnapshotListRequestParams struct {
-	// cos桶名
+	// <p>cos桶名</p>
 	CosBucket *string `json:"CosBucket,omitnil,omitempty" name:"CosBucket"`
 
-	// bucket 桶下的备份路径
+	// <p>bucket 桶下的备份路径</p>
 	BasePath *string `json:"BasePath,omitnil,omitempty" name:"BasePath"`
 
-	// 云上集群迁移集群名
+	// <p>云上集群迁移集群名</p>
 	ClusterInstanceId *string `json:"ClusterInstanceId,omitnil,omitempty" name:"ClusterInstanceId"`
+
+	// <p>es 集群仓库</p>
+	PaasEsRepository *string `json:"PaasEsRepository,omitnil,omitempty" name:"PaasEsRepository"`
 }
 
 type DescribeUserCosSnapshotListRequest struct {
 	*tchttp.BaseRequest
 	
-	// cos桶名
+	// <p>cos桶名</p>
 	CosBucket *string `json:"CosBucket,omitnil,omitempty" name:"CosBucket"`
 
-	// bucket 桶下的备份路径
+	// <p>bucket 桶下的备份路径</p>
 	BasePath *string `json:"BasePath,omitnil,omitempty" name:"BasePath"`
 
-	// 云上集群迁移集群名
+	// <p>云上集群迁移集群名</p>
 	ClusterInstanceId *string `json:"ClusterInstanceId,omitnil,omitempty" name:"ClusterInstanceId"`
+
+	// <p>es 集群仓库</p>
+	PaasEsRepository *string `json:"PaasEsRepository,omitnil,omitempty" name:"PaasEsRepository"`
 }
 
 func (r *DescribeUserCosSnapshotListRequest) ToJsonString() string {
@@ -5171,6 +5177,7 @@ func (r *DescribeUserCosSnapshotListRequest) FromJsonString(s string) error {
 	delete(f, "CosBucket")
 	delete(f, "BasePath")
 	delete(f, "ClusterInstanceId")
+	delete(f, "PaasEsRepository")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUserCosSnapshotListRequest has unknown keys!", "")
 	}
@@ -5179,10 +5186,10 @@ func (r *DescribeUserCosSnapshotListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeUserCosSnapshotListResponseParams struct {
-	// cos 快照信息列表
+	// <p>cos 快照信息列表</p>
 	CosSnapshotInfoList []*CosSnapShotInfo `json:"CosSnapshotInfoList,omitnil,omitempty" name:"CosSnapshotInfoList"`
 
-	// cos 快照数量
+	// <p>cos 快照数量</p>
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

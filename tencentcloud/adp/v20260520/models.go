@@ -603,10 +603,10 @@ type AppExperienceConfig struct {
 }
 
 type AppGreetingConfig struct {
-	// 欢迎语内容
+	// <p>欢迎语内容</p>
 	Greeting *string `json:"Greeting,omitnil,omitempty" name:"Greeting"`
 
-	// 开场问题列表
+	// <p>开场问题列表</p>
 	OpeningQuestionList []*string `json:"OpeningQuestionList,omitnil,omitempty" name:"OpeningQuestionList"`
 }
 
@@ -768,10 +768,10 @@ type AppSharedKbInfo struct {
 }
 
 type AppStatusInfo struct {
-	// 应用状态 (OFFLINE:未上线, RUNNING:运行中, DISABLED:停用)。枚举值: 1:未上线, 2:运行中, 3:停用
+	// <p>应用状态</p><p>枚举值：</p><ul><li>1： 未上线</li><li>2： 运行中</li><li>3： 停用</li><li>4： 导入中</li></ul>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 状态描述
+	// <p>状态描述</p>
 	StatusDescription *string `json:"StatusDescription,omitnil,omitempty" name:"StatusDescription"`
 }
 
