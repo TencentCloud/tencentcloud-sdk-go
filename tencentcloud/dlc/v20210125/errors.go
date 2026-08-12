@@ -356,6 +356,9 @@ const (
 	// 数据源连接配置异常，请重试，或者提交工单联系我们
 	INVALIDPARAMETER_INVALIDDATASOURCECONNECTIONCONFIG = "InvalidParameter.InvalidDatasourceConnectionConfig"
 
+	// 数据源连接名称不合法
+	INVALIDPARAMETER_INVALIDDATASOURCENAME = "InvalidParameter.InvalidDatasourceName"
+
 	// DecimalType设置非法，Precision必须大于等于Scale，且Precision必须小于38
 	INVALIDPARAMETER_INVALIDDECIMALTYPE = "InvalidParameter.InvalidDecimalType"
 

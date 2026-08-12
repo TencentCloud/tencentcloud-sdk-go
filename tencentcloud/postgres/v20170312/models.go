@@ -2960,12 +2960,21 @@ func (r *DeleteDBInstanceNetworkAccessResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteDatabaseRequestParams struct {
+	// <p>实例ID。可通过<a href="https://cloud.tencent.com/document/api/409/16773">DescribeDBInstances</a>接口获取</p>
+	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
 
+	// <p>数据库名称</p>
+	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
 }
 
 type DeleteDatabaseRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>实例ID。可通过<a href="https://cloud.tencent.com/document/api/409/16773">DescribeDBInstances</a>接口获取</p>
+	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
+
+	// <p>数据库名称</p>
+	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
 }
 
 func (r *DeleteDatabaseRequest) ToJsonString() string {
@@ -2980,7 +2989,8 @@ func (r *DeleteDatabaseRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "DBInstanceId")
+	delete(f, "DatabaseName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteDatabaseRequest has unknown keys!", "")
 	}

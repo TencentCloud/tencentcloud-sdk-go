@@ -1509,6 +1509,67 @@ func (r *DeleteAggregateConfigRuleResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteAggregatorsRequestParams struct {
+	// 账号组ID
+	AccountGroupId *string `json:"AccountGroupId,omitnil,omitempty" name:"AccountGroupId"`
+
+	// 账号组创建者ID
+	OwnerUin *uint64 `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
+}
+
+type DeleteAggregatorsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 账号组ID
+	AccountGroupId *string `json:"AccountGroupId,omitnil,omitempty" name:"AccountGroupId"`
+
+	// 账号组创建者ID
+	OwnerUin *uint64 `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
+}
+
+func (r *DeleteAggregatorsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAggregatorsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AccountGroupId")
+	delete(f, "OwnerUin")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAggregatorsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAggregatorsResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteAggregatorsResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteAggregatorsResponseParams `json:"Response"`
+}
+
+func (r *DeleteAggregatorsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAggregatorsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteAlarmPolicyRequestParams struct {
 	// 告警策略id
 	AlarmPolicyId *uint64 `json:"AlarmPolicyId,omitnil,omitempty" name:"AlarmPolicyId"`
@@ -5361,6 +5422,88 @@ func (r *UpdateAggregateConfigRuleResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UpdateAggregateConfigRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateAggregatorRequestParams struct {
+	// <p>账号组名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>账号组描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>账号组类型</p><p>枚举值：</p><ul><li>RD： 全局账号组</li><li>CUSTOM： 自定义账号组</li></ul>
+	AccountGroupId *string `json:"AccountGroupId,omitnil,omitempty" name:"AccountGroupId"`
+
+	// <p>账号组创建者ID</p>
+	OwnerUin *uint64 `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
+
+	// <p>账号组成员信息列表，最多100个</p>
+	AggregatorAccounts []*AggregatorAccount `json:"AggregatorAccounts,omitnil,omitempty" name:"AggregatorAccounts"`
+}
+
+type UpdateAggregatorRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>账号组名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>账号组描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>账号组类型</p><p>枚举值：</p><ul><li>RD： 全局账号组</li><li>CUSTOM： 自定义账号组</li></ul>
+	AccountGroupId *string `json:"AccountGroupId,omitnil,omitempty" name:"AccountGroupId"`
+
+	// <p>账号组创建者ID</p>
+	OwnerUin *uint64 `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
+
+	// <p>账号组成员信息列表，最多100个</p>
+	AggregatorAccounts []*AggregatorAccount `json:"AggregatorAccounts,omitnil,omitempty" name:"AggregatorAccounts"`
+}
+
+func (r *UpdateAggregatorRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateAggregatorRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "Description")
+	delete(f, "AccountGroupId")
+	delete(f, "OwnerUin")
+	delete(f, "AggregatorAccounts")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateAggregatorRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateAggregatorResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateAggregatorResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateAggregatorResponseParams `json:"Response"`
+}
+
+func (r *UpdateAggregatorResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateAggregatorResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

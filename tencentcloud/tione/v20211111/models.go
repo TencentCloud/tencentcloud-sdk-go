@@ -175,19 +175,22 @@ type CBSConfig struct {
 }
 
 type CFSConfig struct {
-	// cfs的实例的ID
+	// <p>cfs的实例的ID</p>
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 存储的路径
+	// <p>存储的路径</p>
 	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 
-	// cfs的挂载类型，可选值为：STORAGE、SOURCE 分别表示存储拓展模式和数据源模式，默认为 STORAGE
+	// <p>cfs的挂载类型，可选值为：STORAGE、SOURCE 分别表示存储拓展模式和数据源模式，默认为 STORAGE</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MountType *string `json:"MountType,omitnil,omitempty" name:"MountType"`
 
-	// 协议 1: NFS, 2: TURBO
+	// <p>协议 1: NFS, 2: TURBO</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
+
+	// <p>是否平台预置存储</p>
+	IsPresetStorage *bool `json:"IsPresetStorage,omitnil,omitempty" name:"IsPresetStorage"`
 }
 
 type CFSTurbo struct {
@@ -1889,6 +1892,9 @@ type CreateTrainingTaskRequestParams struct {
 
 	// <p>资源供应属性</p>
 	ResourceSupplyAttribute *ResourceSupplyAttribute `json:"ResourceSupplyAttribute,omitnil,omitempty" name:"ResourceSupplyAttribute"`
+
+	// <p>队列ID</p>
+	Queues []*string `json:"Queues,omitnil,omitempty" name:"Queues"`
 }
 
 type CreateTrainingTaskRequest struct {
@@ -1980,6 +1986,9 @@ type CreateTrainingTaskRequest struct {
 
 	// <p>资源供应属性</p>
 	ResourceSupplyAttribute *ResourceSupplyAttribute `json:"ResourceSupplyAttribute,omitnil,omitempty" name:"ResourceSupplyAttribute"`
+
+	// <p>队列ID</p>
+	Queues []*string `json:"Queues,omitnil,omitempty" name:"Queues"`
 }
 
 func (r *CreateTrainingTaskRequest) ToJsonString() string {
@@ -2023,6 +2032,7 @@ func (r *CreateTrainingTaskRequest) FromJsonString(s string) error {
 	delete(f, "Envs")
 	delete(f, "TrainToolConfig")
 	delete(f, "ResourceSupplyAttribute")
+	delete(f, "Queues")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTrainingTaskRequest has unknown keys!", "")
 	}
@@ -9295,6 +9305,9 @@ type ResourceSpec struct {
 type ResourceSupplyAttribute struct {
 	// <p>资源供应类型。TIDE:潮汐;SPOT:竞价;空:常规按量后付费</p>
 	SupplyType *string `json:"SupplyType,omitnil,omitempty" name:"SupplyType"`
+
+	// <p>集群类型</p><p>枚举值：</p><ul><li>DEFAULT： 默认集群</li><li>THIRD： 第三方集群</li></ul><p>默认值：DEFAULT</p>
+	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 }
 
 type RollingUpdate struct {

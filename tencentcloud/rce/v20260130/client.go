@@ -248,3 +248,155 @@ func (c *Client) AssessEnvironmentRiskWithContext(ctx context.Context, request *
     err = c.Send(request, response)
     return
 }
+
+func NewAssessRiskRequest() (request *AssessRiskRequest) {
+    request = &AssessRiskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rce", APIVersion, "AssessRisk")
+    
+    
+    return
+}
+
+func NewAssessRiskResponse() (response *AssessRiskResponse) {
+    response = &AssessRiskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// AssessRisk
+// 事件风险评估
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMEXCEPTION = "InternalError.SystemException"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FIELDMISSED = "InvalidParameter.FieldMissed"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_INVALIDVALUE = "InvalidParameter.InvalidValue"
+//  INVALIDPARAMETER_LENGTHEXCEED = "InvalidParameter.LengthExceed"
+//  INVALIDPARAMETERVALUE_DATAUNAUTHORIZED = "InvalidParameterValue.DataUnauthorized"
+//  INVALIDPARAMETERVALUE_DUPLICATEDKEY = "InvalidParameterValue.DuplicatedKey"
+//  INVALIDPARAMETERVALUE_EVENTNOTEXIST = "InvalidParameterValue.EventNotExist"
+//  INVALIDPARAMETERVALUE_INVALIDEVENTTIME = "InvalidParameterValue.InvalidEventTime"
+//  INVALIDPARAMETERVALUE_TENANTNOTEXIST = "InvalidParameterValue.TenantNotExist"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_FIELDMISSED = "MissingParameter.FieldMissed"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) AssessRisk(request *AssessRiskRequest) (response *AssessRiskResponse, err error) {
+    return c.AssessRiskWithContext(context.Background(), request)
+}
+
+// AssessRisk
+// 事件风险评估
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMEXCEPTION = "InternalError.SystemException"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FIELDMISSED = "InvalidParameter.FieldMissed"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_INVALIDVALUE = "InvalidParameter.InvalidValue"
+//  INVALIDPARAMETER_LENGTHEXCEED = "InvalidParameter.LengthExceed"
+//  INVALIDPARAMETERVALUE_DATAUNAUTHORIZED = "InvalidParameterValue.DataUnauthorized"
+//  INVALIDPARAMETERVALUE_DUPLICATEDKEY = "InvalidParameterValue.DuplicatedKey"
+//  INVALIDPARAMETERVALUE_EVENTNOTEXIST = "InvalidParameterValue.EventNotExist"
+//  INVALIDPARAMETERVALUE_INVALIDEVENTTIME = "InvalidParameterValue.InvalidEventTime"
+//  INVALIDPARAMETERVALUE_TENANTNOTEXIST = "InvalidParameterValue.TenantNotExist"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_FIELDMISSED = "MissingParameter.FieldMissed"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) AssessRiskWithContext(ctx context.Context, request *AssessRiskRequest) (response *AssessRiskResponse, err error) {
+    if request == nil {
+        request = NewAssessRiskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rce", APIVersion, "AssessRisk")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AssessRisk require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAssessRiskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewReportEventRequest() (request *ReportEventRequest) {
+    request = &ReportEventRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rce", APIVersion, "ReportEvent")
+    
+    
+    return
+}
+
+func NewReportEventResponse() (response *ReportEventResponse) {
+    response = &ReportEventResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ReportEvent
+// 事件信息上报
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMEXCEPTION = "InternalError.SystemException"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FIELDMISSED = "InvalidParameter.FieldMissed"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_INVALIDVALUE = "InvalidParameter.InvalidValue"
+//  INVALIDPARAMETER_LENGTHEXCEED = "InvalidParameter.LengthExceed"
+//  INVALIDPARAMETERVALUE_DATAUNAUTHORIZED = "InvalidParameterValue.DataUnauthorized"
+//  INVALIDPARAMETERVALUE_DUPLICATEDKEY = "InvalidParameterValue.DuplicatedKey"
+//  INVALIDPARAMETERVALUE_EVENTNOTEXIST = "InvalidParameterValue.EventNotExist"
+//  INVALIDPARAMETERVALUE_INVALIDEVENTTIME = "InvalidParameterValue.InvalidEventTime"
+//  INVALIDPARAMETERVALUE_TENANTNOTEXIST = "InvalidParameterValue.TenantNotExist"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_FIELDMISSED = "MissingParameter.FieldMissed"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ReportEvent(request *ReportEventRequest) (response *ReportEventResponse, err error) {
+    return c.ReportEventWithContext(context.Background(), request)
+}
+
+// ReportEvent
+// 事件信息上报
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMEXCEPTION = "InternalError.SystemException"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FIELDMISSED = "InvalidParameter.FieldMissed"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_INVALIDVALUE = "InvalidParameter.InvalidValue"
+//  INVALIDPARAMETER_LENGTHEXCEED = "InvalidParameter.LengthExceed"
+//  INVALIDPARAMETERVALUE_DATAUNAUTHORIZED = "InvalidParameterValue.DataUnauthorized"
+//  INVALIDPARAMETERVALUE_DUPLICATEDKEY = "InvalidParameterValue.DuplicatedKey"
+//  INVALIDPARAMETERVALUE_EVENTNOTEXIST = "InvalidParameterValue.EventNotExist"
+//  INVALIDPARAMETERVALUE_INVALIDEVENTTIME = "InvalidParameterValue.InvalidEventTime"
+//  INVALIDPARAMETERVALUE_TENANTNOTEXIST = "InvalidParameterValue.TenantNotExist"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_FIELDMISSED = "MissingParameter.FieldMissed"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ReportEventWithContext(ctx context.Context, request *ReportEventRequest) (response *ReportEventResponse, err error) {
+    if request == nil {
+        request = NewReportEventRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rce", APIVersion, "ReportEvent")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ReportEvent require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewReportEventResponse()
+    err = c.Send(request, response)
+    return
+}

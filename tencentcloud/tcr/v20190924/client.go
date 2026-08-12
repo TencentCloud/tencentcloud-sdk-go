@@ -7325,6 +7325,66 @@ func (c *Client) ModifyNamespaceWithContext(ctx context.Context, request *Modify
     return
 }
 
+func NewModifyReplicationRequest() (request *ModifyReplicationRequest) {
+    request = &ModifyReplicationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcr", APIVersion, "ModifyReplication")
+    
+    
+    return
+}
+
+func NewModifyReplicationResponse() (response *ModifyReplicationResponse) {
+    response = &ModifyReplicationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyReplication
+// 修改实例同步规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyReplication(request *ModifyReplicationRequest) (response *ModifyReplicationResponse, err error) {
+    return c.ModifyReplicationWithContext(context.Background(), request)
+}
+
+// ModifyReplication
+// 修改实例同步规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyReplicationWithContext(ctx context.Context, request *ModifyReplicationRequest) (response *ModifyReplicationResponse, err error) {
+    if request == nil {
+        request = NewModifyReplicationRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcr", APIVersion, "ModifyReplication")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyReplication require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyReplicationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyRepositoryRequest() (request *ModifyRepositoryRequest) {
     request = &ModifyRepositoryRequest{
         BaseRequest: &tchttp.BaseRequest{},

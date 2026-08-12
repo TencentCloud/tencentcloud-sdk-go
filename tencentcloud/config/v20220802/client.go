@@ -717,6 +717,66 @@ func (c *Client) DeleteAggregateConfigRuleWithContext(ctx context.Context, reque
     return
 }
 
+func NewDeleteAggregatorsRequest() (request *DeleteAggregatorsRequest) {
+    request = &DeleteAggregatorsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("config", APIVersion, "DeleteAggregators")
+    
+    
+    return
+}
+
+func NewDeleteAggregatorsResponse() (response *DeleteAggregatorsResponse) {
+    response = &DeleteAggregatorsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteAggregators
+// 删除账号组
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_ACCOUNTGROUPISNOTEXIST = "ResourceNotFound.AccountGroupIsNotExist"
+//  RESOURCENOTFOUND_MEMBERNOTEXIST = "ResourceNotFound.MemberNotExist"
+//  RESOURCENOTFOUND_RULEISNOTEXIST = "ResourceNotFound.RuleIsNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DeleteAggregators(request *DeleteAggregatorsRequest) (response *DeleteAggregatorsResponse, err error) {
+    return c.DeleteAggregatorsWithContext(context.Background(), request)
+}
+
+// DeleteAggregators
+// 删除账号组
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_ACCOUNTGROUPISNOTEXIST = "ResourceNotFound.AccountGroupIsNotExist"
+//  RESOURCENOTFOUND_MEMBERNOTEXIST = "ResourceNotFound.MemberNotExist"
+//  RESOURCENOTFOUND_RULEISNOTEXIST = "ResourceNotFound.RuleIsNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DeleteAggregatorsWithContext(ctx context.Context, request *DeleteAggregatorsRequest) (response *DeleteAggregatorsResponse, err error) {
+    if request == nil {
+        request = NewDeleteAggregatorsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "config", APIVersion, "DeleteAggregators")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAggregators require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteAggregatorsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteAlarmPolicyRequest() (request *DeleteAlarmPolicyRequest) {
     request = &DeleteAlarmPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3173,6 +3233,64 @@ func (c *Client) UpdateAggregateConfigRuleWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewUpdateAggregateConfigRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateAggregatorRequest() (request *UpdateAggregatorRequest) {
+    request = &UpdateAggregatorRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("config", APIVersion, "UpdateAggregator")
+    
+    
+    return
+}
+
+func NewUpdateAggregatorResponse() (response *UpdateAggregatorResponse) {
+    response = &UpdateAggregatorResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateAggregator
+// 编辑账号组
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_ACCOUNTGROUPISNOTEXIST = "ResourceNotFound.AccountGroupIsNotExist"
+//  RESOURCENOTFOUND_MEMBERNOTEXIST = "ResourceNotFound.MemberNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) UpdateAggregator(request *UpdateAggregatorRequest) (response *UpdateAggregatorResponse, err error) {
+    return c.UpdateAggregatorWithContext(context.Background(), request)
+}
+
+// UpdateAggregator
+// 编辑账号组
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_ACCOUNTGROUPISNOTEXIST = "ResourceNotFound.AccountGroupIsNotExist"
+//  RESOURCENOTFOUND_MEMBERNOTEXIST = "ResourceNotFound.MemberNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) UpdateAggregatorWithContext(ctx context.Context, request *UpdateAggregatorRequest) (response *UpdateAggregatorResponse, err error) {
+    if request == nil {
+        request = NewUpdateAggregatorRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "config", APIVersion, "UpdateAggregator")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateAggregator require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateAggregatorResponse()
     err = c.Send(request, response)
     return
 }

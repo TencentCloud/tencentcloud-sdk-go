@@ -412,8 +412,10 @@ func NewCreateLoadBalancerResponse() (response *CreateLoadBalancerResponse) {
 // - 当应用型负载均衡实例处于**Active**状态时，表示应用型负载均衡实例创建成功。
 //
 // 可能返回的错误码:
-//  UNSUPPORTEDOPERATION_TARGETGROUPPROTOCOLMISMATCH = "UnsupportedOperation.TargetGroupProtocolMismatch"
-//  UNSUPPORTEDOPERATION_UNSUPPORTEDPROTOCOL = "UnsupportedOperation.UnsupportedProtocol"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_RESOURCESSOLDOUT = "UnsupportedOperation.ResourcesSoldOut"
 func (c *Client) CreateLoadBalancer(request *CreateLoadBalancerRequest) (response *CreateLoadBalancerResponse, err error) {
     return c.CreateLoadBalancerWithContext(context.Background(), request)
 }
@@ -426,8 +428,10 @@ func (c *Client) CreateLoadBalancer(request *CreateLoadBalancerRequest) (respons
 // - 当应用型负载均衡实例处于**Active**状态时，表示应用型负载均衡实例创建成功。
 //
 // 可能返回的错误码:
-//  UNSUPPORTEDOPERATION_TARGETGROUPPROTOCOLMISMATCH = "UnsupportedOperation.TargetGroupProtocolMismatch"
-//  UNSUPPORTEDOPERATION_UNSUPPORTEDPROTOCOL = "UnsupportedOperation.UnsupportedProtocol"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_RESOURCESSOLDOUT = "UnsupportedOperation.ResourcesSoldOut"
 func (c *Client) CreateLoadBalancerWithContext(ctx context.Context, request *CreateLoadBalancerRequest) (response *CreateLoadBalancerResponse, err error) {
     if request == nil {
         request = NewCreateLoadBalancerRequest()

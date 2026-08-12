@@ -8605,6 +8605,98 @@ func (r *ModifyNamespaceResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyReplicationRequestParams struct {
+	// <p>复制源实例ID</p>
+	SourceRegistryId *string `json:"SourceRegistryId,omitnil,omitempty" name:"SourceRegistryId"`
+
+	// <p>实例同步规则名称</p>
+	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
+
+	// <p>同步规则</p>
+	Rule *ModifyReplicationRule `json:"Rule,omitnil,omitempty" name:"Rule"`
+
+	// <p>规则描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+type ModifyReplicationRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>复制源实例ID</p>
+	SourceRegistryId *string `json:"SourceRegistryId,omitnil,omitempty" name:"SourceRegistryId"`
+
+	// <p>实例同步规则名称</p>
+	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
+
+	// <p>同步规则</p>
+	Rule *ModifyReplicationRule `json:"Rule,omitnil,omitempty" name:"Rule"`
+
+	// <p>规则描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+func (r *ModifyReplicationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyReplicationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SourceRegistryId")
+	delete(f, "RuleName")
+	delete(f, "Rule")
+	delete(f, "Description")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyReplicationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyReplicationResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyReplicationResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyReplicationResponseParams `json:"Response"`
+}
+
+func (r *ModifyReplicationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyReplicationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyReplicationRule struct {
+	// <p>目标命名空间</p>
+	DestNamespace *string `json:"DestNamespace,omitnil,omitempty" name:"DestNamespace"`
+
+	// <p>是否覆盖</p>
+	Override *bool `json:"Override,omitnil,omitempty" name:"Override"`
+
+	// <p>是否同步删除事件</p>
+	Deletion *bool `json:"Deletion,omitnil,omitempty" name:"Deletion"`
+
+	// <p>过滤同步条件</p>
+	Filters []*ReplicationFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>是否开启规则</p>
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+}
+
+// Predefined struct for user
 type ModifyRepositoryAccessPersonalRequestParams struct {
 	// 仓库名称
 	RepoName *string `json:"RepoName,omitnil,omitempty" name:"RepoName"`

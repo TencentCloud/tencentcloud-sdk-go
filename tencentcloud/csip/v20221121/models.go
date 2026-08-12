@@ -2566,6 +2566,14 @@ type CloudCountDesc struct {
 	CloudDesc *string `json:"CloudDesc,omitnil,omitempty" name:"CloudDesc"`
 }
 
+type ClusterIDWithAppIdItem struct {
+	// 集群ID
+	ClusterID *string `json:"ClusterID,omitnil,omitempty" name:"ClusterID"`
+
+	// 集群所属AppId
+	AppId *uint64 `json:"AppId,omitnil,omitempty" name:"AppId"`
+}
+
 type CommandPluginState struct {
 	// <p>插件安装状态（上层聚合）<br>枚举值：<br>NONE：未安装<br>INSTALLING：安装中<br>INSTALLED：已安装<br>INSTALL_FAIL：安装失败</p>
 	InstallStatus *string `json:"InstallStatus,omitnil,omitempty" name:"InstallStatus"`
@@ -2583,6 +2591,20 @@ type ComponentDetailItem struct {
 
 	// 修复命令
 	FixCommand *string `json:"FixCommand,omitnil,omitempty" name:"FixCommand"`
+}
+
+type ConditionMatch struct {
+	// <p>镜像ID匹配串（三选一，有且仅有一个非空）</p>
+	ImageIDMatchString *string `json:"ImageIDMatchString,omitnil,omitempty" name:"ImageIDMatchString"`
+
+	// <p>镜像名匹配串（三选一，有且仅有一个非空）</p>
+	ImageNameMatchString *string `json:"ImageNameMatchString,omitnil,omitempty" name:"ImageNameMatchString"`
+
+	// <p>镜像地址匹配串（三选一，有且仅有一个非空）</p>
+	ImageAddressMatchString *string `json:"ImageAddressMatchString,omitnil,omitempty" name:"ImageAddressMatchString"`
+
+	// <p>匹配条件，取值：EQUALS-等于/NOT_EQUALS-不等于/STARTS_WITH-以…开头/NOT_STARTS_WITH-不以…开头/ENDS_WITH-以…结尾/NOT_ENDS_WITH-不以…结尾/CONTAINS-包含/NOT_CONTAINS-不包含</p>
+	MatchType *string `json:"MatchType,omitnil,omitempty" name:"MatchType"`
 }
 
 type ContainerEnvInfo struct {
@@ -7995,13 +8017,35 @@ type DescribeAILinkSettingResponseParams struct {
 	Scope *uint64 `json:"Scope,omitnil,omitempty" name:"Scope"`
 
 	// <p>自选主机Quuid列表</p>
+	//
+	// Deprecated: Quuids is deprecated.
 	Quuids []*string `json:"Quuids,omitnil,omitempty" name:"Quuids"`
 
 	// <p>排除主机Quuid列表</p>
+	//
+	// Deprecated: ExcludeQuuids is deprecated.
 	ExcludeQuuids []*string `json:"ExcludeQuuids,omitnil,omitempty" name:"ExcludeQuuids"`
 
 	// <p>新增资产自动包含 0 不包含 1包含</p>
 	AutoInclude *uint64 `json:"AutoInclude,omitnil,omitempty" name:"AutoInclude"`
+
+	// <p>标签</p>
+	TagIDs []*string `json:"TagIDs,omitnil,omitempty" name:"TagIDs"`
+
+	// <p>0，1</p><p>枚举值：</p><ul><li>0： 部分</li><li>1： 全部</li></ul>
+	TCSSScope *uint64 `json:"TCSSScope,omitnil,omitempty" name:"TCSSScope"`
+
+	// <p>集群ID</p>
+	ClusterIDs []*string `json:"ClusterIDs,omitnil,omitempty" name:"ClusterIDs"`
+
+	// <p>排除集群ID</p>
+	ExcludeClusterIDs []*string `json:"ExcludeClusterIDs,omitnil,omitempty" name:"ExcludeClusterIDs"`
+
+	// <p>实例ID</p>
+	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
+
+	// <p>排除实例ID</p>
+	ExcludeInstanceIds []*string `json:"ExcludeInstanceIds,omitnil,omitempty" name:"ExcludeInstanceIds"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -25750,6 +25794,41 @@ type EDRRule struct {
 
 	// <p>排除实例ID</p>
 	ExcludeInstanceIDs []*string `json:"ExcludeInstanceIDs,omitnil,omitempty" name:"ExcludeInstanceIDs"`
+
+	// <p>生效集群ID列表（TCSSScope=0 时有值；空返回 []）</p>
+	ClusterIDs []*string `json:"ClusterIDs,omitnil,omitempty" name:"ClusterIDs"`
+
+	// <p>排除集群ID列表（空返回 []）</p>
+	ExcludeClusterIDs []*string `json:"ExcludeClusterIDs,omitnil,omitempty" name:"ExcludeClusterIDs"`
+
+	// <p>容器条件匹配</p>
+	ConditionMatches []*ConditionMatch `json:"ConditionMatches,omitnil,omitempty" name:"ConditionMatches"`
+
+	// <p>安全中心标签</p>
+	TagItems []*EDRRuleTagItem `json:"TagItems,omitnil,omitempty" name:"TagItems"`
+}
+
+type EDRRuleTagItem struct {
+	// <p>安全中心标签ID</p>
+	ID *uint64 `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// <p>标签中文Key</p>
+	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
+
+	// <p>标签英文key</p>
+	TagKeyEn *string `json:"TagKeyEn,omitnil,omitempty" name:"TagKeyEn"`
+
+	// <p>标签中文值</p>
+	TagValue *string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
+
+	// <p>标签英文值</p>
+	TagValueEn *string `json:"TagValueEn,omitnil,omitempty" name:"TagValueEn"`
+
+	// <p>标签描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>标签颜色</p>
+	Color *string `json:"Color,omitnil,omitempty" name:"Color"`
 }
 
 type EdrAlertCategoryCount struct {
@@ -25904,6 +25983,36 @@ type EdrAlertDetail struct {
 
 	// <p>服务进程信息（base64 编码后的 JSON 字符串）</p>
 	NetSvcPs *string `json:"NetSvcPs,omitnil,omitempty" name:"NetSvcPs"`
+
+	// <p>容器名称</p>
+	ContainerName *string `json:"ContainerName,omitnil,omitempty" name:"ContainerName"`
+
+	// <p>容器镜像名称</p>
+	ImageName *string `json:"ImageName,omitnil,omitempty" name:"ImageName"`
+
+	// <p>集群名称</p>
+	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
+
+	// <p>容器运行状态（原始枚举 RUNNING/PAUSED/STOPPED…，前端自行映射）</p><p>枚举值：</p><ul><li>RUNNING： 运行</li><li>PAUSED： 暂停</li><li>STOPPED： 停止</li><li>CREATED： 已经创建</li><li>DESTROYED： 已销毁</li><li>RESTARTING： 重启中</li><li>REMOVING： 迁移中</li><li>DEAD： DEAD</li><li>UNKNOWN： 未知</li></ul>
+	RunStatus *string `json:"RunStatus,omitnil,omitempty" name:"RunStatus"`
+
+	// <p>POD 名称</p>
+	PodName *string `json:"PodName,omitnil,omitempty" name:"PodName"`
+
+	// <p>POD IP</p>
+	PodIp *string `json:"PodIp,omitnil,omitempty" name:"PodIp"`
+
+	// <p>命名空间</p>
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+
+	// <p>POD 负载类型</p>
+	PodWorkloadType *string `json:"PodWorkloadType,omitnil,omitempty" name:"PodWorkloadType"`
+
+	// <p>集群 ca 证书 md5</p>
+	ClusterCaMD5 *string `json:"ClusterCaMD5,omitnil,omitempty" name:"ClusterCaMD5"`
+
+	// <p>POD 唯一 id</p>
+	PodUniqueId *string `json:"PodUniqueId,omitnil,omitempty" name:"PodUniqueId"`
 }
 
 type EdrAlertItem struct {
@@ -25952,6 +26061,9 @@ type EdrAlertItem struct {
 	// <p>告警来源</p>
 	AlertSource *string `json:"AlertSource,omitnil,omitempty" name:"AlertSource"`
 
+	// <p>机器类型（列表接口专有；不限于容器告警，主机告警同样返回）。按 Quuid 富化自 machines.machine_type，原始枚举值原样透传、不做 i18n 翻译，前端自行映射展示。取值如 CVM / LH / Other / EKS-NATIVE 等；查不到对应机器信息时降级为空串 ""（与 InstanceName / PublicIp / PrivateIp 等资产富化字段降级行为一致）。告警详情接口（DescribeEdrAlertInfo）不返回此字段</p>
+	MachineType *string `json:"MachineType,omitnil,omitempty" name:"MachineType"`
+
 	// <p>镜像ID</p>
 	ImageId *string `json:"ImageId,omitnil,omitempty" name:"ImageId"`
 
@@ -25987,6 +26099,15 @@ type EdrAlertItem struct {
 
 	// <p>该机器是否开启应用防护</p>
 	RaspOpen *bool `json:"RaspOpen,omitnil,omitempty" name:"RaspOpen"`
+
+	// <p>容器名称</p>
+	ContainerName *string `json:"ContainerName,omitnil,omitempty" name:"ContainerName"`
+
+	// <p>容器镜像名称</p>
+	ImageName *string `json:"ImageName,omitnil,omitempty" name:"ImageName"`
+
+	// <p>集群名称</p>
+	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 }
 
 type EdrAlertTarget struct {
@@ -26010,19 +26131,19 @@ type EdrAlertTarget struct {
 }
 
 type EdrAlertTargetForIgnore struct {
-	// <p>告警主键ID</p>
+	// 告警主键ID
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// <p>告警所属账号ID（跨账号，前端必传）</p>
+	// 告警所属账号ID（跨账号，前端必传）
 	AppId *uint64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 
-	// <p>告警唯一标识</p>
+	// 告警唯一标识
 	AlertId *string `json:"AlertId,omitnil,omitempty" name:"AlertId"`
 
-	// <p>主机UUID（可选）</p>
+	// 主机UUID（可选）
 	Quuid *string `json:"Quuid,omitnil,omitempty" name:"Quuid"`
 
-	// <p>实例ID（可选，用于白名单写入）</p>
+	// 实例ID（可选，用于白名单删除）
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
@@ -26225,7 +26346,7 @@ type FilterDataObject struct {
 }
 
 type Filters struct {
-	// 过滤条件名称。取值：ResultStatus（通过状态，Values: PASS/NOT_PASS）、AssetName（资产名称/ID，模糊匹配）、IP（IP地址，模糊匹配）、Tag（资产标签，模糊匹配）
+	// 过滤条件名称。取值：Status（执行结果，Values: SUCCESS/FAILED/USER_CANCELED/CHECKING）
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 过滤条件值列表
@@ -26623,6 +26744,14 @@ type IaCFileRisk struct {
 	Suggestion *string `json:"Suggestion,omitnil,omitempty" name:"Suggestion"`
 }
 
+type ImageIDWithAppIdItem struct {
+	// <p>账号ID</p>
+	AppId *uint64 `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>容器镜像ID</p>
+	ImageID *string `json:"ImageID,omitnil,omitempty" name:"ImageID"`
+}
+
 type InquireInfo struct {
 	// 计费项名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
@@ -26632,10 +26761,10 @@ type InquireInfo struct {
 }
 
 type InstanceIDWithAppIdItem struct {
-	// <p>APPID</p>
+	// 机器所属AppId
 	AppId *uint64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 
-	// <p>实例ID</p>
+	// 机器实例ID
 	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
 }
 
@@ -27396,13 +27525,35 @@ type ModifyAILinkSettingRequestParams struct {
 	Scope *uint64 `json:"Scope,omitnil,omitempty" name:"Scope"`
 
 	// <p>自选主机Quuid列表（Scope=0时必填）</p>
+	//
+	// Deprecated: Quuids is deprecated.
 	Quuids []*string `json:"Quuids,omitnil,omitempty" name:"Quuids"`
 
 	// <p>排除主机Quuid列表（Scope=1时生效）</p>
+	//
+	// Deprecated: ExcludeQuuids is deprecated.
 	ExcludeQuuids []*string `json:"ExcludeQuuids,omitnil,omitempty" name:"ExcludeQuuids"`
 
 	// <p>新增资产自动包含 0 不包含 1包含</p>
 	AutoInclude *uint64 `json:"AutoInclude,omitnil,omitempty" name:"AutoInclude"`
+
+	// <p>标签ID</p>
+	TagIDs []*string `json:"TagIDs,omitnil,omitempty" name:"TagIDs"`
+
+	// <p>0,1</p><p>枚举值：</p><ul><li>0： 部分</li><li>1： 全部</li></ul>
+	TCSSScope *uint64 `json:"TCSSScope,omitnil,omitempty" name:"TCSSScope"`
+
+	// <p>集群ID</p>
+	ClusterIDs []*string `json:"ClusterIDs,omitnil,omitempty" name:"ClusterIDs"`
+
+	// <p>排除集群ID</p>
+	ExcludeClusterIDs []*string `json:"ExcludeClusterIDs,omitnil,omitempty" name:"ExcludeClusterIDs"`
+
+	// <p>实例ID</p>
+	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
+
+	// <p>排除实例ID</p>
+	ExcludeInstanceIds []*string `json:"ExcludeInstanceIds,omitnil,omitempty" name:"ExcludeInstanceIds"`
 }
 
 type ModifyAILinkSettingRequest struct {
@@ -27434,6 +27585,24 @@ type ModifyAILinkSettingRequest struct {
 
 	// <p>新增资产自动包含 0 不包含 1包含</p>
 	AutoInclude *uint64 `json:"AutoInclude,omitnil,omitempty" name:"AutoInclude"`
+
+	// <p>标签ID</p>
+	TagIDs []*string `json:"TagIDs,omitnil,omitempty" name:"TagIDs"`
+
+	// <p>0,1</p><p>枚举值：</p><ul><li>0： 部分</li><li>1： 全部</li></ul>
+	TCSSScope *uint64 `json:"TCSSScope,omitnil,omitempty" name:"TCSSScope"`
+
+	// <p>集群ID</p>
+	ClusterIDs []*string `json:"ClusterIDs,omitnil,omitempty" name:"ClusterIDs"`
+
+	// <p>排除集群ID</p>
+	ExcludeClusterIDs []*string `json:"ExcludeClusterIDs,omitnil,omitempty" name:"ExcludeClusterIDs"`
+
+	// <p>实例ID</p>
+	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
+
+	// <p>排除实例ID</p>
+	ExcludeInstanceIds []*string `json:"ExcludeInstanceIds,omitnil,omitempty" name:"ExcludeInstanceIds"`
 }
 
 func (r *ModifyAILinkSettingRequest) ToJsonString() string {
@@ -27457,6 +27626,12 @@ func (r *ModifyAILinkSettingRequest) FromJsonString(s string) error {
 	delete(f, "Quuids")
 	delete(f, "ExcludeQuuids")
 	delete(f, "AutoInclude")
+	delete(f, "TagIDs")
+	delete(f, "TCSSScope")
+	delete(f, "ClusterIDs")
+	delete(f, "ExcludeClusterIDs")
+	delete(f, "InstanceIds")
+	delete(f, "ExcludeInstanceIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAILinkSettingRequest has unknown keys!", "")
 	}
@@ -29849,6 +30024,21 @@ type ModifyEDRRuleRequestParams struct {
 
 	// <p>全选资产排除的实例ID和APPID</p>
 	ExcludeInstanceIDsWithAppId []*InstanceIDWithAppIdItem `json:"ExcludeInstanceIDsWithAppId,omitnil,omitempty" name:"ExcludeInstanceIDsWithAppId"`
+
+	// <p>安全中心标签ID列表（主机资产范围「按标签选择」，仅对主机生效）；上限 100（超限截断）。标签来源接口 DescribeAssetTagTree</p>
+	TagIDs []*string `json:"TagIDs,omitnil,omitempty" name:"TagIDs"`
+
+	// <p>指定生效集群列表（每项含 AppId + ClusterID，TCSSScope=0 时使用）。入参数组上限 3000（超限截断保留前 3000 项）</p>
+	ClusterIDsWithAppId []*ClusterIDWithAppIdItem `json:"ClusterIDsWithAppId,omitnil,omitempty" name:"ClusterIDsWithAppId"`
+
+	// <p>排除集群列表（每项含 AppId + ClusterID）；入参数组上限 3000（超限截断保留前 3000 项）</p>
+	ExcludeClusterIDsWithAppId []*ClusterIDWithAppIdItem `json:"ExcludeClusterIDsWithAppId,omitnil,omitempty" name:"ExcludeClusterIDsWithAppId"`
+
+	// <p>直接选择镜像（每项含 AppId + ImageID，在集群基础上进一步过滤）。多账号场景下各账号只存属于自己的镜像；入参数组上限 3000（超限截断保留前 3000 项）</p>
+	ImageIDsWithAppId []*ImageIDWithAppIdItem `json:"ImageIDsWithAppId,omitnil,omitempty" name:"ImageIDsWithAppId"`
+
+	// <p>容器条件匹配</p>
+	ConditionMatches []*ConditionMatch `json:"ConditionMatches,omitnil,omitempty" name:"ConditionMatches"`
 }
 
 type ModifyEDRRuleRequest struct {
@@ -29934,6 +30124,21 @@ type ModifyEDRRuleRequest struct {
 
 	// <p>全选资产排除的实例ID和APPID</p>
 	ExcludeInstanceIDsWithAppId []*InstanceIDWithAppIdItem `json:"ExcludeInstanceIDsWithAppId,omitnil,omitempty" name:"ExcludeInstanceIDsWithAppId"`
+
+	// <p>安全中心标签ID列表（主机资产范围「按标签选择」，仅对主机生效）；上限 100（超限截断）。标签来源接口 DescribeAssetTagTree</p>
+	TagIDs []*string `json:"TagIDs,omitnil,omitempty" name:"TagIDs"`
+
+	// <p>指定生效集群列表（每项含 AppId + ClusterID，TCSSScope=0 时使用）。入参数组上限 3000（超限截断保留前 3000 项）</p>
+	ClusterIDsWithAppId []*ClusterIDWithAppIdItem `json:"ClusterIDsWithAppId,omitnil,omitempty" name:"ClusterIDsWithAppId"`
+
+	// <p>排除集群列表（每项含 AppId + ClusterID）；入参数组上限 3000（超限截断保留前 3000 项）</p>
+	ExcludeClusterIDsWithAppId []*ClusterIDWithAppIdItem `json:"ExcludeClusterIDsWithAppId,omitnil,omitempty" name:"ExcludeClusterIDsWithAppId"`
+
+	// <p>直接选择镜像（每项含 AppId + ImageID，在集群基础上进一步过滤）。多账号场景下各账号只存属于自己的镜像；入参数组上限 3000（超限截断保留前 3000 项）</p>
+	ImageIDsWithAppId []*ImageIDWithAppIdItem `json:"ImageIDsWithAppId,omitnil,omitempty" name:"ImageIDsWithAppId"`
+
+	// <p>容器条件匹配</p>
+	ConditionMatches []*ConditionMatch `json:"ConditionMatches,omitnil,omitempty" name:"ConditionMatches"`
 }
 
 func (r *ModifyEDRRuleRequest) ToJsonString() string {
@@ -29975,6 +30180,11 @@ func (r *ModifyEDRRuleRequest) FromJsonString(s string) error {
 	delete(f, "Target")
 	delete(f, "InstanceIDsWithAppId")
 	delete(f, "ExcludeInstanceIDsWithAppId")
+	delete(f, "TagIDs")
+	delete(f, "ClusterIDsWithAppId")
+	delete(f, "ExcludeClusterIDsWithAppId")
+	delete(f, "ImageIDsWithAppId")
+	delete(f, "ConditionMatches")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyEDRRuleRequest has unknown keys!", "")
 	}
@@ -31576,19 +31786,19 @@ type RegionConfig struct {
 }
 
 type RegionInfo struct {
-	// <p>地域</p>
+	// 地域标志，如 ap-guangzhou、ap-shanghai、ap-beijing。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// <p>地域编码</p>
-	RegionCode *string `json:"RegionCode,omitnil,omitempty" name:"RegionCode"`
-
-	// <p>地域ID</p>
-	RegionId *uint64 `json:"RegionId,omitnil,omitempty" name:"RegionId"`
-
-	// <p>地域名称</p>
+	// 地域中文名，如华南地区（广州）、华东地区（上海）、华北地区（北京）。
 	RegionName *string `json:"RegionName,omitnil,omitempty" name:"RegionName"`
 
-	// <p>地域英文名称</p>
+	// 地域数字 ID。
+	RegionId *uint64 `json:"RegionId,omitnil,omitempty" name:"RegionId"`
+
+	// 地域简码，如 gz、sh、bj。
+	RegionCode *string `json:"RegionCode,omitnil,omitempty" name:"RegionCode"`
+
+	// 地域英文名。
 	RegionNameEn *string `json:"RegionNameEn,omitnil,omitempty" name:"RegionNameEn"`
 }
 

@@ -14552,154 +14552,118 @@ func (r *ModifyCloudNativeAPIGatewayRouteRateLimitResponse) FromJsonString(s str
 
 // Predefined struct for user
 type ModifyCloudNativeAPIGatewayRouteRequestParams struct {
-	// 网关ID
+	// <p>网关ID</p>
 	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
 
-	// 所属服务的ID
+	// <p>所属服务的ID</p>
 	ServiceID *string `json:"ServiceID,omitnil,omitempty" name:"ServiceID"`
 
-	// 路由的ID，实例级别唯一
+	// <p>路由的ID，实例级别唯一</p>
 	RouteID *string `json:"RouteID,omitnil,omitempty" name:"RouteID"`
 
-	// 路由的名字，实例级别唯一，可以不提供
+	// <p>路由的名字，实例级别唯一，可以不提供</p>
 	RouteName *string `json:"RouteName,omitnil,omitempty" name:"RouteName"`
 
-	// 路由的方法，其中方法可选值：
-	// - GET
-	// - POST
-	// - DELETE
-	// - PUT
-	// - OPTIONS
-	// - PATCH
-	// - HEAD
-	// - ANY
-	// - TRACE
-	// - COPY
-	// - MOVE
-	// - PROPFIND
-	// - PROPPATCH
-	// - MKCOL
-	// - LOCK
-	// - UNLOCK
+	// <p>路由的方法，其中方法可选值：</p><ul><li>GET</li><li>POST</li><li>DELETE</li><li>PUT</li><li>OPTIONS</li><li>PATCH</li><li>HEAD</li><li>ANY</li><li>TRACE</li><li>COPY</li><li>MOVE</li><li>PROPFIND</li><li>PROPPATCH</li><li>MKCOL</li><li>LOCK</li><li>UNLOCK</li></ul>
 	Methods []*string `json:"Methods,omitnil,omitempty" name:"Methods"`
 
-	// 路由的域名
+	// <p>路由的域名</p>
 	Hosts []*string `json:"Hosts,omitnil,omitempty" name:"Hosts"`
 
-	// 路由的路径
+	// <p>路由的路径</p>
 	Paths []*string `json:"Paths,omitnil,omitempty" name:"Paths"`
 
-	// 路由的协议，可选
-	// - https
-	// - http
+	// <p>路由的协议，可选</p><ul><li>https</li><li>http</li></ul>
 	Protocols []*string `json:"Protocols,omitnil,omitempty" name:"Protocols"`
 
-	// 转发到后端时是否保留Host
+	// <p>转发到后端时是否保留Host</p>
 	PreserveHost *bool `json:"PreserveHost,omitnil,omitempty" name:"PreserveHost"`
 
-	// https重定向状态码
+	// <p>https重定向状态码</p>
 	HttpsRedirectStatusCode *int64 `json:"HttpsRedirectStatusCode,omitnil,omitempty" name:"HttpsRedirectStatusCode"`
 
-	// 转发到后端时是否StripPath
+	// <p>转发到后端时是否StripPath</p>
 	StripPath *bool `json:"StripPath,omitnil,omitempty" name:"StripPath"`
 
-	// 是否开启强制HTTPS
+	// <p>是否开启强制HTTPS</p>
 	//
 	// Deprecated: ForceHttps is deprecated.
 	ForceHttps *bool `json:"ForceHttps,omitnil,omitempty" name:"ForceHttps"`
 
-	// 四层匹配的目的端口	
+	// <p>四层匹配的目的端口</p>
 	DestinationPorts []*uint64 `json:"DestinationPorts,omitnil,omitempty" name:"DestinationPorts"`
 
-	// 路由的Headers
+	// <p>路由的Headers</p>
 	Headers []*KVMapping `json:"Headers,omitnil,omitempty" name:"Headers"`
 
-	// 是否缓存请求body，默认true
+	// <p>是否缓存请求body，默认true</p>
 	RequestBuffering *bool `json:"RequestBuffering,omitnil,omitempty" name:"RequestBuffering"`
 
-	// 是否缓存响应body，默认true
+	// <p>是否缓存响应body，默认true</p>
 	ResponseBuffering *bool `json:"ResponseBuffering,omitnil,omitempty" name:"ResponseBuffering"`
 
-	// 增加优先级
+	// <p>增加优先级</p>
 	RegexPriority *int64 `json:"RegexPriority,omitnil,omitempty" name:"RegexPriority"`
 
-	// querysring参数
+	// <p>querysring参数</p>
 	QueryStringParameters []*KVMapping `json:"QueryStringParameters,omitnil,omitempty" name:"QueryStringParameters"`
 }
 
 type ModifyCloudNativeAPIGatewayRouteRequest struct {
 	*tchttp.BaseRequest
 	
-	// 网关ID
+	// <p>网关ID</p>
 	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
 
-	// 所属服务的ID
+	// <p>所属服务的ID</p>
 	ServiceID *string `json:"ServiceID,omitnil,omitempty" name:"ServiceID"`
 
-	// 路由的ID，实例级别唯一
+	// <p>路由的ID，实例级别唯一</p>
 	RouteID *string `json:"RouteID,omitnil,omitempty" name:"RouteID"`
 
-	// 路由的名字，实例级别唯一，可以不提供
+	// <p>路由的名字，实例级别唯一，可以不提供</p>
 	RouteName *string `json:"RouteName,omitnil,omitempty" name:"RouteName"`
 
-	// 路由的方法，其中方法可选值：
-	// - GET
-	// - POST
-	// - DELETE
-	// - PUT
-	// - OPTIONS
-	// - PATCH
-	// - HEAD
-	// - ANY
-	// - TRACE
-	// - COPY
-	// - MOVE
-	// - PROPFIND
-	// - PROPPATCH
-	// - MKCOL
-	// - LOCK
-	// - UNLOCK
+	// <p>路由的方法，其中方法可选值：</p><ul><li>GET</li><li>POST</li><li>DELETE</li><li>PUT</li><li>OPTIONS</li><li>PATCH</li><li>HEAD</li><li>ANY</li><li>TRACE</li><li>COPY</li><li>MOVE</li><li>PROPFIND</li><li>PROPPATCH</li><li>MKCOL</li><li>LOCK</li><li>UNLOCK</li></ul>
 	Methods []*string `json:"Methods,omitnil,omitempty" name:"Methods"`
 
-	// 路由的域名
+	// <p>路由的域名</p>
 	Hosts []*string `json:"Hosts,omitnil,omitempty" name:"Hosts"`
 
-	// 路由的路径
+	// <p>路由的路径</p>
 	Paths []*string `json:"Paths,omitnil,omitempty" name:"Paths"`
 
-	// 路由的协议，可选
-	// - https
-	// - http
+	// <p>路由的协议，可选</p><ul><li>https</li><li>http</li></ul>
 	Protocols []*string `json:"Protocols,omitnil,omitempty" name:"Protocols"`
 
-	// 转发到后端时是否保留Host
+	// <p>转发到后端时是否保留Host</p>
 	PreserveHost *bool `json:"PreserveHost,omitnil,omitempty" name:"PreserveHost"`
 
-	// https重定向状态码
+	// <p>https重定向状态码</p>
 	HttpsRedirectStatusCode *int64 `json:"HttpsRedirectStatusCode,omitnil,omitempty" name:"HttpsRedirectStatusCode"`
 
-	// 转发到后端时是否StripPath
+	// <p>转发到后端时是否StripPath</p>
 	StripPath *bool `json:"StripPath,omitnil,omitempty" name:"StripPath"`
 
-	// 是否开启强制HTTPS
+	// <p>是否开启强制HTTPS</p>
 	ForceHttps *bool `json:"ForceHttps,omitnil,omitempty" name:"ForceHttps"`
 
-	// 四层匹配的目的端口	
+	// <p>四层匹配的目的端口</p>
 	DestinationPorts []*uint64 `json:"DestinationPorts,omitnil,omitempty" name:"DestinationPorts"`
 
-	// 路由的Headers
+	// <p>路由的Headers</p>
 	Headers []*KVMapping `json:"Headers,omitnil,omitempty" name:"Headers"`
 
-	// 是否缓存请求body，默认true
+	// <p>是否缓存请求body，默认true</p>
 	RequestBuffering *bool `json:"RequestBuffering,omitnil,omitempty" name:"RequestBuffering"`
 
-	// 是否缓存响应body，默认true
+	// <p>是否缓存响应body，默认true</p>
 	ResponseBuffering *bool `json:"ResponseBuffering,omitnil,omitempty" name:"ResponseBuffering"`
 
-	// 增加优先级
+	// <p>增加优先级</p>
 	RegexPriority *int64 `json:"RegexPriority,omitnil,omitempty" name:"RegexPriority"`
 
-	// querysring参数
+	// <p>querysring参数</p>
 	QueryStringParameters []*KVMapping `json:"QueryStringParameters,omitnil,omitempty" name:"QueryStringParameters"`
 }
 

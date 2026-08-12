@@ -8698,51 +8698,54 @@ type DatabaseResponseInfo struct {
 }
 
 type DatasourceConnectionConfig struct {
-	// Mysql数据源连接的属性
+	// <p>Mysql数据源连接的属性</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Mysql *MysqlInfo `json:"Mysql,omitnil,omitempty" name:"Mysql"`
 
-	// Hive数据源连接的属性
+	// <p>Hive数据源连接的属性</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Hive *HiveInfo `json:"Hive,omitnil,omitempty" name:"Hive"`
 
-	// Kafka数据源连接的属性
+	// <p>Kafka数据源连接的属性</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Kafka *KafkaInfo `json:"Kafka,omitnil,omitempty" name:"Kafka"`
 
-	// 其他数据源连接的属性
+	// <p>其他数据源连接的属性</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OtherDatasourceConnection *OtherDatasourceConnection `json:"OtherDatasourceConnection,omitnil,omitempty" name:"OtherDatasourceConnection"`
 
-	// PostgreSQL数据源连接的属性
+	// <p>PostgreSQL数据源连接的属性</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PostgreSql *DataSourceInfo `json:"PostgreSql,omitnil,omitempty" name:"PostgreSql"`
 
-	// SQLServer数据源连接的属性
+	// <p>SQLServer数据源连接的属性</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SqlServer *DataSourceInfo `json:"SqlServer,omitnil,omitempty" name:"SqlServer"`
 
-	// ClickHouse数据源连接的属性
+	// <p>ClickHouse数据源连接的属性</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClickHouse *DataSourceInfo `json:"ClickHouse,omitnil,omitempty" name:"ClickHouse"`
 
-	// Elasticsearch数据源连接的属性
+	// <p>Elasticsearch数据源连接的属性</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Elasticsearch *ElasticsearchInfo `json:"Elasticsearch,omitnil,omitempty" name:"Elasticsearch"`
 
-	// TDSQL-PostgreSQL数据源连接的属性
+	// <p>TDSQL-PostgreSQL数据源连接的属性</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TDSQLPostgreSql *DataSourceInfo `json:"TDSQLPostgreSql,omitnil,omitempty" name:"TDSQLPostgreSql"`
 
-	// Doris数据源连接的属性
+	// <p>Doris数据源连接的属性</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TCHouseD *TCHouseD `json:"TCHouseD,omitnil,omitempty" name:"TCHouseD"`
 
-	// TccHive数据目录连接信息
+	// <p>TccHive数据目录连接信息</p>
 	TccHive *TccHive `json:"TccHive,omitnil,omitempty" name:"TccHive"`
 
-	// MongoDB 数据源
+	// <p>MongoDB 数据源</p>
 	MongoDB *DataSourceInfo `json:"MongoDB,omitnil,omitempty" name:"MongoDB"`
+
+	// <p>TCHouseP数据源</p>
+	TCHouseP *TCHousePInfo `json:"TCHouseP,omitnil,omitempty" name:"TCHouseP"`
 }
 
 type DatasourceConnectionInfo struct {
@@ -29724,6 +29727,40 @@ type TCHouseD struct {
 	DbName *string `json:"DbName,omitnil,omitempty" name:"DbName"`
 
 	// 访问信息
+	AccessInfo *string `json:"AccessInfo,omitnil,omitempty" name:"AccessInfo"`
+}
+
+type TCHousePInfo struct {
+	// <p>实例id</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>实例名称</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
+
+	// <p>JdbcUrl</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JdbcUrl *string `json:"JdbcUrl,omitnil,omitempty" name:"JdbcUrl"`
+
+	// <p>用户名</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	User *string `json:"User,omitnil,omitempty" name:"User"`
+
+	// <p>密码</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+
+	// <p>地址</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Location *DatasourceConnectionLocation `json:"Location,omitnil,omitempty" name:"Location"`
+
+	// <p>数据库名称</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DbName *string `json:"DbName,omitnil,omitempty" name:"DbName"`
+
+	// <p>地址信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccessInfo *string `json:"AccessInfo,omitnil,omitempty" name:"AccessInfo"`
 }
 

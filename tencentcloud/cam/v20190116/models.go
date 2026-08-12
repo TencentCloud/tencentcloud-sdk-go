@@ -5589,26 +5589,29 @@ type LoginActionFlag struct {
 }
 
 type LoginActionFlagIntl struct {
-	// 手机
+	// <p>手机</p>
 	Phone *uint64 `json:"Phone,omitnil,omitempty" name:"Phone"`
 
-	// 硬token
+	// <p>硬token</p>
 	Token *uint64 `json:"Token,omitnil,omitempty" name:"Token"`
 
-	// 软token
+	// <p>软token</p>
 	Stoken *uint64 `json:"Stoken,omitnil,omitempty" name:"Stoken"`
 
-	// 微信
+	// <p>微信</p>
 	Wechat *uint64 `json:"Wechat,omitnil,omitempty" name:"Wechat"`
 
-	// 自定义
+	// <p>自定义</p>
 	Custom *uint64 `json:"Custom,omitnil,omitempty" name:"Custom"`
 
-	// 邮件
+	// <p>邮件</p>
 	Mail *uint64 `json:"Mail,omitnil,omitempty" name:"Mail"`
 
-	// u2f硬件token
+	// <p>u2f硬件token</p>
 	U2FToken *uint64 `json:"U2FToken,omitnil,omitempty" name:"U2FToken"`
+
+	// <p>passkey通行密钥</p>
+	Passkey *uint64 `json:"Passkey,omitnil,omitempty" name:"Passkey"`
 }
 
 type LoginActionMfaFlag struct {

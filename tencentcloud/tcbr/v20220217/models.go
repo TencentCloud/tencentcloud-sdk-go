@@ -2032,6 +2032,11 @@ type ServerBaseConfig struct {
 	PublicNetConf *PublicNetConf `json:"PublicNetConf,omitnil,omitempty" name:"PublicNetConf"`
 }
 
+type ServerBaseConfigDiff struct {
+	// 字符串参数 Key：EnvParam
+	StrParams []*ObjectKV `json:"StrParams,omitnil,omitempty" name:"StrParams"`
+}
+
 type ServerBaseInfo struct {
 	// <p>服务名</p>
 	ServerName *string `json:"ServerName,omitnil,omitempty" name:"ServerName"`
@@ -2294,6 +2299,84 @@ type StorageInfo struct {
 
 	// 资源所属用户的腾讯云appId
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+}
+
+// Predefined struct for user
+type SubmitServerConfigChangeDiffRequestParams struct {
+	// 环境Id
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// 服务名
+	ServerName *string `json:"ServerName,omitnil,omitempty" name:"ServerName"`
+
+	// 配置信息 deprecated
+	Conf *ServerBaseConfigDiff `json:"Conf,omitnil,omitempty" name:"Conf"`
+
+	// 配置信息
+	Items []*DiffConfigItem `json:"Items,omitnil,omitempty" name:"Items"`
+}
+
+type SubmitServerConfigChangeDiffRequest struct {
+	*tchttp.BaseRequest
+	
+	// 环境Id
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// 服务名
+	ServerName *string `json:"ServerName,omitnil,omitempty" name:"ServerName"`
+
+	// 配置信息 deprecated
+	Conf *ServerBaseConfigDiff `json:"Conf,omitnil,omitempty" name:"Conf"`
+
+	// 配置信息
+	Items []*DiffConfigItem `json:"Items,omitnil,omitempty" name:"Items"`
+}
+
+func (r *SubmitServerConfigChangeDiffRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SubmitServerConfigChangeDiffRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "ServerName")
+	delete(f, "Conf")
+	delete(f, "Items")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitServerConfigChangeDiffRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SubmitServerConfigChangeDiffResponseParams struct {
+	// 任务Id 大于 0 需要请求 DescribeServerManageTask 接口获取任务进度，等于 0 则表示同步
+	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type SubmitServerConfigChangeDiffResponse struct {
+	*tchttp.BaseResponse
+	Response *SubmitServerConfigChangeDiffResponseParams `json:"Response"`
+}
+
+func (r *SubmitServerConfigChangeDiffResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SubmitServerConfigChangeDiffResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

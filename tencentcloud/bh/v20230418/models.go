@@ -3301,99 +3301,129 @@ type Departments struct {
 
 // Predefined struct for user
 type DeployResourceRequestParams struct {
-	// 需要开通服务的资源ID
+	// <p>需要开通服务的资源ID</p>
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
-	// 需要开通服务的地域
+	// <p>需要开通服务的地域</p>
 	ApCode *string `json:"ApCode,omitnil,omitempty" name:"ApCode"`
 
-	// 子网所在可用区
+	// <p>子网所在可用区</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 需要开通服务的VPC
+	// <p>需要开通服务的VPC</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 需要开通服务的子网ID
+	// <p>需要开通服务的子网ID</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 需要开通服务的子网网段
+	// <p>需要开通服务的子网网段</p>
 	CidrBlock *string `json:"CidrBlock,omitnil,omitempty" name:"CidrBlock"`
 
-	// 需要开通服务的VPC名称
+	// <p>需要开通服务的VPC名称</p>
 	VpcName *string `json:"VpcName,omitnil,omitempty" name:"VpcName"`
 
-	// 需要开通服务的VPC对应的网段
+	// <p>需要开通服务的VPC对应的网段</p>
 	VpcCidrBlock *string `json:"VpcCidrBlock,omitnil,omitempty" name:"VpcCidrBlock"`
 
-	// 需要开通服务的子网名称
+	// <p>需要开通服务的子网名称</p>
 	SubnetName *string `json:"SubnetName,omitnil,omitempty" name:"SubnetName"`
 
-	// 需要开通实例所属的CDC集群ID
+	// <p>需要开通实例所属的CDC集群ID</p>
 	CdcClusterId *string `json:"CdcClusterId,omitnil,omitempty" name:"CdcClusterId"`
 
-	// 开通堡垒机指定共享的clbId
+	// <p>开通堡垒机指定共享的clbId</p>
 	ShareClbId *string `json:"ShareClbId,omitnil,omitempty" name:"ShareClbId"`
 
-	// 0-关闭web访问堡垒机，1-开启web访问堡垒机
+	// <p>0-关闭web访问堡垒机，1-开启web访问堡垒机</p>
 	WebAccess *uint64 `json:"WebAccess,omitnil,omitempty" name:"WebAccess"`
 
-	// 0-关闭客户端访问堡垒机，1-开启客户端访问堡垒机
+	// <p>0-关闭客户端访问堡垒机，1-开启客户端访问堡垒机</p>
 	ClientAccess *uint64 `json:"ClientAccess,omitnil,omitempty" name:"ClientAccess"`
 
-	// 0-关闭内网访问堡垒机，1-开启内网访问堡垒机
+	// <p>0-关闭内网访问堡垒机，1-开启内网访问堡垒机</p>
 	IntranetAccess *uint64 `json:"IntranetAccess,omitnil,omitempty" name:"IntranetAccess"`
 
-	// 0-关闭公网访问堡垒机，1-开启公网访问堡垒机
+	// <p>0-关闭公网访问堡垒机，1-开启公网访问堡垒机</p>
 	ExternalAccess *uint64 `json:"ExternalAccess,omitnil,omitempty" name:"ExternalAccess"`
+
+	// <p>开通堡垒机的子网信息</p>
+	DeploySubnets []*ParamInitResourceSubnet `json:"DeploySubnets,omitnil,omitempty" name:"DeploySubnets"`
+
+	// <p>开通内网访问的VPC ID</p>
+	IntranetVpcId *string `json:"IntranetVpcId,omitnil,omitempty" name:"IntranetVpcId"`
+
+	// <p>开通内网访问的VPC 网段</p>
+	IntranetVpcCidrBlock *string `json:"IntranetVpcCidrBlock,omitnil,omitempty" name:"IntranetVpcCidrBlock"`
+
+	// <p>开通内网访问的VPC名称</p>
+	IntranetVpcName *string `json:"IntranetVpcName,omitnil,omitempty" name:"IntranetVpcName"`
+
+	// <p>开通内网访问的子网信息</p>
+	IntranetSubnets []*ParamInitResourceSubnet `json:"IntranetSubnets,omitnil,omitempty" name:"IntranetSubnets"`
 }
 
 type DeployResourceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 需要开通服务的资源ID
+	// <p>需要开通服务的资源ID</p>
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
-	// 需要开通服务的地域
+	// <p>需要开通服务的地域</p>
 	ApCode *string `json:"ApCode,omitnil,omitempty" name:"ApCode"`
 
-	// 子网所在可用区
+	// <p>子网所在可用区</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 需要开通服务的VPC
+	// <p>需要开通服务的VPC</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 需要开通服务的子网ID
+	// <p>需要开通服务的子网ID</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 需要开通服务的子网网段
+	// <p>需要开通服务的子网网段</p>
 	CidrBlock *string `json:"CidrBlock,omitnil,omitempty" name:"CidrBlock"`
 
-	// 需要开通服务的VPC名称
+	// <p>需要开通服务的VPC名称</p>
 	VpcName *string `json:"VpcName,omitnil,omitempty" name:"VpcName"`
 
-	// 需要开通服务的VPC对应的网段
+	// <p>需要开通服务的VPC对应的网段</p>
 	VpcCidrBlock *string `json:"VpcCidrBlock,omitnil,omitempty" name:"VpcCidrBlock"`
 
-	// 需要开通服务的子网名称
+	// <p>需要开通服务的子网名称</p>
 	SubnetName *string `json:"SubnetName,omitnil,omitempty" name:"SubnetName"`
 
-	// 需要开通实例所属的CDC集群ID
+	// <p>需要开通实例所属的CDC集群ID</p>
 	CdcClusterId *string `json:"CdcClusterId,omitnil,omitempty" name:"CdcClusterId"`
 
-	// 开通堡垒机指定共享的clbId
+	// <p>开通堡垒机指定共享的clbId</p>
 	ShareClbId *string `json:"ShareClbId,omitnil,omitempty" name:"ShareClbId"`
 
-	// 0-关闭web访问堡垒机，1-开启web访问堡垒机
+	// <p>0-关闭web访问堡垒机，1-开启web访问堡垒机</p>
 	WebAccess *uint64 `json:"WebAccess,omitnil,omitempty" name:"WebAccess"`
 
-	// 0-关闭客户端访问堡垒机，1-开启客户端访问堡垒机
+	// <p>0-关闭客户端访问堡垒机，1-开启客户端访问堡垒机</p>
 	ClientAccess *uint64 `json:"ClientAccess,omitnil,omitempty" name:"ClientAccess"`
 
-	// 0-关闭内网访问堡垒机，1-开启内网访问堡垒机
+	// <p>0-关闭内网访问堡垒机，1-开启内网访问堡垒机</p>
 	IntranetAccess *uint64 `json:"IntranetAccess,omitnil,omitempty" name:"IntranetAccess"`
 
-	// 0-关闭公网访问堡垒机，1-开启公网访问堡垒机
+	// <p>0-关闭公网访问堡垒机，1-开启公网访问堡垒机</p>
 	ExternalAccess *uint64 `json:"ExternalAccess,omitnil,omitempty" name:"ExternalAccess"`
+
+	// <p>开通堡垒机的子网信息</p>
+	DeploySubnets []*ParamInitResourceSubnet `json:"DeploySubnets,omitnil,omitempty" name:"DeploySubnets"`
+
+	// <p>开通内网访问的VPC ID</p>
+	IntranetVpcId *string `json:"IntranetVpcId,omitnil,omitempty" name:"IntranetVpcId"`
+
+	// <p>开通内网访问的VPC 网段</p>
+	IntranetVpcCidrBlock *string `json:"IntranetVpcCidrBlock,omitnil,omitempty" name:"IntranetVpcCidrBlock"`
+
+	// <p>开通内网访问的VPC名称</p>
+	IntranetVpcName *string `json:"IntranetVpcName,omitnil,omitempty" name:"IntranetVpcName"`
+
+	// <p>开通内网访问的子网信息</p>
+	IntranetSubnets []*ParamInitResourceSubnet `json:"IntranetSubnets,omitnil,omitempty" name:"IntranetSubnets"`
 }
 
 func (r *DeployResourceRequest) ToJsonString() string {
@@ -3423,6 +3453,11 @@ func (r *DeployResourceRequest) FromJsonString(s string) error {
 	delete(f, "ClientAccess")
 	delete(f, "IntranetAccess")
 	delete(f, "ExternalAccess")
+	delete(f, "DeploySubnets")
+	delete(f, "IntranetVpcId")
+	delete(f, "IntranetVpcCidrBlock")
+	delete(f, "IntranetVpcName")
+	delete(f, "IntranetSubnets")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeployResourceRequest has unknown keys!", "")
 	}
@@ -6516,39 +6551,59 @@ func (r *EnableExternalAccessResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type EnableIntranetAccessRequestParams struct {
-	// 堡垒机实例id
+	// <p>堡垒机实例id</p>
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
-	// 开通内网访问的vpc id
+	// <p>开通内网访问的vpc id</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// vpc的网段
+	// <p>vpc名称</p>
+	VpcName *string `json:"VpcName,omitnil,omitempty" name:"VpcName"`
+
+	// <p>vpc地域</p>
+	VpcRegion *string `json:"VpcRegion,omitnil,omitempty" name:"VpcRegion"`
+
+	// <p>vpc的网段</p>
 	VpcCidrBlock *string `json:"VpcCidrBlock,omitnil,omitempty" name:"VpcCidrBlock"`
 
-	// 开通内网访问的subnet id
+	// <p>开通内网访问的subnet id</p>
+	//
+	// Deprecated: SubnetId is deprecated.
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 内网ip的自定义域名，可为空
+	// <p>内网ip的自定义域名，可为空</p>
 	DomainName *string `json:"DomainName,omitnil,omitempty" name:"DomainName"`
+
+	// <p>开通内网的子网信息</p>
+	IntranetSubnets []*ParamInitResourceSubnet `json:"IntranetSubnets,omitnil,omitempty" name:"IntranetSubnets"`
 }
 
 type EnableIntranetAccessRequest struct {
 	*tchttp.BaseRequest
 	
-	// 堡垒机实例id
+	// <p>堡垒机实例id</p>
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
-	// 开通内网访问的vpc id
+	// <p>开通内网访问的vpc id</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// vpc的网段
+	// <p>vpc名称</p>
+	VpcName *string `json:"VpcName,omitnil,omitempty" name:"VpcName"`
+
+	// <p>vpc地域</p>
+	VpcRegion *string `json:"VpcRegion,omitnil,omitempty" name:"VpcRegion"`
+
+	// <p>vpc的网段</p>
 	VpcCidrBlock *string `json:"VpcCidrBlock,omitnil,omitempty" name:"VpcCidrBlock"`
 
-	// 开通内网访问的subnet id
+	// <p>开通内网访问的subnet id</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 内网ip的自定义域名，可为空
+	// <p>内网ip的自定义域名，可为空</p>
 	DomainName *string `json:"DomainName,omitnil,omitempty" name:"DomainName"`
+
+	// <p>开通内网的子网信息</p>
+	IntranetSubnets []*ParamInitResourceSubnet `json:"IntranetSubnets,omitnil,omitempty" name:"IntranetSubnets"`
 }
 
 func (r *EnableIntranetAccessRequest) ToJsonString() string {
@@ -6565,9 +6620,12 @@ func (r *EnableIntranetAccessRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ResourceId")
 	delete(f, "VpcId")
+	delete(f, "VpcName")
+	delete(f, "VpcRegion")
 	delete(f, "VpcCidrBlock")
 	delete(f, "SubnetId")
 	delete(f, "DomainName")
+	delete(f, "IntranetSubnets")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EnableIntranetAccessRequest has unknown keys!", "")
 	}
@@ -8827,6 +8885,20 @@ type OperationTask struct {
 	FirstTime *string `json:"FirstTime,omitnil,omitempty" name:"FirstTime"`
 }
 
+type ParamInitResourceSubnet struct {
+	// <p>xa0子网id</p>
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// <p>子网名称</p>
+	SubnetName *string `json:"SubnetName,omitnil,omitempty" name:"SubnetName"`
+
+	// <p>子网可用区</p>
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+
+	// <p>子网cidr</p>
+	SubnetCidrBlock *string `json:"SubnetCidrBlock,omitnil,omitempty" name:"SubnetCidrBlock"`
+}
+
 type PasswordSetting struct {
 	// 密码最小长度，8-20，默认8。
 	MinLength *uint64 `json:"MinLength,omitnil,omitempty" name:"MinLength"`
@@ -9083,185 +9155,228 @@ func (r *ResetUserResponse) FromJsonString(s string) error {
 }
 
 type Resource struct {
-	// 服务实例ID，如bh-saas-s3ed4r5e
+	// <p>服务实例ID，如bh-saas-s3ed4r5e</p>
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
-	// 地域编码
+	// <p>地域编码</p>
 	ApCode *string `json:"ApCode,omitnil,omitempty" name:"ApCode"`
 
-	// 服务实例规格信息
+	// <p>服务实例规格信息</p>
 	SvArgs *string `json:"SvArgs,omitnil,omitempty" name:"SvArgs"`
 
-	// VPC ID
+	// <p>VPC ID</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 服务规格对应的资产数
+	// <p>服务规格对应的资产数</p>
 	Nodes *uint64 `json:"Nodes,omitnil,omitempty" name:"Nodes"`
 
-	// 自动续费标记，0 - 表示默认状态，1 - 表示自动续费，2 - 表示明确不自动续费
+	// <p>自动续费标记，0 - 表示默认状态，1 - 表示自动续费，2 - 表示明确不自动续费</p>
 	RenewFlag *uint64 `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 
-	// 过期时间
+	// <p>过期时间</p>
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
-	// 资源状态，0 - 未初始化，1 - 正常，2 - 隔离，3 - 销毁，4 - 初始化失败，5 - 初始化中
+	// <p>资源状态，0 - 未初始化，1 - 正常，2 - 隔离，3 - 销毁，4 - 初始化失败，5 - 初始化中</p>
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 服务实例名，如T-Sec-堡垒机（SaaS型）
+	// <p>服务实例名，如T-Sec-堡垒机（SaaS型）</p>
 	ResourceName *string `json:"ResourceName,omitnil,omitempty" name:"ResourceName"`
 
-	// 定价模型ID
+	// <p>定价模型ID</p>
 	Pid *uint64 `json:"Pid,omitnil,omitempty" name:"Pid"`
 
-	// 资源创建时间
+	// <p>资源创建时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 商品码, p_cds_dasb
+	// <p>商品码, p_cds_dasb</p>
 	ProductCode *string `json:"ProductCode,omitnil,omitempty" name:"ProductCode"`
 
-	// 子商品码, sp_cds_dasb_bh_saas
+	// <p>子商品码, sp_cds_dasb_bh_saas</p>
 	SubProductCode *string `json:"SubProductCode,omitnil,omitempty" name:"SubProductCode"`
 
-	// 可用区
+	// <p>可用区</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 是否过期，true-过期，false-未过期
+	// <p>是否过期，true-过期，false-未过期</p>
 	Expired *bool `json:"Expired,omitnil,omitempty" name:"Expired"`
 
-	// 是否开通，true-开通，false-未开通
+	// <p>是否开通，true-开通，false-未开通</p>
 	Deployed *bool `json:"Deployed,omitnil,omitempty" name:"Deployed"`
 
-	// 开通服务的 VPC 名称
+	// <p>开通服务的 VPC 名称</p>
 	VpcName *string `json:"VpcName,omitnil,omitempty" name:"VpcName"`
 
-	// 开通服务的 VPC 对应的网段
+	// <p>开通服务的 VPC 对应的网段</p>
 	VpcCidrBlock *string `json:"VpcCidrBlock,omitnil,omitempty" name:"VpcCidrBlock"`
 
-	// 开通服务的子网ID
+	// <p>开通服务的子网ID</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 开通服务的子网名称
+	// <p>开通服务的子网名称</p>
 	SubnetName *string `json:"SubnetName,omitnil,omitempty" name:"SubnetName"`
 
-	// 开通服务的子网网段
+	// <p>开通服务的子网网段</p>
 	CidrBlock *string `json:"CidrBlock,omitnil,omitempty" name:"CidrBlock"`
 
-	// 外部IP
+	// <p>外部IP</p>
 	PublicIpSet []*string `json:"PublicIpSet,omitnil,omitempty" name:"PublicIpSet"`
 
-	// 内部IP
+	// <p>内部IP</p>
 	PrivateIpSet []*string `json:"PrivateIpSet,omitnil,omitempty" name:"PrivateIpSet"`
 
-	// 服务开通的高级功能列表，如:[DB]
+	// <p>服务开通的高级功能列表，如:[DB]</p>
 	ModuleSet []*string `json:"ModuleSet,omitnil,omitempty" name:"ModuleSet"`
 
-	// 已使用的授权点数
+	// <p>已使用的授权点数</p>
 	UsedNodes *uint64 `json:"UsedNodes,omitnil,omitempty" name:"UsedNodes"`
 
-	// 扩展点数
+	// <p>扩展点数</p>
 	ExtendPoints *uint64 `json:"ExtendPoints,omitnil,omitempty" name:"ExtendPoints"`
 
-	// 带宽扩展包个数(4M)
+	// <p>带宽扩展包个数(4M)</p>
 	PackageBandwidth *uint64 `json:"PackageBandwidth,omitnil,omitempty" name:"PackageBandwidth"`
 
-	// 授权点数扩展包个数(50点)
+	// <p>授权点数扩展包个数(50点)</p>
 	PackageNode *uint64 `json:"PackageNode,omitnil,omitempty" name:"PackageNode"`
 
-	// 日志投递规格信息
+	// <p>日志投递规格信息</p>
 	LogDeliveryArgs *string `json:"LogDeliveryArgs,omitnil,omitempty" name:"LogDeliveryArgs"`
 
-	// 堡垒机资源LB	
+	// <p>堡垒机资源LB</p>
 	ClbSet []*Clb `json:"ClbSet,omitnil,omitempty" name:"ClbSet"`
 
-	// 网络域个数
+	// <p>网络域个数</p>
 	DomainCount *uint64 `json:"DomainCount,omitnil,omitempty" name:"DomainCount"`
 
-	// 已经使用的网络域个数
+	// <p>已经使用的网络域个数</p>
 	UsedDomainCount *uint64 `json:"UsedDomainCount,omitnil,omitempty" name:"UsedDomainCount"`
 
-	// 0 非试用版，1 试用版
+	// <p>开启的网络域个数（不包含默认网络域）</p>
+	EnabledDomainCount *uint64 `json:"EnabledDomainCount,omitnil,omitempty" name:"EnabledDomainCount"`
+
+	// <p>0 非试用版，1 试用版</p>
 	Trial *uint64 `json:"Trial,omitnil,omitempty" name:"Trial"`
 
-	// 日志投递规格信息
+	// <p>日志投递规格信息</p>
 	LogDelivery *string `json:"LogDelivery,omitnil,omitempty" name:"LogDelivery"`
 
-	// cdc集群id
+	// <p>cdc集群id</p>
 	CdcClusterId *string `json:"CdcClusterId,omitnil,omitempty" name:"CdcClusterId"`
 
-	// 部署模式 默认0 0-cvm 1-tke
+	// <p>部署模式 默认0 0-cvm 1-tke</p>
 	DeployModel *uint64 `json:"DeployModel,omitnil,omitempty" name:"DeployModel"`
 
-	// 0 默认值，非内网访问，1 内网访问，2 内网访问开通中，3 内网访问关闭中
+	// <p>0 默认值，非内网访问，1 内网访问，2 内网访问开通中，3 内网访问关闭中</p>
 	IntranetAccess *uint64 `json:"IntranetAccess,omitnil,omitempty" name:"IntranetAccess"`
 
-	// 内网访问的ip
+	// <p>内网访问的ip</p>
 	IntranetPrivateIpSet []*string `json:"IntranetPrivateIpSet,omitnil,omitempty" name:"IntranetPrivateIpSet"`
 
-	// 开通内网访问的vpc
+	// <p>开通内网访问的vpc</p>
 	IntranetVpcId *string `json:"IntranetVpcId,omitnil,omitempty" name:"IntranetVpcId"`
 
-	// 开通内网访问的subnetId
+	// <p>开通内网访问的subnetId</p>
+	//
+	// Deprecated: IntranetSubnetId is deprecated.
 	IntranetSubnetId *string `json:"IntranetSubnetId,omitnil,omitempty" name:"IntranetSubnetId"`
 
-	// 开通内网访问vpc的网段
+	// <p>开通内网访问的子网集合</p>
+	IntranetSubnetIdSet []*string `json:"IntranetSubnetIdSet,omitnil,omitempty" name:"IntranetSubnetIdSet"`
+
+	// <p>开通内网访问vpc的网段</p>
 	IntranetVpcCidr *string `json:"IntranetVpcCidr,omitnil,omitempty" name:"IntranetVpcCidr"`
 
-	// 堡垒机内网ip自定义域名
+	// <p>堡垒机内网ip自定义域名</p>
 	DomainName *string `json:"DomainName,omitnil,omitempty" name:"DomainName"`
 
-	// 是否共享clb，true-共享clb，false-独享clb
+	// <p>是否共享clb，true-共享clb，false-独享clb</p>
 	ShareClb *bool `json:"ShareClb,omitnil,omitempty" name:"ShareClb"`
 
-	// 共享clb id
+	// <p>共享clb id</p>
 	OpenClbId *string `json:"OpenClbId,omitnil,omitempty" name:"OpenClbId"`
 
-	// 运营商信息
+	// <p>运营商信息</p>
 	LbVipIsp *string `json:"LbVipIsp,omitnil,omitempty" name:"LbVipIsp"`
 
-	// linux资产命令行运维端口
+	// <p>linux资产命令行运维端口</p>
 	TUICmdPort *int64 `json:"TUICmdPort,omitnil,omitempty" name:"TUICmdPort"`
 
-	// linux资产直连端口
+	// <p>linux资产直连端口</p>
 	TUIDirectPort *int64 `json:"TUIDirectPort,omitnil,omitempty" name:"TUIDirectPort"`
 
-	// 1 默认值，web访问开启，0 web访问关闭，2 web访问开通中，3 web访问关闭中
+	// <p>1 默认值，web访问开启，0 web访问关闭，2 web访问开通中，3 web访问关闭中</p>
 	WebAccess *uint64 `json:"WebAccess,omitnil,omitempty" name:"WebAccess"`
 
-	// 1 默认值，客户单访问开启，0 客户端访问关闭，2 客户端访问开通中，3 客户端访问关闭中
+	// <p>1 默认值，客户单访问开启，0 客户端访问关闭，2 客户端访问开通中，3 客户端访问关闭中</p>
 	ClientAccess *uint64 `json:"ClientAccess,omitnil,omitempty" name:"ClientAccess"`
 
-	// 1 默认值，外网访问开启，0 外网访问关闭，2 外网访问开通中，3 外网访问关闭中
+	// <p>1 默认值，外网访问开启，0 外网访问关闭，2 外网访问开通中，3 外网访问关闭中</p>
 	ExternalAccess *uint64 `json:"ExternalAccess,omitnil,omitempty" name:"ExternalAccess"`
 
-	// 0默认值。0-免费版（试用版）ioa，1-付费版ioa
+	// <p>0默认值。0-免费版（试用版）ioa，1-付费版ioa</p>
 	IOAResource *uint64 `json:"IOAResource,omitnil,omitempty" name:"IOAResource"`
 
-	// 零信任堡垒机用户扩展包个数。1个扩展包对应20个用户数
+	// <p>零信任堡垒机用户扩展包个数。1个扩展包对应20个用户数</p>
 	PackageIOAUserCount *uint64 `json:"PackageIOAUserCount,omitnil,omitempty" name:"PackageIOAUserCount"`
 
-	//  零信任堡垒机带宽扩展包个数。一个扩展包表示4M带宽
+	// <p>零信任堡垒机带宽扩展包个数。一个扩展包表示4M带宽</p>
 	PackageIOABandwidth *uint64 `json:"PackageIOABandwidth,omitnil,omitempty" name:"PackageIOABandwidth"`
 
-	// 堡垒机实例对应的零信任实例id
+	// <p>堡垒机实例对应的零信任实例id</p>
 	IOAResourceId *string `json:"IOAResourceId,omitnil,omitempty" name:"IOAResourceId"`
 
-	// 资源类型 免费版/标准版/专业版 /国密版 free/standard/pro/gm
+	// <p>资源类型 免费版/标准版/专业版 /国密版 free/standard/pro/gm</p>
 	ResourceEdition *string `json:"ResourceEdition,omitnil,omitempty" name:"ResourceEdition"`
 
-	// 计费周期 年：y，月：m，日：d，时：h，分：M，秒：s，一次性购买：p
+	// <p>计费周期 年：y，月：m，日：d，时：h，分：M，秒：s，一次性购买：p</p>
 	TimeUnit *string `json:"TimeUnit,omitnil,omitempty" name:"TimeUnit"`
 
-	// 计费时长
+	// <p>计费时长</p>
 	TimeSpan *uint64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
 
-	// 计费模式 0后付费，1预付费
+	// <p>计费模式 0后付费，1预付费</p>
 	PayMode *uint64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// 计费侧地域
+	// <p>计费侧地域</p>
 	BillingRegion *string `json:"BillingRegion,omitnil,omitempty" name:"BillingRegion"`
 
-	// 计费侧可用区
+	// <p>计费侧可用区</p>
 	BillingZone *string `json:"BillingZone,omitnil,omitempty" name:"BillingZone"`
+
+	// <p>部署的cvm个数</p>
+	DeployCvmCount *uint64 `json:"DeployCvmCount,omitnil,omitempty" name:"DeployCvmCount"`
+
+	// <p>堡垒机实例的可用区信息</p>
+	ResourceZoneSet []*ResourceDeployZone `json:"ResourceZoneSet,omitnil,omitempty" name:"ResourceZoneSet"`
+}
+
+type ResourceDeployZone struct {
+	// <p>部署堡垒机的VpcId</p>
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// <p>部署堡垒机vpc的名称</p>
+	VpcName *string `json:"VpcName,omitnil,omitempty" name:"VpcName"`
+
+	// <p>部署堡垒机vpc的cidr</p>
+	VpcCidrBlock *string `json:"VpcCidrBlock,omitnil,omitempty" name:"VpcCidrBlock"`
+
+	// <p>部署堡垒机的子网Id</p>
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// <p>部署堡垒机的子网名称</p>
+	SubnetName *string `json:"SubnetName,omitnil,omitempty" name:"SubnetName"`
+
+	// <p>子网cidr</p>
+	SubnetCidrBlock *string `json:"SubnetCidrBlock,omitnil,omitempty" name:"SubnetCidrBlock"`
+
+	// <p>部署堡垒机的地域</p>
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// <p>部署堡垒机的可用区</p>
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+
+	// <p>子网的作用场景</p><p>枚举值：</p><ul><li>DEPLOY： 部署堡垒机的子网</li><li>INTERNAL： 开通内网访问的子网</li></ul>
+	SubnetUsageType *string `json:"SubnetUsageType,omitnil,omitempty" name:"SubnetUsageType"`
 }
 
 type RunChangePwdTaskDetail struct {

@@ -1115,6 +1115,62 @@ func (c *Client) StopVersionInstanceWithContext(ctx context.Context, request *St
     return
 }
 
+func NewSubmitServerConfigChangeDiffRequest() (request *SubmitServerConfigChangeDiffRequest) {
+    request = &SubmitServerConfigChangeDiffRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcbr", APIVersion, "SubmitServerConfigChangeDiff")
+    
+    
+    return
+}
+
+func NewSubmitServerConfigChangeDiffResponse() (response *SubmitServerConfigChangeDiffResponse) {
+    response = &SubmitServerConfigChangeDiffResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SubmitServerConfigChangeDiff
+// 更新配置并使用最新镜像发布
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+func (c *Client) SubmitServerConfigChangeDiff(request *SubmitServerConfigChangeDiffRequest) (response *SubmitServerConfigChangeDiffResponse, err error) {
+    return c.SubmitServerConfigChangeDiffWithContext(context.Background(), request)
+}
+
+// SubmitServerConfigChangeDiff
+// 更新配置并使用最新镜像发布
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+func (c *Client) SubmitServerConfigChangeDiffWithContext(ctx context.Context, request *SubmitServerConfigChangeDiffRequest) (response *SubmitServerConfigChangeDiffResponse, err error) {
+    if request == nil {
+        request = NewSubmitServerConfigChangeDiffRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcbr", APIVersion, "SubmitServerConfigChangeDiff")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SubmitServerConfigChangeDiff require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSubmitServerConfigChangeDiffResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSubmitServerRollbackRequest() (request *SubmitServerRollbackRequest) {
     request = &SubmitServerRollbackRequest{
         BaseRequest: &tchttp.BaseRequest{},

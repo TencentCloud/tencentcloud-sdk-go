@@ -1205,6 +1205,21 @@ type GatewayInfo struct {
 
 	// <p>网关实例数</p>
 	InstanceSize *int64 `json:"InstanceSize,omitnil,omitempty" name:"InstanceSize"`
+
+	// <p>网关内网IP。</p>
+	GatewayIp *string `json:"GatewayIp,omitnil,omitempty" name:"GatewayIp"`
+
+	// <p>用户名。</p>
+	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
+
+	// <p>网关接入token。</p>
+	Token *string `json:"Token,omitnil,omitempty" name:"Token"`
+
+	// <p>网关注册URL。</p>
+	RegisterCenterUrl *string `json:"RegisterCenterUrl,omitnil,omitempty" name:"RegisterCenterUrl"`
+
+	// <p>网关上报URL。</p>
+	TelemetryUrl *string `json:"TelemetryUrl,omitnil,omitempty" name:"TelemetryUrl"`
 }
 
 // Predefined struct for user
