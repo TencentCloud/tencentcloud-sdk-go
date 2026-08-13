@@ -7792,7 +7792,7 @@ type NodeInfo struct {
 	// <p>节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li></p>
 	NodeType *string `json:"NodeType,omitnil,omitempty" name:"NodeType"`
 
-	// <p>节点类型<li>hotData: 热数据节点</li></p><li>warmData: 冷数据节点</li><li>dedicatedMaster: 专用主节点</li>默认值为hotData
+	// <p>节点类型</p><p>枚举值：</p><ul><li>hotData： 热数据节点</li><li>warmData： 冷数据节点</li><li>dedicatedMaster： 专用主节点</li><li>dedicatedCoordinating： 专用协调节点</li><li>dedicatedMl： 专用机器学习节点</li></ul>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// <p>节点磁盘类型<li>CLOUD_SSD：SSD云硬盘</li><li>CLOUD_PREMIUM：高硬能云硬盘</li>默认值CLOUD_SSD</p>

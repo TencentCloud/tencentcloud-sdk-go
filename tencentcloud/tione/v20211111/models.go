@@ -4306,15 +4306,21 @@ func (r *DescribeEventsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeExportRequestParams struct {
-	// 日志下载任务的ID
+	// <p>日志下载任务的ID</p>
 	ExportId *string `json:"ExportId,omitnil,omitempty" name:"ExportId"`
+
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 }
 
 type DescribeExportRequest struct {
 	*tchttp.BaseRequest
 	
-	// 日志下载任务的ID
+	// <p>日志下载任务的ID</p>
 	ExportId *string `json:"ExportId,omitnil,omitempty" name:"ExportId"`
+
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 }
 
 func (r *DescribeExportRequest) ToJsonString() string {
@@ -4330,6 +4336,7 @@ func (r *DescribeExportRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "ExportId")
+	delete(f, "TiProjectId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeExportRequest has unknown keys!", "")
 	}
@@ -4338,22 +4345,22 @@ func (r *DescribeExportRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeExportResponseParams struct {
-	// 日志下载任务的ID
+	// <p>日志下载任务的ID</p>
 	ExportId *string `json:"ExportId,omitnil,omitempty" name:"ExportId"`
 
-	// 日志下载文件名
+	// <p>日志下载文件名</p>
 	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
 
-	// 日志导出路径,有效期一个小时，请尽快使用该路径下载。
+	// <p>日志导出路径,有效期一个小时，请尽快使用该路径下载。</p>
 	CosPath *string `json:"CosPath,omitnil,omitempty" name:"CosPath"`
 
-	// 下载任务创建时间
+	// <p>下载任务创建时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 日志文件大小
+	// <p>日志文件大小</p>
 	FileSize *string `json:"FileSize,omitnil,omitempty" name:"FileSize"`
 
-	// 日志下载状态。Processing:导出正在进行中，Completed:导出完成，Failed:导出失败，Expired:日志导出已过期(三天有效期), Queuing 排队中
+	// <p>日志下载状态。Processing:导出正在进行中，Completed:导出完成，Failed:导出失败，Expired:日志导出已过期(三天有效期), Queuing 排队中</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

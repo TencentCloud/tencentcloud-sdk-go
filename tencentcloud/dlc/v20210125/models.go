@@ -13979,7 +13979,7 @@ func (r *DescribeSaleResourceInfoRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSaleResourceInfoResponseParams struct {
-	// 可售卖资源规格列表
+	// 可售卖资源规格列表，包含规格、步长、单账户上限、以及库存情况
 	SaleResourceInfoList []*ResourceSaleInfo `json:"SaleResourceInfoList,omitnil,omitempty" name:"SaleResourceInfoList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -21501,6 +21501,32 @@ type IcebergTablePartition struct {
 	Location *LocationInfo `json:"Location,omitnil,omitempty" name:"Location"`
 }
 
+type ImageDto struct {
+	// <p>镜像ID</p>
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>镜像名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>镜像地址</p>
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// <p>镜像描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>镜像类型（Ray/Workspace）</p>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>镜像内置的 Ray 版本号</p>
+	RayVersion *string `json:"RayVersion,omitnil,omitempty" name:"RayVersion"`
+
+	// <p>创建时间</p>
+	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>更新时间</p>
+	UpdateTime *uint64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+}
+
 type InferenceEngineInfo struct {
 	// <p>引擎标识符</p>
 	EngineId *string `json:"EngineId,omitnil,omitempty" name:"EngineId"`
@@ -22691,6 +22717,96 @@ func (r *ListExamplesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ListExamplesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListImagesRequestParams struct {
+	// 关键词搜索（模糊匹配名称或描述）
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+
+	// 镜像类型过滤（Ray/Workspace）
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 页数
+	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
+
+	// 数量
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+type ListImagesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 关键词搜索（模糊匹配名称或描述）
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+
+	// 镜像类型过滤（Ray/Workspace）
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 页数
+	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
+
+	// 数量
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+func (r *ListImagesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListImagesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Keyword")
+	delete(f, "Type")
+	delete(f, "Page")
+	delete(f, "PageSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListImagesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListImagesResponseParams struct {
+	// 总记录数
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 当前页码（从1开始）
+	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
+
+	// 页数
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 总页数
+	TotalPages *int64 `json:"TotalPages,omitnil,omitempty" name:"TotalPages"`
+
+	// 镜像列表
+	Items []*ImageDto `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListImagesResponse struct {
+	*tchttp.BaseResponse
+	Response *ListImagesResponseParams `json:"Response"`
+}
+
+func (r *ListImagesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListImagesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -27582,6 +27698,10 @@ type ResourceSaleInfo struct {
 	// <p>最大资源数量，仅GU有值</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxSpec *int64 `json:"MaxSpec,omitnil,omitempty" name:"MaxSpec"`
+
+	// <p>库存情况，对当前地域该计费项实时可新增数量的分级预估。取值复用 BcpConstants 库存状态常量：</p><ul><li>EnoughStock：余量充足（&gt;100）</li><li>NormalStock：余量正常（50~100）</li><li>UnderStock：余量紧张（1~49）</li><li>WithoutStock：无库存（0）</li></ul><p>该值为底层提供的预估值，不代表保证可发货量，仅用于展示库存概况。当请求 Region 与资源池地域不一致、cold-start 缓存未 ready、或该计费项在快照中缺失时返回 null。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StatusCategory *string `json:"StatusCategory,omitnil,omitempty" name:"StatusCategory"`
 }
 
 type ResourceSpec struct {

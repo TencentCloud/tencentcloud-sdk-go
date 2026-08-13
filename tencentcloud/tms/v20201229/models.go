@@ -121,7 +121,7 @@ type DetailResults struct {
 	// <p>该字段用于返回当前标签（Label）下的置信度，取值范围：0（<strong>置信度最低</strong>）-100（<strong>置信度最高</strong> ），越高代表文本越有可能属于当前返回的标签；如：<em>色情 99</em>，则表明该文本非常有可能属于色情内容；<em>色情 0</em>，则表明该文本不属于色情内容。</p>
 	Score *int64 `json:"Score,omitnil,omitempty" name:"Score"`
 
-	// <p>该字段用于返回自定义关键词对应的词库类型，取值为<strong>1</strong>（黑白库）和<strong>2</strong>（自定义关键词库），若未配置自定义关键词库,则默认值为1（黑白库匹配）。</p>
+	// <p>该字段用于返回自定义关键词对应的词库类型，取值为<strong>1</strong>（黑白库）和<strong>2</strong>（自定义关键词库），若未配置自定义关键词库,则默认值为1（黑白库匹配）。</p><p>枚举值：</p><ul><li>1： 黑白库</li><li>2： 自定义关键词库</li></ul>
 	LibType *int64 `json:"LibType,omitnil,omitempty" name:"LibType"`
 
 	// <p>该字段用于返回自定义库的ID，以方便自定义库管理和配置。</p>
@@ -139,6 +139,10 @@ type DetailResults struct {
 
 	// <p>该字段用于返回违规文本命中信息</p>
 	HitInfos []*HitInfo `json:"HitInfos,omitnil,omitempty" name:"HitInfos"`
+
+	// <p>该字段用于标记导致本次审核命中标签的原文内容位置信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HitSnippetInfos []*HitSnippetInfo `json:"HitSnippetInfos,omitnil,omitempty" name:"HitSnippetInfos"`
 }
 
 type Device struct {
@@ -373,6 +377,9 @@ type TextModerationRequestParams struct {
 
 	// <p>适用于上下文关联审核场景，若多条文本内容需要联合审核，通过该字段关联会话。</p>
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// <p>该参数是送审客户的自定义参数，可用于标记客户的一些内部信息方便做审核明细取数筛选，没有特殊需求客户可不填写</p>
+	BizTag *string `json:"BizTag,omitnil,omitempty" name:"BizTag"`
 }
 
 type TextModerationRequest struct {
@@ -401,6 +408,9 @@ type TextModerationRequest struct {
 
 	// <p>适用于上下文关联审核场景，若多条文本内容需要联合审核，通过该字段关联会话。</p>
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// <p>该参数是送审客户的自定义参数，可用于标记客户的一些内部信息方便做审核明细取数筛选，没有特殊需求客户可不填写</p>
+	BizTag *string `json:"BizTag,omitnil,omitempty" name:"BizTag"`
 }
 
 func (r *TextModerationRequest) ToJsonString() string {
@@ -423,6 +433,7 @@ func (r *TextModerationRequest) FromJsonString(s string) error {
 	delete(f, "SourceLanguage")
 	delete(f, "Type")
 	delete(f, "SessionId")
+	delete(f, "BizTag")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TextModerationRequest has unknown keys!", "")
 	}

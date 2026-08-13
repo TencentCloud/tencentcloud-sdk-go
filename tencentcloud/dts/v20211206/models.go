@@ -80,46 +80,46 @@ type Column struct {
 }
 
 type CompareAbstractInfo struct {
-	// 校验配置参数
+	// <p>校验配置参数</p>
 	Options *CompareOptions `json:"Options,omitnil,omitempty" name:"Options"`
 
-	// 一致性校验对比对象
+	// <p>一致性校验对比对象</p>
 	Objects *CompareObject `json:"Objects,omitnil,omitempty" name:"Objects"`
 
-	// 对比结论: same,different
+	// <p>对比结论: same,different</p>
 	Conclusion *string `json:"Conclusion,omitnil,omitempty" name:"Conclusion"`
 
-	// 任务状态: success,failed
+	// <p>任务状态: success,failed</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 总的表数量
+	// <p>总的表数量</p>
 	TotalTables *uint64 `json:"TotalTables,omitnil,omitempty" name:"TotalTables"`
 
-	// 已校验的表数量
+	// <p>已校验的表数量</p>
 	CheckedTables *uint64 `json:"CheckedTables,omitnil,omitempty" name:"CheckedTables"`
 
-	// 不一致的表数量
+	// <p>不一致的表数量</p>
 	DifferentTables *uint64 `json:"DifferentTables,omitnil,omitempty" name:"DifferentTables"`
 
-	// 跳过校验的表数量
+	// <p>跳过校验的表数量</p>
 	SkippedTables *uint64 `json:"SkippedTables,omitnil,omitempty" name:"SkippedTables"`
 
-	// 预估表总数
+	// <p>预估表总数</p>
 	NearlyTableCount *uint64 `json:"NearlyTableCount,omitnil,omitempty" name:"NearlyTableCount"`
 
-	// 不一致的数据行数量
+	// <p>不一致的数据行数量</p>
 	DifferentRows *uint64 `json:"DifferentRows,omitnil,omitempty" name:"DifferentRows"`
 
-	// 源库行数，当对比类型为**行数对比**时此项有意义
+	// <p>源库行数，当对比类型为<strong>行数对比</strong>时此项有意义</p>
 	SrcSampleRows *uint64 `json:"SrcSampleRows,omitnil,omitempty" name:"SrcSampleRows"`
 
-	// 目标库行数，当对比类型为**行数对比**时此项有意义
+	// <p>目标库行数，当对比类型为<strong>行数对比</strong>时此项有意义</p>
 	DstSampleRows *uint64 `json:"DstSampleRows,omitnil,omitempty" name:"DstSampleRows"`
 
-	// 开始时间
+	// <p>开始时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
 	StartedAt *string `json:"StartedAt,omitnil,omitempty" name:"StartedAt"`
 
-	// 结束时间
+	// <p>结束时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
 	FinishedAt *string `json:"FinishedAt,omitnil,omitempty" name:"FinishedAt"`
 }
 
@@ -170,25 +170,25 @@ type CompareObject struct {
 }
 
 type CompareObjectItem struct {
-	// 数据库名
+	// <p>数据库名</p>
 	DbName *string `json:"DbName,omitnil,omitempty" name:"DbName"`
 
-	// 数据库选择模式: all 为当前对象下的所有对象,partial 为部分对象
+	// <p>数据库选择模式: all 为当前对象下的所有对象,partial 为部分对象</p>
 	DbMode *string `json:"DbMode,omitnil,omitempty" name:"DbMode"`
 
-	// schema名称
+	// <p>schema名称</p>
 	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
 
-	// 表选择模式: all 为当前对象下的所有表对象,partial 为部分表对象
+	// <p>表选择模式: all 为当前对象下的所有表对象,partial 为部分表对象</p>
 	TableMode *string `json:"TableMode,omitnil,omitempty" name:"TableMode"`
 
-	// 用于一致性校验的表配置，当 TableMode 为 partial 时，需要填写
+	// <p>用于一致性校验的表配置，当 TableMode 为 partial 时，需要填写</p>
 	Tables []*CompareTableItem `json:"Tables,omitnil,omitempty" name:"Tables"`
 
-	// 视图选择模式: all 为当前对象下的所有视图对象,partial 为部分视图对象(一致性校验不校验视图，当前参数未启作用)
+	// <p>视图选择模式: all 为当前对象下的所有视图对象,partial 为部分视图对象(一致性校验不校验视图，当前参数未启作用)</p>
 	ViewMode *string `json:"ViewMode,omitnil,omitempty" name:"ViewMode"`
 
-	// 用于一致性校验的视图配置，当 ViewMode 为 partial 时， 需要填写(一致性校验不校验视图，当前参数未启作用)
+	// <p>用于一致性校验的视图配置，当 ViewMode 为 partial 时， 需要填写(一致性校验不校验视图，当前参数未启作用)</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Views []*CompareViewItem `json:"Views,omitnil,omitempty" name:"Views"`
 }
@@ -244,40 +244,40 @@ type CompareTableItem struct {
 }
 
 type CompareTableResult struct {
-	// 库名
+	// <p>库名</p>
 	Db *string `json:"Db,omitnil,omitempty" name:"Db"`
 
-	// schema名
+	// <p>schema名</p>
 	Schema *string `json:"Schema,omitnil,omitempty" name:"Schema"`
 
-	// 表名
+	// <p>表名</p>
 	Table *string `json:"Table,omitnil,omitempty" name:"Table"`
 
-	// 校验结果
+	// <p>校验结果</p>
 	Conclusion *string `json:"Conclusion,omitnil,omitempty" name:"Conclusion"`
 
-	// 校验状态。仅全量阶段有意义
+	// <p>校验状态。仅全量阶段有意义</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 校验进度。仅全量阶段有意义
+	// <p>校验进度。仅全量阶段有意义</p>
 	Progress *int64 `json:"Progress,omitnil,omitempty" name:"Progress"`
 
-	// 不一致行数
+	// <p>不一致行数</p>
 	RowCount *int64 `json:"RowCount,omitnil,omitempty" name:"RowCount"`
 
-	// 该表开始校验的时间
+	// <p>该表开始校验的时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
 	StartedAt *string `json:"StartedAt,omitnil,omitempty" name:"StartedAt"`
 
-	// 该表校验结束的时间
+	// <p>该表校验结束的时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
 	FinishedAt *string `json:"FinishedAt,omitnil,omitempty" name:"FinishedAt"`
 
-	// 预计该表校验结束的时间
+	// <p>预计该表校验结束的时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
 	ExpectedAt *string `json:"ExpectedAt,omitnil,omitempty" name:"ExpectedAt"`
 
-	// 源端行数，如果是行数校验此值有意义
+	// <p>源端行数，如果是行数校验此值有意义</p>
 	SrcItem *string `json:"SrcItem,omitnil,omitempty" name:"SrcItem"`
 
-	// 目标端行数，如果是行数校验此值有意义
+	// <p>目标端行数，如果是行数校验此值有意义</p>
 	DstItem *string `json:"DstItem,omitnil,omitempty" name:"DstItem"`
 }
 
@@ -290,46 +290,46 @@ type CompareTaskInfo struct {
 }
 
 type CompareTaskItem struct {
-	// 任务id
+	// <p>任务id</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
-	// 对比任务 Id
+	// <p>对比任务 Id</p>
 	CompareTaskId *string `json:"CompareTaskId,omitnil,omitempty" name:"CompareTaskId"`
 
-	// 对比任务名称
+	// <p>对比任务名称</p>
 	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
 
-	// 对比任务状态, 可能的值：created - 创建完成；readyRun - 等待运行；running - 运行中；success - 成功；stopping - 结束中；failed - 失败；canceled - 已终止
+	// <p>对比任务状态, 可能的值：created - 创建完成；readyRun - 等待运行；running - 运行中；success - 成功；stopping - 结束中；failed - 失败；canceled - 已终止</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 对比任务配置
+	// <p>对比任务配置</p>
 	Config *CompareObject `json:"Config,omitnil,omitempty" name:"Config"`
 
-	// 对比任务校验详情
+	// <p>对比任务校验详情</p>
 	CheckProcess *ProcessProgress `json:"CheckProcess,omitnil,omitempty" name:"CheckProcess"`
 
-	// 对比任务运行详情
+	// <p>对比任务运行详情</p>
 	CompareProcess *ProcessProgress `json:"CompareProcess,omitnil,omitempty" name:"CompareProcess"`
 
-	// 对比结果, 可能的值：same - 一致；different - 不一致；skipAll - 跳过
+	// <p>对比结果, 可能的值：same - 一致；different - 不一致；skipAll - 跳过</p>
 	Conclusion *string `json:"Conclusion,omitnil,omitempty" name:"Conclusion"`
 
-	// 任务创建时间
+	// <p>任务创建时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
 	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
 
-	// 任务启动时间
+	// <p>任务启动时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
 	StartedAt *string `json:"StartedAt,omitnil,omitempty" name:"StartedAt"`
 
-	// 对比结束时间
+	// <p>对比结束时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
 	FinishedAt *string `json:"FinishedAt,omitnil,omitempty" name:"FinishedAt"`
 
-	// 对比类型，dataCheck(完整数据对比)、sampleDataCheck(抽样数据对比)、rowsCount(行数对比)
+	// <p>对比类型，dataCheck(完整数据对比)、sampleDataCheck(抽样数据对比)、rowsCount(行数对比)</p>
 	Method *string `json:"Method,omitnil,omitempty" name:"Method"`
 
-	// 对比配置信息
+	// <p>对比配置信息</p>
 	Options *CompareOptions `json:"Options,omitnil,omitempty" name:"Options"`
 
-	// 一致性校验提示信息
+	// <p>一致性校验提示信息</p>
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 }
 
@@ -552,7 +552,7 @@ type ConfigureSyncJobRequestParams struct {
 	// <p>运行模式，取值如：Immediate(表示立即运行，默认为此项值)、Timed(表示定时运行)</p>
 	RunMode *string `json:"RunMode,omitnil,omitempty" name:"RunMode"`
 
-	// <p>期待启动时间，当RunMode取值为Timed时，此值必填，形如：&quot;2006-01-02 15:04:05&quot;</p>
+	// <p>期待启动时间，当 <code>RunMode</code> 取值为 <code>Timed</code> 时此值必填。当 <code>DateTimeISOFormat=true</code> 时按 RFC 3339 传入（如 <code>2026-04-23T20:21:35+08:00</code>），否则按 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）传入</p>
 	ExpectRunTime *string `json:"ExpectRunTime,omitnil,omitempty" name:"ExpectRunTime"`
 
 	// <p>源端tdsql连接方式：proxy-通过tdsql proxy主机访问各个set节点，注意只有在自研上云的网络环境下才能通过这种方式连接，SrcInfos中只需要提供proxy主机信息。set-直连set节点，如选择直连set方式，需要正确填写proxy主机信息及所有set节点信息。源端是tdsqlmysql类型必填。</p>
@@ -576,7 +576,7 @@ type ConfigureSyncJobRequestParams struct {
 	// <p>枚举值：cluster、single。目标库为单节点数据库使用single，多节点使用cluster</p>
 	DstNodeType *string `json:"DstNodeType,omitnil,omitempty" name:"DstNodeType"`
 
-	// <p>同步任务选项；该字段下的RateLimitOption暂时无法生效、如果需要修改限速、可通过ModifySyncRateLimit接口完成限速</p>
+	// <p>同步任务选项</p>
 	Options *Options `json:"Options,omitnil,omitempty" name:"Options"`
 
 	// <p>自动重试的时间段、可设置5至720分钟、0表示不重试</p>
@@ -607,7 +607,7 @@ type ConfigureSyncJobRequest struct {
 	// <p>运行模式，取值如：Immediate(表示立即运行，默认为此项值)、Timed(表示定时运行)</p>
 	RunMode *string `json:"RunMode,omitnil,omitempty" name:"RunMode"`
 
-	// <p>期待启动时间，当RunMode取值为Timed时，此值必填，形如：&quot;2006-01-02 15:04:05&quot;</p>
+	// <p>期待启动时间，当 <code>RunMode</code> 取值为 <code>Timed</code> 时此值必填。当 <code>DateTimeISOFormat=true</code> 时按 RFC 3339 传入（如 <code>2026-04-23T20:21:35+08:00</code>），否则按 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）传入</p>
 	ExpectRunTime *string `json:"ExpectRunTime,omitnil,omitempty" name:"ExpectRunTime"`
 
 	// <p>源端tdsql连接方式：proxy-通过tdsql proxy主机访问各个set节点，注意只有在自研上云的网络环境下才能通过这种方式连接，SrcInfos中只需要提供proxy主机信息。set-直连set节点，如选择直连set方式，需要正确填写proxy主机信息及所有set节点信息。源端是tdsqlmysql类型必填。</p>
@@ -631,7 +631,7 @@ type ConfigureSyncJobRequest struct {
 	// <p>枚举值：cluster、single。目标库为单节点数据库使用single，多节点使用cluster</p>
 	DstNodeType *string `json:"DstNodeType,omitnil,omitempty" name:"DstNodeType"`
 
-	// <p>同步任务选项；该字段下的RateLimitOption暂时无法生效、如果需要修改限速、可通过ModifySyncRateLimit接口完成限速</p>
+	// <p>同步任务选项</p>
 	Options *Options `json:"Options,omitnil,omitempty" name:"Options"`
 
 	// <p>自动重试的时间段、可设置5至720分钟、0表示不重试</p>
@@ -1770,64 +1770,64 @@ type DBInfo struct {
 }
 
 type DBItem struct {
-	// 需要迁移或同步的库名，当ObjectMode为partial时，此项必填
+	// <p>需要迁移或同步的库名，当ObjectMode为partial时，此项必填</p>
 	DbName *string `json:"DbName,omitnil,omitempty" name:"DbName"`
 
-	// 迁移或同步后的库名，默认与源库相同
+	// <p>迁移或同步后的库名，默认与源库相同</p>
 	NewDbName *string `json:"NewDbName,omitnil,omitempty" name:"NewDbName"`
 
-	// 迁移或同步的 schema
+	// <p>迁移或同步的 schema</p>
 	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
 
-	// 迁移或同步后的 schema name
+	// <p>迁移或同步后的 schema name</p>
 	NewSchemaName *string `json:"NewSchemaName,omitnil,omitempty" name:"NewSchemaName"`
 
-	// DB选择模式: all(为当前对象下的所有对象)，partial(部分对象)，当ObjectMode为partial时，此项必填
+	// <p>DB选择模式: all(为当前对象下的所有对象)，partial(部分对象)，当ObjectMode为partial时，此项必填</p>
 	DBMode *string `json:"DBMode,omitnil,omitempty" name:"DBMode"`
 
-	// schema选择模式: all(为当前对象下的所有对象)，partial(部分对象)
+	// <p>schema选择模式: all(为当前对象下的所有对象)，partial(部分对象)</p>
 	SchemaMode *string `json:"SchemaMode,omitnil,omitempty" name:"SchemaMode"`
 
-	// 表选择模式: all(为当前对象下的所有对象)，partial(部分对象)，当DBMode为partial时此项必填
+	// <p>表选择模式: all(为当前对象下的所有对象)，partial(部分对象)，当DBMode为partial时此项必填</p>
 	TableMode *string `json:"TableMode,omitnil,omitempty" name:"TableMode"`
 
-	// 表图对象集合，当 TableMode 为 partial 时，此项需要填写
+	// <p>表图对象集合，当 TableMode 为 partial 时，此项需要填写</p>
 	Tables []*TableItem `json:"Tables,omitnil,omitempty" name:"Tables"`
 
-	// 视图选择模式: all 为当前对象下的所有视图对象,partial 为部分视图对象
+	// <p>视图选择模式: all 为当前对象下的所有视图对象,partial 为部分视图对象</p>
 	ViewMode *string `json:"ViewMode,omitnil,omitempty" name:"ViewMode"`
 
-	// 视图对象集合，当 ViewMode 为 partial 时， 此项需要填写
+	// <p>视图对象集合，当 ViewMode 为 partial 时， 此项需要填写</p>
 	Views []*ViewItem `json:"Views,omitnil,omitempty" name:"Views"`
 
-	// postgresql独有参数，角色选择模式: all 为当前对象下的所有角色对象,partial 为部分角色对象
+	// <p>postgresql独有参数，角色选择模式: all 为当前对象下的所有角色对象,partial 为部分角色对象</p>
 	RoleMode *string `json:"RoleMode,omitnil,omitempty" name:"RoleMode"`
 
-	// postgresql独有参数，当 RoleMode 为 partial 时， 此项需要填写
+	// <p>postgresql独有参数，当 RoleMode 为 partial 时， 此项需要填写</p>
 	Roles []*RoleItem `json:"Roles,omitnil,omitempty" name:"Roles"`
 
-	// 选择要同步的模式，partial为部分，all为整选
+	// <p>选择要同步的模式，partial为部分，all为整选</p>
 	FunctionMode *string `json:"FunctionMode,omitnil,omitempty" name:"FunctionMode"`
 
-	// 选择要同步的模式，partial为部分，all为整选
+	// <p>选择要同步的模式，partial为部分，all为整选</p>
 	TriggerMode *string `json:"TriggerMode,omitnil,omitempty" name:"TriggerMode"`
 
-	// 选择要同步的模式，partial为部分，all为整选
+	// <p>选择要同步的模式，partial为部分，all为整选</p>
 	EventMode *string `json:"EventMode,omitnil,omitempty" name:"EventMode"`
 
-	// 选择要同步的模式，partial为部分，all为整选
+	// <p>选择要同步的模式，partial为部分，all为整选</p>
 	ProcedureMode *string `json:"ProcedureMode,omitnil,omitempty" name:"ProcedureMode"`
 
-	// FunctionMode取值为partial时需要填写
+	// <p>FunctionMode取值为partial时需要填写</p>
 	Functions []*string `json:"Functions,omitnil,omitempty" name:"Functions"`
 
-	// ProcedureMode取值为partial时需要填写
+	// <p>ProcedureMode取值为partial时需要填写</p>
 	Procedures []*string `json:"Procedures,omitnil,omitempty" name:"Procedures"`
 
-	// EventMode取值为partial时需要填写
+	// <p>EventMode取值为partial时需要填写</p>
 	Events []*string `json:"Events,omitnil,omitempty" name:"Events"`
 
-	// TriggerMode取值为partial时需要填写
+	// <p>TriggerMode取值为partial时需要填写</p>
 	Triggers []*string `json:"Triggers,omitnil,omitempty" name:"Triggers"`
 }
 
@@ -2196,56 +2196,56 @@ func (r *DescribeCheckSyncJobResultResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCompareDiffItemsRequestParams struct {
-	// 迁移任务 Id
+	// <p>迁移任务 Id</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
-	// 校验任务 Id
+	// <p>校验任务 Id</p>
 	CompareTaskId *string `json:"CompareTaskId,omitnil,omitempty" name:"CompareTaskId"`
 
-	// 数据库名
+	// <p>数据库名</p>
 	DBName *string `json:"DBName,omitnil,omitempty" name:"DBName"`
 
-	// schema名
+	// <p>schema名</p>
 	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
 
-	// 数据表名
+	// <p>数据表名</p>
 	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
 
-	// 数据分块号
+	// <p>数据分块号</p>
 	ChunkId *int64 `json:"ChunkId,omitnil,omitempty" name:"ChunkId"`
 
-	// 分页条件，查询结果返回条数
+	// <p>分页条件，查询结果返回条数</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页条件，查询的起始位置
+	// <p>分页条件，查询的起始位置</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 type DescribeCompareDiffItemsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 迁移任务 Id
+	// <p>迁移任务 Id</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
-	// 校验任务 Id
+	// <p>校验任务 Id</p>
 	CompareTaskId *string `json:"CompareTaskId,omitnil,omitempty" name:"CompareTaskId"`
 
-	// 数据库名
+	// <p>数据库名</p>
 	DBName *string `json:"DBName,omitnil,omitempty" name:"DBName"`
 
-	// schema名
+	// <p>schema名</p>
 	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
 
-	// 数据表名
+	// <p>数据表名</p>
 	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
 
-	// 数据分块号
+	// <p>数据分块号</p>
 	ChunkId *int64 `json:"ChunkId,omitnil,omitempty" name:"ChunkId"`
 
-	// 分页条件，查询结果返回条数
+	// <p>分页条件，查询结果返回条数</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页条件，查询的起始位置
+	// <p>分页条件，查询的起始位置</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
@@ -2277,10 +2277,10 @@ func (r *DescribeCompareDiffItemsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCompareDiffItemsResponseParams struct {
-	// 查询结果的数量
+	// <p>查询结果的数量</p>
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 查询结果详情
+	// <p>查询结果详情</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Items []*DiffChunkItem `json:"Items,omitnil,omitempty" name:"Items"`
 
@@ -2429,38 +2429,38 @@ func (r *DescribeCompareReportResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCompareTasksRequestParams struct {
-	// 迁移任务 Id，可通过 [DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084) 接口获取。
+	// <p>迁移任务 Id，可通过 <a href="https://cloud.tencent.com/document/product/571/82084">DescribeMigrationJobs</a> 接口获取。</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
-	// 分页设置，表示每页显示多少条任务，默认为 20
+	// <p>分页设置，表示每页显示多少条任务，默认为 20</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页偏移量
+	// <p>分页偏移量</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 校验任务 ID
+	// <p>校验任务 ID</p>
 	CompareTaskId *string `json:"CompareTaskId,omitnil,omitempty" name:"CompareTaskId"`
 
-	// 任务状态过滤，可能的值：created - 创建完成；readyRun - 等待运行；running - 运行中；success - 成功；stopping - 结束中；failed - 失败；canceled - 已终止
+	// <p>任务状态过滤，可能的值：created - 创建完成；readyRun - 等待运行；running - 运行中；success - 成功；stopping - 结束中；failed - 失败；canceled - 已终止</p>
 	Status []*string `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 type DescribeCompareTasksRequest struct {
 	*tchttp.BaseRequest
 	
-	// 迁移任务 Id，可通过 [DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084) 接口获取。
+	// <p>迁移任务 Id，可通过 <a href="https://cloud.tencent.com/document/product/571/82084">DescribeMigrationJobs</a> 接口获取。</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
-	// 分页设置，表示每页显示多少条任务，默认为 20
+	// <p>分页设置，表示每页显示多少条任务，默认为 20</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页偏移量
+	// <p>分页偏移量</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 校验任务 ID
+	// <p>校验任务 ID</p>
 	CompareTaskId *string `json:"CompareTaskId,omitnil,omitempty" name:"CompareTaskId"`
 
-	// 任务状态过滤，可能的值：created - 创建完成；readyRun - 等待运行；running - 运行中；success - 成功；stopping - 结束中；failed - 失败；canceled - 已终止
+	// <p>任务状态过滤，可能的值：created - 创建完成；readyRun - 等待运行；running - 运行中；success - 成功；stopping - 结束中；failed - 失败；canceled - 已终止</p>
 	Status []*string `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
@@ -2489,10 +2489,10 @@ func (r *DescribeCompareTasksRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCompareTasksResponseParams struct {
-	// 数量
+	// <p>数量</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 一致性校验列表
+	// <p>一致性校验列表</p>
 	Items []*CompareTaskItem `json:"Items,omitnil,omitempty" name:"Items"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2860,14 +2860,14 @@ func (r *DescribeMigrationCheckJobResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeMigrationDetailRequestParams struct {
-	// 数据迁移任务ID，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
+	// <p>数据迁移任务ID，可通过<a href="https://cloud.tencent.com/document/product/571/82084">DescribeMigrationJobs</a>接口获取。</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 }
 
 type DescribeMigrationDetailRequest struct {
 	*tchttp.BaseRequest
 	
-	// 数据迁移任务ID，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
+	// <p>数据迁移任务ID，可通过<a href="https://cloud.tencent.com/document/product/571/82084">DescribeMigrationJobs</a>接口获取。</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 }
 
@@ -2892,72 +2892,70 @@ func (r *DescribeMigrationDetailRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeMigrationDetailResponseParams struct {
-	// 数据迁移任务ID
+	// <p>数据迁移任务ID</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
-	// 数据迁移任务名称
+	// <p>数据迁移任务名称</p>
 	JobName *string `json:"JobName,omitnil,omitempty" name:"JobName"`
 
-	// 任务创建(提交)时间，格式为 yyyy-mm-dd hh:mm:ss
+	// <p>任务创建(提交)时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 任务更新时间，格式为 yyyy-mm-dd hh:mm:ss
+	// <p>任务更新时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 任务开始执行时间，格式为 yyyy-mm-dd hh:mm:ss
+	// <p>任务开始执行时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 任务执行结束时间，格式为 yyyy-mm-dd hh:mm:ss
+	// <p>任务执行结束时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 迁移任务简要错误信息
+	// <p>迁移任务简要错误信息</p>
 	BriefMsg *string `json:"BriefMsg,omitnil,omitempty" name:"BriefMsg"`
 
-	// 任务状态，取值为：created(创建完成)、checking(校验中)、checkPass(校验通过)、checkNotPass(校验不通过)、readyRun(准备运行)、running(任务运行中)、readyComplete(准备完成)、success(任务成功)、failed(任务失败)、stopping(中止中)、completing(完成中)、
-	// pausing(暂停中)、
-	// manualPaused(已暂停)
+	// <p>任务状态，取值为：created(创建完成)、checking(校验中)、checkPass(校验通过)、checkNotPass(校验不通过)、readyRun(准备运行)、running(任务运行中)、readyComplete(准备完成)、success(任务成功)、failed(任务失败)、stopping(中止中)、completing(完成中)、<br>pausing(暂停中)、<br>manualPaused(已暂停)</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 任务操作信息
+	// <p>任务操作信息</p>
 	Action *MigrateAction `json:"Action,omitnil,omitempty" name:"Action"`
 
-	// 迁移执行过程信息，在校验阶段显示校验过程步骤信息，在迁移阶段会显示迁移步骤信息
+	// <p>迁移执行过程信息，在校验阶段显示校验过程步骤信息，在迁移阶段会显示迁移步骤信息</p>
 	StepInfo *MigrateDetailInfo `json:"StepInfo,omitnil,omitempty" name:"StepInfo"`
 
-	// 源实例信息
+	// <p>源实例信息</p>
 	SrcInfo *DBEndpointInfo `json:"SrcInfo,omitnil,omitempty" name:"SrcInfo"`
 
-	// 目标端信息
+	// <p>目标端信息</p>
 	DstInfo *DBEndpointInfo `json:"DstInfo,omitnil,omitempty" name:"DstInfo"`
 
-	// 数据一致性校验结果
+	// <p>数据一致性校验结果</p>
 	CompareTask *CompareTaskInfo `json:"CompareTask,omitnil,omitempty" name:"CompareTask"`
 
-	// 标签信息
+	// <p>标签信息</p>
 	Tags []*TagItem `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 运行模式，取值如：immediate(表示立即运行)、timed(表示定时运行)
+	// <p>运行模式，取值如：immediate(表示立即运行)、timed(表示定时运行)</p>
 	RunMode *string `json:"RunMode,omitnil,omitempty" name:"RunMode"`
 
-	// 期待启动时间，当RunMode取值为timed时，此值必填，形如："2006-01-02 15:04:05"
+	// <p>期待启动时间，当 <code>RunMode</code> 取值为 <code>timed</code> 时此值必填。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
 	ExpectRunTime *string `json:"ExpectRunTime,omitnil,omitempty" name:"ExpectRunTime"`
 
-	// 迁移选项，描述任务如何执行迁移等一系列配置信息
+	// <p>迁移选项，描述任务如何执行迁移等一系列配置信息</p>
 	MigrateOption *MigrateOption `json:"MigrateOption,omitnil,omitempty" name:"MigrateOption"`
 
-	// 校验任务运行详情
+	// <p>校验任务运行详情</p>
 	CheckStepInfo *CheckStepInfo `json:"CheckStepInfo,omitnil,omitempty" name:"CheckStepInfo"`
 
-	// 描述计费相关的信息
+	// <p>描述计费相关的信息</p>
 	TradeInfo *TradeInfo `json:"TradeInfo,omitnil,omitempty" name:"TradeInfo"`
 
-	// 任务错误信息
+	// <p>任务错误信息</p>
 	ErrorInfo []*ErrorInfoItem `json:"ErrorInfo,omitnil,omitempty" name:"ErrorInfo"`
 
-	// 全量导出可重入标识：enum::"yes"/"no"。yes表示当前任务可重入、no表示当前任务处于全量导出且不可重入阶段；如果在该值为no时重启任务导出流程不支持断点续传
+	// <p>全量导出可重入标识：enum::&quot;yes&quot;/&quot;no&quot;。yes表示当前任务可重入、no表示当前任务处于全量导出且不可重入阶段；如果在该值为no时重启任务导出流程不支持断点续传</p>
 	DumperResumeCtrl *string `json:"DumperResumeCtrl,omitnil,omitempty" name:"DumperResumeCtrl"`
 
-	// 任务的限速信息
+	// <p>任务的限速信息</p>
 	RateLimitOption *RateLimitOption `json:"RateLimitOption,omitnil,omitempty" name:"RateLimitOption"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3217,20 +3215,20 @@ func (r *DescribeModifyCheckSyncJobResultResponse) FromJsonString(s string) erro
 
 // Predefined struct for user
 type DescribeOffsetByTimeRequestParams struct {
-	// 数据订阅实例的 ID，可通过[DescribeSubscribeJobs](https://cloud.tencent.com/document/product/571/102943)接口获取。
+	// <p>数据订阅实例的 ID，可通过<a href="https://cloud.tencent.com/document/product/571/102943">DescribeSubscribeJobs</a>接口获取。</p>
 	SubscribeId *string `json:"SubscribeId,omitnil,omitempty" name:"SubscribeId"`
 
-	// 时间点，格式为：Y-m-d h:m:s。如果输入时间比当前时间晚的多，相当于查询最新offset；如果输入时间比当前时间早的多，相当于查询最老offset；如果输入空，默认0时间，等价于查询最老offset。
+	// <p>时间。当 <code>DateTimeISOFormat=true</code> 时按 RFC 3339 传入（如 <code>2026-04-23T20:21:35+08:00</code>），否则按 <code>Y-m-d h:m:s</code>（北京时间）传入。如果输入时间比当前时间晚的多，相当于查询最新 offset；如果输入时间比当前时间早的多，相当于查询最老 offset；如果输入空，默认 0 时间，等价于查询最老 offset。</p><p>参数格式：2026-04-23T20:21:35+08:00</p>
 	Time *string `json:"Time,omitnil,omitempty" name:"Time"`
 }
 
 type DescribeOffsetByTimeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 数据订阅实例的 ID，可通过[DescribeSubscribeJobs](https://cloud.tencent.com/document/product/571/102943)接口获取。
+	// <p>数据订阅实例的 ID，可通过<a href="https://cloud.tencent.com/document/product/571/102943">DescribeSubscribeJobs</a>接口获取。</p>
 	SubscribeId *string `json:"SubscribeId,omitnil,omitempty" name:"SubscribeId"`
 
-	// 时间点，格式为：Y-m-d h:m:s。如果输入时间比当前时间晚的多，相当于查询最新offset；如果输入时间比当前时间早的多，相当于查询最老offset；如果输入空，默认0时间，等价于查询最老offset。
+	// <p>时间。当 <code>DateTimeISOFormat=true</code> 时按 RFC 3339 传入（如 <code>2026-04-23T20:21:35+08:00</code>），否则按 <code>Y-m-d h:m:s</code>（北京时间）传入。如果输入时间比当前时间晚的多，相当于查询最新 offset；如果输入时间比当前时间早的多，相当于查询最老 offset；如果输入空，默认 0 时间，等价于查询最老 offset。</p><p>参数格式：2026-04-23T20:21:35+08:00</p>
 	Time *string `json:"Time,omitnil,omitempty" name:"Time"`
 }
 
@@ -3256,7 +3254,7 @@ func (r *DescribeOffsetByTimeRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeOffsetByTimeResponseParams struct {
-	// 时间与Offset的对应
+	// <p>时间与Offset的对应</p>
 	Items []*OffsetTimeMap `json:"Items,omitnil,omitempty" name:"Items"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3409,19 +3407,19 @@ type DescribeSubscribeDetailResponseParams struct {
 	// <p>订阅任务状态，可能值为：未启动notStarted, 校验中checking, 校验不通过checkNotPass, 校验通过checkPass, 启动中starting, 运行中running, 异常出错error</p>
 	SubsStatus *string `json:"SubsStatus,omitnil,omitempty" name:"SubsStatus"`
 
-	// <p>修改时间。</p>
+	// <p>修改时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>Y-m-d h:m:s</code>（北京时间）。</p>
 	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 
-	// <p>创建时间。</p>
+	// <p>创建时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>Y-m-d h:m:s</code>（北京时间）。</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// <p>隔离时间。</p>
+	// <p>隔离时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>Y-m-d h:m:s</code>（北京时间）。</p>
 	IsolateTime *string `json:"IsolateTime,omitnil,omitempty" name:"IsolateTime"`
 
-	// <p>包年包月任务的到期时间。</p>
+	// <p>包年包月任务的到期时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>Y-m-d h:m:s</code>（北京时间）。</p>
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
-	// <p>下线时间。</p>
+	// <p>下线时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>Y-m-d h:m:s</code>（北京时间）。</p>
 	OfflineTime *string `json:"OfflineTime,omitnil,omitempty" name:"OfflineTime"`
 
 	// <p>付费方式，可能值为：0-包年包月，1-按量计费</p>
@@ -3507,86 +3505,86 @@ func (r *DescribeSubscribeDetailResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSubscribeJobsRequestParams struct {
-	// 订阅 ID 筛选，精确匹配
+	// <p>订阅 ID 筛选，精确匹配</p>
 	SubscribeId *string `json:"SubscribeId,omitnil,omitempty" name:"SubscribeId"`
 
-	// 订阅 ID 筛选，精确匹配
+	// <p>订阅 ID 筛选，精确匹配</p>
 	SubscribeIds []*string `json:"SubscribeIds,omitnil,omitempty" name:"SubscribeIds"`
 
-	// 订阅名称，前缀模糊匹配
+	// <p>订阅名称，前缀模糊匹配</p>
 	SubscribeName *string `json:"SubscribeName,omitnil,omitempty" name:"SubscribeName"`
 
-	// 订阅的云上数据库实例的 ID，精确匹配
+	// <p>订阅的云上数据库实例的 ID，精确匹配</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 订阅的topicName
+	// <p>订阅的topicName</p>
 	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
 
-	// 计费模式筛选，可能的值：0-包年包月，1-按量计费
+	// <p>计费模式筛选，可能的值：0-包年包月，1-按量计费</p>
 	PayType *int64 `json:"PayType,omitnil,omitempty" name:"PayType"`
 
-	// 订阅的数据库产品，目前支持 cynosdbmysql,mariadb,mongodb,mysql,percona,tdpg,tdsqlpercona(tdsqlmysql)
+	// <p>订阅的数据库产品，目前支持 cynosdbmysql,mariadb,mongodb,mysql,percona,tdpg,tdsqlpercona(tdsqlmysql)</p>
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 
-	// 数据订阅生命周期状态，可能的值为：正常 normal, 隔离中 isolating, 已隔离 isolated, 下线中 offlining，按量转包年包月中 post2PrePayIng
+	// <p>数据订阅生命周期状态，可能的值为：正常 normal, 隔离中 isolating, 已隔离 isolated, 下线中 offlining，按量转包年包月中 post2PrePayIng</p>
 	Status []*string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 数据订阅状态，可能的值为：未启动 notStarted, 校验中 checking, 校验不通过 checkNotPass, 校验通过 checkPass, 启动中 starting, 运行中 running, 异常出错 error
+	// <p>数据订阅状态，可能的值为：未启动 notStarted, 校验中 checking, 校验不通过 checkNotPass, 校验通过 checkPass, 启动中 starting, 运行中 running, 异常出错 error</p>
 	SubsStatus []*string `json:"SubsStatus,omitnil,omitempty" name:"SubsStatus"`
 
-	// 返回记录的起始偏移量。默认0
+	// <p>返回记录的起始偏移量。默认0</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 单次返回的记录数量。默认20，最大100
+	// <p>单次返回的记录数量。默认20，最大100</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 排序方向，可选的值为"DESC"和"ASC"，默认为"DESC"，按创建时间逆序排序
+	// <p>排序方向，可选的值为&quot;DESC&quot;和&quot;ASC&quot;，默认为&quot;DESC&quot;，按创建时间逆序排序</p>
 	OrderDirection *string `json:"OrderDirection,omitnil,omitempty" name:"OrderDirection"`
 
-	// tag 过滤条件，多个 TagFilter 之间关系为且
+	// <p>tag 过滤条件，多个 TagFilter 之间关系为且</p>
 	TagFilters []*TagFilter `json:"TagFilters,omitnil,omitempty" name:"TagFilters"`
 }
 
 type DescribeSubscribeJobsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 订阅 ID 筛选，精确匹配
+	// <p>订阅 ID 筛选，精确匹配</p>
 	SubscribeId *string `json:"SubscribeId,omitnil,omitempty" name:"SubscribeId"`
 
-	// 订阅 ID 筛选，精确匹配
+	// <p>订阅 ID 筛选，精确匹配</p>
 	SubscribeIds []*string `json:"SubscribeIds,omitnil,omitempty" name:"SubscribeIds"`
 
-	// 订阅名称，前缀模糊匹配
+	// <p>订阅名称，前缀模糊匹配</p>
 	SubscribeName *string `json:"SubscribeName,omitnil,omitempty" name:"SubscribeName"`
 
-	// 订阅的云上数据库实例的 ID，精确匹配
+	// <p>订阅的云上数据库实例的 ID，精确匹配</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 订阅的topicName
+	// <p>订阅的topicName</p>
 	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
 
-	// 计费模式筛选，可能的值：0-包年包月，1-按量计费
+	// <p>计费模式筛选，可能的值：0-包年包月，1-按量计费</p>
 	PayType *int64 `json:"PayType,omitnil,omitempty" name:"PayType"`
 
-	// 订阅的数据库产品，目前支持 cynosdbmysql,mariadb,mongodb,mysql,percona,tdpg,tdsqlpercona(tdsqlmysql)
+	// <p>订阅的数据库产品，目前支持 cynosdbmysql,mariadb,mongodb,mysql,percona,tdpg,tdsqlpercona(tdsqlmysql)</p>
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 
-	// 数据订阅生命周期状态，可能的值为：正常 normal, 隔离中 isolating, 已隔离 isolated, 下线中 offlining，按量转包年包月中 post2PrePayIng
+	// <p>数据订阅生命周期状态，可能的值为：正常 normal, 隔离中 isolating, 已隔离 isolated, 下线中 offlining，按量转包年包月中 post2PrePayIng</p>
 	Status []*string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 数据订阅状态，可能的值为：未启动 notStarted, 校验中 checking, 校验不通过 checkNotPass, 校验通过 checkPass, 启动中 starting, 运行中 running, 异常出错 error
+	// <p>数据订阅状态，可能的值为：未启动 notStarted, 校验中 checking, 校验不通过 checkNotPass, 校验通过 checkPass, 启动中 starting, 运行中 running, 异常出错 error</p>
 	SubsStatus []*string `json:"SubsStatus,omitnil,omitempty" name:"SubsStatus"`
 
-	// 返回记录的起始偏移量。默认0
+	// <p>返回记录的起始偏移量。默认0</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 单次返回的记录数量。默认20，最大100
+	// <p>单次返回的记录数量。默认20，最大100</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 排序方向，可选的值为"DESC"和"ASC"，默认为"DESC"，按创建时间逆序排序
+	// <p>排序方向，可选的值为&quot;DESC&quot;和&quot;ASC&quot;，默认为&quot;DESC&quot;，按创建时间逆序排序</p>
 	OrderDirection *string `json:"OrderDirection,omitnil,omitempty" name:"OrderDirection"`
 
-	// tag 过滤条件，多个 TagFilter 之间关系为且
+	// <p>tag 过滤条件，多个 TagFilter 之间关系为且</p>
 	TagFilters []*TagFilter `json:"TagFilters,omitnil,omitempty" name:"TagFilters"`
 }
 
@@ -3623,10 +3621,10 @@ func (r *DescribeSubscribeJobsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSubscribeJobsResponseParams struct {
-	// 符合查询条件的实例总数
+	// <p>符合查询条件的实例总数</p>
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 数据订阅实例的信息列表
+	// <p>数据订阅实例的信息列表</p>
 	Items []*SubscribeInfo `json:"Items,omitnil,omitempty" name:"Items"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3711,56 +3709,56 @@ func (r *DescribeSubscribeReturnableResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSyncCompareDiffItemsRequestParams struct {
-	// 迁移任务 Id
+	// <p>迁移任务 Id</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
-	// 校验任务 Id
+	// <p>校验任务 Id</p>
 	CompareTaskId *string `json:"CompareTaskId,omitnil,omitempty" name:"CompareTaskId"`
 
-	// 数据库名
+	// <p>数据库名</p>
 	DBName *string `json:"DBName,omitnil,omitempty" name:"DBName"`
 
-	// schema名
+	// <p>schema名</p>
 	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
 
-	// 数据表名
+	// <p>数据表名</p>
 	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
 
-	// 数据分块号
+	// <p>数据分块号</p>
 	ChunkId *int64 `json:"ChunkId,omitnil,omitempty" name:"ChunkId"`
 
-	// 分页条件，查询结果返回条数
+	// <p>分页条件，查询结果返回条数</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页条件，查询的起始位置
+	// <p>分页条件，查询的起始位置</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 type DescribeSyncCompareDiffItemsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 迁移任务 Id
+	// <p>迁移任务 Id</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
-	// 校验任务 Id
+	// <p>校验任务 Id</p>
 	CompareTaskId *string `json:"CompareTaskId,omitnil,omitempty" name:"CompareTaskId"`
 
-	// 数据库名
+	// <p>数据库名</p>
 	DBName *string `json:"DBName,omitnil,omitempty" name:"DBName"`
 
-	// schema名
+	// <p>schema名</p>
 	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
 
-	// 数据表名
+	// <p>数据表名</p>
 	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
 
-	// 数据分块号
+	// <p>数据分块号</p>
 	ChunkId *int64 `json:"ChunkId,omitnil,omitempty" name:"ChunkId"`
 
-	// 分页条件，查询结果返回条数
+	// <p>分页条件，查询结果返回条数</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页条件，查询的起始位置
+	// <p>分页条件，查询的起始位置</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
@@ -3792,10 +3790,10 @@ func (r *DescribeSyncCompareDiffItemsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSyncCompareDiffItemsResponseParams struct {
-	// 查询结果的数量
+	// <p>查询结果的数量</p>
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 查询结果详情
+	// <p>查询结果详情</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Items []*DiffChunkItem `json:"Items,omitnil,omitempty" name:"Items"`
 
@@ -3949,38 +3947,38 @@ func (r *DescribeSyncCompareReportResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSyncCompareTasksRequestParams struct {
-	// 任务 Id
+	// <p>任务 Id</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
-	// 分页设置，表示每页显示多少条任务，默认为 20
+	// <p>分页设置，表示每页显示多少条任务，默认为 20</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页偏移量
+	// <p>分页偏移量</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 校验任务 ID
+	// <p>校验任务 ID</p>
 	CompareTaskId *string `json:"CompareTaskId,omitnil,omitempty" name:"CompareTaskId"`
 
-	// 任务状态过滤，可能的值：created - 创建完成；readyRun - 等待运行；running - 运行中；success - 成功；stopping - 结束中；failed - 失败；canceled - 已终止
+	// <p>任务状态过滤，可能的值：created - 创建完成；readyRun - 等待运行；running - 运行中；success - 成功；stopping - 结束中；failed - 失败；canceled - 已终止</p>
 	Status []*string `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 type DescribeSyncCompareTasksRequest struct {
 	*tchttp.BaseRequest
 	
-	// 任务 Id
+	// <p>任务 Id</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
-	// 分页设置，表示每页显示多少条任务，默认为 20
+	// <p>分页设置，表示每页显示多少条任务，默认为 20</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页偏移量
+	// <p>分页偏移量</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 校验任务 ID
+	// <p>校验任务 ID</p>
 	CompareTaskId *string `json:"CompareTaskId,omitnil,omitempty" name:"CompareTaskId"`
 
-	// 任务状态过滤，可能的值：created - 创建完成；readyRun - 等待运行；running - 运行中；success - 成功；stopping - 结束中；failed - 失败；canceled - 已终止
+	// <p>任务状态过滤，可能的值：created - 创建完成；readyRun - 等待运行；running - 运行中；success - 成功；stopping - 结束中；failed - 失败；canceled - 已终止</p>
 	Status []*string `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
@@ -4009,11 +4007,11 @@ func (r *DescribeSyncCompareTasksRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSyncCompareTasksResponseParams struct {
-	// 数量
+	// <p>数量</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 一致性校验任务列表
+	// <p>一致性校验任务列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Items []*CompareTaskItem `json:"Items,omitnil,omitempty" name:"Items"`
 
@@ -4119,92 +4117,92 @@ func (r *DescribeSyncGtidCompareReportResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSyncJobsRequestParams struct {
-	// 同步任务id，如sync-werwfs23，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
+	// <p>同步任务id，如sync-werwfs23，可通过<a href="https://cloud.tencent.com/document/product/571/82103">DescribeSyncJobs</a>接口获取。</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
-	// 同步任务id列表，如["sync-n3gh7md9"]
+	// <p>同步任务id列表，如[&quot;sync-n3gh7md9&quot;]</p>
 	JobIds []*string `json:"JobIds,omitnil,omitempty" name:"JobIds"`
 
-	// 同步任务名
+	// <p>同步任务名</p>
 	JobName *string `json:"JobName,omitnil,omitempty" name:"JobName"`
 
-	// 排序字段，目前仅支持CreateTime字段排序
+	// <p>排序字段，目前仅支持CreateTime字段排序</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 排序方式，升序为ASC，降序为DESC，默认为CreateTime降序
+	// <p>排序方式，升序为ASC，降序为DESC，默认为CreateTime降序</p>
 	OrderSeq *string `json:"OrderSeq,omitnil,omitempty" name:"OrderSeq"`
 
-	// 偏移量，默认为0
+	// <p>偏移量，默认为0</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回同步任务实例数量，默认20，有效区间[1,100]
+	// <p>返回同步任务实例数量，默认20，有效区间[1,100]</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 状态集合，如Initialized(初始化),CheckPass(校验通过),Running(运行中),ResumableErr(恢复中),Stopped(已结束)
+	// <p>状态集合，如Initialized(初始化),CheckPass(校验通过),Running(运行中),ResumableErr(恢复中),Stopped(已结束)</p>
 	Status []*string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 运行模式，如Immediate:立即运行，Timed:定时运行
+	// <p>运行模式，如Immediate:立即运行，Timed:定时运行</p>
 	RunMode *string `json:"RunMode,omitnil,omitempty" name:"RunMode"`
 
-	// 任务类型，如mysql2mysql：msyql同步到mysql;可取值有mysql2mysql、mysql2kafka、tdsqlmysql2kafka、tdsqlmysql2tdsqlmysql、tdsqlmysql2mysql、mysql2tdsqlmysql、mysql2mariadb、mariadb2mariadb、mariadb2kafka、cynosdbmysql2kafka、cynosdbmysql2cynosdbmysql、cynosdbmysql2mysql、mysql2cynosdbmysql、mariadb2tdsqlmysql、tdsqlmysql2cynosdbmysql、cynosdbmysql2tdsqlmysql、tdstore2mysql、tdstore2percona、tdstore2mariadb、tdstore2cynosdbmysql、cynosdbmysql2mariadb、mariadb2cynosdbmysql、tdsqlmysql2mariadb、mariadb2mysql、percona2mariadb、postgresql2postgresql、tdstore2tdsqlmysql、mongodb2mongodb
+	// <p>任务类型，如mysql2mysql：msyql同步到mysql;可取值有mysql2mysql、mysql2kafka、tdsqlmysql2kafka、tdsqlmysql2tdsqlmysql、tdsqlmysql2mysql、mysql2tdsqlmysql、mysql2mariadb、mariadb2mariadb、mariadb2kafka、cynosdbmysql2kafka、cynosdbmysql2cynosdbmysql、cynosdbmysql2mysql、mysql2cynosdbmysql、mariadb2tdsqlmysql、tdsqlmysql2cynosdbmysql、cynosdbmysql2tdsqlmysql、tdstore2mysql、tdstore2percona、tdstore2mariadb、tdstore2cynosdbmysql、cynosdbmysql2mariadb、mariadb2cynosdbmysql、tdsqlmysql2mariadb、mariadb2mysql、percona2mariadb、postgresql2postgresql、tdstore2tdsqlmysql、mongodb2mongodb</p>
 	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
 
-	// 付费类型，PrePay：预付费，PostPay：后付费
+	// <p>付费类型，PrePay：预付费，PostPay：后付费</p>
 	PayMode *string `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// tag
+	// <p>tag</p>
 	TagFilters []*TagFilter `json:"TagFilters,omitnil,omitempty" name:"TagFilters"`
 
-	// 源端数据库连接信息，可以输入实例ID或者IP等
+	// <p>源端数据库连接信息，可以输入实例ID或者IP等</p>
 	SrcInfoPattern *string `json:"SrcInfoPattern,omitnil,omitempty" name:"SrcInfoPattern"`
 
-	// 目标端数据库连接信息，可以输入实例ID或者IP等
+	// <p>目标端数据库连接信息，可以输入实例ID或者IP等</p>
 	DstInfoPattern *string `json:"DstInfoPattern,omitnil,omitempty" name:"DstInfoPattern"`
 }
 
 type DescribeSyncJobsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 同步任务id，如sync-werwfs23，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
+	// <p>同步任务id，如sync-werwfs23，可通过<a href="https://cloud.tencent.com/document/product/571/82103">DescribeSyncJobs</a>接口获取。</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
-	// 同步任务id列表，如["sync-n3gh7md9"]
+	// <p>同步任务id列表，如[&quot;sync-n3gh7md9&quot;]</p>
 	JobIds []*string `json:"JobIds,omitnil,omitempty" name:"JobIds"`
 
-	// 同步任务名
+	// <p>同步任务名</p>
 	JobName *string `json:"JobName,omitnil,omitempty" name:"JobName"`
 
-	// 排序字段，目前仅支持CreateTime字段排序
+	// <p>排序字段，目前仅支持CreateTime字段排序</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 排序方式，升序为ASC，降序为DESC，默认为CreateTime降序
+	// <p>排序方式，升序为ASC，降序为DESC，默认为CreateTime降序</p>
 	OrderSeq *string `json:"OrderSeq,omitnil,omitempty" name:"OrderSeq"`
 
-	// 偏移量，默认为0
+	// <p>偏移量，默认为0</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回同步任务实例数量，默认20，有效区间[1,100]
+	// <p>返回同步任务实例数量，默认20，有效区间[1,100]</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 状态集合，如Initialized(初始化),CheckPass(校验通过),Running(运行中),ResumableErr(恢复中),Stopped(已结束)
+	// <p>状态集合，如Initialized(初始化),CheckPass(校验通过),Running(运行中),ResumableErr(恢复中),Stopped(已结束)</p>
 	Status []*string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 运行模式，如Immediate:立即运行，Timed:定时运行
+	// <p>运行模式，如Immediate:立即运行，Timed:定时运行</p>
 	RunMode *string `json:"RunMode,omitnil,omitempty" name:"RunMode"`
 
-	// 任务类型，如mysql2mysql：msyql同步到mysql;可取值有mysql2mysql、mysql2kafka、tdsqlmysql2kafka、tdsqlmysql2tdsqlmysql、tdsqlmysql2mysql、mysql2tdsqlmysql、mysql2mariadb、mariadb2mariadb、mariadb2kafka、cynosdbmysql2kafka、cynosdbmysql2cynosdbmysql、cynosdbmysql2mysql、mysql2cynosdbmysql、mariadb2tdsqlmysql、tdsqlmysql2cynosdbmysql、cynosdbmysql2tdsqlmysql、tdstore2mysql、tdstore2percona、tdstore2mariadb、tdstore2cynosdbmysql、cynosdbmysql2mariadb、mariadb2cynosdbmysql、tdsqlmysql2mariadb、mariadb2mysql、percona2mariadb、postgresql2postgresql、tdstore2tdsqlmysql、mongodb2mongodb
+	// <p>任务类型，如mysql2mysql：msyql同步到mysql;可取值有mysql2mysql、mysql2kafka、tdsqlmysql2kafka、tdsqlmysql2tdsqlmysql、tdsqlmysql2mysql、mysql2tdsqlmysql、mysql2mariadb、mariadb2mariadb、mariadb2kafka、cynosdbmysql2kafka、cynosdbmysql2cynosdbmysql、cynosdbmysql2mysql、mysql2cynosdbmysql、mariadb2tdsqlmysql、tdsqlmysql2cynosdbmysql、cynosdbmysql2tdsqlmysql、tdstore2mysql、tdstore2percona、tdstore2mariadb、tdstore2cynosdbmysql、cynosdbmysql2mariadb、mariadb2cynosdbmysql、tdsqlmysql2mariadb、mariadb2mysql、percona2mariadb、postgresql2postgresql、tdstore2tdsqlmysql、mongodb2mongodb</p>
 	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
 
-	// 付费类型，PrePay：预付费，PostPay：后付费
+	// <p>付费类型，PrePay：预付费，PostPay：后付费</p>
 	PayMode *string `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// tag
+	// <p>tag</p>
 	TagFilters []*TagFilter `json:"TagFilters,omitnil,omitempty" name:"TagFilters"`
 
-	// 源端数据库连接信息，可以输入实例ID或者IP等
+	// <p>源端数据库连接信息，可以输入实例ID或者IP等</p>
 	SrcInfoPattern *string `json:"SrcInfoPattern,omitnil,omitempty" name:"SrcInfoPattern"`
 
-	// 目标端数据库连接信息，可以输入实例ID或者IP等
+	// <p>目标端数据库连接信息，可以输入实例ID或者IP等</p>
 	DstInfoPattern *string `json:"DstInfoPattern,omitnil,omitempty" name:"DstInfoPattern"`
 }
 
@@ -4242,10 +4240,10 @@ func (r *DescribeSyncJobsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSyncJobsResponseParams struct {
-	// 任务数目
+	// <p>任务数目</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 任务详情数组
+	// <p>任务详情数组</p>
 	JobList []*SyncJobInfo `json:"JobList,omitnil,omitempty" name:"JobList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4457,42 +4455,42 @@ type DetailCheckItem struct {
 }
 
 type DiffChunkItem struct {
-	// 数据库名
+	// <p>数据库名</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DBName *string `json:"DBName,omitnil,omitempty" name:"DBName"`
 
-	// schema名
+	// <p>schema名</p>
 	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
 
-	// 数据表名
+	// <p>数据表名</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
 
-	// 分块号
+	// <p>分块号</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChunkId *int64 `json:"ChunkId,omitnil,omitempty" name:"ChunkId"`
 
-	// 数据标识符，比如主键信息等
+	// <p>数据标识符，比如主键信息等</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Identifier *string `json:"Identifier,omitnil,omitempty" name:"Identifier"`
 
-	// 不一致类型，可能的取值为：data - 两边数据不一致；srcLack - 源缺失；dstLack - 目标缺失
+	// <p>不一致类型，可能的取值为：data - 两边数据不一致；srcLack - 源缺失；dstLack - 目标缺失</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiffType *string `json:"DiffType,omitnil,omitempty" name:"DiffType"`
 
-	// 表结构信息
+	// <p>表结构信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SchemaInfo []*string `json:"SchemaInfo,omitnil,omitempty" name:"SchemaInfo"`
 
-	// 源端数据
+	// <p>源端数据</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SrcItem []*string `json:"SrcItem,omitnil,omitempty" name:"SrcItem"`
 
-	// 目标端数据
+	// <p>目标端数据</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DstItem []*string `json:"DstItem,omitnil,omitempty" name:"DstItem"`
 
-	// 完成时间
+	// <p>完成时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FinishedAt *string `json:"FinishedAt,omitnil,omitempty" name:"FinishedAt"`
 }
@@ -4580,37 +4578,37 @@ type DifferenceDetails struct {
 }
 
 type DifferenceItem struct {
-	// 数据库名
+	// <p>数据库名</p>
 	Db *string `json:"Db,omitnil,omitempty" name:"Db"`
 
-	// schema
+	// <p>schema</p>
 	Schema *string `json:"Schema,omitnil,omitempty" name:"Schema"`
 
-	// 表名
+	// <p>表名</p>
 	Table *string `json:"Table,omitnil,omitempty" name:"Table"`
 
-	// 分块号
+	// <p>分块号</p>
 	Chunk *int64 `json:"Chunk,omitnil,omitempty" name:"Chunk"`
 
-	// 源库数值
+	// <p>源库数值</p>
 	SrcItem *string `json:"SrcItem,omitnil,omitempty" name:"SrcItem"`
 
-	// 目标库数值
+	// <p>目标库数值</p>
 	DstItem *string `json:"DstItem,omitnil,omitempty" name:"DstItem"`
 
-	// 索引名称
+	// <p>索引名称</p>
 	IndexName *string `json:"IndexName,omitnil,omitempty" name:"IndexName"`
 
-	// 索引下边界
+	// <p>索引下边界</p>
 	LowerBoundary *string `json:"LowerBoundary,omitnil,omitempty" name:"LowerBoundary"`
 
-	// 索引上边界
+	// <p>索引上边界</p>
 	UpperBoundary *string `json:"UpperBoundary,omitnil,omitempty" name:"UpperBoundary"`
 
-	// 对比消耗时间,单位为 ms
+	// <p>对比消耗时间,单位为 ms</p>
 	CostTime *float64 `json:"CostTime,omitnil,omitempty" name:"CostTime"`
 
-	// 完成时间
+	// <p>完成时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
 	FinishedAt *string `json:"FinishedAt,omitnil,omitempty" name:"FinishedAt"`
 }
 
@@ -5075,61 +5073,61 @@ func (r *IsolateSyncJobResponse) FromJsonString(s string) error {
 }
 
 type JobItem struct {
-	// 数据迁移任务ID
+	// <p>数据迁移任务ID</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
-	// 数据迁移任务名称
+	// <p>数据迁移任务名称</p>
 	JobName *string `json:"JobName,omitnil,omitempty" name:"JobName"`
 
-	// 任务创建(提交)时间，格式为 yyyy-mm-dd hh:mm:ss
+	// <p>任务创建(提交)时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 任务更新时间，格式为 yyyy-mm-dd hh:mm:ss
+	// <p>任务更新时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 任务开始执行时间，格式为 yyyy-mm-dd hh:mm:ss
+	// <p>任务开始执行时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 任务执行结束时间，格式为 yyyy-mm-dd hh:mm:ss
+	// <p>任务执行结束时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 迁移任务错误信息
+	// <p>迁移任务错误信息</p>
 	BriefMsg *string `json:"BriefMsg,omitnil,omitempty" name:"BriefMsg"`
 
-	// 任务状态，取值为：creating(创建中)、created(创建完成)、checking(校验中)、checkPass(校验通过)、checkNotPass(校验不通过)、readyRun(准备运行)、running(任务运行)、readyComplete(准备完成)、success(任务成功)、failed(任务失败)、stopping(终止中)、completing(完成中)、pausing(暂停中)、manualPaused(已暂停)、resumableErr(可重试错误)、resuming(重试中)、unknown(未知状态)、error(任务错误)、canceled(已取消)
+	// <p>任务状态，取值为：creating(创建中)、created(创建完成)、checking(校验中)、checkPass(校验通过)、checkNotPass(校验不通过)、readyRun(准备运行)、running(任务运行)、readyComplete(准备完成)、success(任务成功)、failed(任务失败)、stopping(终止中)、completing(完成中)、pausing(暂停中)、manualPaused(已暂停)、resumableErr(可重试错误)、resuming(重试中)、unknown(未知状态)、error(任务错误)、canceled(已取消)</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 任务运行模式，值包括：immediate(立即运行)，timed(定时运行)
+	// <p>任务运行模式，值包括：immediate(立即运行)，timed(定时运行)</p>
 	RunMode *string `json:"RunMode,omitnil,omitempty" name:"RunMode"`
 
-	// 期待启动时间，当RunMode取值为timed时，此值必填，形如：2022-07-11 16:20:49
+	// <p>期待启动时间，当 <code>RunMode</code> 取值为 <code>timed</code> 时此值必填。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
 	ExpectRunTime *string `json:"ExpectRunTime,omitnil,omitempty" name:"ExpectRunTime"`
 
-	// 任务操作信息
+	// <p>任务操作信息</p>
 	Action *MigrateAction `json:"Action,omitnil,omitempty" name:"Action"`
 
-	// 迁移执行过程信息
+	// <p>迁移执行过程信息</p>
 	StepInfo *MigrateDetailInfo `json:"StepInfo,omitnil,omitempty" name:"StepInfo"`
 
-	// 源实例信息
+	// <p>源实例信息</p>
 	SrcInfo *DBEndpointInfo `json:"SrcInfo,omitnil,omitempty" name:"SrcInfo"`
 
-	// 目标端信息
+	// <p>目标端信息</p>
 	DstInfo *DBEndpointInfo `json:"DstInfo,omitnil,omitempty" name:"DstInfo"`
 
-	// 数据一致性校验结果
+	// <p>数据一致性校验结果</p>
 	CompareTask *CompareTaskInfo `json:"CompareTask,omitnil,omitempty" name:"CompareTask"`
 
-	// 计费状态信息
+	// <p>计费状态信息</p>
 	TradeInfo *TradeInfo `json:"TradeInfo,omitnil,omitempty" name:"TradeInfo"`
 
-	// 标签信息
+	// <p>标签信息</p>
 	Tags []*TagItem `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 自动重试时间段信息
+	// <p>自动重试时间段信息</p>
 	AutoRetryTimeRangeMinutes *int64 `json:"AutoRetryTimeRangeMinutes,omitnil,omitempty" name:"AutoRetryTimeRangeMinutes"`
 
-	// 全量导出可重入标识：enum::"yes"/"no"。yes表示当前任务可重入、no表示当前任务处于全量导出且不可重入阶段；如果在该值为no时重启任务导出流程不支持断点续传
+	// <p>全量导出可重入标识：enum::&quot;yes&quot;/&quot;no&quot;。yes表示当前任务可重入、no表示当前任务处于全量导出且不可重入阶段；如果在该值为no时重启任务导出流程不支持断点续传</p>
 	DumperResumeCtrl *string `json:"DumperResumeCtrl,omitnil,omitempty" name:"DumperResumeCtrl"`
 }
 
@@ -5223,7 +5221,7 @@ type MigrateOption struct {
 	// <p>是否在迁移时设置目标库只读(仅对mysql有效)，true(设置只读)、false(不设置只读，默认此值)</p>
 	IsDstReadOnly *bool `json:"IsDstReadOnly,omitnil,omitempty" name:"IsDstReadOnly"`
 
-	// <p>其他附加信息，对于特定库可设置额外参数，Redis可定义如下的参数:<br>[&quot;DstWriteMode&quot;:normal,     目标库写入模式,可取值clearData(清空目标实例数据)、overwrite(以覆盖写的方式执行任务)、normal(要求目标端为空，否则校验不通过) ，不显示指定默认以覆盖写的方式执行任务    &quot;IsDstReadOnly&quot;:true,     是否在迁移时设置目标库只读,true(设置只读)、false(不设置只读)     &quot;ClientOutputBufferHardLimit&quot;:512,     从机缓冲区的硬性容量限制(MB)     &quot;ClientOutputBufferSoftLimit&quot;:512,     从机缓冲区的软性容量限制(MB)     &quot;ClientOutputBufferPersistTime&quot;:60, 从机缓冲区的软性限制持续时间(秒)     &quot;ReplBacklogSize&quot;:512,     环形缓冲区容量限制(MB)     &quot;ReplTimeout&quot;:120，        复制超时时间(秒)     &quot;IsExpireKey&quot;:&quot;true&quot;,过期key自动淘汰]</p>
+	// <p>其他附加信息，对于特定库可设置额外参数。<br>Redis可定义如下的参数:<br>[&quot;DstWriteMode&quot;:normal,     目标库写入模式,可取值clearData(清空目标实例数据)、overwrite(以覆盖写的方式执行任务)、normal(要求目标端为空，否则校验不通过) ，不显示指定默认以覆盖写的方式执行任务    &quot;IsDstReadOnly&quot;:true,     是否在迁移时设置目标库只读,true(设置只读)、false(不设置只读)     &quot;ClientOutputBufferHardLimit&quot;:512,     从机缓冲区的硬性容量限制(MB)     &quot;ClientOutputBufferSoftLimit&quot;:512,     从机缓冲区的软性容量限制(MB)     &quot;ClientOutputBufferPersistTime&quot;:60, 从机缓冲区的软性限制持续时间(秒)     &quot;ReplBacklogSize&quot;:512,     环形缓冲区容量限制(MB)     &quot;ReplTimeout&quot;:120，        复制超时时间(秒)     &quot;IsExpireKey&quot;:&quot;true&quot;,过期key自动淘汰]</p><p>Tidb可定义如下的参数<br>[&quot;tidb_increment_enable&quot;:true,     增量迁移开关,可取值true(开启增量,平台从下列ticdc_kafka_<em>字段提取用户自建Kafka配置)、false或不传(仅做结构+全量迁移,忽略所有ticdc_kafka_</em>字段) ,严格匹配字符串true(不区分大小写)才算开启    &quot;ticdc_kafka_broker&quot;:&quot;1.1.1.1:9092&quot;,     TiCDC输出的Kafka broker地址(用户自建Kafka,平台不负责创建/回收topic),增量开启时必填    &quot;ticdc_kafka_topic&quot;:&quot;tidb_topic&quot;,     TiCDC输出的Kafka topic,增量开启时必填(连通性测试场景可不填)    &quot;ticdc_kafka_data_format&quot;:&quot;open-protocol&quot;,     数据格式,可取值open-protocol(默认,不传时按此处理)、canal-json,其他值校验不通过    &quot;ticdc_kafka_security_protocol&quot;:&quot;PLAINTEXT&quot;,     传输层安全协议,可取值PLAINTEXT(默认,无认证,忽略下方认证字段)、SASL_PLAINTEXT、SASL_SSL,其他值校验不通过    &quot;ticdc_kafka_sasl_mechanism&quot;:&quot;SCRAM-SHA-256&quot;,     SASL认证机制,可取值SCRAM-SHA-256、SCRAM-SHA-512,当security_protocol为SASL_PLAINTEXT/SASL_SSL时必填    &quot;ticdc_kafka_username&quot;:&quot;user&quot;,     Kafka SASL用户名,当security_protocol为SASL_PLAINTEXT/SASL_SSL时必填    &quot;ticdc_kafka_password&quot;:&quot;password&quot;,     Kafka SASL密码,当security_protocol为SASL_PLAINTEXT/SASL_SSL时必填(不做trim,允许首尾空格)    &quot;ticdc_kafka_ssl_ca_base64_content&quot;:&quot;base64字符串&quot;,     base64编码的CA证书内容,仅security_protocol=SASL_SSL时使用,可选(为空表示信任系统根证书)]</p>
 	ExtraAttr []*KeyValuePairOption `json:"ExtraAttr,omitnil,omitempty" name:"ExtraAttr"`
 
 	// <p>pgsql迁移分类：logical(逻辑迁移)、physical(物理迁移)</p>
@@ -5848,7 +5846,7 @@ type ModifyMigrationJobRequestParams struct {
 	// <p>迁移任务名称，最大长度128</p>
 	JobName *string `json:"JobName,omitnil,omitempty" name:"JobName"`
 
-	// <p>期待启动时间，当RunMode取值为timed时，此值必填，形如：&quot;2006-01-02 15:04:05&quot;</p>
+	// <p>期待启动时间，当RunMode取值为timed时，此值必填。</p><p>参数格式：当 <code>DateTimeISOFormat=true</code> 时按 RFC 3339 传入（如 <code>2026-04-23T20:21:35+08:00</code>），否则按 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）传入</p>
 	ExpectRunTime *string `json:"ExpectRunTime,omitnil,omitempty" name:"ExpectRunTime"`
 
 	// <p>标签信息</p>
@@ -5879,7 +5877,7 @@ type ModifyMigrationJobRequest struct {
 	// <p>迁移任务名称，最大长度128</p>
 	JobName *string `json:"JobName,omitnil,omitempty" name:"JobName"`
 
-	// <p>期待启动时间，当RunMode取值为timed时，此值必填，形如：&quot;2006-01-02 15:04:05&quot;</p>
+	// <p>期待启动时间，当RunMode取值为timed时，此值必填。</p><p>参数格式：当 <code>DateTimeISOFormat=true</code> 时按 RFC 3339 传入（如 <code>2026-04-23T20:21:35+08:00</code>），否则按 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）传入</p>
 	ExpectRunTime *string `json:"ExpectRunTime,omitnil,omitempty" name:"ExpectRunTime"`
 
 	// <p>标签信息</p>
@@ -6380,44 +6378,44 @@ func (r *ModifySyncJobConfigResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifySyncRateLimitRequestParams struct {
-	// 同步任务ID，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
+	// <p>同步任务ID，可通过<a href="https://cloud.tencent.com/document/product/571/82103">DescribeSyncJobs</a>接口获取。</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
-	// 同步任务全量导出线程数、有效值为 1-16
+	// <p>同步任务全量导出线程数、有效值为 1-16</p>
 	DumpThread *int64 `json:"DumpThread,omitnil,omitempty" name:"DumpThread"`
 
-	// 同步任务全量导出的 Rps 限制、需要大于 0;对于mongodb最大值为20000，其他数据库最大值为50000000
+	// <p>同步任务全量导出的 Rps 限制、需要大于 0;对于mongodb最大值为20000，其他数据库最大值为50000000</p>
 	DumpRps *int64 `json:"DumpRps,omitnil,omitempty" name:"DumpRps"`
 
-	// 同步任务全量导入线程数、有效值为 1-16
+	// <p>同步任务全量导入线程数、有效值为 1-16</p>
 	LoadThread *int64 `json:"LoadThread,omitnil,omitempty" name:"LoadThread"`
 
-	// 同步任务增量导入线程数、有效值为 1-128
+	// <p>同步任务增量导入线程数、有效值为 1-128</p>
 	SinkerThread *int64 `json:"SinkerThread,omitnil,omitempty" name:"SinkerThread"`
 
-	// 同步任务全量导入的Rps
+	// <p>同步任务全量导入的Rps</p>
 	LoadRps *int64 `json:"LoadRps,omitnil,omitempty" name:"LoadRps"`
 }
 
 type ModifySyncRateLimitRequest struct {
 	*tchttp.BaseRequest
 	
-	// 同步任务ID，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
+	// <p>同步任务ID，可通过<a href="https://cloud.tencent.com/document/product/571/82103">DescribeSyncJobs</a>接口获取。</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
-	// 同步任务全量导出线程数、有效值为 1-16
+	// <p>同步任务全量导出线程数、有效值为 1-16</p>
 	DumpThread *int64 `json:"DumpThread,omitnil,omitempty" name:"DumpThread"`
 
-	// 同步任务全量导出的 Rps 限制、需要大于 0;对于mongodb最大值为20000，其他数据库最大值为50000000
+	// <p>同步任务全量导出的 Rps 限制、需要大于 0;对于mongodb最大值为20000，其他数据库最大值为50000000</p>
 	DumpRps *int64 `json:"DumpRps,omitnil,omitempty" name:"DumpRps"`
 
-	// 同步任务全量导入线程数、有效值为 1-16
+	// <p>同步任务全量导入线程数、有效值为 1-16</p>
 	LoadThread *int64 `json:"LoadThread,omitnil,omitempty" name:"LoadThread"`
 
-	// 同步任务增量导入线程数、有效值为 1-128
+	// <p>同步任务增量导入线程数、有效值为 1-128</p>
 	SinkerThread *int64 `json:"SinkerThread,omitnil,omitempty" name:"SinkerThread"`
 
-	// 同步任务全量导入的Rps
+	// <p>同步任务全量导入的Rps</p>
 	LoadRps *int64 `json:"LoadRps,omitnil,omitempty" name:"LoadRps"`
 }
 
@@ -6500,10 +6498,10 @@ type Objects struct {
 }
 
 type OffsetTimeMap struct {
-	// kafka分区编号
+	// <p>kafka分区编号</p>
 	PartitionNo *uint64 `json:"PartitionNo,omitnil,omitempty" name:"PartitionNo"`
 
-	// kafka offset
+	// <p>kafka offset</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
@@ -6901,44 +6899,44 @@ func (r *RecoverSyncJobResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ResetConsumerGroupOffsetRequestParams struct {
-	// 订阅实例id，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
+	// <p>订阅实例id，可通过<a href="https://cloud.tencent.com/document/product/571/82103">DescribeSyncJobs</a>接口获取。</p>
 	SubscribeId *string `json:"SubscribeId,omitnil,omitempty" name:"SubscribeId"`
 
-	// 订阅的kafka topic，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
+	// <p>订阅的kafka topic，可通过<a href="https://cloud.tencent.com/document/product/571/82103">DescribeSyncJobs</a>接口获取。</p>
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
-	// 消费组名称。实际的消费组全称形如：consumer-grp-#{SubscribeId}-#{ConsumerGroupName}。可通过[DescribeConsumerGroups](https://cloud.tencent.com/document/api/571/102947)接口获取。
+	// <p>消费组名称。实际的消费组全称形如：consumer-grp-#{SubscribeId}-#{ConsumerGroupName}。可通过<a href="https://cloud.tencent.com/document/api/571/102947">DescribeConsumerGroups</a>接口获取。</p>
 	ConsumerGroupName *string `json:"ConsumerGroupName,omitnil,omitempty" name:"ConsumerGroupName"`
 
-	// 需要修改offset的分区编号，可通过[DescribeOffsetByTime](https://cloud.tencent.com/document/api/571/102946)接口获取。
+	// <p>需要修改offset的分区编号，可通过<a href="https://cloud.tencent.com/document/api/571/102946">DescribeOffsetByTime</a>接口获取。</p>
 	PartitionNos []*int64 `json:"PartitionNos,omitnil,omitempty" name:"PartitionNos"`
 
-	// 重置方式。枚举值为 earliest-从最开始位置开始消费；latest-从最新位置开始消费；datetime-从指定时间前最近的checkpoint开始消费
+	// <p>重置方式。枚举值为 earliest-从最开始位置开始消费；latest-从最新位置开始消费；datetime-从指定时间前最近的checkpoint开始消费</p>
 	ResetMode *string `json:"ResetMode,omitnil,omitempty" name:"ResetMode"`
 
-	// 当 ResetMode 为 datetime 时，该项需要填，格式为：Y-m-d h:m:s。如果不填，默认用0时间，效果与earliest相同。
+	// <p>当 <code>ResetMode</code> 为 <code>datetime</code> 时该项需要填。当 <code>DateTimeISOFormat=true</code> 时按 RFC 3339 传入（如 <code>2026-04-23T20:21:35+08:00</code>），否则按 <code>Y-m-d h:m:s</code>（北京时间）传入。如果不填，默认用 0 时间，效果与 <code>earliest</code> 相同。 </p><p>参数格式：2026-04-23T20:21:35+08:00</p>
 	ResetDatetime *string `json:"ResetDatetime,omitnil,omitempty" name:"ResetDatetime"`
 }
 
 type ResetConsumerGroupOffsetRequest struct {
 	*tchttp.BaseRequest
 	
-	// 订阅实例id，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
+	// <p>订阅实例id，可通过<a href="https://cloud.tencent.com/document/product/571/82103">DescribeSyncJobs</a>接口获取。</p>
 	SubscribeId *string `json:"SubscribeId,omitnil,omitempty" name:"SubscribeId"`
 
-	// 订阅的kafka topic，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
+	// <p>订阅的kafka topic，可通过<a href="https://cloud.tencent.com/document/product/571/82103">DescribeSyncJobs</a>接口获取。</p>
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
-	// 消费组名称。实际的消费组全称形如：consumer-grp-#{SubscribeId}-#{ConsumerGroupName}。可通过[DescribeConsumerGroups](https://cloud.tencent.com/document/api/571/102947)接口获取。
+	// <p>消费组名称。实际的消费组全称形如：consumer-grp-#{SubscribeId}-#{ConsumerGroupName}。可通过<a href="https://cloud.tencent.com/document/api/571/102947">DescribeConsumerGroups</a>接口获取。</p>
 	ConsumerGroupName *string `json:"ConsumerGroupName,omitnil,omitempty" name:"ConsumerGroupName"`
 
-	// 需要修改offset的分区编号，可通过[DescribeOffsetByTime](https://cloud.tencent.com/document/api/571/102946)接口获取。
+	// <p>需要修改offset的分区编号，可通过<a href="https://cloud.tencent.com/document/api/571/102946">DescribeOffsetByTime</a>接口获取。</p>
 	PartitionNos []*int64 `json:"PartitionNos,omitnil,omitempty" name:"PartitionNos"`
 
-	// 重置方式。枚举值为 earliest-从最开始位置开始消费；latest-从最新位置开始消费；datetime-从指定时间前最近的checkpoint开始消费
+	// <p>重置方式。枚举值为 earliest-从最开始位置开始消费；latest-从最新位置开始消费；datetime-从指定时间前最近的checkpoint开始消费</p>
 	ResetMode *string `json:"ResetMode,omitnil,omitempty" name:"ResetMode"`
 
-	// 当 ResetMode 为 datetime 时，该项需要填，格式为：Y-m-d h:m:s。如果不填，默认用0时间，效果与earliest相同。
+	// <p>当 <code>ResetMode</code> 为 <code>datetime</code> 时该项需要填。当 <code>DateTimeISOFormat=true</code> 时按 RFC 3339 传入（如 <code>2026-04-23T20:21:35+08:00</code>），否则按 <code>Y-m-d h:m:s</code>（北京时间）传入。如果不填，默认用 0 时间，效果与 <code>earliest</code> 相同。 </p><p>参数格式：2026-04-23T20:21:35+08:00</p>
 	ResetDatetime *string `json:"ResetDatetime,omitnil,omitempty" name:"ResetDatetime"`
 }
 
@@ -7274,14 +7272,14 @@ func (r *ResumeSubscribeResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ResumeSyncJobRequestParams struct {
-	// 同步任务id，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
+	// <p>同步任务id，可通过<a href="https://cloud.tencent.com/document/product/571/82103">DescribeSyncJobs</a>接口获取。</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 }
 
 type ResumeSyncJobRequest struct {
 	*tchttp.BaseRequest
 	
-	// 同步任务id，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
+	// <p>同步任务id，可通过<a href="https://cloud.tencent.com/document/product/571/82103">DescribeSyncJobs</a>接口获取。</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 }
 
@@ -7902,10 +7900,10 @@ type StepInfo struct {
 	// <p>当前步骤状态,可能返回有 notStarted(未开始)、running(校验中)、failed(校验任务失败)、finished(完成)、skipped(跳过)、paused(暂停)</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// <p>步骤开始时间，可能为空</p>
+	// <p>步骤开始时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// <p>完成时间</p>
+	// <p>完成时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
 	FinishTime *string `json:"FinishTime,omitnil,omitempty" name:"FinishTime"`
 
 	// <p>错误信息</p>
@@ -8370,113 +8368,113 @@ type SyncDetailInfo struct {
 }
 
 type SyncJobInfo struct {
-	// 同步任务id，如：sync-btso140
+	// <p>同步任务id，如：sync-btso140</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
-	// 同步任务名
+	// <p>同步任务名</p>
 	JobName *string `json:"JobName,omitnil,omitempty" name:"JobName"`
 
-	// 付款方式，PostPay(按量付费)、PrePay(包年包月)
+	// <p>付款方式，PostPay(按量付费)、PrePay(包年包月)</p>
 	PayMode *string `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// 运行模式，Immediate(表示立即运行，默认为此项值)、Timed(表示定时运行)
+	// <p>运行模式，Immediate(表示立即运行，默认为此项值)、Timed(表示定时运行)</p>
 	RunMode *string `json:"RunMode,omitnil,omitempty" name:"RunMode"`
 
-	// 期待运行时间，格式为 yyyy-mm-dd hh:mm:ss
+	// <p>期待运行时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
 	ExpectRunTime *string `json:"ExpectRunTime,omitnil,omitempty" name:"ExpectRunTime"`
 
-	// 支持的所有操作
+	// <p>支持的所有操作</p>
 	AllActions []*string `json:"AllActions,omitnil,omitempty" name:"AllActions"`
 
-	// 当前状态能进行的操作
+	// <p>当前状态能进行的操作</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Actions []*string `json:"Actions,omitnil,omitempty" name:"Actions"`
 
-	// 同步选项
+	// <p>同步选项</p>
 	Options *Options `json:"Options,omitnil,omitempty" name:"Options"`
 
-	// 同步库表对象
+	// <p>同步库表对象</p>
 	Objects *Objects `json:"Objects,omitnil,omitempty" name:"Objects"`
 
-	// 任务规格
+	// <p>任务规格</p>
 	Specification *string `json:"Specification,omitnil,omitempty" name:"Specification"`
 
-	// 过期时间，格式为 yyyy-mm-dd hh:mm:ss
+	// <p>过期时间，格式为 yyyy-mm-dd hh:mm:ss</p>
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
-	// 源端地域，如：ap-guangzhou等
+	// <p>源端地域，如：ap-guangzhou等</p>
 	SrcRegion *string `json:"SrcRegion,omitnil,omitempty" name:"SrcRegion"`
 
-	// 源端数据库类型，mysql,tdsqlmysql,mariadb,cynosdbmysql(表示tdsql-c实例),tdstore,percona,postgresql,mongodb等。
+	// <p>源端数据库类型，mysql,tdsqlmysql,mariadb,cynosdbmysql(表示tdsql-c实例),tdstore,percona,postgresql,mongodb等。</p>
 	SrcDatabaseType *string `json:"SrcDatabaseType,omitnil,omitempty" name:"SrcDatabaseType"`
 
-	// 源端接入类型，cdb(云数据库)、cvm(云服务器自建)、vpc(私有网络)、extranet(外网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、intranet(自研上云)
+	// <p>源端接入类型，cdb(云数据库)、cvm(云服务器自建)、vpc(私有网络)、extranet(外网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、intranet(自研上云)</p>
 	SrcAccessType *string `json:"SrcAccessType,omitnil,omitempty" name:"SrcAccessType"`
 
-	// 源端信息，单节点数据库使用
+	// <p>源端信息，单节点数据库使用</p>
 	SrcInfo *Endpoint `json:"SrcInfo,omitnil,omitempty" name:"SrcInfo"`
 
-	// 枚举值：cluster、single。源库为单节点数据库使用single，多节点使用cluster
+	// <p>枚举值：cluster、single。源库为单节点数据库使用single，多节点使用cluster</p>
 	SrcNodeType *string `json:"SrcNodeType,omitnil,omitempty" name:"SrcNodeType"`
 
-	// 源端信息，若SrcNodeType=cluster，则源端信息在这个字段里，mongodb链路使用此参数透传。
+	// <p>源端信息，若SrcNodeType=cluster，则源端信息在这个字段里，mongodb链路使用此参数透传。</p>
 	SrcInfos *SyncDBEndpointInfos `json:"SrcInfos,omitnil,omitempty" name:"SrcInfos"`
 
-	// 目标端地域，如：ap-guangzhou等
+	// <p>目标端地域，如：ap-guangzhou等</p>
 	DstRegion *string `json:"DstRegion,omitnil,omitempty" name:"DstRegion"`
 
-	// 目标端数据库类型，mysql,tdsqlmysql,mariadb,cynosdbmysql(表示tdsql-c实例),tdstore,percona,postgresql,mongodb等。
+	// <p>目标端数据库类型，mysql,tdsqlmysql,mariadb,cynosdbmysql(表示tdsql-c实例),tdstore,percona,postgresql,mongodb等。</p>
 	DstDatabaseType *string `json:"DstDatabaseType,omitnil,omitempty" name:"DstDatabaseType"`
 
-	// 目标端接入类型，cdb(云数据库)、cvm(云主机自建)、vpc(私有网络)、extranet(外网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、intranet(自研上云)
+	// <p>目标端接入类型，cdb(云数据库)、cvm(云主机自建)、vpc(私有网络)、extranet(外网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、intranet(自研上云)</p>
 	DstAccessType *string `json:"DstAccessType,omitnil,omitempty" name:"DstAccessType"`
 
-	// 目标端信息，单节点数据库使用
+	// <p>目标端信息，单节点数据库使用</p>
 	DstInfo *Endpoint `json:"DstInfo,omitnil,omitempty" name:"DstInfo"`
 
-	// 枚举值：cluster、single。目标库为单节点数据库使用single，多节点使用cluster
+	// <p>枚举值：cluster、single。目标库为单节点数据库使用single，多节点使用cluster</p>
 	DstNodeType *string `json:"DstNodeType,omitnil,omitempty" name:"DstNodeType"`
 
-	// 目标端信息，若SrcNodeType=cluster，则源端信息在这个字段里，mongodb链路使用此参数透传。
+	// <p>目标端信息，若SrcNodeType=cluster，则源端信息在这个字段里，mongodb链路使用此参数透传。</p>
 	DstInfos *SyncDBEndpointInfos `json:"DstInfos,omitnil,omitempty" name:"DstInfos"`
 
-	// 创建时间，格式为 yyyy-mm-dd hh:mm:ss
+	// <p>创建时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 开始时间，格式为 yyyy-mm-dd hh:mm:ss
+	// <p>开始时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 任务状态，UnInitialized(未初始化)、Initialized(已初始化)、Checking(校验中)、CheckPass(校验通过)、CheckNotPass(校验不通过)、ReadyRunning(准备运行)、Running(运行中)、Pausing(暂停中)、Paused(已暂停)、Stopping(停止中)、Stopped(已结束)、ResumableErr(任务错误)、Resuming(恢复中)、Failed(失败)、Released(已释放)、Resetting(重置中)、Unknown(未知)
+	// <p>任务状态，UnInitialized(未初始化)、Initialized(已初始化)、Checking(校验中)、CheckPass(校验通过)、CheckNotPass(校验不通过)、ReadyRunning(准备运行)、Running(运行中)、Pausing(暂停中)、Paused(已暂停)、Stopping(停止中)、Stopped(已结束)、ResumableErr(任务错误)、Resuming(恢复中)、Failed(失败)、Released(已释放)、Resetting(重置中)、Unknown(未知)</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 结束时间，格式为 yyyy-mm-dd hh:mm:ss
+	// <p>结束时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 标签相关信息
+	// <p>标签相关信息</p>
 	Tags []*TagItem `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 同步任务运行步骤信息
+	// <p>同步任务运行步骤信息</p>
 	Detail *SyncDetailInfo `json:"Detail,omitnil,omitempty" name:"Detail"`
 
-	// 用于计费的状态，可能取值有：Normal(正常状态)、Resizing(变配中)、Renewing(续费中)、Isolating(隔离中)、Isolated(已隔离)、Offlining(下线中)、Offlined(已下线)、NotBilled(未计费)、Recovering(解隔离)、PostPay2Prepaying(按量计费转包年包月中)、PrePay2Postpaying(包年包月转按量计费中)
+	// <p>用于计费的状态，可能取值有：Normal(正常状态)、Resizing(变配中)、Renewing(续费中)、Isolating(隔离中)、Isolated(已隔离)、Offlining(下线中)、Offlined(已下线)、NotBilled(未计费)、Recovering(解隔离)、PostPay2Prepaying(按量计费转包年包月中)、PrePay2Postpaying(包年包月转按量计费中)</p>
 	TradeStatus *string `json:"TradeStatus,omitnil,omitempty" name:"TradeStatus"`
 
-	// 同步链路规格，如micro,small,medium,large
+	// <p>同步链路规格，如micro,small,medium,large</p>
 	InstanceClass *string `json:"InstanceClass,omitnil,omitempty" name:"InstanceClass"`
 
-	// 自动续费标识，当PayMode值为PrePay则此项配置有意义，取值为：1（表示自动续费）、0（不自动续费）
+	// <p>自动续费标识，当PayMode值为PrePay则此项配置有意义，取值为：1（表示自动续费）、0（不自动续费）</p>
 	AutoRenew *uint64 `json:"AutoRenew,omitnil,omitempty" name:"AutoRenew"`
 
-	// 下线时间，格式为 yyyy-mm-dd hh:mm:ss
+	// <p>下线时间，格式为 yyyy-mm-dd hh:mm:ss</p>
 	OfflineTime *string `json:"OfflineTime,omitnil,omitempty" name:"OfflineTime"`
 
-	// 动态修改对象，修改任务的状态等
+	// <p>动态修改对象，修改任务的状态等</p>
 	OptObjStatus *string `json:"OptObjStatus,omitnil,omitempty" name:"OptObjStatus"`
 
-	// 自动重试时间段设置
+	// <p>自动重试时间段设置</p>
 	AutoRetryTimeRangeMinutes *int64 `json:"AutoRetryTimeRangeMinutes,omitnil,omitempty" name:"AutoRetryTimeRangeMinutes"`
 
-	// 全量导出可重入标识：enum::"yes"/"no"。yes表示当前任务可重入、no表示当前任务处于全量导出且不可重入阶段；如果在该值为no时重启任务导出流程不支持断点续传
+	// <p>全量导出可重入标识：enum::&quot;yes&quot;/&quot;no&quot;。yes表示当前任务可重入、no表示当前任务处于全量导出且不可重入阶段；如果在该值为no时重启任务导出流程不支持断点续传</p>
 	DumperResumeCtrl *string `json:"DumperResumeCtrl,omitnil,omitempty" name:"DumperResumeCtrl"`
 }
 
@@ -8566,37 +8564,37 @@ type TopicRule struct {
 }
 
 type TradeInfo struct {
-	// 交易订单号
+	// <p>交易订单号</p>
 	DealName *string `json:"DealName,omitnil,omitempty" name:"DealName"`
 
-	// 上一次交易订单号
+	// <p>上一次交易订单号</p>
 	LastDealName *string `json:"LastDealName,omitnil,omitempty" name:"LastDealName"`
 
-	// 实例规格，包括：micro、small、medium、large、xlarge、2xlarge等
+	// <p>实例规格，包括：micro、small、medium、large、xlarge、2xlarge等</p>
 	InstanceClass *string `json:"InstanceClass,omitnil,omitempty" name:"InstanceClass"`
 
-	// 计费任务状态， normal(计费或待计费)、resizing(变配中)、reversing(冲正中，比较短暂的状态)、isolating(隔离中，比较短暂的状态)、isolated(已隔离)、offlining(下线中)、offlined(已下线)、notBilled(未计费)
+	// <p>计费任务状态， normal(计费或待计费)、resizing(变配中)、reversing(冲正中，比较短暂的状态)、isolating(隔离中，比较短暂的状态)、isolated(已隔离)、offlining(下线中)、offlined(已下线)、notBilled(未计费)</p>
 	TradeStatus *string `json:"TradeStatus,omitnil,omitempty" name:"TradeStatus"`
 
-	// 到期时间，格式为"yyyy-mm-dd hh:mm:ss"
+	// <p>到期时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
-	// 下线时间，格式为"yyyy-mm-dd hh:mm:ss"
+	// <p>下线时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
 	OfflineTime *string `json:"OfflineTime,omitnil,omitempty" name:"OfflineTime"`
 
-	// 隔离时间，格式为"yyyy-mm-dd hh:mm:ss"
+	// <p>隔离时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
 	IsolateTime *string `json:"IsolateTime,omitnil,omitempty" name:"IsolateTime"`
 
-	// 下线原因
+	// <p>下线原因</p>
 	OfflineReason *string `json:"OfflineReason,omitnil,omitempty" name:"OfflineReason"`
 
-	// 隔离原因
+	// <p>隔离原因</p>
 	IsolateReason *string `json:"IsolateReason,omitnil,omitempty" name:"IsolateReason"`
 
-	// 付费类型，包括：postpay(后付费)、prepay(预付费)
+	// <p>付费类型，包括：postpay(后付费)、prepay(预付费)</p>
 	PayType *string `json:"PayType,omitnil,omitempty" name:"PayType"`
 
-	// 任务计费类型，包括：billing(计费)、notBilling(不计费)、 promotions(促销活动中)
+	// <p>任务计费类型，包括：billing(计费)、notBilling(不计费)、 promotions(促销活动中)</p>
 	BillingType *string `json:"BillingType,omitnil,omitempty" name:"BillingType"`
 }
 

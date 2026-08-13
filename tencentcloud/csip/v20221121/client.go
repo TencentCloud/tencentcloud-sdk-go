@@ -227,6 +227,60 @@ func (c *Client) AddVulWhitelistWithContext(ctx context.Context, request *AddVul
     return
 }
 
+func NewCancelEdrAlertIgnoreRequest() (request *CancelEdrAlertIgnoreRequest) {
+    request = &CancelEdrAlertIgnoreRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "CancelEdrAlertIgnore")
+    
+    
+    return
+}
+
+func NewCancelEdrAlertIgnoreResponse() (response *CancelEdrAlertIgnoreResponse) {
+    response = &CancelEdrAlertIgnoreResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CancelEdrAlertIgnore
+// 取消已永久忽略的EDR多行为告警，从AI-Link永久忽略白名单移除对应主机+规则记录，并将告警状态恢复为待处理（PENDING）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CancelEdrAlertIgnore(request *CancelEdrAlertIgnoreRequest) (response *CancelEdrAlertIgnoreResponse, err error) {
+    return c.CancelEdrAlertIgnoreWithContext(context.Background(), request)
+}
+
+// CancelEdrAlertIgnore
+// 取消已永久忽略的EDR多行为告警，从AI-Link永久忽略白名单移除对应主机+规则记录，并将告警状态恢复为待处理（PENDING）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CancelEdrAlertIgnoreWithContext(ctx context.Context, request *CancelEdrAlertIgnoreRequest) (response *CancelEdrAlertIgnoreResponse, err error) {
+    if request == nil {
+        request = NewCancelEdrAlertIgnoreRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "CancelEdrAlertIgnore")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CancelEdrAlertIgnore require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCancelEdrAlertIgnoreResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAccessKeyCheckTaskRequest() (request *CreateAccessKeyCheckTaskRequest) {
     request = &CreateAccessKeyCheckTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -250,7 +304,9 @@ func NewCreateAccessKeyCheckTaskResponse() (response *CreateAccessKeyCheckTaskRe
 // 检测AK 异步任务
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) CreateAccessKeyCheckTask(request *CreateAccessKeyCheckTaskRequest) (response *CreateAccessKeyCheckTaskResponse, err error) {
     return c.CreateAccessKeyCheckTaskWithContext(context.Background(), request)
 }
@@ -259,7 +315,9 @@ func (c *Client) CreateAccessKeyCheckTask(request *CreateAccessKeyCheckTaskReque
 // 检测AK 异步任务
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) CreateAccessKeyCheckTaskWithContext(ctx context.Context, request *CreateAccessKeyCheckTaskRequest) (response *CreateAccessKeyCheckTaskResponse, err error) {
     if request == nil {
         request = NewCreateAccessKeyCheckTaskRequest()
@@ -300,7 +358,9 @@ func NewCreateAccessKeySyncTaskResponse() (response *CreateAccessKeySyncTaskResp
 // 发起AK资产同步任务
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) CreateAccessKeySyncTask(request *CreateAccessKeySyncTaskRequest) (response *CreateAccessKeySyncTaskResponse, err error) {
     return c.CreateAccessKeySyncTaskWithContext(context.Background(), request)
 }
@@ -309,7 +369,9 @@ func (c *Client) CreateAccessKeySyncTask(request *CreateAccessKeySyncTaskRequest
 // 发起AK资产同步任务
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) CreateAccessKeySyncTaskWithContext(ctx context.Context, request *CreateAccessKeySyncTaskRequest) (response *CreateAccessKeySyncTaskResponse, err error) {
     if request == nil {
         request = NewCreateAccessKeySyncTaskRequest()
@@ -323,6 +385,60 @@ func (c *Client) CreateAccessKeySyncTaskWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewCreateAccessKeySyncTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateCSIPManualMalwareScanRequest() (request *CreateCSIPManualMalwareScanRequest) {
+    request = &CreateCSIPManualMalwareScanRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "CreateCSIPManualMalwareScan")
+    
+    
+    return
+}
+
+func NewCreateCSIPManualMalwareScanResponse() (response *CreateCSIPManualMalwareScanResponse) {
+    response = &CreateCSIPManualMalwareScanResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateCSIPManualMalwareScan
+// CSIP 手动扫描创建接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateCSIPManualMalwareScan(request *CreateCSIPManualMalwareScanRequest) (response *CreateCSIPManualMalwareScanResponse, err error) {
+    return c.CreateCSIPManualMalwareScanWithContext(context.Background(), request)
+}
+
+// CreateCSIPManualMalwareScan
+// CSIP 手动扫描创建接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateCSIPManualMalwareScanWithContext(ctx context.Context, request *CreateCSIPManualMalwareScanRequest) (response *CreateCSIPManualMalwareScanResponse, err error) {
+    if request == nil {
+        request = NewCreateCSIPManualMalwareScanRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "CreateCSIPManualMalwareScan")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCSIPManualMalwareScan require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateCSIPManualMalwareScanResponse()
     err = c.Send(request, response)
     return
 }
@@ -1875,6 +1991,122 @@ func (c *Client) CreateDspmWhitelistStrategyWithContext(ctx context.Context, req
     return
 }
 
+func NewCreateEDRManualScanRequest() (request *CreateEDRManualScanRequest) {
+    request = &CreateEDRManualScanRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "CreateEDRManualScan")
+    
+    
+    return
+}
+
+func NewCreateEDRManualScanResponse() (response *CreateEDRManualScanResponse) {
+    response = &CreateEDRManualScanResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateEDRManualScan
+// 点击开始扫描后触发，支持多账号、多资产类型。同时选主机和容器集群时拆分为两个独立任务（主机+容器）。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateEDRManualScan(request *CreateEDRManualScanRequest) (response *CreateEDRManualScanResponse, err error) {
+    return c.CreateEDRManualScanWithContext(context.Background(), request)
+}
+
+// CreateEDRManualScan
+// 点击开始扫描后触发，支持多账号、多资产类型。同时选主机和容器集群时拆分为两个独立任务（主机+容器）。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateEDRManualScanWithContext(ctx context.Context, request *CreateEDRManualScanRequest) (response *CreateEDRManualScanResponse, err error) {
+    if request == nil {
+        request = NewCreateEDRManualScanRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "CreateEDRManualScan")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateEDRManualScan require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateEDRManualScanResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateEdrAlertExportJobRequest() (request *CreateEdrAlertExportJobRequest) {
+    request = &CreateEdrAlertExportJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "CreateEdrAlertExportJob")
+    
+    
+    return
+}
+
+func NewCreateEdrAlertExportJobResponse() (response *CreateEdrAlertExportJobResponse) {
+    response = &CreateEdrAlertExportJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateEdrAlertExportJob
+// 创建EDR告警导出任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateEdrAlertExportJob(request *CreateEdrAlertExportJobRequest) (response *CreateEdrAlertExportJobResponse, err error) {
+    return c.CreateEdrAlertExportJobWithContext(context.Background(), request)
+}
+
+// CreateEdrAlertExportJob
+// 创建EDR告警导出任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateEdrAlertExportJobWithContext(ctx context.Context, request *CreateEdrAlertExportJobRequest) (response *CreateEdrAlertExportJobResponse, err error) {
+    if request == nil {
+        request = NewCreateEdrAlertExportJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "CreateEdrAlertExportJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateEdrAlertExportJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateEdrAlertExportJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateHostVulExportJobRequest() (request *CreateHostVulExportJobRequest) {
     request = &CreateHostVulExportJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1898,11 +2130,9 @@ func NewCreateHostVulExportJobResponse() (response *CreateHostVulExportJobRespon
 // 创建主机列漏洞表导出任务
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
-//  OPERATIONDENIED = "OperationDenied"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) CreateHostVulExportJob(request *CreateHostVulExportJobRequest) (response *CreateHostVulExportJobResponse, err error) {
     return c.CreateHostVulExportJobWithContext(context.Background(), request)
 }
@@ -1911,11 +2141,9 @@ func (c *Client) CreateHostVulExportJob(request *CreateHostVulExportJobRequest) 
 // 创建主机列漏洞表导出任务
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
-//  OPERATIONDENIED = "OperationDenied"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) CreateHostVulExportJobWithContext(ctx context.Context, request *CreateHostVulExportJobRequest) (response *CreateHostVulExportJobResponse, err error) {
     if request == nil {
         request = NewCreateHostVulExportJobRequest()
@@ -2577,6 +2805,60 @@ func (c *Client) CreateVulScanManualWithContext(ctx context.Context, request *Cr
     request.SetContext(ctx)
     
     response = NewCreateVulScanManualResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteCSIPMalwareScanTaskRequest() (request *DeleteCSIPMalwareScanTaskRequest) {
+    request = &DeleteCSIPMalwareScanTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DeleteCSIPMalwareScanTask")
+    
+    
+    return
+}
+
+func NewDeleteCSIPMalwareScanTaskResponse() (response *DeleteCSIPMalwareScanTaskResponse) {
+    response = &DeleteCSIPMalwareScanTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteCSIPMalwareScanTask
+// CSIP 手动扫描任务删除接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DeleteCSIPMalwareScanTask(request *DeleteCSIPMalwareScanTaskRequest) (response *DeleteCSIPMalwareScanTaskResponse, err error) {
+    return c.DeleteCSIPMalwareScanTaskWithContext(context.Background(), request)
+}
+
+// DeleteCSIPMalwareScanTask
+// CSIP 手动扫描任务删除接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DeleteCSIPMalwareScanTaskWithContext(ctx context.Context, request *DeleteCSIPMalwareScanTaskRequest) (response *DeleteCSIPMalwareScanTaskResponse, err error) {
+    if request == nil {
+        request = NewDeleteCSIPMalwareScanTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DeleteCSIPMalwareScanTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteCSIPMalwareScanTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteCSIPMalwareScanTaskResponse()
     err = c.Send(request, response)
     return
 }
@@ -3657,6 +3939,142 @@ func (c *Client) DeleteDspmWhitelistStrategyWithContext(ctx context.Context, req
     request.SetContext(ctx)
     
     response = NewDeleteDspmWhitelistStrategyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteEDRRulesRequest() (request *DeleteEDRRulesRequest) {
+    request = &DeleteEDRRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DeleteEDRRules")
+    
+    
+    return
+}
+
+func NewDeleteEDRRulesResponse() (response *DeleteEDRRulesResponse) {
+    response = &DeleteEDRRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteEDRRules
+// 删除EDR策略
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DATERANGE = "InvalidParameter.DateRange"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETER_REGEXRULEERROR = "InvalidParameter.RegexRuleError"
+//  INVALIDPARAMETER_REVERSHELLKEYFIELDALLEMPTY = "InvalidParameter.ReverShellKeyFieldAllEmpty"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_AREAQUOTA = "LimitExceeded.AreaQuota"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteEDRRules(request *DeleteEDRRulesRequest) (response *DeleteEDRRulesResponse, err error) {
+    return c.DeleteEDRRulesWithContext(context.Background(), request)
+}
+
+// DeleteEDRRules
+// 删除EDR策略
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DATERANGE = "InvalidParameter.DateRange"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETER_REGEXRULEERROR = "InvalidParameter.RegexRuleError"
+//  INVALIDPARAMETER_REVERSHELLKEYFIELDALLEMPTY = "InvalidParameter.ReverShellKeyFieldAllEmpty"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_AREAQUOTA = "LimitExceeded.AreaQuota"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteEDRRulesWithContext(ctx context.Context, request *DeleteEDRRulesRequest) (response *DeleteEDRRulesResponse, err error) {
+    if request == nil {
+        request = NewDeleteEDRRulesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DeleteEDRRules")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteEDRRules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteEDRRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteEDRScanTaskRequest() (request *DeleteEDRScanTaskRequest) {
+    request = &DeleteEDRScanTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DeleteEDRScanTask")
+    
+    
+    return
+}
+
+func NewDeleteEDRScanTaskResponse() (response *DeleteEDRScanTaskResponse) {
+    response = &DeleteEDRScanTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteEDRScanTask
+// 删除已终止的扫描任务（物理删除主表及明细表）。只允许删除终态任务，只有创建者可操作。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteEDRScanTask(request *DeleteEDRScanTaskRequest) (response *DeleteEDRScanTaskResponse, err error) {
+    return c.DeleteEDRScanTaskWithContext(context.Background(), request)
+}
+
+// DeleteEDRScanTask
+// 删除已终止的扫描任务（物理删除主表及明细表）。只允许删除终态任务，只有创建者可操作。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteEDRScanTaskWithContext(ctx context.Context, request *DeleteEDRScanTaskRequest) (response *DeleteEDRScanTaskResponse, err error) {
+    if request == nil {
+        request = NewDeleteEDRScanTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DeleteEDRScanTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteEDRScanTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteEDRScanTaskResponse()
     err = c.Send(request, response)
     return
 }
@@ -5087,6 +5505,114 @@ func (c *Client) DescribeCLSLogListV3WithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeCSIPMalwareScanTaskDetailRequest() (request *DescribeCSIPMalwareScanTaskDetailRequest) {
+    request = &DescribeCSIPMalwareScanTaskDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeCSIPMalwareScanTaskDetail")
+    
+    
+    return
+}
+
+func NewDescribeCSIPMalwareScanTaskDetailResponse() (response *DescribeCSIPMalwareScanTaskDetailResponse) {
+    response = &DescribeCSIPMalwareScanTaskDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCSIPMalwareScanTaskDetail
+// CSIP 扫描任务主机详情接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeCSIPMalwareScanTaskDetail(request *DescribeCSIPMalwareScanTaskDetailRequest) (response *DescribeCSIPMalwareScanTaskDetailResponse, err error) {
+    return c.DescribeCSIPMalwareScanTaskDetailWithContext(context.Background(), request)
+}
+
+// DescribeCSIPMalwareScanTaskDetail
+// CSIP 扫描任务主机详情接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeCSIPMalwareScanTaskDetailWithContext(ctx context.Context, request *DescribeCSIPMalwareScanTaskDetailRequest) (response *DescribeCSIPMalwareScanTaskDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeCSIPMalwareScanTaskDetailRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeCSIPMalwareScanTaskDetail")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCSIPMalwareScanTaskDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCSIPMalwareScanTaskDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCSIPMalwareScanTaskProgressRequest() (request *DescribeCSIPMalwareScanTaskProgressRequest) {
+    request = &DescribeCSIPMalwareScanTaskProgressRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeCSIPMalwareScanTaskProgress")
+    
+    
+    return
+}
+
+func NewDescribeCSIPMalwareScanTaskProgressResponse() (response *DescribeCSIPMalwareScanTaskProgressResponse) {
+    response = &DescribeCSIPMalwareScanTaskProgressResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCSIPMalwareScanTaskProgress
+// CSIP 手动扫描进度查询接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeCSIPMalwareScanTaskProgress(request *DescribeCSIPMalwareScanTaskProgressRequest) (response *DescribeCSIPMalwareScanTaskProgressResponse, err error) {
+    return c.DescribeCSIPMalwareScanTaskProgressWithContext(context.Background(), request)
+}
+
+// DescribeCSIPMalwareScanTaskProgress
+// CSIP 手动扫描进度查询接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeCSIPMalwareScanTaskProgressWithContext(ctx context.Context, request *DescribeCSIPMalwareScanTaskProgressRequest) (response *DescribeCSIPMalwareScanTaskProgressResponse, err error) {
+    if request == nil {
+        request = NewDescribeCSIPMalwareScanTaskProgressRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeCSIPMalwareScanTaskProgress")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCSIPMalwareScanTaskProgress require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCSIPMalwareScanTaskProgressResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCSIPRiskStatisticsRequest() (request *DescribeCSIPRiskStatisticsRequest) {
     request = &DescribeCSIPRiskStatisticsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5110,37 +5636,9 @@ func NewDescribeCSIPRiskStatisticsResponse() (response *DescribeCSIPRiskStatisti
 // 获取风险中心风险概况示例
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
-//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
-//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
-//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
 //  INTERNALERROR = "InternalError"
-//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_DECRYPTERROR = "InvalidParameter.DecryptError"
-//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_SQLQUERYFAILED = "InvalidParameterValue.SQLQueryFailed"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REGIONERROR = "RegionError"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCEINSUFFICIENT_LOGANALYSISQUANTITYINSUFFICIENT = "ResourceInsufficient.LogAnalysisQuantityInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNAUTHORIZEDOPERATION_CLOUDAUDIT = "UnauthorizedOperation.CloudAudit"
-//  UNAUTHORIZEDOPERATION_COS = "UnauthorizedOperation.Cos"
-//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCSIPRiskStatistics(request *DescribeCSIPRiskStatisticsRequest) (response *DescribeCSIPRiskStatisticsResponse, err error) {
     return c.DescribeCSIPRiskStatisticsWithContext(context.Background(), request)
 }
@@ -5149,37 +5647,9 @@ func (c *Client) DescribeCSIPRiskStatistics(request *DescribeCSIPRiskStatisticsR
 // 获取风险中心风险概况示例
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
-//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
-//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
-//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
 //  INTERNALERROR = "InternalError"
-//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_DECRYPTERROR = "InvalidParameter.DecryptError"
-//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_SQLQUERYFAILED = "InvalidParameterValue.SQLQueryFailed"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REGIONERROR = "RegionError"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCEINSUFFICIENT_LOGANALYSISQUANTITYINSUFFICIENT = "ResourceInsufficient.LogAnalysisQuantityInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNAUTHORIZEDOPERATION_CLOUDAUDIT = "UnauthorizedOperation.CloudAudit"
-//  UNAUTHORIZEDOPERATION_COS = "UnauthorizedOperation.Cos"
-//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCSIPRiskStatisticsWithContext(ctx context.Context, request *DescribeCSIPRiskStatisticsRequest) (response *DescribeCSIPRiskStatisticsResponse, err error) {
     if request == nil {
         request = NewDescribeCSIPRiskStatisticsRequest()
@@ -5220,37 +5690,9 @@ func NewDescribeCVMAssetInfoResponse() (response *DescribeCVMAssetInfoResponse) 
 // cvm详情
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
-//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
-//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
-//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
 //  INTERNALERROR = "InternalError"
-//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_DECRYPTERROR = "InvalidParameter.DecryptError"
-//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_SQLQUERYFAILED = "InvalidParameterValue.SQLQueryFailed"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REGIONERROR = "RegionError"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCEINSUFFICIENT_LOGANALYSISQUANTITYINSUFFICIENT = "ResourceInsufficient.LogAnalysisQuantityInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNAUTHORIZEDOPERATION_CLOUDAUDIT = "UnauthorizedOperation.CloudAudit"
-//  UNAUTHORIZEDOPERATION_COS = "UnauthorizedOperation.Cos"
-//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCVMAssetInfo(request *DescribeCVMAssetInfoRequest) (response *DescribeCVMAssetInfoResponse, err error) {
     return c.DescribeCVMAssetInfoWithContext(context.Background(), request)
 }
@@ -5259,37 +5701,9 @@ func (c *Client) DescribeCVMAssetInfo(request *DescribeCVMAssetInfoRequest) (res
 // cvm详情
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
-//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
-//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
-//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
 //  INTERNALERROR = "InternalError"
-//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_DECRYPTERROR = "InvalidParameter.DecryptError"
-//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_SQLQUERYFAILED = "InvalidParameterValue.SQLQueryFailed"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REGIONERROR = "RegionError"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCEINSUFFICIENT_LOGANALYSISQUANTITYINSUFFICIENT = "ResourceInsufficient.LogAnalysisQuantityInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNAUTHORIZEDOPERATION_CLOUDAUDIT = "UnauthorizedOperation.CloudAudit"
-//  UNAUTHORIZEDOPERATION_COS = "UnauthorizedOperation.Cos"
-//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCVMAssetInfoWithContext(ctx context.Context, request *DescribeCVMAssetInfoRequest) (response *DescribeCVMAssetInfoResponse, err error) {
     if request == nil {
         request = NewDescribeCVMAssetInfoRequest()
@@ -5330,37 +5744,9 @@ func NewDescribeCVMAssetsResponse() (response *DescribeCVMAssetsResponse) {
 // 获取cvm列表
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
-//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
-//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
-//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
 //  INTERNALERROR = "InternalError"
-//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_DECRYPTERROR = "InvalidParameter.DecryptError"
-//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_SQLQUERYFAILED = "InvalidParameterValue.SQLQueryFailed"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REGIONERROR = "RegionError"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCEINSUFFICIENT_LOGANALYSISQUANTITYINSUFFICIENT = "ResourceInsufficient.LogAnalysisQuantityInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNAUTHORIZEDOPERATION_CLOUDAUDIT = "UnauthorizedOperation.CloudAudit"
-//  UNAUTHORIZEDOPERATION_COS = "UnauthorizedOperation.Cos"
-//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCVMAssets(request *DescribeCVMAssetsRequest) (response *DescribeCVMAssetsResponse, err error) {
     return c.DescribeCVMAssetsWithContext(context.Background(), request)
 }
@@ -5369,37 +5755,9 @@ func (c *Client) DescribeCVMAssets(request *DescribeCVMAssetsRequest) (response 
 // 获取cvm列表
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
-//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
-//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
-//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
 //  INTERNALERROR = "InternalError"
-//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_DECRYPTERROR = "InvalidParameter.DecryptError"
-//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_SQLQUERYFAILED = "InvalidParameterValue.SQLQueryFailed"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REGIONERROR = "RegionError"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCEINSUFFICIENT_LOGANALYSISQUANTITYINSUFFICIENT = "ResourceInsufficient.LogAnalysisQuantityInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNAUTHORIZEDOPERATION_CLOUDAUDIT = "UnauthorizedOperation.CloudAudit"
-//  UNAUTHORIZEDOPERATION_COS = "UnauthorizedOperation.Cos"
-//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCVMAssetsWithContext(ctx context.Context, request *DescribeCVMAssetsRequest) (response *DescribeCVMAssetsResponse, err error) {
     if request == nil {
         request = NewDescribeCVMAssetsRequest()
@@ -5440,37 +5798,9 @@ func NewDescribeCWPMachineDetailResponse() (response *DescribeCWPMachineDetailRe
 // 主机详情
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
-//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
-//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
-//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
 //  INTERNALERROR = "InternalError"
-//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_DECRYPTERROR = "InvalidParameter.DecryptError"
-//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_SQLQUERYFAILED = "InvalidParameterValue.SQLQueryFailed"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REGIONERROR = "RegionError"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCEINSUFFICIENT_LOGANALYSISQUANTITYINSUFFICIENT = "ResourceInsufficient.LogAnalysisQuantityInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNAUTHORIZEDOPERATION_CLOUDAUDIT = "UnauthorizedOperation.CloudAudit"
-//  UNAUTHORIZEDOPERATION_COS = "UnauthorizedOperation.Cos"
-//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCWPMachineDetail(request *DescribeCWPMachineDetailRequest) (response *DescribeCWPMachineDetailResponse, err error) {
     return c.DescribeCWPMachineDetailWithContext(context.Background(), request)
 }
@@ -5479,37 +5809,9 @@ func (c *Client) DescribeCWPMachineDetail(request *DescribeCWPMachineDetailReque
 // 主机详情
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
-//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
-//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
-//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
 //  INTERNALERROR = "InternalError"
-//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_DECRYPTERROR = "InvalidParameter.DecryptError"
-//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_SQLQUERYFAILED = "InvalidParameterValue.SQLQueryFailed"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REGIONERROR = "RegionError"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCEINSUFFICIENT_LOGANALYSISQUANTITYINSUFFICIENT = "ResourceInsufficient.LogAnalysisQuantityInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNAUTHORIZEDOPERATION_CLOUDAUDIT = "UnauthorizedOperation.CloudAudit"
-//  UNAUTHORIZEDOPERATION_COS = "UnauthorizedOperation.Cos"
-//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCWPMachineDetailWithContext(ctx context.Context, request *DescribeCWPMachineDetailRequest) (response *DescribeCWPMachineDetailResponse, err error) {
     if request == nil {
         request = NewDescribeCWPMachineDetailRequest()
@@ -5550,37 +5852,9 @@ func NewDescribeCWPMachinesResponse() (response *DescribeCWPMachinesResponse) {
 // 主机列表
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
-//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
-//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
-//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
 //  INTERNALERROR = "InternalError"
-//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_DECRYPTERROR = "InvalidParameter.DecryptError"
-//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_SQLQUERYFAILED = "InvalidParameterValue.SQLQueryFailed"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REGIONERROR = "RegionError"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCEINSUFFICIENT_LOGANALYSISQUANTITYINSUFFICIENT = "ResourceInsufficient.LogAnalysisQuantityInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNAUTHORIZEDOPERATION_CLOUDAUDIT = "UnauthorizedOperation.CloudAudit"
-//  UNAUTHORIZEDOPERATION_COS = "UnauthorizedOperation.Cos"
-//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCWPMachines(request *DescribeCWPMachinesRequest) (response *DescribeCWPMachinesResponse, err error) {
     return c.DescribeCWPMachinesWithContext(context.Background(), request)
 }
@@ -5589,37 +5863,9 @@ func (c *Client) DescribeCWPMachines(request *DescribeCWPMachinesRequest) (respo
 // 主机列表
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
-//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
-//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
-//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
 //  INTERNALERROR = "InternalError"
-//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_DECRYPTERROR = "InvalidParameter.DecryptError"
-//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_SQLQUERYFAILED = "InvalidParameterValue.SQLQueryFailed"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REGIONERROR = "RegionError"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCEINSUFFICIENT_LOGANALYSISQUANTITYINSUFFICIENT = "ResourceInsufficient.LogAnalysisQuantityInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNAUTHORIZEDOPERATION_CLOUDAUDIT = "UnauthorizedOperation.CloudAudit"
-//  UNAUTHORIZEDOPERATION_COS = "UnauthorizedOperation.Cos"
-//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCWPMachinesWithContext(ctx context.Context, request *DescribeCWPMachinesRequest) (response *DescribeCWPMachinesResponse, err error) {
     if request == nil {
         request = NewDescribeCWPMachinesRequest()
@@ -5660,37 +5906,9 @@ func NewDescribeCallRecordResponse() (response *DescribeCallRecordResponse) {
 // 获取调用记录列表
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
-//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
-//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
-//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
 //  INTERNALERROR = "InternalError"
-//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_DECRYPTERROR = "InvalidParameter.DecryptError"
-//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_SQLQUERYFAILED = "InvalidParameterValue.SQLQueryFailed"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REGIONERROR = "RegionError"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCEINSUFFICIENT_LOGANALYSISQUANTITYINSUFFICIENT = "ResourceInsufficient.LogAnalysisQuantityInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNAUTHORIZEDOPERATION_CLOUDAUDIT = "UnauthorizedOperation.CloudAudit"
-//  UNAUTHORIZEDOPERATION_COS = "UnauthorizedOperation.Cos"
-//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCallRecord(request *DescribeCallRecordRequest) (response *DescribeCallRecordResponse, err error) {
     return c.DescribeCallRecordWithContext(context.Background(), request)
 }
@@ -5699,37 +5917,9 @@ func (c *Client) DescribeCallRecord(request *DescribeCallRecordRequest) (respons
 // 获取调用记录列表
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
-//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
-//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
-//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
 //  INTERNALERROR = "InternalError"
-//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_DECRYPTERROR = "InvalidParameter.DecryptError"
-//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_SQLQUERYFAILED = "InvalidParameterValue.SQLQueryFailed"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REGIONERROR = "RegionError"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCEINSUFFICIENT_LOGANALYSISQUANTITYINSUFFICIENT = "ResourceInsufficient.LogAnalysisQuantityInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNAUTHORIZEDOPERATION_CLOUDAUDIT = "UnauthorizedOperation.CloudAudit"
-//  UNAUTHORIZEDOPERATION_COS = "UnauthorizedOperation.Cos"
-//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCallRecordWithContext(ctx context.Context, request *DescribeCallRecordRequest) (response *DescribeCallRecordResponse, err error) {
     if request == nil {
         request = NewDescribeCallRecordRequest()
@@ -5770,37 +5960,9 @@ func NewDescribeCheckViewRisksResponse() (response *DescribeCheckViewRisksRespon
 // 检查视角下云资源配置风险列表
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
-//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
-//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
-//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
 //  INTERNALERROR = "InternalError"
-//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_DECRYPTERROR = "InvalidParameter.DecryptError"
-//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_SQLQUERYFAILED = "InvalidParameterValue.SQLQueryFailed"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REGIONERROR = "RegionError"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCEINSUFFICIENT_LOGANALYSISQUANTITYINSUFFICIENT = "ResourceInsufficient.LogAnalysisQuantityInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNAUTHORIZEDOPERATION_CLOUDAUDIT = "UnauthorizedOperation.CloudAudit"
-//  UNAUTHORIZEDOPERATION_COS = "UnauthorizedOperation.Cos"
-//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCheckViewRisks(request *DescribeCheckViewRisksRequest) (response *DescribeCheckViewRisksResponse, err error) {
     return c.DescribeCheckViewRisksWithContext(context.Background(), request)
 }
@@ -5809,37 +5971,9 @@ func (c *Client) DescribeCheckViewRisks(request *DescribeCheckViewRisksRequest) 
 // 检查视角下云资源配置风险列表
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
-//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
-//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
-//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
 //  INTERNALERROR = "InternalError"
-//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_DECRYPTERROR = "InvalidParameter.DecryptError"
-//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_SQLQUERYFAILED = "InvalidParameterValue.SQLQueryFailed"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REGIONERROR = "RegionError"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCEINSUFFICIENT_LOGANALYSISQUANTITYINSUFFICIENT = "ResourceInsufficient.LogAnalysisQuantityInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNAUTHORIZEDOPERATION_CLOUDAUDIT = "UnauthorizedOperation.CloudAudit"
-//  UNAUTHORIZEDOPERATION_COS = "UnauthorizedOperation.Cos"
-//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCheckViewRisksWithContext(ctx context.Context, request *DescribeCheckViewRisksRequest) (response *DescribeCheckViewRisksResponse, err error) {
     if request == nil {
         request = NewDescribeCheckViewRisksRequest()
@@ -5880,37 +6014,9 @@ func NewDescribeClusterAssetsResponse() (response *DescribeClusterAssetsResponse
 // 集群列表
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
-//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
-//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
-//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
 //  INTERNALERROR = "InternalError"
-//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_DECRYPTERROR = "InvalidParameter.DecryptError"
-//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_SQLQUERYFAILED = "InvalidParameterValue.SQLQueryFailed"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REGIONERROR = "RegionError"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCEINSUFFICIENT_LOGANALYSISQUANTITYINSUFFICIENT = "ResourceInsufficient.LogAnalysisQuantityInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNAUTHORIZEDOPERATION_CLOUDAUDIT = "UnauthorizedOperation.CloudAudit"
-//  UNAUTHORIZEDOPERATION_COS = "UnauthorizedOperation.Cos"
-//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeClusterAssets(request *DescribeClusterAssetsRequest) (response *DescribeClusterAssetsResponse, err error) {
     return c.DescribeClusterAssetsWithContext(context.Background(), request)
 }
@@ -5919,37 +6025,9 @@ func (c *Client) DescribeClusterAssets(request *DescribeClusterAssetsRequest) (r
 // 集群列表
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
-//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
-//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
-//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
 //  INTERNALERROR = "InternalError"
-//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_DECRYPTERROR = "InvalidParameter.DecryptError"
-//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_SQLQUERYFAILED = "InvalidParameterValue.SQLQueryFailed"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REGIONERROR = "RegionError"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCEINSUFFICIENT_LOGANALYSISQUANTITYINSUFFICIENT = "ResourceInsufficient.LogAnalysisQuantityInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNAUTHORIZEDOPERATION_CLOUDAUDIT = "UnauthorizedOperation.CloudAudit"
-//  UNAUTHORIZEDOPERATION_COS = "UnauthorizedOperation.Cos"
-//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeClusterAssetsWithContext(ctx context.Context, request *DescribeClusterAssetsRequest) (response *DescribeClusterAssetsResponse, err error) {
     if request == nil {
         request = NewDescribeClusterAssetsRequest()
@@ -5990,37 +6068,9 @@ func NewDescribeClusterPodAssetsResponse() (response *DescribeClusterPodAssetsRe
 // 集群pod列表
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
-//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
-//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
-//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
 //  INTERNALERROR = "InternalError"
-//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_DECRYPTERROR = "InvalidParameter.DecryptError"
-//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_SQLQUERYFAILED = "InvalidParameterValue.SQLQueryFailed"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REGIONERROR = "RegionError"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCEINSUFFICIENT_LOGANALYSISQUANTITYINSUFFICIENT = "ResourceInsufficient.LogAnalysisQuantityInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNAUTHORIZEDOPERATION_CLOUDAUDIT = "UnauthorizedOperation.CloudAudit"
-//  UNAUTHORIZEDOPERATION_COS = "UnauthorizedOperation.Cos"
-//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeClusterPodAssets(request *DescribeClusterPodAssetsRequest) (response *DescribeClusterPodAssetsResponse, err error) {
     return c.DescribeClusterPodAssetsWithContext(context.Background(), request)
 }
@@ -6029,37 +6079,9 @@ func (c *Client) DescribeClusterPodAssets(request *DescribeClusterPodAssetsReque
 // 集群pod列表
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
-//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
-//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
-//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
 //  INTERNALERROR = "InternalError"
-//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_DECRYPTERROR = "InvalidParameter.DecryptError"
-//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_SQLQUERYFAILED = "InvalidParameterValue.SQLQueryFailed"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REGIONERROR = "RegionError"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCEINSUFFICIENT_LOGANALYSISQUANTITYINSUFFICIENT = "ResourceInsufficient.LogAnalysisQuantityInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNAUTHORIZEDOPERATION_CLOUDAUDIT = "UnauthorizedOperation.CloudAudit"
-//  UNAUTHORIZEDOPERATION_COS = "UnauthorizedOperation.Cos"
-//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeClusterPodAssetsWithContext(ctx context.Context, request *DescribeClusterPodAssetsRequest) (response *DescribeClusterPodAssetsResponse, err error) {
     if request == nil {
         request = NewDescribeClusterPodAssetsRequest()
@@ -6100,37 +6122,9 @@ func NewDescribeConfigCheckRulesResponse() (response *DescribeConfigCheckRulesRe
 // 云资源配置风险规则列表示例
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
-//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
-//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
-//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
 //  INTERNALERROR = "InternalError"
-//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_DECRYPTERROR = "InvalidParameter.DecryptError"
-//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_SQLQUERYFAILED = "InvalidParameterValue.SQLQueryFailed"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REGIONERROR = "RegionError"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCEINSUFFICIENT_LOGANALYSISQUANTITYINSUFFICIENT = "ResourceInsufficient.LogAnalysisQuantityInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNAUTHORIZEDOPERATION_CLOUDAUDIT = "UnauthorizedOperation.CloudAudit"
-//  UNAUTHORIZEDOPERATION_COS = "UnauthorizedOperation.Cos"
-//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeConfigCheckRules(request *DescribeConfigCheckRulesRequest) (response *DescribeConfigCheckRulesResponse, err error) {
     return c.DescribeConfigCheckRulesWithContext(context.Background(), request)
 }
@@ -6139,37 +6133,9 @@ func (c *Client) DescribeConfigCheckRules(request *DescribeConfigCheckRulesReque
 // 云资源配置风险规则列表示例
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
-//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
-//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
-//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
 //  INTERNALERROR = "InternalError"
-//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_DECRYPTERROR = "InvalidParameter.DecryptError"
-//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_SQLQUERYFAILED = "InvalidParameterValue.SQLQueryFailed"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REGIONERROR = "RegionError"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCEINSUFFICIENT_LOGANALYSISQUANTITYINSUFFICIENT = "ResourceInsufficient.LogAnalysisQuantityInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNAUTHORIZEDOPERATION_CLOUDAUDIT = "UnauthorizedOperation.CloudAudit"
-//  UNAUTHORIZEDOPERATION_COS = "UnauthorizedOperation.Cos"
-//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeConfigCheckRulesWithContext(ctx context.Context, request *DescribeConfigCheckRulesRequest) (response *DescribeConfigCheckRulesResponse, err error) {
     if request == nil {
         request = NewDescribeConfigCheckRulesRequest()
@@ -12057,6 +12023,238 @@ func (c *Client) DescribeEDRRuleListWithContext(ctx context.Context, request *De
     return
 }
 
+func NewDescribeEDRScanRecordListRequest() (request *DescribeEDRScanRecordListRequest) {
+    request = &DescribeEDRScanRecordListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeEDRScanRecordList")
+    
+    
+    return
+}
+
+func NewDescribeEDRScanRecordListResponse() (response *DescribeEDRScanRecordListResponse) {
+    response = &DescribeEDRScanRecordListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeEDRScanRecordList
+// 查询扫描任务列表。Filter.Filters支持Name：Keyword(模糊OperatorType=9)、ScanType(MANUAL/CYCLE)、TaskType(HOST/CONTAINER)、Status(WAIT/SCANNING/FINISHED/FAILED/CANCELED)、AppId(账号)。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeEDRScanRecordList(request *DescribeEDRScanRecordListRequest) (response *DescribeEDRScanRecordListResponse, err error) {
+    return c.DescribeEDRScanRecordListWithContext(context.Background(), request)
+}
+
+// DescribeEDRScanRecordList
+// 查询扫描任务列表。Filter.Filters支持Name：Keyword(模糊OperatorType=9)、ScanType(MANUAL/CYCLE)、TaskType(HOST/CONTAINER)、Status(WAIT/SCANNING/FINISHED/FAILED/CANCELED)、AppId(账号)。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeEDRScanRecordListWithContext(ctx context.Context, request *DescribeEDRScanRecordListRequest) (response *DescribeEDRScanRecordListResponse, err error) {
+    if request == nil {
+        request = NewDescribeEDRScanRecordListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeEDRScanRecordList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEDRScanRecordList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeEDRScanRecordListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeEDRScanTaskDetailRequest() (request *DescribeEDRScanTaskDetailRequest) {
+    request = &DescribeEDRScanTaskDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeEDRScanTaskDetail")
+    
+    
+    return
+}
+
+func NewDescribeEDRScanTaskDetailResponse() (response *DescribeEDRScanTaskDetailResponse) {
+    response = &DescribeEDRScanTaskDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeEDRScanTaskDetail
+// 查询扫描任务详情。Filter.Filters支持Name：Status（资产扫描状态，OperatorType=7 IN匹配，取值WAIT/SCANNING/FINISHED/FAILED）。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeEDRScanTaskDetail(request *DescribeEDRScanTaskDetailRequest) (response *DescribeEDRScanTaskDetailResponse, err error) {
+    return c.DescribeEDRScanTaskDetailWithContext(context.Background(), request)
+}
+
+// DescribeEDRScanTaskDetail
+// 查询扫描任务详情。Filter.Filters支持Name：Status（资产扫描状态，OperatorType=7 IN匹配，取值WAIT/SCANNING/FINISHED/FAILED）。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeEDRScanTaskDetailWithContext(ctx context.Context, request *DescribeEDRScanTaskDetailRequest) (response *DescribeEDRScanTaskDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeEDRScanTaskDetailRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeEDRScanTaskDetail")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEDRScanTaskDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeEDRScanTaskDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeEdrAlertCountForAssetRequest() (request *DescribeEdrAlertCountForAssetRequest) {
+    request = &DescribeEdrAlertCountForAssetRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeEdrAlertCountForAsset")
+    
+    
+    return
+}
+
+func NewDescribeEdrAlertCountForAssetResponse() (response *DescribeEdrAlertCountForAssetResponse) {
+    response = &DescribeEdrAlertCountForAssetResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeEdrAlertCountForAsset
+// 获取EDR告警数量统计，供资产模块调用。根据传入的MemberId和InstanceIDs，查询EDR告警表并返回告警记录条数信息。当InstanceIDs为空时返回汇总统计，非空时按InstanceIDs粒度分别返回统计。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeEdrAlertCountForAsset(request *DescribeEdrAlertCountForAssetRequest) (response *DescribeEdrAlertCountForAssetResponse, err error) {
+    return c.DescribeEdrAlertCountForAssetWithContext(context.Background(), request)
+}
+
+// DescribeEdrAlertCountForAsset
+// 获取EDR告警数量统计，供资产模块调用。根据传入的MemberId和InstanceIDs，查询EDR告警表并返回告警记录条数信息。当InstanceIDs为空时返回汇总统计，非空时按InstanceIDs粒度分别返回统计。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeEdrAlertCountForAssetWithContext(ctx context.Context, request *DescribeEdrAlertCountForAssetRequest) (response *DescribeEdrAlertCountForAssetResponse, err error) {
+    if request == nil {
+        request = NewDescribeEdrAlertCountForAssetRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeEdrAlertCountForAsset")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEdrAlertCountForAsset require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeEdrAlertCountForAssetResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeEdrAlertCountForContainerRequest() (request *DescribeEdrAlertCountForContainerRequest) {
+    request = &DescribeEdrAlertCountForContainerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeEdrAlertCountForContainer")
+    
+    
+    return
+}
+
+func NewDescribeEdrAlertCountForContainerResponse() (response *DescribeEdrAlertCountForContainerResponse) {
+    response = &DescribeEdrAlertCountForContainerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeEdrAlertCountForContainer
+// 容器场景告警数量统计
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeEdrAlertCountForContainer(request *DescribeEdrAlertCountForContainerRequest) (response *DescribeEdrAlertCountForContainerResponse, err error) {
+    return c.DescribeEdrAlertCountForContainerWithContext(context.Background(), request)
+}
+
+// DescribeEdrAlertCountForContainer
+// 容器场景告警数量统计
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeEdrAlertCountForContainerWithContext(ctx context.Context, request *DescribeEdrAlertCountForContainerRequest) (response *DescribeEdrAlertCountForContainerResponse, err error) {
+    if request == nil {
+        request = NewDescribeEdrAlertCountForContainerRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeEdrAlertCountForContainer")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEdrAlertCountForContainer require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeEdrAlertCountForContainerResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeEdrAlertInfoRequest() (request *DescribeEdrAlertInfoRequest) {
     request = &DescribeEdrAlertInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -12161,6 +12359,220 @@ func (c *Client) DescribeEdrAlertListWithContext(ctx context.Context, request *D
     request.SetContext(ctx)
     
     response = NewDescribeEdrAlertListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeEdrAlertMultiAttackStagesRequest() (request *DescribeEdrAlertMultiAttackStagesRequest) {
+    request = &DescribeEdrAlertMultiAttackStagesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeEdrAlertMultiAttackStages")
+    
+    
+    return
+}
+
+func NewDescribeEdrAlertMultiAttackStagesResponse() (response *DescribeEdrAlertMultiAttackStagesResponse) {
+    response = &DescribeEdrAlertMultiAttackStagesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeEdrAlertMultiAttackStages
+// EDR告警多攻击阶段查询
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeEdrAlertMultiAttackStages(request *DescribeEdrAlertMultiAttackStagesRequest) (response *DescribeEdrAlertMultiAttackStagesResponse, err error) {
+    return c.DescribeEdrAlertMultiAttackStagesWithContext(context.Background(), request)
+}
+
+// DescribeEdrAlertMultiAttackStages
+// EDR告警多攻击阶段查询
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeEdrAlertMultiAttackStagesWithContext(ctx context.Context, request *DescribeEdrAlertMultiAttackStagesRequest) (response *DescribeEdrAlertMultiAttackStagesResponse, err error) {
+    if request == nil {
+        request = NewDescribeEdrAlertMultiAttackStagesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeEdrAlertMultiAttackStages")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEdrAlertMultiAttackStages require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeEdrAlertMultiAttackStagesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeEdrAlertSummaryRequest() (request *DescribeEdrAlertSummaryRequest) {
+    request = &DescribeEdrAlertSummaryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeEdrAlertSummary")
+    
+    
+    return
+}
+
+func NewDescribeEdrAlertSummaryResponse() (response *DescribeEdrAlertSummaryResponse) {
+    response = &DescribeEdrAlertSummaryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeEdrAlertSummary
+// 获取EDR告警统计
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeEdrAlertSummary(request *DescribeEdrAlertSummaryRequest) (response *DescribeEdrAlertSummaryResponse, err error) {
+    return c.DescribeEdrAlertSummaryWithContext(context.Background(), request)
+}
+
+// DescribeEdrAlertSummary
+// 获取EDR告警统计
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeEdrAlertSummaryWithContext(ctx context.Context, request *DescribeEdrAlertSummaryRequest) (response *DescribeEdrAlertSummaryResponse, err error) {
+    if request == nil {
+        request = NewDescribeEdrAlertSummaryRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeEdrAlertSummary")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEdrAlertSummary require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeEdrAlertSummaryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeEdrExportJobDownloadURLRequest() (request *DescribeEdrExportJobDownloadURLRequest) {
+    request = &DescribeEdrExportJobDownloadURLRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeEdrExportJobDownloadURL")
+    
+    
+    return
+}
+
+func NewDescribeEdrExportJobDownloadURLResponse() (response *DescribeEdrExportJobDownloadURLResponse) {
+    response = &DescribeEdrExportJobDownloadURLResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeEdrExportJobDownloadURL
+// 获取EDR导出下载链接
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeEdrExportJobDownloadURL(request *DescribeEdrExportJobDownloadURLRequest) (response *DescribeEdrExportJobDownloadURLResponse, err error) {
+    return c.DescribeEdrExportJobDownloadURLWithContext(context.Background(), request)
+}
+
+// DescribeEdrExportJobDownloadURL
+// 获取EDR导出下载链接
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeEdrExportJobDownloadURLWithContext(ctx context.Context, request *DescribeEdrExportJobDownloadURLRequest) (response *DescribeEdrExportJobDownloadURLResponse, err error) {
+    if request == nil {
+        request = NewDescribeEdrExportJobDownloadURLRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeEdrExportJobDownloadURL")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEdrExportJobDownloadURL require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeEdrExportJobDownloadURLResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeEdrExportJobListRequest() (request *DescribeEdrExportJobListRequest) {
+    request = &DescribeEdrExportJobListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeEdrExportJobList")
+    
+    
+    return
+}
+
+func NewDescribeEdrExportJobListResponse() (response *DescribeEdrExportJobListResponse) {
+    response = &DescribeEdrExportJobListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeEdrExportJobList
+// 导出EDR任务列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeEdrExportJobList(request *DescribeEdrExportJobListRequest) (response *DescribeEdrExportJobListResponse, err error) {
+    return c.DescribeEdrExportJobListWithContext(context.Background(), request)
+}
+
+// DescribeEdrExportJobList
+// 导出EDR任务列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeEdrExportJobListWithContext(ctx context.Context, request *DescribeEdrExportJobListRequest) (response *DescribeEdrExportJobListResponse, err error) {
+    if request == nil {
+        request = NewDescribeEdrExportJobListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeEdrExportJobList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEdrExportJobList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeEdrExportJobListResponse()
     err = c.Send(request, response)
     return
 }
@@ -13391,6 +13803,68 @@ func (c *Client) DescribeNICAssetsWithContext(ctx context.Context, request *Desc
     return
 }
 
+func NewDescribeNetAttackSettingRequest() (request *DescribeNetAttackSettingRequest) {
+    request = &DescribeNetAttackSettingRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeNetAttackSetting")
+    
+    
+    return
+}
+
+func NewDescribeNetAttackSettingResponse() (response *DescribeNetAttackSettingResponse) {
+    response = &DescribeNetAttackSettingResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeNetAttackSetting
+// 查询网络攻击检测开关及资产范围配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeNetAttackSetting(request *DescribeNetAttackSettingRequest) (response *DescribeNetAttackSettingResponse, err error) {
+    return c.DescribeNetAttackSettingWithContext(context.Background(), request)
+}
+
+// DescribeNetAttackSetting
+// 查询网络攻击检测开关及资产范围配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeNetAttackSettingWithContext(ctx context.Context, request *DescribeNetAttackSettingRequest) (response *DescribeNetAttackSettingResponse, err error) {
+    if request == nil {
+        request = NewDescribeNetAttackSettingRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeNetAttackSetting")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNetAttackSetting require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeNetAttackSettingResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeNotifyAssetConfigRequest() (request *DescribeNotifyAssetConfigRequest) {
     request = &DescribeNotifyAssetConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -13909,6 +14383,68 @@ func (c *Client) DescribeRepositoryImageAssetsWithContext(ctx context.Context, r
     request.SetContext(ctx)
     
     response = NewDescribeRepositoryImageAssetsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeReverseShellSystemPolicyConfigRequest() (request *DescribeReverseShellSystemPolicyConfigRequest) {
+    request = &DescribeReverseShellSystemPolicyConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeReverseShellSystemPolicyConfig")
+    
+    
+    return
+}
+
+func NewDescribeReverseShellSystemPolicyConfigResponse() (response *DescribeReverseShellSystemPolicyConfigResponse) {
+    response = &DescribeReverseShellSystemPolicyConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeReverseShellSystemPolicyConfig
+// 查询反弹Shell内网告警与资产范围配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeReverseShellSystemPolicyConfig(request *DescribeReverseShellSystemPolicyConfigRequest) (response *DescribeReverseShellSystemPolicyConfigResponse, err error) {
+    return c.DescribeReverseShellSystemPolicyConfigWithContext(context.Background(), request)
+}
+
+// DescribeReverseShellSystemPolicyConfig
+// 查询反弹Shell内网告警与资产范围配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeReverseShellSystemPolicyConfigWithContext(ctx context.Context, request *DescribeReverseShellSystemPolicyConfigRequest) (response *DescribeReverseShellSystemPolicyConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribeReverseShellSystemPolicyConfigRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeReverseShellSystemPolicyConfig")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeReverseShellSystemPolicyConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeReverseShellSystemPolicyConfigResponse()
     err = c.Send(request, response)
     return
 }
@@ -17999,6 +18535,122 @@ func (c *Client) DownloadDspmExportLogWithContext(ctx context.Context, request *
     return
 }
 
+func NewExportCSIPMalwareScanTaskDetailRequest() (request *ExportCSIPMalwareScanTaskDetailRequest) {
+    request = &ExportCSIPMalwareScanTaskDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "ExportCSIPMalwareScanTaskDetail")
+    
+    
+    return
+}
+
+func NewExportCSIPMalwareScanTaskDetailResponse() (response *ExportCSIPMalwareScanTaskDetailResponse) {
+    response = &ExportCSIPMalwareScanTaskDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ExportCSIPMalwareScanTaskDetail
+// 导出CSIP扫描任务主机详情为Excel文件，异步生成后通过DescribeExportMachines查询下载地址
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ExportCSIPMalwareScanTaskDetail(request *ExportCSIPMalwareScanTaskDetailRequest) (response *ExportCSIPMalwareScanTaskDetailResponse, err error) {
+    return c.ExportCSIPMalwareScanTaskDetailWithContext(context.Background(), request)
+}
+
+// ExportCSIPMalwareScanTaskDetail
+// 导出CSIP扫描任务主机详情为Excel文件，异步生成后通过DescribeExportMachines查询下载地址
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ExportCSIPMalwareScanTaskDetailWithContext(ctx context.Context, request *ExportCSIPMalwareScanTaskDetailRequest) (response *ExportCSIPMalwareScanTaskDetailResponse, err error) {
+    if request == nil {
+        request = NewExportCSIPMalwareScanTaskDetailRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "ExportCSIPMalwareScanTaskDetail")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ExportCSIPMalwareScanTaskDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewExportCSIPMalwareScanTaskDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewExportEDRRulesRequest() (request *ExportEDRRulesRequest) {
+    request = &ExportEDRRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "ExportEDRRules")
+    
+    
+    return
+}
+
+func NewExportEDRRulesResponse() (response *ExportEDRRulesResponse) {
+    response = &ExportEDRRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ExportEDRRules
+// 导出EDR策略列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) ExportEDRRules(request *ExportEDRRulesRequest) (response *ExportEDRRulesResponse, err error) {
+    return c.ExportEDRRulesWithContext(context.Background(), request)
+}
+
+// ExportEDRRules
+// 导出EDR策略列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) ExportEDRRulesWithContext(ctx context.Context, request *ExportEDRRulesRequest) (response *ExportEDRRulesResponse, err error) {
+    if request == nil {
+        request = NewExportEDRRulesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "ExportEDRRules")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ExportEDRRules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewExportEDRRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyAILinkSettingRequest() (request *ModifyAILinkSettingRequest) {
     request = &ModifyAILinkSettingRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -20207,6 +20859,162 @@ func (c *Client) ModifyEDRRuleWithContext(ctx context.Context, request *ModifyED
     return
 }
 
+func NewModifyEDRRuleStatusRequest() (request *ModifyEDRRuleStatusRequest) {
+    request = &ModifyEDRRuleStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "ModifyEDRRuleStatus")
+    
+    
+    return
+}
+
+func NewModifyEDRRuleStatusResponse() (response *ModifyEDRRuleStatusResponse) {
+    response = &ModifyEDRRuleStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyEDRRuleStatus
+// 修改EDR策略开关状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyEDRRuleStatus(request *ModifyEDRRuleStatusRequest) (response *ModifyEDRRuleStatusResponse, err error) {
+    return c.ModifyEDRRuleStatusWithContext(context.Background(), request)
+}
+
+// ModifyEDRRuleStatus
+// 修改EDR策略开关状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyEDRRuleStatusWithContext(ctx context.Context, request *ModifyEDRRuleStatusRequest) (response *ModifyEDRRuleStatusResponse, err error) {
+    if request == nil {
+        request = NewModifyEDRRuleStatusRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "ModifyEDRRuleStatus")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyEDRRuleStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyEDRRuleStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyEDRRulesActionRequest() (request *ModifyEDRRulesActionRequest) {
+    request = &ModifyEDRRulesActionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "ModifyEDRRulesAction")
+    
+    
+    return
+}
+
+func NewModifyEDRRulesActionResponse() (response *ModifyEDRRulesActionResponse) {
+    response = &ModifyEDRRulesActionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyEDRRulesAction
+// 批量修改EDR策略动作
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyEDRRulesAction(request *ModifyEDRRulesActionRequest) (response *ModifyEDRRulesActionResponse, err error) {
+    return c.ModifyEDRRulesActionWithContext(context.Background(), request)
+}
+
+// ModifyEDRRulesAction
+// 批量修改EDR策略动作
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyEDRRulesActionWithContext(ctx context.Context, request *ModifyEDRRulesActionRequest) (response *ModifyEDRRulesActionResponse, err error) {
+    if request == nil {
+        request = NewModifyEDRRulesActionRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "ModifyEDRRulesAction")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyEDRRulesAction require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyEDRRulesActionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyEdrAlertIsolationRequest() (request *ModifyEdrAlertIsolationRequest) {
+    request = &ModifyEdrAlertIsolationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "ModifyEdrAlertIsolation")
+    
+    
+    return
+}
+
+func NewModifyEdrAlertIsolationResponse() (response *ModifyEdrAlertIsolationResponse) {
+    response = &ModifyEdrAlertIsolationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyEdrAlertIsolation
+// EDR告警隔离和恢复
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) ModifyEdrAlertIsolation(request *ModifyEdrAlertIsolationRequest) (response *ModifyEdrAlertIsolationResponse, err error) {
+    return c.ModifyEdrAlertIsolationWithContext(context.Background(), request)
+}
+
+// ModifyEdrAlertIsolation
+// EDR告警隔离和恢复
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) ModifyEdrAlertIsolationWithContext(ctx context.Context, request *ModifyEdrAlertIsolationRequest) (response *ModifyEdrAlertIsolationResponse, err error) {
+    if request == nil {
+        request = NewModifyEdrAlertIsolationRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "ModifyEdrAlertIsolation")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyEdrAlertIsolation require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyEdrAlertIsolationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyEdrAlertPermanentIgnoreRequest() (request *ModifyEdrAlertPermanentIgnoreRequest) {
     request = &ModifyEdrAlertPermanentIgnoreRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -20257,6 +21065,58 @@ func (c *Client) ModifyEdrAlertPermanentIgnoreWithContext(ctx context.Context, r
     request.SetContext(ctx)
     
     response = NewModifyEdrAlertPermanentIgnoreResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyEdrAlertStatusRequest() (request *ModifyEdrAlertStatusRequest) {
+    request = &ModifyEdrAlertStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "ModifyEdrAlertStatus")
+    
+    
+    return
+}
+
+func NewModifyEdrAlertStatusResponse() (response *ModifyEdrAlertStatusResponse) {
+    response = &ModifyEdrAlertStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyEdrAlertStatus
+// EDR告警状态处置
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) ModifyEdrAlertStatus(request *ModifyEdrAlertStatusRequest) (response *ModifyEdrAlertStatusResponse, err error) {
+    return c.ModifyEdrAlertStatusWithContext(context.Background(), request)
+}
+
+// ModifyEdrAlertStatus
+// EDR告警状态处置
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) ModifyEdrAlertStatusWithContext(ctx context.Context, request *ModifyEdrAlertStatusRequest) (response *ModifyEdrAlertStatusResponse, err error) {
+    if request == nil {
+        request = NewModifyEdrAlertStatusRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "ModifyEdrAlertStatus")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyEdrAlertStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyEdrAlertStatusResponse()
     err = c.Send(request, response)
     return
 }
@@ -20365,6 +21225,68 @@ func (c *Client) ModifyMachineRemarkWithContext(ctx context.Context, request *Mo
     request.SetContext(ctx)
     
     response = NewModifyMachineRemarkResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyNetAttackSettingRequest() (request *ModifyNetAttackSettingRequest) {
+    request = &ModifyNetAttackSettingRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "ModifyNetAttackSetting")
+    
+    
+    return
+}
+
+func NewModifyNetAttackSettingResponse() (response *ModifyNetAttackSettingResponse) {
+    response = &ModifyNetAttackSettingResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyNetAttackSetting
+// 修改网络攻击检测开关及资产范围配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyNetAttackSetting(request *ModifyNetAttackSettingRequest) (response *ModifyNetAttackSettingResponse, err error) {
+    return c.ModifyNetAttackSettingWithContext(context.Background(), request)
+}
+
+// ModifyNetAttackSetting
+// 修改网络攻击检测开关及资产范围配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyNetAttackSettingWithContext(ctx context.Context, request *ModifyNetAttackSettingRequest) (response *ModifyNetAttackSettingResponse, err error) {
+    if request == nil {
+        request = NewModifyNetAttackSettingRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "ModifyNetAttackSetting")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyNetAttackSetting require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyNetAttackSettingResponse()
     err = c.Send(request, response)
     return
 }
@@ -20641,6 +21563,68 @@ func (c *Client) ModifyPolicyStatusWithContext(ctx context.Context, request *Mod
     request.SetContext(ctx)
     
     response = NewModifyPolicyStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyReverseShellSystemPolicyConfigRequest() (request *ModifyReverseShellSystemPolicyConfigRequest) {
+    request = &ModifyReverseShellSystemPolicyConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "ModifyReverseShellSystemPolicyConfig")
+    
+    
+    return
+}
+
+func NewModifyReverseShellSystemPolicyConfigResponse() (response *ModifyReverseShellSystemPolicyConfigResponse) {
+    response = &ModifyReverseShellSystemPolicyConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyReverseShellSystemPolicyConfig
+// 修改反弹Shell内网告警与资产范围配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyReverseShellSystemPolicyConfig(request *ModifyReverseShellSystemPolicyConfigRequest) (response *ModifyReverseShellSystemPolicyConfigResponse, err error) {
+    return c.ModifyReverseShellSystemPolicyConfigWithContext(context.Background(), request)
+}
+
+// ModifyReverseShellSystemPolicyConfig
+// 修改反弹Shell内网告警与资产范围配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyReverseShellSystemPolicyConfigWithContext(ctx context.Context, request *ModifyReverseShellSystemPolicyConfigRequest) (response *ModifyReverseShellSystemPolicyConfigResponse, err error) {
+    if request == nil {
+        request = NewModifyReverseShellSystemPolicyConfigRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "ModifyReverseShellSystemPolicyConfig")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyReverseShellSystemPolicyConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyReverseShellSystemPolicyConfigResponse()
     err = c.Send(request, response)
     return
 }
@@ -21245,6 +22229,122 @@ func (c *Client) RevertDspmAssetAccountWithContext(ctx context.Context, request 
     return
 }
 
+func NewScanCSIPTaskAgainRequest() (request *ScanCSIPTaskAgainRequest) {
+    request = &ScanCSIPTaskAgainRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "ScanCSIPTaskAgain")
+    
+    
+    return
+}
+
+func NewScanCSIPTaskAgainResponse() (response *ScanCSIPTaskAgainResponse) {
+    response = &ScanCSIPTaskAgainResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ScanCSIPTaskAgain
+// CSIP 手动扫描任务删除接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ScanCSIPTaskAgain(request *ScanCSIPTaskAgainRequest) (response *ScanCSIPTaskAgainResponse, err error) {
+    return c.ScanCSIPTaskAgainWithContext(context.Background(), request)
+}
+
+// ScanCSIPTaskAgain
+// CSIP 手动扫描任务删除接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ScanCSIPTaskAgainWithContext(ctx context.Context, request *ScanCSIPTaskAgainRequest) (response *ScanCSIPTaskAgainResponse, err error) {
+    if request == nil {
+        request = NewScanCSIPTaskAgainRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "ScanCSIPTaskAgain")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ScanCSIPTaskAgain require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewScanCSIPTaskAgainResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewScanEDRTaskAgainRequest() (request *ScanEDRTaskAgainRequest) {
+    request = &ScanEDRTaskAgainRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "ScanEDRTaskAgain")
+    
+    
+    return
+}
+
+func NewScanEDRTaskAgainResponse() (response *ScanEDRTaskAgainResponse) {
+    response = &ScanEDRTaskAgainResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ScanEDRTaskAgain
+// 基于原任务配置新建扫描任务。AssetId为空时从TaskId获取全部资产信息；AssetId非空时仅含该单资产。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ScanEDRTaskAgain(request *ScanEDRTaskAgainRequest) (response *ScanEDRTaskAgainResponse, err error) {
+    return c.ScanEDRTaskAgainWithContext(context.Background(), request)
+}
+
+// ScanEDRTaskAgain
+// 基于原任务配置新建扫描任务。AssetId为空时从TaskId获取全部资产信息；AssetId非空时仅含该单资产。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ScanEDRTaskAgainWithContext(ctx context.Context, request *ScanEDRTaskAgainRequest) (response *ScanEDRTaskAgainResponse, err error) {
+    if request == nil {
+        request = NewScanEDRTaskAgainRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "ScanEDRTaskAgain")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ScanEDRTaskAgain require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewScanEDRTaskAgainResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSendDspmAssetLoginSmsCodeRequest() (request *SendDspmAssetLoginSmsCodeRequest) {
     request = &SendDspmAssetLoginSmsCodeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -21307,6 +22407,122 @@ func (c *Client) SendDspmAssetLoginSmsCodeWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewSendDspmAssetLoginSmsCodeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStopCSIPManualMalwareScanRequest() (request *StopCSIPManualMalwareScanRequest) {
+    request = &StopCSIPManualMalwareScanRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "StopCSIPManualMalwareScan")
+    
+    
+    return
+}
+
+func NewStopCSIPManualMalwareScanResponse() (response *StopCSIPManualMalwareScanResponse) {
+    response = &StopCSIPManualMalwareScanResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// StopCSIPManualMalwareScan
+// CSIP 手动扫描停止接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) StopCSIPManualMalwareScan(request *StopCSIPManualMalwareScanRequest) (response *StopCSIPManualMalwareScanResponse, err error) {
+    return c.StopCSIPManualMalwareScanWithContext(context.Background(), request)
+}
+
+// StopCSIPManualMalwareScan
+// CSIP 手动扫描停止接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) StopCSIPManualMalwareScanWithContext(ctx context.Context, request *StopCSIPManualMalwareScanRequest) (response *StopCSIPManualMalwareScanResponse, err error) {
+    if request == nil {
+        request = NewStopCSIPManualMalwareScanRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "StopCSIPManualMalwareScan")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StopCSIPManualMalwareScan require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStopCSIPManualMalwareScanResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStopEDRScanTaskRequest() (request *StopEDRScanTaskRequest) {
+    request = &StopEDRScanTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "StopEDRScanTask")
+    
+    
+    return
+}
+
+func NewStopEDRScanTaskResponse() (response *StopEDRScanTaskResponse) {
+    response = &StopEDRScanTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// StopEDRScanTask
+// 停止或取消扫描任务。SCANNING状态调RPC停止，WAIT状态直接改库取消。只有任务创建者可操作。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) StopEDRScanTask(request *StopEDRScanTaskRequest) (response *StopEDRScanTaskResponse, err error) {
+    return c.StopEDRScanTaskWithContext(context.Background(), request)
+}
+
+// StopEDRScanTask
+// 停止或取消扫描任务。SCANNING状态调RPC停止，WAIT状态直接改库取消。只有任务创建者可操作。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) StopEDRScanTaskWithContext(ctx context.Context, request *StopEDRScanTaskRequest) (response *StopEDRScanTaskResponse, err error) {
+    if request == nil {
+        request = NewStopEDRScanTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "StopEDRScanTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StopEDRScanTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStopEDRScanTaskResponse()
     err = c.Send(request, response)
     return
 }

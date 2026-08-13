@@ -333,131 +333,125 @@ type ChcDeployExtraConfig struct {
 }
 
 type ChcHost struct {
-	// CHC物理服务器ID。
+	// <p>CHC物理服务器ID。</p>
 	ChcId *string `json:"ChcId,omitnil,omitempty" name:"ChcId"`
 
-	// 实例名称。
+	// <p>实例名称。</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 服务器序列号。
+	// <p>服务器序列号。</p>
 	SerialNumber *string `json:"SerialNumber,omitnil,omitempty" name:"SerialNumber"`
 
-	// CHC的状态<br/>
-	// <ul>
-	// <li>INIT: 设备已录入。还未配置带外和部署网络</li>
-	// <li>READY: 已配置带外和部署网络</li>
-	// <li>PREPARED: 可分配云主机</li>
-	// <li>ONLINE: 已分配云主机</li>
-	// <li>OPERATING: 设备操作中，如正在配置带外网络等。</li>
-	// <li>CLEAR_NETWORK_FAILED: 清理带外和部署网络失败</li>
-	// </ul>
+	// <p>CHC的状态<br></p><ul><li>INIT: 设备已录入。还未配置带外和部署网络</li><li>READY: 已配置带外和部署网络</li><li>PREPARED: 可分配云主机</li><li>ONLINE: 已分配云主机</li><li>OPERATING: 设备操作中，如正在配置带外网络等。</li><li>CLEAR_NETWORK_FAILED: 清理带外和部署网络失败</li></ul>
 	InstanceState *string `json:"InstanceState,omitnil,omitempty" name:"InstanceState"`
 
-	// 设备类型。
+	// <p>设备类型。</p>
 	DeviceType *string `json:"DeviceType,omitnil,omitempty" name:"DeviceType"`
 
-	// 所属可用区
+	// <p>所属可用区。</p>
 	Placement *Placement `json:"Placement,omitnil,omitempty" name:"Placement"`
 
-	// 带外网络。
+	// <p>带外网络。</p>
 	BmcVirtualPrivateCloud *VirtualPrivateCloud `json:"BmcVirtualPrivateCloud,omitnil,omitempty" name:"BmcVirtualPrivateCloud"`
 
-	// 带外网络Ip。
+	// <p>带外网络IP。</p>
 	BmcIp *string `json:"BmcIp,omitnil,omitempty" name:"BmcIp"`
 
-	// 带外网络安全组Id。
+	// <p>带外网络安全组ID。</p>
 	BmcSecurityGroupIds []*string `json:"BmcSecurityGroupIds,omitnil,omitempty" name:"BmcSecurityGroupIds"`
 
-	// 部署网络。
+	// <p>部署网络。</p>
 	DeployVirtualPrivateCloud *VirtualPrivateCloud `json:"DeployVirtualPrivateCloud,omitnil,omitempty" name:"DeployVirtualPrivateCloud"`
 
-	// 部署网络Ip。
+	// <p>部署网络IP。</p>
 	DeployIp *string `json:"DeployIp,omitnil,omitempty" name:"DeployIp"`
 
-	// 部署网络安全组Id。
+	// <p>部署网络安全组ID。</p>
 	DeploySecurityGroupIds []*string `json:"DeploySecurityGroupIds,omitnil,omitempty" name:"DeploySecurityGroupIds"`
 
-	// 关联的云主机Id。
+	// <p>关联的云主机ID。</p>
 	CvmInstanceId *string `json:"CvmInstanceId,omitnil,omitempty" name:"CvmInstanceId"`
 
-	// 服务器导入的时间。
+	// <p>服务器导入的时间。</p>
 	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
 
-	// 机型的硬件描述，分别为CPU核数，内存容量和磁盘容量
+	// <p>机型的硬件描述，分别为CPU核数，内存容量和磁盘容量。</p>
 	HardwareDescription *string `json:"HardwareDescription,omitnil,omitempty" name:"HardwareDescription"`
 
-	// CHC物理服务器的CPU核数
+	// <p>CHC物理服务器的CPU核数。</p>
 	CPU *int64 `json:"CPU,omitnil,omitempty" name:"CPU"`
 
-	// CHC物理服务器的内存大小，单位为GB
+	// <p>CHC物理服务器的内存大小，单位为GB。</p>
 	Memory *int64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
-	// CHC物理服务器的磁盘信息
+	// <p>CHC物理服务器的磁盘信息。</p>
 	Disk *string `json:"Disk,omitnil,omitempty" name:"Disk"`
 
-	// 带外网络下分配的MAC地址
+	// <p>带外网络下分配的MAC地址。</p>
 	BmcMAC *string `json:"BmcMAC,omitnil,omitempty" name:"BmcMAC"`
 
-	// 部署网络下分配的MAC地址
+	// <p>部署网络下分配的MAC地址。</p>
 	DeployMAC *string `json:"DeployMAC,omitnil,omitempty" name:"DeployMAC"`
 
-	// 设备托管类型。
-	// HOSTING: 托管
-	// TENANT: 租赁
+	// <p>设备托管类型。</p><p>枚举值：</p><ul><li>HOSTING： 托管类型。</li><li>TENANT： 租赁类型。</li></ul>
 	TenantType *string `json:"TenantType,omitnil,omitempty" name:"TenantType"`
 
-	// chc dhcp选项，用于minios调试。
+	// <p>CHC DHCP选项，用于客户自建PXE环境。</p>
 	DeployExtraConfig *ChcDeployExtraConfig `json:"DeployExtraConfig,omitnil,omitempty" name:"DeployExtraConfig"`
 
-	// GPU型号。
+	// <p>GPU型号。</p>
 	Gpu *string `json:"Gpu,omitnil,omitempty" name:"Gpu"`
 
-	// 网卡型号。主要指RDMA网卡。
+	// <p>网卡型号。主要指RDMA网卡。</p>
 	NetworkCard *string `json:"NetworkCard,omitnil,omitempty" name:"NetworkCard"`
 
-	// 是否是预定义机型。
+	// <p>是否是预定义机型。</p>
 	IsPredefinedType *bool `json:"IsPredefinedType,omitnil,omitempty" name:"IsPredefinedType"`
 
-	// CHC云主机机型。
+	// <p>CHC云主机机型。</p>
 	ChcInstanceType *string `json:"ChcInstanceType,omitnil,omitempty" name:"ChcInstanceType"`
 
-	// CHC云主机机型簇。
+	// <p>CHC云主机机型簇。</p>
 	ChcInstanceFamily *string `json:"ChcInstanceFamily,omitnil,omitempty" name:"ChcInstanceFamily"`
 
-	// CHC云主机机型簇名称。
+	// <p>CHC云主机机型簇名称。</p>
 	ChcInstanceFamilyName *string `json:"ChcInstanceFamilyName,omitnil,omitempty" name:"ChcInstanceFamilyName"`
 
-	// 转售客户的AppId。
+	// <p>转售客户的AppID。</p>
 	ResaleAppId *string `json:"ResaleAppId,omitnil,omitempty" name:"ResaleAppId"`
 
-	// 转售客户的账号ID。
+	// <p>转售客户的账号ID。</p>
 	ResaleAccountId *string `json:"ResaleAccountId,omitnil,omitempty" name:"ResaleAccountId"`
 
-	// 售卖状态。<br/>
-	// <ul>
-	// <li>NOT_FOR_SALE:不可售卖</li>
-	// <li>AVAILABLE: 可售卖</li>
-	// <li>SOLD: 已售卖</li>
-	// </ul>
+	// <p>售卖状态。<br></p><ul><li>NOT_FOR_SALE:不可售卖</li><li>AVAILABLE: 可售卖</li><li>SOLD: 已售卖</li></ul>
 	SaleStatus *string `json:"SaleStatus,omitnil,omitempty" name:"SaleStatus"`
 
-	// CHC物理服务器关联的标签列表。
+	// <p>CHC物理服务器关联的标签列表。</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 最近操作
+	// <p>最近操作。</p>
 	LatestOperation *string `json:"LatestOperation,omitnil,omitempty" name:"LatestOperation"`
 
-	// 最近操作错误码
+	// <p>最近操作错误码。</p>
 	LatestOperationErrorCode *string `json:"LatestOperationErrorCode,omitnil,omitempty" name:"LatestOperationErrorCode"`
 
-	// 最近操作错误详情和建议项
+	// <p>最近操作错误详情和建议项。</p>
 	LatestOperationErrorMsg *string `json:"LatestOperationErrorMsg,omitnil,omitempty" name:"LatestOperationErrorMsg"`
 
-	// 最近操作名称
+	// <p>最近操作名称。</p>
 	LatestOperationName *string `json:"LatestOperationName,omitnil,omitempty" name:"LatestOperationName"`
 
-	// 最近操作状态
+	// <p>最近操作状态。</p><p>枚举值：</p><ul><li>SUCCESS： 成功。</li><li>FAILED： 失败。</li></ul>
 	LatestOperationState *string `json:"LatestOperationState,omitnil,omitempty" name:"LatestOperationState"`
+
+	// <p>所在的CHC网关的ID，只有专属网关才会返回。</p>
+	ChcGatewayId *string `json:"ChcGatewayId,omitnil,omitempty" name:"ChcGatewayId"`
+
+	// <p>所属的CDC集群ID。</p>
+	DedicatedClusterId *string `json:"DedicatedClusterId,omitnil,omitempty" name:"DedicatedClusterId"`
+
+	// <p>业务网卡网络模式。</p><p>枚举值：</p><ul><li>DEPLOY： 部署网络模式</li><li>BUSINESS： 业务网络模式</li></ul>
+	NetworkMode *string `json:"NetworkMode,omitnil,omitempty" name:"NetworkMode"`
 }
 
 type ChcHostDeniedActions struct {

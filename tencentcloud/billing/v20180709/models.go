@@ -7525,65 +7525,81 @@ func (r *DescribeBudgetResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCostDetailRequestParams struct {
-	// 数量，最大值为100
+	// <p>数量，最大值为100</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量
+	// <p>偏移量</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 周期开始时间，查询粒度为天级别，需传入时分秒参数，格式为yyyy-mm-dd hh:ii:ss，Month和BeginTime&EndTime必传一个，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传，且为同一月份，暂不支持跨月拉取。可拉取的数据是开通消耗账单后，且距今 18 个月内的数据。
+	// <p>周期开始时间，查询粒度为天级别，需传入时分秒参数，格式为yyyy-mm-dd hh:ii:ss，Month和BeginTime&amp;EndTime必传一个，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传，且为同一月份，暂不支持跨月拉取。可拉取的数据是开通消耗账单后，且距今 18 个月内的数据。</p>
 	BeginTime *string `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
 
-	// 周期结束时间，查询粒度为天级别，需传入时分秒参数，格式为yyyy-mm-dd hh:ii:ss，Month和BeginTime&EndTime必传一个，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传，且为同一月份，暂不支持跨月拉取。可拉取的数据是开通消耗账单后，且距今 18 个月内的数据。
+	// <p>周期结束时间，查询粒度为天级别，需传入时分秒参数，格式为yyyy-mm-dd hh:ii:ss，Month和BeginTime&amp;EndTime必传一个，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传，且为同一月份，暂不支持跨月拉取。可拉取的数据是开通消耗账单后，且距今 18 个月内的数据。</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 是否需要访问列表的总记录数，用于前端分页
-	// 1-表示需要， 0-表示不需要
+	// <p>是否需要访问列表的总记录数，用于前端分页<br>1-表示需要， 0-表示不需要</p>
 	NeedRecordNum *uint64 `json:"NeedRecordNum,omitnil,omitempty" name:"NeedRecordNum"`
 
-	// 月份，格式为yyyy-mm，Month和BeginTime&EndTime必传一个，如果有传BeginTime&EndTime则Month字段无效。不能早于开通消耗账单的月份，最多可拉取18个月内的数据。
+	// <p>月份，格式为yyyy-mm，Month和BeginTime&amp;EndTime必传一个，如果有传BeginTime&amp;EndTime则Month字段无效。不能早于开通消耗账单的月份，最多可拉取18个月内的数据。</p>
 	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
 
-	// 查询指定产品信息
+	// <p>查询指定产品信息</p>
 	ProductCode *string `json:"ProductCode,omitnil,omitempty" name:"ProductCode"`
 
-	// 付费模式 prePay/postPay
+	// <p>付费模式 prePay/postPay</p>
 	PayMode *string `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// 查询指定资源信息
+	// <p>查询指定资源信息</p>
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// <p>产品名称代码</p>
+	BusinessCode *string `json:"BusinessCode,omitnil,omitempty" name:"BusinessCode"`
+
+	// <p>项目ID:资源所属项目ID</p>
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// <p>地域ID</p>
+	RegionId *string `json:"RegionId,omitnil,omitempty" name:"RegionId"`
 }
 
 type DescribeCostDetailRequest struct {
 	*tchttp.BaseRequest
 	
-	// 数量，最大值为100
+	// <p>数量，最大值为100</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量
+	// <p>偏移量</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 周期开始时间，查询粒度为天级别，需传入时分秒参数，格式为yyyy-mm-dd hh:ii:ss，Month和BeginTime&EndTime必传一个，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传，且为同一月份，暂不支持跨月拉取。可拉取的数据是开通消耗账单后，且距今 18 个月内的数据。
+	// <p>周期开始时间，查询粒度为天级别，需传入时分秒参数，格式为yyyy-mm-dd hh:ii:ss，Month和BeginTime&amp;EndTime必传一个，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传，且为同一月份，暂不支持跨月拉取。可拉取的数据是开通消耗账单后，且距今 18 个月内的数据。</p>
 	BeginTime *string `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
 
-	// 周期结束时间，查询粒度为天级别，需传入时分秒参数，格式为yyyy-mm-dd hh:ii:ss，Month和BeginTime&EndTime必传一个，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传，且为同一月份，暂不支持跨月拉取。可拉取的数据是开通消耗账单后，且距今 18 个月内的数据。
+	// <p>周期结束时间，查询粒度为天级别，需传入时分秒参数，格式为yyyy-mm-dd hh:ii:ss，Month和BeginTime&amp;EndTime必传一个，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传，且为同一月份，暂不支持跨月拉取。可拉取的数据是开通消耗账单后，且距今 18 个月内的数据。</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 是否需要访问列表的总记录数，用于前端分页
-	// 1-表示需要， 0-表示不需要
+	// <p>是否需要访问列表的总记录数，用于前端分页<br>1-表示需要， 0-表示不需要</p>
 	NeedRecordNum *uint64 `json:"NeedRecordNum,omitnil,omitempty" name:"NeedRecordNum"`
 
-	// 月份，格式为yyyy-mm，Month和BeginTime&EndTime必传一个，如果有传BeginTime&EndTime则Month字段无效。不能早于开通消耗账单的月份，最多可拉取18个月内的数据。
+	// <p>月份，格式为yyyy-mm，Month和BeginTime&amp;EndTime必传一个，如果有传BeginTime&amp;EndTime则Month字段无效。不能早于开通消耗账单的月份，最多可拉取18个月内的数据。</p>
 	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
 
-	// 查询指定产品信息
+	// <p>查询指定产品信息</p>
 	ProductCode *string `json:"ProductCode,omitnil,omitempty" name:"ProductCode"`
 
-	// 付费模式 prePay/postPay
+	// <p>付费模式 prePay/postPay</p>
 	PayMode *string `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// 查询指定资源信息
+	// <p>查询指定资源信息</p>
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// <p>产品名称代码</p>
+	BusinessCode *string `json:"BusinessCode,omitnil,omitempty" name:"BusinessCode"`
+
+	// <p>项目ID:资源所属项目ID</p>
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// <p>地域ID</p>
+	RegionId *string `json:"RegionId,omitnil,omitempty" name:"RegionId"`
 }
 
 func (r *DescribeCostDetailRequest) ToJsonString() string {
@@ -7607,6 +7623,9 @@ func (r *DescribeCostDetailRequest) FromJsonString(s string) error {
 	delete(f, "ProductCode")
 	delete(f, "PayMode")
 	delete(f, "ResourceId")
+	delete(f, "BusinessCode")
+	delete(f, "ProjectId")
+	delete(f, "RegionId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCostDetailRequest has unknown keys!", "")
 	}
@@ -7615,10 +7634,10 @@ func (r *DescribeCostDetailRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCostDetailResponseParams struct {
-	// 消耗明细
+	// <p>消耗明细</p>
 	DetailSet []*CostDetail `json:"DetailSet,omitnil,omitempty" name:"DetailSet"`
 
-	// 记录数
+	// <p>记录数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
 
@@ -8086,57 +8105,69 @@ func (r *DescribeCostSummaryByRegionResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCostSummaryByResourceRequestParams struct {
-	// 目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
+	// <p>目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。</p>
 	BeginTime *string `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
 
-	// 目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
+	// <p>目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 每次获取数据量，最大值为100
+	// <p>每次获取数据量，最大值为100</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量,默认从0开始
+	// <p>偏移量,默认从0开始</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 查询账单数据的用户UIN
+	// <p>查询账单数据的用户UIN</p>
 	PayerUin *string `json:"PayerUin,omitnil,omitempty" name:"PayerUin"`
 
-	// 是否需要返回记录数量，0不需要，1需要，默认不需要
+	// <p>是否需要返回记录数量，0不需要，1需要，默认不需要</p>
 	NeedRecordNum *uint64 `json:"NeedRecordNum,omitnil,omitempty" name:"NeedRecordNum"`
 
-	// 是否需要返回过滤条件，0不需要，1需要，默认不需要
+	// <p>是否需要返回过滤条件，0不需要，1需要，默认不需要</p>
 	NeedConditionValue *uint64 `json:"NeedConditionValue,omitnil,omitempty" name:"NeedConditionValue"`
 
-	// 过滤条件，只支持ResourceKeyword(资源关键字，支持资源id及资源名称模糊查询)，ProjectIds（项目id），RegionIds(地域id)，PayModes(付费模式，可选prePay和postPay)，HideFreeCost（是否隐藏0元流水，可选0和1），OrderByCost（按费用排序规则，可选desc和asc）
+	// <p>过滤条件，只支持ResourceKeyword(资源关键字，支持资源id及资源名称模糊查询)，ProjectIds（项目id），RegionIds(地域id)，PayModes(付费模式，可选prePay和postPay)，HideFreeCost（是否隐藏0元流水，可选0和1），OrderByCost（按费用排序规则，可选desc和asc）</p>
 	Conditions *Conditions `json:"Conditions,omitnil,omitempty" name:"Conditions"`
+
+	// <p>分账标签键，用户自定义</p>
+	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
+
+	// <p>分账标签值，该参数为空表示该标签键下未设置标签值的记录</p>
+	TagValue *string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
 }
 
 type DescribeCostSummaryByResourceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
+	// <p>目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。</p>
 	BeginTime *string `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
 
-	// 目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
+	// <p>目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 每次获取数据量，最大值为100
+	// <p>每次获取数据量，最大值为100</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量,默认从0开始
+	// <p>偏移量,默认从0开始</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 查询账单数据的用户UIN
+	// <p>查询账单数据的用户UIN</p>
 	PayerUin *string `json:"PayerUin,omitnil,omitempty" name:"PayerUin"`
 
-	// 是否需要返回记录数量，0不需要，1需要，默认不需要
+	// <p>是否需要返回记录数量，0不需要，1需要，默认不需要</p>
 	NeedRecordNum *uint64 `json:"NeedRecordNum,omitnil,omitempty" name:"NeedRecordNum"`
 
-	// 是否需要返回过滤条件，0不需要，1需要，默认不需要
+	// <p>是否需要返回过滤条件，0不需要，1需要，默认不需要</p>
 	NeedConditionValue *uint64 `json:"NeedConditionValue,omitnil,omitempty" name:"NeedConditionValue"`
 
-	// 过滤条件，只支持ResourceKeyword(资源关键字，支持资源id及资源名称模糊查询)，ProjectIds（项目id），RegionIds(地域id)，PayModes(付费模式，可选prePay和postPay)，HideFreeCost（是否隐藏0元流水，可选0和1），OrderByCost（按费用排序规则，可选desc和asc）
+	// <p>过滤条件，只支持ResourceKeyword(资源关键字，支持资源id及资源名称模糊查询)，ProjectIds（项目id），RegionIds(地域id)，PayModes(付费模式，可选prePay和postPay)，HideFreeCost（是否隐藏0元流水，可选0和1），OrderByCost（按费用排序规则，可选desc和asc）</p>
 	Conditions *Conditions `json:"Conditions,omitnil,omitempty" name:"Conditions"`
+
+	// <p>分账标签键，用户自定义</p>
+	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
+
+	// <p>分账标签值，该参数为空表示该标签键下未设置标签值的记录</p>
+	TagValue *string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
 }
 
 func (r *DescribeCostSummaryByResourceRequest) ToJsonString() string {
@@ -8159,6 +8190,8 @@ func (r *DescribeCostSummaryByResourceRequest) FromJsonString(s string) error {
 	delete(f, "NeedRecordNum")
 	delete(f, "NeedConditionValue")
 	delete(f, "Conditions")
+	delete(f, "TagKey")
+	delete(f, "TagValue")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCostSummaryByResourceRequest has unknown keys!", "")
 	}
@@ -8167,21 +8200,21 @@ func (r *DescribeCostSummaryByResourceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCostSummaryByResourceResponseParams struct {
-	// 数据是否准备好，0未准备好，1准备好
+	// <p>数据是否准备好，0未准备好，1准备好</p>
 	Ready *uint64 `json:"Ready,omitnil,omitempty" name:"Ready"`
 
-	// 消耗详情
+	// <p>消耗详情</p>
 	Total *ConsumptionSummaryTotal `json:"Total,omitnil,omitempty" name:"Total"`
 
-	// 过滤条件
+	// <p>过滤条件</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConditionValue *ConsumptionResourceSummaryConditionValue `json:"ConditionValue,omitnil,omitempty" name:"ConditionValue"`
 
-	// 记录数量
+	// <p>记录数量</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecordNum *uint64 `json:"RecordNum,omitnil,omitempty" name:"RecordNum"`
 
-	// 资源消耗详情
+	// <p>资源消耗详情</p>
 	Data []*ConsumptionResourceSummaryDataItem `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

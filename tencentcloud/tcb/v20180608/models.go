@@ -6965,46 +6965,46 @@ func (r *GetProvidersResponse) FromJsonString(s string) error {
 }
 
 type HTTPServiceDomain struct {
-	// 域名
+	// <p>域名</p>
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 域名类型。 HTTPSERVICE: HTTP访问服务，CBR: 云托管服务，ANYSERVICE: 任意服务，AI_AGENT: AI agent，VM: 主机，INTEGRATION_CALLBACK: 集成回调
+	// <p>域名类型。 HTTPSERVICE: HTTP访问服务，CBR: 云托管服务，ANYSERVICE: 任意服务，AI_AGENT: AI agent，VM: 主机，INTEGRATION_CALLBACK: 集成回调</p>
 	DomainType *string `json:"DomainType,omitnil,omitempty" name:"DomainType"`
 
-	// 绑定类型。默认DIRECT。DIRECT: 直连到HTTP访问服务， CDN: 接入云开发CDN，CUSTOM: 自定义接入类型（其他CDN或者WAF）
+	// <p>绑定类型。默认DIRECT。DIRECT: 直连到HTTP访问服务， CDN: 接入云开发CDN，CUSTOM: 自定义接入类型（其他CDN或者WAF）</p>
 	AccessType *string `json:"AccessType,omitnil,omitempty" name:"AccessType"`
 
-	// 证书ID。当前账户下SSL平台的证书ID
+	// <p>证书ID。当前账户下SSL平台的证书ID</p>
 	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
 
-	// 协议类型。默认HTTP_AND_HTTPS。HTTP_AND_HTTPS: 同时开启http和https，HTTP_TO_HTTPS: http重定向成https，HTTPS_TO_HTTP: https重定向成http。如果未配置证书无法访问https或者进行重定向
+	// <p>协议类型。默认HTTP_AND_HTTPS。HTTP_AND_HTTPS: 同时开启http和https，HTTP_TO_HTTPS: http重定向成https，HTTPS_TO_HTTP: https重定向成http。如果未配置证书无法访问https或者进行重定向</p>
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
-	// 配置DNS解析的CNAME。根据AccessType返回不同的CNAME值。
+	// <p>配置DNS解析的CNAME。根据AccessType返回不同的CNAME值。</p>
 	Cname *string `json:"Cname,omitnil,omitempty" name:"Cname"`
 
-	// 是否是默认域名
+	// <p>是否是默认域名</p>
 	IsDefault *bool `json:"IsDefault,omitnil,omitempty" name:"IsDefault"`
 
-	// 域名开启状态
+	// <p>域名开启状态</p>
 	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
 
-	// 状态。PROCESSING、FAIL，SUCCESS。
+	// <p>状态。</p><p>枚举值：</p><ul><li>PROCESSING： 处理中</li><li>FAIL： 失败</li><li>EO_PENDING_VERIFICATION： 待验证edgeone归属权</li><li>SUCCESS： 成功</li></ul>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// DNS解析状态。OK： 解析正常，INVALID：解析不正确，域名未解析到当前Cname域名。
+	// <p>DNS解析状态</p><p>枚举值：</p><ul><li>OK： 正常，命中目标 cname</li><li>EMPTY： 解析为空，域名尚未配置 CNAME 或未生效</li><li>INVALID： 异常，解析到其他非目标地址</li></ul>
 	DNSStatus *string `json:"DNSStatus,omitnil,omitempty" name:"DNSStatus"`
 
-	// HTTP访问服务路由信息
+	// <p>HTTP访问服务路由信息</p>
 	Routes []*HTTPServiceRoute `json:"Routes,omitnil,omitempty" name:"Routes"`
 
-	// 扩展字段，内部包含headers处理等
+	// <p>扩展字段，内部包含headers处理等</p>
 	Extension *HTTPServiceExtension `json:"Extension,omitnil,omitempty" name:"Extension"`
 
-	// 域名创建时间
+	// <p>域名创建时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 域名更新时间
+	// <p>域名更新时间</p>
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 

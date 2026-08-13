@@ -144,9 +144,6 @@ type AssetsInfo struct {
 	// <p>是否是新云原生审计流程</p>
 	IsNewCloudAudit *bool `json:"IsNewCloudAudit,omitnil,omitempty" name:"IsNewCloudAudit"`
 
-	// <p>审计功能支持说明</p>
-	AuditCapability []*AuditCapability `json:"AuditCapability,omitnil,omitempty" name:"AuditCapability"`
-
 	// <p>1</p><p>取值范围：[0, 1]</p>
 	TrafficMirrorOn *int64 `json:"TrafficMirrorOn,omitnil,omitempty" name:"TrafficMirrorOn"`
 
@@ -155,10 +152,9 @@ type AssetsInfo struct {
 
 	// <p>实例集群ID</p>
 	InstanceGroupId *string `json:"InstanceGroupId,omitnil,omitempty" name:"InstanceGroupId"`
-}
 
-type AuditCapability struct {
-
+	// <p>该资产所在的资产组</p>
+	AssetGroups []*IdWithName `json:"AssetGroups,omitnil,omitempty" name:"AssetGroups"`
 }
 
 type CdsAuditInstance struct {
@@ -213,14 +209,14 @@ type CdsAuditInstance struct {
 
 // Predefined struct for user
 type CreateReportPdfRequestParams struct {
-	// 报表 Id
+	// <p>报表 Id</p>
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 }
 
 type CreateReportPdfRequest struct {
 	*tchttp.BaseRequest
 	
-	// 报表 Id
+	// <p>报表 Id</p>
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 }
 
@@ -245,7 +241,7 @@ func (r *CreateReportPdfRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateReportPdfResponseParams struct {
-	// 下载地址
+	// <p>下载地址</p>
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1209,67 +1205,51 @@ type ReportMission struct {
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 任务名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TplName *string `json:"TplName,omitnil,omitempty" name:"TplName"`
 
 	// 报表类型 1:单次报表 2:周期报表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReportType *int64 `json:"ReportType,omitnil,omitempty" name:"ReportType"`
 
 	// 报告说明
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
 	// 报表模板 1:综合分析报告 2:等保合规报告
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TemplateId *int64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
 	// 包含资产
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AssetsList []*AssetsInfo `json:"AssetsList,omitnil,omitempty" name:"AssetsList"`
 
 	// 下次启动时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NextStartTime *int64 `json:"NextStartTime,omitnil,omitempty" name:"NextStartTime"`
 
 	// 任务状态 1:生成中 2:待生成3:已生成4:生成失败5:已暂停
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MissionStatus *int64 `json:"MissionStatus,omitnil,omitempty" name:"MissionStatus"`
 
 	// 任务状态说明 仅生成中和生成失败有效
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MissionStatusMessage *string `json:"MissionStatusMessage,omitnil,omitempty" name:"MissionStatusMessage"`
 
 	// 已生成报表数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReportCount *int64 `json:"ReportCount,omitnil,omitempty" name:"ReportCount"`
 
 	// 任务起停 1:关闭 2:开启 仅周期报表有效
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MissionStart *int64 `json:"MissionStart,omitnil,omitempty" name:"MissionStart"`
 
 	// 统计周期 1:24小时 7:近一周 30:近30天 90:近90天 180:
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CntDay *int64 `json:"CntDay,omitnil,omitempty" name:"CntDay"`
 
 	// 重复周期 1:每天 2:每周 3:每月
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CntCycle *uint64 `json:"CntCycle,omitnil,omitempty" name:"CntCycle"`
 
 	// 执行日期 重复周期为天：无意义 周：星期几 1-7  月每月
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CntTime *uint64 `json:"CntTime,omitnil,omitempty" name:"CntTime"`
 
 	// 执行时间 格式15:04 到分钟
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CntDate *string `json:"CntDate,omitnil,omitempty" name:"CntDate"`
 
 	// 创建者 0:内置 其余存放用户(uin)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Receivers *string `json:"Receivers,omitnil,omitempty" name:"Receivers"`
 
 	// Notification  int  1关闭 2开启 不变更为0
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Notification *int64 `json:"Notification,omitnil,omitempty" name:"Notification"`
 }
 
@@ -1320,14 +1300,11 @@ type Reports struct {
 	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
 
 	// 报表模板
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TemplateId *int64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
 	// 包含资产
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AssetsList []*AssetsInfo `json:"AssetsList,omitnil,omitempty" name:"AssetsList"`
 
 	// 时间范围 1:24小时 7:近一周 30:近30天 90:近90天 180:近180天 不变更为0
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CntDay *int64 `json:"CntDay,omitnil,omitempty" name:"CntDay"`
 }

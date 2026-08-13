@@ -3282,6 +3282,9 @@ type ClbObject struct {
 	// <p>api防护开关</p>
 	ApiStatus *int64 `json:"ApiStatus,omitnil,omitempty" name:"ApiStatus"`
 
+	// <p>LLMWAF开关</p>
+	LLMStatus *int64 `json:"LLMStatus,omitnil,omitempty" name:"LLMStatus"`
+
 	// <p>对象接入模式，0表示镜像模式，1表示清洗模式，2表示体检模式，默认为清洗模式</p>
 	ObjectFlowMode *int64 `json:"ObjectFlowMode,omitnil,omitempty" name:"ObjectFlowMode"`
 

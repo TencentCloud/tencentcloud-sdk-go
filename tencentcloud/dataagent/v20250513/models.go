@@ -925,6 +925,18 @@ type FileInfo struct {
 
 	// <p>文件能力标识列表</p>
 	Capabilities []*string `json:"Capabilities,omitnil,omitempty" name:"Capabilities"`
+
+	// <p>0:关闭 1:开启图谱构建（入库时构建图谱），默认0</p>
+	EnableGraphBuild *int64 `json:"EnableGraphBuild,omitnil,omitempty" name:"EnableGraphBuild"`
+
+	// <p>0:关闭 1:开启树构建（入库时构建树），默认0</p>
+	EnableTreeBuild *int64 `json:"EnableTreeBuild,omitnil,omitempty" name:"EnableTreeBuild"`
+
+	// <p>图谱构建状态：null=未启用图谱; 0=待入库; 1=入库中; 2=入库成功; -1=入库失败（仅 EnableGraphBuild=1 时有意义）</p>
+	GraphBuildStatus *int64 `json:"GraphBuildStatus,omitnil,omitempty" name:"GraphBuildStatus"`
+
+	// <p>图谱构建状态：null=未启用图谱; 0=待入库; 1=入库中; 2=入库成功; -1=入库失败（仅 EnableGraphBuild=1 时有意义）</p>
+	TreeBuildStatus *int64 `json:"TreeBuildStatus,omitnil,omitempty" name:"TreeBuildStatus"`
 }
 
 type FileTaskStatus struct {
@@ -1385,6 +1397,12 @@ type KnowledgeTaskConfig struct {
 
 	// <p>是否开启表格结构化提取</p><p>枚举值：</p><ul><li>0： 不开启表格提取</li><li>1： 开启表格提取</li></ul><p>默认值：1</p>
 	EnableExtractDb *int64 `json:"EnableExtractDb,omitnil,omitempty" name:"EnableExtractDb"`
+
+	// <p>0:关闭 1:开启图谱构建（入库时），默认0</p>
+	EnableGraphBuild *int64 `json:"EnableGraphBuild,omitnil,omitempty" name:"EnableGraphBuild"`
+
+	// <p>0:关闭 1:开启树构建（入库时），默认0</p>
+	EnableTreeBuild *int64 `json:"EnableTreeBuild,omitnil,omitempty" name:"EnableTreeBuild"`
 }
 
 type ModelList struct {
@@ -2151,26 +2169,32 @@ type Scene struct {
 }
 
 type SearchConfig struct {
-	// 检索类型：0:混合搜索 1：向量搜索 2：全文搜索
+	// <p>检索类型：0:混合搜索 1：向量搜索 2：全文搜索</p>
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 召回数量最大值
+	// <p>召回数量最大值</p>
 	Num *int64 `json:"Num,omitnil,omitempty" name:"Num"`
 
-	// 权重配置
+	// <p>权重配置</p>
 	EmbeddingWeight *float64 `json:"EmbeddingWeight,omitnil,omitempty" name:"EmbeddingWeight"`
 
-	// 0:关闭 1:开启，默认1
+	// <p>0:关闭 1:开启，默认1</p>
 	Rerank *int64 `json:"Rerank,omitnil,omitempty" name:"Rerank"`
 
-	// 0:关闭 1:开启，默认0
+	// <p>0:关闭 1:开启，默认0</p>
 	AutoRag *int64 `json:"AutoRag,omitnil,omitempty" name:"AutoRag"`
 
-	// AutoRag关联的知识库ID列表
+	// <p>AutoRag关联的知识库ID列表</p>
 	KnowledgeBaseIds []*string `json:"KnowledgeBaseIds,omitnil,omitempty" name:"KnowledgeBaseIds"`
 
-	// AutoRag搜索状态：0-未完成，1-已完成。仅当AutoRag=1时，该字段有效
+	// <p>AutoRag搜索状态：0-未完成，1-已完成。仅当AutoRag=1时，该字段有效</p>
 	SearchStatus *int64 `json:"SearchStatus,omitnil,omitempty" name:"SearchStatus"`
+
+	// <p>0:关闭 1:开启图谱检索，默认0</p>
+	EnableGraphSearch *int64 `json:"EnableGraphSearch,omitnil,omitempty" name:"EnableGraphSearch"`
+
+	// <p>0:关闭 1:开启树检索，默认0</p>
+	EnableTreeSearch *int64 `json:"EnableTreeSearch,omitnil,omitempty" name:"EnableTreeSearch"`
 }
 
 type StepExpand struct {

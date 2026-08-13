@@ -5205,7 +5205,7 @@ type CynosdbClusterDetail struct {
 	// <p>地域</p>
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// <p>可用区</p>
+	// <p>集群主可用区</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
 	// <p>物理可用区</p>
@@ -5295,7 +5295,7 @@ type CynosdbClusterDetail struct {
 	// <p>任务列表</p>
 	Tasks []*ObjectTask `json:"Tasks,omitnil,omitempty" name:"Tasks"`
 
-	// <p>主可用区</p>
+	// <p>读写实例当前所在可用区</p>
 	MasterZone *string `json:"MasterZone,omitnil,omitempty" name:"MasterZone"`
 
 	// <p>从可用区列表</p>
@@ -5369,6 +5369,9 @@ type CynosdbClusterDetail struct {
 
 	// <p>是否开启透明加密</p>
 	IsOpenTDE *bool `json:"IsOpenTDE,omitnil,omitempty" name:"IsOpenTDE"`
+
+	// <p>实例当前所在可用区</p>
+	RealZone *string `json:"RealZone,omitnil,omitempty" name:"RealZone"`
 }
 
 type CynosdbErrorLogItem struct {
@@ -5407,7 +5410,7 @@ type CynosdbInstance struct {
 	// <p>地域</p>
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// <p>可用区</p>
+	// <p>集群主可用区</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
 	// <p>实例状态</p>
@@ -5528,7 +5531,7 @@ type CynosdbInstance struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceTags []*Tag `json:"ResourceTags,omitnil,omitempty" name:"ResourceTags"`
 
-	// <p>主可用区</p>
+	// <p>读写实例当前所在可用区</p>
 	MasterZone *string `json:"MasterZone,omitnil,omitempty" name:"MasterZone"`
 
 	// <p>备可用区</p>
@@ -5562,6 +5565,9 @@ type CynosdbInstance struct {
 
 	// <p>全球数据库唯一标识</p>
 	GdnId *string `json:"GdnId,omitnil,omitempty" name:"GdnId"`
+
+	// <p>实例当前所在可用区</p>
+	RealZone *string `json:"RealZone,omitnil,omitempty" name:"RealZone"`
 }
 
 type CynosdbInstanceDetail struct {
@@ -8871,14 +8877,14 @@ func (r *DescribeClusterDetailDatabasesResponse) FromJsonString(s string) error 
 
 // Predefined struct for user
 type DescribeClusterDetailRequestParams struct {
-	// 集群Id
+	// <p>集群Id</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 }
 
 type DescribeClusterDetailRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群Id
+	// <p>集群Id</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 }
 
@@ -8903,7 +8909,7 @@ func (r *DescribeClusterDetailRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeClusterDetailResponseParams struct {
-	// 集群详细信息
+	// <p>集群详细信息</p>
 	Detail *CynosdbClusterDetail `json:"Detail,omitnil,omitempty" name:"Detail"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

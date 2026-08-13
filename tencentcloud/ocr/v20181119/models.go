@@ -4895,10 +4895,10 @@ type ItemCoord struct {
 	// <p>左上角y。</p>
 	Y *int64 `json:"Y,omitnil,omitempty" name:"Y"`
 
-	// <p>宽width。</p>
+	// <p>宽width。</p><p>单位：px</p>
 	Width *int64 `json:"Width,omitnil,omitempty" name:"Width"`
 
-	// <p>高height。</p>
+	// <p>高height。</p><p>单位：px</p>
 	Height *int64 `json:"Height,omitnil,omitempty" name:"Height"`
 }
 

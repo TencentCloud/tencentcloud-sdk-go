@@ -1,91 +1,125 @@
-# Release v1.3.158
+# Release v1.3.159
 
-## 腾讯云智能体开发平台(adp) 版本：2026-05-20
+## 费用中心(billing) 版本：2018-07-09
 
-### 第 14 次发布
+### 第 94 次发布
 
-发布时间：2026-08-13 01:09:00
+发布时间：2026-08-14 01:12:49
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增数据结构：
+修改接口：
 
-* [DialogCustomConfig](https://cloud.tencent.com/document/api/1759/132545#DialogCustomConfig)
+* [DescribeCostDetail](https://cloud.tencent.com/document/api/555/41010)
+
+	* 新增入参：BusinessCode, ProjectId, RegionId
+
+* [DescribeCostSummaryByResource](https://cloud.tencent.com/document/api/555/41006)
+
+	* 新增入参：TagKey, TagValue
+
+
+
+
+## 日志服务(cls) 版本：2020-10-16
+
+### 第 173 次发布
+
+发布时间：2026-08-14 01:20:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateAlarmNotice](https://cloud.tencent.com/document/api/614/56465)
+
+	* 新增入参：SecureDetailStatus
+
+* [ModifyAlarmNotice](https://cloud.tencent.com/document/api/614/56458)
+
+	* 新增入参：SecureDetailStatus
+
 
 修改数据结构：
 
-* [AppAdvancedConf](https://cloud.tencent.com/document/api/1759/132545#AppAdvancedConf)
+* [AlarmNotice](https://cloud.tencent.com/document/api/614/56471#AlarmNotice)
 
-	* 新增成员：DialogCustomConfig
+	* 新增成员：SecureDetailStatus
 
 
 
 
 ## 云安全一体化平台(csip) 版本：2022-11-21
 
-### 第 96 次发布
+### 第 97 次发布
 
-发布时间：2026-08-13 01:22:36
+发布时间：2026-08-14 01:22:20
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改数据结构：
+新增接口：
 
-* [DspmDbAsset](https://cloud.tencent.com/document/api/664/90825#DspmDbAsset)
+* [CancelEdrAlertIgnore](https://cloud.tencent.com/document/api/664/135933)
+* [CreateCSIPManualMalwareScan](https://cloud.tencent.com/document/api/664/135953)
+* [CreateEDRManualScan](https://cloud.tencent.com/document/api/664/135965)
+* [CreateEdrAlertExportJob](https://cloud.tencent.com/document/api/664/135952)
+* [DeleteCSIPMalwareScanTask](https://cloud.tencent.com/document/api/664/135951)
+* [DeleteEDRRules](https://cloud.tencent.com/document/api/664/135950)
+* [DeleteEDRScanTask](https://cloud.tencent.com/document/api/664/135964)
+* [DescribeCSIPMalwareScanTaskDetail](https://cloud.tencent.com/document/api/664/135949)
+* [DescribeCSIPMalwareScanTaskProgress](https://cloud.tencent.com/document/api/664/135948)
+* [DescribeEDRScanRecordList](https://cloud.tencent.com/document/api/664/135963)
+* [DescribeEDRScanTaskDetail](https://cloud.tencent.com/document/api/664/135962)
+* [DescribeEdrAlertCountForAsset](https://cloud.tencent.com/document/api/664/135947)
+* [DescribeEdrAlertCountForContainer](https://cloud.tencent.com/document/api/664/135946)
+* [DescribeEdrAlertMultiAttackStages](https://cloud.tencent.com/document/api/664/135945)
+* [DescribeEdrAlertSummary](https://cloud.tencent.com/document/api/664/135944)
+* [DescribeEdrExportJobDownloadURL](https://cloud.tencent.com/document/api/664/135943)
+* [DescribeEdrExportJobList](https://cloud.tencent.com/document/api/664/135942)
+* [DescribeNetAttackSetting](https://cloud.tencent.com/document/api/664/135958)
+* [DescribeReverseShellSystemPolicyConfig](https://cloud.tencent.com/document/api/664/135957)
+* [ExportCSIPMalwareScanTaskDetail](https://cloud.tencent.com/document/api/664/135941)
+* [ExportEDRRules](https://cloud.tencent.com/document/api/664/135940)
+* [ModifyEDRRuleStatus](https://cloud.tencent.com/document/api/664/135939)
+* [ModifyEDRRulesAction](https://cloud.tencent.com/document/api/664/135938)
+* [ModifyEdrAlertIsolation](https://cloud.tencent.com/document/api/664/135937)
+* [ModifyEdrAlertStatus](https://cloud.tencent.com/document/api/664/135936)
+* [ModifyNetAttackSetting](https://cloud.tencent.com/document/api/664/135956)
+* [ModifyReverseShellSystemPolicyConfig](https://cloud.tencent.com/document/api/664/135955)
+* [ScanCSIPTaskAgain](https://cloud.tencent.com/document/api/664/135935)
+* [ScanEDRTaskAgain](https://cloud.tencent.com/document/api/664/135961)
+* [StopCSIPManualMalwareScan](https://cloud.tencent.com/document/api/664/135934)
+* [StopEDRScanTask](https://cloud.tencent.com/document/api/664/135960)
 
-	* 新增成员：ClusterId, ClusterName
+新增数据结构：
 
-* [DspmRisk](https://cloud.tencent.com/document/api/664/90825#DspmRisk)
-
-	* 新增成员：ClusterType, ClusterId, ClusterName
-
+* [CSIPMachineExtraInfo](https://cloud.tencent.com/document/api/664/90825#CSIPMachineExtraInfo)
+* [CSIPMalwareScanUuidDetailItem](https://cloud.tencent.com/document/api/664/90825#CSIPMalwareScanUuidDetailItem)
+* [ClusterWithAppIdItem](https://cloud.tencent.com/document/api/664/90825#ClusterWithAppIdItem)
+* [CreatedTaskItem](https://cloud.tencent.com/document/api/664/90825#CreatedTaskItem)
+* [EDRExportJobItem](https://cloud.tencent.com/document/api/664/90825#EDRExportJobItem)
+* [EDRFilters](https://cloud.tencent.com/document/api/664/90825#EDRFilters)
+* [EDRScanRecordItem](https://cloud.tencent.com/document/api/664/90825#EDRScanRecordItem)
+* [EDRScanTaskContainerItem](https://cloud.tencent.com/document/api/664/90825#EDRScanTaskContainerItem)
+* [EDRScanTaskHostItem](https://cloud.tencent.com/document/api/664/90825#EDRScanTaskHostItem)
+* [EdrAlertCountItem](https://cloud.tencent.com/document/api/664/90825#EdrAlertCountItem)
+* [EdrContainerAlertCountItem](https://cloud.tencent.com/document/api/664/90825#EdrContainerAlertCountItem)
+* [EdrContainerGlobalCount](https://cloud.tencent.com/document/api/664/90825#EdrContainerGlobalCount)
+* [MultiAttackStageItem](https://cloud.tencent.com/document/api/664/90825#MultiAttackStageItem)
 
 
 
 ## 云服务器(cvm) 版本：2017-03-12
 
-### 第 169 次发布
+### 第 170 次发布
 
-发布时间：2026-08-13 01:24:32
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateLaunchTemplate](https://cloud.tencent.com/document/api/213/66327)
-
-	* 新增入参：NetworkInterfaces
-
-* [CreateLaunchTemplateVersion](https://cloud.tencent.com/document/api/213/66326)
-
-	* 新增入参：NetworkInterfaces
-
-* [InquiryPriceRunInstances](https://cloud.tencent.com/document/api/213/15726)
-
-	* 新增入参：NetworkInterfaces
-
-* [RunInstances](https://cloud.tencent.com/document/api/213/15730)
-
-	* 新增入参：NetworkInterfaces
-
-
-新增数据结构：
-
-* [NetworkInterfaces](https://cloud.tencent.com/document/api/213/15753#NetworkInterfaces)
-
-
-
-## 腾讯电子签企业版(ess) 版本：2020-11-11
-
-### 第 317 次发布
-
-发布时间：2026-08-13 01:35:27
+发布时间：2026-08-14 01:24:32
 
 本次发布包含了以下内容：
 
@@ -93,111 +127,68 @@
 
 修改数据结构：
 
-* [CreateFlowOption](https://cloud.tencent.com/document/api/1323/70369#CreateFlowOption)
+* [ChcHost](https://cloud.tencent.com/document/api/213/15753#ChcHost)
 
-	* 新增成员：CcInfoVisibility
-
-
-
-
-## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
-
-### 第 272 次发布
-
-发布时间：2026-08-13 01:36:19
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateConsoleLoginUrl](https://cloud.tencent.com/document/api/1420/61524)
-
-	* 新增入参：BusinessLicenseId
+	* 新增成员：ChcGatewayId, DedicatedClusterId, NetworkMode
 
 
 
 
-## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
 
+### 第 186 次发布
 
-
-## 图片内容安全(ims) 版本：2020-12-29
-
-### 第 14 次发布
-
-发布时间：2026-08-13 01:39:59
+发布时间：2026-08-14 01:27:14
 
 本次发布包含了以下内容：
 
 改善已有的文档。
-
-修改接口：
-
-* [ImageModeration](https://cloud.tencent.com/document/api/1125/53273)
-
-	* 新增入参：BizTag
-
-
-
-
-## 图片内容安全(ims) 版本：2020-07-13
-
-
-
-## 云直播CSS(live) 版本：2018-08-01
-
-### 第 183 次发布
-
-发布时间：2026-08-13 01:45:09
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [SwitchCasterToEmergency](https://cloud.tencent.com/document/api/267/127348)
-
-	* 新增入参：FromBeginning
-
-
-
-
-## 腾讯云可观测平台(monitor) 版本：2023-06-16
-
-### 第 9 次发布
-
-发布时间：2026-08-13 01:48:29
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增数据结构：
-
-* [TeamsWorkflowRobotNoticeTmpl](https://cloud.tencent.com/document/api/248/115881#TeamsWorkflowRobotNoticeTmpl)
-* [TeamsWorkflowRobotNoticeTmplMatcher](https://cloud.tencent.com/document/api/248/115881#TeamsWorkflowRobotNoticeTmplMatcher)
 
 修改数据结构：
 
-* [NoticeContentTmplItem](https://cloud.tencent.com/document/api/248/115881#NoticeContentTmplItem)
+* [CynosdbClusterDetail](https://cloud.tencent.com/document/api/1003/48097#CynosdbClusterDetail)
 
-	* 新增成员：TeamsWorkflowRobot
+	* 新增成员：RealZone
 
+* [CynosdbInstance](https://cloud.tencent.com/document/api/1003/48097#CynosdbInstance)
 
-
-
-## 腾讯云可观测平台(monitor) 版本：2018-07-24
-
+	* 新增成员：RealZone
 
 
-## 媒体处理(mps) 版本：2019-06-12
 
-### 第 232 次发布
 
-发布时间：2026-08-13 01:48:35
+## 腾讯云数据分析智能体(dataagent) 版本：2025-05-13
+
+### 第 22 次发布
+
+发布时间：2026-08-14 01:28:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [FileInfo](https://cloud.tencent.com/document/api/1800/125016#FileInfo)
+
+	* 新增成员：EnableGraphBuild, EnableTreeBuild, GraphBuildStatus, TreeBuildStatus
+
+* [KnowledgeTaskConfig](https://cloud.tencent.com/document/api/1800/125016#KnowledgeTaskConfig)
+
+	* 新增成员：EnableGraphBuild, EnableTreeBuild
+
+* [SearchConfig](https://cloud.tencent.com/document/api/1800/125016#SearchConfig)
+
+	* 新增成员：EnableGraphSearch, EnableTreeSearch
+
+
+
+
+## 数据湖计算 DLC(dlc) 版本：2021-01-25
+
+### 第 174 次发布
+
+发布时间：2026-08-14 01:29:54
 
 本次发布包含了以下内容：
 
@@ -205,81 +196,26 @@
 
 新增接口：
 
-* [DescribeAigcTaskList](https://cloud.tencent.com/document/api/862/135904)
+* [ListImages](https://cloud.tencent.com/document/api/1342/135967)
 
 新增数据结构：
 
-* [AigcTaskListItem](https://cloud.tencent.com/document/api/862/37615#AigcTaskListItem)
-* [QueryTaskFilter](https://cloud.tencent.com/document/api/862/37615#QueryTaskFilter)
-
-
-
-## 边缘安全加速平台(teo) 版本：2022-09-01
-
-### 第 156 次发布
-
-发布时间：2026-08-13 02:01:59
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DummyParseZoneFullConfig](https://cloud.tencent.com/document/api/1552/135905)
-
-修改接口：
-
-* [CreateRealtimeLogDeliveryTask](https://cloud.tencent.com/document/api/1552/104112)
-
-	* 新增入参：CustomExpressionFields
-
-* [ModifyRealtimeLogDeliveryTask](https://cloud.tencent.com/document/api/1552/104109)
-
-	* 新增入参：CustomExpressionFields
-
-
-新增数据结构：
-
-* [ConfigGroupFunctionRegionSelection](https://cloud.tencent.com/document/api/1552/80721#ConfigGroupFunctionRegionSelection)
-* [ConfigGroupFunctionTrigger](https://cloud.tencent.com/document/api/1552/80721#ConfigGroupFunctionTrigger)
-* [ConfigGroupFunctionWeightedSelection](https://cloud.tencent.com/document/api/1552/80721#ConfigGroupFunctionWeightedSelection)
-* [ConfigGroupRuleEngineItem](https://cloud.tencent.com/document/api/1552/80721#ConfigGroupRuleEngineItem)
-* [CustomAction](https://cloud.tencent.com/document/api/1552/80721#CustomAction)
-* [CustomActionParameter](https://cloud.tencent.com/document/api/1552/80721#CustomActionParameter)
-* [CustomActionParameters](https://cloud.tencent.com/document/api/1552/80721#CustomActionParameters)
-* [CustomExpressionField](https://cloud.tencent.com/document/api/1552/80721#CustomExpressionField)
-* [HostPolicy](https://cloud.tencent.com/document/api/1552/80721#HostPolicy)
-* [WebSecurity](https://cloud.tencent.com/document/api/1552/80721#WebSecurity)
-* [WebSecurityTemplates](https://cloud.tencent.com/document/api/1552/80721#WebSecurityTemplates)
-* [ZoneFullConfig](https://cloud.tencent.com/document/api/1552/80721#ZoneFullConfig)
+* [ImageDto](https://cloud.tencent.com/document/api/1342/53778#ImageDto)
 
 修改数据结构：
 
-* [LogFormat](https://cloud.tencent.com/document/api/1552/80721#LogFormat)
+* [ResourceSaleInfo](https://cloud.tencent.com/document/api/1342/53778#ResourceSaleInfo)
 
-	* 新增成员：RecordTemplate
+	* 新增成员：StatusCategory
 
-* [RealtimeLogDeliveryTask](https://cloud.tencent.com/document/api/1552/80721#RealtimeLogDeliveryTask)
-
-	* 新增成员：CustomExpressionFields
-
-* [RuleEngineAction](https://cloud.tencent.com/document/api/1552/80721#RuleEngineAction)
-
-	* 新增成员：CustomActionParameters
-
-
-
-
-## 边缘安全加速平台(teo) 版本：2022-01-06
 
 
 
 ## TI-ONE 训练平台(tione) 版本：2021-11-11
 
-### 第 131 次发布
+### 第 132 次发布
 
-发布时间：2026-08-13 02:03:35
+发布时间：2026-08-14 02:02:56
 
 本次发布包含了以下内容：
 
@@ -287,7 +223,7 @@
 
 修改接口：
 
-* [DescribeDatasets](https://cloud.tencent.com/document/api/851/75077)
+* [DescribeExport](https://cloud.tencent.com/document/api/851/124490)
 
 	* 新增入参：TiProjectId
 
@@ -295,6 +231,55 @@
 
 
 ## TI-ONE 训练平台(tione) 版本：2019-10-22
+
+
+
+## 文本内容安全(tms) 版本：2020-12-29
+
+### 第 18 次发布
+
+发布时间：2026-08-14 02:04:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [TextModeration](https://cloud.tencent.com/document/api/1124/51860)
+
+	* 新增入参：BizTag
+
+
+修改数据结构：
+
+* [DetailResults](https://cloud.tencent.com/document/api/1124/51861#DetailResults)
+
+	* 新增成员：HitSnippetInfos
+
+
+
+
+## 文本内容安全(tms) 版本：2020-07-13
+
+
+
+## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 162 次发布
+
+发布时间：2026-08-14 02:11:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ClbObject](https://cloud.tencent.com/document/api/627/53609#ClbObject)
+
+	* 新增成员：LLMStatus
+
 
 
 
