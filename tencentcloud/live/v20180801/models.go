@@ -22085,15 +22085,21 @@ func (r *SwitchBackupStreamResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SwitchCasterToEmergencyRequestParams struct {
-	// 导播台ID。
+	// <p>导播台ID。</p>
 	CasterId *uint64 `json:"CasterId,omitnil,omitempty" name:"CasterId"`
+
+	// <p>是否启用从头开始播放功能，仅对单点播输入源生效</p><p>默认值：false</p>
+	FromBeginning *bool `json:"FromBeginning,omitnil,omitempty" name:"FromBeginning"`
 }
 
 type SwitchCasterToEmergencyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 导播台ID。
+	// <p>导播台ID。</p>
 	CasterId *uint64 `json:"CasterId,omitnil,omitempty" name:"CasterId"`
+
+	// <p>是否启用从头开始播放功能，仅对单点播输入源生效</p><p>默认值：false</p>
+	FromBeginning *bool `json:"FromBeginning,omitnil,omitempty" name:"FromBeginning"`
 }
 
 func (r *SwitchCasterToEmergencyRequest) ToJsonString() string {
@@ -22109,6 +22115,7 @@ func (r *SwitchCasterToEmergencyRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "CasterId")
+	delete(f, "FromBeginning")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SwitchCasterToEmergencyRequest has unknown keys!", "")
 	}
@@ -22117,10 +22124,7 @@ func (r *SwitchCasterToEmergencyRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SwitchCasterToEmergencyResponseParams struct {
-	// 备播状态，范围[0,1,2]
-	// 0. 正常直播状态
-	// 1. 备播状态
-	// 2. 备播切换正常直播中，在配置了延播时长时出现
+	// <p>备播状态，范围[0,1,2]</p><ol start="0"><li>正常直播状态</li><li>备播状态</li><li>备播切换正常直播中，在配置了延播时长时出现</li></ol>
 	EmergencyStatus *int64 `json:"EmergencyStatus,omitnil,omitempty" name:"EmergencyStatus"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

@@ -2547,32 +2547,32 @@ func (r *DeleteResourcesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteTableConfigRequestParams struct {
-	// 作业ID
+	// <p>作业ID</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
-	// 调试作业ID
+	// <p>调试作业ID</p>
 	DebugId *int64 `json:"DebugId,omitnil,omitempty" name:"DebugId"`
 
-	// 表名
+	// <p>表名</p>
 	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
 
-	// 工作空间 SerialId
+	// <p>工作空间 SerialId</p>
 	WorkSpaceId *string `json:"WorkSpaceId,omitnil,omitempty" name:"WorkSpaceId"`
 }
 
 type DeleteTableConfigRequest struct {
 	*tchttp.BaseRequest
 	
-	// 作业ID
+	// <p>作业ID</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
-	// 调试作业ID
+	// <p>调试作业ID</p>
 	DebugId *int64 `json:"DebugId,omitnil,omitempty" name:"DebugId"`
 
-	// 表名
+	// <p>表名</p>
 	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
 
-	// 工作空间 SerialId
+	// <p>工作空间 SerialId</p>
 	WorkSpaceId *string `json:"WorkSpaceId,omitnil,omitempty" name:"WorkSpaceId"`
 }
 

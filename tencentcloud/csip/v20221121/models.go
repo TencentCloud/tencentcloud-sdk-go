@@ -6987,20 +6987,20 @@ func (r *DeleteDspmAssetAccountResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteDspmBackupLogListRequestParams struct {
-	// 备份日志Id
+	// <p>备份日志Id</p>
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 集团账号的成员id
+	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 }
 
 type DeleteDspmBackupLogListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 备份日志Id
+	// <p>备份日志Id</p>
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 集团账号的成员id
+	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 }
 
@@ -7550,20 +7550,20 @@ func (r *DeleteDspmPersonalIdentifyResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteDspmRestoreLogListRequestParams struct {
-	// 日志Id
+	// <p>日志Id</p>
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 集团账号的成员id
+	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 }
 
 type DeleteDspmRestoreLogListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 日志Id
+	// <p>日志Id</p>
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 集团账号的成员id
+	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 }
 
@@ -14481,14 +14481,14 @@ func (r *DescribeDspmBackupLogListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDspmBackupSettingRequestParams struct {
-	// 集团账号的成员id
+	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 }
 
 type DescribeDspmBackupSettingRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集团账号的成员id
+	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 }
 
@@ -14513,19 +14513,19 @@ func (r *DescribeDspmBackupSettingRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDspmBackupSettingResponseParams struct {
-	// 备份日志保留时长
+	// <p>备份日志保留时长</p>
 	BackupLogSaveTime *int64 `json:"BackupLogSaveTime,omitnil,omitempty" name:"BackupLogSaveTime"`
 
-	// 恢复日志保留时长
+	// <p>恢复日志保留时长</p>
 	RestoreLogSaveTime *int64 `json:"RestoreLogSaveTime,omitnil,omitempty" name:"RestoreLogSaveTime"`
 
-	// 日志最大生命周期限制
+	// <p>日志最大生命周期限制</p>
 	LogMaxSaveTime *int64 `json:"LogMaxSaveTime,omitnil,omitempty" name:"LogMaxSaveTime"`
 
-	// 在线日志最大天数限制
+	// <p>在线日志最大天数限制</p>
 	OnlineLogMaxSaveTime *int64 `json:"OnlineLogMaxSaveTime,omitnil,omitempty" name:"OnlineLogMaxSaveTime"`
 
-	// 最大在线日志条数，单位是：个
+	// <p>最大在线日志条数，单位是：个</p>
 	MaxOnlineLogCount *int64 `json:"MaxOnlineLogCount,omitnil,omitempty" name:"MaxOnlineLogCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -15601,106 +15601,106 @@ type DescribeDspmLogListRequestParams struct {
 	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
-	// 限制数目
+	// <p>限制数目</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量
+	// <p>偏移量</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 排序方式(desc=倒叙,asc=升序)
+	// <p>排序方式(desc=倒叙,asc=升序)</p>
 	Sort *string `json:"Sort,omitnil,omitempty" name:"Sort"`
 
-	// 排序字段(opTime=时间,dangerLvl=风险等级)
+	// <p>排序字段(opTime=时间,dangerLvl=风险等级)</p>
 	Field *string `json:"Field,omitnil,omitempty" name:"Field"`
 
-	// 风险等级(0-安全,1-低风险,2-中风险,3-高风险,不传全部)
+	// <p>风险等级(0-安全,1-低风险,2-中风险,3-高风险,不传全部)</p>
 	DangerLevel *string `json:"DangerLevel,omitnil,omitempty" name:"DangerLevel"`
 
-	// 数据库名称
+	// <p>数据库名称</p>
 	DbName *string `json:"DbName,omitnil,omitempty" name:"DbName"`
 
-	// 数据库端口
+	// <p>数据库端口</p>
 	DbPort *int64 `json:"DbPort,omitnil,omitempty" name:"DbPort"`
 
-	// 数据库 IP
+	// <p>数据库 IP</p>
 	DbIp *string `json:"DbIp,omitnil,omitempty" name:"DbIp"`
 
-	// 资产 ID
+	// <p>资产 ID</p>
 	AssetsId *int64 `json:"AssetsId,omitnil,omitempty" name:"AssetsId"`
 
-	// 会话 ID
+	// <p>会话 ID</p>
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 
-	// 客户端 IP
+	// <p>客户端 IP</p>
 	ClientSideIp *string `json:"ClientSideIp,omitnil,omitempty" name:"ClientSideIp"`
 
-	// 结束时间
+	// <p>结束时间</p>
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 命中规则
+	// <p>命中规则</p>
 	HitRule *int64 `json:"HitRule,omitnil,omitempty" name:"HitRule"`
 
-	// 开始时间
+	// <p>开始时间</p>
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 模糊查询
+	// <p>模糊查询</p>
 	FuzzySearch *string `json:"FuzzySearch,omitnil,omitempty" name:"FuzzySearch"`
 
-	// 用户名
+	// <p>用户名</p>
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
-	// 恢复日志id
+	// <p>恢复日志id</p>
 	RestoreLogId *int64 `json:"RestoreLogId,omitnil,omitempty" name:"RestoreLogId"`
 
-	// 客户端
+	// <p>客户端</p>
 	ClientName *string `json:"ClientName,omitnil,omitempty" name:"ClientName"`
 
-	// 流量来源，取值 Agent/Proxy/空；传Agent会返回Agent的日志，传Proxy会返回Proxy日志，两者都传或不传则返回所有
+	// <p>流量来源，取值 Agent/Proxy/空；传Agent会返回Agent的日志，传Proxy会返回Proxy日志，两者都传或不传则返回所有</p>
 	SourceTypes []*string `json:"SourceTypes,omitnil,omitempty" name:"SourceTypes"`
 
-	// 表名，长度限制64，多个表名查询的话可以用空格连接
+	// <p>表名，长度限制64，多个表名查询的话可以用空格连接</p>
 	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
 
-	// 字段名，长度限制64，多个字段名查询的话可以用空格连接
+	// <p>字段名，长度限制64，多个字段名查询的话可以用空格连接</p>
 	FieldName *string `json:"FieldName,omitnil,omitempty" name:"FieldName"`
 
-	// SQL 主要类型，DDL, DML, DCL, TCL
+	// <p>SQL 主要类型，DDL, DML, DCL, TCL</p>
 	SqlMainTypes []*string `json:"SqlMainTypes,omitnil,omitempty" name:"SqlMainTypes"`
 
-	// 操作类型
+	// <p>操作类型</p>
 	SqlType *string `json:"SqlType,omitnil,omitempty" name:"SqlType"`
 
-	// 影响行数最小值 
+	// <p>影响行数最小值</p>
 	RowNumMin *int64 `json:"RowNumMin,omitnil,omitempty" name:"RowNumMin"`
 
-	// 影响行数最大值
+	// <p>影响行数最大值</p>
 	RowNumMax *int64 `json:"RowNumMax,omitnil,omitempty" name:"RowNumMax"`
 
-	// 数据库类型, 支持的值：cdb，mariadb
+	// <p>数据库类型, 支持的值：cdb，mariadb</p>
 	DbTypes []*string `json:"DbTypes,omitnil,omitempty" name:"DbTypes"`
 
-	// 返回码
+	// <p>返回码</p>
 	RetNo *int64 `json:"RetNo,omitnil,omitempty" name:"RetNo"`
 
-	// 客户端工具
+	// <p>客户端工具</p>
 	ClientDriverName *string `json:"ClientDriverName,omitnil,omitempty" name:"ClientDriverName"`
 
-	// 客户端端口
+	// <p>客户端端口</p>
 	ClientPort *int64 `json:"ClientPort,omitnil,omitempty" name:"ClientPort"`
 
-	// 审计日志 ID
+	// <p>审计日志 ID</p>
 	LogId *string `json:"LogId,omitnil,omitempty" name:"LogId"`
 
-	// 风险等级数组(0-安全,1-低风险,2-中风险,3-高风险)
+	// <p>风险等级数组(0-安全,1-低风险,2-中风险,3-高风险)</p>
 	DangerLevels []*int64 `json:"DangerLevels,omitnil,omitempty" name:"DangerLevels"`
 
-	// 字段分类
+	// <p>字段分类</p>
 	SensitiveCategoryRule *string `json:"SensitiveCategoryRule,omitnil,omitempty" name:"SensitiveCategoryRule"`
 
-	// 字段分级
+	// <p>字段分级</p>
 	SensitiveLevelRisk *string `json:"SensitiveLevelRisk,omitnil,omitempty" name:"SensitiveLevelRisk"`
 
-	// 客户端MAC
+	// <p>客户端MAC</p>
 	ClientMac *string `json:"ClientMac,omitnil,omitempty" name:"ClientMac"`
 }
 
@@ -15710,106 +15710,106 @@ type DescribeDspmLogListRequest struct {
 	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
-	// 限制数目
+	// <p>限制数目</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量
+	// <p>偏移量</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 排序方式(desc=倒叙,asc=升序)
+	// <p>排序方式(desc=倒叙,asc=升序)</p>
 	Sort *string `json:"Sort,omitnil,omitempty" name:"Sort"`
 
-	// 排序字段(opTime=时间,dangerLvl=风险等级)
+	// <p>排序字段(opTime=时间,dangerLvl=风险等级)</p>
 	Field *string `json:"Field,omitnil,omitempty" name:"Field"`
 
-	// 风险等级(0-安全,1-低风险,2-中风险,3-高风险,不传全部)
+	// <p>风险等级(0-安全,1-低风险,2-中风险,3-高风险,不传全部)</p>
 	DangerLevel *string `json:"DangerLevel,omitnil,omitempty" name:"DangerLevel"`
 
-	// 数据库名称
+	// <p>数据库名称</p>
 	DbName *string `json:"DbName,omitnil,omitempty" name:"DbName"`
 
-	// 数据库端口
+	// <p>数据库端口</p>
 	DbPort *int64 `json:"DbPort,omitnil,omitempty" name:"DbPort"`
 
-	// 数据库 IP
+	// <p>数据库 IP</p>
 	DbIp *string `json:"DbIp,omitnil,omitempty" name:"DbIp"`
 
-	// 资产 ID
+	// <p>资产 ID</p>
 	AssetsId *int64 `json:"AssetsId,omitnil,omitempty" name:"AssetsId"`
 
-	// 会话 ID
+	// <p>会话 ID</p>
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 
-	// 客户端 IP
+	// <p>客户端 IP</p>
 	ClientSideIp *string `json:"ClientSideIp,omitnil,omitempty" name:"ClientSideIp"`
 
-	// 结束时间
+	// <p>结束时间</p>
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 命中规则
+	// <p>命中规则</p>
 	HitRule *int64 `json:"HitRule,omitnil,omitempty" name:"HitRule"`
 
-	// 开始时间
+	// <p>开始时间</p>
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 模糊查询
+	// <p>模糊查询</p>
 	FuzzySearch *string `json:"FuzzySearch,omitnil,omitempty" name:"FuzzySearch"`
 
-	// 用户名
+	// <p>用户名</p>
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
-	// 恢复日志id
+	// <p>恢复日志id</p>
 	RestoreLogId *int64 `json:"RestoreLogId,omitnil,omitempty" name:"RestoreLogId"`
 
-	// 客户端
+	// <p>客户端</p>
 	ClientName *string `json:"ClientName,omitnil,omitempty" name:"ClientName"`
 
-	// 流量来源，取值 Agent/Proxy/空；传Agent会返回Agent的日志，传Proxy会返回Proxy日志，两者都传或不传则返回所有
+	// <p>流量来源，取值 Agent/Proxy/空；传Agent会返回Agent的日志，传Proxy会返回Proxy日志，两者都传或不传则返回所有</p>
 	SourceTypes []*string `json:"SourceTypes,omitnil,omitempty" name:"SourceTypes"`
 
-	// 表名，长度限制64，多个表名查询的话可以用空格连接
+	// <p>表名，长度限制64，多个表名查询的话可以用空格连接</p>
 	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
 
-	// 字段名，长度限制64，多个字段名查询的话可以用空格连接
+	// <p>字段名，长度限制64，多个字段名查询的话可以用空格连接</p>
 	FieldName *string `json:"FieldName,omitnil,omitempty" name:"FieldName"`
 
-	// SQL 主要类型，DDL, DML, DCL, TCL
+	// <p>SQL 主要类型，DDL, DML, DCL, TCL</p>
 	SqlMainTypes []*string `json:"SqlMainTypes,omitnil,omitempty" name:"SqlMainTypes"`
 
-	// 操作类型
+	// <p>操作类型</p>
 	SqlType *string `json:"SqlType,omitnil,omitempty" name:"SqlType"`
 
-	// 影响行数最小值 
+	// <p>影响行数最小值</p>
 	RowNumMin *int64 `json:"RowNumMin,omitnil,omitempty" name:"RowNumMin"`
 
-	// 影响行数最大值
+	// <p>影响行数最大值</p>
 	RowNumMax *int64 `json:"RowNumMax,omitnil,omitempty" name:"RowNumMax"`
 
-	// 数据库类型, 支持的值：cdb，mariadb
+	// <p>数据库类型, 支持的值：cdb，mariadb</p>
 	DbTypes []*string `json:"DbTypes,omitnil,omitempty" name:"DbTypes"`
 
-	// 返回码
+	// <p>返回码</p>
 	RetNo *int64 `json:"RetNo,omitnil,omitempty" name:"RetNo"`
 
-	// 客户端工具
+	// <p>客户端工具</p>
 	ClientDriverName *string `json:"ClientDriverName,omitnil,omitempty" name:"ClientDriverName"`
 
-	// 客户端端口
+	// <p>客户端端口</p>
 	ClientPort *int64 `json:"ClientPort,omitnil,omitempty" name:"ClientPort"`
 
-	// 审计日志 ID
+	// <p>审计日志 ID</p>
 	LogId *string `json:"LogId,omitnil,omitempty" name:"LogId"`
 
-	// 风险等级数组(0-安全,1-低风险,2-中风险,3-高风险)
+	// <p>风险等级数组(0-安全,1-低风险,2-中风险,3-高风险)</p>
 	DangerLevels []*int64 `json:"DangerLevels,omitnil,omitempty" name:"DangerLevels"`
 
-	// 字段分类
+	// <p>字段分类</p>
 	SensitiveCategoryRule *string `json:"SensitiveCategoryRule,omitnil,omitempty" name:"SensitiveCategoryRule"`
 
-	// 字段分级
+	// <p>字段分级</p>
 	SensitiveLevelRisk *string `json:"SensitiveLevelRisk,omitnil,omitempty" name:"SensitiveLevelRisk"`
 
-	// 客户端MAC
+	// <p>客户端MAC</p>
 	ClientMac *string `json:"ClientMac,omitnil,omitempty" name:"ClientMac"`
 }
 
@@ -15868,10 +15868,10 @@ func (r *DescribeDspmLogListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDspmLogListResponseParams struct {
-	// 总数目
+	// <p>总数目</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 日志信息列表
+	// <p>日志信息列表</p>
 	List []*AuditLogInfo `json:"List,omitnil,omitempty" name:"List"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -23968,20 +23968,20 @@ type DomainInfo struct {
 
 // Predefined struct for user
 type DownloadDspmExportLogRequestParams struct {
-	// 集团账号的成员id
+	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
-	// 要下载的导出任务ID
+	// <p>要下载的导出任务ID</p>
 	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
 type DownloadDspmExportLogRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集团账号的成员id
+	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
-	// 要下载的导出任务ID
+	// <p>要下载的导出任务ID</p>
 	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
@@ -24007,7 +24007,7 @@ func (r *DownloadDspmExportLogRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DownloadDspmExportLogResponseParams struct {
-	// 下载URL
+	// <p>下载URL</p>
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -24734,114 +24734,118 @@ type DspmDbAccountPrivilege struct {
 }
 
 type DspmDbAsset struct {
-	// 资产实例Id
+	// <p>资产实例Id</p>
 	AssetId *string `json:"AssetId,omitnil,omitempty" name:"AssetId"`
 
-	// 资产类型
+	// <p>资产类型</p>
 	AssetType *string `json:"AssetType,omitnil,omitempty" name:"AssetType"`
 
-	//  资产名
+	// <p>资产名</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 账号数
+	// <p>账号数</p>
 	AccountCount *int64 `json:"AccountCount,omitnil,omitempty" name:"AccountCount"`
 
-	// 公网访问地址，如果有多个，使用';'分割
+	// <p>公网访问地址，如果有多个，使用&#39;;&#39;分割</p>
 	PublicIp *string `json:"PublicIp,omitnil,omitempty" name:"PublicIp"`
 
-	// 内网访问地址，如果有多个，使用';'分割
+	// <p>内网访问地址，如果有多个，使用&#39;;&#39;分割</p>
 	PrivateIp *string `json:"PrivateIp,omitnil,omitempty" name:"PrivateIp"`
 
-	// 广域网域名地址，如果有多个，使用';'分割
+	// <p>广域网域名地址，如果有多个，使用&#39;;&#39;分割</p>
 	WanDomain *string `json:"WanDomain,omitnil,omitempty" name:"WanDomain"`
 
-	// 地域
+	// <p>地域</p>
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 资产所在vpc的vpcid
+	// <p>资产所在vpc的vpcid</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 资产所在vpc的vpc名
+	// <p>资产所在vpc的vpc名</p>
 	VpcName *string `json:"VpcName,omitnil,omitempty" name:"VpcName"`
 
-	// 资产所在vpc子网的subnetid
+	// <p>资产所在vpc子网的subnetid</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 资产所在vpc子网名
+	// <p>资产所在vpc子网名</p>
 	SubnetName *string `json:"SubnetName,omitnil,omitempty" name:"SubnetName"`
 
-	// 实例状态
+	// <p>实例状态</p>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 创建时间。
+	// <p>创建时间。</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 管理者信息。
+	// <p>管理者信息。</p>
 	Manager []*DspmUinUser `json:"Manager,omitnil,omitempty" name:"Manager"`
 
-	// 是否绑定身份。0-未绑定 1-已绑定
+	// <p>是否绑定身份。0-未绑定 1-已绑定</p>
 	BindIdentify *int64 `json:"BindIdentify,omitnil,omitempty" name:"BindIdentify"`
 
-	// 是否管理员
+	// <p>是否管理员</p>
 	IsManager *int64 `json:"IsManager,omitnil,omitempty" name:"IsManager"`
 
-	// 风险统计信息
+	// <p>风险统计信息</p>
 	RiskCount *DspmRiskCount `json:"RiskCount,omitnil,omitempty" name:"RiskCount"`
 
-	// 安全建议。
-	// Resolve 立即解决
-	// Reinforcement 加固
-	// None 暂无异常
+	// <p>安全建议。<br>Resolve 立即解决<br>Reinforcement 加固<br>None 暂无异常</p>
 	SafetyAdvice *string `json:"SafetyAdvice,omitnil,omitempty" name:"SafetyAdvice"`
 
-	// 日志投递状态。
-	// 0-投递关闭 1-投递打开 2-投递开通中 3-投递关闭中
+	// <p>日志投递状态。<br>0-投递关闭 1-投递打开 2-投递开通中 3-投递关闭中</p>
 	LogDeliveryStatus *int64 `json:"LogDeliveryStatus,omitnil,omitempty" name:"LogDeliveryStatus"`
 
-	// 是否支持日志投递。0-不支持 1-支持
+	// <p>是否支持日志投递。0-不支持 1-支持</p>
 	LogDeliverySupported *int64 `json:"LogDeliverySupported,omitnil,omitempty" name:"LogDeliverySupported"`
 
-	// 数据扫描信息
+	// <p>数据扫描信息</p>
 	DataScanInfo *DspmAssetDataScanDetail `json:"DataScanInfo,omitnil,omitempty" name:"DataScanInfo"`
 
-	// 资产所属账号app id
+	// <p>资产所属账号app id</p>
 	AppId *uint64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 
-	// 账号昵称
+	// <p>账号昵称</p>
 	NickName *string `json:"NickName,omitnil,omitempty" name:"NickName"`
 
-	// 资产所属账号uin
+	// <p>资产所属账号uin</p>
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 
-	// 安全分析状态（0-关闭 1-打开 2-开通中 3-关闭中）
+	// <p>安全分析状态（0-关闭 1-打开 2-开通中 3-关闭中）</p>
 	SecurityAnalyseStatus *int64 `json:"SecurityAnalyseStatus,omitnil,omitempty" name:"SecurityAnalyseStatus"`
 
-	// 当前实例的总日志数
+	// <p>当前实例的总日志数</p>
 	TotalAuditLogs *uint64 `json:"TotalAuditLogs,omitnil,omitempty" name:"TotalAuditLogs"`
 
-	// 日志审计禁止开通的原因，可选值：VersionNotSupportLogSubscription, InstanceIsUpgrading, CdbRuleAuditEnabled, AssetNotExists
+	// <p>日志审计禁止开通的原因，可选值：VersionNotSupportLogSubscription, InstanceIsUpgrading, CdbRuleAuditEnabled, AssetNotExists</p>
 	LogDeliveryDisableReason *string `json:"LogDeliveryDisableReason,omitnil,omitempty" name:"LogDeliveryDisableReason"`
 
-	// 在线日志的起始时间戳，精确到秒
+	// <p>在线日志的起始时间戳，精确到秒</p>
 	OldestOnlineLogTimestamp *uint64 `json:"OldestOnlineLogTimestamp,omitnil,omitempty" name:"OldestOnlineLogTimestamp"`
 
-	// 在线日志的最新时间戳，精确到秒
+	// <p>在线日志的最新时间戳，精确到秒</p>
 	NewestOnlineLogTimestamp *uint64 `json:"NewestOnlineLogTimestamp,omitnil,omitempty" name:"NewestOnlineLogTimestamp"`
 
-	// 操作错误信息
+	// <p>操作错误信息</p>
 	OperationErrorMsg *string `json:"OperationErrorMsg,omitnil,omitempty" name:"OperationErrorMsg"`
 
-	// 是否支持账号操作。0 不支持；1 支持
+	// <p>是否支持账号操作。0 不支持；1 支持</p>
 	AccountOptSupported *int64 `json:"AccountOptSupported,omitnil,omitempty" name:"AccountOptSupported"`
 
-	// 实例类型
+	// <p>实例类型</p>
 	InstanceType *int64 `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
-	// 集群类型（MongoDB），与云接口 DescribeDBInstances 的 ClusterType 一致：0-副本集 1-分片；非 MongoDB 资产固定 0
+	// <p>集群类型（MongoDB），与云接口 DescribeDBInstances 的 ClusterType 一致：0-副本集 1-分片；非 MongoDB 资产固定 0</p>
 	ClusterType *int64 `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 
-	// 是否支持敏感数据识别。0 不支持；1 支持
+	// <p>是否支持敏感数据识别。0 不支持；1 支持</p>
 	IdentifyScanSupported *int64 `json:"IdentifyScanSupported,omitnil,omitempty" name:"IdentifyScanSupported"`
+
+	// <p>集群ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// <p>集群名</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 }
 
 type DspmDbAssetId struct {
@@ -25298,83 +25302,94 @@ type DspmPersonUser struct {
 }
 
 type DspmRisk struct {
-	// 风险id
+	// <p>风险id</p>
 	RiskId *string `json:"RiskId,omitnil,omitempty" name:"RiskId"`
 
-	// 风险名称
+	// <p>风险名称</p>
 	RiskName *string `json:"RiskName,omitnil,omitempty" name:"RiskName"`
 
-	// 风险英文名称
+	// <p>风险英文名称</p>
 	RiskNameEn *string `json:"RiskNameEn,omitnil,omitempty" name:"RiskNameEn"`
 
-	// 策略类型
+	// <p>策略类型</p>
 	StrategyType *string `json:"StrategyType,omitnil,omitempty" name:"StrategyType"`
 
-	// 策略类别
+	// <p>策略类别</p>
 	StrategyCategory *string `json:"StrategyCategory,omitnil,omitempty" name:"StrategyCategory"`
 
-	// 风险等级
+	// <p>风险等级</p>
 	RiskLevel *string `json:"RiskLevel,omitnil,omitempty" name:"RiskLevel"`
 
-	// 资产实例Id
+	// <p>资产实例Id</p>
 	AssetId *string `json:"AssetId,omitnil,omitempty" name:"AssetId"`
 
-	// 资产类型
+	// <p>资产类型</p>
 	AssetType *string `json:"AssetType,omitnil,omitempty" name:"AssetType"`
 
-	// 资产名
+	// <p>资产名</p>
 	AssetName *string `json:"AssetName,omitnil,omitempty" name:"AssetName"`
 
-	// 地域
+	// <p>地域</p>
 	AssetRegion *string `json:"AssetRegion,omitnil,omitempty" name:"AssetRegion"`
 
-	// 资产账号
+	// <p>资产账号</p>
 	Account *string `json:"Account,omitnil,omitempty" name:"Account"`
 
-	// 主机地址
+	// <p>主机地址</p>
 	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
 
-	// 账号类型
+	// <p>账号类型</p>
 	AccountType *int64 `json:"AccountType,omitnil,omitempty" name:"AccountType"`
 
-	// 风险检出时间
+	// <p>风险检出时间</p>
 	DetectTime *string `json:"DetectTime,omitnil,omitempty" name:"DetectTime"`
 
-	// 处理状态 0-未处理 1-已处置 2-已忽略
+	// <p>处理状态 0-未处理 1-已处置 2-已忽略</p>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 身份id
+	// <p>身份id</p>
 	IdentifyId *string `json:"IdentifyId,omitnil,omitempty" name:"IdentifyId"`
 
-	// 所属云账号uin用户
+	// <p>所属云账号uin用户</p>
 	OwnerUin *DspmUinUser `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
 
-	// 所属个人用户信息
+	// <p>所属个人用户信息</p>
 	Person *DspmPersonUser `json:"Person,omitnil,omitempty" name:"Person"`
 
-	// 风险数据。
+	// <p>风险数据。</p>
 	RiskData *string `json:"RiskData,omitnil,omitempty" name:"RiskData"`
 
-	// 是否资产管理员
+	// <p>是否资产管理员</p>
 	IsAssetManager *int64 `json:"IsAssetManager,omitnil,omitempty" name:"IsAssetManager"`
 
-	// 数据起始时间
+	// <p>数据起始时间</p>
 	DataBeginTime *string `json:"DataBeginTime,omitnil,omitempty" name:"DataBeginTime"`
 
-	// 数据结束时间
+	// <p>数据结束时间</p>
 	DataEndTime *string `json:"DataEndTime,omitnil,omitempty" name:"DataEndTime"`
 
-	// 风险类型。risk-风险；alarm-告警。
+	// <p>风险类型。risk-风险；alarm-告警。</p>
 	RiskType *string `json:"RiskType,omitnil,omitempty" name:"RiskType"`
 
-	// 资产所属账号app id
+	// <p>资产所属账号app id</p>
 	AppId *uint64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 
-	// 账号昵称
+	// <p>账号昵称</p>
 	NickName *string `json:"NickName,omitnil,omitempty" name:"NickName"`
 
-	// 资产所属账号uin
+	// <p>资产所属账号uin</p>
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
+
+	// <p>MongoDb的集群类型，非 MongoDB 资产固定 0</p><p>枚举值：</p><ul><li>0： 副本集</li><li>1： 分片</li></ul><p>默认值：0</p>
+	ClusterType *int64 `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
+
+	// <p>集群ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// <p>集群名</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 }
 
 type DspmRiskCount struct {
@@ -28730,38 +28745,38 @@ func (r *ModifyDspmAssetSecurityAnalysisSwitchResponse) FromJsonString(s string)
 
 // Predefined struct for user
 type ModifyDspmBackupSettingRequestParams struct {
-	// 集团账号的成员id
+	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
-	// 备份日志保留时长
+	// <p>备份日志保留时长</p>
 	BackupLogSaveTime *int64 `json:"BackupLogSaveTime,omitnil,omitempty" name:"BackupLogSaveTime"`
 
-	// 恢复日志保留时长
+	// <p>恢复日志保留时长</p>
 	RestoreLogSaveTime *int64 `json:"RestoreLogSaveTime,omitnil,omitempty" name:"RestoreLogSaveTime"`
 
-	// 日志最大生命周期限制
+	// <p>日志最大生命周期限制</p>
 	LogMaxSaveTime *int64 `json:"LogMaxSaveTime,omitnil,omitempty" name:"LogMaxSaveTime"`
 
-	// 在线日志最大天数限制
+	// <p>在线日志最大天数限制</p>
 	OnlineLogMaxSaveTime *int64 `json:"OnlineLogMaxSaveTime,omitnil,omitempty" name:"OnlineLogMaxSaveTime"`
 }
 
 type ModifyDspmBackupSettingRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集团账号的成员id
+	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
-	// 备份日志保留时长
+	// <p>备份日志保留时长</p>
 	BackupLogSaveTime *int64 `json:"BackupLogSaveTime,omitnil,omitempty" name:"BackupLogSaveTime"`
 
-	// 恢复日志保留时长
+	// <p>恢复日志保留时长</p>
 	RestoreLogSaveTime *int64 `json:"RestoreLogSaveTime,omitnil,omitempty" name:"RestoreLogSaveTime"`
 
-	// 日志最大生命周期限制
+	// <p>日志最大生命周期限制</p>
 	LogMaxSaveTime *int64 `json:"LogMaxSaveTime,omitnil,omitempty" name:"LogMaxSaveTime"`
 
-	// 在线日志最大天数限制
+	// <p>在线日志最大天数限制</p>
 	OnlineLogMaxSaveTime *int64 `json:"OnlineLogMaxSaveTime,omitnil,omitempty" name:"OnlineLogMaxSaveTime"`
 }
 
@@ -29623,20 +29638,20 @@ func (r *ModifyDspmPersonalIdentifyResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyDspmRestoreLogTaskRequestParams struct {
-	// 备份日志Id
+	// <p>备份日志Id</p>
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 集团账号的成员id
+	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 }
 
 type ModifyDspmRestoreLogTaskRequest struct {
 	*tchttp.BaseRequest
 	
-	// 备份日志Id
+	// <p>备份日志Id</p>
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 集团账号的成员id
+	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 }
 
@@ -31962,20 +31977,20 @@ func (r *ResetDspmAssetAccountPasswordResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RetryDspmExportLogRequestParams struct {
-	// 集团账号的成员id
+	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
-	// 任务ID
+	// <p>任务ID</p>
 	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
 type RetryDspmExportLogRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集团账号的成员id
+	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
-	// 任务ID
+	// <p>任务ID</p>
 	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 

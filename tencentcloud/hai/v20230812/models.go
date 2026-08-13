@@ -2086,58 +2086,58 @@ type ServiceChargePrepaid struct {
 }
 
 type ServiceDetail struct {
-	// 服务id
+	// <p>服务id</p>
 	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
 
-	// 服务名称
+	// <p>服务名称</p>
 	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
 
-	// 服务状态
+	// <p>服务状态</p>
 	ServiceState *string `json:"ServiceState,omitnil,omitempty" name:"ServiceState"`
 
-	// 运行中的副本数
+	// <p>运行中的副本数</p>
 	RunningReplicas *uint64 `json:"RunningReplicas,omitnil,omitempty" name:"RunningReplicas"`
 
-	// 期望的副本总数
+	// <p>期望的副本总数</p>
 	TotalReplicas *uint64 `json:"TotalReplicas,omitnil,omitempty" name:"TotalReplicas"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 算力套餐详情
+	// <p>算力套餐详情</p>
 	ComputeSet []*ComputeDetail `json:"ComputeSet,omitnil,omitempty" name:"ComputeSet"`
 
-	// 模型名称
+	// <p>模型名称</p>
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
-	// 服务部署信息
+	// <p>服务部署信息</p>
 	DeploymentConfigs []*DeploymentConfig `json:"DeploymentConfigs,omitnil,omitempty" name:"DeploymentConfigs"`
 
-	// 服务超参数配置
+	// <p>服务超参数配置</p>
 	HyperParam *HyperParam `json:"HyperParam,omitnil,omitempty" name:"HyperParam"`
 
-
+	// <p>安全类型</p>
 	SecurityType *string `json:"SecurityType,omitnil,omitempty" name:"SecurityType"`
 
-
+	// <p>角色算力配置列表</p>
 	RoleComputeSet []*ComputeDetail `json:"RoleComputeSet,omitnil,omitempty" name:"RoleComputeSet"`
 
-
+	// <p>目标副本数</p>
 	TargetReplicas *uint64 `json:"TargetReplicas,omitnil,omitempty" name:"TargetReplicas"`
 
-	// 计费类型：POSTPAID_BY_HOUR(按量)/PREPAID_BY_MONTH(包月)
+	// <p>计费类型：POSTPAID_BY_HOUR(按量)/PREPAID_BY_MONTH(包月)</p>
 	ChargeType *string `json:"ChargeType,omitnil,omitempty" name:"ChargeType"`
 
-	// 到期时间(包月)，按量为空
+	// <p>到期时间(包月)，按量为空</p>
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
-	// 自动续费标识(包月)
+	// <p>自动续费标识(包月)</p>
 	RenewFlag *string `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 
-	// 受限状态(如欠费隔离)
+	// <p>受限状态(如欠费隔离)</p>
 	RestrictState *string `json:"RestrictState,omitnil,omitempty" name:"RestrictState"`
 
-	// 是否自定义部署：1是 0否
+	// <p>是否自定义部署：1是 0否</p>
 	IsCustomDeploy *int64 `json:"IsCustomDeploy,omitnil,omitempty" name:"IsCustomDeploy"`
 }
 

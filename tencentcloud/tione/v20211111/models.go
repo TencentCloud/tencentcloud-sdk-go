@@ -4016,66 +4016,68 @@ func (r *DescribeDataSourcesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDatasetsRequestParams struct {
-	// 数据集id列表
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
+	// <p>数据集id列表</p>
 	DatasetIds []*string `json:"DatasetIds,omitnil,omitempty" name:"DatasetIds"`
 
-	// 数据集查询过滤条件，多个Filter之间的关系为逻辑与（AND）关系，过滤字段Filter.Name，类型为String
-	// DatasetName，数据集名称
-	// DatasetScope，数据集范围，SCOPE_DATASET_PRIVATE或SCOPE_DATASET_PUBLIC
+	// <p>数据集查询过滤条件，多个Filter之间的关系为逻辑与（AND）关系，过滤字段Filter.Name，类型为String<br>DatasetName，数据集名称<br>DatasetScope，数据集范围，SCOPE_DATASET_PRIVATE或SCOPE_DATASET_PUBLIC</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 标签过滤条件
+	// <p>标签过滤条件</p>
 	TagFilters []*TagFilter `json:"TagFilters,omitnil,omitempty" name:"TagFilters"`
 
-	// 排序值，支持Asc或Desc，默认Desc
+	// <p>排序值，支持Asc或Desc，默认Desc</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 排序字段，支持CreateTime或UpdateTime，默认CreateTime
+	// <p>排序字段，支持CreateTime或UpdateTime，默认CreateTime</p>
 	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
 
-	// 偏移值
+	// <p>偏移值</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数据个数，默认20，最大支持200
+	// <p>返回数据个数，默认20，最大支持200</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 是否检查CFS。若开启，则在CFS挂载好之前，不会返回数据集列表。
+	// <p>是否检查CFS。若开启，则在CFS挂载好之前，不会返回数据集列表。</p>
 	CFSChecking *bool `json:"CFSChecking,omitnil,omitempty" name:"CFSChecking"`
 
-	// 是否返回CFS详情。
+	// <p>是否返回CFS详情。</p>
 	CFSDetail *bool `json:"CFSDetail,omitnil,omitempty" name:"CFSDetail"`
 }
 
 type DescribeDatasetsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 数据集id列表
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
+	// <p>数据集id列表</p>
 	DatasetIds []*string `json:"DatasetIds,omitnil,omitempty" name:"DatasetIds"`
 
-	// 数据集查询过滤条件，多个Filter之间的关系为逻辑与（AND）关系，过滤字段Filter.Name，类型为String
-	// DatasetName，数据集名称
-	// DatasetScope，数据集范围，SCOPE_DATASET_PRIVATE或SCOPE_DATASET_PUBLIC
+	// <p>数据集查询过滤条件，多个Filter之间的关系为逻辑与（AND）关系，过滤字段Filter.Name，类型为String<br>DatasetName，数据集名称<br>DatasetScope，数据集范围，SCOPE_DATASET_PRIVATE或SCOPE_DATASET_PUBLIC</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 标签过滤条件
+	// <p>标签过滤条件</p>
 	TagFilters []*TagFilter `json:"TagFilters,omitnil,omitempty" name:"TagFilters"`
 
-	// 排序值，支持Asc或Desc，默认Desc
+	// <p>排序值，支持Asc或Desc，默认Desc</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 排序字段，支持CreateTime或UpdateTime，默认CreateTime
+	// <p>排序字段，支持CreateTime或UpdateTime，默认CreateTime</p>
 	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
 
-	// 偏移值
+	// <p>偏移值</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数据个数，默认20，最大支持200
+	// <p>返回数据个数，默认20，最大支持200</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 是否检查CFS。若开启，则在CFS挂载好之前，不会返回数据集列表。
+	// <p>是否检查CFS。若开启，则在CFS挂载好之前，不会返回数据集列表。</p>
 	CFSChecking *bool `json:"CFSChecking,omitnil,omitempty" name:"CFSChecking"`
 
-	// 是否返回CFS详情。
+	// <p>是否返回CFS详情。</p>
 	CFSDetail *bool `json:"CFSDetail,omitnil,omitempty" name:"CFSDetail"`
 }
 
@@ -4091,6 +4093,7 @@ func (r *DescribeDatasetsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "TiProjectId")
 	delete(f, "DatasetIds")
 	delete(f, "Filters")
 	delete(f, "TagFilters")
@@ -4108,19 +4111,19 @@ func (r *DescribeDatasetsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDatasetsResponseParams struct {
-	// 数据集总量（名称维度）
+	// <p>数据集总量（名称维度）</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 数据集按照数据集名称聚合的分组
+	// <p>数据集按照数据集名称聚合的分组</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DatasetGroups []*DatasetGroup `json:"DatasetGroups,omitnil,omitempty" name:"DatasetGroups"`
 
-	// 数据集ID总量
+	// <p>数据集ID总量</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DatasetIdNums *uint64 `json:"DatasetIdNums,omitnil,omitempty" name:"DatasetIdNums"`
 
-	// 若开启了CFSChecking，则检查CFS是否准备完毕。若CFS未准备完毕，则返回true，并且TotalCount为0，DatasetGroups为空。
+	// <p>若开启了CFSChecking，则检查CFS是否准备完毕。若CFS未准备完毕，则返回true，并且TotalCount为0，DatasetGroups为空。</p>
 	CFSNotReady *bool `json:"CFSNotReady,omitnil,omitempty" name:"CFSNotReady"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -10640,7 +10643,7 @@ type TrainingTaskDetail struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
-	// <p>任务状态，eg：STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FAILED异常、SUCCEED已完成</p>
+	// <p>任务状态</p><p>枚举值：</p><ul><li>SUBMITTING： 排队中</li><li>STARTING： 启动中</li><li>RUNNING： 运行中</li><li>STOPPING： 停止中</li><li>STOPPED： 已停止</li><li>FAILED： 异常</li><li>SUCCEED： 已完成</li><li>SUBMIT_FAILED： 提交失败</li></ul>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// <p>回调地址</p>
@@ -10693,7 +10696,7 @@ type TrainingTaskSetItem struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TrainingMode *string `json:"TrainingMode,omitnil,omitempty" name:"TrainingMode"`
 
-	// <p>任务状态，eg：SUBMITTING提交中、PENDING排队中、<br>STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FAILED异常、SUCCEED已完成</p>
+	// <p>任务状态</p><p>枚举值：</p><ul><li>SUBMITTING： 提交中</li><li>PENDING： 排队中</li><li>STARTING： 启动中</li><li>RUNNING： 运行中</li><li>STOPPING： 停止中</li><li>STOPPED： 已停止</li><li>FAILED： 异常</li><li>SUCCEED： 已完成</li><li>SUBMIT_FAILED： 提交失败</li></ul>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// <p>运行时长</p>

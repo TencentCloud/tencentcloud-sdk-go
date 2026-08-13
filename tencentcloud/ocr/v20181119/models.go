@@ -1211,66 +1211,26 @@ type ClassifyDetectInfo struct {
 
 // Predefined struct for user
 type ClassifyDetectOCRRequestParams struct {
-	// 图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	// <p>图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。</p>
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
 
-	// 图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	// <p>图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。</p>
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 
-	// 可以指定要识别的票证类型,指定后不出现在此列表的票证将不返回类型。不指定时默认返回所有支持类别票证的识别信息。
-	// 
-	// 以下是当前支持的类型：
-	// IDCardFront: 身份证正面识别
-	// IDCardBack: 身份证背面识别
-	// Passport: 护照
-	// BusinessCard: 名片识别
-	// BankCard: 银行卡识别
-	// VehicleLicenseFront: 行驶证主页识别
-	// VehicleLicenseBack: 行驶证副页识别
-	// DriverLicenseFront: 驾驶证主页识别
-	// DriverLicenseBack: 驾驶证副页识别
-	// PermitFront: 港澳台通行证正面
-	// ResidenceBooklet: 户口本资料页
-	// MainlandPermitFront: 港澳台来往内地通行证正面
-	// HmtResidentPermitFront: 港澳台居住证正面
-	// HmtResidentPermitBack: 港澳台居住证背面
-	// EstateCert: 不动产证
-	// BizLicense: 营业执照
-	// ForeignPermanentResidentFront: 外国人永居证正面识别
-	// ForeignPermanentResidentBack: 外国人永居证背面识别
+	// <p>可以指定要识别的票证类型,指定后不出现在此列表的票证将不返回类型。不指定时默认返回所有支持类别票证的识别信息。</p><p>以下是当前支持的类型：<br>IDCardFront: 身份证正面识别<br>IDCardBack: 身份证背面识别<br>Passport: 护照<br>BusinessCard: 名片识别<br>BankCard: 银行卡识别<br>VehicleLicenseFront: 行驶证主页识别<br>VehicleLicenseBack: 行驶证副页识别<br>DriverLicenseFront: 驾驶证主页识别<br>DriverLicenseBack: 驾驶证副页识别<br>PermitFront: 港澳台通行证正面<br>ResidenceBooklet: 户口本资料页<br>MainlandPermitFront: 港澳台来往内地通行证正面<br>HmtResidentPermitFront: 港澳台居住证正面<br>HmtResidentPermitBack: 港澳台居住证背面<br>EstateCert: 不动产证<br>BizLicense: 营业执照<br>ForeignPermanentResidentFront: 外国人永居证正面识别<br>ForeignPermanentResidentBack: 外国人永居证背面识别<br>RoadTransportQualificationCert: 道路运输从业资格证识别<br>RoadTransportPermit: 道路运输证识别</p>
 	DiscernType []*string `json:"DiscernType,omitnil,omitempty" name:"DiscernType"`
 }
 
 type ClassifyDetectOCRRequest struct {
 	*tchttp.BaseRequest
 	
-	// 图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	// <p>图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。</p>
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
 
-	// 图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	// <p>图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。</p>
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 
-	// 可以指定要识别的票证类型,指定后不出现在此列表的票证将不返回类型。不指定时默认返回所有支持类别票证的识别信息。
-	// 
-	// 以下是当前支持的类型：
-	// IDCardFront: 身份证正面识别
-	// IDCardBack: 身份证背面识别
-	// Passport: 护照
-	// BusinessCard: 名片识别
-	// BankCard: 银行卡识别
-	// VehicleLicenseFront: 行驶证主页识别
-	// VehicleLicenseBack: 行驶证副页识别
-	// DriverLicenseFront: 驾驶证主页识别
-	// DriverLicenseBack: 驾驶证副页识别
-	// PermitFront: 港澳台通行证正面
-	// ResidenceBooklet: 户口本资料页
-	// MainlandPermitFront: 港澳台来往内地通行证正面
-	// HmtResidentPermitFront: 港澳台居住证正面
-	// HmtResidentPermitBack: 港澳台居住证背面
-	// EstateCert: 不动产证
-	// BizLicense: 营业执照
-	// ForeignPermanentResidentFront: 外国人永居证正面识别
-	// ForeignPermanentResidentBack: 外国人永居证背面识别
+	// <p>可以指定要识别的票证类型,指定后不出现在此列表的票证将不返回类型。不指定时默认返回所有支持类别票证的识别信息。</p><p>以下是当前支持的类型：<br>IDCardFront: 身份证正面识别<br>IDCardBack: 身份证背面识别<br>Passport: 护照<br>BusinessCard: 名片识别<br>BankCard: 银行卡识别<br>VehicleLicenseFront: 行驶证主页识别<br>VehicleLicenseBack: 行驶证副页识别<br>DriverLicenseFront: 驾驶证主页识别<br>DriverLicenseBack: 驾驶证副页识别<br>PermitFront: 港澳台通行证正面<br>ResidenceBooklet: 户口本资料页<br>MainlandPermitFront: 港澳台来往内地通行证正面<br>HmtResidentPermitFront: 港澳台居住证正面<br>HmtResidentPermitBack: 港澳台居住证背面<br>EstateCert: 不动产证<br>BizLicense: 营业执照<br>ForeignPermanentResidentFront: 外国人永居证正面识别<br>ForeignPermanentResidentBack: 外国人永居证背面识别<br>RoadTransportQualificationCert: 道路运输从业资格证识别<br>RoadTransportPermit: 道路运输证识别</p>
 	DiscernType []*string `json:"DiscernType,omitnil,omitempty" name:"DiscernType"`
 }
 
@@ -1297,7 +1257,7 @@ func (r *ClassifyDetectOCRRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ClassifyDetectOCRResponseParams struct {
-	// 智能卡证分类结果。当图片类型不支持分类识别或者识别出的类型不在请求参数DiscernType指定的范围内时，返回结果中的Type字段将为空字符串，Name字段将返回"其它"
+	// <p>智能卡证分类结果。当图片类型不支持分类识别或者识别出的类型不在请求参数DiscernType指定的范围内时，返回结果中的Type字段将为空字符串，Name字段将返回&quot;其它&quot;</p>
 	ClassifyDetectInfos []*ClassifyDetectInfo `json:"ClassifyDetectInfos,omitnil,omitempty" name:"ClassifyDetectInfos"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

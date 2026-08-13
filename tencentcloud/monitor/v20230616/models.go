@@ -920,6 +920,9 @@ type NoticeContentTmplItem struct {
 
 	// <p>Slack</p>
 	SlackRobot []*SlackRobotNoticeTmplMatcher `json:"SlackRobot,omitnil,omitempty" name:"SlackRobot"`
+
+	// <p>Teams 工作流渠道</p>
+	TeamsWorkflowRobot []*TeamsWorkflowRobotNoticeTmplMatcher `json:"TeamsWorkflowRobot,omitnil,omitempty" name:"TeamsWorkflowRobot"`
 }
 
 type NotifyRelatedNotice struct {
@@ -1070,6 +1073,25 @@ type TeamsRobotNoticeTmplMatcher struct {
 
 	// 模板配置
 	Template *TeamsRobotNoticeTmpl `json:"Template,omitnil,omitempty" name:"Template"`
+}
+
+type TeamsWorkflowRobotNoticeTmpl struct {
+	// <p>内容模板</p>
+	ContentTmpl *string `json:"ContentTmpl,omitnil,omitempty" name:"ContentTmpl"`
+
+	// <p>区分 TeamsWorkflow 是自定义内容还是自定义 POST BODY</p><p>枚举值：</p><ul><li>WorkflowText： 自定义内容</li><li>WorkflowJson： 自定义 POST BODY</li></ul>
+	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
+
+	// <p>标题模版</p>
+	TitleTmpl *string `json:"TitleTmpl,omitnil,omitempty" name:"TitleTmpl"`
+}
+
+type TeamsWorkflowRobotNoticeTmplMatcher struct {
+	// <p>匹配状态 Invalid; Trigger 告警触发; Recovery 告警恢复</p><p>枚举值：</p><ul><li>Trigger： 告警触发</li><li>Recovery： 告警恢复</li></ul>
+	MatchingStatus []*string `json:"MatchingStatus,omitnil,omitempty" name:"MatchingStatus"`
+
+	// <p>模板配置</p>
+	Template *TeamsWorkflowRobotNoticeTmpl `json:"Template,omitnil,omitempty" name:"Template"`
 }
 
 // Predefined struct for user

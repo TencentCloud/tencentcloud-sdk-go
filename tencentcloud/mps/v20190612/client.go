@@ -5625,6 +5625,58 @@ func (c *Client) DescribeAigcImageTaskWithContext(ctx context.Context, request *
     return
 }
 
+func NewDescribeAigcTaskListRequest() (request *DescribeAigcTaskListRequest) {
+    request = &DescribeAigcTaskListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "DescribeAigcTaskList")
+    
+    
+    return
+}
+
+func NewDescribeAigcTaskListResponse() (response *DescribeAigcTaskListResponse) {
+    response = &DescribeAigcTaskListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAigcTaskList
+// 查询AIGC任务列表详细信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYAIGCTASKFAILED = "FailedOperation.QueryAIGCTaskFailed"
+//  RESOURCENOTFOUND_TASKNOTFOUND = "ResourceNotFound.TaskNotFound"
+func (c *Client) DescribeAigcTaskList(request *DescribeAigcTaskListRequest) (response *DescribeAigcTaskListResponse, err error) {
+    return c.DescribeAigcTaskListWithContext(context.Background(), request)
+}
+
+// DescribeAigcTaskList
+// 查询AIGC任务列表详细信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYAIGCTASKFAILED = "FailedOperation.QueryAIGCTaskFailed"
+//  RESOURCENOTFOUND_TASKNOTFOUND = "ResourceNotFound.TaskNotFound"
+func (c *Client) DescribeAigcTaskListWithContext(ctx context.Context, request *DescribeAigcTaskListRequest) (response *DescribeAigcTaskListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAigcTaskListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DescribeAigcTaskList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAigcTaskList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAigcTaskListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAigcTaskStatusRequest() (request *DescribeAigcTaskStatusRequest) {
     request = &DescribeAigcTaskStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},

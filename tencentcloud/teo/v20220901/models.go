@@ -2023,6 +2023,54 @@ type CompressionParameters struct {
 	Algorithms []*string `json:"Algorithms,omitnil,omitempty" name:"Algorithms"`
 }
 
+type ConfigGroupFunctionRegionSelection struct {
+	// <p>指定执行的函数，取值为函数在站点内的唯一标识。当 TriggerType 为 direct 时生效。</p>
+	Function *string `json:"Function,omitnil,omitempty" name:"Function"`
+
+	// <p>国家/地区列表。示例值：CN：中国，CN.GD：中国广东。取值请参考：<a href="https://cloud.tencent.com/document/product/1552/112542">国家/地区及对应代码枚举</a>。</p>
+	Regions []*string `json:"Regions,omitnil,omitempty" name:"Regions"`
+}
+
+type ConfigGroupFunctionTrigger struct {
+	// <p><a href="https://cloud.tencent.com/document/product/1552/90438#33f65828-c6c6-4b66-a011-25a20b548d5d">匹配条件。</a></p>
+	Condition *string `json:"Condition,omitnil,omitempty" name:"Condition"`
+
+	// <p>函数选择配置类型：</p><p>枚举值：</p><ul><li>direct： 直接指定执行函数</li><li>weight： 基于权重比选择函数</li><li>region： 基于客户端 IP 的国家/地区选择函数</li></ul>
+	TriggerType *string `json:"TriggerType,omitnil,omitempty" name:"TriggerType"`
+
+	// <p>指定执行的函数，取值为函数在站点内的唯一标识。当 TriggerType 为 direct 时生效。</p>
+	Function *string `json:"Function,omitnil,omitempty" name:"Function"`
+
+	// <p>基于客户端 IP 国家/地区的函数选择配置。</p>
+	RegionMappingSelections []*ConfigGroupFunctionRegionSelection `json:"RegionMappingSelections,omitnil,omitempty" name:"RegionMappingSelections"`
+
+	// <p>基于权重的函数选择配置。</p>
+	WeightedSelections []*ConfigGroupFunctionWeightedSelection `json:"WeightedSelections,omitnil,omitempty" name:"WeightedSelections"`
+
+	// <p>规则描述。</p>
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+}
+
+type ConfigGroupFunctionWeightedSelection struct {
+	// <p>指定执行的函数，取值为函数在站点内的唯一标识。当 TriggerType 为 direct 时生效。</p>
+	Function *string `json:"Function,omitnil,omitempty" name:"Function"`
+
+	// <p>选中权重。取值范围0-100，所有的权重之和需要为100。 选中概率计算方式为： weight/100。例如设置了两个函数 A 和 B ，其中 A 的权重为30，那么 B 的权重必须为70，最终选中 A 的概率为30%，选中 B 的概率为70%。</p>
+	Weight *uint64 `json:"Weight,omitnil,omitempty" name:"Weight"`
+}
+
+type ConfigGroupRuleEngineItem struct {
+	// <p>规则名称。名称长度限制不超过 255 个字符。</p>
+	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
+
+	// <p>规则注释。可以填写多个注释。</p>
+	Description []*string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>子规则分支。此列表当前只支持填写一项规则，多填无效。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Branches []*RuleBranch `json:"Branches,omitnil,omitempty" name:"Branches"`
+}
+
 type ConfigGroupVersionInfo struct {
 	// <p>配置组版本 ID，创建配置组版本时 EdgeOne 分配的唯一资源 ID。</p><p>参数格式：ver-2kplomhisdcb</p><p>取值参考：</p><ul><li><a href="https://cloud.tencent.com/document/api/1552/101867">CreateConfigGroupVersion</a> 返回值 <code>VersionId</code></li><li><a href="https://cloud.tencent.com/document/api/1552/101864">DescribeConfigGroupVersions</a> 返回值 <code>ConfigGroupVersionInfos</code></li></ul>
 	VersionId *string `json:"VersionId,omitnil,omitempty" name:"VersionId"`
@@ -5036,6 +5084,9 @@ type CreateRealtimeLogDeliveryTaskRequestParams struct {
 	// <p>投递的自定义字段列表，支持在 HTTP 请求头、响应头、Cookie、请求正文中提取指定内容。<br>自定义字段名称不能重复，仅七层访问日志（LogType= l7-access-logs 或 domain）支持添加自定义字段。<br>允许配置的自定义字段个数有配额限制，如遇配额不足请 [联系我们](https://cloud.tencent.com/online-service?from=sales&amp;source=PRESALE)。</p>
 	CustomFields []*CustomField `json:"CustomFields,omitnil,omitempty" name:"CustomFields"`
 
+	// <p>投递的自定义表达式字段列表，可以通过自定义日志推送字段名称和取值表达式，实现个性化的实时日志内容推送，使用详情见 [自定义日志字段表达式]()。<br>仅七层访问日志（LogType= l7-access-logs 或 domain）支持添加自定义字段。<br>允许配置的自定义字段个数有配额限制，如遇配额不足请 [联系我们](https://cloud.tencent.com/online-service?from=sales&amp;source=PRESALE) 。<br>**注意**：若 CustomExpressionFields 中存在命名 与 Fields 和 CustomFields 中同名的字段，以  CustomExpressionFields 中的取值为准。</p>
+	CustomExpressionFields []*CustomExpressionField `json:"CustomExpressionFields,omitnil,omitempty" name:"CustomExpressionFields"`
+
 	// <p>日志投递的过滤条件，不填表示投递全量日志。</p>
 	DeliveryConditions []*DeliveryCondition `json:"DeliveryConditions,omitnil,omitempty" name:"DeliveryConditions"`
 
@@ -5082,6 +5133,9 @@ type CreateRealtimeLogDeliveryTaskRequest struct {
 	// <p>投递的自定义字段列表，支持在 HTTP 请求头、响应头、Cookie、请求正文中提取指定内容。<br>自定义字段名称不能重复，仅七层访问日志（LogType= l7-access-logs 或 domain）支持添加自定义字段。<br>允许配置的自定义字段个数有配额限制，如遇配额不足请 [联系我们](https://cloud.tencent.com/online-service?from=sales&amp;source=PRESALE)。</p>
 	CustomFields []*CustomField `json:"CustomFields,omitnil,omitempty" name:"CustomFields"`
 
+	// <p>投递的自定义表达式字段列表，可以通过自定义日志推送字段名称和取值表达式，实现个性化的实时日志内容推送，使用详情见 [自定义日志字段表达式]()。<br>仅七层访问日志（LogType= l7-access-logs 或 domain）支持添加自定义字段。<br>允许配置的自定义字段个数有配额限制，如遇配额不足请 [联系我们](https://cloud.tencent.com/online-service?from=sales&amp;source=PRESALE) 。<br>**注意**：若 CustomExpressionFields 中存在命名 与 Fields 和 CustomFields 中同名的字段，以  CustomExpressionFields 中的取值为准。</p>
+	CustomExpressionFields []*CustomExpressionField `json:"CustomExpressionFields,omitnil,omitempty" name:"CustomExpressionFields"`
+
 	// <p>日志投递的过滤条件，不填表示投递全量日志。</p>
 	DeliveryConditions []*DeliveryCondition `json:"DeliveryConditions,omitnil,omitempty" name:"DeliveryConditions"`
 
@@ -5121,6 +5175,7 @@ func (r *CreateRealtimeLogDeliveryTaskRequest) FromJsonString(s string) error {
 	delete(f, "EntityList")
 	delete(f, "Fields")
 	delete(f, "CustomFields")
+	delete(f, "CustomExpressionFields")
 	delete(f, "DeliveryConditions")
 	delete(f, "Sample")
 	delete(f, "LogFormat")
@@ -5881,6 +5936,48 @@ type CurrentOriginACL struct {
 	IsPlaned *string `json:"IsPlaned,omitnil,omitempty" name:"IsPlaned"`
 }
 
+type CustomAction struct {
+	// <p>定制配置的配置项 Id。</p><p>您可以通过 DescribeAvailableCustomActionsForRuleEngine 接口的返回值 CustomActionSet[].ActionId 获取。</p>
+	ActionId *string `json:"ActionId,omitnil,omitempty" name:"ActionId"`
+
+	// <p>该定制配置项下各参数字段的取值。</p><p>您可以通过 DescribeAvailableCustomActionsForRuleEngine 接口返回值 CustomActionSet[].Parameters 获取。</p>
+	Parameters []*CustomActionParameter `json:"Parameters,omitnil,omitempty" name:"Parameters"`
+}
+
+type CustomActionParameter struct {
+	// <p>定制配置项下各参数字段名称。</p><p>您可以通过 DescribeAvailableCustomActionsForRuleEngine 接口返回值 CustomActionSet[].Parameters[].Name 获取，如 &quot;Seconds&quot;、&quot;Ports&quot;、&quot;StatusCode&quot;。</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>定制配置项下各参数字段值的类型。</p><p>枚举值：</p><ul><li>String： 字符串类型。</li><li>Integer： 整型类型。</li><li>Float： 浮点数类型。</li><li>Boolean： 布尔类型。</li><li>ArrayOfString： 字符串数组类型。</li><li>ArrayOfInteger： 整型数组类型。</li><li>ArrayOfFloat： 浮点数数组类型。</li></ul><p>您可以通过 DescribeAvailableCustomActionsForRuleEngine 接口返回值 CustomActionSet[].Parameters[].Type 获取。</p>
+	ValueType *string `json:"ValueType,omitnil,omitempty" name:"ValueType"`
+
+	// <p>字符串类型参数值。当 ValueType 为 String 时，该参数必填。</p><p>您可以通过 DescribeAvailableCustomActionsForRuleEngine 接口返回值 CustomActionSet[].Parameters 获取参数值的默认值、单位、限制等说明。</p>
+	StringValue *string `json:"StringValue,omitnil,omitempty" name:"StringValue"`
+
+	// <p>整型类型参数值。当 ValueType 为 Integer 时，该参数必填。</p><p>您可以通过 DescribeAvailableCustomActionsForRuleEngine 接口返回值 CustomActionSet[].Parameters 获取参数值的默认值、单位、限制等说明。</p>
+	IntegerValue *int64 `json:"IntegerValue,omitnil,omitempty" name:"IntegerValue"`
+
+	// <p>浮点数类型参数值。当 ValueType 为 Float 时，该参数必填。</p><p>您可以通过 DescribeAvailableCustomActionsForRuleEngine 接口返回值 CustomActionSet[].Parameters 获取参数值的默认值、单位、限制等说明。</p>
+	FloatValue *float64 `json:"FloatValue,omitnil,omitempty" name:"FloatValue"`
+
+	// <p>布尔类型参数值。当 ValueType 为 Boolean 时，该参数必填。</p><p>您可以通过 DescribeAvailableCustomActionsForRuleEngine 接口返回值 CustomActionSet[].Parameters 获取参数值的默认值、单位、限制等说明。</p>
+	BooleanValue *bool `json:"BooleanValue,omitnil,omitempty" name:"BooleanValue"`
+
+	// <p>字符串数组类型参数值。当 ValueType 为 ArrayOfString 时，该参数必填。</p><p>您可以通过 DescribeAvailableCustomActionsForRuleEngine 接口返回值 CustomActionSet[].Parameters 获取参数值的默认值、单位、限制等说明。</p>
+	StringArrayValue []*string `json:"StringArrayValue,omitnil,omitempty" name:"StringArrayValue"`
+
+	// <p>整型数组类型参数值。当 ValueType 为 ArrayOfInteger 时，该参数必填。</p><p>您可以通过 DescribeAvailableCustomActionsForRuleEngine 接口返回值 CustomActionSet[].Parameters 获取参数值的默认值、单位、限制等说明。</p>
+	IntegerArrayValue []*int64 `json:"IntegerArrayValue,omitnil,omitempty" name:"IntegerArrayValue"`
+
+	// <p>浮点数数组类型参数值。当 ValueType 为 ArrayOfFloat 时，该参数必填。</p><p>您可以通过 DescribeAvailableCustomActionsForRuleEngine 接口返回值 CustomActionSet[].Parameters 获取参数值的默认值、单位、限制等说明。</p>
+	FloatArrayValue []*float64 `json:"FloatArrayValue,omitnil,omitempty" name:"FloatArrayValue"`
+}
+
+type CustomActionParameters struct {
+	// <p>需要配置的定制配置列表。</p>
+	CustomActions []*CustomAction `json:"CustomActions,omitnil,omitempty" name:"CustomActions"`
+}
+
 type CustomEndpoint struct {
 	// 实时日志投递的自定义 HTTP 接口地址，暂仅支持 HTTP/HTTPS 协议。
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
@@ -5924,6 +6021,17 @@ type CustomErrorPage struct {
 
 	// 自定义错误页面引用。
 	References []*ErrorPageReference `json:"References,omitnil,omitempty" name:"References"`
+}
+
+type CustomExpressionField struct {
+	// <p>自定义日志字段名称。可输入1-100个字符，允许的字符为字母、数字、_，仅能以字母开头，该名称不能重复。</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>自定义日志字段的取值表达式，表达式长度上限 4KB，语法说明详见 <a href=""> 自定义日志字段表达式</a>。</p>
+	Expression *string `json:"Expression,omitnil,omitempty" name:"Expression"`
+
+	// <p>是否投递该字段，不填表示不投递此字段。</p>
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
 }
 
 type CustomField struct {
@@ -15806,6 +15914,60 @@ type DropPageDetail struct {
 }
 
 // Predefined struct for user
+type DummyParseZoneFullConfigRequestParams struct {
+
+}
+
+type DummyParseZoneFullConfigRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DummyParseZoneFullConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DummyParseZoneFullConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DummyParseZoneFullConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DummyParseZoneFullConfigResponseParams struct {
+	// <p>站点完整配置结构。</p>
+	ZoneFullConfig *ZoneFullConfig `json:"ZoneFullConfig,omitnil,omitempty" name:"ZoneFullConfig"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DummyParseZoneFullConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *DummyParseZoneFullConfigResponseParams `json:"Response"`
+}
+
+func (r *DummyParseZoneFullConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DummyParseZoneFullConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type EdgeKVDeleteRequestParams struct {
 	// 站点 ID。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
@@ -17006,6 +17168,20 @@ type HostName struct {
 
 	// 目标 HostName 自定义取值，最大长度 1024。<br>注意：当 Action 为 custom 时，此字段必填；当 Action 为 follow 时，此字段不生效。
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type HostPolicy struct {
+	// <p>站点级策略，针对站点下所有域名生效的策略，详情见 站点级策略。</p>
+	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
+
+	// <p>当前域名使用的策略类型。取值有：<li>ZoneDefault：使用站点级策略，即 ZoneDefaultPolicy 中定义的策略配置。</li><li>Custom：使用域名级策略。使用该选项时，必须同时配置 Policy 字段，指定详细策略配置。</li><li>Template：使用策略模板。使用该选项时，必须同时配置 TemplateId 字段，指定当前域名使用的策略模板。</li></p>
+	PolicyType *string `json:"PolicyType,omitnil,omitempty" name:"PolicyType"`
+
+	// <p>可选。当 PolicyType 为 Custom 时，该字段为当前域名的详细策略配置，对当前域名生效。</p>
+	Policy *SecurityPolicy `json:"Policy,omitnil,omitempty" name:"Policy"`
+
+	// <p>可选。当 PolicyType 为 Template 时，该字段用于指定当前域名所使用的策略模板的 Id。</p>
+	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 }
 
 type Hsts struct {
@@ -18225,33 +18401,28 @@ type LogAnalysisDownloadTask struct {
 }
 
 type LogFormat struct {
-	// 日志投递的预设输出格式类型，取值有：
-	// <li>json：使用预设日志输出格式 JSON Lines，单条日志中的字段以键值对方式呈现；</li>
-	// <li>csv：使用预设日志输出格式 csv，单条日志中仅呈现字段值，不呈现字段名称。</li>
+	// <p>日志输出格式，取值有：</p><ul><li>json：使用预设日志输出格式 JSON Lines，单条日志中的字段以键值对方式呈现；</li><li>csv：使用预设日志输出格式 csv，单条日志中仅呈现字段值，不呈现字段名称。</li><li>template：使用用户自定义输出模板，单条日志中支持按照自定义模板进行自定义排版和拼接，需配合 RecordTemplate 字段使用。</li></ul>
 	FormatType *string `json:"FormatType,omitnil,omitempty" name:"FormatType"`
 
-	// 在每个日志投递批次之前添加的字符串。每个日志投递批次可能包含多条日志记录。
+	// <p>在每个日志投递批次之前添加的字符串。每个日志投递批次可能包含多条日志记录。</p>
 	BatchPrefix *string `json:"BatchPrefix,omitnil,omitempty" name:"BatchPrefix"`
 
-	// 在每个日志投递批次后附加的字符串。
+	// <p>在每个日志投递批次后附加的字符串。</p>
 	BatchSuffix *string `json:"BatchSuffix,omitnil,omitempty" name:"BatchSuffix"`
 
-	// 在每条日志记录之前添加的字符串。
+	// <p>单条日志前缀，在每条日志记录之前添加的字符串。</p>
 	RecordPrefix *string `json:"RecordPrefix,omitnil,omitempty" name:"RecordPrefix"`
 
-	// 在每条日志记录后附加的字符串。
+	// <p>单条日志后缀，在每条日志记录后附加的字符串。</p>
 	RecordSuffix *string `json:"RecordSuffix,omitnil,omitempty" name:"RecordSuffix"`
 
-	// 插入日志记录之间作为分隔符的字符串，取值有：
-	// <li>\n：换行符；</li>
-	// <li>\t：制表符；</li>
-	// <li>，：半角逗号。</li>
+	// <p>日志分隔符，插入日志记录之间作为分隔的字符串，取值有：</p><ul><li>\n：换行符；</li><li>\t：制表符；</li><li>，：半角逗号。</li></ul>
 	RecordDelimiter *string `json:"RecordDelimiter,omitnil,omitempty" name:"RecordDelimiter"`
 
-	// 单条日志记录内，插入字段之间作为分隔符的字符串，取值有：
-	// <li>\t：制表符；</li>
-	// <li>，：半角逗号；</li>
-	// <li>;：半角分号。</li>
+	// <p>日志模板，单条日志的输出模板，长度限制 4KB，仅当 FormatType = template 生效。支持对配置的推送字段按照模板进行自定义排版和拼接。</p>
+	RecordTemplate *string `json:"RecordTemplate,omitnil,omitempty" name:"RecordTemplate"`
+
+	// <p>字段分隔符，单条日志记录内，插入字段之间作为分隔符的字符串，仅当 FormatType = csv 生效。取值有：<ul><li>\t：制表符；</li><li>，：半角逗号；</li><li>;：半角分号。</li></ul></p>
 	FieldDelimiter *string `json:"FieldDelimiter,omitnil,omitempty" name:"FieldDelimiter"`
 }
 
@@ -21481,90 +21652,86 @@ func (r *ModifyPrefetchOriginLimitResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyRealtimeLogDeliveryTaskRequestParams struct {
-	// 站点 ID。
+	// <p>站点 ID。</p>
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 实时日志投递任务 ID。
+	// <p>实时日志投递任务 ID。</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 实时日志投递任务的名称，格式为数字、英文、-和_组合，最多 200 个字符。不填保持原有配置。
+	// <p>实时日志投递任务的名称，格式为数字、英文、-和_组合，最多 200 个字符。不填保持原有配置。</p>
 	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
 
-	// 实时日志投递任务的状态，取值有：
-	// <li>enabled: 启用；</li>
-	// <li>disabled: 停用。</li>不填保持原有配置。
+	// <p>实时日志投递任务的状态，取值有：</p><li>enabled: 启用；</li><li>disabled: 停用。</li>不填保持原有配置。
 	DeliveryStatus *string `json:"DeliveryStatus,omitnil,omitempty" name:"DeliveryStatus"`
 
-	// 实时日志投递任务对应的实体（七层域名或者四层代理实例）列表。取值示例如下：
-	// <li>七层域名：domain.example.com；</li>
-	// <li>四层代理实例：sid-2s69eb5wcms7。</li>不填保持原有配置。
+	// <p>实时日志投递任务对应的实体（七层域名或者四层代理实例）列表。取值示例如下：</p><li>七层域名：domain.example.com；</li><li>四层代理实例：sid-2s69eb5wcms7。</li>不填保持原有配置。<p>取值参考：<a href="https://cloud.tencent.com/document/api/1552/80690">DescribeApplicationProxies</a></p>
 	EntityList []*string `json:"EntityList,omitnil,omitempty" name:"EntityList"`
 
-	// 投递的预设字段列表。不填保持原有配置。
+	// <p>投递的预设字段列表。不填保持原有配置。</p><p>取值参考：DescribeLogFields</p>
 	Fields []*string `json:"Fields,omitnil,omitempty" name:"Fields"`
 
-	// 投递的自定义字段列表，支持在 HTTP 请求头、响应头、Cookie、请求正文中提取指定内容。不填保持原有配置。自定义字段名称不能重复，且最多不能超过 200 个字段。单个实时日志推送任务最多添加 5 个请求正文类型的自定义字段。目前仅站点加速日志（LogType=domain）支持添加自定义字段。
+	// <p>投递的自定义日志字段列表，可以通过自定义日志推送字段名称和取值表达式，实现个性化的实时日志内容推送，详见 <a href="">自定义日志字段表达式</a>。<br>仅七层访问日志（LogType= l7-access-logs 或 domain）支持添加自定义字段，允许配置的自定义字段个数有配额限制，如遇配额不足请 <a href="https://cloud.tencent.com/online-service?from=sales&amp;source=PRESALE">联系我们</a> 。</p>
 	CustomFields []*CustomField `json:"CustomFields,omitnil,omitempty" name:"CustomFields"`
 
-	// 日志投递的过滤条件。不填表示投递全量日志。
+	// <p>投递的自定义表达式字段列表，可以通过自定义日志推送字段名称和取值表达式，实现个性化的实时日志内容推送，使用详情见 [自定义日志字段表达式]()。<br>仅七层访问日志（LogType= l7-access-logs 或 domain）支持添加自定义字段。允许配置的自定义字段个数有配额限制，如遇配额不足请 [联系我们](https://cloud.tencent.com/online-service?from=sales&amp;source=PRESALE) 。<br>**注意**：若 CustomExpressionFields 中存在命名 与 Fields 和 CustomFields 中同名的字段，以  CustomExpressionFields 中的取值为准。</p>
+	CustomExpressionFields []*CustomExpressionField `json:"CustomExpressionFields,omitnil,omitempty" name:"CustomExpressionFields"`
+
+	// <p>日志投递的过滤条件。不填表示投递全量日志。</p>
 	DeliveryConditions []*DeliveryCondition `json:"DeliveryConditions,omitnil,omitempty" name:"DeliveryConditions"`
 
-	// 采样比例，采用千分制，取值范围为1-1000，例如：填写 605 表示采样比例为 60.5%。不填保持原有配置。
+	// <p>采样比例，采用千分制，取值范围为1-1000，例如：填写 605 表示采样比例为 60.5%。不填保持原有配置。</p>
 	Sample *uint64 `json:"Sample,omitnil,omitempty" name:"Sample"`
 
-	// 日志投递的输出格式。不填保持原有配置。
-	// 特别地，当 TaskType 取值为 cls 时，LogFormat.FormatType 的值只能为 json，且 LogFormat 中其他参数将被忽略，建议不传 LogFormat。
+	// <p>日志投递的输出格式，使用详情见 <a href="https://cloud.tencent.com/document/product/1552/110448">自定义日志输出格式</a>。不填表示为默认格式，默认格式逻辑如下：<ul><li>当 TaskType 取值为 custom_endpoint 时，默认格式为多个 JSON 对象组成的数组，每个 JSON 对象为一条日志；</li><li>当 TaskType 取值为 s3 时，默认格式为 JSON Lines；</li></ul>特别地，当 TaskType 取值为 cls 或 log_analysis 时，LogFormat.FormatType 的值只能为 json，且 LogFormat 中其他参数将被忽略，建议不传 LogFormat。</p>
 	LogFormat *LogFormat `json:"LogFormat,omitnil,omitempty" name:"LogFormat"`
 
-	// 自定义 HTTP 服务的配置信息，不填保持原有配置。 
+	// <p>自定义 HTTP 服务的配置信息，不填保持原有配置。</p>
 	CustomEndpoint *CustomEndpoint `json:"CustomEndpoint,omitnil,omitempty" name:"CustomEndpoint"`
 
-	// AWS S3 兼容存储桶的配置信息，不填保持原有配置。
+	// <p>AWS S3 兼容存储桶的配置信息，不填保持原有配置。</p>
 	S3 *S3 `json:"S3,omitnil,omitempty" name:"S3"`
 }
 
 type ModifyRealtimeLogDeliveryTaskRequest struct {
 	*tchttp.BaseRequest
 	
-	// 站点 ID。
+	// <p>站点 ID。</p>
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 实时日志投递任务 ID。
+	// <p>实时日志投递任务 ID。</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 实时日志投递任务的名称，格式为数字、英文、-和_组合，最多 200 个字符。不填保持原有配置。
+	// <p>实时日志投递任务的名称，格式为数字、英文、-和_组合，最多 200 个字符。不填保持原有配置。</p>
 	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
 
-	// 实时日志投递任务的状态，取值有：
-	// <li>enabled: 启用；</li>
-	// <li>disabled: 停用。</li>不填保持原有配置。
+	// <p>实时日志投递任务的状态，取值有：</p><li>enabled: 启用；</li><li>disabled: 停用。</li>不填保持原有配置。
 	DeliveryStatus *string `json:"DeliveryStatus,omitnil,omitempty" name:"DeliveryStatus"`
 
-	// 实时日志投递任务对应的实体（七层域名或者四层代理实例）列表。取值示例如下：
-	// <li>七层域名：domain.example.com；</li>
-	// <li>四层代理实例：sid-2s69eb5wcms7。</li>不填保持原有配置。
+	// <p>实时日志投递任务对应的实体（七层域名或者四层代理实例）列表。取值示例如下：</p><li>七层域名：domain.example.com；</li><li>四层代理实例：sid-2s69eb5wcms7。</li>不填保持原有配置。<p>取值参考：<a href="https://cloud.tencent.com/document/api/1552/80690">DescribeApplicationProxies</a></p>
 	EntityList []*string `json:"EntityList,omitnil,omitempty" name:"EntityList"`
 
-	// 投递的预设字段列表。不填保持原有配置。
+	// <p>投递的预设字段列表。不填保持原有配置。</p><p>取值参考：DescribeLogFields</p>
 	Fields []*string `json:"Fields,omitnil,omitempty" name:"Fields"`
 
-	// 投递的自定义字段列表，支持在 HTTP 请求头、响应头、Cookie、请求正文中提取指定内容。不填保持原有配置。自定义字段名称不能重复，且最多不能超过 200 个字段。单个实时日志推送任务最多添加 5 个请求正文类型的自定义字段。目前仅站点加速日志（LogType=domain）支持添加自定义字段。
+	// <p>投递的自定义日志字段列表，可以通过自定义日志推送字段名称和取值表达式，实现个性化的实时日志内容推送，详见 <a href="">自定义日志字段表达式</a>。<br>仅七层访问日志（LogType= l7-access-logs 或 domain）支持添加自定义字段，允许配置的自定义字段个数有配额限制，如遇配额不足请 <a href="https://cloud.tencent.com/online-service?from=sales&amp;source=PRESALE">联系我们</a> 。</p>
 	CustomFields []*CustomField `json:"CustomFields,omitnil,omitempty" name:"CustomFields"`
 
-	// 日志投递的过滤条件。不填表示投递全量日志。
+	// <p>投递的自定义表达式字段列表，可以通过自定义日志推送字段名称和取值表达式，实现个性化的实时日志内容推送，使用详情见 [自定义日志字段表达式]()。<br>仅七层访问日志（LogType= l7-access-logs 或 domain）支持添加自定义字段。允许配置的自定义字段个数有配额限制，如遇配额不足请 [联系我们](https://cloud.tencent.com/online-service?from=sales&amp;source=PRESALE) 。<br>**注意**：若 CustomExpressionFields 中存在命名 与 Fields 和 CustomFields 中同名的字段，以  CustomExpressionFields 中的取值为准。</p>
+	CustomExpressionFields []*CustomExpressionField `json:"CustomExpressionFields,omitnil,omitempty" name:"CustomExpressionFields"`
+
+	// <p>日志投递的过滤条件。不填表示投递全量日志。</p>
 	DeliveryConditions []*DeliveryCondition `json:"DeliveryConditions,omitnil,omitempty" name:"DeliveryConditions"`
 
-	// 采样比例，采用千分制，取值范围为1-1000，例如：填写 605 表示采样比例为 60.5%。不填保持原有配置。
+	// <p>采样比例，采用千分制，取值范围为1-1000，例如：填写 605 表示采样比例为 60.5%。不填保持原有配置。</p>
 	Sample *uint64 `json:"Sample,omitnil,omitempty" name:"Sample"`
 
-	// 日志投递的输出格式。不填保持原有配置。
-	// 特别地，当 TaskType 取值为 cls 时，LogFormat.FormatType 的值只能为 json，且 LogFormat 中其他参数将被忽略，建议不传 LogFormat。
+	// <p>日志投递的输出格式，使用详情见 <a href="https://cloud.tencent.com/document/product/1552/110448">自定义日志输出格式</a>。不填表示为默认格式，默认格式逻辑如下：<ul><li>当 TaskType 取值为 custom_endpoint 时，默认格式为多个 JSON 对象组成的数组，每个 JSON 对象为一条日志；</li><li>当 TaskType 取值为 s3 时，默认格式为 JSON Lines；</li></ul>特别地，当 TaskType 取值为 cls 或 log_analysis 时，LogFormat.FormatType 的值只能为 json，且 LogFormat 中其他参数将被忽略，建议不传 LogFormat。</p>
 	LogFormat *LogFormat `json:"LogFormat,omitnil,omitempty" name:"LogFormat"`
 
-	// 自定义 HTTP 服务的配置信息，不填保持原有配置。 
+	// <p>自定义 HTTP 服务的配置信息，不填保持原有配置。</p>
 	CustomEndpoint *CustomEndpoint `json:"CustomEndpoint,omitnil,omitempty" name:"CustomEndpoint"`
 
-	// AWS S3 兼容存储桶的配置信息，不填保持原有配置。
+	// <p>AWS S3 兼容存储桶的配置信息，不填保持原有配置。</p>
 	S3 *S3 `json:"S3,omitnil,omitempty" name:"S3"`
 }
 
@@ -21587,6 +21754,7 @@ func (r *ModifyRealtimeLogDeliveryTaskRequest) FromJsonString(s string) error {
 	delete(f, "EntityList")
 	delete(f, "Fields")
 	delete(f, "CustomFields")
+	delete(f, "CustomExpressionFields")
 	delete(f, "DeliveryConditions")
 	delete(f, "Sample")
 	delete(f, "LogFormat")
@@ -23928,7 +24096,7 @@ type RealtimeLogDeliveryTask struct {
 	// <p>实时日志投递任务的状态，取值有： <li>enabled: 已启用；</li> <li>disabled: 已停用；</li><li>deleted: 异常删除状态，请检查目的地腾讯云 CLS 日志集/日志主题是否已被删除。</li></p>
 	DeliveryStatus *string `json:"DeliveryStatus,omitnil,omitempty" name:"DeliveryStatus"`
 
-	// <p>实时日志投递任务类型，取值有： <li>cls: 推送到腾讯云 CLS；</li> <li>custom_endpoint：推送到自定义 HTTP(S) 地址；</li> <li>s3：推送到 AWS S3 兼容存储桶地址；</li><li>log_analysis：推送到 EdgeOne 日志分析。</li></p>
+	// <p>实时日志投递任务类型，取值有： <ul><li>cls: 推送到腾讯云 CLS；</li> <li>custom_endpoint：推送到自定义 HTTP(S) 地址；</li> <li>s3：推送到 S3 兼容（兼容 SigV4 鉴权算法）的对象存储的地址；</li><li>log_analysis：推送到 EdgeOne 日志分析。</li></ul></p>
 	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
 	// <p>实时日志投递任务对应的实体（七层域名或者四层代理实例）列表。取值示例如下： <li>七层域名：domain.example.com；</li> <li>四层代理实例：sid-2s69eb5wcms7。</li></p>
@@ -23945,6 +24113,9 @@ type RealtimeLogDeliveryTask struct {
 
 	// <p>投递的自定义字段列表。</p>
 	CustomFields []*CustomField `json:"CustomFields,omitnil,omitempty" name:"CustomFields"`
+
+	// <p>投递的自定义表达式字段列表。</p>
+	CustomExpressionFields []*CustomExpressionField `json:"CustomExpressionFields,omitnil,omitempty" name:"CustomExpressionFields"`
 
 	// <p>日志投递的过滤条件。</p>
 	DeliveryConditions []*DeliveryCondition `json:"DeliveryConditions,omitnil,omitempty" name:"DeliveryConditions"`
@@ -23964,7 +24135,7 @@ type RealtimeLogDeliveryTask struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CustomEndpoint *CustomEndpoint `json:"CustomEndpoint,omitnil,omitempty" name:"CustomEndpoint"`
 
-	// <p>AWS S3 兼容存储桶的配置信息。</p>
+	// <p>S3 兼容（兼容 SigV4 鉴权算法）的对象存储的配置信息。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	S3 *S3 `json:"S3,omitnil,omitempty" name:"S3"`
 
@@ -24368,7 +24539,7 @@ type RuleCondition struct {
 }
 
 type RuleEngineAction struct {
-	// <p>操作名称。名称需要与参数结构体对应，例如 Name=Cache，则 CacheParameters 必填。</p><li>Cache：节点缓存 TTL；</li><li>CacheKey：自定义 Cache Key；</li><li>CachePrefresh：缓存预刷新；</li><li>AccessURLRedirect：访问 URL 重定向；</li><li>UpstreamURLRewrite：回源 URL 重写；</li><li>QUIC：QUIC；</li><li>WebSocket：WebSocket；</li><li>Authentication：Token 鉴权；</li><li>MaxAge：浏览器缓存 TTL；</li><li>StatusCodeCache：状态码缓存 TTL；</li><li>OfflineCache：离线缓存；</li><li>SmartRouting：智能加速；</li><li>AdvancedOriginRouting：高级回源优化；</li><li>RangeOriginPull：分片回源 ；</li><li>UpstreamHTTP2：HTTP2 回源；</li><li>HostHeader：Host Header 重写；</li><li>ForceRedirectHTTPS：访问协议强制 HTTPS 跳转配置；</li><li>OriginPullProtocol：回源 HTTPS；</li><li>Compression：智能压缩配置；</li><li>HSTS：HSTS；</li><li>ClientIPHeader：存储客户端请求 IP 的头部信息配置；</li><li>OCSPStapling：OCSP 装订；</li><li>HTTP2：HTTP2 接入；</li><li>PostMaxSize：POST 请求上传文件流式传输最大限制配置；</li><li>ClientIPCountry：回源时携带客户端 IP 所属地域信息；</li><li>UpstreamFollowRedirect：回源跟随重定向参数配置；</li><li>UpstreamRequest：回源请求参数；</li><li>Shield：源站卸载配置；</li><li>TLSConfig：SSL/TLS 安全；</li><li>ModifyOrigin：修改源站；</li><li> SiteFailover：源站故障转移；</li><li>HTTPUpstreamTimeout：七层回源超时配置；</li><li>HttpResponse：HTTP 应答；</li><li>ErrorPage：自定义错误页面；</li><li>ModifyResponseHeader：修改 HTTP 节点响应头；</li><li>ModifyRequestHeader：修改 HTTP 节点请求头；</li><li>ResponseSpeedLimit：单连接下载限速；</li><li>SetContentIdentifier：设置内容标识符；</li><li>Vary：Vary 特性配置；</li><li>ContentCompression：内容压缩配置；</li><li>OriginAuthentication：回源鉴权配置。</li>
+	// <p>操作名称。名称需要与参数结构体对应，例如 Name=Cache，则 CacheParameters 必填。<li>Cache：节点缓存 TTL；</li><li>CacheKey：自定义 Cache Key；</li><li>CachePrefresh：缓存预刷新；</li><li>AccessURLRedirect：访问 URL 重定向；</li><li>UpstreamURLRewrite：回源 URL 重写；</li><li>QUIC：QUIC；</li><li>WebSocket：WebSocket；</li><li>Authentication：Token 鉴权；</li><li>MaxAge：浏览器缓存 TTL；</li><li>StatusCodeCache：状态码缓存 TTL；</li><li>OfflineCache：离线缓存；</li><li>SmartRouting：智能加速；</li><li>AdvancedOriginRouting：高级回源优化；</li><li>RangeOriginPull：分片回源 ；</li><li>UpstreamHTTP2：HTTP2 回源；</li><li>HostHeader：Host Header 重写；</li><li>ForceRedirectHTTPS：访问协议强制 HTTPS 跳转配置；</li><li>OriginPullProtocol：回源 HTTPS；</li><li>Compression：智能压缩配置；</li><li>HSTS：HSTS；</li><li>ClientIPHeader：存储客户端请求 IP 的头部信息配置；</li><li>OCSPStapling：OCSP 装订；</li><li>HTTP2：HTTP2 接入；</li><li>PostMaxSize：POST 请求上传文件流式传输最大限制配置；</li><li>ClientIPCountry：回源时携带客户端 IP 所属地域信息；</li><li>UpstreamFollowRedirect：回源跟随重定向参数配置；</li><li>UpstreamRequest：回源请求参数；</li><li>Shield：源站卸载配置；</li><li>TLSConfig：SSL/TLS 安全；</li><li>ModifyOrigin：修改源站；</li><li> SiteFailover：源站故障转移；</li><li>HTTPUpstreamTimeout：七层回源超时配置；</li><li>HttpResponse：HTTP 应答；</li><li>ErrorPage：自定义错误页面；</li><li>ModifyResponseHeader：修改 HTTP 节点响应头；</li><li>ModifyRequestHeader：修改 HTTP 节点请求头；</li><li>ResponseSpeedLimit：单连接下载限速；</li><li>SetContentIdentifier：设置内容标识符；</li><li>Vary：Vary 特性配置；</li><li>ContentCompression：内容压缩配置；</li><li>OriginAuthentication：回源鉴权配置；</li><li>CustomAction：定制配置。</li></p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// <p>节点缓存 TTL 配置参数，当 Name 取值为 Cache 时，该参数必填。</p>
@@ -24531,6 +24702,9 @@ type RuleEngineAction struct {
 
 	// <p>回源鉴权配置参数，当 Name 取值为 OriginAuthentication 时，该参数必填。该参数为白名单功能，如有需要，请联系腾讯云工程师处理。</p>
 	OriginAuthenticationParameters *OriginAuthenticationParameters `json:"OriginAuthenticationParameters,omitnil,omitempty" name:"OriginAuthenticationParameters"`
+
+	// <p>定制配置操作参数，当 Name 取值为 CustomAction 时，该参数必填。</p><p>您可以通过 DescribeAvailableCustomActionsForRuleEngine 接口的返回值 CustomActionSet 获取您当前支持的定制配置项列表。</p>
+	CustomActionParameters *CustomActionParameters `json:"CustomActionParameters,omitnil,omitempty" name:"CustomActionParameters"`
 }
 
 type RuleEngineItem struct {
@@ -25741,6 +25915,28 @@ type WafRule struct {
 	ObserveRuleIDs []*int64 `json:"ObserveRuleIDs,omitnil,omitempty" name:"ObserveRuleIDs"`
 }
 
+type WebSecurity struct {
+	// 站点级策略的配置详情。
+	ZoneDefaultPolicy *SecurityPolicy `json:"ZoneDefaultPolicy,omitnil,omitempty" name:"ZoneDefaultPolicy"`
+
+	// 域名级策略的配置详情。
+	HostPolicy *HostPolicy `json:"HostPolicy,omitnil,omitempty" name:"HostPolicy"`
+
+	// 策略模板的配置详情。
+	Templates *WebSecurityTemplates `json:"Templates,omitnil,omitempty" name:"Templates"`
+}
+
+type WebSecurityTemplates struct {
+	// <p>策略模板的 ID</p>
+	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
+
+	// <p>策略模板名称。由中文、英文、数字和下划线组成，不能以下划线开头，且长度不能超过 32 个字符。</p>
+	TemplateName *string `json:"TemplateName,omitnil,omitempty" name:"TemplateName"`
+
+	// <p>策略模板的策略配置，配置对所有关联了该策略模板的域名生效。</p>
+	Policy *SecurityPolicy `json:"Policy,omitnil,omitempty" name:"Policy"`
+}
+
 type WebSocket struct {
 	// WebSocket 超时时间配置开关，取值有：
 	// <li>on：使用Timeout作为WebSocket超时时间；</li>
@@ -25965,6 +26161,23 @@ type ZoneConfigParameters struct {
 	// 站点配置信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ZoneConfig *ZoneConfig `json:"ZoneConfig,omitnil,omitempty" name:"ZoneConfig"`
+}
+
+type ZoneFullConfig struct {
+	// <p>语法版本，当前默认为 1.0，输入其他值将会报错。</p>
+	FormatVersion *string `json:"FormatVersion,omitnil,omitempty" name:"FormatVersion"`
+
+	// <p>站点级配置，包含「站点加速」中所有配置项，且所有项均为必选，否则配置无效。</p>
+	ZoneConfig *ZoneConfig `json:"ZoneConfig,omitnil,omitempty" name:"ZoneConfig"`
+
+	// <p>规则级配置，包含「规则引擎」中所有规则，且数组可为空，表示不启用任何规则。</p>
+	Rules []*ConfigGroupRuleEngineItem `json:"Rules,omitnil,omitempty" name:"Rules"`
+
+	// <p>Web 安全防护配置，对应控制台中「安全防护 - Web 防护」里支持的功能。</p>
+	WebSecurity *WebSecurity `json:"WebSecurity,omitnil,omitempty" name:"WebSecurity"`
+
+	// <p>边缘函数触发规则配置，包含触发「边缘函数」中所有规则，且数组可为空，表示不启用任何规则。</p>
+	FunctionTriggers []*ConfigGroupFunctionTrigger `json:"FunctionTriggers,omitnil,omitempty" name:"FunctionTriggers"`
 }
 
 type ZoneInfo struct {

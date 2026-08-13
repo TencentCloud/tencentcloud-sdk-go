@@ -183,65 +183,69 @@ type Device struct {
 
 // Predefined struct for user
 type ImageModerationRequestParams struct {
-	// 该字段表示使用的策略的具体编号，该字段需要先在[内容安全控制台](https://console.cloud.tencent.com/cms/clouds/manage)中配置。
-	// 备注：不同Biztype关联不同的业务场景与识别能力策略，调用前请确认正确的Biztype。
+	// <p>该字段表示使用的策略的具体编号，该字段需要先在<a href="https://console.cloud.tencent.com/cms/clouds/manage">内容安全控制台</a>中配置。<br>备注：不同Biztype关联不同的业务场景与识别能力策略，调用前请确认正确的Biztype。</p>
 	BizType *string `json:"BizType,omitnil,omitempty" name:"BizType"`
 
-	// 该字段表示您为待检测对象分配的数据ID，传入后可方便您对文件进行标识和管理。<br>取值：由英文字母（大小写均可）、数字及四个特殊符号（_，-，@，#）组成，**长度不超过64个字符**。
+	// <p>该字段表示您为待检测对象分配的数据ID，传入后可方便您对文件进行标识和管理。<br>取值：由英文字母（大小写均可）、数字及四个特殊符号（_，-，@，#）组成，<strong>长度不超过64个字符</strong>。</p>
 	DataId *string `json:"DataId,omitnil,omitempty" name:"DataId"`
 
-	// 该字段表示待检测图片文件内容的Base64编码，由于云API对请求包体有大小限制，图片的**Base64编码内容大小不得超过10MB**。<br/>备注：**该字段与FileUrl必须选择输入其中一个**。
+	// <p>该字段表示待检测图片文件内容的Base64编码，由于云API对请求包体有大小限制，图片的<strong>Base64编码内容大小不得超过10MB</strong>。<br>备注：<strong>该字段与FileUrl必须选择输入其中一个</strong>。</p>
 	FileContent *string `json:"FileContent,omitnil,omitempty" name:"FileContent"`
 
-	// 该字段表示待检测图片文件的访问链接，URL源图**大小不超过30MB**。<br />备注：该字段与FileContent必须选择输入其中一个。
+	// <p>该字段表示待检测图片文件的访问链接，URL源图<strong>大小不超过30MB</strong>。<br>备注：该字段与FileContent必须选择输入其中一个。</p>
 	FileUrl *string `json:"FileUrl,omitnil,omitempty" name:"FileUrl"`
 
-	// **GIF检测专用**，用于表示GIF截帧频率（每隔多少张图片抽取一帧进行检测）；默认值为0，此时只会检测GIF的第一帧或不进行切分处理。<br>备注：Interval与MaxFrames参数需要组合使用。例如，Interval=3, MaxFrames=400，则代表在检测GIF时，将每间隔2帧检测一次且最多检测400帧。
+	// <p><strong>GIF检测专用</strong>，用于表示GIF截帧频率（每隔多少张图片抽取一帧进行检测）；默认值为0，此时只会检测GIF的第一帧或不进行切分处理。<br>备注：Interval与MaxFrames参数需要组合使用。例如，Interval=3, MaxFrames=400，则代表在检测GIF时，将每间隔2帧检测一次且最多检测400帧。</p>
 	Interval *int64 `json:"Interval,omitnil,omitempty" name:"Interval"`
 
-	// **GIF检测专用**，用于标识最大截帧数量；默认值为1，此时只会检测输入GIF的第一帧不进行切分处理（可能会造成处理超时）。<br>备注：Interval与MaxFrames参数需要组合使用。例如，Interval=3, MaxFrames=400，则代表在检测GIF时，将每间隔2帧检测一次且最多检测400帧。
+	// <p><strong>GIF检测专用</strong>，用于标识最大截帧数量；默认值为1，此时只会检测输入GIF的第一帧不进行切分处理（可能会造成处理超时）。<br>备注：Interval与MaxFrames参数需要组合使用。例如，Interval=3, MaxFrames=400，则代表在检测GIF时，将每间隔2帧检测一次且最多检测400帧。</p>
 	MaxFrames *int64 `json:"MaxFrames,omitnil,omitempty" name:"MaxFrames"`
 
-	// 该字段表示待检测对象对应的用户相关信息，若填入则可甄别相应违规风险用户。
+	// <p>该字段表示待检测对象对应的用户相关信息，若填入则可甄别相应违规风险用户。</p>
 	User *User `json:"User,omitnil,omitempty" name:"User"`
 
-	// 该字段表示待检测对象对应的设备相关信息，若填入则可甄别相应违规风险设备。
+	// <p>该字段表示待检测对象对应的设备相关信息，若填入则可甄别相应违规风险设备。</p>
 	Device *Device `json:"Device,omitnil,omitempty" name:"Device"`
 
-	// 该字段表示输入的图片审核类型，取值含：IMAGE（内容安全）、IMAGE_AIGC（AI生成识别）两种，默认值为IMAGE。
+	// <p>该字段表示输入的图片审核类型，取值含：IMAGE（内容安全）、IMAGE_AIGC（AI生成识别）两种，默认值为IMAGE。</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>该字段表示输入的策略标识用于调用业务来区分策略场景</p>
+	BizTag *string `json:"BizTag,omitnil,omitempty" name:"BizTag"`
 }
 
 type ImageModerationRequest struct {
 	*tchttp.BaseRequest
 	
-	// 该字段表示使用的策略的具体编号，该字段需要先在[内容安全控制台](https://console.cloud.tencent.com/cms/clouds/manage)中配置。
-	// 备注：不同Biztype关联不同的业务场景与识别能力策略，调用前请确认正确的Biztype。
+	// <p>该字段表示使用的策略的具体编号，该字段需要先在<a href="https://console.cloud.tencent.com/cms/clouds/manage">内容安全控制台</a>中配置。<br>备注：不同Biztype关联不同的业务场景与识别能力策略，调用前请确认正确的Biztype。</p>
 	BizType *string `json:"BizType,omitnil,omitempty" name:"BizType"`
 
-	// 该字段表示您为待检测对象分配的数据ID，传入后可方便您对文件进行标识和管理。<br>取值：由英文字母（大小写均可）、数字及四个特殊符号（_，-，@，#）组成，**长度不超过64个字符**。
+	// <p>该字段表示您为待检测对象分配的数据ID，传入后可方便您对文件进行标识和管理。<br>取值：由英文字母（大小写均可）、数字及四个特殊符号（_，-，@，#）组成，<strong>长度不超过64个字符</strong>。</p>
 	DataId *string `json:"DataId,omitnil,omitempty" name:"DataId"`
 
-	// 该字段表示待检测图片文件内容的Base64编码，由于云API对请求包体有大小限制，图片的**Base64编码内容大小不得超过10MB**。<br/>备注：**该字段与FileUrl必须选择输入其中一个**。
+	// <p>该字段表示待检测图片文件内容的Base64编码，由于云API对请求包体有大小限制，图片的<strong>Base64编码内容大小不得超过10MB</strong>。<br>备注：<strong>该字段与FileUrl必须选择输入其中一个</strong>。</p>
 	FileContent *string `json:"FileContent,omitnil,omitempty" name:"FileContent"`
 
-	// 该字段表示待检测图片文件的访问链接，URL源图**大小不超过30MB**。<br />备注：该字段与FileContent必须选择输入其中一个。
+	// <p>该字段表示待检测图片文件的访问链接，URL源图<strong>大小不超过30MB</strong>。<br>备注：该字段与FileContent必须选择输入其中一个。</p>
 	FileUrl *string `json:"FileUrl,omitnil,omitempty" name:"FileUrl"`
 
-	// **GIF检测专用**，用于表示GIF截帧频率（每隔多少张图片抽取一帧进行检测）；默认值为0，此时只会检测GIF的第一帧或不进行切分处理。<br>备注：Interval与MaxFrames参数需要组合使用。例如，Interval=3, MaxFrames=400，则代表在检测GIF时，将每间隔2帧检测一次且最多检测400帧。
+	// <p><strong>GIF检测专用</strong>，用于表示GIF截帧频率（每隔多少张图片抽取一帧进行检测）；默认值为0，此时只会检测GIF的第一帧或不进行切分处理。<br>备注：Interval与MaxFrames参数需要组合使用。例如，Interval=3, MaxFrames=400，则代表在检测GIF时，将每间隔2帧检测一次且最多检测400帧。</p>
 	Interval *int64 `json:"Interval,omitnil,omitempty" name:"Interval"`
 
-	// **GIF检测专用**，用于标识最大截帧数量；默认值为1，此时只会检测输入GIF的第一帧不进行切分处理（可能会造成处理超时）。<br>备注：Interval与MaxFrames参数需要组合使用。例如，Interval=3, MaxFrames=400，则代表在检测GIF时，将每间隔2帧检测一次且最多检测400帧。
+	// <p><strong>GIF检测专用</strong>，用于标识最大截帧数量；默认值为1，此时只会检测输入GIF的第一帧不进行切分处理（可能会造成处理超时）。<br>备注：Interval与MaxFrames参数需要组合使用。例如，Interval=3, MaxFrames=400，则代表在检测GIF时，将每间隔2帧检测一次且最多检测400帧。</p>
 	MaxFrames *int64 `json:"MaxFrames,omitnil,omitempty" name:"MaxFrames"`
 
-	// 该字段表示待检测对象对应的用户相关信息，若填入则可甄别相应违规风险用户。
+	// <p>该字段表示待检测对象对应的用户相关信息，若填入则可甄别相应违规风险用户。</p>
 	User *User `json:"User,omitnil,omitempty" name:"User"`
 
-	// 该字段表示待检测对象对应的设备相关信息，若填入则可甄别相应违规风险设备。
+	// <p>该字段表示待检测对象对应的设备相关信息，若填入则可甄别相应违规风险设备。</p>
 	Device *Device `json:"Device,omitnil,omitempty" name:"Device"`
 
-	// 该字段表示输入的图片审核类型，取值含：IMAGE（内容安全）、IMAGE_AIGC（AI生成识别）两种，默认值为IMAGE。
+	// <p>该字段表示输入的图片审核类型，取值含：IMAGE（内容安全）、IMAGE_AIGC（AI生成识别）两种，默认值为IMAGE。</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>该字段表示输入的策略标识用于调用业务来区分策略场景</p>
+	BizTag *string `json:"BizTag,omitnil,omitempty" name:"BizTag"`
 }
 
 func (r *ImageModerationRequest) ToJsonString() string {
@@ -265,6 +269,7 @@ func (r *ImageModerationRequest) FromJsonString(s string) error {
 	delete(f, "User")
 	delete(f, "Device")
 	delete(f, "Type")
+	delete(f, "BizTag")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ImageModerationRequest has unknown keys!", "")
 	}
@@ -273,47 +278,44 @@ func (r *ImageModerationRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ImageModerationResponseParams struct {
-	// 该字段用于返回Label标签下的后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
+	// <p>该字段用于返回Label标签下的后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：<strong>Block</strong>：建议屏蔽，<strong>Review</strong> ：建议人工复审，<strong>Pass</strong>：建议通过</p>
 	Suggestion *string `json:"Suggestion,omitnil,omitempty" name:"Suggestion"`
 
-	// 该字段用于返回检测结果（LabelResults）中所对应的**优先级最高的恶意标签**，表示模型推荐的审核结果，建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值标签示例：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告；（说明：文档仅示例了部分风险类型，更多返回类型请以实际值为准或[提交工单](https://console.cloud.tencent.com/workorder/category)进行咨询）。
+	// <p>该字段用于返回检测结果（LabelResults）中所对应的<strong>优先级最高的恶意标签</strong>，表示模型推荐的审核结果，建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值标签示例：<strong>Normal</strong>：正常，<strong>Porn</strong>：色情，<strong>Abuse</strong>：谩骂，<strong>Ad</strong>：广告；（说明：文档仅示例了部分风险类型，更多返回类型请以实际值为准或<a href="https://console.cloud.tencent.com/workorder/category">提交工单</a>进行咨询）。</p>
 	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
 
-	// 该字段用于返回检测结果所命中优先级最高的恶意标签下的子标签名称，如：*色情--性行为*；若未命中任何子标签则返回空字符串。
+	// <p>该字段用于返回检测结果所命中优先级最高的恶意标签下的子标签名称，如：<em>色情--性行为</em>；若未命中任何子标签则返回空字符串。</p>
 	SubLabel *string `json:"SubLabel,omitnil,omitempty" name:"SubLabel"`
 
-	// 该字段用于返回当前标签（Label）下的置信度，取值范围：0（**置信度最低**）-100（**置信度最高** ），越高代表图片越有可能属于当前返回的标签；如：*色情 99*，则表明该图片非常有可能属于色情内容；*色情 0*，则表明该图片不属于色情内容。
+	// <p>该字段用于返回当前标签（Label）下的置信度，取值范围：0（<strong>置信度最低</strong>）-100（<strong>置信度最高</strong> ），越高代表图片越有可能属于当前返回的标签；如：<em>色情 99</em>，则表明该图片非常有可能属于色情内容；<em>色情 0</em>，则表明该图片不属于色情内容。</p>
 	Score *int64 `json:"Score,omitnil,omitempty" name:"Score"`
 
-	// 该字段用于返回分类检测模型的详细检测结果；表示模型推荐的审核结果，建议您按照业务所需，对不同违规类型与建议值进行处理。详细返回值信息可参阅对应的数据结构（LabelResults）描述。
-	// 
-	// 返回值标签示例：Normal:正常，Porn:色情，Abuse:谩骂，Ad:广告（说明：文档仅示例了部分风险类型，更多返回类型请以实际值为准或[提交工单](https://console.cloud.tencent.com/workorder/category)进行咨询）
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// <p>该字段用于返回分类检测模型的详细检测结果；表示模型推荐的审核结果，建议您按照业务所需，对不同违规类型与建议值进行处理。详细返回值信息可参阅对应的数据结构（LabelResults）描述。</p><p>返回值标签示例：Normal:正常，Porn:色情，Abuse:谩骂，Ad:广告（说明：文档仅示例了部分风险类型，更多返回类型请以实际值为准或<a href="https://console.cloud.tencent.com/workorder/category">提交工单</a>进行咨询）<br>注意：此字段可能返回 null，表示取不到有效值。</p>
 	LabelResults []*LabelResult `json:"LabelResults,omitnil,omitempty" name:"LabelResults"`
 
-	// 该字段用于返回物体检测模型的详细检测结果；包括：实体、广告台标、二维码等内容命中的标签名称、标签分数、坐标信息、场景识别结果、建议操作等内容审核信息；详细返回值信息可参阅对应的数据结构（ObjectResults）描述。
+	// <p>该字段用于返回物体检测模型的详细检测结果；包括：实体、广告台标、二维码等内容命中的标签名称、标签分数、坐标信息、场景识别结果、建议操作等内容审核信息；详细返回值信息可参阅对应的数据结构（ObjectResults）描述。</p>
 	ObjectResults []*ObjectResult `json:"ObjectResults,omitnil,omitempty" name:"ObjectResults"`
 
-	// 该字段用于返回OCR文本识别的详细检测结果；包括：文本坐标信息、文本识别结果、建议操作等内容审核信息；详细返回值信息可参阅对应的数据结构（OcrResults）描述。
+	// <p>该字段用于返回OCR文本识别的详细检测结果；包括：文本坐标信息、文本识别结果、建议操作等内容审核信息；详细返回值信息可参阅对应的数据结构（OcrResults）描述。</p>
 	OcrResults []*OcrResult `json:"OcrResults,omitnil,omitempty" name:"OcrResults"`
 
-	// 该字段用于返回基于图片风险库（风险黑库与正常白库）识别的结果,详细返回值信息可参阅对应的数据结构（LibResults）描述。<br>备注：图片风险库目前**暂不支持自定义库**。
+	// <p>该字段用于返回基于图片风险库（风险黑库与正常白库）识别的结果,详细返回值信息可参阅对应的数据结构（LibResults）描述。<br>备注：图片风险库目前<strong>暂不支持自定义库</strong>。</p>
 	LibResults []*LibResult `json:"LibResults,omitnil,omitempty" name:"LibResults"`
 
-	// 该字段用于返回检测对象对应请求参数中的DataId。
+	// <p>该字段用于返回检测对象对应请求参数中的DataId。</p>
 	DataId *string `json:"DataId,omitnil,omitempty" name:"DataId"`
 
-	// 该字段用于返回检测对象对应请求参数中的BizType。
+	// <p>该字段用于返回检测对象对应请求参数中的BizType。</p>
 	BizType *string `json:"BizType,omitnil,omitempty" name:"BizType"`
 
-	// 该字段用于返回根据您的需求配置的额外附加信息（Extra），如未配置则默认返回值为空。<br>备注：不同客户或Biztype下返回信息不同，如需配置该字段请提交工单咨询或联系售后专员处理。
+	// <p>该字段用于返回根据您的需求配置的额外附加信息（Extra），如未配置则默认返回值为空。<br>备注：不同客户或Biztype下返回信息不同，如需配置该字段请提交工单咨询或联系售后专员处理。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
 
-	// 该字段用于返回检测对象对应的MD5校验值，以方便校验文件完整性。
+	// <p>该字段用于返回检测对象对应的MD5校验值，以方便校验文件完整性。</p>
 	FileMD5 *string `json:"FileMD5,omitnil,omitempty" name:"FileMD5"`
 
-	// 该字段用于返回仅识别图片元素的模型结果；包括：场景模型命中的标签、置信度和位置信息
+	// <p>该字段用于返回仅识别图片元素的模型结果；包括：场景模型命中的标签、置信度和位置信息</p>
 	RecognitionResults []*RecognitionResult `json:"RecognitionResults,omitnil,omitempty" name:"RecognitionResults"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

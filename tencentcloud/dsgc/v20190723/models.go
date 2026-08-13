@@ -5057,20 +5057,20 @@ func (r *DescribeDSPAAssessmentRiskSideDistributedResponse) FromJsonString(s str
 
 // Predefined struct for user
 type DescribeDSPAAssessmentRiskSideListRequestParams struct {
-	// DSPA实例ID
+	// <p>DSPA实例ID</p>
 	DspaId *string `json:"DspaId,omitnil,omitempty" name:"DspaId"`
 
-	// 评估模板id
+	// <p>评估模板id</p>
 	TemplateId *int64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 }
 
 type DescribeDSPAAssessmentRiskSideListRequest struct {
 	*tchttp.BaseRequest
 	
-	// DSPA实例ID
+	// <p>DSPA实例ID</p>
 	DspaId *string `json:"DspaId,omitnil,omitempty" name:"DspaId"`
 
-	// 评估模板id
+	// <p>评估模板id</p>
 	TemplateId *int64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 }
 
@@ -5096,12 +5096,12 @@ func (r *DescribeDSPAAssessmentRiskSideListRequest) FromJsonString(s string) err
 
 // Predefined struct for user
 type DescribeDSPAAssessmentRiskSideListResponseParams struct {
-	// 风险面列表
+	// <p>风险面列表</p>
 	//
 	// Deprecated: RiskSideItmeList is deprecated.
 	RiskSideItmeList []*Note `json:"RiskSideItmeList,omitnil,omitempty" name:"RiskSideItmeList"`
 
-	// 风险面列表
+	// <p>风险面列表</p>
 	RiskSideItemList []*Note `json:"RiskSideItemList,omitnil,omitempty" name:"RiskSideItemList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

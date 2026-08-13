@@ -2941,7 +2941,7 @@ func NewCreateRealtimeLogDeliveryTaskResponse() (response *CreateRealtimeLogDeli
 // CreateRealtimeLogDeliveryTask
 // 本接口用于创建实时日志投递任务。本接口有如下限制：
 //
-// - 当数据投递类型（LogType）为站点加速日志（七层访问日志）、四层代理日志、边缘函数运行日志时，同一个实体（七层域名、四层代理实例、边缘函数实例）在同种数据投递类型（LogType）和数据投递区域（Area）的组合下，只能被添加到如下实时日志投递任务类型（TaskType）组合中：
+// - 当数据投递类型（LogType）为七层访问日志、四层代理日志、边缘函数运行日志时，同一个实体（七层域名、四层代理实例、边缘函数实例）在同种数据投递类型（LogType）和数据投递区域（Area）的组合下，只能被添加到如下实时日志投递任务类型（TaskType）组合中：
 //
 //     - 一个推送至腾讯云  CLS 的任务，加上另一个推送至自定义 HTTP(S) 地址的任务；
 //
@@ -2949,7 +2949,7 @@ func NewCreateRealtimeLogDeliveryTaskResponse() (response *CreateRealtimeLogDeli
 //
 // - 当数据投递类型（LogType）为速率限制和 CC 攻击防护日志、托管规则日志、自定义规则日志、Bot 管理日志时，同一个实体在同种数据投递类型（LogType）和数据投递区域（Area）的组合下，只能被添加到一个实时日志投递任务中。
 //
-// - 当实时日志投递任务类型（TaskType）为 EdgeOne 日志分析（log_analysis）时，只支持数据投递类型（LogType）为站点加速日志（domain）或托管规则日志（web-attack）；在同一站点（ZoneId）、同一数据投递区域（Area）和数据的组合下，每种数据投递类型（LogType）只能添加一个推送至 EdgeOne 日志分析的实时日志投递任务。
+// - 当实时日志投递任务类型（TaskType）为 EdgeOne 日志分析（log_analysis）时，只支持数据投递类型（LogType）为七层访问日志（l7-access-logs）或托管规则日志（web-attack）；在同一站点（ZoneId）、同一数据投递区域（Area）和数据的组合下，每种数据投递类型（LogType）只能添加一个推送至 EdgeOne 日志分析的实时日志投递任务。
 //
 // 
 //
@@ -2985,7 +2985,7 @@ func (c *Client) CreateRealtimeLogDeliveryTask(request *CreateRealtimeLogDeliver
 // CreateRealtimeLogDeliveryTask
 // 本接口用于创建实时日志投递任务。本接口有如下限制：
 //
-// - 当数据投递类型（LogType）为站点加速日志（七层访问日志）、四层代理日志、边缘函数运行日志时，同一个实体（七层域名、四层代理实例、边缘函数实例）在同种数据投递类型（LogType）和数据投递区域（Area）的组合下，只能被添加到如下实时日志投递任务类型（TaskType）组合中：
+// - 当数据投递类型（LogType）为七层访问日志、四层代理日志、边缘函数运行日志时，同一个实体（七层域名、四层代理实例、边缘函数实例）在同种数据投递类型（LogType）和数据投递区域（Area）的组合下，只能被添加到如下实时日志投递任务类型（TaskType）组合中：
 //
 //     - 一个推送至腾讯云  CLS 的任务，加上另一个推送至自定义 HTTP(S) 地址的任务；
 //
@@ -2993,7 +2993,7 @@ func (c *Client) CreateRealtimeLogDeliveryTask(request *CreateRealtimeLogDeliver
 //
 // - 当数据投递类型（LogType）为速率限制和 CC 攻击防护日志、托管规则日志、自定义规则日志、Bot 管理日志时，同一个实体在同种数据投递类型（LogType）和数据投递区域（Area）的组合下，只能被添加到一个实时日志投递任务中。
 //
-// - 当实时日志投递任务类型（TaskType）为 EdgeOne 日志分析（log_analysis）时，只支持数据投递类型（LogType）为站点加速日志（domain）或托管规则日志（web-attack）；在同一站点（ZoneId）、同一数据投递区域（Area）和数据的组合下，每种数据投递类型（LogType）只能添加一个推送至 EdgeOne 日志分析的实时日志投递任务。
+// - 当实时日志投递任务类型（TaskType）为 EdgeOne 日志分析（log_analysis）时，只支持数据投递类型（LogType）为七层访问日志（l7-access-logs）或托管规则日志（web-attack）；在同一站点（ZoneId）、同一数据投递区域（Area）和数据的组合下，每种数据投递类型（LogType）只能添加一个推送至 EdgeOne 日志分析的实时日志投递任务。
 //
 // 
 //
@@ -11145,6 +11145,60 @@ func (c *Client) DownloadL7LogsWithContext(ctx context.Context, request *Downloa
     request.SetContext(ctx)
     
     response = NewDownloadL7LogsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDummyParseZoneFullConfigRequest() (request *DummyParseZoneFullConfigRequest) {
+    request = &DummyParseZoneFullConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "DummyParseZoneFullConfig")
+    
+    
+    return
+}
+
+func NewDummyParseZoneFullConfigResponse() (response *DummyParseZoneFullConfigResponse) {
+    response = &DummyParseZoneFullConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DummyParseZoneFullConfig
+// 本接口用于定义站点完整配置的结构，仅供查阅。注意：调用本接口不返回实际数据。
+//
+// 可能返回的错误码:
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+func (c *Client) DummyParseZoneFullConfig(request *DummyParseZoneFullConfigRequest) (response *DummyParseZoneFullConfigResponse, err error) {
+    return c.DummyParseZoneFullConfigWithContext(context.Background(), request)
+}
+
+// DummyParseZoneFullConfig
+// 本接口用于定义站点完整配置的结构，仅供查阅。注意：调用本接口不返回实际数据。
+//
+// 可能返回的错误码:
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+func (c *Client) DummyParseZoneFullConfigWithContext(ctx context.Context, request *DummyParseZoneFullConfigRequest) (response *DummyParseZoneFullConfigResponse, err error) {
+    if request == nil {
+        request = NewDummyParseZoneFullConfigRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DummyParseZoneFullConfig")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DummyParseZoneFullConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDummyParseZoneFullConfigResponse()
     err = c.Send(request, response)
     return
 }

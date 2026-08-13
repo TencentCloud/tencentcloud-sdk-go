@@ -11753,7 +11753,7 @@ func NewUploadFilesResponse() (response *UploadFilesResponse) {
 //
 // 注: 
 //
-// 1. 图片类型(png/jpg/jpeg)限制大小为5M以下, PDF/word/excel等其他格式限制大小为60M以下
+// 1. 图片类型(png/jpg/jpeg)限制大小为8M以下, PDF/word/excel等其他格式限制大小为60M以下
 //
 // 2. <font color='red'>此接口调用时需要单独设置Domain请求域名 </font>,  联调开发环境为 <font color='red'>file.test.ess.tencent.cn</font>，正式环境需要设置为<font color='red'>file.ess.tencent.cn</font>，代码示例
 //
@@ -11799,7 +11799,7 @@ func (c *Client) UploadFiles(request *UploadFilesRequest) (response *UploadFiles
 //
 // 注: 
 //
-// 1. 图片类型(png/jpg/jpeg)限制大小为5M以下, PDF/word/excel等其他格式限制大小为60M以下
+// 1. 图片类型(png/jpg/jpeg)限制大小为8M以下, PDF/word/excel等其他格式限制大小为60M以下
 //
 // 2. <font color='red'>此接口调用时需要单独设置Domain请求域名 </font>,  联调开发环境为 <font color='red'>file.test.ess.tencent.cn</font>，正式环境需要设置为<font color='red'>file.ess.tencent.cn</font>，代码示例
 //

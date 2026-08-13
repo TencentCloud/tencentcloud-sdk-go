@@ -1266,6 +1266,9 @@ type CreateLaunchTemplateRequestParams struct {
 
 	// <p>只允许传递 Update 和 Replace 参数，在模板使用自定义 Metadata 且在 RunInstances 也传递 Metadata 时生效。默认采用 Replace。</p><ul><li>Update：设模板 t含本参数值为Update、 metadata=[k1:v1, k2:v2] ，则RunInstances（给metadata=[k2:v3]）+ t 创建的 cvm 使用metadata=[k1:v1, k2:v3] </li><li>Replace：模板 t含本参数值为Replace、 metadata=[k1:v1, k2:v2] ，则RunInstances（给metadata=[k2:v3]）+ t 创建的 cvm 使用metadata=[k2:v3]<br><strong>注：内测中</strong>。</li></ul>
 	TemplateDataModifyAction *string `json:"TemplateDataModifyAction,omitnil,omitempty" name:"TemplateDataModifyAction"`
+
+	// <p>多网卡参数信息。 此功能仅部分地区灰度开放，如需使用<a href="https://console.cloud.tencent.com/workorder/category">请提交工单咨询</a></p>
+	NetworkInterfaces []*NetworkInterfaces `json:"NetworkInterfaces,omitnil,omitempty" name:"NetworkInterfaces"`
 }
 
 type CreateLaunchTemplateRequest struct {
@@ -1363,6 +1366,9 @@ type CreateLaunchTemplateRequest struct {
 
 	// <p>只允许传递 Update 和 Replace 参数，在模板使用自定义 Metadata 且在 RunInstances 也传递 Metadata 时生效。默认采用 Replace。</p><ul><li>Update：设模板 t含本参数值为Update、 metadata=[k1:v1, k2:v2] ，则RunInstances（给metadata=[k2:v3]）+ t 创建的 cvm 使用metadata=[k1:v1, k2:v3] </li><li>Replace：模板 t含本参数值为Replace、 metadata=[k1:v1, k2:v2] ，则RunInstances（给metadata=[k2:v3]）+ t 创建的 cvm 使用metadata=[k2:v3]<br><strong>注：内测中</strong>。</li></ul>
 	TemplateDataModifyAction *string `json:"TemplateDataModifyAction,omitnil,omitempty" name:"TemplateDataModifyAction"`
+
+	// <p>多网卡参数信息。 此功能仅部分地区灰度开放，如需使用<a href="https://console.cloud.tencent.com/workorder/category">请提交工单咨询</a></p>
+	NetworkInterfaces []*NetworkInterfaces `json:"NetworkInterfaces,omitnil,omitempty" name:"NetworkInterfaces"`
 }
 
 func (r *CreateLaunchTemplateRequest) ToJsonString() string {
@@ -1408,6 +1414,7 @@ func (r *CreateLaunchTemplateRequest) FromJsonString(s string) error {
 	delete(f, "LaunchTemplateTagSpecification")
 	delete(f, "Metadata")
 	delete(f, "TemplateDataModifyAction")
+	delete(f, "NetworkInterfaces")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLaunchTemplateRequest has unknown keys!", "")
 	}
@@ -1533,6 +1540,9 @@ type CreateLaunchTemplateVersionRequestParams struct {
 
 	// <p>只允许传递 Update 和 Replace 参数，在模板使用自定义 Metadata 且在 RunInstances 也传递 Metadata 时生效。默认采用 Replace。</p><ul><li>Update：设模板 t含本参数值为Update、 metadata=[k1:v1, k2:v2] ，则RunInstances（给metadata=[k2:v3]）+ t 创建的 cvm 使用metadata=[k1:v1, k2:v3] </li><li>Replace：模板 t含本参数值为Replace、 metadata=[k1:v1, k2:v2] ，则RunInstances（给metadata=[k2:v3]）+ t 创建的 cvm 使用metadata=[k2:v3]<br><strong>注：内测中</strong>。</li></ul>
 	TemplateDataModifyAction *string `json:"TemplateDataModifyAction,omitnil,omitempty" name:"TemplateDataModifyAction"`
+
+	// <p>多网卡参数信息。 此功能仅部分地区灰度开放，如需使用<a href="https://console.cloud.tencent.com/workorder/category">请提交工单咨询</a></p>
+	NetworkInterfaces []*NetworkInterfaces `json:"NetworkInterfaces,omitnil,omitempty" name:"NetworkInterfaces"`
 }
 
 type CreateLaunchTemplateVersionRequest struct {
@@ -1630,6 +1640,9 @@ type CreateLaunchTemplateVersionRequest struct {
 
 	// <p>只允许传递 Update 和 Replace 参数，在模板使用自定义 Metadata 且在 RunInstances 也传递 Metadata 时生效。默认采用 Replace。</p><ul><li>Update：设模板 t含本参数值为Update、 metadata=[k1:v1, k2:v2] ，则RunInstances（给metadata=[k2:v3]）+ t 创建的 cvm 使用metadata=[k1:v1, k2:v3] </li><li>Replace：模板 t含本参数值为Replace、 metadata=[k1:v1, k2:v2] ，则RunInstances（给metadata=[k2:v3]）+ t 创建的 cvm 使用metadata=[k2:v3]<br><strong>注：内测中</strong>。</li></ul>
 	TemplateDataModifyAction *string `json:"TemplateDataModifyAction,omitnil,omitempty" name:"TemplateDataModifyAction"`
+
+	// <p>多网卡参数信息。 此功能仅部分地区灰度开放，如需使用<a href="https://console.cloud.tencent.com/workorder/category">请提交工单咨询</a></p>
+	NetworkInterfaces []*NetworkInterfaces `json:"NetworkInterfaces,omitnil,omitempty" name:"NetworkInterfaces"`
 }
 
 func (r *CreateLaunchTemplateVersionRequest) ToJsonString() string {
@@ -1675,6 +1688,7 @@ func (r *CreateLaunchTemplateVersionRequest) FromJsonString(s string) error {
 	delete(f, "EnableJumboFrame")
 	delete(f, "Metadata")
 	delete(f, "TemplateDataModifyAction")
+	delete(f, "NetworkInterfaces")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLaunchTemplateVersionRequest has unknown keys!", "")
 	}
@@ -6470,6 +6484,9 @@ type InquiryPriceRunInstancesRequestParams struct {
 
 	// <p>实例启动模板。</p>
 	LaunchTemplate *LaunchTemplate `json:"LaunchTemplate,omitnil,omitempty" name:"LaunchTemplate"`
+
+	// <p>多网卡参数信息。 此功能仅部分地区灰度开放，如需使用<a href="https://console.cloud.tencent.com/workorder/category">请提交工单咨询</a></p>
+	NetworkInterfaces []*NetworkInterfaces `json:"NetworkInterfaces,omitnil,omitempty" name:"NetworkInterfaces"`
 }
 
 type InquiryPriceRunInstancesRequest struct {
@@ -6540,6 +6557,9 @@ type InquiryPriceRunInstancesRequest struct {
 
 	// <p>实例启动模板。</p>
 	LaunchTemplate *LaunchTemplate `json:"LaunchTemplate,omitnil,omitempty" name:"LaunchTemplate"`
+
+	// <p>多网卡参数信息。 此功能仅部分地区灰度开放，如需使用<a href="https://console.cloud.tencent.com/workorder/category">请提交工单咨询</a></p>
+	NetworkInterfaces []*NetworkInterfaces `json:"NetworkInterfaces,omitnil,omitempty" name:"NetworkInterfaces"`
 }
 
 func (r *InquiryPriceRunInstancesRequest) ToJsonString() string {
@@ -6576,6 +6596,7 @@ func (r *InquiryPriceRunInstancesRequest) FromJsonString(s string) error {
 	delete(f, "HpcClusterId")
 	delete(f, "CpuTopology")
 	delete(f, "LaunchTemplate")
+	delete(f, "NetworkInterfaces")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InquiryPriceRunInstancesRequest has unknown keys!", "")
 	}
@@ -8507,6 +8528,29 @@ func (r *ModifyLaunchTemplateDefaultVersionResponse) FromJsonString(s string) er
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type NetworkInterfaces struct {
+	// <p>表示是主网卡还是辅助网卡。注意：枚举值要全部大写；<strong>NetworkInterfaces数组中必须要有PRIMARY</strong>，且PRIMARY只能存在一个，SECONDARY可以存在多个。</p><p>枚举值：</p><ul><li>PRIMARY： 主网卡</li><li>SECONDARY： 辅助网卡</li></ul>
+	InterfaceType *string `json:"InterfaceType,omitnil,omitempty" name:"InterfaceType"`
+
+	// <p>私有网络ID，形如<code>vpc-xxx</code>。有效的VpcId可通过登录<a href="https://console.cloud.tencent.com/vpc/vpc?rid=1">控制台</a>查询；也可以调用接口 <a href="https://cloud.tencent.com/document/product/215/15778">DescribeVpcs</a> ，从接口返回中的<code>VpcId</code>字段获取。若在创建子机时VpcId与SubnetId同时传入<code>DEFAULT</code>，则强制使用默认vpc网络。</p>
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// <p>私有网络子网ID，形如<code>subnet-xxx</code>。有效的私有网络子网ID可通过登录<a href="https://console.cloud.tencent.com/vpc/subnet?rid=1">控制台</a>查询；也可以调用接口  <a href="https://cloud.tencent.com/document/product/215/15784">DescribeSubnets</a> ，从接口返回中的<code>SubnetId</code>字段获取。若在创建子机时SubnetId与VpcId同时传入<code>DEFAULT</code>，则强制使用默认vpc网络。</p>
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// <p>此字段是必填字段，表示每张网卡自动分配私有网卡IP个数。注意：不允许客户同时指定ip且动态分配ip。</p><p>取值范围：[1, 50]</p>
+	PrivateIpv4AddressCount *int64 `json:"PrivateIpv4AddressCount,omitnil,omitempty" name:"PrivateIpv4AddressCount"`
+
+	// <p>指定存量的网卡ID用于绑定。只对辅助网卡生效，主网卡的生成采用既有流程。注：客户手动指定已有弹性网卡时，相关接口InstanceCount必须为1。主网卡不支持指定。</p>
+	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitnil,omitempty" name:"NetworkInterfaceId"`
+
+	// <p>实例所属安全组。该参数可以通过调用 <a href="https://cloud.tencent.com/document/api/215/15808">DescribeSecurityGroups</a> 的返回值中的 <code>SecurityGroupId</code> 字段来获取。若不指定该参数，则绑定指定项目下的默认安全组，如默认安全组不存在则将自动创建。</p><p>每个用户在每个地域每个项目下最多可设置50个安全组。</p>
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
+
+	// <p>是否随CVM删除绑定的弹性网卡，参数只对辅助网卡生效。默认保留辅助网卡兼容当前线上行为。该参数放置在主网卡上不生效，主网卡会随着CVM一同销毁。</p><p>默认值：<code>false</code></p>
+	DeleteWithInstance *bool `json:"DeleteWithInstance,omitnil,omitempty" name:"DeleteWithInstance"`
+}
+
 type OperationCountLimit struct {
 	// 实例操作。取值范围：<br><li>`INSTANCE_DEGRADE`：降配操作</li><li>`INTERNET_CHARGE_TYPE_CHANGE`：修改网络带宽计费模式</li>
 	Operation *string `json:"Operation,omitnil,omitempty" name:"Operation"`
@@ -9967,6 +10011,9 @@ type RunInstancesRequestParams struct {
 
 	// <p>实例是否开启巨型帧，取值范围：<br>&lt;li/&gt; true：表示实例开启巨型帧，只有支持巨型帧的机型可设置为true。<br>&lt;li/&gt;false：表示实例关闭巨型帧，只有支持巨型帧的机型可设置为false。<br> 支持巨型帧的实例规格： <a href="https://cloud.tencent.com/document/product/213/11518">实例规格</a></p>
 	EnableJumboFrame *bool `json:"EnableJumboFrame,omitnil,omitempty" name:"EnableJumboFrame"`
+
+	// <p>多网卡参数信息。 此功能仅部分地区灰度开放，如需使用<a href="https://console.cloud.tencent.com/workorder/category">请提交工单咨询</a></p>
+	NetworkInterfaces []*NetworkInterfaces `json:"NetworkInterfaces,omitnil,omitempty" name:"NetworkInterfaces"`
 }
 
 type RunInstancesRequest struct {
@@ -10070,6 +10117,9 @@ type RunInstancesRequest struct {
 
 	// <p>实例是否开启巨型帧，取值范围：<br>&lt;li/&gt; true：表示实例开启巨型帧，只有支持巨型帧的机型可设置为true。<br>&lt;li/&gt;false：表示实例关闭巨型帧，只有支持巨型帧的机型可设置为false。<br> 支持巨型帧的实例规格： <a href="https://cloud.tencent.com/document/product/213/11518">实例规格</a></p>
 	EnableJumboFrame *bool `json:"EnableJumboFrame,omitnil,omitempty" name:"EnableJumboFrame"`
+
+	// <p>多网卡参数信息。 此功能仅部分地区灰度开放，如需使用<a href="https://console.cloud.tencent.com/workorder/category">请提交工单咨询</a></p>
+	NetworkInterfaces []*NetworkInterfaces `json:"NetworkInterfaces,omitnil,omitempty" name:"NetworkInterfaces"`
 }
 
 func (r *RunInstancesRequest) ToJsonString() string {
@@ -10117,6 +10167,7 @@ func (r *RunInstancesRequest) FromJsonString(s string) error {
 	delete(f, "PartitionNumber")
 	delete(f, "DisableApiTermination")
 	delete(f, "EnableJumboFrame")
+	delete(f, "NetworkInterfaces")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RunInstancesRequest has unknown keys!", "")
 	}

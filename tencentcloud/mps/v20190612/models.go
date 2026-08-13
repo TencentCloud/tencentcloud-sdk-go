@@ -2642,6 +2642,47 @@ type AigcStoreCosParam struct {
 	CosBucketPath *string `json:"CosBucketPath,omitnil,omitempty" name:"CosBucketPath"`
 }
 
+type AigcTaskListItem struct {
+	// <p>任务ID</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>任务类型</p><p>枚举值：</p><ul><li>VideoRedraw： 转绘任务</li><li>AIDrama： AI漫剧任务</li></ul>
+	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+
+	// <p>任务状态</p><p>枚举值：</p><ul><li>PENDING： 任务等待调度</li><li>RUNNING： 任务运行中</li><li>FINISHED： 任务执行成功</li><li>STOP： 任务被中止</li><li>FAILED： 任务失败</li><li>TIMEOUT： 任务超时</li></ul>
+	TaskStatus *string `json:"TaskStatus,omitnil,omitempty" name:"TaskStatus"`
+
+	// <p>任务创建时间</p>
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>任务开始调度时间</p>
+	ScheduledTime *string `json:"ScheduledTime,omitnil,omitempty" name:"ScheduledTime"`
+
+	// <p>任务结束时间</p>
+	FinishedTime *string `json:"FinishedTime,omitnil,omitempty" name:"FinishedTime"`
+
+	// <p>任务结果Url</p>
+	Urls []*string `json:"Urls,omitnil,omitempty" name:"Urls"`
+
+	// <p>任务执行错误码</p>
+	TaskResultCode *int64 `json:"TaskResultCode,omitnil,omitempty" name:"TaskResultCode"`
+
+	// <p>任务执行错误信息</p>
+	TaskResultMsg *string `json:"TaskResultMsg,omitnil,omitempty" name:"TaskResultMsg"`
+
+	// <p>输出视频的分辨率</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
+
+	// <p>输出视频的宽高比</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Ratio *string `json:"Ratio,omitnil,omitempty" name:"Ratio"`
+
+	// <p>任务请求包</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RequestBody *string `json:"RequestBody,omitnil,omitempty" name:"RequestBody"`
+}
+
 type AigcVideoExtraParam struct {
 	// <p>生成视频的分辨率，分辨率与选择模型及设置的视频时长相关。 </p><p>不同模型支持的分辨率选项:</p><ol><li>Kling 720P(默认)，1080P。Kling 3.0、Kling 3.0-Omni 支持 4K。</li><li>Hailuo 768P(默认)，1080P。</li><li>Vidu 540P，720P(默认)，1080P。</li><li>PixVerse 540P，720P(默认)，1080P。</li><li>H2 720P，1080P(默认)。</li></ol><p>注意：除模型可支持的分辨率外，还可以生成 2K、4K分辨率。</p>
 	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
@@ -11441,6 +11482,86 @@ func (r *DescribeAigcImageTaskResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeAigcTaskListRequestParams struct {
+	// <p>开始查询页</p>
+	PageNum *int64 `json:"PageNum,omitnil,omitempty" name:"PageNum"`
+
+	// <p>当前页要获取多少数据</p>
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// <p>查询过滤条件</p>
+	QueryTaskFilter *QueryTaskFilter `json:"QueryTaskFilter,omitnil,omitempty" name:"QueryTaskFilter"`
+}
+
+type DescribeAigcTaskListRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>开始查询页</p>
+	PageNum *int64 `json:"PageNum,omitnil,omitempty" name:"PageNum"`
+
+	// <p>当前页要获取多少数据</p>
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// <p>查询过滤条件</p>
+	QueryTaskFilter *QueryTaskFilter `json:"QueryTaskFilter,omitnil,omitempty" name:"QueryTaskFilter"`
+}
+
+func (r *DescribeAigcTaskListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAigcTaskListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PageNum")
+	delete(f, "PageSize")
+	delete(f, "QueryTaskFilter")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAigcTaskListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAigcTaskListResponseParams struct {
+	// <p>当前任务待返回总数</p>
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// <p>开始查询页</p>
+	PageNum *int64 `json:"PageNum,omitnil,omitempty" name:"PageNum"`
+
+	// <p>当前页要获取数据条目数</p>
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// <p>任务详情数据</p>
+	Tasks []*AigcTaskListItem `json:"Tasks,omitnil,omitempty" name:"Tasks"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAigcTaskListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAigcTaskListResponseParams `json:"Response"`
+}
+
+func (r *DescribeAigcTaskListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAigcTaskListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeAigcTaskStatusRequestParams struct {
 	// <p>任务ID</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
@@ -18967,7 +19088,7 @@ type FailOverOption struct {
 }
 
 type FissionTaskInfo struct {
-	// <p>视频输出时长</p><p>取值范围：[1, 15]</p><p>单位：秒</p><p>默认值：15</p>
+	// <p>视频输出时长</p><p>取值范围：[4, 15]</p><p>单位：秒</p><p>默认值：15</p>
 	Duration *uint64 `json:"Duration,omitnil,omitempty" name:"Duration"`
 
 	// <p>模型档位</p><p>枚举值：</p><ul><li>standard： 标准版</li><li>flagship： 旗舰版</li></ul>
@@ -18982,7 +19103,7 @@ type FissionTaskInfo struct {
 	// <p>目标市场</p><p>枚举值：</p><ul><li>north_america： 北美</li><li>europe： 欧洲</li><li>china： 中国</li><li>japan： 日本</li><li>korea： 韩国</li><li>southeast_asia： 东南亚</li><li>brazil： 巴西</li><li>global： 全球</li><li>other： 其他</li></ul><p>影响默认出镜模特族裔与本地化风格；未指定 CustomModel 时按市场自动决定人种</p>
 	Market *string `json:"Market,omitnil,omitempty" name:"Market"`
 
-	// <p>口播/字幕语言</p><p>枚举值：</p><ul><li>english： 英文</li><li>chinese： 中文</li><li>japanese： 日语</li><li>korean： 汉语</li><li>spanish： 西班牙语</li><li>portuguese： 葡萄牙语</li><li>music_only： 纯音乐无口播</li></ul>
+	// <p>口播/字幕语言</p><p>枚举值：</p><ul><li>english： 英文</li><li>chinese： 中文</li><li>japanese： 日语</li><li>korean： 韩语</li><li>spanish： 西班牙语</li><li>portuguese： 葡萄牙语</li><li>music_only： 纯音乐无口播</li></ul>
 	Language *string `json:"Language,omitnil,omitempty" name:"Language"`
 
 	// <p>视频类型</p><p>枚举值：</p><ul><li>ugc： UGC种草</li><li>talk： 产品口播</li><li>display： 产品展示（纯商品、无人声）</li><li>unboxing： 开箱分享</li><li>reaction： 反应展示</li></ul>
@@ -26518,6 +26639,23 @@ func (r *QueryProjectResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *QueryProjectResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryTaskFilter struct {
+	// <p>任务ID</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>任务类型</p>
+	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+
+	// <p>任务状态</p>
+	TaskStatus *string `json:"TaskStatus,omitnil,omitempty" name:"TaskStatus"`
+
+	// <p>分辨率</p>
+	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
+
+	// <p>宽高比</p>
+	Ratio *string `json:"Ratio,omitnil,omitempty" name:"Ratio"`
 }
 
 type RTMPAddressDestination struct {
