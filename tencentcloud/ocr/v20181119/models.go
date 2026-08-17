@@ -12276,6 +12276,116 @@ func (r *VerifyBizLicenseEnterprise4Response) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type VerifyGeneralCardWarnRequestParams struct {
+	// <p>卡证类型参数，仅支持传入下列指定值，请按实际情况选择对应卡证类型，目前支持以下类型：<br><strong>身份证件</strong><br>0101 身份证<br>0102 护照<br><strong>经营证照</strong><br>0201 营业执照<br><strong>权属登记</strong><br>0301 行驶证<br><strong>资格许可</strong><br>0401 驾驶证</p>
+	CardType *string `json:"CardType,omitnil,omitempty" name:"CardType"`
+
+	// <p>图片的 Url 地址。要求图片经Base64编码后不超过 10M。</p>
+	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
+
+	// <p>图片的 Base64 值。要求图片经Base64编码后不超过 10M。</p>
+	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
+}
+
+type VerifyGeneralCardWarnRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>卡证类型参数，仅支持传入下列指定值，请按实际情况选择对应卡证类型，目前支持以下类型：<br><strong>身份证件</strong><br>0101 身份证<br>0102 护照<br><strong>经营证照</strong><br>0201 营业执照<br><strong>权属登记</strong><br>0301 行驶证<br><strong>资格许可</strong><br>0401 驾驶证</p>
+	CardType *string `json:"CardType,omitnil,omitempty" name:"CardType"`
+
+	// <p>图片的 Url 地址。要求图片经Base64编码后不超过 10M。</p>
+	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
+
+	// <p>图片的 Base64 值。要求图片经Base64编码后不超过 10M。</p>
+	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
+}
+
+func (r *VerifyGeneralCardWarnRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *VerifyGeneralCardWarnRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CardType")
+	delete(f, "ImageUrl")
+	delete(f, "ImageBase64")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VerifyGeneralCardWarnRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type VerifyGeneralCardWarnResponseParams struct {
+	// <p>区域篡改提示</p>
+	Tamper *GeneralCardWarnInfo `json:"Tamper,omitnil,omitempty" name:"Tamper"`
+
+	// <p>AIGC合成提示</p>
+	Synthesis *GeneralCardWarnInfo `json:"Synthesis,omitnil,omitempty" name:"Synthesis"`
+
+	// <p>模板图片提示</p>
+	Template *GeneralCardWarnInfo `json:"Template,omitnil,omitempty" name:"Template"`
+
+	// <p>屏幕翻拍提示</p>
+	RemakeScreen *GeneralCardWarnInfo `json:"RemakeScreen,omitnil,omitempty" name:"RemakeScreen"`
+
+	// <p>截图提示</p>
+	Screenshot *GeneralCardWarnInfo `json:"Screenshot,omitnil,omitempty" name:"Screenshot"`
+
+	// <p>模糊提示</p>
+	Blur *GeneralCardWarnInfo `json:"Blur,omitnil,omitempty" name:"Blur"`
+
+	// <p>边框不完整提示</p>
+	BorderIncomplete *GeneralCardWarnInfo `json:"BorderIncomplete,omitnil,omitempty" name:"BorderIncomplete"`
+
+	// <p>复印件提示</p>
+	Copy *GeneralCardWarnInfo `json:"Copy,omitnil,omitempty" name:"Copy"`
+
+	// <p>反光提示</p>
+	Reflection *GeneralCardWarnInfo `json:"Reflection,omitnil,omitempty" name:"Reflection"`
+
+	// <p>遮挡提示</p>
+	Cover *GeneralCardWarnInfo `json:"Cover,omitnil,omitempty" name:"Cover"`
+
+	// <p>重叠提示</p>
+	Overlap *GeneralCardWarnInfo `json:"Overlap,omitnil,omitempty" name:"Overlap"`
+
+	// <p>电子证照提示（目前仅支持电子身份证、电子营业执照识别）</p>
+	Electron *GeneralCardWarnInfo `json:"Electron,omitnil,omitempty" name:"Electron"`
+
+	// <p>文字水印提示</p>
+	TextWatermark *GeneralCardWarnInfo `json:"TextWatermark,omitnil,omitempty" name:"TextWatermark"`
+
+	// <p>水印内容，当未检测到文字水印时不返回，返回多组水印时以 | 分隔。</p>
+	WatermarkContent *string `json:"WatermarkContent,omitnil,omitempty" name:"WatermarkContent"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type VerifyGeneralCardWarnResponse struct {
+	*tchttp.BaseResponse
+	Response *VerifyGeneralCardWarnResponseParams `json:"Response"`
+}
+
+func (r *VerifyGeneralCardWarnResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *VerifyGeneralCardWarnResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type VerifyOfdVatInvoiceOCRRequestParams struct {
 	// OFD文件的 Url 地址。
 	OfdFileUrl *string `json:"OfdFileUrl,omitnil,omitempty" name:"OfdFileUrl"`
