@@ -113,6 +113,9 @@ const (
 	// 该设备已开通的 TWeSee 算法预付费订阅与正在开通的 ServiceType 冲突
 	FAILEDOPERATION_SEEPREPAIDSUBSCRIPTIONCONFLICTS = "FailedOperation.SeePrePaidSubscriptionConflicts"
 
+	// TWeSee 预付费订阅开通时长超过上限
+	FAILEDOPERATION_SEEPREPAIDSUBSCRIPTIONDURATIONEXCEEDED = "FailedOperation.SeePrePaidSubscriptionDurationExceeded"
+
 	// TWeSee 预付费订阅生效时长不能超过已开通云存套餐的生效时长
 	FAILEDOPERATION_SEEPREPAIDSUBSCRIPTIONENDTIMEEXCEEDED = "FailedOperation.SeePrePaidSubscriptionEndTimeExceeded"
 

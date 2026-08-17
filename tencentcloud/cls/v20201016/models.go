@@ -4665,38 +4665,26 @@ func (r *CreateKafkaRechargeResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateLogsetRequestParams struct {
-	// 日志集名字。
-	// 
-	// - 最大支持255个字符。不支持`|`字符。
+	// <p>日志集名字。</p><ul><li>最大支持255个字符。不支持<code>|</code>字符。</li></ul>
 	LogsetName *string `json:"LogsetName,omitnil,omitempty" name:"LogsetName"`
 
-	// 标签描述列表。最大支持10个标签键值对，并且不能有重复的键值对
+	// <p>标签描述列表。最大支持10个标签键值对，并且不能有重复的键值对</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 日志集ID，格式为：用户自定义部分-用户APPID。未填写该参数时将自动生成ID。
-	// 
-	// - 用户自定义部分仅支持小写字母、数字和-，且不能以-开头和结尾，长度为3至40字符。
-	// - 尾部需要使用-拼接用户APPID，APPID可在https://console.cloud.tencent.com/developer页面查询。
-	// - 如果指定该字段，需保证全地域唯一
+	// <p>日志集ID，格式为：用户自定义部分-用户APPID。未填写该参数时将自动生成ID。</p><ul><li>用户自定义部分仅支持小写字母、数字和-，且不能以-开头和结尾，长度为3至40字符。</li><li>尾部需要使用-拼接用户APPID，APPID可在https://console.cloud.tencent.com/developer页面查询。</li><li>如果指定该字段，需保证全地域唯一</li></ul>
 	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
 }
 
 type CreateLogsetRequest struct {
 	*tchttp.BaseRequest
 	
-	// 日志集名字。
-	// 
-	// - 最大支持255个字符。不支持`|`字符。
+	// <p>日志集名字。</p><ul><li>最大支持255个字符。不支持<code>|</code>字符。</li></ul>
 	LogsetName *string `json:"LogsetName,omitnil,omitempty" name:"LogsetName"`
 
-	// 标签描述列表。最大支持10个标签键值对，并且不能有重复的键值对
+	// <p>标签描述列表。最大支持10个标签键值对，并且不能有重复的键值对</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 日志集ID，格式为：用户自定义部分-用户APPID。未填写该参数时将自动生成ID。
-	// 
-	// - 用户自定义部分仅支持小写字母、数字和-，且不能以-开头和结尾，长度为3至40字符。
-	// - 尾部需要使用-拼接用户APPID，APPID可在https://console.cloud.tencent.com/developer页面查询。
-	// - 如果指定该字段，需保证全地域唯一
+	// <p>日志集ID，格式为：用户自定义部分-用户APPID。未填写该参数时将自动生成ID。</p><ul><li>用户自定义部分仅支持小写字母、数字和-，且不能以-开头和结尾，长度为3至40字符。</li><li>尾部需要使用-拼接用户APPID，APPID可在https://console.cloud.tencent.com/developer页面查询。</li><li>如果指定该字段，需保证全地域唯一</li></ul>
 	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
 }
 
@@ -4723,7 +4711,7 @@ func (r *CreateLogsetRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateLogsetResponseParams struct {
-	// 日志集ID
+	// <p>日志集ID</p>
 	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8394,7 +8382,7 @@ func (r *DeleteKafkaRechargeResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteLogRequestParams struct {
-	// <p>日志主题id</p>
+	// <p>日志主题id</p><p>仅在创建日志主题时，开启了日志修改/删除开关的主题，支持日志修改/删除。该功能暂时仅面向白名单内客户使用。</p>
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// <p>检索时间范围-开始时间</p><p>单位：ms</p>
@@ -8410,7 +8398,7 @@ type DeleteLogRequestParams struct {
 type DeleteLogRequest struct {
 	*tchttp.BaseRequest
 	
-	// <p>日志主题id</p>
+	// <p>日志主题id</p><p>仅在创建日志主题时，开启了日志修改/删除开关的主题，支持日志修改/删除。该功能暂时仅面向白名单内客户使用。</p>
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// <p>检索时间范围-开始时间</p><p>单位：ms</p>
@@ -19672,7 +19660,7 @@ func (r *ModifyKafkaRechargeResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyLogRequestParams struct {
-	// <p>日志主题id</p>
+	// <p>日志主题id</p><p>仅在创建日志主题时，开启了日志修改/删除开关的主题，支持日志修改/删除。该功能暂时仅面向白名单内客户使用。</p>
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// <p>检索时间范围-开始时间</p><p>单位：ms</p>
@@ -19694,7 +19682,7 @@ type ModifyLogRequestParams struct {
 type ModifyLogRequest struct {
 	*tchttp.BaseRequest
 	
-	// <p>日志主题id</p>
+	// <p>日志主题id</p><p>仅在创建日志主题时，开启了日志修改/删除开关的主题，支持日志修改/删除。该功能暂时仅面向白名单内客户使用。</p>
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// <p>检索时间范围-开始时间</p><p>单位：ms</p>

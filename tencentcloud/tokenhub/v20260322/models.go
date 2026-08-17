@@ -2316,6 +2316,9 @@ type Model struct {
 	// <p>模型 ID。</p>
 	ModelId *string `json:"ModelId,omitnil,omitempty" name:"ModelId"`
 
+	// <p>模型id别名列表</p>
+	ExtraModelIds []*string `json:"ExtraModelIds,omitnil,omitempty" name:"ExtraModelIds"`
+
 	// <p>模型显示名称。</p>
 	DisplayName *string `json:"DisplayName,omitnil,omitempty" name:"DisplayName"`
 
@@ -2408,6 +2411,15 @@ type ModelChargingItem struct {
 
 	// <p>高峰价格，为空表示无高峰定价</p>
 	PeakPrice *string `json:"PeakPrice,omitnil,omitempty" name:"PeakPrice"`
+
+	// <p>规格描述，例如视觉/语音类模型有值（如 有参考视频 540P、图生视频 首帧 720P、动作控制 1080P、有声-未指定音色），其他模型为空。</p>
+	Specification *string `json:"Specification,omitnil,omitempty" name:"Specification"`
+
+	// <p>Token 用量描述，例如视觉/语音类模型有值（如 第1秒 62,500 Tokens，后续每秒 15,625 Tokens），其他模型为空。</p>
+	Usage *string `json:"Usage,omitnil,omitempty" name:"Usage"`
+
+	// <p>参考费用/预估费用描述，例如视觉/语音类模型有值（如 第1秒 0.625 元，后续每秒 0.15625 元），其他模型为空。</p>
+	ReferencePrice *string `json:"ReferencePrice,omitnil,omitempty" name:"ReferencePrice"`
 }
 
 type ModelEndpointView struct {
@@ -2420,11 +2432,17 @@ type ModelEndpointView struct {
 	// <p>模型 ID。</p>
 	ModelId *string `json:"ModelId,omitnil,omitempty" name:"ModelId"`
 
+	// <p>模型id别名列表</p>
+	ExtraModelIds []*string `json:"ExtraModelIds,omitnil,omitempty" name:"ExtraModelIds"`
+
 	// <p>模型名称。</p>
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
 	// <p>状态。取值：ACTIVE（运行中）、INACTIVE（已停止）。</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>模型状态</p><p>枚举值：</p><ul><li>online： 在线</li><li>pre-offline： 预下线</li><li>discontinued： 停止新购</li><li>maintenance： 维护中</li><li>offline： 下线</li></ul>
+	ModelStatus *string `json:"ModelStatus,omitnil,omitempty" name:"ModelStatus"`
 
 	// <p>服务类型。固定为 TEXT_GENERATION（文本生成）。</p>
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`

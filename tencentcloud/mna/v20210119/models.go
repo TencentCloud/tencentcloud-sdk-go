@@ -20,6 +20,26 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
+type AccessPointInfo struct {
+	// <p>接入点运营商。</p>
+	Vendor *string `json:"Vendor,omitnil,omitempty" name:"Vendor"`
+
+	// <p>接入点地址。</p>
+	PublicAddr *string `json:"PublicAddr,omitnil,omitempty" name:"PublicAddr"`
+
+	// <p>接入点地域。</p>
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// <p>接入点大区。</p>
+	BigArea *string `json:"BigArea,omitnil,omitempty" name:"BigArea"`
+
+	// <p>接入点是否可用。</p><p>枚举值：</p><ul><li>true： 接入点可用</li><li>false： 接入点不可用</li></ul>
+	Available *bool `json:"Available,omitnil,omitempty" name:"Available"`
+
+	// <p>集群ID</p>
+	GwGroupId *string `json:"GwGroupId,omitnil,omitempty" name:"GwGroupId"`
+}
+
 type ActivateHardware struct {
 	// 厂商名称
 	Vendor *string `json:"Vendor,omitnil,omitempty" name:"Vendor"`
@@ -209,6 +229,77 @@ func (r *AddApplicationResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type AddCustomerGatewayClusterRequestParams struct {
+	// <p>集群名称。最大 64 字符，支持字母、数字、中划线、下划线、点及中文。</p>
+	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
+
+	// <p>部署大区标识。最大 32 字符。例如 CN 表示中国大陆。</p>
+	BigArea *string `json:"BigArea,omitnil,omitempty" name:"BigArea"`
+
+	// <p>地域标识。最大 32 字符。例如 ap-guangzhou。</p>
+	RegionId *string `json:"RegionId,omitnil,omitempty" name:"RegionId"`
+}
+
+type AddCustomerGatewayClusterRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>集群名称。最大 64 字符，支持字母、数字、中划线、下划线、点及中文。</p>
+	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
+
+	// <p>部署大区标识。最大 32 字符。例如 CN 表示中国大陆。</p>
+	BigArea *string `json:"BigArea,omitnil,omitempty" name:"BigArea"`
+
+	// <p>地域标识。最大 32 字符。例如 ap-guangzhou。</p>
+	RegionId *string `json:"RegionId,omitnil,omitempty" name:"RegionId"`
+}
+
+func (r *AddCustomerGatewayClusterRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddCustomerGatewayClusterRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterName")
+	delete(f, "BigArea")
+	delete(f, "RegionId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddCustomerGatewayClusterRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AddCustomerGatewayClusterResponseParams struct {
+	// <p>集群 ID。</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type AddCustomerGatewayClusterResponse struct {
+	*tchttp.BaseResponse
+	Response *AddCustomerGatewayClusterResponseParams `json:"Response"`
+}
+
+func (r *AddCustomerGatewayClusterResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddCustomerGatewayClusterResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type AddDeviceRequestParams struct {
 	// 新建设备的名称
 	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
@@ -342,6 +433,100 @@ func (r *AddDeviceResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *AddDeviceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AddGatewayRequestParams struct {
+	// <p>集群 ID。可通过 GetCustomerGatewayClusterList 接口获取。</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// <p>网关登录用户名。最大 64 字符。</p>
+	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
+
+	// <p>网关登录密码。最大 128 字符。</p>
+	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+
+	// <p>网关内网IP。</p>
+	GatewayIp *string `json:"GatewayIp,omitnil,omitempty" name:"GatewayIp"`
+
+	// <p>地域标识。最大 32 字符。例如 ap-guangzhou。可通过 DescribeAccessPointList 接口获取。</p>
+	RegionId *string `json:"RegionId,omitnil,omitempty" name:"RegionId"`
+}
+
+type AddGatewayRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>集群 ID。可通过 GetCustomerGatewayClusterList 接口获取。</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// <p>网关登录用户名。最大 64 字符。</p>
+	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
+
+	// <p>网关登录密码。最大 128 字符。</p>
+	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+
+	// <p>网关内网IP。</p>
+	GatewayIp *string `json:"GatewayIp,omitnil,omitempty" name:"GatewayIp"`
+
+	// <p>地域标识。最大 32 字符。例如 ap-guangzhou。可通过 DescribeAccessPointList 接口获取。</p>
+	RegionId *string `json:"RegionId,omitnil,omitempty" name:"RegionId"`
+}
+
+func (r *AddGatewayRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddGatewayRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "Username")
+	delete(f, "Password")
+	delete(f, "GatewayIp")
+	delete(f, "RegionId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddGatewayRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AddGatewayResponseParams struct {
+	// <p>网关ID。</p>
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// <p>网关鉴权 Token。</p>
+	Token *string `json:"Token,omitnil,omitempty" name:"Token"`
+
+	// <p>网关注册地址。</p>
+	RegisterCenterUrl *string `json:"RegisterCenterUrl,omitnil,omitempty" name:"RegisterCenterUrl"`
+
+	// <p>网关上报地址。</p>
+	TelemetryUrl *string `json:"TelemetryUrl,omitnil,omitempty" name:"TelemetryUrl"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type AddGatewayResponse struct {
+	*tchttp.BaseResponse
+	Response *AddGatewayResponseParams `json:"Response"`
+}
+
+func (r *AddGatewayResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddGatewayResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -665,6 +850,60 @@ func (r *DeleteApplicationResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteCustomerGatewayClusterRequestParams struct {
+	// <p>集群 ID。可通过 GetCustomerGatewayClusterList 接口获取。</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+}
+
+type DeleteCustomerGatewayClusterRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>集群 ID。可通过 GetCustomerGatewayClusterList 接口获取。</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+}
+
+func (r *DeleteCustomerGatewayClusterRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCustomerGatewayClusterRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCustomerGatewayClusterRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteCustomerGatewayClusterResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteCustomerGatewayClusterResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteCustomerGatewayClusterResponseParams `json:"Response"`
+}
+
+func (r *DeleteCustomerGatewayClusterResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCustomerGatewayClusterResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteDeviceRequestParams struct {
 	// 删除设备的唯一ID
 	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
@@ -715,6 +954,74 @@ func (r *DeleteDeviceResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteDeviceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteGatewayRequestParams struct {
+	// <p>集群 ID。可通过 GetCustomerGatewayClusterList 接口获取。</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// <p>网关ID。</p>
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// <p>网关内网IP。</p>
+	GatewayIp *string `json:"GatewayIp,omitnil,omitempty" name:"GatewayIp"`
+}
+
+type DeleteGatewayRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>集群 ID。可通过 GetCustomerGatewayClusterList 接口获取。</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// <p>网关ID。</p>
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// <p>网关内网IP。</p>
+	GatewayIp *string `json:"GatewayIp,omitnil,omitempty" name:"GatewayIp"`
+}
+
+func (r *DeleteGatewayRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteGatewayRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "GatewayId")
+	delete(f, "GatewayIp")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteGatewayRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteGatewayResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteGatewayResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteGatewayResponseParams `json:"Response"`
+}
+
+func (r *DeleteGatewayResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteGatewayResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -823,6 +1130,63 @@ func (r *DeleteL3ConnResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteL3ConnResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAccessPointListRequestParams struct {
+	// <p>地域列表</p>
+	Regions []*string `json:"Regions,omitnil,omitempty" name:"Regions"`
+}
+
+type DescribeAccessPointListRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>地域列表</p>
+	Regions []*string `json:"Regions,omitnil,omitempty" name:"Regions"`
+}
+
+func (r *DescribeAccessPointListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAccessPointListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Regions")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAccessPointListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAccessPointListResponseParams struct {
+	// <p>接入点列表</p>
+	AccessPointList []*AccessPointInfo `json:"AccessPointList,omitnil,omitempty" name:"AccessPointList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAccessPointListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAccessPointListResponseParams `json:"Response"`
+}
+
+func (r *DescribeAccessPointListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAccessPointListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1190,6 +1554,26 @@ type FlowPackageInfo struct {
 	CapacityRemainPrecise *uint64 `json:"CapacityRemainPrecise,omitnil,omitempty" name:"CapacityRemainPrecise"`
 }
 
+type GatewayClusterInfo struct {
+	// <p>集群 ID。</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// <p>集群名称。</p>
+	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
+
+	// <p>创建时间。</p>
+	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>公网访问 IP。</p>
+	PublicIp *string `json:"PublicIp,omitnil,omitempty" name:"PublicIp"`
+
+	// <p>集群下网关实例数量。</p>
+	InstanceCount *uint64 `json:"InstanceCount,omitnil,omitempty" name:"InstanceCount"`
+
+	// <p>网关列表。</p>
+	GatewayList []*GatewayInfo `json:"GatewayList,omitnil,omitempty" name:"GatewayList"`
+}
+
 type GatewayInfo struct {
 	// <p>网关ID</p>
 	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
@@ -1391,6 +1775,80 @@ func (r *GetApplicationResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *GetApplicationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetCustomerGatewayClusterListRequestParams struct {
+	// <p>按集群名称模糊匹配的关键字。最大 64 字符。</p>
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+
+	// <p>当前查看页码。</p>
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// <p>每页显示记录数。</p>
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+type GetCustomerGatewayClusterListRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>按集群名称模糊匹配的关键字。最大 64 字符。</p>
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+
+	// <p>当前查看页码。</p>
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// <p>每页显示记录数。</p>
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+func (r *GetCustomerGatewayClusterListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetCustomerGatewayClusterListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Keyword")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetCustomerGatewayClusterListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetCustomerGatewayClusterListResponseParams struct {
+	// <p>集群列表。</p>
+	ClusterList []*GatewayClusterInfo `json:"ClusterList,omitnil,omitempty" name:"ClusterList"`
+
+	// <p>集群总数。</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetCustomerGatewayClusterListResponse struct {
+	*tchttp.BaseResponse
+	Response *GetCustomerGatewayClusterListResponseParams `json:"Response"`
+}
+
+func (r *GetCustomerGatewayClusterListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetCustomerGatewayClusterListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3769,6 +4227,67 @@ func (r *ModifyDeviceAccessRegionsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyDeviceAccessScopeRequestParams struct {
+	// <p>设备ID</p>
+	DeviceIds []*string `json:"DeviceIds,omitnil,omitempty" name:"DeviceIds"`
+
+	// <p>接入网关类型</p><p>枚举值：</p><ul><li>0： 公有云网关</li><li>1： 客户私有网关</li></ul><p>默认值：0</p><p>如果不传，则默认修改为接入公有云网关。</p>
+	AccessScope *uint64 `json:"AccessScope,omitnil,omitempty" name:"AccessScope"`
+}
+
+type ModifyDeviceAccessScopeRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>设备ID</p>
+	DeviceIds []*string `json:"DeviceIds,omitnil,omitempty" name:"DeviceIds"`
+
+	// <p>接入网关类型</p><p>枚举值：</p><ul><li>0： 公有云网关</li><li>1： 客户私有网关</li></ul><p>默认值：0</p><p>如果不传，则默认修改为接入公有云网关。</p>
+	AccessScope *uint64 `json:"AccessScope,omitnil,omitempty" name:"AccessScope"`
+}
+
+func (r *ModifyDeviceAccessScopeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDeviceAccessScopeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DeviceIds")
+	delete(f, "AccessScope")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDeviceAccessScopeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDeviceAccessScopeResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyDeviceAccessScopeResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyDeviceAccessScopeResponseParams `json:"Response"`
+}
+
+func (r *ModifyDeviceAccessScopeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDeviceAccessScopeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyPackageRenewFlagRequestParams struct {
 	// <p>流量包的唯一资源ID</p>
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
@@ -4385,6 +4904,67 @@ func (r *UpdateApplicationKeyResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UpdateApplicationKeyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateCustomerGatewayClusterRequestParams struct {
+	// <p>集群 ID。可通过 GetCustomerGatewayClusterList 接口获取。</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// <p>公网访问 IP。最大 64 字符，需为合法的 IPv4 或 IPv6 地址。</p>
+	PublicIp *string `json:"PublicIp,omitnil,omitempty" name:"PublicIp"`
+}
+
+type UpdateCustomerGatewayClusterRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>集群 ID。可通过 GetCustomerGatewayClusterList 接口获取。</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// <p>公网访问 IP。最大 64 字符，需为合法的 IPv4 或 IPv6 地址。</p>
+	PublicIp *string `json:"PublicIp,omitnil,omitempty" name:"PublicIp"`
+}
+
+func (r *UpdateCustomerGatewayClusterRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateCustomerGatewayClusterRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "PublicIp")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateCustomerGatewayClusterRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateCustomerGatewayClusterResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateCustomerGatewayClusterResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateCustomerGatewayClusterResponseParams `json:"Response"`
+}
+
+func (r *UpdateCustomerGatewayClusterResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateCustomerGatewayClusterResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

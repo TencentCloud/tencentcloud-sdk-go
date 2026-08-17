@@ -3742,6 +3742,9 @@ type CreateTWeSeeDirectUploadCredentialRequestParams struct {
 
 	// <p>上传方式</p><p>枚举值：</p><ul><li>single： 单文件上传</li><li>manifest： 上传源文件与 Manifest（先上传多个源文件，然后上传 Manifest JSON 触发分析）</li></ul><p>默认值：single</p>
 	UploadMethod *string `json:"UploadMethod,omitnil,omitempty" name:"UploadMethod"`
+
+	// <p>上传目标</p><p>枚举值：</p><ul><li>session： 一次性上传会话（默认，通过入参传递 ComprehensionConfig 等上传参数）</li><li>stream： 上传到指定设备（加载对应设备的 ComprehensionConfig 等配置）</li></ul><p>默认值：session</p>
+	UploadTarget *string `json:"UploadTarget,omitnil,omitempty" name:"UploadTarget"`
 }
 
 type CreateTWeSeeDirectUploadCredentialRequest struct {
@@ -3779,6 +3782,9 @@ type CreateTWeSeeDirectUploadCredentialRequest struct {
 
 	// <p>上传方式</p><p>枚举值：</p><ul><li>single： 单文件上传</li><li>manifest： 上传源文件与 Manifest（先上传多个源文件，然后上传 Manifest JSON 触发分析）</li></ul><p>默认值：single</p>
 	UploadMethod *string `json:"UploadMethod,omitnil,omitempty" name:"UploadMethod"`
+
+	// <p>上传目标</p><p>枚举值：</p><ul><li>session： 一次性上传会话（默认，通过入参传递 ComprehensionConfig 等上传参数）</li><li>stream： 上传到指定设备（加载对应设备的 ComprehensionConfig 等配置）</li></ul><p>默认值：session</p>
+	UploadTarget *string `json:"UploadTarget,omitnil,omitempty" name:"UploadTarget"`
 }
 
 func (r *CreateTWeSeeDirectUploadCredentialRequest) ToJsonString() string {
@@ -3804,6 +3810,7 @@ func (r *CreateTWeSeeDirectUploadCredentialRequest) FromJsonString(s string) err
 	delete(f, "MaxInvokeCount")
 	delete(f, "StorageRegion")
 	delete(f, "UploadMethod")
+	delete(f, "UploadTarget")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTWeSeeDirectUploadCredentialRequest has unknown keys!", "")
 	}
@@ -16388,103 +16395,81 @@ func (r *ListTWeSeeCallbackResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListTWeSeeTasksRequestParams struct {
-	// 产品 ID
+	// <p>产品 ID</p>
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
-	// 设备名称
+	// <p>设备名称</p>
 	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
 
-	// 算法类目。可选值：
-	// - `COMPREHENSION`：视觉理解
-	// - `HIGHLIGHT`：视频浓缩
+	// <p>算法类目。可选值：</p><ul><li><code>COMPREHENSION</code>：视觉理解</li><li><code>HIGHLIGHT</code>：视频浓缩</li></ul>
 	ServiceCategory *string `json:"ServiceCategory,omitnil,omitempty" name:"ServiceCategory"`
 
-	// 分页拉取数量
+	// <p>分页拉取数量</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页拉取偏移
+	// <p>分页拉取偏移</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 算法类型。
-	// 
-	// 当 ServiceCategory 为 `COMPREHENSION` 时，可选值包括：
-	// - `VID_COMP`：视频理解
-	// - `IMG_COMP`：图片理解
-	// - `CONT_PERSON_MOTIONLESS`：静姿检测
-	// 
-	// 当 ServiceCategory 为 `HIGHLIGHT` 时，可选值包括：
-	// - `COMP_HIGHLIGHT`：视频浓缩
+	// <p>算法类型。</p><p>当 ServiceCategory 为 <code>COMPREHENSION</code> 时，可选值包括：</p><ul><li><code>VID_COMP</code>：视频理解</li><li><code>IMG_COMP</code>：图片理解</li><li><code>CONT_PERSON_MOTIONLESS</code>：静姿检测</li></ul><p>当 ServiceCategory 为 <code>HIGHLIGHT</code> 时，可选值包括：</p><ul><li><code>COMP_HIGHLIGHT</code>：视频浓缩</li></ul>
 	ServiceTypes []*string `json:"ServiceTypes,omitnil,omitempty" name:"ServiceTypes"`
 
-	// 通道 ID
+	// <p>通道 ID</p>
 	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
 
-	// 查询任务时间范围的起始时间（毫秒级 UNIX 时间戳）。不传则不生效时间范围条件。
+	// <p>查询任务时间范围的起始时间（毫秒级 UNIX 时间戳）。不传则不生效时间范围条件。</p>
 	StartTimeMs *int64 `json:"StartTimeMs,omitnil,omitempty" name:"StartTimeMs"`
 
-	// 查询任务时间范围的结束时间（毫秒级 UNIX 时间戳）。不传则不生效时间范围条件。
+	// <p>查询任务时间范围的结束时间（毫秒级 UNIX 时间戳）。不传则不生效时间范围条件。</p>
 	EndTimeMs *int64 `json:"EndTimeMs,omitnil,omitempty" name:"EndTimeMs"`
 
-	// 要查询的任务的状态条件。不传则不按照状态过滤，可选值：
-	// 
-	// - `1`：失败
-	// - `2`：空结果
-	// - `3`：有效结果
+	// <p>要查询的任务的状态条件。不传则不按照状态过滤，可选值：</p><ul><li><code>1</code>：失败</li><li><code>2</code>：空结果</li><li><code>3</code>：有效结果</li></ul>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 下载 URL 的过期时间（秒级 UNIX 时间戳）。若传入该参数，则响应中将包含所有文件的下载 URL
+	// <p>下载 URL 的过期时间（秒级 UNIX 时间戳）。若传入该参数，则响应中将包含所有文件的下载 URL</p>
 	FileURLExpireTime *int64 `json:"FileURLExpireTime,omitnil,omitempty" name:"FileURLExpireTime"`
+
+	// <p>任务结果过滤条件</p>
+	Filters []*VisionRecognitionTaskFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type ListTWeSeeTasksRequest struct {
 	*tchttp.BaseRequest
 	
-	// 产品 ID
+	// <p>产品 ID</p>
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
-	// 设备名称
+	// <p>设备名称</p>
 	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
 
-	// 算法类目。可选值：
-	// - `COMPREHENSION`：视觉理解
-	// - `HIGHLIGHT`：视频浓缩
+	// <p>算法类目。可选值：</p><ul><li><code>COMPREHENSION</code>：视觉理解</li><li><code>HIGHLIGHT</code>：视频浓缩</li></ul>
 	ServiceCategory *string `json:"ServiceCategory,omitnil,omitempty" name:"ServiceCategory"`
 
-	// 分页拉取数量
+	// <p>分页拉取数量</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页拉取偏移
+	// <p>分页拉取偏移</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 算法类型。
-	// 
-	// 当 ServiceCategory 为 `COMPREHENSION` 时，可选值包括：
-	// - `VID_COMP`：视频理解
-	// - `IMG_COMP`：图片理解
-	// - `CONT_PERSON_MOTIONLESS`：静姿检测
-	// 
-	// 当 ServiceCategory 为 `HIGHLIGHT` 时，可选值包括：
-	// - `COMP_HIGHLIGHT`：视频浓缩
+	// <p>算法类型。</p><p>当 ServiceCategory 为 <code>COMPREHENSION</code> 时，可选值包括：</p><ul><li><code>VID_COMP</code>：视频理解</li><li><code>IMG_COMP</code>：图片理解</li><li><code>CONT_PERSON_MOTIONLESS</code>：静姿检测</li></ul><p>当 ServiceCategory 为 <code>HIGHLIGHT</code> 时，可选值包括：</p><ul><li><code>COMP_HIGHLIGHT</code>：视频浓缩</li></ul>
 	ServiceTypes []*string `json:"ServiceTypes,omitnil,omitempty" name:"ServiceTypes"`
 
-	// 通道 ID
+	// <p>通道 ID</p>
 	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
 
-	// 查询任务时间范围的起始时间（毫秒级 UNIX 时间戳）。不传则不生效时间范围条件。
+	// <p>查询任务时间范围的起始时间（毫秒级 UNIX 时间戳）。不传则不生效时间范围条件。</p>
 	StartTimeMs *int64 `json:"StartTimeMs,omitnil,omitempty" name:"StartTimeMs"`
 
-	// 查询任务时间范围的结束时间（毫秒级 UNIX 时间戳）。不传则不生效时间范围条件。
+	// <p>查询任务时间范围的结束时间（毫秒级 UNIX 时间戳）。不传则不生效时间范围条件。</p>
 	EndTimeMs *int64 `json:"EndTimeMs,omitnil,omitempty" name:"EndTimeMs"`
 
-	// 要查询的任务的状态条件。不传则不按照状态过滤，可选值：
-	// 
-	// - `1`：失败
-	// - `2`：空结果
-	// - `3`：有效结果
+	// <p>要查询的任务的状态条件。不传则不按照状态过滤，可选值：</p><ul><li><code>1</code>：失败</li><li><code>2</code>：空结果</li><li><code>3</code>：有效结果</li></ul>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 下载 URL 的过期时间（秒级 UNIX 时间戳）。若传入该参数，则响应中将包含所有文件的下载 URL
+	// <p>下载 URL 的过期时间（秒级 UNIX 时间戳）。若传入该参数，则响应中将包含所有文件的下载 URL</p>
 	FileURLExpireTime *int64 `json:"FileURLExpireTime,omitnil,omitempty" name:"FileURLExpireTime"`
+
+	// <p>任务结果过滤条件</p>
+	Filters []*VisionRecognitionTaskFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 func (r *ListTWeSeeTasksRequest) ToJsonString() string {
@@ -16510,6 +16495,7 @@ func (r *ListTWeSeeTasksRequest) FromJsonString(s string) error {
 	delete(f, "EndTimeMs")
 	delete(f, "Status")
 	delete(f, "FileURLExpireTime")
+	delete(f, "Filters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListTWeSeeTasksRequest has unknown keys!", "")
 	}
@@ -16518,10 +16504,10 @@ func (r *ListTWeSeeTasksRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListTWeSeeTasksResponseParams struct {
-	// 任务列表
+	// <p>任务列表</p>
 	Tasks []*SeeTaskInfo `json:"Tasks,omitnil,omitempty" name:"Tasks"`
 
-	// 任务数量
+	// <p>任务数量</p>
 	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -20680,65 +20666,53 @@ type SeeStatItem struct {
 }
 
 type SeeTaskInfo struct {
-	// 任务 ID
+	// <p>任务 ID</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 任务状态。可能取值：
-	// 
-	// - `1`：失败
-	// - `2`：空结果
-	// - `3`：有效结果
-	// - `4`：处理中
+	// <p>任务状态。可能取值：</p><ul><li><code>1</code>：失败</li><li><code>2</code>：空结果</li><li><code>3</code>：有效结果</li><li><code>4</code>：处理中</li></ul>
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 任务元数据
+	// <p>任务元数据</p>
 	Metadata *SeeTaskMetadata `json:"Metadata,omitnil,omitempty" name:"Metadata"`
 
-	// 算法类目。可能取值：
-	// 
-	// - `COMPREHENSION`：视觉理解
-	// - `HIGHLIGHT`：视频浓缩
+	// <p>算法类目。可能取值：</p><ul><li><code>COMPREHENSION</code>：视觉理解</li><li><code>HIGHLIGHT</code>：视频浓缩</li></ul>
 	ServiceCategory *string `json:"ServiceCategory,omitnil,omitempty" name:"ServiceCategory"`
 
-	// 算法类型。可能取值：
-	// 
-	// - `VID_COMP`：视频理解
-	// - `IMG_COMP`：图片理解
-	// - `COMP_HIGHLIGHT`：视频浓缩
+	// <p>算法类型。可能取值：</p><ul><li><code>VID_COMP</code>：视频理解</li><li><code>IMG_COMP</code>：图片理解</li><li><code>COMP_HIGHLIGHT</code>：视频浓缩</li></ul>
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
-	// 套餐规格。可能取值：
-	// 
-	// - `POSTPAID`：后付费（适用于视频理解、图片理解）
-	// - `BASIC`：包年包月基础版（适用于视频理解）
+	// <p>套餐规格。可能取值：</p><ul><li><code>POSTPAID</code>：后付费（适用于视频理解、图片理解）</li><li><code>BASIC</code>：包年包月基础版（适用于视频理解）</li></ul>
 	ServiceTier *string `json:"ServiceTier,omitnil,omitempty" name:"ServiceTier"`
 
-	// 视觉理解结果（适用于视频理解、图片理解）
+	// <p>视觉理解结果（适用于视频理解、图片理解）</p>
 	ComprehensionResult *SeeComprehensionResult `json:"ComprehensionResult,omitnil,omitempty" name:"ComprehensionResult"`
 
-	// 视频语义浓缩结果（适用于视频语义浓缩）
+	// <p>视频语义浓缩结果（适用于视频语义浓缩）</p>
 	CompHighlightResult *SeeCompHighlightResult `json:"CompHighlightResult,omitnil,omitempty" name:"CompHighlightResult"`
 
-	// 标签持续检测结果
+	// <p>标签持续检测结果</p>
 	DetectContinuousResult *SeeDetectContinuousResult `json:"DetectContinuousResult,omitnil,omitempty" name:"DetectContinuousResult"`
 
-	// 完成该任务所消耗的基础能力额度
+	// <p>完成该任务所消耗的基础能力额度</p>
 	CostBasic *int64 `json:"CostBasic,omitnil,omitempty" name:"CostBasic"`
 
-	// 完成该任务所消耗的高级能力额度
+	// <p>完成该任务所消耗的高级能力额度</p>
 	CostAdvanced *int64 `json:"CostAdvanced,omitnil,omitempty" name:"CostAdvanced"`
 
-	// 输出文件名列表
+	// <p>输出文件名列表</p>
 	Files []*string `json:"Files,omitnil,omitempty" name:"Files"`
 
-	// 输出文件详情列表
+	// <p>输出文件详情列表</p>
 	FilesInfo []*CloudStorageAIServiceTaskFileInfo `json:"FilesInfo,omitnil,omitempty" name:"FilesInfo"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	CreateTime *int64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 最后更新时间
+	// <p>最后更新时间</p>
 	UpdateTime *int64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// <p>直传 COS 的对象 URI</p>
+	COSURI *string `json:"COSURI,omitnil,omitempty" name:"COSURI"`
 }
 
 type SeeTaskMetadata struct {
@@ -22835,6 +22809,14 @@ type VisionRecognitionTask struct {
 
 	// 任务输出文件信息列表
 	FilesInfo []*CloudStorageAIServiceTaskFileInfo `json:"FilesInfo,omitnil,omitempty" name:"FilesInfo"`
+}
+
+type VisionRecognitionTaskFilter struct {
+	// 需要过滤的字段
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 需要过滤的值
+	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
 }
 
 type VisionSummaryConfig struct {

@@ -169,6 +169,68 @@ func (c *Client) AddApplicationWithContext(ctx context.Context, request *AddAppl
     return
 }
 
+func NewAddCustomerGatewayClusterRequest() (request *AddCustomerGatewayClusterRequest) {
+    request = &AddCustomerGatewayClusterRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mna", APIVersion, "AddCustomerGatewayCluster")
+    
+    
+    return
+}
+
+func NewAddCustomerGatewayClusterResponse() (response *AddCustomerGatewayClusterResponse) {
+    response = &AddCustomerGatewayClusterResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// AddCustomerGatewayCluster
+// 创建客户自有网关集群。
+//
+// 
+//
+// 用于承载客户侧的自有网关实例，创建成功后返回集群 ID。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) AddCustomerGatewayCluster(request *AddCustomerGatewayClusterRequest) (response *AddCustomerGatewayClusterResponse, err error) {
+    return c.AddCustomerGatewayClusterWithContext(context.Background(), request)
+}
+
+// AddCustomerGatewayCluster
+// 创建客户自有网关集群。
+//
+// 
+//
+// 用于承载客户侧的自有网关实例，创建成功后返回集群 ID。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) AddCustomerGatewayClusterWithContext(ctx context.Context, request *AddCustomerGatewayClusterRequest) (response *AddCustomerGatewayClusterResponse, err error) {
+    if request == nil {
+        request = NewAddCustomerGatewayClusterRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mna", APIVersion, "AddCustomerGatewayCluster")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddCustomerGatewayCluster require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAddCustomerGatewayClusterResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAddDeviceRequest() (request *AddDeviceRequest) {
     request = &AddDeviceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -225,6 +287,68 @@ func (c *Client) AddDeviceWithContext(ctx context.Context, request *AddDeviceReq
     request.SetContext(ctx)
     
     response = NewAddDeviceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewAddGatewayRequest() (request *AddGatewayRequest) {
+    request = &AddGatewayRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mna", APIVersion, "AddGateway")
+    
+    
+    return
+}
+
+func NewAddGatewayResponse() (response *AddGatewayResponse) {
+    response = &AddGatewayResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// AddGateway
+// 向指定的客户自有网关集群注册一个网关实例。
+//
+// 
+//
+// 注册成功后返回网关实例 ID、鉴权 Token 及 Agent 相关地址信息，用于后续网关 Agent 上报。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) AddGateway(request *AddGatewayRequest) (response *AddGatewayResponse, err error) {
+    return c.AddGatewayWithContext(context.Background(), request)
+}
+
+// AddGateway
+// 向指定的客户自有网关集群注册一个网关实例。
+//
+// 
+//
+// 注册成功后返回网关实例 ID、鉴权 Token 及 Agent 相关地址信息，用于后续网关 Agent 上报。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) AddGatewayWithContext(ctx context.Context, request *AddGatewayRequest) (response *AddGatewayResponse, err error) {
+    if request == nil {
+        request = NewAddGatewayRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mna", APIVersion, "AddGateway")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddGateway require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAddGatewayResponse()
     err = c.Send(request, response)
     return
 }
@@ -499,6 +623,68 @@ func (c *Client) DeleteApplicationWithContext(ctx context.Context, request *Dele
     return
 }
 
+func NewDeleteCustomerGatewayClusterRequest() (request *DeleteCustomerGatewayClusterRequest) {
+    request = &DeleteCustomerGatewayClusterRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mna", APIVersion, "DeleteCustomerGatewayCluster")
+    
+    
+    return
+}
+
+func NewDeleteCustomerGatewayClusterResponse() (response *DeleteCustomerGatewayClusterResponse) {
+    response = &DeleteCustomerGatewayClusterResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteCustomerGatewayCluster
+// 删除客户自有网关集群。
+//
+// 
+//
+// 删除指定的客户自有网关集群，操作不可逆。调用接口后，若通过 GetCustomerGatewayClusterList 接口查询不到对应集群，则表示删除成功。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DeleteCustomerGatewayCluster(request *DeleteCustomerGatewayClusterRequest) (response *DeleteCustomerGatewayClusterResponse, err error) {
+    return c.DeleteCustomerGatewayClusterWithContext(context.Background(), request)
+}
+
+// DeleteCustomerGatewayCluster
+// 删除客户自有网关集群。
+//
+// 
+//
+// 删除指定的客户自有网关集群，操作不可逆。调用接口后，若通过 GetCustomerGatewayClusterList 接口查询不到对应集群，则表示删除成功。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DeleteCustomerGatewayClusterWithContext(ctx context.Context, request *DeleteCustomerGatewayClusterRequest) (response *DeleteCustomerGatewayClusterResponse, err error) {
+    if request == nil {
+        request = NewDeleteCustomerGatewayClusterRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mna", APIVersion, "DeleteCustomerGatewayCluster")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteCustomerGatewayCluster require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteCustomerGatewayClusterResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteDeviceRequest() (request *DeleteDeviceRequest) {
     request = &DeleteDeviceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -549,6 +735,68 @@ func (c *Client) DeleteDeviceWithContext(ctx context.Context, request *DeleteDev
     request.SetContext(ctx)
     
     response = NewDeleteDeviceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteGatewayRequest() (request *DeleteGatewayRequest) {
+    request = &DeleteGatewayRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mna", APIVersion, "DeleteGateway")
+    
+    
+    return
+}
+
+func NewDeleteGatewayResponse() (response *DeleteGatewayResponse) {
+    response = &DeleteGatewayResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteGateway
+// 从指定集群下删除一个客户自有网关实例。
+//
+// 
+//
+// 删除后，通过 GetCustomerGatewayClusterList 查询不到对应实例，则表示删除成功。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DeleteGateway(request *DeleteGatewayRequest) (response *DeleteGatewayResponse, err error) {
+    return c.DeleteGatewayWithContext(context.Background(), request)
+}
+
+// DeleteGateway
+// 从指定集群下删除一个客户自有网关实例。
+//
+// 
+//
+// 删除后，通过 GetCustomerGatewayClusterList 查询不到对应实例，则表示删除成功。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DeleteGatewayWithContext(ctx context.Context, request *DeleteGatewayRequest) (response *DeleteGatewayResponse, err error) {
+    if request == nil {
+        request = NewDeleteGatewayRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mna", APIVersion, "DeleteGateway")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteGateway require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteGatewayResponse()
     err = c.Send(request, response)
     return
 }
@@ -657,6 +905,60 @@ func (c *Client) DeleteL3ConnWithContext(ctx context.Context, request *DeleteL3C
     request.SetContext(ctx)
     
     response = NewDeleteL3ConnResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAccessPointListRequest() (request *DescribeAccessPointListRequest) {
+    request = &DescribeAccessPointListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mna", APIVersion, "DescribeAccessPointList")
+    
+    
+    return
+}
+
+func NewDescribeAccessPointListResponse() (response *DescribeAccessPointListResponse) {
+    response = &DescribeAccessPointListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAccessPointList
+// 此接口用来查询接入点列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DescribeAccessPointList(request *DescribeAccessPointListRequest) (response *DescribeAccessPointListResponse, err error) {
+    return c.DescribeAccessPointListWithContext(context.Background(), request)
+}
+
+// DescribeAccessPointList
+// 此接口用来查询接入点列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DescribeAccessPointListWithContext(ctx context.Context, request *DescribeAccessPointListRequest) (response *DescribeAccessPointListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAccessPointListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mna", APIVersion, "DescribeAccessPointList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAccessPointList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAccessPointListResponse()
     err = c.Send(request, response)
     return
 }
@@ -869,6 +1171,68 @@ func (c *Client) GetApplicationWithContext(ctx context.Context, request *GetAppl
     request.SetContext(ctx)
     
     response = NewGetApplicationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetCustomerGatewayClusterListRequest() (request *GetCustomerGatewayClusterListRequest) {
+    request = &GetCustomerGatewayClusterListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mna", APIVersion, "GetCustomerGatewayClusterList")
+    
+    
+    return
+}
+
+func NewGetCustomerGatewayClusterListResponse() (response *GetCustomerGatewayClusterListResponse) {
+    response = &GetCustomerGatewayClusterListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetCustomerGatewayClusterList
+// 查询客户自有网关集群列表。
+//
+// 
+//
+// 支持按集群名称关键字过滤，使用 Offset/Limit 分页返回集群及其下网关实例信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) GetCustomerGatewayClusterList(request *GetCustomerGatewayClusterListRequest) (response *GetCustomerGatewayClusterListResponse, err error) {
+    return c.GetCustomerGatewayClusterListWithContext(context.Background(), request)
+}
+
+// GetCustomerGatewayClusterList
+// 查询客户自有网关集群列表。
+//
+// 
+//
+// 支持按集群名称关键字过滤，使用 Offset/Limit 分页返回集群及其下网关实例信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) GetCustomerGatewayClusterListWithContext(ctx context.Context, request *GetCustomerGatewayClusterListRequest) (response *GetCustomerGatewayClusterListResponse, err error) {
+    if request == nil {
+        request = NewGetCustomerGatewayClusterListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mna", APIVersion, "GetCustomerGatewayClusterList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetCustomerGatewayClusterList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetCustomerGatewayClusterListResponse()
     err = c.Send(request, response)
     return
 }
@@ -2387,6 +2751,60 @@ func (c *Client) ModifyDeviceAccessRegionsWithContext(ctx context.Context, reque
     return
 }
 
+func NewModifyDeviceAccessScopeRequest() (request *ModifyDeviceAccessScopeRequest) {
+    request = &ModifyDeviceAccessScopeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mna", APIVersion, "ModifyDeviceAccessScope")
+    
+    
+    return
+}
+
+func NewModifyDeviceAccessScopeResponse() (response *ModifyDeviceAccessScopeResponse) {
+    response = &ModifyDeviceAccessScopeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyDeviceAccessScope
+// 修改设备接入网关类型。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) ModifyDeviceAccessScope(request *ModifyDeviceAccessScopeRequest) (response *ModifyDeviceAccessScopeResponse, err error) {
+    return c.ModifyDeviceAccessScopeWithContext(context.Background(), request)
+}
+
+// ModifyDeviceAccessScope
+// 修改设备接入网关类型。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) ModifyDeviceAccessScopeWithContext(ctx context.Context, request *ModifyDeviceAccessScopeRequest) (response *ModifyDeviceAccessScopeResponse, err error) {
+    if request == nil {
+        request = NewModifyDeviceAccessScopeRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mna", APIVersion, "ModifyDeviceAccessScope")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDeviceAccessScope require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDeviceAccessScopeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyPackageRenewFlagRequest() (request *ModifyPackageRenewFlagRequest) {
     request = &ModifyPackageRenewFlagRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2827,6 +3245,68 @@ func (c *Client) UpdateApplicationKeyWithContext(ctx context.Context, request *U
     request.SetContext(ctx)
     
     response = NewUpdateApplicationKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateCustomerGatewayClusterRequest() (request *UpdateCustomerGatewayClusterRequest) {
+    request = &UpdateCustomerGatewayClusterRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mna", APIVersion, "UpdateCustomerGatewayCluster")
+    
+    
+    return
+}
+
+func NewUpdateCustomerGatewayClusterResponse() (response *UpdateCustomerGatewayClusterResponse) {
+    response = &UpdateCustomerGatewayClusterResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateCustomerGatewayCluster
+// 更新客户自有网关集群配置。
+//
+// 
+//
+// 目前仅支持修改集群的公网访问 IP。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) UpdateCustomerGatewayCluster(request *UpdateCustomerGatewayClusterRequest) (response *UpdateCustomerGatewayClusterResponse, err error) {
+    return c.UpdateCustomerGatewayClusterWithContext(context.Background(), request)
+}
+
+// UpdateCustomerGatewayCluster
+// 更新客户自有网关集群配置。
+//
+// 
+//
+// 目前仅支持修改集群的公网访问 IP。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) UpdateCustomerGatewayClusterWithContext(ctx context.Context, request *UpdateCustomerGatewayClusterRequest) (response *UpdateCustomerGatewayClusterResponse, err error) {
+    if request == nil {
+        request = NewUpdateCustomerGatewayClusterRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mna", APIVersion, "UpdateCustomerGatewayCluster")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateCustomerGatewayCluster require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateCustomerGatewayClusterResponse()
     err = c.Send(request, response)
     return
 }

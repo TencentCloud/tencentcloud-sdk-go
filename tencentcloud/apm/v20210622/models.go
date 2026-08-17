@@ -291,6 +291,12 @@ type ApmAppConfig struct {
 
 	// <p>采样阈值，100等于关闭采样，0表示全采样</p>
 	HeadSamplerArg *int64 `json:"HeadSamplerArg,omitnil,omitempty" name:"HeadSamplerArg"`
+
+	// <p>是否为跨账号</p><p>枚举值：</p><ul><li>0： 否</li><li>1： 是</li></ul>
+	CrossAccountStatus *int64 `json:"CrossAccountStatus,omitnil,omitempty" name:"CrossAccountStatus"`
+
+	// <p>跨账号关联ID</p>
+	CrossAccountPeerId *string `json:"CrossAccountPeerId,omitnil,omitempty" name:"CrossAccountPeerId"`
 }
 
 type ApmApplicationConfigView struct {
@@ -666,6 +672,12 @@ type ApmInstanceDetail struct {
 
 	// <p>是否禁用 AI 能力</p><p>单位：无</p>
 	DisableAiAbility *int64 `json:"DisableAiAbility,omitnil,omitempty" name:"DisableAiAbility"`
+
+	// <p>是否为跨账号</p><p>枚举值：</p><ul><li>0： 否</li><li>1： 是</li></ul>
+	CrossAccountStatus *int64 `json:"CrossAccountStatus,omitnil,omitempty" name:"CrossAccountStatus"`
+
+	// <p>跨账号关联ID</p>
+	CrossAccountPeerId *string `json:"CrossAccountPeerId,omitnil,omitempty" name:"CrossAccountPeerId"`
 }
 
 type ApmMetricRecord struct {
@@ -3558,14 +3570,20 @@ type ModifyApmApplicationConfigRequestParams struct {
 	// <p>是否使用探针默认熔断阈值</p>
 	UseDefaultFuseConfig *bool `json:"UseDefaultFuseConfig,omitnil,omitempty" name:"UseDefaultFuseConfig"`
 
-	// <p>是否开启探针头采样</p>
+	// <p>是否开启探针头采样</p><p>（受限）</p>
 	EnableHeadSampler *bool `json:"EnableHeadSampler,omitnil,omitempty" name:"EnableHeadSampler"`
 
-	// <p>头采样类型</p><p>枚举值：</p><ul><li>parentbased_traceidratio： 跟随parent</li></ul>
+	// <p>头采样类型</p><p>枚举值：</p><ul><li>parentbased_traceidratio： 跟随parent</li></ul><p>（受限）</p>
 	HeadSamplerType *string `json:"HeadSamplerType,omitnil,omitempty" name:"HeadSamplerType"`
 
-	// <p>采样率</p><p>取值范围：[0, 100]</p><p>默认值：100</p>
+	// <p>采样率</p><p>取值范围：[0, 100]</p><p>默认值：100</p><p>（受限）</p>
 	HeadSamplerArg *int64 `json:"HeadSamplerArg,omitnil,omitempty" name:"HeadSamplerArg"`
+
+	// <p>是否为跨账号</p><p>枚举值：</p><ul><li>0： 否</li><li>1： 是</li></ul>
+	CrossAccountStatus *int64 `json:"CrossAccountStatus,omitnil,omitempty" name:"CrossAccountStatus"`
+
+	// <p>跨账号关联ID</p>
+	CrossAccountPeerId *string `json:"CrossAccountPeerId,omitnil,omitempty" name:"CrossAccountPeerId"`
 }
 
 type ModifyApmApplicationConfigRequest struct {
@@ -3748,14 +3766,20 @@ type ModifyApmApplicationConfigRequest struct {
 	// <p>是否使用探针默认熔断阈值</p>
 	UseDefaultFuseConfig *bool `json:"UseDefaultFuseConfig,omitnil,omitempty" name:"UseDefaultFuseConfig"`
 
-	// <p>是否开启探针头采样</p>
+	// <p>是否开启探针头采样</p><p>（受限）</p>
 	EnableHeadSampler *bool `json:"EnableHeadSampler,omitnil,omitempty" name:"EnableHeadSampler"`
 
-	// <p>头采样类型</p><p>枚举值：</p><ul><li>parentbased_traceidratio： 跟随parent</li></ul>
+	// <p>头采样类型</p><p>枚举值：</p><ul><li>parentbased_traceidratio： 跟随parent</li></ul><p>（受限）</p>
 	HeadSamplerType *string `json:"HeadSamplerType,omitnil,omitempty" name:"HeadSamplerType"`
 
-	// <p>采样率</p><p>取值范围：[0, 100]</p><p>默认值：100</p>
+	// <p>采样率</p><p>取值范围：[0, 100]</p><p>默认值：100</p><p>（受限）</p>
 	HeadSamplerArg *int64 `json:"HeadSamplerArg,omitnil,omitempty" name:"HeadSamplerArg"`
+
+	// <p>是否为跨账号</p><p>枚举值：</p><ul><li>0： 否</li><li>1： 是</li></ul>
+	CrossAccountStatus *int64 `json:"CrossAccountStatus,omitnil,omitempty" name:"CrossAccountStatus"`
+
+	// <p>跨账号关联ID</p>
+	CrossAccountPeerId *string `json:"CrossAccountPeerId,omitnil,omitempty" name:"CrossAccountPeerId"`
 }
 
 func (r *ModifyApmApplicationConfigRequest) ToJsonString() string {
@@ -3832,6 +3856,8 @@ func (r *ModifyApmApplicationConfigRequest) FromJsonString(s string) error {
 	delete(f, "EnableHeadSampler")
 	delete(f, "HeadSamplerType")
 	delete(f, "HeadSamplerArg")
+	delete(f, "CrossAccountStatus")
+	delete(f, "CrossAccountPeerId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyApmApplicationConfigRequest has unknown keys!", "")
 	}
@@ -4091,6 +4117,12 @@ type ModifyApmInstanceRequestParams struct {
 
 	// <p>是否禁用 AI 能力</p><p>单位：无</p>
 	DisableAiAbility *int64 `json:"DisableAiAbility,omitnil,omitempty" name:"DisableAiAbility"`
+
+	// <p>是否为跨账号</p><p>枚举值：</p><ul><li>0： 否</li><li>1： 是</li></ul>
+	CrossAccountStatus *int64 `json:"CrossAccountStatus,omitnil,omitempty" name:"CrossAccountStatus"`
+
+	// <p>跨账号关联ID</p>
+	CrossAccountPeerId *string `json:"CrossAccountPeerId,omitnil,omitempty" name:"CrossAccountPeerId"`
 }
 
 type ModifyApmInstanceRequest struct {
@@ -4236,6 +4268,12 @@ type ModifyApmInstanceRequest struct {
 
 	// <p>是否禁用 AI 能力</p><p>单位：无</p>
 	DisableAiAbility *int64 `json:"DisableAiAbility,omitnil,omitempty" name:"DisableAiAbility"`
+
+	// <p>是否为跨账号</p><p>枚举值：</p><ul><li>0： 否</li><li>1： 是</li></ul>
+	CrossAccountStatus *int64 `json:"CrossAccountStatus,omitnil,omitempty" name:"CrossAccountStatus"`
+
+	// <p>跨账号关联ID</p>
+	CrossAccountPeerId *string `json:"CrossAccountPeerId,omitnil,omitempty" name:"CrossAccountPeerId"`
 }
 
 func (r *ModifyApmInstanceRequest) ToJsonString() string {
@@ -4297,6 +4335,8 @@ func (r *ModifyApmInstanceRequest) FromJsonString(s string) error {
 	delete(f, "HeadSamplerType")
 	delete(f, "HeadSamplerArg")
 	delete(f, "DisableAiAbility")
+	delete(f, "CrossAccountStatus")
+	delete(f, "CrossAccountPeerId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyApmInstanceRequest has unknown keys!", "")
 	}
