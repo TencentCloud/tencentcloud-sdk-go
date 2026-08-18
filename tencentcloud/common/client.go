@@ -145,14 +145,7 @@ func (c *Client) sendWithRegionBreaker(request tchttp.Request, response tchttp.R
 		request.SetDomain(newEndpoint)
 	}
 	err = c.sendWithSignature(request, response)
-	isSuccess := false
-	// Success is considered only when the server returns an effective response (have requestId and the code is not InternalError )
-	if e, ok := err.(*tcerr.TencentCloudSDKError); ok {
-		if e.GetRequestId() != "" && e.GetCode() != "InternalError" {
-			isSuccess = true
-		}
-	}
-	c.rb.afterRequest(ge, isSuccess)
+	c.rb.afterRequest(ge, isBreakerSuccess(err))
 	return err
 }
 
