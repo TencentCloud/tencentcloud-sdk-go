@@ -9480,7 +9480,7 @@ type Registry struct {
 	// <p>是否支持匿名</p>
 	EnableAnonymous *bool `json:"EnableAnonymous,omitnil,omitempty" name:"EnableAnonymous"`
 
-	// <p>Token有效时间</p>
+	// <p>Token有效时间，单位：小时</p>
 	TokenValidTime *uint64 `json:"TokenValidTime,omitnil,omitempty" name:"TokenValidTime"`
 
 	// <p>实例内部访问地址</p>
@@ -10031,49 +10031,49 @@ type Tag struct {
 }
 
 type TagInfo struct {
-	// Tag名称
+	// <p>Tag名称</p>
 	TagName *string `json:"TagName,omitnil,omitempty" name:"TagName"`
 
-	// 制品的 ID
+	// <p>制品的 ID</p>
 	TagId *string `json:"TagId,omitnil,omitempty" name:"TagId"`
 
-	// docker image 可以看到的id
+	// <p>docker image 可以看到的id</p>
 	ImageId *string `json:"ImageId,omitnil,omitempty" name:"ImageId"`
 
-	// 大小
+	// <p>大小</p>
 	Size *string `json:"Size,omitnil,omitempty" name:"Size"`
 
-	// 制品的创建时间
+	// <p>制品的创建时间</p>
 	CreationTime *string `json:"CreationTime,omitnil,omitempty" name:"CreationTime"`
 
-	// 制品创建至今时间长度
+	// <p>制品创建至今时间长度</p>
 	DurationDays *string `json:"DurationDays,omitnil,omitempty" name:"DurationDays"`
 
-	// 标注的制品作者
+	// <p>标注的制品作者</p>
 	Author *string `json:"Author,omitnil,omitempty" name:"Author"`
 
-	// 标注的制品平台
+	// <p>标注的制品平台</p>
 	Architecture *string `json:"Architecture,omitnil,omitempty" name:"Architecture"`
 
-	// 创建制品的 Docker 版本
+	// <p>创建制品的 Docker 版本</p>
 	DockerVersion *string `json:"DockerVersion,omitnil,omitempty" name:"DockerVersion"`
 
-	// 标注的制品操作系统
+	// <p>标注的制品操作系统</p>
 	OS *string `json:"OS,omitnil,omitempty" name:"OS"`
 
-	// 制品大小
+	// <p>制品大小，单位：Byte</p>
 	SizeByte *int64 `json:"SizeByte,omitnil,omitempty" name:"SizeByte"`
 
-	// 序号
+	// <p>序号</p>
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 数据更新时间
+	// <p>数据更新时间</p>
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 制品更新时间
+	// <p>制品更新时间</p>
 	PushTime *string `json:"PushTime,omitnil,omitempty" name:"PushTime"`
 
-	// 制品类型
+	// <p>制品类型</p>
 	Kind *string `json:"Kind,omitnil,omitempty" name:"Kind"`
 }
 

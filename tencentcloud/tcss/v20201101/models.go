@@ -11383,7 +11383,7 @@ type DescribeAssetImageRegistryRegistryDetailResponseParams struct {
 	// <p>联通性检测结果详情</p>
 	ConnDetectDetail []*RegistryConnDetectResult `json:"ConnDetectDetail,omitnil,omitempty" name:"ConnDetectDetail"`
 
-	// <p>tcr情况下instance_id</p>
+	// <p>TCR实例ID</p>
 	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
 
 	// <p>同步方式，0全量同步，1增量同步</p>

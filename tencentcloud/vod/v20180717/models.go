@@ -2277,7 +2277,7 @@ type AigcImageTaskInputFileInfo struct {
 }
 
 type AigcImageTaskOutput struct {
-	// AIGC 生图任务的输出文件信息。
+	// <p>AIGC 生图任务的输出文件信息。</p>
 	FileInfos []*AigcImageTaskOutputFileInfo `json:"FileInfos,omitnil,omitempty" name:"FileInfos"`
 }
 

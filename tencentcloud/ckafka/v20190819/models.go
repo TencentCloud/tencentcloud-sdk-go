@@ -1332,6 +1332,9 @@ type CreateConnectResourceRequestParams struct {
 	// <p>MQTT配置，Type为 MQTT 时必填</p>
 	MqttConnectParam *MqttConnectParam `json:"MqttConnectParam,omitnil,omitempty" name:"MqttConnectParam"`
 
+	// <p>Iceberg配置，Type为ICEBERG时必填</p>
+	IcebergConnectParam *IcebergConnectParam `json:"IcebergConnectParam,omitnil,omitempty" name:"IcebergConnectParam"`
+
 	// <p>标签列表</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
@@ -1381,6 +1384,9 @@ type CreateConnectResourceRequest struct {
 	// <p>MQTT配置，Type为 MQTT 时必填</p>
 	MqttConnectParam *MqttConnectParam `json:"MqttConnectParam,omitnil,omitempty" name:"MqttConnectParam"`
 
+	// <p>Iceberg配置，Type为ICEBERG时必填</p>
+	IcebergConnectParam *IcebergConnectParam `json:"IcebergConnectParam,omitnil,omitempty" name:"IcebergConnectParam"`
+
 	// <p>标签列表</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
@@ -1411,6 +1417,7 @@ func (r *CreateConnectResourceRequest) FromJsonString(s string) error {
 	delete(f, "DorisConnectParam")
 	delete(f, "KafkaConnectParam")
 	delete(f, "MqttConnectParam")
+	delete(f, "IcebergConnectParam")
 	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateConnectResourceRequest has unknown keys!", "")
@@ -3381,109 +3388,88 @@ type CvmAndIpInfo struct {
 }
 
 type DatahubResource struct {
-	// 资源类型  type类型如下: 
-	// KAFKA,
-	// EB_ES,
-	// EB_COS,
-	// EB_CLS,
-	// EB_,
-	// MONGODB,
-	// HTTP,
-	// TDW,
-	// ES,
-	// CLICKHOUSE,
-	// DTS,
-	// CLS,
-	// COS,
-	// TOPIC,
-	// MYSQL,
-	// MQTT,
-	// MYSQL_DATA,
-	// DORIS,
-	// POSTGRESQL,
-	// TDSQL_C_POSTGRESQL,
-	// TDSQL_POSTGRESQL,
-	// WAREHOUSE_POSTGRESQL,
-	// TDSQL_C_MYSQL,
-	// MARIADB,
-	// SQLSERVER,
-	// CTSDB,
-	// SCF
-	// 
+	// <p>资源类型  type类型如下:<br>KAFKA,<br>EB_ES,<br>EB_COS,<br>EB_CLS,<br>EB_,<br>MONGODB,<br>HTTP,<br>TDW,<br>ES,<br>CLICKHOUSE,<br>DTS,<br>CLS,<br>COS,<br>TOPIC,<br>MYSQL,<br>MQTT,<br>MYSQL_DATA,<br>DORIS,<br>POSTGRESQL,<br>TDSQL_C_POSTGRESQL,<br>TDSQL_POSTGRESQL,<br>WAREHOUSE_POSTGRESQL,<br>TDSQL_C_MYSQL,<br>MARIADB,<br>SQLSERVER,<br>CTSDB,<br>SCF</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// ckafka配置，Type为KAFKA时必填
+	// <p>ckafka配置，Type为KAFKA时必填</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	KafkaParam *KafkaParam `json:"KafkaParam,omitnil,omitempty" name:"KafkaParam"`
 
-	// EB配置，Type为EB时必填
+	// <p>EB配置，Type为EB时必填</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EventBusParam *EventBusParam `json:"EventBusParam,omitnil,omitempty" name:"EventBusParam"`
 
-	// MongoDB配置，Type为MONGODB时必填
+	// <p>MongoDB配置，Type为MONGODB时必填</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MongoDBParam *MongoDBParam `json:"MongoDBParam,omitnil,omitempty" name:"MongoDBParam"`
 
-	// Es配置，Type为ES时必填
+	// <p>Es配置，Type为ES时必填</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EsParam *EsParam `json:"EsParam,omitnil,omitempty" name:"EsParam"`
 
-	// Tdw配置，Type为TDW时必填
+	// <p>Tdw配置，Type为TDW时必填</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TdwParam *TdwParam `json:"TdwParam,omitnil,omitempty" name:"TdwParam"`
 
-	// Dts配置，Type为DTS时必填
+	// <p>Dts配置，Type为DTS时必填</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DtsParam *DtsParam `json:"DtsParam,omitnil,omitempty" name:"DtsParam"`
 
-	// ClickHouse配置，Type为CLICKHOUSE时必填
+	// <p>ClickHouse配置，Type为CLICKHOUSE时必填</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClickHouseParam *ClickHouseParam `json:"ClickHouseParam,omitnil,omitempty" name:"ClickHouseParam"`
 
-	// Cls配置，Type为CLS时必填
+	// <p>Cls配置，Type为CLS时必填</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClsParam *ClsParam `json:"ClsParam,omitnil,omitempty" name:"ClsParam"`
 
-	// Cos配置，Type为COS时必填
+	// <p>Cos配置，Type为COS时必填</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CosParam *CosParam `json:"CosParam,omitnil,omitempty" name:"CosParam"`
 
-	// MySQL配置，Type为MYSQL时必填
+	// <p>MySQL配置，Type为MYSQL时必填</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MySQLParam *MySQLParam `json:"MySQLParam,omitnil,omitempty" name:"MySQLParam"`
 
-	// PostgreSQL配置，Type为POSTGRESQL或TDSQL_C_POSTGRESQL时必填
+	// <p>PostgreSQL配置，Type为POSTGRESQL或TDSQL_C_POSTGRESQL时必填</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PostgreSQLParam *PostgreSQLParam `json:"PostgreSQLParam,omitnil,omitempty" name:"PostgreSQLParam"`
 
-	// Topic配置，Type为Topic时必填
+	// <p>Topic配置，Type为Topic时必填</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopicParam *TopicParam `json:"TopicParam,omitnil,omitempty" name:"TopicParam"`
 
-	// MariaDB配置，Type为MARIADB时必填
+	// <p>MariaDB配置，Type为MARIADB时必填</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MariaDBParam *MariaDBParam `json:"MariaDBParam,omitnil,omitempty" name:"MariaDBParam"`
 
-	// SQLServer配置，Type为SQLSERVER时必填
+	// <p>SQLServer配置，Type为SQLSERVER时必填</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SQLServerParam *SQLServerParam `json:"SQLServerParam,omitnil,omitempty" name:"SQLServerParam"`
 
-	// Ctsdb配置，Type为CTSDB时必填
+	// <p>Ctsdb配置，Type为CTSDB时必填</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CtsdbParam *CtsdbParam `json:"CtsdbParam,omitnil,omitempty" name:"CtsdbParam"`
 
-	// Scf配置，Type为SCF时必填
+	// <p>Scf配置，Type为SCF时必填</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScfParam *ScfParam `json:"ScfParam,omitnil,omitempty" name:"ScfParam"`
 
-	// MQTT配置，Type为 MQTT 时必填
+	// <p>MQTT配置，Type为 MQTT 时必填</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MqttParam *MqttParam `json:"MqttParam,omitnil,omitempty" name:"MqttParam"`
+
+	// <p>IceBerg配置</p>
+	IcebergParam *IcebergParam `json:"IcebergParam,omitnil,omitempty" name:"IcebergParam"`
 }
 
 type DatahubTaskIdRes struct {
-	// 任务id
+	// <p>任务id</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>DatahubId</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatahubId *string `json:"DatahubId,omitnil,omitempty" name:"DatahubId"`
 }
 
 type DatahubTaskInfo struct {
@@ -4953,6 +4939,9 @@ type DescribeConnectResource struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MqttConnectParam *MqttConnectParam `json:"MqttConnectParam,omitnil,omitempty" name:"MqttConnectParam"`
 
+	// <p>Iceberg配置，Type为ICEBERG时返回</p>
+	IcebergConnectParam *IcebergConnectParam `json:"IcebergConnectParam,omitnil,omitempty" name:"IcebergConnectParam"`
+
 	// <p>标签列表</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
@@ -5066,8 +5055,14 @@ type DescribeConnectResourceResp struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MqttConnectParam *MqttConnectParam `json:"MqttConnectParam,omitnil,omitempty" name:"MqttConnectParam"`
 
+	// <p>Iceberg配置，Type为ICEBERG时返回</p>
+	IcebergConnectParam *IcebergConnectParam `json:"IcebergConnectParam,omitnil,omitempty" name:"IcebergConnectParam"`
+
 	// <p>标签列表</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>iceberg数据库和表信息</p>
+	IcebergDatabases []*IcebergDatabaseInfo `json:"IcebergDatabases,omitnil,omitempty" name:"IcebergDatabases"`
 }
 
 // Predefined struct for user
@@ -7828,118 +7823,145 @@ type DynamicRetentionTime struct {
 }
 
 type EsConnectParam struct {
-	// Es的连接port
+	// <p>Es的连接port</p>
 	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
 
-	// Es连接源的用户名
+	// <p>Es连接源的用户名</p>
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
-	// Es连接源的密码
+	// <p>Es连接源的密码</p>
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
-	// Es连接源的实例资源
+	// <p>Es连接源的实例资源</p>
 	Resource *string `json:"Resource,omitnil,omitempty" name:"Resource"`
 
-	// Es连接源是否为自建集群
+	// <p>Es连接源是否为自建集群</p>
 	SelfBuilt *bool `json:"SelfBuilt,omitnil,omitempty" name:"SelfBuilt"`
 
-	// Es连接源的实例vip，当为腾讯云实例时，必填
+	// <p>Es连接源的实例vip，当为腾讯云实例时，必填</p>
 	ServiceVip *string `json:"ServiceVip,omitnil,omitempty" name:"ServiceVip"`
 
-	// Es连接源的vpcId，当为腾讯云实例时，必填
+	// <p>Es连接源的vpcId，当为腾讯云实例时，必填</p>
 	UniqVpcId *string `json:"UniqVpcId,omitnil,omitempty" name:"UniqVpcId"`
 
-	// 是否更新到关联的Datahub任务
+	// <p>是否更新到关联的Datahub任务</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsUpdate *bool `json:"IsUpdate,omitnil,omitempty" name:"IsUpdate"`
+
+	// <p>es类型</p><p>枚举值：</p><ul><li>CLUSTER： 普通集群es</li><li>SERVERLESS： serverless形态es</li></ul>
+	EsType *string `json:"EsType,omitnil,omitempty" name:"EsType"`
+
+	// <p>es版本</p><p>默认值：7.14.2</p>
+	EsVersion *string `json:"EsVersion,omitnil,omitempty" name:"EsVersion"`
+
+	// <p>endpointUrl，es的serverless版本的访问入口地址</p>
+	EndpointUrl *string `json:"EndpointUrl,omitnil,omitempty" name:"EndpointUrl"`
+
+	// <p>集群版 ES 连接协议，默认http协议</p><p>枚举值：</p><ul><li>http： http协议</li><li>https： https协议</li></ul>
+	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 }
 
 type EsModifyConnectParam struct {
-	// Es连接源的实例资源【不支持修改】
+	// <p>Es连接源的实例资源【不支持修改】</p>
 	Resource *string `json:"Resource,omitnil,omitempty" name:"Resource"`
 
-	// Es的连接port【不支持修改】
+	// <p>Es的连接port【不支持修改】</p>
 	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
 
-	// Es连接源的实例vip【不支持修改】
+	// <p>Es连接源的实例vip【不支持修改】</p>
 	ServiceVip *string `json:"ServiceVip,omitnil,omitempty" name:"ServiceVip"`
 
-	// Es连接源的vpcId【不支持修改】
+	// <p>Es连接源的vpcId【不支持修改】</p>
 	UniqVpcId *string `json:"UniqVpcId,omitnil,omitempty" name:"UniqVpcId"`
 
-	// Es连接源的用户名
+	// <p>Es连接源的用户名</p>
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
-	// Es连接源的密码
+	// <p>Es连接源的密码</p>
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
-	// Es连接源是否为自建集群【不支持修改】
+	// <p>Es连接源是否为自建集群【不支持修改】</p>
 	SelfBuilt *bool `json:"SelfBuilt,omitnil,omitempty" name:"SelfBuilt"`
 
-	// 是否更新到关联的Datahub任务
+	// <p>是否更新到关联的Datahub任务</p>
 	IsUpdate *bool `json:"IsUpdate,omitnil,omitempty" name:"IsUpdate"`
+
+	// <p>es类型</p><p>枚举值：</p><ul><li>CLUSTER： 普通集群es</li><li>SERVERLESS： serverless形态es</li></ul>
+	EsType *string `json:"EsType,omitnil,omitempty" name:"EsType"`
+
+	// <p>es版本，默认7.14.2</p><p>默认值：7.14.2</p>
+	EsVersion *string `json:"EsVersion,omitnil,omitempty" name:"EsVersion"`
+
+	// <p>endpointUrl，es的serverless版本的访问入口地址</p>
+	EndpointUrl *string `json:"EndpointUrl,omitnil,omitempty" name:"EndpointUrl"`
+
+	// <p>集群版 ES 连接协议，默认http协议</p><p>枚举值：</p><ul><li>http： http协议</li><li>https： https协议</li></ul>
+	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 }
 
 type EsParam struct {
-	// Es实例资源Id
+	// <p>Es实例资源Id</p>
 	Resource *string `json:"Resource,omitnil,omitempty" name:"Resource"`
 
-	// Es的连接port
+	// <p>Es的连接port</p>
 	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
 
-	// Es用户名
+	// <p>Es用户名</p>
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
-	// Es密码
+	// <p>Es密码</p>
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
-	// 是否为自建集群
+	// <p>是否为自建集群</p>
 	SelfBuilt *bool `json:"SelfBuilt,omitnil,omitempty" name:"SelfBuilt"`
 
-	// 实例vip
+	// <p>实例vip</p>
 	ServiceVip *string `json:"ServiceVip,omitnil,omitempty" name:"ServiceVip"`
 
-	// 实例的vpcId
+	// <p>实例的vpcId</p>
 	UniqVpcId *string `json:"UniqVpcId,omitnil,omitempty" name:"UniqVpcId"`
 
-	// Es是否抛弃解析失败的消息
+	// <p>Es是否抛弃解析失败的消息</p>
 	DropInvalidMessage *bool `json:"DropInvalidMessage,omitnil,omitempty" name:"DropInvalidMessage"`
 
-	// Es自定义index名称
+	// <p>Es自定义index名称</p>
 	Index *string `json:"Index,omitnil,omitempty" name:"Index"`
 
-	// Es自定义日期后缀
+	// <p>Es自定义日期后缀</p>
 	DateFormat *string `json:"DateFormat,omitnil,omitempty" name:"DateFormat"`
 
-	// 非json格式数据的自定义key
+	// <p>非json格式数据的自定义key</p>
 	ContentKey *string `json:"ContentKey,omitnil,omitempty" name:"ContentKey"`
 
-	// Es是否抛弃非json格式的消息
+	// <p>Es是否抛弃非json格式的消息</p>
 	DropInvalidJsonMessage *bool `json:"DropInvalidJsonMessage,omitnil,omitempty" name:"DropInvalidJsonMessage"`
 
-	// 转储到Es中的文档ID取值字段名
+	// <p>转储到Es中的文档ID取值字段名</p>
 	DocumentIdField *string `json:"DocumentIdField,omitnil,omitempty" name:"DocumentIdField"`
 
-	// Es自定义index名称的类型，STRING，JSONPATH，默认为STRING
+	// <p>Es自定义index名称的类型，STRING，JSONPATH，默认为STRING</p>
 	IndexType *string `json:"IndexType,omitnil,omitempty" name:"IndexType"`
 
-	// 当设置成员参数DropInvalidMessageToCls设置为true时,DropInvalidMessage参数失效
+	// <p>当设置成员参数DropInvalidMessageToCls设置为true时,DropInvalidMessage参数失效</p>
 	DropCls *DropCls `json:"DropCls,omitnil,omitempty" name:"DropCls"`
 
-	// 转储到ES的消息为Database的binlog时，如果需要同步数据库操作，即增删改的操作到ES时填写数据库表主键
+	// <p>转储到ES的消息为Database的binlog时，如果需要同步数据库操作，即增删改的操作到ES时填写数据库表主键</p>
 	DatabasePrimaryKey *string `json:"DatabasePrimaryKey,omitnil,omitempty" name:"DatabasePrimaryKey"`
 
-	// 死信队列
+	// <p>死信队列</p>
 	DropDlq *FailureParam `json:"DropDlq,omitnil,omitempty" name:"DropDlq"`
 
-	// 使用数据订阅格式导入 es 时，消息与 es 索引字段映射关系。不填默认为默认字段匹配
+	// <p>使用数据订阅格式导入 es 时，消息与 es 索引字段映射关系。不填默认为默认字段匹配</p>
 	RecordMappingList []*EsRecordMapping `json:"RecordMappingList,omitnil,omitempty" name:"RecordMappingList"`
 
-	// 消息要映射为 es 索引中 @timestamp 的字段，如果当前配置为空，则使用消息的时间戳进行映射
+	// <p>消息要映射为 es 索引中 @timestamp 的字段，如果当前配置为空，则使用消息的时间戳进行映射</p>
 	DateField *string `json:"DateField,omitnil,omitempty" name:"DateField"`
 
-	// 用来区分当前索引映射，属于新建索引还是存量索引。"EXIST_MAPPING"：从存量索引中选择；"NEW_MAPPING"：新建索引
+	// <p>用来区分当前索引映射，属于新建索引还是存量索引。&quot;EXIST_MAPPING&quot;：从存量索引中选择；&quot;NEW_MAPPING&quot;：新建索引</p>
 	RecordMappingMode *string `json:"RecordMappingMode,omitnil,omitempty" name:"RecordMappingMode"`
+
+	// <p>集群版 ES 连接协议，默认http协议</p><p>枚举值：</p><ul><li>http： http协议</li><li>https： https协议</li></ul>
+	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 }
 
 type EsRecordMapping struct {
@@ -8540,6 +8562,72 @@ type GroupResponse struct {
 
 	// 消费分组配额
 	GroupCountQuota *uint64 `json:"GroupCountQuota,omitnil,omitempty" name:"GroupCountQuota"`
+}
+
+type IcebergConnectParam struct {
+	// <p>EMR实例的HiveMetaStore节点IP</p><p>参数格式：多个使用英文分号;分隔</p><p>创建连接时必选，编辑连接时不接收该参数</p>
+	ServiceVip *string `json:"ServiceVip,omitnil,omitempty" name:"ServiceVip"`
+
+	// <p>EMR实例ID</p><p>创建连接时必选，编辑连接时不接收该参数</p>
+	Resource *string `json:"Resource,omitnil,omitempty" name:"Resource"`
+
+	// <p>EMR实例的集群网络vpcId</p><p>创建连接时必选，编辑连接时不接收该参数</p>
+	UniqVpcId *string `json:"UniqVpcId,omitnil,omitempty" name:"UniqVpcId"`
+
+	// <p>认证类型</p><p>枚举值：</p><ul><li>NONE： 无认证</li><li>KERBEROS： Kerberos认证</li></ul><p>开启Kerberos认证的EMR实例，此处需传入KERBEROS，创建连接时必选，编辑连接时非必选</p>
+	AuthType *string `json:"AuthType,omitnil,omitempty" name:"AuthType"`
+
+	// <p>EMR实例的HiveMetaStore节点IP绑定的弹性网卡Id列表</p><p>数量和顺序必须与ServiceVip字段中的多个IP对应，创建连接时必选，编辑连接时不接收该参数</p>
+	EniIdList []*string `json:"EniIdList,omitnil,omitempty" name:"EniIdList"`
+
+	// <p>Catalog数据目录类型</p><p>枚举值：</p><ul><li>HIVE： Hive Catalog</li></ul><p>默认值：HIVE</p><p>仅支持Hive Catalog</p>
+	CatalogType *string `json:"CatalogType,omitnil,omitempty" name:"CatalogType"`
+
+	// <p>用于Kerberos认证的user.keytab文件的内容</p><p>入参限制：文件内容需使用Base64编码</p><p>AuthType为KERBEROS时必传</p>
+	KeyTabContent *string `json:"KeyTabContent,omitnil,omitempty" name:"KeyTabContent"`
+
+	// <p>用于Kerberos认证的krb5.conf文件的内容</p><p>入参限制：文件内容需使用Base64编码</p><p>AuthType为KERBEROS时必传</p>
+	KRB5ConfContent *string `json:"KRB5ConfContent,omitnil,omitempty" name:"KRB5ConfContent"`
+
+	// <p>用户的Kerberos身份凭证</p>
+	KerberosUserPrincipal *string `json:"KerberosUserPrincipal,omitnil,omitempty" name:"KerberosUserPrincipal"`
+
+	// <p>HiveMetastore服务端配置的Kerberos Principal</p><p>hive-site.xml中hive.metastore.kerberos.principal的值</p>
+	KerberosPrincipal *string `json:"KerberosPrincipal,omitnil,omitempty" name:"KerberosPrincipal"`
+
+	// <p>是否更新并重启所有关联的连接器任务</p><p>编辑连接时使用，如果不传，则根据认证类型及认证参数是否发生变化，来判断是否更新并重启所有关联的连接器任务</p>
+	IsUpdate *bool `json:"IsUpdate,omitnil,omitempty" name:"IsUpdate"`
+}
+
+type IcebergDatabaseInfo struct {
+	// <p>数据库名</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>表名称</p>
+	Tables []*string `json:"Tables,omitnil,omitempty" name:"Tables"`
+}
+
+type IcebergParam struct {
+	// <p>Iceberg 连接资源 (EMR 实例)</p>
+	Resource *string `json:"Resource,omitnil,omitempty" name:"Resource"`
+
+	// <p>目标数据库名（Hive catalog 下的 namespace），必填</p>
+	Database *string `json:"Database,omitnil,omitempty" name:"Database"`
+
+	// <p>目标表名</p>
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// <p>消息解析格式，当前仅支持 JSON</p><p>枚举值：</p><ul><li>JSON： JSON解析格式</li></ul>
+	SchemeType *string `json:"SchemeType,omitnil,omitempty" name:"SchemeType"`
+
+	// <p>表字段扩展开关</p><p>枚举值：</p><ul><li>true： 开</li><li>false： 关</li></ul>
+	EnableFieldExtension *bool `json:"EnableFieldExtension,omitnil,omitempty" name:"EnableFieldExtension"`
+
+	// <p>Upset/CDC 模式，默认off</p><p>枚举值：</p><ul><li>Off： Off</li><li>UPSERT： UPSERT</li><li>CDC： CDC</li></ul>
+	UpsertMode *string `json:"UpsertMode,omitnil,omitempty" name:"UpsertMode"`
+
+	// <p>主键字段：UPSERT / CDC 模式必填（多个字段以英文逗号分隔）</p>
+	PrimaryKeys *string `json:"PrimaryKeys,omitnil,omitempty" name:"PrimaryKeys"`
 }
 
 // Predefined struct for user
@@ -9759,6 +9847,9 @@ type ModifyConnectResourceRequestParams struct {
 
 	// <p>MQTT配置，Type为 MQTT 时必填</p>
 	MqttConnectParam *MqttConnectParam `json:"MqttConnectParam,omitnil,omitempty" name:"MqttConnectParam"`
+
+	// <p>Iceberg配置，Type为ICEBERG时必填</p>
+	IcebergConnectParam *IcebergConnectParam `json:"IcebergConnectParam,omitnil,omitempty" name:"IcebergConnectParam"`
 }
 
 type ModifyConnectResourceRequest struct {
@@ -9811,6 +9902,9 @@ type ModifyConnectResourceRequest struct {
 
 	// <p>MQTT配置，Type为 MQTT 时必填</p>
 	MqttConnectParam *MqttConnectParam `json:"MqttConnectParam,omitnil,omitempty" name:"MqttConnectParam"`
+
+	// <p>Iceberg配置，Type为ICEBERG时必填</p>
+	IcebergConnectParam *IcebergConnectParam `json:"IcebergConnectParam,omitnil,omitempty" name:"IcebergConnectParam"`
 }
 
 func (r *ModifyConnectResourceRequest) ToJsonString() string {
@@ -9841,6 +9935,7 @@ func (r *ModifyConnectResourceRequest) FromJsonString(s string) error {
 	delete(f, "DorisConnectParam")
 	delete(f, "KafkaConnectParam")
 	delete(f, "MqttConnectParam")
+	delete(f, "IcebergConnectParam")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyConnectResourceRequest has unknown keys!", "")
 	}
@@ -12257,27 +12352,27 @@ type TopicMessageHeapRanking struct {
 }
 
 type TopicParam struct {
-	// 单独售卖Topic的Topic名称
+	// <p>单独售卖Topic的Topic名称</p>
 	Resource *string `json:"Resource,omitnil,omitempty" name:"Resource"`
 
-	// Offset类型，最开始位置earliest，最新位置latest，时间点位置timestamp
+	// <p>Offset类型，最开始位置earliest，最新位置latest，时间点位置timestamp</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OffsetType *string `json:"OffsetType,omitnil,omitempty" name:"OffsetType"`
 
-	// Offset类型为timestamp时必传，传时间戳，精确到秒
+	// <p>Offset类型为timestamp时必传，传时间戳，精确到秒</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// Topic的TopicId【出参】
+	// <p>Topic的TopicId【出参】</p>
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// 写入Topic时是否进行压缩，不开启填"none"，开启的话，可选择"gzip", "snappy", "lz4"中的一个进行填写。
+	// <p>写入Topic时是否进行压缩，不开启填&quot;none&quot;，开启的话，可选择&quot;gzip&quot;, &quot;snappy&quot;, &quot;lz4&quot;中的一个进行填写。</p>
 	CompressionType *string `json:"CompressionType,omitnil,omitempty" name:"CompressionType"`
 
-	// 使用的Topic是否需要自动创建（目前只支持SOURCE流入任务）
+	// <p>使用的Topic是否需要自动创建（目前只支持SOURCE流入任务）</p>
 	UseAutoCreateTopic *bool `json:"UseAutoCreateTopic,omitnil,omitempty" name:"UseAutoCreateTopic"`
 
-	// 源topic消息1条扩增成msgMultiple条写入目标topic(该参数目前只有ckafka流入ckafka适用)
+	// <p>源topic消息1条扩增成msgMultiple条写入目标topic(该参数目前只有ckafka流入ckafka适用)</p>
 	MsgMultiple *int64 `json:"MsgMultiple,omitnil,omitempty" name:"MsgMultiple"`
 }
 

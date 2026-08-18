@@ -1491,6 +1491,62 @@ func (c *Client) DetachNodesWithContext(ctx context.Context, request *DetachNode
     return
 }
 
+func NewInquirePriceModifyWorkspacesChargeTypeRequest() (request *InquirePriceModifyWorkspacesChargeTypeRequest) {
+    request = &InquirePriceModifyWorkspacesChargeTypeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("thpc", APIVersion, "InquirePriceModifyWorkspacesChargeType")
+    
+    
+    return
+}
+
+func NewInquirePriceModifyWorkspacesChargeTypeResponse() (response *InquirePriceModifyWorkspacesChargeTypeResponse) {
+    response = &InquirePriceModifyWorkspacesChargeTypeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// InquirePriceModifyWorkspacesChargeType
+// 查询按量计费工作空间转换为包年包月的价格。不会创建订单或变更资源。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_ATMOSTONE = "InvalidParameter.AtMostOne"
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETERVALUE_INVALIDCVMINSTANCEIDMALFORMED = "InvalidParameterValue.InvalidCvmInstanceIdMalformed"
+//  INVALIDPARAMETERVALUE_INVALIDSPACEIDMALFORMED = "InvalidParameterValue.InvalidSpaceIdMalformed"
+func (c *Client) InquirePriceModifyWorkspacesChargeType(request *InquirePriceModifyWorkspacesChargeTypeRequest) (response *InquirePriceModifyWorkspacesChargeTypeResponse, err error) {
+    return c.InquirePriceModifyWorkspacesChargeTypeWithContext(context.Background(), request)
+}
+
+// InquirePriceModifyWorkspacesChargeType
+// 查询按量计费工作空间转换为包年包月的价格。不会创建订单或变更资源。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_ATMOSTONE = "InvalidParameter.AtMostOne"
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETERVALUE_INVALIDCVMINSTANCEIDMALFORMED = "InvalidParameterValue.InvalidCvmInstanceIdMalformed"
+//  INVALIDPARAMETERVALUE_INVALIDSPACEIDMALFORMED = "InvalidParameterValue.InvalidSpaceIdMalformed"
+func (c *Client) InquirePriceModifyWorkspacesChargeTypeWithContext(ctx context.Context, request *InquirePriceModifyWorkspacesChargeTypeRequest) (response *InquirePriceModifyWorkspacesChargeTypeResponse, err error) {
+    if request == nil {
+        request = NewInquirePriceModifyWorkspacesChargeTypeRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "thpc", APIVersion, "InquirePriceModifyWorkspacesChargeType")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InquirePriceModifyWorkspacesChargeType require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewInquirePriceModifyWorkspacesChargeTypeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyClusterDeletionProtectionRequest() (request *ModifyClusterDeletionProtectionRequest) {
     request = &ModifyClusterDeletionProtectionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1697,6 +1753,56 @@ func (c *Client) ModifyWorkspacesAttributeWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewModifyWorkspacesAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyWorkspacesChargeTypeRequest() (request *ModifyWorkspacesChargeTypeRequest) {
+    request = &ModifyWorkspacesChargeTypeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("thpc", APIVersion, "ModifyWorkspacesChargeType")
+    
+    
+    return
+}
+
+func NewModifyWorkspacesChargeTypeResponse() (response *ModifyWorkspacesChargeTypeResponse) {
+    response = &ModifyWorkspacesChargeTypeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyWorkspacesChargeType
+// 正式提交按量计费工作空间转包年包月订单。仅支持 ONLINE 且计费模式为 POSTPAID_BY_HOUR 的工作空间。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+func (c *Client) ModifyWorkspacesChargeType(request *ModifyWorkspacesChargeTypeRequest) (response *ModifyWorkspacesChargeTypeResponse, err error) {
+    return c.ModifyWorkspacesChargeTypeWithContext(context.Background(), request)
+}
+
+// ModifyWorkspacesChargeType
+// 正式提交按量计费工作空间转包年包月订单。仅支持 ONLINE 且计费模式为 POSTPAID_BY_HOUR 的工作空间。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+func (c *Client) ModifyWorkspacesChargeTypeWithContext(ctx context.Context, request *ModifyWorkspacesChargeTypeRequest) (response *ModifyWorkspacesChargeTypeResponse, err error) {
+    if request == nil {
+        request = NewModifyWorkspacesChargeTypeRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "thpc", APIVersion, "ModifyWorkspacesChargeType")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyWorkspacesChargeType require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyWorkspacesChargeTypeResponse()
     err = c.Send(request, response)
     return
 }

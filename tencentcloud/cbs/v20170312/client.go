@@ -1583,6 +1583,56 @@ func (c *Client) DescribeAutoSnapshotPoliciesWithContext(ctx context.Context, re
     return
 }
 
+func NewDescribeDedicatedClusterDiskStatisticsRequest() (request *DescribeDedicatedClusterDiskStatisticsRequest) {
+    request = &DescribeDedicatedClusterDiskStatisticsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cbs", APIVersion, "DescribeDedicatedClusterDiskStatistics")
+    
+    
+    return
+}
+
+func NewDescribeDedicatedClusterDiskStatisticsResponse() (response *DescribeDedicatedClusterDiskStatisticsResponse) {
+    response = &DescribeDedicatedClusterDiskStatisticsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDedicatedClusterDiskStatistics
+// 查询 CVM CDC 独享集群云硬盘统计信息。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeDedicatedClusterDiskStatistics(request *DescribeDedicatedClusterDiskStatisticsRequest) (response *DescribeDedicatedClusterDiskStatisticsResponse, err error) {
+    return c.DescribeDedicatedClusterDiskStatisticsWithContext(context.Background(), request)
+}
+
+// DescribeDedicatedClusterDiskStatistics
+// 查询 CVM CDC 独享集群云硬盘统计信息。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeDedicatedClusterDiskStatisticsWithContext(ctx context.Context, request *DescribeDedicatedClusterDiskStatisticsRequest) (response *DescribeDedicatedClusterDiskStatisticsResponse, err error) {
+    if request == nil {
+        request = NewDescribeDedicatedClusterDiskStatisticsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cbs", APIVersion, "DescribeDedicatedClusterDiskStatistics")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDedicatedClusterDiskStatistics require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDedicatedClusterDiskStatisticsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDiskAssociatedAutoSnapshotPolicyRequest() (request *DescribeDiskAssociatedAutoSnapshotPolicyRequest) {
     request = &DescribeDiskAssociatedAutoSnapshotPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},

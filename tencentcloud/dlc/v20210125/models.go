@@ -4441,20 +4441,20 @@ type CreateLabRequestParams struct {
 	// <p>数据实验室名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// <p>Lab 镜像地址（必填，用于开发工具如 Jupyter/VSCode/WebShell）。前端在&quot;内置 / 自定义&quot;两态中选择此值；当 Image 字段未显式传入时，后端会基于该字段按 R1（镜像表命中）/R2（同值 fallback）派生 Ray 集群镜像。</p>
-	LabImage *string `json:"LabImage,omitnil,omitempty" name:"LabImage"`
-
 	// <p>资源分区ID</p>
 	ResourcePartitionId *string `json:"ResourcePartitionId,omitnil,omitempty" name:"ResourcePartitionId"`
 
 	// <p>队列名称</p>
 	Queue *string `json:"Queue,omitnil,omitempty" name:"Queue"`
 
-	// <p>数据实验室描述</p>
-	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
-
 	// <p>Ray 集群镜像地址（可选，OpenAPI/SDK 高级控制入口）。前端不再传递此字段；为空时后端按 R1（镜像表查询命中）→ R2（同值 fallback）顺序自动派生。非空时直接作为 Ray 集群镜像，跳过派生（EXPLICIT），且后端不校验其与 LabImage 的兼容性。</p>
 	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
+
+	// <p>Lab 镜像地址（必填，用于开发工具如 Jupyter/VSCode/WebShell）。前端在&quot;内置 / 自定义&quot;两态中选择此值；当 Image 字段未显式传入时，后端会基于该字段按 R1（镜像表命中）/R2（同值 fallback）派生 Ray 集群镜像。</p>
+	LabImage *string `json:"LabImage,omitnil,omitempty" name:"LabImage"`
+
+	// <p>数据实验室描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// <p>镜像拉取策略（Always, IfNotPresent, Never）</p>
 	ImagePullPolicy *string `json:"ImagePullPolicy,omitnil,omitempty" name:"ImagePullPolicy"`
@@ -4511,20 +4511,20 @@ type CreateLabRequest struct {
 	// <p>数据实验室名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// <p>Lab 镜像地址（必填，用于开发工具如 Jupyter/VSCode/WebShell）。前端在&quot;内置 / 自定义&quot;两态中选择此值；当 Image 字段未显式传入时，后端会基于该字段按 R1（镜像表命中）/R2（同值 fallback）派生 Ray 集群镜像。</p>
-	LabImage *string `json:"LabImage,omitnil,omitempty" name:"LabImage"`
-
 	// <p>资源分区ID</p>
 	ResourcePartitionId *string `json:"ResourcePartitionId,omitnil,omitempty" name:"ResourcePartitionId"`
 
 	// <p>队列名称</p>
 	Queue *string `json:"Queue,omitnil,omitempty" name:"Queue"`
 
-	// <p>数据实验室描述</p>
-	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
-
 	// <p>Ray 集群镜像地址（可选，OpenAPI/SDK 高级控制入口）。前端不再传递此字段；为空时后端按 R1（镜像表查询命中）→ R2（同值 fallback）顺序自动派生。非空时直接作为 Ray 集群镜像，跳过派生（EXPLICIT），且后端不校验其与 LabImage 的兼容性。</p>
 	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
+
+	// <p>Lab 镜像地址（必填，用于开发工具如 Jupyter/VSCode/WebShell）。前端在&quot;内置 / 自定义&quot;两态中选择此值；当 Image 字段未显式传入时，后端会基于该字段按 R1（镜像表命中）/R2（同值 fallback）派生 Ray 集群镜像。</p>
+	LabImage *string `json:"LabImage,omitnil,omitempty" name:"LabImage"`
+
+	// <p>数据实验室描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// <p>镜像拉取策略（Always, IfNotPresent, Never）</p>
 	ImagePullPolicy *string `json:"ImagePullPolicy,omitnil,omitempty" name:"ImagePullPolicy"`
@@ -4588,11 +4588,11 @@ func (r *CreateLabRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Name")
-	delete(f, "LabImage")
 	delete(f, "ResourcePartitionId")
 	delete(f, "Queue")
-	delete(f, "Description")
 	delete(f, "Image")
+	delete(f, "LabImage")
+	delete(f, "Description")
 	delete(f, "ImagePullPolicy")
 	delete(f, "ResourceConfig")
 	delete(f, "ResourceConfigId")
@@ -32053,14 +32053,14 @@ type UpdateLabRequestParams struct {
 	// <p>数据实验室名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
+	// <p>Ray 集群镜像地址（可选，OpenAPI/SDK 高级控制入口）。前端不再传递此字段；为空时后端按 R1（镜像表查询命中）→ R2（同值 fallback）顺序自动派生。非空时直接作为 Ray 集群镜像，跳过派生（EXPLICIT），且后端不校验其与 LabImage 的兼容性。</p>
+	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
+
 	// <p>Lab 镜像地址（必填，用于开发工具如 Jupyter/VSCode/WebShell）。前端在&quot;内置 / 自定义&quot;两态中选择此值；当 Image 字段未显式传入时，后端会基于该字段按 R1（镜像表命中）/R2（同值 fallback）派生 Ray 集群镜像。</p>
 	LabImage *string `json:"LabImage,omitnil,omitempty" name:"LabImage"`
 
 	// <p>数据实验室描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
-
-	// <p>Ray 集群镜像地址（可选，OpenAPI/SDK 高级控制入口）。前端不再传递此字段；为空时后端按 R1（镜像表查询命中）→ R2（同值 fallback）顺序自动派生。非空时直接作为 Ray 集群镜像，跳过派生（EXPLICIT），且后端不校验其与 LabImage 的兼容性。</p>
-	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
 
 	// <p>镜像拉取策略（Always, IfNotPresent, Never）</p>
 	ImagePullPolicy *string `json:"ImagePullPolicy,omitnil,omitempty" name:"ImagePullPolicy"`
@@ -32111,14 +32111,14 @@ type UpdateLabRequest struct {
 	// <p>数据实验室名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
+	// <p>Ray 集群镜像地址（可选，OpenAPI/SDK 高级控制入口）。前端不再传递此字段；为空时后端按 R1（镜像表查询命中）→ R2（同值 fallback）顺序自动派生。非空时直接作为 Ray 集群镜像，跳过派生（EXPLICIT），且后端不校验其与 LabImage 的兼容性。</p>
+	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
+
 	// <p>Lab 镜像地址（必填，用于开发工具如 Jupyter/VSCode/WebShell）。前端在&quot;内置 / 自定义&quot;两态中选择此值；当 Image 字段未显式传入时，后端会基于该字段按 R1（镜像表命中）/R2（同值 fallback）派生 Ray 集群镜像。</p>
 	LabImage *string `json:"LabImage,omitnil,omitempty" name:"LabImage"`
 
 	// <p>数据实验室描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
-
-	// <p>Ray 集群镜像地址（可选，OpenAPI/SDK 高级控制入口）。前端不再传递此字段；为空时后端按 R1（镜像表查询命中）→ R2（同值 fallback）顺序自动派生。非空时直接作为 Ray 集群镜像，跳过派生（EXPLICIT），且后端不校验其与 LabImage 的兼容性。</p>
-	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
 
 	// <p>镜像拉取策略（Always, IfNotPresent, Never）</p>
 	ImagePullPolicy *string `json:"ImagePullPolicy,omitnil,omitempty" name:"ImagePullPolicy"`
@@ -32176,9 +32176,9 @@ func (r *UpdateLabRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Name")
+	delete(f, "Image")
 	delete(f, "LabImage")
 	delete(f, "Description")
-	delete(f, "Image")
 	delete(f, "ImagePullPolicy")
 	delete(f, "ResourceConfigId")
 	delete(f, "GroupId")

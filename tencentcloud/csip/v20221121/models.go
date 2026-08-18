@@ -36901,6 +36901,36 @@ type UserDspmInfo struct {
 	IsDataCleaning *bool `json:"IsDataCleaning,omitnil,omitempty" name:"IsDataCleaning"`
 }
 
+type VPRExplainDimension struct {
+	// <p>标签key</p>
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// <p>标签名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>标签子项</p>
+	Items []*VPRExplainDimensionItem `json:"Items,omitnil,omitempty" name:"Items"`
+}
+
+type VPRExplainDimensionItem struct {
+	// <p>标签</p>
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// <p>标签名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>标签描述</p>
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+}
+
+type VPRExplainInfo struct {
+	// <p>漏洞情报</p>
+	VulIntel []*VPRExplainDimension `json:"VulIntel,omitnil,omitempty" name:"VulIntel"`
+
+	// <p>资产上下文</p>
+	AssetContext []*VPRExplainDimension `json:"AssetContext,omitnil,omitempty" name:"AssetContext"`
+}
+
 type VPRLabel struct {
 	// <p>标签名称<br>枚举值：<br>IN_THE_WILD：在野利用<br>EXP：有 EXP<br>POC：有 POC<br>INTERNET_EXPOSED：外网暴露<br>NO_RESTART：无需重启<br>HIGH_VALUE_ASSET：重要资产<br>MALWARE_WEAPONIZED：已武器化</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
@@ -37885,50 +37915,41 @@ type VulFixableMachineItem struct {
 }
 
 type VulFixedItem struct {
-	// 漏洞ID
+	// <p>漏洞ID</p>
 	VulId *int64 `json:"VulId,omitnil,omitempty" name:"VulId"`
 
-	// 漏洞名称
+	// <p>漏洞名称</p>
 	VulName *string `json:"VulName,omitnil,omitempty" name:"VulName"`
 
-	// 漏洞等级
-	// 枚举值：
-	// LOW：低危
-	// MEDIUM：中危
-	// HIGH：高危
-	// CRITICAL：严重
+	// <p>漏洞等级<br>枚举值：<br>LOW：低危<br>MEDIUM：中危<br>HIGH：高危<br>CRITICAL：严重</p>
 	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
 
-	// VPR 评级信息（包含评级结果、说明和分阶段评分），与 DescribeHostVulRiskList 一致
+	// <p>VPR 评级信息（包含评级结果、说明和分阶段评分），与 DescribeHostVulRiskList 一致</p>
 	VRPRatingInfo *VPRRatingInfo `json:"VRPRatingInfo,omitnil,omitempty" name:"VRPRatingInfo"`
 
-	// 漏洞类型
-	// 枚举值：
-	// LINUX：Linux软件漏洞
-	// WINDOWS：Windows系统补丁漏洞
-	// WEB_CMS：Web-CMS漏洞
-	// APPLICATION：应用漏洞
-	// EMERGENCY：应急漏洞
+	// <p>漏洞类型<br>枚举值：<br>LINUX：Linux软件漏洞<br>WINDOWS：Windows系统补丁漏洞<br>WEB_CMS：Web-CMS漏洞<br>APPLICATION：应用漏洞<br>EMERGENCY：应急漏洞</p>
 	VulCategory *string `json:"VulCategory,omitnil,omitempty" name:"VulCategory"`
 
-	// CVE编号
+	// <p>CVE编号</p>
 	CveId *string `json:"CveId,omitnil,omitempty" name:"CveId"`
 
-	// 修复主机名称
+	// <p>修复主机名称</p>
 	MachineName *string `json:"MachineName,omitnil,omitempty" name:"MachineName"`
 
-	// 修复主机实例ID
+	// <p>修复主机实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 关联组件&路径数量
+	// <p>关联组件&amp;路径数量</p>
 	ComponentCount *int64 `json:"ComponentCount,omitnil,omitempty" name:"ComponentCount"`
 
-	// 关联组件&路径列表
+	// <p>关联组件&amp;路径列表</p>
 	Components []*string `json:"Components,omitnil,omitempty" name:"Components"`
 
-	// 最近一次修复时间
-	// 参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）
+	// <p>最近一次修复时间<br>参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）</p>
 	LatestFixTime *string `json:"LatestFixTime,omitnil,omitempty" name:"LatestFixTime"`
+
+	// <p>VPR评级依据</p>
+	VPRExplainInfo *VPRExplainInfo `json:"VPRExplainInfo,omitnil,omitempty" name:"VPRExplainInfo"`
 }
 
 type VulHostBriefInfo struct {

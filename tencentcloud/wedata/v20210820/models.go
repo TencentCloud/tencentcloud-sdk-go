@@ -31904,74 +31904,74 @@ func (r *ModifyMonitorStatusResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyProjectRequestParams struct {
-	// 目标修改的项目ID
+	// <p>目标修改的项目ID</p>
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 项目显示名称，可以为中文名,需要租户范围内唯一
+	// <p>项目显示名称，可以为中文名,需要租户范围内唯一</p>
 	DisplayName *string `json:"DisplayName,omitnil,omitempty" name:"DisplayName"`
 
-	// 备注
+	// <p>备注</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// true/false则修改，不带该参数不修改。
+	// <p>true/false则修改，不带该参数不修改。</p>
 	TaskSubmitApproval *bool `json:"TaskSubmitApproval,omitnil,omitempty" name:"TaskSubmitApproval"`
 
-	// 资源池信息
+	// <p>资源池信息</p>
 	ResourcePoolInfo *ResourcePoolInfo `json:"ResourcePoolInfo,omitnil,omitempty" name:"ResourcePoolInfo"`
 
-	// 项目管理员
+	// <p>项目管理员</p>
 	ProjectManagers []*string `json:"ProjectManagers,omitnil,omitempty" name:"ProjectManagers"`
 
-	// 调度任务严格模式
+	// <p>调度任务严格模式</p>
 	TaskStrictMode *bool `json:"TaskStrictMode,omitnil,omitempty" name:"TaskStrictMode"`
 
-	// 以后新增选项可以直接通过前端的json格式写入去实现
+	// <p>以后新增选项可以直接通过前端的json格式写入去实现</p>
 	ExtraOptions *string `json:"ExtraOptions,omitnil,omitempty" name:"ExtraOptions"`
 
-	// 项目类型，SIMPLE：简单模式 STANDARD：标准模式
+	// <p>项目类型，SIMPLE：简单模式 STANDARD：标准模式</p>
 	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
 
-	// 项目负责人
+	// <p>项目负责人</p>
 	ProjectOwner []*string `json:"ProjectOwner,omitnil,omitempty" name:"ProjectOwner"`
 
-	// 更新类型
+	// <p>更新类型</p>
 	ModifyType *string `json:"ModifyType,omitnil,omitempty" name:"ModifyType"`
 }
 
 type ModifyProjectRequest struct {
 	*tchttp.BaseRequest
 	
-	// 目标修改的项目ID
+	// <p>目标修改的项目ID</p>
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 项目显示名称，可以为中文名,需要租户范围内唯一
+	// <p>项目显示名称，可以为中文名,需要租户范围内唯一</p>
 	DisplayName *string `json:"DisplayName,omitnil,omitempty" name:"DisplayName"`
 
-	// 备注
+	// <p>备注</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// true/false则修改，不带该参数不修改。
+	// <p>true/false则修改，不带该参数不修改。</p>
 	TaskSubmitApproval *bool `json:"TaskSubmitApproval,omitnil,omitempty" name:"TaskSubmitApproval"`
 
-	// 资源池信息
+	// <p>资源池信息</p>
 	ResourcePoolInfo *ResourcePoolInfo `json:"ResourcePoolInfo,omitnil,omitempty" name:"ResourcePoolInfo"`
 
-	// 项目管理员
+	// <p>项目管理员</p>
 	ProjectManagers []*string `json:"ProjectManagers,omitnil,omitempty" name:"ProjectManagers"`
 
-	// 调度任务严格模式
+	// <p>调度任务严格模式</p>
 	TaskStrictMode *bool `json:"TaskStrictMode,omitnil,omitempty" name:"TaskStrictMode"`
 
-	// 以后新增选项可以直接通过前端的json格式写入去实现
+	// <p>以后新增选项可以直接通过前端的json格式写入去实现</p>
 	ExtraOptions *string `json:"ExtraOptions,omitnil,omitempty" name:"ExtraOptions"`
 
-	// 项目类型，SIMPLE：简单模式 STANDARD：标准模式
+	// <p>项目类型，SIMPLE：简单模式 STANDARD：标准模式</p>
 	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
 
-	// 项目负责人
+	// <p>项目负责人</p>
 	ProjectOwner []*string `json:"ProjectOwner,omitnil,omitempty" name:"ProjectOwner"`
 
-	// 更新类型
+	// <p>更新类型</p>
 	ModifyType *string `json:"ModifyType,omitnil,omitempty" name:"ModifyType"`
 }
 
@@ -45281,80 +45281,85 @@ type WorkflowCanvasOpsDto struct {
 }
 
 type WorkflowDsDTO struct {
-	// 工作流ID
+	// <p>工作流ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
 
-	// 责任人
+	// <p>责任人</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Owner *string `json:"Owner,omitnil,omitempty" name:"Owner"`
 
-	// 责任人ID
+	// <p>责任人ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OwnerId *string `json:"OwnerId,omitnil,omitempty" name:"OwnerId"`
 
-	// 项目ID
+	// <p>项目ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 项目标识
+	// <p>项目标识</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectIdent *string `json:"ProjectIdent,omitnil,omitempty" name:"ProjectIdent"`
 
-	// 项目名称
+	// <p>项目名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectName *string `json:"ProjectName,omitnil,omitempty" name:"ProjectName"`
 
-	// 工作流描述
+	// <p>工作流描述</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkflowDesc *string `json:"WorkflowDesc,omitnil,omitempty" name:"WorkflowDesc"`
 
-	// 工作流名称
+	// <p>工作流名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkflowName *string `json:"WorkflowName,omitnil,omitempty" name:"WorkflowName"`
 
-	// 文件夹ID
+	// <p>文件夹ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FolderId *string `json:"FolderId,omitnil,omitempty" name:"FolderId"`
 
-	// SparkSQL参数
+	// <p>SparkSQL参数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SparkParams *string `json:"SparkParams,omitnil,omitempty" name:"SparkParams"`
 
-	// 任务列表
+	// <p>任务列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tasks []*TaskDsDTO `json:"Tasks,omitnil,omitempty" name:"Tasks"`
 
-	// 任务链接列表
+	// <p>任务链接列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Links []*TaskLinkDsDTO `json:"Links,omitnil,omitempty" name:"Links"`
 
-	// 参数列表
+	// <p>参数列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Params []*ParameterTaskDsDto `json:"Params,omitnil,omitempty" name:"Params"`
 
-	// 工作流类型, 取值示例
-	// 
-	// - cycle 周期工作流
-	// - manual 手动工作流
+	// <p>工作流类型, 取值示例</p><ul><li>cycle 周期工作流</li><li>manual 手动工作流</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkflowType *string `json:"WorkflowType,omitnil,omitempty" name:"WorkflowType"`
 
-	// 最近更新人名称
+	// <p>最近更新人名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateUser *string `json:"UpdateUser,omitnil,omitempty" name:"UpdateUser"`
 
-	// 最近更新人id
+	// <p>最近更新人id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateUserId *string `json:"UpdateUserId,omitnil,omitempty" name:"UpdateUserId"`
 
-	// BundleId CI/CD工程生成的bundle唯一标识	
+	// <p>BundleId CI/CD工程生成的bundle唯一标识</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BundleId *string `json:"BundleId,omitnil,omitempty" name:"BundleId"`
 
-	// BundleId信息
+	// <p>BundleId信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BundleInfo *string `json:"BundleInfo,omitnil,omitempty" name:"BundleInfo"`
+
+	// <p>运行账号ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecuteUserUin *string `json:"ExecuteUserUin,omitnil,omitempty" name:"ExecuteUserUin"`
+
+	// <p>运行账号名称</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecuteUserName *string `json:"ExecuteUserName,omitnil,omitempty" name:"ExecuteUserName"`
 }
 
 type WorkflowExtOpsDto struct {

@@ -4768,38 +4768,26 @@ func (r *DescribeZonesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DisassociateInstancesKeyPairsRequestParams struct {
-	// 一个或多个待操作的实例ID，每次请求批量实例的上限为100。<br>可以通过以下方式获取可用的实例ID：
-	// <li>通过登录[控制台](https://console.cloud.tencent.com/cvm/index)查询实例ID。</li>
-	// <li>通过调用接口 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) ，取返回信息中的 `InstanceId` 获取实例ID。</li>
+	// <p>一个或多个待操作的实例ID，每次请求批量实例的上限为100。<br>可以通过以下方式获取可用的实例ID：</p><li>通过登录[控制台](https://console.cloud.tencent.com/cvm/index)查询实例ID。</li><li>通过调用接口 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) ，取返回信息中的 <code>InstanceId</code> 获取实例ID。</li>
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 密钥对ID列表，列表长度上限为100。可以通过以下方式获取可用的密钥ID：
-	// <li>通过登录[控制台](https://console.cloud.tencent.com/cvm/sshkey)查询密钥ID。</li>
-	// <li>通过调用接口 [DescribeKeyPairs](https://cloud.tencent.com/document/api/213/15699) ，取返回信息中的 `KeyId` 获取密钥对ID。</li>
+	// <p>密钥对ID列表，列表长度上限为100。可以通过以下方式获取可用的密钥ID：</p><li>通过登录[控制台](https://console.cloud.tencent.com/cvm/sshkey)查询密钥ID。</li><li>通过调用接口 [DescribeKeyPairs](https://cloud.tencent.com/document/api/213/15699) ，取返回信息中的 <code>KeyId</code> 获取密钥对ID。</li>
 	KeyIds []*string `json:"KeyIds,omitnil,omitempty" name:"KeyIds"`
 
-	// 是否强制关机，默认值为 false。常规场景下，建议手动关机后解绑密钥。取值范围：
-	// <li>true：先执行强制关机，再解绑密钥。</li>
-	// <li>false：不执行强制关机，仅支持对已关机状态实例进行解绑操作。</li>
+	// <p>是否强制关机，默认值为 false。常规场景下，建议手动关机后解绑密钥。取值范围：</p><li>true：先执行强制关机，再解绑密钥。</li><li>false：不执行强制关机，仅支持对已关机状态实例进行解绑操作。</li>
 	ForceStop *bool `json:"ForceStop,omitnil,omitempty" name:"ForceStop"`
 }
 
 type DisassociateInstancesKeyPairsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 一个或多个待操作的实例ID，每次请求批量实例的上限为100。<br>可以通过以下方式获取可用的实例ID：
-	// <li>通过登录[控制台](https://console.cloud.tencent.com/cvm/index)查询实例ID。</li>
-	// <li>通过调用接口 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) ，取返回信息中的 `InstanceId` 获取实例ID。</li>
+	// <p>一个或多个待操作的实例ID，每次请求批量实例的上限为100。<br>可以通过以下方式获取可用的实例ID：</p><li>通过登录[控制台](https://console.cloud.tencent.com/cvm/index)查询实例ID。</li><li>通过调用接口 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) ，取返回信息中的 <code>InstanceId</code> 获取实例ID。</li>
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 密钥对ID列表，列表长度上限为100。可以通过以下方式获取可用的密钥ID：
-	// <li>通过登录[控制台](https://console.cloud.tencent.com/cvm/sshkey)查询密钥ID。</li>
-	// <li>通过调用接口 [DescribeKeyPairs](https://cloud.tencent.com/document/api/213/15699) ，取返回信息中的 `KeyId` 获取密钥对ID。</li>
+	// <p>密钥对ID列表，列表长度上限为100。可以通过以下方式获取可用的密钥ID：</p><li>通过登录[控制台](https://console.cloud.tencent.com/cvm/sshkey)查询密钥ID。</li><li>通过调用接口 [DescribeKeyPairs](https://cloud.tencent.com/document/api/213/15699) ，取返回信息中的 <code>KeyId</code> 获取密钥对ID。</li>
 	KeyIds []*string `json:"KeyIds,omitnil,omitempty" name:"KeyIds"`
 
-	// 是否强制关机，默认值为 false。常规场景下，建议手动关机后解绑密钥。取值范围：
-	// <li>true：先执行强制关机，再解绑密钥。</li>
-	// <li>false：不执行强制关机，仅支持对已关机状态实例进行解绑操作。</li>
+	// <p>是否强制关机，默认值为 false。常规场景下，建议手动关机后解绑密钥。取值范围：</p><li>true：先执行强制关机，再解绑密钥。</li><li>false：不执行强制关机，仅支持对已关机状态实例进行解绑操作。</li>
 	ForceStop *bool `json:"ForceStop,omitnil,omitempty" name:"ForceStop"`
 }
 

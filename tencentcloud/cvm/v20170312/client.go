@@ -4260,6 +4260,7 @@ func NewDisassociateInstancesKeyPairsResponse() (response *DisassociateInstances
 // * 支持批量操作。每次请求批量实例的上限为100。如果批量实例存在不允许操作的实例，操作会以特定错误码返回。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DISASSOCIATEKEYPAIRFAILED = "FailedOperation.DisassociateKeyPairFailed"
 //  INTERNALSERVERERROR = "InternalServerError"
 //  INVALIDINSTANCE_NOTSUPPORTED = "InvalidInstance.NotSupported"
 //  INVALIDINSTANCEID_MALFORMED = "InvalidInstanceId.Malformed"
@@ -4307,6 +4308,7 @@ func (c *Client) DisassociateInstancesKeyPairs(request *DisassociateInstancesKey
 // * 支持批量操作。每次请求批量实例的上限为100。如果批量实例存在不允许操作的实例，操作会以特定错误码返回。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DISASSOCIATEKEYPAIRFAILED = "FailedOperation.DisassociateKeyPairFailed"
 //  INTERNALSERVERERROR = "InternalServerError"
 //  INVALIDINSTANCE_NOTSUPPORTED = "InvalidInstance.NotSupported"
 //  INVALIDINSTANCEID_MALFORMED = "InvalidInstanceId.Malformed"

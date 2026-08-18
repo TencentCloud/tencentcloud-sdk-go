@@ -6995,16 +6995,19 @@ type HTTPServiceDomain struct {
 	// <p>DNS解析状态</p><p>枚举值：</p><ul><li>OK： 正常，命中目标 cname</li><li>EMPTY： 解析为空，域名尚未配置 CNAME 或未生效</li><li>INVALID： 异常，解析到其他非目标地址</li></ul>
 	DNSStatus *string `json:"DNSStatus,omitnil,omitempty" name:"DNSStatus"`
 
+	// <p>是否CNAME到平台任一网关入口，默认接入/CDN/EO，不含CustomCname</p><p>枚举值：</p><ul><li>EMPTY： 解析为空</li><li>OK： 命中</li><li>INVALID：  解析到其他非目标地址</li></ul>
+	PlatformCnameDNSStatus *string `json:"PlatformCnameDNSStatus,omitnil,omitempty" name:"PlatformCnameDNSStatus"`
+
 	// <p>HTTP访问服务路由信息</p>
 	Routes []*HTTPServiceRoute `json:"Routes,omitnil,omitempty" name:"Routes"`
 
 	// <p>扩展字段，内部包含headers处理等</p>
 	Extension *HTTPServiceExtension `json:"Extension,omitnil,omitempty" name:"Extension"`
 
-	// <p>域名创建时间</p>
+	// <p>域名创建时间，格式  YYYY-MM-DDTHH:mm:ss±HH:mm，时区为 UTC+8</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// <p>域名更新时间</p>
+	// <p>域名更新时间，格式  YYYY-MM-DDTHH:mm:ss±HH:mm，时区为 UTC+8</p>
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
@@ -7078,40 +7081,40 @@ type HTTPServiceQPSPerClient struct {
 }
 
 type HTTPServiceRoute struct {
-	// 路径
+	// <p>路径</p>
 	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 
-	// 路径重写
+	// <p>路径重写规则</p>
 	PathRewrite *HTTPServicePathRewrite `json:"PathRewrite,omitnil,omitempty" name:"PathRewrite"`
 
-	// 上游服务类型。SCF: 云函数，CBR: 云托管，STATIC_STORE: 静态托管，WEB_SCF: WEB云函数，LH: Lighthouse
+	// <p>上游服务类型。SCF: 云函数，CBR: 云托管，STATIC_STORE: 静态托管，WEB_SCF: WEB云函数，LH: Lighthouse</p>
 	UpstreamResourceType *string `json:"UpstreamResourceType,omitnil,omitempty" name:"UpstreamResourceType"`
 
-	// 上游服务名
+	// <p>上游服务名</p>
 	UpstreamResourceName *string `json:"UpstreamResourceName,omitnil,omitempty" name:"UpstreamResourceName"`
 
-	// 是否开启安全域名
+	// <p>是否开启安全域名</p>
 	EnableSafeDomain *bool `json:"EnableSafeDomain,omitnil,omitempty" name:"EnableSafeDomain"`
 
-	// 是否开启身份认证
+	// <p>是否开启身份认证</p>
 	EnableAuth *bool `json:"EnableAuth,omitnil,omitempty" name:"EnableAuth"`
 
-	// 是否开启路径透传
+	// <p>是否开启路径透传</p>
 	EnablePathTransmission *bool `json:"EnablePathTransmission,omitnil,omitempty" name:"EnablePathTransmission"`
 
-	// QPS限频策略
+	// <p>QPS限频策略</p>
 	QPSPolicy *HTTPServiceRouteQPSPolicy `json:"QPSPolicy,omitnil,omitempty" name:"QPSPolicy"`
 
-	// 是否开启路由
+	// <p>是否开启路由</p>
 	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
 
-	// 扩展字段，内部包含headers处理等
+	// <p>扩展字段，内部包含headers处理等</p>
 	Extension *HTTPServiceExtension `json:"Extension,omitnil,omitempty" name:"Extension"`
 
-	// 路由创建时间
+	// <p>路由创建时间，格式  YYYY-MM-DDTHH:mm:ss±HH:mm，时区为 UTC+8</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 路由更新时间
+	// <p>路由更新时间，格式  YYYY-MM-DDTHH:mm:ss±HH:mm，时区为 UTC+8</p>
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 

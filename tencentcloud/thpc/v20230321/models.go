@@ -2374,6 +2374,84 @@ type GooseFSxOptionOverview struct {
 	LocalPath *string `json:"LocalPath,omitnil,omitempty" name:"LocalPath"`
 }
 
+// Predefined struct for user
+type InquirePriceModifyWorkspacesChargeTypeRequestParams struct {
+	// <p>工作空间 ID 列表。每次请求的工作空间计费模式必须一致。</p>
+	SpaceIds []*string `json:"SpaceIds,omitnil,omitempty" name:"SpaceIds"`
+
+	// <p>转换的目标计费模式。当前仅支持 PREPAID（按量计费转包年包月）。</p>
+	SpaceChargeType *string `json:"SpaceChargeType,omitnil,omitempty" name:"SpaceChargeType"`
+
+	// <p>是否只进行参数和资源预检。true：不发起询价、组单或正式下单；false：执行对应操作。默认为 false。</p>
+	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
+
+	// <p>预付费参数。Period 和 RenewFlag 均为可选字段；未传入时后端使用默认值 Period=1、RenewFlag=NOTIFY_AND_MANUAL_RENEW。</p>
+	SpaceChargePrepaid *SpaceChargePrepaid `json:"SpaceChargePrepaid,omitnil,omitempty" name:"SpaceChargePrepaid"`
+}
+
+type InquirePriceModifyWorkspacesChargeTypeRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>工作空间 ID 列表。每次请求的工作空间计费模式必须一致。</p>
+	SpaceIds []*string `json:"SpaceIds,omitnil,omitempty" name:"SpaceIds"`
+
+	// <p>转换的目标计费模式。当前仅支持 PREPAID（按量计费转包年包月）。</p>
+	SpaceChargeType *string `json:"SpaceChargeType,omitnil,omitempty" name:"SpaceChargeType"`
+
+	// <p>是否只进行参数和资源预检。true：不发起询价、组单或正式下单；false：执行对应操作。默认为 false。</p>
+	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
+
+	// <p>预付费参数。Period 和 RenewFlag 均为可选字段；未传入时后端使用默认值 Period=1、RenewFlag=NOTIFY_AND_MANUAL_RENEW。</p>
+	SpaceChargePrepaid *SpaceChargePrepaid `json:"SpaceChargePrepaid,omitnil,omitempty" name:"SpaceChargePrepaid"`
+}
+
+func (r *InquirePriceModifyWorkspacesChargeTypeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InquirePriceModifyWorkspacesChargeTypeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SpaceIds")
+	delete(f, "SpaceChargeType")
+	delete(f, "DryRun")
+	delete(f, "SpaceChargePrepaid")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InquirePriceModifyWorkspacesChargeTypeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type InquirePriceModifyWorkspacesChargeTypeResponseParams struct {
+	// <p>该参数表示对应规格工作空间的价格</p>
+	Price *Price `json:"Price,omitnil,omitempty" name:"Price"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type InquirePriceModifyWorkspacesChargeTypeResponse struct {
+	*tchttp.BaseResponse
+	Response *InquirePriceModifyWorkspacesChargeTypeResponseParams `json:"Response"`
+}
+
+func (r *InquirePriceModifyWorkspacesChargeTypeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InquirePriceModifyWorkspacesChargeTypeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type InstanceChargePrepaid struct {
 	// 购买实例的时长，单位：月。取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36, 48, 60。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2402,6 +2480,45 @@ type InternetAccessible struct {
 	// 公网出带宽上限，单位：Mbps。默认值：0Mbps。不同机型带宽上限范围不一致，具体限制详见购买网络带宽。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InternetMaxBandwidthOut *int64 `json:"InternetMaxBandwidthOut,omitnil,omitempty" name:"InternetMaxBandwidthOut"`
+}
+
+type ItemPrice struct {
+	// 预支合计费用的原价，预付费模式使用，单位：元。	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OriginalPrice *float64 `json:"OriginalPrice,omitnil,omitempty" name:"OriginalPrice"`
+
+	// 预支合计费用的折扣价，预付费模式使用，单位：元。	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiscountPrice *float64 `json:"DiscountPrice,omitnil,omitempty" name:"DiscountPrice"`
+
+	// 折扣，如20.0代表2折。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Discount *float64 `json:"Discount,omitnil,omitempty" name:"Discount"`
+
+	// 后续合计费用的原价，后付费模式使用，单位：元。
+	// 
+	// 如返回了其他时间区间项，如UnitPriceSecondStep，则本项代表时间区间在(0, 96)小时；若未返回其他时间区间项，则本项代表全时段，即(0, ∞)小时
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UnitPrice *float64 `json:"UnitPrice,omitnil,omitempty" name:"UnitPrice"`
+
+	// 后续合计费用的折扣价，后付费模式使用，单位：元
+	// 
+	// 如返回了其他时间区间项，如DiscountUnitPriceSecondStep，则本项代表时间区间在(0, 96)小时；若未返回其他时间区间项，则本项代表全时段，即(0, ∞)小时
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiscountUnitPrice *float64 `json:"DiscountUnitPrice,omitnil,omitempty" name:"DiscountUnitPrice"`
+
+	// 后续计价单元，后付费模式使用，可取值范围：
+	// 
+	// HOUR：表示计价单元是按每小时来计算。当前涉及该计价单元的场景有：实例按小时后付费（POSTPAID_BY_HOUR）、带宽按小时后付费（BANDWIDTH_POSTPAID_BY_HOUR）：
+	// GB：表示计价单元是按每GB来计算。当前涉及该计价单元的场景有：流量按小时后付费（TRAFFIC_POSTPAID_BY_HOUR）。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChargeUnit *string `json:"ChargeUnit,omitnil,omitempty" name:"ChargeUnit"`
+
+	// 后续合计费用的折扣价，后付费模式使用，单位：元
+	// 
+	// 如返回了其他时间区间项，如UnitPriceDiscount
+	// float，则本项代表时间区间在(0, 96)小时；若未返回其他时间区间项，则本项代表全时段，即(0, ∞)小时
+	UnitPriceDiscount *float64 `json:"UnitPriceDiscount,omitnil,omitempty" name:"UnitPriceDiscount"`
 }
 
 type Job struct {
@@ -2793,6 +2910,81 @@ func (r *ModifyWorkspacesAttributeResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyWorkspacesChargeTypeRequestParams struct {
+	// <p>工作空间 ID 列表。每次请求的工作空间计费模式必须一致。</p>
+	SpaceIds []*string `json:"SpaceIds,omitnil,omitempty" name:"SpaceIds"`
+
+	// <p>转换的目标计费模式。当前仅支持 PREPAID（按量计费转包年包月）。</p>
+	SpaceChargeType *string `json:"SpaceChargeType,omitnil,omitempty" name:"SpaceChargeType"`
+
+	// <p>是否只进行参数和资源预检。true：不发起询价、组单或正式下单；false：执行对应操作。默认为 false。</p>
+	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
+
+	// <p>预付费参数。Period 和 RenewFlag 均为可选字段；未传入时后端使用默认值 Period=1、RenewFlag=NOTIFY_AND_MANUAL_RENEW。</p>
+	SpaceChargePrepaid *SpaceChargePrepaid `json:"SpaceChargePrepaid,omitnil,omitempty" name:"SpaceChargePrepaid"`
+}
+
+type ModifyWorkspacesChargeTypeRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>工作空间 ID 列表。每次请求的工作空间计费模式必须一致。</p>
+	SpaceIds []*string `json:"SpaceIds,omitnil,omitempty" name:"SpaceIds"`
+
+	// <p>转换的目标计费模式。当前仅支持 PREPAID（按量计费转包年包月）。</p>
+	SpaceChargeType *string `json:"SpaceChargeType,omitnil,omitempty" name:"SpaceChargeType"`
+
+	// <p>是否只进行参数和资源预检。true：不发起询价、组单或正式下单；false：执行对应操作。默认为 false。</p>
+	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
+
+	// <p>预付费参数。Period 和 RenewFlag 均为可选字段；未传入时后端使用默认值 Period=1、RenewFlag=NOTIFY_AND_MANUAL_RENEW。</p>
+	SpaceChargePrepaid *SpaceChargePrepaid `json:"SpaceChargePrepaid,omitnil,omitempty" name:"SpaceChargePrepaid"`
+}
+
+func (r *ModifyWorkspacesChargeTypeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyWorkspacesChargeTypeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SpaceIds")
+	delete(f, "SpaceChargeType")
+	delete(f, "DryRun")
+	delete(f, "SpaceChargePrepaid")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyWorkspacesChargeTypeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyWorkspacesChargeTypeResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyWorkspacesChargeTypeResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyWorkspacesChargeTypeResponseParams `json:"Response"`
+}
+
+func (r *ModifyWorkspacesChargeTypeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyWorkspacesChargeTypeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyWorkspacesRenewFlagRequestParams struct {
 	// 工作空间列表
 	SpaceIds []*string `json:"SpaceIds,omitnil,omitempty" name:"SpaceIds"`
@@ -2937,6 +3129,14 @@ type Placement struct {
 	// 实例所属的可用区名称。该参数可以通过调用  [DescribeZones](https://cloud.tencent.com/document/product/213/15707) 的返回值中的Zone字段来获取。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+}
+
+type Price struct {
+	// 工作空间价格
+	SpacePrice *ItemPrice `json:"SpacePrice,omitnil,omitempty" name:"SpacePrice"`
+
+	// 网络价格
+	BandwidthPrice *ItemPrice `json:"BandwidthPrice,omitnil,omitempty" name:"BandwidthPrice"`
 }
 
 type QueueConfig struct {

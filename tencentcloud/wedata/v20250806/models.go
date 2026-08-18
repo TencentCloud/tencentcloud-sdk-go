@@ -2985,6 +2985,9 @@ type CreateTriggerWorkflowRequestParams struct {
 
 	// <p>触发方式：定时触发：TIME_TRIGGER 。配置完之后，内部的TriggerMode状态可不配置，如果配置，内容会被该值覆盖。</p><p>枚举值：</p><ul><li>TIME_TRIGGER： 定时触发</li></ul>
 	TriggerMode *string `json:"TriggerMode,omitnil,omitempty" name:"TriggerMode"`
+
+	// <p>运行账号ID,未传时默认使用当前登录用户ID</p>
+	ExecuteUserUin *string `json:"ExecuteUserUin,omitnil,omitempty" name:"ExecuteUserUin"`
 }
 
 type CreateTriggerWorkflowRequest struct {
@@ -3028,6 +3031,9 @@ type CreateTriggerWorkflowRequest struct {
 
 	// <p>触发方式：定时触发：TIME_TRIGGER 。配置完之后，内部的TriggerMode状态可不配置，如果配置，内容会被该值覆盖。</p><p>枚举值：</p><ul><li>TIME_TRIGGER： 定时触发</li></ul>
 	TriggerMode *string `json:"TriggerMode,omitnil,omitempty" name:"TriggerMode"`
+
+	// <p>运行账号ID,未传时默认使用当前登录用户ID</p>
+	ExecuteUserUin *string `json:"ExecuteUserUin,omitnil,omitempty" name:"ExecuteUserUin"`
 }
 
 func (r *CreateTriggerWorkflowRequest) ToJsonString() string {
@@ -3055,6 +3061,7 @@ func (r *CreateTriggerWorkflowRequest) FromJsonString(s string) error {
 	delete(f, "TriggerWorkflowRunConfiguration")
 	delete(f, "SchedulerStatus")
 	delete(f, "TriggerMode")
+	delete(f, "ExecuteUserUin")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTriggerWorkflowRequest has unknown keys!", "")
 	}
@@ -5901,10 +5908,10 @@ type ExploreFileResource struct {
 }
 
 type Filter struct {
-	// 过滤字段名称
+	// <p>过滤字段名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 过滤值列表
+	// <p>过滤值列表</p>
 	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
 }
 
@@ -14634,7 +14641,7 @@ type ListTriggerWorkflowRunsRequestParams struct {
 	// 项目ID
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 过滤参数, 工作流名称或ID查询名称: Keyword, 工作流ID查询名称: WorkflowId,文件夹查询名称: FolderId, 负责人查询名称: InChargeUin, 工作流执行id: ExecutionId, 计划调度时间区间: ScheduleTimeGreaterEqual, ScheduleTimeLessEqual
+	// 过滤参数, 工作流名称或ID查询名称: Keyword, 工作流ID查询名称: WorkflowId,文件夹查询名称: FolderId, 负责人查询名称: InChargeUin, 运行账号ID查询名称: ExecuteUserUin, 工作流执行id: ExecutionId, 计划调度时间区间: ScheduleTimeGreaterEqual, ScheduleTimeLessEqual
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 排序字段，排序字段名称	如下开始时间：CreateTime，结束时间：EndTime，计划调度时间：ScheduleTime
@@ -14653,7 +14660,7 @@ type ListTriggerWorkflowRunsRequest struct {
 	// 项目ID
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 过滤参数, 工作流名称或ID查询名称: Keyword, 工作流ID查询名称: WorkflowId,文件夹查询名称: FolderId, 负责人查询名称: InChargeUin, 工作流执行id: ExecutionId, 计划调度时间区间: ScheduleTimeGreaterEqual, ScheduleTimeLessEqual
+	// 过滤参数, 工作流名称或ID查询名称: Keyword, 工作流ID查询名称: WorkflowId,文件夹查询名称: FolderId, 负责人查询名称: InChargeUin, 运行账号ID查询名称: ExecuteUserUin, 工作流执行id: ExecutionId, 计划调度时间区间: ScheduleTimeGreaterEqual, ScheduleTimeLessEqual
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 排序字段，排序字段名称	如下开始时间：CreateTime，结束时间：EndTime，计划调度时间：ScheduleTime
@@ -14716,68 +14723,74 @@ func (r *ListTriggerWorkflowRunsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListTriggerWorkflowsRequestParams struct {
-	// 项目ID
+	// <p>项目ID</p>
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 请求的数据页数。默认值为1，取值大于等于1
+	// <p>请求的数据页数。默认值为1，取值大于等于1</p>
 	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 每页显示的数据条数。默认值为10 ，最小值为10，最大值为200
+	// <p>每页显示的数据条数。默认值为10 ，最小值为10，最大值为200</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 搜索关键词
+	// <p>搜索关键词</p>
 	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
 
-	// 工作流所属文件夹
+	// <p>工作流所属文件夹</p>
 	ParentFolderPath *string `json:"ParentFolderPath,omitnil,omitempty" name:"ParentFolderPath"`
 
-	// bundleId项
+	// <p>bundleId项</p>
 	BundleId *string `json:"BundleId,omitnil,omitempty" name:"BundleId"`
 
-	// 负责人ID
+	// <p>负责人ID</p>
 	OwnerUin *string `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
 
-	// 创建人ID
+	// <p>创建人ID</p>
 	CreateUserUin *string `json:"CreateUserUin,omitnil,omitempty" name:"CreateUserUin"`
 
-	// 修改时间区间 yyyy-MM-dd HH:mm:ss，需要在数组填入两个时间
+	// <p>运行账号ID</p>
+	ExecuteUserUin *string `json:"ExecuteUserUin,omitnil,omitempty" name:"ExecuteUserUin"`
+
+	// <p>修改时间区间 yyyy-MM-dd HH:mm:ss，需要在数组填入两个时间</p>
 	ModifyTime []*string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 
-	// 创建时间区间 yyyy-MM-dd HH:mm:ss，需要在数组填入两个时间
+	// <p>创建时间区间 yyyy-MM-dd HH:mm:ss，需要在数组填入两个时间</p>
 	CreateTime []*string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 }
 
 type ListTriggerWorkflowsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 项目ID
+	// <p>项目ID</p>
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 请求的数据页数。默认值为1，取值大于等于1
+	// <p>请求的数据页数。默认值为1，取值大于等于1</p>
 	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 每页显示的数据条数。默认值为10 ，最小值为10，最大值为200
+	// <p>每页显示的数据条数。默认值为10 ，最小值为10，最大值为200</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 搜索关键词
+	// <p>搜索关键词</p>
 	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
 
-	// 工作流所属文件夹
+	// <p>工作流所属文件夹</p>
 	ParentFolderPath *string `json:"ParentFolderPath,omitnil,omitempty" name:"ParentFolderPath"`
 
-	// bundleId项
+	// <p>bundleId项</p>
 	BundleId *string `json:"BundleId,omitnil,omitempty" name:"BundleId"`
 
-	// 负责人ID
+	// <p>负责人ID</p>
 	OwnerUin *string `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
 
-	// 创建人ID
+	// <p>创建人ID</p>
 	CreateUserUin *string `json:"CreateUserUin,omitnil,omitempty" name:"CreateUserUin"`
 
-	// 修改时间区间 yyyy-MM-dd HH:mm:ss，需要在数组填入两个时间
+	// <p>运行账号ID</p>
+	ExecuteUserUin *string `json:"ExecuteUserUin,omitnil,omitempty" name:"ExecuteUserUin"`
+
+	// <p>修改时间区间 yyyy-MM-dd HH:mm:ss，需要在数组填入两个时间</p>
 	ModifyTime []*string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 
-	// 创建时间区间 yyyy-MM-dd HH:mm:ss，需要在数组填入两个时间
+	// <p>创建时间区间 yyyy-MM-dd HH:mm:ss，需要在数组填入两个时间</p>
 	CreateTime []*string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 }
 
@@ -14801,6 +14814,7 @@ func (r *ListTriggerWorkflowsRequest) FromJsonString(s string) error {
 	delete(f, "BundleId")
 	delete(f, "OwnerUin")
 	delete(f, "CreateUserUin")
+	delete(f, "ExecuteUserUin")
 	delete(f, "ModifyTime")
 	delete(f, "CreateTime")
 	if len(f) > 0 {
@@ -14811,7 +14825,7 @@ func (r *ListTriggerWorkflowsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListTriggerWorkflowsResponseParams struct {
-	// 查询工作流分页信息
+	// <p>查询工作流分页信息</p>
 	Data *ListTriggerWorkflowInfo `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -16216,10 +16230,10 @@ type OpsWorkflows struct {
 }
 
 type OrderField struct {
-	// 排序字段名称
+	// <p>排序字段名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 排序方向：ASC|DESC
+	// <p>排序方向：ASC|DESC</p>
 	Direction *string `json:"Direction,omitnil,omitempty" name:"Direction"`
 }
 
@@ -20956,65 +20970,69 @@ type TriggerTaskBaseAttribute struct {
 }
 
 type TriggerTaskBrief struct {
-	// 项目id
+	// <p>项目id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 项目名称
+	// <p>项目名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectName *string `json:"ProjectName,omitnil,omitempty" name:"ProjectName"`
 
-	// 工作流id
+	// <p>工作流id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
 
-	// 工作流名称
+	// <p>工作流名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkflowName *string `json:"WorkflowName,omitnil,omitempty" name:"WorkflowName"`
 
-	// 任务id
+	// <p>任务id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 任务名称
+	// <p>任务名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
 
-	// 任务类型
+	// <p>任务类型</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
-	// 责任人user UIN
+	// <p>责任人user UIN</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserUinInCharge *string `json:"UserUinInCharge,omitnil,omitempty" name:"UserUinInCharge"`
 
-	// 责任人名称
+	// <p>责任人名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserNameInCharge *string `json:"UserNameInCharge,omitnil,omitempty" name:"UserNameInCharge"`
 
-	// 文件夹ID
+	// <p>文件夹ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FolderId *string `json:"FolderId,omitnil,omitempty" name:"FolderId"`
 
-	// 文件夹名称
+	// <p>文件夹名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FolderName *string `json:"FolderName,omitnil,omitempty" name:"FolderName"`
 
-	// 任务类型ID
+	// <p>任务类型ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskTypeId *uint64 `json:"TaskTypeId,omitnil,omitempty" name:"TaskTypeId"`
 
-	// 任务状态
+	// <p>任务状态</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExecutionState *string `json:"ExecutionState,omitnil,omitempty" name:"ExecutionState"`
 
-	// 运行开始时间
+	// <p>运行开始时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExecutionStartTime *string `json:"ExecutionStartTime,omitnil,omitempty" name:"ExecutionStartTime"`
 
-	// 依赖策略
+	// <p>依赖策略</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DependencyTriggerPolicy *string `json:"DependencyTriggerPolicy,omitnil,omitempty" name:"DependencyTriggerPolicy"`
+
+	// <p>运行账号ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecuteUserUin *string `json:"ExecuteUserUin,omitnil,omitempty" name:"ExecuteUserUin"`
 }
 
 type TriggerTaskConfiguration struct {
@@ -21548,44 +21566,48 @@ type TriggerTaskVersionDetail struct {
 }
 
 type TriggerWorkflowBrief struct {
-	// 项目ID
+	// <p>项目ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 工作ID
+	// <p>工作ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
 
-	// 工作流名称
+	// <p>工作流名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkflowName *string `json:"WorkflowName,omitnil,omitempty" name:"WorkflowName"`
 
-	// 任务数量
+	// <p>任务数量</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskCount *uint64 `json:"TaskCount,omitnil,omitempty" name:"TaskCount"`
 
-	// 文件夹ID
+	// <p>文件夹ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FolderId *string `json:"FolderId,omitnil,omitempty" name:"FolderId"`
 
-	// 文件夹名称
+	// <p>文件夹名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FolderName *string `json:"FolderName,omitnil,omitempty" name:"FolderName"`
 
-	// 调度配置
+	// <p>调度配置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkflowTriggerConfig *WorkflowTriggerConfig `json:"WorkflowTriggerConfig,omitnil,omitempty" name:"WorkflowTriggerConfig"`
 
-	// 责任人
+	// <p>责任人</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserNameInCharge *string `json:"UserNameInCharge,omitnil,omitempty" name:"UserNameInCharge"`
 
-	// 责任人ID
+	// <p>责任人ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserUinInCharge *string `json:"UserUinInCharge,omitnil,omitempty" name:"UserUinInCharge"`
 
-	// 工作流参数
+	// <p>工作流参数</p>
 	WorkflowParams *string `json:"WorkflowParams,omitnil,omitempty" name:"WorkflowParams"`
+
+	// <p>运行账号ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecuteUserUin *string `json:"ExecuteUserUin,omitnil,omitempty" name:"ExecuteUserUin"`
 }
 
 type TriggerWorkflowDetail struct {
@@ -21640,40 +21662,48 @@ type TriggerWorkflowDetail struct {
 	// <p>触发方式：定时触发：TIME_TRIGGER 。这里配置之后，内部的触发方式可不填，否则需要保持一致</p><p>枚举值：</p><ul><li>TIME_TRIGGER： 定时触发</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TriggerMode *string `json:"TriggerMode,omitnil,omitempty" name:"TriggerMode"`
+
+	// <p>运行账号ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecuteUserUin *string `json:"ExecuteUserUin,omitnil,omitempty" name:"ExecuteUserUin"`
 }
 
 type TriggerWorkflowInfo struct {
-	// 工作流ID
+	// <p>工作流ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
 
-	// 工作流名称
+	// <p>工作流名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkflowName *string `json:"WorkflowName,omitnil,omitempty" name:"WorkflowName"`
 
-	// 负责人ID
+	// <p>负责人ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OwnerUin *string `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 最新修改时间
+	// <p>最新修改时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 
-	// 最后更新人ID
+	// <p>最后更新人ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateUserUin *string `json:"UpdateUserUin,omitnil,omitempty" name:"UpdateUserUin"`
 
-	// 工作流描述
+	// <p>工作流描述</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkflowDesc *string `json:"WorkflowDesc,omitnil,omitempty" name:"WorkflowDesc"`
 
-	// 创建人ID
+	// <p>创建人ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateUserUin *string `json:"CreateUserUin,omitnil,omitempty" name:"CreateUserUin"`
+
+	// <p>运行账号ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecuteUserUin *string `json:"ExecuteUserUin,omitnil,omitempty" name:"ExecuteUserUin"`
 }
 
 type TriggerWorkflowResult struct {
@@ -21699,133 +21729,149 @@ type TriggerWorkflowResult struct {
 }
 
 type TriggerWorkflowRunBrief struct {
-	// 用户AppId
+	// <p>用户AppId</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
 
-	// 项目ID
+	// <p>项目ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 工作流名称
+	// <p>工作流名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkflowName *string `json:"WorkflowName,omitnil,omitempty" name:"WorkflowName"`
 
-	// 工作流ID
+	// <p>工作流ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
 
-	// 工作流运行ID
+	// <p>工作流运行ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExecutionId *string `json:"ExecutionId,omitnil,omitempty" name:"ExecutionId"`
 
-	// 触发器ID
+	// <p>触发器ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TriggerId *string `json:"TriggerId,omitnil,omitempty" name:"TriggerId"`
 
-	// 触发方式:调度触发Scheduler、手动触发ManualTrigger、事件触发Event
+	// <p>触发方式:调度触发Scheduler、手动触发ManualTrigger、事件触发Event</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TriggerType *string `json:"TriggerType,omitnil,omitempty" name:"TriggerType"`
 
-	// 工作流触发时间
+	// <p>工作流触发时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 计划调度时间
+	// <p>计划调度时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScheduleTime *string `json:"ScheduleTime,omitnil,omitempty" name:"ScheduleTime"`
 
-	// 执行开始时间戳
+	// <p>执行开始时间戳</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExecutionStartTime *string `json:"ExecutionStartTime,omitnil,omitempty" name:"ExecutionStartTime"`
 
-	// 执行结束时间戳
+	// <p>执行结束时间戳</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExecutionEndTime *string `json:"ExecutionEndTime,omitnil,omitempty" name:"ExecutionEndTime"`
 
-	// 运行时长，单位秒
+	// <p>运行时长，单位秒</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExecutionCostTime *string `json:"ExecutionCostTime,omitnil,omitempty" name:"ExecutionCostTime"`
 
-	// 并发排队花费时间，单位秒
+	// <p>并发排队花费时间，单位秒</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	QueueCostTime *string `json:"QueueCostTime,omitnil,omitempty" name:"QueueCostTime"`
 
-	// 等待资源花费时间，单位秒
+	// <p>等待资源花费时间，单位秒</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PendingCostTime *string `json:"PendingCostTime,omitnil,omitempty" name:"PendingCostTime"`
 
-	// 执行状态，运行失败:FAILED、运行成功:SUCCESS、等待中:PENDING、跳过运行:SKIPED、运行中:RUNNING
+	// <p>执行状态，运行失败:FAILED、运行成功:SUCCESS、等待中:PENDING、跳过运行:SKIPED、运行中:RUNNING</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExecutionState *string `json:"ExecutionState,omitnil,omitempty" name:"ExecutionState"`
 
-	// 运行用户UIN
+	// <p>运行用户UIN</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExecuteUserUin *string `json:"ExecuteUserUin,omitnil,omitempty" name:"ExecuteUserUin"`
 
-	// 运行用户名称
+	// <p>运行用户名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExecuteUserName *string `json:"ExecuteUserName,omitnil,omitempty" name:"ExecuteUserName"`
 
-	// 错误码
+	// <p>错误码</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorCodeStr *string `json:"ErrorCodeStr,omitnil,omitempty" name:"ErrorCodeStr"`
 
-	// 运行参数
+	// <p>运行参数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkflowParams *string `json:"WorkflowParams,omitnil,omitempty" name:"WorkflowParams"`
 
-	// 工作流版本信息ID
+	// <p>工作流版本信息ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkflowVersionId *string `json:"WorkflowVersionId,omitnil,omitempty" name:"WorkflowVersionId"`
 
-	// 是否支持重跑
+	// <p>是否支持重跑</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SupportRerun *bool `json:"SupportRerun,omitnil,omitempty" name:"SupportRerun"`
 
-	// 重跑次数
+	// <p>重跑次数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RerunTimes *uint64 `json:"RerunTimes,omitnil,omitempty" name:"RerunTimes"`
 
-	// 运行的任务范围,逗号分隔的任务ID列表
+	// <p>运行的任务范围,逗号分隔的任务ID列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SelectedTaskIds []*string `json:"SelectedTaskIds,omitnil,omitempty" name:"SelectedTaskIds"`
 
-	// 等待并发开始时间
+	// <p>等待并发开始时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PendingStartTime *string `json:"PendingStartTime,omitnil,omitempty" name:"PendingStartTime"`
 
-	// 排队等待开始时间
+	// <p>排队等待开始时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	QueueStartTime *string `json:"QueueStartTime,omitnil,omitempty" name:"QueueStartTime"`
 
-	// 运行结束时间
+	// <p>运行结束时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 文件夹ID
+	// <p>文件夹ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FolderId *string `json:"FolderId,omitnil,omitempty" name:"FolderId"`
 
-	// 文件夹名称
+	// <p>文件夹名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FolderName *string `json:"FolderName,omitnil,omitempty" name:"FolderName"`
 
-	// 计划调度时间
+	// <p>计划调度时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PlannedSchedulingTime *string `json:"PlannedSchedulingTime,omitnil,omitempty" name:"PlannedSchedulingTime"`
 
-	// 周期类型
+	// <p>周期类型</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CycleType *string `json:"CycleType,omitnil,omitempty" name:"CycleType"`
 
-	// 责任人名称
+	// <p>责任人名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserNameInCharge *string `json:"UserNameInCharge,omitnil,omitempty" name:"UserNameInCharge"`
 
-	// 责任人ID
+	// <p>责任人ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserUinInCharge *string `json:"UserUinInCharge,omitnil,omitempty" name:"UserUinInCharge"`
+
+	// <p>关联实体是否存在</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssociatedEntityExist *bool `json:"AssociatedEntityExist,omitnil,omitempty" name:"AssociatedEntityExist"`
+
+	// <p>父工作流运行ID 【由嵌套工作流触发独有】</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParentWorkflowExecutionId *string `json:"ParentWorkflowExecutionId,omitnil,omitempty" name:"ParentWorkflowExecutionId"`
+
+	// <p>父任务运行ID 【由嵌套工作流触发独有】</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParentTaskExecutionId *string `json:"ParentTaskExecutionId,omitnil,omitempty" name:"ParentTaskExecutionId"`
+
+	// <p>父任务运行名称 【由嵌套工作流触发独有】</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParentTaskExecutionName *string `json:"ParentTaskExecutionName,omitnil,omitempty" name:"ParentTaskExecutionName"`
 }
 
 type TriggerWorkflowRunResult struct {
@@ -23684,44 +23730,41 @@ type UpdateTriggerWorkflowPartially struct {
 	// <p>Trigger 状态 启动ACTIVE，暂停PAUSED。配置完之后，内部的Trigger状态可不配置，如果配置，内容会被该值覆盖。</p><p>枚举值：</p><ul><li>ACTIVE： 启动</li><li>PAUSED： 暂停</li></ul>
 	SchedulerStatus *string `json:"SchedulerStatus,omitnil,omitempty" name:"SchedulerStatus"`
 
-	// <p>触发方式：定时触发：TIME_TRIGGER 。配置完之后，内部的TriggerMode状态可不配置，如果配置，内容会被该值覆盖。</p><p>枚举值：</p><ul><li>TIME_TRIGGER： 定时触发</li></ul>
+	// <p>触发方式：定时触发：TIME_TRIGGER ，文件到达：FILE_ARRIVAL。配置完之后，内部的TriggerMode状态可不配置，如果配置，内容会被该值覆盖。</p><p>枚举值：</p><ul><li>TIME_TRIGGER： 定时触发</li><li>FILE_ARRIVAL： 文件到达</li></ul>
 	TriggerMode *string `json:"TriggerMode,omitnil,omitempty" name:"TriggerMode"`
+
+	// <p>运行账号ID</p>
+	ExecuteUserUin *string `json:"ExecuteUserUin,omitnil,omitempty" name:"ExecuteUserUin"`
 }
 
 // Predefined struct for user
 type UpdateTriggerWorkflowPartiallyRequestParams struct {
-	// 项目ID
+	// <p>项目ID</p>
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 工作流ID
+	// <p>工作流ID</p>
 	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
 
-	// 责任人ID
+	// <p>责任人ID</p>
 	NewSetting *UpdateTriggerWorkflowPartially `json:"NewSetting,omitnil,omitempty" name:"NewSetting"`
 
-	// 删除字段内容，采用属性路径的形式标识，删除的值以":"分割，多个值以","分割
-	//  // 删除调度参数中 ParamKey 为 aa,bb 的属性 "WorkflowParams:aa,bb"
-	//  // 删除配置的 TriggerId 为 da46d950-d5ca-4cfb-a5a9-f3c2eeea1bf0 的调度配置"TriggerWorkflowSchedulerConfigurations :da46d950-d5ca-4cfb-a5a9-f3c2eeea1bf0" 
-	// // 删除spark sql通用参数 "GeneralTaskParams: SPARK_SQL" 
+	// <p>删除字段内容，采用属性路径的形式标识，删除的值以&quot;:&quot;分割，多个值以&quot;,&quot;分割<br> // 删除调度参数中 ParamKey 为 aa,bb 的属性 &quot;WorkflowParams:aa,bb&quot;<br> // 删除配置的 TriggerId 为 da46d950-d5ca-4cfb-a5a9-f3c2eeea1bf0 的调度配置&quot;TriggerWorkflowSchedulerConfigurations :da46d950-d5ca-4cfb-a5a9-f3c2eeea1bf0&quot;<br>// 删除spark sql通用参数 &quot;GeneralTaskParams: SPARK_SQL&quot;</p>
 	FieldToRemoveList []*string `json:"FieldToRemoveList,omitnil,omitempty" name:"FieldToRemoveList"`
 }
 
 type UpdateTriggerWorkflowPartiallyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 项目ID
+	// <p>项目ID</p>
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 工作流ID
+	// <p>工作流ID</p>
 	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
 
-	// 责任人ID
+	// <p>责任人ID</p>
 	NewSetting *UpdateTriggerWorkflowPartially `json:"NewSetting,omitnil,omitempty" name:"NewSetting"`
 
-	// 删除字段内容，采用属性路径的形式标识，删除的值以":"分割，多个值以","分割
-	//  // 删除调度参数中 ParamKey 为 aa,bb 的属性 "WorkflowParams:aa,bb"
-	//  // 删除配置的 TriggerId 为 da46d950-d5ca-4cfb-a5a9-f3c2eeea1bf0 的调度配置"TriggerWorkflowSchedulerConfigurations :da46d950-d5ca-4cfb-a5a9-f3c2eeea1bf0" 
-	// // 删除spark sql通用参数 "GeneralTaskParams: SPARK_SQL" 
+	// <p>删除字段内容，采用属性路径的形式标识，删除的值以&quot;:&quot;分割，多个值以&quot;,&quot;分割<br> // 删除调度参数中 ParamKey 为 aa,bb 的属性 &quot;WorkflowParams:aa,bb&quot;<br> // 删除配置的 TriggerId 为 da46d950-d5ca-4cfb-a5a9-f3c2eeea1bf0 的调度配置&quot;TriggerWorkflowSchedulerConfigurations :da46d950-d5ca-4cfb-a5a9-f3c2eeea1bf0&quot;<br>// 删除spark sql通用参数 &quot;GeneralTaskParams: SPARK_SQL&quot;</p>
 	FieldToRemoveList []*string `json:"FieldToRemoveList,omitnil,omitempty" name:"FieldToRemoveList"`
 }
 
@@ -23749,7 +23792,7 @@ func (r *UpdateTriggerWorkflowPartiallyRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateTriggerWorkflowPartiallyResponseParams struct {
-	// true代表成功，false代表失败
+	// <p>true代表成功，false代表失败</p>
 	Data *UpdateTriggerWorkflowResult `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -23810,8 +23853,11 @@ type UpdateTriggerWorkflowRequestParams struct {
 	// <p>Trigger 状态 启动ACTIVE，暂停PAUSED。配置完之后，内部的SchedulerStatus可不配置，如果配置，内容会被改值覆盖。</p><p>枚举值：</p><ul><li>ACTIVE： 启动</li><li>PAUSED： 暂停</li></ul>
 	SchedulerStatus *string `json:"SchedulerStatus,omitnil,omitempty" name:"SchedulerStatus"`
 
-	// <p>触发方式：定时触发：TIME_TRIGGER 。配置完之后，内部的TriggerMode状态可不配置，如果配置，内容会被该值覆盖。</p><p>枚举值：</p><ul><li>TIME_TRIGGER： 定时触发</li></ul>
+	// <p>触发方式：定时触发：TIME_TRIGGER 。配置完之后，内部的TriggerMode状态可不配置，如果配置，内容会被该值覆盖。</p><p>枚举值：</p><ul><li>TIME_TRIGGER： 定时触发</li><li>FILE_ARRIVAL： 文件到达</li></ul>
 	TriggerMode *string `json:"TriggerMode,omitnil,omitempty" name:"TriggerMode"`
+
+	// <p>运行账号ID</p>
+	ExecuteUserUin *string `json:"ExecuteUserUin,omitnil,omitempty" name:"ExecuteUserUin"`
 }
 
 type UpdateTriggerWorkflowRequest struct {
@@ -23853,8 +23899,11 @@ type UpdateTriggerWorkflowRequest struct {
 	// <p>Trigger 状态 启动ACTIVE，暂停PAUSED。配置完之后，内部的SchedulerStatus可不配置，如果配置，内容会被改值覆盖。</p><p>枚举值：</p><ul><li>ACTIVE： 启动</li><li>PAUSED： 暂停</li></ul>
 	SchedulerStatus *string `json:"SchedulerStatus,omitnil,omitempty" name:"SchedulerStatus"`
 
-	// <p>触发方式：定时触发：TIME_TRIGGER 。配置完之后，内部的TriggerMode状态可不配置，如果配置，内容会被该值覆盖。</p><p>枚举值：</p><ul><li>TIME_TRIGGER： 定时触发</li></ul>
+	// <p>触发方式：定时触发：TIME_TRIGGER 。配置完之后，内部的TriggerMode状态可不配置，如果配置，内容会被该值覆盖。</p><p>枚举值：</p><ul><li>TIME_TRIGGER： 定时触发</li><li>FILE_ARRIVAL： 文件到达</li></ul>
 	TriggerMode *string `json:"TriggerMode,omitnil,omitempty" name:"TriggerMode"`
+
+	// <p>运行账号ID</p>
+	ExecuteUserUin *string `json:"ExecuteUserUin,omitnil,omitempty" name:"ExecuteUserUin"`
 }
 
 func (r *UpdateTriggerWorkflowRequest) ToJsonString() string {
@@ -23882,6 +23931,7 @@ func (r *UpdateTriggerWorkflowRequest) FromJsonString(s string) error {
 	delete(f, "TriggerWorkflowRunConfiguration")
 	delete(f, "SchedulerStatus")
 	delete(f, "TriggerMode")
+	delete(f, "ExecuteUserUin")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateTriggerWorkflowRequest has unknown keys!", "")
 	}
@@ -24456,7 +24506,7 @@ type WorkflowSchedulerConfigurationInfo struct {
 }
 
 type WorkflowTriggerConfig struct {
-	// <p>触发方式，非必填，外部结构的TriggerMode字段优先级比当前字段高</p><ul><li>定时触发：TIME_TRIGGER</li><li>持续运行：CONTINUE_RUN（暂不支持）</li><li>文件到达：FILE_ARRIVAL（暂不支持）</li></ul><p>注意：</p><ul><li>TIME_TRIGGER 和 CONTINUE_RUN 模式下，SchedulerStatus、SchedulerTimeZone、StartTime、EndTime、ConfigMode、CycleType、CrontabExpression 必填；</li><li>FILE_ARRIVAL 模式下，FileArrivalPath、TriggerMinimumIntervalSecond、TriggerWaitTimeSecond 必填；</li></ul><p>枚举值：</p><ul><li>TIME_TRIGGER： 定时触发</li></ul>
+	// <p>触发方式，非必填，外部结构的TriggerMode字段优先级比当前字段高</p><ul><li>定时触发：TIME_TRIGGER</li><li>文件到达：FILE_ARRIVAL</li><li>持续运行：CONTINUE_RUN（暂不支持）</li></ul><p>注意：</p><ul><li>TIME_TRIGGER 和 CONTINUE_RUN 模式下，SchedulerStatus、SchedulerTimeZone、StartTime、EndTime、ConfigMode、CycleType、CrontabExpression 必填；</li><li>FILE_ARRIVAL 模式下，FileArrivalPath、TriggerMinimumIntervalSecond、TriggerWaitTimeSecond 必填；</li></ul><p>枚举值：</p><ul><li>TIME_TRIGGER： 定时触发</li><li>FILE_ARRIVAL： 文件到达</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TriggerMode *string `json:"TriggerMode,omitnil,omitempty" name:"TriggerMode"`
 
@@ -24496,15 +24546,23 @@ type WorkflowTriggerConfig struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileArrivalPath *string `json:"FileArrivalPath,omitnil,omitempty" name:"FileArrivalPath"`
 
-	// <p>文件到达模式下    触发最短间隔时间（单位：秒）</p>
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	TriggerMinimumIntervalSecond *uint64 `json:"TriggerMinimumIntervalSecond,omitnil,omitempty" name:"TriggerMinimumIntervalSecond"`
-
-	// <p>文件到达模式下    触发等待时间（单位：秒）</p>
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	TriggerWaitTimeSecond *uint64 `json:"TriggerWaitTimeSecond,omitnil,omitempty" name:"TriggerWaitTimeSecond"`
-
 	// <p>Trigger 状态 启动ACTIVE，暂停PAUSED。外部的TriggerStatus优先级大于当前值</p><p>枚举值：</p><ul><li>ACTIVE： 启动</li><li>PAUSED： 暂停</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SchedulerStatus *string `json:"SchedulerStatus,omitnil,omitempty" name:"SchedulerStatus"`
+
+	// <p>文件到达模式下 文件匹配规则</p><p>入参限制：文件名匹配仅支持文件名和 *，不能包含路径分隔符 /</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileNamePattern *string `json:"FileNamePattern,omitnil,omitempty" name:"FileNamePattern"`
+
+	// <p>文件到达模式下 是否递归检测子目录</p><p>取值范围：[0, 1]</p><p>默认值：1</p><p>默认 1（开启） 0 （关闭）</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Recursive *int64 `json:"Recursive,omitnil,omitempty" name:"Recursive"`
+
+	// <p>文件到达模式下    触发最短间隔时间</p><p>单位：秒</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TriggerMinimumIntervalSecond *int64 `json:"TriggerMinimumIntervalSecond,omitnil,omitempty" name:"TriggerMinimumIntervalSecond"`
+
+	// <p>文件到达模式下    触发等待时间</p><p>单位：秒</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TriggerWaitTimeSecond *int64 `json:"TriggerWaitTimeSecond,omitnil,omitempty" name:"TriggerWaitTimeSecond"`
 }
