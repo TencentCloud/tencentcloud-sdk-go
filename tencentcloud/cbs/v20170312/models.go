@@ -1335,6 +1335,20 @@ func (r *CreateSnapshotResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DedicatedClusterDiskStatistic struct {
+	// <p>硬盘介质类型。取值范围：<br>&lt;li&gt;CLOUD_BASIC：表示普通云硬盘<br>&lt;li&gt;CLOUD_PREMIUM：表示高性能云硬盘<br>&lt;li&gt;CLOUD_SSD：表示SSD云硬盘<br>&lt;li&gt;CLOUD_HSSD：表示增强型SSD云硬盘<br>&lt;li&gt;CLOUD_TSSD：表示极速型SSD云硬盘。</p>
+	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
+
+	// <p>云硬盘总容量。</p><p>单位：GiB</p>
+	TotalDiskSize *uint64 `json:"TotalDiskSize,omitnil,omitempty" name:"TotalDiskSize"`
+
+	// <p>已使用的云硬盘容量。</p><p>单位：GiB</p>
+	UsedDiskSize *uint64 `json:"UsedDiskSize,omitnil,omitempty" name:"UsedDiskSize"`
+
+	// <p>可用的云硬盘容量。</p><p>单位：GiB</p>
+	AvailableDiskSize *uint64 `json:"AvailableDiskSize,omitnil,omitempty" name:"AvailableDiskSize"`
+}
+
 // Predefined struct for user
 type DeleteAutoSnapshotPoliciesRequestParams struct {
 	// 要删除的定期快照策略ID列表，通过[ DescribeAutoSnapshotPolicies](https://cloud.tencent.com/document/api/362/33556)接口查询。
@@ -1675,12 +1689,15 @@ func (r *DescribeAutoSnapshotPoliciesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDedicatedClusterDiskStatisticsRequestParams struct {
-
+	// <p>云服务器独享集群ID。</p>
+	DedicatedClusterId *string `json:"DedicatedClusterId,omitnil,omitempty" name:"DedicatedClusterId"`
 }
 
 type DescribeDedicatedClusterDiskStatisticsRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>云服务器独享集群ID。</p>
+	DedicatedClusterId *string `json:"DedicatedClusterId,omitnil,omitempty" name:"DedicatedClusterId"`
 }
 
 func (r *DescribeDedicatedClusterDiskStatisticsRequest) ToJsonString() string {
@@ -1695,7 +1712,7 @@ func (r *DescribeDedicatedClusterDiskStatisticsRequest) FromJsonString(s string)
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "DedicatedClusterId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDedicatedClusterDiskStatisticsRequest has unknown keys!", "")
 	}
@@ -1704,6 +1721,9 @@ func (r *DescribeDedicatedClusterDiskStatisticsRequest) FromJsonString(s string)
 
 // Predefined struct for user
 type DescribeDedicatedClusterDiskStatisticsResponseParams struct {
+	// <p>云服务器独享集群云硬盘统计信息。</p>
+	DedicatedClusterDiskStatisticSet []*DedicatedClusterDiskStatistic `json:"DedicatedClusterDiskStatisticSet,omitnil,omitempty" name:"DedicatedClusterDiskStatisticSet"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -2377,6 +2397,12 @@ func (r *DescribeRemoteDisksRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRemoteDisksResponseParams struct {
+	// <p>单副本SSD硬盘的详细信息列表。</p>
+	RemoteDiskSet []*RemoteDiskDetail `json:"RemoteDiskSet,omitnil,omitempty" name:"RemoteDiskSet"`
+
+	// <p>符合条件的单副本SSD硬盘数量。</p>
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -4574,6 +4600,11 @@ type RemoteDiskChargePrepaid struct {
 	// </ul>
 	// 默认取值：NOTIFY_AND_MANUAL_RENEW。
 	RenewFlag *string `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
+}
+
+type RemoteDiskDetail struct {
+	// <p>单副本SSD硬盘所在的位置。</p>
+	Placement *Placement `json:"Placement,omitnil,omitempty" name:"Placement"`
 }
 
 // Predefined struct for user

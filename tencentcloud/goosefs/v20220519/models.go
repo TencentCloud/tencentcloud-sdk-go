@@ -561,6 +561,9 @@ type ClientNodeAttribute struct {
 
 	// <p>客户端集群id</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+
+	MountPoints []*MountPointEntry `json:"MountPoints,omitnil,omitempty" name:"MountPoints"`
 }
 
 type ClientToken struct {
@@ -1033,6 +1036,15 @@ type CustomerClusterAttr struct {
 
 	// 客户端集群挂载存储集合
 	ClusterMountSet []*ClusterMountAttr `json:"ClusterMountSet,omitnil,omitempty" name:"ClusterMountSet"`
+
+
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+
+
+	MountStorageNum *uint64 `json:"MountStorageNum,omitnil,omitempty" name:"MountStorageNum"`
+
+
+	StorageFileSystemId *string `json:"StorageFileSystemId,omitnil,omitempty" name:"StorageFileSystemId"`
 }
 
 // Predefined struct for user
@@ -2579,6 +2591,14 @@ func (r *MountMultipleStorageFileSystemResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *MountMultipleStorageFileSystemResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type MountPointEntry struct {
+
+	StorageFileSystemId *string `json:"StorageFileSystemId,omitnil,omitempty" name:"StorageFileSystemId"`
+
+
+	MountDir *string `json:"MountDir,omitnil,omitempty" name:"MountDir"`
 }
 
 // Predefined struct for user

@@ -16150,6 +16150,9 @@ type RoGroup struct {
 
 	// <p>延迟复制时间。单位：秒。值范围：1-259200，整数。</p>
 	DelayReplicationTime *int64 `json:"DelayReplicationTime,omitnil,omitempty" name:"DelayReplicationTime"`
+
+	// <p>只读组类型。</p><p>枚举值：</p><ul><li>normal： 普通RO组</li><li>direct： 纯网络转发模式</li><li>default： 默认RO组</li></ul><p>默认值：normal</p>
+	RoGroupType *string `json:"RoGroupType,omitnil,omitempty" name:"RoGroupType"`
 }
 
 type RoGroupAttr struct {

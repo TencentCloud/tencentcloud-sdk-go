@@ -1603,7 +1603,7 @@ func NewDescribeDedicatedClusterDiskStatisticsResponse() (response *DescribeDedi
 }
 
 // DescribeDedicatedClusterDiskStatistics
-// 查询 CVM CDC 独享集群云硬盘统计信息。
+// 查询云服务器独享集群云硬盘统计信息。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -1612,7 +1612,7 @@ func (c *Client) DescribeDedicatedClusterDiskStatistics(request *DescribeDedicat
 }
 
 // DescribeDedicatedClusterDiskStatistics
-// 查询 CVM CDC 独享集群云硬盘统计信息。
+// 查询云服务器独享集群云硬盘统计信息。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"

@@ -224,6 +224,9 @@ const (
 	// 内置账号不允许操作。
 	INVALIDPARAMETERVALUE_INTERNALACCOUNT = "InvalidParameterValue.InternalAccount"
 
+	// 存在内网域名，旧 IP 保留时间需大于 {{1}} 小时
+	INVALIDPARAMETERVALUE_INTERNALDOMAINRESERVETOOSHORTERROR = "InvalidParameterValue.InternalDomainReserveTooShortError"
+
 	// 实例版本非法。
 	INVALIDPARAMETERVALUE_INVALIDDBVERSION = "InvalidParameterValue.InvalidDBVersion"
 
@@ -268,6 +271,9 @@ const (
 
 	// 找不到所选子网。
 	INVALIDPARAMETERVALUE_SUBNETNOTFOUND = "InvalidParameterValue.SubnetNotFound"
+
+	// 接入组 {{1}} 所属子网与目标子网一致，无需更换
+	INVALIDPARAMETERVALUE_SUBNETUNCHANGEDERROR = "InvalidParameterValue.SubnetUnchangedError"
 
 	// 未找到该数据。
 	INVALIDPARAMETERVALUE_VALUENOTFOUND = "InvalidParameterValue.ValueNotFound"
@@ -415,6 +421,9 @@ const (
 
 	// 不支持该类型规格售卖
 	OPERATIONDENIED_UNSUPPORTSALESPECERROR = "OperationDenied.UnSupportSaleSpecError"
+
+	// 不支持开启审计
+	OPERATIONDENIED_UNSUPPORTOPENAUDITERROR = "OperationDenied.UnsupportOpenAuditError"
 
 	// 用户未进行实名认证，请先进行实名认证才可购买。
 	OPERATIONDENIED_USERNOTAUTHENTICATEDERROR = "OperationDenied.UserNotAuthenticatedError"

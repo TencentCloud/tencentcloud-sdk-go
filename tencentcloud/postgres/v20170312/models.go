@@ -4864,14 +4864,14 @@ func (r *DescribeDBInstanceParametersResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDBInstanceSSLConfigRequestParams struct {
-	// 实例ID，形如postgres-6bwgamo3。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+	// <p>实例ID，形如postgres-6bwgamo3。可通过<a href="https://cloud.tencent.com/document/api/409/16773">DescribeDBInstances</a>接口获取</p>
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
 }
 
 type DescribeDBInstanceSSLConfigRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID，形如postgres-6bwgamo3。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+	// <p>实例ID，形如postgres-6bwgamo3。可通过<a href="https://cloud.tencent.com/document/api/409/16773">DescribeDBInstances</a>接口获取</p>
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
 }
 
@@ -4896,14 +4896,23 @@ func (r *DescribeDBInstanceSSLConfigRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDBInstanceSSLConfigResponseParams struct {
-	// true 代表开通 ，false 代表未开通
+	// <p>true 代表开通 ，false 代表未开通</p>
 	SSLEnabled *bool `json:"SSLEnabled,omitnil,omitempty" name:"SSLEnabled"`
 
-	// 云端根证书下载链接
+	// <p>云端根证书下载链接</p>
 	CAUrl *string `json:"CAUrl,omitnil,omitempty" name:"CAUrl"`
 
-	// 服务器证书中配置的内网或外网连接地址
+	// <p>服务器证书中配置的内网或外网连接地址</p>
 	ConnectAddress *string `json:"ConnectAddress,omitnil,omitempty" name:"ConnectAddress"`
+
+	// <p>CA证书公钥，仅云盘版</p>
+	CACert *string `json:"CACert,omitnil,omitempty" name:"CACert"`
+
+	// <p>JKS公钥，仅云盘版</p>
+	CAJKS *string `json:"CAJKS,omitnil,omitempty" name:"CAJKS"`
+
+	// <p>CAP7B公钥，仅云盘版</p>
+	CAP7B *string `json:"CAP7B,omitnil,omitempty" name:"CAP7B"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

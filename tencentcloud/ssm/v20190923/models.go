@@ -885,6 +885,9 @@ type DescribeSecretResponseParams struct {
 	// <p>对应云产品的账号信息</p>
 	AccountInfoList []*SecretAccountInfo `json:"AccountInfoList,omitnil,omitempty" name:"AccountInfoList"`
 
+
+	NextRotationTime *string `json:"NextRotationTime,omitnil,omitempty" name:"NextRotationTime"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -1224,6 +1227,12 @@ type GetSecretValueRequestParams struct {
 	// 指定对应凭据的版本号。
 	// 对于云产品凭据如Mysql凭据，通过指定凭据名称和历史版本号来获取历史轮转凭据的明文信息，如果要获取当前正在使用的凭据版本的明文，需要将版本号指定为：SSM_Current。
 	VersionId *string `json:"VersionId,omitnil,omitempty" name:"VersionId"`
+
+
+	EncryptionPublicKey *string `json:"EncryptionPublicKey,omitnil,omitempty" name:"EncryptionPublicKey"`
+
+
+	EncryptionAlgorithm *string `json:"EncryptionAlgorithm,omitnil,omitempty" name:"EncryptionAlgorithm"`
 }
 
 type GetSecretValueRequest struct {
@@ -1235,6 +1244,10 @@ type GetSecretValueRequest struct {
 	// 指定对应凭据的版本号。
 	// 对于云产品凭据如Mysql凭据，通过指定凭据名称和历史版本号来获取历史轮转凭据的明文信息，如果要获取当前正在使用的凭据版本的明文，需要将版本号指定为：SSM_Current。
 	VersionId *string `json:"VersionId,omitnil,omitempty" name:"VersionId"`
+
+	EncryptionPublicKey *string `json:"EncryptionPublicKey,omitnil,omitempty" name:"EncryptionPublicKey"`
+
+	EncryptionAlgorithm *string `json:"EncryptionAlgorithm,omitnil,omitempty" name:"EncryptionAlgorithm"`
 }
 
 func (r *GetSecretValueRequest) ToJsonString() string {
@@ -1251,6 +1264,8 @@ func (r *GetSecretValueRequest) FromJsonString(s string) error {
 	}
 	delete(f, "SecretName")
 	delete(f, "VersionId")
+	delete(f, "EncryptionPublicKey")
+	delete(f, "EncryptionAlgorithm")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetSecretValueRequest has unknown keys!", "")
 	}
@@ -1465,6 +1480,9 @@ type ListSecretsRequestParams struct {
 
 	// <p>凭据加密类型</p><p>枚举值：</p><ul><li>0： KMS 密钥加密</li><li>1： 软密钥加密</li></ul><p>默认值：0</p>
 	EncryptType *uint64 `json:"EncryptType,omitnil,omitempty" name:"EncryptType"`
+
+	// <p>云产品实例 ID</p>
+	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
 }
 
 type ListSecretsRequest struct {
@@ -1496,6 +1514,9 @@ type ListSecretsRequest struct {
 
 	// <p>凭据加密类型</p><p>枚举值：</p><ul><li>0： KMS 密钥加密</li><li>1： 软密钥加密</li></ul><p>默认值：0</p>
 	EncryptType *uint64 `json:"EncryptType,omitnil,omitempty" name:"EncryptType"`
+
+	// <p>云产品实例 ID</p>
+	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
 }
 
 func (r *ListSecretsRequest) ToJsonString() string {
@@ -1519,6 +1540,7 @@ func (r *ListSecretsRequest) FromJsonString(s string) error {
 	delete(f, "SecretType")
 	delete(f, "ProductName")
 	delete(f, "EncryptType")
+	delete(f, "InstanceID")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListSecretsRequest has unknown keys!", "")
 	}

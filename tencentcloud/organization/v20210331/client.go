@@ -2405,6 +2405,8 @@ func NewDeleteOrganizationResponse() (response *DeleteOrganizationResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
+//  UNSUPPORTEDOPERATION_ADMINACCOUNTEXISTCICROLECONFIG = "UnsupportedOperation.AdminAccountExistCICRoleConfig"
+//  UNSUPPORTEDOPERATION_ADMINACCOUNTEXISTCICUSERCONFIG = "UnsupportedOperation.AdminAccountExistCICUserConfig"
 func (c *Client) DeleteOrganization(request *DeleteOrganizationRequest) (response *DeleteOrganizationResponse, err error) {
     return c.DeleteOrganizationWithContext(context.Background(), request)
 }
@@ -2424,6 +2426,8 @@ func (c *Client) DeleteOrganization(request *DeleteOrganizationRequest) (respons
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
+//  UNSUPPORTEDOPERATION_ADMINACCOUNTEXISTCICROLECONFIG = "UnsupportedOperation.AdminAccountExistCICRoleConfig"
+//  UNSUPPORTEDOPERATION_ADMINACCOUNTEXISTCICUSERCONFIG = "UnsupportedOperation.AdminAccountExistCICUserConfig"
 func (c *Client) DeleteOrganizationWithContext(ctx context.Context, request *DeleteOrganizationRequest) (response *DeleteOrganizationResponse, err error) {
     if request == nil {
         request = NewDeleteOrganizationRequest()

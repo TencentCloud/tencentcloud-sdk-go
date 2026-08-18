@@ -1238,6 +1238,17 @@ type BillingAttribute struct {
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
+type CallSource struct {
+	// <p>调用主体 ID，含义由 subject_type 决定（如 app_id、kb_id 等）</p>
+	SubjectId *string `json:"SubjectId,omitnil,omitempty" name:"SubjectId"`
+
+	// <p>调用主体名称</p>
+	SubjectName *string `json:"SubjectName,omitnil,omitempty" name:"SubjectName"`
+
+	// <p>调用主体类型：APP/KB/WIDGET/OPEN_CLAW/KB_RECALL_TEST/WORKBENCH/MODEL_API</p><table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>METRIC_SOURCE_TYPE_UNSPECIFIED</td><td>0</td><td></td></tr><tr><td>METRIC_SOURCE_TYPE_APP</td><td>1</td><td>应用开发</td></tr><tr><td>METRIC_SOURCE_TYPE_KB</td><td>2</td><td>知识库</td></tr><tr><td>METRIC_SOURCE_TYPE_WIDGET</td><td>3</td><td>Widget</td></tr><tr><td>METRIC_SOURCE_TYPE_OPEN_CLAW</td><td>4</td><td>ClawPro</td></tr><tr><td>METRIC_SOURCE_TYPE_KB_RECALL_TEST</td><td>5</td><td>知识库召回测试</td></tr><tr><td>METRIC_SOURCE_TYPE_WORKBENCH</td><td>6</td><td>智能工作台</td></tr><tr><td>METRIC_SOURCE_TYPE_MODEL_API</td><td>7</td><td>模型 API 调用</td></tr></tbody></table>
+	SubjectType *int64 `json:"SubjectType,omitnil,omitempty" name:"SubjectType"`
+}
+
 type CamAuthConfig struct {
 	// 角色名称
 	RoleName *string `json:"RoleName,omitnil,omitempty" name:"RoleName"`
@@ -1267,10 +1278,6 @@ type ClawAgentAgentTeamConfig struct {
 }
 
 type ClawAgentConfig struct {
-	// 调用方自定义配置(控制C端用户在对话时可动态传入哪些自定义配置)
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	CustomConfig *ClawAgentCustomConfig `json:"CustomConfig,omitnil,omitempty" name:"CustomConfig"`
-
 	// Agent团队协作配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AgentTeamConfig *ClawAgentAgentTeamConfig `json:"AgentTeamConfig,omitnil,omitempty" name:"AgentTeamConfig"`
@@ -1278,11 +1285,6 @@ type ClawAgentConfig struct {
 	// 长期记忆配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LongMemoryConfig *ClawAgentLongMemoryConfig `json:"LongMemoryConfig,omitnil,omitempty" name:"LongMemoryConfig"`
-}
-
-type ClawAgentCustomConfig struct {
-	// <p>是否允许C端用户在对话时动态传入自定义Agent配置</p>
-	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
 }
 
 type ClawAgentLongMemoryConfig struct {
@@ -1321,6 +1323,71 @@ type ComplexBillingItem struct {
 
 	// <p>pu价格</p><p>单位：pu</p>
 	PuPrice *float64 `json:"PuPrice,omitnil,omitempty" name:"PuPrice"`
+}
+
+type ConcurrencyLimitDetail struct {
+	// <p>调用来源（subject_type 决定 subject_id/subject_name 的含义，如 APP 时 subject_id=app_id、subject_name=app_name）</p>
+	CallSource *CallSource `json:"CallSource,omitnil,omitempty" name:"CallSource"`
+
+	// <p>超限发生时间（Unix秒）</p>
+	EventTime *string `json:"EventTime,omitnil,omitempty" name:"EventTime"`
+
+	// <p>模型名称</p>
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
+	// <p>请求内容（用户请求的原始查询文本）</p>
+	RequestQuery *string `json:"RequestQuery,omitnil,omitempty" name:"RequestQuery"`
+
+	// <p>空间 ID</p>
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+}
+
+type ConsumptionClassification struct {
+	// <p>消耗场景（如推理/训练/评测等）</p>
+	ConsumptionScene *string `json:"ConsumptionScene,omitnil,omitempty" name:"ConsumptionScene"`
+
+	// <p>消耗目标（如具体模型名/插件名/平台功能名）</p>
+	ConsumptionTarget *string `json:"ConsumptionTarget,omitnil,omitempty" name:"ConsumptionTarget"`
+
+	// <p>消耗类型，取值集合由业务方定义（如 model/plugin/platform 等）</p>
+	ConsumptionType *string `json:"ConsumptionType,omitnil,omitempty" name:"ConsumptionType"`
+
+	// <p>套餐包名称</p>
+	PackageName *string `json:"PackageName,omitnil,omitempty" name:"PackageName"`
+}
+
+type ConsumptionDetail struct {
+	// <p>消耗分类（类型/目标/场景/套餐包）</p>
+	Classification *ConsumptionClassification `json:"Classification,omitnil,omitempty" name:"Classification"`
+
+	// <p>消耗发生时间，Unix 秒</p>
+	EventTime *string `json:"EventTime,omitnil,omitempty" name:"EventTime"`
+
+	// <p>用量来源类型</p><table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>METRIC_SOURCE_TYPE_UNSPECIFIED</td><td>0</td><td></td></tr><tr><td>METRIC_SOURCE_TYPE_APP</td><td>1</td><td>应用开发</td></tr><tr><td>METRIC_SOURCE_TYPE_KB</td><td>2</td><td>知识库</td></tr><tr><td>METRIC_SOURCE_TYPE_WIDGET</td><td>3</td><td>Widget</td></tr><tr><td>METRIC_SOURCE_TYPE_OPEN_CLAW</td><td>4</td><td>ClawPro</td></tr><tr><td>METRIC_SOURCE_TYPE_KB_RECALL_TEST</td><td>5</td><td>知识库召回测试</td></tr><tr><td>METRIC_SOURCE_TYPE_WORKBENCH</td><td>6</td><td>智能工作台</td></tr><tr><td>METRIC_SOURCE_TYPE_MODEL_API</td><td>7</td><td>模型 API 调用</td></tr></tbody></table>
+	MetricSourceType *int64 `json:"MetricSourceType,omitnil,omitempty" name:"MetricSourceType"`
+
+	// <p>名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>空间名称</p>
+	SpaceName *string `json:"SpaceName,omitnil,omitempty" name:"SpaceName"`
+
+	// <p>消耗用量（数值/单位/PU 消耗）</p>
+	Usage *ConsumptionUsage `json:"Usage,omitnil,omitempty" name:"Usage"`
+
+	// <p>用户名称</p>
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+}
+
+type ConsumptionUsage struct {
+	// <p>消耗PU</p>
+	ConsumptionPU *float64 `json:"ConsumptionPU,omitnil,omitempty" name:"ConsumptionPU"`
+
+	// <p>用量数值</p>
+	Usage *float64 `json:"Usage,omitnil,omitempty" name:"Usage"`
+
+	// <p>用量单位，枚举值 DosageUnit</p><table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>DOSAGE_UNIT_TOKEN</td><td>0</td><td>token（默认）</td></tr><tr><td>DOSAGE_UNIT_PAGE_COUNT</td><td>1</td><td>page_count（页数）</td></tr><tr><td>DOSAGE_UNIT_TIMES</td><td>2</td><td>times（次数）</td></tr><tr><td>DOSAGE_UNIT_SECOND</td><td>3</td><td>second（秒）</td></tr><tr><td>DOSAGE_UNIT_ITEM</td><td>4</td><td>item（条）</td></tr><tr><td>DOSAGE_UNIT_SHEET</td><td>5</td><td>sheet（张）</td></tr><tr><td>DOSAGE_UNIT_CHARACTER</td><td>6</td><td>character（字符）</td></tr><tr><td>DOSAGE_UNIT_GB</td><td>7</td><td>GB</td></tr><tr><td>DOSAGE_UNIT_NUMBER</td><td>8</td><td>number（个数）</td></tr><tr><td>DOSAGE_UNIT_MILL_SECOND</td><td>9</td><td>mill_second（毫秒）</td></tr></tbody></table>
+	UsageUnit *int64 `json:"UsageUnit,omitnil,omitempty" name:"UsageUnit"`
 }
 
 type Conversation struct {
@@ -1719,11 +1786,14 @@ type CorpShareConfig struct {
 	// <p>企业共享开关</p>
 	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
 
-	// <table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>SHARE_SCOPE_TYPE_UNSPECIFIED</td><td>0</td><td></td></tr><tr><td>SHARE_SCOPE_TYPE_ALL</td><td>1</td><td></td></tr><tr><td>SHARE_SCOPE_TYPE_ACCOUNT</td><td>2</td><td></td></tr></tbody></table>
+	// <p>共享范围类型，1：企业全员，2：指定账户，3：指定空间</p>
 	ShareScope *int64 `json:"ShareScope,omitnil,omitempty" name:"ShareScope"`
 
 	// <p>企业共享应用标签</p>
 	TagIdList []*string `json:"TagIdList,omitnil,omitempty" name:"TagIdList"`
+
+	// <p>共享范围信息(用户时StrId为uin,Name为用户名称;空间时StrId为空间ID,Name为空间名称)</p>
+	ShareScopeList []*Identity `json:"ShareScopeList,omitnil,omitempty" name:"ShareScopeList"`
 }
 
 // Predefined struct for user
@@ -4440,6 +4510,182 @@ func (r *DescribeAuditLogMetaResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeConcurrencyLimitDetailListRequestParams struct {
+	// <p>查询时间范围（Unix 秒）</p>
+	TimeRange *TimeRange `json:"TimeRange,omitnil,omitempty" name:"TimeRange"`
+
+	// <p>视图范围：企业视图 / 空间视图/ 应用视图</p>
+	ViewScope *ViewScope `json:"ViewScope,omitnil,omitempty" name:"ViewScope"`
+
+	// <p>扩展过滤。Filter 组合规则：多项 AND，同项 value_list OR。支持 Name：concurrency_type（qpm_tpm/dedicated，默认 qpm_tpm）、model_name（必填）、space_id、app_id/resource_id/source_id（应用ID，多选）、metric_source_type（METRIC_SOURCE_TYPE_* 枚举名或整数）</p>
+	FilterList []*Filter `json:"FilterList,omitnil,omitempty" name:"FilterList"`
+
+	// <p>页码，从 0 开始</p>
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// <p>每页数量，最大 100</p>
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+type DescribeConcurrencyLimitDetailListRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>查询时间范围（Unix 秒）</p>
+	TimeRange *TimeRange `json:"TimeRange,omitnil,omitempty" name:"TimeRange"`
+
+	// <p>视图范围：企业视图 / 空间视图/ 应用视图</p>
+	ViewScope *ViewScope `json:"ViewScope,omitnil,omitempty" name:"ViewScope"`
+
+	// <p>扩展过滤。Filter 组合规则：多项 AND，同项 value_list OR。支持 Name：concurrency_type（qpm_tpm/dedicated，默认 qpm_tpm）、model_name（必填）、space_id、app_id/resource_id/source_id（应用ID，多选）、metric_source_type（METRIC_SOURCE_TYPE_* 枚举名或整数）</p>
+	FilterList []*Filter `json:"FilterList,omitnil,omitempty" name:"FilterList"`
+
+	// <p>页码，从 0 开始</p>
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// <p>每页数量，最大 100</p>
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+func (r *DescribeConcurrencyLimitDetailListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeConcurrencyLimitDetailListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TimeRange")
+	delete(f, "ViewScope")
+	delete(f, "FilterList")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeConcurrencyLimitDetailListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeConcurrencyLimitDetailListResponseParams struct {
+	// <p>并发超限明细列表</p>
+	ConcurrencyLimitDetailList []*ConcurrencyLimitDetail `json:"ConcurrencyLimitDetailList,omitnil,omitempty" name:"ConcurrencyLimitDetailList"`
+
+	// <p>总记录数，用于前端分页</p>
+	TotalCount *string `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeConcurrencyLimitDetailListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeConcurrencyLimitDetailListResponseParams `json:"Response"`
+}
+
+func (r *DescribeConcurrencyLimitDetailListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeConcurrencyLimitDetailListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeConsumptionDetailListRequestParams struct {
+	// <p>查询时间范围（Unix 秒）</p>
+	TimeRange *TimeRange `json:"TimeRange,omitnil,omitempty" name:"TimeRange"`
+
+	// <p>视图范围：企业视图 / 空间视图</p>
+	ViewScope *ViewScope `json:"ViewScope,omitnil,omitempty" name:"ViewScope"`
+
+	// <p>扩展过滤。Filter 组合规则：多项 AND，同项 value_list OR。支持 Name：metric_source_type（METRIC_SOURCE_TYPE_* 或整数）、source_ids（多选来源ID）、resource_id/source_id（单选来源ID，source_ids 未传时生效）、space_id、user_id</p>
+	FilterList []*Filter `json:"FilterList,omitnil,omitempty" name:"FilterList"`
+
+	// <p>页码，从 0 开始</p>
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// <p>每页数量，最大 100</p>
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+type DescribeConsumptionDetailListRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>查询时间范围（Unix 秒）</p>
+	TimeRange *TimeRange `json:"TimeRange,omitnil,omitempty" name:"TimeRange"`
+
+	// <p>视图范围：企业视图 / 空间视图</p>
+	ViewScope *ViewScope `json:"ViewScope,omitnil,omitempty" name:"ViewScope"`
+
+	// <p>扩展过滤。Filter 组合规则：多项 AND，同项 value_list OR。支持 Name：metric_source_type（METRIC_SOURCE_TYPE_* 或整数）、source_ids（多选来源ID）、resource_id/source_id（单选来源ID，source_ids 未传时生效）、space_id、user_id</p>
+	FilterList []*Filter `json:"FilterList,omitnil,omitempty" name:"FilterList"`
+
+	// <p>页码，从 0 开始</p>
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// <p>每页数量，最大 100</p>
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+func (r *DescribeConsumptionDetailListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeConsumptionDetailListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TimeRange")
+	delete(f, "ViewScope")
+	delete(f, "FilterList")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeConsumptionDetailListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeConsumptionDetailListResponseParams struct {
+	// <p>资源消耗明细列表</p>
+	ConsumptionDetailList []*ConsumptionDetail `json:"ConsumptionDetailList,omitnil,omitempty" name:"ConsumptionDetailList"`
+
+	// <p>总记录数，用于前端分页</p>
+	TotalCount *string `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeConsumptionDetailListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeConsumptionDetailListResponseParams `json:"Response"`
+}
+
+func (r *DescribeConsumptionDetailListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeConsumptionDetailListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeConversationListRequestParams struct {
 	// <p>会话类型，传 CONVERSATION_TYPE_UNSPECIFIED 表示全部 枚举值: 0-CONVERSATION_TYPE_UNSPECIFIED(未指定；列表查询时表示全部), 1-CONVERSATION_TYPE_VISITOR(访客端体验), 2-CONVERSATION_TYPE_EVALUATION(评测), 5-CONVERSATION_TYPE_API(API 接入), 10-CONVERSATION_TYPE_WORKFLOW(工作流调试), 20-CONVERSATION_TYPE_SHARE(分享链接)</p>
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
@@ -4895,6 +5141,87 @@ func (r *DescribeLatestReleaseResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeLatestReleaseResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMetricOverviewListRequestParams struct {
+	// <p>看板域，必填，决定返回哪个域的 KPI 数据</p><table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>RESOURCE_TYPE_UNSPECIFIED</td><td>0</td><td></td></tr><tr><td>RESOURCE_TYPE_MODEL</td><td>1</td><td>模型用量</td></tr><tr><td>RESOURCE_TYPE_PLUGIN</td><td>2</td><td>插件用量</td></tr><tr><td>RESOURCE_TYPE_PLATFORM</td><td>3</td><td>平台功能用量</td></tr><tr><td>RESOURCE_TYPE_MODEL_CONCURRENCY</td><td>4</td><td>模型并发超限</td></tr><tr><td>RESOURCE_TYPE_KB_CAPACITY</td><td>5</td><td>知识库容量</td></tr><tr><td>RESOURCE_TYPE_USAGE_SUMMARY</td><td>6</td><td>用量汇总</td></tr><tr><td>RESOURCE_TYPE_RESOURCE_CONSUME</td><td>7</td><td>资源消耗（计费明细）</td></tr></tbody></table>
+	ResourceType *int64 `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// <p>查询时间范围（Unix 秒）</p>
+	TimeRange *TimeRange `json:"TimeRange,omitnil,omitempty" name:"TimeRange"`
+
+	// <p>视图范围：企业视图 / 空间视图</p>
+	ViewScope *ViewScope `json:"ViewScope,omitnil,omitempty" name:"ViewScope"`
+
+	// <p>扩展过滤（resource_type=MODEL）。Filter 组合规则：多项 AND，同项 value_list OR。支持 Name：model_name（模型名）、user_id（用户ID）、space_id（空间ID）、resource_id/source_id（来源ID）、metric_source_type（METRIC_SOURCE_TYPE_* 枚举名或整数）</p>
+	FilterList []*Filter `json:"FilterList,omitnil,omitempty" name:"FilterList"`
+}
+
+type DescribeMetricOverviewListRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>看板域，必填，决定返回哪个域的 KPI 数据</p><table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>RESOURCE_TYPE_UNSPECIFIED</td><td>0</td><td></td></tr><tr><td>RESOURCE_TYPE_MODEL</td><td>1</td><td>模型用量</td></tr><tr><td>RESOURCE_TYPE_PLUGIN</td><td>2</td><td>插件用量</td></tr><tr><td>RESOURCE_TYPE_PLATFORM</td><td>3</td><td>平台功能用量</td></tr><tr><td>RESOURCE_TYPE_MODEL_CONCURRENCY</td><td>4</td><td>模型并发超限</td></tr><tr><td>RESOURCE_TYPE_KB_CAPACITY</td><td>5</td><td>知识库容量</td></tr><tr><td>RESOURCE_TYPE_USAGE_SUMMARY</td><td>6</td><td>用量汇总</td></tr><tr><td>RESOURCE_TYPE_RESOURCE_CONSUME</td><td>7</td><td>资源消耗（计费明细）</td></tr></tbody></table>
+	ResourceType *int64 `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// <p>查询时间范围（Unix 秒）</p>
+	TimeRange *TimeRange `json:"TimeRange,omitnil,omitempty" name:"TimeRange"`
+
+	// <p>视图范围：企业视图 / 空间视图</p>
+	ViewScope *ViewScope `json:"ViewScope,omitnil,omitempty" name:"ViewScope"`
+
+	// <p>扩展过滤（resource_type=MODEL）。Filter 组合规则：多项 AND，同项 value_list OR。支持 Name：model_name（模型名）、user_id（用户ID）、space_id（空间ID）、resource_id/source_id（来源ID）、metric_source_type（METRIC_SOURCE_TYPE_* 枚举名或整数）</p>
+	FilterList []*Filter `json:"FilterList,omitnil,omitempty" name:"FilterList"`
+}
+
+func (r *DescribeMetricOverviewListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMetricOverviewListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ResourceType")
+	delete(f, "TimeRange")
+	delete(f, "ViewScope")
+	delete(f, "FilterList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMetricOverviewListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMetricOverviewListResponseParams struct {
+	// <p>所有域 Overview 统一出参：KPI 卡片列表，key 字符串标识指标，客户端按 resource_type 解析；key 白名单参考 platform.common.v2.MetricOverview 注释</p>
+	MetricList []*MetricOverview `json:"MetricList,omitnil,omitempty" name:"MetricList"`
+
+	// <p>总记录数，等于 MetricList 长度，仅为列表接口一致性预留</p>
+	TotalCount *string `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeMetricOverviewListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeMetricOverviewListResponseParams `json:"Response"`
+}
+
+func (r *DescribeMetricOverviewListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMetricOverviewListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5754,6 +6081,196 @@ func (r *DescribeSystemVariableListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeUsageDetailListRequestParams struct {
+	// <p>资源类型，限定为 RESOURCE_TYPE_MODEL / RESOURCE_TYPE_PLUGIN</p><table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>RESOURCE_TYPE_UNSPECIFIED</td><td>0</td><td></td></tr><tr><td>RESOURCE_TYPE_MODEL</td><td>1</td><td>模型用量</td></tr><tr><td>RESOURCE_TYPE_PLUGIN</td><td>2</td><td>插件用量</td></tr><tr><td>RESOURCE_TYPE_PLATFORM</td><td>3</td><td>平台功能用量</td></tr><tr><td>RESOURCE_TYPE_MODEL_CONCURRENCY</td><td>4</td><td>模型并发超限</td></tr><tr><td>RESOURCE_TYPE_KB_CAPACITY</td><td>5</td><td>知识库容量</td></tr><tr><td>RESOURCE_TYPE_USAGE_SUMMARY</td><td>6</td><td>用量汇总</td></tr><tr><td>RESOURCE_TYPE_RESOURCE_CONSUME</td><td>7</td><td>资源消耗（计费明细）</td></tr></tbody></table>
+	ResourceType *int64 `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// <p>查询时间范围（Unix 秒）</p>
+	TimeRange *TimeRange `json:"TimeRange,omitnil,omitempty" name:"TimeRange"`
+
+	// <p>视图范围：企业视图 / 空间视图 / 应用视图</p>
+	ViewScope *ViewScope `json:"ViewScope,omitnil,omitempty" name:"ViewScope"`
+
+	// <p>扩展过滤（resource_type=MODEL）。Filter 组合规则：多项 AND，同项 value_list OR。支持 Name：model_name、user_id、space_id、resource_id/source_id、metric_source_type（METRIC_SOURCE_TYPE_* 或整数）、call_type（调用类型）</p>
+	FilterList []*Filter `json:"FilterList,omitnil,omitempty" name:"FilterList"`
+
+	// <p>页码，从 0 开始</p>
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// <p>每页数量，最大 100</p>
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+type DescribeUsageDetailListRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>资源类型，限定为 RESOURCE_TYPE_MODEL / RESOURCE_TYPE_PLUGIN</p><table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>RESOURCE_TYPE_UNSPECIFIED</td><td>0</td><td></td></tr><tr><td>RESOURCE_TYPE_MODEL</td><td>1</td><td>模型用量</td></tr><tr><td>RESOURCE_TYPE_PLUGIN</td><td>2</td><td>插件用量</td></tr><tr><td>RESOURCE_TYPE_PLATFORM</td><td>3</td><td>平台功能用量</td></tr><tr><td>RESOURCE_TYPE_MODEL_CONCURRENCY</td><td>4</td><td>模型并发超限</td></tr><tr><td>RESOURCE_TYPE_KB_CAPACITY</td><td>5</td><td>知识库容量</td></tr><tr><td>RESOURCE_TYPE_USAGE_SUMMARY</td><td>6</td><td>用量汇总</td></tr><tr><td>RESOURCE_TYPE_RESOURCE_CONSUME</td><td>7</td><td>资源消耗（计费明细）</td></tr></tbody></table>
+	ResourceType *int64 `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// <p>查询时间范围（Unix 秒）</p>
+	TimeRange *TimeRange `json:"TimeRange,omitnil,omitempty" name:"TimeRange"`
+
+	// <p>视图范围：企业视图 / 空间视图 / 应用视图</p>
+	ViewScope *ViewScope `json:"ViewScope,omitnil,omitempty" name:"ViewScope"`
+
+	// <p>扩展过滤（resource_type=MODEL）。Filter 组合规则：多项 AND，同项 value_list OR。支持 Name：model_name、user_id、space_id、resource_id/source_id、metric_source_type（METRIC_SOURCE_TYPE_* 或整数）、call_type（调用类型）</p>
+	FilterList []*Filter `json:"FilterList,omitnil,omitempty" name:"FilterList"`
+
+	// <p>页码，从 0 开始</p>
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// <p>每页数量，最大 100</p>
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+func (r *DescribeUsageDetailListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUsageDetailListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ResourceType")
+	delete(f, "TimeRange")
+	delete(f, "ViewScope")
+	delete(f, "FilterList")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUsageDetailListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeUsageDetailListResponseParams struct {
+	// <p>总记录数，用于前端分页</p>
+	TotalCount *string `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>资源调用时序明细列表</p>
+	UsageDetailList []*UsageDetail `json:"UsageDetailList,omitnil,omitempty" name:"UsageDetailList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeUsageDetailListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeUsageDetailListResponseParams `json:"Response"`
+}
+
+func (r *DescribeUsageDetailListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUsageDetailListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeUsageSummaryListRequestParams struct {
+	// <p>资源类型，限定为 MODEL / PLUGIN / PLATFORM</p><table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>RESOURCE_TYPE_UNSPECIFIED</td><td>0</td><td></td></tr><tr><td>RESOURCE_TYPE_MODEL</td><td>1</td><td>模型用量</td></tr><tr><td>RESOURCE_TYPE_PLUGIN</td><td>2</td><td>插件用量</td></tr><tr><td>RESOURCE_TYPE_PLATFORM</td><td>3</td><td>平台功能用量</td></tr><tr><td>RESOURCE_TYPE_MODEL_CONCURRENCY</td><td>4</td><td>模型并发超限</td></tr><tr><td>RESOURCE_TYPE_KB_CAPACITY</td><td>5</td><td>知识库容量</td></tr><tr><td>RESOURCE_TYPE_USAGE_SUMMARY</td><td>6</td><td>用量汇总</td></tr><tr><td>RESOURCE_TYPE_RESOURCE_CONSUME</td><td>7</td><td>资源消耗（计费明细）</td></tr></tbody></table>
+	ResourceType *int64 `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// <p>查询时间范围（Unix 秒）</p>
+	TimeRange *TimeRange `json:"TimeRange,omitnil,omitempty" name:"TimeRange"`
+
+	// <p>视图范围：企业视图 / 空间视图 / 应用视图</p>
+	ViewScope *ViewScope `json:"ViewScope,omitnil,omitempty" name:"ViewScope"`
+
+	// <p>扩展过滤（resource_type=MODEL）。Filter 组合规则：多项 AND，同项 value_list OR。支持 Name：model_name（模型名）、user_id（用户ID）、space_id（空间ID）、resource_id/source_id（来源ID）、metric_source_type（METRIC_SOURCE_TYPE_* 枚举名或整数）</p>
+	FilterList []*Filter `json:"FilterList,omitnil,omitempty" name:"FilterList"`
+
+	// <p>页码，从 0 开始</p>
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// <p>每页数量，最大 100</p>
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+type DescribeUsageSummaryListRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>资源类型，限定为 MODEL / PLUGIN / PLATFORM</p><table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>RESOURCE_TYPE_UNSPECIFIED</td><td>0</td><td></td></tr><tr><td>RESOURCE_TYPE_MODEL</td><td>1</td><td>模型用量</td></tr><tr><td>RESOURCE_TYPE_PLUGIN</td><td>2</td><td>插件用量</td></tr><tr><td>RESOURCE_TYPE_PLATFORM</td><td>3</td><td>平台功能用量</td></tr><tr><td>RESOURCE_TYPE_MODEL_CONCURRENCY</td><td>4</td><td>模型并发超限</td></tr><tr><td>RESOURCE_TYPE_KB_CAPACITY</td><td>5</td><td>知识库容量</td></tr><tr><td>RESOURCE_TYPE_USAGE_SUMMARY</td><td>6</td><td>用量汇总</td></tr><tr><td>RESOURCE_TYPE_RESOURCE_CONSUME</td><td>7</td><td>资源消耗（计费明细）</td></tr></tbody></table>
+	ResourceType *int64 `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// <p>查询时间范围（Unix 秒）</p>
+	TimeRange *TimeRange `json:"TimeRange,omitnil,omitempty" name:"TimeRange"`
+
+	// <p>视图范围：企业视图 / 空间视图 / 应用视图</p>
+	ViewScope *ViewScope `json:"ViewScope,omitnil,omitempty" name:"ViewScope"`
+
+	// <p>扩展过滤（resource_type=MODEL）。Filter 组合规则：多项 AND，同项 value_list OR。支持 Name：model_name（模型名）、user_id（用户ID）、space_id（空间ID）、resource_id/source_id（来源ID）、metric_source_type（METRIC_SOURCE_TYPE_* 枚举名或整数）</p>
+	FilterList []*Filter `json:"FilterList,omitnil,omitempty" name:"FilterList"`
+
+	// <p>页码，从 0 开始</p>
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// <p>每页数量，最大 100</p>
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+func (r *DescribeUsageSummaryListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUsageSummaryListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ResourceType")
+	delete(f, "TimeRange")
+	delete(f, "ViewScope")
+	delete(f, "FilterList")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUsageSummaryListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeUsageSummaryListResponseParams struct {
+	// <p>总记录数，用于前端分页</p>
+	TotalCount *string `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>资源用量聚合明细列表</p>
+	UsageSummaryList []*UsageSummary `json:"UsageSummaryList,omitnil,omitempty" name:"UsageSummaryList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeUsageSummaryListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeUsageSummaryListResponseParams `json:"Response"`
+}
+
+func (r *DescribeUsageSummaryListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUsageSummaryListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeVariableListRequestParams struct {
 	// 应用ID
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
@@ -6146,6 +6663,20 @@ type GenerateModel struct {
 	Model *ModelDetailInfo `json:"Model,omitnil,omitempty" name:"Model"`
 }
 
+type Identity struct {
+	// <p>描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>数字 ID</p>
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>字符串 ID</p>
+	StrId *string `json:"StrId,omitnil,omitempty" name:"StrId"`
+}
+
 type InputBoxConfig struct {
 	// 输入框按钮，1：上传图片、2：上传文档，3：腾讯文档，4：联网搜索
 	InputBoxButtons []*int64 `json:"InputBoxButtons,omitnil,omitempty" name:"InputBoxButtons"`
@@ -6213,6 +6744,20 @@ type MCPToolConfig struct {
 type ManualOnlySchedule struct {
 	// 启用
 	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+}
+
+type MetricOverview struct {
+	// <p>指标键，取值参考 MetricOverview 注释中的 key 白名单</p>
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// <p>环比百分比，无环比时填 0</p>
+	Mom *float64 `json:"Mom,omitnil,omitempty" name:"Mom"`
+
+	// <p>指标单位，枚举值 DosageUnit；key 与 unit 的对应关系参考 MetricOverview 注释白名单</p><table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>DOSAGE_UNIT_TOKEN</td><td>0</td><td>token（默认）</td></tr><tr><td>DOSAGE_UNIT_PAGE_COUNT</td><td>1</td><td>page_count（页数）</td></tr><tr><td>DOSAGE_UNIT_TIMES</td><td>2</td><td>times（次数）</td></tr><tr><td>DOSAGE_UNIT_SECOND</td><td>3</td><td>second（秒）</td></tr><tr><td>DOSAGE_UNIT_ITEM</td><td>4</td><td>item（条）</td></tr><tr><td>DOSAGE_UNIT_SHEET</td><td>5</td><td>sheet（张）</td></tr><tr><td>DOSAGE_UNIT_CHARACTER</td><td>6</td><td>character（字符）</td></tr><tr><td>DOSAGE_UNIT_GB</td><td>7</td><td>GB</td></tr><tr><td>DOSAGE_UNIT_NUMBER</td><td>8</td><td>number（个数）</td></tr><tr><td>DOSAGE_UNIT_MILL_SECOND</td><td>9</td><td>mill_second（毫秒）</td></tr></tbody></table>
+	Unit *int64 `json:"Unit,omitnil,omitempty" name:"Unit"`
+
+	// <p>指标数值</p>
+	Value *float64 `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 type Model struct {
@@ -6403,6 +6948,40 @@ type ModelStatus struct {
 
 	// 资源状态。1-资源可用, 2-资源已用尽
 	ResourceStatus *int64 `json:"ResourceStatus,omitnil,omitempty" name:"ResourceStatus"`
+}
+
+type ModelUsageDetail struct {
+	// <p>调用类型，来源于计费 scene_billing（与 filter.call_type 对应）</p>
+	CallType *string `json:"CallType,omitnil,omitempty" name:"CallType"`
+
+	// <p>是否默认知识库</p>
+	IsDefaultKB *bool `json:"IsDefaultKB,omitnil,omitempty" name:"IsDefaultKB"`
+
+	// <p>模型名称</p>
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
+	// <p>MODEL 域单次调用的消耗计量列表（权威字段）：按单位+label 分项列出每类计量。unit=TOKEN 时 label 区分 Token 子类别（input/output/avg_*/cache_*），label 为空表示 total_tokens；unit=PAGE_COUNT 表示模型消耗页数</p>
+	ResourceConsumptionList []*ResourceConsumption `json:"ResourceConsumptionList,omitnil,omitempty" name:"ResourceConsumptionList"`
+
+	// <p>本次调用消耗 PU 量</p>
+	ConsumptionPU *float64 `json:"ConsumptionPU,omitnil,omitempty" name:"ConsumptionPU"`
+}
+
+type ModelUsageSummary struct {
+	// <p>调用次数（业务调用维度的顶层计数）</p>
+	CallCount *float64 `json:"CallCount,omitnil,omitempty" name:"CallCount"`
+
+	// <p>是否默认知识库</p>
+	IsDefaultKB *bool `json:"IsDefaultKB,omitnil,omitempty" name:"IsDefaultKB"`
+
+	// <p>模型名称，标识使用的 AI 模型</p>
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
+	// <p>MODEL 域消耗计量列表（权威字段）：按单位+label 分项列出每类计量。unit=TOKEN 时 label 区分 Token 子类别（input/output/avg_*/cache_*），label 为空表示 total_tokens；unit=PAGE_COUNT 表示模型消耗页数</p>
+	ResourceConsumptionList []*ResourceConsumption `json:"ResourceConsumptionList,omitnil,omitempty" name:"ResourceConsumptionList"`
+
+	// <p>模型消耗 PU 总量（聚合维度内的 PU 消耗之和）</p>
+	ConsumptionPU *float64 `json:"ConsumptionPU,omitnil,omitempty" name:"ConsumptionPU"`
 }
 
 // Predefined struct for user
@@ -7245,6 +7824,11 @@ func (r *PauseAppTriggerResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type PlatformUsageSummary struct {
+	// <p>PLATFORM 域消耗计量列表（权威字段）：按单位+label 分项列出每类计量，label 取 PlatformBizType 枚举名称字符串；典型如 unit=TIMES + label=PLATFORM_BIZ_TYPE_SECURITY_AUDIT/WEB_SEARCH/OPEN_CLAW/APP_INVOKE，unit=ITEM + label=PLATFORM_BIZ_TYPE_LONG_TERM_MEMORY</p>
+	ResourceConsumptionList []*ResourceConsumption `json:"ResourceConsumptionList,omitnil,omitempty" name:"ResourceConsumptionList"`
+}
+
 type Plugin struct {
 	// 插件配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -7386,6 +7970,25 @@ type PluginSummary struct {
 
 	// <p>工具信息</p>
 	ToolList []*ToolSummary `json:"ToolList,omitnil,omitempty" name:"ToolList"`
+}
+
+type PluginUsageDetail struct {
+	// <p>插件名称</p>
+	PluginName *string `json:"PluginName,omitnil,omitempty" name:"PluginName"`
+
+	// <p>PLUGIN 域单次调用的消耗计量列表（权威字段）：按单位+label 分项列出每类计量。unit=TOKEN 时 label 区分 Token 子类别（input/output/avg_*），label 为空表示 total_tokens</p>
+	ResourceConsumptionList []*ResourceConsumption `json:"ResourceConsumptionList,omitnil,omitempty" name:"ResourceConsumptionList"`
+
+	// <p>插件工具名（tool_name）</p>
+	ToolName *string `json:"ToolName,omitnil,omitempty" name:"ToolName"`
+}
+
+type PluginUsageSummary struct {
+	// <p>调用次数（业务调用维度的顶层计数）</p>
+	CallCount *float64 `json:"CallCount,omitnil,omitempty" name:"CallCount"`
+
+	// <p>PLUGIN 域消耗计量列表（权威字段）：按单位+label 分项列出每类计量。unit=TOKEN 时 label 区分 Token 子类别（input/output/avg_*），label 为空表示 total_tokens</p>
+	ResourceConsumptionList []*ResourceConsumption `json:"ResourceConsumptionList,omitnil,omitempty" name:"ResourceConsumptionList"`
 }
 
 type PluginUserState struct {
@@ -7662,6 +8265,17 @@ func (r *ResetConversationResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ResetConversationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type ResourceConsumption struct {
+	// <p>功能标签，PLATFORM 场景取 PlatformBizType 枚举名称；MODEL/PLUGIN 场景为空</p>
+	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
+
+	// <p>消耗计量单位</p><table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>DOSAGE_UNIT_TOKEN</td><td>0</td><td>token（默认）</td></tr><tr><td>DOSAGE_UNIT_PAGE_COUNT</td><td>1</td><td>page_count（页数）</td></tr><tr><td>DOSAGE_UNIT_TIMES</td><td>2</td><td>times（次数）</td></tr><tr><td>DOSAGE_UNIT_SECOND</td><td>3</td><td>second（秒）</td></tr><tr><td>DOSAGE_UNIT_ITEM</td><td>4</td><td>item（条）</td></tr><tr><td>DOSAGE_UNIT_SHEET</td><td>5</td><td>sheet（张）</td></tr><tr><td>DOSAGE_UNIT_CHARACTER</td><td>6</td><td>character（字符）</td></tr><tr><td>DOSAGE_UNIT_GB</td><td>7</td><td>GB</td></tr><tr><td>DOSAGE_UNIT_NUMBER</td><td>8</td><td>number（个数）</td></tr><tr><td>DOSAGE_UNIT_MILL_SECOND</td><td>9</td><td>mill_second（毫秒）</td></tr></tbody></table>
+	Unit *int64 `json:"Unit,omitnil,omitempty" name:"Unit"`
+
+	// <p>消耗数值</p>
+	Value *float64 `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 type ResponseParam struct {
@@ -8322,6 +8936,14 @@ type ThinkModel struct {
 	Model *ModelDetailInfo `json:"Model,omitnil,omitempty" name:"Model"`
 }
 
+type TimeRange struct {
+	// <p>结束时间，Unix 秒</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>开始时间，Unix 秒</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+}
+
 type TimerPushConfig struct {
 	// <p>枚举值:<br>| uint | 描述 |<br>| --- | --- |<br>| 0 |  |<br>| 1 | 不推送 |<br>| 2 | 微信公众号 |<br>| 3 | 企业微信 AI 机器人 |</p>
 	PushChannel *int64 `json:"PushChannel,omitnil,omitempty" name:"PushChannel"`
@@ -8585,6 +9207,49 @@ func (r *UnfavoriteSkillResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type UsageDetail struct {
+	// <p>调用来源</p>
+	CallSource *CallSource `json:"CallSource,omitnil,omitempty" name:"CallSource"`
+
+	// <p>计量 ID，用于对账/回溯</p>
+	DosageId *string `json:"DosageId,omitnil,omitempty" name:"DosageId"`
+
+	// <p>调用时间戳（Unix 秒）</p>
+	EventTime *string `json:"EventTime,omitnil,omitempty" name:"EventTime"`
+
+	// <p>MODEL 域专属</p>
+	Model *ModelUsageDetail `json:"Model,omitnil,omitempty" name:"Model"`
+
+	// <p>PLUGIN 域专属</p>
+	Plugin *PluginUsageDetail `json:"Plugin,omitnil,omitempty" name:"Plugin"`
+
+	// <p>调用链路追踪 ID</p>
+	TraceId *string `json:"TraceId,omitnil,omitempty" name:"TraceId"`
+
+	// <p>用户 ID</p>
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+}
+
+type UsageSummary struct {
+	// <p>MODEL 域专属</p>
+	Model *ModelUsageSummary `json:"Model,omitnil,omitempty" name:"Model"`
+
+	// <p>PLATFORM 域专属</p>
+	Platform *PlatformUsageSummary `json:"Platform,omitnil,omitempty" name:"Platform"`
+
+	// <p>PLUGIN 域专属</p>
+	Plugin *PluginUsageSummary `json:"Plugin,omitnil,omitempty" name:"Plugin"`
+
+	// <p>来源 ID；CORP 视图=space_id（企业视图按 space 分组），SPACE 视图=app_id（uint64 字符串），APP 视图=app_id</p>
+	SourceId *string `json:"SourceId,omitnil,omitempty" name:"SourceId"`
+
+	// <p>来源名称；CORP 视图=space_name，SPACE 视图=app_name，APP 视图=app_name</p>
+	SourceName *string `json:"SourceName,omitnil,omitempty" name:"SourceName"`
+
+	// <p>视图类型，决定 SourceId/SourceName 的业务含义</p><table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>VIEW_TYPE_UNSPECIFIED</td><td>0</td><td>未指定（无效值，请求勿传）</td></tr><tr><td>VIEW_TYPE_CORP</td><td>1</td><td>企业视图</td></tr><tr><td>VIEW_TYPE_SPACE</td><td>2</td><td>空间视图</td></tr><tr><td>VIEW_TYPE_APP</td><td>3</td><td>应用视图</td></tr></tbody></table>
+	ViewType *int64 `json:"ViewType,omitnil,omitempty" name:"ViewType"`
+}
+
 type Variable struct {
 	// <p>默认文件名称</p>
 	DefaultFileName *string `json:"DefaultFileName,omitnil,omitempty" name:"DefaultFileName"`
@@ -8612,6 +9277,14 @@ type Variable struct {
 
 	// <p>网络策略列表(支持: 精确域名、*.通配子域名、可带协议/端口/路径前缀)</p>
 	EndpointList []*string `json:"EndpointList,omitnil,omitempty" name:"EndpointList"`
+}
+
+type ViewScope struct {
+	// <p>视图类型；枚举值：VIEW_TYPE_CORP(1) 企业视图、VIEW_TYPE_SPACE(2) 空间视图、VIEW_TYPE_APP(3) 应用视图</p><table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>VIEW_TYPE_UNSPECIFIED</td><td>0</td><td>未指定（无效值，请求勿传）</td></tr><tr><td>VIEW_TYPE_CORP</td><td>1</td><td>企业视图</td></tr><tr><td>VIEW_TYPE_SPACE</td><td>2</td><td>空间视图</td></tr><tr><td>VIEW_TYPE_APP</td><td>3</td><td>应用视图</td></tr></tbody></table>
+	ViewType *int64 `json:"ViewType,omitnil,omitempty" name:"ViewType"`
+
+	// <p>视图范围 ID；VIEW_TYPE_CORP 留空；VIEW_TYPE_SPACE 填 space_id；VIEW_TYPE_APP 填 app_id（uint64 雪花 ID 的十进制字符串）</p>
+	ScopeId *string `json:"ScopeId,omitnil,omitempty" name:"ScopeId"`
 }
 
 type VoiceConfig struct {

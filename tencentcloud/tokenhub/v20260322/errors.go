@@ -137,6 +137,9 @@ const (
 	// ResourceNotFound.GlossaryNotFound
 	RESOURCENOTFOUND_GLOSSARYNOTFOUND = "ResourceNotFound.GlossaryNotFound"
 
+	// ResourceNotFound.ModelNotFound
+	RESOURCENOTFOUND_MODELNOTFOUND = "ResourceNotFound.ModelNotFound"
+
 	// ResourceNotFound.ResourceNotFound
 	RESOURCENOTFOUND_RESOURCENOTFOUND = "ResourceNotFound.ResourceNotFound"
 

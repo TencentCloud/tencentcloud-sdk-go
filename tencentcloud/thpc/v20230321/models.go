@@ -1797,14 +1797,14 @@ func (r *DescribeJobSubmitInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeJobsOverviewRequestParams struct {
-	// 集群ID
+	// <p>集群ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 }
 
 type DescribeJobsOverviewRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群ID
+	// <p>集群ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 }
 
@@ -1829,13 +1829,13 @@ func (r *DescribeJobsOverviewRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeJobsOverviewResponseParams struct {
-	// 作业任务数量
+	// <p>作业任务数量</p>
 	JobTotal *uint64 `json:"JobTotal,omitnil,omitempty" name:"JobTotal"`
 
-	// 排队中的作业任务数量
+	// <p>排队中的作业任务数量</p>
 	QueuingJobTotal *uint64 `json:"QueuingJobTotal,omitnil,omitempty" name:"QueuingJobTotal"`
 
-	// 运行中的作业数量
+	// <p>运行中的作业数量</p>
 	RunningJobTotal *uint64 `json:"RunningJobTotal,omitnil,omitempty" name:"RunningJobTotal"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2177,20 +2177,20 @@ func (r *DescribeWorkspacesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DetachNodesRequestParams struct {
-	// 集群id
+	// <p>集群id</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 集群中的节点id
+	// <p>集群中的节点id</p>
 	NodeIds []*string `json:"NodeIds,omitnil,omitempty" name:"NodeIds"`
 }
 
 type DetachNodesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群id
+	// <p>集群id</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 集群中的节点id
+	// <p>集群中的节点id</p>
 	NodeIds []*string `json:"NodeIds,omitnil,omitempty" name:"NodeIds"`
 }
 

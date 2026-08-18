@@ -4808,6 +4808,9 @@ type JobConfig struct {
 	// <p>日志桶</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogCOSBucket *string `json:"LogCOSBucket,omitnil,omitempty" name:"LogCOSBucket"`
+
+	// <p>是否支持滚动删除，0，手动删除，1，自动滚动删除</p>
+	IsLocked *int64 `json:"IsLocked,omitnil,omitempty" name:"IsLocked"`
 }
 
 type JobEvent struct {

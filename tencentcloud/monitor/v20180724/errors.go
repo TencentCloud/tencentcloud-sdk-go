@@ -104,6 +104,9 @@ const (
 	// FailedOperation.Db
 	FAILEDOPERATION_DB = "FailedOperation.Db"
 
+	// 数据库操作失败。
+	FAILEDOPERATION_DBOPERATIONFAILED = "FailedOperation.DbOperationFailed"
+
 	// 数据库查询失败。
 	FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
 

@@ -21206,233 +21206,241 @@ type TriggerTaskLinkBrief struct {
 }
 
 type TriggerTaskRunBrief struct {
-	// 任务运行ID
+	// <p>任务运行ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExecutionId *string `json:"ExecutionId,omitnil,omitempty" name:"ExecutionId"`
 
-	// 执行状态，运行失败:FAILED、运行成功:SUCCESS、等待中:PENDING、跳过运行:SKIP、运行中:RUNNING
+	// <p>执行状态，运行失败:FAILED、运行成功:SUCCESS、等待中:PENDING、跳过运行:SKIP、运行中:RUNNING</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExecutionState *string `json:"ExecutionState,omitnil,omitempty" name:"ExecutionState"`
 
-	// 项目ID
+	// <p>项目ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 工作流ID
+	// <p>工作流ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
 
-	// 工作流运行ID
+	// <p>工作流运行ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkflowExecutionId *string `json:"WorkflowExecutionId,omitnil,omitempty" name:"WorkflowExecutionId"`
 
-	// 任务 ID
+	// <p>任务 ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 任务类型
+	// <p>任务类型</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
-	// 任务版本
+	// <p>任务版本</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskVersionId *string `json:"TaskVersionId,omitnil,omitempty" name:"TaskVersionId"`
 
-	// 触发类型
+	// <p>触发类型</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TriggerType *string `json:"TriggerType,omitnil,omitempty" name:"TriggerType"`
 
-	// 等待时长，单位秒
+	// <p>等待时长，单位秒</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WaitTime *string `json:"WaitTime,omitnil,omitempty" name:"WaitTime"`
 
-	// 所属资源组
+	// <p>所属资源组</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceGroup *string `json:"ResourceGroup,omitnil,omitempty" name:"ResourceGroup"`
 
-	// 错误码
+	// <p>错误码</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorCode *string `json:"ErrorCode,omitnil,omitempty" name:"ErrorCode"`
 
-	// 运行账号
+	// <p>运行账号</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExecuteUserUin *string `json:"ExecuteUserUin,omitnil,omitempty" name:"ExecuteUserUin"`
 
-	// 创建人 ID
+	// <p>创建人 ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreaterUin *string `json:"CreaterUin,omitnil,omitempty" name:"CreaterUin"`
 
-	// 执行平台执行 ID
+	// <p>执行平台执行 ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
-	// 创建时间戳
+	// <p>创建时间戳</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 计划调度时间
+	// <p>计划调度时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScheduleTime *string `json:"ScheduleTime,omitnil,omitempty" name:"ScheduleTime"`
 
-	// 更新时间戳
+	// <p>更新时间戳</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 依赖任务完成时间
+	// <p>依赖任务完成时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DependenceFinishedTime *string `json:"DependenceFinishedTime,omitnil,omitempty" name:"DependenceFinishedTime"`
 
-	// 任务下发执行平台时间
+	// <p>任务下发执行平台时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	QueueStartTime *string `json:"QueueStartTime,omitnil,omitempty" name:"QueueStartTime"`
 
-	// 开始等待资源时间
+	// <p>开始等待资源时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PendingStartTime *string `json:"PendingStartTime,omitnil,omitempty" name:"PendingStartTime"`
 
-	// 运行开始时间
+	// <p>运行开始时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExecutionStartTime *string `json:"ExecutionStartTime,omitnil,omitempty" name:"ExecutionStartTime"`
 
-	// 运行结束时间
+	// <p>运行结束时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExecutionEndTime *string `json:"ExecutionEndTime,omitnil,omitempty" name:"ExecutionEndTime"`
 
-	// 排队时间
+	// <p>排队时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	QueueCostTime *string `json:"QueueCostTime,omitnil,omitempty" name:"QueueCostTime"`
 
-	// 运行时间
+	// <p>运行时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExecutionTime *string `json:"ExecutionTime,omitnil,omitempty" name:"ExecutionTime"`
 
-	// 总花费时间
+	// <p>总花费时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AllCostTime *string `json:"AllCostTime,omitnil,omitempty" name:"AllCostTime"`
 
-	// 时区
+	// <p>时区</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TimeZone *string `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
 
-	// 依赖上游任务 ID 列表
+	// <p>依赖上游任务 ID 列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DependOnList []*string `json:"DependOnList,omitnil,omitempty" name:"DependOnList"`
 
-	// 运行参数
+	// <p>运行参数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RunParams *string `json:"RunParams,omitnil,omitempty" name:"RunParams"`
 
-	// 任务扩展信息，包含脚本路径
+	// <p>任务扩展信息，包含脚本路径</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskTypeExtensions *string `json:"TaskTypeExtensions,omitnil,omitempty" name:"TaskTypeExtensions"`
 
-	// 重试次数，为 0 则表示首次运行
+	// <p>重试次数，为 0 则表示首次运行</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RetryTimes *uint64 `json:"RetryTimes,omitnil,omitempty" name:"RetryTimes"`
 
-	// 左侧坐标
+	// <p>左侧坐标</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LeftCoordinate *float64 `json:"LeftCoordinate,omitnil,omitempty" name:"LeftCoordinate"`
 
-	// 顶部坐标
+	// <p>顶部坐标</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopCoordinate *float64 `json:"TopCoordinate,omitnil,omitempty" name:"TopCoordinate"`
 
-	// 资源组 ID
+	// <p>资源组 ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
 
-	// 错误码描述
+	// <p>错误码描述</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorCodeStr *string `json:"ErrorCodeStr,omitnil,omitempty" name:"ErrorCodeStr"`
 
-	// 创建人 UIN
+	// <p>创建人 UIN</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateUin *string `json:"CreateUin,omitnil,omitempty" name:"CreateUin"`
 
-	// 下发执行平台时间
+	// <p>下发执行平台时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IssueTime *string `json:"IssueTime,omitnil,omitempty" name:"IssueTime"`
 
-	// 任务名称
+	// <p>任务名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
 
-	// 工作流名称
+	// <p>工作流名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkflowName *string `json:"WorkflowName,omitnil,omitempty" name:"WorkflowName"`
 
-	// 运行人名称
+	// <p>运行人名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExecuteUserName *string `json:"ExecuteUserName,omitnil,omitempty" name:"ExecuteUserName"`
 
-	// 重跑次数
+	// <p>重跑次数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RerunTimes *uint64 `json:"RerunTimes,omitnil,omitempty" name:"RerunTimes"`
 
-	// 是否是最新一次运行
+	// <p>是否是最新一次运行</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsLatestExecution *bool `json:"IsLatestExecution,omitnil,omitempty" name:"IsLatestExecution"`
 
-	// 任务运行状态
+	// <p>任务运行状态</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskExecutionState *string `json:"TaskExecutionState,omitnil,omitempty" name:"TaskExecutionState"`
 
-	// 周期类型
+	// <p>周期类型</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CycleType *string `json:"CycleType,omitnil,omitempty" name:"CycleType"`
 
-	// 责任人名称
+	// <p>责任人名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserNameInCharge *string `json:"UserNameInCharge,omitnil,omitempty" name:"UserNameInCharge"`
 
-	// 责任人id
+	// <p>责任人id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserUinInCharge *string `json:"UserUinInCharge,omitnil,omitempty" name:"UserUinInCharge"`
 
-	// 资源组名称
+	// <p>资源组名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceGroupName *string `json:"ResourceGroupName,omitnil,omitempty" name:"ResourceGroupName"`
 
-	// 时区
+	// <p>时区</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Timezone *string `json:"Timezone,omitnil,omitempty" name:"Timezone"`
 
-	// 文件夹id
+	// <p>文件夹id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FolderId *string `json:"FolderId,omitnil,omitempty" name:"FolderId"`
 
-	// 文件夹名称
+	// <p>文件夹名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FolderName *string `json:"FolderName,omitnil,omitempty" name:"FolderName"`
 
-	// 项目名称
+	// <p>项目名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectName *string `json:"ProjectName,omitnil,omitempty" name:"ProjectName"`
 
-	// 任务类型id
+	// <p>任务类型id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskTypeId *int64 `json:"TaskTypeId,omitnil,omitempty" name:"TaskTypeId"`
 
-	// 工作流运行参数
+	// <p>工作流运行参数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkflowParams *string `json:"WorkflowParams,omitnil,omitempty" name:"WorkflowParams"`
 
-	// 是否支持重跑
+	// <p>是否支持重跑</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SupportRerun *bool `json:"SupportRerun,omitnil,omitempty" name:"SupportRerun"`
 
-	// 工作流运行状态
+	// <p>工作流运行状态</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkflowExecutionState *string `json:"WorkflowExecutionState,omitnil,omitempty" name:"WorkflowExecutionState"`
 
-	// 任务执行结果
+	// <p>任务执行结果</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExecutionResult *string `json:"ExecutionResult,omitnil,omitempty" name:"ExecutionResult"`
 
-	// 依赖策略
+	// <p>依赖策略</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DependencyTriggerPolicy *string `json:"DependencyTriggerPolicy,omitnil,omitempty" name:"DependencyTriggerPolicy"`
+
+	// <p>关联实体是否存在，true表示任务/工作流等实体存在，false表示实体已被删除</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssociatedEntityExist *bool `json:"AssociatedEntityExist,omitnil,omitempty" name:"AssociatedEntityExist"`
+
+	// <p>调度执行类型</p><p>枚举值：</p><ul><li>0： 正常调度</li><li>1： 空跑调度</li><li>2： 用户驱动，手动触发</li></ul>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScheduleRunType *string `json:"ScheduleRunType,omitnil,omitempty" name:"ScheduleRunType"`
 }
 
 type TriggerTaskSchedulerConfiguration struct {

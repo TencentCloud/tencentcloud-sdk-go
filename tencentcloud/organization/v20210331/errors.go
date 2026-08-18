@@ -863,6 +863,12 @@ const (
 	// 不允许添加优惠继承关系。
 	UNSUPPORTEDOPERATION_ADDDISCOUNTINHERITNOTALLOW = "UnsupportedOperation.AddDiscountInheritNotAllow"
 
+	// 管理员账号下存在未解除部署的权限配置
+	UNSUPPORTEDOPERATION_ADMINACCOUNTEXISTCICROLECONFIG = "UnsupportedOperation.AdminAccountExistCICRoleConfig"
+
+	// 管理员账号下存在未删除的用户同步
+	UNSUPPORTEDOPERATION_ADMINACCOUNTEXISTCICUSERCONFIG = "UnsupportedOperation.AdminAccountExistCICUserConfig"
+
 	// 管理员和成员的经销商不一致。
 	UNSUPPORTEDOPERATION_AGENTNOTSAME = "UnsupportedOperation.AgentNotSame"
 

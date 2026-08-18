@@ -3520,6 +3520,9 @@ type DatahubTaskInfo struct {
 
 	// <p>任务是否自动扩容标识</p><p>枚举值：</p><ul><li>true： 自动扩容</li><li>false： 手动扩容</li></ul><p>默认值：true</p>
 	AutoExpandFlag *bool `json:"AutoExpandFlag,omitnil,omitempty" name:"AutoExpandFlag"`
+
+	// <p>不影响任务执行的警告信息</p>
+	WarnMessage *string `json:"WarnMessage,omitnil,omitempty" name:"WarnMessage"`
 }
 
 type DatahubTopicDTO struct {
@@ -3972,26 +3975,26 @@ func (r *DeleteGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteGroupSubscribeTopicRequestParams struct {
-	// ckafka集群实例Id
+	// <p>ckafka集群实例Id</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 消费分组名称
+	// <p>消费分组名称</p>
 	Group *string `json:"Group,omitnil,omitempty" name:"Group"`
 
-	// 主题名
+	// <p>主题名</p>
 	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
 }
 
 type DeleteGroupSubscribeTopicRequest struct {
 	*tchttp.BaseRequest
 	
-	// ckafka集群实例Id
+	// <p>ckafka集群实例Id</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 消费分组名称
+	// <p>消费分组名称</p>
 	Group *string `json:"Group,omitnil,omitempty" name:"Group"`
 
-	// 主题名
+	// <p>主题名</p>
 	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
 }
 
@@ -4018,7 +4021,7 @@ func (r *DeleteGroupSubscribeTopicRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteGroupSubscribeTopicResponseParams struct {
-	// 返回结果
+	// <p>返回结果</p>
 	Result *JgwOperateResponse `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5504,6 +5507,9 @@ type DescribeDatahubTaskRes struct {
 
 	// <p>自动扩容 true:自动扩容 false:手动扩容</p><p>默认值：true</p>
 	AutoExpandFlag *bool `json:"AutoExpandFlag,omitnil,omitempty" name:"AutoExpandFlag"`
+
+	// <p>不影响任务执行的警告信息</p>
+	WarnMessage *string `json:"WarnMessage,omitnil,omitempty" name:"WarnMessage"`
 }
 
 // Predefined struct for user
@@ -6991,6 +6997,9 @@ type DescribeTopicDetailRequestParams struct {
 
 	// <p>目前支持 ReplicaNum （副本数）筛选</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>搜索topic时是否忽略大小写敏感</p>
+	SearchWordIgnoreCaseFlag *bool `json:"SearchWordIgnoreCaseFlag,omitnil,omitempty" name:"SearchWordIgnoreCaseFlag"`
 }
 
 type DescribeTopicDetailRequest struct {
@@ -7019,6 +7028,9 @@ type DescribeTopicDetailRequest struct {
 
 	// <p>目前支持 ReplicaNum （副本数）筛选</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>搜索topic时是否忽略大小写敏感</p>
+	SearchWordIgnoreCaseFlag *bool `json:"SearchWordIgnoreCaseFlag,omitnil,omitempty" name:"SearchWordIgnoreCaseFlag"`
 }
 
 func (r *DescribeTopicDetailRequest) ToJsonString() string {
@@ -7041,6 +7053,7 @@ func (r *DescribeTopicDetailRequest) FromJsonString(s string) error {
 	delete(f, "OrderBy")
 	delete(f, "OrderType")
 	delete(f, "Filters")
+	delete(f, "SearchWordIgnoreCaseFlag")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTopicDetailRequest has unknown keys!", "")
 	}
@@ -10291,13 +10304,13 @@ type ModifyInstanceAttributesRequestParams struct {
 	// <p>实例删除保护开关: 1 开启  0 关闭</p>
 	DeleteProtectionEnable *int64 `json:"DeleteProtectionEnable,omitnil,omitempty" name:"DeleteProtectionEnable"`
 
-	// <p>实例级别消息保留大小</p>单位：byte<br>默认值：-1<br><p>实例级别消息保留大小</p>
+	// <p>实例级别消息保留大小</p><p>单位：byte</p><p>默认值：-1</p><p>实例级别消息保留大小</p>
 	RetentionBytes *int64 `json:"RetentionBytes,omitnil,omitempty" name:"RetentionBytes"`
 
 	// <p>是否封禁高风险admin接口; true则封禁高风险adminApi; 关闭后不支持打开,仅专业版支持; 默认是false 对高风险admin接口不做处理</p>
 	AdminSecurity *bool `json:"AdminSecurity,omitnil,omitempty" name:"AdminSecurity"`
 
-	// <p>事务ID最大空闲时间，超时未提交的事务将被标记为过期</p>取值范围：[3600000, 604800000]<br>单位：ms
+	// <p>事务ID最大空闲时间，超时未提交的事务将被标记为过期</p><p>取值范围：[3600000, 604800000]</p><p>单位：ms</p>
 	TransactionalIdExpirationMs *int64 `json:"TransactionalIdExpirationMs,omitnil,omitempty" name:"TransactionalIdExpirationMs"`
 }
 
@@ -10337,13 +10350,13 @@ type ModifyInstanceAttributesRequest struct {
 	// <p>实例删除保护开关: 1 开启  0 关闭</p>
 	DeleteProtectionEnable *int64 `json:"DeleteProtectionEnable,omitnil,omitempty" name:"DeleteProtectionEnable"`
 
-	// <p>实例级别消息保留大小</p>单位：byte<br>默认值：-1<br><p>实例级别消息保留大小</p>
+	// <p>实例级别消息保留大小</p><p>单位：byte</p><p>默认值：-1</p><p>实例级别消息保留大小</p>
 	RetentionBytes *int64 `json:"RetentionBytes,omitnil,omitempty" name:"RetentionBytes"`
 
 	// <p>是否封禁高风险admin接口; true则封禁高风险adminApi; 关闭后不支持打开,仅专业版支持; 默认是false 对高风险admin接口不做处理</p>
 	AdminSecurity *bool `json:"AdminSecurity,omitnil,omitempty" name:"AdminSecurity"`
 
-	// <p>事务ID最大空闲时间，超时未提交的事务将被标记为过期</p>取值范围：[3600000, 604800000]<br>单位：ms
+	// <p>事务ID最大空闲时间，超时未提交的事务将被标记为过期</p><p>取值范围：[3600000, 604800000]</p><p>单位：ms</p>
 	TransactionalIdExpirationMs *int64 `json:"TransactionalIdExpirationMs,omitnil,omitempty" name:"TransactionalIdExpirationMs"`
 }
 
@@ -11752,7 +11765,7 @@ func (r *ResumeDatahubTaskResponse) FromJsonString(s string) error {
 }
 
 type Route struct {
-	// <p>实例接入方式0：PLAINTEXT (明文方式，没有带用户信息老版本及社区版本都支持)1：SASL_PLAINTEXT（明文方式，不过在数据开始时，会通过SASL方式登录鉴权，仅社区版本支持）2：SSL（SSL加密通信，没有带用户信息，老版本及社区版本都支持）3：SASL_SSL（SSL加密通信，在数据开始时，会通过SASL方式登录鉴权，仅社区版本支持）</p>
+	// <p>实例接入方式<br>0：PLAINTEXT (明文方式，没有带用户信息老版本及社区版本都支持)<br>1：SASL_PLAINTEXT（明文方式，不过在数据开始时，会通过SASL方式登录鉴权，仅社区版本支持）<br>2：SSL（SSL加密通信，没有带用户信息，老版本及社区版本都支持）<br>3：SASL_SSL（SSL加密通信，在数据开始时，会通过SASL方式登录鉴权，仅社区版本支持）</p>
 	AccessType *int64 `json:"AccessType,omitnil,omitempty" name:"AccessType"`
 
 	// <p>路由Id</p>
@@ -11911,16 +11924,16 @@ type SQLServerParam struct {
 }
 
 type SaleInfo struct {
-	// 手动设置的flag标志，true表示售罄，false表示可售。
+	// <p>手动设置的flag标志，true表示售罄，false表示可售。</p>
 	Flag *bool `json:"Flag,omitnil,omitempty" name:"Flag"`
 
-	// ckafka版本号(1.1.1/2.4.2/0.10.2)
+	// <p>ckafka版本号(1.1.1/2.4.2/0.10.2)</p>
 	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
 
-	// 专业版、标准版标志
+	// <p>专业版、标准版标志</p>
 	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
 
-	// 售罄标志：true售罄
+	// <p>售罄标志：true售罄</p>
 	SoldOut *bool `json:"SoldOut,omitnil,omitempty" name:"SoldOut"`
 }
 
@@ -12495,7 +12508,7 @@ type UpgradeBrokerVersionRequestParams struct {
 	// <p>ckafka集群实例Id</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// <p>版本升级类型</p><p>枚举值：</p><ul><li>1： 小版本迁移升级(推荐)</li></ul>
+	// <p>版本升级类型</p><p>枚举值：</p><ul><li>1： 小版本迁移升级(推荐)</li><li>5： 小版原地升级</li></ul>
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// <p>版本号</p>
@@ -12514,7 +12527,7 @@ type UpgradeBrokerVersionRequest struct {
 	// <p>ckafka集群实例Id</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// <p>版本升级类型</p><p>枚举值：</p><ul><li>1： 小版本迁移升级(推荐)</li></ul>
+	// <p>版本升级类型</p><p>枚举值：</p><ul><li>1： 小版本迁移升级(推荐)</li><li>5： 小版原地升级</li></ul>
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// <p>版本号</p>

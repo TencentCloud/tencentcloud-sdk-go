@@ -15070,38 +15070,38 @@ func (r *DescribeIntegrationStatisticsTaskStatusTrendResponse) FromJsonString(s 
 
 // Predefined struct for user
 type DescribeIntegrationTaskRequestParams struct {
-	// 任务id
+	// <p>任务id</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 项目id
+	// <p>项目id</p>
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 任务类型，201: 实时集成任务,   202：离线集成任务，不传默认值为201 实时任务类型
+	// <p>任务类型，201: 实时集成任务,   202：离线集成任务，不传默认值为201 实时任务类型</p>
 	TaskType *uint64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
-	// 提交版本号
+	// <p>提交版本号</p>
 	InstanceVersion *int64 `json:"InstanceVersion,omitnil,omitempty" name:"InstanceVersion"`
 
-	// 额外参数
+	// <p>额外参数</p>
 	ExtConfig []*RecordField `json:"ExtConfig,omitnil,omitempty" name:"ExtConfig"`
 }
 
 type DescribeIntegrationTaskRequest struct {
 	*tchttp.BaseRequest
 	
-	// 任务id
+	// <p>任务id</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 项目id
+	// <p>项目id</p>
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 任务类型，201: 实时集成任务,   202：离线集成任务，不传默认值为201 实时任务类型
+	// <p>任务类型，201: 实时集成任务,   202：离线集成任务，不传默认值为201 实时任务类型</p>
 	TaskType *uint64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
-	// 提交版本号
+	// <p>提交版本号</p>
 	InstanceVersion *int64 `json:"InstanceVersion,omitnil,omitempty" name:"InstanceVersion"`
 
-	// 额外参数
+	// <p>额外参数</p>
 	ExtConfig []*RecordField `json:"ExtConfig,omitnil,omitempty" name:"ExtConfig"`
 }
 
@@ -15130,17 +15130,20 @@ func (r *DescribeIntegrationTaskRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeIntegrationTaskResponseParams struct {
-	// 任务信息
+	// <p>任务信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskInfo *IntegrationTaskInfo `json:"TaskInfo,omitnil,omitempty" name:"TaskInfo"`
 
-	// 采集器统计信息
+	// <p>采集器统计信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AgentStatus *AgentStatus `json:"AgentStatus,omitnil,omitempty" name:"AgentStatus"`
 
-	// 任务版本信息
+	// <p>任务版本信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskVersion *TaskVersionInstance `json:"TaskVersion,omitnil,omitempty" name:"TaskVersion"`
+
+	// <p>历史实例信息</p>
+	TaskVersionList []*RealtimeTaskInstanceVO `json:"TaskVersionList,omitnil,omitempty" name:"TaskVersionList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -20336,6 +20339,9 @@ type DescribeStreamTaskLogListRequestParams struct {
 
 	// <p>任务类型，不传时按 <code>INTEGRATION</code> 处理 </p><p>枚举值：</p><ul><li>INTEGRATION： 集成任务</li><li>VALIDATE： 对账任务</li></ul>
 	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
+
+	// <p>滚动查询游标</p>
+	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
 }
 
 type DescribeStreamTaskLogListRequest struct {
@@ -20373,6 +20379,9 @@ type DescribeStreamTaskLogListRequest struct {
 
 	// <p>任务类型，不传时按 <code>INTEGRATION</code> 处理 </p><p>枚举值：</p><ul><li>INTEGRATION： 集成任务</li><li>VALIDATE： 对账任务</li></ul>
 	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
+
+	// <p>滚动查询游标</p>
+	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
 }
 
 func (r *DescribeStreamTaskLogListRequest) ToJsonString() string {
@@ -20398,6 +20407,7 @@ func (r *DescribeStreamTaskLogListRequest) FromJsonString(s string) error {
 	delete(f, "RunningOrderId")
 	delete(f, "Keyword")
 	delete(f, "JobType")
+	delete(f, "Context")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStreamTaskLogListRequest has unknown keys!", "")
 	}
@@ -20413,6 +20423,9 @@ type DescribeStreamTaskLogListResponseParams struct {
 	// <p>日志集合</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogContentList []*LogContentInfo `json:"LogContentList,omitnil,omitempty" name:"LogContentList"`
+
+	// <p>滚动查询游标</p>
+	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -20647,69 +20660,87 @@ func (r *DescribeTableBasicInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTableContentPreviewRequestParams struct {
-	// 表ID
+	// <p>表ID</p>
 	TableId *string `json:"TableId,omitnil,omitempty" name:"TableId"`
 
-	// 组件类型枚举值，支持的值有 HDFS/HBASE/HIVE/KAFKA
+	// <p>组件类型枚举值，支持的值有 HDFS/HBASE/HIVE/KAFKA</p>
 	TechnologyType *string `json:"TechnologyType,omitnil,omitempty" name:"TechnologyType"`
 
-	// 集群id
+	// <p>集群id</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 资源类型枚举值，支持的值有TOPIC/PATH/TABLE/DATABASE
+	// <p>资源类型枚举值，支持的值有TOPIC/PATH/TABLE/DATABASE</p>
 	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
-	// 表名
+	// <p>表名</p>
 	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
 
-	// 项目id
+	// <p>项目id</p>
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 预览的行数，默认10行
+	// <p>预览的行数，默认10行</p>
 	RowNum *int64 `json:"RowNum,omitnil,omitempty" name:"RowNum"`
 
-	// 数据库名，kafka或其他无数据库概念的不填
+	// <p>数据库名，kafka或其他无数据库概念的不填</p>
 	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
 
-	// 异步查询预览结果时填写
+	// <p>异步查询预览结果时填写</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 分区信息
+	// <p>分区信息</p>
 	PartitionName *string `json:"PartitionName,omitnil,omitempty" name:"PartitionName"`
+
+	// <p>资源组ID</p>
+	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
+
+	// <p>执行SQL</p>
+	Sql *string `json:"Sql,omitnil,omitempty" name:"Sql"`
+
+	// <p>引擎名</p>
+	EngineId *string `json:"EngineId,omitnil,omitempty" name:"EngineId"`
 }
 
 type DescribeTableContentPreviewRequest struct {
 	*tchttp.BaseRequest
 	
-	// 表ID
+	// <p>表ID</p>
 	TableId *string `json:"TableId,omitnil,omitempty" name:"TableId"`
 
-	// 组件类型枚举值，支持的值有 HDFS/HBASE/HIVE/KAFKA
+	// <p>组件类型枚举值，支持的值有 HDFS/HBASE/HIVE/KAFKA</p>
 	TechnologyType *string `json:"TechnologyType,omitnil,omitempty" name:"TechnologyType"`
 
-	// 集群id
+	// <p>集群id</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 资源类型枚举值，支持的值有TOPIC/PATH/TABLE/DATABASE
+	// <p>资源类型枚举值，支持的值有TOPIC/PATH/TABLE/DATABASE</p>
 	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
-	// 表名
+	// <p>表名</p>
 	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
 
-	// 项目id
+	// <p>项目id</p>
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 预览的行数，默认10行
+	// <p>预览的行数，默认10行</p>
 	RowNum *int64 `json:"RowNum,omitnil,omitempty" name:"RowNum"`
 
-	// 数据库名，kafka或其他无数据库概念的不填
+	// <p>数据库名，kafka或其他无数据库概念的不填</p>
 	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
 
-	// 异步查询预览结果时填写
+	// <p>异步查询预览结果时填写</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 分区信息
+	// <p>分区信息</p>
 	PartitionName *string `json:"PartitionName,omitnil,omitempty" name:"PartitionName"`
+
+	// <p>资源组ID</p>
+	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
+
+	// <p>执行SQL</p>
+	Sql *string `json:"Sql,omitnil,omitempty" name:"Sql"`
+
+	// <p>引擎名</p>
+	EngineId *string `json:"EngineId,omitnil,omitempty" name:"EngineId"`
 }
 
 func (r *DescribeTableContentPreviewRequest) ToJsonString() string {
@@ -20734,6 +20765,9 @@ func (r *DescribeTableContentPreviewRequest) FromJsonString(s string) error {
 	delete(f, "DatabaseName")
 	delete(f, "TaskId")
 	delete(f, "PartitionName")
+	delete(f, "ResourceGroupId")
+	delete(f, "Sql")
+	delete(f, "EngineId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTableContentPreviewRequest has unknown keys!", "")
 	}
@@ -20742,19 +20776,19 @@ func (r *DescribeTableContentPreviewRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTableContentPreviewResponseParams struct {
-	// 表的列名列表
+	// <p>表的列名列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ColumnNames []*string `json:"ColumnNames,omitnil,omitempty" name:"ColumnNames"`
 
-	// 表的行数据列表
+	// <p>表的行数据列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableRecordSet []*TableRecord `json:"TableRecordSet,omitnil,omitempty" name:"TableRecordSet"`
 
-	// 异步预览任务ID
+	// <p>异步预览任务ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 异步预览结果状态: 0 初始化， 1 执行中， 2 执行成功
+	// <p>异步预览结果状态: 0 初始化， 1 执行中， 2 执行成功</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AsyncState *int64 `json:"AsyncState,omitnil,omitempty" name:"AsyncState"`
 
@@ -35066,6 +35100,14 @@ type RealTimeTaskSpeed struct {
 
 	// 日志大小速度
 	BytesLogSpeed []*BytesSpeed `json:"BytesLogSpeed,omitnil,omitempty" name:"BytesLogSpeed"`
+}
+
+type RealtimeTaskInstanceVO struct {
+	// <p>实例生成时间</p>
+	InstanceDate *string `json:"InstanceDate,omitnil,omitempty" name:"InstanceDate"`
+
+	// <p>实例id</p>
+	RunningOrderId *int64 `json:"RunningOrderId,omitnil,omitempty" name:"RunningOrderId"`
 }
 
 type RecordField struct {

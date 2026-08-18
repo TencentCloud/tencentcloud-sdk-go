@@ -4323,38 +4323,38 @@ func (r *DescribeOrganizationMemberPoliciesResponse) FromJsonString(s string) er
 
 // Predefined struct for user
 type DescribeOrganizationMembersAuthPolicyRequestParams struct {
-	// 偏移量。取值是limit的整数倍。默认值 : 0。
+	// <p>偏移量。取值是limit的整数倍。默认值 : 0。</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 限制数目。取值范围：1~50。默认值：10。
+	// <p>限制数目。取值范围：1~50。默认值：10。</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 成员uin。
+	// <p>成员uin。</p>
 	MemberUin *int64 `json:"MemberUin,omitnil,omitempty" name:"MemberUin"`
 
-	// 集团管理员子账号uin。
+	// <p>集团管理员子账号uin。</p>
 	OrgSubAccountUin *int64 `json:"OrgSubAccountUin,omitnil,omitempty" name:"OrgSubAccountUin"`
 
-	// 成员访问策略Id。
+	// <p>成员访问策略Id。</p>
 	PolicyId *int64 `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
 }
 
 type DescribeOrganizationMembersAuthPolicyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 偏移量。取值是limit的整数倍。默认值 : 0。
+	// <p>偏移量。取值是limit的整数倍。默认值 : 0。</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 限制数目。取值范围：1~50。默认值：10。
+	// <p>限制数目。取值范围：1~50。默认值：10。</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 成员uin。
+	// <p>成员uin。</p>
 	MemberUin *int64 `json:"MemberUin,omitnil,omitempty" name:"MemberUin"`
 
-	// 集团管理员子账号uin。
+	// <p>集团管理员子账号uin。</p>
 	OrgSubAccountUin *int64 `json:"OrgSubAccountUin,omitnil,omitempty" name:"OrgSubAccountUin"`
 
-	// 成员访问策略Id。
+	// <p>成员访问策略Id。</p>
 	PolicyId *int64 `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
 }
 
@@ -4383,11 +4383,11 @@ func (r *DescribeOrganizationMembersAuthPolicyRequest) FromJsonString(s string) 
 
 // Predefined struct for user
 type DescribeOrganizationMembersAuthPolicyResponseParams struct {
-	// 访问授权策略列表。
+	// <p>访问授权策略列表。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Items []*OrgMembersAuthPolicy `json:"Items,omitnil,omitempty" name:"Items"`
 
-	// 总数目。
+	// <p>总数目。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
 
@@ -7775,44 +7775,44 @@ func (r *ListRoleConfigurationProvisioningsResponse) FromJsonString(s string) er
 
 // Predefined struct for user
 type ListRoleConfigurationsRequestParams struct {
-	// 空间 ID。
+	// <p>空间 ID。</p>
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 查询返回结果下一页的令牌。首次调用 API 不需要NextToken。  当您首次调用 API 时，如果返回数据总条数超过MaxResults限制，数据会被截断，只返回MaxResults条数据，同时，返回参数IsTruncated为true，返回一个NextToken。您可以使用上一次返回的NextToken继续调用 API，其他请求参数保持不变，查询被截断的数据。您可以按此方法多次查询，直到IsTruncated为false，表示全部数据查询完毕。
+	// <p>查询返回结果下一页的令牌。首次调用 API 不需要NextToken。  当您首次调用 API 时，如果返回数据总条数超过MaxResults限制，数据会被截断，只返回MaxResults条数据，同时，返回参数IsTruncated为true，返回一个NextToken。您可以使用上一次返回的NextToken继续调用 API，其他请求参数保持不变，查询被截断的数据。您可以按此方法多次查询，直到IsTruncated为false，表示全部数据查询完毕。</p>
 	NextToken *string `json:"NextToken,omitnil,omitempty" name:"NextToken"`
 
-	// 每页的最大数据条数。  取值范围：1~100。  默认值：10。
+	// <p>每页的最大数据条数。  取值范围：1~100。  默认值：10。</p>
 	MaxResults *int64 `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
 
-	// 过滤文本。不区分大小写。目前，支持 RoleConfigurationName和Description. 示例：Filter = "test"，表示查询名称或描述里包含 test 的权限配置。
+	// <p>过滤文本。不区分大小写。目前，支持 RoleConfigurationName和Description. 示例：Filter = &quot;test&quot;，表示查询名称或描述里包含 test 的权限配置。</p>
 	Filter *string `json:"Filter,omitnil,omitempty" name:"Filter"`
 
-	// 检索成员账号是否配置过权限，如果配置过返回IsSelected: true, 否则返回false。
+	// <p>检索成员账号是否配置过权限，如果配置过返回IsSelected: true, 否则返回false。</p>
 	FilterTargets []*int64 `json:"FilterTargets,omitnil,omitempty" name:"FilterTargets"`
 
-	// 授权的用户UserId或者用户组的GroupId，必须和入参数FilterTargets一起设置
+	// <p>授权的用户UserId或者用户组的GroupId，必须和入参数FilterTargets一起设置</p>
 	PrincipalId *string `json:"PrincipalId,omitnil,omitempty" name:"PrincipalId"`
 }
 
 type ListRoleConfigurationsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 空间 ID。
+	// <p>空间 ID。</p>
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 查询返回结果下一页的令牌。首次调用 API 不需要NextToken。  当您首次调用 API 时，如果返回数据总条数超过MaxResults限制，数据会被截断，只返回MaxResults条数据，同时，返回参数IsTruncated为true，返回一个NextToken。您可以使用上一次返回的NextToken继续调用 API，其他请求参数保持不变，查询被截断的数据。您可以按此方法多次查询，直到IsTruncated为false，表示全部数据查询完毕。
+	// <p>查询返回结果下一页的令牌。首次调用 API 不需要NextToken。  当您首次调用 API 时，如果返回数据总条数超过MaxResults限制，数据会被截断，只返回MaxResults条数据，同时，返回参数IsTruncated为true，返回一个NextToken。您可以使用上一次返回的NextToken继续调用 API，其他请求参数保持不变，查询被截断的数据。您可以按此方法多次查询，直到IsTruncated为false，表示全部数据查询完毕。</p>
 	NextToken *string `json:"NextToken,omitnil,omitempty" name:"NextToken"`
 
-	// 每页的最大数据条数。  取值范围：1~100。  默认值：10。
+	// <p>每页的最大数据条数。  取值范围：1~100。  默认值：10。</p>
 	MaxResults *int64 `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
 
-	// 过滤文本。不区分大小写。目前，支持 RoleConfigurationName和Description. 示例：Filter = "test"，表示查询名称或描述里包含 test 的权限配置。
+	// <p>过滤文本。不区分大小写。目前，支持 RoleConfigurationName和Description. 示例：Filter = &quot;test&quot;，表示查询名称或描述里包含 test 的权限配置。</p>
 	Filter *string `json:"Filter,omitnil,omitempty" name:"Filter"`
 
-	// 检索成员账号是否配置过权限，如果配置过返回IsSelected: true, 否则返回false。
+	// <p>检索成员账号是否配置过权限，如果配置过返回IsSelected: true, 否则返回false。</p>
 	FilterTargets []*int64 `json:"FilterTargets,omitnil,omitempty" name:"FilterTargets"`
 
-	// 授权的用户UserId或者用户组的GroupId，必须和入参数FilterTargets一起设置
+	// <p>授权的用户UserId或者用户组的GroupId，必须和入参数FilterTargets一起设置</p>
 	PrincipalId *string `json:"PrincipalId,omitnil,omitempty" name:"PrincipalId"`
 }
 
@@ -7842,19 +7842,19 @@ func (r *ListRoleConfigurationsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListRoleConfigurationsResponseParams struct {
-	// 符合请求参数条件的数据总条数。
+	// <p>符合请求参数条件的数据总条数。</p>
 	TotalCounts *int64 `json:"TotalCounts,omitnil,omitempty" name:"TotalCounts"`
 
-	// 每页的最大数据条数。
+	// <p>每页的最大数据条数。</p>
 	MaxResults *int64 `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
 
-	// 返回结果是否被截断。取值：  true：已截断。 false：未截断。
+	// <p>返回结果是否被截断。取值：  true：已截断。 false：未截断。</p>
 	IsTruncated *bool `json:"IsTruncated,omitnil,omitempty" name:"IsTruncated"`
 
-	// 查询返回结果下一页的令牌。  说明 只有IsTruncated为true时，才显示该参数。
+	// <p>查询返回结果下一页的令牌。  说明 只有IsTruncated为true时，才显示该参数。</p>
 	NextToken *string `json:"NextToken,omitnil,omitempty" name:"NextToken"`
 
-	// 权限配置列表。
+	// <p>权限配置列表。</p>
 	RoleConfigurations []*RoleConfiguration `json:"RoleConfigurations,omitnil,omitempty" name:"RoleConfigurations"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

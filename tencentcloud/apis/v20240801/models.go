@@ -1798,20 +1798,20 @@ func (r *DeleteModelServiceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteServiceRequestParams struct {
-	// 实例ID
+	// <p>实例ID</p>
 	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
 
-	// 业务ID
+	// <p>业务ID</p>
 	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
 }
 
 type DeleteServiceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// <p>实例ID</p>
 	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
 
-	// 业务ID
+	// <p>业务ID</p>
 	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
 }
 
@@ -3494,20 +3494,20 @@ type DescribeModelsSort struct {
 
 // Predefined struct for user
 type DescribeServiceRequestParams struct {
-	// 实例ID
+	// <p>实例ID</p>
 	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
 
-	// 业务ID
+	// <p>业务ID</p>
 	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
 }
 
 type DescribeServiceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// <p>实例ID</p>
 	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
 
-	// 业务ID
+	// <p>业务ID</p>
 	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
 }
 

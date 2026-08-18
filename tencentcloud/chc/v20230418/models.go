@@ -3489,27 +3489,27 @@ type Distribution struct {
 
 // Predefined struct for user
 type ExportCustomerWorkOrderDetailRequestParams struct {
-	// 服务工单类型
-	WorkOrderType []*string `json:"WorkOrderType,omitnil,omitempty" name:"WorkOrderType"`
-
-	// 要导出的工单的起始时间
+	// <p>要导出的工单的起始时间</p>
 	BeginDateTime *string `json:"BeginDateTime,omitnil,omitempty" name:"BeginDateTime"`
 
-	// 要导出的工单的结束时间
+	// <p>要导出的工单的结束时间</p>
 	EndDateTime *string `json:"EndDateTime,omitnil,omitempty" name:"EndDateTime"`
+
+	// <p>服务工单类型</p>
+	WorkOrderType []*string `json:"WorkOrderType,omitnil,omitempty" name:"WorkOrderType"`
 }
 
 type ExportCustomerWorkOrderDetailRequest struct {
 	*tchttp.BaseRequest
 	
-	// 服务工单类型
-	WorkOrderType []*string `json:"WorkOrderType,omitnil,omitempty" name:"WorkOrderType"`
-
-	// 要导出的工单的起始时间
+	// <p>要导出的工单的起始时间</p>
 	BeginDateTime *string `json:"BeginDateTime,omitnil,omitempty" name:"BeginDateTime"`
 
-	// 要导出的工单的结束时间
+	// <p>要导出的工单的结束时间</p>
 	EndDateTime *string `json:"EndDateTime,omitnil,omitempty" name:"EndDateTime"`
+
+	// <p>服务工单类型</p>
+	WorkOrderType []*string `json:"WorkOrderType,omitnil,omitempty" name:"WorkOrderType"`
 }
 
 func (r *ExportCustomerWorkOrderDetailRequest) ToJsonString() string {
@@ -3524,9 +3524,9 @@ func (r *ExportCustomerWorkOrderDetailRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "WorkOrderType")
 	delete(f, "BeginDateTime")
 	delete(f, "EndDateTime")
+	delete(f, "WorkOrderType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ExportCustomerWorkOrderDetailRequest has unknown keys!", "")
 	}
@@ -3535,7 +3535,7 @@ func (r *ExportCustomerWorkOrderDetailRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ExportCustomerWorkOrderDetailResponseParams struct {
-	// 返回下载地址
+	// <p>返回下载地址</p>
 	DownloadUrl *string `json:"DownloadUrl,omitnil,omitempty" name:"DownloadUrl"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

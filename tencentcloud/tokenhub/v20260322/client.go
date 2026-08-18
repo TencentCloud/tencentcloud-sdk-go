@@ -1263,6 +1263,64 @@ func (c *Client) DescribeModelListWithContext(ctx context.Context, request *Desc
     return
 }
 
+func NewDescribeModelQuotaRequest() (request *DescribeModelQuotaRequest) {
+    request = &DescribeModelQuotaRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tokenhub", APIVersion, "DescribeModelQuota")
+    
+    
+    return
+}
+
+func NewDescribeModelQuotaResponse() (response *DescribeModelQuotaResponse) {
+    response = &DescribeModelQuotaResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeModelQuota
+// 查询指定模型的 TPM 和 QPM 配额上限。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+//  RESOURCENOTFOUND_MODELNOTFOUND = "ResourceNotFound.ModelNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) DescribeModelQuota(request *DescribeModelQuotaRequest) (response *DescribeModelQuotaResponse, err error) {
+    return c.DescribeModelQuotaWithContext(context.Background(), request)
+}
+
+// DescribeModelQuota
+// 查询指定模型的 TPM 和 QPM 配额上限。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+//  RESOURCENOTFOUND_MODELNOTFOUND = "ResourceNotFound.ModelNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) DescribeModelQuotaWithContext(ctx context.Context, request *DescribeModelQuotaRequest) (response *DescribeModelQuotaResponse, err error) {
+    if request == nil {
+        request = NewDescribeModelQuotaRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tokenhub", APIVersion, "DescribeModelQuota")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeModelQuota require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeModelQuotaResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTokenPlanRequest() (request *DescribeTokenPlanRequest) {
     request = &DescribeTokenPlanRequest{
         BaseRequest: &tchttp.BaseRequest{},

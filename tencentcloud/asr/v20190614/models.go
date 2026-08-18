@@ -90,30 +90,20 @@ func (r *CloseAsyncRecognitionTaskResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateAsrKeyWordLibRequestParams struct {
-	// 词表名称，长度在1-20之间
-	// 仅限中英文数字-_
+	// <p>词表名称，长度在1-20之间<br>仅限中英文数字-_</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 词文件（纯文本文件）的二进制base64编码，以行分隔
-	// 格式要求：TXT
-	// 每行只有一个词，不满足格式则报错无法上传
-	// 每个词限制**5个汉字，15个字符**，单个词库最多不超过100个词
-	// 注意不要有空行，尤其是最后一行
+	// <p>词文件（纯文本文件）的二进制base64编码，以行分隔<br>格式要求：TXT<br>每行只有一个词，不满足格式则报错无法上传<br>每个词限制<strong>5个汉字，15个字符</strong>，单个词库最多不超过100个词<br>注意不要有空行，尤其是最后一行</p>
 	KeyWordFile *string `json:"KeyWordFile,omitnil,omitempty" name:"KeyWordFile"`
 }
 
 type CreateAsrKeyWordLibRequest struct {
 	*tchttp.BaseRequest
 	
-	// 词表名称，长度在1-20之间
-	// 仅限中英文数字-_
+	// <p>词表名称，长度在1-20之间<br>仅限中英文数字-_</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 词文件（纯文本文件）的二进制base64编码，以行分隔
-	// 格式要求：TXT
-	// 每行只有一个词，不满足格式则报错无法上传
-	// 每个词限制**5个汉字，15个字符**，单个词库最多不超过100个词
-	// 注意不要有空行，尤其是最后一行
+	// <p>词文件（纯文本文件）的二进制base64编码，以行分隔<br>格式要求：TXT<br>每行只有一个词，不满足格式则报错无法上传<br>每个词限制<strong>5个汉字，15个字符</strong>，单个词库最多不超过100个词<br>注意不要有空行，尤其是最后一行</p>
 	KeyWordFile *string `json:"KeyWordFile,omitnil,omitempty" name:"KeyWordFile"`
 }
 
@@ -139,7 +129,7 @@ func (r *CreateAsrKeyWordLibRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateAsrKeyWordLibResponseParams struct {
-	// 词表ID数据
+	// <p>词表ID数据</p>
 	Data *KeyWordLibIdData `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2245,34 +2235,26 @@ type TaskStatus struct {
 
 // Predefined struct for user
 type UpdateAsrKeyWordLibRequestParams struct {
-	// 关键词表ID
+	// <p>关键词表ID</p>
 	KeyWordLibId *string `json:"KeyWordLibId,omitnil,omitempty" name:"KeyWordLibId"`
 
-	// 词表名称，长度在1-20之间
-	// 仅限中英文数字-_
+	// <p>词表名称，长度在1-20之间<br>仅限中英文数字-_</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// - 词文件（纯文本文件）以行分隔 ，进行二进制base64编码
-	// - 格式要求：TXT 每行只有一个词，不满足格式则报错无法上传 
-	// - 每个词最多5个汉字或15个字符，单个词库最多不超过100个词
-	// - 此参数为空则只更新词表名称
+	// <ul><li>词文件（纯文本文件）以行分隔 ，进行二进制base64编码</li><li>格式要求：TXT 每行只有一个词，不满足格式则报错无法上传 </li><li>每个词最多5个汉字或15个字符，单个词库最多不超过100个词</li><li>此参数为空则只更新词表名称</li></ul>
 	KeyWordFile *string `json:"KeyWordFile,omitnil,omitempty" name:"KeyWordFile"`
 }
 
 type UpdateAsrKeyWordLibRequest struct {
 	*tchttp.BaseRequest
 	
-	// 关键词表ID
+	// <p>关键词表ID</p>
 	KeyWordLibId *string `json:"KeyWordLibId,omitnil,omitempty" name:"KeyWordLibId"`
 
-	// 词表名称，长度在1-20之间
-	// 仅限中英文数字-_
+	// <p>词表名称，长度在1-20之间<br>仅限中英文数字-_</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// - 词文件（纯文本文件）以行分隔 ，进行二进制base64编码
-	// - 格式要求：TXT 每行只有一个词，不满足格式则报错无法上传 
-	// - 每个词最多5个汉字或15个字符，单个词库最多不超过100个词
-	// - 此参数为空则只更新词表名称
+	// <ul><li>词文件（纯文本文件）以行分隔 ，进行二进制base64编码</li><li>格式要求：TXT 每行只有一个词，不满足格式则报错无法上传 </li><li>每个词最多5个汉字或15个字符，单个词库最多不超过100个词</li><li>此参数为空则只更新词表名称</li></ul>
 	KeyWordFile *string `json:"KeyWordFile,omitnil,omitempty" name:"KeyWordFile"`
 }
 
@@ -2299,7 +2281,7 @@ func (r *UpdateAsrKeyWordLibRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateAsrKeyWordLibResponseParams struct {
-	// 关键词表ID数据
+	// <p>关键词表ID数据</p>
 	Data *KeyWordLibIdData `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
