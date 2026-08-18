@@ -214,6 +214,9 @@ type Activity struct {
 	// <p>原子任务类型：</p><li>input: 起始节点</li><li>output：终止节点</li><li>action-trans：转码</li><li>action-samplesnapshot：采样截图</li><li>action-AIAnalysis: 分析</li><li>action-AIRecognition：识别</li><li>action-aiReview：审核</li><li>action-animated-graphics：转动图</li><li>action-image-sprite：雪碧图</li><li>action-snapshotByTimeOffset: 时间点截图</li><li>action-adaptive-substream：自适应码流</li><li>action-AIQualityControl：媒体质检</li><li>action-SmartSubtitles：智能字幕</li><li>action-exec-rules：判断规则</li><li>action-SmartErase：智能擦除</li>
 	ActivityType *string `json:"ActivityType,omitnil,omitempty" name:"ActivityType"`
 
+	// <p>前驱节点索引数组。<br>注意：创建和修改编排时，该参数无效，由服务端自动生成。</p>
+	PredriveIndex []*int64 `json:"PredriveIndex,omitnil,omitempty" name:"PredriveIndex"`
+
 	// <p>后驱节点索引数组</p>
 	ReardriveIndex []*int64 `json:"ReardriveIndex,omitnil,omitempty" name:"ReardriveIndex"`
 
@@ -5933,6 +5936,9 @@ type CreateImageConfig struct {
 
 	// <p>输出图片的宽高比</p><p>枚举值：</p><ul><li>1:1： 宽高比 1:1</li><li>2:3： 宽高比 2:3</li><li>3:2： 宽高比 3:2</li><li>3:4： 宽高比 3:4</li><li>4:3： 宽高比 4:3</li><li>9:16： 宽高比 9:16</li><li>16:9： 宽高比 16:9</li></ul><p>默认值：1:1</p>
 	AspectRatio *string `json:"AspectRatio,omitnil,omitempty" name:"AspectRatio"`
+
+	// <p>附加参数。</p>
+	AdditionalParameters *string `json:"AdditionalParameters,omitnil,omitempty" name:"AdditionalParameters"`
 }
 
 // Predefined struct for user
