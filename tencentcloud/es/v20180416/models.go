@@ -5829,80 +5829,80 @@ type EventTypeInfo struct {
 
 // Predefined struct for user
 type ExportIpTraceLogRequestParams struct {
-	// ES集群ID
+	// <p>ES集群ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 开始时间
+	// <p>开始时间</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间
+	// <p>结束时间</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 起始偏移量
+	// <p>起始偏移量</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 数据条数
+	// <p>数据条数</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 访问IP
+	// <p>访问IP</p>
 	RemoteIp []*string `json:"RemoteIp,omitnil,omitempty" name:"RemoteIp"`
 
-	// Request/Response 请求/返回, 非必填
+	// <p>Request/Response 请求/返回, 非必填</p>
 	TraceType []*string `json:"TraceType,omitnil,omitempty" name:"TraceType"`
 
-	// Public/Private 公网访问/内网访问, 非必填
+	// <p>Public/Private 公网访问/内网访问, 非必填</p>
 	NetType []*string `json:"NetType,omitnil,omitempty" name:"NetType"`
 
-	// POST/GET/PUT/DELETE/HEAD/OPTIONS/PATCH/CONNECT/TRACE/CONNECT等, 非必填
+	// <p>POST/GET/PUT/DELETE/HEAD/OPTIONS/PATCH/CONNECT/TRACE/CONNECT等, 非必填</p>
 	ReqTypeOrRspStatus []*string `json:"ReqTypeOrRspStatus,omitnil,omitempty" name:"ReqTypeOrRspStatus"`
 
-	// 关键字模糊查询，支持Lucene Query String
+	// <p>关键字模糊查询，支持Lucene Query String</p>
 	SearchKey *string `json:"SearchKey,omitnil,omitempty" name:"SearchKey"`
 
-	// uri搜索
+	// <p>uri搜索</p>
 	Uri *string `json:"Uri,omitnil,omitempty" name:"Uri"`
 
-	// 集群节点IP
+	// <p>集群节点IP</p>
 	NodeIp []*string `json:"NodeIp,omitnil,omitempty" name:"NodeIp"`
 }
 
 type ExportIpTraceLogRequest struct {
 	*tchttp.BaseRequest
 	
-	// ES集群ID
+	// <p>ES集群ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 开始时间
+	// <p>开始时间</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间
+	// <p>结束时间</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 起始偏移量
+	// <p>起始偏移量</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 数据条数
+	// <p>数据条数</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 访问IP
+	// <p>访问IP</p>
 	RemoteIp []*string `json:"RemoteIp,omitnil,omitempty" name:"RemoteIp"`
 
-	// Request/Response 请求/返回, 非必填
+	// <p>Request/Response 请求/返回, 非必填</p>
 	TraceType []*string `json:"TraceType,omitnil,omitempty" name:"TraceType"`
 
-	// Public/Private 公网访问/内网访问, 非必填
+	// <p>Public/Private 公网访问/内网访问, 非必填</p>
 	NetType []*string `json:"NetType,omitnil,omitempty" name:"NetType"`
 
-	// POST/GET/PUT/DELETE/HEAD/OPTIONS/PATCH/CONNECT/TRACE/CONNECT等, 非必填
+	// <p>POST/GET/PUT/DELETE/HEAD/OPTIONS/PATCH/CONNECT/TRACE/CONNECT等, 非必填</p>
 	ReqTypeOrRspStatus []*string `json:"ReqTypeOrRspStatus,omitnil,omitempty" name:"ReqTypeOrRspStatus"`
 
-	// 关键字模糊查询，支持Lucene Query String
+	// <p>关键字模糊查询，支持Lucene Query String</p>
 	SearchKey *string `json:"SearchKey,omitnil,omitempty" name:"SearchKey"`
 
-	// uri搜索
+	// <p>uri搜索</p>
 	Uri *string `json:"Uri,omitnil,omitempty" name:"Uri"`
 
-	// 集群节点IP
+	// <p>集群节点IP</p>
 	NodeIp []*string `json:"NodeIp,omitnil,omitempty" name:"NodeIp"`
 }
 
@@ -5938,7 +5938,7 @@ func (r *ExportIpTraceLogRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ExportIpTraceLogResponseParams struct {
-	// IP时间列表
+	// <p>IP时间列表</p>
 	IpTraceList []*IpTimePair `json:"IpTraceList,omitnil,omitempty" name:"IpTraceList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6050,14 +6050,14 @@ func (r *GetDiagnoseSettingsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetIpTraceStatusRequestParams struct {
-	// 集群ID
+	// <p>集群ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type GetIpTraceStatusRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群ID
+	// <p>集群ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
@@ -6082,22 +6082,22 @@ func (r *GetIpTraceStatusRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetIpTraceStatusResponseParams struct {
-	// 是否开启IP溯源
+	// <p>是否开启IP溯源</p>
 	OpenIpTrace *bool `json:"OpenIpTrace,omitnil,omitempty" name:"OpenIpTrace"`
 
-	// IP溯源开启持续时间，单位：秒
+	// <p>IP溯源开启持续时间，单位：秒</p>
 	DurationTime *int64 `json:"DurationTime,omitnil,omitempty" name:"DurationTime"`
 
-	// IP溯源配置
+	// <p>IP溯源配置</p>
 	IpTraceConfig *IpTraceConfig `json:"IpTraceConfig,omitnil,omitempty" name:"IpTraceConfig"`
 
-	// 上次执行时间
+	// <p>上次执行时间</p>
 	LastStartTime *string `json:"LastStartTime,omitnil,omitempty" name:"LastStartTime"`
 
-	// 上次关闭时间
+	// <p>上次关闭时间</p>
 	LastEndTime *string `json:"LastEndTime,omitnil,omitempty" name:"LastEndTime"`
 
-	// 是否过滤Kibana节点IP
+	// <p>是否过滤Kibana节点IP</p>
 	FilterKibanaIp *bool `json:"FilterKibanaIp,omitnil,omitempty" name:"FilterKibanaIp"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8203,80 +8203,80 @@ type ProcessDetail struct {
 
 // Predefined struct for user
 type QueryIpTraceLogRequestParams struct {
-	// ES集群ID
+	// <p>ES集群ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 开始时间
+	// <p>开始时间</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间
+	// <p>结束时间</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 起始偏移量
+	// <p>起始偏移量</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 数据条数
+	// <p>数据条数</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 访问IP
+	// <p>访问IP</p>
 	RemoteIp []*string `json:"RemoteIp,omitnil,omitempty" name:"RemoteIp"`
 
-	// Request/Response 请求/返回, 非必填
+	// <p>Request/Response 请求/返回, 非必填</p>
 	TraceType []*string `json:"TraceType,omitnil,omitempty" name:"TraceType"`
 
-	// Public/Private 公网访问/内网访问, 非必填
+	// <p>Public/Private 公网访问/内网访问, 非必填</p>
 	NetType []*string `json:"NetType,omitnil,omitempty" name:"NetType"`
 
-	// POST/GET/PUT/DELETE/HEAD/OPTIONS/PATCH/CONNECT/TRACE/CONNECT等, 非必填
+	// <p>POST/GET/PUT/DELETE/HEAD/OPTIONS/PATCH/CONNECT/TRACE/CONNECT等, 非必填</p>
 	ReqTypeOrRspStatus []*string `json:"ReqTypeOrRspStatus,omitnil,omitempty" name:"ReqTypeOrRspStatus"`
 
-	// 关键字模糊查询，支持Lucene Query String
+	// <p>关键字模糊查询，支持Lucene Query String</p>
 	SearchKey *string `json:"SearchKey,omitnil,omitempty" name:"SearchKey"`
 
-	// Uri搜索
+	// <p>Uri搜索</p>
 	Uri *string `json:"Uri,omitnil,omitempty" name:"Uri"`
 
-	// 集群节点IP
+	// <p>集群节点IP</p>
 	NodeIp []*string `json:"NodeIp,omitnil,omitempty" name:"NodeIp"`
 }
 
 type QueryIpTraceLogRequest struct {
 	*tchttp.BaseRequest
 	
-	// ES集群ID
+	// <p>ES集群ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 开始时间
+	// <p>开始时间</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间
+	// <p>结束时间</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 起始偏移量
+	// <p>起始偏移量</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 数据条数
+	// <p>数据条数</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 访问IP
+	// <p>访问IP</p>
 	RemoteIp []*string `json:"RemoteIp,omitnil,omitempty" name:"RemoteIp"`
 
-	// Request/Response 请求/返回, 非必填
+	// <p>Request/Response 请求/返回, 非必填</p>
 	TraceType []*string `json:"TraceType,omitnil,omitempty" name:"TraceType"`
 
-	// Public/Private 公网访问/内网访问, 非必填
+	// <p>Public/Private 公网访问/内网访问, 非必填</p>
 	NetType []*string `json:"NetType,omitnil,omitempty" name:"NetType"`
 
-	// POST/GET/PUT/DELETE/HEAD/OPTIONS/PATCH/CONNECT/TRACE/CONNECT等, 非必填
+	// <p>POST/GET/PUT/DELETE/HEAD/OPTIONS/PATCH/CONNECT/TRACE/CONNECT等, 非必填</p>
 	ReqTypeOrRspStatus []*string `json:"ReqTypeOrRspStatus,omitnil,omitempty" name:"ReqTypeOrRspStatus"`
 
-	// 关键字模糊查询，支持Lucene Query String
+	// <p>关键字模糊查询，支持Lucene Query String</p>
 	SearchKey *string `json:"SearchKey,omitnil,omitempty" name:"SearchKey"`
 
-	// Uri搜索
+	// <p>Uri搜索</p>
 	Uri *string `json:"Uri,omitnil,omitempty" name:"Uri"`
 
-	// 集群节点IP
+	// <p>集群节点IP</p>
 	NodeIp []*string `json:"NodeIp,omitnil,omitempty" name:"NodeIp"`
 }
 
@@ -8312,10 +8312,10 @@ func (r *QueryIpTraceLogRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type QueryIpTraceLogResponseParams struct {
-	// 总数
+	// <p>总数</p>
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
-	// IP溯源日志列表
+	// <p>IP溯源日志列表</p>
 	IpTraceLogList []*IpTraceLogEntry `json:"IpTraceLogList,omitnil,omitempty" name:"IpTraceLogList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -10700,38 +10700,38 @@ func (r *UpdateInstanceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateIpTraceStatusRequestParams struct {
-	// 集群ID
+	// <p>集群ID。该字段为必填字段。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// IP溯源配置开关
+	// <p>IP溯源配置开关。该字段为必填字段。</p>
 	OpenIpTrace *bool `json:"OpenIpTrace,omitnil,omitempty" name:"OpenIpTrace"`
 
-	// IP溯源开启持续时间，单位：秒
+	// <p>IP溯源开启持续时间，单位：秒。该字段为必填字段。</p>
 	DurationTime *int64 `json:"DurationTime,omitnil,omitempty" name:"DurationTime"`
 
-	// IP溯源配置
+	// <p>IP溯源配置。该字段为必填字段。</p>
 	IpTraceConfig *IpTraceConfig `json:"IpTraceConfig,omitnil,omitempty" name:"IpTraceConfig"`
 
-	// 是否过滤kibana节点IP
+	// <p>是否过滤kibana节点IP。</p>
 	FilterKibanaIp *bool `json:"FilterKibanaIp,omitnil,omitempty" name:"FilterKibanaIp"`
 }
 
 type UpdateIpTraceStatusRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群ID
+	// <p>集群ID。该字段为必填字段。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// IP溯源配置开关
+	// <p>IP溯源配置开关。该字段为必填字段。</p>
 	OpenIpTrace *bool `json:"OpenIpTrace,omitnil,omitempty" name:"OpenIpTrace"`
 
-	// IP溯源开启持续时间，单位：秒
+	// <p>IP溯源开启持续时间，单位：秒。该字段为必填字段。</p>
 	DurationTime *int64 `json:"DurationTime,omitnil,omitempty" name:"DurationTime"`
 
-	// IP溯源配置
+	// <p>IP溯源配置。该字段为必填字段。</p>
 	IpTraceConfig *IpTraceConfig `json:"IpTraceConfig,omitnil,omitempty" name:"IpTraceConfig"`
 
-	// 是否过滤kibana节点IP
+	// <p>是否过滤kibana节点IP。</p>
 	FilterKibanaIp *bool `json:"FilterKibanaIp,omitnil,omitempty" name:"FilterKibanaIp"`
 }
 

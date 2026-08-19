@@ -812,6 +812,9 @@ type Device struct {
 
 	// <p>token生成时间戳，毫秒级。</p>
 	TokenTime *string `json:"TokenTime,omitnil,omitempty" name:"TokenTime"`
+
+	// <p>隐私浏览器类型，当检测到隐私浏览器时返回，仅H5。</p>
+	PrivacyBrowser *string `json:"PrivacyBrowser,omitnil,omitempty" name:"PrivacyBrowser"`
 }
 
 type DigitalOrder struct {

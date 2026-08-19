@@ -141,6 +141,15 @@ type AgentInstance struct {
 
 	// <p>发货进度详情</p>
 	CreatingProgress *CreatingProgress `json:"CreatingProgress,omitnil,omitempty" name:"CreatingProgress"`
+
+	// <p>实例关联的角色名称</p>
+	RoleName *string `json:"RoleName,omitnil,omitempty" name:"RoleName"`
+
+	// <p>实例下线时间</p><p>参数格式：2026-08-12 17:02:43</p>
+	OfflineTime *string `json:"OfflineTime,omitnil,omitempty" name:"OfflineTime"`
+
+	// <p>商业化资源归属</p>
+	ProductName *string `json:"ProductName,omitnil,omitempty" name:"ProductName"`
 }
 
 type ChatBrief struct {
@@ -318,6 +327,9 @@ type CreateAgentInstanceRequestParams struct {
 
 	// <p>无</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>企业版是否使用平台大账号模式发货</p>
+	UsePlatformAccount *bool `json:"UsePlatformAccount,omitnil,omitempty" name:"UsePlatformAccount"`
 }
 
 type CreateAgentInstanceRequest struct {
@@ -352,6 +364,9 @@ type CreateAgentInstanceRequest struct {
 
 	// <p>无</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>企业版是否使用平台大账号模式发货</p>
+	UsePlatformAccount *bool `json:"UsePlatformAccount,omitnil,omitempty" name:"UsePlatformAccount"`
 }
 
 func (r *CreateAgentInstanceRequest) ToJsonString() string {
@@ -376,6 +391,7 @@ func (r *CreateAgentInstanceRequest) FromJsonString(s string) error {
 	delete(f, "Skills")
 	delete(f, "SoulId")
 	delete(f, "Description")
+	delete(f, "UsePlatformAccount")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAgentInstanceRequest has unknown keys!", "")
 	}

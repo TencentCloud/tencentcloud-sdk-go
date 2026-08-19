@@ -12439,7 +12439,7 @@ func (r *DescribeDesignTaskRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDesignTaskResponseParams struct {
-	// <p>错误码，成功时返回0</p>
+	// <p>错误码，成功时返回0，处理中返回100</p>
 	ErrorCode *int64 `json:"ErrorCode,omitnil,omitempty" name:"ErrorCode"`
 
 	// <p>错误信息，成功时返回success</p>
@@ -19686,6 +19686,11 @@ type ImageProcessTaskResult struct {
 	Progress *int64 `json:"Progress,omitnil,omitempty" name:"Progress"`
 }
 
+type ImageQualityConfig struct {
+	// <p>图片质量评估维度</p><p>枚举值：</p><ul><li>Brightness： 亮度评估</li><li>Contrast： 对比度评估</li><li>Sharpness： 清晰度评估</li><li>IQA： 综合质量评估</li></ul>
+	Attributes []*string `json:"Attributes,omitnil,omitempty" name:"Attributes"`
+}
+
 type ImageQualityEnhanceConfig struct {
 	// 能力配置开关，可选值：
 	// <li>ON：开启；</li>
@@ -19909,6 +19914,9 @@ type ImageTaskInput struct {
 
 	// <p>图片理解配置</p>
 	UnderstandImageConfig *UnderstandImageConfig `json:"UnderstandImageConfig,omitnil,omitempty" name:"UnderstandImageConfig"`
+
+	// <p>图片质量评估配置</p>
+	ImageQualityConfig *ImageQualityConfig `json:"ImageQualityConfig,omitnil,omitempty" name:"ImageQualityConfig"`
 }
 
 type ImageTransformConfig struct {

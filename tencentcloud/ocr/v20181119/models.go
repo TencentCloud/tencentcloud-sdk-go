@@ -1628,14 +1628,14 @@ func (r *DescribeExtractDocAgentJobResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeMarkEssayAgentJobRequestParams struct {
-	// 任务唯一ID。由服务端生成。
+	// <p>任务唯一ID。由服务端生成。</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 }
 
 type DescribeMarkEssayAgentJobRequest struct {
 	*tchttp.BaseRequest
 	
-	// 任务唯一ID。由服务端生成。
+	// <p>任务唯一ID。由服务端生成。</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 }
 
@@ -1660,19 +1660,19 @@ func (r *DescribeMarkEssayAgentJobRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeMarkEssayAgentJobResponseParams struct {
-	// 图片旋转角度(角度制)，文本的水平方向为 0；顺时针为正，逆时针为负。
+	// <p>图片旋转角度(角度制)，文本的水平方向为 0；顺时针为正，逆时针为负。</p>
 	Angle *float64 `json:"Angle,omitnil,omitempty" name:"Angle"`
 
-	// 配置结构化文本信息。
+	// <p>配置结构化文本信息。</p>
 	SentenceSuggests []*MarkEssaySuggestions `json:"SentenceSuggests,omitnil,omitempty" name:"SentenceSuggests"`
 
-	// 任务执行错误码。当任务状态不为 FAIL 时，该值为""。
+	// <p>任务执行错误码。当任务状态不为 FAIL 时，该值为&quot;&quot;。</p>
 	ErrorCode *string `json:"ErrorCode,omitnil,omitempty" name:"ErrorCode"`
 
-	// 任务执行错误信息。当任务状态不为 FAIL 时，该值为""。
+	// <p>任务执行错误信息。当任务状态不为 FAIL 时，该值为&quot;&quot;。</p>
 	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
 
-	// 任务状态。WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功
+	// <p>任务状态。WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功</p>
 	JobStatus *string `json:"JobStatus,omitnil,omitempty" name:"JobStatus"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9603,32 +9603,32 @@ func (r *SubmitExtractDocAgentJobResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SubmitMarkEssayAgentJobRequestParams struct {
-	// 图片/PDF的 Base64 值。要求Base64不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。  示例值：/9j/4AAQSkZJRg.....s97n//2Q==
+	// <p>图片/PDF的 Base64 值。要求Base64不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。  示例值：/9j/4AAQSkZJRg.....s97n//2Q==</p>
 	ImageBase64List []*string `json:"ImageBase64List,omitnil,omitempty" name:"ImageBase64List"`
 
-	// 图片/PDF的 Url 地址。要求图片经Base64编码后不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。  示例值：https://ocr-demo-1254418846.cos.ap-guangzhou.myqcloud.com/general/GeneralAccurateOCR/GeneralAccurateOCR1.jpg
+	// <p>图片/PDF的 Url 地址。要求图片经Base64编码后不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。  示例值：https://ocr-demo-1254418846.cos.ap-guangzhou.myqcloud.com/general/GeneralAccurateOCR/GeneralAccurateOCR1.jpg</p>
 	ImageUrlList []*string `json:"ImageUrlList,omitnil,omitempty" name:"ImageUrlList"`
 
-	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，默认值为1。 示例值：1
+	// <p>需要识别的PDF页面的对应页码，仅支持PDF单页识别，默认值为1。 示例值：1</p>
 	PdfPageNumber *int64 `json:"PdfPageNumber,omitnil,omitempty" name:"PdfPageNumber"`
 
-	// 批改信息输出配置，当key对应为1表示开启配置开关。  当key为StructureAndContent  value为1 表示SentenceSuggest返回篇章结构和内容信息，默认只返回词汇、语句
+	// <p>批改信息输出配置，当key对应为1表示开启配置开关。  当key为StructureAndContent  value为1 表示SentenceSuggest返回篇章结构和内容信息，默认只返回词汇、语句</p>
 	QuestionConfigMap *string `json:"QuestionConfigMap,omitnil,omitempty" name:"QuestionConfigMap"`
 }
 
 type SubmitMarkEssayAgentJobRequest struct {
 	*tchttp.BaseRequest
 	
-	// 图片/PDF的 Base64 值。要求Base64不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。  示例值：/9j/4AAQSkZJRg.....s97n//2Q==
+	// <p>图片/PDF的 Base64 值。要求Base64不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。  示例值：/9j/4AAQSkZJRg.....s97n//2Q==</p>
 	ImageBase64List []*string `json:"ImageBase64List,omitnil,omitempty" name:"ImageBase64List"`
 
-	// 图片/PDF的 Url 地址。要求图片经Base64编码后不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。  示例值：https://ocr-demo-1254418846.cos.ap-guangzhou.myqcloud.com/general/GeneralAccurateOCR/GeneralAccurateOCR1.jpg
+	// <p>图片/PDF的 Url 地址。要求图片经Base64编码后不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。  示例值：https://ocr-demo-1254418846.cos.ap-guangzhou.myqcloud.com/general/GeneralAccurateOCR/GeneralAccurateOCR1.jpg</p>
 	ImageUrlList []*string `json:"ImageUrlList,omitnil,omitempty" name:"ImageUrlList"`
 
-	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，默认值为1。 示例值：1
+	// <p>需要识别的PDF页面的对应页码，仅支持PDF单页识别，默认值为1。 示例值：1</p>
 	PdfPageNumber *int64 `json:"PdfPageNumber,omitnil,omitempty" name:"PdfPageNumber"`
 
-	// 批改信息输出配置，当key对应为1表示开启配置开关。  当key为StructureAndContent  value为1 表示SentenceSuggest返回篇章结构和内容信息，默认只返回词汇、语句
+	// <p>批改信息输出配置，当key对应为1表示开启配置开关。  当key为StructureAndContent  value为1 表示SentenceSuggest返回篇章结构和内容信息，默认只返回词汇、语句</p>
 	QuestionConfigMap *string `json:"QuestionConfigMap,omitnil,omitempty" name:"QuestionConfigMap"`
 }
 
@@ -9656,7 +9656,7 @@ func (r *SubmitMarkEssayAgentJobRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SubmitMarkEssayAgentJobResponseParams struct {
-	// 任务唯一ID。由服务端生成。 示例值：1334797167793684480
+	// <p>任务唯一ID。由服务端生成。 示例值：1334797167793684480</p>
 	JobIds []*string `json:"JobIds,omitnil,omitempty" name:"JobIds"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

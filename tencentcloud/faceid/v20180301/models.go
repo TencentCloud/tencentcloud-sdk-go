@@ -956,116 +956,80 @@ func (r *DetectAIFakeFacesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DetectAuthRequestParams struct {
-	// 业务流程ID。
-	// - 用于细分客户使用场景, 可为业务配置不同的业务流程。
-	// - 申请开通服务后，登录腾讯云[慧眼人脸核身控制](https://console.cloud.tencent.com/faceid)进行创建，审核通过后即可调用。
-	// - 如有疑问，请添加[腾讯云人脸核身小助手](https://cloud.tencent.com/document/product/1007/56130)进行咨询。
+	// <p>业务流程ID。</p><ul><li>用于细分客户使用场景, 可为业务配置不同的业务流程。</li><li>申请开通服务后，登录腾讯云<a href="https://console.cloud.tencent.com/faceid">慧眼人脸核身控制</a>进行创建，审核通过后即可调用。</li><li>如有疑问，请添加<a href="https://cloud.tencent.com/document/product/1007/56130">腾讯云人脸核身小助手</a>进行咨询。</li></ul>
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
-	// 本接口不需要传递此参数。
+	// <p>本接口不需要传递此参数。</p>
 	TerminalType *string `json:"TerminalType,omitnil,omitempty" name:"TerminalType"`
 
-	// 验证人的身份证号码。
-	// - 是否必传基于[控制台](https://console.cloud.tencent.com/faceid/access)申请业务流程时配置的提示。
+	// <p>验证人的身份证号码。</p><ul><li>调用 detectAuth 时，该字段是否必传，以在<a href="https://console.cloud.tencent.com/faceid/access">控制台</a>申请 ruleId 时的配置提示为准，具体必填字段请参阅控制台界面。</li><li>若身份证号包含字母，该字母必须为大写 X，小写 x 将无法通过校验。</li></ul>
 	IdCard *string `json:"IdCard,omitnil,omitempty" name:"IdCard"`
 
-	// 验证人的姓名。
-	// - 是否必传基于[控制台](https://console.cloud.tencent.com/faceid/access)申请业务流程时配置的提示。
-	// - 最长长度32位。中文请使用UTF-8编码。
+	// <p>验证人的姓名。</p><ul><li>调用 detectAuth 时，该字段是否必传，以在<a href="https://console.cloud.tencent.com/faceid/access">控制台</a>申请 ruleId 时的配置提示为准，具体必填字段请参阅控制台界面。</li><li>最长长度32位。中文请使用UTF-8编码。</li></ul>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 认证结束后重定向的回调链接地址，仅微信H5场景使用。
-	// - 最长长度1024位。
-	// - 默认值：[腾讯云人脸核身产品介绍页](URL Here)https://cloud.tencent.com/product/faceid?Is=sdk-topnav 
+	// <p>认证结束后重定向的回调链接地址，仅微信H5场景使用。</p><ul><li>最长长度1024位。</li><li>默认值：[腾讯云人脸核身产品介绍页](URL Here)https://cloud.tencent.com/product/faceid?Is=sdk-topnav</li></ul>
 	RedirectUrl *string `json:"RedirectUrl,omitnil,omitempty" name:"RedirectUrl"`
 
-	// 透传字段，在获取验证结果时返回。
-	// - 最长长度1024位。
+	// <p>透传字段，在获取验证结果时返回。</p><ul><li>最长长度1024位。</li></ul>
 	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
 
-	// 用于人脸比对的图像数据，使用base64编码。
-	// - Base64编码后的图片数据大小不超过3M。
-	// - 仅支持jpg、png格式。
-	// - 请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。
+	// <p>用于人脸比对的图像数据，使用base64编码。</p><ul><li>Base64编码后的图片数据大小不超过3M。</li><li>仅支持jpg、png格式。</li><li>请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。</li></ul>
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
 
-	// 敏感数据加密信息。对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+	// <p>敏感数据加密信息。对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。</p>
 	Encryption *Encryption `json:"Encryption,omitnil,omitempty" name:"Encryption"`
 
-	// 意愿核身（朗读模式）使用的文案。
-	// - 若未使用意愿核身（朗读模式），则该字段无需传入。
-	// - 最长可接受120的字符串长度。
+	// <p>意愿核身（朗读模式）使用的文案。</p><ul><li>若未使用意愿核身（朗读模式），则该字段无需传入。</li><li>最长可接受120的字符串长度。</li></ul>
 	IntentionVerifyText *string `json:"IntentionVerifyText,omitnil,omitempty" name:"IntentionVerifyText"`
 
-	// 意愿核身（语音播报+语音回答模式）使用的文案。
-	// - 包括：系统语音播报的文本、需要核验的标准文本。
-	// - 问答模式支持1-10轮（不超过10轮）的意愿确认。
+	// <p>意愿核身（语音播报+语音回答模式）使用的文案。</p><ul><li>包括：系统语音播报的文本、需要核验的标准文本。</li><li>问答模式支持1-10轮（不超过10轮）的意愿确认。</li></ul>
 	IntentionQuestions []*IntentionQuestion `json:"IntentionQuestions,omitnil,omitempty" name:"IntentionQuestions"`
 
-	// 意愿核身（点头确认模式）使用的文案。
-	// - 若未使用意愿核身（点头确认模式），则该字段无需传入。
-	// - 点头确认模式支持1-10轮（不超过10轮）的意愿确认。
+	// <p>意愿核身（点头确认模式）使用的文案。</p><ul><li>若未使用意愿核身（点头确认模式），则该字段无需传入。</li><li>点头确认模式支持1-10轮（不超过10轮）的意愿确认。</li></ul>
 	IntentionActions []*IntentionActionConfig `json:"IntentionActions,omitnil,omitempty" name:"IntentionActions"`
 
-	// 意愿核身流程配置。
+	// <p>意愿核身流程配置。</p>
 	Config *RuleIdConfig `json:"Config,omitnil,omitempty" name:"Config"`
 }
 
 type DetectAuthRequest struct {
 	*tchttp.BaseRequest
 	
-	// 业务流程ID。
-	// - 用于细分客户使用场景, 可为业务配置不同的业务流程。
-	// - 申请开通服务后，登录腾讯云[慧眼人脸核身控制](https://console.cloud.tencent.com/faceid)进行创建，审核通过后即可调用。
-	// - 如有疑问，请添加[腾讯云人脸核身小助手](https://cloud.tencent.com/document/product/1007/56130)进行咨询。
+	// <p>业务流程ID。</p><ul><li>用于细分客户使用场景, 可为业务配置不同的业务流程。</li><li>申请开通服务后，登录腾讯云<a href="https://console.cloud.tencent.com/faceid">慧眼人脸核身控制</a>进行创建，审核通过后即可调用。</li><li>如有疑问，请添加<a href="https://cloud.tencent.com/document/product/1007/56130">腾讯云人脸核身小助手</a>进行咨询。</li></ul>
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
-	// 本接口不需要传递此参数。
+	// <p>本接口不需要传递此参数。</p>
 	TerminalType *string `json:"TerminalType,omitnil,omitempty" name:"TerminalType"`
 
-	// 验证人的身份证号码。
-	// - 是否必传基于[控制台](https://console.cloud.tencent.com/faceid/access)申请业务流程时配置的提示。
+	// <p>验证人的身份证号码。</p><ul><li>调用 detectAuth 时，该字段是否必传，以在<a href="https://console.cloud.tencent.com/faceid/access">控制台</a>申请 ruleId 时的配置提示为准，具体必填字段请参阅控制台界面。</li><li>若身份证号包含字母，该字母必须为大写 X，小写 x 将无法通过校验。</li></ul>
 	IdCard *string `json:"IdCard,omitnil,omitempty" name:"IdCard"`
 
-	// 验证人的姓名。
-	// - 是否必传基于[控制台](https://console.cloud.tencent.com/faceid/access)申请业务流程时配置的提示。
-	// - 最长长度32位。中文请使用UTF-8编码。
+	// <p>验证人的姓名。</p><ul><li>调用 detectAuth 时，该字段是否必传，以在<a href="https://console.cloud.tencent.com/faceid/access">控制台</a>申请 ruleId 时的配置提示为准，具体必填字段请参阅控制台界面。</li><li>最长长度32位。中文请使用UTF-8编码。</li></ul>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 认证结束后重定向的回调链接地址，仅微信H5场景使用。
-	// - 最长长度1024位。
-	// - 默认值：[腾讯云人脸核身产品介绍页](URL Here)https://cloud.tencent.com/product/faceid?Is=sdk-topnav 
+	// <p>认证结束后重定向的回调链接地址，仅微信H5场景使用。</p><ul><li>最长长度1024位。</li><li>默认值：[腾讯云人脸核身产品介绍页](URL Here)https://cloud.tencent.com/product/faceid?Is=sdk-topnav</li></ul>
 	RedirectUrl *string `json:"RedirectUrl,omitnil,omitempty" name:"RedirectUrl"`
 
-	// 透传字段，在获取验证结果时返回。
-	// - 最长长度1024位。
+	// <p>透传字段，在获取验证结果时返回。</p><ul><li>最长长度1024位。</li></ul>
 	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
 
-	// 用于人脸比对的图像数据，使用base64编码。
-	// - Base64编码后的图片数据大小不超过3M。
-	// - 仅支持jpg、png格式。
-	// - 请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。
+	// <p>用于人脸比对的图像数据，使用base64编码。</p><ul><li>Base64编码后的图片数据大小不超过3M。</li><li>仅支持jpg、png格式。</li><li>请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。</li></ul>
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
 
-	// 敏感数据加密信息。对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+	// <p>敏感数据加密信息。对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。</p>
 	Encryption *Encryption `json:"Encryption,omitnil,omitempty" name:"Encryption"`
 
-	// 意愿核身（朗读模式）使用的文案。
-	// - 若未使用意愿核身（朗读模式），则该字段无需传入。
-	// - 最长可接受120的字符串长度。
+	// <p>意愿核身（朗读模式）使用的文案。</p><ul><li>若未使用意愿核身（朗读模式），则该字段无需传入。</li><li>最长可接受120的字符串长度。</li></ul>
 	IntentionVerifyText *string `json:"IntentionVerifyText,omitnil,omitempty" name:"IntentionVerifyText"`
 
-	// 意愿核身（语音播报+语音回答模式）使用的文案。
-	// - 包括：系统语音播报的文本、需要核验的标准文本。
-	// - 问答模式支持1-10轮（不超过10轮）的意愿确认。
+	// <p>意愿核身（语音播报+语音回答模式）使用的文案。</p><ul><li>包括：系统语音播报的文本、需要核验的标准文本。</li><li>问答模式支持1-10轮（不超过10轮）的意愿确认。</li></ul>
 	IntentionQuestions []*IntentionQuestion `json:"IntentionQuestions,omitnil,omitempty" name:"IntentionQuestions"`
 
-	// 意愿核身（点头确认模式）使用的文案。
-	// - 若未使用意愿核身（点头确认模式），则该字段无需传入。
-	// - 点头确认模式支持1-10轮（不超过10轮）的意愿确认。
+	// <p>意愿核身（点头确认模式）使用的文案。</p><ul><li>若未使用意愿核身（点头确认模式），则该字段无需传入。</li><li>点头确认模式支持1-10轮（不超过10轮）的意愿确认。</li></ul>
 	IntentionActions []*IntentionActionConfig `json:"IntentionActions,omitnil,omitempty" name:"IntentionActions"`
 
-	// 意愿核身流程配置。
+	// <p>意愿核身流程配置。</p>
 	Config *RuleIdConfig `json:"Config,omitnil,omitempty" name:"Config"`
 }
 
@@ -1101,12 +1065,10 @@ func (r *DetectAuthRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DetectAuthResponseParams struct {
-	// 用于发起核身流程的URL，仅微信H5场景使用。
+	// <p>用于发起核身流程的URL，仅微信H5场景使用。</p>
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
-	// 一次核验流程的唯一标识。
-	// - 有效时间为7,200秒，超过有效期再进行人脸核验会报错，请在有效期内进行核验。
-	// - 完成人脸核验后，需根据此标识调用[获取实名核身结果信息增强版](https://cloud.tencent.com/document/api/1007/41957)获取用户最终验证结果信息。
+	// <p>一次核验流程的唯一标识。</p><ul><li>有效时间为7,200秒，超过有效期再进行人脸核验会报错，请在有效期内进行核验。</li><li>完成人脸核验后，需根据此标识调用<a href="https://cloud.tencent.com/document/api/1007/41957">获取实名核身结果信息增强版</a>获取用户最终验证结果信息。</li></ul>
 	BizToken *string `json:"BizToken,omitnil,omitempty" name:"BizToken"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2234,46 +2196,38 @@ func (r *GetEidTokenResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetFaceIdResultRequestParams struct {
-	// SDK人脸核身流程的标识。
-	// - 调用[GetFaceIdToken](https://cloud.tencent.com/document/product/1007/49198)接口时生成。
+	// <p>SDK人脸核身流程的标识。</p><ul><li>调用<a href="https://cloud.tencent.com/document/product/1007/49198">GetFaceIdToken</a>接口时生成。</li></ul>
 	FaceIdToken *string `json:"FaceIdToken,omitnil,omitempty" name:"FaceIdToken"`
 
-	// 是否需要拉取视频。
-	// - 默认false：不需要。
+	// <p>是否需要拉取视频。</p><ul><li>默认false：不需要。</li></ul>
 	IsNeedVideo *bool `json:"IsNeedVideo,omitnil,omitempty" name:"IsNeedVideo"`
 
-	// 是否需要拉取截帧。
-	// - 默认false：不需要。
+	// <p>是否需要拉取截帧。</p><ul><li>默认false：不需要。</li></ul>
 	IsNeedBestFrame *bool `json:"IsNeedBestFrame,omitnil,omitempty" name:"IsNeedBestFrame"`
 
-	// 是否对回包整体进行加密。
+	// <p>是否对回包整体进行加密。</p>
 	IsEncryptResponse *bool `json:"IsEncryptResponse,omitnil,omitempty" name:"IsEncryptResponse"`
 
-	// 是否需要对返回中的敏感信息进行加密。  
-	// 只需指定加密算法Algorithm即可，其余字段传入默认值。
+	// <p>是否需要对返回中的敏感信息进行加密。<br>只需指定加密算法Algorithm即可，其余字段传入默认值。</p>
 	Encryption *Encryption `json:"Encryption,omitnil,omitempty" name:"Encryption"`
 }
 
 type GetFaceIdResultRequest struct {
 	*tchttp.BaseRequest
 	
-	// SDK人脸核身流程的标识。
-	// - 调用[GetFaceIdToken](https://cloud.tencent.com/document/product/1007/49198)接口时生成。
+	// <p>SDK人脸核身流程的标识。</p><ul><li>调用<a href="https://cloud.tencent.com/document/product/1007/49198">GetFaceIdToken</a>接口时生成。</li></ul>
 	FaceIdToken *string `json:"FaceIdToken,omitnil,omitempty" name:"FaceIdToken"`
 
-	// 是否需要拉取视频。
-	// - 默认false：不需要。
+	// <p>是否需要拉取视频。</p><ul><li>默认false：不需要。</li></ul>
 	IsNeedVideo *bool `json:"IsNeedVideo,omitnil,omitempty" name:"IsNeedVideo"`
 
-	// 是否需要拉取截帧。
-	// - 默认false：不需要。
+	// <p>是否需要拉取截帧。</p><ul><li>默认false：不需要。</li></ul>
 	IsNeedBestFrame *bool `json:"IsNeedBestFrame,omitnil,omitempty" name:"IsNeedBestFrame"`
 
-	// 是否对回包整体进行加密。
+	// <p>是否对回包整体进行加密。</p>
 	IsEncryptResponse *bool `json:"IsEncryptResponse,omitnil,omitempty" name:"IsEncryptResponse"`
 
-	// 是否需要对返回中的敏感信息进行加密。  
-	// 只需指定加密算法Algorithm即可，其余字段传入默认值。
+	// <p>是否需要对返回中的敏感信息进行加密。<br>只需指定加密算法Algorithm即可，其余字段传入默认值。</p>
 	Encryption *Encryption `json:"Encryption,omitnil,omitempty" name:"Encryption"`
 }
 
@@ -2302,91 +2256,59 @@ func (r *GetFaceIdResultRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetFaceIdResultResponseParams struct {
-	// 身份证。
+	// <p>身份证。</p>
 	IdCard *string `json:"IdCard,omitnil,omitempty" name:"IdCard"`
 
-	// 姓名。
+	// <p>姓名。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 业务核验结果。
-	// - 参考：https://cloud.tencent.com/document/product/1007/47912。
+	// <p>业务核验结果。</p><ul><li>参考：https://cloud.tencent.com/document/product/1007/47912。</li></ul>
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 业务核验描述。
+	// <p>业务核验描述。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 相似度。
-	// - 取值：0-100。
-	// - 数值越大相似度越高。
+	// <p>相似度。</p><ul><li>取值：0-100。</li><li>数值越大相似度越高。</li></ul>
 	Similarity *float64 `json:"Similarity,omitnil,omitempty" name:"Similarity"`
 
-	// 用户核验的视频base64。
-	// - 如果选择了使用cos，返回完整cos地址，如https://bucket.cos.ap-guangzhou.myqcloud.com/objectKey。
+	// <p>用户核验的视频base64。</p><ul><li>如果选择了使用cos，返回完整cos地址，如https://bucket.cos.ap-guangzhou.myqcloud.com/objectKey。</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VideoBase64 *string `json:"VideoBase64,omitnil,omitempty" name:"VideoBase64"`
 
-	// 用户核验视频的截帧base64。
-	// - 如果选择了使用cos，返回完整cos地址如https://bucket.cos.ap-guangzhou.myqcloud.com/objectKey。
+	// <p>用户核验视频的截帧base64。</p><ul><li>如果选择了使用cos，返回完整cos地址如https://bucket.cos.ap-guangzhou.myqcloud.com/objectKey。</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BestFrameBase64 *string `json:"BestFrameBase64,omitnil,omitempty" name:"BestFrameBase64"`
 
-	// 获取token时透传的信息。
+	// <p>获取token时透传的信息。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
 
-	// plus版：描述当前请求所在设备的风险标签。
-	// - 详情如下：
-	// 06-疑似黑产设备。
-	// null-无设备风险。
-	// - 增强版：此字段不生效，默认为null。
+	// <p>plus版：描述当前请求所在设备的风险标签。</p><ul><li>详情如下：<br>01-设备疑似被Root/设备疑似越狱。<br>02-设备疑似被注入。<br>03-设备疑似为模拟器。<br>04-设备疑似存在风险操作。<br>05-摄像头疑似被劫持。<br>06-疑似黑产设备。<br>null-无设备风险。</li><li>增强版：此字段不生效，默认为null。</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceInfoTag *string `json:"DeviceInfoTag,omitnil,omitempty" name:"DeviceInfoTag"`
 
-	// 行为风险标签。
-	// - 仅错误码返回1007（设备疑似被劫持）时返回风险标签。
-	// - 标签说明：
-	// 02：攻击风险
+	// <p>行为风险标签。</p><ul><li>仅错误码返回1007（设备疑似被劫持）时返回风险标签。</li><li>标签说明：<br>02：攻击风险</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskInfoTag *string `json:"RiskInfoTag,omitnil,omitempty" name:"RiskInfoTag"`
 
-	// plus版：描述当前请求活体阶段被拒绝的详细原因。
-	// - 详情如下：
-	// 01-用户全程闭眼。
-	// 02-用户未完成指定动作。
-	// 03-疑似翻拍攻击。
-	// 04-疑似合成图片。
-	// 05-疑似合成视频。
-	// 06-疑似合成动作。
-	// 07-疑似黑产模板。
-	// 08-疑似存在水印。
-	// 09-反光校验未通过。
-	// 10-最佳帧校验未通过。
-	// 11-人脸质量过差。
-	// 12-人脸距离不匹配。
-	// 13-疑似对抗样本攻击。
-	// null-无。
-	// - 增强版：此字段不生效，默认为null。
+	// <p>plus版：描述当前请求活体阶段被拒绝的详细原因。</p><ul><li>详情如下：<br>01-用户全程闭眼。<br>02-用户未完成指定动作。<br>03-疑似翻拍攻击。<br>04-疑似合成图片。<br>05-疑似合成视频。<br>06-疑似合成动作。<br>07-疑似黑产模板。<br>08-疑似存在水印。<br>09-反光校验未通过。<br>10-最佳帧校验未通过。<br>11-人脸质量过差。<br>12-人脸距离不匹配。<br>13-疑似对抗样本攻击。<br>null-无。</li><li>增强版：此字段不生效，默认为null。</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LivenessInfoTag *string `json:"LivenessInfoTag,omitnil,omitempty" name:"LivenessInfoTag"`
 
-	// plus版：描述当前请求所在设备的风险等级，共4级。
-	// - 详情如下：
-	// 1 - 安全。
-	// 2 - 低风险。
-	// 3 - 中风险。
-	// 4 - 高危。
-	// null - 未获取到风险等级。
-	// - 增强版：此字段不生效，默认为null。
+	// <p>plus版：描述当前请求所在设备的风险等级，共4级。</p><ul><li>详情如下：<br>1 - 安全。<br>2 - 低风险。<br>3 - 中风险。<br>4 - 高危。<br>null - 未获取到风险等级。</li><li>增强版：此字段不生效，默认为null。</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceInfoLevel *string `json:"DeviceInfoLevel,omitnil,omitempty" name:"DeviceInfoLevel"`
 
-	// 敏感数据加密信息。
+	// <p>敏感数据加密信息。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Encryption *Encryption `json:"Encryption,omitnil,omitempty" name:"Encryption"`
 
-	// 加密后的数据。
+	// <p>加密后的数据。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EncryptedBody *string `json:"EncryptedBody,omitnil,omitempty" name:"EncryptedBody"`
+
+	// <p>用户核验的身份证人像页base64</p>
+	IdCardFrontBase64 *string `json:"IdCardFrontBase64,omitnil,omitempty" name:"IdCardFrontBase64"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -2516,93 +2438,69 @@ func (r *GetFaceIdRiskInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetFaceIdTokenRequestParams struct {
-	// 比对库。
-	// - 取值范围：
-	// LOCAL：本地上传照片。
-	// BUSINESS：商业库。
+	// <p>比对库。</p><ul><li>取值范围：<br>LOCAL：本地上传照片。<br>BUSINESS：商业库。</li></ul>
 	CompareLib *string `json:"CompareLib,omitnil,omitempty" name:"CompareLib"`
 
-	// 身份证。
-	// - CompareLib为商业库时必传。
+	// <p>身份证。</p><ul><li>CompareLib为商业库时必传。</li></ul>
 	IdCard *string `json:"IdCard,omitnil,omitempty" name:"IdCard"`
 
-	// 姓名。
-	// - CompareLib为商业库时必传。
+	// <p>姓名。</p><ul><li>CompareLib为商业库时必传。</li></ul>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 图片的Base64。
-	// - CompareLib为上传照片比对时必传。
-	// - Base64后图片最大8MB。
-	// - 请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。
+	// <p>图片的Base64。</p><ul><li>CompareLib为上传照片比对时必传。</li><li>Base64后图片最大8MB。</li><li>请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。</li></ul>
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
 
-	// SDK中生成的Meta字符串。
+	// <p>SDK中生成的Meta字符串。</p>
 	Meta *string `json:"Meta,omitnil,omitempty" name:"Meta"`
 
-	// 透传参数。
-	// - 1000长度字符串
+	// <p>透传参数。</p><ul><li>1000长度字符串</li></ul>
 	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
 
-	// 是否使用cos桶。
-	// - 默认为false。
-	// - 设置该参数为true后，核身过程中的视频图片将会存储在人脸核身控制台授权cos的bucket中，拉取结果时会返回对应资源完整cos地址。
-	// - 开通地址见https://console.cloud.tencent.com/faceid/cos
-	// - 【注意】选择该参数为true后将不返回base64数据，请根据接入情况谨慎修改。
+	// <p>是否使用cos桶。</p><ul><li>默认为false。</li><li>设置该参数为true后，核身过程中的视频图片将会存储在人脸核身控制台授权cos的bucket中，拉取结果时会返回对应资源完整cos地址。</li><li>开通地址见https://console.cloud.tencent.com/faceid/cos</li><li>【注意】选择该参数为true后将不返回base64数据，请根据接入情况谨慎修改。</li></ul>
 	UseCos *bool `json:"UseCos,omitnil,omitempty" name:"UseCos"`
 
-	// 敏感数据加密信息。对传入信息（姓名、身份证号、自传照片）有加密需求的用户可使用此参数，详情请点击左侧链接。
+	// <p>敏感数据加密信息。对传入信息（姓名、身份证号、自传照片）有加密需求的用户可使用此参数，详情请点击左侧链接。</p>
 	Encryption *Encryption `json:"Encryption,omitnil,omitempty" name:"Encryption"`
 
-	// 用于细分客户使用场景。
-	// - 申请开通服务后，可以在腾讯云慧眼人脸核身控制台（https://console.cloud.tencent.com/faceid） 自助接入里面创建，审核通过后即可调用。
-	// - 如有疑问，请添加腾讯云人脸核身小助手进行咨询。
+	// <p>用于细分客户使用场景。</p><ul><li>申请开通服务后，可以在腾讯云慧眼人脸核身控制台（https://console.cloud.tencent.com/faceid） 自助接入里面创建，审核通过后即可调用。</li><li>如有疑问，请添加腾讯云人脸核身小助手进行咨询。</li></ul>
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// <p>SDK和用户设备的元信息。该字段的值由HuiYan SDK以JSON字符串格式返回。  说明：不要修改返回值，直接传递即可。</p>
+	MetaData *string `json:"MetaData,omitnil,omitempty" name:"MetaData"`
 }
 
 type GetFaceIdTokenRequest struct {
 	*tchttp.BaseRequest
 	
-	// 比对库。
-	// - 取值范围：
-	// LOCAL：本地上传照片。
-	// BUSINESS：商业库。
+	// <p>比对库。</p><ul><li>取值范围：<br>LOCAL：本地上传照片。<br>BUSINESS：商业库。</li></ul>
 	CompareLib *string `json:"CompareLib,omitnil,omitempty" name:"CompareLib"`
 
-	// 身份证。
-	// - CompareLib为商业库时必传。
+	// <p>身份证。</p><ul><li>CompareLib为商业库时必传。</li></ul>
 	IdCard *string `json:"IdCard,omitnil,omitempty" name:"IdCard"`
 
-	// 姓名。
-	// - CompareLib为商业库时必传。
+	// <p>姓名。</p><ul><li>CompareLib为商业库时必传。</li></ul>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 图片的Base64。
-	// - CompareLib为上传照片比对时必传。
-	// - Base64后图片最大8MB。
-	// - 请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。
+	// <p>图片的Base64。</p><ul><li>CompareLib为上传照片比对时必传。</li><li>Base64后图片最大8MB。</li><li>请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。</li></ul>
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
 
-	// SDK中生成的Meta字符串。
+	// <p>SDK中生成的Meta字符串。</p>
 	Meta *string `json:"Meta,omitnil,omitempty" name:"Meta"`
 
-	// 透传参数。
-	// - 1000长度字符串
+	// <p>透传参数。</p><ul><li>1000长度字符串</li></ul>
 	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
 
-	// 是否使用cos桶。
-	// - 默认为false。
-	// - 设置该参数为true后，核身过程中的视频图片将会存储在人脸核身控制台授权cos的bucket中，拉取结果时会返回对应资源完整cos地址。
-	// - 开通地址见https://console.cloud.tencent.com/faceid/cos
-	// - 【注意】选择该参数为true后将不返回base64数据，请根据接入情况谨慎修改。
+	// <p>是否使用cos桶。</p><ul><li>默认为false。</li><li>设置该参数为true后，核身过程中的视频图片将会存储在人脸核身控制台授权cos的bucket中，拉取结果时会返回对应资源完整cos地址。</li><li>开通地址见https://console.cloud.tencent.com/faceid/cos</li><li>【注意】选择该参数为true后将不返回base64数据，请根据接入情况谨慎修改。</li></ul>
 	UseCos *bool `json:"UseCos,omitnil,omitempty" name:"UseCos"`
 
-	// 敏感数据加密信息。对传入信息（姓名、身份证号、自传照片）有加密需求的用户可使用此参数，详情请点击左侧链接。
+	// <p>敏感数据加密信息。对传入信息（姓名、身份证号、自传照片）有加密需求的用户可使用此参数，详情请点击左侧链接。</p>
 	Encryption *Encryption `json:"Encryption,omitnil,omitempty" name:"Encryption"`
 
-	// 用于细分客户使用场景。
-	// - 申请开通服务后，可以在腾讯云慧眼人脸核身控制台（https://console.cloud.tencent.com/faceid） 自助接入里面创建，审核通过后即可调用。
-	// - 如有疑问，请添加腾讯云人脸核身小助手进行咨询。
+	// <p>用于细分客户使用场景。</p><ul><li>申请开通服务后，可以在腾讯云慧眼人脸核身控制台（https://console.cloud.tencent.com/faceid） 自助接入里面创建，审核通过后即可调用。</li><li>如有疑问，请添加腾讯云人脸核身小助手进行咨询。</li></ul>
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// <p>SDK和用户设备的元信息。该字段的值由HuiYan SDK以JSON字符串格式返回。  说明：不要修改返回值，直接传递即可。</p>
+	MetaData *string `json:"MetaData,omitnil,omitempty" name:"MetaData"`
 }
 
 func (r *GetFaceIdTokenRequest) ToJsonString() string {
@@ -2626,6 +2524,7 @@ func (r *GetFaceIdTokenRequest) FromJsonString(s string) error {
 	delete(f, "UseCos")
 	delete(f, "Encryption")
 	delete(f, "RuleId")
+	delete(f, "MetaData")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetFaceIdTokenRequest has unknown keys!", "")
 	}
@@ -2634,8 +2533,11 @@ func (r *GetFaceIdTokenRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetFaceIdTokenResponseParams struct {
-	// token值。- 有效期 10分钟。- 只能完成1次核身。
+	// <p>token值。- 有效期 10分钟。- 只能完成1次核身。</p>
 	FaceIdToken *string `json:"FaceIdToken,omitnil,omitempty" name:"FaceIdToken"`
+
+	// <p>客户端配置信息，SDK将使用该配置进行后续操作。请将返回值原样传递给客户端SDK。</p>
+	ClientConfig *string `json:"ClientConfig,omitnil,omitempty" name:"ClientConfig"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

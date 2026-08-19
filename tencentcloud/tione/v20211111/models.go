@@ -213,40 +213,44 @@ type CamTag struct {
 
 // Predefined struct for user
 type ChatCompletionRequestParams struct {
-	// 对话的目标模型ID。
-	// 自行部署的开源大模型聊天：部署的模型服务组ID，形如ms-q7pfr29p。
+	// <p>对话的目标模型ID。<br>自行部署的开源大模型聊天：部署的模型服务组ID，形如ms-q7pfr29p。</p>
 	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
 
-	// 输入对话历史。旧的对话在前，数组中最后一项应该为这次的问题。
+	// <p>输入对话历史。旧的对话在前，数组中最后一项应该为这次的问题。</p>
 	Messages []*Message `json:"Messages,omitnil,omitempty" name:"Messages"`
 
-	// 仅当模型为自行部署的开源大模型时生效。采样随机值，默认值为0.7，取值范围[0,2]。较高的值(如0.8)将使输出更加随机，而较低的值(如0.2)将使输出更加确定。建议仅修改此参数或TopP，但不建议两者都修改。
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
+	// <p>仅当模型为自行部署的开源大模型时生效。采样随机值，默认值为0.7，取值范围[0,2]。较高的值(如0.8)将使输出更加随机，而较低的值(如0.2)将使输出更加确定。建议仅修改此参数或TopP，但不建议两者都修改。</p>
 	Temperature *float64 `json:"Temperature,omitnil,omitempty" name:"Temperature"`
 
-	// 仅当模型为自行部署的开源大模型时生效。核采样，默认值为1，取值范围[0,1]。指的是预先设置一个概率界限 p，然后将所有可能生成的token，根据概率大小从高到低排列，依次选取。当这些选取的token的累积概率大于或等于 p 值时停止，然后从已经选取的token中进行采样，生成下一个token。例如top_p为0.1时意味着模型只考虑累积概率为10%的token。建议仅修改此参数或Temperature，不建议两者都修改。
+	// <p>仅当模型为自行部署的开源大模型时生效。核采样，默认值为1，取值范围[0,1]。指的是预先设置一个概率界限 p，然后将所有可能生成的token，根据概率大小从高到低排列，依次选取。当这些选取的token的累积概率大于或等于 p 值时停止，然后从已经选取的token中进行采样，生成下一个token。例如top_p为0.1时意味着模型只考虑累积概率为10%的token。建议仅修改此参数或Temperature，不建议两者都修改。</p>
 	TopP *float64 `json:"TopP,omitnil,omitempty" name:"TopP"`
 
-	// 仅当模型为自行部署的开源大模型时生效。默认 512，模型可生成内容的最长 token 数量，最大不能超过模型支持的上下文长度。
+	// <p>仅当模型为自行部署的开源大模型时生效。默认 512，模型可生成内容的最长 token 数量，最大不能超过模型支持的上下文长度。</p>
 	MaxTokens *int64 `json:"MaxTokens,omitnil,omitempty" name:"MaxTokens"`
 }
 
 type ChatCompletionRequest struct {
 	*tchttp.BaseRequest
 	
-	// 对话的目标模型ID。
-	// 自行部署的开源大模型聊天：部署的模型服务组ID，形如ms-q7pfr29p。
+	// <p>对话的目标模型ID。<br>自行部署的开源大模型聊天：部署的模型服务组ID，形如ms-q7pfr29p。</p>
 	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
 
-	// 输入对话历史。旧的对话在前，数组中最后一项应该为这次的问题。
+	// <p>输入对话历史。旧的对话在前，数组中最后一项应该为这次的问题。</p>
 	Messages []*Message `json:"Messages,omitnil,omitempty" name:"Messages"`
 
-	// 仅当模型为自行部署的开源大模型时生效。采样随机值，默认值为0.7，取值范围[0,2]。较高的值(如0.8)将使输出更加随机，而较低的值(如0.2)将使输出更加确定。建议仅修改此参数或TopP，但不建议两者都修改。
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
+	// <p>仅当模型为自行部署的开源大模型时生效。采样随机值，默认值为0.7，取值范围[0,2]。较高的值(如0.8)将使输出更加随机，而较低的值(如0.2)将使输出更加确定。建议仅修改此参数或TopP，但不建议两者都修改。</p>
 	Temperature *float64 `json:"Temperature,omitnil,omitempty" name:"Temperature"`
 
-	// 仅当模型为自行部署的开源大模型时生效。核采样，默认值为1，取值范围[0,1]。指的是预先设置一个概率界限 p，然后将所有可能生成的token，根据概率大小从高到低排列，依次选取。当这些选取的token的累积概率大于或等于 p 值时停止，然后从已经选取的token中进行采样，生成下一个token。例如top_p为0.1时意味着模型只考虑累积概率为10%的token。建议仅修改此参数或Temperature，不建议两者都修改。
+	// <p>仅当模型为自行部署的开源大模型时生效。核采样，默认值为1，取值范围[0,1]。指的是预先设置一个概率界限 p，然后将所有可能生成的token，根据概率大小从高到低排列，依次选取。当这些选取的token的累积概率大于或等于 p 值时停止，然后从已经选取的token中进行采样，生成下一个token。例如top_p为0.1时意味着模型只考虑累积概率为10%的token。建议仅修改此参数或Temperature，不建议两者都修改。</p>
 	TopP *float64 `json:"TopP,omitnil,omitempty" name:"TopP"`
 
-	// 仅当模型为自行部署的开源大模型时生效。默认 512，模型可生成内容的最长 token 数量，最大不能超过模型支持的上下文长度。
+	// <p>仅当模型为自行部署的开源大模型时生效。默认 512，模型可生成内容的最长 token 数量，最大不能超过模型支持的上下文长度。</p>
 	MaxTokens *int64 `json:"MaxTokens,omitnil,omitempty" name:"MaxTokens"`
 }
 
@@ -264,6 +268,7 @@ func (r *ChatCompletionRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Model")
 	delete(f, "Messages")
+	delete(f, "TiProjectId")
 	delete(f, "Temperature")
 	delete(f, "TopP")
 	delete(f, "MaxTokens")
@@ -275,16 +280,16 @@ func (r *ChatCompletionRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ChatCompletionResponseParams struct {
-	// 对话的模型服务组ID
+	// <p>对话的模型服务组ID</p>
 	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
 
-	// 本次问答的答案。
+	// <p>本次问答的答案。</p>
 	Choices []*Choice `json:"Choices,omitnil,omitempty" name:"Choices"`
 
-	// 会话Id。
+	// <p>会话Id。</p>
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// token统计
+	// <p>token统计</p>
 	Usage *Usage `json:"Usage,omitnil,omitempty" name:"Usage"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -757,26 +762,32 @@ func (r *CreateExportResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateModelServiceAuthTokenRequestParams struct {
-	// 服务组 id
+	// <p>服务组 id</p>
 	ServiceGroupId *string `json:"ServiceGroupId,omitnil,omitempty" name:"ServiceGroupId"`
 
-	// token 名称
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
+	// <p>token 名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// Description 描述
+	// <p>Description 描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 type CreateModelServiceAuthTokenRequest struct {
 	*tchttp.BaseRequest
 	
-	// 服务组 id
+	// <p>服务组 id</p>
 	ServiceGroupId *string `json:"ServiceGroupId,omitnil,omitempty" name:"ServiceGroupId"`
 
-	// token 名称
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
+	// <p>token 名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// Description 描述
+	// <p>Description 描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
@@ -793,6 +804,7 @@ func (r *CreateModelServiceAuthTokenRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "ServiceGroupId")
+	delete(f, "TiProjectId")
 	delete(f, "Name")
 	delete(f, "Description")
 	if len(f) > 0 {
@@ -2688,20 +2700,26 @@ func (r *DeleteExportResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteModelServiceAuthTokenRequestParams struct {
-	// 服务组 id
+	// <p>服务组 id</p>
 	ServiceGroupId *string `json:"ServiceGroupId,omitnil,omitempty" name:"ServiceGroupId"`
 
-	// token 值
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
+	// <p>token 值</p>
 	AuthTokenValue *string `json:"AuthTokenValue,omitnil,omitempty" name:"AuthTokenValue"`
 }
 
 type DeleteModelServiceAuthTokenRequest struct {
 	*tchttp.BaseRequest
 	
-	// 服务组 id
+	// <p>服务组 id</p>
 	ServiceGroupId *string `json:"ServiceGroupId,omitnil,omitempty" name:"ServiceGroupId"`
 
-	// token 值
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
+	// <p>token 值</p>
 	AuthTokenValue *string `json:"AuthTokenValue,omitnil,omitempty" name:"AuthTokenValue"`
 }
 
@@ -2718,6 +2736,7 @@ func (r *DeleteModelServiceAuthTokenRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "ServiceGroupId")
+	delete(f, "TiProjectId")
 	delete(f, "AuthTokenValue")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteModelServiceAuthTokenRequest has unknown keys!", "")
@@ -7405,26 +7424,32 @@ type ModelSource struct {
 
 // Predefined struct for user
 type ModifyModelServiceAuthTokenRequestParams struct {
-	// 服务组 id
+	// <p>服务组 id</p>
 	ServiceGroupId *string `json:"ServiceGroupId,omitnil,omitempty" name:"ServiceGroupId"`
 
-	// 是否需要重置，如果为 true，重置 token 值
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
+	// <p>是否需要重置，如果为 true，重置 token 值</p>
 	NeedReset *bool `json:"NeedReset,omitnil,omitempty" name:"NeedReset"`
 
-	// AuthToken 数据
+	// <p>AuthToken 数据</p>
 	AuthToken *AuthToken `json:"AuthToken,omitnil,omitempty" name:"AuthToken"`
 }
 
 type ModifyModelServiceAuthTokenRequest struct {
 	*tchttp.BaseRequest
 	
-	// 服务组 id
+	// <p>服务组 id</p>
 	ServiceGroupId *string `json:"ServiceGroupId,omitnil,omitempty" name:"ServiceGroupId"`
 
-	// 是否需要重置，如果为 true，重置 token 值
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
+	// <p>是否需要重置，如果为 true，重置 token 值</p>
 	NeedReset *bool `json:"NeedReset,omitnil,omitempty" name:"NeedReset"`
 
-	// AuthToken 数据
+	// <p>AuthToken 数据</p>
 	AuthToken *AuthToken `json:"AuthToken,omitnil,omitempty" name:"AuthToken"`
 }
 
@@ -7441,6 +7466,7 @@ func (r *ModifyModelServiceAuthTokenRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "ServiceGroupId")
+	delete(f, "TiProjectId")
 	delete(f, "NeedReset")
 	delete(f, "AuthToken")
 	if len(f) > 0 {

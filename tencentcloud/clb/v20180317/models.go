@@ -3461,43 +3461,45 @@ func (r *CreateTargetGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateTopicRequestParams struct {
-	// 日志主题的名称。
+	// <p>日志主题的名称。</p>
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
-	// 主题分区Partition的数量，不传参默认创建1个，最大创建允许10个，分裂/合并操作会改变分区数量，整体上限50个。
+	// <p>主题分区Partition的数量，不传参默认创建1个，最大创建允许10个，分裂/合并操作会改变分区数量，整体上限50个。</p>
 	PartitionCount *uint64 `json:"PartitionCount,omitnil,omitempty" name:"PartitionCount"`
 
-	// 日志类型，ACCESS：访问日志，HEALTH：健康检查日志，默认ACCESS。
+	// <p>日志类型，ACCESS：访问日志，HEALTH：健康检查日志，默认ACCESS。</p>
 	TopicType *string `json:"TopicType,omitnil,omitempty" name:"TopicType"`
 
-	// 存储时间，单位天，默认为 30。
-	// - 日志接入标准存储时，支持1至3600天，值为3640时代表永久保存。
-	// - 日志接入低频存储时，支持7至3600天，值为3640时代表永久保存。
+	// <p>存储时间，单位天，默认为 30。</p><ul><li>日志接入标准存储时，支持1至3600天，值为3640时代表永久保存。</li><li>日志接入低频存储时，支持7至3600天，值为3640时代表永久保存。</li></ul>
 	Period *uint64 `json:"Period,omitnil,omitempty" name:"Period"`
 
-	// 日志主题的存储类型，可选值 HOT（标准存储），COLD（低频存储）；默认为HOT。
+	// <p>日志主题的存储类型，可选值 HOT（标准存储），COLD（低频存储）；默认为HOT。</p>
 	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
+
+	// <p>标签</p><p>最多支持一次传入20个</p>
+	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type CreateTopicRequest struct {
 	*tchttp.BaseRequest
 	
-	// 日志主题的名称。
+	// <p>日志主题的名称。</p>
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
-	// 主题分区Partition的数量，不传参默认创建1个，最大创建允许10个，分裂/合并操作会改变分区数量，整体上限50个。
+	// <p>主题分区Partition的数量，不传参默认创建1个，最大创建允许10个，分裂/合并操作会改变分区数量，整体上限50个。</p>
 	PartitionCount *uint64 `json:"PartitionCount,omitnil,omitempty" name:"PartitionCount"`
 
-	// 日志类型，ACCESS：访问日志，HEALTH：健康检查日志，默认ACCESS。
+	// <p>日志类型，ACCESS：访问日志，HEALTH：健康检查日志，默认ACCESS。</p>
 	TopicType *string `json:"TopicType,omitnil,omitempty" name:"TopicType"`
 
-	// 存储时间，单位天，默认为 30。
-	// - 日志接入标准存储时，支持1至3600天，值为3640时代表永久保存。
-	// - 日志接入低频存储时，支持7至3600天，值为3640时代表永久保存。
+	// <p>存储时间，单位天，默认为 30。</p><ul><li>日志接入标准存储时，支持1至3600天，值为3640时代表永久保存。</li><li>日志接入低频存储时，支持7至3600天，值为3640时代表永久保存。</li></ul>
 	Period *uint64 `json:"Period,omitnil,omitempty" name:"Period"`
 
-	// 日志主题的存储类型，可选值 HOT（标准存储），COLD（低频存储）；默认为HOT。
+	// <p>日志主题的存储类型，可选值 HOT（标准存储），COLD（低频存储）；默认为HOT。</p>
 	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
+
+	// <p>标签</p><p>最多支持一次传入20个</p>
+	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 func (r *CreateTopicRequest) ToJsonString() string {
@@ -3517,6 +3519,7 @@ func (r *CreateTopicRequest) FromJsonString(s string) error {
 	delete(f, "TopicType")
 	delete(f, "Period")
 	delete(f, "StorageType")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTopicRequest has unknown keys!", "")
 	}
@@ -3525,7 +3528,7 @@ func (r *CreateTopicRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateTopicResponseParams struct {
-	// 日志主题的 ID。
+	// <p>日志主题的 ID。</p>
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

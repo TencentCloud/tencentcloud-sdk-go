@@ -24964,40 +24964,38 @@ func (r *DescribeReverseShellEventsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeReverseShellRulesAggregationRequestParams struct {
-	// 返回数量，默认为10，最大值为100。
+	// <p>返回数量，默认为10，最大值为100。</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量，默认为0。
+	// <p>偏移量，默认为0。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 过滤条件。
-	// <li>Keywords - String - 是否必填：否 - 关键字(进程名称)</li>
+	// <p>过滤条件。</p><li>Keywords - String - 是否必填：否 - 关键字(进程名称)</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 排序字段，目前有：CreateTime、ModifyTime，默认按照ModifyTime排序
+	// <p>排序字段，目前有：CreateTime、ModifyTime，默认按照ModifyTime排序</p>
 	By *string `json:"By,omitnil,omitempty" name:"By"`
 
-	// 排序升序还是倒序，DESC有ASC、
+	// <p>排序升序还是倒序，DESC有ASC、</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 }
 
 type DescribeReverseShellRulesAggregationRequest struct {
 	*tchttp.BaseRequest
 	
-	// 返回数量，默认为10，最大值为100。
+	// <p>返回数量，默认为10，最大值为100。</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量，默认为0。
+	// <p>偏移量，默认为0。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 过滤条件。
-	// <li>Keywords - String - 是否必填：否 - 关键字(进程名称)</li>
+	// <p>过滤条件。</p><li>Keywords - String - 是否必填：否 - 关键字(进程名称)</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 排序字段，目前有：CreateTime、ModifyTime，默认按照ModifyTime排序
+	// <p>排序字段，目前有：CreateTime、ModifyTime，默认按照ModifyTime排序</p>
 	By *string `json:"By,omitnil,omitempty" name:"By"`
 
-	// 排序升序还是倒序，DESC有ASC、
+	// <p>排序升序还是倒序，DESC有ASC、</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 }
 
@@ -25026,10 +25024,10 @@ func (r *DescribeReverseShellRulesAggregationRequest) FromJsonString(s string) e
 
 // Predefined struct for user
 type DescribeReverseShellRulesAggregationResponseParams struct {
-	// 列表内容
+	// <p>列表内容</p>
 	List []*ReverseShellRuleAggregation `json:"List,omitnil,omitempty" name:"List"`
 
-	// 总条数
+	// <p>总条数</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

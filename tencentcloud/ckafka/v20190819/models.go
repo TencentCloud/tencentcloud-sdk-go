@@ -134,6 +134,70 @@ type Assignment struct {
 }
 
 // Predefined struct for user
+type AssociateRoutesSecurityGroupRequestParams struct {
+	// 绑定路由的列表
+	InstanceRoutes []*InstanceRoute `json:"InstanceRoutes,omitnil,omitempty" name:"InstanceRoutes"`
+
+	// 安全组id
+	SecurityGroupId *string `json:"SecurityGroupId,omitnil,omitempty" name:"SecurityGroupId"`
+}
+
+type AssociateRoutesSecurityGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 绑定路由的列表
+	InstanceRoutes []*InstanceRoute `json:"InstanceRoutes,omitnil,omitempty" name:"InstanceRoutes"`
+
+	// 安全组id
+	SecurityGroupId *string `json:"SecurityGroupId,omitnil,omitempty" name:"SecurityGroupId"`
+}
+
+func (r *AssociateRoutesSecurityGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AssociateRoutesSecurityGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceRoutes")
+	delete(f, "SecurityGroupId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AssociateRoutesSecurityGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AssociateRoutesSecurityGroupResponseParams struct {
+	// 返回结果
+	Result *SecurityGroupRouteOperateResp `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type AssociateRoutesSecurityGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *AssociateRoutesSecurityGroupResponseParams `json:"Response"`
+}
+
+func (r *AssociateRoutesSecurityGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AssociateRoutesSecurityGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type AuthorizeTokenRequestParams struct {
 	// ckafka集群实例Id, 可通过[DescribeInstances](https://cloud.tencent.com/document/product/597/40835)接口获取
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -7652,6 +7716,70 @@ func (r *DescribeUserResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DisassociateRoutesSecurityGroupRequestParams struct {
+	// 解绑路由的列表
+	InstanceRoutes []*InstanceRoute `json:"InstanceRoutes,omitnil,omitempty" name:"InstanceRoutes"`
+
+	// 安全组id
+	SecurityGroupId *string `json:"SecurityGroupId,omitnil,omitempty" name:"SecurityGroupId"`
+}
+
+type DisassociateRoutesSecurityGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 解绑路由的列表
+	InstanceRoutes []*InstanceRoute `json:"InstanceRoutes,omitnil,omitempty" name:"InstanceRoutes"`
+
+	// 安全组id
+	SecurityGroupId *string `json:"SecurityGroupId,omitnil,omitempty" name:"SecurityGroupId"`
+}
+
+func (r *DisassociateRoutesSecurityGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DisassociateRoutesSecurityGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceRoutes")
+	delete(f, "SecurityGroupId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DisassociateRoutesSecurityGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DisassociateRoutesSecurityGroupResponseParams struct {
+	// 返回结果
+	Result *SecurityGroupRouteOperateResp `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DisassociateRoutesSecurityGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *DisassociateRoutesSecurityGroupResponseParams `json:"Response"`
+}
+
+func (r *DisassociateRoutesSecurityGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DisassociateRoutesSecurityGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DorisConnectParam struct {
 	// Doris jdbc 负载均衡连接 port，通常映射到 fe 的 9030 端口
 	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
@@ -10574,6 +10702,72 @@ func (r *ModifyPasswordResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyRouteSecurityGroupsRequestParams struct {
+	// 实例路由
+	InstanceRoute *InstanceRoute `json:"InstanceRoute,omitnil,omitempty" name:"InstanceRoute"`
+
+	// 修改后的安全组有序列表。
+	// 注意:不指定此参数或传空列表则代表解绑所有关联的安全组。
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
+}
+
+type ModifyRouteSecurityGroupsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例路由
+	InstanceRoute *InstanceRoute `json:"InstanceRoute,omitnil,omitempty" name:"InstanceRoute"`
+
+	// 修改后的安全组有序列表。
+	// 注意:不指定此参数或传空列表则代表解绑所有关联的安全组。
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
+}
+
+func (r *ModifyRouteSecurityGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyRouteSecurityGroupsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceRoute")
+	delete(f, "SecurityGroupIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRouteSecurityGroupsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyRouteSecurityGroupsResponseParams struct {
+	// 	返回结果
+	Result *SecurityGroupRouteOperateResp `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyRouteSecurityGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyRouteSecurityGroupsResponseParams `json:"Response"`
+}
+
+func (r *ModifyRouteSecurityGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyRouteSecurityGroupsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyRoutineMaintenanceTaskRequestParams struct {
 	// ckafka集群实例id,可通过[DescribeInstances](https://cloud.tencent.com/document/product/597/40835)接口获取
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -11979,6 +12173,16 @@ type SecurityGroupRoute struct {
 
 	// 路由vip
 	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
+}
+
+type SecurityGroupRouteOperateResp struct {
+	// 操作返回的code，0为正常，非0为错误
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReturnCode *string `json:"ReturnCode,omitnil,omitempty" name:"ReturnCode"`
+
+	// 操作返回的信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReturnMessage *string `json:"ReturnMessage,omitnil,omitempty" name:"ReturnMessage"`
 }
 
 type SecurityGroupRouteResp struct {

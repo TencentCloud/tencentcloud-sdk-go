@@ -1562,12 +1562,15 @@ func (r *DescribeModelListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeModelQuotaRequestParams struct {
-
+	// <p>模型 ID。可通过 DescribeModelList 获取。</p>
+	ModelId *string `json:"ModelId,omitnil,omitempty" name:"ModelId"`
 }
 
 type DescribeModelQuotaRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>模型 ID。可通过 DescribeModelList 获取。</p>
+	ModelId *string `json:"ModelId,omitnil,omitempty" name:"ModelId"`
 }
 
 func (r *DescribeModelQuotaRequest) ToJsonString() string {
@@ -1582,7 +1585,7 @@ func (r *DescribeModelQuotaRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "ModelId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeModelQuotaRequest has unknown keys!", "")
 	}
@@ -1591,6 +1594,27 @@ func (r *DescribeModelQuotaRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeModelQuotaResponseParams struct {
+	// <p>模型 ID。</p>
+	ModelId *string `json:"ModelId,omitnil,omitempty" name:"ModelId"`
+
+	// <p>TPM 限制（Tokens Per Minute）。模型无配额配置时不返回此字段。</p>
+	TPMLimit *int64 `json:"TPMLimit,omitnil,omitempty" name:"TPMLimit"`
+
+	// <p>RPM 限制（Request Per Minute）。模型无配额配置时不返回此字段。</p>
+	RPMLimit *int64 `json:"RPMLimit,omitnil,omitempty" name:"RPMLimit"`
+
+	// <p>TPM 保障包 input 配额</p>
+	TPMInputQuotaLimit *int64 `json:"TPMInputQuotaLimit,omitnil,omitempty" name:"TPMInputQuotaLimit"`
+
+	// <p>TPM 保障包 output 配额</p>
+	TPMOutputQuotaLimit *int64 `json:"TPMOutputQuotaLimit,omitnil,omitempty" name:"TPMOutputQuotaLimit"`
+
+	// <p>TPM 预留 input 配额</p>
+	TPMInputReserveLimit *int64 `json:"TPMInputReserveLimit,omitnil,omitempty" name:"TPMInputReserveLimit"`
+
+	// <p>TPM 预留 output 配额</p>
+	TPMOutputReserveLimit *int64 `json:"TPMOutputReserveLimit,omitnil,omitempty" name:"TPMOutputReserveLimit"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }

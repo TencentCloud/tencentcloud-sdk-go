@@ -45,6 +45,64 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewAssociateRoutesSecurityGroupRequest() (request *AssociateRoutesSecurityGroupRequest) {
+    request = &AssociateRoutesSecurityGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ckafka", APIVersion, "AssociateRoutesSecurityGroup")
+    
+    
+    return
+}
+
+func NewAssociateRoutesSecurityGroupResponse() (response *AssociateRoutesSecurityGroupResponse) {
+    response = &AssociateRoutesSecurityGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// AssociateRoutesSecurityGroup
+// 绑定路由安全组
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) AssociateRoutesSecurityGroup(request *AssociateRoutesSecurityGroupRequest) (response *AssociateRoutesSecurityGroupResponse, err error) {
+    return c.AssociateRoutesSecurityGroupWithContext(context.Background(), request)
+}
+
+// AssociateRoutesSecurityGroup
+// 绑定路由安全组
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) AssociateRoutesSecurityGroupWithContext(ctx context.Context, request *AssociateRoutesSecurityGroupRequest) (response *AssociateRoutesSecurityGroupResponse, err error) {
+    if request == nil {
+        request = NewAssociateRoutesSecurityGroupRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "AssociateRoutesSecurityGroup")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AssociateRoutesSecurityGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAssociateRoutesSecurityGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAuthorizeTokenRequest() (request *AuthorizeTokenRequest) {
     request = &AuthorizeTokenRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5383,6 +5441,64 @@ func (c *Client) DescribeUserWithContext(ctx context.Context, request *DescribeU
     return
 }
 
+func NewDisassociateRoutesSecurityGroupRequest() (request *DisassociateRoutesSecurityGroupRequest) {
+    request = &DisassociateRoutesSecurityGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ckafka", APIVersion, "DisassociateRoutesSecurityGroup")
+    
+    
+    return
+}
+
+func NewDisassociateRoutesSecurityGroupResponse() (response *DisassociateRoutesSecurityGroupResponse) {
+    response = &DisassociateRoutesSecurityGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DisassociateRoutesSecurityGroup
+// 解绑路由安全组
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DisassociateRoutesSecurityGroup(request *DisassociateRoutesSecurityGroupRequest) (response *DisassociateRoutesSecurityGroupResponse, err error) {
+    return c.DisassociateRoutesSecurityGroupWithContext(context.Background(), request)
+}
+
+// DisassociateRoutesSecurityGroup
+// 解绑路由安全组
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DisassociateRoutesSecurityGroupWithContext(ctx context.Context, request *DisassociateRoutesSecurityGroupRequest) (response *DisassociateRoutesSecurityGroupResponse, err error) {
+    if request == nil {
+        request = NewDisassociateRoutesSecurityGroupRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "DisassociateRoutesSecurityGroup")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DisassociateRoutesSecurityGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDisassociateRoutesSecurityGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewFetchDatahubMessageByOffsetRequest() (request *FetchDatahubMessageByOffsetRequest) {
     request = &FetchDatahubMessageByOffsetRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6453,6 +6569,66 @@ func (c *Client) ModifyPasswordWithContext(ctx context.Context, request *ModifyP
     request.SetContext(ctx)
     
     response = NewModifyPasswordResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyRouteSecurityGroupsRequest() (request *ModifyRouteSecurityGroupsRequest) {
+    request = &ModifyRouteSecurityGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ckafka", APIVersion, "ModifyRouteSecurityGroups")
+    
+    
+    return
+}
+
+func NewModifyRouteSecurityGroupsResponse() (response *ModifyRouteSecurityGroupsResponse) {
+    response = &ModifyRouteSecurityGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyRouteSecurityGroups
+// 修改路由安全组关联
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_NOTALLOWEDEMPTY = "InvalidParameterValue.NotAllowedEmpty"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) ModifyRouteSecurityGroups(request *ModifyRouteSecurityGroupsRequest) (response *ModifyRouteSecurityGroupsResponse, err error) {
+    return c.ModifyRouteSecurityGroupsWithContext(context.Background(), request)
+}
+
+// ModifyRouteSecurityGroups
+// 修改路由安全组关联
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_NOTALLOWEDEMPTY = "InvalidParameterValue.NotAllowedEmpty"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) ModifyRouteSecurityGroupsWithContext(ctx context.Context, request *ModifyRouteSecurityGroupsRequest) (response *ModifyRouteSecurityGroupsResponse, err error) {
+    if request == nil {
+        request = NewModifyRouteSecurityGroupsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "ModifyRouteSecurityGroups")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyRouteSecurityGroups require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyRouteSecurityGroupsResponse()
     err = c.Send(request, response)
     return
 }

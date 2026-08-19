@@ -15978,46 +15978,38 @@ func (r *DescribeEscapeWhiteListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeEventEscapeImageListRequestParams struct {
-	// 需要返回的数量，默认为10，最大值为100
+	// <p>需要返回的数量，默认为10，最大值为100</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量，默认为0。
+	// <p>偏移量，默认为0。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 过滤参数:
-	// EventType: 事件类型(MOUNT_SENSITIVE_PTAH:敏感路径挂载 PRIVILEGE_CONTAINER_START:特权容器)
-	// Status: 事件状态(EVENT_UNDEAL:未处理，EVENT_DEALED:已处理，EVENT_INGNORE:忽略)
-	// ImageID: 镜像id
-	// ImageName:镜像名称
+	// <p>过滤参数:<br>EventType: 事件类型(MOUNT_SENSITIVE_PTAH:敏感路径挂载 PRIVILEGE_CONTAINER_START:特权容器)<br>Status: 事件状态(EVENT_UNDEAL:未处理，EVENT_DEALED:已处理，EVENT_INGNORE:忽略)<br>ImageID: 镜像id<br>ImageName:镜像名称</p>
 	Filters []*RunTimeFilters `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 升序降序,asc desc
+	// <p>升序降序,asc desc</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 排序字段
+	// <p>排序字段</p>
 	By *string `json:"By,omitnil,omitempty" name:"By"`
 }
 
 type DescribeEventEscapeImageListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 需要返回的数量，默认为10，最大值为100
+	// <p>需要返回的数量，默认为10，最大值为100</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量，默认为0。
+	// <p>偏移量，默认为0。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 过滤参数:
-	// EventType: 事件类型(MOUNT_SENSITIVE_PTAH:敏感路径挂载 PRIVILEGE_CONTAINER_START:特权容器)
-	// Status: 事件状态(EVENT_UNDEAL:未处理，EVENT_DEALED:已处理，EVENT_INGNORE:忽略)
-	// ImageID: 镜像id
-	// ImageName:镜像名称
+	// <p>过滤参数:<br>EventType: 事件类型(MOUNT_SENSITIVE_PTAH:敏感路径挂载 PRIVILEGE_CONTAINER_START:特权容器)<br>Status: 事件状态(EVENT_UNDEAL:未处理，EVENT_DEALED:已处理，EVENT_INGNORE:忽略)<br>ImageID: 镜像id<br>ImageName:镜像名称</p>
 	Filters []*RunTimeFilters `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 升序降序,asc desc
+	// <p>升序降序,asc desc</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 排序字段
+	// <p>排序字段</p>
 	By *string `json:"By,omitnil,omitempty" name:"By"`
 }
 
@@ -16046,10 +16038,10 @@ func (r *DescribeEventEscapeImageListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeEventEscapeImageListResponseParams struct {
-	// 风险容器镜像列表
+	// <p>风险容器镜像列表</p>
 	List []*EventEscapeImageInfo `json:"List,omitnil,omitempty" name:"List"`
 
-	// 事件总数量
+	// <p>事件总数量</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
