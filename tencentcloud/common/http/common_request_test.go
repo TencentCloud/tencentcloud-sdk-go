@@ -1,9 +1,10 @@
 package common
 
 import (
+	"testing"
+
 	tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
-	"testing"
 )
 
 func TestCommonRequest_SetActionParameters(t *testing.T) {
@@ -54,6 +55,98 @@ func TestCommonRequest_JSONMarshal(t *testing.T) {
 	bytes, err := json.MarshalIndent(crn, "", "\t")
 	if err != nil || len(bytes) == 0 {
 		t.Fatal(err)
+	}
+}
+
+func TestCommonRequest_SetActionParametersNumberBoundary(t *testing.T) {
+	testCase := []struct {
+		name         string
+		data         interface{}
+		errCode      string
+		expectedBody string
+	}{
+		{
+			name:         "int64 max in string",
+			data:         `{"Int":9223372036854775807}`,
+			expectedBody: `{"Int":9223372036854775807}`,
+		},
+		{
+			name:         "uint64 max",
+			data:         `{"Uint":18446744073709551615}`,
+			expectedBody: `{"Uint":18446744073709551615}`,
+		},
+		{
+			name:         "int64 boundary array",
+			data:         `{"Arr":[9223372036854775807,-9223372036854775808]}`,
+			expectedBody: `{"Arr":[9223372036854775807,-9223372036854775808]}`,
+		},
+		{
+			name:         "int64 max in bytes",
+			data:         []byte(`{"Int":9223372036854775807}`),
+			expectedBody: `{"Int":9223372036854775807}`,
+		},
+		{
+			name:         "float beyond float64 range",
+			data:         `{"Float":1.79E309}`,
+			expectedBody: `{"Float":1.79E309}`,
+		},
+		{
+			name:         "negative float beyond float64 range",
+			data:         `{"Float":-1.79E309}`,
+			expectedBody: `{"Float":-1.79E309}`,
+		},
+		{
+			name:         "normal numbers unchanged",
+			data:         `{"a":1,"b":1.5,"c":-2}`,
+			expectedBody: `{"a":1,"b":1.5,"c":-2}`,
+		},
+		{
+			name:         "nested object keeps big int",
+			data:         `{"Outer":{"Int":9223372036854775807}}`,
+			expectedBody: `{"Outer":{"Int":9223372036854775807}}`,
+		},
+		{
+			name:    "trailing data still rejected",
+			data:    `{"a":"1"} trailing`,
+			errCode: "ClientError.ParseJsonError",
+		},
+		{
+			name:    "empty string still rejected",
+			data:    ``,
+			errCode: "ClientError.ParseJsonError",
+		},
+		{
+			name:    "truncated json still rejected",
+			data:    `{"a":"1"`,
+			errCode: "ClientError.ParseJsonError",
+		},
+	}
+	for _, tc := range testCase {
+		cr := NewCommonRequest("cvm", "2017-03-12", "DescribeInstances")
+		err := cr.SetActionParameters(tc.data)
+		if tc.errCode != "" {
+			if err == nil {
+				t.Fatalf("[%s] expected error %s, got nil", tc.name, tc.errCode)
+			}
+			te, ok := err.(*tcerr.TencentCloudSDKError)
+			if !ok {
+				t.Fatalf("[%s] expected TencentCloudSDKError, got %T", tc.name, err)
+			}
+			if te.GetCode() != tc.errCode {
+				t.Fatalf("[%s] expected error code %s, got %s", tc.name, tc.errCode, te.GetCode())
+			}
+			continue
+		}
+		if err != nil {
+			t.Fatalf("[%s] unexpected error: %v", tc.name, err)
+		}
+		body, err := cr.MarshalJSON()
+		if err != nil {
+			t.Fatalf("[%s] marshal error: %v", tc.name, err)
+		}
+		if string(body) != tc.expectedBody {
+			t.Fatalf("[%s] marshal mismatch:\n expected: %s\n got:      %s", tc.name, tc.expectedBody, body)
+		}
 	}
 }
 
