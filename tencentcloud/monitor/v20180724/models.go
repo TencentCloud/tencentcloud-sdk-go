@@ -2107,52 +2107,56 @@ func (r *CreateExternalClusterResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateGrafanaInstanceRequestParams struct {
-	// 实例名
+	// <p>实例名</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// VPC ID (私有网络 ID)
+	// <p>VPC ID (私有网络 ID)</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 子网 ID 数组(VPC ID下的子网 ID，只取第一个)。
-	// 注意：并不是所有可用区都可用（可通过 monitor:DescribePrometheusZones 接口获取可用区状态，选择 ZoneState 和ZoneResourceState 都为1的可用区）
+	// <p>子网 ID 数组(VPC ID下的子网 ID，只取第一个)。<br>注意：并不是所有可用区都可用（可通过 monitor:DescribePrometheusZones 接口获取可用区状态，选择 ZoneState 和ZoneResourceState 都为1的可用区）</p>
 	SubnetIds []*string `json:"SubnetIds,omitnil,omitempty" name:"SubnetIds"`
 
-	// 是否启用外网
+	// <p>是否启用外网</p>
 	EnableInternet *bool `json:"EnableInternet,omitnil,omitempty" name:"EnableInternet"`
 
-	// Grafana 初始密码(国际站用户必填，国内站用户可不填，不填时会生成随机密码并给主账号发送通知)
+	// <p>Grafana 初始密码(国际站用户必填，国内站用户可不填，不填时会生成随机密码并给主账号发送通知)</p>
 	GrafanaInitPassword *string `json:"GrafanaInitPassword,omitnil,omitempty" name:"GrafanaInitPassword"`
 
-	// 标签
+	// <p>标签</p>
 	TagSpecification []*PrometheusTag `json:"TagSpecification,omitnil,omitempty" name:"TagSpecification"`
 
-	// 是否自动选择代金券，默认为 false
+	// <p>自定义版本，可用版本从 DescribeGrafanaVersions 接口获取</p>
+	DockerImage *string `json:"DockerImage,omitnil,omitempty" name:"DockerImage"`
+
+	// <p>是否自动选择代金券，默认为 false</p>
 	AutoVoucher *bool `json:"AutoVoucher,omitnil,omitempty" name:"AutoVoucher"`
 }
 
 type CreateGrafanaInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例名
+	// <p>实例名</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// VPC ID (私有网络 ID)
+	// <p>VPC ID (私有网络 ID)</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 子网 ID 数组(VPC ID下的子网 ID，只取第一个)。
-	// 注意：并不是所有可用区都可用（可通过 monitor:DescribePrometheusZones 接口获取可用区状态，选择 ZoneState 和ZoneResourceState 都为1的可用区）
+	// <p>子网 ID 数组(VPC ID下的子网 ID，只取第一个)。<br>注意：并不是所有可用区都可用（可通过 monitor:DescribePrometheusZones 接口获取可用区状态，选择 ZoneState 和ZoneResourceState 都为1的可用区）</p>
 	SubnetIds []*string `json:"SubnetIds,omitnil,omitempty" name:"SubnetIds"`
 
-	// 是否启用外网
+	// <p>是否启用外网</p>
 	EnableInternet *bool `json:"EnableInternet,omitnil,omitempty" name:"EnableInternet"`
 
-	// Grafana 初始密码(国际站用户必填，国内站用户可不填，不填时会生成随机密码并给主账号发送通知)
+	// <p>Grafana 初始密码(国际站用户必填，国内站用户可不填，不填时会生成随机密码并给主账号发送通知)</p>
 	GrafanaInitPassword *string `json:"GrafanaInitPassword,omitnil,omitempty" name:"GrafanaInitPassword"`
 
-	// 标签
+	// <p>标签</p>
 	TagSpecification []*PrometheusTag `json:"TagSpecification,omitnil,omitempty" name:"TagSpecification"`
 
-	// 是否自动选择代金券，默认为 false
+	// <p>自定义版本，可用版本从 DescribeGrafanaVersions 接口获取</p>
+	DockerImage *string `json:"DockerImage,omitnil,omitempty" name:"DockerImage"`
+
+	// <p>是否自动选择代金券，默认为 false</p>
 	AutoVoucher *bool `json:"AutoVoucher,omitnil,omitempty" name:"AutoVoucher"`
 }
 
@@ -2174,6 +2178,7 @@ func (r *CreateGrafanaInstanceRequest) FromJsonString(s string) error {
 	delete(f, "EnableInternet")
 	delete(f, "GrafanaInitPassword")
 	delete(f, "TagSpecification")
+	delete(f, "DockerImage")
 	delete(f, "AutoVoucher")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateGrafanaInstanceRequest has unknown keys!", "")
@@ -2183,7 +2188,7 @@ func (r *CreateGrafanaInstanceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateGrafanaInstanceResponseParams struct {
-	// 实例名
+	// <p>实例名</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7794,6 +7799,60 @@ func (r *DescribeGrafanaNotificationChannelsResponse) FromJsonString(s string) e
 }
 
 // Predefined struct for user
+type DescribeGrafanaVersionsRequestParams struct {
+
+}
+
+type DescribeGrafanaVersionsRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeGrafanaVersionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeGrafanaVersionsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeGrafanaVersionsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeGrafanaVersionsResponseParams struct {
+	// 可选版本
+	Versions []*GrafanaVersion `json:"Versions,omitnil,omitempty" name:"Versions"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeGrafanaVersionsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeGrafanaVersionsResponseParams `json:"Response"`
+}
+
+func (r *DescribeGrafanaVersionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeGrafanaVersionsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeGrafanaWhiteListRequestParams struct {
 	// <p>Grafana 实例 ID，例如：grafana-abcdefgh</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -12921,6 +12980,14 @@ type GrafanaPlugin struct {
 
 	// <p>Grafana 插件版本</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
+}
+
+type GrafanaVersion struct {
+	// 版本别名
+	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
+
+	// 版本
 	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
 }
 

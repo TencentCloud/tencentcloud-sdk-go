@@ -12023,12 +12023,15 @@ func (r *DescribeMasterComponentResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeOSImagesRequestParams struct {
-
+	// <p>镜像拉取接口增加过滤字段</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeOSImagesRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>镜像拉取接口增加过滤字段</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 func (r *DescribeOSImagesRequest) ToJsonString() string {
@@ -12043,7 +12046,7 @@ func (r *DescribeOSImagesRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "Filters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOSImagesRequest has unknown keys!", "")
 	}
@@ -12052,10 +12055,10 @@ func (r *DescribeOSImagesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeOSImagesResponseParams struct {
-	// 镜像信息列表
+	// <p>镜像信息列表</p>
 	OSImageSeriesSet []*OSImage `json:"OSImageSeriesSet,omitnil,omitempty" name:"OSImageSeriesSet"`
 
-	// 镜像数量
+	// <p>镜像数量</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -21104,23 +21107,26 @@ type OIDCConfigAuthenticationOptions struct {
 }
 
 type OSImage struct {
-	// os聚合名称
+	// <p>os聚合名称</p>
 	SeriesName *string `json:"SeriesName,omitnil,omitempty" name:"SeriesName"`
 
-	// os别名
+	// <p>os别名</p>
 	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
 
-	// os名称
+	// <p>os名称</p>
 	OsName *string `json:"OsName,omitnil,omitempty" name:"OsName"`
 
-	// 操作系统类型(分为定制和非定制，取值分别为:DOCKER_CUSTOMIZE、GENERAL)
+	// <p>操作系统类型(分为定制和非定制，取值分别为:DOCKER_CUSTOMIZE、GENERAL)</p>
 	OsCustomizeType *string `json:"OsCustomizeType,omitnil,omitempty" name:"OsCustomizeType"`
 
-	// os是否下线(online表示在线,offline表示下线)
+	// <p>os是否下线(online表示在线,offline表示下线)</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 镜像id
+	// <p>镜像id</p>
 	ImageId *string `json:"ImageId,omitnil,omitempty" name:"ImageId"`
+
+	// <p>架构</p>
+	Arch *string `json:"Arch,omitnil,omitempty" name:"Arch"`
 }
 
 type OpenConstraintInfo struct {

@@ -9627,7 +9627,7 @@ type TopSqlTpl struct {
 
 	// <p>最小io等待时间，单位秒</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IoWaitTimeMin *int64 `json:"IoWaitTimeMin,omitnil,omitempty" name:"IoWaitTimeMin"`
+	IoWaitTimeMin *float64 `json:"IoWaitTimeMin,omitnil,omitempty" name:"IoWaitTimeMin"`
 
 	// <p>最大执行时间，单位秒</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。

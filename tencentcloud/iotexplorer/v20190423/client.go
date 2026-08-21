@@ -4303,6 +4303,72 @@ func (c *Client) DeleteTWeSeeCallbackWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDeleteTWeSeeTasksByConditionRequest() (request *DeleteTWeSeeTasksByConditionRequest) {
+    request = &DeleteTWeSeeTasksByConditionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DeleteTWeSeeTasksByCondition")
+    
+    
+    return
+}
+
+func NewDeleteTWeSeeTasksByConditionResponse() (response *DeleteTWeSeeTasksByConditionResponse) {
+    response = &DeleteTWeSeeTasksByConditionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteTWeSeeTasksByCondition
+// 按条件删除指定设备和算法类目下的 TWeSee 任务及其关联数据。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PRODUCTIOTVIDEOSERVICENOTENABLED = "FailedOperation.ProductIotVideoServiceNotEnabled"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_DEVICECHANNELNOTEXIST = "ResourceNotFound.DeviceChannelNotExist"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+func (c *Client) DeleteTWeSeeTasksByCondition(request *DeleteTWeSeeTasksByConditionRequest) (response *DeleteTWeSeeTasksByConditionResponse, err error) {
+    return c.DeleteTWeSeeTasksByConditionWithContext(context.Background(), request)
+}
+
+// DeleteTWeSeeTasksByCondition
+// 按条件删除指定设备和算法类目下的 TWeSee 任务及其关联数据。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PRODUCTIOTVIDEOSERVICENOTENABLED = "FailedOperation.ProductIotVideoServiceNotEnabled"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_DEVICECHANNELNOTEXIST = "ResourceNotFound.DeviceChannelNotExist"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+func (c *Client) DeleteTWeSeeTasksByConditionWithContext(ctx context.Context, request *DeleteTWeSeeTasksByConditionRequest) (response *DeleteTWeSeeTasksByConditionResponse, err error) {
+    if request == nil {
+        request = NewDeleteTWeSeeTasksByConditionRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "DeleteTWeSeeTasksByCondition")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteTWeSeeTasksByCondition require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteTWeSeeTasksByConditionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteTWeTalkAIBotRequest() (request *DeleteTWeTalkAIBotRequest) {
     request = &DeleteTWeTalkAIBotRequest{
         BaseRequest: &tchttp.BaseRequest{},

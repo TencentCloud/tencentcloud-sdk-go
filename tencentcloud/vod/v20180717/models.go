@@ -2028,7 +2028,7 @@ type AigcAudioTask struct {
 	// <p>错误码。源异常时返回非0错误码，返回0时请使用各个具体任务的 ErrCode。</p>
 	ErrCode *int64 `json:"ErrCode,omitnil,omitempty" name:"ErrCode"`
 
-	// <p>扩展错误码。空字符串表示成功，其它值表示失败。</p>
+	// <p>扩展错误码。空字符串表示成功，其它值表示失败。</p><p>枚举值：</p><ul><li>RequestLimitExceeded： 调用超出并发限制。</li><li>InvalidParameter.VoilationContent： 输入 prompt 违反内容安全策略。</li><li>InvalidParameterValue： 参数值错误。</li><li>FailedOperation： 模型任务堆积。</li><li>InternalError： 内部错误。</li><li>InvalidParameter： 非法参数。</li><li>InvalidParameter.MediaFormat： 无效的媒体格式。</li><li>ContentModerationFailed： 内容审核未通过。</li><li>ResourceInsufficient： 资源不足。</li><li>ModelGenerateFailed： 模型生成失败。</li><li>ResourceNotFound： 资源不存在。</li><li>OperationCanceled： 操作已取消。</li><li>TaskTimeout： 任务超时。</li></ul>
 	ErrCodeExt *string `json:"ErrCodeExt,omitnil,omitempty" name:"ErrCodeExt"`
 
 	// <p>错误信息。</p>
@@ -2208,7 +2208,7 @@ type AigcImageTask struct {
 	// <p>错误码。源异常时返回非0错误码，返回0时请使用各个具体任务的 ErrCode。</p>
 	ErrCode *int64 `json:"ErrCode,omitnil,omitempty" name:"ErrCode"`
 
-	// <p>扩展错误码。空字符串表示成功，其它值表示失败。</p><p>枚举值：</p><ul><li>RequestLimitExceeded： 模型调用超出并发限制。</li><li>InvalidParameter.VoilationContent： 输入 prompt 违反内容安全策略。</li><li>InvalidParameterValue： 参数错误。</li><li>FailedOperation： 模型任务堆积。</li><li>InternalError： 内部错误。</li></ul>
+	// <p>扩展错误码。空字符串表示成功，其它值表示失败。</p><p>枚举值：</p><ul><li>RequestLimitExceeded： 模型调用超出并发限制。</li><li>InvalidParameter.VoilationContent： 输入 prompt 违反内容安全策略。</li><li>InvalidParameterValue： 参数错误。</li><li>FailedOperation： 模型任务堆积。</li><li>InternalError： 内部错误。</li><li>InvalidParameter： 非法参数。</li><li>InvalidParameter.MediaFormat： 无效的媒体格式。</li><li>ContentModerationFailed： 内容审核未通过。</li><li>ResourceInsufficient： 资源不足。</li><li>ModelGenerateFailed： 模型生成失败。</li><li>ResourceNotFound： 资源不存在。</li><li>OperationCanceled： 操作已取消。</li><li>TaskTimeout： 任务超时。</li></ul>
 	ErrCodeExt *string `json:"ErrCodeExt,omitnil,omitempty" name:"ErrCodeExt"`
 
 	// <p>错误信息。</p>
@@ -5603,7 +5603,7 @@ type CreateAigcImageTaskRequestParams struct {
 	// <p>模型名称。取值：</p><li>OG</li><li>GG</li><li>Hunyuan</li><li>Vidu</li><li>Kling</li>
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
-	// <p>模型版本。取值：</p><li>当 ModelName 是 OG，可选值为 image2_low、image2_medium、image2_high；</li><li>当 ModelName 是 GG，可选值为 2.5、3.0、3.1；</li><li>当 ModelName 是 Hunyuan，可选值为 3.0；</li><li>当 ModelName 是 Vidu，可选值为 q2；</li><li>当 ModelName 是 Kling，可选值为 2.1、3.0、3.0-Omni、O1、scene；</li>
+	// <p>模型版本。取值：</p><li>当 ModelName 是 OG，可选值为 image2_low、image2_medium、image2_high；</li><li>当 ModelName 是 GG，可选值为 2.5、3.0、3.1、3.1-lite；</li><li>当 ModelName 是 Hunyuan，可选值为 3.0；</li><li>当 ModelName 是 Vidu，可选值为 q2；</li><li>当 ModelName 是 Kling，可选值为 2.1、3.0、3.0-Omni、O1、scene；</li><li>当 ModelName 是Mingmou，可选值为 1.0；</li>
 	ModelVersion *string `json:"ModelVersion,omitnil,omitempty" name:"ModelVersion"`
 
 	// <p>AIGC 生图任务的输入图片的文件信息。各模型支持最大参考图数量：</p><ul><li>GG 2.5： 3张；</li><li>GG 3.0：14张；</li><li>GG 3.1：14张；</li><li>Kling 2.1：4张；</li><li>Kling 3.0：1张；</li><li>Kling 3.0-Omni：10张；</li><li>Kling O1：10张；</li><li>Vidu q2：7张；</li><li>Hunyuan 3.0：3张；</li></ul>
@@ -5652,7 +5652,7 @@ type CreateAigcImageTaskRequest struct {
 	// <p>模型名称。取值：</p><li>OG</li><li>GG</li><li>Hunyuan</li><li>Vidu</li><li>Kling</li>
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
-	// <p>模型版本。取值：</p><li>当 ModelName 是 OG，可选值为 image2_low、image2_medium、image2_high；</li><li>当 ModelName 是 GG，可选值为 2.5、3.0、3.1；</li><li>当 ModelName 是 Hunyuan，可选值为 3.0；</li><li>当 ModelName 是 Vidu，可选值为 q2；</li><li>当 ModelName 是 Kling，可选值为 2.1、3.0、3.0-Omni、O1、scene；</li>
+	// <p>模型版本。取值：</p><li>当 ModelName 是 OG，可选值为 image2_low、image2_medium、image2_high；</li><li>当 ModelName 是 GG，可选值为 2.5、3.0、3.1、3.1-lite；</li><li>当 ModelName 是 Hunyuan，可选值为 3.0；</li><li>当 ModelName 是 Vidu，可选值为 q2；</li><li>当 ModelName 是 Kling，可选值为 2.1、3.0、3.0-Omni、O1、scene；</li><li>当 ModelName 是Mingmou，可选值为 1.0；</li>
 	ModelVersion *string `json:"ModelVersion,omitnil,omitempty" name:"ModelVersion"`
 
 	// <p>AIGC 生图任务的输入图片的文件信息。各模型支持最大参考图数量：</p><ul><li>GG 2.5： 3张；</li><li>GG 3.0：14张；</li><li>GG 3.1：14张；</li><li>Kling 2.1：4张；</li><li>Kling 3.0：1张；</li><li>Kling 3.0-Omni：10张；</li><li>Kling O1：10张；</li><li>Vidu q2：7张；</li><li>Hunyuan 3.0：3张；</li></ul>
@@ -5758,7 +5758,7 @@ type CreateAigcQuotaRequestParams struct {
 	// <p>配额类型</p><p>枚举值：</p><ul><li>Image： AIGC 生图任务</li><li>Video： AIGC 生视频任务</li><li>Text： AIGC 生文任务</li></ul>
 	QuotaType *string `json:"QuotaType,omitnil,omitempty" name:"QuotaType"`
 
-	// <p>任务的配额数</p><p>单位：- 当QuotaType=Image时，单位为张- 当QuotaType=Video时，单位为秒- 当QuotaType=Text时，单位为token</p>
+	// <p>任务的配额数。</p><p>单位：张/秒/token数。</p><ul><li>当 QuotaType 为 Image 时，单位为张；</li><li>当 QuotaType 为 Video 时，单位为秒；</li><li>当 QuotaType 为 Text 时，单位为 token 数。</li></ul>
 	QuotaLimit *uint64 `json:"QuotaLimit,omitnil,omitempty" name:"QuotaLimit"`
 
 	// <p>仅当QuotaType=Text时有效，用于选择需要进行配额限制ApiToken</p>
@@ -5774,7 +5774,7 @@ type CreateAigcQuotaRequest struct {
 	// <p>配额类型</p><p>枚举值：</p><ul><li>Image： AIGC 生图任务</li><li>Video： AIGC 生视频任务</li><li>Text： AIGC 生文任务</li></ul>
 	QuotaType *string `json:"QuotaType,omitnil,omitempty" name:"QuotaType"`
 
-	// <p>任务的配额数</p><p>单位：- 当QuotaType=Image时，单位为张- 当QuotaType=Video时，单位为秒- 当QuotaType=Text时，单位为token</p>
+	// <p>任务的配额数。</p><p>单位：张/秒/token数。</p><ul><li>当 QuotaType 为 Image 时，单位为张；</li><li>当 QuotaType 为 Video 时，单位为秒；</li><li>当 QuotaType 为 Text 时，单位为 token 数。</li></ul>
 	QuotaLimit *uint64 `json:"QuotaLimit,omitnil,omitempty" name:"QuotaLimit"`
 
 	// <p>仅当QuotaType=Text时有效，用于选择需要进行配额限制ApiToken</p>
@@ -6096,7 +6096,7 @@ type CreateAigcVideoTaskRequestParams struct {
 	// <p>模型名称。取值：<br>Kling：可灵；<br>Vidu；<br>Hailuo：海螺；<br>Hunyuan：混元；<br>Mingmou：明眸；<br>GV；<br>OS；<br>PixVerse;</p>
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
-	// <p>模型版本。取值：<br>当 ModelName 是 Hailuo，可选值为 02、2.3、2.3-fast、H3；<br>当 ModelName 是 Kling，可选值为 1.6、2.0、2.1、2.5、2.6、O1、3.0、3.0-Omni；<br>当 ModelName 是 Vidu，可选值为 q2、q2-pro、q2-turbo、q3、q3-pro、q3-turbo；<br>当 ModelName 是 GV，可选值为 3.1、3.1-fast；<br>当 ModelName 是 OS，可选值为 2.0；<br>当 ModelName 是 Hunyuan，可选值为 1.5；<br>当 ModelName 是 Mingmou，可选值为 1.0；<br>当 ModelName 是 PixVerse，可选值为 v5.6、v6、c1；</p>
+	// <p>模型版本。取值：<br>当 ModelName 是 Hailuo，可选值为 02、2.3、2.3-fast、H3、H3_regen；<br>当 ModelName 是 Kling，可选值为 1.6、2.0、2.1、2.5、2.6、O1、3.0、3.0-Omni；<br>当 ModelName 是 Vidu，可选值为 q2、q2-pro、q2-turbo、q3、q3-pro、q3-turbo；<br>当 ModelName 是 GV，可选值为 3.1、3.1-fast；<br>当 ModelName 是 OS，可选值为 2.0；<br>当 ModelName 是 Hunyuan，可选值为 1.5；<br>当 ModelName 是 Mingmou，可选值为 1.0；<br>当 ModelName 是 PixVerse，可选值为 v5.6、v6、c1；</p>
 	ModelVersion *string `json:"ModelVersion,omitnil,omitempty" name:"ModelVersion"`
 
 	// <p>用于描述模型在生成视频时要使用的资源文件，分为<strong>首尾帧模式、参考图片/视频/声音生成、视频编辑等模式</strong>。</p><p><strong>首尾帧视频生成</strong>：<strong>首帧图片的Usage字段为FirstFrame，尾帧图片的Usage字段为LastFrame</strong>，支持各一张，可以单独传首帧，不能单独传尾帧。<strong>首尾帧生成会参考图片比例</strong>。<br><strong>参考图片/视频/声音生成</strong>：可传入单个或者多个图片/视频/声音作为参考，<strong>Usage字段为Reference</strong>；<strong>参考模式，可以调整生成视频的宽高比例</strong>。<br><strong>视频编辑</strong>：Vidu、Kling可输入视频进行编辑。传入视频的同时也可以传入图片，<strong>图片的Usage字段为Reference</strong>。</p><p>注意：</p><ol><li>图片大小不超过10M。</li><li>支持的图片格式：jpeg、jpg、png。x0b</li><li>关于模型某个版本是否支持参考图片/视频/声音、首尾帧、视频编辑等功能，可向我们索取文档或者参考原厂文档信息。</li></ol>
@@ -6157,7 +6157,7 @@ type CreateAigcVideoTaskRequest struct {
 	// <p>模型名称。取值：<br>Kling：可灵；<br>Vidu；<br>Hailuo：海螺；<br>Hunyuan：混元；<br>Mingmou：明眸；<br>GV；<br>OS；<br>PixVerse;</p>
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
-	// <p>模型版本。取值：<br>当 ModelName 是 Hailuo，可选值为 02、2.3、2.3-fast、H3；<br>当 ModelName 是 Kling，可选值为 1.6、2.0、2.1、2.5、2.6、O1、3.0、3.0-Omni；<br>当 ModelName 是 Vidu，可选值为 q2、q2-pro、q2-turbo、q3、q3-pro、q3-turbo；<br>当 ModelName 是 GV，可选值为 3.1、3.1-fast；<br>当 ModelName 是 OS，可选值为 2.0；<br>当 ModelName 是 Hunyuan，可选值为 1.5；<br>当 ModelName 是 Mingmou，可选值为 1.0；<br>当 ModelName 是 PixVerse，可选值为 v5.6、v6、c1；</p>
+	// <p>模型版本。取值：<br>当 ModelName 是 Hailuo，可选值为 02、2.3、2.3-fast、H3、H3_regen；<br>当 ModelName 是 Kling，可选值为 1.6、2.0、2.1、2.5、2.6、O1、3.0、3.0-Omni；<br>当 ModelName 是 Vidu，可选值为 q2、q2-pro、q2-turbo、q3、q3-pro、q3-turbo；<br>当 ModelName 是 GV，可选值为 3.1、3.1-fast；<br>当 ModelName 是 OS，可选值为 2.0；<br>当 ModelName 是 Hunyuan，可选值为 1.5；<br>当 ModelName 是 Mingmou，可选值为 1.0；<br>当 ModelName 是 PixVerse，可选值为 v5.6、v6、c1；</p>
 	ModelVersion *string `json:"ModelVersion,omitnil,omitempty" name:"ModelVersion"`
 
 	// <p>用于描述模型在生成视频时要使用的资源文件，分为<strong>首尾帧模式、参考图片/视频/声音生成、视频编辑等模式</strong>。</p><p><strong>首尾帧视频生成</strong>：<strong>首帧图片的Usage字段为FirstFrame，尾帧图片的Usage字段为LastFrame</strong>，支持各一张，可以单独传首帧，不能单独传尾帧。<strong>首尾帧生成会参考图片比例</strong>。<br><strong>参考图片/视频/声音生成</strong>：可传入单个或者多个图片/视频/声音作为参考，<strong>Usage字段为Reference</strong>；<strong>参考模式，可以调整生成视频的宽高比例</strong>。<br><strong>视频编辑</strong>：Vidu、Kling可输入视频进行编辑。传入视频的同时也可以传入图片，<strong>图片的Usage字段为Reference</strong>。</p><p>注意：</p><ol><li>图片大小不超过10M。</li><li>支持的图片格式：jpeg、jpg、png。x0b</li><li>关于模型某个版本是否支持参考图片/视频/声音、首尾帧、视频编辑等功能，可向我们索取文档或者参考原厂文档信息。</li></ol>
@@ -23365,7 +23365,7 @@ type ModifyAigcQuotaRequestParams struct {
 	// <p>配额类型</p><p>枚举值：</p><ul><li>Image： AIGC 生图任务</li><li>Video： AIGC 生视频任务</li><li>Text： AIGC 生文任务</li></ul>
 	QuotaType *string `json:"QuotaType,omitnil,omitempty" name:"QuotaType"`
 
-	// <p>任务的配额数</p><p>单位：- 当QuotaType=Image时，单位为张- 当QuotaType=Video时，单位为秒- 当QuotaType=Text时，单位为token</p>
+	// <p>任务的配额数。</p><p>单位：张/秒/token数。</p><ul><li>当 QuotaType 为 Image 时，单位为张；</li><li>当 QuotaType 为 Video 时，单位为秒；</li><li>当 QuotaType 为 Text 时，单位为 token 数。</li></ul>
 	QuotaLimit *uint64 `json:"QuotaLimit,omitnil,omitempty" name:"QuotaLimit"`
 
 	// <p>仅当QuotaType=Text时有效，用于选择需要进行配额限制ApiToken</p>
@@ -23381,7 +23381,7 @@ type ModifyAigcQuotaRequest struct {
 	// <p>配额类型</p><p>枚举值：</p><ul><li>Image： AIGC 生图任务</li><li>Video： AIGC 生视频任务</li><li>Text： AIGC 生文任务</li></ul>
 	QuotaType *string `json:"QuotaType,omitnil,omitempty" name:"QuotaType"`
 
-	// <p>任务的配额数</p><p>单位：- 当QuotaType=Image时，单位为张- 当QuotaType=Video时，单位为秒- 当QuotaType=Text时，单位为token</p>
+	// <p>任务的配额数。</p><p>单位：张/秒/token数。</p><ul><li>当 QuotaType 为 Image 时，单位为张；</li><li>当 QuotaType 为 Video 时，单位为秒；</li><li>当 QuotaType 为 Text 时，单位为 token 数。</li></ul>
 	QuotaLimit *uint64 `json:"QuotaLimit,omitnil,omitempty" name:"QuotaLimit"`
 
 	// <p>仅当QuotaType=Text时有效，用于选择需要进行配额限制ApiToken</p>

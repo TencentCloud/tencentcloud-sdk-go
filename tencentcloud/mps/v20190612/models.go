@@ -30646,6 +30646,9 @@ type UnderstandImageConfig struct {
 
 	// <p>图片理解指令</p>
 	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
+
+	// <p>图片理解模型参数，类型为 JSON 字符串。</p>
+	Parameters *string `json:"Parameters,omitnil,omitempty" name:"Parameters"`
 }
 
 // Predefined struct for user

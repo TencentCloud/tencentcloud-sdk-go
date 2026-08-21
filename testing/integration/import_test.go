@@ -95,6 +95,7 @@ import (
 	cloudauditv20190319 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cloudaudit/v20190319"
 	cloudhsmv20191112 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cloudhsm/v20191112"
 	cloudmatev20251030 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cloudmate/v20251030"
+	cloudrcv20240606 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cloudrc/v20240606"
 	cloudstudiov20230508 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cloudstudio/v20230508"
 	clsv20201016 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cls/v20201016"
 	cmev20191029 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cme/v20191029"
@@ -214,6 +215,7 @@ import (
 	organizationv20181225 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/organization/v20181225"
 	organizationv20210331 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/organization/v20210331"
 	partnersv20180321 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/partners/v20180321"
+	portalv20230413 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/portal/v20230413"
 	postgresv20170312 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/postgres/v20170312"
 	privatednsv20201028 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/privatedns/v20201028"
 	ptsv20210728 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/pts/v20210728"
@@ -1288,6 +1290,19 @@ func TestCloudmatev20251030Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf("fail to init cloudmate_v20251030 client: %v", err)
+    }
+}
+
+func TestCloudrcv20240606Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := cloudrcv20240606.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf("fail to init cloudrc_v20240606 client: %v", err)
     }
 }
 
@@ -2835,6 +2850,19 @@ func TestPartnersv20180321Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf("fail to init partners_v20180321 client: %v", err)
+    }
+}
+
+func TestPortalv20230413Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := portalv20230413.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf("fail to init portal_v20230413 client: %v", err)
     }
 }
 

@@ -15643,6 +15643,9 @@ type ExportInfo struct {
 
 	// <p>导出字段</p>
 	DerivedFields []*string `json:"DerivedFields,omitnil,omitempty" name:"DerivedFields"`
+
+	// <p>日志导出创建时间，毫秒时间戳</p><p>单位：ms</p>
+	CreateTimestamp *uint64 `json:"CreateTimestamp,omitnil,omitempty" name:"CreateTimestamp"`
 }
 
 type ExternalRole struct {

@@ -227,6 +227,80 @@ func (c *Client) AssumeRoleForAllocatedEnvWithContext(ctx context.Context, reque
     return
 }
 
+func NewBindClsRequest() (request *BindClsRequest) {
+    request = &BindClsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "BindCls")
+    
+    
+    return
+}
+
+func NewBindClsResponse() (response *BindClsResponse) {
+    response = &BindClsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// BindCls
+// 绑定自定义CLS日志主题
+//
+// 
+//
+// **绑定自定义 CLS 日志主题需调用腾讯云 CLS「[DescribeTopics](https://cloud.tencent.com/document/api/614/56454)」接口，按传入的 `Region` 拉取用户日志主题列表，仅筛选 `AssumerName` 为空的自有主题，并将其 `LogsetId`、`TopicId` 分别回填为绑定参数 `ClsLogsetId`、`ClsTopicId`（地域取请求参数 `Region` 作为 `ClsRegion`）。**
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ENVID = "InvalidParameter.EnvId"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_CONCURRENT = "LimitExceeded.Concurrent"
+//  LIMITEXCEEDED_REQUEST = "LimitExceeded.Request"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) BindCls(request *BindClsRequest) (response *BindClsResponse, err error) {
+    return c.BindClsWithContext(context.Background(), request)
+}
+
+// BindCls
+// 绑定自定义CLS日志主题
+//
+// 
+//
+// **绑定自定义 CLS 日志主题需调用腾讯云 CLS「[DescribeTopics](https://cloud.tencent.com/document/api/614/56454)」接口，按传入的 `Region` 拉取用户日志主题列表，仅筛选 `AssumerName` 为空的自有主题，并将其 `LogsetId`、`TopicId` 分别回填为绑定参数 `ClsLogsetId`、`ClsTopicId`（地域取请求参数 `Region` 作为 `ClsRegion`）。**
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ENVID = "InvalidParameter.EnvId"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_CONCURRENT = "LimitExceeded.Concurrent"
+//  LIMITEXCEEDED_REQUEST = "LimitExceeded.Request"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) BindClsWithContext(ctx context.Context, request *BindClsRequest) (response *BindClsResponse, err error) {
+    if request == nil {
+        request = NewBindClsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "BindCls")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BindCls require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewBindClsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewBindStorageSourceRequest() (request *BindStorageSourceRequest) {
     request = &BindStorageSourceRequest{
         BaseRequest: &tchttp.BaseRequest{},

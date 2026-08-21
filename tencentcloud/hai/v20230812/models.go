@@ -70,31 +70,31 @@ type CallInfo struct {
 }
 
 type ComputeDetail struct {
-	// 算力套餐ID
+	// <p>算力套餐ID</p>
 	BundleType *string `json:"BundleType,omitnil,omitempty" name:"BundleType"`
 
-	// 节点数量
+	// <p>节点数量</p>
 	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
 
-	// 显卡数量
+	// <p>显卡数量</p>
 	GPUCount *string `json:"GPUCount,omitnil,omitempty" name:"GPUCount"`
 
-	// 显存
+	// <p>显存</p>
 	GPUMemory *string `json:"GPUMemory,omitnil,omitempty" name:"GPUMemory"`
 
-	// 算力
+	// <p>算力</p>
 	GPUPerformance *string `json:"GPUPerformance,omitnil,omitempty" name:"GPUPerformance"`
 
-	// CPU核数
+	// <p>CPU核数</p>
 	CPU *string `json:"CPU,omitnil,omitempty" name:"CPU"`
 
-	// 内存
+	// <p>内存</p>
 	Memory *string `json:"Memory,omitnil,omitempty" name:"Memory"`
 
-	// 该套餐是否支持包年包月
+	// <p>该套餐是否支持包年包月</p>
 	PrepaidEnable *bool `json:"PrepaidEnable,omitnil,omitempty" name:"PrepaidEnable"`
 
-	// 该套餐是否支持按量计费
+	// <p>该套餐是否支持按量计费</p>
 	PostpaidEnable *bool `json:"PostpaidEnable,omitnil,omitempty" name:"PostpaidEnable"`
 }
 
@@ -1264,6 +1264,9 @@ type DescribeServicesRequestParams struct {
 
 	// <p>偏移量</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>实例状态</p><p>枚举值：</p><ul><li>RUNNING： 运行中</li><li>CREATING： 创建中</li><li>CREATE_FAILED： 部署失败</li><li>DELETING： 删除中</li><li>UPDATING： 更新中</li><li>RESTARTING： 重启中</li><li>ISOLATING： 隔离中</li><li>ARREARS： 欠费中</li><li>RESTORING： 冲正恢复中</li></ul>
+	States []*string `json:"States,omitnil,omitempty" name:"States"`
 }
 
 type DescribeServicesRequest struct {
@@ -1277,6 +1280,9 @@ type DescribeServicesRequest struct {
 
 	// <p>偏移量</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>实例状态</p><p>枚举值：</p><ul><li>RUNNING： 运行中</li><li>CREATING： 创建中</li><li>CREATE_FAILED： 部署失败</li><li>DELETING： 删除中</li><li>UPDATING： 更新中</li><li>RESTARTING： 重启中</li><li>ISOLATING： 隔离中</li><li>ARREARS： 欠费中</li><li>RESTORING： 冲正恢复中</li></ul>
+	States []*string `json:"States,omitnil,omitempty" name:"States"`
 }
 
 func (r *DescribeServicesRequest) ToJsonString() string {
@@ -1294,6 +1300,7 @@ func (r *DescribeServicesRequest) FromJsonString(s string) error {
 	delete(f, "ServiceIds")
 	delete(f, "Limit")
 	delete(f, "Offset")
+	delete(f, "States")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeServicesRequest has unknown keys!", "")
 	}

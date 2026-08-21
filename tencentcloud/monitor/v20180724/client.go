@@ -5117,6 +5117,56 @@ func (c *Client) DescribeGrafanaNotificationChannelsWithContext(ctx context.Cont
     return
 }
 
+func NewDescribeGrafanaVersionsRequest() (request *DescribeGrafanaVersionsRequest) {
+    request = &DescribeGrafanaVersionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("monitor", APIVersion, "DescribeGrafanaVersions")
+    
+    
+    return
+}
+
+func NewDescribeGrafanaVersionsResponse() (response *DescribeGrafanaVersionsResponse) {
+    response = &DescribeGrafanaVersionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeGrafanaVersions
+// 列出 Grafana 版本
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeGrafanaVersions(request *DescribeGrafanaVersionsRequest) (response *DescribeGrafanaVersionsResponse, err error) {
+    return c.DescribeGrafanaVersionsWithContext(context.Background(), request)
+}
+
+// DescribeGrafanaVersions
+// 列出 Grafana 版本
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeGrafanaVersionsWithContext(ctx context.Context, request *DescribeGrafanaVersionsRequest) (response *DescribeGrafanaVersionsResponse, err error) {
+    if request == nil {
+        request = NewDescribeGrafanaVersionsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "monitor", APIVersion, "DescribeGrafanaVersions")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeGrafanaVersions require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeGrafanaVersionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeGrafanaWhiteListRequest() (request *DescribeGrafanaWhiteListRequest) {
     request = &DescribeGrafanaWhiteListRequest{
         BaseRequest: &tchttp.BaseRequest{},

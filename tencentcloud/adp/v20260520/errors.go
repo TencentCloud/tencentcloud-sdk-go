@@ -25,4 +25,7 @@ const (
 
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
+
+	// 资源不存在。
+	RESOURCENOTFOUND = "ResourceNotFound"
 )

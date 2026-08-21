@@ -11050,68 +11050,74 @@ type VatElectronicInfo struct {
 }
 
 type VatElectronicItemInfo struct {
-	// 项目名称
+	// <p>项目名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 数量
+	// <p>数量</p>
 	Quantity *string `json:"Quantity,omitnil,omitempty" name:"Quantity"`
 
-	// 规格型号
+	// <p>规格型号</p>
 	Specification *string `json:"Specification,omitnil,omitempty" name:"Specification"`
 
-	// 单价
+	// <p>单价</p>
 	Price *string `json:"Price,omitnil,omitempty" name:"Price"`
 
-	// 金额
+	// <p>金额</p>
 	Total *string `json:"Total,omitnil,omitempty" name:"Total"`
 
-	// 税率
+	// <p>税率</p>
 	TaxRate *string `json:"TaxRate,omitnil,omitempty" name:"TaxRate"`
 
-	// 税额
+	// <p>税额</p>
 	Tax *string `json:"Tax,omitnil,omitempty" name:"Tax"`
 
-	// 单位
+	// <p>单位</p>
 	Unit *string `json:"Unit,omitnil,omitempty" name:"Unit"`
 
-	// 运输工具类型
+	// <p>运输工具类型</p>
 	VehicleType *string `json:"VehicleType,omitnil,omitempty" name:"VehicleType"`
 
-	// 运输工具牌号
+	// <p>运输工具牌号</p>
 	VehicleBrand *string `json:"VehicleBrand,omitnil,omitempty" name:"VehicleBrand"`
 
-	// 起始地
+	// <p>起始地</p>
 	DeparturePlace *string `json:"DeparturePlace,omitnil,omitempty" name:"DeparturePlace"`
 
-	// 到达地
+	// <p>到达地</p>
 	ArrivalPlace *string `json:"ArrivalPlace,omitnil,omitempty" name:"ArrivalPlace"`
 
-	// 运输货物名称，仅货物运输服务发票返回
+	// <p>运输货物名称，仅货物运输服务发票返回</p>
 	TransportItemsName *string `json:"TransportItemsName,omitnil,omitempty" name:"TransportItemsName"`
 
-	// 建筑服务发生地，仅建筑发票返回
+	// <p>建筑服务发生地，仅建筑发票返回</p>
 	PlaceOfBuildingService *string `json:"PlaceOfBuildingService,omitnil,omitempty" name:"PlaceOfBuildingService"`
 
-	// 建筑项目名称，仅建筑发票返回
+	// <p>建筑项目名称，仅建筑发票返回</p>
 	BuildingName *string `json:"BuildingName,omitnil,omitempty" name:"BuildingName"`
 
-	// 产权证书/不动产权证号，仅不动产经营租赁服务发票返回
+	// <p>产权证书/不动产权证号，仅不动产经营租赁服务发票返回</p>
 	EstateNumber *string `json:"EstateNumber,omitnil,omitempty" name:"EstateNumber"`
 
-	// 面积单位，仅不动产经营租赁服务发票返回
+	// <p>面积单位，仅不动产经营租赁服务发票返回</p>
 	AreaUnit *string `json:"AreaUnit,omitnil,omitempty" name:"AreaUnit"`
 
-	// 出行人，仅旅客运输服务发票返回
+	// <p>出行人，仅旅客运输服务发票返回</p>
 	Traveler *string `json:"Traveler,omitnil,omitempty" name:"Traveler"`
 
-	// 有效身份证件号，仅旅客运输服务发票返回
+	// <p>有效身份证件号，仅旅客运输服务发票返回</p>
 	TravelerID *string `json:"TravelerID,omitnil,omitempty" name:"TravelerID"`
 
-	// 出行日期，仅旅客运输服务发票返回
+	// <p>出行日期，仅旅客运输服务发票返回</p>
 	TravelDate *string `json:"TravelDate,omitnil,omitempty" name:"TravelDate"`
 
-	// 等级，仅旅客运输服务发票返回
+	// <p>等级，仅旅客运输服务发票返回</p>
 	TravelLevel *string `json:"TravelLevel,omitnil,omitempty" name:"TravelLevel"`
+
+	// <p>通行日期起</p>
+	DateStart *string `json:"DateStart,omitnil,omitempty" name:"DateStart"`
+
+	// <p>通行日期止</p>
+	DateEnd *string `json:"DateEnd,omitnil,omitempty" name:"DateEnd"`
 }
 
 type VatInvoice struct {
@@ -12521,7 +12527,7 @@ func (r *VerifyOfdVatInvoiceOCRResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type VerifyScenePhotoRequestParams struct {
-	// <p>场景类型参数，如果场景无法细分请选用该大类的第一个子类，目前支持以下类型：<br><strong>经营场所照</strong><br>0101 门头照<br>0102 店内照<br>0103 流动经营照</p>
+	// <p>场景类型参数，如果场景无法细分请选用该大类的第一个子类，目前支持以下类型：<br><strong>经营场所照</strong><br>0101 门头照<br>0102 店内照<br>0103 流动经营照    </p><p><strong>车牌业务照</strong><br>0201 车牌</p>
 	Scene *string `json:"Scene,omitnil,omitempty" name:"Scene"`
 
 	// <p>图片的 Url 地址。要求图片经Base64编码后不超过 10M。</p>
@@ -12534,7 +12540,7 @@ type VerifyScenePhotoRequestParams struct {
 type VerifyScenePhotoRequest struct {
 	*tchttp.BaseRequest
 	
-	// <p>场景类型参数，如果场景无法细分请选用该大类的第一个子类，目前支持以下类型：<br><strong>经营场所照</strong><br>0101 门头照<br>0102 店内照<br>0103 流动经营照</p>
+	// <p>场景类型参数，如果场景无法细分请选用该大类的第一个子类，目前支持以下类型：<br><strong>经营场所照</strong><br>0101 门头照<br>0102 店内照<br>0103 流动经营照    </p><p><strong>车牌业务照</strong><br>0201 车牌</p>
 	Scene *string `json:"Scene,omitnil,omitempty" name:"Scene"`
 
 	// <p>图片的 Url 地址。要求图片经Base64编码后不超过 10M。</p>

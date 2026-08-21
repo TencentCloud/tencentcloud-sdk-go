@@ -741,7 +741,7 @@ func NewCreateAigcApiTokenResponse() (response *CreateAigcApiTokenResponse) {
 }
 
 // CreateAigcApiToken
-// 创建AIGC调用API的Token。创建后数据同步有延时，约30秒后可查询或删除。
+// 创建 AIGC 调用 API 的 Token。创建后数据同步有延时，约30秒后可查询或删除。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
@@ -753,7 +753,7 @@ func (c *Client) CreateAigcApiToken(request *CreateAigcApiTokenRequest) (respons
 }
 
 // CreateAigcApiToken
-// 创建AIGC调用API的Token。创建后数据同步有延时，约30秒后可查询或删除。
+// 创建 AIGC 调用 API 的 Token。创建后数据同步有延时，约30秒后可查询或删除。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
@@ -859,7 +859,7 @@ func NewCreateAigcAudioTaskResponse() (response *CreateAigcAudioTaskResponse) {
 }
 
 // CreateAigcAudioTask
-// 调用该接口，用于创建AI生音频任务。
+// 调用该接口，用于创建 AI 生音频任务。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_VIOLATIONCONTENT = "InvalidParameter.ViolationContent"
@@ -868,7 +868,7 @@ func (c *Client) CreateAigcAudioTask(request *CreateAigcAudioTaskRequest) (respo
 }
 
 // CreateAigcAudioTask
-// 调用该接口，用于创建AI生音频任务。
+// 调用该接口，用于创建 AI 生音频任务。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_VIOLATIONCONTENT = "InvalidParameter.ViolationContent"
@@ -3939,7 +3939,7 @@ func NewDeleteAigcApiTokenResponse() (response *DeleteAigcApiTokenResponse) {
 }
 
 // DeleteAigcApiToken
-// 删除 AIGC API Token
+// 删除 AIGC API Token。与该 Token 关联的 AIGC 配额也会被删除。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
@@ -3950,7 +3950,7 @@ func (c *Client) DeleteAigcApiToken(request *DeleteAigcApiTokenRequest) (respons
 }
 
 // DeleteAigcApiToken
-// 删除 AIGC API Token
+// 删除 AIGC API Token。与该 Token 关联的 AIGC 配额也会被删除。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"

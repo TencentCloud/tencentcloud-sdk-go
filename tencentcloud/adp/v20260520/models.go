@@ -1269,6 +1269,17 @@ type CamAuthConfig struct {
 	SecretKeyName *string `json:"SecretKeyName,omitnil,omitempty" name:"SecretKeyName"`
 }
 
+type CategoryPermission struct {
+	// <p>当前用户是否可新增子分类</p>
+	CanAdd *bool `json:"CanAdd,omitnil,omitempty" name:"CanAdd"`
+
+	// <p>当前用户是否可删除该分类</p>
+	CanDelete *bool `json:"CanDelete,omitnil,omitempty" name:"CanDelete"`
+
+	// <p>当前用户是否可编辑该分类</p>
+	CanEdit *bool `json:"CanEdit,omitnil,omitempty" name:"CanEdit"`
+}
+
 type ClawAgentAgentTeamConfig struct {
 	// <p>是否开启Agent团队协作</p>
 	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
@@ -2168,6 +2179,77 @@ func (r *CreateConversationResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateConversationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateMsgRecordCategoryRequestParams struct {
+	// <p>分类名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>应用 ID</p>
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>父分类业务 ID，0 表示一级分类（未分类）</p>
+	ParentId *string `json:"ParentId,omitnil,omitempty" name:"ParentId"`
+}
+
+type CreateMsgRecordCategoryRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>分类名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>应用 ID</p>
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>父分类业务 ID，0 表示一级分类（未分类）</p>
+	ParentId *string `json:"ParentId,omitnil,omitempty" name:"ParentId"`
+}
+
+func (r *CreateMsgRecordCategoryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateMsgRecordCategoryRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "AppId")
+	delete(f, "ParentId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateMsgRecordCategoryRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateMsgRecordCategoryResponseParams struct {
+	// <p>新建分类的业务 ID</p>
+	CategoryId *string `json:"CategoryId,omitnil,omitempty" name:"CategoryId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateMsgRecordCategoryResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateMsgRecordCategoryResponseParams `json:"Response"`
+}
+
+func (r *CreateMsgRecordCategoryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateMsgRecordCategoryResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3199,6 +3281,67 @@ func (r *DeleteConversationResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteConversationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteMsgRecordCategoryRequestParams struct {
+	// <p>应用 ID</p>
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>待删除的分类业务 ID</p>
+	CategoryId *string `json:"CategoryId,omitnil,omitempty" name:"CategoryId"`
+}
+
+type DeleteMsgRecordCategoryRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>应用 ID</p>
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>待删除的分类业务 ID</p>
+	CategoryId *string `json:"CategoryId,omitnil,omitempty" name:"CategoryId"`
+}
+
+func (r *DeleteMsgRecordCategoryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteMsgRecordCategoryRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AppId")
+	delete(f, "CategoryId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteMsgRecordCategoryRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteMsgRecordCategoryResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteMsgRecordCategoryResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteMsgRecordCategoryResponseParams `json:"Response"`
+}
+
+func (r *DeleteMsgRecordCategoryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteMsgRecordCategoryResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5321,6 +5464,160 @@ func (r *DescribeModelListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeMsgRecordCategoryListRequestParams struct {
+	// <p>应用 ID</p>
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+}
+
+type DescribeMsgRecordCategoryListRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>应用 ID</p>
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+}
+
+func (r *DescribeMsgRecordCategoryListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMsgRecordCategoryListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AppId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMsgRecordCategoryListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMsgRecordCategoryListResponseParams struct {
+	// <p>消息记录分类树列表</p>
+	CategoryList []*MsgRecordCategory `json:"CategoryList,omitnil,omitempty" name:"CategoryList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeMsgRecordCategoryListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeMsgRecordCategoryListResponseParams `json:"Response"`
+}
+
+func (r *DescribeMsgRecordCategoryListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMsgRecordCategoryListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMsgRecordListRequestParams struct {
+	// <p>应用 ID</p>
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>过滤条件列表，支持：ChannelType（渠道类型，0 全部）、FeedbackType（反馈类型，-1 为全部）、QueryType、Query、CategoryId、ReplyMethod、StartTime、EndTime（秒时间戳）、Cursor（游标信息，上一页取响应 PrevCursor，下一页取响应 NextCursor）、Direction（方向，next 下一页，prev 上一页）、CallResult（调用结果，默认 0 为全部，1 为成功，2 为失败）、FailReason、Intent</p>
+	FilterList []*Filter `json:"FilterList,omitnil,omitempty" name:"FilterList"`
+
+	// <p>页码，从 0 开始；不传时按 0 处理</p>
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// <p>每页数量，最大 100；不传或传 0 时按默认分页大小处理</p>
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// <p>排序条件，只支持按 CreateTime 排序</p>
+	Sort *Sort `json:"Sort,omitnil,omitempty" name:"Sort"`
+}
+
+type DescribeMsgRecordListRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>应用 ID</p>
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>过滤条件列表，支持：ChannelType（渠道类型，0 全部）、FeedbackType（反馈类型，-1 为全部）、QueryType、Query、CategoryId、ReplyMethod、StartTime、EndTime（秒时间戳）、Cursor（游标信息，上一页取响应 PrevCursor，下一页取响应 NextCursor）、Direction（方向，next 下一页，prev 上一页）、CallResult（调用结果，默认 0 为全部，1 为成功，2 为失败）、FailReason、Intent</p>
+	FilterList []*Filter `json:"FilterList,omitnil,omitempty" name:"FilterList"`
+
+	// <p>页码，从 0 开始；不传时按 0 处理</p>
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// <p>每页数量，最大 100；不传或传 0 时按默认分页大小处理</p>
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// <p>排序条件，只支持按 CreateTime 排序</p>
+	Sort *Sort `json:"Sort,omitnil,omitempty" name:"Sort"`
+}
+
+func (r *DescribeMsgRecordListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMsgRecordListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AppId")
+	delete(f, "FilterList")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	delete(f, "Sort")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMsgRecordListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMsgRecordListResponseParams struct {
+	// <p>是否有更多页</p>
+	HasMore *bool `json:"HasMore,omitnil,omitempty" name:"HasMore"`
+
+	// <p>消息记录列表</p>
+	MsgRecordList []*MsgRecord `json:"MsgRecordList,omitnil,omitempty" name:"MsgRecordList"`
+
+	// <p>下一页游标信息</p>
+	NextCursor *string `json:"NextCursor,omitnil,omitempty" name:"NextCursor"`
+
+	// <p>上一页游标信息</p>
+	PrevCursor *string `json:"PrevCursor,omitnil,omitempty" name:"PrevCursor"`
+
+	// <p>符合条件的总记录数，用于前端分页显示</p>
+	TotalCount *string `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeMsgRecordListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeMsgRecordListResponseParams `json:"Response"`
+}
+
+func (r *DescribeMsgRecordListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMsgRecordListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribePluginRequestParams struct {
 	// <p>插件id</p>
 	PluginId *string `json:"PluginId,omitnil,omitempty" name:"PluginId"`
@@ -7368,6 +7665,74 @@ func (r *ModifyConversationResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyMsgRecordCategoryRequestParams struct {
+	// <p>应用 ID</p>
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>待修改的分类业务 ID</p>
+	CategoryId *string `json:"CategoryId,omitnil,omitempty" name:"CategoryId"`
+
+	// <p>修改后的分类名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+}
+
+type ModifyMsgRecordCategoryRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>应用 ID</p>
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>待修改的分类业务 ID</p>
+	CategoryId *string `json:"CategoryId,omitnil,omitempty" name:"CategoryId"`
+
+	// <p>修改后的分类名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+}
+
+func (r *ModifyMsgRecordCategoryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyMsgRecordCategoryRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AppId")
+	delete(f, "CategoryId")
+	delete(f, "Name")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyMsgRecordCategoryRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyMsgRecordCategoryResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyMsgRecordCategoryResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyMsgRecordCategoryResponseParams `json:"Response"`
+}
+
+func (r *ModifyMsgRecordCategoryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyMsgRecordCategoryResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyPluginRequestParams struct {
 	// <p>插件id</p>
 	PluginId *string `json:"PluginId,omitnil,omitempty" name:"PluginId"`
@@ -7707,6 +8072,116 @@ func (r *ModifyVariableResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ModifyVariableResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type MsgRecord struct {
+	// 答案
+	Answer *string `json:"Answer,omitnil,omitempty" name:"Answer"`
+
+	// 应用ID
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// 分类ID
+	CategoryId *string `json:"CategoryId,omitnil,omitempty" name:"CategoryId"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 意图
+	Intent *string `json:"Intent,omitnil,omitempty" name:"Intent"`
+
+	// 意图分类
+	IntentCategory *string `json:"IntentCategory,omitnil,omitempty" name:"IntentCategory"`
+
+	// 是否是智能分类
+	IsSmart *bool `json:"IsSmart,omitnil,omitempty" name:"IsSmart"`
+
+	// 问题
+	Question *string `json:"Question,omitnil,omitempty" name:"Question"`
+
+	// 记录ID
+	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
+
+	// 表示消息的回复方式，枚举 ReplyMethod：0=未指定, 1=大模型直接回复, 2=保守回复, 3=拒答, 4=敏感回复, 5=问答对优先回复, 6=欢迎语, 7=并发超限, 8=全局干预知识, 9=任务流程过程回复, 10=任务流程答案, 11=搜索引擎, 12=知识润色, 13=图片理解, 14=实时文档, 15=澄清确认, 16=工作流回复, 17=工作流结束, 18=智能体回复, 19=多意图, 20=中断, 21=智能体计划预览, 22=智能体计划结果, 23=智能体结构化输出。
+	ReplyMethod *int64 `json:"ReplyMethod,omitnil,omitempty" name:"ReplyMethod"`
+
+	// 返回结果
+	Result *MsgRecordResult `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 分数
+	Score *uint64 `json:"Score,omitnil,omitempty" name:"Score"`
+
+	// 会话ID
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// 来源
+	Source *MsgRecordSource `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// trace_id
+	TraceId *string `json:"TraceId,omitnil,omitempty" name:"TraceId"`
+}
+
+type MsgRecordCategory struct {
+	// <p>分类的业务 ID</p>
+	CategoryId *string `json:"CategoryId,omitnil,omitempty" name:"CategoryId"`
+
+	// <p>子分类列表，树形嵌套</p>
+	Children []*MsgRecordCategory `json:"Children,omitnil,omitempty" name:"Children"`
+
+	// <p>分类名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>当前用户对该分类的操作权限</p>
+	Permission *CategoryPermission `json:"Permission,omitnil,omitempty" name:"Permission"`
+
+	// <p>该分类下消息记录的数量</p>
+	TotalCount *string `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+}
+
+type MsgRecordResult struct {
+	// 表示该条消息的调用结果：0=CALL_RESULT_UNKNOWN（全部/未知）, 1=CALL_RESULT_SUCCESS（成功）, 2=CALL_RESULT_FAILED（失败）；fail_reason（string）为调用失败时的失败原因描述。
+	CallResult *int64 `json:"CallResult,omitnil,omitempty" name:"CallResult"`
+
+	// 自定义变量，json字符串
+	CustomerVariable *string `json:"CustomerVariable,omitnil,omitempty" name:"CustomerVariable"`
+
+	// 失败原因
+	FailReason *string `json:"FailReason,omitnil,omitempty" name:"FailReason"`
+
+	// 首token耗时
+	FirstTokenLatency *uint64 `json:"FirstTokenLatency,omitnil,omitempty" name:"FirstTokenLatency"`
+
+	// 输入token数
+	InputToken *uint64 `json:"InputToken,omitnil,omitempty" name:"InputToken"`
+
+	// 输出token数
+	OutputToken *uint64 `json:"OutputToken,omitnil,omitempty" name:"OutputToken"`
+
+	// 总token数
+	TotalToken *uint64 `json:"TotalToken,omitnil,omitempty" name:"TotalToken"`
+
+	// 总token耗时
+	TotalTokenLatency *uint64 `json:"TotalTokenLatency,omitnil,omitempty" name:"TotalTokenLatency"`
+}
+
+type MsgRecordSource struct {
+	// 对话消息的接入渠道类型：0=未指定, 1=坐席, 2=体验页面(腾讯云), 3=评测端对话, 4=体验页面(手机号), 5=对话端API接入, 6=评测任务对话, 10=工作流调试, 10000=微信公众号, 10001=微信服务号, 10002=企微应用, 10003=网页组件, 10004=微信客服, 10005=微信小程序, 10006=元器, 10007=应用宝, 10008=元宝, 10009=企微智能机器人, 10010=元器API, 10011=LINE, 10012=Telegram, 10100=电脑管家, 20001=荣耀智能体平台, 20002=小米应用商店；user_id（string）为该渠道下的访客唯一标识。
+	ChannelType *uint64 `json:"ChannelType,omitnil,omitempty" name:"ChannelType"`
+
+	// 用户ID
+	FromId *string `json:"FromId,omitnil,omitempty" name:"FromId"`
+
+	// 消息发送者的用户来源类型：1=用户（访客/C端用户）, 2=机器人（AI回复）, 3=坐席（人工客服）；from_id（string）为该来源类型下的用户唯一标识 ID。
+	FromType *uint64 `json:"FromType,omitnil,omitempty" name:"FromType"`
+
+	// 用户头像
+	UserAvatar *string `json:"UserAvatar,omitnil,omitempty" name:"UserAvatar"`
+
+	// 访客ID
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// 访客名称
+	UserNickname *string `json:"UserNickname,omitnil,omitempty" name:"UserNickname"`
 }
 
 type MultiAgentConfig struct {
@@ -8890,6 +9365,14 @@ type SkillVersion struct {
 
 	// 版本变更说明
 	UpdateDesc *string `json:"UpdateDesc,omitnil,omitempty" name:"UpdateDesc"`
+}
+
+type Sort struct {
+	// <p>排序字段名，如 create_time</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>排序方向，1 升序，2 降序</p><table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>SORT_ORDER_INVALID</td><td>0</td><td>无效</td></tr><tr><td>SORT_ORDER_ASC</td><td>1</td><td>升序</td></tr><tr><td>SORT_ORDER_DESC</td><td>2</td><td>降序</td></tr></tbody></table>
+	Direction *int64 `json:"Direction,omitnil,omitempty" name:"Direction"`
 }
 
 type Space struct {

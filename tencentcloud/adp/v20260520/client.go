@@ -309,6 +309,58 @@ func (c *Client) CreateConversationWithContext(ctx context.Context, request *Cre
     return
 }
 
+func NewCreateMsgRecordCategoryRequest() (request *CreateMsgRecordCategoryRequest) {
+    request = &CreateMsgRecordCategoryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "CreateMsgRecordCategory")
+    
+    
+    return
+}
+
+func NewCreateMsgRecordCategoryResponse() (response *CreateMsgRecordCategoryResponse) {
+    response = &CreateMsgRecordCategoryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateMsgRecordCategory
+// 创建一条消息记录分类，支持指定分类名称与父分类（ParentId 为 0 时表示一级分类）
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateMsgRecordCategory(request *CreateMsgRecordCategoryRequest) (response *CreateMsgRecordCategoryResponse, err error) {
+    return c.CreateMsgRecordCategoryWithContext(context.Background(), request)
+}
+
+// CreateMsgRecordCategory
+// 创建一条消息记录分类，支持指定分类名称与父分类（ParentId 为 0 时表示一级分类）
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateMsgRecordCategoryWithContext(ctx context.Context, request *CreateMsgRecordCategoryRequest) (response *CreateMsgRecordCategoryResponse, err error) {
+    if request == nil {
+        request = NewCreateMsgRecordCategoryRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "CreateMsgRecordCategory")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateMsgRecordCategory require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateMsgRecordCategoryResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreatePluginRequest() (request *CreatePluginRequest) {
     request = &CreatePluginRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -330,12 +382,20 @@ func NewCreatePluginResponse() (response *CreatePluginResponse) {
 
 // CreatePlugin
 // 获取插件详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) CreatePlugin(request *CreatePluginRequest) (response *CreatePluginResponse, err error) {
     return c.CreatePluginWithContext(context.Background(), request)
 }
 
 // CreatePlugin
 // 获取插件详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) CreatePluginWithContext(ctx context.Context, request *CreatePluginRequest) (response *CreatePluginResponse, err error) {
     if request == nil {
         request = NewCreatePluginRequest()
@@ -374,12 +434,20 @@ func NewCreateReleaseResponse() (response *CreateReleaseResponse) {
 
 // CreateRelease
 // 新增发布任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) CreateRelease(request *CreateReleaseRequest) (response *CreateReleaseResponse, err error) {
     return c.CreateReleaseWithContext(context.Background(), request)
 }
 
 // CreateRelease
 // 新增发布任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) CreateReleaseWithContext(ctx context.Context, request *CreateReleaseRequest) (response *CreateReleaseResponse, err error) {
     if request == nil {
         request = NewCreateReleaseRequest()
@@ -418,12 +486,20 @@ func NewCreateSkillResponse() (response *CreateSkillResponse) {
 
 // CreateSkill
 // 创建skill
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) CreateSkill(request *CreateSkillRequest) (response *CreateSkillResponse, err error) {
     return c.CreateSkillWithContext(context.Background(), request)
 }
 
 // CreateSkill
 // 创建skill
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) CreateSkillWithContext(ctx context.Context, request *CreateSkillRequest) (response *CreateSkillResponse, err error) {
     if request == nil {
         request = NewCreateSkillRequest()
@@ -462,12 +538,20 @@ func NewCreateSkillShareResponse() (response *CreateSkillShareResponse) {
 
 // CreateSkillShare
 // 提交自定义Skill至企业级共享审批（两段式：提交→审批→回调创建共享任务）
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) CreateSkillShare(request *CreateSkillShareRequest) (response *CreateSkillShareResponse, err error) {
     return c.CreateSkillShareWithContext(context.Background(), request)
 }
 
 // CreateSkillShare
 // 提交自定义Skill至企业级共享审批（两段式：提交→审批→回调创建共享任务）
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) CreateSkillShareWithContext(ctx context.Context, request *CreateSkillShareRequest) (response *CreateSkillShareResponse, err error) {
     if request == nil {
         request = NewCreateSkillShareRequest()
@@ -885,6 +969,60 @@ func (c *Client) DeleteConversationWithContext(ctx context.Context, request *Del
     return
 }
 
+func NewDeleteMsgRecordCategoryRequest() (request *DeleteMsgRecordCategoryRequest) {
+    request = &DeleteMsgRecordCategoryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "DeleteMsgRecordCategory")
+    
+    
+    return
+}
+
+func NewDeleteMsgRecordCategoryResponse() (response *DeleteMsgRecordCategoryResponse) {
+    response = &DeleteMsgRecordCategoryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteMsgRecordCategory
+// 删除指定的消息记录分类
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteMsgRecordCategory(request *DeleteMsgRecordCategoryRequest) (response *DeleteMsgRecordCategoryResponse, err error) {
+    return c.DeleteMsgRecordCategoryWithContext(context.Background(), request)
+}
+
+// DeleteMsgRecordCategory
+// 删除指定的消息记录分类
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteMsgRecordCategoryWithContext(ctx context.Context, request *DeleteMsgRecordCategoryRequest) (response *DeleteMsgRecordCategoryResponse, err error) {
+    if request == nil {
+        request = NewDeleteMsgRecordCategoryRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "DeleteMsgRecordCategory")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteMsgRecordCategory require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteMsgRecordCategoryResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeletePluginRequest() (request *DeletePluginRequest) {
     request = &DeletePluginRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -908,7 +1046,9 @@ func NewDeletePluginResponse() (response *DeletePluginResponse) {
 // 修改插件
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeletePlugin(request *DeletePluginRequest) (response *DeletePluginResponse, err error) {
     return c.DeletePluginWithContext(context.Background(), request)
 }
@@ -917,7 +1057,9 @@ func (c *Client) DeletePlugin(request *DeletePluginRequest) (response *DeletePlu
 // 修改插件
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeletePluginWithContext(ctx context.Context, request *DeletePluginRequest) (response *DeletePluginResponse, err error) {
     if request == nil {
         request = NewDeletePluginRequest()
@@ -958,7 +1100,9 @@ func NewDeleteSkillResponse() (response *DeleteSkillResponse) {
 // 删除自定义 Skill  鉴权：创建者 ∨ (编辑权限 ∧ 删除权限） 拒绝场景：非 Custom 类型 / 已共享 / 安全检测中 / 上架审批中 / 下架审批中
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteSkill(request *DeleteSkillRequest) (response *DeleteSkillResponse, err error) {
     return c.DeleteSkillWithContext(context.Background(), request)
 }
@@ -967,7 +1111,9 @@ func (c *Client) DeleteSkill(request *DeleteSkillRequest) (response *DeleteSkill
 // 删除自定义 Skill  鉴权：创建者 ∨ (编辑权限 ∧ 删除权限） 拒绝场景：非 Custom 类型 / 已共享 / 安全检测中 / 上架审批中 / 下架审批中
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteSkillWithContext(ctx context.Context, request *DeleteSkillRequest) (response *DeleteSkillResponse, err error) {
     if request == nil {
         request = NewDeleteSkillRequest()
@@ -1008,7 +1154,9 @@ func NewDeleteSkillShareResponse() (response *DeleteSkillShareResponse) {
 // 提交共享 Skill 下架审批（v2，两段式：提交→审批→回调下架共享 Skill） 鉴权：删除权 拒绝场景：未共享 / 上架审批中 / 下架审批中
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteSkillShare(request *DeleteSkillShareRequest) (response *DeleteSkillShareResponse, err error) {
     return c.DeleteSkillShareWithContext(context.Background(), request)
 }
@@ -1017,7 +1165,9 @@ func (c *Client) DeleteSkillShare(request *DeleteSkillShareRequest) (response *D
 // 提交共享 Skill 下架审批（v2，两段式：提交→审批→回调下架共享 Skill） 鉴权：删除权 拒绝场景：未共享 / 上架审批中 / 下架审批中
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteSkillShareWithContext(ctx context.Context, request *DeleteSkillShareRequest) (response *DeleteSkillShareResponse, err error) {
     if request == nil {
         request = NewDeleteSkillShareRequest()
@@ -2183,6 +2333,110 @@ func (c *Client) DescribeModelListWithContext(ctx context.Context, request *Desc
     return
 }
 
+func NewDescribeMsgRecordCategoryListRequest() (request *DescribeMsgRecordCategoryListRequest) {
+    request = &DescribeMsgRecordCategoryListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "DescribeMsgRecordCategoryList")
+    
+    
+    return
+}
+
+func NewDescribeMsgRecordCategoryListResponse() (response *DescribeMsgRecordCategoryListResponse) {
+    response = &DescribeMsgRecordCategoryListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMsgRecordCategoryList
+// 查询应用的消息记录分类树，返回分类及子分类、各分类下记录数量与操作权限
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeMsgRecordCategoryList(request *DescribeMsgRecordCategoryListRequest) (response *DescribeMsgRecordCategoryListResponse, err error) {
+    return c.DescribeMsgRecordCategoryListWithContext(context.Background(), request)
+}
+
+// DescribeMsgRecordCategoryList
+// 查询应用的消息记录分类树，返回分类及子分类、各分类下记录数量与操作权限
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeMsgRecordCategoryListWithContext(ctx context.Context, request *DescribeMsgRecordCategoryListRequest) (response *DescribeMsgRecordCategoryListResponse, err error) {
+    if request == nil {
+        request = NewDescribeMsgRecordCategoryListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "DescribeMsgRecordCategoryList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMsgRecordCategoryList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMsgRecordCategoryListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeMsgRecordListRequest() (request *DescribeMsgRecordListRequest) {
+    request = &DescribeMsgRecordListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "DescribeMsgRecordList")
+    
+    
+    return
+}
+
+func NewDescribeMsgRecordListResponse() (response *DescribeMsgRecordListResponse) {
+    response = &DescribeMsgRecordListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMsgRecordList
+// 查询应用的对话消息记录列表，支持按渠道类型、反馈类型、意图、调用结果等条件过滤，并支持游标分页与按创建时间排序
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeMsgRecordList(request *DescribeMsgRecordListRequest) (response *DescribeMsgRecordListResponse, err error) {
+    return c.DescribeMsgRecordListWithContext(context.Background(), request)
+}
+
+// DescribeMsgRecordList
+// 查询应用的对话消息记录列表，支持按渠道类型、反馈类型、意图、调用结果等条件过滤，并支持游标分页与按创建时间排序
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeMsgRecordListWithContext(ctx context.Context, request *DescribeMsgRecordListRequest) (response *DescribeMsgRecordListResponse, err error) {
+    if request == nil {
+        request = NewDescribeMsgRecordListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "DescribeMsgRecordList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMsgRecordList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMsgRecordListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePluginRequest() (request *DescribePluginRequest) {
     request = &DescribePluginRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3219,6 +3473,60 @@ func (c *Client) ModifyConversationWithContext(ctx context.Context, request *Mod
     return
 }
 
+func NewModifyMsgRecordCategoryRequest() (request *ModifyMsgRecordCategoryRequest) {
+    request = &ModifyMsgRecordCategoryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "ModifyMsgRecordCategory")
+    
+    
+    return
+}
+
+func NewModifyMsgRecordCategoryResponse() (response *ModifyMsgRecordCategoryResponse) {
+    response = &ModifyMsgRecordCategoryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyMsgRecordCategory
+// 修改指定消息记录分类的名称
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyMsgRecordCategory(request *ModifyMsgRecordCategoryRequest) (response *ModifyMsgRecordCategoryResponse, err error) {
+    return c.ModifyMsgRecordCategoryWithContext(context.Background(), request)
+}
+
+// ModifyMsgRecordCategory
+// 修改指定消息记录分类的名称
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyMsgRecordCategoryWithContext(ctx context.Context, request *ModifyMsgRecordCategoryRequest) (response *ModifyMsgRecordCategoryResponse, err error) {
+    if request == nil {
+        request = NewModifyMsgRecordCategoryRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "ModifyMsgRecordCategory")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyMsgRecordCategory require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyMsgRecordCategoryResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyPluginRequest() (request *ModifyPluginRequest) {
     request = &ModifyPluginRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3244,6 +3552,7 @@ func NewModifyPluginResponse() (response *ModifyPluginResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyPlugin(request *ModifyPluginRequest) (response *ModifyPluginResponse, err error) {
     return c.ModifyPluginWithContext(context.Background(), request)
 }
@@ -3254,6 +3563,7 @@ func (c *Client) ModifyPlugin(request *ModifyPluginRequest) (response *ModifyPlu
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyPluginWithContext(ctx context.Context, request *ModifyPluginRequest) (response *ModifyPluginResponse, err error) {
     if request == nil {
         request = NewModifyPluginRequest()
@@ -3296,6 +3606,7 @@ func NewModifySkillResponse() (response *ModifySkillResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifySkill(request *ModifySkillRequest) (response *ModifySkillResponse, err error) {
     return c.ModifySkillWithContext(context.Background(), request)
 }
@@ -3306,6 +3617,7 @@ func (c *Client) ModifySkill(request *ModifySkillRequest) (response *ModifySkill
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifySkillWithContext(ctx context.Context, request *ModifySkillRequest) (response *ModifySkillResponse, err error) {
     if request == nil {
         request = NewModifySkillRequest()

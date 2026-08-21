@@ -436,6 +436,7 @@ func NewCreateAndroidAppVersionResponse() (response *CreateAndroidAppVersionResp
 // 创建安卓应用版本
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_APPLICATIONLOCKFAIL = "FailedOperation.ApplicationLockFail"
 //  FAILEDOPERATION_APPLICATIONNOTFIND = "FailedOperation.ApplicationNotFind"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -451,6 +452,7 @@ func (c *Client) CreateAndroidAppVersion(request *CreateAndroidAppVersionRequest
 // 创建安卓应用版本
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_APPLICATIONLOCKFAIL = "FailedOperation.ApplicationLockFail"
 //  FAILEDOPERATION_APPLICATIONNOTFIND = "FailedOperation.ApplicationNotFind"
 //  INVALIDPARAMETER = "InvalidParameter"

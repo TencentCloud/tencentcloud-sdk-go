@@ -73,13 +73,14 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cloudaudit v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cloudhsm v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cloudmate v0.0.0
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cloudrc v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cloudstudio v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cls v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cme v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cmq v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cms v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cngw v0.0.0
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.3.165
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.3.166
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/config v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/controlcenter v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cpdp v0.0.0
@@ -178,6 +179,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/omics v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/organization v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/partners v0.0.0
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/portal v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/postgres v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/privatedns v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/pts v0.0.0
@@ -334,6 +336,7 @@ replace (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cloudaudit => ../tencentcloud/cloudaudit
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cloudhsm => ../tencentcloud/cloudhsm
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cloudmate => ../tencentcloud/cloudmate
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cloudrc => ../tencentcloud/cloudrc
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cloudstudio => ../tencentcloud/cloudstudio
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cls => ../tencentcloud/cls
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cme => ../tencentcloud/cme
@@ -439,6 +442,7 @@ replace (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/omics => ../tencentcloud/omics
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/organization => ../tencentcloud/organization
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/partners => ../tencentcloud/partners
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/portal => ../tencentcloud/portal
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/postgres => ../tencentcloud/postgres
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/privatedns => ../tencentcloud/privatedns
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/pts => ../tencentcloud/pts

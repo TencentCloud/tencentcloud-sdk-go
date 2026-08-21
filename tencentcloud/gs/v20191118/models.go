@@ -21,31 +21,31 @@ import (
 )
 
 type AndroidApp struct {
-	// 安卓应用 Id
+	// <p>安卓应用 Id</p>
 	AndroidAppId *string `json:"AndroidAppId,omitnil,omitempty" name:"AndroidAppId"`
 
-	// 安卓应用名称
+	// <p>安卓应用名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 安卓应用状态（上架、下架）
+	// <p>安卓应用状态（上架、下架）</p>
 	State *string `json:"State,omitnil,omitempty" name:"State"`
 
-	// 安卓应用版本列表
+	// <p>安卓应用版本列表</p>
 	AndroidAppVersionInfo []*AndroidAppVersionInfo `json:"AndroidAppVersionInfo,omitnil,omitempty" name:"AndroidAppVersionInfo"`
 
-	// 安卓应用创建时间
+	// <p>安卓应用创建时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 用户 Id
+	// <p>用户 Id</p>
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
-	// 应用模式（NORMAL : 普通模式；ADVANCED : 高级模式）
+	// <p>应用模式（NORMAL : 普通模式；ADVANCED : 高级模式）</p>
 	AppMode *string `json:"AppMode,omitnil,omitempty" name:"AppMode"`
 
-	// 应用更新状态，取值：UPLOADING 上传中、CREATING 创建中、CREATE_FAIL 创建失败、CREATE_SUCCESS 创建成功、PACKAGE_NAME_MISMATCH 包名不匹配、VERSION_ALREADY_EXISTS 版本已存在、APP_PARSE_FAIL app 解析失败、APP_EXISTS_SECURITY_RISK app 存在安全风险、NORMAL 默认状态
+	// <p>应用更新状态，取值：UPLOADING 上传中、CREATING 创建中、CREATE_FAIL 创建失败、CREATE_SUCCESS 创建成功、PACKAGE_NAME_MISMATCH 包名不匹配、VERSION_ALREADY_EXISTS 版本已存在、APP_PARSE_FAIL app 解析失败、APP_EXISTS_SECURITY_RISK app 存在安全风险、NORMAL 默认状态</p>
 	UpdateState *string `json:"UpdateState,omitnil,omitempty" name:"UpdateState"`
 
-	// 安卓应用包名
+	// <p>安卓应用包名</p>
 	PackageName *string `json:"PackageName,omitnil,omitempty" name:"PackageName"`
 }
 
@@ -58,40 +58,40 @@ type AndroidAppCosInfo struct {
 }
 
 type AndroidAppVersionInfo struct {
-	// 安卓应用版本
+	// <p>安卓应用版本</p>
 	AndroidAppVersion *string `json:"AndroidAppVersion,omitnil,omitempty" name:"AndroidAppVersion"`
 
-	// 安卓应用版本创建状态，取值：NORMAL：无（默认）、UPLOADING：上传中、CREATING： 创建中、CREATE_FAIL：创建失败、PACKAGE_NAME_MISMATCH：包名不匹配、VERSION_ALREADY_EXISTS：版本已存在、APP_PARSE_FAIL： app 解析失败、APP_EXISTS_SECURITY_RISK：app 存在安全风险、CREATE_SUCCESS：创建成功
+	// <p>安卓应用版本创建状态，取值：NORMAL：无（默认）、UPLOADING：上传中、CREATING： 创建中、CREATE_FAIL：创建失败、PACKAGE_NAME_MISMATCH：包名不匹配、VERSION_ALREADY_EXISTS：版本已存在、APP_PARSE_FAIL： app 解析失败、APP_EXISTS_SECURITY_RISK：app 存在安全风险、CREATE_SUCCESS：创建成功</p>
 	State *string `json:"State,omitnil,omitempty" name:"State"`
 
-	// 安卓应用版本创建时间
+	// <p>安卓应用版本创建时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// shell 安装命令（支持多条命令执行，通过 && 组合；只在应用 AppMode 为 ADVANCED 高级模式下 才会生效）
+	// <p>shell 安装命令（支持多条命令执行，通过 &amp;&amp; 组合；只在应用 AppMode 为 ADVANCED 高级模式下 才会生效）</p>
 	Command *string `json:"Command,omitnil,omitempty" name:"Command"`
 
-	// shell 卸载命令（支持多条命令执行，通过 && 组合；只在应用 AppMode 为 ADVANCED 高级模式下 才会生效）
+	// <p>shell 卸载命令（支持多条命令执行，通过 &amp;&amp; 组合；只在应用 AppMode 为 ADVANCED 高级模式下 才会生效）</p>
 	UninstallCommand *string `json:"UninstallCommand,omitnil,omitempty" name:"UninstallCommand"`
 
-	// 应用资源清理模式（实例安装应用所用资源），取值：CLEANUP_ON_UNINSTALL（默认值），卸载 App 时清理；CLEANUP_AFTER_INSTALL，安装 App 后立即清理。普通应用只有 CLEANUP_AFTER_INSTALL 模式。
+	// <p>应用资源清理模式（实例安装应用所用资源），取值：CLEANUP_ON_UNINSTALL（默认值），卸载 App 时清理；CLEANUP_AFTER_INSTALL，安装 App 后立即清理。普通应用只有 CLEANUP_AFTER_INSTALL 模式。</p>
 	CleanupMode *string `json:"CleanupMode,omitnil,omitempty" name:"CleanupMode"`
 
-	// 安卓应用版本名称（版本描述、备注）
+	// <p>安卓应用版本名称（版本描述、备注）</p>
 	AndroidAppVersionName *string `json:"AndroidAppVersionName,omitnil,omitempty" name:"AndroidAppVersionName"`
 
-	// 安卓应用启动页
+	// <p>安卓应用启动页</p>
 	Activity *string `json:"Activity,omitnil,omitempty" name:"Activity"`
 
-	// 应用版本号（Version Name）
+	// <p>应用版本号（Version Name）</p>
 	VersionName *string `json:"VersionName,omitnil,omitempty" name:"VersionName"`
 
-	// 应用包 MD5
+	// <p>应用包 MD5</p>
 	MD5 *string `json:"MD5,omitnil,omitempty" name:"MD5"`
 
-	// 应用包文件大小（字节）
+	// <p>应用包文件大小（字节）</p>
 	FileSize *int64 `json:"FileSize,omitnil,omitempty" name:"FileSize"`
 
-	// 安卓应用包名
+	// <p>安卓应用包名</p>
 	PackageName *string `json:"PackageName,omitnil,omitempty" name:"PackageName"`
 }
 
@@ -2119,14 +2119,14 @@ func (r *DeleteAndroidInstanceBackupsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteAndroidInstanceImagesRequestParams struct {
-	// 镜像 ID 列表
+	// <p>镜像 ID 列表</p>
 	AndroidInstanceImageIds []*string `json:"AndroidInstanceImageIds,omitnil,omitempty" name:"AndroidInstanceImageIds"`
 }
 
 type DeleteAndroidInstanceImagesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 镜像 ID 列表
+	// <p>镜像 ID 列表</p>
 	AndroidInstanceImageIds []*string `json:"AndroidInstanceImageIds,omitnil,omitempty" name:"AndroidInstanceImageIds"`
 }
 
@@ -2234,32 +2234,32 @@ func (r *DeleteAndroidInstanceLabelResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAndroidAppsRequestParams struct {
-	// 分页偏移
+	// <p>分页偏移</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 每页数量
+	// <p>每页数量</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 应用ID数组
+	// <p>应用ID数组</p>
 	AndroidAppIds []*string `json:"AndroidAppIds,omitnil,omitempty" name:"AndroidAppIds"`
 
-	// 过滤条件，支持过滤的字段有：UserId、State、UpdateState、Name、AppMode 。其中 Name 为模糊匹配，其他参数为精确匹配。
+	// <p>过滤条件，支持过滤的字段有：UserId、State、UpdateState、Name、AppMode 。其中 Name 为模糊匹配，其他参数为精确匹配。</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeAndroidAppsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 分页偏移
+	// <p>分页偏移</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 每页数量
+	// <p>每页数量</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 应用ID数组
+	// <p>应用ID数组</p>
 	AndroidAppIds []*string `json:"AndroidAppIds,omitnil,omitempty" name:"AndroidAppIds"`
 
-	// 过滤条件，支持过滤的字段有：UserId、State、UpdateState、Name、AppMode 。其中 Name 为模糊匹配，其他参数为精确匹配。
+	// <p>过滤条件，支持过滤的字段有：UserId、State、UpdateState、Name、AppMode 。其中 Name 为模糊匹配，其他参数为精确匹配。</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -2287,10 +2287,10 @@ func (r *DescribeAndroidAppsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAndroidAppsResponseParams struct {
-	// 安卓应用列表
+	// <p>安卓应用列表</p>
 	Apps []*AndroidApp `json:"Apps,omitnil,omitempty" name:"Apps"`
 
-	// 安卓应用列表长度
+	// <p>安卓应用列表长度</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3059,14 +3059,14 @@ func (r *DescribeInstancesCountResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DestroyAndroidInstancesRequestParams struct {
-	// 安卓实例 ID 列表
+	// <p>安卓实例 ID 列表</p>
 	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitnil,omitempty" name:"AndroidInstanceIds"`
 }
 
 type DestroyAndroidInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 安卓实例 ID 列表
+	// <p>安卓实例 ID 列表</p>
 	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitnil,omitempty" name:"AndroidInstanceIds"`
 }
 
@@ -4988,36 +4988,26 @@ func (r *RenewAndroidInstancesAccessTokenResponse) FromJsonString(s string) erro
 
 // Predefined struct for user
 type ResetAndroidInstancesRequestParams struct {
-	// 实例ID列表
+	// <p>实例ID列表</p>
 	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitnil,omitempty" name:"AndroidInstanceIds"`
 
-	// 指定有效的镜像 ID。
-	// 默认取值：默认使用当前镜像。
+	// <p>指定有效的镜像 ID。<br>默认取值：默认使用当前镜像。</p>
 	AndroidInstanceImageId *string `json:"AndroidInstanceImageId,omitnil,omitempty" name:"AndroidInstanceImageId"`
 
-	// 重置模式。在 AndroidInstanceImageId 不为空时才生效。
-	// 
-	// CleanData：默认选项，清理系统属性和用户数据
-	// KeepSystemProperties：只保留系统属性
-	// KeepData: 保留系统属性和用户数据
+	// <p>重置模式。在 AndroidInstanceImageId 不为空时才生效。</p><p>CleanData：默认选项，清理系统属性和用户数据<br>KeepSystemProperties：只保留系统属性<br>KeepData: 保留系统属性和用户数据</p>
 	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
 }
 
 type ResetAndroidInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID列表
+	// <p>实例ID列表</p>
 	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitnil,omitempty" name:"AndroidInstanceIds"`
 
-	// 指定有效的镜像 ID。
-	// 默认取值：默认使用当前镜像。
+	// <p>指定有效的镜像 ID。<br>默认取值：默认使用当前镜像。</p>
 	AndroidInstanceImageId *string `json:"AndroidInstanceImageId,omitnil,omitempty" name:"AndroidInstanceImageId"`
 
-	// 重置模式。在 AndroidInstanceImageId 不为空时才生效。
-	// 
-	// CleanData：默认选项，清理系统属性和用户数据
-	// KeepSystemProperties：只保留系统属性
-	// KeepData: 保留系统属性和用户数据
+	// <p>重置模式。在 AndroidInstanceImageId 不为空时才生效。</p><p>CleanData：默认选项，清理系统属性和用户数据<br>KeepSystemProperties：只保留系统属性<br>KeepData: 保留系统属性和用户数据</p>
 	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
 }
 
@@ -5044,7 +5034,7 @@ func (r *ResetAndroidInstancesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ResetAndroidInstancesResponseParams struct {
-	// 任务集合
+	// <p>任务集合</p>
 	TaskSet []*AndroidInstanceTask `json:"TaskSet,omitnil,omitempty" name:"TaskSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6294,26 +6284,26 @@ func (r *TrylockWorkerResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UninstallAndroidInstancesAppRequestParams struct {
-	// 实例ID
+	// <p>实例ID</p>
 	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitnil,omitempty" name:"AndroidInstanceIds"`
 
-	// 应用ID
+	// <p>应用ID</p>
 	AndroidAppId *string `json:"AndroidAppId,omitnil,omitempty" name:"AndroidAppId"`
 
-	// 包名
+	// <p>包名</p>
 	PackageName *string `json:"PackageName,omitnil,omitempty" name:"PackageName"`
 }
 
 type UninstallAndroidInstancesAppRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// <p>实例ID</p>
 	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitnil,omitempty" name:"AndroidInstanceIds"`
 
-	// 应用ID
+	// <p>应用ID</p>
 	AndroidAppId *string `json:"AndroidAppId,omitnil,omitempty" name:"AndroidAppId"`
 
-	// 包名
+	// <p>包名</p>
 	PackageName *string `json:"PackageName,omitnil,omitempty" name:"PackageName"`
 }
 
@@ -6340,7 +6330,7 @@ func (r *UninstallAndroidInstancesAppRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UninstallAndroidInstancesAppResponseParams struct {
-	// 任务集合
+	// <p>任务集合</p>
 	TaskSet []*AndroidInstanceTask `json:"TaskSet,omitnil,omitempty" name:"TaskSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

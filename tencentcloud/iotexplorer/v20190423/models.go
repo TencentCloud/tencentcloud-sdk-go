@@ -5931,6 +5931,88 @@ func (r *DeleteTWeSeeCallbackResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteTWeSeeTasksByConditionRequestParams struct {
+	// <p>产品 ID</p>
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// <p>设备名称</p>
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// <p>算法类目。</p><p>枚举值：</p><ul><li>COMPREHENSION： 视觉理解</li><li>HIGHLIGHT： 视频浓缩</li></ul>
+	ServiceCategory *string `json:"ServiceCategory,omitnil,omitempty" name:"ServiceCategory"`
+
+	// <p>任务删除条件，至少传入一个条件。不同条件之间为 AND 关系，同一条件的 Values 之间为 OR 关系。</p>
+	Conditions []*SeeDeleteTaskCondition `json:"Conditions,omitnil,omitempty" name:"Conditions"`
+
+	// <p>通道 ID</p><p>默认值：0</p>
+	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+}
+
+type DeleteTWeSeeTasksByConditionRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>产品 ID</p>
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// <p>设备名称</p>
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// <p>算法类目。</p><p>枚举值：</p><ul><li>COMPREHENSION： 视觉理解</li><li>HIGHLIGHT： 视频浓缩</li></ul>
+	ServiceCategory *string `json:"ServiceCategory,omitnil,omitempty" name:"ServiceCategory"`
+
+	// <p>任务删除条件，至少传入一个条件。不同条件之间为 AND 关系，同一条件的 Values 之间为 OR 关系。</p>
+	Conditions []*SeeDeleteTaskCondition `json:"Conditions,omitnil,omitempty" name:"Conditions"`
+
+	// <p>通道 ID</p><p>默认值：0</p>
+	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+}
+
+func (r *DeleteTWeSeeTasksByConditionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteTWeSeeTasksByConditionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	delete(f, "ServiceCategory")
+	delete(f, "Conditions")
+	delete(f, "ChannelId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteTWeSeeTasksByConditionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteTWeSeeTasksByConditionResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteTWeSeeTasksByConditionResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteTWeSeeTasksByConditionResponseParams `json:"Response"`
+}
+
+func (r *DeleteTWeSeeTasksByConditionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteTWeSeeTasksByConditionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteTWeTalkAIBotRequestParams struct {
 	// 智能体ID
 	BotId *string `json:"BotId,omitnil,omitempty" name:"BotId"`
@@ -20621,6 +20703,14 @@ type SeeComprehensionResult struct {
 
 	// <p>生成的关键词列表</p><p>当配置 <code>EnableKeywords</code> 为 true 时返回</p>
 	Keywords []*string `json:"Keywords,omitnil,omitempty" name:"Keywords"`
+}
+
+type SeeDeleteTaskCondition struct {
+	// <p>条件类型。</p><p>枚举值：</p><ul><li>TaskId： 精确匹配任务 ID</li><li>TimeRange： 匹配任务时间范围与指定范围有重合的任务。值的格式为 <code>UnixTimestampStart,UnixTimestampEnd</code>，其中起止时间均为秒级 UNIX 时间戳，且结束时间不早于起始时间</li><li>CreateTimeBefore： 匹配在指定时间前创建的任务。值为秒级 UNIX 时间戳</li><li>COSURI： 精确匹配任务来源 COS URI，值必须以 <code>cos://</code> 开头</li><li>COSURIPrefix： 按前缀匹配任务来源 COS URI，值必须以 <code>cos://</code> 开头</li></ul>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>条件值列表。同一条件内的多个值之间为 OR 关系，至少传入一个非空值。</p>
+	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
 }
 
 type SeeDetectContinuousConfig struct {

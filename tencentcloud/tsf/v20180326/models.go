@@ -22556,7 +22556,7 @@ type VmGroup struct {
 	// <p>应用类型</p>
 	ApplicationType *string `json:"ApplicationType,omitnil,omitempty" name:"ApplicationType"`
 
-	// <p>部署组资源类型</p>
+	// <p>部署组资源类型</p><p>枚举值：</p><ul><li>GW： 网关</li><li>DEF： 普通业务部署组</li><li>SVL： Serverless</li></ul>
 	GroupResourceType *string `json:"GroupResourceType,omitnil,omitempty" name:"GroupResourceType"`
 
 	// <p>部署组更新时间戳</p>
@@ -22637,6 +22637,93 @@ type VmGroup struct {
 
 	// <p>是否自动重启</p>
 	LivenessAutoRestart *bool `json:"LivenessAutoRestart,omitnil,omitempty" name:"LivenessAutoRestart"`
+
+	// <p>Mesh Sidecar 数据面版本通道</p><p>枚举值：</p><ul><li>stable： 稳定版</li><li>release： 最新版</li></ul>
+	MeshSidecarVersion *string `json:"MeshSidecarVersion,omitnil,omitempty" name:"MeshSidecarVersion"`
+
+	// <p>业务日志配置 ID 列表</p>
+	BusinessLogConfigIdList *string `json:"BusinessLogConfigIdList,omitnil,omitempty" name:"BusinessLogConfigIdList"`
+
+	// <p>业务系统 ID</p>
+	BusinessLogDeliveryConfigIdList *string `json:"BusinessLogDeliveryConfigIdList,omitnil,omitempty" name:"BusinessLogDeliveryConfigIdList"`
+
+	// <p>String型普通说明场景</p>
+	BusinessSystemId *string `json:"BusinessSystemId,omitnil,omitempty" name:"BusinessSystemId"`
+
+	// <p>业务系统名称</p>
+	BusinessSystemName *string `json:"BusinessSystemName,omitnil,omitempty" name:"BusinessSystemName"`
+
+	// <p>CLS 机器组 ID</p>
+	ClsMachineGroupId *string `json:"ClsMachineGroupId,omitnil,omitempty" name:"ClsMachineGroupId"`
+
+	// <p>是否开启服务治理</p>
+	EnableGovernance *bool `json:"EnableGovernance,omitnil,omitempty" name:"EnableGovernance"`
+
+	// <p>是否开启可观测</p>
+	EnableTelemetry *bool `json:"EnableTelemetry,omitnil,omitempty" name:"EnableTelemetry"`
+
+	// <p>是否开启 OT Agent</p>
+	EnableTelemetryAgent *bool `json:"EnableTelemetryAgent,omitnil,omitempty" name:"EnableTelemetryAgent"`
+
+	// <p>是否开启单元化</p>
+	EnabledUnit *bool `json:"EnabledUnit,omitnil,omitempty" name:"EnabledUnit"`
+
+	// <p>独享注册中心/配置中心实例列表</p>
+	ExclusiveInstances []*ExclusiveInstance `json:"ExclusiveInstances,omitnil,omitempty" name:"ExclusiveInstances"`
+
+	// <p>框架接入类型</p>
+	FrameworkType *string `json:"FrameworkType,omitnil,omitempty" name:"FrameworkType"`
+
+	// <p>服务治理实例模式</p>
+	GovernanceType *string `json:"GovernanceType,omitnil,omitempty" name:"GovernanceType"`
+
+	// <p>部署组关联实例 ID 列表</p>
+	InstanceIdList []*string `json:"InstanceIdList,omitnil,omitempty" name:"InstanceIdList"`
+
+	// <p>部署组是否处于停止状态</p>
+	IsStop *string `json:"IsStop,omitnil,omitempty" name:"IsStop"`
+
+	// <p>K8s 命名空间名称</p>
+	K8sNamespaceName *string `json:"K8sNamespaceName,omitnil,omitempty" name:"K8sNamespaceName"`
+
+	// <p>请求语言</p>
+	Language *string `json:"Language,omitnil,omitempty" name:"Language"`
+
+	// <p>微服务子类型</p>
+	MicroserviceSubType *string `json:"MicroserviceSubType,omitnil,omitempty" name:"MicroserviceSubType"`
+
+	// <p>非侵入接入子类型</p>
+	NonInvasiveType *string `json:"NonInvasiveType,omitnil,omitempty" name:"NonInvasiveType"`
+
+	// <p>预停止脚本内容</p>
+	PreStopScript *string `json:"PreStopScript,omitnil,omitempty" name:"PreStopScript"`
+
+	// <p>实际使用的 K8s 命名空间名称</p>
+	RealNamespaceName *string `json:"RealNamespaceName,omitnil,omitempty" name:"RealNamespaceName"`
+
+	// <p>Mesh 服务端口与健康检查配置列表</p>
+	ServiceConfigList []*ServiceConfig `json:"ServiceConfigList,omitnil,omitempty" name:"ServiceConfigList"`
+
+	// <p>服务治理配置聚合对象</p>
+	ServiceGovernanceConfig *ServiceGovernanceConfig `json:"ServiceGovernanceConfig,omitnil,omitempty" name:"ServiceGovernanceConfig"`
+
+	// <p>部署组标签列表</p>
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>Tapm OT Agent 版本</p>
+	TapmOtAgentVersion *string `json:"TapmOtAgentVersion,omitnil,omitempty" name:"TapmOtAgentVersion"`
+
+	// <p>单元环境类型</p>
+	UnitEnvType *string `json:"UnitEnvType,omitnil,omitempty" name:"UnitEnvType"`
+
+	// <p>单元 ID</p>
+	UnitId *string `json:"UnitId,omitnil,omitempty" name:"UnitId"`
+
+	// <p>单元类型</p>
+	UnitName *string `json:"UnitName,omitnil,omitempty" name:"UnitName"`
+
+	// <p>部署组资源类型</p>
+	UnitType *string `json:"UnitType,omitnil,omitempty" name:"UnitType"`
 }
 
 type VmGroupOther struct {
