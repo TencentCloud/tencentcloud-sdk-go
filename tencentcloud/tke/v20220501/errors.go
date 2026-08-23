@@ -20,6 +20,9 @@ const (
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
 
+	// 无该接口CAM权限。
+	FAILEDOPERATION_CAMNOAUTH = "FailedOperation.CamNoAuth"
+
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 

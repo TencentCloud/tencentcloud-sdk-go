@@ -1508,6 +1508,67 @@ func (r *DescribeZoneInstanceConfigInfosResponse) FromJsonString(s string) error
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DetachApplicationRoleRequestParams struct {
+	// <p>集群 ID</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// <p>解绑的 CVM 实例列表</p>
+	Instances []*string `json:"Instances,omitnil,omitempty" name:"Instances"`
+}
+
+type DetachApplicationRoleRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>集群 ID</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// <p>解绑的 CVM 实例列表</p>
+	Instances []*string `json:"Instances,omitnil,omitempty" name:"Instances"`
+}
+
+func (r *DetachApplicationRoleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DetachApplicationRoleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "Instances")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DetachApplicationRoleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DetachApplicationRoleResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DetachApplicationRoleResponse struct {
+	*tchttp.BaseResponse
+	Response *DetachApplicationRoleResponseParams `json:"Response"`
+}
+
+func (r *DetachApplicationRoleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DetachApplicationRoleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Disk struct {
 	// 云盘类型
 	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`

@@ -6153,6 +6153,64 @@ func (c *Client) ModifyInstancePasswordWithContext(ctx context.Context, request 
     return
 }
 
+func NewModifyInstancePasswordPolicyRequest() (request *ModifyInstancePasswordPolicyRequest) {
+    request = &ModifyInstancePasswordPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("redis", APIVersion, "ModifyInstancePasswordPolicy")
+    
+    
+    return
+}
+
+func NewModifyInstancePasswordPolicyResponse() (response *ModifyInstancePasswordPolicyResponse) {
+    response = &ModifyInstancePasswordPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyInstancePasswordPolicy
+// 本接口（ModifyInstancePasswordPolicy）用于修改实例密码复杂度。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INSTANCENOTFOUNDERROR = "InternalError.InstanceNotFoundError"
+//  RESOURCENOTFOUND_INSTANCENOTEXISTS = "ResourceNotFound.InstanceNotExists"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCEUNAVAILABLE_INSTANCENOTSUPPORTOPERATION = "ResourceUnavailable.InstanceNotSupportOperation"
+//  UNSUPPORTEDOPERATION_INSTANCENOTOPERATION = "UnsupportedOperation.InstanceNotOperation"
+func (c *Client) ModifyInstancePasswordPolicy(request *ModifyInstancePasswordPolicyRequest) (response *ModifyInstancePasswordPolicyResponse, err error) {
+    return c.ModifyInstancePasswordPolicyWithContext(context.Background(), request)
+}
+
+// ModifyInstancePasswordPolicy
+// 本接口（ModifyInstancePasswordPolicy）用于修改实例密码复杂度。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INSTANCENOTFOUNDERROR = "InternalError.InstanceNotFoundError"
+//  RESOURCENOTFOUND_INSTANCENOTEXISTS = "ResourceNotFound.InstanceNotExists"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCEUNAVAILABLE_INSTANCENOTSUPPORTOPERATION = "ResourceUnavailable.InstanceNotSupportOperation"
+//  UNSUPPORTEDOPERATION_INSTANCENOTOPERATION = "UnsupportedOperation.InstanceNotOperation"
+func (c *Client) ModifyInstancePasswordPolicyWithContext(ctx context.Context, request *ModifyInstancePasswordPolicyRequest) (response *ModifyInstancePasswordPolicyResponse, err error) {
+    if request == nil {
+        request = NewModifyInstancePasswordPolicyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "redis", APIVersion, "ModifyInstancePasswordPolicy")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyInstancePasswordPolicy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyInstancePasswordPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyInstanceReadOnlyRequest() (request *ModifyInstanceReadOnlyRequest) {
     request = &ModifyInstanceReadOnlyRequest{
         BaseRequest: &tchttp.BaseRequest{},

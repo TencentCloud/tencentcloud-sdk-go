@@ -1315,6 +1315,9 @@ type BackupFileInfo struct {
 	// <p>备份文件备注</p>
 	BackupName *string `json:"BackupName,omitnil,omitempty" name:"BackupName"`
 
+	// <p>备份文件所在地域</p>
+	ExistRegions []*BackupRegionAndIds `json:"ExistRegions,omitnil,omitempty" name:"ExistRegions"`
+
 	// <p>投递状态</p>
 	CopyStatus *string `json:"CopyStatus,omitnil,omitempty" name:"CopyStatus"`
 
@@ -9584,6 +9587,72 @@ func (r *DescribeClusterServerlessScalePlansResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeClusterServerlessScalePlansResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeClusterStorageAutoExpandRequestParams struct {
+	// <p>集群ID</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+}
+
+type DescribeClusterStorageAutoExpandRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>集群ID</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+}
+
+func (r *DescribeClusterStorageAutoExpandRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClusterStorageAutoExpandRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeClusterStorageAutoExpandRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeClusterStorageAutoExpandResponseParams struct {
+	// <p>存储使用率阈值</p>
+	StorageUsageThreshold *int64 `json:"StorageUsageThreshold,omitnil,omitempty" name:"StorageUsageThreshold"`
+
+	// <p>扩容步长</p>
+	ExpandStep *int64 `json:"ExpandStep,omitnil,omitempty" name:"ExpandStep"`
+
+	// <p>最大存储上限</p>
+	MaxStorageLimit *int64 `json:"MaxStorageLimit,omitnil,omitempty" name:"MaxStorageLimit"`
+
+	// <p>是否开启：yes-开启，no-关闭</p>
+	StorageAutoExpand *string `json:"StorageAutoExpand,omitnil,omitempty" name:"StorageAutoExpand"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeClusterStorageAutoExpandResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeClusterStorageAutoExpandResponseParams `json:"Response"`
+}
+
+func (r *DescribeClusterStorageAutoExpandResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClusterStorageAutoExpandResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

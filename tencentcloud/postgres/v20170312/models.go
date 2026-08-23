@@ -9029,6 +9029,27 @@ type ModifyDBProxyAddressRequestParams struct {
 
 	// <p>连接池开关</p><p>枚举值：</p><ul><li>true： 开启</li><li>false： 关闭</li></ul>
 	ConnectionPool *bool `json:"ConnectionPool,omitnil,omitempty" name:"ConnectionPool"`
+
+	// <p>权重模式</p><p>枚举值：</p><ul><li>system： 系统自动分配权重</li><li>custom： 自定义权重，此模式下ProxyAllocation参数必传</li></ul><p>默认值：system</p>
+	WeightMode *string `json:"WeightMode,omitnil,omitempty" name:"WeightMode"`
+
+	// <p>system</p><p>入参限制：路由权重列表。若 WeightMode 传的是system或不传 ，则传入的权重不生效，由系统分配默认权重。</p>
+	ProxyAllocation []*ProxyRoute `json:"ProxyAllocation,omitnil,omitempty" name:"ProxyAllocation"`
+
+	// <p>新增只读实例是否自动加入当前连接地址，仅后续新建实例生效</p>
+	RoAutoAdd *bool `json:"RoAutoAdd,omitnil,omitempty" name:"RoAutoAdd"`
+
+	// <p>延迟剔除开关</p>
+	LatencyRemove *bool `json:"LatencyRemove,omitnil,omitempty" name:"LatencyRemove"`
+
+	// <p>延迟剔除阈值，仅在延迟剔除开关打开时有效</p><p>单位：秒</p>
+	LatencyRemoveTime *uint64 `json:"LatencyRemoveTime,omitnil,omitempty" name:"LatencyRemoveTime"`
+
+	// <p>最小保留路由数。在延迟/故障剔除时，至少保留的路由数量，防止所有节点被剔除导致服务不可用。</p>
+	MinRouteNum *uint64 `json:"MinRouteNum,omitnil,omitempty" name:"MinRouteNum"`
+
+	// <p>负载均衡策略</p><p>枚举值：</p><ul><li>0： 按活跃连接数(默认)</li><li>1： 按请求数</li></ul>
+	LoadBalancePolicy *int64 `json:"LoadBalancePolicy,omitnil,omitempty" name:"LoadBalancePolicy"`
 }
 
 type ModifyDBProxyAddressRequest struct {
@@ -9048,6 +9069,27 @@ type ModifyDBProxyAddressRequest struct {
 
 	// <p>连接池开关</p><p>枚举值：</p><ul><li>true： 开启</li><li>false： 关闭</li></ul>
 	ConnectionPool *bool `json:"ConnectionPool,omitnil,omitempty" name:"ConnectionPool"`
+
+	// <p>权重模式</p><p>枚举值：</p><ul><li>system： 系统自动分配权重</li><li>custom： 自定义权重，此模式下ProxyAllocation参数必传</li></ul><p>默认值：system</p>
+	WeightMode *string `json:"WeightMode,omitnil,omitempty" name:"WeightMode"`
+
+	// <p>system</p><p>入参限制：路由权重列表。若 WeightMode 传的是system或不传 ，则传入的权重不生效，由系统分配默认权重。</p>
+	ProxyAllocation []*ProxyRoute `json:"ProxyAllocation,omitnil,omitempty" name:"ProxyAllocation"`
+
+	// <p>新增只读实例是否自动加入当前连接地址，仅后续新建实例生效</p>
+	RoAutoAdd *bool `json:"RoAutoAdd,omitnil,omitempty" name:"RoAutoAdd"`
+
+	// <p>延迟剔除开关</p>
+	LatencyRemove *bool `json:"LatencyRemove,omitnil,omitempty" name:"LatencyRemove"`
+
+	// <p>延迟剔除阈值，仅在延迟剔除开关打开时有效</p><p>单位：秒</p>
+	LatencyRemoveTime *uint64 `json:"LatencyRemoveTime,omitnil,omitempty" name:"LatencyRemoveTime"`
+
+	// <p>最小保留路由数。在延迟/故障剔除时，至少保留的路由数量，防止所有节点被剔除导致服务不可用。</p>
+	MinRouteNum *uint64 `json:"MinRouteNum,omitnil,omitempty" name:"MinRouteNum"`
+
+	// <p>负载均衡策略</p><p>枚举值：</p><ul><li>0： 按活跃连接数(默认)</li><li>1： 按请求数</li></ul>
+	LoadBalancePolicy *int64 `json:"LoadBalancePolicy,omitnil,omitempty" name:"LoadBalancePolicy"`
 }
 
 func (r *ModifyDBProxyAddressRequest) ToJsonString() string {
@@ -9067,6 +9109,13 @@ func (r *ModifyDBProxyAddressRequest) FromJsonString(s string) error {
 	delete(f, "ProxyGroupId")
 	delete(f, "Description")
 	delete(f, "ConnectionPool")
+	delete(f, "WeightMode")
+	delete(f, "ProxyAllocation")
+	delete(f, "RoAutoAdd")
+	delete(f, "LatencyRemove")
+	delete(f, "LatencyRemoveTime")
+	delete(f, "MinRouteNum")
+	delete(f, "LoadBalancePolicy")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDBProxyAddressRequest has unknown keys!", "")
 	}
@@ -9075,6 +9124,9 @@ func (r *ModifyDBProxyAddressRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyDBProxyAddressResponseParams struct {
+	// <p>异步任务 ID，用于 DescribeTasks 查询进度</p>
+	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -10112,6 +10164,30 @@ type ProxyAddress struct {
 
 	// <p>连接池大小</p>
 	ConnectionPoolLimit *uint64 `json:"ConnectionPoolLimit,omitnil,omitempty" name:"ConnectionPoolLimit"`
+
+	// <p>读写分离开关。启用后 proxy 将读请求分发到只读节点，写请求仍走主节点。</p>
+	RwSplitEnable *bool `json:"RwSplitEnable,omitnil,omitempty" name:"RwSplitEnable"`
+
+	// <p>权重模式</p><p>枚举值：</p><ul><li>system： 系统自动分配</li><li>custom： 用户自定义权重</li></ul>
+	WeightMode *string `json:"WeightMode,omitnil,omitempty" name:"WeightMode"`
+
+	// <p>新增只读是否自动加入读写分离</p>
+	RoAutoAdd *bool `json:"RoAutoAdd,omitnil,omitempty" name:"RoAutoAdd"`
+
+	// <p>延迟剔除开关</p>
+	LatencyRemove *bool `json:"LatencyRemove,omitnil,omitempty" name:"LatencyRemove"`
+
+	// <p>延迟剔除阈值</p><p>单位：秒</p>
+	LatencyRemoveTime *uint64 `json:"LatencyRemoveTime,omitnil,omitempty" name:"LatencyRemoveTime"`
+
+	// <p>最小保留路由数。在延迟/故障剔除时，至少保留的路由数量，防止所有节点被剔除导致服务不可用。</p>
+	MinRouteNum *uint64 `json:"MinRouteNum,omitnil,omitempty" name:"MinRouteNum"`
+
+	// <p>只读全部异常时是否回切到主</p>
+	FailOver *bool `json:"FailOver,omitnil,omitempty" name:"FailOver"`
+
+	// <p>负载均衡策略</p><p>枚举值：</p><ul><li>0： 按活跃连接数(默认)</li><li>1： 按请求数</li></ul>
+	LoadBalancePolicy *int64 `json:"LoadBalancePolicy,omitnil,omitempty" name:"LoadBalancePolicy"`
 }
 
 type ProxyGroupInfo struct {
@@ -10187,7 +10263,7 @@ type ProxyRoute struct {
 	// <p>路由权重，取值范围 [0, 100]</p>
 	Weight *int64 `json:"Weight,omitnil,omitempty" name:"Weight"`
 
-	// <p>路由状态：available/unavailable</p>
+	// <p>路由状态：online/offline</p><p>枚举值：</p><ul><li>online： 节点处于在线状态</li><li>offline： 节点处于下线状态</li></ul>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 }
 

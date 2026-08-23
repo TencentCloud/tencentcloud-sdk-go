@@ -1144,7 +1144,7 @@ type DetectDetail struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CompareLibType *string `json:"CompareLibType,omitnil,omitempty" name:"CompareLibType"`
 
-	// <p>枚举活体检测类型：<br>0：未知<br>1：数字活体<br>2：动作活体<br>3：静默活体<br>4：一闪活体（动作+光线）</p>
+	// <p>枚举活体检测类型：<br>0：未知<br>1：数字活体<br>2：动作活体<br>3：静默活体<br>4：一闪活体（动作+光线）<br>5: 远近活体</p><p>枚举值：</p><ul><li>0： 未知</li><li>1： 数字活体</li><li>2： 动作活体</li><li>3： 静默活体</li><li>4： 一闪活体（动作+光线）</li><li>5： 远近活体</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LivenessMode *uint64 `json:"LivenessMode,omitnil,omitempty" name:"LivenessMode"`
 }
@@ -1298,7 +1298,7 @@ type DetectInfoText struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LivenessDetail []*DetectDetail `json:"LivenessDetail,omitnil,omitempty" name:"LivenessDetail"`
 
-	// <p>描述当前请求活体阶段被拒绝的详细原因，该参数仅限PLUS版本核身服务返回。- 详情如下：    01-用户全程闭眼    02-用户未完成指定动作    03-疑似翻拍攻击    04-疑似合成攻击    05-疑似黑产模板    06-疑似存在水印    07-反光校验未通过    08-疑似中途换人    09-人脸质量过差    10-距离校验不通过    11-疑似对抗样本攻击    12-嘴巴区域疑似存在攻击痕迹    13-眼睛区域疑似存在攻击痕迹    14-眼睛或嘴巴被遮挡</p>
+	// <p>描述当前请求活体阶段被拒绝的详细原因，该参数仅限PLUS版本核身服务返回。- 详情如下：<br>01-用户全程闭眼<br>02-用户未完成指定动作<br>03-疑似翻拍攻击<br>04-疑似合成攻击<br>05-疑似黑产模板<br>06-疑似存在水印<br>07-反光校验未通过<br>08-疑似中途换人<br>09-人脸质量过差<br>10-距离校验不通过<br>11-疑似对抗样本攻击<br>12-嘴巴区域疑似存在攻击痕迹<br>13-眼睛区域疑似存在攻击痕迹<br>14-眼睛或嘴巴被遮挡</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LivenessInfoTag []*string `json:"LivenessInfoTag,omitnil,omitempty" name:"LivenessInfoTag"`
 

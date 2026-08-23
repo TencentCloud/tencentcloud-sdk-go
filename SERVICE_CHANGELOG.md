@@ -1,107 +1,10 @@
-# Release v1.3.166
-
-## 腾讯云智能体开发平台(adp) 版本：2026-05-20
-
-### 第 17 次发布
-
-发布时间：2026-08-20 19:49:49
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateMsgRecordCategory](https://cloud.tencent.com/document/api/1759/136480)
-* [DeleteMsgRecordCategory](https://cloud.tencent.com/document/api/1759/136479)
-* [DescribeMsgRecordCategoryList](https://cloud.tencent.com/document/api/1759/136478)
-* [DescribeMsgRecordList](https://cloud.tencent.com/document/api/1759/136477)
-* [ModifyMsgRecordCategory](https://cloud.tencent.com/document/api/1759/136476)
-
-新增数据结构：
-
-* [CategoryPermission](https://cloud.tencent.com/document/api/1759/132545#CategoryPermission)
-* [MsgRecord](https://cloud.tencent.com/document/api/1759/132545#MsgRecord)
-* [MsgRecordCategory](https://cloud.tencent.com/document/api/1759/132545#MsgRecordCategory)
-* [MsgRecordResult](https://cloud.tencent.com/document/api/1759/132545#MsgRecordResult)
-* [MsgRecordSource](https://cloud.tencent.com/document/api/1759/132545#MsgRecordSource)
-* [Sort](https://cloud.tencent.com/document/api/1759/132545#Sort)
-
-
-
-## 文件存储(cfs) 版本：2019-07-19
-
-### 第 56 次发布
-
-发布时间：2026-08-21 01:12:52
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateCfsFileSystem](https://cloud.tencent.com/document/api/582/38174)
-
-	* 新增入参：Scenario
-
-
-修改数据结构：
-
-* [FileSystemInfo](https://cloud.tencent.com/document/api/582/38175#FileSystemInfo)
-
-	* 新增成员：Scenario
-
-
-
-
-## 资源中心(cloudrc) 版本：2024-06-06
-
-### 第 1 次发布
-
-发布时间：2026-08-20 17:04:23
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeResource](https://cloud.tencent.com/document/api/1791/136442)
-* [SearchResources](https://cloud.tencent.com/document/api/1791/136441)
-
-新增数据结构：
-
-* [ExtendedFilter](https://cloud.tencent.com/document/api/1791/136443#ExtendedFilter)
-* [ResourceSummary](https://cloud.tencent.com/document/api/1791/136443#ResourceSummary)
-* [Tag](https://cloud.tencent.com/document/api/1791/136443#Tag)
-
-
-
-## 日志服务(cls) 版本：2020-10-16
-
-### 第 175 次发布
-
-发布时间：2026-08-21 01:16:33
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [ExportInfo](https://cloud.tencent.com/document/api/614/56471#ExportInfo)
-
-	* 新增成员：CreateTimestamp
-
-
-
+# Release v1.3.167
 
 ## 云安全一体化平台(csip) 版本：2022-11-21
 
-### 第 100 次发布
+### 第 101 次发布
 
-发布时间：2026-08-21 01:18:27
+发布时间：2026-08-24 01:32:16
 
 本次发布包含了以下内容：
 
@@ -109,113 +12,180 @@
 
 新增接口：
 
-* [CopyBaselinePolicy](https://cloud.tencent.com/document/api/664/136508)
-* [DeleteBaselineSelfDefinedPolicyList](https://cloud.tencent.com/document/api/664/136507)
-* [DeleteWebhookPolicies](https://cloud.tencent.com/document/api/664/136494)
-* [DeleteWebhookReceivers](https://cloud.tencent.com/document/api/664/136493)
-* [DescribeBaselineCalculatingStatisticsPolicyIDList](https://cloud.tencent.com/document/api/664/136506)
-* [DescribeBaselineFixRecordList](https://cloud.tencent.com/document/api/664/136505)
-* [DescribeBaselinePolicyCategoryList](https://cloud.tencent.com/document/api/664/136504)
-* [DescribeBaselinePolicyItemList](https://cloud.tencent.com/document/api/664/136503)
-* [DescribeBaselinePolicyNameExistAppidList](https://cloud.tencent.com/document/api/664/136502)
-* [DescribeBaselineSubTaskList](https://cloud.tencent.com/document/api/664/136501)
-* [DescribeCSIPLicenseBindSchedule](https://cloud.tencent.com/document/api/664/136522)
-* [DescribeDefaultSecurityScoreRule](https://cloud.tencent.com/document/api/664/136515)
-* [DescribeLicenseStatus](https://cloud.tencent.com/document/api/664/136521)
-* [DescribeMultiCloudAssetCount](https://cloud.tencent.com/document/api/664/136514)
-* [DescribeNotifyAgentOfflineDuration](https://cloud.tencent.com/document/api/664/136492)
-* [DescribePublicCloudAssets](https://cloud.tencent.com/document/api/664/136523)
-* [DescribeSCFAliasList](https://cloud.tencent.com/document/api/664/136491)
-* [DescribeSCFFunctionList](https://cloud.tencent.com/document/api/664/136490)
-* [DescribeSCFFunctionVersionList](https://cloud.tencent.com/document/api/664/136489)
-* [DescribeSCFNamespaceList](https://cloud.tencent.com/document/api/664/136488)
-* [DescribeSecurityRiskTrend](https://cloud.tencent.com/document/api/664/136513)
-* [DescribeSecurityScoreOverview](https://cloud.tencent.com/document/api/664/136512)
-* [DescribeSecurityScoreRule](https://cloud.tencent.com/document/api/664/136511)
-* [DescribeWebhookPolicyList](https://cloud.tencent.com/document/api/664/136487)
-* [DescribeWebhookReceiverList](https://cloud.tencent.com/document/api/664/136486)
-* [ModifyBaselinePolicyEnable](https://cloud.tencent.com/document/api/664/136500)
-* [ModifyBaselineSyncConf](https://cloud.tencent.com/document/api/664/136499)
-* [ModifyBaselineUserOtherConf](https://cloud.tencent.com/document/api/664/136498)
-* [ModifyBaselineUserWeakPasswordConf](https://cloud.tencent.com/document/api/664/136497)
-* [ModifyCSIPLicenseBinds](https://cloud.tencent.com/document/api/664/136520)
-* [ModifyCSIPLicenseUnBinds](https://cloud.tencent.com/document/api/664/136519)
-* [ModifyCSIPRaspLicenseBinds](https://cloud.tencent.com/document/api/664/136518)
-* [ModifyCSIPRaspLicenseUnBinds](https://cloud.tencent.com/document/api/664/136517)
-* [ModifyNotifyAgentOfflineDuration](https://cloud.tencent.com/document/api/664/136485)
-* [ModifyPayConfig](https://cloud.tencent.com/document/api/664/136525)
-* [ModifySecurityScoreRule](https://cloud.tencent.com/document/api/664/136510)
-* [ModifyWebhookPolicy](https://cloud.tencent.com/document/api/664/136484)
-* [ModifyWebhookPolicyStatus](https://cloud.tencent.com/document/api/664/136483)
-* [ModifyWebhookReceiver](https://cloud.tencent.com/document/api/664/136482)
-* [ScanBaselinePolicyList](https://cloud.tencent.com/document/api/664/136496)
-* [ScanBaselineRiskList](https://cloud.tencent.com/document/api/664/136495)
-* [TestWebhookReceiver](https://cloud.tencent.com/document/api/664/136481)
+* [AddImageRegistry](https://cloud.tencent.com/document/api/664/136684)
+* [BatchModifyImageRegistryTimedScanTaskConfig](https://cloud.tencent.com/document/api/664/136683)
+* [BatchModifyImageSensitiveWhitelist](https://cloud.tencent.com/document/api/664/136682)
+* [BatchModifyImageVirusWhitelist](https://cloud.tencent.com/document/api/664/136616)
+* [BatchModifyImageVulWhitelist](https://cloud.tencent.com/document/api/664/136681)
+* [CheckImageRegistryInstanceNameDuplicate](https://cloud.tencent.com/document/api/664/136680)
+* [CreateAssetComponentListExportJob](https://cloud.tencent.com/document/api/664/136679)
+* [CreateAssetComponentRelatedImageListExportJob](https://cloud.tencent.com/document/api/664/136678)
+* [CreateImageAssetListExportJob](https://cloud.tencent.com/document/api/664/136677)
+* [CreateImageAssociatedContainerListExportJob](https://cloud.tencent.com/document/api/664/136676)
+* [CreateImageAssociatedHostListExportJob](https://cloud.tencent.com/document/api/664/136675)
+* [CreateImageComponentListExportJob](https://cloud.tencent.com/document/api/664/136674)
+* [CreateImageLayerVulListExportJob](https://cloud.tencent.com/document/api/664/136673)
+* [CreateImageRegistryConnectivityTask](https://cloud.tencent.com/document/api/664/136672)
+* [CreateImageRegistryListExportJob](https://cloud.tencent.com/document/api/664/136671)
+* [CreateImageRegistryScanTask](https://cloud.tencent.com/document/api/664/136670)
+* [CreateImageRegistryTimedScanTaskConfig](https://cloud.tencent.com/document/api/664/136669)
+* [CreateImageSensitiveInfoListExportJob](https://cloud.tencent.com/document/api/664/136668)
+* [CreateImageSensitiveWhitelist](https://cloud.tencent.com/document/api/664/136667)
+* [CreateImageVirusListExportJob](https://cloud.tencent.com/document/api/664/136666)
+* [CreateImageVirusWhitelist](https://cloud.tencent.com/document/api/664/136665)
+* [CreateImageVulListExportJob](https://cloud.tencent.com/document/api/664/136664)
+* [CreateImageVulSummaryListExportJob](https://cloud.tencent.com/document/api/664/136663)
+* [CreateImageVulWhitelist](https://cloud.tencent.com/document/api/664/136662)
+* [DeleteImageRegistry](https://cloud.tencent.com/document/api/664/136661)
+* [DeleteImageRegistryScanTask](https://cloud.tencent.com/document/api/664/136660)
+* [DeleteImageRegistryTimedScanTaskConfig](https://cloud.tencent.com/document/api/664/136659)
+* [DeleteImageSensitiveWhitelist](https://cloud.tencent.com/document/api/664/136658)
+* [DeleteImageVirusWhitelist](https://cloud.tencent.com/document/api/664/136657)
+* [DeleteImageVulWhitelist](https://cloud.tencent.com/document/api/664/136656)
+* [DeleteSandboxLLMAuditRule](https://cloud.tencent.com/document/api/664/136697)
+* [DescribeAIAgentCredentialList](https://cloud.tencent.com/document/api/664/136696)
+* [DescribeAIAgentCredentialLocationList](https://cloud.tencent.com/document/api/664/136695)
+* [DescribeAIAgentSkillList](https://cloud.tencent.com/document/api/664/136694)
+* [DescribeAssetComponentList](https://cloud.tencent.com/document/api/664/136655)
+* [DescribeAssetComponentRelatedImageList](https://cloud.tencent.com/document/api/664/136654)
+* [DescribeBackendScanEngineRegionList](https://cloud.tencent.com/document/api/664/136653)
+* [DescribeCheckConnectivityHostList](https://cloud.tencent.com/document/api/664/136652)
+* [DescribeImageAssetDetail](https://cloud.tencent.com/document/api/664/136651)
+* [DescribeImageAssetList](https://cloud.tencent.com/document/api/664/136650)
+* [DescribeImageAssociatedAssetCount](https://cloud.tencent.com/document/api/664/136649)
+* [DescribeImageAssociatedContainerList](https://cloud.tencent.com/document/api/664/136648)
+* [DescribeImageAssociatedHostList](https://cloud.tencent.com/document/api/664/136647)
+* [DescribeImageComponentList](https://cloud.tencent.com/document/api/664/136646)
+* [DescribeImageExportJobList](https://cloud.tencent.com/document/api/664/136645)
+* [DescribeImageLayerList](https://cloud.tencent.com/document/api/664/136644)
+* [DescribeImageLayerVulList](https://cloud.tencent.com/document/api/664/136643)
+* [DescribeImageRegistryAssetOverview](https://cloud.tencent.com/document/api/664/136642)
+* [DescribeImageRegistryConnectivityTaskResult](https://cloud.tencent.com/document/api/664/136641)
+* [DescribeImageRegistryList](https://cloud.tencent.com/document/api/664/136640)
+* [DescribeImageRegistryNamespaceList](https://cloud.tencent.com/document/api/664/136639)
+* [DescribeImageRegistryScanSubTaskList](https://cloud.tencent.com/document/api/664/136638)
+* [DescribeImageRegistryScanTaskList](https://cloud.tencent.com/document/api/664/136637)
+* [DescribeImageRegistryTimedScanTaskConfig](https://cloud.tencent.com/document/api/664/136636)
+* [DescribeImageRegistryTimedScanTaskPreview](https://cloud.tencent.com/document/api/664/136635)
+* [DescribeImageSensitiveInfoList](https://cloud.tencent.com/document/api/664/136634)
+* [DescribeImageSensitiveWhitelist](https://cloud.tencent.com/document/api/664/136633)
+* [DescribeImageVirusList](https://cloud.tencent.com/document/api/664/136632)
+* [DescribeImageVirusWhitelist](https://cloud.tencent.com/document/api/664/136631)
+* [DescribeImageVirusWhitelistDetail](https://cloud.tencent.com/document/api/664/136630)
+* [DescribeImageVulList](https://cloud.tencent.com/document/api/664/136629)
+* [DescribeImageVulSummaryList](https://cloud.tencent.com/document/api/664/136628)
+* [DescribeImageVulWhitelist](https://cloud.tencent.com/document/api/664/136627)
+* [DescribeNotifySettingAk](https://cloud.tencent.com/document/api/664/136614)
+* [DescribeRegistryOverview](https://cloud.tencent.com/document/api/664/136626)
+* [DescribeRegistryRegionList](https://cloud.tencent.com/document/api/664/136625)
+* [DescribeSandboxACLAlertList](https://cloud.tencent.com/document/api/664/136693)
+* [DescribeSandboxACLRuleList](https://cloud.tencent.com/document/api/664/136692)
+* [DescribeSandboxACLSystemRuleList](https://cloud.tencent.com/document/api/664/136691)
+* [DescribeSandboxDLPSystemRuleList](https://cloud.tencent.com/document/api/664/136690)
+* [DescribeSandboxFileRuleList](https://cloud.tencent.com/document/api/664/136689)
+* [DescribeSkillScanAlertDetail](https://cloud.tencent.com/document/api/664/136687)
+* [DescribeSkillScanAlertList](https://cloud.tencent.com/document/api/664/136686)
+* [DescribeTCRInstanceList](https://cloud.tencent.com/document/api/664/136624)
+* [ModifyImageRegistry](https://cloud.tencent.com/document/api/664/136623)
+* [ModifyImageRegistryTimedScanTaskConfig](https://cloud.tencent.com/document/api/664/136622)
+* [ModifyImageSensitiveWhitelist](https://cloud.tencent.com/document/api/664/136621)
+* [ModifyImageVirusWhitelist](https://cloud.tencent.com/document/api/664/136615)
+* [ModifyImageVulWhitelist](https://cloud.tencent.com/document/api/664/136620)
+* [ModifyNotifyMember](https://cloud.tencent.com/document/api/664/136613)
+* [ModifyNotifySettingAk](https://cloud.tencent.com/document/api/664/136612)
+* [ModifySandboxLLMAuditRuleStatus](https://cloud.tencent.com/document/api/664/136688)
+* [ModifySkillScanAlertStatus](https://cloud.tencent.com/document/api/664/136685)
+* [StopImageRegistryScanTask](https://cloud.tencent.com/document/api/664/136619)
+* [SyncImageRegistry](https://cloud.tencent.com/document/api/664/136618)
 
 新增数据结构：
 
-* [BaselineFixRecord](https://cloud.tencent.com/document/api/664/90825#BaselineFixRecord)
-* [BaselineSubTask](https://cloud.tencent.com/document/api/664/90825#BaselineSubTask)
-* [CategoryItem](https://cloud.tencent.com/document/api/664/90825#CategoryItem)
-* [CloudAssetInfo](https://cloud.tencent.com/document/api/664/90825#CloudAssetInfo)
-* [DimensionItem](https://cloud.tencent.com/document/api/664/90825#DimensionItem)
-* [DimensionTrendData](https://cloud.tencent.com/document/api/664/90825#DimensionTrendData)
-* [ExpiringProduct](https://cloud.tencent.com/document/api/664/90825#ExpiringProduct)
-* [HostAutoScaleConfig](https://cloud.tencent.com/document/api/664/90825#HostAutoScaleConfig)
-* [LicenseBindFailedItem](https://cloud.tencent.com/document/api/664/90825#LicenseBindFailedItem)
-* [LicenseBindFilter](https://cloud.tencent.com/document/api/664/90825#LicenseBindFilter)
-* [LicenseBindScheduleItem](https://cloud.tencent.com/document/api/664/90825#LicenseBindScheduleItem)
-* [LicenseStatusItem](https://cloud.tencent.com/document/api/664/90825#LicenseStatusItem)
-* [LicenseUnbindFailedItem](https://cloud.tencent.com/document/api/664/90825#LicenseUnbindFailedItem)
-* [ModifyRuleItem](https://cloud.tencent.com/document/api/664/90825#ModifyRuleItem)
-* [ProtectionConfigItem](https://cloud.tencent.com/document/api/664/90825#ProtectionConfigItem)
-* [ProtectionDetail](https://cloud.tencent.com/document/api/664/90825#ProtectionDetail)
-* [PublicAssetInfo](https://cloud.tencent.com/document/api/664/90825#PublicAssetInfo)
-* [RiskTrendItem](https://cloud.tencent.com/document/api/664/90825#RiskTrendItem)
-* [SCFAliasInfo](https://cloud.tencent.com/document/api/664/90825#SCFAliasInfo)
-* [SCFFunctionInfo](https://cloud.tencent.com/document/api/664/90825#SCFFunctionInfo)
-* [SCFFunctionVersionInfo](https://cloud.tencent.com/document/api/664/90825#SCFFunctionVersionInfo)
-* [SCFNamespaceInfo](https://cloud.tencent.com/document/api/664/90825#SCFNamespaceInfo)
-* [ScoreRuleItem](https://cloud.tencent.com/document/api/664/90825#ScoreRuleItem)
-* [SeverityItem](https://cloud.tencent.com/document/api/664/90825#SeverityItem)
-* [TrendDataPoint](https://cloud.tencent.com/document/api/664/90825#TrendDataPoint)
-* [WebhookAssetScope](https://cloud.tencent.com/document/api/664/90825#WebhookAssetScope)
-* [WebhookCustomField](https://cloud.tencent.com/document/api/664/90825#WebhookCustomField)
-* [WebhookNotifyItem](https://cloud.tencent.com/document/api/664/90825#WebhookNotifyItem)
-* [WebhookPolicy](https://cloud.tencent.com/document/api/664/90825#WebhookPolicy)
-* [WebhookReceiver](https://cloud.tencent.com/document/api/664/90825#WebhookReceiver)
-* [WebhookReceiverBrief](https://cloud.tencent.com/document/api/664/90825#WebhookReceiverBrief)
+* [AIAgentCredential](https://cloud.tencent.com/document/api/664/90825#AIAgentCredential)
+* [AIAgentCredentialLocation](https://cloud.tencent.com/document/api/664/90825#AIAgentCredentialLocation)
+* [AIAgentSkillInfo](https://cloud.tencent.com/document/api/664/90825#AIAgentSkillInfo)
+* [AssetComponent](https://cloud.tencent.com/document/api/664/90825#AssetComponent)
+* [CheckConnectivityHostInfo](https://cloud.tencent.com/document/api/664/90825#CheckConnectivityHostInfo)
+* [CommandSandboxFileRule](https://cloud.tencent.com/document/api/664/90825#CommandSandboxFileRule)
+* [CommandSandboxFileRuleBase](https://cloud.tencent.com/document/api/664/90825#CommandSandboxFileRuleBase)
+* [ConnectivityDetectConfig](https://cloud.tencent.com/document/api/664/90825#ConnectivityDetectConfig)
+* [ImageAssetDetail](https://cloud.tencent.com/document/api/664/90825#ImageAssetDetail)
+* [ImageAssetInfo](https://cloud.tencent.com/document/api/664/90825#ImageAssetInfo)
+* [ImageAssociatedAssetCount](https://cloud.tencent.com/document/api/664/90825#ImageAssociatedAssetCount)
+* [ImageAssociatedContainer](https://cloud.tencent.com/document/api/664/90825#ImageAssociatedContainer)
+* [ImageAssociatedHostAsset](https://cloud.tencent.com/document/api/664/90825#ImageAssociatedHostAsset)
+* [ImageComponent](https://cloud.tencent.com/document/api/664/90825#ImageComponent)
+* [ImageLayer](https://cloud.tencent.com/document/api/664/90825#ImageLayer)
+* [ImageLayerVul](https://cloud.tencent.com/document/api/664/90825#ImageLayerVul)
+* [ImageRegistryConnectivityTaskResult](https://cloud.tencent.com/document/api/664/90825#ImageRegistryConnectivityTaskResult)
+* [ImageRegistryDetectionHostParam](https://cloud.tencent.com/document/api/664/90825#ImageRegistryDetectionHostParam)
+* [ImageRegistryExportJobInfo](https://cloud.tencent.com/document/api/664/90825#ImageRegistryExportJobInfo)
+* [ImageRegistryInfo](https://cloud.tencent.com/document/api/664/90825#ImageRegistryInfo)
+* [ImageRegistryNamespaceInfo](https://cloud.tencent.com/document/api/664/90825#ImageRegistryNamespaceInfo)
+* [ImageRegistryScanSubTaskInfo](https://cloud.tencent.com/document/api/664/90825#ImageRegistryScanSubTaskInfo)
+* [ImageRegistryScanTaskInfo](https://cloud.tencent.com/document/api/664/90825#ImageRegistryScanTaskInfo)
+* [ImageRegistryTimedScanTaskInfo](https://cloud.tencent.com/document/api/664/90825#ImageRegistryTimedScanTaskInfo)
+* [ImageRegistryTypeCountItem](https://cloud.tencent.com/document/api/664/90825#ImageRegistryTypeCountItem)
+* [ImageScanAssetTarget](https://cloud.tencent.com/document/api/664/90825#ImageScanAssetTarget)
+* [ImageScanAutoMatchConfig](https://cloud.tencent.com/document/api/664/90825#ImageScanAutoMatchConfig)
+* [ImageScanRegistryFilter](https://cloud.tencent.com/document/api/664/90825#ImageScanRegistryFilter)
+* [ImageScanScheduleConfig](https://cloud.tencent.com/document/api/664/90825#ImageScanScheduleConfig)
+* [ImageSensitiveInfo](https://cloud.tencent.com/document/api/664/90825#ImageSensitiveInfo)
+* [ImageSensitiveWhitelist](https://cloud.tencent.com/document/api/664/90825#ImageSensitiveWhitelist)
+* [ImageVirus](https://cloud.tencent.com/document/api/664/90825#ImageVirus)
+* [ImageVirusWhitelist](https://cloud.tencent.com/document/api/664/90825#ImageVirusWhitelist)
+* [ImageVirusWhitelistDetail](https://cloud.tencent.com/document/api/664/90825#ImageVirusWhitelistDetail)
+* [ImageVul](https://cloud.tencent.com/document/api/664/90825#ImageVul)
+* [ImageVulBaseInfo](https://cloud.tencent.com/document/api/664/90825#ImageVulBaseInfo)
+* [ImageVulSummary](https://cloud.tencent.com/document/api/664/90825#ImageVulSummary)
+* [ImageVulWhitelist](https://cloud.tencent.com/document/api/664/90825#ImageVulWhitelist)
+* [LevelOption](https://cloud.tencent.com/document/api/664/90825#LevelOption)
+* [ProjectInfo](https://cloud.tencent.com/document/api/664/90825#ProjectInfo)
+* [RegistryConnDetectResult](https://cloud.tencent.com/document/api/664/90825#RegistryConnDetectResult)
+* [SkillScanAlertItem](https://cloud.tencent.com/document/api/664/90825#SkillScanAlertItem)
+* [TcrRegistry](https://cloud.tencent.com/document/api/664/90825#TcrRegistry)
+* [TimedScanTaskPreviewInfo](https://cloud.tencent.com/document/api/664/90825#TimedScanTaskPreviewInfo)
+* [TrafficSandboxACLAlertInfo](https://cloud.tencent.com/document/api/664/90825#TrafficSandboxACLAlertInfo)
+* [TrafficSandboxACLDstRule](https://cloud.tencent.com/document/api/664/90825#TrafficSandboxACLDstRule)
+* [TrafficSandboxACLRuleContentItem](https://cloud.tencent.com/document/api/664/90825#TrafficSandboxACLRuleContentItem)
+* [TrafficSandboxACLRuleInfo](https://cloud.tencent.com/document/api/664/90825#TrafficSandboxACLRuleInfo)
+* [TrafficSandboxACLSystemRuleItem](https://cloud.tencent.com/document/api/664/90825#TrafficSandboxACLSystemRuleItem)
+* [TrafficSandboxACLURLRule](https://cloud.tencent.com/document/api/664/90825#TrafficSandboxACLURLRule)
+* [TrafficSandboxAssetScope](https://cloud.tencent.com/document/api/664/90825#TrafficSandboxAssetScope)
+* [TrafficSandboxDLPSystemRuleItem](https://cloud.tencent.com/document/api/664/90825#TrafficSandboxDLPSystemRuleItem)
+* [TrafficSandboxEffectScope](https://cloud.tencent.com/document/api/664/90825#TrafficSandboxEffectScope)
+* [TrafficSandboxInactiveAsset](https://cloud.tencent.com/document/api/664/90825#TrafficSandboxInactiveAsset)
+* [VulAffectedComponent](https://cloud.tencent.com/document/api/664/90825#VulAffectedComponent)
 
 
 
-## 数据库智能管家 DBbrain(dbbrain) 版本：2021-05-27
+## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
 
-### 第 61 次发布
+### 第 189 次发布
 
-发布时间：2026-08-21 01:25:30
+发布时间：2026-08-24 01:45:52
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
+新增接口：
+
+* [DescribeClusterStorageAutoExpand](https://cloud.tencent.com/document/api/1003/136699)
+
 修改数据结构：
 
-* [TopSqlTpl](https://cloud.tencent.com/document/api/1130/57812#TopSqlTpl)
+* [BackupFileInfo](https://cloud.tencent.com/document/api/1003/48097#BackupFileInfo)
 
-	* <font color="#dd0000">**修改成员**：</font>IoWaitTimeMin
-
-
-
-
-## 数据库智能管家 DBbrain(dbbrain) 版本：2019-10-16
+	* 新增成员：ExistRegions
 
 
 
-## 高性能应用服务(hai) 版本：2023-08-12
 
-### 第 28 次发布
+## 云数据库独享集群(dbdc) 版本：2020-10-29
 
-发布时间：2026-08-21 01:35:29
+### 第 14 次发布
+
+发布时间：2026-08-24 01:49:46
 
 本次发布包含了以下内容：
 
@@ -223,107 +193,50 @@
 
 修改接口：
 
-* [DescribeServices](https://cloud.tencent.com/document/api/1721/129062)
+* [RemoveNodesFromDBCustomCluster](https://cloud.tencent.com/document/api/1322/132916)
 
-	* 新增入参：States
-
-
-
-
-## 物联网开发平台(iotexplorer) 版本：2019-04-23
-
-### 第 154 次发布
-
-发布时间：2026-08-20 15:40:47
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DeleteTWeSeeTasksByCondition](https://cloud.tencent.com/document/api/1081/136428)
-
-新增数据结构：
-
-* [SeeDeleteTaskCondition](https://cloud.tencent.com/document/api/1081/34988#SeeDeleteTaskCondition)
+	* 新增入参：Force
 
 
 
-## 腾讯云可观测平台(monitor) 版本：2023-06-16
 
+## 云数据库 PostgreSQL(postgres) 版本：2017-03-12
 
+### 第 74 次发布
 
-## 腾讯云可观测平台(monitor) 版本：2018-07-24
-
-### 第 166 次发布
-
-发布时间：2026-08-21 01:43:27
+发布时间：2026-08-24 02:37:39
 
 本次发布包含了以下内容：
 
 改善已有的文档。
-
-新增接口：
-
-* [DescribeGrafanaVersions](https://cloud.tencent.com/document/api/248/136526)
 
 修改接口：
 
-* [CreateGrafanaInstance](https://cloud.tencent.com/document/api/248/79219)
+* [ModifyDBProxyAddress](https://cloud.tencent.com/document/api/409/135216)
 
-	* 新增入参：DockerImage
+	* 新增入参：WeightMode, ProxyAllocation, RoAutoAdd, LatencyRemove, LatencyRemoveTime, MinRouteNum, LoadBalancePolicy
 
+	* 新增出参：TaskId
 
-新增数据结构：
-
-* [GrafanaVersion](https://cloud.tencent.com/document/api/248/30354#GrafanaVersion)
-
-
-
-## 媒体处理(mps) 版本：2019-06-12
-
-### 第 236 次发布
-
-发布时间：2026-08-21 01:44:24
-
-本次发布包含了以下内容：
-
-改善已有的文档。
 
 修改数据结构：
 
-* [UnderstandImageConfig](https://cloud.tencent.com/document/api/862/37615#UnderstandImageConfig)
+* [ProxyAddress](https://cloud.tencent.com/document/api/409/16778#ProxyAddress)
 
-	* 新增成员：Parameters
+	* 新增成员：RwSplitEnable, WeightMode, RoAutoAdd, LatencyRemove, LatencyRemoveTime, MinRouteNum, FailOver, LoadBalancePolicy
 
+* [ProxyRoute](https://cloud.tencent.com/document/api/409/16778#ProxyRoute)
 
-
-
-## 文字识别(ocr) 版本：2018-11-19
-
-### 第 260 次发布
-
-发布时间：2026-08-21 01:46:28
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [VatElectronicItemInfo](https://cloud.tencent.com/document/api/866/33527#VatElectronicItemInfo)
-
-	* 新增成员：DateStart, DateEnd
+	* <font color="#dd0000">**修改成员**：</font>NodeId, Role, Weight, Status
 
 
 
 
-## 官网门户服务(portal) 版本：2023-04-13
+## 云数据库Redis(redis) 版本：2018-04-12
 
-### 第 1 次发布
+### 第 108 次发布
 
-发布时间：2026-08-20 17:14:22
+发布时间：2026-08-24 02:40:02
 
 本次发布包含了以下内容：
 
@@ -331,84 +244,66 @@
 
 新增接口：
 
-* [SearchDocuments](https://cloud.tencent.com/document/api/1842/136456)
-
-新增数据结构：
-
-* [SearchDocumentItem](https://cloud.tencent.com/document/api/1842/136457#SearchDocumentItem)
+* [ModifyInstancePasswordPolicy](https://cloud.tencent.com/document/api/239/136700)
 
 
 
-## 云开发 CloudBase(tcb) 版本：2018-06-08
+## TI-ONE 训练平台(tione) 版本：2021-11-11
 
-### 第 158 次发布
+### 第 134 次发布
 
-发布时间：2026-08-21 01:52:50
+发布时间：2026-08-24 03:01:08
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+新增数据结构：
 
-* [BindCls](https://cloud.tencent.com/document/api/876/136527)
+* [ImageSecret](https://cloud.tencent.com/document/api/851/75051#ImageSecret)
+
+修改数据结构：
+
+* [ImageInfo](https://cloud.tencent.com/document/api/851/75051#ImageInfo)
+
+	* 新增成员：ImageSecret
+
+
+
+
+## TI-ONE 训练平台(tione) 版本：2019-10-22
 
 
 
 ## 容器服务(tke) 版本：2022-05-01
 
+### 第 30 次发布
+
+发布时间：2026-08-24 03:04:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DetachApplicationRole](https://cloud.tencent.com/document/api/457/136701)
+
 
 
 ## 容器服务(tke) 版本：2018-05-25
 
-### 第 237 次发布
-
-发布时间：2026-08-21 01:59:45
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeOSImages](https://cloud.tencent.com/document/api/457/117354)
-
-	* 新增入参：Filters
 
 
-修改数据结构：
-
-* [OSImage](https://cloud.tencent.com/document/api/457/31866#OSImage)
-
-	* 新增成员：Arch
+## 云点播(vod) 版本：2024-07-18
 
 
 
+## 云点播(vod) 版本：2018-07-17
 
-## 实时音视频(trtc) 版本：2019-07-22
+### 第 282 次发布
 
-### 第 150 次发布
-
-发布时间：2026-08-20 21:13:45
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [VoiceClone](https://cloud.tencent.com/document/api/647/122473)
-
-	* 新增入参：ExtraParams
-
-
-
-
-## TSF-应用管理&Consul(tsf) 版本：2018-03-26
-
-### 第 146 次发布
-
-发布时间：2026-08-21 02:03:34
+发布时间：2026-08-24 03:13:20
 
 本次发布包含了以下内容：
 
@@ -416,9 +311,9 @@
 
 修改数据结构：
 
-* [VmGroup](https://cloud.tencent.com/document/api/649/36099#VmGroup)
+* [SubtitleInfoInput](https://cloud.tencent.com/document/api/266/31773#SubtitleInfoInput)
 
-	* 新增成员：MeshSidecarVersion, BusinessLogConfigIdList, BusinessLogDeliveryConfigIdList, BusinessSystemId, BusinessSystemName, ClsMachineGroupId, EnableGovernance, EnableTelemetry, EnableTelemetryAgent, EnabledUnit, ExclusiveInstances, FrameworkType, GovernanceType, InstanceIdList, IsStop, K8sNamespaceName, Language, MicroserviceSubType, NonInvasiveType, PreStopScript, RealNamespaceName, ServiceConfigList, ServiceGovernanceConfig, Tags, TapmOtAgentVersion, UnitEnvType, UnitId, UnitName, UnitType
+	* 新增成员：StreamIndex
 
 
 

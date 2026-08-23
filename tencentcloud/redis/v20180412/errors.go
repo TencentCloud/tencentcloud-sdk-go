@@ -86,6 +86,9 @@ const (
 	// 执行Http请求失败。
 	INTERNALERROR_EXECHTTPREQUESTERROR = "InternalError.ExecHttpRequestError"
 
+	// 找不到该实例。
+	INTERNALERROR_INSTANCENOTFOUNDERROR = "InternalError.InstanceNotFoundError"
+
 	// 无操作权限。
 	INTERNALERROR_INSTANCEOPERATEPERMISSIONERROR = "InternalError.InstanceOperatePermissionError"
 

@@ -1293,6 +1293,68 @@ func (c *Client) DescribeZoneInstanceConfigInfosWithContext(ctx context.Context,
     return
 }
 
+func NewDetachApplicationRoleRequest() (request *DetachApplicationRoleRequest) {
+    request = &DetachApplicationRoleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "DetachApplicationRole")
+    
+    
+    return
+}
+
+func NewDetachApplicationRoleResponse() (response *DetachApplicationRoleResponse) {
+    response = &DetachApplicationRoleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DetachApplicationRole
+// 解绑原生节点 Application Role
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CAMNOAUTH = "FailedOperation.CamNoAuth"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DetachApplicationRole(request *DetachApplicationRoleRequest) (response *DetachApplicationRoleResponse, err error) {
+    return c.DetachApplicationRoleWithContext(context.Background(), request)
+}
+
+// DetachApplicationRole
+// 解绑原生节点 Application Role
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CAMNOAUTH = "FailedOperation.CamNoAuth"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DetachApplicationRoleWithContext(ctx context.Context, request *DetachApplicationRoleRequest) (response *DetachApplicationRoleResponse, err error) {
+    if request == nil {
+        request = NewDetachApplicationRoleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DetachApplicationRole")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DetachApplicationRole require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDetachApplicationRoleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyClusterMachineRequest() (request *ModifyClusterMachineRequest) {
     request = &ModifyClusterMachineRequest{
         BaseRequest: &tchttp.BaseRequest{},

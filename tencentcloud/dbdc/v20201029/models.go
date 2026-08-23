@@ -3385,6 +3385,9 @@ type RemoveNodesFromDBCustomClusterRequestParams struct {
 
 	// <p>节点的登录参数</p>
 	LoginSettings *LoginSettings `json:"LoginSettings,omitnil,omitempty" name:"LoginSettings"`
+
+	// <p>当节点中还有业务 Pod 在运行，默认会拦截从集群中移除节点的操作。如果该参数为 true，表示强制执行此操作。</p><p>枚举值：</p><ul><li>true： 是</li><li>false： 否</li></ul><p>默认值：false</p>
+	Force *bool `json:"Force,omitnil,omitempty" name:"Force"`
 }
 
 type RemoveNodesFromDBCustomClusterRequest struct {
@@ -3398,6 +3401,9 @@ type RemoveNodesFromDBCustomClusterRequest struct {
 
 	// <p>节点的登录参数</p>
 	LoginSettings *LoginSettings `json:"LoginSettings,omitnil,omitempty" name:"LoginSettings"`
+
+	// <p>当节点中还有业务 Pod 在运行，默认会拦截从集群中移除节点的操作。如果该参数为 true，表示强制执行此操作。</p><p>枚举值：</p><ul><li>true： 是</li><li>false： 否</li></ul><p>默认值：false</p>
+	Force *bool `json:"Force,omitnil,omitempty" name:"Force"`
 }
 
 func (r *RemoveNodesFromDBCustomClusterRequest) ToJsonString() string {
@@ -3415,6 +3421,7 @@ func (r *RemoveNodesFromDBCustomClusterRequest) FromJsonString(s string) error {
 	delete(f, "ClusterId")
 	delete(f, "NodeIds")
 	delete(f, "LoginSettings")
+	delete(f, "Force")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RemoveNodesFromDBCustomClusterRequest has unknown keys!", "")
 	}

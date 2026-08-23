@@ -155,6 +155,86 @@ func (c *Client) AddDspmAssetManagerWithContext(ctx context.Context, request *Ad
     return
 }
 
+func NewAddImageRegistryRequest() (request *AddImageRegistryRequest) {
+    request = &AddImageRegistryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "AddImageRegistry")
+    
+    
+    return
+}
+
+func NewAddImageRegistryResponse() (response *AddImageRegistryResponse) {
+    response = &AddImageRegistryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// AddImageRegistry
+// 添加镜像仓库信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) AddImageRegistry(request *AddImageRegistryRequest) (response *AddImageRegistryResponse, err error) {
+    return c.AddImageRegistryWithContext(context.Background(), request)
+}
+
+// AddImageRegistry
+// 添加镜像仓库信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) AddImageRegistryWithContext(ctx context.Context, request *AddImageRegistryRequest) (response *AddImageRegistryResponse, err error) {
+    if request == nil {
+        request = NewAddImageRegistryRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "AddImageRegistry")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddImageRegistry require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAddImageRegistryResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAddLoginWhiteListsRequest() (request *AddLoginWhiteListsRequest) {
     request = &AddLoginWhiteListsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -383,6 +463,326 @@ func (c *Client) BatchModifyBaselinePolicyWithContext(ctx context.Context, reque
     return
 }
 
+func NewBatchModifyImageRegistryTimedScanTaskConfigRequest() (request *BatchModifyImageRegistryTimedScanTaskConfigRequest) {
+    request = &BatchModifyImageRegistryTimedScanTaskConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "BatchModifyImageRegistryTimedScanTaskConfig")
+    
+    
+    return
+}
+
+func NewBatchModifyImageRegistryTimedScanTaskConfigResponse() (response *BatchModifyImageRegistryTimedScanTaskConfigResponse) {
+    response = &BatchModifyImageRegistryTimedScanTaskConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// BatchModifyImageRegistryTimedScanTaskConfig
+// 批量修改镜像仓库定时扫描任务配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) BatchModifyImageRegistryTimedScanTaskConfig(request *BatchModifyImageRegistryTimedScanTaskConfigRequest) (response *BatchModifyImageRegistryTimedScanTaskConfigResponse, err error) {
+    return c.BatchModifyImageRegistryTimedScanTaskConfigWithContext(context.Background(), request)
+}
+
+// BatchModifyImageRegistryTimedScanTaskConfig
+// 批量修改镜像仓库定时扫描任务配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) BatchModifyImageRegistryTimedScanTaskConfigWithContext(ctx context.Context, request *BatchModifyImageRegistryTimedScanTaskConfigRequest) (response *BatchModifyImageRegistryTimedScanTaskConfigResponse, err error) {
+    if request == nil {
+        request = NewBatchModifyImageRegistryTimedScanTaskConfigRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "BatchModifyImageRegistryTimedScanTaskConfig")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BatchModifyImageRegistryTimedScanTaskConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewBatchModifyImageRegistryTimedScanTaskConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewBatchModifyImageSensitiveWhitelistRequest() (request *BatchModifyImageSensitiveWhitelistRequest) {
+    request = &BatchModifyImageSensitiveWhitelistRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "BatchModifyImageSensitiveWhitelist")
+    
+    
+    return
+}
+
+func NewBatchModifyImageSensitiveWhitelistResponse() (response *BatchModifyImageSensitiveWhitelistResponse) {
+    response = &BatchModifyImageSensitiveWhitelistResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// BatchModifyImageSensitiveWhitelist
+// 批量修改容器镜像敏感信息白名单
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) BatchModifyImageSensitiveWhitelist(request *BatchModifyImageSensitiveWhitelistRequest) (response *BatchModifyImageSensitiveWhitelistResponse, err error) {
+    return c.BatchModifyImageSensitiveWhitelistWithContext(context.Background(), request)
+}
+
+// BatchModifyImageSensitiveWhitelist
+// 批量修改容器镜像敏感信息白名单
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) BatchModifyImageSensitiveWhitelistWithContext(ctx context.Context, request *BatchModifyImageSensitiveWhitelistRequest) (response *BatchModifyImageSensitiveWhitelistResponse, err error) {
+    if request == nil {
+        request = NewBatchModifyImageSensitiveWhitelistRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "BatchModifyImageSensitiveWhitelist")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BatchModifyImageSensitiveWhitelist require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewBatchModifyImageSensitiveWhitelistResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewBatchModifyImageVirusWhitelistRequest() (request *BatchModifyImageVirusWhitelistRequest) {
+    request = &BatchModifyImageVirusWhitelistRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "BatchModifyImageVirusWhitelist")
+    
+    
+    return
+}
+
+func NewBatchModifyImageVirusWhitelistResponse() (response *BatchModifyImageVirusWhitelistResponse) {
+    response = &BatchModifyImageVirusWhitelistResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// BatchModifyImageVirusWhitelist
+// 批量修改镜像木马白名单
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) BatchModifyImageVirusWhitelist(request *BatchModifyImageVirusWhitelistRequest) (response *BatchModifyImageVirusWhitelistResponse, err error) {
+    return c.BatchModifyImageVirusWhitelistWithContext(context.Background(), request)
+}
+
+// BatchModifyImageVirusWhitelist
+// 批量修改镜像木马白名单
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) BatchModifyImageVirusWhitelistWithContext(ctx context.Context, request *BatchModifyImageVirusWhitelistRequest) (response *BatchModifyImageVirusWhitelistResponse, err error) {
+    if request == nil {
+        request = NewBatchModifyImageVirusWhitelistRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "BatchModifyImageVirusWhitelist")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BatchModifyImageVirusWhitelist require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewBatchModifyImageVirusWhitelistResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewBatchModifyImageVulWhitelistRequest() (request *BatchModifyImageVulWhitelistRequest) {
+    request = &BatchModifyImageVulWhitelistRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "BatchModifyImageVulWhitelist")
+    
+    
+    return
+}
+
+func NewBatchModifyImageVulWhitelistResponse() (response *BatchModifyImageVulWhitelistResponse) {
+    response = &BatchModifyImageVulWhitelistResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// BatchModifyImageVulWhitelist
+// 批量修改容器镜像漏洞白名单
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) BatchModifyImageVulWhitelist(request *BatchModifyImageVulWhitelistRequest) (response *BatchModifyImageVulWhitelistResponse, err error) {
+    return c.BatchModifyImageVulWhitelistWithContext(context.Background(), request)
+}
+
+// BatchModifyImageVulWhitelist
+// 批量修改容器镜像漏洞白名单
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) BatchModifyImageVulWhitelistWithContext(ctx context.Context, request *BatchModifyImageVulWhitelistRequest) (response *BatchModifyImageVulWhitelistResponse, err error) {
+    if request == nil {
+        request = NewBatchModifyImageVulWhitelistRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "BatchModifyImageVulWhitelist")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BatchModifyImageVulWhitelist require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewBatchModifyImageVulWhitelistResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewBindClusterOwnerRequest() (request *BindClusterOwnerRequest) {
     request = &BindClusterOwnerRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -543,6 +943,86 @@ func (c *Client) CheckCWPExposePathPermissionWithContext(ctx context.Context, re
     return
 }
 
+func NewCheckImageRegistryInstanceNameDuplicateRequest() (request *CheckImageRegistryInstanceNameDuplicateRequest) {
+    request = &CheckImageRegistryInstanceNameDuplicateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "CheckImageRegistryInstanceNameDuplicate")
+    
+    
+    return
+}
+
+func NewCheckImageRegistryInstanceNameDuplicateResponse() (response *CheckImageRegistryInstanceNameDuplicateResponse) {
+    response = &CheckImageRegistryInstanceNameDuplicateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CheckImageRegistryInstanceNameDuplicate
+// 检查镜像仓库实例名是否重复
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CheckImageRegistryInstanceNameDuplicate(request *CheckImageRegistryInstanceNameDuplicateRequest) (response *CheckImageRegistryInstanceNameDuplicateResponse, err error) {
+    return c.CheckImageRegistryInstanceNameDuplicateWithContext(context.Background(), request)
+}
+
+// CheckImageRegistryInstanceNameDuplicate
+// 检查镜像仓库实例名是否重复
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CheckImageRegistryInstanceNameDuplicateWithContext(ctx context.Context, request *CheckImageRegistryInstanceNameDuplicateRequest) (response *CheckImageRegistryInstanceNameDuplicateResponse, err error) {
+    if request == nil {
+        request = NewCheckImageRegistryInstanceNameDuplicateRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "CheckImageRegistryInstanceNameDuplicate")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CheckImageRegistryInstanceNameDuplicate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCheckImageRegistryInstanceNameDuplicateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCheckIsUltimateVersionRequest() (request *CheckIsUltimateVersionRequest) {
     request = &CheckIsUltimateVersionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -566,9 +1046,22 @@ func NewCheckIsUltimateVersionResponse() (response *CheckIsUltimateVersionRespon
 // 判断当前用户是否旗舰版
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) CheckIsUltimateVersion(request *CheckIsUltimateVersionRequest) (response *CheckIsUltimateVersionResponse, err error) {
     return c.CheckIsUltimateVersionWithContext(context.Background(), request)
 }
@@ -577,9 +1070,22 @@ func (c *Client) CheckIsUltimateVersion(request *CheckIsUltimateVersionRequest) 
 // 判断当前用户是否旗舰版
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) CheckIsUltimateVersionWithContext(ctx context.Context, request *CheckIsUltimateVersionRequest) (response *CheckIsUltimateVersionResponse, err error) {
     if request == nil {
         request = NewCheckIsUltimateVersionRequest()
@@ -620,9 +1126,22 @@ func NewCheckRiskResponse() (response *CheckRiskResponse) {
 // 风险验证示例
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) CheckRisk(request *CheckRiskRequest) (response *CheckRiskResponse, err error) {
     return c.CheckRiskWithContext(context.Background(), request)
 }
@@ -631,9 +1150,22 @@ func (c *Client) CheckRisk(request *CheckRiskRequest) (response *CheckRiskRespon
 // 风险验证示例
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) CheckRiskWithContext(ctx context.Context, request *CheckRiskRequest) (response *CheckRiskResponse, err error) {
     if request == nil {
         request = NewCheckRiskRequest()
@@ -674,9 +1206,22 @@ func NewCopyBaselinePolicyResponse() (response *CopyBaselinePolicyResponse) {
 // 复制自定义基线策略
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) CopyBaselinePolicy(request *CopyBaselinePolicyRequest) (response *CopyBaselinePolicyResponse, err error) {
     return c.CopyBaselinePolicyWithContext(context.Background(), request)
 }
@@ -685,9 +1230,22 @@ func (c *Client) CopyBaselinePolicy(request *CopyBaselinePolicyRequest) (respons
 // 复制自定义基线策略
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) CopyBaselinePolicyWithContext(ctx context.Context, request *CopyBaselinePolicyRequest) (response *CopyBaselinePolicyResponse, err error) {
     if request == nil {
         request = NewCopyBaselinePolicyRequest()
@@ -949,6 +1507,166 @@ func (c *Client) CreateAllAssetsExportJobWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewCreateAllAssetsExportJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateAssetComponentListExportJobRequest() (request *CreateAssetComponentListExportJobRequest) {
+    request = &CreateAssetComponentListExportJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "CreateAssetComponentListExportJob")
+    
+    
+    return
+}
+
+func NewCreateAssetComponentListExportJobResponse() (response *CreateAssetComponentListExportJobResponse) {
+    response = &CreateAssetComponentListExportJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateAssetComponentListExportJob
+// 创建镜像资产中组件列表导出任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateAssetComponentListExportJob(request *CreateAssetComponentListExportJobRequest) (response *CreateAssetComponentListExportJobResponse, err error) {
+    return c.CreateAssetComponentListExportJobWithContext(context.Background(), request)
+}
+
+// CreateAssetComponentListExportJob
+// 创建镜像资产中组件列表导出任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateAssetComponentListExportJobWithContext(ctx context.Context, request *CreateAssetComponentListExportJobRequest) (response *CreateAssetComponentListExportJobResponse, err error) {
+    if request == nil {
+        request = NewCreateAssetComponentListExportJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "CreateAssetComponentListExportJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAssetComponentListExportJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateAssetComponentListExportJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateAssetComponentRelatedImageListExportJobRequest() (request *CreateAssetComponentRelatedImageListExportJobRequest) {
+    request = &CreateAssetComponentRelatedImageListExportJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "CreateAssetComponentRelatedImageListExportJob")
+    
+    
+    return
+}
+
+func NewCreateAssetComponentRelatedImageListExportJobResponse() (response *CreateAssetComponentRelatedImageListExportJobResponse) {
+    response = &CreateAssetComponentRelatedImageListExportJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateAssetComponentRelatedImageListExportJob
+// 创建镜像仓库组件关联镜像列表导出任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateAssetComponentRelatedImageListExportJob(request *CreateAssetComponentRelatedImageListExportJobRequest) (response *CreateAssetComponentRelatedImageListExportJobResponse, err error) {
+    return c.CreateAssetComponentRelatedImageListExportJobWithContext(context.Background(), request)
+}
+
+// CreateAssetComponentRelatedImageListExportJob
+// 创建镜像仓库组件关联镜像列表导出任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateAssetComponentRelatedImageListExportJobWithContext(ctx context.Context, request *CreateAssetComponentRelatedImageListExportJobRequest) (response *CreateAssetComponentRelatedImageListExportJobResponse, err error) {
+    if request == nil {
+        request = NewCreateAssetComponentRelatedImageListExportJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "CreateAssetComponentRelatedImageListExportJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAssetComponentRelatedImageListExportJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateAssetComponentRelatedImageListExportJobResponse()
     err = c.Send(request, response)
     return
 }
@@ -4409,6 +5127,1286 @@ func (c *Client) CreateIaCFileReScanTaskWithContext(ctx context.Context, request
     return
 }
 
+func NewCreateImageAssetListExportJobRequest() (request *CreateImageAssetListExportJobRequest) {
+    request = &CreateImageAssetListExportJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "CreateImageAssetListExportJob")
+    
+    
+    return
+}
+
+func NewCreateImageAssetListExportJobResponse() (response *CreateImageAssetListExportJobResponse) {
+    response = &CreateImageAssetListExportJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateImageAssetListExportJob
+// 创建镜像资产列表导出任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateImageAssetListExportJob(request *CreateImageAssetListExportJobRequest) (response *CreateImageAssetListExportJobResponse, err error) {
+    return c.CreateImageAssetListExportJobWithContext(context.Background(), request)
+}
+
+// CreateImageAssetListExportJob
+// 创建镜像资产列表导出任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateImageAssetListExportJobWithContext(ctx context.Context, request *CreateImageAssetListExportJobRequest) (response *CreateImageAssetListExportJobResponse, err error) {
+    if request == nil {
+        request = NewCreateImageAssetListExportJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "CreateImageAssetListExportJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateImageAssetListExportJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateImageAssetListExportJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateImageAssociatedContainerListExportJobRequest() (request *CreateImageAssociatedContainerListExportJobRequest) {
+    request = &CreateImageAssociatedContainerListExportJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "CreateImageAssociatedContainerListExportJob")
+    
+    
+    return
+}
+
+func NewCreateImageAssociatedContainerListExportJobResponse() (response *CreateImageAssociatedContainerListExportJobResponse) {
+    response = &CreateImageAssociatedContainerListExportJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateImageAssociatedContainerListExportJob
+// 创建镜像关联容器资产导出任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateImageAssociatedContainerListExportJob(request *CreateImageAssociatedContainerListExportJobRequest) (response *CreateImageAssociatedContainerListExportJobResponse, err error) {
+    return c.CreateImageAssociatedContainerListExportJobWithContext(context.Background(), request)
+}
+
+// CreateImageAssociatedContainerListExportJob
+// 创建镜像关联容器资产导出任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateImageAssociatedContainerListExportJobWithContext(ctx context.Context, request *CreateImageAssociatedContainerListExportJobRequest) (response *CreateImageAssociatedContainerListExportJobResponse, err error) {
+    if request == nil {
+        request = NewCreateImageAssociatedContainerListExportJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "CreateImageAssociatedContainerListExportJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateImageAssociatedContainerListExportJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateImageAssociatedContainerListExportJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateImageAssociatedHostListExportJobRequest() (request *CreateImageAssociatedHostListExportJobRequest) {
+    request = &CreateImageAssociatedHostListExportJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "CreateImageAssociatedHostListExportJob")
+    
+    
+    return
+}
+
+func NewCreateImageAssociatedHostListExportJobResponse() (response *CreateImageAssociatedHostListExportJobResponse) {
+    response = &CreateImageAssociatedHostListExportJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateImageAssociatedHostListExportJob
+// 创建镜像关联主机资产列表导出任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateImageAssociatedHostListExportJob(request *CreateImageAssociatedHostListExportJobRequest) (response *CreateImageAssociatedHostListExportJobResponse, err error) {
+    return c.CreateImageAssociatedHostListExportJobWithContext(context.Background(), request)
+}
+
+// CreateImageAssociatedHostListExportJob
+// 创建镜像关联主机资产列表导出任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateImageAssociatedHostListExportJobWithContext(ctx context.Context, request *CreateImageAssociatedHostListExportJobRequest) (response *CreateImageAssociatedHostListExportJobResponse, err error) {
+    if request == nil {
+        request = NewCreateImageAssociatedHostListExportJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "CreateImageAssociatedHostListExportJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateImageAssociatedHostListExportJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateImageAssociatedHostListExportJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateImageComponentListExportJobRequest() (request *CreateImageComponentListExportJobRequest) {
+    request = &CreateImageComponentListExportJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "CreateImageComponentListExportJob")
+    
+    
+    return
+}
+
+func NewCreateImageComponentListExportJobResponse() (response *CreateImageComponentListExportJobResponse) {
+    response = &CreateImageComponentListExportJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateImageComponentListExportJob
+// 创建镜像组件列表导出任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateImageComponentListExportJob(request *CreateImageComponentListExportJobRequest) (response *CreateImageComponentListExportJobResponse, err error) {
+    return c.CreateImageComponentListExportJobWithContext(context.Background(), request)
+}
+
+// CreateImageComponentListExportJob
+// 创建镜像组件列表导出任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateImageComponentListExportJobWithContext(ctx context.Context, request *CreateImageComponentListExportJobRequest) (response *CreateImageComponentListExportJobResponse, err error) {
+    if request == nil {
+        request = NewCreateImageComponentListExportJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "CreateImageComponentListExportJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateImageComponentListExportJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateImageComponentListExportJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateImageLayerVulListExportJobRequest() (request *CreateImageLayerVulListExportJobRequest) {
+    request = &CreateImageLayerVulListExportJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "CreateImageLayerVulListExportJob")
+    
+    
+    return
+}
+
+func NewCreateImageLayerVulListExportJobResponse() (response *CreateImageLayerVulListExportJobResponse) {
+    response = &CreateImageLayerVulListExportJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateImageLayerVulListExportJob
+// 创建镜像层漏洞列表导出任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateImageLayerVulListExportJob(request *CreateImageLayerVulListExportJobRequest) (response *CreateImageLayerVulListExportJobResponse, err error) {
+    return c.CreateImageLayerVulListExportJobWithContext(context.Background(), request)
+}
+
+// CreateImageLayerVulListExportJob
+// 创建镜像层漏洞列表导出任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateImageLayerVulListExportJobWithContext(ctx context.Context, request *CreateImageLayerVulListExportJobRequest) (response *CreateImageLayerVulListExportJobResponse, err error) {
+    if request == nil {
+        request = NewCreateImageLayerVulListExportJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "CreateImageLayerVulListExportJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateImageLayerVulListExportJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateImageLayerVulListExportJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateImageRegistryConnectivityTaskRequest() (request *CreateImageRegistryConnectivityTaskRequest) {
+    request = &CreateImageRegistryConnectivityTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "CreateImageRegistryConnectivityTask")
+    
+    
+    return
+}
+
+func NewCreateImageRegistryConnectivityTaskResponse() (response *CreateImageRegistryConnectivityTaskResponse) {
+    response = &CreateImageRegistryConnectivityTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateImageRegistryConnectivityTask
+// 创建镜像仓库联通性检查任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateImageRegistryConnectivityTask(request *CreateImageRegistryConnectivityTaskRequest) (response *CreateImageRegistryConnectivityTaskResponse, err error) {
+    return c.CreateImageRegistryConnectivityTaskWithContext(context.Background(), request)
+}
+
+// CreateImageRegistryConnectivityTask
+// 创建镜像仓库联通性检查任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateImageRegistryConnectivityTaskWithContext(ctx context.Context, request *CreateImageRegistryConnectivityTaskRequest) (response *CreateImageRegistryConnectivityTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateImageRegistryConnectivityTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "CreateImageRegistryConnectivityTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateImageRegistryConnectivityTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateImageRegistryConnectivityTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateImageRegistryListExportJobRequest() (request *CreateImageRegistryListExportJobRequest) {
+    request = &CreateImageRegistryListExportJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "CreateImageRegistryListExportJob")
+    
+    
+    return
+}
+
+func NewCreateImageRegistryListExportJobResponse() (response *CreateImageRegistryListExportJobResponse) {
+    response = &CreateImageRegistryListExportJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateImageRegistryListExportJob
+// 创建镜像仓库列表导出任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateImageRegistryListExportJob(request *CreateImageRegistryListExportJobRequest) (response *CreateImageRegistryListExportJobResponse, err error) {
+    return c.CreateImageRegistryListExportJobWithContext(context.Background(), request)
+}
+
+// CreateImageRegistryListExportJob
+// 创建镜像仓库列表导出任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateImageRegistryListExportJobWithContext(ctx context.Context, request *CreateImageRegistryListExportJobRequest) (response *CreateImageRegistryListExportJobResponse, err error) {
+    if request == nil {
+        request = NewCreateImageRegistryListExportJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "CreateImageRegistryListExportJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateImageRegistryListExportJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateImageRegistryListExportJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateImageRegistryScanTaskRequest() (request *CreateImageRegistryScanTaskRequest) {
+    request = &CreateImageRegistryScanTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "CreateImageRegistryScanTask")
+    
+    
+    return
+}
+
+func NewCreateImageRegistryScanTaskResponse() (response *CreateImageRegistryScanTaskResponse) {
+    response = &CreateImageRegistryScanTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateImageRegistryScanTask
+// 创建镜像扫描任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateImageRegistryScanTask(request *CreateImageRegistryScanTaskRequest) (response *CreateImageRegistryScanTaskResponse, err error) {
+    return c.CreateImageRegistryScanTaskWithContext(context.Background(), request)
+}
+
+// CreateImageRegistryScanTask
+// 创建镜像扫描任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateImageRegistryScanTaskWithContext(ctx context.Context, request *CreateImageRegistryScanTaskRequest) (response *CreateImageRegistryScanTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateImageRegistryScanTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "CreateImageRegistryScanTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateImageRegistryScanTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateImageRegistryScanTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateImageRegistryTimedScanTaskConfigRequest() (request *CreateImageRegistryTimedScanTaskConfigRequest) {
+    request = &CreateImageRegistryTimedScanTaskConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "CreateImageRegistryTimedScanTaskConfig")
+    
+    
+    return
+}
+
+func NewCreateImageRegistryTimedScanTaskConfigResponse() (response *CreateImageRegistryTimedScanTaskConfigResponse) {
+    response = &CreateImageRegistryTimedScanTaskConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateImageRegistryTimedScanTaskConfig
+// 创建镜像仓库镜像扫描任务配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateImageRegistryTimedScanTaskConfig(request *CreateImageRegistryTimedScanTaskConfigRequest) (response *CreateImageRegistryTimedScanTaskConfigResponse, err error) {
+    return c.CreateImageRegistryTimedScanTaskConfigWithContext(context.Background(), request)
+}
+
+// CreateImageRegistryTimedScanTaskConfig
+// 创建镜像仓库镜像扫描任务配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateImageRegistryTimedScanTaskConfigWithContext(ctx context.Context, request *CreateImageRegistryTimedScanTaskConfigRequest) (response *CreateImageRegistryTimedScanTaskConfigResponse, err error) {
+    if request == nil {
+        request = NewCreateImageRegistryTimedScanTaskConfigRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "CreateImageRegistryTimedScanTaskConfig")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateImageRegistryTimedScanTaskConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateImageRegistryTimedScanTaskConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateImageSensitiveInfoListExportJobRequest() (request *CreateImageSensitiveInfoListExportJobRequest) {
+    request = &CreateImageSensitiveInfoListExportJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "CreateImageSensitiveInfoListExportJob")
+    
+    
+    return
+}
+
+func NewCreateImageSensitiveInfoListExportJobResponse() (response *CreateImageSensitiveInfoListExportJobResponse) {
+    response = &CreateImageSensitiveInfoListExportJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateImageSensitiveInfoListExportJob
+// 创建镜像敏感信息列表导出任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateImageSensitiveInfoListExportJob(request *CreateImageSensitiveInfoListExportJobRequest) (response *CreateImageSensitiveInfoListExportJobResponse, err error) {
+    return c.CreateImageSensitiveInfoListExportJobWithContext(context.Background(), request)
+}
+
+// CreateImageSensitiveInfoListExportJob
+// 创建镜像敏感信息列表导出任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateImageSensitiveInfoListExportJobWithContext(ctx context.Context, request *CreateImageSensitiveInfoListExportJobRequest) (response *CreateImageSensitiveInfoListExportJobResponse, err error) {
+    if request == nil {
+        request = NewCreateImageSensitiveInfoListExportJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "CreateImageSensitiveInfoListExportJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateImageSensitiveInfoListExportJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateImageSensitiveInfoListExportJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateImageSensitiveWhitelistRequest() (request *CreateImageSensitiveWhitelistRequest) {
+    request = &CreateImageSensitiveWhitelistRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "CreateImageSensitiveWhitelist")
+    
+    
+    return
+}
+
+func NewCreateImageSensitiveWhitelistResponse() (response *CreateImageSensitiveWhitelistResponse) {
+    response = &CreateImageSensitiveWhitelistResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateImageSensitiveWhitelist
+// 创建容器镜像敏感信息白名单
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateImageSensitiveWhitelist(request *CreateImageSensitiveWhitelistRequest) (response *CreateImageSensitiveWhitelistResponse, err error) {
+    return c.CreateImageSensitiveWhitelistWithContext(context.Background(), request)
+}
+
+// CreateImageSensitiveWhitelist
+// 创建容器镜像敏感信息白名单
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateImageSensitiveWhitelistWithContext(ctx context.Context, request *CreateImageSensitiveWhitelistRequest) (response *CreateImageSensitiveWhitelistResponse, err error) {
+    if request == nil {
+        request = NewCreateImageSensitiveWhitelistRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "CreateImageSensitiveWhitelist")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateImageSensitiveWhitelist require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateImageSensitiveWhitelistResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateImageVirusListExportJobRequest() (request *CreateImageVirusListExportJobRequest) {
+    request = &CreateImageVirusListExportJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "CreateImageVirusListExportJob")
+    
+    
+    return
+}
+
+func NewCreateImageVirusListExportJobResponse() (response *CreateImageVirusListExportJobResponse) {
+    response = &CreateImageVirusListExportJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateImageVirusListExportJob
+// 创建镜像木马病毒列表导出任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateImageVirusListExportJob(request *CreateImageVirusListExportJobRequest) (response *CreateImageVirusListExportJobResponse, err error) {
+    return c.CreateImageVirusListExportJobWithContext(context.Background(), request)
+}
+
+// CreateImageVirusListExportJob
+// 创建镜像木马病毒列表导出任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateImageVirusListExportJobWithContext(ctx context.Context, request *CreateImageVirusListExportJobRequest) (response *CreateImageVirusListExportJobResponse, err error) {
+    if request == nil {
+        request = NewCreateImageVirusListExportJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "CreateImageVirusListExportJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateImageVirusListExportJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateImageVirusListExportJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateImageVirusWhitelistRequest() (request *CreateImageVirusWhitelistRequest) {
+    request = &CreateImageVirusWhitelistRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "CreateImageVirusWhitelist")
+    
+    
+    return
+}
+
+func NewCreateImageVirusWhitelistResponse() (response *CreateImageVirusWhitelistResponse) {
+    response = &CreateImageVirusWhitelistResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateImageVirusWhitelist
+// 创建镜像木马白名单
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateImageVirusWhitelist(request *CreateImageVirusWhitelistRequest) (response *CreateImageVirusWhitelistResponse, err error) {
+    return c.CreateImageVirusWhitelistWithContext(context.Background(), request)
+}
+
+// CreateImageVirusWhitelist
+// 创建镜像木马白名单
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateImageVirusWhitelistWithContext(ctx context.Context, request *CreateImageVirusWhitelistRequest) (response *CreateImageVirusWhitelistResponse, err error) {
+    if request == nil {
+        request = NewCreateImageVirusWhitelistRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "CreateImageVirusWhitelist")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateImageVirusWhitelist require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateImageVirusWhitelistResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateImageVulListExportJobRequest() (request *CreateImageVulListExportJobRequest) {
+    request = &CreateImageVulListExportJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "CreateImageVulListExportJob")
+    
+    
+    return
+}
+
+func NewCreateImageVulListExportJobResponse() (response *CreateImageVulListExportJobResponse) {
+    response = &CreateImageVulListExportJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateImageVulListExportJob
+// 创建镜像漏洞列表导出任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateImageVulListExportJob(request *CreateImageVulListExportJobRequest) (response *CreateImageVulListExportJobResponse, err error) {
+    return c.CreateImageVulListExportJobWithContext(context.Background(), request)
+}
+
+// CreateImageVulListExportJob
+// 创建镜像漏洞列表导出任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateImageVulListExportJobWithContext(ctx context.Context, request *CreateImageVulListExportJobRequest) (response *CreateImageVulListExportJobResponse, err error) {
+    if request == nil {
+        request = NewCreateImageVulListExportJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "CreateImageVulListExportJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateImageVulListExportJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateImageVulListExportJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateImageVulSummaryListExportJobRequest() (request *CreateImageVulSummaryListExportJobRequest) {
+    request = &CreateImageVulSummaryListExportJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "CreateImageVulSummaryListExportJob")
+    
+    
+    return
+}
+
+func NewCreateImageVulSummaryListExportJobResponse() (response *CreateImageVulSummaryListExportJobResponse) {
+    response = &CreateImageVulSummaryListExportJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateImageVulSummaryListExportJob
+// 创建镜像漏洞概览列表导出任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateImageVulSummaryListExportJob(request *CreateImageVulSummaryListExportJobRequest) (response *CreateImageVulSummaryListExportJobResponse, err error) {
+    return c.CreateImageVulSummaryListExportJobWithContext(context.Background(), request)
+}
+
+// CreateImageVulSummaryListExportJob
+// 创建镜像漏洞概览列表导出任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateImageVulSummaryListExportJobWithContext(ctx context.Context, request *CreateImageVulSummaryListExportJobRequest) (response *CreateImageVulSummaryListExportJobResponse, err error) {
+    if request == nil {
+        request = NewCreateImageVulSummaryListExportJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "CreateImageVulSummaryListExportJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateImageVulSummaryListExportJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateImageVulSummaryListExportJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateImageVulWhitelistRequest() (request *CreateImageVulWhitelistRequest) {
+    request = &CreateImageVulWhitelistRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "CreateImageVulWhitelist")
+    
+    
+    return
+}
+
+func NewCreateImageVulWhitelistResponse() (response *CreateImageVulWhitelistResponse) {
+    response = &CreateImageVulWhitelistResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateImageVulWhitelist
+// 创建容器镜像漏洞白名单
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateImageVulWhitelist(request *CreateImageVulWhitelistRequest) (response *CreateImageVulWhitelistResponse, err error) {
+    return c.CreateImageVulWhitelistWithContext(context.Background(), request)
+}
+
+// CreateImageVulWhitelist
+// 创建容器镜像漏洞白名单
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateImageVulWhitelistWithContext(ctx context.Context, request *CreateImageVulWhitelistRequest) (response *CreateImageVulWhitelistResponse, err error) {
+    if request == nil {
+        request = NewCreateImageVulWhitelistRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "CreateImageVulWhitelist")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateImageVulWhitelist require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateImageVulWhitelistResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreatePodContainerListExportJobRequest() (request *CreatePodContainerListExportJobRequest) {
     request = &CreatePodContainerListExportJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -7203,6 +9201,486 @@ func (c *Client) DeleteIaCFileWithContext(ctx context.Context, request *DeleteIa
     return
 }
 
+func NewDeleteImageRegistryRequest() (request *DeleteImageRegistryRequest) {
+    request = &DeleteImageRegistryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DeleteImageRegistry")
+    
+    
+    return
+}
+
+func NewDeleteImageRegistryResponse() (response *DeleteImageRegistryResponse) {
+    response = &DeleteImageRegistryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteImageRegistry
+// 删除镜像仓库信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DeleteImageRegistry(request *DeleteImageRegistryRequest) (response *DeleteImageRegistryResponse, err error) {
+    return c.DeleteImageRegistryWithContext(context.Background(), request)
+}
+
+// DeleteImageRegistry
+// 删除镜像仓库信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DeleteImageRegistryWithContext(ctx context.Context, request *DeleteImageRegistryRequest) (response *DeleteImageRegistryResponse, err error) {
+    if request == nil {
+        request = NewDeleteImageRegistryRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DeleteImageRegistry")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteImageRegistry require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteImageRegistryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteImageRegistryScanTaskRequest() (request *DeleteImageRegistryScanTaskRequest) {
+    request = &DeleteImageRegistryScanTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DeleteImageRegistryScanTask")
+    
+    
+    return
+}
+
+func NewDeleteImageRegistryScanTaskResponse() (response *DeleteImageRegistryScanTaskResponse) {
+    response = &DeleteImageRegistryScanTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteImageRegistryScanTask
+// 删除镜像仓库扫描任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DeleteImageRegistryScanTask(request *DeleteImageRegistryScanTaskRequest) (response *DeleteImageRegistryScanTaskResponse, err error) {
+    return c.DeleteImageRegistryScanTaskWithContext(context.Background(), request)
+}
+
+// DeleteImageRegistryScanTask
+// 删除镜像仓库扫描任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DeleteImageRegistryScanTaskWithContext(ctx context.Context, request *DeleteImageRegistryScanTaskRequest) (response *DeleteImageRegistryScanTaskResponse, err error) {
+    if request == nil {
+        request = NewDeleteImageRegistryScanTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DeleteImageRegistryScanTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteImageRegistryScanTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteImageRegistryScanTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteImageRegistryTimedScanTaskConfigRequest() (request *DeleteImageRegistryTimedScanTaskConfigRequest) {
+    request = &DeleteImageRegistryTimedScanTaskConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DeleteImageRegistryTimedScanTaskConfig")
+    
+    
+    return
+}
+
+func NewDeleteImageRegistryTimedScanTaskConfigResponse() (response *DeleteImageRegistryTimedScanTaskConfigResponse) {
+    response = &DeleteImageRegistryTimedScanTaskConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteImageRegistryTimedScanTaskConfig
+// 删除镜像仓库定时扫描任务配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DeleteImageRegistryTimedScanTaskConfig(request *DeleteImageRegistryTimedScanTaskConfigRequest) (response *DeleteImageRegistryTimedScanTaskConfigResponse, err error) {
+    return c.DeleteImageRegistryTimedScanTaskConfigWithContext(context.Background(), request)
+}
+
+// DeleteImageRegistryTimedScanTaskConfig
+// 删除镜像仓库定时扫描任务配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DeleteImageRegistryTimedScanTaskConfigWithContext(ctx context.Context, request *DeleteImageRegistryTimedScanTaskConfigRequest) (response *DeleteImageRegistryTimedScanTaskConfigResponse, err error) {
+    if request == nil {
+        request = NewDeleteImageRegistryTimedScanTaskConfigRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DeleteImageRegistryTimedScanTaskConfig")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteImageRegistryTimedScanTaskConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteImageRegistryTimedScanTaskConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteImageSensitiveWhitelistRequest() (request *DeleteImageSensitiveWhitelistRequest) {
+    request = &DeleteImageSensitiveWhitelistRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DeleteImageSensitiveWhitelist")
+    
+    
+    return
+}
+
+func NewDeleteImageSensitiveWhitelistResponse() (response *DeleteImageSensitiveWhitelistResponse) {
+    response = &DeleteImageSensitiveWhitelistResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteImageSensitiveWhitelist
+// 删除容器镜像敏感信息白名单
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DeleteImageSensitiveWhitelist(request *DeleteImageSensitiveWhitelistRequest) (response *DeleteImageSensitiveWhitelistResponse, err error) {
+    return c.DeleteImageSensitiveWhitelistWithContext(context.Background(), request)
+}
+
+// DeleteImageSensitiveWhitelist
+// 删除容器镜像敏感信息白名单
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DeleteImageSensitiveWhitelistWithContext(ctx context.Context, request *DeleteImageSensitiveWhitelistRequest) (response *DeleteImageSensitiveWhitelistResponse, err error) {
+    if request == nil {
+        request = NewDeleteImageSensitiveWhitelistRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DeleteImageSensitiveWhitelist")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteImageSensitiveWhitelist require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteImageSensitiveWhitelistResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteImageVirusWhitelistRequest() (request *DeleteImageVirusWhitelistRequest) {
+    request = &DeleteImageVirusWhitelistRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DeleteImageVirusWhitelist")
+    
+    
+    return
+}
+
+func NewDeleteImageVirusWhitelistResponse() (response *DeleteImageVirusWhitelistResponse) {
+    response = &DeleteImageVirusWhitelistResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteImageVirusWhitelist
+// 删除镜像木马白名单
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DeleteImageVirusWhitelist(request *DeleteImageVirusWhitelistRequest) (response *DeleteImageVirusWhitelistResponse, err error) {
+    return c.DeleteImageVirusWhitelistWithContext(context.Background(), request)
+}
+
+// DeleteImageVirusWhitelist
+// 删除镜像木马白名单
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DeleteImageVirusWhitelistWithContext(ctx context.Context, request *DeleteImageVirusWhitelistRequest) (response *DeleteImageVirusWhitelistResponse, err error) {
+    if request == nil {
+        request = NewDeleteImageVirusWhitelistRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DeleteImageVirusWhitelist")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteImageVirusWhitelist require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteImageVirusWhitelistResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteImageVulWhitelistRequest() (request *DeleteImageVulWhitelistRequest) {
+    request = &DeleteImageVulWhitelistRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DeleteImageVulWhitelist")
+    
+    
+    return
+}
+
+func NewDeleteImageVulWhitelistResponse() (response *DeleteImageVulWhitelistResponse) {
+    response = &DeleteImageVulWhitelistResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteImageVulWhitelist
+// 删除容器镜像漏洞白名单
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DeleteImageVulWhitelist(request *DeleteImageVulWhitelistRequest) (response *DeleteImageVulWhitelistResponse, err error) {
+    return c.DeleteImageVulWhitelistWithContext(context.Background(), request)
+}
+
+// DeleteImageVulWhitelist
+// 删除容器镜像漏洞白名单
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DeleteImageVulWhitelistWithContext(ctx context.Context, request *DeleteImageVulWhitelistRequest) (response *DeleteImageVulWhitelistResponse, err error) {
+    if request == nil {
+        request = NewDeleteImageVulWhitelistRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DeleteImageVulWhitelist")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteImageVulWhitelist require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteImageVulWhitelistResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteLoginWhiteListRequest() (request *DeleteLoginWhiteListRequest) {
     request = &DeleteLoginWhiteListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -7411,6 +9889,90 @@ func (c *Client) DeleteRiskScanTaskWithContext(ctx context.Context, request *Del
     return
 }
 
+func NewDeleteSandboxLLMAuditRuleRequest() (request *DeleteSandboxLLMAuditRuleRequest) {
+    request = &DeleteSandboxLLMAuditRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DeleteSandboxLLMAuditRule")
+    
+    
+    return
+}
+
+func NewDeleteSandboxLLMAuditRuleResponse() (response *DeleteSandboxLLMAuditRuleResponse) {
+    response = &DeleteSandboxLLMAuditRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteSandboxLLMAuditRule
+// 批量删除 LLM 审计用户规则。任一 ID 不存在或属于其他租户时整体返回错误
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteSandboxLLMAuditRule(request *DeleteSandboxLLMAuditRuleRequest) (response *DeleteSandboxLLMAuditRuleResponse, err error) {
+    return c.DeleteSandboxLLMAuditRuleWithContext(context.Background(), request)
+}
+
+// DeleteSandboxLLMAuditRule
+// 批量删除 LLM 审计用户规则。任一 ID 不存在或属于其他租户时整体返回错误
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteSandboxLLMAuditRuleWithContext(ctx context.Context, request *DeleteSandboxLLMAuditRuleRequest) (response *DeleteSandboxLLMAuditRuleResponse, err error) {
+    if request == nil {
+        request = NewDeleteSandboxLLMAuditRuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DeleteSandboxLLMAuditRule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteSandboxLLMAuditRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteSandboxLLMAuditRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteVulWhitelistRequest() (request *DeleteVulWhitelistRequest) {
     request = &DeleteVulWhitelistRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -7607,6 +10169,156 @@ func (c *Client) DescribeAIAgentAssetListWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewDescribeAIAgentAssetListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAIAgentCredentialListRequest() (request *DescribeAIAgentCredentialListRequest) {
+    request = &DescribeAIAgentCredentialListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeAIAgentCredentialList")
+    
+    
+    return
+}
+
+func NewDescribeAIAgentCredentialListResponse() (response *DescribeAIAgentCredentialListResponse) {
+    response = &DescribeAIAgentCredentialListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAIAgentCredentialList
+// 获取 AIAgent 资产凭据扫描列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeAIAgentCredentialList(request *DescribeAIAgentCredentialListRequest) (response *DescribeAIAgentCredentialListResponse, err error) {
+    return c.DescribeAIAgentCredentialListWithContext(context.Background(), request)
+}
+
+// DescribeAIAgentCredentialList
+// 获取 AIAgent 资产凭据扫描列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeAIAgentCredentialListWithContext(ctx context.Context, request *DescribeAIAgentCredentialListRequest) (response *DescribeAIAgentCredentialListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAIAgentCredentialListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeAIAgentCredentialList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAIAgentCredentialList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAIAgentCredentialListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAIAgentCredentialLocationListRequest() (request *DescribeAIAgentCredentialLocationListRequest) {
+    request = &DescribeAIAgentCredentialLocationListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeAIAgentCredentialLocationList")
+    
+    
+    return
+}
+
+func NewDescribeAIAgentCredentialLocationListResponse() (response *DescribeAIAgentCredentialLocationListResponse) {
+    response = &DescribeAIAgentCredentialLocationListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAIAgentCredentialLocationList
+// 按凭据组行 ID 分页查询单个凭据的泄露位置列表。用于配合 DescribeAIAgentCredentialList 接口拆分后的展开场景，避免单接口在数据倾斜场景下一次拉取几十万行 location 导致性能问题。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeAIAgentCredentialLocationList(request *DescribeAIAgentCredentialLocationListRequest) (response *DescribeAIAgentCredentialLocationListResponse, err error) {
+    return c.DescribeAIAgentCredentialLocationListWithContext(context.Background(), request)
+}
+
+// DescribeAIAgentCredentialLocationList
+// 按凭据组行 ID 分页查询单个凭据的泄露位置列表。用于配合 DescribeAIAgentCredentialList 接口拆分后的展开场景，避免单接口在数据倾斜场景下一次拉取几十万行 location 导致性能问题。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeAIAgentCredentialLocationListWithContext(ctx context.Context, request *DescribeAIAgentCredentialLocationListRequest) (response *DescribeAIAgentCredentialLocationListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAIAgentCredentialLocationListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeAIAgentCredentialLocationList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAIAgentCredentialLocationList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAIAgentCredentialLocationListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAIAgentSkillListRequest() (request *DescribeAIAgentSkillListRequest) {
+    request = &DescribeAIAgentSkillListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeAIAgentSkillList")
+    
+    
+    return
+}
+
+func NewDescribeAIAgentSkillListResponse() (response *DescribeAIAgentSkillListResponse) {
+    response = &DescribeAIAgentSkillListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAIAgentSkillList
+// 获取 AI Agent skill 列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeAIAgentSkillList(request *DescribeAIAgentSkillListRequest) (response *DescribeAIAgentSkillListResponse, err error) {
+    return c.DescribeAIAgentSkillListWithContext(context.Background(), request)
+}
+
+// DescribeAIAgentSkillList
+// 获取 AI Agent skill 列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeAIAgentSkillListWithContext(ctx context.Context, request *DescribeAIAgentSkillListRequest) (response *DescribeAIAgentSkillListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAIAgentSkillListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeAIAgentSkillList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAIAgentSkillList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAIAgentSkillListResponse()
     err = c.Send(request, response)
     return
 }
@@ -9107,6 +11819,166 @@ func (c *Client) DescribeAlertListWithContext(ctx context.Context, request *Desc
     return
 }
 
+func NewDescribeAssetComponentListRequest() (request *DescribeAssetComponentListRequest) {
+    request = &DescribeAssetComponentListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeAssetComponentList")
+    
+    
+    return
+}
+
+func NewDescribeAssetComponentListResponse() (response *DescribeAssetComponentListResponse) {
+    response = &DescribeAssetComponentListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAssetComponentList
+// 查询资产中组件列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeAssetComponentList(request *DescribeAssetComponentListRequest) (response *DescribeAssetComponentListResponse, err error) {
+    return c.DescribeAssetComponentListWithContext(context.Background(), request)
+}
+
+// DescribeAssetComponentList
+// 查询资产中组件列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeAssetComponentListWithContext(ctx context.Context, request *DescribeAssetComponentListRequest) (response *DescribeAssetComponentListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetComponentListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeAssetComponentList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAssetComponentList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAssetComponentListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAssetComponentRelatedImageListRequest() (request *DescribeAssetComponentRelatedImageListRequest) {
+    request = &DescribeAssetComponentRelatedImageListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeAssetComponentRelatedImageList")
+    
+    
+    return
+}
+
+func NewDescribeAssetComponentRelatedImageListResponse() (response *DescribeAssetComponentRelatedImageListResponse) {
+    response = &DescribeAssetComponentRelatedImageListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAssetComponentRelatedImageList
+// 查询镜像仓库组件关联的镜像列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeAssetComponentRelatedImageList(request *DescribeAssetComponentRelatedImageListRequest) (response *DescribeAssetComponentRelatedImageListResponse, err error) {
+    return c.DescribeAssetComponentRelatedImageListWithContext(context.Background(), request)
+}
+
+// DescribeAssetComponentRelatedImageList
+// 查询镜像仓库组件关联的镜像列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeAssetComponentRelatedImageListWithContext(ctx context.Context, request *DescribeAssetComponentRelatedImageListRequest) (response *DescribeAssetComponentRelatedImageListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetComponentRelatedImageListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeAssetComponentRelatedImageList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAssetComponentRelatedImageList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAssetComponentRelatedImageListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAssetDetailRequest() (request *DescribeAssetDetailRequest) {
     request = &DescribeAssetDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -9130,13 +12002,22 @@ func NewDescribeAssetDetailResponse() (response *DescribeAssetDetailResponse) {
 // 资产详情信息
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeAssetDetail(request *DescribeAssetDetailRequest) (response *DescribeAssetDetailResponse, err error) {
     return c.DescribeAssetDetailWithContext(context.Background(), request)
 }
@@ -9145,13 +12026,22 @@ func (c *Client) DescribeAssetDetail(request *DescribeAssetDetailRequest) (respo
 // 资产详情信息
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeAssetDetailWithContext(ctx context.Context, request *DescribeAssetDetailRequest) (response *DescribeAssetDetailResponse, err error) {
     if request == nil {
         request = NewDescribeAssetDetailRequest()
@@ -9192,13 +12082,22 @@ func NewDescribeAssetFilterViewsResponse() (response *DescribeAssetFilterViewsRe
 // 资产搜索视图
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeAssetFilterViews(request *DescribeAssetFilterViewsRequest) (response *DescribeAssetFilterViewsResponse, err error) {
     return c.DescribeAssetFilterViewsWithContext(context.Background(), request)
 }
@@ -9207,13 +12106,22 @@ func (c *Client) DescribeAssetFilterViews(request *DescribeAssetFilterViewsReque
 // 资产搜索视图
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeAssetFilterViewsWithContext(ctx context.Context, request *DescribeAssetFilterViewsRequest) (response *DescribeAssetFilterViewsResponse, err error) {
     if request == nil {
         request = NewDescribeAssetFilterViewsRequest()
@@ -9254,13 +12162,22 @@ func NewDescribeAssetInfoResponse() (response *DescribeAssetInfoResponse) {
 // 资产信息
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeAssetInfo(request *DescribeAssetInfoRequest) (response *DescribeAssetInfoResponse, err error) {
     return c.DescribeAssetInfoWithContext(context.Background(), request)
 }
@@ -9269,13 +12186,22 @@ func (c *Client) DescribeAssetInfo(request *DescribeAssetInfoRequest) (response 
 // 资产信息
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeAssetInfoWithContext(ctx context.Context, request *DescribeAssetInfoRequest) (response *DescribeAssetInfoResponse, err error) {
     if request == nil {
         request = NewDescribeAssetInfoRequest()
@@ -9316,13 +12242,22 @@ func NewDescribeAssetLastSyncTimeResponse() (response *DescribeAssetLastSyncTime
 // 资产最近同步时间
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeAssetLastSyncTime(request *DescribeAssetLastSyncTimeRequest) (response *DescribeAssetLastSyncTimeResponse, err error) {
     return c.DescribeAssetLastSyncTimeWithContext(context.Background(), request)
 }
@@ -9331,13 +12266,22 @@ func (c *Client) DescribeAssetLastSyncTime(request *DescribeAssetLastSyncTimeReq
 // 资产最近同步时间
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeAssetLastSyncTimeWithContext(ctx context.Context, request *DescribeAssetLastSyncTimeRequest) (response *DescribeAssetLastSyncTimeResponse, err error) {
     if request == nil {
         request = NewDescribeAssetLastSyncTimeRequest()
@@ -9378,13 +12322,22 @@ func NewDescribeAssetOverviewResponse() (response *DescribeAssetOverviewResponse
 // 资产概览统计
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeAssetOverview(request *DescribeAssetOverviewRequest) (response *DescribeAssetOverviewResponse, err error) {
     return c.DescribeAssetOverviewWithContext(context.Background(), request)
 }
@@ -9393,13 +12346,22 @@ func (c *Client) DescribeAssetOverview(request *DescribeAssetOverviewRequest) (r
 // 资产概览统计
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeAssetOverviewWithContext(ctx context.Context, request *DescribeAssetOverviewRequest) (response *DescribeAssetOverviewResponse, err error) {
     if request == nil {
         request = NewDescribeAssetOverviewRequest()
@@ -9440,13 +12402,22 @@ func NewDescribeAssetProcessListResponse() (response *DescribeAssetProcessListRe
 // 查询云边界分析-暴露路径下主机节点的进程列表
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeAssetProcessList(request *DescribeAssetProcessListRequest) (response *DescribeAssetProcessListResponse, err error) {
     return c.DescribeAssetProcessListWithContext(context.Background(), request)
 }
@@ -9455,13 +12426,22 @@ func (c *Client) DescribeAssetProcessList(request *DescribeAssetProcessListReque
 // 查询云边界分析-暴露路径下主机节点的进程列表
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeAssetProcessListWithContext(ctx context.Context, request *DescribeAssetProcessListRequest) (response *DescribeAssetProcessListResponse, err error) {
     if request == nil {
         request = NewDescribeAssetProcessListRequest()
@@ -9502,13 +12482,22 @@ func NewDescribeAssetRiskDetailResponse() (response *DescribeAssetRiskDetailResp
 // 资产风险详情
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeAssetRiskDetail(request *DescribeAssetRiskDetailRequest) (response *DescribeAssetRiskDetailResponse, err error) {
     return c.DescribeAssetRiskDetailWithContext(context.Background(), request)
 }
@@ -9517,13 +12506,22 @@ func (c *Client) DescribeAssetRiskDetail(request *DescribeAssetRiskDetailRequest
 // 资产风险详情
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeAssetRiskDetailWithContext(ctx context.Context, request *DescribeAssetRiskDetailRequest) (response *DescribeAssetRiskDetailResponse, err error) {
     if request == nil {
         request = NewDescribeAssetRiskDetailRequest()
@@ -9564,13 +12562,22 @@ func NewDescribeAssetRiskListResponse() (response *DescribeAssetRiskListResponse
 // 资产视角下云资源配置风险列表
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeAssetRiskList(request *DescribeAssetRiskListRequest) (response *DescribeAssetRiskListResponse, err error) {
     return c.DescribeAssetRiskListWithContext(context.Background(), request)
 }
@@ -9579,13 +12586,22 @@ func (c *Client) DescribeAssetRiskList(request *DescribeAssetRiskListRequest) (r
 // 资产视角下云资源配置风险列表
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeAssetRiskListWithContext(ctx context.Context, request *DescribeAssetRiskListRequest) (response *DescribeAssetRiskListResponse, err error) {
     if request == nil {
         request = NewDescribeAssetRiskListRequest()
@@ -9626,13 +12642,22 @@ func NewDescribeAssetSyncTaskStatusResponse() (response *DescribeAssetSyncTaskSt
 // 资产同步任务状态
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeAssetSyncTaskStatus(request *DescribeAssetSyncTaskStatusRequest) (response *DescribeAssetSyncTaskStatusResponse, err error) {
     return c.DescribeAssetSyncTaskStatusWithContext(context.Background(), request)
 }
@@ -9641,13 +12666,22 @@ func (c *Client) DescribeAssetSyncTaskStatus(request *DescribeAssetSyncTaskStatu
 // 资产同步任务状态
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeAssetSyncTaskStatusWithContext(ctx context.Context, request *DescribeAssetSyncTaskStatusRequest) (response *DescribeAssetSyncTaskStatusResponse, err error) {
     if request == nil {
         request = NewDescribeAssetSyncTaskStatusRequest()
@@ -9688,13 +12722,22 @@ func NewDescribeAssetTagAttributesResponse() (response *DescribeAssetTagAttribut
 // 获取资产标签属性
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeAssetTagAttributes(request *DescribeAssetTagAttributesRequest) (response *DescribeAssetTagAttributesResponse, err error) {
     return c.DescribeAssetTagAttributesWithContext(context.Background(), request)
 }
@@ -9703,13 +12746,22 @@ func (c *Client) DescribeAssetTagAttributes(request *DescribeAssetTagAttributesR
 // 获取资产标签属性
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeAssetTagAttributesWithContext(ctx context.Context, request *DescribeAssetTagAttributesRequest) (response *DescribeAssetTagAttributesResponse, err error) {
     if request == nil {
         request = NewDescribeAssetTagAttributesRequest()
@@ -9750,13 +12802,22 @@ func NewDescribeAssetTagTreeResponse() (response *DescribeAssetTagTreeResponse) 
 // 资产标签树结构数据
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeAssetTagTree(request *DescribeAssetTagTreeRequest) (response *DescribeAssetTagTreeResponse, err error) {
     return c.DescribeAssetTagTreeWithContext(context.Background(), request)
 }
@@ -9765,13 +12826,22 @@ func (c *Client) DescribeAssetTagTree(request *DescribeAssetTagTreeRequest) (res
 // 资产标签树结构数据
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeAssetTagTreeWithContext(ctx context.Context, request *DescribeAssetTagTreeRequest) (response *DescribeAssetTagTreeResponse, err error) {
     if request == nil {
         request = NewDescribeAssetTagTreeRequest()
@@ -9812,13 +12882,22 @@ func NewDescribeAssetTagsResponse() (response *DescribeAssetTagsResponse) {
 // 全部资产
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeAssetTags(request *DescribeAssetTagsRequest) (response *DescribeAssetTagsResponse, err error) {
     return c.DescribeAssetTagsWithContext(context.Background(), request)
 }
@@ -9827,13 +12906,22 @@ func (c *Client) DescribeAssetTags(request *DescribeAssetTagsRequest) (response 
 // 全部资产
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeAssetTagsWithContext(ctx context.Context, request *DescribeAssetTagsRequest) (response *DescribeAssetTagsResponse, err error) {
     if request == nil {
         request = NewDescribeAssetTagsRequest()
@@ -9874,13 +12962,22 @@ func NewDescribeAssetTreeResponse() (response *DescribeAssetTreeResponse) {
 // 资产树结构
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeAssetTree(request *DescribeAssetTreeRequest) (response *DescribeAssetTreeResponse, err error) {
     return c.DescribeAssetTreeWithContext(context.Background(), request)
 }
@@ -9889,13 +12986,22 @@ func (c *Client) DescribeAssetTree(request *DescribeAssetTreeRequest) (response 
 // 资产树结构
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeAssetTreeWithContext(ctx context.Context, request *DescribeAssetTreeRequest) (response *DescribeAssetTreeResponse, err error) {
     if request == nil {
         request = NewDescribeAssetTreeRequest()
@@ -9936,13 +13042,22 @@ func NewDescribeAssetViewVulRiskListResponse() (response *DescribeAssetViewVulRi
 // 获取资产视角的漏洞风险列表
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeAssetViewVulRiskList(request *DescribeAssetViewVulRiskListRequest) (response *DescribeAssetViewVulRiskListResponse, err error) {
     return c.DescribeAssetViewVulRiskListWithContext(context.Background(), request)
 }
@@ -9951,13 +13066,22 @@ func (c *Client) DescribeAssetViewVulRiskList(request *DescribeAssetViewVulRiskL
 // 获取资产视角的漏洞风险列表
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeAssetViewVulRiskListWithContext(ctx context.Context, request *DescribeAssetViewVulRiskListRequest) (response *DescribeAssetViewVulRiskListResponse, err error) {
     if request == nil {
         request = NewDescribeAssetViewVulRiskListRequest()
@@ -10037,6 +13161,86 @@ func (c *Client) DescribeAssumeRoleWithContext(ctx context.Context, request *Des
     request.SetContext(ctx)
     
     response = NewDescribeAssumeRoleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBackendScanEngineRegionListRequest() (request *DescribeBackendScanEngineRegionListRequest) {
+    request = &DescribeBackendScanEngineRegionListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeBackendScanEngineRegionList")
+    
+    
+    return
+}
+
+func NewDescribeBackendScanEngineRegionListResponse() (response *DescribeBackendScanEngineRegionListResponse) {
+    response = &DescribeBackendScanEngineRegionListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeBackendScanEngineRegionList
+// 查询后台扫描引擎地域列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeBackendScanEngineRegionList(request *DescribeBackendScanEngineRegionListRequest) (response *DescribeBackendScanEngineRegionListResponse, err error) {
+    return c.DescribeBackendScanEngineRegionListWithContext(context.Background(), request)
+}
+
+// DescribeBackendScanEngineRegionList
+// 查询后台扫描引擎地域列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeBackendScanEngineRegionListWithContext(ctx context.Context, request *DescribeBackendScanEngineRegionListRequest) (response *DescribeBackendScanEngineRegionListResponse, err error) {
+    if request == nil {
+        request = NewDescribeBackendScanEngineRegionListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeBackendScanEngineRegionList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBackendScanEngineRegionList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBackendScanEngineRegionListResponse()
     err = c.Send(request, response)
     return
 }
@@ -12837,6 +16041,86 @@ func (c *Client) DescribeCallRecordWithContext(ctx context.Context, request *Des
     return
 }
 
+func NewDescribeCheckConnectivityHostListRequest() (request *DescribeCheckConnectivityHostListRequest) {
+    request = &DescribeCheckConnectivityHostListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeCheckConnectivityHostList")
+    
+    
+    return
+}
+
+func NewDescribeCheckConnectivityHostListResponse() (response *DescribeCheckConnectivityHostListResponse) {
+    response = &DescribeCheckConnectivityHostListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCheckConnectivityHostList
+// 查询联通性检测主机列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeCheckConnectivityHostList(request *DescribeCheckConnectivityHostListRequest) (response *DescribeCheckConnectivityHostListResponse, err error) {
+    return c.DescribeCheckConnectivityHostListWithContext(context.Background(), request)
+}
+
+// DescribeCheckConnectivityHostList
+// 查询联通性检测主机列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeCheckConnectivityHostListWithContext(ctx context.Context, request *DescribeCheckConnectivityHostListRequest) (response *DescribeCheckConnectivityHostListResponse, err error) {
+    if request == nil {
+        request = NewDescribeCheckConnectivityHostListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeCheckConnectivityHostList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCheckConnectivityHostList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCheckConnectivityHostListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCheckViewRisksRequest() (request *DescribeCheckViewRisksRequest) {
     request = &DescribeCheckViewRisksRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -12861,23 +16145,21 @@ func NewDescribeCheckViewRisksResponse() (response *DescribeCheckViewRisksRespon
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 //  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCheckViewRisks(request *DescribeCheckViewRisksRequest) (response *DescribeCheckViewRisksResponse, err error) {
     return c.DescribeCheckViewRisksWithContext(context.Background(), request)
 }
@@ -12887,23 +16169,21 @@ func (c *Client) DescribeCheckViewRisks(request *DescribeCheckViewRisksRequest) 
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 //  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCheckViewRisksWithContext(ctx context.Context, request *DescribeCheckViewRisksRequest) (response *DescribeCheckViewRisksResponse, err error) {
     if request == nil {
         request = NewDescribeCheckViewRisksRequest()
@@ -12945,23 +16225,21 @@ func NewDescribeClbListenerListResponse() (response *DescribeClbListenerListResp
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 //  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeClbListenerList(request *DescribeClbListenerListRequest) (response *DescribeClbListenerListResponse, err error) {
     return c.DescribeClbListenerListWithContext(context.Background(), request)
 }
@@ -12971,23 +16249,21 @@ func (c *Client) DescribeClbListenerList(request *DescribeClbListenerListRequest
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 //  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeClbListenerListWithContext(ctx context.Context, request *DescribeClbListenerListRequest) (response *DescribeClbListenerListResponse, err error) {
     if request == nil {
         request = NewDescribeClbListenerListRequest()
@@ -13029,23 +16305,21 @@ func NewDescribeClbListenerRulesResponse() (response *DescribeClbListenerRulesRe
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 //  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeClbListenerRules(request *DescribeClbListenerRulesRequest) (response *DescribeClbListenerRulesResponse, err error) {
     return c.DescribeClbListenerRulesWithContext(context.Background(), request)
 }
@@ -13055,23 +16329,21 @@ func (c *Client) DescribeClbListenerRules(request *DescribeClbListenerRulesReque
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 //  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeClbListenerRulesWithContext(ctx context.Context, request *DescribeClbListenerRulesRequest) (response *DescribeClbListenerRulesResponse, err error) {
     if request == nil {
         request = NewDescribeClbListenerRulesRequest()
@@ -13113,23 +16385,21 @@ func NewDescribeClbTargetsResponse() (response *DescribeClbTargetsResponse) {
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 //  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeClbTargets(request *DescribeClbTargetsRequest) (response *DescribeClbTargetsResponse, err error) {
     return c.DescribeClbTargetsWithContext(context.Background(), request)
 }
@@ -13139,23 +16409,21 @@ func (c *Client) DescribeClbTargets(request *DescribeClbTargetsRequest) (respons
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 //  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeClbTargetsWithContext(ctx context.Context, request *DescribeClbTargetsRequest) (response *DescribeClbTargetsResponse, err error) {
     if request == nil {
         request = NewDescribeClbTargetsRequest()
@@ -13197,23 +16465,21 @@ func NewDescribeCloudAssetsResponse() (response *DescribeCloudAssetsResponse) {
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 //  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCloudAssets(request *DescribeCloudAssetsRequest) (response *DescribeCloudAssetsResponse, err error) {
     return c.DescribeCloudAssetsWithContext(context.Background(), request)
 }
@@ -13223,23 +16489,21 @@ func (c *Client) DescribeCloudAssets(request *DescribeCloudAssetsRequest) (respo
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 //  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCloudAssetsWithContext(ctx context.Context, request *DescribeCloudAssetsRequest) (response *DescribeCloudAssetsResponse, err error) {
     if request == nil {
         request = NewDescribeCloudAssetsRequest()
@@ -13281,23 +16545,21 @@ func NewDescribeCloudFunctionListResponse() (response *DescribeCloudFunctionList
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 //  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCloudFunctionList(request *DescribeCloudFunctionListRequest) (response *DescribeCloudFunctionListResponse, err error) {
     return c.DescribeCloudFunctionListWithContext(context.Background(), request)
 }
@@ -13307,23 +16569,21 @@ func (c *Client) DescribeCloudFunctionList(request *DescribeCloudFunctionListReq
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 //  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCloudFunctionListWithContext(ctx context.Context, request *DescribeCloudFunctionListRequest) (response *DescribeCloudFunctionListResponse, err error) {
     if request == nil {
         request = NewDescribeCloudFunctionListRequest()
@@ -22761,6 +26021,2006 @@ func (c *Client) DescribeIaCTokenListWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeImageAssetDetailRequest() (request *DescribeImageAssetDetailRequest) {
+    request = &DescribeImageAssetDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeImageAssetDetail")
+    
+    
+    return
+}
+
+func NewDescribeImageAssetDetailResponse() (response *DescribeImageAssetDetailResponse) {
+    response = &DescribeImageAssetDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeImageAssetDetail
+// 查询镜像资产详情
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeImageAssetDetail(request *DescribeImageAssetDetailRequest) (response *DescribeImageAssetDetailResponse, err error) {
+    return c.DescribeImageAssetDetailWithContext(context.Background(), request)
+}
+
+// DescribeImageAssetDetail
+// 查询镜像资产详情
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeImageAssetDetailWithContext(ctx context.Context, request *DescribeImageAssetDetailRequest) (response *DescribeImageAssetDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeImageAssetDetailRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeImageAssetDetail")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeImageAssetDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeImageAssetDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeImageAssetListRequest() (request *DescribeImageAssetListRequest) {
+    request = &DescribeImageAssetListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeImageAssetList")
+    
+    
+    return
+}
+
+func NewDescribeImageAssetListResponse() (response *DescribeImageAssetListResponse) {
+    response = &DescribeImageAssetListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeImageAssetList
+// 查询镜像资产列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeImageAssetList(request *DescribeImageAssetListRequest) (response *DescribeImageAssetListResponse, err error) {
+    return c.DescribeImageAssetListWithContext(context.Background(), request)
+}
+
+// DescribeImageAssetList
+// 查询镜像资产列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeImageAssetListWithContext(ctx context.Context, request *DescribeImageAssetListRequest) (response *DescribeImageAssetListResponse, err error) {
+    if request == nil {
+        request = NewDescribeImageAssetListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeImageAssetList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeImageAssetList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeImageAssetListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeImageAssociatedAssetCountRequest() (request *DescribeImageAssociatedAssetCountRequest) {
+    request = &DescribeImageAssociatedAssetCountRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeImageAssociatedAssetCount")
+    
+    
+    return
+}
+
+func NewDescribeImageAssociatedAssetCountResponse() (response *DescribeImageAssociatedAssetCountResponse) {
+    response = &DescribeImageAssociatedAssetCountResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeImageAssociatedAssetCount
+// 查询镜像关联资产数
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeImageAssociatedAssetCount(request *DescribeImageAssociatedAssetCountRequest) (response *DescribeImageAssociatedAssetCountResponse, err error) {
+    return c.DescribeImageAssociatedAssetCountWithContext(context.Background(), request)
+}
+
+// DescribeImageAssociatedAssetCount
+// 查询镜像关联资产数
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeImageAssociatedAssetCountWithContext(ctx context.Context, request *DescribeImageAssociatedAssetCountRequest) (response *DescribeImageAssociatedAssetCountResponse, err error) {
+    if request == nil {
+        request = NewDescribeImageAssociatedAssetCountRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeImageAssociatedAssetCount")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeImageAssociatedAssetCount require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeImageAssociatedAssetCountResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeImageAssociatedContainerListRequest() (request *DescribeImageAssociatedContainerListRequest) {
+    request = &DescribeImageAssociatedContainerListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeImageAssociatedContainerList")
+    
+    
+    return
+}
+
+func NewDescribeImageAssociatedContainerListResponse() (response *DescribeImageAssociatedContainerListResponse) {
+    response = &DescribeImageAssociatedContainerListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeImageAssociatedContainerList
+// 查询镜像关联容器资产
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeImageAssociatedContainerList(request *DescribeImageAssociatedContainerListRequest) (response *DescribeImageAssociatedContainerListResponse, err error) {
+    return c.DescribeImageAssociatedContainerListWithContext(context.Background(), request)
+}
+
+// DescribeImageAssociatedContainerList
+// 查询镜像关联容器资产
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeImageAssociatedContainerListWithContext(ctx context.Context, request *DescribeImageAssociatedContainerListRequest) (response *DescribeImageAssociatedContainerListResponse, err error) {
+    if request == nil {
+        request = NewDescribeImageAssociatedContainerListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeImageAssociatedContainerList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeImageAssociatedContainerList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeImageAssociatedContainerListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeImageAssociatedHostListRequest() (request *DescribeImageAssociatedHostListRequest) {
+    request = &DescribeImageAssociatedHostListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeImageAssociatedHostList")
+    
+    
+    return
+}
+
+func NewDescribeImageAssociatedHostListResponse() (response *DescribeImageAssociatedHostListResponse) {
+    response = &DescribeImageAssociatedHostListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeImageAssociatedHostList
+// 查询镜像关联主机资产列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeImageAssociatedHostList(request *DescribeImageAssociatedHostListRequest) (response *DescribeImageAssociatedHostListResponse, err error) {
+    return c.DescribeImageAssociatedHostListWithContext(context.Background(), request)
+}
+
+// DescribeImageAssociatedHostList
+// 查询镜像关联主机资产列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeImageAssociatedHostListWithContext(ctx context.Context, request *DescribeImageAssociatedHostListRequest) (response *DescribeImageAssociatedHostListResponse, err error) {
+    if request == nil {
+        request = NewDescribeImageAssociatedHostListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeImageAssociatedHostList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeImageAssociatedHostList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeImageAssociatedHostListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeImageComponentListRequest() (request *DescribeImageComponentListRequest) {
+    request = &DescribeImageComponentListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeImageComponentList")
+    
+    
+    return
+}
+
+func NewDescribeImageComponentListResponse() (response *DescribeImageComponentListResponse) {
+    response = &DescribeImageComponentListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeImageComponentList
+// 查询镜像组件列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeImageComponentList(request *DescribeImageComponentListRequest) (response *DescribeImageComponentListResponse, err error) {
+    return c.DescribeImageComponentListWithContext(context.Background(), request)
+}
+
+// DescribeImageComponentList
+// 查询镜像组件列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeImageComponentListWithContext(ctx context.Context, request *DescribeImageComponentListRequest) (response *DescribeImageComponentListResponse, err error) {
+    if request == nil {
+        request = NewDescribeImageComponentListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeImageComponentList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeImageComponentList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeImageComponentListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeImageExportJobListRequest() (request *DescribeImageExportJobListRequest) {
+    request = &DescribeImageExportJobListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeImageExportJobList")
+    
+    
+    return
+}
+
+func NewDescribeImageExportJobListResponse() (response *DescribeImageExportJobListResponse) {
+    response = &DescribeImageExportJobListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeImageExportJobList
+// 查询镜像仓库导出任务列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeImageExportJobList(request *DescribeImageExportJobListRequest) (response *DescribeImageExportJobListResponse, err error) {
+    return c.DescribeImageExportJobListWithContext(context.Background(), request)
+}
+
+// DescribeImageExportJobList
+// 查询镜像仓库导出任务列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeImageExportJobListWithContext(ctx context.Context, request *DescribeImageExportJobListRequest) (response *DescribeImageExportJobListResponse, err error) {
+    if request == nil {
+        request = NewDescribeImageExportJobListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeImageExportJobList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeImageExportJobList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeImageExportJobListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeImageLayerListRequest() (request *DescribeImageLayerListRequest) {
+    request = &DescribeImageLayerListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeImageLayerList")
+    
+    
+    return
+}
+
+func NewDescribeImageLayerListResponse() (response *DescribeImageLayerListResponse) {
+    response = &DescribeImageLayerListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeImageLayerList
+// 查询镜像层信息列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeImageLayerList(request *DescribeImageLayerListRequest) (response *DescribeImageLayerListResponse, err error) {
+    return c.DescribeImageLayerListWithContext(context.Background(), request)
+}
+
+// DescribeImageLayerList
+// 查询镜像层信息列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeImageLayerListWithContext(ctx context.Context, request *DescribeImageLayerListRequest) (response *DescribeImageLayerListResponse, err error) {
+    if request == nil {
+        request = NewDescribeImageLayerListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeImageLayerList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeImageLayerList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeImageLayerListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeImageLayerVulListRequest() (request *DescribeImageLayerVulListRequest) {
+    request = &DescribeImageLayerVulListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeImageLayerVulList")
+    
+    
+    return
+}
+
+func NewDescribeImageLayerVulListResponse() (response *DescribeImageLayerVulListResponse) {
+    response = &DescribeImageLayerVulListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeImageLayerVulList
+// 查询镜像层漏洞列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeImageLayerVulList(request *DescribeImageLayerVulListRequest) (response *DescribeImageLayerVulListResponse, err error) {
+    return c.DescribeImageLayerVulListWithContext(context.Background(), request)
+}
+
+// DescribeImageLayerVulList
+// 查询镜像层漏洞列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeImageLayerVulListWithContext(ctx context.Context, request *DescribeImageLayerVulListRequest) (response *DescribeImageLayerVulListResponse, err error) {
+    if request == nil {
+        request = NewDescribeImageLayerVulListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeImageLayerVulList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeImageLayerVulList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeImageLayerVulListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeImageRegistryAssetOverviewRequest() (request *DescribeImageRegistryAssetOverviewRequest) {
+    request = &DescribeImageRegistryAssetOverviewRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeImageRegistryAssetOverview")
+    
+    
+    return
+}
+
+func NewDescribeImageRegistryAssetOverviewResponse() (response *DescribeImageRegistryAssetOverviewResponse) {
+    response = &DescribeImageRegistryAssetOverviewResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeImageRegistryAssetOverview
+// 查询镜像仓库资产总览
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeImageRegistryAssetOverview(request *DescribeImageRegistryAssetOverviewRequest) (response *DescribeImageRegistryAssetOverviewResponse, err error) {
+    return c.DescribeImageRegistryAssetOverviewWithContext(context.Background(), request)
+}
+
+// DescribeImageRegistryAssetOverview
+// 查询镜像仓库资产总览
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeImageRegistryAssetOverviewWithContext(ctx context.Context, request *DescribeImageRegistryAssetOverviewRequest) (response *DescribeImageRegistryAssetOverviewResponse, err error) {
+    if request == nil {
+        request = NewDescribeImageRegistryAssetOverviewRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeImageRegistryAssetOverview")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeImageRegistryAssetOverview require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeImageRegistryAssetOverviewResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeImageRegistryConnectivityTaskResultRequest() (request *DescribeImageRegistryConnectivityTaskResultRequest) {
+    request = &DescribeImageRegistryConnectivityTaskResultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeImageRegistryConnectivityTaskResult")
+    
+    
+    return
+}
+
+func NewDescribeImageRegistryConnectivityTaskResultResponse() (response *DescribeImageRegistryConnectivityTaskResultResponse) {
+    response = &DescribeImageRegistryConnectivityTaskResultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeImageRegistryConnectivityTaskResult
+// 查询镜像仓库联通性检查任务结果
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeImageRegistryConnectivityTaskResult(request *DescribeImageRegistryConnectivityTaskResultRequest) (response *DescribeImageRegistryConnectivityTaskResultResponse, err error) {
+    return c.DescribeImageRegistryConnectivityTaskResultWithContext(context.Background(), request)
+}
+
+// DescribeImageRegistryConnectivityTaskResult
+// 查询镜像仓库联通性检查任务结果
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeImageRegistryConnectivityTaskResultWithContext(ctx context.Context, request *DescribeImageRegistryConnectivityTaskResultRequest) (response *DescribeImageRegistryConnectivityTaskResultResponse, err error) {
+    if request == nil {
+        request = NewDescribeImageRegistryConnectivityTaskResultRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeImageRegistryConnectivityTaskResult")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeImageRegistryConnectivityTaskResult require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeImageRegistryConnectivityTaskResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeImageRegistryListRequest() (request *DescribeImageRegistryListRequest) {
+    request = &DescribeImageRegistryListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeImageRegistryList")
+    
+    
+    return
+}
+
+func NewDescribeImageRegistryListResponse() (response *DescribeImageRegistryListResponse) {
+    response = &DescribeImageRegistryListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeImageRegistryList
+// 查询镜像仓库列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeImageRegistryList(request *DescribeImageRegistryListRequest) (response *DescribeImageRegistryListResponse, err error) {
+    return c.DescribeImageRegistryListWithContext(context.Background(), request)
+}
+
+// DescribeImageRegistryList
+// 查询镜像仓库列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeImageRegistryListWithContext(ctx context.Context, request *DescribeImageRegistryListRequest) (response *DescribeImageRegistryListResponse, err error) {
+    if request == nil {
+        request = NewDescribeImageRegistryListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeImageRegistryList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeImageRegistryList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeImageRegistryListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeImageRegistryNamespaceListRequest() (request *DescribeImageRegistryNamespaceListRequest) {
+    request = &DescribeImageRegistryNamespaceListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeImageRegistryNamespaceList")
+    
+    
+    return
+}
+
+func NewDescribeImageRegistryNamespaceListResponse() (response *DescribeImageRegistryNamespaceListResponse) {
+    response = &DescribeImageRegistryNamespaceListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeImageRegistryNamespaceList
+// 查询镜像仓库命名空间列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeImageRegistryNamespaceList(request *DescribeImageRegistryNamespaceListRequest) (response *DescribeImageRegistryNamespaceListResponse, err error) {
+    return c.DescribeImageRegistryNamespaceListWithContext(context.Background(), request)
+}
+
+// DescribeImageRegistryNamespaceList
+// 查询镜像仓库命名空间列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeImageRegistryNamespaceListWithContext(ctx context.Context, request *DescribeImageRegistryNamespaceListRequest) (response *DescribeImageRegistryNamespaceListResponse, err error) {
+    if request == nil {
+        request = NewDescribeImageRegistryNamespaceListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeImageRegistryNamespaceList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeImageRegistryNamespaceList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeImageRegistryNamespaceListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeImageRegistryScanSubTaskListRequest() (request *DescribeImageRegistryScanSubTaskListRequest) {
+    request = &DescribeImageRegistryScanSubTaskListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeImageRegistryScanSubTaskList")
+    
+    
+    return
+}
+
+func NewDescribeImageRegistryScanSubTaskListResponse() (response *DescribeImageRegistryScanSubTaskListResponse) {
+    response = &DescribeImageRegistryScanSubTaskListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeImageRegistryScanSubTaskList
+// 查询镜像仓库扫描子任务信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeImageRegistryScanSubTaskList(request *DescribeImageRegistryScanSubTaskListRequest) (response *DescribeImageRegistryScanSubTaskListResponse, err error) {
+    return c.DescribeImageRegistryScanSubTaskListWithContext(context.Background(), request)
+}
+
+// DescribeImageRegistryScanSubTaskList
+// 查询镜像仓库扫描子任务信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeImageRegistryScanSubTaskListWithContext(ctx context.Context, request *DescribeImageRegistryScanSubTaskListRequest) (response *DescribeImageRegistryScanSubTaskListResponse, err error) {
+    if request == nil {
+        request = NewDescribeImageRegistryScanSubTaskListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeImageRegistryScanSubTaskList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeImageRegistryScanSubTaskList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeImageRegistryScanSubTaskListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeImageRegistryScanTaskListRequest() (request *DescribeImageRegistryScanTaskListRequest) {
+    request = &DescribeImageRegistryScanTaskListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeImageRegistryScanTaskList")
+    
+    
+    return
+}
+
+func NewDescribeImageRegistryScanTaskListResponse() (response *DescribeImageRegistryScanTaskListResponse) {
+    response = &DescribeImageRegistryScanTaskListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeImageRegistryScanTaskList
+// 查询镜像仓库镜像扫描任务列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeImageRegistryScanTaskList(request *DescribeImageRegistryScanTaskListRequest) (response *DescribeImageRegistryScanTaskListResponse, err error) {
+    return c.DescribeImageRegistryScanTaskListWithContext(context.Background(), request)
+}
+
+// DescribeImageRegistryScanTaskList
+// 查询镜像仓库镜像扫描任务列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeImageRegistryScanTaskListWithContext(ctx context.Context, request *DescribeImageRegistryScanTaskListRequest) (response *DescribeImageRegistryScanTaskListResponse, err error) {
+    if request == nil {
+        request = NewDescribeImageRegistryScanTaskListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeImageRegistryScanTaskList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeImageRegistryScanTaskList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeImageRegistryScanTaskListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeImageRegistryTimedScanTaskConfigRequest() (request *DescribeImageRegistryTimedScanTaskConfigRequest) {
+    request = &DescribeImageRegistryTimedScanTaskConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeImageRegistryTimedScanTaskConfig")
+    
+    
+    return
+}
+
+func NewDescribeImageRegistryTimedScanTaskConfigResponse() (response *DescribeImageRegistryTimedScanTaskConfigResponse) {
+    response = &DescribeImageRegistryTimedScanTaskConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeImageRegistryTimedScanTaskConfig
+// 查看镜像仓库定时扫描任务配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeImageRegistryTimedScanTaskConfig(request *DescribeImageRegistryTimedScanTaskConfigRequest) (response *DescribeImageRegistryTimedScanTaskConfigResponse, err error) {
+    return c.DescribeImageRegistryTimedScanTaskConfigWithContext(context.Background(), request)
+}
+
+// DescribeImageRegistryTimedScanTaskConfig
+// 查看镜像仓库定时扫描任务配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeImageRegistryTimedScanTaskConfigWithContext(ctx context.Context, request *DescribeImageRegistryTimedScanTaskConfigRequest) (response *DescribeImageRegistryTimedScanTaskConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribeImageRegistryTimedScanTaskConfigRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeImageRegistryTimedScanTaskConfig")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeImageRegistryTimedScanTaskConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeImageRegistryTimedScanTaskConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeImageRegistryTimedScanTaskPreviewRequest() (request *DescribeImageRegistryTimedScanTaskPreviewRequest) {
+    request = &DescribeImageRegistryTimedScanTaskPreviewRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeImageRegistryTimedScanTaskPreview")
+    
+    
+    return
+}
+
+func NewDescribeImageRegistryTimedScanTaskPreviewResponse() (response *DescribeImageRegistryTimedScanTaskPreviewResponse) {
+    response = &DescribeImageRegistryTimedScanTaskPreviewResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeImageRegistryTimedScanTaskPreview
+// 查询镜像仓库定时扫描任务预览
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeImageRegistryTimedScanTaskPreview(request *DescribeImageRegistryTimedScanTaskPreviewRequest) (response *DescribeImageRegistryTimedScanTaskPreviewResponse, err error) {
+    return c.DescribeImageRegistryTimedScanTaskPreviewWithContext(context.Background(), request)
+}
+
+// DescribeImageRegistryTimedScanTaskPreview
+// 查询镜像仓库定时扫描任务预览
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeImageRegistryTimedScanTaskPreviewWithContext(ctx context.Context, request *DescribeImageRegistryTimedScanTaskPreviewRequest) (response *DescribeImageRegistryTimedScanTaskPreviewResponse, err error) {
+    if request == nil {
+        request = NewDescribeImageRegistryTimedScanTaskPreviewRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeImageRegistryTimedScanTaskPreview")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeImageRegistryTimedScanTaskPreview require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeImageRegistryTimedScanTaskPreviewResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeImageSensitiveInfoListRequest() (request *DescribeImageSensitiveInfoListRequest) {
+    request = &DescribeImageSensitiveInfoListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeImageSensitiveInfoList")
+    
+    
+    return
+}
+
+func NewDescribeImageSensitiveInfoListResponse() (response *DescribeImageSensitiveInfoListResponse) {
+    response = &DescribeImageSensitiveInfoListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeImageSensitiveInfoList
+// 查询镜像敏感信息列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeImageSensitiveInfoList(request *DescribeImageSensitiveInfoListRequest) (response *DescribeImageSensitiveInfoListResponse, err error) {
+    return c.DescribeImageSensitiveInfoListWithContext(context.Background(), request)
+}
+
+// DescribeImageSensitiveInfoList
+// 查询镜像敏感信息列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeImageSensitiveInfoListWithContext(ctx context.Context, request *DescribeImageSensitiveInfoListRequest) (response *DescribeImageSensitiveInfoListResponse, err error) {
+    if request == nil {
+        request = NewDescribeImageSensitiveInfoListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeImageSensitiveInfoList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeImageSensitiveInfoList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeImageSensitiveInfoListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeImageSensitiveWhitelistRequest() (request *DescribeImageSensitiveWhitelistRequest) {
+    request = &DescribeImageSensitiveWhitelistRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeImageSensitiveWhitelist")
+    
+    
+    return
+}
+
+func NewDescribeImageSensitiveWhitelistResponse() (response *DescribeImageSensitiveWhitelistResponse) {
+    response = &DescribeImageSensitiveWhitelistResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeImageSensitiveWhitelist
+// 查询容器镜像敏感信息白名单
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeImageSensitiveWhitelist(request *DescribeImageSensitiveWhitelistRequest) (response *DescribeImageSensitiveWhitelistResponse, err error) {
+    return c.DescribeImageSensitiveWhitelistWithContext(context.Background(), request)
+}
+
+// DescribeImageSensitiveWhitelist
+// 查询容器镜像敏感信息白名单
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeImageSensitiveWhitelistWithContext(ctx context.Context, request *DescribeImageSensitiveWhitelistRequest) (response *DescribeImageSensitiveWhitelistResponse, err error) {
+    if request == nil {
+        request = NewDescribeImageSensitiveWhitelistRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeImageSensitiveWhitelist")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeImageSensitiveWhitelist require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeImageSensitiveWhitelistResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeImageVirusListRequest() (request *DescribeImageVirusListRequest) {
+    request = &DescribeImageVirusListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeImageVirusList")
+    
+    
+    return
+}
+
+func NewDescribeImageVirusListResponse() (response *DescribeImageVirusListResponse) {
+    response = &DescribeImageVirusListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeImageVirusList
+// 查询镜像木马病毒列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeImageVirusList(request *DescribeImageVirusListRequest) (response *DescribeImageVirusListResponse, err error) {
+    return c.DescribeImageVirusListWithContext(context.Background(), request)
+}
+
+// DescribeImageVirusList
+// 查询镜像木马病毒列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeImageVirusListWithContext(ctx context.Context, request *DescribeImageVirusListRequest) (response *DescribeImageVirusListResponse, err error) {
+    if request == nil {
+        request = NewDescribeImageVirusListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeImageVirusList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeImageVirusList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeImageVirusListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeImageVirusWhitelistRequest() (request *DescribeImageVirusWhitelistRequest) {
+    request = &DescribeImageVirusWhitelistRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeImageVirusWhitelist")
+    
+    
+    return
+}
+
+func NewDescribeImageVirusWhitelistResponse() (response *DescribeImageVirusWhitelistResponse) {
+    response = &DescribeImageVirusWhitelistResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeImageVirusWhitelist
+// 查询镜像木马白名单
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeImageVirusWhitelist(request *DescribeImageVirusWhitelistRequest) (response *DescribeImageVirusWhitelistResponse, err error) {
+    return c.DescribeImageVirusWhitelistWithContext(context.Background(), request)
+}
+
+// DescribeImageVirusWhitelist
+// 查询镜像木马白名单
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeImageVirusWhitelistWithContext(ctx context.Context, request *DescribeImageVirusWhitelistRequest) (response *DescribeImageVirusWhitelistResponse, err error) {
+    if request == nil {
+        request = NewDescribeImageVirusWhitelistRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeImageVirusWhitelist")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeImageVirusWhitelist require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeImageVirusWhitelistResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeImageVirusWhitelistDetailRequest() (request *DescribeImageVirusWhitelistDetailRequest) {
+    request = &DescribeImageVirusWhitelistDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeImageVirusWhitelistDetail")
+    
+    
+    return
+}
+
+func NewDescribeImageVirusWhitelistDetailResponse() (response *DescribeImageVirusWhitelistDetailResponse) {
+    response = &DescribeImageVirusWhitelistDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeImageVirusWhitelistDetail
+// 查询镜像木马白名单详情
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeImageVirusWhitelistDetail(request *DescribeImageVirusWhitelistDetailRequest) (response *DescribeImageVirusWhitelistDetailResponse, err error) {
+    return c.DescribeImageVirusWhitelistDetailWithContext(context.Background(), request)
+}
+
+// DescribeImageVirusWhitelistDetail
+// 查询镜像木马白名单详情
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeImageVirusWhitelistDetailWithContext(ctx context.Context, request *DescribeImageVirusWhitelistDetailRequest) (response *DescribeImageVirusWhitelistDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeImageVirusWhitelistDetailRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeImageVirusWhitelistDetail")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeImageVirusWhitelistDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeImageVirusWhitelistDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeImageVulListRequest() (request *DescribeImageVulListRequest) {
+    request = &DescribeImageVulListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeImageVulList")
+    
+    
+    return
+}
+
+func NewDescribeImageVulListResponse() (response *DescribeImageVulListResponse) {
+    response = &DescribeImageVulListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeImageVulList
+// 查询镜像漏洞列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeImageVulList(request *DescribeImageVulListRequest) (response *DescribeImageVulListResponse, err error) {
+    return c.DescribeImageVulListWithContext(context.Background(), request)
+}
+
+// DescribeImageVulList
+// 查询镜像漏洞列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeImageVulListWithContext(ctx context.Context, request *DescribeImageVulListRequest) (response *DescribeImageVulListResponse, err error) {
+    if request == nil {
+        request = NewDescribeImageVulListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeImageVulList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeImageVulList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeImageVulListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeImageVulSummaryListRequest() (request *DescribeImageVulSummaryListRequest) {
+    request = &DescribeImageVulSummaryListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeImageVulSummaryList")
+    
+    
+    return
+}
+
+func NewDescribeImageVulSummaryListResponse() (response *DescribeImageVulSummaryListResponse) {
+    response = &DescribeImageVulSummaryListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeImageVulSummaryList
+// 查询镜像漏洞概览列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeImageVulSummaryList(request *DescribeImageVulSummaryListRequest) (response *DescribeImageVulSummaryListResponse, err error) {
+    return c.DescribeImageVulSummaryListWithContext(context.Background(), request)
+}
+
+// DescribeImageVulSummaryList
+// 查询镜像漏洞概览列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeImageVulSummaryListWithContext(ctx context.Context, request *DescribeImageVulSummaryListRequest) (response *DescribeImageVulSummaryListResponse, err error) {
+    if request == nil {
+        request = NewDescribeImageVulSummaryListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeImageVulSummaryList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeImageVulSummaryList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeImageVulSummaryListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeImageVulWhitelistRequest() (request *DescribeImageVulWhitelistRequest) {
+    request = &DescribeImageVulWhitelistRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeImageVulWhitelist")
+    
+    
+    return
+}
+
+func NewDescribeImageVulWhitelistResponse() (response *DescribeImageVulWhitelistResponse) {
+    response = &DescribeImageVulWhitelistResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeImageVulWhitelist
+// 查询容器镜像漏洞白名单
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeImageVulWhitelist(request *DescribeImageVulWhitelistRequest) (response *DescribeImageVulWhitelistResponse, err error) {
+    return c.DescribeImageVulWhitelistWithContext(context.Background(), request)
+}
+
+// DescribeImageVulWhitelist
+// 查询容器镜像漏洞白名单
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeImageVulWhitelistWithContext(ctx context.Context, request *DescribeImageVulWhitelistRequest) (response *DescribeImageVulWhitelistResponse, err error) {
+    if request == nil {
+        request = NewDescribeImageVulWhitelistRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeImageVulWhitelist")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeImageVulWhitelist require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeImageVulWhitelistResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeIpInvokeRecordRequest() (request *DescribeIpInvokeRecordRequest) {
     request = &DescribeIpInvokeRecordRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -24487,6 +29747,56 @@ func (c *Client) DescribeNotifySettingWithContext(ctx context.Context, request *
     return
 }
 
+func NewDescribeNotifySettingAkRequest() (request *DescribeNotifySettingAkRequest) {
+    request = &DescribeNotifySettingAkRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeNotifySettingAk")
+    
+    
+    return
+}
+
+func NewDescribeNotifySettingAkResponse() (response *DescribeNotifySettingAkResponse) {
+    response = &DescribeNotifySettingAkResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeNotifySettingAk
+// 获取通知设置（云API风险治理）
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeNotifySettingAk(request *DescribeNotifySettingAkRequest) (response *DescribeNotifySettingAkResponse, err error) {
+    return c.DescribeNotifySettingAkWithContext(context.Background(), request)
+}
+
+// DescribeNotifySettingAk
+// 获取通知设置（云API风险治理）
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeNotifySettingAkWithContext(ctx context.Context, request *DescribeNotifySettingAkRequest) (response *DescribeNotifySettingAkResponse, err error) {
+    if request == nil {
+        request = NewDescribeNotifySettingAkRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeNotifySettingAk")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNotifySettingAk require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeNotifySettingAkResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeNotifySettingAlertRequest() (request *DescribeNotifySettingAlertRequest) {
     request = &DescribeNotifySettingAlertRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -25351,6 +30661,166 @@ func (c *Client) DescribeRaspLicenseListWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeRegistryOverviewRequest() (request *DescribeRegistryOverviewRequest) {
+    request = &DescribeRegistryOverviewRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeRegistryOverview")
+    
+    
+    return
+}
+
+func NewDescribeRegistryOverviewResponse() (response *DescribeRegistryOverviewResponse) {
+    response = &DescribeRegistryOverviewResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRegistryOverview
+// 查询仓库总览
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeRegistryOverview(request *DescribeRegistryOverviewRequest) (response *DescribeRegistryOverviewResponse, err error) {
+    return c.DescribeRegistryOverviewWithContext(context.Background(), request)
+}
+
+// DescribeRegistryOverview
+// 查询仓库总览
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeRegistryOverviewWithContext(ctx context.Context, request *DescribeRegistryOverviewRequest) (response *DescribeRegistryOverviewResponse, err error) {
+    if request == nil {
+        request = NewDescribeRegistryOverviewRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeRegistryOverview")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRegistryOverview require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRegistryOverviewResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRegistryRegionListRequest() (request *DescribeRegistryRegionListRequest) {
+    request = &DescribeRegistryRegionListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeRegistryRegionList")
+    
+    
+    return
+}
+
+func NewDescribeRegistryRegionListResponse() (response *DescribeRegistryRegionListResponse) {
+    response = &DescribeRegistryRegionListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRegistryRegionList
+// 查询镜像仓库地域列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeRegistryRegionList(request *DescribeRegistryRegionListRequest) (response *DescribeRegistryRegionListResponse, err error) {
+    return c.DescribeRegistryRegionListWithContext(context.Background(), request)
+}
+
+// DescribeRegistryRegionList
+// 查询镜像仓库地域列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeRegistryRegionListWithContext(ctx context.Context, request *DescribeRegistryRegionListRequest) (response *DescribeRegistryRegionListResponse, err error) {
+    if request == nil {
+        request = NewDescribeRegistryRegionListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeRegistryRegionList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRegistryRegionList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRegistryRegionListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRepositoryImageAssetsRequest() (request *DescribeRepositoryImageAssetsRequest) {
     request = &DescribeRepositoryImageAssetsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -25374,9 +30844,22 @@ func NewDescribeRepositoryImageAssetsResponse() (response *DescribeRepositoryIma
 // 仓库镜像列表
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeRepositoryImageAssets(request *DescribeRepositoryImageAssetsRequest) (response *DescribeRepositoryImageAssetsResponse, err error) {
     return c.DescribeRepositoryImageAssetsWithContext(context.Background(), request)
 }
@@ -25385,9 +30868,22 @@ func (c *Client) DescribeRepositoryImageAssets(request *DescribeRepositoryImageA
 // 仓库镜像列表
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeRepositoryImageAssetsWithContext(ctx context.Context, request *DescribeRepositoryImageAssetsRequest) (response *DescribeRepositoryImageAssetsResponse, err error) {
     if request == nil {
         request = NewDescribeRepositoryImageAssetsRequest()
@@ -27151,6 +32647,306 @@ func (c *Client) DescribeSCFNamespaceListWithContext(ctx context.Context, reques
     return
 }
 
+func NewDescribeSandboxACLAlertListRequest() (request *DescribeSandboxACLAlertListRequest) {
+    request = &DescribeSandboxACLAlertListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeSandboxACLAlertList")
+    
+    
+    return
+}
+
+func NewDescribeSandboxACLAlertListResponse() (response *DescribeSandboxACLAlertListResponse) {
+    response = &DescribeSandboxACLAlertListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSandboxACLAlertList
+// 分页查询 ACL 访问控制告警日志列表。支持按 Filter.Name=ID 精确过滤单条告警用于详情页场景
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeSandboxACLAlertList(request *DescribeSandboxACLAlertListRequest) (response *DescribeSandboxACLAlertListResponse, err error) {
+    return c.DescribeSandboxACLAlertListWithContext(context.Background(), request)
+}
+
+// DescribeSandboxACLAlertList
+// 分页查询 ACL 访问控制告警日志列表。支持按 Filter.Name=ID 精确过滤单条告警用于详情页场景
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeSandboxACLAlertListWithContext(ctx context.Context, request *DescribeSandboxACLAlertListRequest) (response *DescribeSandboxACLAlertListResponse, err error) {
+    if request == nil {
+        request = NewDescribeSandboxACLAlertListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeSandboxACLAlertList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSandboxACLAlertList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSandboxACLAlertListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSandboxACLRuleListRequest() (request *DescribeSandboxACLRuleListRequest) {
+    request = &DescribeSandboxACLRuleListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeSandboxACLRuleList")
+    
+    
+    return
+}
+
+func NewDescribeSandboxACLRuleListResponse() (response *DescribeSandboxACLRuleListResponse) {
+    response = &DescribeSandboxACLRuleListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSandboxACLRuleList
+// 查询当前租户的 ACL 用户访问控制规则列表。传入 Filter.Name=RuleID 可精确查询单条规则（用于详情页面场景）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeSandboxACLRuleList(request *DescribeSandboxACLRuleListRequest) (response *DescribeSandboxACLRuleListResponse, err error) {
+    return c.DescribeSandboxACLRuleListWithContext(context.Background(), request)
+}
+
+// DescribeSandboxACLRuleList
+// 查询当前租户的 ACL 用户访问控制规则列表。传入 Filter.Name=RuleID 可精确查询单条规则（用于详情页面场景）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeSandboxACLRuleListWithContext(ctx context.Context, request *DescribeSandboxACLRuleListRequest) (response *DescribeSandboxACLRuleListResponse, err error) {
+    if request == nil {
+        request = NewDescribeSandboxACLRuleListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeSandboxACLRuleList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSandboxACLRuleList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSandboxACLRuleListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSandboxACLSystemRuleListRequest() (request *DescribeSandboxACLSystemRuleListRequest) {
+    request = &DescribeSandboxACLSystemRuleListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeSandboxACLSystemRuleList")
+    
+    
+    return
+}
+
+func NewDescribeSandboxACLSystemRuleListResponse() (response *DescribeSandboxACLSystemRuleListResponse) {
+    response = &DescribeSandboxACLSystemRuleListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSandboxACLSystemRuleList
+// 查询流量沙箱访问控制（ACL）系统规则列表，系统规则由 CSIP 平台内置，可被用户规则引用
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeSandboxACLSystemRuleList(request *DescribeSandboxACLSystemRuleListRequest) (response *DescribeSandboxACLSystemRuleListResponse, err error) {
+    return c.DescribeSandboxACLSystemRuleListWithContext(context.Background(), request)
+}
+
+// DescribeSandboxACLSystemRuleList
+// 查询流量沙箱访问控制（ACL）系统规则列表，系统规则由 CSIP 平台内置，可被用户规则引用
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeSandboxACLSystemRuleListWithContext(ctx context.Context, request *DescribeSandboxACLSystemRuleListRequest) (response *DescribeSandboxACLSystemRuleListResponse, err error) {
+    if request == nil {
+        request = NewDescribeSandboxACLSystemRuleListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeSandboxACLSystemRuleList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSandboxACLSystemRuleList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSandboxACLSystemRuleListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSandboxDLPSystemRuleListRequest() (request *DescribeSandboxDLPSystemRuleListRequest) {
+    request = &DescribeSandboxDLPSystemRuleListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeSandboxDLPSystemRuleList")
+    
+    
+    return
+}
+
+func NewDescribeSandboxDLPSystemRuleListResponse() (response *DescribeSandboxDLPSystemRuleListResponse) {
+    response = &DescribeSandboxDLPSystemRuleListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSandboxDLPSystemRuleList
+// 查询流量沙箱数据泄露防护（DLP）系统规则列表，系统规则由 CSIP 平台内置，可被用户规则引用
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeSandboxDLPSystemRuleList(request *DescribeSandboxDLPSystemRuleListRequest) (response *DescribeSandboxDLPSystemRuleListResponse, err error) {
+    return c.DescribeSandboxDLPSystemRuleListWithContext(context.Background(), request)
+}
+
+// DescribeSandboxDLPSystemRuleList
+// 查询流量沙箱数据泄露防护（DLP）系统规则列表，系统规则由 CSIP 平台内置，可被用户规则引用
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeSandboxDLPSystemRuleListWithContext(ctx context.Context, request *DescribeSandboxDLPSystemRuleListRequest) (response *DescribeSandboxDLPSystemRuleListResponse, err error) {
+    if request == nil {
+        request = NewDescribeSandboxDLPSystemRuleListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeSandboxDLPSystemRuleList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSandboxDLPSystemRuleList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSandboxDLPSystemRuleListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSandboxFileRuleListRequest() (request *DescribeSandboxFileRuleListRequest) {
+    request = &DescribeSandboxFileRuleListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeSandboxFileRuleList")
+    
+    
+    return
+}
+
+func NewDescribeSandboxFileRuleListResponse() (response *DescribeSandboxFileRuleListResponse) {
+    response = &DescribeSandboxFileRuleListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSandboxFileRuleList
+// 获取命令沙箱文件规则列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeSandboxFileRuleList(request *DescribeSandboxFileRuleListRequest) (response *DescribeSandboxFileRuleListResponse, err error) {
+    return c.DescribeSandboxFileRuleListWithContext(context.Background(), request)
+}
+
+// DescribeSandboxFileRuleList
+// 获取命令沙箱文件规则列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeSandboxFileRuleListWithContext(ctx context.Context, request *DescribeSandboxFileRuleListRequest) (response *DescribeSandboxFileRuleListResponse, err error) {
+    if request == nil {
+        request = NewDescribeSandboxFileRuleListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeSandboxFileRuleList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSandboxFileRuleList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSandboxFileRuleListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeScanReportListRequest() (request *DescribeScanReportListRequest) {
     request = &DescribeScanReportListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -27987,6 +33783,110 @@ func (c *Client) DescribeSecurityScoreRuleWithContext(ctx context.Context, reque
     return
 }
 
+func NewDescribeSkillScanAlertDetailRequest() (request *DescribeSkillScanAlertDetailRequest) {
+    request = &DescribeSkillScanAlertDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeSkillScanAlertDetail")
+    
+    
+    return
+}
+
+func NewDescribeSkillScanAlertDetailResponse() (response *DescribeSkillScanAlertDetailResponse) {
+    response = &DescribeSkillScanAlertDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSkillScanAlertDetail
+// 查询 Skill 安全检测告警详情，包含本地告警信息和引擎实时检测数据
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeSkillScanAlertDetail(request *DescribeSkillScanAlertDetailRequest) (response *DescribeSkillScanAlertDetailResponse, err error) {
+    return c.DescribeSkillScanAlertDetailWithContext(context.Background(), request)
+}
+
+// DescribeSkillScanAlertDetail
+// 查询 Skill 安全检测告警详情，包含本地告警信息和引擎实时检测数据
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeSkillScanAlertDetailWithContext(ctx context.Context, request *DescribeSkillScanAlertDetailRequest) (response *DescribeSkillScanAlertDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeSkillScanAlertDetailRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeSkillScanAlertDetail")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSkillScanAlertDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSkillScanAlertDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSkillScanAlertListRequest() (request *DescribeSkillScanAlertListRequest) {
+    request = &DescribeSkillScanAlertListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeSkillScanAlertList")
+    
+    
+    return
+}
+
+func NewDescribeSkillScanAlertListResponse() (response *DescribeSkillScanAlertListResponse) {
+    response = &DescribeSkillScanAlertListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSkillScanAlertList
+// 查询 Skill 安全检测告警列表，支持分页、过滤和排序
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeSkillScanAlertList(request *DescribeSkillScanAlertListRequest) (response *DescribeSkillScanAlertListResponse, err error) {
+    return c.DescribeSkillScanAlertListWithContext(context.Background(), request)
+}
+
+// DescribeSkillScanAlertList
+// 查询 Skill 安全检测告警列表，支持分页、过滤和排序
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeSkillScanAlertListWithContext(ctx context.Context, request *DescribeSkillScanAlertListRequest) (response *DescribeSkillScanAlertListResponse, err error) {
+    if request == nil {
+        request = NewDescribeSkillScanAlertListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeSkillScanAlertList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSkillScanAlertList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSkillScanAlertListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSkillScanPayInfoRequest() (request *DescribeSkillScanPayInfoRequest) {
     request = &DescribeSkillScanPayInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -28247,6 +34147,86 @@ func (c *Client) DescribeSubnetAssetsWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeTCRInstanceListRequest() (request *DescribeTCRInstanceListRequest) {
+    request = &DescribeTCRInstanceListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeTCRInstanceList")
+    
+    
+    return
+}
+
+func NewDescribeTCRInstanceListResponse() (response *DescribeTCRInstanceListResponse) {
+    response = &DescribeTCRInstanceListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTCRInstanceList
+// 获取TCR实例列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeTCRInstanceList(request *DescribeTCRInstanceListRequest) (response *DescribeTCRInstanceListResponse, err error) {
+    return c.DescribeTCRInstanceListWithContext(context.Background(), request)
+}
+
+// DescribeTCRInstanceList
+// 获取TCR实例列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeTCRInstanceListWithContext(ctx context.Context, request *DescribeTCRInstanceListRequest) (response *DescribeTCRInstanceListResponse, err error) {
+    if request == nil {
+        request = NewDescribeTCRInstanceListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeTCRInstanceList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTCRInstanceList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTCRInstanceListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTagRuleAssetsRequest() (request *DescribeTagRuleAssetsRequest) {
     request = &DescribeTagRuleAssetsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -28270,8 +34250,22 @@ func NewDescribeTagRuleAssetsResponse() (response *DescribeTagRuleAssetsResponse
 // 打标策略生效资产列表
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeTagRuleAssets(request *DescribeTagRuleAssetsRequest) (response *DescribeTagRuleAssetsResponse, err error) {
     return c.DescribeTagRuleAssetsWithContext(context.Background(), request)
 }
@@ -28280,8 +34274,22 @@ func (c *Client) DescribeTagRuleAssets(request *DescribeTagRuleAssetsRequest) (r
 // 打标策略生效资产列表
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeTagRuleAssetsWithContext(ctx context.Context, request *DescribeTagRuleAssetsRequest) (response *DescribeTagRuleAssetsResponse, err error) {
     if request == nil {
         request = NewDescribeTagRuleAssetsRequest()
@@ -35367,6 +41375,406 @@ func (c *Client) ModifyIaCTokenPeriodWithContext(ctx context.Context, request *M
     return
 }
 
+func NewModifyImageRegistryRequest() (request *ModifyImageRegistryRequest) {
+    request = &ModifyImageRegistryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "ModifyImageRegistry")
+    
+    
+    return
+}
+
+func NewModifyImageRegistryResponse() (response *ModifyImageRegistryResponse) {
+    response = &ModifyImageRegistryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyImageRegistry
+// 修改镜像仓库信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ModifyImageRegistry(request *ModifyImageRegistryRequest) (response *ModifyImageRegistryResponse, err error) {
+    return c.ModifyImageRegistryWithContext(context.Background(), request)
+}
+
+// ModifyImageRegistry
+// 修改镜像仓库信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ModifyImageRegistryWithContext(ctx context.Context, request *ModifyImageRegistryRequest) (response *ModifyImageRegistryResponse, err error) {
+    if request == nil {
+        request = NewModifyImageRegistryRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "ModifyImageRegistry")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyImageRegistry require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyImageRegistryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyImageRegistryTimedScanTaskConfigRequest() (request *ModifyImageRegistryTimedScanTaskConfigRequest) {
+    request = &ModifyImageRegistryTimedScanTaskConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "ModifyImageRegistryTimedScanTaskConfig")
+    
+    
+    return
+}
+
+func NewModifyImageRegistryTimedScanTaskConfigResponse() (response *ModifyImageRegistryTimedScanTaskConfigResponse) {
+    response = &ModifyImageRegistryTimedScanTaskConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyImageRegistryTimedScanTaskConfig
+// 修改镜像仓库定时扫描任务配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ModifyImageRegistryTimedScanTaskConfig(request *ModifyImageRegistryTimedScanTaskConfigRequest) (response *ModifyImageRegistryTimedScanTaskConfigResponse, err error) {
+    return c.ModifyImageRegistryTimedScanTaskConfigWithContext(context.Background(), request)
+}
+
+// ModifyImageRegistryTimedScanTaskConfig
+// 修改镜像仓库定时扫描任务配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ModifyImageRegistryTimedScanTaskConfigWithContext(ctx context.Context, request *ModifyImageRegistryTimedScanTaskConfigRequest) (response *ModifyImageRegistryTimedScanTaskConfigResponse, err error) {
+    if request == nil {
+        request = NewModifyImageRegistryTimedScanTaskConfigRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "ModifyImageRegistryTimedScanTaskConfig")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyImageRegistryTimedScanTaskConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyImageRegistryTimedScanTaskConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyImageSensitiveWhitelistRequest() (request *ModifyImageSensitiveWhitelistRequest) {
+    request = &ModifyImageSensitiveWhitelistRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "ModifyImageSensitiveWhitelist")
+    
+    
+    return
+}
+
+func NewModifyImageSensitiveWhitelistResponse() (response *ModifyImageSensitiveWhitelistResponse) {
+    response = &ModifyImageSensitiveWhitelistResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyImageSensitiveWhitelist
+// 修改容器镜像敏感信息白名单
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ModifyImageSensitiveWhitelist(request *ModifyImageSensitiveWhitelistRequest) (response *ModifyImageSensitiveWhitelistResponse, err error) {
+    return c.ModifyImageSensitiveWhitelistWithContext(context.Background(), request)
+}
+
+// ModifyImageSensitiveWhitelist
+// 修改容器镜像敏感信息白名单
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ModifyImageSensitiveWhitelistWithContext(ctx context.Context, request *ModifyImageSensitiveWhitelistRequest) (response *ModifyImageSensitiveWhitelistResponse, err error) {
+    if request == nil {
+        request = NewModifyImageSensitiveWhitelistRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "ModifyImageSensitiveWhitelist")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyImageSensitiveWhitelist require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyImageSensitiveWhitelistResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyImageVirusWhitelistRequest() (request *ModifyImageVirusWhitelistRequest) {
+    request = &ModifyImageVirusWhitelistRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "ModifyImageVirusWhitelist")
+    
+    
+    return
+}
+
+func NewModifyImageVirusWhitelistResponse() (response *ModifyImageVirusWhitelistResponse) {
+    response = &ModifyImageVirusWhitelistResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyImageVirusWhitelist
+// 查询资产数据库信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ModifyImageVirusWhitelist(request *ModifyImageVirusWhitelistRequest) (response *ModifyImageVirusWhitelistResponse, err error) {
+    return c.ModifyImageVirusWhitelistWithContext(context.Background(), request)
+}
+
+// ModifyImageVirusWhitelist
+// 查询资产数据库信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ModifyImageVirusWhitelistWithContext(ctx context.Context, request *ModifyImageVirusWhitelistRequest) (response *ModifyImageVirusWhitelistResponse, err error) {
+    if request == nil {
+        request = NewModifyImageVirusWhitelistRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "ModifyImageVirusWhitelist")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyImageVirusWhitelist require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyImageVirusWhitelistResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyImageVulWhitelistRequest() (request *ModifyImageVulWhitelistRequest) {
+    request = &ModifyImageVulWhitelistRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "ModifyImageVulWhitelist")
+    
+    
+    return
+}
+
+func NewModifyImageVulWhitelistResponse() (response *ModifyImageVulWhitelistResponse) {
+    response = &ModifyImageVulWhitelistResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyImageVulWhitelist
+// 修改容器镜像漏洞白名单
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ModifyImageVulWhitelist(request *ModifyImageVulWhitelistRequest) (response *ModifyImageVulWhitelistResponse, err error) {
+    return c.ModifyImageVulWhitelistWithContext(context.Background(), request)
+}
+
+// ModifyImageVulWhitelist
+// 修改容器镜像漏洞白名单
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ModifyImageVulWhitelistWithContext(ctx context.Context, request *ModifyImageVulWhitelistRequest) (response *ModifyImageVulWhitelistResponse, err error) {
+    if request == nil {
+        request = NewModifyImageVulWhitelistRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "ModifyImageVulWhitelist")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyImageVulWhitelist require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyImageVulWhitelistResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyLoginWhiteRecordRequest() (request *ModifyLoginWhiteRecordRequest) {
     request = &ModifyLoginWhiteRecordRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -35921,6 +42329,58 @@ func (c *Client) ModifyNotifyAssetConfigWithContext(ctx context.Context, request
     return
 }
 
+func NewModifyNotifyMemberRequest() (request *ModifyNotifyMemberRequest) {
+    request = &ModifyNotifyMemberRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "ModifyNotifyMember")
+    
+    
+    return
+}
+
+func NewModifyNotifyMemberResponse() (response *ModifyNotifyMemberResponse) {
+    response = &ModifyNotifyMemberResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyNotifyMember
+// 修改通知成员账号
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyNotifyMember(request *ModifyNotifyMemberRequest) (response *ModifyNotifyMemberResponse, err error) {
+    return c.ModifyNotifyMemberWithContext(context.Background(), request)
+}
+
+// ModifyNotifyMember
+// 修改通知成员账号
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyNotifyMemberWithContext(ctx context.Context, request *ModifyNotifyMemberRequest) (response *ModifyNotifyMemberResponse, err error) {
+    if request == nil {
+        request = NewModifyNotifyMemberRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "ModifyNotifyMember")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyNotifyMember require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyNotifyMemberResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyNotifySettingRequest() (request *ModifyNotifySettingRequest) {
     request = &ModifyNotifySettingRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -35969,6 +42429,58 @@ func (c *Client) ModifyNotifySettingWithContext(ctx context.Context, request *Mo
     request.SetContext(ctx)
     
     response = NewModifyNotifySettingResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyNotifySettingAkRequest() (request *ModifyNotifySettingAkRequest) {
+    request = &ModifyNotifySettingAkRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "ModifyNotifySettingAk")
+    
+    
+    return
+}
+
+func NewModifyNotifySettingAkResponse() (response *ModifyNotifySettingAkResponse) {
+    response = &ModifyNotifySettingAkResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyNotifySettingAk
+// 修改通知设置（云API风险治理）
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyNotifySettingAk(request *ModifyNotifySettingAkRequest) (response *ModifyNotifySettingAkResponse, err error) {
+    return c.ModifyNotifySettingAkWithContext(context.Background(), request)
+}
+
+// ModifyNotifySettingAk
+// 修改通知设置（云API风险治理）
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyNotifySettingAkWithContext(ctx context.Context, request *ModifyNotifySettingAkRequest) (response *ModifyNotifySettingAkResponse, err error) {
+    if request == nil {
+        request = NewModifyNotifySettingAkRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "ModifyNotifySettingAk")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyNotifySettingAk require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyNotifySettingAkResponse()
     err = c.Send(request, response)
     return
 }
@@ -36683,6 +43195,90 @@ func (c *Client) ModifyRiskScanCronConfigWithContext(ctx context.Context, reques
     return
 }
 
+func NewModifySandboxLLMAuditRuleStatusRequest() (request *ModifySandboxLLMAuditRuleStatusRequest) {
+    request = &ModifySandboxLLMAuditRuleStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "ModifySandboxLLMAuditRuleStatus")
+    
+    
+    return
+}
+
+func NewModifySandboxLLMAuditRuleStatusResponse() (response *ModifySandboxLLMAuditRuleStatusResponse) {
+    response = &ModifySandboxLLMAuditRuleStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifySandboxLLMAuditRuleStatus
+// 批量切换 LLM 审计用户规则的启禁用状态。任一规则不存在、属于其他租户或已删除时整体返回错误
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifySandboxLLMAuditRuleStatus(request *ModifySandboxLLMAuditRuleStatusRequest) (response *ModifySandboxLLMAuditRuleStatusResponse, err error) {
+    return c.ModifySandboxLLMAuditRuleStatusWithContext(context.Background(), request)
+}
+
+// ModifySandboxLLMAuditRuleStatus
+// 批量切换 LLM 审计用户规则的启禁用状态。任一规则不存在、属于其他租户或已删除时整体返回错误
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifySandboxLLMAuditRuleStatusWithContext(ctx context.Context, request *ModifySandboxLLMAuditRuleStatusRequest) (response *ModifySandboxLLMAuditRuleStatusResponse, err error) {
+    if request == nil {
+        request = NewModifySandboxLLMAuditRuleStatusRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "ModifySandboxLLMAuditRuleStatus")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifySandboxLLMAuditRuleStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifySandboxLLMAuditRuleStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifySecurityScoreRuleRequest() (request *ModifySecurityScoreRuleRequest) {
     request = &ModifySecurityScoreRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -36787,6 +43383,60 @@ func (c *Client) ModifyShareUserCSPMWithContext(ctx context.Context, request *Mo
     request.SetContext(ctx)
     
     response = NewModifyShareUserCSPMResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifySkillScanAlertStatusRequest() (request *ModifySkillScanAlertStatusRequest) {
+    request = &ModifySkillScanAlertStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "ModifySkillScanAlertStatus")
+    
+    
+    return
+}
+
+func NewModifySkillScanAlertStatusResponse() (response *ModifySkillScanAlertStatusResponse) {
+    response = &ModifySkillScanAlertStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifySkillScanAlertStatus
+// 批量修改 Skill 安全检测告警的处理状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) ModifySkillScanAlertStatus(request *ModifySkillScanAlertStatusRequest) (response *ModifySkillScanAlertStatusResponse, err error) {
+    return c.ModifySkillScanAlertStatusWithContext(context.Background(), request)
+}
+
+// ModifySkillScanAlertStatus
+// 批量修改 Skill 安全检测告警的处理状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) ModifySkillScanAlertStatusWithContext(ctx context.Context, request *ModifySkillScanAlertStatusRequest) (response *ModifySkillScanAlertStatusResponse, err error) {
+    if request == nil {
+        request = NewModifySkillScanAlertStatusRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "ModifySkillScanAlertStatus")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifySkillScanAlertStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifySkillScanAlertStatusResponse()
     err = c.Send(request, response)
     return
 }
@@ -38173,6 +44823,86 @@ func (c *Client) StopEDRScanTaskWithContext(ctx context.Context, request *StopED
     return
 }
 
+func NewStopImageRegistryScanTaskRequest() (request *StopImageRegistryScanTaskRequest) {
+    request = &StopImageRegistryScanTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "StopImageRegistryScanTask")
+    
+    
+    return
+}
+
+func NewStopImageRegistryScanTaskResponse() (response *StopImageRegistryScanTaskResponse) {
+    response = &StopImageRegistryScanTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// StopImageRegistryScanTask
+// 停止镜像仓库镜像扫描任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) StopImageRegistryScanTask(request *StopImageRegistryScanTaskRequest) (response *StopImageRegistryScanTaskResponse, err error) {
+    return c.StopImageRegistryScanTaskWithContext(context.Background(), request)
+}
+
+// StopImageRegistryScanTask
+// 停止镜像仓库镜像扫描任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) StopImageRegistryScanTaskWithContext(ctx context.Context, request *StopImageRegistryScanTaskRequest) (response *StopImageRegistryScanTaskResponse, err error) {
+    if request == nil {
+        request = NewStopImageRegistryScanTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "StopImageRegistryScanTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StopImageRegistryScanTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStopImageRegistryScanTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewStopPreventUninstallRequest() (request *StopPreventUninstallRequest) {
     request = &StopPreventUninstallRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -38537,6 +45267,86 @@ func (c *Client) SyncDspmUsersWithContext(ctx context.Context, request *SyncDspm
     return
 }
 
+func NewSyncImageRegistryRequest() (request *SyncImageRegistryRequest) {
+    request = &SyncImageRegistryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "SyncImageRegistry")
+    
+    
+    return
+}
+
+func NewSyncImageRegistryResponse() (response *SyncImageRegistryResponse) {
+    response = &SyncImageRegistryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SyncImageRegistry
+// 镜像仓库同步
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) SyncImageRegistry(request *SyncImageRegistryRequest) (response *SyncImageRegistryResponse, err error) {
+    return c.SyncImageRegistryWithContext(context.Background(), request)
+}
+
+// SyncImageRegistry
+// 镜像仓库同步
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) SyncImageRegistryWithContext(ctx context.Context, request *SyncImageRegistryRequest) (response *SyncImageRegistryResponse, err error) {
+    if request == nil {
+        request = NewSyncImageRegistryRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "SyncImageRegistry")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SyncImageRegistry require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSyncImageRegistryResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewTestWebhookReceiverRequest() (request *TestWebhookReceiverRequest) {
     request = &TestWebhookReceiverRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -38562,9 +45372,20 @@ func NewTestWebhookReceiverResponse() (response *TestWebhookReceiverResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) TestWebhookReceiver(request *TestWebhookReceiverRequest) (response *TestWebhookReceiverResponse, err error) {
     return c.TestWebhookReceiverWithContext(context.Background(), request)
 }
@@ -38575,9 +45396,20 @@ func (c *Client) TestWebhookReceiver(request *TestWebhookReceiverRequest) (respo
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) TestWebhookReceiverWithContext(ctx context.Context, request *TestWebhookReceiverRequest) (response *TestWebhookReceiverResponse, err error) {
     if request == nil {
         request = NewTestWebhookReceiverRequest()

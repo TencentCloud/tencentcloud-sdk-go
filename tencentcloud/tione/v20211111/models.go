@@ -6800,31 +6800,53 @@ type ImageFIlter struct {
 }
 
 type ImageInfo struct {
-	// 镜像类型：TCR为腾讯云TCR镜像; CCR为腾讯云TCR个人版镜像，PreSet为平台预置镜像，CUSTOM为第三方自定义镜像
+	// <p>镜像类型：TCR为腾讯云TCR镜像; CCR为腾讯云TCR个人版镜像，PreSet为平台预置镜像，CUSTOM为第三方自定义镜像</p>
 	ImageType *string `json:"ImageType,omitnil,omitempty" name:"ImageType"`
 
-	// 镜像地址
+	// <p>镜像地址</p>
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 
-	// TCR镜像对应的地域
+	// <p>TCR镜像对应的地域</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegistryRegion *string `json:"RegistryRegion,omitnil,omitempty" name:"RegistryRegion"`
 
-	// TCR镜像对应的实例id
+	// <p>TCR镜像对应的实例id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
 
-	// 是否允许导出全部内容
+	// <p>是否允许导出全部内容</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AllowSaveAllContent *bool `json:"AllowSaveAllContent,omitnil,omitempty" name:"AllowSaveAllContent"`
 
-	// 镜像名称
+	// <p>镜像名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageName *string `json:"ImageName,omitnil,omitempty" name:"ImageName"`
 
-	// 是否支持数据构建
+	// <p>是否支持数据构建</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SupportDataPipeline *bool `json:"SupportDataPipeline,omitnil,omitempty" name:"SupportDataPipeline"`
+
+	// <p>镜像仓库用户名密码信息(仅当ImageType为CUSTOM第三方镜像的时候需要)</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImageSecret *ImageSecret `json:"ImageSecret,omitnil,omitempty" name:"ImageSecret"`
+}
+
+type ImageSecret struct {
+	// 用于加密密码的KMS公钥ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KeyId *string `json:"KeyId,omitnil,omitempty" name:"KeyId"`
+
+	// 用户名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
+
+	// 密码,base64编码； 当keyId不为空时，密码是加密后的
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+
+	// 用户凭据ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecretId *string `json:"SecretId,omitnil,omitempty" name:"SecretId"`
 }
 
 type ImageUrl struct {

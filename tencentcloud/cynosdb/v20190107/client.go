@@ -5895,6 +5895,80 @@ func (c *Client) DescribeClusterServerlessScalePlansWithContext(ctx context.Cont
     return
 }
 
+func NewDescribeClusterStorageAutoExpandRequest() (request *DescribeClusterStorageAutoExpandRequest) {
+    request = &DescribeClusterStorageAutoExpandRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeClusterStorageAutoExpand")
+    
+    
+    return
+}
+
+func NewDescribeClusterStorageAutoExpandResponse() (response *DescribeClusterStorageAutoExpandResponse) {
+    response = &DescribeClusterStorageAutoExpandResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeClusterStorageAutoExpand
+// 本接口（DescribeClusterStorageAutoExpand）用于查询自动库容配置。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+//  FAILEDOPERATION_TRADECREATEORDERERROR = "FailedOperation.TradeCreateOrderError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_CLUSTERNOTFOUND = "InvalidParameterValue.ClusterNotFound"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  INVALIDPARAMETERVALUE_INVALIDREGIONIDERROR = "InvalidParameterValue.InvalidRegionIdError"
+//  OPERATIONDENIED_CLUSTEROPNOTALLOWEDERROR = "OperationDenied.ClusterOpNotAllowedError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  RESOURCEUNAVAILABLE_INSTANCELOCKFAIL = "ResourceUnavailable.InstanceLockFail"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeClusterStorageAutoExpand(request *DescribeClusterStorageAutoExpandRequest) (response *DescribeClusterStorageAutoExpandResponse, err error) {
+    return c.DescribeClusterStorageAutoExpandWithContext(context.Background(), request)
+}
+
+// DescribeClusterStorageAutoExpand
+// 本接口（DescribeClusterStorageAutoExpand）用于查询自动库容配置。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+//  FAILEDOPERATION_TRADECREATEORDERERROR = "FailedOperation.TradeCreateOrderError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_CLUSTERNOTFOUND = "InvalidParameterValue.ClusterNotFound"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  INVALIDPARAMETERVALUE_INVALIDREGIONIDERROR = "InvalidParameterValue.InvalidRegionIdError"
+//  OPERATIONDENIED_CLUSTEROPNOTALLOWEDERROR = "OperationDenied.ClusterOpNotAllowedError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  RESOURCEUNAVAILABLE_INSTANCELOCKFAIL = "ResourceUnavailable.InstanceLockFail"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeClusterStorageAutoExpandWithContext(ctx context.Context, request *DescribeClusterStorageAutoExpandRequest) (response *DescribeClusterStorageAutoExpandResponse, err error) {
+    if request == nil {
+        request = NewDescribeClusterStorageAutoExpandRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeClusterStorageAutoExpand")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeClusterStorageAutoExpand require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeClusterStorageAutoExpandResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeClusterTransparentEncryptInfoRequest() (request *DescribeClusterTransparentEncryptInfoRequest) {
     request = &DescribeClusterTransparentEncryptInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
