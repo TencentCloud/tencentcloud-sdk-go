@@ -3103,6 +3103,56 @@ func (c *Client) DescribeInstanceParamsWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribeInstancePasswordPolicyRequest() (request *DescribeInstancePasswordPolicyRequest) {
+    request = &DescribeInstancePasswordPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("redis", APIVersion, "DescribeInstancePasswordPolicy")
+    
+    
+    return
+}
+
+func NewDescribeInstancePasswordPolicyResponse() (response *DescribeInstancePasswordPolicyResponse) {
+    response = &DescribeInstancePasswordPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeInstancePasswordPolicy
+// 查询指定实例当前密码复杂度配置
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCENOTEXISTS = "ResourceNotFound.InstanceNotExists"
+func (c *Client) DescribeInstancePasswordPolicy(request *DescribeInstancePasswordPolicyRequest) (response *DescribeInstancePasswordPolicyResponse, err error) {
+    return c.DescribeInstancePasswordPolicyWithContext(context.Background(), request)
+}
+
+// DescribeInstancePasswordPolicy
+// 查询指定实例当前密码复杂度配置
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCENOTEXISTS = "ResourceNotFound.InstanceNotExists"
+func (c *Client) DescribeInstancePasswordPolicyWithContext(ctx context.Context, request *DescribeInstancePasswordPolicyRequest) (response *DescribeInstancePasswordPolicyResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstancePasswordPolicyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "redis", APIVersion, "DescribeInstancePasswordPolicy")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstancePasswordPolicy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeInstancePasswordPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeInstanceSecurityGroupRequest() (request *DescribeInstanceSecurityGroupRequest) {
     request = &DescribeInstanceSecurityGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},

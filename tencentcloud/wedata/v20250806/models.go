@@ -6844,14 +6844,14 @@ func (r *GetOpsWorkflowResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetProjectRequestParams struct {
-	// 项目id。一般使用项目Id来查询，与projectName必须存在一个。
+	// <p>项目id。一般使用项目Id来查询，与projectName必须存在一个。</p>
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 }
 
 type GetProjectRequest struct {
 	*tchttp.BaseRequest
 	
-	// 项目id。一般使用项目Id来查询，与projectName必须存在一个。
+	// <p>项目id。一般使用项目Id来查询，与projectName必须存在一个。</p>
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 }
 
@@ -6876,7 +6876,7 @@ func (r *GetProjectRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetProjectResponseParams struct {
-	// 项目信息
+	// <p>项目信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *Project `json:"Data,omitnil,omitempty" name:"Data"`
 
@@ -16448,40 +16448,43 @@ type PrivilegeResource struct {
 }
 
 type Project struct {
-	// 项目id
+	// <p>项目id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 项目标识，英文名
+	// <p>项目标识，英文名</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectName *string `json:"ProjectName,omitnil,omitempty" name:"ProjectName"`
 
-	// 项目显示名称，可以为中文名
+	// <p>项目显示名称，可以为中文名</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DisplayName *string `json:"DisplayName,omitnil,omitempty" name:"DisplayName"`
 
-	// 备注
+	// <p>备注</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 项目创建人id
+	// <p>项目创建人id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatorUin *string `json:"CreatorUin,omitnil,omitempty" name:"CreatorUin"`
 
-	// 项目责任人id
+	// <p>项目责任人id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectOwnerUin *string `json:"ProjectOwnerUin,omitnil,omitempty" name:"ProjectOwnerUin"`
 
-	// 项目状态：0：禁用，1：启用，-3:禁用中，2：启用中
+	// <p>项目状态：0：禁用，1：启用，-3:禁用中，2：启用中</p>
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 项目模式，SIMPLE：简单模式 STANDARD：标准模式
+	// <p>项目模式，SIMPLE：简单模式 STANDARD：标准模式</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectModel *string `json:"ProjectModel,omitnil,omitempty" name:"ProjectModel"`
+
+	// <p>项目的额外配置参数，{Key: &quot;scheduleMode&quot;, Value: &quot;task|workflow&quot;}</p>
+	WorkspaceExt []*WorkspaceExt `json:"WorkspaceExt,omitnil,omitempty" name:"WorkspaceExt"`
 }
 
 type ProjectBrief struct {
@@ -16535,14 +16538,17 @@ type ProjectInstanceStatisticsAlarmInfo struct {
 }
 
 type ProjectRequest struct {
-	// 项目标识，英文名，以字母开头，可包含字母、数字和下划线，不能超过32个字符
+	// <p>项目标识，英文名，以字母开头，可包含字母、数字和下划线，不能超过32个字符</p>
 	ProjectName *string `json:"ProjectName,omitnil,omitempty" name:"ProjectName"`
 
-	// 项目显示名称，可以为中文名，以字母开头，可包含字母、数字和下划线，不能超过32个字符
+	// <p>项目显示名称，可以为中文名，以字母开头，可包含字母、数字和下划线，不能超过32个字符</p>
 	DisplayName *string `json:"DisplayName,omitnil,omitempty" name:"DisplayName"`
 
-	// 项目模式，SIMPLE（默认）：简单模式 STANDARD：标准模式
+	// <p>项目模式，SIMPLE（默认）：简单模式 STANDARD：标准模式</p>
 	ProjectModel *string `json:"ProjectModel,omitnil,omitempty" name:"ProjectModel"`
+
+	// <p>项目调度模式，task：任务模式 workflow：工作流模式</p>
+	ScheduleMode *string `json:"ScheduleMode,omitnil,omitempty" name:"ScheduleMode"`
 }
 
 type ProjectResult struct {
@@ -21033,6 +21039,10 @@ type TriggerTaskBrief struct {
 	// <p>运行账号ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExecuteUserUin *string `json:"ExecuteUserUin,omitnil,omitempty" name:"ExecuteUserUin"`
+
+	// <p>周期类型</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CycleType *string `json:"CycleType,omitnil,omitempty" name:"CycleType"`
 }
 
 type TriggerTaskConfiguration struct {
@@ -24573,4 +24583,14 @@ type WorkflowTriggerConfig struct {
 	// <p>文件到达模式下    触发等待时间</p><p>单位：秒</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TriggerWaitTimeSecond *int64 `json:"TriggerWaitTimeSecond,omitnil,omitempty" name:"TriggerWaitTimeSecond"`
+}
+
+type WorkspaceExt struct {
+	// <p>参数名</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// <p>参数值</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }

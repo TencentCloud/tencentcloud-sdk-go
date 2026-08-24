@@ -95,6 +95,9 @@ const (
 	// 该规则已被启用。
 	FAILEDOPERATION_RULEALREADYENABLED = "FailedOperation.RuleAlreadyEnabled"
 
+	// 该人员仍有关联人脸，无法删除
+	FAILEDOPERATION_SEEPERSONHASFACES = "FailedOperation.SeePersonHasFaces"
+
 	// 指定的 TWeSee 算法已开通后付费服务，不能重复开通
 	FAILEDOPERATION_SEEPOSTPAIDSERVICEALREADYEXISTS = "FailedOperation.SeePostPaidServiceAlreadyExists"
 
@@ -425,6 +428,12 @@ const (
 	// 累计退还资源超过限额。
 	LIMITEXCEEDED_RETURNRESOURCELIMITEXCEEDED = "LimitExceeded.ReturnResourceLimitExceeded"
 
+	// 该人员的代表人脸数量已达上限
+	LIMITEXCEEDED_SEEFACELIMITEXCEEDED = "LimitExceeded.SeeFaceLimitExceeded"
+
+	// 当前媒体流的人员数量已达上限
+	LIMITEXCEEDED_SEEPERSONLIMITEXCEEDED = "LimitExceeded.SeePersonLimitExceeded"
+
 	// LoRa频点数量超出限制。
 	LIMITEXCEEDED_STUDIOLORAFREQEXCEEDLIMIT = "LimitExceeded.StudioLoRaFreqExceedLimit"
 
@@ -535,6 +544,12 @@ const (
 
 	// 指定的 TWeSee 回调目标不存在
 	RESOURCENOTFOUND_SEECALLBACKNOTEXIST = "ResourceNotFound.SeeCallbackNotExist"
+
+	// 指定的人脸不存在
+	RESOURCENOTFOUND_SEEFACENOTEXIST = "ResourceNotFound.SeeFaceNotExist"
+
+	// 指定的人员不存在
+	RESOURCENOTFOUND_SEEPERSONNOTEXIST = "ResourceNotFound.SeePersonNotExist"
 
 	// 未开通 TWeSee 算法的后付费服务
 	RESOURCENOTFOUND_SEEPOSTPAIDSERVICENOTEXIST = "ResourceNotFound.SeePostPaidServiceNotExist"

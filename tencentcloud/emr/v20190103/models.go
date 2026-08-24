@@ -530,60 +530,63 @@ type AutoScaleRecord struct {
 }
 
 type AutoScaleResourceConf struct {
-	// 配置ID。
+	// <p>配置ID。</p>
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 集群实例ID。
+	// <p>集群实例ID。</p>
 	ClusterId *int64 `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 自动扩缩容保留最小实例数。
+	// <p>自动扩缩容保留最小实例数。</p>
 	ScaleLowerBound *int64 `json:"ScaleLowerBound,omitnil,omitempty" name:"ScaleLowerBound"`
 
-	// 自动扩缩容最大实例数。
+	// <p>自动扩缩容最大实例数。</p>
 	ScaleUpperBound *int64 `json:"ScaleUpperBound,omitnil,omitempty" name:"ScaleUpperBound"`
 
-	// 扩容规则类型，1为按负载指标扩容规则，2为按时间扩容规则
+	// <p>扩容规则类型，1为按负载指标扩容规则，2为按时间扩容规则</p>
 	StrategyType *int64 `json:"StrategyType,omitnil,omitempty" name:"StrategyType"`
 
-	// 下次可扩容时间。
+	// <p>下次可扩容时间。</p>
 	NextTimeCanScale *uint64 `json:"NextTimeCanScale,omitnil,omitempty" name:"NextTimeCanScale"`
 
-	// 优雅缩容开关
+	// <p>优雅缩容开关</p>
 	GraceDownFlag *bool `json:"GraceDownFlag,omitnil,omitempty" name:"GraceDownFlag"`
 
-	// "CVM"表示规格全部使用CVM相关类型，"POD"表示规格使用容器相关类型,默认为"CVM"。
+	// <p>&quot;CVM&quot;表示规格全部使用CVM相关类型，&quot;POD&quot;表示规格使用容器相关类型,默认为&quot;CVM&quot;。</p>
 	HardwareType *string `json:"HardwareType,omitnil,omitempty" name:"HardwareType"`
 
-	// "POSTPAY"表示只使用按量计费，"SPOT_FIRST"表示竞价实例优先，只有HardwareType为"HOST"时支持竞价实例优先，"POD"只支持纯按量计费。
+	// <p>&quot;POSTPAY&quot;表示只使用按量计费，&quot;SPOT_FIRST&quot;表示竞价实例优先，只有HardwareType为&quot;HOST&quot;时支持竞价实例优先，&quot;POD&quot;只支持纯按量计费。</p>
 	PayMode *string `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// 竞价实例优先的场景下，按量计费资源数量的最低百分比，整数
+	// <p>竞价实例优先的场景下，按量计费资源数量的最低百分比，整数</p>
 	PostPayPercentMin *int64 `json:"PostPayPercentMin,omitnil,omitempty" name:"PostPayPercentMin"`
 
-	// 预设资源类型为HOST时，支持勾选“资源不足时切换POD”；支持取消勾选；0表示默认不勾选（0），1表示勾选
+	// <p>预设资源类型为HOST时，支持勾选“资源不足时切换POD”；支持取消勾选；0表示默认不勾选（0），1表示勾选</p>
 	ChangeToPod *int64 `json:"ChangeToPod,omitnil,omitempty" name:"ChangeToPod"`
 
-	// 伸缩组名
+	// <p>伸缩组名</p>
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
-	// 标签
+	// <p>标签</p>
 	YarnNodeLabel *string `json:"YarnNodeLabel,omitnil,omitempty" name:"YarnNodeLabel"`
 
-	// 对应的计算组
+	// <p>对应的计算组</p>
 	WarehouseName *string `json:"WarehouseName,omitnil,omitempty" name:"WarehouseName"`
 
-	// 伸缩组状态
+	// <p>伸缩组状态</p>
 	GroupStatus *int64 `json:"GroupStatus,omitnil,omitempty" name:"GroupStatus"`
 
-	// 并行伸缩 0关闭；1开启
+	// <p>并行伸缩 0关闭；1开启</p>
 	Parallel *int64 `json:"Parallel,omitnil,omitempty" name:"Parallel"`
 
-	// 是否支持MNode
+	// <p>是否支持MNode</p>
 	EnableMNode *int64 `json:"EnableMNode,omitnil,omitempty" name:"EnableMNode"`
 
-	// 伸缩组更多设置
+	// <p>伸缩组更多设置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExtraAdvanceAttrs *AutoScaleGroupAdvanceAttrs `json:"ExtraAdvanceAttrs,omitnil,omitempty" name:"ExtraAdvanceAttrs"`
+
+	// <p>自定义主机名</p>
+	CustomNodeName *string `json:"CustomNodeName,omitnil,omitempty" name:"CustomNodeName"`
 }
 
 type BootstrapAction struct {
@@ -11859,6 +11862,9 @@ type NodeResourceSpec struct {
 
 	// <p>节点配置信息，目前仅提供给terraform平台校验参数使用</p>
 	SoftwareConfig []*ServiceDeploy `json:"SoftwareConfig,omitnil,omitempty" name:"SoftwareConfig"`
+
+	// <p>自定义主机名</p>
+	CustomNodeName *string `json:"CustomNodeName,omitnil,omitempty" name:"CustomNodeName"`
 }
 
 type NodeSelector struct {
@@ -12039,32 +12045,35 @@ type OpScope struct {
 }
 
 type OperationLog struct {
-	// EMR实例ID
+	// <p>EMR实例ID</p>
 	InstanceId *int64 `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 操作名称
+	// <p>操作名称</p>
 	Operation *string `json:"Operation,omitnil,omitempty" name:"Operation"`
 
-	// 操作类型
+	// <p>操作类型</p>
 	OperationType *int64 `json:"OperationType,omitnil,omitempty" name:"OperationType"`
 
-	// 用户类型
+	// <p>用户类型</p>
 	UserType *int64 `json:"UserType,omitnil,omitempty" name:"UserType"`
 
-	// 操作者
+	// <p>操作者</p>
 	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 操作时间
+	// <p>操作时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 操作对象
+	// <p>操作对象</p>
 	Operand *string `json:"Operand,omitnil,omitempty" name:"Operand"`
 
-	// 操作详情
+	// <p>操作详情</p>
 	OperationDesc *string `json:"OperationDesc,omitnil,omitempty" name:"OperationDesc"`
 
-	// 安全级别
+	// <p>安全级别</p>
 	SecurityLevel *string `json:"SecurityLevel,omitnil,omitempty" name:"SecurityLevel"`
+
+	// <p>操作者名称</p>
+	OperatorName *string `json:"OperatorName,omitnil,omitempty" name:"OperatorName"`
 }
 
 type Order struct {

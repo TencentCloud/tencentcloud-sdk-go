@@ -1505,8 +1505,11 @@ type CropEnhanceImageOCRResponseParams struct {
 	// <p>处理后图的高</p>
 	CroppedHeight *int64 `json:"CroppedHeight,omitnil,omitempty" name:"CroppedHeight"`
 
-	// <p>图像处理后的jpg图片，base64格式</p>
+	// <p>图像处理后的jpg图片，base64格式</p><p><strong><p><code>该字段后续不返回内容，请使用CroppedImageUrl</code></p></strong></p>
 	CroppedImage *string `json:"CroppedImage,omitnil,omitempty" name:"CroppedImage"`
+
+	// <p>图像处理后的jpg图片</p><p>参数格式：url格式</p>
+	CroppedImageUrl *string `json:"CroppedImageUrl,omitnil,omitempty" name:"CroppedImageUrl"`
 
 	// <p>切图区域的4个角点坐标, 是个长度为8的数组<br>[0,1,2,3,4,5,6,7]</p><p>(0,1) 左上角坐标<br>(2,3) 右上角坐标<br>(4,5) 右下角坐标<br>(6,7) 左下角坐标</p>
 	Position []*int64 `json:"Position,omitnil,omitempty" name:"Position"`

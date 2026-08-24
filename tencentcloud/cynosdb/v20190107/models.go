@@ -5422,7 +5422,7 @@ type CynosdbInstance struct {
 	// <p>集群主可用区</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// <p>实例状态</p>
+	// <p>实例状态</p><p>枚举值：</p><ul><li>creating： 创建中</li><li>running： 运行中</li><li>isolating： 隔离中</li><li>isolated： 已隔离</li><li>activating： 从回收站重新恢复</li><li>offlining： 下线中</li><li>offlined： 已下线</li><li>deleting： 删除中</li><li>deleted： 已删除</li></ul>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// <p>实例状态中文描述</p>
@@ -24855,12 +24855,15 @@ type TradePrice struct {
 
 // Predefined struct for user
 type TransferClusterPrepayToPostpayRequestParams struct {
-
+	// <p>集群id</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 }
 
 type TransferClusterPrepayToPostpayRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>集群id</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 }
 
 func (r *TransferClusterPrepayToPostpayRequest) ToJsonString() string {
@@ -24875,7 +24878,7 @@ func (r *TransferClusterPrepayToPostpayRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "ClusterId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TransferClusterPrepayToPostpayRequest has unknown keys!", "")
 	}
@@ -24884,6 +24887,26 @@ func (r *TransferClusterPrepayToPostpayRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type TransferClusterPrepayToPostpayResponseParams struct {
+	// <p>预付费总订单号</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BigDealIds []*string `json:"BigDealIds,omitnil,omitempty" name:"BigDealIds"`
+
+	// <p>冻结流水</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TranId *string `json:"TranId,omitnil,omitempty" name:"TranId"`
+
+	// <p>订单号</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DealNames []*string `json:"DealNames,omitnil,omitempty" name:"DealNames"`
+
+	// <p>资源id</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
+
+	// <p>集群id</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterIds []*string `json:"ClusterIds,omitnil,omitempty" name:"ClusterIds"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }

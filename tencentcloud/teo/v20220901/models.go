@@ -6110,44 +6110,45 @@ type DDoS struct {
 }
 
 type DDoSAttackEvent struct {
-	// 事件ID。
+	// <p>事件 ID。</p>
 	EventId *string `json:"EventId,omitnil,omitempty" name:"EventId"`
 
-	// 攻击类型(对应交互事件名称)。
+	// <p>攻击类型。</p>
 	AttackType *string `json:"AttackType,omitnil,omitempty" name:"AttackType"`
 
-	// 攻击状态。
+	// <p>攻击状态。</p><p>枚举值：</p><ul><li>0： 观察中</li><li>1： 攻击中</li><li>2： 攻击结束</li></ul>
 	AttackStatus *int64 `json:"AttackStatus,omitnil,omitempty" name:"AttackStatus"`
 
-	// 攻击最大带宽，单位为 bps。
+	// <p>攻击最大带宽，单位为 bps。</p>
 	AttackMaxBandWidth *int64 `json:"AttackMaxBandWidth,omitnil,omitempty" name:"AttackMaxBandWidth"`
 
-	// 攻击包速率峰值，单位为 pps。
+	// <p>攻击包速率峰值，单位为 pps。</p>
 	AttackPacketMaxRate *int64 `json:"AttackPacketMaxRate,omitnil,omitempty" name:"AttackPacketMaxRate"`
 
-	// 攻击开始时间，单位为s。
+	// <p>攻击开始时间戳。</p><p>单位：秒</p>
 	AttackStartTime *int64 `json:"AttackStartTime,omitnil,omitempty" name:"AttackStartTime"`
 
-	// 攻击结束时间，单位为s。
+	// <p>攻击结束时间戳。</p><p>单位：秒</p>
 	AttackEndTime *int64 `json:"AttackEndTime,omitnil,omitempty" name:"AttackEndTime"`
 
-	// DDoS策略组ID。
+	// <p>DDoS 策略组 ID。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PolicyId *int64 `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
 
-	// 站点ID。
+	// <p>站点 ID。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 攻击事件所属地区，取值有：
-	// <li>overseas：全球（除中国大陆地区）数据；</li>
-	// <li>mainland：中国大陆地区数据。</li>
+	// <p>攻击事件所属地区。</p><p>枚举值：</p><ul><li>overseas： 全球（除中国大陆地区）数据；</li><li>mainland： 中国大陆地区数据。</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
 
-	// 封禁解封信息。
+	// <p>封禁解封信息。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DDoSBlockData []*DDoSBlockData `json:"DDoSBlockData,omitnil,omitempty" name:"DDoSBlockData"`
+
+	// <p>被 DDoS 攻击的目的 IP 列表。</p>
+	DDoSAttackDips []*string `json:"DDoSAttackDips,omitnil,omitempty" name:"DDoSAttackDips"`
 }
 
 type DDoSBlockData struct {
@@ -9096,73 +9097,57 @@ func (r *DescribeCustomErrorPagesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDDoSAttackDataRequestParams struct {
-	// 开始时间。
+	// <p>开始时间。时间为世界标准时间（UTC），遵循 ISO 8601 标准的日期和时间格式。</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间。查询时间范围（`EndTime` - `StartTime`）需小于等于 31 天。
+	// <p>结束时间。时间为世界标准时间（UTC），遵循 ISO 8601 标准的日期和时间格式。查询时间范围（<code>EndTime</code> - <code>StartTime</code>）需小于等于 31 天。</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 统计指标列表，取值有：
-	// <li>ddos_attackMaxBandwidth：攻击带宽峰值；</li>
-	// <li>ddos_attackMaxPackageRate：攻击包速率峰值 ；</li>
-	// <li>ddos_attackBandwidth：攻击带宽曲线；</li>
-	// <li>ddos_attackPackageRate：攻击包速率曲线。</li>
+	// <p>统计指标列表，至少填写 1 个，且不允许重复。</p><p>枚举值：</p><ul><li>ddos_attackMaxBandwidth： 攻击带宽峰值，单位 bps；</li><li>ddos_attackMaxPackageRate： 攻击包速率峰值，单位 pps；</li><li>ddos_attackBandwidth： 攻击带宽曲线，单位 bps；</li><li>ddos_attackPackageRate： 攻击包速率曲线，单位 pps。</li></ul>
 	MetricNames []*string `json:"MetricNames,omitnil,omitempty" name:"MetricNames"`
 
-	// 站点 ID 集合，此参数将于2024年05月30日后由可选改为必填，详见公告：[【腾讯云 EdgeOne】云 API 变更通知](https://cloud.tencent.com/document/product/1552/104902)。最多传入 100 个站点 ID。若需查询腾讯云主账号下所有站点数据，请用 `*` 代替，查询账号级别数据需具备本接口全部站点资源权限。
+	// <p>站点 ID 集合，此参数将于2024年05月30日后由可选改为必填，详见公告：<a href="https://cloud.tencent.com/document/product/1552/104902">【腾讯云 EdgeOne】云 API 变更通知</a>。最多传入 100 个站点 ID。若需查询腾讯云主账号下所有站点数据，请用 <code>*</code> 代替，查询账号级别数据需具备本接口全部站点资源权限。</p>
 	ZoneIds []*string `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
 
-	// DDoS策略组ID列表，不填默认选择全部策略ID。
+	// <p>DDoS 策略组 ID 列表，不填默认选择全部策略 ID。</p>
 	PolicyIds []*int64 `json:"PolicyIds,omitnil,omitempty" name:"PolicyIds"`
 
-	// 查询时间粒度，取值有：
-	// <li>min：1分钟；</li>
-	// <li>5min：5分钟；</li>
-	// <li>hour：1小时；</li>
-	// <li>day：1天。</li>不填将根据开始时间与结束时间的间隔自动推算粒度，具体为：1小时范围内以min粒度查询，2天范围内以5min粒度查询，7天范围内以hour粒度查询，超过7天以day粒度查询。
+	// <p>查询时间粒度，不填将根据开始时间与结束时间的间隔自动推算粒度，具体为：1 小时范围内以 min 粒度查询，2 天范围内以 5min 粒度查询，7 天范围内以 hour 粒度查询，超过 7 天以 day 粒度查询。</p><p>枚举值：</p><ul><li>min： 1 分钟；</li><li>5min： 5分钟；</li><li>hour： 1小时；</li><li>day： 1天。</li></ul>
 	Interval *string `json:"Interval,omitnil,omitempty" name:"Interval"`
 
-	// 数据归属地区，取值有：
-	// <li>overseas：全球（除中国大陆地区）数据；</li>
-	// <li>mainland：中国大陆地区数据；</li>
-	// <li>global：全球数据。</li>不填默认取值为global。
+	// <p>数据归属地区。</p><p>枚举值：</p><ul><li>overseas： 全球（除中国大陆地区）数据；</li><li>mainland： 中国大陆地区数据；</li><li>global： 全球数据。</li></ul><p>默认值：global</p>
 	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
+
+	// <p>过滤条件，QueryCondition.Value 的集合数量上限为 20，详细的过滤条件 QueryCondition.Key 值如下：</p><li>ddos-attack-dip：按照 DDoS 攻击目的 IP 进行过滤，QueryCondition.Operator 仅支持 equals。</li>
+	Filters []*QueryCondition `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeDDoSAttackDataRequest struct {
 	*tchttp.BaseRequest
 	
-	// 开始时间。
+	// <p>开始时间。时间为世界标准时间（UTC），遵循 ISO 8601 标准的日期和时间格式。</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间。查询时间范围（`EndTime` - `StartTime`）需小于等于 31 天。
+	// <p>结束时间。时间为世界标准时间（UTC），遵循 ISO 8601 标准的日期和时间格式。查询时间范围（<code>EndTime</code> - <code>StartTime</code>）需小于等于 31 天。</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 统计指标列表，取值有：
-	// <li>ddos_attackMaxBandwidth：攻击带宽峰值；</li>
-	// <li>ddos_attackMaxPackageRate：攻击包速率峰值 ；</li>
-	// <li>ddos_attackBandwidth：攻击带宽曲线；</li>
-	// <li>ddos_attackPackageRate：攻击包速率曲线。</li>
+	// <p>统计指标列表，至少填写 1 个，且不允许重复。</p><p>枚举值：</p><ul><li>ddos_attackMaxBandwidth： 攻击带宽峰值，单位 bps；</li><li>ddos_attackMaxPackageRate： 攻击包速率峰值，单位 pps；</li><li>ddos_attackBandwidth： 攻击带宽曲线，单位 bps；</li><li>ddos_attackPackageRate： 攻击包速率曲线，单位 pps。</li></ul>
 	MetricNames []*string `json:"MetricNames,omitnil,omitempty" name:"MetricNames"`
 
-	// 站点 ID 集合，此参数将于2024年05月30日后由可选改为必填，详见公告：[【腾讯云 EdgeOne】云 API 变更通知](https://cloud.tencent.com/document/product/1552/104902)。最多传入 100 个站点 ID。若需查询腾讯云主账号下所有站点数据，请用 `*` 代替，查询账号级别数据需具备本接口全部站点资源权限。
+	// <p>站点 ID 集合，此参数将于2024年05月30日后由可选改为必填，详见公告：<a href="https://cloud.tencent.com/document/product/1552/104902">【腾讯云 EdgeOne】云 API 变更通知</a>。最多传入 100 个站点 ID。若需查询腾讯云主账号下所有站点数据，请用 <code>*</code> 代替，查询账号级别数据需具备本接口全部站点资源权限。</p>
 	ZoneIds []*string `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
 
-	// DDoS策略组ID列表，不填默认选择全部策略ID。
+	// <p>DDoS 策略组 ID 列表，不填默认选择全部策略 ID。</p>
 	PolicyIds []*int64 `json:"PolicyIds,omitnil,omitempty" name:"PolicyIds"`
 
-	// 查询时间粒度，取值有：
-	// <li>min：1分钟；</li>
-	// <li>5min：5分钟；</li>
-	// <li>hour：1小时；</li>
-	// <li>day：1天。</li>不填将根据开始时间与结束时间的间隔自动推算粒度，具体为：1小时范围内以min粒度查询，2天范围内以5min粒度查询，7天范围内以hour粒度查询，超过7天以day粒度查询。
+	// <p>查询时间粒度，不填将根据开始时间与结束时间的间隔自动推算粒度，具体为：1 小时范围内以 min 粒度查询，2 天范围内以 5min 粒度查询，7 天范围内以 hour 粒度查询，超过 7 天以 day 粒度查询。</p><p>枚举值：</p><ul><li>min： 1 分钟；</li><li>5min： 5分钟；</li><li>hour： 1小时；</li><li>day： 1天。</li></ul>
 	Interval *string `json:"Interval,omitnil,omitempty" name:"Interval"`
 
-	// 数据归属地区，取值有：
-	// <li>overseas：全球（除中国大陆地区）数据；</li>
-	// <li>mainland：中国大陆地区数据；</li>
-	// <li>global：全球数据。</li>不填默认取值为global。
+	// <p>数据归属地区。</p><p>枚举值：</p><ul><li>overseas： 全球（除中国大陆地区）数据；</li><li>mainland： 中国大陆地区数据；</li><li>global： 全球数据。</li></ul><p>默认值：global</p>
 	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
+
+	// <p>过滤条件，QueryCondition.Value 的集合数量上限为 20，详细的过滤条件 QueryCondition.Key 值如下：</p><li>ddos-attack-dip：按照 DDoS 攻击目的 IP 进行过滤，QueryCondition.Operator 仅支持 equals。</li>
+	Filters []*QueryCondition `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 func (r *DescribeDDoSAttackDataRequest) ToJsonString() string {
@@ -9184,6 +9169,7 @@ func (r *DescribeDDoSAttackDataRequest) FromJsonString(s string) error {
 	delete(f, "PolicyIds")
 	delete(f, "Interval")
 	delete(f, "Area")
+	delete(f, "Filters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDDoSAttackDataRequest has unknown keys!", "")
 	}
@@ -9192,10 +9178,10 @@ func (r *DescribeDDoSAttackDataRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDDoSAttackDataResponseParams struct {
-	// 查询结果的总条数。
+	// <p>查询结果的总条数。</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// DDoS攻击数据内容列表。
+	// <p>DDoS 攻击数据内容列表。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data []*SecEntry `json:"Data,omitnil,omitempty" name:"Data"`
 

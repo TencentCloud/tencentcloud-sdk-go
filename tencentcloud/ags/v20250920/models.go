@@ -38,6 +38,66 @@ type APIKeyInfo struct {
 }
 
 // Predefined struct for user
+type AcquireDeploymentTokenRequestParams struct {
+	// <p>目标 ACTIVE Deployment 的稳定 ID。</p>
+	DeploymentId *string `json:"DeploymentId,omitnil,omitempty" name:"DeploymentId"`
+}
+
+type AcquireDeploymentTokenRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>目标 ACTIVE Deployment 的稳定 ID。</p>
+	DeploymentId *string `json:"DeploymentId,omitnil,omitempty" name:"DeploymentId"`
+}
+
+func (r *AcquireDeploymentTokenRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AcquireDeploymentTokenRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DeploymentId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AcquireDeploymentTokenRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AcquireDeploymentTokenResponseParams struct {
+	// <p>只用于目标 Deployment 数据面入口的短期 bearer Token，格式为 dpt_ 加非空、无 padding 的 Base64URL opaque 后缀。</p>
+	Token *string `json:"Token,omitnil,omitempty" name:"Token"`
+
+	// <p>Token 的绝对过期时间，UTC、秒精度 RFC3339 格式。</p>
+	ExpiresAt *string `json:"ExpiresAt,omitnil,omitempty" name:"ExpiresAt"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type AcquireDeploymentTokenResponse struct {
+	*tchttp.BaseResponse
+	Response *AcquireDeploymentTokenResponseParams `json:"Response"`
+}
+
+func (r *AcquireDeploymentTokenResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AcquireDeploymentTokenResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type AcquireSandboxInstanceTokenRequestParams struct {
 	// <p>沙箱实例ID，生成的访问Token将仅可用于访问此沙箱实例</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -100,6 +160,14 @@ func (r *AcquireSandboxInstanceTokenResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type AffinityConfiguration struct {
+	// <p>Affinity 模式。</p><p>枚举值：</p><ul><li>BEST_EFFORT：优先复用原 Instance，不可用时允许改选。</li><li>STRICT：只复用原 Instance，不可用时失败且不改选。</li><li>EXCLUSIVE：一个 Affinity ID 独占一个 Instance，不能迁移。</li></ul><p>缺失或空字符串表示关闭 Affinity。</p>
+	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
+
+	// <p>请求和响应使用的 Affinity Header 名称。必须符合 HTTP field-name token 语法，长度为 1..128 个 ASCII 字节，且不能使用平台保留 Header。</p>
+	HeaderName *string `json:"HeaderName,omitnil,omitempty" name:"HeaderName"`
+}
+
 type AgentBucketStorageSource struct {
 	// <p>用于传入 AgentBucket 的 LibraryID</p>
 	LibraryId *string `json:"LibraryId,omitnil,omitempty" name:"LibraryId"`
@@ -122,6 +190,11 @@ type CfsStorageSource struct {
 
 	// CFS挂载路径
 	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
+}
+
+type ComputerConfiguration struct {
+	// <p>waa沙箱工具配置</p>
+	WAAConfiguration *WAAConfiguration `json:"WAAConfiguration,omitnil,omitempty" name:"WAAConfiguration"`
 }
 
 type CosStorageSource struct {
@@ -195,6 +268,98 @@ func (r *CreateAPIKeyResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateAPIKeyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateDeploymentRequestParams struct {
+	// <p>唯一的 Deployment 名称，必须符合 DNS-1123 命名规范，创建后不可修改。</p>
+	DeploymentName *string `json:"DeploymentName,omitnil,omitempty" name:"DeploymentName"`
+
+	// <p>用于关联 Sandbox Tool 的标识，格式为 sdt- 加 8 位小写 base36 字符。</p>
+	ToolId *string `json:"ToolId,omitnil,omitempty" name:"ToolId"`
+
+	// <p>伸缩配置；省略的成员由服务端补全默认值。</p>
+	ScalingConfiguration *ScalingConfiguration `json:"ScalingConfiguration,omitnil,omitempty" name:"ScalingConfiguration"`
+
+	// <p>空闲生命周期配置；省略的成员由服务端补全默认值。</p>
+	LifecycleConfiguration *LifecycleConfiguration `json:"LifecycleConfiguration,omitnil,omitempty" name:"LifecycleConfiguration"`
+
+	// <p>Affinity 配置；省略或空 Mode 表示不启用。</p>
+	AffinityConfiguration *AffinityConfiguration `json:"AffinityConfiguration,omitnil,omitempty" name:"AffinityConfiguration"`
+
+	// <p>标签</p>
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
+type CreateDeploymentRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>唯一的 Deployment 名称，必须符合 DNS-1123 命名规范，创建后不可修改。</p>
+	DeploymentName *string `json:"DeploymentName,omitnil,omitempty" name:"DeploymentName"`
+
+	// <p>用于关联 Sandbox Tool 的标识，格式为 sdt- 加 8 位小写 base36 字符。</p>
+	ToolId *string `json:"ToolId,omitnil,omitempty" name:"ToolId"`
+
+	// <p>伸缩配置；省略的成员由服务端补全默认值。</p>
+	ScalingConfiguration *ScalingConfiguration `json:"ScalingConfiguration,omitnil,omitempty" name:"ScalingConfiguration"`
+
+	// <p>空闲生命周期配置；省略的成员由服务端补全默认值。</p>
+	LifecycleConfiguration *LifecycleConfiguration `json:"LifecycleConfiguration,omitnil,omitempty" name:"LifecycleConfiguration"`
+
+	// <p>Affinity 配置；省略或空 Mode 表示不启用。</p>
+	AffinityConfiguration *AffinityConfiguration `json:"AffinityConfiguration,omitnil,omitempty" name:"AffinityConfiguration"`
+
+	// <p>标签</p>
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
+func (r *CreateDeploymentRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDeploymentRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DeploymentName")
+	delete(f, "ToolId")
+	delete(f, "ScalingConfiguration")
+	delete(f, "LifecycleConfiguration")
+	delete(f, "AffinityConfiguration")
+	delete(f, "Tags")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDeploymentRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateDeploymentResponseParams struct {
+	// <p>已创建并完成默认值物化的 Deployment。</p>
+	Deployment *Deployment `json:"Deployment,omitnil,omitempty" name:"Deployment"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateDeploymentResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateDeploymentResponseParams `json:"Response"`
+}
+
+func (r *CreateDeploymentResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDeploymentResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -529,6 +694,60 @@ func (r *DeleteAPIKeyResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteDeploymentRequestParams struct {
+	// <p>待删除的 Deployment ID。</p>
+	DeploymentId *string `json:"DeploymentId,omitnil,omitempty" name:"DeploymentId"`
+}
+
+type DeleteDeploymentRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>待删除的 Deployment ID。</p>
+	DeploymentId *string `json:"DeploymentId,omitnil,omitempty" name:"DeploymentId"`
+}
+
+func (r *DeleteDeploymentRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDeploymentRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DeploymentId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteDeploymentRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteDeploymentResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteDeploymentResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteDeploymentResponseParams `json:"Response"`
+}
+
+func (r *DeleteDeploymentResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDeploymentResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteSandboxToolRequestParams struct {
 	// 沙箱工具ID
 	ToolId *string `json:"ToolId,omitnil,omitempty" name:"ToolId"`
@@ -580,6 +799,41 @@ func (r *DeleteSandboxToolResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DeleteSandboxToolResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type Deployment struct {
+	// <p>Deployment 稳定 ID，格式为 dpl- 加 8 位小写 base36 字符。</p>
+	DeploymentId *string `json:"DeploymentId,omitnil,omitempty" name:"DeploymentId"`
+
+	// <p>唯一且创建后不可修改的名称，必须符合 DNS-1123 命名规范。</p>
+	DeploymentName *string `json:"DeploymentName,omitnil,omitempty" name:"DeploymentName"`
+
+	// <p>用于关联 Sandbox Tool 的标识，格式为 sdt- 加 8 位小写 base36 字符。</p>
+	ToolId *string `json:"ToolId,omitnil,omitempty" name:"ToolId"`
+
+	// <p>完整的活跃容量配置。</p>
+	ScalingConfiguration *ScalingConfiguration `json:"ScalingConfiguration,omitnil,omitempty" name:"ScalingConfiguration"`
+
+	// <p>完整的空闲生命周期配置。</p>
+	LifecycleConfiguration *LifecycleConfiguration `json:"LifecycleConfiguration,omitnil,omitempty" name:"LifecycleConfiguration"`
+
+	// <p>可选 Affinity 配置；未启用时省略。</p>
+	AffinityConfiguration *AffinityConfiguration `json:"AffinityConfiguration,omitnil,omitempty" name:"AffinityConfiguration"`
+
+	// <p>Deployment 控制面状态。</p><p>枚举值：</p><ul><li>ACTIVE：入口可用。</li><li>DELETING：入口已关闭并正在异步删除。</li><li>DELETE_FAILED：最近一次异步删除失败，可再次调用 DeleteDeployment。</li></ul>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>DELETE_FAILED 状态下 1..1024 个 UTF-8 字节的安全失败摘要，格式为 {Code}[.{SubCode}]: {Message}；其他状态省略。</p>
+	StatusReason *string `json:"StatusReason,omitnil,omitempty" name:"StatusReason"`
+
+	// <p>创建时间，UTC、秒精度 RFC3339 格式。</p>
+	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
+
+	// <p>最近一次成功公共配置写入或 Deployment 状态迁移时间，UTC、秒精度 RFC3339 格式。</p>
+	UpdatedTime *string `json:"UpdatedTime,omitnil,omitempty" name:"UpdatedTime"`
+
+	// <p>标签</p>
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 // Predefined struct for user
@@ -636,6 +890,137 @@ func (r *DescribeAPIKeyListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAPIKeyListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDeploymentListRequestParams struct {
+	// <p>分页偏移量，默认 0，必须大于等于 0。</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>分页返回数量，默认 20，范围 1..200。</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>查询过滤条件。</p><p>Filter.Name 枚举值：</p><ul><li>deployment-id：按 DeploymentId 精确匹配</li><li>deployment-name：按 DeploymentName 精确匹配</li><li>deployment-name-like：按 DeploymentName 进行普通文本包含匹配，%、_ 等字符没有通配语义</li><li>tool-id：按 ToolId 精确匹配</li><li>status：按 Deployment 状态精确匹配，支持 ACTIVE、DELETING、DELETE_FAILED</li></ul><p>所有匹配均区分大小写。不同 Filter 之间为 AND，同一 Filter 的 Values 之间为 OR。</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type DescribeDeploymentListRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>分页偏移量，默认 0，必须大于等于 0。</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>分页返回数量，默认 20，范围 1..200。</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>查询过滤条件。</p><p>Filter.Name 枚举值：</p><ul><li>deployment-id：按 DeploymentId 精确匹配</li><li>deployment-name：按 DeploymentName 精确匹配</li><li>deployment-name-like：按 DeploymentName 进行普通文本包含匹配，%、_ 等字符没有通配语义</li><li>tool-id：按 ToolId 精确匹配</li><li>status：按 Deployment 状态精确匹配，支持 ACTIVE、DELETING、DELETE_FAILED</li></ul><p>所有匹配均区分大小写。不同 Filter 之间为 AND，同一 Filter 的 Values 之间为 OR。</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *DescribeDeploymentListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeploymentListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDeploymentListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDeploymentListResponseParams struct {
+	// <p>当前页完整 Deployment；无匹配时为空数组。</p>
+	DeploymentSet []*Deployment `json:"DeploymentSet,omitnil,omitempty" name:"DeploymentSet"`
+
+	// <p>应用 Filters 后、分页前的结果总数。</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDeploymentListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDeploymentListResponseParams `json:"Response"`
+}
+
+func (r *DescribeDeploymentListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeploymentListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDeploymentRequestParams struct {
+	// <p>待查询的 Deployment ID。</p>
+	DeploymentId *string `json:"DeploymentId,omitnil,omitempty" name:"DeploymentId"`
+}
+
+type DescribeDeploymentRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>待查询的 Deployment ID。</p>
+	DeploymentId *string `json:"DeploymentId,omitnil,omitempty" name:"DeploymentId"`
+}
+
+func (r *DescribeDeploymentRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeploymentRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DeploymentId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDeploymentRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDeploymentResponseParams struct {
+	// <p>完整 Deployment。</p>
+	Deployment *Deployment `json:"Deployment,omitnil,omitempty" name:"Deployment"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDeploymentResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDeploymentResponseParams `json:"Response"`
+}
+
+func (r *DescribeDeploymentResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeploymentResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -932,6 +1317,14 @@ type ImageStorageSource struct {
 	Digest *string `json:"Digest,omitnil,omitempty" name:"Digest"`
 }
 
+type LifecycleConfiguration struct {
+	// <p>Sandbox Instance 没有活跃 Deployment 请求或连接后进入 IdleAction 的秒数，必须大于等于 30。</p>
+	IdleTimeoutSeconds *int64 `json:"IdleTimeoutSeconds,omitnil,omitempty" name:"IdleTimeoutSeconds"`
+
+	// <p>空闲处理动作。</p><p>枚举值：</p><ul><li>STOP：停止并释放 Sandbox Instance。</li><li>PAUSE：暂停并保留 Sandbox Instance 状态。</li></ul>
+	IdleAction *string `json:"IdleAction,omitnil,omitempty" name:"IdleAction"`
+}
+
 type LogConfiguration struct {
 	// <p>日志推送CLS的配置。</p>
 	CLSConfig *CLSConfig `json:"CLSConfig,omitnil,omitempty" name:"CLSConfig"`
@@ -952,6 +1345,84 @@ type MetadataVar struct {
 
 	// <p>沙箱元数据值</p>
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+// Predefined struct for user
+type ModifyDeploymentRequestParams struct {
+	// <p>待修改的 Deployment ID。</p>
+	DeploymentId *string `json:"DeploymentId,omitnil,omitempty" name:"DeploymentId"`
+
+	// <p>完整替换伸缩配置；提供时必须包含全部三个成员。</p>
+	ScalingConfiguration *ScalingConfiguration `json:"ScalingConfiguration,omitnil,omitempty" name:"ScalingConfiguration"`
+
+	// <p>完整替换生命周期配置；提供时必须包含全部两个成员。</p>
+	LifecycleConfiguration *LifecycleConfiguration `json:"LifecycleConfiguration,omitnil,omitempty" name:"LifecycleConfiguration"`
+
+	// <p>标签</p>
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
+type ModifyDeploymentRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>待修改的 Deployment ID。</p>
+	DeploymentId *string `json:"DeploymentId,omitnil,omitempty" name:"DeploymentId"`
+
+	// <p>完整替换伸缩配置；提供时必须包含全部三个成员。</p>
+	ScalingConfiguration *ScalingConfiguration `json:"ScalingConfiguration,omitnil,omitempty" name:"ScalingConfiguration"`
+
+	// <p>完整替换生命周期配置；提供时必须包含全部两个成员。</p>
+	LifecycleConfiguration *LifecycleConfiguration `json:"LifecycleConfiguration,omitnil,omitempty" name:"LifecycleConfiguration"`
+
+	// <p>标签</p>
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
+func (r *ModifyDeploymentRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDeploymentRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DeploymentId")
+	delete(f, "ScalingConfiguration")
+	delete(f, "LifecycleConfiguration")
+	delete(f, "Tags")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDeploymentRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDeploymentResponseParams struct {
+	// <p>修改后的完整 Deployment。</p>
+	Deployment *Deployment `json:"Deployment,omitnil,omitempty" name:"Deployment"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyDeploymentResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyDeploymentResponseParams `json:"Response"`
+}
+
+func (r *ModifyDeploymentResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDeploymentResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type MountOption struct {
@@ -1181,6 +1652,9 @@ type SandboxInstance struct {
 	// <p>沙箱实例自定义配置</p>
 	CustomConfiguration *CustomConfigurationDetail `json:"CustomConfiguration,omitnil,omitempty" name:"CustomConfiguration"`
 
+	// <p>桌面电脑环境类沙箱配置</p>
+	ComputerConfiguration *ComputerConfiguration `json:"ComputerConfiguration,omitnil,omitempty" name:"ComputerConfiguration"`
+
 	// <p>网络模式</p><p>枚举值：</p><ul><li>PUBLIC： 公网访问</li><li>SANDBOX： 无网络</li><li>INTERNAL_SERVICE： 腾讯云内部公共服务</li></ul><p>可以覆盖工具级别的网络配置。但如果一个工具本身就不支持 VPC 网络，那么即便在实例设置里选了 VPC 模式，也是无效的</p>
 	NetworkMode *string `json:"NetworkMode,omitnil,omitempty" name:"NetworkMode"`
 
@@ -1237,8 +1711,22 @@ type SandboxTool struct {
 	// <p>沙箱工具日志推送相关配置</p>
 	LogConfiguration *LogConfiguration `json:"LogConfiguration,omitnil,omitempty" name:"LogConfiguration"`
 
+	// <p>桌面电脑环境类沙箱配置</p>
+	ComputerConfiguration *ComputerConfiguration `json:"ComputerConfiguration,omitnil,omitempty" name:"ComputerConfiguration"`
+
 	// <p>用于说明沙箱工具处于该状态的原因</p>
 	StatusReason *string `json:"StatusReason,omitnil,omitempty" name:"StatusReason"`
+}
+
+type ScalingConfiguration struct {
+	// <p>活跃 Sandbox Instance 下限，必须大于等于 0。</p>
+	MinInstanceCount *int64 `json:"MinInstanceCount,omitnil,omitempty" name:"MinInstanceCount"`
+
+	// <p>活跃 Sandbox Instance 上限，必须大于等于 1，并且不小于 MinInstanceCount。</p>
+	MaxInstanceCount *int64 `json:"MaxInstanceCount,omitnil,omitempty" name:"MaxInstanceCount"`
+
+	// <p>每个活跃 Sandbox Instance 同时持有的 Deployment 请求或连接 Lease 上限，必须大于等于 1。</p>
+	MaxInstanceRequestConcurrency *int64 `json:"MaxInstanceRequestConcurrency,omitnil,omitempty" name:"MaxInstanceRequestConcurrency"`
 }
 
 // Predefined struct for user
@@ -1594,4 +2082,9 @@ type VPCConfig struct {
 
 	// <p>安全组ID列表</p>
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
+}
+
+type WAAConfiguration struct {
+	// <p>自定义waa镜像ID</p>
+	ImageId *string `json:"ImageId,omitnil,omitempty" name:"ImageId"`
 }

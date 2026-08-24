@@ -45,6 +45,60 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewAcquireDeploymentTokenRequest() (request *AcquireDeploymentTokenRequest) {
+    request = &AcquireDeploymentTokenRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ags", APIVersion, "AcquireDeploymentToken")
+    
+    
+    return
+}
+
+func NewAcquireDeploymentTokenResponse() (response *AcquireDeploymentTokenResponse) {
+    response = &AcquireDeploymentTokenResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// AcquireDeploymentToken
+// 获取 Deployment 访问 Token
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_DEPLOYMENTID = "InvalidParameter.DeploymentId"
+//  RESOURCENOTFOUND_DEPLOYMENT = "ResourceNotFound.Deployment"
+//  RESOURCEUNAVAILABLE_DEPLOYMENT = "ResourceUnavailable.Deployment"
+func (c *Client) AcquireDeploymentToken(request *AcquireDeploymentTokenRequest) (response *AcquireDeploymentTokenResponse, err error) {
+    return c.AcquireDeploymentTokenWithContext(context.Background(), request)
+}
+
+// AcquireDeploymentToken
+// 获取 Deployment 访问 Token
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_DEPLOYMENTID = "InvalidParameter.DeploymentId"
+//  RESOURCENOTFOUND_DEPLOYMENT = "ResourceNotFound.Deployment"
+//  RESOURCEUNAVAILABLE_DEPLOYMENT = "ResourceUnavailable.Deployment"
+func (c *Client) AcquireDeploymentTokenWithContext(ctx context.Context, request *AcquireDeploymentTokenRequest) (response *AcquireDeploymentTokenResponse, err error) {
+    if request == nil {
+        request = NewAcquireDeploymentTokenRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ags", APIVersion, "AcquireDeploymentToken")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AcquireDeploymentToken require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAcquireDeploymentTokenResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAcquireSandboxInstanceTokenRequest() (request *AcquireSandboxInstanceTokenRequest) {
     request = &AcquireSandboxInstanceTokenRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -165,6 +219,70 @@ func (c *Client) CreateAPIKeyWithContext(ctx context.Context, request *CreateAPI
     request.SetContext(ctx)
     
     response = NewCreateAPIKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateDeploymentRequest() (request *CreateDeploymentRequest) {
+    request = &CreateDeploymentRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ags", APIVersion, "CreateDeployment")
+    
+    
+    return
+}
+
+func NewCreateDeploymentResponse() (response *CreateDeploymentResponse) {
+    response = &CreateDeploymentResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateDeployment
+// 创建 Deployment
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_AFFINITYCONFIGURATION = "InvalidParameter.AffinityConfiguration"
+//  INVALIDPARAMETER_DEPLOYMENTNAME = "InvalidParameter.DeploymentName"
+//  INVALIDPARAMETER_LIFECYCLECONFIGURATION = "InvalidParameter.LifecycleConfiguration"
+//  INVALIDPARAMETER_SCALINGCONFIGURATION = "InvalidParameter.ScalingConfiguration"
+//  INVALIDPARAMETER_TOOLID = "InvalidParameter.ToolId"
+//  LIMITEXCEEDED_DEPLOYMENT = "LimitExceeded.Deployment"
+//  RESOURCEINUSE_DEPLOYMENTNAME = "ResourceInUse.DeploymentName"
+//  RESOURCENOTFOUND_SANDBOXTOOL = "ResourceNotFound.SandboxTool"
+func (c *Client) CreateDeployment(request *CreateDeploymentRequest) (response *CreateDeploymentResponse, err error) {
+    return c.CreateDeploymentWithContext(context.Background(), request)
+}
+
+// CreateDeployment
+// 创建 Deployment
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_AFFINITYCONFIGURATION = "InvalidParameter.AffinityConfiguration"
+//  INVALIDPARAMETER_DEPLOYMENTNAME = "InvalidParameter.DeploymentName"
+//  INVALIDPARAMETER_LIFECYCLECONFIGURATION = "InvalidParameter.LifecycleConfiguration"
+//  INVALIDPARAMETER_SCALINGCONFIGURATION = "InvalidParameter.ScalingConfiguration"
+//  INVALIDPARAMETER_TOOLID = "InvalidParameter.ToolId"
+//  LIMITEXCEEDED_DEPLOYMENT = "LimitExceeded.Deployment"
+//  RESOURCEINUSE_DEPLOYMENTNAME = "ResourceInUse.DeploymentName"
+//  RESOURCENOTFOUND_SANDBOXTOOL = "ResourceNotFound.SandboxTool"
+func (c *Client) CreateDeploymentWithContext(ctx context.Context, request *CreateDeploymentRequest) (response *CreateDeploymentResponse, err error) {
+    if request == nil {
+        request = NewCreateDeploymentRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ags", APIVersion, "CreateDeployment")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDeployment require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateDeploymentResponse()
     err = c.Send(request, response)
     return
 }
@@ -383,6 +501,60 @@ func (c *Client) DeleteAPIKeyWithContext(ctx context.Context, request *DeleteAPI
     return
 }
 
+func NewDeleteDeploymentRequest() (request *DeleteDeploymentRequest) {
+    request = &DeleteDeploymentRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ags", APIVersion, "DeleteDeployment")
+    
+    
+    return
+}
+
+func NewDeleteDeploymentResponse() (response *DeleteDeploymentResponse) {
+    response = &DeleteDeploymentResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteDeployment
+// 删除 Deployment
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_DEPLOYMENTID = "InvalidParameter.DeploymentId"
+//  RESOURCEINUSE_DEPLOYMENT = "ResourceInUse.Deployment"
+//  RESOURCENOTFOUND_DEPLOYMENT = "ResourceNotFound.Deployment"
+func (c *Client) DeleteDeployment(request *DeleteDeploymentRequest) (response *DeleteDeploymentResponse, err error) {
+    return c.DeleteDeploymentWithContext(context.Background(), request)
+}
+
+// DeleteDeployment
+// 删除 Deployment
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_DEPLOYMENTID = "InvalidParameter.DeploymentId"
+//  RESOURCEINUSE_DEPLOYMENT = "ResourceInUse.Deployment"
+//  RESOURCENOTFOUND_DEPLOYMENT = "ResourceNotFound.Deployment"
+func (c *Client) DeleteDeploymentWithContext(ctx context.Context, request *DeleteDeploymentRequest) (response *DeleteDeploymentResponse, err error) {
+    if request == nil {
+        request = NewDeleteDeploymentRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ags", APIVersion, "DeleteDeployment")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteDeployment require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteDeploymentResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteSandboxToolRequest() (request *DeleteSandboxToolRequest) {
     request = &DeleteSandboxToolRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -493,6 +665,112 @@ func (c *Client) DescribeAPIKeyListWithContext(ctx context.Context, request *Des
     request.SetContext(ctx)
     
     response = NewDescribeAPIKeyListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDeploymentRequest() (request *DescribeDeploymentRequest) {
+    request = &DescribeDeploymentRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ags", APIVersion, "DescribeDeployment")
+    
+    
+    return
+}
+
+func NewDescribeDeploymentResponse() (response *DescribeDeploymentResponse) {
+    response = &DescribeDeploymentResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDeployment
+// 查询 Deployment 信息
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_DEPLOYMENTID = "InvalidParameter.DeploymentId"
+//  RESOURCENOTFOUND_DEPLOYMENT = "ResourceNotFound.Deployment"
+func (c *Client) DescribeDeployment(request *DescribeDeploymentRequest) (response *DescribeDeploymentResponse, err error) {
+    return c.DescribeDeploymentWithContext(context.Background(), request)
+}
+
+// DescribeDeployment
+// 查询 Deployment 信息
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_DEPLOYMENTID = "InvalidParameter.DeploymentId"
+//  RESOURCENOTFOUND_DEPLOYMENT = "ResourceNotFound.Deployment"
+func (c *Client) DescribeDeploymentWithContext(ctx context.Context, request *DescribeDeploymentRequest) (response *DescribeDeploymentResponse, err error) {
+    if request == nil {
+        request = NewDescribeDeploymentRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ags", APIVersion, "DescribeDeployment")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDeployment require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDeploymentResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDeploymentListRequest() (request *DescribeDeploymentListRequest) {
+    request = &DescribeDeploymentListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ags", APIVersion, "DescribeDeploymentList")
+    
+    
+    return
+}
+
+func NewDescribeDeploymentListResponse() (response *DescribeDeploymentListResponse) {
+    response = &DescribeDeploymentListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDeploymentList
+// 查询 Deployment 列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_FILTERS = "InvalidParameter.Filters"
+//  INVALIDPARAMETER_LIMIT = "InvalidParameter.Limit"
+//  INVALIDPARAMETER_OFFSET = "InvalidParameter.Offset"
+func (c *Client) DescribeDeploymentList(request *DescribeDeploymentListRequest) (response *DescribeDeploymentListResponse, err error) {
+    return c.DescribeDeploymentListWithContext(context.Background(), request)
+}
+
+// DescribeDeploymentList
+// 查询 Deployment 列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_FILTERS = "InvalidParameter.Filters"
+//  INVALIDPARAMETER_LIMIT = "InvalidParameter.Limit"
+//  INVALIDPARAMETER_OFFSET = "InvalidParameter.Offset"
+func (c *Client) DescribeDeploymentListWithContext(ctx context.Context, request *DescribeDeploymentListRequest) (response *DescribeDeploymentListResponse, err error) {
+    if request == nil {
+        request = NewDescribeDeploymentListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ags", APIVersion, "DescribeDeploymentList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDeploymentList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDeploymentListResponse()
     err = c.Send(request, response)
     return
 }
@@ -659,6 +937,66 @@ func (c *Client) DescribeSandboxToolListWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewDescribeSandboxToolListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDeploymentRequest() (request *ModifyDeploymentRequest) {
+    request = &ModifyDeploymentRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ags", APIVersion, "ModifyDeployment")
+    
+    
+    return
+}
+
+func NewModifyDeploymentResponse() (response *ModifyDeploymentResponse) {
+    response = &ModifyDeploymentResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyDeployment
+// 修改 Deployment
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_AFFINITYCONFIGURATION = "InvalidParameter.AffinityConfiguration"
+//  INVALIDPARAMETER_DEPLOYMENTID = "InvalidParameter.DeploymentId"
+//  INVALIDPARAMETER_LIFECYCLECONFIGURATION = "InvalidParameter.LifecycleConfiguration"
+//  INVALIDPARAMETER_SCALINGCONFIGURATION = "InvalidParameter.ScalingConfiguration"
+//  RESOURCEINUSE_DEPLOYMENT = "ResourceInUse.Deployment"
+//  RESOURCENOTFOUND_DEPLOYMENT = "ResourceNotFound.Deployment"
+func (c *Client) ModifyDeployment(request *ModifyDeploymentRequest) (response *ModifyDeploymentResponse, err error) {
+    return c.ModifyDeploymentWithContext(context.Background(), request)
+}
+
+// ModifyDeployment
+// 修改 Deployment
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_AFFINITYCONFIGURATION = "InvalidParameter.AffinityConfiguration"
+//  INVALIDPARAMETER_DEPLOYMENTID = "InvalidParameter.DeploymentId"
+//  INVALIDPARAMETER_LIFECYCLECONFIGURATION = "InvalidParameter.LifecycleConfiguration"
+//  INVALIDPARAMETER_SCALINGCONFIGURATION = "InvalidParameter.ScalingConfiguration"
+//  RESOURCEINUSE_DEPLOYMENT = "ResourceInUse.Deployment"
+//  RESOURCENOTFOUND_DEPLOYMENT = "ResourceNotFound.Deployment"
+func (c *Client) ModifyDeploymentWithContext(ctx context.Context, request *ModifyDeploymentRequest) (response *ModifyDeploymentResponse, err error) {
+    if request == nil {
+        request = NewModifyDeploymentRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ags", APIVersion, "ModifyDeployment")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDeployment require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDeploymentResponse()
     err = c.Send(request, response)
     return
 }

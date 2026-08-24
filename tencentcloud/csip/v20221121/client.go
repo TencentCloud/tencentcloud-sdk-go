@@ -3681,6 +3681,72 @@ func (c *Client) CreateDspmAssetsExportJobWithContext(ctx context.Context, reque
     return
 }
 
+func NewCreateDspmAuditFilterStrategyRequest() (request *CreateDspmAuditFilterStrategyRequest) {
+    request = &CreateDspmAuditFilterStrategyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "CreateDspmAuditFilterStrategy")
+    
+    
+    return
+}
+
+func NewCreateDspmAuditFilterStrategyResponse() (response *CreateDspmAuditFilterStrategyResponse) {
+    response = &CreateDspmAuditFilterStrategyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateDspmAuditFilterStrategy
+// 创建Dspm审计过滤策略
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateDspmAuditFilterStrategy(request *CreateDspmAuditFilterStrategyRequest) (response *CreateDspmAuditFilterStrategyResponse, err error) {
+    return c.CreateDspmAuditFilterStrategyWithContext(context.Background(), request)
+}
+
+// CreateDspmAuditFilterStrategy
+// 创建Dspm审计过滤策略
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateDspmAuditFilterStrategyWithContext(ctx context.Context, request *CreateDspmAuditFilterStrategyRequest) (response *CreateDspmAuditFilterStrategyResponse, err error) {
+    if request == nil {
+        request = NewCreateDspmAuditFilterStrategyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "CreateDspmAuditFilterStrategy")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDspmAuditFilterStrategy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateDspmAuditFilterStrategyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateDspmExportTaskRequest() (request *CreateDspmExportTaskRequest) {
     request = &CreateDspmExportTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4415,6 +4481,64 @@ func (c *Client) CreateDspmPersonalIdentifyWithContext(ctx context.Context, requ
     return
 }
 
+func NewCreateDspmResourceRequest() (request *CreateDspmResourceRequest) {
+    request = &CreateDspmResourceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "CreateDspmResource")
+    
+    
+    return
+}
+
+func NewCreateDspmResourceResponse() (response *CreateDspmResourceResponse) {
+    response = &CreateDspmResourceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateDspmResource
+// 创建Dspm实例
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) CreateDspmResource(request *CreateDspmResourceRequest) (response *CreateDspmResourceResponse, err error) {
+    return c.CreateDspmResourceWithContext(context.Background(), request)
+}
+
+// CreateDspmResource
+// 创建Dspm实例
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) CreateDspmResourceWithContext(ctx context.Context, request *CreateDspmResourceRequest) (response *CreateDspmResourceResponse, err error) {
+    if request == nil {
+        request = NewCreateDspmResourceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "CreateDspmResource")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDspmResource require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateDspmResourceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateDspmRiskExportJobRequest() (request *CreateDspmRiskExportJobRequest) {
     request = &CreateDspmRiskExportJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4440,7 +4564,6 @@ func NewCreateDspmRiskExportJobResponse() (response *CreateDspmRiskExportJobResp
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
@@ -4454,7 +4577,6 @@ func (c *Client) CreateDspmRiskExportJob(request *CreateDspmRiskExportJobRequest
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
@@ -4471,6 +4593,64 @@ func (c *Client) CreateDspmRiskExportJobWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewCreateDspmRiskExportJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateDspmRiskStrategyRequest() (request *CreateDspmRiskStrategyRequest) {
+    request = &CreateDspmRiskStrategyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "CreateDspmRiskStrategy")
+    
+    
+    return
+}
+
+func NewCreateDspmRiskStrategyResponse() (response *CreateDspmRiskStrategyResponse) {
+    response = &CreateDspmRiskStrategyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateDspmRiskStrategy
+// 创建Dspm自定义风险策略
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) CreateDspmRiskStrategy(request *CreateDspmRiskStrategyRequest) (response *CreateDspmRiskStrategyResponse, err error) {
+    return c.CreateDspmRiskStrategyWithContext(context.Background(), request)
+}
+
+// CreateDspmRiskStrategy
+// 创建Dspm自定义风险策略
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) CreateDspmRiskStrategyWithContext(ctx context.Context, request *CreateDspmRiskStrategyRequest) (response *CreateDspmRiskStrategyResponse, err error) {
+    if request == nil {
+        request = NewCreateDspmRiskStrategyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "CreateDspmRiskStrategy")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDspmRiskStrategy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateDspmRiskStrategyResponse()
     err = c.Send(request, response)
     return
 }
@@ -8103,6 +8283,72 @@ func (c *Client) DeleteDspmAssetAccountWithContext(ctx context.Context, request 
     return
 }
 
+func NewDeleteDspmAuditFilterStrategyRequest() (request *DeleteDspmAuditFilterStrategyRequest) {
+    request = &DeleteDspmAuditFilterStrategyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DeleteDspmAuditFilterStrategy")
+    
+    
+    return
+}
+
+func NewDeleteDspmAuditFilterStrategyResponse() (response *DeleteDspmAuditFilterStrategyResponse) {
+    response = &DeleteDspmAuditFilterStrategyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteDspmAuditFilterStrategy
+// 删除Dspm审计过滤策略
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteDspmAuditFilterStrategy(request *DeleteDspmAuditFilterStrategyRequest) (response *DeleteDspmAuditFilterStrategyResponse, err error) {
+    return c.DeleteDspmAuditFilterStrategyWithContext(context.Background(), request)
+}
+
+// DeleteDspmAuditFilterStrategy
+// 删除Dspm审计过滤策略
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteDspmAuditFilterStrategyWithContext(ctx context.Context, request *DeleteDspmAuditFilterStrategyRequest) (response *DeleteDspmAuditFilterStrategyResponse, err error) {
+    if request == nil {
+        request = NewDeleteDspmAuditFilterStrategyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DeleteDspmAuditFilterStrategy")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteDspmAuditFilterStrategy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteDspmAuditFilterStrategyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteDspmBackupLogListRequest() (request *DeleteDspmBackupLogListRequest) {
     request = &DeleteDspmBackupLogListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -8153,6 +8399,106 @@ func (c *Client) DeleteDspmBackupLogListWithContext(ctx context.Context, request
     return
 }
 
+func NewDeleteDspmCkafkaConfigRequest() (request *DeleteDspmCkafkaConfigRequest) {
+    request = &DeleteDspmCkafkaConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DeleteDspmCkafkaConfig")
+    
+    
+    return
+}
+
+func NewDeleteDspmCkafkaConfigResponse() (response *DeleteDspmCkafkaConfigResponse) {
+    response = &DeleteDspmCkafkaConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteDspmCkafkaConfig
+// 取消日志投递配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
+//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
+//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
+//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DUPLICATEPARAMETERS = "InvalidParameter.DuplicateParameters"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETER_RESOURCEIDERROR = "InvalidParameter.ResourceIdError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteDspmCkafkaConfig(request *DeleteDspmCkafkaConfigRequest) (response *DeleteDspmCkafkaConfigResponse, err error) {
+    return c.DeleteDspmCkafkaConfigWithContext(context.Background(), request)
+}
+
+// DeleteDspmCkafkaConfig
+// 取消日志投递配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
+//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
+//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
+//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DUPLICATEPARAMETERS = "InvalidParameter.DuplicateParameters"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETER_RESOURCEIDERROR = "InvalidParameter.ResourceIdError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteDspmCkafkaConfigWithContext(ctx context.Context, request *DeleteDspmCkafkaConfigRequest) (response *DeleteDspmCkafkaConfigResponse, err error) {
+    if request == nil {
+        request = NewDeleteDspmCkafkaConfigRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DeleteDspmCkafkaConfig")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteDspmCkafkaConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteDspmCkafkaConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteDspmExportTaskRequest() (request *DeleteDspmExportTaskRequest) {
     request = &DeleteDspmExportTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -8176,7 +8522,32 @@ func NewDeleteDspmExportTaskResponse() (response *DeleteDspmExportTaskResponse) 
 // 删除导出任务
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
+//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
+//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
+//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DUPLICATEPARAMETERS = "InvalidParameter.DuplicateParameters"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETER_RESOURCEIDERROR = "InvalidParameter.ResourceIdError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteDspmExportTask(request *DeleteDspmExportTaskRequest) (response *DeleteDspmExportTaskResponse, err error) {
     return c.DeleteDspmExportTaskWithContext(context.Background(), request)
 }
@@ -8185,7 +8556,32 @@ func (c *Client) DeleteDspmExportTask(request *DeleteDspmExportTaskRequest) (res
 // 删除导出任务
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
+//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
+//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
+//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DUPLICATEPARAMETERS = "InvalidParameter.DuplicateParameters"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETER_RESOURCEIDERROR = "InvalidParameter.ResourceIdError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteDspmExportTaskWithContext(ctx context.Context, request *DeleteDspmExportTaskRequest) (response *DeleteDspmExportTaskResponse, err error) {
     if request == nil {
         request = NewDeleteDspmExportTaskRequest()
@@ -8775,6 +9171,132 @@ func (c *Client) DeleteDspmRestoreLogListWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewDeleteDspmRestoreLogListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteDspmRiskStrategyRequest() (request *DeleteDspmRiskStrategyRequest) {
+    request = &DeleteDspmRiskStrategyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DeleteDspmRiskStrategy")
+    
+    
+    return
+}
+
+func NewDeleteDspmRiskStrategyResponse() (response *DeleteDspmRiskStrategyResponse) {
+    response = &DeleteDspmRiskStrategyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteDspmRiskStrategy
+// 删除Dspm自定义风险策略。仅支持删除自定义策略（rule_source=custom）；内置策略不可删除，请通过 ModifyDspmRiskStrategy 的 IsEnabled 禁用。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DeleteDspmRiskStrategy(request *DeleteDspmRiskStrategyRequest) (response *DeleteDspmRiskStrategyResponse, err error) {
+    return c.DeleteDspmRiskStrategyWithContext(context.Background(), request)
+}
+
+// DeleteDspmRiskStrategy
+// 删除Dspm自定义风险策略。仅支持删除自定义策略（rule_source=custom）；内置策略不可删除，请通过 ModifyDspmRiskStrategy 的 IsEnabled 禁用。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DeleteDspmRiskStrategyWithContext(ctx context.Context, request *DeleteDspmRiskStrategyRequest) (response *DeleteDspmRiskStrategyResponse, err error) {
+    if request == nil {
+        request = NewDeleteDspmRiskStrategyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DeleteDspmRiskStrategy")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteDspmRiskStrategy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteDspmRiskStrategyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteDspmShareUserDataRequest() (request *DeleteDspmShareUserDataRequest) {
+    request = &DeleteDspmShareUserDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DeleteDspmShareUserData")
+    
+    
+    return
+}
+
+func NewDeleteDspmShareUserDataResponse() (response *DeleteDspmShareUserDataResponse) {
+    response = &DeleteDspmShareUserDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteDspmShareUserData
+// 删除dspmg共享账号数据
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteDspmShareUserData(request *DeleteDspmShareUserDataRequest) (response *DeleteDspmShareUserDataResponse, err error) {
+    return c.DeleteDspmShareUserDataWithContext(context.Background(), request)
+}
+
+// DeleteDspmShareUserData
+// 删除dspmg共享账号数据
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteDspmShareUserDataWithContext(ctx context.Context, request *DeleteDspmShareUserDataRequest) (response *DeleteDspmShareUserDataResponse, err error) {
+    if request == nil {
+        request = NewDeleteDspmShareUserDataRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DeleteDspmShareUserData")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteDspmShareUserData require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteDspmShareUserDataResponse()
     err = c.Send(request, response)
     return
 }
@@ -21963,6 +22485,64 @@ func (c *Client) DescribeDspmAssetsWithContext(ctx context.Context, request *Des
     return
 }
 
+func NewDescribeDspmAuditFilterStrategyRequest() (request *DescribeDspmAuditFilterStrategyRequest) {
+    request = &DescribeDspmAuditFilterStrategyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeDspmAuditFilterStrategy")
+    
+    
+    return
+}
+
+func NewDescribeDspmAuditFilterStrategyResponse() (response *DescribeDspmAuditFilterStrategyResponse) {
+    response = &DescribeDspmAuditFilterStrategyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDspmAuditFilterStrategy
+// 查询dspm审计过滤策略
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeDspmAuditFilterStrategy(request *DescribeDspmAuditFilterStrategyRequest) (response *DescribeDspmAuditFilterStrategyResponse, err error) {
+    return c.DescribeDspmAuditFilterStrategyWithContext(context.Background(), request)
+}
+
+// DescribeDspmAuditFilterStrategy
+// 查询dspm审计过滤策略
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeDspmAuditFilterStrategyWithContext(ctx context.Context, request *DescribeDspmAuditFilterStrategyRequest) (response *DescribeDspmAuditFilterStrategyResponse, err error) {
+    if request == nil {
+        request = NewDescribeDspmAuditFilterStrategyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeDspmAuditFilterStrategy")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDspmAuditFilterStrategy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDspmAuditFilterStrategyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDspmBackupLogListRequest() (request *DescribeDspmBackupLogListRequest) {
     request = &DescribeDspmBackupLogListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -21987,14 +22567,10 @@ func NewDescribeDspmBackupLogListResponse() (response *DescribeDspmBackupLogList
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  FAILEDOPERATION = "FailedOperation"
 //  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDspmBackupLogList(request *DescribeDspmBackupLogListRequest) (response *DescribeDspmBackupLogListResponse, err error) {
     return c.DescribeDspmBackupLogListWithContext(context.Background(), request)
 }
@@ -22004,14 +22580,10 @@ func (c *Client) DescribeDspmBackupLogList(request *DescribeDspmBackupLogListReq
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  FAILEDOPERATION = "FailedOperation"
 //  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDspmBackupLogListWithContext(ctx context.Context, request *DescribeDspmBackupLogListRequest) (response *DescribeDspmBackupLogListResponse, err error) {
     if request == nil {
         request = NewDescribeDspmBackupLogListRequest()
@@ -22053,14 +22625,10 @@ func NewDescribeDspmBackupSettingResponse() (response *DescribeDspmBackupSetting
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  FAILEDOPERATION = "FailedOperation"
 //  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDspmBackupSetting(request *DescribeDspmBackupSettingRequest) (response *DescribeDspmBackupSettingResponse, err error) {
     return c.DescribeDspmBackupSettingWithContext(context.Background(), request)
 }
@@ -22070,14 +22638,10 @@ func (c *Client) DescribeDspmBackupSetting(request *DescribeDspmBackupSettingReq
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  FAILEDOPERATION = "FailedOperation"
 //  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDspmBackupSettingWithContext(ctx context.Context, request *DescribeDspmBackupSettingRequest) (response *DescribeDspmBackupSettingResponse, err error) {
     if request == nil {
         request = NewDescribeDspmBackupSettingRequest()
@@ -22091,6 +22655,206 @@ func (c *Client) DescribeDspmBackupSettingWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewDescribeDspmBackupSettingResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDspmCkafkaRouteListRequest() (request *DescribeDspmCkafkaRouteListRequest) {
+    request = &DescribeDspmCkafkaRouteListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeDspmCkafkaRouteList")
+    
+    
+    return
+}
+
+func NewDescribeDspmCkafkaRouteListResponse() (response *DescribeDspmCkafkaRouteListResponse) {
+    response = &DescribeDspmCkafkaRouteListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDspmCkafkaRouteList
+// 查询Ckafka实例的路由信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
+//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
+//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
+//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DUPLICATEPARAMETERS = "InvalidParameter.DuplicateParameters"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETER_RESOURCEIDERROR = "InvalidParameter.ResourceIdError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDspmCkafkaRouteList(request *DescribeDspmCkafkaRouteListRequest) (response *DescribeDspmCkafkaRouteListResponse, err error) {
+    return c.DescribeDspmCkafkaRouteListWithContext(context.Background(), request)
+}
+
+// DescribeDspmCkafkaRouteList
+// 查询Ckafka实例的路由信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
+//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
+//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
+//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DUPLICATEPARAMETERS = "InvalidParameter.DuplicateParameters"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETER_RESOURCEIDERROR = "InvalidParameter.ResourceIdError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDspmCkafkaRouteListWithContext(ctx context.Context, request *DescribeDspmCkafkaRouteListRequest) (response *DescribeDspmCkafkaRouteListResponse, err error) {
+    if request == nil {
+        request = NewDescribeDspmCkafkaRouteListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeDspmCkafkaRouteList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDspmCkafkaRouteList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDspmCkafkaRouteListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDspmCkafkaTopicListRequest() (request *DescribeDspmCkafkaTopicListRequest) {
+    request = &DescribeDspmCkafkaTopicListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeDspmCkafkaTopicList")
+    
+    
+    return
+}
+
+func NewDescribeDspmCkafkaTopicListResponse() (response *DescribeDspmCkafkaTopicListResponse) {
+    response = &DescribeDspmCkafkaTopicListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDspmCkafkaTopicList
+// 查询实例的主题列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
+//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
+//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
+//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DUPLICATEPARAMETERS = "InvalidParameter.DuplicateParameters"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETER_RESOURCEIDERROR = "InvalidParameter.ResourceIdError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDspmCkafkaTopicList(request *DescribeDspmCkafkaTopicListRequest) (response *DescribeDspmCkafkaTopicListResponse, err error) {
+    return c.DescribeDspmCkafkaTopicListWithContext(context.Background(), request)
+}
+
+// DescribeDspmCkafkaTopicList
+// 查询实例的主题列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
+//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
+//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
+//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DUPLICATEPARAMETERS = "InvalidParameter.DuplicateParameters"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETER_RESOURCEIDERROR = "InvalidParameter.ResourceIdError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDspmCkafkaTopicListWithContext(ctx context.Context, request *DescribeDspmCkafkaTopicListRequest) (response *DescribeDspmCkafkaTopicListResponse, err error) {
+    if request == nil {
+        request = NewDescribeDspmCkafkaTopicListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeDspmCkafkaTopicList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDspmCkafkaTopicList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDspmCkafkaTopicListResponse()
     err = c.Send(request, response)
     return
 }
@@ -23153,6 +23917,106 @@ func (c *Client) DescribeDspmIdentifyRuleTestResultWithContext(ctx context.Conte
     return
 }
 
+func NewDescribeDspmLogDeliveryTypeRequest() (request *DescribeDspmLogDeliveryTypeRequest) {
+    request = &DescribeDspmLogDeliveryTypeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeDspmLogDeliveryType")
+    
+    
+    return
+}
+
+func NewDescribeDspmLogDeliveryTypeResponse() (response *DescribeDspmLogDeliveryTypeResponse) {
+    response = &DescribeDspmLogDeliveryTypeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDspmLogDeliveryType
+// 查询日志投递的日志类型
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
+//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
+//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
+//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DUPLICATEPARAMETERS = "InvalidParameter.DuplicateParameters"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETER_RESOURCEIDERROR = "InvalidParameter.ResourceIdError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDspmLogDeliveryType(request *DescribeDspmLogDeliveryTypeRequest) (response *DescribeDspmLogDeliveryTypeResponse, err error) {
+    return c.DescribeDspmLogDeliveryTypeWithContext(context.Background(), request)
+}
+
+// DescribeDspmLogDeliveryType
+// 查询日志投递的日志类型
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
+//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
+//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
+//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DUPLICATEPARAMETERS = "InvalidParameter.DuplicateParameters"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETER_RESOURCEIDERROR = "InvalidParameter.ResourceIdError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDspmLogDeliveryTypeWithContext(ctx context.Context, request *DescribeDspmLogDeliveryTypeRequest) (response *DescribeDspmLogDeliveryTypeResponse, err error) {
+    if request == nil {
+        request = NewDescribeDspmLogDeliveryTypeRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeDspmLogDeliveryType")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDspmLogDeliveryType require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDspmLogDeliveryTypeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDspmLogListRequest() (request *DescribeDspmLogListRequest) {
     request = &DescribeDspmLogListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -23249,6 +24113,106 @@ func (c *Client) DescribeDspmLogListWithContext(ctx context.Context, request *De
     return
 }
 
+func NewDescribeDspmLogTypeConfigListRequest() (request *DescribeDspmLogTypeConfigListRequest) {
+    request = &DescribeDspmLogTypeConfigListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeDspmLogTypeConfigList")
+    
+    
+    return
+}
+
+func NewDescribeDspmLogTypeConfigListResponse() (response *DescribeDspmLogTypeConfigListResponse) {
+    response = &DescribeDspmLogTypeConfigListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDspmLogTypeConfigList
+// 查询租户日志投递配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
+//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
+//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
+//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DUPLICATEPARAMETERS = "InvalidParameter.DuplicateParameters"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETER_RESOURCEIDERROR = "InvalidParameter.ResourceIdError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDspmLogTypeConfigList(request *DescribeDspmLogTypeConfigListRequest) (response *DescribeDspmLogTypeConfigListResponse, err error) {
+    return c.DescribeDspmLogTypeConfigListWithContext(context.Background(), request)
+}
+
+// DescribeDspmLogTypeConfigList
+// 查询租户日志投递配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
+//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
+//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
+//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DUPLICATEPARAMETERS = "InvalidParameter.DuplicateParameters"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETER_RESOURCEIDERROR = "InvalidParameter.ResourceIdError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDspmLogTypeConfigListWithContext(ctx context.Context, request *DescribeDspmLogTypeConfigListRequest) (response *DescribeDspmLogTypeConfigListResponse, err error) {
+    if request == nil {
+        request = NewDescribeDspmLogTypeConfigListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeDspmLogTypeConfigList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDspmLogTypeConfigList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDspmLogTypeConfigListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDspmPayInfoRequest() (request *DescribeDspmPayInfoRequest) {
     request = &DescribeDspmPayInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -23281,7 +24245,9 @@ func NewDescribeDspmPayInfoResponse() (response *DescribeDspmPayInfoResponse) {
 //  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DUPLICATEPARAMETERS = "InvalidParameter.DuplicateParameters"
 //  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETER_RESOURCEIDERROR = "InvalidParameter.ResourceIdError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -23313,7 +24279,9 @@ func (c *Client) DescribeDspmPayInfo(request *DescribeDspmPayInfoRequest) (respo
 //  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DUPLICATEPARAMETERS = "InvalidParameter.DuplicateParameters"
 //  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETER_RESOURCEIDERROR = "InvalidParameter.ResourceIdError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -23473,6 +24441,64 @@ func (c *Client) DescribeDspmPersonalIdentifyListWithContext(ctx context.Context
     request.SetContext(ctx)
     
     response = NewDescribeDspmPersonalIdentifyListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDspmResourceRequest() (request *DescribeDspmResourceRequest) {
+    request = &DescribeDspmResourceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeDspmResource")
+    
+    
+    return
+}
+
+func NewDescribeDspmResourceResponse() (response *DescribeDspmResourceResponse) {
+    response = &DescribeDspmResourceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDspmResource
+// 查询Dspm实例
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeDspmResource(request *DescribeDspmResourceRequest) (response *DescribeDspmResourceResponse, err error) {
+    return c.DescribeDspmResourceWithContext(context.Background(), request)
+}
+
+// DescribeDspmResource
+// 查询Dspm实例
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeDspmResourceWithContext(ctx context.Context, request *DescribeDspmResourceRequest) (response *DescribeDspmResourceResponse, err error) {
+    if request == nil {
+        request = NewDescribeDspmResourceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeDspmResource")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDspmResource require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDspmResourceResponse()
     err = c.Send(request, response)
     return
 }
@@ -23767,6 +24793,102 @@ func (c *Client) DescribeDspmRiskTendencyWithContext(ctx context.Context, reques
     return
 }
 
+func NewDescribeDspmSessionListRequest() (request *DescribeDspmSessionListRequest) {
+    request = &DescribeDspmSessionListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeDspmSessionList")
+    
+    
+    return
+}
+
+func NewDescribeDspmSessionListResponse() (response *DescribeDspmSessionListResponse) {
+    response = &DescribeDspmSessionListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDspmSessionList
+// 查询审计会话列表信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
+//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
+//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
+//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDspmSessionList(request *DescribeDspmSessionListRequest) (response *DescribeDspmSessionListResponse, err error) {
+    return c.DescribeDspmSessionListWithContext(context.Background(), request)
+}
+
+// DescribeDspmSessionList
+// 查询审计会话列表信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
+//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
+//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
+//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDspmSessionListWithContext(ctx context.Context, request *DescribeDspmSessionListRequest) (response *DescribeDspmSessionListResponse, err error) {
+    if request == nil {
+        request = NewDescribeDspmSessionListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeDspmSessionList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDspmSessionList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDspmSessionListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDspmStatisticsRequest() (request *DescribeDspmStatisticsRequest) {
     request = &DescribeDspmStatisticsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -24003,6 +25125,106 @@ func (c *Client) DescribeDspmSyncUsersStatusWithContext(ctx context.Context, req
     request.SetContext(ctx)
     
     response = NewDescribeDspmSyncUsersStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDspmUserCkafkaInstanceListRequest() (request *DescribeDspmUserCkafkaInstanceListRequest) {
+    request = &DescribeDspmUserCkafkaInstanceListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeDspmUserCkafkaInstanceList")
+    
+    
+    return
+}
+
+func NewDescribeDspmUserCkafkaInstanceListResponse() (response *DescribeDspmUserCkafkaInstanceListResponse) {
+    response = &DescribeDspmUserCkafkaInstanceListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDspmUserCkafkaInstanceList
+// 查询租户ckafka实例列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
+//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
+//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
+//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DUPLICATEPARAMETERS = "InvalidParameter.DuplicateParameters"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETER_RESOURCEIDERROR = "InvalidParameter.ResourceIdError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDspmUserCkafkaInstanceList(request *DescribeDspmUserCkafkaInstanceListRequest) (response *DescribeDspmUserCkafkaInstanceListResponse, err error) {
+    return c.DescribeDspmUserCkafkaInstanceListWithContext(context.Background(), request)
+}
+
+// DescribeDspmUserCkafkaInstanceList
+// 查询租户ckafka实例列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
+//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
+//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
+//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DUPLICATEPARAMETERS = "InvalidParameter.DuplicateParameters"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETER_RESOURCEIDERROR = "InvalidParameter.ResourceIdError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDspmUserCkafkaInstanceListWithContext(ctx context.Context, request *DescribeDspmUserCkafkaInstanceListRequest) (response *DescribeDspmUserCkafkaInstanceListResponse, err error) {
+    if request == nil {
+        request = NewDescribeDspmUserCkafkaInstanceListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeDspmUserCkafkaInstanceList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDspmUserCkafkaInstanceList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDspmUserCkafkaInstanceListResponse()
     err = c.Send(request, response)
     return
 }
@@ -39645,6 +40867,72 @@ func (c *Client) ModifyDspmAssetSecurityAnalysisSwitchWithContext(ctx context.Co
     return
 }
 
+func NewModifyDspmAuditFilterStrategyRequest() (request *ModifyDspmAuditFilterStrategyRequest) {
+    request = &ModifyDspmAuditFilterStrategyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "ModifyDspmAuditFilterStrategy")
+    
+    
+    return
+}
+
+func NewModifyDspmAuditFilterStrategyResponse() (response *ModifyDspmAuditFilterStrategyResponse) {
+    response = &ModifyDspmAuditFilterStrategyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyDspmAuditFilterStrategy
+// 修改Dspm审计过滤策略
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyDspmAuditFilterStrategy(request *ModifyDspmAuditFilterStrategyRequest) (response *ModifyDspmAuditFilterStrategyResponse, err error) {
+    return c.ModifyDspmAuditFilterStrategyWithContext(context.Background(), request)
+}
+
+// ModifyDspmAuditFilterStrategy
+// 修改Dspm审计过滤策略
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyDspmAuditFilterStrategyWithContext(ctx context.Context, request *ModifyDspmAuditFilterStrategyRequest) (response *ModifyDspmAuditFilterStrategyResponse, err error) {
+    if request == nil {
+        request = NewModifyDspmAuditFilterStrategyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "ModifyDspmAuditFilterStrategy")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDspmAuditFilterStrategy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDspmAuditFilterStrategyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyDspmBackupSettingRequest() (request *ModifyDspmBackupSettingRequest) {
     request = &ModifyDspmBackupSettingRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -39707,6 +40995,310 @@ func (c *Client) ModifyDspmBackupSettingWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewModifyDspmBackupSettingResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDspmCkafkaSaveRequest() (request *ModifyDspmCkafkaSaveRequest) {
+    request = &ModifyDspmCkafkaSaveRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "ModifyDspmCkafkaSave")
+    
+    
+    return
+}
+
+func NewModifyDspmCkafkaSaveResponse() (response *ModifyDspmCkafkaSaveResponse) {
+    response = &ModifyDspmCkafkaSaveResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyDspmCkafkaSave
+// 租户Ckafka配置保存
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
+//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
+//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
+//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DUPLICATEPARAMETERS = "InvalidParameter.DuplicateParameters"
+//  INVALIDPARAMETER_INSTANCENOTEXIST = "InvalidParameter.InstanceNotExist"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETER_RESOURCEIDERROR = "InvalidParameter.ResourceIdError"
+//  INVALIDPARAMETER_TOPICNOTEXIST = "InvalidParameter.TopicNotExist"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyDspmCkafkaSave(request *ModifyDspmCkafkaSaveRequest) (response *ModifyDspmCkafkaSaveResponse, err error) {
+    return c.ModifyDspmCkafkaSaveWithContext(context.Background(), request)
+}
+
+// ModifyDspmCkafkaSave
+// 租户Ckafka配置保存
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
+//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
+//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
+//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DUPLICATEPARAMETERS = "InvalidParameter.DuplicateParameters"
+//  INVALIDPARAMETER_INSTANCENOTEXIST = "InvalidParameter.InstanceNotExist"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETER_RESOURCEIDERROR = "InvalidParameter.ResourceIdError"
+//  INVALIDPARAMETER_TOPICNOTEXIST = "InvalidParameter.TopicNotExist"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyDspmCkafkaSaveWithContext(ctx context.Context, request *ModifyDspmCkafkaSaveRequest) (response *ModifyDspmCkafkaSaveResponse, err error) {
+    if request == nil {
+        request = NewModifyDspmCkafkaSaveRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "ModifyDspmCkafkaSave")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDspmCkafkaSave require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDspmCkafkaSaveResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDspmCkafkaStartRequest() (request *ModifyDspmCkafkaStartRequest) {
+    request = &ModifyDspmCkafkaStartRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "ModifyDspmCkafkaStart")
+    
+    
+    return
+}
+
+func NewModifyDspmCkafkaStartResponse() (response *ModifyDspmCkafkaStartResponse) {
+    response = &ModifyDspmCkafkaStartResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyDspmCkafkaStart
+// 日志投递开启
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
+//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
+//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
+//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DUPLICATEPARAMETERS = "InvalidParameter.DuplicateParameters"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETER_RESOURCEIDERROR = "InvalidParameter.ResourceIdError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyDspmCkafkaStart(request *ModifyDspmCkafkaStartRequest) (response *ModifyDspmCkafkaStartResponse, err error) {
+    return c.ModifyDspmCkafkaStartWithContext(context.Background(), request)
+}
+
+// ModifyDspmCkafkaStart
+// 日志投递开启
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
+//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
+//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
+//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DUPLICATEPARAMETERS = "InvalidParameter.DuplicateParameters"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETER_RESOURCEIDERROR = "InvalidParameter.ResourceIdError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyDspmCkafkaStartWithContext(ctx context.Context, request *ModifyDspmCkafkaStartRequest) (response *ModifyDspmCkafkaStartResponse, err error) {
+    if request == nil {
+        request = NewModifyDspmCkafkaStartRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "ModifyDspmCkafkaStart")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDspmCkafkaStart require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDspmCkafkaStartResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDspmCkafkaStopRequest() (request *ModifyDspmCkafkaStopRequest) {
+    request = &ModifyDspmCkafkaStopRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "ModifyDspmCkafkaStop")
+    
+    
+    return
+}
+
+func NewModifyDspmCkafkaStopResponse() (response *ModifyDspmCkafkaStopResponse) {
+    response = &ModifyDspmCkafkaStopResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyDspmCkafkaStop
+// 日志类型投递关闭
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
+//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
+//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
+//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DUPLICATEPARAMETERS = "InvalidParameter.DuplicateParameters"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETER_RESOURCEIDERROR = "InvalidParameter.ResourceIdError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyDspmCkafkaStop(request *ModifyDspmCkafkaStopRequest) (response *ModifyDspmCkafkaStopResponse, err error) {
+    return c.ModifyDspmCkafkaStopWithContext(context.Background(), request)
+}
+
+// ModifyDspmCkafkaStop
+// 日志类型投递关闭
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
+//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
+//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
+//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DUPLICATEPARAMETERS = "InvalidParameter.DuplicateParameters"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETER_RESOURCEIDERROR = "InvalidParameter.ResourceIdError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyDspmCkafkaStopWithContext(ctx context.Context, request *ModifyDspmCkafkaStopRequest) (response *ModifyDspmCkafkaStopResponse, err error) {
+    if request == nil {
+        request = NewModifyDspmCkafkaStopRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "ModifyDspmCkafkaStop")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDspmCkafkaStop require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDspmCkafkaStopResponse()
     err = c.Send(request, response)
     return
 }
@@ -40447,6 +42039,106 @@ func (c *Client) ModifyDspmIpInfoWithContext(ctx context.Context, request *Modif
     request.SetContext(ctx)
     
     response = NewModifyDspmIpInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDspmLogDeliveryTypeRequest() (request *ModifyDspmLogDeliveryTypeRequest) {
+    request = &ModifyDspmLogDeliveryTypeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "ModifyDspmLogDeliveryType")
+    
+    
+    return
+}
+
+func NewModifyDspmLogDeliveryTypeResponse() (response *ModifyDspmLogDeliveryTypeResponse) {
+    response = &ModifyDspmLogDeliveryTypeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyDspmLogDeliveryType
+// 修改日志投递配置信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
+//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
+//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
+//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DUPLICATEPARAMETERS = "InvalidParameter.DuplicateParameters"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETER_RESOURCEIDERROR = "InvalidParameter.ResourceIdError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyDspmLogDeliveryType(request *ModifyDspmLogDeliveryTypeRequest) (response *ModifyDspmLogDeliveryTypeResponse, err error) {
+    return c.ModifyDspmLogDeliveryTypeWithContext(context.Background(), request)
+}
+
+// ModifyDspmLogDeliveryType
+// 修改日志投递配置信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
+//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
+//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
+//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DUPLICATEPARAMETERS = "InvalidParameter.DuplicateParameters"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETER_RESOURCEIDERROR = "InvalidParameter.ResourceIdError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyDspmLogDeliveryTypeWithContext(ctx context.Context, request *ModifyDspmLogDeliveryTypeRequest) (response *ModifyDspmLogDeliveryTypeResponse, err error) {
+    if request == nil {
+        request = NewModifyDspmLogDeliveryTypeRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "ModifyDspmLogDeliveryType")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDspmLogDeliveryType require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDspmLogDeliveryTypeResponse()
     err = c.Send(request, response)
     return
 }
@@ -43387,6 +45079,60 @@ func (c *Client) ModifyShareUserCSPMWithContext(ctx context.Context, request *Mo
     return
 }
 
+func NewModifyShareUserDspmRequest() (request *ModifyShareUserDspmRequest) {
+    request = &ModifyShareUserDspmRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "ModifyShareUserDspm")
+    
+    
+    return
+}
+
+func NewModifyShareUserDspmResponse() (response *ModifyShareUserDspmResponse) {
+    response = &ModifyShareUserDspmResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyShareUserDspm
+// 编辑dspm监测账号
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) ModifyShareUserDspm(request *ModifyShareUserDspmRequest) (response *ModifyShareUserDspmResponse, err error) {
+    return c.ModifyShareUserDspmWithContext(context.Background(), request)
+}
+
+// ModifyShareUserDspm
+// 编辑dspm监测账号
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) ModifyShareUserDspmWithContext(ctx context.Context, request *ModifyShareUserDspmRequest) (response *ModifyShareUserDspmResponse, err error) {
+    if request == nil {
+        request = NewModifyShareUserDspmRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "ModifyShareUserDspm")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyShareUserDspm require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyShareUserDspmResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifySkillScanAlertStatusRequest() (request *ModifySkillScanAlertStatusRequest) {
     request = &ModifySkillScanAlertStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -44535,6 +46281,110 @@ func (c *Client) SendDspmAssetLoginSmsCodeWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewSendDspmAssetLoginSmsCodeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSendDspmCkafkaTestRequest() (request *SendDspmCkafkaTestRequest) {
+    request = &SendDspmCkafkaTestRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "SendDspmCkafkaTest")
+    
+    
+    return
+}
+
+func NewSendDspmCkafkaTestResponse() (response *SendDspmCkafkaTestResponse) {
+    response = &SendDspmCkafkaTestResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SendDspmCkafkaTest
+// 租户Ckafka联通性测试
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
+//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
+//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
+//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DUPLICATEPARAMETERS = "InvalidParameter.DuplicateParameters"
+//  INVALIDPARAMETER_INSTANCENOTEXIST = "InvalidParameter.InstanceNotExist"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETER_RESOURCEIDERROR = "InvalidParameter.ResourceIdError"
+//  INVALIDPARAMETER_TOPICNOTEXIST = "InvalidParameter.TopicNotExist"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) SendDspmCkafkaTest(request *SendDspmCkafkaTestRequest) (response *SendDspmCkafkaTestResponse, err error) {
+    return c.SendDspmCkafkaTestWithContext(context.Background(), request)
+}
+
+// SendDspmCkafkaTest
+// 租户Ckafka联通性测试
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
+//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
+//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
+//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DUPLICATEPARAMETERS = "InvalidParameter.DuplicateParameters"
+//  INVALIDPARAMETER_INSTANCENOTEXIST = "InvalidParameter.InstanceNotExist"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETER_RESOURCEIDERROR = "InvalidParameter.ResourceIdError"
+//  INVALIDPARAMETER_TOPICNOTEXIST = "InvalidParameter.TopicNotExist"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) SendDspmCkafkaTestWithContext(ctx context.Context, request *SendDspmCkafkaTestRequest) (response *SendDspmCkafkaTestResponse, err error) {
+    if request == nil {
+        request = NewSendDspmCkafkaTestRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "SendDspmCkafkaTest")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SendDspmCkafkaTest require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSendDspmCkafkaTestResponse()
     err = c.Send(request, response)
     return
 }

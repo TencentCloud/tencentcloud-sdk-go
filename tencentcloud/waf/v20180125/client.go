@@ -9217,6 +9217,60 @@ func (c *Client) DestroyPostCLSFlowWithContext(ctx context.Context, request *Des
     return
 }
 
+func NewEnableClientMsgRequest() (request *EnableClientMsgRequest) {
+    request = &EnableClientMsgRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "EnableClientMsg")
+    
+    
+    return
+}
+
+func NewEnableClientMsgResponse() (response *EnableClientMsgResponse) {
+    response = &EnableClientMsgResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// EnableClientMsg
+// 开关开启后，会将客户端的ip和port透传到后端
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) EnableClientMsg(request *EnableClientMsgRequest) (response *EnableClientMsgResponse, err error) {
+    return c.EnableClientMsgWithContext(context.Background(), request)
+}
+
+// EnableClientMsg
+// 开关开启后，会将客户端的ip和port透传到后端
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) EnableClientMsgWithContext(ctx context.Context, request *EnableClientMsgRequest) (response *EnableClientMsgResponse, err error) {
+    if request == nil {
+        request = NewEnableClientMsgRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "EnableClientMsg")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EnableClientMsg require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewEnableClientMsgResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewEnableRateLimitsV2Request() (request *EnableRateLimitsV2Request) {
     request = &EnableRateLimitsV2Request{
         BaseRequest: &tchttp.BaseRequest{},
@@ -9240,23 +9294,8 @@ func NewEnableRateLimitsV2Response() (response *EnableRateLimitsV2Response) {
 // 批量更改自研版限流规则开关
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_CKAFKAINTERNALERROR = "FailedOperation.CKafkaInternalError"
-//  FAILEDOPERATION_CLSINTERNALERROR = "FailedOperation.CLSInternalError"
 //  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) EnableRateLimitsV2(request *EnableRateLimitsV2Request) (response *EnableRateLimitsV2Response, err error) {
     return c.EnableRateLimitsV2WithContext(context.Background(), request)
@@ -9266,23 +9305,8 @@ func (c *Client) EnableRateLimitsV2(request *EnableRateLimitsV2Request) (respons
 // 批量更改自研版限流规则开关
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_CKAFKAINTERNALERROR = "FailedOperation.CKafkaInternalError"
-//  FAILEDOPERATION_CLSINTERNALERROR = "FailedOperation.CLSInternalError"
 //  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) EnableRateLimitsV2WithContext(ctx context.Context, request *EnableRateLimitsV2Request) (response *EnableRateLimitsV2Response, err error) {
     if request == nil {
@@ -13897,6 +13921,58 @@ func (c *Client) QueryBypassAllStatusWithContext(ctx context.Context, request *Q
     return
 }
 
+func NewQueryClientMsgRequest() (request *QueryClientMsgRequest) {
+    request = &QueryClientMsgRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "QueryClientMsg")
+    
+    
+    return
+}
+
+func NewQueryClientMsgResponse() (response *QueryClientMsgResponse) {
+    response = &QueryClientMsgResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// QueryClientMsg
+// 查询是否开启透传客户端信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) QueryClientMsg(request *QueryClientMsgRequest) (response *QueryClientMsgResponse, err error) {
+    return c.QueryClientMsgWithContext(context.Background(), request)
+}
+
+// QueryClientMsg
+// 查询是否开启透传客户端信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) QueryClientMsgWithContext(ctx context.Context, request *QueryClientMsgRequest) (response *QueryClientMsgResponse, err error) {
+    if request == nil {
+        request = NewQueryClientMsgRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "QueryClientMsg")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryClientMsg require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryClientMsgResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRefreshAccessCheckResultRequest() (request *RefreshAccessCheckResultRequest) {
     request = &RefreshAccessCheckResultRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -13921,6 +13997,7 @@ func NewRefreshAccessCheckResultResponse() (response *RefreshAccessCheckResultRe
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) RefreshAccessCheckResult(request *RefreshAccessCheckResultRequest) (response *RefreshAccessCheckResultResponse, err error) {
     return c.RefreshAccessCheckResultWithContext(context.Background(), request)
 }
@@ -13930,6 +14007,7 @@ func (c *Client) RefreshAccessCheckResult(request *RefreshAccessCheckResultReque
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) RefreshAccessCheckResultWithContext(ctx context.Context, request *RefreshAccessCheckResultRequest) (response *RefreshAccessCheckResultResponse, err error) {
     if request == nil {
         request = NewRefreshAccessCheckResultRequest()

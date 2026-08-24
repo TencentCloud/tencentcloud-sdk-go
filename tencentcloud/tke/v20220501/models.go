@@ -362,43 +362,43 @@ func (r *CreateNodePoolResponse) FromJsonString(s string) error {
 }
 
 type DataDisk struct {
-	// 云盘类型
+	// <p>云盘类型</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
 
-	// 文件系统(ext3/ext4/xfs)
+	// <p>文件系统(ext3/ext4/xfs)</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileSystem *string `json:"FileSystem,omitnil,omitempty" name:"FileSystem"`
 
-	// 云盘大小(G）
+	// <p>云盘大小(G）</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiskSize *int64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
 
-	// 是否自动化格式盘并挂载
+	// <p>是否自动化格式盘并挂载</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoFormatAndMount *bool `json:"AutoFormatAndMount,omitnil,omitempty" name:"AutoFormatAndMount"`
 
-	// 挂载设备名或分区名
+	// <p>挂载设备名或分区名</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiskPartition *string `json:"DiskPartition,omitnil,omitempty" name:"DiskPartition"`
 
-	// 挂载目录
+	// <p>挂载目录</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MountTarget *string `json:"MountTarget,omitnil,omitempty" name:"MountTarget"`
 
-	// 传入该参数用于创建加密云盘，取值固定为ENCRYPT
+	// <p>传入该参数用于创建加密云盘，取值固定为ENCRYPT</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Encrypt *string `json:"Encrypt,omitnil,omitempty" name:"Encrypt"`
 
-	// 购买加密盘时自定义密钥，当传入该参数时, Encrypt入参不为空
+	// <p>购买加密盘时自定义密钥，当传入该参数时, Encrypt入参不为空</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	KmsKeyId *string `json:"KmsKeyId,omitnil,omitempty" name:"KmsKeyId"`
 
-	// 快照ID，如果传入则根据此快照创建云硬盘，快照类型必须为数据盘快照
+	// <p>快照ID，如果传入则根据此快照创建云硬盘，快照类型必须为数据盘快照</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SnapshotId *string `json:"SnapshotId,omitnil,omitempty" name:"SnapshotId"`
 
-	// 云硬盘性能，单位：MB/s。使用此参数可给云硬盘购买额外的性能
+	// <p>云硬盘性能，单位：MB/s。使用此参数可给云硬盘购买额外的性能</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ThroughputPerformance *uint64 `json:"ThroughputPerformance,omitnil,omitempty" name:"ThroughputPerformance"`
 }

@@ -4194,6 +4194,63 @@ func (r *DescribeInstanceParamsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeInstancePasswordPolicyRequestParams struct {
+	// <p>实例 ID。请登录 <a href="https://console.cloud.tencent.com/redis">Redis 控制台</a>在实例列表复制实例 ID。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+type DescribeInstancePasswordPolicyRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>实例 ID。请登录 <a href="https://console.cloud.tencent.com/redis">Redis 控制台</a>在实例列表复制实例 ID。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeInstancePasswordPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstancePasswordPolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstancePasswordPolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInstancePasswordPolicyResponseParams struct {
+	// <p>实例密码复杂度策略。</p>
+	PasswordPolicy *PasswordPolicy `json:"PasswordPolicy,omitnil,omitempty" name:"PasswordPolicy"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeInstancePasswordPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeInstancePasswordPolicyResponseParams `json:"Response"`
+}
+
+func (r *DescribeInstancePasswordPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstancePasswordPolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeInstanceSecurityGroupRequestParams struct {
 	// 实例 ID 列表，数组长度限制[0,100]。请登录 [Redis 控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`

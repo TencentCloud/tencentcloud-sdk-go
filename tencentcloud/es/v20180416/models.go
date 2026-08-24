@@ -6883,6 +6883,12 @@ type InstanceInfo struct {
 
 	// <p>证书类型</p>
 	ServerCertSource *string `json:"ServerCertSource,omitnil,omitempty" name:"ServerCertSource"`
+
+	// <p>集群待迁移的VIP</p>
+	OldEsVip *string `json:"OldEsVip,omitnil,omitempty" name:"OldEsVip"`
+
+	// <p>集群待迁移的TCP地址</p>
+	OldEsPrivateTcpUrl *string `json:"OldEsPrivateTcpUrl,omitnil,omitempty" name:"OldEsPrivateTcpUrl"`
 }
 
 type InstanceLog struct {

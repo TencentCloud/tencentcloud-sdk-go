@@ -6946,16 +6946,14 @@ func (r *DescribeCloneListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeClusterInfoRequestParams struct {
-	// 实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
-	// 说明：仅能输入实例架构为云盘版的实例 ID，对应控制台实例配置显示为“云盘版（云盘）”的实例。
+	// <p>实例 ID。可通过 <a href="https://cloud.tencent.com/document/product/236/15872">DescribeDBInstances</a> 接口获取。<br>说明：仅能输入实例架构为云盘版的实例 ID，对应控制台实例配置显示为“云盘版（云盘）”的实例。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type DescribeClusterInfoRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
-	// 说明：仅能输入实例架构为云盘版的实例 ID，对应控制台实例配置显示为“云盘版（云盘）”的实例。
+	// <p>实例 ID。可通过 <a href="https://cloud.tencent.com/document/product/236/15872">DescribeDBInstances</a> 接口获取。<br>说明：仅能输入实例架构为云盘版的实例 ID，对应控制台实例配置显示为“云盘版（云盘）”的实例。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
@@ -6980,22 +6978,22 @@ func (r *DescribeClusterInfoRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeClusterInfoResponseParams struct {
-	// 实例名称。
+	// <p>实例名称。</p>
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
-	// 云盘版实例的读写地址信息。
+	// <p>云盘版实例的读写地址信息。</p>
 	ReadWriteAddress *AddressInfo `json:"ReadWriteAddress,omitnil,omitempty" name:"ReadWriteAddress"`
 
-	// 云盘版实例的只读地址信息。
+	// <p>云盘版实例的只读地址信息。</p>
 	ReadOnlyAddress []*AddressInfo `json:"ReadOnlyAddress,omitnil,omitempty" name:"ReadOnlyAddress"`
 
-	// 云盘版实例的节点列表信息。
+	// <p>云盘版实例的节点列表信息。</p>
 	NodeList []*ClusterNodeInfo `json:"NodeList,omitnil,omitempty" name:"NodeList"`
 
-	// 只读空间保护阈值,单位GB
+	// <p>只读空间保护阈值,单位GB</p>
 	ReadonlyLimit *int64 `json:"ReadonlyLimit,omitnil,omitempty" name:"ReadonlyLimit"`
 
-	// 实例节点数。
+	// <p>实例节点数。</p>
 	NodeCount *int64 `json:"NodeCount,omitnil,omitempty" name:"NodeCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

@@ -3861,6 +3861,91 @@ func (r *CreateTWeSeeDirectUploadCredentialResponse) FromJsonString(s string) er
 }
 
 // Predefined struct for user
+type CreateTWeSeePersonRequestParams struct {
+	// 产品 ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 人员名称，最多 64 个字符
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 人脸 ID 列表，最多 5 个
+	FaceIds []*string `json:"FaceIds,omitnil,omitempty" name:"FaceIds"`
+
+	// 通道 ID，默认值为 0
+	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+}
+
+type CreateTWeSeePersonRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品 ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 人员名称，最多 64 个字符
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 人脸 ID 列表，最多 5 个
+	FaceIds []*string `json:"FaceIds,omitnil,omitempty" name:"FaceIds"`
+
+	// 通道 ID，默认值为 0
+	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+}
+
+func (r *CreateTWeSeePersonRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateTWeSeePersonRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	delete(f, "Name")
+	delete(f, "FaceIds")
+	delete(f, "ChannelId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTWeSeePersonRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateTWeSeePersonResponseParams struct {
+	// 人员信息
+	Person *SeePersonInfo `json:"Person,omitnil,omitempty" name:"Person"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateTWeSeePersonResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateTWeSeePersonResponseParams `json:"Response"`
+}
+
+func (r *CreateTWeSeePersonResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateTWeSeePersonResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateTWeSeePostPaidServiceRequestParams struct {
 	// 算法类型。可选值：
 	// 
@@ -5927,6 +6012,163 @@ func (r *DeleteTWeSeeCallbackResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteTWeSeeCallbackResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteTWeSeeFaceRequestParams struct {
+	// 产品 ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 人脸 ID
+	FaceId *string `json:"FaceId,omitnil,omitempty" name:"FaceId"`
+
+	// 通道 ID，默认值为 0
+	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+}
+
+type DeleteTWeSeeFaceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品 ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 人脸 ID
+	FaceId *string `json:"FaceId,omitnil,omitempty" name:"FaceId"`
+
+	// 通道 ID，默认值为 0
+	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+}
+
+func (r *DeleteTWeSeeFaceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteTWeSeeFaceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	delete(f, "FaceId")
+	delete(f, "ChannelId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteTWeSeeFaceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteTWeSeeFaceResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteTWeSeeFaceResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteTWeSeeFaceResponseParams `json:"Response"`
+}
+
+func (r *DeleteTWeSeeFaceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteTWeSeeFaceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteTWeSeePersonRequestParams struct {
+	// 产品 ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 人员 ID
+	PersonId *string `json:"PersonId,omitnil,omitempty" name:"PersonId"`
+
+	// 通道 ID，默认值为 0
+	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// 是否同时删除关联人脸，默认值为 false。人员仍有关联人脸时可设为 true 同步删除
+	DeleteFaces *bool `json:"DeleteFaces,omitnil,omitempty" name:"DeleteFaces"`
+}
+
+type DeleteTWeSeePersonRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品 ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 人员 ID
+	PersonId *string `json:"PersonId,omitnil,omitempty" name:"PersonId"`
+
+	// 通道 ID，默认值为 0
+	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// 是否同时删除关联人脸，默认值为 false。人员仍有关联人脸时可设为 true 同步删除
+	DeleteFaces *bool `json:"DeleteFaces,omitnil,omitempty" name:"DeleteFaces"`
+}
+
+func (r *DeleteTWeSeePersonRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteTWeSeePersonRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	delete(f, "PersonId")
+	delete(f, "ChannelId")
+	delete(f, "DeleteFaces")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteTWeSeePersonRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteTWeSeePersonResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteTWeSeePersonResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteTWeSeePersonResponseParams `json:"Response"`
+}
+
+func (r *DeleteTWeSeePersonResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteTWeSeePersonResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -10909,6 +11151,169 @@ func (r *DescribeTWeSeeConfigResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeTWeSeeFaceRequestParams struct {
+	// 产品 ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 人脸 ID
+	FaceId *string `json:"FaceId,omitnil,omitempty" name:"FaceId"`
+
+	// 通道 ID，默认值为 0
+	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+}
+
+type DescribeTWeSeeFaceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品 ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 人脸 ID
+	FaceId *string `json:"FaceId,omitnil,omitempty" name:"FaceId"`
+
+	// 通道 ID，默认值为 0
+	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+}
+
+func (r *DescribeTWeSeeFaceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTWeSeeFaceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	delete(f, "FaceId")
+	delete(f, "ChannelId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTWeSeeFaceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTWeSeeFaceResponseParams struct {
+	// 人脸元数据
+	Face *SeeFaceInfo `json:"Face,omitnil,omitempty" name:"Face"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeTWeSeeFaceResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTWeSeeFaceResponseParams `json:"Response"`
+}
+
+func (r *DescribeTWeSeeFaceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTWeSeeFaceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTWeSeePersonRequestParams struct {
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 人员 ID
+	PersonId *string `json:"PersonId,omitnil,omitempty" name:"PersonId"`
+
+	// 产品 ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 通道 ID，默认值为 0
+	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// 返回的代表人脸数量，取值范围为 1 到 5，默认值为 1
+	FaceLimit *uint64 `json:"FaceLimit,omitnil,omitempty" name:"FaceLimit"`
+}
+
+type DescribeTWeSeePersonRequest struct {
+	*tchttp.BaseRequest
+	
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 人员 ID
+	PersonId *string `json:"PersonId,omitnil,omitempty" name:"PersonId"`
+
+	// 产品 ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 通道 ID，默认值为 0
+	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// 返回的代表人脸数量，取值范围为 1 到 5，默认值为 1
+	FaceLimit *uint64 `json:"FaceLimit,omitnil,omitempty" name:"FaceLimit"`
+}
+
+func (r *DescribeTWeSeePersonRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTWeSeePersonRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DeviceName")
+	delete(f, "PersonId")
+	delete(f, "ProductId")
+	delete(f, "ChannelId")
+	delete(f, "FaceLimit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTWeSeePersonRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTWeSeePersonResponseParams struct {
+	// 人员信息
+	Person *SeePersonInfo `json:"Person,omitnil,omitempty" name:"Person"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeTWeSeePersonResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTWeSeePersonResponseParams `json:"Response"`
+}
+
+func (r *DescribeTWeSeePersonResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTWeSeePersonResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeTWeSeePostPaidServiceRequestParams struct {
 	// 算法类型。可选值：
 	// 
@@ -14661,6 +15066,87 @@ type IdleResponseInfo struct {
 }
 
 // Predefined struct for user
+type ImportTWeSeeFacesRequestParams struct {
+	// 产品 ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 图片 URL，支持 HTTP(S) URL 或 JPG、PNG、BMP 格式的 data URL，图片大小不超过 5 MiB
+	ImageURL *string `json:"ImageURL,omitnil,omitempty" name:"ImageURL"`
+
+	// 通道 ID，默认值为 0
+	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+}
+
+type ImportTWeSeeFacesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品 ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 图片 URL，支持 HTTP(S) URL 或 JPG、PNG、BMP 格式的 data URL，图片大小不超过 5 MiB
+	ImageURL *string `json:"ImageURL,omitnil,omitempty" name:"ImageURL"`
+
+	// 通道 ID，默认值为 0
+	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+}
+
+func (r *ImportTWeSeeFacesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ImportTWeSeeFacesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	delete(f, "ImageURL")
+	delete(f, "ChannelId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ImportTWeSeeFacesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ImportTWeSeeFacesResponseParams struct {
+	// 检测到的人脸列表
+	Faces []*SeeFaceInfo `json:"Faces,omitnil,omitempty" name:"Faces"`
+
+	// 本次人脸导入任务 ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ImportTWeSeeFacesResponse struct {
+	*tchttp.BaseResponse
+	Response *ImportTWeSeeFacesResponseParams `json:"Response"`
+}
+
+func (r *ImportTWeSeeFacesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ImportTWeSeeFacesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type InheritCloudStorageUserRequestParams struct {
 	// 产品ID
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
@@ -15385,50 +15871,44 @@ func (r *InvokeExternalSourceAIServiceTaskResponse) FromJsonString(s string) err
 
 // Predefined struct for user
 type InvokeTWeSeeComprehensionRequestParams struct {
-	// 输入视频 / 图片的 URL
+	// <p>输入视频 / 图片的 URL</p>
 	InputURL *string `json:"InputURL,omitnil,omitempty" name:"InputURL"`
 
-	// 算法类型。可选值：
-	// 
-	// - `VID_COMP`：视频理解
-	// - `IMG_COMP`：图片理解
+	// <p>算法类型。可选值：</p><ul><li><code>VID_COMP</code>：视频理解</li><li><code>IMG_COMP</code>：图片理解</li></ul>
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
-	// 任务元数据
+	// <p>任务元数据</p>
 	Metadata *SeeTaskMetadata `json:"Metadata,omitnil,omitempty" name:"Metadata"`
 
-	// 视觉理解配置项
+	// <p>视觉理解配置项</p>
 	ComprehensionConfig *SeeComprehensionConfig `json:"ComprehensionConfig,omitnil,omitempty" name:"ComprehensionConfig"`
 
-	// 等待结果的超时时间（单位：秒）。填 0 表示无需等待结果。最大超时时长 25 秒，默认超时时长 20 秒。
+	// <p>等待结果的超时时间（单位：秒）。填 0 表示无需等待结果。最大超时时长 25 秒，默认超时时长 20 秒。</p>
 	WaitResultTimeout *int64 `json:"WaitResultTimeout,omitnil,omitempty" name:"WaitResultTimeout"`
 
-	// 回调目标 ID
+	// <p>回调目标 ID</p>
 	CallbackId *string `json:"CallbackId,omitnil,omitempty" name:"CallbackId"`
 }
 
 type InvokeTWeSeeComprehensionRequest struct {
 	*tchttp.BaseRequest
 	
-	// 输入视频 / 图片的 URL
+	// <p>输入视频 / 图片的 URL</p>
 	InputURL *string `json:"InputURL,omitnil,omitempty" name:"InputURL"`
 
-	// 算法类型。可选值：
-	// 
-	// - `VID_COMP`：视频理解
-	// - `IMG_COMP`：图片理解
+	// <p>算法类型。可选值：</p><ul><li><code>VID_COMP</code>：视频理解</li><li><code>IMG_COMP</code>：图片理解</li></ul>
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
-	// 任务元数据
+	// <p>任务元数据</p>
 	Metadata *SeeTaskMetadata `json:"Metadata,omitnil,omitempty" name:"Metadata"`
 
-	// 视觉理解配置项
+	// <p>视觉理解配置项</p>
 	ComprehensionConfig *SeeComprehensionConfig `json:"ComprehensionConfig,omitnil,omitempty" name:"ComprehensionConfig"`
 
-	// 等待结果的超时时间（单位：秒）。填 0 表示无需等待结果。最大超时时长 25 秒，默认超时时长 20 秒。
+	// <p>等待结果的超时时间（单位：秒）。填 0 表示无需等待结果。最大超时时长 25 秒，默认超时时长 20 秒。</p>
 	WaitResultTimeout *int64 `json:"WaitResultTimeout,omitnil,omitempty" name:"WaitResultTimeout"`
 
-	// 回调目标 ID
+	// <p>回调目标 ID</p>
 	CallbackId *string `json:"CallbackId,omitnil,omitempty" name:"CallbackId"`
 }
 
@@ -15458,24 +15938,19 @@ func (r *InvokeTWeSeeComprehensionRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type InvokeTWeSeeComprehensionResponseParams struct {
-	// 任务 ID
+	// <p>任务 ID</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 任务状态。可能取值：
-	// 
-	// - `1`：失败
-	// - `2`：空结果
-	// - `3`：有效结果
-	// - `4`：处理中
+	// <p>任务状态。可能取值：</p><ul><li><code>1</code>：失败</li><li><code>2</code>：空结果</li><li><code>3</code>：有效结果</li><li><code>4</code>：处理中</li></ul>
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 视觉理解结果
+	// <p>视觉理解结果</p>
 	ComprehensionResult *SeeComprehensionResult `json:"ComprehensionResult,omitnil,omitempty" name:"ComprehensionResult"`
 
-	// 完成该任务所消耗的基础能力额度
+	// <p>完成该任务所消耗的基础能力额度</p>
 	CostBasic *int64 `json:"CostBasic,omitnil,omitempty" name:"CostBasic"`
 
-	// 完成该任务所消耗的高级能力额度
+	// <p>完成该任务所消耗的高级能力额度</p>
 	CostAdvanced *int64 `json:"CostAdvanced,omitnil,omitempty" name:"CostAdvanced"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -16472,6 +16947,114 @@ func (r *ListTWeSeeCallbackResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ListTWeSeeCallbackResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListTWeSeePersonsRequestParams struct {
+	// 产品 ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 分页拉取数量，取值范围为 1 到 100
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 分页拉取偏移，默认值为 0
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 通道 ID，默认值为 0
+	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// 每个人员返回的代表人脸数量，取值范围为 1 到 5，默认值为 1
+	FaceLimit *uint64 `json:"FaceLimit,omitnil,omitempty" name:"FaceLimit"`
+
+	// 人员记忆状态。true：仅查询持久记忆人员；false：仅查询非持久记忆人员；不传时查询全部人员
+	IsRemembered *bool `json:"IsRemembered,omitnil,omitempty" name:"IsRemembered"`
+}
+
+type ListTWeSeePersonsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品 ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 分页拉取数量，取值范围为 1 到 100
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 分页拉取偏移，默认值为 0
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 通道 ID，默认值为 0
+	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// 每个人员返回的代表人脸数量，取值范围为 1 到 5，默认值为 1
+	FaceLimit *uint64 `json:"FaceLimit,omitnil,omitempty" name:"FaceLimit"`
+
+	// 人员记忆状态。true：仅查询持久记忆人员；false：仅查询非持久记忆人员；不传时查询全部人员
+	IsRemembered *bool `json:"IsRemembered,omitnil,omitempty" name:"IsRemembered"`
+}
+
+func (r *ListTWeSeePersonsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListTWeSeePersonsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "ChannelId")
+	delete(f, "FaceLimit")
+	delete(f, "IsRemembered")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListTWeSeePersonsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListTWeSeePersonsResponseParams struct {
+	// 本次请求的分页数量
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 本次请求的分页偏移
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 人员列表
+	Persons []*SeePersonInfo `json:"Persons,omitnil,omitempty" name:"Persons"`
+
+	// 符合条件的人员总数
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListTWeSeePersonsResponse struct {
+	*tchttp.BaseResponse
+	Response *ListTWeSeePersonsResponseParams `json:"Response"`
+}
+
+func (r *ListTWeSeePersonsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListTWeSeePersonsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -18116,6 +18699,187 @@ func (r *ModifyTWeSeeConfigResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyTWeSeeConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyTWeSeeFaceRequestParams struct {
+	// 产品 ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 人员 ID
+	PersonId *string `json:"PersonId,omitnil,omitempty" name:"PersonId"`
+
+	// 人脸 ID
+	FaceId *string `json:"FaceId,omitnil,omitempty" name:"FaceId"`
+
+	// 通道 ID，默认值为 0
+	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// 是否设为代表人脸。关联未归属的人脸时，默认值为 true
+	IsPrototype *bool `json:"IsPrototype,omitnil,omitempty" name:"IsPrototype"`
+}
+
+type ModifyTWeSeeFaceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品 ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 人员 ID
+	PersonId *string `json:"PersonId,omitnil,omitempty" name:"PersonId"`
+
+	// 人脸 ID
+	FaceId *string `json:"FaceId,omitnil,omitempty" name:"FaceId"`
+
+	// 通道 ID，默认值为 0
+	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// 是否设为代表人脸。关联未归属的人脸时，默认值为 true
+	IsPrototype *bool `json:"IsPrototype,omitnil,omitempty" name:"IsPrototype"`
+}
+
+func (r *ModifyTWeSeeFaceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyTWeSeeFaceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	delete(f, "PersonId")
+	delete(f, "FaceId")
+	delete(f, "ChannelId")
+	delete(f, "IsPrototype")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyTWeSeeFaceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyTWeSeeFaceResponseParams struct {
+	// 人脸元数据
+	Face *SeeFaceInfo `json:"Face,omitnil,omitempty" name:"Face"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyTWeSeeFaceResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyTWeSeeFaceResponseParams `json:"Response"`
+}
+
+func (r *ModifyTWeSeeFaceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyTWeSeeFaceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyTWeSeePersonRequestParams struct {
+	// 产品 ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 人员 ID
+	PersonId *string `json:"PersonId,omitnil,omitempty" name:"PersonId"`
+
+	// 通道 ID，默认值为 0
+	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// 是否标记为持久记忆。
+	IsRemembered *bool `json:"IsRemembered,omitnil,omitempty" name:"IsRemembered"`
+
+	// 人员名称，最多 64 个字符
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+}
+
+type ModifyTWeSeePersonRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品 ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 人员 ID
+	PersonId *string `json:"PersonId,omitnil,omitempty" name:"PersonId"`
+
+	// 通道 ID，默认值为 0
+	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// 是否标记为持久记忆。
+	IsRemembered *bool `json:"IsRemembered,omitnil,omitempty" name:"IsRemembered"`
+
+	// 人员名称，最多 64 个字符
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+}
+
+func (r *ModifyTWeSeePersonRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyTWeSeePersonRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	delete(f, "PersonId")
+	delete(f, "ChannelId")
+	delete(f, "IsRemembered")
+	delete(f, "Name")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyTWeSeePersonRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyTWeSeePersonResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyTWeSeePersonResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyTWeSeePersonResponseParams `json:"Response"`
+}
+
+func (r *ModifyTWeSeePersonResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyTWeSeePersonResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -20683,6 +21447,12 @@ type SeeComprehensionConfig struct {
 
 	// <p>自定义摘要提示词</p>
 	SummaryPrompt *string `json:"SummaryPrompt,omitnil,omitempty" name:"SummaryPrompt"`
+
+	// <p>是否开启人脸检测</p>
+	EnableFaceDetection *bool `json:"EnableFaceDetection,omitnil,omitempty" name:"EnableFaceDetection"`
+
+	// <p>画面旋转角度</p><p>枚举值：</p><ul><li>0： 不旋转</li><li>90： 顺时针旋转90度</li><li>-90： 逆时针旋转90度</li><li>180： 旋转180度</li></ul><p>默认值：0</p>
+	InputRotateDegree *int64 `json:"InputRotateDegree,omitnil,omitempty" name:"InputRotateDegree"`
 }
 
 type SeeComprehensionResult struct {
@@ -20741,6 +21511,51 @@ type SeeEventIdFilterConfig struct {
 	Exclude []*string `json:"Exclude,omitnil,omitempty" name:"Exclude"`
 }
 
+type SeeFaceInfo struct {
+	// 人脸框坐标，依次为左、上、右、下，取值范围为 0 到 1
+	BoundingBox []*float64 `json:"BoundingBox,omitnil,omitempty" name:"BoundingBox"`
+
+	// 人脸 ID
+	FaceId *string `json:"FaceId,omitnil,omitempty" name:"FaceId"`
+
+	// 人脸裁剪图 URL
+	CropImageURL *string `json:"CropImageURL,omitnil,omitempty" name:"CropImageURL"`
+
+	// 是否为代表人脸
+	IsPrototype *bool `json:"IsPrototype,omitnil,omitempty" name:"IsPrototype"`
+
+	// 人员 ID
+	PersonId *string `json:"PersonId,omitnil,omitempty" name:"PersonId"`
+
+	// 创建来源。0：自动识别；1：图片导入
+	Source *uint64 `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// 人脸所在画面的毫秒级 UNIX 时间戳
+	TimestampMs *int64 `json:"TimestampMs,omitnil,omitempty" name:"TimestampMs"`
+}
+
+type SeeFaceRecognitionResult struct {
+	// 识别到的人员列表
+	Persons []*SeeTaskPersonInfo `json:"Persons,omitnil,omitempty" name:"Persons"`
+}
+
+type SeePersonInfo struct {
+	// 代表人脸列表
+	Faces []*SeeFaceInfo `json:"Faces,omitnil,omitempty" name:"Faces"`
+
+	// 是否已标记为持久记忆
+	IsRemembered *bool `json:"IsRemembered,omitnil,omitempty" name:"IsRemembered"`
+
+	// 人员名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 人员 ID
+	PersonId *string `json:"PersonId,omitnil,omitempty" name:"PersonId"`
+
+	// 创建来源。0：自动识别；1：用户创建
+	Source *uint64 `json:"Source,omitnil,omitempty" name:"Source"`
+}
+
 type SeeStatItem struct {
 	// 时间
 	Time *string `json:"Time,omitnil,omitempty" name:"Time"`
@@ -20753,6 +21568,20 @@ type SeeStatItem struct {
 
 	// 高级能力用量
 	CostAdvanced *int64 `json:"CostAdvanced,omitnil,omitempty" name:"CostAdvanced"`
+}
+
+type SeeTaskFaceInfo struct {
+	// 人脸裁剪图下载 URL，仅在请求 FileURLExpireTime 时返回
+	CropImageURL *string `json:"CropImageURL,omitnil,omitempty" name:"CropImageURL"`
+
+	// 人脸 ID
+	FaceId *string `json:"FaceId,omitnil,omitempty" name:"FaceId"`
+
+	// 人员 ID
+	PersonId *string `json:"PersonId,omitnil,omitempty" name:"PersonId"`
+
+	// 人脸所在画面的毫秒级 UNIX 时间戳
+	TimestampMs *int64 `json:"TimestampMs,omitnil,omitempty" name:"TimestampMs"`
 }
 
 type SeeTaskInfo struct {
@@ -20782,6 +21611,9 @@ type SeeTaskInfo struct {
 
 	// <p>标签持续检测结果</p>
 	DetectContinuousResult *SeeDetectContinuousResult `json:"DetectContinuousResult,omitnil,omitempty" name:"DetectContinuousResult"`
+
+	// <p>人脸检测结果</p>
+	FaceRecognitionResult *SeeFaceRecognitionResult `json:"FaceRecognitionResult,omitnil,omitempty" name:"FaceRecognitionResult"`
 
 	// <p>完成该任务所消耗的基础能力额度</p>
 	CostBasic *int64 `json:"CostBasic,omitnil,omitempty" name:"CostBasic"`
@@ -20823,6 +21655,23 @@ type SeeTaskMetadata struct {
 
 	// 自定义事件 ID
 	CustomId *string `json:"CustomId,omitnil,omitempty" name:"CustomId"`
+}
+
+type SeeTaskPersonInfo struct {
+	// 该人员在任务中的人脸列表
+	Faces []*SeeTaskFaceInfo `json:"Faces,omitnil,omitempty" name:"Faces"`
+
+	// 是否已标记为持久记忆
+	IsRemembered *bool `json:"IsRemembered,omitnil,omitempty" name:"IsRemembered"`
+
+	// 人员名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 人员 ID
+	PersonId *string `json:"PersonId,omitnil,omitempty" name:"PersonId"`
+
+	// 创建来源。0：自动识别；1：用户创建
+	Source *uint64 `json:"Source,omitnil,omitempty" name:"Source"`
 }
 
 // Predefined struct for user

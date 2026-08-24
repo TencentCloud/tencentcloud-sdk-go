@@ -20,6 +20,49 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
+type AIGWAKSKCredentialConfig struct {
+	// <p>AccessKeyId</p>
+	AccessKeyId *string `json:"AccessKeyId,omitnil,omitempty" name:"AccessKeyId"`
+
+	// <p>SecretAccessKey</p>
+	SecretAccessKey *string `json:"SecretAccessKey,omitnil,omitempty" name:"SecretAccessKey"`
+}
+
+type AIGWAuthModelScopeItem struct {
+	// <p>授权主体 ID，如消费者组、消费者</p>
+	PrincipalId *string `json:"PrincipalId,omitnil,omitempty" name:"PrincipalId"`
+
+	// <p>授权主体名称，如消费者组、消费者</p>
+	PrincipalName *string `json:"PrincipalName,omitnil,omitempty" name:"PrincipalName"`
+
+	// <p>模型范围原始配置</p>
+	ModelScope *AIGWModelScope `json:"ModelScope,omitnil,omitempty" name:"ModelScope"`
+
+	// <p>MAG 已展开、保序去重后的可用模型名称列表</p>
+	EffectiveModelNames []*string `json:"EffectiveModelNames,omitnil,omitempty" name:"EffectiveModelNames"`
+}
+
+type AIGWBasicCredentialConfig struct {
+	// <p>用户名</p>
+	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
+
+	// <p>密码</p>
+	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+}
+
+type AIGWBearerTokenCredentialConfig struct {
+	// <p>Token凭证</p>
+	Token *string `json:"Token,omitnil,omitempty" name:"Token"`
+}
+
+type AIGWCAMCredentialConfig struct {
+	// <p>SecretId</p>
+	SecretId *string `json:"SecretId,omitnil,omitempty" name:"SecretId"`
+
+	// <p>SecretKey</p>
+	SecretKey *string `json:"SecretKey,omitnil,omitempty" name:"SecretKey"`
+}
+
 type AIGWCacheAwareRouteCandidate struct {
 	// <p>模型服务ID</p>
 	ModelServiceId *string `json:"ModelServiceId,omitnil,omitempty" name:"ModelServiceId"`
@@ -31,6 +74,14 @@ type AIGWCacheAwareRouteCandidate struct {
 type AIGWCacheAwareRouteConfig struct {
 	// <p>前缀缓存感知路由模型服务候选列表</p>
 	Candidates []*AIGWCacheAwareRouteCandidate `json:"Candidates,omitnil,omitempty" name:"Candidates"`
+}
+
+type AIGWConsumerModelScope struct {
+	// <p>消费者模型生效范围类型</p><p>枚举值：</p><ul><li>INHERIT： 继承所在消费者组的生效模型范围</li><li>ALLOWLIST： 自定义白名单，必须 ⊆ 所在组针对该资源的生效模型集合</li></ul>
+	ScopeType *string `json:"ScopeType,omitnil,omitempty" name:"ScopeType"`
+
+	// <p>模型授权白名单列表</p>
+	AllowList []*string `json:"AllowList,omitnil,omitempty" name:"AllowList"`
 }
 
 type AIGWCrossServiceFallbackConfig struct {
@@ -45,17 +96,25 @@ type AIGWCrossServiceFallbackConfig struct {
 }
 
 type AIGWCustomDesensitizeRule struct {
-	// <p>自定义脱敏规则名称</p>
+	// <p>规则名称，同一配置内唯一，最长 64</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// <p>自定义脱敏规则匹配正则</p>
+	// <p>RE2 兼容的正则表达式</p>
 	Pattern *string `json:"Pattern,omitnil,omitempty" name:"Pattern"`
 
-	// <p>自定义脱敏规则掩码</p>
+	// <p>日志场景为掩码格式，转发场景为占位符；最长 64</p>
 	MaskFormat *string `json:"MaskFormat,omitnil,omitempty" name:"MaskFormat"`
 
-	// <p>自定义脱敏规则开关</p>
+	// <p>单条自定义规则是否启用</p>
 	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+}
+
+type AIGWCustomHeaderCredentialConfig struct {
+	// <p>Header名</p>
+	HeaderName *string `json:"HeaderName,omitnil,omitempty" name:"HeaderName"`
+
+	// <p>Header值</p>
+	HeaderValue *string `json:"HeaderValue,omitnil,omitempty" name:"HeaderValue"`
 }
 
 type AIGWFallbackServiceItem struct {
@@ -67,19 +126,19 @@ type AIGWFallbackServiceItem struct {
 }
 
 type AIGWForwardDesensitizeConfig struct {
-	// <p>转发脱敏开关</p>
+	// <p>转发脱敏配置总开关</p>
 	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
 
-	// <p>预定义规则类型</p><p>枚举值：</p><ul><li>Phone： 电话号码</li><li>IdCard： 身份证号</li><li>BankCard： 银行卡号</li><li>Email： 电子邮箱地址</li><li>IP： IP地址</li><li>Name： 姓名</li></ul>
+	// <p>内置规则类型：Phone、IdCard、BankCard、Email、IP、Name</p>
 	PredefinedRuleTypes []*string `json:"PredefinedRuleTypes,omitnil,omitempty" name:"PredefinedRuleTypes"`
 
-	// <p>自定义脱敏规则</p>
+	// <p>自定义规则，最多 20 条</p>
 	CustomRules []*AIGWCustomDesensitizeRule `json:"CustomRules,omitnil,omitempty" name:"CustomRules"`
 
-	// <p>掩码</p>
+	// <p>内置规则占位符格式，最长 32；为空时默认 [{type}]</p>
 	PlaceholderFormat *string `json:"PlaceholderFormat,omitnil,omitempty" name:"PlaceholderFormat"`
 
-	// <p>脱敏异常处理</p><p>枚举值：</p><ul><li>Reject： 拒绝请求</li><li>Skip： 跳过</li></ul>
+	// <p>脱敏失败处理：Reject（拒绝请求）或 Skip（跳过脱敏并转发）</p>
 	OnFailure *string `json:"OnFailure,omitnil,omitempty" name:"OnFailure"`
 }
 
@@ -128,6 +187,23 @@ type AIGWKVMatch struct {
 
 	// <p>操作类型</p>
 	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
+}
+
+type AIGWLLMHealthCheckSetting struct {
+	// <p>检查间隔</p>
+	HealthCheckIntervalSecond *uint64 `json:"HealthCheckIntervalSecond,omitnil,omitempty" name:"HealthCheckIntervalSecond"`
+
+	// <p>检查超时时间</p>
+	HealthCheckTimeout *uint64 `json:"HealthCheckTimeout,omitnil,omitempty" name:"HealthCheckTimeout"`
+
+	// <p>检查失败阈值</p>
+	HealthCheckFailThreshold *uint64 `json:"HealthCheckFailThreshold,omitnil,omitempty" name:"HealthCheckFailThreshold"`
+
+	// <p>检查恢复阈值</p>
+	HealthCheckRecoverThreshold *uint64 `json:"HealthCheckRecoverThreshold,omitnil,omitempty" name:"HealthCheckRecoverThreshold"`
+
+	// <p>检查路径</p>
+	HealthCheckPath *string `json:"HealthCheckPath,omitnil,omitempty" name:"HealthCheckPath"`
 }
 
 type AIGWLLMModelServiceSubRoute struct {
@@ -179,6 +255,11 @@ type AIGWLatencyPriorityRouteRule struct {
 	ModelServiceId *string `json:"ModelServiceId,omitnil,omitempty" name:"ModelServiceId"`
 }
 
+type AIGWLoadBalanceConfig struct {
+	// <p>负载均衡算法</p>
+	Algorithm *string `json:"Algorithm,omitnil,omitempty" name:"Algorithm"`
+}
+
 type AIGWLogConfig struct {
 	// <p>是否开启请求 payload 记录日志</p>
 	EnableRequestLogPayloads *bool `json:"EnableRequestLogPayloads,omitnil,omitempty" name:"EnableRequestLogPayloads"`
@@ -197,19 +278,25 @@ type AIGWLogConfig struct {
 
 	// <p>上游原始 payload access log 输出模式</p><p>枚举值：</p><ul><li>raw： access log 中 body 记录客户端原始上游响应</li><li>processed： access log 中 body 记录 AI 网关协议适配、改写、归一化后的 OpenAI-compatible 内容</li></ul>
 	ResponseLogPayloadMode *string `json:"ResponseLogPayloadMode,omitnil,omitempty" name:"ResponseLogPayloadMode"`
+
+	// <p>请求 Body 大小裁剪策略</p><p>枚举值：</p><ul><li>Bounded： 裁剪大小</li><li>UnBounded： 不裁剪大小</li></ul>
+	RequestLogPayloadTruncationPolicy *string `json:"RequestLogPayloadTruncationPolicy,omitnil,omitempty" name:"RequestLogPayloadTruncationPolicy"`
+
+	// <p>响应 Body 大小裁剪策略</p><p>枚举值：</p><ul><li>Bounded： 裁剪大小</li><li>UnBounded： 不裁剪大小</li></ul>
+	ResponseLogPayloadTruncationPolicy *string `json:"ResponseLogPayloadTruncationPolicy,omitnil,omitempty" name:"ResponseLogPayloadTruncationPolicy"`
 }
 
 type AIGWLogDesensitizeConfig struct {
-	// <p>日志脱敏开关</p>
+	// <p>日志脱敏配置总开关</p>
 	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
 
-	// <p>预定义规则类型</p><p>枚举值：</p><ul><li>Phone： 电话号码</li><li>IdCard： 身份证号</li><li>BankCard： 银行卡号</li><li>Email： 邮箱地址</li><li>IP： IP地址</li><li>Name： 姓名</li></ul>
+	// <p>内置规则类型：Phone、IdCard、BankCard、Email、IP、Name</p>
 	PredefinedRuleTypes []*string `json:"PredefinedRuleTypes,omitnil,omitempty" name:"PredefinedRuleTypes"`
 
-	// <p>自定义脱敏规则</p>
+	// <p>自定义规则，最多 20 条</p>
 	CustomRules []*AIGWCustomDesensitizeRule `json:"CustomRules,omitnil,omitempty" name:"CustomRules"`
 
-	// <p>日志脱敏范围</p><p>枚举值：</p><ul><li>Request： 请求</li><li>Response： 响应</li></ul>
+	// <p>脱敏方向：Request、Response；为空时默认两者</p>
 	Scope []*string `json:"Scope,omitnil,omitempty" name:"Scope"`
 }
 
@@ -219,6 +306,17 @@ type AIGWModelRewriteRule struct {
 
 	// <p>目标模型</p>
 	TargetModel *string `json:"TargetModel,omitnil,omitempty" name:"TargetModel"`
+}
+
+type AIGWModelScope struct {
+	// <p>范围类型</p><p>枚举值：</p><ul><li>ALL： 允许全部访问</li><li>ALLOWLIST： 允许访问的模型列表</li><li>MAG： 模型访问组</li></ul>
+	ScopeType *string `json:"ScopeType,omitnil,omitempty" name:"ScopeType"`
+
+	// <p>允许访问的模型列表，ScopeType=ALLOWLIST时设置</p>
+	AllowList []*string `json:"AllowList,omitnil,omitempty" name:"AllowList"`
+
+	// <p>模型访问组，ScopeType=MAG时设置</p>
+	MagRefs []*string `json:"MagRefs,omitnil,omitempty" name:"MagRefs"`
 }
 
 type AIGWOAuthCredentialConfig struct {
@@ -243,9 +341,45 @@ type AIGWOIDCCredentialConfig struct {
 	ConsumerClaimValue *string `json:"ConsumerClaimValue,omitnil,omitempty" name:"ConsumerClaimValue"`
 }
 
+type AIGWQueryParamCredentialConfig struct {
+	// <p>参数名</p>
+	ParamName *string `json:"ParamName,omitnil,omitempty" name:"ParamName"`
+
+	// <p>参数值</p>
+	ParamValue *string `json:"ParamValue,omitnil,omitempty" name:"ParamValue"`
+}
+
+type AIGWRerankMaxDocumentsConfig struct {
+	// <p>是否开启最大文档数限制</p><p>枚举值：</p><ul><li>true： 开启最大文档数限制</li><li>false： 关闭最大文档数限制</li></ul>
+	EnableMaxDocuments *bool `json:"EnableMaxDocuments,omitnil,omitempty" name:"EnableMaxDocuments"`
+
+	// <p>最大文档数限制</p><p>取值范围：[1, 5000]</p>
+	MaxDocumentValue *int64 `json:"MaxDocumentValue,omitnil,omitempty" name:"MaxDocumentValue"`
+}
+
 type AIGWRouteModelServiceConfig struct {
 	// <p>模型服务名字</p>
 	ModelServiceName *string `json:"ModelServiceName,omitnil,omitempty" name:"ModelServiceName"`
+}
+
+type AIGWSensitiveWordRoute struct {
+	// <p>是否开启敏感词路由</p>
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// <p>目标模型服务列表</p>
+	ModelServiceRefs []*string `json:"ModelServiceRefs,omitnil,omitempty" name:"ModelServiceRefs"`
+
+	// <p>目标模型服务名，查询的时候会填充</p>
+	ModelServiceNames []*string `json:"ModelServiceNames,omitnil,omitempty" name:"ModelServiceNames"`
+
+	// <p>路由方法</p><p>枚举值：</p><ul><li>Weighted： 权重路由</li><li>ModelName： 按模型名称路由</li></ul>
+	SelectedTypes []*string `json:"SelectedTypes,omitnil,omitempty" name:"SelectedTypes"`
+
+	// <p>权重路由配置</p>
+	WeightedConfig []*CloudNativeAPIGatewayLLMModelServiceRouteWeightedStrategy `json:"WeightedConfig,omitnil,omitempty" name:"WeightedConfig"`
+
+	// <p>模型名称路由权重</p>
+	ModelNameConfig []*CloudNativeAPIGatewayLLMModelServiceRouteModelNameStrategy `json:"ModelNameConfig,omitnil,omitempty" name:"ModelNameConfig"`
 }
 
 type AIGWTagFilter struct {
@@ -644,6 +778,9 @@ type CNAPIGwConsumer struct {
 	// <p>更新时间 yyyy-MM-dd hh:mm:ss</p>
 	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 
+	// <p>消费者优先级</p><p>枚举值：</p><ul><li>Low： 低优先级</li><li>Medium： 中优先级</li><li>High： 高优先级</li></ul>
+	Priority *string `json:"Priority,omitnil,omitempty" name:"Priority"`
+
 	// <p>描述</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
@@ -651,30 +788,48 @@ type CNAPIGwConsumer struct {
 	// <p>消费者分组</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConsumerGroups []*CNAPIGwConsumerGroup `json:"ConsumerGroups,omitnil,omitempty" name:"ConsumerGroups"`
+
+	// <p>同步状态</p><p>枚举值：</p><ul><li>Success： 成功</li><li>Fail： 失败</li></ul>
+	SyncStatus *string `json:"SyncStatus,omitnil,omitempty" name:"SyncStatus"`
+
+	// <p>资源类型</p><p>枚举值：</p><ul><li>Public： 公共</li><li>Private： 私有</li><li>SourceDeleted： 已删除</li></ul>
+	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
+
+	// <p>同步版本</p>
+	SyncedVersion *string `json:"SyncedVersion,omitnil,omitempty" name:"SyncedVersion"`
 }
 
 type CNAPIGwConsumerGroup struct {
-	// 分组id
+	// <p>分组id</p>
 	ConsumerGroupId *string `json:"ConsumerGroupId,omitnil,omitempty" name:"ConsumerGroupId"`
 
-	// 名字
+	// <p>名字</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 状态Disable/Enable
+	// <p>状态Disable/Enable</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 描述
+	// <p>描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 更新时间 yyyy-MM-dd hh:mm:ss
+	// <p>更新时间 yyyy-MM-dd hh:mm:ss</p>
 	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 
-	// 绑定的消费者数量
+	// <p>绑定的消费者数量</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BindCount *uint64 `json:"BindCount,omitnil,omitempty" name:"BindCount"`
+
+	// <p>同步状态</p><p>枚举值：</p><ul><li>Fail： 失败</li></ul>
+	SyncStatus *string `json:"SyncStatus,omitnil,omitempty" name:"SyncStatus"`
+
+	// <p>资源类型</p><p>枚举值：</p><ul><li>Public： 公有</li></ul>
+	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
+
+	// <p>同步版本</p>
+	SyncedVersion *string `json:"SyncedVersion,omitnil,omitempty" name:"SyncedVersion"`
 }
 
 type CNAPIGwConsumerGroupList struct {
@@ -760,6 +915,33 @@ type CNAPIGwSecretKey struct {
 
 	// <p>secret key provider方</p><p>枚举值：</p><ul><li>Dify： Dify</li></ul>
 	Provider *string `json:"Provider,omitnil,omitempty" name:"Provider"`
+
+	// <p>AK/SK凭证配置</p>
+	AKSKCredentialConfig *AIGWAKSKCredentialConfig `json:"AKSKCredentialConfig,omitnil,omitempty" name:"AKSKCredentialConfig"`
+
+	// <p>CAM凭证配置</p>
+	CAMCredentialConfig *AIGWCAMCredentialConfig `json:"CAMCredentialConfig,omitnil,omitempty" name:"CAMCredentialConfig"`
+
+	// <p>Bearer Token凭证配置</p>
+	BearerTokenCredentialConfig *AIGWBearerTokenCredentialConfig `json:"BearerTokenCredentialConfig,omitnil,omitempty" name:"BearerTokenCredentialConfig"`
+
+	// <p>Basic Auth凭证配置</p>
+	BasicCredentialConfig *AIGWBasicCredentialConfig `json:"BasicCredentialConfig,omitnil,omitempty" name:"BasicCredentialConfig"`
+
+	// <p>自定义Header凭证配置</p>
+	CustomHeaderCredentialConfig *AIGWCustomHeaderCredentialConfig `json:"CustomHeaderCredentialConfig,omitnil,omitempty" name:"CustomHeaderCredentialConfig"`
+
+	// <p>自定义Query参数凭证配置</p>
+	QueryParamCredentialConfig *AIGWQueryParamCredentialConfig `json:"QueryParamCredentialConfig,omitnil,omitempty" name:"QueryParamCredentialConfig"`
+
+	// <p>同步状态</p>
+	SyncStatus *string `json:"SyncStatus,omitnil,omitempty" name:"SyncStatus"`
+
+	// <p>来源类型</p>
+	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
+
+	// <p>已同步版本</p>
+	SyncedVersion *string `json:"SyncedVersion,omitnil,omitempty" name:"SyncedVersion"`
 }
 
 type CNAPIGwSecretKeyList struct {
@@ -1085,6 +1267,18 @@ type CloudNativeAPIGatewayLLMModelAPI struct {
 
 	// <p>转发脱敏规则</p>
 	ForwardDesensitizeConfig *AIGWForwardDesensitizeConfig `json:"ForwardDesensitizeConfig,omitnil,omitempty" name:"ForwardDesensitizeConfig"`
+
+	// <p>Rerank场景最大文档数限制配置</p>
+	MaxDocumentsConfig *AIGWRerankMaxDocumentsConfig `json:"MaxDocumentsConfig,omitnil,omitempty" name:"MaxDocumentsConfig"`
+
+	// <p>敏感词路由配置</p>
+	SensitiveWordRoute *AIGWSensitiveWordRoute `json:"SensitiveWordRoute,omitnil,omitempty" name:"SensitiveWordRoute"`
+
+	// <p>消费者组的授权模型范围</p>
+	ConsumerGroupModelScopes []*AIGWAuthModelScopeItem `json:"ConsumerGroupModelScopes,omitnil,omitempty" name:"ConsumerGroupModelScopes"`
+
+	// <p>继承自消费者组的授权模型范围</p>
+	ConsumerInheritModelScope *AIGWConsumerModelScope `json:"ConsumerInheritModelScope,omitnil,omitempty" name:"ConsumerInheritModelScope"`
 }
 
 type CloudNativeAPIGatewayLLMModelFallbackRule struct {
@@ -1202,6 +1396,33 @@ type CloudNativeAPIGatewayLLMModelService struct {
 
 	// <p>外部服务来源ID</p>
 	ExternalInstanceId *string `json:"ExternalInstanceId,omitnil,omitempty" name:"ExternalInstanceId"`
+
+	// <p>负载均衡配置</p>
+	LoadBalanceConfig *AIGWLoadBalanceConfig `json:"LoadBalanceConfig,omitnil,omitempty" name:"LoadBalanceConfig"`
+
+	// <p>模型服务是否发布到广场</p><p>枚举值：</p><ul><li>Published： 已发布</li><li>Unpublished： 未发布</li></ul>
+	PublishStatus *string `json:"PublishStatus,omitnil,omitempty" name:"PublishStatus"`
+
+	// <p>模型服务是否可以发布</p>
+	CanPublish *bool `json:"CanPublish,omitnil,omitempty" name:"CanPublish"`
+
+	// <p>同步状态</p><p>枚举值：</p><ul><li>Fail： 失败</li><li>Success： 成功</li></ul>
+	SyncStatus *string `json:"SyncStatus,omitnil,omitempty" name:"SyncStatus"`
+
+	// <p>资源类型</p><p>枚举值：</p><ul><li>Public： 公共</li><li>Private： 私有</li><li>SourceDelete： 资源删除</li></ul>
+	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
+
+	// <p>同步版本</p>
+	SyncedVersion *string `json:"SyncedVersion,omitnil,omitempty" name:"SyncedVersion"`
+
+	// <p>健康状态</p><p>枚举值：</p><ul><li>Error： 异常</li></ul>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>是否开启健康检查</p>
+	EnableHealthCheck *bool `json:"EnableHealthCheck,omitnil,omitempty" name:"EnableHealthCheck"`
+
+	// <p>健康检查配置</p>
+	HealthCheck *AIGWLLMHealthCheckSetting `json:"HealthCheck,omitnil,omitempty" name:"HealthCheck"`
 }
 
 type CloudNativeAPIGatewayLLMModelServiceRoute struct {
@@ -2035,24 +2256,30 @@ func (r *CreateCloudNativeAPIGatewayCanaryRuleResponse) FromJsonString(s string)
 
 // Predefined struct for user
 type CreateCloudNativeAPIGatewayCertificateRequestParams struct {
-	// 网关ID
+	// <p>网关ID</p>
 	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
 
-	// 绑定的域名
-	BindDomains []*string `json:"BindDomains,omitnil,omitempty" name:"BindDomains"`
-
-	// ssl平台证书 Id
+	// <p>ssl平台证书 Id</p>
 	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
 
-	// 证书名称
+	// <p>绑定的域名</p>
+	BindDomains []*string `json:"BindDomains,omitnil,omitempty" name:"BindDomains"`
+
+	// <p>证书名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 证书私钥
+	// <p>证书类型</p><p>枚举值：</p><ul><li>SVR： 服务证书</li><li>CA： CA证书</li></ul>
+	CertType *string `json:"CertType,omitnil,omitempty" name:"CertType"`
+
+	// <p>证书用途</p><p>枚举值：</p><ul><li>SERVER： 用作服务端证书</li><li>CLIENT： 用作客户端证书</li></ul>
+	CertUsage *string `json:"CertUsage,omitnil,omitempty" name:"CertUsage"`
+
+	// <p>证书私钥</p>
 	//
 	// Deprecated: Key is deprecated.
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
-	// 证书pem格式
+	// <p>证书pem格式</p>
 	//
 	// Deprecated: Crt is deprecated.
 	Crt *string `json:"Crt,omitnil,omitempty" name:"Crt"`
@@ -2061,22 +2288,28 @@ type CreateCloudNativeAPIGatewayCertificateRequestParams struct {
 type CreateCloudNativeAPIGatewayCertificateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 网关ID
+	// <p>网关ID</p>
 	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
 
-	// 绑定的域名
-	BindDomains []*string `json:"BindDomains,omitnil,omitempty" name:"BindDomains"`
-
-	// ssl平台证书 Id
+	// <p>ssl平台证书 Id</p>
 	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
 
-	// 证书名称
+	// <p>绑定的域名</p>
+	BindDomains []*string `json:"BindDomains,omitnil,omitempty" name:"BindDomains"`
+
+	// <p>证书名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 证书私钥
+	// <p>证书类型</p><p>枚举值：</p><ul><li>SVR： 服务证书</li><li>CA： CA证书</li></ul>
+	CertType *string `json:"CertType,omitnil,omitempty" name:"CertType"`
+
+	// <p>证书用途</p><p>枚举值：</p><ul><li>SERVER： 用作服务端证书</li><li>CLIENT： 用作客户端证书</li></ul>
+	CertUsage *string `json:"CertUsage,omitnil,omitempty" name:"CertUsage"`
+
+	// <p>证书私钥</p>
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
-	// 证书pem格式
+	// <p>证书pem格式</p>
 	Crt *string `json:"Crt,omitnil,omitempty" name:"Crt"`
 }
 
@@ -2093,9 +2326,11 @@ func (r *CreateCloudNativeAPIGatewayCertificateRequest) FromJsonString(s string)
 		return err
 	}
 	delete(f, "GatewayId")
-	delete(f, "BindDomains")
 	delete(f, "CertId")
+	delete(f, "BindDomains")
 	delete(f, "Name")
+	delete(f, "CertType")
+	delete(f, "CertUsage")
 	delete(f, "Key")
 	delete(f, "Crt")
 	if len(f) > 0 {
@@ -2106,7 +2341,7 @@ func (r *CreateCloudNativeAPIGatewayCertificateRequest) FromJsonString(s string)
 
 // Predefined struct for user
 type CreateCloudNativeAPIGatewayCertificateResponseParams struct {
-	// 创建证书结果
+	// <p>创建证书结果</p>
 	Result *CertificateInfo `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2209,11 +2444,14 @@ func (r *CreateCloudNativeAPIGatewayConsumerGroupResponse) FromJsonString(s stri
 
 // Predefined struct for user
 type CreateCloudNativeAPIGatewayConsumerRequestParams struct {
-	// 网关实例id
+	// <p>网关实例id</p>
 	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
 
 	// <p>消费者名称，最长 60 字符。同一网关下唯一。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>消费者优先级，默认medium</p><p>枚举值：</p><ul><li>Low： 低优先级</li><li>Medium： 中优先级</li><li>High： 高优先级</li></ul>
+	Priority *string `json:"Priority,omitnil,omitempty" name:"Priority"`
 
 	// <p>消费者描述。最长 200 字符。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
@@ -2222,11 +2460,14 @@ type CreateCloudNativeAPIGatewayConsumerRequestParams struct {
 type CreateCloudNativeAPIGatewayConsumerRequest struct {
 	*tchttp.BaseRequest
 	
-	// 网关实例id
+	// <p>网关实例id</p>
 	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
 
 	// <p>消费者名称，最长 60 字符。同一网关下唯一。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>消费者优先级，默认medium</p><p>枚举值：</p><ul><li>Low： 低优先级</li><li>Medium： 中优先级</li><li>High： 高优先级</li></ul>
+	Priority *string `json:"Priority,omitnil,omitempty" name:"Priority"`
 
 	// <p>消费者描述。最长 200 字符。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
@@ -2246,6 +2487,7 @@ func (r *CreateCloudNativeAPIGatewayConsumerRequest) FromJsonString(s string) er
 	}
 	delete(f, "GatewayId")
 	delete(f, "Name")
+	delete(f, "Priority")
 	delete(f, "Description")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCloudNativeAPIGatewayConsumerRequest has unknown keys!", "")
@@ -2283,44 +2525,50 @@ type CreateCloudNativeAPIGatewayLLMModelAPIRequestParams struct {
 	// <p>网关 id。</p>
 	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
 
-	// <p>模型 API 名称，最长 60 字符。同一网关下唯一。</p>
+	// <p>AI 网关 LLM 模型 API 的唯一标识名称，格式规则：2-50 字符，支持中英文大小写、数字及分隔符（“-”、“_”)，不能以数字和分隔符开头，不能以分隔符结尾。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// <p>业务场景。</p><p>枚举值：</p><ul><li>Chat：聊天</li><li>Image：图像（需要网关版本 ≥ 3.9.3）</li></ul>
+	// <p>选择业务场景,  选项：Chat（聊天）。</p>
 	SceneType *string `json:"SceneType,omitnil,omitempty" name:"SceneType"`
 
-	// <p>请求协议（小写）。当前仅支持：</p><ul><li>openai</li></ul>
+	// <p>业务场景对应的请求协议，选项：OpenAI（目前只支持 OpenAI）。</p>
 	RequestProtocol *string `json:"RequestProtocol,omitnil,omitempty" name:"RequestProtocol"`
 
-	// <p>关联的模型服务 ID 列表，长度 1-10。</p><p>注：字段名建议改为 ModelServiceIds，当前保留用于兼容。</p>
+	// <p>初始化关联的模型服务列表。</p>
 	ListModelServiceId []*string `json:"ListModelServiceId,omitnil,omitempty" name:"ListModelServiceId"`
 
-	// <p>路由列表，至少 1 条。每条包含 Methods/Paths/Hosts 等 Kong 路由属性。</p>
+	// <p>路由列表</p>
 	RouteList []*DefaultKongRoute `json:"RouteList,omitnil,omitempty" name:"RouteList"`
 
-	// <p>统一前缀路径（可选）。例如 /v1/openai。</p>
+	// <p>为API设置统一的前缀，格式：以/开头，支持字母、数字、短横线。</p>
 	BasePath *string `json:"BasePath,omitnil,omitempty" name:"BasePath"`
 
-	// <p>模型 API 描述。最长 200 字符。</p>
+	// <p>模型 API 的相关描述。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// <p>多模型服务路由策略。ListModelServiceId 多于 1 项时必填。</p>
+	// <p>模型服务路由策略（是指如何路由到模型服务）</p>
 	ModelServiceRoute *CloudNativeAPIGatewayLLMModelServiceRoute `json:"ModelServiceRoute,omitnil,omitempty" name:"ModelServiceRoute"`
 
-	// <p>Header 路由匹配规则。当前仅支持 Operator=exact。</p>
+	// <p>路由 Header 匹配规则</p>
 	MatchHeaders []*AIGWKVMatch `json:"MatchHeaders,omitnil,omitempty" name:"MatchHeaders"`
 
-	// <p>是否启用跨服务 Fallback。开启后需提供 CrossServiceFallbackConfig。</p>
+	// <p>跨服务 fallback 开关</p>
 	EnableCrossServiceFallback *bool `json:"EnableCrossServiceFallback,omitnil,omitempty" name:"EnableCrossServiceFallback"`
 
-	// <p>跨服务 Fallback 配置。EnableCrossServiceFallback=true 时必填。</p>
+	// <p>跨服务 fallback 配置</p>
 	CrossServiceFallbackConfig *AIGWCrossServiceFallbackConfig `json:"CrossServiceFallbackConfig,omitnil,omitempty" name:"CrossServiceFallbackConfig"`
 
-	// <p>标签过滤策略。需要网关版本 ≥ 3.9.4。</p>
+	// <p>标签</p>
 	TagFilter *AIGWTagFilter `json:"TagFilter,omitnil,omitempty" name:"TagFilter"`
 
-	// <p>日志输出配置（请求/响应 payload 落 LLM Log）。需要网关版本 ≥ 3.9.4。</p>
+	// <p>模型 API 日志配置。未传时使用默认日志配置。</p>
 	LogConfig *AIGWLogConfig `json:"LogConfig,omitnil,omitempty" name:"LogConfig"`
+
+	// <p>Rerank场景最大文档数限制</p>
+	MaxDocumentsConfig *AIGWRerankMaxDocumentsConfig `json:"MaxDocumentsConfig,omitnil,omitempty" name:"MaxDocumentsConfig"`
+
+	// <p>敏感词路由配置</p>
+	SensitiveWordRoute *AIGWSensitiveWordRoute `json:"SensitiveWordRoute,omitnil,omitempty" name:"SensitiveWordRoute"`
 }
 
 type CreateCloudNativeAPIGatewayLLMModelAPIRequest struct {
@@ -2329,44 +2577,50 @@ type CreateCloudNativeAPIGatewayLLMModelAPIRequest struct {
 	// <p>网关 id。</p>
 	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
 
-	// <p>模型 API 名称，最长 60 字符。同一网关下唯一。</p>
+	// <p>AI 网关 LLM 模型 API 的唯一标识名称，格式规则：2-50 字符，支持中英文大小写、数字及分隔符（“-”、“_”)，不能以数字和分隔符开头，不能以分隔符结尾。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// <p>业务场景。</p><p>枚举值：</p><ul><li>Chat：聊天</li><li>Image：图像（需要网关版本 ≥ 3.9.3）</li></ul>
+	// <p>选择业务场景,  选项：Chat（聊天）。</p>
 	SceneType *string `json:"SceneType,omitnil,omitempty" name:"SceneType"`
 
-	// <p>请求协议（小写）。当前仅支持：</p><ul><li>openai</li></ul>
+	// <p>业务场景对应的请求协议，选项：OpenAI（目前只支持 OpenAI）。</p>
 	RequestProtocol *string `json:"RequestProtocol,omitnil,omitempty" name:"RequestProtocol"`
 
-	// <p>关联的模型服务 ID 列表，长度 1-10。</p><p>注：字段名建议改为 ModelServiceIds，当前保留用于兼容。</p>
+	// <p>初始化关联的模型服务列表。</p>
 	ListModelServiceId []*string `json:"ListModelServiceId,omitnil,omitempty" name:"ListModelServiceId"`
 
-	// <p>路由列表，至少 1 条。每条包含 Methods/Paths/Hosts 等 Kong 路由属性。</p>
+	// <p>路由列表</p>
 	RouteList []*DefaultKongRoute `json:"RouteList,omitnil,omitempty" name:"RouteList"`
 
-	// <p>统一前缀路径（可选）。例如 /v1/openai。</p>
+	// <p>为API设置统一的前缀，格式：以/开头，支持字母、数字、短横线。</p>
 	BasePath *string `json:"BasePath,omitnil,omitempty" name:"BasePath"`
 
-	// <p>模型 API 描述。最长 200 字符。</p>
+	// <p>模型 API 的相关描述。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// <p>多模型服务路由策略。ListModelServiceId 多于 1 项时必填。</p>
+	// <p>模型服务路由策略（是指如何路由到模型服务）</p>
 	ModelServiceRoute *CloudNativeAPIGatewayLLMModelServiceRoute `json:"ModelServiceRoute,omitnil,omitempty" name:"ModelServiceRoute"`
 
-	// <p>Header 路由匹配规则。当前仅支持 Operator=exact。</p>
+	// <p>路由 Header 匹配规则</p>
 	MatchHeaders []*AIGWKVMatch `json:"MatchHeaders,omitnil,omitempty" name:"MatchHeaders"`
 
-	// <p>是否启用跨服务 Fallback。开启后需提供 CrossServiceFallbackConfig。</p>
+	// <p>跨服务 fallback 开关</p>
 	EnableCrossServiceFallback *bool `json:"EnableCrossServiceFallback,omitnil,omitempty" name:"EnableCrossServiceFallback"`
 
-	// <p>跨服务 Fallback 配置。EnableCrossServiceFallback=true 时必填。</p>
+	// <p>跨服务 fallback 配置</p>
 	CrossServiceFallbackConfig *AIGWCrossServiceFallbackConfig `json:"CrossServiceFallbackConfig,omitnil,omitempty" name:"CrossServiceFallbackConfig"`
 
-	// <p>标签过滤策略。需要网关版本 ≥ 3.9.4。</p>
+	// <p>标签</p>
 	TagFilter *AIGWTagFilter `json:"TagFilter,omitnil,omitempty" name:"TagFilter"`
 
-	// <p>日志输出配置（请求/响应 payload 落 LLM Log）。需要网关版本 ≥ 3.9.4。</p>
+	// <p>模型 API 日志配置。未传时使用默认日志配置。</p>
 	LogConfig *AIGWLogConfig `json:"LogConfig,omitnil,omitempty" name:"LogConfig"`
+
+	// <p>Rerank场景最大文档数限制</p>
+	MaxDocumentsConfig *AIGWRerankMaxDocumentsConfig `json:"MaxDocumentsConfig,omitnil,omitempty" name:"MaxDocumentsConfig"`
+
+	// <p>敏感词路由配置</p>
+	SensitiveWordRoute *AIGWSensitiveWordRoute `json:"SensitiveWordRoute,omitnil,omitempty" name:"SensitiveWordRoute"`
 }
 
 func (r *CreateCloudNativeAPIGatewayLLMModelAPIRequest) ToJsonString() string {
@@ -2395,6 +2649,8 @@ func (r *CreateCloudNativeAPIGatewayLLMModelAPIRequest) FromJsonString(s string)
 	delete(f, "CrossServiceFallbackConfig")
 	delete(f, "TagFilter")
 	delete(f, "LogConfig")
+	delete(f, "MaxDocumentsConfig")
+	delete(f, "SensitiveWordRoute")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCloudNativeAPIGatewayLLMModelAPIRequest has unknown keys!", "")
 	}
@@ -2526,6 +2782,9 @@ type CreateCloudNativeAPIGatewayLLMModelServiceRequestParams struct {
 
 	// <p>外部服务来源ID</p>
 	ExternalInstanceId *string `json:"ExternalInstanceId,omitnil,omitempty" name:"ExternalInstanceId"`
+
+	// <p>负载均衡配置</p>
+	LoadBalanceConfig *AIGWLoadBalanceConfig `json:"LoadBalanceConfig,omitnil,omitempty" name:"LoadBalanceConfig"`
 }
 
 type CreateCloudNativeAPIGatewayLLMModelServiceRequest struct {
@@ -2626,6 +2885,9 @@ type CreateCloudNativeAPIGatewayLLMModelServiceRequest struct {
 
 	// <p>外部服务来源ID</p>
 	ExternalInstanceId *string `json:"ExternalInstanceId,omitnil,omitempty" name:"ExternalInstanceId"`
+
+	// <p>负载均衡配置</p>
+	LoadBalanceConfig *AIGWLoadBalanceConfig `json:"LoadBalanceConfig,omitnil,omitempty" name:"LoadBalanceConfig"`
 }
 
 func (r *CreateCloudNativeAPIGatewayLLMModelServiceRequest) ToJsonString() string {
@@ -2672,6 +2934,7 @@ func (r *CreateCloudNativeAPIGatewayLLMModelServiceRequest) FromJsonString(s str
 	delete(f, "KeyRotationEnabled")
 	delete(f, "KeyRotationPeriodDays")
 	delete(f, "ExternalInstanceId")
+	delete(f, "LoadBalanceConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCloudNativeAPIGatewayLLMModelServiceRequest has unknown keys!", "")
 	}
@@ -3269,6 +3532,24 @@ type CreateCloudNativeAPIGatewaySecretKeyRequestParams struct {
 	// <p>OIDC凭证配置</p>
 	OIDCCredentialConfig *AIGWOIDCCredentialConfig `json:"OIDCCredentialConfig,omitnil,omitempty" name:"OIDCCredentialConfig"`
 
+	// <p>AK/SK凭证配置</p>
+	AKSKCredentialConfig *AIGWAKSKCredentialConfig `json:"AKSKCredentialConfig,omitnil,omitempty" name:"AKSKCredentialConfig"`
+
+	// <p>CAM凭证配置</p>
+	CAMCredentialConfig *AIGWCAMCredentialConfig `json:"CAMCredentialConfig,omitnil,omitempty" name:"CAMCredentialConfig"`
+
+	// <p>Bearer Token凭证配置</p>
+	BearerTokenCredentialConfig *AIGWBearerTokenCredentialConfig `json:"BearerTokenCredentialConfig,omitnil,omitempty" name:"BearerTokenCredentialConfig"`
+
+	// <p>自定义Header凭证配置</p>
+	CustomHeaderCredentialConfig *AIGWCustomHeaderCredentialConfig `json:"CustomHeaderCredentialConfig,omitnil,omitempty" name:"CustomHeaderCredentialConfig"`
+
+	// <p>自定义Query参数凭证配置</p>
+	QueryParamCredentialConfig *AIGWQueryParamCredentialConfig `json:"QueryParamCredentialConfig,omitnil,omitempty" name:"QueryParamCredentialConfig"`
+
+	// <p>Basic Auth凭证配置</p>
+	BasicCredentialConfig *AIGWBasicCredentialConfig `json:"BasicCredentialConfig,omitnil,omitempty" name:"BasicCredentialConfig"`
+
 	// <p>第三方平台类型</p><p>枚举值：</p><ul><li>Dify： Dify平台</li></ul>
 	Provider *string `json:"Provider,omitnil,omitempty" name:"Provider"`
 }
@@ -3312,6 +3593,24 @@ type CreateCloudNativeAPIGatewaySecretKeyRequest struct {
 	// <p>OIDC凭证配置</p>
 	OIDCCredentialConfig *AIGWOIDCCredentialConfig `json:"OIDCCredentialConfig,omitnil,omitempty" name:"OIDCCredentialConfig"`
 
+	// <p>AK/SK凭证配置</p>
+	AKSKCredentialConfig *AIGWAKSKCredentialConfig `json:"AKSKCredentialConfig,omitnil,omitempty" name:"AKSKCredentialConfig"`
+
+	// <p>CAM凭证配置</p>
+	CAMCredentialConfig *AIGWCAMCredentialConfig `json:"CAMCredentialConfig,omitnil,omitempty" name:"CAMCredentialConfig"`
+
+	// <p>Bearer Token凭证配置</p>
+	BearerTokenCredentialConfig *AIGWBearerTokenCredentialConfig `json:"BearerTokenCredentialConfig,omitnil,omitempty" name:"BearerTokenCredentialConfig"`
+
+	// <p>自定义Header凭证配置</p>
+	CustomHeaderCredentialConfig *AIGWCustomHeaderCredentialConfig `json:"CustomHeaderCredentialConfig,omitnil,omitempty" name:"CustomHeaderCredentialConfig"`
+
+	// <p>自定义Query参数凭证配置</p>
+	QueryParamCredentialConfig *AIGWQueryParamCredentialConfig `json:"QueryParamCredentialConfig,omitnil,omitempty" name:"QueryParamCredentialConfig"`
+
+	// <p>Basic Auth凭证配置</p>
+	BasicCredentialConfig *AIGWBasicCredentialConfig `json:"BasicCredentialConfig,omitnil,omitempty" name:"BasicCredentialConfig"`
+
 	// <p>第三方平台类型</p><p>枚举值：</p><ul><li>Dify： Dify平台</li></ul>
 	Provider *string `json:"Provider,omitnil,omitempty" name:"Provider"`
 }
@@ -3340,6 +3639,12 @@ func (r *CreateCloudNativeAPIGatewaySecretKeyRequest) FromJsonString(s string) e
 	delete(f, "JWTCredentialConfig")
 	delete(f, "OAuthCredentialConfig")
 	delete(f, "OIDCCredentialConfig")
+	delete(f, "AKSKCredentialConfig")
+	delete(f, "CAMCredentialConfig")
+	delete(f, "BearerTokenCredentialConfig")
+	delete(f, "CustomHeaderCredentialConfig")
+	delete(f, "QueryParamCredentialConfig")
+	delete(f, "BasicCredentialConfig")
 	delete(f, "Provider")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCloudNativeAPIGatewaySecretKeyRequest has unknown keys!", "")
@@ -7482,33 +7787,45 @@ func (r *DescribeCloudNativeAPIGatewayCertificateDetailsResponse) FromJsonString
 
 // Predefined struct for user
 type DescribeCloudNativeAPIGatewayCertificatesRequestParams struct {
-	// 网关ID
+	// <p>网关ID</p>
 	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
 
-	// 列表数量
+	// <p>列表数量</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 列表offset
+	// <p>列表offset</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 过滤条件，多个过滤条件之间是与的关系，支持BindDomain ，Name
+	// <p>过滤条件，多个过滤条件之间是与的关系，支持BindDomain ，Name</p>
 	Filters []*ListFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>证书类型</p><p>枚举值：</p><ul><li>SVR： 服务证书</li><li>CA： CA证书</li></ul>
+	CertType *string `json:"CertType,omitnil,omitempty" name:"CertType"`
+
+	// <p>证书用途</p><p>枚举值：</p><ul><li>SERVER： 用作服务端证书</li><li>CLIENT： 用作客户端证书</li></ul>
+	CertUsage *string `json:"CertUsage,omitnil,omitempty" name:"CertUsage"`
 }
 
 type DescribeCloudNativeAPIGatewayCertificatesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 网关ID
+	// <p>网关ID</p>
 	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
 
-	// 列表数量
+	// <p>列表数量</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 列表offset
+	// <p>列表offset</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 过滤条件，多个过滤条件之间是与的关系，支持BindDomain ，Name
+	// <p>过滤条件，多个过滤条件之间是与的关系，支持BindDomain ，Name</p>
 	Filters []*ListFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>证书类型</p><p>枚举值：</p><ul><li>SVR： 服务证书</li><li>CA： CA证书</li></ul>
+	CertType *string `json:"CertType,omitnil,omitempty" name:"CertType"`
+
+	// <p>证书用途</p><p>枚举值：</p><ul><li>SERVER： 用作服务端证书</li><li>CLIENT： 用作客户端证书</li></ul>
+	CertUsage *string `json:"CertUsage,omitnil,omitempty" name:"CertUsage"`
 }
 
 func (r *DescribeCloudNativeAPIGatewayCertificatesRequest) ToJsonString() string {
@@ -7527,6 +7844,8 @@ func (r *DescribeCloudNativeAPIGatewayCertificatesRequest) FromJsonString(s stri
 	delete(f, "Limit")
 	delete(f, "Offset")
 	delete(f, "Filters")
+	delete(f, "CertType")
+	delete(f, "CertUsage")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCloudNativeAPIGatewayCertificatesRequest has unknown keys!", "")
 	}
@@ -7535,7 +7854,7 @@ func (r *DescribeCloudNativeAPIGatewayCertificatesRequest) FromJsonString(s stri
 
 // Predefined struct for user
 type DescribeCloudNativeAPIGatewayCertificatesResponseParams struct {
-	// 无
+	// <p>无</p>
 	Result *KongCertificatesList `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -13084,40 +13403,47 @@ type KongCertificatesList struct {
 }
 
 type KongCertificatesPreview struct {
-	// 证书名称
+	// <p>证书名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// Id
+	// <p>Id</p>
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 绑定的域名
+	// <p>绑定的域名</p>
 	BindDomains []*string `json:"BindDomains,omitnil,omitempty" name:"BindDomains"`
 
-	// 证书状态：expired(已过期)
-	//                    active(生效中)
+	// <p>证书状态：expired(已过期)<br>                   active(生效中)</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 证书pem格式
+	// <p>证书pem格式</p>
 	Crt *string `json:"Crt,omitnil,omitempty" name:"Crt"`
 
-	// 证书私钥
+	// <p>证书私钥</p>
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
-	// 证书过期时间
+	// <p>证书过期时间</p>
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
-	// 证书上传时间
+	// <p>证书上传时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 证书签发时间
+	// <p>证书签发时间</p>
 	IssueTime *string `json:"IssueTime,omitnil,omitempty" name:"IssueTime"`
 
-	// 证书来源：native(kong自定义证书)
-	//                     ssl(ssl平台证书)
+	// <p>证书来源：native(kong自定义证书)<br>                    ssl(ssl平台证书)</p>
 	CertSource *string `json:"CertSource,omitnil,omitempty" name:"CertSource"`
 
-	// ssl平台证书Id
+	// <p>ssl平台证书Id</p>
 	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
+
+	// <p>证书类型</p><p>枚举值：</p><ul><li>SVR： 服务证书</li><li>CA： CA证书</li></ul>
+	CertType *string `json:"CertType,omitnil,omitempty" name:"CertType"`
+
+	// <p>证书用途</p><p>枚举值：</p><ul><li>SERVER： 用作服务端证书</li><li>CLIENT： 用作客户端证书</li></ul>
+	CertUsage *string `json:"CertUsage,omitnil,omitempty" name:"CertUsage"`
+
+	// <p>证书被引用的次数</p>
+	ReferCount *uint64 `json:"ReferCount,omitnil,omitempty" name:"ReferCount"`
 }
 
 type KongPassiveHealthCheck struct {
@@ -13938,7 +14264,7 @@ func (r *ModifyCloudNativeAPIGatewayConsumerGroupResponse) FromJsonString(s stri
 
 // Predefined struct for user
 type ModifyCloudNativeAPIGatewayConsumerRequestParams struct {
-	// 网关实例id
+	// <p>网关实例id</p>
 	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
 
 	// <p>消费者 ID。</p>
@@ -13946,6 +14272,9 @@ type ModifyCloudNativeAPIGatewayConsumerRequestParams struct {
 
 	// <p>消费者名称，最长 60 字符。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>优先级，默认Medium</p><p>枚举值：</p><ul><li>Low： 低优先级</li><li>Medium： 中优先级</li><li>High： 高优先级</li></ul>
+	Priority *string `json:"Priority,omitnil,omitempty" name:"Priority"`
 
 	// <p>消费者描述。最长 200 字符。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
@@ -13954,7 +14283,7 @@ type ModifyCloudNativeAPIGatewayConsumerRequestParams struct {
 type ModifyCloudNativeAPIGatewayConsumerRequest struct {
 	*tchttp.BaseRequest
 	
-	// 网关实例id
+	// <p>网关实例id</p>
 	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
 
 	// <p>消费者 ID。</p>
@@ -13962,6 +14291,9 @@ type ModifyCloudNativeAPIGatewayConsumerRequest struct {
 
 	// <p>消费者名称，最长 60 字符。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>优先级，默认Medium</p><p>枚举值：</p><ul><li>Low： 低优先级</li><li>Medium： 中优先级</li><li>High： 高优先级</li></ul>
+	Priority *string `json:"Priority,omitnil,omitempty" name:"Priority"`
 
 	// <p>消费者描述。最长 200 字符。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
@@ -13982,6 +14314,7 @@ func (r *ModifyCloudNativeAPIGatewayConsumerRequest) FromJsonString(s string) er
 	delete(f, "GatewayId")
 	delete(f, "ConsumerId")
 	delete(f, "Name")
+	delete(f, "Priority")
 	delete(f, "Description")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCloudNativeAPIGatewayConsumerRequest has unknown keys!", "")
@@ -14019,35 +14352,41 @@ type ModifyCloudNativeAPIGatewayLLMModelAPIRequestParams struct {
 	// <p>模型 API ID，全局唯一标识。</p>
 	ModelAPIId *string `json:"ModelAPIId,omitnil,omitempty" name:"ModelAPIId"`
 
-	// <p>模型 API 名称，最长 60 字符。</p>
+	// <p>修改模型 API 名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// <p>统一前缀路径（可选）。例如 /v1/openai。</p>
+	// <p>为API设置统一的前缀，格式：以/开头，支持字母、数字、短横线。</p>
 	BasePath *string `json:"BasePath,omitnil,omitempty" name:"BasePath"`
 
-	// <p>模型 API 描述。最长 200 字符。</p>
+	// <p>模型 API 的相关描述。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// <p>关联的模型服务 ID 列表，长度 1-10。</p>
+	// <p>关联的模型服务列表（支持填多个模型服务）</p>
 	ListModelServiceId []*string `json:"ListModelServiceId,omitnil,omitempty" name:"ListModelServiceId"`
 
-	// <p>多模型服务路由策略。ListModelServiceId 多于 1 项时必填。</p>
+	// <p>模型服务路由策略（是指如何路由到模型服务）</p>
 	ModelServiceRoute *CloudNativeAPIGatewayLLMModelServiceRoute `json:"ModelServiceRoute,omitnil,omitempty" name:"ModelServiceRoute"`
 
-	// <p>Header 路由匹配规则。当前仅支持 Operator=exact。</p>
+	// <p>headers 路由匹配</p>
 	MatchHeaders []*AIGWKVMatch `json:"MatchHeaders,omitnil,omitempty" name:"MatchHeaders"`
 
-	// <p>是否启用跨服务 Fallback。</p>
+	// <p>跨服务 fallback</p>
 	EnableCrossServiceFallback *bool `json:"EnableCrossServiceFallback,omitnil,omitempty" name:"EnableCrossServiceFallback"`
 
-	// <p>跨服务 Fallback 配置。EnableCrossServiceFallback=true 时必填。</p>
+	// <p>跨服务 fallback 配置</p>
 	CrossServiceFallbackConfig *AIGWCrossServiceFallbackConfig `json:"CrossServiceFallbackConfig,omitnil,omitempty" name:"CrossServiceFallbackConfig"`
 
-	// <p>标签过滤策略。需要网关版本 ≥ 3.9.4。</p>
+	// <p>标签</p>
 	TagFilter *AIGWTagFilter `json:"TagFilter,omitnil,omitempty" name:"TagFilter"`
 
-	// <p>日志输出配置。需要网关版本 ≥ 3.9.4。</p>
+	// <p>模型 API 日志配置</p>
 	LogConfig *AIGWLogConfig `json:"LogConfig,omitnil,omitempty" name:"LogConfig"`
+
+	// <p>Rerank场景最大文档数配置</p>
+	MaxDocumentsConfig *AIGWRerankMaxDocumentsConfig `json:"MaxDocumentsConfig,omitnil,omitempty" name:"MaxDocumentsConfig"`
+
+	// <p>敏感词路由配置</p>
+	SensitiveWordRoute *AIGWSensitiveWordRoute `json:"SensitiveWordRoute,omitnil,omitempty" name:"SensitiveWordRoute"`
 }
 
 type ModifyCloudNativeAPIGatewayLLMModelAPIRequest struct {
@@ -14059,35 +14398,41 @@ type ModifyCloudNativeAPIGatewayLLMModelAPIRequest struct {
 	// <p>模型 API ID，全局唯一标识。</p>
 	ModelAPIId *string `json:"ModelAPIId,omitnil,omitempty" name:"ModelAPIId"`
 
-	// <p>模型 API 名称，最长 60 字符。</p>
+	// <p>修改模型 API 名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// <p>统一前缀路径（可选）。例如 /v1/openai。</p>
+	// <p>为API设置统一的前缀，格式：以/开头，支持字母、数字、短横线。</p>
 	BasePath *string `json:"BasePath,omitnil,omitempty" name:"BasePath"`
 
-	// <p>模型 API 描述。最长 200 字符。</p>
+	// <p>模型 API 的相关描述。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// <p>关联的模型服务 ID 列表，长度 1-10。</p>
+	// <p>关联的模型服务列表（支持填多个模型服务）</p>
 	ListModelServiceId []*string `json:"ListModelServiceId,omitnil,omitempty" name:"ListModelServiceId"`
 
-	// <p>多模型服务路由策略。ListModelServiceId 多于 1 项时必填。</p>
+	// <p>模型服务路由策略（是指如何路由到模型服务）</p>
 	ModelServiceRoute *CloudNativeAPIGatewayLLMModelServiceRoute `json:"ModelServiceRoute,omitnil,omitempty" name:"ModelServiceRoute"`
 
-	// <p>Header 路由匹配规则。当前仅支持 Operator=exact。</p>
+	// <p>headers 路由匹配</p>
 	MatchHeaders []*AIGWKVMatch `json:"MatchHeaders,omitnil,omitempty" name:"MatchHeaders"`
 
-	// <p>是否启用跨服务 Fallback。</p>
+	// <p>跨服务 fallback</p>
 	EnableCrossServiceFallback *bool `json:"EnableCrossServiceFallback,omitnil,omitempty" name:"EnableCrossServiceFallback"`
 
-	// <p>跨服务 Fallback 配置。EnableCrossServiceFallback=true 时必填。</p>
+	// <p>跨服务 fallback 配置</p>
 	CrossServiceFallbackConfig *AIGWCrossServiceFallbackConfig `json:"CrossServiceFallbackConfig,omitnil,omitempty" name:"CrossServiceFallbackConfig"`
 
-	// <p>标签过滤策略。需要网关版本 ≥ 3.9.4。</p>
+	// <p>标签</p>
 	TagFilter *AIGWTagFilter `json:"TagFilter,omitnil,omitempty" name:"TagFilter"`
 
-	// <p>日志输出配置。需要网关版本 ≥ 3.9.4。</p>
+	// <p>模型 API 日志配置</p>
 	LogConfig *AIGWLogConfig `json:"LogConfig,omitnil,omitempty" name:"LogConfig"`
+
+	// <p>Rerank场景最大文档数配置</p>
+	MaxDocumentsConfig *AIGWRerankMaxDocumentsConfig `json:"MaxDocumentsConfig,omitnil,omitempty" name:"MaxDocumentsConfig"`
+
+	// <p>敏感词路由配置</p>
+	SensitiveWordRoute *AIGWSensitiveWordRoute `json:"SensitiveWordRoute,omitnil,omitempty" name:"SensitiveWordRoute"`
 }
 
 func (r *ModifyCloudNativeAPIGatewayLLMModelAPIRequest) ToJsonString() string {
@@ -14114,6 +14459,8 @@ func (r *ModifyCloudNativeAPIGatewayLLMModelAPIRequest) FromJsonString(s string)
 	delete(f, "CrossServiceFallbackConfig")
 	delete(f, "TagFilter")
 	delete(f, "LogConfig")
+	delete(f, "MaxDocumentsConfig")
+	delete(f, "SensitiveWordRoute")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCloudNativeAPIGatewayLLMModelAPIRequest has unknown keys!", "")
 	}
@@ -14122,7 +14469,7 @@ func (r *ModifyCloudNativeAPIGatewayLLMModelAPIRequest) FromJsonString(s string)
 
 // Predefined struct for user
 type ModifyCloudNativeAPIGatewayLLMModelAPIResponseParams struct {
-	// <p>是否成功。</p>
+	// <p>是否成功</p>
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -14230,6 +14577,12 @@ type ModifyCloudNativeAPIGatewayLLMModelServiceRequestParams struct {
 
 	// <p>外部服务来源ID</p>
 	ExternalInstanceId *string `json:"ExternalInstanceId,omitnil,omitempty" name:"ExternalInstanceId"`
+
+	// <p>自定义供应商名称</p><p>仅当Provider值为&quot;custom&quot;时允许填写</p>
+	CustomProviderName *string `json:"CustomProviderName,omitnil,omitempty" name:"CustomProviderName"`
+
+	// <p>负载均衡配置</p>
+	LoadBalanceConfig *AIGWLoadBalanceConfig `json:"LoadBalanceConfig,omitnil,omitempty" name:"LoadBalanceConfig"`
 }
 
 type ModifyCloudNativeAPIGatewayLLMModelServiceRequest struct {
@@ -14318,6 +14671,12 @@ type ModifyCloudNativeAPIGatewayLLMModelServiceRequest struct {
 
 	// <p>外部服务来源ID</p>
 	ExternalInstanceId *string `json:"ExternalInstanceId,omitnil,omitempty" name:"ExternalInstanceId"`
+
+	// <p>自定义供应商名称</p><p>仅当Provider值为&quot;custom&quot;时允许填写</p>
+	CustomProviderName *string `json:"CustomProviderName,omitnil,omitempty" name:"CustomProviderName"`
+
+	// <p>负载均衡配置</p>
+	LoadBalanceConfig *AIGWLoadBalanceConfig `json:"LoadBalanceConfig,omitnil,omitempty" name:"LoadBalanceConfig"`
 }
 
 func (r *ModifyCloudNativeAPIGatewayLLMModelServiceRequest) ToJsonString() string {
@@ -14360,6 +14719,8 @@ func (r *ModifyCloudNativeAPIGatewayLLMModelServiceRequest) FromJsonString(s str
 	delete(f, "KeyRotationEnabled")
 	delete(f, "KeyRotationPeriodDays")
 	delete(f, "ExternalInstanceId")
+	delete(f, "CustomProviderName")
+	delete(f, "LoadBalanceConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCloudNativeAPIGatewayLLMModelServiceRequest has unknown keys!", "")
 	}

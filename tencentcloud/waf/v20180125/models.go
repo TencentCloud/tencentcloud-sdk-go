@@ -14587,6 +14587,70 @@ type DownloadAttackRecordInfo struct {
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 }
 
+// Predefined struct for user
+type EnableClientMsgRequestParams struct {
+	// 0表示关闭1表示开启
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+}
+
+type EnableClientMsgRequest struct {
+	*tchttp.BaseRequest
+	
+	// 0表示关闭1表示开启
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+}
+
+func (r *EnableClientMsgRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *EnableClientMsgRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Status")
+	delete(f, "Domain")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EnableClientMsgRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type EnableClientMsgResponseParams struct {
+	// 0：成功，1：失败
+	RetCode *int64 `json:"RetCode,omitnil,omitempty" name:"RetCode"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type EnableClientMsgResponse struct {
+	*tchttp.BaseResponse
+	Response *EnableClientMsgResponseParams `json:"Response"`
+}
+
+func (r *EnableClientMsgResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *EnableClientMsgResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type EnableLimitRuleItem struct {
 	// 规则ID
 	LimitRuleId *int64 `json:"LimitRuleId,omitnil,omitempty" name:"LimitRuleId"`
@@ -22751,6 +22815,63 @@ func (r *QueryBypassAllStatusResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *QueryBypassAllStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type QueryClientMsgRequestParams struct {
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+}
+
+type QueryClientMsgRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+}
+
+func (r *QueryClientMsgRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryClientMsgRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryClientMsgRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type QueryClientMsgResponseParams struct {
+	// 0表示关闭，1表示开启
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type QueryClientMsgResponse struct {
+	*tchttp.BaseResponse
+	Response *QueryClientMsgResponseParams `json:"Response"`
+}
+
+func (r *QueryClientMsgResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryClientMsgResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

@@ -3313,10 +3313,10 @@ type DeployResourceRequestParams struct {
 	// <p>需要开通服务的VPC</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// <p>需要开通服务的子网ID</p>
+	// <p>需要开通服务的子网ID，此字段即将废除，请填写DeploySubnets包含的子网</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// <p>需要开通服务的子网网段</p>
+	// <p>需要开通服务的子网网段，此字段即将废除，请填写DeploySubnets包含的子网</p>
 	CidrBlock *string `json:"CidrBlock,omitnil,omitempty" name:"CidrBlock"`
 
 	// <p>需要开通服务的VPC名称</p>
@@ -3325,7 +3325,7 @@ type DeployResourceRequestParams struct {
 	// <p>需要开通服务的VPC对应的网段</p>
 	VpcCidrBlock *string `json:"VpcCidrBlock,omitnil,omitempty" name:"VpcCidrBlock"`
 
-	// <p>需要开通服务的子网名称</p>
+	// <p>需要开通服务的子网名称，此字段即将废除，请填写DeploySubnets包含的子网</p>
 	SubnetName *string `json:"SubnetName,omitnil,omitempty" name:"SubnetName"`
 
 	// <p>需要开通实例所属的CDC集群ID</p>
@@ -3346,7 +3346,7 @@ type DeployResourceRequestParams struct {
 	// <p>0-关闭公网访问堡垒机，1-开启公网访问堡垒机</p>
 	ExternalAccess *uint64 `json:"ExternalAccess,omitnil,omitempty" name:"ExternalAccess"`
 
-	// <p>开通堡垒机的子网信息</p>
+	// <p>开通堡垒机的子网信息，最多支持2个子网</p>
 	DeploySubnets []*ParamInitResourceSubnet `json:"DeploySubnets,omitnil,omitempty" name:"DeploySubnets"`
 
 	// <p>开通内网访问的VPC ID</p>
@@ -3358,7 +3358,7 @@ type DeployResourceRequestParams struct {
 	// <p>开通内网访问的VPC名称</p>
 	IntranetVpcName *string `json:"IntranetVpcName,omitnil,omitempty" name:"IntranetVpcName"`
 
-	// <p>开通内网访问的子网信息</p>
+	// <p>开通内网访问的子网信息，最多支持2个子网</p>
 	IntranetSubnets []*ParamInitResourceSubnet `json:"IntranetSubnets,omitnil,omitempty" name:"IntranetSubnets"`
 }
 
@@ -3377,10 +3377,10 @@ type DeployResourceRequest struct {
 	// <p>需要开通服务的VPC</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// <p>需要开通服务的子网ID</p>
+	// <p>需要开通服务的子网ID，此字段即将废除，请填写DeploySubnets包含的子网</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// <p>需要开通服务的子网网段</p>
+	// <p>需要开通服务的子网网段，此字段即将废除，请填写DeploySubnets包含的子网</p>
 	CidrBlock *string `json:"CidrBlock,omitnil,omitempty" name:"CidrBlock"`
 
 	// <p>需要开通服务的VPC名称</p>
@@ -3389,7 +3389,7 @@ type DeployResourceRequest struct {
 	// <p>需要开通服务的VPC对应的网段</p>
 	VpcCidrBlock *string `json:"VpcCidrBlock,omitnil,omitempty" name:"VpcCidrBlock"`
 
-	// <p>需要开通服务的子网名称</p>
+	// <p>需要开通服务的子网名称，此字段即将废除，请填写DeploySubnets包含的子网</p>
 	SubnetName *string `json:"SubnetName,omitnil,omitempty" name:"SubnetName"`
 
 	// <p>需要开通实例所属的CDC集群ID</p>
@@ -3410,7 +3410,7 @@ type DeployResourceRequest struct {
 	// <p>0-关闭公网访问堡垒机，1-开启公网访问堡垒机</p>
 	ExternalAccess *uint64 `json:"ExternalAccess,omitnil,omitempty" name:"ExternalAccess"`
 
-	// <p>开通堡垒机的子网信息</p>
+	// <p>开通堡垒机的子网信息，最多支持2个子网</p>
 	DeploySubnets []*ParamInitResourceSubnet `json:"DeploySubnets,omitnil,omitempty" name:"DeploySubnets"`
 
 	// <p>开通内网访问的VPC ID</p>
@@ -3422,7 +3422,7 @@ type DeployResourceRequest struct {
 	// <p>开通内网访问的VPC名称</p>
 	IntranetVpcName *string `json:"IntranetVpcName,omitnil,omitempty" name:"IntranetVpcName"`
 
-	// <p>开通内网访问的子网信息</p>
+	// <p>开通内网访问的子网信息，最多支持2个子网</p>
 	IntranetSubnets []*ParamInitResourceSubnet `json:"IntranetSubnets,omitnil,omitempty" name:"IntranetSubnets"`
 }
 

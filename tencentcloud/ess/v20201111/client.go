@@ -1723,9 +1723,9 @@ func NewCreateBatchQuickSignUrlResponse() (response *CreateBatchQuickSignUrlResp
 //
 // 3. 该接口返回的签署链接适用于APP集成的场景，支持APP打开或浏览器直接打开，**不支持微信小程序嵌入**。
 //
-// 跳转到小程序的实现，参考微信官方文档(分为<a href="https://developers.weixin.qq.com/miniprogram/dev/api/navigate/wx.navigateToMiniProgram.html">全屏</a>、<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/openEmbeddedMiniProgram.html">半屏</a>两种方式)，如何配置也可以请参考: <a href="https://qian.tencent.com/developers/company/openwxminiprogram">跳转电子签小程序配置</a>。
-//
 // 4. 因h5涉及人脸身份认证能力基于慧眼人脸核身，对Android和iOS系统均有一定要求， 因此<font color='red'>App嵌入H5签署合同需要按照慧眼提供的<a href="https://cloud.tencent.com/document/product/1007/61076">慧眼人脸核身兼容性文档</a>做兼容性适配</font>。
+//
+// 5. <font color='red'>iframe 嵌入暂不支持人脸相关操作</font>，包括设置密码等需要进行的人脸核验。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1748,9 +1748,9 @@ func (c *Client) CreateBatchQuickSignUrl(request *CreateBatchQuickSignUrlRequest
 //
 // 3. 该接口返回的签署链接适用于APP集成的场景，支持APP打开或浏览器直接打开，**不支持微信小程序嵌入**。
 //
-// 跳转到小程序的实现，参考微信官方文档(分为<a href="https://developers.weixin.qq.com/miniprogram/dev/api/navigate/wx.navigateToMiniProgram.html">全屏</a>、<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/openEmbeddedMiniProgram.html">半屏</a>两种方式)，如何配置也可以请参考: <a href="https://qian.tencent.com/developers/company/openwxminiprogram">跳转电子签小程序配置</a>。
-//
 // 4. 因h5涉及人脸身份认证能力基于慧眼人脸核身，对Android和iOS系统均有一定要求， 因此<font color='red'>App嵌入H5签署合同需要按照慧眼提供的<a href="https://cloud.tencent.com/document/product/1007/61076">慧眼人脸核身兼容性文档</a>做兼容性适配</font>。
+//
+// 5. <font color='red'>iframe 嵌入暂不支持人脸相关操作</font>，包括设置密码等需要进行的人脸核验。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3221,6 +3221,12 @@ func NewCreateFileConvertTaskResponse() (response *CreateFileConvertTaskResponse
 //
 // 2. `可通过发起合同时设置预览来检查转换文件是否达到预期效果`
 //
+// 
+//
+// 整体流程如下图
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/bb35c9cfa453d28eade16df36221f313.png)
+//
 // 可能返回的错误码:
 //  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
 //  INVALIDPARAMETER_INVALIDID = "InvalidParameter.InvalidId"
@@ -3252,6 +3258,12 @@ func (c *Client) CreateFileConvertTask(request *CreateFileConvertTaskRequest) (r
 // 1. `支持的文件类型有doc、docx、xls、xlsx、html、jpg、jpeg、png、bmp、txt`
 //
 // 2. `可通过发起合同时设置预览来检查转换文件是否达到预期效果`
+//
+// 
+//
+// 整体流程如下图
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/bb35c9cfa453d28eade16df36221f313.png)
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
@@ -6377,9 +6389,9 @@ func NewCreateFlowSignUrlResponse() (response *CreateFlowSignUrlResponse) {
 //
 // 2. 该接口返回的签署链接适用于APP集成的场景，支持APP、支付宝打开或浏览器直接打开，**不支持微信小程序嵌入**。配置方式请参考：<a href="https://qian.tencent.com/developers/company/openqianh5/">跳转电子签H5</a>。
 //
-// 如需跳转到小程序的实现，参考微信官方文档（分为<a href="https://developers.weixin.qq.com/miniprogram/dev/api/navigate/wx.navigateToMiniProgram.html">全屏</a>、<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/openEmbeddedMiniProgram.html">半屏</a>两种方式），如何配置也可以请参考: <a href="https://qian.tencent.com/developers/company/openwxminiprogram">跳转电子签小程序配置</a>。
-//
 // 3. 因h5涉及人脸身份认证能力基于慧眼人脸核身，对Android和iOS系统均有一定要求， 因此<font color='red'>App嵌入H5签署合同需要按照慧眼提供的<a href="https://cloud.tencent.com/document/product/1007/61076">慧眼人脸核身兼容性文档</a>做兼容性适配</font>。
+//
+// 4. <font color='red'>iframe 嵌入暂不支持人脸相关操作</font>，包括设置密码等需要进行的人脸核验。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -6409,9 +6421,9 @@ func (c *Client) CreateFlowSignUrl(request *CreateFlowSignUrlRequest) (response 
 //
 // 2. 该接口返回的签署链接适用于APP集成的场景，支持APP、支付宝打开或浏览器直接打开，**不支持微信小程序嵌入**。配置方式请参考：<a href="https://qian.tencent.com/developers/company/openqianh5/">跳转电子签H5</a>。
 //
-// 如需跳转到小程序的实现，参考微信官方文档（分为<a href="https://developers.weixin.qq.com/miniprogram/dev/api/navigate/wx.navigateToMiniProgram.html">全屏</a>、<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/openEmbeddedMiniProgram.html">半屏</a>两种方式），如何配置也可以请参考: <a href="https://qian.tencent.com/developers/company/openwxminiprogram">跳转电子签小程序配置</a>。
-//
 // 3. 因h5涉及人脸身份认证能力基于慧眼人脸核身，对Android和iOS系统均有一定要求， 因此<font color='red'>App嵌入H5签署合同需要按照慧眼提供的<a href="https://cloud.tencent.com/document/product/1007/61076">慧眼人脸核身兼容性文档</a>做兼容性适配</font>。
+//
+// 4. <font color='red'>iframe 嵌入暂不支持人脸相关操作</font>，包括设置密码等需要进行的人脸核验。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -12299,6 +12311,12 @@ func NewDescribeFileConvertTaskResponse() (response *DescribeFileConvertTaskResp
 //
 // 2.  `本接口返回的文件资源ID就是PDF资源ID，可以直接用于【用PDF文件创建签署流程】接口发起合同。`
 //
+// 
+//
+// 整体流程如下图
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/bb35c9cfa453d28eade16df36221f313.png)
+//
 // 可能返回的错误码:
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
@@ -12326,6 +12344,12 @@ func (c *Client) DescribeFileConvertTask(request *DescribeFileConvertTaskRequest
 // 1. `大文件转换所需的时间可能会比较长`
 //
 // 2.  `本接口返回的文件资源ID就是PDF资源ID，可以直接用于【用PDF文件创建签署流程】接口发起合同。`
+//
+// 
+//
+// 整体流程如下图
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/bb35c9cfa453d28eade16df36221f313.png)
 //
 // 可能返回的错误码:
 //  INTERNALERROR_SYSTEM = "InternalError.System"

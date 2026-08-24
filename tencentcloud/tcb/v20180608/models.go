@@ -7788,14 +7788,17 @@ type MgoIndexKeys struct {
 }
 
 type MgoKeySchema struct {
-	// 索引字段
+	// <p>索引字段</p>
 	MgoIndexKeys []*MgoIndexKeys `json:"MgoIndexKeys,omitnil,omitempty" name:"MgoIndexKeys"`
 
-	// 是否唯一索引
+	// <p>是否唯一索引</p>
 	MgoIsUnique *bool `json:"MgoIsUnique,omitnil,omitempty" name:"MgoIsUnique"`
 
-	// 是否稀疏索引
+	// <p>是否稀疏索引</p>
 	MgoIsSparse *bool `json:"MgoIsSparse,omitnil,omitempty" name:"MgoIsSparse"`
+
+	// <p>稀疏索引表达式</p>
+	PartialFilterExpression *string `json:"PartialFilterExpression,omitnil,omitempty" name:"PartialFilterExpression"`
 }
 
 type MigrationConflict struct {
@@ -9928,6 +9931,12 @@ func (r *RunSqlResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type SMSCloudFunctionConfig struct {
+	// <p>发送验证码的云函数名，当前仅支持 SendVerificationCode。</p><p>函数入参：</p><ul><li>Mobile：字符串（手机号，连续 E.164 格式，如 +8613800000000）</li><li>VerificationCode：字符串（验证码，如 123456）</li></ul><p>函数返回值：</p><ul><li>ErrorCode：int（0 表示成功，非 0 表示失败）</li><li>ErrorMessage：字符串（ErrorCode 非 0 时返回错误信息）</li></ul>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FunctionName *string `json:"FunctionName,omitnil,omitempty" name:"FunctionName"`
+}
+
 type SMSProviderTemplateConfig struct {
 	// <p>短信服务商类型</p><p>枚举值：</p><ul><li>TENCENT_CN： 腾讯云国内短信</li><li>TENCENT_INTL： 腾讯云国际短信</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -9945,6 +9954,10 @@ type SMSProviderTemplateConfig struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SignName *string `json:"SignName,omitnil,omitempty" name:"SignName"`
 
+	// <p>凭证获取方式，不传默认为 SMS_AUTH_SECRET_KEY。</p><p>枚举值：</p><ul><li>SMS_AUTH_SECRET_KEY： 密钥授权，适用于跨账号腾讯云短信 / 其它厂商短信，AK/SK 加密托管至云开发平台控制台—扩展功能—授权管理</li><li>SMS_AUTH_ASSUME_ROLE： 策略授权（角色扮演），适用于同账号腾讯云短信，需预先将短信预设策略 QcloudSMSFullAccess 授权给云开发服务角色，平台以临时凭证代发，不保存任何长期密钥。选择该方式时 SecretId / SecretKey / CredentialAuthKeyId 必须为空</li></ul><p>枚举值：</p><ul><li>SMS_AUTH_SECRET_KEY： 密钥授权，适用于跨账号腾讯云短信 / 其它厂商短信，AK/SK 加密托管至云开发平台控制台—扩展功能—授权管理</li><li>SMS_AUTH_ASSUME_ROLE： 策略授权（角色扮演），适用于同账号腾讯云短信，需预先将短信预设策略 QcloudSMSFullAccess 授权给云开发服务角色，平台以临时凭证代发，不保存任何长期密钥。选择该方式时 SecretId / SecretKey / CredentialAuthKeyId 必须为空</li></ul><p>默认值：SMS_AUTH_SECRET_KEY</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AuthType *string `json:"AuthType,omitnil,omitempty" name:"AuthType"`
+
 	// <p>调用短信服务商发送短信接口的调用秘钥对应的ID。</p><ul><li>调用api秘钥会保存在云开发平台控制台—扩展功能—授权管理中，如果对于短信调用的api秘钥有删除需求，可在此处进行删除，删除后，短信将无法正常发送。</li><li>腾讯云的调用api秘钥在腾讯云控制台获取，建议使用子账号的秘钥ID，并且按照最小权限配置。</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecretId *string `json:"SecretId,omitnil,omitempty" name:"SecretId"`
@@ -9960,6 +9973,10 @@ type SMSProviderTemplateConfig struct {
 	// <p>当短信自定义模板含多个占位符时，平台只负责生成验证码值，其余占位符由调用方在此提供。</p><ul><li>无需提供验证码对应的占位的值，验证码由云开发平台侧生成。</li><li>如果是命名占位的服务商的短信模板，这里的参数按照需要对应的占位的key和value，会按照对应的key和value在发送短信时，填充到模板中。</li><li>如果是序号占位的服务商的短信模板，这里的参数不需要key, 只需要填写对应的value, 会按照填写的顺序依次填充到模板中。</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TemplateExtendParam []*SMSTemplateParams `json:"TemplateExtendParam,omitnil,omitempty" name:"TemplateExtendParam"`
+
+	// <p>授权管理中密钥的自定义标识（创建 / 引用二合一），与 SecretId / SecretKey 组合决定行为：</p><ul><li>非空 + 带 SecretId/SecretKey → 以该标识创建新密钥；标识已存在时报错（keyID already exists）</li><li>非空 + 不带 SecretId/SecretKey → 引用授权管理中已存在的密钥（需归属当前环境）</li><li>空 + 带 SecretId/SecretKey → 使用平台按服务商生成的固定标识，覆盖更新（存量兼容）</li><li>空 + 不带 SecretId/SecretKey → 不修改密钥，沿用既有配置</li></ul><p>AuthType 为 SMS_AUTH_ASSUME_ROLE 时此参数必须为空。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CredentialAuthKeyId *string `json:"CredentialAuthKeyId,omitnil,omitempty" name:"CredentialAuthKeyId"`
 }
 
 type SMSTemplateParams struct {
@@ -10409,44 +10426,44 @@ func (r *UpdateAIModelResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateTableRequestParams struct {
-	// 表名
+	// <p>表名</p>
 	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
 
-	// FlexDB实例ID
+	// <p>FlexDB实例ID</p>
 	Tag *string `json:"Tag,omitnil,omitempty" name:"Tag"`
 
-	// 待删除索引信息
+	// <p>待删除索引信息</p>
 	DropIndexes []*DropIndex `json:"DropIndexes,omitnil,omitempty" name:"DropIndexes"`
 
-	// 待创建索引信息
+	// <p>待创建索引信息</p>
 	CreateIndexes []*CreateIndex `json:"CreateIndexes,omitnil,omitempty" name:"CreateIndexes"`
 
-	// 云开发环境ID
+	// <p>云开发环境ID</p>
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 
-	// MongoDB连接器配置
+	// <p>MongoDB连接器配置</p>
 	MongoConnector *MongoConnector `json:"MongoConnector,omitnil,omitempty" name:"MongoConnector"`
 }
 
 type UpdateTableRequest struct {
 	*tchttp.BaseRequest
 	
-	// 表名
+	// <p>表名</p>
 	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
 
-	// FlexDB实例ID
+	// <p>FlexDB实例ID</p>
 	Tag *string `json:"Tag,omitnil,omitempty" name:"Tag"`
 
-	// 待删除索引信息
+	// <p>待删除索引信息</p>
 	DropIndexes []*DropIndex `json:"DropIndexes,omitnil,omitempty" name:"DropIndexes"`
 
-	// 待创建索引信息
+	// <p>待创建索引信息</p>
 	CreateIndexes []*CreateIndex `json:"CreateIndexes,omitnil,omitempty" name:"CreateIndexes"`
 
-	// 云开发环境ID
+	// <p>云开发环境ID</p>
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 
-	// MongoDB连接器配置
+	// <p>MongoDB连接器配置</p>
 	MongoConnector *MongoConnector `json:"MongoConnector,omitnil,omitempty" name:"MongoConnector"`
 }
 
@@ -10609,7 +10626,7 @@ type Variable struct {
 }
 
 type VerificationConfig struct {
-	// <p>短信验证码发送通道类型。</p><p>枚举值：</p><ul><li>default： 使用默认云开发短信包发送短信</li><li>apis： 使用云开发自定义 APIs 作为短信发送通道，需配合 Name 和 Method 参数使用。不传则不修改当前配置。</li><li>template： 自定义短信模板配置，需要配置TemplateProvider</li></ul>
+	// <p>短信验证码发送通道类型。</p><p>枚举值：</p><ul><li>default： 使用默认云开发短信包发送短信</li><li>apis： 使用云开发自定义 APIs 作为短信发送通道，需配合 Name 和 Method 参数使用。不传则不修改当前配置。</li><li>template： 自定义短信模板配置，需要配置TemplateProvider</li><li>function： 云函数通道（第三方短信服务商），需要配置CloudFunction</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
@@ -10628,6 +10645,10 @@ type VerificationConfig struct {
 	// <p>自定义短信服务商模板配置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TemplateProvider *SMSProviderTemplateConfig `json:"TemplateProvider,omitnil,omitempty" name:"TemplateProvider"`
+
+	// <p>云函数短信通道配置，当 Type 为 function 时必填</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CloudFunction *SMSCloudFunctionConfig `json:"CloudFunction,omitnil,omitempty" name:"CloudFunction"`
 }
 
 type VerifyHTTPServiceRouteCheckItem struct {

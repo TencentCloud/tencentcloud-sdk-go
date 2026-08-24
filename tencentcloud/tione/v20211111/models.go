@@ -977,6 +977,9 @@ type CreateModelServiceRequestParams struct {
 
 	// <p>资源供应属性(潮汐/竞价等供应模式);空表示常规按量后付费</p>
 	ResourceSupplyAttribute *ResourceSupplyAttribute `json:"ResourceSupplyAttribute,omitnil,omitempty" name:"ResourceSupplyAttribute"`
+
+	// <p>推理模板 ID</p>
+	InferTemplateId *string `json:"InferTemplateId,omitnil,omitempty" name:"InferTemplateId"`
 }
 
 type CreateModelServiceRequest struct {
@@ -1122,6 +1125,9 @@ type CreateModelServiceRequest struct {
 
 	// <p>资源供应属性(潮汐/竞价等供应模式);空表示常规按量后付费</p>
 	ResourceSupplyAttribute *ResourceSupplyAttribute `json:"ResourceSupplyAttribute,omitnil,omitempty" name:"ResourceSupplyAttribute"`
+
+	// <p>推理模板 ID</p>
+	InferTemplateId *string `json:"InferTemplateId,omitnil,omitempty" name:"InferTemplateId"`
 }
 
 func (r *CreateModelServiceRequest) ToJsonString() string {
@@ -1183,6 +1189,7 @@ func (r *CreateModelServiceRequest) FromJsonString(s string) error {
 	delete(f, "GatewayLogConfig")
 	delete(f, "GatewayConfig")
 	delete(f, "ResourceSupplyAttribute")
+	delete(f, "InferTemplateId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateModelServiceRequest has unknown keys!", "")
 	}
@@ -7692,6 +7699,9 @@ type ModifyModelServiceRequestParams struct {
 
 	// <p>目标工作空间，不为0则进行迁移，源服务只允许在默认空间</p>
 	TargetProjectId *int64 `json:"TargetProjectId,omitnil,omitempty" name:"TargetProjectId"`
+
+	// <p>推理模板 ID，在内置大模型场景下使用</p>
+	InferTemplateId *string `json:"InferTemplateId,omitnil,omitempty" name:"InferTemplateId"`
 }
 
 type ModifyModelServiceRequest struct {
@@ -7807,6 +7817,9 @@ type ModifyModelServiceRequest struct {
 
 	// <p>目标工作空间，不为0则进行迁移，源服务只允许在默认空间</p>
 	TargetProjectId *int64 `json:"TargetProjectId,omitnil,omitempty" name:"TargetProjectId"`
+
+	// <p>推理模板 ID，在内置大模型场景下使用</p>
+	InferTemplateId *string `json:"InferTemplateId,omitnil,omitempty" name:"InferTemplateId"`
 }
 
 func (r *ModifyModelServiceRequest) ToJsonString() string {
@@ -7858,6 +7871,7 @@ func (r *ModifyModelServiceRequest) FromJsonString(s string) error {
 	delete(f, "VolumeMounts")
 	delete(f, "SchedulingStrategy")
 	delete(f, "TargetProjectId")
+	delete(f, "InferTemplateId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyModelServiceRequest has unknown keys!", "")
 	}
@@ -9931,6 +9945,9 @@ type ServiceInfo struct {
 
 	// <p>服务实际运行的节点数</p>
 	NodeCount *int64 `json:"NodeCount,omitnil,omitempty" name:"NodeCount"`
+
+	// <p>推理模板Id</p><p>参数格式：推理模板 ID</p>
+	InferTemplateId *string `json:"InferTemplateId,omitnil,omitempty" name:"InferTemplateId"`
 }
 
 type ServiceLimit struct {

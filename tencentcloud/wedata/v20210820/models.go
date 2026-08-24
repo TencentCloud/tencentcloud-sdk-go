@@ -20698,6 +20698,9 @@ type DescribeTableContentPreviewRequestParams struct {
 
 	// <p>引擎名</p>
 	EngineId *string `json:"EngineId,omitnil,omitempty" name:"EngineId"`
+
+	// <p>引擎类型详情</p><ul><li>SparkSQL：SparkSQL</li><li>PrestoSQL：Presto</li><li>SparkBatch：Spark作业</li><li>StandardPresto：Presto</li><li>StandardSpark：Spark</li></ul>
+	EngineTypeDetail *string `json:"EngineTypeDetail,omitnil,omitempty" name:"EngineTypeDetail"`
 }
 
 type DescribeTableContentPreviewRequest struct {
@@ -20741,6 +20744,9 @@ type DescribeTableContentPreviewRequest struct {
 
 	// <p>引擎名</p>
 	EngineId *string `json:"EngineId,omitnil,omitempty" name:"EngineId"`
+
+	// <p>引擎类型详情</p><ul><li>SparkSQL：SparkSQL</li><li>PrestoSQL：Presto</li><li>SparkBatch：Spark作业</li><li>StandardPresto：Presto</li><li>StandardSpark：Spark</li></ul>
+	EngineTypeDetail *string `json:"EngineTypeDetail,omitnil,omitempty" name:"EngineTypeDetail"`
 }
 
 func (r *DescribeTableContentPreviewRequest) ToJsonString() string {
@@ -20768,6 +20774,7 @@ func (r *DescribeTableContentPreviewRequest) FromJsonString(s string) error {
 	delete(f, "ResourceGroupId")
 	delete(f, "Sql")
 	delete(f, "EngineId")
+	delete(f, "EngineTypeDetail")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTableContentPreviewRequest has unknown keys!", "")
 	}

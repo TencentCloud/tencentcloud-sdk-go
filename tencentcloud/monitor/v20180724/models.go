@@ -3519,7 +3519,7 @@ type CreateSSOAccountRequestParams struct {
 	// <p>Grafana 实例 ID，例如：grafana-abcdefgh</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// <p>用户账号 ID ，例如：10000000</p>
+	// <p>用户子账号 ID ，例如：10000000</p>
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
 	// <p>权限(只取数组中的第一个，其中 Organization 暂未使用，可不填)</p>
@@ -3535,7 +3535,7 @@ type CreateSSOAccountRequest struct {
 	// <p>Grafana 实例 ID，例如：grafana-abcdefgh</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// <p>用户账号 ID ，例如：10000000</p>
+	// <p>用户子账号 ID ，例如：10000000</p>
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
 	// <p>权限(只取数组中的第一个，其中 Organization 暂未使用，可不填)</p>
@@ -3569,7 +3569,7 @@ func (r *CreateSSOAccountRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateSSOAccountResponseParams struct {
-	// <p>已添加的用户 UIN</p>
+	// <p>已添加的子账号ID</p>
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7539,44 +7539,44 @@ func (r *DescribeGrafanaEnvironmentsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeGrafanaInstancesRequestParams struct {
-	// 查询偏移量
+	// <p>查询偏移量</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 查询数量
+	// <p>查询数量</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// Grafana 实例 ID 数组
+	// <p>Grafana 实例 ID 数组</p>
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// Grafana 实例名，支持前缀模糊搜索
+	// <p>Grafana 实例名，支持前缀模糊搜索</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 查询状态
+	// <p>查询状态</p>
 	InstanceStatus []*int64 `json:"InstanceStatus,omitnil,omitempty" name:"InstanceStatus"`
 
-	// 标签过滤数组
+	// <p>标签过滤数组</p>
 	TagFilters []*PrometheusTag `json:"TagFilters,omitnil,omitempty" name:"TagFilters"`
 }
 
 type DescribeGrafanaInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 查询偏移量
+	// <p>查询偏移量</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 查询数量
+	// <p>查询数量</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// Grafana 实例 ID 数组
+	// <p>Grafana 实例 ID 数组</p>
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// Grafana 实例名，支持前缀模糊搜索
+	// <p>Grafana 实例名，支持前缀模糊搜索</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 查询状态
+	// <p>查询状态</p>
 	InstanceStatus []*int64 `json:"InstanceStatus,omitnil,omitempty" name:"InstanceStatus"`
 
-	// 标签过滤数组
+	// <p>标签过滤数组</p>
 	TagFilters []*PrometheusTag `json:"TagFilters,omitnil,omitempty" name:"TagFilters"`
 }
 
@@ -7606,13 +7606,13 @@ func (r *DescribeGrafanaInstancesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeGrafanaInstancesResponseParams struct {
-	// 已废弃，请使用 Instances
+	// <p>已废弃，请使用 Instances</p>
 	InstanceSet []*GrafanaInstanceInfo `json:"InstanceSet,omitnil,omitempty" name:"InstanceSet"`
 
-	// 符合查询条件的实例总数
+	// <p>符合查询条件的实例总数</p>
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 实例列表
+	// <p>实例列表</p>
 	Instances []*GrafanaInstanceInfo `json:"Instances,omitnil,omitempty" name:"Instances"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

@@ -2765,6 +2765,76 @@ func (c *Client) CreateTWeSeeDirectUploadCredentialWithContext(ctx context.Conte
     return
 }
 
+func NewCreateTWeSeePersonRequest() (request *CreateTWeSeePersonRequest) {
+    request = &CreateTWeSeePersonRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "CreateTWeSeePerson")
+    
+    
+    return
+}
+
+func NewCreateTWeSeePersonResponse() (response *CreateTWeSeePersonResponse) {
+    response = &CreateTWeSeePersonResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateTWeSeePerson
+// 创建一个 TWeSee 人员，可关联已导入的人脸。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_PRODUCTIOTVIDEOSERVICENOTENABLED = "FailedOperation.ProductIotVideoServiceNotEnabled"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_SEEFACELIMITEXCEEDED = "LimitExceeded.SeeFaceLimitExceeded"
+//  LIMITEXCEEDED_SEEPERSONLIMITEXCEEDED = "LimitExceeded.SeePersonLimitExceeded"
+//  RESOURCENOTFOUND_DEVICECHANNELNOTEXIST = "ResourceNotFound.DeviceChannelNotExist"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+//  RESOURCENOTFOUND_SEEFACENOTEXIST = "ResourceNotFound.SeeFaceNotExist"
+func (c *Client) CreateTWeSeePerson(request *CreateTWeSeePersonRequest) (response *CreateTWeSeePersonResponse, err error) {
+    return c.CreateTWeSeePersonWithContext(context.Background(), request)
+}
+
+// CreateTWeSeePerson
+// 创建一个 TWeSee 人员，可关联已导入的人脸。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_PRODUCTIOTVIDEOSERVICENOTENABLED = "FailedOperation.ProductIotVideoServiceNotEnabled"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_SEEFACELIMITEXCEEDED = "LimitExceeded.SeeFaceLimitExceeded"
+//  LIMITEXCEEDED_SEEPERSONLIMITEXCEEDED = "LimitExceeded.SeePersonLimitExceeded"
+//  RESOURCENOTFOUND_DEVICECHANNELNOTEXIST = "ResourceNotFound.DeviceChannelNotExist"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+//  RESOURCENOTFOUND_SEEFACENOTEXIST = "ResourceNotFound.SeeFaceNotExist"
+func (c *Client) CreateTWeSeePersonWithContext(ctx context.Context, request *CreateTWeSeePersonRequest) (response *CreateTWeSeePersonResponse, err error) {
+    if request == nil {
+        request = NewCreateTWeSeePersonRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "CreateTWeSeePerson")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateTWeSeePerson require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateTWeSeePersonResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateTWeSeePostPaidServiceRequest() (request *CreateTWeSeePostPaidServiceRequest) {
     request = &CreateTWeSeePostPaidServiceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4299,6 +4369,142 @@ func (c *Client) DeleteTWeSeeCallbackWithContext(ctx context.Context, request *D
     request.SetContext(ctx)
     
     response = NewDeleteTWeSeeCallbackResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteTWeSeeFaceRequest() (request *DeleteTWeSeeFaceRequest) {
+    request = &DeleteTWeSeeFaceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DeleteTWeSeeFace")
+    
+    
+    return
+}
+
+func NewDeleteTWeSeeFaceResponse() (response *DeleteTWeSeeFaceResponse) {
+    response = &DeleteTWeSeeFaceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteTWeSeeFace
+// 删除指定 TWeSee 人脸。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ANOTHEROPERATIONISRUNNING = "FailedOperation.AnotherOperationIsRunning"
+//  FAILEDOPERATION_PRODUCTIOTVIDEOSERVICENOTENABLED = "FailedOperation.ProductIotVideoServiceNotEnabled"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_DEVICECHANNELNOTEXIST = "ResourceNotFound.DeviceChannelNotExist"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+//  RESOURCENOTFOUND_SEEFACENOTEXIST = "ResourceNotFound.SeeFaceNotExist"
+func (c *Client) DeleteTWeSeeFace(request *DeleteTWeSeeFaceRequest) (response *DeleteTWeSeeFaceResponse, err error) {
+    return c.DeleteTWeSeeFaceWithContext(context.Background(), request)
+}
+
+// DeleteTWeSeeFace
+// 删除指定 TWeSee 人脸。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ANOTHEROPERATIONISRUNNING = "FailedOperation.AnotherOperationIsRunning"
+//  FAILEDOPERATION_PRODUCTIOTVIDEOSERVICENOTENABLED = "FailedOperation.ProductIotVideoServiceNotEnabled"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_DEVICECHANNELNOTEXIST = "ResourceNotFound.DeviceChannelNotExist"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+//  RESOURCENOTFOUND_SEEFACENOTEXIST = "ResourceNotFound.SeeFaceNotExist"
+func (c *Client) DeleteTWeSeeFaceWithContext(ctx context.Context, request *DeleteTWeSeeFaceRequest) (response *DeleteTWeSeeFaceResponse, err error) {
+    if request == nil {
+        request = NewDeleteTWeSeeFaceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "DeleteTWeSeeFace")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteTWeSeeFace require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteTWeSeeFaceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteTWeSeePersonRequest() (request *DeleteTWeSeePersonRequest) {
+    request = &DeleteTWeSeePersonRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DeleteTWeSeePerson")
+    
+    
+    return
+}
+
+func NewDeleteTWeSeePersonResponse() (response *DeleteTWeSeePersonResponse) {
+    response = &DeleteTWeSeePersonResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteTWeSeePerson
+// 删除指定 TWeSee 人员，可选择同时删除其关联人脸。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_PRODUCTIOTVIDEOSERVICENOTENABLED = "FailedOperation.ProductIotVideoServiceNotEnabled"
+//  FAILEDOPERATION_SEEPERSONHASFACES = "FailedOperation.SeePersonHasFaces"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_DEVICECHANNELNOTEXIST = "ResourceNotFound.DeviceChannelNotExist"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+//  RESOURCENOTFOUND_SEEPERSONNOTEXIST = "ResourceNotFound.SeePersonNotExist"
+func (c *Client) DeleteTWeSeePerson(request *DeleteTWeSeePersonRequest) (response *DeleteTWeSeePersonResponse, err error) {
+    return c.DeleteTWeSeePersonWithContext(context.Background(), request)
+}
+
+// DeleteTWeSeePerson
+// 删除指定 TWeSee 人员，可选择同时删除其关联人脸。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_PRODUCTIOTVIDEOSERVICENOTENABLED = "FailedOperation.ProductIotVideoServiceNotEnabled"
+//  FAILEDOPERATION_SEEPERSONHASFACES = "FailedOperation.SeePersonHasFaces"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_DEVICECHANNELNOTEXIST = "ResourceNotFound.DeviceChannelNotExist"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+//  RESOURCENOTFOUND_SEEPERSONNOTEXIST = "ResourceNotFound.SeePersonNotExist"
+func (c *Client) DeleteTWeSeePersonWithContext(ctx context.Context, request *DeleteTWeSeePersonRequest) (response *DeleteTWeSeePersonResponse, err error) {
+    if request == nil {
+        request = NewDeleteTWeSeePersonRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "DeleteTWeSeePerson")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteTWeSeePerson require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteTWeSeePersonResponse()
     err = c.Send(request, response)
     return
 }
@@ -8161,6 +8367,138 @@ func (c *Client) DescribeTWeSeeConfigWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeTWeSeeFaceRequest() (request *DescribeTWeSeeFaceRequest) {
+    request = &DescribeTWeSeeFaceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeTWeSeeFace")
+    
+    
+    return
+}
+
+func NewDescribeTWeSeeFaceResponse() (response *DescribeTWeSeeFaceResponse) {
+    response = &DescribeTWeSeeFaceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTWeSeeFace
+// 查询指定 TWeSee 人脸详情。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_PRODUCTIOTVIDEOSERVICENOTENABLED = "FailedOperation.ProductIotVideoServiceNotEnabled"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_DEVICECHANNELNOTEXIST = "ResourceNotFound.DeviceChannelNotExist"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+//  RESOURCENOTFOUND_SEEFACENOTEXIST = "ResourceNotFound.SeeFaceNotExist"
+func (c *Client) DescribeTWeSeeFace(request *DescribeTWeSeeFaceRequest) (response *DescribeTWeSeeFaceResponse, err error) {
+    return c.DescribeTWeSeeFaceWithContext(context.Background(), request)
+}
+
+// DescribeTWeSeeFace
+// 查询指定 TWeSee 人脸详情。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_PRODUCTIOTVIDEOSERVICENOTENABLED = "FailedOperation.ProductIotVideoServiceNotEnabled"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_DEVICECHANNELNOTEXIST = "ResourceNotFound.DeviceChannelNotExist"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+//  RESOURCENOTFOUND_SEEFACENOTEXIST = "ResourceNotFound.SeeFaceNotExist"
+func (c *Client) DescribeTWeSeeFaceWithContext(ctx context.Context, request *DescribeTWeSeeFaceRequest) (response *DescribeTWeSeeFaceResponse, err error) {
+    if request == nil {
+        request = NewDescribeTWeSeeFaceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "DescribeTWeSeeFace")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTWeSeeFace require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTWeSeeFaceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTWeSeePersonRequest() (request *DescribeTWeSeePersonRequest) {
+    request = &DescribeTWeSeePersonRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeTWeSeePerson")
+    
+    
+    return
+}
+
+func NewDescribeTWeSeePersonResponse() (response *DescribeTWeSeePersonResponse) {
+    response = &DescribeTWeSeePersonResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTWeSeePerson
+// 查询指定 TWeSee 人员详情及其代表人脸。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_PRODUCTIOTVIDEOSERVICENOTENABLED = "FailedOperation.ProductIotVideoServiceNotEnabled"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_DEVICECHANNELNOTEXIST = "ResourceNotFound.DeviceChannelNotExist"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+//  RESOURCENOTFOUND_SEEPERSONNOTEXIST = "ResourceNotFound.SeePersonNotExist"
+func (c *Client) DescribeTWeSeePerson(request *DescribeTWeSeePersonRequest) (response *DescribeTWeSeePersonResponse, err error) {
+    return c.DescribeTWeSeePersonWithContext(context.Background(), request)
+}
+
+// DescribeTWeSeePerson
+// 查询指定 TWeSee 人员详情及其代表人脸。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_PRODUCTIOTVIDEOSERVICENOTENABLED = "FailedOperation.ProductIotVideoServiceNotEnabled"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_DEVICECHANNELNOTEXIST = "ResourceNotFound.DeviceChannelNotExist"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+//  RESOURCENOTFOUND_SEEPERSONNOTEXIST = "ResourceNotFound.SeePersonNotExist"
+func (c *Client) DescribeTWeSeePersonWithContext(ctx context.Context, request *DescribeTWeSeePersonRequest) (response *DescribeTWeSeePersonResponse, err error) {
+    if request == nil {
+        request = NewDescribeTWeSeePersonRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "DescribeTWeSeePerson")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTWeSeePerson require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTWeSeePersonResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTWeSeePostPaidServiceRequest() (request *DescribeTWeSeePostPaidServiceRequest) {
     request = &DescribeTWeSeePostPaidServiceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -10809,6 +11147,70 @@ func (c *Client) GetWechatDeviceTicketWithContext(ctx context.Context, request *
     return
 }
 
+func NewImportTWeSeeFacesRequest() (request *ImportTWeSeeFacesRequest) {
+    request = &ImportTWeSeeFacesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "ImportTWeSeeFaces")
+    
+    
+    return
+}
+
+func NewImportTWeSeeFacesResponse() (response *ImportTWeSeeFacesResponse) {
+    response = &ImportTWeSeeFacesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ImportTWeSeeFaces
+// 检测图片中的人脸，并返回可用于人员管理的人脸元数据。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_PRODUCTIOTVIDEOSERVICENOTENABLED = "FailedOperation.ProductIotVideoServiceNotEnabled"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_DEVICECHANNELNOTEXIST = "ResourceNotFound.DeviceChannelNotExist"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+func (c *Client) ImportTWeSeeFaces(request *ImportTWeSeeFacesRequest) (response *ImportTWeSeeFacesResponse, err error) {
+    return c.ImportTWeSeeFacesWithContext(context.Background(), request)
+}
+
+// ImportTWeSeeFaces
+// 检测图片中的人脸，并返回可用于人员管理的人脸元数据。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_PRODUCTIOTVIDEOSERVICENOTENABLED = "FailedOperation.ProductIotVideoServiceNotEnabled"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_DEVICECHANNELNOTEXIST = "ResourceNotFound.DeviceChannelNotExist"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+func (c *Client) ImportTWeSeeFacesWithContext(ctx context.Context, request *ImportTWeSeeFacesRequest) (response *ImportTWeSeeFacesResponse, err error) {
+    if request == nil {
+        request = NewImportTWeSeeFacesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "ImportTWeSeeFaces")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ImportTWeSeeFaces require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewImportTWeSeeFacesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewInheritCloudStorageUserRequest() (request *InheritCloudStorageUserRequest) {
     request = &InheritCloudStorageUserRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -11745,6 +12147,70 @@ func (c *Client) ListTWeSeeCallbackWithContext(ctx context.Context, request *Lis
     request.SetContext(ctx)
     
     response = NewListTWeSeeCallbackResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListTWeSeePersonsRequest() (request *ListTWeSeePersonsRequest) {
+    request = &ListTWeSeePersonsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "ListTWeSeePersons")
+    
+    
+    return
+}
+
+func NewListTWeSeePersonsResponse() (response *ListTWeSeePersonsResponse) {
+    response = &ListTWeSeePersonsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListTWeSeePersons
+// 查询指定设备的 TWeSee 人员列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_PRODUCTIOTVIDEOSERVICENOTENABLED = "FailedOperation.ProductIotVideoServiceNotEnabled"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_DEVICECHANNELNOTEXIST = "ResourceNotFound.DeviceChannelNotExist"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+func (c *Client) ListTWeSeePersons(request *ListTWeSeePersonsRequest) (response *ListTWeSeePersonsResponse, err error) {
+    return c.ListTWeSeePersonsWithContext(context.Background(), request)
+}
+
+// ListTWeSeePersons
+// 查询指定设备的 TWeSee 人员列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_PRODUCTIOTVIDEOSERVICENOTENABLED = "FailedOperation.ProductIotVideoServiceNotEnabled"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_DEVICECHANNELNOTEXIST = "ResourceNotFound.DeviceChannelNotExist"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+func (c *Client) ListTWeSeePersonsWithContext(ctx context.Context, request *ListTWeSeePersonsRequest) (response *ListTWeSeePersonsResponse, err error) {
+    if request == nil {
+        request = NewListTWeSeePersonsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "ListTWeSeePersons")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListTWeSeePersons require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListTWeSeePersonsResponse()
     err = c.Send(request, response)
     return
 }
@@ -12985,6 +13451,146 @@ func (c *Client) ModifyTWeSeeConfigWithContext(ctx context.Context, request *Mod
     request.SetContext(ctx)
     
     response = NewModifyTWeSeeConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyTWeSeeFaceRequest() (request *ModifyTWeSeeFaceRequest) {
+    request = &ModifyTWeSeeFaceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "ModifyTWeSeeFace")
+    
+    
+    return
+}
+
+func NewModifyTWeSeeFaceResponse() (response *ModifyTWeSeeFaceResponse) {
+    response = &ModifyTWeSeeFaceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyTWeSeeFace
+// 将 TWeSee 人脸关联到指定人员，或修改其代表人脸状态。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ANOTHEROPERATIONISRUNNING = "FailedOperation.AnotherOperationIsRunning"
+//  FAILEDOPERATION_PRODUCTIOTVIDEOSERVICENOTENABLED = "FailedOperation.ProductIotVideoServiceNotEnabled"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_SEEFACELIMITEXCEEDED = "LimitExceeded.SeeFaceLimitExceeded"
+//  RESOURCENOTFOUND_DEVICECHANNELNOTEXIST = "ResourceNotFound.DeviceChannelNotExist"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+//  RESOURCENOTFOUND_SEEFACENOTEXIST = "ResourceNotFound.SeeFaceNotExist"
+//  RESOURCENOTFOUND_SEEPERSONNOTEXIST = "ResourceNotFound.SeePersonNotExist"
+func (c *Client) ModifyTWeSeeFace(request *ModifyTWeSeeFaceRequest) (response *ModifyTWeSeeFaceResponse, err error) {
+    return c.ModifyTWeSeeFaceWithContext(context.Background(), request)
+}
+
+// ModifyTWeSeeFace
+// 将 TWeSee 人脸关联到指定人员，或修改其代表人脸状态。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ANOTHEROPERATIONISRUNNING = "FailedOperation.AnotherOperationIsRunning"
+//  FAILEDOPERATION_PRODUCTIOTVIDEOSERVICENOTENABLED = "FailedOperation.ProductIotVideoServiceNotEnabled"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_SEEFACELIMITEXCEEDED = "LimitExceeded.SeeFaceLimitExceeded"
+//  RESOURCENOTFOUND_DEVICECHANNELNOTEXIST = "ResourceNotFound.DeviceChannelNotExist"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+//  RESOURCENOTFOUND_SEEFACENOTEXIST = "ResourceNotFound.SeeFaceNotExist"
+//  RESOURCENOTFOUND_SEEPERSONNOTEXIST = "ResourceNotFound.SeePersonNotExist"
+func (c *Client) ModifyTWeSeeFaceWithContext(ctx context.Context, request *ModifyTWeSeeFaceRequest) (response *ModifyTWeSeeFaceResponse, err error) {
+    if request == nil {
+        request = NewModifyTWeSeeFaceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "ModifyTWeSeeFace")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyTWeSeeFace require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyTWeSeeFaceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyTWeSeePersonRequest() (request *ModifyTWeSeePersonRequest) {
+    request = &ModifyTWeSeePersonRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "ModifyTWeSeePerson")
+    
+    
+    return
+}
+
+func NewModifyTWeSeePersonResponse() (response *ModifyTWeSeePersonResponse) {
+    response = &ModifyTWeSeePersonResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyTWeSeePerson
+// 修改指定 TWeSee 人员的名称或记忆状态。Name、IsRemembered 至少传入一项，不支持取消持久记忆。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_PRODUCTIOTVIDEOSERVICENOTENABLED = "FailedOperation.ProductIotVideoServiceNotEnabled"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_SEEPERSONLIMITEXCEEDED = "LimitExceeded.SeePersonLimitExceeded"
+//  RESOURCENOTFOUND_DEVICECHANNELNOTEXIST = "ResourceNotFound.DeviceChannelNotExist"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+//  RESOURCENOTFOUND_SEEPERSONNOTEXIST = "ResourceNotFound.SeePersonNotExist"
+func (c *Client) ModifyTWeSeePerson(request *ModifyTWeSeePersonRequest) (response *ModifyTWeSeePersonResponse, err error) {
+    return c.ModifyTWeSeePersonWithContext(context.Background(), request)
+}
+
+// ModifyTWeSeePerson
+// 修改指定 TWeSee 人员的名称或记忆状态。Name、IsRemembered 至少传入一项，不支持取消持久记忆。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_PRODUCTIOTVIDEOSERVICENOTENABLED = "FailedOperation.ProductIotVideoServiceNotEnabled"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_SEEPERSONLIMITEXCEEDED = "LimitExceeded.SeePersonLimitExceeded"
+//  RESOURCENOTFOUND_DEVICECHANNELNOTEXIST = "ResourceNotFound.DeviceChannelNotExist"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+//  RESOURCENOTFOUND_SEEPERSONNOTEXIST = "ResourceNotFound.SeePersonNotExist"
+func (c *Client) ModifyTWeSeePersonWithContext(ctx context.Context, request *ModifyTWeSeePersonRequest) (response *ModifyTWeSeePersonResponse, err error) {
+    if request == nil {
+        request = NewModifyTWeSeePersonRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "ModifyTWeSeePerson")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyTWeSeePerson require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyTWeSeePersonResponse()
     err = c.Send(request, response)
     return
 }
