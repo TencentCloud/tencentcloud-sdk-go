@@ -9252,31 +9252,31 @@ type ResourceConfigInfo struct {
 }
 
 type ResourceGroup struct {
-	// 资源组id
+	// <p>资源组id</p>
 	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
 
-	// 资源组名称
+	// <p>资源组名称</p>
 	ResourceGroupName *string `json:"ResourceGroupName,omitnil,omitempty" name:"ResourceGroupName"`
 
-	// 可用节点个数(运行中的节点)
+	// <p>可用节点个数(运行中的节点)</p>
 	FreeInstance *uint64 `json:"FreeInstance,omitnil,omitempty" name:"FreeInstance"`
 
-	// 总节点个数(所有节点)
+	// <p>总节点个数(所有节点)</p>
 	TotalInstance *uint64 `json:"TotalInstance,omitnil,omitempty" name:"TotalInstance"`
 
-	// 资源组已用的资源
+	// <p>资源组已用的资源</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UsedResource *GroupResource `json:"UsedResource,omitnil,omitempty" name:"UsedResource"`
 
-	// 资源组总资源
+	// <p>资源组总资源</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalResource *GroupResource `json:"TotalResource,omitnil,omitempty" name:"TotalResource"`
 
-	// 节点信息
+	// <p>节点信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceSet []*Instance `json:"InstanceSet,omitnil,omitempty" name:"InstanceSet"`
 
-	// 标签列表
+	// <p>标签列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagSet []*Tag `json:"TagSet,omitnil,omitempty" name:"TagSet"`
 }

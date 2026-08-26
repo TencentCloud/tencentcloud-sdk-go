@@ -16833,7 +16833,7 @@ func (r *DescribeTextToSpeechAsyncTaskRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTextToSpeechAsyncTaskResponseParams struct {
-	// <p>错误码，成功时返回0</p>
+	// <p>错误码，成功时返回0，处理中返回100</p>
 	ErrorCode *int64 `json:"ErrorCode,omitnil,omitempty" name:"ErrorCode"`
 
 	// <p>错误信息，成功时返回success</p>
@@ -21583,56 +21583,62 @@ type MediaSnapshotByTimePicInfoItem struct {
 }
 
 type MediaTranscodeItem struct {
-	// 转码后文件的目标存储。
+	// <p>转码后文件的目标存储。</p>
 	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitnil,omitempty" name:"OutputStorage"`
 
-	// 转码后的视频文件路径。
+	// <p>转码后的视频文件路径。</p>
 	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 
-	// 转码规格 ID，参见[转码参数模板](https://cloud.tencent.com/document/product/862/37042)。
+	// <p>转码规格 ID，参见<a href="https://cloud.tencent.com/document/product/862/37042">转码参数模板</a>。</p>
 	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
 
-	// 视频流码率平均值与音频流码率平均值之和， 单位：bps。
+	// <p>视频流码率平均值与音频流码率平均值之和， 单位：bps。</p>
 	Bitrate *int64 `json:"Bitrate,omitnil,omitempty" name:"Bitrate"`
 
-	// 视频流高度的最大值，单位：px。
+	// <p>视频流高度的最大值，单位：px。</p>
 	Height *int64 `json:"Height,omitnil,omitempty" name:"Height"`
 
-	// 视频流宽度的最大值，单位：px。
+	// <p>视频流宽度的最大值，单位：px。</p>
 	Width *int64 `json:"Width,omitnil,omitempty" name:"Width"`
 
-	// 媒体文件总大小（视频为 HLS 时，大小是 m3u8 和 ts 文件大小的总和），单位：字节。
+	// <p>媒体文件总大小（视频为 HLS 时，大小是 m3u8 和 ts 文件大小的总和），单位：字节。</p>
 	Size *int64 `json:"Size,omitnil,omitempty" name:"Size"`
 
-	// 视频时长，单位：秒。
+	// <p>视频时长，单位：秒。</p>
 	Duration *float64 `json:"Duration,omitnil,omitempty" name:"Duration"`
 
-	// 容器类型，例如 m4a，mp4 等。
+	// <p>容器类型，例如 m4a，mp4 等。</p>
 	Container *string `json:"Container,omitnil,omitempty" name:"Container"`
 
-	// 视频的 md5 值。
+	// <p>视频的 md5 值。</p>
 	Md5 *string `json:"Md5,omitnil,omitempty" name:"Md5"`
 
-	// 音频流信息。
+	// <p>音频流信息。</p>
 	AudioStreamSet []*MediaAudioStreamItem `json:"AudioStreamSet,omitnil,omitempty" name:"AudioStreamSet"`
 
-	// 视频流信息。
+	// <p>视频流信息。</p>
 	VideoStreamSet []*MediaVideoStreamItem `json:"VideoStreamSet,omitnil,omitempty" name:"VideoStreamSet"`
 
-	// 视频转码使用增强项说明，增强项解释
-	// <li>hdr：HDR配置</li>
-	// <li>wd_fps：插帧帧率配置</li>
-	// <li>video_super_resolution：	超分配置</li>
-	// <li>repair：综合增强配置</li>
-	// <li>denoise：视频降噪配置</li>
-	// <li>color_enhance：色彩增强配置</li>
-	// <li>scratch：去划痕配置</li>
-	// <li>artifact：去伪影（毛刺）配置</li>
-	// <li>sharp：细节增强配置</li>
-	// <li>low_light：低光照增强配置</li>
-	// <li>face_enhance：人脸增强配置</li>
+	// <p>视频转码使用增强项说明，增强项解释</p><li>hdr：HDR配置</li><li>wd_fps：插帧帧率配置</li><li>video_super_resolution：    超分配置</li><li>repair：综合增强配置</li><li>denoise：视频降噪配置</li><li>color_enhance：色彩增强配置</li><li>scratch：去划痕配置</li><li>artifact：去伪影（毛刺）配置</li><li>sharp：细节增强配置</li><li>low_light：低光照增强配置</li><li>face_enhance：人脸增强配置</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CallBackExtInfo *string `json:"CallBackExtInfo,omitnil,omitempty" name:"CallBackExtInfo"`
+
+	// <p>MediaTranscodeItem</p>
+	Usage *MediaUsageItem `json:"Usage,omitnil,omitempty" name:"Usage"`
+}
+
+type MediaUsageItem struct {
+	// <p>输入图片数</p><p>单位：个数</p>
+	InputImageCount *int64 `json:"InputImageCount,omitnil,omitempty" name:"InputImageCount"`
+
+	// <p>输入秒数</p><p>单位：秒</p>
+	InputSeconds *int64 `json:"InputSeconds,omitnil,omitempty" name:"InputSeconds"`
+
+	// <p>输出秒数</p><p>单位：秒</p>
+	OutputSeconds *int64 `json:"OutputSeconds,omitnil,omitempty" name:"OutputSeconds"`
+
+	// <p>总秒数</p><p>单位：秒</p>
+	TotalSeconds *int64 `json:"TotalSeconds,omitnil,omitempty" name:"TotalSeconds"`
 }
 
 type MediaVideoStreamItem struct {

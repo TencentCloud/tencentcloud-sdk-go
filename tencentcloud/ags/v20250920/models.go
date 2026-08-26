@@ -465,6 +465,9 @@ type CreateSandboxToolRequestParams struct {
 	// <p>沙箱工具自定义配置</p>
 	CustomConfiguration *CustomConfiguration `json:"CustomConfiguration,omitnil,omitempty" name:"CustomConfiguration"`
 
+	// <p>桌面电脑环境类沙箱配置</p>
+	ComputerConfiguration *ComputerConfiguration `json:"ComputerConfiguration,omitnil,omitempty" name:"ComputerConfiguration"`
+
 	// <p>沙箱工具日志推送相关配置</p>
 	LogConfiguration *LogConfiguration `json:"LogConfiguration,omitnil,omitempty" name:"LogConfiguration"`
 
@@ -505,6 +508,9 @@ type CreateSandboxToolRequest struct {
 	// <p>沙箱工具自定义配置</p>
 	CustomConfiguration *CustomConfiguration `json:"CustomConfiguration,omitnil,omitempty" name:"CustomConfiguration"`
 
+	// <p>桌面电脑环境类沙箱配置</p>
+	ComputerConfiguration *ComputerConfiguration `json:"ComputerConfiguration,omitnil,omitempty" name:"ComputerConfiguration"`
+
 	// <p>沙箱工具日志推送相关配置</p>
 	LogConfiguration *LogConfiguration `json:"LogConfiguration,omitnil,omitempty" name:"LogConfiguration"`
 
@@ -534,6 +540,7 @@ func (r *CreateSandboxToolRequest) FromJsonString(s string) error {
 	delete(f, "RoleArn")
 	delete(f, "StorageMounts")
 	delete(f, "CustomConfiguration")
+	delete(f, "ComputerConfiguration")
 	delete(f, "LogConfiguration")
 	delete(f, "Persistent")
 	if len(f) > 0 {
@@ -2010,6 +2017,9 @@ type UpdateSandboxToolRequestParams struct {
 
 	// <p>沙箱工具自定义配置</p>
 	CustomConfiguration *CustomConfiguration `json:"CustomConfiguration,omitnil,omitempty" name:"CustomConfiguration"`
+
+	// <p>桌面电脑环境类沙箱配置</p>
+	ComputerConfiguration *ComputerConfiguration `json:"ComputerConfiguration,omitnil,omitempty" name:"ComputerConfiguration"`
 }
 
 type UpdateSandboxToolRequest struct {
@@ -2029,6 +2039,9 @@ type UpdateSandboxToolRequest struct {
 
 	// <p>沙箱工具自定义配置</p>
 	CustomConfiguration *CustomConfiguration `json:"CustomConfiguration,omitnil,omitempty" name:"CustomConfiguration"`
+
+	// <p>桌面电脑环境类沙箱配置</p>
+	ComputerConfiguration *ComputerConfiguration `json:"ComputerConfiguration,omitnil,omitempty" name:"ComputerConfiguration"`
 }
 
 func (r *UpdateSandboxToolRequest) ToJsonString() string {
@@ -2048,6 +2061,7 @@ func (r *UpdateSandboxToolRequest) FromJsonString(s string) error {
 	delete(f, "NetworkConfiguration")
 	delete(f, "Tags")
 	delete(f, "CustomConfiguration")
+	delete(f, "ComputerConfiguration")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateSandboxToolRequest has unknown keys!", "")
 	}

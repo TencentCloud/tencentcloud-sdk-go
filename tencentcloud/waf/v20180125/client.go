@@ -530,10 +530,13 @@ func NewAddCustomRuleResponse() (response *AddCustomRuleResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERR = "InternalError.DBErr"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_CELLENGTHEXCEEDLIMIT = "InvalidParameterValue.CELLengthExceedLimit"
 //  INVALIDPARAMETERVALUE_CELSYNTAXERR = "InvalidParameterValue.CELSyntaxErr"
-//  LIMITEXCEEDED = "LimitExceeded"
 //  LIMITEXCEEDED_SPECIFICATIONERR = "LimitExceeded.SpecificationErr"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_INVALIDREQUEST = "UnsupportedOperation.InvalidRequest"
 func (c *Client) AddCustomRule(request *AddCustomRuleRequest) (response *AddCustomRuleResponse, err error) {
     return c.AddCustomRuleWithContext(context.Background(), request)
 }
@@ -544,10 +547,13 @@ func (c *Client) AddCustomRule(request *AddCustomRuleRequest) (response *AddCust
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERR = "InternalError.DBErr"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_CELLENGTHEXCEEDLIMIT = "InvalidParameterValue.CELLengthExceedLimit"
 //  INVALIDPARAMETERVALUE_CELSYNTAXERR = "InvalidParameterValue.CELSyntaxErr"
-//  LIMITEXCEEDED = "LimitExceeded"
 //  LIMITEXCEEDED_SPECIFICATIONERR = "LimitExceeded.SpecificationErr"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_INVALIDREQUEST = "UnsupportedOperation.InvalidRequest"
 func (c *Client) AddCustomRuleWithContext(ctx context.Context, request *AddCustomRuleRequest) (response *AddCustomRuleResponse, err error) {
     if request == nil {
         request = NewAddCustomRuleRequest()
@@ -2413,7 +2419,10 @@ func NewDeleteCustomRuleResponse() (response *DeleteCustomRuleResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
+//  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_INVALIDREQUEST = "UnsupportedOperation.InvalidRequest"
 func (c *Client) DeleteCustomRule(request *DeleteCustomRuleRequest) (response *DeleteCustomRuleResponse, err error) {
     return c.DeleteCustomRuleWithContext(context.Background(), request)
 }
@@ -2423,7 +2432,10 @@ func (c *Client) DeleteCustomRule(request *DeleteCustomRuleRequest) (response *D
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
+//  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_INVALIDREQUEST = "UnsupportedOperation.InvalidRequest"
 func (c *Client) DeleteCustomRuleWithContext(ctx context.Context, request *DeleteCustomRuleRequest) (response *DeleteCustomRuleResponse, err error) {
     if request == nil {
         request = NewDeleteCustomRuleRequest()
@@ -3174,10 +3186,10 @@ func NewDeleteSessionResponse() (response *DeleteSessionResponse) {
 // 删除CC攻击的session设置
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_SESSIONINUSED = "FailedOperation.SessionInUsed"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERR = "InternalError.DBErr"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_SESSIONINUSED = "UnsupportedOperation.SessionInUsed"
 func (c *Client) DeleteSession(request *DeleteSessionRequest) (response *DeleteSessionResponse, err error) {
     return c.DeleteSessionWithContext(context.Background(), request)
 }
@@ -3186,10 +3198,10 @@ func (c *Client) DeleteSession(request *DeleteSessionRequest) (response *DeleteS
 // 删除CC攻击的session设置
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_SESSIONINUSED = "FailedOperation.SessionInUsed"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERR = "InternalError.DBErr"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_SESSIONINUSED = "UnsupportedOperation.SessionInUsed"
 func (c *Client) DeleteSessionWithContext(ctx context.Context, request *DeleteSessionRequest) (response *DeleteSessionResponse, err error) {
     if request == nil {
         request = NewDeleteSessionRequest()
@@ -14839,21 +14851,35 @@ func NewUpsertSessionResponse() (response *UpsertSessionResponse) {
 }
 
 // UpsertSession
-// Waf  会话定义 Upsert接口
+// 新增或更新WAF会话（Session）定义
+//
+// 说明：SessionID传-1时为新增，传已有ID时为更新。每个域名最多支持10条会话规则。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED_SPECIFICATIONERR = "LimitExceeded.SpecificationErr"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_INVALIDREQUEST = "UnsupportedOperation.InvalidRequest"
 func (c *Client) UpsertSession(request *UpsertSessionRequest) (response *UpsertSessionResponse, err error) {
     return c.UpsertSessionWithContext(context.Background(), request)
 }
 
 // UpsertSession
-// Waf  会话定义 Upsert接口
+// 新增或更新WAF会话（Session）定义
+//
+// 说明：SessionID传-1时为新增，传已有ID时为更新。每个域名最多支持10条会话规则。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED_SPECIFICATIONERR = "LimitExceeded.SpecificationErr"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_INVALIDREQUEST = "UnsupportedOperation.InvalidRequest"
 func (c *Client) UpsertSessionWithContext(ctx context.Context, request *UpsertSessionRequest) (response *UpsertSessionResponse, err error) {
     if request == nil {
         request = NewUpsertSessionRequest()

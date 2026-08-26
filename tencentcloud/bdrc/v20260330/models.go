@@ -1378,33 +1378,39 @@ func (r *CreateDisasterRecoveryVpcMappingResponse) FromJsonString(s string) erro
 
 // Predefined struct for user
 type CreateFileBackupPlanRequestParams struct {
-	// 备份策略ID
+	// <p>备份策略ID</p>
 	PolicyId *string `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
 
-	// 备份库ID
+	// <p>备份库ID</p>
 	BackupStorageId *string `json:"BackupStorageId,omitnil,omitempty" name:"BackupStorageId"`
 
-	// 计划名称
+	// <p>计划名称</p>
 	PlanName *string `json:"PlanName,omitnil,omitempty" name:"PlanName"`
 
-	// 实例配置列表，[1,20]
+	// <p>实例配置列表，[1,20]</p>
 	Resources []*ResourcePlan `json:"Resources,omitnil,omitempty" name:"Resources"`
+
+	// <p>资源类型</p><p>枚举值：</p><ul><li>CVM_AGENT： CVM文件备份</li><li>CFS_AGENT： 文件系统备份</li><li>COS_AGENT： COS备份</li></ul><p>默认值：CVM_AGENT</p>
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 }
 
 type CreateFileBackupPlanRequest struct {
 	*tchttp.BaseRequest
 	
-	// 备份策略ID
+	// <p>备份策略ID</p>
 	PolicyId *string `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
 
-	// 备份库ID
+	// <p>备份库ID</p>
 	BackupStorageId *string `json:"BackupStorageId,omitnil,omitempty" name:"BackupStorageId"`
 
-	// 计划名称
+	// <p>计划名称</p>
 	PlanName *string `json:"PlanName,omitnil,omitempty" name:"PlanName"`
 
-	// 实例配置列表，[1,20]
+	// <p>实例配置列表，[1,20]</p>
 	Resources []*ResourcePlan `json:"Resources,omitnil,omitempty" name:"Resources"`
+
+	// <p>资源类型</p><p>枚举值：</p><ul><li>CVM_AGENT： CVM文件备份</li><li>CFS_AGENT： 文件系统备份</li><li>COS_AGENT： COS备份</li></ul><p>默认值：CVM_AGENT</p>
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 }
 
 func (r *CreateFileBackupPlanRequest) ToJsonString() string {
@@ -1423,6 +1429,7 @@ func (r *CreateFileBackupPlanRequest) FromJsonString(s string) error {
 	delete(f, "BackupStorageId")
 	delete(f, "PlanName")
 	delete(f, "Resources")
+	delete(f, "ResourceType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFileBackupPlanRequest has unknown keys!", "")
 	}
@@ -1431,7 +1438,7 @@ func (r *CreateFileBackupPlanRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateFileBackupPlanResponseParams struct {
-	// 备份计划 ID 列表
+	// <p>备份计划 ID 列表</p>
 	PlanIds []*string `json:"PlanIds,omitnil,omitempty" name:"PlanIds"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

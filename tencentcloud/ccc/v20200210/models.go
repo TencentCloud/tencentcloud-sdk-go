@@ -970,61 +970,59 @@ func (r *ControlAIConversationResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateAIAgentCallRequestParams struct {
-	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	// <p>应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc</p>
 	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// AI智能体ID
+	// <p>AI智能体ID</p>
 	AIAgentId *uint64 `json:"AIAgentId,omitnil,omitempty" name:"AIAgentId"`
 
-	// 被叫号码
+	// <p>被叫号码</p>
 	Callee *string `json:"Callee,omitnil,omitempty" name:"Callee"`
 
-	// 主叫号码列表
+	// <p>主叫号码列表</p>
 	Callers []*string `json:"Callers,omitnil,omitempty" name:"Callers"`
 
-	// 提示词变量
+	// <p>提示词变量</p>
 	//
 	// Deprecated: PromptVariables is deprecated.
 	PromptVariables []*Variable `json:"PromptVariables,omitnil,omitempty" name:"PromptVariables"`
 
-	// 通用变量： <p>提示词变量</p> <p>欢迎语变量</p> <p> 欢迎语延迟播放(秒级)：welcome-message-delay</p>  <p> dify变量</p>  
-	// 
-	// 1. dify-inputs-xxx 为dify的inputs变量
-	// 2.  dify-inputs-user 为dify的user值
-	// 3.  dify-inputs-conversation_id 为dify的conversation_id值
+	// <p>通用变量： <p>提示词变量</p> <p>欢迎语变量</p> <p> 欢迎语延迟播放(秒级)：welcome-message-delay</p>  <p> dify变量</p>  </p><ol><li>dify-inputs-xxx 为dify的inputs变量</li><li>dify-inputs-user 为dify的user值</li><li>dify-inputs-conversation_id 为dify的conversation_id值</li></ol>
 	Variables []*Variable `json:"Variables,omitnil,omitempty" name:"Variables"`
 
-	// 最大振铃时长，达到时长阈值自动挂断。 仅自携号码支持当前参数
+	// <p>最大振铃时长，达到时长阈值自动挂断。 仅自携号码支持当前参数</p>
 	MaxRingTimeoutSecond *int64 `json:"MaxRingTimeoutSecond,omitnil,omitempty" name:"MaxRingTimeoutSecond"`
+
+	// <p>智能体并发不足时，排队等待超时时间，单位秒</p><p>取值范围：[0, 5]</p><p>默认值：5</p>
+	AcquireTimeoutSecond *uint64 `json:"AcquireTimeoutSecond,omitnil,omitempty" name:"AcquireTimeoutSecond"`
 }
 
 type CreateAIAgentCallRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	// <p>应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc</p>
 	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// AI智能体ID
+	// <p>AI智能体ID</p>
 	AIAgentId *uint64 `json:"AIAgentId,omitnil,omitempty" name:"AIAgentId"`
 
-	// 被叫号码
+	// <p>被叫号码</p>
 	Callee *string `json:"Callee,omitnil,omitempty" name:"Callee"`
 
-	// 主叫号码列表
+	// <p>主叫号码列表</p>
 	Callers []*string `json:"Callers,omitnil,omitempty" name:"Callers"`
 
-	// 提示词变量
+	// <p>提示词变量</p>
 	PromptVariables []*Variable `json:"PromptVariables,omitnil,omitempty" name:"PromptVariables"`
 
-	// 通用变量： <p>提示词变量</p> <p>欢迎语变量</p> <p> 欢迎语延迟播放(秒级)：welcome-message-delay</p>  <p> dify变量</p>  
-	// 
-	// 1. dify-inputs-xxx 为dify的inputs变量
-	// 2.  dify-inputs-user 为dify的user值
-	// 3.  dify-inputs-conversation_id 为dify的conversation_id值
+	// <p>通用变量： <p>提示词变量</p> <p>欢迎语变量</p> <p> 欢迎语延迟播放(秒级)：welcome-message-delay</p>  <p> dify变量</p>  </p><ol><li>dify-inputs-xxx 为dify的inputs变量</li><li>dify-inputs-user 为dify的user值</li><li>dify-inputs-conversation_id 为dify的conversation_id值</li></ol>
 	Variables []*Variable `json:"Variables,omitnil,omitempty" name:"Variables"`
 
-	// 最大振铃时长，达到时长阈值自动挂断。 仅自携号码支持当前参数
+	// <p>最大振铃时长，达到时长阈值自动挂断。 仅自携号码支持当前参数</p>
 	MaxRingTimeoutSecond *int64 `json:"MaxRingTimeoutSecond,omitnil,omitempty" name:"MaxRingTimeoutSecond"`
+
+	// <p>智能体并发不足时，排队等待超时时间，单位秒</p><p>取值范围：[0, 5]</p><p>默认值：5</p>
+	AcquireTimeoutSecond *uint64 `json:"AcquireTimeoutSecond,omitnil,omitempty" name:"AcquireTimeoutSecond"`
 }
 
 func (r *CreateAIAgentCallRequest) ToJsonString() string {
@@ -1046,6 +1044,7 @@ func (r *CreateAIAgentCallRequest) FromJsonString(s string) error {
 	delete(f, "PromptVariables")
 	delete(f, "Variables")
 	delete(f, "MaxRingTimeoutSecond")
+	delete(f, "AcquireTimeoutSecond")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAIAgentCallRequest has unknown keys!", "")
 	}
@@ -1054,7 +1053,7 @@ func (r *CreateAIAgentCallRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateAIAgentCallResponseParams struct {
-	// 新创建的会话 ID
+	// <p>新创建的会话 ID</p>
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

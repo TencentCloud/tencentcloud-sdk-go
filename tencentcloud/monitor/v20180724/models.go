@@ -1171,6 +1171,175 @@ type CoverStaffInfo struct {
 }
 
 // Predefined struct for user
+type CreateAlarmHistoryShieldRequestParams struct {
+	// 模块名，这里填“monitor”
+	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
+
+	// 屏蔽策略名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 监控类型
+	MonitorType *string `json:"MonitorType,omitnil,omitempty" name:"MonitorType"`
+
+	// 屏蔽策略id
+	ShieldPolicyId *string `json:"ShieldPolicyId,omitnil,omitempty" name:"ShieldPolicyId"`
+
+	// 屏蔽时间类型 FOREVER_SHIELD:永久屏蔽 PERIOD_SHIELD:绝对时间范围屏蔽 LOOP_SHIELD:相对时间范围屏蔽	
+	ShieldTimeType *string `json:"ShieldTimeType,omitnil,omitempty" name:"ShieldTimeType"`
+
+	// 命名空间即策略类型
+	NameSpace *string `json:"NameSpace,omitnil,omitempty" name:"NameSpace"`
+
+	// 屏蔽对象
+	ShieldObject []*string `json:"ShieldObject,omitnil,omitempty" name:"ShieldObject"`
+
+	// 指标名称
+	MetricName *string `json:"MetricName,omitnil,omitempty" name:"MetricName"`
+
+	// 屏蔽指标 为空则为全部指标
+	ShieldMetric []*string `json:"ShieldMetric,omitnil,omitempty" name:"ShieldMetric"`
+
+	// 开始时间 相对时间范围:36000 绝对时间范围:1648742400 缺省:0	
+	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间 相对时间范围:72000 绝对时间范围:1649088000 缺省:0	
+	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 循环开始日期 2022/04/01 缺省:0	
+	LoopStartDate *uint64 `json:"LoopStartDate,omitnil,omitempty" name:"LoopStartDate"`
+
+	// 循环结束日期 2022/04/05 缺省:0	
+	LoopEndDate *uint64 `json:"LoopEndDate,omitnil,omitempty" name:"LoopEndDate"`
+
+	// 需要屏蔽的告警等级，取值范围Warn,Remind,Serious	
+	ShieldAlarmLevel *string `json:"ShieldAlarmLevel,omitnil,omitempty" name:"ShieldAlarmLevel"`
+
+	// 屏蔽规则的描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 时区，东八区+8，西八区减8，以此类推	
+	TimeZone *float64 `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
+
+	// 被屏蔽的告警会话ID(历史的alarmId)
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+}
+
+type CreateAlarmHistoryShieldRequest struct {
+	*tchttp.BaseRequest
+	
+	// 模块名，这里填“monitor”
+	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
+
+	// 屏蔽策略名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 监控类型
+	MonitorType *string `json:"MonitorType,omitnil,omitempty" name:"MonitorType"`
+
+	// 屏蔽策略id
+	ShieldPolicyId *string `json:"ShieldPolicyId,omitnil,omitempty" name:"ShieldPolicyId"`
+
+	// 屏蔽时间类型 FOREVER_SHIELD:永久屏蔽 PERIOD_SHIELD:绝对时间范围屏蔽 LOOP_SHIELD:相对时间范围屏蔽	
+	ShieldTimeType *string `json:"ShieldTimeType,omitnil,omitempty" name:"ShieldTimeType"`
+
+	// 命名空间即策略类型
+	NameSpace *string `json:"NameSpace,omitnil,omitempty" name:"NameSpace"`
+
+	// 屏蔽对象
+	ShieldObject []*string `json:"ShieldObject,omitnil,omitempty" name:"ShieldObject"`
+
+	// 指标名称
+	MetricName *string `json:"MetricName,omitnil,omitempty" name:"MetricName"`
+
+	// 屏蔽指标 为空则为全部指标
+	ShieldMetric []*string `json:"ShieldMetric,omitnil,omitempty" name:"ShieldMetric"`
+
+	// 开始时间 相对时间范围:36000 绝对时间范围:1648742400 缺省:0	
+	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间 相对时间范围:72000 绝对时间范围:1649088000 缺省:0	
+	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 循环开始日期 2022/04/01 缺省:0	
+	LoopStartDate *uint64 `json:"LoopStartDate,omitnil,omitempty" name:"LoopStartDate"`
+
+	// 循环结束日期 2022/04/05 缺省:0	
+	LoopEndDate *uint64 `json:"LoopEndDate,omitnil,omitempty" name:"LoopEndDate"`
+
+	// 需要屏蔽的告警等级，取值范围Warn,Remind,Serious	
+	ShieldAlarmLevel *string `json:"ShieldAlarmLevel,omitnil,omitempty" name:"ShieldAlarmLevel"`
+
+	// 屏蔽规则的描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 时区，东八区+8，西八区减8，以此类推	
+	TimeZone *float64 `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
+
+	// 被屏蔽的告警会话ID(历史的alarmId)
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+}
+
+func (r *CreateAlarmHistoryShieldRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAlarmHistoryShieldRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Module")
+	delete(f, "Name")
+	delete(f, "MonitorType")
+	delete(f, "ShieldPolicyId")
+	delete(f, "ShieldTimeType")
+	delete(f, "NameSpace")
+	delete(f, "ShieldObject")
+	delete(f, "MetricName")
+	delete(f, "ShieldMetric")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "LoopStartDate")
+	delete(f, "LoopEndDate")
+	delete(f, "ShieldAlarmLevel")
+	delete(f, "Description")
+	delete(f, "TimeZone")
+	delete(f, "SessionId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAlarmHistoryShieldRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAlarmHistoryShieldResponseParams struct {
+	// 屏蔽规则的Id
+	ShieldId *string `json:"ShieldId,omitnil,omitempty" name:"ShieldId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateAlarmHistoryShieldResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateAlarmHistoryShieldResponseParams `json:"Response"`
+}
+
+func (r *CreateAlarmHistoryShieldResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAlarmHistoryShieldResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateAlarmNoticeRequestParams struct {
 	// <p>模块名，这里填“monitor”</p>
 	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
@@ -3616,6 +3785,74 @@ type DataPoint struct {
 }
 
 // Predefined struct for user
+type DeleteAlarmHistoryShieldsRequestParams struct {
+	// 模块名，这里填“monitor”
+	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
+
+	// 屏蔽策略Id列表
+	Shields []*string `json:"Shields,omitnil,omitempty" name:"Shields"`
+
+	// 监控类型
+	MonitorType *string `json:"MonitorType,omitnil,omitempty" name:"MonitorType"`
+}
+
+type DeleteAlarmHistoryShieldsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 模块名，这里填“monitor”
+	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
+
+	// 屏蔽策略Id列表
+	Shields []*string `json:"Shields,omitnil,omitempty" name:"Shields"`
+
+	// 监控类型
+	MonitorType *string `json:"MonitorType,omitnil,omitempty" name:"MonitorType"`
+}
+
+func (r *DeleteAlarmHistoryShieldsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAlarmHistoryShieldsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Module")
+	delete(f, "Shields")
+	delete(f, "MonitorType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAlarmHistoryShieldsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAlarmHistoryShieldsResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteAlarmHistoryShieldsResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteAlarmHistoryShieldsResponseParams `json:"Response"`
+}
+
+func (r *DeleteAlarmHistoryShieldsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAlarmHistoryShieldsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteAlarmNoticesRequestParams struct {
 	// 模块名，这里填“monitor”
 	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
@@ -5448,6 +5685,182 @@ func (r *DescribeAlarmHistoriesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAlarmHistoriesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAlarmHistoryShieldRequestParams struct {
+	// 模块名，这里填“monitor”
+	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
+
+	// 策略id
+	ShieldPolicyId *string `json:"ShieldPolicyId,omitnil,omitempty" name:"ShieldPolicyId"`
+
+	// 告警历史维度
+	ShieldObject []*string `json:"ShieldObject,omitnil,omitempty" name:"ShieldObject"`
+
+	// 指标名称
+	MetricName *string `json:"MetricName,omitnil,omitempty" name:"MetricName"`
+
+	// 屏蔽策略Id
+	ShieldId *string `json:"ShieldId,omitnil,omitempty" name:"ShieldId"`
+
+	// 告警等级
+	ShieldAlarmLevel *string `json:"ShieldAlarmLevel,omitnil,omitempty" name:"ShieldAlarmLevel"`
+
+	// 告警历史会话ID
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// 监控类型
+	MonitorType *string `json:"MonitorType,omitnil,omitempty" name:"MonitorType"`
+}
+
+type DescribeAlarmHistoryShieldRequest struct {
+	*tchttp.BaseRequest
+	
+	// 模块名，这里填“monitor”
+	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
+
+	// 策略id
+	ShieldPolicyId *string `json:"ShieldPolicyId,omitnil,omitempty" name:"ShieldPolicyId"`
+
+	// 告警历史维度
+	ShieldObject []*string `json:"ShieldObject,omitnil,omitempty" name:"ShieldObject"`
+
+	// 指标名称
+	MetricName *string `json:"MetricName,omitnil,omitempty" name:"MetricName"`
+
+	// 屏蔽策略Id
+	ShieldId *string `json:"ShieldId,omitnil,omitempty" name:"ShieldId"`
+
+	// 告警等级
+	ShieldAlarmLevel *string `json:"ShieldAlarmLevel,omitnil,omitempty" name:"ShieldAlarmLevel"`
+
+	// 告警历史会话ID
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// 监控类型
+	MonitorType *string `json:"MonitorType,omitnil,omitempty" name:"MonitorType"`
+}
+
+func (r *DescribeAlarmHistoryShieldRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAlarmHistoryShieldRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Module")
+	delete(f, "ShieldPolicyId")
+	delete(f, "ShieldObject")
+	delete(f, "MetricName")
+	delete(f, "ShieldId")
+	delete(f, "ShieldAlarmLevel")
+	delete(f, "SessionId")
+	delete(f, "MonitorType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAlarmHistoryShieldRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAlarmHistoryShieldResponseParams struct {
+	// 告警屏蔽规则的ID
+	ShieldId *string `json:"ShieldId,omitnil,omitempty" name:"ShieldId"`
+
+	// 监控类型
+	MonitorType *string `json:"MonitorType,omitnil,omitempty" name:"MonitorType"`
+
+	// 屏蔽策略名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 是否开启 1=开启 0=关闭
+	Enable *uint64 `json:"Enable,omitnil,omitempty" name:"Enable"`
+
+	// 监控类型展示名称
+	MonitorTypeShowName *string `json:"MonitorTypeShowName,omitnil,omitempty" name:"MonitorTypeShowName"`
+
+	// 命名空间即策略类型
+	NameSpace *string `json:"NameSpace,omitnil,omitempty" name:"NameSpace"`
+
+	// 策略类型展示名称
+	NameSpaceShowName *string `json:"NameSpaceShowName,omitnil,omitempty" name:"NameSpaceShowName"`
+
+	// 屏蔽对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShieldObject []*string `json:"ShieldObject,omitnil,omitempty" name:"ShieldObject"`
+
+	// 屏蔽指标列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShieldMetric []*ShieldMetric `json:"ShieldMetric,omitnil,omitempty" name:"ShieldMetric"`
+
+	// 屏蔽时间类型 FOREVER_SHIELD:永久屏蔽 PERIOD_SHIELD:绝对时间范围屏蔽 LOOP_SHIELD:相对时间范围屏蔽
+	ShieldTimeType *string `json:"ShieldTimeType,omitnil,omitempty" name:"ShieldTimeType"`
+
+	// 开始时间 10:00
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间 20:00
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 循环开始日期 2022/04/01
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LoopStartDate *uint64 `json:"LoopStartDate,omitnil,omitempty" name:"LoopStartDate"`
+
+	// 循环结束日期 2022/04/05
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LoopEndDate *uint64 `json:"LoopEndDate,omitnil,omitempty" name:"LoopEndDate"`
+
+	// NOT_TRIGGERED:未生效 TRIGGERING:生效中 EXPIRED:已过期
+	CurrentStatus *string `json:"CurrentStatus,omitnil,omitempty" name:"CurrentStatus"`
+
+	// 需要屏蔽的策略ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShieldPolicyId *string `json:"ShieldPolicyId,omitnil,omitempty" name:"ShieldPolicyId"`
+
+	// 需要屏蔽的告警等级
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShieldAlarmLevel []*string `json:"ShieldAlarmLevel,omitnil,omitempty" name:"ShieldAlarmLevel"`
+
+	// 屏蔽类型，1为维度屏蔽，0为实例名称屏蔽
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShieldTag *string `json:"ShieldTag,omitnil,omitempty" name:"ShieldTag"`
+
+	// 指标名称
+	MetricName *string `json:"MetricName,omitnil,omitempty" name:"MetricName"`
+
+	// 时区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimeZone *float64 `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
+
+	// 告警历史会话ID
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAlarmHistoryShieldResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAlarmHistoryShieldResponseParams `json:"Response"`
+}
+
+func (r *DescribeAlarmHistoryShieldResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAlarmHistoryShieldResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -13317,6 +13730,165 @@ type MidQueryCondition struct {
 }
 
 // Predefined struct for user
+type ModifyAlarmHistoryShieldRequestParams struct {
+	// 模块名，这里填“monitor”
+	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
+
+	// 屏蔽策略的Id
+	ShieldId *string `json:"ShieldId,omitnil,omitempty" name:"ShieldId"`
+
+	// 屏蔽策略名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 监控类型
+	MonitorType *string `json:"MonitorType,omitnil,omitempty" name:"MonitorType"`
+
+	// 屏蔽时间类型 FOREVER_SHIELD:永久屏蔽 PERIOD_SHIELD:绝对时间范围屏蔽 LOOP_SHIELD:相对时间范围屏蔽
+	ShieldTimeType *string `json:"ShieldTimeType,omitnil,omitempty" name:"ShieldTimeType"`
+
+	// 需要屏蔽的策略ID
+	ShieldPolicyId *string `json:"ShieldPolicyId,omitnil,omitempty" name:"ShieldPolicyId"`
+
+	// 命名空间即策略类型
+	NameSpace *string `json:"NameSpace,omitnil,omitempty" name:"NameSpace"`
+
+	// 屏蔽对象
+	ShieldObject []*string `json:"ShieldObject,omitnil,omitempty" name:"ShieldObject"`
+
+	// 指标名称
+	MetricName *string `json:"MetricName,omitnil,omitempty" name:"MetricName"`
+
+	// 开始时间 相对时间范围:36000 绝对时间范围:1648742400 缺省:0
+	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间 相对时间范围:72000 绝对时间范围:1649088000 缺省:0
+	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 循环开始日期 2022/04/01 缺省:0
+	LoopStartDate *uint64 `json:"LoopStartDate,omitnil,omitempty" name:"LoopStartDate"`
+
+	// 循环结束日期 2022/04/05 缺省:0
+	LoopEndDate *uint64 `json:"LoopEndDate,omitnil,omitempty" name:"LoopEndDate"`
+
+	// 需要屏蔽的告警等级
+	ShieldAlarmLevel *string `json:"ShieldAlarmLevel,omitnil,omitempty" name:"ShieldAlarmLevel"`
+
+	//  时区，东八区+8，西八区减8，以此类推
+	TimeZone *float64 `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
+
+	// 告警历史会话ID
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+}
+
+type ModifyAlarmHistoryShieldRequest struct {
+	*tchttp.BaseRequest
+	
+	// 模块名，这里填“monitor”
+	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
+
+	// 屏蔽策略的Id
+	ShieldId *string `json:"ShieldId,omitnil,omitempty" name:"ShieldId"`
+
+	// 屏蔽策略名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 监控类型
+	MonitorType *string `json:"MonitorType,omitnil,omitempty" name:"MonitorType"`
+
+	// 屏蔽时间类型 FOREVER_SHIELD:永久屏蔽 PERIOD_SHIELD:绝对时间范围屏蔽 LOOP_SHIELD:相对时间范围屏蔽
+	ShieldTimeType *string `json:"ShieldTimeType,omitnil,omitempty" name:"ShieldTimeType"`
+
+	// 需要屏蔽的策略ID
+	ShieldPolicyId *string `json:"ShieldPolicyId,omitnil,omitempty" name:"ShieldPolicyId"`
+
+	// 命名空间即策略类型
+	NameSpace *string `json:"NameSpace,omitnil,omitempty" name:"NameSpace"`
+
+	// 屏蔽对象
+	ShieldObject []*string `json:"ShieldObject,omitnil,omitempty" name:"ShieldObject"`
+
+	// 指标名称
+	MetricName *string `json:"MetricName,omitnil,omitempty" name:"MetricName"`
+
+	// 开始时间 相对时间范围:36000 绝对时间范围:1648742400 缺省:0
+	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间 相对时间范围:72000 绝对时间范围:1649088000 缺省:0
+	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 循环开始日期 2022/04/01 缺省:0
+	LoopStartDate *uint64 `json:"LoopStartDate,omitnil,omitempty" name:"LoopStartDate"`
+
+	// 循环结束日期 2022/04/05 缺省:0
+	LoopEndDate *uint64 `json:"LoopEndDate,omitnil,omitempty" name:"LoopEndDate"`
+
+	// 需要屏蔽的告警等级
+	ShieldAlarmLevel *string `json:"ShieldAlarmLevel,omitnil,omitempty" name:"ShieldAlarmLevel"`
+
+	//  时区，东八区+8，西八区减8，以此类推
+	TimeZone *float64 `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
+
+	// 告警历史会话ID
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+}
+
+func (r *ModifyAlarmHistoryShieldRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAlarmHistoryShieldRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Module")
+	delete(f, "ShieldId")
+	delete(f, "Name")
+	delete(f, "MonitorType")
+	delete(f, "ShieldTimeType")
+	delete(f, "ShieldPolicyId")
+	delete(f, "NameSpace")
+	delete(f, "ShieldObject")
+	delete(f, "MetricName")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "LoopStartDate")
+	delete(f, "LoopEndDate")
+	delete(f, "ShieldAlarmLevel")
+	delete(f, "TimeZone")
+	delete(f, "SessionId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAlarmHistoryShieldRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAlarmHistoryShieldResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyAlarmHistoryShieldResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyAlarmHistoryShieldResponseParams `json:"Response"`
+}
+
+func (r *ModifyAlarmHistoryShieldResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAlarmHistoryShieldResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyAlarmNoticeRequestParams struct {
 	// <p>模块名，这里填“monitor”</p>
 	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
@@ -15405,34 +15977,37 @@ type PrometheusAlertmanagerConfigV2 struct {
 }
 
 type PrometheusClusterAgentBasic struct {
-	// 地域
+	// <p>地域</p>
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 集群类型。可填入tke、eks、tkeedge、tdcc、external，分别代表标准集群、弹性集群、边缘集群、注册集群 和外部集群
+	// <p>集群类型。可填入tke、eks、tkeedge、tdcc、external，分别代表标准集群、弹性集群、边缘集群、注册集群 和外部集群</p>
 	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 
-	// 集群 ID
+	// <p>集群 ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 是否开启公网 CLB
+	// <p>是否开启公网 CLB</p>
 	EnableExternal *bool `json:"EnableExternal,omitnil,omitempty" name:"EnableExternal"`
 
-	// 集群内部署组件的pod 配置
+	// <p>集群内部署组件的pod 配置</p>
 	InClusterPodConfig *PrometheusClusterAgentPodConfig `json:"InClusterPodConfig,omitnil,omitempty" name:"InClusterPodConfig"`
 
-	// 该集群采集的所有指标都会带上这些labels
+	// <p>该集群采集的所有指标都会带上这些labels</p>
 	ExternalLabels []*Label `json:"ExternalLabels,omitnil,omitempty" name:"ExternalLabels"`
 
-	// 是否安装默认采集 exporter 和采集配置
+	// <p>是否安装默认采集 exporter 和采集配置</p>
 	NotInstallBasicScrape *bool `json:"NotInstallBasicScrape,omitnil,omitempty" name:"NotInstallBasicScrape"`
 
-	// 是否安装采集配置，true 只安装采集 exporter 不会安装采集配置，false 会同时安装采集配置
+	// <p>是否安装采集配置，true 只安装采集 exporter 不会安装采集配置，false 会同时安装采集配置</p>
 	NotScrape *bool `json:"NotScrape,omitnil,omitempty" name:"NotScrape"`
 
-	// 是否丢弃所有指标，true 代表丢弃所有指标，false 代表采集默认指标
+	// <p>是否丢弃所有指标，true 代表丢弃所有指标，false 代表采集默认指标</p>
 	DropAll *bool `json:"DropAll,omitnil,omitempty" name:"DropAll"`
 
-	// 是否开启默认预聚合规则
+	// <p>是否采集全部指标</p><p>枚举值：</p><ul><li>false： 不采集</li><li>true： 采集</li></ul><p>默认值：false</p>
+	CollectAll *bool `json:"CollectAll,omitnil,omitempty" name:"CollectAll"`
+
+	// <p>是否开启默认预聚合规则</p>
 	OpenDefaultRecord *bool `json:"OpenDefaultRecord,omitnil,omitempty" name:"OpenDefaultRecord"`
 }
 
@@ -16600,6 +17175,14 @@ func (r *SetDefaultAlarmPolicyResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *SetDefaultAlarmPolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type ShieldMetric struct {
+	// 屏蔽指标
+	Metric *string `json:"Metric,omitnil,omitempty" name:"Metric"`
+
+	// 屏蔽指标展示名称
+	MetricShowName *string `json:"MetricShowName,omitnil,omitempty" name:"MetricShowName"`
 }
 
 type SingleOrderedDataPoint struct {

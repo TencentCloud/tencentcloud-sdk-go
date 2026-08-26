@@ -412,6 +412,12 @@ type AIGWLogConfig struct {
 
 	// <p>上游原始 payload access log 输出模式</p><p>枚举值：</p><ul><li>raw： access log 中 body 记录客户端原始上游响应</li><li>processed： access log 中 body 记录 AI 网关协议适配、改写、归一化后的 OpenAI-compatible 内容</li></ul>
 	ResponseLogPayloadMode *string `json:"ResponseLogPayloadMode,omitnil,omitempty" name:"ResponseLogPayloadMode"`
+
+	// <p>请求 Body 大小裁剪策略</p><p>枚举值：</p><ul><li>Bounded： 裁剪大小</li><li>UnBounded： 不裁剪大小</li></ul>
+	RequestLogPayloadTruncationPolicy *string `json:"RequestLogPayloadTruncationPolicy,omitnil,omitempty" name:"RequestLogPayloadTruncationPolicy"`
+
+	// <p>响应 Body 大小裁剪策略</p><p>枚举值：</p><ul><li>Bounded： 裁剪大小</li><li>UnBounded： 不裁剪大小</li></ul>
+	ResponseLogPayloadTruncationPolicy *string `json:"ResponseLogPayloadTruncationPolicy,omitnil,omitempty" name:"ResponseLogPayloadTruncationPolicy"`
 }
 
 type AIGWLogDesensitizeConfig struct {

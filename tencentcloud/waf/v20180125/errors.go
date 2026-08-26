@@ -68,9 +68,6 @@ const (
 	// FailedOperation.SearchTimeout
 	FAILEDOPERATION_SEARCHTIMEOUT = "FailedOperation.SearchTimeout"
 
-	// 删除的Session正在被启用
-	FAILEDOPERATION_SESSIONINUSED = "FailedOperation.SessionInUsed"
-
 	// FailedOperation.SyntaxError
 	FAILEDOPERATION_SYNTAXERROR = "FailedOperation.SyntaxError"
 
@@ -370,4 +367,7 @@ const (
 
 	// InvalidRequest
 	UNSUPPORTEDOPERATION_INVALIDREQUEST = "UnsupportedOperation.InvalidRequest"
+
+	// 不支持的操作，会话配置在被引用
+	UNSUPPORTEDOPERATION_SESSIONINUSED = "UnsupportedOperation.SessionInUsed"
 )

@@ -5095,6 +5095,58 @@ func (c *Client) CreateHighBaseLineRisksExportJobWithContext(ctx context.Context
     return
 }
 
+func NewCreateHostImageListExportJobRequest() (request *CreateHostImageListExportJobRequest) {
+    request = &CreateHostImageListExportJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "CreateHostImageListExportJob")
+    
+    
+    return
+}
+
+func NewCreateHostImageListExportJobResponse() (response *CreateHostImageListExportJobResponse) {
+    response = &CreateHostImageListExportJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateHostImageListExportJob
+// 创建本地镜像列表导出任务。导出字段包含镜像ID、镜像名、镜像版本、关联容器数、关联主机数、创建时间、所属账号昵称，以及扫描状态/漏洞/木马/敏感信息等风险字段。支持Filter过滤。导出通过异步任务实现，返回JobId后前端轮询查询导出任务状态。单账号模式下自动排除NickName字段。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateHostImageListExportJob(request *CreateHostImageListExportJobRequest) (response *CreateHostImageListExportJobResponse, err error) {
+    return c.CreateHostImageListExportJobWithContext(context.Background(), request)
+}
+
+// CreateHostImageListExportJob
+// 创建本地镜像列表导出任务。导出字段包含镜像ID、镜像名、镜像版本、关联容器数、关联主机数、创建时间、所属账号昵称，以及扫描状态/漏洞/木马/敏感信息等风险字段。支持Filter过滤。导出通过异步任务实现，返回JobId后前端轮询查询导出任务状态。单账号模式下自动排除NickName字段。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateHostImageListExportJobWithContext(ctx context.Context, request *CreateHostImageListExportJobRequest) (response *CreateHostImageListExportJobResponse, err error) {
+    if request == nil {
+        request = NewCreateHostImageListExportJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "CreateHostImageListExportJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateHostImageListExportJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateHostImageListExportJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateHostVulExportJobRequest() (request *CreateHostVulExportJobRequest) {
     request = &CreateHostVulExportJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6907,6 +6959,342 @@ func (c *Client) CreateRiskDetailExportJobWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewCreateRiskDetailExportJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateSandboxACLRuleRequest() (request *CreateSandboxACLRuleRequest) {
+    request = &CreateSandboxACLRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "CreateSandboxACLRule")
+    
+    
+    return
+}
+
+func NewCreateSandboxACLRuleResponse() (response *CreateSandboxACLRuleResponse) {
+    response = &CreateSandboxACLRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateSandboxACLRule
+// 创建一条 ACL 用户访问控制规则。可选择引用若干条系统规则，亦可自定义规则，两者至少提供其一
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateSandboxACLRule(request *CreateSandboxACLRuleRequest) (response *CreateSandboxACLRuleResponse, err error) {
+    return c.CreateSandboxACLRuleWithContext(context.Background(), request)
+}
+
+// CreateSandboxACLRule
+// 创建一条 ACL 用户访问控制规则。可选择引用若干条系统规则，亦可自定义规则，两者至少提供其一
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateSandboxACLRuleWithContext(ctx context.Context, request *CreateSandboxACLRuleRequest) (response *CreateSandboxACLRuleResponse, err error) {
+    if request == nil {
+        request = NewCreateSandboxACLRuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "CreateSandboxACLRule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateSandboxACLRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateSandboxACLRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateSandboxDLPRuleRequest() (request *CreateSandboxDLPRuleRequest) {
+    request = &CreateSandboxDLPRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "CreateSandboxDLPRule")
+    
+    
+    return
+}
+
+func NewCreateSandboxDLPRuleResponse() (response *CreateSandboxDLPRuleResponse) {
+    response = &CreateSandboxDLPRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateSandboxDLPRule
+// 创建一条 DLP 用户规则。可引用若干系统规则（SystemRuleIDList），亦可自定义规则（UserRuleContent，名称 + 正则），两者至少提供其一；UserRuleInfo 为新增可选的结构化入参，与 UserRuleContent 同时传入时以 UserRuleInfo 为准
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateSandboxDLPRule(request *CreateSandboxDLPRuleRequest) (response *CreateSandboxDLPRuleResponse, err error) {
+    return c.CreateSandboxDLPRuleWithContext(context.Background(), request)
+}
+
+// CreateSandboxDLPRule
+// 创建一条 DLP 用户规则。可引用若干系统规则（SystemRuleIDList），亦可自定义规则（UserRuleContent，名称 + 正则），两者至少提供其一；UserRuleInfo 为新增可选的结构化入参，与 UserRuleContent 同时传入时以 UserRuleInfo 为准
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateSandboxDLPRuleWithContext(ctx context.Context, request *CreateSandboxDLPRuleRequest) (response *CreateSandboxDLPRuleResponse, err error) {
+    if request == nil {
+        request = NewCreateSandboxDLPRuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "CreateSandboxDLPRule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateSandboxDLPRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateSandboxDLPRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateSandboxFileRuleRequest() (request *CreateSandboxFileRuleRequest) {
+    request = &CreateSandboxFileRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "CreateSandboxFileRule")
+    
+    
+    return
+}
+
+func NewCreateSandboxFileRuleResponse() (response *CreateSandboxFileRuleResponse) {
+    response = &CreateSandboxFileRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateSandboxFileRule
+// 创建命令沙箱文件访问规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateSandboxFileRule(request *CreateSandboxFileRuleRequest) (response *CreateSandboxFileRuleResponse, err error) {
+    return c.CreateSandboxFileRuleWithContext(context.Background(), request)
+}
+
+// CreateSandboxFileRule
+// 创建命令沙箱文件访问规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateSandboxFileRuleWithContext(ctx context.Context, request *CreateSandboxFileRuleRequest) (response *CreateSandboxFileRuleResponse, err error) {
+    if request == nil {
+        request = NewCreateSandboxFileRuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "CreateSandboxFileRule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateSandboxFileRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateSandboxFileRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateSandboxLLMAuditRuleRequest() (request *CreateSandboxLLMAuditRuleRequest) {
+    request = &CreateSandboxLLMAuditRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "CreateSandboxLLMAuditRule")
+    
+    
+    return
+}
+
+func NewCreateSandboxLLMAuditRuleResponse() (response *CreateSandboxLLMAuditRuleResponse) {
+    response = &CreateSandboxLLMAuditRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateSandboxLLMAuditRule
+// 创建一条 LLM 审计用户规则。必须引用至少一条系统规则，不支持用户自定义规则内容
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateSandboxLLMAuditRule(request *CreateSandboxLLMAuditRuleRequest) (response *CreateSandboxLLMAuditRuleResponse, err error) {
+    return c.CreateSandboxLLMAuditRuleWithContext(context.Background(), request)
+}
+
+// CreateSandboxLLMAuditRule
+// 创建一条 LLM 审计用户规则。必须引用至少一条系统规则，不支持用户自定义规则内容
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateSandboxLLMAuditRuleWithContext(ctx context.Context, request *CreateSandboxLLMAuditRuleRequest) (response *CreateSandboxLLMAuditRuleResponse, err error) {
+    if request == nil {
+        request = NewCreateSandboxLLMAuditRuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "CreateSandboxLLMAuditRule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateSandboxLLMAuditRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateSandboxLLMAuditRuleResponse()
     err = c.Send(request, response)
     return
 }
@@ -10411,6 +10799,258 @@ func (c *Client) DeleteRiskScanTaskWithContext(ctx context.Context, request *Del
     return
 }
 
+func NewDeleteSandboxACLRuleRequest() (request *DeleteSandboxACLRuleRequest) {
+    request = &DeleteSandboxACLRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DeleteSandboxACLRule")
+    
+    
+    return
+}
+
+func NewDeleteSandboxACLRuleResponse() (response *DeleteSandboxACLRuleResponse) {
+    response = &DeleteSandboxACLRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteSandboxACLRule
+// 批量删除 ACL 用户规则。删除后规则不再返回到列表查询，并不再对流量生效。任一 ID 不存在或属于其他租户时整体返回错误
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteSandboxACLRule(request *DeleteSandboxACLRuleRequest) (response *DeleteSandboxACLRuleResponse, err error) {
+    return c.DeleteSandboxACLRuleWithContext(context.Background(), request)
+}
+
+// DeleteSandboxACLRule
+// 批量删除 ACL 用户规则。删除后规则不再返回到列表查询，并不再对流量生效。任一 ID 不存在或属于其他租户时整体返回错误
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteSandboxACLRuleWithContext(ctx context.Context, request *DeleteSandboxACLRuleRequest) (response *DeleteSandboxACLRuleResponse, err error) {
+    if request == nil {
+        request = NewDeleteSandboxACLRuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DeleteSandboxACLRule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteSandboxACLRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteSandboxACLRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteSandboxDLPRuleRequest() (request *DeleteSandboxDLPRuleRequest) {
+    request = &DeleteSandboxDLPRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DeleteSandboxDLPRule")
+    
+    
+    return
+}
+
+func NewDeleteSandboxDLPRuleResponse() (response *DeleteSandboxDLPRuleResponse) {
+    response = &DeleteSandboxDLPRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteSandboxDLPRule
+// 批量删除 DLP 用户规则。任一 ID 不存在或属于其他租户时整体返回错误
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteSandboxDLPRule(request *DeleteSandboxDLPRuleRequest) (response *DeleteSandboxDLPRuleResponse, err error) {
+    return c.DeleteSandboxDLPRuleWithContext(context.Background(), request)
+}
+
+// DeleteSandboxDLPRule
+// 批量删除 DLP 用户规则。任一 ID 不存在或属于其他租户时整体返回错误
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteSandboxDLPRuleWithContext(ctx context.Context, request *DeleteSandboxDLPRuleRequest) (response *DeleteSandboxDLPRuleResponse, err error) {
+    if request == nil {
+        request = NewDeleteSandboxDLPRuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DeleteSandboxDLPRule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteSandboxDLPRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteSandboxDLPRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteSandboxFileRuleRequest() (request *DeleteSandboxFileRuleRequest) {
+    request = &DeleteSandboxFileRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DeleteSandboxFileRule")
+    
+    
+    return
+}
+
+func NewDeleteSandboxFileRuleResponse() (response *DeleteSandboxFileRuleResponse) {
+    response = &DeleteSandboxFileRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteSandboxFileRule
+// 创建命令沙箱文件访问规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteSandboxFileRule(request *DeleteSandboxFileRuleRequest) (response *DeleteSandboxFileRuleResponse, err error) {
+    return c.DeleteSandboxFileRuleWithContext(context.Background(), request)
+}
+
+// DeleteSandboxFileRule
+// 创建命令沙箱文件访问规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteSandboxFileRuleWithContext(ctx context.Context, request *DeleteSandboxFileRuleRequest) (response *DeleteSandboxFileRuleResponse, err error) {
+    if request == nil {
+        request = NewDeleteSandboxFileRuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DeleteSandboxFileRule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteSandboxFileRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteSandboxFileRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteSandboxLLMAuditRuleRequest() (request *DeleteSandboxLLMAuditRuleRequest) {
     request = &DeleteSandboxLLMAuditRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -12089,6 +12729,62 @@ func (c *Client) DescribeAccessKeyUserListWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewDescribeAccessKeyUserListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAccessKeyWhiteListRequest() (request *DescribeAccessKeyWhiteListRequest) {
+    request = &DescribeAccessKeyWhiteListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeAccessKeyWhiteList")
+    
+    
+    return
+}
+
+func NewDescribeAccessKeyWhiteListResponse() (response *DescribeAccessKeyWhiteListResponse) {
+    response = &DescribeAccessKeyWhiteListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAccessKeyWhiteList
+// 访问密钥告警记录列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeAccessKeyWhiteList(request *DescribeAccessKeyWhiteListRequest) (response *DescribeAccessKeyWhiteListResponse, err error) {
+    return c.DescribeAccessKeyWhiteListWithContext(context.Background(), request)
+}
+
+// DescribeAccessKeyWhiteList
+// 访问密钥告警记录列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeAccessKeyWhiteListWithContext(ctx context.Context, request *DescribeAccessKeyWhiteListRequest) (response *DescribeAccessKeyWhiteListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAccessKeyWhiteListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeAccessKeyWhiteList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAccessKeyWhiteList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAccessKeyWhiteListResponse()
     err = c.Send(request, response)
     return
 }
@@ -15561,6 +16257,116 @@ func (c *Client) DescribeCLSLogListV3WithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeCSCPayInfoRequest() (request *DescribeCSCPayInfoRequest) {
+    request = &DescribeCSCPayInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeCSCPayInfo")
+    
+    
+    return
+}
+
+func NewDescribeCSCPayInfoResponse() (response *DescribeCSCPayInfoResponse) {
+    response = &DescribeCSCPayInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCSCPayInfo
+// 查询当前账号的合并版计费信息，包括订单状态、付费模式以及配额等详细信息。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
+//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
+//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
+//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DECRYPTERROR = "InvalidParameter.DecryptError"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_SQLQUERYFAILED = "InvalidParameterValue.SQLQueryFailed"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEINSUFFICIENT_LOGANALYSISQUANTITYINSUFFICIENT = "ResourceInsufficient.LogAnalysisQuantityInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_CLOUDAUDIT = "UnauthorizedOperation.CloudAudit"
+//  UNAUTHORIZEDOPERATION_COS = "UnauthorizedOperation.Cos"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCSCPayInfo(request *DescribeCSCPayInfoRequest) (response *DescribeCSCPayInfoResponse, err error) {
+    return c.DescribeCSCPayInfoWithContext(context.Background(), request)
+}
+
+// DescribeCSCPayInfo
+// 查询当前账号的合并版计费信息，包括订单状态、付费模式以及配额等详细信息。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
+//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
+//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
+//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DECRYPTERROR = "InvalidParameter.DecryptError"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_SQLQUERYFAILED = "InvalidParameterValue.SQLQueryFailed"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEINSUFFICIENT_LOGANALYSISQUANTITYINSUFFICIENT = "ResourceInsufficient.LogAnalysisQuantityInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_CLOUDAUDIT = "UnauthorizedOperation.CloudAudit"
+//  UNAUTHORIZEDOPERATION_COS = "UnauthorizedOperation.Cos"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCSCPayInfoWithContext(ctx context.Context, request *DescribeCSCPayInfoRequest) (response *DescribeCSCPayInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeCSCPayInfoRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeCSCPayInfo")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCSCPayInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCSCPayInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCSIPLicenseBindScheduleRequest() (request *DescribeCSIPLicenseBindScheduleRequest) {
     request = &DescribeCSIPLicenseBindScheduleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -15829,6 +16635,60 @@ func (c *Client) DescribeCSIPRiskStatisticsWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewDescribeCSIPRiskStatisticsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCSPMPayInfoRequest() (request *DescribeCSPMPayInfoRequest) {
+    request = &DescribeCSPMPayInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeCSPMPayInfo")
+    
+    
+    return
+}
+
+func NewDescribeCSPMPayInfoResponse() (response *DescribeCSPMPayInfoResponse) {
+    response = &DescribeCSPMPayInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCSPMPayInfo
+// 获取已购CSPM订单信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeCSPMPayInfo(request *DescribeCSPMPayInfoRequest) (response *DescribeCSPMPayInfoResponse, err error) {
+    return c.DescribeCSPMPayInfoWithContext(context.Background(), request)
+}
+
+// DescribeCSPMPayInfo
+// 获取已购CSPM订单信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeCSPMPayInfoWithContext(ctx context.Context, request *DescribeCSPMPayInfoRequest) (response *DescribeCSPMPayInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeCSPMPayInfoRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeCSPMPayInfo")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCSPMPayInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCSPMPayInfoResponse()
     err = c.Send(request, response)
     return
 }
@@ -34049,6 +34909,126 @@ func (c *Client) DescribeSandboxACLSystemRuleListWithContext(ctx context.Context
     return
 }
 
+func NewDescribeSandboxDLPAlertListRequest() (request *DescribeSandboxDLPAlertListRequest) {
+    request = &DescribeSandboxDLPAlertListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeSandboxDLPAlertList")
+    
+    
+    return
+}
+
+func NewDescribeSandboxDLPAlertListResponse() (response *DescribeSandboxDLPAlertListResponse) {
+    response = &DescribeSandboxDLPAlertListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSandboxDLPAlertList
+// 分页查询 DLP 数据泄露告警日志列表。支持按 Filter.Name=ID 精确过滤单条告警用于详情页场景
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeSandboxDLPAlertList(request *DescribeSandboxDLPAlertListRequest) (response *DescribeSandboxDLPAlertListResponse, err error) {
+    return c.DescribeSandboxDLPAlertListWithContext(context.Background(), request)
+}
+
+// DescribeSandboxDLPAlertList
+// 分页查询 DLP 数据泄露告警日志列表。支持按 Filter.Name=ID 精确过滤单条告警用于详情页场景
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeSandboxDLPAlertListWithContext(ctx context.Context, request *DescribeSandboxDLPAlertListRequest) (response *DescribeSandboxDLPAlertListResponse, err error) {
+    if request == nil {
+        request = NewDescribeSandboxDLPAlertListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeSandboxDLPAlertList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSandboxDLPAlertList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSandboxDLPAlertListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSandboxDLPRuleListRequest() (request *DescribeSandboxDLPRuleListRequest) {
+    request = &DescribeSandboxDLPRuleListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeSandboxDLPRuleList")
+    
+    
+    return
+}
+
+func NewDescribeSandboxDLPRuleListResponse() (response *DescribeSandboxDLPRuleListResponse) {
+    response = &DescribeSandboxDLPRuleListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSandboxDLPRuleList
+// 查询当前租户的 DLP 用户规则列表。传入 Filter.Name=RuleID 可精确查询单条规则（用于详情页面场景）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeSandboxDLPRuleList(request *DescribeSandboxDLPRuleListRequest) (response *DescribeSandboxDLPRuleListResponse, err error) {
+    return c.DescribeSandboxDLPRuleListWithContext(context.Background(), request)
+}
+
+// DescribeSandboxDLPRuleList
+// 查询当前租户的 DLP 用户规则列表。传入 Filter.Name=RuleID 可精确查询单条规则（用于详情页面场景）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeSandboxDLPRuleListWithContext(ctx context.Context, request *DescribeSandboxDLPRuleListRequest) (response *DescribeSandboxDLPRuleListResponse, err error) {
+    if request == nil {
+        request = NewDescribeSandboxDLPRuleListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeSandboxDLPRuleList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSandboxDLPRuleList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSandboxDLPRuleListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSandboxDLPSystemRuleListRequest() (request *DescribeSandboxDLPSystemRuleListRequest) {
     request = &DescribeSandboxDLPSystemRuleListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -34165,6 +35145,186 @@ func (c *Client) DescribeSandboxFileRuleListWithContext(ctx context.Context, req
     request.SetContext(ctx)
     
     response = NewDescribeSandboxFileRuleListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSandboxLLMAuditAlertListRequest() (request *DescribeSandboxLLMAuditAlertListRequest) {
+    request = &DescribeSandboxLLMAuditAlertListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeSandboxLLMAuditAlertList")
+    
+    
+    return
+}
+
+func NewDescribeSandboxLLMAuditAlertListResponse() (response *DescribeSandboxLLMAuditAlertListResponse) {
+    response = &DescribeSandboxLLMAuditAlertListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSandboxLLMAuditAlertList
+// 分页查询 LLM 审计告警日志列表。支持按 Filter.Name=ID 精确过滤单条告警用于详情页场景
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeSandboxLLMAuditAlertList(request *DescribeSandboxLLMAuditAlertListRequest) (response *DescribeSandboxLLMAuditAlertListResponse, err error) {
+    return c.DescribeSandboxLLMAuditAlertListWithContext(context.Background(), request)
+}
+
+// DescribeSandboxLLMAuditAlertList
+// 分页查询 LLM 审计告警日志列表。支持按 Filter.Name=ID 精确过滤单条告警用于详情页场景
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeSandboxLLMAuditAlertListWithContext(ctx context.Context, request *DescribeSandboxLLMAuditAlertListRequest) (response *DescribeSandboxLLMAuditAlertListResponse, err error) {
+    if request == nil {
+        request = NewDescribeSandboxLLMAuditAlertListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeSandboxLLMAuditAlertList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSandboxLLMAuditAlertList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSandboxLLMAuditAlertListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSandboxLLMAuditRuleListRequest() (request *DescribeSandboxLLMAuditRuleListRequest) {
+    request = &DescribeSandboxLLMAuditRuleListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeSandboxLLMAuditRuleList")
+    
+    
+    return
+}
+
+func NewDescribeSandboxLLMAuditRuleListResponse() (response *DescribeSandboxLLMAuditRuleListResponse) {
+    response = &DescribeSandboxLLMAuditRuleListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSandboxLLMAuditRuleList
+// 查询当前租户的 LLM 审计用户规则列表。LLM 审计规则不支持用户自定义内容，只能引用系统规则组合。传入 Filter.Name=RuleID 可精确查询单条规则（用于详情页面场景）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeSandboxLLMAuditRuleList(request *DescribeSandboxLLMAuditRuleListRequest) (response *DescribeSandboxLLMAuditRuleListResponse, err error) {
+    return c.DescribeSandboxLLMAuditRuleListWithContext(context.Background(), request)
+}
+
+// DescribeSandboxLLMAuditRuleList
+// 查询当前租户的 LLM 审计用户规则列表。LLM 审计规则不支持用户自定义内容，只能引用系统规则组合。传入 Filter.Name=RuleID 可精确查询单条规则（用于详情页面场景）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeSandboxLLMAuditRuleListWithContext(ctx context.Context, request *DescribeSandboxLLMAuditRuleListRequest) (response *DescribeSandboxLLMAuditRuleListResponse, err error) {
+    if request == nil {
+        request = NewDescribeSandboxLLMAuditRuleListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeSandboxLLMAuditRuleList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSandboxLLMAuditRuleList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSandboxLLMAuditRuleListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSandboxLLMAuditSystemRuleListRequest() (request *DescribeSandboxLLMAuditSystemRuleListRequest) {
+    request = &DescribeSandboxLLMAuditSystemRuleListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeSandboxLLMAuditSystemRuleList")
+    
+    
+    return
+}
+
+func NewDescribeSandboxLLMAuditSystemRuleListResponse() (response *DescribeSandboxLLMAuditSystemRuleListResponse) {
+    response = &DescribeSandboxLLMAuditSystemRuleListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSandboxLLMAuditSystemRuleList
+// 查询 LLM 审计系统规则列表，系统规则由 CSIP 平台内置（来源于 LLM 审计系统规则库），按 LLM 推理防护 / ToolCall 防护拆分为两个扁平规则数组返回，可被用户规则引用
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeSandboxLLMAuditSystemRuleList(request *DescribeSandboxLLMAuditSystemRuleListRequest) (response *DescribeSandboxLLMAuditSystemRuleListResponse, err error) {
+    return c.DescribeSandboxLLMAuditSystemRuleListWithContext(context.Background(), request)
+}
+
+// DescribeSandboxLLMAuditSystemRuleList
+// 查询 LLM 审计系统规则列表，系统规则由 CSIP 平台内置（来源于 LLM 审计系统规则库），按 LLM 推理防护 / ToolCall 防护拆分为两个扁平规则数组返回，可被用户规则引用
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeSandboxLLMAuditSystemRuleListWithContext(ctx context.Context, request *DescribeSandboxLLMAuditSystemRuleListRequest) (response *DescribeSandboxLLMAuditSystemRuleListResponse, err error) {
+    if request == nil {
+        request = NewDescribeSandboxLLMAuditSystemRuleListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeSandboxLLMAuditSystemRuleList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSandboxLLMAuditSystemRuleList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSandboxLLMAuditSystemRuleListResponse()
     err = c.Send(request, response)
     return
 }
@@ -35265,6 +36425,58 @@ func (c *Client) DescribeSourceIPAssetWithContext(ctx context.Context, request *
     return
 }
 
+func NewDescribeSourceIPDetailRequest() (request *DescribeSourceIPDetailRequest) {
+    request = &DescribeSourceIPDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeSourceIPDetail")
+    
+    
+    return
+}
+
+func NewDescribeSourceIPDetailResponse() (response *DescribeSourceIPDetailResponse) {
+    response = &DescribeSourceIPDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSourceIPDetail
+// 获取用户访问密钥资产列表（源IP视角）
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeSourceIPDetail(request *DescribeSourceIPDetailRequest) (response *DescribeSourceIPDetailResponse, err error) {
+    return c.DescribeSourceIPDetailWithContext(context.Background(), request)
+}
+
+// DescribeSourceIPDetail
+// 获取用户访问密钥资产列表（源IP视角）
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeSourceIPDetailWithContext(ctx context.Context, request *DescribeSourceIPDetailRequest) (response *DescribeSourceIPDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeSourceIPDetailRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeSourceIPDetail")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSourceIPDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSourceIPDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSubUserInfoRequest() (request *DescribeSubUserInfoRequest) {
     request = &DescribeSubUserInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -36117,6 +37329,90 @@ func (c *Client) DescribeUebaUserSummaryWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeUserAKInfoListRequest() (request *DescribeUserAKInfoListRequest) {
+    request = &DescribeUserAKInfoListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeUserAKInfoList")
+    
+    
+    return
+}
+
+func NewDescribeUserAKInfoListResponse() (response *DescribeUserAKInfoListResponse) {
+    response = &DescribeUserAKInfoListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeUserAKInfoList
+// 获取账号AK信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeUserAKInfoList(request *DescribeUserAKInfoListRequest) (response *DescribeUserAKInfoListResponse, err error) {
+    return c.DescribeUserAKInfoListWithContext(context.Background(), request)
+}
+
+// DescribeUserAKInfoList
+// 获取账号AK信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeUserAKInfoListWithContext(ctx context.Context, request *DescribeUserAKInfoListRequest) (response *DescribeUserAKInfoListResponse, err error) {
+    if request == nil {
+        request = NewDescribeUserAKInfoListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeUserAKInfoList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUserAKInfoList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeUserAKInfoListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeUserCSPMInfoListRequest() (request *DescribeUserCSPMInfoListRequest) {
     request = &DescribeUserCSPMInfoListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -36751,6 +38047,56 @@ func (c *Client) DescribeVdbAndPocInfoWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewDescribeVdbAndPocInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeVoucherEligibilityRequest() (request *DescribeVoucherEligibilityRequest) {
+    request = &DescribeVoucherEligibilityRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeVoucherEligibility")
+    
+    
+    return
+}
+
+func NewDescribeVoucherEligibilityResponse() (response *DescribeVoucherEligibilityResponse) {
+    response = &DescribeVoucherEligibilityResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeVoucherEligibility
+// 检查当前用户是否有资格领取指定活动的代金券。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeVoucherEligibility(request *DescribeVoucherEligibilityRequest) (response *DescribeVoucherEligibilityResponse, err error) {
+    return c.DescribeVoucherEligibilityWithContext(context.Background(), request)
+}
+
+// DescribeVoucherEligibility
+// 检查当前用户是否有资格领取指定活动的代金券。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeVoucherEligibilityWithContext(ctx context.Context, request *DescribeVoucherEligibilityRequest) (response *DescribeVoucherEligibilityResponse, err error) {
+    if request == nil {
+        request = NewDescribeVoucherEligibilityRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeVoucherEligibility")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVoucherEligibility require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeVoucherEligibilityResponse()
     err = c.Send(request, response)
     return
 }
@@ -38355,6 +39701,110 @@ func (c *Client) InstallClusterAgentWithContext(ctx context.Context, request *In
     return
 }
 
+func NewInstallKeySandboxSkillRequest() (request *InstallKeySandboxSkillRequest) {
+    request = &InstallKeySandboxSkillRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "InstallKeySandboxSkill")
+    
+    
+    return
+}
+
+func NewInstallKeySandboxSkillResponse() (response *InstallKeySandboxSkillResponse) {
+    response = &InstallKeySandboxSkillResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// InstallKeySandboxSkill
+// 在指定的机器实例上安装密钥沙箱SKILL。支持批量操作，一次可传入多个实例ID。安装后，目标机器上的AI Agent即可通过密钥沙箱代理访问凭据，无需接触明文密钥。已安装的实例重复调用不会报错（幂等），直接视为成功。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) InstallKeySandboxSkill(request *InstallKeySandboxSkillRequest) (response *InstallKeySandboxSkillResponse, err error) {
+    return c.InstallKeySandboxSkillWithContext(context.Background(), request)
+}
+
+// InstallKeySandboxSkill
+// 在指定的机器实例上安装密钥沙箱SKILL。支持批量操作，一次可传入多个实例ID。安装后，目标机器上的AI Agent即可通过密钥沙箱代理访问凭据，无需接触明文密钥。已安装的实例重复调用不会报错（幂等），直接视为成功。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) InstallKeySandboxSkillWithContext(ctx context.Context, request *InstallKeySandboxSkillRequest) (response *InstallKeySandboxSkillResponse, err error) {
+    if request == nil {
+        request = NewInstallKeySandboxSkillRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "InstallKeySandboxSkill")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InstallKeySandboxSkill require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewInstallKeySandboxSkillResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewInstallSandboxPluginRequest() (request *InstallSandboxPluginRequest) {
+    request = &InstallSandboxPluginRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "InstallSandboxPlugin")
+    
+    
+    return
+}
+
+func NewInstallSandboxPluginResponse() (response *InstallSandboxPluginResponse) {
+    response = &InstallSandboxPluginResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// InstallSandboxPlugin
+// 触发将流量沙箱插件安装到指定范围内的 AI Agent 资产。通过 BelongAssetType 区分主机/容器维度，通过 EffectScope 指定安装目标（INCLUDE=仅安装到指定资产，EXCLUDE=全部资产减去指定资产）。接口仅触发下发动作，不等待完成
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) InstallSandboxPlugin(request *InstallSandboxPluginRequest) (response *InstallSandboxPluginResponse, err error) {
+    return c.InstallSandboxPluginWithContext(context.Background(), request)
+}
+
+// InstallSandboxPlugin
+// 触发将流量沙箱插件安装到指定范围内的 AI Agent 资产。通过 BelongAssetType 区分主机/容器维度，通过 EffectScope 指定安装目标（INCLUDE=仅安装到指定资产，EXCLUDE=全部资产减去指定资产）。接口仅触发下发动作，不等待完成
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) InstallSandboxPluginWithContext(ctx context.Context, request *InstallSandboxPluginRequest) (response *InstallSandboxPluginResponse, err error) {
+    if request == nil {
+        request = NewInstallSandboxPluginRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "InstallSandboxPlugin")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InstallSandboxPlugin require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewInstallSandboxPluginResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyAILinkSettingRequest() (request *ModifyAILinkSettingRequest) {
     request = &ModifyAILinkSettingRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -39867,6 +41317,58 @@ func (c *Client) ModifyCSIPRaspLicenseUnBindsWithContext(ctx context.Context, re
     request.SetContext(ctx)
     
     response = NewModifyCSIPRaspLicenseUnBindsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyClusterDefendStatusRequest() (request *ModifyClusterDefendStatusRequest) {
+    request = &ModifyClusterDefendStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "ModifyClusterDefendStatus")
+    
+    
+    return
+}
+
+func NewModifyClusterDefendStatusResponse() (response *ModifyClusterDefendStatusResponse) {
+    response = &ModifyClusterDefendStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyClusterDefendStatus
+// 修改集群防护状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyClusterDefendStatus(request *ModifyClusterDefendStatusRequest) (response *ModifyClusterDefendStatusResponse, err error) {
+    return c.ModifyClusterDefendStatusWithContext(context.Background(), request)
+}
+
+// ModifyClusterDefendStatus
+// 修改集群防护状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyClusterDefendStatusWithContext(ctx context.Context, request *ModifyClusterDefendStatusRequest) (response *ModifyClusterDefendStatusResponse, err error) {
+    if request == nil {
+        request = NewModifyClusterDefendStatusRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "ModifyClusterDefendStatus")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyClusterDefendStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyClusterDefendStatusResponse()
     err = c.Send(request, response)
     return
 }
@@ -44887,6 +46389,678 @@ func (c *Client) ModifyRiskScanCronConfigWithContext(ctx context.Context, reques
     return
 }
 
+func NewModifySandboxACLRuleRequest() (request *ModifySandboxACLRuleRequest) {
+    request = &ModifySandboxACLRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "ModifySandboxACLRule")
+    
+    
+    return
+}
+
+func NewModifySandboxACLRuleResponse() (response *ModifySandboxACLRuleResponse) {
+    response = &ModifySandboxACLRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifySandboxACLRule
+// 修改已有的 ACL 用户规则。未传字段保持原值，支持部分字段更新
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifySandboxACLRule(request *ModifySandboxACLRuleRequest) (response *ModifySandboxACLRuleResponse, err error) {
+    return c.ModifySandboxACLRuleWithContext(context.Background(), request)
+}
+
+// ModifySandboxACLRule
+// 修改已有的 ACL 用户规则。未传字段保持原值，支持部分字段更新
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifySandboxACLRuleWithContext(ctx context.Context, request *ModifySandboxACLRuleRequest) (response *ModifySandboxACLRuleResponse, err error) {
+    if request == nil {
+        request = NewModifySandboxACLRuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "ModifySandboxACLRule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifySandboxACLRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifySandboxACLRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifySandboxACLRuleStatusRequest() (request *ModifySandboxACLRuleStatusRequest) {
+    request = &ModifySandboxACLRuleStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "ModifySandboxACLRuleStatus")
+    
+    
+    return
+}
+
+func NewModifySandboxACLRuleStatusResponse() (response *ModifySandboxACLRuleStatusResponse) {
+    response = &ModifySandboxACLRuleStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifySandboxACLRuleStatus
+// 批量切换 ACL 用户规则的启禁用状态。任一规则不存在、属于其他租户或已删除时整体返回错误
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifySandboxACLRuleStatus(request *ModifySandboxACLRuleStatusRequest) (response *ModifySandboxACLRuleStatusResponse, err error) {
+    return c.ModifySandboxACLRuleStatusWithContext(context.Background(), request)
+}
+
+// ModifySandboxACLRuleStatus
+// 批量切换 ACL 用户规则的启禁用状态。任一规则不存在、属于其他租户或已删除时整体返回错误
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifySandboxACLRuleStatusWithContext(ctx context.Context, request *ModifySandboxACLRuleStatusRequest) (response *ModifySandboxACLRuleStatusResponse, err error) {
+    if request == nil {
+        request = NewModifySandboxACLRuleStatusRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "ModifySandboxACLRuleStatus")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifySandboxACLRuleStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifySandboxACLRuleStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifySandboxAlertStatusRequest() (request *ModifySandboxAlertStatusRequest) {
+    request = &ModifySandboxAlertStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "ModifySandboxAlertStatus")
+    
+    
+    return
+}
+
+func NewModifySandboxAlertStatusResponse() (response *ModifySandboxAlertStatusResponse) {
+    response = &ModifySandboxAlertStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifySandboxAlertStatus
+// 批量更新流量沙箱告警（覆盖 ACL / DLP / LLM 审计三类）。通过 AlertType + BelongAssetType 定位告警来源。Status 支持 HANDLED / IGNORE 修改状态，以及 DELETE 删除。任一告警 ID 不存在或属于其他租户时整体返回错误。注：加白（PASS）不经本接口，由 Create/Modify***Rule 通过 AlertID 回写触发
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifySandboxAlertStatus(request *ModifySandboxAlertStatusRequest) (response *ModifySandboxAlertStatusResponse, err error) {
+    return c.ModifySandboxAlertStatusWithContext(context.Background(), request)
+}
+
+// ModifySandboxAlertStatus
+// 批量更新流量沙箱告警（覆盖 ACL / DLP / LLM 审计三类）。通过 AlertType + BelongAssetType 定位告警来源。Status 支持 HANDLED / IGNORE 修改状态，以及 DELETE 删除。任一告警 ID 不存在或属于其他租户时整体返回错误。注：加白（PASS）不经本接口，由 Create/Modify***Rule 通过 AlertID 回写触发
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifySandboxAlertStatusWithContext(ctx context.Context, request *ModifySandboxAlertStatusRequest) (response *ModifySandboxAlertStatusResponse, err error) {
+    if request == nil {
+        request = NewModifySandboxAlertStatusRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "ModifySandboxAlertStatus")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifySandboxAlertStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifySandboxAlertStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifySandboxDLPRuleRequest() (request *ModifySandboxDLPRuleRequest) {
+    request = &ModifySandboxDLPRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "ModifySandboxDLPRule")
+    
+    
+    return
+}
+
+func NewModifySandboxDLPRuleResponse() (response *ModifySandboxDLPRuleResponse) {
+    response = &ModifySandboxDLPRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifySandboxDLPRule
+// 修改已存在的 DLP 用户规则。未传字段保持原值，支持部分字段更新；不支持修改 BelongAssetType
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifySandboxDLPRule(request *ModifySandboxDLPRuleRequest) (response *ModifySandboxDLPRuleResponse, err error) {
+    return c.ModifySandboxDLPRuleWithContext(context.Background(), request)
+}
+
+// ModifySandboxDLPRule
+// 修改已存在的 DLP 用户规则。未传字段保持原值，支持部分字段更新；不支持修改 BelongAssetType
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifySandboxDLPRuleWithContext(ctx context.Context, request *ModifySandboxDLPRuleRequest) (response *ModifySandboxDLPRuleResponse, err error) {
+    if request == nil {
+        request = NewModifySandboxDLPRuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "ModifySandboxDLPRule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifySandboxDLPRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifySandboxDLPRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifySandboxDLPRuleStatusRequest() (request *ModifySandboxDLPRuleStatusRequest) {
+    request = &ModifySandboxDLPRuleStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "ModifySandboxDLPRuleStatus")
+    
+    
+    return
+}
+
+func NewModifySandboxDLPRuleStatusResponse() (response *ModifySandboxDLPRuleStatusResponse) {
+    response = &ModifySandboxDLPRuleStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifySandboxDLPRuleStatus
+// 批量切换 DLP 用户规则的启禁用状态。任一规则不存在、属于其他租户或已删除时整体返回错误
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifySandboxDLPRuleStatus(request *ModifySandboxDLPRuleStatusRequest) (response *ModifySandboxDLPRuleStatusResponse, err error) {
+    return c.ModifySandboxDLPRuleStatusWithContext(context.Background(), request)
+}
+
+// ModifySandboxDLPRuleStatus
+// 批量切换 DLP 用户规则的启禁用状态。任一规则不存在、属于其他租户或已删除时整体返回错误
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifySandboxDLPRuleStatusWithContext(ctx context.Context, request *ModifySandboxDLPRuleStatusRequest) (response *ModifySandboxDLPRuleStatusResponse, err error) {
+    if request == nil {
+        request = NewModifySandboxDLPRuleStatusRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "ModifySandboxDLPRuleStatus")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifySandboxDLPRuleStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifySandboxDLPRuleStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifySandboxFileRuleRequest() (request *ModifySandboxFileRuleRequest) {
+    request = &ModifySandboxFileRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "ModifySandboxFileRule")
+    
+    
+    return
+}
+
+func NewModifySandboxFileRuleResponse() (response *ModifySandboxFileRuleResponse) {
+    response = &ModifySandboxFileRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifySandboxFileRule
+// 修改命令沙箱文件访问规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifySandboxFileRule(request *ModifySandboxFileRuleRequest) (response *ModifySandboxFileRuleResponse, err error) {
+    return c.ModifySandboxFileRuleWithContext(context.Background(), request)
+}
+
+// ModifySandboxFileRule
+// 修改命令沙箱文件访问规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifySandboxFileRuleWithContext(ctx context.Context, request *ModifySandboxFileRuleRequest) (response *ModifySandboxFileRuleResponse, err error) {
+    if request == nil {
+        request = NewModifySandboxFileRuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "ModifySandboxFileRule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifySandboxFileRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifySandboxFileRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifySandboxFileRuleStatusRequest() (request *ModifySandboxFileRuleStatusRequest) {
+    request = &ModifySandboxFileRuleStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "ModifySandboxFileRuleStatus")
+    
+    
+    return
+}
+
+func NewModifySandboxFileRuleStatusResponse() (response *ModifySandboxFileRuleStatusResponse) {
+    response = &ModifySandboxFileRuleStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifySandboxFileRuleStatus
+// 批量启用或禁用命令沙箱文件访问规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifySandboxFileRuleStatus(request *ModifySandboxFileRuleStatusRequest) (response *ModifySandboxFileRuleStatusResponse, err error) {
+    return c.ModifySandboxFileRuleStatusWithContext(context.Background(), request)
+}
+
+// ModifySandboxFileRuleStatus
+// 批量启用或禁用命令沙箱文件访问规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifySandboxFileRuleStatusWithContext(ctx context.Context, request *ModifySandboxFileRuleStatusRequest) (response *ModifySandboxFileRuleStatusResponse, err error) {
+    if request == nil {
+        request = NewModifySandboxFileRuleStatusRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "ModifySandboxFileRuleStatus")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifySandboxFileRuleStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifySandboxFileRuleStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifySandboxLLMAuditRuleRequest() (request *ModifySandboxLLMAuditRuleRequest) {
+    request = &ModifySandboxLLMAuditRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "ModifySandboxLLMAuditRule")
+    
+    
+    return
+}
+
+func NewModifySandboxLLMAuditRuleResponse() (response *ModifySandboxLLMAuditRuleResponse) {
+    response = &ModifySandboxLLMAuditRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifySandboxLLMAuditRule
+// 修改已有的 LLM 审计用户规则。未传字段保持原值，支持部分字段更新
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifySandboxLLMAuditRule(request *ModifySandboxLLMAuditRuleRequest) (response *ModifySandboxLLMAuditRuleResponse, err error) {
+    return c.ModifySandboxLLMAuditRuleWithContext(context.Background(), request)
+}
+
+// ModifySandboxLLMAuditRule
+// 修改已有的 LLM 审计用户规则。未传字段保持原值，支持部分字段更新
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifySandboxLLMAuditRuleWithContext(ctx context.Context, request *ModifySandboxLLMAuditRuleRequest) (response *ModifySandboxLLMAuditRuleResponse, err error) {
+    if request == nil {
+        request = NewModifySandboxLLMAuditRuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "ModifySandboxLLMAuditRule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifySandboxLLMAuditRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifySandboxLLMAuditRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifySandboxLLMAuditRuleStatusRequest() (request *ModifySandboxLLMAuditRuleStatusRequest) {
     request = &ModifySandboxLLMAuditRuleStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -45021,6 +47195,60 @@ func (c *Client) ModifySecurityScoreRuleWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewModifySecurityScoreRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyShareUserAKRequest() (request *ModifyShareUserAKRequest) {
+    request = &ModifyShareUserAKRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "ModifyShareUserAK")
+    
+    
+    return
+}
+
+func NewModifyShareUserAKResponse() (response *ModifyShareUserAKResponse) {
+    response = &ModifyShareUserAKResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyShareUserAK
+// 编辑ak监测账号
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) ModifyShareUserAK(request *ModifyShareUserAKRequest) (response *ModifyShareUserAKResponse, err error) {
+    return c.ModifyShareUserAKWithContext(context.Background(), request)
+}
+
+// ModifyShareUserAK
+// 编辑ak监测账号
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) ModifyShareUserAKWithContext(ctx context.Context, request *ModifyShareUserAKRequest) (response *ModifyShareUserAKResponse, err error) {
+    if request == nil {
+        request = NewModifyShareUserAKRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "ModifyShareUserAK")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyShareUserAK require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyShareUserAKResponse()
     err = c.Send(request, response)
     return
 }
@@ -47325,6 +49553,58 @@ func (c *Client) UninstallClusterAgentWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewUninstallClusterAgentResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUninstallKeySandboxSkillRequest() (request *UninstallKeySandboxSkillRequest) {
+    request = &UninstallKeySandboxSkillRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "UninstallKeySandboxSkill")
+    
+    
+    return
+}
+
+func NewUninstallKeySandboxSkillResponse() (response *UninstallKeySandboxSkillResponse) {
+    response = &UninstallKeySandboxSkillResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UninstallKeySandboxSkill
+// 从指定的机器实例上卸载密钥沙箱SKILL。支持批量操作，一次可传入多个实例ID。卸载后，目标机器上的AI Agent将无法再通过密钥沙箱代理访问凭据。未安装的实例重复调用不会报错（幂等），直接视为成功。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) UninstallKeySandboxSkill(request *UninstallKeySandboxSkillRequest) (response *UninstallKeySandboxSkillResponse, err error) {
+    return c.UninstallKeySandboxSkillWithContext(context.Background(), request)
+}
+
+// UninstallKeySandboxSkill
+// 从指定的机器实例上卸载密钥沙箱SKILL。支持批量操作，一次可传入多个实例ID。卸载后，目标机器上的AI Agent将无法再通过密钥沙箱代理访问凭据。未安装的实例重复调用不会报错（幂等），直接视为成功。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) UninstallKeySandboxSkillWithContext(ctx context.Context, request *UninstallKeySandboxSkillRequest) (response *UninstallKeySandboxSkillResponse, err error) {
+    if request == nil {
+        request = NewUninstallKeySandboxSkillRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "UninstallKeySandboxSkill")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UninstallKeySandboxSkill require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUninstallKeySandboxSkillResponse()
     err = c.Send(request, response)
     return
 }

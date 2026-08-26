@@ -1406,6 +1406,12 @@ type CreateCloudInstanceRequestParams struct {
 
 	// <p>spark监控</p>
 	EnableSparkAppMonitorInfo *EnableSparkAppMonitorInfo `json:"EnableSparkAppMonitorInfo,omitnil,omitempty" name:"EnableSparkAppMonitorInfo"`
+
+	// <p>已有EMR资源节点组Id列表</p>
+	ComputeResourceGroupIds []*string `json:"ComputeResourceGroupIds,omitnil,omitempty" name:"ComputeResourceGroupIds"`
+
+	// <p>是否开启实例保护</p>
+	TerminateProtection *bool `json:"TerminateProtection,omitnil,omitempty" name:"TerminateProtection"`
 }
 
 type CreateCloudInstanceRequest struct {
@@ -1473,6 +1479,12 @@ type CreateCloudInstanceRequest struct {
 
 	// <p>spark监控</p>
 	EnableSparkAppMonitorInfo *EnableSparkAppMonitorInfo `json:"EnableSparkAppMonitorInfo,omitnil,omitempty" name:"EnableSparkAppMonitorInfo"`
+
+	// <p>已有EMR资源节点组Id列表</p>
+	ComputeResourceGroupIds []*string `json:"ComputeResourceGroupIds,omitnil,omitempty" name:"ComputeResourceGroupIds"`
+
+	// <p>是否开启实例保护</p>
+	TerminateProtection *bool `json:"TerminateProtection,omitnil,omitempty" name:"TerminateProtection"`
 }
 
 func (r *CreateCloudInstanceRequest) ToJsonString() string {
@@ -1508,6 +1520,8 @@ func (r *CreateCloudInstanceRequest) FromJsonString(s string) error {
 	delete(f, "SgIP")
 	delete(f, "ContainerExtraConf")
 	delete(f, "EnableSparkAppMonitorInfo")
+	delete(f, "ComputeResourceGroupIds")
+	delete(f, "TerminateProtection")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCloudInstanceRequest has unknown keys!", "")
 	}
@@ -7654,6 +7668,9 @@ type DynamicInstanceForm struct {
 
 	// <p>GooseFS盘</p>
 	GooseFSVolumes []*GooseFSVolume `json:"GooseFSVolumes,omitnil,omitempty" name:"GooseFSVolumes"`
+
+	// <p>开启HistoryServer</p>
+	EnableHistoryServer *bool `json:"EnableHistoryServer,omitnil,omitempty" name:"EnableHistoryServer"`
 }
 
 type DynamicInstanceGroup struct {
@@ -8224,6 +8241,29 @@ type GooseFSVolume struct {
 
 	// <p>默认JVM参数</p>
 	JvmOptions *string `json:"JvmOptions,omitnil,omitempty" name:"JvmOptions"`
+}
+
+type GpuImageDriverSpec struct {
+	// <p>镜像ID</p>
+	ImageId *string `json:"ImageId,omitnil,omitempty" name:"ImageId"`
+
+	// <p>驱动名称</p>
+	DriverName *string `json:"DriverName,omitnil,omitempty" name:"DriverName"`
+
+	// <p>驱动版本</p>
+	DriverVersion *string `json:"DriverVersion,omitnil,omitempty" name:"DriverVersion"`
+
+	// <p>CUDA名称</p>
+	CUDAName *string `json:"CUDAName,omitnil,omitempty" name:"CUDAName"`
+
+	// <p>CUDA版本</p>
+	CUDAVersion *string `json:"CUDAVersion,omitnil,omitempty" name:"CUDAVersion"`
+
+	// <p>CUDNN名称</p>
+	CUDNNName *string `json:"CUDNNName,omitnil,omitempty" name:"CUDNNName"`
+
+	// <p>CUDNN版本</p>
+	CUDNNVersion *string `json:"CUDNNVersion,omitnil,omitempty" name:"CUDNNVersion"`
 }
 
 type GroupGlobalConfs struct {
@@ -13158,6 +13198,12 @@ type Resource struct {
 
 	// <p>高性能集群ID</p>
 	HCCHpcClusterId *string `json:"HCCHpcClusterId,omitnil,omitempty" name:"HCCHpcClusterId"`
+
+	// <p>自定义主机名</p>
+	CustomNodeName *string `json:"CustomNodeName,omitnil,omitempty" name:"CustomNodeName"`
+
+	// <p>GPU镜像驱动配置</p>
+	GpuImageDriver *GpuImageDriverSpec `json:"GpuImageDriver,omitnil,omitempty" name:"GpuImageDriver"`
 }
 
 type ResourceDetail struct {
@@ -15480,23 +15526,44 @@ type UserManagerFilter struct {
 }
 
 type UserManagerUserBriefInfo struct {
-	// 用户名
+	// <p>用户名</p>
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
-	// 用户所属的组
+	// <p>用户所属的组</p>
 	UserGroup *string `json:"UserGroup,omitnil,omitempty" name:"UserGroup"`
 
-	// Manager表示管理员、NormalUser表示普通用户
+	// <p>Manager表示管理员、NormalUser表示普通用户</p>
 	UserType *string `json:"UserType,omitnil,omitempty" name:"UserType"`
 
-	// 用户创建时间
+	// <p>用户创建时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 是否可以下载用户对应的keytab文件，对开启kerberos的集群才有意义
+	// <p>是否可以下载用户对应的keytab文件，对开启kerberos的集群才有意义</p>
 	SupportDownLoadKeyTab *bool `json:"SupportDownLoadKeyTab,omitnil,omitempty" name:"SupportDownLoadKeyTab"`
 
-	// keytab文件的下载地址
+	// <p>keytab文件的下载地址</p>
 	DownLoadKeyTabUrl *string `json:"DownLoadKeyTabUrl,omitnil,omitempty" name:"DownLoadKeyTabUrl"`
+
+	// <p>用户组</p>
+	Groups []*string `json:"Groups,omitnil,omitempty" name:"Groups"`
+
+	// <p>客户UIN</p>
+	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
+
+	// <p>用户状态</p>
+	State *int64 `json:"State,omitnil,omitempty" name:"State"`
+
+	// <p>是否展示密码更新时间</p>
+	DisplayPasswdUpdateTime *bool `json:"DisplayPasswdUpdateTime,omitnil,omitempty" name:"DisplayPasswdUpdateTime"`
+
+	// <p>密码最近更新时间</p>
+	PasswdUpdateTime *string `json:"PasswdUpdateTime,omitnil,omitempty" name:"PasswdUpdateTime"`
+
+	// <p>已经使用的天数</p><p>单位：天</p>
+	PasswdUsedDay *int64 `json:"PasswdUsedDay,omitnil,omitempty" name:"PasswdUsedDay"`
+
+	// <p>已经使用的小时数</p><p>单位：时</p>
+	PasswdUsedHour *int64 `json:"PasswdUsedHour,omitnil,omitempty" name:"PasswdUsedHour"`
 }
 
 type VPCSettings struct {

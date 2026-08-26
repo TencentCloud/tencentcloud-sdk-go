@@ -3054,7 +3054,7 @@ type UpdateNativeNodePoolParam struct {
 	// <p>是否开启自愈能力</p>
 	AutoRepair *bool `json:"AutoRepair,omitnil,omitempty" name:"AutoRepair"`
 
-	// <p>计费类型</p><p>枚举值：</p><ul><li>POSTPAID_BY_HOUR： 目标计费类型为按量计费</li><li>PREPAID： 目标计费类型为包年包月计费</li></ul>
+	// <p>计费类型</p><p>枚举值：</p><ul><li>POSTPAID_BY_HOUR： 目标计费类型为按量计费</li><li>PREPAID： 目标计费类型为包年包月计费</li><li>UNDERWRITE： 目标计费类型为包销计费</li></ul>
 	InstanceChargeType *string `json:"InstanceChargeType,omitnil,omitempty" name:"InstanceChargeType"`
 
 	// <p>包年包月机型计费配置</p>

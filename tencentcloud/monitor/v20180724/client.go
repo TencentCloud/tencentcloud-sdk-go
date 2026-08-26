@@ -309,6 +309,58 @@ func (c *Client) CleanGrafanaInstanceWithContext(ctx context.Context, request *C
     return
 }
 
+func NewCreateAlarmHistoryShieldRequest() (request *CreateAlarmHistoryShieldRequest) {
+    request = &CreateAlarmHistoryShieldRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("monitor", APIVersion, "CreateAlarmHistoryShield")
+    
+    
+    return
+}
+
+func NewCreateAlarmHistoryShieldResponse() (response *CreateAlarmHistoryShieldResponse) {
+    response = &CreateAlarmHistoryShieldResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateAlarmHistoryShield
+// 创建小程序告警屏蔽规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateAlarmHistoryShield(request *CreateAlarmHistoryShieldRequest) (response *CreateAlarmHistoryShieldResponse, err error) {
+    return c.CreateAlarmHistoryShieldWithContext(context.Background(), request)
+}
+
+// CreateAlarmHistoryShield
+// 创建小程序告警屏蔽规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateAlarmHistoryShieldWithContext(ctx context.Context, request *CreateAlarmHistoryShieldRequest) (response *CreateAlarmHistoryShieldResponse, err error) {
+    if request == nil {
+        request = NewCreateAlarmHistoryShieldRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "monitor", APIVersion, "CreateAlarmHistoryShield")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAlarmHistoryShield require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateAlarmHistoryShieldResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAlarmNoticeRequest() (request *CreateAlarmNoticeRequest) {
     request = &CreateAlarmNoticeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1881,6 +1933,56 @@ func (c *Client) CreateSSOAccountWithContext(ctx context.Context, request *Creat
     request.SetContext(ctx)
     
     response = NewCreateSSOAccountResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteAlarmHistoryShieldsRequest() (request *DeleteAlarmHistoryShieldsRequest) {
+    request = &DeleteAlarmHistoryShieldsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("monitor", APIVersion, "DeleteAlarmHistoryShields")
+    
+    
+    return
+}
+
+func NewDeleteAlarmHistoryShieldsResponse() (response *DeleteAlarmHistoryShieldsResponse) {
+    response = &DeleteAlarmHistoryShieldsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteAlarmHistoryShields
+// 删除小程序告警屏蔽规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DeleteAlarmHistoryShields(request *DeleteAlarmHistoryShieldsRequest) (response *DeleteAlarmHistoryShieldsResponse, err error) {
+    return c.DeleteAlarmHistoryShieldsWithContext(context.Background(), request)
+}
+
+// DeleteAlarmHistoryShields
+// 删除小程序告警屏蔽规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DeleteAlarmHistoryShieldsWithContext(ctx context.Context, request *DeleteAlarmHistoryShieldsRequest) (response *DeleteAlarmHistoryShieldsResponse, err error) {
+    if request == nil {
+        request = NewDeleteAlarmHistoryShieldsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "monitor", APIVersion, "DeleteAlarmHistoryShields")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAlarmHistoryShields require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteAlarmHistoryShieldsResponse()
     err = c.Send(request, response)
     return
 }
@@ -3489,6 +3591,56 @@ func (c *Client) DescribeAlarmHistoriesWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewDescribeAlarmHistoriesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAlarmHistoryShieldRequest() (request *DescribeAlarmHistoryShieldRequest) {
+    request = &DescribeAlarmHistoryShieldRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("monitor", APIVersion, "DescribeAlarmHistoryShield")
+    
+    
+    return
+}
+
+func NewDescribeAlarmHistoryShieldResponse() (response *DescribeAlarmHistoryShieldResponse) {
+    response = &DescribeAlarmHistoryShieldResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAlarmHistoryShield
+// 获取小程序告警屏蔽规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeAlarmHistoryShield(request *DescribeAlarmHistoryShieldRequest) (response *DescribeAlarmHistoryShieldResponse, err error) {
+    return c.DescribeAlarmHistoryShieldWithContext(context.Background(), request)
+}
+
+// DescribeAlarmHistoryShield
+// 获取小程序告警屏蔽规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeAlarmHistoryShieldWithContext(ctx context.Context, request *DescribeAlarmHistoryShieldRequest) (response *DescribeAlarmHistoryShieldResponse, err error) {
+    if request == nil {
+        request = NewDescribeAlarmHistoryShieldRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "monitor", APIVersion, "DescribeAlarmHistoryShield")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAlarmHistoryShield require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAlarmHistoryShieldResponse()
     err = c.Send(request, response)
     return
 }
@@ -8913,6 +9065,56 @@ func (c *Client) InstallPluginsWithContext(ctx context.Context, request *Install
     request.SetContext(ctx)
     
     response = NewInstallPluginsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyAlarmHistoryShieldRequest() (request *ModifyAlarmHistoryShieldRequest) {
+    request = &ModifyAlarmHistoryShieldRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("monitor", APIVersion, "ModifyAlarmHistoryShield")
+    
+    
+    return
+}
+
+func NewModifyAlarmHistoryShieldResponse() (response *ModifyAlarmHistoryShieldResponse) {
+    response = &ModifyAlarmHistoryShieldResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyAlarmHistoryShield
+// 修改小程序告警屏蔽规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) ModifyAlarmHistoryShield(request *ModifyAlarmHistoryShieldRequest) (response *ModifyAlarmHistoryShieldResponse, err error) {
+    return c.ModifyAlarmHistoryShieldWithContext(context.Background(), request)
+}
+
+// ModifyAlarmHistoryShield
+// 修改小程序告警屏蔽规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) ModifyAlarmHistoryShieldWithContext(ctx context.Context, request *ModifyAlarmHistoryShieldRequest) (response *ModifyAlarmHistoryShieldResponse, err error) {
+    if request == nil {
+        request = NewModifyAlarmHistoryShieldRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "monitor", APIVersion, "ModifyAlarmHistoryShield")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAlarmHistoryShield require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyAlarmHistoryShieldResponse()
     err = c.Send(request, response)
     return
 }

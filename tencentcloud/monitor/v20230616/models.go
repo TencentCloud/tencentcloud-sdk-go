@@ -96,6 +96,48 @@ type AIWorkbenchSREDigitalTwinWorkLogList struct {
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 }
 
+type AgentInfo struct {
+	// <p>Agent ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AgentId *string `json:"AgentId,omitnil,omitempty" name:"AgentId"`
+
+	// <p>Agent 名称</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>Agent 描述</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>Agent 分类</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Category *string `json:"Category,omitnil,omitempty" name:"Category"`
+
+	// <p>状态: draft/configured/running/standby/disabled</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>关联技能 ID 列表</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SkillIds []*string `json:"SkillIds,omitnil,omitempty" name:"SkillIds"`
+
+	// <p>关联的资源地图 ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceMapId *string `json:"ResourceMapId,omitnil,omitempty" name:"ResourceMapId"`
+
+	// <p>关联的mcp id</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MCPIds []*string `json:"MCPIds,omitnil,omitempty" name:"MCPIds"`
+
+	// <p>资源标签</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CamTags []*Tag `json:"CamTags,omitnil,omitempty" name:"CamTags"`
+
+	// <p>agent运行时所需环境变量</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnvVars []*EnvVar `json:"EnvVars,omitnil,omitempty" name:"EnvVars"`
+}
+
 type AlarmLable struct {
 	// label name
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
@@ -158,6 +200,102 @@ type AlarmNotifyHistory struct {
 	Labels []*AlarmLable `json:"Labels,omitnil,omitempty" name:"Labels"`
 }
 
+type ArtifactInfo struct {
+	// <p>产物 ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ArtifactId *string `json:"ArtifactId,omitnil,omitempty" name:"ArtifactId"`
+
+	// <p>产物名称</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>物理类型</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MimeType *string `json:"MimeType,omitnil,omitempty" name:"MimeType"`
+
+	// <p>文件大小(字节)</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SizeBytes *int64 `json:"SizeBytes,omitnil,omitempty" name:"SizeBytes"`
+
+	// <p>是否公共</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsGlobal *bool `json:"IsGlobal,omitnil,omitempty" name:"IsGlobal"`
+
+	// <p>创建时间 Unix 秒时间戳</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatedAt *int64 `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
+
+	// <p>修改时间</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdatedAt *int64 `json:"UpdatedAt,omitnil,omitempty" name:"UpdatedAt"`
+
+	// <p>产生该制品的 Agent ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AgentId *string `json:"AgentId,omitnil,omitempty" name:"AgentId"`
+
+	// <p>产生该制品的 Skill ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SkillId *string `json:"SkillId,omitnil,omitempty" name:"SkillId"`
+
+	// <p>用于解析调用下载接口</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StoragePath *string `json:"StoragePath,omitnil,omitempty" name:"StoragePath"`
+}
+
+// Predefined struct for user
+type CancelAIWorkbenchChatRequestParams struct {
+	// <p>会话id</p>
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+}
+
+type CancelAIWorkbenchChatRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>会话id</p>
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+}
+
+func (r *CancelAIWorkbenchChatRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CancelAIWorkbenchChatRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SessionId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CancelAIWorkbenchChatRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CancelAIWorkbenchChatResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CancelAIWorkbenchChatResponse struct {
+	*tchttp.BaseResponse
+	Response *CancelAIWorkbenchChatResponseParams `json:"Response"`
+}
+
+func (r *CancelAIWorkbenchChatResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CancelAIWorkbenchChatResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ChannelsReceivers struct {
 	// 通知渠道名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -170,6 +308,291 @@ type ChannelsReceivers struct {
 	// 发送结果,0-无效,1-成功,2-失败,3-无需发送
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SendStatus *string `json:"SendStatus,omitnil,omitempty" name:"SendStatus"`
+}
+
+type ContentBlockInfo struct {
+	// <p>类型</p>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>数据内容</p>
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+}
+
+// Predefined struct for user
+type CreateAIWorkbenchAgentRequestParams struct {
+	// <p>Agent 名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>Agent 描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>Agent 分类</p>
+	Category *string `json:"Category,omitnil,omitempty" name:"Category"`
+
+	// <p>Agent 标签</p>
+	Tags []*string `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>Agent 提示词</p>
+	Instruction *InstructionConfig `json:"Instruction,omitnil,omitempty" name:"Instruction"`
+
+	// <p>关联技能 ID 列表</p>
+	SkillIds []*string `json:"SkillIds,omitnil,omitempty" name:"SkillIds"`
+
+	// <p>来源: builtin / custom</p>
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// <p>关联的资源地图 ID</p>
+	ResourceMapId *string `json:"ResourceMapId,omitnil,omitempty" name:"ResourceMapId"`
+
+	// <p>关联的mcp工具</p>
+	MCPIds []*string `json:"MCPIds,omitnil,omitempty" name:"MCPIds"`
+
+	// <p>资源标签</p>
+	CamTags []*Tag `json:"CamTags,omitnil,omitempty" name:"CamTags"`
+
+	// <p>agent运行时环境变量</p>
+	EnvVars []*EnvVar `json:"EnvVars,omitnil,omitempty" name:"EnvVars"`
+}
+
+type CreateAIWorkbenchAgentRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>Agent 名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>Agent 描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>Agent 分类</p>
+	Category *string `json:"Category,omitnil,omitempty" name:"Category"`
+
+	// <p>Agent 标签</p>
+	Tags []*string `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>Agent 提示词</p>
+	Instruction *InstructionConfig `json:"Instruction,omitnil,omitempty" name:"Instruction"`
+
+	// <p>关联技能 ID 列表</p>
+	SkillIds []*string `json:"SkillIds,omitnil,omitempty" name:"SkillIds"`
+
+	// <p>来源: builtin / custom</p>
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// <p>关联的资源地图 ID</p>
+	ResourceMapId *string `json:"ResourceMapId,omitnil,omitempty" name:"ResourceMapId"`
+
+	// <p>关联的mcp工具</p>
+	MCPIds []*string `json:"MCPIds,omitnil,omitempty" name:"MCPIds"`
+
+	// <p>资源标签</p>
+	CamTags []*Tag `json:"CamTags,omitnil,omitempty" name:"CamTags"`
+
+	// <p>agent运行时环境变量</p>
+	EnvVars []*EnvVar `json:"EnvVars,omitnil,omitempty" name:"EnvVars"`
+}
+
+func (r *CreateAIWorkbenchAgentRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAIWorkbenchAgentRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "Description")
+	delete(f, "Category")
+	delete(f, "Tags")
+	delete(f, "Instruction")
+	delete(f, "SkillIds")
+	delete(f, "Source")
+	delete(f, "ResourceMapId")
+	delete(f, "MCPIds")
+	delete(f, "CamTags")
+	delete(f, "EnvVars")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAIWorkbenchAgentRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAIWorkbenchAgentResponseParams struct {
+	// <p>Agent ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AgentId *string `json:"AgentId,omitnil,omitempty" name:"AgentId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateAIWorkbenchAgentResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateAIWorkbenchAgentResponseParams `json:"Response"`
+}
+
+func (r *CreateAIWorkbenchAgentResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAIWorkbenchAgentResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAIWorkbenchTaskRequestParams struct {
+	// <p>任务名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>任务描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>关联 Agent ID</p>
+	AgentId *string `json:"AgentId,omitnil,omitempty" name:"AgentId"`
+
+	// <p>提示词模板</p>
+	PromptTemplate *string `json:"PromptTemplate,omitnil,omitempty" name:"PromptTemplate"`
+
+	// <p>输出格式: markdown / json</p>
+	OutputFormat *string `json:"OutputFormat,omitnil,omitempty" name:"OutputFormat"`
+
+	// <p>触发类型: manual / cron / webhook</p>
+	TriggerType *string `json:"TriggerType,omitnil,omitempty" name:"TriggerType"`
+
+	// <p>Cron 表达式</p>
+	CronExpr *string `json:"CronExpr,omitnil,omitempty" name:"CronExpr"`
+
+	// <p>Cron 时区</p>
+	CronTimezone *string `json:"CronTimezone,omitnil,omitempty" name:"CronTimezone"`
+
+	// <p>关联资源地图 ID</p>
+	ResourceMapId *string `json:"ResourceMapId,omitnil,omitempty" name:"ResourceMapId"`
+
+	// <p>技能 ID 列表</p>
+	SkillIds []*string `json:"SkillIds,omitnil,omitempty" name:"SkillIds"`
+
+	// <p>MCP 端点 ID 列表</p>
+	McpEndpointIds []*string `json:"McpEndpointIds,omitnil,omitempty" name:"McpEndpointIds"`
+
+	// <p>超时时间(秒)</p>
+	TimeoutSec *int64 `json:"TimeoutSec,omitnil,omitempty" name:"TimeoutSec"`
+
+	// <p>重试次数</p>
+	RetryCount *int64 `json:"RetryCount,omitnil,omitempty" name:"RetryCount"`
+
+	// <p>是否启用</p>
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+}
+
+type CreateAIWorkbenchTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>任务名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>任务描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>关联 Agent ID</p>
+	AgentId *string `json:"AgentId,omitnil,omitempty" name:"AgentId"`
+
+	// <p>提示词模板</p>
+	PromptTemplate *string `json:"PromptTemplate,omitnil,omitempty" name:"PromptTemplate"`
+
+	// <p>输出格式: markdown / json</p>
+	OutputFormat *string `json:"OutputFormat,omitnil,omitempty" name:"OutputFormat"`
+
+	// <p>触发类型: manual / cron / webhook</p>
+	TriggerType *string `json:"TriggerType,omitnil,omitempty" name:"TriggerType"`
+
+	// <p>Cron 表达式</p>
+	CronExpr *string `json:"CronExpr,omitnil,omitempty" name:"CronExpr"`
+
+	// <p>Cron 时区</p>
+	CronTimezone *string `json:"CronTimezone,omitnil,omitempty" name:"CronTimezone"`
+
+	// <p>关联资源地图 ID</p>
+	ResourceMapId *string `json:"ResourceMapId,omitnil,omitempty" name:"ResourceMapId"`
+
+	// <p>技能 ID 列表</p>
+	SkillIds []*string `json:"SkillIds,omitnil,omitempty" name:"SkillIds"`
+
+	// <p>MCP 端点 ID 列表</p>
+	McpEndpointIds []*string `json:"McpEndpointIds,omitnil,omitempty" name:"McpEndpointIds"`
+
+	// <p>超时时间(秒)</p>
+	TimeoutSec *int64 `json:"TimeoutSec,omitnil,omitempty" name:"TimeoutSec"`
+
+	// <p>重试次数</p>
+	RetryCount *int64 `json:"RetryCount,omitnil,omitempty" name:"RetryCount"`
+
+	// <p>是否启用</p>
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+}
+
+func (r *CreateAIWorkbenchTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAIWorkbenchTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "Description")
+	delete(f, "AgentId")
+	delete(f, "PromptTemplate")
+	delete(f, "OutputFormat")
+	delete(f, "TriggerType")
+	delete(f, "CronExpr")
+	delete(f, "CronTimezone")
+	delete(f, "ResourceMapId")
+	delete(f, "SkillIds")
+	delete(f, "McpEndpointIds")
+	delete(f, "TimeoutSec")
+	delete(f, "RetryCount")
+	delete(f, "Enabled")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAIWorkbenchTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAIWorkbenchTaskResponseParams struct {
+	// <p>任务 ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateAIWorkbenchTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateAIWorkbenchTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateAIWorkbenchTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAIWorkbenchTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -251,6 +674,114 @@ func (r *CreateNoticeContentTmplResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteAIWorkbenchAgentRequestParams struct {
+	// <p>Agent ID</p>
+	AgentId *string `json:"AgentId,omitnil,omitempty" name:"AgentId"`
+}
+
+type DeleteAIWorkbenchAgentRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>Agent ID</p>
+	AgentId *string `json:"AgentId,omitnil,omitempty" name:"AgentId"`
+}
+
+func (r *DeleteAIWorkbenchAgentRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAIWorkbenchAgentRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AgentId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAIWorkbenchAgentRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAIWorkbenchAgentResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteAIWorkbenchAgentResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteAIWorkbenchAgentResponseParams `json:"Response"`
+}
+
+func (r *DeleteAIWorkbenchAgentResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAIWorkbenchAgentResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAIWorkbenchTaskRequestParams struct {
+	// <p>任务 ID</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type DeleteAIWorkbenchTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>任务 ID</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *DeleteAIWorkbenchTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAIWorkbenchTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAIWorkbenchTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAIWorkbenchTaskResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteAIWorkbenchTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteAIWorkbenchTaskResponseParams `json:"Response"`
+}
+
+func (r *DeleteAIWorkbenchTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAIWorkbenchTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteNoticeContentTmplsRequestParams struct {
 	// <p>要删除的模板id</p>
 	TmplIDs []*string `json:"TmplIDs,omitnil,omitempty" name:"TmplIDs"`
@@ -301,6 +832,194 @@ func (r *DeleteNoticeContentTmplsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteNoticeContentTmplsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAIWorkbenchAgentRequestParams struct {
+	// <p>Agent ID</p>
+	AgentId *string `json:"AgentId,omitnil,omitempty" name:"AgentId"`
+}
+
+type DescribeAIWorkbenchAgentRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>Agent ID</p>
+	AgentId *string `json:"AgentId,omitnil,omitempty" name:"AgentId"`
+}
+
+func (r *DescribeAIWorkbenchAgentRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAIWorkbenchAgentRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AgentId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAIWorkbenchAgentRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAIWorkbenchAgentResponseParams struct {
+	// <p>Agent 信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Agent *AgentInfo `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAIWorkbenchAgentResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAIWorkbenchAgentResponseParams `json:"Response"`
+}
+
+func (r *DescribeAIWorkbenchAgentResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAIWorkbenchAgentResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAIWorkbenchArtifactRequestParams struct {
+	// <p>产物 ID</p>
+	ArtifactId *string `json:"ArtifactId,omitnil,omitempty" name:"ArtifactId"`
+
+	// <p>是否需要下载 URL</p><p><code>1</code> = 需要，<code>0</code> 或不传 = 不需要</p>
+	NeedDownloadURL *int64 `json:"NeedDownloadURL,omitnil,omitempty" name:"NeedDownloadURL"`
+}
+
+type DescribeAIWorkbenchArtifactRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>产物 ID</p>
+	ArtifactId *string `json:"ArtifactId,omitnil,omitempty" name:"ArtifactId"`
+
+	// <p>是否需要下载 URL</p><p><code>1</code> = 需要，<code>0</code> 或不传 = 不需要</p>
+	NeedDownloadURL *int64 `json:"NeedDownloadURL,omitnil,omitempty" name:"NeedDownloadURL"`
+}
+
+func (r *DescribeAIWorkbenchArtifactRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAIWorkbenchArtifactRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ArtifactId")
+	delete(f, "NeedDownloadURL")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAIWorkbenchArtifactRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAIWorkbenchArtifactResponseParams struct {
+	// <p>产物信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Artifact *ArtifactInfo `json:"Artifact,omitnil,omitempty" name:"Artifact"`
+
+	// <p>COS 预签名下载 URL</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DownloadURL *string `json:"DownloadURL,omitnil,omitempty" name:"DownloadURL"`
+
+	// <p>下载 URL 过期时间（RFC3339 格式）</p>
+	DownloadURLExpiredAt *string `json:"DownloadURLExpiredAt,omitnil,omitempty" name:"DownloadURLExpiredAt"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAIWorkbenchArtifactResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAIWorkbenchArtifactResponseParams `json:"Response"`
+}
+
+func (r *DescribeAIWorkbenchArtifactResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAIWorkbenchArtifactResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAIWorkbenchExecutionRequestParams struct {
+	// <p>执行 ID</p>
+	ExecutionId *string `json:"ExecutionId,omitnil,omitempty" name:"ExecutionId"`
+}
+
+type DescribeAIWorkbenchExecutionRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>执行 ID</p>
+	ExecutionId *string `json:"ExecutionId,omitnil,omitempty" name:"ExecutionId"`
+}
+
+func (r *DescribeAIWorkbenchExecutionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAIWorkbenchExecutionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ExecutionId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAIWorkbenchExecutionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAIWorkbenchExecutionResponseParams struct {
+	// <p>执行记录</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Execution *ExecutionInfo `json:"Execution,omitnil,omitempty" name:"Execution"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAIWorkbenchExecutionResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAIWorkbenchExecutionResponseParams `json:"Response"`
+}
+
+func (r *DescribeAIWorkbenchExecutionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAIWorkbenchExecutionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -509,6 +1228,122 @@ func (r *DescribeAIWorkbenchSREDigitalTwinWorkLogListResponse) ToJsonString() st
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAIWorkbenchSREDigitalTwinWorkLogListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAIWorkbenchSessionRequestParams struct {
+	// <p>会话 ID</p>
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+}
+
+type DescribeAIWorkbenchSessionRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>会话 ID</p>
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+}
+
+func (r *DescribeAIWorkbenchSessionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAIWorkbenchSessionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SessionId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAIWorkbenchSessionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAIWorkbenchSessionResponseParams struct {
+	// <p>会话信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Session *SessionInfo `json:"Session,omitnil,omitempty" name:"Session"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAIWorkbenchSessionResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAIWorkbenchSessionResponseParams `json:"Response"`
+}
+
+func (r *DescribeAIWorkbenchSessionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAIWorkbenchSessionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAIWorkbenchSkillRequestParams struct {
+	// <p>技能 ID</p>
+	SkillId *string `json:"SkillId,omitnil,omitempty" name:"SkillId"`
+}
+
+type DescribeAIWorkbenchSkillRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>技能 ID</p>
+	SkillId *string `json:"SkillId,omitnil,omitempty" name:"SkillId"`
+}
+
+func (r *DescribeAIWorkbenchSkillRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAIWorkbenchSkillRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SkillId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAIWorkbenchSkillRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAIWorkbenchSkillResponseParams struct {
+	// <p>技能信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Skill *SkillInfo `json:"Skill,omitnil,omitempty" name:"Skill"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAIWorkbenchSkillResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAIWorkbenchSkillResponseParams `json:"Response"`
+}
+
+func (r *DescribeAIWorkbenchSkillResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAIWorkbenchSkillResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -743,6 +1578,63 @@ type DingDingRobotNoticeTmplMatcher struct {
 	Template *DingDingRobotNoticeTmpl `json:"Template,omitnil,omitempty" name:"Template"`
 }
 
+type EnvEntry struct {
+	// <p>环境变量value</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+
+	// <p>是否脱敏</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Sensitive *bool `json:"Sensitive,omitnil,omitempty" name:"Sensitive"`
+}
+
+type EnvVar struct {
+	// <p>环境变量key</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// <p>环境变量value</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *EnvEntry `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type ExecutionInfo struct {
+	// <p>任务名</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>任务 ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>执行 ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutionId *string `json:"ExecutionId,omitnil,omitempty" name:"ExecutionId"`
+
+	// <p>Agent ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AgentId *string `json:"AgentId,omitnil,omitempty" name:"AgentId"`
+
+	// <p>会话 ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// <p>触发类型: manual / cron / webhook</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TriggerType *string `json:"TriggerType,omitnil,omitempty" name:"TriggerType"`
+
+	// <p>状态: pending/running/completed/failed/timeout/cancelled</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>执行摘要</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Summary *string `json:"Summary,omitnil,omitempty" name:"Summary"`
+
+	// <p>执行耗时(毫秒)</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DurationMs *int64 `json:"DurationMs,omitnil,omitempty" name:"DurationMs"`
+}
+
 type FeiShuRobotNoticeTmpl struct {
 	// 内容模板
 	ContentTmpl *string `json:"ContentTmpl,omitnil,omitempty" name:"ContentTmpl"`
@@ -760,6 +1652,75 @@ type FeiShuRobotNoticeTmplMatcher struct {
 	Template *FeiShuRobotNoticeTmpl `json:"Template,omitnil,omitempty" name:"Template"`
 }
 
+// Predefined struct for user
+type GetAIWorkbenchArtifactDownloadURLRequestParams struct {
+	// <p>会话ID</p>
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// <p>制品ID</p>
+	ArtifactId *string `json:"ArtifactId,omitnil,omitempty" name:"ArtifactId"`
+}
+
+type GetAIWorkbenchArtifactDownloadURLRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>会话ID</p>
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// <p>制品ID</p>
+	ArtifactId *string `json:"ArtifactId,omitnil,omitempty" name:"ArtifactId"`
+}
+
+func (r *GetAIWorkbenchArtifactDownloadURLRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetAIWorkbenchArtifactDownloadURLRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SessionId")
+	delete(f, "ArtifactId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetAIWorkbenchArtifactDownloadURLRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetAIWorkbenchArtifactDownloadURLResponseParams struct {
+	// <p>COS 预签名 HTTPS 下载 URL</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DownloadURL *string `json:"DownloadURL,omitnil,omitempty" name:"DownloadURL"`
+
+	// <p>URL 过期时间（RFC3339 格式）</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpiredAt *string `json:"ExpiredAt,omitnil,omitempty" name:"ExpiredAt"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetAIWorkbenchArtifactDownloadURLResponse struct {
+	*tchttp.BaseResponse
+	Response *GetAIWorkbenchArtifactDownloadURLResponseParams `json:"Response"`
+}
+
+func (r *GetAIWorkbenchArtifactDownloadURLResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetAIWorkbenchArtifactDownloadURLResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type GoogleChatRobotNoticeTmpl struct {
 	// 内容模板
 	ContentTmpl *string `json:"ContentTmpl,omitnil,omitempty" name:"ContentTmpl"`
@@ -772,6 +1733,1032 @@ type GoogleChatRobotNoticeTmplMatcher struct {
 
 	// 模板配置
 	Template *GoogleChatRobotNoticeTmpl `json:"Template,omitnil,omitempty" name:"Template"`
+}
+
+type InstructionConfig struct {
+	// <p>角色定义</p>
+	RolePosition *string `json:"RolePosition,omitnil,omitempty" name:"RolePosition"`
+
+	// <p>核心职责</p>
+	CoreDuty *string `json:"CoreDuty,omitnil,omitempty" name:"CoreDuty"`
+
+	// <p>核心原则</p>
+	CoreTruths *string `json:"CoreTruths,omitnil,omitempty" name:"CoreTruths"`
+
+	// <p>风格约束</p>
+	Vibe *string `json:"Vibe,omitnil,omitempty" name:"Vibe"`
+
+	// <p>注意事项</p>
+	Boundaries *string `json:"Boundaries,omitnil,omitempty" name:"Boundaries"`
+}
+
+// Predefined struct for user
+type ListAIWorkbenchAgentsRequestParams struct {
+	// <p>每页数量</p>
+	PerPage *int64 `json:"PerPage,omitnil,omitempty" name:"PerPage"`
+
+	// <p>页码</p>
+	PageNo *int64 `json:"PageNo,omitnil,omitempty" name:"PageNo"`
+
+	// <p>状态筛选</p>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>分类筛选</p>
+	Category *string `json:"Category,omitnil,omitempty" name:"Category"`
+
+	// <p>搜索关键词</p>
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+
+	// <p>来源筛选</p>
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// <p>Agent ID 列表筛选</p>
+	AgentIds []*string `json:"AgentIds,omitnil,omitempty" name:"AgentIds"`
+}
+
+type ListAIWorkbenchAgentsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>每页数量</p>
+	PerPage *int64 `json:"PerPage,omitnil,omitempty" name:"PerPage"`
+
+	// <p>页码</p>
+	PageNo *int64 `json:"PageNo,omitnil,omitempty" name:"PageNo"`
+
+	// <p>状态筛选</p>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>分类筛选</p>
+	Category *string `json:"Category,omitnil,omitempty" name:"Category"`
+
+	// <p>搜索关键词</p>
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+
+	// <p>来源筛选</p>
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// <p>Agent ID 列表筛选</p>
+	AgentIds []*string `json:"AgentIds,omitnil,omitempty" name:"AgentIds"`
+}
+
+func (r *ListAIWorkbenchAgentsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListAIWorkbenchAgentsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PerPage")
+	delete(f, "PageNo")
+	delete(f, "Status")
+	delete(f, "Category")
+	delete(f, "Keyword")
+	delete(f, "Source")
+	delete(f, "AgentIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListAIWorkbenchAgentsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListAIWorkbenchAgentsResponseParams struct {
+	// <p>Agent 列表</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Agents []*AgentInfo `json:"Agents,omitnil,omitempty" name:"Agents"`
+
+	// <p>分页结果</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageResult *PageByNumResult `json:"PageResult,omitnil,omitempty" name:"PageResult"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListAIWorkbenchAgentsResponse struct {
+	*tchttp.BaseResponse
+	Response *ListAIWorkbenchAgentsResponseParams `json:"Response"`
+}
+
+func (r *ListAIWorkbenchAgentsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListAIWorkbenchAgentsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListAIWorkbenchArtifactsRequestParams struct {
+	// <p>每页数量</p>
+	PerPage *int64 `json:"PerPage,omitnil,omitempty" name:"PerPage"`
+
+	// <p>页码</p>
+	PageNo *int64 `json:"PageNo,omitnil,omitempty" name:"PageNo"`
+
+	// <p>会话ID</p>
+	SessionIds []*string `json:"SessionIds,omitnil,omitempty" name:"SessionIds"`
+
+	// <p>消息内容类型</p>
+	MimeTypes []*string `json:"MimeTypes,omitnil,omitempty" name:"MimeTypes"`
+
+	// <p>排序</p><p>枚举值：</p><ul><li>ASC： 正序</li><li>DESC： 倒序</li></ul>
+	OrderDirection *string `json:"OrderDirection,omitnil,omitempty" name:"OrderDirection"`
+}
+
+type ListAIWorkbenchArtifactsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>每页数量</p>
+	PerPage *int64 `json:"PerPage,omitnil,omitempty" name:"PerPage"`
+
+	// <p>页码</p>
+	PageNo *int64 `json:"PageNo,omitnil,omitempty" name:"PageNo"`
+
+	// <p>会话ID</p>
+	SessionIds []*string `json:"SessionIds,omitnil,omitempty" name:"SessionIds"`
+
+	// <p>消息内容类型</p>
+	MimeTypes []*string `json:"MimeTypes,omitnil,omitempty" name:"MimeTypes"`
+
+	// <p>排序</p><p>枚举值：</p><ul><li>ASC： 正序</li><li>DESC： 倒序</li></ul>
+	OrderDirection *string `json:"OrderDirection,omitnil,omitempty" name:"OrderDirection"`
+}
+
+func (r *ListAIWorkbenchArtifactsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListAIWorkbenchArtifactsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PerPage")
+	delete(f, "PageNo")
+	delete(f, "SessionIds")
+	delete(f, "MimeTypes")
+	delete(f, "OrderDirection")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListAIWorkbenchArtifactsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListAIWorkbenchArtifactsResponseParams struct {
+	// <p>产物列表</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Artifacts []*ArtifactInfo `json:"Artifacts,omitnil,omitempty" name:"Artifacts"`
+
+	// <p>分页结果</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageResult *PageByNumResult `json:"PageResult,omitnil,omitempty" name:"PageResult"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListAIWorkbenchArtifactsResponse struct {
+	*tchttp.BaseResponse
+	Response *ListAIWorkbenchArtifactsResponseParams `json:"Response"`
+}
+
+func (r *ListAIWorkbenchArtifactsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListAIWorkbenchArtifactsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListAIWorkbenchExecutionsRequestParams struct {
+	// <p>每页数量</p>
+	PerPage *int64 `json:"PerPage,omitnil,omitempty" name:"PerPage"`
+
+	// <p>页码</p>
+	PageNo *int64 `json:"PageNo,omitnil,omitempty" name:"PageNo"`
+
+	// <p>按 Agent 筛选</p>
+	AgentId *string `json:"AgentId,omitnil,omitempty" name:"AgentId"`
+
+	// <p>按状态筛选</p>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>执行 ID 列表筛选</p>
+	ExecutionIds []*string `json:"ExecutionIds,omitnil,omitempty" name:"ExecutionIds"`
+
+	// <p>任务id</p>
+	TaskIds []*string `json:"TaskIds,omitnil,omitempty" name:"TaskIds"`
+
+	// <p>触发方式</p>
+	TriggerType *string `json:"TriggerType,omitnil,omitempty" name:"TriggerType"`
+
+	// <p>关键值</p>
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+
+	// <p>是否启用</p>
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+}
+
+type ListAIWorkbenchExecutionsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>每页数量</p>
+	PerPage *int64 `json:"PerPage,omitnil,omitempty" name:"PerPage"`
+
+	// <p>页码</p>
+	PageNo *int64 `json:"PageNo,omitnil,omitempty" name:"PageNo"`
+
+	// <p>按 Agent 筛选</p>
+	AgentId *string `json:"AgentId,omitnil,omitempty" name:"AgentId"`
+
+	// <p>按状态筛选</p>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>执行 ID 列表筛选</p>
+	ExecutionIds []*string `json:"ExecutionIds,omitnil,omitempty" name:"ExecutionIds"`
+
+	// <p>任务id</p>
+	TaskIds []*string `json:"TaskIds,omitnil,omitempty" name:"TaskIds"`
+
+	// <p>触发方式</p>
+	TriggerType *string `json:"TriggerType,omitnil,omitempty" name:"TriggerType"`
+
+	// <p>关键值</p>
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+
+	// <p>是否启用</p>
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+}
+
+func (r *ListAIWorkbenchExecutionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListAIWorkbenchExecutionsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PerPage")
+	delete(f, "PageNo")
+	delete(f, "AgentId")
+	delete(f, "Status")
+	delete(f, "ExecutionIds")
+	delete(f, "TaskIds")
+	delete(f, "TriggerType")
+	delete(f, "Keyword")
+	delete(f, "Enabled")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListAIWorkbenchExecutionsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListAIWorkbenchExecutionsResponseParams struct {
+	// <p>执行列表</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Executions []*ExecutionInfo `json:"Executions,omitnil,omitempty" name:"Executions"`
+
+	// <p>分页结果</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageResult *PageByNumResult `json:"PageResult,omitnil,omitempty" name:"PageResult"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListAIWorkbenchExecutionsResponse struct {
+	*tchttp.BaseResponse
+	Response *ListAIWorkbenchExecutionsResponseParams `json:"Response"`
+}
+
+func (r *ListAIWorkbenchExecutionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListAIWorkbenchExecutionsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListAIWorkbenchMCPsRequestParams struct {
+	// <p>每页数量</p>
+	PerPage *int64 `json:"PerPage,omitnil,omitempty" name:"PerPage"`
+
+	// <p>页码</p>
+	PageNo *int64 `json:"PageNo,omitnil,omitempty" name:"PageNo"`
+
+	// <p>按传输协议筛选</p>
+	Transport *string `json:"Transport,omitnil,omitempty" name:"Transport"`
+
+	// <p>搜索关键词</p>
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+
+	// <p>是否启用筛选</p>
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// <p>关联的mcp</p>
+	MCPIds []*string `json:"MCPIds,omitnil,omitempty" name:"MCPIds"`
+
+	// <p>MCP类型（内置/私有）</p><p>枚举值：</p><ul><li>builtin： 平台内置</li><li>private： 用户自定义</li></ul>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
+type ListAIWorkbenchMCPsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>每页数量</p>
+	PerPage *int64 `json:"PerPage,omitnil,omitempty" name:"PerPage"`
+
+	// <p>页码</p>
+	PageNo *int64 `json:"PageNo,omitnil,omitempty" name:"PageNo"`
+
+	// <p>按传输协议筛选</p>
+	Transport *string `json:"Transport,omitnil,omitempty" name:"Transport"`
+
+	// <p>搜索关键词</p>
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+
+	// <p>是否启用筛选</p>
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// <p>关联的mcp</p>
+	MCPIds []*string `json:"MCPIds,omitnil,omitempty" name:"MCPIds"`
+
+	// <p>MCP类型（内置/私有）</p><p>枚举值：</p><ul><li>builtin： 平台内置</li><li>private： 用户自定义</li></ul>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
+func (r *ListAIWorkbenchMCPsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListAIWorkbenchMCPsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PerPage")
+	delete(f, "PageNo")
+	delete(f, "Transport")
+	delete(f, "Keyword")
+	delete(f, "Enabled")
+	delete(f, "MCPIds")
+	delete(f, "Type")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListAIWorkbenchMCPsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListAIWorkbenchMCPsResponseParams struct {
+	// <p>MCP 列表</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MCPs []*MCPInfo `json:"MCPs,omitnil,omitempty" name:"MCPs"`
+
+	// <p>分页结果</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageResult *PageByNumResult `json:"PageResult,omitnil,omitempty" name:"PageResult"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListAIWorkbenchMCPsResponse struct {
+	*tchttp.BaseResponse
+	Response *ListAIWorkbenchMCPsResponseParams `json:"Response"`
+}
+
+func (r *ListAIWorkbenchMCPsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListAIWorkbenchMCPsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListAIWorkbenchMessagesRequestParams struct {
+	// <p>会话 ID</p>
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// <p>游标分页的定位标记</p>
+	Cursor *string `json:"Cursor,omitnil,omitempty" name:"Cursor"`
+
+	// <p>窗口大小</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>拉取顺序</p>
+	Direction *string `json:"Direction,omitnil,omitempty" name:"Direction"`
+}
+
+type ListAIWorkbenchMessagesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>会话 ID</p>
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// <p>游标分页的定位标记</p>
+	Cursor *string `json:"Cursor,omitnil,omitempty" name:"Cursor"`
+
+	// <p>窗口大小</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>拉取顺序</p>
+	Direction *string `json:"Direction,omitnil,omitempty" name:"Direction"`
+}
+
+func (r *ListAIWorkbenchMessagesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListAIWorkbenchMessagesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SessionId")
+	delete(f, "Cursor")
+	delete(f, "Limit")
+	delete(f, "Direction")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListAIWorkbenchMessagesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListAIWorkbenchMessagesResponseParams struct {
+	// <p>消息列表</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Messages []*MessageInfo `json:"Messages,omitnil,omitempty" name:"Messages"`
+
+	// <p>下一个游标</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NextCursor *string `json:"NextCursor,omitnil,omitempty" name:"NextCursor"`
+
+	// <p>还有后续吗</p>
+	HasMore *bool `json:"HasMore,omitnil,omitempty" name:"HasMore"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListAIWorkbenchMessagesResponse struct {
+	*tchttp.BaseResponse
+	Response *ListAIWorkbenchMessagesResponseParams `json:"Response"`
+}
+
+func (r *ListAIWorkbenchMessagesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListAIWorkbenchMessagesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListAIWorkbenchResourceInstancesRequestParams struct {
+	// <p>资源地图 ID</p>
+	ResourceMapId *string `json:"ResourceMapId,omitnil,omitempty" name:"ResourceMapId"`
+
+	// <p>分页参数</p>
+	PageParams *PageByNumParams `json:"PageParams,omitnil,omitempty" name:"PageParams"`
+}
+
+type ListAIWorkbenchResourceInstancesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>资源地图 ID</p>
+	ResourceMapId *string `json:"ResourceMapId,omitnil,omitempty" name:"ResourceMapId"`
+
+	// <p>分页参数</p>
+	PageParams *PageByNumParams `json:"PageParams,omitnil,omitempty" name:"PageParams"`
+}
+
+func (r *ListAIWorkbenchResourceInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListAIWorkbenchResourceInstancesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ResourceMapId")
+	delete(f, "PageParams")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListAIWorkbenchResourceInstancesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListAIWorkbenchResourceInstancesResponseParams struct {
+	// <p>资源实例列表</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Instances []*ResourceInstance `json:"Instances,omitnil,omitempty" name:"Instances"`
+
+	// <p>分页结果</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageResult *PageByNumResult `json:"PageResult,omitnil,omitempty" name:"PageResult"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListAIWorkbenchResourceInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *ListAIWorkbenchResourceInstancesResponseParams `json:"Response"`
+}
+
+func (r *ListAIWorkbenchResourceInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListAIWorkbenchResourceInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListAIWorkbenchResourceMapsRequestParams struct {
+	// <p>每页数量</p>
+	PerPage *int64 `json:"PerPage,omitnil,omitempty" name:"PerPage"`
+
+	// <p>页码</p>
+	PageNo *int64 `json:"PageNo,omitnil,omitempty" name:"PageNo"`
+
+	// <p>按名称搜索</p>
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+}
+
+type ListAIWorkbenchResourceMapsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>每页数量</p>
+	PerPage *int64 `json:"PerPage,omitnil,omitempty" name:"PerPage"`
+
+	// <p>页码</p>
+	PageNo *int64 `json:"PageNo,omitnil,omitempty" name:"PageNo"`
+
+	// <p>按名称搜索</p>
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+}
+
+func (r *ListAIWorkbenchResourceMapsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListAIWorkbenchResourceMapsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PerPage")
+	delete(f, "PageNo")
+	delete(f, "Keyword")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListAIWorkbenchResourceMapsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListAIWorkbenchResourceMapsResponseParams struct {
+	// <p>资源地图列表</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceMaps []*ResourceMapInfo `json:"ResourceMaps,omitnil,omitempty" name:"ResourceMaps"`
+
+	// <p>分页结果</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageResult *PageByNumResult `json:"PageResult,omitnil,omitempty" name:"PageResult"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListAIWorkbenchResourceMapsResponse struct {
+	*tchttp.BaseResponse
+	Response *ListAIWorkbenchResourceMapsResponseParams `json:"Response"`
+}
+
+func (r *ListAIWorkbenchResourceMapsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListAIWorkbenchResourceMapsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListAIWorkbenchSessionsRequestParams struct {
+	// <p>每页数量</p>
+	PerPage *int64 `json:"PerPage,omitnil,omitempty" name:"PerPage"`
+
+	// <p>页码</p>
+	PageNo *int64 `json:"PageNo,omitnil,omitempty" name:"PageNo"`
+
+	// <p>按 Agent 筛选</p>
+	AgentId *string `json:"AgentId,omitnil,omitempty" name:"AgentId"`
+
+	// <p>搜索关键词</p>
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+
+	// <p>会话 ID 列表筛选</p>
+	SessionIds []*string `json:"SessionIds,omitnil,omitempty" name:"SessionIds"`
+}
+
+type ListAIWorkbenchSessionsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>每页数量</p>
+	PerPage *int64 `json:"PerPage,omitnil,omitempty" name:"PerPage"`
+
+	// <p>页码</p>
+	PageNo *int64 `json:"PageNo,omitnil,omitempty" name:"PageNo"`
+
+	// <p>按 Agent 筛选</p>
+	AgentId *string `json:"AgentId,omitnil,omitempty" name:"AgentId"`
+
+	// <p>搜索关键词</p>
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+
+	// <p>会话 ID 列表筛选</p>
+	SessionIds []*string `json:"SessionIds,omitnil,omitempty" name:"SessionIds"`
+}
+
+func (r *ListAIWorkbenchSessionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListAIWorkbenchSessionsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PerPage")
+	delete(f, "PageNo")
+	delete(f, "AgentId")
+	delete(f, "Keyword")
+	delete(f, "SessionIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListAIWorkbenchSessionsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListAIWorkbenchSessionsResponseParams struct {
+	// <p>会话列表</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Sessions []*SessionInfo `json:"Sessions,omitnil,omitempty" name:"Sessions"`
+
+	// <p>分页结果</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageResult *PageByNumResult `json:"PageResult,omitnil,omitempty" name:"PageResult"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListAIWorkbenchSessionsResponse struct {
+	*tchttp.BaseResponse
+	Response *ListAIWorkbenchSessionsResponseParams `json:"Response"`
+}
+
+func (r *ListAIWorkbenchSessionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListAIWorkbenchSessionsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListAIWorkbenchSkillsRequestParams struct {
+	// <p>每页数量</p>
+	PerPage *int64 `json:"PerPage,omitnil,omitempty" name:"PerPage"`
+
+	// <p>页码</p>
+	PageNo *int64 `json:"PageNo,omitnil,omitempty" name:"PageNo"`
+
+	// <p>按类型筛选</p>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>搜索关键词</p>
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+
+	// <p>是否启用筛选</p>
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// <p>技能 ID 列表筛选</p>
+	SkillIds []*string `json:"SkillIds,omitnil,omitempty" name:"SkillIds"`
+}
+
+type ListAIWorkbenchSkillsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>每页数量</p>
+	PerPage *int64 `json:"PerPage,omitnil,omitempty" name:"PerPage"`
+
+	// <p>页码</p>
+	PageNo *int64 `json:"PageNo,omitnil,omitempty" name:"PageNo"`
+
+	// <p>按类型筛选</p>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>搜索关键词</p>
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+
+	// <p>是否启用筛选</p>
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// <p>技能 ID 列表筛选</p>
+	SkillIds []*string `json:"SkillIds,omitnil,omitempty" name:"SkillIds"`
+}
+
+func (r *ListAIWorkbenchSkillsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListAIWorkbenchSkillsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PerPage")
+	delete(f, "PageNo")
+	delete(f, "Type")
+	delete(f, "Keyword")
+	delete(f, "Enabled")
+	delete(f, "SkillIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListAIWorkbenchSkillsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListAIWorkbenchSkillsResponseParams struct {
+	// <p>技能列表</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Skills []*SkillInfo `json:"Skills,omitnil,omitempty" name:"Skills"`
+
+	// <p>分页结果</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageResult *PageByNumResult `json:"PageResult,omitnil,omitempty" name:"PageResult"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListAIWorkbenchSkillsResponse struct {
+	*tchttp.BaseResponse
+	Response *ListAIWorkbenchSkillsResponseParams `json:"Response"`
+}
+
+func (r *ListAIWorkbenchSkillsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListAIWorkbenchSkillsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListAIWorkbenchTasksRequestParams struct {
+	// <p>每页数量</p>
+	PerPage *int64 `json:"PerPage,omitnil,omitempty" name:"PerPage"`
+
+	// <p>页码</p>
+	PageNo *int64 `json:"PageNo,omitnil,omitempty" name:"PageNo"`
+
+	// <p>按 Agent 筛选</p>
+	AgentId *string `json:"AgentId,omitnil,omitempty" name:"AgentId"`
+
+	// <p>按触发类型筛选</p>
+	TriggerType *string `json:"TriggerType,omitnil,omitempty" name:"TriggerType"`
+
+	// <p>搜索关键词</p>
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+
+	// <p>任务 ID 列表筛选</p>
+	TaskIds []*string `json:"TaskIds,omitnil,omitempty" name:"TaskIds"`
+
+	// <p>是否启用筛选</p>
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+}
+
+type ListAIWorkbenchTasksRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>每页数量</p>
+	PerPage *int64 `json:"PerPage,omitnil,omitempty" name:"PerPage"`
+
+	// <p>页码</p>
+	PageNo *int64 `json:"PageNo,omitnil,omitempty" name:"PageNo"`
+
+	// <p>按 Agent 筛选</p>
+	AgentId *string `json:"AgentId,omitnil,omitempty" name:"AgentId"`
+
+	// <p>按触发类型筛选</p>
+	TriggerType *string `json:"TriggerType,omitnil,omitempty" name:"TriggerType"`
+
+	// <p>搜索关键词</p>
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+
+	// <p>任务 ID 列表筛选</p>
+	TaskIds []*string `json:"TaskIds,omitnil,omitempty" name:"TaskIds"`
+
+	// <p>是否启用筛选</p>
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+}
+
+func (r *ListAIWorkbenchTasksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListAIWorkbenchTasksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PerPage")
+	delete(f, "PageNo")
+	delete(f, "AgentId")
+	delete(f, "TriggerType")
+	delete(f, "Keyword")
+	delete(f, "TaskIds")
+	delete(f, "Enabled")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListAIWorkbenchTasksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListAIWorkbenchTasksResponseParams struct {
+	// <p>任务列表</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tasks []*TaskInfo `json:"Tasks,omitnil,omitempty" name:"Tasks"`
+
+	// <p>分页结果</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageResult *PageByNumResult `json:"PageResult,omitnil,omitempty" name:"PageResult"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListAIWorkbenchTasksResponse struct {
+	*tchttp.BaseResponse
+	Response *ListAIWorkbenchTasksResponseParams `json:"Response"`
+}
+
+func (r *ListAIWorkbenchTasksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListAIWorkbenchTasksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type MCPInfo struct {
+	// <p>mcp的ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MCPId *string `json:"MCPId,omitnil,omitempty" name:"MCPId"`
+
+	// <p>MCP 名称</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>MCP 描述</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>MCP URL</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// <p>传输协议: sse / streamable_http / stdio</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Transport *string `json:"Transport,omitnil,omitempty" name:"Transport"`
+
+	// <p>认证类型: none / bearer / basic / api_key</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AuthType *string `json:"AuthType,omitnil,omitempty" name:"AuthType"`
+
+	// <p>认证密钥(响应时脱敏)</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AuthSecret *string `json:"AuthSecret,omitnil,omitempty" name:"AuthSecret"`
+
+	// <p>超时时间(秒)</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Timeout *int64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
+
+	// <p>重试次数</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RetryCount *int64 `json:"RetryCount,omitnil,omitempty" name:"RetryCount"`
+
+	// <p>请求头 JSON</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Headers *string `json:"Headers,omitnil,omitempty" name:"Headers"`
+
+	// <p>是否启用</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+}
+
+type MessageInfo struct {
+	// <p>实体id</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EntryId *string `json:"EntryId,omitnil,omitempty" name:"EntryId"`
+
+	// <p>会话 ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// <p>角色: user / assistant</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
+
+	// <p>消息内容</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// <p>状态</p>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>块内容</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContentBlocks []*ContentBlockInfo `json:"ContentBlocks,omitnil,omitempty" name:"ContentBlocks"`
 }
 
 // Predefined struct for user
@@ -966,6 +2953,28 @@ type PageByNoResult struct {
 	End *bool `json:"End,omitnil,omitempty" name:"End"`
 }
 
+type PageByNumParams struct {
+	// <p>每个分页的数量</p>
+	PerPage *int64 `json:"PerPage,omitnil,omitempty" name:"PerPage"`
+
+	// <p>第几个分页，从1开始</p>
+	PageNo *int64 `json:"PageNo,omitnil,omitempty" name:"PageNo"`
+}
+
+type PageByNumResult struct {
+	// <p>总共有多少数据</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>总共有多少个分页</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalPage *int64 `json:"TotalPage,omitnil,omitempty" name:"TotalPage"`
+
+	// <p>当前的分页号</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CurrentPageNo *int64 `json:"CurrentPageNo,omitnil,omitempty" name:"CurrentPageNo"`
+}
+
 type PagerDutyRobotNoticeTmpl struct {
 	// 请求体模板 仅支持json
 	Body *string `json:"Body,omitnil,omitempty" name:"Body"`
@@ -1048,6 +3057,82 @@ type QCloudYeheWeChatNoticeTmplItem struct {
 	AlarmTimeTmpl *string `json:"AlarmTimeTmpl,omitnil,omitempty" name:"AlarmTimeTmpl"`
 }
 
+type ResourceInstance struct {
+	// <p>实例 ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>服务名称</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Service *string `json:"Service,omitnil,omitempty" name:"Service"`
+
+	// <p>地域</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// <p>是否就绪</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsReady *bool `json:"IsReady,omitnil,omitempty" name:"IsReady"`
+}
+
+type ResourceMapInfo struct {
+	// <p>资源地图 ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceMapId *string `json:"ResourceMapId,omitnil,omitempty" name:"ResourceMapId"`
+
+	// <p>资源地图名称</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>资源地图描述</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>总实例数</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceCount *int64 `json:"InstanceCount,omitnil,omitempty" name:"InstanceCount"`
+}
+
+type SessionInfo struct {
+	// <p>会话 ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// <p>Agent ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AgentId *string `json:"AgentId,omitnil,omitempty" name:"AgentId"`
+
+	// <p>会话标题</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
+
+	// <p>状态: active / archived / deleted</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>如果该会话由任务触发，则携带触发其会话的任务ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type SkillInfo struct {
+	// <p>技能 ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SkillId *string `json:"SkillId,omitnil,omitempty" name:"SkillId"`
+
+	// <p>技能名称</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>技能描述</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>是否启用</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+}
+
 type SlackRobotNoticeTmpl struct {
 	// <p>内容模板</p>
 	ContentTmpl *string `json:"ContentTmpl,omitnil,omitempty" name:"ContentTmpl"`
@@ -1059,6 +3144,76 @@ type SlackRobotNoticeTmplMatcher struct {
 
 	// <p>模板配置</p>
 	Template *SlackRobotNoticeTmpl `json:"Template,omitnil,omitempty" name:"Template"`
+}
+
+type Tag struct {
+	// 标签key
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 标签value
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type TaskInfo struct {
+	// <p>任务 ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>任务名称</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>任务描述</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>关联 Agent ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AgentId *string `json:"AgentId,omitnil,omitempty" name:"AgentId"`
+
+	// <p>提示词模板</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PromptTemplate *string `json:"PromptTemplate,omitnil,omitempty" name:"PromptTemplate"`
+
+	// <p>输出格式: markdown / json</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OutputFormat *string `json:"OutputFormat,omitnil,omitempty" name:"OutputFormat"`
+
+	// <p>触发类型: manual / cron / webhook</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TriggerType *string `json:"TriggerType,omitnil,omitempty" name:"TriggerType"`
+
+	// <p>Cron 表达式</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CronExpr *string `json:"CronExpr,omitnil,omitempty" name:"CronExpr"`
+
+	// <p>Cron 时区</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CronTimezone *string `json:"CronTimezone,omitnil,omitempty" name:"CronTimezone"`
+
+	// <p>关联技能 ID 列表</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SkillIds []*string `json:"SkillIds,omitnil,omitempty" name:"SkillIds"`
+
+	// <p>关联 MCP 端点 ID 列表</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	McpEndpointIds []*string `json:"McpEndpointIds,omitnil,omitempty" name:"McpEndpointIds"`
+
+	// <p>超时时间(秒)</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimeoutSec *int64 `json:"TimeoutSec,omitnil,omitempty" name:"TimeoutSec"`
+
+	// <p>重试次数</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RetryCount *int64 `json:"RetryCount,omitnil,omitempty" name:"RetryCount"`
+
+	// <p>通知id</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NotifyIds []*string `json:"NotifyIds,omitnil,omitempty" name:"NotifyIds"`
+
+	// <p>是否启用</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
 }
 
 type TeamsRobotNoticeTmpl struct {
@@ -1154,9 +3309,202 @@ func (r *TriggerAIWorkbenchSREDigitalTwinTaskResponse) FromJsonString(s string) 
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type TriggerAIWorkbenchTaskRequestParams struct {
+	// <p>任务 ID</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type TriggerAIWorkbenchTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>任务 ID</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *TriggerAIWorkbenchTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TriggerAIWorkbenchTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TriggerAIWorkbenchTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type TriggerAIWorkbenchTaskResponseParams struct {
+	// <p>执行 ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutionId *string `json:"ExecutionId,omitnil,omitempty" name:"ExecutionId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type TriggerAIWorkbenchTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *TriggerAIWorkbenchTaskResponseParams `json:"Response"`
+}
+
+func (r *TriggerAIWorkbenchTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TriggerAIWorkbenchTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type TriggerDigitalTwinTaskResp struct {
 	// 数字分身任务ID
 	TaskID *int64 `json:"TaskID,omitnil,omitempty" name:"TaskID"`
+}
+
+// Predefined struct for user
+type UpdateAIWorkbenchAgentRequestParams struct {
+	// <p>Agent ID</p>
+	AgentId *string `json:"AgentId,omitnil,omitempty" name:"AgentId"`
+
+	// <p>Agent 名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>Agent 描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>Agent 分类</p>
+	Category *string `json:"Category,omitnil,omitempty" name:"Category"`
+
+	// <p>Agent 标签</p>
+	Tags []*string `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>Agent 提示词</p>
+	Instruction *InstructionConfig `json:"Instruction,omitnil,omitempty" name:"Instruction"`
+
+	// <p>关联技能 ID 列表</p>
+	SkillIds []*string `json:"SkillIds,omitnil,omitempty" name:"SkillIds"`
+
+	// <p>来源</p>
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// <p>状态</p>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>关联的资源地图 ID</p>
+	ResourceMapId *string `json:"ResourceMapId,omitnil,omitempty" name:"ResourceMapId"`
+
+	// <p>关联的mcp</p>
+	MCPIds []*string `json:"MCPIds,omitnil,omitempty" name:"MCPIds"`
+
+	// <p>agent运行时环境变量</p>
+	EnvVars []*EnvVar `json:"EnvVars,omitnil,omitempty" name:"EnvVars"`
+}
+
+type UpdateAIWorkbenchAgentRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>Agent ID</p>
+	AgentId *string `json:"AgentId,omitnil,omitempty" name:"AgentId"`
+
+	// <p>Agent 名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>Agent 描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>Agent 分类</p>
+	Category *string `json:"Category,omitnil,omitempty" name:"Category"`
+
+	// <p>Agent 标签</p>
+	Tags []*string `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>Agent 提示词</p>
+	Instruction *InstructionConfig `json:"Instruction,omitnil,omitempty" name:"Instruction"`
+
+	// <p>关联技能 ID 列表</p>
+	SkillIds []*string `json:"SkillIds,omitnil,omitempty" name:"SkillIds"`
+
+	// <p>来源</p>
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// <p>状态</p>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>关联的资源地图 ID</p>
+	ResourceMapId *string `json:"ResourceMapId,omitnil,omitempty" name:"ResourceMapId"`
+
+	// <p>关联的mcp</p>
+	MCPIds []*string `json:"MCPIds,omitnil,omitempty" name:"MCPIds"`
+
+	// <p>agent运行时环境变量</p>
+	EnvVars []*EnvVar `json:"EnvVars,omitnil,omitempty" name:"EnvVars"`
+}
+
+func (r *UpdateAIWorkbenchAgentRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateAIWorkbenchAgentRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AgentId")
+	delete(f, "Name")
+	delete(f, "Description")
+	delete(f, "Category")
+	delete(f, "Tags")
+	delete(f, "Instruction")
+	delete(f, "SkillIds")
+	delete(f, "Source")
+	delete(f, "Status")
+	delete(f, "ResourceMapId")
+	delete(f, "MCPIds")
+	delete(f, "EnvVars")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateAIWorkbenchAgentRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateAIWorkbenchAgentResponseParams struct {
+	// <p>更新后的 Agent 信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Agent *AgentInfo `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateAIWorkbenchAgentResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateAIWorkbenchAgentResponseParams `json:"Response"`
+}
+
+func (r *UpdateAIWorkbenchAgentResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateAIWorkbenchAgentResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type WeWorkRobotNoticeTmpl struct {

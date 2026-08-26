@@ -832,9 +832,11 @@ func (r *AddBypassAllRuleResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type AddCustomRuleRequestParams struct {
 	// 规则名称
+	// 入参限制：1-128个字符，不允许特殊字符
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 优先级
+	// 优先级，0-100的整数，数字越小，代表这条规则的执行优先级越高
+	// 默认值：0
 	SortId *string `json:"SortId,omitnil,omitempty" name:"SortId"`
 
 	// 策略详情
@@ -843,13 +845,18 @@ type AddCustomRuleRequestParams struct {
 	// 需要添加策略的域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 动作类型，1代表阻断，2代表人机识别，3代表观察，4代表重定向，5代表JS校验
+	// 动作类型
+	// 取值说明：1-阻断，2-人机识别（滑块），3-观察，4-重定向，5-JS校验，6-人机识别（无感验证-拦截），7-人机识别（无感验证-观察），8-语音验证码
+	// 入参限制：必填，取值范围为1-8
+	// 约束条件：当ActionType为4（重定向）时，Redirect参数不能为空
 	ActionType *string `json:"ActionType,omitnil,omitempty" name:"ActionType"`
 
 	// 如果动作是重定向，则表示重定向的地址；其他情况可以为空
 	Redirect *string `json:"Redirect,omitnil,omitempty" name:"Redirect"`
 
-	// 过期时间，单位为秒级时间戳，例如1677254399表示过期时间为2023-02-24 23:59:59. 0表示永不过期
+	// 过期时间，单位为秒级时间戳，例如1677254399表示过期时间为2023-02-24 23:59:59
+	// 取值说明：0表示永不过期
+	// 默认值：0（解析失败时也默认为0）
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
 	// WAF实例类型，sparta-waf表示SAAS型WAF，clb-waf表示负载均衡型WAF
@@ -882,9 +889,13 @@ type AddCustomRuleRequestParams struct {
 	PageId *string `json:"PageId,omitnil,omitempty" name:"PageId"`
 
 	// 匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系
+	// 默认值：and
+	// 入参限制：不区分大小写，仅支持and或or
 	LogicalOp *string `json:"LogicalOp,omitnil,omitempty" name:"LogicalOp"`
 
-	// 按照动作灰度的比例，默认是100
+	// 动作灰度比例，即规则命中后执行动作的流量百分比
+	// 取值范围：1-100
+	// 默认值：100（全量生效）
 	ActionRatio *uint64 `json:"ActionRatio,omitnil,omitempty" name:"ActionRatio"`
 }
 
@@ -892,9 +903,11 @@ type AddCustomRuleRequest struct {
 	*tchttp.BaseRequest
 	
 	// 规则名称
+	// 入参限制：1-128个字符，不允许特殊字符
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 优先级
+	// 优先级，0-100的整数，数字越小，代表这条规则的执行优先级越高
+	// 默认值：0
 	SortId *string `json:"SortId,omitnil,omitempty" name:"SortId"`
 
 	// 策略详情
@@ -903,13 +916,18 @@ type AddCustomRuleRequest struct {
 	// 需要添加策略的域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 动作类型，1代表阻断，2代表人机识别，3代表观察，4代表重定向，5代表JS校验
+	// 动作类型
+	// 取值说明：1-阻断，2-人机识别（滑块），3-观察，4-重定向，5-JS校验，6-人机识别（无感验证-拦截），7-人机识别（无感验证-观察），8-语音验证码
+	// 入参限制：必填，取值范围为1-8
+	// 约束条件：当ActionType为4（重定向）时，Redirect参数不能为空
 	ActionType *string `json:"ActionType,omitnil,omitempty" name:"ActionType"`
 
 	// 如果动作是重定向，则表示重定向的地址；其他情况可以为空
 	Redirect *string `json:"Redirect,omitnil,omitempty" name:"Redirect"`
 
-	// 过期时间，单位为秒级时间戳，例如1677254399表示过期时间为2023-02-24 23:59:59. 0表示永不过期
+	// 过期时间，单位为秒级时间戳，例如1677254399表示过期时间为2023-02-24 23:59:59
+	// 取值说明：0表示永不过期
+	// 默认值：0（解析失败时也默认为0）
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
 	// WAF实例类型，sparta-waf表示SAAS型WAF，clb-waf表示负载均衡型WAF
@@ -940,9 +958,13 @@ type AddCustomRuleRequest struct {
 	PageId *string `json:"PageId,omitnil,omitempty" name:"PageId"`
 
 	// 匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系
+	// 默认值：and
+	// 入参限制：不区分大小写，仅支持and或or
 	LogicalOp *string `json:"LogicalOp,omitnil,omitempty" name:"LogicalOp"`
 
-	// 按照动作灰度的比例，默认是100
+	// 动作灰度比例，即规则命中后执行动作的流量百分比
+	// 取值范围：1-100
+	// 默认值：100（全量生效）
 	ActionRatio *uint64 `json:"ActionRatio,omitnil,omitempty" name:"ActionRatio"`
 }
 
@@ -4025,7 +4047,7 @@ type CreateIpAccessControlRequestParams struct {
 	// 备注
 	Note *string `json:"Note,omitnil,omitempty" name:"Note"`
 
-	// 规则执行的方式，TimedJob为定时执行，CronJob为周期执行
+	// 规则执行的方式，TimedJob为定时执行，CronJob为周期执行，JobType为空时，永久生效
 	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
 
 	// 定时配置详情
@@ -4060,7 +4082,7 @@ type CreateIpAccessControlRequest struct {
 	// 备注
 	Note *string `json:"Note,omitnil,omitempty" name:"Note"`
 
-	// 规则执行的方式，TimedJob为定时执行，CronJob为周期执行
+	// 规则执行的方式，TimedJob为定时执行，CronJob为周期执行，JobType为空时，永久生效
 	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
 
 	// 定时配置详情
@@ -5432,12 +5454,15 @@ type DeleteCustomRuleRequestParams struct {
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 删除的规则ID
+	// 说明：支持批量删除，多个规则ID用英文逗号分隔
+	// 与DomainRuleIdList二选一，优先使用DomainRuleIdList
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
 	// WAF的版本，clb-waf代表负载均衡WAF、sparta-waf代表SaaS WAF，默认是sparta-waf。
 	Edition *string `json:"Edition,omitnil,omitempty" name:"Edition"`
 
 	// 批量删除的规则列表
+	// 说明：支持跨域名批量删除，每个元素指定域名和规则ID。如果不为空则忽略Domain和RuleId字段
 	DomainRuleIdList []*DomainRuleId `json:"DomainRuleIdList,omitnil,omitempty" name:"DomainRuleIdList"`
 }
 
@@ -5448,12 +5473,15 @@ type DeleteCustomRuleRequest struct {
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 删除的规则ID
+	// 说明：支持批量删除，多个规则ID用英文逗号分隔
+	// 与DomainRuleIdList二选一，优先使用DomainRuleIdList
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
 	// WAF的版本，clb-waf代表负载均衡WAF、sparta-waf代表SaaS WAF，默认是sparta-waf。
 	Edition *string `json:"Edition,omitnil,omitempty" name:"Edition"`
 
 	// 批量删除的规则列表
+	// 说明：支持跨域名批量删除，每个元素指定域名和规则ID。如果不为空则忽略Domain和RuleId字段
 	DomainRuleIdList []*DomainRuleId `json:"DomainRuleIdList,omitnil,omitempty" name:"DomainRuleIdList"`
 }
 
@@ -11137,6 +11165,9 @@ type DescribeLLMContentSecCheckRequestParams struct {
 
 	// <p>意图检测请求内容</p>
 	IntentContent *IntentContent `json:"IntentContent,omitnil,omitempty" name:"IntentContent"`
+
+	// <p>客户端来源IP地址，用于白名单匹配等场景，支持IPv4和IPv6格式</p>
+	ClientIP *string `json:"ClientIP,omitnil,omitempty" name:"ClientIP"`
 }
 
 type DescribeLLMContentSecCheckRequest struct {
@@ -11177,6 +11208,9 @@ type DescribeLLMContentSecCheckRequest struct {
 
 	// <p>意图检测请求内容</p>
 	IntentContent *IntentContent `json:"IntentContent,omitnil,omitempty" name:"IntentContent"`
+
+	// <p>客户端来源IP地址，用于白名单匹配等场景，支持IPv4和IPv6格式</p>
+	ClientIP *string `json:"ClientIP,omitnil,omitempty" name:"ClientIP"`
 }
 
 func (r *DescribeLLMContentSecCheckRequest) ToJsonString() string {
@@ -11203,6 +11237,7 @@ func (r *DescribeLLMContentSecCheckRequest) FromJsonString(s string) error {
 	delete(f, "ToolArgs")
 	delete(f, "SessionId")
 	delete(f, "IntentContent")
+	delete(f, "ClientIP")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLLMContentSecCheckRequest has unknown keys!", "")
 	}
@@ -13205,22 +13240,16 @@ type DescribeTopicsRequestParams struct {
 	// <ul><li>topicName 按照【日志主题名称】进行过滤，默认为模糊匹配，Filter.Values 当要查询访问日志时为access，查询攻击日志时为attack</li></ul>注意：每次请求的 Filters 的上限为10，Filter.Values 的上限为100。
 	Filters []*FilterCls `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 分页的偏移量，默认值为0。
+	// <p>分页的偏移量，默认值为0。</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页单页限制数目，默认值为20，最大值100。
+	// <p>分页单页限制数目，默认值为20，最大值100。</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 控制Filters相关字段是否为精确匹配。
-	// <ul><li>0: 默认值，topicName 和 logsetName 模糊匹配</li>
-	// <li>1: topicName   精确匹配</li>
-	// <li>2: logsetName精确匹配</li>
-	// <li>3: topicName 和logsetName 都精确匹配</li></ul>
+	// <p>控制Filters相关字段是否为精确匹配。</p><ul><li>0: 默认值，topicName 和 logsetName 模糊匹配</li><li>1: topicName   精确匹配</li><li>2: logsetName精确匹配</li><li>3: topicName 和logsetName 都精确匹配</li></ul>
 	PreciseSearch *uint64 `json:"PreciseSearch,omitnil,omitempty" name:"PreciseSearch"`
 
-	// 主题类型
-	// <ul><li>0:日志主题，默认值</li>
-	// <li>1:指标主题</li></ul>
+	// <p>主题类型</p><ul><li>0:日志主题，默认值</li><li>1:指标主题</li></ul>
 	BizType *uint64 `json:"BizType,omitnil,omitempty" name:"BizType"`
 }
 
@@ -13230,22 +13259,16 @@ type DescribeTopicsRequest struct {
 	// <ul><li>topicName 按照【日志主题名称】进行过滤，默认为模糊匹配，Filter.Values 当要查询访问日志时为access，查询攻击日志时为attack</li></ul>注意：每次请求的 Filters 的上限为10，Filter.Values 的上限为100。
 	Filters []*FilterCls `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 分页的偏移量，默认值为0。
+	// <p>分页的偏移量，默认值为0。</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页单页限制数目，默认值为20，最大值100。
+	// <p>分页单页限制数目，默认值为20，最大值100。</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 控制Filters相关字段是否为精确匹配。
-	// <ul><li>0: 默认值，topicName 和 logsetName 模糊匹配</li>
-	// <li>1: topicName   精确匹配</li>
-	// <li>2: logsetName精确匹配</li>
-	// <li>3: topicName 和logsetName 都精确匹配</li></ul>
+	// <p>控制Filters相关字段是否为精确匹配。</p><ul><li>0: 默认值，topicName 和 logsetName 模糊匹配</li><li>1: topicName   精确匹配</li><li>2: logsetName精确匹配</li><li>3: topicName 和logsetName 都精确匹配</li></ul>
 	PreciseSearch *uint64 `json:"PreciseSearch,omitnil,omitempty" name:"PreciseSearch"`
 
-	// 主题类型
-	// <ul><li>0:日志主题，默认值</li>
-	// <li>1:指标主题</li></ul>
+	// <p>主题类型</p><ul><li>0:日志主题，默认值</li><li>1:指标主题</li></ul>
 	BizType *uint64 `json:"BizType,omitnil,omitempty" name:"BizType"`
 }
 
@@ -13274,10 +13297,10 @@ func (r *DescribeTopicsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTopicsResponseParams struct {
-	// 日志主题列表
+	// <p>日志主题列表</p>
 	Topics []*TopicInfo `json:"Topics,omitnil,omitempty" name:"Topics"`
 
-	// 总数目
+	// <p>总数目</p>
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -18726,9 +18749,13 @@ type ModifyCustomRuleRequestParams struct {
 	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
 	// 编辑的规则名称
+	// 入参限制：1-128个字符，不允许特殊字符
 	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
 
-	// 动作类型，1代表阻断，2代表人机识别，3代表观察，4代表重定向，5代表JS校验
+	// 动作类型
+	// 取值说明：1-阻断，2-人机识别（滑块），3-观察，4-重定向，5-JS校验，6-人机识别（无感验证-拦截），7-人机识别（无感验证-观察），8-语音验证码
+	// 入参限制：必填，取值范围为1-8
+	// 约束条件：当RuleAction为4（重定向）时，Redirect参数不能为空
 	RuleAction *string `json:"RuleAction,omitnil,omitempty" name:"RuleAction"`
 
 	// 匹配条件数组
@@ -18770,9 +18797,13 @@ type ModifyCustomRuleRequestParams struct {
 	PageId *string `json:"PageId,omitnil,omitempty" name:"PageId"`
 
 	// 匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系
+	// 默认值：and
+	// 入参限制：不区分大小写，仅支持and或or
 	LogicalOp *string `json:"LogicalOp,omitnil,omitempty" name:"LogicalOp"`
 
-	// 规则生效比例
+	// 动作灰度比例，即规则命中后执行动作的流量百分比
+	// 取值范围：1-100
+	// 默认值：100（全量生效）
 	ActionRatio *uint64 `json:"ActionRatio,omitnil,omitempty" name:"ActionRatio"`
 }
 
@@ -18786,9 +18817,13 @@ type ModifyCustomRuleRequest struct {
 	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
 	// 编辑的规则名称
+	// 入参限制：1-128个字符，不允许特殊字符
 	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
 
-	// 动作类型，1代表阻断，2代表人机识别，3代表观察，4代表重定向，5代表JS校验
+	// 动作类型
+	// 取值说明：1-阻断，2-人机识别（滑块），3-观察，4-重定向，5-JS校验，6-人机识别（无感验证-拦截），7-人机识别（无感验证-观察），8-语音验证码
+	// 入参限制：必填，取值范围为1-8
+	// 约束条件：当RuleAction为4（重定向）时，Redirect参数不能为空
 	RuleAction *string `json:"RuleAction,omitnil,omitempty" name:"RuleAction"`
 
 	// 匹配条件数组
@@ -18828,9 +18863,13 @@ type ModifyCustomRuleRequest struct {
 	PageId *string `json:"PageId,omitnil,omitempty" name:"PageId"`
 
 	// 匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系
+	// 默认值：and
+	// 入参限制：不区分大小写，仅支持and或or
 	LogicalOp *string `json:"LogicalOp,omitnil,omitempty" name:"LogicalOp"`
 
-	// 规则生效比例
+	// 动作灰度比例，即规则命中后执行动作的流量百分比
+	// 取值范围：1-100
+	// 默认值：100（全量生效）
 	ActionRatio *uint64 `json:"ActionRatio,omitnil,omitempty" name:"ActionRatio"`
 }
 
@@ -23796,8 +23835,7 @@ type SpartaProtectionPort struct {
 }
 
 type Strategy struct {
-	// 匹配字段 匹配字段不同，相应的匹配参数、逻辑符号、匹配内容有所不同
-	// 具体如下所示： <table>
+	// 匹配字段 匹配字段不同，相应的匹配参数、逻辑符号、匹配内容有所不同，具体如下所示： <table>
 	// 	<thead>
 	// 		<tr>
 	// 			<th>匹配字段</th>
@@ -23822,13 +23860,13 @@ type Strategy struct {
 	// 		<tr>
 	// 			<td>Referer（Referer）</td>
 	// 			<td>不支持参数</td>
-	// 			<td>empty（内容为空）<br />null（不存在）<br />eq（等于）<br />neq（不等于）<br />contains（包含）<br />ncontains（不包含）<br/>belong_to（属于）<br/>not_belong_to（不属于）<br />len_eq（长度等于）<br />len_gt（长度大于）<br />len_lt（长度小于）<br />strprefix（前缀匹配）<br />strsuffix（后缀匹配）<br />rematch（正则匹配）</td>
+	// 			<td>empty（内容为空）<br />nempty（内容不为空）<br />null（不存在）<br />nnull（存在）<br />eq（等于）<br />neq（不等于）<br />contains（包含）<br />ncontains（不包含）<br />belong_to（属于）<br />not_belong_to（不属于）<br />len_eq（长度等于）<br />len_gt（长度大于）<br />len_lt（长度小于）<br />strprefix（前缀匹配）<br />strsuffix（后缀匹配）<br />rematch（正则匹配）</td>
 	// 			<td>请输入内容,512个字符以内</td>
 	// 		</tr>
 	// 		<tr>
 	// 			<td>URL（请求路径）</td>
 	// 			<td>不支持参数</td>
-	// 			<td>eq（等于）<br />neq（不等于）<br />contains（包含）<br />ncontains（不包含）<br />len_eq（长度等于）<br />belong_to（属于）<br />not_belong_to（不属于）<br />len_gt（长度大于）<br />len_lt（长度小于）<br />strprefix（前缀匹配）<br />strsuffix（后缀匹配）<br />rematch（正则匹配）<br /></td>
+	// 			<td>eq（等于）<br />neq（不等于）<br />contains（包含）<br />ncontains（不包含）<br />belong_to（属于）<br />not_belong_to（不属于）<br />len_eq（长度等于）<br />len_gt（长度大于）<br />len_lt（长度小于）<br />strprefix（前缀匹配）<br />strsuffix（后缀匹配）<br />rematch（正则匹配）<br /></td>
 	// 			<td>请以/开头,512个字符以内</td>
 	// 		</tr>
 	// 		<tr>
@@ -23840,25 +23878,25 @@ type Strategy struct {
 	// 		<tr>
 	// 			<td>HTTP_METHOD（HTTP请求方法）</td>
 	// 			<td>不支持参数</td>
-	// 			<td>eq（等于）<br />neq（不等于）<br/>belong_to（属于）<br/>not_belong_to（不属于）</td>
+	// 			<td>eq（等于）<br />neq（不等于）<br />belong_to（属于）<br />not_belong_to（不属于）<br />rematch（正则匹配）</td>
 	// 			<td>请输入方法名称,建议大写</td>
 	// 		</tr>
 	// 		<tr>
 	// 			<td>QUERY_STRING（请求字符串）</td>
 	// 			<td>不支持参数</td>
-	// 			<td>同匹配字段<font color="Red">请求路径</font>逻辑符号</td>
+	// 			<td>empty（内容为空）<br />nnull（存在）<br />eq（等于）<br />neq（不等于）<br />contains（包含）<br />ncontains（不包含）<br />belong_to（属于）<br />not_belong_to（不属于）<br />len_eq（长度等于）<br />len_gt（长度大于）<br />len_lt（长度小于）<br />strprefix（前缀匹配）<br />strsuffix（后缀匹配）<br />rematch（正则匹配）</td>
 	// 			<td>请输入内容,512个字符以内</td>
 	// 		</tr>
 	// 		<tr>
 	// 			<td>GET（GET参数值）</td>
 	// 			<td>支持参数录入</td>
-	// 			<td>contains（包含）<br />ncontains（不包含）<br/>belong_to（属于）<br/>not_belong_to（不属于）<br />len_eq（长度等于）<br />len_gt（长度大于）<br />len_lt（长度小于）<br />strprefix（前缀匹配）<br />strsuffix（后缀匹配）</td>
+	// 			<td>empty（内容为空）<br />eq（等于）<br />neq（不等于）<br />contains（包含）<br />ncontains（不包含）<br />belong_to（属于）<br />not_belong_to（不属于）<br />len_eq（长度等于）<br />len_gt（长度大于）<br />len_lt（长度小于）<br />strprefix（前缀匹配）<br />strsuffix（后缀匹配）<br />rematch（正则匹配）</td>
 	// 			<td>请输入内容,512个字符以内</td>
 	// 		</tr>
 	// 		<tr>
 	// 			<td>GET_PARAMS_NAMES（GET参数名）</td>
 	// 			<td>不支持参数</td>
-	// 			<td>exsit（存在参数）<br />nexsit（不存在参数）<br/>belong_to（属于）<br/>not_belong_to（不属于）<br />len_eq（长度等于）<br />len_gt（长度大于）<br />len_lt（长度小于）<br />strprefix（前缀匹配）<br />strsuffix（后缀匹配）</td>
+	// 			<td>eq（等于）<br />neq（不等于）<br />belong_to（属于）<br />not_belong_to（不属于）<br />len_eq（长度等于）<br />len_gt（长度大于）<br />len_lt（长度小于）<br />strprefix（前缀匹配）<br />strsuffix（后缀匹配）</td>
 	// 			<td>请输入内容,512个字符以内</td>
 	// 		</tr>
 	// 		<tr>
@@ -23870,22 +23908,20 @@ type Strategy struct {
 	// 		<tr>
 	// 			<td>GET_POST_NAMES（POST参数名）</td>
 	// 			<td>不支持参数</td>
-	// 			<td>同匹配字段<font color="Red">GET参数名</font>逻辑符号</td>
+	// 			<td>eq（等于）<br />neq（不等于）<br />belong_to（属于）<br />not_belong_to（不属于）<br />len_eq（长度等于）<br />len_gt（长度大于）<br />len_lt（长度小于）<br />strprefix（前缀匹配）<br />strsuffix（后缀匹配）<br />rematch（正则匹配）</td>
 	// 			<td>请输入内容,512个字符以内</td>
 	// 		</tr>
 	// 		<tr>
 	// 			<td>POST_BODY（完整BODY）</td>
 	// 			<td>不支持参数</td>
-	// 			<td>同匹配字段<font color="Red">请求路径</font>逻辑符号</td>
+	// 			<td>empty（内容为空）<br />eq（等于）<br />neq（不等于）<br />contains（包含）<br />ncontains（不包含）<br />belong_to（属于）<br />not_belong_to（不属于）<br />len_eq（长度等于）<br />len_gt（长度大于）<br />len_lt（长度小于）<br />strprefix（前缀匹配）<br />strsuffix（后缀匹配）<br />rematch（正则匹配）</td>
 	// 			<td>请输入BODY内容,512个字符以内</td>
 	// 		</tr>
 	// 		<tr>
 	// 			<td>COOKIE（Cookie）</td>
 	// 			<td>不支持参数</td>
-	// 			<td>empty（内容为空）<br />null（不存在）<br />rematch（正则匹配）</td>
-	// 			<td>
-	// 				<font color="Red">暂不支持</font>
-	// 			</td>
+	// 			<td>empty（内容为空）<br />null（不存在）<br />nnull（存在）<br />eq（等于）<br />neq（不等于）<br />contains（包含）<br />ncontains（不包含）<br />len_eq（长度等于）<br />len_gt（长度大于）<br />len_lt（长度小于）<br />rematch（正则匹配）</td>
+	// 			<td>请输入内容,512个字符以内</td>
 	// 		</tr>
 	// 		<tr>
 	// 			<td>GET_COOKIES_NAMES（Cookie参数名）</td>
@@ -23902,43 +23938,49 @@ type Strategy struct {
 	// 		<tr>
 	// 			<td>GET_HEADERS_NAMES（Header参数名）</td>
 	// 			<td>不支持参数</td>
-	// 			<td>exsit（存在参数）<br />nexsit（不存在参数）<br />len_eq（长度等于）<br />len_gt（长度大于）<br />len_lt（长度小于）<br />strprefix（前缀匹配）<br />strsuffix（后缀匹配）<br />rematch（正则匹配）</td>
+	// 			<td>eq（等于）<br />neq（不等于）<br />len_eq（长度等于）<br />len_gt（长度大于）<br />len_lt（长度小于）<br />strprefix（前缀匹配）<br />strsuffix（后缀匹配）<br />rematch（正则匹配）</td>
 	// 			<td>请输入内容,建议小写,512个字符以内</td>
 	// 		</tr>
 	// 		<tr>
 	// 			<td>ARGS_HEADER（Header参数值）</td>
 	// 			<td>支持参数录入</td>
-	// 			<td>contains（包含）<br />ncontains（不包含）<br />len_eq（长度等于）<br />len_gt（长度大于）<br />len_lt（长度小于）<br />strprefix（前缀匹配）<br />strsuffix（后缀匹配）<br />rematch（正则匹配）</td>
+	// 			<td>empty（内容为空）<br />nempty（内容不为空）<br />null（不存在）<br />nnull（存在）<br />eq（等于）<br />neq（不等于）<br />contains（包含）<br />ncontains（不包含）<br />belong_to（属于）<br />not_belong_to（不属于）<br />len_eq（长度等于）<br />len_gt（长度大于）<br />len_lt（长度小于）<br />strprefix（前缀匹配）<br />strsuffix（后缀匹配）<br />rematch（正则匹配）</td>
 	// 			<td>请输入内容,512个字符以内</td>
 	// 		</tr>
 	// 		<tr>
 	// 			<td>CONTENT_LENGTH（Content-length）</td>
-	// 			<td>支持参数录入</td>
-	// 			<td>numgt（数值大于）<br />numlt（数值小于）<br />numeq（数值等于）<br /></td>
+	// 			<td>不支持参数</td>
+	// 			<td>numeq（数值等于）<br />numneq（数值不等于）<br />numgt（数值大于）<br />numlt（数值小于）<br />numge（数值大于等于）<br />numle（数值小于等于）</td>
 	// 			<td>请输入0-9999999999999之间的整数</td>
 	// 		</tr>
 	// 		<tr>
 	// 			<td>IP_GEO（来源IP归属地）</td>
-	// 			<td>支持参数录入</td>
-	// 			<td>geo_in（属于）<br />geo_not_in（不属于）<br /></td>
+	// 			<td>不支持参数</td>
+	// 			<td>geo_in（属于）<br />geo_not_in（不属于）</td>
 	// 			<td>请输入内容,10240字符以内，格式为序列化的JSON，格式为：[{"Country":"中国","Region":"广东","City":"深圳"}]</td>
+	// 		</tr>
+	// 		<tr>
+	// 			<td>HOST（请求Host）</td>
+	// 			<td>不支持参数</td>
+	// 			<td>empty（内容为空）<br />null（不存在）<br />nnull（存在）<br />eq（等于）<br />neq（不等于）<br />contains（包含）<br />ncontains（不包含）<br />len_eq（长度等于）<br />len_gt（长度大于）<br />len_lt（长度小于）<br />strprefix（前缀匹配）<br />strsuffix（后缀匹配）<br />rematch（正则匹配）</td>
+	// 			<td>请输入Host值,512个字符以内</td>
 	// 		</tr>
 	// 		<tr>
 	// 			<td>CAPTCHA_RISK（验证码风险）</td>
 	// 			<td>不支持参数</td>
-	// 			<td>eq（等于）<br />neq（不等于）<br />belong（属于）<br />not_belong（不属于）<br />null（不存在）<br />exist（存在）</td>
+	// 			<td>eq（等于）<br />neq（不等于）<br />belong_to（属于）<br />not_belong_to（不属于）<br />null（不存在）<br />nnull（存在）</td>
 	// 			<td>请输入风险等级值,支持数值范围0-255</td>
 	// 		</tr>
 	// 		<tr>
 	// 			<td>CAPTCHA_DEVICE_RISK（验证码设备风险）</td>
 	// 			<td>不支持参数</td>
-	// 			<td>eq（等于）<br />neq（不等于）<br />belong（属于）<br />not_belong（不属于）<br />null（不存在）<br />exist（存在）</td>
+	// 			<td>eq（等于）<br />neq（不等于）<br />belong_to（属于）<br />not_belong_to（不属于）<br />null（不存在）<br />nnull（存在）</td>
 	// 			<td>请输入设备风险代码,支持取值：101、201、301、401、501、601、701</td>
 	// 		</tr>
 	// 		<tr>
 	// 			<td>CAPTCHAR_SCORE（验证码风险评估分）</td>
 	// 			<td>不支持参数</td>
-	// 			<td>numeq（数值等于）<br />numgt（数值大于）<br />numlt（数值小于）<br />numle（数值小于等于）<br />numge（数值大于等于）<br />null（不存在）<br />exist（存在）</td>
+	// 			<td>numeq（数值等于）<br />numneq（数值不等于）<br />numgt（数值大于）<br />numlt（数值小于）<br />numle（数值小于等于）<br />numge（数值大于等于）<br />null（不存在）<br />nnull（存在）</td>
 	// 			<td>请输入评估分数,支持数值范围0-100</td>
 	// 		</tr>
 	// 	</tbody>
@@ -23947,30 +23989,34 @@ type Strategy struct {
 
 	// 逻辑符号 
 	// 
-	//     逻辑符号一共分为以下几种类型：
+	// 逻辑符号一共分为以下几种类型：
 	//         empty （ 内容为空）
-	//         null （不存在）
+	//         nempty （ 内容不为空）
+	//    null （不存在）
+	//      nnull （存在）
 	//         eq （ 等于）
-	//         neq （ 不等于）
+	//     neq （ 不等于）
 	//         contains （ 包含）
 	//         ncontains （ 不包含）
-	//         strprefix （ 前缀匹配）
-	//         strsuffix （ 后缀匹配）
+	//      belong_to （属于）
+	//         not_belong_to （不属于）
+	//   strprefix （ 前缀匹配）
+	// strsuffix （ 后缀匹配）
 	//         len_eq （ 长度等于）
-	//         len_gt （ 长度大于）
+	//  len_gt （ 长度大于）
 	//         len_lt （ 长度小于）
-	//         ipmatch （ 属于）
-	//         ipnmatch （ 不属于）
+	//         ipmatch （ IP匹配）
+	//    ipnmatch （ IP不匹配）
+	//         rematch （ 正则匹配）
 	//         numgt （ 数值大于）
 	//         numlt （ 数值小于）
 	//         numeq （ 数值等于）
-	//         numneq （ 数值不等于）
-	//         numle （ 数值小于等于）
+	//  numneq （ 数值不等于）
+	//       numle （ 数值小于等于）
 	//         numge （ 数值大于等于）
-	// 		belong_to（属于）
-	// 		not_belong_to（不属于）
 	//         geo_in （ IP地理属于）
 	//         geo_not_in （ IP地理不属于）
+	//         cel （ CEL表达式）
 	//     各匹配字段对应的逻辑符号不同，详见上述匹配字段表格
 	CompareFunc *string `json:"CompareFunc,omitnil,omitempty" name:"CompareFunc"`
 
@@ -25192,36 +25238,56 @@ func (r *UpsertIpAccessControlResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type UpsertSessionRequestParams struct {
 	// 域名
+	// 入参限制：必填，必须为合法域名格式
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// session来源位置
+	// 会话来源位置
+	// 取值说明：get-从URL查询参数中提取，post-从POST Body中提取，cookie-从Cookie中提取，header-从HTTP Header中提取
+	// 入参限制：必填，取值范围为get/post/cookie/header
 	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 
 	// 提取类别
+	// 取值说明：location-按位置提取（使用StartOffset和EndOffset），match-按字符串匹配提取（使用KeyOrStartMat和EndMat），exact_key-按精准Key提取（使用Key字段）
+	// 入参限制：必填，取值范围为location/match/exact_key
 	Category *string `json:"Category,omitnil,omitempty" name:"Category"`
 
 	// 提取key或者起始匹配模式
+	// 入参限制：最长32个字符，不允许包含MongoDB注入字符
+	// 说明：当Category为match时，表示匹配的起始字符串；当Category为exact_key时，表示精确匹配的key名
 	KeyOrStartMat *string `json:"KeyOrStartMat,omitnil,omitempty" name:"KeyOrStartMat"`
 
 	// 结束匹配模式
+	// 入参限制：必填，最长32个字符，不允许包含MongoDB注入字符
+	// 说明：当Category为match时，表示匹配的结束字符串
 	EndMat *string `json:"EndMat,omitnil,omitempty" name:"EndMat"`
 
 	// 起始偏移位置
+	// 入参限制：必填，整数字符串
+	// 约束条件：EndOffset不能小于StartOffset，且EndOffset-StartOffset+1不能超过256
+	// 说明：当Category为location时生效，表示从会话值中提取的起始字节位置
 	StartOffset *string `json:"StartOffset,omitnil,omitempty" name:"StartOffset"`
 
 	// 结束偏移位置
+	// 入参限制：必填，整数字符串
+	// 约束条件：不能小于StartOffset，且EndOffset-StartOffset+1不能超过256
+	// 说明：当Category为location时生效，表示从会话值中提取的结束字节位置
 	EndOffset *string `json:"EndOffset,omitnil,omitempty" name:"EndOffset"`
 
 	// 版本
 	Edition *string `json:"Edition,omitnil,omitempty" name:"Edition"`
 
-	// Session名
+	// 会话名称
+	// 说明：用于标识会话的可读名称
 	SessionName *string `json:"SessionName,omitnil,omitempty" name:"SessionName"`
 
-	// Session对应ID
+	// 会话ID
+	// 说明：传-1表示新增会话（系统自动生成ID），传已有ID表示更新该会话配置
+	// 约束条件：新增时每个域名最多10条会话规则
 	SessionID *int64 `json:"SessionID,omitnil,omitempty" name:"SessionID"`
 
-	// 精准匹配时配置的key
+	// 会话标识参数（精准匹配key）
+	// 入参限制：key中"."分隔的层级不超过2层
+	// 说明：当Category为exact_key时使用，表示要精确匹配的参数名
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 }
 
@@ -25229,36 +25295,56 @@ type UpsertSessionRequest struct {
 	*tchttp.BaseRequest
 	
 	// 域名
+	// 入参限制：必填，必须为合法域名格式
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// session来源位置
+	// 会话来源位置
+	// 取值说明：get-从URL查询参数中提取，post-从POST Body中提取，cookie-从Cookie中提取，header-从HTTP Header中提取
+	// 入参限制：必填，取值范围为get/post/cookie/header
 	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 
 	// 提取类别
+	// 取值说明：location-按位置提取（使用StartOffset和EndOffset），match-按字符串匹配提取（使用KeyOrStartMat和EndMat），exact_key-按精准Key提取（使用Key字段）
+	// 入参限制：必填，取值范围为location/match/exact_key
 	Category *string `json:"Category,omitnil,omitempty" name:"Category"`
 
 	// 提取key或者起始匹配模式
+	// 入参限制：最长32个字符，不允许包含MongoDB注入字符
+	// 说明：当Category为match时，表示匹配的起始字符串；当Category为exact_key时，表示精确匹配的key名
 	KeyOrStartMat *string `json:"KeyOrStartMat,omitnil,omitempty" name:"KeyOrStartMat"`
 
 	// 结束匹配模式
+	// 入参限制：必填，最长32个字符，不允许包含MongoDB注入字符
+	// 说明：当Category为match时，表示匹配的结束字符串
 	EndMat *string `json:"EndMat,omitnil,omitempty" name:"EndMat"`
 
 	// 起始偏移位置
+	// 入参限制：必填，整数字符串
+	// 约束条件：EndOffset不能小于StartOffset，且EndOffset-StartOffset+1不能超过256
+	// 说明：当Category为location时生效，表示从会话值中提取的起始字节位置
 	StartOffset *string `json:"StartOffset,omitnil,omitempty" name:"StartOffset"`
 
 	// 结束偏移位置
+	// 入参限制：必填，整数字符串
+	// 约束条件：不能小于StartOffset，且EndOffset-StartOffset+1不能超过256
+	// 说明：当Category为location时生效，表示从会话值中提取的结束字节位置
 	EndOffset *string `json:"EndOffset,omitnil,omitempty" name:"EndOffset"`
 
 	// 版本
 	Edition *string `json:"Edition,omitnil,omitempty" name:"Edition"`
 
-	// Session名
+	// 会话名称
+	// 说明：用于标识会话的可读名称
 	SessionName *string `json:"SessionName,omitnil,omitempty" name:"SessionName"`
 
-	// Session对应ID
+	// 会话ID
+	// 说明：传-1表示新增会话（系统自动生成ID），传已有ID表示更新该会话配置
+	// 约束条件：新增时每个域名最多10条会话规则
 	SessionID *int64 `json:"SessionID,omitnil,omitempty" name:"SessionID"`
 
-	// 精准匹配时配置的key
+	// 会话标识参数（精准匹配key）
+	// 入参限制：key中"."分隔的层级不超过2层
+	// 说明：当Category为exact_key时使用，表示要精确匹配的参数名
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 }
 
@@ -25296,7 +25382,8 @@ type UpsertSessionResponseParams struct {
 	// 结果
 	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// SessionID
+	// 会话ID
+	// 说明：新增时返回系统生成的SessionID，更新时返回请求中传入的SessionID
 	SessionID *int64 `json:"SessionID,omitnil,omitempty" name:"SessionID"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
