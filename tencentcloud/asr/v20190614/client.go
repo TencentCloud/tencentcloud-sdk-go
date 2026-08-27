@@ -2105,7 +2105,7 @@ func NewVoicePrintEnrollResponse() (response *VoicePrintEnrollResponse) {
 // VoicePrintEnroll
 // 说话人注册接口用于注册一个指定音频，生成一个唯一的说话人id，后续可通过说话人验证接口验证其它音频和已有的说话人ID匹配度，注册时可指定说话人昵称，方便标识说话人ID，  说话人昵称可重复配置。 
 //
-// （注: 一个appid最多可以注册1000个说话人ID，一个说话人ID仅支持一条音频注册，后续可通过更新接口进行更新）
+// （注: 一个appid最多可以注册1000个说话人ID和1000个group，一个group最多可容纳100个说话人ID，一个说话人ID仅支持一条音频注册，后续可通过更新接口进行更新）
 //
 // 
 //
@@ -2140,7 +2140,7 @@ func (c *Client) VoicePrintEnroll(request *VoicePrintEnrollRequest) (response *V
 // VoicePrintEnroll
 // 说话人注册接口用于注册一个指定音频，生成一个唯一的说话人id，后续可通过说话人验证接口验证其它音频和已有的说话人ID匹配度，注册时可指定说话人昵称，方便标识说话人ID，  说话人昵称可重复配置。 
 //
-// （注: 一个appid最多可以注册1000个说话人ID，一个说话人ID仅支持一条音频注册，后续可通过更新接口进行更新）
+// （注: 一个appid最多可以注册1000个说话人ID和1000个group，一个group最多可容纳100个说话人ID，一个说话人ID仅支持一条音频注册，后续可通过更新接口进行更新）
 //
 // 
 //

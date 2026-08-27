@@ -8817,6 +8817,90 @@ func (r *CreateReleaseFlowResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateRequestWithEncryptionRequestParams struct {
+	// <p>操作的接口名称。取值参考接口文档输入参数章节关于公共参数 Action 的说明。</p>
+	RequestAction *string `json:"RequestAction,omitnil,omitempty" name:"RequestAction"`
+
+	// <p>加密算法使用的初始化向量。固定为 16 字节，将 IV 原始字节使用标准 Base64 编码后传入。</p>
+	IV *string `json:"IV,omitnil,omitempty" name:"IV"`
+
+	// <p>使用 AES-CBC 或 SM4-CBC 加密请求内容得到的密文。加密前请求内容采用 PKCS#7 Padding；将密文原始字节使用标准 Base64 编码后传入。</p>
+	EncryptedData *string `json:"EncryptedData,omitnil,omitempty" name:"EncryptedData"`
+
+	// <p>用于校验请求数据完整性。对 IV 原始字节和密文原始字节直接拼接（不加拼接符）后计算 HMAC-SHA256，再将计算结果使用标准 Base64 编码后传入。</p>
+	EncryptionSignature *string `json:"EncryptionSignature,omitnil,omitempty" name:"EncryptionSignature"`
+}
+
+type CreateRequestWithEncryptionRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>操作的接口名称。取值参考接口文档输入参数章节关于公共参数 Action 的说明。</p>
+	RequestAction *string `json:"RequestAction,omitnil,omitempty" name:"RequestAction"`
+
+	// <p>加密算法使用的初始化向量。固定为 16 字节，将 IV 原始字节使用标准 Base64 编码后传入。</p>
+	IV *string `json:"IV,omitnil,omitempty" name:"IV"`
+
+	// <p>使用 AES-CBC 或 SM4-CBC 加密请求内容得到的密文。加密前请求内容采用 PKCS#7 Padding；将密文原始字节使用标准 Base64 编码后传入。</p>
+	EncryptedData *string `json:"EncryptedData,omitnil,omitempty" name:"EncryptedData"`
+
+	// <p>用于校验请求数据完整性。对 IV 原始字节和密文原始字节直接拼接（不加拼接符）后计算 HMAC-SHA256，再将计算结果使用标准 Base64 编码后传入。</p>
+	EncryptionSignature *string `json:"EncryptionSignature,omitnil,omitempty" name:"EncryptionSignature"`
+}
+
+func (r *CreateRequestWithEncryptionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateRequestWithEncryptionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RequestAction")
+	delete(f, "IV")
+	delete(f, "EncryptedData")
+	delete(f, "EncryptionSignature")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRequestWithEncryptionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateRequestWithEncryptionResponseParams struct {
+	// <p>加密算法使用的初始化向量。固定为 16 字节，将 IV 原始字节使用标准 Base64 编码后传入。</p>
+	IV *string `json:"IV,omitnil,omitempty" name:"IV"`
+
+	// <p>使用 AES-CBC 或 SM4-CBC 加密返回内容得到的密文。加密前返回内容采用 PKCS#7 Padding；将密文原始字节使用标准 Base64 编码后传入。</p>
+	EncryptedData *string `json:"EncryptedData,omitnil,omitempty" name:"EncryptedData"`
+
+	// <p>用于校验请求数据完整性。对 IV 原始字节和密文原始字节直接拼接（不加拼接符）后计算 HMAC-SHA256，再将计算结果使用标准 Base64 编码后传入。</p>
+	EncryptionSignature *string `json:"EncryptionSignature,omitnil,omitempty" name:"EncryptionSignature"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateRequestWithEncryptionResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateRequestWithEncryptionResponseParams `json:"Response"`
+}
+
+func (r *CreateRequestWithEncryptionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateRequestWithEncryptionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateResultPageConfig struct {
 	// <ul>
 	//   <li>0 : 发起审批成功页面（通过接口<a href="https://qian.tencent.com/developers/companyApis/embedPages/CreatePrepareFlow/" target="_blank">创建发起流程web页面</a>发起时设置了NeedCreateReview参数为true）</li>

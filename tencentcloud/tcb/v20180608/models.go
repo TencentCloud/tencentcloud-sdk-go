@@ -7039,6 +7039,64 @@ func (r *GetProvidersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type HTTPServiceCacheAction struct {
+	// <p>HTTPService 缓存动作类型</p><p>枚举值：</p><ul><li>Cache： 节点缓存 + 浏览器缓存统一动作（节点秒数 CacheTime、浏览器秒数 MaxAgeTime）</li><li>CacheKey： 仅开启EO边缘加速通道下发</li></ul>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>节点缓存配置。Type=Cache 时必填</p>
+	Cache *HTTPServiceCacheParams `json:"Cache,omitnil,omitempty" name:"Cache"`
+
+	// <p>自定义缓存键。Type=CacheKey 时必填</p>
+	CacheKey *HTTPServiceCacheKeyParams `json:"CacheKey,omitnil,omitempty" name:"CacheKey"`
+}
+
+type HTTPServiceCacheKeyParams struct {
+	// <p>全 URL 缓存开关</p><p>枚举值：</p><ul><li>on： 开启</li><li>off： 关闭</li></ul>
+	FullURLCache *string `json:"FullURLCache,omitnil,omitempty" name:"FullURLCache"`
+
+	// <p>查询参数是否参与缓存键</p><p>枚举值：</p><ul><li>on： 开启</li><li>off： 关闭</li></ul>
+	QueryStringSwitch *string `json:"QueryStringSwitch,omitnil,omitempty" name:"QueryStringSwitch"`
+
+	// <p>QueryStringSwitch=on 时必填</p><p>枚举值：</p><ul><li>includeCustom： 白名单</li><li>excludeCustom： 黑名单</li></ul>
+	QueryStringAction *string `json:"QueryStringAction,omitnil,omitempty" name:"QueryStringAction"`
+
+	// <p>参数名列表</p><p>入参限制：最多 100 项，单项 1~128 字节</p>
+	QueryStringValues []*string `json:"QueryStringValues,omitnil,omitempty" name:"QueryStringValues"`
+}
+
+type HTTPServiceCacheParams struct {
+	// <p>遵循源站</p>
+	FollowOrigin *bool `json:"FollowOrigin,omitnil,omitempty" name:"FollowOrigin"`
+
+	// <p>不缓存</p>
+	NoCache *bool `json:"NoCache,omitnil,omitempty" name:"NoCache"`
+
+	// <p>自定义缓存时间（秒）</p><p>取值范围：[0, 31536000]</p><p>单位：秒</p>
+	CacheTime *uint64 `json:"CacheTime,omitnil,omitempty" name:"CacheTime"`
+
+	// <p>浏览器缓存秒数（对应 max-age）</p><p>取值范围：[0, 31536000]</p><p>单位：秒</p>
+	MaxAgeTime *uint64 `json:"MaxAgeTime,omitnil,omitempty" name:"MaxAgeTime"`
+}
+
+type HTTPServiceCacheRule struct {
+	// <p>自定义描述，最多 128 字节</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>规则开关：nil/true 启用，false 禁用</p>
+	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
+
+	// <p>HTTPService 规则匹配条件（必填）</p>
+	Condition *HTTPServiceRuleCondition `json:"Condition,omitnil,omitempty" name:"Condition"`
+
+	// <p>HTTPService 缓存动作列表，同一规则内相同 Type 至多一个</p>
+	Actions []*HTTPServiceCacheAction `json:"Actions,omitnil,omitempty" name:"Actions"`
+}
+
+type HTTPServiceCacheSet struct {
+	// <p>HTTPService 缓存配置列表。Rules 按数组顺序为优先级顺序，Rules[n-1] 优先级最高</p>
+	Rules []*HTTPServiceCacheRule `json:"Rules,omitnil,omitempty" name:"Rules"`
+}
+
 type HTTPServiceDomain struct {
 	// <p>域名</p>
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
@@ -7113,8 +7171,11 @@ type HTTPServiceDomainParam struct {
 }
 
 type HTTPServiceExtension struct {
-	// 添加请求头列表
+	// <p>添加请求头列表</p>
 	HeadersHandler *HTTPServiceHeadersHandler `json:"HeadersHandler,omitnil,omitempty" name:"HeadersHandler"`
+
+	// <p>HTTPService 缓存配置，包含Cache 节点缓存 / MaxAge 浏览器缓存 / CacheKey 自定义缓存键</p>
+	Cache *HTTPServiceCacheSet `json:"Cache,omitnil,omitempty" name:"Cache"`
 }
 
 type HTTPServiceHeaderToAdd struct {
@@ -7231,6 +7292,17 @@ type HTTPServiceRouteQPSPolicy struct {
 
 	// 客户端限频配置
 	QPSPerClient *HTTPServiceQPSPerClient `json:"QPSPerClient,omitnil,omitempty" name:"QPSPerClient"`
+}
+
+type HTTPServiceRuleCondition struct {
+	// <p>Target 匹配对象</p><p>枚举值：</p><ul><li>url_path： 请求 URI 路径（不含查询串），例：/static/logo.jpg</li><li>file_extension： 请求文件扩展名（EO 从 path 中解析），例：jpg</li><li>full_uri： 完整 URI（路径 + 查询串），例：/download?type=hd</li></ul>
+	Target *string `json:"Target,omitnil,omitempty" name:"Target"`
+
+	// <p>MatchType 字符串匹配类型</p><p>枚举值：</p><ul><li>prefix：  前缀匹配</li><li>suffix： 后缀匹配</li><li>contains： 包含匹配</li><li>exact： 精确匹配</li></ul>
+	MatchType *string `json:"MatchType,omitnil,omitempty" name:"MatchType"`
+
+	// <p>Values 匹配值集合，Values 内任一命中即认为条件成立（OR 语义）</p><p>入参限制：单项 1~1024 字节，最多 100 条</p>
+	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
 }
 
 type HpaPolicy struct {

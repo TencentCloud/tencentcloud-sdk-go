@@ -319,15 +319,15 @@ func (r *CancelIgnorePolicyRiskResponse) FromJsonString(s string) error {
 }
 
 type CommonFilter struct {
-	// <p>筛选字段名。支持：SecurityGroupId、FwGroupId、IP（IP地址模糊搜索）、InstanceName（实例名称模糊搜索）、VpcId（VPC ID精确搜索）</p>
+	// 筛选字段名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// <p>筛选值列表</p>
+	// 筛选值列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
 
-	// <p>操作类型。1=等于，7=in，9=模糊匹配</p>
+	// 操作类型：1-精确匹配 9-模糊匹配
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OperatorType *int64 `json:"OperatorType,omitnil,omitempty" name:"OperatorType"`
 }
@@ -398,26 +398,26 @@ func (r *CreateAnalyzePolicyTaskResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateEdgeAclRuleGroupRequestParams struct {
-	// 规则组名称，长度1-50字符
+	// <p>规则组名称，长度1-50字符</p>
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
-	// 产品类型，固定为 cfw_edge_acl
+	// <p>产品类型，固定为 cfw_edge_acl</p>
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 
-	// 规则列表
+	// <p>规则列表</p>
 	Rules []*EdgeAclRuleInfo `json:"Rules,omitnil,omitempty" name:"Rules"`
 }
 
 type CreateEdgeAclRuleGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 规则组名称，长度1-50字符
+	// <p>规则组名称，长度1-50字符</p>
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
-	// 产品类型，固定为 cfw_edge_acl
+	// <p>产品类型，固定为 cfw_edge_acl</p>
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 
-	// 规则列表
+	// <p>规则列表</p>
 	Rules []*EdgeAclRuleInfo `json:"Rules,omitnil,omitempty" name:"Rules"`
 }
 
@@ -444,7 +444,7 @@ func (r *CreateEdgeAclRuleGroupRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateEdgeAclRuleGroupResponseParams struct {
-	// 创建的规则组ID
+	// <p>创建的规则组ID</p>
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2867,17 +2867,20 @@ func (r *IgnorePolicyRiskResponse) FromJsonString(s string) error {
 }
 
 type MemberInfo struct {
-	// 成员AppId
+	// <p>成员AppId</p>
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
 
-	// 成员Uin
+	// <p>成员Uin</p>
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 
-	// 成员昵称
+	// <p>成员昵称</p>
 	Nickname *string `json:"Nickname,omitnil,omitempty" name:"Nickname"`
 
-	// 成员Id
+	// <p>成员Id</p>
 	MemberId *string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>所属部门</p>
+	NodeName *string `json:"NodeName,omitnil,omitempty" name:"NodeName"`
 }
 
 // Predefined struct for user
@@ -3701,71 +3704,83 @@ type NatAclRuleResp struct {
 }
 
 type OrganMemberItem struct {
-	// 成员 ID
+	// <p>成员 ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MemberId *string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
-	// 成员账号 AppId
+	// <p>成员账号 AppId</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
 
-	// 账号Uin
+	// <p>账号Uin</p>
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 
-	// 账号名称
+	// <p>账号名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Nickname *string `json:"Nickname,omitnil,omitempty" name:"Nickname"`
 
-	// 子账号数量
+	// <p>子账号数量</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubAccountCount *int64 `json:"SubAccountCount,omitnil,omitempty" name:"SubAccountCount"`
 
-	// 所属组织架构节点名称
+	// <p>所属组织架构节点名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NodeName *string `json:"NodeName,omitnil,omitempty" name:"NodeName"`
 
-	// 成员身份：admin-管理员，delegatedAdmin-委派管理员，member-普通成员
+	// <p>成员身份：admin-管理员，delegatedAdmin-委派管理员，member-普通成员</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
 
-	// 成员身份显示名称（前端展示用）
+	// <p>成员身份显示名称（前端展示用）</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RoleDisplay *string `json:"RoleDisplay,omitnil,omitempty" name:"RoleDisplay"`
 
-	// 所属账户组 
+	// <p>所属账户组</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccountGroup *AccountGroupInfo `json:"AccountGroup,omitnil,omitempty" name:"AccountGroup"`
 
-	// 云防火墙纳管状态：0-未纳管，1-已纳管
+	// <p>云防火墙纳管状态：0-未纳管，1-已纳管</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CfwManaged *int64 `json:"CfwManaged,omitnil,omitempty" name:"CfwManaged"`
 
-	// 云防火墙共享角色：sharer-共享者，user-使用者，none-未设置
+	// <p>云防火墙共享角色：sharer-共享者，user-使用者，none-未设置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CfwShareRole *string `json:"CfwShareRole,omitnil,omitempty" name:"CfwShareRole"`
 
-	// 云防火墙共享角色显示名称（前端展示用）
+	// <p>云防火墙共享角色显示名称（前端展示用）</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CfwShareRoleDisplay *string `json:"CfwShareRoleDisplay,omitnil,omitempty" name:"CfwShareRoleDisplay"`
 
-	// 云防火墙共享者 AppId，成员角色为使用者时有值
+	// <p>云防火墙共享者 AppId，成员角色为使用者时有值</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CfwSharerAppId *string `json:"CfwSharerAppId,omitnil,omitempty" name:"CfwSharerAppId"`
 
-	// 云防火墙计费实例 ID，非空表示已购买云防火墙
+	// <p>云防火墙计费实例 ID，非空表示已购买云防火墙</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CfwInstanceId *string `json:"CfwInstanceId,omitnil,omitempty" name:"CfwInstanceId"`
 
-	// 策略分析权限：0-关闭，1-开启
+	// <p>策略分析权限：0-关闭，1-开启</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PolicyAnalysisEnabled *int64 `json:"PolicyAnalysisEnabled,omitnil,omitempty" name:"PolicyAnalysisEnabled"`
 
-	// 成员加入集团时间
+	// <p>成员加入集团时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MemberCreateTime *string `json:"MemberCreateTime,omitnil,omitempty" name:"MemberCreateTime"`
 
-	// 账号加入方式
+	// <p>账号加入方式</p>
 	JoinType *string `json:"JoinType,omitnil,omitempty" name:"JoinType"`
+
+	// <p>云防火墙套餐状态</p><p>枚举值：</p><ul><li>0： 未购买</li><li>2： 已购买</li><li>3： 试用中</li><li>4： 已过期</li></ul>
+	CfwPayStatus *int64 `json:"CfwPayStatus,omitnil,omitempty" name:"CfwPayStatus"`
+
+	// <p>是否具备云防火墙使用能力</p>
+	CfwCapable *int64 `json:"CfwCapable,omitnil,omitempty" name:"CfwCapable"`
+
+	// <p>私有安全组纳管开关， 0:未纳管，1:已纳管</p>
+	SgManaged *int64 `json:"SgManaged,omitnil,omitempty" name:"SgManaged"`
+
+	// <p>是否是后付费云防版本</p><p>枚举值：</p><ul><li>1： 后付费</li><li>0： 非后付费</li><li>-1： 未知</li></ul>
+	IsCfwPostPay *int64 `json:"IsCfwPostPay,omitnil,omitempty" name:"IsCfwPostPay"`
 }
 
 type OrganSummary struct {

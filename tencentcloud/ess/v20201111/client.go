@@ -9411,6 +9411,646 @@ func (c *Client) CreateReleaseFlowWithContext(ctx context.Context, request *Crea
     return
 }
 
+func NewCreateRequestWithEncryptionRequest() (request *CreateRequestWithEncryptionRequest) {
+    request = &CreateRequestWithEncryptionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "CreateRequestWithEncryption")
+    
+    
+    return
+}
+
+func NewCreateRequestWithEncryptionResponse() (response *CreateRequestWithEncryptionResponse) {
+    response = &CreateRequestWithEncryptionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateRequestWithEncryption
+// 该接口支持对请求内容进行加密传输。调用方需使用约定的 AES-CBC 或 SM4-CBC 算法对请求内容进行加密，并使用 HMAC-SHA256 或 HMAC-SM3 算法对 IV 和加密后的数据进行完整性校验，防止请求内容被篡改。
+//
+// 
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/391df0a37c2b213445c4909ba98824ac.svg)
+//
+// 
+//
+// **请求端加密流程**
+//
+// 1. 每次请求使用密码学安全的随机源生成 16 字节 的 IV。每次请求必须重新生成，严禁复用。
+//
+// 2. 使用约定的 AES-CBC 或 SM4-CBC 算法对原始请求体进行加密，使用 PKCS#7 Padding。
+//
+// 3. 将加密后的密文原始字节进行标准 Base64 编码，作为 EncryptedData 参数。
+//
+// 4. 将 IV 原始字节进行标准 Base64 编码，作为 IV 参数。
+//
+// 5. 对 IV 原始字节和密文原始字节直接拼接（不添加分隔符），计算 HMAC-SHA256 或 HMAC-SM4：HMAC(Key, IVBytes || CiphertextBytes)
+//
+// 6. 将 HMAC 的结果进行 标准 Base64 编码，作为 EncryptionSignature 参数。
+//
+// 
+//
+// **响应端解密流程**
+//
+// 1. 先判断本接口自身是否返回外层错误，此时错误为明文（标准腾讯云错误体），有则直接失败处理。
+//
+// 2. 分别对 IV、EncryptedData、EncryptionSignature 做标准 Base64 解码，得到原始字节。
+//
+// 3. 将 IV 与密文原始字节直接拼接（无分隔符），计算 HMAC-SHA256 或 HMAC-SM4：HMAC(Key, IVBytes || CiphertextBytes)。
+//
+// 4. 与响应中 EncryptionSignature 解码后的字节做恒定时间比较，不一致立即失败，不得继续解密。
+//
+// 5. 使用约定的 AES-CBC 或 SM4-CBC，以 IV 和密钥解密 EncryptedData，去除 PKCS#7 Padding 得到明文。
+//
+// 6. 先用腾讯云标准错误体反序列化明文，判断被加密业务接口是否返回 Error。
+//
+// 7. 无业务错误时，再用目标业务接口的响应结构体反序列化明文，取出实际业务参数。
+//
+// 
+//
+// **响应端错误处理**
+//
+// 1. 外层错误（本接口本身调用失败）：返回标准腾讯云错误 JSON（含 Error.Code / Error.Message），无 EncryptedData，不需要解密即可处理。
+//
+// 2. 内层错误（业务接口执行失败）：外层成功，但解密后的明文里包含 Error.Code / Error.Message，按目标业务接口的错误规范处理。
+//
+// 
+//
+// **处理过程示例**
+//
+// ```
+//
+// # ========== 前置约定 ==========
+//
+// AESKey  : 加密 密钥（AES 32 字节，SM4 16 字节）
+//
+// HMACKey : HMAC 密钥（与加密密钥需要不同）
+//
+// ALGO    : AES-CBC 或 SM4-CBC，双方约定
+//
+// HMAC    : ALGO == AES-CBC ? HMAC-SHA256 : HMAC-SM3
+//
+// 
+//
+// # ========== 请求端：加密并调用 ==========
+//
+// function CallWithEncryption(bizAction, bizRequestObj):
+//
+//     # 1. 序列化业务请求
+//
+//     plaintext = JSON.stringify(bizRequestObj)
+//
+//     # 2. 生成 16 字节随机 IV（每次新生成，禁止复用）
+//
+//     iv = SecureRandom(16)
+//
+//     # 3. 对称加密（PKCS#7 Padding）
+//
+//     ciphertext = SymmetricEncrypt(ALGO, AESKey, iv, plaintext)
+//
+//     # 4. 计算完整性签名：HMAC(Key, IV || Ciphertext)
+//
+//     signature = HMAC(HMACKey, concat(iv, ciphertext))
+//
+//     # 5. 组装外层请求参数（三段均为标准 Base64）
+//
+//     encReq = {
+//
+//         RequestAction:       bizAction,
+//
+//         IV:                  Base64(iv),
+//
+//         EncryptedData:       Base64(ciphertext),
+//
+//         EncryptionSignature: Base64(signature),
+//
+//     }
+//
+//     # 6. 调用 CreateRequestWithEncryption
+//
+//     #    TC3-HMAC-SHA256 鉴权由官方 SDK 自动完成
+//
+//     encResp = CloudAPI.CreateRequestWithEncryption(encReq)
+//
+//     # 7. 外层错误：明文，直接抛出
+//
+//     if encResp.Error != nil:
+//
+//         raise OuterError(encResp.Error)
+//
+//     # 8. 解密并返回业务响应
+//
+//     return DecryptResponse(encResp.Response)
+//
+// 
+//
+// # ========== 响应端：校验并解密 ==========
+//
+// function DecryptResponse(resp):
+//
+//     # 1. Base64 解码
+//
+//     ivBytes  = Base64Decode(resp.IV)
+//
+//     ctBytes  = Base64Decode(resp.EncryptedData)
+//
+//     sigBytes = Base64Decode(resp.EncryptionSignature)
+//
+//     # 2. 重新计算 HMAC
+//
+//     expected = HMAC(HMACKey, concat(ivBytes, ctBytes))
+//
+//     # 3. 恒定时间比较，失败立即终止（不得继续解密）
+//
+//     if not ConstantTimeEqual(expected, sigBytes):
+//
+//         raise SignatureMismatch
+//
+//     # 4. 对称解密，去除 PKCS#7 Padding
+//
+//     plaintext = SymmetricDecrypt(ALGO, AESKey, ivBytes, ctBytes)
+//
+//     # 5. 先按腾讯云错误体解析，判断业务是否失败
+//
+//     bizErr = TryParseTencentCloudError(plaintext)
+//
+//     if bizErr != nil:
+//
+//         raise BusinessError(bizErr)
+//
+//     # 6. 按目标业务接口的响应结构反序列化
+//
+//     return JSON.parse(plaintext, BizResponseSchema)
+//
+// ```
+//
+// 
+//
+// **AES-CBC 示例**
+//
+// 以下示例参数及结果可用于验证 AES-CBC 加密和 HMAC-SHA256 签名算法的实现是否正确。
+//
+// 
+//
+// 加密密钥：AES-CBC-Key-1234
+//
+// 签名密钥：AES-HMAC-Key-123
+//
+// IV：1234567890abcdef
+//
+// 请求内容：{"Request": "This is a test."}
+//
+// 
+//
+// 最终请求参数：
+//
+// ```
+//
+// {
+//
+//   "RequestAction": "DescribeFlowComponents",
+//
+//   "IV": "MTIzNDU2Nzg5MGFiY2RlZg==",
+//
+//   "EncryptedData": "Iqp2W1jislwMNmE7bH9dKZZiMQsfkAPyvAAqDFRnWLw=",
+//
+//   "EncryptionSignature": "4TT3PUCZgZT7YmEPtXDm5PDcM6xT7FoYHfMW8xunB5I="
+//
+// }
+//
+// ```
+//
+// 
+//
+// **SM4-CBC 示例**
+//
+// 以下示例参数及结果可用于验证 SM4-CBC 加密和 HMAC-SM4 签名算法的实现是否正确。
+//
+// 
+//
+// 加密密钥：SM4-CBC-Key-1234
+//
+// 签名密钥：SM4-HMAC-Key-123
+//
+// IV：fedcba0987654321
+//
+// 请求内容：{"Request": "This is a test."}
+//
+// 
+//
+// 最终请求参数：
+//
+// ```
+//
+// {
+//
+//   "RequestAction": "DescribeFlowComponents",
+//
+//   "IV": "ZmVkY2JhMDk4NzY1NDMyMQ==",
+//
+//   "EncryptedData": "GwUovQhNUPaUnVM/UDXMtPOYTpTSi2B1oyZDFbyyvns=",
+//
+//   "EncryptionSignature": "nHB/v/AvOaDCQ66esFNnp12lHKcGkwaLGid0Warl/KE="
+//
+// }
+//
+// ```
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AGENOTACHIEVENORMALLEGAL = "FailedOperation.AgeNotAchieveNormalLegal"
+//  FAILEDOPERATION_FLOWHASDOCUMENT = "FailedOperation.FlowHasDocument"
+//  FAILEDOPERATION_ORGANIZATIONEXPERIENCECHANGE = "FailedOperation.OrganizationExperienceChange"
+//  FAILEDOPERATION_ORGANIZATIONNAMECHANGED = "FailedOperation.OrganizationNameChanged"
+//  FAILEDOPERATION_ORGANIZATIONNAMENEEDCHANGE = "FailedOperation.OrganizationNameNeedChange"
+//  FAILEDOPERATION_REQUESTLIMITEXCEEDED = "FailedOperation.RequestLimitExceeded"
+//  FAILEDOPERATION_USERINFONOMATCH = "FailedOperation.UserInfoNoMatch"
+//  INTERNALERROR_DBINSERT = "InternalError.DbInsert"
+//  INTERNALERROR_DBREAD = "InternalError.DbRead"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_APPROVERTYPE = "InvalidParameter.ApproverType"
+//  INVALIDPARAMETER_CARDNUMBER = "InvalidParameter.CardNumber"
+//  INVALIDPARAMETER_CARDTYPE = "InvalidParameter.CardType"
+//  INVALIDPARAMETER_CCNUM = "InvalidParameter.CcNum"
+//  INVALIDPARAMETER_CLIENTTOKEN = "InvalidParameter.ClientToken"
+//  INVALIDPARAMETER_CUSTOMSHOWMAP = "InvalidParameter.CustomShowMap"
+//  INVALIDPARAMETER_FLOWCALLBACKURL = "InvalidParameter.FlowCallbackUrl"
+//  INVALIDPARAMETER_FLOWDEADLINE = "InvalidParameter.FlowDeadLine"
+//  INVALIDPARAMETER_FLOWDESCRIPTION = "InvalidParameter.FlowDescription"
+//  INVALIDPARAMETER_FLOWNAME = "InvalidParameter.FlowName"
+//  INVALIDPARAMETER_FLOWTYPE = "InvalidParameter.FlowType"
+//  INVALIDPARAMETER_FLOWUSERDATA = "InvalidParameter.FlowUserData"
+//  INVALIDPARAMETER_FROMSOURCE = "InvalidParameter.FromSource"
+//  INVALIDPARAMETER_IDCARDVALIDITYOVERLIMIT = "InvalidParameter.IdCardValidityOverLimit"
+//  INVALIDPARAMETER_INVALIDMOBILE = "InvalidParameter.InvalidMobile"
+//  INVALIDPARAMETER_INVALIDNAME = "InvalidParameter.InvalidName"
+//  INVALIDPARAMETER_MOBILE = "InvalidParameter.Mobile"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_NONSUPPORTMOBILE = "InvalidParameter.NonsupportMobile"
+//  INVALIDPARAMETER_NOTIFYTYPE = "InvalidParameter.NotifyType"
+//  INVALIDPARAMETER_ORGANIZATIONNAME = "InvalidParameter.OrganizationName"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_PERSONAUTOSIGNTAG = "InvalidParameter.PersonAutoSignTag"
+//  INVALIDPARAMETER_PREREADTIME = "InvalidParameter.PreReadTime"
+//  INVALIDPARAMETERVALUE_MASK = "InvalidParameterValue.Mask"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER_APPROVERMOBILE = "MissingParameter.ApproverMobile"
+//  MISSINGPARAMETER_APPROVERNAME = "MissingParameter.ApproverName"
+//  MISSINGPARAMETER_APPROVERORGANIZATIONINFO = "MissingParameter.ApproverOrganizationInfo"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_APPROVERREPEAT = "OperationDenied.ApproverRepeat"
+//  OPERATIONDENIED_BRANCHSENDFLOWTOPARENTNOTALLOW = "OperationDenied.BranchSendFlowToParentNotAllow"
+//  OPERATIONDENIED_CCFORBID = "OperationDenied.CcForbid"
+//  OPERATIONDENIED_CCUSERREPEAT = "OperationDenied.CcUserRepeat"
+//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  OPERATIONDENIED_INVALIDAPPROVERAGE = "OperationDenied.InvalidApproverAge"
+//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+//  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
+//  OPERATIONDENIED_NOOPENSERVERSIGN = "OperationDenied.NoOpenServerSign"
+//  OPERATIONDENIED_NOQUOTA = "OperationDenied.NoQuota"
+//  OPERATIONDENIED_ORGUNIFORMSOCIALCREDITCODEERR = "OperationDenied.OrgUniformSocialCreditCodeErr"
+//  OPERATIONDENIED_ORGANIZATIONNOTACTIVATED = "OperationDenied.OrganizationNotActivated"
+//  OPERATIONDENIED_OUTQUERYLIMIT = "OperationDenied.OutQueryLimit"
+//  OPERATIONDENIED_OVERSEAFORBID = "OperationDenied.OverSeaForbid"
+//  OPERATIONDENIED_PERSONHASNOSIGNATURE = "OperationDenied.PersonHasNoSignature"
+//  OPERATIONDENIED_PERSONNOOPENSERVERSIGN = "OperationDenied.PersonNoOpenServerSign"
+//  OPERATIONDENIED_WHITELISTFORBID = "OperationDenied.WhiteListForbid"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
+//  RESOURCENOTFOUND_AUTHACTIVEORGANIZATION = "ResourceNotFound.AuthActiveOrganization"
+//  RESOURCENOTFOUND_FLOWAPPROVER = "ResourceNotFound.FlowApprover"
+//  RESOURCENOTFOUND_ORGANIZATION = "ResourceNotFound.Organization"
+//  RESOURCENOTFOUND_SUPERADMIN = "ResourceNotFound.SuperAdmin"
+//  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
+//  RESOURCENOTFOUND_VERIFYUSER = "ResourceNotFound.VerifyUser"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) CreateRequestWithEncryption(request *CreateRequestWithEncryptionRequest) (response *CreateRequestWithEncryptionResponse, err error) {
+    return c.CreateRequestWithEncryptionWithContext(context.Background(), request)
+}
+
+// CreateRequestWithEncryption
+// 该接口支持对请求内容进行加密传输。调用方需使用约定的 AES-CBC 或 SM4-CBC 算法对请求内容进行加密，并使用 HMAC-SHA256 或 HMAC-SM3 算法对 IV 和加密后的数据进行完整性校验，防止请求内容被篡改。
+//
+// 
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/391df0a37c2b213445c4909ba98824ac.svg)
+//
+// 
+//
+// **请求端加密流程**
+//
+// 1. 每次请求使用密码学安全的随机源生成 16 字节 的 IV。每次请求必须重新生成，严禁复用。
+//
+// 2. 使用约定的 AES-CBC 或 SM4-CBC 算法对原始请求体进行加密，使用 PKCS#7 Padding。
+//
+// 3. 将加密后的密文原始字节进行标准 Base64 编码，作为 EncryptedData 参数。
+//
+// 4. 将 IV 原始字节进行标准 Base64 编码，作为 IV 参数。
+//
+// 5. 对 IV 原始字节和密文原始字节直接拼接（不添加分隔符），计算 HMAC-SHA256 或 HMAC-SM4：HMAC(Key, IVBytes || CiphertextBytes)
+//
+// 6. 将 HMAC 的结果进行 标准 Base64 编码，作为 EncryptionSignature 参数。
+//
+// 
+//
+// **响应端解密流程**
+//
+// 1. 先判断本接口自身是否返回外层错误，此时错误为明文（标准腾讯云错误体），有则直接失败处理。
+//
+// 2. 分别对 IV、EncryptedData、EncryptionSignature 做标准 Base64 解码，得到原始字节。
+//
+// 3. 将 IV 与密文原始字节直接拼接（无分隔符），计算 HMAC-SHA256 或 HMAC-SM4：HMAC(Key, IVBytes || CiphertextBytes)。
+//
+// 4. 与响应中 EncryptionSignature 解码后的字节做恒定时间比较，不一致立即失败，不得继续解密。
+//
+// 5. 使用约定的 AES-CBC 或 SM4-CBC，以 IV 和密钥解密 EncryptedData，去除 PKCS#7 Padding 得到明文。
+//
+// 6. 先用腾讯云标准错误体反序列化明文，判断被加密业务接口是否返回 Error。
+//
+// 7. 无业务错误时，再用目标业务接口的响应结构体反序列化明文，取出实际业务参数。
+//
+// 
+//
+// **响应端错误处理**
+//
+// 1. 外层错误（本接口本身调用失败）：返回标准腾讯云错误 JSON（含 Error.Code / Error.Message），无 EncryptedData，不需要解密即可处理。
+//
+// 2. 内层错误（业务接口执行失败）：外层成功，但解密后的明文里包含 Error.Code / Error.Message，按目标业务接口的错误规范处理。
+//
+// 
+//
+// **处理过程示例**
+//
+// ```
+//
+// # ========== 前置约定 ==========
+//
+// AESKey  : 加密 密钥（AES 32 字节，SM4 16 字节）
+//
+// HMACKey : HMAC 密钥（与加密密钥需要不同）
+//
+// ALGO    : AES-CBC 或 SM4-CBC，双方约定
+//
+// HMAC    : ALGO == AES-CBC ? HMAC-SHA256 : HMAC-SM3
+//
+// 
+//
+// # ========== 请求端：加密并调用 ==========
+//
+// function CallWithEncryption(bizAction, bizRequestObj):
+//
+//     # 1. 序列化业务请求
+//
+//     plaintext = JSON.stringify(bizRequestObj)
+//
+//     # 2. 生成 16 字节随机 IV（每次新生成，禁止复用）
+//
+//     iv = SecureRandom(16)
+//
+//     # 3. 对称加密（PKCS#7 Padding）
+//
+//     ciphertext = SymmetricEncrypt(ALGO, AESKey, iv, plaintext)
+//
+//     # 4. 计算完整性签名：HMAC(Key, IV || Ciphertext)
+//
+//     signature = HMAC(HMACKey, concat(iv, ciphertext))
+//
+//     # 5. 组装外层请求参数（三段均为标准 Base64）
+//
+//     encReq = {
+//
+//         RequestAction:       bizAction,
+//
+//         IV:                  Base64(iv),
+//
+//         EncryptedData:       Base64(ciphertext),
+//
+//         EncryptionSignature: Base64(signature),
+//
+//     }
+//
+//     # 6. 调用 CreateRequestWithEncryption
+//
+//     #    TC3-HMAC-SHA256 鉴权由官方 SDK 自动完成
+//
+//     encResp = CloudAPI.CreateRequestWithEncryption(encReq)
+//
+//     # 7. 外层错误：明文，直接抛出
+//
+//     if encResp.Error != nil:
+//
+//         raise OuterError(encResp.Error)
+//
+//     # 8. 解密并返回业务响应
+//
+//     return DecryptResponse(encResp.Response)
+//
+// 
+//
+// # ========== 响应端：校验并解密 ==========
+//
+// function DecryptResponse(resp):
+//
+//     # 1. Base64 解码
+//
+//     ivBytes  = Base64Decode(resp.IV)
+//
+//     ctBytes  = Base64Decode(resp.EncryptedData)
+//
+//     sigBytes = Base64Decode(resp.EncryptionSignature)
+//
+//     # 2. 重新计算 HMAC
+//
+//     expected = HMAC(HMACKey, concat(ivBytes, ctBytes))
+//
+//     # 3. 恒定时间比较，失败立即终止（不得继续解密）
+//
+//     if not ConstantTimeEqual(expected, sigBytes):
+//
+//         raise SignatureMismatch
+//
+//     # 4. 对称解密，去除 PKCS#7 Padding
+//
+//     plaintext = SymmetricDecrypt(ALGO, AESKey, ivBytes, ctBytes)
+//
+//     # 5. 先按腾讯云错误体解析，判断业务是否失败
+//
+//     bizErr = TryParseTencentCloudError(plaintext)
+//
+//     if bizErr != nil:
+//
+//         raise BusinessError(bizErr)
+//
+//     # 6. 按目标业务接口的响应结构反序列化
+//
+//     return JSON.parse(plaintext, BizResponseSchema)
+//
+// ```
+//
+// 
+//
+// **AES-CBC 示例**
+//
+// 以下示例参数及结果可用于验证 AES-CBC 加密和 HMAC-SHA256 签名算法的实现是否正确。
+//
+// 
+//
+// 加密密钥：AES-CBC-Key-1234
+//
+// 签名密钥：AES-HMAC-Key-123
+//
+// IV：1234567890abcdef
+//
+// 请求内容：{"Request": "This is a test."}
+//
+// 
+//
+// 最终请求参数：
+//
+// ```
+//
+// {
+//
+//   "RequestAction": "DescribeFlowComponents",
+//
+//   "IV": "MTIzNDU2Nzg5MGFiY2RlZg==",
+//
+//   "EncryptedData": "Iqp2W1jislwMNmE7bH9dKZZiMQsfkAPyvAAqDFRnWLw=",
+//
+//   "EncryptionSignature": "4TT3PUCZgZT7YmEPtXDm5PDcM6xT7FoYHfMW8xunB5I="
+//
+// }
+//
+// ```
+//
+// 
+//
+// **SM4-CBC 示例**
+//
+// 以下示例参数及结果可用于验证 SM4-CBC 加密和 HMAC-SM4 签名算法的实现是否正确。
+//
+// 
+//
+// 加密密钥：SM4-CBC-Key-1234
+//
+// 签名密钥：SM4-HMAC-Key-123
+//
+// IV：fedcba0987654321
+//
+// 请求内容：{"Request": "This is a test."}
+//
+// 
+//
+// 最终请求参数：
+//
+// ```
+//
+// {
+//
+//   "RequestAction": "DescribeFlowComponents",
+//
+//   "IV": "ZmVkY2JhMDk4NzY1NDMyMQ==",
+//
+//   "EncryptedData": "GwUovQhNUPaUnVM/UDXMtPOYTpTSi2B1oyZDFbyyvns=",
+//
+//   "EncryptionSignature": "nHB/v/AvOaDCQ66esFNnp12lHKcGkwaLGid0Warl/KE="
+//
+// }
+//
+// ```
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AGENOTACHIEVENORMALLEGAL = "FailedOperation.AgeNotAchieveNormalLegal"
+//  FAILEDOPERATION_FLOWHASDOCUMENT = "FailedOperation.FlowHasDocument"
+//  FAILEDOPERATION_ORGANIZATIONEXPERIENCECHANGE = "FailedOperation.OrganizationExperienceChange"
+//  FAILEDOPERATION_ORGANIZATIONNAMECHANGED = "FailedOperation.OrganizationNameChanged"
+//  FAILEDOPERATION_ORGANIZATIONNAMENEEDCHANGE = "FailedOperation.OrganizationNameNeedChange"
+//  FAILEDOPERATION_REQUESTLIMITEXCEEDED = "FailedOperation.RequestLimitExceeded"
+//  FAILEDOPERATION_USERINFONOMATCH = "FailedOperation.UserInfoNoMatch"
+//  INTERNALERROR_DBINSERT = "InternalError.DbInsert"
+//  INTERNALERROR_DBREAD = "InternalError.DbRead"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_APPROVERTYPE = "InvalidParameter.ApproverType"
+//  INVALIDPARAMETER_CARDNUMBER = "InvalidParameter.CardNumber"
+//  INVALIDPARAMETER_CARDTYPE = "InvalidParameter.CardType"
+//  INVALIDPARAMETER_CCNUM = "InvalidParameter.CcNum"
+//  INVALIDPARAMETER_CLIENTTOKEN = "InvalidParameter.ClientToken"
+//  INVALIDPARAMETER_CUSTOMSHOWMAP = "InvalidParameter.CustomShowMap"
+//  INVALIDPARAMETER_FLOWCALLBACKURL = "InvalidParameter.FlowCallbackUrl"
+//  INVALIDPARAMETER_FLOWDEADLINE = "InvalidParameter.FlowDeadLine"
+//  INVALIDPARAMETER_FLOWDESCRIPTION = "InvalidParameter.FlowDescription"
+//  INVALIDPARAMETER_FLOWNAME = "InvalidParameter.FlowName"
+//  INVALIDPARAMETER_FLOWTYPE = "InvalidParameter.FlowType"
+//  INVALIDPARAMETER_FLOWUSERDATA = "InvalidParameter.FlowUserData"
+//  INVALIDPARAMETER_FROMSOURCE = "InvalidParameter.FromSource"
+//  INVALIDPARAMETER_IDCARDVALIDITYOVERLIMIT = "InvalidParameter.IdCardValidityOverLimit"
+//  INVALIDPARAMETER_INVALIDMOBILE = "InvalidParameter.InvalidMobile"
+//  INVALIDPARAMETER_INVALIDNAME = "InvalidParameter.InvalidName"
+//  INVALIDPARAMETER_MOBILE = "InvalidParameter.Mobile"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_NONSUPPORTMOBILE = "InvalidParameter.NonsupportMobile"
+//  INVALIDPARAMETER_NOTIFYTYPE = "InvalidParameter.NotifyType"
+//  INVALIDPARAMETER_ORGANIZATIONNAME = "InvalidParameter.OrganizationName"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_PERSONAUTOSIGNTAG = "InvalidParameter.PersonAutoSignTag"
+//  INVALIDPARAMETER_PREREADTIME = "InvalidParameter.PreReadTime"
+//  INVALIDPARAMETERVALUE_MASK = "InvalidParameterValue.Mask"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER_APPROVERMOBILE = "MissingParameter.ApproverMobile"
+//  MISSINGPARAMETER_APPROVERNAME = "MissingParameter.ApproverName"
+//  MISSINGPARAMETER_APPROVERORGANIZATIONINFO = "MissingParameter.ApproverOrganizationInfo"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_APPROVERREPEAT = "OperationDenied.ApproverRepeat"
+//  OPERATIONDENIED_BRANCHSENDFLOWTOPARENTNOTALLOW = "OperationDenied.BranchSendFlowToParentNotAllow"
+//  OPERATIONDENIED_CCFORBID = "OperationDenied.CcForbid"
+//  OPERATIONDENIED_CCUSERREPEAT = "OperationDenied.CcUserRepeat"
+//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  OPERATIONDENIED_INVALIDAPPROVERAGE = "OperationDenied.InvalidApproverAge"
+//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+//  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
+//  OPERATIONDENIED_NOOPENSERVERSIGN = "OperationDenied.NoOpenServerSign"
+//  OPERATIONDENIED_NOQUOTA = "OperationDenied.NoQuota"
+//  OPERATIONDENIED_ORGUNIFORMSOCIALCREDITCODEERR = "OperationDenied.OrgUniformSocialCreditCodeErr"
+//  OPERATIONDENIED_ORGANIZATIONNOTACTIVATED = "OperationDenied.OrganizationNotActivated"
+//  OPERATIONDENIED_OUTQUERYLIMIT = "OperationDenied.OutQueryLimit"
+//  OPERATIONDENIED_OVERSEAFORBID = "OperationDenied.OverSeaForbid"
+//  OPERATIONDENIED_PERSONHASNOSIGNATURE = "OperationDenied.PersonHasNoSignature"
+//  OPERATIONDENIED_PERSONNOOPENSERVERSIGN = "OperationDenied.PersonNoOpenServerSign"
+//  OPERATIONDENIED_WHITELISTFORBID = "OperationDenied.WhiteListForbid"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
+//  RESOURCENOTFOUND_AUTHACTIVEORGANIZATION = "ResourceNotFound.AuthActiveOrganization"
+//  RESOURCENOTFOUND_FLOWAPPROVER = "ResourceNotFound.FlowApprover"
+//  RESOURCENOTFOUND_ORGANIZATION = "ResourceNotFound.Organization"
+//  RESOURCENOTFOUND_SUPERADMIN = "ResourceNotFound.SuperAdmin"
+//  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
+//  RESOURCENOTFOUND_VERIFYUSER = "ResourceNotFound.VerifyUser"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) CreateRequestWithEncryptionWithContext(ctx context.Context, request *CreateRequestWithEncryptionRequest) (response *CreateRequestWithEncryptionResponse, err error) {
+    if request == nil {
+        request = NewCreateRequestWithEncryptionRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CreateRequestWithEncryption")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateRequestWithEncryption require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateRequestWithEncryptionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateRiskIdentificationTaskFeedbackRequest() (request *CreateRiskIdentificationTaskFeedbackRequest) {
     request = &CreateRiskIdentificationTaskFeedbackRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -4073,57 +4073,63 @@ func (r *DescribeAclRuleResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAddressTemplateListRequestParams struct {
-	// 偏移量，分页用
+	// <p>偏移量，分页用</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 条数，分页用
+	// <p>条数，分页用</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 排序字段，取值：UpdateTime最近更新时间，RulesNum关联规则数
+	// <p>排序字段，取值：UpdateTime最近更新时间，RulesNum关联规则数</p>
 	By *string `json:"By,omitnil,omitempty" name:"By"`
 
-	// 排序，取值 ：asc正序，desc逆序
+	// <p>排序，取值 ：asc正序，desc逆序</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 搜索值
+	// <p>搜索值</p>
 	SearchValue *string `json:"SearchValue,omitnil,omitempty" name:"SearchValue"`
 
-	// 检索地址模板唯一id
+	// <p>检索地址模板唯一id</p>
 	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 
-	// 模板类型，取值：1：ip模板，5：域名模板，6：协议端口模板
+	// <p>模板类型，取值：1：ip模板，5：域名模板，6：协议端口模板</p>
 	TemplateType *string `json:"TemplateType,omitnil,omitempty" name:"TemplateType"`
 
-	// 模板Id
+	// <p>模板Id</p>
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
+
+	// <p>模板来源</p>
+	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
 }
 
 type DescribeAddressTemplateListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 偏移量，分页用
+	// <p>偏移量，分页用</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 条数，分页用
+	// <p>条数，分页用</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 排序字段，取值：UpdateTime最近更新时间，RulesNum关联规则数
+	// <p>排序字段，取值：UpdateTime最近更新时间，RulesNum关联规则数</p>
 	By *string `json:"By,omitnil,omitempty" name:"By"`
 
-	// 排序，取值 ：asc正序，desc逆序
+	// <p>排序，取值 ：asc正序，desc逆序</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 搜索值
+	// <p>搜索值</p>
 	SearchValue *string `json:"SearchValue,omitnil,omitempty" name:"SearchValue"`
 
-	// 检索地址模板唯一id
+	// <p>检索地址模板唯一id</p>
 	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 
-	// 模板类型，取值：1：ip模板，5：域名模板，6：协议端口模板
+	// <p>模板类型，取值：1：ip模板，5：域名模板，6：协议端口模板</p>
 	TemplateType *string `json:"TemplateType,omitnil,omitempty" name:"TemplateType"`
 
-	// 模板Id
+	// <p>模板Id</p>
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
+
+	// <p>模板来源</p>
+	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
 }
 
 func (r *DescribeAddressTemplateListRequest) ToJsonString() string {
@@ -4146,6 +4152,7 @@ func (r *DescribeAddressTemplateListRequest) FromJsonString(s string) error {
 	delete(f, "Uuid")
 	delete(f, "TemplateType")
 	delete(f, "TemplateId")
+	delete(f, "SourceType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAddressTemplateListRequest has unknown keys!", "")
 	}
@@ -4154,29 +4161,32 @@ func (r *DescribeAddressTemplateListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAddressTemplateListResponseParams struct {
-	// 模板总数
+	// <p>模板总数</p>
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
-	// 模板列表数据
+	// <p>模板列表数据</p>
 	Data []*TemplateListInfo `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// 模板名称列表
+	// <p>模板名称列表</p>
 	NameList []*string `json:"NameList,omitnil,omitempty" name:"NameList"`
 
-	// Ip地址模板数量
+	// <p>Ip地址模板数量</p>
 	IpTemplateCount *int64 `json:"IpTemplateCount,omitnil,omitempty" name:"IpTemplateCount"`
 
-	// 域名地址模板数量
+	// <p>域名地址模板数量</p>
 	DomainTemplateCount *int64 `json:"DomainTemplateCount,omitnil,omitempty" name:"DomainTemplateCount"`
 
-	// 协议端口模板数量
+	// <p>协议端口模板数量</p>
 	PortTemplateCount *int64 `json:"PortTemplateCount,omitnil,omitempty" name:"PortTemplateCount"`
 
-	// 已使用的地址模板数
+	// <p>已使用的地址模板数</p>
 	UsedTemplateCount *int64 `json:"UsedTemplateCount,omitnil,omitempty" name:"UsedTemplateCount"`
 
-	// 地址模板配额数量
+	// <p>地址模板配额数量</p>
 	TemplateQuotaCount *int64 `json:"TemplateQuotaCount,omitnil,omitempty" name:"TemplateQuotaCount"`
+
+	// <p>容器服务地址模板数量</p>
+	TkeTemplateCount *int64 `json:"TkeTemplateCount,omitnil,omitempty" name:"TkeTemplateCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -7454,44 +7464,44 @@ func (r *DescribeIpsModeSwitchResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeIpsRuleListNewRequestParams struct {
-	// 每页条数
+	// <p>每页条数</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移值
+	// <p>偏移值</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 需要查询的索引，特定场景使用，可不填
+	// <p>需要查询的索引，特定场景使用，可不填</p>
 	Index *string `json:"Index,omitnil,omitempty" name:"Index"`
 
-	// 过滤条件组合
+	// <p>过滤条件组合</p>
 	Filters []*CommonFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值
+	// <p>desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 排序所用到的字段
+	// <p>排序所用到的字段</p>
 	By *string `json:"By,omitnil,omitempty" name:"By"`
 }
 
 type DescribeIpsRuleListNewRequest struct {
 	*tchttp.BaseRequest
 	
-	// 每页条数
+	// <p>每页条数</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移值
+	// <p>偏移值</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 需要查询的索引，特定场景使用，可不填
+	// <p>需要查询的索引，特定场景使用，可不填</p>
 	Index *string `json:"Index,omitnil,omitempty" name:"Index"`
 
-	// 过滤条件组合
+	// <p>过滤条件组合</p>
 	Filters []*CommonFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值
+	// <p>desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 排序所用到的字段
+	// <p>排序所用到的字段</p>
 	By *string `json:"By,omitnil,omitempty" name:"By"`
 }
 
@@ -7521,19 +7531,19 @@ func (r *DescribeIpsRuleListNewRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeIpsRuleListNewResponseParams struct {
-	// 总条数
+	// <p>总条数</p>
 	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
 
-	// 规则详情
+	// <p>规则详情</p>
 	Data []*IpsRuleDetailNew `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// 返回状态码 0 成功 非0不成功
+	// <p>返回状态码 0 成功 非0不成功</p>
 	ReturnCode *int64 `json:"ReturnCode,omitnil,omitempty" name:"ReturnCode"`
 
-	// 返回信息  success 成功 其他 不成功
+	// <p>返回信息  success 成功 其他 不成功</p>
 	ReturnMsg *string `json:"ReturnMsg,omitnil,omitempty" name:"ReturnMsg"`
 
-	// 字段类型
+	// <p>字段类型</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Category []*string `json:"Category,omitnil,omitempty" name:"Category"`
 
@@ -11322,7 +11332,48 @@ type IpStatic struct {
 }
 
 type IpsRuleDetailNew struct {
+	// <p>规则ID</p>
+	RuleID *string `json:"RuleID,omitnil,omitempty" name:"RuleID"`
 
+	// <p>规则名称</p>
+	EventName *string `json:"EventName,omitnil,omitempty" name:"EventName"`
+
+	// <p>规则描述</p>
+	EventNameDesc *string `json:"EventNameDesc,omitnil,omitempty" name:"EventNameDesc"`
+
+	// <p>规则类型</p>
+	Category *string `json:"Category,omitnil,omitempty" name:"Category"`
+
+	// <p>置信度</p>
+	Confidence *string `json:"Confidence,omitnil,omitempty" name:"Confidence"`
+
+	// <p>自增id</p>
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>漏洞对象</p>
+	VulTarget *string `json:"VulTarget,omitnil,omitempty" name:"VulTarget"`
+
+	// <p>漏洞编号</p>
+	Cve *string `json:"Cve,omitnil,omitempty" name:"Cve"`
+
+	// <p>状态 0 关闭 1打开</p>
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>0观察, 1阻断</p>
+	Action *int64 `json:"Action,omitnil,omitempty" name:"Action"`
+
+	// <p>默认策略</p>
+	DefaultAction *int64 `json:"DefaultAction,omitnil,omitempty" name:"DefaultAction"`
+
+	// <p>基础防御/虚拟补丁</p>
+	RuleType *int64 `json:"RuleType,omitnil,omitempty" name:"RuleType"`
+
+	// <p>危险等级</p>
+	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
+
+	// <p>FwType字段 1 border 2 nat 4 vpc</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FwType *int64 `json:"FwType,omitnil,omitempty" name:"FwType"`
 }
 
 type LogInfo struct {
@@ -16311,40 +16362,40 @@ type TagInfo struct {
 }
 
 type TemplateListInfo struct {
-	// 模板ID
+	// <p>模板ID</p>
 	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 
-	// 模板名称
+	// <p>模板名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 描述
+	// <p>描述</p>
 	Detail *string `json:"Detail,omitnil,omitempty" name:"Detail"`
 
-	// IP模板
+	// <p>IP模板</p>
 	IpString *string `json:"IpString,omitnil,omitempty" name:"IpString"`
 
-	// 插入时间
+	// <p>插入时间</p>
 	InsertTime *string `json:"InsertTime,omitnil,omitempty" name:"InsertTime"`
 
-	// 修改时间
+	// <p>修改时间</p>
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 模板类型
+	// <p>模板类型</p>
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 关联规则条数
+	// <p>关联规则条数</p>
 	RulesNum *int64 `json:"RulesNum,omitnil,omitempty" name:"RulesNum"`
 
-	// 模板Id
+	// <p>模板Id</p>
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
-	// 协议端口模板，协议类型，4:4层协议，7:7层协议
+	// <p>协议端口模板，协议类型，4:4层协议，7:7层协议</p>
 	ProtocolType *string `json:"ProtocolType,omitnil,omitempty" name:"ProtocolType"`
 
-	// 模板包含地址数量
+	// <p>模板包含地址数量</p>
 	IPNum *int64 `json:"IPNum,omitnil,omitempty" name:"IPNum"`
 
-	// IP版本,0,IPv4;1,IPv6
+	// <p>IP版本,0,IPv4;1,IPv6</p>
 	IpVersion *int64 `json:"IpVersion,omitnil,omitempty" name:"IpVersion"`
 }
 

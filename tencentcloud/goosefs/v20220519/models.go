@@ -294,26 +294,26 @@ func (r *BatchDeleteClientNodesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type BuildClientNodeMountCommandRequestParams struct {
-	// 文件系统ID
+	// <p>文件系统ID</p>
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
-	// 自定义挂载目录的绝对路径, 如果未指定, 则会使用默认值, 格式/goosefsx/${fs_id}-proxy. 比如/goosefsx/x-c60-a2b3d4-proxy
+	// <p>自定义挂载目录的绝对路径, 如果未指定, 则会使用默认值, 格式/goosefsx/${fs_id}-proxy. 比如/goosefsx/x-c60-a2b3d4-proxy</p>
 	CustomMountDir *string `json:"CustomMountDir,omitnil,omitempty" name:"CustomMountDir"`
 
-	// 客户端集群ID
+	// <p>客户端集群ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 }
 
 type BuildClientNodeMountCommandRequest struct {
 	*tchttp.BaseRequest
 	
-	// 文件系统ID
+	// <p>文件系统ID</p>
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
-	// 自定义挂载目录的绝对路径, 如果未指定, 则会使用默认值, 格式/goosefsx/${fs_id}-proxy. 比如/goosefsx/x-c60-a2b3d4-proxy
+	// <p>自定义挂载目录的绝对路径, 如果未指定, 则会使用默认值, 格式/goosefsx/${fs_id}-proxy. 比如/goosefsx/x-c60-a2b3d4-proxy</p>
 	CustomMountDir *string `json:"CustomMountDir,omitnil,omitempty" name:"CustomMountDir"`
 
-	// 客户端集群ID
+	// <p>客户端集群ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 }
 
@@ -340,7 +340,7 @@ func (r *BuildClientNodeMountCommandRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type BuildClientNodeMountCommandResponseParams struct {
-	// 挂载命令
+	// <p>挂载命令</p>
 	Command *string `json:"Command,omitnil,omitempty" name:"Command"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -634,6 +634,18 @@ type CreateDataRepositoryTaskRequestParams struct {
 
 	// <p>自定义目的路径（预热任务表示本地路径，沉降任务表示COS桶前缀）</p>
 	CustomDestPath *string `json:"CustomDestPath,omitnil,omitempty" name:"CustomDestPath"`
+
+	// <p>输出的COS桶，用于存放任务执行的相关结果（当前用于存放任务失败时的失败文件列表）</p>
+	OutputBucket *string `json:"OutputBucket,omitnil,omitempty" name:"OutputBucket"`
+
+	// <p>输出的COS桶的前缀，用于存放任务执行的相关结果（当前用于存放任务失败时的失败文件列表）</p>
+	OutputPrefix *string `json:"OutputPrefix,omitnil,omitempty" name:"OutputPrefix"`
+
+	// <p>是否支持自定义数据源路径(暂时仅支持清单过滤使用)</p>
+	EnableCustomSrcPath *bool `json:"EnableCustomSrcPath,omitnil,omitempty" name:"EnableCustomSrcPath"`
+
+	// <p>自定义数据源路径(暂时仅支持清单过滤使用)</p>
+	CustomSrcPath *string `json:"CustomSrcPath,omitnil,omitempty" name:"CustomSrcPath"`
 }
 
 type CreateDataRepositoryTaskRequest struct {
@@ -674,6 +686,18 @@ type CreateDataRepositoryTaskRequest struct {
 
 	// <p>自定义目的路径（预热任务表示本地路径，沉降任务表示COS桶前缀）</p>
 	CustomDestPath *string `json:"CustomDestPath,omitnil,omitempty" name:"CustomDestPath"`
+
+	// <p>输出的COS桶，用于存放任务执行的相关结果（当前用于存放任务失败时的失败文件列表）</p>
+	OutputBucket *string `json:"OutputBucket,omitnil,omitempty" name:"OutputBucket"`
+
+	// <p>输出的COS桶的前缀，用于存放任务执行的相关结果（当前用于存放任务失败时的失败文件列表）</p>
+	OutputPrefix *string `json:"OutputPrefix,omitnil,omitempty" name:"OutputPrefix"`
+
+	// <p>是否支持自定义数据源路径(暂时仅支持清单过滤使用)</p>
+	EnableCustomSrcPath *bool `json:"EnableCustomSrcPath,omitnil,omitempty" name:"EnableCustomSrcPath"`
+
+	// <p>自定义数据源路径(暂时仅支持清单过滤使用)</p>
+	CustomSrcPath *string `json:"CustomSrcPath,omitnil,omitempty" name:"CustomSrcPath"`
 }
 
 func (r *CreateDataRepositoryTaskRequest) ToJsonString() string {
@@ -700,6 +724,10 @@ func (r *CreateDataRepositoryTaskRequest) FromJsonString(s string) error {
 	delete(f, "DataFlowSubPath")
 	delete(f, "EnableCustomDestPath")
 	delete(f, "CustomDestPath")
+	delete(f, "OutputBucket")
+	delete(f, "OutputPrefix")
+	delete(f, "EnableCustomSrcPath")
+	delete(f, "CustomSrcPath")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDataRepositoryTaskRequest has unknown keys!", "")
 	}

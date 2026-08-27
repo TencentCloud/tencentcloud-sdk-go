@@ -7069,6 +7069,8 @@ func NewDescribeDefaultCertificatesResponse() (response *DescribeDefaultCertific
 // DescribeDefaultCertificates
 // 查询默认证书列表
 //
+// <p style="color: red;">注意：该旧版接口已停止更新迭代，后续新增功能将仅在新版接口中提供，旧版接口支持的原有能力将不受影响。如需查询域名配置的证书，请使用DescribeAccelerationDomains。</p>
+//
 // 可能返回的错误码:
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
@@ -7085,6 +7087,8 @@ func (c *Client) DescribeDefaultCertificates(request *DescribeDefaultCertificate
 
 // DescribeDefaultCertificates
 // 查询默认证书列表
+//
+// <p style="color: red;">注意：该旧版接口已停止更新迭代，后续新增功能将仅在新版接口中提供，旧版接口支持的原有能力将不受影响。如需查询域名配置的证书，请使用DescribeAccelerationDomains。</p>
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DBERROR = "InternalError.DBError"

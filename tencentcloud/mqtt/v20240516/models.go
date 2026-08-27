@@ -5311,26 +5311,32 @@ type MQTTClientSubscription struct {
 }
 
 type MQTTEndpointItem struct {
-	// 类型
+	// <p>类型</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 接入点
+	// <p>接入点</p>
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
-	// vpc信息
+	// <p>vpc信息</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 子网信息
+	// <p>子网信息</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 主机
+	// <p>主机</p>
 	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
 
-	// 端口
+	// <p>端口</p>
 	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
 
-	// 接入点ip
+	// <p>接入点ip</p>
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
+
+	// <p>端口是否打开</p>
+	PortEnable *bool `json:"PortEnable,omitnil,omitempty" name:"PortEnable"`
+
+	// <p>vpce唯一id</p>
+	VpcEndpointId *string `json:"VpcEndpointId,omitnil,omitempty" name:"VpcEndpointId"`
 }
 
 type MQTTInstanceItem struct {

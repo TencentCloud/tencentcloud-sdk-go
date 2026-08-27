@@ -5111,6 +5111,64 @@ func (c *Client) DescribeRegionsWithContext(ctx context.Context, request *Descri
     return
 }
 
+func NewDescribeReplicationExecutionsRequest() (request *DescribeReplicationExecutionsRequest) {
+    request = &DescribeReplicationExecutionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcr", APIVersion, "DescribeReplicationExecutions")
+    
+    
+    return
+}
+
+func NewDescribeReplicationExecutionsResponse() (response *DescribeReplicationExecutionsResponse) {
+    response = &DescribeReplicationExecutionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeReplicationExecutions
+// 实例同步/实例复制策略执行记录列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_EMPTYCOREBODY = "FailedOperation.EmptyCoreBody"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ERRORTCRINVALIDPARAMETER = "InvalidParameter.ErrorTcrInvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeReplicationExecutions(request *DescribeReplicationExecutionsRequest) (response *DescribeReplicationExecutionsResponse, err error) {
+    return c.DescribeReplicationExecutionsWithContext(context.Background(), request)
+}
+
+// DescribeReplicationExecutions
+// 实例同步/实例复制策略执行记录列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_EMPTYCOREBODY = "FailedOperation.EmptyCoreBody"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ERRORTCRINVALIDPARAMETER = "InvalidParameter.ErrorTcrInvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeReplicationExecutionsWithContext(ctx context.Context, request *DescribeReplicationExecutionsRequest) (response *DescribeReplicationExecutionsResponse, err error) {
+    if request == nil {
+        request = NewDescribeReplicationExecutionsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcr", APIVersion, "DescribeReplicationExecutions")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeReplicationExecutions require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeReplicationExecutionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeReplicationInstanceCreateTasksRequest() (request *DescribeReplicationInstanceCreateTasksRequest) {
     request = &DescribeReplicationInstanceCreateTasksRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5353,6 +5411,62 @@ func (c *Client) DescribeReplicationPoliciesWithContext(ctx context.Context, req
     request.SetContext(ctx)
     
     response = NewDescribeReplicationPoliciesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeReplicationTasksRequest() (request *DescribeReplicationTasksRequest) {
+    request = &DescribeReplicationTasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcr", APIVersion, "DescribeReplicationTasks")
+    
+    
+    return
+}
+
+func NewDescribeReplicationTasksResponse() (response *DescribeReplicationTasksResponse) {
+    response = &DescribeReplicationTasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeReplicationTasks
+// 实例同步/实例复制执行任务列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EMPTYCOREBODY = "FailedOperation.EmptyCoreBody"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ERRORTCRINVALIDPARAMETER = "InvalidParameter.ErrorTcrInvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeReplicationTasks(request *DescribeReplicationTasksRequest) (response *DescribeReplicationTasksResponse, err error) {
+    return c.DescribeReplicationTasksWithContext(context.Background(), request)
+}
+
+// DescribeReplicationTasks
+// 实例同步/实例复制执行任务列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EMPTYCOREBODY = "FailedOperation.EmptyCoreBody"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ERRORTCRINVALIDPARAMETER = "InvalidParameter.ErrorTcrInvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeReplicationTasksWithContext(ctx context.Context, request *DescribeReplicationTasksRequest) (response *DescribeReplicationTasksResponse, err error) {
+    if request == nil {
+        request = NewDescribeReplicationTasksRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcr", APIVersion, "DescribeReplicationTasks")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeReplicationTasks require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeReplicationTasksResponse()
     err = c.Send(request, response)
     return
 }

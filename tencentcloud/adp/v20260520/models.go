@@ -96,6 +96,23 @@ type AgentDetail struct {
 
 	// <p>高级配置</p>
 	AdvancedConfig *AgentAdvancedConfig `json:"AdvancedConfig,omitnil,omitempty" name:"AdvancedConfig"`
+
+	// <p>调用方执行的 Function Tool 列表</p><p>入参限制：仅在 C 端用户态 Agent 场景可用，B 端配置态 Agent 忽略该字段与</p>
+	ExternalToolList []*AgentExternalToolConfig `json:"ExternalToolList,omitnil,omitempty" name:"ExternalToolList"`
+}
+
+type AgentExternalToolConfig struct {
+	// <p>工具类型</p><p>入参限制：目前仅支持 &quot;function&quot;</p>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>工具名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>工具描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>工具入参定义</p>
+	Parameters []*RequestParam `json:"Parameters,omitnil,omitempty" name:"Parameters"`
 }
 
 type AgentInput struct {
@@ -287,10 +304,10 @@ type AgentSpec struct {
 	// <p>Agent基本配置</p>
 	Profile *AgentProfile `json:"Profile,omitnil,omitempty" name:"Profile"`
 
-	// 系统提示词
+	// <p>系统提示词</p>
 	Instructions *string `json:"Instructions,omitnil,omitempty" name:"Instructions"`
 
-	// 主模型配置
+	// <p>主模型配置</p>
 	Model *AgentModelConfig `json:"Model,omitnil,omitempty" name:"Model"`
 
 	// <p>工具信息</p>
@@ -302,8 +319,11 @@ type AgentSpec struct {
 	// <p>技能信息</p>
 	SkillList []*AgentSkillConfig `json:"SkillList,omitnil,omitempty" name:"SkillList"`
 
-	// 高级设置
+	// <p>高级设置</p>
 	AdvancedConfig *AgentAdvancedConfig `json:"AdvancedConfig,omitnil,omitempty" name:"AdvancedConfig"`
+
+	// <p>调用方执行的 Function Tool 列表</p><p>入参限制：仅在 C 端用户态 Agent 场景可用，B 端配置态 Agent  忽略该字段与</p>
+	ExternalToolList []*AgentExternalToolConfig `json:"ExternalToolList,omitnil,omitempty" name:"ExternalToolList"`
 }
 
 type AgentSummary struct {

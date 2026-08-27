@@ -596,6 +596,105 @@ func (r *CreateAIWorkbenchTaskResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateDispenseExternalRuleRequestParams struct {
+	// 规则名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 云监控对外命名空间
+	ExtNamespace *string `json:"ExtNamespace,omitnil,omitempty" name:"ExtNamespace"`
+
+	// 转发目标消信息
+	Producer *Producer `json:"Producer,omitnil,omitempty" name:"Producer"`
+
+	// 转发部署地域列表
+	DispenseRegions []*string `json:"DispenseRegions,omitnil,omitempty" name:"DispenseRegions"`
+
+	// 云监控对外指标
+	ExtMetrics []*string `json:"ExtMetrics,omitnil,omitempty" name:"ExtMetrics"`
+
+	// 指标统计周期
+	Period []*int64 `json:"Period,omitnil,omitempty" name:"Period"`
+
+	// 转发过滤条件信息
+	DispenseConditions []*DispenseCondition `json:"DispenseConditions,omitnil,omitempty" name:"DispenseConditions"`
+}
+
+type CreateDispenseExternalRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 规则名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 云监控对外命名空间
+	ExtNamespace *string `json:"ExtNamespace,omitnil,omitempty" name:"ExtNamespace"`
+
+	// 转发目标消信息
+	Producer *Producer `json:"Producer,omitnil,omitempty" name:"Producer"`
+
+	// 转发部署地域列表
+	DispenseRegions []*string `json:"DispenseRegions,omitnil,omitempty" name:"DispenseRegions"`
+
+	// 云监控对外指标
+	ExtMetrics []*string `json:"ExtMetrics,omitnil,omitempty" name:"ExtMetrics"`
+
+	// 指标统计周期
+	Period []*int64 `json:"Period,omitnil,omitempty" name:"Period"`
+
+	// 转发过滤条件信息
+	DispenseConditions []*DispenseCondition `json:"DispenseConditions,omitnil,omitempty" name:"DispenseConditions"`
+}
+
+func (r *CreateDispenseExternalRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDispenseExternalRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "ExtNamespace")
+	delete(f, "Producer")
+	delete(f, "DispenseRegions")
+	delete(f, "ExtMetrics")
+	delete(f, "Period")
+	delete(f, "DispenseConditions")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDispenseExternalRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateDispenseExternalRuleResponseParams struct {
+	// 转发规则Id
+	RuleId *int64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateDispenseExternalRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateDispenseExternalRuleResponseParams `json:"Response"`
+}
+
+func (r *CreateDispenseExternalRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDispenseExternalRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateNoticeContentTmplRequestParams struct {
 	// <p>模板名称</p>
 	TmplName *string `json:"TmplName,omitnil,omitempty" name:"TmplName"`
@@ -778,6 +877,60 @@ func (r *DeleteAIWorkbenchTaskResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteAIWorkbenchTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteDispenseExternalRuleRequestParams struct {
+	// 需要删除的规则Id
+	RuleIdList []*int64 `json:"RuleIdList,omitnil,omitempty" name:"RuleIdList"`
+}
+
+type DeleteDispenseExternalRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 需要删除的规则Id
+	RuleIdList []*int64 `json:"RuleIdList,omitnil,omitempty" name:"RuleIdList"`
+}
+
+func (r *DeleteDispenseExternalRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDispenseExternalRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RuleIdList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteDispenseExternalRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteDispenseExternalRuleResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteDispenseExternalRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteDispenseExternalRuleResponseParams `json:"Response"`
+}
+
+func (r *DeleteDispenseExternalRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDispenseExternalRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1450,6 +1603,375 @@ func (r *DescribeAlarmNotifyHistoriesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeDispenseExternalRuleListRequestParams struct {
+	// 页数
+	Page *uint64 `json:"Page,omitnil,omitempty" name:"Page"`
+
+	// 页面大小
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 转发部署地域
+	DispenseRegions []*string `json:"DispenseRegions,omitnil,omitempty" name:"DispenseRegions"`
+
+	// 关键字搜索规则名
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+}
+
+type DescribeDispenseExternalRuleListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 页数
+	Page *uint64 `json:"Page,omitnil,omitempty" name:"Page"`
+
+	// 页面大小
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 转发部署地域
+	DispenseRegions []*string `json:"DispenseRegions,omitnil,omitempty" name:"DispenseRegions"`
+
+	// 关键字搜索规则名
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+}
+
+func (r *DescribeDispenseExternalRuleListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDispenseExternalRuleListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Page")
+	delete(f, "PageSize")
+	delete(f, "DispenseRegions")
+	delete(f, "Keyword")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDispenseExternalRuleListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDispenseExternalRuleListResponseParams struct {
+	// 指标列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleList []*Rule `json:"RuleList,omitnil,omitempty" name:"RuleList"`
+
+	// 列表大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDispenseExternalRuleListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDispenseExternalRuleListResponseParams `json:"Response"`
+}
+
+func (r *DescribeDispenseExternalRuleListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDispenseExternalRuleListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDispenseExternalRuleRequestParams struct {
+	// 规则id
+	RuleId *int64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+}
+
+type DescribeDispenseExternalRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 规则id
+	RuleId *int64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+}
+
+func (r *DescribeDispenseExternalRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDispenseExternalRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RuleId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDispenseExternalRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDispenseExternalRuleResponseParams struct {
+	// 规则
+	Rule *Rule `json:"Rule,omitnil,omitempty" name:"Rule"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDispenseExternalRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDispenseExternalRuleResponseParams `json:"Response"`
+}
+
+func (r *DescribeDispenseExternalRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDispenseExternalRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDispenseRegionRequestParams struct {
+
+}
+
+type DescribeDispenseRegionRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeDispenseRegionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDispenseRegionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDispenseRegionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDispenseRegionResponseParams struct {
+	// 转发地域列表
+	RegionList []*DispenseRegion `json:"RegionList,omitnil,omitempty" name:"RegionList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDispenseRegionResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDispenseRegionResponseParams `json:"Response"`
+}
+
+func (r *DescribeDispenseRegionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDispenseRegionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeExtMetricRequestParams struct {
+	// 对外命名空间
+	ExtNamespace *string `json:"ExtNamespace,omitnil,omitempty" name:"ExtNamespace"`
+}
+
+type DescribeExtMetricRequest struct {
+	*tchttp.BaseRequest
+	
+	// 对外命名空间
+	ExtNamespace *string `json:"ExtNamespace,omitnil,omitempty" name:"ExtNamespace"`
+}
+
+func (r *DescribeExtMetricRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeExtMetricRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ExtNamespace")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeExtMetricRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeExtMetricResponseParams struct {
+	// 对外指标
+	ExtMetricList []*ExtMetric `json:"ExtMetricList,omitnil,omitempty" name:"ExtMetricList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeExtMetricResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeExtMetricResponseParams `json:"Response"`
+}
+
+func (r *DescribeExtMetricResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeExtMetricResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeExtNamespaceRequestParams struct {
+
+}
+
+type DescribeExtNamespaceRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeExtNamespaceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeExtNamespaceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeExtNamespaceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeExtNamespaceResponseParams struct {
+	// 对外命名空间列表
+	ExtNamespaceList []*string `json:"ExtNamespaceList,omitnil,omitempty" name:"ExtNamespaceList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeExtNamespaceResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeExtNamespaceResponseParams `json:"Response"`
+}
+
+func (r *DescribeExtNamespaceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeExtNamespaceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeKafkaRequestParams struct {
+	// kafka地址
+	Brokers *string `json:"Brokers,omitnil,omitempty" name:"Brokers"`
+
+	// 转发部署地域列表
+	DispenseRegions []*string `json:"DispenseRegions,omitnil,omitempty" name:"DispenseRegions"`
+}
+
+type DescribeKafkaRequest struct {
+	*tchttp.BaseRequest
+	
+	// kafka地址
+	Brokers *string `json:"Brokers,omitnil,omitempty" name:"Brokers"`
+
+	// 转发部署地域列表
+	DispenseRegions []*string `json:"DispenseRegions,omitnil,omitempty" name:"DispenseRegions"`
+}
+
+func (r *DescribeKafkaRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeKafkaRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Brokers")
+	delete(f, "DispenseRegions")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeKafkaRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeKafkaResponseParams struct {
+	// 连通性列表
+	KafkaConnectivityList []*KafkaConnectivity `json:"KafkaConnectivityList,omitnil,omitempty" name:"KafkaConnectivityList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeKafkaResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeKafkaResponseParams `json:"Response"`
+}
+
+func (r *DescribeKafkaResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeKafkaResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeNoticeContentTmplRequestParams struct {
 	// 分页数
 	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
@@ -1578,6 +2100,50 @@ type DingDingRobotNoticeTmplMatcher struct {
 	Template *DingDingRobotNoticeTmpl `json:"Template,omitnil,omitempty" name:"Template"`
 }
 
+type DispenseCondition struct {
+	// 对外指标名
+	ExtMetric *string `json:"ExtMetric,omitnil,omitempty" name:"ExtMetric"`
+
+	// 过滤条件表
+	DispenseFilters []*DispenseFilter `json:"DispenseFilters,omitnil,omitempty" name:"DispenseFilters"`
+
+	// 过滤条件id
+	ConditionId *int64 `json:"ConditionId,omitnil,omitempty" name:"ConditionId"`
+}
+
+type DispenseFilter struct {
+	// 维度名称
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 维度值列表
+	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
+
+	// 表示式
+	Expression *string `json:"Expression,omitnil,omitempty" name:"Expression"`
+}
+
+type DispenseGlobalTag struct {
+	// 维度key
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 维度值
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type DispenseRegion struct {
+	// 地域缩写
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// 地域中文名
+	RegionCnName *string `json:"RegionCnName,omitnil,omitempty" name:"RegionCnName"`
+
+	// 地域英文名
+	RegionEnName *string `json:"RegionEnName,omitnil,omitempty" name:"RegionEnName"`
+
+	// 规则数量
+	RuleNumber *int64 `json:"RuleNumber,omitnil,omitempty" name:"RuleNumber"`
+}
+
 type EnvEntry struct {
 	// <p>环境变量value</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1633,6 +2199,31 @@ type ExecutionInfo struct {
 	// <p>执行耗时(毫秒)</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DurationMs *int64 `json:"DurationMs,omitnil,omitempty" name:"DurationMs"`
+}
+
+type ExtMetric struct {
+	// 指标名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MetricName *string `json:"MetricName,omitnil,omitempty" name:"MetricName"`
+
+	// 中文指标名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MetricCName *string `json:"MetricCName,omitnil,omitempty" name:"MetricCName"`
+
+	// 中文含义
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CNMeaning *string `json:"CNMeaning,omitnil,omitempty" name:"CNMeaning"`
+
+	// 英文含义
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnMeaning *string `json:"EnMeaning,omitnil,omitempty" name:"EnMeaning"`
+
+	// 单位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Unit *string `json:"Unit,omitnil,omitempty" name:"Unit"`
+
+	// 是否配置对外维度
+	DimensionFlag *bool `json:"DimensionFlag,omitnil,omitempty" name:"DimensionFlag"`
 }
 
 type FeiShuRobotNoticeTmpl struct {
@@ -1750,6 +2341,14 @@ type InstructionConfig struct {
 
 	// <p>注意事项</p>
 	Boundaries *string `json:"Boundaries,omitnil,omitempty" name:"Boundaries"`
+}
+
+type KafkaConnectivity struct {
+	// 地域
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// 连通
+	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 }
 
 // Predefined struct for user
@@ -2762,6 +3361,170 @@ type MessageInfo struct {
 }
 
 // Predefined struct for user
+type ModifyDispenseExternalRuleRequestParams struct {
+	// 规则名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 云监控对外命名空间
+	ExtNamespace *string `json:"ExtNamespace,omitnil,omitempty" name:"ExtNamespace"`
+
+	// 转发目标消信息
+	Producer *Producer `json:"Producer,omitnil,omitempty" name:"Producer"`
+
+	// 规则ID
+	RuleId *int64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// 转发部署地域列表
+	DispenseRegions []*string `json:"DispenseRegions,omitnil,omitempty" name:"DispenseRegions"`
+
+	// 云监控对外指标
+	ExtMetrics []*string `json:"ExtMetrics,omitnil,omitempty" name:"ExtMetrics"`
+
+	// 指标统计周期
+	Period []*int64 `json:"Period,omitnil,omitempty" name:"Period"`
+
+	// 转发过滤信息
+	DispenseConditions []*DispenseCondition `json:"DispenseConditions,omitnil,omitempty" name:"DispenseConditions"`
+}
+
+type ModifyDispenseExternalRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 规则名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 云监控对外命名空间
+	ExtNamespace *string `json:"ExtNamespace,omitnil,omitempty" name:"ExtNamespace"`
+
+	// 转发目标消信息
+	Producer *Producer `json:"Producer,omitnil,omitempty" name:"Producer"`
+
+	// 规则ID
+	RuleId *int64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// 转发部署地域列表
+	DispenseRegions []*string `json:"DispenseRegions,omitnil,omitempty" name:"DispenseRegions"`
+
+	// 云监控对外指标
+	ExtMetrics []*string `json:"ExtMetrics,omitnil,omitempty" name:"ExtMetrics"`
+
+	// 指标统计周期
+	Period []*int64 `json:"Period,omitnil,omitempty" name:"Period"`
+
+	// 转发过滤信息
+	DispenseConditions []*DispenseCondition `json:"DispenseConditions,omitnil,omitempty" name:"DispenseConditions"`
+}
+
+func (r *ModifyDispenseExternalRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDispenseExternalRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "ExtNamespace")
+	delete(f, "Producer")
+	delete(f, "RuleId")
+	delete(f, "DispenseRegions")
+	delete(f, "ExtMetrics")
+	delete(f, "Period")
+	delete(f, "DispenseConditions")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDispenseExternalRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDispenseExternalRuleResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyDispenseExternalRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyDispenseExternalRuleResponseParams `json:"Response"`
+}
+
+func (r *ModifyDispenseExternalRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDispenseExternalRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDispenseExternalRuleStatusRequestParams struct {
+	// 规则id列表
+	RuleIdList []*int64 `json:"RuleIdList,omitnil,omitempty" name:"RuleIdList"`
+
+	// 状态
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+type ModifyDispenseExternalRuleStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// 规则id列表
+	RuleIdList []*int64 `json:"RuleIdList,omitnil,omitempty" name:"RuleIdList"`
+
+	// 状态
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+func (r *ModifyDispenseExternalRuleStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDispenseExternalRuleStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RuleIdList")
+	delete(f, "Status")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDispenseExternalRuleStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDispenseExternalRuleStatusResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyDispenseExternalRuleStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyDispenseExternalRuleStatusResponseParams `json:"Response"`
+}
+
+func (r *ModifyDispenseExternalRuleStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDispenseExternalRuleStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyNoticeContentTmplRequestParams struct {
 	// 模板名称
 	TmplName *string `json:"TmplName,omitnil,omitempty" name:"TmplName"`
@@ -3003,6 +3766,39 @@ type PagerDutyRobotNoticeTmplMatcher struct {
 	Template *PagerDutyRobotNoticeTmpl `json:"Template,omitnil,omitempty" name:"Template"`
 }
 
+type Producer struct {
+	// 转发协议类型，0-stormRetPb, 1-tcbDispensePb, 2-stormRetJson, 3-ADPPb(废弃)，4-中台pb
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProtocolType *int64 `json:"ProtocolType,omitnil,omitempty" name:"ProtocolType"`
+
+	// 目标类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 转发kafka地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Brokers *string `json:"Brokers,omitnil,omitempty" name:"Brokers"`
+
+	// 转发kafka topic
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
+
+	// 是否合并指标,默认是1，合并
+	Merge *int64 `json:"Merge,omitnil,omitempty" name:"Merge"`
+
+	// 全局维度组
+	GlobalTags []*DispenseGlobalTag `json:"GlobalTags,omitnil,omitempty" name:"GlobalTags"`
+
+	// 默认维度组，只提供维度即可
+	DefaultTags []*string `json:"DefaultTags,omitnil,omitempty" name:"DefaultTags"`
+
+	// Kafka用户名
+	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
+
+	// Kafka密码
+	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+}
+
 type QCloudYeheNoticeTmpl struct {
 	// 邮件通知渠道
 	Email *QCloudYeheNoticeTmplItem `json:"Email,omitnil,omitempty" name:"Email"`
@@ -3091,6 +3887,40 @@ type ResourceMapInfo struct {
 	// <p>总实例数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceCount *int64 `json:"InstanceCount,omitnil,omitempty" name:"InstanceCount"`
+}
+
+type Rule struct {
+	// 规则Id
+	RuleId *int64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// 规则名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 对外namespace
+	ExtNamespace *string `json:"ExtNamespace,omitnil,omitempty" name:"ExtNamespace"`
+
+	// 对外指标列表
+	ExtMetric []*ExtMetric `json:"ExtMetric,omitnil,omitempty" name:"ExtMetric"`
+
+	// 输出信息
+	Producer *Producer `json:"Producer,omitnil,omitempty" name:"Producer"`
+
+	// 更新时间
+	UpdateTime *int64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 规则触发状态
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 指标粒度周期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Period []*int64 `json:"Period,omitnil,omitempty" name:"Period"`
+
+	// 转发过滤条件
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DispenseConditions []*DispenseCondition `json:"DispenseConditions,omitnil,omitempty" name:"DispenseConditions"`
+
+	// 转发地域列表
+	DispenseRegions []*string `json:"DispenseRegions,omitnil,omitempty" name:"DispenseRegions"`
 }
 
 type SessionInfo struct {

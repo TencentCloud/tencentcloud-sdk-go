@@ -213,6 +213,62 @@ func (c *Client) CreateAIWorkbenchTaskWithContext(ctx context.Context, request *
     return
 }
 
+func NewCreateDispenseExternalRuleRequest() (request *CreateDispenseExternalRuleRequest) {
+    request = &CreateDispenseExternalRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("monitor", APIVersion, "CreateDispenseExternalRule")
+    
+    
+    return
+}
+
+func NewCreateDispenseExternalRuleResponse() (response *CreateDispenseExternalRuleResponse) {
+    response = &CreateDispenseExternalRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateDispenseExternalRule
+// 转发接口：创建转发规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DB = "FailedOperation.Db"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateDispenseExternalRule(request *CreateDispenseExternalRuleRequest) (response *CreateDispenseExternalRuleResponse, err error) {
+    return c.CreateDispenseExternalRuleWithContext(context.Background(), request)
+}
+
+// CreateDispenseExternalRule
+// 转发接口：创建转发规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DB = "FailedOperation.Db"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateDispenseExternalRuleWithContext(ctx context.Context, request *CreateDispenseExternalRuleRequest) (response *CreateDispenseExternalRuleResponse, err error) {
+    if request == nil {
+        request = NewCreateDispenseExternalRuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "monitor", APIVersion, "CreateDispenseExternalRule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDispenseExternalRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateDispenseExternalRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateNoticeContentTmplRequest() (request *CreateNoticeContentTmplRequest) {
     request = &CreateNoticeContentTmplRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -236,10 +292,10 @@ func NewCreateNoticeContentTmplResponse() (response *CreateNoticeContentTmplResp
 // 创建自定义通知内容模板
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DB = "FailedOperation.Db"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateNoticeContentTmpl(request *CreateNoticeContentTmplRequest) (response *CreateNoticeContentTmplResponse, err error) {
     return c.CreateNoticeContentTmplWithContext(context.Background(), request)
 }
@@ -248,10 +304,10 @@ func (c *Client) CreateNoticeContentTmpl(request *CreateNoticeContentTmplRequest
 // 创建自定义通知内容模板
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DB = "FailedOperation.Db"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateNoticeContentTmplWithContext(ctx context.Context, request *CreateNoticeContentTmplRequest) (response *CreateNoticeContentTmplResponse, err error) {
     if request == nil {
         request = NewCreateNoticeContentTmplRequest()
@@ -381,6 +437,62 @@ func (c *Client) DeleteAIWorkbenchTaskWithContext(ctx context.Context, request *
     return
 }
 
+func NewDeleteDispenseExternalRuleRequest() (request *DeleteDispenseExternalRuleRequest) {
+    request = &DeleteDispenseExternalRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("monitor", APIVersion, "DeleteDispenseExternalRule")
+    
+    
+    return
+}
+
+func NewDeleteDispenseExternalRuleResponse() (response *DeleteDispenseExternalRuleResponse) {
+    response = &DeleteDispenseExternalRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteDispenseExternalRule
+// 规则删除接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DB = "FailedOperation.Db"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteDispenseExternalRule(request *DeleteDispenseExternalRuleRequest) (response *DeleteDispenseExternalRuleResponse, err error) {
+    return c.DeleteDispenseExternalRuleWithContext(context.Background(), request)
+}
+
+// DeleteDispenseExternalRule
+// 规则删除接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DB = "FailedOperation.Db"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteDispenseExternalRuleWithContext(ctx context.Context, request *DeleteDispenseExternalRuleRequest) (response *DeleteDispenseExternalRuleResponse, err error) {
+    if request == nil {
+        request = NewDeleteDispenseExternalRuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "monitor", APIVersion, "DeleteDispenseExternalRule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteDispenseExternalRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteDispenseExternalRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteNoticeContentTmplsRequest() (request *DeleteNoticeContentTmplsRequest) {
     request = &DeleteNoticeContentTmplsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -404,10 +516,10 @@ func NewDeleteNoticeContentTmplsResponse() (response *DeleteNoticeContentTmplsRe
 // 删除通知内容模板
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DB = "FailedOperation.Db"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteNoticeContentTmpls(request *DeleteNoticeContentTmplsRequest) (response *DeleteNoticeContentTmplsResponse, err error) {
     return c.DeleteNoticeContentTmplsWithContext(context.Background(), request)
 }
@@ -416,10 +528,10 @@ func (c *Client) DeleteNoticeContentTmpls(request *DeleteNoticeContentTmplsReque
 // 删除通知内容模板
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DB = "FailedOperation.Db"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteNoticeContentTmplsWithContext(ctx context.Context, request *DeleteNoticeContentTmplsRequest) (response *DeleteNoticeContentTmplsResponse, err error) {
     if request == nil {
         request = NewDeleteNoticeContentTmplsRequest()
@@ -943,6 +1055,336 @@ func (c *Client) DescribeAlarmNotifyHistoriesWithContext(ctx context.Context, re
     return
 }
 
+func NewDescribeDispenseExternalRuleRequest() (request *DescribeDispenseExternalRuleRequest) {
+    request = &DescribeDispenseExternalRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("monitor", APIVersion, "DescribeDispenseExternalRule")
+    
+    
+    return
+}
+
+func NewDescribeDispenseExternalRuleResponse() (response *DescribeDispenseExternalRuleResponse) {
+    response = &DescribeDispenseExternalRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDispenseExternalRule
+// 转发规则查询接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DB = "FailedOperation.Db"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeDispenseExternalRule(request *DescribeDispenseExternalRuleRequest) (response *DescribeDispenseExternalRuleResponse, err error) {
+    return c.DescribeDispenseExternalRuleWithContext(context.Background(), request)
+}
+
+// DescribeDispenseExternalRule
+// 转发规则查询接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DB = "FailedOperation.Db"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeDispenseExternalRuleWithContext(ctx context.Context, request *DescribeDispenseExternalRuleRequest) (response *DescribeDispenseExternalRuleResponse, err error) {
+    if request == nil {
+        request = NewDescribeDispenseExternalRuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "monitor", APIVersion, "DescribeDispenseExternalRule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDispenseExternalRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDispenseExternalRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDispenseExternalRuleListRequest() (request *DescribeDispenseExternalRuleListRequest) {
+    request = &DescribeDispenseExternalRuleListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("monitor", APIVersion, "DescribeDispenseExternalRuleList")
+    
+    
+    return
+}
+
+func NewDescribeDispenseExternalRuleListResponse() (response *DescribeDispenseExternalRuleListResponse) {
+    response = &DescribeDispenseExternalRuleListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDispenseExternalRuleList
+// 查询所有列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DB = "FailedOperation.Db"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeDispenseExternalRuleList(request *DescribeDispenseExternalRuleListRequest) (response *DescribeDispenseExternalRuleListResponse, err error) {
+    return c.DescribeDispenseExternalRuleListWithContext(context.Background(), request)
+}
+
+// DescribeDispenseExternalRuleList
+// 查询所有列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DB = "FailedOperation.Db"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeDispenseExternalRuleListWithContext(ctx context.Context, request *DescribeDispenseExternalRuleListRequest) (response *DescribeDispenseExternalRuleListResponse, err error) {
+    if request == nil {
+        request = NewDescribeDispenseExternalRuleListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "monitor", APIVersion, "DescribeDispenseExternalRuleList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDispenseExternalRuleList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDispenseExternalRuleListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDispenseRegionRequest() (request *DescribeDispenseRegionRequest) {
+    request = &DescribeDispenseRegionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("monitor", APIVersion, "DescribeDispenseRegion")
+    
+    
+    return
+}
+
+func NewDescribeDispenseRegionResponse() (response *DescribeDispenseRegionResponse) {
+    response = &DescribeDispenseRegionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDispenseRegion
+// 转发地域列表查询接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DB = "FailedOperation.Db"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeDispenseRegion(request *DescribeDispenseRegionRequest) (response *DescribeDispenseRegionResponse, err error) {
+    return c.DescribeDispenseRegionWithContext(context.Background(), request)
+}
+
+// DescribeDispenseRegion
+// 转发地域列表查询接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DB = "FailedOperation.Db"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeDispenseRegionWithContext(ctx context.Context, request *DescribeDispenseRegionRequest) (response *DescribeDispenseRegionResponse, err error) {
+    if request == nil {
+        request = NewDescribeDispenseRegionRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "monitor", APIVersion, "DescribeDispenseRegion")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDispenseRegion require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDispenseRegionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeExtMetricRequest() (request *DescribeExtMetricRequest) {
+    request = &DescribeExtMetricRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("monitor", APIVersion, "DescribeExtMetric")
+    
+    
+    return
+}
+
+func NewDescribeExtMetricResponse() (response *DescribeExtMetricResponse) {
+    response = &DescribeExtMetricResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeExtMetric
+// 查询对外指标
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DB = "FailedOperation.Db"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeExtMetric(request *DescribeExtMetricRequest) (response *DescribeExtMetricResponse, err error) {
+    return c.DescribeExtMetricWithContext(context.Background(), request)
+}
+
+// DescribeExtMetric
+// 查询对外指标
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DB = "FailedOperation.Db"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeExtMetricWithContext(ctx context.Context, request *DescribeExtMetricRequest) (response *DescribeExtMetricResponse, err error) {
+    if request == nil {
+        request = NewDescribeExtMetricRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "monitor", APIVersion, "DescribeExtMetric")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeExtMetric require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeExtMetricResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeExtNamespaceRequest() (request *DescribeExtNamespaceRequest) {
+    request = &DescribeExtNamespaceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("monitor", APIVersion, "DescribeExtNamespace")
+    
+    
+    return
+}
+
+func NewDescribeExtNamespaceResponse() (response *DescribeExtNamespaceResponse) {
+    response = &DescribeExtNamespaceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeExtNamespace
+// 转发查询对外命名空间接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DB = "FailedOperation.Db"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeExtNamespace(request *DescribeExtNamespaceRequest) (response *DescribeExtNamespaceResponse, err error) {
+    return c.DescribeExtNamespaceWithContext(context.Background(), request)
+}
+
+// DescribeExtNamespace
+// 转发查询对外命名空间接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DB = "FailedOperation.Db"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeExtNamespaceWithContext(ctx context.Context, request *DescribeExtNamespaceRequest) (response *DescribeExtNamespaceResponse, err error) {
+    if request == nil {
+        request = NewDescribeExtNamespaceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "monitor", APIVersion, "DescribeExtNamespace")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeExtNamespace require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeExtNamespaceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeKafkaRequest() (request *DescribeKafkaRequest) {
+    request = &DescribeKafkaRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("monitor", APIVersion, "DescribeKafka")
+    
+    
+    return
+}
+
+func NewDescribeKafkaResponse() (response *DescribeKafkaResponse) {
+    response = &DescribeKafkaResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeKafka
+// 转发kafka连通性测试
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DB = "FailedOperation.Db"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeKafka(request *DescribeKafkaRequest) (response *DescribeKafkaResponse, err error) {
+    return c.DescribeKafkaWithContext(context.Background(), request)
+}
+
+// DescribeKafka
+// 转发kafka连通性测试
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DB = "FailedOperation.Db"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeKafkaWithContext(ctx context.Context, request *DescribeKafkaRequest) (response *DescribeKafkaResponse, err error) {
+    if request == nil {
+        request = NewDescribeKafkaRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "monitor", APIVersion, "DescribeKafka")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeKafka require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeKafkaResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeNoticeContentTmplRequest() (request *DescribeNoticeContentTmplRequest) {
     request = &DescribeNoticeContentTmplRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -966,8 +1408,10 @@ func NewDescribeNoticeContentTmplResponse() (response *DescribeNoticeContentTmpl
 // 根据查询条件获取自定义通知内容模板，若所有查询条件空，则获取账号下所有模板
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DB = "FailedOperation.Db"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeNoticeContentTmpl(request *DescribeNoticeContentTmplRequest) (response *DescribeNoticeContentTmplResponse, err error) {
     return c.DescribeNoticeContentTmplWithContext(context.Background(), request)
 }
@@ -976,8 +1420,10 @@ func (c *Client) DescribeNoticeContentTmpl(request *DescribeNoticeContentTmplReq
 // 根据查询条件获取自定义通知内容模板，若所有查询条件空，则获取账号下所有模板
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DB = "FailedOperation.Db"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeNoticeContentTmplWithContext(ctx context.Context, request *DescribeNoticeContentTmplRequest) (response *DescribeNoticeContentTmplResponse, err error) {
     if request == nil {
         request = NewDescribeNoticeContentTmplRequest()
@@ -1605,6 +2051,114 @@ func (c *Client) ListAIWorkbenchTasksWithContext(ctx context.Context, request *L
     return
 }
 
+func NewModifyDispenseExternalRuleRequest() (request *ModifyDispenseExternalRuleRequest) {
+    request = &ModifyDispenseExternalRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("monitor", APIVersion, "ModifyDispenseExternalRule")
+    
+    
+    return
+}
+
+func NewModifyDispenseExternalRuleResponse() (response *ModifyDispenseExternalRuleResponse) {
+    response = &ModifyDispenseExternalRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyDispenseExternalRule
+// 转发规则更新接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DB = "FailedOperation.Db"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyDispenseExternalRule(request *ModifyDispenseExternalRuleRequest) (response *ModifyDispenseExternalRuleResponse, err error) {
+    return c.ModifyDispenseExternalRuleWithContext(context.Background(), request)
+}
+
+// ModifyDispenseExternalRule
+// 转发规则更新接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DB = "FailedOperation.Db"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyDispenseExternalRuleWithContext(ctx context.Context, request *ModifyDispenseExternalRuleRequest) (response *ModifyDispenseExternalRuleResponse, err error) {
+    if request == nil {
+        request = NewModifyDispenseExternalRuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "monitor", APIVersion, "ModifyDispenseExternalRule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDispenseExternalRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDispenseExternalRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDispenseExternalRuleStatusRequest() (request *ModifyDispenseExternalRuleStatusRequest) {
+    request = &ModifyDispenseExternalRuleStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("monitor", APIVersion, "ModifyDispenseExternalRuleStatus")
+    
+    
+    return
+}
+
+func NewModifyDispenseExternalRuleStatusResponse() (response *ModifyDispenseExternalRuleStatusResponse) {
+    response = &ModifyDispenseExternalRuleStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyDispenseExternalRuleStatus
+// 新增规则开启关闭接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DB = "FailedOperation.Db"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyDispenseExternalRuleStatus(request *ModifyDispenseExternalRuleStatusRequest) (response *ModifyDispenseExternalRuleStatusResponse, err error) {
+    return c.ModifyDispenseExternalRuleStatusWithContext(context.Background(), request)
+}
+
+// ModifyDispenseExternalRuleStatus
+// 新增规则开启关闭接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DB = "FailedOperation.Db"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyDispenseExternalRuleStatusWithContext(ctx context.Context, request *ModifyDispenseExternalRuleStatusRequest) (response *ModifyDispenseExternalRuleStatusResponse, err error) {
+    if request == nil {
+        request = NewModifyDispenseExternalRuleStatusRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "monitor", APIVersion, "ModifyDispenseExternalRuleStatus")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDispenseExternalRuleStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDispenseExternalRuleStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyNoticeContentTmplRequest() (request *ModifyNoticeContentTmplRequest) {
     request = &ModifyNoticeContentTmplRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1628,10 +2182,9 @@ func NewModifyNoticeContentTmplResponse() (response *ModifyNoticeContentTmplResp
 // 修改通知内容模板
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
+//  FAILEDOPERATION_DB = "FailedOperation.Db"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyNoticeContentTmpl(request *ModifyNoticeContentTmplRequest) (response *ModifyNoticeContentTmplResponse, err error) {
     return c.ModifyNoticeContentTmplWithContext(context.Background(), request)
 }
@@ -1640,10 +2193,9 @@ func (c *Client) ModifyNoticeContentTmpl(request *ModifyNoticeContentTmplRequest
 // 修改通知内容模板
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
+//  FAILEDOPERATION_DB = "FailedOperation.Db"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyNoticeContentTmplWithContext(ctx context.Context, request *ModifyNoticeContentTmplRequest) (response *ModifyNoticeContentTmplResponse, err error) {
     if request == nil {
         request = NewModifyNoticeContentTmplRequest()

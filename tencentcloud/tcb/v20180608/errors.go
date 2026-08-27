@@ -89,6 +89,9 @@ const (
 	// Instance is resuming, please try connecting again.
 	FAILEDOPERATION_TDSQLPAUSED = "FailedOperation.TdsqlPaused"
 
+	// 请求第三方服务，第三方服务返回报错信息
+	FAILEDOPERATION_THIRDSERVICEERROR = "FailedOperation.ThirdServiceError"
+
 	// FailedOperation.Timeout
 	FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
 
@@ -103,6 +106,9 @@ const (
 
 	// 系统内部异常。
 	INTERNALERROR_SYS_ERR = "InternalError.SYS_ERR"
+
+	// 服务超时。
+	INTERNALERROR_TIMEOUT = "InternalError.Timeout"
 
 	// 参数格式或类型错误，如 Uin、EnvId、Domain 缺失或非法。
 	INVALIDPARAMETER = "InvalidParameter"

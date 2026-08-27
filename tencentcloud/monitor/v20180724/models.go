@@ -2547,74 +2547,74 @@ func (r *CreateGrafanaNotificationChannelResponse) FromJsonString(s string) erro
 
 // Predefined struct for user
 type CreateOnCallFormRequestParams struct {
-	// 固定值，为"monitor"
+	// <p>固定值，为&quot;monitor&quot;</p>
 	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
 
-	// 值班表名称
+	// <p>值班表名称</p>
 	OnCallFormName *string `json:"OnCallFormName,omitnil,omitempty" name:"OnCallFormName"`
 
-	// 值班人员id组
+	// <p>值班人员id组</p>
 	StaffInfos []*StaffInfo `json:"StaffInfos,omitnil,omitempty" name:"StaffInfos"`
 
-	// 轮转类型
+	// <p>轮转类型</p>
 	RotationType *string `json:"RotationType,omitnil,omitempty" name:"RotationType"`
 
-	// 换班时间
+	// <p>换班时间</p>
 	ShiftTime *string `json:"ShiftTime,omitnil,omitempty" name:"ShiftTime"`
 
-	// 有效期开始时间，单位s
+	// <p>有效期开始时间，单位s</p>
 	EffectiveStartTime *int64 `json:"EffectiveStartTime,omitnil,omitempty" name:"EffectiveStartTime"`
 
-	// 有效期结束时间，单位s
+	// <p>有效期结束时间，单位s</p>
 	EffectiveEndTime *int64 `json:"EffectiveEndTime,omitnil,omitempty" name:"EffectiveEndTime"`
 
-	// 时区(-12 - 12)
+	// <p>时区(-12 - 12)</p>
 	TimeZone *float64 `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
 
-	// 值班表描述
+	// <p>值班表描述</p>
 	OnCallFormDesc *string `json:"OnCallFormDesc,omitnil,omitempty" name:"OnCallFormDesc"`
 
-	// 轮班信息
+	// <p>轮班信息</p>
 	CoverStaffInfos []*CoverStaffInfo `json:"CoverStaffInfos,omitnil,omitempty" name:"CoverStaffInfos"`
 
-	// 模板绑定的标签
+	// <p>模板绑定的标签</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type CreateOnCallFormRequest struct {
 	*tchttp.BaseRequest
 	
-	// 固定值，为"monitor"
+	// <p>固定值，为&quot;monitor&quot;</p>
 	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
 
-	// 值班表名称
+	// <p>值班表名称</p>
 	OnCallFormName *string `json:"OnCallFormName,omitnil,omitempty" name:"OnCallFormName"`
 
-	// 值班人员id组
+	// <p>值班人员id组</p>
 	StaffInfos []*StaffInfo `json:"StaffInfos,omitnil,omitempty" name:"StaffInfos"`
 
-	// 轮转类型
+	// <p>轮转类型</p>
 	RotationType *string `json:"RotationType,omitnil,omitempty" name:"RotationType"`
 
-	// 换班时间
+	// <p>换班时间</p>
 	ShiftTime *string `json:"ShiftTime,omitnil,omitempty" name:"ShiftTime"`
 
-	// 有效期开始时间，单位s
+	// <p>有效期开始时间，单位s</p>
 	EffectiveStartTime *int64 `json:"EffectiveStartTime,omitnil,omitempty" name:"EffectiveStartTime"`
 
-	// 有效期结束时间，单位s
+	// <p>有效期结束时间，单位s</p>
 	EffectiveEndTime *int64 `json:"EffectiveEndTime,omitnil,omitempty" name:"EffectiveEndTime"`
 
-	// 时区(-12 - 12)
+	// <p>时区(-12 - 12)</p>
 	TimeZone *float64 `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
 
-	// 值班表描述
+	// <p>值班表描述</p>
 	OnCallFormDesc *string `json:"OnCallFormDesc,omitnil,omitempty" name:"OnCallFormDesc"`
 
-	// 轮班信息
+	// <p>轮班信息</p>
 	CoverStaffInfos []*CoverStaffInfo `json:"CoverStaffInfos,omitnil,omitempty" name:"CoverStaffInfos"`
 
-	// 模板绑定的标签
+	// <p>模板绑定的标签</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
@@ -2649,7 +2649,7 @@ func (r *CreateOnCallFormRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateOnCallFormResponseParams struct {
-	// 值班表id
+	// <p>值班表id</p>
 	OnCallFormID *string `json:"OnCallFormID,omitnil,omitempty" name:"OnCallFormID"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4370,20 +4370,20 @@ func (r *DeleteGrafanaNotificationChannelResponse) FromJsonString(s string) erro
 
 // Predefined struct for user
 type DeleteOnCallFormsRequestParams struct {
-	// 固定值，为"monitor"
+	// <p>固定值，为&quot;monitor&quot;</p>
 	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
 
-	// 要删除的值班表id
+	// <p>要删除的值班表id</p>
 	OnCallFormIDs []*string `json:"OnCallFormIDs,omitnil,omitempty" name:"OnCallFormIDs"`
 }
 
 type DeleteOnCallFormsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 固定值，为"monitor"
+	// <p>固定值，为&quot;monitor&quot;</p>
 	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
 
-	// 要删除的值班表id
+	// <p>要删除的值班表id</p>
 	OnCallFormIDs []*string `json:"OnCallFormIDs,omitnil,omitempty" name:"OnCallFormIDs"`
 }
 
@@ -4409,10 +4409,10 @@ func (r *DeleteOnCallFormsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteOnCallFormsResponseParams struct {
-	// 失败删除的排班id
+	// <p>失败删除的排班id</p>
 	FailedOnCallFormIDs []*string `json:"FailedOnCallFormIDs,omitnil,omitempty" name:"FailedOnCallFormIDs"`
 
-	// 成功删除的排班id
+	// <p>成功删除的排班id</p>
 	SuccessOnCallFormIDs []*string `json:"SuccessOnCallFormIDs,omitnil,omitempty" name:"SuccessOnCallFormIDs"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8569,20 +8569,20 @@ func (r *DescribeNotificationContentTemplateSupportsResponse) FromJsonString(s s
 
 // Predefined struct for user
 type DescribeOnCallFormRequestParams struct {
-	// 固定值，为"monitor"
+	// <p>固定值，为&quot;monitor&quot;</p>
 	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
 
-	// 值班id
+	// <p>值班id</p>
 	OnCallFormID *string `json:"OnCallFormID,omitnil,omitempty" name:"OnCallFormID"`
 }
 
 type DescribeOnCallFormRequest struct {
 	*tchttp.BaseRequest
 	
-	// 固定值，为"monitor"
+	// <p>固定值，为&quot;monitor&quot;</p>
 	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
 
-	// 值班id
+	// <p>值班id</p>
 	OnCallFormID *string `json:"OnCallFormID,omitnil,omitempty" name:"OnCallFormID"`
 }
 
@@ -8608,7 +8608,7 @@ func (r *DescribeOnCallFormRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeOnCallFormResponseParams struct {
-	// 值班详情
+	// <p>值班详情</p>
 	OnCallForm *OneOnCallForm `json:"OnCallForm,omitnil,omitempty" name:"OnCallForm"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8633,50 +8633,50 @@ func (r *DescribeOnCallFormResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeOnCallFormsRequestParams struct {
-	// 固定值，为"monitor"
+	// <p>固定值，为&quot;monitor&quot;</p>
 	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
 
-	// 分页查询起始位
+	// <p>分页查询起始位</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页查询页数
+	// <p>分页查询页数</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 支持userId进行检索
+	// <p>支持userId进行检索</p>
 	OnCallFormStaffIDs []*string `json:"OnCallFormStaffIDs,omitnil,omitempty" name:"OnCallFormStaffIDs"`
 
-	// 值班类型
+	// <p>值班类型</p>
 	RotationType *string `json:"RotationType,omitnil,omitempty" name:"RotationType"`
 
-	// 排序方式
+	// <p>排序方式</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 支持id、name进行检索
+	// <p>支持id、name进行检索</p>
 	OnCallFormName *string `json:"OnCallFormName,omitnil,omitempty" name:"OnCallFormName"`
 }
 
 type DescribeOnCallFormsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 固定值，为"monitor"
+	// <p>固定值，为&quot;monitor&quot;</p>
 	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
 
-	// 分页查询起始位
+	// <p>分页查询起始位</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页查询页数
+	// <p>分页查询页数</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 支持userId进行检索
+	// <p>支持userId进行检索</p>
 	OnCallFormStaffIDs []*string `json:"OnCallFormStaffIDs,omitnil,omitempty" name:"OnCallFormStaffIDs"`
 
-	// 值班类型
+	// <p>值班类型</p>
 	RotationType *string `json:"RotationType,omitnil,omitempty" name:"RotationType"`
 
-	// 排序方式
+	// <p>排序方式</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 支持id、name进行检索
+	// <p>支持id、name进行检索</p>
 	OnCallFormName *string `json:"OnCallFormName,omitnil,omitempty" name:"OnCallFormName"`
 }
 
@@ -8707,10 +8707,10 @@ func (r *DescribeOnCallFormsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeOnCallFormsResponseParams struct {
-	// 排班信息
+	// <p>排班信息</p>
 	OnCallForms []*OnCallForm `json:"OnCallForms,omitnil,omitempty" name:"OnCallForms"`
 
-	// 总数
+	// <p>总数</p>
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -18591,74 +18591,74 @@ func (r *UpdateGrafanaWhiteListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateOnCallFormRequestParams struct {
-	// 固定值，为"monitor"
+	// <p>固定值，为&quot;monitor&quot;</p>
 	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
 
-	// 值班表id
+	// <p>值班表id</p>
 	OnCallFormID *string `json:"OnCallFormID,omitnil,omitempty" name:"OnCallFormID"`
 
-	// 值班表名称
+	// <p>值班表名称</p>
 	OnCallFormName *string `json:"OnCallFormName,omitnil,omitempty" name:"OnCallFormName"`
 
-	// 值班人员id组
+	// <p>值班人员id组</p>
 	StaffInfos []*StaffInfo `json:"StaffInfos,omitnil,omitempty" name:"StaffInfos"`
 
-	// 轮转类型
+	// <p>轮转类型</p>
 	RotationType *string `json:"RotationType,omitnil,omitempty" name:"RotationType"`
 
-	// 换班时间
+	// <p>换班时间</p>
 	ShiftTime *string `json:"ShiftTime,omitnil,omitempty" name:"ShiftTime"`
 
-	// 有效期开始时间，单位s
+	// <p>有效期开始时间，单位s</p>
 	EffectiveStartTime *int64 `json:"EffectiveStartTime,omitnil,omitempty" name:"EffectiveStartTime"`
 
-	// 有效期结束时间，单位s
+	// <p>有效期结束时间，单位s</p>
 	EffectiveEndTime *int64 `json:"EffectiveEndTime,omitnil,omitempty" name:"EffectiveEndTime"`
 
-	// 时区(-12 - 12)
+	// <p>时区(-12 - 12)</p>
 	TimeZone *float64 `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
 
-	// 值班表描述
+	// <p>值班表描述</p>
 	OnCallFormDesc *string `json:"OnCallFormDesc,omitnil,omitempty" name:"OnCallFormDesc"`
 
-	// 轮班信息
+	// <p>轮班信息</p>
 	CoverStaffInfos []*CoverStaffInfo `json:"CoverStaffInfos,omitnil,omitempty" name:"CoverStaffInfos"`
 }
 
 type UpdateOnCallFormRequest struct {
 	*tchttp.BaseRequest
 	
-	// 固定值，为"monitor"
+	// <p>固定值，为&quot;monitor&quot;</p>
 	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
 
-	// 值班表id
+	// <p>值班表id</p>
 	OnCallFormID *string `json:"OnCallFormID,omitnil,omitempty" name:"OnCallFormID"`
 
-	// 值班表名称
+	// <p>值班表名称</p>
 	OnCallFormName *string `json:"OnCallFormName,omitnil,omitempty" name:"OnCallFormName"`
 
-	// 值班人员id组
+	// <p>值班人员id组</p>
 	StaffInfos []*StaffInfo `json:"StaffInfos,omitnil,omitempty" name:"StaffInfos"`
 
-	// 轮转类型
+	// <p>轮转类型</p>
 	RotationType *string `json:"RotationType,omitnil,omitempty" name:"RotationType"`
 
-	// 换班时间
+	// <p>换班时间</p>
 	ShiftTime *string `json:"ShiftTime,omitnil,omitempty" name:"ShiftTime"`
 
-	// 有效期开始时间，单位s
+	// <p>有效期开始时间，单位s</p>
 	EffectiveStartTime *int64 `json:"EffectiveStartTime,omitnil,omitempty" name:"EffectiveStartTime"`
 
-	// 有效期结束时间，单位s
+	// <p>有效期结束时间，单位s</p>
 	EffectiveEndTime *int64 `json:"EffectiveEndTime,omitnil,omitempty" name:"EffectiveEndTime"`
 
-	// 时区(-12 - 12)
+	// <p>时区(-12 - 12)</p>
 	TimeZone *float64 `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
 
-	// 值班表描述
+	// <p>值班表描述</p>
 	OnCallFormDesc *string `json:"OnCallFormDesc,omitnil,omitempty" name:"OnCallFormDesc"`
 
-	// 轮班信息
+	// <p>轮班信息</p>
 	CoverStaffInfos []*CoverStaffInfo `json:"CoverStaffInfos,omitnil,omitempty" name:"CoverStaffInfos"`
 }
 
@@ -18693,7 +18693,7 @@ func (r *UpdateOnCallFormRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateOnCallFormResponseParams struct {
-	// 值班表id
+	// <p>值班表id</p>
 	OnCallFormID *string `json:"OnCallFormID,omitnil,omitempty" name:"OnCallFormID"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

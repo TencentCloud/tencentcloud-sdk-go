@@ -5345,19 +5345,19 @@ func (r *CreatePartitionQueueResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreatePartitionRequestParams struct {
-	// <p>交易类型：purchase-新购，renew-续费，modify-变配</p>
+	// <p>交易类型：purchase-新购</p>
 	ActionType *string `json:"ActionType,omitnil,omitempty" name:"ActionType"`
 
-	// <p>付费模式：0-后付费，1-预付费</p>
+	// <p>付费模式：1-预付费</p>
 	PayMode *uint64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
 	// <p>资源配额列表（计费项+数量）</p>
 	ResourceQuotaList []*ResourceQuota `json:"ResourceQuotaList,omitnil,omitempty" name:"ResourceQuotaList"`
 
-	// <p>时间大小，预付费时为购买月数，后付费时为3600</p>
+	// <p>时间大小，预付费时为购买月数</p>
 	TimeSpan *int64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
 
-	// <p>时间单位，预付费为m（月），后付费为s（秒）</p>
+	// <p>时间单位，预付费为m（月）</p>
 	TimeUnit *string `json:"TimeUnit,omitnil,omitempty" name:"TimeUnit"`
 
 	// <p>自动续费标志：0-默认，1-自动续费，2-不自动续费（仅预付费有效）</p>
@@ -5366,26 +5366,26 @@ type CreatePartitionRequestParams struct {
 	// <p>弹性资源池名称，用于订单页展示</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// <p>队列描述</p>
+	// <p>资源包描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 type CreatePartitionRequest struct {
 	*tchttp.BaseRequest
 	
-	// <p>交易类型：purchase-新购，renew-续费，modify-变配</p>
+	// <p>交易类型：purchase-新购</p>
 	ActionType *string `json:"ActionType,omitnil,omitempty" name:"ActionType"`
 
-	// <p>付费模式：0-后付费，1-预付费</p>
+	// <p>付费模式：1-预付费</p>
 	PayMode *uint64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
 	// <p>资源配额列表（计费项+数量）</p>
 	ResourceQuotaList []*ResourceQuota `json:"ResourceQuotaList,omitnil,omitempty" name:"ResourceQuotaList"`
 
-	// <p>时间大小，预付费时为购买月数，后付费时为3600</p>
+	// <p>时间大小，预付费时为购买月数</p>
 	TimeSpan *int64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
 
-	// <p>时间单位，预付费为m（月），后付费为s（秒）</p>
+	// <p>时间单位，预付费为m（月）</p>
 	TimeUnit *string `json:"TimeUnit,omitnil,omitempty" name:"TimeUnit"`
 
 	// <p>自动续费标志：0-默认，1-自动续费，2-不自动续费（仅预付费有效）</p>
@@ -5394,7 +5394,7 @@ type CreatePartitionRequest struct {
 	// <p>弹性资源池名称，用于订单页展示</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// <p>队列描述</p>
+	// <p>资源包描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 

@@ -1641,6 +1641,9 @@ type CreateClusterRequestParams struct {
 
 	// <p>系统盘是否加密</p>
 	EnableCbsSysEncryptFlag *bool `json:"EnableCbsSysEncryptFlag,omitnil,omitempty" name:"EnableCbsSysEncryptFlag"`
+
+	// <p>自定义metadb数据</p>
+	MetaDBGroupInfo []*CustomMetaDBInfo `json:"MetaDBGroupInfo,omitnil,omitempty" name:"MetaDBGroupInfo"`
 }
 
 type CreateClusterRequest struct {
@@ -1732,6 +1735,9 @@ type CreateClusterRequest struct {
 
 	// <p>系统盘是否加密</p>
 	EnableCbsSysEncryptFlag *bool `json:"EnableCbsSysEncryptFlag,omitnil,omitempty" name:"EnableCbsSysEncryptFlag"`
+
+	// <p>自定义metadb数据</p>
+	MetaDBGroupInfo []*CustomMetaDBInfo `json:"MetaDBGroupInfo,omitnil,omitempty" name:"MetaDBGroupInfo"`
 }
 
 func (r *CreateClusterRequest) ToJsonString() string {
@@ -1775,6 +1781,7 @@ func (r *CreateClusterRequest) FromJsonString(s string) error {
 	delete(f, "PartitionNumber")
 	delete(f, "WebUiVersion")
 	delete(f, "EnableCbsSysEncryptFlag")
+	delete(f, "MetaDBGroupInfo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateClusterRequest has unknown keys!", "")
 	}
@@ -5648,6 +5655,63 @@ func (r *DescribeKyuubiQueryInfoResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeKyuubiQueryInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMetaDBInfoRequestParams struct {
+	// <p>集群id</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+type DescribeMetaDBInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>集群id</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeMetaDBInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMetaDBInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMetaDBInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMetaDBInfoResponseParams struct {
+	// <p>自定义db数据</p>
+	MetaDBGroupInfo []*CustomMetaDBInfo `json:"MetaDBGroupInfo,omitnil,omitempty" name:"MetaDBGroupInfo"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeMetaDBInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeMetaDBInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeMetaDBInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMetaDBInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

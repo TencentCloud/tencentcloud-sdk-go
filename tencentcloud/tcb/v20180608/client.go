@@ -3717,9 +3717,13 @@ func NewDescribeHTTPServiceRouteResponse() (response *DescribeHTTPServiceRouteRe
 }
 
 // DescribeHTTPServiceRoute
-// 本接口DescribeHTTPServiceRoute用于查询环境下HTTP访问服务路由信息。可通过Filters过滤。如果不存在不会返回错误。HTTP访问服务提供了默认域名，通过本接口可直接获取默认域名。
+// 本接口DescribeHTTPServiceRoute用于查询环境下HTTP访问服务路由信息。可通过Filters过滤。如果不存在不会返回错误。HTTP访问服务提供了默认域名，通过本接口可直接获取默认域名。前置需已开通 HTTP 访问服务；调用CreateHTTPServiceRoute或者ModifyHTTPServiceRoute后可使用本接口查询创建或者修改结果
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_THIRDSERVICEERROR = "FailedOperation.ThirdServiceError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DATABASE = "InternalError.Database"
+//  INTERNALERROR_TIMEOUT = "InternalError.Timeout"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_ENVID = "InvalidParameter.EnvId"
 func (c *Client) DescribeHTTPServiceRoute(request *DescribeHTTPServiceRouteRequest) (response *DescribeHTTPServiceRouteResponse, err error) {
@@ -3727,9 +3731,13 @@ func (c *Client) DescribeHTTPServiceRoute(request *DescribeHTTPServiceRouteReque
 }
 
 // DescribeHTTPServiceRoute
-// 本接口DescribeHTTPServiceRoute用于查询环境下HTTP访问服务路由信息。可通过Filters过滤。如果不存在不会返回错误。HTTP访问服务提供了默认域名，通过本接口可直接获取默认域名。
+// 本接口DescribeHTTPServiceRoute用于查询环境下HTTP访问服务路由信息。可通过Filters过滤。如果不存在不会返回错误。HTTP访问服务提供了默认域名，通过本接口可直接获取默认域名。前置需已开通 HTTP 访问服务；调用CreateHTTPServiceRoute或者ModifyHTTPServiceRoute后可使用本接口查询创建或者修改结果
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_THIRDSERVICEERROR = "FailedOperation.ThirdServiceError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DATABASE = "InternalError.Database"
+//  INTERNALERROR_TIMEOUT = "InternalError.Timeout"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_ENVID = "InvalidParameter.EnvId"
 func (c *Client) DescribeHTTPServiceRouteWithContext(ctx context.Context, request *DescribeHTTPServiceRouteRequest) (response *DescribeHTTPServiceRouteResponse, err error) {

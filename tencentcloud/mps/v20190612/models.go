@@ -3584,6 +3584,100 @@ type BlindWatermarkTemplate struct {
 	Strength *string `json:"Strength,omitnil,omitempty" name:"Strength"`
 }
 
+// Predefined struct for user
+type ChangeVoiceRequestParams struct {
+	// <p>待转换音频base64编码</p>
+	AudioData *string `json:"AudioData,omitnil,omitempty" name:"AudioData"`
+
+	// <p>待转换音频Url，AudioData为空时有效</p>
+	AudioUrl *string `json:"AudioUrl,omitnil,omitempty" name:"AudioUrl"`
+
+	// <p>音色ID</p>
+	VoiceId *string `json:"VoiceId,omitnil,omitempty" name:"VoiceId"`
+
+	// <p>输出相关参数</p>
+	Output *SyncDubbingOutputOption `json:"Output,omitnil,omitempty" name:"Output"`
+
+	// <p>扩展参数，json字符串</p>
+	ExtParam *string `json:"ExtParam,omitnil,omitempty" name:"ExtParam"`
+}
+
+type ChangeVoiceRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>待转换音频base64编码</p>
+	AudioData *string `json:"AudioData,omitnil,omitempty" name:"AudioData"`
+
+	// <p>待转换音频Url，AudioData为空时有效</p>
+	AudioUrl *string `json:"AudioUrl,omitnil,omitempty" name:"AudioUrl"`
+
+	// <p>音色ID</p>
+	VoiceId *string `json:"VoiceId,omitnil,omitempty" name:"VoiceId"`
+
+	// <p>输出相关参数</p>
+	Output *SyncDubbingOutputOption `json:"Output,omitnil,omitempty" name:"Output"`
+
+	// <p>扩展参数，json字符串</p>
+	ExtParam *string `json:"ExtParam,omitnil,omitempty" name:"ExtParam"`
+}
+
+func (r *ChangeVoiceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChangeVoiceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AudioData")
+	delete(f, "AudioUrl")
+	delete(f, "VoiceId")
+	delete(f, "Output")
+	delete(f, "ExtParam")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChangeVoiceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ChangeVoiceResponseParams struct {
+	// <p>错误码，成功时返回0</p>
+	ErrorCode *int64 `json:"ErrorCode,omitnil,omitempty" name:"ErrorCode"`
+
+	// <p>错误信息，成功时返回success</p>
+	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
+
+	// <p>结果音频的base64编码，默认mp3格式</p>
+	AudioData *string `json:"AudioData,omitnil,omitempty" name:"AudioData"`
+
+	// <p>结果音频url，有效期24小时</p>
+	AudioUrl *string `json:"AudioUrl,omitnil,omitempty" name:"AudioUrl"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ChangeVoiceResponse struct {
+	*tchttp.BaseResponse
+	Response *ChangeVoiceResponseParams `json:"Response"`
+}
+
+func (r *ChangeVoiceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChangeVoiceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ChannelAlertResp struct {
 	// Program告警聚合信息。
 	ProgramAlertCounts []*ProgramAlertCounts `json:"ProgramAlertCounts,omitnil,omitempty" name:"ProgramAlertCounts"`

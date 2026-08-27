@@ -5553,6 +5553,95 @@ func (r *DescribeRegionsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeReplicationExecutionsRequestParams struct {
+	// 实例ID
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
+
+	// 策略ID
+	PolicyId *int64 `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
+
+	// 复制实例ID
+	ReplicationInstanceId *string `json:"ReplicationInstanceId,omitnil,omitempty" name:"ReplicationInstanceId"`
+
+	// 页数，默认为1
+	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
+
+	// 每页展示个数，默认为100
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+type DescribeReplicationExecutionsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
+
+	// 策略ID
+	PolicyId *int64 `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
+
+	// 复制实例ID
+	ReplicationInstanceId *string `json:"ReplicationInstanceId,omitnil,omitempty" name:"ReplicationInstanceId"`
+
+	// 页数，默认为1
+	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
+
+	// 每页展示个数，默认为100
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+func (r *DescribeReplicationExecutionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeReplicationExecutionsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RegistryId")
+	delete(f, "PolicyId")
+	delete(f, "ReplicationInstanceId")
+	delete(f, "Page")
+	delete(f, "PageSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeReplicationExecutionsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeReplicationExecutionsResponseParams struct {
+	// 镜像分发执行记录列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReplicationExecutionList []*ReplicationExecution `json:"ReplicationExecutionList,omitnil,omitempty" name:"ReplicationExecutionList"`
+
+	// 执行记录总数
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeReplicationExecutionsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeReplicationExecutionsResponseParams `json:"Response"`
+}
+
+func (r *DescribeReplicationExecutionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeReplicationExecutionsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeReplicationInstanceCreateTasksRequestParams struct {
 	// 同步实例Id，见实例返回列表中的同步实例ID
 	ReplicationRegistryId *string `json:"ReplicationRegistryId,omitnil,omitempty" name:"ReplicationRegistryId"`
@@ -5866,6 +5955,88 @@ func (r *DescribeReplicationPoliciesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeReplicationPoliciesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeReplicationTasksRequestParams struct {
+	// 实例ID
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
+
+	// 执行记录ID
+	ExecutionId *int64 `json:"ExecutionId,omitnil,omitempty" name:"ExecutionId"`
+
+	// 页数，默认为1
+	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
+
+	// 每页展示个数，默认为100
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+type DescribeReplicationTasksRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
+
+	// 执行记录ID
+	ExecutionId *int64 `json:"ExecutionId,omitnil,omitempty" name:"ExecutionId"`
+
+	// 页数，默认为1
+	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
+
+	// 每页展示个数，默认为100
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+func (r *DescribeReplicationTasksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeReplicationTasksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RegistryId")
+	delete(f, "ExecutionId")
+	delete(f, "Page")
+	delete(f, "PageSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeReplicationTasksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeReplicationTasksResponseParams struct {
+	// 任务列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReplicationTaskList []*ReplicationTask `json:"ReplicationTaskList,omitnil,omitempty" name:"ReplicationTaskList"`
+
+	// 任务列表总数
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeReplicationTasksResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeReplicationTasksResponseParams `json:"Response"`
+}
+
+func (r *DescribeReplicationTasksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeReplicationTasksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -9613,6 +9784,36 @@ func (r *RenewInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ReplicationExecution struct {
+	// 执行记录ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutionID *int64 `json:"ExecutionID,omitnil,omitempty" name:"ExecutionID"`
+
+	// 策略ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PolicyID *int64 `json:"PolicyID,omitnil,omitempty" name:"PolicyID"`
+
+	// 执行状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 执行任务总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 执行任务成功数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Succeed *int64 `json:"Succeed,omitnil,omitempty" name:"Succeed"`
+
+	// 开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+}
+
 type ReplicationFilter struct {
 	// 类型（name、tag和resource）
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
@@ -9718,6 +9919,36 @@ type ReplicationRule struct {
 
 	// 是否同步删除事件
 	Deletion *bool `json:"Deletion,omitnil,omitempty" name:"Deletion"`
+}
+
+type ReplicationTask struct {
+	// 资源类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// 源资源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SrcResource *string `json:"SrcResource,omitnil,omitempty" name:"SrcResource"`
+
+	// 目的资源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DstResource *string `json:"DstResource,omitnil,omitempty" name:"DstResource"`
+
+	// Job任务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JobID *string `json:"JobID,omitnil,omitempty" name:"JobID"`
+
+	// 任务执行状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
 type RepoInfo struct {

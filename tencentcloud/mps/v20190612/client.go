@@ -373,6 +373,60 @@ func (c *Client) BatchStopStreamLinkFlowWithContext(ctx context.Context, request
     return
 }
 
+func NewChangeVoiceRequest() (request *ChangeVoiceRequest) {
+    request = &ChangeVoiceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "ChangeVoice")
+    
+    
+    return
+}
+
+func NewChangeVoiceResponse() (response *ChangeVoiceResponse) {
+    response = &ChangeVoiceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ChangeVoice
+// 同步音色转换，根据输入音频和指定音色将输入音频转换为指定音色
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_STATE = "InvalidParameter.State"
+func (c *Client) ChangeVoice(request *ChangeVoiceRequest) (response *ChangeVoiceResponse, err error) {
+    return c.ChangeVoiceWithContext(context.Background(), request)
+}
+
+// ChangeVoice
+// 同步音色转换，根据输入音频和指定音色将输入音频转换为指定音色
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_STATE = "InvalidParameter.State"
+func (c *Client) ChangeVoiceWithContext(ctx context.Context, request *ChangeVoiceRequest) (response *ChangeVoiceResponse, err error) {
+    if request == nil {
+        request = NewChangeVoiceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "ChangeVoice")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ChangeVoice require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewChangeVoiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCloneViralRequest() (request *CloneViralRequest) {
     request = &CloneViralRequest{
         BaseRequest: &tchttp.BaseRequest{},

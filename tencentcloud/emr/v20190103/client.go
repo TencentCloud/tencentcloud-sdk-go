@@ -3193,6 +3193,58 @@ func (c *Client) DescribeKyuubiQueryInfoWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeMetaDBInfoRequest() (request *DescribeMetaDBInfoRequest) {
+    request = &DescribeMetaDBInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("emr", APIVersion, "DescribeMetaDBInfo")
+    
+    
+    return
+}
+
+func NewDescribeMetaDBInfoResponse() (response *DescribeMetaDBInfoResponse) {
+    response = &DescribeMetaDBInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMetaDBInfo
+// 集群metadb数据
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+//  UNAUTHORIZEDOPERATION_APPIDMISMATCHED = "UnauthorizedOperation.AppIdMismatched"
+func (c *Client) DescribeMetaDBInfo(request *DescribeMetaDBInfoRequest) (response *DescribeMetaDBInfoResponse, err error) {
+    return c.DescribeMetaDBInfoWithContext(context.Background(), request)
+}
+
+// DescribeMetaDBInfo
+// 集群metadb数据
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+//  UNAUTHORIZEDOPERATION_APPIDMISMATCHED = "UnauthorizedOperation.AppIdMismatched"
+func (c *Client) DescribeMetaDBInfoWithContext(ctx context.Context, request *DescribeMetaDBInfoRequest) (response *DescribeMetaDBInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeMetaDBInfoRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "DescribeMetaDBInfo")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMetaDBInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMetaDBInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeNodeDataDisksRequest() (request *DescribeNodeDataDisksRequest) {
     request = &DescribeNodeDataDisksRequest{
         BaseRequest: &tchttp.BaseRequest{},

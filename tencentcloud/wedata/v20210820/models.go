@@ -3267,77 +3267,81 @@ func (r *CheckTaskNameExistResponse) FromJsonString(s string) error {
 }
 
 type CodeTemplateDetail struct {
-	// 项目id
+	// <p>项目id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 模版名称
+	// <p>模版名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CodeTemplateName *string `json:"CodeTemplateName,omitnil,omitempty" name:"CodeTemplateName"`
 
-	// 任务类型
+	// <p>任务类型</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskType *int64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
-	// 代码模版描述
+	// <p>代码模版描述</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CodeTemplateDesc *string `json:"CodeTemplateDesc,omitnil,omitempty" name:"CodeTemplateDesc"`
 
-	// 文件夹id
+	// <p>文件夹id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FolderId *string `json:"FolderId,omitnil,omitempty" name:"FolderId"`
 
-	// 文件夹名称
+	// <p>文件夹名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FolderName *string `json:"FolderName,omitnil,omitempty" name:"FolderName"`
 
-	// 责任人名称
+	// <p>责任人名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InCharge *string `json:"InCharge,omitnil,omitempty" name:"InCharge"`
 
-	// 责任人id
+	// <p>责任人id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InChargeId *string `json:"InChargeId,omitnil,omitempty" name:"InChargeId"`
 
-	// 扩展信息
+	// <p>扩展信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ext *TaskExtDsVO `json:"Ext,omitnil,omitempty" name:"Ext"`
 
-	// 模版id
+	// <p>模版id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CodeTemplateId *string `json:"CodeTemplateId,omitnil,omitempty" name:"CodeTemplateId"`
 
-	// 最后更新时间
+	// <p>最后更新时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastUpdateTime *string `json:"LastUpdateTime,omitnil,omitempty" name:"LastUpdateTime"`
 
-	// 更新人名称
+	// <p>更新人名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateUser *string `json:"UpdateUser,omitnil,omitempty" name:"UpdateUser"`
 
-	// 更新人id
+	// <p>更新人id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateUserId *string `json:"UpdateUserId,omitnil,omitempty" name:"UpdateUserId"`
 
-	// 执行ip
+	// <p>执行ip</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BrokerIp *string `json:"BrokerIp,omitnil,omitempty" name:"BrokerIp"`
 
-	// 资源组id
+	// <p>资源组id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceGroup *string `json:"ResourceGroup,omitnil,omitempty" name:"ResourceGroup"`
 
-	// 是否提交
+	// <p>是否提交</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Submit *bool `json:"Submit,omitnil,omitempty" name:"Submit"`
 
-	// 模版脚本是否发生变化
+	// <p>模版脚本是否发生变化</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScriptChange *bool `json:"ScriptChange,omitnil,omitempty" name:"ScriptChange"`
 
-	// 代码模版脚本，base64编码返回
+	// <p>代码模版脚本，base64编码返回</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// <p>用户对该资源的最高权限</p><p>枚举值：</p><ul><li>NO_PERMISSIONS： 无权限</li><li>CAN_VIEW： 只读权限</li><li>CAN_MANAGE： 管理权限</li></ul>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Privilege *string `json:"Privilege,omitnil,omitempty" name:"Privilege"`
 }
 
 type CollectionFolderOpsDto struct {
@@ -10299,98 +10303,93 @@ func (r *DescribeBaseBizCatalogsResponse) FromJsonString(s string) error {
 }
 
 type DescribeBatchOperateTaskDTO struct {
-	// 任务ID
+	// <p>任务ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 任务名
+	// <p>任务名</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
 
-	// 工作流Id
+	// <p>工作流Id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
 
-	// 工作流名
+	// <p>工作流名</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkflowName *string `json:"WorkflowName,omitnil,omitempty" name:"WorkflowName"`
 
-	// 状态
+	// <p>状态</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 任务ID
+	// <p>任务ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskTypeId *uint64 `json:"TaskTypeId,omitnil,omitempty" name:"TaskTypeId"`
 
-	// 任务类型
+	// <p>任务类型</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskTypeDesc *string `json:"TaskTypeDesc,omitnil,omitempty" name:"TaskTypeDesc"`
 
-	// 文件夹名
+	// <p>文件夹名</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FolderName *string `json:"FolderName,omitnil,omitempty" name:"FolderName"`
 
-	// 文件夹ID
+	// <p>文件夹ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FolderId *string `json:"FolderId,omitnil,omitempty" name:"FolderId"`
 
-	// 负责人
+	// <p>负责人</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InCharge *string `json:"InCharge,omitnil,omitempty" name:"InCharge"`
 
-	// 是否提交
+	// <p>是否提交</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Submit *uint64 `json:"Submit,omitnil,omitempty" name:"Submit"`
 
-	// 引擎：
-	// presto\SparkJob\SparkSql
+	// <p>引擎：<br>presto\SparkJob\SparkSql</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataEngine *string `json:"DataEngine,omitnil,omitempty" name:"DataEngine"`
 
-	// 更新时间
+	// <p>更新时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 创造时间
+	// <p>创造时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 周期类型D天周期
-	// H小时
-	// Ccrontab类型
-	// I分钟
-	// O一次性
-	// Y年
-	// R用户驱动
-	// W周
-	// M月
+	// <p>周期类型D天周期<br>H小时<br>Ccrontab类型<br>I分钟<br>O一次性<br>Y年<br>R用户驱动<br>W周<br>M月</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CycleUnit *string `json:"CycleUnit,omitnil,omitempty" name:"CycleUnit"`
 
-	// 调度计划
+	// <p>调度计划</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScheduleDesc *string `json:"ScheduleDesc,omitnil,omitempty" name:"ScheduleDesc"`
 
-	// 数据源ID
+	// <p>数据源ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DatasourceId *string `json:"DatasourceId,omitnil,omitempty" name:"DatasourceId"`
 
-	// 数据源类型
+	// <p>数据源类型</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DatasourceType *string `json:"DatasourceType,omitnil,omitempty" name:"DatasourceType"`
 
-	// 引擎名称
+	// <p>引擎名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ComputeResource *string `json:"ComputeResource,omitnil,omitempty" name:"ComputeResource"`
 
-	// dlc地域
+	// <p>dlc地域</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DlcRegion *string `json:"DlcRegion,omitnil,omitempty" name:"DlcRegion"`
 
-	// 资源组或自定义
+	// <p>资源组或自定义</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsInherit *string `json:"IsInherit,omitnil,omitempty" name:"IsInherit"`
+
+	// <p>用户对该资源的最高权限</p><p>枚举值：</p><ul><li>NO_PERMISSIONS： 无权限</li><li>CAN_VIEW： 只读权限</li><li>CAN_MANAGE： 管理权限</li></ul>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Privilege *string `json:"Privilege,omitnil,omitempty" name:"Privilege"`
 }
 
 type DescribeBatchOperateTaskPage struct {
@@ -16734,69 +16733,45 @@ func (r *DescribeParentTaskResponse) FromJsonString(s string) error {
 }
 
 type DescribePendingSubmitTaskInfo struct {
-	// 任务编号
+	// <p>任务编号</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 任务名称
+	// <p>任务名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
 
-	// 修改类型
+	// <p>修改类型</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModifyType *string `json:"ModifyType,omitnil,omitempty" name:"ModifyType"`
 
-	// 任务状态
+	// <p>任务状态</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskStatus *string `json:"TaskStatus,omitnil,omitempty" name:"TaskStatus"`
 
-	// 提交预检查（Y/N）
+	// <p>提交预检查（Y/N）</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubmitPreCheck *string `json:"SubmitPreCheck,omitnil,omitempty" name:"SubmitPreCheck"`
 
-	// 提交预检查提交可能会失败的原因
+	// <p>提交预检查提交可能会失败的原因</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubmitPreCheckDetailList []*TaskSubmitPreCheckDetailInfo `json:"SubmitPreCheckDetailList,omitnil,omitempty" name:"SubmitPreCheckDetailList"`
 
-	// 资源组编号
+	// <p>资源组编号</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExecutorGroupId *string `json:"ExecutorGroupId,omitnil,omitempty" name:"ExecutorGroupId"`
 
-	// 资源组名称
+	// <p>资源组名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExecutorGroupName *string `json:"ExecutorGroupName,omitnil,omitempty" name:"ExecutorGroupName"`
 
-	// <p>任务类型id，取值范围：</p>
-	// <ul>
-	// <li>26 离线集成任务</li>
-	// <li>30 Python任务</li>
-	// <li>31 PySpark任务</li>
-	// <li>34 HiveSQL任务</li>
-	// <li>35 Shell任务</li>
-	// <li>36 SparkSQL任务</li>
-	// <li>21 JdbcSQL任务</li>
-	// <li>23 TDSQL-PostgreSQL任务</li>
-	// <li>32 DLCSQL任务</li>
-	// <li>33 Impala任务</li>
-	// <li>41 Kettle任务</li>
-	// <li>42 Tchouse-X任务</li>
-	// <li>43 TCHouse-X SQL任务</li>
-	// <li>46 DLCSpark任务</li>
-	// <li>50 DLC-PySpark任务</li>
-	// <li>47 TiOne任务</li>
-	// <li>48 Trino任务</li>
-	// <li>39 Spark任务</li>
-	// <li>92 MapReduce任务</li>
-	// <li>38 Shell表单模式任务</li>
-	// <li>130 BranchNode任务</li>
-	// <li>131 MergeNode任务</li>
-	// <li>132 Notebook任务</li>
-	// <li>133 SSH任务</li>
-	// <li>134 StarRocks任务</li>
-	// <li>137 For-each任务</li>
-	// </ul>
+	// <p>任务类型id，取值范围：</p><ul><li>26 离线集成任务</li><li>30 Python任务</li><li>31 PySpark任务</li><li>34 HiveSQL任务</li><li>35 Shell任务</li><li>36 SparkSQL任务</li><li>21 JdbcSQL任务</li><li>23 TDSQL-PostgreSQL任务</li><li>32 DLCSQL任务</li><li>33 Impala任务</li><li>41 Kettle任务</li><li>42 Tchouse-X任务</li><li>43 TCHouse-X SQL任务</li><li>46 DLCSpark任务</li><li>50 DLC-PySpark任务</li><li>47 TiOne任务</li><li>48 Trino任务</li><li>39 Spark任务</li><li>92 MapReduce任务</li><li>38 Shell表单模式任务</li><li>130 BranchNode任务</li><li>131 MergeNode任务</li><li>132 Notebook任务</li><li>133 SSH任务</li><li>134 StarRocks任务</li><li>137 For-each任务</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskTypeId *int64 `json:"TaskTypeId,omitnil,omitempty" name:"TaskTypeId"`
+
+	// <p>用户对该资源的最高权限</p><p>枚举值：</p><ul><li>NO_PERMISSIONS： 无权限</li><li>CAN_VIEW： 只读权限</li><li>CAN_MANAGE： 管理权限</li></ul>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Privilege *string `json:"Privilege,omitnil,omitempty" name:"Privilege"`
 }
 
 // Predefined struct for user
@@ -26087,49 +26062,53 @@ func (r *FindAllFolderResponse) FromJsonString(s string) error {
 }
 
 type FolderDsDto struct {
-	// 文件夹id
+	// <p>文件夹id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 文件夹名称
+	// <p>文件夹名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 所属项目id
+	// <p>所属项目id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 更新时间
+	// <p>更新时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 父文件夹id
+	// <p>父文件夹id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParentsFolderId *string `json:"ParentsFolderId,omitnil,omitempty" name:"ParentsFolderId"`
 
-	// 工作流总数
+	// <p>工作流总数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
-	// 工作流列表
+	// <p>工作流列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Workflows []*WorkflowCanvasOpsDto `json:"Workflows,omitnil,omitempty" name:"Workflows"`
 
-	// 子文件夹总数
+	// <p>子文件夹总数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalFolders *int64 `json:"TotalFolders,omitnil,omitempty" name:"TotalFolders"`
 
-	// 子文件夹列表
+	// <p>子文件夹列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Folders []*FolderDsDto `json:"Folders,omitnil,omitempty" name:"Folders"`
 
-	// 搜索类型
+	// <p>搜索类型</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FindType *string `json:"FindType,omitnil,omitempty" name:"FindType"`
+
+	// <p>用户对该资源的最高权限</p><p>枚举值：</p><ul><li>NO_PERMISSIONS： 无权限</li><li>CAN_VIEW： 只读权限</li><li>CAN_MANAGE： 管理权限</li></ul>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Privilege *string `json:"Privilege,omitnil,omitempty" name:"Privilege"`
 }
 
 type FolderOpsDto struct {
@@ -28866,6 +28845,10 @@ type InstanceOpsDto struct {
 	// <p>代理任务类型（仅 嵌套场景使用，非 嵌套 场景为 null）</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProxyTaskType *TaskTypeOpsDto `json:"ProxyTaskType,omitnil,omitempty" name:"ProxyTaskType"`
+
+	// <p>权限</p><p>枚举值：</p><ul><li>CAN_MANAGE： 可管理</li><li>CAN_VIEW： 可见</li><li>NO_PERMISSIONS： 无权限</li></ul>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Privilege *string `json:"Privilege,omitnil,omitempty" name:"Privilege"`
 }
 
 type InstanceOpsInfoPage struct {
@@ -30934,6 +30917,10 @@ type MakePlanOpsDto struct {
 	// <p>指定时间段补录生效日，星期一到星期日，1-7</p><p>枚举值：</p><ul><li>星期一： 1</li><li>星期二： 2</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RunScheduleRangeWeekDays []*int64 `json:"RunScheduleRangeWeekDays,omitnil,omitempty" name:"RunScheduleRangeWeekDays"`
+
+	// <p>资源权限</p><p>枚举值：</p><ul><li>NO_PERMISSIONS： 无权限</li><li>CAN_VIEW： 可见</li><li>CAN_MANAGE： 可管理</li></ul>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Privilege *string `json:"Privilege,omitnil,omitempty" name:"Privilege"`
 }
 
 type MakePlanOpsDtoCollection struct {
@@ -31109,6 +31096,10 @@ type ManualTriggerRecordOpsDto struct {
 	// <p>数据时间列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScheduleTimeList []*string `json:"ScheduleTimeList,omitnil,omitempty" name:"ScheduleTimeList"`
+
+	// <p>对象权限</p><p>枚举值：</p><ul><li>CAN_VIEW： 只读权限</li><li>CAN_MANAGE： 管理权限</li><li>NO_PERMISSIONS： 无权限</li></ul>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Privilege *string `json:"Privilege,omitnil,omitempty" name:"Privilege"`
 }
 
 type ManualTriggerRecordOpsDtoPage struct {
@@ -42205,6 +42196,10 @@ type TaskDsDTO struct {
 	// <p>任务最后更新时间戳</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastUpdateTimestamp *uint64 `json:"LastUpdateTimestamp,omitnil,omitempty" name:"LastUpdateTimestamp"`
+
+	// <p>用户对该资源的最高权限</p><p>枚举值：</p><ul><li>NO_PERMISSIONS： 无权限</li><li>CAN_VIEW： 只读权限</li><li>CAN_MANAGE： 管理权限</li></ul>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Privilege *string `json:"Privilege,omitnil,omitempty" name:"Privilege"`
 }
 
 type TaskExtDsVO struct {
@@ -43113,6 +43108,10 @@ type TaskOpsDto struct {
 	// <p>代理任务类型ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProxyTaskTypeId *int64 `json:"ProxyTaskTypeId,omitnil,omitempty" name:"ProxyTaskTypeId"`
+
+	// <p>对象权限</p><p>枚举值：</p><ul><li>CAN_MANAGE： 管理权限</li><li>CAN_VIEW： 只读权限</li><li>NO_PERMISSIONS： 无权限</li></ul>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Privilege *string `json:"Privilege,omitnil,omitempty" name:"Privilege"`
 }
 
 type TaskScriptContent struct {
@@ -45275,65 +45274,69 @@ type Workflow struct {
 }
 
 type WorkflowCanvasOpsDto struct {
-	// 工作流id
+	// <p>工作流id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
 
-	// 工作流详情描述
+	// <p>工作流详情描述</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkflowDesc *string `json:"WorkflowDesc,omitnil,omitempty" name:"WorkflowDesc"`
 
-	// 工作流名称
+	// <p>工作流名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkflowName *string `json:"WorkflowName,omitnil,omitempty" name:"WorkflowName"`
 
-	// 所属文件夹id
+	// <p>所属文件夹id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FolderId *string `json:"FolderId,omitnil,omitempty" name:"FolderId"`
 
-	// 所属文件夹ids
+	// <p>所属文件夹ids</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FolderIds []*string `json:"FolderIds,omitnil,omitempty" name:"FolderIds"`
 
-	// 任务列表
+	// <p>任务列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tasks []*TaskOpsDto `json:"Tasks,omitnil,omitempty" name:"Tasks"`
 
-	// 任务依赖边列表
+	// <p>任务依赖边列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Links []*LinkOpsDto `json:"Links,omitnil,omitempty" name:"Links"`
 
-	// 工作流所属用户分组id,若有多个分号隔开: a;b;c
+	// <p>工作流所属用户分组id,若有多个分号隔开: a;b;c</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserGroupId *string `json:"UserGroupId,omitnil,omitempty" name:"UserGroupId"`
 
-	// 工作流所属用户分组名称,若有多个分号隔开: a;b;c
+	// <p>工作流所属用户分组名称,若有多个分号隔开: a;b;c</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserGroupName *string `json:"UserGroupName,omitnil,omitempty" name:"UserGroupName"`
 
-	// 项目id
+	// <p>项目id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 项目标识
+	// <p>项目标识</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectIdent *string `json:"ProjectIdent,omitnil,omitempty" name:"ProjectIdent"`
 
-	// 项目名称
+	// <p>项目名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectName *string `json:"ProjectName,omitnil,omitempty" name:"ProjectName"`
 
-	// 责任人
+	// <p>责任人</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Owner *string `json:"Owner,omitnil,omitempty" name:"Owner"`
 
-	// 责任人UserId
+	// <p>责任人UserId</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OwnerId *string `json:"OwnerId,omitnil,omitempty" name:"OwnerId"`
 
-	// 工作流类型，周期cycle，手动manual
+	// <p>工作流类型，周期cycle，手动manual</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkflowType *string `json:"WorkflowType,omitnil,omitempty" name:"WorkflowType"`
+
+	// <p>用户对该资源的最高权限</p><p>枚举值：</p><ul><li>NO_PERMISSIONS： 无权限</li><li>CAN_VIEW： 只读权限</li><li>CAN_MANAGE： 管理权限</li></ul>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Privilege *string `json:"Privilege,omitnil,omitempty" name:"Privilege"`
 }
 
 type WorkflowDsDTO struct {
@@ -45416,6 +45419,10 @@ type WorkflowDsDTO struct {
 	// <p>运行账号名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExecuteUserName *string `json:"ExecuteUserName,omitnil,omitempty" name:"ExecuteUserName"`
+
+	// <p>用户对该资源的最高权限</p><p>枚举值：</p><ul><li>NO_PERMISSIONS： 无权限</li><li>CAN_VIEW： 只读权限</li><li>CAN_MANAGE： 管理权限</li></ul>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Privilege *string `json:"Privilege,omitnil,omitempty" name:"Privilege"`
 }
 
 type WorkflowExtOpsDto struct {
@@ -45492,6 +45499,10 @@ type WorkflowExtOpsDto struct {
 	// <p>引用该手动工作流的嵌套工作流任务ID列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NestedBySpTaskIds []*string `json:"NestedBySpTaskIds,omitnil,omitempty" name:"NestedBySpTaskIds"`
+
+	// <p>权限</p><p>枚举值：</p><ul><li>CAN_MANAGE： 可管理</li><li>CAN_VIEW： 可见</li><li>NO_PERMISSION： 无权限</li></ul>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Privilege *string `json:"Privilege,omitnil,omitempty" name:"Privilege"`
 }
 
 type WorkflowExtOpsDtoPage struct {
@@ -45505,105 +45516,109 @@ type WorkflowExtOpsDtoPage struct {
 }
 
 type WorkflowScheduleDtoDs struct {
-	// 项目ID
+	// <p>项目ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 工作流ID
+	// <p>工作流ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 创建人
+	// <p>创建人</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Creater *string `json:"Creater,omitnil,omitempty" name:"Creater"`
 
-	// 修改时间
+	// <p>修改时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 
-	// 延迟时间
+	// <p>延迟时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DelayTime *int64 `json:"DelayTime,omitnil,omitempty" name:"DelayTime"`
 
-	// 启动时间
+	// <p>启动时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartupTime *int64 `json:"StartupTime,omitnil,omitempty" name:"StartupTime"`
 
-	// 任务依赖
+	// <p>任务依赖</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SelfDepend *string `json:"SelfDepend,omitnil,omitempty" name:"SelfDepend"`
 
-	// 开始时间
+	// <p>开始时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间
+	// <p>结束时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 指定运行时间
+	// <p>指定运行时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskAction *string `json:"TaskAction,omitnil,omitempty" name:"TaskAction"`
 
-	// 调度周期时间单位
+	// <p>调度周期时间单位</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CycleType *string `json:"CycleType,omitnil,omitempty" name:"CycleType"`
 
-	// 调度周期
+	// <p>调度周期</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CycleStep *int64 `json:"CycleStep,omitnil,omitempty" name:"CycleStep"`
 
-	// Cron表达式
+	// <p>Cron表达式</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CrontabExpression *string `json:"CrontabExpression,omitnil,omitempty" name:"CrontabExpression"`
 
-	// 执行时间左闭区间
+	// <p>执行时间左闭区间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExecutionStartTime *string `json:"ExecutionStartTime,omitnil,omitempty" name:"ExecutionStartTime"`
 
-	// 执行时间右闭区间
+	// <p>执行时间右闭区间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExecutionEndTime *string `json:"ExecutionEndTime,omitnil,omitempty" name:"ExecutionEndTime"`
 
-	// 实例初始化策略
+	// <p>实例初始化策略</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceInitStrategy *string `json:"InstanceInitStrategy,omitnil,omitempty" name:"InstanceInitStrategy"`
 
-	// 工作流依赖
+	// <p>工作流依赖</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DependencyWorkflow *string `json:"DependencyWorkflow,omitnil,omitempty" name:"DependencyWorkflow"`
 
-	// 调度计划
+	// <p>调度计划</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SchedulerDesc *string `json:"SchedulerDesc,omitnil,omitempty" name:"SchedulerDesc"`
 
-	// 工作流首次提交时间
+	// <p>工作流首次提交时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FirstSubmitTime *string `json:"FirstSubmitTime,omitnil,omitempty" name:"FirstSubmitTime"`
 
-	// 工作流最近提交时间
+	// <p>工作流最近提交时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LatestSubmitTime *string `json:"LatestSubmitTime,omitnil,omitempty" name:"LatestSubmitTime"`
 
-	// 日历调度是否开启
+	// <p>日历调度是否开启</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CalendarOpen *string `json:"CalendarOpen,omitnil,omitempty" name:"CalendarOpen"`
 
-	// 日历调度名称
+	// <p>日历调度名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CalendarName *string `json:"CalendarName,omitnil,omitempty" name:"CalendarName"`
 
-	// 日历调度id
+	// <p>日历调度id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CalendarId *string `json:"CalendarId,omitnil,omitempty" name:"CalendarId"`
 
-	// 时区配置
+	// <p>时区配置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScheduleTimeZone *string `json:"ScheduleTimeZone,omitnil,omitempty" name:"ScheduleTimeZone"`
+
+	// <p>用户对该资源的最高权限</p><p>枚举值：</p><ul><li>NO_PERMISSIONS： 无权限</li><li>CAN_VIEW： 只读权限</li><li>CAN_MANAGE： 管理权限</li></ul>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Privilege *string `json:"Privilege,omitnil,omitempty" name:"Privilege"`
 }
 
 type WorkflowSchedulerOpsDto struct {
