@@ -1461,134 +1461,140 @@ func (r *CreateAlarmNoticeResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateAlarmPolicyRequestParams struct {
-	// 固定值，为"monitor"
+	// <p>固定值，为&quot;monitor&quot;</p>
 	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
 
-	// 策略名称，不超过60字符
+	// <p>策略名称，不超过60字符</p>
 	PolicyName *string `json:"PolicyName,omitnil,omitempty" name:"PolicyName"`
 
-	// 监控类型 MT_QCE=云产品监控
+	// <p>监控类型 MT_QCE=云产品监控</p>
 	MonitorType *string `json:"MonitorType,omitnil,omitempty" name:"MonitorType"`
 
-	// 告警策略类型，由 [DescribeAllNamespaces](https://cloud.tencent.com/document/product/248/48683) 获得。对于云产品监控，取接口出参的 QceNamespacesNew.N.Id，例如 cvm_device
+	// <p>告警策略类型，由 <a href="https://cloud.tencent.com/document/product/248/48683">DescribeAllNamespaces</a> 获得。对于云产品监控，取接口出参的 QceNamespacesNew.N.Id，例如 cvm_device</p>
 	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
 
-	// 备注，不超过100字符，仅支持中英文、数字、下划线、-
+	// <p>备注，不超过100字符，仅支持中英文、数字、下划线、-</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 是否启用 0=停用 1=启用，可不传 默认为1
+	// <p>是否启用 0=停用 1=启用，可不传 默认为1</p>
 	Enable *int64 `json:"Enable,omitnil,omitempty" name:"Enable"`
 
-	// 项目 Id，对于区分项目的产品必须传入非 -1 的值。 -1=无项目 0=默认项目，如不传 默认为 -1。支持的项目 Id 可以在控制台 [账号中心-项目管理](https://console.cloud.tencent.com/project) 中查看。
+	// <p>项目 Id，对于区分项目的产品必须传入非 -1 的值。 -1=无项目 0=默认项目，如不传 默认为 -1。支持的项目 Id 可以在控制台 <a href="https://console.cloud.tencent.com/project">账号中心-项目管理</a> 中查看。</p>
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 触发条件模板 Id，该参数与 Condition 参数二选一。如果策略绑定触发条件模板，则传该参数；否则不传该参数，而是传 Condition 参数。触发条件模板 Id 可以从 [DescribeConditionsTemplateList](https://cloud.tencent.com/document/api/248/70250) 接口获取。
+	// <p>触发条件模板 Id，该参数与 Condition 参数二选一。如果策略绑定触发条件模板，则传该参数；否则不传该参数，而是传 Condition 参数。触发条件模板 Id 可以从 <a href="https://cloud.tencent.com/document/api/248/70250">DescribeConditionsTemplateList</a> 接口获取。</p>
 	ConditionTemplateId *int64 `json:"ConditionTemplateId,omitnil,omitempty" name:"ConditionTemplateId"`
 
-	// 指标触发条件，支持的指标可以从 [DescribeAlarmMetrics](https://cloud.tencent.com/document/product/248/51283) 查询。
+	// <p>指标触发条件，支持的指标可以从 <a href="https://cloud.tencent.com/document/product/248/51283">DescribeAlarmMetrics</a> 查询。</p>
 	Condition *AlarmPolicyCondition `json:"Condition,omitnil,omitempty" name:"Condition"`
 
-	// 事件触发条件，支持的事件可以从 [DescribeAlarmEvents](https://cloud.tencent.com/document/product/248/51284) 查询。
+	// <p>事件触发条件，支持的事件可以从 <a href="https://cloud.tencent.com/document/product/248/51284">DescribeAlarmEvents</a> 查询。</p>
 	EventCondition *AlarmPolicyEventCondition `json:"EventCondition,omitnil,omitempty" name:"EventCondition"`
 
-	// 通知规则 Id 列表，由 [DescribeAlarmNotices](https://cloud.tencent.com/document/product/248/51280) 获得
+	// <p>通知规则 Id 列表，由 <a href="https://cloud.tencent.com/document/product/248/51280">DescribeAlarmNotices</a> 获得</p>
 	NoticeIds []*string `json:"NoticeIds,omitnil,omitempty" name:"NoticeIds"`
 
-	// 触发任务列表
+	// <p>触发任务列表</p>
 	TriggerTasks []*AlarmPolicyTriggerTask `json:"TriggerTasks,omitnil,omitempty" name:"TriggerTasks"`
 
-	// 全局过滤条件
+	// <p>全局过滤条件</p>
 	Filter *AlarmPolicyFilter `json:"Filter,omitnil,omitempty" name:"Filter"`
 
-	// 聚合维度列表，指定按哪些维度 key 来做 group by
+	// <p>聚合维度列表，指定按哪些维度 key 来做 group by</p>
 	GroupBy []*string `json:"GroupBy,omitnil,omitempty" name:"GroupBy"`
 
-	// 模板绑定的标签
+	// <p>是否绑定全部对象。如果是的话，不需要再传filter或者调用BindPolicyObject，0=否，1=是，默认为否</p><p>取值范围：[0, 1]</p><p>默认值：0</p><p>不是所有策略类型都支持绑定全部对象</p>
+	IsBindAll *int64 `json:"IsBindAll,omitnil,omitempty" name:"IsBindAll"`
+
+	// <p>模板绑定的标签</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 日志告警信息
+	// <p>日志告警信息</p>
 	LogAlarmReqInfo *LogAlarmReq `json:"LogAlarmReqInfo,omitnil,omitempty" name:"LogAlarmReqInfo"`
 
-	// 告警分级通知规则配置
+	// <p>告警分级通知规则配置</p>
 	HierarchicalNotices []*AlarmHierarchicalNotice `json:"HierarchicalNotices,omitnil,omitempty" name:"HierarchicalNotices"`
 
-	// 迁移策略专用字段，0-走鉴权逻辑，1-跳过鉴权逻辑
+	// <p>迁移策略专用字段，0-走鉴权逻辑，1-跳过鉴权逻辑</p>
 	MigrateFlag *int64 `json:"MigrateFlag,omitnil,omitempty" name:"MigrateFlag"`
 
-	// 事件配置的告警
+	// <p>事件配置的告警</p>
 	EbSubject *string `json:"EbSubject,omitnil,omitempty" name:"EbSubject"`
 
-	// 附加告警内容
+	// <p>附加告警内容</p>
 	AdditionalAlarmContent *string `json:"AdditionalAlarmContent,omitnil,omitempty" name:"AdditionalAlarmContent"`
 
-	// 通知模板绑定信息
+	// <p>通知模板绑定信息</p>
 	NoticeContentTmplBindInfos []*NoticeContentTmplBindInfo `json:"NoticeContentTmplBindInfos,omitnil,omitempty" name:"NoticeContentTmplBindInfos"`
 }
 
 type CreateAlarmPolicyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 固定值，为"monitor"
+	// <p>固定值，为&quot;monitor&quot;</p>
 	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
 
-	// 策略名称，不超过60字符
+	// <p>策略名称，不超过60字符</p>
 	PolicyName *string `json:"PolicyName,omitnil,omitempty" name:"PolicyName"`
 
-	// 监控类型 MT_QCE=云产品监控
+	// <p>监控类型 MT_QCE=云产品监控</p>
 	MonitorType *string `json:"MonitorType,omitnil,omitempty" name:"MonitorType"`
 
-	// 告警策略类型，由 [DescribeAllNamespaces](https://cloud.tencent.com/document/product/248/48683) 获得。对于云产品监控，取接口出参的 QceNamespacesNew.N.Id，例如 cvm_device
+	// <p>告警策略类型，由 <a href="https://cloud.tencent.com/document/product/248/48683">DescribeAllNamespaces</a> 获得。对于云产品监控，取接口出参的 QceNamespacesNew.N.Id，例如 cvm_device</p>
 	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
 
-	// 备注，不超过100字符，仅支持中英文、数字、下划线、-
+	// <p>备注，不超过100字符，仅支持中英文、数字、下划线、-</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 是否启用 0=停用 1=启用，可不传 默认为1
+	// <p>是否启用 0=停用 1=启用，可不传 默认为1</p>
 	Enable *int64 `json:"Enable,omitnil,omitempty" name:"Enable"`
 
-	// 项目 Id，对于区分项目的产品必须传入非 -1 的值。 -1=无项目 0=默认项目，如不传 默认为 -1。支持的项目 Id 可以在控制台 [账号中心-项目管理](https://console.cloud.tencent.com/project) 中查看。
+	// <p>项目 Id，对于区分项目的产品必须传入非 -1 的值。 -1=无项目 0=默认项目，如不传 默认为 -1。支持的项目 Id 可以在控制台 <a href="https://console.cloud.tencent.com/project">账号中心-项目管理</a> 中查看。</p>
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 触发条件模板 Id，该参数与 Condition 参数二选一。如果策略绑定触发条件模板，则传该参数；否则不传该参数，而是传 Condition 参数。触发条件模板 Id 可以从 [DescribeConditionsTemplateList](https://cloud.tencent.com/document/api/248/70250) 接口获取。
+	// <p>触发条件模板 Id，该参数与 Condition 参数二选一。如果策略绑定触发条件模板，则传该参数；否则不传该参数，而是传 Condition 参数。触发条件模板 Id 可以从 <a href="https://cloud.tencent.com/document/api/248/70250">DescribeConditionsTemplateList</a> 接口获取。</p>
 	ConditionTemplateId *int64 `json:"ConditionTemplateId,omitnil,omitempty" name:"ConditionTemplateId"`
 
-	// 指标触发条件，支持的指标可以从 [DescribeAlarmMetrics](https://cloud.tencent.com/document/product/248/51283) 查询。
+	// <p>指标触发条件，支持的指标可以从 <a href="https://cloud.tencent.com/document/product/248/51283">DescribeAlarmMetrics</a> 查询。</p>
 	Condition *AlarmPolicyCondition `json:"Condition,omitnil,omitempty" name:"Condition"`
 
-	// 事件触发条件，支持的事件可以从 [DescribeAlarmEvents](https://cloud.tencent.com/document/product/248/51284) 查询。
+	// <p>事件触发条件，支持的事件可以从 <a href="https://cloud.tencent.com/document/product/248/51284">DescribeAlarmEvents</a> 查询。</p>
 	EventCondition *AlarmPolicyEventCondition `json:"EventCondition,omitnil,omitempty" name:"EventCondition"`
 
-	// 通知规则 Id 列表，由 [DescribeAlarmNotices](https://cloud.tencent.com/document/product/248/51280) 获得
+	// <p>通知规则 Id 列表，由 <a href="https://cloud.tencent.com/document/product/248/51280">DescribeAlarmNotices</a> 获得</p>
 	NoticeIds []*string `json:"NoticeIds,omitnil,omitempty" name:"NoticeIds"`
 
-	// 触发任务列表
+	// <p>触发任务列表</p>
 	TriggerTasks []*AlarmPolicyTriggerTask `json:"TriggerTasks,omitnil,omitempty" name:"TriggerTasks"`
 
-	// 全局过滤条件
+	// <p>全局过滤条件</p>
 	Filter *AlarmPolicyFilter `json:"Filter,omitnil,omitempty" name:"Filter"`
 
-	// 聚合维度列表，指定按哪些维度 key 来做 group by
+	// <p>聚合维度列表，指定按哪些维度 key 来做 group by</p>
 	GroupBy []*string `json:"GroupBy,omitnil,omitempty" name:"GroupBy"`
 
-	// 模板绑定的标签
+	// <p>是否绑定全部对象。如果是的话，不需要再传filter或者调用BindPolicyObject，0=否，1=是，默认为否</p><p>取值范围：[0, 1]</p><p>默认值：0</p><p>不是所有策略类型都支持绑定全部对象</p>
+	IsBindAll *int64 `json:"IsBindAll,omitnil,omitempty" name:"IsBindAll"`
+
+	// <p>模板绑定的标签</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 日志告警信息
+	// <p>日志告警信息</p>
 	LogAlarmReqInfo *LogAlarmReq `json:"LogAlarmReqInfo,omitnil,omitempty" name:"LogAlarmReqInfo"`
 
-	// 告警分级通知规则配置
+	// <p>告警分级通知规则配置</p>
 	HierarchicalNotices []*AlarmHierarchicalNotice `json:"HierarchicalNotices,omitnil,omitempty" name:"HierarchicalNotices"`
 
-	// 迁移策略专用字段，0-走鉴权逻辑，1-跳过鉴权逻辑
+	// <p>迁移策略专用字段，0-走鉴权逻辑，1-跳过鉴权逻辑</p>
 	MigrateFlag *int64 `json:"MigrateFlag,omitnil,omitempty" name:"MigrateFlag"`
 
-	// 事件配置的告警
+	// <p>事件配置的告警</p>
 	EbSubject *string `json:"EbSubject,omitnil,omitempty" name:"EbSubject"`
 
-	// 附加告警内容
+	// <p>附加告警内容</p>
 	AdditionalAlarmContent *string `json:"AdditionalAlarmContent,omitnil,omitempty" name:"AdditionalAlarmContent"`
 
-	// 通知模板绑定信息
+	// <p>通知模板绑定信息</p>
 	NoticeContentTmplBindInfos []*NoticeContentTmplBindInfo `json:"NoticeContentTmplBindInfos,omitnil,omitempty" name:"NoticeContentTmplBindInfos"`
 }
 
@@ -1618,6 +1624,7 @@ func (r *CreateAlarmPolicyRequest) FromJsonString(s string) error {
 	delete(f, "TriggerTasks")
 	delete(f, "Filter")
 	delete(f, "GroupBy")
+	delete(f, "IsBindAll")
 	delete(f, "Tags")
 	delete(f, "LogAlarmReqInfo")
 	delete(f, "HierarchicalNotices")
@@ -1633,10 +1640,10 @@ func (r *CreateAlarmPolicyRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateAlarmPolicyResponseParams struct {
-	// 告警策略 ID
+	// <p>告警策略 ID</p>
 	PolicyId *string `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
 
-	// 可用于实例、实例组的绑定和解绑接口（[BindingPolicyObject](https://cloud.tencent.com/document/product/248/40421)、[UnBindingAllPolicyObject](https://cloud.tencent.com/document/product/248/40568)、[UnBindingPolicyObject](https://cloud.tencent.com/document/product/248/40567)）的策略 ID
+	// <p>可用于实例、实例组的绑定和解绑接口（<a href="https://cloud.tencent.com/document/product/248/40421">BindingPolicyObject</a>、<a href="https://cloud.tencent.com/document/product/248/40568">UnBindingAllPolicyObject</a>、<a href="https://cloud.tencent.com/document/product/248/40567">UnBindingPolicyObject</a>）的策略 ID</p>
 	OriginId *string `json:"OriginId,omitnil,omitempty" name:"OriginId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

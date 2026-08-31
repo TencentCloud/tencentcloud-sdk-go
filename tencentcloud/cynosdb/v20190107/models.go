@@ -6826,13 +6826,13 @@ type DescribeAccountPrivilegesRequestParams struct {
 	// 主机
 	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
 
-	// 数据库名，为*时，忽略Type/TableName, 表示修改用户全局权限；
+	// 数据库名。为*时，忽略Type/TableName，表示查询用户全局权限；不传时默认为*。
 	Db *string `json:"Db,omitnil,omitempty" name:"Db"`
 
-	// 指定数据库下的对象类型，可选"table"，"*"
+	// 指定数据库下的对象类型，可选"table"、"*"。不传时默认为*；Type为table时，必须指定TableName。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 当Type="table"时，用来指定表名
+	// 当Type="table"时，用来指定表名；Type为table时必填。
 	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
 }
 
@@ -6848,13 +6848,13 @@ type DescribeAccountPrivilegesRequest struct {
 	// 主机
 	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
 
-	// 数据库名，为*时，忽略Type/TableName, 表示修改用户全局权限；
+	// 数据库名。为*时，忽略Type/TableName，表示查询用户全局权限；不传时默认为*。
 	Db *string `json:"Db,omitnil,omitempty" name:"Db"`
 
-	// 指定数据库下的对象类型，可选"table"，"*"
+	// 指定数据库下的对象类型，可选"table"、"*"。不传时默认为*；Type为table时，必须指定TableName。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 当Type="table"时，用来指定表名
+	// 当Type="table"时，用来指定表名；Type为table时必填。
 	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
 }
 
@@ -17864,6 +17864,70 @@ func (r *ModifyClusterGlobalEncryptionResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyClusterLevelRequestParams struct {
+	// <p>集群ID</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// <p>集群级别</p>
+	ClusterLevel *string `json:"ClusterLevel,omitnil,omitempty" name:"ClusterLevel"`
+}
+
+type ModifyClusterLevelRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>集群ID</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// <p>集群级别</p>
+	ClusterLevel *string `json:"ClusterLevel,omitnil,omitempty" name:"ClusterLevel"`
+}
+
+func (r *ModifyClusterLevelRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyClusterLevelRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "ClusterLevel")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyClusterLevelRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyClusterLevelResponseParams struct {
+	// <p>任务ID</p>
+	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyClusterLevelResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyClusterLevelResponseParams `json:"Response"`
+}
+
+func (r *ModifyClusterLevelResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyClusterLevelResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyClusterNameRequestParams struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
@@ -21461,6 +21525,10 @@ type Package struct {
 	// 资源包类型
 	// CCU-计算资源包，DISK-存储资源包
 	PackageType *string `json:"PackageType,omitnil,omitempty" name:"PackageType"`
+
+	// 资源包套餐版本
+	// base-基础，common-通用，enterprise-企业
+	PackageVersion *string `json:"PackageVersion,omitnil,omitempty" name:"PackageVersion"`
 
 	// 资源包使用地域
 	// china-中国内地通用，overseas-港澳台及海外通用

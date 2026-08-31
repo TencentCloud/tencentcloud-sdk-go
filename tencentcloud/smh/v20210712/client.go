@@ -68,9 +68,11 @@ func NewCreateLibraryResponse() (response *CreateLibraryResponse) {
 // 创建 PaaS 服务媒体库
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_BILLINGREQUESTFAIL = "InternalError.BillingRequestFail"
 //  INTERNALERROR_POSTPAIDFAIL = "InternalError.PostpaidFail"
+//  INVALIDPARAMETER_TAGSREQUIRED = "InvalidParameter.TagsRequired"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_ADVANCEDSEARCHOPTION = "InvalidParameterValue.AdvancedSearchOption"
 //  INVALIDPARAMETERVALUE_BUCKETNAMEINVALID = "InvalidParameterValue.BucketNameInvalid"
@@ -95,9 +97,11 @@ func (c *Client) CreateLibrary(request *CreateLibraryRequest) (response *CreateL
 // 创建 PaaS 服务媒体库
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_BILLINGREQUESTFAIL = "InternalError.BillingRequestFail"
 //  INTERNALERROR_POSTPAIDFAIL = "InternalError.PostpaidFail"
+//  INVALIDPARAMETER_TAGSREQUIRED = "InvalidParameter.TagsRequired"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_ADVANCEDSEARCHOPTION = "InvalidParameterValue.AdvancedSearchOption"
 //  INVALIDPARAMETERVALUE_BUCKETNAMEINVALID = "InvalidParameterValue.BucketNameInvalid"
@@ -210,6 +214,7 @@ func NewDescribeLibrariesResponse() (response *DescribeLibrariesResponse) {
 // 查询 PaaS 服务媒体库列表
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 func (c *Client) DescribeLibraries(request *DescribeLibrariesRequest) (response *DescribeLibrariesResponse, err error) {
@@ -220,6 +225,7 @@ func (c *Client) DescribeLibraries(request *DescribeLibrariesRequest) (response 
 // 查询 PaaS 服务媒体库列表
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 func (c *Client) DescribeLibrariesWithContext(ctx context.Context, request *DescribeLibrariesRequest) (response *DescribeLibrariesResponse, err error) {

@@ -423,6 +423,76 @@ func (c *Client) CreateClusterWithContext(ctx context.Context, request *CreateCl
     return
 }
 
+func NewCreateScheduledActionRequest() (request *CreateScheduledActionRequest) {
+    request = &CreateScheduledActionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("thpc", APIVersion, "CreateScheduledAction")
+    
+    
+    return
+}
+
+func NewCreateScheduledActionResponse() (response *CreateScheduledActionResponse) {
+    response = &CreateScheduledActionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateScheduledAction
+// 为指定集群队列创建定时伸缩任务，按计划时间自动调整队列的节点数量。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CALLCAM = "InternalError.CallCAM"
+//  INTERNALERROR_CALLCVM = "InternalError.CallCvm"
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_NOTSUPPORTED = "InvalidParameterValue.NotSupported"
+//  INVALIDPARAMETERVALUE_PARAMETERSNOTSUPPORTED = "InvalidParameterValue.ParametersNotSupported"
+//  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  INVALIDPARAMETERVALUE_TOOSHORT = "InvalidParameterValue.TooShort"
+//  INVALIDPARAMETERVALUE_TOOSMALL = "InvalidParameterValue.TooSmall"
+//  RESOURCENOTFOUND_IMAGEID = "ResourceNotFound.ImageId"
+func (c *Client) CreateScheduledAction(request *CreateScheduledActionRequest) (response *CreateScheduledActionResponse, err error) {
+    return c.CreateScheduledActionWithContext(context.Background(), request)
+}
+
+// CreateScheduledAction
+// 为指定集群队列创建定时伸缩任务，按计划时间自动调整队列的节点数量。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CALLCAM = "InternalError.CallCAM"
+//  INTERNALERROR_CALLCVM = "InternalError.CallCvm"
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_NOTSUPPORTED = "InvalidParameterValue.NotSupported"
+//  INVALIDPARAMETERVALUE_PARAMETERSNOTSUPPORTED = "InvalidParameterValue.ParametersNotSupported"
+//  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  INVALIDPARAMETERVALUE_TOOSHORT = "InvalidParameterValue.TooShort"
+//  INVALIDPARAMETERVALUE_TOOSMALL = "InvalidParameterValue.TooSmall"
+//  RESOURCENOTFOUND_IMAGEID = "ResourceNotFound.ImageId"
+func (c *Client) CreateScheduledActionWithContext(ctx context.Context, request *CreateScheduledActionRequest) (response *CreateScheduledActionResponse, err error) {
+    if request == nil {
+        request = NewCreateScheduledActionRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "thpc", APIVersion, "CreateScheduledAction")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateScheduledAction require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateScheduledActionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateWorkspacesRequest() (request *CreateWorkspacesRequest) {
     request = &CreateWorkspacesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -803,6 +873,98 @@ func (c *Client) DeleteQueueWithContext(ctx context.Context, request *DeleteQueu
     return
 }
 
+func NewDeleteScheduledActionRequest() (request *DeleteScheduledActionRequest) {
+    request = &DeleteScheduledActionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("thpc", APIVersion, "DeleteScheduledAction")
+    
+    
+    return
+}
+
+func NewDeleteScheduledActionResponse() (response *DeleteScheduledActionResponse) {
+    response = &DeleteScheduledActionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteScheduledAction
+// 删除指定的定时伸缩任务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_NOTSUPPORTED = "InvalidParameterValue.NotSupported"
+//  INVALIDPARAMETERVALUE_PARAMETERSNOTSUPPORTED = "InvalidParameterValue.ParametersNotSupported"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  INVALIDPARAMETERVALUE_TOOSHORT = "InvalidParameterValue.TooShort"
+//  INVALIDPARAMETERVALUE_TOOSMALL = "InvalidParameterValue.TooSmall"
+//  INVALIDPARAMETERVALUE_VALUEDUPLICATED = "InvalidParameterValue.ValueDuplicated"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CLUSTERID = "ResourceNotFound.ClusterId"
+//  RESOURCENOTFOUND_QUEUE = "ResourceNotFound.Queue"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION_CLUSTERSTATUSNOTSUPPORT = "UnsupportedOperation.ClusterStatusNotSupport"
+//  UNSUPPORTEDOPERATION_QUEUENOTEMPTY = "UnsupportedOperation.QueueNotEmpty"
+func (c *Client) DeleteScheduledAction(request *DeleteScheduledActionRequest) (response *DeleteScheduledActionResponse, err error) {
+    return c.DeleteScheduledActionWithContext(context.Background(), request)
+}
+
+// DeleteScheduledAction
+// 删除指定的定时伸缩任务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_NOTSUPPORTED = "InvalidParameterValue.NotSupported"
+//  INVALIDPARAMETERVALUE_PARAMETERSNOTSUPPORTED = "InvalidParameterValue.ParametersNotSupported"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  INVALIDPARAMETERVALUE_TOOSHORT = "InvalidParameterValue.TooShort"
+//  INVALIDPARAMETERVALUE_TOOSMALL = "InvalidParameterValue.TooSmall"
+//  INVALIDPARAMETERVALUE_VALUEDUPLICATED = "InvalidParameterValue.ValueDuplicated"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CLUSTERID = "ResourceNotFound.ClusterId"
+//  RESOURCENOTFOUND_QUEUE = "ResourceNotFound.Queue"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION_CLUSTERSTATUSNOTSUPPORT = "UnsupportedOperation.ClusterStatusNotSupport"
+//  UNSUPPORTEDOPERATION_QUEUENOTEMPTY = "UnsupportedOperation.QueueNotEmpty"
+func (c *Client) DeleteScheduledActionWithContext(ctx context.Context, request *DeleteScheduledActionRequest) (response *DeleteScheduledActionResponse, err error) {
+    if request == nil {
+        request = NewDeleteScheduledActionRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "thpc", APIVersion, "DeleteScheduledAction")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteScheduledAction require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteScheduledActionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAutoScalingConfigurationRequest() (request *DescribeAutoScalingConfigurationRequest) {
     request = &DescribeAutoScalingConfigurationRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1065,6 +1227,56 @@ func (c *Client) DescribeInitNodeScriptsWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeInstanceFamiliesRequest() (request *DescribeInstanceFamiliesRequest) {
+    request = &DescribeInstanceFamiliesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("thpc", APIVersion, "DescribeInstanceFamilies")
+    
+    
+    return
+}
+
+func NewDescribeInstanceFamiliesResponse() (response *DescribeInstanceFamiliesResponse) {
+    response = &DescribeInstanceFamiliesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeInstanceFamilies
+// 查询指定集群可用的机型族列表，用于弹性伸缩配置时选择机型族。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+func (c *Client) DescribeInstanceFamilies(request *DescribeInstanceFamiliesRequest) (response *DescribeInstanceFamiliesResponse, err error) {
+    return c.DescribeInstanceFamiliesWithContext(context.Background(), request)
+}
+
+// DescribeInstanceFamilies
+// 查询指定集群可用的机型族列表，用于弹性伸缩配置时选择机型族。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+func (c *Client) DescribeInstanceFamiliesWithContext(ctx context.Context, request *DescribeInstanceFamiliesRequest) (response *DescribeInstanceFamiliesResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstanceFamiliesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "thpc", APIVersion, "DescribeInstanceFamilies")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstanceFamilies require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeInstanceFamiliesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeJobSubmitInfoRequest() (request *DescribeJobSubmitInfoRequest) {
     request = &DescribeJobSubmitInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1303,6 +1515,162 @@ func (c *Client) DescribeNodesWithContext(ctx context.Context, request *Describe
     return
 }
 
+func NewDescribeQueueAutoScalingRequest() (request *DescribeQueueAutoScalingRequest) {
+    request = &DescribeQueueAutoScalingRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("thpc", APIVersion, "DescribeQueueAutoScaling")
+    
+    
+    return
+}
+
+func NewDescribeQueueAutoScalingResponse() (response *DescribeQueueAutoScalingResponse) {
+    response = &DescribeQueueAutoScalingResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeQueueAutoScaling
+// 查询指定集群的队列弹性伸缩配置信息。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDFILTERNOTSUPPORTEDNAME = "InvalidParameterValue.InvalidFilterNotSupportedName"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
+//  INVALIDPARAMETERVALUE_TOOSMALL = "InvalidParameterValue.TooSmall"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION_PARAMETERTOOLARGE = "UnsupportedOperation.ParameterTooLarge"
+//  UNSUPPORTEDOPERATION_PARAMETERTOOSMALL = "UnsupportedOperation.ParameterTooSmall"
+func (c *Client) DescribeQueueAutoScaling(request *DescribeQueueAutoScalingRequest) (response *DescribeQueueAutoScalingResponse, err error) {
+    return c.DescribeQueueAutoScalingWithContext(context.Background(), request)
+}
+
+// DescribeQueueAutoScaling
+// 查询指定集群的队列弹性伸缩配置信息。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDFILTERNOTSUPPORTEDNAME = "InvalidParameterValue.InvalidFilterNotSupportedName"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
+//  INVALIDPARAMETERVALUE_TOOSMALL = "InvalidParameterValue.TooSmall"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION_PARAMETERTOOLARGE = "UnsupportedOperation.ParameterTooLarge"
+//  UNSUPPORTEDOPERATION_PARAMETERTOOSMALL = "UnsupportedOperation.ParameterTooSmall"
+func (c *Client) DescribeQueueAutoScalingWithContext(ctx context.Context, request *DescribeQueueAutoScalingRequest) (response *DescribeQueueAutoScalingResponse, err error) {
+    if request == nil {
+        request = NewDescribeQueueAutoScalingRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "thpc", APIVersion, "DescribeQueueAutoScaling")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeQueueAutoScaling require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeQueueAutoScalingResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeQueueAutoScalingOverviewRequest() (request *DescribeQueueAutoScalingOverviewRequest) {
+    request = &DescribeQueueAutoScalingOverviewRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("thpc", APIVersion, "DescribeQueueAutoScalingOverview")
+    
+    
+    return
+}
+
+func NewDescribeQueueAutoScalingOverviewResponse() (response *DescribeQueueAutoScalingOverviewResponse) {
+    response = &DescribeQueueAutoScalingOverviewResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeQueueAutoScalingOverview
+// 查询指定集群的队列弹性伸缩概览信息，包括期望容量、当前容量、当前动态节点数、有效定时任务数等。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDFILTERNOTSUPPORTEDNAME = "InvalidParameterValue.InvalidFilterNotSupportedName"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
+//  INVALIDPARAMETERVALUE_TOOSMALL = "InvalidParameterValue.TooSmall"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION_PARAMETERTOOLARGE = "UnsupportedOperation.ParameterTooLarge"
+//  UNSUPPORTEDOPERATION_PARAMETERTOOSMALL = "UnsupportedOperation.ParameterTooSmall"
+func (c *Client) DescribeQueueAutoScalingOverview(request *DescribeQueueAutoScalingOverviewRequest) (response *DescribeQueueAutoScalingOverviewResponse, err error) {
+    return c.DescribeQueueAutoScalingOverviewWithContext(context.Background(), request)
+}
+
+// DescribeQueueAutoScalingOverview
+// 查询指定集群的队列弹性伸缩概览信息，包括期望容量、当前容量、当前动态节点数、有效定时任务数等。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDFILTERNOTSUPPORTEDNAME = "InvalidParameterValue.InvalidFilterNotSupportedName"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
+//  INVALIDPARAMETERVALUE_TOOSMALL = "InvalidParameterValue.TooSmall"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION_PARAMETERTOOLARGE = "UnsupportedOperation.ParameterTooLarge"
+//  UNSUPPORTEDOPERATION_PARAMETERTOOSMALL = "UnsupportedOperation.ParameterTooSmall"
+func (c *Client) DescribeQueueAutoScalingOverviewWithContext(ctx context.Context, request *DescribeQueueAutoScalingOverviewRequest) (response *DescribeQueueAutoScalingOverviewResponse, err error) {
+    if request == nil {
+        request = NewDescribeQueueAutoScalingOverviewRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "thpc", APIVersion, "DescribeQueueAutoScalingOverview")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeQueueAutoScalingOverview require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeQueueAutoScalingOverviewResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeQueuesRequest() (request *DescribeQueuesRequest) {
     request = &DescribeQueuesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1375,6 +1743,82 @@ func (c *Client) DescribeQueuesWithContext(ctx context.Context, request *Describ
     request.SetContext(ctx)
     
     response = NewDescribeQueuesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeScheduledActionsRequest() (request *DescribeScheduledActionsRequest) {
+    request = &DescribeScheduledActionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("thpc", APIVersion, "DescribeScheduledActions")
+    
+    
+    return
+}
+
+func NewDescribeScheduledActionsResponse() (response *DescribeScheduledActionsResponse) {
+    response = &DescribeScheduledActionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeScheduledActions
+// 查询指定集群队列的定时伸缩任务列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_PARAMETERSNOTSUPPORTED = "InvalidParameterValue.ParametersNotSupported"
+//  INVALIDPARAMETERVALUE_TOOSHORT = "InvalidParameterValue.TooShort"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION_PARAMETERTOOLARGE = "UnsupportedOperation.ParameterTooLarge"
+//  UNSUPPORTEDOPERATION_PARAMETERTOOSMALL = "UnsupportedOperation.ParameterTooSmall"
+func (c *Client) DescribeScheduledActions(request *DescribeScheduledActionsRequest) (response *DescribeScheduledActionsResponse, err error) {
+    return c.DescribeScheduledActionsWithContext(context.Background(), request)
+}
+
+// DescribeScheduledActions
+// 查询指定集群队列的定时伸缩任务列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_PARAMETERSNOTSUPPORTED = "InvalidParameterValue.ParametersNotSupported"
+//  INVALIDPARAMETERVALUE_TOOSHORT = "InvalidParameterValue.TooShort"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION_PARAMETERTOOLARGE = "UnsupportedOperation.ParameterTooLarge"
+//  UNSUPPORTEDOPERATION_PARAMETERTOOSMALL = "UnsupportedOperation.ParameterTooSmall"
+func (c *Client) DescribeScheduledActionsWithContext(ctx context.Context, request *DescribeScheduledActionsRequest) (response *DescribeScheduledActionsResponse, err error) {
+    if request == nil {
+        request = NewDescribeScheduledActionsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "thpc", APIVersion, "DescribeScheduledActions")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeScheduledActions require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeScheduledActionsResponse()
     err = c.Send(request, response)
     return
 }
@@ -1491,6 +1935,64 @@ func (c *Client) DetachNodesWithContext(ctx context.Context, request *DetachNode
     return
 }
 
+func NewInquirePriceCreateWorkspacesRequest() (request *InquirePriceCreateWorkspacesRequest) {
+    request = &InquirePriceCreateWorkspacesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("thpc", APIVersion, "InquirePriceCreateWorkspaces")
+    
+    
+    return
+}
+
+func NewInquirePriceCreateWorkspacesResponse() (response *InquirePriceCreateWorkspacesResponse) {
+    response = &InquirePriceCreateWorkspacesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// InquirePriceCreateWorkspaces
+// 本接口(InquirePriceCreateWorkspaces)用于创建实例询价。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CALLCLOUDSDKEXCEPTION = "InternalError.CallCloudSdkException"
+//  INVALIDPARAMETER_COMBINATION = "InvalidParameter.Combination"
+//  INVALIDPARAMETERVALUE_INVALIDUNDERWRITEPERIOD = "InvalidParameterValue.InvalidUnderwritePeriod"
+//  INVALIDPARAMETERVALUE_SPACETYPENOTAVAILABLE = "InvalidParameterValue.SpaceTypeNotAvailable"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDNETWORKUSER = "UnauthorizedOperation.UnauthorizedNetworkUser"
+func (c *Client) InquirePriceCreateWorkspaces(request *InquirePriceCreateWorkspacesRequest) (response *InquirePriceCreateWorkspacesResponse, err error) {
+    return c.InquirePriceCreateWorkspacesWithContext(context.Background(), request)
+}
+
+// InquirePriceCreateWorkspaces
+// 本接口(InquirePriceCreateWorkspaces)用于创建实例询价。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CALLCLOUDSDKEXCEPTION = "InternalError.CallCloudSdkException"
+//  INVALIDPARAMETER_COMBINATION = "InvalidParameter.Combination"
+//  INVALIDPARAMETERVALUE_INVALIDUNDERWRITEPERIOD = "InvalidParameterValue.InvalidUnderwritePeriod"
+//  INVALIDPARAMETERVALUE_SPACETYPENOTAVAILABLE = "InvalidParameterValue.SpaceTypeNotAvailable"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDNETWORKUSER = "UnauthorizedOperation.UnauthorizedNetworkUser"
+func (c *Client) InquirePriceCreateWorkspacesWithContext(ctx context.Context, request *InquirePriceCreateWorkspacesRequest) (response *InquirePriceCreateWorkspacesResponse, err error) {
+    if request == nil {
+        request = NewInquirePriceCreateWorkspacesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "thpc", APIVersion, "InquirePriceCreateWorkspaces")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InquirePriceCreateWorkspaces require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewInquirePriceCreateWorkspacesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewInquirePriceModifyWorkspacesChargeTypeRequest() (request *InquirePriceModifyWorkspacesChargeTypeRequest) {
     request = &InquirePriceModifyWorkspacesChargeTypeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1514,10 +2016,11 @@ func NewInquirePriceModifyWorkspacesChargeTypeResponse() (response *InquirePrice
 // 查询按量计费工作空间转换为包年包月的价格。不会创建订单或变更资源。
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETER_ATMOSTONE = "InvalidParameter.AtMostOne"
-//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
-//  INVALIDPARAMETERVALUE_INVALIDCVMINSTANCEIDMALFORMED = "InvalidParameterValue.InvalidCvmInstanceIdMalformed"
-//  INVALIDPARAMETERVALUE_INVALIDSPACEIDMALFORMED = "InvalidParameterValue.InvalidSpaceIdMalformed"
+//  INTERNALERROR_CALLCLOUDSDKEXCEPTION = "InternalError.CallCloudSdkException"
+//  INVALIDPARAMETER_COMBINATION = "InvalidParameter.Combination"
+//  INVALIDPARAMETERVALUE_INVALIDUNDERWRITEPERIOD = "InvalidParameterValue.InvalidUnderwritePeriod"
+//  INVALIDPARAMETERVALUE_SPACETYPENOTAVAILABLE = "InvalidParameterValue.SpaceTypeNotAvailable"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDNETWORKUSER = "UnauthorizedOperation.UnauthorizedNetworkUser"
 func (c *Client) InquirePriceModifyWorkspacesChargeType(request *InquirePriceModifyWorkspacesChargeTypeRequest) (response *InquirePriceModifyWorkspacesChargeTypeResponse, err error) {
     return c.InquirePriceModifyWorkspacesChargeTypeWithContext(context.Background(), request)
 }
@@ -1526,10 +2029,11 @@ func (c *Client) InquirePriceModifyWorkspacesChargeType(request *InquirePriceMod
 // 查询按量计费工作空间转换为包年包月的价格。不会创建订单或变更资源。
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETER_ATMOSTONE = "InvalidParameter.AtMostOne"
-//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
-//  INVALIDPARAMETERVALUE_INVALIDCVMINSTANCEIDMALFORMED = "InvalidParameterValue.InvalidCvmInstanceIdMalformed"
-//  INVALIDPARAMETERVALUE_INVALIDSPACEIDMALFORMED = "InvalidParameterValue.InvalidSpaceIdMalformed"
+//  INTERNALERROR_CALLCLOUDSDKEXCEPTION = "InternalError.CallCloudSdkException"
+//  INVALIDPARAMETER_COMBINATION = "InvalidParameter.Combination"
+//  INVALIDPARAMETERVALUE_INVALIDUNDERWRITEPERIOD = "InvalidParameterValue.InvalidUnderwritePeriod"
+//  INVALIDPARAMETERVALUE_SPACETYPENOTAVAILABLE = "InvalidParameterValue.SpaceTypeNotAvailable"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDNETWORKUSER = "UnauthorizedOperation.UnauthorizedNetworkUser"
 func (c *Client) InquirePriceModifyWorkspacesChargeTypeWithContext(ctx context.Context, request *InquirePriceModifyWorkspacesChargeTypeRequest) (response *InquirePriceModifyWorkspacesChargeTypeResponse, err error) {
     if request == nil {
         request = NewInquirePriceModifyWorkspacesChargeTypeRequest()
@@ -1570,10 +2074,11 @@ func NewModifyClusterDeletionProtectionResponse() (response *ModifyClusterDeleti
 // 修改集群删除保护状态
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETER_ATMOSTONE = "InvalidParameter.AtMostOne"
-//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
-//  INVALIDPARAMETERVALUE_INVALIDCVMINSTANCEIDMALFORMED = "InvalidParameterValue.InvalidCvmInstanceIdMalformed"
-//  INVALIDPARAMETERVALUE_INVALIDSPACEIDMALFORMED = "InvalidParameterValue.InvalidSpaceIdMalformed"
+//  INTERNALERROR_CALLCLOUDSDKEXCEPTION = "InternalError.CallCloudSdkException"
+//  INVALIDPARAMETER_COMBINATION = "InvalidParameter.Combination"
+//  INVALIDPARAMETERVALUE_INVALIDUNDERWRITEPERIOD = "InvalidParameterValue.InvalidUnderwritePeriod"
+//  INVALIDPARAMETERVALUE_SPACETYPENOTAVAILABLE = "InvalidParameterValue.SpaceTypeNotAvailable"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDNETWORKUSER = "UnauthorizedOperation.UnauthorizedNetworkUser"
 func (c *Client) ModifyClusterDeletionProtection(request *ModifyClusterDeletionProtectionRequest) (response *ModifyClusterDeletionProtectionResponse, err error) {
     return c.ModifyClusterDeletionProtectionWithContext(context.Background(), request)
 }
@@ -1582,10 +2087,11 @@ func (c *Client) ModifyClusterDeletionProtection(request *ModifyClusterDeletionP
 // 修改集群删除保护状态
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETER_ATMOSTONE = "InvalidParameter.AtMostOne"
-//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
-//  INVALIDPARAMETERVALUE_INVALIDCVMINSTANCEIDMALFORMED = "InvalidParameterValue.InvalidCvmInstanceIdMalformed"
-//  INVALIDPARAMETERVALUE_INVALIDSPACEIDMALFORMED = "InvalidParameterValue.InvalidSpaceIdMalformed"
+//  INTERNALERROR_CALLCLOUDSDKEXCEPTION = "InternalError.CallCloudSdkException"
+//  INVALIDPARAMETER_COMBINATION = "InvalidParameter.Combination"
+//  INVALIDPARAMETERVALUE_INVALIDUNDERWRITEPERIOD = "InvalidParameterValue.InvalidUnderwritePeriod"
+//  INVALIDPARAMETERVALUE_SPACETYPENOTAVAILABLE = "InvalidParameterValue.SpaceTypeNotAvailable"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDNETWORKUSER = "UnauthorizedOperation.UnauthorizedNetworkUser"
 func (c *Client) ModifyClusterDeletionProtectionWithContext(ctx context.Context, request *ModifyClusterDeletionProtectionRequest) (response *ModifyClusterDeletionProtectionResponse, err error) {
     if request == nil {
         request = NewModifyClusterDeletionProtectionRequest()
@@ -1703,6 +2209,60 @@ func (c *Client) ModifyNodeAttributeWithContext(ctx context.Context, request *Mo
     request.SetContext(ctx)
     
     response = NewModifyNodeAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyScheduledActionRequest() (request *ModifyScheduledActionRequest) {
+    request = &ModifyScheduledActionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("thpc", APIVersion, "ModifyScheduledAction")
+    
+    
+    return
+}
+
+func NewModifyScheduledActionResponse() (response *ModifyScheduledActionResponse) {
+    response = &ModifyScheduledActionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyScheduledAction
+// 修改指定的定时伸缩任务配置。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETERVALUE_VALUEDUPLICATED = "InvalidParameterValue.ValueDuplicated"
+//  UNSUPPORTEDOPERATION_NODESTATUSNOTSUPPORT = "UnsupportedOperation.NodeStatusNotSupport"
+func (c *Client) ModifyScheduledAction(request *ModifyScheduledActionRequest) (response *ModifyScheduledActionResponse, err error) {
+    return c.ModifyScheduledActionWithContext(context.Background(), request)
+}
+
+// ModifyScheduledAction
+// 修改指定的定时伸缩任务配置。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETERVALUE_VALUEDUPLICATED = "InvalidParameterValue.ValueDuplicated"
+//  UNSUPPORTEDOPERATION_NODESTATUSNOTSUPPORT = "UnsupportedOperation.NodeStatusNotSupport"
+func (c *Client) ModifyScheduledActionWithContext(ctx context.Context, request *ModifyScheduledActionRequest) (response *ModifyScheduledActionResponse, err error) {
+    if request == nil {
+        request = NewModifyScheduledActionRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "thpc", APIVersion, "ModifyScheduledAction")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyScheduledAction require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyScheduledActionResponse()
     err = c.Send(request, response)
     return
 }
@@ -1937,6 +2497,80 @@ func (c *Client) SetAutoScalingConfigurationWithContext(ctx context.Context, req
     request.SetContext(ctx)
     
     response = NewSetAutoScalingConfigurationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSetQueueAutoScalingRequest() (request *SetQueueAutoScalingRequest) {
+    request = &SetQueueAutoScalingRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("thpc", APIVersion, "SetQueueAutoScaling")
+    
+    
+    return
+}
+
+func NewSetQueueAutoScalingResponse() (response *SetQueueAutoScalingResponse) {
+    response = &SetQueueAutoScalingResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SetQueueAutoScaling
+// 为指定集群的队列配置弹性伸缩策略，包括伸缩容量、扩容方式等。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CALLCVM = "InternalError.CallCvm"
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
+//  INVALIDPARAMETERVALUE_TOOSMALL = "InvalidParameterValue.TooSmall"
+//  RESOURCENOTFOUND_CLUSTERID = "ResourceNotFound.ClusterId"
+//  RESOURCENOTFOUND_IMAGEID = "ResourceNotFound.ImageId"
+//  RESOURCENOTFOUND_QUEUE = "ResourceNotFound.Queue"
+//  UNSUPPORTEDOPERATION_AUTOSCALINGTYPE = "UnsupportedOperation.AutoScalingType"
+//  UNSUPPORTEDOPERATION_CLUSTERACCEPTOTHERREQUEST = "UnsupportedOperation.ClusterAcceptOtherRequest"
+//  UNSUPPORTEDOPERATION_CLUSTERSTATUSNOTSUPPORT = "UnsupportedOperation.ClusterStatusNotSupport"
+//  UNSUPPORTEDOPERATION_PARAMETERTOOLARGE = "UnsupportedOperation.ParameterTooLarge"
+//  UNSUPPORTEDOPERATION_VPCIDCONFLICT = "UnsupportedOperation.VpcIdConflict"
+func (c *Client) SetQueueAutoScaling(request *SetQueueAutoScalingRequest) (response *SetQueueAutoScalingResponse, err error) {
+    return c.SetQueueAutoScalingWithContext(context.Background(), request)
+}
+
+// SetQueueAutoScaling
+// 为指定集群的队列配置弹性伸缩策略，包括伸缩容量、扩容方式等。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CALLCVM = "InternalError.CallCvm"
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
+//  INVALIDPARAMETERVALUE_TOOSMALL = "InvalidParameterValue.TooSmall"
+//  RESOURCENOTFOUND_CLUSTERID = "ResourceNotFound.ClusterId"
+//  RESOURCENOTFOUND_IMAGEID = "ResourceNotFound.ImageId"
+//  RESOURCENOTFOUND_QUEUE = "ResourceNotFound.Queue"
+//  UNSUPPORTEDOPERATION_AUTOSCALINGTYPE = "UnsupportedOperation.AutoScalingType"
+//  UNSUPPORTEDOPERATION_CLUSTERACCEPTOTHERREQUEST = "UnsupportedOperation.ClusterAcceptOtherRequest"
+//  UNSUPPORTEDOPERATION_CLUSTERSTATUSNOTSUPPORT = "UnsupportedOperation.ClusterStatusNotSupport"
+//  UNSUPPORTEDOPERATION_PARAMETERTOOLARGE = "UnsupportedOperation.ParameterTooLarge"
+//  UNSUPPORTEDOPERATION_VPCIDCONFLICT = "UnsupportedOperation.VpcIdConflict"
+func (c *Client) SetQueueAutoScalingWithContext(ctx context.Context, request *SetQueueAutoScalingRequest) (response *SetQueueAutoScalingResponse, err error) {
+    if request == nil {
+        request = NewSetQueueAutoScalingRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "thpc", APIVersion, "SetQueueAutoScaling")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SetQueueAutoScaling require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSetQueueAutoScalingResponse()
     err = c.Send(request, response)
     return
 }

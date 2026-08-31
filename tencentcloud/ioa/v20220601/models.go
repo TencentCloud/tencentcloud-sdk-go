@@ -920,6 +920,67 @@ type CreatePrivilegeCodeRspData struct {
 }
 
 // Predefined struct for user
+type DeleteAccountGroupResourcesRequestParams struct {
+	// 资源集
+	ResourceList []*DeleteResourceData `json:"ResourceList,omitnil,omitempty" name:"ResourceList"`
+
+	// 账户组Id(只支持32位)
+	AccountGroupId *uint64 `json:"AccountGroupId,omitnil,omitempty" name:"AccountGroupId"`
+}
+
+type DeleteAccountGroupResourcesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 资源集
+	ResourceList []*DeleteResourceData `json:"ResourceList,omitnil,omitempty" name:"ResourceList"`
+
+	// 账户组Id(只支持32位)
+	AccountGroupId *uint64 `json:"AccountGroupId,omitnil,omitempty" name:"AccountGroupId"`
+}
+
+func (r *DeleteAccountGroupResourcesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAccountGroupResourcesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ResourceList")
+	delete(f, "AccountGroupId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAccountGroupResourcesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAccountGroupResourcesResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteAccountGroupResourcesResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteAccountGroupResourcesResponseParams `json:"Response"`
+}
+
+func (r *DeleteAccountGroupResourcesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAccountGroupResourcesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteDeviceVirtualGroupRequestParams struct {
 	// 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
 	DomainInstanceId *string `json:"DomainInstanceId,omitnil,omitempty" name:"DomainInstanceId"`
@@ -985,6 +1046,16 @@ func (r *DeleteDeviceVirtualGroupResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DeleteDeviceVirtualGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteResourceData struct {
+	// 资源类型 ,1:资源 2:资源组(只支持32位)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceType *uint64 `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// 资源或资源组Id(只支持32位)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceId *uint64 `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 }
 
 type DescribeAccountGroupsData struct {
@@ -2546,6 +2617,24 @@ type DescribeDeviceHardwareInfoItem struct {
 
 	// <p>BiosUUID（启动盘标识符）</p>
 	BiosUuid *string `json:"BiosUuid,omitnil,omitempty" name:"BiosUuid"`
+
+	// <p>多网卡数据</p>
+	NetworkCards []*DeviceNetworkCardBrief `json:"NetworkCards,omitnil,omitempty" name:"NetworkCards"`
+
+	// <p>多显卡数据</p>
+	VideoCards []*DeviceVideoCardBrief `json:"VideoCards,omitnil,omitempty" name:"VideoCards"`
+
+	// <p>主板型号</p>
+	MainBoard *string `json:"MainBoard,omitnil,omitempty" name:"MainBoard"`
+
+	// <p>主板序列号</p>
+	BaseBoardSn *string `json:"BaseBoardSn,omitnil,omitempty" name:"BaseBoardSn"`
+
+	// <p>主板制造商</p>
+	BaseBoardManufacturer *string `json:"BaseBoardManufacturer,omitnil,omitempty" name:"BaseBoardManufacturer"`
+
+	// <p>声卡</p>
+	AudioCard *string `json:"AudioCard,omitnil,omitempty" name:"AudioCard"`
 }
 
 // Predefined struct for user
@@ -3977,6 +4066,26 @@ type DeviceGroupDetail struct {
 	BindAccountName *string `json:"BindAccountName,omitnil,omitempty" name:"BindAccountName"`
 }
 
+type DeviceNetworkCardBrief struct {
+	// <p>MAC地址</p>
+	MacAddress *string `json:"MacAddress,omitnil,omitempty" name:"MacAddress"`
+
+	// <p>网卡名称</p>
+	NetworkCardName *string `json:"NetworkCardName,omitnil,omitempty" name:"NetworkCardName"`
+
+	// <p>网卡类型</p><p>枚举值：</p><ul><li>1： 物理网卡</li><li>2： 虚拟网卡</li></ul>
+	NetworkCardType *int64 `json:"NetworkCardType,omitnil,omitempty" name:"NetworkCardType"`
+
+	// <p>网卡状态</p><p>枚举值：</p><ul><li>1： 启用中</li><li>2： 未启用</li></ul>
+	NetworkCardStatus *int64 `json:"NetworkCardStatus,omitnil,omitempty" name:"NetworkCardStatus"`
+
+	// <p>IPv4地址</p>
+	Ipv4Address *string `json:"Ipv4Address,omitnil,omitempty" name:"Ipv4Address"`
+
+	// <p>IPv6地址</p>
+	Ipv6Address *string `json:"Ipv6Address,omitnil,omitempty" name:"Ipv6Address"`
+}
+
 type DeviceNetworkInfo struct {
 	// 本地地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -4065,6 +4174,11 @@ type DeviceServiceInfo struct {
 	// 启动用户
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	User *string `json:"User,omitnil,omitempty" name:"User"`
+}
+
+type DeviceVideoCardBrief struct {
+	// <p>显卡名称</p>
+	VideoCardName *string `json:"VideoCardName,omitnil,omitempty" name:"VideoCardName"`
 }
 
 type DeviceVirtualDeviceGroupsDetail struct {

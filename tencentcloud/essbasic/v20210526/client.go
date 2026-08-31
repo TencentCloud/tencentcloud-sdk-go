@@ -8689,7 +8689,7 @@ func NewCreateRequestWithEncryptionResponse() (response *CreateRequestWithEncryp
 //
 //     signature = HMAC(HMACKey, concat(iv, ciphertext))
 //
-//     # 5. 组装外层请求参数（三段均为标准 Base64）
+//     # 5. 组装外层请求参数
 //
 //     encReq = {
 //
@@ -8767,6 +8767,8 @@ func NewCreateRequestWithEncryptionResponse() (response *CreateRequestWithEncryp
 //
 // **AES-CBC 示例**
 //
+// 
+//
 // 以下示例参数及结果可用于验证 AES-CBC 加密和 HMAC-SHA256 签名算法的实现是否正确。
 //
 // 
@@ -8787,7 +8789,7 @@ func NewCreateRequestWithEncryptionResponse() (response *CreateRequestWithEncryp
 //
 // {
 //
-//   "RequestAction": "DescribeFlowComponents",
+//   "RequestAction": "ChannelDescribeFlowComponents",
 //
 //   "ApplicationId: "yD******************************,
 //
@@ -8804,6 +8806,8 @@ func NewCreateRequestWithEncryptionResponse() (response *CreateRequestWithEncryp
 // 
 //
 // **SM4-CBC 示例**
+//
+// 
 //
 // 以下示例参数及结果可用于验证 SM4-CBC 加密和 HMAC-SM4 签名算法的实现是否正确。
 //
@@ -8825,7 +8829,7 @@ func NewCreateRequestWithEncryptionResponse() (response *CreateRequestWithEncryp
 //
 // {
 //
-//   "RequestAction": "DescribeFlowComponents",
+//   "RequestAction": "ChannelDescribeFlowComponents",
 //
 //   "ApplicationId: "yD******************************,
 //
@@ -8934,7 +8938,7 @@ func (c *Client) CreateRequestWithEncryption(request *CreateRequestWithEncryptio
 //
 //     signature = HMAC(HMACKey, concat(iv, ciphertext))
 //
-//     # 5. 组装外层请求参数（三段均为标准 Base64）
+//     # 5. 组装外层请求参数
 //
 //     encReq = {
 //
@@ -9012,6 +9016,8 @@ func (c *Client) CreateRequestWithEncryption(request *CreateRequestWithEncryptio
 //
 // **AES-CBC 示例**
 //
+// 
+//
 // 以下示例参数及结果可用于验证 AES-CBC 加密和 HMAC-SHA256 签名算法的实现是否正确。
 //
 // 
@@ -9032,7 +9038,7 @@ func (c *Client) CreateRequestWithEncryption(request *CreateRequestWithEncryptio
 //
 // {
 //
-//   "RequestAction": "DescribeFlowComponents",
+//   "RequestAction": "ChannelDescribeFlowComponents",
 //
 //   "ApplicationId: "yD******************************,
 //
@@ -9049,6 +9055,8 @@ func (c *Client) CreateRequestWithEncryption(request *CreateRequestWithEncryptio
 // 
 //
 // **SM4-CBC 示例**
+//
+// 
 //
 // 以下示例参数及结果可用于验证 SM4-CBC 加密和 HMAC-SM4 签名算法的实现是否正确。
 //
@@ -9070,7 +9078,7 @@ func (c *Client) CreateRequestWithEncryption(request *CreateRequestWithEncryptio
 //
 // {
 //
-//   "RequestAction": "DescribeFlowComponents",
+//   "RequestAction": "ChannelDescribeFlowComponents",
 //
 //   "ApplicationId: "yD******************************,
 //

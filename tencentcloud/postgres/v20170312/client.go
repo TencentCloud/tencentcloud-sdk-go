@@ -449,6 +449,66 @@ func (c *Client) CloseDBExtranetAccessWithContext(ctx context.Context, request *
     return
 }
 
+func NewCloseDBProxyAddressRequest() (request *CloseDBProxyAddressRequest) {
+    request = &CloseDBProxyAddressRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("postgres", APIVersion, "CloseDBProxyAddress")
+    
+    
+    return
+}
+
+func NewCloseDBProxyAddressResponse() (response *CloseDBProxyAddressResponse) {
+    response = &CloseDBProxyAddressResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CloseDBProxyAddress
+// 本接口用于关闭（删除）数据库代理的指定地址。接口为异步操作，返回 TaskId 供调用方通过 DescribeTasks 查询任务执行进度。约束：代理组至少保留一个地址，不允许删除最后一个地址。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+//  INVALIDPARAMETER_PARAMETERCHECKERROR = "InvalidParameter.ParameterCheckError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITOPERROR = "OperationDenied.InstanceStatusLimitOpError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) CloseDBProxyAddress(request *CloseDBProxyAddressRequest) (response *CloseDBProxyAddressResponse, err error) {
+    return c.CloseDBProxyAddressWithContext(context.Background(), request)
+}
+
+// CloseDBProxyAddress
+// 本接口用于关闭（删除）数据库代理的指定地址。接口为异步操作，返回 TaskId 供调用方通过 DescribeTasks 查询任务执行进度。约束：代理组至少保留一个地址，不允许删除最后一个地址。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+//  INVALIDPARAMETER_PARAMETERCHECKERROR = "InvalidParameter.ParameterCheckError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITOPERROR = "OperationDenied.InstanceStatusLimitOpError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) CloseDBProxyAddressWithContext(ctx context.Context, request *CloseDBProxyAddressRequest) (response *CloseDBProxyAddressResponse, err error) {
+    if request == nil {
+        request = NewCloseDBProxyAddressRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "postgres", APIVersion, "CloseDBProxyAddress")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CloseDBProxyAddress require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCloseDBProxyAddressResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAccountRequest() (request *CreateAccountRequest) {
     request = &CreateAccountRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -861,6 +921,68 @@ func (c *Client) CreateDBProxyWithContext(ctx context.Context, request *CreateDB
     request.SetContext(ctx)
     
     response = NewCreateDBProxyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateDBProxyAddressRequest() (request *CreateDBProxyAddressRequest) {
+    request = &CreateDBProxyAddressRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("postgres", APIVersion, "CreateDBProxyAddress")
+    
+    
+    return
+}
+
+func NewCreateDBProxyAddressResponse() (response *CreateDBProxyAddressResponse) {
+    response = &CreateDBProxyAddressResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateDBProxyAddress
+// 本接口（CreateDBProxyAddress）用于为指定实例的数据库代理创建连接地址。该接口为异步接口，调用成功后返回 TaskId，可通过 DescribeTasks 接口查询任务执行进度。<p>支持同时配置读写分离策略，包括权重模式、路由分配、延迟剔除、故障转移等高级功能。</p>
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INVALIDPARAMETER_PARAMETERCHECKERROR = "InvalidParameter.ParameterCheckError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITOPERROR = "OperationDenied.InstanceStatusLimitOpError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) CreateDBProxyAddress(request *CreateDBProxyAddressRequest) (response *CreateDBProxyAddressResponse, err error) {
+    return c.CreateDBProxyAddressWithContext(context.Background(), request)
+}
+
+// CreateDBProxyAddress
+// 本接口（CreateDBProxyAddress）用于为指定实例的数据库代理创建连接地址。该接口为异步接口，调用成功后返回 TaskId，可通过 DescribeTasks 接口查询任务执行进度。<p>支持同时配置读写分离策略，包括权重模式、路由分配、延迟剔除、故障转移等高级功能。</p>
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INVALIDPARAMETER_PARAMETERCHECKERROR = "InvalidParameter.ParameterCheckError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITOPERROR = "OperationDenied.InstanceStatusLimitOpError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) CreateDBProxyAddressWithContext(ctx context.Context, request *CreateDBProxyAddressRequest) (response *CreateDBProxyAddressResponse, err error) {
+    if request == nil {
+        request = NewCreateDBProxyAddressRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "postgres", APIVersion, "CreateDBProxyAddress")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDBProxyAddress require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateDBProxyAddressResponse()
     err = c.Send(request, response)
     return
 }
@@ -3855,6 +3977,66 @@ func (c *Client) DescribeDBProxyWithContext(ctx context.Context, request *Descri
     return
 }
 
+func NewDescribeDBProxySSLConfigRequest() (request *DescribeDBProxySSLConfigRequest) {
+    request = &DescribeDBProxySSLConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("postgres", APIVersion, "DescribeDBProxySSLConfig")
+    
+    
+    return
+}
+
+func NewDescribeDBProxySSLConfigResponse() (response *DescribeDBProxySSLConfigResponse) {
+    response = &DescribeDBProxySSLConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDBProxySSLConfig
+// 本接口用于查询指定代理连接地址的 SSL 配置信息，包括 SSL 是否开启、连接地址和 CA 证书下载地址。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INVALIDPARAMETER_PARAMETERCHECKERROR = "InvalidParameter.ParameterCheckError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITERROR = "OperationDenied.InstanceStatusLimitError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) DescribeDBProxySSLConfig(request *DescribeDBProxySSLConfigRequest) (response *DescribeDBProxySSLConfigResponse, err error) {
+    return c.DescribeDBProxySSLConfigWithContext(context.Background(), request)
+}
+
+// DescribeDBProxySSLConfig
+// 本接口用于查询指定代理连接地址的 SSL 配置信息，包括 SSL 是否开启、连接地址和 CA 证书下载地址。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INVALIDPARAMETER_PARAMETERCHECKERROR = "InvalidParameter.ParameterCheckError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITERROR = "OperationDenied.InstanceStatusLimitError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) DescribeDBProxySSLConfigWithContext(ctx context.Context, request *DescribeDBProxySSLConfigRequest) (response *DescribeDBProxySSLConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribeDBProxySSLConfigRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "postgres", APIVersion, "DescribeDBProxySSLConfig")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDBProxySSLConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDBProxySSLConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDBProxySpecsRequest() (request *DescribeDBProxySpecsRequest) {
     request = &DescribeDBProxySpecsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3878,8 +4060,11 @@ func NewDescribeDBProxySpecsResponse() (response *DescribeDBProxySpecsResponse) 
 // 查询代理可售规格
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
 //  INVALIDPARAMETER_PARAMETERCHECKERROR = "InvalidParameter.ParameterCheckError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITERROR = "OperationDenied.InstanceStatusLimitError"
 //  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
 func (c *Client) DescribeDBProxySpecs(request *DescribeDBProxySpecsRequest) (response *DescribeDBProxySpecsResponse, err error) {
     return c.DescribeDBProxySpecsWithContext(context.Background(), request)
@@ -3889,8 +4074,11 @@ func (c *Client) DescribeDBProxySpecs(request *DescribeDBProxySpecsRequest) (res
 // 查询代理可售规格
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
 //  INVALIDPARAMETER_PARAMETERCHECKERROR = "InvalidParameter.ParameterCheckError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITERROR = "OperationDenied.InstanceStatusLimitError"
 //  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
 func (c *Client) DescribeDBProxySpecsWithContext(ctx context.Context, request *DescribeDBProxySpecsRequest) (response *DescribeDBProxySpecsResponse, err error) {
     if request == nil {
@@ -7359,6 +7547,68 @@ func (c *Client) ModifyDBProxyAddressWithContext(ctx context.Context, request *M
     request.SetContext(ctx)
     
     response = NewModifyDBProxyAddressResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDBProxySSLConfigRequest() (request *ModifyDBProxySSLConfigRequest) {
+    request = &ModifyDBProxySSLConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("postgres", APIVersion, "ModifyDBProxySSLConfig")
+    
+    
+    return
+}
+
+func NewModifyDBProxySSLConfigResponse() (response *ModifyDBProxySSLConfigResponse) {
+    response = &ModifyDBProxySSLConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyDBProxySSLConfig
+// 本接口（ModifyDBProxySSLConfig）用于修改数据库代理连接地址的 SSL 配置。该接口为异步接口，调用成功后返回 TaskId，可通过 DescribeTasks 接口查询任务执行进度。<p>当前仅支持物理机（local）存储类型的代理开启 SSL。SSL 开启时需提供 ConnectAddress，且必须与代理地址的 Vip 保持一致。</p><p>当 SSL 状态与当前配置一致时，接口直接返回成功，TaskId 为 0，无需等待任务。</p>
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+//  INVALIDPARAMETER_PARAMETERCHECKERROR = "InvalidParameter.ParameterCheckError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITERROR = "OperationDenied.InstanceStatusLimitError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITOPERROR = "OperationDenied.InstanceStatusLimitOpError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) ModifyDBProxySSLConfig(request *ModifyDBProxySSLConfigRequest) (response *ModifyDBProxySSLConfigResponse, err error) {
+    return c.ModifyDBProxySSLConfigWithContext(context.Background(), request)
+}
+
+// ModifyDBProxySSLConfig
+// 本接口（ModifyDBProxySSLConfig）用于修改数据库代理连接地址的 SSL 配置。该接口为异步接口，调用成功后返回 TaskId，可通过 DescribeTasks 接口查询任务执行进度。<p>当前仅支持物理机（local）存储类型的代理开启 SSL。SSL 开启时需提供 ConnectAddress，且必须与代理地址的 Vip 保持一致。</p><p>当 SSL 状态与当前配置一致时，接口直接返回成功，TaskId 为 0，无需等待任务。</p>
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+//  INVALIDPARAMETER_PARAMETERCHECKERROR = "InvalidParameter.ParameterCheckError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITERROR = "OperationDenied.InstanceStatusLimitError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITOPERROR = "OperationDenied.InstanceStatusLimitOpError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) ModifyDBProxySSLConfigWithContext(ctx context.Context, request *ModifyDBProxySSLConfigRequest) (response *ModifyDBProxySSLConfigResponse, err error) {
+    if request == nil {
+        request = NewModifyDBProxySSLConfigRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "postgres", APIVersion, "ModifyDBProxySSLConfig")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDBProxySSLConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDBProxySSLConfigResponse()
     err = c.Send(request, response)
     return
 }

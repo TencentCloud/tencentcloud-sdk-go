@@ -11429,6 +11429,56 @@ func (c *Client) ModifyClusterGlobalEncryptionWithContext(ctx context.Context, r
     return
 }
 
+func NewModifyClusterLevelRequest() (request *ModifyClusterLevelRequest) {
+    request = &ModifyClusterLevelRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "ModifyClusterLevel")
+    
+    
+    return
+}
+
+func NewModifyClusterLevelResponse() (response *ModifyClusterLevelResponse) {
+    response = &ModifyClusterLevelResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyClusterLevel
+// 修改集群级别
+//
+// 可能返回的错误码:
+//  UNAUTHORIZEDOPERATION_ROLEUNAUTHORIZED = "UnauthorizedOperation.RoleUnauthorized"
+func (c *Client) ModifyClusterLevel(request *ModifyClusterLevelRequest) (response *ModifyClusterLevelResponse, err error) {
+    return c.ModifyClusterLevelWithContext(context.Background(), request)
+}
+
+// ModifyClusterLevel
+// 修改集群级别
+//
+// 可能返回的错误码:
+//  UNAUTHORIZEDOPERATION_ROLEUNAUTHORIZED = "UnauthorizedOperation.RoleUnauthorized"
+func (c *Client) ModifyClusterLevelWithContext(ctx context.Context, request *ModifyClusterLevelRequest) (response *ModifyClusterLevelResponse, err error) {
+    if request == nil {
+        request = NewModifyClusterLevelRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "ModifyClusterLevel")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyClusterLevel require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyClusterLevelResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyClusterNameRequest() (request *ModifyClusterNameRequest) {
     request = &ModifyClusterNameRequest{
         BaseRequest: &tchttp.BaseRequest{},

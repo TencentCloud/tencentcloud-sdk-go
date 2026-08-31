@@ -1102,6 +1102,9 @@ type DescribeCkSqlApisRequestParams struct {
 
 	// <p>账户的类型</p>
 	UserType *string `json:"UserType,omitnil,omitempty" name:"UserType"`
+
+	// <p>实例类型</p><p>枚举值：</p><ul><li>SSC： 弹性版实例</li><li>Standard： 标准版实例</li></ul>
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 }
 
 type DescribeCkSqlApisRequest struct {
@@ -1121,6 +1124,9 @@ type DescribeCkSqlApisRequest struct {
 
 	// <p>账户的类型</p>
 	UserType *string `json:"UserType,omitnil,omitempty" name:"UserType"`
+
+	// <p>实例类型</p><p>枚举值：</p><ul><li>SSC： 弹性版实例</li><li>Standard： 标准版实例</li></ul>
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 }
 
 func (r *DescribeCkSqlApisRequest) ToJsonString() string {
@@ -1140,6 +1146,7 @@ func (r *DescribeCkSqlApisRequest) FromJsonString(s string) error {
 	delete(f, "Cluster")
 	delete(f, "UserName")
 	delete(f, "UserType")
+	delete(f, "InstanceType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCkSqlApisRequest has unknown keys!", "")
 	}
@@ -2644,6 +2651,9 @@ type ModifyUserNewPrivilegeRequestParams struct {
 
 	// <p>数据库表权限</p>
 	DatabasePrivilegeList []*DatabasePrivilegeInfo `json:"DatabasePrivilegeList,omitnil,omitempty" name:"DatabasePrivilegeList"`
+
+	// <p>实例类型</p><p>枚举值：</p><ul><li>SSC： 弹性版实例</li><li>Standard： 标准版实例</li></ul>
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 }
 
 type ModifyUserNewPrivilegeRequest struct {
@@ -2666,6 +2676,9 @@ type ModifyUserNewPrivilegeRequest struct {
 
 	// <p>数据库表权限</p>
 	DatabasePrivilegeList []*DatabasePrivilegeInfo `json:"DatabasePrivilegeList,omitnil,omitempty" name:"DatabasePrivilegeList"`
+
+	// <p>实例类型</p><p>枚举值：</p><ul><li>SSC： 弹性版实例</li><li>Standard： 标准版实例</li></ul>
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 }
 
 func (r *ModifyUserNewPrivilegeRequest) ToJsonString() string {
@@ -2686,6 +2699,7 @@ func (r *ModifyUserNewPrivilegeRequest) FromJsonString(s string) error {
 	delete(f, "AllDatabase")
 	delete(f, "GlobalPrivileges")
 	delete(f, "DatabasePrivilegeList")
+	delete(f, "InstanceType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyUserNewPrivilegeRequest has unknown keys!", "")
 	}

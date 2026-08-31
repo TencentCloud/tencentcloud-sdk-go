@@ -6180,7 +6180,7 @@ type DeleteTWeSeeTasksByConditionRequestParams struct {
 	// <p>设备名称</p>
 	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
 
-	// <p>算法类目。</p><p>枚举值：</p><ul><li>COMPREHENSION： 视觉理解</li><li>HIGHLIGHT： 视频浓缩</li></ul>
+	// <p>算法类目。</p><p>枚举值：</p><ul><li>COMPREHENSION： 视觉理解</li><li>HIGHLIGHT： 视频浓缩</li><li>SUMMARIZATION： 每日/每周总结</li></ul>
 	ServiceCategory *string `json:"ServiceCategory,omitnil,omitempty" name:"ServiceCategory"`
 
 	// <p>任务删除条件，至少传入一个条件。不同条件之间为 AND 关系，同一条件的 Values 之间为 OR 关系。</p>
@@ -6199,7 +6199,7 @@ type DeleteTWeSeeTasksByConditionRequest struct {
 	// <p>设备名称</p>
 	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
 
-	// <p>算法类目。</p><p>枚举值：</p><ul><li>COMPREHENSION： 视觉理解</li><li>HIGHLIGHT： 视频浓缩</li></ul>
+	// <p>算法类目。</p><p>枚举值：</p><ul><li>COMPREHENSION： 视觉理解</li><li>HIGHLIGHT： 视频浓缩</li><li>SUMMARIZATION： 每日/每周总结</li></ul>
 	ServiceCategory *string `json:"ServiceCategory,omitnil,omitempty" name:"ServiceCategory"`
 
 	// <p>任务删除条件，至少传入一个条件。不同条件之间为 AND 关系，同一条件的 Values 之间为 OR 关系。</p>
@@ -11451,36 +11451,32 @@ func (r *DescribeTWeSeeRecognitionTaskResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTWeSeeSubscriptionRequestParams struct {
-	// 产品 ID
+	// <p>产品 ID</p>
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
-	// 设备名称
+	// <p>设备名称</p>
 	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
 
-	// 算法类型。可选值：
-	// 
-	// - `VID_COMP`：视频理解
+	// <p>算法类型。可选值：</p><ul><li><code>VID_COMP</code>：视频理解</li></ul>
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
-	// 通道 ID
+	// <p>通道 ID</p>
 	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
 }
 
 type DescribeTWeSeeSubscriptionRequest struct {
 	*tchttp.BaseRequest
 	
-	// 产品 ID
+	// <p>产品 ID</p>
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
-	// 设备名称
+	// <p>设备名称</p>
 	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
 
-	// 算法类型。可选值：
-	// 
-	// - `VID_COMP`：视频理解
+	// <p>算法类型。可选值：</p><ul><li><code>VID_COMP</code>：视频理解</li></ul>
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
-	// 通道 ID
+	// <p>通道 ID</p>
 	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
 }
 
@@ -11508,48 +11504,46 @@ func (r *DescribeTWeSeeSubscriptionRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTWeSeeSubscriptionResponseParams struct {
-	// 资源 ID
+	// <p>资源 ID</p>
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
-	// 套餐规格。可能取值：
-	// 
-	// - `BASIC`：包年包月基础版（适用于视频理解）
+	// <p>套餐规格。可能取值：</p><ul><li><code>BASIC</code>：包年包月基础版（适用于视频理解）</li></ul>
 	ServiceTier *string `json:"ServiceTier,omitnil,omitempty" name:"ServiceTier"`
 
-	// 到期时间，秒级时间戳
+	// <p>到期时间，秒级时间戳</p>
 	ExpireTime *int64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
-	// 启用状态，`true` 为开启，`false` 为关闭
+	// <p>启用状态，<code>true</code> 为开启，<code>false</code> 为关闭</p>
 	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
 
-	// 订阅状态。可能取值：
-	// 
-	// - `NORMAL`：正常
-	// - `ISOLATED`：隔离
+	// <p>订阅状态。可能取值：</p><ul><li><code>NORMAL</code>：正常</li><li><code>ISOLATED</code>：隔离</li></ul>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 视觉理解配置（适用于视频理解、图片理解）
+	// <p>视觉理解配置（适用于视频理解、图片理解）</p>
 	ComprehensionConfig *SeeComprehensionConfig `json:"ComprehensionConfig,omitnil,omitempty" name:"ComprehensionConfig"`
 
-	// 视频语义浓缩配置（适用于视频语义浓缩）
+	// <p>视频语义浓缩配置（适用于视频语义浓缩）</p>
 	CompHighlightConfig *SeeCompHighlightConfig `json:"CompHighlightConfig,omitnil,omitempty" name:"CompHighlightConfig"`
 
-	// 云存事件 ID 过滤规则配置项
+	// <p>云存事件 ID 过滤规则配置项</p>
 	EventIdFilterConfig *SeeEventIdFilterConfig `json:"EventIdFilterConfig,omitnil,omitempty" name:"EventIdFilterConfig"`
 
-	// 当前周期基础能力总额度
+	// <p>每日与每周总结配置</p>
+	SummarizeConfig *SeeSummarizeConfig `json:"SummarizeConfig,omitnil,omitempty" name:"SummarizeConfig"`
+
+	// <p>当前周期基础能力总额度</p>
 	QuotaBasic *int64 `json:"QuotaBasic,omitnil,omitempty" name:"QuotaBasic"`
 
-	// 当前周期基础能力已用额度
+	// <p>当前周期基础能力已用额度</p>
 	QuotaUsedBasic *int64 `json:"QuotaUsedBasic,omitnil,omitempty" name:"QuotaUsedBasic"`
 
-	// 当前周期高级能力总额度
+	// <p>当前周期高级能力总额度</p>
 	QuotaAdvanced *int64 `json:"QuotaAdvanced,omitnil,omitempty" name:"QuotaAdvanced"`
 
-	// 当前周期高级能力已用额度
+	// <p>当前周期高级能力已用额度</p>
 	QuotaUsedAdvanced *int64 `json:"QuotaUsedAdvanced,omitnil,omitempty" name:"QuotaUsedAdvanced"`
 
-	// 额度刷新时间
+	// <p>额度刷新时间</p>
 	QuotaRefreshTime *int64 `json:"QuotaRefreshTime,omitnil,omitempty" name:"QuotaRefreshTime"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -11574,15 +11568,21 @@ func (r *DescribeTWeSeeSubscriptionResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTWeSeeTaskRequestParams struct {
-	// 任务 ID
+	// <p>任务 ID</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>下载 URL 的过期时间（秒级 UNIX 时间戳）。若传入该参数，则响应中将包含所有文件的下载 URL</p><p>单位：秒</p>
+	FileURLExpireTime *int64 `json:"FileURLExpireTime,omitnil,omitempty" name:"FileURLExpireTime"`
 }
 
 type DescribeTWeSeeTaskRequest struct {
 	*tchttp.BaseRequest
 	
-	// 任务 ID
+	// <p>任务 ID</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>下载 URL 的过期时间（秒级 UNIX 时间戳）。若传入该参数，则响应中将包含所有文件的下载 URL</p><p>单位：秒</p>
+	FileURLExpireTime *int64 `json:"FileURLExpireTime,omitnil,omitempty" name:"FileURLExpireTime"`
 }
 
 func (r *DescribeTWeSeeTaskRequest) ToJsonString() string {
@@ -11598,6 +11598,7 @@ func (r *DescribeTWeSeeTaskRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "TaskId")
+	delete(f, "FileURLExpireTime")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTWeSeeTaskRequest has unknown keys!", "")
 	}
@@ -11606,7 +11607,7 @@ func (r *DescribeTWeSeeTaskRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTWeSeeTaskResponseParams struct {
-	// 任务信息
+	// <p>任务信息</p>
 	TaskInfo *SeeTaskInfo `json:"TaskInfo,omitnil,omitempty" name:"TaskInfo"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -17060,81 +17061,81 @@ func (r *ListTWeSeePersonsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListTWeSeeTasksRequestParams struct {
-	// <p>产品 ID</p>
-	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
-
 	// <p>设备名称</p>
 	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
-
-	// <p>算法类目。可选值：</p><ul><li><code>COMPREHENSION</code>：视觉理解</li><li><code>HIGHLIGHT</code>：视频浓缩</li></ul>
-	ServiceCategory *string `json:"ServiceCategory,omitnil,omitempty" name:"ServiceCategory"`
 
 	// <p>分页拉取数量</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// <p>分页拉取偏移</p>
-	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+	// <p>产品 ID</p>
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
-	// <p>算法类型。</p><p>当 ServiceCategory 为 <code>COMPREHENSION</code> 时，可选值包括：</p><ul><li><code>VID_COMP</code>：视频理解</li><li><code>IMG_COMP</code>：图片理解</li><li><code>CONT_PERSON_MOTIONLESS</code>：静姿检测</li></ul><p>当 ServiceCategory 为 <code>HIGHLIGHT</code> 时，可选值包括：</p><ul><li><code>COMP_HIGHLIGHT</code>：视频浓缩</li></ul>
-	ServiceTypes []*string `json:"ServiceTypes,omitnil,omitempty" name:"ServiceTypes"`
+	// <p>算法类目。可选值：</p><ul><li><code>COMPREHENSION</code>：视觉理解</li><li><code>HIGHLIGHT</code>：视频浓缩</li><li><code>SUMMARIZATION</code>：每日/每周总结</li></ul>
+	ServiceCategory *string `json:"ServiceCategory,omitnil,omitempty" name:"ServiceCategory"`
 
 	// <p>通道 ID</p>
 	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
 
-	// <p>查询任务时间范围的起始时间（毫秒级 UNIX 时间戳）。不传则不生效时间范围条件。</p>
-	StartTimeMs *int64 `json:"StartTimeMs,omitnil,omitempty" name:"StartTimeMs"`
-
 	// <p>查询任务时间范围的结束时间（毫秒级 UNIX 时间戳）。不传则不生效时间范围条件。</p>
 	EndTimeMs *int64 `json:"EndTimeMs,omitnil,omitempty" name:"EndTimeMs"`
-
-	// <p>要查询的任务的状态条件。不传则不按照状态过滤，可选值：</p><ul><li><code>1</code>：失败</li><li><code>2</code>：空结果</li><li><code>3</code>：有效结果</li></ul>
-	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// <p>下载 URL 的过期时间（秒级 UNIX 时间戳）。若传入该参数，则响应中将包含所有文件的下载 URL</p>
 	FileURLExpireTime *int64 `json:"FileURLExpireTime,omitnil,omitempty" name:"FileURLExpireTime"`
 
 	// <p>任务结果过滤条件</p>
 	Filters []*VisionRecognitionTaskFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>分页拉取偏移</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>算法类型。</p><p>当 ServiceCategory 为 <code>COMPREHENSION</code> 时，可选值包括：</p><ul><li><code>VID_COMP</code>：视频理解</li><li><code>IMG_COMP</code>：图片理解</li><li><code>CONT_PERSON_MOTIONLESS</code>：静姿检测</li></ul><p>当 ServiceCategory 为 <code>HIGHLIGHT</code> 时，可选值包括：</p><ul><li><code>COMP_HIGHLIGHT</code>：视频浓缩</li></ul><p>当 ServiceCategory 为 <code>SUMMARIZATION</code> 时，可选值包括：</p><ul><li><code>DAILY_SUM</code>：每日总结</li><li><code>WEEKLY_SUM</code>：每周总结</li></ul>
+	ServiceTypes []*string `json:"ServiceTypes,omitnil,omitempty" name:"ServiceTypes"`
+
+	// <p>查询任务时间范围的起始时间（毫秒级 UNIX 时间戳）。不传则不生效时间范围条件。</p>
+	StartTimeMs *int64 `json:"StartTimeMs,omitnil,omitempty" name:"StartTimeMs"`
+
+	// <p>要查询的任务的状态条件。不传则不按照状态过滤，可选值：</p><ul><li><code>1</code>：失败</li><li><code>2</code>：空结果</li><li><code>3</code>：有效结果</li></ul>
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 type ListTWeSeeTasksRequest struct {
 	*tchttp.BaseRequest
 	
-	// <p>产品 ID</p>
-	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
-
 	// <p>设备名称</p>
 	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
-
-	// <p>算法类目。可选值：</p><ul><li><code>COMPREHENSION</code>：视觉理解</li><li><code>HIGHLIGHT</code>：视频浓缩</li></ul>
-	ServiceCategory *string `json:"ServiceCategory,omitnil,omitempty" name:"ServiceCategory"`
 
 	// <p>分页拉取数量</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// <p>分页拉取偏移</p>
-	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+	// <p>产品 ID</p>
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
-	// <p>算法类型。</p><p>当 ServiceCategory 为 <code>COMPREHENSION</code> 时，可选值包括：</p><ul><li><code>VID_COMP</code>：视频理解</li><li><code>IMG_COMP</code>：图片理解</li><li><code>CONT_PERSON_MOTIONLESS</code>：静姿检测</li></ul><p>当 ServiceCategory 为 <code>HIGHLIGHT</code> 时，可选值包括：</p><ul><li><code>COMP_HIGHLIGHT</code>：视频浓缩</li></ul>
-	ServiceTypes []*string `json:"ServiceTypes,omitnil,omitempty" name:"ServiceTypes"`
+	// <p>算法类目。可选值：</p><ul><li><code>COMPREHENSION</code>：视觉理解</li><li><code>HIGHLIGHT</code>：视频浓缩</li><li><code>SUMMARIZATION</code>：每日/每周总结</li></ul>
+	ServiceCategory *string `json:"ServiceCategory,omitnil,omitempty" name:"ServiceCategory"`
 
 	// <p>通道 ID</p>
 	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
 
-	// <p>查询任务时间范围的起始时间（毫秒级 UNIX 时间戳）。不传则不生效时间范围条件。</p>
-	StartTimeMs *int64 `json:"StartTimeMs,omitnil,omitempty" name:"StartTimeMs"`
-
 	// <p>查询任务时间范围的结束时间（毫秒级 UNIX 时间戳）。不传则不生效时间范围条件。</p>
 	EndTimeMs *int64 `json:"EndTimeMs,omitnil,omitempty" name:"EndTimeMs"`
-
-	// <p>要查询的任务的状态条件。不传则不按照状态过滤，可选值：</p><ul><li><code>1</code>：失败</li><li><code>2</code>：空结果</li><li><code>3</code>：有效结果</li></ul>
-	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// <p>下载 URL 的过期时间（秒级 UNIX 时间戳）。若传入该参数，则响应中将包含所有文件的下载 URL</p>
 	FileURLExpireTime *int64 `json:"FileURLExpireTime,omitnil,omitempty" name:"FileURLExpireTime"`
 
 	// <p>任务结果过滤条件</p>
 	Filters []*VisionRecognitionTaskFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>分页拉取偏移</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>算法类型。</p><p>当 ServiceCategory 为 <code>COMPREHENSION</code> 时，可选值包括：</p><ul><li><code>VID_COMP</code>：视频理解</li><li><code>IMG_COMP</code>：图片理解</li><li><code>CONT_PERSON_MOTIONLESS</code>：静姿检测</li></ul><p>当 ServiceCategory 为 <code>HIGHLIGHT</code> 时，可选值包括：</p><ul><li><code>COMP_HIGHLIGHT</code>：视频浓缩</li></ul><p>当 ServiceCategory 为 <code>SUMMARIZATION</code> 时，可选值包括：</p><ul><li><code>DAILY_SUM</code>：每日总结</li><li><code>WEEKLY_SUM</code>：每周总结</li></ul>
+	ServiceTypes []*string `json:"ServiceTypes,omitnil,omitempty" name:"ServiceTypes"`
+
+	// <p>查询任务时间范围的起始时间（毫秒级 UNIX 时间戳）。不传则不生效时间范围条件。</p>
+	StartTimeMs *int64 `json:"StartTimeMs,omitnil,omitempty" name:"StartTimeMs"`
+
+	// <p>要查询的任务的状态条件。不传则不按照状态过滤，可选值：</p><ul><li><code>1</code>：失败</li><li><code>2</code>：空结果</li><li><code>3</code>：有效结果</li></ul>
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 func (r *ListTWeSeeTasksRequest) ToJsonString() string {
@@ -17149,18 +17150,18 @@ func (r *ListTWeSeeTasksRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "ProductId")
 	delete(f, "DeviceName")
-	delete(f, "ServiceCategory")
 	delete(f, "Limit")
-	delete(f, "Offset")
-	delete(f, "ServiceTypes")
+	delete(f, "ProductId")
+	delete(f, "ServiceCategory")
 	delete(f, "ChannelId")
-	delete(f, "StartTimeMs")
 	delete(f, "EndTimeMs")
-	delete(f, "Status")
 	delete(f, "FileURLExpireTime")
 	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "ServiceTypes")
+	delete(f, "StartTimeMs")
+	delete(f, "Status")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListTWeSeeTasksRequest has unknown keys!", "")
 	}
@@ -18977,11 +18978,11 @@ func (r *ModifyTWeSeeSubscriptionRenewFlagResponse) FromJsonString(s string) err
 
 // Predefined struct for user
 type ModifyTWeSeeSubscriptionRequestParams struct {
-	// 产品 ID
-	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
-
 	// 设备名称
 	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 产品 ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
 	// 算法类型。可选值：
 	// 
@@ -18991,27 +18992,30 @@ type ModifyTWeSeeSubscriptionRequestParams struct {
 	// 通道 ID
 	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
 
-	// 功能开关。`true` 为开启，`false` 为关闭；不传表示不修改
-	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+	// 视频语义浓缩配置（适用于视频语义浓缩），不传则不修改
+	CompHighlightConfig *SeeCompHighlightConfig `json:"CompHighlightConfig,omitnil,omitempty" name:"CompHighlightConfig"`
 
 	// 视觉理解配置（适用于视频理解、图片理解），不传则不修改
 	ComprehensionConfig *SeeComprehensionConfig `json:"ComprehensionConfig,omitnil,omitempty" name:"ComprehensionConfig"`
 
-	// 视频语义浓缩配置（适用于视频语义浓缩），不传则不修改
-	CompHighlightConfig *SeeCompHighlightConfig `json:"CompHighlightConfig,omitnil,omitempty" name:"CompHighlightConfig"`
+	// 功能开关。`true` 为开启，`false` 为关闭；不传表示不修改
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
 
 	// 云存事件 ID 过滤规则配置，不传则不修改
 	EventIdFilterConfig *SeeEventIdFilterConfig `json:"EventIdFilterConfig,omitnil,omitempty" name:"EventIdFilterConfig"`
+
+	// 每日与每周总结配置，不传则不修改
+	SummarizeConfig *SeeSummarizeConfig `json:"SummarizeConfig,omitnil,omitempty" name:"SummarizeConfig"`
 }
 
 type ModifyTWeSeeSubscriptionRequest struct {
 	*tchttp.BaseRequest
 	
-	// 产品 ID
-	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
-
 	// 设备名称
 	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 产品 ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
 	// 算法类型。可选值：
 	// 
@@ -19021,17 +19025,20 @@ type ModifyTWeSeeSubscriptionRequest struct {
 	// 通道 ID
 	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
 
-	// 功能开关。`true` 为开启，`false` 为关闭；不传表示不修改
-	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+	// 视频语义浓缩配置（适用于视频语义浓缩），不传则不修改
+	CompHighlightConfig *SeeCompHighlightConfig `json:"CompHighlightConfig,omitnil,omitempty" name:"CompHighlightConfig"`
 
 	// 视觉理解配置（适用于视频理解、图片理解），不传则不修改
 	ComprehensionConfig *SeeComprehensionConfig `json:"ComprehensionConfig,omitnil,omitempty" name:"ComprehensionConfig"`
 
-	// 视频语义浓缩配置（适用于视频语义浓缩），不传则不修改
-	CompHighlightConfig *SeeCompHighlightConfig `json:"CompHighlightConfig,omitnil,omitempty" name:"CompHighlightConfig"`
+	// 功能开关。`true` 为开启，`false` 为关闭；不传表示不修改
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
 
 	// 云存事件 ID 过滤规则配置，不传则不修改
 	EventIdFilterConfig *SeeEventIdFilterConfig `json:"EventIdFilterConfig,omitnil,omitempty" name:"EventIdFilterConfig"`
+
+	// 每日与每周总结配置，不传则不修改
+	SummarizeConfig *SeeSummarizeConfig `json:"SummarizeConfig,omitnil,omitempty" name:"SummarizeConfig"`
 }
 
 func (r *ModifyTWeSeeSubscriptionRequest) ToJsonString() string {
@@ -19046,14 +19053,15 @@ func (r *ModifyTWeSeeSubscriptionRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "ProductId")
 	delete(f, "DeviceName")
+	delete(f, "ProductId")
 	delete(f, "ServiceType")
 	delete(f, "ChannelId")
-	delete(f, "Enabled")
-	delete(f, "ComprehensionConfig")
 	delete(f, "CompHighlightConfig")
+	delete(f, "ComprehensionConfig")
+	delete(f, "Enabled")
 	delete(f, "EventIdFilterConfig")
+	delete(f, "SummarizeConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyTWeSeeSubscriptionRequest has unknown keys!", "")
 	}
@@ -21570,6 +21578,22 @@ type SeeStatItem struct {
 	CostAdvanced *int64 `json:"CostAdvanced,omitnil,omitempty" name:"CostAdvanced"`
 }
 
+type SeeSummarizeConfig struct {
+	// 是否开启每日总结
+	EnableDailySummary *bool `json:"EnableDailySummary,omitnil,omitempty" name:"EnableDailySummary"`
+
+	// 是否开启每周总结
+	EnableWeeklySummary *bool `json:"EnableWeeklySummary,omitnil,omitempty" name:"EnableWeeklySummary"`
+
+	// <p>生成总结的详细程度</p><p>枚举值：</p><ul><li>low： 精简</li><li>medium： 概要（默认值）</li></ul>
+	SummaryVerbosity *string `json:"SummaryVerbosity,omitnil,omitempty" name:"SummaryVerbosity"`
+}
+
+type SeeSummarizeResult struct {
+	// 总结文本
+	Summary *string `json:"Summary,omitnil,omitempty" name:"Summary"`
+}
+
 type SeeTaskFaceInfo struct {
 	// 人脸裁剪图下载 URL，仅在请求 FileURLExpireTime 时返回
 	CropImageURL *string `json:"CropImageURL,omitnil,omitempty" name:"CropImageURL"`
@@ -21594,10 +21618,10 @@ type SeeTaskInfo struct {
 	// <p>任务元数据</p>
 	Metadata *SeeTaskMetadata `json:"Metadata,omitnil,omitempty" name:"Metadata"`
 
-	// <p>算法类目。可能取值：</p><ul><li><code>COMPREHENSION</code>：视觉理解</li><li><code>HIGHLIGHT</code>：视频浓缩</li></ul>
+	// <p>算法类目。</p><p>枚举值：</p><ul><li>COMPREHENSION： 视觉理解</li><li>HIGHLIGHT： 视频浓缩</li><li>SUMMARIZATION： 每日/每周总结</li></ul>
 	ServiceCategory *string `json:"ServiceCategory,omitnil,omitempty" name:"ServiceCategory"`
 
-	// <p>算法类型。可能取值：</p><ul><li><code>VID_COMP</code>：视频理解</li><li><code>IMG_COMP</code>：图片理解</li><li><code>COMP_HIGHLIGHT</code>：视频浓缩</li></ul>
+	// <p>算法类型。</p><p>枚举值：</p><ul><li>VID_COMP： 视频理解</li><li>IMG_COMP： 图片理解</li><li>COMP_HIGHLIGHT： 视频浓缩</li><li>DAILY_SUM： 每日总结</li><li>WEEKLY_SUM： 每周总结</li></ul>
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
 	// <p>套餐规格。可能取值：</p><ul><li><code>POSTPAID</code>：后付费（适用于视频理解、图片理解）</li><li><code>BASIC</code>：包年包月基础版（适用于视频理解）</li></ul>
@@ -21614,6 +21638,9 @@ type SeeTaskInfo struct {
 
 	// <p>人脸检测结果</p>
 	FaceRecognitionResult *SeeFaceRecognitionResult `json:"FaceRecognitionResult,omitnil,omitempty" name:"FaceRecognitionResult"`
+
+	// <p>每日或每周总结结果</p>
+	SummarizeResult *SeeSummarizeResult `json:"SummarizeResult,omitnil,omitempty" name:"SummarizeResult"`
 
 	// <p>完成该任务所消耗的基础能力额度</p>
 	CostBasic *int64 `json:"CostBasic,omitnil,omitempty" name:"CostBasic"`

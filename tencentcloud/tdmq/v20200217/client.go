@@ -609,7 +609,7 @@ func NewCreateProClusterResponse() (response *CreateProClusterResponse) {
 }
 
 // CreateProCluster
-// 创建专业集群——预付费，仅通过api调用
+// 创建Pulsar标准版或专业版实例——预付费，仅通过api调用
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CLOUDSERVICE = "FailedOperation.CloudService"
@@ -618,15 +618,19 @@ func NewCreateProClusterResponse() (response *CreateProClusterResponse) {
 //  FAILEDOPERATION_OPERATELATER = "FailedOperation.OperateLater"
 //  FAILEDOPERATION_PRODUCTNOTEXIST = "FailedOperation.ProductNotExist"
 //  FAILEDOPERATION_STORAGESIZEERROR = "FailedOperation.StorageSizeError"
+//  INVALIDPARAMETER_CLUSTERSPEC = "InvalidParameter.ClusterSpec"
 //  INVALIDPARAMETER_INSTANCEVERSION = "InvalidParameter.InstanceVersion"
+//  INVALIDPARAMETER_STORAGESIZE = "InvalidParameter.StorageSize"
 //  INVALIDPARAMETER_VPC = "InvalidParameter.Vpc"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER_TAG = "MissingParameter.Tag"
+//  UNSUPPORTEDOPERATION_ELASTICTPS = "UnsupportedOperation.ElasticTps"
 func (c *Client) CreateProCluster(request *CreateProClusterRequest) (response *CreateProClusterResponse, err error) {
     return c.CreateProClusterWithContext(context.Background(), request)
 }
 
 // CreateProCluster
-// 创建专业集群——预付费，仅通过api调用
+// 创建Pulsar标准版或专业版实例——预付费，仅通过api调用
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CLOUDSERVICE = "FailedOperation.CloudService"
@@ -635,9 +639,13 @@ func (c *Client) CreateProCluster(request *CreateProClusterRequest) (response *C
 //  FAILEDOPERATION_OPERATELATER = "FailedOperation.OperateLater"
 //  FAILEDOPERATION_PRODUCTNOTEXIST = "FailedOperation.ProductNotExist"
 //  FAILEDOPERATION_STORAGESIZEERROR = "FailedOperation.StorageSizeError"
+//  INVALIDPARAMETER_CLUSTERSPEC = "InvalidParameter.ClusterSpec"
 //  INVALIDPARAMETER_INSTANCEVERSION = "InvalidParameter.InstanceVersion"
+//  INVALIDPARAMETER_STORAGESIZE = "InvalidParameter.StorageSize"
 //  INVALIDPARAMETER_VPC = "InvalidParameter.Vpc"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER_TAG = "MissingParameter.Tag"
+//  UNSUPPORTEDOPERATION_ELASTICTPS = "UnsupportedOperation.ElasticTps"
 func (c *Client) CreateProClusterWithContext(ctx context.Context, request *CreateProClusterRequest) (response *CreateProClusterResponse, err error) {
     if request == nil {
         request = NewCreateProClusterRequest()
@@ -4439,7 +4447,7 @@ func NewDescribePulsarProInstanceDetailResponse() (response *DescribePulsarProIn
 }
 
 // DescribePulsarProInstanceDetail
-// 获取Pulsar专业版集群实例信息
+// 获取Pulsar标准版或专业版实例信息
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4454,7 +4462,7 @@ func (c *Client) DescribePulsarProInstanceDetail(request *DescribePulsarProInsta
 }
 
 // DescribePulsarProInstanceDetail
-// 获取Pulsar专业版集群实例信息
+// 获取Pulsar标准版或专业版实例信息
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4501,7 +4509,7 @@ func NewDescribePulsarProInstancesResponse() (response *DescribePulsarProInstanc
 }
 
 // DescribePulsarProInstances
-// 查询用户已购的Pulsar专业版实例列表
+// 查询用户已购的Pulsar实例列表
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4512,7 +4520,7 @@ func (c *Client) DescribePulsarProInstances(request *DescribePulsarProInstancesR
 }
 
 // DescribePulsarProInstances
-// 查询用户已购的Pulsar专业版实例列表
+// 查询用户已购的Pulsar实例列表
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -7273,7 +7281,7 @@ func NewModifyClusterResponse() (response *ModifyClusterResponse) {
 }
 
 // ModifyCluster
-// 更新集群信息
+// 更新虚拟集群信息
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -7283,12 +7291,13 @@ func NewModifyClusterResponse() (response *ModifyClusterResponse) {
 //  INVALIDPARAMETERVALUE_CLUSTERNAMEDUPLICATION = "InvalidParameterValue.ClusterNameDuplication"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCEUNAVAILABLE_FUNDREQUIRED = "ResourceUnavailable.FundRequired"
+//  UNSUPPORTEDOPERATION_STANDARDTIERSPECTYPECHANGE = "UnsupportedOperation.StandardTierSpecTypeChange"
 func (c *Client) ModifyCluster(request *ModifyClusterRequest) (response *ModifyClusterResponse, err error) {
     return c.ModifyClusterWithContext(context.Background(), request)
 }
 
 // ModifyCluster
-// 更新集群信息
+// 更新虚拟集群信息
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -7298,6 +7307,7 @@ func (c *Client) ModifyCluster(request *ModifyClusterRequest) (response *ModifyC
 //  INVALIDPARAMETERVALUE_CLUSTERNAMEDUPLICATION = "InvalidParameterValue.ClusterNameDuplication"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCEUNAVAILABLE_FUNDREQUIRED = "ResourceUnavailable.FundRequired"
+//  UNSUPPORTEDOPERATION_STANDARDTIERSPECTYPECHANGE = "UnsupportedOperation.StandardTierSpecTypeChange"
 func (c *Client) ModifyClusterWithContext(ctx context.Context, request *ModifyClusterRequest) (response *ModifyClusterResponse, err error) {
     if request == nil {
         request = NewModifyClusterRequest()

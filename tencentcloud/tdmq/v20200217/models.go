@@ -1378,7 +1378,7 @@ func (r *CreateEnvironmentRoleResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateProClusterRequestParams struct {
-	// <p>多可用区部署选择三个可用区，示例[200002,200003,200004]<br>单可用区部署选择一个可用区，示例[200002]</p><p>当选择PULSAR.P2.MINI1 时只支持两个可用区，其他支持三个可用区</p>
+	// <p>多可用区部署选择三个可用区，示例[200002,200003,200004]<br>单可用区部署选择一个可用区，示例[200002]</p><p>专业版：当选择PULSAR.P2.MINI1时只支持两个可用区，其他规格支持三个可用区<br>标准版（PULSAR.S2系列）：只支持两个可用区</p>
 	ZoneIds []*int64 `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
 
 	// <p>集群规格代号<br>参考 <a href="https://cloud.tencent.com/document/product/1179/83705">专业集群规格</a></p>
@@ -1407,12 +1407,18 @@ type CreateProClusterRequestParams struct {
 
 	// <p>集群版本信息</p>
 	InstanceVersion *string `json:"InstanceVersion,omitnil,omitempty" name:"InstanceVersion"`
+
+	// <p>用户自定义租户名，可选。<br>不能为空，支持数字、字母以及符号 “-_=:.”，长度不超过 64 个字符。<br>未传时使用默认规则（实例 ID 作为租户名）。</p>
+	UserTenant *string `json:"UserTenant,omitnil,omitempty" name:"UserTenant"`
+
+	// <p>是否开启弹性TPS（1：开启，0：关闭），仅专业版P1固定存储集群支持</p>
+	ElasticTpsEnabled *int64 `json:"ElasticTpsEnabled,omitnil,omitempty" name:"ElasticTpsEnabled"`
 }
 
 type CreateProClusterRequest struct {
 	*tchttp.BaseRequest
 	
-	// <p>多可用区部署选择三个可用区，示例[200002,200003,200004]<br>单可用区部署选择一个可用区，示例[200002]</p><p>当选择PULSAR.P2.MINI1 时只支持两个可用区，其他支持三个可用区</p>
+	// <p>多可用区部署选择三个可用区，示例[200002,200003,200004]<br>单可用区部署选择一个可用区，示例[200002]</p><p>专业版：当选择PULSAR.P2.MINI1时只支持两个可用区，其他规格支持三个可用区<br>标准版（PULSAR.S2系列）：只支持两个可用区</p>
 	ZoneIds []*int64 `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
 
 	// <p>集群规格代号<br>参考 <a href="https://cloud.tencent.com/document/product/1179/83705">专业集群规格</a></p>
@@ -1441,6 +1447,12 @@ type CreateProClusterRequest struct {
 
 	// <p>集群版本信息</p>
 	InstanceVersion *string `json:"InstanceVersion,omitnil,omitempty" name:"InstanceVersion"`
+
+	// <p>用户自定义租户名，可选。<br>不能为空，支持数字、字母以及符号 “-_=:.”，长度不超过 64 个字符。<br>未传时使用默认规则（实例 ID 作为租户名）。</p>
+	UserTenant *string `json:"UserTenant,omitnil,omitempty" name:"UserTenant"`
+
+	// <p>是否开启弹性TPS（1：开启，0：关闭），仅专业版P1固定存储集群支持</p>
+	ElasticTpsEnabled *int64 `json:"ElasticTpsEnabled,omitnil,omitempty" name:"ElasticTpsEnabled"`
 }
 
 func (r *CreateProClusterRequest) ToJsonString() string {
@@ -1465,6 +1477,8 @@ func (r *CreateProClusterRequest) FromJsonString(s string) error {
 	delete(f, "Vpc")
 	delete(f, "Tags")
 	delete(f, "InstanceVersion")
+	delete(f, "UserTenant")
+	delete(f, "ElasticTpsEnabled")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateProClusterRequest has unknown keys!", "")
 	}
@@ -6730,26 +6744,26 @@ func (r *DescribePulsarProInstanceDetailResponse) FromJsonString(s string) error
 
 // Predefined struct for user
 type DescribePulsarProInstancesRequestParams struct {
-	// 查询条件过滤器
+	// <p>查询条件过滤器</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 查询数目上限，默认20
+	// <p>查询数目上限，默认20</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 查询起始位置
+	// <p>查询起始位置</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 type DescribePulsarProInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 查询条件过滤器
+	// <p>查询条件过滤器</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 查询数目上限，默认20
+	// <p>查询数目上限，默认20</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 查询起始位置
+	// <p>查询起始位置</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
@@ -6776,10 +6790,10 @@ func (r *DescribePulsarProInstancesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribePulsarProInstancesResponseParams struct {
-	// 未分页的总数目
+	// <p>未分页的总数目</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 实例信息列表
+	// <p>实例信息列表</p>
 	Instances []*PulsarProInstance `json:"Instances,omitnil,omitempty" name:"Instances"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -13825,7 +13839,7 @@ type PulsarProClusterInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CanEditRoute *bool `json:"CanEditRoute,omitnil,omitempty" name:"CanEditRoute"`
 
-	// <p>代表是专业版和小规格专业版的不同计费规格PULSAR.P1固定存储PULSAR.P2弹性存储</p>
+	// <p>代表是专业版和标准版的不同计费规格<br>PULSAR.P1固定存储<br>PULSAR.P2弹性存储<br>PULSAR.S2标准版</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BillingLabelVersion *string `json:"BillingLabelVersion,omitnil,omitempty" name:"BillingLabelVersion"`
 
@@ -13841,7 +13855,7 @@ type PulsarProClusterInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DefaultPartitionNumber *int64 `json:"DefaultPartitionNumber,omitnil,omitempty" name:"DefaultPartitionNumber"`
 
-	// <p>用户自定义的租户别名，如果没有，会复用专业集群 ID</p>
+	// <p>用户自定义的租户别名，如果没有，会复用集群 ID</p>
 	Tenant *string `json:"Tenant,omitnil,omitempty" name:"Tenant"`
 
 	// <p>删除保护开关标识</p>
@@ -13852,6 +13866,9 @@ type PulsarProClusterInfo struct {
 
 	// <p>是否开启数据加密</p><p>枚举值：</p><ul><li>0： 关闭数据加密</li><li>1： 开启数据加密</li></ul>
 	EncryptionStatus *int64 `json:"EncryptionStatus,omitnil,omitempty" name:"EncryptionStatus"`
+
+	// <p>是否开启磁盘自动扩容。枚举值：0-关闭，1-开启</p>
+	AutoExpansionEnabled *int64 `json:"AutoExpansionEnabled,omitnil,omitempty" name:"AutoExpansionEnabled"`
 }
 
 type PulsarProClusterSpecInfo struct {
@@ -13898,74 +13915,74 @@ type PulsarProClusterSpecInfo struct {
 }
 
 type PulsarProInstance struct {
-	// 实例id
+	// <p>实例id</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 实例名称
+	// <p>实例名称</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 实例版本
+	// <p>实例版本</p>
 	InstanceVersion *string `json:"InstanceVersion,omitnil,omitempty" name:"InstanceVersion"`
 
-	// 实例状态，0-创建中，1-正常，2-隔离中，3-已销毁，4 - 异常, 5 - 发货失败，6-变配中，7-变配失败
+	// <p>实例状态，0-创建中，1-正常，2-隔离中，3-已销毁，4 - 异常, 5 - 发货失败，6-变配中，7-变配失败</p>
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 实例配置规格名称
+	// <p>实例配置规格名称</p>
 	ConfigDisplay *string `json:"ConfigDisplay,omitnil,omitempty" name:"ConfigDisplay"`
 
-	// 峰值TPS
+	// <p>峰值TPS</p>
 	MaxTps *uint64 `json:"MaxTps,omitnil,omitempty" name:"MaxTps"`
 
-	// 存储容量，GB为单位
+	// <p>存储容量，GB为单位</p>
 	MaxStorage *uint64 `json:"MaxStorage,omitnil,omitempty" name:"MaxStorage"`
 
-	// 实例到期时间，毫秒为单位
+	// <p>实例到期时间，毫秒为单位</p>
 	ExpireTime *uint64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
-	// 自动续费标记，0表示默认状态(用户未设置，即初始状态即手动续费)， 1表示自动续费，2表示明确不自动续费(用户设置)
+	// <p>自动续费标记，0表示默认状态(用户未设置，即初始状态即手动续费)， 1表示自动续费，2表示明确不自动续费(用户设置)</p>
 	AutoRenewFlag *uint64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 
-	// 0-后付费，1-预付费
+	// <p>0-后付费，1-预付费</p>
 	PayMode *uint64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// 备注信息
+	// <p>备注信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 实例配置ID
+	// <p>实例配置ID</p>
 	SpecName *string `json:"SpecName,omitnil,omitempty" name:"SpecName"`
 
-	// 规格外弹性TPS
+	// <p>规格外弹性TPS</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScalableTps *uint64 `json:"ScalableTps,omitnil,omitempty" name:"ScalableTps"`
 
-	// VPC的id
+	// <p>VPC的id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 子网id
+	// <p>子网id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 峰值带宽。单位：mbps
+	// <p>峰值带宽。单位：mbps</p>
 	MaxBandWidth *uint64 `json:"MaxBandWidth,omitnil,omitempty" name:"MaxBandWidth"`
 
-	// 集群的标签列表
+	// <p>集群的标签列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 集群创建时间
+	// <p>集群创建时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 代表是专业版和小规格专业版的不同计费规格PULSAR.P1固定存储PULSAR.P2弹性存储
+	// <p>代表是专业版和标准版的不同计费规格<br>PULSAR.P1固定存储<br>PULSAR.P2弹性存储<br>PULSAR.S2标准版</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BillingLabelVersion *string `json:"BillingLabelVersion,omitnil,omitempty" name:"BillingLabelVersion"`
 
-	// 自定义租户
+	// <p>自定义租户</p>
 	Tenant *string `json:"Tenant,omitnil,omitempty" name:"Tenant"`
 
-	// 集群的证书列表
+	// <p>集群的证书列表</p>
 	CertificateList []*CertificateInfo `json:"CertificateList,omitnil,omitempty" name:"CertificateList"`
 }
 

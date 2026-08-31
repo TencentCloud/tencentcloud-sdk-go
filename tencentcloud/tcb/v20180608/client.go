@@ -4929,6 +4929,7 @@ func NewExecutePGSqlResponse() (response *ExecutePGSqlResponse) {
 //  FAILEDOPERATION_INSTANCESTATUSCONFLICT = "FailedOperation.InstanceStatusConflict"
 //  FAILEDOPERATION_PGCONNECTERROR = "FailedOperation.PGConnectError"
 //  FAILEDOPERATION_PGEXECUTESQLERROR = "FailedOperation.PGExecuteSqlError"
+//  FAILEDOPERATION_PGRESULTTOOLARGE = "FailedOperation.PGResultTooLarge"
 //  INTERNALERROR_SYS_ERR = "InternalError.SYS_ERR"
 //  INVALIDPARAMETER_INVALID_PARAM = "InvalidParameter.INVALID_PARAM"
 //  RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
@@ -4943,6 +4944,7 @@ func (c *Client) ExecutePGSql(request *ExecutePGSqlRequest) (response *ExecutePG
 //  FAILEDOPERATION_INSTANCESTATUSCONFLICT = "FailedOperation.InstanceStatusConflict"
 //  FAILEDOPERATION_PGCONNECTERROR = "FailedOperation.PGConnectError"
 //  FAILEDOPERATION_PGEXECUTESQLERROR = "FailedOperation.PGExecuteSqlError"
+//  FAILEDOPERATION_PGRESULTTOOLARGE = "FailedOperation.PGResultTooLarge"
 //  INTERNALERROR_SYS_ERR = "InternalError.SYS_ERR"
 //  INVALIDPARAMETER_INVALID_PARAM = "InvalidParameter.INVALID_PARAM"
 //  RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
@@ -5463,6 +5465,64 @@ func (c *Client) ModifyEnvWithContext(ctx context.Context, request *ModifyEnvReq
     request.SetContext(ctx)
     
     response = NewModifyEnvResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyEnvExtraRequest() (request *ModifyEnvExtraRequest) {
+    request = &ModifyEnvExtraRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "ModifyEnvExtra")
+    
+    
+    return
+}
+
+func NewModifyEnvExtraResponse() (response *ModifyEnvExtraResponse) {
+    response = &ModifyEnvExtraResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyEnvExtra
+// 修改环境额外配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
+func (c *Client) ModifyEnvExtra(request *ModifyEnvExtraRequest) (response *ModifyEnvExtraResponse, err error) {
+    return c.ModifyEnvExtraWithContext(context.Background(), request)
+}
+
+// ModifyEnvExtra
+// 修改环境额外配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
+func (c *Client) ModifyEnvExtraWithContext(ctx context.Context, request *ModifyEnvExtraRequest) (response *ModifyEnvExtraResponse, err error) {
+    if request == nil {
+        request = NewModifyEnvExtraRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "ModifyEnvExtra")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyEnvExtra require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyEnvExtraResponse()
     err = c.Send(request, response)
     return
 }

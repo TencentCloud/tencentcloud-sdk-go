@@ -401,80 +401,74 @@ func (r *CompleteMigrateJobResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ConfigureSubscribeJobRequestParams struct {
-	// 数据订阅实例的 ID，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
+	// <p>数据订阅实例的 ID，可通过<a href="https://cloud.tencent.com/document/product/571/82103">DescribeSyncJobs</a>接口获取。</p>
 	SubscribeId *string `json:"SubscribeId,omitnil,omitempty" name:"SubscribeId"`
 
-	// 数据订阅的类型，当 DatabaseType 不为 mongodb 时，枚举值为：all-全实例更新；dml-数据更新；ddl-结构更新；dmlAndDdl-数据更新+结构更新。当 DatabaseType 为 mongodb 时，枚举值为 all-全实例更新；database-订阅单库；collection-订阅单集合
+	// <p>数据订阅的类型，当 DatabaseType 不为 mongodb 时，枚举值为：all-全实例更新；dml-数据更新；ddl-结构更新；dmlAndDdl-数据更新+结构更新。当 DatabaseType 为 mongodb 时，枚举值为 all-全实例更新；database-订阅单库；collection-订阅单集合</p>
 	SubscribeMode *string `json:"SubscribeMode,omitnil,omitempty" name:"SubscribeMode"`
 
-	// 源数据库接入类型，如：extranet(公网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、cdb(云数据库)、cvm(云服务器自建)、intranet(自研上云)、vpc(私有网络vpc)。注意具体可选值依赖当前链路支持能力
+	// <p>源数据库接入类型，如：extranet(公网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、cdb(云数据库)、cvm(云服务器自建)、intranet(自研上云)、vpc(私有网络vpc)。注意具体可选值依赖当前链路支持能力</p>
 	AccessType *string `json:"AccessType,omitnil,omitempty" name:"AccessType"`
 
-	// 数据库节点信息
+	// <p>数据库节点信息</p>
 	Endpoints []*EndpointItem `json:"Endpoints,omitnil,omitempty" name:"Endpoints"`
 
-	// Kafka配置
+	// <p>Kafka配置</p>
 	KafkaConfig *SubscribeKafkaConfig `json:"KafkaConfig,omitnil,omitempty" name:"KafkaConfig"`
 
-	// 订阅的数据库表信息，当 SubscribeMode 不为 all和ddl 时，SubscribeObjects 为必选参数
+	// <p>订阅的数据库表信息，当 SubscribeMode 不为 all和ddl 时，SubscribeObjects 为必选参数</p>
 	SubscribeObjects []*SubscribeObject `json:"SubscribeObjects,omitnil,omitempty" name:"SubscribeObjects"`
 
-	// 订阅数据格式，如：protobuf、json、avro。注意具体可选值依赖当前链路支持能力，数据格式详情参考官网的消费demo文档
+	// <p>订阅数据格式，如：protobuf、json、avro。注意具体可选值依赖当前链路支持能力，数据格式详情参考官网的消费demo文档</p>
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
-	// mongo选填参数：输出聚合设置。
+	// <p>mongo选填参数：输出聚合设置。</p>
 	PipelineInfo []*PipelineInfo `json:"PipelineInfo,omitnil,omitempty" name:"PipelineInfo"`
 
-	// 为业务添加的额外信息。参数名作key，参数值作value。
-	// mysql选填参数：ProcessXA-是否处理XA事务，填true处理，不填或填其他值不处理。
-	// mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream，不填也是默认changeStream。
-	// 其他业务暂没有可选参数。
+	// <p>为业务添加的额外信息。参数名作key，参数值作value。<br>mysql选填参数：ProcessXA-是否处理XA事务，填true处理，不填或填其他值不处理。<br>mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream，不填也是默认changeStream。<br>其他业务暂没有可选参数。</p>
 	ExtraAttr []*KeyValuePairOption `json:"ExtraAttr,omitnil,omitempty" name:"ExtraAttr"`
 
-	// vpc id
+	// <p>vpc id</p>
 	ConsumerVpcId *string `json:"ConsumerVpcId,omitnil,omitempty" name:"ConsumerVpcId"`
 
-	// subnet id
+	// <p>subnet id</p>
 	ConsumerSubnetId *string `json:"ConsumerSubnetId,omitnil,omitempty" name:"ConsumerSubnetId"`
 }
 
 type ConfigureSubscribeJobRequest struct {
 	*tchttp.BaseRequest
 	
-	// 数据订阅实例的 ID，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
+	// <p>数据订阅实例的 ID，可通过<a href="https://cloud.tencent.com/document/product/571/82103">DescribeSyncJobs</a>接口获取。</p>
 	SubscribeId *string `json:"SubscribeId,omitnil,omitempty" name:"SubscribeId"`
 
-	// 数据订阅的类型，当 DatabaseType 不为 mongodb 时，枚举值为：all-全实例更新；dml-数据更新；ddl-结构更新；dmlAndDdl-数据更新+结构更新。当 DatabaseType 为 mongodb 时，枚举值为 all-全实例更新；database-订阅单库；collection-订阅单集合
+	// <p>数据订阅的类型，当 DatabaseType 不为 mongodb 时，枚举值为：all-全实例更新；dml-数据更新；ddl-结构更新；dmlAndDdl-数据更新+结构更新。当 DatabaseType 为 mongodb 时，枚举值为 all-全实例更新；database-订阅单库；collection-订阅单集合</p>
 	SubscribeMode *string `json:"SubscribeMode,omitnil,omitempty" name:"SubscribeMode"`
 
-	// 源数据库接入类型，如：extranet(公网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、cdb(云数据库)、cvm(云服务器自建)、intranet(自研上云)、vpc(私有网络vpc)。注意具体可选值依赖当前链路支持能力
+	// <p>源数据库接入类型，如：extranet(公网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、cdb(云数据库)、cvm(云服务器自建)、intranet(自研上云)、vpc(私有网络vpc)。注意具体可选值依赖当前链路支持能力</p>
 	AccessType *string `json:"AccessType,omitnil,omitempty" name:"AccessType"`
 
-	// 数据库节点信息
+	// <p>数据库节点信息</p>
 	Endpoints []*EndpointItem `json:"Endpoints,omitnil,omitempty" name:"Endpoints"`
 
-	// Kafka配置
+	// <p>Kafka配置</p>
 	KafkaConfig *SubscribeKafkaConfig `json:"KafkaConfig,omitnil,omitempty" name:"KafkaConfig"`
 
-	// 订阅的数据库表信息，当 SubscribeMode 不为 all和ddl 时，SubscribeObjects 为必选参数
+	// <p>订阅的数据库表信息，当 SubscribeMode 不为 all和ddl 时，SubscribeObjects 为必选参数</p>
 	SubscribeObjects []*SubscribeObject `json:"SubscribeObjects,omitnil,omitempty" name:"SubscribeObjects"`
 
-	// 订阅数据格式，如：protobuf、json、avro。注意具体可选值依赖当前链路支持能力，数据格式详情参考官网的消费demo文档
+	// <p>订阅数据格式，如：protobuf、json、avro。注意具体可选值依赖当前链路支持能力，数据格式详情参考官网的消费demo文档</p>
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
-	// mongo选填参数：输出聚合设置。
+	// <p>mongo选填参数：输出聚合设置。</p>
 	PipelineInfo []*PipelineInfo `json:"PipelineInfo,omitnil,omitempty" name:"PipelineInfo"`
 
-	// 为业务添加的额外信息。参数名作key，参数值作value。
-	// mysql选填参数：ProcessXA-是否处理XA事务，填true处理，不填或填其他值不处理。
-	// mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream，不填也是默认changeStream。
-	// 其他业务暂没有可选参数。
+	// <p>为业务添加的额外信息。参数名作key，参数值作value。<br>mysql选填参数：ProcessXA-是否处理XA事务，填true处理，不填或填其他值不处理。<br>mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream，不填也是默认changeStream。<br>其他业务暂没有可选参数。</p>
 	ExtraAttr []*KeyValuePairOption `json:"ExtraAttr,omitnil,omitempty" name:"ExtraAttr"`
 
-	// vpc id
+	// <p>vpc id</p>
 	ConsumerVpcId *string `json:"ConsumerVpcId,omitnil,omitempty" name:"ConsumerVpcId"`
 
-	// subnet id
+	// <p>subnet id</p>
 	ConsumerSubnetId *string `json:"ConsumerSubnetId,omitnil,omitempty" name:"ConsumerSubnetId"`
 }
 
@@ -6060,48 +6054,44 @@ func (r *ModifySubscribeNameResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifySubscribeObjectsRequestParams struct {
-	// 数据订阅实例的ID，可通过[DescribeSubscribeJobs](https://cloud.tencent.com/document/product/571/102943)接口获取。
+	// <p>数据订阅实例的ID，可通过<a href="https://cloud.tencent.com/document/product/571/102943">DescribeSubscribeJobs</a>接口获取。</p>
 	SubscribeId *string `json:"SubscribeId,omitnil,omitempty" name:"SubscribeId"`
 
-	// 数据订阅的类型，非mongo任务的枚举值：0-全实例更新；1-数据更新；2-结构更新；3-数据更新+结构更新。mongo任务的枚举值：0-全实例更新；4-订阅单库；5-订阅单集合
+	// <p>数据订阅的类型，非mongo任务的枚举值：0-全实例更新；1-数据更新；2-结构更新；3-数据更新+结构更新。mongo任务的枚举值：0-全实例更新；4-订阅单库；5-订阅单集合</p>
 	SubscribeObjectType *int64 `json:"SubscribeObjectType,omitnil,omitempty" name:"SubscribeObjectType"`
 
-	// 修改后的订阅数据库表信息。会覆盖原来的订阅对象，所以除非 SubscribeObjectType = 0或2，否则该字段必填。
+	// <p>修改后的订阅数据库表信息。会覆盖原来的订阅对象，所以除非 SubscribeObjectType = 0或2，否则该字段必填。</p>
 	Objects []*ModifiedSubscribeObject `json:"Objects,omitnil,omitempty" name:"Objects"`
 
-	// kafka分区策略。如果不填，默认不修改。如果填了，会覆盖原来的策略。
+	// <p>kafka分区策略。如果不填，默认不修改。如果填了，会覆盖原来的策略。</p>
 	DistributeRules []*DistributeRule `json:"DistributeRules,omitnil,omitempty" name:"DistributeRules"`
 
-	// 默认分区策略。不满足DistributeRules中正则表达式的数据，将按照默认分区策略计算分区。
-	// 非mongo产品支持的默认策略: table-按表名分区，pk-按表名+主键分区。mongo的默认策略仅支持：collection-按集合名分区。
-	// 该字段与DistributeRules搭配使用。如果配置了DistributeRules，该字段也必填。如果配置了该字段，视为配置了一条DistributeRules，原来的分区策略也会被覆盖。
+	// <p>默认分区策略。不满足DistributeRules中正则表达式的数据，将按照默认分区策略计算分区。<br>非mongo产品支持的默认策略: table-按表名分区，pk-按表名+主键分区。mongo的默认策略仅支持：collection-按集合名分区。<br>该字段与DistributeRules搭配使用。如果配置了DistributeRules，该字段也必填。如果配置了该字段，视为配置了一条DistributeRules，原来的分区策略也会被覆盖。</p>
 	DefaultRuleType *string `json:"DefaultRuleType,omitnil,omitempty" name:"DefaultRuleType"`
 
-	// mongo输出聚合设置，mongo任务可选。如果不填，默认不修改。
+	// <p>mongo输出聚合设置，mongo任务可选。如果不填，默认不修改。</p>
 	PipelineInfo []*PipelineInfo `json:"PipelineInfo,omitnil,omitempty" name:"PipelineInfo"`
 }
 
 type ModifySubscribeObjectsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 数据订阅实例的ID，可通过[DescribeSubscribeJobs](https://cloud.tencent.com/document/product/571/102943)接口获取。
+	// <p>数据订阅实例的ID，可通过<a href="https://cloud.tencent.com/document/product/571/102943">DescribeSubscribeJobs</a>接口获取。</p>
 	SubscribeId *string `json:"SubscribeId,omitnil,omitempty" name:"SubscribeId"`
 
-	// 数据订阅的类型，非mongo任务的枚举值：0-全实例更新；1-数据更新；2-结构更新；3-数据更新+结构更新。mongo任务的枚举值：0-全实例更新；4-订阅单库；5-订阅单集合
+	// <p>数据订阅的类型，非mongo任务的枚举值：0-全实例更新；1-数据更新；2-结构更新；3-数据更新+结构更新。mongo任务的枚举值：0-全实例更新；4-订阅单库；5-订阅单集合</p>
 	SubscribeObjectType *int64 `json:"SubscribeObjectType,omitnil,omitempty" name:"SubscribeObjectType"`
 
-	// 修改后的订阅数据库表信息。会覆盖原来的订阅对象，所以除非 SubscribeObjectType = 0或2，否则该字段必填。
+	// <p>修改后的订阅数据库表信息。会覆盖原来的订阅对象，所以除非 SubscribeObjectType = 0或2，否则该字段必填。</p>
 	Objects []*ModifiedSubscribeObject `json:"Objects,omitnil,omitempty" name:"Objects"`
 
-	// kafka分区策略。如果不填，默认不修改。如果填了，会覆盖原来的策略。
+	// <p>kafka分区策略。如果不填，默认不修改。如果填了，会覆盖原来的策略。</p>
 	DistributeRules []*DistributeRule `json:"DistributeRules,omitnil,omitempty" name:"DistributeRules"`
 
-	// 默认分区策略。不满足DistributeRules中正则表达式的数据，将按照默认分区策略计算分区。
-	// 非mongo产品支持的默认策略: table-按表名分区，pk-按表名+主键分区。mongo的默认策略仅支持：collection-按集合名分区。
-	// 该字段与DistributeRules搭配使用。如果配置了DistributeRules，该字段也必填。如果配置了该字段，视为配置了一条DistributeRules，原来的分区策略也会被覆盖。
+	// <p>默认分区策略。不满足DistributeRules中正则表达式的数据，将按照默认分区策略计算分区。<br>非mongo产品支持的默认策略: table-按表名分区，pk-按表名+主键分区。mongo的默认策略仅支持：collection-按集合名分区。<br>该字段与DistributeRules搭配使用。如果配置了DistributeRules，该字段也必填。如果配置了该字段，视为配置了一条DistributeRules，原来的分区策略也会被覆盖。</p>
 	DefaultRuleType *string `json:"DefaultRuleType,omitnil,omitempty" name:"DefaultRuleType"`
 
-	// mongo输出聚合设置，mongo任务可选。如果不填，默认不修改。
+	// <p>mongo输出聚合设置，mongo任务可选。如果不填，默认不修改。</p>
 	PipelineInfo []*PipelineInfo `json:"PipelineInfo,omitnil,omitempty" name:"PipelineInfo"`
 }
 

@@ -4386,51 +4386,57 @@ func (r *DescribeUserProjectListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeUserRoleListRequestParams struct {
-	// 页码
+	// <p>页码</p>
 	PageNo *int64 `json:"PageNo,omitnil,omitempty" name:"PageNo"`
 
-	// 页数
+	// <p>页数</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 全部页码
+	// <p>全部页码</p>
 	AllPage *bool `json:"AllPage,omitnil,omitempty" name:"AllPage"`
 
-	// 0 企业用户 1 访客 不填表示所有用户
+	// <p>0 企业用户 1 访客 不填表示所有用户</p>
 	UserType *string `json:"UserType,omitnil,omitempty" name:"UserType"`
 
-	// 模糊搜索的关键字
+	// <p>模糊搜索的关键字</p>
 	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
 
-	// 项目id
+	// <p>项目id</p>
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 是否只获取绑定企微应用的
+	// <p>是否只获取绑定企微应用的</p>
 	IsOnlyBindAppUser *bool `json:"IsOnlyBindAppUser,omitnil,omitempty" name:"IsOnlyBindAppUser"`
+
+	// <p>用户类型</p>
+	IdentityType *string `json:"IdentityType,omitnil,omitempty" name:"IdentityType"`
 }
 
 type DescribeUserRoleListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 页码
+	// <p>页码</p>
 	PageNo *int64 `json:"PageNo,omitnil,omitempty" name:"PageNo"`
 
-	// 页数
+	// <p>页数</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 全部页码
+	// <p>全部页码</p>
 	AllPage *bool `json:"AllPage,omitnil,omitempty" name:"AllPage"`
 
-	// 0 企业用户 1 访客 不填表示所有用户
+	// <p>0 企业用户 1 访客 不填表示所有用户</p>
 	UserType *string `json:"UserType,omitnil,omitempty" name:"UserType"`
 
-	// 模糊搜索的关键字
+	// <p>模糊搜索的关键字</p>
 	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
 
-	// 项目id
+	// <p>项目id</p>
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 是否只获取绑定企微应用的
+	// <p>是否只获取绑定企微应用的</p>
 	IsOnlyBindAppUser *bool `json:"IsOnlyBindAppUser,omitnil,omitempty" name:"IsOnlyBindAppUser"`
+
+	// <p>用户类型</p>
+	IdentityType *string `json:"IdentityType,omitnil,omitempty" name:"IdentityType"`
 }
 
 func (r *DescribeUserRoleListRequest) ToJsonString() string {
@@ -4452,6 +4458,7 @@ func (r *DescribeUserRoleListRequest) FromJsonString(s string) error {
 	delete(f, "Keyword")
 	delete(f, "ProjectId")
 	delete(f, "IsOnlyBindAppUser")
+	delete(f, "IdentityType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUserRoleListRequest has unknown keys!", "")
 	}
@@ -4464,15 +4471,15 @@ type DescribeUserRoleListResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorInfo *ErrorInfo `json:"ErrorInfo,omitnil,omitempty" name:"ErrorInfo"`
 
-	// 扩展描述信息(提供更多异常信息,用于辅助判断)
+	// <p>扩展描述信息(提供更多异常信息,用于辅助判断)</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
 
-	// 数据
+	// <p>数据</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *UserRoleListData `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// 消息
+	// <p>消息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
 
@@ -7802,6 +7809,10 @@ type UserInfo struct {
 	// <p>飞书OpenId</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LarkOpenId *string `json:"LarkOpenId,omitnil,omitempty" name:"LarkOpenId"`
+
+	// <p>用户类型</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IdentityType *string `json:"IdentityType,omitnil,omitempty" name:"IdentityType"`
 }
 
 type UserResourceDTO struct {
@@ -7863,97 +7874,101 @@ type UserRoleListDataRoleInfo struct {
 }
 
 type UserRoleListDataUserRoleInfo struct {
-	// 业务ID
+	// <p>业务ID</p>
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 角色列表
+	// <p>角色列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RoleList []*UserRoleListDataRoleInfo `json:"RoleList,omitnil,omitempty" name:"RoleList"`
 
-	// 角色ID列表
+	// <p>角色ID列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RoleIdList []*uint64 `json:"RoleIdList,omitnil,omitempty" name:"RoleIdList"`
 
-	// 用户ID
+	// <p>用户ID</p>
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
-	// 用户名
+	// <p>用户名</p>
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
-	// 企业ID
+	// <p>企业ID</p>
 	CorpId *string `json:"CorpId,omitnil,omitempty" name:"CorpId"`
 
-	// 邮箱
+	// <p>邮箱</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
 
-	// 创建人
+	// <p>创建人</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatedUser *string `json:"CreatedUser,omitnil,omitempty" name:"CreatedUser"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
 
-	// 更新人
+	// <p>更新人</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdatedUser *string `json:"UpdatedUser,omitnil,omitempty" name:"UpdatedUser"`
 
-	// 更新时间
+	// <p>更新时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdatedAt *string `json:"UpdatedAt,omitnil,omitempty" name:"UpdatedAt"`
 
-	// 最后一次登录时间
+	// <p>最后一次登录时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastLogin *string `json:"LastLogin,omitnil,omitempty" name:"LastLogin"`
 
-	// 账号状态
+	// <p>账号状态</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 手机号码
+	// <p>手机号码</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PhoneNumber *string `json:"PhoneNumber,omitnil,omitempty" name:"PhoneNumber"`
 
-	// 手机号区号
+	// <p>手机号区号</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AreaCode *string `json:"AreaCode,omitnil,omitempty" name:"AreaCode"`
 
-	// 是否为主账号
+	// <p>是否为主账号</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RootAccount *bool `json:"RootAccount,omitnil,omitempty" name:"RootAccount"`
 
-	// 是否为企业管理员
+	// <p>是否为企业管理员</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CorpAdmin *bool `json:"CorpAdmin,omitnil,omitempty" name:"CorpAdmin"`
 
-	// 企微用户id
+	// <p>企微用户id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppUserId *string `json:"AppUserId,omitnil,omitempty" name:"AppUserId"`
 
-	// 昵称
+	// <p>昵称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppUserAliasName *string `json:"AppUserAliasName,omitnil,omitempty" name:"AppUserAliasName"`
 
-	// 应用用户名
+	// <p>应用用户名</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppUserName *string `json:"AppUserName,omitnil,omitempty" name:"AppUserName"`
 
-	// 是否在可见范围内
+	// <p>是否在可见范围内</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InValidateAppRange *bool `json:"InValidateAppRange,omitnil,omitempty" name:"InValidateAppRange"`
 
-	// 用户openid
+	// <p>用户openid</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppOpenUserId *string `json:"AppOpenUserId,omitnil,omitempty" name:"AppOpenUserId"`
 
-	// 邮箱激活状态
+	// <p>邮箱激活状态</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EmailActivationStatus *int64 `json:"EmailActivationStatus,omitnil,omitempty" name:"EmailActivationStatus"`
 
-	// 用户组信息
+	// <p>用户组信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserGroupList []*UserGroupDTO `json:"UserGroupList,omitnil,omitempty" name:"UserGroupList"`
+
+	// <p>用户类型</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IdentityType *string `json:"IdentityType,omitnil,omitempty" name:"IdentityType"`
 }
 
 type UserTagInfo struct {

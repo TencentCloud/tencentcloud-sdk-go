@@ -497,6 +497,10 @@ type ClusterActivity struct {
 	// 集群活动起因。
 	Cause *string `json:"Cause,omitnil,omitempty" name:"Cause"`
 
+	// 队列名称。集群级活动（如创建/删除集群）此字段为空，队列级活动（如扩容/缩容）为对应队列名。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
+
 	// 集群活动描述。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 

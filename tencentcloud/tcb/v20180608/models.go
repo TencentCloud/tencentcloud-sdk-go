@@ -1349,6 +1349,9 @@ type CreateCloudAppRequestParams struct {
 
 	// <p>敏感凭证（AES 加密落库），构建容器中以 $SECRET_NAME 引用</p>
 	Secrets []*BuildSecret `json:"Secrets,omitnil,omitempty" name:"Secrets"`
+
+	// <p>选择 NodeRuntime 版本: 16,18,20,22,24 等</p>
+	NodeJsVersion *string `json:"NodeJsVersion,omitnil,omitempty" name:"NodeJsVersion"`
 }
 
 type CreateCloudAppRequest struct {
@@ -1383,6 +1386,9 @@ type CreateCloudAppRequest struct {
 
 	// <p>敏感凭证（AES 加密落库），构建容器中以 $SECRET_NAME 引用</p>
 	Secrets []*BuildSecret `json:"Secrets,omitnil,omitempty" name:"Secrets"`
+
+	// <p>选择 NodeRuntime 版本: 16,18,20,22,24 等</p>
+	NodeJsVersion *string `json:"NodeJsVersion,omitnil,omitempty" name:"NodeJsVersion"`
 }
 
 func (r *CreateCloudAppRequest) ToJsonString() string {
@@ -1407,6 +1413,7 @@ func (r *CreateCloudAppRequest) FromJsonString(s string) error {
 	delete(f, "Env")
 	delete(f, "CustomSteps")
 	delete(f, "Secrets")
+	delete(f, "NodeJsVersion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCloudAppRequest has unknown keys!", "")
 	}
@@ -8166,6 +8173,67 @@ func (r *ModifyDatabaseACLResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyDatabaseACLResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyEnvExtraRequestParams struct {
+	// <p>环境ID</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// <p>开启或关闭 <code>超限转按量</code>。<br>可取值： TRUE/FALSE （字符串类型）<br>非法制、不传、为空 则不变更该字段。</p>
+	EnableOverrun *string `json:"EnableOverrun,omitnil,omitempty" name:"EnableOverrun"`
+}
+
+type ModifyEnvExtraRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>环境ID</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// <p>开启或关闭 <code>超限转按量</code>。<br>可取值： TRUE/FALSE （字符串类型）<br>非法制、不传、为空 则不变更该字段。</p>
+	EnableOverrun *string `json:"EnableOverrun,omitnil,omitempty" name:"EnableOverrun"`
+}
+
+func (r *ModifyEnvExtraRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyEnvExtraRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "EnableOverrun")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyEnvExtraRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyEnvExtraResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyEnvExtraResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyEnvExtraResponseParams `json:"Response"`
+}
+
+func (r *ModifyEnvExtraResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyEnvExtraResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

@@ -110,6 +110,9 @@ type AutoScalingConfig struct {
 	// <p>ccu最大值</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RangeMax *float64 `json:"RangeMax,omitnil,omitempty" name:"RangeMax"`
+
+	// <p>返回的 range 参数对应的资源类型</p><p>枚举值：</p><ul><li>cpu： 返回的是 cpu 调整返回限制，当不存在mem限制时代表 ccu</li><li>nodecount： 返回的是水平扩缩容的节点数限制范围</li></ul>
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 }
 
 type BackupMethodStatisticsModel struct {
@@ -782,7 +785,7 @@ type CreateDBInstancesRequestParams struct {
 	// <p>兼容模式，enum:MySQL,HBase</p>
 	SQLMode *string `json:"SQLMode,omitnil,omitempty" name:"SQLMode"`
 
-	// <p>svls实例的ccu变配配置</p>
+	// <p>SVLS 实例的ccu变配配置</p><p>入参限制：同时传入 AutoScaleConfigs 时此参数不再生效</p>
 	AutoScaleConfig *AutoScalingConfig `json:"AutoScaleConfig,omitnil,omitempty" name:"AutoScaleConfig"`
 
 	// <p>绑定安全组列表</p>
@@ -796,6 +799,9 @@ type CreateDBInstancesRequestParams struct {
 
 	// <p>是否开启透明加密，0：不开启，1：开启</p>
 	EncryptionEnable *int64 `json:"EncryptionEnable,omitnil,omitempty" name:"EncryptionEnable"`
+
+	// <p>SVLS 实例的自动变配相关限制</p><p>入参限制：传入时 AutoScaleConfig 参数不再生效</p>
+	AutoScaleConfigs []*AutoScalingConfig `json:"AutoScaleConfigs,omitnil,omitempty" name:"AutoScaleConfigs"`
 }
 
 type CreateDBInstancesRequest struct {
@@ -888,7 +894,7 @@ type CreateDBInstancesRequest struct {
 	// <p>兼容模式，enum:MySQL,HBase</p>
 	SQLMode *string `json:"SQLMode,omitnil,omitempty" name:"SQLMode"`
 
-	// <p>svls实例的ccu变配配置</p>
+	// <p>SVLS 实例的ccu变配配置</p><p>入参限制：同时传入 AutoScaleConfigs 时此参数不再生效</p>
 	AutoScaleConfig *AutoScalingConfig `json:"AutoScaleConfig,omitnil,omitempty" name:"AutoScaleConfig"`
 
 	// <p>绑定安全组列表</p>
@@ -902,6 +908,9 @@ type CreateDBInstancesRequest struct {
 
 	// <p>是否开启透明加密，0：不开启，1：开启</p>
 	EncryptionEnable *int64 `json:"EncryptionEnable,omitnil,omitempty" name:"EncryptionEnable"`
+
+	// <p>SVLS 实例的自动变配相关限制</p><p>入参限制：传入时 AutoScaleConfig 参数不再生效</p>
+	AutoScaleConfigs []*AutoScalingConfig `json:"AutoScaleConfigs,omitnil,omitempty" name:"AutoScaleConfigs"`
 }
 
 func (r *CreateDBInstancesRequest) ToJsonString() string {
@@ -950,6 +959,7 @@ func (r *CreateDBInstancesRequest) FromJsonString(s string) error {
 	delete(f, "UserName")
 	delete(f, "Password")
 	delete(f, "EncryptionEnable")
+	delete(f, "AutoScaleConfigs")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDBInstancesRequest has unknown keys!", "")
 	}
@@ -1668,6 +1678,9 @@ type DescribeDBInstanceDetailResponseParams struct {
 	// <p>真实使用的kms地域，用于后续调用kms服务</p>
 	EncryptionKmsRegion *string `json:"EncryptionKmsRegion,omitnil,omitempty" name:"EncryptionKmsRegion"`
 
+	// <p>serverless自动变配配置</p>
+	AutoScaleConfigs []*AutoScalingConfig `json:"AutoScaleConfigs,omitnil,omitempty" name:"AutoScaleConfigs"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -1701,6 +1714,12 @@ type DescribeDBInstancesRequestParams struct {
 
 	// <p>指定查询引擎类型</p><p>枚举值：</p><ul><li>libra： 列存引擎</li></ul>
 	EngineType *string `json:"EngineType,omitnil,omitempty" name:"EngineType"`
+
+	// <p>查询Order By字段，支持 StorageNodeNum/CreateTime/CreateVersion</p>
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
+
+	// <p>排序方向</p><p>枚举值：</p><ul><li>ASC： 升序</li><li>DESC： 降序</li></ul><p>默认值：DESC</p>
+	OrderDirection *string `json:"OrderDirection,omitnil,omitempty" name:"OrderDirection"`
 }
 
 type DescribeDBInstancesRequest struct {
@@ -1717,6 +1736,12 @@ type DescribeDBInstancesRequest struct {
 
 	// <p>指定查询引擎类型</p><p>枚举值：</p><ul><li>libra： 列存引擎</li></ul>
 	EngineType *string `json:"EngineType,omitnil,omitempty" name:"EngineType"`
+
+	// <p>查询Order By字段，支持 StorageNodeNum/CreateTime/CreateVersion</p>
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
+
+	// <p>排序方向</p><p>枚举值：</p><ul><li>ASC： 升序</li><li>DESC： 降序</li></ul><p>默认值：DESC</p>
+	OrderDirection *string `json:"OrderDirection,omitnil,omitempty" name:"OrderDirection"`
 }
 
 func (r *DescribeDBInstancesRequest) ToJsonString() string {
@@ -1735,6 +1760,8 @@ func (r *DescribeDBInstancesRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Offset")
 	delete(f, "EngineType")
+	delete(f, "OrderBy")
+	delete(f, "OrderDirection")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDBInstancesRequest has unknown keys!", "")
 	}
@@ -3201,6 +3228,9 @@ type DescribeSpecsResponseParams struct {
 	// <p>svls节点售卖规格列表</p>
 	ServerlessCcuSpec []*ServerlessCcu `json:"ServerlessCcuSpec,omitnil,omitempty" name:"ServerlessCcuSpec"`
 
+	// <p>serverless节点数量配置</p>
+	ServerlessNodeNumSpec *ServerlessNodeNumSpec `json:"ServerlessNodeNumSpec,omitnil,omitempty" name:"ServerlessNodeNumSpec"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -3829,6 +3859,9 @@ type InstanceInfo struct {
 
 	// <p>分析引擎实例信息</p>
 	AnalysisInstanceInfo *AnalysisInstanceInfo `json:"AnalysisInstanceInfo,omitnil,omitempty" name:"AnalysisInstanceInfo"`
+
+	// <p>有关该实例的多个自动变配相关配置，ccu、nodecount 值</p>
+	AutoScaleConfigs []*AutoScalingConfig `json:"AutoScaleConfigs,omitnil,omitempty" name:"AutoScaleConfigs"`
 }
 
 type InstanceNode struct {
@@ -5099,10 +5132,18 @@ type SecurityGroupBound struct {
 
 type ServerlessCcu struct {
 	// <p>ccu最小值</p>
-	MinCcu *int64 `json:"MinCcu,omitnil,omitempty" name:"MinCcu"`
+	MinCcu *float64 `json:"MinCcu,omitnil,omitempty" name:"MinCcu"`
 
 	// <p>ccu最大值范围</p>
-	MaxCcu []*int64 `json:"MaxCcu,omitnil,omitempty" name:"MaxCcu"`
+	MaxCcu []*float64 `json:"MaxCcu,omitnil,omitempty" name:"MaxCcu"`
+}
+
+type ServerlessNodeNumSpec struct {
+	// <p>最小节点数</p>
+	MinNodeNum *int64 `json:"MinNodeNum,omitnil,omitempty" name:"MinNodeNum"`
+
+	// <p>最大节点数</p>
+	MaxNodeNum *int64 `json:"MaxNodeNum,omitnil,omitempty" name:"MaxNodeNum"`
 }
 
 type SlowLogData struct {

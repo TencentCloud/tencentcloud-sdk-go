@@ -17,6 +17,10 @@ package v20210712
 const (
 	// 此产品的特有错误码
 
+	// 操作未授权。当前子用户在访问管理 CAM 中没有被授予该操作的权限，
+	// 或没有被授予本次请求涉及的媒体库资源的权限。
+	AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 
@@ -31,6 +35,9 @@ const (
 
 	// 发送短信验证码时发生错误。
 	INTERNALERROR_SENDSMS = "InternalError.SendSms"
+
+	// 创建媒体库时必须选择一个标签
+	INVALIDPARAMETER_TAGSREQUIRED = "InvalidParameter.TagsRequired"
 
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"

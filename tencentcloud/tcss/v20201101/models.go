@@ -24422,20 +24422,17 @@ func (r *DescribeVirusMonitorConfigRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeVirusMonitorConfigResponseParams struct {
-	// 是否开启实时监控
+	// <p>是否开启实时监控</p>
 	EnableScan *bool `json:"EnableScan,omitnil,omitempty" name:"EnableScan"`
 
-	// true:包含路径 false:排除路径
+	// <p>true:包含路径 false:排除路径</p>
 	IsIncludePath *bool `json:"IsIncludePath,omitnil,omitempty" name:"IsIncludePath"`
 
-	// 自选排除或扫描的地址
+	// <p>自选排除或扫描的地址</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScanPath []*string `json:"ScanPath,omitnil,omitempty" name:"ScanPath"`
 
-	// 扫描路径模式：
-	// SCAN_PATH_ALL：全部路径
-	// SCAN_PATH_DEFAULT：默认路径
-	// SCAN_PATH_USER_DEFINE：用户自定义路径
+	// <p>扫描路径模式：<br>SCAN_PATH_ALL：全部路径<br>SCAN_PATH_DEFAULT：默认路径<br>SCAN_PATH_USER_DEFINE：用户自定义路径</p>
 	ScanPathMode *string `json:"ScanPathMode,omitnil,omitempty" name:"ScanPathMode"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -24615,36 +24612,31 @@ func (r *DescribeVirusScanConfigRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeVirusScanConfigResponseParams struct {
-	// 是否开启定期扫描
+	// <p>是否开启定期扫描</p>
 	EnableScan *bool `json:"EnableScan,omitnil,omitempty" name:"EnableScan"`
 
-	// 检测周期每隔多少天
+	// <p>检测周期每隔多少天</p>
 	Cycle *uint64 `json:"Cycle,omitnil,omitempty" name:"Cycle"`
 
-	// 扫描开始时间
+	// <p>扫描开始时间</p>
 	BeginScanAt *string `json:"BeginScanAt,omitnil,omitempty" name:"BeginScanAt"`
 
-	// 超时时长，单位小时
+	// <p>超时时长，单位小时</p>
 	Timeout *uint64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
 
-	// SCAN_NODE:扫描节点
-	// SCAN_CONTAINER:扫描容器
+	// <p>SCAN_NODE:扫描节点<br>SCAN_CONTAINER:扫描容器</p>
 	ScanRangeType *string `json:"ScanRangeType,omitnil,omitempty" name:"ScanRangeType"`
 
-	// 自选扫描范围的容器id或者节点id 
+	// <p>自选扫描范围的容器id或者节点id</p>
 	ScanIDs []*ScanRangeInfo `json:"ScanIDs,omitnil,omitempty" name:"ScanIDs"`
 
-	// 自选排除或扫描的地址
+	// <p>自选排除或扫描的地址</p>
 	ScanPath []*string `json:"ScanPath,omitnil,omitempty" name:"ScanPath"`
 
-	// 扫描路径模式：
-	// SCAN_PATH_ALL：全部路径
-	// SCAN_PATH_DEFAULT：默认路径
-	// SCAN_PATH_USER_DEFINE：用户自定义路径
+	// <p>扫描路径模式：<br>SCAN_PATH_ALL：全部路径<br>SCAN_PATH_DEFAULT：默认路径<br>SCAN_PATH_USER_DEFINE：用户自定义路径</p>
 	ScanPathMode *string `json:"ScanPathMode,omitnil,omitempty" name:"ScanPathMode"`
 
-	// true:包含路径
-	// false:排除路径
+	// <p>true:包含路径<br>false:排除路径</p>
 	IsIncludePath *bool `json:"IsIncludePath,omitnil,omitempty" name:"IsIncludePath"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

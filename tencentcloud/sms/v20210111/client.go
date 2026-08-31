@@ -597,6 +597,76 @@ func (c *Client) DescribePhoneNumberInfoWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeSendRecordListRequest() (request *DescribeSendRecordListRequest) {
+    request = &DescribeSendRecordListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("sms", APIVersion, "DescribeSendRecordList")
+    
+    
+    return
+}
+
+func NewDescribeSendRecordListResponse() (response *DescribeSendRecordListResponse) {
+    response = &DescribeSendRecordListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSendRecordList
+// 本接口 (DescribeSendRecordList) 用于查询单个手机号在指定时间范围内的短信下发记录。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_JSONPARSEFAIL = "InternalError.JsonParseFail"
+//  INTERNALERROR_SENDANDRECVFAIL = "InternalError.SendAndRecvFail"
+//  INVALIDPARAMETERVALUE_BEGINTIMEVERIFYFAIL = "InvalidParameterValue.BeginTimeVerifyFail"
+//  INVALIDPARAMETERVALUE_ENDTIMEVERIFYFAIL = "InvalidParameterValue.EndTimeVerifyFail"
+//  INVALIDPARAMETERVALUE_INCORRECTPHONENUMBER = "InvalidParameterValue.IncorrectPhoneNumber"
+//  INVALIDPARAMETERVALUE_LIMITVERIFYFAIL = "InvalidParameterValue.LimitVerifyFail"
+//  INVALIDPARAMETERVALUE_OFFSETVERIFYFAIL = "InvalidParameterValue.OffsetVerifyFail"
+//  INVALIDPARAMETERVALUE_SDKAPPIDNOTEXIST = "InvalidParameterValue.SdkAppIdNotExist"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION_SMSSDKAPPIDVERIFYFAIL = "UnauthorizedOperation.SmsSdkAppIdVerifyFail"
+func (c *Client) DescribeSendRecordList(request *DescribeSendRecordListRequest) (response *DescribeSendRecordListResponse, err error) {
+    return c.DescribeSendRecordListWithContext(context.Background(), request)
+}
+
+// DescribeSendRecordList
+// 本接口 (DescribeSendRecordList) 用于查询单个手机号在指定时间范围内的短信下发记录。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_JSONPARSEFAIL = "InternalError.JsonParseFail"
+//  INTERNALERROR_SENDANDRECVFAIL = "InternalError.SendAndRecvFail"
+//  INVALIDPARAMETERVALUE_BEGINTIMEVERIFYFAIL = "InvalidParameterValue.BeginTimeVerifyFail"
+//  INVALIDPARAMETERVALUE_ENDTIMEVERIFYFAIL = "InvalidParameterValue.EndTimeVerifyFail"
+//  INVALIDPARAMETERVALUE_INCORRECTPHONENUMBER = "InvalidParameterValue.IncorrectPhoneNumber"
+//  INVALIDPARAMETERVALUE_LIMITVERIFYFAIL = "InvalidParameterValue.LimitVerifyFail"
+//  INVALIDPARAMETERVALUE_OFFSETVERIFYFAIL = "InvalidParameterValue.OffsetVerifyFail"
+//  INVALIDPARAMETERVALUE_SDKAPPIDNOTEXIST = "InvalidParameterValue.SdkAppIdNotExist"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION_SMSSDKAPPIDVERIFYFAIL = "UnauthorizedOperation.SmsSdkAppIdVerifyFail"
+func (c *Client) DescribeSendRecordListWithContext(ctx context.Context, request *DescribeSendRecordListRequest) (response *DescribeSendRecordListResponse, err error) {
+    if request == nil {
+        request = NewDescribeSendRecordListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "sms", APIVersion, "DescribeSendRecordList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSendRecordList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSendRecordListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSmsSignListRequest() (request *DescribeSmsSignListRequest) {
     request = &DescribeSmsSignListRequest{
         BaseRequest: &tchttp.BaseRequest{},

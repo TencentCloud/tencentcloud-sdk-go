@@ -38,6 +38,9 @@ const (
 	// CAM服务调用失败。
 	INTERNALERROR_CALLCAM = "InternalError.CallCAM"
 
+	// 内部错误
+	INTERNALERROR_CALLCLOUDSDKEXCEPTION = "InternalError.CallCloudSdkException"
+
 	// cvm调用失败。
 	INTERNALERROR_CALLCVM = "InternalError.CallCvm"
 
@@ -46,6 +49,9 @@ const (
 
 	// 参数互斥，最多只能传入一个参数
 	INVALIDPARAMETER_ATMOSTONE = "InvalidParameter.AtMostOne"
+
+	// 参数组合冲突。
+	INVALIDPARAMETER_COMBINATION = "InvalidParameter.Combination"
 
 	// 参数格式有误。
 	INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
@@ -157,6 +163,9 @@ const (
 
 	// 未授权操作。
 	UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+
+	// 账号没有操作公网网络的权限，需要升级到标准网络账号。
+	UNAUTHORIZEDOPERATION_UNAUTHORIZEDNETWORKUSER = "UnauthorizedOperation.UnauthorizedNetworkUser"
 
 	// 未知参数错误。
 	UNKNOWNPARAMETER = "UnknownParameter"

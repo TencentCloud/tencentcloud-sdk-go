@@ -643,6 +643,17 @@ type AdvancedSuperResolutionConfig struct {
 	ShortSide *int64 `json:"ShortSide,omitnil,omitempty" name:"ShortSide"`
 }
 
+type AgentStoreCosParam struct {
+	// <p>存储至 cos 的 bucket 桶名称。需要cos存储时，该值必填。 示例值：bucket。</p>
+	CosBucketName *string `json:"CosBucketName,omitnil,omitempty" name:"CosBucketName"`
+
+	// <p>存储至 cos 的 bucket 区域。与bucket所属区域相同，上传cos时必填。 示例值：ap-guangzhou</p>
+	CosBucketRegion *string `json:"CosBucketRegion,omitnil,omitempty" name:"CosBucketRegion"`
+
+	// <p>存储至 cos 的 bucket 路径。<br>可选。<br>示例值：my_file</p>
+	CosBucketPath *string `json:"CosBucketPath,omitnil,omitempty" name:"CosBucketPath"`
+}
+
 type AiAnalysisResult struct {
 	// 任务的类型，可以取的值有：
 	// <li>Classification：智能分类</li>
@@ -734,22 +745,22 @@ type AiAnalysisTaskClassificationOutput struct {
 }
 
 type AiAnalysisTaskClassificationResult struct {
-	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+	// <p>任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	// <p>错误码，空字符串表示成功，其他值表示失败，取值请参考 <a href="https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81">媒体处理类错误码</a> 列表。</p>
 	ErrCodeExt *string `json:"ErrCodeExt,omitnil,omitempty" name:"ErrCodeExt"`
 
-	// 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
+	// <p>错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。</p>
 	ErrCode *int64 `json:"ErrCode,omitnil,omitempty" name:"ErrCode"`
 
-	// 错误信息。
+	// <p>错误信息。</p>
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
-	// 智能分类任务输入。
+	// <p>智能分类任务输入。</p>
 	Input *AiAnalysisTaskClassificationInput `json:"Input,omitnil,omitempty" name:"Input"`
 
-	// 智能分类任务输出。
+	// <p>智能分类任务输出。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiAnalysisTaskClassificationOutput `json:"Output,omitnil,omitempty" name:"Output"`
 }
@@ -771,22 +782,22 @@ type AiAnalysisTaskCoverOutput struct {
 }
 
 type AiAnalysisTaskCoverResult struct {
-	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+	// <p>任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	// <p>错误码，空字符串表示成功，其他值表示失败，取值请参考 <a href="https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81">媒体处理类错误码</a> 列表。</p>
 	ErrCodeExt *string `json:"ErrCodeExt,omitnil,omitempty" name:"ErrCodeExt"`
 
-	// 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
+	// <p>错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。</p>
 	ErrCode *int64 `json:"ErrCode,omitnil,omitempty" name:"ErrCode"`
 
-	// 错误信息。
+	// <p>错误信息。</p>
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
-	// 智能封面任务输入。
+	// <p>智能封面任务输入。</p>
 	Input *AiAnalysisTaskCoverInput `json:"Input,omitnil,omitempty" name:"Input"`
 
-	// 智能封面任务输出。
+	// <p>智能封面任务输出。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiAnalysisTaskCoverOutput `json:"Output,omitnil,omitempty" name:"Output"`
 }
@@ -995,22 +1006,22 @@ type AiAnalysisTaskFrameTagOutput struct {
 }
 
 type AiAnalysisTaskFrameTagResult struct {
-	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+	// <p>任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	// <p>错误码，空字符串表示成功，其他值表示失败，取值请参考 <a href="https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81">媒体处理类错误码</a> 列表。</p>
 	ErrCodeExt *string `json:"ErrCodeExt,omitnil,omitempty" name:"ErrCodeExt"`
 
-	// 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
+	// <p>错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。</p>
 	ErrCode *int64 `json:"ErrCode,omitnil,omitempty" name:"ErrCode"`
 
-	// 错误信息。
+	// <p>错误信息。</p>
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
-	// 智能按帧标签任务输入。
+	// <p>智能按帧标签任务输入。</p>
 	Input *AiAnalysisTaskFrameTagInput `json:"Input,omitnil,omitempty" name:"Input"`
 
-	// 智能按帧标签任务输出。
+	// <p>智能按帧标签任务输出。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiAnalysisTaskFrameTagOutput `json:"Output,omitnil,omitempty" name:"Output"`
 }
@@ -2480,36 +2491,36 @@ type AiSampleFailFaceInfo struct {
 }
 
 type AiSamplePerson struct {
-	// 人物 ID。
+	// <p>人物 ID。</p>
 	PersonId *string `json:"PersonId,omitnil,omitempty" name:"PersonId"`
 
-	// 人物名称。
+	// <p>人物名称。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 人物描述。
+	// <p>人物描述。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 人脸信息。
+	// <p>人脸信息。</p>
 	FaceInfoSet []*AiSampleFaceInfo `json:"FaceInfoSet,omitnil,omitempty" name:"FaceInfoSet"`
 
-	// 人物标签。
+	// <p>人物标签。</p>
 	TagSet []*string `json:"TagSet,omitnil,omitempty" name:"TagSet"`
 
-	// 应用场景。
+	// <p>应用场景。</p>
 	UsageSet []*string `json:"UsageSet,omitnil,omitempty" name:"UsageSet"`
 
-	// 创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+	// <p>创建时间，使用 <a href="https://cloud.tencent.com/document/product/862/37710#52">ISO 日期格式</a>。</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+	// <p>最后修改时间，使用 <a href="https://cloud.tencent.com/document/product/862/37710#52">ISO 日期格式</a>。</p>
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
 type AiSampleTagOperation struct {
-	// 操作类型，可选值：add（添加）、delete（删除）、reset（重置）。
+	// <p>操作类型，可选值：add（添加）、delete（删除）、reset（重置）。</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 标签，长度限制：128 个字符。
+	// <p>标签，长度限制：128 个字符。</p>
 	Tags []*string `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
@@ -2705,16 +2716,13 @@ type AigcVideoReferenceImageInfo struct {
 }
 
 type AigcVideoReferenceVideoInfo struct {
-	// 参考视频url。需要外网可访问。
-	// 可作为特征参考视频，也可作为待编辑视频，默认为待编辑视频；可选择性保留视频原声
-	// 通过ReferType参数区分参考视频类型：feature为特征参考视频，base为待编辑视频
-	// 参考视频为待编辑视频时，不能定义视频首尾帧。
+	// <p>参考视频url。需要外网可访问。<br>可作为特征参考视频，也可作为待编辑视频，默认为待编辑视频；可选择性保留视频原声<br>通过ReferType参数区分参考视频类型：feature为特征参考视频，base为待编辑视频<br>参考视频为待编辑视频时，不能定义视频首尾帧。</p>
 	VideoUrl *string `json:"VideoUrl,omitnil,omitempty" name:"VideoUrl"`
 
-	// 通过ReferType参数区分参考视频类型：feature为特征参考视频，base为待编辑视频。
+	// <p>通过ReferType参数区分参考视频类型：feature为特征参考视频，base为待编辑视频。</p>
 	ReferType *string `json:"ReferType,omitnil,omitempty" name:"ReferType"`
 
-	// 通过KeepOriginalSound参数选择是否保留视频原声，yes为保留，no为不保留；当前参数对特征参考视频（feature）也生效。
+	// <p>通过KeepOriginalSound参数选择是否保留视频原声，yes为保留，no为不保留；当前参数对特征参考视频（feature）也生效。</p>
 	KeepOriginalSound *string `json:"KeepOriginalSound,omitnil,omitempty" name:"KeepOriginalSound"`
 }
 
@@ -2961,16 +2969,10 @@ type AssemblyUsageInfo struct {
 }
 
 type AudioBeautifyConfig struct {
-	// 能力配置开关，可选值：
-	// <li>ON：开启；</li>
-	// <li>OFF：关闭。</li>
-	// 默认值：ON。
+	// <p>能力配置开关，可选值：</p><li>ON：开启；</li><li>OFF：关闭。</li>默认值：ON。
 	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
 
-	// 类型，可多选，可选值：
-	// <li>declick：杂音去除</li>
-	// <li>deesser：齿音压制</li>
-	// 默认值：declick。
+	// <p>类型，可多选，可选值：</p><li>declick：杂音去除</li><li>deesser：齿音压制</li>默认值：declick。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Types []*string `json:"Types,omitnil,omitempty" name:"Types"`
 }
@@ -4975,6 +4977,91 @@ func (r *CreateAdaptiveDynamicStreamingTemplateResponse) FromJsonString(s string
 }
 
 // Predefined struct for user
+type CreateAgentRecordTaskRequestParams struct {
+	// <p>直播间URL</p>
+	LiveRoomUrl *string `json:"LiveRoomUrl,omitnil,omitempty" name:"LiveRoomUrl"`
+
+	// <p>最长录制时长</p><p>单位：分</p><p>最长支持720分</p>
+	MaxDurationMinutes *int64 `json:"MaxDurationMinutes,omitnil,omitempty" name:"MaxDurationMinutes"`
+
+	// <p>文件结果指定存储Cos桶信息。 注意：需开通Cos，创建并授权MPS_QcsRole角色。</p>
+	StoreCosParam *AgentStoreCosParam `json:"StoreCosParam,omitnil,omitempty" name:"StoreCosParam"`
+
+	// <p>定时录制开始时刻</p><p>参数格式：2026-07-01T15:31:32+08:00</p><p>空表示提交后立即开始录制；非空表示从该时刻开始录制</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>中断策略</p><p>枚举值：</p><ul><li>STOP_ON_INTERRUPT： 直播流中断后立即结束录制</li><li>CONTINUE_UNTIL_END： 直播流中断时忽略中断，继续录制直到任务结束时间</li></ul><p>默认值：STOP_ON_INTERRUPT</p>
+	InterruptPolicy *string `json:"InterruptPolicy,omitnil,omitempty" name:"InterruptPolicy"`
+}
+
+type CreateAgentRecordTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>直播间URL</p>
+	LiveRoomUrl *string `json:"LiveRoomUrl,omitnil,omitempty" name:"LiveRoomUrl"`
+
+	// <p>最长录制时长</p><p>单位：分</p><p>最长支持720分</p>
+	MaxDurationMinutes *int64 `json:"MaxDurationMinutes,omitnil,omitempty" name:"MaxDurationMinutes"`
+
+	// <p>文件结果指定存储Cos桶信息。 注意：需开通Cos，创建并授权MPS_QcsRole角色。</p>
+	StoreCosParam *AgentStoreCosParam `json:"StoreCosParam,omitnil,omitempty" name:"StoreCosParam"`
+
+	// <p>定时录制开始时刻</p><p>参数格式：2026-07-01T15:31:32+08:00</p><p>空表示提交后立即开始录制；非空表示从该时刻开始录制</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>中断策略</p><p>枚举值：</p><ul><li>STOP_ON_INTERRUPT： 直播流中断后立即结束录制</li><li>CONTINUE_UNTIL_END： 直播流中断时忽略中断，继续录制直到任务结束时间</li></ul><p>默认值：STOP_ON_INTERRUPT</p>
+	InterruptPolicy *string `json:"InterruptPolicy,omitnil,omitempty" name:"InterruptPolicy"`
+}
+
+func (r *CreateAgentRecordTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAgentRecordTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LiveRoomUrl")
+	delete(f, "MaxDurationMinutes")
+	delete(f, "StoreCosParam")
+	delete(f, "StartTime")
+	delete(f, "InterruptPolicy")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAgentRecordTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAgentRecordTaskResponseParams struct {
+	// <p>任务创建成功后，返回的任务ID。<br>调用查询接口，轮询获取任务进度及生成结果。</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateAgentRecordTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateAgentRecordTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateAgentRecordTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAgentRecordTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateAiDramaTaskRequestParams struct {
 	// <p>ai漫剧输入</p>
 	Input *AiDramaInput `json:"Input,omitnil,omitempty" name:"Input"`
@@ -6582,10 +6669,10 @@ type CreateOutputRTMPSettings struct {
 }
 
 type CreateOutputRTPSettingsDestinations struct {
-	// 转推的目标IP。
+	// <p>转推的目标IP。</p>
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
-	// 转推的目标端口。
+	// <p>转推的目标端口。</p>
 	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
 }
 
@@ -11439,6 +11526,69 @@ func (r *DescribeAdaptiveDynamicStreamingTemplatesResponse) FromJsonString(s str
 }
 
 // Predefined struct for user
+type DescribeAgentRecordTaskRequestParams struct {
+	// <p>创建Agent录制任务时，返回的任务ID。</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type DescribeAgentRecordTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>创建Agent录制任务时，返回的任务ID。</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *DescribeAgentRecordTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAgentRecordTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAgentRecordTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAgentRecordTaskResponseParams struct {
+	// <p>任务当前状态。 </p><p>枚举值：</p><ul><li>WAITING： 等待中</li><li>RUNNING： 执行中</li><li>SUCCESS： 成功</li><li>FAILED： 失败</li></ul>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>当任务状态为 FAILED 时，返回失败信息。</p>
+	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
+
+	// <p>当任务状态为 SUCCESS 时，返回录制文件Url列表。</p>
+	RecordUrls []*string `json:"RecordUrls,omitnil,omitempty" name:"RecordUrls"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAgentRecordTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAgentRecordTaskResponseParams `json:"Response"`
+}
+
+func (r *DescribeAgentRecordTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAgentRecordTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeAigcAudioTaskRequestParams struct {
 	// <p>创建AIGC生视频任务时，返回的任务ID。</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
@@ -12597,35 +12747,35 @@ type DescribeEvent struct {
 }
 
 type DescribeFlow struct {
-	// 流Id。
+	// <p>流Id。</p>
 	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
-	// 流名称。
+	// <p>流名称。</p>
 	FlowName *string `json:"FlowName,omitnil,omitempty" name:"FlowName"`
 
-	// 流状态，目前有IDLE/RUNNING。
+	// <p>流状态，目前有IDLE/RUNNING。</p>
 	State *string `json:"State,omitnil,omitempty" name:"State"`
 
-	// 最大带宽值。
+	// <p>最大带宽值。</p>
 	MaxBandwidth *int64 `json:"MaxBandwidth,omitnil,omitempty" name:"MaxBandwidth"`
 
-	// 输入组。
+	// <p>输入组。</p>
 	InputGroup []*DescribeInput `json:"InputGroup,omitnil,omitempty" name:"InputGroup"`
 
-	// 输出组。
+	// <p>输出组。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OutputGroup []*DescribeOutput `json:"OutputGroup,omitnil,omitempty" name:"OutputGroup"`
 
-	// 该Flow关联的媒体传输事件EventId。
+	// <p>该Flow关联的媒体传输事件EventId。</p>
 	EventId *string `json:"EventId,omitnil,omitempty" name:"EventId"`
 
-	// 媒体传输输入流所属的区域，取值和InputRegion相同。
+	// <p>媒体传输输入流所属的区域，取值和InputRegion相同。</p>
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 该Flow允许创建的输入协议
+	// <p>该Flow允许创建的输入协议</p>
 	AllowedInputProtocols []*string `json:"AllowedInputProtocols,omitnil,omitempty" name:"AllowedInputProtocols"`
 
-	// 该Flow允许创建的输出协议
+	// <p>该Flow允许创建的输出协议</p>
 	AllowedOutputProtocols []*string `json:"AllowedOutputProtocols,omitnil,omitempty" name:"AllowedOutputProtocols"`
 }
 
@@ -12983,71 +13133,71 @@ func (r *DescribeImageTasksResponse) FromJsonString(s string) error {
 }
 
 type DescribeInput struct {
-	// 输入Id。
+	// <p>输入Id。</p>
 	InputId *string `json:"InputId,omitnil,omitempty" name:"InputId"`
 
-	// 输入名称。
+	// <p>输入名称。</p>
 	InputName *string `json:"InputName,omitnil,omitempty" name:"InputName"`
 
-	// 输入描述。
+	// <p>输入描述。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 输入协议。
+	// <p>输入协议。</p>
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
-	// 输入地址列表。
+	// <p>输入地址列表。</p>
 	InputAddressList []*InputAddress `json:"InputAddressList,omitnil,omitempty" name:"InputAddressList"`
 
-	// 输入IP白名单列表。
+	// <p>输入IP白名单列表。</p>
 	AllowIpList []*string `json:"AllowIpList,omitnil,omitempty" name:"AllowIpList"`
 
-	// 输入的SRT配置信息。
+	// <p>输入的SRT配置信息。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SRTSettings *DescribeInputSRTSettings `json:"SRTSettings,omitnil,omitempty" name:"SRTSettings"`
 
-	// 输入的RTP配置信息。
+	// <p>输入的RTP配置信息。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RTPSettings *DescribeInputRTPSettings `json:"RTPSettings,omitnil,omitempty" name:"RTPSettings"`
 
-	// 输入的地区。
+	// <p>输入的地区。</p>
 	InputRegion *string `json:"InputRegion,omitnil,omitempty" name:"InputRegion"`
 
-	// 输入的RTMP配置信息。
+	// <p>输入的RTMP配置信息。</p>
 	RTMPSettings *DescribeInputRTMPSettings `json:"RTMPSettings,omitnil,omitempty" name:"RTMPSettings"`
 
-	// 输入的主备开关。
+	// <p>输入的主备开关。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailOver *string `json:"FailOver,omitnil,omitempty" name:"FailOver"`
 
-	// 输入的RTMP_PULL配置信息。
+	// <p>输入的RTMP_PULL配置信息。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RTMPPullSettings *DescribeInputRTMPPullSettings `json:"RTMPPullSettings,omitnil,omitempty" name:"RTMPPullSettings"`
 
-	// 输入的RTSP_PULL配置信息。
+	// <p>输入的RTSP_PULL配置信息。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RTSPPullSettings *DescribeInputRTSPPullSettings `json:"RTSPPullSettings,omitnil,omitempty" name:"RTSPPullSettings"`
 
-	// 输入的HLS_PULL配置信息。
+	// <p>输入的HLS_PULL配置信息。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HLSPullSettings *DescribeInputHLSPullSettings `json:"HLSPullSettings,omitnil,omitempty" name:"HLSPullSettings"`
 
-	// 延播平滑吐流配置信息。
+	// <p>延播平滑吐流配置信息。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResilientStream *ResilientStreamConf `json:"ResilientStream,omitnil,omitempty" name:"ResilientStream"`
 
-	// 绑定的输入安全组 ID。	
+	// <p>绑定的输入安全组 ID。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
 
-	// 可用区配置，开启容灾情况下最多有两个，顺序和pipeline 0、1对应，否则最多只有一个可用区。	
+	// <p>可用区配置，开启容灾情况下最多有两个，顺序和pipeline 0、1对应，否则最多只有一个可用区。</p>
 	Zones []*string `json:"Zones,omitnil,omitempty" name:"Zones"`
 
-	// 输入的RIST配置信息。
+	// <p>输入的RIST配置信息。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RISTSettings *DescribeInputRISTSettings `json:"RISTSettings,omitnil,omitempty" name:"RISTSettings"`
 
-	// 输入模块配置相关的URL信息，包含提供的推流地址，或者配置的第三方源流地址
+	// <p>输入模块配置相关的URL信息，包含提供的推流地址，或者配置的第三方源流地址</p>
 	StreamUrls []*StreamUrlDetail `json:"StreamUrls,omitnil,omitempty" name:"StreamUrls"`
 }
 
@@ -13083,10 +13233,10 @@ type DescribeInputRTMPSettings struct {
 }
 
 type DescribeInputRTPSettings struct {
-	// 是否FEC。
+	// <p>是否FEC。</p>
 	FEC *string `json:"FEC,omitnil,omitempty" name:"FEC"`
 
-	// 空闲超时时间。
+	// <p>空闲超时时间。</p>
 	IdleTimeout *int64 `json:"IdleTimeout,omitnil,omitempty" name:"IdleTimeout"`
 }
 
@@ -13498,47 +13648,47 @@ type DescribeOutputRTSPPullSettings struct {
 }
 
 type DescribeOutputSRTSettings struct {
-	// 转推的目标的地址信息列表，SRT模式为CALLER时使用。
+	// <p>转推的目标的地址信息列表，SRT模式为CALLER时使用。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Destinations []*SRTAddressDestination `json:"Destinations,omitnil,omitempty" name:"Destinations"`
 
-	// 流Id。
+	// <p>流Id。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StreamId *string `json:"StreamId,omitnil,omitempty" name:"StreamId"`
 
-	// 延迟。
+	// <p>延迟。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Latency *int64 `json:"Latency,omitnil,omitempty" name:"Latency"`
 
-	// 接收延迟。
+	// <p>接收延迟。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecvLatency *int64 `json:"RecvLatency,omitnil,omitempty" name:"RecvLatency"`
 
-	// 对端延迟。
+	// <p>对端延迟。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PeerLatency *int64 `json:"PeerLatency,omitnil,omitempty" name:"PeerLatency"`
 
-	// 对端空闲超时时间。
+	// <p>对端空闲超时时间。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PeerIdleTimeout *int64 `json:"PeerIdleTimeout,omitnil,omitempty" name:"PeerIdleTimeout"`
 
-	// 加密密钥。
+	// <p>加密密钥。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Passphrase *string `json:"Passphrase,omitnil,omitempty" name:"Passphrase"`
 
-	// 加密密钥长度。
+	// <p>加密密钥长度。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PbKeyLen *int64 `json:"PbKeyLen,omitnil,omitempty" name:"PbKeyLen"`
 
-	// SRT模式。
+	// <p>SRT模式。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
 
-	// 服务器监听地址，SRT模式为LISTENER时使用。
+	// <p>服务器监听地址，SRT模式为LISTENER时使用。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SourceAddresses []*OutputSRTSourceAddressResp `json:"SourceAddresses,omitnil,omitempty" name:"SourceAddresses"`
 
-	// FEC 配置
+	// <p>FEC 配置</p>
 	FEC *SRTFECFullOptions `json:"FEC,omitnil,omitempty" name:"FEC"`
 }
 
@@ -19167,6 +19317,17 @@ type FailOverOption struct {
 	FailOverType *string `json:"FailOverType,omitnil,omitempty" name:"FailOverType"`
 }
 
+type File3D struct {
+	// <p>文件类型，OBJ / GLB / FBX / STL / USDZ</p><p>枚举值：</p><ul><li>OBJ： 3D 通用交换格式</li><li>GLB： glTF 2.0 二进制（&quot;3D 界的 JPEG&quot;）</li><li>FBX： Autodesk 影视/游戏工业标准</li><li>STL： 3D 打印/CAD 三角面片</li><li>USDZ： Pixar/Apple 打包场景描述</li></ul>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>文件下载 URL（临时签名，TTL 一般 24h）</p>
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// <p>预览图 URL（若有）</p>
+	PreviewImageUrl *string `json:"PreviewImageUrl,omitnil,omitempty" name:"PreviewImageUrl"`
+}
+
 type FissionTaskInfo struct {
 	// <p>视频输出时长</p><p>取值范围：[4, 15]</p><p>单位：秒</p><p>默认值：15</p>
 	Duration *uint64 `json:"Duration,omitnil,omitempty" name:"Duration"`
@@ -19242,34 +19403,34 @@ type FlowInOutResp struct {
 }
 
 type FlowLogInfo struct {
-	// 时间戳，单位为秒。
+	// <p>时间戳，单位为秒。</p>
 	Timestamp *int64 `json:"Timestamp,omitnil,omitempty" name:"Timestamp"`
 
-	// 输入输出类型（input/output）。
+	// <p>输入输出类型（input/output）。</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 输入或输出Id。
+	// <p>输入或输出Id。</p>
 	InputOutputId *string `json:"InputOutputId,omitnil,omitempty" name:"InputOutputId"`
 
-	// 协议。
+	// <p>协议。</p>
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
-	// 事件代码。
+	// <p>事件代码。</p>
 	EventCode *string `json:"EventCode,omitnil,omitempty" name:"EventCode"`
 
-	// 事件信息。
+	// <p>事件信息。</p>
 	EventMessage *string `json:"EventMessage,omitnil,omitempty" name:"EventMessage"`
 
-	// 对端IP。
+	// <p>对端IP。</p>
 	RemoteIp *string `json:"RemoteIp,omitnil,omitempty" name:"RemoteIp"`
 
-	// 对端端口。
+	// <p>对端端口。</p>
 	RemotePort *string `json:"RemotePort,omitnil,omitempty" name:"RemotePort"`
 
-	// 主备通道，0为主通道，1为备通道。
+	// <p>主备通道，0为主通道，1为备通道。</p>
 	Pipeline *string `json:"Pipeline,omitnil,omitempty" name:"Pipeline"`
 
-	// 输入或输出的名称。
+	// <p>输入或输出的名称。</p>
 	InputOutputName *string `json:"InputOutputName,omitnil,omitempty" name:"InputOutputName"`
 }
 
@@ -20086,10 +20247,10 @@ type ImageWatermarkTemplate struct {
 }
 
 type InputAddress struct {
-	// 输入地址的IP。
+	// <p>输入地址的IP。</p>
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
-	// 输入地址的端口。
+	// <p>输入地址的端口。</p>
 	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
 }
 
@@ -20829,21 +20990,19 @@ type LiveStreamProcessErrorInfo struct {
 }
 
 type LiveStreamProcessTask struct {
-	// 媒体处理任务 ID。
+	// <p>媒体处理任务 ID。</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 任务流状态，取值：
-	// <li>PROCESSING：处理中；</li>
-	// <li>FINISH：已完成。</li>
+	// <p>任务流状态，取值：</p><li>PROCESSING：处理中；</li><li>FINISH：已完成。</li>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 错误码，0 表示成功，其他值表示失败。
+	// <p>错误码，0 表示成功，其他值表示失败。</p>
 	ErrCode *int64 `json:"ErrCode,omitnil,omitempty" name:"ErrCode"`
 
-	// 错误信息。
+	// <p>错误信息。</p>
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
-	// 直播流 URL。
+	// <p>直播流 URL。</p>
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 }
 
@@ -21412,59 +21571,59 @@ type MediaMetaData struct {
 }
 
 type MediaProcessTaskAdaptiveDynamicStreamingResult struct {
-	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+	// <p>任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	// <p>错误码，空字符串表示成功，其他值表示失败，取值请参考 <a href="https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81">媒体处理类错误码</a> 列表。</p>
 	ErrCodeExt *string `json:"ErrCodeExt,omitnil,omitempty" name:"ErrCodeExt"`
 
-	// 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
+	// <p>错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。</p>
 	ErrCode *int64 `json:"ErrCode,omitnil,omitempty" name:"ErrCode"`
 
-	// 错误信息。
+	// <p>错误信息。</p>
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
-	// 对视频转自适应码流任务的输入。
+	// <p>对视频转自适应码流任务的输入。</p>
 	Input *AdaptiveDynamicStreamingTaskInput `json:"Input,omitnil,omitempty" name:"Input"`
 
-	// 对视频转自适应码流任务的输出。
+	// <p>对视频转自适应码流任务的输出。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AdaptiveDynamicStreamingInfoItem `json:"Output,omitnil,omitempty" name:"Output"`
 
-	// 任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+	// <p>任务开始执行的时间，采用 <a href="https://cloud.tencent.com/document/product/862/37710#52">ISO 日期格式</a>。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BeginProcessTime *string `json:"BeginProcessTime,omitnil,omitempty" name:"BeginProcessTime"`
 
-	// 任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+	// <p>任务执行完毕的时间，采用 <a href="https://cloud.tencent.com/document/product/862/37710#52">ISO 日期格式</a>。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FinishTime *string `json:"FinishTime,omitnil,omitempty" name:"FinishTime"`
 }
 
 type MediaProcessTaskAnimatedGraphicResult struct {
-	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+	// <p>任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	// <p>错误码，空字符串表示成功，其他值表示失败，取值请参考 <a href="https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81">媒体处理类错误码</a> 列表。</p>
 	ErrCodeExt *string `json:"ErrCodeExt,omitnil,omitempty" name:"ErrCodeExt"`
 
-	// 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
+	// <p>错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。</p>
 	ErrCode *int64 `json:"ErrCode,omitnil,omitempty" name:"ErrCode"`
 
-	// 错误信息。
+	// <p>错误信息。</p>
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
-	// 转动图任务的输入。
+	// <p>转动图任务的输入。</p>
 	Input *AnimatedGraphicTaskInput `json:"Input,omitnil,omitempty" name:"Input"`
 
-	// 转动图任务的输出。
+	// <p>转动图任务的输出。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *MediaAnimatedGraphicsItem `json:"Output,omitnil,omitempty" name:"Output"`
 
-	// 任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+	// <p>任务开始执行的时间，采用 <a href="https://cloud.tencent.com/document/product/862/37710#52">ISO 日期格式</a>。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BeginProcessTime *string `json:"BeginProcessTime,omitnil,omitempty" name:"BeginProcessTime"`
 
-	// 任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+	// <p>任务执行完毕的时间，采用 <a href="https://cloud.tencent.com/document/product/862/37710#52">ISO 日期格式</a>。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FinishTime *string `json:"FinishTime,omitnil,omitempty" name:"FinishTime"`
 }
@@ -21631,26 +21790,22 @@ type MediaProcessTaskTranscodeResult struct {
 }
 
 type MediaSampleSnapshotItem struct {
-	// 采样截图规格 ID，参见[采样截图参数模板](https://cloud.tencent.com/document/product/266/33480#.E9.87.87.E6.A0.B7.E6.88.AA.E5.9B.BE.E6.A8.A1.E6.9D.BF)。
+	// <p>采样截图规格 ID，参见<a href="https://cloud.tencent.com/document/product/266/33480#.E9.87.87.E6.A0.B7.E6.88.AA.E5.9B.BE.E6.A8.A1.E6.9D.BF">采样截图参数模板</a>。</p>
 	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
 
-	// 采样方式，取值范围：
-	// <li>Percent：根据百分比间隔采样。</li>
-	// <li>Time：根据时间间隔采样。</li>
+	// <p>采样方式，取值范围：</p><li>Percent：根据百分比间隔采样。</li><li>Time：根据时间间隔采样。</li>
 	SampleType *string `json:"SampleType,omitnil,omitempty" name:"SampleType"`
 
-	// 采样间隔
-	// <li>当 SampleType 为 Percent 时，该值表示多少百分比一张图。</li>
-	// <li>当 SampleType 为 Time 时，该值表示多少时间间隔一张图，单位秒， 第一张图均为视频首帧。</li>
+	// <p>采样间隔</p><li>当 SampleType 为 Percent 时，该值表示多少百分比一张图。</li><li>当 SampleType 为 Time 时，该值表示多少时间间隔一张图，单位秒， 第一张图均为视频首帧。</li>
 	Interval *int64 `json:"Interval,omitnil,omitempty" name:"Interval"`
 
-	// 截图后文件的存储位置。
+	// <p>截图后文件的存储位置。</p>
 	Storage *TaskOutputStorage `json:"Storage,omitnil,omitempty" name:"Storage"`
 
-	// 生成的截图 path 列表。
+	// <p>生成的截图 path 列表。</p>
 	ImagePathSet []*string `json:"ImagePathSet,omitnil,omitempty" name:"ImagePathSet"`
 
-	// 截图如果被打上了水印，被打水印的模板 ID 列表。
+	// <p>截图如果被打上了水印，被打水印的模板 ID 列表。</p>
 	WaterMarkDefinition []*int64 `json:"WaterMarkDefinition,omitnil,omitempty" name:"WaterMarkDefinition"`
 }
 
@@ -25021,45 +25176,25 @@ func (r *ModifyWordSampleResponse) FromJsonString(s string) error {
 }
 
 type MosaicInput struct {
-	// 原点位置，目前仅支持：
-	// <li>TopLeft：表示坐标原点位于视频图像左上角，马赛克原点为图片或文字的左上角。</li>
-	// 默认值：TopLeft。
+	// <p>原点位置，目前仅支持：</p><li>TopLeft：表示坐标原点位于视频图像左上角，马赛克原点为图片或文字的左上角。</li>默认值：TopLeft。
 	CoordinateOrigin *string `json:"CoordinateOrigin,omitnil,omitempty" name:"CoordinateOrigin"`
 
-	// 马赛克原点距离视频图像坐标原点的水平位置。支持 %、px 两种格式：
-	// <li>当字符串以 % 结尾，表示马赛克 XPos 为视频宽度指定百分比，如 10% 表示 XPos 为视频宽度的 10%；</li>
-	// <li>当字符串以 px 结尾，表示马赛克 XPos 为指定像素，如 100px 表示 XPos 为 100 像素。</li>
-	// 默认值：0px。
+	// <p>马赛克原点距离视频图像坐标原点的水平位置。支持 %、px 两种格式：</p><li>当字符串以 % 结尾，表示马赛克 XPos 为视频宽度指定百分比，如 10% 表示 XPos 为视频宽度的 10%；</li><li>当字符串以 px 结尾，表示马赛克 XPos 为指定像素，如 100px 表示 XPos 为 100 像素。</li>默认值：0px。
 	XPos *string `json:"XPos,omitnil,omitempty" name:"XPos"`
 
-	// 马赛克原点距离视频图像坐标原点的垂直位置。支持 %、px 两种格式：
-	// <li>当字符串以 % 结尾，表示马赛克 YPos 为视频高度指定百分比，如 10% 表示 YPos 为视频高度的 10%；</li>
-	// <li>当字符串以 px 结尾，表示马赛克 YPos 为指定像素，如 100px 表示 YPos 为 100 像素。</li>
-	// 默认值：0px。
+	// <p>马赛克原点距离视频图像坐标原点的垂直位置。支持 %、px 两种格式：</p><li>当字符串以 % 结尾，表示马赛克 YPos 为视频高度指定百分比，如 10% 表示 YPos 为视频高度的 10%；</li><li>当字符串以 px 结尾，表示马赛克 YPos 为指定像素，如 100px 表示 YPos 为 100 像素。</li>默认值：0px。
 	YPos *string `json:"YPos,omitnil,omitempty" name:"YPos"`
 
-	// 马赛克的宽度。支持 %、px 两种格式：
-	// <li>当字符串以 % 结尾，表示马赛克 Width 为视频宽度的百分比大小，如 10% 表示 Width 为视频宽度的 10%；</li>
-	// <li>当字符串以 px 结尾，表示马赛克 Width 单位为像素，如 100px 表示 Width 为 100 像素。</li>
-	// 默认值：10%。
+	// <p>马赛克的宽度。支持 %、px 两种格式：</p><li>当字符串以 % 结尾，表示马赛克 Width 为视频宽度的百分比大小，如 10% 表示 Width 为视频宽度的 10%；</li><li>当字符串以 px 结尾，表示马赛克 Width 单位为像素，如 100px 表示 Width 为 100 像素。</li>默认值：10%。
 	Width *string `json:"Width,omitnil,omitempty" name:"Width"`
 
-	// 马赛克的高度。支持 %、px 两种格式：
-	// <li>当字符串以 % 结尾，表示马赛克 Height 为视频高度的百分比大小，如 10% 表示 Height 为视频高度的 10%；</li>
-	// <li>当字符串以 px 结尾，表示马赛克 Height 单位为像素，如 100px 表示 Height 为 100 像素。</li>
-	// 默认值：10%。
+	// <p>马赛克的高度。支持 %、px 两种格式：</p><li>当字符串以 % 结尾，表示马赛克 Height 为视频高度的百分比大小，如 10% 表示 Height 为视频高度的 10%；</li><li>当字符串以 px 结尾，表示马赛克 Height 单位为像素，如 100px 表示 Height 为 100 像素。</li>默认值：10%。
 	Height *string `json:"Height,omitnil,omitempty" name:"Height"`
 
-	// 马赛克的起始时间偏移，单位：秒。不填或填0，表示马赛克从画面出现时开始显现。
-	// <li>不填或填0，表示马赛克从画面开始就出现；</li>
-	// <li>当数值大于0时（假设为 n），表示马赛克从画面开始的第 n 秒出现；</li>
-	// <li>当数值小于0时（假设为 -n），表示马赛克从离画面结束 n 秒前开始出现。</li>
+	// <p>马赛克的起始时间偏移，单位：秒。不填或填0，表示马赛克从画面出现时开始显现。</p><li>不填或填0，表示马赛克从画面开始就出现；</li><li>当数值大于0时（假设为 n），表示马赛克从画面开始的第 n 秒出现；</li><li>当数值小于0时（假设为 -n），表示马赛克从离画面结束 n 秒前开始出现。</li>
 	StartTimeOffset *float64 `json:"StartTimeOffset,omitnil,omitempty" name:"StartTimeOffset"`
 
-	// 马赛克的结束时间偏移，单位：秒。
-	// <li>不填或填0，表示马赛克持续到画面结束；</li>
-	// <li>当数值大于0时（假设为 n），表示马赛克持续到第 n 秒时消失；</li>
-	// <li>当数值小于0时（假设为 -n），表示马赛克持续到离画面结束 n 秒前消失。</li>
+	// <p>马赛克的结束时间偏移，单位：秒。</p><li>不填或填0，表示马赛克持续到画面结束；</li><li>当数值大于0时（假设为 n），表示马赛克持续到第 n 秒时消失；</li><li>当数值小于0时（假设为 -n），表示马赛克持续到离画面结束 n 秒前消失。</li>
 	EndTimeOffset *float64 `json:"EndTimeOffset,omitnil,omitempty" name:"EndTimeOffset"`
 }
 
@@ -25556,50 +25691,30 @@ type PoliticalConfigureInfoForUpdate struct {
 }
 
 type PoliticalImgReviewTemplateInfo struct {
-	// 画面涉敏任务开关，可选值：
-	// <li>ON：开启画面涉敏任务；</li>
-	// <li>OFF：关闭画面涉敏任务。</li>
+	// <p>画面涉敏任务开关，可选值：</p><li>ON：开启画面涉敏任务；</li><li>OFF：关闭画面涉敏任务。</li>
 	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
 
-	// 画面涉敏过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
-	// <li>violation_photo：违规图标；</li>
-	// <li>politician：涉敏人物；</li>
-	// <li>entertainment：娱乐人物；</li>
-	// <li>sport：体育人物；</li>
-	// <li>entrepreneur：商业人物；</li>
-	// <li>scholar：教育学者；</li>
-	// <li>celebrity：知名人物；</li>
-	// <li>military：军事人物。</li>
+	// <p>画面涉敏过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：</p><li>violation_photo：违规图标；</li><li>politician：涉敏人物；</li><li>entertainment：娱乐人物；</li><li>sport：体育人物；</li><li>entrepreneur：商业人物；</li><li>scholar：教育学者；</li><li>celebrity：知名人物；</li><li>military：军事人物。</li>
 	LabelSet []*string `json:"LabelSet,omitnil,omitempty" name:"LabelSet"`
 
-	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 97 分。取值范围：0~100。
+	// <p>判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 97 分。取值范围：0~100。</p>
 	BlockConfidence *int64 `json:"BlockConfidence,omitnil,omitempty" name:"BlockConfidence"`
 
-	// 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 95 分。取值范围：0~100。
+	// <p>判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 95 分。取值范围：0~100。</p>
 	ReviewConfidence *int64 `json:"ReviewConfidence,omitnil,omitempty" name:"ReviewConfidence"`
 }
 
 type PoliticalImgReviewTemplateInfoForUpdate struct {
-	// 画面涉敏任务开关，可选值：
-	// <li>ON：开启画面涉敏任务；</li>
-	// <li>OFF：关闭画面涉敏任务。</li>
+	// <p>画面涉敏任务开关，可选值：</p><li>ON：开启画面涉敏任务；</li><li>OFF：关闭画面涉敏任务。</li>
 	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
 
-	// 画面涉敏过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
-	// <li>violation_photo：违规图标；</li>
-	// <li>politician：涉敏人物；</li>
-	// <li>entertainment：娱乐人物；</li>
-	// <li>sport：体育人物；</li>
-	// <li>entrepreneur：商业人物；</li>
-	// <li>scholar：教育学者；</li>
-	// <li>celebrity：知名人物；</li>
-	// <li>military：军事人物。</li>
+	// <p>画面涉敏过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：</p><li>violation_photo：违规图标；</li><li>politician：涉敏人物；</li><li>entertainment：娱乐人物；</li><li>sport：体育人物；</li><li>entrepreneur：商业人物；</li><li>scholar：教育学者；</li><li>celebrity：知名人物；</li><li>military：军事人物。</li>
 	LabelSet []*string `json:"LabelSet,omitnil,omitempty" name:"LabelSet"`
 
-	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
+	// <p>判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。</p>
 	BlockConfidence *int64 `json:"BlockConfidence,omitnil,omitempty" name:"BlockConfidence"`
 
-	// 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核。取值范围：0~100。
+	// <p>判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核。取值范围：0~100。</p>
 	ReviewConfidence *int64 `json:"ReviewConfidence,omitnil,omitempty" name:"ReviewConfidence"`
 }
 
@@ -26634,6 +26749,75 @@ type QualityControlTemplate struct {
 }
 
 // Predefined struct for user
+type QueryHunyuan3DTaskRequestParams struct {
+	// <p>任务ID</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type QueryHunyuan3DTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>任务ID</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *QueryHunyuan3DTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryHunyuan3DTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryHunyuan3DTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type QueryHunyuan3DTaskResponseParams struct {
+	// <p>任务状态</p><p>枚举值：</p><ul><li>WAIT： 已排队，等待执行</li><li>RUN： 正在执行</li><li>DONE： 已成功完成，ResultFile3Ds 有值</li><li>FAIL： 已失败，ErrorCode / ErrorMessage 有值</li></ul>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>进度百分比，0~100。未知时为 0；DONE 时应为 100；FAIL 时保留最后一次已知值</p>
+	Progress *uint64 `json:"Progress,omitnil,omitempty" name:"Progress"`
+
+	// <p>仅 Status=FAIL 时有值，字符串错误码（如 InternalError.ModelInference）</p>
+	ErrorCode *string `json:"ErrorCode,omitnil,omitempty" name:"ErrorCode"`
+
+	// <p>仅 Status=FAIL 时有值，详细文案</p>
+	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
+
+	// <p>仅 Status=DONE 时有值，产物文件列表</p>
+	ResultFile3Ds []*File3D `json:"ResultFile3Ds,omitnil,omitempty" name:"ResultFile3Ds"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type QueryHunyuan3DTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *QueryHunyuan3DTaskResponseParams `json:"Response"`
+}
+
+func (r *QueryHunyuan3DTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryHunyuan3DTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type QueryProjectRequestParams struct {
 	// <p>项目id</p>
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
@@ -26748,10 +26932,10 @@ type RTMPPullSourceAddress struct {
 }
 
 type RTPAddressDestination struct {
-	// 转推的目标地址的IP。
+	// <p>转推的目标地址的IP。</p>
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
-	// 转推的目标地址的端口。
+	// <p>转推的目标地址的端口。</p>
 	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
 }
 
@@ -27502,10 +27686,10 @@ type S3OutputStorage struct {
 }
 
 type SRTAddressDestination struct {
-	// 目标地址的IP。
+	// <p>目标地址的IP。</p>
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
-	// 目标地址的端口。
+	// <p>目标地址的端口。</p>
 	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
 }
 
@@ -27855,30 +28039,30 @@ type ScheduleRecognitionTaskResult struct {
 }
 
 type ScheduleReviewTaskResult struct {
-	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+	// <p>任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	// <p>错误码，空字符串表示成功，其他值表示失败，取值请参考 <a href="https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81">媒体处理类错误码</a> 列表。</p>
 	ErrCodeExt *string `json:"ErrCodeExt,omitnil,omitempty" name:"ErrCodeExt"`
 
-	// 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
+	// <p>错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。</p>
 	ErrCode *int64 `json:"ErrCode,omitnil,omitempty" name:"ErrCode"`
 
-	// 错误信息。
+	// <p>错误信息。</p>
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
-	// 审核任务的输入。
+	// <p>审核任务的输入。</p>
 	Input *AiContentReviewTaskInput `json:"Input,omitnil,omitempty" name:"Input"`
 
-	// 审核任务的输出。
+	// <p>审核任务的输出。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output []*AiContentReviewResult `json:"Output,omitnil,omitempty" name:"Output"`
 
-	// 任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+	// <p>任务开始执行的时间，采用 <a href="https://cloud.tencent.com/document/product/862/37710#52">ISO 日期格式</a>。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BeginProcessTime *string `json:"BeginProcessTime,omitnil,omitempty" name:"BeginProcessTime"`
 
-	// 任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+	// <p>任务执行完毕的时间，采用 <a href="https://cloud.tencent.com/document/product/862/37710#52">ISO 日期格式</a>。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FinishTime *string `json:"FinishTime,omitnil,omitempty" name:"FinishTime"`
 }
@@ -28024,23 +28208,23 @@ type SearchValueInput struct {
 }
 
 type SecurityGroupInfo struct {
-	// 安全组 ID。
+	// <p>安全组 ID。</p>
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 安全组名称。
+	// <p>安全组名称。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 白名单列表。
+	// <p>白名单列表。</p>
 	Whitelist []*string `json:"Whitelist,omitnil,omitempty" name:"Whitelist"`
 
-	// 绑定的输入流列表。
+	// <p>绑定的输入流列表。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OccupiedInputs []*string `json:"OccupiedInputs,omitnil,omitempty" name:"OccupiedInputs"`
 
-	// 安全组地址。
+	// <p>安全组地址。</p>
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 绑定的输出流列表。
+	// <p>绑定的输出流列表。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OccupiedOutputs []*string `json:"OccupiedOutputs,omitnil,omitempty" name:"OccupiedOutputs"`
 }
@@ -28904,10 +29088,10 @@ type Speakers struct {
 }
 
 type SpecificationDataItem struct {
-	// 任务规格。
+	// <p>任务规格。</p>
 	Specification *string `json:"Specification,omitnil,omitempty" name:"Specification"`
 
-	// 统计数据。
+	// <p>统计数据。</p>
 	Data []*TaskStatDataItem `json:"Data,omitnil,omitempty" name:"Data"`
 }
 
@@ -29198,6 +29382,133 @@ type StreamUrlDetail struct {
 
 	// Playback: 拉流播放地址； RelayDestination：转推目的地址；SourceCaptureUrl：回源拉流地址；IngestEndpoint：推流地址
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
+// Predefined struct for user
+type SubmitHunyuan3DTaskRequestParams struct {
+	// <p>文生 3D 的提示词</p><p>入参限制：最长 1024 utf-8 字符</p>
+	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
+
+	// <p>图生 3D 的图片 URL（http/https）</p>
+	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
+
+	// <p>多视角图生 3D，至少 2 张，且必须包含 front 视角</p>
+	MultiViewImages []*ViewImage `json:"MultiViewImages,omitnil,omitempty" name:"MultiViewImages"`
+
+	// <p>生成类型</p><p>枚举值：</p><ul><li>Normal： 生成完整 3D 资产（几何 + 纹理）</li><li>Geometry： 只生成几何体（无纹理，输出速度更快）</li><li>Texture： 只生成纹理（需要传 MeshUrl）</li></ul><p>默认值：Normal</p>
+	GenerateType *string `json:"GenerateType,omitnil,omitempty" name:"GenerateType"`
+
+	// <p>已有 3D 模型的 URL（仅支持 .glb / .obj）。传了 MeshUrl → 强制 GenerateType=Texture（贴纹理场景）</p>
+	MeshUrl *string `json:"MeshUrl,omitnil,omitempty" name:"MeshUrl"`
+
+	// <p>是否输出 PBR 材质</p><p>默认值：false</p>
+	EnablePBR *bool `json:"EnablePBR,omitnil,omitempty" name:"EnablePBR"`
+
+	// <p>面片数，范围 [3000, 1500000]。仅 Normal / Geometry 分支生效</p><p>取值范围：[3000, 1500000]</p><p>默认值：500000</p>
+	FaceCount *uint64 `json:"FaceCount,omitnil,omitempty" name:"FaceCount"`
+
+	// <p>是否保留 UV 展开</p><p>默认值：false</p>
+	KeepUV *bool `json:"KeepUV,omitnil,omitempty" name:"KeepUV"`
+
+	// <p>除默认返回的 obj + glb 外，附加输出的一种格式。当前仅支持 FBX</p>
+	ResultFormat *string `json:"ResultFormat,omitnil,omitempty" name:"ResultFormat"`
+
+	// <p>随机种子，同一 Seed 输入下结果可复现</p>
+	Seed *uint64 `json:"Seed,omitnil,omitempty" name:"Seed"`
+
+	// <p>风格控制词</p>
+	Style *string `json:"Style,omitnil,omitempty" name:"Style"`
+}
+
+type SubmitHunyuan3DTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>文生 3D 的提示词</p><p>入参限制：最长 1024 utf-8 字符</p>
+	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
+
+	// <p>图生 3D 的图片 URL（http/https）</p>
+	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
+
+	// <p>多视角图生 3D，至少 2 张，且必须包含 front 视角</p>
+	MultiViewImages []*ViewImage `json:"MultiViewImages,omitnil,omitempty" name:"MultiViewImages"`
+
+	// <p>生成类型</p><p>枚举值：</p><ul><li>Normal： 生成完整 3D 资产（几何 + 纹理）</li><li>Geometry： 只生成几何体（无纹理，输出速度更快）</li><li>Texture： 只生成纹理（需要传 MeshUrl）</li></ul><p>默认值：Normal</p>
+	GenerateType *string `json:"GenerateType,omitnil,omitempty" name:"GenerateType"`
+
+	// <p>已有 3D 模型的 URL（仅支持 .glb / .obj）。传了 MeshUrl → 强制 GenerateType=Texture（贴纹理场景）</p>
+	MeshUrl *string `json:"MeshUrl,omitnil,omitempty" name:"MeshUrl"`
+
+	// <p>是否输出 PBR 材质</p><p>默认值：false</p>
+	EnablePBR *bool `json:"EnablePBR,omitnil,omitempty" name:"EnablePBR"`
+
+	// <p>面片数，范围 [3000, 1500000]。仅 Normal / Geometry 分支生效</p><p>取值范围：[3000, 1500000]</p><p>默认值：500000</p>
+	FaceCount *uint64 `json:"FaceCount,omitnil,omitempty" name:"FaceCount"`
+
+	// <p>是否保留 UV 展开</p><p>默认值：false</p>
+	KeepUV *bool `json:"KeepUV,omitnil,omitempty" name:"KeepUV"`
+
+	// <p>除默认返回的 obj + glb 外，附加输出的一种格式。当前仅支持 FBX</p>
+	ResultFormat *string `json:"ResultFormat,omitnil,omitempty" name:"ResultFormat"`
+
+	// <p>随机种子，同一 Seed 输入下结果可复现</p>
+	Seed *uint64 `json:"Seed,omitnil,omitempty" name:"Seed"`
+
+	// <p>风格控制词</p>
+	Style *string `json:"Style,omitnil,omitempty" name:"Style"`
+}
+
+func (r *SubmitHunyuan3DTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SubmitHunyuan3DTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Prompt")
+	delete(f, "ImageUrl")
+	delete(f, "MultiViewImages")
+	delete(f, "GenerateType")
+	delete(f, "MeshUrl")
+	delete(f, "EnablePBR")
+	delete(f, "FaceCount")
+	delete(f, "KeepUV")
+	delete(f, "ResultFormat")
+	delete(f, "Seed")
+	delete(f, "Style")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitHunyuan3DTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SubmitHunyuan3DTaskResponseParams struct {
+	// <p>任务 ID</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type SubmitHunyuan3DTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *SubmitHunyuan3DTaskResponseParams `json:"Response"`
+}
+
+func (r *SubmitHunyuan3DTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SubmitHunyuan3DTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SubtitleArea struct {
@@ -30092,50 +30403,30 @@ type TerrorismConfigureInfoForUpdate struct {
 }
 
 type TerrorismImgReviewTemplateInfo struct {
-	// 画面涉敏任务开关，可选值：
-	// <li>ON：开启画面涉敏任务；</li>
-	// <li>OFF：关闭画面涉敏任务。</li>
+	// <p>画面涉敏任务开关，可选值：</p><li>ON：开启画面涉敏任务；</li><li>OFF：关闭画面涉敏任务。</li>
 	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
 
-	// 画面涉敏过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
-	// <li>guns：武器枪支；</li>
-	// <li>crowd：人群聚集；</li>
-	// <li>bloody：血腥画面；</li>
-	// <li>police：警察部队；</li>
-	// <li>banners：涉敏旗帜；</li>
-	// <li>militant：武装分子；</li>
-	// <li>explosion：爆炸火灾；</li>
-	// <li>terrorists：涉敏人物；</li>
+	// <p>画面涉敏过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：</p><li>guns：武器枪支；</li><li>crowd：人群聚集；</li><li>bloody：血腥画面；</li><li>police：警察部队；</li><li>banners：涉敏旗帜；</li><li>militant：武装分子；</li><li>explosion：爆炸火灾；</li><li>terrorists：涉敏人物；</li>
 	LabelSet []*string `json:"LabelSet,omitnil,omitempty" name:"LabelSet"`
 
-	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 90 分。取值范围：0~100。
+	// <p>判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 90 分。取值范围：0~100。</p>
 	BlockConfidence *int64 `json:"BlockConfidence,omitnil,omitempty" name:"BlockConfidence"`
 
-	// 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 80 分。取值范围：0~100。
+	// <p>判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 80 分。取值范围：0~100。</p>
 	ReviewConfidence *int64 `json:"ReviewConfidence,omitnil,omitempty" name:"ReviewConfidence"`
 }
 
 type TerrorismImgReviewTemplateInfoForUpdate struct {
-	// 画面涉敏任务开关，可选值：
-	// <li>ON：开启画面涉敏任务；</li>
-	// <li>OFF：关闭画面涉敏任务。</li>
+	// <p>画面涉敏任务开关，可选值：</p><li>ON：开启画面涉敏任务；</li><li>OFF：关闭画面涉敏任务。</li>
 	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
 
-	// 画面涉敏过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
-	// <li>guns：武器枪支；</li>
-	// <li>crowd：人群聚集；</li>
-	// <li>bloody：血腥画面；</li>
-	// <li>police：警察部队；</li>
-	// <li>banners：涉敏旗帜；</li>
-	// <li>militant：武装分子；</li>
-	// <li>explosion：爆炸火灾；</li>
-	// <li>terrorists：涉敏人物；</li>
+	// <p>画面涉敏过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：</p><li>guns：武器枪支；</li><li>crowd：人群聚集；</li><li>bloody：血腥画面；</li><li>police：警察部队；</li><li>banners：涉敏旗帜；</li><li>militant：武装分子；</li><li>explosion：爆炸火灾；</li><li>terrorists：涉敏人物；</li>
 	LabelSet []*string `json:"LabelSet,omitnil,omitempty" name:"LabelSet"`
 
-	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
+	// <p>判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。</p>
 	BlockConfidence *int64 `json:"BlockConfidence,omitnil,omitempty" name:"BlockConfidence"`
 
-	// 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核。取值范围：0~100。
+	// <p>判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核。取值范围：0~100。</p>
 	ReviewConfidence *int64 `json:"ReviewConfidence,omitnil,omitempty" name:"ReviewConfidence"`
 }
 
@@ -31817,6 +32108,14 @@ type VideoTemplateInfoForUpdate struct {
 	CompressType *string `json:"CompressType,omitnil,omitempty" name:"CompressType"`
 }
 
+type ViewImage struct {
+	// <p>视角类型</p><p>枚举值：</p><ul><li>front： 正视图 （必填）</li><li>back： 背视图</li><li>left： 左视图</li><li>right： 右视图</li><li>top： 顶视图</li><li>bottom： 底视图</li><li>left_front： 左前 45°</li><li>right_front： 右前 45°</li></ul><p>MultiViewImages 数组长度 ≥ 2 ; 必须包含 front 视角;  同一 ViewType 不允许重复; 每项必须提供 ViewImageUrl</p>
+	ViewType *string `json:"ViewType,omitnil,omitempty" name:"ViewType"`
+
+	// <p>图片 URL（http / https）</p>
+	ViewImageUrl *string `json:"ViewImageUrl,omitnil,omitempty" name:"ViewImageUrl"`
+}
+
 type VoiceInfo struct {
 	// <p>音色ID</p>
 	VoiceId *string `json:"VoiceId,omitnil,omitempty" name:"VoiceId"`
@@ -31917,34 +32216,22 @@ type VolumeBalanceConfig struct {
 }
 
 type WatermarkInput struct {
-	// 水印模板 ID。
+	// <p>水印模板 ID。</p>
 	Definition *uint64 `json:"Definition,omitnil,omitempty" name:"Definition"`
 
-	// 水印自定义参数，当 Definition 填 0 时有效。
-	// 该参数用于高度定制场景，建议您优先使用 Definition 指定水印参数。
-	// 水印自定义参数不支持截图打水印。
+	// <p>水印自定义参数，当 Definition 填 0 时有效。<br>该参数用于高度定制场景，建议您优先使用 Definition 指定水印参数。<br>水印自定义参数不支持截图打水印。</p>
 	RawParameter *RawWatermarkParameter `json:"RawParameter,omitnil,omitempty" name:"RawParameter"`
 
-	// 文字内容，长度不超过100个字符。仅当水印类型为文字水印时填写。
-	// 文字水印不支持截图打水印。
+	// <p>文字内容，长度不超过100个字符。仅当水印类型为文字水印时填写。<br>文字水印不支持截图打水印。</p>
 	TextContent *string `json:"TextContent,omitnil,omitempty" name:"TextContent"`
 
-	// SVG 内容。长度不超过 2000000 个字符。仅当水印类型为 SVG 水印时填写。
-	// SVG 水印不支持截图打水印。
+	// <p>SVG 内容。长度不超过 2000000 个字符。仅当水印类型为 SVG 水印时填写。<br>SVG 水印不支持截图打水印。</p>
 	SvgContent *string `json:"SvgContent,omitnil,omitempty" name:"SvgContent"`
 
-	// 水印的起始时间偏移，单位：秒。不填或填0，表示水印从画面出现时开始显现。
-	// <li>不填或填0，表示水印从画面开始就出现；</li>
-	// <li>当数值大于0时（假设为 n），表示水印从画面开始的第 n 秒出现；</li>
-	// <li>当数值小于0时（假设为 -n），表示水印从离画面结束 n 秒前开始出现。</li>
-	// 注：只用于视频场景，截图不支持。
+	// <p>水印的起始时间偏移，单位：秒。不填或填0，表示水印从画面出现时开始显现。</p><li>不填或填0，表示水印从画面开始就出现；</li><li>当数值大于0时（假设为 n），表示水印从画面开始的第 n 秒出现；</li><li>当数值小于0时（假设为 -n），表示水印从离画面结束 n 秒前开始出现。</li>注：只用于视频场景，截图不支持。
 	StartTimeOffset *float64 `json:"StartTimeOffset,omitnil,omitempty" name:"StartTimeOffset"`
 
-	// 水印的结束时间偏移，单位：秒。
-	// <li>不填或填0，表示水印持续到画面结束；</li>
-	// <li>当数值大于0时（假设为 n），表示水印持续到第 n 秒时消失；</li>
-	// <li>当数值小于0时（假设为 -n），表示水印持续到离画面结束 n 秒前消失。</li>
-	// 注：只用于视频场景，截图不支持。
+	// <p>水印的结束时间偏移，单位：秒。</p><li>不填或填0，表示水印持续到画面结束；</li><li>当数值大于0时（假设为 n），表示水印持续到第 n 秒时消失；</li><li>当数值小于0时（假设为 -n），表示水印持续到离画面结束 n 秒前消失。</li>注：只用于视频场景，截图不支持。
 	EndTimeOffset *float64 `json:"EndTimeOffset,omitnil,omitempty" name:"EndTimeOffset"`
 }
 

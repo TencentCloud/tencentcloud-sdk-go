@@ -77,6 +77,9 @@ const (
 	// Execute SQL error.
 	FAILEDOPERATION_PGEXECUTESQLERROR = "FailedOperation.PGExecuteSqlError"
 
+	// 返回结果超出限制
+	FAILEDOPERATION_PGRESULTTOOLARGE = "FailedOperation.PGResultTooLarge"
+
 	// 套餐包不支持
 	FAILEDOPERATION_PACKAGEUNSUPPORTED = "FailedOperation.PackageUnsupported"
 

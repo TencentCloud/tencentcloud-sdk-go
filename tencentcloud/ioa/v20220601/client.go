@@ -553,6 +553,58 @@ func (c *Client) CreatePrivilegeCodeWithContext(ctx context.Context, request *Cr
     return
 }
 
+func NewDeleteAccountGroupResourcesRequest() (request *DeleteAccountGroupResourcesRequest) {
+    request = &DeleteAccountGroupResourcesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ioa", APIVersion, "DeleteAccountGroupResources")
+    
+    
+    return
+}
+
+func NewDeleteAccountGroupResourcesResponse() (response *DeleteAccountGroupResourcesResponse) {
+    response = &DeleteAccountGroupResourcesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteAccountGroupResources
+// 删除账户组资源授权，私有化调用path为：capi/NGN/DeleteAccountGroupResources
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+func (c *Client) DeleteAccountGroupResources(request *DeleteAccountGroupResourcesRequest) (response *DeleteAccountGroupResourcesResponse, err error) {
+    return c.DeleteAccountGroupResourcesWithContext(context.Background(), request)
+}
+
+// DeleteAccountGroupResources
+// 删除账户组资源授权，私有化调用path为：capi/NGN/DeleteAccountGroupResources
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+func (c *Client) DeleteAccountGroupResourcesWithContext(ctx context.Context, request *DeleteAccountGroupResourcesRequest) (response *DeleteAccountGroupResourcesResponse, err error) {
+    if request == nil {
+        request = NewDeleteAccountGroupResourcesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ioa", APIVersion, "DeleteAccountGroupResources")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAccountGroupResources require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteAccountGroupResourcesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteDeviceVirtualGroupRequest() (request *DeleteDeviceVirtualGroupRequest) {
     request = &DeleteDeviceVirtualGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},

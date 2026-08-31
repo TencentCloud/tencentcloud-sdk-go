@@ -36,6 +36,9 @@ type CreateLibraryRequestParams struct {
 
 	// <p>媒体库配置项，部分参数新建后不可更改</p>
 	LibraryExtension *LibraryExtension `json:"LibraryExtension,omitnil,omitempty" name:"LibraryExtension"`
+
+	// <p>媒体库标签列表。</p>
+	Tags []*ResourceTag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type CreateLibraryRequest struct {
@@ -55,6 +58,9 @@ type CreateLibraryRequest struct {
 
 	// <p>媒体库配置项，部分参数新建后不可更改</p>
 	LibraryExtension *LibraryExtension `json:"LibraryExtension,omitnil,omitempty" name:"LibraryExtension"`
+
+	// <p>媒体库标签列表。</p>
+	Tags []*ResourceTag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 func (r *CreateLibraryRequest) ToJsonString() string {
@@ -74,6 +80,7 @@ func (r *CreateLibraryRequest) FromJsonString(s string) error {
 	delete(f, "BucketName")
 	delete(f, "BucketRegion")
 	delete(f, "LibraryExtension")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLibraryRequest has unknown keys!", "")
 	}
@@ -178,6 +185,9 @@ type DescribeLibrariesRequestParams struct {
 
 	// 单次列出的数量限制，不超过100.
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+
+	TagFilters []*TagFilter `json:"TagFilters,omitnil,omitempty" name:"TagFilters"`
 }
 
 type DescribeLibrariesRequest struct {
@@ -197,6 +207,8 @@ type DescribeLibrariesRequest struct {
 
 	// 单次列出的数量限制，不超过100.
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	TagFilters []*TagFilter `json:"TagFilters,omitnil,omitempty" name:"TagFilters"`
 }
 
 func (r *DescribeLibrariesRequest) ToJsonString() string {
@@ -216,6 +228,7 @@ func (r *DescribeLibrariesRequest) FromJsonString(s string) error {
 	delete(f, "PageSize")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "TagFilters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLibrariesRequest has unknown keys!", "")
 	}
@@ -623,38 +636,41 @@ type Instance struct {
 }
 
 type Library struct {
-	// 媒体库 ID
+	// <p>媒体库 ID</p>
 	LibraryId *string `json:"LibraryId,omitnil,omitempty" name:"LibraryId"`
 
-	// 媒体库友好名称
+	// <p>媒体库友好名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 备注
+	// <p>备注</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 媒体库绑定的 COS 存储桶
+	// <p>媒体库绑定的 COS 存储桶</p>
 	BucketName *string `json:"BucketName,omitnil,omitempty" name:"BucketName"`
 
-	// 媒体库绑定的 COS 存储桶所在的地域
+	// <p>媒体库绑定的 COS 存储桶所在的地域</p>
 	BucketRegion *string `json:"BucketRegion,omitnil,omitempty" name:"BucketRegion"`
 
-	// 该媒体库的业务 API 访问域名
+	// <p>该媒体库的业务 API 访问域名</p>
 	AccessDomain *string `json:"AccessDomain,omitnil,omitempty" name:"AccessDomain"`
 
-	// 媒体库创建时间
+	// <p>媒体库创建时间</p>
 	CreationTime *string `json:"CreationTime,omitnil,omitempty" name:"CreationTime"`
 
-	// 媒体库配置项
+	// <p>媒体库配置项</p>
 	LibraryExtension *LibraryExtension `json:"LibraryExtension,omitnil,omitempty" name:"LibraryExtension"`
 
-	// 媒体库用量，单位为 Bytes，由于数字类型精度限制，该字段为 String 类型。
+	// <p>媒体库用量，单位为 Bytes，由于数字类型精度限制，该字段为 String 类型。</p>
 	Size *string `json:"Size,omitnil,omitempty" name:"Size"`
 
-	// 媒体库目录数，由于数字类型精度限制，该字段为 String 类型。
+	// <p>媒体库目录数，由于数字类型精度限制，该字段为 String 类型。</p>
 	DirNum *string `json:"DirNum,omitnil,omitempty" name:"DirNum"`
 
-	// 媒体库文件数，由于数字类型精度限制，该字段为 String 类型。
+	// <p>媒体库文件数，由于数字类型精度限制，该字段为 String 类型。</p>
 	FileNum *string `json:"FileNum,omitnil,omitempty" name:"FileNum"`
+
+	// <p>媒体库关联的标签列表。</p>
+	Tags []*ResourceTag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type LibraryExtension struct {
@@ -747,6 +763,9 @@ type ModifyLibraryRequestParams struct {
 
 	// <p>媒体库配置项，部分参数在新建后不可更改，且仅修改传入的参数。如不传该参数则不修改任何配置项。</p>
 	LibraryExtension *LibraryExtension `json:"LibraryExtension,omitnil,omitempty" name:"LibraryExtension"`
+
+	// <p>媒体库标签列表。</p>
+	Tags []*ResourceTag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type ModifyLibraryRequest struct {
@@ -763,6 +782,9 @@ type ModifyLibraryRequest struct {
 
 	// <p>媒体库配置项，部分参数在新建后不可更改，且仅修改传入的参数。如不传该参数则不修改任何配置项。</p>
 	LibraryExtension *LibraryExtension `json:"LibraryExtension,omitnil,omitempty" name:"LibraryExtension"`
+
+	// <p>媒体库标签列表。</p>
+	Tags []*ResourceTag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 func (r *ModifyLibraryRequest) ToJsonString() string {
@@ -781,6 +803,7 @@ func (r *ModifyLibraryRequest) FromJsonString(s string) error {
 	delete(f, "Name")
 	delete(f, "Remark")
 	delete(f, "LibraryExtension")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLibraryRequest has unknown keys!", "")
 	}
@@ -807,6 +830,14 @@ func (r *ModifyLibraryResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ModifyLibraryResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type ResourceTag struct {
+	// <p>标签键。</p>
+	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
+
+	// <p>标签值。</p>
+	TagValue *string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
 }
 
 // Predefined struct for user
@@ -882,6 +913,14 @@ func (r *SendSmsCodeResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *SendSmsCodeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type TagFilter struct {
+	// <p>用于筛选媒体库的标签键。</p>
+	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
+
+	// <p>用于筛选媒体库的标签值列表。</p>
+	TagValue []*string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
 }
 
 type TrafficPackage struct {

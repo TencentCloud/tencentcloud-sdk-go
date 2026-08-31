@@ -2227,11 +2227,14 @@ type ExtMetric struct {
 }
 
 type FeiShuRobotNoticeTmpl struct {
-	// 内容模板
+	// <p>内容模板</p>
 	ContentTmpl *string `json:"ContentTmpl,omitnil,omitempty" name:"ContentTmpl"`
 
-	// 标题模板
+	// <p>标题模板</p>
 	TitleTmpl *string `json:"TitleTmpl,omitnil,omitempty" name:"TitleTmpl"`
+
+	// <p>通知内容模版标题自定义颜色</p>
+	TitleColor *RobotNoticeTitleColor `json:"TitleColor,omitnil,omitempty" name:"TitleColor"`
 }
 
 type FeiShuRobotNoticeTmplMatcher struct {
@@ -3887,6 +3890,25 @@ type ResourceMapInfo struct {
 	// <p>总实例数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceCount *int64 `json:"InstanceCount,omitnil,omitempty" name:"InstanceCount"`
+}
+
+type RobotNoticeTitleColor struct {
+	// <p>通知内容模版自定义标题颜色默认颜色</p>
+	Default *string `json:"Default,omitnil,omitempty" name:"Default"`
+
+	// <p>通知内容模版自定义标题颜色规则，label 匹配设置颜色</p>
+	Rules []*RobotNoticeTitleColorRules `json:"Rules,omitnil,omitempty" name:"Rules"`
+}
+
+type RobotNoticeTitleColorRules struct {
+	// <p>通知内容模版自定义颜色 Label 匹配的 Key</p>
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// <p>通知内容模版自定义颜色 Label 匹配的 Value</p>
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+
+	// <p>通知内容模版自定义颜色</p>
+	Color *string `json:"Color,omitnil,omitempty" name:"Color"`
 }
 
 type Rule struct {

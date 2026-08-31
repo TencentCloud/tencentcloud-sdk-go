@@ -872,6 +872,102 @@ func (r *CreateClusterResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateScheduledActionRequestParams struct {
+	// <p>集群 ID。</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// <p>队列名称。</p>
+	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
+
+	// <p>定时伸缩任务名称。</p>
+	ScheduledActionName *string `json:"ScheduledActionName,omitnil,omitempty" name:"ScheduledActionName"`
+
+	// <p>定时伸缩任务生效起始时间，格式：YYYY-MM-DD HH:MM:SS。</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>定时触发后队列期望节点数。</p>
+	DesiredCapacity *int64 `json:"DesiredCapacity,omitnil,omitempty" name:"DesiredCapacity"`
+
+	// <p>定时伸缩任务生效结束时间，格式：YYYY-MM-DD HH:MM:SS。不传则永久有效。</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>重复策略，遵循 cron 表达式格式。不传则只执行一次。</p>
+	Recurrence *string `json:"Recurrence,omitnil,omitempty" name:"Recurrence"`
+}
+
+type CreateScheduledActionRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>集群 ID。</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// <p>队列名称。</p>
+	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
+
+	// <p>定时伸缩任务名称。</p>
+	ScheduledActionName *string `json:"ScheduledActionName,omitnil,omitempty" name:"ScheduledActionName"`
+
+	// <p>定时伸缩任务生效起始时间，格式：YYYY-MM-DD HH:MM:SS。</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>定时触发后队列期望节点数。</p>
+	DesiredCapacity *int64 `json:"DesiredCapacity,omitnil,omitempty" name:"DesiredCapacity"`
+
+	// <p>定时伸缩任务生效结束时间，格式：YYYY-MM-DD HH:MM:SS。不传则永久有效。</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>重复策略，遵循 cron 表达式格式。不传则只执行一次。</p>
+	Recurrence *string `json:"Recurrence,omitnil,omitempty" name:"Recurrence"`
+}
+
+func (r *CreateScheduledActionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateScheduledActionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "QueueName")
+	delete(f, "ScheduledActionName")
+	delete(f, "StartTime")
+	delete(f, "DesiredCapacity")
+	delete(f, "EndTime")
+	delete(f, "Recurrence")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateScheduledActionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateScheduledActionResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateScheduledActionResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateScheduledActionResponseParams `json:"Response"`
+}
+
+func (r *CreateScheduledActionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateScheduledActionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateWorkspacesRequestParams struct {
 	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
 	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
@@ -1377,6 +1473,60 @@ func (r *DeleteQueueResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteScheduledActionRequestParams struct {
+	// <p>定时伸缩任务 ID 列表，最多 20 个。</p>
+	ScheduledActionIds []*string `json:"ScheduledActionIds,omitnil,omitempty" name:"ScheduledActionIds"`
+}
+
+type DeleteScheduledActionRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>定时伸缩任务 ID 列表，最多 20 个。</p>
+	ScheduledActionIds []*string `json:"ScheduledActionIds,omitnil,omitempty" name:"ScheduledActionIds"`
+}
+
+func (r *DeleteScheduledActionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteScheduledActionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ScheduledActionIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteScheduledActionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteScheduledActionResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteScheduledActionResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteScheduledActionResponseParams `json:"Response"`
+}
+
+func (r *DeleteScheduledActionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteScheduledActionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeAutoScalingConfigurationRequestParams struct {
 	// <p>集群ID。</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
@@ -1733,6 +1883,67 @@ func (r *DescribeInitNodeScriptsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeInstanceFamiliesRequestParams struct {
+	// <p>集群 ID。</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// <p>GPU 厂商过滤条件。</p>
+	Vendor *string `json:"Vendor,omitnil,omitempty" name:"Vendor"`
+}
+
+type DescribeInstanceFamiliesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>集群 ID。</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// <p>GPU 厂商过滤条件。</p>
+	Vendor *string `json:"Vendor,omitnil,omitempty" name:"Vendor"`
+}
+
+func (r *DescribeInstanceFamiliesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceFamiliesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "Vendor")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstanceFamiliesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInstanceFamiliesResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeInstanceFamiliesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeInstanceFamiliesResponseParams `json:"Response"`
+}
+
+func (r *DescribeInstanceFamiliesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceFamiliesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeJobSubmitInfoRequestParams struct {
 	// 作业ID
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
@@ -2021,6 +2232,128 @@ func (r *DescribeNodesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeQueueAutoScalingOverviewRequestParams struct {
+	// 集群 ID。
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 队列名称列表。不传则返回所有队列的弹性伸缩概览信息。
+	QueueNames []*string `json:"QueueNames,omitnil,omitempty" name:"QueueNames"`
+}
+
+type DescribeQueueAutoScalingOverviewRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群 ID。
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 队列名称列表。不传则返回所有队列的弹性伸缩概览信息。
+	QueueNames []*string `json:"QueueNames,omitnil,omitempty" name:"QueueNames"`
+}
+
+func (r *DescribeQueueAutoScalingOverviewRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeQueueAutoScalingOverviewRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "QueueNames")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeQueueAutoScalingOverviewRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeQueueAutoScalingOverviewResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeQueueAutoScalingOverviewResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeQueueAutoScalingOverviewResponseParams `json:"Response"`
+}
+
+func (r *DescribeQueueAutoScalingOverviewResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeQueueAutoScalingOverviewResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeQueueAutoScalingRequestParams struct {
+	// 集群 ID。
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 队列名称。不传则返回所有队列的弹性伸缩配置。
+	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
+}
+
+type DescribeQueueAutoScalingRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群 ID。
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 队列名称。不传则返回所有队列的弹性伸缩配置。
+	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
+}
+
+func (r *DescribeQueueAutoScalingRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeQueueAutoScalingRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "QueueName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeQueueAutoScalingRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeQueueAutoScalingResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeQueueAutoScalingResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeQueueAutoScalingResponseParams `json:"Response"`
+}
+
+func (r *DescribeQueueAutoScalingResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeQueueAutoScalingResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeQueuesRequestParams struct {
 	// 集群ID。
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
@@ -2091,6 +2424,81 @@ func (r *DescribeQueuesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeQueuesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeScheduledActionsRequestParams struct {
+	// <p>集群 ID。</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// <p>队列名称。</p>
+	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
+
+	// <p>定时伸缩任务 ID 列表。</p>
+	ScheduledActionIds []*string `json:"ScheduledActionIds,omitnil,omitempty" name:"ScheduledActionIds"`
+
+	// <p>任务状态过滤条件。</p>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+type DescribeScheduledActionsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>集群 ID。</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// <p>队列名称。</p>
+	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
+
+	// <p>定时伸缩任务 ID 列表。</p>
+	ScheduledActionIds []*string `json:"ScheduledActionIds,omitnil,omitempty" name:"ScheduledActionIds"`
+
+	// <p>任务状态过滤条件。</p>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+func (r *DescribeScheduledActionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeScheduledActionsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "QueueName")
+	delete(f, "ScheduledActionIds")
+	delete(f, "Status")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeScheduledActionsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeScheduledActionsResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeScheduledActionsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeScheduledActionsResponseParams `json:"Response"`
+}
+
+func (r *DescribeScheduledActionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeScheduledActionsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2322,6 +2730,33 @@ type ExpansionNodeConfigOverview struct {
 	DataDisks []*DataDisk `json:"DataDisks,omitnil,omitempty" name:"DataDisks"`
 }
 
+type ExpansionPolicy struct {
+	// <p>扩容方式。可选值：LAUNCH_TEMPLATE（启动模板）、MULTI_CARD（多卡型混扩）。</p>
+	ExpansionMode *string `json:"ExpansionMode,omitnil,omitempty" name:"ExpansionMode"`
+
+	// <p>启动模板 ID 列表，最多 10 个。ExpansionMode=LAUNCH_TEMPLATE 时使用。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LaunchTemplateIds []*string `json:"LaunchTemplateIds,omitnil,omitempty" name:"LaunchTemplateIds"`
+
+	// <p>参考实例 ID，根据已有实例配置生成启动模板。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReferenceInstanceId *string `json:"ReferenceInstanceId,omitnil,omitempty" name:"ReferenceInstanceId"`
+
+	// <p>启动模板扩容覆盖配置。ExpansionMode=MULTI_CARD 时使用。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TemplateOverrides *TemplateOverrides `json:"TemplateOverrides,omitnil,omitempty" name:"TemplateOverrides"`
+
+	// <p>候选规格排序策略。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpansionPriority *ExpansionPriority `json:"ExpansionPriority,omitnil,omitempty" name:"ExpansionPriority"`
+}
+
+type ExpansionPriority struct {
+	// <p>候选规格排序方式。可选值：LARGE_FIRST（大规格优先）、SMALL_FIRST（小规格优先）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceSpecPriority *string `json:"InstanceSpecPriority,omitnil,omitempty" name:"InstanceSpecPriority"`
+}
+
 type Filter struct {
 	// 需要过滤的字段。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
@@ -2372,6 +2807,210 @@ type GooseFSxOptionOverview struct {
 
 	// 文件系统的本地挂载路径。GooseFSx目前只支持挂载在/goosefsx/{文件系统ID}_proxy/目录下。
 	LocalPath *string `json:"LocalPath,omitnil,omitempty" name:"LocalPath"`
+}
+
+// Predefined struct for user
+type InquirePriceCreateWorkspacesRequestParams struct {
+	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
+	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
+
+	// 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目，所属宿主机（在专用宿主机上创建子机时指定）等属性。 <b>注：如果您不指定LaunchTemplate参数，则Placement为必选参数。若同时传递Placement和LaunchTemplate，则默认覆盖LaunchTemplate中对应的Placement的值。</b>
+	Placement *SpacePlacement `json:"Placement,omitnil,omitempty" name:"Placement"`
+
+	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
+	SpaceChargePrepaid *SpaceChargePrepaid `json:"SpaceChargePrepaid,omitnil,omitempty" name:"SpaceChargePrepaid"`
+
+	// 工作空间计费类型
+	SpaceChargeType *string `json:"SpaceChargeType,omitnil,omitempty" name:"SpaceChargeType"`
+
+	// 工作空间规格
+	SpaceType *string `json:"SpaceType,omitnil,omitempty" name:"SpaceType"`
+
+	// 镜像ID
+	ImageId *string `json:"ImageId,omitnil,omitempty" name:"ImageId"`
+
+	// 工作空间系统盘信息
+	SystemDisk *SpaceSystemDisk `json:"SystemDisk,omitnil,omitempty" name:"SystemDisk"`
+
+	// 工作空间数据盘信息
+	DataDisks []*SpaceDataDisk `json:"DataDisks,omitnil,omitempty" name:"DataDisks"`
+
+	// 私有网络相关信息
+	VirtualPrivateCloud *SpaceVirtualPrivateCloud `json:"VirtualPrivateCloud,omitnil,omitempty" name:"VirtualPrivateCloud"`
+
+	// 公网带宽相关信息设置
+	InternetAccessible *SpaceInternetAccessible `json:"InternetAccessible,omitnil,omitempty" name:"InternetAccessible"`
+
+	// 购买工作空间数量
+	SpaceCount *int64 `json:"SpaceCount,omitnil,omitempty" name:"SpaceCount"`
+
+	// 工作空间显示名称
+	SpaceName *string `json:"SpaceName,omitnil,omitempty" name:"SpaceName"`
+
+	// 工作空间登陆设置
+	LoginSettings *LoginSettings `json:"LoginSettings,omitnil,omitempty" name:"LoginSettings"`
+
+	// 工作空间所属安全组
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
+
+	// 增强服务
+	EnhancedService *EnhancedService `json:"EnhancedService,omitnil,omitempty" name:"EnhancedService"`
+
+	// 是否只预检此次请求
+	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
+
+	// 提供给工作空间使用的用户数据
+	UserData *string `json:"UserData,omitnil,omitempty" name:"UserData"`
+
+	// 置放群组id
+	DisasterRecoverGroupIds []*string `json:"DisasterRecoverGroupIds,omitnil,omitempty" name:"DisasterRecoverGroupIds"`
+
+	// 标签描述列表
+	TagSpecification []*TagSpecification `json:"TagSpecification,omitnil,omitempty" name:"TagSpecification"`
+
+	// 高性能计算集群ID
+	HpcClusterId *string `json:"HpcClusterId,omitnil,omitempty" name:"HpcClusterId"`
+
+	// CAM角色名称
+	CamRoleName *string `json:"CamRoleName,omitnil,omitempty" name:"CamRoleName"`
+
+	// 实例主机名。<br><li>点号（.）和短横线（-）不能作为 HostName 的首尾字符，不能连续使用。</li><br><li>Windows 实例：主机名名字符长度为[2, 15]，允许字母（不限制大小写）、数字和短横线（-）组成，不支持点号（.），不能全是数字。</li><br><li>其他类型（Linux 等）实例：主机名字符长度为[2, 60]，允许支持多个点号，点之间为一段，每段允许字母（不限制大小写）、数字和短横线（-）组成。</li><br><li>购买多台实例，如果指定模式串`{R:x}`，表示生成数字`[x, x+n-1]`，其中`n`表示购买实例的数量，例如`server{R:3}`，购买1台时，实例主机名为`server3`；购买2台时，实例主机名分别为`server3`，`server4`。支持指定多个模式串`{R:x}`。</li><br><li>购买多台实例，如果不指定模式串，则在实例主机名添加后缀`1、2...n`，其中`n`表示购买实例的数量，例如`server`，购买2台时，实例主机名分别为`server1`，`server2`。</li>
+	HostName *string `json:"HostName,omitnil,omitempty" name:"HostName"`
+}
+
+type InquirePriceCreateWorkspacesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
+	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
+
+	// 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目，所属宿主机（在专用宿主机上创建子机时指定）等属性。 <b>注：如果您不指定LaunchTemplate参数，则Placement为必选参数。若同时传递Placement和LaunchTemplate，则默认覆盖LaunchTemplate中对应的Placement的值。</b>
+	Placement *SpacePlacement `json:"Placement,omitnil,omitempty" name:"Placement"`
+
+	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
+	SpaceChargePrepaid *SpaceChargePrepaid `json:"SpaceChargePrepaid,omitnil,omitempty" name:"SpaceChargePrepaid"`
+
+	// 工作空间计费类型
+	SpaceChargeType *string `json:"SpaceChargeType,omitnil,omitempty" name:"SpaceChargeType"`
+
+	// 工作空间规格
+	SpaceType *string `json:"SpaceType,omitnil,omitempty" name:"SpaceType"`
+
+	// 镜像ID
+	ImageId *string `json:"ImageId,omitnil,omitempty" name:"ImageId"`
+
+	// 工作空间系统盘信息
+	SystemDisk *SpaceSystemDisk `json:"SystemDisk,omitnil,omitempty" name:"SystemDisk"`
+
+	// 工作空间数据盘信息
+	DataDisks []*SpaceDataDisk `json:"DataDisks,omitnil,omitempty" name:"DataDisks"`
+
+	// 私有网络相关信息
+	VirtualPrivateCloud *SpaceVirtualPrivateCloud `json:"VirtualPrivateCloud,omitnil,omitempty" name:"VirtualPrivateCloud"`
+
+	// 公网带宽相关信息设置
+	InternetAccessible *SpaceInternetAccessible `json:"InternetAccessible,omitnil,omitempty" name:"InternetAccessible"`
+
+	// 购买工作空间数量
+	SpaceCount *int64 `json:"SpaceCount,omitnil,omitempty" name:"SpaceCount"`
+
+	// 工作空间显示名称
+	SpaceName *string `json:"SpaceName,omitnil,omitempty" name:"SpaceName"`
+
+	// 工作空间登陆设置
+	LoginSettings *LoginSettings `json:"LoginSettings,omitnil,omitempty" name:"LoginSettings"`
+
+	// 工作空间所属安全组
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
+
+	// 增强服务
+	EnhancedService *EnhancedService `json:"EnhancedService,omitnil,omitempty" name:"EnhancedService"`
+
+	// 是否只预检此次请求
+	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
+
+	// 提供给工作空间使用的用户数据
+	UserData *string `json:"UserData,omitnil,omitempty" name:"UserData"`
+
+	// 置放群组id
+	DisasterRecoverGroupIds []*string `json:"DisasterRecoverGroupIds,omitnil,omitempty" name:"DisasterRecoverGroupIds"`
+
+	// 标签描述列表
+	TagSpecification []*TagSpecification `json:"TagSpecification,omitnil,omitempty" name:"TagSpecification"`
+
+	// 高性能计算集群ID
+	HpcClusterId *string `json:"HpcClusterId,omitnil,omitempty" name:"HpcClusterId"`
+
+	// CAM角色名称
+	CamRoleName *string `json:"CamRoleName,omitnil,omitempty" name:"CamRoleName"`
+
+	// 实例主机名。<br><li>点号（.）和短横线（-）不能作为 HostName 的首尾字符，不能连续使用。</li><br><li>Windows 实例：主机名名字符长度为[2, 15]，允许字母（不限制大小写）、数字和短横线（-）组成，不支持点号（.），不能全是数字。</li><br><li>其他类型（Linux 等）实例：主机名字符长度为[2, 60]，允许支持多个点号，点之间为一段，每段允许字母（不限制大小写）、数字和短横线（-）组成。</li><br><li>购买多台实例，如果指定模式串`{R:x}`，表示生成数字`[x, x+n-1]`，其中`n`表示购买实例的数量，例如`server{R:3}`，购买1台时，实例主机名为`server3`；购买2台时，实例主机名分别为`server3`，`server4`。支持指定多个模式串`{R:x}`。</li><br><li>购买多台实例，如果不指定模式串，则在实例主机名添加后缀`1、2...n`，其中`n`表示购买实例的数量，例如`server`，购买2台时，实例主机名分别为`server1`，`server2`。</li>
+	HostName *string `json:"HostName,omitnil,omitempty" name:"HostName"`
+}
+
+func (r *InquirePriceCreateWorkspacesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InquirePriceCreateWorkspacesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClientToken")
+	delete(f, "Placement")
+	delete(f, "SpaceChargePrepaid")
+	delete(f, "SpaceChargeType")
+	delete(f, "SpaceType")
+	delete(f, "ImageId")
+	delete(f, "SystemDisk")
+	delete(f, "DataDisks")
+	delete(f, "VirtualPrivateCloud")
+	delete(f, "InternetAccessible")
+	delete(f, "SpaceCount")
+	delete(f, "SpaceName")
+	delete(f, "LoginSettings")
+	delete(f, "SecurityGroupIds")
+	delete(f, "EnhancedService")
+	delete(f, "DryRun")
+	delete(f, "UserData")
+	delete(f, "DisasterRecoverGroupIds")
+	delete(f, "TagSpecification")
+	delete(f, "HpcClusterId")
+	delete(f, "CamRoleName")
+	delete(f, "HostName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InquirePriceCreateWorkspacesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type InquirePriceCreateWorkspacesResponseParams struct {
+	// 该参数表示对应配置实例的价格
+	Price *Price `json:"Price,omitnil,omitempty" name:"Price"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type InquirePriceCreateWorkspacesResponse struct {
+	*tchttp.BaseResponse
+	Response *InquirePriceCreateWorkspacesResponseParams `json:"Response"`
+}
+
+func (r *InquirePriceCreateWorkspacesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InquirePriceCreateWorkspacesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -2849,6 +3488,81 @@ func (r *ModifyNodeAttributeResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyScheduledActionRequestParams struct {
+	// <p>定时伸缩任务 ID。</p>
+	ScheduledActionId *string `json:"ScheduledActionId,omitnil,omitempty" name:"ScheduledActionId"`
+
+	// <p>定时伸缩任务名称。</p>
+	ScheduledActionName *string `json:"ScheduledActionName,omitnil,omitempty" name:"ScheduledActionName"`
+
+	// <p>定时触发后队列期望节点数。</p>
+	DesiredCapacity *int64 `json:"DesiredCapacity,omitnil,omitempty" name:"DesiredCapacity"`
+
+	// <p>任务状态。</p>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+type ModifyScheduledActionRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>定时伸缩任务 ID。</p>
+	ScheduledActionId *string `json:"ScheduledActionId,omitnil,omitempty" name:"ScheduledActionId"`
+
+	// <p>定时伸缩任务名称。</p>
+	ScheduledActionName *string `json:"ScheduledActionName,omitnil,omitempty" name:"ScheduledActionName"`
+
+	// <p>定时触发后队列期望节点数。</p>
+	DesiredCapacity *int64 `json:"DesiredCapacity,omitnil,omitempty" name:"DesiredCapacity"`
+
+	// <p>任务状态。</p>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+func (r *ModifyScheduledActionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyScheduledActionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ScheduledActionId")
+	delete(f, "ScheduledActionName")
+	delete(f, "DesiredCapacity")
+	delete(f, "Status")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyScheduledActionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyScheduledActionResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyScheduledActionResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyScheduledActionResponseParams `json:"Response"`
+}
+
+func (r *ModifyScheduledActionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyScheduledActionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyWorkspacesAttributeRequestParams struct {
 	// 工作空间列表
 	SpaceIds []*string `json:"SpaceIds,omitnil,omitempty" name:"SpaceIds"`
@@ -3260,6 +3974,16 @@ type RunSecurityServiceEnabled struct {
 	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
 }
 
+type ScalingPolicy struct {
+	// <p>期望节点数。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DesiredCapacity *int64 `json:"DesiredCapacity,omitnil,omitempty" name:"DesiredCapacity"`
+
+	// <p>伸缩单位。可选值：NODE（按节点）、GPU_CARD（按 GPU 卡）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScalingUnit *string `json:"ScalingUnit,omitnil,omitempty" name:"ScalingUnit"`
+}
+
 // Predefined struct for user
 type SetAutoScalingConfigurationRequestParams struct {
 	// <p>集群ID。</p>
@@ -3339,6 +4063,81 @@ func (r *SetAutoScalingConfigurationResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *SetAutoScalingConfigurationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SetQueueAutoScalingRequestParams struct {
+	// 集群 ID。
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 队列名称。
+	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
+
+	// <p>伸缩容量策略，用于设置目标容量及容量单位。单独传入时仅更新容量相关配置，未传字段保持原值。</p>
+	ScalingPolicy *ScalingPolicy `json:"ScalingPolicy,omitnil,omitempty" name:"ScalingPolicy"`
+
+	// <p>扩容策略，用于配置启动模板、机型族、GPU 卡数、规格优先级和多可用区等扩容方式。单独传入时仅更新扩容相关配置，未传字段保持原值。</p>
+	ExpansionPolicy *ExpansionPolicy `json:"ExpansionPolicy,omitnil,omitempty" name:"ExpansionPolicy"`
+}
+
+type SetQueueAutoScalingRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群 ID。
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 队列名称。
+	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
+
+	// <p>伸缩容量策略，用于设置目标容量及容量单位。单独传入时仅更新容量相关配置，未传字段保持原值。</p>
+	ScalingPolicy *ScalingPolicy `json:"ScalingPolicy,omitnil,omitempty" name:"ScalingPolicy"`
+
+	// <p>扩容策略，用于配置启动模板、机型族、GPU 卡数、规格优先级和多可用区等扩容方式。单独传入时仅更新扩容相关配置，未传字段保持原值。</p>
+	ExpansionPolicy *ExpansionPolicy `json:"ExpansionPolicy,omitnil,omitempty" name:"ExpansionPolicy"`
+}
+
+func (r *SetQueueAutoScalingRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SetQueueAutoScalingRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "QueueName")
+	delete(f, "ScalingPolicy")
+	delete(f, "ExpansionPolicy")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SetQueueAutoScalingRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SetQueueAutoScalingResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type SetQueueAutoScalingResponse struct {
+	*tchttp.BaseResponse
+	Response *SetQueueAutoScalingResponseParams `json:"Response"`
+}
+
+func (r *SetQueueAutoScalingResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SetQueueAutoScalingResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3713,6 +4512,24 @@ type TaskDependence struct {
 
 	// 依赖关系的终点任务名称。
 	EndTask *string `json:"EndTask,omitnil,omitempty" name:"EndTask"`
+}
+
+type TemplateOverrides struct {
+	// <p>候选机型族列表，最多 10 个。MULTI_CARD 模式的明确标志字段。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceFamilies []*string `json:"InstanceFamilies,omitnil,omitempty" name:"InstanceFamilies"`
+
+	// <p>每节点 GPU 卡数。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GpuCountPerNode *int64 `json:"GpuCountPerNode,omitnil,omitempty" name:"GpuCountPerNode"`
+
+	// <p>是否启用混合 GPU 卡数折算，默认 false。未传时保持已持久化的混卡开关。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableMixedGpuCount *bool `json:"EnableMixedGpuCount,omitnil,omitempty" name:"EnableMixedGpuCount"`
+
+	// <p>是否启用多可用区扩容。未传时保持已持久化的分区策略，局部更新不得覆盖。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableMultiZone *bool `json:"EnableMultiZone,omitnil,omitempty" name:"EnableMultiZone"`
 }
 
 // Predefined struct for user

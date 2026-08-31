@@ -11100,33 +11100,39 @@ func (r *ModifySLInstanceBasicResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifySLInstanceRequestParams struct {
-	// 实例唯一标识符（字符串表示）。
+	// <p>实例唯一标识符（字符串表示）。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 需要变更的区域名称。
+	// <p>需要变更的区域名称。</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 该区域变配后的目标节点数量，所有区域节点总数应大于等于3，小于等于50。
+	// <p>该区域变配后的目标节点数量，所有区域节点总数应大于等于3，小于等于50。</p>
 	NodeNum *int64 `json:"NodeNum,omitnil,omitempty" name:"NodeNum"`
 
-	// 唯一随机标识，时效性为5分钟，需要调用者指定 防止客户端重复创建资源，例如 a9a90aa6-****-****-****-fae360632808	
+	// <p>唯一随机标识，时效性为5分钟，需要调用者指定 防止客户端重复创建资源，例如 a9a90aa6-<strong><strong>-</strong></strong>-****-fae360632808</p>
 	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
+
+	// <p>存储空间大小，需要是100的倍数，且不允许比当前存储空间小（只允许扩容）</p><p>单位：GB</p>
+	DiskSize *int64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
 }
 
 type ModifySLInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例唯一标识符（字符串表示）。
+	// <p>实例唯一标识符（字符串表示）。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 需要变更的区域名称。
+	// <p>需要变更的区域名称。</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 该区域变配后的目标节点数量，所有区域节点总数应大于等于3，小于等于50。
+	// <p>该区域变配后的目标节点数量，所有区域节点总数应大于等于3，小于等于50。</p>
 	NodeNum *int64 `json:"NodeNum,omitnil,omitempty" name:"NodeNum"`
 
-	// 唯一随机标识，时效性为5分钟，需要调用者指定 防止客户端重复创建资源，例如 a9a90aa6-****-****-****-fae360632808	
+	// <p>唯一随机标识，时效性为5分钟，需要调用者指定 防止客户端重复创建资源，例如 a9a90aa6-<strong><strong>-</strong></strong>-****-fae360632808</p>
 	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
+
+	// <p>存储空间大小，需要是100的倍数，且不允许比当前存储空间小（只允许扩容）</p><p>单位：GB</p>
+	DiskSize *int64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
 }
 
 func (r *ModifySLInstanceRequest) ToJsonString() string {
@@ -11145,6 +11151,7 @@ func (r *ModifySLInstanceRequest) FromJsonString(s string) error {
 	delete(f, "Zone")
 	delete(f, "NodeNum")
 	delete(f, "ClientToken")
+	delete(f, "DiskSize")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifySLInstanceRequest has unknown keys!", "")
 	}
