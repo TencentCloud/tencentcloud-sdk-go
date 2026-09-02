@@ -6168,80 +6168,83 @@ func (r *MultimodalDocParseResponse) FromJsonString(s string) error {
 }
 
 type NonTaxIncomeBill struct {
-	// 发票名称
+	// <p>发票名称</p>
 	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
 
-	// 发票号码
+	// <p>发票号码</p>
 	Number *string `json:"Number,omitnil,omitempty" name:"Number"`
 
-	// 发票代码
+	// <p>发票代码</p>
 	Code *string `json:"Code,omitnil,omitempty" name:"Code"`
 
-	// 校验码
+	// <p>校验码</p>
 	CheckCode *string `json:"CheckCode,omitnil,omitempty" name:"CheckCode"`
 
-	// 开票日期
+	// <p>开票日期</p>
 	Date *string `json:"Date,omitnil,omitempty" name:"Date"`
 
-	// 价税合计（小写）
+	// <p>价税合计（小写）</p>
 	Total *string `json:"Total,omitnil,omitempty" name:"Total"`
 
-	// 价税合计（大写）
+	// <p>价税合计（大写）</p>
 	TotalCn *string `json:"TotalCn,omitnil,omitempty" name:"TotalCn"`
 
-	// 交款人名称
+	// <p>交款人名称</p>
 	Buyer *string `json:"Buyer,omitnil,omitempty" name:"Buyer"`
 
-	// 交款人纳税人识别号
+	// <p>交款人纳税人识别号</p>
 	BuyerTaxID *string `json:"BuyerTaxID,omitnil,omitempty" name:"BuyerTaxID"`
 
-	// 收款人名称
+	// <p>收款人名称</p>
 	Seller *string `json:"Seller,omitnil,omitempty" name:"Seller"`
 
-	// 收款单位名称
+	// <p>收款单位名称</p>
 	SellerCompany *string `json:"SellerCompany,omitnil,omitempty" name:"SellerCompany"`
 
-	// 备注
+	// <p>备注</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 币种
+	// <p>币种</p>
 	CurrencyCode *string `json:"CurrencyCode,omitnil,omitempty" name:"CurrencyCode"`
 
-	// 复核人
+	// <p>复核人</p>
 	Reviewer *string `json:"Reviewer,omitnil,omitempty" name:"Reviewer"`
 
-	// 是否存在二维码（1：有，0：无）
+	// <p>是否存在二维码（1：有，0：无）</p>
 	QRCodeMark *int64 `json:"QRCodeMark,omitnil,omitempty" name:"QRCodeMark"`
 
-	// 其他信息
+	// <p>其他信息</p>
 	OtherInfo *string `json:"OtherInfo,omitnil,omitempty" name:"OtherInfo"`
 
-	// 缴款码
+	// <p>缴款码</p>
 	PaymentCode *string `json:"PaymentCode,omitnil,omitempty" name:"PaymentCode"`
 
-	// 执收单位编码
+	// <p>执收单位编码</p>
 	ReceiveUnitCode *string `json:"ReceiveUnitCode,omitnil,omitempty" name:"ReceiveUnitCode"`
 
-	// 执收单位名称
+	// <p>执收单位名称</p>
 	Receiver *string `json:"Receiver,omitnil,omitempty" name:"Receiver"`
 
-	// 经办人
+	// <p>经办人</p>
 	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 付款人账号
+	// <p>付款人账号</p>
 	PayerAccount *string `json:"PayerAccount,omitnil,omitempty" name:"PayerAccount"`
 
-	// 付款人开户银行
+	// <p>付款人开户银行</p>
 	PayerBank *string `json:"PayerBank,omitnil,omitempty" name:"PayerBank"`
 
-	// 收款人账号
+	// <p>收款人账号</p>
 	ReceiverAccount *string `json:"ReceiverAccount,omitnil,omitempty" name:"ReceiverAccount"`
 
-	// 收款人开户银行
+	// <p>收款人开户银行</p>
 	ReceiverBank *string `json:"ReceiverBank,omitnil,omitempty" name:"ReceiverBank"`
 
-	// 条目
+	// <p>条目</p>
 	NonTaxItems []*NonTaxItem `json:"NonTaxItems,omitnil,omitempty" name:"NonTaxItems"`
+
+	// <p>票据名称</p>
+	BillName *string `json:"BillName,omitnil,omitempty" name:"BillName"`
 }
 
 type NonTaxItem struct {
@@ -11121,6 +11124,9 @@ type VatElectronicItemInfo struct {
 
 	// <p>通行日期止</p>
 	DateEnd *string `json:"DateEnd,omitnil,omitempty" name:"DateEnd"`
+
+	// <p>车架号</p>
+	VinNo *string `json:"VinNo,omitnil,omitempty" name:"VinNo"`
 }
 
 type VatInvoice struct {

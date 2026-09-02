@@ -6889,6 +6889,10 @@ type ExecutePGSqlResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Columns []*string `json:"Columns,omitnil,omitempty" name:"Columns"`
 
+	// <p>字段类型名</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ColumnTypes []*string `json:"ColumnTypes,omitnil,omitempty" name:"ColumnTypes"`
+
 	// <p>数据行。每一行数据都是一个JSON串，将JSON进行反序列化将得到了每列的值。值可能是 null 或者 字符串，如果是 null 说明该列的值为 &lt;null&gt;，如果是字符串则为该列的值的字符串表示形式。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Rows []*string `json:"Rows,omitnil,omitempty" name:"Rows"`

@@ -749,6 +749,104 @@ func (c *Client) CreatePictureWithContext(ctx context.Context, request *CreatePi
     return
 }
 
+func NewCreateRecognizeVocabV3Request() (request *CreateRecognizeVocabV3Request) {
+    request = &CreateRecognizeVocabV3Request{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trtc", APIVersion, "CreateRecognizeVocabV3")
+    
+    
+    return
+}
+
+func NewCreateRecognizeVocabV3Response() (response *CreateRecognizeVocabV3Response) {
+    response = &CreateRecognizeVocabV3Response{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateRecognizeVocabV3
+// 接口说明：
+//
+// 用户通过本接口进行热词表的创建。
+//
+// 
+//
+// • 默认最多可创建30个热词表。
+//
+// • 每个热词表最多可添加1000个词，每个词最长10个汉字或30个英文字符，不能超出限制。
+//
+// • 热词表可以通过数组或者本地文件形式上传。
+//
+// • 本地文件必须为UTF-8编码格式，每行仅添加一个热词且不能包含标点和特殊字符。
+//
+// • 热词权重取值范围为[1,11]之间的整数或者100，权重越大代表该词被识别出来的概率越大。
+//
+// • 注意: 热词权重设置为11时，当前热词将升级为超级热词，建议仅将重要且必须生效的热词设置到11，设置过多权重为11的热词将影响整体字准率。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNREALNAMEAUTHENTICATED = "AuthFailure.UnRealNameAuthenticated"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR_FAILACCESSDATABASE = "InternalError.FailAccessDatabase"
+//  INVALIDPARAMETER_INVALIDVOCABSTATE = "InvalidParameter.InvalidVocabState"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETERVALUE_INVALIDWORDWEIGHT = "InvalidParameterValue.InvalidWordWeight"
+//  INVALIDPARAMETERVALUE_INVALIDWORDWEIGHTSTR = "InvalidParameterValue.InvalidWordWeightStr"
+//  LIMITEXCEEDED_VOCABFULL = "LimitExceeded.VocabFull"
+//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+func (c *Client) CreateRecognizeVocabV3(request *CreateRecognizeVocabV3Request) (response *CreateRecognizeVocabV3Response, err error) {
+    return c.CreateRecognizeVocabV3WithContext(context.Background(), request)
+}
+
+// CreateRecognizeVocabV3
+// 接口说明：
+//
+// 用户通过本接口进行热词表的创建。
+//
+// 
+//
+// • 默认最多可创建30个热词表。
+//
+// • 每个热词表最多可添加1000个词，每个词最长10个汉字或30个英文字符，不能超出限制。
+//
+// • 热词表可以通过数组或者本地文件形式上传。
+//
+// • 本地文件必须为UTF-8编码格式，每行仅添加一个热词且不能包含标点和特殊字符。
+//
+// • 热词权重取值范围为[1,11]之间的整数或者100，权重越大代表该词被识别出来的概率越大。
+//
+// • 注意: 热词权重设置为11时，当前热词将升级为超级热词，建议仅将重要且必须生效的热词设置到11，设置过多权重为11的热词将影响整体字准率。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNREALNAMEAUTHENTICATED = "AuthFailure.UnRealNameAuthenticated"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR_FAILACCESSDATABASE = "InternalError.FailAccessDatabase"
+//  INVALIDPARAMETER_INVALIDVOCABSTATE = "InvalidParameter.InvalidVocabState"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETERVALUE_INVALIDWORDWEIGHT = "InvalidParameterValue.InvalidWordWeight"
+//  INVALIDPARAMETERVALUE_INVALIDWORDWEIGHTSTR = "InvalidParameterValue.InvalidWordWeightStr"
+//  LIMITEXCEEDED_VOCABFULL = "LimitExceeded.VocabFull"
+//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+func (c *Client) CreateRecognizeVocabV3WithContext(ctx context.Context, request *CreateRecognizeVocabV3Request) (response *CreateRecognizeVocabV3Response, err error) {
+    if request == nil {
+        request = NewCreateRecognizeVocabV3Request()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "CreateRecognizeVocabV3")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateRecognizeVocabV3 require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateRecognizeVocabV3Response()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteCloudModerationRequest() (request *DeleteCloudModerationRequest) {
     request = &DeleteCloudModerationRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1175,6 +1273,68 @@ func (c *Client) DeletePictureWithContext(ctx context.Context, request *DeletePi
     request.SetContext(ctx)
     
     response = NewDeletePictureResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteRecognizeVocabV3Request() (request *DeleteRecognizeVocabV3Request) {
+    request = &DeleteRecognizeVocabV3Request{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trtc", APIVersion, "DeleteRecognizeVocabV3")
+    
+    
+    return
+}
+
+func NewDeleteRecognizeVocabV3Response() (response *DeleteRecognizeVocabV3Response) {
+    response = &DeleteRecognizeVocabV3Response{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteRecognizeVocabV3
+// 接口说明：
+//
+// 用户通过本接口进行热词表的删除。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR_FAILACCESSDATABASE = "InternalError.FailAccessDatabase"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETERVALUE_INVALIDVOCABID = "InvalidParameterValue.InvalidVocabId"
+//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+func (c *Client) DeleteRecognizeVocabV3(request *DeleteRecognizeVocabV3Request) (response *DeleteRecognizeVocabV3Response, err error) {
+    return c.DeleteRecognizeVocabV3WithContext(context.Background(), request)
+}
+
+// DeleteRecognizeVocabV3
+// 接口说明：
+//
+// 用户通过本接口进行热词表的删除。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR_FAILACCESSDATABASE = "InternalError.FailAccessDatabase"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETERVALUE_INVALIDVOCABID = "InvalidParameterValue.InvalidVocabId"
+//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+func (c *Client) DeleteRecognizeVocabV3WithContext(ctx context.Context, request *DeleteRecognizeVocabV3Request) (response *DeleteRecognizeVocabV3Response, err error) {
+    if request == nil {
+        request = NewDeleteRecognizeVocabV3Request()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "DeleteRecognizeVocabV3")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteRecognizeVocabV3 require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteRecognizeVocabV3Response()
     err = c.Send(request, response)
     return
 }
@@ -3815,6 +3975,202 @@ func (c *Client) DismissRoomByStrRoomIdWithContext(ctx context.Context, request 
     return
 }
 
+func NewDownloadRecognizeVocabV3Request() (request *DownloadRecognizeVocabV3Request) {
+    request = &DownloadRecognizeVocabV3Request{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trtc", APIVersion, "DownloadRecognizeVocabV3")
+    
+    
+    return
+}
+
+func NewDownloadRecognizeVocabV3Response() (response *DownloadRecognizeVocabV3Response) {
+    response = &DownloadRecognizeVocabV3Response{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DownloadRecognizeVocabV3
+// 接口说明：
+//
+// 用户通过本接口进行热词表的下载，获得词表权重文件形式的 base64 值，文件形式为通过 “|” 分割的词和权重，即 word|weight 的形式。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNREALNAMEAUTHENTICATED = "AuthFailure.UnRealNameAuthenticated"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR_FAILACCESSDATABASE = "InternalError.FailAccessDatabase"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETERVALUE_ERRORINVALIDAPPID = "InvalidParameterValue.ErrorInvalidAppid"
+//  INVALIDPARAMETERVALUE_INVALIDVOCABID = "InvalidParameterValue.InvalidVocabId"
+//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+func (c *Client) DownloadRecognizeVocabV3(request *DownloadRecognizeVocabV3Request) (response *DownloadRecognizeVocabV3Response, err error) {
+    return c.DownloadRecognizeVocabV3WithContext(context.Background(), request)
+}
+
+// DownloadRecognizeVocabV3
+// 接口说明：
+//
+// 用户通过本接口进行热词表的下载，获得词表权重文件形式的 base64 值，文件形式为通过 “|” 分割的词和权重，即 word|weight 的形式。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNREALNAMEAUTHENTICATED = "AuthFailure.UnRealNameAuthenticated"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR_FAILACCESSDATABASE = "InternalError.FailAccessDatabase"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETERVALUE_ERRORINVALIDAPPID = "InvalidParameterValue.ErrorInvalidAppid"
+//  INVALIDPARAMETERVALUE_INVALIDVOCABID = "InvalidParameterValue.InvalidVocabId"
+//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+func (c *Client) DownloadRecognizeVocabV3WithContext(ctx context.Context, request *DownloadRecognizeVocabV3Request) (response *DownloadRecognizeVocabV3Response, err error) {
+    if request == nil {
+        request = NewDownloadRecognizeVocabV3Request()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "DownloadRecognizeVocabV3")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DownloadRecognizeVocabV3 require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDownloadRecognizeVocabV3Response()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetRecognizeVocabListV3Request() (request *GetRecognizeVocabListV3Request) {
+    request = &GetRecognizeVocabListV3Request{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trtc", APIVersion, "GetRecognizeVocabListV3")
+    
+    
+    return
+}
+
+func NewGetRecognizeVocabListV3Response() (response *GetRecognizeVocabListV3Response) {
+    response = &GetRecognizeVocabListV3Response{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetRecognizeVocabListV3
+// 接口说明：
+//
+// 用户通过本接口分页列举所有的热词表。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNREALNAMEAUTHENTICATED = "AuthFailure.UnRealNameAuthenticated"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR_FAILACCESSDATABASE = "InternalError.FailAccessDatabase"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETERVALUE_ERRORINVALIDAPPID = "InvalidParameterValue.ErrorInvalidAppid"
+//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+func (c *Client) GetRecognizeVocabListV3(request *GetRecognizeVocabListV3Request) (response *GetRecognizeVocabListV3Response, err error) {
+    return c.GetRecognizeVocabListV3WithContext(context.Background(), request)
+}
+
+// GetRecognizeVocabListV3
+// 接口说明：
+//
+// 用户通过本接口分页列举所有的热词表。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNREALNAMEAUTHENTICATED = "AuthFailure.UnRealNameAuthenticated"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR_FAILACCESSDATABASE = "InternalError.FailAccessDatabase"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETERVALUE_ERRORINVALIDAPPID = "InvalidParameterValue.ErrorInvalidAppid"
+//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+func (c *Client) GetRecognizeVocabListV3WithContext(ctx context.Context, request *GetRecognizeVocabListV3Request) (response *GetRecognizeVocabListV3Response, err error) {
+    if request == nil {
+        request = NewGetRecognizeVocabListV3Request()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "GetRecognizeVocabListV3")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetRecognizeVocabListV3 require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetRecognizeVocabListV3Response()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetRecognizeVocabV3Request() (request *GetRecognizeVocabV3Request) {
+    request = &GetRecognizeVocabV3Request{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trtc", APIVersion, "GetRecognizeVocabV3")
+    
+    
+    return
+}
+
+func NewGetRecognizeVocabV3Response() (response *GetRecognizeVocabV3Response) {
+    response = &GetRecognizeVocabV3Response{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetRecognizeVocabV3
+// 接口说明：
+//
+// 用户根据词表的ID可以获取对应的热词表信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNREALNAMEAUTHENTICATED = "AuthFailure.UnRealNameAuthenticated"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR_FAILACCESSDATABASE = "InternalError.FailAccessDatabase"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETERVALUE_ERRORINVALIDAPPID = "InvalidParameterValue.ErrorInvalidAppid"
+//  INVALIDPARAMETERVALUE_INVALIDVOCABID = "InvalidParameterValue.InvalidVocabId"
+//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+func (c *Client) GetRecognizeVocabV3(request *GetRecognizeVocabV3Request) (response *GetRecognizeVocabV3Response, err error) {
+    return c.GetRecognizeVocabV3WithContext(context.Background(), request)
+}
+
+// GetRecognizeVocabV3
+// 接口说明：
+//
+// 用户根据词表的ID可以获取对应的热词表信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNREALNAMEAUTHENTICATED = "AuthFailure.UnRealNameAuthenticated"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR_FAILACCESSDATABASE = "InternalError.FailAccessDatabase"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETERVALUE_ERRORINVALIDAPPID = "InvalidParameterValue.ErrorInvalidAppid"
+//  INVALIDPARAMETERVALUE_INVALIDVOCABID = "InvalidParameterValue.InvalidVocabId"
+//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+func (c *Client) GetRecognizeVocabV3WithContext(ctx context.Context, request *GetRecognizeVocabV3Request) (response *GetRecognizeVocabV3Response, err error) {
+    if request == nil {
+        request = NewGetRecognizeVocabV3Request()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "GetRecognizeVocabV3")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetRecognizeVocabV3 require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetRecognizeVocabV3Response()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyCloudModerationRequest() (request *ModifyCloudModerationRequest) {
     request = &ModifyCloudModerationRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4297,6 +4653,72 @@ func (c *Client) RemoveUserByStrRoomIdWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewRemoveUserByStrRoomIdResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSetVocabStateV3Request() (request *SetVocabStateV3Request) {
+    request = &SetVocabStateV3Request{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trtc", APIVersion, "SetVocabStateV3")
+    
+    
+    return
+}
+
+func NewSetVocabStateV3Response() (response *SetVocabStateV3Response) {
+    response = &SetVocabStateV3Response{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SetVocabStateV3
+// 接口说明：
+//
+// 用户通过该接口可以设置热词表的默认状态。初始状态为0，用户可设置状态为1，即为默认状态。默认状态表示用户在请求识别时，如不设置热词表ID，则默认使用状态为1的热词表。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNREALNAMEAUTHENTICATED = "AuthFailure.UnRealNameAuthenticated"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR_FAILACCESSDATABASE = "InternalError.FailAccessDatabase"
+//  INVALIDPARAMETER_INVALIDVOCABSTATE = "InvalidParameter.InvalidVocabState"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETERVALUE_INVALIDVOCABID = "InvalidParameterValue.InvalidVocabId"
+//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+func (c *Client) SetVocabStateV3(request *SetVocabStateV3Request) (response *SetVocabStateV3Response, err error) {
+    return c.SetVocabStateV3WithContext(context.Background(), request)
+}
+
+// SetVocabStateV3
+// 接口说明：
+//
+// 用户通过该接口可以设置热词表的默认状态。初始状态为0，用户可设置状态为1，即为默认状态。默认状态表示用户在请求识别时，如不设置热词表ID，则默认使用状态为1的热词表。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNREALNAMEAUTHENTICATED = "AuthFailure.UnRealNameAuthenticated"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR_FAILACCESSDATABASE = "InternalError.FailAccessDatabase"
+//  INVALIDPARAMETER_INVALIDVOCABSTATE = "InvalidParameter.InvalidVocabState"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETERVALUE_INVALIDVOCABID = "InvalidParameterValue.InvalidVocabId"
+//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+func (c *Client) SetVocabStateV3WithContext(ctx context.Context, request *SetVocabStateV3Request) (response *SetVocabStateV3Response, err error) {
+    if request == nil {
+        request = NewSetVocabStateV3Request()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "SetVocabStateV3")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SetVocabStateV3 require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSetVocabStateV3Response()
     err = c.Send(request, response)
     return
 }
@@ -5833,6 +6255,74 @@ func (c *Client) UpdatePublishCdnStreamWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewUpdatePublishCdnStreamResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateRecognizeVocabV3Request() (request *UpdateRecognizeVocabV3Request) {
+    request = &UpdateRecognizeVocabV3Request{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trtc", APIVersion, "UpdateRecognizeVocabV3")
+    
+    
+    return
+}
+
+func NewUpdateRecognizeVocabV3Response() (response *UpdateRecognizeVocabV3Response) {
+    response = &UpdateRecognizeVocabV3Response{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateRecognizeVocabV3
+// 接口说明：
+//
+// 用户通过本接口进行热词表的更新。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNREALNAMEAUTHENTICATED = "AuthFailure.UnRealNameAuthenticated"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR_FAILACCESSDATABASE = "InternalError.FailAccessDatabase"
+//  INVALIDPARAMETER_INVALIDVOCABSTATE = "InvalidParameter.InvalidVocabState"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETERVALUE_INVALIDVOCABID = "InvalidParameterValue.InvalidVocabId"
+//  INVALIDPARAMETERVALUE_INVALIDWORDWEIGHTSTR = "InvalidParameterValue.InvalidWordWeightStr"
+//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+func (c *Client) UpdateRecognizeVocabV3(request *UpdateRecognizeVocabV3Request) (response *UpdateRecognizeVocabV3Response, err error) {
+    return c.UpdateRecognizeVocabV3WithContext(context.Background(), request)
+}
+
+// UpdateRecognizeVocabV3
+// 接口说明：
+//
+// 用户通过本接口进行热词表的更新。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNREALNAMEAUTHENTICATED = "AuthFailure.UnRealNameAuthenticated"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR_FAILACCESSDATABASE = "InternalError.FailAccessDatabase"
+//  INVALIDPARAMETER_INVALIDVOCABSTATE = "InvalidParameter.InvalidVocabState"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETERVALUE_INVALIDVOCABID = "InvalidParameterValue.InvalidVocabId"
+//  INVALIDPARAMETERVALUE_INVALIDWORDWEIGHTSTR = "InvalidParameterValue.InvalidWordWeightStr"
+//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+func (c *Client) UpdateRecognizeVocabV3WithContext(ctx context.Context, request *UpdateRecognizeVocabV3Request) (response *UpdateRecognizeVocabV3Response, err error) {
+    if request == nil {
+        request = NewUpdateRecognizeVocabV3Request()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "UpdateRecognizeVocabV3")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateRecognizeVocabV3 require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateRecognizeVocabV3Response()
     err = c.Send(request, response)
     return
 }

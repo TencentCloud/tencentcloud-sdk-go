@@ -1393,6 +1393,60 @@ func (c *Client) DescribeOPRAllVulCountWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribeRelatedServicesOnTraceRequest() (request *DescribeRelatedServicesOnTraceRequest) {
+    request = &DescribeRelatedServicesOnTraceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("apm", APIVersion, "DescribeRelatedServicesOnTrace")
+    
+    
+    return
+}
+
+func NewDescribeRelatedServicesOnTraceResponse() (response *DescribeRelatedServicesOnTraceResponse) {
+    response = &DescribeRelatedServicesOnTraceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRelatedServicesOnTrace
+// 根据链路查询目标服务的上下游相关服务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_APPIDNOTMATCHINSTANCEINFO = "FailedOperation.AppIdNotMatchInstanceInfo"
+//  FAILEDOPERATION_INSTANCENOTFOUND = "FailedOperation.InstanceNotFound"
+func (c *Client) DescribeRelatedServicesOnTrace(request *DescribeRelatedServicesOnTraceRequest) (response *DescribeRelatedServicesOnTraceResponse, err error) {
+    return c.DescribeRelatedServicesOnTraceWithContext(context.Background(), request)
+}
+
+// DescribeRelatedServicesOnTrace
+// 根据链路查询目标服务的上下游相关服务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_APPIDNOTMATCHINSTANCEINFO = "FailedOperation.AppIdNotMatchInstanceInfo"
+//  FAILEDOPERATION_INSTANCENOTFOUND = "FailedOperation.InstanceNotFound"
+func (c *Client) DescribeRelatedServicesOnTraceWithContext(ctx context.Context, request *DescribeRelatedServicesOnTraceRequest) (response *DescribeRelatedServicesOnTraceResponse, err error) {
+    if request == nil {
+        request = NewDescribeRelatedServicesOnTraceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "apm", APIVersion, "DescribeRelatedServicesOnTrace")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRelatedServicesOnTrace require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRelatedServicesOnTraceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeServiceOverviewRequest() (request *DescribeServiceOverviewRequest) {
     request = &DescribeServiceOverviewRequest{
         BaseRequest: &tchttp.BaseRequest{},

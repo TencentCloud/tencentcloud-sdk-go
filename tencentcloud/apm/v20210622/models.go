@@ -2935,6 +2935,101 @@ func (r *DescribeOPRAllVulCountResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeRelatedServicesOnTraceRequestParams struct {
+	// 业务系统 ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 查询开始时间
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 查询结束时间
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 应用名
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// 是否为应用拓扑查询
+	IsServiceTopology *bool `json:"IsServiceTopology,omitnil,omitempty" name:"IsServiceTopology"`
+}
+
+type DescribeRelatedServicesOnTraceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 业务系统 ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 查询开始时间
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 查询结束时间
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 应用名
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// 是否为应用拓扑查询
+	IsServiceTopology *bool `json:"IsServiceTopology,omitnil,omitempty" name:"IsServiceTopology"`
+}
+
+func (r *DescribeRelatedServicesOnTraceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRelatedServicesOnTraceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "ServiceName")
+	delete(f, "IsServiceTopology")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRelatedServicesOnTraceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRelatedServicesOnTraceResponseParams struct {
+	// 查询的总链路数
+	TotalTraces *int64 `json:"TotalTraces,omitnil,omitempty" name:"TotalTraces"`
+
+	// 查询到的应用的数量
+	TotalServices *int64 `json:"TotalServices,omitnil,omitempty" name:"TotalServices"`
+
+	// 挑选的链路数量
+	SelectedTraces *int64 `json:"SelectedTraces,omitnil,omitempty" name:"SelectedTraces"`
+
+	// 相关的服务/应用名列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceRelations []*ServiceRelation `json:"ServiceRelations,omitnil,omitempty" name:"ServiceRelations"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeRelatedServicesOnTraceResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRelatedServicesOnTraceResponseParams `json:"Response"`
+}
+
+func (r *DescribeRelatedServicesOnTraceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRelatedServicesOnTraceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeServiceOverviewRequestParams struct {
 	// 业务系统 ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -4843,6 +4938,17 @@ type ServiceDetail struct {
 	// <p>响应时间预警阈值（ms），用于判断应用健康状态为&quot;黄色&quot;</p><p>单位：ms</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResponseDurationWarningThreshold *int64 `json:"ResponseDurationWarningThreshold,omitnil,omitempty" name:"ResponseDurationWarningThreshold"`
+}
+
+type ServiceRelation struct {
+	// 应用名
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// 上游应用集合
+	UpstreamServices []*string `json:"UpstreamServices,omitnil,omitempty" name:"UpstreamServices"`
+
+	// 下游应用集合
+	DownstreamServices []*string `json:"DownstreamServices,omitnil,omitempty" name:"DownstreamServices"`
 }
 
 type Span struct {

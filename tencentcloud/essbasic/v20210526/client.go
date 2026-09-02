@@ -1665,31 +1665,27 @@ func NewChannelCreateFlowByFilesResponse() (response *ChannelCreateFlowByFilesRe
 }
 
 // ChannelCreateFlowByFiles
-// 接口（ChannelCreateFlowByFiles）用PDF文件创建签署流程。
+// 本接口（ChannelCreateFlowByFiles）用于通过**已上传的 PDF 资源编号**创建待签署的合同流程。
 //
 // 
 //
-// 适用场景：适用非制式的合同文件签署，开发者有每个签署流程的PDF，可以通过该接口传入完整的PDF文件及流程信息生成待签署的合同流程。
+// **适用场景**：适用于非制式的合同文件签署。当开发者已拥有每个签署流程完整的 PDF 文件时，可通过本接口传入完整的 PDF 文件及流程信息，生成待签署的合同流程。
 //
 // 
 //
-// **注**: 
-//
-// <ul>
-//
-// <li>此接口静默签(企业自动签)能力为白名单功能，使用前请联系对接的客户经理沟通。</li>
-//
-// <li>此接口需要依赖<a href="https://qian.tencent.com/developers/partnerApis/files/UploadFiles" target="_blank">文件上传接口</a>生成pdf资源编号（FileIds）进行使用。整体的逻辑如下图</li>
-//
-// </ul>
+// ### 1.1 调用依赖
 //
 // 
 //
-// ![image](https://qcloudimg.tencent-cloud.cn/raw/bf86248a2c163228c4e894cf5926af69/ChannelCreateFlowByFiles.png)
+// 本接口需依赖[文件上传接口](https://qian.tencent.com/developers/partnerApis/files/UploadFiles)生成 PDF 资源编号（FileId）后使用，整体逻辑如下图：
 //
 // 
 //
-// **可以作为发起方和签署方的角色列表**
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/985b4bf10a40d65fe7b016bb2f82c3df.svg)
+//
+// 
+//
+// ### 1.2  发起方和签署方
 //
 // <table>     <thead>     <tr>         <th>场景编号</th>         <th>发起方</th>         <th>签署方</th>         <th>补充</th>     </tr>     </thead>     <tbody>     <tr>         <td>场景一</td>         <td>子企业A的员工</td>         <td>子企业A的员工</td>         <td>子企业是通过<a href="https://qian.tencent.com/developers/partnerApis/accounts/CreateConsoleLoginUrl" target="_blank">CreateConsoleLoginUrl</a>生成子客登录链接注册的企业</td>     </tr>     <tr>         <td>场景二</td>         <td>子企业A的员工</td>         <td>子企业B(不指定经办人走领取逻辑)</td>         <td>领取的逻辑可以参考文档<a href="https://qian.tencent.com/developers/partner/dynamic_signer" target="_blank">动态签署方</a> </td>     </tr>     <tr>         <td>场景三</td>         <td>子企业A的员工</td>         <td>子企业B的员工</td>         <td>-</td>     </tr>     <tr>         <td>场景四</td>         <td>子企业A的员工</td>         <td>个人</td>         <td>就是自然人，不是企业员工</td>     </tr>     <tr>         <td>场景五</td>         <td>子企业A的员工</td>         <td>SaaS平台企业员工</td>         <td>SaaS平台企业是通过<a href="https://qian.tencent.cn/console/company-register" target="_blank">https://qian.tencent.cn/console/company-register</a>链接注册的企业</td>     </tr>     </tbody> </table>
 //
@@ -1697,29 +1693,31 @@ func NewChannelCreateFlowByFilesResponse() (response *ChannelCreateFlowByFilesRe
 //
 // 
 //
-// **注**: 
-//
-// `1. 发起合同时候,  作为发起方的第三方子企业A员工的企业和员工必须经过实名, 而作为签署方的第三方子企业A员工/个人/自然人/SaaS平台企业员工/第三方子企业B员工企业中的企业和个人/员工可以未实名`
+//  <font color="red">发起方（第三方子企业 A 的企业与员工）必须完成实名</font>；作为**签署方**的第三方子企业 A 员工 / 个人自然人 / SaaS 平台企业员工 / 第三方子企业 B 员工等，其企业和个人可以未实名。
 //
 // 
 //
-// `2. 不同类型的签署方传参不同, 可以参考开发者中心的FlowApproverInfo结构体说明`
+// ### 1.3 注意事项
+//
+// -  合同<font color="red">发起后就会扣减合同的额度</font> , 只有撤销没有参与方签署过或只有自动签署签署过的合同，且<font color="red">有撤销合同额度</font>的情形下，才会返还合同额度。（**过期，拒签，签署完成，解除完成等状态不会返还额度**）。具体可以参考[合同撤销返还额度说明](https://qian.tencent.com/developers/partner/contract_cancel_quota)。
+//
+// - <font color="red">支持的证件类型</font>可以参考[支持的证件类型](https://qian.tencent.com/developers/partner/id_card_support)。
+//
+// - <font color="red">不同类型的签署方传参不同</font>，各类型签署方的信息传递方式详见 [【签署方入参指引】](https://qian.tencent.com/developers/partner/flow_approver)。
+//
+// - 如果合同正式发起前如需<font color="red">预览</font>效果，可参考 [【使用文件发起的预览】](https://qian.tencent.com/developers/partner/preview_guide#%E4%B8%80%E4%BD%BF%E7%94%A8%E6%96%87%E4%BB%B6%E5%8F%91%E8%B5%B7%E7%9A%84%E9%A2%84%E8%A7%88)
+//
+// - 关于填写方与签署方的<font color="red">填写、签署先后顺序</font>设置，详见 [【填写与签署顺序说明】](https://qian.tencent.com/developers/partner/fill_sign_order)。
+//
+// - 关于<font color="red">本企业自动签署与其他企业自动签署</font>的配置与使用，详见 [【自动签署】](https://qian.tencent.com/developers/partner/autosign_guide)。
 //
 // 
 //
-// `3. 合同发起后就会扣减合同的额度, 只有撤销没有参与方签署过或只有自动签署签署过的合同，才会返还合同额度。（过期，拒签，签署完成，解除完成等状态不会返还额度）`
+// ### 1.4 视频教程
 //
-// 
+// 1. <a href="https://dyn.ess.tencent.cn/guide/apivideo/essbasic-UploadFiles.mp4" target="_blank">【上传文件代码】编写示例</a>
 //
-// `4. 静默（自动）签署不支持合同签署方存在填写功能`
-//
-// 
-//
-// <font color="red">相关视频指引</font> <br>
-//
-// 1. <a href="https://dyn.ess.tencent.cn/guide/apivideo/essbasic-UploadFiles.mp4" target="_blank">【上传文件代码】编写示例</a><br>
-//
-// 1. <a href="https://dyn.ess.tencent.cn/guide/apivideo/essbasic-ChannelCreateFlowByFiles.mp4" target="_blank">【用PDF文件创建签署流程】编写示例</a><br>
+// 2. <a href="https://dyn.ess.tencent.cn/guide/apivideo/essbasic-ChannelCreateFlowByFiles.mp4" target="_blank">【用PDF文件创建签署流程】编写示例</a>
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1797,31 +1795,27 @@ func (c *Client) ChannelCreateFlowByFiles(request *ChannelCreateFlowByFilesReque
 }
 
 // ChannelCreateFlowByFiles
-// 接口（ChannelCreateFlowByFiles）用PDF文件创建签署流程。
+// 本接口（ChannelCreateFlowByFiles）用于通过**已上传的 PDF 资源编号**创建待签署的合同流程。
 //
 // 
 //
-// 适用场景：适用非制式的合同文件签署，开发者有每个签署流程的PDF，可以通过该接口传入完整的PDF文件及流程信息生成待签署的合同流程。
+// **适用场景**：适用于非制式的合同文件签署。当开发者已拥有每个签署流程完整的 PDF 文件时，可通过本接口传入完整的 PDF 文件及流程信息，生成待签署的合同流程。
 //
 // 
 //
-// **注**: 
-//
-// <ul>
-//
-// <li>此接口静默签(企业自动签)能力为白名单功能，使用前请联系对接的客户经理沟通。</li>
-//
-// <li>此接口需要依赖<a href="https://qian.tencent.com/developers/partnerApis/files/UploadFiles" target="_blank">文件上传接口</a>生成pdf资源编号（FileIds）进行使用。整体的逻辑如下图</li>
-//
-// </ul>
+// ### 1.1 调用依赖
 //
 // 
 //
-// ![image](https://qcloudimg.tencent-cloud.cn/raw/bf86248a2c163228c4e894cf5926af69/ChannelCreateFlowByFiles.png)
+// 本接口需依赖[文件上传接口](https://qian.tencent.com/developers/partnerApis/files/UploadFiles)生成 PDF 资源编号（FileId）后使用，整体逻辑如下图：
 //
 // 
 //
-// **可以作为发起方和签署方的角色列表**
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/985b4bf10a40d65fe7b016bb2f82c3df.svg)
+//
+// 
+//
+// ### 1.2  发起方和签署方
 //
 // <table>     <thead>     <tr>         <th>场景编号</th>         <th>发起方</th>         <th>签署方</th>         <th>补充</th>     </tr>     </thead>     <tbody>     <tr>         <td>场景一</td>         <td>子企业A的员工</td>         <td>子企业A的员工</td>         <td>子企业是通过<a href="https://qian.tencent.com/developers/partnerApis/accounts/CreateConsoleLoginUrl" target="_blank">CreateConsoleLoginUrl</a>生成子客登录链接注册的企业</td>     </tr>     <tr>         <td>场景二</td>         <td>子企业A的员工</td>         <td>子企业B(不指定经办人走领取逻辑)</td>         <td>领取的逻辑可以参考文档<a href="https://qian.tencent.com/developers/partner/dynamic_signer" target="_blank">动态签署方</a> </td>     </tr>     <tr>         <td>场景三</td>         <td>子企业A的员工</td>         <td>子企业B的员工</td>         <td>-</td>     </tr>     <tr>         <td>场景四</td>         <td>子企业A的员工</td>         <td>个人</td>         <td>就是自然人，不是企业员工</td>     </tr>     <tr>         <td>场景五</td>         <td>子企业A的员工</td>         <td>SaaS平台企业员工</td>         <td>SaaS平台企业是通过<a href="https://qian.tencent.cn/console/company-register" target="_blank">https://qian.tencent.cn/console/company-register</a>链接注册的企业</td>     </tr>     </tbody> </table>
 //
@@ -1829,29 +1823,31 @@ func (c *Client) ChannelCreateFlowByFiles(request *ChannelCreateFlowByFilesReque
 //
 // 
 //
-// **注**: 
-//
-// `1. 发起合同时候,  作为发起方的第三方子企业A员工的企业和员工必须经过实名, 而作为签署方的第三方子企业A员工/个人/自然人/SaaS平台企业员工/第三方子企业B员工企业中的企业和个人/员工可以未实名`
+//  <font color="red">发起方（第三方子企业 A 的企业与员工）必须完成实名</font>；作为**签署方**的第三方子企业 A 员工 / 个人自然人 / SaaS 平台企业员工 / 第三方子企业 B 员工等，其企业和个人可以未实名。
 //
 // 
 //
-// `2. 不同类型的签署方传参不同, 可以参考开发者中心的FlowApproverInfo结构体说明`
+// ### 1.3 注意事项
+//
+// -  合同<font color="red">发起后就会扣减合同的额度</font> , 只有撤销没有参与方签署过或只有自动签署签署过的合同，且<font color="red">有撤销合同额度</font>的情形下，才会返还合同额度。（**过期，拒签，签署完成，解除完成等状态不会返还额度**）。具体可以参考[合同撤销返还额度说明](https://qian.tencent.com/developers/partner/contract_cancel_quota)。
+//
+// - <font color="red">支持的证件类型</font>可以参考[支持的证件类型](https://qian.tencent.com/developers/partner/id_card_support)。
+//
+// - <font color="red">不同类型的签署方传参不同</font>，各类型签署方的信息传递方式详见 [【签署方入参指引】](https://qian.tencent.com/developers/partner/flow_approver)。
+//
+// - 如果合同正式发起前如需<font color="red">预览</font>效果，可参考 [【使用文件发起的预览】](https://qian.tencent.com/developers/partner/preview_guide#%E4%B8%80%E4%BD%BF%E7%94%A8%E6%96%87%E4%BB%B6%E5%8F%91%E8%B5%B7%E7%9A%84%E9%A2%84%E8%A7%88)
+//
+// - 关于填写方与签署方的<font color="red">填写、签署先后顺序</font>设置，详见 [【填写与签署顺序说明】](https://qian.tencent.com/developers/partner/fill_sign_order)。
+//
+// - 关于<font color="red">本企业自动签署与其他企业自动签署</font>的配置与使用，详见 [【自动签署】](https://qian.tencent.com/developers/partner/autosign_guide)。
 //
 // 
 //
-// `3. 合同发起后就会扣减合同的额度, 只有撤销没有参与方签署过或只有自动签署签署过的合同，才会返还合同额度。（过期，拒签，签署完成，解除完成等状态不会返还额度）`
+// ### 1.4 视频教程
 //
-// 
+// 1. <a href="https://dyn.ess.tencent.cn/guide/apivideo/essbasic-UploadFiles.mp4" target="_blank">【上传文件代码】编写示例</a>
 //
-// `4. 静默（自动）签署不支持合同签署方存在填写功能`
-//
-// 
-//
-// <font color="red">相关视频指引</font> <br>
-//
-// 1. <a href="https://dyn.ess.tencent.cn/guide/apivideo/essbasic-UploadFiles.mp4" target="_blank">【上传文件代码】编写示例</a><br>
-//
-// 1. <a href="https://dyn.ess.tencent.cn/guide/apivideo/essbasic-ChannelCreateFlowByFiles.mp4" target="_blank">【用PDF文件创建签署流程】编写示例</a><br>
+// 2. <a href="https://dyn.ess.tencent.cn/guide/apivideo/essbasic-ChannelCreateFlowByFiles.mp4" target="_blank">【用PDF文件创建签署流程】编写示例</a>
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

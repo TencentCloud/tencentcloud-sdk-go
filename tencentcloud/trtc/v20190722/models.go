@@ -1168,6 +1168,60 @@ func (r *CreatePictureResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateRecognizeVocabV3RequestParams struct {
+	// <p>客户维度唯一标识</p>
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+}
+
+type CreateRecognizeVocabV3Request struct {
+	*tchttp.BaseRequest
+	
+	// <p>客户维度唯一标识</p>
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+}
+
+func (r *CreateRecognizeVocabV3Request) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateRecognizeVocabV3Request) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRecognizeVocabV3Request has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateRecognizeVocabV3ResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateRecognizeVocabV3Response struct {
+	*tchttp.BaseResponse
+	Response *CreateRecognizeVocabV3ResponseParams `json:"Response"`
+}
+
+func (r *CreateRecognizeVocabV3Response) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateRecognizeVocabV3Response) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteCloudModerationRequestParams struct {
 	// <p>TRTC的SDKAppId，和TRTC的房间所对应的SDKAppId相同。</p>
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
@@ -1545,6 +1599,57 @@ func (r *DeletePictureResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeletePictureResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteRecognizeVocabV3RequestParams struct {
+
+}
+
+type DeleteRecognizeVocabV3Request struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DeleteRecognizeVocabV3Request) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteRecognizeVocabV3Request) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteRecognizeVocabV3Request has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteRecognizeVocabV3ResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteRecognizeVocabV3Response struct {
+	*tchttp.BaseResponse
+	Response *DeleteRecognizeVocabV3ResponseParams `json:"Response"`
+}
+
+func (r *DeleteRecognizeVocabV3Response) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteRecognizeVocabV3Response) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4455,6 +4560,57 @@ func (r *DismissRoomResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DownloadRecognizeVocabV3RequestParams struct {
+
+}
+
+type DownloadRecognizeVocabV3Request struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DownloadRecognizeVocabV3Request) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DownloadRecognizeVocabV3Request) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DownloadRecognizeVocabV3Request has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DownloadRecognizeVocabV3ResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DownloadRecognizeVocabV3Response struct {
+	*tchttp.BaseResponse
+	Response *DownloadRecognizeVocabV3ResponseParams `json:"Response"`
+}
+
+func (r *DownloadRecognizeVocabV3Response) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DownloadRecognizeVocabV3Response) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type EmulateMobileParams struct {
 	// 移动设备类型，
 	// 0: 手机
@@ -4539,6 +4695,108 @@ type EventMessage struct {
 
 	// 事件的第二个参数，如视频分辨率高
 	ParamTwo *int64 `json:"ParamTwo,omitnil,omitempty" name:"ParamTwo"`
+}
+
+// Predefined struct for user
+type GetRecognizeVocabListV3RequestParams struct {
+
+}
+
+type GetRecognizeVocabListV3Request struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *GetRecognizeVocabListV3Request) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetRecognizeVocabListV3Request) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetRecognizeVocabListV3Request has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetRecognizeVocabListV3ResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetRecognizeVocabListV3Response struct {
+	*tchttp.BaseResponse
+	Response *GetRecognizeVocabListV3ResponseParams `json:"Response"`
+}
+
+func (r *GetRecognizeVocabListV3Response) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetRecognizeVocabListV3Response) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetRecognizeVocabV3RequestParams struct {
+
+}
+
+type GetRecognizeVocabV3Request struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *GetRecognizeVocabV3Request) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetRecognizeVocabV3Request) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetRecognizeVocabV3Request has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetRecognizeVocabV3ResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetRecognizeVocabV3Response struct {
+	*tchttp.BaseResponse
+	Response *GetRecognizeVocabV3ResponseParams `json:"Response"`
+}
+
+func (r *GetRecognizeVocabV3Response) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetRecognizeVocabV3Response) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type Input struct {
@@ -6079,6 +6337,57 @@ type ServerPushText struct {
 
 	// 如果填写，会和字幕绑定发送到端上，注意确保内容为json字符串
 	MetaInfo *string `json:"MetaInfo,omitnil,omitempty" name:"MetaInfo"`
+}
+
+// Predefined struct for user
+type SetVocabStateV3RequestParams struct {
+
+}
+
+type SetVocabStateV3Request struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *SetVocabStateV3Request) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SetVocabStateV3Request) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SetVocabStateV3Request has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SetVocabStateV3ResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type SetVocabStateV3Response struct {
+	*tchttp.BaseResponse
+	Response *SetVocabStateV3ResponseParams `json:"Response"`
+}
+
+func (r *SetVocabStateV3Response) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SetVocabStateV3Response) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SingleSubscribeParams struct {
@@ -8209,6 +8518,57 @@ func (r *UpdatePublishCdnStreamResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UpdatePublishCdnStreamResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateRecognizeVocabV3RequestParams struct {
+
+}
+
+type UpdateRecognizeVocabV3Request struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *UpdateRecognizeVocabV3Request) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateRecognizeVocabV3Request) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateRecognizeVocabV3Request has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateRecognizeVocabV3ResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateRecognizeVocabV3Response struct {
+	*tchttp.BaseResponse
+	Response *UpdateRecognizeVocabV3ResponseParams `json:"Response"`
+}
+
+func (r *UpdateRecognizeVocabV3Response) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateRecognizeVocabV3Response) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

@@ -1851,44 +1851,38 @@ type SendStatusStatistics struct {
 
 // Predefined struct for user
 type SendStatusStatisticsRequestParams struct {
-	// 起始时间，格式为yyyymmddhh，精确到小时，例如2024050113，表示2024年5月1号13时。
+	// <p>起始时间，格式为yyyymmddhh，精确到小时，例如2024050113，表示2024年5月1号13时。注：统计范围包含当前小时。</p><p>参数格式：yyyymmddhh</p>
 	BeginTime *string `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
 
-	// 结束时间，格式为yyyymmddhh，精确到小时，例如2024050118，表示2024年5月1号18时。
-	// 注：EndTime 必须大于等于 BeginTime。
+	// <p>结束时间，格式为yyyymmddhh，精确到小时，例如2024050118，表示2024年5月1号18时。注：EndTime 必须大于等于 BeginTime，统计范围包含当前小时。</p><p>参数格式：yyyymmddhh</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 短信 SdkAppId 在 [短信控制台](https://console.cloud.tencent.com/smsv2/app-manage)  添加应用后生成的实际 SdkAppId，示例如1400006666。
+	// <p>短信 SdkAppId 在 <a href="https://console.cloud.tencent.com/smsv2/app-manage">短信控制台</a>  添加应用后生成的实际 SdkAppId，示例如1400006666。</p>
 	SmsSdkAppId *string `json:"SmsSdkAppId,omitnil,omitempty" name:"SmsSdkAppId"`
 
-	// 最大上限。
-	// 注：目前固定设置为0。
+	// <p>最大上限。<br>注：目前固定设置为0。</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量。
-	// 注：目前固定设置为0。
+	// <p>偏移量。<br>注：目前固定设置为0。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 type SendStatusStatisticsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 起始时间，格式为yyyymmddhh，精确到小时，例如2024050113，表示2024年5月1号13时。
+	// <p>起始时间，格式为yyyymmddhh，精确到小时，例如2024050113，表示2024年5月1号13时。注：统计范围包含当前小时。</p><p>参数格式：yyyymmddhh</p>
 	BeginTime *string `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
 
-	// 结束时间，格式为yyyymmddhh，精确到小时，例如2024050118，表示2024年5月1号18时。
-	// 注：EndTime 必须大于等于 BeginTime。
+	// <p>结束时间，格式为yyyymmddhh，精确到小时，例如2024050118，表示2024年5月1号18时。注：EndTime 必须大于等于 BeginTime，统计范围包含当前小时。</p><p>参数格式：yyyymmddhh</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 短信 SdkAppId 在 [短信控制台](https://console.cloud.tencent.com/smsv2/app-manage)  添加应用后生成的实际 SdkAppId，示例如1400006666。
+	// <p>短信 SdkAppId 在 <a href="https://console.cloud.tencent.com/smsv2/app-manage">短信控制台</a>  添加应用后生成的实际 SdkAppId，示例如1400006666。</p>
 	SmsSdkAppId *string `json:"SmsSdkAppId,omitnil,omitempty" name:"SmsSdkAppId"`
 
-	// 最大上限。
-	// 注：目前固定设置为0。
+	// <p>最大上限。<br>注：目前固定设置为0。</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量。
-	// 注：目前固定设置为0。
+	// <p>偏移量。<br>注：目前固定设置为0。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
@@ -1917,7 +1911,7 @@ func (r *SendStatusStatisticsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SendStatusStatisticsResponseParams struct {
-	// 发送数据统计响应包体。
+	// <p>发送数据统计响应包体。</p>
 	SendStatusStatistics *SendStatusStatistics `json:"SendStatusStatistics,omitnil,omitempty" name:"SendStatusStatistics"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

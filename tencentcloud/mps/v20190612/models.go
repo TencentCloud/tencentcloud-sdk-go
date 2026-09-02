@@ -13431,15 +13431,21 @@ func (r *DescribeMDPMPSUserInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeMediaMetaDataRequestParams struct {
-	// 需要获取元信息的文件输入信息。
+	// <p>需要获取元信息的文件输入信息。</p>
 	InputInfo *MediaInputInfo `json:"InputInfo,omitnil,omitempty" name:"InputInfo"`
+
+	// <p>指定为slow时，增加接口超时时间</p><p>枚举值：</p><ul><li>slow： 增加接口超时时间</li></ul>
+	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
 }
 
 type DescribeMediaMetaDataRequest struct {
 	*tchttp.BaseRequest
 	
-	// 需要获取元信息的文件输入信息。
+	// <p>需要获取元信息的文件输入信息。</p>
 	InputInfo *MediaInputInfo `json:"InputInfo,omitnil,omitempty" name:"InputInfo"`
+
+	// <p>指定为slow时，增加接口超时时间</p><p>枚举值：</p><ul><li>slow： 增加接口超时时间</li></ul>
+	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
 }
 
 func (r *DescribeMediaMetaDataRequest) ToJsonString() string {
@@ -13455,6 +13461,7 @@ func (r *DescribeMediaMetaDataRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "InputInfo")
+	delete(f, "Mode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMediaMetaDataRequest has unknown keys!", "")
 	}
@@ -13463,7 +13470,7 @@ func (r *DescribeMediaMetaDataRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeMediaMetaDataResponseParams struct {
-	// 媒体元信息。
+	// <p>媒体元信息。</p>
 	MetaData *MediaMetaData `json:"MetaData,omitnil,omitempty" name:"MetaData"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

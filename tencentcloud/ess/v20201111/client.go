@@ -2355,29 +2355,25 @@ func NewCreateDocumentResponse() (response *CreateDocumentResponse) {
 }
 
 // CreateDocument
-// 创建签署流程电子文档<br />
+// 本接口用于基于**模板**创建合同的电子文档，并填充模板中由发起方补充的信息（归属发起方填写控件）。
 //
 // 
 //
-// ###  调用流程
-//
-// 该接口需要给对应的流程指定一个模板id，并且填充该模板中需要补充的信息。需要配置<a href="https://qian.tencent.com/developers/companyApis/startFlows/CreateFlow" target="_blank">创建签署流程</a>和<a href="https://qian.tencent.com/developers/companyApis/startFlows/StartFlow" target="_blank">发起签署流程</a>接口使用。具体逻辑可以参考下图:
+// ### 1.1 调用流程
 //
 // 
 //
-// ![image](https://qcloudimg.tencent-cloud.cn/raw/1f38ebd7c5afed8763ad961741d81438.png)
+// 本接口需指定一个模板 ID，并填充该模板中需补充的信息。它需要与<a href="https://qian.tencent.com/developers/companyApis/startFlows/CreateFlow" target="_blank">创建签署流程</a>和<a href="https://qian.tencent.com/developers/companyApis/startFlows/StartFlow" target="_blank">发起签署流程</a>接口配合使用，完整调用顺序如下：
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/dbd2eba8200d812d76b7e9e34d739e75.svg)
 //
 // 
 //
-// 
-//
-// ### 填充模板中定义的填写控件
-//
-// 模板中配置的<font color="red">发起人填充控件</font>可以通过本接口的**FormFields数组**字段填充。
+// ### 1.2 发起方填写控件
 //
 // 
 //
-// **<font color="red">填充填写控件需要进行Pdf合成工作，文档合成完成后会收到[合同文档合成完成回调](https://qian.tencent.com/developers/company/callback_types_contracts_sign#%E4%B9%9D-%E5%90%88%E5%90%8C%E6%96%87%E6%A1%A3%E5%90%88%E6%88%90%E5%AE%8C%E6%88%90%E5%9B%9E%E8%B0%83),建议在收到此回调后再调用 [StartFlow](https://qian.tencent.com/developers/companyApis/startFlows/StartFlow) 接口。</font>**
+// 模板中配置的<font color="red">发起人填充控件</font>，可通过本接口的 **FormFields 数组**字段填充。
 //
 // 
 //
@@ -2385,59 +2381,51 @@ func NewCreateDocumentResponse() (response *CreateDocumentResponse) {
 //
 // 
 //
-// 填充的传参示例如下
+// 填充的传参示例如下（以 ComponentName 匹配模板中的控件名）：
 //
 // 
 //
-// ```
+// ```json
 //
-//     request.FormFields = [{
+// [
 //
-//             "ComponentName": "项目的名字",
+//     { "ComponentName": "项目的名字", "ComponentValue": "休闲山庄" },
 //
-//             "ComponentValue": "休闲山庄"
+//     { "ComponentName": "项目的地址", "ComponentValue": "凤凰山北侧" },
 //
-//         }, {
+//     { "ComponentName": "范围", "ComponentValue": "凤凰山至107国道" },
 //
-//             "ComponentName": "项目的地址",
+//     { "ComponentName": "面积", "ComponentValue": "100亩" },
 //
-//             "ComponentValue": "凤凰山北侧",
+//     { "ComponentName": "基本情况", "ComponentValue": "完好" },
 //
-//         }, {
+//     { "ComponentName": "用途", "ComponentValue": "经营农家乐" }
 //
-//             "ComponentName": "范围",
-//
-//             "ComponentValue": "凤凰山至107国道",
-//
-//         }, {
-//
-//             "ComponentName": "面积",
-//
-//             "ComponentValue": "100亩",
-//
-//         }, {
-//
-//             "ComponentName": "基本情况",
-//
-//             "ComponentValue": "完好",
-//
-//         }, , {
-//
-//             "ComponentName": "用途",
-//
-//             "ComponentValue": "经营农家乐",
-//
-//         }
-//
-//     ]
+// ]
 //
 // ```
 //
-// 合成后合同样子示例
+// 
+//
+// 合成后的合同样例：
 //
 // 
 //
 // ![image](https://qcloudimg.tencent-cloud.cn/raw/140a2fb771ac66a185d0a000d37485f6.png)
+//
+// 
+//
+// ### 1.3 注意事项
+//
+// 
+//
+// -  本接口<font color="red">只能填充分配给发起方的填写控件</font>，不能填充分配给签署方的签署控件。
+//
+// - <font color="red">若使用预览方式（`NeedPreview=true`），预览确认无误后，需用同样的参数再次调用本接口</font>（`NeedPreview=false`），并使用新调用返回的 `FlowId` 去调用 [StartFlow](https://qian.tencent.com/developers/companyApis/startFlows/StartFlow) 发起签署。预览模式返回的 `FlowId` 为临时 ID，不能用于发起。
+//
+// - 只要存在发起方的填写控件，填充时会触发 PDF 合成工作，文档合成完成后会收到[合同文档合成完成回调](https://qian.tencent.com/developers/company/callback_types_contracts_sign#%E4%B9%9D-%E5%90%88%E5%90%8C%E6%96%87%E6%A1%A3%E5%90%88%E6%88%90%E5%AE%8C%E6%88%90%E5%9B%9E%E8%B0%83)。<font color="red">一定要等待该回调（或等待数秒）后再调用 [StartFlow](https://qian.tencent.com/developers/companyApis/startFlows/StartFlow) 接口发起签署</font>，以确保文档已合成完毕。
+//
+// - 调用本接口（CreateDocument）成功后，请**在 5 分钟内调用 [StartFlow](https://qian.tencent.com/developers/companyApis/startFlows/StartFlow) 启动合同**，不要长时间暂存仅调用了 CreateDocument 而未发起的合同；否则会导致该合同长时间后无法再启动，且合同额度不再返还。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2494,29 +2482,25 @@ func (c *Client) CreateDocument(request *CreateDocumentRequest) (response *Creat
 }
 
 // CreateDocument
-// 创建签署流程电子文档<br />
+// 本接口用于基于**模板**创建合同的电子文档，并填充模板中由发起方补充的信息（归属发起方填写控件）。
 //
 // 
 //
-// ###  调用流程
-//
-// 该接口需要给对应的流程指定一个模板id，并且填充该模板中需要补充的信息。需要配置<a href="https://qian.tencent.com/developers/companyApis/startFlows/CreateFlow" target="_blank">创建签署流程</a>和<a href="https://qian.tencent.com/developers/companyApis/startFlows/StartFlow" target="_blank">发起签署流程</a>接口使用。具体逻辑可以参考下图:
+// ### 1.1 调用流程
 //
 // 
 //
-// ![image](https://qcloudimg.tencent-cloud.cn/raw/1f38ebd7c5afed8763ad961741d81438.png)
+// 本接口需指定一个模板 ID，并填充该模板中需补充的信息。它需要与<a href="https://qian.tencent.com/developers/companyApis/startFlows/CreateFlow" target="_blank">创建签署流程</a>和<a href="https://qian.tencent.com/developers/companyApis/startFlows/StartFlow" target="_blank">发起签署流程</a>接口配合使用，完整调用顺序如下：
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/dbd2eba8200d812d76b7e9e34d739e75.svg)
 //
 // 
 //
-// 
-//
-// ### 填充模板中定义的填写控件
-//
-// 模板中配置的<font color="red">发起人填充控件</font>可以通过本接口的**FormFields数组**字段填充。
+// ### 1.2 发起方填写控件
 //
 // 
 //
-// **<font color="red">填充填写控件需要进行Pdf合成工作，文档合成完成后会收到[合同文档合成完成回调](https://qian.tencent.com/developers/company/callback_types_contracts_sign#%E4%B9%9D-%E5%90%88%E5%90%8C%E6%96%87%E6%A1%A3%E5%90%88%E6%88%90%E5%AE%8C%E6%88%90%E5%9B%9E%E8%B0%83),建议在收到此回调后再调用 [StartFlow](https://qian.tencent.com/developers/companyApis/startFlows/StartFlow) 接口。</font>**
+// 模板中配置的<font color="red">发起人填充控件</font>，可通过本接口的 **FormFields 数组**字段填充。
 //
 // 
 //
@@ -2524,59 +2508,51 @@ func (c *Client) CreateDocument(request *CreateDocumentRequest) (response *Creat
 //
 // 
 //
-// 填充的传参示例如下
+// 填充的传参示例如下（以 ComponentName 匹配模板中的控件名）：
 //
 // 
 //
-// ```
+// ```json
 //
-//     request.FormFields = [{
+// [
 //
-//             "ComponentName": "项目的名字",
+//     { "ComponentName": "项目的名字", "ComponentValue": "休闲山庄" },
 //
-//             "ComponentValue": "休闲山庄"
+//     { "ComponentName": "项目的地址", "ComponentValue": "凤凰山北侧" },
 //
-//         }, {
+//     { "ComponentName": "范围", "ComponentValue": "凤凰山至107国道" },
 //
-//             "ComponentName": "项目的地址",
+//     { "ComponentName": "面积", "ComponentValue": "100亩" },
 //
-//             "ComponentValue": "凤凰山北侧",
+//     { "ComponentName": "基本情况", "ComponentValue": "完好" },
 //
-//         }, {
+//     { "ComponentName": "用途", "ComponentValue": "经营农家乐" }
 //
-//             "ComponentName": "范围",
-//
-//             "ComponentValue": "凤凰山至107国道",
-//
-//         }, {
-//
-//             "ComponentName": "面积",
-//
-//             "ComponentValue": "100亩",
-//
-//         }, {
-//
-//             "ComponentName": "基本情况",
-//
-//             "ComponentValue": "完好",
-//
-//         }, , {
-//
-//             "ComponentName": "用途",
-//
-//             "ComponentValue": "经营农家乐",
-//
-//         }
-//
-//     ]
+// ]
 //
 // ```
 //
-// 合成后合同样子示例
+// 
+//
+// 合成后的合同样例：
 //
 // 
 //
 // ![image](https://qcloudimg.tencent-cloud.cn/raw/140a2fb771ac66a185d0a000d37485f6.png)
+//
+// 
+//
+// ### 1.3 注意事项
+//
+// 
+//
+// -  本接口<font color="red">只能填充分配给发起方的填写控件</font>，不能填充分配给签署方的签署控件。
+//
+// - <font color="red">若使用预览方式（`NeedPreview=true`），预览确认无误后，需用同样的参数再次调用本接口</font>（`NeedPreview=false`），并使用新调用返回的 `FlowId` 去调用 [StartFlow](https://qian.tencent.com/developers/companyApis/startFlows/StartFlow) 发起签署。预览模式返回的 `FlowId` 为临时 ID，不能用于发起。
+//
+// - 只要存在发起方的填写控件，填充时会触发 PDF 合成工作，文档合成完成后会收到[合同文档合成完成回调](https://qian.tencent.com/developers/company/callback_types_contracts_sign#%E4%B9%9D-%E5%90%88%E5%90%8C%E6%96%87%E6%A1%A3%E5%90%88%E6%88%90%E5%AE%8C%E6%88%90%E5%9B%9E%E8%B0%83)。<font color="red">一定要等待该回调（或等待数秒）后再调用 [StartFlow](https://qian.tencent.com/developers/companyApis/startFlows/StartFlow) 接口发起签署</font>，以确保文档已合成完毕。
+//
+// - 调用本接口（CreateDocument）成功后，请**在 5 分钟内调用 [StartFlow](https://qian.tencent.com/developers/companyApis/startFlows/StartFlow) 启动合同**，不要长时间暂存仅调用了 CreateDocument 而未发起的合同；否则会导致该合同长时间后无法再启动，且合同额度不再返还。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3387,73 +3363,45 @@ func NewCreateFlowResponse() (response *CreateFlowResponse) {
 // CreateFlow
 // 通过模板创建签署流程<br/>
 //
-// 适用场景：在标准制式的合同场景中，可通过提前预制好模板文件，每次调用模板文件的id，补充合同内容信息及签署信息生成电子合同。
+// 适用场景：在标准制式的合同场景中，可通过提前预制好模板文件，每次使用这个配置好的模板，补充合同内容信息及签署信息生成电子合同。
 //
-// <table>
-//
-// 	<thead>
-//
-// 		<tr>
-//
-// 			<th>签署人类别</th>
-//
-// 			<th>需要提前准备的信息</th>
-//
-// 		</tr>
-//
-// 	</thead>
-//
-// 	<tbody>
-//
-// 		<tr>
-//
-// 			<td>自己企业的员工签署（未认证加入或已认证加入）</td>
-//
-// 			<td>签署企业的名字、员工的真实名字、员工的触达手机号、员工的证件号（证件号非必传）</td>
-//
-// 		</tr>
-//
-// 		<tr>
-//
-// 			<td>自己企业的员工签署（已认证加入）</td>
-//
-// 			<td>签署企业的名字、员工在电子签平台的ID（UserId）</td>
-//
-// 		</tr>
-//
-// 		<tr>
-//
-// 			<td>其他企业的员工签署</td>
-//
-// 			<td>签署企业的名字、员工的真实名字、员工的触达手机号、员工的证件号（证件号非必传）</td>
-//
-// 		</tr>
-//
-// 		<tr>
-//
-// 			<td>个人（自然人）签署</td>
-//
-// 			<td>个人的真实名字、个人的触达手机号、个人的身份证（证件号非必传）</td>
-//
-// 		</tr>
-//
-// 	</tbody>
-//
-// </table>
+// ## 1.1 传参方式指引
 //
 // 
 //
+// | 签署方类型 | ApproverType | 需要提前准备的信息 | 对应 Approvers 关键字段 |
+//
+// |------|------|------|------|
+//
+// | 本企业员工（未认证加入） | 0 | 签署企业名、员工真实姓名、员工触达手机号、证件号（非必传） | OrganizationName + ApproverName + ApproverMobile |
+//
+// | 本企业员工（已认证加入） | 0 | 签署企业名、员工在电子签平台的 ID（UserId） | OrganizationName + UserId |
+//
+// | 他方企业员工 | 0 | 签署企业名、员工真实姓名、员工触达手机号、证件号（非必传） | OrganizationName + ApproverName + ApproverMobile |
+//
+// | 个人（自然人） | 1 | 个人真实姓名、个人触达手机号、身份证号（非必传） | ApproverName + ApproverMobile |
+//
 // 
 //
-// 注：配合<a href="https://qian.tencent.com/developers/companyApis/startFlows/CreateDocument" target="_blank">创建电子文档</a>和<a href="https://qian.tencent.com/developers/companyApis/startFlows/StartFlow" target="_blank">发起签署流程</a>接口使用。整体的逻辑如下图
+// ## 1.2 接口调用流程
+//
+// 此接口需<font color="red">配合<a href="https://qian.tencent.com/developers/companyApis/startFlows/CreateDocument" target="_blank">创建电子文档</a>和<a href="https://qian.tencent.com/developers/companyApis/startFlows/StartFlow" target="_blank">发起签署流程</a>接口使用</font> 。整体的逻辑如下图
 //
 // 
 //
-// ![image](https://qcloudimg.tencent-cloud.cn/raw/1f38ebd7c5afed8763ad961741d81438.png)
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/dbd2eba8200d812d76b7e9e34d739e75.svg)
 //
 // 
 //
-// 注：**静默（自动）签署不支持合同签署方存在填写**功能
+// ## 1.3 注意事项
+//
+// -  合同<font color="red">发起后就会扣减合同的额度</font> , 只有撤销没有参与方签署过或只有自动签署签署过的合同，且<font color="red">有撤销合同额度</font>的情形下，才会返还合同额度。（**过期，拒签，签署完成，解除完成等状态不会返还额度**）。具体可以参考[合同撤销返还额度说明](https://qian.tencent.com/developers/company/contract_cancel_quota)。
+//
+// - 支持的证件类型可以参考[支持的证件类型](https://qian.tencent.com/developers/company/id_card_support)。
+//
+// - 合同发起方需要【组织管理】->【角色管理】中拥有<font color="red">接口发起合同</font>的权限
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/c8553d1823ca1323e82c11f01c86e8cd.png)
 //
 // <br>
 //
@@ -3547,73 +3495,45 @@ func (c *Client) CreateFlow(request *CreateFlowRequest) (response *CreateFlowRes
 // CreateFlow
 // 通过模板创建签署流程<br/>
 //
-// 适用场景：在标准制式的合同场景中，可通过提前预制好模板文件，每次调用模板文件的id，补充合同内容信息及签署信息生成电子合同。
+// 适用场景：在标准制式的合同场景中，可通过提前预制好模板文件，每次使用这个配置好的模板，补充合同内容信息及签署信息生成电子合同。
 //
-// <table>
-//
-// 	<thead>
-//
-// 		<tr>
-//
-// 			<th>签署人类别</th>
-//
-// 			<th>需要提前准备的信息</th>
-//
-// 		</tr>
-//
-// 	</thead>
-//
-// 	<tbody>
-//
-// 		<tr>
-//
-// 			<td>自己企业的员工签署（未认证加入或已认证加入）</td>
-//
-// 			<td>签署企业的名字、员工的真实名字、员工的触达手机号、员工的证件号（证件号非必传）</td>
-//
-// 		</tr>
-//
-// 		<tr>
-//
-// 			<td>自己企业的员工签署（已认证加入）</td>
-//
-// 			<td>签署企业的名字、员工在电子签平台的ID（UserId）</td>
-//
-// 		</tr>
-//
-// 		<tr>
-//
-// 			<td>其他企业的员工签署</td>
-//
-// 			<td>签署企业的名字、员工的真实名字、员工的触达手机号、员工的证件号（证件号非必传）</td>
-//
-// 		</tr>
-//
-// 		<tr>
-//
-// 			<td>个人（自然人）签署</td>
-//
-// 			<td>个人的真实名字、个人的触达手机号、个人的身份证（证件号非必传）</td>
-//
-// 		</tr>
-//
-// 	</tbody>
-//
-// </table>
+// ## 1.1 传参方式指引
 //
 // 
 //
+// | 签署方类型 | ApproverType | 需要提前准备的信息 | 对应 Approvers 关键字段 |
+//
+// |------|------|------|------|
+//
+// | 本企业员工（未认证加入） | 0 | 签署企业名、员工真实姓名、员工触达手机号、证件号（非必传） | OrganizationName + ApproverName + ApproverMobile |
+//
+// | 本企业员工（已认证加入） | 0 | 签署企业名、员工在电子签平台的 ID（UserId） | OrganizationName + UserId |
+//
+// | 他方企业员工 | 0 | 签署企业名、员工真实姓名、员工触达手机号、证件号（非必传） | OrganizationName + ApproverName + ApproverMobile |
+//
+// | 个人（自然人） | 1 | 个人真实姓名、个人触达手机号、身份证号（非必传） | ApproverName + ApproverMobile |
+//
 // 
 //
-// 注：配合<a href="https://qian.tencent.com/developers/companyApis/startFlows/CreateDocument" target="_blank">创建电子文档</a>和<a href="https://qian.tencent.com/developers/companyApis/startFlows/StartFlow" target="_blank">发起签署流程</a>接口使用。整体的逻辑如下图
+// ## 1.2 接口调用流程
+//
+// 此接口需<font color="red">配合<a href="https://qian.tencent.com/developers/companyApis/startFlows/CreateDocument" target="_blank">创建电子文档</a>和<a href="https://qian.tencent.com/developers/companyApis/startFlows/StartFlow" target="_blank">发起签署流程</a>接口使用</font> 。整体的逻辑如下图
 //
 // 
 //
-// ![image](https://qcloudimg.tencent-cloud.cn/raw/1f38ebd7c5afed8763ad961741d81438.png)
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/dbd2eba8200d812d76b7e9e34d739e75.svg)
 //
 // 
 //
-// 注：**静默（自动）签署不支持合同签署方存在填写**功能
+// ## 1.3 注意事项
+//
+// -  合同<font color="red">发起后就会扣减合同的额度</font> , 只有撤销没有参与方签署过或只有自动签署签署过的合同，且<font color="red">有撤销合同额度</font>的情形下，才会返还合同额度。（**过期，拒签，签署完成，解除完成等状态不会返还额度**）。具体可以参考[合同撤销返还额度说明](https://qian.tencent.com/developers/company/contract_cancel_quota)。
+//
+// - 支持的证件类型可以参考[支持的证件类型](https://qian.tencent.com/developers/company/id_card_support)。
+//
+// - 合同发起方需要【组织管理】->【角色管理】中拥有<font color="red">接口发起合同</font>的权限
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/c8553d1823ca1323e82c11f01c86e8cd.png)
 //
 // <br>
 //
@@ -4233,7 +4153,7 @@ func NewCreateFlowByFilesResponse() (response *CreateFlowByFilesResponse) {
 //
 // ## 整体流程图
 //
-// ![image](https://qcloudimg.tencent-cloud.cn/raw/9577ac334c083ecfe0014a187d64b485.svg)
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/9bf547fe0bc738f9a97b4b619dea0633.svg)
 //
 // 
 //
@@ -4439,7 +4359,7 @@ func (c *Client) CreateFlowByFiles(request *CreateFlowByFilesRequest) (response 
 //
 // ## 整体流程图
 //
-// ![image](https://qcloudimg.tencent-cloud.cn/raw/9577ac334c083ecfe0014a187d64b485.svg)
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/9bf547fe0bc738f9a97b4b619dea0633.svg)
 //
 // 
 //
@@ -16789,25 +16709,25 @@ func NewStartFlowResponse() (response *StartFlowResponse) {
 // StartFlow
 // 此接口用于启动流程。它是模板发起合同的最后一步。
 //
+// 
+//
+// ## 1.1 接口调用流程
+//
 // 在[创建签署流程](https://qian.tencent.com/developers/companyApis/startFlows/CreateFlow)和[创建电子文档](https://qian.tencent.com/developers/companyApis/startFlows/CreateDocument)之后，用于开始整个合同流程,  推进流程进入到签署环节。
 //
 // 
 //
-// ![image](https://qcloudimg.tencent-cloud.cn/raw/1f38ebd7c5afed8763ad961741d81438.png)
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/dbd2eba8200d812d76b7e9e34d739e75.svg)
 //
 // 
 //
-// 注：
+// ### 1.2 注意事项
 //
-// 1.<font color="red">合同发起后就会扣减合同的额度</font>, 只有撤销没有参与方签署过或只有自动签署签署过的合同，才会返还合同额度。（过期，拒签，签署完成，解除完成等状态不会返还额度）
+// -  合同<font color="red">发起后就会扣减合同的额度</font> , 只有撤销没有参与方签署过或只有自动签署签署过的合同，且<font color="red">有撤销合同额度</font>的情形下，才会返还合同额度。（**过期，拒签，签署完成，解除完成等状态不会返还额度**）。具体可以参考[合同撤销返还额度说明](https://qian.tencent.com/developers/company/contract_cancel_quota)。
 //
-// 
+// -  只要存在填写控件，填充时会触发 PDF 合成工作，文档合成完成后会收到[合同文档合成完成回调](https://qian.tencent.com/developers/company/callback_types_contracts_sign#%E4%B9%9D-%E5%90%88%E5%90%8C%E6%96%87%E6%A1%A3%E5%90%88%E6%88%90%E5%AE%8C%E6%88%90%E5%9B%9E%E8%B0%83)。**一定要等待该回调（或等待数秒）后再调用 [StartFlow](https://qian.tencent.com/developers/companyApis/startFlows/StartFlow) 接口发起签署**，以确保文档已合成完毕。，尤其是当模板中存在动态表格等复杂填写控件时，因为合成过程可能会耗费秒级别的时间。
 //
-// 2.<font color="red">静默（自动）签署不支持非本企业合同签署方存在填写</font>功能
-//
-// 
-//
-// 3.<font color="red">在发起签署流程之前，建议等待 [PDF合成完成的回调](https://qian.tencent.com/developers/company/callback_types_contracts_sign#%E4%B9%9D-%E5%90%88%E5%90%8C%E6%96%87%E6%A1%A3%E5%90%88%E6%88%90%E5%AE%8C%E6%88%90%E5%9B%9E%E8%B0%83)</font>，尤其是当模板中存在动态表格等复杂填写控件时，因为合成过程可能会耗费秒级别的时间。
+// - 调用 [CreateDocument](https://qian.tencent.com/developers/companyApis/startFlows/CreateDocument) 成功后，请<font color="red">在 5 分钟内调用本接口（StartFlow）启动合同</font> ，不要长时间暂存仅调用了 CreateDocument 而未发起的合同；否则会导致该合同长时间后无法再启动，且合同额度不再返还。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -16860,25 +16780,25 @@ func (c *Client) StartFlow(request *StartFlowRequest) (response *StartFlowRespon
 // StartFlow
 // 此接口用于启动流程。它是模板发起合同的最后一步。
 //
+// 
+//
+// ## 1.1 接口调用流程
+//
 // 在[创建签署流程](https://qian.tencent.com/developers/companyApis/startFlows/CreateFlow)和[创建电子文档](https://qian.tencent.com/developers/companyApis/startFlows/CreateDocument)之后，用于开始整个合同流程,  推进流程进入到签署环节。
 //
 // 
 //
-// ![image](https://qcloudimg.tencent-cloud.cn/raw/1f38ebd7c5afed8763ad961741d81438.png)
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/dbd2eba8200d812d76b7e9e34d739e75.svg)
 //
 // 
 //
-// 注：
+// ### 1.2 注意事项
 //
-// 1.<font color="red">合同发起后就会扣减合同的额度</font>, 只有撤销没有参与方签署过或只有自动签署签署过的合同，才会返还合同额度。（过期，拒签，签署完成，解除完成等状态不会返还额度）
+// -  合同<font color="red">发起后就会扣减合同的额度</font> , 只有撤销没有参与方签署过或只有自动签署签署过的合同，且<font color="red">有撤销合同额度</font>的情形下，才会返还合同额度。（**过期，拒签，签署完成，解除完成等状态不会返还额度**）。具体可以参考[合同撤销返还额度说明](https://qian.tencent.com/developers/company/contract_cancel_quota)。
 //
-// 
+// -  只要存在填写控件，填充时会触发 PDF 合成工作，文档合成完成后会收到[合同文档合成完成回调](https://qian.tencent.com/developers/company/callback_types_contracts_sign#%E4%B9%9D-%E5%90%88%E5%90%8C%E6%96%87%E6%A1%A3%E5%90%88%E6%88%90%E5%AE%8C%E6%88%90%E5%9B%9E%E8%B0%83)。**一定要等待该回调（或等待数秒）后再调用 [StartFlow](https://qian.tencent.com/developers/companyApis/startFlows/StartFlow) 接口发起签署**，以确保文档已合成完毕。，尤其是当模板中存在动态表格等复杂填写控件时，因为合成过程可能会耗费秒级别的时间。
 //
-// 2.<font color="red">静默（自动）签署不支持非本企业合同签署方存在填写</font>功能
-//
-// 
-//
-// 3.<font color="red">在发起签署流程之前，建议等待 [PDF合成完成的回调](https://qian.tencent.com/developers/company/callback_types_contracts_sign#%E4%B9%9D-%E5%90%88%E5%90%8C%E6%96%87%E6%A1%A3%E5%90%88%E6%88%90%E5%AE%8C%E6%88%90%E5%9B%9E%E8%B0%83)</font>，尤其是当模板中存在动态表格等复杂填写控件时，因为合成过程可能会耗费秒级别的时间。
+// - 调用 [CreateDocument](https://qian.tencent.com/developers/companyApis/startFlows/CreateDocument) 成功后，请<font color="red">在 5 分钟内调用本接口（StartFlow）启动合同</font> ，不要长时间暂存仅调用了 CreateDocument 而未发起的合同；否则会导致该合同长时间后无法再启动，且合同额度不再返还。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
