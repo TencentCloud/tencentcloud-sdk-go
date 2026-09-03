@@ -1,7 +1,10 @@
 package common
 
 import (
+	"bytes"
 	"fmt"
+	"io"
+
 	tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
@@ -26,6 +29,19 @@ func NewCommonRequest(service, version, action string) (request *CommonRequest) 
 	return
 }
 
+// fixedUnmarshal decodes JSON with UseNumber, keep numbers as json.Number instead of float64
+func fixedUnmarshal(b []byte, v interface{}) error {
+	dec := json.NewDecoder(bytes.NewReader(b))
+	dec.UseNumber()
+	if err := dec.Decode(v); err != nil {
+		return err
+	}
+	if _, err := dec.Token(); err != io.EOF {
+		return fmt.Errorf("invalid trailing data after top-level value")
+	}
+	return nil
+}
+
 // SetActionParameters set common request's actionParameters to your data.
 // note: your data Must be a json-formatted string or byte array or map[string]interface{}
 // note: you could not call SetActionParameters and SetOctetStreamParameters at once
@@ -35,12 +51,12 @@ func (cr *CommonRequest) SetActionParameters(data interface{}) error {
 	}
 	switch data.(type) {
 	case []byte:
-		if err := json.Unmarshal(data.([]byte), &cr.actionParameters); err != nil {
+		if err := fixedUnmarshal(data.([]byte), &cr.actionParameters); err != nil {
 			msg := fmt.Sprintf("Fail to parse contents %s to json,because: %s", data.([]byte), err)
 			return tcerr.NewTencentCloudSDKError("ClientError.ParseJsonError", msg, "")
 		}
 	case string:
-		if err := json.Unmarshal([]byte(data.(string)), &cr.actionParameters); err != nil {
+		if err := fixedUnmarshal([]byte(data.(string)), &cr.actionParameters); err != nil {
 			msg := fmt.Sprintf("Fail to parse contents %s to json,because: %s", data.(string), err)
 			return tcerr.NewTencentCloudSDKError("ClientError.ParseJsonError", msg, "")
 		}
