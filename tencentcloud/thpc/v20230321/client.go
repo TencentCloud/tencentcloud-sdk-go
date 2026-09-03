@@ -345,6 +345,82 @@ func (c *Client) AttachNodesWithContext(ctx context.Context, request *AttachNode
     return
 }
 
+func NewBindClusterVpcRequest() (request *BindClusterVpcRequest) {
+    request = &BindClusterVpcRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("thpc", APIVersion, "BindClusterVpc")
+    
+    
+    return
+}
+
+func NewBindClusterVpcResponse() (response *BindClusterVpcResponse) {
+    response = &BindClusterVpcResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// BindClusterVpc
+// 本接口 (BindClusterVpc) 用于为IDC集群绑定VPC和子网。
+//
+// 
+//
+// * 绑定VPC后，集群可在该VPC内开启专线/VPN代理。
+//
+// * VpcId和SubnetId为必填参数，且子网必须属于指定的VPC。
+//
+// * 若集群已开通代理，需先关闭代理（DisableClusterDedicatedProxy）再变更VPC绑定。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  RESOURCENOTFOUND_VPCRESOURCE = "ResourceNotFound.VpcResource"
+//  UNSUPPORTEDOPERATION_CLUSTERACCEPTOTHERREQUEST = "UnsupportedOperation.ClusterAcceptOtherRequest"
+//  UNSUPPORTEDOPERATION_HASMANAGEDNODES = "UnsupportedOperation.HasManagedNodes"
+//  UNSUPPORTEDOPERATION_PROXYENABLED = "UnsupportedOperation.ProxyEnabled"
+func (c *Client) BindClusterVpc(request *BindClusterVpcRequest) (response *BindClusterVpcResponse, err error) {
+    return c.BindClusterVpcWithContext(context.Background(), request)
+}
+
+// BindClusterVpc
+// 本接口 (BindClusterVpc) 用于为IDC集群绑定VPC和子网。
+//
+// 
+//
+// * 绑定VPC后，集群可在该VPC内开启专线/VPN代理。
+//
+// * VpcId和SubnetId为必填参数，且子网必须属于指定的VPC。
+//
+// * 若集群已开通代理，需先关闭代理（DisableClusterDedicatedProxy）再变更VPC绑定。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  RESOURCENOTFOUND_VPCRESOURCE = "ResourceNotFound.VpcResource"
+//  UNSUPPORTEDOPERATION_CLUSTERACCEPTOTHERREQUEST = "UnsupportedOperation.ClusterAcceptOtherRequest"
+//  UNSUPPORTEDOPERATION_HASMANAGEDNODES = "UnsupportedOperation.HasManagedNodes"
+//  UNSUPPORTEDOPERATION_PROXYENABLED = "UnsupportedOperation.ProxyEnabled"
+func (c *Client) BindClusterVpcWithContext(ctx context.Context, request *BindClusterVpcRequest) (response *BindClusterVpcResponse, err error) {
+    if request == nil {
+        request = NewBindClusterVpcRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "thpc", APIVersion, "BindClusterVpc")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BindClusterVpc require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewBindClusterVpcResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateClusterRequest() (request *CreateClusterRequest) {
     request = &CreateClusterRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1045,7 +1121,10 @@ func NewDescribeClusterActivitiesResponse() (response *DescribeClusterActivities
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDFILTERNOTSUPPORTEDNAME = "InvalidParameterValue.InvalidFilterNotSupportedName"
 //  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeClusterActivities(request *DescribeClusterActivitiesRequest) (response *DescribeClusterActivitiesResponse, err error) {
     return c.DescribeClusterActivitiesWithContext(context.Background(), request)
 }
@@ -1055,7 +1134,10 @@ func (c *Client) DescribeClusterActivities(request *DescribeClusterActivitiesReq
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDFILTERNOTSUPPORTEDNAME = "InvalidParameterValue.InvalidFilterNotSupportedName"
 //  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeClusterActivitiesWithContext(ctx context.Context, request *DescribeClusterActivitiesRequest) (response *DescribeClusterActivitiesResponse, err error) {
     if request == nil {
         request = NewDescribeClusterActivitiesRequest()
@@ -1069,6 +1151,70 @@ func (c *Client) DescribeClusterActivitiesWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewDescribeClusterActivitiesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeClusterDedicatedProxyRequest() (request *DescribeClusterDedicatedProxyRequest) {
+    request = &DescribeClusterDedicatedProxyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("thpc", APIVersion, "DescribeClusterDedicatedProxy")
+    
+    
+    return
+}
+
+func NewDescribeClusterDedicatedProxyResponse() (response *DescribeClusterDedicatedProxyResponse) {
+    response = &DescribeClusterDedicatedProxyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeClusterDedicatedProxy
+// 本接口 (DescribeClusterDedicatedProxy) 用于查询IDC集群专线/VPN代理的状态。
+//
+// 
+//
+// * 返回终端节点（EndPoint）的当前状态，包括是否就绪、VIP地址等信息。
+//
+// * 若代理未开通，EndPointReady返回false，EndPointStatus为UNKNOWN。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+func (c *Client) DescribeClusterDedicatedProxy(request *DescribeClusterDedicatedProxyRequest) (response *DescribeClusterDedicatedProxyResponse, err error) {
+    return c.DescribeClusterDedicatedProxyWithContext(context.Background(), request)
+}
+
+// DescribeClusterDedicatedProxy
+// 本接口 (DescribeClusterDedicatedProxy) 用于查询IDC集群专线/VPN代理的状态。
+//
+// 
+//
+// * 返回终端节点（EndPoint）的当前状态，包括是否就绪、VIP地址等信息。
+//
+// * 若代理未开通，EndPointReady返回false，EndPointStatus为UNKNOWN。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+func (c *Client) DescribeClusterDedicatedProxyWithContext(ctx context.Context, request *DescribeClusterDedicatedProxyRequest) (response *DescribeClusterDedicatedProxyResponse, err error) {
+    if request == nil {
+        request = NewDescribeClusterDedicatedProxyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "thpc", APIVersion, "DescribeClusterDedicatedProxy")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeClusterDedicatedProxy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeClusterDedicatedProxyResponse()
     err = c.Send(request, response)
     return
 }
@@ -1931,6 +2077,328 @@ func (c *Client) DetachNodesWithContext(ctx context.Context, request *DetachNode
     request.SetContext(ctx)
     
     response = NewDetachNodesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDisableClusterDedicatedProxyRequest() (request *DisableClusterDedicatedProxyRequest) {
+    request = &DisableClusterDedicatedProxyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("thpc", APIVersion, "DisableClusterDedicatedProxy")
+    
+    
+    return
+}
+
+func NewDisableClusterDedicatedProxyResponse() (response *DisableClusterDedicatedProxyResponse) {
+    response = &DisableClusterDedicatedProxyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DisableClusterDedicatedProxy
+// 本接口 (DisableClusterDedicatedProxy) 用于关闭IDC集群的专线/VPN代理。
+//
+// 
+//
+// * 关闭后，系统将删除VPC终端节点（EndPoint），断开IDC集群与云上VPC的网络连接。
+//
+// * 若代理未开通，调用将返回ProxyNotEnabled错误。
+//
+// * 操作不可逆，关闭后需重新调用EnableClusterDedicatedProxy开启。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DELETEENDPOINTFAILED = "InternalError.DeleteEndpointFailed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  UNSUPPORTEDOPERATION_CLUSTERACCEPTOTHERREQUEST = "UnsupportedOperation.ClusterAcceptOtherRequest"
+//  UNSUPPORTEDOPERATION_HASMANAGEDNODES = "UnsupportedOperation.HasManagedNodes"
+//  UNSUPPORTEDOPERATION_PROXYNOTENABLED = "UnsupportedOperation.ProxyNotEnabled"
+func (c *Client) DisableClusterDedicatedProxy(request *DisableClusterDedicatedProxyRequest) (response *DisableClusterDedicatedProxyResponse, err error) {
+    return c.DisableClusterDedicatedProxyWithContext(context.Background(), request)
+}
+
+// DisableClusterDedicatedProxy
+// 本接口 (DisableClusterDedicatedProxy) 用于关闭IDC集群的专线/VPN代理。
+//
+// 
+//
+// * 关闭后，系统将删除VPC终端节点（EndPoint），断开IDC集群与云上VPC的网络连接。
+//
+// * 若代理未开通，调用将返回ProxyNotEnabled错误。
+//
+// * 操作不可逆，关闭后需重新调用EnableClusterDedicatedProxy开启。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DELETEENDPOINTFAILED = "InternalError.DeleteEndpointFailed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  UNSUPPORTEDOPERATION_CLUSTERACCEPTOTHERREQUEST = "UnsupportedOperation.ClusterAcceptOtherRequest"
+//  UNSUPPORTEDOPERATION_HASMANAGEDNODES = "UnsupportedOperation.HasManagedNodes"
+//  UNSUPPORTEDOPERATION_PROXYNOTENABLED = "UnsupportedOperation.ProxyNotEnabled"
+func (c *Client) DisableClusterDedicatedProxyWithContext(ctx context.Context, request *DisableClusterDedicatedProxyRequest) (response *DisableClusterDedicatedProxyResponse, err error) {
+    if request == nil {
+        request = NewDisableClusterDedicatedProxyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "thpc", APIVersion, "DisableClusterDedicatedProxy")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DisableClusterDedicatedProxy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDisableClusterDedicatedProxyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewEnableClusterDedicatedProxyRequest() (request *EnableClusterDedicatedProxyRequest) {
+    request = &EnableClusterDedicatedProxyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("thpc", APIVersion, "EnableClusterDedicatedProxy")
+    
+    
+    return
+}
+
+func NewEnableClusterDedicatedProxyResponse() (response *EnableClusterDedicatedProxyResponse) {
+    response = &EnableClusterDedicatedProxyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// EnableClusterDedicatedProxy
+// 本接口 (EnableClusterDedicatedProxy) 用于开启IDC集群的专线/VPN代理。
+//
+// 
+//
+// * 开启后，系统将自动创建VPC终端节点（EndPoint），实现IDC集群与云上VPC的网络互通。
+//
+// * 若代理已开通，重复调用将幂等返回已有EndPoint信息。
+//
+// * SubnetId与VpcId需同时指定或同时不指定。若不指定，则使用集群已绑定的VPC和子网。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CREATEENDPOINTFAILED = "InternalError.CreateEndpointFailed"
+//  INTERNALERROR_ENDPOINTSERVICEWHITELISTFAILED = "InternalError.EndpointServiceWhitelistFailed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  UNSUPPORTEDOPERATION_CLUSTERACCEPTOTHERREQUEST = "UnsupportedOperation.ClusterAcceptOtherRequest"
+//  UNSUPPORTEDOPERATION_REGIONDEDICATEDPROXYDISABLED = "UnsupportedOperation.RegionDedicatedProxyDisabled"
+//  UNSUPPORTEDOPERATION_REGIONNOTSUPPORTDEDICATEDPROXY = "UnsupportedOperation.RegionNotSupportDedicatedProxy"
+//  UNSUPPORTEDOPERATION_VPCALREADYBOUND = "UnsupportedOperation.VpcAlreadyBound"
+func (c *Client) EnableClusterDedicatedProxy(request *EnableClusterDedicatedProxyRequest) (response *EnableClusterDedicatedProxyResponse, err error) {
+    return c.EnableClusterDedicatedProxyWithContext(context.Background(), request)
+}
+
+// EnableClusterDedicatedProxy
+// 本接口 (EnableClusterDedicatedProxy) 用于开启IDC集群的专线/VPN代理。
+//
+// 
+//
+// * 开启后，系统将自动创建VPC终端节点（EndPoint），实现IDC集群与云上VPC的网络互通。
+//
+// * 若代理已开通，重复调用将幂等返回已有EndPoint信息。
+//
+// * SubnetId与VpcId需同时指定或同时不指定。若不指定，则使用集群已绑定的VPC和子网。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CREATEENDPOINTFAILED = "InternalError.CreateEndpointFailed"
+//  INTERNALERROR_ENDPOINTSERVICEWHITELISTFAILED = "InternalError.EndpointServiceWhitelistFailed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  UNSUPPORTEDOPERATION_CLUSTERACCEPTOTHERREQUEST = "UnsupportedOperation.ClusterAcceptOtherRequest"
+//  UNSUPPORTEDOPERATION_REGIONDEDICATEDPROXYDISABLED = "UnsupportedOperation.RegionDedicatedProxyDisabled"
+//  UNSUPPORTEDOPERATION_REGIONNOTSUPPORTDEDICATEDPROXY = "UnsupportedOperation.RegionNotSupportDedicatedProxy"
+//  UNSUPPORTEDOPERATION_VPCALREADYBOUND = "UnsupportedOperation.VpcAlreadyBound"
+func (c *Client) EnableClusterDedicatedProxyWithContext(ctx context.Context, request *EnableClusterDedicatedProxyRequest) (response *EnableClusterDedicatedProxyResponse, err error) {
+    if request == nil {
+        request = NewEnableClusterDedicatedProxyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "thpc", APIVersion, "EnableClusterDedicatedProxy")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EnableClusterDedicatedProxy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewEnableClusterDedicatedProxyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGenerateRegisterCodeRequest() (request *GenerateRegisterCodeRequest) {
+    request = &GenerateRegisterCodeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("thpc", APIVersion, "GenerateRegisterCode")
+    
+    
+    return
+}
+
+func NewGenerateRegisterCodeResponse() (response *GenerateRegisterCodeResponse) {
+    response = &GenerateRegisterCodeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GenerateRegisterCode
+// 本接口(GenerateRegisterCode)用于为队列创建一个注册码，注册码用于IDC机器的注册纳管。
+//
+// 可能返回的错误码:
+//  DRYRUNOPERATION = "DryRunOperation"
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETERVALUE_NOTSUPPORTED = "InvalidParameterValue.NotSupported"
+//  INVALIDPARAMETERVALUE_PARAMETERSNOTSUPPORTED = "InvalidParameterValue.ParametersNotSupported"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CLUSTERID = "ResourceNotFound.ClusterId"
+//  RESOURCENOTFOUND_QUEUE = "ResourceNotFound.Queue"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_CLUSTERSTATUSNOTSUPPORT = "UnsupportedOperation.ClusterStatusNotSupport"
+func (c *Client) GenerateRegisterCode(request *GenerateRegisterCodeRequest) (response *GenerateRegisterCodeResponse, err error) {
+    return c.GenerateRegisterCodeWithContext(context.Background(), request)
+}
+
+// GenerateRegisterCode
+// 本接口(GenerateRegisterCode)用于为队列创建一个注册码，注册码用于IDC机器的注册纳管。
+//
+// 可能返回的错误码:
+//  DRYRUNOPERATION = "DryRunOperation"
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETERVALUE_NOTSUPPORTED = "InvalidParameterValue.NotSupported"
+//  INVALIDPARAMETERVALUE_PARAMETERSNOTSUPPORTED = "InvalidParameterValue.ParametersNotSupported"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CLUSTERID = "ResourceNotFound.ClusterId"
+//  RESOURCENOTFOUND_QUEUE = "ResourceNotFound.Queue"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_CLUSTERSTATUSNOTSUPPORT = "UnsupportedOperation.ClusterStatusNotSupport"
+func (c *Client) GenerateRegisterCodeWithContext(ctx context.Context, request *GenerateRegisterCodeRequest) (response *GenerateRegisterCodeResponse, err error) {
+    if request == nil {
+        request = NewGenerateRegisterCodeRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "thpc", APIVersion, "GenerateRegisterCode")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GenerateRegisterCode require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGenerateRegisterCodeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGenerateRegisterCommandRequest() (request *GenerateRegisterCommandRequest) {
+    request = &GenerateRegisterCommandRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("thpc", APIVersion, "GenerateRegisterCommand")
+    
+    
+    return
+}
+
+func NewGenerateRegisterCommandResponse() (response *GenerateRegisterCommandResponse) {
+    response = &GenerateRegisterCommandResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GenerateRegisterCommand
+// 本接口 (GenerateRegisterCommand) 用于生成IDC集群的节点注册命令。
+//
+// 
+//
+// * 返回的注册命令可直接在IDC机器上以root身份执行，将该机器纳管进指定的IDC集群。
+//
+// * 当<code>Proxy=true</code>时，系统会先确保集群专线代理就绪（自动开启终端节点并轮询至ACTIVE），再签发注册码并渲染带代理VIP的注册命令；若在超时窗口内代理仍未就绪，将返回<code>FailedOperation.ProxyNotReady</code>。
+//
+// * 当<code>Proxy=false</code>时，IDC机器需可直连集群，直接签发注册码并渲染注册命令。
+//
+// * VpcId与SubnetId需同时指定或同时不指定；仅当<code>Proxy=true</code>且集群未绑定VPC时二者必填。当<code>Proxy=false</code>时二者不生效，若仍传入将返回<code>InvalidParameterValue.ParametersNotSupported</code>。
+//
+// * 若集群此前已开启专线代理并绑定了VPC/子网，本次传入的VpcId/SubnetId与已绑定值不一致时，将返回<code>UnsupportedOperation.VpcAlreadyBound</code>（不支持改绑）。
+//
+// * 仅支持IDC类型集群，对非IDC集群调用将返回<code>InvalidParameterValue.ParametersNotSupported</code>。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_PROXYNOTREADY = "FailedOperation.ProxyNotReady"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_COMBINATION = "InvalidParameter.Combination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_PARAMETERSNOTSUPPORTED = "InvalidParameterValue.ParametersNotSupported"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  UNSUPPORTEDOPERATION_VPCALREADYBOUND = "UnsupportedOperation.VpcAlreadyBound"
+func (c *Client) GenerateRegisterCommand(request *GenerateRegisterCommandRequest) (response *GenerateRegisterCommandResponse, err error) {
+    return c.GenerateRegisterCommandWithContext(context.Background(), request)
+}
+
+// GenerateRegisterCommand
+// 本接口 (GenerateRegisterCommand) 用于生成IDC集群的节点注册命令。
+//
+// 
+//
+// * 返回的注册命令可直接在IDC机器上以root身份执行，将该机器纳管进指定的IDC集群。
+//
+// * 当<code>Proxy=true</code>时，系统会先确保集群专线代理就绪（自动开启终端节点并轮询至ACTIVE），再签发注册码并渲染带代理VIP的注册命令；若在超时窗口内代理仍未就绪，将返回<code>FailedOperation.ProxyNotReady</code>。
+//
+// * 当<code>Proxy=false</code>时，IDC机器需可直连集群，直接签发注册码并渲染注册命令。
+//
+// * VpcId与SubnetId需同时指定或同时不指定；仅当<code>Proxy=true</code>且集群未绑定VPC时二者必填。当<code>Proxy=false</code>时二者不生效，若仍传入将返回<code>InvalidParameterValue.ParametersNotSupported</code>。
+//
+// * 若集群此前已开启专线代理并绑定了VPC/子网，本次传入的VpcId/SubnetId与已绑定值不一致时，将返回<code>UnsupportedOperation.VpcAlreadyBound</code>（不支持改绑）。
+//
+// * 仅支持IDC类型集群，对非IDC集群调用将返回<code>InvalidParameterValue.ParametersNotSupported</code>。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_PROXYNOTREADY = "FailedOperation.ProxyNotReady"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_COMBINATION = "InvalidParameter.Combination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_PARAMETERSNOTSUPPORTED = "InvalidParameterValue.ParametersNotSupported"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  UNSUPPORTEDOPERATION_VPCALREADYBOUND = "UnsupportedOperation.VpcAlreadyBound"
+func (c *Client) GenerateRegisterCommandWithContext(ctx context.Context, request *GenerateRegisterCommandRequest) (response *GenerateRegisterCommandResponse, err error) {
+    if request == nil {
+        request = NewGenerateRegisterCommandRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "thpc", APIVersion, "GenerateRegisterCommand")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GenerateRegisterCommand require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGenerateRegisterCommandResponse()
     err = c.Send(request, response)
     return
 }

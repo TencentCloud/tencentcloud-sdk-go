@@ -32,6 +32,9 @@ const (
 	// 数据查询错误，请联系腾讯云工程师进一步排查。
 	FAILEDOPERATION_DATASYSTEMERROR = "FailedOperation.DataSystemError"
 
+	// Edgeone 服务错误, 请重试或联系客服人员解决。
+	FAILEDOPERATION_EDGEONESERVICEERROR = "FailedOperation.EdgeoneServiceError"
+
 	// SSL无法获取订单，请稍后重试
 	FAILEDOPERATION_SSLCERTCANNOTGETORDER = "FailedOperation.SslCertCannotGetOrder"
 
@@ -361,6 +364,9 @@ const (
 
 	// 缺少参数错误。
 	MISSINGPARAMETER = "MissingParameter"
+
+	// 该域名未经审批，暂无法添加，请先完成审批流程。
+	OPERATIONDENIED_CDNDOMAINNOTAPPROVED = "OperationDenied.CdnDomainNotApproved"
 
 	// 此域名因遭受过大规模 DDoS 攻击，为了保证平台稳定，当前无法接入。
 	OPERATIONDENIED_CDNHOSTHASDDOSRISK = "OperationDenied.CdnHostHasDDosRisk"

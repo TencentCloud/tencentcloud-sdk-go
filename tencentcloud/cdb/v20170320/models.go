@@ -1270,19 +1270,13 @@ type CdbSellConfig struct {
 }
 
 type CdbSellType struct {
-	// 售卖实例名称。
-	// Z3：是高可用类型，对应规格中的 DeviceType，包含 UNIVERSAL，EXCLUSIVE。
-	// CVM：是基础版类型，对应规格中的 DeviceType 是 BASIC（已下线）。
-	// TKE：是基础版v2类型，对应规格中的 DeviceType 是 BASIC_V2。
-	// CLOUD_NATIVE_CLUSTER：表示云盘版标准型。
-	// CLOUD_NATIVE_CLUSTER_EXCLUSIVE：表示云盘版加强型。
-	// ECONOMICAL：表示经济型。
+	// <p>售卖实例名称。<br>Z3：是高可用类型，对应规格中的 DeviceType，包含 UNIVERSAL，EXCLUSIVE。<br>CVM：是基础版类型，对应规格中的 DeviceType 是 BASIC（已下线）。<br>TKE：是基础版v2类型，对应规格中的 DeviceType 是 BASIC_V2。<br>CLOUD_NATIVE_CLUSTER：表示云盘版标准型。<br>CLOUD_NATIVE_CLUSTER_EXCLUSIVE：表示云盘版加强型。<br>CLOUD_NATIVE_CLUSTER_ULTRA：表示云盘版旗舰型。<br>CLOUD_NATIVE_SINGLE_NODE：表示云盘版单节点<br>ECONOMICAL：表示经济型。</p>
 	TypeName *string `json:"TypeName,omitnil,omitempty" name:"TypeName"`
 
-	// 引擎版本号
+	// <p>引擎版本号</p>
 	EngineVersion []*string `json:"EngineVersion,omitnil,omitempty" name:"EngineVersion"`
 
-	// 售卖规格Id
+	// <p>售卖规格Id</p>
 	ConfigIds []*int64 `json:"ConfigIds,omitnil,omitempty" name:"ConfigIds"`
 }
 
@@ -13672,20 +13666,20 @@ func (r *ModifyDBInstanceProjectResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyDBInstanceReadOnlyStatusRequestParams struct {
-	// 实例ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同，可使用[查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值。
+	// <p>实例ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同，可使用<a href="https://cloud.tencent.com/document/api/236/15872">查询实例列表</a> 接口获取，其值为输出参数中字段 InstanceId 的值。此接口不支持设置云盘版实例为只读。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 是否设置为只读。其中：1表示设置实例为只读，0表示解除只读状态
+	// <p>是否设置为只读。其中：1表示设置实例为只读，0表示解除只读状态</p>
 	ReadOnly *int64 `json:"ReadOnly,omitnil,omitempty" name:"ReadOnly"`
 }
 
 type ModifyDBInstanceReadOnlyStatusRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同，可使用[查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值。
+	// <p>实例ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同，可使用<a href="https://cloud.tencent.com/document/api/236/15872">查询实例列表</a> 接口获取，其值为输出参数中字段 InstanceId 的值。此接口不支持设置云盘版实例为只读。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 是否设置为只读。其中：1表示设置实例为只读，0表示解除只读状态
+	// <p>是否设置为只读。其中：1表示设置实例为只读，0表示解除只读状态</p>
 	ReadOnly *int64 `json:"ReadOnly,omitnil,omitempty" name:"ReadOnly"`
 }
 

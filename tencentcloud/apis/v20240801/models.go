@@ -21,22 +21,26 @@ import (
 )
 
 type AgentAppMcpServerDTO struct {
-	// mcp server id
+	// <p>mcp server id</p>
 	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
 
-	// 是否需要鉴权
+	// <p>是否需要鉴权（已废弃，请勿使用）</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: NeedAuth is deprecated.
 	NeedAuth *bool `json:"NeedAuth,omitnil,omitempty" name:"NeedAuth"`
 
-	// 凭据代填的ID
+	// <p>凭据代填的ID（已废弃，请勿使用）</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: AgentCredentialID is deprecated.
 	AgentCredentialID *string `json:"AgentCredentialID,omitnil,omitempty" name:"AgentCredentialID"`
 
-	// 应用为OAuth2认证时，sse模式请求mcp时的资源标识
+	// <p>应用为OAuth2认证时，sse模式请求mcp时的资源标识</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SSEResourceIdentifier *string `json:"SSEResourceIdentifier,omitnil,omitempty" name:"SSEResourceIdentifier"`
 
-	// 应用为OAuth2认证时，streamable模式请求mcp时的资源标识
+	// <p>应用为OAuth2认证时，streamable模式请求mcp时的资源标识</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StreamableResourceIdentifier *string `json:"StreamableResourceIdentifier,omitnil,omitempty" name:"StreamableResourceIdentifier"`
 }
@@ -112,10 +116,14 @@ type AgentAppServiceDTO struct {
 	// <p>限流配置</p>
 	InvokeLimitConfig *InvokeLimitConfigDTO `json:"InvokeLimitConfig,omitnil,omitempty" name:"InvokeLimitConfig"`
 
-	// <p>是否要认证</p>
+	// <p>是否要认证（已废弃，请勿使用）</p>
+	//
+	// Deprecated: NeedAuth is deprecated.
 	NeedAuth *bool `json:"NeedAuth,omitnil,omitempty" name:"NeedAuth"`
 
-	// <p>凭据ID</p>
+	// <p>凭据ID（已废弃，请勿使用）</p>
+	//
+	// Deprecated: AgentCredentialID is deprecated.
 	AgentCredentialID *string `json:"AgentCredentialID,omitnil,omitempty" name:"AgentCredentialID"`
 }
 
@@ -679,6 +687,15 @@ type CreateMcpServerRequestParams struct {
 
 	// <p>是否忽略健康检查</p>
 	IgnoreHealthCheck *bool `json:"IgnoreHealthCheck,omitnil,omitempty" name:"IgnoreHealthCheck"`
+
+	// <p>凭据ID</p>
+	CredentialID *string `json:"CredentialID,omitnil,omitempty" name:"CredentialID"`
+
+	// <p>访问域名</p>
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// <p>访问协议</p><p>枚举值：</p><ul><li>http： http</li><li>https： https</li></ul>
+	RequestProtocolType *string `json:"RequestProtocolType,omitnil,omitempty" name:"RequestProtocolType"`
 }
 
 type CreateMcpServerRequest struct {
@@ -758,6 +775,15 @@ type CreateMcpServerRequest struct {
 
 	// <p>是否忽略健康检查</p>
 	IgnoreHealthCheck *bool `json:"IgnoreHealthCheck,omitnil,omitempty" name:"IgnoreHealthCheck"`
+
+	// <p>凭据ID</p>
+	CredentialID *string `json:"CredentialID,omitnil,omitempty" name:"CredentialID"`
+
+	// <p>访问域名</p>
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// <p>访问协议</p><p>枚举值：</p><ul><li>http： http</li><li>https： https</li></ul>
+	RequestProtocolType *string `json:"RequestProtocolType,omitnil,omitempty" name:"RequestProtocolType"`
 }
 
 func (r *CreateMcpServerRequest) ToJsonString() string {
@@ -797,6 +823,9 @@ func (r *CreateMcpServerRequest) FromJsonString(s string) error {
 	delete(f, "WrapPaasID")
 	delete(f, "PluginConfigs")
 	delete(f, "IgnoreHealthCheck")
+	delete(f, "CredentialID")
+	delete(f, "Domain")
+	delete(f, "RequestProtocolType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateMcpServerRequest has unknown keys!", "")
 	}
@@ -1042,6 +1071,12 @@ type CreateModelServiceRequestParams struct {
 
 	// <p>任务复杂度路由策略</p>
 	TaskComplexityRoute *TaskComplexityRouteDTO `json:"TaskComplexityRoute,omitnil,omitempty" name:"TaskComplexityRoute"`
+
+	// <p>访问域名</p>
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// <p>访问协议</p>
+	RequestProtocolType *string `json:"RequestProtocolType,omitnil,omitempty" name:"RequestProtocolType"`
 }
 
 type CreateModelServiceRequest struct {
@@ -1139,6 +1174,12 @@ type CreateModelServiceRequest struct {
 
 	// <p>任务复杂度路由策略</p>
 	TaskComplexityRoute *TaskComplexityRouteDTO `json:"TaskComplexityRoute,omitnil,omitempty" name:"TaskComplexityRoute"`
+
+	// <p>访问域名</p>
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// <p>访问协议</p>
+	RequestProtocolType *string `json:"RequestProtocolType,omitnil,omitempty" name:"RequestProtocolType"`
 }
 
 func (r *CreateModelServiceRequest) ToJsonString() string {
@@ -1184,6 +1225,8 @@ func (r *CreateModelServiceRequest) FromJsonString(s string) error {
 	delete(f, "RouteStrategy")
 	delete(f, "TokenLengthRoute")
 	delete(f, "TaskComplexityRoute")
+	delete(f, "Domain")
+	delete(f, "RequestProtocolType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateModelServiceRequest has unknown keys!", "")
 	}
@@ -2769,6 +2812,20 @@ type DescribeMcpServerResponseVO struct {
 
 	// <p>是否忽略健康检查</p>
 	IgnoreHealthCheck *bool `json:"IgnoreHealthCheck,omitnil,omitempty" name:"IgnoreHealthCheck"`
+
+	// <p>凭据ID</p>
+	CredentialID *string `json:"CredentialID,omitnil,omitempty" name:"CredentialID"`
+
+	// <p>凭据名称</p>
+	CredentialName *string `json:"CredentialName,omitnil,omitempty" name:"CredentialName"`
+
+	// <p>访问域名</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// <p>访问协议</p><p>枚举值：</p><ul><li>http： http</li><li>https： https</li></ul>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RequestProtocolType *string `json:"RequestProtocolType,omitnil,omitempty" name:"RequestProtocolType"`
 }
 
 // Predefined struct for user
@@ -3223,6 +3280,14 @@ type DescribeModelServiceResponseVO struct {
 	// <p>任务复杂度路由配置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskComplexityRoute *TaskComplexityRouteDTO `json:"TaskComplexityRoute,omitnil,omitempty" name:"TaskComplexityRoute"`
+
+	// <p>访问域名</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// <p>访问协议</p><p>枚举值：</p><ul><li>http： http</li><li>https： https</li></ul>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RequestProtocolType *string `json:"RequestProtocolType,omitnil,omitempty" name:"RequestProtocolType"`
 }
 
 // Predefined struct for user
@@ -3718,13 +3783,21 @@ type IpConfig struct {
 }
 
 type LimitWindowsDTO struct {
-	// 时间窗口，分钟
+	// <p>时间窗口，分钟</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Interval *uint64 `json:"Interval,omitnil,omitempty" name:"Interval"`
 
-	// 累计上限，k
+	// <p>累计上限，k</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>限流类型</p><p>枚举值：</p><ul><li>minute： 时间窗口</li><li>day： 自然日</li><li>month： 自然月</li><li>timeRange： 时间范围</li></ul>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>时间区间配置</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimeRange *TimeRange `json:"TimeRange,omitnil,omitempty" name:"TimeRange"`
 }
 
 type McpInputOutSchema struct {
@@ -4139,6 +4212,15 @@ type ModifyMcpServerRequestParams struct {
 
 	// <p>是否忽略健康检查</p>
 	IgnoreHealthCheck *bool `json:"IgnoreHealthCheck,omitnil,omitempty" name:"IgnoreHealthCheck"`
+
+	// <p>凭据ID</p>
+	CredentialID *string `json:"CredentialID,omitnil,omitempty" name:"CredentialID"`
+
+	// <p>访问域名</p>
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// <p>访问协议</p><p>枚举值：</p><ul><li>http： http</li><li>https： https</li></ul>
+	RequestProtocolType *string `json:"RequestProtocolType,omitnil,omitempty" name:"RequestProtocolType"`
 }
 
 type ModifyMcpServerRequest struct {
@@ -4224,6 +4306,15 @@ type ModifyMcpServerRequest struct {
 
 	// <p>是否忽略健康检查</p>
 	IgnoreHealthCheck *bool `json:"IgnoreHealthCheck,omitnil,omitempty" name:"IgnoreHealthCheck"`
+
+	// <p>凭据ID</p>
+	CredentialID *string `json:"CredentialID,omitnil,omitempty" name:"CredentialID"`
+
+	// <p>访问域名</p>
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// <p>访问协议</p><p>枚举值：</p><ul><li>http： http</li><li>https： https</li></ul>
+	RequestProtocolType *string `json:"RequestProtocolType,omitnil,omitempty" name:"RequestProtocolType"`
 }
 
 func (r *ModifyMcpServerRequest) ToJsonString() string {
@@ -4265,6 +4356,9 @@ func (r *ModifyMcpServerRequest) FromJsonString(s string) error {
 	delete(f, "WrapPaasID")
 	delete(f, "PluginConfigs")
 	delete(f, "IgnoreHealthCheck")
+	delete(f, "CredentialID")
+	delete(f, "Domain")
+	delete(f, "RequestProtocolType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyMcpServerRequest has unknown keys!", "")
 	}
@@ -4517,6 +4611,12 @@ type ModifyModelServiceRequestParams struct {
 
 	// <p>任务复杂度路由策略</p>
 	TaskComplexityRoute *TaskComplexityRouteDTO `json:"TaskComplexityRoute,omitnil,omitempty" name:"TaskComplexityRoute"`
+
+	// <p>访问域名</p>
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// <p>访问协议</p>
+	RequestProtocolType *string `json:"RequestProtocolType,omitnil,omitempty" name:"RequestProtocolType"`
 }
 
 type ModifyModelServiceRequest struct {
@@ -4614,6 +4714,12 @@ type ModifyModelServiceRequest struct {
 
 	// <p>任务复杂度路由策略</p>
 	TaskComplexityRoute *TaskComplexityRouteDTO `json:"TaskComplexityRoute,omitnil,omitempty" name:"TaskComplexityRoute"`
+
+	// <p>访问域名</p>
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// <p>访问协议</p>
+	RequestProtocolType *string `json:"RequestProtocolType,omitnil,omitempty" name:"RequestProtocolType"`
 }
 
 func (r *ModifyModelServiceRequest) ToJsonString() string {
@@ -4659,6 +4765,8 @@ func (r *ModifyModelServiceRequest) FromJsonString(s string) error {
 	delete(f, "RouteStrategy")
 	delete(f, "TokenLengthRoute")
 	delete(f, "TaskComplexityRoute")
+	delete(f, "Domain")
+	delete(f, "RequestProtocolType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyModelServiceRequest has unknown keys!", "")
 	}
@@ -5384,6 +5492,16 @@ type ServiceVO struct {
 	// <p>绑定的mcp server数量</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	McpServerNum *int64 `json:"McpServerNum,omitnil,omitempty" name:"McpServerNum"`
+
+	// <p>凭据ID</p>
+	CredentialID *string `json:"CredentialID,omitnil,omitempty" name:"CredentialID"`
+
+	// <p>凭据名称</p>
+	CredentialName *string `json:"CredentialName,omitnil,omitempty" name:"CredentialName"`
+
+	// <p>访问协议</p><p>枚举值：</p><ul><li>http： http</li><li>https： https</li></ul>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RequestProtocolType *string `json:"RequestProtocolType,omitnil,omitempty" name:"RequestProtocolType"`
 }
 
 type SimpleCondition struct {
@@ -5511,6 +5629,14 @@ type TaskComplexityRouteDTO struct {
 	ComplexTargetModels []*TargetModelDTO `json:"ComplexTargetModels,omitnil,omitempty" name:"ComplexTargetModels"`
 }
 
+type TimeRange struct {
+	// <p>起始时间</p><p>参数格式：格式：09:00:00</p>
+	Start *string `json:"Start,omitnil,omitempty" name:"Start"`
+
+	// <p>结束时间</p><p>参数格式：格式：12:00:00</p>
+	End *string `json:"End,omitnil,omitempty" name:"End"`
+}
+
 type TmsConfigDTO struct {
 	// <p>检测范围,请求/响应</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -5558,6 +5684,8 @@ type TokenLengthRouteDTO struct {
 type TokenLimitConfigDTO struct {
 	// <p>限流类型</p><p>枚举值：</p><ul><li>minute： 时间窗口</li><li>day： 自然日</li><li>month： 自然月</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: Type is deprecated.
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// <p>单次请求上限，k</p>

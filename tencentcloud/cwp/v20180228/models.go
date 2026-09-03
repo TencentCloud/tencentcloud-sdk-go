@@ -3040,6 +3040,17 @@ type CKafkaTopicInfo struct {
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 }
 
+type CWPTags struct {
+	// <p>记录ID</p>
+	Rid *int64 `json:"Rid,omitnil,omitempty" name:"Rid"`
+
+	// <p>标签名</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>标签ID</p>
+	TagId *int64 `json:"TagId,omitnil,omitempty" name:"TagId"`
+}
+
 type CanFixVulInfo struct {
 	// 漏洞id
 	VulId *uint64 `json:"VulId,omitnil,omitempty" name:"VulId"`
@@ -24200,6 +24211,7 @@ type DescribeRaspLicenseListRequestParams struct {
 	// - NodeName 容器节点名称
 	// - ClusterID 容器集群ID
 	// - ClusterName 容器集群名称
+	// - CWPTags 主机标签(值为标签ID,多个取并集,仅AssetType=CWP/TCSS_HOST生效)
 	Filters []*Filters `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 限制条数,默认10
@@ -24231,6 +24243,7 @@ type DescribeRaspLicenseListRequest struct {
 	// - NodeName 容器节点名称
 	// - ClusterID 容器集群ID
 	// - ClusterName 容器集群名称
+	// - CWPTags 主机标签(值为标签ID,多个取并集,仅AssetType=CWP/TCSS_HOST生效)
 	Filters []*Filters `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 限制条数,默认10
@@ -24881,7 +24894,17 @@ type DescribeReverseShellEventsRequestParams struct {
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 过滤条件。
-	// <li>Keywords - String - 是否必填：否 - 关键字(主机内网IP|进程名)</li>
+	// <li>ProcName - String - 是否必填：否 - 进程名(模糊匹配进程名或父进程名)</li>
+	// <li>MachineName - String - 是否必填：否 - 主机名称(模糊匹配)</li>
+	// <li>InstanceID - String - 是否必填：否 - 实例ID(模糊匹配)</li>
+	// <li>IP - String - 是否必填：否 - 主机IP(内网IP或公网IP,模糊匹配)</li>
+	// <li>Quuid - String - 是否必填：否 - 主机QUUID(支持多个)</li>
+	// <li>Uuid - String - 是否必填：否 - 主机UUID</li>
+	// <li>Status - String - 是否必填：否 - 处理状态(0:待处理 2:已加入白名单 3:已处理 4:已忽略)</li>
+	// <li>DetectBy - String - 是否必填：否 - 检测方式(0:行为分析 1:命令特征检测)</li>
+	// <li>ID - String - 是否必填：否 - 事件ID(支持多个)</li>
+	// <li>CreateBeginTime - String - 是否必填：否 - 发生开始时间</li>
+	// <li>CreateEndTime - String - 是否必填：否 - 发生结束时间</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 排序方式：根据请求次数排序：asc-升序/desc-降序
@@ -24901,7 +24924,17 @@ type DescribeReverseShellEventsRequest struct {
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 过滤条件。
-	// <li>Keywords - String - 是否必填：否 - 关键字(主机内网IP|进程名)</li>
+	// <li>ProcName - String - 是否必填：否 - 进程名(模糊匹配进程名或父进程名)</li>
+	// <li>MachineName - String - 是否必填：否 - 主机名称(模糊匹配)</li>
+	// <li>InstanceID - String - 是否必填：否 - 实例ID(模糊匹配)</li>
+	// <li>IP - String - 是否必填：否 - 主机IP(内网IP或公网IP,模糊匹配)</li>
+	// <li>Quuid - String - 是否必填：否 - 主机QUUID(支持多个)</li>
+	// <li>Uuid - String - 是否必填：否 - 主机UUID</li>
+	// <li>Status - String - 是否必填：否 - 处理状态(0:待处理 2:已加入白名单 3:已处理 4:已忽略)</li>
+	// <li>DetectBy - String - 是否必填：否 - 检测方式(0:行为分析 1:命令特征检测)</li>
+	// <li>ID - String - 是否必填：否 - 事件ID(支持多个)</li>
+	// <li>CreateBeginTime - String - 是否必填：否 - 发生开始时间</li>
+	// <li>CreateEndTime - String - 是否必填：否 - 发生结束时间</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 排序方式：根据请求次数排序：asc-升序/desc-降序
@@ -44066,17 +44099,17 @@ type OpenPortStatistics struct {
 }
 
 type OrderDetail struct {
-	// 资源ID
+	// <p>资源ID</p>
 	ResourceID *string `json:"ResourceID,omitnil,omitempty" name:"ResourceID"`
 
-	// 计费项
+	// <p>计费项</p>
 	InquireKey *string `json:"InquireKey,omitnil,omitempty" name:"InquireKey"`
 
-	// 订单状态
-	// - 1 正常
-	// - 2 隔离期
-	// - 3 已销毁
+	// <p>订单状态</p><ul><li>1 正常</li><li>2 隔离期</li><li>3 已销毁</li></ul>
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>源类型</p>
+	SourceType *uint64 `json:"SourceType,omitnil,omitempty" name:"SourceType"`
 }
 
 type OrderModifyObject struct {
@@ -45397,104 +45430,85 @@ func (r *RaspEventOverviewResponse) FromJsonString(s string) error {
 }
 
 type RaspLicenseList struct {
-	// 机器唯一ID
+	// <p>机器唯一ID</p>
 	QUUID *string `json:"QUUID,omitnil,omitempty" name:"QUUID"`
 
-	// 实例名称
+	// <p>实例名称</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 实例ID
+	// <p>实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 公网IP
+	// <p>公网IP</p>
 	PublicIP *string `json:"PublicIP,omitnil,omitempty" name:"PublicIP"`
 
-	// 内网IP
+	// <p>内网IP</p>
 	PrivateIP *string `json:"PrivateIP,omitnil,omitempty" name:"PrivateIP"`
 
-	// 云标签信息
+	// <p>云标签信息</p>
 	Tags []*Tags `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 防护版本信息
-	// - CriticalProtection 重保防护包
-	// - Pro 容器安全-专业版
-	// - Ultimate 主机安全-旗舰版
+	// <p>主机标签信息(仅AssetType=CWP/TCSS_HOST有值)</p>
+	CWPTags []*CWPTags `json:"CWPTags,omitnil,omitempty" name:"CWPTags"`
+
+	// <p>防护版本信息</p><ul><li>CriticalProtection 重保防护包</li><li>Pro 容器安全-专业版</li><li>Ultimate 主机安全-旗舰版</li></ul>
 	ProtectionVersion []*string `json:"ProtectionVersion,omitnil,omitempty" name:"ProtectionVersion"`
 
-	// 防护设置
-	// - 0 未配置
-	// - 1 已配置
+	// <p>防护设置</p><ul><li>0 未配置</li><li>1 已配置</li></ul>
 	ConfigurationSetting *uint64 `json:"ConfigurationSetting,omitnil,omitempty" name:"ConfigurationSetting"`
 
-	// 总开关
-	// - 0 未开启
-	// - 1已开启
+	// <p>总开关</p><ul><li>0 未开启</li><li>1已开启</li></ul>
 	Enable *uint64 `json:"Enable,omitnil,omitempty" name:"Enable"`
 
-	// 漏洞防御开关
-	// - 0 未开启
-	// - 1 开启
+	// <p>漏洞防御开关</p><ul><li>0 未开启</li><li>1 开启</li></ul>
 	VulDefEnable *uint64 `json:"VulDefEnable,omitnil,omitempty" name:"VulDefEnable"`
 
-	// 漏洞防御模式
-	// - 0 标准
-	// - 1 重保
+	// <p>漏洞防御模式</p><ul><li>0 标准</li><li>1 重保</li></ul>
 	VulDefMode *uint64 `json:"VulDefMode,omitnil,omitempty" name:"VulDefMode"`
 
-	// 漏洞防御动作
-	// - 0 仅检测
-	// - 1 检测+防御
+	// <p>漏洞防御动作</p><ul><li>0 仅检测</li><li>1 检测+防御</li></ul>
 	VulDefAction *uint64 `json:"VulDefAction,omitnil,omitempty" name:"VulDefAction"`
 
-	// 内存马防御开关
-	// - 0 未开启
-	// - 1 开启
+	// <p>内存马防御开关</p><ul><li>0 未开启</li><li>1 开启</li></ul>
 	MemShellDefEnable *uint64 `json:"MemShellDefEnable,omitnil,omitempty" name:"MemShellDefEnable"`
 
-	// 更多防护
-	// - 0 不注入会重启的进程 
-	// - 1 注入会重启的进程
+	// <p>更多防护</p><ul><li>0 不注入会重启的进程 </li><li>1 注入会重启的进程</li></ul>
 	SafeInject *uint64 `json:"SafeInject,omitnil,omitempty" name:"SafeInject"`
 
-	// 性能阈值配置开关
-	// - 0 未开启
-	// - 1 开启
+	// <p>性能阈值配置开关</p><ul><li>0 未开启</li><li>1 开启</li></ul>
 	PerformanceLimit *uint64 `json:"PerformanceLimit,omitnil,omitempty" name:"PerformanceLimit"`
 
-	// CPU阈值,取值1-99
+	// <p>CPU阈值,取值1-99</p>
 	PerformanceLimitCpu *uint64 `json:"PerformanceLimitCpu,omitnil,omitempty" name:"PerformanceLimitCpu"`
 
-	// 内存阈值,取值1-99
+	// <p>内存阈值,取值1-99</p>
 	PerformanceLimitMem *uint64 `json:"PerformanceLimitMem,omitnil,omitempty" name:"PerformanceLimitMem"`
 
-	// 内存剩余阈值
+	// <p>内存剩余阈值</p>
 	PerformanceLimitMemAmount *uint64 `json:"PerformanceLimitMemAmount,omitnil,omitempty" name:"PerformanceLimitMemAmount"`
 
-	// 插件状态
-	// - 0 使用正常
-	// - 1 存在异常
-	// - 2 未使用
+	// <p>插件状态</p><ul><li>0 使用正常</li><li>1 存在异常</li><li>2 未使用</li></ul>
 	RaspException *uint64 `json:"RaspException,omitnil,omitempty" name:"RaspException"`
 
-	// 最近更新时间
+	// <p>最近更新时间</p>
 	LatestUpdateTime *string `json:"LatestUpdateTime,omitnil,omitempty" name:"LatestUpdateTime"`
 
-	// 集群ID,仅容器资产有值
+	// <p>集群ID,仅容器资产有值</p>
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
-	// 集群名称,仅容器资产有值
+	// <p>集群名称,仅容器资产有值</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 订单信息
+	// <p>订单信息</p>
 	OrderDetail *OrderDetail `json:"OrderDetail,omitnil,omitempty" name:"OrderDetail"`
 
-	// 是否允许解绑,fasle 不允许 true 允许
+	// <p>是否允许解绑,fasle 不允许 true 允许</p>
 	IsUnBind *bool `json:"IsUnBind,omitnil,omitempty" name:"IsUnBind"`
 
-	// uuid 机器唯一ID,仅AssetType = CWP 时有值
+	// <p>uuid 机器唯一ID,仅AssetType = CWP 时有值</p>
 	UUID *string `json:"UUID,omitnil,omitempty" name:"UUID"`
 
-	// 无注入/注入失败原因
+	// <p>无注入/注入失败原因</p>
 	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
 }
 
@@ -48689,10 +48703,10 @@ type TagMachine struct {
 }
 
 type Tags struct {
-	// 标签键
+	// <p>标签键</p>
 	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
 
-	// 标签值
+	// <p>标签值</p>
 	TagValue *string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
 }
 

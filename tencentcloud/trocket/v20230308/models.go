@@ -1432,7 +1432,7 @@ type DescribeConsumerClientRequestParams struct {
 	// 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 客户端ID，从 [DescribeConsumerClientList](https://cloud.tencent.com/document/api/1493/120140) 接口中的 [ConsumerClient](https://cloud.tencent.com/document/api/1493/96031#ConsumerClient) 出参中获得。
+	// <p>客户端ID，从 <a href="https://cloud.tencent.com/document/api/1493/120140">DescribeConsumerClientList</a> 接口中的 <a href="https://cloud.tencent.com/document/api/1493/96031#ConsumerClient">ConsumerClient</a> 出参中获得。</p>
 	ClientId *string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
 
 	// 过滤查询条件列表，请在引用此参数的API说明中了解使用方法。
@@ -1454,7 +1454,7 @@ type DescribeConsumerClientRequest struct {
 	// 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 客户端ID，从 [DescribeConsumerClientList](https://cloud.tencent.com/document/api/1493/120140) 接口中的 [ConsumerClient](https://cloud.tencent.com/document/api/1493/96031#ConsumerClient) 出参中获得。
+	// <p>客户端ID，从 <a href="https://cloud.tencent.com/document/api/1493/120140">DescribeConsumerClientList</a> 接口中的 <a href="https://cloud.tencent.com/document/api/1493/96031#ConsumerClient">ConsumerClient</a> 出参中获得。</p>
 	ClientId *string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
 
 	// 过滤查询条件列表，请在引用此参数的API说明中了解使用方法。
@@ -1496,13 +1496,16 @@ func (r *DescribeConsumerClientRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeConsumerClientResponseParams struct {
-	// 客户端详情
+	// <p>客户端详情</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Client *ConsumerClient `json:"Client,omitnil,omitempty" name:"Client"`
 
-	// 主题消费信息
+	// <p>主题消费信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopicList []*TopicConsumeStats `json:"TopicList,omitnil,omitempty" name:"TopicList"`
+
+	// <p>订阅主题总数</p>
+	TopicTotalCount *int64 `json:"TopicTotalCount,omitnil,omitempty" name:"TopicTotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -2711,6 +2714,10 @@ type DescribeMessageResponseParams struct {
 	// <p>消息消费情况列表总条数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MessageTracksCount *int64 `json:"MessageTracksCount,omitnil,omitempty" name:"MessageTracksCount"`
+
+	// <p>5.x 时间轮定时消息状态，仅在查询定时消息（命中 RMQ_SYS_WHEEL_TIMER）时返回。枚举值：PENDING（未到期）、DELIVERED（已到期投递）、RECALLED（已撤回）、NOT_FOUND（消息不存在）、UNSUPPORTED（该消息类型不支持状态查询，如 4.x DelayLevel 延迟消息）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DelayMessageStatus *string `json:"DelayMessageStatus,omitnil,omitempty" name:"DelayMessageStatus"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

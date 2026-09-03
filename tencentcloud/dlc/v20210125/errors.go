@@ -860,6 +860,9 @@ const (
 	// 子用户无权查看引擎监控。
 	UNAUTHORIZEDOPERATION_MONITORCOMPUTINGENGINE = "UnauthorizedOperation.MonitorComputingEngine"
 
+	// 无引擎cam权限
+	UNAUTHORIZEDOPERATION_NOENGINECAMPERMISSIONS = "UnauthorizedOperation.NoEngineCamPermissions"
+
 	// 没有支付权限。
 	UNAUTHORIZEDOPERATION_NOPAYMENTAUTHORITY = "UnauthorizedOperation.NoPaymentAuthority"
 

@@ -467,6 +467,83 @@ func (r *AttachNodesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type BindClusterVpcRequestParams struct {
+	// <p>集群ID。</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// <p>私有网络ID，形如<code>vpc-xxx</code>。可通过调用<a href="https://cloud.tencent.com/document/api/215/15778">DescribeVpcs</a>获取。</p>
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// <p>私有网络子网ID，形如<code>subnet-xxx</code>。可通过调用<a href="https://cloud.tencent.com/document/api/215/15784">DescribeSubnets</a>获取。</p>
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+}
+
+type BindClusterVpcRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>集群ID。</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// <p>私有网络ID，形如<code>vpc-xxx</code>。可通过调用<a href="https://cloud.tencent.com/document/api/215/15778">DescribeVpcs</a>获取。</p>
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// <p>私有网络子网ID，形如<code>subnet-xxx</code>。可通过调用<a href="https://cloud.tencent.com/document/api/215/15784">DescribeSubnets</a>获取。</p>
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+}
+
+func (r *BindClusterVpcRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BindClusterVpcRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "VpcId")
+	delete(f, "SubnetId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BindClusterVpcRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BindClusterVpcResponseParams struct {
+	// <p>集群ID。</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// <p>绑定的私有网络ID。</p>
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// <p>绑定的子网ID。</p>
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type BindClusterVpcResponse struct {
+	*tchttp.BaseResponse
+	Response *BindClusterVpcResponseParams `json:"Response"`
+}
+
+func (r *BindClusterVpcResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BindClusterVpcResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CFSOption struct {
 	// 文件系统本地挂载路径。
 	LocalPath *string `json:"LocalPath,omitnil,omitempty" name:"LocalPath"`
@@ -547,6 +624,10 @@ type ClusterActivity struct {
 
 	// 集群活动结束时间。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 队列名称。集群级活动（如创建/删除集群）此字段为空，队列级活动（如扩容/缩容）为对应队列名。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
 }
 
 type ClusterOverview struct {
@@ -1609,6 +1690,9 @@ type DescribeClusterActivitiesRequestParams struct {
 
 	// <p>返回数量，默认为20，最大值为100。关于<code>Limit</code>的更进一步介绍请参考 API <a href="https://cloud.tencent.com/document/api/213/15688">简介</a>中的相关小节。</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <li><strong>queue-name</strong></li> <p style="padding-left: 30px;">按照【<strong>队列名称</strong>】进行过滤。队列名称形如：compute。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">每次请求的<code>Filters</code>的上限为10，<code>Filter.Values</code>的上限为5。</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeClusterActivitiesRequest struct {
@@ -1622,6 +1706,9 @@ type DescribeClusterActivitiesRequest struct {
 
 	// <p>返回数量，默认为20，最大值为100。关于<code>Limit</code>的更进一步介绍请参考 API <a href="https://cloud.tencent.com/document/api/213/15688">简介</a>中的相关小节。</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <li><strong>queue-name</strong></li> <p style="padding-left: 30px;">按照【<strong>队列名称</strong>】进行过滤。队列名称形如：compute。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">每次请求的<code>Filters</code>的上限为10，<code>Filter.Values</code>的上限为5。</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 func (r *DescribeClusterActivitiesRequest) ToJsonString() string {
@@ -1639,6 +1726,7 @@ func (r *DescribeClusterActivitiesRequest) FromJsonString(s string) error {
 	delete(f, "ClusterId")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "Filters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeClusterActivitiesRequest has unknown keys!", "")
 	}
@@ -1670,6 +1758,106 @@ func (r *DescribeClusterActivitiesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeClusterActivitiesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeClusterDedicatedProxyRequestParams struct {
+	// <p>集群ID。</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+}
+
+type DescribeClusterDedicatedProxyRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>集群ID。</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+}
+
+func (r *DescribeClusterDedicatedProxyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClusterDedicatedProxyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeClusterDedicatedProxyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeClusterDedicatedProxyResponseParams struct {
+	// <p>代理是否已开通。true表示已开通，false表示从未开通。</p>
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// <p>终端节点ID。未开通代理时为空。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndPointId *string `json:"EndPointId,omitnil,omitempty" name:"EndPointId"`
+
+	// <p>终端节点VIP地址。未开通代理时为空。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndPointVip *string `json:"EndPointVip,omitnil,omitempty" name:"EndPointVip"`
+
+	// <p>终端节点是否就绪。true表示已就绪可用，false表示未就绪或未开通。</p>
+	EndPointReady *bool `json:"EndPointReady,omitnil,omitempty" name:"EndPointReady"`
+
+	// <p>终端节点状态。取值范围：<li>ACTIVE：已激活</li><li>BINDCHANGE：变更中</li><li>BINDINGCREATE：创建中</li><li>BINDINGDELETE：删除中</li><li>ABNORMAL：异常</li><li>UNKNOWN：未知</li><li>ASSUME_ROLE_FAILED：授权失败</li></p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndPointStatus *string `json:"EndPointStatus,omitnil,omitempty" name:"EndPointStatus"`
+
+	// <p>上次同步的终端节点状态（DB记录值）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastKnownStatus *string `json:"LastKnownStatus,omitnil,omitempty" name:"LastKnownStatus"`
+
+	// <p>终端节点服务ID。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndPointServiceId *string `json:"EndPointServiceId,omitnil,omitempty" name:"EndPointServiceId"`
+
+	// <p>私有网络ID。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// <p>子网ID。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// <p>代理创建时间。未开通时为空。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>上次状态同步时间。cron未同步过时为null。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastSyncTime *string `json:"LastSyncTime,omitnil,omitempty" name:"LastSyncTime"`
+
+	// <p>本次实时查询时间。未开通时为空。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RealtimeQueryTime *string `json:"RealtimeQueryTime,omitnil,omitempty" name:"RealtimeQueryTime"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeClusterDedicatedProxyResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeClusterDedicatedProxyResponseParams `json:"Response"`
+}
+
+func (r *DescribeClusterDedicatedProxyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClusterDedicatedProxyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2644,12 +2832,152 @@ func (r *DetachNodesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DisableClusterDedicatedProxyRequestParams struct {
+	// <p>集群ID。</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+}
+
+type DisableClusterDedicatedProxyRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>集群ID。</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+}
+
+func (r *DisableClusterDedicatedProxyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DisableClusterDedicatedProxyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DisableClusterDedicatedProxyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DisableClusterDedicatedProxyResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DisableClusterDedicatedProxyResponse struct {
+	*tchttp.BaseResponse
+	Response *DisableClusterDedicatedProxyResponseParams `json:"Response"`
+}
+
+func (r *DisableClusterDedicatedProxyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DisableClusterDedicatedProxyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Docker struct {
 	// 容器镜像地址
 	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
 
 	// 容器运行参数
 	RunArgs []*string `json:"RunArgs,omitnil,omitempty" name:"RunArgs"`
+}
+
+// Predefined struct for user
+type EnableClusterDedicatedProxyRequestParams struct {
+	// <p>集群ID。</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// <p>私有网络ID，形如<code>vpc-xxx</code>。可通过调用<a href="https://cloud.tencent.com/document/api/215/15778">DescribeVpcs</a>获取。若不指定，则使用集群已绑定的VPC。</p>
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// <p>私有网络子网ID，形如<code>subnet-xxx</code>。可通过调用<a href="https://cloud.tencent.com/document/api/215/15784">DescribeSubnets</a>获取。与VpcId需同时指定或同时不指定。</p>
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+}
+
+type EnableClusterDedicatedProxyRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>集群ID。</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// <p>私有网络ID，形如<code>vpc-xxx</code>。可通过调用<a href="https://cloud.tencent.com/document/api/215/15778">DescribeVpcs</a>获取。若不指定，则使用集群已绑定的VPC。</p>
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// <p>私有网络子网ID，形如<code>subnet-xxx</code>。可通过调用<a href="https://cloud.tencent.com/document/api/215/15784">DescribeSubnets</a>获取。与VpcId需同时指定或同时不指定。</p>
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+}
+
+func (r *EnableClusterDedicatedProxyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *EnableClusterDedicatedProxyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "VpcId")
+	delete(f, "SubnetId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EnableClusterDedicatedProxyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type EnableClusterDedicatedProxyResponseParams struct {
+	// <p>终端节点ID。</p>
+	EndPointId *string `json:"EndPointId,omitnil,omitempty" name:"EndPointId"`
+
+	// <p>终端节点VIP地址。</p>
+	EndPointVip *string `json:"EndPointVip,omitnil,omitempty" name:"EndPointVip"`
+
+	// <p>终端节点是否就绪。true表示已就绪，false表示未就绪。</p>
+	EndPointReady *bool `json:"EndPointReady,omitnil,omitempty" name:"EndPointReady"`
+
+	// <p>终端节点状态。取值范围：<li>ACTIVE：已激活</li><li>BINDCHANGE：变更中</li><li>BINDINGCREATE：创建中</li><li>BINDINGDELETE：删除中</li></p>
+	EndPointStatus *string `json:"EndPointStatus,omitnil,omitempty" name:"EndPointStatus"`
+
+	// <p>私有网络ID。</p>
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// <p>子网ID。</p>
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type EnableClusterDedicatedProxyResponse struct {
+	*tchttp.BaseResponse
+	Response *EnableClusterDedicatedProxyResponseParams `json:"Response"`
+}
+
+func (r *EnableClusterDedicatedProxyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *EnableClusterDedicatedProxyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type EnhancedService struct {
@@ -2763,6 +3091,190 @@ type Filter struct {
 
 	// 字段的过滤值。
 	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
+}
+
+// Predefined struct for user
+type GenerateRegisterCodeRequestParams struct {
+	// <p>集群ID。</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// <p>队列名称。</p>
+	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
+
+	// <p>指定生成的注册码的过期时间, 单位为秒</p><p>取值范围：[1, 604800]</p><p>默认值：604800</p>
+	ExpireSeconds *uint64 `json:"ExpireSeconds,omitnil,omitempty" name:"ExpireSeconds"`
+}
+
+type GenerateRegisterCodeRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>集群ID。</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// <p>队列名称。</p>
+	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
+
+	// <p>指定生成的注册码的过期时间, 单位为秒</p><p>取值范围：[1, 604800]</p><p>默认值：604800</p>
+	ExpireSeconds *uint64 `json:"ExpireSeconds,omitnil,omitempty" name:"ExpireSeconds"`
+}
+
+func (r *GenerateRegisterCodeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GenerateRegisterCodeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "QueueName")
+	delete(f, "ExpireSeconds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GenerateRegisterCodeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GenerateRegisterCodeResponseParams struct {
+	// <p>集群队列的注册码,用于机器注册进入队列时使用</p><p>默认值：无</p>
+	RegisterCode *string `json:"RegisterCode,omitnil,omitempty" name:"RegisterCode"`
+
+	// <p>注册码的过期时间, unix时间戳格式</p>
+	ExpireAt *uint64 `json:"ExpireAt,omitnil,omitempty" name:"ExpireAt"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GenerateRegisterCodeResponse struct {
+	*tchttp.BaseResponse
+	Response *GenerateRegisterCodeResponseParams `json:"Response"`
+}
+
+func (r *GenerateRegisterCodeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GenerateRegisterCodeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GenerateRegisterCommandRequestParams struct {
+	// <p>IDC集群ID，形如<code>hpc-xxxxxxxx</code>。</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// <p>是否通过内网专线代理连接。</p><li>true：IDC机器需经PrivateLink代理接入</li><li>false：IDC机器可直连（默认值）</li><p></p>
+	Proxy *bool `json:"Proxy,omitnil,omitempty" name:"Proxy"`
+
+	// <p>私有网络ID，形如<code>vpc-xxx</code>。仅当<code>Proxy=true</code>且集群未绑定VPC时必填。与SubnetId需同时指定或同时不指定。</p>
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// <p>私有网络子网ID，形如<code>subnet-xxx</code>。仅当<code>Proxy=true</code>且集群未绑定VPC时必填。与VpcId需同时指定或同时不指定。</p>
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// <p>注册码绑定的队列名称。不指定时由系统取集群默认队列。</p>
+	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
+
+	// <p>注册码有效期，单位：秒。默认值为604800（7天）。</p>
+	ExpireSeconds *int64 `json:"ExpireSeconds,omitnil,omitempty" name:"ExpireSeconds"`
+}
+
+type GenerateRegisterCommandRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>IDC集群ID，形如<code>hpc-xxxxxxxx</code>。</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// <p>是否通过内网专线代理连接。</p><li>true：IDC机器需经PrivateLink代理接入</li><li>false：IDC机器可直连（默认值）</li><p></p>
+	Proxy *bool `json:"Proxy,omitnil,omitempty" name:"Proxy"`
+
+	// <p>私有网络ID，形如<code>vpc-xxx</code>。仅当<code>Proxy=true</code>且集群未绑定VPC时必填。与SubnetId需同时指定或同时不指定。</p>
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// <p>私有网络子网ID，形如<code>subnet-xxx</code>。仅当<code>Proxy=true</code>且集群未绑定VPC时必填。与VpcId需同时指定或同时不指定。</p>
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// <p>注册码绑定的队列名称。不指定时由系统取集群默认队列。</p>
+	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
+
+	// <p>注册码有效期，单位：秒。默认值为604800（7天）。</p>
+	ExpireSeconds *int64 `json:"ExpireSeconds,omitnil,omitempty" name:"ExpireSeconds"`
+}
+
+func (r *GenerateRegisterCommandRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GenerateRegisterCommandRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "Proxy")
+	delete(f, "VpcId")
+	delete(f, "SubnetId")
+	delete(f, "QueueName")
+	delete(f, "ExpireSeconds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GenerateRegisterCommandRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GenerateRegisterCommandResponseParams struct {
+	// <p>渲染好的节点注册命令，可直接在IDC机器上以root身份执行。</p>
+	RegisterCommand *string `json:"RegisterCommand,omitnil,omitempty" name:"RegisterCommand"`
+
+	// <p>节点注册码。作为不透明凭证使用，请妥善保管，仅在节点注册纳管时传入。</p>
+	RegisterCode *string `json:"RegisterCode,omitnil,omitempty" name:"RegisterCode"`
+
+	// <p>注册码到期的Unix时间戳，单位：秒。</p>
+	ExpireAt *int64 `json:"ExpireAt,omitnil,omitempty" name:"ExpireAt"`
+
+	// <p>回显本次是否走内网专线代理。</p>
+	Proxy *bool `json:"Proxy,omitnil,omitempty" name:"Proxy"`
+
+	// <p>代理终端节点VIP地址。当<code>Proxy=true</code>且终端节点就绪时非空。</p>
+	EndPointVip *string `json:"EndPointVip,omitnil,omitempty" name:"EndPointVip"`
+
+	// <p>终端节点状态。取值范围：</p><li>ACTIVE：已激活</li><li>BINDCHANGE：变更中</li><li>BINDINGCREATE：创建中</li><li>BINDINGDELETE：删除中</li><p></p>
+	EndPointStatus *string `json:"EndPointStatus,omitnil,omitempty" name:"EndPointStatus"`
+
+	// <p>回显集群ID。</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GenerateRegisterCommandResponse struct {
+	*tchttp.BaseResponse
+	Response *GenerateRegisterCommandResponseParams `json:"Response"`
+}
+
+func (r *GenerateRegisterCommandResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GenerateRegisterCommandResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type GooseFSOption struct {

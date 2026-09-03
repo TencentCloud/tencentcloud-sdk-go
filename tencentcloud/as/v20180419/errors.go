@@ -104,6 +104,9 @@ const (
 	// 部分参数存在互斥应该删掉。
 	INVALIDPARAMETER_PARAMETERMUSTBEDELETED = "InvalidParameter.ParameterMustBeDeleted"
 
+	// NetworkInterfaces 不支持与基础网络、IPv6 或竞价实例计费模式组合使用。
+	INVALIDPARAMETERCOMBINATION_NETWORKINTERFACESCONFLICT = "InvalidParameterCombination.NetworkInterfacesConflict"
+
 	// 指定的两个参数冲突，不能同时存在。
 	INVALIDPARAMETERCONFLICT = "InvalidParameterConflict"
 
@@ -259,6 +262,12 @@ const (
 
 	// 当前账户在带宽包模式中必须填写带宽包ID参数。
 	INVALIDPARAMETERVALUE_MISSINGBANDWIDTHPACKAGEID = "InvalidParameterValue.MissingBandwidthPackageId"
+
+	// 指定的多网卡参数 NetworkInterfaces 不合法。
+	INVALIDPARAMETERVALUE_NETWORKINTERFACESINVALID = "InvalidParameterValue.NetworkInterfacesInvalid"
+
+	// NetworkInterfaces 的网卡数量超过上限 17。
+	INVALIDPARAMETERVALUE_NETWORKINTERFACESLIMITEXCEEDED = "InvalidParameterValue.NetworkInterfacesLimitExceeded"
 
 	// 无资源权限。
 	INVALIDPARAMETERVALUE_NORESOURCEPERMISSION = "InvalidParameterValue.NoResourcePermission"

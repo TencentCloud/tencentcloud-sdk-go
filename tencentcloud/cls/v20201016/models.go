@@ -695,20 +695,20 @@ type CallBackInfo struct {
 
 // Predefined struct for user
 type CancelRebuildIndexTaskRequestParams struct {
-	// 日志主题ID
+	// <p>日志主题ID</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/614/56454">DescribeTopics</a></p>
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// 索引重建任务ID
+	// <p>索引重建任务ID</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/614/127535">DescribeRebuildIndexTasks</a></p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
 type CancelRebuildIndexTaskRequest struct {
 	*tchttp.BaseRequest
 	
-	// 日志主题ID
+	// <p>日志主题ID</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/614/56454">DescribeTopics</a></p>
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// 索引重建任务ID
+	// <p>索引重建任务ID</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/614/127535">DescribeRebuildIndexTasks</a></p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
@@ -5550,73 +5550,75 @@ func (r *CreateRecordingRuleYamlTaskResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateRemoteWriteTaskRequestParams struct {
-	// 日志主题 ID
+	// <p>日志主题 ID</p>
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// 任务名称
+	// <p>任务名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 目标服务名称
+	// <p>目标服务名称</p>
 	Target *string `json:"Target,omitnil,omitempty" name:"Target"`
 
-	// 目标地址
+	// <p>目标地址</p>
 	RemoteWriteURL *string `json:"RemoteWriteURL,omitnil,omitempty" name:"RemoteWriteURL"`
 
-	// 鉴权类型
-	// 0: 无鉴权
-	// 1: basic_auth 
-	// 2: token
+	// <p>鉴权类型<br>0: 无鉴权<br>1: basic_auth<br>2: token</p>
 	AuthType *uint64 `json:"AuthType,omitnil,omitempty" name:"AuthType"`
 
-	// 网络类型： 1 内网 2外网
+	// <p>网络类型： 1 内网 2外网</p>
 	NetType *uint64 `json:"NetType,omitnil,omitempty" name:"NetType"`
 
-	// 私有网络id
+	// <p>私有网络id</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 鉴权信息
+	// <p>鉴权信息</p>
 	AuthInfo *RemoteWriteAuthInfo `json:"AuthInfo,omitnil,omitempty" name:"AuthInfo"`
 
-	// 后端服务类型
-	// 0 CVM
-	// 1025 CLB
+	// <p>后端服务类型<br>0 CVM<br>1025 CLB</p>
 	VirtualGatewayType *int64 `json:"VirtualGatewayType,omitnil,omitempty" name:"VirtualGatewayType"`
+
+	// <p>云时序数据库实例ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>是否开启投递服务日志。1：关闭，2：开启。 默认值：2</p>
+	HasServicesLog *uint64 `json:"HasServicesLog,omitnil,omitempty" name:"HasServicesLog"`
 }
 
 type CreateRemoteWriteTaskRequest struct {
 	*tchttp.BaseRequest
 	
-	// 日志主题 ID
+	// <p>日志主题 ID</p>
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// 任务名称
+	// <p>任务名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 目标服务名称
+	// <p>目标服务名称</p>
 	Target *string `json:"Target,omitnil,omitempty" name:"Target"`
 
-	// 目标地址
+	// <p>目标地址</p>
 	RemoteWriteURL *string `json:"RemoteWriteURL,omitnil,omitempty" name:"RemoteWriteURL"`
 
-	// 鉴权类型
-	// 0: 无鉴权
-	// 1: basic_auth 
-	// 2: token
+	// <p>鉴权类型<br>0: 无鉴权<br>1: basic_auth<br>2: token</p>
 	AuthType *uint64 `json:"AuthType,omitnil,omitempty" name:"AuthType"`
 
-	// 网络类型： 1 内网 2外网
+	// <p>网络类型： 1 内网 2外网</p>
 	NetType *uint64 `json:"NetType,omitnil,omitempty" name:"NetType"`
 
-	// 私有网络id
+	// <p>私有网络id</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 鉴权信息
+	// <p>鉴权信息</p>
 	AuthInfo *RemoteWriteAuthInfo `json:"AuthInfo,omitnil,omitempty" name:"AuthInfo"`
 
-	// 后端服务类型
-	// 0 CVM
-	// 1025 CLB
+	// <p>后端服务类型<br>0 CVM<br>1025 CLB</p>
 	VirtualGatewayType *int64 `json:"VirtualGatewayType,omitnil,omitempty" name:"VirtualGatewayType"`
+
+	// <p>云时序数据库实例ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>是否开启投递服务日志。1：关闭，2：开启。 默认值：2</p>
+	HasServicesLog *uint64 `json:"HasServicesLog,omitnil,omitempty" name:"HasServicesLog"`
 }
 
 func (r *CreateRemoteWriteTaskRequest) ToJsonString() string {
@@ -5640,6 +5642,8 @@ func (r *CreateRemoteWriteTaskRequest) FromJsonString(s string) error {
 	delete(f, "VpcId")
 	delete(f, "AuthInfo")
 	delete(f, "VirtualGatewayType")
+	delete(f, "InstanceId")
+	delete(f, "HasServicesLog")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRemoteWriteTaskRequest has unknown keys!", "")
 	}
@@ -5648,7 +5652,7 @@ func (r *CreateRemoteWriteTaskRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateRemoteWriteTaskResponseParams struct {
-	// remoteWrite任务id
+	// <p>remoteWrite任务id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
@@ -12639,84 +12643,62 @@ func (r *DescribeKafkaRechargesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeLogContextRequestParams struct {
-	// 要查询的日志主题Id。
-	// - 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
-	// - 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。
+	// <p>要查询的日志主题Id。</p><ul><li>通过 <a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a> 获取日志主题Id。</li><li>通过 <a href="https://cloud.tencent.com/document/product/614/56456">创建日志主题</a> 获取日志主题Id。</li></ul>
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// 日志时间,  即 [检索分析日志](https://cloud.tencent.com/document/product/614/56447) 接口返回信息中Results结构体中的Time，需按照 UTC+8 时区将该毫秒级Unix时间戳转换为 YYYY-mm-dd HH:MM:SS.FFF 格式的字符串。
+	// <p>日志时间,  即 <a href="https://cloud.tencent.com/document/product/614/56447">检索分析日志</a> 接口返回信息中Results结构体中的Time，需按照 UTC+8 时区将该毫秒级Unix时间戳转换为 YYYY-mm-dd HH:MM:SS.FFF 格式的字符串。</p>
 	BTime *string `json:"BTime,omitnil,omitempty" name:"BTime"`
 
-	// 日志包序号，即 [检索分析日志](https://cloud.tencent.com/document/product/614/56447) 接口返回信息中Results结构体中的PkgId。
+	// <p>日志包序号，即 <a href="https://cloud.tencent.com/document/product/614/56447">检索分析日志</a> 接口返回信息中Results结构体中的PkgId。</p>
 	PkgId *string `json:"PkgId,omitnil,omitempty" name:"PkgId"`
 
-	// 日志包内一条日志的序号，即 [检索分析日志](https://cloud.tencent.com/document/product/614/56447) 接口返回信息中Results结构中的PkgLogId。
+	// <p>日志包内一条日志的序号，即 <a href="https://cloud.tencent.com/document/product/614/56447">检索分析日志</a> 接口返回信息中Results结构中的PkgLogId。</p>
 	PkgLogId *int64 `json:"PkgLogId,omitnil,omitempty" name:"PkgLogId"`
 
-	// 前${PrevLogs}条日志，默认值10。
+	// <p>前${PrevLogs}条日志，默认值10，最大100。</p>
 	PrevLogs *int64 `json:"PrevLogs,omitnil,omitempty" name:"PrevLogs"`
 
-	// 后${NextLogs}条日志，默认值10。
+	// <p>后${NextLogs}条日志，默认值10，最大100。</p>
 	NextLogs *int64 `json:"NextLogs,omitnil,omitempty" name:"NextLogs"`
 
-	// 检索语句，对日志上下文进行过滤，最大长度为12KB
-	// 语句由 <a href="https://cloud.tencent.com/document/product/614/47044" target="_blank">[检索条件]</a>构成，不支持SQL语句
+	// <p>检索语句，对日志上下文进行过滤，最大长度为12KB<br>语句由 <a href="https://cloud.tencent.com/document/product/614/47044" target="_blank">[检索条件]</a>构成，不支持SQL语句</p>
 	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 
-	// 上下文检索的开始时间，单位：毫秒级时间戳
-	// 注意：
-	// - From为空时，表示上下文检索的开始时间不做限制
-	// - From和To非空时，From < To
-	// - 暂时仅支持上海 / 弗吉尼亚/ 新加坡地域
+	// <p>上下文检索的开始时间，单位：毫秒级时间戳<br>注意：</p><ul><li>From为空时，表示上下文检索的开始时间不做限制</li><li>From和To非空时，From &lt; To</li></ul>
 	From *uint64 `json:"From,omitnil,omitempty" name:"From"`
 
-	// 上下文检索的结束时间，单位：毫秒级时间戳。
-	// 注意：
-	// - To为空时，表示上下文检索的结束时间不做限制
-	// - From和To非空时，From < To
-	// - 暂时仅支持上海 / 弗吉尼亚/ 新加坡地域
+	// <p>上下文检索的结束时间，单位：毫秒级时间戳。<br>注意：</p><ul><li>To为空时，表示上下文检索的结束时间不做限制</li><li>From和To非空时，From &lt; To</li></ul>
 	To *uint64 `json:"To,omitnil,omitempty" name:"To"`
 }
 
 type DescribeLogContextRequest struct {
 	*tchttp.BaseRequest
 	
-	// 要查询的日志主题Id。
-	// - 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
-	// - 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。
+	// <p>要查询的日志主题Id。</p><ul><li>通过 <a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a> 获取日志主题Id。</li><li>通过 <a href="https://cloud.tencent.com/document/product/614/56456">创建日志主题</a> 获取日志主题Id。</li></ul>
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// 日志时间,  即 [检索分析日志](https://cloud.tencent.com/document/product/614/56447) 接口返回信息中Results结构体中的Time，需按照 UTC+8 时区将该毫秒级Unix时间戳转换为 YYYY-mm-dd HH:MM:SS.FFF 格式的字符串。
+	// <p>日志时间,  即 <a href="https://cloud.tencent.com/document/product/614/56447">检索分析日志</a> 接口返回信息中Results结构体中的Time，需按照 UTC+8 时区将该毫秒级Unix时间戳转换为 YYYY-mm-dd HH:MM:SS.FFF 格式的字符串。</p>
 	BTime *string `json:"BTime,omitnil,omitempty" name:"BTime"`
 
-	// 日志包序号，即 [检索分析日志](https://cloud.tencent.com/document/product/614/56447) 接口返回信息中Results结构体中的PkgId。
+	// <p>日志包序号，即 <a href="https://cloud.tencent.com/document/product/614/56447">检索分析日志</a> 接口返回信息中Results结构体中的PkgId。</p>
 	PkgId *string `json:"PkgId,omitnil,omitempty" name:"PkgId"`
 
-	// 日志包内一条日志的序号，即 [检索分析日志](https://cloud.tencent.com/document/product/614/56447) 接口返回信息中Results结构中的PkgLogId。
+	// <p>日志包内一条日志的序号，即 <a href="https://cloud.tencent.com/document/product/614/56447">检索分析日志</a> 接口返回信息中Results结构中的PkgLogId。</p>
 	PkgLogId *int64 `json:"PkgLogId,omitnil,omitempty" name:"PkgLogId"`
 
-	// 前${PrevLogs}条日志，默认值10。
+	// <p>前${PrevLogs}条日志，默认值10，最大100。</p>
 	PrevLogs *int64 `json:"PrevLogs,omitnil,omitempty" name:"PrevLogs"`
 
-	// 后${NextLogs}条日志，默认值10。
+	// <p>后${NextLogs}条日志，默认值10，最大100。</p>
 	NextLogs *int64 `json:"NextLogs,omitnil,omitempty" name:"NextLogs"`
 
-	// 检索语句，对日志上下文进行过滤，最大长度为12KB
-	// 语句由 <a href="https://cloud.tencent.com/document/product/614/47044" target="_blank">[检索条件]</a>构成，不支持SQL语句
+	// <p>检索语句，对日志上下文进行过滤，最大长度为12KB<br>语句由 <a href="https://cloud.tencent.com/document/product/614/47044" target="_blank">[检索条件]</a>构成，不支持SQL语句</p>
 	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 
-	// 上下文检索的开始时间，单位：毫秒级时间戳
-	// 注意：
-	// - From为空时，表示上下文检索的开始时间不做限制
-	// - From和To非空时，From < To
-	// - 暂时仅支持上海 / 弗吉尼亚/ 新加坡地域
+	// <p>上下文检索的开始时间，单位：毫秒级时间戳<br>注意：</p><ul><li>From为空时，表示上下文检索的开始时间不做限制</li><li>From和To非空时，From &lt; To</li></ul>
 	From *uint64 `json:"From,omitnil,omitempty" name:"From"`
 
-	// 上下文检索的结束时间，单位：毫秒级时间戳。
-	// 注意：
-	// - To为空时，表示上下文检索的结束时间不做限制
-	// - From和To非空时，From < To
-	// - 暂时仅支持上海 / 弗吉尼亚/ 新加坡地域
+	// <p>上下文检索的结束时间，单位：毫秒级时间戳。<br>注意：</p><ul><li>To为空时，表示上下文检索的结束时间不做限制</li><li>From和To非空时，From &lt; To</li></ul>
 	To *uint64 `json:"To,omitnil,omitempty" name:"To"`
 }
 
@@ -12749,13 +12731,13 @@ func (r *DescribeLogContextRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeLogContextResponseParams struct {
-	// 日志上下文信息集合
+	// <p>日志上下文信息集合</p>
 	LogContextInfos []*LogContextInfo `json:"LogContextInfos,omitnil,omitempty" name:"LogContextInfos"`
 
-	// 上文日志是否已经返回完成（当PrevOver为false，表示有上文日志还未全部返回）。
+	// <p>上文日志是否已经返回完成（当PrevOver为false，表示有上文日志还未全部返回）。</p>
 	PrevOver *bool `json:"PrevOver,omitnil,omitempty" name:"PrevOver"`
 
-	// 下文日志是否已经返回完成（当NextOver为false，表示有下文日志还未全部返回）。
+	// <p>下文日志是否已经返回完成（当NextOver为false，表示有下文日志还未全部返回）。</p>
 	NextOver *bool `json:"NextOver,omitnil,omitempty" name:"NextOver"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -20532,83 +20514,87 @@ func (r *ModifyRecordingRuleYamlTaskResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyRemoteWriteTaskRequestParams struct {
-	// 任务id
+	// <p>任务id</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 日志主题id
+	// <p>日志主题id</p>
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// 任务状态
-	// 0 关闭 1 开启
+	// <p>任务状态<br>0 关闭 1 开启</p>
 	Enable *uint64 `json:"Enable,omitnil,omitempty" name:"Enable"`
 
-	// RemoteWrite任务名称
+	// <p>RemoteWrite任务名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 1 内网 2外网
+	// <p>1 内网 2外网</p>
 	NetType *uint64 `json:"NetType,omitnil,omitempty" name:"NetType"`
 
-	// 私有网络id
+	// <p>私有网络id</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 目标服务名称
+	// <p>目标服务名称</p>
 	Target *string `json:"Target,omitnil,omitempty" name:"Target"`
 
-	// 目标地址
+	// <p>目标地址</p>
 	RemoteWriteURL *string `json:"RemoteWriteURL,omitnil,omitempty" name:"RemoteWriteURL"`
 
-	// 0: 无鉴权 1: basic_auth 2: token	
+	// <p>0: 无鉴权 1: basic_auth 2: token</p>
 	AuthType *uint64 `json:"AuthType,omitnil,omitempty" name:"AuthType"`
 
-	// 鉴权信息
+	// <p>鉴权信息</p>
 	AuthInfo *RemoteWriteAuthInfo `json:"AuthInfo,omitnil,omitempty" name:"AuthInfo"`
 
-	// 后端服务类型
-	// -1 没有
-	// 0 CVM
-	// 1025 CLB
+	// <p>后端服务类型<br>-1 没有<br>0 CVM<br>1025 CLB</p>
 	VirtualGatewayType *int64 `json:"VirtualGatewayType,omitnil,omitempty" name:"VirtualGatewayType"`
+
+	// <p>云时序数据库实例ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>是否开启投递服务日志。1：关闭，2：开启。</p>
+	HasServicesLog *uint64 `json:"HasServicesLog,omitnil,omitempty" name:"HasServicesLog"`
 }
 
 type ModifyRemoteWriteTaskRequest struct {
 	*tchttp.BaseRequest
 	
-	// 任务id
+	// <p>任务id</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 日志主题id
+	// <p>日志主题id</p>
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// 任务状态
-	// 0 关闭 1 开启
+	// <p>任务状态<br>0 关闭 1 开启</p>
 	Enable *uint64 `json:"Enable,omitnil,omitempty" name:"Enable"`
 
-	// RemoteWrite任务名称
+	// <p>RemoteWrite任务名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 1 内网 2外网
+	// <p>1 内网 2外网</p>
 	NetType *uint64 `json:"NetType,omitnil,omitempty" name:"NetType"`
 
-	// 私有网络id
+	// <p>私有网络id</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 目标服务名称
+	// <p>目标服务名称</p>
 	Target *string `json:"Target,omitnil,omitempty" name:"Target"`
 
-	// 目标地址
+	// <p>目标地址</p>
 	RemoteWriteURL *string `json:"RemoteWriteURL,omitnil,omitempty" name:"RemoteWriteURL"`
 
-	// 0: 无鉴权 1: basic_auth 2: token	
+	// <p>0: 无鉴权 1: basic_auth 2: token</p>
 	AuthType *uint64 `json:"AuthType,omitnil,omitempty" name:"AuthType"`
 
-	// 鉴权信息
+	// <p>鉴权信息</p>
 	AuthInfo *RemoteWriteAuthInfo `json:"AuthInfo,omitnil,omitempty" name:"AuthInfo"`
 
-	// 后端服务类型
-	// -1 没有
-	// 0 CVM
-	// 1025 CLB
+	// <p>后端服务类型<br>-1 没有<br>0 CVM<br>1025 CLB</p>
 	VirtualGatewayType *int64 `json:"VirtualGatewayType,omitnil,omitempty" name:"VirtualGatewayType"`
+
+	// <p>云时序数据库实例ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>是否开启投递服务日志。1：关闭，2：开启。</p>
+	HasServicesLog *uint64 `json:"HasServicesLog,omitnil,omitempty" name:"HasServicesLog"`
 }
 
 func (r *ModifyRemoteWriteTaskRequest) ToJsonString() string {
@@ -20634,6 +20620,8 @@ func (r *ModifyRemoteWriteTaskRequest) FromJsonString(s string) error {
 	delete(f, "AuthType")
 	delete(f, "AuthInfo")
 	delete(f, "VirtualGatewayType")
+	delete(f, "InstanceId")
+	delete(f, "HasServicesLog")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRemoteWriteTaskRequest has unknown keys!", "")
 	}
@@ -22756,71 +22744,73 @@ type RemoteWriteAuthInfo struct {
 }
 
 type RemoteWriteInfo struct {
-	// 任务id
+	// <p>任务id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 日志主题ID
+	// <p>日志主题ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// Remote Write任务名称
+	// <p>Remote Write任务名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 网络类型
-	// 1: 内网
-	// 2:外网
+	// <p>网络类型<br>1: 内网<br>2:外网</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NetType *uint64 `json:"NetType,omitnil,omitempty" name:"NetType"`
 
-	// 私有网络id
+	// <p>私有网络id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 任务运行状态
-	// 1: 运行中
-	// 2:暂停
-	// 3: 失败
+	// <p>任务运行状态<br>1: 运行中<br>2:暂停<br>3: 失败</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 更新时间
+	// <p>更新时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 目标服务名称
+	// <p>目标服务名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Target *string `json:"Target,omitnil,omitempty" name:"Target"`
 
-	// 目标地址
+	// <p>目标地址</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RemoteWriteURL *string `json:"RemoteWriteURL,omitnil,omitempty" name:"RemoteWriteURL"`
 
-	// 鉴权类型
-	// 0: 无鉴权 1: basic_auth 2: token
+	// <p>鉴权类型<br>0: 无鉴权 1: basic_auth 2: token</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AuthType *uint64 `json:"AuthType,omitnil,omitempty" name:"AuthType"`
 
-	// 鉴权信息
+	// <p>鉴权信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AuthInfo *RemoteWriteAuthInfo `json:"AuthInfo,omitnil,omitempty" name:"AuthInfo"`
 
-	// 日志集
+	// <p>日志集</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
 
-	// 任务状态
+	// <p>任务状态</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Enable *uint64 `json:"Enable,omitnil,omitempty" name:"Enable"`
 
-	// 后端服务类型
+	// <p>后端服务类型</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VirtualGatewayType *int64 `json:"VirtualGatewayType,omitnil,omitempty" name:"VirtualGatewayType"`
+
+	// <p>云时序数据库实例ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>是否开启投递服务日志。1：关闭，2：开启。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HasServicesLog *uint64 `json:"HasServicesLog,omitnil,omitempty" name:"HasServicesLog"`
 }
 
 // Predefined struct for user

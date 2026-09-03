@@ -288,6 +288,7 @@ func NewAddIp6RulesResponse() (response *AddIp6RulesResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_IPV6RULEIDEXISTED = "InvalidParameterValue.IPv6RuleIdExisted"
 //  LIMITEXCEEDED = "LimitExceeded"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) AddIp6Rules(request *AddIp6RulesRequest) (response *AddIp6RulesResponse, err error) {
     return c.AddIp6RulesWithContext(context.Background(), request)
 }
@@ -304,6 +305,7 @@ func (c *Client) AddIp6Rules(request *AddIp6RulesRequest) (response *AddIp6Rules
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_IPV6RULEIDEXISTED = "InvalidParameterValue.IPv6RuleIdExisted"
 //  LIMITEXCEEDED = "LimitExceeded"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) AddIp6RulesWithContext(ctx context.Context, request *AddIp6RulesRequest) (response *AddIp6RulesResponse, err error) {
     if request == nil {
         request = NewAddIp6RulesRequest()
@@ -425,6 +427,7 @@ func NewAdjustPublicAddressResponse() (response *AdjustPublicAddressResponse) {
 //  LIMITEXCEEDED_DAILYCHANGEADDRESSQUOTA = "LimitExceeded.DailyChangeAddressQuota"
 //  OPERATIONDENIED_ADDRESSINARREARS = "OperationDenied.AddressInArrears"
 //  OPERATIONDENIED_MUTEXTASKRUNNING = "OperationDenied.MutexTaskRunning"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  UNSUPPORTEDOPERATION_ADDRESSSTATUSNOTPERMIT = "UnsupportedOperation.AddressStatusNotPermit"
 //  UNSUPPORTEDOPERATION_INVALIDADDRESSINTERNETCHARGETYPE = "UnsupportedOperation.InvalidAddressInternetChargeType"
@@ -454,6 +457,7 @@ func (c *Client) AdjustPublicAddress(request *AdjustPublicAddressRequest) (respo
 //  LIMITEXCEEDED_DAILYCHANGEADDRESSQUOTA = "LimitExceeded.DailyChangeAddressQuota"
 //  OPERATIONDENIED_ADDRESSINARREARS = "OperationDenied.AddressInArrears"
 //  OPERATIONDENIED_MUTEXTASKRUNNING = "OperationDenied.MutexTaskRunning"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  UNSUPPORTEDOPERATION_ADDRESSSTATUSNOTPERMIT = "UnsupportedOperation.AddressStatusNotPermit"
 //  UNSUPPORTEDOPERATION_INVALIDADDRESSINTERNETCHARGETYPE = "UnsupportedOperation.InvalidAddressInternetChargeType"
@@ -4455,6 +4459,7 @@ func NewCreateIp6TranslatorsResponse() (response *CreateIp6TranslatorsResponse) 
 //
 // 可能返回的错误码:
 //  INTERNALSERVERERROR = "InternalServerError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
 func (c *Client) CreateIp6Translators(request *CreateIp6TranslatorsRequest) (response *CreateIp6TranslatorsResponse, err error) {
     return c.CreateIp6TranslatorsWithContext(context.Background(), request)
@@ -4467,6 +4472,7 @@ func (c *Client) CreateIp6Translators(request *CreateIp6TranslatorsRequest) (res
 //
 // 可能返回的错误码:
 //  INTERNALSERVERERROR = "InternalServerError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
 func (c *Client) CreateIp6TranslatorsWithContext(ctx context.Context, request *CreateIp6TranslatorsRequest) (response *CreateIp6TranslatorsResponse, err error) {
     if request == nil {
@@ -8389,6 +8395,7 @@ func NewDeleteBandwidthPackageResponse() (response *DeleteBandwidthPackageRespon
 //  INVALIDPARAMETERVALUE_BANDWIDTHPACKAGENOTFOUND = "InvalidParameterValue.BandwidthPackageNotFound"
 //  INVALIDPARAMETERVALUE_STOPCHARGINGINSTANCEINUSE = "InvalidParameterValue.StopChargingInstanceInUse"
 //  LIMITEXCEEDED_ACCOUNTRETURNQUOTA = "LimitExceeded.AccountReturnQuota"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  UNSUPPORTEDOPERATION_BANDWIDTHPACKAGEIDNOTSUPPORTED = "UnsupportedOperation.BandwidthPackageIdNotSupported"
 //  UNSUPPORTEDOPERATION_INVALIDADDRESSSTATE = "UnsupportedOperation.InvalidAddressState"
 //  UNSUPPORTEDOPERATION_UNPAIDORDERALREADYEXISTS = "UnsupportedOperation.UnpaidOrderAlreadyExists"
@@ -8407,6 +8414,7 @@ func (c *Client) DeleteBandwidthPackage(request *DeleteBandwidthPackageRequest) 
 //  INVALIDPARAMETERVALUE_BANDWIDTHPACKAGENOTFOUND = "InvalidParameterValue.BandwidthPackageNotFound"
 //  INVALIDPARAMETERVALUE_STOPCHARGINGINSTANCEINUSE = "InvalidParameterValue.StopChargingInstanceInUse"
 //  LIMITEXCEEDED_ACCOUNTRETURNQUOTA = "LimitExceeded.AccountReturnQuota"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  UNSUPPORTEDOPERATION_BANDWIDTHPACKAGEIDNOTSUPPORTED = "UnsupportedOperation.BandwidthPackageIdNotSupported"
 //  UNSUPPORTEDOPERATION_INVALIDADDRESSSTATE = "UnsupportedOperation.InvalidAddressState"
 //  UNSUPPORTEDOPERATION_UNPAIDORDERALREADYEXISTS = "UnsupportedOperation.UnpaidOrderAlreadyExists"
@@ -9351,6 +9359,7 @@ func NewDeleteIp6TranslatorsResponse() (response *DeleteIp6TranslatorsResponse) 
 //  INTERNALSERVERERROR = "InternalServerError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_IP6TRANSLATORNOTFOUND = "InvalidParameterValue.Ip6TranslatorNotFound"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) DeleteIp6Translators(request *DeleteIp6TranslatorsRequest) (response *DeleteIp6TranslatorsResponse, err error) {
     return c.DeleteIp6TranslatorsWithContext(context.Background(), request)
 }
@@ -9364,6 +9373,7 @@ func (c *Client) DeleteIp6Translators(request *DeleteIp6TranslatorsRequest) (res
 //  INTERNALSERVERERROR = "InternalServerError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_IP6TRANSLATORNOTFOUND = "InvalidParameterValue.Ip6TranslatorNotFound"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) DeleteIp6TranslatorsWithContext(ctx context.Context, request *DeleteIp6TranslatorsRequest) (response *DeleteIp6TranslatorsResponse, err error) {
     if request == nil {
         request = NewDeleteIp6TranslatorsRequest()
@@ -11941,6 +11951,7 @@ func NewDescribeAddressQuotaResponse() (response *DescribeAddressQuotaResponse) 
 //
 // 可能返回的错误码:
 //  INTERNALSERVERERROR = "InternalServerError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeAddressQuota(request *DescribeAddressQuotaRequest) (response *DescribeAddressQuotaResponse, err error) {
     return c.DescribeAddressQuotaWithContext(context.Background(), request)
@@ -11951,6 +11962,7 @@ func (c *Client) DescribeAddressQuota(request *DescribeAddressQuotaRequest) (res
 //
 // 可能返回的错误码:
 //  INTERNALSERVERERROR = "InternalServerError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeAddressQuotaWithContext(ctx context.Context, request *DescribeAddressQuotaRequest) (response *DescribeAddressQuotaResponse, err error) {
     if request == nil {
@@ -12457,6 +12469,7 @@ func NewDescribeBandwidthPackageQuotaResponse() (response *DescribeBandwidthPack
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_RESOURCENOTSUPPORT = "InvalidParameterValue.ResourceNotSupport"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) DescribeBandwidthPackageQuota(request *DescribeBandwidthPackageQuotaRequest) (response *DescribeBandwidthPackageQuotaResponse, err error) {
     return c.DescribeBandwidthPackageQuotaWithContext(context.Background(), request)
 }
@@ -12466,6 +12479,7 @@ func (c *Client) DescribeBandwidthPackageQuota(request *DescribeBandwidthPackage
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_RESOURCENOTSUPPORT = "InvalidParameterValue.ResourceNotSupport"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) DescribeBandwidthPackageQuotaWithContext(ctx context.Context, request *DescribeBandwidthPackageQuotaRequest) (response *DescribeBandwidthPackageQuotaResponse, err error) {
     if request == nil {
         request = NewDescribeBandwidthPackageQuotaRequest()
@@ -12511,6 +12525,7 @@ func NewDescribeBandwidthPackageResourcesResponse() (response *DescribeBandwidth
 //  INVALIDPARAMETERVALUE_BANDWIDTHPACKAGEIDMALFORMED = "InvalidParameterValue.BandwidthPackageIdMalformed"
 //  INVALIDPARAMETERVALUE_BANDWIDTHPACKAGENOTFOUND = "InvalidParameterValue.BandwidthPackageNotFound"
 //  INVALIDPARAMETERVALUE_ILLEGAL = "InvalidParameterValue.Illegal"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) DescribeBandwidthPackageResources(request *DescribeBandwidthPackageResourcesRequest) (response *DescribeBandwidthPackageResourcesResponse, err error) {
     return c.DescribeBandwidthPackageResourcesWithContext(context.Background(), request)
 }
@@ -12524,6 +12539,7 @@ func (c *Client) DescribeBandwidthPackageResources(request *DescribeBandwidthPac
 //  INVALIDPARAMETERVALUE_BANDWIDTHPACKAGEIDMALFORMED = "InvalidParameterValue.BandwidthPackageIdMalformed"
 //  INVALIDPARAMETERVALUE_BANDWIDTHPACKAGENOTFOUND = "InvalidParameterValue.BandwidthPackageNotFound"
 //  INVALIDPARAMETERVALUE_ILLEGAL = "InvalidParameterValue.Illegal"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) DescribeBandwidthPackageResourcesWithContext(ctx context.Context, request *DescribeBandwidthPackageResourcesRequest) (response *DescribeBandwidthPackageResourcesResponse, err error) {
     if request == nil {
         request = NewDescribeBandwidthPackageResourcesRequest()
@@ -14708,6 +14724,7 @@ func NewDescribeIp6TranslatorsResponse() (response *DescribeIp6TranslatorsRespon
 // 可能返回的错误码:
 //  INTERNALSERVERERROR = "InternalServerError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) DescribeIp6Translators(request *DescribeIp6TranslatorsRequest) (response *DescribeIp6TranslatorsResponse, err error) {
     return c.DescribeIp6TranslatorsWithContext(context.Background(), request)
 }
@@ -14720,6 +14737,7 @@ func (c *Client) DescribeIp6Translators(request *DescribeIp6TranslatorsRequest) 
 // 可能返回的错误码:
 //  INTERNALSERVERERROR = "InternalServerError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) DescribeIp6TranslatorsWithContext(ctx context.Context, request *DescribeIp6TranslatorsRequest) (response *DescribeIp6TranslatorsResponse, err error) {
     if request == nil {
         request = NewDescribeIp6TranslatorsRequest()
@@ -14767,6 +14785,7 @@ func NewDescribeIpGeolocationDatabaseUrlResponse() (response *DescribeIpGeolocat
 //  INVALIDACCOUNT_NOTSUPPORTED = "InvalidAccount.NotSupported"
 //  INVALIDPARAMETERCONFLICT = "InvalidParameterConflict"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) DescribeIpGeolocationDatabaseUrl(request *DescribeIpGeolocationDatabaseUrlRequest) (response *DescribeIpGeolocationDatabaseUrlResponse, err error) {
     return c.DescribeIpGeolocationDatabaseUrlWithContext(context.Background(), request)
 }
@@ -14782,6 +14801,7 @@ func (c *Client) DescribeIpGeolocationDatabaseUrl(request *DescribeIpGeolocation
 //  INVALIDACCOUNT_NOTSUPPORTED = "InvalidAccount.NotSupported"
 //  INVALIDPARAMETERCONFLICT = "InvalidParameterConflict"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) DescribeIpGeolocationDatabaseUrlWithContext(ctx context.Context, request *DescribeIpGeolocationDatabaseUrlRequest) (response *DescribeIpGeolocationDatabaseUrlResponse, err error) {
     if request == nil {
         request = NewDescribeIpGeolocationDatabaseUrlRequest()
@@ -21965,6 +21985,7 @@ func NewMigrateBandwidthPackageResourcesResponse() (response *MigrateBandwidthPa
 //  INVALIDPARAMETERVALUE_RESOURCEIDMALFORMED = "InvalidParameterValue.ResourceIdMalformed"
 //  INVALIDPARAMETERVALUE_RESOURCENOTFOUND = "InvalidParameterValue.ResourceNotFound"
 //  LIMITEXCEEDED_BANDWIDTHPACKAGERESOURCEQUOTA = "LimitExceeded.BandwidthPackageResourceQuota"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  UNSUPPORTEDOPERATION_BANDWIDTHPACKAGEIDNOTSUPPORTED = "UnsupportedOperation.BandwidthPackageIdNotSupported"
 //  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
 func (c *Client) MigrateBandwidthPackageResources(request *MigrateBandwidthPackageResourcesRequest) (response *MigrateBandwidthPackageResourcesResponse, err error) {
@@ -21980,6 +22001,7 @@ func (c *Client) MigrateBandwidthPackageResources(request *MigrateBandwidthPacka
 //  INVALIDPARAMETERVALUE_RESOURCEIDMALFORMED = "InvalidParameterValue.ResourceIdMalformed"
 //  INVALIDPARAMETERVALUE_RESOURCENOTFOUND = "InvalidParameterValue.ResourceNotFound"
 //  LIMITEXCEEDED_BANDWIDTHPACKAGERESOURCEQUOTA = "LimitExceeded.BandwidthPackageResourceQuota"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  UNSUPPORTEDOPERATION_BANDWIDTHPACKAGEIDNOTSUPPORTED = "UnsupportedOperation.BandwidthPackageIdNotSupported"
 //  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
 func (c *Client) MigrateBandwidthPackageResourcesWithContext(ctx context.Context, request *MigrateBandwidthPackageResourcesRequest) (response *MigrateBandwidthPackageResourcesResponse, err error) {
@@ -24216,6 +24238,7 @@ func NewModifyIp6RuleResponse() (response *ModifyIp6RuleResponse) {
 //  INVALIDPARAMETERVALUE_IP6RULENOTFOUND = "InvalidParameterValue.Ip6RuleNotFound"
 //  INVALIDPARAMETERVALUE_IP6TRANSLATORNOTFOUND = "InvalidParameterValue.Ip6TranslatorNotFound"
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) ModifyIp6Rule(request *ModifyIp6RuleRequest) (response *ModifyIp6RuleResponse, err error) {
     return c.ModifyIp6RuleWithContext(context.Background(), request)
 }
@@ -24230,6 +24253,7 @@ func (c *Client) ModifyIp6Rule(request *ModifyIp6RuleRequest) (response *ModifyI
 //  INVALIDPARAMETERVALUE_IP6RULENOTFOUND = "InvalidParameterValue.Ip6RuleNotFound"
 //  INVALIDPARAMETERVALUE_IP6TRANSLATORNOTFOUND = "InvalidParameterValue.Ip6TranslatorNotFound"
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) ModifyIp6RuleWithContext(ctx context.Context, request *ModifyIp6RuleRequest) (response *ModifyIp6RuleResponse, err error) {
     if request == nil {
         request = NewModifyIp6RuleRequest()
@@ -24273,6 +24297,7 @@ func NewModifyIp6TranslatorResponse() (response *ModifyIp6TranslatorResponse) {
 //  INTERNALSERVERERROR = "InternalServerError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_IP6TRANSLATORNOTFOUND = "InvalidParameterValue.Ip6TranslatorNotFound"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) ModifyIp6Translator(request *ModifyIp6TranslatorRequest) (response *ModifyIp6TranslatorResponse, err error) {
     return c.ModifyIp6TranslatorWithContext(context.Background(), request)
 }
@@ -24284,6 +24309,7 @@ func (c *Client) ModifyIp6Translator(request *ModifyIp6TranslatorRequest) (respo
 //  INTERNALSERVERERROR = "InternalServerError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_IP6TRANSLATORNOTFOUND = "InvalidParameterValue.Ip6TranslatorNotFound"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) ModifyIp6TranslatorWithContext(ctx context.Context, request *ModifyIp6TranslatorRequest) (response *ModifyIp6TranslatorResponse, err error) {
     if request == nil {
         request = NewModifyIp6TranslatorRequest()
@@ -27246,6 +27272,7 @@ func NewReleaseAddressesResponse() (response *ReleaseAddressesResponse) {
 //  LIMITEXCEEDED_ACCOUNTRETURNQUOTA = "LimitExceeded.AccountReturnQuota"
 //  OPERATIONDENIED_ADDRESSDELETIONPROTECTIONENABLED = "OperationDenied.AddressDeletionProtectionEnabled"
 //  OPERATIONDENIED_MUTEXTASKRUNNING = "OperationDenied.MutexTaskRunning"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  UNSUPPORTEDOPERATION_ADDRESSSTATUSNOTPERMIT = "UnsupportedOperation.AddressStatusNotPermit"
 //  UNSUPPORTEDOPERATION_UNPAIDORDERALREADYEXISTS = "UnsupportedOperation.UnpaidOrderAlreadyExists"
 func (c *Client) ReleaseAddresses(request *ReleaseAddressesRequest) (response *ReleaseAddressesResponse, err error) {
@@ -27270,6 +27297,7 @@ func (c *Client) ReleaseAddresses(request *ReleaseAddressesRequest) (response *R
 //  LIMITEXCEEDED_ACCOUNTRETURNQUOTA = "LimitExceeded.AccountReturnQuota"
 //  OPERATIONDENIED_ADDRESSDELETIONPROTECTIONENABLED = "OperationDenied.AddressDeletionProtectionEnabled"
 //  OPERATIONDENIED_MUTEXTASKRUNNING = "OperationDenied.MutexTaskRunning"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  UNSUPPORTEDOPERATION_ADDRESSSTATUSNOTPERMIT = "UnsupportedOperation.AddressStatusNotPermit"
 //  UNSUPPORTEDOPERATION_UNPAIDORDERALREADYEXISTS = "UnsupportedOperation.UnpaidOrderAlreadyExists"
 func (c *Client) ReleaseAddressesWithContext(ctx context.Context, request *ReleaseAddressesRequest) (response *ReleaseAddressesResponse, err error) {
@@ -27322,6 +27350,7 @@ func NewReleaseIPv6AddressesResponse() (response *ReleaseIPv6AddressesResponse) 
 //  INVALIDPARAMETERVALUE_ADDRESSIPNOTFOUND = "InvalidParameterValue.AddressIpNotFound"
 //  OPERATIONDENIED_ADDRESSDELETIONPROTECTIONENABLED = "OperationDenied.AddressDeletionProtectionEnabled"
 //  OPERATIONDENIED_ADDRESSINARREARS = "OperationDenied.AddressInArrears"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  UNSUPPORTEDOPERATION_ADDRESSSTATUSNOTPERMIT = "UnsupportedOperation.AddressStatusNotPermit"
 func (c *Client) ReleaseIPv6Addresses(request *ReleaseIPv6AddressesRequest) (response *ReleaseIPv6AddressesResponse, err error) {
     return c.ReleaseIPv6AddressesWithContext(context.Background(), request)
@@ -27341,6 +27370,7 @@ func (c *Client) ReleaseIPv6Addresses(request *ReleaseIPv6AddressesRequest) (res
 //  INVALIDPARAMETERVALUE_ADDRESSIPNOTFOUND = "InvalidParameterValue.AddressIpNotFound"
 //  OPERATIONDENIED_ADDRESSDELETIONPROTECTIONENABLED = "OperationDenied.AddressDeletionProtectionEnabled"
 //  OPERATIONDENIED_ADDRESSINARREARS = "OperationDenied.AddressInArrears"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  UNSUPPORTEDOPERATION_ADDRESSSTATUSNOTPERMIT = "UnsupportedOperation.AddressStatusNotPermit"
 func (c *Client) ReleaseIPv6AddressesWithContext(ctx context.Context, request *ReleaseIPv6AddressesRequest) (response *ReleaseIPv6AddressesResponse, err error) {
     if request == nil {
@@ -27536,6 +27566,7 @@ func NewRemoveIp6RulesResponse() (response *RemoveIp6RulesResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_IP6RULENOTFOUND = "InvalidParameterValue.Ip6RuleNotFound"
 //  OPERATIONDENIED_MUTEXTASKRUNNING = "OperationDenied.MutexTaskRunning"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) RemoveIp6Rules(request *RemoveIp6RulesRequest) (response *RemoveIp6RulesResponse, err error) {
     return c.RemoveIp6RulesWithContext(context.Background(), request)
 }
@@ -27550,6 +27581,7 @@ func (c *Client) RemoveIp6Rules(request *RemoveIp6RulesRequest) (response *Remov
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_IP6RULENOTFOUND = "InvalidParameterValue.Ip6RuleNotFound"
 //  OPERATIONDENIED_MUTEXTASKRUNNING = "OperationDenied.MutexTaskRunning"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) RemoveIp6RulesWithContext(ctx context.Context, request *RemoveIp6RulesRequest) (response *RemoveIp6RulesResponse, err error) {
     if request == nil {
         request = NewRemoveIp6RulesRequest()
@@ -29433,6 +29465,7 @@ func NewReturnNormalAddressesResponse() (response *ReturnNormalAddressesResponse
 //  INVALIDPARAMETERVALUE_ADDRESSIPSNOTFOUND = "InvalidParameterValue.AddressIpsNotFound"
 //  INVALIDPARAMETERVALUE_ILLEGAL = "InvalidParameterValue.Illegal"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  UNSUPPORTEDOPERATION_NOTSUPPORTEDADDRESSIPSCHARGETYPE = "UnsupportedOperation.NotSupportedAddressIpsChargeType"
 func (c *Client) ReturnNormalAddresses(request *ReturnNormalAddressesRequest) (response *ReturnNormalAddressesResponse, err error) {
     return c.ReturnNormalAddressesWithContext(context.Background(), request)
@@ -29447,6 +29480,7 @@ func (c *Client) ReturnNormalAddresses(request *ReturnNormalAddressesRequest) (r
 //  INVALIDPARAMETERVALUE_ADDRESSIPSNOTFOUND = "InvalidParameterValue.AddressIpsNotFound"
 //  INVALIDPARAMETERVALUE_ILLEGAL = "InvalidParameterValue.Illegal"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  UNSUPPORTEDOPERATION_NOTSUPPORTEDADDRESSIPSCHARGETYPE = "UnsupportedOperation.NotSupportedAddressIpsChargeType"
 func (c *Client) ReturnNormalAddressesWithContext(ctx context.Context, request *ReturnNormalAddressesRequest) (response *ReturnNormalAddressesResponse, err error) {
     if request == nil {

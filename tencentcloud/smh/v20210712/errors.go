@@ -17,8 +17,7 @@ package v20210712
 const (
 	// 此产品的特有错误码
 
-	// 操作未授权。当前子用户在访问管理 CAM 中没有被授予该操作的权限，
-	// 或没有被授予本次请求涉及的媒体库资源的权限。
+	// 操作未授权。当前子用户在访问管理 CAM 中没有被授予该操作的权限，或没有被授予本次请求涉及的媒体库资源的权限。
 	AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 
 	// 内部错误。

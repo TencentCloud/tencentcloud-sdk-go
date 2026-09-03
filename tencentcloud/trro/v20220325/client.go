@@ -217,6 +217,76 @@ func (c *Client) BoundLicensesWithContext(ctx context.Context, request *BoundLic
     return
 }
 
+func NewCreateBatchVideoAnnotationJobRequest() (request *CreateBatchVideoAnnotationJobRequest) {
+    request = &CreateBatchVideoAnnotationJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trro", APIVersion, "CreateBatchVideoAnnotationJob")
+    
+    
+    return
+}
+
+func NewCreateBatchVideoAnnotationJobResponse() (response *CreateBatchVideoAnnotationJobResponse) {
+    response = &CreateBatchVideoAnnotationJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateBatchVideoAnnotationJob
+// 提交S3兼容存储桶数据源的目录前缀创建批量标注任务。创建后，服务端异步列举前缀下全部视频逐个建立处理项（受配额上限控制，超限截断）。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_STORAGECHECKFAILED = "FailedOperation.StorageCheckFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDFILTERREGEX = "InvalidParameterValue.InvalidFilterRegex"
+//  INVALIDPARAMETERVALUE_INVALIDREGION = "InvalidParameterValue.InvalidRegion"
+//  INVALIDPARAMETERVALUE_NOVIDEOFILES = "InvalidParameterValue.NoVideoFiles"
+//  INVALIDPARAMETERVALUE_STORAGEUNREACHABLE = "InvalidParameterValue.StorageUnreachable"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_ANNOTATIONTYPENOTENABLED = "OperationDenied.AnnotationTypeNotEnabled"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_STORAGEAUTHFAILED = "UnauthorizedOperation.StorageAuthFailed"
+func (c *Client) CreateBatchVideoAnnotationJob(request *CreateBatchVideoAnnotationJobRequest) (response *CreateBatchVideoAnnotationJobResponse, err error) {
+    return c.CreateBatchVideoAnnotationJobWithContext(context.Background(), request)
+}
+
+// CreateBatchVideoAnnotationJob
+// 提交S3兼容存储桶数据源的目录前缀创建批量标注任务。创建后，服务端异步列举前缀下全部视频逐个建立处理项（受配额上限控制，超限截断）。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_STORAGECHECKFAILED = "FailedOperation.StorageCheckFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDFILTERREGEX = "InvalidParameterValue.InvalidFilterRegex"
+//  INVALIDPARAMETERVALUE_INVALIDREGION = "InvalidParameterValue.InvalidRegion"
+//  INVALIDPARAMETERVALUE_NOVIDEOFILES = "InvalidParameterValue.NoVideoFiles"
+//  INVALIDPARAMETERVALUE_STORAGEUNREACHABLE = "InvalidParameterValue.StorageUnreachable"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_ANNOTATIONTYPENOTENABLED = "OperationDenied.AnnotationTypeNotEnabled"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_STORAGEAUTHFAILED = "UnauthorizedOperation.StorageAuthFailed"
+func (c *Client) CreateBatchVideoAnnotationJobWithContext(ctx context.Context, request *CreateBatchVideoAnnotationJobRequest) (response *CreateBatchVideoAnnotationJobResponse, err error) {
+    if request == nil {
+        request = NewCreateBatchVideoAnnotationJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "trro", APIVersion, "CreateBatchVideoAnnotationJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateBatchVideoAnnotationJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateBatchVideoAnnotationJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateCloudRecordingRequest() (request *CreateCloudRecordingRequest) {
     request = &CreateCloudRecordingRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -391,6 +461,178 @@ func (c *Client) CreateProjectWithContext(ctx context.Context, request *CreatePr
     return
 }
 
+func NewCreateVideoAnnotationJobRequest() (request *CreateVideoAnnotationJobRequest) {
+    request = &CreateVideoAnnotationJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trro", APIVersion, "CreateVideoAnnotationJob")
+    
+    
+    return
+}
+
+func NewCreateVideoAnnotationJobResponse() (response *CreateVideoAnnotationJobResponse) {
+    response = &CreateVideoAnnotationJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateVideoAnnotationJob
+// 提交单个视频创建标注任务。支持 S3兼容 存储与 HTTP URL 两种输入源；通过后任务异步执行。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_STORAGECHECKFAILED = "FailedOperation.StorageCheckFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDHTTPURL = "InvalidParameterValue.InvalidHttpUrl"
+//  INVALIDPARAMETERVALUE_INVALIDREGION = "InvalidParameterValue.InvalidRegion"
+//  INVALIDPARAMETERVALUE_STORAGEUNREACHABLE = "InvalidParameterValue.StorageUnreachable"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDVIDEOFORMAT = "InvalidParameterValue.UnsupportedVideoFormat"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_ANNOTATIONTYPENOTENABLED = "OperationDenied.AnnotationTypeNotEnabled"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_STORAGEAUTHFAILED = "UnauthorizedOperation.StorageAuthFailed"
+func (c *Client) CreateVideoAnnotationJob(request *CreateVideoAnnotationJobRequest) (response *CreateVideoAnnotationJobResponse, err error) {
+    return c.CreateVideoAnnotationJobWithContext(context.Background(), request)
+}
+
+// CreateVideoAnnotationJob
+// 提交单个视频创建标注任务。支持 S3兼容 存储与 HTTP URL 两种输入源；通过后任务异步执行。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_STORAGECHECKFAILED = "FailedOperation.StorageCheckFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDHTTPURL = "InvalidParameterValue.InvalidHttpUrl"
+//  INVALIDPARAMETERVALUE_INVALIDREGION = "InvalidParameterValue.InvalidRegion"
+//  INVALIDPARAMETERVALUE_STORAGEUNREACHABLE = "InvalidParameterValue.StorageUnreachable"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDVIDEOFORMAT = "InvalidParameterValue.UnsupportedVideoFormat"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_ANNOTATIONTYPENOTENABLED = "OperationDenied.AnnotationTypeNotEnabled"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_STORAGEAUTHFAILED = "UnauthorizedOperation.StorageAuthFailed"
+func (c *Client) CreateVideoAnnotationJobWithContext(ctx context.Context, request *CreateVideoAnnotationJobRequest) (response *CreateVideoAnnotationJobResponse, err error) {
+    if request == nil {
+        request = NewCreateVideoAnnotationJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "trro", APIVersion, "CreateVideoAnnotationJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateVideoAnnotationJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateVideoAnnotationJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteAnnotationJobRequest() (request *DeleteAnnotationJobRequest) {
+    request = &DeleteAnnotationJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trro", APIVersion, "DeleteAnnotationJob")
+    
+    
+    return
+}
+
+func NewDeleteAnnotationJobResponse() (response *DeleteAnnotationJobResponse) {
+    response = &DeleteAnnotationJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteAnnotationJob
+// 删除整个任务并级联删除其全部处理项。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DeleteAnnotationJob(request *DeleteAnnotationJobRequest) (response *DeleteAnnotationJobResponse, err error) {
+    return c.DeleteAnnotationJobWithContext(context.Background(), request)
+}
+
+// DeleteAnnotationJob
+// 删除整个任务并级联删除其全部处理项。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DeleteAnnotationJobWithContext(ctx context.Context, request *DeleteAnnotationJobRequest) (response *DeleteAnnotationJobResponse, err error) {
+    if request == nil {
+        request = NewDeleteAnnotationJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "trro", APIVersion, "DeleteAnnotationJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAnnotationJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteAnnotationJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteAnnotationTaskRequest() (request *DeleteAnnotationTaskRequest) {
+    request = &DeleteAnnotationTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trro", APIVersion, "DeleteAnnotationTask")
+    
+    
+    return
+}
+
+func NewDeleteAnnotationTaskResponse() (response *DeleteAnnotationTaskResponse) {
+    response = &DeleteAnnotationTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteAnnotationTask
+// 删除任务下的单个处理项。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteAnnotationTask(request *DeleteAnnotationTaskRequest) (response *DeleteAnnotationTaskResponse, err error) {
+    return c.DeleteAnnotationTaskWithContext(context.Background(), request)
+}
+
+// DeleteAnnotationTask
+// 删除任务下的单个处理项。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteAnnotationTaskWithContext(ctx context.Context, request *DeleteAnnotationTaskRequest) (response *DeleteAnnotationTaskResponse, err error) {
+    if request == nil {
+        request = NewDeleteAnnotationTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "trro", APIVersion, "DeleteAnnotationTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAnnotationTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteAnnotationTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteCloudRecordingRequest() (request *DeleteCloudRecordingRequest) {
     request = &DeleteCloudRecordingRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -503,6 +745,162 @@ func (c *Client) DeleteProjectWithContext(ctx context.Context, request *DeletePr
     request.SetContext(ctx)
     
     response = NewDeleteProjectResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAnnotationJobsRequest() (request *DescribeAnnotationJobsRequest) {
+    request = &DescribeAnnotationJobsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trro", APIVersion, "DescribeAnnotationJobs")
+    
+    
+    return
+}
+
+func NewDescribeAnnotationJobsResponse() (response *DescribeAnnotationJobsResponse) {
+    response = &DescribeAnnotationJobsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAnnotationJobs
+// 分页查询当前用户的任务列表，支持按状态、输入路径前缀过滤。注意任务的聚合状态由后台周期刷新，处理项全部完成后任务状态有短暂延迟。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeAnnotationJobs(request *DescribeAnnotationJobsRequest) (response *DescribeAnnotationJobsResponse, err error) {
+    return c.DescribeAnnotationJobsWithContext(context.Background(), request)
+}
+
+// DescribeAnnotationJobs
+// 分页查询当前用户的任务列表，支持按状态、输入路径前缀过滤。注意任务的聚合状态由后台周期刷新，处理项全部完成后任务状态有短暂延迟。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeAnnotationJobsWithContext(ctx context.Context, request *DescribeAnnotationJobsRequest) (response *DescribeAnnotationJobsResponse, err error) {
+    if request == nil {
+        request = NewDescribeAnnotationJobsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "trro", APIVersion, "DescribeAnnotationJobs")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAnnotationJobs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAnnotationJobsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAnnotationResultsRequest() (request *DescribeAnnotationResultsRequest) {
+    request = &DescribeAnnotationResultsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trro", APIVersion, "DescribeAnnotationResults")
+    
+    
+    return
+}
+
+func NewDescribeAnnotationResultsResponse() (response *DescribeAnnotationResultsResponse) {
+    response = &DescribeAnnotationResultsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAnnotationResults
+// 查询单个处理项的标注结果详情，返回结果的完整 JSON 原文。仅处理成功（或需确认场景）返回内容。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAnnotationResults(request *DescribeAnnotationResultsRequest) (response *DescribeAnnotationResultsResponse, err error) {
+    return c.DescribeAnnotationResultsWithContext(context.Background(), request)
+}
+
+// DescribeAnnotationResults
+// 查询单个处理项的标注结果详情，返回结果的完整 JSON 原文。仅处理成功（或需确认场景）返回内容。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAnnotationResultsWithContext(ctx context.Context, request *DescribeAnnotationResultsRequest) (response *DescribeAnnotationResultsResponse, err error) {
+    if request == nil {
+        request = NewDescribeAnnotationResultsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "trro", APIVersion, "DescribeAnnotationResults")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAnnotationResults require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAnnotationResultsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAnnotationTasksRequest() (request *DescribeAnnotationTasksRequest) {
+    request = &DescribeAnnotationTasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trro", APIVersion, "DescribeAnnotationTasks")
+    
+    
+    return
+}
+
+func NewDescribeAnnotationTasksResponse() (response *DescribeAnnotationTasksResponse) {
+    response = &DescribeAnnotationTasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAnnotationTasks
+// 分页查询某任务下的处理项列表（每个视频一项），支持按文件名前缀、状态过滤。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeAnnotationTasks(request *DescribeAnnotationTasksRequest) (response *DescribeAnnotationTasksResponse, err error) {
+    return c.DescribeAnnotationTasksWithContext(context.Background(), request)
+}
+
+// DescribeAnnotationTasks
+// 分页查询某任务下的处理项列表（每个视频一项），支持按文件名前缀、状态过滤。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeAnnotationTasksWithContext(ctx context.Context, request *DescribeAnnotationTasksRequest) (response *DescribeAnnotationTasksResponse, err error) {
+    if request == nil {
+        request = NewDescribeAnnotationTasksRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "trro", APIVersion, "DescribeAnnotationTasks")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAnnotationTasks require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAnnotationTasksResponse()
     err = c.Send(request, response)
     return
 }
@@ -1739,6 +2137,58 @@ func (c *Client) ModifyProjectSecModeWithContext(ctx context.Context, request *M
     request.SetContext(ctx)
     
     response = NewModifyProjectSecModeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRetryAnnotationTaskRequest() (request *RetryAnnotationTaskRequest) {
+    request = &RetryAnnotationTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trro", APIVersion, "RetryAnnotationTask")
+    
+    
+    return
+}
+
+func NewRetryAnnotationTaskResponse() (response *RetryAnnotationTaskResponse) {
+    response = &RetryAnnotationTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RetryAnnotationTask
+// 重跑超时或异常的处理项：重置回未处理状态重新等待执行，所属任务若为异常态自动恢复为处理中。其余状态不可重试。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  OPERATIONDENIED_TASKNOTRETRYABLE = "OperationDenied.TaskNotRetryable"
+func (c *Client) RetryAnnotationTask(request *RetryAnnotationTaskRequest) (response *RetryAnnotationTaskResponse, err error) {
+    return c.RetryAnnotationTaskWithContext(context.Background(), request)
+}
+
+// RetryAnnotationTask
+// 重跑超时或异常的处理项：重置回未处理状态重新等待执行，所属任务若为异常态自动恢复为处理中。其余状态不可重试。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  OPERATIONDENIED_TASKNOTRETRYABLE = "OperationDenied.TaskNotRetryable"
+func (c *Client) RetryAnnotationTaskWithContext(ctx context.Context, request *RetryAnnotationTaskRequest) (response *RetryAnnotationTaskResponse, err error) {
+    if request == nil {
+        request = NewRetryAnnotationTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "trro", APIVersion, "RetryAnnotationTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RetryAnnotationTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRetryAnnotationTaskResponse()
     err = c.Send(request, response)
     return
 }

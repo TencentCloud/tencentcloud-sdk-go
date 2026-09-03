@@ -20,6 +20,17 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
+type AnnotationContext struct {
+	// <p>任务目标（整段视频的总目标）</p>
+	TaskGoal *string `json:"TaskGoal,omitnil,omitempty" name:"TaskGoal"`
+
+	// <p>关键物体列表</p>
+	KeyObjects []*string `json:"KeyObjects,omitnil,omitempty" name:"KeyObjects"`
+
+	// <p>原子动词参考列表</p>
+	AtomicVerbs []*string `json:"AtomicVerbs,omitnil,omitempty" name:"AtomicVerbs"`
+}
+
 // Predefined struct for user
 type BatchDeleteDevicesRequestParams struct {
 	// 目标删除设备所属项目ID
@@ -155,6 +166,29 @@ func (r *BatchDeletePolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type BatchS3SourceInfo struct {
+	// <p>存储桶名称</p>
+	Bucket *string `json:"Bucket,omitnil,omitempty" name:"Bucket"`
+
+	// <p>存储服务地址</p>
+	Endpoint *string `json:"Endpoint,omitnil,omitempty" name:"Endpoint"`
+
+	// <p>存储区域</p>
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// <p>视频目录前缀，如 video/，仅列举视频文件</p>
+	Prefix *string `json:"Prefix,omitnil,omitempty" name:"Prefix"`
+
+	// <p>访问凭证，需对该桶有读取权限</p>
+	Secret *SecretInfo `json:"Secret,omitnil,omitempty" name:"Secret"`
+
+	// <p>文件名正则过滤规则，仅文件名匹配的文件会处理，不传不过滤</p>
+	Filter *string `json:"Filter,omitnil,omitempty" name:"Filter"`
+
+	// <p>是否腾讯云 COS：1 是，0 否。使用腾讯云 COS 时必须传 1</p><p>取值范围：[0, 1]</p>
+	IsCos *int64 `json:"IsCos,omitnil,omitempty" name:"IsCos"`
+}
+
 // Predefined struct for user
 type BoundLicensesRequestParams struct {
 	// license数量
@@ -223,6 +257,14 @@ func (r *BoundLicensesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CallbackInfo struct {
+	// <p>回调地址</p>
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// <p>回调签名密钥，用于回调请求的签名校验</p>
+	Secret *string `json:"Secret,omitnil,omitempty" name:"Secret"`
+}
+
 type CloudStorage struct {
 	// 腾讯云对象存储COS以及第三方云存储账号信息
 	// 0：腾讯云对象存储 COS
@@ -251,6 +293,98 @@ type CloudStorage struct {
 
 	// 云存储bucket 的指定位置，由字符串数组组成。合法的字符串范围az,AZ,0~9,'_'和'-'，举个例子，录制文件xxx.m3u8在 ["prefix1", "prefix2"]作用下，会变成prefix1/prefix2/TaskId/xxx.m3u8。
 	FileNamePrefix []*string `json:"FileNamePrefix,omitnil,omitempty" name:"FileNamePrefix"`
+}
+
+// Predefined struct for user
+type CreateBatchVideoAnnotationJobRequestParams struct {
+	// <p>批量输入源信息（目录前缀）</p>
+	InputStorage *BatchS3SourceInfo `json:"InputStorage,omitnil,omitempty" name:"InputStorage"`
+
+	// <p>标注模式（当前仅开放精标注）</p><p>枚举值：</p><ul><li>3： 精标注</li></ul>
+	AnnotationType *int64 `json:"AnnotationType,omitnil,omitempty" name:"AnnotationType"`
+
+	// <p>标注上下文信息</p>
+	AnnotationContext *AnnotationContext `json:"AnnotationContext,omitnil,omitempty" name:"AnnotationContext"`
+
+	// <p>标注处理参数，预留字段，当前无效</p>
+	ProcessParams *ProcessParams `json:"ProcessParams,omitnil,omitempty" name:"ProcessParams"`
+
+	// <p>批量结果输出存储信息，不传则不投递</p>
+	OutputStorage *OutputStorage `json:"OutputStorage,omitnil,omitempty" name:"OutputStorage"`
+
+	// <p>回调信息，配置后当任务下子处理项状态从处理中变为其他状态时，服务端会向回调地址发送请求（退避重试三次，不保证回调一定送达，需保证目标地址接收服务有效），建议接收方做好幂等处理。回调请求格式如下：<br><strong>请求头</strong></p><table><thead><tr><th>名称</th><th>值</th></tr></thead><tbody><tr><td>X-Annotation-Signature</td><td>hex(HMAC-SHA256(请求体原始字节, CallbackInfo.Secret))</td></tr></tbody></table><p><strong>请求体</strong>（application/json）</p><table><thead><tr><th>参数名</th><th>类型</th><th>必选</th><th>描述</th></tr></thead><tbody><tr><td>JobId</td><td>string</td><td>是</td><td>任务 ID</td></tr><tr><td>TaskId</td><td>string</td><td>是</td><td>处理项 ID</td></tr><tr><td>FileName</td><td>string</td><td>是</td><td>视频文件名</td></tr><tr><td>Status</td><td>int</td><td>是</td><td>触发本次回调的处理项状态：3 超时，4 异常，5 待确认，6 成功</td></tr><tr><td>StatusChangedAt</td><td>int</td><td>是</td><td>状态变更时间，Unix 时间戳（秒）</td></tr><tr><td>RawResult</td><td>string</td><td>否</td><td>当前生效的结果 JSON 原文：成功=标注产物；待确认=原始标注；确认后=确认版内容。超时/异常无内容</td></tr></tbody></table>
+	CallbackInfo *CallbackInfo `json:"CallbackInfo,omitnil,omitempty" name:"CallbackInfo"`
+}
+
+type CreateBatchVideoAnnotationJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>批量输入源信息（目录前缀）</p>
+	InputStorage *BatchS3SourceInfo `json:"InputStorage,omitnil,omitempty" name:"InputStorage"`
+
+	// <p>标注模式（当前仅开放精标注）</p><p>枚举值：</p><ul><li>3： 精标注</li></ul>
+	AnnotationType *int64 `json:"AnnotationType,omitnil,omitempty" name:"AnnotationType"`
+
+	// <p>标注上下文信息</p>
+	AnnotationContext *AnnotationContext `json:"AnnotationContext,omitnil,omitempty" name:"AnnotationContext"`
+
+	// <p>标注处理参数，预留字段，当前无效</p>
+	ProcessParams *ProcessParams `json:"ProcessParams,omitnil,omitempty" name:"ProcessParams"`
+
+	// <p>批量结果输出存储信息，不传则不投递</p>
+	OutputStorage *OutputStorage `json:"OutputStorage,omitnil,omitempty" name:"OutputStorage"`
+
+	// <p>回调信息，配置后当任务下子处理项状态从处理中变为其他状态时，服务端会向回调地址发送请求（退避重试三次，不保证回调一定送达，需保证目标地址接收服务有效），建议接收方做好幂等处理。回调请求格式如下：<br><strong>请求头</strong></p><table><thead><tr><th>名称</th><th>值</th></tr></thead><tbody><tr><td>X-Annotation-Signature</td><td>hex(HMAC-SHA256(请求体原始字节, CallbackInfo.Secret))</td></tr></tbody></table><p><strong>请求体</strong>（application/json）</p><table><thead><tr><th>参数名</th><th>类型</th><th>必选</th><th>描述</th></tr></thead><tbody><tr><td>JobId</td><td>string</td><td>是</td><td>任务 ID</td></tr><tr><td>TaskId</td><td>string</td><td>是</td><td>处理项 ID</td></tr><tr><td>FileName</td><td>string</td><td>是</td><td>视频文件名</td></tr><tr><td>Status</td><td>int</td><td>是</td><td>触发本次回调的处理项状态：3 超时，4 异常，5 待确认，6 成功</td></tr><tr><td>StatusChangedAt</td><td>int</td><td>是</td><td>状态变更时间，Unix 时间戳（秒）</td></tr><tr><td>RawResult</td><td>string</td><td>否</td><td>当前生效的结果 JSON 原文：成功=标注产物；待确认=原始标注；确认后=确认版内容。超时/异常无内容</td></tr></tbody></table>
+	CallbackInfo *CallbackInfo `json:"CallbackInfo,omitnil,omitempty" name:"CallbackInfo"`
+}
+
+func (r *CreateBatchVideoAnnotationJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBatchVideoAnnotationJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InputStorage")
+	delete(f, "AnnotationType")
+	delete(f, "AnnotationContext")
+	delete(f, "ProcessParams")
+	delete(f, "OutputStorage")
+	delete(f, "CallbackInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBatchVideoAnnotationJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateBatchVideoAnnotationJobResponseParams struct {
+	// <p>任务 ID</p>
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateBatchVideoAnnotationJobResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateBatchVideoAnnotationJobResponseParams `json:"Response"`
+}
+
+func (r *CreateBatchVideoAnnotationJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBatchVideoAnnotationJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -506,6 +640,220 @@ func (r *CreateProjectResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateVideoAnnotationJobRequestParams struct {
+	// <p>输入源类型：1 S3 兼容存储，2 HTTP URL</p><p>枚举值：</p><ul><li>1： S3 兼容存储</li><li>2： HTTP URL</li></ul>
+	InputType *int64 `json:"InputType,omitnil,omitempty" name:"InputType"`
+
+	// <p>标注模式（当前仅开放精标注）</p><p>枚举值：</p><ul><li>3： 精标注</li></ul>
+	AnnotationType *int64 `json:"AnnotationType,omitnil,omitempty" name:"AnnotationType"`
+
+	// <p>S3 存储输入源信息，InputType=1 时必填</p>
+	S3SourceInfo *S3SourceInfo `json:"S3SourceInfo,omitnil,omitempty" name:"S3SourceInfo"`
+
+	// <p>视频 HTTP URL。InputType=2 时必填。格式如 https://example.com/video.mp4</p>
+	HttpUrl *string `json:"HttpUrl,omitnil,omitempty" name:"HttpUrl"`
+
+	// <p>标注上下文信息</p>
+	AnnotationContext *AnnotationContext `json:"AnnotationContext,omitnil,omitempty" name:"AnnotationContext"`
+
+	// <p>标注处理参数，预留字段，当前无效</p>
+	ProcessParams *ProcessParams `json:"ProcessParams,omitnil,omitempty" name:"ProcessParams"`
+
+	// <p>结果输出信息</p>
+	OutputInfo *OutputInfo `json:"OutputInfo,omitnil,omitempty" name:"OutputInfo"`
+
+	// <p>回调信息，配置后当处理项状态从处理中变为其他状态时，服务端会向回调地址发送请求（退避重试三次，不保证回调一定送达，需保证目标地址接收服务有效），建议接收方做好幂等处理。回调请求格式如下：<br><strong>请求头</strong></p><table><thead><tr><th>名称</th><th>值</th></tr></thead><tbody><tr><td>X-Annotation-Signature</td><td>hex(HMAC-SHA256(请求体原始字节, CallbackInfo.Secret))</td></tr></tbody></table><p><strong>请求体</strong>（application/json）</p><table><thead><tr><th>参数名</th><th>类型</th><th>必选</th><th>描述</th></tr></thead><tbody><tr><td>JobId</td><td>string</td><td>是</td><td>任务 ID</td></tr><tr><td>TaskId</td><td>string</td><td>是</td><td>处理项 ID</td></tr><tr><td>FileName</td><td>string</td><td>是</td><td>视频文件名</td></tr><tr><td>Status</td><td>int</td><td>是</td><td>触发本次回调的处理项状态：3 超时，4 异常，5 待确认，6 成功</td></tr><tr><td>StatusChangedAt</td><td>int</td><td>是</td><td>状态变更时间，Unix 时间戳（秒）</td></tr><tr><td>RawResult</td><td>string</td><td>否</td><td>当前生效的结果 JSON 原文：成功=标注产物；待确认=原始标注；确认后=确认版内容。超时/异常无内容</td></tr></tbody></table>
+	CallbackInfo *CallbackInfo `json:"CallbackInfo,omitnil,omitempty" name:"CallbackInfo"`
+}
+
+type CreateVideoAnnotationJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>输入源类型：1 S3 兼容存储，2 HTTP URL</p><p>枚举值：</p><ul><li>1： S3 兼容存储</li><li>2： HTTP URL</li></ul>
+	InputType *int64 `json:"InputType,omitnil,omitempty" name:"InputType"`
+
+	// <p>标注模式（当前仅开放精标注）</p><p>枚举值：</p><ul><li>3： 精标注</li></ul>
+	AnnotationType *int64 `json:"AnnotationType,omitnil,omitempty" name:"AnnotationType"`
+
+	// <p>S3 存储输入源信息，InputType=1 时必填</p>
+	S3SourceInfo *S3SourceInfo `json:"S3SourceInfo,omitnil,omitempty" name:"S3SourceInfo"`
+
+	// <p>视频 HTTP URL。InputType=2 时必填。格式如 https://example.com/video.mp4</p>
+	HttpUrl *string `json:"HttpUrl,omitnil,omitempty" name:"HttpUrl"`
+
+	// <p>标注上下文信息</p>
+	AnnotationContext *AnnotationContext `json:"AnnotationContext,omitnil,omitempty" name:"AnnotationContext"`
+
+	// <p>标注处理参数，预留字段，当前无效</p>
+	ProcessParams *ProcessParams `json:"ProcessParams,omitnil,omitempty" name:"ProcessParams"`
+
+	// <p>结果输出信息</p>
+	OutputInfo *OutputInfo `json:"OutputInfo,omitnil,omitempty" name:"OutputInfo"`
+
+	// <p>回调信息，配置后当处理项状态从处理中变为其他状态时，服务端会向回调地址发送请求（退避重试三次，不保证回调一定送达，需保证目标地址接收服务有效），建议接收方做好幂等处理。回调请求格式如下：<br><strong>请求头</strong></p><table><thead><tr><th>名称</th><th>值</th></tr></thead><tbody><tr><td>X-Annotation-Signature</td><td>hex(HMAC-SHA256(请求体原始字节, CallbackInfo.Secret))</td></tr></tbody></table><p><strong>请求体</strong>（application/json）</p><table><thead><tr><th>参数名</th><th>类型</th><th>必选</th><th>描述</th></tr></thead><tbody><tr><td>JobId</td><td>string</td><td>是</td><td>任务 ID</td></tr><tr><td>TaskId</td><td>string</td><td>是</td><td>处理项 ID</td></tr><tr><td>FileName</td><td>string</td><td>是</td><td>视频文件名</td></tr><tr><td>Status</td><td>int</td><td>是</td><td>触发本次回调的处理项状态：3 超时，4 异常，5 待确认，6 成功</td></tr><tr><td>StatusChangedAt</td><td>int</td><td>是</td><td>状态变更时间，Unix 时间戳（秒）</td></tr><tr><td>RawResult</td><td>string</td><td>否</td><td>当前生效的结果 JSON 原文：成功=标注产物；待确认=原始标注；确认后=确认版内容。超时/异常无内容</td></tr></tbody></table>
+	CallbackInfo *CallbackInfo `json:"CallbackInfo,omitnil,omitempty" name:"CallbackInfo"`
+}
+
+func (r *CreateVideoAnnotationJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateVideoAnnotationJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InputType")
+	delete(f, "AnnotationType")
+	delete(f, "S3SourceInfo")
+	delete(f, "HttpUrl")
+	delete(f, "AnnotationContext")
+	delete(f, "ProcessParams")
+	delete(f, "OutputInfo")
+	delete(f, "CallbackInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateVideoAnnotationJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateVideoAnnotationJobResponseParams struct {
+	// <p>任务 ID</p>
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateVideoAnnotationJobResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateVideoAnnotationJobResponseParams `json:"Response"`
+}
+
+func (r *CreateVideoAnnotationJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateVideoAnnotationJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAnnotationJobRequestParams struct {
+	// <p>任务 ID</p>
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+}
+
+type DeleteAnnotationJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>任务 ID</p>
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+}
+
+func (r *DeleteAnnotationJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAnnotationJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAnnotationJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAnnotationJobResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteAnnotationJobResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteAnnotationJobResponseParams `json:"Response"`
+}
+
+func (r *DeleteAnnotationJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAnnotationJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAnnotationTaskRequestParams struct {
+	// <p>处理项 ID</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type DeleteAnnotationTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>处理项 ID</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *DeleteAnnotationTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAnnotationTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAnnotationTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAnnotationTaskResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteAnnotationTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteAnnotationTaskResponseParams `json:"Response"`
+}
+
+func (r *DeleteAnnotationTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAnnotationTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteCloudRecordingRequestParams struct {
 	// 录制任务的唯一Id，在启动录制成功后会返回。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
@@ -610,6 +958,268 @@ func (r *DeleteProjectResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteProjectResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAnnotationJobsRequestParams struct {
+	// <p>分页偏移，默认 0</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>每页数量，默认 20，最大 100</p><p>取值范围：[10, 100]</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>按任务状态过滤：1 处理中，2 异常，3 成功。不传查全部</p><p>枚举值：</p><ul><li>1： 处理中</li><li>2： 异常</li><li>3： 成功</li></ul>
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>按输入路径前缀过滤，不传不过滤</p>
+	InputPath *string `json:"InputPath,omitnil,omitempty" name:"InputPath"`
+}
+
+type DescribeAnnotationJobsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>分页偏移，默认 0</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>每页数量，默认 20，最大 100</p><p>取值范围：[10, 100]</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>按任务状态过滤：1 处理中，2 异常，3 成功。不传查全部</p><p>枚举值：</p><ul><li>1： 处理中</li><li>2： 异常</li><li>3： 成功</li></ul>
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>按输入路径前缀过滤，不传不过滤</p>
+	InputPath *string `json:"InputPath,omitnil,omitempty" name:"InputPath"`
+}
+
+func (r *DescribeAnnotationJobsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAnnotationJobsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Status")
+	delete(f, "InputPath")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAnnotationJobsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAnnotationJobsResponseParams struct {
+	// <p>符合条件的任务总数</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>分页偏移</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>每页数量</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>任务列表</p>
+	Jobs []*Job `json:"Jobs,omitnil,omitempty" name:"Jobs"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAnnotationJobsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAnnotationJobsResponseParams `json:"Response"`
+}
+
+func (r *DescribeAnnotationJobsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAnnotationJobsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAnnotationResultsRequestParams struct {
+	// <p>处理项 ID</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type DescribeAnnotationResultsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>处理项 ID</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *DescribeAnnotationResultsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAnnotationResultsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAnnotationResultsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAnnotationResultsResponseParams struct {
+	// <p>处理项 ID</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>视频文件名</p>
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
+
+	// <p>处理项状态：1 未处理，2 处理中，3 超时，4 异常，5待确认，6 成功</p><p>枚举值：</p><ul><li>1： 未处理</li><li>2： 处理中</li><li>3： 超时</li><li>4： 异常</li><li>5： 待确认</li><li>6： 成功</li></ul>
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>失败原因，成功为空</p>
+	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
+
+	// <p>标注结果 JSON 原文，非成功状态为空</p>
+	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// <p>标注结果字节数</p>
+	ResultSize *int64 `json:"ResultSize,omitnil,omitempty" name:"ResultSize"`
+
+	// <p>创建时间，Unix 时间戳（秒）</p>
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>完成时间，Unix 时间戳（秒），进行中为 0</p>
+	FinishTime *string `json:"FinishTime,omitnil,omitempty" name:"FinishTime"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAnnotationResultsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAnnotationResultsResponseParams `json:"Response"`
+}
+
+func (r *DescribeAnnotationResultsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAnnotationResultsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAnnotationTasksRequestParams struct {
+	// <p>任务 ID</p>
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// <p>分页偏移，默认 0</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>每页数量，默认 20，最大 100</p><p>取值范围：[10, 100]</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>按文件名前缀过滤，不传不过滤</p>
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
+
+	// <p>按处理项状态过滤：1 未处理，2 处理中，3 超时，4 异常，5待确认，6 成功。不传查全部</p><p>枚举值：</p><ul><li>1： 未处理</li><li>2： 处理中</li><li>3： 超时</li><li>4： 异常</li><li>5： 待确认</li><li>6： 成功</li></ul>
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+type DescribeAnnotationTasksRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>任务 ID</p>
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// <p>分页偏移，默认 0</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>每页数量，默认 20，最大 100</p><p>取值范围：[10, 100]</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>按文件名前缀过滤，不传不过滤</p>
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
+
+	// <p>按处理项状态过滤：1 未处理，2 处理中，3 超时，4 异常，5待确认，6 成功。不传查全部</p><p>枚举值：</p><ul><li>1： 未处理</li><li>2： 处理中</li><li>3： 超时</li><li>4： 异常</li><li>5： 待确认</li><li>6： 成功</li></ul>
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+func (r *DescribeAnnotationTasksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAnnotationTasksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "FileName")
+	delete(f, "Status")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAnnotationTasksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAnnotationTasksResponseParams struct {
+	// <p>任务 ID</p>
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// <p>处理项总数</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>分页偏移</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>每页数量</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>处理项列表</p>
+	Tasks []*Task `json:"Tasks,omitnil,omitempty" name:"Tasks"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAnnotationTasksResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAnnotationTasksResponseParams `json:"Response"`
+}
+
+func (r *DescribeAnnotationTasksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAnnotationTasksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2086,6 +2696,35 @@ func (r *GetTotalDurationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type Job struct {
+	// <p>任务 ID</p>
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// <p>任务类型：1 单视频，2 批量</p><p>枚举值：</p><ul><li>1： 单视频</li><li>2： 批量</li></ul>
+	JobType *int64 `json:"JobType,omitnil,omitempty" name:"JobType"`
+
+	// <p>标注模式：3 精标注</p><p>枚举值：</p><ul><li>3： 精标注</li></ul>
+	AnnotationType *int64 `json:"AnnotationType,omitnil,omitempty" name:"AnnotationType"`
+
+	// <p>任务状态：1 处理中，2 异常，3 成功</p><p>枚举值：</p><ul><li>1： 处理中</li><li>2： 异常</li><li>3： 成功</li></ul>
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>文件列举状态：0 列举中，1 全部加载，2 超过数量上限截断（仅批量任务）</p><p>枚举值：</p><ul><li>0： 列举中</li><li>1： 全部加载</li><li>2： 超过数量上限截断（仅批量任务）</li></ul>
+	IngestStatus *int64 `json:"IngestStatus,omitnil,omitempty" name:"IngestStatus"`
+
+	// <p>输入路径（S3源为桶名/对象路径：批量任务为目录前缀，单文件为文件完整路径；HTTP源为完整URL）</p>
+	InputPath *string `json:"InputPath,omitnil,omitempty" name:"InputPath"`
+
+	// <p>处理项总数</p>
+	TotalNumber *int64 `json:"TotalNumber,omitnil,omitempty" name:"TotalNumber"`
+
+	// <p>创建时间，Unix 时间戳（秒）</p>
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>完成时间，Unix 时间戳（秒），未完成为 0</p>
+	FinishTime *string `json:"FinishTime,omitnil,omitempty" name:"FinishTime"`
+}
+
 type License struct {
 	// 该类型的license个数
 	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
@@ -2536,6 +3175,43 @@ type MultiNet struct {
 	RecvBps []*int64 `json:"RecvBps,omitnil,omitempty" name:"RecvBps"`
 }
 
+type OutputInfo struct {
+	// <p>存储桶名称</p>
+	Bucket *string `json:"Bucket,omitnil,omitempty" name:"Bucket"`
+
+	// <p>存储服务地址</p>
+	Endpoint *string `json:"Endpoint,omitnil,omitempty" name:"Endpoint"`
+
+	// <p>存储区域</p>
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// <p>输出文件路径，如 output/result.json</p>
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// <p>访问凭证，需对该桶有写入权限</p>
+	Secret *SecretInfo `json:"Secret,omitnil,omitempty" name:"Secret"`
+}
+
+type OutputStorage struct {
+	// <p>存储桶名称</p>
+	Bucket *string `json:"Bucket,omitnil,omitempty" name:"Bucket"`
+
+	// <p>存储服务地址</p>
+	Endpoint *string `json:"Endpoint,omitnil,omitempty" name:"Endpoint"`
+
+	// <p>存储区域</p>
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// <p>访问凭证，需对该桶有写权限</p>
+	Secret *SecretInfo `json:"Secret,omitnil,omitempty" name:"Secret"`
+
+	// <p>输出目录前缀，不传写入桶根目录</p>
+	Prefix *string `json:"Prefix,omitnil,omitempty" name:"Prefix"`
+
+	// <p>输出文件名规则，支持变量 $FileName、$FileType、$TaskId、$YYYY、$mm、$dd、$HH、$MM、$SS，须至少含一个变量，默认 $FileName_$TaskId.json</p>
+	NameRule *string `json:"NameRule,omitnil,omitempty" name:"NameRule"`
+}
+
 type PolicyInfo struct {
 	// 远端设备ID
 	RemoteDeviceId *string `json:"RemoteDeviceId,omitnil,omitempty" name:"RemoteDeviceId"`
@@ -2545,6 +3221,11 @@ type PolicyInfo struct {
 
 	// 最近添加时间
 	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
+}
+
+type ProcessParams struct {
+	// <p>标注处理模式，预留字段</p>
+	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
 }
 
 type ProjectInfo struct {
@@ -2590,6 +3271,88 @@ type RecentSessionInfo struct {
 
 	// 最后更新时间
 	LatestUpdateTime *uint64 `json:"LatestUpdateTime,omitnil,omitempty" name:"LatestUpdateTime"`
+}
+
+// Predefined struct for user
+type RetryAnnotationTaskRequestParams struct {
+	// <p>处理项 ID，仅超时（3）或异常（4）状态可重试</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type RetryAnnotationTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>处理项 ID，仅超时（3）或异常（4）状态可重试</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *RetryAnnotationTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RetryAnnotationTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RetryAnnotationTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RetryAnnotationTaskResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RetryAnnotationTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *RetryAnnotationTaskResponseParams `json:"Response"`
+}
+
+func (r *RetryAnnotationTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RetryAnnotationTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type S3SourceInfo struct {
+	// <p>存储桶名称</p>
+	Bucket *string `json:"Bucket,omitnil,omitempty" name:"Bucket"`
+
+	// <p>存储服务地址</p>
+	Endpoint *string `json:"Endpoint,omitnil,omitempty" name:"Endpoint"`
+
+	// <p>存储区域</p>
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// <p>视频文件路径</p>
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// <p>访问凭证，需对该桶有读取权限</p>
+	Secret *SecretInfo `json:"Secret,omitnil,omitempty" name:"Secret"`
+
+	// <p>是否腾讯云 COS：1 是，0 否。使用腾讯云 COS 时必须传 1</p><p>取值范围：[0, 1]</p>
+	IsCos *int64 `json:"IsCos,omitnil,omitempty" name:"IsCos"`
+}
+
+type SecretInfo struct {
+	// <p>密钥 ID</p>
+	SecretId *string `json:"SecretId,omitnil,omitempty" name:"SecretId"`
+
+	// <p>密钥 Key</p>
+	SecretKey *string `json:"SecretKey,omitnil,omitempty" name:"SecretKey"`
 }
 
 type SessionDeviceDetail struct {
@@ -2884,6 +3647,29 @@ func (r *StopPublishLiveStreamResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *StopPublishLiveStreamResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type Task struct {
+	// <p>处理项 ID</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>视频文件名</p>
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
+
+	// <p>处理项状态：1 未处理，2 处理中，3 超时，4 异常，5待确认，6 成功</p><p>枚举值：</p><ul><li>1： 未处理</li><li>2： 处理中</li><li>3： 超时</li><li>4： 异常</li><li>5： 待确认</li><li>6： 成功</li></ul>
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>视频完整路径（S3源为桶名/文件key；HTTP源为完整URL）</p>
+	InputPath *string `json:"InputPath,omitnil,omitempty" name:"InputPath"`
+
+	// <p>失败原因，成功为空</p>
+	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
+
+	// <p>创建时间，Unix 时间戳（秒）</p>
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>完成时间，Unix 时间戳（秒），进行中为 0</p>
+	FinishTime *string `json:"FinishTime,omitnil,omitempty" name:"FinishTime"`
 }
 
 type VideoList struct {

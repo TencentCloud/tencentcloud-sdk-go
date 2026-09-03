@@ -20,6 +20,9 @@ const (
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
 
+	// 存储连通性测试失败。
+	FAILEDOPERATION_STORAGECHECKFAILED = "FailedOperation.StorageCheckFailed"
+
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 
@@ -29,15 +32,42 @@ const (
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
 
+	// 批量列举 Filter 正则表达式非法。
+	INVALIDPARAMETERVALUE_INVALIDFILTERREGEX = "InvalidParameterValue.InvalidFilterRegex"
+
+	// 视频 URL 不可达或非法。
+	INVALIDPARAMETERVALUE_INVALIDHTTPURL = "InvalidParameterValue.InvalidHttpUrl"
+
+	// 存储区域与桶实际地域不匹配。
+	INVALIDPARAMETERVALUE_INVALIDREGION = "InvalidParameterValue.InvalidRegion"
+
+	// 指定前缀下没有视频文件。
+	INVALIDPARAMETERVALUE_NOVIDEOFILES = "InvalidParameterValue.NoVideoFiles"
+
+	// 存储服务地址不可达。
+	INVALIDPARAMETERVALUE_STORAGEUNREACHABLE = "InvalidParameterValue.StorageUnreachable"
+
+	// 输入文件不是支持的视频格式。
+	INVALIDPARAMETERVALUE_UNSUPPORTEDVIDEOFORMAT = "InvalidParameterValue.UnsupportedVideoFormat"
+
 	// 缺少参数错误。
 	MISSINGPARAMETER = "MissingParameter"
 
 	// 操作被拒绝。
 	OPERATIONDENIED = "OperationDenied"
 
+	// 标注模式未开放。
+	OPERATIONDENIED_ANNOTATIONTYPENOTENABLED = "OperationDenied.AnnotationTypeNotEnabled"
+
 	// license数量不足
 	OPERATIONDENIED_LICENSESNOTENOUGHERROR = "OperationDenied.LicensesNotEnoughError"
 
+	// 处理项当前状态不可重试。
+	OPERATIONDENIED_TASKNOTRETRYABLE = "OperationDenied.TaskNotRetryable"
+
 	// 资源不存在。
 	RESOURCENOTFOUND = "ResourceNotFound"
+
+	// 存储密钥无效或无权限。
+	UNAUTHORIZEDOPERATION_STORAGEAUTHFAILED = "UnauthorizedOperation.StorageAuthFailed"
 )

@@ -1067,6 +1067,80 @@ func (c *Client) DescribeQuestionMarkAgentJobWithContext(ctx context.Context, re
     return
 }
 
+func NewDescribeQuestionSplitJobRequest() (request *DescribeQuestionSplitJobRequest) {
+    request = &DescribeQuestionSplitJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ocr", APIVersion, "DescribeQuestionSplitJob")
+    
+    
+    return
+}
+
+func NewDescribeQuestionSplitJobResponse() (response *DescribeQuestionSplitJobResponse) {
+    response = &DescribeQuestionSplitJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeQuestionSplitJob
+// 异步试卷切题识别可将整页练习册、试卷或教辅中的题目进行自动切题，并识别出其中的文字内容和坐标位置，是试卷切题的接口补充。主要解决试卷录题这类多页场景、单题跨页场景。需要 SubmitQuestionSplitOCRJob（提交任务）、DescribeQuestionSplitOCRJob（查询任务）两个接口配套使用，计费发生在提交任务后。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGESIZETOOLARGE = "FailedOperation.ImageSizeTooLarge"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_PDFPARSEFAILED = "FailedOperation.PDFParseFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNKNOWFILETYPEERROR = "FailedOperation.UnKnowFileTypeError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) DescribeQuestionSplitJob(request *DescribeQuestionSplitJobRequest) (response *DescribeQuestionSplitJobResponse, err error) {
+    return c.DescribeQuestionSplitJobWithContext(context.Background(), request)
+}
+
+// DescribeQuestionSplitJob
+// 异步试卷切题识别可将整页练习册、试卷或教辅中的题目进行自动切题，并识别出其中的文字内容和坐标位置，是试卷切题的接口补充。主要解决试卷录题这类多页场景、单题跨页场景。需要 SubmitQuestionSplitOCRJob（提交任务）、DescribeQuestionSplitOCRJob（查询任务）两个接口配套使用，计费发生在提交任务后。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGESIZETOOLARGE = "FailedOperation.ImageSizeTooLarge"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_PDFPARSEFAILED = "FailedOperation.PDFParseFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNKNOWFILETYPEERROR = "FailedOperation.UnKnowFileTypeError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) DescribeQuestionSplitJobWithContext(ctx context.Context, request *DescribeQuestionSplitJobRequest) (response *DescribeQuestionSplitJobResponse, err error) {
+    if request == nil {
+        request = NewDescribeQuestionSplitJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ocr", APIVersion, "DescribeQuestionSplitJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeQuestionSplitJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeQuestionSplitJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDriverLicenseOCRRequest() (request *DriverLicenseOCRRequest) {
     request = &DriverLicenseOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -7095,6 +7169,80 @@ func (c *Client) SubmitQuestionMarkAgentJobWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewSubmitQuestionMarkAgentJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSubmitQuestionSplitJobRequest() (request *SubmitQuestionSplitJobRequest) {
+    request = &SubmitQuestionSplitJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ocr", APIVersion, "SubmitQuestionSplitJob")
+    
+    
+    return
+}
+
+func NewSubmitQuestionSplitJobResponse() (response *SubmitQuestionSplitJobResponse) {
+    response = &SubmitQuestionSplitJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SubmitQuestionSplitJob
+// 异步试卷切题识别可将整页练习册、试卷或教辅中的题目进行自动切题，并识别出其中的文字内容和坐标位置，是试卷切题的接口补充。主要解决试卷录题这类多页场景、单题跨页场景。需要 SubmitQuestionSplitOCRJob（提交任务）、DescribeQuestionSplitOCRJob（查询任务）两个接口配套使用，计费发生在提交任务后。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGESIZETOOLARGE = "FailedOperation.ImageSizeTooLarge"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_PDFPARSEFAILED = "FailedOperation.PDFParseFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNKNOWFILETYPEERROR = "FailedOperation.UnKnowFileTypeError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) SubmitQuestionSplitJob(request *SubmitQuestionSplitJobRequest) (response *SubmitQuestionSplitJobResponse, err error) {
+    return c.SubmitQuestionSplitJobWithContext(context.Background(), request)
+}
+
+// SubmitQuestionSplitJob
+// 异步试卷切题识别可将整页练习册、试卷或教辅中的题目进行自动切题，并识别出其中的文字内容和坐标位置，是试卷切题的接口补充。主要解决试卷录题这类多页场景、单题跨页场景。需要 SubmitQuestionSplitOCRJob（提交任务）、DescribeQuestionSplitOCRJob（查询任务）两个接口配套使用，计费发生在提交任务后。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGESIZETOOLARGE = "FailedOperation.ImageSizeTooLarge"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_PDFPARSEFAILED = "FailedOperation.PDFParseFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNKNOWFILETYPEERROR = "FailedOperation.UnKnowFileTypeError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) SubmitQuestionSplitJobWithContext(ctx context.Context, request *SubmitQuestionSplitJobRequest) (response *SubmitQuestionSplitJobResponse, err error) {
+    if request == nil {
+        request = NewSubmitQuestionSplitJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ocr", APIVersion, "SubmitQuestionSplitJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SubmitQuestionSplitJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSubmitQuestionSplitJobResponse()
     err = c.Send(request, response)
     return
 }

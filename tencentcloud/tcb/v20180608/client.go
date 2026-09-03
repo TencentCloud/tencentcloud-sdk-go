@@ -5711,6 +5711,68 @@ func (c *Client) ModifyLoginConfigWithContext(ctx context.Context, request *Modi
     return
 }
 
+func NewModifyPGInstanceSpecRequest() (request *ModifyPGInstanceSpecRequest) {
+    request = &ModifyPGInstanceSpecRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "ModifyPGInstanceSpec")
+    
+    
+    return
+}
+
+func NewModifyPGInstanceSpecResponse() (response *ModifyPGInstanceSpecResponse) {
+    response = &ModifyPGInstanceSpecResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyPGInstanceSpec
+// 对 PG 独享实例变配
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INSTANCESTATUSCONFLICT = "FailedOperation.InstanceStatusConflict"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SYS_ERR = "InternalError.SYS_ERR"
+//  INVALIDPARAMETER_INVALID_PARAM = "InvalidParameter.INVALID_PARAM"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+func (c *Client) ModifyPGInstanceSpec(request *ModifyPGInstanceSpecRequest) (response *ModifyPGInstanceSpecResponse, err error) {
+    return c.ModifyPGInstanceSpecWithContext(context.Background(), request)
+}
+
+// ModifyPGInstanceSpec
+// 对 PG 独享实例变配
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INSTANCESTATUSCONFLICT = "FailedOperation.InstanceStatusConflict"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SYS_ERR = "InternalError.SYS_ERR"
+//  INVALIDPARAMETER_INVALID_PARAM = "InvalidParameter.INVALID_PARAM"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+func (c *Client) ModifyPGInstanceSpecWithContext(ctx context.Context, request *ModifyPGInstanceSpecRequest) (response *ModifyPGInstanceSpecResponse, err error) {
+    if request == nil {
+        request = NewModifyPGInstanceSpecRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "ModifyPGInstanceSpec")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyPGInstanceSpec require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyPGInstanceSpecResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyProviderRequest() (request *ModifyProviderRequest) {
     request = &ModifyProviderRequest{
         BaseRequest: &tchttp.BaseRequest{},

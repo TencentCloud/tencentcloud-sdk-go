@@ -806,7 +806,7 @@ type CreateDBInstanceHourRequestParams struct {
 	// <p>指版本信息。具体支持的版本信息 ，请通过接口 <a href="https://cloud.tencent.com/document/product/240/38567">DescribeSpecInfo</a> 获取。</p><ul><li>MONGO_40_WT：MongoDB 4.0 WiredTiger存储引擎版本。</li><li>MONGO_42_WT：MongoDB 4.2 WiredTiger存储引擎版本。</li><li>MONGO_44_WT：MongoDB 4.4 WiredTiger存储引擎版本。</li><li>MONGO_50_WT：MongoDB 5.0 WiredTiger存储引擎版本。</li><li>MONGO_60_WT：MongoDB 6.0 WiredTiger存储引擎版本。</li><li>MONGO_70_WT：MongoDB 7.0 WiredTiger存储引擎版本。</li><li>MONGO_80_WT：MongoDB 8.0 WiredTiger存储引擎版本。</li></ul>
 	MongoVersion *string `json:"MongoVersion,omitnil,omitempty" name:"MongoVersion"`
 
-	// <ul><li><strong>产品推荐规格类型</strong><ul><li>GE.LD.T1：本地盘（通用 I 型）。</li><li>GE.CD.T1：云盘（通用 I 型）。</li></ul></li><li><strong>产品受限白名单规格类型</strong><ul><li>HIO10G：本地盘（高 IO 万兆型），已售罄，建议选择 GE.LD.T1。</li><li>HCD：云盘（云盘版），已售罄，建议选择 GE.CD.T1。</li></ul></li></ul>            <blockquote class="d-mod-explain">              <div class="d-mod-title d-explain-title">                <i class="d-icon-explain"></i>说明：              </div>               <p> 受限白名单规格类型需白名单权限，如需开通，请<a href="https://console.cloud.tencent.com/workorder/category">提交工单</a>申请。</p>            </blockquote>            
+	// <ul><li><strong>产品推荐规格类型</strong><ul><li>GE.LD.T2：本地盘（通用 II 型）。</li><li>EX.LD.T2：本地盘（独享 II 型）。</li><li>GE.CD.T1：云盘（通用 I 型）。</li></ul></li><li><strong>产品受限白名单规格类型</strong><ul><li>GE.LD.T1：本地盘（通用 I 型），预计将逐步售罄，建议选择 GE.LD.T2。</li><li>HIO10G：本地盘（高 IO 万兆型），已售罄，建议选择 GE.LD.T2。</li><li>HCD：云盘（云盘版），已售罄，建议选择 GE.CD.T1。</li></ul></li></ul>            <blockquote class="d-mod-explain">              <div class="d-mod-title d-explain-title">                <i class="d-icon-explain"></i>说明：              </div>               <p> 受限白名单规格类型需白名单权限，如需开通，请<a href="https://console.cloud.tencent.com/workorder/category">提交工单</a>申请。</p>            </blockquote>            
 	MachineCode *string `json:"MachineCode,omitnil,omitempty" name:"MachineCode"`
 
 	// <p>实例数量，最小值1，最大值为30。</p>
@@ -839,7 +839,7 @@ type CreateDBInstanceHourRequestParams struct {
 	// <p>父实例 ID。</p><ul><li>当参数<strong>Clone</strong>为3或者4时，即实例为只读或灾备实例时，该参数必须配置。</li><li>请登录 <a href="https://console.cloud.tencent.com/mongodb">MongoDB 控制台</a>在实例列表复制父实例 ID。</li></ul>
 	Father *string `json:"Father,omitnil,omitempty" name:"Father"`
 
-	// <p>安全组 ID。 请登录<a href="https://console.cloud.tencent.com/vpc/security-group">安全组控制台</a>页面获取与数据库实例同地域的安全组 ID。</p>
+	// <p>安全组 ID。 请登录<a href="https://console.cloud.tencent.com/vpc/security-group">安全组控制台</a>页面获取与数据库实例同地域的安全组 ID。</p><p>根据最新的云服务安全规则，所有实例均需绑定安全组。</p>
 	SecurityGroup []*string `json:"SecurityGroup,omitnil,omitempty" name:"SecurityGroup"`
 
 	// <p>克隆实例回档时间。</p><ul><li>若为克隆实例，则必须配置该参数。输入格式示例：2021-08-13 16:30:00。</li><li>回档时间范围：仅能回档7天内时间点的数据。</li></ul>
@@ -906,7 +906,7 @@ type CreateDBInstanceHourRequest struct {
 	// <p>指版本信息。具体支持的版本信息 ，请通过接口 <a href="https://cloud.tencent.com/document/product/240/38567">DescribeSpecInfo</a> 获取。</p><ul><li>MONGO_40_WT：MongoDB 4.0 WiredTiger存储引擎版本。</li><li>MONGO_42_WT：MongoDB 4.2 WiredTiger存储引擎版本。</li><li>MONGO_44_WT：MongoDB 4.4 WiredTiger存储引擎版本。</li><li>MONGO_50_WT：MongoDB 5.0 WiredTiger存储引擎版本。</li><li>MONGO_60_WT：MongoDB 6.0 WiredTiger存储引擎版本。</li><li>MONGO_70_WT：MongoDB 7.0 WiredTiger存储引擎版本。</li><li>MONGO_80_WT：MongoDB 8.0 WiredTiger存储引擎版本。</li></ul>
 	MongoVersion *string `json:"MongoVersion,omitnil,omitempty" name:"MongoVersion"`
 
-	// <ul><li><strong>产品推荐规格类型</strong><ul><li>GE.LD.T1：本地盘（通用 I 型）。</li><li>GE.CD.T1：云盘（通用 I 型）。</li></ul></li><li><strong>产品受限白名单规格类型</strong><ul><li>HIO10G：本地盘（高 IO 万兆型），已售罄，建议选择 GE.LD.T1。</li><li>HCD：云盘（云盘版），已售罄，建议选择 GE.CD.T1。</li></ul></li></ul>            <blockquote class="d-mod-explain">              <div class="d-mod-title d-explain-title">                <i class="d-icon-explain"></i>说明：              </div>               <p> 受限白名单规格类型需白名单权限，如需开通，请<a href="https://console.cloud.tencent.com/workorder/category">提交工单</a>申请。</p>            </blockquote>            
+	// <ul><li><strong>产品推荐规格类型</strong><ul><li>GE.LD.T2：本地盘（通用 II 型）。</li><li>EX.LD.T2：本地盘（独享 II 型）。</li><li>GE.CD.T1：云盘（通用 I 型）。</li></ul></li><li><strong>产品受限白名单规格类型</strong><ul><li>GE.LD.T1：本地盘（通用 I 型），预计将逐步售罄，建议选择 GE.LD.T2。</li><li>HIO10G：本地盘（高 IO 万兆型），已售罄，建议选择 GE.LD.T2。</li><li>HCD：云盘（云盘版），已售罄，建议选择 GE.CD.T1。</li></ul></li></ul>            <blockquote class="d-mod-explain">              <div class="d-mod-title d-explain-title">                <i class="d-icon-explain"></i>说明：              </div>               <p> 受限白名单规格类型需白名单权限，如需开通，请<a href="https://console.cloud.tencent.com/workorder/category">提交工单</a>申请。</p>            </blockquote>            
 	MachineCode *string `json:"MachineCode,omitnil,omitempty" name:"MachineCode"`
 
 	// <p>实例数量，最小值1，最大值为30。</p>
@@ -939,7 +939,7 @@ type CreateDBInstanceHourRequest struct {
 	// <p>父实例 ID。</p><ul><li>当参数<strong>Clone</strong>为3或者4时，即实例为只读或灾备实例时，该参数必须配置。</li><li>请登录 <a href="https://console.cloud.tencent.com/mongodb">MongoDB 控制台</a>在实例列表复制父实例 ID。</li></ul>
 	Father *string `json:"Father,omitnil,omitempty" name:"Father"`
 
-	// <p>安全组 ID。 请登录<a href="https://console.cloud.tencent.com/vpc/security-group">安全组控制台</a>页面获取与数据库实例同地域的安全组 ID。</p>
+	// <p>安全组 ID。 请登录<a href="https://console.cloud.tencent.com/vpc/security-group">安全组控制台</a>页面获取与数据库实例同地域的安全组 ID。</p><p>根据最新的云服务安全规则，所有实例均需绑定安全组。</p>
 	SecurityGroup []*string `json:"SecurityGroup,omitnil,omitempty" name:"SecurityGroup"`
 
 	// <p>克隆实例回档时间。</p><ul><li>若为克隆实例，则必须配置该参数。输入格式示例：2021-08-13 16:30:00。</li><li>回档时间范围：仅能回档7天内时间点的数据。</li></ul>
@@ -1205,7 +1205,7 @@ type CreateDBInstanceRequestParams struct {
 	// <p>指定购买实例的购买时长。取值可选：[1,2,3,4,5,6,7,8,9,10,11,12,24,36]；单位：月。</p>
 	Period *uint64 `json:"Period,omitnil,omitempty" name:"Period"`
 
-	// <ul><li><strong>产品推荐规格类型</strong><ul><li>GE.LD.T1：本地盘（通用 I 型）。</li><li>GE.CD.T1：云盘（通用 I 型）。</li></ul></li><li><strong>产品受限白名单规格类型</strong><ul><li>HIO10G：本地盘（高 IO 万兆型），已售罄，建议选择 GE.LD.T1。</li><li>HCD：云盘（云盘版），已售罄，建议选择 GE.CD.T1。</li></ul></li></ul>            <blockquote class="d-mod-explain">              <div class="d-mod-title d-explain-title">                <i class="d-icon-explain"></i>说明：              </div>               <p> 受限白名单规格类型需白名单权限，如需开通，请<a href="https://console.cloud.tencent.com/workorder/category">提交工单</a>申请。</p>            </blockquote>            
+	// <ul><li><strong>产品推荐规格类型</strong><ul><li>GE.LD.T2：本地盘（通用 II 型）。</li><li>EX.LD.T2：本地盘（独享 II 型）。</li><li>GE.CD.T1：云盘（通用 I 型）。</li></ul></li><li><strong>产品受限白名单规格类型</strong><ul><li>GE.LD.T1：本地盘（通用 I 型），预计将逐步售罄，建议选择 GE.LD.T2</li><li>HIO10G：本地盘（高 IO 万兆型），已售罄，建议选择 GE.LD.T2。</li><li>HCD：云盘（云盘版），已售罄，建议选择 GE.CD.T1。</li></ul></li></ul>            <blockquote class="d-mod-explain">              <div class="d-mod-title d-explain-title">                <i class="d-icon-explain"></i>说明：              </div>               <p> 受限白名单规格类型需白名单权限，如需开通，请<a href="https://console.cloud.tencent.com/workorder/category">提交工单</a>申请。</p>            </blockquote>            
 	MachineCode *string `json:"MachineCode,omitnil,omitempty" name:"MachineCode"`
 
 	// <p>实例架构类型。</p><ul><li>REPLSET：副本集。</li><li>SHARD：分片集群。</li></ul>
@@ -1314,7 +1314,7 @@ type CreateDBInstanceRequest struct {
 	// <p>指定购买实例的购买时长。取值可选：[1,2,3,4,5,6,7,8,9,10,11,12,24,36]；单位：月。</p>
 	Period *uint64 `json:"Period,omitnil,omitempty" name:"Period"`
 
-	// <ul><li><strong>产品推荐规格类型</strong><ul><li>GE.LD.T1：本地盘（通用 I 型）。</li><li>GE.CD.T1：云盘（通用 I 型）。</li></ul></li><li><strong>产品受限白名单规格类型</strong><ul><li>HIO10G：本地盘（高 IO 万兆型），已售罄，建议选择 GE.LD.T1。</li><li>HCD：云盘（云盘版），已售罄，建议选择 GE.CD.T1。</li></ul></li></ul>            <blockquote class="d-mod-explain">              <div class="d-mod-title d-explain-title">                <i class="d-icon-explain"></i>说明：              </div>               <p> 受限白名单规格类型需白名单权限，如需开通，请<a href="https://console.cloud.tencent.com/workorder/category">提交工单</a>申请。</p>            </blockquote>            
+	// <ul><li><strong>产品推荐规格类型</strong><ul><li>GE.LD.T2：本地盘（通用 II 型）。</li><li>EX.LD.T2：本地盘（独享 II 型）。</li><li>GE.CD.T1：云盘（通用 I 型）。</li></ul></li><li><strong>产品受限白名单规格类型</strong><ul><li>GE.LD.T1：本地盘（通用 I 型），预计将逐步售罄，建议选择 GE.LD.T2</li><li>HIO10G：本地盘（高 IO 万兆型），已售罄，建议选择 GE.LD.T2。</li><li>HCD：云盘（云盘版），已售罄，建议选择 GE.CD.T1。</li></ul></li></ul>            <blockquote class="d-mod-explain">              <div class="d-mod-title d-explain-title">                <i class="d-icon-explain"></i>说明：              </div>               <p> 受限白名单规格类型需白名单权限，如需开通，请<a href="https://console.cloud.tencent.com/workorder/category">提交工单</a>申请。</p>            </blockquote>            
 	MachineCode *string `json:"MachineCode,omitnil,omitempty" name:"MachineCode"`
 
 	// <p>实例架构类型。</p><ul><li>REPLSET：副本集。</li><li>SHARD：分片集群。</li></ul>
@@ -3288,62 +3288,50 @@ func (r *DescribeDBInstanceNamespaceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDBInstanceNodePropertyRequestParams struct {
-	// 实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
+	// <p>实例 ID。请登录 <a href="https://console.cloud.tencent.com/mongodb">MongoDB 控制台</a>在实例列表复制实例 ID。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 节点 ID。请登录 [MongoDB 控制台的节点管理](https://console.cloud.tencent.com/mongodb)复制节点 ID。
+	// <p>节点 ID。请登录 <a href="https://console.cloud.tencent.com/mongodb">MongoDB 控制台的节点管理</a>复制节点 ID。</p>
 	NodeIds []*string `json:"NodeIds,omitnil,omitempty" name:"NodeIds"`
 
-	// 节点角色。可选值包括：
-	// - PRIMARY：主节点。
-	// - SECONDARY：从节点。
-	// - READONLY：只读节点。
-	// - ARBITER：仲裁节点。
+	// <p>节点角色。可选值包括：</p><ul><li>PRIMARY：主节点。</li><li>SECONDARY：从节点。</li><li>READONLY：只读节点。</li><li>ARBITER：仲裁节点。</li></ul>
 	Roles []*string `json:"Roles,omitnil,omitempty" name:"Roles"`
 
-	// 该参数指定节点是否为 Hidden 节点，默认为 false。
+	// <p>该参数指定节点是否为 Hidden 节点，默认为 false。</p>
 	OnlyHidden *bool `json:"OnlyHidden,omitnil,omitempty" name:"OnlyHidden"`
 
-	// 该参数指定选举新主节点的优先级。其取值范围为[0,100]，数值越高，优先级越高。
+	// <p>该参数指定选举新主节点的优先级。其取值范围为[0,100]，数值越高，优先级越高。</p>
 	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
 
-	// 该参数指定节点投票权。
-	// - 1：具有投票权。
-	// - 0：无投票权。
+	// <p>该参数指定节点投票权。</p><ul><li>1：具有投票权。</li><li>0：无投票权。</li></ul>
 	Votes *int64 `json:"Votes,omitnil,omitempty" name:"Votes"`
 
-	// 节点标签。
+	// <p>节点标签。</p>
 	Tags []*NodeTag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type DescribeDBInstanceNodePropertyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
+	// <p>实例 ID。请登录 <a href="https://console.cloud.tencent.com/mongodb">MongoDB 控制台</a>在实例列表复制实例 ID。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 节点 ID。请登录 [MongoDB 控制台的节点管理](https://console.cloud.tencent.com/mongodb)复制节点 ID。
+	// <p>节点 ID。请登录 <a href="https://console.cloud.tencent.com/mongodb">MongoDB 控制台的节点管理</a>复制节点 ID。</p>
 	NodeIds []*string `json:"NodeIds,omitnil,omitempty" name:"NodeIds"`
 
-	// 节点角色。可选值包括：
-	// - PRIMARY：主节点。
-	// - SECONDARY：从节点。
-	// - READONLY：只读节点。
-	// - ARBITER：仲裁节点。
+	// <p>节点角色。可选值包括：</p><ul><li>PRIMARY：主节点。</li><li>SECONDARY：从节点。</li><li>READONLY：只读节点。</li><li>ARBITER：仲裁节点。</li></ul>
 	Roles []*string `json:"Roles,omitnil,omitempty" name:"Roles"`
 
-	// 该参数指定节点是否为 Hidden 节点，默认为 false。
+	// <p>该参数指定节点是否为 Hidden 节点，默认为 false。</p>
 	OnlyHidden *bool `json:"OnlyHidden,omitnil,omitempty" name:"OnlyHidden"`
 
-	// 该参数指定选举新主节点的优先级。其取值范围为[0,100]，数值越高，优先级越高。
+	// <p>该参数指定选举新主节点的优先级。其取值范围为[0,100]，数值越高，优先级越高。</p>
 	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
 
-	// 该参数指定节点投票权。
-	// - 1：具有投票权。
-	// - 0：无投票权。
+	// <p>该参数指定节点投票权。</p><ul><li>1：具有投票权。</li><li>0：无投票权。</li></ul>
 	Votes *int64 `json:"Votes,omitnil,omitempty" name:"Votes"`
 
-	// 节点标签。
+	// <p>节点标签。</p>
 	Tags []*NodeTag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
@@ -3374,11 +3362,14 @@ func (r *DescribeDBInstanceNodePropertyRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDBInstanceNodePropertyResponseParams struct {
-	// Mongos节点属性。
+	// <p>Mongos节点属性。</p>
 	Mongos []*NodeProperty `json:"Mongos,omitnil,omitempty" name:"Mongos"`
 
-	// 副本集节点信息。
+	// <p>副本集节点信息。</p>
 	ReplicateSets []*ReplicateSetInfo `json:"ReplicateSets,omitnil,omitempty" name:"ReplicateSets"`
+
+	// <p>Dynamo节点信息</p>
+	DynamoProxies []*NodeProperty `json:"DynamoProxies,omitnil,omitempty" name:"DynamoProxies"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -5476,7 +5467,7 @@ type InquirePriceCreateDBInstancesRequestParams struct {
 	// <p>实例版本信息。具体支持的版本，请通过接口<a href="https://cloud.tencent.com/document/product/240/38567">DescribeSpecInfo</a>查询，其返回的数据结构SpecItems中的参数MongoVersionCode为实例所支持的版本信息。版本信息与版本号对应关系如下：</p><ul><li>MONGO_40_WT：MongoDB 4.0 WiredTiger存储引擎版本。</li><li>MONGO_42_WT：MongoDB 4.2 WiredTiger存储引擎版本。</li><li>MONGO_44_WT：MongoDB 4.4 WiredTiger存储引擎版本。</li><li>MONGO_50_WT：MongoDB 5.0 WiredTiger存储引擎版本。</li><li>MONGO_60_WT：MongoDB 6.0 WiredTiger存储引擎版本。</li><li>MONGO_70_WT：MongoDB 7.0 WiredTiger存储引擎版本。</li><li>MONGO_80_WT：MongoDB 8.0 WiredTiger存储引擎版本。</li></ul>
 	MongoVersion *string `json:"MongoVersion,omitnil,omitempty" name:"MongoVersion"`
 
-	// <p>产品推荐规格类型：</p><ul><li>GE.LD.T1：本地盘（通用I型）。</li><li>GE.CD.T1：云盘（通用I型）。</li></ul><p>产品白名单规格类型：</p><ul><li>HIO10G：本地盘（高IO万兆型）。</li><li>HCD：云盘（云盘版）。</li></ul><p>注意：白名单规格类型为白名单控制，如若需要，请 <a href="https://console.cloud.tencent.com/workorder/category">提交工单</a> 申请</p>
+	// <p>产品推荐规格类型：</p><ul><li>GE.LD.T2：本地盘（通用II型）。</li><li>EX.LD.T2：本地盘（独享II型）。</li><li>GE.CD.T1：云盘（通用I型）。</li></ul><p>产品白名单规格类型：</p><ul><li>GE.LD.T1：本地盘（通用I型），预计将逐步售罄，建议选择 GE.LD.T2。</li><li>HIO10G：本地盘（高IO万兆型），已售罄，建议选择 GE.LD.T2。</li><li>HCD：云盘（云盘版），已售罄，建议选择 GE.CD.T1。</li></ul><p>注意：白名单规格类型为白名单控制，如若需要，请 <a href="https://console.cloud.tencent.com/workorder/category">提交工单</a> 申请</p>
 	MachineCode *string `json:"MachineCode,omitnil,omitempty" name:"MachineCode"`
 
 	// <p>实例数量，取值范围为[1,10]。</p>
@@ -5537,7 +5528,7 @@ type InquirePriceCreateDBInstancesRequest struct {
 	// <p>实例版本信息。具体支持的版本，请通过接口<a href="https://cloud.tencent.com/document/product/240/38567">DescribeSpecInfo</a>查询，其返回的数据结构SpecItems中的参数MongoVersionCode为实例所支持的版本信息。版本信息与版本号对应关系如下：</p><ul><li>MONGO_40_WT：MongoDB 4.0 WiredTiger存储引擎版本。</li><li>MONGO_42_WT：MongoDB 4.2 WiredTiger存储引擎版本。</li><li>MONGO_44_WT：MongoDB 4.4 WiredTiger存储引擎版本。</li><li>MONGO_50_WT：MongoDB 5.0 WiredTiger存储引擎版本。</li><li>MONGO_60_WT：MongoDB 6.0 WiredTiger存储引擎版本。</li><li>MONGO_70_WT：MongoDB 7.0 WiredTiger存储引擎版本。</li><li>MONGO_80_WT：MongoDB 8.0 WiredTiger存储引擎版本。</li></ul>
 	MongoVersion *string `json:"MongoVersion,omitnil,omitempty" name:"MongoVersion"`
 
-	// <p>产品推荐规格类型：</p><ul><li>GE.LD.T1：本地盘（通用I型）。</li><li>GE.CD.T1：云盘（通用I型）。</li></ul><p>产品白名单规格类型：</p><ul><li>HIO10G：本地盘（高IO万兆型）。</li><li>HCD：云盘（云盘版）。</li></ul><p>注意：白名单规格类型为白名单控制，如若需要，请 <a href="https://console.cloud.tencent.com/workorder/category">提交工单</a> 申请</p>
+	// <p>产品推荐规格类型：</p><ul><li>GE.LD.T2：本地盘（通用II型）。</li><li>EX.LD.T2：本地盘（独享II型）。</li><li>GE.CD.T1：云盘（通用I型）。</li></ul><p>产品白名单规格类型：</p><ul><li>GE.LD.T1：本地盘（通用I型），预计将逐步售罄，建议选择 GE.LD.T2。</li><li>HIO10G：本地盘（高IO万兆型），已售罄，建议选择 GE.LD.T2。</li><li>HCD：云盘（云盘版），已售罄，建议选择 GE.CD.T1。</li></ul><p>注意：白名单规格类型为白名单控制，如若需要，请 <a href="https://console.cloud.tencent.com/workorder/category">提交工单</a> 申请</p>
 	MachineCode *string `json:"MachineCode,omitnil,omitempty" name:"MachineCode"`
 
 	// <p>实例数量，取值范围为[1,10]。</p>
@@ -6952,7 +6943,7 @@ type ModifyDBInstanceSpecRequestParams struct {
 	// <p>实例配置变更后的CPU大小。单位：C。该参数为空值时，默认取实例当前的 CPU 大小。当前所支持的CPU规格，请参见<a href="https://cloud.tencent.com/document/product/240/64125">产品规格</a>。</p>
 	Cpu *int64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 
-	// <p>实例配置变更后的产品规格类型。该参数为空值时，默认取实例当前的产品规格类型。<br>当前支持的产品规格类型如下：<br>产品推荐规格类型：</p><ul><li>GE.LD.T2：本地盘（通用II型）。</li><li>GE.CD.T2：云盘（通用II型）。</li><li>EX.LD.T2：本地盘（独享II型）。</li></ul><p>产品白名单规格类型：</p><ul><li>GE.LD.T1：本地盘（通用I型），预计将逐步售罄，建议选择通用II型。</li><li>GE.CD.T1：云盘（通用I型），预计将逐步售罄，建议选择通用II型。</li><li>HIO10G：本地盘（高IO万兆型），已售罄，建议选择通用II型。</li><li>HCD：云盘（云盘版），已售罄，建议选择通用II型。</li></ul><p>注意：</p><ol><li>白名单规格类型为白名单控制，如若需要，请 <a href="https://console.cloud.tencent.com/workorder/category">提交工单</a> 申请</li><li>默认不能变更到白名单规格类型</li><li>产品推荐的规格类型之间不支持相互变更</li></ol>
+	// <p>实例配置变更后的产品规格类型。该参数为空值时，默认取实例当前的产品规格类型。<br>当前支持的产品规格类型如下：<br>产品推荐规格类型：</p><ul><li>GE.LD.T2：本地盘（通用II型）。</li><li>EX.LD.T2：本地盘（独享II型）。</li><li>GE.LD.T1：本地盘（通用I型）。</li></ul><p>产品白名单规格类型：</p><ul><li>GE.LD.T1：本地盘（通用I型），预计将逐步售罄。</li><li>HIO10G：本地盘（高IO万兆型），已售罄，建议选择 GE.LD.T1。</li><li>HCD：云盘（云盘版），已售罄，建议选择 GE.CD.T1。</li></ul><p>注意：</p><ol><li>白名单规格类型为白名单控制，如若需要，请 <a href="https://console.cloud.tencent.com/workorder/category">提交工单</a> 申请</li><li>默认不能变更到白名单规格类型</li><li>产品推荐的规格类型之间不支持相互变更</li></ol>
 	MachineCode *string `json:"MachineCode,omitnil,omitempty" name:"MachineCode"`
 
 	// <p>单分片变配列表，用于指定需要单独调整规格的分片。每次设置时 CPU、内存、磁盘都必须指定；如果指定多个分片，所有分片的目标规格必须一致；未指定的分片保持不变。仅分片集群支持，副本集不支持。注意：此参数与整实例级别的变配参数（如 Memory、Volume、CpuNum 等）互斥，不能同时传入。</p>
@@ -6995,7 +6986,7 @@ type ModifyDBInstanceSpecRequest struct {
 	// <p>实例配置变更后的CPU大小。单位：C。该参数为空值时，默认取实例当前的 CPU 大小。当前所支持的CPU规格，请参见<a href="https://cloud.tencent.com/document/product/240/64125">产品规格</a>。</p>
 	Cpu *int64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 
-	// <p>实例配置变更后的产品规格类型。该参数为空值时，默认取实例当前的产品规格类型。<br>当前支持的产品规格类型如下：<br>产品推荐规格类型：</p><ul><li>GE.LD.T2：本地盘（通用II型）。</li><li>GE.CD.T2：云盘（通用II型）。</li><li>EX.LD.T2：本地盘（独享II型）。</li></ul><p>产品白名单规格类型：</p><ul><li>GE.LD.T1：本地盘（通用I型），预计将逐步售罄，建议选择通用II型。</li><li>GE.CD.T1：云盘（通用I型），预计将逐步售罄，建议选择通用II型。</li><li>HIO10G：本地盘（高IO万兆型），已售罄，建议选择通用II型。</li><li>HCD：云盘（云盘版），已售罄，建议选择通用II型。</li></ul><p>注意：</p><ol><li>白名单规格类型为白名单控制，如若需要，请 <a href="https://console.cloud.tencent.com/workorder/category">提交工单</a> 申请</li><li>默认不能变更到白名单规格类型</li><li>产品推荐的规格类型之间不支持相互变更</li></ol>
+	// <p>实例配置变更后的产品规格类型。该参数为空值时，默认取实例当前的产品规格类型。<br>当前支持的产品规格类型如下：<br>产品推荐规格类型：</p><ul><li>GE.LD.T2：本地盘（通用II型）。</li><li>EX.LD.T2：本地盘（独享II型）。</li><li>GE.LD.T1：本地盘（通用I型）。</li></ul><p>产品白名单规格类型：</p><ul><li>GE.LD.T1：本地盘（通用I型），预计将逐步售罄。</li><li>HIO10G：本地盘（高IO万兆型），已售罄，建议选择 GE.LD.T1。</li><li>HCD：云盘（云盘版），已售罄，建议选择 GE.CD.T1。</li></ul><p>注意：</p><ol><li>白名单规格类型为白名单控制，如若需要，请 <a href="https://console.cloud.tencent.com/workorder/category">提交工单</a> 申请</li><li>默认不能变更到白名单规格类型</li><li>产品推荐的规格类型之间不支持相互变更</li></ol>
 	MachineCode *string `json:"MachineCode,omitnil,omitempty" name:"MachineCode"`
 
 	// <p>单分片变配列表，用于指定需要单独调整规格的分片。每次设置时 CPU、内存、磁盘都必须指定；如果指定多个分片，所有分片的目标规格必须一致；未指定的分片保持不变。仅分片集群支持，副本集不支持。注意：此参数与整实例级别的变配参数（如 Memory、Volume、CpuNum 等）互斥，不能同时传入。</p>
@@ -7319,57 +7310,41 @@ type ModifyShardSpecInfo struct {
 }
 
 type NodeProperty struct {
-	// 节点所在的可用区。
+	// <p>节点所在的可用区。</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 节点名称。
+	// <p>节点名称。</p>
 	NodeName *string `json:"NodeName,omitnil,omitempty" name:"NodeName"`
 
-	// 节点访问地址。
+	// <p>节点访问地址。</p>
 	Address *string `json:"Address,omitnil,omitempty" name:"Address"`
 
-	// 节点公网访问外网地址(IP或域名，示例为IP方式)。
+	// <p>节点公网访问外网地址(IP或域名，示例为IP方式)。</p>
 	WanServiceAddress *string `json:"WanServiceAddress,omitnil,omitempty" name:"WanServiceAddress"`
 
-	// 节点角色。
-	// - PRIMARY：主节点。
-	// - SECONDARY：从节点。
-	// - READONLY：只读节点。
-	// - ARBITER：仲裁节点。
+	// <p>节点角色。</p><ul><li>PRIMARY：主节点。</li><li>SECONDARY：从节点。</li><li>READONLY：只读节点。</li><li>ARBITER：仲裁节点。</li></ul>
 	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
 
-	// 节点是否为 Hidden 节点。
-	// - true：Hidden 节点。
-	// - false：非 Hidden 节点。
+	// <p>节点是否为 Hidden 节点。</p><ul><li>true：Hidden 节点。</li><li>false：非 Hidden 节点。</li></ul>
 	Hidden *bool `json:"Hidden,omitnil,omitempty" name:"Hidden"`
 
-	// 节点状态。
-	// - NORMAL：正常运行中。
-	// - STARTUP：正在启动。
-	// - STARTUP2：正在启动，处理中间数据。
-	// - RECOVERING：恢复中，暂不可用。
-	// - DOWN：已掉线。
-	// - UNKNOWN：未知状态。
-	// - ROLLBACK：回滚中。
-	// - REMOVED：已移除。
+	// <p>节点状态。</p><ul><li>NORMAL：正常运行中。</li><li>STARTUP：正在启动。</li><li>STARTUP2：正在启动，处理中间数据。</li><li>RECOVERING：恢复中，暂不可用。</li><li>DOWN：已掉线。</li><li>UNKNOWN：未知状态。</li><li>ROLLBACK：回滚中。</li><li>REMOVED：已移除。</li></ul>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 主从同步延迟时间，单位：秒。
+	// <p>主从同步延迟时间，单位：秒。</p>
 	SlaveDelay *int64 `json:"SlaveDelay,omitnil,omitempty" name:"SlaveDelay"`
 
-	// 节点优先级。其取值范围为[0,100]，数值越高，优先级越高。
+	// <p>节点优先级。其取值范围为[0,100]，数值越高，优先级越高。</p>
 	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
 
-	// 节点投票权。
-	// - 1：具有投票权。
-	// - 0：无投票权。
+	// <p>节点投票权。</p><ul><li>1：具有投票权。</li><li>0：无投票权。</li></ul>
 	Votes *int64 `json:"Votes,omitnil,omitempty" name:"Votes"`
 
-	// 节点标签。
+	// <p>节点标签。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*NodeTag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 副本集 ID。
+	// <p>副本集 ID。</p>
 	ReplicateSetId *string `json:"ReplicateSetId,omitnil,omitempty" name:"ReplicateSetId"`
 }
 
@@ -7779,7 +7754,7 @@ type ReplicaSetInfo struct {
 }
 
 type ReplicateSetInfo struct {
-	// 节点属性
+	// <p>节点属性</p>
 	Nodes []*NodeProperty `json:"Nodes,omitnil,omitempty" name:"Nodes"`
 }
 

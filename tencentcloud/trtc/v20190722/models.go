@@ -1169,15 +1169,39 @@ func (r *CreatePictureResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateRecognizeVocabV3RequestParams struct {
+	// <p>词表名称（同 SdkAppId 下唯一）</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
 	// <p>客户维度唯一标识</p>
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// <p>描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>热词+权重数组</p>
+	WordWeights []*HotWord `json:"WordWeights,omitnil,omitempty" name:"WordWeights"`
+
+	// <p>文本形式热词</p>
+	WordWeightStr *string `json:"WordWeightStr,omitnil,omitempty" name:"WordWeightStr"`
 }
 
 type CreateRecognizeVocabV3Request struct {
 	*tchttp.BaseRequest
 	
+	// <p>词表名称（同 SdkAppId 下唯一）</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
 	// <p>客户维度唯一标识</p>
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// <p>描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>热词+权重数组</p>
+	WordWeights []*HotWord `json:"WordWeights,omitnil,omitempty" name:"WordWeights"`
+
+	// <p>文本形式热词</p>
+	WordWeightStr *string `json:"WordWeightStr,omitnil,omitempty" name:"WordWeightStr"`
 }
 
 func (r *CreateRecognizeVocabV3Request) ToJsonString() string {
@@ -1192,7 +1216,11 @@ func (r *CreateRecognizeVocabV3Request) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "Name")
 	delete(f, "SdkAppId")
+	delete(f, "Description")
+	delete(f, "WordWeights")
+	delete(f, "WordWeightStr")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRecognizeVocabV3Request has unknown keys!", "")
 	}
@@ -1201,6 +1229,9 @@ func (r *CreateRecognizeVocabV3Request) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateRecognizeVocabV3ResponseParams struct {
+	// <p>词表 id</p>
+	VocabId *string `json:"VocabId,omitnil,omitempty" name:"VocabId"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -1604,12 +1635,21 @@ func (r *DeletePictureResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteRecognizeVocabV3RequestParams struct {
+	// <p>词表 id</p>
+	VocabId *string `json:"VocabId,omitnil,omitempty" name:"VocabId"`
 
+	// <p>客户维度唯一标识</p>
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 }
 
 type DeleteRecognizeVocabV3Request struct {
 	*tchttp.BaseRequest
 	
+	// <p>词表 id</p>
+	VocabId *string `json:"VocabId,omitnil,omitempty" name:"VocabId"`
+
+	// <p>客户维度唯一标识</p>
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 }
 
 func (r *DeleteRecognizeVocabV3Request) ToJsonString() string {
@@ -1624,7 +1664,8 @@ func (r *DeleteRecognizeVocabV3Request) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "VocabId")
+	delete(f, "SdkAppId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteRecognizeVocabV3Request has unknown keys!", "")
 	}
@@ -4562,12 +4603,21 @@ func (r *DismissRoomResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DownloadRecognizeVocabV3RequestParams struct {
+	// <p>词表 id</p>
+	VocabId *string `json:"VocabId,omitnil,omitempty" name:"VocabId"`
 
+	// <p>客户维度唯一标识</p>
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 }
 
 type DownloadRecognizeVocabV3Request struct {
 	*tchttp.BaseRequest
 	
+	// <p>词表 id</p>
+	VocabId *string `json:"VocabId,omitnil,omitempty" name:"VocabId"`
+
+	// <p>客户维度唯一标识</p>
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 }
 
 func (r *DownloadRecognizeVocabV3Request) ToJsonString() string {
@@ -4582,7 +4632,8 @@ func (r *DownloadRecognizeVocabV3Request) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "VocabId")
+	delete(f, "SdkAppId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DownloadRecognizeVocabV3Request has unknown keys!", "")
 	}
@@ -4591,6 +4642,12 @@ func (r *DownloadRecognizeVocabV3Request) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DownloadRecognizeVocabV3ResponseParams struct {
+	// <p>词表 id</p>
+	VocabId *string `json:"VocabId,omitnil,omitempty" name:"VocabId"`
+
+	// <p>文本形式热词</p>
+	WordWeightStr *string `json:"WordWeightStr,omitnil,omitempty" name:"WordWeightStr"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -4699,12 +4756,27 @@ type EventMessage struct {
 
 // Predefined struct for user
 type GetRecognizeVocabListV3RequestParams struct {
+	// <p>客户维度唯一标识</p>
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
+	// <p>分页偏移</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>分页大小</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type GetRecognizeVocabListV3Request struct {
 	*tchttp.BaseRequest
 	
+	// <p>客户维度唯一标识</p>
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// <p>分页偏移</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>分页大小</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 func (r *GetRecognizeVocabListV3Request) ToJsonString() string {
@@ -4719,7 +4791,9 @@ func (r *GetRecognizeVocabListV3Request) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "SdkAppId")
+	delete(f, "Offset")
+	delete(f, "Limit")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetRecognizeVocabListV3Request has unknown keys!", "")
 	}
@@ -4728,6 +4802,12 @@ func (r *GetRecognizeVocabListV3Request) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetRecognizeVocabListV3ResponseParams struct {
+	// <p>词表列表</p>
+	VocabList []*Vocab `json:"VocabList,omitnil,omitempty" name:"VocabList"`
+
+	// <p>词表个数</p><p>单位：个</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -4750,12 +4830,21 @@ func (r *GetRecognizeVocabListV3Response) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetRecognizeVocabV3RequestParams struct {
+	// <p>词表 id</p>
+	VocabId *string `json:"VocabId,omitnil,omitempty" name:"VocabId"`
 
+	// <p>客户维度唯一标识</p>
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 }
 
 type GetRecognizeVocabV3Request struct {
 	*tchttp.BaseRequest
 	
+	// <p>词表 id</p>
+	VocabId *string `json:"VocabId,omitnil,omitempty" name:"VocabId"`
+
+	// <p>客户维度唯一标识</p>
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 }
 
 func (r *GetRecognizeVocabV3Request) ToJsonString() string {
@@ -4770,7 +4859,8 @@ func (r *GetRecognizeVocabV3Request) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "VocabId")
+	delete(f, "SdkAppId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetRecognizeVocabV3Request has unknown keys!", "")
 	}
@@ -4779,6 +4869,27 @@ func (r *GetRecognizeVocabV3Request) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetRecognizeVocabV3ResponseParams struct {
+	// <p>词表名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>词表 id</p>
+	VocabId *string `json:"VocabId,omitnil,omitempty" name:"VocabId"`
+
+	// <p>热词+权重数组</p>
+	WordWeights []*HotWord `json:"WordWeights,omitnil,omitempty" name:"WordWeights"`
+
+	// <p>创建时间</p>
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>更新时间</p>
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// <p>是否设置默认词表</p><p>枚举值：</p><ul><li>0： 否</li><li>1： 是</li></ul>
+	State *int64 `json:"State,omitnil,omitempty" name:"State"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -4797,6 +4908,14 @@ func (r *GetRecognizeVocabV3Response) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *GetRecognizeVocabV3Response) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type HotWord struct {
+	// <p>热词</p>
+	Word *string `json:"Word,omitnil,omitempty" name:"Word"`
+
+	// <p>权重</p>
+	Weight *int64 `json:"Weight,omitnil,omitempty" name:"Weight"`
 }
 
 type Input struct {
@@ -5060,7 +5179,8 @@ type McuRecordParams struct {
 	// 3: 开启录制（使用API指定参数）。
 	UniRecord *uint64 `json:"UniRecord,omitnil,omitempty" name:"UniRecord"`
 
-	// 录制任务 key，标识一个录制任务；您可以通过该参数，将多个转推任务录制成一个文件。不指定该参数时，只录制当前转推任务。
+	// 录制任务标识 key，显式关联多个转推任务到一个录制任务；一般不需设置，默认录制本次转推内容。
+	// 如果有特殊需求，比如将多段转推内容分时录制到同一个文件，可以通过设置此参数来控制。举例: 时间点10:00 发起转推任务:A + RecorderKey:abc，10:05分发起转推任务B+ RecorderKey:abc，那么录制文件会包含，转推A(10:00~10:05分的内容)+转推B的内容。
 	// 【限制长度为128字节，只允许包含大小写英文字母（a-zA-Z）、数字（0-9）及下划线(_)和连词符(-)】
 	RecordKey *string `json:"RecordKey,omitnil,omitempty" name:"RecordKey"`
 
@@ -6341,12 +6461,27 @@ type ServerPushText struct {
 
 // Predefined struct for user
 type SetVocabStateV3RequestParams struct {
+	// <p>词表 id</p>
+	VocabId *string `json:"VocabId,omitnil,omitempty" name:"VocabId"`
 
+	// <p>是否设置为默认词表</p>
+	State *int64 `json:"State,omitnil,omitempty" name:"State"`
+
+	// <p>客户维度唯一标识</p>
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 }
 
 type SetVocabStateV3Request struct {
 	*tchttp.BaseRequest
 	
+	// <p>词表 id</p>
+	VocabId *string `json:"VocabId,omitnil,omitempty" name:"VocabId"`
+
+	// <p>是否设置为默认词表</p>
+	State *int64 `json:"State,omitnil,omitempty" name:"State"`
+
+	// <p>客户维度唯一标识</p>
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 }
 
 func (r *SetVocabStateV3Request) ToJsonString() string {
@@ -6361,7 +6496,9 @@ func (r *SetVocabStateV3Request) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "VocabId")
+	delete(f, "State")
+	delete(f, "SdkAppId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SetVocabStateV3Request has unknown keys!", "")
 	}
@@ -6370,6 +6507,9 @@ func (r *SetVocabStateV3Request) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SetVocabStateV3ResponseParams struct {
+	// <p>词表 id</p>
+	VocabId *string `json:"VocabId,omitnil,omitempty" name:"VocabId"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -6888,88 +7028,80 @@ func (r *StartMCUMixTranscodeResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type StartPublishCdnStreamRequestParams struct {
-	// TRTC的[SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid)，和转推的房间所对应的SdkAppId相同。
+	// <p>TRTC的<a href="https://cloud.tencent.com/document/product/647/46351#sdkappid">SdkAppId</a>，和转推的房间所对应的SdkAppId相同。</p>
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// 主房间信息RoomId，转推的TRTC房间所对应的RoomId。
+	// <p>主房间信息RoomId，转推的TRTC房间所对应的RoomId。</p>
 	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 
-	// 主房间信息RoomType，必须和转推的房间所对应的RoomId类型相同，0为整型房间号，1为字符串房间号。
+	// <p>主房间信息RoomType，必须和转推的房间所对应的RoomId类型相同，0为整型房间号，1为字符串房间号。</p>
 	RoomIdType *uint64 `json:"RoomIdType,omitnil,omitempty" name:"RoomIdType"`
 
-	// 转推服务加入TRTC房间的机器人参数。
+	// <p>转推服务加入TRTC房间的机器人参数。</p>
 	AgentParams *AgentParams `json:"AgentParams,omitnil,omitempty" name:"AgentParams"`
 
-	// 是否转码，0表示无需转码，1表示需要转码。
-	// WithTranscoding为0，表示旁路转推，默认不转码；WithTranscoding为1，表示混流转推，此时一定会转码，并收取转码费用。
-	// 注：
-	// 1，混流是必须转码的，这个参数需设置为1。
-	// 2，WithTranscoding=0时，视频输出Codec默认跟随上行视频Codec，如果上行视频Codec发生变化，CDN会断流重推。
+	// <p>是否转码，0表示无需转码，1表示需要转码。<br>WithTranscoding为0，表示旁路转推，默认不转码；WithTranscoding为1，表示混流转推，此时一定会转码，并收取转码费用。<br>注：<br>1，混流是必须转码的，这个参数需设置为1。<br>2，WithTranscoding=0时，视频输出Codec默认跟随上行视频Codec，如果上行视频Codec发生变化，CDN会断流重推。</p>
 	WithTranscoding *uint64 `json:"WithTranscoding,omitnil,omitempty" name:"WithTranscoding"`
 
-	// 转推流的音频编码参数。由于音频是必转码的（不会收取转码费用），所以启动任务的时候，必须填写。
+	// <p>转推流的音频编码参数。由于音频是必转码的（不会收取转码费用），所以启动任务的时候，必须填写。</p>
 	AudioParams *McuAudioParams `json:"AudioParams,omitnil,omitempty" name:"AudioParams"`
 
-	// 转推流的视频编码参数，不填表示纯音频转推。
+	// <p>转推流的视频编码参数，不填表示纯音频转推。</p>
 	VideoParams *McuVideoParams `json:"VideoParams,omitnil,omitempty" name:"VideoParams"`
 
-	// 需要单流旁路转推的用户上行参数，单流旁路转推时，WithTranscoding需要设置为0。
+	// <p>需要单流旁路转推的用户上行参数，单流旁路转推时，WithTranscoding需要设置为0。</p>
 	SingleSubscribeParams *SingleSubscribeParams `json:"SingleSubscribeParams,omitnil,omitempty" name:"SingleSubscribeParams"`
 
-	// 转推的CDN参数，一个任务最多支持10个推流URL。和回推房间参数必须要有一个。
+	// <p>转推的CDN参数，一个任务最多支持10个推流URL。和回推房间参数必须要有一个。</p>
 	PublishCdnParams []*McuPublishCdnParam `json:"PublishCdnParams,omitnil,omitempty" name:"PublishCdnParams"`
 
-	// 混流SEI参数
+	// <p>混流SEI参数</p>
 	SeiParams *McuSeiParams `json:"SeiParams,omitnil,omitempty" name:"SeiParams"`
 
-	// 回推房间信息，一个任务最多支持回推10个房间，和转推CDN参数必须要有一个。注：回推房间需使用10.4及以上SDK版本，如您有需求，请联系腾讯云技术支持。
+	// <p>回推房间信息，一个任务最多支持回推10个房间，和转推CDN参数必须要有一个。注：回推房间需使用10.4及以上SDK版本，如您有需求，请联系腾讯云技术支持。</p>
 	FeedBackRoomParams []*McuFeedBackRoomParams `json:"FeedBackRoomParams,omitnil,omitempty" name:"FeedBackRoomParams"`
 
-	// 转推录制参数，[参考文档](https://cloud.tencent.com/document/product/647/111748)。
+	// <p>转推录制参数，<a href="https://cloud.tencent.com/document/product/647/111748">参考文档</a>。</p>
 	RecordParams *McuRecordParams `json:"RecordParams,omitnil,omitempty" name:"RecordParams"`
 }
 
 type StartPublishCdnStreamRequest struct {
 	*tchttp.BaseRequest
 	
-	// TRTC的[SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid)，和转推的房间所对应的SdkAppId相同。
+	// <p>TRTC的<a href="https://cloud.tencent.com/document/product/647/46351#sdkappid">SdkAppId</a>，和转推的房间所对应的SdkAppId相同。</p>
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// 主房间信息RoomId，转推的TRTC房间所对应的RoomId。
+	// <p>主房间信息RoomId，转推的TRTC房间所对应的RoomId。</p>
 	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 
-	// 主房间信息RoomType，必须和转推的房间所对应的RoomId类型相同，0为整型房间号，1为字符串房间号。
+	// <p>主房间信息RoomType，必须和转推的房间所对应的RoomId类型相同，0为整型房间号，1为字符串房间号。</p>
 	RoomIdType *uint64 `json:"RoomIdType,omitnil,omitempty" name:"RoomIdType"`
 
-	// 转推服务加入TRTC房间的机器人参数。
+	// <p>转推服务加入TRTC房间的机器人参数。</p>
 	AgentParams *AgentParams `json:"AgentParams,omitnil,omitempty" name:"AgentParams"`
 
-	// 是否转码，0表示无需转码，1表示需要转码。
-	// WithTranscoding为0，表示旁路转推，默认不转码；WithTranscoding为1，表示混流转推，此时一定会转码，并收取转码费用。
-	// 注：
-	// 1，混流是必须转码的，这个参数需设置为1。
-	// 2，WithTranscoding=0时，视频输出Codec默认跟随上行视频Codec，如果上行视频Codec发生变化，CDN会断流重推。
+	// <p>是否转码，0表示无需转码，1表示需要转码。<br>WithTranscoding为0，表示旁路转推，默认不转码；WithTranscoding为1，表示混流转推，此时一定会转码，并收取转码费用。<br>注：<br>1，混流是必须转码的，这个参数需设置为1。<br>2，WithTranscoding=0时，视频输出Codec默认跟随上行视频Codec，如果上行视频Codec发生变化，CDN会断流重推。</p>
 	WithTranscoding *uint64 `json:"WithTranscoding,omitnil,omitempty" name:"WithTranscoding"`
 
-	// 转推流的音频编码参数。由于音频是必转码的（不会收取转码费用），所以启动任务的时候，必须填写。
+	// <p>转推流的音频编码参数。由于音频是必转码的（不会收取转码费用），所以启动任务的时候，必须填写。</p>
 	AudioParams *McuAudioParams `json:"AudioParams,omitnil,omitempty" name:"AudioParams"`
 
-	// 转推流的视频编码参数，不填表示纯音频转推。
+	// <p>转推流的视频编码参数，不填表示纯音频转推。</p>
 	VideoParams *McuVideoParams `json:"VideoParams,omitnil,omitempty" name:"VideoParams"`
 
-	// 需要单流旁路转推的用户上行参数，单流旁路转推时，WithTranscoding需要设置为0。
+	// <p>需要单流旁路转推的用户上行参数，单流旁路转推时，WithTranscoding需要设置为0。</p>
 	SingleSubscribeParams *SingleSubscribeParams `json:"SingleSubscribeParams,omitnil,omitempty" name:"SingleSubscribeParams"`
 
-	// 转推的CDN参数，一个任务最多支持10个推流URL。和回推房间参数必须要有一个。
+	// <p>转推的CDN参数，一个任务最多支持10个推流URL。和回推房间参数必须要有一个。</p>
 	PublishCdnParams []*McuPublishCdnParam `json:"PublishCdnParams,omitnil,omitempty" name:"PublishCdnParams"`
 
-	// 混流SEI参数
+	// <p>混流SEI参数</p>
 	SeiParams *McuSeiParams `json:"SeiParams,omitnil,omitempty" name:"SeiParams"`
 
-	// 回推房间信息，一个任务最多支持回推10个房间，和转推CDN参数必须要有一个。注：回推房间需使用10.4及以上SDK版本，如您有需求，请联系腾讯云技术支持。
+	// <p>回推房间信息，一个任务最多支持回推10个房间，和转推CDN参数必须要有一个。注：回推房间需使用10.4及以上SDK版本，如您有需求，请联系腾讯云技术支持。</p>
 	FeedBackRoomParams []*McuFeedBackRoomParams `json:"FeedBackRoomParams,omitnil,omitempty" name:"FeedBackRoomParams"`
 
-	// 转推录制参数，[参考文档](https://cloud.tencent.com/document/product/647/111748)。
+	// <p>转推录制参数，<a href="https://cloud.tencent.com/document/product/647/111748">参考文档</a>。</p>
 	RecordParams *McuRecordParams `json:"RecordParams,omitnil,omitempty" name:"RecordParams"`
 }
 
@@ -7005,7 +7137,7 @@ func (r *StartPublishCdnStreamRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type StartPublishCdnStreamResponseParams struct {
-	// 用于唯一标识转推任务，由腾讯云服务端生成，后续更新和停止请求都需要携带TaskID参数。
+	// <p>用于唯一标识转推任务，由腾讯云服务端生成，后续更新和停止请求都需要携带TaskID参数。</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8403,68 +8535,68 @@ func (r *UpdateAIConversationResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdatePublishCdnStreamRequestParams struct {
-	// TRTC的[SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid)，和转推的房间所对应的SdkAppId相同。
+	// <p>TRTC的<a href="https://cloud.tencent.com/document/product/647/46351#sdkappid">SdkAppId</a>，和转推的房间所对应的SdkAppId相同。</p>
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// 唯一标识转推任务。
+	// <p>唯一标识转推任务。</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 客户保证同一个任务，每次更新请求中的SequenceNumber递增，防止请求乱序。
+	// <p>客户保证同一个任务，每次更新请求中的SequenceNumber递增，防止请求乱序。</p>
 	SequenceNumber *uint64 `json:"SequenceNumber,omitnil,omitempty" name:"SequenceNumber"`
 
-	// 是否转码，0表示无需转码，1表示需要转码。 WithTranscoding为0，表示旁路转推，默认不转码；WithTranscoding为1，表示混流转推，此时一定会转码，并收取转码费用。 注： 1，混流是必须转码的，这个参数需设置为1。 2，WithTranscoding=0时，视频输出Codec默认跟随上行视频Codec，如果上行视频Codec发生变化，CDN会断流重推。
+	// <p>是否转码，0表示无需转码，1表示需要转码。 WithTranscoding为0，表示旁路转推，默认不转码；WithTranscoding为1，表示混流转推，此时一定会转码，并收取转码费用。 注： 1，混流是必须转码的，这个参数需设置为1。 2，WithTranscoding=0时，视频输出Codec默认跟随上行视频Codec，如果上行视频Codec发生变化，CDN会断流重推。</p>
 	WithTranscoding *uint64 `json:"WithTranscoding,omitnil,omitempty" name:"WithTranscoding"`
 
-	// 更新相关参数，只支持更新参与混音的主播列表参数，不支持更新Codec、采样率、码率和声道数。不填表示不更新此参数。
+	// <p>更新相关参数，只支持更新参与混音的主播列表参数，不支持更新Codec、采样率、码率和声道数。不填表示不更新此参数。</p>
 	AudioParams *McuAudioParams `json:"AudioParams,omitnil,omitempty" name:"AudioParams"`
 
-	// 更新视频相关参数，转码时支持更新除编码类型之外的编码参数，视频布局参数，背景图片和背景颜色参数，水印参数。不填表示不更新此参数。
+	// <p>更新视频相关参数，转码时支持更新除编码类型之外的编码参数，视频布局参数，背景图片和背景颜色参数，水印参数。不填表示不更新此参数。</p>
 	VideoParams *McuVideoParams `json:"VideoParams,omitnil,omitempty" name:"VideoParams"`
 
-	// 更新单流转推的用户上行参数，仅在非转码时有效。不填表示不更新此参数。
+	// <p>更新单流转推的用户上行参数，仅在非转码时有效。不填表示不更新此参数。</p>
 	SingleSubscribeParams *SingleSubscribeParams `json:"SingleSubscribeParams,omitnil,omitempty" name:"SingleSubscribeParams"`
 
-	// 更新转推的CDN参数。不填表示不更新此参数。
+	// <p>更新转推的CDN参数。不填表示不更新此参数。</p>
 	PublishCdnParams []*McuPublishCdnParam `json:"PublishCdnParams,omitnil,omitempty" name:"PublishCdnParams"`
 
-	// 混流SEI参数
+	// <p>混流SEI参数</p>
 	SeiParams *McuSeiParams `json:"SeiParams,omitnil,omitempty" name:"SeiParams"`
 
-	// 回推房间信息
+	// <p>回推房间信息</p>
 	FeedBackRoomParams []*McuFeedBackRoomParams `json:"FeedBackRoomParams,omitnil,omitempty" name:"FeedBackRoomParams"`
 }
 
 type UpdatePublishCdnStreamRequest struct {
 	*tchttp.BaseRequest
 	
-	// TRTC的[SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid)，和转推的房间所对应的SdkAppId相同。
+	// <p>TRTC的<a href="https://cloud.tencent.com/document/product/647/46351#sdkappid">SdkAppId</a>，和转推的房间所对应的SdkAppId相同。</p>
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// 唯一标识转推任务。
+	// <p>唯一标识转推任务。</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 客户保证同一个任务，每次更新请求中的SequenceNumber递增，防止请求乱序。
+	// <p>客户保证同一个任务，每次更新请求中的SequenceNumber递增，防止请求乱序。</p>
 	SequenceNumber *uint64 `json:"SequenceNumber,omitnil,omitempty" name:"SequenceNumber"`
 
-	// 是否转码，0表示无需转码，1表示需要转码。 WithTranscoding为0，表示旁路转推，默认不转码；WithTranscoding为1，表示混流转推，此时一定会转码，并收取转码费用。 注： 1，混流是必须转码的，这个参数需设置为1。 2，WithTranscoding=0时，视频输出Codec默认跟随上行视频Codec，如果上行视频Codec发生变化，CDN会断流重推。
+	// <p>是否转码，0表示无需转码，1表示需要转码。 WithTranscoding为0，表示旁路转推，默认不转码；WithTranscoding为1，表示混流转推，此时一定会转码，并收取转码费用。 注： 1，混流是必须转码的，这个参数需设置为1。 2，WithTranscoding=0时，视频输出Codec默认跟随上行视频Codec，如果上行视频Codec发生变化，CDN会断流重推。</p>
 	WithTranscoding *uint64 `json:"WithTranscoding,omitnil,omitempty" name:"WithTranscoding"`
 
-	// 更新相关参数，只支持更新参与混音的主播列表参数，不支持更新Codec、采样率、码率和声道数。不填表示不更新此参数。
+	// <p>更新相关参数，只支持更新参与混音的主播列表参数，不支持更新Codec、采样率、码率和声道数。不填表示不更新此参数。</p>
 	AudioParams *McuAudioParams `json:"AudioParams,omitnil,omitempty" name:"AudioParams"`
 
-	// 更新视频相关参数，转码时支持更新除编码类型之外的编码参数，视频布局参数，背景图片和背景颜色参数，水印参数。不填表示不更新此参数。
+	// <p>更新视频相关参数，转码时支持更新除编码类型之外的编码参数，视频布局参数，背景图片和背景颜色参数，水印参数。不填表示不更新此参数。</p>
 	VideoParams *McuVideoParams `json:"VideoParams,omitnil,omitempty" name:"VideoParams"`
 
-	// 更新单流转推的用户上行参数，仅在非转码时有效。不填表示不更新此参数。
+	// <p>更新单流转推的用户上行参数，仅在非转码时有效。不填表示不更新此参数。</p>
 	SingleSubscribeParams *SingleSubscribeParams `json:"SingleSubscribeParams,omitnil,omitempty" name:"SingleSubscribeParams"`
 
-	// 更新转推的CDN参数。不填表示不更新此参数。
+	// <p>更新转推的CDN参数。不填表示不更新此参数。</p>
 	PublishCdnParams []*McuPublishCdnParam `json:"PublishCdnParams,omitnil,omitempty" name:"PublishCdnParams"`
 
-	// 混流SEI参数
+	// <p>混流SEI参数</p>
 	SeiParams *McuSeiParams `json:"SeiParams,omitnil,omitempty" name:"SeiParams"`
 
-	// 回推房间信息
+	// <p>回推房间信息</p>
 	FeedBackRoomParams []*McuFeedBackRoomParams `json:"FeedBackRoomParams,omitnil,omitempty" name:"FeedBackRoomParams"`
 }
 
@@ -8498,7 +8630,7 @@ func (r *UpdatePublishCdnStreamRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdatePublishCdnStreamResponseParams struct {
-	// 转推任务唯一的String Id
+	// <p>转推任务唯一的String Id</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8523,12 +8655,45 @@ func (r *UpdatePublishCdnStreamResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateRecognizeVocabV3RequestParams struct {
+	// <p>词表 id</p>
+	VocabId *string `json:"VocabId,omitnil,omitempty" name:"VocabId"`
 
+	// <p>客户维度唯一标识</p>
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// <p>词表名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>词表描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>热词数组</p>
+	WordWeights []*HotWord `json:"WordWeights,omitnil,omitempty" name:"WordWeights"`
+
+	// <p>base64 编码的词表文本</p>
+	WordWeightStr *string `json:"WordWeightStr,omitnil,omitempty" name:"WordWeightStr"`
 }
 
 type UpdateRecognizeVocabV3Request struct {
 	*tchttp.BaseRequest
 	
+	// <p>词表 id</p>
+	VocabId *string `json:"VocabId,omitnil,omitempty" name:"VocabId"`
+
+	// <p>客户维度唯一标识</p>
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// <p>词表名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>词表描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>热词数组</p>
+	WordWeights []*HotWord `json:"WordWeights,omitnil,omitempty" name:"WordWeights"`
+
+	// <p>base64 编码的词表文本</p>
+	WordWeightStr *string `json:"WordWeightStr,omitnil,omitempty" name:"WordWeightStr"`
 }
 
 func (r *UpdateRecognizeVocabV3Request) ToJsonString() string {
@@ -8543,7 +8708,12 @@ func (r *UpdateRecognizeVocabV3Request) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "VocabId")
+	delete(f, "SdkAppId")
+	delete(f, "Name")
+	delete(f, "Description")
+	delete(f, "WordWeights")
+	delete(f, "WordWeightStr")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateRecognizeVocabV3Request has unknown keys!", "")
 	}
@@ -8552,6 +8722,9 @@ func (r *UpdateRecognizeVocabV3Request) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateRecognizeVocabV3ResponseParams struct {
+	// <p>词表 id</p>
+	VocabId *string `json:"VocabId,omitnil,omitempty" name:"VocabId"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -8844,6 +9017,29 @@ type VideoParams struct {
 
 	// 视频关键帧时间间隔，单位秒，默认值10秒。
 	Gop *uint64 `json:"Gop,omitnil,omitempty" name:"Gop"`
+}
+
+type Vocab struct {
+	// <p>热词表名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>热词表描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>热词表ID</p>
+	VocabId *string `json:"VocabId,omitnil,omitempty" name:"VocabId"`
+
+	// <p>词权重列表</p>
+	WordWeights []*HotWord `json:"WordWeights,omitnil,omitempty" name:"WordWeights"`
+
+	// <p>词表创建时间</p>
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>词表更新时间</p>
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// <p>热词表状态，1为默认状态即在识别时默认加载该热词表进行识别，0为初始状态</p>
+	State *int64 `json:"State,omitnil,omitempty" name:"State"`
 }
 
 type Voice struct {

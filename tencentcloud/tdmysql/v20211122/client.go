@@ -45,6 +45,50 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewBreakStandbyDBInstanceRelationRequest() (request *BreakStandbyDBInstanceRelationRequest) {
+    request = &BreakStandbyDBInstanceRelationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmysql", APIVersion, "BreakStandbyDBInstanceRelation")
+    
+    
+    return
+}
+
+func NewBreakStandbyDBInstanceRelationResponse() (response *BreakStandbyDBInstanceRelationResponse) {
+    response = &BreakStandbyDBInstanceRelationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// BreakStandbyDBInstanceRelation
+// 本接口（BreakStandbyDBInstanceRelation）用于提供断开灾备实例主备连接功能
+func (c *Client) BreakStandbyDBInstanceRelation(request *BreakStandbyDBInstanceRelationRequest) (response *BreakStandbyDBInstanceRelationResponse, err error) {
+    return c.BreakStandbyDBInstanceRelationWithContext(context.Background(), request)
+}
+
+// BreakStandbyDBInstanceRelation
+// 本接口（BreakStandbyDBInstanceRelation）用于提供断开灾备实例主备连接功能
+func (c *Client) BreakStandbyDBInstanceRelationWithContext(ctx context.Context, request *BreakStandbyDBInstanceRelationRequest) (response *BreakStandbyDBInstanceRelationResponse, err error) {
+    if request == nil {
+        request = NewBreakStandbyDBInstanceRelationRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tdmysql", APIVersion, "BreakStandbyDBInstanceRelation")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BreakStandbyDBInstanceRelation require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewBreakStandbyDBInstanceRelationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCancelIsolateDBInstancesRequest() (request *CancelIsolateDBInstancesRequest) {
     request = &CancelIsolateDBInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -331,6 +375,60 @@ func (c *Client) CreateDBSBackupWithContext(ctx context.Context, request *Create
     return
 }
 
+func NewCreateStandbyDBInstanceRequest() (request *CreateStandbyDBInstanceRequest) {
+    request = &CreateStandbyDBInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmysql", APIVersion, "CreateStandbyDBInstance")
+    
+    
+    return
+}
+
+func NewCreateStandbyDBInstanceResponse() (response *CreateStandbyDBInstanceResponse) {
+    response = &CreateStandbyDBInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateStandbyDBInstance
+// 本接口（CreateStandbyDBInstances）提供批量创建灾备实例功能
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_STANDBYRELATIONCHECKERROR = "FailedOperation.StandbyRelationCheckError"
+//  FAILEDOPERATION_STANDBYRELATIONPARAMERROR = "FailedOperation.StandbyRelationParamError"
+//  OPERATIONDENIED_INSTANCEOPERATIONNOTALLOWEDERROR = "OperationDenied.InstanceOperationNotAllowedError"
+func (c *Client) CreateStandbyDBInstance(request *CreateStandbyDBInstanceRequest) (response *CreateStandbyDBInstanceResponse, err error) {
+    return c.CreateStandbyDBInstanceWithContext(context.Background(), request)
+}
+
+// CreateStandbyDBInstance
+// 本接口（CreateStandbyDBInstances）提供批量创建灾备实例功能
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_STANDBYRELATIONCHECKERROR = "FailedOperation.StandbyRelationCheckError"
+//  FAILEDOPERATION_STANDBYRELATIONPARAMERROR = "FailedOperation.StandbyRelationParamError"
+//  OPERATIONDENIED_INSTANCEOPERATIONNOTALLOWEDERROR = "OperationDenied.InstanceOperationNotAllowedError"
+func (c *Client) CreateStandbyDBInstanceWithContext(ctx context.Context, request *CreateStandbyDBInstanceRequest) (response *CreateStandbyDBInstanceResponse, err error) {
+    if request == nil {
+        request = NewCreateStandbyDBInstanceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tdmysql", APIVersion, "CreateStandbyDBInstance")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateStandbyDBInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateStandbyDBInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateUsersRequest() (request *CreateUsersRequest) {
     request = &CreateUsersRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -354,12 +452,9 @@ func NewCreateUsersResponse() (response *CreateUsersResponse) {
 // 本接口（CreateUsers）用于批量创建用户
 //
 // 可能返回的错误码:
-//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
-//  INTERNALERROR_ROUTERNOTFOUND = "InternalError.RouterNotFound"
-//  OPERATIONDENIED_CREATEBACKUPTASKTHRESHOLDERR = "OperationDenied.CreateBackupTaskThresholdErr"
-//  OPERATIONDENIED_MANUALBACKUPQUOTAPERDAYEXCEEDEDERR = "OperationDenied.ManualBackupQuotaPerDayExceededErr"
-//  OPERATIONDENIED_MANUALBACKUPSETQUOTAEXCEEDEDERR = "OperationDenied.ManualBackupSetQuotaExceededErr"
-//  RESOURCENOTFOUND_BIZRESOURCENOTFOUNDERROR = "ResourceNotFound.BizResourceNotFoundError"
+//  FAILEDOPERATION_STANDBYRELATIONCHECKERROR = "FailedOperation.StandbyRelationCheckError"
+//  FAILEDOPERATION_STANDBYRELATIONPARAMERROR = "FailedOperation.StandbyRelationParamError"
+//  OPERATIONDENIED_INSTANCEOPERATIONNOTALLOWEDERROR = "OperationDenied.InstanceOperationNotAllowedError"
 func (c *Client) CreateUsers(request *CreateUsersRequest) (response *CreateUsersResponse, err error) {
     return c.CreateUsersWithContext(context.Background(), request)
 }
@@ -368,12 +463,9 @@ func (c *Client) CreateUsers(request *CreateUsersRequest) (response *CreateUsers
 // 本接口（CreateUsers）用于批量创建用户
 //
 // 可能返回的错误码:
-//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
-//  INTERNALERROR_ROUTERNOTFOUND = "InternalError.RouterNotFound"
-//  OPERATIONDENIED_CREATEBACKUPTASKTHRESHOLDERR = "OperationDenied.CreateBackupTaskThresholdErr"
-//  OPERATIONDENIED_MANUALBACKUPQUOTAPERDAYEXCEEDEDERR = "OperationDenied.ManualBackupQuotaPerDayExceededErr"
-//  OPERATIONDENIED_MANUALBACKUPSETQUOTAEXCEEDEDERR = "OperationDenied.ManualBackupSetQuotaExceededErr"
-//  RESOURCENOTFOUND_BIZRESOURCENOTFOUNDERROR = "ResourceNotFound.BizResourceNotFoundError"
+//  FAILEDOPERATION_STANDBYRELATIONCHECKERROR = "FailedOperation.StandbyRelationCheckError"
+//  FAILEDOPERATION_STANDBYRELATIONPARAMERROR = "FailedOperation.StandbyRelationParamError"
+//  OPERATIONDENIED_INSTANCEOPERATIONNOTALLOWEDERROR = "OperationDenied.InstanceOperationNotAllowedError"
 func (c *Client) CreateUsersWithContext(ctx context.Context, request *CreateUsersRequest) (response *CreateUsersResponse, err error) {
     if request == nil {
         request = NewCreateUsersRequest()
@@ -1611,6 +1703,60 @@ func (c *Client) DescribeSpecsWithContext(ctx context.Context, request *Describe
     request.SetContext(ctx)
     
     response = NewDescribeSpecsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeStandbyDBInstanceRelationDetailRequest() (request *DescribeStandbyDBInstanceRelationDetailRequest) {
+    request = &DescribeStandbyDBInstanceRelationDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmysql", APIVersion, "DescribeStandbyDBInstanceRelationDetail")
+    
+    
+    return
+}
+
+func NewDescribeStandbyDBInstanceRelationDetailResponse() (response *DescribeStandbyDBInstanceRelationDetailResponse) {
+    response = &DescribeStandbyDBInstanceRelationDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeStandbyDBInstanceRelationDetail
+// 本接口（DescribeStandbyDBinstanceRelations）用于查询实例灾备连接关系
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UINWHITELISTCHECKERROR = "AuthFailure.UinWhiteListCheckError"
+//  FAILEDOPERATION_DBQUERYZONEERROR = "FailedOperation.DBQueryZoneError"
+//  UNSUPPORTEDOPERATION_GETMAXNODENUMERROR = "UnsupportedOperation.GetMaxNodeNumError"
+func (c *Client) DescribeStandbyDBInstanceRelationDetail(request *DescribeStandbyDBInstanceRelationDetailRequest) (response *DescribeStandbyDBInstanceRelationDetailResponse, err error) {
+    return c.DescribeStandbyDBInstanceRelationDetailWithContext(context.Background(), request)
+}
+
+// DescribeStandbyDBInstanceRelationDetail
+// 本接口（DescribeStandbyDBinstanceRelations）用于查询实例灾备连接关系
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UINWHITELISTCHECKERROR = "AuthFailure.UinWhiteListCheckError"
+//  FAILEDOPERATION_DBQUERYZONEERROR = "FailedOperation.DBQueryZoneError"
+//  UNSUPPORTEDOPERATION_GETMAXNODENUMERROR = "UnsupportedOperation.GetMaxNodeNumError"
+func (c *Client) DescribeStandbyDBInstanceRelationDetailWithContext(ctx context.Context, request *DescribeStandbyDBInstanceRelationDetailRequest) (response *DescribeStandbyDBInstanceRelationDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeStandbyDBInstanceRelationDetailRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tdmysql", APIVersion, "DescribeStandbyDBInstanceRelationDetail")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeStandbyDBInstanceRelationDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeStandbyDBInstanceRelationDetailResponse()
     err = c.Send(request, response)
     return
 }

@@ -553,6 +553,86 @@ func (c *Client) CreatePrivilegeCodeWithContext(ctx context.Context, request *Cr
     return
 }
 
+func NewDeleteAccountGroupRequest() (request *DeleteAccountGroupRequest) {
+    request = &DeleteAccountGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ioa", APIVersion, "DeleteAccountGroup")
+    
+    
+    return
+}
+
+func NewDeleteAccountGroupResponse() (response *DeleteAccountGroupResponse) {
+    response = &DeleteAccountGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteAccountGroup
+// 管理员在目录管理页面删除一个分组，私有化调用path为：capi/Assets/DeleteAccountGroup
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_CROSSEPARENTACCOUNTGROUP = "InvalidParameter.CrosseParentAccountGroup"
+//  INVALIDPARAMETER_INVALIDACCOUNTGROUPID = "InvalidParameter.InvalidAccountGroupId"
+//  INVALIDPARAMETER_INVALIDACCOUNTGROUPNAME = "InvalidParameter.InvalidAccountGroupName"
+//  INVALIDPARAMETER_INVALIDACCOUNTGROUPTYPE = "InvalidParameter.InvalidAccountGroupType"
+//  INVALIDPARAMETER_PARENTACCOUNTGROUPINVALID = "InvalidParameter.ParentAccountGroupInvalid"
+//  INVALIDPARAMETER_PARENTACCOUNTGROUPISROOT = "InvalidParameter.ParentAccountGroupIsRoot"
+//  INVALIDPARAMETER_PARENTACCOUNTGROUPMAXLEVEL = "InvalidParameter.ParentAccountGroupMaxLevel"
+//  INVALIDPARAMETER_PARENTACCOUNTGROUPRECURSIVE = "InvalidParameter.ParentAccountGroupRecursive"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  INVALIDPARAMETER_SAMEACCOUNTGROUPNAME = "InvalidParameter.SameAccountGroupName"
+//  MISSINGPARAMETER_COMMONPARAM = "MissingParameter.CommonParam"
+//  OPERATIONDENIED_DIRECTORYDELETENOTALLOWED = "OperationDenied.DirectoryDeleteNotAllowed"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DeleteAccountGroup(request *DeleteAccountGroupRequest) (response *DeleteAccountGroupResponse, err error) {
+    return c.DeleteAccountGroupWithContext(context.Background(), request)
+}
+
+// DeleteAccountGroup
+// 管理员在目录管理页面删除一个分组，私有化调用path为：capi/Assets/DeleteAccountGroup
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_CROSSEPARENTACCOUNTGROUP = "InvalidParameter.CrosseParentAccountGroup"
+//  INVALIDPARAMETER_INVALIDACCOUNTGROUPID = "InvalidParameter.InvalidAccountGroupId"
+//  INVALIDPARAMETER_INVALIDACCOUNTGROUPNAME = "InvalidParameter.InvalidAccountGroupName"
+//  INVALIDPARAMETER_INVALIDACCOUNTGROUPTYPE = "InvalidParameter.InvalidAccountGroupType"
+//  INVALIDPARAMETER_PARENTACCOUNTGROUPINVALID = "InvalidParameter.ParentAccountGroupInvalid"
+//  INVALIDPARAMETER_PARENTACCOUNTGROUPISROOT = "InvalidParameter.ParentAccountGroupIsRoot"
+//  INVALIDPARAMETER_PARENTACCOUNTGROUPMAXLEVEL = "InvalidParameter.ParentAccountGroupMaxLevel"
+//  INVALIDPARAMETER_PARENTACCOUNTGROUPRECURSIVE = "InvalidParameter.ParentAccountGroupRecursive"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  INVALIDPARAMETER_SAMEACCOUNTGROUPNAME = "InvalidParameter.SameAccountGroupName"
+//  MISSINGPARAMETER_COMMONPARAM = "MissingParameter.CommonParam"
+//  OPERATIONDENIED_DIRECTORYDELETENOTALLOWED = "OperationDenied.DirectoryDeleteNotAllowed"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DeleteAccountGroupWithContext(ctx context.Context, request *DeleteAccountGroupRequest) (response *DeleteAccountGroupResponse, err error) {
+    if request == nil {
+        request = NewDeleteAccountGroupRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ioa", APIVersion, "DeleteAccountGroup")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAccountGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteAccountGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteAccountGroupResourcesRequest() (request *DeleteAccountGroupResourcesRequest) {
     request = &DeleteAccountGroupResourcesRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -8544,6 +8544,115 @@ func (r *ModifyLoginConfigResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyPGInstanceSpecRequestParams struct {
+	// <p>环境 id</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// <p>cpu 核数</p><p>单位：核数</p>
+	Cpu *uint64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
+
+	// <p>内存容量</p><p>单位：GB</p>
+	Memory *uint64 `json:"Memory,omitnil,omitempty" name:"Memory"`
+
+	// <p>磁盘容量</p><p>单位：GB</p>
+	Storage *uint64 `json:"Storage,omitnil,omitempty" name:"Storage"`
+
+	// <p>类型</p><p>枚举值：</p><ul><li>0： 立即执行</li><li>1： 指定时间执行</li><li>2： 维护时间执行</li></ul>
+	SwitchTag *uint64 `json:"SwitchTag,omitnil,omitempty" name:"SwitchTag"`
+
+	// <p>SwitchTag=1 时，启动时间</p><p>参数格式：YYYY-MM-dd HH:mm:ss</p>
+	SwitchStartTime *string `json:"SwitchStartTime,omitnil,omitempty" name:"SwitchStartTime"`
+
+	// <p>SwitchTag=1 时结束时间</p><p>参数格式：YYYY-MM-dd HH:mm:ss</p>
+	SwitchEndTime *string `json:"SwitchEndTime,omitnil,omitempty" name:"SwitchEndTime"`
+
+	// <p>预检</p>
+	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
+}
+
+type ModifyPGInstanceSpecRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>环境 id</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// <p>cpu 核数</p><p>单位：核数</p>
+	Cpu *uint64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
+
+	// <p>内存容量</p><p>单位：GB</p>
+	Memory *uint64 `json:"Memory,omitnil,omitempty" name:"Memory"`
+
+	// <p>磁盘容量</p><p>单位：GB</p>
+	Storage *uint64 `json:"Storage,omitnil,omitempty" name:"Storage"`
+
+	// <p>类型</p><p>枚举值：</p><ul><li>0： 立即执行</li><li>1： 指定时间执行</li><li>2： 维护时间执行</li></ul>
+	SwitchTag *uint64 `json:"SwitchTag,omitnil,omitempty" name:"SwitchTag"`
+
+	// <p>SwitchTag=1 时，启动时间</p><p>参数格式：YYYY-MM-dd HH:mm:ss</p>
+	SwitchStartTime *string `json:"SwitchStartTime,omitnil,omitempty" name:"SwitchStartTime"`
+
+	// <p>SwitchTag=1 时结束时间</p><p>参数格式：YYYY-MM-dd HH:mm:ss</p>
+	SwitchEndTime *string `json:"SwitchEndTime,omitnil,omitempty" name:"SwitchEndTime"`
+
+	// <p>预检</p>
+	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
+}
+
+func (r *ModifyPGInstanceSpecRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyPGInstanceSpecRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "Cpu")
+	delete(f, "Memory")
+	delete(f, "Storage")
+	delete(f, "SwitchTag")
+	delete(f, "SwitchStartTime")
+	delete(f, "SwitchEndTime")
+	delete(f, "DryRun")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyPGInstanceSpecRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyPGInstanceSpecResponseParams struct {
+	// <p>账单名</p>
+	DealName *string `json:"DealName,omitnil,omitempty" name:"DealName"`
+
+	// <p>账单标识</p>
+	BillId *string `json:"BillId,omitnil,omitempty" name:"BillId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyPGInstanceSpecResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyPGInstanceSpecResponseParams `json:"Response"`
+}
+
+func (r *ModifyPGInstanceSpecResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyPGInstanceSpecResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyProviderRequestParams struct {
 	// 云开发环境 ID，用于唯一标识当前操作所属的云开发环境。
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`

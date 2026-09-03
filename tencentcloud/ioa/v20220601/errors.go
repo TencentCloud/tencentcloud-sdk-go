@@ -47,6 +47,9 @@ const (
 	// 参数错误：规则相关字段传参或者字段内容错误
 	INVALIDPARAMETER_AUTORULEPARAMETERERROR = "InvalidParameter.AutoRuleParameterError"
 
+	// 不允许跨用户根目录
+	INVALIDPARAMETER_CROSSEPARENTACCOUNTGROUP = "InvalidParameter.CrosseParentAccountGroup"
+
 	// 数据库错误
 	INVALIDPARAMETER_DATABASEEXCEPTION = "InvalidParameter.DatabaseException"
 
@@ -65,8 +68,29 @@ const (
 	// 参数错误有重复数据。
 	INVALIDPARAMETER_IDENTICALNAME = "InvalidParameter.IdenticalName"
 
+	// 用户组ID错误
+	INVALIDPARAMETER_INVALIDACCOUNTGROUPID = "InvalidParameter.InvalidAccountGroupId"
+
+	// 用户组名错误
+	INVALIDPARAMETER_INVALIDACCOUNTGROUPNAME = "InvalidParameter.InvalidAccountGroupName"
+
+	// 非自建用户分组不允许修改
+	INVALIDPARAMETER_INVALIDACCOUNTGROUPTYPE = "InvalidParameter.InvalidAccountGroupType"
+
 	// 请求参数错误。
 	INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+
+	// 用户组父目录非法
+	INVALIDPARAMETER_PARENTACCOUNTGROUPINVALID = "InvalidParameter.ParentAccountGroupInvalid"
+
+	// 户根目录不允许修改
+	INVALIDPARAMETER_PARENTACCOUNTGROUPISROOT = "InvalidParameter.ParentAccountGroupIsRoot"
+
+	// 目录层级达到最大
+	INVALIDPARAMETER_PARENTACCOUNTGROUPMAXLEVEL = "InvalidParameter.ParentAccountGroupMaxLevel"
+
+	// 用户组父目录不能是该分组的子组
+	INVALIDPARAMETER_PARENTACCOUNTGROUPRECURSIVE = "InvalidParameter.ParentAccountGroupRecursive"
 
 	// 请求参数错误。
 	INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
@@ -106,6 +130,9 @@ const (
 
 	// 缺少公共参数。
 	MISSINGPARAMETER_COMMONPARAM = "MissingParameter.CommonParam"
+
+	// 内置目录，禁止删除
+	OPERATIONDENIED_DIRECTORYDELETENOTALLOWED = "OperationDenied.DirectoryDeleteNotAllowed"
 
 	// 终端导出任务同一时间仅允许一个，请稍后再试。
 	REQUESTLIMITEXCEEDED_DEVICEDOWNLOADTASK = "RequestLimitExceeded.DeviceDownloadTask"

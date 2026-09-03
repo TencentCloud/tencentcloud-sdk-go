@@ -119,6 +119,12 @@ const (
 	// FailedOperation.SetRuleLocationFailed
 	FAILEDOPERATION_SETRULELOCATIONFAILED = "FailedOperation.SetRuleLocationFailed"
 
+	// 灾备关系检查错误
+	FAILEDOPERATION_STANDBYRELATIONCHECKERROR = "FailedOperation.StandbyRelationCheckError"
+
+	// 灾备参数错误
+	FAILEDOPERATION_STANDBYRELATIONPARAMERROR = "FailedOperation.StandbyRelationParamError"
+
 	// table数量超出限制。
 	FAILEDOPERATION_TABLECOUNTLIMITERROR = "FailedOperation.TableCountLimitError"
 

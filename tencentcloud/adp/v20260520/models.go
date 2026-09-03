@@ -1511,6 +1511,10 @@ type ConversationContent struct {
 	// <p>工作流输入参数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkflowInput *string `json:"WorkflowInput,omitnil,omitempty" name:"WorkflowInput"`
+
+	// <p>MCP-APP调用信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	McpApp *ConversationMcpApp `json:"McpApp,omitnil,omitempty" name:"McpApp"`
 }
 
 type ConversationExperience struct {
@@ -1543,6 +1547,21 @@ type ConversationExperience struct {
 
 	// 推荐问生成prompt模式。枚举值: 1:仅结合知识库输出推荐问的prompt
 	RecommendPromptMode *int64 `json:"RecommendPromptMode,omitnil,omitempty" name:"RecommendPromptMode"`
+}
+
+type ConversationMcpApp struct {
+	// <p>能力边界：一次请求只能读该 plugin 的资源</p>
+	PluginId *string `json:"PluginId,omitnil,omitempty" name:"PluginId"`
+
+	// <p>ui:// 资源，前端据此调 ReadMCPResource 拉 HTML</p>
+	ResourceUri *string `json:"ResourceUri,omitnil,omitempty" name:"ResourceUri"`
+
+	// <p>agent-exec 侧 thread</p>
+	ThreadId *string `json:"ThreadId,omitnil,omitempty" name:"ThreadId"`
+
+	// <p>JSON：完整 CallToolResult 原文，供历史会话重建时重放</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ToolResult *string `json:"ToolResult,omitnil,omitempty" name:"ToolResult"`
 }
 
 type ConversationMessage struct {
@@ -5098,13 +5117,13 @@ type DescribeConversationMessageListResponseParams struct {
 	// Deprecated: Messages is deprecated.
 	Messages []*ConversationMessage `json:"Messages,omitnil,omitempty" name:"Messages"`
 
-	// <p>最近一次重置信息</p>
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	ResetInfo *ConversationResetInfo `json:"ResetInfo,omitnil,omitempty" name:"ResetInfo"`
-
 	// <p>单次对话记录统计列表，与 message_list 通过 record_id / related_record_id 关联</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecordSummaryList []*ConversationRecordSummary `json:"RecordSummaryList,omitnil,omitempty" name:"RecordSummaryList"`
+
+	// <p>最近一次重置信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResetInfo *ConversationResetInfo `json:"ResetInfo,omitnil,omitempty" name:"ResetInfo"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -7048,6 +7067,9 @@ type MCPPluginConfig struct {
 
 	// <p>授权信息</p>
 	AuthConfig *AuthConfig `json:"AuthConfig,omitnil,omitempty" name:"AuthConfig"`
+
+	// <p>是否支持交互界面（MCP Apps），插件级标签，默认false</p>
+	SupportsApps *bool `json:"SupportsApps,omitnil,omitempty" name:"SupportsApps"`
 }
 
 type MCPToolConfig struct {
@@ -7056,6 +7078,26 @@ type MCPToolConfig struct {
 
 	// <p>输出参数</p>
 	Outputs []*ResponseParam `json:"Outputs,omitnil,omitempty" name:"Outputs"`
+
+	// <p>工具meta信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Meta *MCPToolMeta `json:"Meta,omitnil,omitempty" name:"Meta"`
+
+	// <p>是否支持交互界面（MCP Apps），插件级标签  默认值：false</p>
+	SupportsApps *bool `json:"SupportsApps,omitnil,omitempty" name:"SupportsApps"`
+}
+
+type MCPToolMeta struct {
+	// <p>工具的 UI 扩展元信息，对应 MCP 协议的 _meta.ui，声明工具关联的交互式界面资源（ResourceUri）及调用方可见性（Visibility）。仅当工具支持 MCP Apps 或声明了可见性时返回；纯文本工具该字段为空。详见 MCPToolUIMeta 结构定义。</p>
+	Ui *MCPToolUIMeta `json:"Ui,omitnil,omitempty" name:"Ui"`
+}
+
+type MCPToolUIMeta struct {
+	// <p>关联的 UI 资源 URI，ui:// scheme，格式为 ui://&lt;插件标识&gt;/&lt;资源名&gt;-&lt;版本&gt;。该字段是 MCP Apps 交互式界面的入口，非空时表示工具支持 Apps（&quot;文本 + 交互式界面&quot;展示），为空则为纯文本工具。由工具同步结果自动识别填充，不支持手工编辑。</p>
+	ResourceUri *string `json:"ResourceUri,omitnil,omitempty" name:"ResourceUri"`
+
+	// <p>工具的调用方可见性声明，取值范围：model（模型可调用）、app（应用界面可调用），可多选，如 [&quot;model&quot;,&quot;app&quot;]。与 ResourceUri 相互独立（SEP-1865），可单独存在，例如纯后端 app-only 工具为 [&quot;app&quot;]。当 ResourceUri 非空且本字段缺省时，按规范归一化为 [&quot;model&quot;,&quot;app&quot;]；存量非 Apps 工具保持为空。</p><p>枚举值：</p><ul><li>model： 支持model</li><li>app： 支持app</li></ul>
+	Visibility []*string `json:"Visibility,omitnil,omitempty" name:"Visibility"`
 }
 
 type ManualOnlySchedule struct {

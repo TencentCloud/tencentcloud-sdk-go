@@ -1767,6 +1767,72 @@ func (r *DescribeQuestionMarkAgentJobResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeQuestionSplitJobRequestParams struct {
+	// <p>任务唯一ID。由服务端生成。</p>
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+}
+
+type DescribeQuestionSplitJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>任务唯一ID。由服务端生成。</p>
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+}
+
+func (r *DescribeQuestionSplitJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeQuestionSplitJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeQuestionSplitJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeQuestionSplitJobResponseParams struct {
+	// <p>切题详情</p>
+	QuestionInfo []*QuestionInfo `json:"QuestionInfo,omitnil,omitempty" name:"QuestionInfo"`
+
+	// <p>任务执行错误码。当任务状态不为 FAIL 时，该值为&quot;&quot;。</p>
+	ErrorCode *string `json:"ErrorCode,omitnil,omitempty" name:"ErrorCode"`
+
+	// <p>任务执行错误信息。当任务状态不为 FAIL 时，该值为&quot;&quot;。</p>
+	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
+
+	// <p>任务状态。</p><p>枚举值：</p><ul><li>WAIT： 等待中</li><li>RUN： 执行中</li><li>FAIL： 任务失败</li><li>DONE： 任务成功</li></ul>
+	JobStatus *string `json:"JobStatus,omitnil,omitempty" name:"JobStatus"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeQuestionSplitJobResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeQuestionSplitJobResponseParams `json:"Response"`
+}
+
+func (r *DescribeQuestionSplitJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeQuestionSplitJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DetailInformationOfAirTicketTupleList struct {
 	// 出发站（自）
 	DepartureStation *string `json:"DepartureStation,omitnil,omitempty" name:"DepartureStation"`
@@ -2341,21 +2407,24 @@ type ElectronicTrainTicketFull struct {
 }
 
 type Element struct {
-	// 元素内容，当type为figure时该字段内容为图片的位置
+	// <p>元素内容，当type为figure时该字段内容为图片的位置</p>
 	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
 
-	// 元素坐标
+	// <p>元素坐标</p>
 	Coord *Polygon `json:"Coord,omitnil,omitempty" name:"Coord"`
 
-	// 元素group类型，包括multiple-choice(选择题)、fill-in-the-blank(填空题)、problem-solving(解答题)、arithmetic(算术题)
+	// <p>元素group类型，包括multiple-choice(选择题)、fill-in-the-blank(填空题)、problem-solving(解答题)、arithmetic(算术题)</p>
 	GroupType *string `json:"GroupType,omitnil,omitempty" name:"GroupType"`
 
-	// 结果列表
+	// <p>结果列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResultList []*ResultList `json:"ResultList,omitnil,omitempty" name:"ResultList"`
 
-	// 元素索引
+	// <p>元素索引</p>
 	Index *int64 `json:"Index,omitnil,omitempty" name:"Index"`
+
+	// <p>元素所在页</p><p>单位：页</p><p>默认值：1</p>
+	PageIndex *int64 `json:"PageIndex,omitnil,omitempty" name:"PageIndex"`
 }
 
 type Encryption struct {
@@ -8804,32 +8873,35 @@ type ResidencePermitInfo struct {
 }
 
 type ResultList struct {
-	// 题干
+	// <p>题干</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Question []*Element `json:"Question,omitnil,omitempty" name:"Question"`
 
-	// 选项
+	// <p>选项</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Option []*Element `json:"Option,omitnil,omitempty" name:"Option"`
 
-	// 插图
+	// <p>插图</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Figure []*Element `json:"Figure,omitnil,omitempty" name:"Figure"`
 
-	// 表格
+	// <p>表格</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Table []*Element `json:"Table,omitnil,omitempty" name:"Table"`
 
-	// 答案
+	// <p>答案</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Answer []*Element `json:"Answer,omitnil,omitempty" name:"Answer"`
 
-	// 解析
+	// <p>解析</p>
 	Parse []*Element `json:"Parse,omitnil,omitempty" name:"Parse"`
 
-	// 整题的坐标
+	// <p>整题的坐标，多页单题跨页/单页单题跨栏场景下，存在一道题有多个坐标</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Coord []*Polygon `json:"Coord,omitnil,omitempty" name:"Coord"`
+
+	// <p>多坐标返回，显示坐标所在页</p><p>默认值：[]</p>
+	CoordPageIndex []*int64 `json:"CoordPageIndex,omitnil,omitempty" name:"CoordPageIndex"`
 }
 
 // Predefined struct for user
@@ -9822,6 +9894,80 @@ func (r *SubmitQuestionMarkAgentJobResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *SubmitQuestionMarkAgentJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SubmitQuestionSplitJobRequestParams struct {
+	// <p>批量ImageUrl图片入口。要求Base64不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。</p><p>入参限制：要求pdf只能有一个url或base64</p>
+	ImageUrlList []*string `json:"ImageUrlList,omitnil,omitempty" name:"ImageUrlList"`
+
+	// <p>批量base64图片入口。要求图片经Base64编码后不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。</p><p>入参限制：要求pdf只能有一个url或base64</p>
+	ImageBase64List []*string `json:"ImageBase64List,omitnil,omitempty" name:"ImageBase64List"`
+
+	// <p>选择切题模型</p><p>枚举值：</p><ul><li>youtu_crop： 轻量化切题模型，运算速度更快，适合常规切题</li><li>youtu_crop_pro： 属于切题精调大模型，针对双栏、跨栏等复杂版式识别精度大幅提升，但推理耗时更长</li></ul><p>默认值：youtu_crop</p>
+	ModelType *string `json:"ModelType,omitnil,omitempty" name:"ModelType"`
+}
+
+type SubmitQuestionSplitJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>批量ImageUrl图片入口。要求Base64不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。</p><p>入参限制：要求pdf只能有一个url或base64</p>
+	ImageUrlList []*string `json:"ImageUrlList,omitnil,omitempty" name:"ImageUrlList"`
+
+	// <p>批量base64图片入口。要求图片经Base64编码后不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。</p><p>入参限制：要求pdf只能有一个url或base64</p>
+	ImageBase64List []*string `json:"ImageBase64List,omitnil,omitempty" name:"ImageBase64List"`
+
+	// <p>选择切题模型</p><p>枚举值：</p><ul><li>youtu_crop： 轻量化切题模型，运算速度更快，适合常规切题</li><li>youtu_crop_pro： 属于切题精调大模型，针对双栏、跨栏等复杂版式识别精度大幅提升，但推理耗时更长</li></ul><p>默认值：youtu_crop</p>
+	ModelType *string `json:"ModelType,omitnil,omitempty" name:"ModelType"`
+}
+
+func (r *SubmitQuestionSplitJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SubmitQuestionSplitJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageUrlList")
+	delete(f, "ImageBase64List")
+	delete(f, "ModelType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitQuestionSplitJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SubmitQuestionSplitJobResponseParams struct {
+	// <p>任务唯一ID。由服务端生成。</p>
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// <p>PDF 转完之后的图片压缩包列表地址。</p>
+	ImageZipUrl *string `json:"ImageZipUrl,omitnil,omitempty" name:"ImageZipUrl"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type SubmitQuestionSplitJobResponse struct {
+	*tchttp.BaseResponse
+	Response *SubmitQuestionSplitJobResponseParams `json:"Response"`
+}
+
+func (r *SubmitQuestionSplitJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SubmitQuestionSplitJobResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

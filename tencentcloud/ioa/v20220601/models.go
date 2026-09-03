@@ -73,82 +73,82 @@ type AggrCategorySoftDetailRow struct {
 }
 
 type AggrSoftDeviceRow struct {
-	// 终端名
+	// <p>终端名</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
 
-	// 最近登录账号
+	// <p>最近登录账号</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastLoginAccount *string `json:"LastLoginAccount,omitnil,omitempty" name:"LastLoginAccount"`
 
-	// 终端用户名
+	// <p>终端用户名</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceUserName *string `json:"DeviceUserName,omitnil,omitempty" name:"DeviceUserName"`
 
-	// 软件版本
+	// <p>软件版本</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
 
-	// 是否盗版
+	// <p>是否盗版</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PiracyRisk *int64 `json:"PiracyRisk,omitnil,omitempty" name:"PiracyRisk"`
 
-	// 盗版原因
+	// <p>盗版原因</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PiracyReason *string `json:"PiracyReason,omitnil,omitempty" name:"PiracyReason"`
 
-	// 安装时间
+	// <p>安装时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstallTime *string `json:"InstallTime,omitnil,omitempty" name:"InstallTime"`
 
-	// 用户目录
+	// <p>用户目录</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserPath *string `json:"UserPath,omitnil,omitempty" name:"UserPath"`
 
-	// 所在分组
+	// <p>所在分组</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserGroup *string `json:"UserGroup,omitnil,omitempty" name:"UserGroup"`
 
-	// IP
+	// <p>IP</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IP *string `json:"IP,omitnil,omitempty" name:"IP"`
 
-	// MAC
+	// <p>MAC</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MAC *string `json:"MAC,omitnil,omitempty" name:"MAC"`
 
-	// 使用时长
+	// <p>使用时长</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UseTime *int64 `json:"UseTime,omitnil,omitempty" name:"UseTime"`
 
-	// 设备ID
+	// <p>设备ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceId *int64 `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
 
-	// 软件全名
+	// <p>软件全名</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FullSoftName *string `json:"FullSoftName,omitnil,omitempty" name:"FullSoftName"`
 
-	// 数据ID（唯一）
+	// <p>数据ID（唯一）</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 该终端此款软件可升级到的目标版本号
+	// <p>该终端此款软件可升级到的目标版本号</p>
 	NewVersion *string `json:"NewVersion,omitnil,omitempty" name:"NewVersion"`
 
-	// 该软件对应运营配置的可升级id
+	// <p>该软件对应运营配置的可升级id</p>
 	UpgradeSoftId *int64 `json:"UpgradeSoftId,omitnil,omitempty" name:"UpgradeSoftId"`
 
-	// 终端备注名
+	// <p>终端备注名</p>
 	RemarkName *string `json:"RemarkName,omitnil,omitempty" name:"RemarkName"`
 
-	// 软件id
+	// <p>软件id</p>
 	SoftwareId *int64 `json:"SoftwareId,omitnil,omitempty" name:"SoftwareId"`
 
-	// 0:win 2:mac
+	// <p>0:win 2:mac</p>
 	OsType *int64 `json:"OsType,omitnil,omitempty" name:"OsType"`
 
-	// 所有权
+	// <p>所有权</p>
 	AssetType *string `json:"AssetType,omitnil,omitempty" name:"AssetType"`
 }
 
@@ -390,6 +390,9 @@ type CreateCompanyDirectoryConfigRequestParams struct {
 
 	// <p>使用场景：API 创建，快速上手，普通配置等</p>
 	Scene *string `json:"Scene,omitnil,omitempty" name:"Scene"`
+
+	// <p>名称多语言</p>
+	NameI18n []*I18nString `json:"NameI18n,omitnil,omitempty" name:"NameI18n"`
 }
 
 type CreateCompanyDirectoryConfigRequest struct {
@@ -424,6 +427,9 @@ type CreateCompanyDirectoryConfigRequest struct {
 
 	// <p>使用场景：API 创建，快速上手，普通配置等</p>
 	Scene *string `json:"Scene,omitnil,omitempty" name:"Scene"`
+
+	// <p>名称多语言</p>
+	NameI18n []*I18nString `json:"NameI18n,omitnil,omitempty" name:"NameI18n"`
 }
 
 func (r *CreateCompanyDirectoryConfigRequest) ToJsonString() string {
@@ -448,6 +454,7 @@ func (r *CreateCompanyDirectoryConfigRequest) FromJsonString(s string) error {
 	delete(f, "DisplayOnLoginPage")
 	delete(f, "Description")
 	delete(f, "Scene")
+	delete(f, "NameI18n")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCompanyDirectoryConfigRequest has unknown keys!", "")
 	}
@@ -920,6 +927,45 @@ type CreatePrivilegeCodeRspData struct {
 }
 
 // Predefined struct for user
+type DeleteAccountGroupRequestParams struct {
+	// 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+	DomainInstanceId *string `json:"DomainInstanceId,omitnil,omitempty" name:"DomainInstanceId"`
+
+	// <p>分组或者目录id(只支持32位)</p>
+	AccountGroupId *uint64 `json:"AccountGroupId,omitnil,omitempty" name:"AccountGroupId"`
+}
+
+type DeleteAccountGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+	DomainInstanceId *string `json:"DomainInstanceId,omitnil,omitempty" name:"DomainInstanceId"`
+
+	// <p>分组或者目录id(只支持32位)</p>
+	AccountGroupId *uint64 `json:"AccountGroupId,omitnil,omitempty" name:"AccountGroupId"`
+}
+
+func (r *DeleteAccountGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAccountGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DomainInstanceId")
+	delete(f, "AccountGroupId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAccountGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteAccountGroupResourcesRequestParams struct {
 	// 资源集
 	ResourceList []*DeleteResourceData `json:"ResourceList,omitnil,omitempty" name:"ResourceList"`
@@ -977,6 +1023,28 @@ func (r *DeleteAccountGroupResourcesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteAccountGroupResourcesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAccountGroupResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteAccountGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteAccountGroupResponseParams `json:"Response"`
+}
+
+func (r *DeleteAccountGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAccountGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1059,67 +1127,67 @@ type DeleteResourceData struct {
 }
 
 type DescribeAccountGroupsData struct {
-	// 账号分组名全路径，点分格式
+	// <p>账号分组名全路径，点分格式</p>
 	NamePath *string `json:"NamePath,omitnil,omitempty" name:"NamePath"`
 
-	// 账号分组ID全路径，数组格式
+	// <p>账号分组ID全路径，数组格式</p>
 	IdPathArr []*int64 `json:"IdPathArr,omitnil,omitempty" name:"IdPathArr"`
 
-	// 扩展信息
+	// <p>扩展信息</p>
 	ExtraInfo *string `json:"ExtraInfo,omitnil,omitempty" name:"ExtraInfo"`
 
-	// 最后更新时间
+	// <p>最后更新时间</p>
 	Utime *string `json:"Utime,omitnil,omitempty" name:"Utime"`
 
-	// 父分组ID
+	// <p>父分组ID</p>
 	ParentId *int64 `json:"ParentId,omitnil,omitempty" name:"ParentId"`
 
-	// 源账号组织ID。使用第三方导入用户源时，记录该分组在源组织架构下的分组ID
+	// <p>源账号组织ID。使用第三方导入用户源时，记录该分组在源组织架构下的分组ID</p>
 	OrgId *string `json:"OrgId,omitnil,omitempty" name:"OrgId"`
 
-	// 分组名称
+	// <p>分组名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 分组ID
+	// <p>分组ID</p>
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 分组描述
+	// <p>分组描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 同步数据源
+	// <p>同步数据源</p>
 	Source *int64 `json:"Source,omitnil,omitempty" name:"Source"`
 
-	// 账号分组ID全路径，点分格式
+	// <p>账号分组ID全路径，点分格式</p>
 	IdPath *string `json:"IdPath,omitnil,omitempty" name:"IdPath"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	Itime *string `json:"Itime,omitnil,omitempty" name:"Itime"`
 
-	// 父源账号组织ID。使用第三方导入用户源时，记录该分组在源组织架构下的分组ID
+	// <p>父源账号组织ID。使用第三方导入用户源时，记录该分组在源组织架构下的分组ID</p>
 	ParentOrgId *string `json:"ParentOrgId,omitnil,omitempty" name:"ParentOrgId"`
 
-	// 导入类型
+	// <p>导入类型</p>
 	ImportType *string `json:"ImportType,omitnil,omitempty" name:"ImportType"`
 
-	// miniIAM id
+	// <p>miniIAM id</p>
 	MiniIamId *string `json:"MiniIamId,omitnil,omitempty" name:"MiniIamId"`
 
-	// 该分组下含子组的所有用户总数
+	// <p>该分组下含子组的所有用户总数</p>
 	UserTotal *int64 `json:"UserTotal,omitnil,omitempty" name:"UserTotal"`
 
-	// 是否叶子节点
+	// <p>是否叶子节点</p>
 	IsLeaf *bool `json:"IsLeaf,omitnil,omitempty" name:"IsLeaf"`
 
-	// 是否该账户的直接权限
+	// <p>是否该账户的直接权限</p>
 	ReadOnly *bool `json:"ReadOnly,omitnil,omitempty" name:"ReadOnly"`
 
-	// 最新一次同步任务的结果
+	// <p>最新一次同步任务的结果</p>
 	LatestSyncResult *string `json:"LatestSyncResult,omitnil,omitempty" name:"LatestSyncResult"`
 
-	// 最新一次同步任务的结束时间
+	// <p>最新一次同步任务的结束时间</p>
 	LatestSyncTime *string `json:"LatestSyncTime,omitnil,omitempty" name:"LatestSyncTime"`
 
-	// 分组名称数组
+	// <p>分组名称数组</p>
 	NamePathArr []*string `json:"NamePathArr,omitnil,omitempty" name:"NamePathArr"`
 }
 
@@ -1133,7 +1201,10 @@ type DescribeAccountGroupsPageResp struct {
 
 // Predefined struct for user
 type DescribeAccountGroupsRequestParams struct {
-	// 搜索范围：0-仅当前分组的直接子组，1-当前分组的所有子组。默认为0。
+	// 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+	DomainInstanceId *string `json:"DomainInstanceId,omitnil,omitempty" name:"DomainInstanceId"`
+
+	// （仅SaaS版本适用）搜索范围：0-仅当前分组的直接子组，1-当前分组的所有子组。默认为0。
 	Deepin *int64 `json:"Deepin,omitnil,omitempty" name:"Deepin"`
 
 	// 查询条件
@@ -1157,7 +1228,10 @@ type DescribeAccountGroupsRequestParams struct {
 type DescribeAccountGroupsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 搜索范围：0-仅当前分组的直接子组，1-当前分组的所有子组。默认为0。
+	// 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+	DomainInstanceId *string `json:"DomainInstanceId,omitnil,omitempty" name:"DomainInstanceId"`
+
+	// （仅SaaS版本适用）搜索范围：0-仅当前分组的直接子组，1-当前分组的所有子组。默认为0。
 	Deepin *int64 `json:"Deepin,omitnil,omitempty" name:"Deepin"`
 
 	// 查询条件
@@ -1190,6 +1264,7 @@ func (r *DescribeAccountGroupsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "DomainInstanceId")
 	delete(f, "Deepin")
 	delete(f, "Condition")
 	delete(f, "ParentId")
@@ -2003,17 +2078,20 @@ type DescribeDLPEdgeNodeGroupsRspData struct {
 }
 
 type DescribeDLPEdgeNodeGroupsRspItem struct {
-	// 自增id，数据库中唯一
+	// <p>自增id，数据库中唯一</p>
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 节点分组名称
+	// <p>节点分组名称</p>
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
-	// 节点分组id
+	// <p>节点分组id</p>
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 包含边缘节点数量
+	// <p>包含边缘节点数量</p>
 	EdgeCount *int64 `json:"EdgeCount,omitnil,omitempty" name:"EdgeCount"`
+
+	// <p>分组中英文</p>
+	GroupNameI18n []*I18nString `json:"GroupNameI18n,omitnil,omitempty" name:"GroupNameI18n"`
 }
 
 type DescribeDLPEdgeNodesPageData struct {
@@ -2410,71 +2488,71 @@ type DescribeDeviceChildGroupsRspData struct {
 }
 
 type DescribeDeviceDetailListData struct {
-	// 账号名
+	// <p>账号名</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
-	// 计算机名
+	// <p>计算机名</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ComputerName *string `json:"ComputerName,omitnil,omitempty" name:"ComputerName"`
 
-	// 名称
+	// <p>名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 用户组IdPath
+	// <p>用户组IdPath</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccountGroupIdPath *string `json:"AccountGroupIdPath,omitnil,omitempty" name:"AccountGroupIdPath"`
 
-	// 用户组id(只支持32位)
+	// <p>用户组id(只支持32位)</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccountGroupId *int64 `json:"AccountGroupId,omitnil,omitempty" name:"AccountGroupId"`
 
-	// 终端组名path
+	// <p>终端组名path</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupNamePath *string `json:"GroupNamePath,omitnil,omitempty" name:"GroupNamePath"`
 
-	// Ip地址
+	// <p>Ip地址</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
-	// 用户组名
+	// <p>用户组名</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccountGroupName *string `json:"AccountGroupName,omitnil,omitempty" name:"AccountGroupName"`
 
-	// 终端组IdPath
+	// <p>终端组IdPath</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupIdPath *string `json:"GroupIdPath,omitnil,omitempty" name:"GroupIdPath"`
 
-	// 唯一标识Mid
+	// <p>唯一标识Mid</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Mid *string `json:"Mid,omitnil,omitempty" name:"Mid"`
 
-	// IOA账号名
+	// <p>IOA账号名</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IoaUserName *string `json:"IoaUserName,omitnil,omitempty" name:"IoaUserName"`
 
-	// 所在分组Id(只支持32位)
+	// <p>所在分组Id(只支持32位)</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupId *int64 `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 所在分组Name
+	// <p>所在分组Name</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
-	// Mac地址
+	// <p>Mac地址</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Mac *string `json:"Mac,omitnil,omitempty" name:"Mac"`
 
-	// 软件版本
+	// <p>软件版本</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
 
-	// 用户组名Path
+	// <p>用户组名Path</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccountGroupNamePath *string `json:"AccountGroupNamePath,omitnil,omitempty" name:"AccountGroupNamePath"`
 
-	// 列表Id(只支持32位)
+	// <p>列表Id(只支持32位)</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 }
@@ -3089,69 +3167,69 @@ func (r *DescribeDirectAccountGroupResourcesResponse) FromJsonString(s string) e
 }
 
 type DescribeLocalAccountAccountGroupsData struct {
-	// 组Id(只支持32位)
+	// <p>组Id(只支持32位)</p>
 	AccountGroupId *int64 `json:"AccountGroupId,omitnil,omitempty" name:"AccountGroupId"`
 }
 
 type DescribeLocalAccountsData struct {
-	// uid，数据库中唯一
+	// <p>uid，数据库中唯一</p>
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 账号，登录账号
+	// <p>账号，登录账号</p>
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
-	// 用户名
+	// <p>用户名</p>
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
-	// 账号id，同Id字段
+	// <p>账号id，同Id字段</p>
 	AccountId *int64 `json:"AccountId,omitnil,omitempty" name:"AccountId"`
 
-	// 账号所在的分组id
+	// <p>账号所在的分组id</p>
 	GroupId *int64 `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 账号所在的分组名称
+	// <p>账号所在的分组名称</p>
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
-	// 账号所在的分组名称路径，用英文.分割
+	// <p>账号所在的分组名称路径，用英文.分割</p>
 	NamePath *string `json:"NamePath,omitnil,omitempty" name:"NamePath"`
 
-	// 账号来源,0表示本地账号(只支持32位)
+	// <p>账号来源,0表示本地账号(只支持32位)</p>
 	Source *int64 `json:"Source,omitnil,omitempty" name:"Source"`
 
-	// 账号状态,0禁用，1启用(只支持32位)
+	// <p>账号状态,0禁用，1启用(只支持32位)</p>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 账号的创建时间
+	// <p>账号的创建时间</p>
 	Itime *string `json:"Itime,omitnil,omitempty" name:"Itime"`
 
-	// 账号的最后更新时间
+	// <p>账号的最后更新时间</p>
 	Utime *string `json:"Utime,omitnil,omitempty" name:"Utime"`
 
-	// 账号的扩展信息，包含邮箱、手机号、身份证、职位等信息
+	// <p>账号的扩展信息，包含邮箱、手机号、身份证、职位等信息</p>
 	ExtraInfo *string `json:"ExtraInfo,omitnil,omitempty" name:"ExtraInfo"`
 
-	// 用户风险等级，枚举：none, low, middle, high
+	// <p>用户风险等级，枚举：none, low, middle, high</p>
 	RiskLevel *string `json:"RiskLevel,omitnil,omitempty" name:"RiskLevel"`
 
-	// 所属组
+	// <p>所属组</p>
 	AccountGroups []*DescribeLocalAccountAccountGroupsData `json:"AccountGroups,omitnil,omitempty" name:"AccountGroups"`
 
-	// 绑定手机端设备数
+	// <p>绑定手机端设备数</p>
 	MobileBindNum *int64 `json:"MobileBindNum,omitnil,omitempty" name:"MobileBindNum"`
 
-	// 绑定Pc端设备数
+	// <p>绑定Pc端设备数</p>
 	PcBindNum *int64 `json:"PcBindNum,omitnil,omitempty" name:"PcBindNum"`
 
-	// 账号在线状态 1：在线 2：离线
+	// <p>账号在线状态 1：在线 2：离线</p>
 	OnlineStatus *int64 `json:"OnlineStatus,omitnil,omitempty" name:"OnlineStatus"`
 
-	// 账号活跃状态 1：活跃 2：非活跃
+	// <p>账号活跃状态 1：活跃 2：非活跃</p>
 	ActiveStatus *int64 `json:"ActiveStatus,omitnil,omitempty" name:"ActiveStatus"`
 
-	// 账号登录时间
+	// <p>账号登录时间</p>
 	LoginTime *string `json:"LoginTime,omitnil,omitempty" name:"LoginTime"`
 
-	// 账号登出时间
+	// <p>账号登出时间</p>
 	LogoutTime *string `json:"LogoutTime,omitnil,omitempty" name:"LogoutTime"`
 }
 
@@ -3525,55 +3603,55 @@ func (r *DescribeRootAccountGroupResponse) FromJsonString(s string) error {
 }
 
 type DescribeSoftCensusListByDeviceData struct {
-	// 终端用户名
+	// <p>终端用户名</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
-	// mac地址
+	// <p>mac地址</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MacAddr *string `json:"MacAddr,omitnil,omitempty" name:"MacAddr"`
 
-	// 终端计算机名称
+	// <p>终端计算机名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 终端组路径名
+	// <p>终端组路径名</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupNamePath *string `json:"GroupNamePath,omitnil,omitempty" name:"GroupNamePath"`
 
-	// IP地址
+	// <p>IP地址</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
-	// 唯一标识Mid
+	// <p>唯一标识Mid</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Mid *string `json:"Mid,omitnil,omitempty" name:"Mid"`
 
-	// 企业账户名
+	// <p>企业账户名</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IoaUserName *string `json:"IoaUserName,omitnil,omitempty" name:"IoaUserName"`
 
-	// 终端分组Id(只支持32位)
+	// <p>终端分组Id(只支持32位)</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupId *int64 `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 终端组名
+	// <p>终端组名</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
-	// 终端列表Id(只支持32位)
+	// <p>终端列表Id(只支持32位)</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 软件数量(只支持32位)
+	// <p>软件数量(只支持32位)</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SoftNum *int64 `json:"SoftNum,omitnil,omitempty" name:"SoftNum"`
 
-	// 盗版风险（1=风险;2=未知）
+	// <p>盗版风险（1=风险;2=未知）</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PiracyRisk *int64 `json:"PiracyRisk,omitnil,omitempty" name:"PiracyRisk"`
 
-	// 终端备注名
+	// <p>终端备注名</p>
 	RemarkName *string `json:"RemarkName,omitnil,omitempty" name:"RemarkName"`
 }
 
@@ -4011,58 +4089,58 @@ type DeviceDownloadTask struct {
 }
 
 type DeviceGroupDetail struct {
-	// 设备组id
+	// <p>设备组id</p>
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 设备组名称
+	// <p>设备组名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 设备组描述
+	// <p>设备组描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 父节点id
+	// <p>父节点id</p>
 	ParentId *int64 `json:"ParentId,omitnil,omitempty" name:"ParentId"`
 
-	// 基于id的节点路径
+	// <p>基于id的节点路径</p>
 	IdPath *string `json:"IdPath,omitnil,omitempty" name:"IdPath"`
 
-	// 基于名称的节点路径
+	// <p>基于名称的节点路径</p>
 	NamePath *string `json:"NamePath,omitnil,omitempty" name:"NamePath"`
 
-	// 分组锁定状态
+	// <p>分组锁定状态</p>
 	Locked *int64 `json:"Locked,omitnil,omitempty" name:"Locked"`
 
-	// 系统类型（0: win，1：linux，2: mac，4：android，5：ios   ）
+	// <p>系统类型（0: win，1：linux，2: mac，4：android，5：ios   ）</p>
 	OsType *int64 `json:"OsType,omitnil,omitempty" name:"OsType"`
 
-	// 排序
+	// <p>排序</p>
 	Sort *int64 `json:"Sort,omitnil,omitempty" name:"Sort"`
 
-	// 是否自动调整
+	// <p>是否自动调整</p>
 	FromAuto *int64 `json:"FromAuto,omitnil,omitempty" name:"FromAuto"`
 
-	// 子节点数量
+	// <p>子节点数量</p>
 	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
 
-	// 图标
+	// <p>图标</p>
 	Icon *string `json:"Icon,omitnil,omitempty" name:"Icon"`
 
-	// 是否有ip
+	// <p>是否有ip</p>
 	WithIp *int64 `json:"WithIp,omitnil,omitempty" name:"WithIp"`
 
-	// 是否有组ip
+	// <p>是否有组ip</p>
 	HasIp *bool `json:"HasIp,omitnil,omitempty" name:"HasIp"`
 
-	// 是否是叶子节点
+	// <p>是否是叶子节点</p>
 	IsLeaf *bool `json:"IsLeaf,omitnil,omitempty" name:"IsLeaf"`
 
-	// 是否只读
+	// <p>是否只读</p>
 	ReadOnly *bool `json:"ReadOnly,omitnil,omitempty" name:"ReadOnly"`
 
-	// 对应绑定的账号id
+	// <p>对应绑定的账号id</p>
 	BindAccount *int64 `json:"BindAccount,omitnil,omitempty" name:"BindAccount"`
 
-	// 绑定账号的用户名
+	// <p>绑定账号的用户名</p>
 	BindAccountName *string `json:"BindAccountName,omitnil,omitempty" name:"BindAccountName"`
 }
 
@@ -4182,22 +4260,22 @@ type DeviceVideoCardBrief struct {
 }
 
 type DeviceVirtualDeviceGroupsDetail struct {
-	// 终端自定义分组id
+	// <p>终端自定义分组id</p>
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 自定义分组名称
+	// <p>自定义分组名称</p>
 	DeviceVirtualGroupName *string `json:"DeviceVirtualGroupName,omitnil,omitempty" name:"DeviceVirtualGroupName"`
 
-	// 设备数
+	// <p>设备数</p>
 	DeviceCount *int64 `json:"DeviceCount,omitnil,omitempty" name:"DeviceCount"`
 
-	// 系统类型（0: win，1：linux，2: mac，4：android，5：ios  ）
+	// <p>系统类型（0: win，1：linux，2: mac，4：android，5：ios  ）</p>
 	OsType *int64 `json:"OsType,omitnil,omitempty" name:"OsType"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	Itime *string `json:"Itime,omitnil,omitempty" name:"Itime"`
 
-	// 更新时间
+	// <p>更新时间</p>
 	Utime *string `json:"Utime,omitnil,omitempty" name:"Utime"`
 }
 
@@ -4234,6 +4312,9 @@ type DirectoryConfigData struct {
 
 	// <p>是否在登录页展示</p>
 	DisplayOnLoginPage *bool `json:"DisplayOnLoginPage,omitnil,omitempty" name:"DisplayOnLoginPage"`
+
+	// <p>名称多语言</p>
+	NameI18n []*I18nString `json:"NameI18n,omitnil,omitempty" name:"NameI18n"`
 }
 
 type DirectoryConfigResultData struct {
@@ -4263,6 +4344,9 @@ type DirectoryConfigResultData struct {
 
 	// <p>认证方式，授权认证/扫码认证 等</p>
 	AuthMethods []*string `json:"AuthMethods,omitnil,omitempty" name:"AuthMethods"`
+
+	// <p>名称多语言支持</p>
+	NameI18n []*I18nString `json:"NameI18n,omitnil,omitempty" name:"NameI18n"`
 }
 
 // Predefined struct for user
@@ -4463,55 +4547,55 @@ type FilterGroup struct {
 }
 
 type GetAccountGroupData struct {
-	// 分组名称全路径，点分格式
+	// <p>分组名称全路径，点分格式</p>
 	NamePath *string `json:"NamePath,omitnil,omitempty" name:"NamePath"`
 
-	// 分组ID全路径，数组格式
+	// <p>分组ID全路径，数组格式</p>
 	IdPathArr []*int64 `json:"IdPathArr,omitnil,omitempty" name:"IdPathArr"`
 
-	// 分组扩展信息
+	// <p>分组扩展信息</p>
 	ExtraInfo *string `json:"ExtraInfo,omitnil,omitempty" name:"ExtraInfo"`
 
-	// 最后更新时间
+	// <p>最后更新时间</p>
 	Utime *string `json:"Utime,omitnil,omitempty" name:"Utime"`
 
-	// 当前分组的父分组ID
+	// <p>当前分组的父分组ID</p>
 	ParentId *uint64 `json:"ParentId,omitnil,omitempty" name:"ParentId"`
 
-	// 源账号组ID，该字段仅适用于第三方同步的组织架构，通过OrgId-Id构成源组织架构分组ID-现组织架构分组ID映射关系
+	// <p>源账号组ID，该字段仅适用于第三方同步的组织架构，通过OrgId-Id构成源组织架构分组ID-现组织架构分组ID映射关系</p>
 	OrgId *string `json:"OrgId,omitnil,omitempty" name:"OrgId"`
 
-	// 分组名称
+	// <p>分组名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 分组ID
+	// <p>分组ID</p>
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 分组描述
+	// <p>分组描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 分组导入源(只支持32位)
+	// <p>分组导入源(只支持32位)</p>
 	Source *uint64 `json:"Source,omitnil,omitempty" name:"Source"`
 
-	// 分组ID全路径，点分格式
+	// <p>分组ID全路径，点分格式</p>
 	IdPath *string `json:"IdPath,omitnil,omitempty" name:"IdPath"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	Itime *string `json:"Itime,omitnil,omitempty" name:"Itime"`
 
-	// 父源账号组ID，该字段仅适用于第三方同步的组织架构
+	// <p>父源账号组ID，该字段仅适用于第三方同步的组织架构</p>
 	ParentOrgId *string `json:"ParentOrgId,omitnil,omitempty" name:"ParentOrgId"`
 
-	// 导入信息,json格式
+	// <p>导入信息,json格式</p>
 	Import *string `json:"Import,omitnil,omitempty" name:"Import"`
 
-	// 是否开启导入架构
+	// <p>是否开启导入架构</p>
 	ImportEnable *bool `json:"ImportEnable,omitnil,omitempty" name:"ImportEnable"`
 
-	// 导入类型
+	// <p>导入类型</p>
 	ImportType *string `json:"ImportType,omitnil,omitempty" name:"ImportType"`
 
-	// miniIAMId，MiniIAM源才有
+	// <p>miniIAMId，MiniIAM源才有</p>
 	MiniIamId *string `json:"MiniIamId,omitnil,omitempty" name:"MiniIamId"`
 }
 
@@ -4732,25 +4816,25 @@ func (r *GrantResourcesByVirtualGroupsResponse) FromJsonString(s string) error {
 }
 
 type GrantedAccountGroupItem struct {
-	// 账户组Id
+	// <p>账户组Id</p>
 	AccountGroupId *uint64 `json:"AccountGroupId,omitnil,omitempty" name:"AccountGroupId"`
 
-	// 分组名称
+	// <p>分组名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 所属分组Id
+	// <p>所属分组Id</p>
 	IdPathArray []*uint64 `json:"IdPathArray,omitnil,omitempty" name:"IdPathArray"`
 
-	// 所属分组NamePathArray
+	// <p>所属分组NamePathArray</p>
 	NamePathArray []*string `json:"NamePathArray,omitnil,omitempty" name:"NamePathArray"`
 
-	// 目录id
+	// <p>目录id</p>
 	AccountCount *uint64 `json:"AccountCount,omitnil,omitempty" name:"AccountCount"`
 
-	// 过期时间
+	// <p>过期时间</p>
 	ExpireTime *uint64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
-	// 关联id
+	// <p>关联id</p>
 	RelationId *uint64 `json:"RelationId,omitnil,omitempty" name:"RelationId"`
 }
 
@@ -4801,6 +4885,14 @@ type GrantedVirtualGroupItem struct {
 
 	// 关联id
 	RelationId *uint64 `json:"RelationId,omitnil,omitempty" name:"RelationId"`
+}
+
+type I18nString struct {
+	// <p>语言枚举</p><p>枚举值：</p><ul><li>zh-CN： 简体中文</li><li>en-US： 英文</li></ul>
+	Lang *string `json:"Lang,omitnil,omitempty" name:"Lang"`
+
+	// <p>这是一段业务字符串</p>
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 // Predefined struct for user
@@ -4944,6 +5036,9 @@ type ModifyCompanyDirectoryConfigRequestParams struct {
 
 	// <p>描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>名称多语言</p>
+	NameI18n []*I18nString `json:"NameI18n,omitnil,omitempty" name:"NameI18n"`
 }
 
 type ModifyCompanyDirectoryConfigRequest struct {
@@ -4978,6 +5073,9 @@ type ModifyCompanyDirectoryConfigRequest struct {
 
 	// <p>描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>名称多语言</p>
+	NameI18n []*I18nString `json:"NameI18n,omitnil,omitempty" name:"NameI18n"`
 }
 
 func (r *ModifyCompanyDirectoryConfigRequest) ToJsonString() string {
@@ -5002,6 +5100,7 @@ func (r *ModifyCompanyDirectoryConfigRequest) FromJsonString(s string) error {
 	delete(f, "DisplayOnLoginPage")
 	delete(f, "Id")
 	delete(f, "Description")
+	delete(f, "NameI18n")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCompanyDirectoryConfigRequest has unknown keys!", "")
 	}

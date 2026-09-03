@@ -2421,7 +2421,7 @@ func NewCreateDocumentResponse() (response *CreateDocumentResponse) {
 //
 // -  本接口<font color="red">只能填充分配给发起方的填写控件</font>，不能填充分配给签署方的签署控件。
 //
-// - <font color="red">若使用预览方式（`NeedPreview=true`），预览确认无误后，需用同样的参数再次调用本接口</font>（`NeedPreview=false`），并使用新调用返回的 `FlowId` 去调用 [StartFlow](https://qian.tencent.com/developers/companyApis/startFlows/StartFlow) 发起签署。预览模式返回的 `FlowId` 为临时 ID，不能用于发起。
+// - <font color="red">若使用预览方式（`NeedPreview=true`），预览确认无误后，需用同样的参数再次调用本接口</font>（`NeedPreview=false`），并使用新调用返回的 `FlowId` 去调用 <a href="https://qian.tencent.com/developers/companyApis/startFlows/StartFlow" target="_blank">StartFlow</a>发起签署。预览模式返回的 `FlowId` 为临时 ID，不能用于发起。
 //
 // - 只要存在发起方的填写控件，填充时会触发 PDF 合成工作，文档合成完成后会收到[合同文档合成完成回调](https://qian.tencent.com/developers/company/callback_types_contracts_sign#%E4%B9%9D-%E5%90%88%E5%90%8C%E6%96%87%E6%A1%A3%E5%90%88%E6%88%90%E5%AE%8C%E6%88%90%E5%9B%9E%E8%B0%83)。<font color="red">一定要等待该回调（或等待数秒）后再调用 [StartFlow](https://qian.tencent.com/developers/companyApis/startFlows/StartFlow) 接口发起签署</font>，以确保文档已合成完毕。
 //
@@ -2548,7 +2548,7 @@ func (c *Client) CreateDocument(request *CreateDocumentRequest) (response *Creat
 //
 // -  本接口<font color="red">只能填充分配给发起方的填写控件</font>，不能填充分配给签署方的签署控件。
 //
-// - <font color="red">若使用预览方式（`NeedPreview=true`），预览确认无误后，需用同样的参数再次调用本接口</font>（`NeedPreview=false`），并使用新调用返回的 `FlowId` 去调用 [StartFlow](https://qian.tencent.com/developers/companyApis/startFlows/StartFlow) 发起签署。预览模式返回的 `FlowId` 为临时 ID，不能用于发起。
+// - <font color="red">若使用预览方式（`NeedPreview=true`），预览确认无误后，需用同样的参数再次调用本接口</font>（`NeedPreview=false`），并使用新调用返回的 `FlowId` 去调用 <a href="https://qian.tencent.com/developers/companyApis/startFlows/StartFlow" target="_blank">StartFlow</a>发起签署。预览模式返回的 `FlowId` 为临时 ID，不能用于发起。
 //
 // - 只要存在发起方的填写控件，填充时会触发 PDF 合成工作，文档合成完成后会收到[合同文档合成完成回调](https://qian.tencent.com/developers/company/callback_types_contracts_sign#%E4%B9%9D-%E5%90%88%E5%90%8C%E6%96%87%E6%A1%A3%E5%90%88%E6%88%90%E5%AE%8C%E6%88%90%E5%9B%9E%E8%B0%83)。<font color="red">一定要等待该回调（或等待数秒）后再调用 [StartFlow](https://qian.tencent.com/developers/companyApis/startFlows/StartFlow) 接口发起签署</font>，以确保文档已合成完毕。
 //

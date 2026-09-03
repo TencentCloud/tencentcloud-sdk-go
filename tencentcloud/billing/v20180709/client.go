@@ -749,6 +749,60 @@ func (c *Client) DescribeAccountBalanceWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribeAccountWarningRequest() (request *DescribeAccountWarningRequest) {
+    request = &DescribeAccountWarningRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("billing", APIVersion, "DescribeAccountWarning")
+    
+    
+    return
+}
+
+func NewDescribeAccountWarningResponse() (response *DescribeAccountWarningResponse) {
+    response = &DescribeAccountWarningResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAccountWarning
+// 云api查余额告警阈值接口，支持传入uin
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATERROR = "InternalError.DbOperatError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeAccountWarning(request *DescribeAccountWarningRequest) (response *DescribeAccountWarningResponse, err error) {
+    return c.DescribeAccountWarningWithContext(context.Background(), request)
+}
+
+// DescribeAccountWarning
+// 云api查余额告警阈值接口，支持传入uin
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATERROR = "InternalError.DbOperatError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeAccountWarningWithContext(ctx context.Context, request *DescribeAccountWarningRequest) (response *DescribeAccountWarningResponse, err error) {
+    if request == nil {
+        request = NewDescribeAccountWarningRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "billing", APIVersion, "DescribeAccountWarning")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAccountWarning require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAccountWarningResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAllocateConditionsRequest() (request *DescribeAllocateConditionsRequest) {
     request = &DescribeAllocateConditionsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3591,6 +3645,60 @@ func (c *Client) DescribeVoucherUsageDetailsWithContext(ctx context.Context, req
     request.SetContext(ctx)
     
     response = NewDescribeVoucherUsageDetailsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyAccountWarningRequest() (request *ModifyAccountWarningRequest) {
+    request = &ModifyAccountWarningRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("billing", APIVersion, "ModifyAccountWarning")
+    
+    
+    return
+}
+
+func NewModifyAccountWarningResponse() (response *ModifyAccountWarningResponse) {
+    response = &ModifyAccountWarningResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyAccountWarning
+// 云api设置余额告警阈值接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyAccountWarning(request *ModifyAccountWarningRequest) (response *ModifyAccountWarningResponse, err error) {
+    return c.ModifyAccountWarningWithContext(context.Background(), request)
+}
+
+// ModifyAccountWarning
+// 云api设置余额告警阈值接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyAccountWarningWithContext(ctx context.Context, request *ModifyAccountWarningRequest) (response *ModifyAccountWarningResponse, err error) {
+    if request == nil {
+        request = NewModifyAccountWarningRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "billing", APIVersion, "ModifyAccountWarning")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAccountWarning require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyAccountWarningResponse()
     err = c.Send(request, response)
     return
 }

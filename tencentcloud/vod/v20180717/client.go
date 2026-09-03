@@ -235,6 +235,64 @@ func (c *Client) CloneVoiceAsyncWithContext(ctx context.Context, request *CloneV
     return
 }
 
+func NewCloneVoiceSyncRequest() (request *CloneVoiceSyncRequest) {
+    request = &CloneVoiceSyncRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "CloneVoiceSync")
+    
+    
+    return
+}
+
+func NewCloneVoiceSyncResponse() (response *CloneVoiceSyncResponse) {
+    response = &CloneVoiceSyncResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CloneVoiceSync
+// 发起音色克隆任务，基于参考音频克隆生成专属音色，生成的音色可供后续语音合成使用。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CloneVoiceSync(request *CloneVoiceSyncRequest) (response *CloneVoiceSyncResponse, err error) {
+    return c.CloneVoiceSyncWithContext(context.Background(), request)
+}
+
+// CloneVoiceSync
+// 发起音色克隆任务，基于参考音频克隆生成专属音色，生成的音色可供后续语音合成使用。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CloneVoiceSyncWithContext(ctx context.Context, request *CloneVoiceSyncRequest) (response *CloneVoiceSyncResponse, err error) {
+    if request == nil {
+        request = NewCloneVoiceSyncRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vod", APIVersion, "CloneVoiceSync")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CloneVoiceSync require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCloneVoiceSyncResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCommitUploadRequest() (request *CommitUploadRequest) {
     request = &CommitUploadRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -15915,6 +15973,72 @@ func (c *Client) TextToSpeechAsyncWithContext(ctx context.Context, request *Text
     request.SetContext(ctx)
     
     response = NewTextToSpeechAsyncResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewTextToSpeechSyncRequest() (request *TextToSpeechSyncRequest) {
+    request = &TextToSpeechSyncRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "TextToSpeechSync")
+    
+    
+    return
+}
+
+func NewTextToSpeechSyncResponse() (response *TextToSpeechSyncResponse) {
+    response = &TextToSpeechSyncResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// TextToSpeechSync
+// 发起语音合成任务，将文本合成为语音。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_SESSIONCONTEXTTOOLONG = "InvalidParameterValue.SessionContextTooLong"
+//  INVALIDPARAMETERVALUE_SESSIONID = "InvalidParameterValue.SessionId"
+//  INVALIDPARAMETERVALUE_SESSIONIDTOOLONG = "InvalidParameterValue.SessionIdTooLong"
+//  INVALIDPARAMETERVALUE_SUBAPPID = "InvalidParameterValue.SubAppId"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) TextToSpeechSync(request *TextToSpeechSyncRequest) (response *TextToSpeechSyncResponse, err error) {
+    return c.TextToSpeechSyncWithContext(context.Background(), request)
+}
+
+// TextToSpeechSync
+// 发起语音合成任务，将文本合成为语音。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_SESSIONCONTEXTTOOLONG = "InvalidParameterValue.SessionContextTooLong"
+//  INVALIDPARAMETERVALUE_SESSIONID = "InvalidParameterValue.SessionId"
+//  INVALIDPARAMETERVALUE_SESSIONIDTOOLONG = "InvalidParameterValue.SessionIdTooLong"
+//  INVALIDPARAMETERVALUE_SUBAPPID = "InvalidParameterValue.SubAppId"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) TextToSpeechSyncWithContext(ctx context.Context, request *TextToSpeechSyncRequest) (response *TextToSpeechSyncResponse, err error) {
+    if request == nil {
+        request = NewTextToSpeechSyncRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vod", APIVersion, "TextToSpeechSync")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TextToSpeechSync require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewTextToSpeechSyncResponse()
     err = c.Send(request, response)
     return
 }

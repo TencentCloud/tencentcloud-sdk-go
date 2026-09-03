@@ -1551,35 +1551,39 @@ func (r *CreateProxySessionKillTaskResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateRedisBigKeyAnalysisTaskRequestParams struct {
-	// 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
+	// <p>实例 ID。可通过 <a href="https://cloud.tencent.com/document/api/1130/57798">DescribeDiagDBInstances</a> 接口获取。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 服务产品类型，支持值包括 "redis" - 云数据库 Redis。
+	// <p>服务产品类型，支持值包括 &quot;redis&quot; - 云数据库 Redis。</p>
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 
-	// 分片节点序号列表。当列表为空时，选择所有分片节点。
+	// <p>分片节点序号列表。当列表为空时，选择所有分片节点。</p>
 	ShardIds []*int64 `json:"ShardIds,omitnil,omitempty" name:"ShardIds"`
 
-	// Top Key前缀的分隔符列表。
-	// 目前仅支持以下分割符：[",", ";", ":", "_", "-", "+", "@", "=", "|", "#", "."]，当列表为空时，默认选择所有分隔符。
+	// <p>Top Key前缀的分隔符列表。<br>目前仅支持以下分割符：[&quot;,&quot;, &quot;;&quot;, &quot;:&quot;, &quot;_&quot;, &quot;-&quot;, &quot;+&quot;, &quot;@&quot;, &quot;=&quot;, &quot;|&quot;, &quot;#&quot;, &quot;.&quot;]，当列表为空时，默认选择所有分隔符。</p>
 	KeyDelimiterList []*string `json:"KeyDelimiterList,omitnil,omitempty" name:"KeyDelimiterList"`
+
+	// <p>历史备份文件ID</p>
+	BackupId *string `json:"BackupId,omitnil,omitempty" name:"BackupId"`
 }
 
 type CreateRedisBigKeyAnalysisTaskRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
+	// <p>实例 ID。可通过 <a href="https://cloud.tencent.com/document/api/1130/57798">DescribeDiagDBInstances</a> 接口获取。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 服务产品类型，支持值包括 "redis" - 云数据库 Redis。
+	// <p>服务产品类型，支持值包括 &quot;redis&quot; - 云数据库 Redis。</p>
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 
-	// 分片节点序号列表。当列表为空时，选择所有分片节点。
+	// <p>分片节点序号列表。当列表为空时，选择所有分片节点。</p>
 	ShardIds []*int64 `json:"ShardIds,omitnil,omitempty" name:"ShardIds"`
 
-	// Top Key前缀的分隔符列表。
-	// 目前仅支持以下分割符：[",", ";", ":", "_", "-", "+", "@", "=", "|", "#", "."]，当列表为空时，默认选择所有分隔符。
+	// <p>Top Key前缀的分隔符列表。<br>目前仅支持以下分割符：[&quot;,&quot;, &quot;;&quot;, &quot;:&quot;, &quot;_&quot;, &quot;-&quot;, &quot;+&quot;, &quot;@&quot;, &quot;=&quot;, &quot;|&quot;, &quot;#&quot;, &quot;.&quot;]，当列表为空时，默认选择所有分隔符。</p>
 	KeyDelimiterList []*string `json:"KeyDelimiterList,omitnil,omitempty" name:"KeyDelimiterList"`
+
+	// <p>历史备份文件ID</p>
+	BackupId *string `json:"BackupId,omitnil,omitempty" name:"BackupId"`
 }
 
 func (r *CreateRedisBigKeyAnalysisTaskRequest) ToJsonString() string {
@@ -1598,6 +1602,7 @@ func (r *CreateRedisBigKeyAnalysisTaskRequest) FromJsonString(s string) error {
 	delete(f, "Product")
 	delete(f, "ShardIds")
 	delete(f, "KeyDelimiterList")
+	delete(f, "BackupId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRedisBigKeyAnalysisTaskRequest has unknown keys!", "")
 	}
@@ -1606,7 +1611,7 @@ func (r *CreateRedisBigKeyAnalysisTaskRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateRedisBigKeyAnalysisTaskResponseParams struct {
-	// 异步任务ID。
+	// <p>异步任务ID。</p>
 	AsyncRequestId *int64 `json:"AsyncRequestId,omitnil,omitempty" name:"AsyncRequestId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

@@ -1347,10 +1347,10 @@ type LogSources struct {
 }
 
 type MetadataVar struct {
-	// <p>沙箱元数据名</p>
+	// <p>元数据名</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// <p>沙箱元数据值</p>
+	// <p>元数据值</p>
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 

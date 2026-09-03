@@ -655,80 +655,72 @@ type AgentStoreCosParam struct {
 }
 
 type AiAnalysisResult struct {
-	// 任务的类型，可以取的值有：
-	// <li>Classification：智能分类</li>
-	// <li>Cover：智能封面</li>
-	// <li>Tag：智能标签</li>
-	// <li>FrameTag：智能按帧标签</li>
-	// <li>Highlight：智能精彩集锦</li>
-	// <li>DeLogo：智能擦除</li>
-	// <li>Description：大模型摘要</li>
-	// <li>Dubbing：智能译制</li>
-	// <li>VideoRemake: 视频去重</li>
-	// <li>VideoComprehension: 视频（音频）理解</li>
-	// <li>Cutout：视频抠图</li>
-	// <li>Reel：智能成片</li>
+	// <p>任务的类型，可以取的值有：</p><li>Classification：智能分类</li><li>Cover：智能封面</li><li>Tag：智能标签</li><li>FrameTag：智能按帧标签</li><li>Highlight：智能精彩集锦</li><li>DeLogo：智能擦除</li><li>Description：大模型摘要</li><li>Dubbing：智能译制</li><li>VideoRemake: 视频去重</li><li>VideoComprehension: 视频（音频）理解</li><li>Cutout：视频抠图</li><li>Reel：智能成片</li>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 视频内容分析智能分类任务的查询结果，当任务类型为 Classification 时有效。
+	// <p>视频内容分析智能分类任务的查询结果，当任务类型为 Classification 时有效。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClassificationTask *AiAnalysisTaskClassificationResult `json:"ClassificationTask,omitnil,omitempty" name:"ClassificationTask"`
 
-	// 视频内容分析智能封面任务的查询结果，当任务类型为 Cover 时有效。
+	// <p>视频内容分析智能封面任务的查询结果，当任务类型为 Cover 时有效。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CoverTask *AiAnalysisTaskCoverResult `json:"CoverTask,omitnil,omitempty" name:"CoverTask"`
 
-	// 视频内容分析智能标签任务的查询结果，当任务类型为 Tag 时有效。
+	// <p>视频内容分析智能标签任务的查询结果，当任务类型为 Tag 时有效。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagTask *AiAnalysisTaskTagResult `json:"TagTask,omitnil,omitempty" name:"TagTask"`
 
-	// 视频内容分析智能按帧标签任务的查询结果，当任务类型为 FrameTag 时有效。
+	// <p>视频内容分析智能按帧标签任务的查询结果，当任务类型为 FrameTag 时有效。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FrameTagTask *AiAnalysisTaskFrameTagResult `json:"FrameTagTask,omitnil,omitempty" name:"FrameTagTask"`
 
-	// 视频内容分析集锦任务的查询结果，当任务类型为 Highlight时有效。
+	// <p>视频内容分析集锦任务的查询结果，当任务类型为 Highlight时有效。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HighlightTask *AiAnalysisTaskHighlightResult `json:"HighlightTask,omitnil,omitempty" name:"HighlightTask"`
 
-	// 视频内容分析智能擦除任务的查询结果，当任务类型为 DeLogo 时有效。
+	// <p>视频内容分析智能擦除任务的查询结果，当任务类型为 DeLogo 时有效。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeLogoTask *AiAnalysisTaskDelLogoResult `json:"DeLogoTask,omitnil,omitempty" name:"DeLogoTask"`
 
-	// 视频内容分析拆条任务的查询结果，当任务类型为 SegmentRecognition 时有效。
+	// <p>视频内容分析拆条任务的查询结果，当任务类型为 SegmentRecognition 时有效。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SegmentTask *AiAnalysisTaskSegmentResult `json:"SegmentTask,omitnil,omitempty" name:"SegmentTask"`
 
-	// 视频内容分析片头片尾任务的查询结果，当任务类型为 HeadTailRecognition 时有效。
+	// <p>视频内容分析片头片尾任务的查询结果，当任务类型为 HeadTailRecognition 时有效。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HeadTailTask *AiAnalysisTaskHeadTailResult `json:"HeadTailTask,omitnil,omitempty" name:"HeadTailTask"`
 
-	// 视频内容分析摘要任务的查询结果，当任务类型为 Description 时有效。
+	// <p>视频内容分析摘要任务的查询结果，当任务类型为 Description 时有效。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DescriptionTask *AiAnalysisTaskDescriptionResult `json:"DescriptionTask,omitnil,omitempty" name:"DescriptionTask"`
 
-	// 视频内容分析横转竖任务的查询结果，当任务类型为 HorizontalToVertical 时有效。
+	// <p>视频内容分析横转竖任务的查询结果，当任务类型为 HorizontalToVertical 时有效。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HorizontalToVerticalTask *AiAnalysisTaskHorizontalToVerticalResult `json:"HorizontalToVerticalTask,omitnil,omitempty" name:"HorizontalToVerticalTask"`
 
-	// 视频内容分析译制任务的查询结果，当任务类型为 Dubbing 时有效。
+	// <p>视频内容分析译制任务的查询结果，当任务类型为 Dubbing 时有效。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DubbingTask *AiAnalysisTaskDubbingResult `json:"DubbingTask,omitnil,omitempty" name:"DubbingTask"`
 
-	// 视频内容分析去重任务的查询结果，当任务类型为 VideoRemake 时有效。
+	// <p>视频内容分析去重任务的查询结果，当任务类型为 VideoRemake 时有效。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VideoRemakeTask *AiAnalysisTaskVideoRemakeResult `json:"VideoRemakeTask,omitnil,omitempty" name:"VideoRemakeTask"`
 
-	// 视频（音频）理解任务的查询结果，当任务类型为 VideoComprehension 时有效。
+	// <p>视频（音频）理解任务的查询结果，当任务类型为 VideoComprehension 时有效。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VideoComprehensionTask *AiAnalysisTaskVideoComprehensionResult `json:"VideoComprehensionTask,omitnil,omitempty" name:"VideoComprehensionTask"`
 
-	// 视频内容分析智能抠图任务的查询结果，当任务类型为Cutout时有效。
+	// <p>视频内容分析智能抠图任务的查询结果，当任务类型为Cutout时有效。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CutoutTask *AiAnalysisTaskCutoutResult `json:"CutoutTask,omitnil,omitempty" name:"CutoutTask"`
 
-	// 视频内容分析AI解说二创任务的查询结果，当任务类型为Reel时有效。
+	// <p>视频内容分析AI解说二创任务的查询结果，当任务类型为Reel时有效。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReelTask *AiAnalysisTaskReelResult `json:"ReelTask,omitnil,omitempty" name:"ReelTask"`
+
+	// <p>智能分析通用任务的查询结果，当任务类型为Generic时有效。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GenericTask *AiAnalysisTaskGenericResult `json:"GenericTask,omitnil,omitempty" name:"GenericTask"`
 }
 
 type AiAnalysisTaskClassificationInput struct {
@@ -1024,6 +1016,40 @@ type AiAnalysisTaskFrameTagResult struct {
 	// <p>智能按帧标签任务输出。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiAnalysisTaskFrameTagOutput `json:"Output,omitnil,omitempty" name:"Output"`
+}
+
+type AiAnalysisTaskGenericInput struct {
+	// <p>智能分析模板 ID。</p>
+	Definition *uint64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// <p>扩展参数。</p>
+	ExtendedParameter *string `json:"ExtendedParameter,omitnil,omitempty" name:"ExtendedParameter"`
+}
+
+type AiAnalysisTaskGenericOutput struct {
+	// <p>存储位置。</p>
+	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitnil,omitempty" name:"OutputStorage"`
+
+	// <p>任务结果。</p>
+	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
+}
+
+type AiAnalysisTaskGenericResult struct {
+	// <p>任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。</p><p>枚举值：</p><ul><li>PROCESSING： 处理中</li><li>SUCCESS： 成功</li><li>FAIL： 失败</li></ul>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>错误码，0：成功，其他值：失败。</p>
+	ErrCode *int64 `json:"ErrCode,omitnil,omitempty" name:"ErrCode"`
+
+	// <p>错误信息。</p>
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// <p>智能分析任务输入。</p>
+	Input *AiAnalysisTaskGenericInput `json:"Input,omitnil,omitempty" name:"Input"`
+
+	// <p>智能分析任务输出。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Output *AiAnalysisTaskGenericOutput `json:"Output,omitnil,omitempty" name:"Output"`
 }
 
 type AiAnalysisTaskHeadTailInput struct {
@@ -2713,6 +2739,23 @@ type AigcVideoReferenceImageInfo struct {
 	// 注意：
 	// 1. 当使用GV模型时，可作为参考方式,可选asset(素材)、style(风格)。
 	ReferenceType *string `json:"ReferenceType,omitnil,omitempty" name:"ReferenceType"`
+}
+
+type AigcVideoReferenceSubjectInfo struct {
+	// <p>参考主体的 ID。</p>
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>主体名称。</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>主体音色ID。</p>
+	VoiceId *string `json:"VoiceId,omitnil,omitempty" name:"VoiceId"`
+
+	// <p>主体图片列表。</p>
+	ImageUrls []*string `json:"ImageUrls,omitnil,omitempty" name:"ImageUrls"`
+
+	// <p>主体视频列表。</p>
+	VideoUrls []*string `json:"VideoUrls,omitnil,omitempty" name:"VideoUrls"`
 }
 
 type AigcVideoReferenceVideoInfo struct {
@@ -5198,26 +5241,23 @@ func (r *CreateAiFissionTaskResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateAigcAudioTaskRequestParams struct {
-	// <p>模型名称。生音乐当前支持的模型: GL、MiniMaxMusic。</p>
+	// <p>模型名称。生音乐当前支持的模型: GL、MiniMaxMusic、EL、Mureka。</p>
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
-	// <p>指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。<br>模型GL支持的版本号：3.0-clip、3.0-pro。<br>模型MiniMaxMusic支持的版本号：2.0、2.5、2.6。</p>
+	// <p>指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。模型GL支持的版本号：3.0-clip、3.0-pro。模型MiniMaxMusic支持的版本号：2.0、2.5、2.6， 3.0。模型EL支持的版本号: compose_v2、sound_t2s_v2。模型Mureka支持的版本号: song_8、song_9、song_9.5、instrumental_8、instrumental_9、instrumental_9.5。</p>
 	ModelVersion *string `json:"ModelVersion,omitnil,omitempty" name:"ModelVersion"`
 
 	// <p>指定场景生音频。音乐: music。</p>
 	SceneType *string `json:"SceneType,omitnil,omitempty" name:"SceneType"`
 
-	// <p>生成视频的描述。(注：最大支持2000字符)。当未传入图片时，此参数必填。</p>
+	// <p>生成音乐的描述。(注：最大支持2000字符)。</p>
 	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
 
-	// <p>参考视频信息。仅部分模型支持。</p>
+	// <p>参考视频信息。仅部分模型支持。</p><ol><li>Kling的视频生音效。</li><li>EL的视频配背景音乐。</li></ol>
 	VideoInfos []*AigcAudioReferenceVideoInfo `json:"VideoInfos,omitnil,omitempty" name:"VideoInfos"`
 
-	// <p>传入参考音频信息。</p><p>比如传入音频生成音乐时需要传入。</p>
+	// <p>传入参考音频信息。</p><ol><li>MiniMaxMusic的翻唱功能使用。</li></ol><p>比如传入音频生成音乐时需要传入。</p>
 	AudioInfos []*AigcAudioReferenceAudioInfo `json:"AudioInfos,omitnil,omitempty" name:"AudioInfos"`
-
-	// <p>输出音频格式，默认不填。mp3、wav。</p>
-	OutputAudioFormat *string `json:"OutputAudioFormat,omitnil,omitempty" name:"OutputAudioFormat"`
 
 	// <p>文件结果指定存储Cos桶信息。 注意：需开通Cos，创建并授权MPS_QcsRole角色。</p>
 	StoreCosParam *AigcStoreCosParam `json:"StoreCosParam,omitnil,omitempty" name:"StoreCosParam"`
@@ -5225,7 +5265,7 @@ type CreateAigcAudioTaskRequestParams struct {
 	// <p>用于传入要求的额外参数。</p>
 	ExtraParameters *AigcAudioExtraParam `json:"ExtraParameters,omitnil,omitempty" name:"ExtraParameters"`
 
-	// <p>用于传入一些模型需要的特殊场景参数，Json格式序列化成字符串。<br>示例MinimaxMusic模型传入歌词时：<br>{"lyric":{"小马在快乐奔跑，花儿在开放"}}</p><ol><li>MiniMaxMusic生纯音乐参数使用示例: &quot;AdditionalParameters&quot;:&quot;{"is_instrumental":true}&quot;</li></ol>
+	// <p>用于传入一些模型需要的特殊场景参数，Json格式序列化成字符串。<br>示例MinimaxMusic模型传入歌词时：<br>{"lyric":{"小马在快乐奔跑，花儿在开放"}}</p><ol><li>MiniMaxMusic生纯音乐参数使用示例: &quot;AdditionalParameters&quot;:&quot;{"is_instrumental":true}&quot;。<br>支持的透传参数有: lyrics，is_instrumental，aigc_watermark，sample_rate，bitrate。</li><li>EL生音乐支持透传的参数有:<br>PromptInfluence，WithTimestamps，CompositionPlan，ForceInstrumental等参数。</li></ol>
 	AdditionalParameters *string `json:"AdditionalParameters,omitnil,omitempty" name:"AdditionalParameters"`
 
 	// <p>接口操作者名称。</p>
@@ -5235,26 +5275,23 @@ type CreateAigcAudioTaskRequestParams struct {
 type CreateAigcAudioTaskRequest struct {
 	*tchttp.BaseRequest
 	
-	// <p>模型名称。生音乐当前支持的模型: GL、MiniMaxMusic。</p>
+	// <p>模型名称。生音乐当前支持的模型: GL、MiniMaxMusic、EL、Mureka。</p>
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
-	// <p>指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。<br>模型GL支持的版本号：3.0-clip、3.0-pro。<br>模型MiniMaxMusic支持的版本号：2.0、2.5、2.6。</p>
+	// <p>指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。模型GL支持的版本号：3.0-clip、3.0-pro。模型MiniMaxMusic支持的版本号：2.0、2.5、2.6， 3.0。模型EL支持的版本号: compose_v2、sound_t2s_v2。模型Mureka支持的版本号: song_8、song_9、song_9.5、instrumental_8、instrumental_9、instrumental_9.5。</p>
 	ModelVersion *string `json:"ModelVersion,omitnil,omitempty" name:"ModelVersion"`
 
 	// <p>指定场景生音频。音乐: music。</p>
 	SceneType *string `json:"SceneType,omitnil,omitempty" name:"SceneType"`
 
-	// <p>生成视频的描述。(注：最大支持2000字符)。当未传入图片时，此参数必填。</p>
+	// <p>生成音乐的描述。(注：最大支持2000字符)。</p>
 	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
 
-	// <p>参考视频信息。仅部分模型支持。</p>
+	// <p>参考视频信息。仅部分模型支持。</p><ol><li>Kling的视频生音效。</li><li>EL的视频配背景音乐。</li></ol>
 	VideoInfos []*AigcAudioReferenceVideoInfo `json:"VideoInfos,omitnil,omitempty" name:"VideoInfos"`
 
-	// <p>传入参考音频信息。</p><p>比如传入音频生成音乐时需要传入。</p>
+	// <p>传入参考音频信息。</p><ol><li>MiniMaxMusic的翻唱功能使用。</li></ol><p>比如传入音频生成音乐时需要传入。</p>
 	AudioInfos []*AigcAudioReferenceAudioInfo `json:"AudioInfos,omitnil,omitempty" name:"AudioInfos"`
-
-	// <p>输出音频格式，默认不填。mp3、wav。</p>
-	OutputAudioFormat *string `json:"OutputAudioFormat,omitnil,omitempty" name:"OutputAudioFormat"`
 
 	// <p>文件结果指定存储Cos桶信息。 注意：需开通Cos，创建并授权MPS_QcsRole角色。</p>
 	StoreCosParam *AigcStoreCosParam `json:"StoreCosParam,omitnil,omitempty" name:"StoreCosParam"`
@@ -5262,7 +5299,7 @@ type CreateAigcAudioTaskRequest struct {
 	// <p>用于传入要求的额外参数。</p>
 	ExtraParameters *AigcAudioExtraParam `json:"ExtraParameters,omitnil,omitempty" name:"ExtraParameters"`
 
-	// <p>用于传入一些模型需要的特殊场景参数，Json格式序列化成字符串。<br>示例MinimaxMusic模型传入歌词时：<br>{"lyric":{"小马在快乐奔跑，花儿在开放"}}</p><ol><li>MiniMaxMusic生纯音乐参数使用示例: &quot;AdditionalParameters&quot;:&quot;{"is_instrumental":true}&quot;</li></ol>
+	// <p>用于传入一些模型需要的特殊场景参数，Json格式序列化成字符串。<br>示例MinimaxMusic模型传入歌词时：<br>{"lyric":{"小马在快乐奔跑，花儿在开放"}}</p><ol><li>MiniMaxMusic生纯音乐参数使用示例: &quot;AdditionalParameters&quot;:&quot;{"is_instrumental":true}&quot;。<br>支持的透传参数有: lyrics，is_instrumental，aigc_watermark，sample_rate，bitrate。</li><li>EL生音乐支持透传的参数有:<br>PromptInfluence，WithTimestamps，CompositionPlan，ForceInstrumental等参数。</li></ol>
 	AdditionalParameters *string `json:"AdditionalParameters,omitnil,omitempty" name:"AdditionalParameters"`
 
 	// <p>接口操作者名称。</p>
@@ -5287,7 +5324,6 @@ func (r *CreateAigcAudioTaskRequest) FromJsonString(s string) error {
 	delete(f, "Prompt")
 	delete(f, "VideoInfos")
 	delete(f, "AudioInfos")
-	delete(f, "OutputAudioFormat")
 	delete(f, "StoreCosParam")
 	delete(f, "ExtraParameters")
 	delete(f, "AdditionalParameters")
@@ -5492,6 +5528,9 @@ type CreateAigcVideoTaskRequestParams struct {
 	// <p>部分模型支持参考音频传入，使用URL传入。</p>
 	AudioInfos []*AigcVideoReferenceAudioInfo `json:"AudioInfos,omitnil,omitempty" name:"AudioInfos"`
 
+	// <p>主体信息。</p>
+	SubjectInfos []*AigcVideoReferenceSubjectInfo `json:"SubjectInfos,omitnil,omitempty" name:"SubjectInfos"`
+
 	// <p>生成视频的时长。<br>注意：</p><ol><li>Kling，默认：5 秒。<ul><li>O1 支持 3-10 秒。</li><li>3.0-Omni 支持 3-15 秒，当使用视频参考时只支持 3-10 秒。</li><li>3.0 支持 3-15 秒。</li><li>其他版本支持 5、10 秒。</li></ul></li><li>Hailuo 的 std 模式可支持 6、10 秒，其他仅 6 秒。默认：6 秒。</li><li>Vidu，默认：5 秒。<ul><li>q3-pro、q3-turbo、q3、q3-mix 支持 3-16 秒。</li><li>q2-pro、q2-turbo、q2 支持 1-10 秒。 </li></ul></li><li>PixVerse，默认：5 秒。<ul><li>v5.6 支持 5、8、10 秒。</li><li>v6、c1 支持 1-15 秒。</li></ul></li><li>H2，支持 3-15 秒，默认 ：5 秒。</li></ol>
 	Duration *int64 `json:"Duration,omitnil,omitempty" name:"Duration"`
 
@@ -5544,6 +5583,9 @@ type CreateAigcVideoTaskRequest struct {
 	// <p>部分模型支持参考音频传入，使用URL传入。</p>
 	AudioInfos []*AigcVideoReferenceAudioInfo `json:"AudioInfos,omitnil,omitempty" name:"AudioInfos"`
 
+	// <p>主体信息。</p>
+	SubjectInfos []*AigcVideoReferenceSubjectInfo `json:"SubjectInfos,omitnil,omitempty" name:"SubjectInfos"`
+
 	// <p>生成视频的时长。<br>注意：</p><ol><li>Kling，默认：5 秒。<ul><li>O1 支持 3-10 秒。</li><li>3.0-Omni 支持 3-15 秒，当使用视频参考时只支持 3-10 秒。</li><li>3.0 支持 3-15 秒。</li><li>其他版本支持 5、10 秒。</li></ul></li><li>Hailuo 的 std 模式可支持 6、10 秒，其他仅 6 秒。默认：6 秒。</li><li>Vidu，默认：5 秒。<ul><li>q3-pro、q3-turbo、q3、q3-mix 支持 3-16 秒。</li><li>q2-pro、q2-turbo、q2 支持 1-10 秒。 </li></ul></li><li>PixVerse，默认：5 秒。<ul><li>v5.6 支持 5、8、10 秒。</li><li>v6、c1 支持 1-15 秒。</li></ul></li><li>H2，支持 3-15 秒，默认 ：5 秒。</li></ol>
 	Duration *int64 `json:"Duration,omitnil,omitempty" name:"Duration"`
 
@@ -5583,6 +5625,7 @@ func (r *CreateAigcVideoTaskRequest) FromJsonString(s string) error {
 	delete(f, "ImageInfos")
 	delete(f, "VideoInfos")
 	delete(f, "AudioInfos")
+	delete(f, "SubjectInfos")
 	delete(f, "Duration")
 	delete(f, "ExtraParameters")
 	delete(f, "StoreCosParam")
@@ -6492,56 +6535,56 @@ func (r *CreateLiveRecordTemplateResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateMediaEvaluationRequestParams struct {
-	// 评测的原文件输入信息。目前输入对象的类型有 COS 和 URL。
+	// <p>评测的原文件输入信息。目前输入对象的类型有 COS 和 URL。</p>
 	InputInfo *MediaInputInfo `json:"InputInfo,omitnil,omitempty" name:"InputInfo"`
 
-	// 评测任务参数。
+	// <p>评测任务参数。</p>
 	EvaluationTask *EvaluationTaskInput `json:"EvaluationTask,omitnil,omitempty" name:"EvaluationTask"`
 
-	// 评测的输出文件的目标存储。不填则继承 InputInfo 中的存储位置。目前输出对象存储位置的类型有COS。
+	// <p>评测的输出文件的目标存储。不填则继承 InputInfo 中的存储位置。目前输出对象存储位置的类型有COS。</p>
 	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitnil,omitempty" name:"OutputStorage"`
 
-	// 评测生成文件的输出目录，必选以 / 开头和结尾，如/movie/201907/。 如果不填，表示与 InputInfo 中文件所在的目录一致。
+	// <p>评测生成文件的输出目录，必选以 / 开头和结尾，如/movie/201907/。 如果不填，表示与 InputInfo 中文件所在的目录一致。</p>
 	OutputDir *string `json:"OutputDir,omitnil,omitempty" name:"OutputDir"`
 
-	// 任务的事件通知信息，不填代表不获取事件通知。
+	// <p>任务的事件通知信息，不填代表不获取事件通知。</p>
 	TaskNotifyConfig *TaskNotifyConfig `json:"TaskNotifyConfig,omitnil,omitempty" name:"TaskNotifyConfig"`
 
-	// 任务优先级，数值越大优先级越高，取值范围是-10到 10，不填代表0。
+	// <p>任务优先级，数值越大优先级越高，取值范围是-10到 10，不填代表0。</p>
 	TasksPriority *int64 `json:"TasksPriority,omitnil,omitempty" name:"TasksPriority"`
 
-	// 用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+	// <p>用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 
-	// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+	// <p>来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。</p>
 	SessionContext *string `json:"SessionContext,omitnil,omitempty" name:"SessionContext"`
 }
 
 type CreateMediaEvaluationRequest struct {
 	*tchttp.BaseRequest
 	
-	// 评测的原文件输入信息。目前输入对象的类型有 COS 和 URL。
+	// <p>评测的原文件输入信息。目前输入对象的类型有 COS 和 URL。</p>
 	InputInfo *MediaInputInfo `json:"InputInfo,omitnil,omitempty" name:"InputInfo"`
 
-	// 评测任务参数。
+	// <p>评测任务参数。</p>
 	EvaluationTask *EvaluationTaskInput `json:"EvaluationTask,omitnil,omitempty" name:"EvaluationTask"`
 
-	// 评测的输出文件的目标存储。不填则继承 InputInfo 中的存储位置。目前输出对象存储位置的类型有COS。
+	// <p>评测的输出文件的目标存储。不填则继承 InputInfo 中的存储位置。目前输出对象存储位置的类型有COS。</p>
 	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitnil,omitempty" name:"OutputStorage"`
 
-	// 评测生成文件的输出目录，必选以 / 开头和结尾，如/movie/201907/。 如果不填，表示与 InputInfo 中文件所在的目录一致。
+	// <p>评测生成文件的输出目录，必选以 / 开头和结尾，如/movie/201907/。 如果不填，表示与 InputInfo 中文件所在的目录一致。</p>
 	OutputDir *string `json:"OutputDir,omitnil,omitempty" name:"OutputDir"`
 
-	// 任务的事件通知信息，不填代表不获取事件通知。
+	// <p>任务的事件通知信息，不填代表不获取事件通知。</p>
 	TaskNotifyConfig *TaskNotifyConfig `json:"TaskNotifyConfig,omitnil,omitempty" name:"TaskNotifyConfig"`
 
-	// 任务优先级，数值越大优先级越高，取值范围是-10到 10，不填代表0。
+	// <p>任务优先级，数值越大优先级越高，取值范围是-10到 10，不填代表0。</p>
 	TasksPriority *int64 `json:"TasksPriority,omitnil,omitempty" name:"TasksPriority"`
 
-	// 用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+	// <p>用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 
-	// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+	// <p>来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。</p>
 	SessionContext *string `json:"SessionContext,omitnil,omitempty" name:"SessionContext"`
 }
 
@@ -6573,7 +6616,7 @@ func (r *CreateMediaEvaluationRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateMediaEvaluationResponseParams struct {
-	// 任务 ID。
+	// <p>任务 ID。</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -11568,6 +11611,9 @@ type DescribeAgentRecordTaskResponseParams struct {
 	// <p>当任务状态为 SUCCESS 时，返回录制文件Url列表。</p>
 	RecordUrls []*string `json:"RecordUrls,omitnil,omitempty" name:"RecordUrls"`
 
+	// <p>直播状态</p><p>枚举值：</p><ul><li>LIVE： 直播中</li><li>PAUSED： 直播暂停</li><li>ENDED： 直播结束</li></ul>
+	LiveStatus *string `json:"LiveStatus,omitnil,omitempty" name:"LiveStatus"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -13494,85 +13540,87 @@ func (r *DescribeMediaMetaDataResponse) FromJsonString(s string) error {
 }
 
 type DescribeOutput struct {
-	// 输出Id。
+	// <p>输出Id。</p>
 	OutputId *string `json:"OutputId,omitnil,omitempty" name:"OutputId"`
 
-	// 输出名称。
+	// <p>输出名称。</p>
 	OutputName *string `json:"OutputName,omitnil,omitempty" name:"OutputName"`
 
-	// 输出类型。
+	// <p>输出类型。</p>
 	OutputType *string `json:"OutputType,omitnil,omitempty" name:"OutputType"`
 
-	// 输出模块类型，包括Pinpoint（单点输出，最多支持四路并发输出）；MultiMesh（多路输出，支持大于四路的并发输出，目前可以达到200路）。默认类型为 Pinpoint 输出。对于单个 Flow 一个区域最多只能有一个 MultiMesh 输出。
+	// <p>输出模块类型，包括Pinpoint（单点输出，最多支持四路并发输出）；MultiMesh（多路输出，支持大于四路的并发输出，目前可以达到200路）。默认类型为 Pinpoint 输出。对于单个 Flow 一个区域最多只能有一个 MultiMesh 输出。</p>
 	OutputKind *string `json:"OutputKind,omitnil,omitempty" name:"OutputKind"`
 
-	// 输出描述。
+	// <p>输出描述。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 输出协议。
+	// <p>输出协议。</p>
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
-	// 输出的出口地址信息列表。
+	// <p>输出的出口地址信息列表。</p>
 	OutputAddressList []*OutputAddress `json:"OutputAddressList,omitnil,omitempty" name:"OutputAddressList"`
 
-	// 输出的地区。
+	// <p>输出的地区。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OutputRegion *string `json:"OutputRegion,omitnil,omitempty" name:"OutputRegion"`
 
-	// 输出的SRT配置信息。
+	// <p>输出的SRT配置信息。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SRTSettings *DescribeOutputSRTSettings `json:"SRTSettings,omitnil,omitempty" name:"SRTSettings"`
 
-	// 输出的RTP配置信息。
+	// <p>输出的RTP配置信息。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RTPSettings *DescribeOutputRTPSettings `json:"RTPSettings,omitnil,omitempty" name:"RTPSettings"`
 
-	// 输出的RTMP配置信息。
+	// <p>输出的RTMP配置信息。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RTMPSettings *DescribeOutputRTMPSettings `json:"RTMPSettings,omitnil,omitempty" name:"RTMPSettings"`
 
-	// 输出的RTMP拉流配置信息。
+	// <p>输出的RTMP拉流配置信息。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RTMPPullSettings *DescribeOutputRTMPPullSettings `json:"RTMPPullSettings,omitnil,omitempty" name:"RTMPPullSettings"`
 
-	// CIDR白名单列表。
-	// 当Protocol为RTMP_PULL有效，为空代表不限制客户端IP。
+	// <p>CIDR白名单列表。<br>当Protocol为RTMP_PULL有效，为空代表不限制客户端IP。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AllowIpList []*string `json:"AllowIpList,omitnil,omitempty" name:"AllowIpList"`
 
-	// 输出的RTSP拉流配置信息。
+	// <p>输出的RTSP拉流配置信息。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RTSPPullSettings *DescribeOutputRTSPPullSettings `json:"RTSPPullSettings,omitnil,omitempty" name:"RTSPPullSettings"`
 
-	// 输出的HLS拉流配置信息。
+	// <p>输出的HLS拉流配置信息。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HLSPullSettings *DescribeOutputHLSPullSettings `json:"HLSPullSettings,omitnil,omitempty" name:"HLSPullSettings"`
 
-	// 最大拉流并发数，最大为4，默认4。
+	// <p>最大拉流并发数，最大为4，默认4。</p>
 	MaxConcurrent *uint64 `json:"MaxConcurrent,omitnil,omitempty" name:"MaxConcurrent"`
 
-	// 绑定的安全组 ID。
+	// <p>绑定的安全组 ID。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
 
-	// 可用区，output目前最多只支持一个。	
+	// <p>可用区，output目前最多只支持一个。</p>
 	Zones []*string `json:"Zones,omitnil,omitempty" name:"Zones"`
 
-	// 输出的RIST配置信息。
+	// <p>输出的RIST配置信息。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RISTSettings *DescribeOutputRISTSettings `json:"RISTSettings,omitnil,omitempty" name:"RISTSettings"`
 
-	// 对于含有多个音/视频轨的流，可以指定需要使用的轨道
+	// <p>对于含有多个音/视频轨的流，可以指定需要使用的轨道</p>
 	//
 	// Deprecated: PidSelector is deprecated.
 	PidSelector *PidSelector `json:"PidSelector,omitnil,omitempty" name:"PidSelector"`
 
-	// 输出模块配置，相关的URL，包括提供的拉流地址，或者配置的输出到第三方的转推地址
+	// <p>输出模块配置，相关的URL，包括提供的拉流地址，或者配置的输出到第三方的转推地址</p>
 	StreamUrls []*StreamUrlDetail `json:"StreamUrls,omitnil,omitempty" name:"StreamUrls"`
 
-	// 对于含有多个音/视频轨的流，可以指定需要使用的轨道
+	// <p>对于含有多个音/视频轨的流，可以指定需要使用的轨道</p>
 	StreamSelector *StreamSelector `json:"StreamSelector,omitnil,omitempty" name:"StreamSelector"`
+
+	// <p>启用或者禁用输出</p><p>枚举值：</p><ul><li>DISABLED： 禁用</li><li>ENABLED： 启用</li></ul>
+	State *string `json:"State,omitnil,omitempty" name:"State"`
 }
 
 type DescribeOutputHLSPullServerUrl struct {

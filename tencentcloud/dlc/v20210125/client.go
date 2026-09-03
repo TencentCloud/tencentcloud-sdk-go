@@ -101,6 +101,56 @@ func (c *Client) AddDMSPartitionsWithContext(ctx context.Context, request *AddDM
     return
 }
 
+func NewAddDeploymentRequest() (request *AddDeploymentRequest) {
+    request = &AddDeploymentRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "AddDeployment")
+    
+    
+    return
+}
+
+func NewAddDeploymentResponse() (response *AddDeploymentResponse) {
+    response = &AddDeploymentResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// AddDeployment
+// 为已有推理服务新增部署
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) AddDeployment(request *AddDeploymentRequest) (response *AddDeploymentResponse, err error) {
+    return c.AddDeploymentWithContext(context.Background(), request)
+}
+
+// AddDeployment
+// 为已有推理服务新增部署
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) AddDeploymentWithContext(ctx context.Context, request *AddDeploymentRequest) (response *AddDeploymentResponse, err error) {
+    if request == nil {
+        request = NewAddDeploymentRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "AddDeployment")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddDeployment require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAddDeploymentResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAddOptimizerEnginesRequest() (request *AddOptimizerEnginesRequest) {
     request = &AddOptimizerEnginesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -124,10 +174,7 @@ func NewAddOptimizerEnginesResponse() (response *AddOptimizerEnginesResponse) {
 // 添加数据优化资源
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
 func (c *Client) AddOptimizerEngines(request *AddOptimizerEnginesRequest) (response *AddOptimizerEnginesResponse, err error) {
     return c.AddOptimizerEnginesWithContext(context.Background(), request)
 }
@@ -136,10 +183,7 @@ func (c *Client) AddOptimizerEngines(request *AddOptimizerEnginesRequest) (respo
 // 添加数据优化资源
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
 func (c *Client) AddOptimizerEnginesWithContext(ctx context.Context, request *AddOptimizerEnginesRequest) (response *AddOptimizerEnginesResponse, err error) {
     if request == nil {
         request = NewAddOptimizerEnginesRequest()
@@ -791,6 +835,56 @@ func (c *Client) AttachWorkGroupPolicyWithContext(ctx context.Context, request *
     return
 }
 
+func NewBindApiKeyRequest() (request *BindApiKeyRequest) {
+    request = &BindApiKeyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "BindApiKey")
+    
+    
+    return
+}
+
+func NewBindApiKeyResponse() (response *BindApiKeyResponse) {
+    response = &BindApiKeyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// BindApiKey
+// 绑定 API Key 到推理服务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) BindApiKey(request *BindApiKeyRequest) (response *BindApiKeyResponse, err error) {
+    return c.BindApiKeyWithContext(context.Background(), request)
+}
+
+// BindApiKey
+// 绑定 API Key 到推理服务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) BindApiKeyWithContext(ctx context.Context, request *BindApiKeyRequest) (response *BindApiKeyResponse, err error) {
+    if request == nil {
+        request = NewBindApiKeyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "BindApiKey")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BindApiKey require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewBindApiKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewBindWorkGroupsToUserRequest() (request *BindWorkGroupsToUserRequest) {
     request = &BindWorkGroupsToUserRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1227,6 +1321,116 @@ func (c *Client) CancelTasksWithContext(ctx context.Context, request *CancelTask
     return
 }
 
+func NewCancelTrainingJobInstanceRequest() (request *CancelTrainingJobInstanceRequest) {
+    request = &CancelTrainingJobInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "CancelTrainingJobInstance")
+    
+    
+    return
+}
+
+func NewCancelTrainingJobInstanceResponse() (response *CancelTrainingJobInstanceResponse) {
+    response = &CancelTrainingJobInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CancelTrainingJobInstance
+// 暂停（取消）实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_HTTPCLIENTDOREQUESTFAILED = "FailedOperation.HttpClientDoRequestFailed"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+//  INVALIDPARAMETER_INVALIDSQLCONFIGSQL = "InvalidParameter.InvalidSQLConfigSQL"
+//  INVALIDPARAMETER_PARAMETERBASE64DECODEFAILED = "InvalidParameter.ParameterBase64DecodeFailed"
+//  INVALIDPARAMETER_SQLTASKNOTFOUND = "InvalidParameter.SQLTaskNotFound"
+//  RESOURCENOTFOUND_TASKALREADYFINISHED = "ResourceNotFound.TaskAlreadyFinished"
+func (c *Client) CancelTrainingJobInstance(request *CancelTrainingJobInstanceRequest) (response *CancelTrainingJobInstanceResponse, err error) {
+    return c.CancelTrainingJobInstanceWithContext(context.Background(), request)
+}
+
+// CancelTrainingJobInstance
+// 暂停（取消）实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_HTTPCLIENTDOREQUESTFAILED = "FailedOperation.HttpClientDoRequestFailed"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+//  INVALIDPARAMETER_INVALIDSQLCONFIGSQL = "InvalidParameter.InvalidSQLConfigSQL"
+//  INVALIDPARAMETER_PARAMETERBASE64DECODEFAILED = "InvalidParameter.ParameterBase64DecodeFailed"
+//  INVALIDPARAMETER_SQLTASKNOTFOUND = "InvalidParameter.SQLTaskNotFound"
+//  RESOURCENOTFOUND_TASKALREADYFINISHED = "ResourceNotFound.TaskAlreadyFinished"
+func (c *Client) CancelTrainingJobInstanceWithContext(ctx context.Context, request *CancelTrainingJobInstanceRequest) (response *CancelTrainingJobInstanceResponse, err error) {
+    if request == nil {
+        request = NewCancelTrainingJobInstanceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "CancelTrainingJobInstance")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CancelTrainingJobInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCancelTrainingJobInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCheckApiKeyNameRequest() (request *CheckApiKeyNameRequest) {
+    request = &CheckApiKeyNameRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "CheckApiKeyName")
+    
+    
+    return
+}
+
+func NewCheckApiKeyNameResponse() (response *CheckApiKeyNameResponse) {
+    response = &CheckApiKeyNameResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CheckApiKeyName
+// 检查 API Key 名称是否重复
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) CheckApiKeyName(request *CheckApiKeyNameRequest) (response *CheckApiKeyNameResponse, err error) {
+    return c.CheckApiKeyNameWithContext(context.Background(), request)
+}
+
+// CheckApiKeyName
+// 检查 API Key 名称是否重复
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) CheckApiKeyNameWithContext(ctx context.Context, request *CheckApiKeyNameRequest) (response *CheckApiKeyNameResponse, err error) {
+    if request == nil {
+        request = NewCheckApiKeyNameRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "CheckApiKeyName")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CheckApiKeyName require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCheckApiKeyNameResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCheckDataEngineConfigPairsValidityRequest() (request *CheckDataEngineConfigPairsValidityRequest) {
     request = &CheckDataEngineConfigPairsValidityRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1463,6 +1667,84 @@ func (c *Client) CheckDataEngineImageCanBeUpgradeWithContext(ctx context.Context
     return
 }
 
+func NewCheckJobSpecNameRequest() (request *CheckJobSpecNameRequest) {
+    request = &CheckJobSpecNameRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "CheckJobSpecName")
+    
+    
+    return
+}
+
+func NewCheckJobSpecNameResponse() (response *CheckJobSpecNameResponse) {
+    response = &CheckJobSpecNameResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CheckJobSpecName
+// 训练作业配置与普通 RayJob 配置共用 job_spec 表及 (appId, name) 唯一命名空间，重名检查统一挂在本接口，供两类前端表单复用
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_IMAGEENGINETYPENOTMATCH = "InvalidParameter.ImageEngineTypeNotMatch"
+//  INVALIDPARAMETER_IMAGEISPUBLICNOTMATCH = "InvalidParameter.ImageIsPublicNotMatch"
+//  INVALIDPARAMETER_IMAGESTATENOTMATCH = "InvalidParameter.ImageStateNotMatch"
+//  INVALIDPARAMETER_IMAGEUSERRECORDSTYPENOTMATCH = "InvalidParameter.ImageUserRecordsTypeNotMatch"
+//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+//  INVALIDPARAMETER_PARAMETERNOTFOUNDORBENONE = "InvalidParameter.ParameterNotFoundOrBeNone"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_DATAENGINENOTFOUND = "ResourceNotFound.DataEngineNotFound"
+//  RESOURCENOTFOUND_DATAENGINENOTUNIQUE = "ResourceNotFound.DataEngineNotUnique"
+//  RESOURCENOTFOUND_IMAGEVERSIONNOTFOUND = "ResourceNotFound.ImageVersionNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATIONCODE_NOENGINECAMPERMISSIONS = "UnauthorizedOperation.UnauthorizedOperationCode_NoEngineCamPermissions"
+func (c *Client) CheckJobSpecName(request *CheckJobSpecNameRequest) (response *CheckJobSpecNameResponse, err error) {
+    return c.CheckJobSpecNameWithContext(context.Background(), request)
+}
+
+// CheckJobSpecName
+// 训练作业配置与普通 RayJob 配置共用 job_spec 表及 (appId, name) 唯一命名空间，重名检查统一挂在本接口，供两类前端表单复用
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_IMAGEENGINETYPENOTMATCH = "InvalidParameter.ImageEngineTypeNotMatch"
+//  INVALIDPARAMETER_IMAGEISPUBLICNOTMATCH = "InvalidParameter.ImageIsPublicNotMatch"
+//  INVALIDPARAMETER_IMAGESTATENOTMATCH = "InvalidParameter.ImageStateNotMatch"
+//  INVALIDPARAMETER_IMAGEUSERRECORDSTYPENOTMATCH = "InvalidParameter.ImageUserRecordsTypeNotMatch"
+//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+//  INVALIDPARAMETER_PARAMETERNOTFOUNDORBENONE = "InvalidParameter.ParameterNotFoundOrBeNone"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_DATAENGINENOTFOUND = "ResourceNotFound.DataEngineNotFound"
+//  RESOURCENOTFOUND_DATAENGINENOTUNIQUE = "ResourceNotFound.DataEngineNotUnique"
+//  RESOURCENOTFOUND_IMAGEVERSIONNOTFOUND = "ResourceNotFound.ImageVersionNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATIONCODE_NOENGINECAMPERMISSIONS = "UnauthorizedOperation.UnauthorizedOperationCode_NoEngineCamPermissions"
+func (c *Client) CheckJobSpecNameWithContext(ctx context.Context, request *CheckJobSpecNameRequest) (response *CheckJobSpecNameResponse, err error) {
+    if request == nil {
+        request = NewCheckJobSpecNameRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "CheckJobSpecName")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CheckJobSpecName require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCheckJobSpecNameResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCheckLockMetaDataRequest() (request *CheckLockMetaDataRequest) {
     request = &CheckLockMetaDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1513,6 +1795,56 @@ func (c *Client) CheckLockMetaDataWithContext(ctx context.Context, request *Chec
     return
 }
 
+func NewCheckModelIdentifierRequest() (request *CheckModelIdentifierRequest) {
+    request = &CheckModelIdentifierRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "CheckModelIdentifier")
+    
+    
+    return
+}
+
+func NewCheckModelIdentifierResponse() (response *CheckModelIdentifierResponse) {
+    response = &CheckModelIdentifierResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CheckModelIdentifier
+// 检查模型标识符是否重复
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OTHEREXCEPTION = "FailedOperation.OtherException"
+func (c *Client) CheckModelIdentifier(request *CheckModelIdentifierRequest) (response *CheckModelIdentifierResponse, err error) {
+    return c.CheckModelIdentifierWithContext(context.Background(), request)
+}
+
+// CheckModelIdentifier
+// 检查模型标识符是否重复
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OTHEREXCEPTION = "FailedOperation.OtherException"
+func (c *Client) CheckModelIdentifierWithContext(ctx context.Context, request *CheckModelIdentifierRequest) (response *CheckModelIdentifierResponse, err error) {
+    if request == nil {
+        request = NewCheckModelIdentifierRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "CheckModelIdentifier")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CheckModelIdentifier require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCheckModelIdentifierResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCheckModifyPartitionRequest() (request *CheckModifyPartitionRequest) {
     request = &CheckModifyPartitionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1536,7 +1868,7 @@ func NewCheckModifyPartitionResponse() (response *CheckModifyPartitionResponse) 
 // 变配校验：判断用户的目标配置是否可以执行变配。校验逻辑：对于缩容场景（目标值 < 当前值），检查 default 队列的 min 值是否足够承受缩容差值。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_OTHEREXCEPTION = "FailedOperation.OtherException"
 func (c *Client) CheckModifyPartition(request *CheckModifyPartitionRequest) (response *CheckModifyPartitionResponse, err error) {
     return c.CheckModifyPartitionWithContext(context.Background(), request)
 }
@@ -1545,7 +1877,7 @@ func (c *Client) CheckModifyPartition(request *CheckModifyPartitionRequest) (res
 // 变配校验：判断用户的目标配置是否可以执行变配。校验逻辑：对于缩容场景（目标值 < 当前值），检查 default 队列的 min 值是否足够承受缩容差值。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_OTHEREXCEPTION = "FailedOperation.OtherException"
 func (c *Client) CheckModifyPartitionWithContext(ctx context.Context, request *CheckModifyPartitionRequest) (response *CheckModifyPartitionResponse, err error) {
     if request == nil {
         request = NewCheckModifyPartitionRequest()
@@ -1586,7 +1918,7 @@ func NewCheckQueueNameResponse() (response *CheckQueueNameResponse) {
 // 资源队列名称合法性检测：校验队列名称是否合法，包括非空校验、格式校验（以小写字母开头，只允许小写字母、数字和连字符，长度1~11）和同分区下重名校验。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_OTHEREXCEPTION = "FailedOperation.OtherException"
 func (c *Client) CheckQueueName(request *CheckQueueNameRequest) (response *CheckQueueNameResponse, err error) {
     return c.CheckQueueNameWithContext(context.Background(), request)
 }
@@ -1595,7 +1927,7 @@ func (c *Client) CheckQueueName(request *CheckQueueNameRequest) (response *Check
 // 资源队列名称合法性检测：校验队列名称是否合法，包括非空校验、格式校验（以小写字母开头，只允许小写字母、数字和连字符，长度1~11）和同分区下重名校验。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_OTHEREXCEPTION = "FailedOperation.OtherException"
 func (c *Client) CheckQueueNameWithContext(ctx context.Context, request *CheckQueueNameRequest) (response *CheckQueueNameResponse, err error) {
     if request == nil {
         request = NewCheckQueueNameRequest()
@@ -1636,7 +1968,7 @@ func NewCheckResourceNameResponse() (response *CheckResourceNameResponse) {
 // 校验资源名称合法性
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_OTHEREXCEPTION = "FailedOperation.OtherException"
 func (c *Client) CheckResourceName(request *CheckResourceNameRequest) (response *CheckResourceNameResponse, err error) {
     return c.CheckResourceNameWithContext(context.Background(), request)
 }
@@ -1645,7 +1977,7 @@ func (c *Client) CheckResourceName(request *CheckResourceNameRequest) (response 
 // 校验资源名称合法性
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_OTHEREXCEPTION = "FailedOperation.OtherException"
 func (c *Client) CheckResourceNameWithContext(ctx context.Context, request *CheckResourceNameRequest) (response *CheckResourceNameResponse, err error) {
     if request == nil {
         request = NewCheckResourceNameRequest()
@@ -1659,6 +1991,56 @@ func (c *Client) CheckResourceNameWithContext(ctx context.Context, request *Chec
     request.SetContext(ctx)
     
     response = NewCheckResourceNameResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCheckServiceNameRequest() (request *CheckServiceNameRequest) {
+    request = &CheckServiceNameRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "CheckServiceName")
+    
+    
+    return
+}
+
+func NewCheckServiceNameResponse() (response *CheckServiceNameResponse) {
+    response = &CheckServiceNameResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CheckServiceName
+// 检查推理服务名称是否重复
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OTHEREXCEPTION = "FailedOperation.OtherException"
+func (c *Client) CheckServiceName(request *CheckServiceNameRequest) (response *CheckServiceNameResponse, err error) {
+    return c.CheckServiceNameWithContext(context.Background(), request)
+}
+
+// CheckServiceName
+// 检查推理服务名称是否重复
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OTHEREXCEPTION = "FailedOperation.OtherException"
+func (c *Client) CheckServiceNameWithContext(ctx context.Context, request *CheckServiceNameRequest) (response *CheckServiceNameResponse, err error) {
+    if request == nil {
+        request = NewCheckServiceNameRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "CheckServiceName")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CheckServiceName require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCheckServiceNameResponse()
     err = c.Send(request, response)
     return
 }
@@ -1709,6 +2091,106 @@ func (c *Client) CopyJobSpecWithContext(ctx context.Context, request *CopyJobSpe
     request.SetContext(ctx)
     
     response = NewCopyJobSpecResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateApiKeyRequest() (request *CreateApiKeyRequest) {
+    request = &CreateApiKeyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "CreateApiKey")
+    
+    
+    return
+}
+
+func NewCreateApiKeyResponse() (response *CreateApiKeyResponse) {
+    response = &CreateApiKeyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateApiKey
+// 创建 API Key
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) CreateApiKey(request *CreateApiKeyRequest) (response *CreateApiKeyResponse, err error) {
+    return c.CreateApiKeyWithContext(context.Background(), request)
+}
+
+// CreateApiKey
+// 创建 API Key
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) CreateApiKeyWithContext(ctx context.Context, request *CreateApiKeyRequest) (response *CreateApiKeyResponse, err error) {
+    if request == nil {
+        request = NewCreateApiKeyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "CreateApiKey")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateApiKey require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateApiKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateBenchmarkTaskRequest() (request *CreateBenchmarkTaskRequest) {
+    request = &CreateBenchmarkTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "CreateBenchmarkTask")
+    
+    
+    return
+}
+
+func NewCreateBenchmarkTaskResponse() (response *CreateBenchmarkTaskResponse) {
+    response = &CreateBenchmarkTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateBenchmarkTask
+// 创建性能评测任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) CreateBenchmarkTask(request *CreateBenchmarkTaskRequest) (response *CreateBenchmarkTaskResponse, err error) {
+    return c.CreateBenchmarkTaskWithContext(context.Background(), request)
+}
+
+// CreateBenchmarkTask
+// 创建性能评测任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) CreateBenchmarkTaskWithContext(ctx context.Context, request *CreateBenchmarkTaskRequest) (response *CreateBenchmarkTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateBenchmarkTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "CreateBenchmarkTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateBenchmarkTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateBenchmarkTaskResponse()
     err = c.Send(request, response)
     return
 }
@@ -2721,6 +3203,92 @@ func (c *Client) CreateMetaDatabaseWithContext(ctx context.Context, request *Cre
     request.SetContext(ctx)
     
     response = NewCreateMetaDatabaseResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateMlflowServerRequest() (request *CreateMlflowServerRequest) {
+    request = &CreateMlflowServerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "CreateMlflowServer")
+    
+    
+    return
+}
+
+func NewCreateMlflowServerResponse() (response *CreateMlflowServerResponse) {
+    response = &CreateMlflowServerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateMlflowServer
+// 创建 MlFlow Server
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_GOVERNERROR = "FailedOperation.GovernError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDDATAENGINENAME = "InvalidParameter.InvalidDataEngineName"
+//  INVALIDPARAMETER_INVALIDFAILURETOLERANCE = "InvalidParameter.InvalidFailureTolerance"
+//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+//  INVALIDPARAMETER_INVALIDSQLNUM = "InvalidParameter.InvalidSQLNum"
+//  INVALIDPARAMETER_INVALIDSTORELOCATION = "InvalidParameter.InvalidStoreLocation"
+//  INVALIDPARAMETER_INVALIDTASKTYPE = "InvalidParameter.InvalidTaskType"
+//  INVALIDPARAMETER_SQLBASE64DECODEFAIL = "InvalidParameter.SQLBase64DecodeFail"
+//  INVALIDPARAMETER_SQLPARAMETERPREPROCESSINGFAILED = "InvalidParameter.SQLParameterPreprocessingFailed"
+//  RESOURCENOTFOUND_DATAENGINENOTFOUND = "ResourceNotFound.DataEngineNotFound"
+//  RESOURCENOTFOUND_DATAENGINENOTRUNNING = "ResourceNotFound.DataEngineNotRunning"
+//  RESOURCENOTFOUND_DATAENGINENOTUNIQUE = "ResourceNotFound.DataEngineNotUnique"
+//  RESOURCENOTFOUND_DEFAULTDATAENGINENOTFOUND = "ResourceNotFound.DefaultDataEngineNotFound"
+//  RESOURCENOTFOUND_SYSTEMCONFIGNOTFOUND = "ResourceNotFound.SystemConfigNotFound"
+//  RESOURCEUNAVAILABLE_BALANCEINSUFFICIENT = "ResourceUnavailable.BalanceInsufficient"
+func (c *Client) CreateMlflowServer(request *CreateMlflowServerRequest) (response *CreateMlflowServerResponse, err error) {
+    return c.CreateMlflowServerWithContext(context.Background(), request)
+}
+
+// CreateMlflowServer
+// 创建 MlFlow Server
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_GOVERNERROR = "FailedOperation.GovernError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDDATAENGINENAME = "InvalidParameter.InvalidDataEngineName"
+//  INVALIDPARAMETER_INVALIDFAILURETOLERANCE = "InvalidParameter.InvalidFailureTolerance"
+//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+//  INVALIDPARAMETER_INVALIDSQLNUM = "InvalidParameter.InvalidSQLNum"
+//  INVALIDPARAMETER_INVALIDSTORELOCATION = "InvalidParameter.InvalidStoreLocation"
+//  INVALIDPARAMETER_INVALIDTASKTYPE = "InvalidParameter.InvalidTaskType"
+//  INVALIDPARAMETER_SQLBASE64DECODEFAIL = "InvalidParameter.SQLBase64DecodeFail"
+//  INVALIDPARAMETER_SQLPARAMETERPREPROCESSINGFAILED = "InvalidParameter.SQLParameterPreprocessingFailed"
+//  RESOURCENOTFOUND_DATAENGINENOTFOUND = "ResourceNotFound.DataEngineNotFound"
+//  RESOURCENOTFOUND_DATAENGINENOTRUNNING = "ResourceNotFound.DataEngineNotRunning"
+//  RESOURCENOTFOUND_DATAENGINENOTUNIQUE = "ResourceNotFound.DataEngineNotUnique"
+//  RESOURCENOTFOUND_DEFAULTDATAENGINENOTFOUND = "ResourceNotFound.DefaultDataEngineNotFound"
+//  RESOURCENOTFOUND_SYSTEMCONFIGNOTFOUND = "ResourceNotFound.SystemConfigNotFound"
+//  RESOURCEUNAVAILABLE_BALANCEINSUFFICIENT = "ResourceUnavailable.BalanceInsufficient"
+func (c *Client) CreateMlflowServerWithContext(ctx context.Context, request *CreateMlflowServerRequest) (response *CreateMlflowServerResponse, err error) {
+    if request == nil {
+        request = NewCreateMlflowServerRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "CreateMlflowServer")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateMlflowServer require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateMlflowServerResponse()
     err = c.Send(request, response)
     return
 }
@@ -4451,6 +5019,78 @@ func (c *Client) CreateTcIcebergTableWithContext(ctx context.Context, request *C
     return
 }
 
+func NewCreateTrainingJobInstanceRequest() (request *CreateTrainingJobInstanceRequest) {
+    request = &CreateTrainingJobInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "CreateTrainingJobInstance")
+    
+    
+    return
+}
+
+func NewCreateTrainingJobInstanceResponse() (response *CreateTrainingJobInstanceResponse) {
+    response = &CreateTrainingJobInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateTrainingJobInstance
+// 基于配置创建实例并提交 RayJob
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDCOLUMNNAMELENGTH = "InvalidParameter.InvalidColumnNameLength"
+//  INVALIDPARAMETER_INVALIDCOLUMNNUMBER = "InvalidParameter.InvalidColumnNumber"
+//  INVALIDPARAMETER_INVALIDDECIMALTYPE = "InvalidParameter.InvalidDecimalType"
+//  INVALIDPARAMETER_INVALIDTABLENAMELENGTH = "InvalidParameter.InvalidTableNameLength"
+//  INVALIDPARAMETER_PARAMETERNOTFOUNDORBENONE = "InvalidParameter.ParameterNotFoundOrBeNone"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateTrainingJobInstance(request *CreateTrainingJobInstanceRequest) (response *CreateTrainingJobInstanceResponse, err error) {
+    return c.CreateTrainingJobInstanceWithContext(context.Background(), request)
+}
+
+// CreateTrainingJobInstance
+// 基于配置创建实例并提交 RayJob
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDCOLUMNNAMELENGTH = "InvalidParameter.InvalidColumnNameLength"
+//  INVALIDPARAMETER_INVALIDCOLUMNNUMBER = "InvalidParameter.InvalidColumnNumber"
+//  INVALIDPARAMETER_INVALIDDECIMALTYPE = "InvalidParameter.InvalidDecimalType"
+//  INVALIDPARAMETER_INVALIDTABLENAMELENGTH = "InvalidParameter.InvalidTableNameLength"
+//  INVALIDPARAMETER_PARAMETERNOTFOUNDORBENONE = "InvalidParameter.ParameterNotFoundOrBeNone"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateTrainingJobInstanceWithContext(ctx context.Context, request *CreateTrainingJobInstanceRequest) (response *CreateTrainingJobInstanceResponse, err error) {
+    if request == nil {
+        request = NewCreateTrainingJobInstanceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "CreateTrainingJobInstance")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateTrainingJobInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateTrainingJobInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateUserRequest() (request *CreateUserRequest) {
     request = &CreateUserRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4717,6 +5357,106 @@ func (c *Client) CreateWorkGroupWithContext(ctx context.Context, request *Create
     return
 }
 
+func NewDeleteApiKeyRequest() (request *DeleteApiKeyRequest) {
+    request = &DeleteApiKeyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DeleteApiKey")
+    
+    
+    return
+}
+
+func NewDeleteApiKeyResponse() (response *DeleteApiKeyResponse) {
+    response = &DeleteApiKeyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteApiKey
+// 删除 API Key
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) DeleteApiKey(request *DeleteApiKeyRequest) (response *DeleteApiKeyResponse, err error) {
+    return c.DeleteApiKeyWithContext(context.Background(), request)
+}
+
+// DeleteApiKey
+// 删除 API Key
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) DeleteApiKeyWithContext(ctx context.Context, request *DeleteApiKeyRequest) (response *DeleteApiKeyResponse, err error) {
+    if request == nil {
+        request = NewDeleteApiKeyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "DeleteApiKey")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteApiKey require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteApiKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteBenchmarkTaskRequest() (request *DeleteBenchmarkTaskRequest) {
+    request = &DeleteBenchmarkTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DeleteBenchmarkTask")
+    
+    
+    return
+}
+
+func NewDeleteBenchmarkTaskResponse() (response *DeleteBenchmarkTaskResponse) {
+    response = &DeleteBenchmarkTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteBenchmarkTask
+// 删除性能评测任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) DeleteBenchmarkTask(request *DeleteBenchmarkTaskRequest) (response *DeleteBenchmarkTaskResponse, err error) {
+    return c.DeleteBenchmarkTaskWithContext(context.Background(), request)
+}
+
+// DeleteBenchmarkTask
+// 删除性能评测任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) DeleteBenchmarkTaskWithContext(ctx context.Context, request *DeleteBenchmarkTaskRequest) (response *DeleteBenchmarkTaskResponse, err error) {
+    if request == nil {
+        request = NewDeleteBenchmarkTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "DeleteBenchmarkTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteBenchmarkTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteBenchmarkTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteCHDFSBindingProductRequest() (request *DeleteCHDFSBindingProductRequest) {
     request = &DeleteCHDFSBindingProductRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4969,6 +5709,106 @@ func (c *Client) DeleteDataMaskStrategyWithContext(ctx context.Context, request 
     return
 }
 
+func NewDeleteDeploymentRequest() (request *DeleteDeploymentRequest) {
+    request = &DeleteDeploymentRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DeleteDeployment")
+    
+    
+    return
+}
+
+func NewDeleteDeploymentResponse() (response *DeleteDeploymentResponse) {
+    response = &DeleteDeploymentResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteDeployment
+// 删除指定部署
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) DeleteDeployment(request *DeleteDeploymentRequest) (response *DeleteDeploymentResponse, err error) {
+    return c.DeleteDeploymentWithContext(context.Background(), request)
+}
+
+// DeleteDeployment
+// 删除指定部署
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) DeleteDeploymentWithContext(ctx context.Context, request *DeleteDeploymentRequest) (response *DeleteDeploymentResponse, err error) {
+    if request == nil {
+        request = NewDeleteDeploymentRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "DeleteDeployment")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteDeployment require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteDeploymentResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteInferenceServiceRequest() (request *DeleteInferenceServiceRequest) {
+    request = &DeleteInferenceServiceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DeleteInferenceService")
+    
+    
+    return
+}
+
+func NewDeleteInferenceServiceResponse() (response *DeleteInferenceServiceResponse) {
+    response = &DeleteInferenceServiceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteInferenceService
+// 删除推理服务（含所有部署）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) DeleteInferenceService(request *DeleteInferenceServiceRequest) (response *DeleteInferenceServiceResponse, err error) {
+    return c.DeleteInferenceServiceWithContext(context.Background(), request)
+}
+
+// DeleteInferenceService
+// 删除推理服务（含所有部署）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) DeleteInferenceServiceWithContext(ctx context.Context, request *DeleteInferenceServiceRequest) (response *DeleteInferenceServiceResponse, err error) {
+    if request == nil {
+        request = NewDeleteInferenceServiceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "DeleteInferenceService")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteInferenceService require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteInferenceServiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteJobSpecRequest() (request *DeleteJobSpecRequest) {
     request = &DeleteJobSpecRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5155,6 +5995,220 @@ func (c *Client) DeleteMetaDatabaseWithContext(ctx context.Context, request *Del
     return
 }
 
+func NewDeleteMlflowServerRequest() (request *DeleteMlflowServerRequest) {
+    request = &DeleteMlflowServerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DeleteMlflowServer")
+    
+    
+    return
+}
+
+func NewDeleteMlflowServerResponse() (response *DeleteMlflowServerResponse) {
+    response = &DeleteMlflowServerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteMlflowServer
+// 删除 MlFlow Server 请求
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDDATAENGINENAME = "InvalidParameter.InvalidDataEngineName"
+//  INVALIDPARAMETER_INVALIDFAILURETOLERANCE = "InvalidParameter.InvalidFailureTolerance"
+//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+//  INVALIDPARAMETER_INVALIDSQLNUM = "InvalidParameter.InvalidSQLNum"
+//  INVALIDPARAMETER_INVALIDSTORELOCATION = "InvalidParameter.InvalidStoreLocation"
+//  INVALIDPARAMETER_INVALIDTASKTYPE = "InvalidParameter.InvalidTaskType"
+//  INVALIDPARAMETER_SQLBASE64DECODEFAIL = "InvalidParameter.SQLBase64DecodeFail"
+//  INVALIDPARAMETER_SQLPARAMETERPREPROCESSINGFAILED = "InvalidParameter.SQLParameterPreprocessingFailed"
+//  RESOURCENOTFOUND_DATAENGINENOTFOUND = "ResourceNotFound.DataEngineNotFound"
+//  RESOURCENOTFOUND_DATAENGINENOTRUNNING = "ResourceNotFound.DataEngineNotRunning"
+//  RESOURCENOTFOUND_DATAENGINENOTUNIQUE = "ResourceNotFound.DataEngineNotUnique"
+//  RESOURCENOTFOUND_DEFAULTDATAENGINENOTFOUND = "ResourceNotFound.DefaultDataEngineNotFound"
+//  RESOURCEUNAVAILABLE_BALANCEINSUFFICIENT = "ResourceUnavailable.BalanceInsufficient"
+func (c *Client) DeleteMlflowServer(request *DeleteMlflowServerRequest) (response *DeleteMlflowServerResponse, err error) {
+    return c.DeleteMlflowServerWithContext(context.Background(), request)
+}
+
+// DeleteMlflowServer
+// 删除 MlFlow Server 请求
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDDATAENGINENAME = "InvalidParameter.InvalidDataEngineName"
+//  INVALIDPARAMETER_INVALIDFAILURETOLERANCE = "InvalidParameter.InvalidFailureTolerance"
+//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+//  INVALIDPARAMETER_INVALIDSQLNUM = "InvalidParameter.InvalidSQLNum"
+//  INVALIDPARAMETER_INVALIDSTORELOCATION = "InvalidParameter.InvalidStoreLocation"
+//  INVALIDPARAMETER_INVALIDTASKTYPE = "InvalidParameter.InvalidTaskType"
+//  INVALIDPARAMETER_SQLBASE64DECODEFAIL = "InvalidParameter.SQLBase64DecodeFail"
+//  INVALIDPARAMETER_SQLPARAMETERPREPROCESSINGFAILED = "InvalidParameter.SQLParameterPreprocessingFailed"
+//  RESOURCENOTFOUND_DATAENGINENOTFOUND = "ResourceNotFound.DataEngineNotFound"
+//  RESOURCENOTFOUND_DATAENGINENOTRUNNING = "ResourceNotFound.DataEngineNotRunning"
+//  RESOURCENOTFOUND_DATAENGINENOTUNIQUE = "ResourceNotFound.DataEngineNotUnique"
+//  RESOURCENOTFOUND_DEFAULTDATAENGINENOTFOUND = "ResourceNotFound.DefaultDataEngineNotFound"
+//  RESOURCEUNAVAILABLE_BALANCEINSUFFICIENT = "ResourceUnavailable.BalanceInsufficient"
+func (c *Client) DeleteMlflowServerWithContext(ctx context.Context, request *DeleteMlflowServerRequest) (response *DeleteMlflowServerResponse, err error) {
+    if request == nil {
+        request = NewDeleteMlflowServerRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "DeleteMlflowServer")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteMlflowServer require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteMlflowServerResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteModelRequest() (request *DeleteModelRequest) {
+    request = &DeleteModelRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DeleteModel")
+    
+    
+    return
+}
+
+func NewDeleteModelResponse() (response *DeleteModelResponse) {
+    response = &DeleteModelResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteModel
+// 删除模型及其所有版本（平台托管模型同时删除 COS 文件，用户自带桶仅删除元数据）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDDATAENGINENAME = "InvalidParameter.InvalidDataEngineName"
+//  INVALIDPARAMETER_INVALIDFAILURETOLERANCE = "InvalidParameter.InvalidFailureTolerance"
+//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+//  INVALIDPARAMETER_INVALIDSQLNUM = "InvalidParameter.InvalidSQLNum"
+//  INVALIDPARAMETER_INVALIDSTORELOCATION = "InvalidParameter.InvalidStoreLocation"
+//  INVALIDPARAMETER_INVALIDTASKTYPE = "InvalidParameter.InvalidTaskType"
+//  INVALIDPARAMETER_SQLBASE64DECODEFAIL = "InvalidParameter.SQLBase64DecodeFail"
+//  INVALIDPARAMETER_SQLPARAMETERPREPROCESSINGFAILED = "InvalidParameter.SQLParameterPreprocessingFailed"
+//  RESOURCENOTFOUND_DATAENGINENOTFOUND = "ResourceNotFound.DataEngineNotFound"
+//  RESOURCENOTFOUND_DATAENGINENOTRUNNING = "ResourceNotFound.DataEngineNotRunning"
+//  RESOURCENOTFOUND_DATAENGINENOTUNIQUE = "ResourceNotFound.DataEngineNotUnique"
+//  RESOURCENOTFOUND_DEFAULTDATAENGINENOTFOUND = "ResourceNotFound.DefaultDataEngineNotFound"
+//  RESOURCEUNAVAILABLE_BALANCEINSUFFICIENT = "ResourceUnavailable.BalanceInsufficient"
+func (c *Client) DeleteModel(request *DeleteModelRequest) (response *DeleteModelResponse, err error) {
+    return c.DeleteModelWithContext(context.Background(), request)
+}
+
+// DeleteModel
+// 删除模型及其所有版本（平台托管模型同时删除 COS 文件，用户自带桶仅删除元数据）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDDATAENGINENAME = "InvalidParameter.InvalidDataEngineName"
+//  INVALIDPARAMETER_INVALIDFAILURETOLERANCE = "InvalidParameter.InvalidFailureTolerance"
+//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+//  INVALIDPARAMETER_INVALIDSQLNUM = "InvalidParameter.InvalidSQLNum"
+//  INVALIDPARAMETER_INVALIDSTORELOCATION = "InvalidParameter.InvalidStoreLocation"
+//  INVALIDPARAMETER_INVALIDTASKTYPE = "InvalidParameter.InvalidTaskType"
+//  INVALIDPARAMETER_SQLBASE64DECODEFAIL = "InvalidParameter.SQLBase64DecodeFail"
+//  INVALIDPARAMETER_SQLPARAMETERPREPROCESSINGFAILED = "InvalidParameter.SQLParameterPreprocessingFailed"
+//  RESOURCENOTFOUND_DATAENGINENOTFOUND = "ResourceNotFound.DataEngineNotFound"
+//  RESOURCENOTFOUND_DATAENGINENOTRUNNING = "ResourceNotFound.DataEngineNotRunning"
+//  RESOURCENOTFOUND_DATAENGINENOTUNIQUE = "ResourceNotFound.DataEngineNotUnique"
+//  RESOURCENOTFOUND_DEFAULTDATAENGINENOTFOUND = "ResourceNotFound.DefaultDataEngineNotFound"
+//  RESOURCEUNAVAILABLE_BALANCEINSUFFICIENT = "ResourceUnavailable.BalanceInsufficient"
+func (c *Client) DeleteModelWithContext(ctx context.Context, request *DeleteModelRequest) (response *DeleteModelResponse, err error) {
+    if request == nil {
+        request = NewDeleteModelRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "DeleteModel")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteModel require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteModelResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteModelVersionRequest() (request *DeleteModelVersionRequest) {
+    request = &DeleteModelVersionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DeleteModelVersion")
+    
+    
+    return
+}
+
+func NewDeleteModelVersionResponse() (response *DeleteModelVersionResponse) {
+    response = &DeleteModelVersionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteModelVersion
+// 删除模型版本（平台托管模型同时删除 COS 文件，用户自带桶仅删除元数据）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) DeleteModelVersion(request *DeleteModelVersionRequest) (response *DeleteModelVersionResponse, err error) {
+    return c.DeleteModelVersionWithContext(context.Background(), request)
+}
+
+// DeleteModelVersion
+// 删除模型版本（平台托管模型同时删除 COS 文件，用户自带桶仅删除元数据）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) DeleteModelVersionWithContext(ctx context.Context, request *DeleteModelVersionRequest) (response *DeleteModelVersionResponse, err error) {
+    if request == nil {
+        request = NewDeleteModelVersionRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "DeleteModelVersion")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteModelVersion require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteModelVersionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteNativeSparkSessionRequest() (request *DeleteNativeSparkSessionRequest) {
     request = &DeleteNativeSparkSessionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5181,6 +6235,7 @@ func NewDeleteNativeSparkSessionResponse() (response *DeleteNativeSparkSessionRe
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION_NOENGINECAMPERMISSIONS = "UnauthorizedOperation.NoEngineCamPermissions"
 //  UNAUTHORIZEDOPERATION_OPERATECOMPUTINGENGINE = "UnauthorizedOperation.OperateComputingEngine"
 func (c *Client) DeleteNativeSparkSession(request *DeleteNativeSparkSessionRequest) (response *DeleteNativeSparkSessionResponse, err error) {
     return c.DeleteNativeSparkSessionWithContext(context.Background(), request)
@@ -5193,6 +6248,7 @@ func (c *Client) DeleteNativeSparkSession(request *DeleteNativeSparkSessionReque
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION_NOENGINECAMPERMISSIONS = "UnauthorizedOperation.NoEngineCamPermissions"
 //  UNAUTHORIZEDOPERATION_OPERATECOMPUTINGENGINE = "UnauthorizedOperation.OperateComputingEngine"
 func (c *Client) DeleteNativeSparkSessionWithContext(ctx context.Context, request *DeleteNativeSparkSessionRequest) (response *DeleteNativeSparkSessionResponse, err error) {
     if request == nil {
@@ -5769,6 +6825,114 @@ func (c *Client) DeleteThirdPartyAccessUserWithContext(ctx context.Context, requ
     return
 }
 
+func NewDeleteTrainingJobInstanceRequest() (request *DeleteTrainingJobInstanceRequest) {
+    request = &DeleteTrainingJobInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DeleteTrainingJobInstance")
+    
+    
+    return
+}
+
+func NewDeleteTrainingJobInstanceResponse() (response *DeleteTrainingJobInstanceResponse) {
+    response = &DeleteTrainingJobInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteTrainingJobInstance
+// 删除训练作业实例（软删除本地元数据，仅终态实例可删除）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DeleteTrainingJobInstance(request *DeleteTrainingJobInstanceRequest) (response *DeleteTrainingJobInstanceResponse, err error) {
+    return c.DeleteTrainingJobInstanceWithContext(context.Background(), request)
+}
+
+// DeleteTrainingJobInstance
+// 删除训练作业实例（软删除本地元数据，仅终态实例可删除）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DeleteTrainingJobInstanceWithContext(ctx context.Context, request *DeleteTrainingJobInstanceRequest) (response *DeleteTrainingJobInstanceResponse, err error) {
+    if request == nil {
+        request = NewDeleteTrainingJobInstanceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "DeleteTrainingJobInstance")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteTrainingJobInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteTrainingJobInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteTrainingJobSpecRequest() (request *DeleteTrainingJobSpecRequest) {
+    request = &DeleteTrainingJobSpecRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DeleteTrainingJobSpec")
+    
+    
+    return
+}
+
+func NewDeleteTrainingJobSpecResponse() (response *DeleteTrainingJobSpecResponse) {
+    response = &DeleteTrainingJobSpecResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteTrainingJobSpec
+// 删除训练作业配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DeleteTrainingJobSpec(request *DeleteTrainingJobSpecRequest) (response *DeleteTrainingJobSpecResponse, err error) {
+    return c.DeleteTrainingJobSpecWithContext(context.Background(), request)
+}
+
+// DeleteTrainingJobSpec
+// 删除训练作业配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DeleteTrainingJobSpecWithContext(ctx context.Context, request *DeleteTrainingJobSpecRequest) (response *DeleteTrainingJobSpecResponse, err error) {
+    if request == nil {
+        request = NewDeleteTrainingJobSpecRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "DeleteTrainingJobSpec")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteTrainingJobSpec require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteTrainingJobSpecResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteUserRequest() (request *DeleteUserRequest) {
     request = &DeleteUserRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6073,6 +7237,156 @@ func (c *Client) DescribeAdvancedStoreLocationWithContext(ctx context.Context, r
     request.SetContext(ctx)
     
     response = NewDescribeAdvancedStoreLocationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBindablePrometheusRequest() (request *DescribeBindablePrometheusRequest) {
+    request = &DescribeBindablePrometheusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeBindablePrometheus")
+    
+    
+    return
+}
+
+func NewDescribeBindablePrometheusResponse() (response *DescribeBindablePrometheusResponse) {
+    response = &DescribeBindablePrometheusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeBindablePrometheus
+// 查询 TKE 集群可绑定的托管 Prometheus 实例列表。若 TKE 已绑定，返回 Bound=true 与 BoundInstance；若未绑定，返回 Bound=false 与候选列表 Instances（同 VPC 实例前置）。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) DescribeBindablePrometheus(request *DescribeBindablePrometheusRequest) (response *DescribeBindablePrometheusResponse, err error) {
+    return c.DescribeBindablePrometheusWithContext(context.Background(), request)
+}
+
+// DescribeBindablePrometheus
+// 查询 TKE 集群可绑定的托管 Prometheus 实例列表。若 TKE 已绑定，返回 Bound=true 与 BoundInstance；若未绑定，返回 Bound=false 与候选列表 Instances（同 VPC 实例前置）。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) DescribeBindablePrometheusWithContext(ctx context.Context, request *DescribeBindablePrometheusRequest) (response *DescribeBindablePrometheusResponse, err error) {
+    if request == nil {
+        request = NewDescribeBindablePrometheusRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "DescribeBindablePrometheus")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBindablePrometheus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBindablePrometheusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeClsTopicsRequest() (request *DescribeClsTopicsRequest) {
+    request = &DescribeClsTopicsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeClsTopics")
+    
+    
+    return
+}
+
+func NewDescribeClsTopicsResponse() (response *DescribeClsTopicsResponse) {
+    response = &DescribeClsTopicsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeClsTopics
+// 查询 CLS 日志主题列表：TopicName 走模糊匹配，TopicId 走精确匹配，两者均可为空；分页返回。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) DescribeClsTopics(request *DescribeClsTopicsRequest) (response *DescribeClsTopicsResponse, err error) {
+    return c.DescribeClsTopicsWithContext(context.Background(), request)
+}
+
+// DescribeClsTopics
+// 查询 CLS 日志主题列表：TopicName 走模糊匹配，TopicId 走精确匹配，两者均可为空；分页返回。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) DescribeClsTopicsWithContext(ctx context.Context, request *DescribeClsTopicsRequest) (response *DescribeClsTopicsResponse, err error) {
+    if request == nil {
+        request = NewDescribeClsTopicsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "DescribeClsTopics")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeClsTopics require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeClsTopicsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeClusterEventLogSwitchRequest() (request *DescribeClusterEventLogSwitchRequest) {
+    request = &DescribeClusterEventLogSwitchRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeClusterEventLogSwitch")
+    
+    
+    return
+}
+
+func NewDescribeClusterEventLogSwitchResponse() (response *DescribeClusterEventLogSwitchResponse) {
+    response = &DescribeClusterEventLogSwitchResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeClusterEventLogSwitch
+// 查询指定 TKE 集群是否开启了事件日志。已开启时同时返回关联的 CLS 日志集 ID、日志主题 ID 与主题所在地域。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) DescribeClusterEventLogSwitch(request *DescribeClusterEventLogSwitchRequest) (response *DescribeClusterEventLogSwitchResponse, err error) {
+    return c.DescribeClusterEventLogSwitchWithContext(context.Background(), request)
+}
+
+// DescribeClusterEventLogSwitch
+// 查询指定 TKE 集群是否开启了事件日志。已开启时同时返回关联的 CLS 日志集 ID、日志主题 ID 与主题所在地域。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) DescribeClusterEventLogSwitchWithContext(ctx context.Context, request *DescribeClusterEventLogSwitchRequest) (response *DescribeClusterEventLogSwitchResponse, err error) {
+    if request == nil {
+        request = NewDescribeClusterEventLogSwitchRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "DescribeClusterEventLogSwitch")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeClusterEventLogSwitch require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeClusterEventLogSwitchResponse()
     err = c.Send(request, response)
     return
 }
@@ -7237,6 +8551,56 @@ func (c *Client) DescribeDatasourceConnectionWithContext(ctx context.Context, re
     return
 }
 
+func NewDescribeEmrClusterInfoRequest() (request *DescribeEmrClusterInfoRequest) {
+    request = &DescribeEmrClusterInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeEmrClusterInfo")
+    
+    
+    return
+}
+
+func NewDescribeEmrClusterInfoResponse() (response *DescribeEmrClusterInfoResponse) {
+    response = &DescribeEmrClusterInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeEmrClusterInfo
+// 按 EMR 集群 ID 精确查询单个 EMR 集群的详细信息，包含 VPC、COS Bucket、关联 TKE 集群 ID、资源用量等。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) DescribeEmrClusterInfo(request *DescribeEmrClusterInfoRequest) (response *DescribeEmrClusterInfoResponse, err error) {
+    return c.DescribeEmrClusterInfoWithContext(context.Background(), request)
+}
+
+// DescribeEmrClusterInfo
+// 按 EMR 集群 ID 精确查询单个 EMR 集群的详细信息，包含 VPC、COS Bucket、关联 TKE 集群 ID、资源用量等。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) DescribeEmrClusterInfoWithContext(ctx context.Context, request *DescribeEmrClusterInfoRequest) (response *DescribeEmrClusterInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeEmrClusterInfoRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "DescribeEmrClusterInfo")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEmrClusterInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeEmrClusterInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeEngineNetworksRequest() (request *DescribeEngineNetworksRequest) {
     request = &DescribeEngineNetworksRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -7943,6 +9307,354 @@ func (c *Client) DescribeMCPTaskResultWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewDescribeMCPTaskResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeMlFlowConfigRequest() (request *DescribeMlFlowConfigRequest) {
+    request = &DescribeMlFlowConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeMlFlowConfig")
+    
+    
+    return
+}
+
+func NewDescribeMlFlowConfigResponse() (response *DescribeMlFlowConfigResponse) {
+    response = &DescribeMlFlowConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMlFlowConfig
+// 查询训练实例的 MLflow 接入配置。 
+//
+// MlFlowMode 表示接入的 mlflow 模式，支持 local=Sidecar / remote=已有 Server / none=不启用。云上默认为 remote。
+//
+// MlFlowUrl 表示访问的 MLflow URL。
+//
+// RunID, ExperimentID 对应MLflow 实验追踪用的参数 RunID, ExperimentID
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_HTTPCLIENTDOREQUESTFAILED = "FailedOperation.HttpClientDoRequestFailed"
+//  FAILEDOPERATION_SQLTASKRESULTOVERSIZE = "FailedOperation.SQLTaskResultOversize"
+//  FAILEDOPERATION_TASKOVERTIMEFETCHRESULT = "FailedOperation.TaskOvertimeFetchResult"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+func (c *Client) DescribeMlFlowConfig(request *DescribeMlFlowConfigRequest) (response *DescribeMlFlowConfigResponse, err error) {
+    return c.DescribeMlFlowConfigWithContext(context.Background(), request)
+}
+
+// DescribeMlFlowConfig
+// 查询训练实例的 MLflow 接入配置。 
+//
+// MlFlowMode 表示接入的 mlflow 模式，支持 local=Sidecar / remote=已有 Server / none=不启用。云上默认为 remote。
+//
+// MlFlowUrl 表示访问的 MLflow URL。
+//
+// RunID, ExperimentID 对应MLflow 实验追踪用的参数 RunID, ExperimentID
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_HTTPCLIENTDOREQUESTFAILED = "FailedOperation.HttpClientDoRequestFailed"
+//  FAILEDOPERATION_SQLTASKRESULTOVERSIZE = "FailedOperation.SQLTaskResultOversize"
+//  FAILEDOPERATION_TASKOVERTIMEFETCHRESULT = "FailedOperation.TaskOvertimeFetchResult"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+func (c *Client) DescribeMlFlowConfigWithContext(ctx context.Context, request *DescribeMlFlowConfigRequest) (response *DescribeMlFlowConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribeMlFlowConfigRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "DescribeMlFlowConfig")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMlFlowConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMlFlowConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeMlflowServerRequest() (request *DescribeMlflowServerRequest) {
+    request = &DescribeMlflowServerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeMlflowServer")
+    
+    
+    return
+}
+
+func NewDescribeMlflowServerResponse() (response *DescribeMlflowServerResponse) {
+    response = &DescribeMlflowServerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMlflowServer
+// 查询 MlFlow Server 状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_HTTPCLIENTDOREQUESTFAILED = "FailedOperation.HttpClientDoRequestFailed"
+//  FAILEDOPERATION_SQLTASKRESULTOVERSIZE = "FailedOperation.SQLTaskResultOversize"
+//  FAILEDOPERATION_TASKOVERTIMEFETCHRESULT = "FailedOperation.TaskOvertimeFetchResult"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+func (c *Client) DescribeMlflowServer(request *DescribeMlflowServerRequest) (response *DescribeMlflowServerResponse, err error) {
+    return c.DescribeMlflowServerWithContext(context.Background(), request)
+}
+
+// DescribeMlflowServer
+// 查询 MlFlow Server 状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_HTTPCLIENTDOREQUESTFAILED = "FailedOperation.HttpClientDoRequestFailed"
+//  FAILEDOPERATION_SQLTASKRESULTOVERSIZE = "FailedOperation.SQLTaskResultOversize"
+//  FAILEDOPERATION_TASKOVERTIMEFETCHRESULT = "FailedOperation.TaskOvertimeFetchResult"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+func (c *Client) DescribeMlflowServerWithContext(ctx context.Context, request *DescribeMlflowServerRequest) (response *DescribeMlflowServerResponse, err error) {
+    if request == nil {
+        request = NewDescribeMlflowServerRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "DescribeMlflowServer")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMlflowServer require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMlflowServerResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeMlflowServerEventsRequest() (request *DescribeMlflowServerEventsRequest) {
+    request = &DescribeMlflowServerEventsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeMlflowServerEvents")
+    
+    
+    return
+}
+
+func NewDescribeMlflowServerEventsResponse() (response *DescribeMlflowServerEventsResponse) {
+    response = &DescribeMlflowServerEventsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMlflowServerEvents
+// 查询 MlFlow Server K8s 事件
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_HTTPCLIENTDOREQUESTFAILED = "FailedOperation.HttpClientDoRequestFailed"
+//  FAILEDOPERATION_SQLTASKRESULTOVERSIZE = "FailedOperation.SQLTaskResultOversize"
+//  FAILEDOPERATION_TASKOVERTIMEFETCHRESULT = "FailedOperation.TaskOvertimeFetchResult"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+func (c *Client) DescribeMlflowServerEvents(request *DescribeMlflowServerEventsRequest) (response *DescribeMlflowServerEventsResponse, err error) {
+    return c.DescribeMlflowServerEventsWithContext(context.Background(), request)
+}
+
+// DescribeMlflowServerEvents
+// 查询 MlFlow Server K8s 事件
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_HTTPCLIENTDOREQUESTFAILED = "FailedOperation.HttpClientDoRequestFailed"
+//  FAILEDOPERATION_SQLTASKRESULTOVERSIZE = "FailedOperation.SQLTaskResultOversize"
+//  FAILEDOPERATION_TASKOVERTIMEFETCHRESULT = "FailedOperation.TaskOvertimeFetchResult"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+func (c *Client) DescribeMlflowServerEventsWithContext(ctx context.Context, request *DescribeMlflowServerEventsRequest) (response *DescribeMlflowServerEventsResponse, err error) {
+    if request == nil {
+        request = NewDescribeMlflowServerEventsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "DescribeMlflowServerEvents")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMlflowServerEvents require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMlflowServerEventsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeMlflowServerPodsRequest() (request *DescribeMlflowServerPodsRequest) {
+    request = &DescribeMlflowServerPodsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeMlflowServerPods")
+    
+    
+    return
+}
+
+func NewDescribeMlflowServerPodsResponse() (response *DescribeMlflowServerPodsResponse) {
+    response = &DescribeMlflowServerPodsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMlflowServerPods
+// MlFlow Server Pod 列表响应
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_HTTPCLIENTDOREQUESTFAILED = "FailedOperation.HttpClientDoRequestFailed"
+//  FAILEDOPERATION_SQLTASKRESULTOVERSIZE = "FailedOperation.SQLTaskResultOversize"
+//  FAILEDOPERATION_TASKOVERTIMEFETCHRESULT = "FailedOperation.TaskOvertimeFetchResult"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+func (c *Client) DescribeMlflowServerPods(request *DescribeMlflowServerPodsRequest) (response *DescribeMlflowServerPodsResponse, err error) {
+    return c.DescribeMlflowServerPodsWithContext(context.Background(), request)
+}
+
+// DescribeMlflowServerPods
+// MlFlow Server Pod 列表响应
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_HTTPCLIENTDOREQUESTFAILED = "FailedOperation.HttpClientDoRequestFailed"
+//  FAILEDOPERATION_SQLTASKRESULTOVERSIZE = "FailedOperation.SQLTaskResultOversize"
+//  FAILEDOPERATION_TASKOVERTIMEFETCHRESULT = "FailedOperation.TaskOvertimeFetchResult"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+func (c *Client) DescribeMlflowServerPodsWithContext(ctx context.Context, request *DescribeMlflowServerPodsRequest) (response *DescribeMlflowServerPodsResponse, err error) {
+    if request == nil {
+        request = NewDescribeMlflowServerPodsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "DescribeMlflowServerPods")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMlflowServerPods require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMlflowServerPodsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeModelEnginesRequest() (request *DescribeModelEnginesRequest) {
+    request = &DescribeModelEnginesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeModelEngines")
+    
+    
+    return
+}
+
+func NewDescribeModelEnginesResponse() (response *DescribeModelEnginesResponse) {
+    response = &DescribeModelEnginesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeModelEngines
+// 根据模型 UID 查询该模型可选的推理引擎列表。后端自动根据模型的 SupportedEngines 声明或 ModelType 进行引擎过滤
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_HTTPCLIENTDOREQUESTFAILED = "FailedOperation.HttpClientDoRequestFailed"
+//  FAILEDOPERATION_SQLTASKRESULTOVERSIZE = "FailedOperation.SQLTaskResultOversize"
+//  FAILEDOPERATION_TASKOVERTIMEFETCHRESULT = "FailedOperation.TaskOvertimeFetchResult"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+func (c *Client) DescribeModelEngines(request *DescribeModelEnginesRequest) (response *DescribeModelEnginesResponse, err error) {
+    return c.DescribeModelEnginesWithContext(context.Background(), request)
+}
+
+// DescribeModelEngines
+// 根据模型 UID 查询该模型可选的推理引擎列表。后端自动根据模型的 SupportedEngines 声明或 ModelType 进行引擎过滤
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_HTTPCLIENTDOREQUESTFAILED = "FailedOperation.HttpClientDoRequestFailed"
+//  FAILEDOPERATION_SQLTASKRESULTOVERSIZE = "FailedOperation.SQLTaskResultOversize"
+//  FAILEDOPERATION_TASKOVERTIMEFETCHRESULT = "FailedOperation.TaskOvertimeFetchResult"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+func (c *Client) DescribeModelEnginesWithContext(ctx context.Context, request *DescribeModelEnginesRequest) (response *DescribeModelEnginesResponse, err error) {
+    if request == nil {
+        request = NewDescribeModelEnginesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "DescribeModelEngines")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeModelEngines require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeModelEnginesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeModelTaskOptionsRequest() (request *DescribeModelTaskOptionsRequest) {
+    request = &DescribeModelTaskOptionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeModelTaskOptions")
+    
+    
+    return
+}
+
+func NewDescribeModelTaskOptionsResponse() (response *DescribeModelTaskOptionsResponse) {
+    response = &DescribeModelTaskOptionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeModelTaskOptions
+// 查询指定模型类型下可选的任务类型列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_HTTPCLIENTDOREQUESTFAILED = "FailedOperation.HttpClientDoRequestFailed"
+//  FAILEDOPERATION_SQLTASKRESULTOVERSIZE = "FailedOperation.SQLTaskResultOversize"
+//  FAILEDOPERATION_TASKOVERTIMEFETCHRESULT = "FailedOperation.TaskOvertimeFetchResult"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+func (c *Client) DescribeModelTaskOptions(request *DescribeModelTaskOptionsRequest) (response *DescribeModelTaskOptionsResponse, err error) {
+    return c.DescribeModelTaskOptionsWithContext(context.Background(), request)
+}
+
+// DescribeModelTaskOptions
+// 查询指定模型类型下可选的任务类型列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_HTTPCLIENTDOREQUESTFAILED = "FailedOperation.HttpClientDoRequestFailed"
+//  FAILEDOPERATION_SQLTASKRESULTOVERSIZE = "FailedOperation.SQLTaskResultOversize"
+//  FAILEDOPERATION_TASKOVERTIMEFETCHRESULT = "FailedOperation.TaskOvertimeFetchResult"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+func (c *Client) DescribeModelTaskOptionsWithContext(ctx context.Context, request *DescribeModelTaskOptionsRequest) (response *DescribeModelTaskOptionsResponse, err error) {
+    if request == nil {
+        request = NewDescribeModelTaskOptionsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "DescribeModelTaskOptions")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeModelTaskOptions require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeModelTaskOptionsResponse()
     err = c.Send(request, response)
     return
 }
@@ -8655,6 +10367,108 @@ func (c *Client) DescribePartitionsWithContext(ctx context.Context, request *Des
     request.SetContext(ctx)
     
     response = NewDescribePartitionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePostTrainingPresetRequest() (request *DescribePostTrainingPresetRequest) {
+    request = &DescribePostTrainingPresetRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribePostTrainingPreset")
+    
+    
+    return
+}
+
+func NewDescribePostTrainingPresetResponse() (response *DescribePostTrainingPresetResponse) {
+    response = &DescribePostTrainingPresetResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribePostTrainingPreset
+// 获取零代码后训练的推荐参数和资源规格配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribePostTrainingPreset(request *DescribePostTrainingPresetRequest) (response *DescribePostTrainingPresetResponse, err error) {
+    return c.DescribePostTrainingPresetWithContext(context.Background(), request)
+}
+
+// DescribePostTrainingPreset
+// 获取零代码后训练的推荐参数和资源规格配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribePostTrainingPresetWithContext(ctx context.Context, request *DescribePostTrainingPresetRequest) (response *DescribePostTrainingPresetResponse, err error) {
+    if request == nil {
+        request = NewDescribePostTrainingPresetRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "DescribePostTrainingPreset")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePostTrainingPreset require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePostTrainingPresetResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRecommendedParamsRequest() (request *DescribeRecommendedParamsRequest) {
+    request = &DescribeRecommendedParamsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeRecommendedParams")
+    
+    
+    return
+}
+
+func NewDescribeRecommendedParamsResponse() (response *DescribeRecommendedParamsResponse) {
+    response = &DescribeRecommendedParamsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRecommendedParams
+// 获取推荐的高级参数
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) DescribeRecommendedParams(request *DescribeRecommendedParamsRequest) (response *DescribeRecommendedParamsResponse, err error) {
+    return c.DescribeRecommendedParamsWithContext(context.Background(), request)
+}
+
+// DescribeRecommendedParams
+// 获取推荐的高级参数
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) DescribeRecommendedParamsWithContext(ctx context.Context, request *DescribeRecommendedParamsRequest) (response *DescribeRecommendedParamsResponse, err error) {
+    if request == nil {
+        request = NewDescribeRecommendedParamsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "DescribeRecommendedParams")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRecommendedParams require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRecommendedParamsResponse()
     err = c.Send(request, response)
     return
 }
@@ -10689,6 +12503,222 @@ func (c *Client) DescribeThirdPartyAccessUserWithContext(ctx context.Context, re
     request.SetContext(ctx)
     
     response = NewDescribeThirdPartyAccessUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTkeClusterImportInfoRequest() (request *DescribeTkeClusterImportInfoRequest) {
+    request = &DescribeTkeClusterImportInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeTkeClusterImportInfo")
+    
+    
+    return
+}
+
+func NewDescribeTkeClusterImportInfoResponse() (response *DescribeTkeClusterImportInfoResponse) {
+    response = &DescribeTkeClusterImportInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTkeClusterImportInfo
+// 按 EMR 集群 ID 查询已导入的 TKE 集群详情，返回 tke_cluster 表中该条导入记录的核心字段，并对 LoadBalancerId / PrometheusInstanceId / ContainerLogTopicId 三个 ID 分别回查腾讯云 API 获取对应名称一并返回。名称查询失败或查不到时对应字段返回空字符串，不影响主接口返回。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeTkeClusterImportInfo(request *DescribeTkeClusterImportInfoRequest) (response *DescribeTkeClusterImportInfoResponse, err error) {
+    return c.DescribeTkeClusterImportInfoWithContext(context.Background(), request)
+}
+
+// DescribeTkeClusterImportInfo
+// 按 EMR 集群 ID 查询已导入的 TKE 集群详情，返回 tke_cluster 表中该条导入记录的核心字段，并对 LoadBalancerId / PrometheusInstanceId / ContainerLogTopicId 三个 ID 分别回查腾讯云 API 获取对应名称一并返回。名称查询失败或查不到时对应字段返回空字符串，不影响主接口返回。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeTkeClusterImportInfoWithContext(ctx context.Context, request *DescribeTkeClusterImportInfoRequest) (response *DescribeTkeClusterImportInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeTkeClusterImportInfoRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "DescribeTkeClusterImportInfo")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTkeClusterImportInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTkeClusterImportInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTrainingCheckpointsRequest() (request *DescribeTrainingCheckpointsRequest) {
+    request = &DescribeTrainingCheckpointsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeTrainingCheckpoints")
+    
+    
+    return
+}
+
+func NewDescribeTrainingCheckpointsResponse() (response *DescribeTrainingCheckpointsResponse) {
+    response = &DescribeTrainingCheckpointsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTrainingCheckpoints
+// 列出训练实例 Checkpoint 文件列表的响应
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeTrainingCheckpoints(request *DescribeTrainingCheckpointsRequest) (response *DescribeTrainingCheckpointsResponse, err error) {
+    return c.DescribeTrainingCheckpointsWithContext(context.Background(), request)
+}
+
+// DescribeTrainingCheckpoints
+// 列出训练实例 Checkpoint 文件列表的响应
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeTrainingCheckpointsWithContext(ctx context.Context, request *DescribeTrainingCheckpointsRequest) (response *DescribeTrainingCheckpointsResponse, err error) {
+    if request == nil {
+        request = NewDescribeTrainingCheckpointsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "DescribeTrainingCheckpoints")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTrainingCheckpoints require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTrainingCheckpointsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTrainingJobInstanceRequest() (request *DescribeTrainingJobInstanceRequest) {
+    request = &DescribeTrainingJobInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeTrainingJobInstance")
+    
+    
+    return
+}
+
+func NewDescribeTrainingJobInstanceResponse() (response *DescribeTrainingJobInstanceResponse) {
+    response = &DescribeTrainingJobInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTrainingJobInstance
+// 查询训练实例详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeTrainingJobInstance(request *DescribeTrainingJobInstanceRequest) (response *DescribeTrainingJobInstanceResponse, err error) {
+    return c.DescribeTrainingJobInstanceWithContext(context.Background(), request)
+}
+
+// DescribeTrainingJobInstance
+// 查询训练实例详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeTrainingJobInstanceWithContext(ctx context.Context, request *DescribeTrainingJobInstanceRequest) (response *DescribeTrainingJobInstanceResponse, err error) {
+    if request == nil {
+        request = NewDescribeTrainingJobInstanceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "DescribeTrainingJobInstance")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTrainingJobInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTrainingJobInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTrainingJobSpecRequest() (request *DescribeTrainingJobSpecRequest) {
+    request = &DescribeTrainingJobSpecRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeTrainingJobSpec")
+    
+    
+    return
+}
+
+func NewDescribeTrainingJobSpecResponse() (response *DescribeTrainingJobSpecResponse) {
+    response = &DescribeTrainingJobSpecResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTrainingJobSpec
+// 获取训练作业配置详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeTrainingJobSpec(request *DescribeTrainingJobSpecRequest) (response *DescribeTrainingJobSpecResponse, err error) {
+    return c.DescribeTrainingJobSpecWithContext(context.Background(), request)
+}
+
+// DescribeTrainingJobSpec
+// 获取训练作业配置详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeTrainingJobSpecWithContext(ctx context.Context, request *DescribeTrainingJobSpecRequest) (response *DescribeTrainingJobSpecResponse, err error) {
+    if request == nil {
+        request = NewDescribeTrainingJobSpecRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "DescribeTrainingJobSpec")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTrainingJobSpec require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTrainingJobSpecResponse()
     err = c.Send(request, response)
     return
 }
@@ -13375,6 +15405,110 @@ func (c *Client) GrantDLCCatalogAccessWithContext(ctx context.Context, request *
     return
 }
 
+func NewImportExternalClusterRequest() (request *ImportExternalClusterRequest) {
+    request = &ImportExternalClusterRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "ImportExternalCluster")
+    
+    
+    return
+}
+
+func NewImportExternalClusterResponse() (response *ImportExternalClusterResponse) {
+    response = &ImportExternalClusterResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ImportExternalCluster
+// 通过 ClusterType 区分两种导入模式：TKE（直接导入裸 TKE 集群，ClusterId 为 TKE 集群 ID）或 EMR（通过 EMR 集群导入，ClusterId 为 EMR 集群 ID，底层会关联查询对应的 TKE 集群 ID 一并落库）。两种模式均将 TKE 集群 ID 存入 tke_cluster 表。接口是异步的，返回的 WorkflowId 可用于轮询注册进度；ResourcePoolId / ResourcePoolCode 为资源池的唯一标识。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ImportExternalCluster(request *ImportExternalClusterRequest) (response *ImportExternalClusterResponse, err error) {
+    return c.ImportExternalClusterWithContext(context.Background(), request)
+}
+
+// ImportExternalCluster
+// 通过 ClusterType 区分两种导入模式：TKE（直接导入裸 TKE 集群，ClusterId 为 TKE 集群 ID）或 EMR（通过 EMR 集群导入，ClusterId 为 EMR 集群 ID，底层会关联查询对应的 TKE 集群 ID 一并落库）。两种模式均将 TKE 集群 ID 存入 tke_cluster 表。接口是异步的，返回的 WorkflowId 可用于轮询注册进度；ResourcePoolId / ResourcePoolCode 为资源池的唯一标识。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ImportExternalClusterWithContext(ctx context.Context, request *ImportExternalClusterRequest) (response *ImportExternalClusterResponse, err error) {
+    if request == nil {
+        request = NewImportExternalClusterRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "ImportExternalCluster")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ImportExternalCluster require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewImportExternalClusterResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewImportTkeClusterRequest() (request *ImportTkeClusterRequest) {
+    request = &ImportTkeClusterRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "ImportTkeCluster")
+    
+    
+    return
+}
+
+func NewImportTkeClusterResponse() (response *ImportTkeClusterResponse) {
+    response = &ImportTkeClusterResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ImportTkeCluster
+// 将用户在控制台选择的 EMR-TKE 集群及配套的 COS Bucket、Prometheus 实例、负载均衡、容器日志主题等资源，注册为 DLC 的外部资源池（EXTERNAL_TKE）。接口是异步的，返回的 WorkflowId 可用于轮询注册进度；ResourcePoolId / ResourcePoolCode 为资源池的唯一标识。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ImportTkeCluster(request *ImportTkeClusterRequest) (response *ImportTkeClusterResponse, err error) {
+    return c.ImportTkeClusterWithContext(context.Background(), request)
+}
+
+// ImportTkeCluster
+// 将用户在控制台选择的 EMR-TKE 集群及配套的 COS Bucket、Prometheus 实例、负载均衡、容器日志主题等资源，注册为 DLC 的外部资源池（EXTERNAL_TKE）。接口是异步的，返回的 WorkflowId 可用于轮询注册进度；ResourcePoolId / ResourcePoolCode 为资源池的唯一标识。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ImportTkeClusterWithContext(ctx context.Context, request *ImportTkeClusterRequest) (response *ImportTkeClusterResponse, err error) {
+    if request == nil {
+        request = NewImportTkeClusterRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "ImportTkeCluster")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ImportTkeCluster require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewImportTkeClusterResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewInitializeTCLakeRequest() (request *InitializeTCLakeRequest) {
     request = &InitializeTCLakeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -13399,6 +15533,7 @@ func NewInitializeTCLakeResponse() (response *InitializeTCLakeResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) InitializeTCLake(request *InitializeTCLakeRequest) (response *InitializeTCLakeResponse, err error) {
     return c.InitializeTCLakeWithContext(context.Background(), request)
 }
@@ -13408,6 +15543,7 @@ func (c *Client) InitializeTCLake(request *InitializeTCLakeRequest) (response *I
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) InitializeTCLakeWithContext(ctx context.Context, request *InitializeTCLakeRequest) (response *InitializeTCLakeResponse, err error) {
     if request == nil {
         request = NewInitializeTCLakeRequest()
@@ -13487,6 +15623,206 @@ func (c *Client) LaunchStandardEngineResourceGroupsWithContext(ctx context.Conte
     return
 }
 
+func NewListApiKeysRequest() (request *ListApiKeysRequest) {
+    request = &ListApiKeysRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "ListApiKeys")
+    
+    
+    return
+}
+
+func NewListApiKeysResponse() (response *ListApiKeysResponse) {
+    response = &ListApiKeysResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListApiKeys
+// 列出 API Key
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) ListApiKeys(request *ListApiKeysRequest) (response *ListApiKeysResponse, err error) {
+    return c.ListApiKeysWithContext(context.Background(), request)
+}
+
+// ListApiKeys
+// 列出 API Key
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) ListApiKeysWithContext(ctx context.Context, request *ListApiKeysRequest) (response *ListApiKeysResponse, err error) {
+    if request == nil {
+        request = NewListApiKeysRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "ListApiKeys")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListApiKeys require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListApiKeysResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListAvailableApiKeysRequest() (request *ListAvailableApiKeysRequest) {
+    request = &ListAvailableApiKeysRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "ListAvailableApiKeys")
+    
+    
+    return
+}
+
+func NewListAvailableApiKeysResponse() (response *ListAvailableApiKeysResponse) {
+    response = &ListAvailableApiKeysResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListAvailableApiKeys
+// 列出空闲 API Key（未绑定服务）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) ListAvailableApiKeys(request *ListAvailableApiKeysRequest) (response *ListAvailableApiKeysResponse, err error) {
+    return c.ListAvailableApiKeysWithContext(context.Background(), request)
+}
+
+// ListAvailableApiKeys
+// 列出空闲 API Key（未绑定服务）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) ListAvailableApiKeysWithContext(ctx context.Context, request *ListAvailableApiKeysRequest) (response *ListAvailableApiKeysResponse, err error) {
+    if request == nil {
+        request = NewListAvailableApiKeysRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "ListAvailableApiKeys")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListAvailableApiKeys require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListAvailableApiKeysResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListBenchmarkSummaryRequest() (request *ListBenchmarkSummaryRequest) {
+    request = &ListBenchmarkSummaryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "ListBenchmarkSummary")
+    
+    
+    return
+}
+
+func NewListBenchmarkSummaryResponse() (response *ListBenchmarkSummaryResponse) {
+    response = &ListBenchmarkSummaryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListBenchmarkSummary
+// 查询评测排行榜（所有模型的评测汇总数据）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) ListBenchmarkSummary(request *ListBenchmarkSummaryRequest) (response *ListBenchmarkSummaryResponse, err error) {
+    return c.ListBenchmarkSummaryWithContext(context.Background(), request)
+}
+
+// ListBenchmarkSummary
+// 查询评测排行榜（所有模型的评测汇总数据）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) ListBenchmarkSummaryWithContext(ctx context.Context, request *ListBenchmarkSummaryRequest) (response *ListBenchmarkSummaryResponse, err error) {
+    if request == nil {
+        request = NewListBenchmarkSummaryRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "ListBenchmarkSummary")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListBenchmarkSummary require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListBenchmarkSummaryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListBenchmarkTasksRequest() (request *ListBenchmarkTasksRequest) {
+    request = &ListBenchmarkTasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "ListBenchmarkTasks")
+    
+    
+    return
+}
+
+func NewListBenchmarkTasksResponse() (response *ListBenchmarkTasksResponse) {
+    response = &ListBenchmarkTasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListBenchmarkTasks
+// 列出性能评测任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) ListBenchmarkTasks(request *ListBenchmarkTasksRequest) (response *ListBenchmarkTasksResponse, err error) {
+    return c.ListBenchmarkTasksWithContext(context.Background(), request)
+}
+
+// ListBenchmarkTasks
+// 列出性能评测任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) ListBenchmarkTasksWithContext(ctx context.Context, request *ListBenchmarkTasksRequest) (response *ListBenchmarkTasksResponse, err error) {
+    if request == nil {
+        request = NewListBenchmarkTasksRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "ListBenchmarkTasks")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListBenchmarkTasks require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListBenchmarkTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewListClusterGroupsRequest() (request *ListClusterGroupsRequest) {
     request = &ListClusterGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -13533,6 +15869,106 @@ func (c *Client) ListClusterGroupsWithContext(ctx context.Context, request *List
     request.SetContext(ctx)
     
     response = NewListClusterGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListDeploymentReplicasRequest() (request *ListDeploymentReplicasRequest) {
+    request = &ListDeploymentReplicasRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "ListDeploymentReplicas")
+    
+    
+    return
+}
+
+func NewListDeploymentReplicasResponse() (response *ListDeploymentReplicasResponse) {
+    response = &ListDeploymentReplicasResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListDeploymentReplicas
+// 列出部署的副本列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) ListDeploymentReplicas(request *ListDeploymentReplicasRequest) (response *ListDeploymentReplicasResponse, err error) {
+    return c.ListDeploymentReplicasWithContext(context.Background(), request)
+}
+
+// ListDeploymentReplicas
+// 列出部署的副本列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) ListDeploymentReplicasWithContext(ctx context.Context, request *ListDeploymentReplicasRequest) (response *ListDeploymentReplicasResponse, err error) {
+    if request == nil {
+        request = NewListDeploymentReplicasRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "ListDeploymentReplicas")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListDeploymentReplicas require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListDeploymentReplicasResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListDeploymentsRequest() (request *ListDeploymentsRequest) {
+    request = &ListDeploymentsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "ListDeployments")
+    
+    
+    return
+}
+
+func NewListDeploymentsResponse() (response *ListDeploymentsResponse) {
+    response = &ListDeploymentsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListDeployments
+// 列出推理服务的部署列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) ListDeployments(request *ListDeploymentsRequest) (response *ListDeploymentsResponse, err error) {
+    return c.ListDeploymentsWithContext(context.Background(), request)
+}
+
+// ListDeployments
+// 列出推理服务的部署列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) ListDeploymentsWithContext(ctx context.Context, request *ListDeploymentsRequest) (response *ListDeploymentsResponse, err error) {
+    if request == nil {
+        request = NewListDeploymentsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "ListDeployments")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListDeployments require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListDeploymentsResponse()
     err = c.Send(request, response)
     return
 }
@@ -14087,6 +16523,106 @@ func (c *Client) ListLabsWithContext(ctx context.Context, request *ListLabsReque
     return
 }
 
+func NewListMlflowServerTrainingInstancesRequest() (request *ListMlflowServerTrainingInstancesRequest) {
+    request = &ListMlflowServerTrainingInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "ListMlflowServerTrainingInstances")
+    
+    
+    return
+}
+
+func NewListMlflowServerTrainingInstancesResponse() (response *ListMlflowServerTrainingInstancesResponse) {
+    response = &ListMlflowServerTrainingInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListMlflowServerTrainingInstances
+// 查询 MlFlow Server 关联的训练实例列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) ListMlflowServerTrainingInstances(request *ListMlflowServerTrainingInstancesRequest) (response *ListMlflowServerTrainingInstancesResponse, err error) {
+    return c.ListMlflowServerTrainingInstancesWithContext(context.Background(), request)
+}
+
+// ListMlflowServerTrainingInstances
+// 查询 MlFlow Server 关联的训练实例列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) ListMlflowServerTrainingInstancesWithContext(ctx context.Context, request *ListMlflowServerTrainingInstancesRequest) (response *ListMlflowServerTrainingInstancesResponse, err error) {
+    if request == nil {
+        request = NewListMlflowServerTrainingInstancesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "ListMlflowServerTrainingInstances")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListMlflowServerTrainingInstances require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListMlflowServerTrainingInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListMlflowServersRequest() (request *ListMlflowServersRequest) {
+    request = &ListMlflowServersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "ListMlflowServers")
+    
+    
+    return
+}
+
+func NewListMlflowServersResponse() (response *ListMlflowServersResponse) {
+    response = &ListMlflowServersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListMlflowServers
+// 列出 MlFlow Server
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) ListMlflowServers(request *ListMlflowServersRequest) (response *ListMlflowServersResponse, err error) {
+    return c.ListMlflowServersWithContext(context.Background(), request)
+}
+
+// ListMlflowServers
+// 列出 MlFlow Server
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) ListMlflowServersWithContext(ctx context.Context, request *ListMlflowServersRequest) (response *ListMlflowServersResponse, err error) {
+    if request == nil {
+        request = NewListMlflowServersRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "ListMlflowServers")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListMlflowServers require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListMlflowServersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewListModelVersionsRequest() (request *ListModelVersionsRequest) {
     request = &ListModelVersionsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -14287,6 +16823,56 @@ func (c *Client) ListRayJobsWithContext(ctx context.Context, request *ListRayJob
     return
 }
 
+func NewListRegionLbsRequest() (request *ListRegionLbsRequest) {
+    request = &ListRegionLbsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "ListRegionLbs")
+    
+    
+    return
+}
+
+func NewListRegionLbsResponse() (response *ListRegionLbsResponse) {
+    response = &ListRegionLbsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListRegionLbs
+// 列出用户在指定地域下的 CLB 负载均衡实例，返回实例 ID、名称与网络类型（OPEN/INTERNAL）。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) ListRegionLbs(request *ListRegionLbsRequest) (response *ListRegionLbsResponse, err error) {
+    return c.ListRegionLbsWithContext(context.Background(), request)
+}
+
+// ListRegionLbs
+// 列出用户在指定地域下的 CLB 负载均衡实例，返回实例 ID、名称与网络类型（OPEN/INTERNAL）。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) ListRegionLbsWithContext(ctx context.Context, request *ListRegionLbsRequest) (response *ListRegionLbsResponse, err error) {
+    if request == nil {
+        request = NewListRegionLbsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "ListRegionLbs")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListRegionLbs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListRegionLbsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewListResourceConfigsRequest() (request *ListResourceConfigsRequest) {
     request = &ListResourceConfigsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -14333,6 +16919,56 @@ func (c *Client) ListResourceConfigsWithContext(ctx context.Context, request *Li
     request.SetContext(ctx)
     
     response = NewListResourceConfigsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListServiceApiKeysRequest() (request *ListServiceApiKeysRequest) {
+    request = &ListServiceApiKeysRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "ListServiceApiKeys")
+    
+    
+    return
+}
+
+func NewListServiceApiKeysResponse() (response *ListServiceApiKeysResponse) {
+    response = &ListServiceApiKeysResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListServiceApiKeys
+// 列出指定推理服务绑定的 API Key
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) ListServiceApiKeys(request *ListServiceApiKeysRequest) (response *ListServiceApiKeysResponse, err error) {
+    return c.ListServiceApiKeysWithContext(context.Background(), request)
+}
+
+// ListServiceApiKeys
+// 列出指定推理服务绑定的 API Key
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) ListServiceApiKeysWithContext(ctx context.Context, request *ListServiceApiKeysRequest) (response *ListServiceApiKeysResponse, err error) {
+    if request == nil {
+        request = NewListServiceApiKeysRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "ListServiceApiKeys")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListServiceApiKeys require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListServiceApiKeysResponse()
     err = c.Send(request, response)
     return
 }
@@ -14473,6 +17109,168 @@ func (c *Client) ListTaskJobLogNameWithContext(ctx context.Context, request *Lis
     request.SetContext(ctx)
     
     response = NewListTaskJobLogNameResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListTkeCosBucketsRequest() (request *ListTkeCosBucketsRequest) {
+    request = &ListTkeCosBucketsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "ListTkeCosBuckets")
+    
+    
+    return
+}
+
+func NewListTkeCosBucketsResponse() (response *ListTkeCosBucketsResponse) {
+    response = &ListTkeCosBucketsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListTkeCosBuckets
+// 获取tke纳管cos列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+//  INVALIDPARAMETER_SQLTASKNOTFOUND = "InvalidParameter.SQLTaskNotFound"
+//  RESOURCENOTFOUND_BATCHSQLTASKNOTFOUND = "ResourceNotFound.BatchSQLTaskNotFound"
+func (c *Client) ListTkeCosBuckets(request *ListTkeCosBucketsRequest) (response *ListTkeCosBucketsResponse, err error) {
+    return c.ListTkeCosBucketsWithContext(context.Background(), request)
+}
+
+// ListTkeCosBuckets
+// 获取tke纳管cos列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+//  INVALIDPARAMETER_SQLTASKNOTFOUND = "InvalidParameter.SQLTaskNotFound"
+//  RESOURCENOTFOUND_BATCHSQLTASKNOTFOUND = "ResourceNotFound.BatchSQLTaskNotFound"
+func (c *Client) ListTkeCosBucketsWithContext(ctx context.Context, request *ListTkeCosBucketsRequest) (response *ListTkeCosBucketsResponse, err error) {
+    if request == nil {
+        request = NewListTkeCosBucketsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "ListTkeCosBuckets")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListTkeCosBuckets require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListTkeCosBucketsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListTrainingJobInstanceRequest() (request *ListTrainingJobInstanceRequest) {
+    request = &ListTrainingJobInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "ListTrainingJobInstance")
+    
+    
+    return
+}
+
+func NewListTrainingJobInstanceResponse() (response *ListTrainingJobInstanceResponse) {
+    response = &ListTrainingJobInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListTrainingJobInstance
+// 列出训练作业实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) ListTrainingJobInstance(request *ListTrainingJobInstanceRequest) (response *ListTrainingJobInstanceResponse, err error) {
+    return c.ListTrainingJobInstanceWithContext(context.Background(), request)
+}
+
+// ListTrainingJobInstance
+// 列出训练作业实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) ListTrainingJobInstanceWithContext(ctx context.Context, request *ListTrainingJobInstanceRequest) (response *ListTrainingJobInstanceResponse, err error) {
+    if request == nil {
+        request = NewListTrainingJobInstanceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "ListTrainingJobInstance")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListTrainingJobInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListTrainingJobInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListTrainingJobSpecRequest() (request *ListTrainingJobSpecRequest) {
+    request = &ListTrainingJobSpecRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "ListTrainingJobSpec")
+    
+    
+    return
+}
+
+func NewListTrainingJobSpecResponse() (response *ListTrainingJobSpecResponse) {
+    response = &ListTrainingJobSpecResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListTrainingJobSpec
+// 获取训练作业配置的列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) ListTrainingJobSpec(request *ListTrainingJobSpecRequest) (response *ListTrainingJobSpecResponse, err error) {
+    return c.ListTrainingJobSpecWithContext(context.Background(), request)
+}
+
+// ListTrainingJobSpec
+// 获取训练作业配置的列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) ListTrainingJobSpecWithContext(ctx context.Context, request *ListTrainingJobSpecRequest) (response *ListTrainingJobSpecResponse, err error) {
+    if request == nil {
+        request = NewListTrainingJobSpecRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "ListTrainingJobSpec")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListTrainingJobSpec require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListTrainingJobSpecResponse()
     err = c.Send(request, response)
     return
 }
@@ -15131,6 +17929,80 @@ func (c *Client) ModifySparkAppForTDLCWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewModifySparkAppForTDLCResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyTrainingJobSpecRequest() (request *ModifyTrainingJobSpecRequest) {
+    request = &ModifyTrainingJobSpecRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "ModifyTrainingJobSpec")
+    
+    
+    return
+}
+
+func NewModifyTrainingJobSpecResponse() (response *ModifyTrainingJobSpecResponse) {
+    response = &ModifyTrainingJobSpecResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyTrainingJobSpec
+// 就地更新训练作业配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+//  INVALIDPARAMETER_INVALIDAPPFILEFORMAT = "InvalidParameter.InvalidAppFileFormat"
+//  INVALIDPARAMETER_INVALIDDATAENGINENAME = "InvalidParameter.InvalidDataEngineName"
+//  INVALIDPARAMETER_INVALIDDRIVERSIZE = "InvalidParameter.InvalidDriverSize"
+//  INVALIDPARAMETER_INVALIDEXECUTORSIZE = "InvalidParameter.InvalidExecutorSize"
+//  INVALIDPARAMETER_INVALIDFILECOMPRESSIONFORMAT = "InvalidParameter.InvalidFileCompressionFormat"
+//  INVALIDPARAMETER_INVALIDFILEPATHFORMAT = "InvalidParameter.InvalidFilePathFormat"
+//  INVALIDPARAMETER_SQLBASE64DECODEFAIL = "InvalidParameter.SQLBase64DecodeFail"
+//  INVALIDPARAMETER_SPARKJOBNOTFOUND = "InvalidParameter.SparkJobNotFound"
+//  INVALIDPARAMETER_SPARKJOBONLYSUPPORTSPARKBATCHENGINE = "InvalidParameter.SparkJobOnlySupportSparkBatchEngine"
+//  RESOURCEINSUFFICIENT_SPARKJOBINSUFFICIENTRESOURCES = "ResourceInsufficient.SparkJobInsufficientResources"
+//  RESOURCENOTFOUND_DATAENGINENOTFOUND = "ResourceNotFound.DataEngineNotFound"
+func (c *Client) ModifyTrainingJobSpec(request *ModifyTrainingJobSpecRequest) (response *ModifyTrainingJobSpecResponse, err error) {
+    return c.ModifyTrainingJobSpecWithContext(context.Background(), request)
+}
+
+// ModifyTrainingJobSpec
+// 就地更新训练作业配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+//  INVALIDPARAMETER_INVALIDAPPFILEFORMAT = "InvalidParameter.InvalidAppFileFormat"
+//  INVALIDPARAMETER_INVALIDDATAENGINENAME = "InvalidParameter.InvalidDataEngineName"
+//  INVALIDPARAMETER_INVALIDDRIVERSIZE = "InvalidParameter.InvalidDriverSize"
+//  INVALIDPARAMETER_INVALIDEXECUTORSIZE = "InvalidParameter.InvalidExecutorSize"
+//  INVALIDPARAMETER_INVALIDFILECOMPRESSIONFORMAT = "InvalidParameter.InvalidFileCompressionFormat"
+//  INVALIDPARAMETER_INVALIDFILEPATHFORMAT = "InvalidParameter.InvalidFilePathFormat"
+//  INVALIDPARAMETER_SQLBASE64DECODEFAIL = "InvalidParameter.SQLBase64DecodeFail"
+//  INVALIDPARAMETER_SPARKJOBNOTFOUND = "InvalidParameter.SparkJobNotFound"
+//  INVALIDPARAMETER_SPARKJOBONLYSUPPORTSPARKBATCHENGINE = "InvalidParameter.SparkJobOnlySupportSparkBatchEngine"
+//  RESOURCEINSUFFICIENT_SPARKJOBINSUFFICIENTRESOURCES = "ResourceInsufficient.SparkJobInsufficientResources"
+//  RESOURCENOTFOUND_DATAENGINENOTFOUND = "ResourceNotFound.DataEngineNotFound"
+func (c *Client) ModifyTrainingJobSpecWithContext(ctx context.Context, request *ModifyTrainingJobSpecRequest) (response *ModifyTrainingJobSpecResponse, err error) {
+    if request == nil {
+        request = NewModifyTrainingJobSpecRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "ModifyTrainingJobSpec")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyTrainingJobSpec require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyTrainingJobSpecResponse()
     err = c.Send(request, response)
     return
 }
@@ -15913,6 +18785,56 @@ func (c *Client) ReportHeartbeatMetaDataWithContext(ctx context.Context, request
     return
 }
 
+func NewRerunBenchmarkTaskRequest() (request *RerunBenchmarkTaskRequest) {
+    request = &RerunBenchmarkTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "RerunBenchmarkTask")
+    
+    
+    return
+}
+
+func NewRerunBenchmarkTaskResponse() (response *RerunBenchmarkTaskResponse) {
+    response = &RerunBenchmarkTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RerunBenchmarkTask
+// 重新运行性能评测任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) RerunBenchmarkTask(request *RerunBenchmarkTaskRequest) (response *RerunBenchmarkTaskResponse, err error) {
+    return c.RerunBenchmarkTaskWithContext(context.Background(), request)
+}
+
+// RerunBenchmarkTask
+// 重新运行性能评测任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) RerunBenchmarkTaskWithContext(ctx context.Context, request *RerunBenchmarkTaskRequest) (response *RerunBenchmarkTaskResponse, err error) {
+    if request == nil {
+        request = NewRerunBenchmarkTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "RerunBenchmarkTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RerunBenchmarkTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRerunBenchmarkTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRestartDataEngineRequest() (request *RestartDataEngineRequest) {
     request = &RestartDataEngineRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -15977,6 +18899,56 @@ func (c *Client) RestartDataEngineWithContext(ctx context.Context, request *Rest
     return
 }
 
+func NewRestartDeploymentRequest() (request *RestartDeploymentRequest) {
+    request = &RestartDeploymentRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "RestartDeployment")
+    
+    
+    return
+}
+
+func NewRestartDeploymentResponse() (response *RestartDeploymentResponse) {
+    response = &RestartDeploymentResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RestartDeployment
+// 再次运行部署（以当前配置重新部署）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) RestartDeployment(request *RestartDeploymentRequest) (response *RestartDeploymentResponse, err error) {
+    return c.RestartDeploymentWithContext(context.Background(), request)
+}
+
+// RestartDeployment
+// 再次运行部署（以当前配置重新部署）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) RestartDeploymentWithContext(ctx context.Context, request *RestartDeploymentRequest) (response *RestartDeploymentResponse, err error) {
+    if request == nil {
+        request = NewRestartDeploymentRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "RestartDeployment")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RestartDeployment require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRestartDeploymentResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRestartInferenceServiceRequest() (request *RestartInferenceServiceRequest) {
     request = &RestartInferenceServiceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -16023,6 +18995,56 @@ func (c *Client) RestartInferenceServiceWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewRestartInferenceServiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewResumeTrainingJobInstanceRequest() (request *ResumeTrainingJobInstanceRequest) {
+    request = &ResumeTrainingJobInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "ResumeTrainingJobInstance")
+    
+    
+    return
+}
+
+func NewResumeTrainingJobInstanceResponse() (response *ResumeTrainingJobInstanceResponse) {
+    response = &ResumeTrainingJobInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ResumeTrainingJobInstance
+// 断点续训（克隆实例）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) ResumeTrainingJobInstance(request *ResumeTrainingJobInstanceRequest) (response *ResumeTrainingJobInstanceResponse, err error) {
+    return c.ResumeTrainingJobInstanceWithContext(context.Background(), request)
+}
+
+// ResumeTrainingJobInstance
+// 断点续训（克隆实例）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) ResumeTrainingJobInstanceWithContext(ctx context.Context, request *ResumeTrainingJobInstanceRequest) (response *ResumeTrainingJobInstanceResponse, err error) {
+    if request == nil {
+        request = NewResumeTrainingJobInstanceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "ResumeTrainingJobInstance")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ResumeTrainingJobInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewResumeTrainingJobInstanceResponse()
     err = c.Send(request, response)
     return
 }
@@ -16331,6 +19353,58 @@ func (c *Client) StartLabWithContext(ctx context.Context, request *StartLabReque
     return
 }
 
+func NewStartMlflowServerRequest() (request *StartMlflowServerRequest) {
+    request = &StartMlflowServerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "StartMlflowServer")
+    
+    
+    return
+}
+
+func NewStartMlflowServerResponse() (response *StartMlflowServerResponse) {
+    response = &StartMlflowServerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// StartMlflowServer
+// 启动 MlFlow Server（apply K8s 资源，幂等可重试）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+//  FAILEDOPERATION_LABNOTFOUND = "FailedOperation.LabNotFound"
+func (c *Client) StartMlflowServer(request *StartMlflowServerRequest) (response *StartMlflowServerResponse, err error) {
+    return c.StartMlflowServerWithContext(context.Background(), request)
+}
+
+// StartMlflowServer
+// 启动 MlFlow Server（apply K8s 资源，幂等可重试）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+//  FAILEDOPERATION_LABNOTFOUND = "FailedOperation.LabNotFound"
+func (c *Client) StartMlflowServerWithContext(ctx context.Context, request *StartMlflowServerRequest) (response *StartMlflowServerResponse, err error) {
+    if request == nil {
+        request = NewStartMlflowServerRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "StartMlflowServer")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StartMlflowServer require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStartMlflowServerResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewStartRayClusterRequest() (request *StartRayClusterRequest) {
     request = &StartRayClusterRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -16377,6 +19451,106 @@ func (c *Client) StartRayClusterWithContext(ctx context.Context, request *StartR
     request.SetContext(ctx)
     
     response = NewStartRayClusterResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStopBenchmarkTaskRequest() (request *StopBenchmarkTaskRequest) {
+    request = &StopBenchmarkTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "StopBenchmarkTask")
+    
+    
+    return
+}
+
+func NewStopBenchmarkTaskResponse() (response *StopBenchmarkTaskResponse) {
+    response = &StopBenchmarkTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// StopBenchmarkTask
+// 停止性能评测任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) StopBenchmarkTask(request *StopBenchmarkTaskRequest) (response *StopBenchmarkTaskResponse, err error) {
+    return c.StopBenchmarkTaskWithContext(context.Background(), request)
+}
+
+// StopBenchmarkTask
+// 停止性能评测任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) StopBenchmarkTaskWithContext(ctx context.Context, request *StopBenchmarkTaskRequest) (response *StopBenchmarkTaskResponse, err error) {
+    if request == nil {
+        request = NewStopBenchmarkTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "StopBenchmarkTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StopBenchmarkTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStopBenchmarkTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStopDeploymentRequest() (request *StopDeploymentRequest) {
+    request = &StopDeploymentRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "StopDeployment")
+    
+    
+    return
+}
+
+func NewStopDeploymentResponse() (response *StopDeploymentResponse) {
+    response = &StopDeploymentResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// StopDeployment
+// 停止部署
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) StopDeployment(request *StopDeploymentRequest) (response *StopDeploymentResponse, err error) {
+    return c.StopDeploymentWithContext(context.Background(), request)
+}
+
+// StopDeployment
+// 停止部署
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) StopDeploymentWithContext(ctx context.Context, request *StopDeploymentRequest) (response *StopDeploymentResponse, err error) {
+    if request == nil {
+        request = NewStopDeploymentRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "StopDeployment")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StopDeployment require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStopDeploymentResponse()
     err = c.Send(request, response)
     return
 }
@@ -16483,6 +19657,58 @@ func (c *Client) StopLabWithContext(ctx context.Context, request *StopLabRequest
     return
 }
 
+func NewStopMlflowServerRequest() (request *StopMlflowServerRequest) {
+    request = &StopMlflowServerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "StopMlflowServer")
+    
+    
+    return
+}
+
+func NewStopMlflowServerResponse() (response *StopMlflowServerResponse) {
+    response = &StopMlflowServerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// StopMlflowServer
+// 停止 MlFlow Server
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+//  FAILEDOPERATION_LABNOTFOUND = "FailedOperation.LabNotFound"
+func (c *Client) StopMlflowServer(request *StopMlflowServerRequest) (response *StopMlflowServerResponse, err error) {
+    return c.StopMlflowServerWithContext(context.Background(), request)
+}
+
+// StopMlflowServer
+// 停止 MlFlow Server
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+//  FAILEDOPERATION_LABNOTFOUND = "FailedOperation.LabNotFound"
+func (c *Client) StopMlflowServerWithContext(ctx context.Context, request *StopMlflowServerRequest) (response *StopMlflowServerResponse, err error) {
+    if request == nil {
+        request = NewStopMlflowServerRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "StopMlflowServer")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StopMlflowServer require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStopMlflowServerResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewStopRayClusterRequest() (request *StopRayClusterRequest) {
     request = &StopRayClusterRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -16529,6 +19755,56 @@ func (c *Client) StopRayClusterWithContext(ctx context.Context, request *StopRay
     request.SetContext(ctx)
     
     response = NewStopRayClusterResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSubmitTrainingJobRequest() (request *SubmitTrainingJobRequest) {
+    request = &SubmitTrainingJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "SubmitTrainingJob")
+    
+    
+    return
+}
+
+func NewSubmitTrainingJobResponse() (response *SubmitTrainingJobResponse) {
+    response = &SubmitTrainingJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SubmitTrainingJob
+// 断点续训（克隆实例）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OTHEREXCEPTION = "FailedOperation.OtherException"
+func (c *Client) SubmitTrainingJob(request *SubmitTrainingJobRequest) (response *SubmitTrainingJobResponse, err error) {
+    return c.SubmitTrainingJobWithContext(context.Background(), request)
+}
+
+// SubmitTrainingJob
+// 断点续训（克隆实例）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OTHEREXCEPTION = "FailedOperation.OtherException"
+func (c *Client) SubmitTrainingJobWithContext(ctx context.Context, request *SubmitTrainingJobRequest) (response *SubmitTrainingJobResponse, err error) {
+    if request == nil {
+        request = NewSubmitTrainingJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "SubmitTrainingJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SubmitTrainingJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSubmitTrainingJobResponse()
     err = c.Send(request, response)
     return
 }
@@ -16905,6 +20181,56 @@ func (c *Client) UnlockMetaDataWithContext(ctx context.Context, request *UnlockM
     return
 }
 
+func NewUpdateApiKeyStatusRequest() (request *UpdateApiKeyStatusRequest) {
+    request = &UpdateApiKeyStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "UpdateApiKeyStatus")
+    
+    
+    return
+}
+
+func NewUpdateApiKeyStatusResponse() (response *UpdateApiKeyStatusResponse) {
+    response = &UpdateApiKeyStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateApiKeyStatus
+// 更新 API Key 状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) UpdateApiKeyStatus(request *UpdateApiKeyStatusRequest) (response *UpdateApiKeyStatusResponse, err error) {
+    return c.UpdateApiKeyStatusWithContext(context.Background(), request)
+}
+
+// UpdateApiKeyStatus
+// 更新 API Key 状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) UpdateApiKeyStatusWithContext(ctx context.Context, request *UpdateApiKeyStatusRequest) (response *UpdateApiKeyStatusResponse, err error) {
+    if request == nil {
+        request = NewUpdateApiKeyStatusRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "UpdateApiKeyStatus")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateApiKeyStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateApiKeyStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUpdateClusterGroupRequest() (request *UpdateClusterGroupRequest) {
     request = &UpdateClusterGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -17183,6 +20509,56 @@ func (c *Client) UpdateDataMaskStrategyWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewUpdateDataMaskStrategyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateDeploymentRequest() (request *UpdateDeploymentRequest) {
+    request = &UpdateDeploymentRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "UpdateDeployment")
+    
+    
+    return
+}
+
+func NewUpdateDeploymentResponse() (response *UpdateDeploymentResponse) {
+    response = &UpdateDeploymentResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateDeployment
+// 更新部署配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) UpdateDeployment(request *UpdateDeploymentRequest) (response *UpdateDeploymentResponse, err error) {
+    return c.UpdateDeploymentWithContext(context.Background(), request)
+}
+
+// UpdateDeployment
+// 更新部署配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) UpdateDeploymentWithContext(ctx context.Context, request *UpdateDeploymentRequest) (response *UpdateDeploymentResponse, err error) {
+    if request == nil {
+        request = NewUpdateDeploymentRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "UpdateDeployment")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateDeployment require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateDeploymentResponse()
     err = c.Send(request, response)
     return
 }
@@ -17705,6 +21081,56 @@ func (c *Client) UpdateRowFilterWithContext(ctx context.Context, request *Update
     request.SetContext(ctx)
     
     response = NewUpdateRowFilterResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateServiceAuthConfigRequest() (request *UpdateServiceAuthConfigRequest) {
+    request = &UpdateServiceAuthConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "UpdateServiceAuthConfig")
+    
+    
+    return
+}
+
+func NewUpdateServiceAuthConfigResponse() (response *UpdateServiceAuthConfigResponse) {
+    response = &UpdateServiceAuthConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateServiceAuthConfig
+// 更新推理服务的 API-Key 鉴权配置（启用/停用）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) UpdateServiceAuthConfig(request *UpdateServiceAuthConfigRequest) (response *UpdateServiceAuthConfigResponse, err error) {
+    return c.UpdateServiceAuthConfigWithContext(context.Background(), request)
+}
+
+// UpdateServiceAuthConfig
+// 更新推理服务的 API-Key 鉴权配置（启用/停用）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXTERNALSERVICE = "FailedOperation.ExternalService"
+func (c *Client) UpdateServiceAuthConfigWithContext(ctx context.Context, request *UpdateServiceAuthConfigRequest) (response *UpdateServiceAuthConfigResponse, err error) {
+    if request == nil {
+        request = NewUpdateServiceAuthConfigRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "UpdateServiceAuthConfig")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateServiceAuthConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateServiceAuthConfigResponse()
     err = c.Send(request, response)
     return
 }

@@ -2316,62 +2316,85 @@ func (r *ListLoadTasksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type LoadDataAttrs struct {
+	// <p>预热类型，枚举值 LoadByPath｜LoadByList</p>
+	LoadType *string `json:"LoadType,omitnil,omitempty" name:"LoadType"`
+
+	// <p>是否跳过相同文件，默认为 true</p>
+	SkipIfExists *bool `json:"SkipIfExists,omitnil,omitempty" name:"SkipIfExists"`
+
+	// <p>预热路径，入参单条挂载路径。入参数LoadType为LoadByPath，该参数不应为空</p>
+	LoadByPath *string `json:"LoadByPath,omitnil,omitempty" name:"LoadByPath"`
+
+	// <p>通过文件列表批量预热，入参为 cos://bucket-appid/ 开头的 COS 路径，且仅支持 txt 格式文件，长度不能超过255个字符。入参数LoadType为LoadByList，该参数不应为空</p>
+	LoadByList *string `json:"LoadByList,omitnil,omitempty" name:"LoadByList"`
+
+	// <p>副本数配置，枚举值，可选值 SingleReplica（单副本，默认）｜MaxReplica（最大副本）</p>
+	Replica *string `json:"Replica,omitnil,omitempty" name:"Replica"`
+}
+
 type LoadTaskAttrs struct {
-	// 预热任务 ID
+	// <p>预热任务 ID</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 预热任务类型，枚举值，MetadataLoad｜DistributedLoad
+	// <p>预热任务类型，枚举值，MetadataLoad｜DistributedLoad</p>
 	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
-	// 任务描述，支持中文
+	// <p>任务描述，支持中文</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 任务优先级，数值越高代表优先级越高，边界值 1-9999，默认值为 1
+	// <p>任务优先级，数值越高代表优先级越高，边界值 1-9999，默认值为 1</p>
 	Priority *uint64 `json:"Priority,omitnil,omitempty" name:"Priority"`
 
-	// 元数据预热任务参数，用于仅预热元数据时入参。入参数TaskType为MetadataLoad时，该参数不应为空。
+	// <p>元数据预热任务参数，用于仅预热元数据时入参。入参数TaskType为MetadataLoad时，该参数不应为空。</p>
 	MetadataLoadAttrs *MetadataLoadAttrs `json:"MetadataLoadAttrs,omitnil,omitempty" name:"MetadataLoadAttrs"`
 
-	// 数据预热任务参数。入参数TaskType为DistributedLoad时，该参数不应为空。
+	// <p>数据预热任务参数。入参数TaskType为DistributedLoad时，该参数不应为空。</p>
 	DistributedLoadAttrs *DistributedLoadAttrs `json:"DistributedLoadAttrs,omitnil,omitempty" name:"DistributedLoadAttrs"`
 
-	// 将任务执行报告写入 COS 的路径，如果不需要报告则入参空
+	// <p>仅预热数据参数。入参数TaskType为LoadData时，该参数不应为空。</p>
+	LoadDataAttrs *LoadDataAttrs `json:"LoadDataAttrs,omitnil,omitempty" name:"LoadDataAttrs"`
+
+	// <p>将任务执行报告写入 COS 的路径，如果不需要报告则入参空</p>
 	ReportPath *string `json:"ReportPath,omitnil,omitempty" name:"ReportPath"`
 
-	// 枚举，Completed，Running，Waiting，Cancelled
+	// <p>枚举，Completed，Running，Waiting，Cancelled</p>
 	State *string `json:"State,omitnil,omitempty" name:"State"`
 
-	// 任务执行信息，打印预热文件成功个数，失败个数，预热耗时信息 
+	// <p>任务执行信息，打印预热文件成功个数，失败个数，预热耗时信息</p>
 	TaskMessage *string `json:"TaskMessage,omitnil,omitempty" name:"TaskMessage"`
 
-	// 预热任务创建时间
+	// <p>预热任务创建时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 预热任务变更时间
+	// <p>预热任务变更时间</p>
 	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 
-	// 任务提交账号，子账号或服务角色 ID
+	// <p>任务提交账号，子账号或服务角色 ID</p>
 	Requester *string `json:"Requester,omitnil,omitempty" name:"Requester"`
 }
 
 type LoadTaskCreationAttrs struct {
-	// 预热任务类型，枚举值，MetadataLoad｜DistributedLoad。
+	// <p>预热任务类型，枚举值，MetadataLoad｜DistributedLoad。</p>
 	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
-	// 任务优先级，数值越高代表优先级越高，边界值 1-9999，默认值为 1
+	// <p>任务优先级，数值越高代表优先级越高，边界值 1-9999，默认值为 1</p>
 	Priority *uint64 `json:"Priority,omitnil,omitempty" name:"Priority"`
 
-	// 任务描述，支持中文
+	// <p>任务描述，支持中文</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 元数据预热任务参数，用于仅预热元数据时入参。入参数TaskType为MetadataLoad时，该参数不应为空。
+	// <p>元数据预热任务参数，用于仅预热元数据时入参。入参数TaskType为MetadataLoad时，该参数不应为空。</p>
 	MetadataLoadAttrs *MetadataLoadAttrs `json:"MetadataLoadAttrs,omitnil,omitempty" name:"MetadataLoadAttrs"`
 
-	// 数据预热任务参数。入参数TaskType为DistributedLoad时，该参数不应为空。
+	// <p>数据预热任务参数。入参数TaskType为DistributedLoad时，该参数不应为空。</p>
 	DistributedLoadAttrs *DistributedLoadAttrs `json:"DistributedLoadAttrs,omitnil,omitempty" name:"DistributedLoadAttrs"`
 
-	// 将任务执行报告写入 COS 的路径，如果不需要报告则入参空
+	// <p>将任务执行报告写入 COS 的路径，如果不需要报告则入参空</p>
 	ReportPath *string `json:"ReportPath,omitnil,omitempty" name:"ReportPath"`
+
+	// <p>仅预热数据任务参数。入参数TaskType为LoadData时，该参数不应为空。</p>
+	LoadDataAttrs *LoadDataAttrs `json:"LoadDataAttrs,omitnil,omitempty" name:"LoadDataAttrs"`
 }
 
 type MappedBucket struct {

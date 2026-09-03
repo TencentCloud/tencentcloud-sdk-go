@@ -871,7 +871,7 @@ func NewDescribeApplicationListResponse() (response *DescribeApplicationListResp
 }
 
 // DescribeApplicationList
-// 本接口(DescribeApplicationList)用于查询自己账号下的应用列表
+// 本接口(DescribeApplicationList)用于查询自己账号下的应用列表，**默认只返回GME2.0应用，如果还需要包含GME3.0应用请将NewVersion置为1**
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -886,7 +886,7 @@ func (c *Client) DescribeApplicationList(request *DescribeApplicationListRequest
 }
 
 // DescribeApplicationList
-// 本接口(DescribeApplicationList)用于查询自己账号下的应用列表
+// 本接口(DescribeApplicationList)用于查询自己账号下的应用列表，**默认只返回GME2.0应用，如果还需要包含GME3.0应用请将NewVersion置为1**
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

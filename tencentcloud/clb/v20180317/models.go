@@ -13081,8 +13081,11 @@ type ModifyModelAttributesRequestParams struct {
 	// <p>BYOK的ID</p><p>参数格式：byok-kot39u7j</p>
 	ServiceProviderId *string `json:"ServiceProviderId,omitnil,omitempty" name:"ServiceProviderId"`
 
-	// <p>BYOK的自定义名字</p><p>入参限制：1～256个字符</p>
+	// <p>BYOK的自定义名字</p><p>入参限制：1～255个字符</p>
 	ServiceProviderName *string `json:"ServiceProviderName,omitnil,omitempty" name:"ServiceProviderName"`
+
+	// <p>多协议 Api Base URL</p>
+	ApiBases []*ApiBaseItem `json:"ApiBases,omitnil,omitempty" name:"ApiBases"`
 }
 
 type ModifyModelAttributesRequest struct {
@@ -13091,8 +13094,11 @@ type ModifyModelAttributesRequest struct {
 	// <p>BYOK的ID</p><p>参数格式：byok-kot39u7j</p>
 	ServiceProviderId *string `json:"ServiceProviderId,omitnil,omitempty" name:"ServiceProviderId"`
 
-	// <p>BYOK的自定义名字</p><p>入参限制：1～256个字符</p>
+	// <p>BYOK的自定义名字</p><p>入参限制：1～255个字符</p>
 	ServiceProviderName *string `json:"ServiceProviderName,omitnil,omitempty" name:"ServiceProviderName"`
+
+	// <p>多协议 Api Base URL</p>
+	ApiBases []*ApiBaseItem `json:"ApiBases,omitnil,omitempty" name:"ApiBases"`
 }
 
 func (r *ModifyModelAttributesRequest) ToJsonString() string {
@@ -13109,6 +13115,7 @@ func (r *ModifyModelAttributesRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ServiceProviderId")
 	delete(f, "ServiceProviderName")
+	delete(f, "ApiBases")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyModelAttributesRequest has unknown keys!", "")
 	}
