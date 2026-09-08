@@ -22,8 +22,7 @@ const (
 )
 
 type RoleArnProvider struct {
-	longSecretId    string
-	longSecretKey   string
+	credential      CredentialIface
 	roleArn         string
 	roleSessionName string
 	durationSeconds int64
@@ -43,10 +42,15 @@ type stsRsp struct {
 	} `json:"Response"`
 }
 
+// NewRoleArnProvider returns a RoleArnProvider that use the supplied keys to assume the role.
 func NewRoleArnProvider(secretId, secretKey, roleArn, sessionName string, duration int64) *RoleArnProvider {
+	return NewRoleArnProviderWithCredential(NewCredential(secretId, secretKey), roleArn, sessionName, duration)
+}
+
+// NewRoleArnProviderWithCredential returns a RoleArnProvider that uses the supplied credential to assume the role.
+func NewRoleArnProviderWithCredential(credential CredentialIface, roleArn, sessionName string, duration int64) *RoleArnProvider {
 	return &RoleArnProvider{
-		longSecretId:    secretId,
-		longSecretKey:   secretKey,
+		credential:      credential,
 		roleArn:         roleArn,
 		roleSessionName: sessionName,
 		durationSeconds: duration,
@@ -57,14 +61,21 @@ func NewRoleArnProvider(secretId, secretKey, roleArn, sessionName string, durati
 //  1. roleSessionName will be "tencentcloud-go-sdk-" + timestamp
 //  2. durationSeconds will be 7200s
 func DefaultRoleArnProvider(secretId, secretKey, roleArn string) *RoleArnProvider {
-	return NewRoleArnProvider(secretId, secretKey, roleArn, defaultSessionName+strconv.FormatInt(time.Now().UnixNano()/1000, 10), defaultDurationSeconds)
+	return DefaultRoleArnProviderWithCredential(NewCredential(secretId, secretKey), roleArn)
+}
+
+// DefaultRoleArnProviderWithCredential returns a RoleArnProvider that uses the supplied credential to assume the role.
+// And some default options:
+//  1. roleSessionName will be "tencentcloud-go-sdk-" + timestamp
+//  2. durationSeconds will be 7200s
+func DefaultRoleArnProviderWithCredential(credential CredentialIface, roleArn string) *RoleArnProvider {
+	return NewRoleArnProviderWithCredential(credential, roleArn, defaultSessionName+strconv.FormatInt(time.Now().UnixNano()/1000, 10), defaultDurationSeconds)
 }
 
 func (r *RoleArnProvider) GetCredential() (CredentialIface, error) {
 	if r.durationSeconds > 43200 || r.durationSeconds <= 0 {
 		return nil, tcerr.NewTencentCloudSDKError(creErr, "Assume Role durationSeconds should be in the range of 0~43200s", "")
 	}
-	credential := NewCredential(r.longSecretId, r.longSecretKey)
 	cpf := profile.NewClientProfile()
 	providerEndpoint := r.Endpoint
 	if providerEndpoint == "" {
@@ -73,7 +84,7 @@ func (r *RoleArnProvider) GetCredential() (CredentialIface, error) {
 	cpf.HttpProfile.Endpoint = providerEndpoint
 	cpf.HttpProfile.ReqMethod = "POST"
 
-	client := NewCommonClient(credential, region, cpf)
+	client := NewCommonClient(r.credential, region, cpf)
 	request := tchttp.NewCommonRequest(service, version, action)
 
 	params := map[string]interface{}{
