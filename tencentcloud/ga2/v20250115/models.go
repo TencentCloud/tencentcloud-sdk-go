@@ -2508,32 +2508,32 @@ func (r *DescribeGlobalAcceleratorsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeListenersRequestParams struct {
-	// 全球加速实例ID。
+	// <p>全球加速实例ID。</p>
 	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
 
-	// 偏移量，默认为0。
+	// <p>偏移量，默认为0。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，默认为20，最大值为100。
+	// <p>返回数量。</p><p>取值范围：[1, 200]</p><p>默认值：20</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 过滤条件。  listener-id- String -（过滤条件）监听器实例ID。
+	// <p>过滤条件。  listener-id- String -（过滤条件）监听器实例ID。</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeListenersRequest struct {
 	*tchttp.BaseRequest
 	
-	// 全球加速实例ID。
+	// <p>全球加速实例ID。</p>
 	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
 
-	// 偏移量，默认为0。
+	// <p>偏移量，默认为0。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，默认为20，最大值为100。
+	// <p>返回数量。</p><p>取值范围：[1, 200]</p><p>默认值：20</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 过滤条件。  listener-id- String -（过滤条件）监听器实例ID。
+	// <p>过滤条件。  listener-id- String -（过滤条件）监听器实例ID。</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -2561,10 +2561,10 @@ func (r *DescribeListenersRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeListenersResponseParams struct {
-	// 符合条件的监听器实例。
+	// <p>符合条件的监听器实例。</p>
 	ListenerSet []*ListenerSet `json:"ListenerSet,omitnil,omitempty" name:"ListenerSet"`
 
-	// 符合条件的实例个数。
+	// <p>符合条件的实例个数。</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

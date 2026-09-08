@@ -4493,12 +4493,15 @@ func (r *OpenAggregateConfigRuleResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type OpenConfigRecorderRequestParams struct {
-
+	// <p>1:从控制中心调用</p>
+	FromMode *uint64 `json:"FromMode,omitnil,omitempty" name:"FromMode"`
 }
 
 type OpenConfigRecorderRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>1:从控制中心调用</p>
+	FromMode *uint64 `json:"FromMode,omitnil,omitempty" name:"FromMode"`
 }
 
 func (r *OpenConfigRecorderRequest) ToJsonString() string {
@@ -4513,7 +4516,7 @@ func (r *OpenConfigRecorderRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "FromMode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "OpenConfigRecorderRequest has unknown keys!", "")
 	}

@@ -44,6 +44,9 @@ const (
 	// 错误的TaskId。
 	FAILEDOPERATION_NOSUCHTASK = "FailedOperation.NoSuchTask"
 
+	// 分组内没有有效声纹
+	FAILEDOPERATION_NOTEXISTENTVOICEPRINTGROUP = "FailedOperation.NotExistentVoicePrintGroup"
+
 	// 不存在的说话人id
 	FAILEDOPERATION_NOTEXISTENTVOICEPRINTID = "FailedOperation.NotExistentVoicePrintId"
 

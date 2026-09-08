@@ -4825,44 +4825,50 @@ func (r *CreateRansomDefenseStrategyResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateScanMalwareSettingRequestParams struct {
-	// 扫描模式 0 全盘扫描, 1 快速扫描
+	// <p>扫描模式 0 全盘扫描, 1 快速扫描</p>
 	ScanPattern *uint64 `json:"ScanPattern,omitnil,omitempty" name:"ScanPattern"`
 
-	// 服务器分类：1:专业版服务器；2:自选服务器
+	// <p>服务器分类：1:专业版服务器；2:自选服务器</p>
 	HostType *int64 `json:"HostType,omitnil,omitempty" name:"HostType"`
 
-	// 自选服务器时生效，主机quuid的string数组
+	// <p>自定义路径列表，仅ScanPattern=2/3时生效：2表示仅扫描这些路径，3表示扫描时排除这些路径。最少1条，最多200条</p>
+	CustomPaths []*string `json:"CustomPaths,omitnil,omitempty" name:"CustomPaths"`
+
+	// <p>自选服务器时生效，主机quuid的string数组</p>
 	QuuidList []*string `json:"QuuidList,omitnil,omitempty" name:"QuuidList"`
 
-	// 超时时间单位 秒 默认3600 秒
+	// <p>超时时间单位 秒 默认3600 秒</p>
 	TimeoutPeriod *uint64 `json:"TimeoutPeriod,omitnil,omitempty" name:"TimeoutPeriod"`
 
-	// 1标准模式（只报严重、高危）、2增强模式（报严重、高危、中危）、3严格模式（报严重、高、中、低、提示）
+	// <p>1标准模式（只报严重、高危）、2增强模式（报严重、高危、中危）、3严格模式（报严重、高、中、低、提示）</p>
 	EngineType *uint64 `json:"EngineType,omitnil,omitempty" name:"EngineType"`
 
-	// 是否开启恶意进程查杀[0:未开启,1:开启]
+	// <p>是否开启恶意进程查杀[0:未开启,1:开启]</p>
 	EnableMemShellScan *int64 `json:"EnableMemShellScan,omitnil,omitempty" name:"EnableMemShellScan"`
 }
 
 type CreateScanMalwareSettingRequest struct {
 	*tchttp.BaseRequest
 	
-	// 扫描模式 0 全盘扫描, 1 快速扫描
+	// <p>扫描模式 0 全盘扫描, 1 快速扫描</p>
 	ScanPattern *uint64 `json:"ScanPattern,omitnil,omitempty" name:"ScanPattern"`
 
-	// 服务器分类：1:专业版服务器；2:自选服务器
+	// <p>服务器分类：1:专业版服务器；2:自选服务器</p>
 	HostType *int64 `json:"HostType,omitnil,omitempty" name:"HostType"`
 
-	// 自选服务器时生效，主机quuid的string数组
+	// <p>自定义路径列表，仅ScanPattern=2/3时生效：2表示仅扫描这些路径，3表示扫描时排除这些路径。最少1条，最多200条</p>
+	CustomPaths []*string `json:"CustomPaths,omitnil,omitempty" name:"CustomPaths"`
+
+	// <p>自选服务器时生效，主机quuid的string数组</p>
 	QuuidList []*string `json:"QuuidList,omitnil,omitempty" name:"QuuidList"`
 
-	// 超时时间单位 秒 默认3600 秒
+	// <p>超时时间单位 秒 默认3600 秒</p>
 	TimeoutPeriod *uint64 `json:"TimeoutPeriod,omitnil,omitempty" name:"TimeoutPeriod"`
 
-	// 1标准模式（只报严重、高危）、2增强模式（报严重、高危、中危）、3严格模式（报严重、高、中、低、提示）
+	// <p>1标准模式（只报严重、高危）、2增强模式（报严重、高危、中危）、3严格模式（报严重、高、中、低、提示）</p>
 	EngineType *uint64 `json:"EngineType,omitnil,omitempty" name:"EngineType"`
 
-	// 是否开启恶意进程查杀[0:未开启,1:开启]
+	// <p>是否开启恶意进程查杀[0:未开启,1:开启]</p>
 	EnableMemShellScan *int64 `json:"EnableMemShellScan,omitnil,omitempty" name:"EnableMemShellScan"`
 }
 
@@ -4880,6 +4886,7 @@ func (r *CreateScanMalwareSettingRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ScanPattern")
 	delete(f, "HostType")
+	delete(f, "CustomPaths")
 	delete(f, "QuuidList")
 	delete(f, "TimeoutPeriod")
 	delete(f, "EngineType")
@@ -4892,7 +4899,7 @@ func (r *CreateScanMalwareSettingRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateScanMalwareSettingResponseParams struct {
-	// 任务id
+	// <p>任务id</p>
 	TaskId *uint64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -21458,6 +21465,9 @@ type DescribeMalwareTimingScanSettingResponseParams struct {
 	// <p>检测模式 0 全盘检测  1快速检测</p>
 	CheckPattern *uint64 `json:"CheckPattern,omitnil,omitempty" name:"CheckPattern"`
 
+	// <p>自定义路径列表，CheckPattern=2/3时生效</p>
+	CustomPaths []*string `json:"CustomPaths,omitnil,omitempty" name:"CustomPaths"`
+
 	// <p>检测周期 开始时间</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
@@ -21472,6 +21482,9 @@ type DescribeMalwareTimingScanSettingResponseParams struct {
 
 	// <p>监控模式 0 标准 1深度</p>
 	MonitoringPattern *uint64 `json:"MonitoringPattern,omitnil,omitempty" name:"MonitoringPattern"`
+
+	// <p>监控自定义路径列表，MonitoringPattern=2/3时生效</p>
+	MonitorCustomPaths []*string `json:"MonitorCustomPaths,omitnil,omitempty" name:"MonitorCustomPaths"`
 
 	// <p>周期 1每天</p>
 	Cycle *uint64 `json:"Cycle,omitnil,omitempty" name:"Cycle"`
@@ -41720,6 +41733,12 @@ type ModifyMalwareTimingScanSettingsRequestParams struct {
 	// <p>实时监控 0 关闭 1开启</p>
 	RealTimeMonitoring *uint64 `json:"RealTimeMonitoring,omitnil,omitempty" name:"RealTimeMonitoring"`
 
+	// <p>自定义路径列表，仅CheckPattern=2/3时生效：2表示仅检测这些路径，3表示检测时排除这些路径。最少1条，最多200条</p>
+	CustomPaths []*string `json:"CustomPaths,omitnil,omitempty" name:"CustomPaths"`
+
+	// <p>监控自定义路径列表，仅MonitoringPattern=2/3时生效：2表示仅监控这些路径，3表示监控时排除这些路径。最少1条，最多200条</p>
+	MonitorCustomPaths []*string `json:"MonitorCustomPaths,omitnil,omitempty" name:"MonitorCustomPaths"`
+
 	// <p>自选服务器时必须 主机quuid的string数组</p>
 	QuuidList []*string `json:"QuuidList,omitnil,omitempty" name:"QuuidList"`
 
@@ -41784,6 +41803,12 @@ type ModifyMalwareTimingScanSettingsRequest struct {
 	// <p>实时监控 0 关闭 1开启</p>
 	RealTimeMonitoring *uint64 `json:"RealTimeMonitoring,omitnil,omitempty" name:"RealTimeMonitoring"`
 
+	// <p>自定义路径列表，仅CheckPattern=2/3时生效：2表示仅检测这些路径，3表示检测时排除这些路径。最少1条，最多200条</p>
+	CustomPaths []*string `json:"CustomPaths,omitnil,omitempty" name:"CustomPaths"`
+
+	// <p>监控自定义路径列表，仅MonitoringPattern=2/3时生效：2表示仅监控这些路径，3表示监控时排除这些路径。最少1条，最多200条</p>
+	MonitorCustomPaths []*string `json:"MonitorCustomPaths,omitnil,omitempty" name:"MonitorCustomPaths"`
+
 	// <p>自选服务器时必须 主机quuid的string数组</p>
 	QuuidList []*string `json:"QuuidList,omitnil,omitempty" name:"QuuidList"`
 
@@ -41841,6 +41866,8 @@ func (r *ModifyMalwareTimingScanSettingsRequest) FromJsonString(s string) error 
 	delete(f, "MonitoringPattern")
 	delete(f, "Cycle")
 	delete(f, "RealTimeMonitoring")
+	delete(f, "CustomPaths")
+	delete(f, "MonitorCustomPaths")
 	delete(f, "QuuidList")
 	delete(f, "AutoIsolation")
 	delete(f, "KillProcess")

@@ -2207,99 +2207,6 @@ func (r *CreateUserResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-// Predefined struct for user
-type CreateVmInstanceRequestParams struct {
-	// 环境ID
-	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
-
-	// 服务器类型：
-	// LightHouse = 轻量云服务器
-	// CVM = 云服务器
-	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
-
-	// 轻量云服务器套餐ID。 当Type=LightHouse时必传
-	LightHouseBundleId *string `json:"LightHouseBundleId,omitnil,omitempty" name:"LightHouseBundleId"`
-
-	// 轻量云服务器镜像ID。当Type=LightHouse时必传
-	LightHouseBlueprintId *string `json:"LightHouseBlueprintId,omitnil,omitempty" name:"LightHouseBlueprintId"`
-
-	// 服务器别名
-	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
-
-	// 登录方式
-	LoginConfiguration *VMLoginConfiguration `json:"LoginConfiguration,omitnil,omitempty" name:"LoginConfiguration"`
-}
-
-type CreateVmInstanceRequest struct {
-	*tchttp.BaseRequest
-	
-	// 环境ID
-	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
-
-	// 服务器类型：
-	// LightHouse = 轻量云服务器
-	// CVM = 云服务器
-	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
-
-	// 轻量云服务器套餐ID。 当Type=LightHouse时必传
-	LightHouseBundleId *string `json:"LightHouseBundleId,omitnil,omitempty" name:"LightHouseBundleId"`
-
-	// 轻量云服务器镜像ID。当Type=LightHouse时必传
-	LightHouseBlueprintId *string `json:"LightHouseBlueprintId,omitnil,omitempty" name:"LightHouseBlueprintId"`
-
-	// 服务器别名
-	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
-
-	// 登录方式
-	LoginConfiguration *VMLoginConfiguration `json:"LoginConfiguration,omitnil,omitempty" name:"LoginConfiguration"`
-}
-
-func (r *CreateVmInstanceRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *CreateVmInstanceRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "EnvId")
-	delete(f, "Type")
-	delete(f, "LightHouseBundleId")
-	delete(f, "LightHouseBlueprintId")
-	delete(f, "InstanceName")
-	delete(f, "LoginConfiguration")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateVmInstanceRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type CreateVmInstanceResponseParams struct {
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type CreateVmInstanceResponse struct {
-	*tchttp.BaseResponse
-	Response *CreateVmInstanceResponseParams `json:"Response"`
-}
-
-func (r *CreateVmInstanceResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *CreateVmInstanceResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type CustomLogConfig struct {
 	// 是否需要请求体
 	NeedReqBodyLog *bool `json:"NeedReqBodyLog,omitnil,omitempty" name:"NeedReqBodyLog"`
@@ -2961,67 +2868,6 @@ func (r *DeleteUsersResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteUsersResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DeleteVmInstanceRequestParams struct {
-	// 服务器实例id
-	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
-
-	// 环境id
-	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
-}
-
-type DeleteVmInstanceRequest struct {
-	*tchttp.BaseRequest
-	
-	// 服务器实例id
-	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
-
-	// 环境id
-	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
-}
-
-func (r *DeleteVmInstanceRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DeleteVmInstanceRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "InstanceId")
-	delete(f, "EnvId")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteVmInstanceRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DeleteVmInstanceResponseParams struct {
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DeleteVmInstanceResponse struct {
-	*tchttp.BaseResponse
-	Response *DeleteVmInstanceResponseParams `json:"Response"`
-}
-
-func (r *DeleteVmInstanceResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DeleteVmInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5161,6 +5007,122 @@ func (r *DescribeGatewayVersionsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeHTTPServiceCachePurgeTaskRequestParams struct {
+	// <p>环境ID</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// <p>HTTPService域名</p>
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// <p>缓存类型</p><p>枚举值：</p><ul><li>EO： EO缓存</li><li>CDN： CDN缓存</li></ul><p>默认值：EO</p>
+	CacheType *string `json:"CacheType,omitnil,omitempty" name:"CacheType"`
+
+	// <p>任务id，PurgeHTTPServiceCache返回的TaskId，可选</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>按刷新类型过滤</p><p>枚举值：</p><ul><li>PURGE_URL： URL 刷新</li><li>PURGE_PREFIX： 目录刷新</li><li>PURGE_HOST： Hostname 刷新</li></ul>
+	PurgeType *string `json:"PurgeType,omitnil,omitempty" name:"PurgeType"`
+
+	// <p>查询开始时间，TaskId为空时，默认开始时间是7天前</p><p>参数格式：格式 YYYY-MM-DDTHH:mm:ss±HH:mmZ，时区为 UTC+0</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>查询结束时间，TaskId为空时，默认结束时间是当前</p><p>参数格式：格式 YYYY-MM-DDTHH:mm:ss±HH:mmZ，时区为 UTC+0</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>分页偏移量。默认 0</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>分页限制。默认20，最大值1000</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeHTTPServiceCachePurgeTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>环境ID</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// <p>HTTPService域名</p>
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// <p>缓存类型</p><p>枚举值：</p><ul><li>EO： EO缓存</li><li>CDN： CDN缓存</li></ul><p>默认值：EO</p>
+	CacheType *string `json:"CacheType,omitnil,omitempty" name:"CacheType"`
+
+	// <p>任务id，PurgeHTTPServiceCache返回的TaskId，可选</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>按刷新类型过滤</p><p>枚举值：</p><ul><li>PURGE_URL： URL 刷新</li><li>PURGE_PREFIX： 目录刷新</li><li>PURGE_HOST： Hostname 刷新</li></ul>
+	PurgeType *string `json:"PurgeType,omitnil,omitempty" name:"PurgeType"`
+
+	// <p>查询开始时间，TaskId为空时，默认开始时间是7天前</p><p>参数格式：格式 YYYY-MM-DDTHH:mm:ss±HH:mmZ，时区为 UTC+0</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>查询结束时间，TaskId为空时，默认结束时间是当前</p><p>参数格式：格式 YYYY-MM-DDTHH:mm:ss±HH:mmZ，时区为 UTC+0</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>分页偏移量。默认 0</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>分页限制。默认20，最大值1000</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeHTTPServiceCachePurgeTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHTTPServiceCachePurgeTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "Domain")
+	delete(f, "CacheType")
+	delete(f, "TaskId")
+	delete(f, "PurgeType")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeHTTPServiceCachePurgeTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeHTTPServiceCachePurgeTaskResponseParams struct {
+	// <p>任务列表</p>
+	Tasks []*HTTPServiceCachePurgeTask `json:"Tasks,omitnil,omitempty" name:"Tasks"`
+
+	// <p>域名总数，分页查询使用总数判断是否已经拉取到所有数据</p>
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeHTTPServiceCachePurgeTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeHTTPServiceCachePurgeTaskResponseParams `json:"Response"`
+}
+
+func (r *DescribeHTTPServiceCachePurgeTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHTTPServiceCachePurgeTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeHTTPServiceRouteRequestParams struct {
 	// 环境ID
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
@@ -6304,131 +6266,6 @@ func (r *DescribeUserListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type DescribeVmInstancesRequestParams struct {
-	// 环境ID
-	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
-
-	// 服务器类型： LightHouse = 轻量云服务器 CVM = 云服务器
-	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
-}
-
-type DescribeVmInstancesRequest struct {
-	*tchttp.BaseRequest
-	
-	// 环境ID
-	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
-
-	// 服务器类型： LightHouse = 轻量云服务器 CVM = 云服务器
-	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
-}
-
-func (r *DescribeVmInstancesRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeVmInstancesRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "EnvId")
-	delete(f, "Type")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVmInstancesRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeVmInstancesResponseParams struct {
-	// 主机实例列表
-	InstanceList []*VmInstance `json:"InstanceList,omitnil,omitempty" name:"InstanceList"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DescribeVmInstancesResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeVmInstancesResponseParams `json:"Response"`
-}
-
-func (r *DescribeVmInstancesResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeVmInstancesResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeVmSpecRequestParams struct {
-	// 类型：
-	// LightHouse = 轻量云服务器
-	// CVM = 云服务器
-	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
-}
-
-type DescribeVmSpecRequest struct {
-	*tchttp.BaseRequest
-	
-	// 类型：
-	// LightHouse = 轻量云服务器
-	// CVM = 云服务器
-	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
-}
-
-func (r *DescribeVmSpecRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeVmSpecRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "Type")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVmSpecRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeVmSpecResponseParams struct {
-	// 规格列表
-	SpecList []*VMSpec `json:"SpecList,omitnil,omitempty" name:"SpecList"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DescribeVmSpecResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeVmSpecResponseParams `json:"Response"`
-}
-
-func (r *DescribeVmSpecResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeVmSpecResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type DestroyEnvRequestParams struct {
 	// 环境Id
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
@@ -6940,10 +6777,10 @@ type ExternalStorage struct {
 }
 
 type Filter struct {
-	// 需要过滤的字段。过滤条件数量限制为10。
+	// <p>需要过滤的字段。过滤条件数量限制为10。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 字段的过滤值。
+	// <p>字段的过滤值。</p>
 	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
 }
 
@@ -7087,6 +6924,35 @@ type HTTPServiceCacheParams struct {
 
 	// <p>浏览器缓存秒数（对应 max-age）</p><p>取值范围：[0, 31536000]</p><p>单位：秒</p>
 	MaxAgeTime *uint64 `json:"MaxAgeTime,omitnil,omitempty" name:"MaxAgeTime"`
+}
+
+type HTTPServiceCachePurgeTask struct {
+	// <p>缓存类型</p><p>枚举值：</p><ul><li>EO： EO</li><li>TCBCDN： 云开发cdn</li></ul><p>默认值：EO</p>
+	CacheType *string `json:"CacheType,omitnil,omitempty" name:"CacheType"`
+
+	// <p>任务id</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>状态</p><p>枚举值：</p><ul><li>PROCESSING： 处理中</li><li>SUCCESS： 成功</li><li>FAILED： 失败</li><li>TIMEOUT： 超时</li><li>CANCELED： 取消</li></ul>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>刷新类型</p><p>枚举值：</p><ul><li>PURGE_URL： URL 刷新</li><li>PURGE_PREFIX： 目录刷新</li><li>PURGE_HOST： Hostname 刷新</li></ul>
+	PurgeType *string `json:"PurgeType,omitnil,omitempty" name:"PurgeType"`
+
+	// <p>清除缓存分为直接删除和标记过期两种方式。URL 类型默认为“直接删除”，其它清除类型默认为“标记过期”</p><p>枚举值：</p><ul><li>INVALIDATE： 标记过期：节点缓存标记为过期，用户请求时回源校验，源站 304 则复用，200 则更新</li><li>DELETE： 直接删除：从节点直接删除缓存，用户下次请求强制回源拉新</li></ul>
+	Method *string `json:"Method,omitnil,omitempty" name:"Method"`
+
+	// <p>刷新目标列表（URL / 前缀 / host）</p>
+	Targets []*string `json:"Targets,omitnil,omitempty" name:"Targets"`
+
+	// <p>失败原因</p>
+	FailReason *string `json:"FailReason,omitnil,omitempty" name:"FailReason"`
+
+	// <p>任务创建时间</p><p>参数格式：格式 YYYY-MM-DDTHH:mm:ss±HH:mmZ，时区为 UTC+0</p>
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>任务更新时间</p><p>参数格式：格式 YYYY-MM-DDTHH:mm:ss±HH:mmZ，时区为 UTC+0</p>
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
 type HTTPServiceCacheRule struct {
@@ -7362,98 +7228,6 @@ type Indexkey struct {
 
 	// 方向：specify 1 for ascending or -1 for descending
 	Direction *string `json:"Direction,omitnil,omitempty" name:"Direction"`
-}
-
-// Predefined struct for user
-type InquireVmPriceRequestParams struct {
-	// 服务器类型：
-	// LightHouse = 轻量云服务器
-	// CVM = 云服务器
-	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
-
-	// 轻量云服务器套餐ID。
-	// 当Type=LightHouse时必传
-	LightHouseBundleId *string `json:"LightHouseBundleId,omitnil,omitempty" name:"LightHouseBundleId"`
-
-	// 轻量云服务器镜像ID。当Type=LightHouse时必传
-	LightHouseBlueprintId *string `json:"LightHouseBlueprintId,omitnil,omitempty" name:"LightHouseBlueprintId"`
-}
-
-type InquireVmPriceRequest struct {
-	*tchttp.BaseRequest
-	
-	// 服务器类型：
-	// LightHouse = 轻量云服务器
-	// CVM = 云服务器
-	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
-
-	// 轻量云服务器套餐ID。
-	// 当Type=LightHouse时必传
-	LightHouseBundleId *string `json:"LightHouseBundleId,omitnil,omitempty" name:"LightHouseBundleId"`
-
-	// 轻量云服务器镜像ID。当Type=LightHouse时必传
-	LightHouseBlueprintId *string `json:"LightHouseBlueprintId,omitnil,omitempty" name:"LightHouseBlueprintId"`
-}
-
-func (r *InquireVmPriceRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *InquireVmPriceRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "Type")
-	delete(f, "LightHouseBundleId")
-	delete(f, "LightHouseBlueprintId")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InquireVmPriceRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type InquireVmPriceResponseParams struct {
-	// 价格货币单位。取值范围CNY:人民币。USD:美元。
-	Currency *string `json:"Currency,omitnil,omitempty" name:"Currency"`
-
-	// 原价（主机原始每月价格）
-	OriginalPrice *float64 `json:"OriginalPrice,omitnil,omitempty" name:"OriginalPrice"`
-
-	// 折扣率
-	Discount *float64 `json:"Discount,omitnil,omitempty" name:"Discount"`
-
-	// 折扣后每月价格
-	DiscountPrice *float64 `json:"DiscountPrice,omitnil,omitempty" name:"DiscountPrice"`
-
-	// 折扣前每天资源点
-	OriginalCredits *float64 `json:"OriginalCredits,omitnil,omitempty" name:"OriginalCredits"`
-
-	// 折扣后每天资源点
-	DiscountCredits *float64 `json:"DiscountCredits,omitnil,omitempty" name:"DiscountCredits"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type InquireVmPriceResponse struct {
-	*tchttp.BaseResponse
-	Response *InquireVmPriceResponseParams `json:"Response"`
-}
-
-func (r *InquireVmPriceResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *InquireVmPriceResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type KVPair struct {
@@ -9696,6 +9470,94 @@ type ProviderResponseParametersMap struct {
 }
 
 // Predefined struct for user
+type PurgeHTTPServiceCacheRequestParams struct {
+	// <p>环境ID</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// <p>HTTPService域名</p>
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// <p>Targets</p><p>参数格式：Targets 刷新目标列表，语义随 PurgeType 变化</p><p>入参限制：单次请求最多传 20 个 Target，单条 URL/prefix/host 最长 2048</p>
+	Targets []*string `json:"Targets,omitnil,omitempty" name:"Targets"`
+
+	// <p>需要刷新的缓存类型：CDN 或 EO</p><p>枚举值：</p><ul><li>EO： EO缓存</li><li>CDN： CDN缓存</li></ul><p>默认值：EO</p>
+	CacheType *string `json:"CacheType,omitnil,omitempty" name:"CacheType"`
+
+	// <p>PurgeType 刷新方式（purge 粒度），TCBCDN仅支持purge_url</p><p>枚举值：</p><ul><li>PURGE_URL： URL 列表（需含协议，如 https://a.com/b.jpg）</li><li>PURGE_PREFIX： URL 前缀列表（需含协议，如 https://a.com/dir/），仅EO支持</li><li>PURGE_HOST： Hostname 列表（可为 host 或 http(s)://host），仅EO支持</li></ul><p>默认值：PURGE_URL</p>
+	PurgeType *string `json:"PurgeType,omitnil,omitempty" name:"PurgeType"`
+}
+
+type PurgeHTTPServiceCacheRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>环境ID</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// <p>HTTPService域名</p>
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// <p>Targets</p><p>参数格式：Targets 刷新目标列表，语义随 PurgeType 变化</p><p>入参限制：单次请求最多传 20 个 Target，单条 URL/prefix/host 最长 2048</p>
+	Targets []*string `json:"Targets,omitnil,omitempty" name:"Targets"`
+
+	// <p>需要刷新的缓存类型：CDN 或 EO</p><p>枚举值：</p><ul><li>EO： EO缓存</li><li>CDN： CDN缓存</li></ul><p>默认值：EO</p>
+	CacheType *string `json:"CacheType,omitnil,omitempty" name:"CacheType"`
+
+	// <p>PurgeType 刷新方式（purge 粒度），TCBCDN仅支持purge_url</p><p>枚举值：</p><ul><li>PURGE_URL： URL 列表（需含协议，如 https://a.com/b.jpg）</li><li>PURGE_PREFIX： URL 前缀列表（需含协议，如 https://a.com/dir/），仅EO支持</li><li>PURGE_HOST： Hostname 列表（可为 host 或 http(s)://host），仅EO支持</li></ul><p>默认值：PURGE_URL</p>
+	PurgeType *string `json:"PurgeType,omitnil,omitempty" name:"PurgeType"`
+}
+
+func (r *PurgeHTTPServiceCacheRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PurgeHTTPServiceCacheRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "Domain")
+	delete(f, "Targets")
+	delete(f, "CacheType")
+	delete(f, "PurgeType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PurgeHTTPServiceCacheRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type PurgeHTTPServiceCacheResponseParams struct {
+	// <p>需要刷新的缓存类型：TCBCDN 或 EO</p><p>枚举值：</p><ul><li>EO： EO缓存</li><li>CDN： CDN缓存</li></ul>
+	CacheType *string `json:"CacheType,omitnil,omitempty" name:"CacheType"`
+
+	// <p>刷新任务ID</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type PurgeHTTPServiceCacheResponse struct {
+	*tchttp.BaseResponse
+	Response *PurgeHTTPServiceCacheResponseParams `json:"Response"`
+}
+
+func (r *PurgeHTTPServiceCacheResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PurgeHTTPServiceCacheResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type PushPGUserMigrationsRequestParams struct {
 	// <p>云开发环境ID</p>
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
@@ -10795,61 +10657,6 @@ type User struct {
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
-type VMLoginConfiguration struct {
-	// 登录方式。扫码登录时指定为 SCAN_LOGIN
-	LoginType *string `json:"LoginType,omitnil,omitempty" name:"LoginType"`
-
-	// 是否自动生成密码
-	AutoGeneratePassword *string `json:"AutoGeneratePassword,omitnil,omitempty" name:"AutoGeneratePassword"`
-
-	// 指定密码登录
-	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
-
-	// 绑定密钥ID
-	KeyIds []*string `json:"KeyIds,omitnil,omitempty" name:"KeyIds"`
-}
-
-type VMPrice struct {
-	// 价格货币单位。取值范围CNY:人民币。USD:美元。
-	Currency *string `json:"Currency,omitnil,omitempty" name:"Currency"`
-
-	// 原始价格
-	OriginalPrice *float64 `json:"OriginalPrice,omitnil,omitempty" name:"OriginalPrice"`
-
-	// 折扣率
-	Discount *float64 `json:"Discount,omitnil,omitempty" name:"Discount"`
-
-	// 折扣后的价格
-	DiscountPrice *float64 `json:"DiscountPrice,omitnil,omitempty" name:"DiscountPrice"`
-
-	// 折扣前每天资源点
-	OriginalCredits *float64 `json:"OriginalCredits,omitnil,omitempty" name:"OriginalCredits"`
-
-	// 折扣后每天所需资源点
-	DiscountCredits *float64 `json:"DiscountCredits,omitnil,omitempty" name:"DiscountCredits"`
-}
-
-type VMSpec struct {
-	// LightHouse=轻量云服务器
-	// CVM=云服务器
-	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
-
-	// 轻量云服务器规格。
-	// 当Type=LightHouse时有效
-	LightHouseSpec *VMSpecLightHouse `json:"LightHouseSpec,omitnil,omitempty" name:"LightHouseSpec"`
-
-	// 价格信息
-	Price *VMPrice `json:"Price,omitnil,omitempty" name:"Price"`
-}
-
-type VMSpecLightHouse struct {
-	// LH主机的BundleId
-	BundleId *string `json:"BundleId,omitnil,omitempty" name:"BundleId"`
-
-	// 主机配置详情json
-	BundleConfig *string `json:"BundleConfig,omitnil,omitempty" name:"BundleConfig"`
-}
-
 type ValueDetail struct {
 	// <p>时间</p>
 	CalcTime *string `json:"CalcTime,omitnil,omitempty" name:"CalcTime"`
@@ -10871,10 +10678,10 @@ type ValueDetail struct {
 }
 
 type Variable struct {
-	// 变量的名称
+	// <p>变量的名称</p>
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
-	// 变量的值
+	// <p>变量的值</p>
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
@@ -11007,17 +10814,6 @@ func (r *VerifyHTTPServiceRouteResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *VerifyHTTPServiceRouteResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
-}
-
-type VmInstance struct {
-	// 实例id
-	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
-
-	// 实例状态
-	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
-
-	// 实例地域
-	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 }
 
 type WxGatewayCustomConfig struct {

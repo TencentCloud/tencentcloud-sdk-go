@@ -6770,11 +6770,11 @@ type Polygon struct {
 }
 
 type PortraitImageInfo struct {
-	// 头像
+	// <p>头像</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PortraitImage *string `json:"PortraitImage,omitnil,omitempty" name:"PortraitImage"`
 
-	// 头像坐标
+	// <p>头像坐标</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageCoordinates *ImageCoordinates `json:"ImageCoordinates,omitnil,omitempty" name:"ImageCoordinates"`
 }

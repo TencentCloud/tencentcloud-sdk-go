@@ -509,6 +509,122 @@ func (c *Client) CloseDBProxyAddressWithContext(ctx context.Context, request *Cl
     return
 }
 
+func NewCloseMem0ServiceRequest() (request *CloseMem0ServiceRequest) {
+    request = &CloseMem0ServiceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("postgres", APIVersion, "CloseMem0Service")
+    
+    
+    return
+}
+
+func NewCloseMem0ServiceResponse() (response *CloseMem0ServiceResponse) {
+    response = &CloseMem0ServiceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CloseMem0Service
+// 本接口（CloseMem0Service）用于关闭实例的Mem0服务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  INVALIDPARAMETER_PARAMETERCHECKERROR = "InvalidParameter.ParameterCheckError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) CloseMem0Service(request *CloseMem0ServiceRequest) (response *CloseMem0ServiceResponse, err error) {
+    return c.CloseMem0ServiceWithContext(context.Background(), request)
+}
+
+// CloseMem0Service
+// 本接口（CloseMem0Service）用于关闭实例的Mem0服务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  INVALIDPARAMETER_PARAMETERCHECKERROR = "InvalidParameter.ParameterCheckError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) CloseMem0ServiceWithContext(ctx context.Context, request *CloseMem0ServiceRequest) (response *CloseMem0ServiceResponse, err error) {
+    if request == nil {
+        request = NewCloseMem0ServiceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "postgres", APIVersion, "CloseMem0Service")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CloseMem0Service require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCloseMem0ServiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewClosePostgRESTServiceRequest() (request *ClosePostgRESTServiceRequest) {
+    request = &ClosePostgRESTServiceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("postgres", APIVersion, "ClosePostgRESTService")
+    
+    
+    return
+}
+
+func NewClosePostgRESTServiceResponse() (response *ClosePostgRESTServiceResponse) {
+    response = &ClosePostgRESTServiceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ClosePostgRESTService
+// 本接口（ClosePostgRestService）用于关闭实例的PostgREST服务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  INVALIDPARAMETER_PARAMETERCHECKERROR = "InvalidParameter.ParameterCheckError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITERROR = "OperationDenied.InstanceStatusLimitError"
+//  OPERATIONDENIED_INSTANCETYPEDENIED = "OperationDenied.InstanceTypeDenied"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) ClosePostgRESTService(request *ClosePostgRESTServiceRequest) (response *ClosePostgRESTServiceResponse, err error) {
+    return c.ClosePostgRESTServiceWithContext(context.Background(), request)
+}
+
+// ClosePostgRESTService
+// 本接口（ClosePostgRestService）用于关闭实例的PostgREST服务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  INVALIDPARAMETER_PARAMETERCHECKERROR = "InvalidParameter.ParameterCheckError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITERROR = "OperationDenied.InstanceStatusLimitError"
+//  OPERATIONDENIED_INSTANCETYPEDENIED = "OperationDenied.InstanceTypeDenied"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) ClosePostgRESTServiceWithContext(ctx context.Context, request *ClosePostgRESTServiceRequest) (response *ClosePostgRESTServiceResponse, err error) {
+    if request == nil {
+        request = NewClosePostgRESTServiceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "postgres", APIVersion, "ClosePostgRESTService")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ClosePostgRESTService require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewClosePostgRESTServiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAccountRequest() (request *CreateAccountRequest) {
     request = &CreateAccountRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2528,6 +2644,7 @@ func NewDescribeAccountsResponse() (response *DescribeAccountsResponse) {
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  INVALIDPARAMETERVALUE_PARAMETERHANDLEERROR = "InvalidParameterValue.ParameterHandleError"
 //  OPERATIONDENIED_CAMDENIEDERROR = "OperationDenied.CamDeniedError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITOPERROR = "OperationDenied.InstanceStatusLimitOpError"
 //  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
 func (c *Client) DescribeAccounts(request *DescribeAccountsRequest) (response *DescribeAccountsResponse, err error) {
     return c.DescribeAccountsWithContext(context.Background(), request)
@@ -2553,6 +2670,7 @@ func (c *Client) DescribeAccounts(request *DescribeAccountsRequest) (response *D
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  INVALIDPARAMETERVALUE_PARAMETERHANDLEERROR = "InvalidParameterValue.ParameterHandleError"
 //  OPERATIONDENIED_CAMDENIEDERROR = "OperationDenied.CamDeniedError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITOPERROR = "OperationDenied.InstanceStatusLimitOpError"
 //  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
 func (c *Client) DescribeAccountsWithContext(ctx context.Context, request *DescribeAccountsRequest) (response *DescribeAccountsResponse, err error) {
     if request == nil {
@@ -4699,6 +4817,60 @@ func (c *Client) DescribeMaintainTimeWindowWithContext(ctx context.Context, requ
     return
 }
 
+func NewDescribeMem0ServiceRequest() (request *DescribeMem0ServiceRequest) {
+    request = &DescribeMem0ServiceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("postgres", APIVersion, "DescribeMem0Service")
+    
+    
+    return
+}
+
+func NewDescribeMem0ServiceResponse() (response *DescribeMem0ServiceResponse) {
+    response = &DescribeMem0ServiceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMem0Service
+// 本接口（DescribeMem0Service）用于查询某个实例的Mem0服务信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITERROR = "OperationDenied.InstanceStatusLimitError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) DescribeMem0Service(request *DescribeMem0ServiceRequest) (response *DescribeMem0ServiceResponse, err error) {
+    return c.DescribeMem0ServiceWithContext(context.Background(), request)
+}
+
+// DescribeMem0Service
+// 本接口（DescribeMem0Service）用于查询某个实例的Mem0服务信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITERROR = "OperationDenied.InstanceStatusLimitError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) DescribeMem0ServiceWithContext(ctx context.Context, request *DescribeMem0ServiceRequest) (response *DescribeMem0ServiceResponse, err error) {
+    if request == nil {
+        request = NewDescribeMem0ServiceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "postgres", APIVersion, "DescribeMem0Service")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMem0Service require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMem0ServiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeOrdersRequest() (request *DescribeOrdersRequest) {
     request = &DescribeOrdersRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4939,6 +5111,68 @@ func (c *Client) DescribeParamsEventWithContext(ctx context.Context, request *De
     request.SetContext(ctx)
     
     response = NewDescribeParamsEventResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePostgRESTServiceRequest() (request *DescribePostgRESTServiceRequest) {
+    request = &DescribePostgRESTServiceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("postgres", APIVersion, "DescribePostgRESTService")
+    
+    
+    return
+}
+
+func NewDescribePostgRESTServiceResponse() (response *DescribePostgRESTServiceResponse) {
+    response = &DescribePostgRESTServiceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribePostgRESTService
+// 本接口（DescribePostgRestService）用于查询某个实例的PostgREST服务信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INVALIDPARAMETERVALUE_ILLEGALREGION = "InvalidParameterValue.IllegalRegion"
+//  INVALIDPARAMETERVALUE_ILLEGALZONE = "InvalidParameterValue.IllegalZone"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED_CAMDENIEDERROR = "OperationDenied.CamDeniedError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) DescribePostgRESTService(request *DescribePostgRESTServiceRequest) (response *DescribePostgRESTServiceResponse, err error) {
+    return c.DescribePostgRESTServiceWithContext(context.Background(), request)
+}
+
+// DescribePostgRESTService
+// 本接口（DescribePostgRestService）用于查询某个实例的PostgREST服务信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INVALIDPARAMETERVALUE_ILLEGALREGION = "InvalidParameterValue.IllegalRegion"
+//  INVALIDPARAMETERVALUE_ILLEGALZONE = "InvalidParameterValue.IllegalZone"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED_CAMDENIEDERROR = "OperationDenied.CamDeniedError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) DescribePostgRESTServiceWithContext(ctx context.Context, request *DescribePostgRESTServiceRequest) (response *DescribePostgRESTServiceResponse, err error) {
+    if request == nil {
+        request = NewDescribePostgRESTServiceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "postgres", APIVersion, "DescribePostgRESTService")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePostgRESTService require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePostgRESTServiceResponse()
     err = c.Send(request, response)
     return
 }
@@ -6265,9 +6499,12 @@ func NewModifyAccountPrivilegesResponse() (response *ModifyAccountPrivilegesResp
 //  INVALIDPARAMETERVALUE_INVALIDACCOUNTNAMEERROR = "InvalidParameterValue.InvalidAccountNameError"
 //  INVALIDPARAMETERVALUE_INVALIDACCOUNTNAMEFORMATERROR = "InvalidParameterValue.InvalidAccountNameFormatError"
 //  INVALIDPARAMETERVALUE_INVALIDDATABASEOBJECTNAME = "InvalidParameterValue.InvalidDatabaseObjectName"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  INVALIDPARAMETERVALUE_PARAMETEROUTOFRANGE = "InvalidParameterValue.ParameterOutOfRange"
 //  OPERATIONDENIED_INSTANCEACCESSDENIEDERROR = "OperationDenied.InstanceAccessDeniedError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITERROR = "OperationDenied.InstanceStatusLimitError"
 //  OPERATIONDENIED_INSTANCESTATUSLIMITOPERROR = "OperationDenied.InstanceStatusLimitOpError"
+//  OPERATIONDENIED_INSTANCETYPEDENIED = "OperationDenied.InstanceTypeDenied"
 //  OPERATIONDENIED_KERNELVERSIONERROR = "OperationDenied.KernelVersionError"
 //  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
 func (c *Client) ModifyAccountPrivileges(request *ModifyAccountPrivilegesRequest) (response *ModifyAccountPrivilegesResponse, err error) {
@@ -6287,9 +6524,12 @@ func (c *Client) ModifyAccountPrivileges(request *ModifyAccountPrivilegesRequest
 //  INVALIDPARAMETERVALUE_INVALIDACCOUNTNAMEERROR = "InvalidParameterValue.InvalidAccountNameError"
 //  INVALIDPARAMETERVALUE_INVALIDACCOUNTNAMEFORMATERROR = "InvalidParameterValue.InvalidAccountNameFormatError"
 //  INVALIDPARAMETERVALUE_INVALIDDATABASEOBJECTNAME = "InvalidParameterValue.InvalidDatabaseObjectName"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  INVALIDPARAMETERVALUE_PARAMETEROUTOFRANGE = "InvalidParameterValue.ParameterOutOfRange"
 //  OPERATIONDENIED_INSTANCEACCESSDENIEDERROR = "OperationDenied.InstanceAccessDeniedError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITERROR = "OperationDenied.InstanceStatusLimitError"
 //  OPERATIONDENIED_INSTANCESTATUSLIMITOPERROR = "OperationDenied.InstanceStatusLimitOpError"
+//  OPERATIONDENIED_INSTANCETYPEDENIED = "OperationDenied.InstanceTypeDenied"
 //  OPERATIONDENIED_KERNELVERSIONERROR = "OperationDenied.KernelVersionError"
 //  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
 func (c *Client) ModifyAccountPrivilegesWithContext(ctx context.Context, request *ModifyAccountPrivilegesRequest) (response *ModifyAccountPrivilegesResponse, err error) {
@@ -8261,6 +8501,134 @@ func (c *Client) OpenDBExtranetAccessWithContext(ctx context.Context, request *O
     request.SetContext(ctx)
     
     response = NewOpenDBExtranetAccessResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewOpenMem0ServiceRequest() (request *OpenMem0ServiceRequest) {
+    request = &OpenMem0ServiceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("postgres", APIVersion, "OpenMem0Service")
+    
+    
+    return
+}
+
+func NewOpenMem0ServiceResponse() (response *OpenMem0ServiceResponse) {
+    response = &OpenMem0ServiceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// OpenMem0Service
+// 本接口（OpenMem0Service）用于开启实例Mem0服务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+//  INVALIDPARAMETER_PARAMETERCHECKERROR = "InvalidParameter.ParameterCheckError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITERROR = "OperationDenied.InstanceStatusLimitError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) OpenMem0Service(request *OpenMem0ServiceRequest) (response *OpenMem0ServiceResponse, err error) {
+    return c.OpenMem0ServiceWithContext(context.Background(), request)
+}
+
+// OpenMem0Service
+// 本接口（OpenMem0Service）用于开启实例Mem0服务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+//  INVALIDPARAMETER_PARAMETERCHECKERROR = "InvalidParameter.ParameterCheckError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITERROR = "OperationDenied.InstanceStatusLimitError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) OpenMem0ServiceWithContext(ctx context.Context, request *OpenMem0ServiceRequest) (response *OpenMem0ServiceResponse, err error) {
+    if request == nil {
+        request = NewOpenMem0ServiceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "postgres", APIVersion, "OpenMem0Service")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("OpenMem0Service require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewOpenMem0ServiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewOpenPostgRESTServiceRequest() (request *OpenPostgRESTServiceRequest) {
+    request = &OpenPostgRESTServiceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("postgres", APIVersion, "OpenPostgRESTService")
+    
+    
+    return
+}
+
+func NewOpenPostgRESTServiceResponse() (response *OpenPostgRESTServiceResponse) {
+    response = &OpenPostgRESTServiceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// OpenPostgRESTService
+// 本接口（OpenPostgRestService）用于开启实例PostgREST服务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+//  INVALIDPARAMETER_PARAMETERCHECKERROR = "InvalidParameter.ParameterCheckError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED_CAMDENIEDERROR = "OperationDenied.CamDeniedError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITERROR = "OperationDenied.InstanceStatusLimitError"
+//  OPERATIONDENIED_INSTANCETYPEDENIED = "OperationDenied.InstanceTypeDenied"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) OpenPostgRESTService(request *OpenPostgRESTServiceRequest) (response *OpenPostgRESTServiceResponse, err error) {
+    return c.OpenPostgRESTServiceWithContext(context.Background(), request)
+}
+
+// OpenPostgRESTService
+// 本接口（OpenPostgRestService）用于开启实例PostgREST服务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+//  INVALIDPARAMETER_PARAMETERCHECKERROR = "InvalidParameter.ParameterCheckError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED_CAMDENIEDERROR = "OperationDenied.CamDeniedError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITERROR = "OperationDenied.InstanceStatusLimitError"
+//  OPERATIONDENIED_INSTANCETYPEDENIED = "OperationDenied.InstanceTypeDenied"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) OpenPostgRESTServiceWithContext(ctx context.Context, request *OpenPostgRESTServiceRequest) (response *OpenPostgRESTServiceResponse, err error) {
+    if request == nil {
+        request = NewOpenPostgRESTServiceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "postgres", APIVersion, "OpenPostgRESTService")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("OpenPostgRESTService require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewOpenPostgRESTServiceResponse()
     err = c.Send(request, response)
     return
 }

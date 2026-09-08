@@ -10494,6 +10494,9 @@ type DescribeInstanceSpecsRequestParams struct {
 
 	// <p>集群级别。例如 P0, P1。若未指定可用区，针对于不支持亲和性的可用区将降级查询非亲和性资源。</p>
 	ClusterLevel *string `json:"ClusterLevel,omitnil,omitempty" name:"ClusterLevel"`
+
+	// <p>可用区</p>
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 }
 
 type DescribeInstanceSpecsRequest struct {
@@ -10510,6 +10513,9 @@ type DescribeInstanceSpecsRequest struct {
 
 	// <p>集群级别。例如 P0, P1。若未指定可用区，针对于不支持亲和性的可用区将降级查询非亲和性资源。</p>
 	ClusterLevel *string `json:"ClusterLevel,omitnil,omitempty" name:"ClusterLevel"`
+
+	// <p>可用区</p>
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 }
 
 func (r *DescribeInstanceSpecsRequest) ToJsonString() string {
@@ -10528,6 +10534,7 @@ func (r *DescribeInstanceSpecsRequest) FromJsonString(s string) error {
 	delete(f, "IncludeZoneStocks")
 	delete(f, "DeviceType")
 	delete(f, "ClusterLevel")
+	delete(f, "Zone")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstanceSpecsRequest has unknown keys!", "")
 	}

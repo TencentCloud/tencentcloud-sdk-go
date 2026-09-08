@@ -6892,6 +6892,9 @@ type InstanceInfo struct {
 
 	// <p>集群待迁移的TCP地址</p>
 	OldEsPrivateTcpUrl *string `json:"OldEsPrivateTcpUrl,omitnil,omitempty" name:"OldEsPrivateTcpUrl"`
+
+	// <p>是否需要从VIP下线旧节点</p>
+	NeedOfflineOldNodesNotify *bool `json:"NeedOfflineOldNodesNotify,omitnil,omitempty" name:"NeedOfflineOldNodesNotify"`
 }
 
 type InstanceLog struct {

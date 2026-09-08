@@ -170,6 +170,9 @@ const (
 	// 创建作业配置错误。
 	INVALIDPARAMETER_JOBCONFIGLOGCOLLECTPARAMERROR = "InvalidParameter.JobConfigLogCollectParamError"
 
+	// 请求参数中UriPath 无效
+	INVALIDPARAMETER_JOBDETAILURINOTVALIDCODE = "InvalidParameter.JobDetailUriNotValidCode"
+
 	// MaxParallelism 过大。
 	INVALIDPARAMETER_MAXPARALLELISMTOOLARGE = "InvalidParameter.MaxParallelismTooLarge"
 

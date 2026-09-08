@@ -143,6 +143,9 @@ const (
 	// 内部错误服务器繁忙
 	INTERNALERROR_SERVERBUSY = "InternalError.ServerBusy"
 
+	// 无效的过滤器
+	INVALIDFILTER = "InvalidFilter"
+
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
 

@@ -1906,7 +1906,7 @@ type CreateInstancePreRequestParams struct {
 	// <p>标签</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// <p>专业版/高级版实例磁盘类型，标准版实例不需要填写。&quot;CLOUD_SSD&quot;：SSD云硬盘；&quot;CLOUD_BASIC&quot;：高性能云硬盘。不传默认为 &quot;CLOUD_BASIC&quot;</p>
+	// <p>专业版/高级版实例磁盘类型，标准版实例不需要填写。</p><p>枚举值：</p><ul><li>CLOUD_SSD： SSD云硬盘</li><li>CLOUD_PREMIUM： 高性能云硬盘</li></ul><p>默认值：CLOUD_PREMIUM</p>
 	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
 
 	// <p>是否创建跨可用区实例，当前参数为 true 时，zoneIds必填</p>
@@ -1982,7 +1982,7 @@ type CreateInstancePreRequest struct {
 	// <p>标签</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// <p>专业版/高级版实例磁盘类型，标准版实例不需要填写。&quot;CLOUD_SSD&quot;：SSD云硬盘；&quot;CLOUD_BASIC&quot;：高性能云硬盘。不传默认为 &quot;CLOUD_BASIC&quot;</p>
+	// <p>专业版/高级版实例磁盘类型，标准版实例不需要填写。</p><p>枚举值：</p><ul><li>CLOUD_SSD： SSD云硬盘</li><li>CLOUD_PREMIUM： 高性能云硬盘</li></ul><p>默认值：CLOUD_PREMIUM</p>
 	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
 
 	// <p>是否创建跨可用区实例，当前参数为 true 时，zoneIds必填</p>
@@ -2516,7 +2516,7 @@ type CreatePostPaidInstanceRequestParams struct {
 	// <p>实例类型。&quot;standard&quot;：标准版，&quot;profession&quot;：专业版。  (标准版仅国际站支持，国内站目前支持专业版)</p>
 	SpecificationsType *string `json:"SpecificationsType,omitnil,omitempty" name:"SpecificationsType"`
 
-	// <p>专业版实例磁盘类型，标准版实例不需要填写。&quot;CLOUD_SSD&quot;：SSD云硬盘；&quot;CLOUD_BASIC&quot;：高性能云硬盘。不传默认值为 &quot;CLOUD_BASIC&quot;</p>
+	// <p>专业版实例磁盘类型，标准版实例不需要填写</p><p>枚举值：</p><ul><li>CLOUD_SSD： SSD云硬盘</li><li>CLOUD_PREMIUM： 高性能云硬盘</li></ul><p>默认值：CLOUD_PREMIUM</p>
 	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
 
 	// <p>实例内网峰值带宽，默认值为40。单位 MB/s。标准版需传入当前实例规格所对应的峰值带宽。注意如果创建的实例为专业版实例，峰值带宽，分区数等参数配置需要满足专业版的计费规格，可以通过以下链接查看计费规格：https://cloud.tencent.com/document/product/597/11745</p>
@@ -2586,7 +2586,7 @@ type CreatePostPaidInstanceRequest struct {
 	// <p>实例类型。&quot;standard&quot;：标准版，&quot;profession&quot;：专业版。  (标准版仅国际站支持，国内站目前支持专业版)</p>
 	SpecificationsType *string `json:"SpecificationsType,omitnil,omitempty" name:"SpecificationsType"`
 
-	// <p>专业版实例磁盘类型，标准版实例不需要填写。&quot;CLOUD_SSD&quot;：SSD云硬盘；&quot;CLOUD_BASIC&quot;：高性能云硬盘。不传默认值为 &quot;CLOUD_BASIC&quot;</p>
+	// <p>专业版实例磁盘类型，标准版实例不需要填写</p><p>枚举值：</p><ul><li>CLOUD_SSD： SSD云硬盘</li><li>CLOUD_PREMIUM： 高性能云硬盘</li></ul><p>默认值：CLOUD_PREMIUM</p>
 	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
 
 	// <p>实例内网峰值带宽，默认值为40。单位 MB/s。标准版需传入当前实例规格所对应的峰值带宽。注意如果创建的实例为专业版实例，峰值带宽，分区数等参数配置需要满足专业版的计费规格，可以通过以下链接查看计费规格：https://cloud.tencent.com/document/product/597/11745</p>
@@ -3641,50 +3641,50 @@ type DealInstanceDTO struct {
 
 // Predefined struct for user
 type DeleteAclRequestParams struct {
-	// ckafka集群实例Id，可通过[DescribeInstances](https://cloud.tencent.com/document/product/597/40835)接口获取
+	// <p>ckafka集群实例Id，可通过<a href="https://cloud.tencent.com/document/product/597/40835">DescribeInstances</a>接口获取</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// Acl资源类型，(2:TOPIC，3:GROUP，4:CLUSTER)
+	// <p>Acl资源类型，(2:TOPIC，3:GROUP，4:CLUSTER)</p>
 	ResourceType *int64 `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
-	// 资源名称，和resourceType相关，如当resourceType为TOPIC时，则该字段表示topic名称，当resourceType为GROUP时，该字段表示group名称，当resourceType为CLUSTER时，该字段可为空。
+	// <p>资源名称，和resourceType相关，如当resourceType为TOPIC时，则该字段表示topic名称，当resourceType为GROUP时，该字段表示group名称，当resourceType为CLUSTER时，该字段可为空。</p>
 	ResourceName *string `json:"ResourceName,omitnil,omitempty" name:"ResourceName"`
 
-	// Acl操作方式，(2:ALL，3:READ，4:WRITE，5:CREATE，6:DELETE，7:ALTER，8:DESCRIBE，9:CLUSTER_ACTION，10:DESCRIBE_CONFIGS，11:ALTER_CONFIGS，12:IDEMPOTENT_WRITE)
+	// <p>Acl操作方式</p><p>枚举值：</p><ul><li>2： ALL</li><li>3： READ</li><li>4： WRITE</li><li>5： CREATE</li><li>6： DELETE</li><li>7： ALTER</li><li>8： DESCRIBE</li><li>9： CLUSTER_ACTION</li><li>10： DESCRIBE_CONFIGS</li><li>11： ALTER_CONFIGS</li><li>12： IDEMPOTENT_WRITE</li></ul><p>合法取值与 ResourceType 相关，传入组合以外的值将返回参数错误。本参数必须与 PermissionType 同时传入</p><ul><li>ResourceType=2（TOPIC）：2、3、4、5、6、7、8、10、11</li><li>ResourceType=3（GROUP）：2、3、6、8</li><li>ResourceType=4（CLUSTER）：2、5、7、8、9、10、11、12</li></ul>
 	Operation *int64 `json:"Operation,omitnil,omitempty" name:"Operation"`
 
-	// 权限类型，(2:DENY，3:ALLOW)，当前ckafka支持ALLOW(相当于白名单)，其它用于后续兼容开源kafka的acl时使用
+	// <p>权限类型，当前ckafka支持ALLOW(相当于白名单)，其它用于后续兼容开源kafka的acl时使用</p><p>枚举值：</p><ul><li>2： DENY</li><li>3： ALLOW</li></ul><p>本参数必须与 Operation 同时传入</p>
 	PermissionType *int64 `json:"PermissionType,omitnil,omitempty" name:"PermissionType"`
 
-	// 默认为\*，表示任何host都可以访问，当前ckafka不支持host为\*，但是后面开源kafka的产品化会直接支持
+	// <p>默认为*，表示任何host都可以访问，当前ckafka不支持host为*，但是后面开源kafka的产品化会直接支持</p><p>删除时与 Principal、Operation、PermissionType 一起参与精确匹配</p>
 	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
 
-	// 用户列表，默认为User:*，表示任何user都可以访问，当前用户只能是用户列表中包含的用户
+	// <p>用户列表，默认为User:*，表示任何user都可以访问，当前用户只能是用户列表中包含的用户</p><p>删除时不校验该用户是否仍存在，允许清理已删除用户的残留策略；该参数与 Host、Operation、PermissionType 一起参与精确匹配</p>
 	Principal *string `json:"Principal,omitnil,omitempty" name:"Principal"`
 }
 
 type DeleteAclRequest struct {
 	*tchttp.BaseRequest
 	
-	// ckafka集群实例Id，可通过[DescribeInstances](https://cloud.tencent.com/document/product/597/40835)接口获取
+	// <p>ckafka集群实例Id，可通过<a href="https://cloud.tencent.com/document/product/597/40835">DescribeInstances</a>接口获取</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// Acl资源类型，(2:TOPIC，3:GROUP，4:CLUSTER)
+	// <p>Acl资源类型，(2:TOPIC，3:GROUP，4:CLUSTER)</p>
 	ResourceType *int64 `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
-	// 资源名称，和resourceType相关，如当resourceType为TOPIC时，则该字段表示topic名称，当resourceType为GROUP时，该字段表示group名称，当resourceType为CLUSTER时，该字段可为空。
+	// <p>资源名称，和resourceType相关，如当resourceType为TOPIC时，则该字段表示topic名称，当resourceType为GROUP时，该字段表示group名称，当resourceType为CLUSTER时，该字段可为空。</p>
 	ResourceName *string `json:"ResourceName,omitnil,omitempty" name:"ResourceName"`
 
-	// Acl操作方式，(2:ALL，3:READ，4:WRITE，5:CREATE，6:DELETE，7:ALTER，8:DESCRIBE，9:CLUSTER_ACTION，10:DESCRIBE_CONFIGS，11:ALTER_CONFIGS，12:IDEMPOTENT_WRITE)
+	// <p>Acl操作方式</p><p>枚举值：</p><ul><li>2： ALL</li><li>3： READ</li><li>4： WRITE</li><li>5： CREATE</li><li>6： DELETE</li><li>7： ALTER</li><li>8： DESCRIBE</li><li>9： CLUSTER_ACTION</li><li>10： DESCRIBE_CONFIGS</li><li>11： ALTER_CONFIGS</li><li>12： IDEMPOTENT_WRITE</li></ul><p>合法取值与 ResourceType 相关，传入组合以外的值将返回参数错误。本参数必须与 PermissionType 同时传入</p><ul><li>ResourceType=2（TOPIC）：2、3、4、5、6、7、8、10、11</li><li>ResourceType=3（GROUP）：2、3、6、8</li><li>ResourceType=4（CLUSTER）：2、5、7、8、9、10、11、12</li></ul>
 	Operation *int64 `json:"Operation,omitnil,omitempty" name:"Operation"`
 
-	// 权限类型，(2:DENY，3:ALLOW)，当前ckafka支持ALLOW(相当于白名单)，其它用于后续兼容开源kafka的acl时使用
+	// <p>权限类型，当前ckafka支持ALLOW(相当于白名单)，其它用于后续兼容开源kafka的acl时使用</p><p>枚举值：</p><ul><li>2： DENY</li><li>3： ALLOW</li></ul><p>本参数必须与 Operation 同时传入</p>
 	PermissionType *int64 `json:"PermissionType,omitnil,omitempty" name:"PermissionType"`
 
-	// 默认为\*，表示任何host都可以访问，当前ckafka不支持host为\*，但是后面开源kafka的产品化会直接支持
+	// <p>默认为*，表示任何host都可以访问，当前ckafka不支持host为*，但是后面开源kafka的产品化会直接支持</p><p>删除时与 Principal、Operation、PermissionType 一起参与精确匹配</p>
 	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
 
-	// 用户列表，默认为User:*，表示任何user都可以访问，当前用户只能是用户列表中包含的用户
+	// <p>用户列表，默认为User:*，表示任何user都可以访问，当前用户只能是用户列表中包含的用户</p><p>删除时不校验该用户是否仍存在，允许清理已删除用户的残留策略；该参数与 Host、Operation、PermissionType 一起参与精确匹配</p>
 	Principal *string `json:"Principal,omitnil,omitempty" name:"Principal"`
 }
 
@@ -3715,7 +3715,7 @@ func (r *DeleteAclRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteAclResponseParams struct {
-	// 返回结果
+	// <p>返回结果</p>
 	Result *JgwOperateResponse `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

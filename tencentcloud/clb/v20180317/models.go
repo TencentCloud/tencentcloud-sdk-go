@@ -16422,6 +16422,9 @@ type TestServiceProviderConnectionRequestParams struct {
 
 	// <p>对应模型的能力</p><p>枚举值：</p><ul><li>chat： 生文能力</li><li>embedding： 向量能力</li></ul>
 	Capability *string `json:"Capability,omitnil,omitempty" name:"Capability"`
+
+	// <p>端点路径</p>
+	EndpointPath *string `json:"EndpointPath,omitnil,omitempty" name:"EndpointPath"`
 }
 
 type TestServiceProviderConnectionRequest struct {
@@ -16465,6 +16468,9 @@ type TestServiceProviderConnectionRequest struct {
 
 	// <p>对应模型的能力</p><p>枚举值：</p><ul><li>chat： 生文能力</li><li>embedding： 向量能力</li></ul>
 	Capability *string `json:"Capability,omitnil,omitempty" name:"Capability"`
+
+	// <p>端点路径</p>
+	EndpointPath *string `json:"EndpointPath,omitnil,omitempty" name:"EndpointPath"`
 }
 
 func (r *TestServiceProviderConnectionRequest) ToJsonString() string {
@@ -16492,6 +16498,7 @@ func (r *TestServiceProviderConnectionRequest) FromJsonString(s string) error {
 	delete(f, "HealthCheckProtocol")
 	delete(f, "CMRPrivateNetworkTunnelId")
 	delete(f, "Capability")
+	delete(f, "EndpointPath")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TestServiceProviderConnectionRequest has unknown keys!", "")
 	}

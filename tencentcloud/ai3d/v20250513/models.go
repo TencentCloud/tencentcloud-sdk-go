@@ -1404,32 +1404,26 @@ func (r *SubmitProfileTo3DJobResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SubmitReduceFaceJobRequestParams struct {
-	// 源3D模型文件。其中参数 Type 和 Url 必填，参数 PreviewImageUrl 无意义，可忽略。
-	// Type可选值：OBJ，GLB
+	// <p>源3D模型文件。其中参数 Type 和 Url 必填，参数 PreviewImageUrl 无意义，可忽略。Type可选值：OBJ，GLB，FBX</p>
 	File3D *File3D `json:"File3D,omitnil,omitempty" name:"File3D"`
 
-	// 多边形类型，表示模型的表面由几边形网格构成，默认为triangle,参考值:
-	// triangle:三角形面。
-	// quadrilateral：四边形面。
+	// <p>多边形类型，表示模型的表面由几边形网格构成，默认为triangle,参考值:<br>triangle:三角形面。<br>quadrilateral：四边形面。</p>
 	PolygonType *string `json:"PolygonType,omitnil,omitempty" name:"PolygonType"`
 
-	// 减面后面数档位类型，可选值：high，medium, low。
+	// <p>减面后面数档位类型，可选值：high，medium, low。</p>
 	FaceLevel *string `json:"FaceLevel,omitnil,omitempty" name:"FaceLevel"`
 }
 
 type SubmitReduceFaceJobRequest struct {
 	*tchttp.BaseRequest
 	
-	// 源3D模型文件。其中参数 Type 和 Url 必填，参数 PreviewImageUrl 无意义，可忽略。
-	// Type可选值：OBJ，GLB
+	// <p>源3D模型文件。其中参数 Type 和 Url 必填，参数 PreviewImageUrl 无意义，可忽略。Type可选值：OBJ，GLB，FBX</p>
 	File3D *File3D `json:"File3D,omitnil,omitempty" name:"File3D"`
 
-	// 多边形类型，表示模型的表面由几边形网格构成，默认为triangle,参考值:
-	// triangle:三角形面。
-	// quadrilateral：四边形面。
+	// <p>多边形类型，表示模型的表面由几边形网格构成，默认为triangle,参考值:<br>triangle:三角形面。<br>quadrilateral：四边形面。</p>
 	PolygonType *string `json:"PolygonType,omitnil,omitempty" name:"PolygonType"`
 
-	// 减面后面数档位类型，可选值：high，medium, low。
+	// <p>减面后面数档位类型，可选值：high，medium, low。</p>
 	FaceLevel *string `json:"FaceLevel,omitnil,omitempty" name:"FaceLevel"`
 }
 
@@ -1456,7 +1450,7 @@ func (r *SubmitReduceFaceJobRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SubmitReduceFaceJobResponseParams struct {
-	// 任务ID（有效期24小时）
+	// <p>任务ID（有效期24小时）</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

@@ -195,6 +195,9 @@ type CfsStorageSource struct {
 type ComputerConfiguration struct {
 	// <p>waa沙箱工具配置</p>
 	WAAConfiguration *WAAConfiguration `json:"WAAConfiguration,omitnil,omitempty" name:"WAAConfiguration"`
+
+	// <p>配置内置 OSWorld</p>
+	OSWorldConfiguration *OSWorldConfiguration `json:"OSWorldConfiguration,omitnil,omitempty" name:"OSWorldConfiguration"`
 }
 
 type CosStorageSource struct {
@@ -1452,6 +1455,11 @@ type NetworkConfiguration struct {
 
 	// VPC网络相关配置
 	VpcConfig *VPCConfig `json:"VpcConfig,omitnil,omitempty" name:"VpcConfig"`
+}
+
+type OSWorldConfiguration struct {
+	// <p>指定内置 OSWorld 版本</p><p>枚举值：</p><ul><li>osworld1： osworld v1</li><li>osworld2： osworld v2</li></ul><p>默认值：osworld1</p>
+	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
 }
 
 // Predefined struct for user

@@ -1715,6 +1715,58 @@ func (c *Client) DescribeJobConfigsWithContext(ctx context.Context, request *Des
     return
 }
 
+func NewDescribeJobDetailRequest() (request *DescribeJobDetailRequest) {
+    request = &DescribeJobDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("oceanus", APIVersion, "DescribeJobDetail")
+    
+    
+    return
+}
+
+func NewDescribeJobDetailResponse() (response *DescribeJobDetailResponse) {
+    response = &DescribeJobDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeJobDetail
+// 显示flink作业的Dag图，以及算子、subtask等信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_JOBDETAILURINOTVALIDCODE = "InvalidParameter.JobDetailUriNotValidCode"
+func (c *Client) DescribeJobDetail(request *DescribeJobDetailRequest) (response *DescribeJobDetailResponse, err error) {
+    return c.DescribeJobDetailWithContext(context.Background(), request)
+}
+
+// DescribeJobDetail
+// 显示flink作业的Dag图，以及算子、subtask等信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_JOBDETAILURINOTVALIDCODE = "InvalidParameter.JobDetailUriNotValidCode"
+func (c *Client) DescribeJobDetailWithContext(ctx context.Context, request *DescribeJobDetailRequest) (response *DescribeJobDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeJobDetailRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "oceanus", APIVersion, "DescribeJobDetail")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeJobDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeJobDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeJobEventsRequest() (request *DescribeJobEventsRequest) {
     request = &DescribeJobEventsRequest{
         BaseRequest: &tchttp.BaseRequest{},

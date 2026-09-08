@@ -321,7 +321,7 @@ func NewCreateAudioModerationTaskResponse() (response *CreateAudioModerationTask
 //
 //         - 当并发任务达到上限时，新任务进入队列等待处理;
 //
-//         -  新送审任务优先处理，旧任务往后排;
+//         -  旧任务优先处理，新任务往后排队等待;
 //
 // - **直播音频（异步审核）**
 //
@@ -429,7 +429,7 @@ func (c *Client) CreateAudioModerationTask(request *CreateAudioModerationTaskReq
 //
 //         - 当并发任务达到上限时，新任务进入队列等待处理;
 //
-//         -  新送审任务优先处理，旧任务往后排;
+//         -  旧任务优先处理，新任务往后排队等待;
 //
 // - **直播音频（异步审核）**
 //

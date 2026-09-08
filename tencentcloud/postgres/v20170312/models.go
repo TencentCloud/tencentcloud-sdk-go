@@ -21,35 +21,35 @@ import (
 )
 
 type AccountInfo struct {
-	// 实例ID，形如postgres-lnp6j617
+	// <p>实例ID，形如postgres-lnp6j617</p>
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
 
-	// 账号
+	// <p>账号</p>
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
-	// 账号备注
+	// <p>账号备注</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 账号状态。 1-创建中，2-正常，3-修改中，4-密码重置中，5-锁定中，-1-删除中
+	// <p>账号状态。 1-创建中，2-正常，3-修改中，4-密码重置中，5-锁定中，-1-删除中</p>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 账号创建时间
+	// <p>账号创建时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 账号最后一次更新时间
+	// <p>账号最后一次更新时间</p>
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 账号密码最近一次修改时间。
-	// 
-	// 此字段只在2025-10-31后才生效，之前无论是否修改密码，该值统一为默认值：0000-00-00 00:00:00
-	// 同时仅通过云API或者管控控制台修改密码，才会更新该字段。
+	// <p>账号密码最近一次修改时间。</p><p>此字段只在2025-10-31后才生效，之前无论是否修改密码，该值统一为默认值：0000-00-00 00:00:00<br>同时仅通过云API或者管控控制台修改密码，才会更新该字段。</p>
 	PasswordUpdateTime *string `json:"PasswordUpdateTime,omitnil,omitempty" name:"PasswordUpdateTime"`
 
-	// 账号类型。支持normal、tencentDBSuper。normal指代普通用户，tencentDBSuper为拥有pg_tencentdb_superuser角色的账号。
+	// <p>账号类型。支持normal、tencentDBSuper。normal指代普通用户，tencentDBSuper为拥有pg_tencentdb_superuser角色的账号。</p>
 	UserType *string `json:"UserType,omitnil,omitempty" name:"UserType"`
 
-	// 用户账号是否启用CAM验证
+	// <p>用户账号是否启用CAM验证</p>
 	OpenCam *bool `json:"OpenCam,omitnil,omitempty" name:"OpenCam"`
+
+	// <p>该账号实际加入了哪些预设角色</p>
+	PGRoles []*string `json:"PGRoles,omitnil,omitempty" name:"PGRoles"`
 }
 
 // Predefined struct for user
@@ -954,6 +954,120 @@ func (r *CloseDBProxyAddressResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CloseDBProxyAddressResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CloseMem0ServiceRequestParams struct {
+	// <p>实例ID</p>
+	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
+}
+
+type CloseMem0ServiceRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>实例ID</p>
+	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
+}
+
+func (r *CloseMem0ServiceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CloseMem0ServiceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DBInstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CloseMem0ServiceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CloseMem0ServiceResponseParams struct {
+	// <p>关闭mem0服务任务ID</p>
+	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CloseMem0ServiceResponse struct {
+	*tchttp.BaseResponse
+	Response *CloseMem0ServiceResponseParams `json:"Response"`
+}
+
+func (r *CloseMem0ServiceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CloseMem0ServiceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ClosePostgRESTServiceRequestParams struct {
+	// <p>实例ID</p><p>参数格式：postgres-0uwjmh8t</p>
+	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
+}
+
+type ClosePostgRESTServiceRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>实例ID</p><p>参数格式：postgres-0uwjmh8t</p>
+	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
+}
+
+func (r *ClosePostgRESTServiceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ClosePostgRESTServiceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DBInstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ClosePostgRESTServiceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ClosePostgRESTServiceResponseParams struct {
+	// <p>关闭PostgREST服务任务ID</p>
+	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ClosePostgRESTServiceResponse struct {
+	*tchttp.BaseResponse
+	Response *ClosePostgRESTServiceResponseParams `json:"Response"`
+}
+
+func (r *ClosePostgRESTServiceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ClosePostgRESTServiceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2787,28 +2901,28 @@ type Database struct {
 }
 
 type DatabaseObject struct {
-	// 支持使用的数据库对象类型有：account,database,schema,sequence,procedure,type,function,table,view,matview,column。
+	// <p>支持使用的数据库对象类型有：account,database,schema,sequence,procedure,type,function,table,view,matview,column。</p>
 	ObjectType *string `json:"ObjectType,omitnil,omitempty" name:"ObjectType"`
 
-	// 所描述的数据库对象名称
+	// <p>所描述的数据库对象名称，或者当ModifyType为grantRole / revokeRole时，必须等于顶层UserName</p>
 	ObjectName *string `json:"ObjectName,omitnil,omitempty" name:"ObjectName"`
 
-	// 所要描述的数据库对象，所属的数据库名称。当描述对象类型不为database时，此参数必选。
+	// <p>所要描述的数据库对象，所属的数据库名称。当描述对象类型不为database时，此参数必选。</p>
 	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
 
-	// 所要描述的数据库对象，所属的模式名称。当描述对象不为database、schema时，此参数必选。
+	// <p>所要描述的数据库对象，所属的模式名称。当描述对象不为database、schema时，此参数必选。</p>
 	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
 
-	// 所要描述的数据库对象，所属的表名称。当描述的对象类型为column时，此参数必填。
+	// <p>所要描述的数据库对象，所属的表名称。当描述的对象类型为column时，此参数必填。</p>
 	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
 }
 
 type DatabasePrivilege struct {
-	// 数据库对象，当ObjectType为database时，DatabaseName/SchemaName/TableName可为空；当ObjectType为schema时，SchemaName/TableName可为空；当ObjectType为column时，TableName不可为空，其余情况均可为空。
+	// <p>数据库对象，当ObjectType为database时，DatabaseName/SchemaName/TableName可为空；当ObjectType为schema时，SchemaName/TableName可为空；当ObjectType为column时，TableName不可为空，其余情况均可为空。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Object *DatabaseObject `json:"Object,omitnil,omitempty" name:"Object"`
 
-	// 指定账号对数据库对象拥有的权限列表
+	// <p>指定账号对数据库对象拥有的权限列表，或者角色权限修改</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PrivilegeSet []*string `json:"PrivilegeSet,omitnil,omitempty" name:"PrivilegeSet"`
 }
@@ -6226,6 +6340,96 @@ func (r *DescribeMaintainTimeWindowResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeMem0ServiceRequestParams struct {
+	// <p>实例ID</p>
+	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
+}
+
+type DescribeMem0ServiceRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>实例ID</p>
+	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
+}
+
+func (r *DescribeMem0ServiceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMem0ServiceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DBInstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMem0ServiceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMem0ServiceResponseParams struct {
+	// <p>mem0服务运行状态</p><p>枚举值：</p><ul><li>running： mem0服务正常运行</li><li>none： 未开通</li><li>creating： 正在开通</li><li>deleting： mem0服务关闭中</li></ul>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>Mem0服务创建时间</p>
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>Mem0服务最后更新时间</p>
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// <p>Mem0服务访问地址</p>
+	InnerAddress *string `json:"InnerAddress,omitnil,omitempty" name:"InnerAddress"`
+
+	// <p>Mem0服务使用的AgenticBase</p>
+	AgenticBaseId *string `json:"AgenticBaseId,omitnil,omitempty" name:"AgenticBaseId"`
+
+	// <p>Mem0服务使用的LLM提供方</p><p>枚举值：</p><ul><li>tokenhub： 腾讯云大模型服务平台TokenHub</li></ul>
+	LLMMode *string `json:"LLMMode,omitnil,omitempty" name:"LLMMode"`
+
+	// <p>Mem0服务使用的LLM模型</p>
+	LLMModel *string `json:"LLMModel,omitnil,omitempty" name:"LLMModel"`
+
+	// <p>Mem0服务当前使用的Embedding 模型</p>
+	EmbeddingModel *string `json:"EmbeddingModel,omitnil,omitempty" name:"EmbeddingModel"`
+
+	// <p>Embedding 向量维度，目前固定1024</p>
+	EmbeddingDims *int64 `json:"EmbeddingDims,omitnil,omitempty" name:"EmbeddingDims"`
+
+	// <p>Mem0服务使用的PG数据库</p>
+	PGDatabaseName *string `json:"PGDatabaseName,omitnil,omitempty" name:"PGDatabaseName"`
+
+	// <p>Mem0服务使用的PG用户名</p>
+	PGUserName *string `json:"PGUserName,omitnil,omitempty" name:"PGUserName"`
+
+	// <p>Mem0的网络状态</p>
+	NetworkAccessList []*DBInstanceNetInfo `json:"NetworkAccessList,omitnil,omitempty" name:"NetworkAccessList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeMem0ServiceResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeMem0ServiceResponseParams `json:"Response"`
+}
+
+func (r *DescribeMem0ServiceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMem0ServiceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeOrdersRequestParams struct {
 	// 订单名集合
 	DealNames []*string `json:"DealNames,omitnil,omitempty" name:"DealNames"`
@@ -6506,6 +6710,74 @@ func (r *DescribeParamsEventResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeParamsEventResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePostgRESTServiceRequestParams struct {
+	// <p>实例ID</p><p>参数格式：postgres-19nmz2xb</p>
+	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
+}
+
+type DescribePostgRESTServiceRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>实例ID</p><p>参数格式：postgres-19nmz2xb</p>
+	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
+}
+
+func (r *DescribePostgRESTServiceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePostgRESTServiceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DBInstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePostgRESTServiceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePostgRESTServiceResponseParams struct {
+	// <p>PostgREST服务运行状态</p><p>枚举值：</p><ul><li>closed： 已关闭</li><li>creating： 创建中</li><li>running： 运行中</li></ul><p>默认值：closed</p>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>创建时间</p><p>参数格式：2026-05-10 10:00:00</p>
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>PostgREST服务网络连接信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NetworkAccessList []*DBInstanceNetInfo `json:"NetworkAccessList,omitnil,omitempty" name:"NetworkAccessList"`
+
+	// <p>PostgREST服务JWT值</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JWTSecret *string `json:"JWTSecret,omitnil,omitempty" name:"JWTSecret"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribePostgRESTServiceResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePostgRESTServiceResponseParams `json:"Response"`
+}
+
+func (r *DescribePostgRESTServiceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePostgRESTServiceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -9863,13 +10135,13 @@ func (r *ModifyParameterTemplateResponse) FromJsonString(s string) error {
 }
 
 type ModifyPrivilege struct {
-	// 要修改的数据库对象及权限列表
+	// <p>要修改的数据库对象及权限列表</p>
 	DatabasePrivilege *DatabasePrivilege `json:"DatabasePrivilege,omitnil,omitempty" name:"DatabasePrivilege"`
 
-	// 修改的方式，当前仅支持grantObject、revokeObject、alterRole。grantObject代表授权、revokeObject代表收回权、alterRole代表修改账号类型。
+	// <p>修改的方式，当前仅支持grantObject、revokeObject、alterRole、grantRole、revoke，当前仅支持grantObject、revokeObject、alterRole、grantRole、revokeRole。gRole。grantObject代表授权、revokeObject代表收回权、alterRole代表修改账号类型、grantRole代表加入对应角色、revokeRole 代表移出对应角色。</p>
 	ModifyType *string `json:"ModifyType,omitnil,omitempty" name:"ModifyType"`
 
-	// 当ModifyType为revokeObject才需要此参数，参数为true时，撤销权限会级联撤销。默认为false。
+	// <p>当ModifyType为revokeObject才需要此参数，参数为true时，撤销权限会级联撤销。默认为false。</p>
 	IsCascade *bool `json:"IsCascade,omitnil,omitempty" name:"IsCascade"`
 }
 
@@ -10340,6 +10612,169 @@ func (r *OpenDBExtranetAccessResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *OpenDBExtranetAccessResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type OpenMem0ServiceRequestParams struct {
+	// <p>实例ID</p>
+	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
+
+	// <p>AgenticBaseID，开启Mem0服务前请先开通AgenticBase套餐</p>
+	AgenticBaseId *string `json:"AgenticBaseId,omitnil,omitempty" name:"AgenticBaseId"`
+
+	// <p>Mem0服务使用的LLM模型</p><p>枚举值：</p><ul><li>auto： 自动选择合适的模型</li><li>deepseek-v4-flash： deepseek-v4-flash</li><li>deepseek-v4-pro： deepseek-v4-pro</li><li>glm-5： glm-5</li><li>glm-5-turbo： glm-5-turbo</li><li>glm-5.1： glm-5.1</li><li>kimi-k2.5： kimi-k2.5</li><li>kimi-k2.6： kimi-k2.6</li><li>minimax-m2.5： minimax-m2.5</li><li>minimax-m2.7： minimax-m2.7</li></ul>
+	LLMModel *string `json:"LLMModel,omitnil,omitempty" name:"LLMModel"`
+
+	// <p>请前往腾讯云Tokenhub开通服务将ApiKey填入</p>
+	EmbeddingApiKey *string `json:"EmbeddingApiKey,omitnil,omitempty" name:"EmbeddingApiKey"`
+}
+
+type OpenMem0ServiceRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>实例ID</p>
+	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
+
+	// <p>AgenticBaseID，开启Mem0服务前请先开通AgenticBase套餐</p>
+	AgenticBaseId *string `json:"AgenticBaseId,omitnil,omitempty" name:"AgenticBaseId"`
+
+	// <p>Mem0服务使用的LLM模型</p><p>枚举值：</p><ul><li>auto： 自动选择合适的模型</li><li>deepseek-v4-flash： deepseek-v4-flash</li><li>deepseek-v4-pro： deepseek-v4-pro</li><li>glm-5： glm-5</li><li>glm-5-turbo： glm-5-turbo</li><li>glm-5.1： glm-5.1</li><li>kimi-k2.5： kimi-k2.5</li><li>kimi-k2.6： kimi-k2.6</li><li>minimax-m2.5： minimax-m2.5</li><li>minimax-m2.7： minimax-m2.7</li></ul>
+	LLMModel *string `json:"LLMModel,omitnil,omitempty" name:"LLMModel"`
+
+	// <p>请前往腾讯云Tokenhub开通服务将ApiKey填入</p>
+	EmbeddingApiKey *string `json:"EmbeddingApiKey,omitnil,omitempty" name:"EmbeddingApiKey"`
+}
+
+func (r *OpenMem0ServiceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *OpenMem0ServiceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DBInstanceId")
+	delete(f, "AgenticBaseId")
+	delete(f, "LLMModel")
+	delete(f, "EmbeddingApiKey")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "OpenMem0ServiceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type OpenMem0ServiceResponseParams struct {
+	// <p>开启Mem0服务任务ID</p>
+	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type OpenMem0ServiceResponse struct {
+	*tchttp.BaseResponse
+	Response *OpenMem0ServiceResponseParams `json:"Response"`
+}
+
+func (r *OpenMem0ServiceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *OpenMem0ServiceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type OpenPostgRESTServiceRequestParams struct {
+	// <p>实例ID</p>
+	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
+
+	// <p>是否开启外网</p>
+	EnableWanNet *bool `json:"EnableWanNet,omitnil,omitempty" name:"EnableWanNet"`
+
+	// <p>PostgREST服务参数</p>
+	RestConfig []*ParamEntry `json:"RestConfig,omitnil,omitempty" name:"RestConfig"`
+
+	// <p>VPC</p><p>参数格式：私有网络ID，形如vpc-e6w23k31。非必选，不传默认使用实例的vpc</p>
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// <p>私有网络子网ID，形如subnet-51lcif9y。非必选，不传则使用实例的子网</p>
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+}
+
+type OpenPostgRESTServiceRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>实例ID</p>
+	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
+
+	// <p>是否开启外网</p>
+	EnableWanNet *bool `json:"EnableWanNet,omitnil,omitempty" name:"EnableWanNet"`
+
+	// <p>PostgREST服务参数</p>
+	RestConfig []*ParamEntry `json:"RestConfig,omitnil,omitempty" name:"RestConfig"`
+
+	// <p>VPC</p><p>参数格式：私有网络ID，形如vpc-e6w23k31。非必选，不传默认使用实例的vpc</p>
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// <p>私有网络子网ID，形如subnet-51lcif9y。非必选，不传则使用实例的子网</p>
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+}
+
+func (r *OpenPostgRESTServiceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *OpenPostgRESTServiceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DBInstanceId")
+	delete(f, "EnableWanNet")
+	delete(f, "RestConfig")
+	delete(f, "VpcId")
+	delete(f, "SubnetId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "OpenPostgRESTServiceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type OpenPostgRESTServiceResponseParams struct {
+	// <p>开启PostgREST服务任务ID</p>
+	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type OpenPostgRESTServiceResponse struct {
+	*tchttp.BaseResponse
+	Response *OpenPostgRESTServiceResponseParams `json:"Response"`
+}
+
+func (r *OpenPostgRESTServiceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *OpenPostgRESTServiceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

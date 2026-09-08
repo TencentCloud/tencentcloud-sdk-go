@@ -2964,6 +2964,77 @@ func (r *DescribeJobConfigsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeJobDetailRequestParams struct {
+	// flink rest api 路径
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
+
+	// 作业id
+	JobSerialId *string `json:"JobSerialId,omitnil,omitempty" name:"JobSerialId"`
+
+	// 请求rest api 方法
+	Method *string `json:"Method,omitnil,omitempty" name:"Method"`
+}
+
+type DescribeJobDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// flink rest api 路径
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
+
+	// 作业id
+	JobSerialId *string `json:"JobSerialId,omitnil,omitempty" name:"JobSerialId"`
+
+	// 请求rest api 方法
+	Method *string `json:"Method,omitnil,omitempty" name:"Method"`
+}
+
+func (r *DescribeJobDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeJobDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Path")
+	delete(f, "JobSerialId")
+	delete(f, "Method")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeJobDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeJobDetailResponseParams struct {
+	// flink rest api 响应
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeJobDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeJobDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeJobDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeJobDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeJobEventsRequestParams struct {
 	// <p>作业的 ID</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`

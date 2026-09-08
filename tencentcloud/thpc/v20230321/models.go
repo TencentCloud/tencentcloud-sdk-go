@@ -1862,6 +1862,66 @@ func (r *DescribeClusterDedicatedProxyResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeClusterMonitorStatusRequestParams struct {
+	// <p>集群ID。</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+}
+
+type DescribeClusterMonitorStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>集群ID。</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+}
+
+func (r *DescribeClusterMonitorStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClusterMonitorStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeClusterMonitorStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeClusterMonitorStatusResponseParams struct {
+	// <p>集群监控状态</p>
+	MonitorStatus *string `json:"MonitorStatus,omitnil,omitempty" name:"MonitorStatus"`
+
+	// <p>集群关联的prometheus实例ID</p>
+	PrometheusId *string `json:"PrometheusId,omitnil,omitempty" name:"PrometheusId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeClusterMonitorStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeClusterMonitorStatusResponseParams `json:"Response"`
+}
+
+func (r *DescribeClusterMonitorStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClusterMonitorStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeClusterStorageOptionRequestParams struct {
 	// 集群ID。
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
@@ -2886,6 +2946,60 @@ func (r *DisableClusterDedicatedProxyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DisableClusterMonitorRequestParams struct {
+	// <p>集群ID。</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+}
+
+type DisableClusterMonitorRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>集群ID。</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+}
+
+func (r *DisableClusterMonitorRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DisableClusterMonitorRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DisableClusterMonitorRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DisableClusterMonitorResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DisableClusterMonitorResponse struct {
+	*tchttp.BaseResponse
+	Response *DisableClusterMonitorResponseParams `json:"Response"`
+}
+
+func (r *DisableClusterMonitorResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DisableClusterMonitorResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Docker struct {
 	// 容器镜像地址
 	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
@@ -2977,6 +3091,67 @@ func (r *EnableClusterDedicatedProxyResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *EnableClusterDedicatedProxyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type EnableClusterMonitorRequestParams struct {
+	// <p>集群ID。</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// <p>Prometheus实例ID</p>
+	PrometheusId *string `json:"PrometheusId,omitnil,omitempty" name:"PrometheusId"`
+}
+
+type EnableClusterMonitorRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>集群ID。</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// <p>Prometheus实例ID</p>
+	PrometheusId *string `json:"PrometheusId,omitnil,omitempty" name:"PrometheusId"`
+}
+
+func (r *EnableClusterMonitorRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *EnableClusterMonitorRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "PrometheusId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EnableClusterMonitorRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type EnableClusterMonitorResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type EnableClusterMonitorResponse struct {
+	*tchttp.BaseResponse
+	Response *EnableClusterMonitorResponseParams `json:"Response"`
+}
+
+func (r *EnableClusterMonitorResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *EnableClusterMonitorResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

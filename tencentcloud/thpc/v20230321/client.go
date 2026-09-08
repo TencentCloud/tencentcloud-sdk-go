@@ -1219,6 +1219,62 @@ func (c *Client) DescribeClusterDedicatedProxyWithContext(ctx context.Context, r
     return
 }
 
+func NewDescribeClusterMonitorStatusRequest() (request *DescribeClusterMonitorStatusRequest) {
+    request = &DescribeClusterMonitorStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("thpc", APIVersion, "DescribeClusterMonitorStatus")
+    
+    
+    return
+}
+
+func NewDescribeClusterMonitorStatusResponse() (response *DescribeClusterMonitorStatusResponse) {
+    response = &DescribeClusterMonitorStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeClusterMonitorStatus
+// 本接口 (ModifyInitNodeScripts) 用于修改节点初始化脚本。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
+//  RESOURCENOTFOUND_CLUSTERID = "ResourceNotFound.ClusterId"
+//  UNSUPPORTEDOPERATION_CLUSTERSTATUSNOTSUPPORT = "UnsupportedOperation.ClusterStatusNotSupport"
+func (c *Client) DescribeClusterMonitorStatus(request *DescribeClusterMonitorStatusRequest) (response *DescribeClusterMonitorStatusResponse, err error) {
+    return c.DescribeClusterMonitorStatusWithContext(context.Background(), request)
+}
+
+// DescribeClusterMonitorStatus
+// 本接口 (ModifyInitNodeScripts) 用于修改节点初始化脚本。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
+//  RESOURCENOTFOUND_CLUSTERID = "ResourceNotFound.ClusterId"
+//  UNSUPPORTEDOPERATION_CLUSTERSTATUSNOTSUPPORT = "UnsupportedOperation.ClusterStatusNotSupport"
+func (c *Client) DescribeClusterMonitorStatusWithContext(ctx context.Context, request *DescribeClusterMonitorStatusRequest) (response *DescribeClusterMonitorStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeClusterMonitorStatusRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "thpc", APIVersion, "DescribeClusterMonitorStatus")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeClusterMonitorStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeClusterMonitorStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeClusterStorageOptionRequest() (request *DescribeClusterStorageOptionRequest) {
     request = &DescribeClusterStorageOptionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2157,6 +2213,62 @@ func (c *Client) DisableClusterDedicatedProxyWithContext(ctx context.Context, re
     return
 }
 
+func NewDisableClusterMonitorRequest() (request *DisableClusterMonitorRequest) {
+    request = &DisableClusterMonitorRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("thpc", APIVersion, "DisableClusterMonitor")
+    
+    
+    return
+}
+
+func NewDisableClusterMonitorResponse() (response *DisableClusterMonitorResponse) {
+    response = &DisableClusterMonitorResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DisableClusterMonitor
+// 本接口 (ModifyInitNodeScripts) 用于修改节点初始化脚本。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
+//  RESOURCENOTFOUND_CLUSTERID = "ResourceNotFound.ClusterId"
+//  UNSUPPORTEDOPERATION_CLUSTERSTATUSNOTSUPPORT = "UnsupportedOperation.ClusterStatusNotSupport"
+func (c *Client) DisableClusterMonitor(request *DisableClusterMonitorRequest) (response *DisableClusterMonitorResponse, err error) {
+    return c.DisableClusterMonitorWithContext(context.Background(), request)
+}
+
+// DisableClusterMonitor
+// 本接口 (ModifyInitNodeScripts) 用于修改节点初始化脚本。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
+//  RESOURCENOTFOUND_CLUSTERID = "ResourceNotFound.ClusterId"
+//  UNSUPPORTEDOPERATION_CLUSTERSTATUSNOTSUPPORT = "UnsupportedOperation.ClusterStatusNotSupport"
+func (c *Client) DisableClusterMonitorWithContext(ctx context.Context, request *DisableClusterMonitorRequest) (response *DisableClusterMonitorResponse, err error) {
+    if request == nil {
+        request = NewDisableClusterMonitorRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "thpc", APIVersion, "DisableClusterMonitor")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DisableClusterMonitor require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDisableClusterMonitorResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewEnableClusterDedicatedProxyRequest() (request *EnableClusterDedicatedProxyRequest) {
     request = &EnableClusterDedicatedProxyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2233,6 +2345,64 @@ func (c *Client) EnableClusterDedicatedProxyWithContext(ctx context.Context, req
     request.SetContext(ctx)
     
     response = NewEnableClusterDedicatedProxyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewEnableClusterMonitorRequest() (request *EnableClusterMonitorRequest) {
+    request = &EnableClusterMonitorRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("thpc", APIVersion, "EnableClusterMonitor")
+    
+    
+    return
+}
+
+func NewEnableClusterMonitorResponse() (response *EnableClusterMonitorResponse) {
+    response = &EnableClusterMonitorResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// EnableClusterMonitor
+// 本接口 (ModifyInitNodeScripts) 用于修改节点初始化脚本。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
+//  RESOURCENOTFOUND_CLUSTERID = "ResourceNotFound.ClusterId"
+//  RESOURCENOTFOUND_PROMETHEUSID = "ResourceNotFound.PrometheusId"
+//  UNSUPPORTEDOPERATION_CLUSTERSTATUSNOTSUPPORT = "UnsupportedOperation.ClusterStatusNotSupport"
+func (c *Client) EnableClusterMonitor(request *EnableClusterMonitorRequest) (response *EnableClusterMonitorResponse, err error) {
+    return c.EnableClusterMonitorWithContext(context.Background(), request)
+}
+
+// EnableClusterMonitor
+// 本接口 (ModifyInitNodeScripts) 用于修改节点初始化脚本。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
+//  RESOURCENOTFOUND_CLUSTERID = "ResourceNotFound.ClusterId"
+//  RESOURCENOTFOUND_PROMETHEUSID = "ResourceNotFound.PrometheusId"
+//  UNSUPPORTEDOPERATION_CLUSTERSTATUSNOTSUPPORT = "UnsupportedOperation.ClusterStatusNotSupport"
+func (c *Client) EnableClusterMonitorWithContext(ctx context.Context, request *EnableClusterMonitorRequest) (response *EnableClusterMonitorResponse, err error) {
+    if request == nil {
+        request = NewEnableClusterMonitorRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "thpc", APIVersion, "EnableClusterMonitor")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EnableClusterMonitor require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewEnableClusterMonitorResponse()
     err = c.Send(request, response)
     return
 }

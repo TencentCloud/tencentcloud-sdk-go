@@ -2260,6 +2260,7 @@ func NewVoicePrintGroupVerifyResponse() (response *VoicePrintGroupVerifyResponse
 // 说话人验证1:N接口，可以通过传入一段说话人音频，并且指定已存在的groupId, 和返回topN,  接口返回groupId内所有声纹和传入音频声纹比对打分TopN的结果。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_NOTEXISTENTVOICEPRINTGROUP = "FailedOperation.NotExistentVoicePrintGroup"
 //  FAILEDOPERATION_USERHASNOFREEAMOUNT = "FailedOperation.UserHasNoFreeAmount"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_FAILACCESSDATABASE = "InternalError.FailAccessDatabase"
@@ -2282,6 +2283,7 @@ func (c *Client) VoicePrintGroupVerify(request *VoicePrintGroupVerifyRequest) (r
 // 说话人验证1:N接口，可以通过传入一段说话人音频，并且指定已存在的groupId, 和返回topN,  接口返回groupId内所有声纹和传入音频声纹比对打分TopN的结果。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_NOTEXISTENTVOICEPRINTGROUP = "FailedOperation.NotExistentVoicePrintGroup"
 //  FAILEDOPERATION_USERHASNOFREEAMOUNT = "FailedOperation.UserHasNoFreeAmount"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_FAILACCESSDATABASE = "InternalError.FailAccessDatabase"

@@ -21,69 +21,71 @@ import (
 )
 
 type AudioResult struct {
-	// 该字段用于返回审核内容是否命中审核模型；取值：0（**未命中**）、1（**命中**）。
+	// <p>该字段用于返回审核内容是否命中审核模型；取值：0（<strong>未命中</strong>）、1（<strong>命中</strong>）。</p>
 	HitFlag *int64 `json:"HitFlag,omitnil,omitempty" name:"HitFlag"`
 
-	// 该字段用于返回检测结果所对应的恶意标签。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。
+	// <p>该字段用于返回检测结果所对应的恶意标签。<br>返回值：<strong>Normal</strong>：正常，<strong>Porn</strong>：色情，<strong>Abuse</strong>：谩骂，<strong>Ad</strong>：广告，<strong>Custom</strong>：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。</p>
 	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
 
-	// 该字段用于返回后续操作建议。当您获取到判定结果后，返回值表示具体的后续建议操作。<br>
-	// 返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
+	// <p>该字段用于返回后续操作建议。当您获取到判定结果后，返回值表示具体的后续建议操作。<br><br>返回值：<strong>Block</strong>：建议屏蔽，<strong>Review</strong> ：建议人工复审，<strong>Pass</strong>：建议通过</p>
 	Suggestion *string `json:"Suggestion,omitnil,omitempty" name:"Suggestion"`
 
-	// 该字段用于返回当前标签下的置信度，取值范围：0（**置信度最低**）-100（**置信度最高** ），越高代表文本越有可能属于当前返回的标签；如：*色情 99*，则表明该文本非常有可能属于色情内容。
+	// <p>该字段用于返回当前标签下的置信度，取值范围：0（<strong>置信度最低</strong>）-100（<strong>置信度最高</strong> ），越高代表文本越有可能属于当前返回的标签；如：<em>色情 99</em>，则表明该文本非常有可能属于色情内容。</p>
 	Score *int64 `json:"Score,omitnil,omitempty" name:"Score"`
 
-	// 该字段用于返回音频文件经ASR识别后的文本信息。最长可识别**5小时**的音频文件，若超出时长限制，接口将会报错。
+	// <p>该字段用于返回音频文件经ASR识别后的文本信息。最长可识别<strong>5小时</strong>的音频文件，若超出时长限制，接口将会报错。</p>
 	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
 
-	// 该字段用于返回审核结果的访问链接（URL）。<br>备注：链接默认有效期为12小时。如果您需要更长时效的链接，请使用[COS预签名](https://cloud.tencent.com/document/product/1265/104001)功能更新签名时效。
+	// <p>该字段用于返回审核结果的访问链接（URL）。<br>备注：链接默认有效期为12小时。如果您需要更长时效的链接，请使用<a href="https://cloud.tencent.com/document/product/1265/104001">COS预签名</a>功能更新签名时效。</p>
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
-	// 该字段用于返回音频文件的时长，单位为毫秒。
+	// <p>该字段用于返回音频文件的时长，单位为毫秒。</p>
 	Duration *string `json:"Duration,omitnil,omitempty" name:"Duration"`
 
-	// 该字段用于返回输入参数中的额外附加信息（Extra），如未配置则默认返回值为空。<br>备注：不同客户或Biztype下返回信息不同，如需配置该字段请提交工单咨询或联系售后专员处理。
+	// <p>该字段用于返回输入参数中的额外附加信息（Extra），如未配置则默认返回值为空。<br>备注：不同客户或Biztype下返回信息不同，如需配置该字段请提交工单咨询或联系售后专员处理。</p>
 	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
 
-	// 该字段用于返回音频文件经ASR识别后产生的文本的详细审核结果。具体结果内容请参见AudioResultDetailLanguageResult数据结构的细节描述。
+	// <p>该字段用于返回音频文件经ASR识别后产生的文本的详细审核结果。具体结果内容请参见AudioResultDetailLanguageResult数据结构的细节描述。</p>
 	TextResults []*AudioResultDetailTextResult `json:"TextResults,omitnil,omitempty" name:"TextResults"`
 
-	// 该字段用于返回音频文件呻吟检测的详细审核结果。具体结果内容请参见AudioResultDetailMoanResult数据结构的细节描述。
+	// <p>该字段用于返回音频文件呻吟检测的详细审核结果。具体结果内容请参见AudioResultDetailMoanResult数据结构的细节描述。</p>
 	MoanResults []*AudioResultDetailMoanResult `json:"MoanResults,omitnil,omitempty" name:"MoanResults"`
 
-	// 该字段用于返回音频小语种检测的详细审核结果。具体结果内容请参见AudioResultDetailLanguageResult数据结构的细节描述。
+	// <p>该字段用于返回音频小语种检测的详细审核结果。具体结果内容请参见AudioResultDetailLanguageResult数据结构的细节描述。</p>
 	LanguageResults []*AudioResultDetailLanguageResult `json:"LanguageResults,omitnil,omitempty" name:"LanguageResults"`
 
-	// 该字段用于返回当前标签（Lable）下的二级标签。
+	// <p>该字段用于返回当前标签（Lable）下的二级标签。</p>
 	SubLabel *string `json:"SubLabel,omitnil,omitempty" name:"SubLabel"`
 
-	// 识别类标签结果信息列表
+	// <p>识别类标签结果信息列表</p>
 	RecognitionResults []*RecognitionResult `json:"RecognitionResults,omitnil,omitempty" name:"RecognitionResults"`
 
-	// 该字段用于返回音频文件说话人检测的详细审核结果
+	// <p>该字段用于返回音频文件说话人检测的详细审核结果</p>
 	SpeakerResults []*SpeakerResult `json:"SpeakerResults,omitnil,omitempty" name:"SpeakerResults"`
 
-	// 该字段用于返回音频文件出行检测的详细审核结果
+	// <p>该字段用于返回音频文件出行检测的详细审核结果</p>
 	TravelResults []*TravelResult `json:"TravelResults,omitnil,omitempty" name:"TravelResults"`
 
-	// 该字段用于返回音频文件的三级标签
+	// <p>该字段用于返回音频文件的三级标签</p>
 	SubTag *string `json:"SubTag,omitnil,omitempty" name:"SubTag"`
 
-	// 该字段用于返回音频文件的三级标签码
+	// <p>该字段用于返回音频文件的三级标签码</p>
 	SubTagCode *string `json:"SubTagCode,omitnil,omitempty" name:"SubTagCode"`
 
-	// 该字段用于返回音频文件歌曲识别的详细审核结果
+	// <p>该字段用于返回音频文件歌曲识别的详细审核结果</p>
 	LabelResults []*LabelResult `json:"LabelResults,omitnil,omitempty" name:"LabelResults"`
 
-	// 审核命中类型
+	// <p>审核命中类型</p>
 	HitType *string `json:"HitType,omitnil,omitempty" name:"HitType"`
 
-	// ASR句子的起止时间
+	// <p>ASR句子的起止时间</p>
 	Sentences []*Sentence `json:"Sentences,omitnil,omitempty" name:"Sentences"`
 
-	// 切片请求ID
+	// <p>切片请求ID</p>
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+
+	// <p>命中信息</p>
+	HitSnippetInfos []*HitSnippetInfo `json:"HitSnippetInfos,omitnil,omitempty" name:"HitSnippetInfos"`
 }
 
 type AudioResultDetailLanguageResult struct {
@@ -445,6 +447,9 @@ type DescribeTaskDetailResponseParams struct {
 	// <p>该字段用于返回视频中视频切片审核的结果</p>
 	VideoSegments []*VideoSegment `json:"VideoSegments,omitnil,omitempty" name:"VideoSegments"`
 
+	// <p>命中信息</p>
+	HitSnippetInfos []*HitSnippetInfo `json:"HitSnippetInfos,omitnil,omitempty" name:"HitSnippetInfos"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -556,51 +561,91 @@ func (r *DescribeTasksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type Duration struct {
+	// <p>音频开始偏移</p><p>单位：s</p>
+	Start *float64 `json:"Start,omitnil,omitempty" name:"Start"`
+
+	// <p>音频结束偏移</p><p>单位：s</p>
+	End *float64 `json:"End,omitnil,omitempty" name:"End"`
+}
+
+type HitSnippetInfo struct {
+	// <p>命中内容</p>
+	Target *string `json:"Target,omitnil,omitempty" name:"Target"`
+
+	// <p>文本命中的文本块</p>
+	Snippet *string `json:"Snippet,omitnil,omitempty" name:"Snippet"`
+
+	// <p>命中场景</p>
+	Scene *string `json:"Scene,omitnil,omitempty" name:"Scene"`
+
+	// <p>命中类型</p>
+	AtomicCategory *string `json:"AtomicCategory,omitnil,omitempty" name:"AtomicCategory"`
+
+	// <p>命中类型库/模型名称</p>
+	AtomicName *string `json:"AtomicName,omitnil,omitempty" name:"AtomicName"`
+
+	// <p>命中原子能力</p>
+	AtomicId *string `json:"AtomicId,omitnil,omitempty" name:"AtomicId"`
+
+	// <p>命中单位</p>
+	UnitId *string `json:"UnitId,omitnil,omitempty" name:"UnitId"`
+
+	// <p>命中单位名称</p>
+	UnitName *string `json:"UnitName,omitnil,omitempty" name:"UnitName"`
+
+	// <p>命中颗粒ID</p>
+	ParticleId *string `json:"ParticleId,omitnil,omitempty" name:"ParticleId"`
+
+	// <p>命中文本在原文起始位置</p>
+	Positions []*Position `json:"Positions,omitnil,omitempty" name:"Positions"`
+
+	// <p>命中图片框位置</p>
+	Rect *Rect `json:"Rect,omitnil,omitempty" name:"Rect"`
+
+	// <p>命中音时间位置</p>
+	Duration *Duration `json:"Duration,omitnil,omitempty" name:"Duration"`
+
+	// <p>分数</p>
+	Score *int64 `json:"Score,omitnil,omitempty" name:"Score"`
+}
+
 type ImageResult struct {
-	// 违规标志
-	// 0 未命中
-	// 1 命中
+	// <p>违规标志<br>0 未命中<br>1 命中</p>
 	HitFlag *int64 `json:"HitFlag,omitnil,omitempty" name:"HitFlag"`
 
-	// 命中的标签
-	// Porn 色情
-	// Sexy 性感
-	// Polity 政治
-	// Illegal 违法
-	// Abuse 谩骂
-	// Terror 暴恐
-	// Ad 广告
+	// <p>命中的标签<br>Porn 色情<br>Sexy 性感<br>Polity 政治<br>Illegal 违法<br>Abuse 谩骂<br>Terror 暴恐<br>Ad 广告</p>
 	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
 
-	// 审核建议，可选值：
-	// Pass 通过，
-	// Review 建议人审，
-	// Block 确认违规
+	// <p>审核建议，可选值：<br>Pass 通过，<br>Review 建议人审，<br>Block 确认违规</p>
 	Suggestion *string `json:"Suggestion,omitnil,omitempty" name:"Suggestion"`
 
-	// 得分
+	// <p>得分</p>
 	Score *int64 `json:"Score,omitnil,omitempty" name:"Score"`
 
-	// 画面截帧图片结果集
+	// <p>画面截帧图片结果集</p>
 	Results []*ImageResultResult `json:"Results,omitnil,omitempty" name:"Results"`
 
-	// 该字段用于返回审核结果的访问链接（URL）。<br>备注：链接默认有效期为12小时。如果您需要更长时效的链接，请使用[COS预签名](https://cloud.tencent.com/document/product/1265/104001)功能更新签名时效。
+	// <p>该字段用于返回审核结果的访问链接（URL）。<br>备注：链接默认有效期为12小时。如果您需要更长时效的链接，请使用<a href="https://cloud.tencent.com/document/product/1265/104001">COS预签名</a>功能更新签名时效。</p>
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
-	// 附加字段
+	// <p>附加字段</p>
 	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
 
-	// 二级标签
+	// <p>二级标签</p>
 	SubLabel *string `json:"SubLabel,omitnil,omitempty" name:"SubLabel"`
 
-	// 场景结果
+	// <p>场景结果</p>
 	RecognitionResults []*RecognitionResult `json:"RecognitionResults,omitnil,omitempty" name:"RecognitionResults"`
 
-	// 审核命中类型
+	// <p>审核命中类型</p>
 	HitType *string `json:"HitType,omitnil,omitempty" name:"HitType"`
 
-	// 截帧请求ID
+	// <p>截帧请求ID</p>
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+
+	// <p>命中信息</p>
+	HitSnippetInfos []*HitSnippetInfo `json:"HitSnippetInfos,omitnil,omitempty" name:"HitSnippetInfos"`
 }
 
 type ImageResultResult struct {
@@ -737,6 +782,9 @@ type InputInfo struct {
 
 	// <p>文章标题</p>
 	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
+
+	// <p>其他信息</p>
+	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
 }
 
 type LabelResult struct {
@@ -794,6 +842,14 @@ type OcrHitInfo struct {
 	Positions []*TextPosition `json:"Positions,omitnil,omitempty" name:"Positions"`
 }
 
+type Position struct {
+	// <p>起始偏移</p>
+	Start *int64 `json:"Start,omitnil,omitempty" name:"Start"`
+
+	// <p>结束偏移</p>
+	End *int64 `json:"End,omitnil,omitempty" name:"End"`
+}
+
 type RcbAsr struct {
 	// 该字段用于返回音频文件识别出的对应文本内容，最大支持**前1000个字符**。
 	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
@@ -808,6 +864,23 @@ type RecognitionResult struct {
 
 	// 识别标签列表
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
+type Rect struct {
+	// <p>X坐标</p>
+	X *int64 `json:"X,omitnil,omitempty" name:"X"`
+
+	// <p>Y坐标</p>
+	Y *int64 `json:"Y,omitnil,omitempty" name:"Y"`
+
+	// <p>宽</p>
+	Width *int64 `json:"Width,omitnil,omitempty" name:"Width"`
+
+	// <p>高</p>
+	Height *int64 `json:"Height,omitnil,omitempty" name:"Height"`
+
+	// <p>旋转角度</p>
+	Rotate *int64 `json:"Rotate,omitnil,omitempty" name:"Rotate"`
 }
 
 type SegmentCosUrlList struct {
@@ -870,6 +943,9 @@ type StorageInfo struct {
 
 	// <p>文章标题</p>
 	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
+
+	// <p>额外信息</p>
+	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
 }
 
 type Tag struct {
@@ -1074,6 +1150,9 @@ type VideoLLMDetail struct {
 
 	// <p>违规建议</p>
 	Suggestion *string `json:"Suggestion,omitnil,omitempty" name:"Suggestion"`
+
+	// <p>其他信息</p>
+	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
 }
 
 type VideoSegment struct {

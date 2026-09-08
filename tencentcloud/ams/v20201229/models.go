@@ -534,22 +534,20 @@ func (r *CreateAudioModerationTaskResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTaskDetailRequestParams struct {
-	// 该字段表示创建音频审核任务后返回的任务ID（在Results参数中），用于标识需要查询任务详情的审核任务。
-	// <br>备注：查询接口单次最大查询量为**20条每次**。
+	// <p>该字段表示创建音频审核任务后返回的任务ID（在Results参数中），用于标识需要查询任务详情的审核任务。<br><br>备注：查询接口单次最大查询量为<strong>20条每次</strong>。</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 该布尔字段表示是否展示全部的音频片段，取值：True(展示全部的音频分片)、False(只展示命中审核规则的音频分片)；默认值为False。
+	// <p>该布尔字段表示是否展示全部的音频片段，取值：True(展示全部的音频分片)、False(只展示命中审核规则的音频分片)；默认值为False。</p>
 	ShowAllSegments *bool `json:"ShowAllSegments,omitnil,omitempty" name:"ShowAllSegments"`
 }
 
 type DescribeTaskDetailRequest struct {
 	*tchttp.BaseRequest
 	
-	// 该字段表示创建音频审核任务后返回的任务ID（在Results参数中），用于标识需要查询任务详情的审核任务。
-	// <br>备注：查询接口单次最大查询量为**20条每次**。
+	// <p>该字段表示创建音频审核任务后返回的任务ID（在Results参数中），用于标识需要查询任务详情的审核任务。<br><br>备注：查询接口单次最大查询量为<strong>20条每次</strong>。</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 该布尔字段表示是否展示全部的音频片段，取值：True(展示全部的音频分片)、False(只展示命中审核规则的音频分片)；默认值为False。
+	// <p>该布尔字段表示是否展示全部的音频片段，取值：True(展示全部的音频分片)、False(只展示命中审核规则的音频分片)；默认值为False。</p>
 	ShowAllSegments *bool `json:"ShowAllSegments,omitnil,omitempty" name:"ShowAllSegments"`
 }
 
@@ -575,57 +573,59 @@ func (r *DescribeTaskDetailRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTaskDetailResponseParams struct {
-	// 该字段用于返回创建音频审核任务后返回的任务ID（在Results参数中），用于标识需要查询任务详情的审核任务。
+	// <p>该字段用于返回创建音频审核任务后返回的任务ID（在Results参数中），用于标识需要查询任务详情的审核任务。</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 该字段用于返回调用音频审核接口时在Tasks参数内传入的数据ID参数，方便数据的辨别和管理。
+	// <p>该字段用于返回调用音频审核接口时在Tasks参数内传入的数据ID参数，方便数据的辨别和管理。</p>
 	DataId *string `json:"DataId,omitnil,omitempty" name:"DataId"`
 
-	// 该字段用于返回调用音频审核接口时传入的BizType参数，方便数据的辨别和管理。
+	// <p>该字段用于返回调用音频审核接口时传入的BizType参数，方便数据的辨别和管理。</p>
 	BizType *string `json:"BizType,omitnil,omitempty" name:"BizType"`
 
-	// 该字段用于返回调用音频审核接口时传入的TaskInput参数中的任务名称，方便任务的识别与管理。
+	// <p>该字段用于返回调用音频审核接口时传入的TaskInput参数中的任务名称，方便任务的识别与管理。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 该字段用于返回所查询内容的任务状态。
-	// <br>取值：**FINISH**（任务已完成）、**PENDING** （任务等待中）、**RUNNING** （任务进行中）、**ERROR** （任务出错）、**CANCELLED** （任务已取消）。
+	// <p>该字段用于返回所查询内容的任务状态。<br><br>取值：<strong>FINISH</strong>（任务已完成）、<strong>PENDING</strong> （任务等待中）、<strong>RUNNING</strong> （任务进行中）、<strong>ERROR</strong> （任务出错）、<strong>CANCELLED</strong> （任务已取消）。</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 该字段用于返回调用音频审核接口时输入的音频审核类型，取值为：**AUDIO**（点播音频）和**LIVE_AUDIO**（直播音频），默认值为AUDIO。
+	// <p>该字段用于返回调用音频审核接口时输入的音频审核类型，取值为：<strong>AUDIO</strong>（点播音频）和<strong>LIVE_AUDIO</strong>（直播音频），默认值为AUDIO。</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 该字段用于返回基于恶意标签的后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
+	// <p>该字段用于返回基于恶意标签的后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：<strong>Block</strong>：建议屏蔽，<strong>Review</strong> ：建议人工复审，<strong>Pass</strong>：建议通过</p>
 	Suggestion *string `json:"Suggestion,omitnil,omitempty" name:"Suggestion"`
 
-	// 该字段用于返回检测结果所对应的恶意标签。<br>返回值：**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。
+	// <p>该字段用于返回检测结果所对应的恶意标签。<br>返回值：<strong>Porn</strong>：色情，<strong>Abuse</strong>：谩骂，<strong>Ad</strong>：广告，<strong>Custom</strong>：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。</p>
 	Labels []*TaskLabel `json:"Labels,omitnil,omitempty" name:"Labels"`
 
-	// 该字段用于返回审核服务的媒体内容信息，主要包括传入文件类型和访问地址。
+	// <p>该字段用于返回审核服务的媒体内容信息，主要包括传入文件类型和访问地址。</p>
 	InputInfo *InputInfo `json:"InputInfo,omitnil,omitempty" name:"InputInfo"`
 
-	// 该字段用于返回音频文件识别出的对应文本内容，最大支持**前1000个字符**。
+	// <p>该字段用于返回音频文件识别出的对应文本内容，最大支持<strong>前1000个字符</strong>。</p>
 	AudioText *string `json:"AudioText,omitnil,omitempty" name:"AudioText"`
 
-	// 该字段用于返回音频片段的审核结果，主要包括开始时间和音频审核的相应结果。<br>具体输出内容请参见AudioSegments及AudioResult数据结构的详细描述。
+	// <p>该字段用于返回音频片段的审核结果，主要包括开始时间和音频审核的相应结果。<br>具体输出内容请参见AudioSegments及AudioResult数据结构的详细描述。</p>
 	AudioSegments []*AudioSegments `json:"AudioSegments,omitnil,omitempty" name:"AudioSegments"`
 
-	// 当任务状态为Error时，该字段用于返回对应错误的类型；任务状态非Error时，默认返回为空。
+	// <p>当任务状态为Error时，该字段用于返回对应错误的类型；任务状态非Error时，默认返回为空。</p>
 	ErrorType *string `json:"ErrorType,omitnil,omitempty" name:"ErrorType"`
 
-	// 当任务状态为Error时，该字段用于返回对应错误的详细描述，任务状态非Error时默认返回为空。
+	// <p>当任务状态为Error时，该字段用于返回对应错误的详细描述，任务状态非Error时默认返回为空。</p>
 	ErrorDescription *string `json:"ErrorDescription,omitnil,omitempty" name:"ErrorDescription"`
 
-	// 该字段用于返回被查询任务创建的时间，格式采用 ISO 8601标准。
+	// <p>该字段用于返回被查询任务创建的时间，格式采用 ISO 8601标准。</p>
 	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
 
-	// 该字段用于返回被查询任务最后更新时间，格式采用 ISO 8601标准。
+	// <p>该字段用于返回被查询任务最后更新时间，格式采用 ISO 8601标准。</p>
 	UpdatedAt *string `json:"UpdatedAt,omitnil,omitempty" name:"UpdatedAt"`
 
-	// 该字段用于返回检测结果所对应的标签。如果未命中恶意，返回Normal，如果命中恶意，则返回Labels中优先级最高的标签
+	// <p>该字段用于返回检测结果所对应的标签。如果未命中恶意，返回Normal，如果命中恶意，则返回Labels中优先级最高的标签</p>
 	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
 
-	// 媒体信息
+	// <p>媒体信息</p>
 	MediaInfo *MediaInfo `json:"MediaInfo,omitnil,omitempty" name:"MediaInfo"`
+
+	// <p>命中信息</p>
+	HitSnippetInfos []*HitSnippetInfos `json:"HitSnippetInfos,omitnil,omitempty" name:"HitSnippetInfos"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -738,6 +738,14 @@ func (r *DescribeTasksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type Duration struct {
+	// <p>开始时间</p><p>单位：秒</p>
+	Start *float64 `json:"Start,omitnil,omitempty" name:"Start"`
+
+	// <p>结束时间</p><p>单位：秒</p>
+	End *float64 `json:"End,omitnil,omitempty" name:"End"`
+}
+
 type HitInfo struct {
 	// 标识模型命中还是关键词命中
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
@@ -750,6 +758,44 @@ type HitInfo struct {
 
 	// 	位置信息
 	Positions []*Position `json:"Positions,omitnil,omitempty" name:"Positions"`
+}
+
+type HitSnippetInfos struct {
+	// <p>命中内容</p>
+	Target *string `json:"Target,omitnil,omitempty" name:"Target"`
+
+	// <p>文本命中的文本块</p>
+	Snippet *string `json:"Snippet,omitnil,omitempty" name:"Snippet"`
+
+	// <p>命中场景</p>
+	Scene *string `json:"Scene,omitnil,omitempty" name:"Scene"`
+
+	// <p>命中类型</p>
+	AtomicCategory *string `json:"AtomicCategory,omitnil,omitempty" name:"AtomicCategory"`
+
+	// <p>命中类型库/模型名称</p>
+	AtomicName *string `json:"AtomicName,omitnil,omitempty" name:"AtomicName"`
+
+	// <p>命中原子能力</p>
+	AtomicId *string `json:"AtomicId,omitnil,omitempty" name:"AtomicId"`
+
+	// <p>命中单位</p>
+	UnitId *string `json:"UnitId,omitnil,omitempty" name:"UnitId"`
+
+	// <p>命中单位名称</p>
+	UnitName *string `json:"UnitName,omitnil,omitempty" name:"UnitName"`
+
+	// <p>命中颗粒ID</p>
+	ParticleId *string `json:"ParticleId,omitnil,omitempty" name:"ParticleId"`
+
+	// <p>命中文本在原文起始位置</p>
+	Positions []*Position `json:"Positions,omitnil,omitempty" name:"Positions"`
+
+	// <p>命中音时间位置</p>
+	Duration *Duration `json:"Duration,omitnil,omitempty" name:"Duration"`
+
+	// <p>分数</p>
+	Score *int64 `json:"Score,omitnil,omitempty" name:"Score"`
 }
 
 type InputInfo struct {
@@ -768,6 +814,12 @@ type InputInfo struct {
 
 	// <p>大模型审核场景下，base64编码的审核要求内容</p>
 	TextContent *string `json:"TextContent,omitnil,omitempty" name:"TextContent"`
+
+	// <p>标题</p>
+	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
+
+	// <p>其他信息</p>
+	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
 }
 
 type LabelResults struct {
@@ -860,17 +912,17 @@ type Sentence struct {
 }
 
 type SpeakerResults struct {
-	// 标签
+	// <p>标签</p>
 	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
 
-	// 得分
+	// <p>得分</p>
 	Score *int64 `json:"Score,omitnil,omitempty" name:"Score"`
 
-	// 开始时间
+	// <p>开始时间</p>
 	StartTime *float64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间
-	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+	// <p>结束时间</p>
+	EndTime *float64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
 type StorageInfo struct {

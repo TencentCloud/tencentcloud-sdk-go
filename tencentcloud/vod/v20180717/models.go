@@ -14317,26 +14317,26 @@ func (r *DescribeContentReviewTemplatesResponse) FromJsonString(s string) error 
 
 // Predefined struct for user
 type DescribeCurrentPlaylistRequestParams struct {
-	// <b>点播[应用](/document/product/266/14574) ID。</b>
+	// <p><b>点播<a href="/document/product/266/14574">应用</a> ID。</b></p>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 
-	// 轮播播单唯一标识。
+	// <p>轮播播单唯一标识。</p>
 	RoundPlayId *string `json:"RoundPlayId,omitnil,omitempty" name:"RoundPlayId"`
 
-	// 返回的播放列表的长度。最大10，默认值为5。
+	// <p>返回的播放列表的长度。最大10，默认值为5。</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeCurrentPlaylistRequest struct {
 	*tchttp.BaseRequest
 	
-	// <b>点播[应用](/document/product/266/14574) ID。</b>
+	// <p><b>点播<a href="/document/product/266/14574">应用</a> ID。</b></p>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 
-	// 轮播播单唯一标识。
+	// <p>轮播播单唯一标识。</p>
 	RoundPlayId *string `json:"RoundPlayId,omitnil,omitempty" name:"RoundPlayId"`
 
-	// 返回的播放列表的长度。最大10，默认值为5。
+	// <p>返回的播放列表的长度。最大10，默认值为5。</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
@@ -14363,7 +14363,7 @@ func (r *DescribeCurrentPlaylistRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCurrentPlaylistResponseParams struct {
-	// 当前播放列表信息。
+	// <p>当前播放列表信息。</p>
 	CurrentPlaylist []*RoundPlayFilePlayInfo `json:"CurrentPlaylist,omitnil,omitempty" name:"CurrentPlaylist"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

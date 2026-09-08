@@ -1469,74 +1469,6 @@ func (c *Client) CreateUserWithContext(ctx context.Context, request *CreateUserR
     return
 }
 
-func NewCreateVmInstanceRequest() (request *CreateVmInstanceRequest) {
-    request = &CreateVmInstanceRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("tcb", APIVersion, "CreateVmInstance")
-    
-    
-    return
-}
-
-func NewCreateVmInstanceResponse() (response *CreateVmInstanceResponse) {
-    response = &CreateVmInstanceResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// CreateVmInstance
-// 创建虚拟服务器
-//
-// 创建流程为先调用[DescribeVmSpec](https://cloud.tencent.com/document/product/876/129360)获取可购买的规格，同时调用[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)拉取镜像列表，选中一个规格和一个镜像后，调用[InquireVmPrice](https://cloud.tencent.com/document/product/876/129759)询价，如果价格可接受，调用此接口创建实例
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
-func (c *Client) CreateVmInstance(request *CreateVmInstanceRequest) (response *CreateVmInstanceResponse, err error) {
-    return c.CreateVmInstanceWithContext(context.Background(), request)
-}
-
-// CreateVmInstance
-// 创建虚拟服务器
-//
-// 创建流程为先调用[DescribeVmSpec](https://cloud.tencent.com/document/product/876/129360)获取可购买的规格，同时调用[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)拉取镜像列表，选中一个规格和一个镜像后，调用[InquireVmPrice](https://cloud.tencent.com/document/product/876/129759)询价，如果价格可接受，调用此接口创建实例
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
-func (c *Client) CreateVmInstanceWithContext(ctx context.Context, request *CreateVmInstanceRequest) (response *CreateVmInstanceResponse, err error) {
-    if request == nil {
-        request = NewCreateVmInstanceRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "CreateVmInstance")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("CreateVmInstance require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewCreateVmInstanceResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDeleteAIModelRequest() (request *DeleteAIModelRequest) {
     request = &DeleteAIModelRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2103,56 +2035,6 @@ func (c *Client) DeleteUsersWithContext(ctx context.Context, request *DeleteUser
     request.SetContext(ctx)
     
     response = NewDeleteUsersResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDeleteVmInstanceRequest() (request *DeleteVmInstanceRequest) {
-    request = &DeleteVmInstanceRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("tcb", APIVersion, "DeleteVmInstance")
-    
-    
-    return
-}
-
-func NewDeleteVmInstanceResponse() (response *DeleteVmInstanceResponse) {
-    response = &DeleteVmInstanceResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DeleteVmInstance
-// 销毁云服务器实例
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DeleteVmInstance(request *DeleteVmInstanceRequest) (response *DeleteVmInstanceResponse, err error) {
-    return c.DeleteVmInstanceWithContext(context.Background(), request)
-}
-
-// DeleteVmInstance
-// 销毁云服务器实例
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DeleteVmInstanceWithContext(ctx context.Context, request *DeleteVmInstanceRequest) (response *DeleteVmInstanceResponse, err error) {
-    if request == nil {
-        request = NewDeleteVmInstanceRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DeleteVmInstance")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DeleteVmInstance require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDeleteVmInstanceResponse()
     err = c.Send(request, response)
     return
 }
@@ -3697,6 +3579,70 @@ func (c *Client) DescribeGatewayVersionsWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeHTTPServiceCachePurgeTaskRequest() (request *DescribeHTTPServiceCachePurgeTaskRequest) {
+    request = &DescribeHTTPServiceCachePurgeTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeHTTPServiceCachePurgeTask")
+    
+    
+    return
+}
+
+func NewDescribeHTTPServiceCachePurgeTaskResponse() (response *DescribeHTTPServiceCachePurgeTaskResponse) {
+    response = &DescribeHTTPServiceCachePurgeTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeHTTPServiceCachePurgeTask
+// 本接口DescribeHTTPServiceCachePurgeTask为只读查询，不修改任何缓存或环境资源，仅返回指定环境下域名缓存刷新任务的状态与时间等信息。通过PurgeHTTPServiceCache清除域名缓存后，可通过此接口传入任务id可查询清除任务状态、时间、缓存类型等信息。也可通过此接口查询历史任务记录。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_THIRDSERVICEERROR = "FailedOperation.ThirdServiceError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DATABASE = "InternalError.Database"
+//  INTERNALERROR_TIMEOUT = "InternalError.Timeout"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ENVID = "InvalidParameter.EnvId"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_HTTPSERVICEDOMAIN = "ResourceNotFound.HTTPServiceDomain"
+func (c *Client) DescribeHTTPServiceCachePurgeTask(request *DescribeHTTPServiceCachePurgeTaskRequest) (response *DescribeHTTPServiceCachePurgeTaskResponse, err error) {
+    return c.DescribeHTTPServiceCachePurgeTaskWithContext(context.Background(), request)
+}
+
+// DescribeHTTPServiceCachePurgeTask
+// 本接口DescribeHTTPServiceCachePurgeTask为只读查询，不修改任何缓存或环境资源，仅返回指定环境下域名缓存刷新任务的状态与时间等信息。通过PurgeHTTPServiceCache清除域名缓存后，可通过此接口传入任务id可查询清除任务状态、时间、缓存类型等信息。也可通过此接口查询历史任务记录。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_THIRDSERVICEERROR = "FailedOperation.ThirdServiceError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DATABASE = "InternalError.Database"
+//  INTERNALERROR_TIMEOUT = "InternalError.Timeout"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ENVID = "InvalidParameter.EnvId"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_HTTPSERVICEDOMAIN = "ResourceNotFound.HTTPServiceDomain"
+func (c *Client) DescribeHTTPServiceCachePurgeTaskWithContext(ctx context.Context, request *DescribeHTTPServiceCachePurgeTaskRequest) (response *DescribeHTTPServiceCachePurgeTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeHTTPServiceCachePurgeTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeHTTPServiceCachePurgeTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeHTTPServiceCachePurgeTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeHTTPServiceCachePurgeTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeHTTPServiceRouteRequest() (request *DescribeHTTPServiceRouteRequest) {
     request = &DescribeHTTPServiceRouteRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4581,118 +4527,6 @@ func (c *Client) DescribeUserListWithContext(ctx context.Context, request *Descr
     return
 }
 
-func NewDescribeVmInstancesRequest() (request *DescribeVmInstancesRequest) {
-    request = &DescribeVmInstancesRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("tcb", APIVersion, "DescribeVmInstances")
-    
-    
-    return
-}
-
-func NewDescribeVmInstancesResponse() (response *DescribeVmInstancesResponse) {
-    response = &DescribeVmInstancesResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeVmInstances
-// 查询环境下的云服务器列表
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_FLEXDBRESOURCEOVERDUE = "FailedOperation.FlexdbResourceOverdue"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-func (c *Client) DescribeVmInstances(request *DescribeVmInstancesRequest) (response *DescribeVmInstancesResponse, err error) {
-    return c.DescribeVmInstancesWithContext(context.Background(), request)
-}
-
-// DescribeVmInstances
-// 查询环境下的云服务器列表
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_FLEXDBRESOURCEOVERDUE = "FailedOperation.FlexdbResourceOverdue"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-func (c *Client) DescribeVmInstancesWithContext(ctx context.Context, request *DescribeVmInstancesRequest) (response *DescribeVmInstancesResponse, err error) {
-    if request == nil {
-        request = NewDescribeVmInstancesRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeVmInstances")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeVmInstances require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeVmInstancesResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeVmSpecRequest() (request *DescribeVmSpecRequest) {
-    request = &DescribeVmSpecRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("tcb", APIVersion, "DescribeVmSpec")
-    
-    
-    return
-}
-
-func NewDescribeVmSpecResponse() (response *DescribeVmSpecResponse) {
-    response = &DescribeVmSpecResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeVmSpec
-// 云服务器规格list
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_FLEXDBRESOURCEOVERDUE = "FailedOperation.FlexdbResourceOverdue"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-func (c *Client) DescribeVmSpec(request *DescribeVmSpecRequest) (response *DescribeVmSpecResponse, err error) {
-    return c.DescribeVmSpecWithContext(context.Background(), request)
-}
-
-// DescribeVmSpec
-// 云服务器规格list
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_FLEXDBRESOURCEOVERDUE = "FailedOperation.FlexdbResourceOverdue"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-func (c *Client) DescribeVmSpecWithContext(ctx context.Context, request *DescribeVmSpecRequest) (response *DescribeVmSpecResponse, err error) {
-    if request == nil {
-        request = NewDescribeVmSpecRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeVmSpec")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeVmSpec require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeVmSpecResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDestroyEnvRequest() (request *DestroyEnvRequest) {
     request = &DestroyEnvRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5023,56 +4857,6 @@ func (c *Client) GetProvidersWithContext(ctx context.Context, request *GetProvid
     request.SetContext(ctx)
     
     response = NewGetProvidersResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewInquireVmPriceRequest() (request *InquireVmPriceRequest) {
-    request = &InquireVmPriceRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("tcb", APIVersion, "InquireVmPrice")
-    
-    
-    return
-}
-
-func NewInquireVmPriceResponse() (response *InquireVmPriceResponse) {
-    response = &InquireVmPriceResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// InquireVmPrice
-// 查询服务器价格
-//
-// 可能返回的错误码:
-//  INVALIDPARAMETER = "InvalidParameter"
-func (c *Client) InquireVmPrice(request *InquireVmPriceRequest) (response *InquireVmPriceResponse, err error) {
-    return c.InquireVmPriceWithContext(context.Background(), request)
-}
-
-// InquireVmPrice
-// 查询服务器价格
-//
-// 可能返回的错误码:
-//  INVALIDPARAMETER = "InvalidParameter"
-func (c *Client) InquireVmPriceWithContext(ctx context.Context, request *InquireVmPriceRequest) (response *InquireVmPriceResponse, err error) {
-    if request == nil {
-        request = NewInquireVmPriceRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "InquireVmPrice")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("InquireVmPrice require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewInquireVmPriceResponse()
     err = c.Send(request, response)
     return
 }
@@ -6163,6 +5947,62 @@ func (c *Client) PreviewPGUserMigrationsWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewPreviewPGUserMigrationsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewPurgeHTTPServiceCacheRequest() (request *PurgeHTTPServiceCacheRequest) {
+    request = &PurgeHTTPServiceCacheRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "PurgeHTTPServiceCache")
+    
+    
+    return
+}
+
+func NewPurgeHTTPServiceCacheResponse() (response *PurgeHTTPServiceCacheResponse) {
+    response = &PurgeHTTPServiceCacheResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// PurgeHTTPServiceCache
+// 本接口PurgeHTTPServiceCache为异步操作，清除指定环境下 HTTPService 域名的缓存，操作不可逆，仅影响指定 Domain 的缓存命中，不影响源站数据。用于清除HTTP访问服务域名缓存。支持刷新CDN和EO两种类型。清除缓存后会生成任务id，通过DescribeHTTPServiceCachePurgeTask传入任务id可查询任务进度和详细信息。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ENVID = "InvalidParameter.EnvId"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_HTTPSERVICEDOMAIN = "ResourceNotFound.HTTPServiceDomain"
+func (c *Client) PurgeHTTPServiceCache(request *PurgeHTTPServiceCacheRequest) (response *PurgeHTTPServiceCacheResponse, err error) {
+    return c.PurgeHTTPServiceCacheWithContext(context.Background(), request)
+}
+
+// PurgeHTTPServiceCache
+// 本接口PurgeHTTPServiceCache为异步操作，清除指定环境下 HTTPService 域名的缓存，操作不可逆，仅影响指定 Domain 的缓存命中，不影响源站数据。用于清除HTTP访问服务域名缓存。支持刷新CDN和EO两种类型。清除缓存后会生成任务id，通过DescribeHTTPServiceCachePurgeTask传入任务id可查询任务进度和详细信息。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ENVID = "InvalidParameter.EnvId"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_HTTPSERVICEDOMAIN = "ResourceNotFound.HTTPServiceDomain"
+func (c *Client) PurgeHTTPServiceCacheWithContext(ctx context.Context, request *PurgeHTTPServiceCacheRequest) (response *PurgeHTTPServiceCacheResponse, err error) {
+    if request == nil {
+        request = NewPurgeHTTPServiceCacheRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "PurgeHTTPServiceCache")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("PurgeHTTPServiceCache require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewPurgeHTTPServiceCacheResponse()
     err = c.Send(request, response)
     return
 }

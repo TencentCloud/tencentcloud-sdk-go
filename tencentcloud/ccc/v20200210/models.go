@@ -2767,32 +2767,32 @@ func (r *CreateStaffResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateUserSigRequestParams struct {
-	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	// <p>应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc</p>
 	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// 用户 ID，该值必须与 ClientData 字段中 Uid 的值一致
+	// <p>用户 ID</p>
 	Uid *string `json:"Uid,omitnil,omitempty" name:"Uid"`
 
-	// 用户签名数据，必填字段，为标准 JSON 格式
+	// <p>用户签名数据</p>
 	ClientData *string `json:"ClientData,omitnil,omitempty" name:"ClientData"`
 
-	// 有效期，单位秒，不超过 1 小时
+	// <p>有效期，单位秒，不超过 1 小时</p>
 	ExpiredTime *int64 `json:"ExpiredTime,omitnil,omitempty" name:"ExpiredTime"`
 }
 
 type CreateUserSigRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	// <p>应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc</p>
 	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// 用户 ID，该值必须与 ClientData 字段中 Uid 的值一致
+	// <p>用户 ID</p>
 	Uid *string `json:"Uid,omitnil,omitempty" name:"Uid"`
 
-	// 用户签名数据，必填字段，为标准 JSON 格式
+	// <p>用户签名数据</p>
 	ClientData *string `json:"ClientData,omitnil,omitempty" name:"ClientData"`
 
-	// 有效期，单位秒，不超过 1 小时
+	// <p>有效期，单位秒，不超过 1 小时</p>
 	ExpiredTime *int64 `json:"ExpiredTime,omitnil,omitempty" name:"ExpiredTime"`
 }
 
@@ -2820,7 +2820,7 @@ func (r *CreateUserSigRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateUserSigResponseParams struct {
-	// 签名结果
+	// <p>签名结果</p>
 	UserSig *string `json:"UserSig,omitnil,omitempty" name:"UserSig"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
