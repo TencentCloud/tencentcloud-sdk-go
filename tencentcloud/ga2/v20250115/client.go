@@ -316,6 +316,7 @@ func NewCreateForwardingRuleResponse() (response *CreateForwardingRuleResponse) 
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_ASCIICHARACTERS = "InvalidParameterValue.AsciiCharacters"
 //  INVALIDPARAMETERVALUE_INSTANCEMISMATCH = "InvalidParameterValue.InstanceMismatch"
+//  INVALIDPARAMETERVALUE_INTERNALRESERVEDFIELDS = "InvalidParameterValue.InternalReservedFields"
 //  INVALIDPARAMETERVALUE_SPECIALCHARACTERS = "InvalidParameterValue.SpecialCharacters"
 //  MISSINGPARAMETER = "MissingParameter"
 //  UNSUPPORTEDOPERATION_FORWARDGROUPFORWARDINGRULEUNSUPPORTEDDEFAULTENDPOINTGROUP = "UnsupportedOperation.ForwardGroupForwardingRuleUnsupportedDefaultEndpointGroup"
@@ -329,6 +330,7 @@ func (c *Client) CreateForwardingRule(request *CreateForwardingRuleRequest) (res
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_ASCIICHARACTERS = "InvalidParameterValue.AsciiCharacters"
 //  INVALIDPARAMETERVALUE_INSTANCEMISMATCH = "InvalidParameterValue.InstanceMismatch"
+//  INVALIDPARAMETERVALUE_INTERNALRESERVEDFIELDS = "InvalidParameterValue.InternalReservedFields"
 //  INVALIDPARAMETERVALUE_SPECIALCHARACTERS = "InvalidParameterValue.SpecialCharacters"
 //  MISSINGPARAMETER = "MissingParameter"
 //  UNSUPPORTEDOPERATION_FORWARDGROUPFORWARDINGRULEUNSUPPORTEDDEFAULTENDPOINTGROUP = "UnsupportedOperation.ForwardGroupForwardingRuleUnsupportedDefaultEndpointGroup"
@@ -444,6 +446,7 @@ func NewCreateGlobalAcceleratorAccessLogResponse() (response *CreateGlobalAccele
 // 创建GA访问日志
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_INPUTREPEAT = "InvalidParameter.InputRepeat"
 //  INVALIDPARAMETERVALUE_INSTANCEMISMATCH = "InvalidParameterValue.InstanceMismatch"
 //  INVALIDPARAMETERVALUE_LOGTASKLOCATEDERROR = "InvalidParameterValue.LogTaskLocatedError"
 //  INVALIDPARAMETERVALUE_LOGSETNOTEXIST = "InvalidParameterValue.LogsetNotExist"
@@ -460,6 +463,7 @@ func (c *Client) CreateGlobalAcceleratorAccessLog(request *CreateGlobalAccelerat
 // 创建GA访问日志
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_INPUTREPEAT = "InvalidParameter.InputRepeat"
 //  INVALIDPARAMETERVALUE_INSTANCEMISMATCH = "InvalidParameterValue.InstanceMismatch"
 //  INVALIDPARAMETERVALUE_LOGTASKLOCATEDERROR = "InvalidParameterValue.LogTaskLocatedError"
 //  INVALIDPARAMETERVALUE_LOGSETNOTEXIST = "InvalidParameterValue.LogsetNotExist"
@@ -774,10 +778,9 @@ func NewDeleteAccelerateAreasResponse() (response *DeleteAccelerateAreasResponse
 // 删除加速地域
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETERVALUE_CERTIFICATESCONFLICT = "InvalidParameterValue.CertificatesConflict"
 //  INVALIDPARAMETERVALUE_INSTANCEMISMATCH = "InvalidParameterValue.InstanceMismatch"
-//  UNSUPPORTEDOPERATION_CERTIFICATEINVALIDSTATUS = "UnsupportedOperation.CertificateInvalidStatus"
-//  UNSUPPORTEDOPERATION_INSTANCENOTRUNNING = "UnsupportedOperation.InstanceNotRunning"
+//  RESOURCEINUSE_EDGEACCELERATEAREA = "ResourceInUse.EdgeAccelerateArea"
+//  UNSUPPORTEDOPERATION_INSTANCESTATENOTALLOWEDOPERATE = "UnsupportedOperation.InstanceStateNotAllowedOperate"
 func (c *Client) DeleteAccelerateAreas(request *DeleteAccelerateAreasRequest) (response *DeleteAccelerateAreasResponse, err error) {
     return c.DeleteAccelerateAreasWithContext(context.Background(), request)
 }
@@ -786,10 +789,9 @@ func (c *Client) DeleteAccelerateAreas(request *DeleteAccelerateAreasRequest) (r
 // 删除加速地域
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETERVALUE_CERTIFICATESCONFLICT = "InvalidParameterValue.CertificatesConflict"
 //  INVALIDPARAMETERVALUE_INSTANCEMISMATCH = "InvalidParameterValue.InstanceMismatch"
-//  UNSUPPORTEDOPERATION_CERTIFICATEINVALIDSTATUS = "UnsupportedOperation.CertificateInvalidStatus"
-//  UNSUPPORTEDOPERATION_INSTANCENOTRUNNING = "UnsupportedOperation.InstanceNotRunning"
+//  RESOURCEINUSE_EDGEACCELERATEAREA = "ResourceInUse.EdgeAccelerateArea"
+//  UNSUPPORTEDOPERATION_INSTANCESTATENOTALLOWEDOPERATE = "UnsupportedOperation.InstanceStateNotAllowedOperate"
 func (c *Client) DeleteAccelerateAreasWithContext(ctx context.Context, request *DeleteAccelerateAreasRequest) (response *DeleteAccelerateAreasResponse, err error) {
     if request == nil {
         request = NewDeleteAccelerateAreasRequest()
@@ -2394,6 +2396,7 @@ func NewModifyGlobalAcceleratorAccessLogResponse() (response *ModifyGlobalAccele
 // 修改GA访问日志
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_INPUTREPEAT = "InvalidParameter.InputRepeat"
 //  INVALIDPARAMETERVALUE_EMPTY = "InvalidParameterValue.Empty"
 //  INVALIDPARAMETERVALUE_LOGSETNOTEXIST = "InvalidParameterValue.LogsetNotExist"
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
@@ -2407,6 +2410,7 @@ func (c *Client) ModifyGlobalAcceleratorAccessLog(request *ModifyGlobalAccelerat
 // 修改GA访问日志
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_INPUTREPEAT = "InvalidParameter.InputRepeat"
 //  INVALIDPARAMETERVALUE_EMPTY = "InvalidParameterValue.Empty"
 //  INVALIDPARAMETERVALUE_LOGSETNOTEXIST = "InvalidParameterValue.LogsetNotExist"
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"

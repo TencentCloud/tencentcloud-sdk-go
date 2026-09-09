@@ -478,7 +478,7 @@ type CreateDBCustomNodesRequestParams struct {
 	// <p>计费模式</p><p>枚举值：</p><ul><li>PREPAID： 包年包月</li><li>POSTPAID： 按量付费</li></ul><p>默认值：默认为包年包月(PREPAID)</p>
 	ChargeType *string `json:"ChargeType,omitnil,omitempty" name:"ChargeType"`
 
-	// <p>访问主机的网络模式</p><p>枚举值：</p><ul><li>privatelink： 四层网络联通，放通SSH 通路</li><li>cross_tenant_eni： 三层网络联通，双网卡模式</li></ul><p>默认值：默认值为：privatelink</p>
+	// <p>访问主机的网络模式</p><p>枚举值：</p><ul><li>cross_tenant_eni： 三层网络联通，双网卡模式</li></ul><p>默认值：默认值为：cross_tenant_eni</p><p>原 privatelink 访问主机的网络模式已下线。</p>
 	NetworkMode *string `json:"NetworkMode,omitnil,omitempty" name:"NetworkMode"`
 
 	// <p>系统盘配置</p><p>入参限制：仅云盘版机型支持，如DB.SA5机型。本地盘机型DB.AT5机型不支持设置</p>
@@ -548,7 +548,7 @@ type CreateDBCustomNodesRequest struct {
 	// <p>计费模式</p><p>枚举值：</p><ul><li>PREPAID： 包年包月</li><li>POSTPAID： 按量付费</li></ul><p>默认值：默认为包年包月(PREPAID)</p>
 	ChargeType *string `json:"ChargeType,omitnil,omitempty" name:"ChargeType"`
 
-	// <p>访问主机的网络模式</p><p>枚举值：</p><ul><li>privatelink： 四层网络联通，放通SSH 通路</li><li>cross_tenant_eni： 三层网络联通，双网卡模式</li></ul><p>默认值：默认值为：privatelink</p>
+	// <p>访问主机的网络模式</p><p>枚举值：</p><ul><li>cross_tenant_eni： 三层网络联通，双网卡模式</li></ul><p>默认值：默认值为：cross_tenant_eni</p><p>原 privatelink 访问主机的网络模式已下线。</p>
 	NetworkMode *string `json:"NetworkMode,omitnil,omitempty" name:"NetworkMode"`
 
 	// <p>系统盘配置</p><p>入参限制：仅云盘版机型支持，如DB.SA5机型。本地盘机型DB.AT5机型不支持设置</p>
@@ -707,6 +707,9 @@ type DBCustomClusterNode struct {
 	// <p>节点绑定的安全组</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
+
+	// <p>节点最新进行中的任务类型</p><p>枚举值：</p><ul><li>add-nodes-to-cluster： 添加节点到集群</li><li>remove-nodes-from-cluster： 从集群中移除节点</li><li>modify-nodes-attributes： 修改节点属性</li><li>modify-nodes-drg： 修改节点置放群组</li></ul>
+	LatestRunningTaskType *string `json:"LatestRunningTaskType,omitnil,omitempty" name:"LatestRunningTaskType"`
 }
 
 type DBCustomClusterNodeConfig struct {
@@ -855,6 +858,9 @@ type DBCustomNode struct {
 
 	// <p>置放群组ID</p>
 	DisasterRecoverGroupId *string `json:"DisasterRecoverGroupId,omitnil,omitempty" name:"DisasterRecoverGroupId"`
+
+	// <p>节点最新进行中的任务类型</p><p>枚举值：</p><ul><li>add-nodes-to-cluster： 添加节点到集群</li><li>remove-nodes-from-cluster： 从集群中移除节点</li><li>modify-nodes-attributes： 修改节点属性</li><li>modify-nodes-drg： 修改节点置放群组</li></ul>
+	LatestRunningTaskType *string `json:"LatestRunningTaskType,omitnil,omitempty" name:"LatestRunningTaskType"`
 }
 
 type DBCustomNodeTypeInfo struct {
@@ -3287,8 +3293,17 @@ type ModifyDBCustomClusterAttributesRequestParams struct {
 	// <p>集群ID</p><p>参数格式：dbcc-hj7gab15</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
+	// <p>集群 ID 列表</p><p>入参限制：最多支持 100 个</p><p>ClusterId 和 ClusterIds 必须传一个且不能同时传</p>
+	ClusterIds []*string `json:"ClusterIds,omitnil,omitempty" name:"ClusterIds"`
+
 	// <p>是否启用集群删除保护</p><p>枚举值：</p><ul><li>true： 启用</li><li>false： 不启用</li></ul>
 	DeletionProtection *bool `json:"DeletionProtection,omitnil,omitempty" name:"DeletionProtection"`
+
+	// <p>集群名称</p><p>入参限制：最长128个字符</p>
+	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
+
+	// <p>集群描述</p><p>入参限制：最长200个字符</p>
+	ClusterDescription *string `json:"ClusterDescription,omitnil,omitempty" name:"ClusterDescription"`
 }
 
 type ModifyDBCustomClusterAttributesRequest struct {
@@ -3297,8 +3312,17 @@ type ModifyDBCustomClusterAttributesRequest struct {
 	// <p>集群ID</p><p>参数格式：dbcc-hj7gab15</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
+	// <p>集群 ID 列表</p><p>入参限制：最多支持 100 个</p><p>ClusterId 和 ClusterIds 必须传一个且不能同时传</p>
+	ClusterIds []*string `json:"ClusterIds,omitnil,omitempty" name:"ClusterIds"`
+
 	// <p>是否启用集群删除保护</p><p>枚举值：</p><ul><li>true： 启用</li><li>false： 不启用</li></ul>
 	DeletionProtection *bool `json:"DeletionProtection,omitnil,omitempty" name:"DeletionProtection"`
+
+	// <p>集群名称</p><p>入参限制：最长128个字符</p>
+	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
+
+	// <p>集群描述</p><p>入参限制：最长200个字符</p>
+	ClusterDescription *string `json:"ClusterDescription,omitnil,omitempty" name:"ClusterDescription"`
 }
 
 func (r *ModifyDBCustomClusterAttributesRequest) ToJsonString() string {
@@ -3314,7 +3338,10 @@ func (r *ModifyDBCustomClusterAttributesRequest) FromJsonString(s string) error 
 		return err
 	}
 	delete(f, "ClusterId")
+	delete(f, "ClusterIds")
 	delete(f, "DeletionProtection")
+	delete(f, "ClusterName")
+	delete(f, "ClusterDescription")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDBCustomClusterAttributesRequest has unknown keys!", "")
 	}
@@ -3647,6 +3674,9 @@ type ModifyDBCustomNodeAttributesRequestParams struct {
 	// <p>节点ID</p><p>参数格式：dbcn-hq98qjym</p>
 	NodeId *string `json:"NodeId,omitnil,omitempty" name:"NodeId"`
 
+	// <p>节点 ID 列表</p><p>入参限制：最多支持 100 个</p><p>NodeId 和 NodeIds 必须传一个且不能同时传</p>
+	NodeIds []*string `json:"NodeIds,omitnil,omitempty" name:"NodeIds"`
+
 	// <p>主机 HostName</p><p>入参限制：参数设置规则参见：<a href="https://cloud.tencent.com/document/api/1322/132929">创建 DB Custom 节点接口</a>的 HostName 参数说明。</p><p>注意：节点在没有加入到集群之前才支持修改主机 HostName。</p>
 	HostName *string `json:"HostName,omitnil,omitempty" name:"HostName"`
 
@@ -3662,6 +3692,9 @@ type ModifyDBCustomNodeAttributesRequest struct {
 	
 	// <p>节点ID</p><p>参数格式：dbcn-hq98qjym</p>
 	NodeId *string `json:"NodeId,omitnil,omitempty" name:"NodeId"`
+
+	// <p>节点 ID 列表</p><p>入参限制：最多支持 100 个</p><p>NodeId 和 NodeIds 必须传一个且不能同时传</p>
+	NodeIds []*string `json:"NodeIds,omitnil,omitempty" name:"NodeIds"`
 
 	// <p>主机 HostName</p><p>入参限制：参数设置规则参见：<a href="https://cloud.tencent.com/document/api/1322/132929">创建 DB Custom 节点接口</a>的 HostName 参数说明。</p><p>注意：节点在没有加入到集群之前才支持修改主机 HostName。</p>
 	HostName *string `json:"HostName,omitnil,omitempty" name:"HostName"`
@@ -3686,6 +3719,7 @@ func (r *ModifyDBCustomNodeAttributesRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "NodeId")
+	delete(f, "NodeIds")
 	delete(f, "HostName")
 	delete(f, "NodeName")
 	delete(f, "AutoReboot")

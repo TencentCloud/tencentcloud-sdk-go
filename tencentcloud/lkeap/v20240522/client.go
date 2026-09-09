@@ -1059,7 +1059,7 @@ func NewReconstructDocumentSSEResponse() (response *ReconstructDocumentSSERespon
 }
 
 // ReconstructDocumentSSE
-// **此接口处于预下线状态 。请尽快升级到新对应接口：**https://cloud.tencent.com/document/product/866/133224
+// **此接口预计于12月31日下线 。请尽快升级到新对应接口：**https://cloud.tencent.com/document/product/866/133224
 //
 // 
 //
@@ -1088,7 +1088,7 @@ func (c *Client) ReconstructDocumentSSE(request *ReconstructDocumentSSERequest) 
 }
 
 // ReconstructDocumentSSE
-// **此接口处于预下线状态 。请尽快升级到新对应接口：**https://cloud.tencent.com/document/product/866/133224
+// **此接口预计于12月31日下线 。请尽快升级到新对应接口：**https://cloud.tencent.com/document/product/866/133224
 //
 // 
 //

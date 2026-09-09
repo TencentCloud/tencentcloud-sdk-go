@@ -206,11 +206,13 @@ func NewCreateCompanyDirectoryConfigResponse() (response *CreateCompanyDirectory
 // 创建企业目录配置
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_UNEXPECTEDERROR = "FailedOperation.UnexpectedError"
 //  INTERNALERROR_DATABASEQUERYFAILED = "InternalError.DatabaseQueryFailed"
 //  INTERNALERROR_DATABASEWRITEFAILED = "InternalError.DatabaseWriteFailed"
 //  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
 //  INVALIDPARAMETER_SAMEACCOUNTGROUPNAME = "InvalidParameter.SameAccountGroupName"
 //  LIMITEXCEEDED_COMPANYDIRECTORYMAXLIMIT = "LimitExceeded.CompanyDirectoryMaxLimit"
+//  OPERATIONDENIED_NOADMINISTRATORPRIVILEGE = "OperationDenied.NoAdministratorPrivilege"
 func (c *Client) CreateCompanyDirectoryConfig(request *CreateCompanyDirectoryConfigRequest) (response *CreateCompanyDirectoryConfigResponse, err error) {
     return c.CreateCompanyDirectoryConfigWithContext(context.Background(), request)
 }
@@ -219,11 +221,13 @@ func (c *Client) CreateCompanyDirectoryConfig(request *CreateCompanyDirectoryCon
 // 创建企业目录配置
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_UNEXPECTEDERROR = "FailedOperation.UnexpectedError"
 //  INTERNALERROR_DATABASEQUERYFAILED = "InternalError.DatabaseQueryFailed"
 //  INTERNALERROR_DATABASEWRITEFAILED = "InternalError.DatabaseWriteFailed"
 //  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
 //  INVALIDPARAMETER_SAMEACCOUNTGROUPNAME = "InvalidParameter.SameAccountGroupName"
 //  LIMITEXCEEDED_COMPANYDIRECTORYMAXLIMIT = "LimitExceeded.CompanyDirectoryMaxLimit"
+//  OPERATIONDENIED_NOADMINISTRATORPRIVILEGE = "OperationDenied.NoAdministratorPrivilege"
 func (c *Client) CreateCompanyDirectoryConfigWithContext(ctx context.Context, request *CreateCompanyDirectoryConfigRequest) (response *CreateCompanyDirectoryConfigResponse, err error) {
     if request == nil {
         request = NewCreateCompanyDirectoryConfigRequest()

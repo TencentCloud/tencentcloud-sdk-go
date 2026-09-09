@@ -3021,38 +3021,38 @@ func (r *CreateContentIdentifierResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateCustomizeErrorPageRequestParams struct {
-	// 站点 ID。
+	// <p>站点 ID。</p>
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 自定义错误页名称，名称为 2-30 个字符。
+	// <p>自定义响应页面名称，名称为 2-30 个字符。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 自定义错误页面类型，取值有：<li>text/html； </li><li>application/json；</li><li>text/plain；</li><li>text/xml。</li>
+	// <p>自定义响应页面类型，取值有：</p><ul><li>text/html</li><li>application/json</li><li>plain/text</li><li>text/xml</li><li>text/css</li><li>text/javascript</li><li>application/javascript</li><li>text/markdown</li></ul>
 	ContentType *string `json:"ContentType,omitnil,omitempty" name:"ContentType"`
 
-	// 自定义错误页面描述，描述不超过 60 个字符。
+	// <p>自定义响应页面描述，描述不超过 60 个字符。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 自定义错误页面内容，内容不超过 2KB。
+	// <p>自定义响应页面内容，内容不超过 16KB。</p>
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 }
 
 type CreateCustomizeErrorPageRequest struct {
 	*tchttp.BaseRequest
 	
-	// 站点 ID。
+	// <p>站点 ID。</p>
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 自定义错误页名称，名称为 2-30 个字符。
+	// <p>自定义响应页面名称，名称为 2-30 个字符。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 自定义错误页面类型，取值有：<li>text/html； </li><li>application/json；</li><li>text/plain；</li><li>text/xml。</li>
+	// <p>自定义响应页面类型，取值有：</p><ul><li>text/html</li><li>application/json</li><li>plain/text</li><li>text/xml</li><li>text/css</li><li>text/javascript</li><li>application/javascript</li><li>text/markdown</li></ul>
 	ContentType *string `json:"ContentType,omitnil,omitempty" name:"ContentType"`
 
-	// 自定义错误页面描述，描述不超过 60 个字符。
+	// <p>自定义响应页面描述，描述不超过 60 个字符。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 自定义错误页面内容，内容不超过 2KB。
+	// <p>自定义响应页面内容，内容不超过 16KB。</p>
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 }
 
@@ -3081,7 +3081,7 @@ func (r *CreateCustomizeErrorPageRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateCustomizeErrorPageResponseParams struct {
-	// 页面 ID。
+	// <p>自定义响应页面 ID。</p>
 	PageId *string `json:"PageId,omitnil,omitempty" name:"PageId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -19488,44 +19488,44 @@ func (r *ModifyContentIdentifierResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyCustomErrorPageRequestParams struct {
-	// 自定义错误页面 ID。
+	// <p>自定义响应页面 ID。</p>
 	PageId *string `json:"PageId,omitnil,omitempty" name:"PageId"`
 
-	// 站点 ID。
+	// <p>站点 ID。</p>
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 自定义错误页名称，名称为2 - 60个字符。
+	// <p>自定义响应页面名称，名称为 2 - 60 个字符。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 自定义错误页描述，描述内容不超过60个字符。
+	// <p>自定义响应页面描述，描述内容不超过 60 个字符。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 自定义错误页面类型，取值有：<li>text/html。 </li><li>application/json。</li><li>plain/text。</li><li>text/xml。</li>
+	// <p>自定义响应页面类型，取值有：</p><ul><li>text/html</li><li>application/json</li><li>plain/text</li><li>text/xml</li><li>text/css</li><li>text/javascript</li><li>application/javascript</li><li>text/markdown</li></ul>
 	ContentType *string `json:"ContentType,omitnil,omitempty" name:"ContentType"`
 
-	// 自定义错误页面内容。内容不超过 2KB。
+	// <p>自定义响应页面内容。内容不超过 16KB。</p>
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 }
 
 type ModifyCustomErrorPageRequest struct {
 	*tchttp.BaseRequest
 	
-	// 自定义错误页面 ID。
+	// <p>自定义响应页面 ID。</p>
 	PageId *string `json:"PageId,omitnil,omitempty" name:"PageId"`
 
-	// 站点 ID。
+	// <p>站点 ID。</p>
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 自定义错误页名称，名称为2 - 60个字符。
+	// <p>自定义响应页面名称，名称为 2 - 60 个字符。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 自定义错误页描述，描述内容不超过60个字符。
+	// <p>自定义响应页面描述，描述内容不超过 60 个字符。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 自定义错误页面类型，取值有：<li>text/html。 </li><li>application/json。</li><li>plain/text。</li><li>text/xml。</li>
+	// <p>自定义响应页面类型，取值有：</p><ul><li>text/html</li><li>application/json</li><li>plain/text</li><li>text/xml</li><li>text/css</li><li>text/javascript</li><li>application/javascript</li><li>text/markdown</li></ul>
 	ContentType *string `json:"ContentType,omitnil,omitempty" name:"ContentType"`
 
-	// 自定义错误页面内容。内容不超过 2KB。
+	// <p>自定义响应页面内容。内容不超过 16KB。</p>
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 }
 

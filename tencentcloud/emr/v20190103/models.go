@@ -1164,6 +1164,14 @@ type ComputeResourceAdvanceParams struct {
 	NodePoolJoinMode *string `json:"NodePoolJoinMode,omitnil,omitempty" name:"NodePoolJoinMode"`
 }
 
+type ConfSubContext struct {
+	// 配置文件名字
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
+
+	// 配置文件参数,需要转为base64
+	Params *string `json:"Params,omitnil,omitempty" name:"Params"`
+}
+
 type ConfigModifyInfoV2 struct {
 	// 操作类型，可选值：
 	// 
@@ -4168,6 +4176,92 @@ func (r *DescribeEmrOverviewMetricsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeEmrOverviewMetricsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeExportConfsRequestParams struct {
+	// <p>实例ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>指定需要导出的配置</p>
+	ExportConfContexts []*ExportConfContext `json:"ExportConfContexts,omitnil,omitempty" name:"ExportConfContexts"`
+
+	// <p>导出类型</p><p>枚举值：</p><ul><li>0： 全部配置</li><li>1： 只导出自定义和修改过的配置</li></ul>
+	ExportType *int64 `json:"ExportType,omitnil,omitempty" name:"ExportType"`
+
+	// <p>节点ip</p>
+	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
+
+	// <p>配置组名称</p>
+	ConfGroupName *string `json:"ConfGroupName,omitnil,omitempty" name:"ConfGroupName"`
+}
+
+type DescribeExportConfsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>实例ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>指定需要导出的配置</p>
+	ExportConfContexts []*ExportConfContext `json:"ExportConfContexts,omitnil,omitempty" name:"ExportConfContexts"`
+
+	// <p>导出类型</p><p>枚举值：</p><ul><li>0： 全部配置</li><li>1： 只导出自定义和修改过的配置</li></ul>
+	ExportType *int64 `json:"ExportType,omitnil,omitempty" name:"ExportType"`
+
+	// <p>节点ip</p>
+	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
+
+	// <p>配置组名称</p>
+	ConfGroupName *string `json:"ConfGroupName,omitnil,omitempty" name:"ConfGroupName"`
+}
+
+func (r *DescribeExportConfsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeExportConfsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "ExportConfContexts")
+	delete(f, "ExportType")
+	delete(f, "Ip")
+	delete(f, "ConfGroupName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeExportConfsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeExportConfsResponseParams struct {
+	// <p>导出配置参数</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExportConfParamList []*ExportConfMeta `json:"ExportConfParamList,omitnil,omitempty" name:"ExportConfParamList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeExportConfsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeExportConfsResponseParams `json:"Response"`
+}
+
+func (r *DescribeExportConfsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeExportConfsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -8120,6 +8214,35 @@ type Execution struct {
 	Args []*string `json:"Args,omitnil,omitempty" name:"Args"`
 }
 
+type ExportConfContext struct {
+	// <p>服务配置</p>
+	ServiceType *int64 `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
+
+	// <p>文件名</p>
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
+
+	// <p>服务名称</p>
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+}
+
+type ExportConfMeta struct {
+	// <p>组件名称</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// <p>文件名</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Classification *string `json:"Classification,omitnil,omitempty" name:"Classification"`
+
+	// <p>组件版本</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceVersion *string `json:"ServiceVersion,omitnil,omitempty" name:"ServiceVersion"`
+
+	// <p>导出配置参数</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Properties *string `json:"Properties,omitnil,omitempty" name:"Properties"`
+}
+
 type ExternalAccess struct {
 	// 外部访问类型，当前仅支持CLB字段
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
@@ -11082,6 +11205,87 @@ func (r *ModifySLInstanceResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifySLInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyServiceParamsByExportConfsRequestParams struct {
+	// <p>集群id</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>导入配置项</p>
+	ExportConfParamList []*ExportConfMeta `json:"ExportConfParamList,omitnil,omitempty" name:"ExportConfParamList"`
+
+	// <p>ip</p>
+	IpList []*string `json:"IpList,omitnil,omitempty" name:"IpList"`
+
+	// <p>配置组</p>
+	ConfGroupName *string `json:"ConfGroupName,omitnil,omitempty" name:"ConfGroupName"`
+}
+
+type ModifyServiceParamsByExportConfsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>集群id</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>导入配置项</p>
+	ExportConfParamList []*ExportConfMeta `json:"ExportConfParamList,omitnil,omitempty" name:"ExportConfParamList"`
+
+	// <p>ip</p>
+	IpList []*string `json:"IpList,omitnil,omitempty" name:"IpList"`
+
+	// <p>配置组</p>
+	ConfGroupName *string `json:"ConfGroupName,omitnil,omitempty" name:"ConfGroupName"`
+}
+
+func (r *ModifyServiceParamsByExportConfsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyServiceParamsByExportConfsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "ExportConfParamList")
+	delete(f, "IpList")
+	delete(f, "ConfGroupName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyServiceParamsByExportConfsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyServiceParamsByExportConfsResponseParams struct {
+	// <p>流程id</p>
+	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+
+	// <p>变更项</p>
+	WaitModifyConfList []*ConfSubContext `json:"WaitModifyConfList,omitnil,omitempty" name:"WaitModifyConfList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyServiceParamsByExportConfsResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyServiceParamsByExportConfsResponseParams `json:"Response"`
+}
+
+func (r *ModifyServiceParamsByExportConfsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyServiceParamsByExportConfsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

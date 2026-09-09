@@ -7314,6 +7314,37 @@ type RailwayTicketInfo struct {
 	NumberOfOriginalInvoice *string `json:"NumberOfOriginalInvoice,omitnil,omitempty" name:"NumberOfOriginalInvoice"`
 }
 
+type ReasoningConfig struct {
+	// <p>实际使用的推理输出模式：enum 或 string。</p>
+	OutputMode *string `json:"OutputMode,omitnil,omitempty" name:"OutputMode"`
+
+	// <p>枚举值集合，仅在 OutputMode=enum 时生效。  VLM 输出必须精确命中此集合中的某个值。</p>
+	EnumValues []*string `json:"EnumValues,omitnil,omitempty" name:"EnumValues"`
+
+	// <p>文本输出最大长度，仅在 OutputMode=string 时生效。</p><p>取值范围：[1, 500]</p><p>默认值：200</p>
+	MaxLength *int64 `json:"MaxLength,omitnil,omitempty" name:"MaxLength"`
+
+	// <p>是否在推理调用时向 VLM 传入原图进行多模态理解。  true（默认）：VLM 同时接收原图和渲染后的 Prompt，具备多模态理解能力，可直接&quot;看&quot;图片内容进行推理。  false：不传入原图，仅以渲染后的 Prompt（含变量注入值）进行纯文本推理。适用于推理逻辑完全基于结构化出参字段（如水印文字、置信度比较等）的场景，可降低推理延迟和计费成本。  建议：当 ReasoningPrompt 中未涉及&quot;观察图片&quot;、&quot;直接看图&quot;等多模态指令，且推理规则完全基于 ${变量名} 引用的文字结果时，可设为 false 以优化性能。</p>
+	EnableImageInput *bool `json:"EnableImageInput,omitnil,omitempty" name:"EnableImageInput"`
+}
+
+type ReasoningResult struct {
+	// <p>实际使用的推理输出模式：enum 或 string。</p>
+	OutputMode *string `json:"OutputMode,omitnil,omitempty" name:"OutputMode"`
+
+	// <p>枚举模式下的推理结果值。当 OutputMode=enum 时返回，必定命中请求中 EnumValues 的某个值。 若 VLM 输出无法匹配任何枚举值，则返回 <strong>UNCERTAIN</strong>。</p>
+	EnumValue *string `json:"EnumValue,omitnil,omitempty" name:"EnumValue"`
+
+	// <p>文本模式下的推理结果值。当 OutputMode=string 时返回。 若 VLM 无法得出结论，则返回 <strong>UNCERTAIN</strong>。</p>
+	TextValue *string `json:"TextValue,omitnil,omitempty" name:"TextValue"`
+
+	// <p>VLM 原始输出文本（未经过结构化校验）。</p>
+	RawOutput *string `json:"RawOutput,omitnil,omitempty" name:"RawOutput"`
+
+	// <p>变量替换后的实际 Prompt（脱敏后）。</p>
+	RenderedPrompt *string `json:"RenderedPrompt,omitnil,omitempty" name:"RenderedPrompt"`
+}
+
 // Predefined struct for user
 type RecognizeAgentRequestParams struct {
 	// <p>图片/PDF的 Url 地址。要求图片经Base64编码后不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP格式。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。</p>
@@ -12815,6 +12846,12 @@ type VerifyScenePhotoRequestParams struct {
 
 	// <p>图片的 Base64 值。要求图片经Base64编码后不超过 10M。</p>
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
+
+	// <p>推理 Prompt 模板，默认使用 VLM 对图片进行理解推理，同时支持使用 ${变量名} 进行推理。传入该参数即开启推理流程。</p><p>入参限制：长度限制：1–2000 字符</p>
+	ReasoningPrompt *string `json:"ReasoningPrompt,omitnil,omitempty" name:"ReasoningPrompt"`
+
+	// <p>推理输出配置。当 ReasoningPrompt 传入时建议同步传入，未传入时使用默认配置（OutputMode=enum, EnumValues=[&quot;true&quot;,&quot;false&quot;], EnableImageInput=true）。</p>
+	ReasoningConfig *ReasoningConfig `json:"ReasoningConfig,omitnil,omitempty" name:"ReasoningConfig"`
 }
 
 type VerifyScenePhotoRequest struct {
@@ -12828,6 +12865,12 @@ type VerifyScenePhotoRequest struct {
 
 	// <p>图片的 Base64 值。要求图片经Base64编码后不超过 10M。</p>
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
+
+	// <p>推理 Prompt 模板，默认使用 VLM 对图片进行理解推理，同时支持使用 ${变量名} 进行推理。传入该参数即开启推理流程。</p><p>入参限制：长度限制：1–2000 字符</p>
+	ReasoningPrompt *string `json:"ReasoningPrompt,omitnil,omitempty" name:"ReasoningPrompt"`
+
+	// <p>推理输出配置。当 ReasoningPrompt 传入时建议同步传入，未传入时使用默认配置（OutputMode=enum, EnumValues=[&quot;true&quot;,&quot;false&quot;], EnableImageInput=true）。</p>
+	ReasoningConfig *ReasoningConfig `json:"ReasoningConfig,omitnil,omitempty" name:"ReasoningConfig"`
 }
 
 func (r *VerifyScenePhotoRequest) ToJsonString() string {
@@ -12845,6 +12888,8 @@ func (r *VerifyScenePhotoRequest) FromJsonString(s string) error {
 	delete(f, "Scene")
 	delete(f, "ImageUrl")
 	delete(f, "ImageBase64")
+	delete(f, "ReasoningPrompt")
+	delete(f, "ReasoningConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VerifyScenePhotoRequest has unknown keys!", "")
 	}
@@ -12870,6 +12915,12 @@ type VerifyScenePhotoResponseParams struct {
 
 	// <p>水印内容，当未检测到文字水印时不返回，返回多组水印时以 | 分隔。</p>
 	WatermarkContent *string `json:"WatermarkContent,omitnil,omitempty" name:"WatermarkContent"`
+
+	// <p>模板图片提示</p>
+	Template *SceneWarnInfo `json:"Template,omitnil,omitempty" name:"Template"`
+
+	// <p>VLM 推理结果。仅当请求中传入 ReasoningPrompt 时返回，否则不返回此字段。</p>
+	ReasoningResult *ReasoningResult `json:"ReasoningResult,omitnil,omitempty" name:"ReasoningResult"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

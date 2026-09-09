@@ -22,87 +22,81 @@ import (
 
 // Predefined struct for user
 type CreateWorkspaceRequestParams struct {
-	// 工作空间名称, 长度限制 2~64
+	// <p>工作空间名称, 长度限制 2~64</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 工作空间描述, 长度限制 0~255
+	// <p>工作空间描述, 长度限制 0~255</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 工作空间规格。Standard: 2C4G, Calculation: 4C8G, Profession: 8C16G. 默认是 Standard。
+	// <p>工作空间规格。Standard: 2C4G, Calculation: 4C8G, Profession: 8C16G. 默认是 Standard。</p>
 	Specs *string `json:"Specs,omitnil,omitempty" name:"Specs"`
 
-	// 工作空间基础镜像名称, 默认会使用 All In One 镜像, 长度限制 1~255
+	// <p>工作空间基础镜像名称, 默认会使用 All In One 镜像, 长度限制 1~255</p>
 	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
 
-	// Git 仓库. 工作空间启动时会自动克隆该仓库
+	// <p>Git 仓库. 工作空间启动时会自动克隆该仓库</p>
 	Repository *GitRepository `json:"Repository,omitnil,omitempty" name:"Repository"`
 
-	// 环境变量. 会被注入到工作空间中
+	// <p>环境变量. 会被注入到工作空间中</p>
 	Envs []*Env `json:"Envs,omitnil,omitempty" name:"Envs"`
 
-	// 预装插件. 工作空间启动时, 会自动安装这些插件。长度限制: 0~10
+	// <p>预装插件. 工作空间启动时, 会自动安装这些插件。长度限制: 0~10</p>
 	Extensions []*string `json:"Extensions,omitnil,omitempty" name:"Extensions"`
 
-	// 工作空间生命周期钩子.  分为三个阶段 init, start, destroy. 分别表示工作空间数据初始化阶段, 工作空间启动阶段, 工作空间关闭阶段.  用户可以自定义 shell 命令. 
+	// <p>工作空间生命周期钩子.  分为三个阶段 init, start, destroy. 分别表示工作空间数据初始化阶段, 工作空间启动阶段, 工作空间关闭阶段.  用户可以自定义 shell 命令.</p>
 	Lifecycle *LifeCycle `json:"Lifecycle,omitnil,omitempty" name:"Lifecycle"`
 
-	// 应用名称
+	// <p>应用名称</p>
 	TenantAppId *int64 `json:"TenantAppId,omitnil,omitempty" name:"TenantAppId"`
 
-	// 用户UIN
+	// <p>用户UIN</p>
 	TenantUin *string `json:"TenantUin,omitnil,omitempty" name:"TenantUin"`
 
-	// VPCID
+	// <p>VPCID</p>
 	TenantUniqVpcId *string `json:"TenantUniqVpcId,omitnil,omitempty" name:"TenantUniqVpcId"`
 
-	// 子网ID
+	// <p>子网ID</p>
 	TenantSubnetId *string `json:"TenantSubnetId,omitnil,omitempty" name:"TenantSubnetId"`
-
-	// 地域
-	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 }
 
 type CreateWorkspaceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 工作空间名称, 长度限制 2~64
+	// <p>工作空间名称, 长度限制 2~64</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 工作空间描述, 长度限制 0~255
+	// <p>工作空间描述, 长度限制 0~255</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 工作空间规格。Standard: 2C4G, Calculation: 4C8G, Profession: 8C16G. 默认是 Standard。
+	// <p>工作空间规格。Standard: 2C4G, Calculation: 4C8G, Profession: 8C16G. 默认是 Standard。</p>
 	Specs *string `json:"Specs,omitnil,omitempty" name:"Specs"`
 
-	// 工作空间基础镜像名称, 默认会使用 All In One 镜像, 长度限制 1~255
+	// <p>工作空间基础镜像名称, 默认会使用 All In One 镜像, 长度限制 1~255</p>
 	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
 
-	// Git 仓库. 工作空间启动时会自动克隆该仓库
+	// <p>Git 仓库. 工作空间启动时会自动克隆该仓库</p>
 	Repository *GitRepository `json:"Repository,omitnil,omitempty" name:"Repository"`
 
-	// 环境变量. 会被注入到工作空间中
+	// <p>环境变量. 会被注入到工作空间中</p>
 	Envs []*Env `json:"Envs,omitnil,omitempty" name:"Envs"`
 
-	// 预装插件. 工作空间启动时, 会自动安装这些插件。长度限制: 0~10
+	// <p>预装插件. 工作空间启动时, 会自动安装这些插件。长度限制: 0~10</p>
 	Extensions []*string `json:"Extensions,omitnil,omitempty" name:"Extensions"`
 
-	// 工作空间生命周期钩子.  分为三个阶段 init, start, destroy. 分别表示工作空间数据初始化阶段, 工作空间启动阶段, 工作空间关闭阶段.  用户可以自定义 shell 命令. 
+	// <p>工作空间生命周期钩子.  分为三个阶段 init, start, destroy. 分别表示工作空间数据初始化阶段, 工作空间启动阶段, 工作空间关闭阶段.  用户可以自定义 shell 命令.</p>
 	Lifecycle *LifeCycle `json:"Lifecycle,omitnil,omitempty" name:"Lifecycle"`
 
-	// 应用名称
+	// <p>应用名称</p>
 	TenantAppId *int64 `json:"TenantAppId,omitnil,omitempty" name:"TenantAppId"`
 
-	// 用户UIN
+	// <p>用户UIN</p>
 	TenantUin *string `json:"TenantUin,omitnil,omitempty" name:"TenantUin"`
 
-	// VPCID
+	// <p>VPCID</p>
 	TenantUniqVpcId *string `json:"TenantUniqVpcId,omitnil,omitempty" name:"TenantUniqVpcId"`
 
-	// 子网ID
+	// <p>子网ID</p>
 	TenantSubnetId *string `json:"TenantSubnetId,omitnil,omitempty" name:"TenantSubnetId"`
-
-	// 地域
-	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 }
 
 func (r *CreateWorkspaceRequest) ToJsonString() string {
@@ -129,7 +123,6 @@ func (r *CreateWorkspaceRequest) FromJsonString(s string) error {
 	delete(f, "TenantUin")
 	delete(f, "TenantUniqVpcId")
 	delete(f, "TenantSubnetId")
-	delete(f, "Region")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateWorkspaceRequest has unknown keys!", "")
 	}
@@ -138,10 +131,10 @@ func (r *CreateWorkspaceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateWorkspaceResponseParams struct {
-	// 工作空间 SpaceKey
+	// <p>工作空间 SpaceKey</p>
 	SpaceKey *string `json:"SpaceKey,omitnil,omitempty" name:"SpaceKey"`
 
-	// 工作空间名称
+	// <p>工作空间名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

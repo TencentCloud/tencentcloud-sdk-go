@@ -196,6 +196,31 @@ type AgentPluginConfig struct {
 
 	// <p>OAuth 授权同意模式；0-开发者授权；1-使用者授权（仅在auth_type=3时生效）</p>
 	OAuthConsent *int64 `json:"OAuthConsent,omitnil,omitempty" name:"OAuthConsent"`
+
+	// <p>凭证配置</p>
+	CredentialConfig *AgentPluginCredentialConfig `json:"CredentialConfig,omitnil,omitempty" name:"CredentialConfig"`
+}
+
+type AgentPluginCredentialConfig struct {
+	// <p>插件鉴权值来源</p><p>枚举值：</p><ul><li>0： 未指定</li><li>1： 使用插件默认鉴权值，仅 APIKey/AccessKey 支持</li><li>2： 引用凭证</li><li>3： 引用变量</li></ul>
+	AuthValueSource *int64 `json:"AuthValueSource,omitnil,omitempty" name:"AuthValueSource"`
+
+	// <p>凭证ID</p><p>入参限制：AuthValueSource=2时必填</p>
+	CredentialId *string `json:"CredentialId,omitnil,omitempty" name:"CredentialId"`
+
+	// <p>参数配置</p>
+	ParamList []*AgentPluginCredentialParam `json:"ParamList,omitnil,omitempty" name:"ParamList"`
+}
+
+type AgentPluginCredentialParam struct {
+	// <p>参数位置</p><p>枚举值：</p><ul><li>0： Header 鉴权</li><li>1： Query 鉴权</li></ul>
+	KeyLocation *int64 `json:"KeyLocation,omitnil,omitempty" name:"KeyLocation"`
+
+	// <p>参数名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>参数取值来源</p>
+	Input *AgentInput `json:"Input,omitnil,omitempty" name:"Input"`
 }
 
 type AgentPluginParameter struct {
@@ -1269,6 +1294,17 @@ type CallSource struct {
 	SubjectType *int64 `json:"SubjectType,omitnil,omitempty" name:"SubjectType"`
 }
 
+type CallbackConfig struct {
+	// <p>回调AESKey</p>
+	CallbackAesKey *string `json:"CallbackAesKey,omitnil,omitempty" name:"CallbackAesKey"`
+
+	// <p>回调Token</p>
+	CallbackToken *string `json:"CallbackToken,omitnil,omitempty" name:"CallbackToken"`
+
+	// <p>回调URL</p>
+	CallbackUrl *string `json:"CallbackUrl,omitnil,omitempty" name:"CallbackUrl"`
+}
+
 type CamAuthConfig struct {
 	// 角色名称
 	RoleName *string `json:"RoleName,omitnil,omitempty" name:"RoleName"`
@@ -1298,6 +1334,84 @@ type CategoryPermission struct {
 
 	// <p>当前用户是否可编辑该分类</p>
 	CanEdit *bool `json:"CanEdit,omitnil,omitempty" name:"CanEdit"`
+}
+
+type Channel struct {
+	// <p>渠道ID</p>
+	ChannelId *string `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// <p>渠道状态（仅B端）：1-未发布，2-运行中，3-已下线（与ConnectStatus互斥）</p>
+	ChannelStatus *int64 `json:"ChannelStatus,omitnil,omitempty" name:"ChannelStatus"`
+
+	// <p>连接状态（仅C端）：1-初始，2-连接成功，3-连接失败（与ChannelStatus互斥）</p>
+	ConnectStatus *int64 `json:"ConnectStatus,omitnil,omitempty" name:"ConnectStatus"`
+
+	// <p>创建时间（Unix秒）</p>
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>渠道规格</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Spec *ChannelSpec `json:"Spec,omitnil,omitempty" name:"Spec"`
+
+	// <p>更新时间（Unix秒）</p>
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// <p>最后更新人</p>
+	Updater *string `json:"Updater,omitnil,omitempty" name:"Updater"`
+}
+
+type ChannelSpec struct {
+	// <p>渠道名称</p>
+	ChannelName *string `json:"ChannelName,omitnil,omitempty" name:"ChannelName"`
+
+	// <p>渠道类型，详见ChannelType枚举</p><p>枚举值：</p><ul><li>10000： 微信服务号(Wechat)</li><li>10002： 企微应用(WeComApp)</li><li>10004： 微信客服(WechatCustomerService)</li><li>10009： 企微智能机器人(WeComRobot)</li><li>10013： 钉钉机器人(DingTalk)</li><li>10014： 企微智能机器人WebSocket(WeComRobot)</li><li>10015： 微信ClawBot(WechatClawBot)</li><li>10011： LINE(Line)</li><li>10012： Telegram(Telegram)</li><li>10016： 飞书机器人(Lark) </li></ul><p>C端场景（Scene=1时）只支持10014和10015</p>
+	ChannelType *int64 `json:"ChannelType,omitnil,omitempty" name:"ChannelType"`
+
+	// <p>备注</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>钉钉机器人配置</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DingTalk *DingTalkChannelConfig `json:"DingTalk,omitnil,omitempty" name:"DingTalk"`
+
+	// <p>飞书机器人配置</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Lark *LarkChannelConfig `json:"Lark,omitnil,omitempty" name:"Lark"`
+
+	// <p>LINE配置</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Line *LineChannelConfig `json:"Line,omitnil,omitempty" name:"Line"`
+
+	// <p>渠道场景：0-B端场景，1-C端场景</p>
+	Scene *int64 `json:"Scene,omitnil,omitempty" name:"Scene"`
+
+	// <p>Telegram配置</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Telegram *TelegramChannelConfig `json:"Telegram,omitnil,omitempty" name:"Telegram"`
+
+	// <p>归属用户+Agent运行态标识（C端）</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserAgent *UserAgentReference `json:"UserAgent,omitnil,omitempty" name:"UserAgent"`
+
+	// <p>微信公众号/小程序配置</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Wechat *WechatChannelConfig `json:"Wechat,omitnil,omitempty" name:"Wechat"`
+
+	// <p>微信ClawBot配置</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WechatClawBot *WechatClawBotChannelConfig `json:"WechatClawBot,omitnil,omitempty" name:"WechatClawBot"`
+
+	// <p>微信客服配置</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WechatCustomerService *WechatCustomerServiceChannelConfig `json:"WechatCustomerService,omitnil,omitempty" name:"WechatCustomerService"`
+
+	// <p>企微应用配置</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WecomApp *WecomAppChannelConfig `json:"WecomApp,omitnil,omitempty" name:"WecomApp"`
+
+	// <p>企微机器人配置</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WecomRobot *WecomRobotChannelConfig `json:"WecomRobot,omitnil,omitempty" name:"WecomRobot"`
 }
 
 type ClawAgentAgentTeamConfig struct {
@@ -2112,6 +2226,73 @@ func (r *CreateAppTriggerResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateAppTriggerResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateChannelRequestParams struct {
+	// <p>应用业务ID</p>
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>渠道规格（场景/类型/名称/备注/配置，必填）</p>
+	Spec *ChannelSpec `json:"Spec,omitnil,omitempty" name:"Spec"`
+}
+
+type CreateChannelRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>应用业务ID</p>
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>渠道规格（场景/类型/名称/备注/配置，必填）</p>
+	Spec *ChannelSpec `json:"Spec,omitnil,omitempty" name:"Spec"`
+}
+
+func (r *CreateChannelRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateChannelRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AppId")
+	delete(f, "Spec")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateChannelRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateChannelResponseParams struct {
+	// <p>渠道ID</p>
+	ChannelId *string `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// <p>二维码URL（扫码类渠道创建后回填，其他场景为空）</p>
+	QrcodeUrl *string `json:"QrcodeUrl,omitnil,omitempty" name:"QrcodeUrl"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateChannelResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateChannelResponseParams `json:"Response"`
+}
+
+func (r *CreateChannelResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateChannelResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3231,6 +3412,74 @@ func (r *DeleteAppTriggerResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteAppTriggerResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteChannelRequestParams struct {
+	// <p>应用业务ID</p>
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>渠道业务ID</p>
+	ChannelId *string `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// <p>渠道场景：0-B端场景，1-C端场景</p>
+	Scene *int64 `json:"Scene,omitnil,omitempty" name:"Scene"`
+}
+
+type DeleteChannelRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>应用业务ID</p>
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>渠道业务ID</p>
+	ChannelId *string `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// <p>渠道场景：0-B端场景，1-C端场景</p>
+	Scene *int64 `json:"Scene,omitnil,omitempty" name:"Scene"`
+}
+
+func (r *DeleteChannelRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteChannelRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AppId")
+	delete(f, "ChannelId")
+	delete(f, "Scene")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteChannelRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteChannelResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteChannelResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteChannelResponseParams `json:"Response"`
+}
+
+func (r *DeleteChannelResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteChannelResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4688,6 +4937,165 @@ func (r *DescribeAuditLogMetaResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAuditLogMetaResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeChannelListRequestParams struct {
+	// <p>应用业务ID</p>
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>渠道场景：0-B端场景，1-C端场景</p>
+	Scene *int64 `json:"Scene,omitnil,omitempty" name:"Scene"`
+
+	// <p>过滤条件（可选，支持ChannelType/ChannelStatus等维度）</p>
+	FilterList []*Filter `json:"FilterList,omitnil,omitempty" name:"FilterList"`
+
+	// <p>页码（从1开始）</p>
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// <p>每页数量（最大100）</p>
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+type DescribeChannelListRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>应用业务ID</p>
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>渠道场景：0-B端场景，1-C端场景</p>
+	Scene *int64 `json:"Scene,omitnil,omitempty" name:"Scene"`
+
+	// <p>过滤条件（可选，支持ChannelType/ChannelStatus等维度）</p>
+	FilterList []*Filter `json:"FilterList,omitnil,omitempty" name:"FilterList"`
+
+	// <p>页码（从1开始）</p>
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// <p>每页数量（最大100）</p>
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+func (r *DescribeChannelListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeChannelListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AppId")
+	delete(f, "Scene")
+	delete(f, "FilterList")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeChannelListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeChannelListResponseParams struct {
+	// <p>渠道列表</p>
+	ChannelList []*Channel `json:"ChannelList,omitnil,omitempty" name:"ChannelList"`
+
+	// <p>总数</p>
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeChannelListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeChannelListResponseParams `json:"Response"`
+}
+
+func (r *DescribeChannelListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeChannelListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeChannelRequestParams struct {
+	// <p>应用业务ID</p>
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>渠道业务ID</p>
+	ChannelId *string `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// <p>渠道场景：0-B端场景，1-C端场景</p>
+	Scene *int64 `json:"Scene,omitnil,omitempty" name:"Scene"`
+}
+
+type DescribeChannelRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>应用业务ID</p>
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>渠道业务ID</p>
+	ChannelId *string `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// <p>渠道场景：0-B端场景，1-C端场景</p>
+	Scene *int64 `json:"Scene,omitnil,omitempty" name:"Scene"`
+}
+
+func (r *DescribeChannelRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeChannelRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AppId")
+	delete(f, "ChannelId")
+	delete(f, "Scene")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeChannelRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeChannelResponseParams struct {
+	// <p>渠道信息（含spec）</p>
+	Channel *Channel `json:"Channel,omitnil,omitempty" name:"Channel"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeChannelResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeChannelResponseParams `json:"Response"`
+}
+
+func (r *DescribeChannelResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeChannelResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6798,6 +7206,14 @@ type DigitalHumanConfig struct {
 	PreviewUrl *string `json:"PreviewUrl,omitnil,omitempty" name:"PreviewUrl"`
 }
 
+type DingTalkChannelConfig struct {
+	// <p>钉钉机器人ClientId（AppKey）</p>
+	AppKey *string `json:"AppKey,omitnil,omitempty" name:"AppKey"`
+
+	// <p>钉钉机器人ClientSecret（AppSecret）</p>
+	AppSecret *string `json:"AppSecret,omitnil,omitempty" name:"AppSecret"`
+}
+
 type DuplexBilling struct {
 	// <table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>UNKNOW</td><td>0</td><td></td></tr><tr><td>TOKEN</td><td>1</td><td>按token</td></tr><tr><td>PAGE_COUNT</td><td>2</td><td>按页数</td></tr><tr><td>TIMES</td><td>3</td><td>按次数</td></tr><tr><td>TIMES_THOUSAND</td><td>4</td><td>按千次数</td></tr><tr><td>SECOND</td><td>5</td><td>按时长</td></tr><tr><td>CHARACTER</td><td>6</td><td>按字符数</td></tr><tr><td>CHARACTER_THOUSAND</td><td>7</td><td>按千字符数</td></tr><tr><td>SHEET</td><td>8</td><td>按张</td></tr><tr><td>NUMBER</td><td>9</td><td>按个数</td></tr></tbody></table>
 	BillingUnit *int64 `json:"BillingUnit,omitnil,omitempty" name:"BillingUnit"`
@@ -7041,6 +7457,25 @@ type IntervalSchedule struct {
 
 	// 值
 	Value *int64 `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type LarkChannelConfig struct {
+	// <p>飞书机器人AppId</p>
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>飞书机器人AppSecret</p>
+	AppSecret *string `json:"AppSecret,omitnil,omitempty" name:"AppSecret"`
+}
+
+type LineChannelConfig struct {
+	// <p>LINE Channel Access Token</p>
+	AccessToken *string `json:"AccessToken,omitnil,omitempty" name:"AccessToken"`
+
+	// <p>LINE回调地址</p>
+	CallbackUrl *string `json:"CallbackUrl,omitnil,omitempty" name:"CallbackUrl"`
+
+	// <p>LINE Channel Secret</p>
+	ChannelSecret *string `json:"ChannelSecret,omitnil,omitempty" name:"ChannelSecret"`
 }
 
 type MCPPluginConfig struct {
@@ -7613,6 +8048,88 @@ func (r *ModifyAppTriggerResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyAppTriggerResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyChannelRequestParams struct {
+	// <p>应用业务ID</p>
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>渠道业务ID</p>
+	ChannelId *string `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// <p>渠道场景：0-B端场景，1-C端场景</p>
+	Scene *int64 `json:"Scene,omitnil,omitempty" name:"Scene"`
+
+	// <p>待更新的渠道规格</p>
+	Spec *ChannelSpec `json:"Spec,omitnil,omitempty" name:"Spec"`
+
+	// <p>更新字段掩码,<br>B端(Scene=0)：支持：【spec.description&quot; ,&quot;spec.wecom_robot.callback.wecom_robot_id&quot;】<br>C端(Scene=1)：支持：【&quot;spec.description&quot; , &quot;spec.wecom_robot.websocket.bot_id&quot; ,&quot;spec.wecom_robot.websocket.bot_secret&quot;】</p>
+	UpdateMask *FieldMask `json:"UpdateMask,omitnil,omitempty" name:"UpdateMask"`
+}
+
+type ModifyChannelRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>应用业务ID</p>
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>渠道业务ID</p>
+	ChannelId *string `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// <p>渠道场景：0-B端场景，1-C端场景</p>
+	Scene *int64 `json:"Scene,omitnil,omitempty" name:"Scene"`
+
+	// <p>待更新的渠道规格</p>
+	Spec *ChannelSpec `json:"Spec,omitnil,omitempty" name:"Spec"`
+
+	// <p>更新字段掩码,<br>B端(Scene=0)：支持：【spec.description&quot; ,&quot;spec.wecom_robot.callback.wecom_robot_id&quot;】<br>C端(Scene=1)：支持：【&quot;spec.description&quot; , &quot;spec.wecom_robot.websocket.bot_id&quot; ,&quot;spec.wecom_robot.websocket.bot_secret&quot;】</p>
+	UpdateMask *FieldMask `json:"UpdateMask,omitnil,omitempty" name:"UpdateMask"`
+}
+
+func (r *ModifyChannelRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyChannelRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AppId")
+	delete(f, "ChannelId")
+	delete(f, "Scene")
+	delete(f, "Spec")
+	delete(f, "UpdateMask")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyChannelRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyChannelResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyChannelResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyChannelResponseParams `json:"Response"`
+}
+
+func (r *ModifyChannelResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyChannelResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -9229,6 +9746,14 @@ type SkillClassification struct {
 	SourceLink *string `json:"SourceLink,omitnil,omitempty" name:"SourceLink"`
 }
 
+type SkillCorpShareConfig struct {
+	// <table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>SHARE_SCOPE_TYPE_UNSPECIFIED</td><td>0</td><td></td></tr><tr><td>SHARE_SCOPE_TYPE_ALL</td><td>1</td><td></td></tr><tr><td>SHARE_SCOPE_TYPE_ACCOUNT</td><td>2</td><td></td></tr><tr><td>SHARE_SCOPE_TYPE_SPACE</td><td>3</td><td></td></tr></tbody></table><p>枚举值：</p><ul><li>0： 未指定</li><li>1： 全企业共享</li><li>3： 按空间共享</li></ul>
+	ShareScope *int64 `json:"ShareScope,omitnil,omitempty" name:"ShareScope"`
+
+	// <p>共享范围信息，仅支持空间；StrId 为空间ID，Name 为空间名称</p>
+	ShareScopeList []*Identity `json:"ShareScopeList,omitnil,omitempty" name:"ShareScopeList"`
+}
+
 type SkillDetail struct {
 	// 调用情况摘要
 	ReferenceSummaryList []*SkillReferenceSummary `json:"ReferenceSummaryList,omitnil,omitempty" name:"ReferenceSummaryList"`
@@ -9270,29 +9795,32 @@ type SkillNotice struct {
 }
 
 type SkillProfile struct {
-	// 创建时间（Unix秒）
+	// <p>创建时间（Unix秒）</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 创建者
+	// <p>创建者</p>
 	Creator *string `json:"Creator,omitnil,omitempty" name:"Creator"`
 
-	// Skill 描述
+	// <p>Skill 描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// Skill 展示描述
+	// <p>Skill 展示描述</p>
 	DisplayDescription *string `json:"DisplayDescription,omitnil,omitempty" name:"DisplayDescription"`
 
-	// Skill 展示名称
+	// <p>Skill 展示名称</p>
 	DisplayName *string `json:"DisplayName,omitnil,omitempty" name:"DisplayName"`
 
-	// Skill 图标
+	// <p>Skill 图标</p>
 	IconUrl *string `json:"IconUrl,omitnil,omitempty" name:"IconUrl"`
 
-	// Skill 名称
+	// <p>Skill 名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 更新时间（Unix秒）
+	// <p>更新时间（Unix秒）</p>
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// <p>空间</p>
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
 }
 
 type SkillReferenceGroup struct {
@@ -9327,30 +9855,26 @@ type SkillReferenceSummary struct {
 }
 
 type SkillShare struct {
-	// 审批ID
+	// <p>审批ID</p>
 	ApprovalId *string `json:"ApprovalId,omitnil,omitempty" name:"ApprovalId"`
 
-	// 共享后关联的新 skill_id
+	// <p>共享后关联的新 skill_id</p>
 	ShareSkillId *string `json:"ShareSkillId,omitnil,omitempty" name:"ShareSkillId"`
 
-	// 共享版本，如 1.0.0
+	// <p>共享版本，如 1.0.0</p>
 	ShareVersion *string `json:"ShareVersion,omitnil,omitempty" name:"ShareVersion"`
 
-	// 共享版本ID
+	// <p>共享版本ID</p>
 	ShareVersionId *string `json:"ShareVersionId,omitnil,omitempty" name:"ShareVersionId"`
 
-	// 原 skill_id
+	// <p>原 skill_id</p>
 	SkillId *string `json:"SkillId,omitnil,omitempty" name:"SkillId"`
 
-	// 共享状态
-	// 
-	// 枚举值:
-	// | uint | 描述 |
-	// | --- | --- |
-	// | 0 | 未共享 |
-	// | 1 | 已共享 |
-	// | 2 | 审批中 |
+	// <p>共享状态</p><p>枚举值:<br>| uint | 描述 |<br>| --- | --- |<br>| 0 | 未共享 |<br>| 1 | 已共享 |<br>| 2 | 审批中 |</p>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>企业共享范围</p>
+	CorpShareConfig *SkillCorpShareConfig `json:"CorpShareConfig,omitnil,omitempty" name:"CorpShareConfig"`
 }
 
 type SkillSummary struct {
@@ -9394,39 +9918,36 @@ type SkillSummary struct {
 }
 
 type SkillVersion struct {
-	// 检测信息
+	// <p>检测信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AnalysisInfo *SkillAnalysisInfo `json:"AnalysisInfo,omitnil,omitempty" name:"AnalysisInfo"`
 
-	// 当前生效版本号
+	// <p>当前生效版本号</p>
 	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
 
-	// 当前生效版本ID
+	// <p>当前生效版本ID</p>
 	VersionId *string `json:"VersionId,omitnil,omitempty" name:"VersionId"`
 
-	//     Skill 版本发布流程状态：
-	//       - 0 INITIALIZED      初始化（版本初始态）
-	//       - 1 AUDITING         审核中（f_analysis_status ∈ {PENDING, RUNNING}）
-	//       - 2 PENDING_RELEASE  待发布（低/中风险，等用户确认上架）
-	//       - 3 RELEASED         已发布
-	//       - 4 UNRELEASED       未发布（HIGH / UNAVAILABLE / FAILED / 用户放弃，含历史"不通过"语义）
-	//     与 SkillAnalysisStatus 解耦：前者是用户视角发布生命周期，后者是安全检测阶段。
+	// <p>Skill 版本发布流程状态：</p><pre><code>  - 0 INITIALIZED      初始化（版本初始态）  - 1 AUDITING         审核中（f_analysis_status ∈ {PENDING, RUNNING}）  - 2 PENDING_RELEASE  待发布（低/中风险，等用户确认上架）  - 3 RELEASED         已发布  - 4 UNRELEASED       未发布（HIGH / UNAVAILABLE / FAILED / 用户放弃，含历史&quot;不通过&quot;语义）与 SkillAnalysisStatus 解耦：前者是用户视角发布生命周期，后者是安全检测阶段。</code></pre>
 	VersionStatus *int64 `json:"VersionStatus,omitnil,omitempty" name:"VersionStatus"`
 
-	// Skill包的md5信息
+	// <p>Skill包的md5信息</p>
 	SkillMd5 *string `json:"SkillMd5,omitnil,omitempty" name:"SkillMd5"`
 
-	// 版本包地址
+	// <p>版本包地址</p>
 	SkillUrl *string `json:"SkillUrl,omitnil,omitempty" name:"SkillUrl"`
 
-	// 版本创建时间（Unix秒）
+	// <p>版本创建时间（Unix秒）</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// skill md文档
+	// <p>skill md文档</p>
 	SkillMarkdownUrl *string `json:"SkillMarkdownUrl,omitnil,omitempty" name:"SkillMarkdownUrl"`
 
-	// 版本变更说明
+	// <p>版本变更说明</p>
 	UpdateDesc *string `json:"UpdateDesc,omitnil,omitempty" name:"UpdateDesc"`
+
+	// <p>变更用户</p>
+	Updater *string `json:"Updater,omitnil,omitempty" name:"Updater"`
 }
 
 type Sort struct {
@@ -9473,6 +9994,11 @@ type SystemVariable struct {
 
 	// 变量名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+}
+
+type TelegramChannelConfig struct {
+	// <p>Telegram Bot Token</p>
+	BotToken *string `json:"BotToken,omitnil,omitempty" name:"BotToken"`
 }
 
 type ThinkModel struct {
@@ -9795,6 +10321,14 @@ type UsageSummary struct {
 	ViewType *int64 `json:"ViewType,omitnil,omitempty" name:"ViewType"`
 }
 
+type UserAgentReference struct {
+	// <p>claw agent 运行态标识</p>
+	AgentId *string `json:"AgentId,omitnil,omitempty" name:"AgentId"`
+
+	// <p>归属用户标识</p>
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+}
+
 type Variable struct {
 	// <p>默认文件名称</p>
 	DefaultFileName *string `json:"DefaultFileName,omitnil,omitempty" name:"DefaultFileName"`
@@ -9805,7 +10339,7 @@ type Variable struct {
 	// <p>变量描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// <p>模块类型。枚举值: 1:环境参数, 2:应用参数, 3:系统参数, -1:所有参数</p>
+	// <p>变量模块类型</p><p>枚举值：</p><ul><li>0： API参数</li><li>1： 环境参数</li><li>2： 应用参数</li><li>3： 系统参数</li></ul>
 	ModuleType *int64 `json:"ModuleType,omitnil,omitempty" name:"ModuleType"`
 
 	// <p>变量名称</p>
@@ -9822,6 +10356,12 @@ type Variable struct {
 
 	// <p>网络策略列表(支持: 精确域名、*.通配子域名、可带协议/端口/路径前缀)</p>
 	EndpointList []*string `json:"EndpointList,omitnil,omitempty" name:"EndpointList"`
+
+	// <p>是否内置变量</p>
+	IsBuiltin *bool `json:"IsBuiltin,omitnil,omitempty" name:"IsBuiltin"`
+
+	// <p>是否可注入到沙箱环境</p>
+	EnableSandbox *bool `json:"EnableSandbox,omitnil,omitempty" name:"EnableSandbox"`
 }
 
 type ViewScope struct {
@@ -9841,6 +10381,112 @@ type VoiceConfig struct {
 
 	// 公有云音色id
 	VoiceType *uint64 `json:"VoiceType,omitnil,omitempty" name:"VoiceType"`
+}
+
+type WechatChannelConfig struct {
+	// <p>授权二维码URL（创建后回填）</p>
+	QrcodeUrl *string `json:"QrcodeUrl,omitnil,omitempty" name:"QrcodeUrl"`
+
+	// <p>公众号/小程序AppId（授权后回填）</p>
+	WechatAppId *string `json:"WechatAppId,omitnil,omitempty" name:"WechatAppId"`
+
+	// <p>公众号/小程序RefreshToken（授权后回填）</p>
+	WechatRefreshToken *string `json:"WechatRefreshToken,omitnil,omitempty" name:"WechatRefreshToken"`
+}
+
+type WechatClawBotChannelConfig struct {
+	// <p>ClawBot机器人ID（扫码后回填）</p>
+	BotId *string `json:"BotId,omitnil,omitempty" name:"BotId"`
+
+	// <p>ClawBot机器人Token（扫码后回填）</p>
+	BotToken *string `json:"BotToken,omitnil,omitempty" name:"BotToken"`
+
+	// <p>二维码状态（wait/confirmed/expired）</p>
+	QrcodeStatus *string `json:"QrcodeStatus,omitnil,omitempty" name:"QrcodeStatus"`
+
+	// <p>二维码URL（创建后回填）</p>
+	QrcodeUrl *string `json:"QrcodeUrl,omitnil,omitempty" name:"QrcodeUrl"`
+
+	// <p>微信用户ID（扫码后回填）</p>
+	WechatUserId *string `json:"WechatUserId,omitnil,omitempty" name:"WechatUserId"`
+}
+
+type WechatCustomerServiceChannelConfig struct {
+	// <p>企业微信应用Secret</p>
+	AgentSecret *string `json:"AgentSecret,omitnil,omitempty" name:"AgentSecret"`
+
+	// <p>头像URL</p>
+	Avatar *string `json:"Avatar,omitnil,omitempty" name:"Avatar"`
+
+	// <p>回调配置</p>
+	Callback *CallbackConfig `json:"Callback,omitnil,omitempty" name:"Callback"`
+
+	// <p>客服账号ID</p>
+	CustomerServiceId *string `json:"CustomerServiceId,omitnil,omitempty" name:"CustomerServiceId"`
+
+	// <p>客服账号名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>客服形象二维码URL</p>
+	ShareCodeUrl *string `json:"ShareCodeUrl,omitnil,omitempty" name:"ShareCodeUrl"`
+
+	// <p>企业微信企业ID</p>
+	WecomCorpId *string `json:"WecomCorpId,omitnil,omitempty" name:"WecomCorpId"`
+}
+
+type WecomAppChannelConfig struct {
+	// <p>回调配置</p>
+	Callback *CallbackConfig `json:"Callback,omitnil,omitempty" name:"Callback"`
+
+	// <p>第三方企业ID</p>
+	ThirdChannelCorpId *string `json:"ThirdChannelCorpId,omitnil,omitempty" name:"ThirdChannelCorpId"`
+
+	// <p>第三方渠道ID</p>
+	ThirdChannelId *string `json:"ThirdChannelId,omitnil,omitempty" name:"ThirdChannelId"`
+
+	// <p>企微应用ID</p>
+	WecomAgentId *string `json:"WecomAgentId,omitnil,omitempty" name:"WecomAgentId"`
+
+	// <p>企微应用Secret</p>
+	WecomAgentSecret *string `json:"WecomAgentSecret,omitnil,omitempty" name:"WecomAgentSecret"`
+
+	// <p>企业ID</p>
+	WecomCorpId *string `json:"WecomCorpId,omitnil,omitempty" name:"WecomCorpId"`
+}
+
+type WecomRobotCallbackAccess struct {
+	// <p>回调配置</p>
+	Callback *CallbackConfig `json:"Callback,omitnil,omitempty" name:"Callback"`
+
+	// <p>机器人名称</p>
+	RobotName *string `json:"RobotName,omitnil,omitempty" name:"RobotName"`
+
+	// <p>企微企业ID</p>
+	WecomCorpId *string `json:"WecomCorpId,omitnil,omitempty" name:"WecomCorpId"`
+
+	// <p>企微机器人ID</p>
+	WecomRobotId *string `json:"WecomRobotId,omitnil,omitempty" name:"WecomRobotId"`
+}
+
+type WecomRobotChannelConfig struct {
+	// <p>回调接入配置</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Callback *WecomRobotCallbackAccess `json:"Callback,omitnil,omitempty" name:"Callback"`
+
+	// <p>WebSocket长连接配置</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Websocket *WecomRobotWebsocketAccess `json:"Websocket,omitnil,omitempty" name:"Websocket"`
+}
+
+type WecomRobotWebsocketAccess struct {
+	// <p>绑定类型：1-扫码绑定，2-填写表单绑定</p>
+	BindType *int64 `json:"BindType,omitnil,omitempty" name:"BindType"`
+
+	// <p>企微机器人BotId</p>
+	BotId *string `json:"BotId,omitnil,omitempty" name:"BotId"`
+
+	// <p>企微机器人BotSecret</p>
+	BotSecret *string `json:"BotSecret,omitnil,omitempty" name:"BotSecret"`
 }
 
 type WeeklySchedule struct {

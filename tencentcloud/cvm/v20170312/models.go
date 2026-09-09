@@ -6804,6 +6804,9 @@ type Instance struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LatestOperationErrorMsg *string `json:"LatestOperationErrorMsg,omitnil,omitempty" name:"LatestOperationErrorMsg"`
 
+	// <p>实例是否开启巨型帧</p>
+	EnableJumboFrame *bool `json:"EnableJumboFrame,omitnil,omitempty" name:"EnableJumboFrame"`
+
 	// <p>自定义metadata，本参数对应创建 CVM时指定的Metadata 信息。<strong>注：内测中</strong>。</p>
 	Metadata *Metadata `json:"Metadata,omitnil,omitempty" name:"Metadata"`
 

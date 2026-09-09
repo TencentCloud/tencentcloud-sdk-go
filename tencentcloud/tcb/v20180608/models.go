@@ -8090,7 +8090,7 @@ type ModifyEnvRequestParams struct {
 	// <p>环境ID</p>
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 
-	// <p>环境备注名，要以a-z开头，不能包含 a-zA-z0-9- 以外的字符</p>
+	// <p>环境备注名</p><p>入参限制：最大长度为32</p>
 	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
 
 	// <p>按量计费QPS上限，大于套餐配额时生效。-1表示关闭QPS按量计费。</p>
@@ -8103,7 +8103,7 @@ type ModifyEnvRequest struct {
 	// <p>环境ID</p>
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 
-	// <p>环境备注名，要以a-z开头，不能包含 a-zA-z0-9- 以外的字符</p>
+	// <p>环境备注名</p><p>入参限制：最大长度为32</p>
 	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
 
 	// <p>按量计费QPS上限，大于套餐配额时生效。-1表示关闭QPS按量计费。</p>

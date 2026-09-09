@@ -997,76 +997,6 @@ func (r *GetKnowledgeBaseListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type GetSessionDetailsRequestParams struct {
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
-
-	// 会话ID
-	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
-}
-
-type GetSessionDetailsRequest struct {
-	*tchttp.BaseRequest
-	
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
-
-	// 会话ID
-	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
-}
-
-func (r *GetSessionDetailsRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *GetSessionDetailsRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "InstanceId")
-	delete(f, "SessionId")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetSessionDetailsRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type GetSessionDetailsResponseParams struct {
-	// 会话记录详情
-	RecordList []*Record `json:"RecordList,omitnil,omitempty" name:"RecordList"`
-
-	// 记录总数
-	RecordCount *int64 `json:"RecordCount,omitnil,omitempty" name:"RecordCount"`
-
-	// 当前在运行的record信息
-	RunRecord *string `json:"RunRecord,omitnil,omitempty" name:"RunRecord"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type GetSessionDetailsResponse struct {
-	*tchttp.BaseResponse
-	Response *GetSessionDetailsResponseParams `json:"Response"`
-}
-
-func (r *GetSessionDetailsResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *GetSessionDetailsResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type GetUploadJobDetailsRequestParams struct {
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -1839,85 +1769,129 @@ func (r *QueryUserAuthorityResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type Record struct {
-	// 问题内容
-	Question *string `json:"Question,omitnil,omitempty" name:"Question"`
-
-	// 回答内容
-	Answer *string `json:"Answer,omitnil,omitempty" name:"Answer"`
-
-	// 思考内容
-	Think *string `json:"Think,omitnil,omitempty" name:"Think"`
-
-	// 任务列表
-	TaskList []*Task `json:"TaskList,omitnil,omitempty" name:"TaskList"`
-
-	// 记录创建时间
-	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
-
-	// 记录更新时间
-	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
-
-	// 记录id
-	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
-
-	// 总结内容
-	FinalSummary *string `json:"FinalSummary,omitnil,omitempty" name:"FinalSummary"`
-
-	// 会话ID
+// Predefined struct for user
+type QueryUserSessionDetailRequestParams struct {
+	// <p>会话id</p>
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 
-	// 1=赞，2=踩，0=无反馈
+	// <p>分页参数</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>偏移量</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>实例id</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+type QueryUserSessionDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>会话id</p>
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// <p>分页参数</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>偏移量</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>实例id</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+func (r *QueryUserSessionDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryUserSessionDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SessionId")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryUserSessionDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type QueryUserSessionDetailResponseParams struct {
+	// <p>用户 Id</p>
+	SubAccountUin *string `json:"SubAccountUin,omitnil,omitempty" name:"SubAccountUin"`
+
+	// <p>会话id</p>
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// <p>会话详情数组</p>
+	RecordList []*RecordList `json:"RecordList,omitnil,omitempty" name:"RecordList"`
+
+	// <p>记录总数</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>运行中的聊天请求, 返回为json字符串</p>
+	RunRecord *string `json:"RunRecord,omitnil,omitempty" name:"RunRecord"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type QueryUserSessionDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *QueryUserSessionDetailResponseParams `json:"Response"`
+}
+
+func (r *QueryUserSessionDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryUserSessionDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type RecordList struct {
+	// <p>会话上下文</p>
+	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
+
+	// <p>记录id</p>
+	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
+
+	// <p>追踪id</p>
+	TraceId *string `json:"TraceId,omitnil,omitempty" name:"TraceId"`
+
+	// <p>会话id</p>
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// <p>问题</p>
+	Question *string `json:"Question,omitnil,omitempty" name:"Question"`
+
+	// <p>回答</p>
+	Answer *string `json:"Answer,omitnil,omitempty" name:"Answer"`
+
+	// <p>0-否定反馈, 1-肯定反馈</p>
 	Feedback *int64 `json:"Feedback,omitnil,omitempty" name:"Feedback"`
 
-	// 数据库信息
-	DbInfo *string `json:"DbInfo,omitnil,omitempty" name:"DbInfo"`
-
-	// 错误信息
+	// <p>错误信息</p>
 	ErrorContext *string `json:"ErrorContext,omitnil,omitempty" name:"ErrorContext"`
 
-	// TaskList的string字符串
-	TaskListStr *string `json:"TaskListStr,omitnil,omitempty" name:"TaskListStr"`
+	// <p>创建时间</p>
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 知识库id列表
-	KnowledgeBaseIds []*string `json:"KnowledgeBaseIds,omitnil,omitempty" name:"KnowledgeBaseIds"`
+	// <p>更新时间</p>
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 上下文
-	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
-}
-
-type StepExpand struct {
-	// 标题
-	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
-
-	// 状态
-	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
-
-	// cellid数组
-	CellIds []*string `json:"CellIds,omitnil,omitempty" name:"CellIds"`
-}
-
-type StepInfo struct {
-	// 步骤id
-	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
-
-	// 步骤名称
-	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
-
-	// 步骤状态
-	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
-
-	// 类型(text/expand)
-	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
-
-	// 总结
-	Summary *string `json:"Summary,omitnil,omitempty" name:"Summary"`
-
-	// 步骤扩展结构
-	Expand *StepExpand `json:"Expand,omitnil,omitempty" name:"Expand"`
-
-	// 描述
-	Desc *string `json:"Desc,omitnil,omitempty" name:"Desc"`
+	// <p>模型信息</p>
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
 }
 
 // Predefined struct for user
@@ -1982,20 +1956,6 @@ func (r *StopChatAIResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *StopChatAIResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
-}
-
-type Task struct {
-	// 任务ID
-	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
-
-	// 任务名称
-	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
-
-	// 任务状态
-	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
-
-	// 任务步骤列表
-	StepInfoList []*StepInfo `json:"StepInfoList,omitnil,omitempty" name:"StepInfoList"`
 }
 
 // Predefined struct for user

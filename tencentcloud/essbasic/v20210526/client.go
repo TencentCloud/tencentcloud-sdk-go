@@ -7157,29 +7157,77 @@ func NewCreateFileConvertTaskResponse() (response *CreateFileConvertTaskResponse
 }
 
 // CreateFileConvertTask
-// 此接口（CreateFileConvertTask）用来将word、excel、html、图片、txt类型文件转换为PDF文件。<br />
-//
-// <font color="red">原功能接口: </font><a href="https://qian.tencent.com/developers/partnerApis/files/ChannelCreateConvertTaskApi" target="_blank">创建文件转换服务（ChannelCreateConvertTaskApi）</a><br />
-//
-// 前提条件：源文件已经通过 <a href="https://qian.tencent.com/developers/partnerApis/files/UploadFiles" target="_blank">文件上传接口</a>完成上传，并得到了源文件的资源Id。
-//
-// 适用场景1：已经上传了一个word文件，希望将该word文件转换成pdf文件后发起合同
-//
-// 适用场景2：已经上传了一个jpg图片文件，希望将该图片文件转换成pdf文件后发起合同<br />
-//
-// 转换文件是一个耗时操作，若想查看转换任务是否完成，可以通过<a href="https://qian.tencent.com/developers/partnerApis/files/DescribeFileConvertTask" target="_blank">查询转换任务状态</a>接口获取任务状态。<br />
-//
-// 注: 
-//
-// 1. `支持的文件类型有doc、docx、xls、xlsx、html、jpg、jpeg、png、bmp、txt`
-//
-// 2. `可通过发起合同时设置预览来检查转换文件是否达到预期效果`
+// 创建文件转换任务
 //
 // 
 //
-// 整体流程如下图
+// ### 1.1 接口说明
 //
-// ![image](https://qcloudimg.tencent-cloud.cn/raw/bb35c9cfa453d28eade16df36221f313.png)
+// 
+//
+// 本接口用于创建文件转换任务，将以下类型的源文件转换为 PDF 文件：
+//
+// 
+//
+// `doc`、`docx`、`xls`、`xlsx`、`html`、`jpg`、`jpeg`、`png`、`bmp`、`txt`
+//
+// 
+//
+// 文件转换为异步耗时操作。任务创建成功后，可调用[查询文件转换任务状态](https://qian.tencent.com/developers/partnerApis/files/DescribeFileConvertTask)接口查询转换进度及结果。
+//
+// 
+//
+// ### 1.2 前提条件
+//
+// 
+//
+// 调用本接口前，请先通过[文件上传接口](https://qian.tencent.com/developers/partnerApis/files/UploadFiles)上传源文件，并获取文件对应的资源 ID（`ResourceId`）。
+//
+// 
+//
+// ### 1.3 适用场景
+//
+// 
+//
+// - **Word 转 PDF**：已上传 Word 文件，需要先将其转换为 PDF，再用于发起合同。
+//
+// - **图片转 PDF**：已上传 JPG、PNG 等图片文件，需要先将其转换为 PDF，再用于发起合同。
+//
+// - **其他文件转 PDF**：将 Excel、HTML 或 TXT 文件转换为 PDF，以便预览或用于合同签署流程。
+//
+// 
+//
+// ### 1.4 使用流程
+//
+// 
+//
+// 1. 调用文件上传接口上传源文件，获取资源 ID。
+//
+// 2. 调用 `CreateFileConvertTask`，使用资源 ID 创建转换任务。
+//
+// 3. 保存接口返回的转换任务 ID。
+//
+// 4. 调用 `DescribeFileConvertTask` 查询任务状态。
+//
+// 5. 转换成功后，获取转换生成的 PDF 文件资源 ID。
+//
+// 6. 使用转换后的 PDF 文件发起合同。
+//
+// 
+//
+// ![文件转换整体流程](https://qcloudimg.tencent-cloud.cn/raw/bb35c9cfa453d28eade16df36221f313.png)
+//
+// 
+//
+// ### 1.5 注意事项
+//
+// 
+//
+// 1. 支持转换的文件格式为：`doc`、`docx`、`xls`、`xlsx`、`html`、`jpg`、`jpeg`、`png`、`bmp`、`txt`。
+//
+// 2. 文件转换需要一定时间，请勿在创建任务后立即使用转换结果，应通过任务状态查询接口确认转换成功。
+//
+// 3. 建议在发起合同时开启文件预览，检查转换后的 PDF 是否符合预期，尤其需要关注页面排版、分页、字体及图片清晰度。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -7195,29 +7243,77 @@ func (c *Client) CreateFileConvertTask(request *CreateFileConvertTaskRequest) (r
 }
 
 // CreateFileConvertTask
-// 此接口（CreateFileConvertTask）用来将word、excel、html、图片、txt类型文件转换为PDF文件。<br />
-//
-// <font color="red">原功能接口: </font><a href="https://qian.tencent.com/developers/partnerApis/files/ChannelCreateConvertTaskApi" target="_blank">创建文件转换服务（ChannelCreateConvertTaskApi）</a><br />
-//
-// 前提条件：源文件已经通过 <a href="https://qian.tencent.com/developers/partnerApis/files/UploadFiles" target="_blank">文件上传接口</a>完成上传，并得到了源文件的资源Id。
-//
-// 适用场景1：已经上传了一个word文件，希望将该word文件转换成pdf文件后发起合同
-//
-// 适用场景2：已经上传了一个jpg图片文件，希望将该图片文件转换成pdf文件后发起合同<br />
-//
-// 转换文件是一个耗时操作，若想查看转换任务是否完成，可以通过<a href="https://qian.tencent.com/developers/partnerApis/files/DescribeFileConvertTask" target="_blank">查询转换任务状态</a>接口获取任务状态。<br />
-//
-// 注: 
-//
-// 1. `支持的文件类型有doc、docx、xls、xlsx、html、jpg、jpeg、png、bmp、txt`
-//
-// 2. `可通过发起合同时设置预览来检查转换文件是否达到预期效果`
+// 创建文件转换任务
 //
 // 
 //
-// 整体流程如下图
+// ### 1.1 接口说明
 //
-// ![image](https://qcloudimg.tencent-cloud.cn/raw/bb35c9cfa453d28eade16df36221f313.png)
+// 
+//
+// 本接口用于创建文件转换任务，将以下类型的源文件转换为 PDF 文件：
+//
+// 
+//
+// `doc`、`docx`、`xls`、`xlsx`、`html`、`jpg`、`jpeg`、`png`、`bmp`、`txt`
+//
+// 
+//
+// 文件转换为异步耗时操作。任务创建成功后，可调用[查询文件转换任务状态](https://qian.tencent.com/developers/partnerApis/files/DescribeFileConvertTask)接口查询转换进度及结果。
+//
+// 
+//
+// ### 1.2 前提条件
+//
+// 
+//
+// 调用本接口前，请先通过[文件上传接口](https://qian.tencent.com/developers/partnerApis/files/UploadFiles)上传源文件，并获取文件对应的资源 ID（`ResourceId`）。
+//
+// 
+//
+// ### 1.3 适用场景
+//
+// 
+//
+// - **Word 转 PDF**：已上传 Word 文件，需要先将其转换为 PDF，再用于发起合同。
+//
+// - **图片转 PDF**：已上传 JPG、PNG 等图片文件，需要先将其转换为 PDF，再用于发起合同。
+//
+// - **其他文件转 PDF**：将 Excel、HTML 或 TXT 文件转换为 PDF，以便预览或用于合同签署流程。
+//
+// 
+//
+// ### 1.4 使用流程
+//
+// 
+//
+// 1. 调用文件上传接口上传源文件，获取资源 ID。
+//
+// 2. 调用 `CreateFileConvertTask`，使用资源 ID 创建转换任务。
+//
+// 3. 保存接口返回的转换任务 ID。
+//
+// 4. 调用 `DescribeFileConvertTask` 查询任务状态。
+//
+// 5. 转换成功后，获取转换生成的 PDF 文件资源 ID。
+//
+// 6. 使用转换后的 PDF 文件发起合同。
+//
+// 
+//
+// ![文件转换整体流程](https://qcloudimg.tencent-cloud.cn/raw/bb35c9cfa453d28eade16df36221f313.png)
+//
+// 
+//
+// ### 1.5 注意事项
+//
+// 
+//
+// 1. 支持转换的文件格式为：`doc`、`docx`、`xls`、`xlsx`、`html`、`jpg`、`jpeg`、`png`、`bmp`、`txt`。
+//
+// 2. 文件转换需要一定时间，请勿在创建任务后立即使用转换结果，应通过任务状态查询接口确认转换成功。
+//
+// 3. 建议在发起合同时开启文件预览，检查转换后的 PDF 是否符合预期，尤其需要关注页面排版、分页、字体及图片清晰度。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -8989,11 +9085,33 @@ func NewCreateSignUrlsResponse() (response *CreateSignUrlsResponse) {
 }
 
 // CreateSignUrls
-// 创建跳转小程序查看或签署的链接
+// 本接口用于获取跳转至腾讯电子签小程序的签署链接，签署人点击链接后即可跳转到腾讯电子签小程序完成合同的查看、填写与签署等操作。
 //
 // 
 //
-// **腾讯电子签小程序的AppID 和 原始Id如下:**
+// ### 1.1 适用场景
+//
+// 当需要签署人在贵方自有的 APP、小程序、H5、公众号等应用中发起或完成签署时，可通过此接口获取跳转至腾讯电子签小程序的签署链接，并结合短信、页面按钮、二维码等方式触达签署人。
+//
+// 跳转到小程序的实现，参考微信官方文档（分为<a href="https://developers.weixin.qq.com/miniprogram/dev/api/navigate/wx.navigateToMiniProgram.html">全屏</a>、<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/openEmbeddedMiniProgram.html">半屏</a>两种方式），如何配置也可以请参考: <a href="https://qian.tencent.com/developers/partner/openwxminiprogram">跳转电子签小程序配置</a>
+//
+// 
+//
+// ### 1.2 注意事项
+//
+// <ul><li>1. 如果签署人是在PC端扫码签署，可以通过生成跳转链接自主转换成二维码，让签署人在PC端扫码签署</li>
+//
+// <li>2. 签署链接的有效期为<font color="red">90天</font>，超过有效期链接不可用</li>
+//
+// <li>4. <font color="red">生成的链路后面不能再增加参数</font>（会出现覆盖链接中已有参数导致错误）</li>
+//
+// <li>5. <font color="red">签署链接与签署人一一对应，仅限对应签署人本人打开</font>。例如给签署人A生成的链接只能A本人打开，其他人打开会提示无权限，不同签署人的链接不能混用</li></ul>
+//
+// 
+//
+// ### 1.3 腾讯电子签小程序AppID
+//
+// 其中小程序的原始Id如下，或者查看小程序信息自助获取。
 //
 // 
 //
@@ -9007,7 +9125,13 @@ func NewCreateSignUrlsResponse() (response *CreateSignUrlsResponse) {
 //
 // 
 //
-// **主要使用场景EndPoint分类**
+// <font color="red">注：如果客户在线上小程序环境中打开的是腾讯电子签的测试版本小程序（腾讯电子签Demo），需要联系其前端将跳转配置中小程序的 AppID 从 `腾讯电子签Demo（wx371151823f6f3edf）` 更换为 `腾讯电子签（正式版）（wxa023b292fd19d41d）`。</font>
+//
+// 
+//
+// ### 1.4主要使用场景EndPoint分类
+//
+// 
 //
 // 
 //
@@ -9054,11 +9178,33 @@ func (c *Client) CreateSignUrls(request *CreateSignUrlsRequest) (response *Creat
 }
 
 // CreateSignUrls
-// 创建跳转小程序查看或签署的链接
+// 本接口用于获取跳转至腾讯电子签小程序的签署链接，签署人点击链接后即可跳转到腾讯电子签小程序完成合同的查看、填写与签署等操作。
 //
 // 
 //
-// **腾讯电子签小程序的AppID 和 原始Id如下:**
+// ### 1.1 适用场景
+//
+// 当需要签署人在贵方自有的 APP、小程序、H5、公众号等应用中发起或完成签署时，可通过此接口获取跳转至腾讯电子签小程序的签署链接，并结合短信、页面按钮、二维码等方式触达签署人。
+//
+// 跳转到小程序的实现，参考微信官方文档（分为<a href="https://developers.weixin.qq.com/miniprogram/dev/api/navigate/wx.navigateToMiniProgram.html">全屏</a>、<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/openEmbeddedMiniProgram.html">半屏</a>两种方式），如何配置也可以请参考: <a href="https://qian.tencent.com/developers/partner/openwxminiprogram">跳转电子签小程序配置</a>
+//
+// 
+//
+// ### 1.2 注意事项
+//
+// <ul><li>1. 如果签署人是在PC端扫码签署，可以通过生成跳转链接自主转换成二维码，让签署人在PC端扫码签署</li>
+//
+// <li>2. 签署链接的有效期为<font color="red">90天</font>，超过有效期链接不可用</li>
+//
+// <li>4. <font color="red">生成的链路后面不能再增加参数</font>（会出现覆盖链接中已有参数导致错误）</li>
+//
+// <li>5. <font color="red">签署链接与签署人一一对应，仅限对应签署人本人打开</font>。例如给签署人A生成的链接只能A本人打开，其他人打开会提示无权限，不同签署人的链接不能混用</li></ul>
+//
+// 
+//
+// ### 1.3 腾讯电子签小程序AppID
+//
+// 其中小程序的原始Id如下，或者查看小程序信息自助获取。
 //
 // 
 //
@@ -9072,7 +9218,13 @@ func (c *Client) CreateSignUrls(request *CreateSignUrlsRequest) (response *Creat
 //
 // 
 //
-// **主要使用场景EndPoint分类**
+// <font color="red">注：如果客户在线上小程序环境中打开的是腾讯电子签的测试版本小程序（腾讯电子签Demo），需要联系其前端将跳转配置中小程序的 AppID 从 `腾讯电子签Demo（wx371151823f6f3edf）` 更换为 `腾讯电子签（正式版）（wxa023b292fd19d41d）`。</font>
+//
+// 
+//
+// ### 1.4主要使用场景EndPoint分类
+//
+// 
 //
 // 
 //
@@ -9881,7 +10033,7 @@ func NewDescribeFileConvertTaskResponse() (response *DescribeFileConvertTaskResp
 // DescribeFileConvertTask
 // 此接口（DescribeFileConvertTask）用来查询转换任务的状态。如需发起转换任务，请使用<a href="https://qian.tencent.com/developers/partnerApis/files/CreateFileConvertTask" target="_blank">创建文件转换任务接口</a>进行资源文件的转换操作<br />
 //
-// <font color="red">原功能接口: </font><a href="https://qian.tencent.com/developers/partnerApis/files/ChannelGetTaskResultApi" target="_blank">查询转换任务状态（ChannelGetTaskResultApi）</a><br />
+// 
 //
 // 前提条件：已调用 <a href="https://qian.tencent.com/developers/partnerApis/files/CreateFileConvertTask" target="_blank">创建文件转换任务接口</a>进行文件转换，并得到了返回的转换任务Id。<br />
 //
@@ -9911,7 +10063,7 @@ func (c *Client) DescribeFileConvertTask(request *DescribeFileConvertTaskRequest
 // DescribeFileConvertTask
 // 此接口（DescribeFileConvertTask）用来查询转换任务的状态。如需发起转换任务，请使用<a href="https://qian.tencent.com/developers/partnerApis/files/CreateFileConvertTask" target="_blank">创建文件转换任务接口</a>进行资源文件的转换操作<br />
 //
-// <font color="red">原功能接口: </font><a href="https://qian.tencent.com/developers/partnerApis/files/ChannelGetTaskResultApi" target="_blank">查询转换任务状态（ChannelGetTaskResultApi）</a><br />
+// 
 //
 // 前提条件：已调用 <a href="https://qian.tencent.com/developers/partnerApis/files/CreateFileConvertTask" target="_blank">创建文件转换任务接口</a>进行文件转换，并得到了返回的转换任务Id。<br />
 //

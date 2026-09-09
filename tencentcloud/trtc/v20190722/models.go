@@ -441,33 +441,39 @@ type CloudVod struct {
 
 // Predefined struct for user
 type ControlAIConversationRequestParams struct {
-	// 任务唯一标识
+	// <p>任务唯一标识</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 控制命令，目前支持命令如下：- ServerPushText，服务端发送文本给AI机器人，AI机器人会播报该文本. - InvokeLLM，服务端发送文本给大模型，触发对话
+	// <p>控制命令，目前支持命令如下：- ServerPushText，服务端发送文本给AI机器人，AI机器人会播报该文本. - InvokeLLM，服务端发送文本给大模型，触发对话。- TransparentData，透传信息给客户端。</p>
 	Command *string `json:"Command,omitnil,omitempty" name:"Command"`
 
-	// 服务端发送播报文本命令，当Command为ServerPushText时必填
+	// <p>服务端发送播报文本命令，当Command为ServerPushText时必填</p>
 	ServerPushText *ServerPushText `json:"ServerPushText,omitnil,omitempty" name:"ServerPushText"`
 
-	// 服务端发送命令主动请求大模型,当Command为InvokeLLM时会把content请求到大模型,头部增加X-Invoke-LLM="1"
+	// <p>服务端发送命令主动请求大模型,当Command为InvokeLLM时会把content请求到大模型,头部增加X-Invoke-LLM=&quot;1&quot;</p>
 	InvokeLLM *InvokeLLM `json:"InvokeLLM,omitnil,omitempty" name:"InvokeLLM"`
+
+	// <p>ai对话需要透传给客户端的信息</p>
+	TransparentData *TransparentData `json:"TransparentData,omitnil,omitempty" name:"TransparentData"`
 }
 
 type ControlAIConversationRequest struct {
 	*tchttp.BaseRequest
 	
-	// 任务唯一标识
+	// <p>任务唯一标识</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 控制命令，目前支持命令如下：- ServerPushText，服务端发送文本给AI机器人，AI机器人会播报该文本. - InvokeLLM，服务端发送文本给大模型，触发对话
+	// <p>控制命令，目前支持命令如下：- ServerPushText，服务端发送文本给AI机器人，AI机器人会播报该文本. - InvokeLLM，服务端发送文本给大模型，触发对话。- TransparentData，透传信息给客户端。</p>
 	Command *string `json:"Command,omitnil,omitempty" name:"Command"`
 
-	// 服务端发送播报文本命令，当Command为ServerPushText时必填
+	// <p>服务端发送播报文本命令，当Command为ServerPushText时必填</p>
 	ServerPushText *ServerPushText `json:"ServerPushText,omitnil,omitempty" name:"ServerPushText"`
 
-	// 服务端发送命令主动请求大模型,当Command为InvokeLLM时会把content请求到大模型,头部增加X-Invoke-LLM="1"
+	// <p>服务端发送命令主动请求大模型,当Command为InvokeLLM时会把content请求到大模型,头部增加X-Invoke-LLM=&quot;1&quot;</p>
 	InvokeLLM *InvokeLLM `json:"InvokeLLM,omitnil,omitempty" name:"InvokeLLM"`
+
+	// <p>ai对话需要透传给客户端的信息</p>
+	TransparentData *TransparentData `json:"TransparentData,omitnil,omitempty" name:"TransparentData"`
 }
 
 func (r *ControlAIConversationRequest) ToJsonString() string {
@@ -486,6 +492,7 @@ func (r *ControlAIConversationRequest) FromJsonString(s string) error {
 	delete(f, "Command")
 	delete(f, "ServerPushText")
 	delete(f, "InvokeLLM")
+	delete(f, "TransparentData")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ControlAIConversationRequest has unknown keys!", "")
 	}
@@ -8410,6 +8417,11 @@ type TranslationParam struct {
 
 	// <p>翻译术语表配置。</p>
 	Terminologies []*TerminologyItem `json:"Terminologies,omitnil,omitempty" name:"Terminologies"`
+}
+
+type TransparentData struct {
+	// <p>透传给客户端的信息</p>
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
 }
 
 type TrtcUsage struct {

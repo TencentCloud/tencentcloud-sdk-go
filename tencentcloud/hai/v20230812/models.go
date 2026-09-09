@@ -1365,7 +1365,7 @@ type HttpConfig struct {
 }
 
 type HyperParam struct {
-	// HiCache缓存
+	// <p>HiCache缓存</p>
 	HiCache *HiCacheInfo `json:"HiCache,omitnil,omitempty" name:"HiCache"`
 }
 

@@ -104,6 +104,9 @@ const (
 	// 实例名称仅支持以大小写字符或中文开头，支持数字、英文句号、或段划线、下划线。
 	INVALIDPARAMETERVALUE_INSTANCENAME = "InvalidParameterValue.InstanceName"
 
+	// 参数值`%(value)s`不能包含特殊字段`%(key)s`。
+	INVALIDPARAMETERVALUE_INTERNALRESERVEDFIELDS = "InvalidParameterValue.InternalReservedFields"
+
 	// 参数 `%(parameter)s` 值 `%(value)s` 数量超过限制。不能大于 `%(limit)s` 个。
 	INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 
@@ -169,6 +172,9 @@ const (
 
 	// 终端节点组配置为开启健康检查，请求缺少必填参数 `%(parameter)s`。
 	MISSINGPARAMETER_ENABLEHEALTHCHECKPARAMETER = "MissingParameter.EnableHealthCheckParameter"
+
+	// 加速地域 `%(value)s` 下存在边缘加速地域，不可删除该加速地域。
+	RESOURCEINUSE_EDGEACCELERATEAREA = "ResourceInUse.EdgeAccelerateArea"
 
 	// 资源不存在。
 	RESOURCENOTFOUND = "ResourceNotFound"

@@ -1821,6 +1821,60 @@ type DescribeBusinessResourceData struct {
 
 	// <p>域名后缀</p>
 	DomainSuffix *string `json:"DomainSuffix,omitnil,omitempty" name:"DomainSuffix"`
+
+	// <p>连通性检查开关，0-关闭 1-开启，默认1(只支持32位)</p>
+	ConnectivityCheckSwitch *int64 `json:"ConnectivityCheckSwitch,omitnil,omitempty" name:"ConnectivityCheckSwitch"`
+
+	// <p>连通性检查测试间隔数值，最小为1，默认1(只支持32位)</p>
+	ConnectivityCheckInterval *int64 `json:"ConnectivityCheckInterval,omitnil,omitempty" name:"ConnectivityCheckInterval"`
+
+	// <p>连通性检查测试间隔单位 minutes/hours/days，默认hours</p>
+	ConnectivityCheckIntervalUnit *string `json:"ConnectivityCheckIntervalUnit,omitnil,omitempty" name:"ConnectivityCheckIntervalUnit"`
+
+	// <p>URL审计开关：0-关闭 1-开启，默认0</p>
+	URLAuditState *int64 `json:"URLAuditState,omitnil,omitempty" name:"URLAuditState"`
+
+	// <p>URL审计证书ID列表，多个用分号分隔</p>
+	URLAuditId *string `json:"URLAuditId,omitnil,omitempty" name:"URLAuditId"`
+
+	// <p>URL审计路径，多个用分号分隔</p>
+	URLPath *string `json:"URLPath,omitnil,omitempty" name:"URLPath"`
+
+	// <p>检测方式：0-未检测 1-主动 2-流量</p>
+	ReachableType *int64 `json:"ReachableType,omitnil,omitempty" name:"ReachableType"`
+
+	// <p>API密钥名称</p>
+	APISecretName *string `json:"APISecretName,omitnil,omitempty" name:"APISecretName"`
+
+	// <p>API密钥Key</p>
+	APISecretKey *string `json:"APISecretKey,omitnil,omitempty" name:"APISecretKey"`
+
+	// <p>是否为敏感资源：0-否 1-是</p>
+	EnableSensitiveRes *int64 `json:"EnableSensitiveRes,omitnil,omitempty" name:"EnableSensitiveRes"`
+
+	// <p>用户接入IP限制开关：0-不启用 1-启用</p>
+	EnableIPPolicy *int64 `json:"EnableIPPolicy,omitnil,omitempty" name:"EnableIPPolicy"`
+
+	// <p>IP分组属性：0-白名单 1-黑名单</p>
+	IPPolicyAttr *int64 `json:"IPPolicyAttr,omitnil,omitempty" name:"IPPolicyAttr"`
+
+	// <p>IP分组ID列表</p>
+	IPPolicyIds []*int64 `json:"IPPolicyIds,omitnil,omitempty" name:"IPPolicyIds"`
+
+	// <p>IP分组名称（分号分隔）</p>
+	IPPolicyNames *string `json:"IPPolicyNames,omitnil,omitempty" name:"IPPolicyNames"`
+
+	// <p>访问浏览器规则开关：0-不启用 1-启用</p>
+	EnableUserAgent *int64 `json:"EnableUserAgent,omitnil,omitempty" name:"EnableUserAgent"`
+
+	// <p>浏览器规则属性：0-白名单 1-黑名单</p>
+	UserAgentAttr *int64 `json:"UserAgentAttr,omitnil,omitempty" name:"UserAgentAttr"`
+
+	// <p>浏览器规则ID列表</p>
+	UserAgentIds []*string `json:"UserAgentIds,omitnil,omitempty" name:"UserAgentIds"`
+
+	// <p>浏览器规则名称（分号分隔）</p>
+	UserAgentNames *string `json:"UserAgentNames,omitnil,omitempty" name:"UserAgentNames"`
 }
 
 type DescribeBusinessResourcePageRsp struct {

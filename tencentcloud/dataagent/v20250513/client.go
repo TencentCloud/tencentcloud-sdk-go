@@ -777,72 +777,6 @@ func (c *Client) GetKnowledgeBaseListWithContext(ctx context.Context, request *G
     return
 }
 
-func NewGetSessionDetailsRequest() (request *GetSessionDetailsRequest) {
-    request = &GetSessionDetailsRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("dataagent", APIVersion, "GetSessionDetails")
-    
-    
-    return
-}
-
-func NewGetSessionDetailsResponse() (response *GetSessionDetailsResponse) {
-    response = &GetSessionDetailsResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// GetSessionDetails
-// 获取用户会话记录详情列表
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
-func (c *Client) GetSessionDetails(request *GetSessionDetailsRequest) (response *GetSessionDetailsResponse, err error) {
-    return c.GetSessionDetailsWithContext(context.Background(), request)
-}
-
-// GetSessionDetails
-// 获取用户会话记录详情列表
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
-func (c *Client) GetSessionDetailsWithContext(ctx context.Context, request *GetSessionDetailsRequest) (response *GetSessionDetailsResponse, err error) {
-    if request == nil {
-        request = NewGetSessionDetailsRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "dataagent", APIVersion, "GetSessionDetails")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("GetSessionDetails require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewGetSessionDetailsResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewGetUploadJobDetailsRequest() (request *GetUploadJobDetailsRequest) {
     request = &GetUploadJobDetailsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1445,6 +1379,72 @@ func (c *Client) QueryUserAuthorityWithContext(ctx context.Context, request *Que
     request.SetContext(ctx)
     
     response = NewQueryUserAuthorityResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryUserSessionDetailRequest() (request *QueryUserSessionDetailRequest) {
+    request = &QueryUserSessionDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dataagent", APIVersion, "QueryUserSessionDetail")
+    
+    
+    return
+}
+
+func NewQueryUserSessionDetailResponse() (response *QueryUserSessionDetailResponse) {
+    response = &QueryUserSessionDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// QueryUserSessionDetail
+// 查询用户会话详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALID = "InvalidParameter.Invalid"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) QueryUserSessionDetail(request *QueryUserSessionDetailRequest) (response *QueryUserSessionDetailResponse, err error) {
+    return c.QueryUserSessionDetailWithContext(context.Background(), request)
+}
+
+// QueryUserSessionDetail
+// 查询用户会话详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALID = "InvalidParameter.Invalid"
+//  INVALIDPARAMETERCOMBINATION = "InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) QueryUserSessionDetailWithContext(ctx context.Context, request *QueryUserSessionDetailRequest) (response *QueryUserSessionDetailResponse, err error) {
+    if request == nil {
+        request = NewQueryUserSessionDetailRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dataagent", APIVersion, "QueryUserSessionDetail")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryUserSessionDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryUserSessionDetailResponse()
     err = c.Send(request, response)
     return
 }

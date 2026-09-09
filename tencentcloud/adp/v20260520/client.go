@@ -65,13 +65,13 @@ func NewCopyAgentFromAppResponse() (response *CopyAgentFromAppResponse) {
 }
 
 // CopyAgentFromApp
-// 创建Agent
+// 复制 Agent（目前仅支持claw模式））
 func (c *Client) CopyAgentFromApp(request *CopyAgentFromAppRequest) (response *CopyAgentFromAppResponse, err error) {
     return c.CopyAgentFromAppWithContext(context.Background(), request)
 }
 
 // CopyAgentFromApp
-// 创建Agent
+// 复制 Agent（目前仅支持claw模式））
 func (c *Client) CopyAgentFromAppWithContext(ctx context.Context, request *CopyAgentFromAppRequest) (response *CopyAgentFromAppResponse, err error) {
     if request == nil {
         request = NewCopyAgentFromAppRequest()
@@ -261,6 +261,50 @@ func (c *Client) CreateAppTriggerWithContext(ctx context.Context, request *Creat
     request.SetContext(ctx)
     
     response = NewCreateAppTriggerResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateChannelRequest() (request *CreateChannelRequest) {
+    request = &CreateChannelRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "CreateChannel")
+    
+    
+    return
+}
+
+func NewCreateChannelResponse() (response *CreateChannelResponse) {
+    response = &CreateChannelResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateChannel
+// 创建渠道（通过scene区分B端应用发布渠道与C端IM渠道）
+func (c *Client) CreateChannel(request *CreateChannelRequest) (response *CreateChannelResponse, err error) {
+    return c.CreateChannelWithContext(context.Background(), request)
+}
+
+// CreateChannel
+// 创建渠道（通过scene区分B端应用发布渠道与C端IM渠道）
+func (c *Client) CreateChannelWithContext(ctx context.Context, request *CreateChannelRequest) (response *CreateChannelResponse, err error) {
+    if request == nil {
+        request = NewCreateChannelRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "CreateChannel")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateChannel require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateChannelResponse()
     err = c.Send(request, response)
     return
 }
@@ -915,6 +959,56 @@ func (c *Client) DeleteAppTriggerWithContext(ctx context.Context, request *Delet
     request.SetContext(ctx)
     
     response = NewDeleteAppTriggerResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteChannelRequest() (request *DeleteChannelRequest) {
+    request = &DeleteChannelRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "DeleteChannel")
+    
+    
+    return
+}
+
+func NewDeleteChannelResponse() (response *DeleteChannelResponse) {
+    response = &DeleteChannelResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteChannel
+// 删除渠道（通过scene区分场景）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DeleteChannel(request *DeleteChannelRequest) (response *DeleteChannelResponse, err error) {
+    return c.DeleteChannelWithContext(context.Background(), request)
+}
+
+// DeleteChannel
+// 删除渠道（通过scene区分场景）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DeleteChannelWithContext(ctx context.Context, request *DeleteChannelRequest) (response *DeleteChannelResponse, err error) {
+    if request == nil {
+        request = NewDeleteChannelRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "DeleteChannel")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteChannel require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteChannelResponse()
     err = c.Send(request, response)
     return
 }
@@ -1913,6 +2007,106 @@ func (c *Client) DescribeAuditLogMetaWithContext(ctx context.Context, request *D
     request.SetContext(ctx)
     
     response = NewDescribeAuditLogMetaResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeChannelRequest() (request *DescribeChannelRequest) {
+    request = &DescribeChannelRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "DescribeChannel")
+    
+    
+    return
+}
+
+func NewDescribeChannelResponse() (response *DescribeChannelResponse) {
+    response = &DescribeChannelResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeChannel
+// 获取渠道详情（scene区分场景）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeChannel(request *DescribeChannelRequest) (response *DescribeChannelResponse, err error) {
+    return c.DescribeChannelWithContext(context.Background(), request)
+}
+
+// DescribeChannel
+// 获取渠道详情（scene区分场景）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeChannelWithContext(ctx context.Context, request *DescribeChannelRequest) (response *DescribeChannelResponse, err error) {
+    if request == nil {
+        request = NewDescribeChannelRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "DescribeChannel")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeChannel require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeChannelResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeChannelListRequest() (request *DescribeChannelListRequest) {
+    request = &DescribeChannelListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "DescribeChannelList")
+    
+    
+    return
+}
+
+func NewDescribeChannelListResponse() (response *DescribeChannelListResponse) {
+    response = &DescribeChannelListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeChannelList
+// 获取渠道列表（scene区分场景）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeChannelList(request *DescribeChannelListRequest) (response *DescribeChannelListResponse, err error) {
+    return c.DescribeChannelListWithContext(context.Background(), request)
+}
+
+// DescribeChannelList
+// 获取渠道列表（scene区分场景）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeChannelListWithContext(ctx context.Context, request *DescribeChannelListRequest) (response *DescribeChannelListResponse, err error) {
+    if request == nil {
+        request = NewDescribeChannelListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "DescribeChannelList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeChannelList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeChannelListResponse()
     err = c.Send(request, response)
     return
 }
@@ -3417,6 +3611,58 @@ func (c *Client) ModifyAppTriggerWithContext(ctx context.Context, request *Modif
     request.SetContext(ctx)
     
     response = NewModifyAppTriggerResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyChannelRequest() (request *ModifyChannelRequest) {
+    request = &ModifyChannelRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "ModifyChannel")
+    
+    
+    return
+}
+
+func NewModifyChannelResponse() (response *ModifyChannelResponse) {
+    response = &ModifyChannelResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyChannel
+// 修改渠道（支持修改备注与企微机器人渠道回调机器人ID）
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyChannel(request *ModifyChannelRequest) (response *ModifyChannelResponse, err error) {
+    return c.ModifyChannelWithContext(context.Background(), request)
+}
+
+// ModifyChannel
+// 修改渠道（支持修改备注与企微机器人渠道回调机器人ID）
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyChannelWithContext(ctx context.Context, request *ModifyChannelRequest) (response *ModifyChannelResponse, err error) {
+    if request == nil {
+        request = NewModifyChannelRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "ModifyChannel")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyChannel require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyChannelResponse()
     err = c.Send(request, response)
     return
 }

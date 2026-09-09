@@ -1295,7 +1295,7 @@ func NewCreateCustomizeErrorPageResponse() (response *CreateCustomizeErrorPageRe
 }
 
 // CreateCustomizeErrorPage
-// 创建自定义错误页面。
+// 创建自定义响应页面。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_CONTENTTYPENOTMATCH = "InvalidParameterValue.ContentTypeNotMatch"
@@ -1305,7 +1305,7 @@ func (c *Client) CreateCustomizeErrorPage(request *CreateCustomizeErrorPageReque
 }
 
 // CreateCustomizeErrorPage
-// 创建自定义错误页面。
+// 创建自定义响应页面。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_CONTENTTYPENOTMATCH = "InvalidParameterValue.ContentTypeNotMatch"
@@ -12497,7 +12497,7 @@ func NewModifyCustomErrorPageResponse() (response *ModifyCustomErrorPageResponse
 }
 
 // ModifyCustomErrorPage
-// 修改自定义错误页面。
+// 修改自定义响应页面。
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -12506,7 +12506,7 @@ func (c *Client) ModifyCustomErrorPage(request *ModifyCustomErrorPageRequest) (r
 }
 
 // ModifyCustomErrorPage
-// 修改自定义错误页面。
+// 修改自定义响应页面。
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND = "ResourceNotFound"
