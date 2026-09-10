@@ -59,6 +59,114 @@ type AIAnalysisTemplateItem struct {
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
+type AIDubbingTaskInput struct {
+	// <p>AI配音模板id。</p>
+	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// <p>AI配音自定义参数，当 Definition 填 0 时有效。 该参数用于高度定制场景，建议您优先使用 Definition 指定配音参数。</p>
+	RawParameter *RawAIDubbingParameter `json:"RawParameter,omitnil,omitempty" name:"RawParameter"`
+
+	// <p>AI配音自定义参数，当 Definition 不填 0 时有效。 当填写了该结构中的部分配音参数时，将使用填写的参数覆盖AI配音模板中的参数。 该参数用于高度定制场景，建议您仅使用 Definition 指定配音参数。</p>
+	OverrideParameter *OverrideAIDubbingParameter `json:"OverrideParameter,omitnil,omitempty" name:"OverrideParameter"`
+
+	// <p>文件的目标存储，不填则继承上层的 OutputStorage 值。</p>
+	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitnil,omitempty" name:"OutputStorage"`
+
+	// <p>外部源字幕文件信息。</p>
+	SrcSubtitleInfo *MediaInputInfo `json:"SrcSubtitleInfo,omitnil,omitempty" name:"SrcSubtitleInfo"`
+
+	// <p>外部字幕文件信息，译文字幕。</p>
+	DstSubtitleInfos []*DstSubtitleInput `json:"DstSubtitleInfos,omitnil,omitempty" name:"DstSubtitleInfos"`
+
+	// <p>文件的输出路径，可以为相对路径或者绝对路径。<br>若需定义输出路径，路径需以<code>.{format}</code>结尾。变量名请参考 <a href="https://cloud.tencent.com/document/product/862/37039">文件名变量说明</a>。<br>相对路径示例：</p><li>文件名_{变量名}.{format}</li><li>文件名.{format}</li>绝对路径示例：<li>/自定义路径/文件名_{变量名}.{format}</li><p><strong>注意</strong>：目前不支持<code>BatchProcessMedia</code>接口。</p>
+	OutputObjectPath *string `json:"OutputObjectPath,omitnil,omitempty" name:"OutputObjectPath"`
+
+	// <p>AI配音扩展参数，序列化的 json 字符串。</p>
+	ExtendedParameter *string `json:"ExtendedParameter,omitnil,omitempty" name:"ExtendedParameter"`
+
+	// <p>关联剧集ID。<br>注意：配音模式为按角色智能配音时此值生效。</p>
+	DramaId *string `json:"DramaId,omitnil,omitempty" name:"DramaId"`
+}
+
+type AIDubbingTaskOutput struct {
+	// <p>基于画面提取的字幕文件路径。</p>
+	OriginSubtitlePath *string `json:"OriginSubtitlePath,omitnil,omitempty" name:"OriginSubtitlePath"`
+
+	// <p>基于画面提取的字幕翻译文件路径。</p>
+	TranslateSubtitlePath *string `json:"TranslateSubtitlePath,omitnil,omitempty" name:"TranslateSubtitlePath"`
+
+	// <p>音色克隆后的视频文件地址</p>
+	VoiceClonedVideo *string `json:"VoiceClonedVideo,omitnil,omitempty" name:"VoiceClonedVideo"`
+
+	// <p>音色克隆的标注文件地址</p>
+	VoiceClonedMarkFile *string `json:"VoiceClonedMarkFile,omitnil,omitempty" name:"VoiceClonedMarkFile"`
+
+	// <p>视频输出路径。</p>
+	VideoPath *string `json:"VideoPath,omitnil,omitempty" name:"VideoPath"`
+
+	// <p>基于画面提取的字幕文件FileId。</p>
+	OriginSubtitleFileId *string `json:"OriginSubtitleFileId,omitnil,omitempty" name:"OriginSubtitleFileId"`
+
+	// <p>基于画面提取的字幕翻译文件FileId    。</p>
+	TranslateSubtitleFileId *string `json:"TranslateSubtitleFileId,omitnil,omitempty" name:"TranslateSubtitleFileId"`
+
+	// <p>标记文件路径。</p>
+	SpeakerPath *string `json:"SpeakerPath,omitnil,omitempty" name:"SpeakerPath"`
+
+	// <p>标记文件Fileid。</p>
+	SpeakerFileId *string `json:"SpeakerFileId,omitnil,omitempty" name:"SpeakerFileId"`
+
+	// <p>擦除视频输出FileId。</p>
+	EraseVideoFileId *string `json:"EraseVideoFileId,omitnil,omitempty" name:"EraseVideoFileId"`
+
+	// <p>擦除视频输出路径。</p>
+	EraseVideoPath *string `json:"EraseVideoPath,omitnil,omitempty" name:"EraseVideoPath"`
+
+	// <p>译文配音音频文件路径。</p>
+	DstAudioPath *string `json:"DstAudioPath,omitnil,omitempty" name:"DstAudioPath"`
+
+	// <p>译文配音音频文件FileId。</p>
+	DstAudioFileId *string `json:"DstAudioFileId,omitnil,omitempty" name:"DstAudioFileId"`
+
+	// <p>音色克隆编辑信息</p><p>用于音色克隆二次修改的编辑信息</p>
+	DubbingEditInfoUrl *string `json:"DubbingEditInfoUrl,omitnil,omitempty" name:"DubbingEditInfoUrl"`
+
+	// <p>擦除的字幕位置。<strong>注意</strong>：仅对字幕提取且开启返回字幕位置时有效。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubtitlePos *SubtitlePosition `json:"SubtitlePos,omitnil,omitempty" name:"SubtitlePos"`
+
+	// <p>AI配音任务输出文件的存储位置。</p>
+	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitnil,omitempty" name:"OutputStorage"`
+}
+
+type AIDubbingTaskResult struct {
+	// <p>任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。</p>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>错误码，空字符串表示成功，其他值表示失败，取值请参考 <a href="https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81">媒体处理类错误码</a> 列表。</p>
+	ErrCodeExt *string `json:"ErrCodeExt,omitnil,omitempty" name:"ErrCodeExt"`
+
+	// <p>错误信息。</p>
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// <p>AI配音任务输入。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Input *AIDubbingTaskInput `json:"Input,omitnil,omitempty" name:"Input"`
+
+	// <p>AI配音任务输出。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Output *AIDubbingTaskOutput `json:"Output,omitnil,omitempty" name:"Output"`
+
+	// <p>任务进度。</p>
+	Progress *uint64 `json:"Progress,omitnil,omitempty" name:"Progress"`
+
+	// <p>任务开始执行的时间，采用 ISO 日期格式。</p>
+	BeginProcessTime *string `json:"BeginProcessTime,omitnil,omitempty" name:"BeginProcessTime"`
+
+	// <p>任务执行完毕的时间，采用 ISO 日期格式。</p>
+	FinishTime *string `json:"FinishTime,omitnil,omitempty" name:"FinishTime"`
+}
+
 type AIRecognitionTemplateItem struct {
 	// 视频内容识别模板唯一标识。
 	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
@@ -226,130 +334,124 @@ type Activity struct {
 }
 
 type ActivityPara struct {
-	// 视频转码任务
+	// <p>视频转码任务</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TranscodeTask *TranscodeTaskInput `json:"TranscodeTask,omitnil,omitempty" name:"TranscodeTask"`
 
-	// 视频转动图任务
+	// <p>视频转动图任务</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AnimatedGraphicTask *AnimatedGraphicTaskInput `json:"AnimatedGraphicTask,omitnil,omitempty" name:"AnimatedGraphicTask"`
 
-	// 视频按时间点截图任务
+	// <p>视频按时间点截图任务</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SnapshotByTimeOffsetTask *SnapshotByTimeOffsetTaskInput `json:"SnapshotByTimeOffsetTask,omitnil,omitempty" name:"SnapshotByTimeOffsetTask"`
 
-	// 视频采样截图任务
+	// <p>视频采样截图任务</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SampleSnapshotTask *SampleSnapshotTaskInput `json:"SampleSnapshotTask,omitnil,omitempty" name:"SampleSnapshotTask"`
 
-	// 视频截雪碧图任务
+	// <p>视频截雪碧图任务</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageSpriteTask *ImageSpriteTaskInput `json:"ImageSpriteTask,omitnil,omitempty" name:"ImageSpriteTask"`
 
-	// 转自适应码流任务
+	// <p>转自适应码流任务</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AdaptiveDynamicStreamingTask *AdaptiveDynamicStreamingTaskInput `json:"AdaptiveDynamicStreamingTask,omitnil,omitempty" name:"AdaptiveDynamicStreamingTask"`
 
-	// 视频内容审核类型任务
+	// <p>视频内容审核类型任务</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AiContentReviewTask *AiContentReviewTaskInput `json:"AiContentReviewTask,omitnil,omitempty" name:"AiContentReviewTask"`
 
-	// 视频内容分析类型任务
+	// <p>视频内容分析类型任务</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AiAnalysisTask *AiAnalysisTaskInput `json:"AiAnalysisTask,omitnil,omitempty" name:"AiAnalysisTask"`
 
-	// 视频内容识别类型任务
+	// <p>视频内容识别类型任务</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AiRecognitionTask *AiRecognitionTaskInput `json:"AiRecognitionTask,omitnil,omitempty" name:"AiRecognitionTask"`
 
-	// 媒体质检任务
+	// <p>媒体质检任务</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	QualityControlTask *AiQualityControlTaskInput `json:"QualityControlTask,omitnil,omitempty" name:"QualityControlTask"`
 
-	// 任务条件判断
+	// <p>任务条件判断</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExecRulesTask *ExecRulesTask `json:"ExecRulesTask,omitnil,omitempty" name:"ExecRulesTask"`
 
-	// 智能字幕任务
+	// <p>智能字幕任务</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SmartSubtitlesTask *SmartSubtitlesTaskInput `json:"SmartSubtitlesTask,omitnil,omitempty" name:"SmartSubtitlesTask"`
 
-	// 智能擦除任务
+	// <p>智能擦除任务</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SmartEraseTask *SmartEraseTaskInput `json:"SmartEraseTask,omitnil,omitempty" name:"SmartEraseTask"`
+
+	// <p>AI配音任务。</p>
+	AIDubbingTask *AIDubbingTaskInput `json:"AIDubbingTask,omitnil,omitempty" name:"AIDubbingTask"`
 }
 
 type ActivityResItem struct {
-	// 转码任务输出
+	// <p>转码任务输出</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TranscodeTask *MediaProcessTaskTranscodeResult `json:"TranscodeTask,omitnil,omitempty" name:"TranscodeTask"`
 
-	// 转动图任务输出
+	// <p>转动图任务输出</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AnimatedGraphicTask *MediaProcessTaskAnimatedGraphicResult `json:"AnimatedGraphicTask,omitnil,omitempty" name:"AnimatedGraphicTask"`
 
-	// 时间点截图任务输出
+	// <p>时间点截图任务输出</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SnapshotByTimeOffsetTask *MediaProcessTaskSnapshotByTimeOffsetResult `json:"SnapshotByTimeOffsetTask,omitnil,omitempty" name:"SnapshotByTimeOffsetTask"`
 
-	// 采样截图任务输出
+	// <p>采样截图任务输出</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SampleSnapshotTask *MediaProcessTaskSampleSnapshotResult `json:"SampleSnapshotTask,omitnil,omitempty" name:"SampleSnapshotTask"`
 
-	// 雪碧图任务输出
+	// <p>雪碧图任务输出</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageSpriteTask *MediaProcessTaskImageSpriteResult `json:"ImageSpriteTask,omitnil,omitempty" name:"ImageSpriteTask"`
 
-	// 自适应码流任务输出
+	// <p>自适应码流任务输出</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AdaptiveDynamicStreamingTask *MediaProcessTaskAdaptiveDynamicStreamingResult `json:"AdaptiveDynamicStreamingTask,omitnil,omitempty" name:"AdaptiveDynamicStreamingTask"`
 
-	// 识别任务输出
+	// <p>识别任务输出</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecognitionTask *ScheduleRecognitionTaskResult `json:"RecognitionTask,omitnil,omitempty" name:"RecognitionTask"`
 
-	// 审核任务输出
+	// <p>审核任务输出</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReviewTask *ScheduleReviewTaskResult `json:"ReviewTask,omitnil,omitempty" name:"ReviewTask"`
 
-	// 分析任务输出
+	// <p>分析任务输出</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AnalysisTask *ScheduleAnalysisTaskResult `json:"AnalysisTask,omitnil,omitempty" name:"AnalysisTask"`
 
-	// 媒体质检任务输出
+	// <p>媒体质检任务输出</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	QualityControlTask *ScheduleQualityControlTaskResult `json:"QualityControlTask,omitnil,omitempty" name:"QualityControlTask"`
 
-	// 条件判断任务输出
+	// <p>条件判断任务输出</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExecRuleTask *ScheduleExecRuleTaskResult `json:"ExecRuleTask,omitnil,omitempty" name:"ExecRuleTask"`
 
-	// 智能字幕任务输出
+	// <p>智能字幕任务输出</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SmartSubtitlesTask *ScheduleSmartSubtitleTaskResult `json:"SmartSubtitlesTask,omitnil,omitempty" name:"SmartSubtitlesTask"`
 
-	// 智能擦除任务输出
+	// <p>智能擦除任务输出</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SmartEraseTask *SmartEraseTaskResult `json:"SmartEraseTask,omitnil,omitempty" name:"SmartEraseTask"`
+
+	// <p>AI配音任务输出。</p>
+	AIDubbingTask *AIDubbingTaskResult `json:"AIDubbingTask,omitnil,omitempty" name:"AIDubbingTask"`
 }
 
 type ActivityResult struct {
-	// 原子任务类型。
-	// <li>Transcode：转码。</li>
-	// <li>SampleSnapshot：采样截图。</li>
-	// <li>AnimatedGraphics：转动图。</li>
-	// <li>SnapshotByTimeOffset：时间点截图。</li>
-	// <li>ImageSprites：雪碧图。</li>
-	// <li>AdaptiveDynamicStreaming：自适应码流。</li>
-	// <li>AiContentReview：内容审核。</li>
-	// <li>AIRecognition：智能识别。</li>
-	// <li>AIAnalysis：智能分析。</li>
-	// <li>AiQualityControl：媒体质检。</li>
-	// <li>SmartSubtitles：智能字幕。</li>
-	// <li>SmartErase：智能擦除。</li>
+	// <p>原子任务类型。</p><li>Transcode：转码。</li><li>SampleSnapshot：采样截图。</li><li>AnimatedGraphics：转动图。</li><li>SnapshotByTimeOffset：时间点截图。</li><li>ImageSprites：雪碧图。</li><li>AdaptiveDynamicStreaming：自适应码流。</li><li>AiContentReview：内容审核。</li><li>AIRecognition：智能识别。</li><li>AIAnalysis：智能分析。</li><li>AiQualityControl：媒体质检。</li><li>SmartSubtitles：智能字幕。</li><li>SmartErase：智能擦除。</li><li>Dubbing: AI配音</li>
 	ActivityType *string `json:"ActivityType,omitnil,omitempty" name:"ActivityType"`
 
-	// 原子任务输出。
+	// <p>原子任务输出。</p>
 	ActivityResItem *ActivityResItem `json:"ActivityResItem,omitnil,omitempty" name:"ActivityResItem"`
 }
 
@@ -2018,10 +2120,10 @@ type AiRecognitionTaskTransTextResultInput struct {
 }
 
 type AiRecognitionTaskTransTextResultOutput struct {
-	// 翻译片段列表。
+	// <p>翻译片段列表。</p>
 	SegmentSet []*AiRecognitionTaskTransTextSegmentItem `json:"SegmentSet,omitnil,omitempty" name:"SegmentSet"`
 
-	// 字幕文件地址。
+	// <p>字幕文件地址。</p>
 	SubtitlePath *string `json:"SubtitlePath,omitnil,omitempty" name:"SubtitlePath"`
 }
 
@@ -18685,6 +18787,81 @@ type DrmInfo struct {
 	SpekeDrm *SpekeDrm `json:"SpekeDrm,omitnil,omitempty" name:"SpekeDrm"`
 }
 
+type DstSubtitleInput struct {
+	// <p>外部翻译字幕信息。</p>
+	DstSubtitleInfo *MediaInputInfo `json:"DstSubtitleInfo,omitnil,omitempty" name:"DstSubtitleInfo"`
+}
+
+type DubbingConfig struct {
+	// <p>配音类型，可选值：FullAutoEmotionClone：全自动高情感克隆配音；RoleBasedSmartDubbing：按角色智能配音；SingleVoice：指定单一音色；</p>
+	DubbingMode *string `json:"DubbingMode,omitnil,omitempty" name:"DubbingMode"`
+
+	// <p>背景音音量，范围0-100</p><p>默认值：80</p>
+	BackgroundVolume *int64 `json:"BackgroundVolume,omitnil,omitempty" name:"BackgroundVolume"`
+
+	// <p>二次微调开关，可选值：<br>ON: 开启二次微调；<br>OFF: 不开启二次微调；</p><p>默认值：OFF</p><p>仅 RoleBasedSmartDubbing 时允许设为 ON</p>
+	SecondaryTuning *string `json:"SecondaryTuning,omitnil,omitempty" name:"SecondaryTuning"`
+
+	// <p>指定音色</p><p>仅 SingleVoice 时有效且 Create 必填</p>
+	VoiceId *string `json:"VoiceId,omitnil,omitempty" name:"VoiceId"`
+
+	// <p>配音版本，可选值：v1，v2</p><p>默认值：v2</p><p>只在（FullAutoEmotionClone：全自动高情感克隆配音）模式下生效</p>
+	DubbingVersion *string `json:"DubbingVersion,omitnil,omitempty" name:"DubbingVersion"`
+}
+
+type DubbingEmbedSubtitleConfig struct {
+	// <p>压制字幕id。</p>
+	SubtitleEmbedId *int64 `json:"SubtitleEmbedId,omitnil,omitempty" name:"SubtitleEmbedId"`
+
+	// <p>沿用原字幕位置。</p><p>默认值：1</p>
+	UseOriginalPos *int64 `json:"UseOriginalPos,omitnil,omitempty" name:"UseOriginalPos"`
+
+	// <p>沿用原字幕字号。</p><p>默认值：1</p>
+	UseOriginalSize *int64 `json:"UseOriginalSize,omitnil,omitempty" name:"UseOriginalSize"`
+}
+
+type DubbingOutputConfig struct {
+	// <p>输出方式</p><p>枚举值：</p><ul><li>FinalVideoOnly： 默认，仅成片视频</li><li>AudioAndSubtitle： 译文音频+译文字幕</li><li>Custom： 自定义</li></ul><p>默认值：FinalVideoOnly</p><p>使用外部字幕时无译文音频+字幕返回</p>
+	OutputMode *string `json:"OutputMode,omitnil,omitempty" name:"OutputMode"`
+
+	// <p>输出成片视频开关</p><p>枚举值：</p><ul><li>ON： 打开</li><li>OFF： 关闭</li></ul><p>默认值：ON</p><p>仅 Custom 模式生效</p>
+	OutputFinalVideo *string `json:"OutputFinalVideo,omitnil,omitempty" name:"OutputFinalVideo"`
+
+	// <p>输出字幕文件（同时包含原语音字幕、目标语言字幕）开关</p><p>枚举值：</p><ul><li>ON： 开启</li><li>OFF： 关闭</li></ul><p>默认值：OFF</p>
+	OutputSubtitle *string `json:"OutputSubtitle,omitnil,omitempty" name:"OutputSubtitle"`
+
+	// <p>输出译文配音音频开关</p><p>枚举值：</p><ul><li>ON： 开启</li><li>OFF： 关闭</li></ul><p>默认值：OFF</p><p>仅 Custom 模式生效</p>
+	OutputDstAudio *string `json:"OutputDstAudio,omitnil,omitempty" name:"OutputDstAudio"`
+
+	// <p>压制字幕配置信息。</p>
+	EmbedSubtitleConfig *DubbingEmbedSubtitleConfig `json:"EmbedSubtitleConfig,omitnil,omitempty" name:"EmbedSubtitleConfig"`
+}
+
+type DubbingSubtitleConfig struct {
+	// <p>字幕来源。</p><p>枚举值：</p><ul><li>OCR： OCR文本识别，识别视频画面上的文本。</li><li>ASR： ASR语音识别，识别视频语音对话。</li><li>External： 外部字幕文件，提供原文/译文字幕URL。</li></ul>
+	SubtitleSource *string `json:"SubtitleSource,omitnil,omitempty" name:"SubtitleSource"`
+
+	// <p>使用ASR辅助OCR。</p><p>枚举值：</p><ul><li>ON： 开启使用ASR辅助OCR。</li><li>OFF： 不开启使用ASR辅助OCR。</li></ul><p>默认值：OFF</p><p>仅 SubtitleSource=OCR 时允许设为 ON</p>
+	AsrAssistOcr *string `json:"AsrAssistOcr,omitnil,omitempty" name:"AsrAssistOcr"`
+
+	// <p>擦除原字幕。</p><p>枚举值：</p><ul><li>ON： 擦除原字幕。</li><li>OFF： 保留原字幕。</li></ul><p>默认值：OFF</p><p>SubtitleSource=External 时不允许设为 ON</p>
+	EraseOriginalSubtitle *string `json:"EraseOriginalSubtitle,omitnil,omitempty" name:"EraseOriginalSubtitle"`
+
+	// <p>字幕位置信息。</p>
+	SelectingSubtitleAreasConfig *SelectingSubtitleAreasConfig `json:"SelectingSubtitleAreasConfig,omitnil,omitempty" name:"SelectingSubtitleAreasConfig"`
+}
+
+type DubbingTranslateConfig struct {
+	// <p>源语言。</p>
+	VideoSrcLanguage *string `json:"VideoSrcLanguage,omitnil,omitempty" name:"VideoSrcLanguage"`
+
+	// <p>翻译目标语言。</p>
+	TranslateDstLanguage *string `json:"TranslateDstLanguage,omitnil,omitempty" name:"TranslateDstLanguage"`
+
+	// <p>智能简化译文。</p><p>枚举值：</p><ul><li>ON： 开启智能简化译文。</li><li>OFF： 关闭智能简化译文。</li></ul><p>默认值：OFF</p>
+	SimplifyTranslation *string `json:"SimplifyTranslation,omitnil,omitempty" name:"SimplifyTranslation"`
+}
+
 type EditMediaFileInfo struct {
 	// 视频的输入信息。
 	InputInfo *MediaInputInfo `json:"InputInfo,omitnil,omitempty" name:"InputInfo"`
@@ -25528,6 +25705,20 @@ type OutputSRTSourceAddressResp struct {
 	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
 }
 
+type OverrideAIDubbingParameter struct {
+	// <p>翻译配置信息。</p>
+	TranslateConfig *DubbingTranslateConfig `json:"TranslateConfig,omitnil,omitempty" name:"TranslateConfig"`
+
+	// <p>字幕配置信息。</p>
+	SubtitleConfig *DubbingSubtitleConfig `json:"SubtitleConfig,omitnil,omitempty" name:"SubtitleConfig"`
+
+	// <p>配音配置信息。</p>
+	DubbingConfig *DubbingConfig `json:"DubbingConfig,omitnil,omitempty" name:"DubbingConfig"`
+
+	// <p>输出配置信息。</p>
+	OutputConfig *DubbingOutputConfig `json:"OutputConfig,omitnil,omitempty" name:"OutputConfig"`
+}
+
 type OverrideEraseParameter struct {
 	// <p>擦除类型</p><ul><li>subtitle 去字幕</li><li>watermark 去水印</li><li>privacy 隐私保护</li></ul>
 	EraseType *string `json:"EraseType,omitnil,omitempty" name:"EraseType"`
@@ -26411,6 +26602,9 @@ type ProcessMediaRequestParams struct {
 	// <p>智能擦除类型任务参数</p>
 	SmartEraseTask *SmartEraseTaskInput `json:"SmartEraseTask,omitnil,omitempty" name:"SmartEraseTask"`
 
+	// <p>AI配音类型任务参数</p>
+	AIDubbingTask *AIDubbingTaskInput `json:"AIDubbingTask,omitnil,omitempty" name:"AIDubbingTask"`
+
 	// <p>任务的事件通知信息，不填代表不获取事件通知。</p>
 	TaskNotifyConfig *TaskNotifyConfig `json:"TaskNotifyConfig,omitnil,omitempty" name:"TaskNotifyConfig"`
 
@@ -26472,6 +26666,9 @@ type ProcessMediaRequest struct {
 	// <p>智能擦除类型任务参数</p>
 	SmartEraseTask *SmartEraseTaskInput `json:"SmartEraseTask,omitnil,omitempty" name:"SmartEraseTask"`
 
+	// <p>AI配音类型任务参数</p>
+	AIDubbingTask *AIDubbingTaskInput `json:"AIDubbingTask,omitnil,omitempty" name:"AIDubbingTask"`
+
 	// <p>任务的事件通知信息，不填代表不获取事件通知。</p>
 	TaskNotifyConfig *TaskNotifyConfig `json:"TaskNotifyConfig,omitnil,omitempty" name:"TaskNotifyConfig"`
 
@@ -26520,6 +26717,7 @@ func (r *ProcessMediaRequest) FromJsonString(s string) error {
 	delete(f, "AiQualityControlTask")
 	delete(f, "SmartSubtitlesTask")
 	delete(f, "SmartEraseTask")
+	delete(f, "AIDubbingTask")
 	delete(f, "TaskNotifyConfig")
 	delete(f, "TasksPriority")
 	delete(f, "SessionId")
@@ -27161,6 +27359,20 @@ type RTPAddressDestination struct {
 type RTSPPullSourceAddress struct {
 	// RTSP源站的Url地址。
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+}
+
+type RawAIDubbingParameter struct {
+	// <p>翻译配置信息。</p>
+	TranslateConfig *DubbingTranslateConfig `json:"TranslateConfig,omitnil,omitempty" name:"TranslateConfig"`
+
+	// <p>字幕配置信息。</p>
+	SubtitleConfig *DubbingSubtitleConfig `json:"SubtitleConfig,omitnil,omitempty" name:"SubtitleConfig"`
+
+	// <p>配音配置信息。</p>
+	DubbingConfig *DubbingConfig `json:"DubbingConfig,omitnil,omitempty" name:"DubbingConfig"`
+
+	// <p>输出配置信息。</p>
+	OutputConfig *DubbingOutputConfig `json:"OutputConfig,omitnil,omitempty" name:"OutputConfig"`
 }
 
 type RawImageWatermarkInput struct {
@@ -32606,11 +32818,9 @@ type WorkflowInfo struct {
 	Trigger *WorkflowTrigger `json:"Trigger,omitnil,omitempty" name:"Trigger"`
 
 	// 媒体处理的文件输出存储位置。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitnil,omitempty" name:"OutputStorage"`
 
 	// 媒体处理类型任务参数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MediaProcessTask *MediaProcessTaskInput `json:"MediaProcessTask,omitnil,omitempty" name:"MediaProcessTask"`
 
 	// 视频内容审核类型任务参数。
@@ -32626,7 +32836,6 @@ type WorkflowInfo struct {
 	AiRecognitionTask *AiRecognitionTaskInput `json:"AiRecognitionTask,omitnil,omitempty" name:"AiRecognitionTask"`
 
 	// 任务的事件通知信息，不填代表不获取事件通知。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskNotifyConfig *TaskNotifyConfig `json:"TaskNotifyConfig,omitnil,omitempty" name:"TaskNotifyConfig"`
 
 	// 任务流的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
@@ -32643,51 +32852,52 @@ type WorkflowInfo struct {
 }
 
 type WorkflowTask struct {
-	// 媒体处理任务 ID。
+	// <p>媒体处理任务 ID。</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 任务流状态，取值：
-	// <li>PROCESSING：处理中；</li>
-	// <li>FINISH：已完成。</li>
+	// <p>任务流状态，取值：</p><li>PROCESSING：处理中；</li><li>FINISH：已完成。</li>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 源异常时返回非0错误码，返回0 时请使用各个具体任务的 ErrCode。
+	// <p>源异常时返回非0错误码，返回0 时请使用各个具体任务的 ErrCode。</p>
 	ErrCode *int64 `json:"ErrCode,omitnil,omitempty" name:"ErrCode"`
 
-	// 源异常时返回对应异常Message，否则请使用各个具体任务的 Message。
+	// <p>源异常时返回对应异常Message，否则请使用各个具体任务的 Message。</p>
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
-	// 媒体处理的目标文件信息。
+	// <p>媒体处理的目标文件信息。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InputInfo *MediaInputInfo `json:"InputInfo,omitnil,omitempty" name:"InputInfo"`
 
-	// 原始视频的元信息。
+	// <p>原始视频的元信息。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MetaData *MediaMetaData `json:"MetaData,omitnil,omitempty" name:"MetaData"`
 
-	// 媒体处理任务的执行状态与结果。
+	// <p>媒体处理任务的执行状态与结果。</p>
 	MediaProcessResultSet []*MediaProcessTaskResult `json:"MediaProcessResultSet,omitnil,omitempty" name:"MediaProcessResultSet"`
 
-	// 视频内容审核任务的执行状态与结果。
+	// <p>视频内容审核任务的执行状态与结果。</p>
 	AiContentReviewResultSet []*AiContentReviewResult `json:"AiContentReviewResultSet,omitnil,omitempty" name:"AiContentReviewResultSet"`
 
-	// 视频内容分析任务的执行状态与结果。
+	// <p>视频内容分析任务的执行状态与结果。</p>
 	AiAnalysisResultSet []*AiAnalysisResult `json:"AiAnalysisResultSet,omitnil,omitempty" name:"AiAnalysisResultSet"`
 
-	// 视频内容识别任务的执行状态与结果。
+	// <p>视频内容识别任务的执行状态与结果。</p>
 	AiRecognitionResultSet []*AiRecognitionResult `json:"AiRecognitionResultSet,omitnil,omitempty" name:"AiRecognitionResultSet"`
 
-	// 媒体质检任务的执行状态与结果。
+	// <p>媒体质检任务的执行状态与结果。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AiQualityControlTaskResult *ScheduleQualityControlTaskResult `json:"AiQualityControlTaskResult,omitnil,omitempty" name:"AiQualityControlTaskResult"`
 
-	// 智能字幕任务的执行结果
+	// <p>智能字幕任务的执行结果</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SmartSubtitlesTaskResult []*SmartSubtitlesResult `json:"SmartSubtitlesTaskResult,omitnil,omitempty" name:"SmartSubtitlesTaskResult"`
 
-	// 智能擦除任务的执行结果
+	// <p>智能擦除任务的执行结果</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SmartEraseTaskResult *SmartEraseTaskResult `json:"SmartEraseTaskResult,omitnil,omitempty" name:"SmartEraseTaskResult"`
+
+	// <p>AI配音任务的执行结果。</p>
+	AiDubbingTaskResult *AIDubbingTaskResult `json:"AiDubbingTaskResult,omitnil,omitempty" name:"AiDubbingTaskResult"`
 }
 
 type WorkflowTrigger struct {

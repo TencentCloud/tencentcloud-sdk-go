@@ -245,6 +245,26 @@ func (r *AddProviderResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type AgentRuntimeCodeImageConfig struct {
+	// 镜像仓库类型，个人版或者企业版：personal/enterprise
+	ImageType *string `json:"ImageType,omitnil,omitempty" name:"ImageType"`
+
+	// {domain}/{namespace}/{imageName}:{tag}@{digest}
+	ImageUri *string `json:"ImageUri,omitnil,omitempty" name:"ImageUri"`
+
+	// 用于企业版TCR获取镜像拉取临时凭证，ImageType为"enterprise"时必填
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
+
+	// 容器的启动命令。该参数为可选参数，如果不填写，则默认使用 Dockerfile 中的 Entrypoint。传入规范，填写可运行的指令，例如 python
+	Command *string `json:"Command,omitnil,omitempty" name:"Command"`
+
+	// 容器的启动参数。该参数为可选参数，如果不填写，则默认使用 Dockerfile 中的 CMD。传入规范，以“空格”作为参数的分割标识，例如 -u app.py
+	Args *string `json:"Args,omitnil,omitempty" name:"Args"`
+
+	// 镜像加速开关，默认False
+	ContainerImageAccelerate *bool `json:"ContainerImageAccelerate,omitnil,omitempty" name:"ContainerImageAccelerate"`
+}
+
 // Predefined struct for user
 type AllocateEnvRequestParams struct {
 	// <p>分配请求ID，会按这个值做幂等</p><p>入参限制：长度不超过64</p>
@@ -868,6 +888,29 @@ type ClusterDetail struct {
 
 	// serverless状态
 	ServerlessStatus *string `json:"ServerlessStatus,omitnil,omitempty" name:"ServerlessStatus"`
+}
+
+type CodeReq struct {
+	// 包含函数代码的zip格式文件
+	ZipFile *string `json:"ZipFile,omitnil,omitempty" name:"ZipFile"`
+
+	// 对象存储桶名称（填写存储桶名称自定义部分，不包含-appid）
+	CosBucketName *string `json:"CosBucketName,omitnil,omitempty" name:"CosBucketName"`
+
+	// 对象存储中代码包文件路径，以/开头
+	CosObjectName *string `json:"CosObjectName,omitnil,omitempty" name:"CosObjectName"`
+
+	// 对象存储的地域，地域为北京时需要传入ap-beijing,北京一区时需要传递ap-beijing-1，其他的地域不需要传递。
+	CosBucketRegion *string `json:"CosBucketRegion,omitnil,omitempty" name:"CosBucketRegion"`
+
+	// 如果是从TempCos创建的话，需要传入TempCosObjectName
+	TempCosObjectName *string `json:"TempCosObjectName,omitnil,omitempty" name:"TempCosObjectName"`
+
+	// 如果是通过Demo创建的话，需要传入DemoId
+	DemoId *string `json:"DemoId,omitnil,omitempty" name:"DemoId"`
+
+	// 上传云开发cos后返回的时间戳
+	CosTimestamp *string `json:"CosTimestamp,omitnil,omitempty" name:"CosTimestamp"`
 }
 
 // Predefined struct for user
@@ -1682,6 +1725,262 @@ func (r *CreateEnvResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateEnvResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateFunctionRequestParams struct {
+	// <p>创建的函数名称</p>
+	FunctionName *string `json:"FunctionName,omitnil,omitempty" name:"FunctionName"`
+
+	// <p>环境ID</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// <p>函数处理方法名称</p>
+	Handler *string `json:"Handler,omitnil,omitempty" name:"Handler"`
+
+	// <p>函数运行时内存大小</p>
+	MemorySize *int64 `json:"MemorySize,omitnil,omitempty" name:"MemorySize"`
+
+	// <p>函数最长执行时间</p>
+	Timeout *int64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
+
+	// <p>此参数公司内部展示。是否使用GPU进行计算</p>
+	UseGpu *string `json:"UseGpu,omitnil,omitempty" name:"UseGpu"`
+
+	// <p>在线依赖安装</p>
+	InstallDependency *string `json:"InstallDependency,omitnil,omitempty" name:"InstallDependency"`
+
+	// <p>此参数公司内部展示。用于小程序，GPU集群，不对外</p>
+	Stamp *string `json:"Stamp,omitnil,omitempty" name:"Stamp"`
+
+	// <p>函数绑定的角色</p>
+	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
+
+	// <p>函数描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>函数运行环境</p>
+	Runtime *string `json:"Runtime,omitnil,omitempty" name:"Runtime"`
+
+	// <p>函数日志投递到的CLS TopicID</p>
+	ClsTopicId *string `json:"ClsTopicId,omitnil,omitempty" name:"ClsTopicId"`
+
+	// <p>函数日志投递到的CLS LogsetID</p>
+	ClsLogsetId *string `json:"ClsLogsetId,omitnil,omitempty" name:"ClsLogsetId"`
+
+	// <p>包含函数代码文件的zip格式文件</p>
+	Code *CodeReq `json:"Code,omitnil,omitempty" name:"Code"`
+
+	// <p>云函数配置项</p>
+	PrivateConfig *PrivateConfig `json:"PrivateConfig,omitnil,omitempty" name:"PrivateConfig"`
+
+	// <p>函数类型，默认值为Event，创建触发器函数请填写Event，创建HTTP函数级服务请填写HTTP</p>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>HTTP函数支持的访问协议。当前支持WebSockets协议，值为WS</p>
+	ProtocolType *string `json:"ProtocolType,omitnil,omitempty" name:"ProtocolType"`
+
+	// <p>环境变量</p>
+	Environment *FunctionEnvironment `json:"Environment,omitnil,omitempty" name:"Environment"`
+
+	// <p>函数初始化超时时间，默认 65s，镜像部署函数默认 90s。</p>
+	InitTimeout *int64 `json:"InitTimeout,omitnil,omitempty" name:"InitTimeout"`
+
+	// <p>代码来源，支持ZipFile, Cos, Demo 其中之一</p>
+	CodeSource *string `json:"CodeSource,omitnil,omitempty" name:"CodeSource"`
+
+	// <p>函数的私有网络配置</p>
+	VpcConfig *FunctionVpcConfig `json:"VpcConfig,omitnil,omitempty" name:"VpcConfig"`
+
+	// <p>函数要关联的Layer版本列表，Layer会按照在列表中顺序依次覆盖。</p>
+	Layers []*FunctionLayer `json:"Layers,omitnil,omitempty" name:"Layers"`
+
+	// <p>公网访问配置</p>
+	PublicNetConfig *FunctionPublicNetConfig `json:"PublicNetConfig,omitnil,omitempty" name:"PublicNetConfig"`
+
+	// <p>是否开启异步属性，TRUE 为开启，FALSE为关闭</p>
+	AsyncRunEnable *string `json:"AsyncRunEnable,omitnil,omitempty" name:"AsyncRunEnable"`
+
+	// <p>是否开启事件追踪，TRUE 为开启，FALSE为关闭</p>
+	TraceEnable *string `json:"TraceEnable,omitnil,omitempty" name:"TraceEnable"`
+
+	// <p>是否自动创建cls主题，TRUE 为开启，FALSE为关闭</p>
+	AutoCreateClsTopic *string `json:"AutoCreateClsTopic,omitnil,omitempty" name:"AutoCreateClsTopic"`
+
+	// <p>是否自动创建cls索引，TRUE 为开启，FALSE为关闭</p>
+	AutoDeployClsTopicIndex *string `json:"AutoDeployClsTopicIndex,omitnil,omitempty" name:"AutoDeployClsTopicIndex"`
+
+	// <p>是否开启Dns缓存能力。只支持EVENT函数。默认为FALSE，TRUE 为开启，FALSE为关闭</p>
+	DnsCache *string `json:"DnsCache,omitnil,omitempty" name:"DnsCache"`
+
+	// <p>EipConfig固定ip配置</p>
+	EipConfig *FunctionEipConfigFixed `json:"EipConfig,omitnil,omitempty" name:"EipConfig"`
+}
+
+type CreateFunctionRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>创建的函数名称</p>
+	FunctionName *string `json:"FunctionName,omitnil,omitempty" name:"FunctionName"`
+
+	// <p>环境ID</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// <p>函数处理方法名称</p>
+	Handler *string `json:"Handler,omitnil,omitempty" name:"Handler"`
+
+	// <p>函数运行时内存大小</p>
+	MemorySize *int64 `json:"MemorySize,omitnil,omitempty" name:"MemorySize"`
+
+	// <p>函数最长执行时间</p>
+	Timeout *int64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
+
+	// <p>此参数公司内部展示。是否使用GPU进行计算</p>
+	UseGpu *string `json:"UseGpu,omitnil,omitempty" name:"UseGpu"`
+
+	// <p>在线依赖安装</p>
+	InstallDependency *string `json:"InstallDependency,omitnil,omitempty" name:"InstallDependency"`
+
+	// <p>此参数公司内部展示。用于小程序，GPU集群，不对外</p>
+	Stamp *string `json:"Stamp,omitnil,omitempty" name:"Stamp"`
+
+	// <p>函数绑定的角色</p>
+	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
+
+	// <p>函数描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>函数运行环境</p>
+	Runtime *string `json:"Runtime,omitnil,omitempty" name:"Runtime"`
+
+	// <p>函数日志投递到的CLS TopicID</p>
+	ClsTopicId *string `json:"ClsTopicId,omitnil,omitempty" name:"ClsTopicId"`
+
+	// <p>函数日志投递到的CLS LogsetID</p>
+	ClsLogsetId *string `json:"ClsLogsetId,omitnil,omitempty" name:"ClsLogsetId"`
+
+	// <p>包含函数代码文件的zip格式文件</p>
+	Code *CodeReq `json:"Code,omitnil,omitempty" name:"Code"`
+
+	// <p>云函数配置项</p>
+	PrivateConfig *PrivateConfig `json:"PrivateConfig,omitnil,omitempty" name:"PrivateConfig"`
+
+	// <p>函数类型，默认值为Event，创建触发器函数请填写Event，创建HTTP函数级服务请填写HTTP</p>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>HTTP函数支持的访问协议。当前支持WebSockets协议，值为WS</p>
+	ProtocolType *string `json:"ProtocolType,omitnil,omitempty" name:"ProtocolType"`
+
+	// <p>环境变量</p>
+	Environment *FunctionEnvironment `json:"Environment,omitnil,omitempty" name:"Environment"`
+
+	// <p>函数初始化超时时间，默认 65s，镜像部署函数默认 90s。</p>
+	InitTimeout *int64 `json:"InitTimeout,omitnil,omitempty" name:"InitTimeout"`
+
+	// <p>代码来源，支持ZipFile, Cos, Demo 其中之一</p>
+	CodeSource *string `json:"CodeSource,omitnil,omitempty" name:"CodeSource"`
+
+	// <p>函数的私有网络配置</p>
+	VpcConfig *FunctionVpcConfig `json:"VpcConfig,omitnil,omitempty" name:"VpcConfig"`
+
+	// <p>函数要关联的Layer版本列表，Layer会按照在列表中顺序依次覆盖。</p>
+	Layers []*FunctionLayer `json:"Layers,omitnil,omitempty" name:"Layers"`
+
+	// <p>公网访问配置</p>
+	PublicNetConfig *FunctionPublicNetConfig `json:"PublicNetConfig,omitnil,omitempty" name:"PublicNetConfig"`
+
+	// <p>是否开启异步属性，TRUE 为开启，FALSE为关闭</p>
+	AsyncRunEnable *string `json:"AsyncRunEnable,omitnil,omitempty" name:"AsyncRunEnable"`
+
+	// <p>是否开启事件追踪，TRUE 为开启，FALSE为关闭</p>
+	TraceEnable *string `json:"TraceEnable,omitnil,omitempty" name:"TraceEnable"`
+
+	// <p>是否自动创建cls主题，TRUE 为开启，FALSE为关闭</p>
+	AutoCreateClsTopic *string `json:"AutoCreateClsTopic,omitnil,omitempty" name:"AutoCreateClsTopic"`
+
+	// <p>是否自动创建cls索引，TRUE 为开启，FALSE为关闭</p>
+	AutoDeployClsTopicIndex *string `json:"AutoDeployClsTopicIndex,omitnil,omitempty" name:"AutoDeployClsTopicIndex"`
+
+	// <p>是否开启Dns缓存能力。只支持EVENT函数。默认为FALSE，TRUE 为开启，FALSE为关闭</p>
+	DnsCache *string `json:"DnsCache,omitnil,omitempty" name:"DnsCache"`
+
+	// <p>EipConfig固定ip配置</p>
+	EipConfig *FunctionEipConfigFixed `json:"EipConfig,omitnil,omitempty" name:"EipConfig"`
+}
+
+func (r *CreateFunctionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateFunctionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FunctionName")
+	delete(f, "EnvId")
+	delete(f, "Handler")
+	delete(f, "MemorySize")
+	delete(f, "Timeout")
+	delete(f, "UseGpu")
+	delete(f, "InstallDependency")
+	delete(f, "Stamp")
+	delete(f, "Role")
+	delete(f, "Description")
+	delete(f, "Runtime")
+	delete(f, "ClsTopicId")
+	delete(f, "ClsLogsetId")
+	delete(f, "Code")
+	delete(f, "PrivateConfig")
+	delete(f, "Type")
+	delete(f, "ProtocolType")
+	delete(f, "Environment")
+	delete(f, "InitTimeout")
+	delete(f, "CodeSource")
+	delete(f, "VpcConfig")
+	delete(f, "Layers")
+	delete(f, "PublicNetConfig")
+	delete(f, "AsyncRunEnable")
+	delete(f, "TraceEnable")
+	delete(f, "AutoCreateClsTopic")
+	delete(f, "AutoDeployClsTopicIndex")
+	delete(f, "DnsCache")
+	delete(f, "EipConfig")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFunctionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateFunctionResponseParams struct {
+	// <p>调用scf返回的错误码</p>
+	SCFErrorCode *string `json:"SCFErrorCode,omitnil,omitempty" name:"SCFErrorCode"`
+
+	// <p>错误码对应的描述信息</p>
+	SCFErrorMsg *string `json:"SCFErrorMsg,omitnil,omitempty" name:"SCFErrorMsg"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateFunctionResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateFunctionResponseParams `json:"Response"`
+}
+
+func (r *CreateFunctionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateFunctionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2592,6 +2891,77 @@ func (r *DeleteCloudAppVersionResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteCloudAppVersionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteFunctionRequestParams struct {
+	// <p>环境 ID。可通过 DescribeEnvs 接口获取。</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// <p>函数名称。最大 60 字符，以字母开头，支持字母、数字、下划线和连字符。可通过 ListFunctions 或 GetFunction 获取。</p>
+	FunctionName *string `json:"FunctionName,omitnil,omitempty" name:"FunctionName"`
+
+	// <p>函数版本。取值：$LATEST（最新版本）。不填默认 $LATEST。当前仅支持 $LATEST。</p>
+	Qualifier *string `json:"Qualifier,omitnil,omitempty" name:"Qualifier"`
+}
+
+type DeleteFunctionRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>环境 ID。可通过 DescribeEnvs 接口获取。</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// <p>函数名称。最大 60 字符，以字母开头，支持字母、数字、下划线和连字符。可通过 ListFunctions 或 GetFunction 获取。</p>
+	FunctionName *string `json:"FunctionName,omitnil,omitempty" name:"FunctionName"`
+
+	// <p>函数版本。取值：$LATEST（最新版本）。不填默认 $LATEST。当前仅支持 $LATEST。</p>
+	Qualifier *string `json:"Qualifier,omitnil,omitempty" name:"Qualifier"`
+}
+
+func (r *DeleteFunctionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteFunctionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "FunctionName")
+	delete(f, "Qualifier")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteFunctionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteFunctionResponseParams struct {
+	// <p>函数 ID，仅 CBF 云函数返回</p>
+	FunctionId *string `json:"FunctionId,omitnil,omitempty" name:"FunctionId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteFunctionResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteFunctionResponseParams `json:"Response"`
+}
+
+func (r *DeleteFunctionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteFunctionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6465,6 +6835,86 @@ func (r *DestroyStaticStoreResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DownloadFunctionRequestParams struct {
+	// <p>函数的名称</p>
+	FunctionName *string `json:"FunctionName,omitnil,omitempty" name:"FunctionName"`
+
+	// <p>环境ID</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// <p>函数的版本</p>
+	Qualifier *string `json:"Qualifier,omitnil,omitempty" name:"Qualifier"`
+}
+
+type DownloadFunctionRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>函数的名称</p>
+	FunctionName *string `json:"FunctionName,omitnil,omitempty" name:"FunctionName"`
+
+	// <p>环境ID</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// <p>函数的版本</p>
+	Qualifier *string `json:"Qualifier,omitnil,omitempty" name:"Qualifier"`
+}
+
+func (r *DownloadFunctionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DownloadFunctionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FunctionName")
+	delete(f, "EnvId")
+	delete(f, "Qualifier")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DownloadFunctionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DownloadFunctionResponseParams struct {
+	// <p>调用SCF报错的错误码</p>
+	SCFErrorCode *string `json:"SCFErrorCode,omitnil,omitempty" name:"SCFErrorCode"`
+
+	// <p>调用SCF报错的错误信息</p>
+	SCFErrorMsg *string `json:"SCFErrorMsg,omitnil,omitempty" name:"SCFErrorMsg"`
+
+	// <p>返回的不跨域url</p>
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// <p>函数的SHA256编码</p>
+	CodeSha256 *string `json:"CodeSha256,omitnil,omitempty" name:"CodeSha256"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DownloadFunctionResponse struct {
+	*tchttp.BaseResponse
+	Response *DownloadFunctionResponseParams `json:"Response"`
+}
+
+func (r *DownloadFunctionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DownloadFunctionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DropIndex struct {
 	// 索引名称
 	IndexName *string `json:"IndexName,omitnil,omitempty" name:"IndexName"`
@@ -6784,6 +7234,74 @@ type Filter struct {
 	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
 }
 
+type Function struct {
+	// <p>修改时间</p>
+	ModTime *string `json:"ModTime,omitnil,omitempty" name:"ModTime"`
+
+	// <p>创建时间</p>
+	AddTime *string `json:"AddTime,omitnil,omitempty" name:"AddTime"`
+
+	// <p>运行时</p>
+	Runtime *string `json:"Runtime,omitnil,omitempty" name:"Runtime"`
+
+	// <p>函数名称</p>
+	FunctionName *string `json:"FunctionName,omitnil,omitempty" name:"FunctionName"`
+
+	// <p>函数ID</p>
+	FunctionId *string `json:"FunctionId,omitnil,omitempty" name:"FunctionId"`
+
+	// <p>命名空间</p>
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+
+	// <p>函数状态，状态值</p>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>函数状态详情</p>
+	StatusDesc *string `json:"StatusDesc,omitnil,omitempty" name:"StatusDesc"`
+
+	// <p>函数描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>函数标签</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>函数类型，取值为 HTTP 或者 Event</p>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>函数状态失败原因</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StatusReasons []*StatusReason `json:"StatusReasons,omitnil,omitempty" name:"StatusReasons"`
+
+	// <p>函数所有版本预置并发内存总和</p>
+	TotalProvisionedConcurrencyMem *int64 `json:"TotalProvisionedConcurrencyMem,omitnil,omitempty" name:"TotalProvisionedConcurrencyMem"`
+
+	// <p>函数并发保留内存</p>
+	ReservedConcurrencyMem *int64 `json:"ReservedConcurrencyMem,omitnil,omitempty" name:"ReservedConcurrencyMem"`
+
+	// <p>函数异步属性，取值 TRUE 或者 FALSE</p>
+	AsyncRunEnable *string `json:"AsyncRunEnable,omitnil,omitempty" name:"AsyncRunEnable"`
+
+	// <p>异步函数是否开启调用追踪，取值 TRUE 或者 FALSE</p>
+	TraceEnable *string `json:"TraceEnable,omitnil,omitempty" name:"TraceEnable"`
+}
+
+type FunctionEipConfig struct {
+	// Eip开启状态，取值['ENABLE','DISABLE']
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EipStatus *string `json:"EipStatus,omitnil,omitempty" name:"EipStatus"`
+}
+
+type FunctionEipConfigFixed struct {
+	// <p>是否固定 IP，TRUE / FALSE</p>
+	EipFixed *string `json:"EipFixed,omitnil,omitempty" name:"EipFixed"`
+}
+
+type FunctionEnvironment struct {
+	// 环境变量数组
+	Variables []*Variable `json:"Variables,omitnil,omitempty" name:"Variables"`
+}
+
 type FunctionInfo struct {
 	// 命名空间
 	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
@@ -6791,6 +7309,49 @@ type FunctionInfo struct {
 	// 所属地域。
 	// 当前支持ap-shanghai
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+}
+
+type FunctionLayer struct {
+	// <p>层名称</p>
+	LayerName *string `json:"LayerName,omitnil,omitempty" name:"LayerName"`
+
+	// <p>层版本号</p>
+	LayerVersion *int64 `json:"LayerVersion,omitnil,omitempty" name:"LayerVersion"`
+}
+
+type FunctionPublicNetConfig struct {
+	// 是否开启公网访问能力取值['DISABLE','ENABLE']
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PublicNetStatus *string `json:"PublicNetStatus,omitnil,omitempty" name:"PublicNetStatus"`
+
+	// Eip配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EipConfig *FunctionEipConfig `json:"EipConfig,omitnil,omitempty" name:"EipConfig"`
+}
+
+type FunctionTrigger struct {
+	// <p>触发器最后修改时间</p>
+	ModTime *string `json:"ModTime,omitnil,omitempty" name:"ModTime"`
+
+	// <p>触发器类型</p>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>触发器详细配置</p>
+	TriggerDesc *string `json:"TriggerDesc,omitnil,omitempty" name:"TriggerDesc"`
+
+	// <p>触发器名称</p>
+	TriggerName *string `json:"TriggerName,omitnil,omitempty" name:"TriggerName"`
+
+	// <p>触发器创建时间</p>
+	AddTime *string `json:"AddTime,omitnil,omitempty" name:"AddTime"`
+}
+
+type FunctionVpcConfig struct {
+	// <p>私有网络 的 id</p>
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// <p>子网的 id</p>
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 }
 
 type GatewayVersionItem struct {
@@ -6823,6 +7384,185 @@ type GatewayVersionItem struct {
 
 	// 网关版本自定义配置
 	CustomConfig *WxGatewayCustomConfig `json:"CustomConfig,omitnil,omitempty" name:"CustomConfig"`
+}
+
+// Predefined struct for user
+type GetFunctionRequestParams struct {
+	// <p>环境Id</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// <p>函数名</p>
+	FunctionName *string `json:"FunctionName,omitnil,omitempty" name:"FunctionName"`
+
+	// <p>函数的版本</p>
+	Qualifier *string `json:"Qualifier,omitnil,omitempty" name:"Qualifier"`
+
+	// <p>环境</p>
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+
+	// <p>是否返回代码</p>
+	ShowCode *string `json:"ShowCode,omitnil,omitempty" name:"ShowCode"`
+}
+
+type GetFunctionRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>环境Id</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// <p>函数名</p>
+	FunctionName *string `json:"FunctionName,omitnil,omitempty" name:"FunctionName"`
+
+	// <p>函数的版本</p>
+	Qualifier *string `json:"Qualifier,omitnil,omitempty" name:"Qualifier"`
+
+	// <p>环境</p>
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+
+	// <p>是否返回代码</p>
+	ShowCode *string `json:"ShowCode,omitnil,omitempty" name:"ShowCode"`
+}
+
+func (r *GetFunctionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetFunctionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "FunctionName")
+	delete(f, "Qualifier")
+	delete(f, "Namespace")
+	delete(f, "ShowCode")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetFunctionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetFunctionResponseParams struct {
+	// <p>函数最后修改时间</p>
+	ModTime *string `json:"ModTime,omitnil,omitempty" name:"ModTime"`
+
+	// <p>函数代码（&gt;1M 不返回）</p>
+	CodeInfo *string `json:"CodeInfo,omitnil,omitempty" name:"CodeInfo"`
+
+	// <p>函数描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>触发器列表</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Triggers []*FunctionTrigger `json:"Triggers,omitnil,omitempty" name:"Triggers"`
+
+	// <p>入口函数</p>
+	Handler *string `json:"Handler,omitnil,omitempty" name:"Handler"`
+
+	// <p>代码大小（字节）</p>
+	CodeSize *uint64 `json:"CodeSize,omitnil,omitempty" name:"CodeSize"`
+
+	// <p>超时时间（秒）</p>
+	Timeout *uint64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
+
+	// <p>函数版本</p>
+	FunctionVersion *string `json:"FunctionVersion,omitnil,omitempty" name:"FunctionVersion"`
+
+	// <p>内存大小（MB）</p>
+	MemorySize *uint64 `json:"MemorySize,omitnil,omitempty" name:"MemorySize"`
+
+	// <p>运行环境</p>
+	Runtime *string `json:"Runtime,omitnil,omitempty" name:"Runtime"`
+
+	// <p>函数名称</p>
+	FunctionName *string `json:"FunctionName,omitnil,omitempty" name:"FunctionName"`
+
+	// <p>VPC 配置</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcConfig *FunctionVpcConfig `json:"VpcConfig,omitnil,omitempty" name:"VpcConfig"`
+
+	// <p>是否使用 GPU (&quot;TRUE&quot;/&quot;FALSE&quot;)</p>
+	UseGpu *string `json:"UseGpu,omitnil,omitempty" name:"UseGpu"`
+
+	// <p>代码校验结果 (&quot;success&quot;/&quot;failed&quot;)</p>
+	CodeResult *string `json:"CodeResult,omitnil,omitempty" name:"CodeResult"`
+
+	// <p>代码错误码</p>
+	ErrNo *int64 `json:"ErrNo,omitnil,omitempty" name:"ErrNo"`
+
+	// <p>命名空间</p>
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+
+	// <p>角色</p>
+	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
+
+	// <p>是否自动安装依赖 (&quot;TRUE&quot;/&quot;FALSE&quot;)</p>
+	InstallDependency *string `json:"InstallDependency,omitnil,omitempty" name:"InstallDependency"`
+
+	// <p>函数状态 (&quot;Active&quot;, &quot;Inactive&quot; 等)</p>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>函数 ID</p>
+	FunctionId *string `json:"FunctionId,omitnil,omitempty" name:"FunctionId"`
+
+	// <p>标签列表</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>函数类型 (&quot;HTTP&quot; 或 &quot;Event&quot;)</p>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>是否启用 L5 (&quot;TRUE&quot;/&quot;FALSE&quot;)</p>
+	L5Enable *string `json:"L5Enable,omitnil,omitempty" name:"L5Enable"`
+
+	// <p>函数创建时间</p>
+	AddTime *string `json:"AddTime,omitnil,omitempty" name:"AddTime"`
+
+	// <p>对应scf.GetFunction接口的OnsEnable，是否启用 Ons (&quot;TRUE&quot;/&quot;FALSE&quot;)</p>
+	OnsEnable *string `json:"OnsEnable,omitnil,omitempty" name:"OnsEnable"`
+
+	// <p>计费状态 (&quot;Available&quot; 等)</p>
+	AvailableStatus *string `json:"AvailableStatus,omitnil,omitempty" name:"AvailableStatus"`
+
+	// <p>函数版本（查询时传入的）</p>
+	Qualifier *string `json:"Qualifier,omitnil,omitempty" name:"Qualifier"`
+
+	// <p>初始化超时时间（秒）</p>
+	InitTimeout *uint64 `json:"InitTimeout,omitnil,omitempty" name:"InitTimeout"`
+
+	// <p>是否开启异步 (&quot;TRUE&quot;/&quot;FALSE&quot;)</p>
+	AsyncRunEnable *string `json:"AsyncRunEnable,omitnil,omitempty" name:"AsyncRunEnable"`
+
+	// <p>是否开启事件追踪 (&quot;TRUE&quot;/&quot;FALSE&quot;)</p>
+	TraceEnable *string `json:"TraceEnable,omitnil,omitempty" name:"TraceEnable"`
+
+	// <p>镜像配置</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImageConfig *AgentRuntimeCodeImageConfig `json:"ImageConfig,omitnil,omitempty" name:"ImageConfig"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetFunctionResponse struct {
+	*tchttp.BaseResponse
+	Response *GetFunctionResponseParams `json:"Response"`
+}
+
+func (r *GetFunctionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetFunctionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -7236,6 +7976,116 @@ type KVPair struct {
 
 	// 值
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+// Predefined struct for user
+type ListFunctionsRequestParams struct {
+	// <p>命名空间</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// <p>以升序还是降序的方式返回结果，可选值 ASC 和 DESC</p>
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// <p>根据哪个字段进行返回结果排序,支持以下字段：AddTime, ModTime, FunctionName</p>
+	Orderby *string `json:"Orderby,omitnil,omitempty" name:"Orderby"`
+
+	// <p>数据偏移量，默认值为 0</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>返回数据长度，默认值为 20</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>支持FunctionName模糊匹配</p>
+	SearchKey *string `json:"SearchKey,omitnil,omitempty" name:"SearchKey"`
+
+	// <p>函数描述，支持模糊搜索</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>过滤特定属性或者有特定标签的函数。- 传值方式key-value 进行传值 例如：&quot;Filters&quot;: [{ &quot;Name&quot;: &quot;Status&quot;, &quot;Values&quot;: [&quot;CreateFailed&quot;,&quot;Creating&quot;]}, {&quot;Name&quot;: &quot;Type&quot;,&quot;Values&quot;: [&quot;HTTP&quot;]}]上述条件的函数是，函数状态为创建失败或者创建中，且函数类型为 HTTP 函数如果通过标签进行过滤：- tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。示例值：&quot;Filters&quot;: [{&quot;Name&quot;:&quot;tag-dmtest&quot;,&quot;Values&quot;:[&quot;dmtest&quot;]}]入参限制：1.每次请求的Filters的上限为10，Filter.Values的上限为5。2.[VpcId&#39;, &#39;SubnetId&#39;, &#39;ClsTopicId&#39;, &#39;ClsLogsetId&#39;, &#39;Role&#39;, &#39;CfsId&#39;, &#39;CfsMountInsId&#39;, &#39;Eip&#39;] 过滤的Name 为这些属性时， values 只能传一个值3.[&#39;Status&#39;, &#39;Runtime&#39;, &#39;Type&#39;, &#39;PublicNetStatus&#39;, &#39;AsyncRunEnable&#39;, &#39;TraceEnable&#39;, &#39;Stamp&#39;] 过滤的Name 为这些属性时 ，values 可以传多个值</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type ListFunctionsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>命名空间</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// <p>以升序还是降序的方式返回结果，可选值 ASC 和 DESC</p>
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// <p>根据哪个字段进行返回结果排序,支持以下字段：AddTime, ModTime, FunctionName</p>
+	Orderby *string `json:"Orderby,omitnil,omitempty" name:"Orderby"`
+
+	// <p>数据偏移量，默认值为 0</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>返回数据长度，默认值为 20</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>支持FunctionName模糊匹配</p>
+	SearchKey *string `json:"SearchKey,omitnil,omitempty" name:"SearchKey"`
+
+	// <p>函数描述，支持模糊搜索</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>过滤特定属性或者有特定标签的函数。- 传值方式key-value 进行传值 例如：&quot;Filters&quot;: [{ &quot;Name&quot;: &quot;Status&quot;, &quot;Values&quot;: [&quot;CreateFailed&quot;,&quot;Creating&quot;]}, {&quot;Name&quot;: &quot;Type&quot;,&quot;Values&quot;: [&quot;HTTP&quot;]}]上述条件的函数是，函数状态为创建失败或者创建中，且函数类型为 HTTP 函数如果通过标签进行过滤：- tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。示例值：&quot;Filters&quot;: [{&quot;Name&quot;:&quot;tag-dmtest&quot;,&quot;Values&quot;:[&quot;dmtest&quot;]}]入参限制：1.每次请求的Filters的上限为10，Filter.Values的上限为5。2.[VpcId&#39;, &#39;SubnetId&#39;, &#39;ClsTopicId&#39;, &#39;ClsLogsetId&#39;, &#39;Role&#39;, &#39;CfsId&#39;, &#39;CfsMountInsId&#39;, &#39;Eip&#39;] 过滤的Name 为这些属性时， values 只能传一个值3.[&#39;Status&#39;, &#39;Runtime&#39;, &#39;Type&#39;, &#39;PublicNetStatus&#39;, &#39;AsyncRunEnable&#39;, &#39;TraceEnable&#39;, &#39;Stamp&#39;] 过滤的Name 为这些属性时 ，values 可以传多个值</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *ListFunctionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListFunctionsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "Order")
+	delete(f, "Orderby")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "SearchKey")
+	delete(f, "Description")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListFunctionsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListFunctionsResponseParams struct {
+	// <p>函数列表</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Functions []*Function `json:"Functions,omitnil,omitempty" name:"Functions"`
+
+	// <p>总数</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListFunctionsResponse struct {
+	*tchttp.BaseResponse
+	Response *ListFunctionsResponseParams `json:"Response"`
+}
+
+func (r *ListFunctionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListFunctionsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -9280,6 +10130,11 @@ func (r *PreviewPGUserMigrationsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type PrivateConfig struct {
+	// 云函数的语言
+	Language *string `json:"Language,omitnil,omitempty" name:"Language"`
+}
+
 type Provider struct {
 	// 身份源的唯一标识符，用于在系统内区分不同的身份源。格式要求：2~32 位，仅支持小写英文字母和数字，不可包含空格或特殊字符。创建后不可修改
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
@@ -10328,6 +11183,14 @@ type StaticStoreInfo struct {
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 }
 
+type StatusReason struct {
+	// <p>错误码</p>
+	ErrorCode *string `json:"ErrorCode,omitnil,omitempty" name:"ErrorCode"`
+
+	// <p>错误描述</p>
+	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
+}
+
 type StorageInfo struct {
 	// <p>资源所属地域。<br>当前支持ap-shanghai</p>
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
@@ -10536,6 +11399,302 @@ func (r *UpdateAIModelResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UpdateAIModelResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateFunctionCodeRequestParams struct {
+	// <p>创建的函数名称</p>
+	FunctionName *string `json:"FunctionName,omitnil,omitempty" name:"FunctionName"`
+
+	// <p>环境ID</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// <p>函数处理方法名称</p>
+	Handler *string `json:"Handler,omitnil,omitempty" name:"Handler"`
+
+	// <p>函数所属命名空间</p>
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+
+	// <p>在线依赖安装</p>
+	InstallDependency *string `json:"InstallDependency,omitnil,omitempty" name:"InstallDependency"`
+
+	// <p>在更新时是否同步发布新版本，默认为：FALSE，不发布 示例值：FALSE</p>
+	Publish *string `json:"Publish,omitnil,omitempty" name:"Publish"`
+
+	// <p>包含函数代码文件的zip格式文件</p>
+	Code *CodeReq `json:"Code,omitnil,omitempty" name:"Code"`
+
+	// <p>代码来源方式，支持 ZipFile, Cos, Inline 之一 示例值：Cos</p>
+	CodeSource *string `json:"CodeSource,omitnil,omitempty" name:"CodeSource"`
+}
+
+type UpdateFunctionCodeRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>创建的函数名称</p>
+	FunctionName *string `json:"FunctionName,omitnil,omitempty" name:"FunctionName"`
+
+	// <p>环境ID</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// <p>函数处理方法名称</p>
+	Handler *string `json:"Handler,omitnil,omitempty" name:"Handler"`
+
+	// <p>函数所属命名空间</p>
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+
+	// <p>在线依赖安装</p>
+	InstallDependency *string `json:"InstallDependency,omitnil,omitempty" name:"InstallDependency"`
+
+	// <p>在更新时是否同步发布新版本，默认为：FALSE，不发布 示例值：FALSE</p>
+	Publish *string `json:"Publish,omitnil,omitempty" name:"Publish"`
+
+	// <p>包含函数代码文件的zip格式文件</p>
+	Code *CodeReq `json:"Code,omitnil,omitempty" name:"Code"`
+
+	// <p>代码来源方式，支持 ZipFile, Cos, Inline 之一 示例值：Cos</p>
+	CodeSource *string `json:"CodeSource,omitnil,omitempty" name:"CodeSource"`
+}
+
+func (r *UpdateFunctionCodeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateFunctionCodeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FunctionName")
+	delete(f, "EnvId")
+	delete(f, "Handler")
+	delete(f, "Namespace")
+	delete(f, "InstallDependency")
+	delete(f, "Publish")
+	delete(f, "Code")
+	delete(f, "CodeSource")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateFunctionCodeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateFunctionCodeResponseParams struct {
+	// <p>调用scf返回的错误码</p>
+	SCFErrorCode *string `json:"SCFErrorCode,omitnil,omitempty" name:"SCFErrorCode"`
+
+	// <p>错误码对应的描述信息</p>
+	SCFErrorMsg *string `json:"SCFErrorMsg,omitnil,omitempty" name:"SCFErrorMsg"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateFunctionCodeResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateFunctionCodeResponseParams `json:"Response"`
+}
+
+func (r *UpdateFunctionCodeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateFunctionCodeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateFunctionConfigurationRequestParams struct {
+	// <p>环境ID</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// <p>要修改的函数名称</p>
+	FunctionName *string `json:"FunctionName,omitnil,omitempty" name:"FunctionName"`
+
+	// <p>函数描述。最大支持 1000 个英文字母、数字、空格、逗号和英文句号，支持中文</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>函数运行时内存大小，默认为 128 M，可选范围64M、128 M-3072 M，以 128MB 为阶梯。</p>
+	MemorySize *int64 `json:"MemorySize,omitnil,omitempty" name:"MemorySize"`
+
+	// <p>函数最长执行时间，单位为秒，可选值范围 1-900 秒，默认为 3 秒</p>
+	Timeout *int64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
+
+	// <p>函数的环境变量</p>
+	Environment *FunctionEnvironment `json:"Environment,omitnil,omitempty" name:"Environment"`
+
+	// <p>函数的私有网络配置</p>
+	VpcConfig *FunctionVpcConfig `json:"VpcConfig,omitnil,omitempty" name:"VpcConfig"`
+
+	// <p>公网访问配置</p>
+	PublicNetConfig *FunctionPublicNetConfig `json:"PublicNetConfig,omitnil,omitempty" name:"PublicNetConfig"`
+
+	// <p>函数运行环境，创建时指定，目前不支持修改。</p>
+	Runtime *string `json:"Runtime,omitnil,omitempty" name:"Runtime"`
+
+	// <p>函数绑定的角色</p>
+	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
+
+	// <p>在线依赖安装，TRUE 表示安装，仅支持 Node.js 函数。 </p><p>默认值：FALSE</p>
+	InstallDependency *string `json:"InstallDependency,omitnil,omitempty" name:"InstallDependency"`
+
+	// <p>日志投递到的cls日志集ID</p>
+	ClsTopicId *string `json:"ClsTopicId,omitnil,omitempty" name:"ClsTopicId"`
+
+	// <p>日志投递到的cls Topic ID</p>
+	ClsLogsetId *string `json:"ClsLogsetId,omitnil,omitempty" name:"ClsLogsetId"`
+
+	// <p>在更新时是否同步发布新版本</p><p>默认值：FALSE</p>
+	Publish *string `json:"Publish,omitnil,omitempty" name:"Publish"`
+
+	// <p>是否开启L5访问能力，TRUE 为开启，FALSE为关闭</p>
+	L5Enable *string `json:"L5Enable,omitnil,omitempty" name:"L5Enable"`
+
+	// <p>函数要关联的层版本列表，层的版本会按照在列表中顺序依次覆盖。</p>
+	Layers []*FunctionLayer `json:"Layers,omitnil,omitempty" name:"Layers"`
+
+	// <p>函数初始化执行超时时间</p>
+	InitTimeout *int64 `json:"InitTimeout,omitnil,omitempty" name:"InitTimeout"`
+
+	// <p>是否开启Dns缓存能力。只支持EVENT函数。</p><p>默认值：FALSE</p>
+	DnsCache *string `json:"DnsCache,omitnil,omitempty" name:"DnsCache"`
+
+	// <p>忽略系统日志上报</p>
+	IgnoreSysLog *string `json:"IgnoreSysLog,omitnil,omitempty" name:"IgnoreSysLog"`
+
+	// <p>固定IP配置</p>
+	EipConfig []*FunctionEipConfigFixed `json:"EipConfig,omitnil,omitempty" name:"EipConfig"`
+}
+
+type UpdateFunctionConfigurationRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>环境ID</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// <p>要修改的函数名称</p>
+	FunctionName *string `json:"FunctionName,omitnil,omitempty" name:"FunctionName"`
+
+	// <p>函数描述。最大支持 1000 个英文字母、数字、空格、逗号和英文句号，支持中文</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>函数运行时内存大小，默认为 128 M，可选范围64M、128 M-3072 M，以 128MB 为阶梯。</p>
+	MemorySize *int64 `json:"MemorySize,omitnil,omitempty" name:"MemorySize"`
+
+	// <p>函数最长执行时间，单位为秒，可选值范围 1-900 秒，默认为 3 秒</p>
+	Timeout *int64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
+
+	// <p>函数的环境变量</p>
+	Environment *FunctionEnvironment `json:"Environment,omitnil,omitempty" name:"Environment"`
+
+	// <p>函数的私有网络配置</p>
+	VpcConfig *FunctionVpcConfig `json:"VpcConfig,omitnil,omitempty" name:"VpcConfig"`
+
+	// <p>公网访问配置</p>
+	PublicNetConfig *FunctionPublicNetConfig `json:"PublicNetConfig,omitnil,omitempty" name:"PublicNetConfig"`
+
+	// <p>函数运行环境，创建时指定，目前不支持修改。</p>
+	Runtime *string `json:"Runtime,omitnil,omitempty" name:"Runtime"`
+
+	// <p>函数绑定的角色</p>
+	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
+
+	// <p>在线依赖安装，TRUE 表示安装，仅支持 Node.js 函数。 </p><p>默认值：FALSE</p>
+	InstallDependency *string `json:"InstallDependency,omitnil,omitempty" name:"InstallDependency"`
+
+	// <p>日志投递到的cls日志集ID</p>
+	ClsTopicId *string `json:"ClsTopicId,omitnil,omitempty" name:"ClsTopicId"`
+
+	// <p>日志投递到的cls Topic ID</p>
+	ClsLogsetId *string `json:"ClsLogsetId,omitnil,omitempty" name:"ClsLogsetId"`
+
+	// <p>在更新时是否同步发布新版本</p><p>默认值：FALSE</p>
+	Publish *string `json:"Publish,omitnil,omitempty" name:"Publish"`
+
+	// <p>是否开启L5访问能力，TRUE 为开启，FALSE为关闭</p>
+	L5Enable *string `json:"L5Enable,omitnil,omitempty" name:"L5Enable"`
+
+	// <p>函数要关联的层版本列表，层的版本会按照在列表中顺序依次覆盖。</p>
+	Layers []*FunctionLayer `json:"Layers,omitnil,omitempty" name:"Layers"`
+
+	// <p>函数初始化执行超时时间</p>
+	InitTimeout *int64 `json:"InitTimeout,omitnil,omitempty" name:"InitTimeout"`
+
+	// <p>是否开启Dns缓存能力。只支持EVENT函数。</p><p>默认值：FALSE</p>
+	DnsCache *string `json:"DnsCache,omitnil,omitempty" name:"DnsCache"`
+
+	// <p>忽略系统日志上报</p>
+	IgnoreSysLog *string `json:"IgnoreSysLog,omitnil,omitempty" name:"IgnoreSysLog"`
+
+	// <p>固定IP配置</p>
+	EipConfig []*FunctionEipConfigFixed `json:"EipConfig,omitnil,omitempty" name:"EipConfig"`
+}
+
+func (r *UpdateFunctionConfigurationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateFunctionConfigurationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "FunctionName")
+	delete(f, "Description")
+	delete(f, "MemorySize")
+	delete(f, "Timeout")
+	delete(f, "Environment")
+	delete(f, "VpcConfig")
+	delete(f, "PublicNetConfig")
+	delete(f, "Runtime")
+	delete(f, "Role")
+	delete(f, "InstallDependency")
+	delete(f, "ClsTopicId")
+	delete(f, "ClsLogsetId")
+	delete(f, "Publish")
+	delete(f, "L5Enable")
+	delete(f, "Layers")
+	delete(f, "InitTimeout")
+	delete(f, "DnsCache")
+	delete(f, "IgnoreSysLog")
+	delete(f, "EipConfig")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateFunctionConfigurationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateFunctionConfigurationResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateFunctionConfigurationResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateFunctionConfigurationResponseParams `json:"Response"`
+}
+
+func (r *UpdateFunctionConfigurationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateFunctionConfigurationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

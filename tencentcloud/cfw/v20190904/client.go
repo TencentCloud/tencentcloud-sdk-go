@@ -5317,6 +5317,58 @@ func (c *Client) DescribeNDRAssetIdentificationListWithContext(ctx context.Conte
     return
 }
 
+func NewDescribeNDRDataLeakOutAlertListRequest() (request *DescribeNDRDataLeakOutAlertListRequest) {
+    request = &DescribeNDRDataLeakOutAlertListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "DescribeNDRDataLeakOutAlertList")
+    
+    
+    return
+}
+
+func NewDescribeNDRDataLeakOutAlertListResponse() (response *DescribeNDRDataLeakOutAlertListResponse) {
+    response = &DescribeNDRDataLeakOutAlertListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeNDRDataLeakOutAlertList
+// DescribeNDRDataLeakOutAlertList -- 查询NDR数据泄露出站告警列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeNDRDataLeakOutAlertList(request *DescribeNDRDataLeakOutAlertListRequest) (response *DescribeNDRDataLeakOutAlertListResponse, err error) {
+    return c.DescribeNDRDataLeakOutAlertListWithContext(context.Background(), request)
+}
+
+// DescribeNDRDataLeakOutAlertList
+// DescribeNDRDataLeakOutAlertList -- 查询NDR数据泄露出站告警列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeNDRDataLeakOutAlertListWithContext(ctx context.Context, request *DescribeNDRDataLeakOutAlertListRequest) (response *DescribeNDRDataLeakOutAlertListResponse, err error) {
+    if request == nil {
+        request = NewDescribeNDRDataLeakOutAlertListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeNDRDataLeakOutAlertList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNDRDataLeakOutAlertList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeNDRDataLeakOutAlertListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeNatAcRuleRequest() (request *DescribeNatAcRuleRequest) {
     request = &DescribeNatAcRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},

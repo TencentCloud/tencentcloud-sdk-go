@@ -127,20 +127,26 @@ type BinlogInfo struct {
 
 // Predefined struct for user
 type ChangeInstanceMasterRequestParams struct {
-	// 实例 ID，如：kee-6ubh****。
+	// <p>实例 ID，如：kee-6ubh****。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 副本节点 ID。
+	// <p>副本节点组 ID，请通过接口DescribeInstanceReplicas获取多 AZ备节点组的 ID 信息。</p>
+	GroupId *int64 `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// <p>副本节点 ID。</p>
 	NodeId *string `json:"NodeId,omitnil,omitempty" name:"NodeId"`
 }
 
 type ChangeInstanceMasterRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID，如：kee-6ubh****。
+	// <p>实例 ID，如：kee-6ubh****。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 副本节点 ID。
+	// <p>副本节点组 ID，请通过接口DescribeInstanceReplicas获取多 AZ备节点组的 ID 信息。</p>
+	GroupId *int64 `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// <p>副本节点 ID。</p>
 	NodeId *string `json:"NodeId,omitnil,omitempty" name:"NodeId"`
 }
 
@@ -157,6 +163,7 @@ func (r *ChangeInstanceMasterRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "InstanceId")
+	delete(f, "GroupId")
 	delete(f, "NodeId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChangeInstanceMasterRequest has unknown keys!", "")
@@ -166,7 +173,7 @@ func (r *ChangeInstanceMasterRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ChangeInstanceMasterResponseParams struct {
-	// 异步任务 ID。
+	// <p>异步任务 ID。</p>
 	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -436,6 +443,9 @@ type CreateInstancesRequestParams struct {
 	// <p>给实例设置安全组 ID 数组。</p>
 	SecurityGroupIdList []*string `json:"SecurityGroupIdList,omitnil,omitempty" name:"SecurityGroupIdList"`
 
+	// <p>实例的节点信息。</p><ul><li>包含节点ID、节点类型、节点可用区 ID等。具体信息，请参见<a href="https://cloud.tencent.com/document/product/1520/86230#NodeInfo">NodeInfo</a> 。</li><li>目前支持传入节点的类型（主节点或者副本节点），节点的可用区。未指定该参数时，系统将默认创建单可用区架构实例。</li></ul>
+	NodeSet []*NodeInfo `json:"NodeSet,omitnil,omitempty" name:"NodeSet"`
+
 	// <p>给实例绑定标签。</p>
 	ResourceTags []*ResourceTag `json:"ResourceTags,omitnil,omitempty" name:"ResourceTags"`
 
@@ -509,6 +519,9 @@ type CreateInstancesRequest struct {
 	// <p>给实例设置安全组 ID 数组。</p>
 	SecurityGroupIdList []*string `json:"SecurityGroupIdList,omitnil,omitempty" name:"SecurityGroupIdList"`
 
+	// <p>实例的节点信息。</p><ul><li>包含节点ID、节点类型、节点可用区 ID等。具体信息，请参见<a href="https://cloud.tencent.com/document/product/1520/86230#NodeInfo">NodeInfo</a> 。</li><li>目前支持传入节点的类型（主节点或者副本节点），节点的可用区。未指定该参数时，系统将默认创建单可用区架构实例。</li></ul>
+	NodeSet []*NodeInfo `json:"NodeSet,omitnil,omitempty" name:"NodeSet"`
+
 	// <p>给实例绑定标签。</p>
 	ResourceTags []*ResourceTag `json:"ResourceTags,omitnil,omitempty" name:"ResourceTags"`
 
@@ -557,6 +570,7 @@ func (r *CreateInstancesRequest) FromJsonString(s string) error {
 	delete(f, "VPort")
 	delete(f, "AutoRenew")
 	delete(f, "SecurityGroupIdList")
+	delete(f, "NodeSet")
 	delete(f, "ResourceTags")
 	delete(f, "MemSize")
 	delete(f, "DiskSize")
@@ -3700,53 +3714,57 @@ type TradeDealDetail struct {
 
 // Predefined struct for user
 type UpgradeInstanceRequestParams struct {
-	// 实例 ID。
+	// <p>实例 ID。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 配置变更后，每个分片持久化内存容量，单位：GB。
-	// <ul><li>KeeWiDB 内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为固定搭配，即2GB内存，固定分配8GB的持久内存，不可选择。具体信息，请参见[产品规格](https://cloud.tencent.com/document/product/1520/80808)。</li><li>变更实例内存、持久化内存与磁盘、变更实例的分片数量，每次只能变更一项。</li></ul>
+	// <p>配置变更后，每个分片持久化内存容量，单位：GB。</p><ul><li>KeeWiDB 内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为固定搭配，即2GB内存，固定分配8GB的持久内存，不可选择。具体信息，请参见[产品规格](https://cloud.tencent.com/document/product/1520/80808)。</li><li>变更实例内存、持久化内存与磁盘、变更实例的分片数量，每次只能变更一项。</li></ul>
 	MemSize *int64 `json:"MemSize,omitnil,omitempty" name:"MemSize"`
 
-	// CPU 核数，可忽略不传
+	// <p>CPU 核数，可忽略不传</p>
 	MachineCpu *int64 `json:"MachineCpu,omitnil,omitempty" name:"MachineCpu"`
 
-	// 实例内存容量，单位：GB。
-	// <ul><li>KeeWiDB 内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为固定搭配，即2GB内存，固定分配8GB的持久内存，不可选择。具体信息，请参见[产品规格](https://cloud.tencent.com/document/product/1520/80808)。</li><li>变更实例内存、持久化内存与磁盘、变更实例的分片数量，每次只能变更一项。</li></ul>
+	// <p>实例内存容量，单位：GB。</p><ul><li>KeeWiDB 内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为固定搭配，即2GB内存，固定分配8GB的持久内存，不可选择。具体信息，请参见[产品规格](https://cloud.tencent.com/document/product/1520/80808)。</li><li>变更实例内存、持久化内存与磁盘、变更实例的分片数量，每次只能变更一项。</li></ul>
 	MachineMemory *int64 `json:"MachineMemory,omitnil,omitempty" name:"MachineMemory"`
 
-	// 配置变更后，分片数量。
-	// <ul><li>增加后分片的数量务必为增加之前数量的整数倍。分片数量支持选择3、5、6、8、9、10、12、15、16、18、20、21、24、25、27、30、32、33、35、36、39、40、42、45、48、50、51、54、55、56、57、60、63、64分片。</li><li>变更实例内存、持久化内存与磁盘、变更实例的分片数量，每次只能变更一项。</li></ul>
+	// <p>配置变更后，分片数量。</p><ul><li>增加后分片的数量务必为增加之前数量的整数倍。分片数量支持选择3、5、6、8、9、10、12、15、16、18、20、21、24、25、27、30、32、33、35、36、39、40、42、45、48、50、51、54、55、56、57、60、63、64分片。</li><li>变更实例内存、持久化内存与磁盘、变更实例的分片数量，每次只能变更一项。</li></ul>
 	ShardNum *int64 `json:"ShardNum,omitnil,omitempty" name:"ShardNum"`
 
-	// 配置变更后，每个分片硬盘的容量。单位：GB。
-	// <ul><li>每一缓存分片容量，对应的磁盘容量范围不同。具体信息，请参见[产品规格](https://cloud.tencent.com/document/product/1520/80808)。</li><li>变更实例内存、持久化内存与磁盘、变更实例的分片数量，每次只能变更一项。</li></ul>
+	// <p>配置变更后，每个分片硬盘的容量。单位：GB。</p><ul><li>每一缓存分片容量，对应的磁盘容量范围不同。具体信息，请参见[产品规格](https://cloud.tencent.com/document/product/1520/80808)。</li><li>变更实例内存、持久化内存与磁盘、变更实例的分片数量，每次只能变更一项。</li></ul>
 	DiskSize *int64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
+
+	// <p>配置变更后，副本数量。需要和NodeSet参数一起传递。</p><p>取值范围：[1, 2]</p>
+	ReplicasNum *int64 `json:"ReplicasNum,omitnil,omitempty" name:"ReplicasNum"`
+
+	// <p>配置变更后，副本节点信息。</p><ul><li>增加副本：可不传NodeId</li><li>删除副本：需传保留节点的NodeId</li></ul>
+	NodeSet []*NodeInfo `json:"NodeSet,omitnil,omitempty" name:"NodeSet"`
 }
 
 type UpgradeInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID。
+	// <p>实例 ID。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 配置变更后，每个分片持久化内存容量，单位：GB。
-	// <ul><li>KeeWiDB 内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为固定搭配，即2GB内存，固定分配8GB的持久内存，不可选择。具体信息，请参见[产品规格](https://cloud.tencent.com/document/product/1520/80808)。</li><li>变更实例内存、持久化内存与磁盘、变更实例的分片数量，每次只能变更一项。</li></ul>
+	// <p>配置变更后，每个分片持久化内存容量，单位：GB。</p><ul><li>KeeWiDB 内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为固定搭配，即2GB内存，固定分配8GB的持久内存，不可选择。具体信息，请参见[产品规格](https://cloud.tencent.com/document/product/1520/80808)。</li><li>变更实例内存、持久化内存与磁盘、变更实例的分片数量，每次只能变更一项。</li></ul>
 	MemSize *int64 `json:"MemSize,omitnil,omitempty" name:"MemSize"`
 
-	// CPU 核数，可忽略不传
+	// <p>CPU 核数，可忽略不传</p>
 	MachineCpu *int64 `json:"MachineCpu,omitnil,omitempty" name:"MachineCpu"`
 
-	// 实例内存容量，单位：GB。
-	// <ul><li>KeeWiDB 内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为固定搭配，即2GB内存，固定分配8GB的持久内存，不可选择。具体信息，请参见[产品规格](https://cloud.tencent.com/document/product/1520/80808)。</li><li>变更实例内存、持久化内存与磁盘、变更实例的分片数量，每次只能变更一项。</li></ul>
+	// <p>实例内存容量，单位：GB。</p><ul><li>KeeWiDB 内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为固定搭配，即2GB内存，固定分配8GB的持久内存，不可选择。具体信息，请参见[产品规格](https://cloud.tencent.com/document/product/1520/80808)。</li><li>变更实例内存、持久化内存与磁盘、变更实例的分片数量，每次只能变更一项。</li></ul>
 	MachineMemory *int64 `json:"MachineMemory,omitnil,omitempty" name:"MachineMemory"`
 
-	// 配置变更后，分片数量。
-	// <ul><li>增加后分片的数量务必为增加之前数量的整数倍。分片数量支持选择3、5、6、8、9、10、12、15、16、18、20、21、24、25、27、30、32、33、35、36、39、40、42、45、48、50、51、54、55、56、57、60、63、64分片。</li><li>变更实例内存、持久化内存与磁盘、变更实例的分片数量，每次只能变更一项。</li></ul>
+	// <p>配置变更后，分片数量。</p><ul><li>增加后分片的数量务必为增加之前数量的整数倍。分片数量支持选择3、5、6、8、9、10、12、15、16、18、20、21、24、25、27、30、32、33、35、36、39、40、42、45、48、50、51、54、55、56、57、60、63、64分片。</li><li>变更实例内存、持久化内存与磁盘、变更实例的分片数量，每次只能变更一项。</li></ul>
 	ShardNum *int64 `json:"ShardNum,omitnil,omitempty" name:"ShardNum"`
 
-	// 配置变更后，每个分片硬盘的容量。单位：GB。
-	// <ul><li>每一缓存分片容量，对应的磁盘容量范围不同。具体信息，请参见[产品规格](https://cloud.tencent.com/document/product/1520/80808)。</li><li>变更实例内存、持久化内存与磁盘、变更实例的分片数量，每次只能变更一项。</li></ul>
+	// <p>配置变更后，每个分片硬盘的容量。单位：GB。</p><ul><li>每一缓存分片容量，对应的磁盘容量范围不同。具体信息，请参见[产品规格](https://cloud.tencent.com/document/product/1520/80808)。</li><li>变更实例内存、持久化内存与磁盘、变更实例的分片数量，每次只能变更一项。</li></ul>
 	DiskSize *int64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
+
+	// <p>配置变更后，副本数量。需要和NodeSet参数一起传递。</p><p>取值范围：[1, 2]</p>
+	ReplicasNum *int64 `json:"ReplicasNum,omitnil,omitempty" name:"ReplicasNum"`
+
+	// <p>配置变更后，副本节点信息。</p><ul><li>增加副本：可不传NodeId</li><li>删除副本：需传保留节点的NodeId</li></ul>
+	NodeSet []*NodeInfo `json:"NodeSet,omitnil,omitempty" name:"NodeSet"`
 }
 
 func (r *UpgradeInstanceRequest) ToJsonString() string {
@@ -3767,6 +3785,8 @@ func (r *UpgradeInstanceRequest) FromJsonString(s string) error {
 	delete(f, "MachineMemory")
 	delete(f, "ShardNum")
 	delete(f, "DiskSize")
+	delete(f, "ReplicasNum")
+	delete(f, "NodeSet")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpgradeInstanceRequest has unknown keys!", "")
 	}
@@ -3775,12 +3795,12 @@ func (r *UpgradeInstanceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpgradeInstanceResponseParams struct {
-	// 交易ID。
+	// <p>交易ID。</p>
 	//
 	// Deprecated: DealId is deprecated.
 	DealId *string `json:"DealId,omitnil,omitempty" name:"DealId"`
 
-	// 订单号。
+	// <p>订单号。</p>
 	DealName *string `json:"DealName,omitnil,omitempty" name:"DealName"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

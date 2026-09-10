@@ -232,6 +232,9 @@ type CreateNativeNodePoolParam struct {
 
 	// <p>原生节点池密码</p>
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+
+	// <p>自定义镜像 ID</p>
+	CustomImage *string `json:"CustomImage,omitnil,omitempty" name:"CustomImage"`
 }
 
 // Predefined struct for user
@@ -2442,6 +2445,10 @@ type NativeNodePoolInfo struct {
 
 	// <p>原生节点机型 Native, NativeCVM</p>
 	MachineType *string `json:"MachineType,omitnil,omitempty" name:"MachineType"`
+
+	// <p>自定义镜像 ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CustomImage *string `json:"CustomImage,omitnil,omitempty" name:"CustomImage"`
 }
 
 type NodeCountSummary struct {
@@ -3113,4 +3120,7 @@ type UpdateNativeNodePoolParam struct {
 
 	// <p>原生节点池密码</p>
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+
+	// <p>自定义镜像 ID</p>
+	CustomImage *string `json:"CustomImage,omitnil,omitempty" name:"CustomImage"`
 }

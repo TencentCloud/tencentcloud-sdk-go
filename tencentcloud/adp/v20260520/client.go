@@ -153,13 +153,13 @@ func NewCreateAgentResponse() (response *CreateAgentResponse) {
 }
 
 // CreateAgent
-// 创建Agent
+// 创建Agent（目前仅支持claw模式）
 func (c *Client) CreateAgent(request *CreateAgentRequest) (response *CreateAgentResponse, err error) {
     return c.CreateAgentWithContext(context.Background(), request)
 }
 
 // CreateAgent
-// 创建Agent
+// 创建Agent（目前仅支持claw模式）
 func (c *Client) CreateAgentWithContext(ctx context.Context, request *CreateAgentRequest) (response *CreateAgentResponse, err error) {
     if request == nil {
         request = NewCreateAgentRequest()

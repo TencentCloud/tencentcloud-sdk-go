@@ -45,6 +45,37 @@ type AIOptimizeModel struct {
 	Model *ModelDetailInfo `json:"Model,omitnil,omitempty" name:"Model"`
 }
 
+type AccessKeyAuthConfig struct {
+	// <p>Access Key字段配置</p>
+	ParamList []*AccessKeyParamConfig `json:"ParamList,omitnil,omitempty" name:"ParamList"`
+
+	// <p>Access Key透传配置</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PassThroughConfig *AccessKeyPassThroughConfig `json:"PassThroughConfig,omitnil,omitempty" name:"PassThroughConfig"`
+
+	// <p>Access Key 使用模式</p><p>枚举值：</p><ul><li>1： Access Key透传</li></ul>
+	UsageMode *int64 `json:"UsageMode,omitnil,omitempty" name:"UsageMode"`
+}
+
+type AccessKeyParamConfig struct {
+	// <p>Access Key 字段类型，1:AccessKeyId，2:AccessKeySecret，3:SessionToken</p>
+	FieldType *int64 `json:"FieldType,omitnil,omitempty" name:"FieldType"`
+
+	// <p>是否必填</p>
+	IsRequired *bool `json:"IsRequired,omitnil,omitempty" name:"IsRequired"`
+
+	// <p>header/query 字段名</p>
+	ParamName *string `json:"ParamName,omitnil,omitempty" name:"ParamName"`
+
+	// <p>AccessKey密钥默认值，允许为空</p>
+	ParamValue *string `json:"ParamValue,omitnil,omitempty" name:"ParamValue"`
+}
+
+type AccessKeyPassThroughConfig struct {
+	// <p>Access Key 字段统一注入位置，0:Header，1:Query</p>
+	KeyLocation *int64 `json:"KeyLocation,omitnil,omitempty" name:"KeyLocation"`
+}
+
 type AccountInfo struct {
 	// <p>员工子账号id</p>
 	AccountUin *string `json:"AccountUin,omitnil,omitempty" name:"AccountUin"`
@@ -1234,17 +1265,20 @@ type AuthConfig struct {
 	// <p>授权方式。</p><p>枚举值：</p><ul><li>0：无鉴权</li><li>1：API Key 鉴权</li><li>2：CAM 授权</li><li>3：OAuth 2.0 授权</li></ul>
 	AuthType *int64 `json:"AuthType,omitnil,omitempty" name:"AuthType"`
 
-	// API Key授权配置
+	// <p>API Key授权配置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApiKeyAuthConfig *ApiKeyAuthConfig `json:"ApiKeyAuthConfig,omitnil,omitempty" name:"ApiKeyAuthConfig"`
 
-	// CAM授权配置
+	// <p>CAM授权配置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CamAuthConfig *CamAuthConfig `json:"CamAuthConfig,omitnil,omitempty" name:"CamAuthConfig"`
 
-	// OAuth2.0授权配置
+	// <p>OAuth2.0授权配置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OAuthConfig *OAuthConfig `json:"OAuthConfig,omitnil,omitempty" name:"OAuthConfig"`
+
+	// <p>AccessKey授权配置</p>
+	AccessKeyAuthConfig *AccessKeyAuthConfig `json:"AccessKeyAuthConfig,omitnil,omitempty" name:"AccessKeyAuthConfig"`
 }
 
 type BackgroundImage struct {
@@ -1306,23 +1340,23 @@ type CallbackConfig struct {
 }
 
 type CamAuthConfig struct {
-	// 角色名称
+	// <p>角色名称</p>
 	RoleName *string `json:"RoleName,omitnil,omitempty" name:"RoleName"`
 
-	// 密钥位置 HEADER/QUERY
-	// 
-	// 枚举值:
-	// | uint | 描述 |
-	// | --- | --- |
-	// | 0 | 头鉴权 |
-	// | 1 | 请求信息鉴权 |
+	// <p>密钥位置 HEADER/QUERY</p><p>枚举值:<br>| uint | 描述 |<br>| --- | --- |<br>| 0 | 头鉴权 |<br>| 1 | 请求信息鉴权 |</p>
 	KeyLocation *int64 `json:"KeyLocation,omitnil,omitempty" name:"KeyLocation"`
 
-	// SecretId字段名称
+	// <p>SecretId字段名称</p>
 	SecretIdName *string `json:"SecretIdName,omitnil,omitempty" name:"SecretIdName"`
 
-	// SecretKey字段名称
+	// <p>SecretKey字段名称</p>
 	SecretKeyName *string `json:"SecretKeyName,omitnil,omitempty" name:"SecretKeyName"`
+
+	// <p>CAM Access Key 字段配置</p>
+	ParamList []*AccessKeyParamConfig `json:"ParamList,omitnil,omitempty" name:"ParamList"`
+
+	// <p>是否支持CAM角色授权</p>
+	SupportRoleAuth *bool `json:"SupportRoleAuth,omitnil,omitempty" name:"SupportRoleAuth"`
 }
 
 type CategoryPermission struct {
@@ -2796,6 +2830,9 @@ type CreateSkillShareRequestParams struct {
 
 	// <p>必填，被共享的版本id（必须高于已共享版本）</p>
 	VersionId *string `json:"VersionId,omitnil,omitempty" name:"VersionId"`
+
+	// <p>共享配置</p>
+	CorpShareConfig *SkillCorpShareConfig `json:"CorpShareConfig,omitnil,omitempty" name:"CorpShareConfig"`
 }
 
 type CreateSkillShareRequest struct {
@@ -2812,6 +2849,9 @@ type CreateSkillShareRequest struct {
 
 	// <p>必填，被共享的版本id（必须高于已共享版本）</p>
 	VersionId *string `json:"VersionId,omitnil,omitempty" name:"VersionId"`
+
+	// <p>共享配置</p>
+	CorpShareConfig *SkillCorpShareConfig `json:"CorpShareConfig,omitnil,omitempty" name:"CorpShareConfig"`
 }
 
 func (r *CreateSkillShareRequest) ToJsonString() string {
@@ -2830,6 +2870,7 @@ func (r *CreateSkillShareRequest) FromJsonString(s string) error {
 	delete(f, "SkillId")
 	delete(f, "SpaceId")
 	delete(f, "VersionId")
+	delete(f, "CorpShareConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSkillShareRequest has unknown keys!", "")
 	}
@@ -6144,10 +6185,10 @@ func (r *DescribePluginResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribePluginSummaryListRequestParams struct {
-	// 空间ID，查询空间内的插件列表时使用
+	// <p>空间ID，查询空间内的插件列表时使用</p>
 	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
 
-	// 过滤条件列表 支持：PluginKind、CategoryKey、PluginSource、PluginId、PluginClass、BillingType
+	// <p>过滤条件列表，支持 PluginKind、CategoryKey、PluginSource、PluginId、PluginClass、BillingType、AuthType、IsShared、IsCreatedByMe</p>
 	FilterList []*Filter `json:"FilterList,omitnil,omitempty" name:"FilterList"`
 
 	// <p>是否只返回已收藏插件。取 true 时，仅返回当前用户已收藏的插件；取 false 或不传时不按收藏状态过滤。</p>
@@ -6156,26 +6197,29 @@ type DescribePluginSummaryListRequestParams struct {
 	// <p>插件展示场景。不传或取 0 时不限定场景。</p><p>枚举值：</p><ul><li>0：不限定场景</li><li>1：Agent 模式</li><li>2：工作流</li><li>3：智能工作台</li></ul>
 	Module *int64 `json:"Module,omitnil,omitempty" name:"Module"`
 
-	// 页码 从0开始
+	// <p>页码 从0开始</p>
 	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 每页大小
+	// <p>每页大小</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 查询内容 模糊匹配：插件名称/插件描述/工具名称/工具描述
+	// <p>查询内容 模糊匹配：插件名称/插件描述/工具名称/工具描述</p>
 	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 
 	// <p>排序方式。</p><p>枚举值：</p><ul><li>0：未指定，默认排序</li><li>1：按相关性排序</li><li>2：按更新时间排序</li><li>3：默认排序</li><li>4：按热度排序</li></ul>
 	SortType *int64 `json:"SortType,omitnil,omitempty" name:"SortType"`
+
+	// <p>筛选当前空间/企业共享插件</p><p>取值范围：[0, 2]</p>
+	PluginSpaceRelation *int64 `json:"PluginSpaceRelation,omitnil,omitempty" name:"PluginSpaceRelation"`
 }
 
 type DescribePluginSummaryListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 空间ID，查询空间内的插件列表时使用
+	// <p>空间ID，查询空间内的插件列表时使用</p>
 	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
 
-	// 过滤条件列表 支持：PluginKind、CategoryKey、PluginSource、PluginId、PluginClass、BillingType
+	// <p>过滤条件列表，支持 PluginKind、CategoryKey、PluginSource、PluginId、PluginClass、BillingType、AuthType、IsShared、IsCreatedByMe</p>
 	FilterList []*Filter `json:"FilterList,omitnil,omitempty" name:"FilterList"`
 
 	// <p>是否只返回已收藏插件。取 true 时，仅返回当前用户已收藏的插件；取 false 或不传时不按收藏状态过滤。</p>
@@ -6184,17 +6228,20 @@ type DescribePluginSummaryListRequest struct {
 	// <p>插件展示场景。不传或取 0 时不限定场景。</p><p>枚举值：</p><ul><li>0：不限定场景</li><li>1：Agent 模式</li><li>2：工作流</li><li>3：智能工作台</li></ul>
 	Module *int64 `json:"Module,omitnil,omitempty" name:"Module"`
 
-	// 页码 从0开始
+	// <p>页码 从0开始</p>
 	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 每页大小
+	// <p>每页大小</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 查询内容 模糊匹配：插件名称/插件描述/工具名称/工具描述
+	// <p>查询内容 模糊匹配：插件名称/插件描述/工具名称/工具描述</p>
 	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 
 	// <p>排序方式。</p><p>枚举值：</p><ul><li>0：未指定，默认排序</li><li>1：按相关性排序</li><li>2：按更新时间排序</li><li>3：默认排序</li><li>4：按热度排序</li></ul>
 	SortType *int64 `json:"SortType,omitnil,omitempty" name:"SortType"`
+
+	// <p>筛选当前空间/企业共享插件</p><p>取值范围：[0, 2]</p>
+	PluginSpaceRelation *int64 `json:"PluginSpaceRelation,omitnil,omitempty" name:"PluginSpaceRelation"`
 }
 
 func (r *DescribePluginSummaryListRequest) ToJsonString() string {
@@ -6217,6 +6264,7 @@ func (r *DescribePluginSummaryListRequest) FromJsonString(s string) error {
 	delete(f, "PageSize")
 	delete(f, "Query")
 	delete(f, "SortType")
+	delete(f, "PluginSpaceRelation")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePluginSummaryListRequest has unknown keys!", "")
 	}
@@ -6225,10 +6273,10 @@ func (r *DescribePluginSummaryListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribePluginSummaryListResponseParams struct {
-	// plugin_list
+	// <p>plugin_list</p>
 	PluginList []*PluginSummary `json:"PluginList,omitnil,omitempty" name:"PluginList"`
 
-	// total_count
+	// <p>total_count</p>
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6557,6 +6605,9 @@ func (r *DescribeSkillReferenceListRequest) FromJsonString(s string) error {
 type DescribeSkillReferenceListResponseParams struct {
 	// <p>按 SkillRefType 分组的引用汇总：某类型 total_count = 0 时不入组（不返回空占位） 本期同时落 OPENCLAW / AGENT / CORP_ASSISTANT 三路</p>
 	ReferenceList []*SkillReferenceGroup `json:"ReferenceList,omitnil,omitempty" name:"ReferenceList"`
+
+	// <p>当前用户是否允许强制删除有引用的Skill</p>
+	AllowForceModify *bool `json:"AllowForceModify,omitnil,omitempty" name:"AllowForceModify"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -7402,7 +7453,7 @@ type Filter struct {
 	// 过滤字段名
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 操作符，默认 IN（向后兼容）<table><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>FILTER_OPERATOR_IN</td><td>0</td><td>属于 value_list（默认值，向后兼容；value_list 不可为空）</td></tr><tr><td>FILTER_OPERATOR_NOT_IN</td><td>1</td><td>不属于 value_list（value_list 不可为空）</td></tr></table>
+	// 操作符，默认 IN（向后兼容）<table><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>FILTER_OPERATOR_IN</td><td>0</td><td>属于 value_list（默认值，向后兼容；value_list 不可为空）</td></tr><tr><td>FILTER_OPERATOR_NOT_IN</td><td>1</td><td>不属于 value_list（value_list 不可为空）</td></tr><tr><td>FILTER_OPERATOR_BETWEEN</td><td>2</td><td>之间（闭区间 [start, end]；value_list 必须恰好 2 个元素，允许其一为空表示单边开区间）</td></tr></table>
 	Operator *int64 `json:"Operator,omitnil,omitempty" name:"Operator"`
 
 	// 过滤值数组
@@ -9001,6 +9052,12 @@ type PluginStatistics struct {
 }
 
 type PluginSummary struct {
+	// <p>插件配置信息</p>
+	Config *PluginConfig `json:"Config,omitnil,omitempty" name:"Config"`
+
+	// <p>是否已配置共享</p>
+	IsShared *bool `json:"IsShared,omitnil,omitempty" name:"IsShared"`
+
 	// <p>插件运营管理信息</p>
 	Operation *PluginOperation `json:"Operation,omitnil,omitempty" name:"Operation"`
 
@@ -9010,20 +9067,23 @@ type PluginSummary struct {
 	// <p>插件基础信息</p>
 	Profile *PluginProfile `json:"Profile,omitnil,omitempty" name:"Profile"`
 
+	// <p>插件所属空间 ID；内置插件为空</p>
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
 	// <p>插件统计信息</p>
 	Statistics *PluginStatistics `json:"Statistics,omitnil,omitempty" name:"Statistics"`
 
 	// <p>插件状态，1:可用，2:不可用 </p><p>枚举值：</p><ul><li>1： 可用</li><li>2： 不可用</li></ul>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
+	// <p>工具信息</p>
+	ToolList []*ToolSummary `json:"ToolList,omitnil,omitempty" name:"ToolList"`
+
 	// <p>用户维度的插件状态信息</p>
 	UserState *PluginUserState `json:"UserState,omitnil,omitempty" name:"UserState"`
 
-	// <p>插件配置信息</p>
-	Config *PluginConfig `json:"Config,omitnil,omitempty" name:"Config"`
-
-	// <p>工具信息</p>
-	ToolList []*ToolSummary `json:"ToolList,omitnil,omitempty" name:"ToolList"`
+	// <p>更新时间，Unix时间戳</p><p>单位：秒</p>
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
 type PluginUsageDetail struct {

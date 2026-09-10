@@ -635,6 +635,21 @@ type AiContentReviewTaskInput struct {
 	Definition *uint64 `json:"Definition,omitnil,omitempty" name:"Definition"`
 }
 
+type AiCutOutConfig struct {
+	// <p>能力配置开关，可选值：  ON：开启； OFF：关闭。 默认值：ON。</p>
+	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
+
+	// <p>抠图目标类型指定：&quot;foreground&quot; / &quot;pattern&quot;</p>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>图案抠图配置。仅在Type为pattern时生效。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PatternConfig *PatternConfig `json:"PatternConfig,omitnil,omitempty" name:"PatternConfig"`
+
+	// <p>抠图模型选择，可不填。</p><p>枚举值：</p><ul><li>auto： 自动选择合适的模型</li><li>WAND-cutout-1.0-lite： 标准版，速度最快</li><li>WAND-cutout-2.0-lite： 增强版，速度更快</li><li>WAND-cutout-2.0-flash： 增强版，质量-速度平衡</li><li>WAND-cutout-3.0-lite： 增强版，速度更快</li><li>WAND-cutout-3.0-flash： 增强版，质量-速度平衡</li></ul>
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+}
+
 type AiRecognitionResult struct {
 	// 任务的类型，取值范围：
 	// <li>FaceRecognition：人脸识别，</li>
@@ -27899,6 +27914,23 @@ func (r *ParseStreamingManifestResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type PatternConfig struct {
+	// <p>透明度阈值</p><p>取值范围：[0, 255]</p><p>默认值：30</p>
+	TransparencyThreshold *int64 `json:"TransparencyThreshold,omitnil,omitempty" name:"TransparencyThreshold"`
+
+	// <p>不透明阈值，必须大于TransparencyThreshold</p><p>取值范围：[0, 255]</p><p>默认值：127</p>
+	OpaqueThreshold *int64 `json:"OpaqueThreshold,omitnil,omitempty" name:"OpaqueThreshold"`
+
+	// <p>边缘采样步数</p><p>取值范围：[1, 10]</p><p>默认值：5</p>
+	EdgeSamplingStep *int64 `json:"EdgeSamplingStep,omitnil,omitempty" name:"EdgeSamplingStep"`
+
+	// <p>边缘扩展步数</p><p>默认值：5</p>
+	EdgeExpansionStep *int64 `json:"EdgeExpansionStep,omitnil,omitempty" name:"EdgeExpansionStep"`
+
+	// <p>边缘融合强度</p><p>取值范围：[0.0, 1.0]</p><p>默认值：0.5</p>
+	EdgeBlendingIntensity *float64 `json:"EdgeBlendingIntensity,omitnil,omitempty" name:"EdgeBlendingIntensity"`
+}
+
 type PersistenceCompleteTask struct {
 	// 固化生成的媒体 ID。
 	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
@@ -28617,6 +28649,9 @@ type ProcessImageAsyncTask struct {
 	// <p>图片美颜配置。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BeautyConfig *ImageBeautyConfig `json:"BeautyConfig,omitnil,omitempty" name:"BeautyConfig"`
+
+	// <p>Ai抠图配置</p>
+	AiCutOutConfig *AiCutOutConfig `json:"AiCutOutConfig,omitnil,omitempty" name:"AiCutOutConfig"`
 }
 
 type ProcessImageAsyncTaskInput struct {

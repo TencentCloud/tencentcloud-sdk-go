@@ -2857,6 +2857,83 @@ type CustomWhiteRule struct {
 	SrcIP *string `json:"SrcIP,omitnil,omitempty" name:"SrcIP"`
 }
 
+type DataLeakOutAlertEvent struct {
+	// 风险ID
+	RiskID *string `json:"RiskID,omitnil,omitempty" name:"RiskID"`
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 实例名称
+	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
+
+	// 实例类型
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// 地域
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// 源IP
+	SrcIP *string `json:"SrcIP,omitnil,omitempty" name:"SrcIP"`
+
+	// 目的IP端口，多个以逗号连接：1.1.1.1:80,1.1.1.1:8080
+	DstIPPort *string `json:"DstIPPort,omitnil,omitempty" name:"DstIPPort"`
+
+	// hostname
+	Hostname *string `json:"Hostname,omitnil,omitempty" name:"Hostname"`
+
+	// 目的服务类型
+	DstServiceType *string `json:"DstServiceType,omitnil,omitempty" name:"DstServiceType"`
+
+	// 目的服务名称
+	DstServiceName *string `json:"DstServiceName,omitnil,omitempty" name:"DstServiceName"`
+
+	// 以逗号连接的敏感类型ID集合: 10001,10002,10003
+	LeakTypeSet *string `json:"LeakTypeSet,omitnil,omitempty" name:"LeakTypeSet"`
+
+	// 事件数量
+	EventCount *uint64 `json:"EventCount,omitnil,omitempty" name:"EventCount"`
+
+	// 首次识别时间
+	FirstIdentificationTime *string `json:"FirstIdentificationTime,omitnil,omitempty" name:"FirstIdentificationTime"`
+
+	// 最近识别时间
+	LatestIdentificationTime *string `json:"LatestIdentificationTime,omitnil,omitempty" name:"LatestIdentificationTime"`
+
+	// 风险等级
+	Level *uint64 `json:"Level,omitnil,omitempty" name:"Level"`
+
+	// 处置状态
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 备注
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// API
+	ApiPattern *string `json:"ApiPattern,omitnil,omitempty" name:"ApiPattern"`
+
+	// AI分析状态
+	AnalysisStatus *uint64 `json:"AnalysisStatus,omitnil,omitempty" name:"AnalysisStatus"`
+
+	// AI分析失败原因（失败时）
+	AnalysisFailReason *string `json:"AnalysisFailReason,omitnil,omitempty" name:"AnalysisFailReason"`
+
+	// API业务类型
+	ApiBizType *string `json:"ApiBizType,omitnil,omitempty" name:"ApiBizType"`
+
+	// 风险类型（风险场景）
+	RiskScenario *string `json:"RiskScenario,omitnil,omitempty" name:"RiskScenario"`
+
+	// AI建议风险等级
+	AiSuggestedLevel *int64 `json:"AiSuggestedLevel,omitnil,omitempty" name:"AiSuggestedLevel"`
+
+	// 目的IP地理信息
+	DstGeoLocation *string `json:"DstGeoLocation,omitnil,omitempty" name:"DstGeoLocation"`
+
+	// 最高敏感等级
+	HighestLevel *string `json:"HighestLevel,omitnil,omitempty" name:"HighestLevel"`
+}
+
 type DatabaseWhiteListRuleData struct {
 	// 访问源
 	SourceIp *string `json:"SourceIp,omitnil,omitempty" name:"SourceIp"`
@@ -7977,6 +8054,109 @@ func (r *DescribeNDRAssetIdentificationListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeNDRAssetIdentificationListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeNDRDataLeakOutAlertListRequestParams struct {
+	// 每页条数
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 排序方式，asc正序 desc倒序
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 排序字段
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+
+	// 查询过滤条件，多个条件之间为AND的关系
+	Filters []*OperatorFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type DescribeNDRDataLeakOutAlertListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 每页条数
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 排序方式，asc正序 desc倒序
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 排序字段
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+
+	// 查询过滤条件，多个条件之间为AND的关系
+	Filters []*OperatorFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *DescribeNDRDataLeakOutAlertListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNDRDataLeakOutAlertListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Order")
+	delete(f, "By")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNDRDataLeakOutAlertListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeNDRDataLeakOutAlertListResponseParams struct {
+	// 符合查询条件的总条数
+	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 查询结果列表
+	Data []*DataLeakOutAlertEvent `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 实例类型可选项
+	InstanceTypeOptions []*FieldOption `json:"InstanceTypeOptions,omitnil,omitempty" name:"InstanceTypeOptions"`
+
+	// 地域可选项
+	RegionOptions []*FieldOption `json:"RegionOptions,omitnil,omitempty" name:"RegionOptions"`
+
+	// 目标服务类型可选项
+	DstServiceTypeOptions []*FieldOption `json:"DstServiceTypeOptions,omitnil,omitempty" name:"DstServiceTypeOptions"`
+
+	// 风险场景（类型）可选项
+	RiskScenarioOptions []*FieldOption `json:"RiskScenarioOptions,omitnil,omitempty" name:"RiskScenarioOptions"`
+
+	// AI分析任务状态可选项
+	AnalysisStatusOptions []*FieldOption `json:"AnalysisStatusOptions,omitnil,omitempty" name:"AnalysisStatusOptions"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeNDRDataLeakOutAlertListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeNDRDataLeakOutAlertListResponseParams `json:"Response"`
+}
+
+func (r *DescribeNDRDataLeakOutAlertListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNDRDataLeakOutAlertListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

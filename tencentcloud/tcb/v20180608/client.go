@@ -1075,6 +1075,82 @@ func (c *Client) CreateEnvResourceWithContext(ctx context.Context, request *Crea
     return
 }
 
+func NewCreateFunctionRequest() (request *CreateFunctionRequest) {
+    request = &CreateFunctionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "CreateFunction")
+    
+    
+    return
+}
+
+func NewCreateFunctionResponse() (response *CreateFunctionResponse) {
+    response = &CreateFunctionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateFunction
+// 创建云函数
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ACCOUNTINSUFFICIENT = "FailedOperation.AccountInsufficient"
+//  FAILEDOPERATION_NAMESPACE = "FailedOperation.Namespace"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_ENVIRONMENTEXCEEDEDLIMIT = "InvalidParameterValue.EnvironmentExceededLimit"
+//  INVALIDPARAMETERVALUE_ENVIRONMENTSYSTEMPROTECT = "InvalidParameterValue.EnvironmentSystemProtect"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_FUNCTION = "LimitExceeded.Function"
+//  LIMITEXCEEDED_INITTIMEOUT = "LimitExceeded.InitTimeout"
+//  LIMITEXCEEDED_TIMEOUT = "LimitExceeded.Timeout"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINUSE_FUNCTION = "ResourceInUse.Function"
+//  RESOURCEINUSE_FUNCTIONNAME = "ResourceInUse.FunctionName"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateFunction(request *CreateFunctionRequest) (response *CreateFunctionResponse, err error) {
+    return c.CreateFunctionWithContext(context.Background(), request)
+}
+
+// CreateFunction
+// 创建云函数
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ACCOUNTINSUFFICIENT = "FailedOperation.AccountInsufficient"
+//  FAILEDOPERATION_NAMESPACE = "FailedOperation.Namespace"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_ENVIRONMENTEXCEEDEDLIMIT = "InvalidParameterValue.EnvironmentExceededLimit"
+//  INVALIDPARAMETERVALUE_ENVIRONMENTSYSTEMPROTECT = "InvalidParameterValue.EnvironmentSystemProtect"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_FUNCTION = "LimitExceeded.Function"
+//  LIMITEXCEEDED_INITTIMEOUT = "LimitExceeded.InitTimeout"
+//  LIMITEXCEEDED_TIMEOUT = "LimitExceeded.Timeout"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINUSE_FUNCTION = "ResourceInUse.Function"
+//  RESOURCEINUSE_FUNCTIONNAME = "ResourceInUse.FunctionName"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateFunctionWithContext(ctx context.Context, request *CreateFunctionRequest) (response *CreateFunctionResponse, err error) {
+    if request == nil {
+        request = NewCreateFunctionRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "CreateFunction")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateFunction require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateFunctionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateHTTPServiceRouteRequest() (request *CreateHTTPServiceRouteRequest) {
     request = &CreateHTTPServiceRouteRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1791,6 +1867,76 @@ func (c *Client) DeleteCloudAppVersionWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewDeleteCloudAppVersionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteFunctionRequest() (request *DeleteFunctionRequest) {
+    request = &DeleteFunctionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "DeleteFunction")
+    
+    
+    return
+}
+
+func NewDeleteFunctionResponse() (response *DeleteFunctionResponse) {
+    response = &DeleteFunctionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteFunction
+// 删除云函数。
+//
+// 
+//
+// 删除指定环境下的云函数。调用接口后，若通过 GetFunction 接口查询不到该函数，则表示删除成功。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DeleteFunction(request *DeleteFunctionRequest) (response *DeleteFunctionResponse, err error) {
+    return c.DeleteFunctionWithContext(context.Background(), request)
+}
+
+// DeleteFunction
+// 删除云函数。
+//
+// 
+//
+// 删除指定环境下的云函数。调用接口后，若通过 GetFunction 接口查询不到该函数，则表示删除成功。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DeleteFunctionWithContext(ctx context.Context, request *DeleteFunctionRequest) (response *DeleteFunctionResponse, err error) {
+    if request == nil {
+        request = NewDeleteFunctionRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DeleteFunction")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteFunction require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteFunctionResponse()
     err = c.Send(request, response)
     return
 }
@@ -4737,6 +4883,58 @@ func (c *Client) DestroyStaticStoreWithContext(ctx context.Context, request *Des
     return
 }
 
+func NewDownloadFunctionRequest() (request *DownloadFunctionRequest) {
+    request = &DownloadFunctionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "DownloadFunction")
+    
+    
+    return
+}
+
+func NewDownloadFunctionResponse() (response *DownloadFunctionResponse) {
+    response = &DownloadFunctionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DownloadFunction
+// 获取云函数地址并下载zip包
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DownloadFunction(request *DownloadFunctionRequest) (response *DownloadFunctionResponse, err error) {
+    return c.DownloadFunctionWithContext(context.Background(), request)
+}
+
+// DownloadFunction
+// 获取云函数地址并下载zip包
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DownloadFunctionWithContext(ctx context.Context, request *DownloadFunctionRequest) (response *DownloadFunctionResponse, err error) {
+    if request == nil {
+        request = NewDownloadFunctionRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DownloadFunction")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DownloadFunction require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDownloadFunctionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewExecutePGSqlRequest() (request *ExecutePGSqlRequest) {
     request = &ExecutePGSqlRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4799,6 +4997,66 @@ func (c *Client) ExecutePGSqlWithContext(ctx context.Context, request *ExecutePG
     return
 }
 
+func NewGetFunctionRequest() (request *GetFunctionRequest) {
+    request = &GetFunctionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "GetFunction")
+    
+    
+    return
+}
+
+func NewGetFunctionResponse() (response *GetFunctionResponse) {
+    response = &GetFunctionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetFunction
+// 获取云函数详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMFAIL = "InternalError.SystemFail"
+//  INVALIDPARAMETER_INVALID_PARAM = "InvalidParameter.INVALID_PARAM"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
+//  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) GetFunction(request *GetFunctionRequest) (response *GetFunctionResponse, err error) {
+    return c.GetFunctionWithContext(context.Background(), request)
+}
+
+// GetFunction
+// 获取云函数详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMFAIL = "InternalError.SystemFail"
+//  INVALIDPARAMETER_INVALID_PARAM = "InvalidParameter.INVALID_PARAM"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
+//  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) GetFunctionWithContext(ctx context.Context, request *GetFunctionRequest) (response *GetFunctionResponse, err error) {
+    if request == nil {
+        request = NewGetFunctionRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "GetFunction")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetFunction require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetFunctionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetProvidersRequest() (request *GetProvidersRequest) {
     request = &GetProvidersRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4857,6 +5115,70 @@ func (c *Client) GetProvidersWithContext(ctx context.Context, request *GetProvid
     request.SetContext(ctx)
     
     response = NewGetProvidersResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListFunctionsRequest() (request *ListFunctionsRequest) {
+    request = &ListFunctionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "ListFunctions")
+    
+    
+    return
+}
+
+func NewListFunctionsResponse() (response *ListFunctionsResponse) {
+    response = &ListFunctionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListFunctions
+// 该接口根据传入的查询参数返回相关函数信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_FUNCTION = "InternalError.Function"
+//  INTERNALERROR_SYS_ERR = "InternalError.SYS_ERR"
+//  INTERNALERROR_SYSTEMFAIL = "InternalError.SystemFail"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ListFunctions(request *ListFunctionsRequest) (response *ListFunctionsResponse, err error) {
+    return c.ListFunctionsWithContext(context.Background(), request)
+}
+
+// ListFunctions
+// 该接口根据传入的查询参数返回相关函数信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_FUNCTION = "InternalError.Function"
+//  INTERNALERROR_SYS_ERR = "InternalError.SYS_ERR"
+//  INTERNALERROR_SYSTEMFAIL = "InternalError.SystemFail"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ListFunctionsWithContext(ctx context.Context, request *ListFunctionsRequest) (response *ListFunctionsResponse, err error) {
+    if request == nil {
+        request = NewListFunctionsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "ListFunctions")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListFunctions require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListFunctionsResponse()
     err = c.Send(request, response)
     return
 }
@@ -6633,6 +6955,124 @@ func (c *Client) UpdateAIModelWithContext(ctx context.Context, request *UpdateAI
     request.SetContext(ctx)
     
     response = NewUpdateAIModelResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateFunctionCodeRequest() (request *UpdateFunctionCodeRequest) {
+    request = &UpdateFunctionCodeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "UpdateFunctionCode")
+    
+    
+    return
+}
+
+func NewUpdateFunctionCodeResponse() (response *UpdateFunctionCodeResponse) {
+    response = &UpdateFunctionCodeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateFunctionCode
+// 更新云函数代码
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_FUNCTIONSTATUSERROR = "FailedOperation.FunctionStatusError"
+//  FAILEDOPERATION_OPERATIONCONFLICT = "FailedOperation.OperationConflict"
+//  FAILEDOPERATION_UPDATEFUNCTIONCODE = "FailedOperation.UpdateFunctionCode"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
+//  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_UPDATEFUNCTIONCODE = "UnsupportedOperation.UpdateFunctionCode"
+func (c *Client) UpdateFunctionCode(request *UpdateFunctionCodeRequest) (response *UpdateFunctionCodeResponse, err error) {
+    return c.UpdateFunctionCodeWithContext(context.Background(), request)
+}
+
+// UpdateFunctionCode
+// 更新云函数代码
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_FUNCTIONSTATUSERROR = "FailedOperation.FunctionStatusError"
+//  FAILEDOPERATION_OPERATIONCONFLICT = "FailedOperation.OperationConflict"
+//  FAILEDOPERATION_UPDATEFUNCTIONCODE = "FailedOperation.UpdateFunctionCode"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
+//  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_UPDATEFUNCTIONCODE = "UnsupportedOperation.UpdateFunctionCode"
+func (c *Client) UpdateFunctionCodeWithContext(ctx context.Context, request *UpdateFunctionCodeRequest) (response *UpdateFunctionCodeResponse, err error) {
+    if request == nil {
+        request = NewUpdateFunctionCodeRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "UpdateFunctionCode")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateFunctionCode require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateFunctionCodeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateFunctionConfigurationRequest() (request *UpdateFunctionConfigurationRequest) {
+    request = &UpdateFunctionConfigurationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "UpdateFunctionConfiguration")
+    
+    
+    return
+}
+
+func NewUpdateFunctionConfigurationResponse() (response *UpdateFunctionConfigurationResponse) {
+    response = &UpdateFunctionConfigurationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateFunctionConfiguration
+// 该接口根据传入参数更新函数配置。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) UpdateFunctionConfiguration(request *UpdateFunctionConfigurationRequest) (response *UpdateFunctionConfigurationResponse, err error) {
+    return c.UpdateFunctionConfigurationWithContext(context.Background(), request)
+}
+
+// UpdateFunctionConfiguration
+// 该接口根据传入参数更新函数配置。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) UpdateFunctionConfigurationWithContext(ctx context.Context, request *UpdateFunctionConfigurationRequest) (response *UpdateFunctionConfigurationResponse, err error) {
+    if request == nil {
+        request = NewUpdateFunctionConfigurationRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "UpdateFunctionConfiguration")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateFunctionConfiguration require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateFunctionConfigurationResponse()
     err = c.Send(request, response)
     return
 }

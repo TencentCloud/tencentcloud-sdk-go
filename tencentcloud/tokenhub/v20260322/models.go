@@ -3573,16 +3573,16 @@ type UsageRankItem struct {
 }
 
 type UsageSeries struct {
-	// <p>[tokens 族]总 token 数用量时间周期内的 JSON 字符串形式，如 <code>&quot;[12,null,15]&quot;</code>。</p>
+	// <p>[tokens / apikey_usage 族]总 token 数用量时间周期内的 JSON 字符串形式，如 <code>&quot;[12,null,15]&quot;</code>。</p>
 	TotalToken *string `json:"TotalToken,omitnil,omitempty" name:"TotalToken"`
 
-	// <p>[tokens 族]输入 token 数用量时间周期内的 JSON 字符串形式，如 <code>&quot;[7,null,9]&quot;</code>。</p>
+	// <p>[tokens / apikey_usage 族]输入 token 数用量时间周期内的 JSON 字符串形式，如 <code>&quot;[7,null,9]&quot;</code>。</p>
 	InputTotalToken *string `json:"InputTotalToken,omitnil,omitempty" name:"InputTotalToken"`
 
-	// <p>[tokens 族]输出 token 数用量时间周期内的 JSON 字符串形式，如 <code>&quot;[5,null,6]&quot;</code>。</p>
+	// <p>[tokens / apikey_usage 族]输出 token 数用量时间周期内的 JSON 字符串形式，如 <code>&quot;[5,null,6]&quot;</code>。</p>
 	OutputTotalToken *string `json:"OutputTotalToken,omitnil,omitempty" name:"OutputTotalToken"`
 
-	// <p>[tokens 族]读缓存 token 数用量时间周期内的 JSON 字符串形式，如<code>&quot;[5,null,6]&quot;</code>。</p>
+	// <p>[tokens / apikey_usage 族]读缓存 token 数用量时间周期内的 JSON 字符串形式，如<code>&quot;[5,null,6]&quot;</code>。</p>
 	CacheTotalToken *string `json:"CacheTotalToken,omitnil,omitempty" name:"CacheTotalToken"`
 
 	// <p>[search 族] 搜索请求数用量时间周期内的 JSON 字符串形式，如<code>&quot;[5,null,6]&quot;</code>。</p>
@@ -3590,24 +3590,36 @@ type UsageSeries struct {
 
 	// <p>[search 族] 搜索引擎调用次数用量时间周期内的 JSON 字符串形式，如<code>&quot;[5,null,6]&quot;</code>。</p>
 	SearchCount *string `json:"SearchCount,omitnil,omitempty" name:"SearchCount"`
+
+	// <p>[apikey_usage 族] 请求次数在时间周期内的 JSON 字符串形式，如 <code>&quot;[12,null,15]&quot;</code>。</p>
+	RequestCount *string `json:"RequestCount,omitnil,omitempty" name:"RequestCount"`
+
+	// <p>[apikey_usage 族] 请求失败次数在时间周期内的 JSON 字符串形式，如 &quot;[12,null,15]&quot;。</p>
+	RequestFailCount *string `json:"RequestFailCount,omitnil,omitempty" name:"RequestFailCount"`
 }
 
 type UsageStats struct {
-	// <p>[tokens 族] 时间周期内的累计总 token 数。</p>
+	// <p>[tokens / apikey_usage 族] 时间周期内的累计总 token 数。</p>
 	TotalToken *int64 `json:"TotalToken,omitnil,omitempty" name:"TotalToken"`
 
-	// <p>[tokens 族] 时间周期内的累计输入 token 数。</p>
+	// <p>[tokens / apikey_usage 族] 时间周期内的累计输入 token 数。</p>
 	InputTotalToken *int64 `json:"InputTotalToken,omitnil,omitempty" name:"InputTotalToken"`
 
-	// <p>[tokens 族] 时间周期内的累计输出 token 数。</p>
+	// <p>[tokens / apikey_usage 族] 时间周期内的累计输出 token 数。</p>
 	OutputTotalToken *int64 `json:"OutputTotalToken,omitnil,omitempty" name:"OutputTotalToken"`
 
-	// <p>[tokens 族] 时间周期内的累计读缓存 token 数（命中缓存部分）</p>
+	// <p>[tokens / apikey_usage 族] 时间周期内的累计读缓存 token 数（命中缓存部分）注意：CacheTotalToken 是 InputTotalToken 的子集（已包含在内）。</p>
 	CacheTotalToken *int64 `json:"CacheTotalToken,omitnil,omitempty" name:"CacheTotalToken"`
 
-	// <p>[search 族] 整段累计联网搜索请求数</p>
+	// <p>[search 族] 时间周期内的累计联网搜索请求数</p>
 	SearchRequestCount *int64 `json:"SearchRequestCount,omitnil,omitempty" name:"SearchRequestCount"`
 
-	// <p>[search 族] 整段累计搜索引擎调用次数</p>
+	// <p>[search 族] 时间周期内的累计搜索引擎调用次数</p>
 	SearchCount *int64 `json:"SearchCount,omitnil,omitempty" name:"SearchCount"`
+
+	// <p>[apikey_usage 族] 时间周期内的累计请求次数</p>
+	RequestCount *int64 `json:"RequestCount,omitnil,omitempty" name:"RequestCount"`
+
+	// <p>[apikey_usage 族] 时间周期内的累计请求失败次数</p>
+	RequestFailCount *int64 `json:"RequestFailCount,omitnil,omitempty" name:"RequestFailCount"`
 }

@@ -26,6 +26,9 @@ const (
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
 
+	// 账户余额不足。
+	FAILEDOPERATION_ACCOUNTINSUFFICIENT = "FailedOperation.AccountInsufficient"
+
 	// AllocateId 对应环境已释放，不可再次使用
 	FAILEDOPERATION_ALLOCATEIDRELEASED = "FailedOperation.AllocateIdReleased"
 
@@ -56,6 +59,9 @@ const (
 	// FailedOperation.FlexdbResourceOverdue
 	FAILEDOPERATION_FLEXDBRESOURCEOVERDUE = "FailedOperation.FlexdbResourceOverdue"
 
+	// 函数在部署中,无法做此操作。
+	FAILEDOPERATION_FUNCTIONSTATUSERROR = "FailedOperation.FunctionStatusError"
+
 	// Instance status does not match the required status for this operation.
 	FAILEDOPERATION_INSTANCESTATUSCONFLICT = "FailedOperation.InstanceStatusConflict"
 
@@ -64,6 +70,9 @@ const (
 
 	// FailedOperation.ListTable
 	FAILEDOPERATION_LISTTABLE = "FailedOperation.ListTable"
+
+	// 命名空间已存在，请勿重复创建。
+	FAILEDOPERATION_NAMESPACE = "FailedOperation.Namespace"
 
 	// 网络异常
 	FAILEDOPERATION_NETWORKERROR = "FailedOperation.NetworkError"
@@ -101,14 +110,23 @@ const (
 	// Topic隔离
 	FAILEDOPERATION_TOPICISOLATED = "FailedOperation.TopicIsolated"
 
+	// 当前函数状态无法更新代码，请在状态为正常时更新。
+	FAILEDOPERATION_UPDATEFUNCTIONCODE = "FailedOperation.UpdateFunctionCode"
+
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 
 	// 数据库错误。
 	INTERNALERROR_DATABASE = "InternalError.Database"
 
+	// 云函数错误。
+	INTERNALERROR_FUNCTION = "InternalError.Function"
+
 	// 系统内部异常。
 	INTERNALERROR_SYS_ERR = "InternalError.SYS_ERR"
+
+	// 系统失败。
+	INTERNALERROR_SYSTEMFAIL = "InternalError.SystemFail"
 
 	// 服务超时。
 	INTERNALERROR_TIMEOUT = "InternalError.Timeout"
@@ -152,6 +170,12 @@ const (
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
 
+	// 环境变量大小超限，请保持在
+	INVALIDPARAMETERVALUE_ENVIRONMENTEXCEEDEDLIMIT = "InvalidParameterValue.EnvironmentExceededLimit"
+
+	// 不支持修改函数系统环境变量和运行环境变量。
+	INVALIDPARAMETERVALUE_ENVIRONMENTSYSTEMPROTECT = "InvalidParameterValue.EnvironmentSystemProtect"
+
 	// InvalidParameterValue.InvalidDoc
 	INVALIDPARAMETERVALUE_INVALIDDOC = "InvalidParameterValue.InvalidDoc"
 
@@ -167,11 +191,17 @@ const (
 	// 镜像容器超过配额。
 	LIMITEXCEEDED_ERRREPOMAXLIMIT = "LimitExceeded.ErrRepoMaxLimit"
 
+	// 函数数量超出最大限制
+	LIMITEXCEEDED_FUNCTION = "LimitExceeded.Function"
+
 	// HTTP访问服务域名超过限制
 	LIMITEXCEEDED_HTTPSERVICEDOMAIN = "LimitExceeded.HTTPServiceDomain"
 
 	// HTTP访问服务路由超过上限
 	LIMITEXCEEDED_HTTPSERVICEROUTE = "LimitExceeded.HTTPServiceRoute"
+
+	// InitTimeout达到限制
+	LIMITEXCEEDED_INITTIMEOUT = "LimitExceeded.InitTimeout"
 
 	// LimitExceeded.NoValidConnection
 	LIMITEXCEEDED_NOVALIDCONNECTION = "LimitExceeded.NoValidConnection"
@@ -190,6 +220,9 @@ const (
 
 	// 请求次数超过配额限制。
 	LIMITEXCEEDED_REQUEST = "LimitExceeded.Request"
+
+	// Timeout超出最大限制。
+	LIMITEXCEEDED_TIMEOUT = "LimitExceeded.Timeout"
 
 	// 缺少参数错误。
 	MISSINGPARAMETER = "MissingParameter"
@@ -224,6 +257,12 @@ const (
 	// 云存储目前后后台任务正在执行，请稍后再重试。
 	RESOURCEINUSE_FSACLJOBUNDONE = "ResourceInUse.FsACLJobUnDone"
 
+	// 函数已存在。
+	RESOURCEINUSE_FUNCTION = "ResourceInUse.Function"
+
+	// FunctionName已存在。
+	RESOURCEINUSE_FUNCTIONNAME = "ResourceInUse.FunctionName"
+
 	// HTTP访问服务域名已经存在
 	RESOURCEINUSE_HTTPSERVICEDOMAIN = "ResourceInUse.HTTPServiceDomain"
 
@@ -251,11 +290,17 @@ const (
 	// 环境不存在，未找到记录
 	RESOURCENOTFOUND_ENVNOTEXIST = "ResourceNotFound.EnvNotExist"
 
+	// 函数不存在。
+	RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
+
 	// HTTP访问服务域名不存在
 	RESOURCENOTFOUND_HTTPSERVICEDOMAIN = "ResourceNotFound.HTTPServiceDomain"
 
 	// 数据库实例不存在。
 	RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+
+	// Namespace不存在。
+	RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
 
 	// ResourceNotFound.ResourceNotExist
 	RESOURCENOTFOUND_RESOURCENOTEXIST = "ResourceNotFound.ResourceNotExist"
@@ -331,4 +376,7 @@ const (
 
 	// 表数量超过限制。
 	UNSUPPORTEDOPERATION_TOOMANYTABLES = "UnsupportedOperation.TooManyTables"
+
+	// 更新函数代码失败。
+	UNSUPPORTEDOPERATION_UPDATEFUNCTIONCODE = "UnsupportedOperation.UpdateFunctionCode"
 )

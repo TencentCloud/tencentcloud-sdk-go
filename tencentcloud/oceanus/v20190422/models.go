@@ -5174,6 +5174,15 @@ type JobV1 struct {
 
 	// <p>负责人Uin</p>
 	ManagerUin *string `json:"ManagerUin,omitnil,omitempty" name:"ManagerUin"`
+
+	// <p>启动位点</p>
+	StartupPoint *string `json:"StartupPoint,omitnil,omitempty" name:"StartupPoint"`
+
+	// <p>是否有事件</p>
+	IsEvent *bool `json:"IsEvent,omitnil,omitempty" name:"IsEvent"`
+
+	// <p>是否告警</p>
+	IsAlarm *bool `json:"IsAlarm,omitnil,omitempty" name:"IsAlarm"`
 }
 
 type LogContent struct {

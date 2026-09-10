@@ -159,26 +159,26 @@ func (r *CreateWorkspaceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateWorkspaceTokenRequestParams struct {
-	// 工作空间 SpaceKey
+	// <p>工作空间 SpaceKey</p>
 	SpaceKey *string `json:"SpaceKey,omitnil,omitempty" name:"SpaceKey"`
 
-	// token过期时间，单位是秒，默认 3600
+	// <p>token过期时间，单位是秒，默认 3600</p>
 	TokenExpiredLimitSec *uint64 `json:"TokenExpiredLimitSec,omitnil,omitempty" name:"TokenExpiredLimitSec"`
 
-	// token 授权策略，可选值为 workspace-run-only, all。默认为 workspace-run-only
+	// <p>token 授权策略，可选值为 workspace-run-only, all。默认为 workspace-run-only</p>
 	Policies []*string `json:"Policies,omitnil,omitempty" name:"Policies"`
 }
 
 type CreateWorkspaceTokenRequest struct {
 	*tchttp.BaseRequest
 	
-	// 工作空间 SpaceKey
+	// <p>工作空间 SpaceKey</p>
 	SpaceKey *string `json:"SpaceKey,omitnil,omitempty" name:"SpaceKey"`
 
-	// token过期时间，单位是秒，默认 3600
+	// <p>token过期时间，单位是秒，默认 3600</p>
 	TokenExpiredLimitSec *uint64 `json:"TokenExpiredLimitSec,omitnil,omitempty" name:"TokenExpiredLimitSec"`
 
-	// token 授权策略，可选值为 workspace-run-only, all。默认为 workspace-run-only
+	// <p>token 授权策略，可选值为 workspace-run-only, all。默认为 workspace-run-only</p>
 	Policies []*string `json:"Policies,omitnil,omitempty" name:"Policies"`
 }
 
@@ -205,10 +205,10 @@ func (r *CreateWorkspaceTokenRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateWorkspaceTokenResponseParams struct {
-	// 访问工作空间临时凭证
+	// <p>访问工作空间临时凭证</p>
 	Token *string `json:"Token,omitnil,omitempty" name:"Token"`
 
-	// token 过期时间
+	// <p>token 过期时间</p>
 	ExpiredTime *string `json:"ExpiredTime,omitnil,omitempty" name:"ExpiredTime"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -447,50 +447,50 @@ type LifeCycleCommand struct {
 
 // Predefined struct for user
 type ModifyWorkspaceRequestParams struct {
-	// 工作空间 SpaceKey. 更新该工作空间的属性
+	// <p>工作空间 SpaceKey. 更新该工作空间的属性</p>
 	SpaceKey *string `json:"SpaceKey,omitnil,omitempty" name:"SpaceKey"`
 
-	// 工作空间名称
+	// <p>工作空间名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 工作空间描述
+	// <p>工作空间描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 工作空间规格。STANDARD: 2C4G, CALCULATION: 4C8G, PROFESSION: 8C16G. 默认是 STANDARD。
+	// <p>工作空间规格。STANDARD: 2C4G, CALCULATION: 4C8G, PROFESSION: 8C16G. 默认是 STANDARD。</p>
 	Specs *string `json:"Specs,omitnil,omitempty" name:"Specs"`
 
-	// 环境变量. 会被注入到工作空间中
+	// <p>环境变量. 会被注入到工作空间中</p>
 	Envs []*Env `json:"Envs,omitnil,omitempty" name:"Envs"`
 
-	// 预装插件. 工作空间启动时, 会自动安装这些插件 
+	// <p>预装插件. 工作空间启动时, 会自动安装这些插件</p>
 	Extensions []*string `json:"Extensions,omitnil,omitempty" name:"Extensions"`
 
-	// 工作空间生命周期钩子.  分为三个阶段 init, start, destroy. 分别表示工作空间数据初始化阶段, 工作空间启动阶段, 工作空间关闭阶段.  用户可以自定义 shell 命令. 
+	// <p>工作空间生命周期钩子.  分为三个阶段 init, start, destroy. 分别表示工作空间数据初始化阶段, 工作空间启动阶段, 工作空间关闭阶段.  用户可以自定义 shell 命令.</p>
 	Lifecycle *LifeCycle `json:"Lifecycle,omitnil,omitempty" name:"Lifecycle"`
 }
 
 type ModifyWorkspaceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 工作空间 SpaceKey. 更新该工作空间的属性
+	// <p>工作空间 SpaceKey. 更新该工作空间的属性</p>
 	SpaceKey *string `json:"SpaceKey,omitnil,omitempty" name:"SpaceKey"`
 
-	// 工作空间名称
+	// <p>工作空间名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 工作空间描述
+	// <p>工作空间描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 工作空间规格。STANDARD: 2C4G, CALCULATION: 4C8G, PROFESSION: 8C16G. 默认是 STANDARD。
+	// <p>工作空间规格。STANDARD: 2C4G, CALCULATION: 4C8G, PROFESSION: 8C16G. 默认是 STANDARD。</p>
 	Specs *string `json:"Specs,omitnil,omitempty" name:"Specs"`
 
-	// 环境变量. 会被注入到工作空间中
+	// <p>环境变量. 会被注入到工作空间中</p>
 	Envs []*Env `json:"Envs,omitnil,omitempty" name:"Envs"`
 
-	// 预装插件. 工作空间启动时, 会自动安装这些插件 
+	// <p>预装插件. 工作空间启动时, 会自动安装这些插件</p>
 	Extensions []*string `json:"Extensions,omitnil,omitempty" name:"Extensions"`
 
-	// 工作空间生命周期钩子.  分为三个阶段 init, start, destroy. 分别表示工作空间数据初始化阶段, 工作空间启动阶段, 工作空间关闭阶段.  用户可以自定义 shell 命令. 
+	// <p>工作空间生命周期钩子.  分为三个阶段 init, start, destroy. 分别表示工作空间数据初始化阶段, 工作空间启动阶段, 工作空间关闭阶段.  用户可以自定义 shell 命令.</p>
 	Lifecycle *LifeCycle `json:"Lifecycle,omitnil,omitempty" name:"Lifecycle"`
 }
 
