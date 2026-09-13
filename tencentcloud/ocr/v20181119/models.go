@@ -8369,40 +8369,38 @@ func (r *RecognizeTableOCRResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RecognizeThaiIDCardOCRRequestParams struct {
-	// 图片的 Base64 值。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	// <p>图片的 Base64 值。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。</p>
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
 
-	// 卡证背面图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	// <p>卡证背面图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。</p>
 	BackImageBase64 *string `json:"BackImageBase64,omitnil,omitempty" name:"BackImageBase64"`
 
-	// 图片的 Url 地址。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
+	// <p>图片的 Url 地址。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。建议图片存储于腾讯云，可保障更高的下载速度和稳定性。</p>
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 
-	// 卡证背面图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	// <p>卡证背面图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。</p>
 	BackImageUrl *string `json:"BackImageUrl,omitnil,omitempty" name:"BackImageUrl"`
 
-	// 图片开关。默认为false，不返回泰国身份证头像照片的base64编码。
-	// 设置为true时，返回旋转矫正后的泰国身份证头像照片的base64编码
+	// <p>图片开关。默认为false，不返回泰国身份证头像照片的base64编码。<br>设置为true时，返回旋转矫正后的泰国身份证头像照片的base64编码</p>
 	CropPortrait *bool `json:"CropPortrait,omitnil,omitempty" name:"CropPortrait"`
 }
 
 type RecognizeThaiIDCardOCRRequest struct {
 	*tchttp.BaseRequest
 	
-	// 图片的 Base64 值。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	// <p>图片的 Base64 值。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。</p>
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
 
-	// 卡证背面图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	// <p>卡证背面图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。</p>
 	BackImageBase64 *string `json:"BackImageBase64,omitnil,omitempty" name:"BackImageBase64"`
 
-	// 图片的 Url 地址。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
+	// <p>图片的 Url 地址。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。建议图片存储于腾讯云，可保障更高的下载速度和稳定性。</p>
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 
-	// 卡证背面图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	// <p>卡证背面图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。</p>
 	BackImageUrl *string `json:"BackImageUrl,omitnil,omitempty" name:"BackImageUrl"`
 
-	// 图片开关。默认为false，不返回泰国身份证头像照片的base64编码。
-	// 设置为true时，返回旋转矫正后的泰国身份证头像照片的base64编码
+	// <p>图片开关。默认为false，不返回泰国身份证头像照片的base64编码。<br>设置为true时，返回旋转矫正后的泰国身份证头像照片的base64编码</p>
 	CropPortrait *bool `json:"CropPortrait,omitnil,omitempty" name:"CropPortrait"`
 }
 
@@ -8431,66 +8429,60 @@ func (r *RecognizeThaiIDCardOCRRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RecognizeThaiIDCardOCRResponseParams struct {
-	// 身份证号码
+	// <p>身份证号码</p>
 	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
 
-	// 泰文姓名
+	// <p>泰文姓名</p>
 	ThaiName *string `json:"ThaiName,omitnil,omitempty" name:"ThaiName"`
 
-	// 英文姓名
+	// <p>英文姓名</p>
 	EnFirstName *string `json:"EnFirstName,omitnil,omitempty" name:"EnFirstName"`
 
-	// 英文姓名
+	// <p>英文姓名</p>
 	EnLastName *string `json:"EnLastName,omitnil,omitempty" name:"EnLastName"`
 
-	// 泰文签发日期
+	// <p>泰文签发日期</p>
 	IssueDate *string `json:"IssueDate,omitnil,omitempty" name:"IssueDate"`
 
-	// 泰文到期日期
+	// <p>泰文到期日期</p>
 	ExpirationDate *string `json:"ExpirationDate,omitnil,omitempty" name:"ExpirationDate"`
 
-	// 英文签发日期
+	// <p>英文签发日期</p>
 	EnIssueDate *string `json:"EnIssueDate,omitnil,omitempty" name:"EnIssueDate"`
 
-	// 英文到期日期
+	// <p>英文到期日期</p>
 	EnExpirationDate *string `json:"EnExpirationDate,omitnil,omitempty" name:"EnExpirationDate"`
 
-	// 泰文出生日期
+	// <p>泰文出生日期</p>
 	Birthday *string `json:"Birthday,omitnil,omitempty" name:"Birthday"`
 
-	// 英文出生日期
+	// <p>英文出生日期</p>
 	EnBirthday *string `json:"EnBirthday,omitnil,omitempty" name:"EnBirthday"`
 
-	// 宗教信仰
+	// <p>宗教信仰</p>
 	Religion *string `json:"Religion,omitnil,omitempty" name:"Religion"`
 
-	// 序列号
+	// <p>序列号</p>
 	SerialNumber *string `json:"SerialNumber,omitnil,omitempty" name:"SerialNumber"`
 
-	// 地址
+	// <p>地址</p>
 	Address *string `json:"Address,omitnil,omitempty" name:"Address"`
 
-	// 背面号码
+	// <p>背面号码</p>
 	LaserID *string `json:"LaserID,omitnil,omitempty" name:"LaserID"`
 
-	// 证件人像照片抠取
+	// <p>证件人像照片抠取</p>
 	PortraitImage *string `json:"PortraitImage,omitnil,omitempty" name:"PortraitImage"`
 
-	// 告警码
-	// -9101 证件边框不完整告警
-	// -9102 证件复印件告警
-	// -9103 证件翻拍告警
-	// -9107 证件反光告警
-	// -9108 证件模糊告警
-	// -9109 告警能力未开通
+	// <p>告警码<br>-9101 证件边框不完整告警<br>-9102 证件复印件告警<br>-9103 证件翻拍告警<br>-9104 证件PS告警<br>-9107 证件反光告警<br>-9108 证件模糊告警<br>-9109 告警能力未开通</p>
 	WarnCardInfos []*int64 `json:"WarnCardInfos,omitnil,omitempty" name:"WarnCardInfos"`
 
-	// 该字段已废弃， 将固定返回"1"，不建议使用。 
+	// <p>该字段已废弃， 将固定返回&quot;1&quot;，不建议使用。</p>
 	//
 	// Deprecated: AdvancedInfo is deprecated.
 	AdvancedInfo *string `json:"AdvancedInfo,omitnil,omitempty" name:"AdvancedInfo"`
 
-	// 卡证正面图片中，证件主体的数量（仅请求曼谷地域[ap-bangkok]返回）
+	// <p>卡证正面图片中，证件主体的数量（仅请求曼谷地域[ap-bangkok]返回）</p>
 	CardCount *int64 `json:"CardCount,omitnil,omitempty" name:"CardCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

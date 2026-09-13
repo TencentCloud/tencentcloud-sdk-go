@@ -2165,8 +2165,11 @@ type DescribeUsageRankListRequestParams struct {
 	// <p>结束时间（开区间），RFC3339 格式。与 StartTime 的跨度最大 90 天。</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// <p>指标族切换字段。</p><ul><li>tokens（默认）：Token 消耗图（statistics=sum），支持 Dimension = apikey/endpoint/model</li><li>search【待上线】：联网搜索调用次数（statistics=sum），仅支持 Dimension = model</li><li>其他值返回 InvalidParameter。</li></ul><p>枚举值：</p><ul><li>tokens： tokens</li></ul>
+	// <p>指标族切换字段。</p><ul><li>tokens（默认）：Token 用量消耗（statistics=sum），支持 Dimension = apikey/endpoint/model</li><li>search：联网搜索调用次数（statistics=sum），仅支持 Dimension = model</li><li>apikey_usage: APIKey 锚定用量统计（某 APIKey 下按模型或接入点展开）（statistics=sum），支持 Dimension = endpoint/model</li><li>其他值返回 InvalidParameter。</li></ul>
 	MetricType *string `json:"MetricType,omitnil,omitempty" name:"MetricType"`
+
+	// <p>锚定对象，用于缩小统计范围「在哪个具体对象之内」，MetricType 为 apikey_usage 时必填。<br>各 MetricType 是否支持/如何使用 Anchor，见 MetricType 字段说明。</p>
+	Anchor *string `json:"Anchor,omitnil,omitempty" name:"Anchor"`
 
 	// <p>维度过滤值。空字符串表示查询全部对象，非空时仅查询指定单个对象（如指定 APIKey ID）。最大 256 字符。</p>
 	Target *string `json:"Target,omitnil,omitempty" name:"Target"`
@@ -2179,6 +2182,9 @@ type DescribeUsageRankListRequestParams struct {
 
 	// <p>是否返回全量结果。</p><ul><li>false（默认）：按 Offset 分页返回 TopList（每页 10 条），每个对象包含<br>Series 时序点用于绘制曲线。</li><li>true：忽略 Offset，返回全量对象列表，不返回 Series（CSV 导出场景）。</li></ul>
 	ShowAll *bool `json:"ShowAll,omitnil,omitempty" name:"ShowAll"`
+
+	// <p>排序指标键（可选），具体值见响应 MetricKeys。为空时按 <code>MetricKeys[0]</code> 降序排序（tokens/apikey_usage 族为 TotalToken，search 族为 SearchRequestCount）。非法值返回 InvalidParameter。</p>
+	SortKey *string `json:"SortKey,omitnil,omitempty" name:"SortKey"`
 }
 
 type DescribeUsageRankListRequest struct {
@@ -2193,8 +2199,11 @@ type DescribeUsageRankListRequest struct {
 	// <p>结束时间（开区间），RFC3339 格式。与 StartTime 的跨度最大 90 天。</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// <p>指标族切换字段。</p><ul><li>tokens（默认）：Token 消耗图（statistics=sum），支持 Dimension = apikey/endpoint/model</li><li>search【待上线】：联网搜索调用次数（statistics=sum），仅支持 Dimension = model</li><li>其他值返回 InvalidParameter。</li></ul><p>枚举值：</p><ul><li>tokens： tokens</li></ul>
+	// <p>指标族切换字段。</p><ul><li>tokens（默认）：Token 用量消耗（statistics=sum），支持 Dimension = apikey/endpoint/model</li><li>search：联网搜索调用次数（statistics=sum），仅支持 Dimension = model</li><li>apikey_usage: APIKey 锚定用量统计（某 APIKey 下按模型或接入点展开）（statistics=sum），支持 Dimension = endpoint/model</li><li>其他值返回 InvalidParameter。</li></ul>
 	MetricType *string `json:"MetricType,omitnil,omitempty" name:"MetricType"`
+
+	// <p>锚定对象，用于缩小统计范围「在哪个具体对象之内」，MetricType 为 apikey_usage 时必填。<br>各 MetricType 是否支持/如何使用 Anchor，见 MetricType 字段说明。</p>
+	Anchor *string `json:"Anchor,omitnil,omitempty" name:"Anchor"`
 
 	// <p>维度过滤值。空字符串表示查询全部对象，非空时仅查询指定单个对象（如指定 APIKey ID）。最大 256 字符。</p>
 	Target *string `json:"Target,omitnil,omitempty" name:"Target"`
@@ -2207,6 +2216,9 @@ type DescribeUsageRankListRequest struct {
 
 	// <p>是否返回全量结果。</p><ul><li>false（默认）：按 Offset 分页返回 TopList（每页 10 条），每个对象包含<br>Series 时序点用于绘制曲线。</li><li>true：忽略 Offset，返回全量对象列表，不返回 Series（CSV 导出场景）。</li></ul>
 	ShowAll *bool `json:"ShowAll,omitnil,omitempty" name:"ShowAll"`
+
+	// <p>排序指标键（可选），具体值见响应 MetricKeys。为空时按 <code>MetricKeys[0]</code> 降序排序（tokens/apikey_usage 族为 TotalToken，search 族为 SearchRequestCount）。非法值返回 InvalidParameter。</p>
+	SortKey *string `json:"SortKey,omitnil,omitempty" name:"SortKey"`
 }
 
 func (r *DescribeUsageRankListRequest) ToJsonString() string {
@@ -2225,10 +2237,12 @@ func (r *DescribeUsageRankListRequest) FromJsonString(s string) error {
 	delete(f, "StartTime")
 	delete(f, "EndTime")
 	delete(f, "MetricType")
+	delete(f, "Anchor")
 	delete(f, "Target")
 	delete(f, "Period")
 	delete(f, "Offset")
 	delete(f, "ShowAll")
+	delete(f, "SortKey")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUsageRankListRequest has unknown keys!", "")
 	}
@@ -2240,10 +2254,10 @@ type DescribeUsageRankListResponseParams struct {
 	// <p>回填请求的统计维度。</p>
 	Dimension *string `json:"Dimension,omitnil,omitempty" name:"Dimension"`
 
-	// <p>回填请求的指标族：tokens / search 。</p>
+	// <p>回填请求的指标族：取值同入参 MetricType（tokens / search / apikey_usage）</p><p>枚举值：</p><ul><li>tokens： tokens</li></ul>
 	MetricType *string `json:"MetricType,omitnil,omitempty" name:"MetricType"`
 
-	// <p>本次响应中 Stats / Series / PageStats / TotalStats 实际包含的 metric key 列表，按MetricType 区分：tokens=[Total,Input,Output,Cache]、search=[SearchRequestCount,SearchCount]</p>
+	// <p>本次响应中 Stats / Series / PageStats / TotalStats 实际包含的 metric key 列表，按MetricType 区分：<br>tokens=[TotalToken, InputTotalToken, OutputTotalToken, CacheTotalToken]<br>search=[SearchRequestCount,SearchCount]<br>apikey_usage=[TotalToken, InputTotalToken, OutputTotalToken, CacheTotalToken, RequestCount, RequestFailCount]</p>
 	MetricKeys []*string `json:"MetricKeys,omitnil,omitempty" name:"MetricKeys"`
 
 	// <p>视图（数据来源）</p>
@@ -2270,7 +2284,7 @@ type DescribeUsageRankListResponseParams struct {
 	// <p>Series 数组对应的时间戳序列（Unix 秒）。ShowAll=true 时为空数组。</p>
 	Timestamps []*int64 `json:"Timestamps,omitnil,omitempty" name:"Timestamps"`
 
-	// <p>对象排行列表，按<code>MetricKeys[0]</code>降序排序。ShowAll=false 时为当前页 10 个对象（含 Series）；ShowAll=true 时为全量对象（不含 Series，用于 CSV 导出）。</p>
+	// <p>对象排行列表，按 SortKey 降序排序。ShowAll=false 时为当前页 10 个对象（含 Series）；ShowAll=true 时为全量对象（不含 Series，用于 CSV 导出）。</p>
 	TopList []*UsageRankItem `json:"TopList,omitnil,omitempty" name:"TopList"`
 
 	// <p>分页统计结果</p>
@@ -2278,6 +2292,9 @@ type DescribeUsageRankListResponseParams struct {
 
 	// <p>总统计结果</p>
 	TotalStats *UsageStats `json:"TotalStats,omitnil,omitempty" name:"TotalStats"`
+
+	// <p>排序指标键</p>
+	SortKey *string `json:"SortKey,omitnil,omitempty" name:"SortKey"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

@@ -2408,6 +2408,9 @@ type AigcImageTaskInput struct {
 
 	// <p>场景类型。取值如下：<li>当 ModelName 为 Hunyuan 时：   3d_panorama 表示全景图；</li><li>其他 ModelName 暂不支持。</li></p>
 	SceneType *string `json:"SceneType,omitnil,omitempty" name:"SceneType"`
+
+	// <p>透传参数。</p>
+	ExtInfo *string `json:"ExtInfo,omitnil,omitempty" name:"ExtInfo"`
 }
 
 type AigcImageTaskInputFileInfo struct {
@@ -2781,6 +2784,9 @@ type AigcVideoTaskInput struct {
 
 	// <p>模型随机种子。</p>
 	Seed *int64 `json:"Seed,omitnil,omitempty" name:"Seed"`
+
+	// <p>透传参数。</p>
+	ExtInfo *string `json:"ExtInfo,omitnil,omitempty" name:"ExtInfo"`
 }
 
 type AigcVideoTaskInputFileInfo struct {

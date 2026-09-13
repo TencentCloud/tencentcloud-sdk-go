@@ -1743,9 +1743,13 @@ func NewDescribeUsageRankListResponse() (response *DescribeUsageRankListResponse
 //
 //   返回指标：TotalToken（总）/ InputTotalToken（输入）/ OutputTotalToken（输出）/ CacheTotalToken（读缓存）。
 //
-// - `search`：【待上线】联网搜索用量统计。支持 Dimension = apikey / endpoint / model。
+// - `search`：联网搜索用量统计。支持 Dimension = apikey / endpoint / model。
 //
 //   返回指标：SearchRequestCount（搜索请求数）/ SearchCount（搜索引擎调用次数）。
+//
+// - `apikey_usage`：APIKey 锚定用量统计（某 APIKey 下按模型或接入点展开）。支持 Dimension = endpoint / model。
+//
+//   返回指标：TotalToken（总 Token）/ InputTotalToken（输入 Token）/ OutputTotalToken（输出 Token）/ CacheTotalToken（读缓存）/ RequestCount（请求次数）/ SuccessCount（成功次数）。
 //
 // 
 //
@@ -1783,9 +1787,13 @@ func (c *Client) DescribeUsageRankList(request *DescribeUsageRankListRequest) (r
 //
 //   返回指标：TotalToken（总）/ InputTotalToken（输入）/ OutputTotalToken（输出）/ CacheTotalToken（读缓存）。
 //
-// - `search`：【待上线】联网搜索用量统计。支持 Dimension = apikey / endpoint / model。
+// - `search`：联网搜索用量统计。支持 Dimension = apikey / endpoint / model。
 //
 //   返回指标：SearchRequestCount（搜索请求数）/ SearchCount（搜索引擎调用次数）。
+//
+// - `apikey_usage`：APIKey 锚定用量统计（某 APIKey 下按模型或接入点展开）。支持 Dimension = endpoint / model。
+//
+//   返回指标：TotalToken（总 Token）/ InputTotalToken（输入 Token）/ OutputTotalToken（输出 Token）/ CacheTotalToken（读缓存）/ RequestCount（请求次数）/ SuccessCount（成功次数）。
 //
 // 
 //

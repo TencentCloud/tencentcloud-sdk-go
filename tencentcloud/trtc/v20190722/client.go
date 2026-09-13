@@ -151,6 +151,58 @@ func (c *Client) ControlAIConversationWithContext(ctx context.Context, request *
     return
 }
 
+func NewCreateAudioModerationSyncRequest() (request *CreateAudioModerationSyncRequest) {
+    request = &CreateAudioModerationSyncRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trtc", APIVersion, "CreateAudioModerationSync")
+    
+    
+    return
+}
+
+func NewCreateAudioModerationSyncResponse() (response *CreateAudioModerationSyncResponse) {
+    response = &CreateAudioModerationSyncResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateAudioModerationSync
+// 短音频同步内容理解接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TASKNOTEXIST = "FailedOperation.TaskNotExist"
+//  INVALIDPARAMETER_TASKID = "InvalidParameter.TaskId"
+func (c *Client) CreateAudioModerationSync(request *CreateAudioModerationSyncRequest) (response *CreateAudioModerationSyncResponse, err error) {
+    return c.CreateAudioModerationSyncWithContext(context.Background(), request)
+}
+
+// CreateAudioModerationSync
+// 短音频同步内容理解接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TASKNOTEXIST = "FailedOperation.TaskNotExist"
+//  INVALIDPARAMETER_TASKID = "InvalidParameter.TaskId"
+func (c *Client) CreateAudioModerationSyncWithContext(ctx context.Context, request *CreateAudioModerationSyncRequest) (response *CreateAudioModerationSyncResponse, err error) {
+    if request == nil {
+        request = NewCreateAudioModerationSyncRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "CreateAudioModerationSync")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAudioModerationSync require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateAudioModerationSyncResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateCloudModerationRequest() (request *CreateCloudModerationRequest) {
     request = &CreateCloudModerationRequest{
         BaseRequest: &tchttp.BaseRequest{},

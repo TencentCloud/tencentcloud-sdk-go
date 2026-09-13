@@ -853,8 +853,10 @@ func NewDescribeSandboxInstanceListResponse() (response *DescribeSandboxInstance
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_INSTANCEIDS = "InvalidParameterValue.InstanceIds"
+//  INVALIDPARAMETERVALUE_OFFSETTOOLARGE = "InvalidParameterValue.OffsetTooLarge"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeSandboxInstanceList(request *DescribeSandboxInstanceListRequest) (response *DescribeSandboxInstanceListResponse, err error) {
     return c.DescribeSandboxInstanceListWithContext(context.Background(), request)
@@ -865,8 +867,10 @@ func (c *Client) DescribeSandboxInstanceList(request *DescribeSandboxInstanceLis
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_INSTANCEIDS = "InvalidParameterValue.InstanceIds"
+//  INVALIDPARAMETERVALUE_OFFSETTOOLARGE = "InvalidParameterValue.OffsetTooLarge"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeSandboxInstanceListWithContext(ctx context.Context, request *DescribeSandboxInstanceListRequest) (response *DescribeSandboxInstanceListResponse, err error) {
     if request == nil {

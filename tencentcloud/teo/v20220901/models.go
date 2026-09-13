@@ -17765,24 +17765,60 @@ type InferenceEnvironmentVariable struct {
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
-type InferenceHardwareSpecification struct {
-	// 规格标识。
-	Spec *string `json:"Spec,omitnil,omitempty" name:"Spec"`
-
-	// 规格名称。
-	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
-
-	// CPU 核数。
-	CPUNum *float64 `json:"CPUNum,omitnil,omitempty" name:"CPUNum"`
-
-	// 内存大小。单位为 MB。
-	MemSize *int64 `json:"MemSize,omitnil,omitempty" name:"MemSize"`
-
-	// GPU 卡数。
+type InferenceHardwareConfig struct {
+	// <p>推理服务单个实例分配的 GPU 卡数，当前仅支持整数值，且必须为 <code>HardwareSpecId</code> 对应规格的 <code>AllowedGPUNums</code> 中的可选值。</p><p>若不填充，则使用所选 <code>HardwareSpecId</code> 规格对应的默认 <code>GPUNum</code> 值。</p>
 	GPUNum *float64 `json:"GPUNum,omitnil,omitempty" name:"GPUNum"`
 
-	// 显存大小。单位为 MB。
+	// <p>推理服务单个实例分配的 CPU 核数，当前仅支持整数值。</p><p>若不填充，则使用所选 <code>HardwareSpecId</code> 规格对应的默认 <code>CPUNum</code> 值。</p>
+	CPUNum *float64 `json:"CPUNum,omitnil,omitempty" name:"CPUNum"`
+
+	// <p>推理服务单实例分配的内存大小。</p><p>单位：MB</p><p>若不填充，则使用所选 <code>HardwareSpecId</code> 对应规格的默认 <code>MemSize</code> 值；若填充，则必须为 <code>1024</code> 的整数倍。</p>
+	MemSize *int64 `json:"MemSize,omitnil,omitempty" name:"MemSize"`
+
+	// <p>推理服务单实例分配的临时磁盘大小。</p><p>单位：MB</p><p>若不填充，则使用所选 <code>HardwareSpecId</code> 对应规格的默认 <code>DiskSize</code> 值；若填充，则必须为 <code>1024</code> 的整数倍。</p>
+	DiskSize *int64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
+}
+
+type InferenceHardwareConfigForModify struct {
+	// <p>推理服务单实例分配的 CPU 核数，当前仅支持整数值。</p><p>若不填充，则不修改。</p>
+	CPUNum *float64 `json:"CPUNum,omitnil,omitempty" name:"CPUNum"`
+
+	// <p>推理服务单实例分配的内存大小。</p><p>单位：MB</p><p>若不填充，则不修改；若填写，则必须为 <code>1024</code> 的整数倍。</p>
+	MemSize *int64 `json:"MemSize,omitnil,omitempty" name:"MemSize"`
+
+	// <p>推理服务单实例分配的临时磁盘大小。</p><p>单位：MB</p><p>若不填充，则不修改；若填充，则必须为 <code>1024</code> 的整数倍。</p>
+	DiskSize *int64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
+}
+
+type InferenceHardwareSpecification struct {
+	// <p>规格标识。已废弃，参考使用字段 <code>HardwareSpecId</code>。</p>
+	//
+	// Deprecated: Spec is deprecated.
+	Spec *string `json:"Spec,omitnil,omitempty" name:"Spec"`
+
+	// <p>规格唯一标识 ID。</p>
+	HardwareSpecId *string `json:"HardwareSpecId,omitnil,omitempty" name:"HardwareSpecId"`
+
+	// <p>规格名称。</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>规格默认分配的 GPU 卡数。</p>
+	GPUNum *float64 `json:"GPUNum,omitnil,omitempty" name:"GPUNum"`
+
+	// <p>规格默认分配的 CPU 核数。</p>
+	CPUNum *float64 `json:"CPUNum,omitnil,omitempty" name:"CPUNum"`
+
+	// <p>规格默认分配的内存大小。</p><p>单位：MB</p>
+	MemSize *int64 `json:"MemSize,omitnil,omitempty" name:"MemSize"`
+
+	// <p>规格默认分配的显存大小。</p><p>单位：MB</p>
 	GPUMemSize *int64 `json:"GPUMemSize,omitnil,omitempty" name:"GPUMemSize"`
+
+	// <p>规格默认分配的磁盘大小。</p><p>单位：MB</p>
+	DiskSize *int64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
+
+	// <p>规格当前支持的 GPU 卡数列表。</p><p>若不填充或填充空数组，则仅支持规格默认分配的 GPU 卡数。</p>
+	AllowedGPUNums []*float64 `json:"AllowedGPUNums,omitnil,omitempty" name:"AllowedGPUNums"`
 }
 
 type InferenceManualInstanceConfig struct {
@@ -17791,36 +17827,47 @@ type InferenceManualInstanceConfig struct {
 }
 
 type InferenceResourceConfig struct {
-	// 扩容缩容的方式。取值有：<li>Auto：根据请求量自动调整实例数量；</li><li>Manual：人工设置固定的实例数量。</li>
+	// <p>扩容缩容的方式。取值有：<li>Auto：根据请求量自动调整实例数量；</li><li>Manual：人工设置固定的实例数量。</li></p>
 	ScalingMode *string `json:"ScalingMode,omitnil,omitempty" name:"ScalingMode"`
 
-	// 硬件规格。
+	// <p>硬件规格标识。已废弃，请参考使用 <code>HardwareSpecId</code>。</p>
+	//
+	// Deprecated: HardwareSpec is deprecated.
 	HardwareSpec *string `json:"HardwareSpec,omitnil,omitempty" name:"HardwareSpec"`
 
-	// 推理服务自动伸缩配置。当 ScalingMode 为 Auto 时必填。
+	// <p>硬件规格唯一标识 ID，可通过 <code>DescribeInferenceHardwareSpecifications</code> 接口获取当前站点支持的硬件规格。</p><p>系统默认按照所选 <code>HardwareSpecId</code> 对应的硬件规格配置推理服务所需资源；如需调整，可通过 <code>HardwareConfig</code> 自定义硬件资源配置。</p>
+	HardwareSpecId *string `json:"HardwareSpecId,omitnil,omitempty" name:"HardwareSpecId"`
+
+	// <p>推理服务硬件配置。</p><p>作为入参时，若未填充则按照所选 <code>HardwareSpecId</code> 规格的默认值配置硬件资源；若填充则优先按照填写值进行配置。</p>
+	HardwareConfig *InferenceHardwareConfig `json:"HardwareConfig,omitnil,omitempty" name:"HardwareConfig"`
+
+	// <p>推理服务自动伸缩配置。当 ScalingMode 为 Auto 时必填。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoScalingConfig *InferenceAutoScalingConfig `json:"AutoScalingConfig,omitnil,omitempty" name:"AutoScalingConfig"`
 
-	// 推理服务人工设置实例配置。当 ScalingMode 为 Manual 时必填。
+	// <p>推理服务人工设置实例配置。当 ScalingMode 为 Manual 时必填。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ManualInstanceConfig *InferenceManualInstanceConfig `json:"ManualInstanceConfig,omitnil,omitempty" name:"ManualInstanceConfig"`
 
-	// 单实例的并发数。默认值为 1。
+	// <p>单实例的并发数。默认值为 1。</p>
 	Concurrency *int64 `json:"Concurrency,omitnil,omitempty" name:"Concurrency"`
 }
 
 type InferenceResourceConfigForModify struct {
-	// 扩容缩容的方式。取值有：<li>Auto：根据请求量自动调整实例数量；</li><li>Manual：人工设置固定的实例数量。</li>
+	// <p>扩容缩容的方式。取值有：<li>Auto：根据请求量自动调整实例数量；</li><li>Manual：人工设置固定的实例数量。</li></p>
 	ScalingMode *string `json:"ScalingMode,omitnil,omitempty" name:"ScalingMode"`
 
-	// 推理服务自动伸缩配置。当 ScalingMode 为 Auto 时必填。
+	// <p>推理服务自动伸缩配置。当 ScalingMode 为 Auto 时必填。</p>
 	AutoScalingConfig *InferenceAutoScalingConfig `json:"AutoScalingConfig,omitnil,omitempty" name:"AutoScalingConfig"`
 
-	// 推理服务人工设置实例配置。当 ScalingMode 为 Manual 时必填。
+	// <p>推理服务人工设置实例配置。当 ScalingMode 为 Manual 时必填。</p>
 	ManualInstanceConfig *InferenceManualInstanceConfig `json:"ManualInstanceConfig,omitnil,omitempty" name:"ManualInstanceConfig"`
 
-	// 单实例的并发数。默认值为 1。
+	// <p>单实例的并发数。默认值为 1。</p>
 	Concurrency *int64 `json:"Concurrency,omitnil,omitempty" name:"Concurrency"`
+
+	// <p>推理服务的硬件资源配置。</p>
+	HardwareConfig *InferenceHardwareConfigForModify `json:"HardwareConfig,omitnil,omitempty" name:"HardwareConfig"`
 }
 
 type InferenceScalingPolicy struct {

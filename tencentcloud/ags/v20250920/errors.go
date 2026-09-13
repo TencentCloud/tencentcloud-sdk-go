@@ -89,6 +89,9 @@ const (
 	// MountOption部分参数填写错误
 	INVALIDPARAMETERVALUE_MOUNTOPTION = "InvalidParameterValue.MountOption"
 
+	// Offset must be at most 10000
+	INVALIDPARAMETERVALUE_OFFSETTOOLARGE = "InvalidParameterValue.OffsetTooLarge"
+
 	// Role Arn格式不满足腾讯云规范
 	INVALIDPARAMETERVALUE_ROLEARN = "InvalidParameterValue.RoleArn"
 

@@ -325,6 +325,63 @@ func (r *BatchCreateTWeSeeRecognitionTaskResponse) FromJsonString(s string) erro
 }
 
 // Predefined struct for user
+type BatchCreateTWeSeeSubscriptionRequestParams struct {
+	// 待开通的订阅列表
+	Entries []*SeeCreateSubscriptionEntry `json:"Entries,omitnil,omitempty" name:"Entries"`
+}
+
+type BatchCreateTWeSeeSubscriptionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 待开通的订阅列表
+	Entries []*SeeCreateSubscriptionEntry `json:"Entries,omitnil,omitempty" name:"Entries"`
+}
+
+func (r *BatchCreateTWeSeeSubscriptionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchCreateTWeSeeSubscriptionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Entries")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchCreateTWeSeeSubscriptionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BatchCreateTWeSeeSubscriptionResponseParams struct {
+	// 订阅开通结果列表
+	Results []*SeeCreateSubscriptionResult `json:"Results,omitnil,omitempty" name:"Results"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type BatchCreateTWeSeeSubscriptionResponse struct {
+	*tchttp.BaseResponse
+	Response *BatchCreateTWeSeeSubscriptionResponseParams `json:"Response"`
+}
+
+func (r *BatchCreateTWeSeeSubscriptionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchCreateTWeSeeSubscriptionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type BatchInvokeTWeSeeRecognitionTaskRequestParams struct {
 	// 待执行的 TWeSee 语义理解任务列表
 	Inputs []*CreateVisionRecognitionTaskInput `json:"Inputs,omitnil,omitempty" name:"Inputs"`
@@ -396,6 +453,63 @@ type BatchProductionInfo struct {
 
 	// 产品名称
 	ProductName *string `json:"ProductName,omitnil,omitempty" name:"ProductName"`
+}
+
+// Predefined struct for user
+type BatchRenewTWeSeeSubscriptionRequestParams struct {
+	// 待续费的订阅列表
+	Entries []*SeeRenewSubscriptionEntry `json:"Entries,omitnil,omitempty" name:"Entries"`
+}
+
+type BatchRenewTWeSeeSubscriptionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 待续费的订阅列表
+	Entries []*SeeRenewSubscriptionEntry `json:"Entries,omitnil,omitempty" name:"Entries"`
+}
+
+func (r *BatchRenewTWeSeeSubscriptionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchRenewTWeSeeSubscriptionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Entries")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchRenewTWeSeeSubscriptionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BatchRenewTWeSeeSubscriptionResponseParams struct {
+	// 订阅续费结果列表
+	Results []*SeeRenewSubscriptionResult `json:"Results,omitnil,omitempty" name:"Results"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type BatchRenewTWeSeeSubscriptionResponse struct {
+	*tchttp.BaseResponse
+	Response *BatchRenewTWeSeeSubscriptionResponseParams `json:"Response"`
+}
+
+func (r *BatchRenewTWeSeeSubscriptionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchRenewTWeSeeSubscriptionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -21483,6 +21597,53 @@ type SeeComprehensionResult struct {
 	Keywords []*string `json:"Keywords,omitnil,omitempty" name:"Keywords"`
 }
 
+type SeeCreateSubscriptionEntry struct {
+	// 产品 ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 算法类型。可选值：
+	// 
+	// - `VID_COMP`：视频理解
+	// - `IMG_COMP`：图片理解
+	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
+
+	// 套餐规格。可选值：
+	// 
+	// - `BASIC`：基础版
+	// - `ADVANCED`：高级版
+	ServiceTier *string `json:"ServiceTier,omitnil,omitempty" name:"ServiceTier"`
+
+	// 订阅购买时长，单位：月
+	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
+
+	// 自定义订单 ID
+	CustomOrderId *string `json:"CustomOrderId,omitnil,omitempty" name:"CustomOrderId"`
+
+	// 续费标识。可选值：
+	// 
+	// - `NOTIFY_AND_MANUAL_RENEW`：到期前通知并手动续费（默认）
+	// - `NOTIFY_AND_AUTO_RENEW`：到期前通知并自动续费
+	// - `DISABLE_NOTIFY_AND_MANUAL_RENEW`：不通知且手动续费
+	RenewFlag *string `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
+
+	// 通道 ID
+	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+}
+
+type SeeCreateSubscriptionResult struct {
+	// 订单 ID
+	OrderId *string `json:"OrderId,omitnil,omitempty" name:"OrderId"`
+
+	// 订单状态
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 资源 ID
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+}
+
 type SeeDeleteTaskCondition struct {
 	// <p>条件类型。</p><p>枚举值：</p><ul><li>TaskId： 精确匹配任务 ID</li><li>TimeRange： 匹配任务时间范围与指定范围有重合的任务。值的格式为 <code>UnixTimestampStart,UnixTimestampEnd</code>，其中起止时间均为秒级 UNIX 时间戳，且结束时间不早于起始时间</li><li>CreateTimeBefore： 匹配在指定时间前创建的任务。值为秒级 UNIX 时间戳</li><li>COSURI： 精确匹配任务来源 COS URI，值必须以 <code>cos://</code> 开头</li><li>COSURIPrefix： 按前缀匹配任务来源 COS URI，值必须以 <code>cos://</code> 开头</li></ul>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
@@ -21562,6 +21723,40 @@ type SeePersonInfo struct {
 
 	// 创建来源。0：自动识别；1：用户创建
 	Source *uint64 `json:"Source,omitnil,omitempty" name:"Source"`
+}
+
+type SeeRenewSubscriptionEntry struct {
+	// 产品 ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 算法类型。可选值：
+	// 
+	// - `VID_COMP`：视频理解
+	// - `IMG_COMP`：图片理解
+	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
+
+	// 续费时长，单位：月
+	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
+
+	// 自定义订单 ID
+	CustomOrderId *string `json:"CustomOrderId,omitnil,omitempty" name:"CustomOrderId"`
+
+	// 通道 ID
+	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+}
+
+type SeeRenewSubscriptionResult struct {
+	// 订单 ID
+	OrderId *string `json:"OrderId,omitnil,omitempty" name:"OrderId"`
+
+	// 订单状态
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 资源 ID
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 }
 
 type SeeStatItem struct {
@@ -21662,6 +21857,9 @@ type SeeTaskInfo struct {
 
 	// <p>直传 COS 的对象 URI</p>
 	COSURI *string `json:"COSURI,omitnil,omitempty" name:"COSURI"`
+
+	// <p>任务的输入 URL</p>
+	InputURL *string `json:"InputURL,omitnil,omitempty" name:"InputURL"`
 }
 
 type SeeTaskMetadata struct {
@@ -22572,6 +22770,12 @@ type TargetInfo struct {
 
 	// <p>缩略图路径</p>
 	Thumbnail *string `json:"Thumbnail,omitnil,omitempty" name:"Thumbnail"`
+
+	// <p>搜索结果置信度</p><p>枚举值：</p><ul><li>high： 高（精准匹配，或包括性的匹配）</li><li>medium： 中（近义匹配）</li><li>low： 低（模糊匹配，部分要素与用户 Query 可能不符合）</li></ul>
+	Confidence *string `json:"Confidence,omitnil,omitempty" name:"Confidence"`
+
+	// <p>任务信息</p><p>当入参 WithTaskInfo = true 时，出参中会返回任务信息</p>
+	TaskInfo *SeeTaskInfo `json:"TaskInfo,omitnil,omitempty" name:"TaskInfo"`
 }
 
 // Predefined struct for user

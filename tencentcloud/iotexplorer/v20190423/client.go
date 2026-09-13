@@ -207,6 +207,96 @@ func (c *Client) BatchCreateTWeSeeRecognitionTaskWithContext(ctx context.Context
     return
 }
 
+func NewBatchCreateTWeSeeSubscriptionRequest() (request *BatchCreateTWeSeeSubscriptionRequest) {
+    request = &BatchCreateTWeSeeSubscriptionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "BatchCreateTWeSeeSubscription")
+    
+    
+    return
+}
+
+func NewBatchCreateTWeSeeSubscriptionResponse() (response *BatchCreateTWeSeeSubscriptionResponse) {
+    response = &BatchCreateTWeSeeSubscriptionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// BatchCreateTWeSeeSubscription
+// 批量开通 TWeSee 预付费订阅
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ANOTHEROPERATIONISRUNNING = "FailedOperation.AnotherOperationIsRunning"
+//  FAILEDOPERATION_BALANCEINSUFFICIENT = "FailedOperation.BalanceInsufficient"
+//  FAILEDOPERATION_CLOUDSTORAGEPACKAGEREQUIRED = "FailedOperation.CloudStoragePackageRequired"
+//  FAILEDOPERATION_CREATEORDERFAILED = "FailedOperation.CreateOrderFailed"
+//  FAILEDOPERATION_CUSTOMORDERIDALREADYEXIST = "FailedOperation.CustomOrderIdAlreadyExist"
+//  FAILEDOPERATION_DELIVERORDERFAILED = "FailedOperation.DeliverOrderFailed"
+//  FAILEDOPERATION_SEEPREPAIDSUBSCRIPTIONALREADYEXISTS = "FailedOperation.SeePrePaidSubscriptionAlreadyExists"
+//  FAILEDOPERATION_SEEPREPAIDSUBSCRIPTIONCONFLICTS = "FailedOperation.SeePrePaidSubscriptionConflicts"
+//  FAILEDOPERATION_SEEPREPAIDSUBSCRIPTIONDURATIONEXCEEDED = "FailedOperation.SeePrePaidSubscriptionDurationExceeded"
+//  FAILEDOPERATION_SEEPREPAIDSUBSCRIPTIONENDTIMEEXCEEDED = "FailedOperation.SeePrePaidSubscriptionEndTimeExceeded"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_DEVICECHANNELNOTEXIST = "ResourceNotFound.DeviceChannelNotExist"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  UNAUTHORIZEDOPERATION_CERTIFICATIONNEEDUPGRADE = "UnauthorizedOperation.CertificationNeedUpgrade"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOPAY = "UnauthorizedOperation.NoPermissionToPay"
+//  UNAUTHORIZEDOPERATION_NOTCERTIFICATION = "UnauthorizedOperation.NotCertification"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) BatchCreateTWeSeeSubscription(request *BatchCreateTWeSeeSubscriptionRequest) (response *BatchCreateTWeSeeSubscriptionResponse, err error) {
+    return c.BatchCreateTWeSeeSubscriptionWithContext(context.Background(), request)
+}
+
+// BatchCreateTWeSeeSubscription
+// 批量开通 TWeSee 预付费订阅
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ANOTHEROPERATIONISRUNNING = "FailedOperation.AnotherOperationIsRunning"
+//  FAILEDOPERATION_BALANCEINSUFFICIENT = "FailedOperation.BalanceInsufficient"
+//  FAILEDOPERATION_CLOUDSTORAGEPACKAGEREQUIRED = "FailedOperation.CloudStoragePackageRequired"
+//  FAILEDOPERATION_CREATEORDERFAILED = "FailedOperation.CreateOrderFailed"
+//  FAILEDOPERATION_CUSTOMORDERIDALREADYEXIST = "FailedOperation.CustomOrderIdAlreadyExist"
+//  FAILEDOPERATION_DELIVERORDERFAILED = "FailedOperation.DeliverOrderFailed"
+//  FAILEDOPERATION_SEEPREPAIDSUBSCRIPTIONALREADYEXISTS = "FailedOperation.SeePrePaidSubscriptionAlreadyExists"
+//  FAILEDOPERATION_SEEPREPAIDSUBSCRIPTIONCONFLICTS = "FailedOperation.SeePrePaidSubscriptionConflicts"
+//  FAILEDOPERATION_SEEPREPAIDSUBSCRIPTIONDURATIONEXCEEDED = "FailedOperation.SeePrePaidSubscriptionDurationExceeded"
+//  FAILEDOPERATION_SEEPREPAIDSUBSCRIPTIONENDTIMEEXCEEDED = "FailedOperation.SeePrePaidSubscriptionEndTimeExceeded"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_DEVICECHANNELNOTEXIST = "ResourceNotFound.DeviceChannelNotExist"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  UNAUTHORIZEDOPERATION_CERTIFICATIONNEEDUPGRADE = "UnauthorizedOperation.CertificationNeedUpgrade"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOPAY = "UnauthorizedOperation.NoPermissionToPay"
+//  UNAUTHORIZEDOPERATION_NOTCERTIFICATION = "UnauthorizedOperation.NotCertification"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) BatchCreateTWeSeeSubscriptionWithContext(ctx context.Context, request *BatchCreateTWeSeeSubscriptionRequest) (response *BatchCreateTWeSeeSubscriptionResponse, err error) {
+    if request == nil {
+        request = NewBatchCreateTWeSeeSubscriptionRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "BatchCreateTWeSeeSubscription")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BatchCreateTWeSeeSubscription require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewBatchCreateTWeSeeSubscriptionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewBatchInvokeTWeSeeRecognitionTaskRequest() (request *BatchInvokeTWeSeeRecognitionTaskRequest) {
     request = &BatchInvokeTWeSeeRecognitionTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -257,6 +347,92 @@ func (c *Client) BatchInvokeTWeSeeRecognitionTaskWithContext(ctx context.Context
     request.SetContext(ctx)
     
     response = NewBatchInvokeTWeSeeRecognitionTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewBatchRenewTWeSeeSubscriptionRequest() (request *BatchRenewTWeSeeSubscriptionRequest) {
+    request = &BatchRenewTWeSeeSubscriptionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "BatchRenewTWeSeeSubscription")
+    
+    
+    return
+}
+
+func NewBatchRenewTWeSeeSubscriptionResponse() (response *BatchRenewTWeSeeSubscriptionResponse) {
+    response = &BatchRenewTWeSeeSubscriptionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// BatchRenewTWeSeeSubscription
+// 批量续费 TWeSee 预付费订阅
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ANOTHEROPERATIONISRUNNING = "FailedOperation.AnotherOperationIsRunning"
+//  FAILEDOPERATION_BALANCEINSUFFICIENT = "FailedOperation.BalanceInsufficient"
+//  FAILEDOPERATION_CREATEORDERFAILED = "FailedOperation.CreateOrderFailed"
+//  FAILEDOPERATION_CUSTOMORDERIDALREADYEXIST = "FailedOperation.CustomOrderIdAlreadyExist"
+//  FAILEDOPERATION_SEEPREPAIDSUBSCRIPTIONDURATIONEXCEEDED = "FailedOperation.SeePrePaidSubscriptionDurationExceeded"
+//  FAILEDOPERATION_SEEPREPAIDSUBSCRIPTIONENDTIMEEXCEEDED = "FailedOperation.SeePrePaidSubscriptionEndTimeExceeded"
+//  FAILEDOPERATION_SEEPREPAIDSUBSCRIPTIONINVALIDSTATUS = "FailedOperation.SeePrePaidSubscriptionInvalidStatus"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_DEVICECHANNELNOTEXIST = "ResourceNotFound.DeviceChannelNotExist"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_SEEPREPAIDSUBSCRIPTIONNOTEXIST = "ResourceNotFound.SeePrePaidSubscriptionNotExist"
+//  UNAUTHORIZEDOPERATION_CERTIFICATIONNEEDUPGRADE = "UnauthorizedOperation.CertificationNeedUpgrade"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOPAY = "UnauthorizedOperation.NoPermissionToPay"
+//  UNAUTHORIZEDOPERATION_NOTCERTIFICATION = "UnauthorizedOperation.NotCertification"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) BatchRenewTWeSeeSubscription(request *BatchRenewTWeSeeSubscriptionRequest) (response *BatchRenewTWeSeeSubscriptionResponse, err error) {
+    return c.BatchRenewTWeSeeSubscriptionWithContext(context.Background(), request)
+}
+
+// BatchRenewTWeSeeSubscription
+// 批量续费 TWeSee 预付费订阅
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ANOTHEROPERATIONISRUNNING = "FailedOperation.AnotherOperationIsRunning"
+//  FAILEDOPERATION_BALANCEINSUFFICIENT = "FailedOperation.BalanceInsufficient"
+//  FAILEDOPERATION_CREATEORDERFAILED = "FailedOperation.CreateOrderFailed"
+//  FAILEDOPERATION_CUSTOMORDERIDALREADYEXIST = "FailedOperation.CustomOrderIdAlreadyExist"
+//  FAILEDOPERATION_SEEPREPAIDSUBSCRIPTIONDURATIONEXCEEDED = "FailedOperation.SeePrePaidSubscriptionDurationExceeded"
+//  FAILEDOPERATION_SEEPREPAIDSUBSCRIPTIONENDTIMEEXCEEDED = "FailedOperation.SeePrePaidSubscriptionEndTimeExceeded"
+//  FAILEDOPERATION_SEEPREPAIDSUBSCRIPTIONINVALIDSTATUS = "FailedOperation.SeePrePaidSubscriptionInvalidStatus"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_DEVICECHANNELNOTEXIST = "ResourceNotFound.DeviceChannelNotExist"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_SEEPREPAIDSUBSCRIPTIONNOTEXIST = "ResourceNotFound.SeePrePaidSubscriptionNotExist"
+//  UNAUTHORIZEDOPERATION_CERTIFICATIONNEEDUPGRADE = "UnauthorizedOperation.CertificationNeedUpgrade"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOPAY = "UnauthorizedOperation.NoPermissionToPay"
+//  UNAUTHORIZEDOPERATION_NOTCERTIFICATION = "UnauthorizedOperation.NotCertification"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) BatchRenewTWeSeeSubscriptionWithContext(ctx context.Context, request *BatchRenewTWeSeeSubscriptionRequest) (response *BatchRenewTWeSeeSubscriptionResponse, err error) {
+    if request == nil {
+        request = NewBatchRenewTWeSeeSubscriptionRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "BatchRenewTWeSeeSubscription")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BatchRenewTWeSeeSubscription require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewBatchRenewTWeSeeSubscriptionResponse()
     err = c.Send(request, response)
     return
 }

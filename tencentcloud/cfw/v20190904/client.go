@@ -5317,6 +5317,58 @@ func (c *Client) DescribeNDRAssetIdentificationListWithContext(ctx context.Conte
     return
 }
 
+func NewDescribeNDRDataLeakOutAlertDetailRequest() (request *DescribeNDRDataLeakOutAlertDetailRequest) {
+    request = &DescribeNDRDataLeakOutAlertDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "DescribeNDRDataLeakOutAlertDetail")
+    
+    
+    return
+}
+
+func NewDescribeNDRDataLeakOutAlertDetailResponse() (response *DescribeNDRDataLeakOutAlertDetailResponse) {
+    response = &DescribeNDRDataLeakOutAlertDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeNDRDataLeakOutAlertDetail
+// DescribeNDRDataLeakOutAlertDetail -- 查询出站数据泄露风险详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeNDRDataLeakOutAlertDetail(request *DescribeNDRDataLeakOutAlertDetailRequest) (response *DescribeNDRDataLeakOutAlertDetailResponse, err error) {
+    return c.DescribeNDRDataLeakOutAlertDetailWithContext(context.Background(), request)
+}
+
+// DescribeNDRDataLeakOutAlertDetail
+// DescribeNDRDataLeakOutAlertDetail -- 查询出站数据泄露风险详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeNDRDataLeakOutAlertDetailWithContext(ctx context.Context, request *DescribeNDRDataLeakOutAlertDetailRequest) (response *DescribeNDRDataLeakOutAlertDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeNDRDataLeakOutAlertDetailRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeNDRDataLeakOutAlertDetail")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNDRDataLeakOutAlertDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeNDRDataLeakOutAlertDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeNDRDataLeakOutAlertListRequest() (request *DescribeNDRDataLeakOutAlertListRequest) {
     request = &DescribeNDRDataLeakOutAlertListRequest{
         BaseRequest: &tchttp.BaseRequest{},

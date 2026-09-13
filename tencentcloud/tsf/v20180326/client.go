@@ -11969,64 +11969,6 @@ func (c *Client) OperateApplicationTcrBindingWithContext(ctx context.Context, re
     return
 }
 
-func NewReassociateBusinessLogConfigRequest() (request *ReassociateBusinessLogConfigRequest) {
-    request = &ReassociateBusinessLogConfigRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("tsf", APIVersion, "ReassociateBusinessLogConfig")
-    
-    
-    return
-}
-
-func NewReassociateBusinessLogConfigResponse() (response *ReassociateBusinessLogConfigResponse) {
-    response = &ReassociateBusinessLogConfigResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// ReassociateBusinessLogConfig
-// 后端服务已经删除这个接口,  API 接口下线处理
-//
-// 
-//
-// 重关联业务日志配置
-//
-// 可能返回的错误码:
-//  UNSUPPORTEDOPERATION_UNSUPPORTACTION = "UnsupportedOperation.UnsupportAction"
-func (c *Client) ReassociateBusinessLogConfig(request *ReassociateBusinessLogConfigRequest) (response *ReassociateBusinessLogConfigResponse, err error) {
-    return c.ReassociateBusinessLogConfigWithContext(context.Background(), request)
-}
-
-// ReassociateBusinessLogConfig
-// 后端服务已经删除这个接口,  API 接口下线处理
-//
-// 
-//
-// 重关联业务日志配置
-//
-// 可能返回的错误码:
-//  UNSUPPORTEDOPERATION_UNSUPPORTACTION = "UnsupportedOperation.UnsupportAction"
-func (c *Client) ReassociateBusinessLogConfigWithContext(ctx context.Context, request *ReassociateBusinessLogConfigRequest) (response *ReassociateBusinessLogConfigResponse, err error) {
-    if request == nil {
-        request = NewReassociateBusinessLogConfigRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "tsf", APIVersion, "ReassociateBusinessLogConfig")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("ReassociateBusinessLogConfig require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewReassociateBusinessLogConfigResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewReleaseApiGroupRequest() (request *ReleaseApiGroupRequest) {
     request = &ReleaseApiGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -8058,6 +8058,180 @@ func (r *DescribeNDRAssetIdentificationListResponse) FromJsonString(s string) er
 }
 
 // Predefined struct for user
+type DescribeNDRDataLeakOutAlertDetailRequestParams struct {
+	// 风险事件ID
+	RiskId *string `json:"RiskId,omitnil,omitempty" name:"RiskId"`
+}
+
+type DescribeNDRDataLeakOutAlertDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 风险事件ID
+	RiskId *string `json:"RiskId,omitnil,omitempty" name:"RiskId"`
+}
+
+func (r *DescribeNDRDataLeakOutAlertDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNDRDataLeakOutAlertDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RiskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNDRDataLeakOutAlertDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeNDRDataLeakOutAlertDetailResponseParams struct {
+	// 风险事件ID
+	RiskID *string `json:"RiskID,omitnil,omitempty" name:"RiskID"`
+
+	// 资产实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 资产实例名称
+	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
+
+	// 资产实例类型
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// 资产所在地域
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// 源IP
+	SrcIP *string `json:"SrcIP,omitnil,omitempty" name:"SrcIP"`
+
+	// 目的IP端口
+	DstIPPort *string `json:"DstIPPort,omitnil,omitempty" name:"DstIPPort"`
+
+	// 目的Host
+	Hostname *string `json:"Hostname,omitnil,omitempty" name:"Hostname"`
+
+	// 目的服务类型
+	DstServiceType *string `json:"DstServiceType,omitnil,omitempty" name:"DstServiceType"`
+
+	// 目的服务名称
+	DstServiceName *string `json:"DstServiceName,omitnil,omitempty" name:"DstServiceName"`
+
+	// 访问API
+	ApiPattern *string `json:"ApiPattern,omitnil,omitempty" name:"ApiPattern"`
+
+	// 目的IP地理信息
+	DstGeoLocation *string `json:"DstGeoLocation,omitnil,omitempty" name:"DstGeoLocation"`
+
+	// 应用层协议
+	AppProto *string `json:"AppProto,omitnil,omitempty" name:"AppProto"`
+
+	// 敏感类型集合
+	LeakTypeSet *string `json:"LeakTypeSet,omitnil,omitempty" name:"LeakTypeSet"`
+
+	// 事件数量
+	EventCount *uint64 `json:"EventCount,omitnil,omitempty" name:"EventCount"`
+
+	// 敏感数据数量
+	LeakDataCount *uint64 `json:"LeakDataCount,omitnil,omitempty" name:"LeakDataCount"`
+
+	// 原始风险等级
+	Level *int64 `json:"Level,omitnil,omitempty" name:"Level"`
+
+	// 处置状态
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 处置备注
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// 首次识别时间
+	FirstIdentificationTime *string `json:"FirstIdentificationTime,omitnil,omitempty" name:"FirstIdentificationTime"`
+
+	// 最近识别时间
+	LatestIdentificationTime *string `json:"LatestIdentificationTime,omitnil,omitempty" name:"LatestIdentificationTime"`
+
+	// AI任务分析状态
+	AnalysisStatus *int64 `json:"AnalysisStatus,omitnil,omitempty" name:"AnalysisStatus"`
+
+	// AI任务失败原因
+	AnalysisFailReason *string `json:"AnalysisFailReason,omitnil,omitempty" name:"AnalysisFailReason"`
+
+	// 最近一次AI分析时间
+	LastAnalysisTime *string `json:"LastAnalysisTime,omitnil,omitempty" name:"LastAnalysisTime"`
+
+	// API业务类型
+	ApiBizType *string `json:"ApiBizType,omitnil,omitempty" name:"ApiBizType"`
+
+	// API业务描述
+	ApiBizDescription *string `json:"ApiBizDescription,omitnil,omitempty" name:"ApiBizDescription"`
+
+	// 风险场景（类型）
+	RiskScenario *string `json:"RiskScenario,omitnil,omitempty" name:"RiskScenario"`
+
+	// 风险场景（类型）描述
+	RiskScenarioDetail *string `json:"RiskScenarioDetail,omitnil,omitempty" name:"RiskScenarioDetail"`
+
+	// 风险总结（概览）
+	RiskSummary *string `json:"RiskSummary,omitnil,omitempty" name:"RiskSummary"`
+
+	// 推断依据
+	RiskBasis *string `json:"RiskBasis,omitnil,omitempty" name:"RiskBasis"`
+
+	// 风险影响范围
+	ImpactScope *string `json:"ImpactScope,omitnil,omitempty" name:"ImpactScope"`
+
+	// AI建议风险等级
+	AiSuggestedLevel *int64 `json:"AiSuggestedLevel,omitnil,omitempty" name:"AiSuggestedLevel"`
+
+	// 处置建议
+	DisposalSuggestions []*DisposalSuggestionItem `json:"DisposalSuggestions,omitnil,omitempty" name:"DisposalSuggestions"`
+
+	// http请求头
+	HttpRequestHeader *string `json:"HttpRequestHeader,omitnil,omitempty" name:"HttpRequestHeader"`
+
+	// http请求体
+	HttpRequestBody *string `json:"HttpRequestBody,omitnil,omitempty" name:"HttpRequestBody"`
+
+	// http响应头
+	HttpResponseHeader *string `json:"HttpResponseHeader,omitnil,omitempty" name:"HttpResponseHeader"`
+
+	// http响应体
+	HttpResponseBody *string `json:"HttpResponseBody,omitnil,omitempty" name:"HttpResponseBody"`
+
+	// 敏感数据条目
+	LeakDataEntries *string `json:"LeakDataEntries,omitnil,omitempty" name:"LeakDataEntries"`
+
+	// 脱敏状态
+	MaskStatus *string `json:"MaskStatus,omitnil,omitempty" name:"MaskStatus"`
+
+	// 最高敏感等级
+	HighestLevel *string `json:"HighestLevel,omitnil,omitempty" name:"HighestLevel"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeNDRDataLeakOutAlertDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeNDRDataLeakOutAlertDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeNDRDataLeakOutAlertDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNDRDataLeakOutAlertDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeNDRDataLeakOutAlertListRequestParams struct {
 	// 每页条数
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
@@ -10626,6 +10800,20 @@ func (r *DescribeVpcFwGroupSwitchResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DescribeVpcFwGroupSwitchResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type DisposalSuggestionItem struct {
+	// 处置动作
+	Action *string `json:"Action,omitnil,omitempty" name:"Action"`
+
+	// 处置对象
+	Target *string `json:"Target,omitnil,omitempty" name:"Target"`
+
+	// 处置优先级
+	Priority *string `json:"Priority,omitnil,omitempty" name:"Priority"`
+
+	// 处置建议
+	Suggestion *string `json:"Suggestion,omitnil,omitempty" name:"Suggestion"`
 }
 
 type DnsVpcSwitch struct {
