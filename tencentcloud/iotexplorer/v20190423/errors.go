@@ -53,6 +53,9 @@ const (
 	// 自定义订单 ID 已存在
 	FAILEDOPERATION_CUSTOMORDERIDALREADYEXIST = "FailedOperation.CustomOrderIdAlreadyExist"
 
+	// 自定义订单 ID 不存在
+	FAILEDOPERATION_CUSTOMORDERIDNOTEXIST = "FailedOperation.CustomOrderIdNotExist"
+
 	// 订单发货失败
 	FAILEDOPERATION_DELIVERORDERFAILED = "FailedOperation.DeliverOrderFailed"
 
@@ -73,6 +76,9 @@ const (
 
 	// 设备处于离线状态。
 	FAILEDOPERATION_DEVICEOFFLINE = "FailedOperation.DeviceOffline"
+
+	// 订单 ID 不存在
+	FAILEDOPERATION_ORDERIDNOTEXIST = "FailedOperation.OrderIdNotExist"
 
 	// 存在其他升级任务。
 	FAILEDOPERATION_OTHERUPDATETASKEXIST = "FailedOperation.OtherUpdateTaskExist"

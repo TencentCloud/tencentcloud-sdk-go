@@ -77,9 +77,9 @@ func NewCreateAccelerateAreasResponse() (response *CreateAccelerateAreasResponse
 //  UNSUPPORTEDOPERATION_EXISTDROPACCEPTACLRULE = "UnsupportedOperation.ExistDropAcceptAclRule"
 //  UNSUPPORTEDOPERATION_INSTANCESTATENOTALLOWEDOPERATE = "UnsupportedOperation.InstanceStateNotAllowedOperate"
 //  UNSUPPORTEDOPERATION_NOTSETCROSSBORDERTYPE = "UnsupportedOperation.NotSetCrossBorderType"
+//  UNSUPPORTEDOPERATION_THIRDAREAHAVEPORTEQUALLISTENER = "UnsupportedOperation.ThirdAreaHavePortEqualListener"
 //  UNSUPPORTEDOPERATION_THREENETWORKSACCELERATEAREAS = "UnsupportedOperation.ThreeNetworksAccelerateAreas"
 //  UNSUPPORTEDOPERATION_UNABLECREATETHIRDPARTYNODES = "UnsupportedOperation.UnableCreateThirdPartyNodes"
-//  UNSUPPORTEDOPERATION_UNABLECROSSBORDER = "UnsupportedOperation.UnableCrossBorder"
 func (c *Client) CreateAccelerateAreas(request *CreateAccelerateAreasRequest) (response *CreateAccelerateAreasResponse, err error) {
     return c.CreateAccelerateAreasWithContext(context.Background(), request)
 }
@@ -97,9 +97,9 @@ func (c *Client) CreateAccelerateAreas(request *CreateAccelerateAreasRequest) (r
 //  UNSUPPORTEDOPERATION_EXISTDROPACCEPTACLRULE = "UnsupportedOperation.ExistDropAcceptAclRule"
 //  UNSUPPORTEDOPERATION_INSTANCESTATENOTALLOWEDOPERATE = "UnsupportedOperation.InstanceStateNotAllowedOperate"
 //  UNSUPPORTEDOPERATION_NOTSETCROSSBORDERTYPE = "UnsupportedOperation.NotSetCrossBorderType"
+//  UNSUPPORTEDOPERATION_THIRDAREAHAVEPORTEQUALLISTENER = "UnsupportedOperation.ThirdAreaHavePortEqualListener"
 //  UNSUPPORTEDOPERATION_THREENETWORKSACCELERATEAREAS = "UnsupportedOperation.ThreeNetworksAccelerateAreas"
 //  UNSUPPORTEDOPERATION_UNABLECREATETHIRDPARTYNODES = "UnsupportedOperation.UnableCreateThirdPartyNodes"
-//  UNSUPPORTEDOPERATION_UNABLECROSSBORDER = "UnsupportedOperation.UnableCrossBorder"
 func (c *Client) CreateAccelerateAreasWithContext(ctx context.Context, request *CreateAccelerateAreasRequest) (response *CreateAccelerateAreasResponse, err error) {
     if request == nil {
         request = NewCreateAccelerateAreasRequest()
@@ -150,17 +150,25 @@ func NewCreateEndpointGroupResponse() (response *CreateEndpointGroupResponse) {
 //  INVALIDPARAMETER_TCPENDPOINTGROUPCANNOTCARRYPARAMETERS = "InvalidParameter.TcpEndpointGroupCannotCarryParameters"
 //  INVALIDPARAMETER_TRANSPORTLAYERENDPOINTGROUPCANNOTCARRYPARAMETERS = "InvalidParameter.TransportLayerEndpointGroupCannotCarryParameters"
 //  INVALIDPARAMETER_UDPENDPOINTGROUPCANNOTCARRYPARAMETERS = "InvalidParameter.UdpEndpointGroupCannotCarryParameters"
+//  INVALIDPARAMETERVALUE_EMPTY = "InvalidParameterValue.Empty"
 //  INVALIDPARAMETERVALUE_INSTANCEMISMATCH = "InvalidParameterValue.InstanceMismatch"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPARAMETERVALUE_LISTENERPORTNOTEQUAL = "InvalidParameterValue.ListenerPortNotEqual"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  INVALIDPARAMETERVALUE_NOTMAPPINGMANYPORT = "InvalidParameterValue.NotMappingManyPort"
+//  INVALIDPARAMETERVALUE_NOTTENCENTREGION = "InvalidParameterValue.NotTencentRegion"
 //  INVALIDPARAMETERVALUE_NOTWITHINPUBLICNETWORK = "InvalidParameterValue.NotWithinPublicNetwork"
 //  INVALIDPARAMETERVALUE_SPECIFICCHARACTERS = "InvalidParameterValue.SpecificCharacters"
+//  INVALIDPARAMETERVALUE_THIRDAREALISTENERPORTSEGMENT = "InvalidParameterValue.ThirdAreaListenerPortSegment"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  INVALIDPARAMETERVALUE_WRONGATTRIBUTIONRELATIONSHIP = "InvalidParameterValue.WrongAttributionRelationship"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  MISSINGPARAMETER_APPLICATIONLAYERENDPOINTGROUPPARAMETER = "MissingParameter.ApplicationLayerEndpointGroupParameter"
 //  MISSINGPARAMETER_CUSTOMCHECKTYPEPARAMETER = "MissingParameter.CustomCheckTypeParameter"
 //  MISSINGPARAMETER_ENABLEHEALTHCHECKPARAMETER = "MissingParameter.EnableHealthCheckParameter"
+//  MISSINGPARAMETER_ISPTYPE = "MissingParameter.IspType"
+//  UNSUPPORTEDOPERATION_CURRENTACCOUNTNOTALLOWED = "UnsupportedOperation.CurrentAccountNotAllowed"
 //  UNSUPPORTEDOPERATION_EXISTACCEPTACLPOLICY = "UnsupportedOperation.ExistAcceptAclPolicy"
 //  UNSUPPORTEDOPERATION_EXISTDROPACCEPTACLRULE = "UnsupportedOperation.ExistDropAcceptAclRule"
 //  UNSUPPORTEDOPERATION_HTTPVERSIONINCONSISTENT = "UnsupportedOperation.HttpVersionInconsistent"
@@ -168,8 +176,10 @@ func NewCreateEndpointGroupResponse() (response *CreateEndpointGroupResponse) {
 //  UNSUPPORTEDOPERATION_INTERNALENDPOINTFEATURENOTENABLED = "UnsupportedOperation.InternalEndpointFeatureNotEnabled"
 //  UNSUPPORTEDOPERATION_IPV6NOTSUPPORT = "UnsupportedOperation.Ipv6NotSupport"
 //  UNSUPPORTEDOPERATION_NOTSETCROSSBORDERTYPE = "UnsupportedOperation.NotSetCrossBorderType"
+//  UNSUPPORTEDOPERATION_ONLYINTERNALCLB = "UnsupportedOperation.OnlyInternalClb"
 //  UNSUPPORTEDOPERATION_SAMEDOMAIN = "UnsupportedOperation.SameDomain"
 //  UNSUPPORTEDOPERATION_SAMEPUBLICIP = "UnsupportedOperation.SamePublicIp"
+//  UNSUPPORTEDOPERATION_THIRDAREAHAVEPORTEQUALLISTENER = "UnsupportedOperation.ThirdAreaHavePortEqualListener"
 //  UNSUPPORTEDOPERATION_THREENETWORKSENDPOINTGROUP = "UnsupportedOperation.ThreeNetworksEndpointGroup"
 //  UNSUPPORTEDOPERATION_UNABLECREATETHIRDPARTYNODES = "UnsupportedOperation.UnableCreateThirdPartyNodes"
 //  UNSUPPORTEDOPERATION_UNABLECROSSBORDER = "UnsupportedOperation.UnableCrossBorder"
@@ -192,17 +202,25 @@ func (c *Client) CreateEndpointGroup(request *CreateEndpointGroupRequest) (respo
 //  INVALIDPARAMETER_TCPENDPOINTGROUPCANNOTCARRYPARAMETERS = "InvalidParameter.TcpEndpointGroupCannotCarryParameters"
 //  INVALIDPARAMETER_TRANSPORTLAYERENDPOINTGROUPCANNOTCARRYPARAMETERS = "InvalidParameter.TransportLayerEndpointGroupCannotCarryParameters"
 //  INVALIDPARAMETER_UDPENDPOINTGROUPCANNOTCARRYPARAMETERS = "InvalidParameter.UdpEndpointGroupCannotCarryParameters"
+//  INVALIDPARAMETERVALUE_EMPTY = "InvalidParameterValue.Empty"
 //  INVALIDPARAMETERVALUE_INSTANCEMISMATCH = "InvalidParameterValue.InstanceMismatch"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPARAMETERVALUE_LISTENERPORTNOTEQUAL = "InvalidParameterValue.ListenerPortNotEqual"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  INVALIDPARAMETERVALUE_NOTMAPPINGMANYPORT = "InvalidParameterValue.NotMappingManyPort"
+//  INVALIDPARAMETERVALUE_NOTTENCENTREGION = "InvalidParameterValue.NotTencentRegion"
 //  INVALIDPARAMETERVALUE_NOTWITHINPUBLICNETWORK = "InvalidParameterValue.NotWithinPublicNetwork"
 //  INVALIDPARAMETERVALUE_SPECIFICCHARACTERS = "InvalidParameterValue.SpecificCharacters"
+//  INVALIDPARAMETERVALUE_THIRDAREALISTENERPORTSEGMENT = "InvalidParameterValue.ThirdAreaListenerPortSegment"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  INVALIDPARAMETERVALUE_WRONGATTRIBUTIONRELATIONSHIP = "InvalidParameterValue.WrongAttributionRelationship"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  MISSINGPARAMETER_APPLICATIONLAYERENDPOINTGROUPPARAMETER = "MissingParameter.ApplicationLayerEndpointGroupParameter"
 //  MISSINGPARAMETER_CUSTOMCHECKTYPEPARAMETER = "MissingParameter.CustomCheckTypeParameter"
 //  MISSINGPARAMETER_ENABLEHEALTHCHECKPARAMETER = "MissingParameter.EnableHealthCheckParameter"
+//  MISSINGPARAMETER_ISPTYPE = "MissingParameter.IspType"
+//  UNSUPPORTEDOPERATION_CURRENTACCOUNTNOTALLOWED = "UnsupportedOperation.CurrentAccountNotAllowed"
 //  UNSUPPORTEDOPERATION_EXISTACCEPTACLPOLICY = "UnsupportedOperation.ExistAcceptAclPolicy"
 //  UNSUPPORTEDOPERATION_EXISTDROPACCEPTACLRULE = "UnsupportedOperation.ExistDropAcceptAclRule"
 //  UNSUPPORTEDOPERATION_HTTPVERSIONINCONSISTENT = "UnsupportedOperation.HttpVersionInconsistent"
@@ -210,8 +228,10 @@ func (c *Client) CreateEndpointGroup(request *CreateEndpointGroupRequest) (respo
 //  UNSUPPORTEDOPERATION_INTERNALENDPOINTFEATURENOTENABLED = "UnsupportedOperation.InternalEndpointFeatureNotEnabled"
 //  UNSUPPORTEDOPERATION_IPV6NOTSUPPORT = "UnsupportedOperation.Ipv6NotSupport"
 //  UNSUPPORTEDOPERATION_NOTSETCROSSBORDERTYPE = "UnsupportedOperation.NotSetCrossBorderType"
+//  UNSUPPORTEDOPERATION_ONLYINTERNALCLB = "UnsupportedOperation.OnlyInternalClb"
 //  UNSUPPORTEDOPERATION_SAMEDOMAIN = "UnsupportedOperation.SameDomain"
 //  UNSUPPORTEDOPERATION_SAMEPUBLICIP = "UnsupportedOperation.SamePublicIp"
+//  UNSUPPORTEDOPERATION_THIRDAREAHAVEPORTEQUALLISTENER = "UnsupportedOperation.ThirdAreaHavePortEqualListener"
 //  UNSUPPORTEDOPERATION_THREENETWORKSENDPOINTGROUP = "UnsupportedOperation.ThreeNetworksEndpointGroup"
 //  UNSUPPORTEDOPERATION_UNABLECREATETHIRDPARTYNODES = "UnsupportedOperation.UnableCreateThirdPartyNodes"
 //  UNSUPPORTEDOPERATION_UNABLECROSSBORDER = "UnsupportedOperation.UnableCrossBorder"
@@ -256,8 +276,10 @@ func NewCreateForwardingPolicyResponse() (response *CreateForwardingPolicyRespon
 // 创建七层转发策略
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_EMPTY = "InvalidParameterValue.Empty"
 //  INVALIDPARAMETERVALUE_FORWARDINGPOLICYHOSTCONFLICT = "InvalidParameterValue.ForwardingPolicyHostConflict"
 //  INVALIDPARAMETERVALUE_INSTANCEMISMATCH = "InvalidParameterValue.InstanceMismatch"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  UNSUPPORTEDOPERATION_INSTANCENOTRUNNING = "UnsupportedOperation.InstanceNotRunning"
 //  UNSUPPORTEDOPERATION_INSTANCESTATENOTALLOWEDOPERATE = "UnsupportedOperation.InstanceStateNotAllowedOperate"
 //  UNSUPPORTEDOPERATION_TRANSPORTLAYERUNSUPPORTEDOPERATEFORWARDINGPOLICY = "UnsupportedOperation.TransportLayerUnsupportedOperateForwardingPolicy"
@@ -269,8 +291,10 @@ func (c *Client) CreateForwardingPolicy(request *CreateForwardingPolicyRequest) 
 // 创建七层转发策略
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_EMPTY = "InvalidParameterValue.Empty"
 //  INVALIDPARAMETERVALUE_FORWARDINGPOLICYHOSTCONFLICT = "InvalidParameterValue.ForwardingPolicyHostConflict"
 //  INVALIDPARAMETERVALUE_INSTANCEMISMATCH = "InvalidParameterValue.InstanceMismatch"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  UNSUPPORTEDOPERATION_INSTANCENOTRUNNING = "UnsupportedOperation.InstanceNotRunning"
 //  UNSUPPORTEDOPERATION_INSTANCESTATENOTALLOWEDOPERATE = "UnsupportedOperation.InstanceStateNotAllowedOperate"
 //  UNSUPPORTEDOPERATION_TRANSPORTLAYERUNSUPPORTEDOPERATEFORWARDINGPOLICY = "UnsupportedOperation.TransportLayerUnsupportedOperateForwardingPolicy"
@@ -314,12 +338,19 @@ func NewCreateForwardingRuleResponse() (response *CreateForwardingRuleResponse) 
 // 创建七层转发规则
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_INPUTREPEAT = "InvalidParameter.InputRepeat"
 //  INVALIDPARAMETERVALUE_ASCIICHARACTERS = "InvalidParameterValue.AsciiCharacters"
+//  INVALIDPARAMETERVALUE_EMPTY = "InvalidParameterValue.Empty"
+//  INVALIDPARAMETERVALUE_FORWARDINGRULEPATHCONFLICT = "InvalidParameterValue.ForwardingRulePathConflict"
 //  INVALIDPARAMETERVALUE_INSTANCEMISMATCH = "InvalidParameterValue.InstanceMismatch"
 //  INVALIDPARAMETERVALUE_INTERNALRESERVEDFIELDS = "InvalidParameterValue.InternalReservedFields"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  INVALIDPARAMETERVALUE_SPECIALCHARACTERS = "InvalidParameterValue.SpecialCharacters"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  MISSINGPARAMETER = "MissingParameter"
 //  UNSUPPORTEDOPERATION_FORWARDGROUPFORWARDINGRULEUNSUPPORTEDDEFAULTENDPOINTGROUP = "UnsupportedOperation.ForwardGroupForwardingRuleUnsupportedDefaultEndpointGroup"
+//  UNSUPPORTEDOPERATION_INSTANCENOTRUNNING = "UnsupportedOperation.InstanceNotRunning"
+//  UNSUPPORTEDOPERATION_TRANSPORTLAYERUNSUPPORTEDOPERATEFORWARDINGPOLICY = "UnsupportedOperation.TransportLayerUnsupportedOperateForwardingPolicy"
 func (c *Client) CreateForwardingRule(request *CreateForwardingRuleRequest) (response *CreateForwardingRuleResponse, err error) {
     return c.CreateForwardingRuleWithContext(context.Background(), request)
 }
@@ -328,12 +359,19 @@ func (c *Client) CreateForwardingRule(request *CreateForwardingRuleRequest) (res
 // 创建七层转发规则
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_INPUTREPEAT = "InvalidParameter.InputRepeat"
 //  INVALIDPARAMETERVALUE_ASCIICHARACTERS = "InvalidParameterValue.AsciiCharacters"
+//  INVALIDPARAMETERVALUE_EMPTY = "InvalidParameterValue.Empty"
+//  INVALIDPARAMETERVALUE_FORWARDINGRULEPATHCONFLICT = "InvalidParameterValue.ForwardingRulePathConflict"
 //  INVALIDPARAMETERVALUE_INSTANCEMISMATCH = "InvalidParameterValue.InstanceMismatch"
 //  INVALIDPARAMETERVALUE_INTERNALRESERVEDFIELDS = "InvalidParameterValue.InternalReservedFields"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  INVALIDPARAMETERVALUE_SPECIALCHARACTERS = "InvalidParameterValue.SpecialCharacters"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  MISSINGPARAMETER = "MissingParameter"
 //  UNSUPPORTEDOPERATION_FORWARDGROUPFORWARDINGRULEUNSUPPORTEDDEFAULTENDPOINTGROUP = "UnsupportedOperation.ForwardGroupForwardingRuleUnsupportedDefaultEndpointGroup"
+//  UNSUPPORTEDOPERATION_INSTANCENOTRUNNING = "UnsupportedOperation.InstanceNotRunning"
+//  UNSUPPORTEDOPERATION_TRANSPORTLAYERUNSUPPORTEDOPERATEFORWARDINGPOLICY = "UnsupportedOperation.TransportLayerUnsupportedOperateForwardingPolicy"
 func (c *Client) CreateForwardingRuleWithContext(ctx context.Context, request *CreateForwardingRuleRequest) (response *CreateForwardingRuleResponse, err error) {
     if request == nil {
         request = NewCreateForwardingRuleRequest()
@@ -375,9 +413,9 @@ func NewCreateGlobalAcceleratorResponse() (response *CreateGlobalAcceleratorResp
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEGLOBALACCELERATORFAILED = "FailedOperation.CreateGlobalAcceleratorFailed"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_INSTANCENAME = "InvalidParameterValue.InstanceName"
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  UNSUPPORTEDOPERATION_ACCOUNTFROZEN = "UnsupportedOperation.AccountFrozen"
 //  UNSUPPORTEDOPERATION_BILLINGFAILED = "UnsupportedOperation.BillingFailed"
@@ -395,9 +433,9 @@ func (c *Client) CreateGlobalAccelerator(request *CreateGlobalAcceleratorRequest
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEGLOBALACCELERATORFAILED = "FailedOperation.CreateGlobalAcceleratorFailed"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_INSTANCENAME = "InvalidParameterValue.InstanceName"
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  UNSUPPORTEDOPERATION_ACCOUNTFROZEN = "UnsupportedOperation.AccountFrozen"
 //  UNSUPPORTEDOPERATION_BILLINGFAILED = "UnsupportedOperation.BillingFailed"
@@ -448,10 +486,9 @@ func NewCreateGlobalAcceleratorAccessLogResponse() (response *CreateGlobalAccele
 // 可能返回的错误码:
 //  INVALIDPARAMETER_INPUTREPEAT = "InvalidParameter.InputRepeat"
 //  INVALIDPARAMETERVALUE_INSTANCEMISMATCH = "InvalidParameterValue.InstanceMismatch"
-//  INVALIDPARAMETERVALUE_LOGTASKLOCATEDERROR = "InvalidParameterValue.LogTaskLocatedError"
 //  INVALIDPARAMETERVALUE_LOGSETNOTEXIST = "InvalidParameterValue.LogsetNotExist"
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
-//  UNSUPPORTEDOPERATION_ACCESSLOG = "UnsupportedOperation.AccessLog"
+//  INVALIDPARAMETERVALUE_VPGHAGROUPNOTFOUND = "InvalidParameterValue.VpgHaGroupNotFound"
 //  UNSUPPORTEDOPERATION_EXISTACCESSLOG = "UnsupportedOperation.ExistAccessLog"
 //  UNSUPPORTEDOPERATION_INSTANCENOTRUNNING = "UnsupportedOperation.InstanceNotRunning"
 //  UNSUPPORTEDOPERATION_NOTAUTHORIZATION = "UnsupportedOperation.NotAuthorization"
@@ -465,10 +502,9 @@ func (c *Client) CreateGlobalAcceleratorAccessLog(request *CreateGlobalAccelerat
 // 可能返回的错误码:
 //  INVALIDPARAMETER_INPUTREPEAT = "InvalidParameter.InputRepeat"
 //  INVALIDPARAMETERVALUE_INSTANCEMISMATCH = "InvalidParameterValue.InstanceMismatch"
-//  INVALIDPARAMETERVALUE_LOGTASKLOCATEDERROR = "InvalidParameterValue.LogTaskLocatedError"
 //  INVALIDPARAMETERVALUE_LOGSETNOTEXIST = "InvalidParameterValue.LogsetNotExist"
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
-//  UNSUPPORTEDOPERATION_ACCESSLOG = "UnsupportedOperation.AccessLog"
+//  INVALIDPARAMETERVALUE_VPGHAGROUPNOTFOUND = "InvalidParameterValue.VpgHaGroupNotFound"
 //  UNSUPPORTEDOPERATION_EXISTACCESSLOG = "UnsupportedOperation.ExistAccessLog"
 //  UNSUPPORTEDOPERATION_INSTANCENOTRUNNING = "UnsupportedOperation.InstanceNotRunning"
 //  UNSUPPORTEDOPERATION_NOTAUTHORIZATION = "UnsupportedOperation.NotAuthorization"
@@ -564,8 +600,12 @@ func NewCreateGlobalAcceleratorAclRuleResponse() (response *CreateGlobalAccelera
 // 创建ACL规则
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_INPUTDUPLICATEWITHEXISTINGDATA = "InvalidParameter.InputDuplicateWithExistingData"
+//  INVALIDPARAMETER_INPUTOUTOFRANGE = "InvalidParameter.InputOutOfRange"
 //  INVALIDPARAMETER_INPUTREPEAT = "InvalidParameter.InputRepeat"
 //  INVALIDPARAMETERVALUE_INSTANCEMISMATCH = "InvalidParameterValue.InstanceMismatch"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  UNSUPPORTEDOPERATION_INSTANCENOTRUNNING = "UnsupportedOperation.InstanceNotRunning"
 //  UNSUPPORTEDOPERATION_INSTANCESTATENOTALLOWEDOPERATE = "UnsupportedOperation.InstanceStateNotAllowedOperate"
@@ -578,8 +618,12 @@ func (c *Client) CreateGlobalAcceleratorAclRule(request *CreateGlobalAccelerator
 // 创建ACL规则
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_INPUTDUPLICATEWITHEXISTINGDATA = "InvalidParameter.InputDuplicateWithExistingData"
+//  INVALIDPARAMETER_INPUTOUTOFRANGE = "InvalidParameter.InputOutOfRange"
 //  INVALIDPARAMETER_INPUTREPEAT = "InvalidParameter.InputRepeat"
 //  INVALIDPARAMETERVALUE_INSTANCEMISMATCH = "InvalidParameterValue.InstanceMismatch"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  UNSUPPORTEDOPERATION_INSTANCENOTRUNNING = "UnsupportedOperation.InstanceNotRunning"
 //  UNSUPPORTEDOPERATION_INSTANCESTATENOTALLOWEDOPERATE = "UnsupportedOperation.InstanceStateNotAllowedOperate"
@@ -626,13 +670,11 @@ func NewCreateListenerResponse() (response *CreateListenerResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_INSUFFICIENTRESOURCES = "FailedOperation.InsufficientResources"
 //  INVALIDPARAMETER_APPLICATIONLAYERLISTENERCANNOTCARRYPARAMETERS = "InvalidParameter.ApplicationLayerListenerCannotCarryParameters"
-//  INVALIDPARAMETER_CLIENTAFFINITYCLOSE = "InvalidParameter.ClientAffinityCLose"
 //  INVALIDPARAMETER_HTTPLISTENERCANNOTCARRYPARAMETERS = "InvalidParameter.HttpListenerCannotCarryParameters"
-//  INVALIDPARAMETER_HTTPSLISTENERCANNOTCARRYPARAMETERS = "InvalidParameter.HttpsListenerCannotCarryParameters"
+//  INVALIDPARAMETER_HTTPSLISTENERCANCARRYPARAMETERS = "InvalidParameter.HttpsListenerCanCarryParameters"
 //  INVALIDPARAMETER_SINGLEPORT = "InvalidParameter.SinglePort"
-//  INVALIDPARAMETER_TCPENDPOINTGROUPCARRYPARAMETERS = "InvalidParameter.TcpEndpointGroupCarryParameters"
+//  INVALIDPARAMETER_TCPLISTENERCARRYPARAMETERS = "InvalidParameter.TcpListenerCarryParameters"
 //  INVALIDPARAMETER_TRANSPORTLAYERLISTENERCANNOTCARRYPARAMETERS = "InvalidParameter.TransportLayerListenerCannotCarryParameters"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_INSTANCENAME = "InvalidParameterValue.InstanceName"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
@@ -642,13 +684,15 @@ func NewCreateListenerResponse() (response *CreateListenerResponse) {
 //  INVALIDPARAMETERVALUE_THIRDAREALISTENERPORTSEGMENT = "InvalidParameterValue.ThirdAreaListenerPortSegment"
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  INVALIDPARAMETERVALUE_UDPSERIESLISTENERPORTEQUAL = "InvalidParameterValue.UdpSeriesListenerPortEqual"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
-//  UNSUPPORTEDOPERATION_CERTIFICATEINVALIDSTATUS = "UnsupportedOperation.CertificateInvalidStatus"
-//  UNSUPPORTEDOPERATION_INSTANCENOTRUNNING = "UnsupportedOperation.InstanceNotRunning"
+//  UNSUPPORTEDOPERATION_CURRENTACCOUNTNOTALLOWED = "UnsupportedOperation.CurrentAccountNotAllowed"
 //  UNSUPPORTEDOPERATION_INSTANCESTATENOTALLOWEDOPERATE = "UnsupportedOperation.InstanceStateNotAllowedOperate"
 //  UNSUPPORTEDOPERATION_LISTENERPORTSEGMENT = "UnsupportedOperation.ListenerPortSegment"
 //  UNSUPPORTEDOPERATION_ONLYTCPLISTENERSUPPORTTOA = "UnsupportedOperation.OnlyTcpListenerSupportToa"
 //  UNSUPPORTEDOPERATION_TOAFEATURENOTENABLED = "UnsupportedOperation.TOAFeatureNotEnabled"
+//  UNSUPPORTEDOPERATION_UDPLISTENERNOTSUPPORTPROXYPROTOCOL = "UnsupportedOperation.UdpListenerNotSupportProxyProtocol"
+//  UNSUPPORTEDOPERATION_UNLAWFULCERTIFICATE = "UnsupportedOperation.UnlawfulCertificate"
 func (c *Client) CreateListener(request *CreateListenerRequest) (response *CreateListenerResponse, err error) {
     return c.CreateListenerWithContext(context.Background(), request)
 }
@@ -659,13 +703,11 @@ func (c *Client) CreateListener(request *CreateListenerRequest) (response *Creat
 // 可能返回的错误码:
 //  FAILEDOPERATION_INSUFFICIENTRESOURCES = "FailedOperation.InsufficientResources"
 //  INVALIDPARAMETER_APPLICATIONLAYERLISTENERCANNOTCARRYPARAMETERS = "InvalidParameter.ApplicationLayerListenerCannotCarryParameters"
-//  INVALIDPARAMETER_CLIENTAFFINITYCLOSE = "InvalidParameter.ClientAffinityCLose"
 //  INVALIDPARAMETER_HTTPLISTENERCANNOTCARRYPARAMETERS = "InvalidParameter.HttpListenerCannotCarryParameters"
-//  INVALIDPARAMETER_HTTPSLISTENERCANNOTCARRYPARAMETERS = "InvalidParameter.HttpsListenerCannotCarryParameters"
+//  INVALIDPARAMETER_HTTPSLISTENERCANCARRYPARAMETERS = "InvalidParameter.HttpsListenerCanCarryParameters"
 //  INVALIDPARAMETER_SINGLEPORT = "InvalidParameter.SinglePort"
-//  INVALIDPARAMETER_TCPENDPOINTGROUPCARRYPARAMETERS = "InvalidParameter.TcpEndpointGroupCarryParameters"
+//  INVALIDPARAMETER_TCPLISTENERCARRYPARAMETERS = "InvalidParameter.TcpListenerCarryParameters"
 //  INVALIDPARAMETER_TRANSPORTLAYERLISTENERCANNOTCARRYPARAMETERS = "InvalidParameter.TransportLayerListenerCannotCarryParameters"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_INSTANCENAME = "InvalidParameterValue.InstanceName"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
@@ -675,13 +717,15 @@ func (c *Client) CreateListener(request *CreateListenerRequest) (response *Creat
 //  INVALIDPARAMETERVALUE_THIRDAREALISTENERPORTSEGMENT = "InvalidParameterValue.ThirdAreaListenerPortSegment"
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  INVALIDPARAMETERVALUE_UDPSERIESLISTENERPORTEQUAL = "InvalidParameterValue.UdpSeriesListenerPortEqual"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
-//  UNSUPPORTEDOPERATION_CERTIFICATEINVALIDSTATUS = "UnsupportedOperation.CertificateInvalidStatus"
-//  UNSUPPORTEDOPERATION_INSTANCENOTRUNNING = "UnsupportedOperation.InstanceNotRunning"
+//  UNSUPPORTEDOPERATION_CURRENTACCOUNTNOTALLOWED = "UnsupportedOperation.CurrentAccountNotAllowed"
 //  UNSUPPORTEDOPERATION_INSTANCESTATENOTALLOWEDOPERATE = "UnsupportedOperation.InstanceStateNotAllowedOperate"
 //  UNSUPPORTEDOPERATION_LISTENERPORTSEGMENT = "UnsupportedOperation.ListenerPortSegment"
 //  UNSUPPORTEDOPERATION_ONLYTCPLISTENERSUPPORTTOA = "UnsupportedOperation.OnlyTcpListenerSupportToa"
 //  UNSUPPORTEDOPERATION_TOAFEATURENOTENABLED = "UnsupportedOperation.TOAFeatureNotEnabled"
+//  UNSUPPORTEDOPERATION_UDPLISTENERNOTSUPPORTPROXYPROTOCOL = "UnsupportedOperation.UdpListenerNotSupportProxyProtocol"
+//  UNSUPPORTEDOPERATION_UNLAWFULCERTIFICATE = "UnsupportedOperation.UnlawfulCertificate"
 func (c *Client) CreateListenerWithContext(ctx context.Context, request *CreateListenerRequest) (response *CreateListenerResponse, err error) {
     if request == nil {
         request = NewCreateListenerRequest()
@@ -724,7 +768,7 @@ func NewCreateListenerAdditionalCertResponse() (response *CreateListenerAddition
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_CERTIFICATESCONFLICT = "InvalidParameterValue.CertificatesConflict"
 //  INVALIDPARAMETERVALUE_INSTANCEMISMATCH = "InvalidParameterValue.InstanceMismatch"
-//  UNSUPPORTEDOPERATION_CERTIFICATEINVALIDSTATUS = "UnsupportedOperation.CertificateInvalidStatus"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  UNSUPPORTEDOPERATION_INSTANCENOTRUNNING = "UnsupportedOperation.InstanceNotRunning"
 func (c *Client) CreateListenerAdditionalCert(request *CreateListenerAdditionalCertRequest) (response *CreateListenerAdditionalCertResponse, err error) {
     return c.CreateListenerAdditionalCertWithContext(context.Background(), request)
@@ -736,7 +780,7 @@ func (c *Client) CreateListenerAdditionalCert(request *CreateListenerAdditionalC
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_CERTIFICATESCONFLICT = "InvalidParameterValue.CertificatesConflict"
 //  INVALIDPARAMETERVALUE_INSTANCEMISMATCH = "InvalidParameterValue.InstanceMismatch"
-//  UNSUPPORTEDOPERATION_CERTIFICATEINVALIDSTATUS = "UnsupportedOperation.CertificateInvalidStatus"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  UNSUPPORTEDOPERATION_INSTANCENOTRUNNING = "UnsupportedOperation.InstanceNotRunning"
 func (c *Client) CreateListenerAdditionalCertWithContext(ctx context.Context, request *CreateListenerAdditionalCertRequest) (response *CreateListenerAdditionalCertResponse, err error) {
     if request == nil {
@@ -833,9 +877,9 @@ func NewDeleteEndpointGroupsResponse() (response *DeleteEndpointGroupsResponse) 
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_INSTANCEMISMATCH = "InvalidParameterValue.InstanceMismatch"
-//  UNSUPPORTEDOPERATION_APPLICATIONLAYERENDPOINTGROUPNOTDELETE = "UnsupportedOperation.ApplicationLayerEndpointGroupNotDelete"
 //  UNSUPPORTEDOPERATION_EXISTACCESSLOG = "UnsupportedOperation.ExistAccessLog"
 //  UNSUPPORTEDOPERATION_EXISTFORWARDINGRULE = "UnsupportedOperation.ExistForwardingRule"
+//  UNSUPPORTEDOPERATION_INSTANCENOTRUNNING = "UnsupportedOperation.InstanceNotRunning"
 func (c *Client) DeleteEndpointGroups(request *DeleteEndpointGroupsRequest) (response *DeleteEndpointGroupsResponse, err error) {
     return c.DeleteEndpointGroupsWithContext(context.Background(), request)
 }
@@ -845,9 +889,9 @@ func (c *Client) DeleteEndpointGroups(request *DeleteEndpointGroupsRequest) (res
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_INSTANCEMISMATCH = "InvalidParameterValue.InstanceMismatch"
-//  UNSUPPORTEDOPERATION_APPLICATIONLAYERENDPOINTGROUPNOTDELETE = "UnsupportedOperation.ApplicationLayerEndpointGroupNotDelete"
 //  UNSUPPORTEDOPERATION_EXISTACCESSLOG = "UnsupportedOperation.ExistAccessLog"
 //  UNSUPPORTEDOPERATION_EXISTFORWARDINGRULE = "UnsupportedOperation.ExistForwardingRule"
+//  UNSUPPORTEDOPERATION_INSTANCENOTRUNNING = "UnsupportedOperation.InstanceNotRunning"
 func (c *Client) DeleteEndpointGroupsWithContext(ctx context.Context, request *DeleteEndpointGroupsRequest) (response *DeleteEndpointGroupsResponse, err error) {
     if request == nil {
         request = NewDeleteEndpointGroupsRequest()
@@ -1001,7 +1045,6 @@ func NewDeleteGlobalAcceleratorResponse() (response *DeleteGlobalAcceleratorResp
 //
 // 可能返回的错误码:
 //  UNSUPPORTEDOPERATION_EXISTACCELERATORAREA = "UnsupportedOperation.ExistAcceleratorArea"
-//  UNSUPPORTEDOPERATION_EXISTGLOBALACCELERATORACLPOLICY = "UnsupportedOperation.ExistGlobalAcceleratorAclPolicy"
 //  UNSUPPORTEDOPERATION_EXISTLISTENER = "UnsupportedOperation.ExistListener"
 //  UNSUPPORTEDOPERATION_INSTANCESTATENOTALLOWEDOPERATE = "UnsupportedOperation.InstanceStateNotAllowedOperate"
 func (c *Client) DeleteGlobalAccelerator(request *DeleteGlobalAcceleratorRequest) (response *DeleteGlobalAcceleratorResponse, err error) {
@@ -1013,7 +1056,6 @@ func (c *Client) DeleteGlobalAccelerator(request *DeleteGlobalAcceleratorRequest
 //
 // 可能返回的错误码:
 //  UNSUPPORTEDOPERATION_EXISTACCELERATORAREA = "UnsupportedOperation.ExistAcceleratorArea"
-//  UNSUPPORTEDOPERATION_EXISTGLOBALACCELERATORACLPOLICY = "UnsupportedOperation.ExistGlobalAcceleratorAclPolicy"
 //  UNSUPPORTEDOPERATION_EXISTLISTENER = "UnsupportedOperation.ExistListener"
 //  UNSUPPORTEDOPERATION_INSTANCESTATENOTALLOWEDOPERATE = "UnsupportedOperation.InstanceStateNotAllowedOperate"
 func (c *Client) DeleteGlobalAcceleratorWithContext(ctx context.Context, request *DeleteGlobalAcceleratorRequest) (response *DeleteGlobalAcceleratorResponse, err error) {
@@ -1057,7 +1099,6 @@ func NewDeleteGlobalAcceleratorAccessLogResponse() (response *DeleteGlobalAccele
 //
 // 可能返回的错误码:
 //  UNSUPPORTEDOPERATION_EXISTACCELERATORAREA = "UnsupportedOperation.ExistAcceleratorArea"
-//  UNSUPPORTEDOPERATION_EXISTGLOBALACCELERATORACLPOLICY = "UnsupportedOperation.ExistGlobalAcceleratorAclPolicy"
 //  UNSUPPORTEDOPERATION_EXISTLISTENER = "UnsupportedOperation.ExistListener"
 //  UNSUPPORTEDOPERATION_INSTANCESTATENOTALLOWEDOPERATE = "UnsupportedOperation.InstanceStateNotAllowedOperate"
 func (c *Client) DeleteGlobalAcceleratorAccessLog(request *DeleteGlobalAcceleratorAccessLogRequest) (response *DeleteGlobalAcceleratorAccessLogResponse, err error) {
@@ -1069,7 +1110,6 @@ func (c *Client) DeleteGlobalAcceleratorAccessLog(request *DeleteGlobalAccelerat
 //
 // 可能返回的错误码:
 //  UNSUPPORTEDOPERATION_EXISTACCELERATORAREA = "UnsupportedOperation.ExistAcceleratorArea"
-//  UNSUPPORTEDOPERATION_EXISTGLOBALACCELERATORACLPOLICY = "UnsupportedOperation.ExistGlobalAcceleratorAclPolicy"
 //  UNSUPPORTEDOPERATION_EXISTLISTENER = "UnsupportedOperation.ExistListener"
 //  UNSUPPORTEDOPERATION_INSTANCESTATENOTALLOWEDOPERATE = "UnsupportedOperation.InstanceStateNotAllowedOperate"
 func (c *Client) DeleteGlobalAcceleratorAccessLogWithContext(ctx context.Context, request *DeleteGlobalAcceleratorAccessLogRequest) (response *DeleteGlobalAcceleratorAccessLogResponse, err error) {
@@ -1113,7 +1153,6 @@ func NewDeleteGlobalAcceleratorAclPolicyResponse() (response *DeleteGlobalAccele
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_INSTANCEMISMATCH = "InvalidParameterValue.InstanceMismatch"
-//  UNSUPPORTEDOPERATION_DUPLICATEINSTANCESTATUS = "UnsupportedOperation.DuplicateInstanceStatus"
 //  UNSUPPORTEDOPERATION_INSTANCESTATENOTALLOWEDOPERATE = "UnsupportedOperation.InstanceStateNotAllowedOperate"
 func (c *Client) DeleteGlobalAcceleratorAclPolicy(request *DeleteGlobalAcceleratorAclPolicyRequest) (response *DeleteGlobalAcceleratorAclPolicyResponse, err error) {
     return c.DeleteGlobalAcceleratorAclPolicyWithContext(context.Background(), request)
@@ -1124,7 +1163,6 @@ func (c *Client) DeleteGlobalAcceleratorAclPolicy(request *DeleteGlobalAccelerat
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_INSTANCEMISMATCH = "InvalidParameterValue.InstanceMismatch"
-//  UNSUPPORTEDOPERATION_DUPLICATEINSTANCESTATUS = "UnsupportedOperation.DuplicateInstanceStatus"
 //  UNSUPPORTEDOPERATION_INSTANCESTATENOTALLOWEDOPERATE = "UnsupportedOperation.InstanceStateNotAllowedOperate"
 func (c *Client) DeleteGlobalAcceleratorAclPolicyWithContext(ctx context.Context, request *DeleteGlobalAcceleratorAclPolicyRequest) (response *DeleteGlobalAcceleratorAclPolicyResponse, err error) {
     if request == nil {
@@ -1222,8 +1260,8 @@ func NewDeleteListenerResponse() (response *DeleteListenerResponse) {
 // 删除监听器
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INSTANCEMISMATCH = "InvalidParameterValue.InstanceMismatch"
 //  UNSUPPORTEDOPERATION_EXISTACCESSLOG = "UnsupportedOperation.ExistAccessLog"
-//  UNSUPPORTEDOPERATION_EXISTENDPOINTGROUP = "UnsupportedOperation.ExistEndpointGroup"
 //  UNSUPPORTEDOPERATION_INSTANCENOTRUNNING = "UnsupportedOperation.InstanceNotRunning"
 func (c *Client) DeleteListener(request *DeleteListenerRequest) (response *DeleteListenerResponse, err error) {
     return c.DeleteListenerWithContext(context.Background(), request)
@@ -1233,8 +1271,8 @@ func (c *Client) DeleteListener(request *DeleteListenerRequest) (response *Delet
 // 删除监听器
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INSTANCEMISMATCH = "InvalidParameterValue.InstanceMismatch"
 //  UNSUPPORTEDOPERATION_EXISTACCESSLOG = "UnsupportedOperation.ExistAccessLog"
-//  UNSUPPORTEDOPERATION_EXISTENDPOINTGROUP = "UnsupportedOperation.ExistEndpointGroup"
 //  UNSUPPORTEDOPERATION_INSTANCENOTRUNNING = "UnsupportedOperation.InstanceNotRunning"
 func (c *Client) DeleteListenerWithContext(ctx context.Context, request *DeleteListenerRequest) (response *DeleteListenerResponse, err error) {
     if request == nil {
@@ -1552,8 +1590,7 @@ func NewDescribeEndpointGroupsResponse() (response *DescribeEndpointGroupsRespon
 // 查询终端节点组。
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETER_INPUTOUTOFRANGE = "InvalidParameter.InputOutOfRange"
-//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeEndpointGroups(request *DescribeEndpointGroupsRequest) (response *DescribeEndpointGroupsResponse, err error) {
     return c.DescribeEndpointGroupsWithContext(context.Background(), request)
 }
@@ -1562,8 +1599,7 @@ func (c *Client) DescribeEndpointGroups(request *DescribeEndpointGroupsRequest) 
 // 查询终端节点组。
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETER_INPUTOUTOFRANGE = "InvalidParameter.InputOutOfRange"
-//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeEndpointGroupsWithContext(ctx context.Context, request *DescribeEndpointGroupsRequest) (response *DescribeEndpointGroupsResponse, err error) {
     if request == nil {
         request = NewDescribeEndpointGroupsRequest()
@@ -1604,8 +1640,7 @@ func NewDescribeForwardingPolicyResponse() (response *DescribeForwardingPolicyRe
 // 查看七层转发策略
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETER_INPUTOUTOFRANGE = "InvalidParameter.InputOutOfRange"
-//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeForwardingPolicy(request *DescribeForwardingPolicyRequest) (response *DescribeForwardingPolicyResponse, err error) {
     return c.DescribeForwardingPolicyWithContext(context.Background(), request)
 }
@@ -1614,8 +1649,7 @@ func (c *Client) DescribeForwardingPolicy(request *DescribeForwardingPolicyReque
 // 查看七层转发策略
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETER_INPUTOUTOFRANGE = "InvalidParameter.InputOutOfRange"
-//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeForwardingPolicyWithContext(ctx context.Context, request *DescribeForwardingPolicyRequest) (response *DescribeForwardingPolicyResponse, err error) {
     if request == nil {
         request = NewDescribeForwardingPolicyRequest()
@@ -1656,8 +1690,7 @@ func NewDescribeForwardingRuleResponse() (response *DescribeForwardingRuleRespon
 // 查看七层转发规则
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETER_INPUTOUTOFRANGE = "InvalidParameter.InputOutOfRange"
-//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeForwardingRule(request *DescribeForwardingRuleRequest) (response *DescribeForwardingRuleResponse, err error) {
     return c.DescribeForwardingRuleWithContext(context.Background(), request)
 }
@@ -1666,8 +1699,7 @@ func (c *Client) DescribeForwardingRule(request *DescribeForwardingRuleRequest) 
 // 查看七层转发规则
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETER_INPUTOUTOFRANGE = "InvalidParameter.InputOutOfRange"
-//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeForwardingRuleWithContext(ctx context.Context, request *DescribeForwardingRuleRequest) (response *DescribeForwardingRuleResponse, err error) {
     if request == nil {
         request = NewDescribeForwardingRuleRequest()
@@ -1708,7 +1740,7 @@ func NewDescribeGlobalAcceleratorAccessLogResponse() (response *DescribeGlobalAc
 // 查询日志任务
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeGlobalAcceleratorAccessLog(request *DescribeGlobalAcceleratorAccessLogRequest) (response *DescribeGlobalAcceleratorAccessLogResponse, err error) {
     return c.DescribeGlobalAcceleratorAccessLogWithContext(context.Background(), request)
 }
@@ -1717,7 +1749,7 @@ func (c *Client) DescribeGlobalAcceleratorAccessLog(request *DescribeGlobalAccel
 // 查询日志任务
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeGlobalAcceleratorAccessLogWithContext(ctx context.Context, request *DescribeGlobalAcceleratorAccessLogRequest) (response *DescribeGlobalAcceleratorAccessLogResponse, err error) {
     if request == nil {
         request = NewDescribeGlobalAcceleratorAccessLogRequest()
@@ -1758,7 +1790,7 @@ func NewDescribeGlobalAcceleratorAclPoliciesResponse() (response *DescribeGlobal
 // 查看访问控制策略
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeGlobalAcceleratorAclPolicies(request *DescribeGlobalAcceleratorAclPoliciesRequest) (response *DescribeGlobalAcceleratorAclPoliciesResponse, err error) {
     return c.DescribeGlobalAcceleratorAclPoliciesWithContext(context.Background(), request)
 }
@@ -1767,7 +1799,7 @@ func (c *Client) DescribeGlobalAcceleratorAclPolicies(request *DescribeGlobalAcc
 // 查看访问控制策略
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeGlobalAcceleratorAclPoliciesWithContext(ctx context.Context, request *DescribeGlobalAcceleratorAclPoliciesRequest) (response *DescribeGlobalAcceleratorAclPoliciesResponse, err error) {
     if request == nil {
         request = NewDescribeGlobalAcceleratorAclPoliciesRequest()
@@ -1808,7 +1840,7 @@ func NewDescribeGlobalAcceleratorAclRulesResponse() (response *DescribeGlobalAcc
 // 查看ACL规则
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeGlobalAcceleratorAclRules(request *DescribeGlobalAcceleratorAclRulesRequest) (response *DescribeGlobalAcceleratorAclRulesResponse, err error) {
     return c.DescribeGlobalAcceleratorAclRulesWithContext(context.Background(), request)
 }
@@ -1817,7 +1849,7 @@ func (c *Client) DescribeGlobalAcceleratorAclRules(request *DescribeGlobalAccele
 // 查看ACL规则
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeGlobalAcceleratorAclRulesWithContext(ctx context.Context, request *DescribeGlobalAcceleratorAclRulesRequest) (response *DescribeGlobalAcceleratorAclRulesResponse, err error) {
     if request == nil {
         request = NewDescribeGlobalAcceleratorAclRulesRequest()
@@ -1858,7 +1890,7 @@ func NewDescribeGlobalAcceleratorsResponse() (response *DescribeGlobalAccelerato
 // 修改全球加速实例
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEOFFSET = "InvalidParameterValue.InvalidParameterValueOffset"
 func (c *Client) DescribeGlobalAccelerators(request *DescribeGlobalAcceleratorsRequest) (response *DescribeGlobalAcceleratorsResponse, err error) {
     return c.DescribeGlobalAcceleratorsWithContext(context.Background(), request)
 }
@@ -1867,7 +1899,7 @@ func (c *Client) DescribeGlobalAccelerators(request *DescribeGlobalAcceleratorsR
 // 修改全球加速实例
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEOFFSET = "InvalidParameterValue.InvalidParameterValueOffset"
 func (c *Client) DescribeGlobalAcceleratorsWithContext(ctx context.Context, request *DescribeGlobalAcceleratorsRequest) (response *DescribeGlobalAcceleratorsResponse, err error) {
     if request == nil {
         request = NewDescribeGlobalAcceleratorsRequest()
@@ -1908,7 +1940,7 @@ func NewDescribeListenersResponse() (response *DescribeListenersResponse) {
 // 查询监听器
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeListeners(request *DescribeListenersRequest) (response *DescribeListenersResponse, err error) {
     return c.DescribeListenersWithContext(context.Background(), request)
 }
@@ -1917,7 +1949,7 @@ func (c *Client) DescribeListeners(request *DescribeListenersRequest) (response 
 // 查询监听器
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeListenersWithContext(ctx context.Context, request *DescribeListenersRequest) (response *DescribeListenersResponse, err error) {
     if request == nil {
         request = NewDescribeListenersRequest()
@@ -2008,10 +2040,14 @@ func NewModifyAccelerateAreasResponse() (response *ModifyAccelerateAreasResponse
 // 修改加速地域
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_EDGEBANDWIDTHEXCEEDCOREBANDWIDTH = "InvalidParameter.EdgeBandwidthExceedCoreBandwidth"
 //  INVALIDPARAMETER_INPUTDUPLICATEWITHEXISTINGDATA = "InvalidParameter.InputDuplicateWithExistingData"
+//  INVALIDPARAMETER_INPUTMUSTEXISTONE = "InvalidParameter.InputMustExistOne"
+//  INVALIDPARAMETER_INPUTOUTOFRANGE = "InvalidParameter.InputOutOfRange"
 //  INVALIDPARAMETER_INPUTREPEAT = "InvalidParameter.InputRepeat"
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 //  UNSUPPORTEDOPERATION_INSTANCESTATENOTALLOWEDOPERATE = "UnsupportedOperation.InstanceStateNotAllowedOperate"
+//  UNSUPPORTEDOPERATION_UNABLEMODIFYTHIRDPARTYNODESBANDWIDTH = "UnsupportedOperation.UnableModifyThirdPartyNodesBandwidth"
 func (c *Client) ModifyAccelerateAreas(request *ModifyAccelerateAreasRequest) (response *ModifyAccelerateAreasResponse, err error) {
     return c.ModifyAccelerateAreasWithContext(context.Background(), request)
 }
@@ -2020,10 +2056,14 @@ func (c *Client) ModifyAccelerateAreas(request *ModifyAccelerateAreasRequest) (r
 // 修改加速地域
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_EDGEBANDWIDTHEXCEEDCOREBANDWIDTH = "InvalidParameter.EdgeBandwidthExceedCoreBandwidth"
 //  INVALIDPARAMETER_INPUTDUPLICATEWITHEXISTINGDATA = "InvalidParameter.InputDuplicateWithExistingData"
+//  INVALIDPARAMETER_INPUTMUSTEXISTONE = "InvalidParameter.InputMustExistOne"
+//  INVALIDPARAMETER_INPUTOUTOFRANGE = "InvalidParameter.InputOutOfRange"
 //  INVALIDPARAMETER_INPUTREPEAT = "InvalidParameter.InputRepeat"
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 //  UNSUPPORTEDOPERATION_INSTANCESTATENOTALLOWEDOPERATE = "UnsupportedOperation.InstanceStateNotAllowedOperate"
+//  UNSUPPORTEDOPERATION_UNABLEMODIFYTHIRDPARTYNODESBANDWIDTH = "UnsupportedOperation.UnableModifyThirdPartyNodesBandwidth"
 func (c *Client) ModifyAccelerateAreasWithContext(ctx context.Context, request *ModifyAccelerateAreasRequest) (response *ModifyAccelerateAreasResponse, err error) {
     if request == nil {
         request = NewModifyAccelerateAreasRequest()
@@ -2120,6 +2160,7 @@ func NewModifyEndpointGroupResponse() (response *ModifyEndpointGroupResponse) {
 // 修改终端节点组。
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_DISABLEHEALTHCHECKNOTCARRYPARAMETERS = "InvalidParameter.DisableHealthCheckNotCarryParameters"
 //  INVALIDPARAMETER_ENDPOINTGROUPCHECKTYPEHTTPCARRYPARAMETERS = "InvalidParameter.EndpointGroupCheckTypeHttpCarryParameters"
 //  INVALIDPARAMETER_HTTPSORIGINSERVERPROTOCOLSUPPORTSPARAMETERS = "InvalidParameter.HttpsOriginServerProtocolSupportsParameters"
 //  INVALIDPARAMETER_INPUTMUSTEXISTONE = "InvalidParameter.InputMustExistOne"
@@ -2127,17 +2168,28 @@ func NewModifyEndpointGroupResponse() (response *ModifyEndpointGroupResponse) {
 //  INVALIDPARAMETER_INPUTREPEAT = "InvalidParameter.InputRepeat"
 //  INVALIDPARAMETER_ONLYENDPOINTGROUPCHECKTYPEHTTPCARRYPARAMETERS = "InvalidParameter.OnlyEndpointGroupCheckTypeHttpCarryParameters"
 //  INVALIDPARAMETER_TRANSPORTLAYERENDPOINTGROUPCANNOTCARRYPARAMETERS = "InvalidParameter.TransportLayerEndpointGroupCannotCarryParameters"
+//  INVALIDPARAMETERVALUE_EMPTY = "InvalidParameterValue.Empty"
 //  INVALIDPARAMETERVALUE_INSTANCEMISMATCH = "InvalidParameterValue.InstanceMismatch"
+//  INVALIDPARAMETERVALUE_INSTANCENAME = "InvalidParameterValue.InstanceName"
+//  INVALIDPARAMETERVALUE_LENGTHRANGE = "InvalidParameterValue.LengthRange"
 //  INVALIDPARAMETERVALUE_LISTENERPORTNOTEQUAL = "InvalidParameterValue.ListenerPortNotEqual"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_NOTMAPPINGMANYPORT = "InvalidParameterValue.NotMappingManyPort"
+//  INVALIDPARAMETERVALUE_NOTTENCENTREGION = "InvalidParameterValue.NotTencentRegion"
 //  INVALIDPARAMETERVALUE_NOTWITHINPUBLICNETWORK = "InvalidParameterValue.NotWithinPublicNetwork"
-//  INVALIDPARAMETERVALUE_SPECIFICCHARACTERS = "InvalidParameterValue.SpecificCharacters"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  INVALIDPARAMETERVALUE_WRONGATTRIBUTIONRELATIONSHIP = "InvalidParameterValue.WrongAttributionRelationship"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER_CUSTOMCHECKTYPEPARAMETER = "MissingParameter.CustomCheckTypeParameter"
-//  UNSUPPORTEDOPERATION_DEFAULTENDPOINTGROUPMODIFY = "UnsupportedOperation.DefaultEndpointGroupModify"
+//  MISSINGPARAMETER_ENABLEHEALTHCHECKPARAMETER = "MissingParameter.EnableHealthCheckParameter"
+//  MISSINGPARAMETER_INTERNALNETWORKSOURCE = "MissingParameter.InternalNetworkSource"
+//  UNSUPPORTEDOPERATION_CURRENTACCOUNTNOTALLOWED = "UnsupportedOperation.CurrentAccountNotAllowed"
 //  UNSUPPORTEDOPERATION_HTTPVERSIONINCONSISTENT = "UnsupportedOperation.HttpVersionInconsistent"
 //  UNSUPPORTEDOPERATION_INSTANCENOTRUNNING = "UnsupportedOperation.InstanceNotRunning"
 //  UNSUPPORTEDOPERATION_INTERNALENDPOINTFEATURENOTENABLED = "UnsupportedOperation.InternalEndpointFeatureNotEnabled"
 //  UNSUPPORTEDOPERATION_IPV6NOTSUPPORT = "UnsupportedOperation.Ipv6NotSupport"
+//  UNSUPPORTEDOPERATION_ONLYINTERNALCLB = "UnsupportedOperation.OnlyInternalClb"
 //  UNSUPPORTEDOPERATION_SAMEDOMAIN = "UnsupportedOperation.SameDomain"
 //  UNSUPPORTEDOPERATION_SAMEPUBLICIP = "UnsupportedOperation.SamePublicIp"
 func (c *Client) ModifyEndpointGroup(request *ModifyEndpointGroupRequest) (response *ModifyEndpointGroupResponse, err error) {
@@ -2148,6 +2200,7 @@ func (c *Client) ModifyEndpointGroup(request *ModifyEndpointGroupRequest) (respo
 // 修改终端节点组。
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_DISABLEHEALTHCHECKNOTCARRYPARAMETERS = "InvalidParameter.DisableHealthCheckNotCarryParameters"
 //  INVALIDPARAMETER_ENDPOINTGROUPCHECKTYPEHTTPCARRYPARAMETERS = "InvalidParameter.EndpointGroupCheckTypeHttpCarryParameters"
 //  INVALIDPARAMETER_HTTPSORIGINSERVERPROTOCOLSUPPORTSPARAMETERS = "InvalidParameter.HttpsOriginServerProtocolSupportsParameters"
 //  INVALIDPARAMETER_INPUTMUSTEXISTONE = "InvalidParameter.InputMustExistOne"
@@ -2155,17 +2208,28 @@ func (c *Client) ModifyEndpointGroup(request *ModifyEndpointGroupRequest) (respo
 //  INVALIDPARAMETER_INPUTREPEAT = "InvalidParameter.InputRepeat"
 //  INVALIDPARAMETER_ONLYENDPOINTGROUPCHECKTYPEHTTPCARRYPARAMETERS = "InvalidParameter.OnlyEndpointGroupCheckTypeHttpCarryParameters"
 //  INVALIDPARAMETER_TRANSPORTLAYERENDPOINTGROUPCANNOTCARRYPARAMETERS = "InvalidParameter.TransportLayerEndpointGroupCannotCarryParameters"
+//  INVALIDPARAMETERVALUE_EMPTY = "InvalidParameterValue.Empty"
 //  INVALIDPARAMETERVALUE_INSTANCEMISMATCH = "InvalidParameterValue.InstanceMismatch"
+//  INVALIDPARAMETERVALUE_INSTANCENAME = "InvalidParameterValue.InstanceName"
+//  INVALIDPARAMETERVALUE_LENGTHRANGE = "InvalidParameterValue.LengthRange"
 //  INVALIDPARAMETERVALUE_LISTENERPORTNOTEQUAL = "InvalidParameterValue.ListenerPortNotEqual"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_NOTMAPPINGMANYPORT = "InvalidParameterValue.NotMappingManyPort"
+//  INVALIDPARAMETERVALUE_NOTTENCENTREGION = "InvalidParameterValue.NotTencentRegion"
 //  INVALIDPARAMETERVALUE_NOTWITHINPUBLICNETWORK = "InvalidParameterValue.NotWithinPublicNetwork"
-//  INVALIDPARAMETERVALUE_SPECIFICCHARACTERS = "InvalidParameterValue.SpecificCharacters"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  INVALIDPARAMETERVALUE_WRONGATTRIBUTIONRELATIONSHIP = "InvalidParameterValue.WrongAttributionRelationship"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER_CUSTOMCHECKTYPEPARAMETER = "MissingParameter.CustomCheckTypeParameter"
-//  UNSUPPORTEDOPERATION_DEFAULTENDPOINTGROUPMODIFY = "UnsupportedOperation.DefaultEndpointGroupModify"
+//  MISSINGPARAMETER_ENABLEHEALTHCHECKPARAMETER = "MissingParameter.EnableHealthCheckParameter"
+//  MISSINGPARAMETER_INTERNALNETWORKSOURCE = "MissingParameter.InternalNetworkSource"
+//  UNSUPPORTEDOPERATION_CURRENTACCOUNTNOTALLOWED = "UnsupportedOperation.CurrentAccountNotAllowed"
 //  UNSUPPORTEDOPERATION_HTTPVERSIONINCONSISTENT = "UnsupportedOperation.HttpVersionInconsistent"
 //  UNSUPPORTEDOPERATION_INSTANCENOTRUNNING = "UnsupportedOperation.InstanceNotRunning"
 //  UNSUPPORTEDOPERATION_INTERNALENDPOINTFEATURENOTENABLED = "UnsupportedOperation.InternalEndpointFeatureNotEnabled"
 //  UNSUPPORTEDOPERATION_IPV6NOTSUPPORT = "UnsupportedOperation.Ipv6NotSupport"
+//  UNSUPPORTEDOPERATION_ONLYINTERNALCLB = "UnsupportedOperation.OnlyInternalClb"
 //  UNSUPPORTEDOPERATION_SAMEDOMAIN = "UnsupportedOperation.SameDomain"
 //  UNSUPPORTEDOPERATION_SAMEPUBLICIP = "UnsupportedOperation.SamePublicIp"
 func (c *Client) ModifyEndpointGroupWithContext(ctx context.Context, request *ModifyEndpointGroupRequest) (response *ModifyEndpointGroupResponse, err error) {
@@ -2208,7 +2272,9 @@ func NewModifyForwardingPolicyResponse() (response *ModifyForwardingPolicyRespon
 // 修改七层转发策略
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_EMPTY = "InvalidParameterValue.Empty"
 //  INVALIDPARAMETERVALUE_INSTANCEMISMATCH = "InvalidParameterValue.InstanceMismatch"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION_DEFAULTFORWARDINGPOLICYOPERATE = "UnsupportedOperation.DefaultForwardingPolicyOperate"
 //  UNSUPPORTEDOPERATION_INSTANCENOTRUNNING = "UnsupportedOperation.InstanceNotRunning"
@@ -2221,7 +2287,9 @@ func (c *Client) ModifyForwardingPolicy(request *ModifyForwardingPolicyRequest) 
 // 修改七层转发策略
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_EMPTY = "InvalidParameterValue.Empty"
 //  INVALIDPARAMETERVALUE_INSTANCEMISMATCH = "InvalidParameterValue.InstanceMismatch"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION_DEFAULTFORWARDINGPOLICYOPERATE = "UnsupportedOperation.DefaultForwardingPolicyOperate"
 //  UNSUPPORTEDOPERATION_INSTANCENOTRUNNING = "UnsupportedOperation.InstanceNotRunning"
@@ -2266,14 +2334,18 @@ func NewModifyForwardingRuleResponse() (response *ModifyForwardingRuleResponse) 
 // 修改七层转发规则
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_INPUTREPEAT = "InvalidParameter.InputRepeat"
 //  INVALIDPARAMETERVALUE_ASCIICHARACTERS = "InvalidParameterValue.AsciiCharacters"
+//  INVALIDPARAMETERVALUE_EMPTY = "InvalidParameterValue.Empty"
 //  INVALIDPARAMETERVALUE_FORWARDINGRULEPATHCONFLICT = "InvalidParameterValue.ForwardingRulePathConflict"
 //  INVALIDPARAMETERVALUE_INSTANCEMISMATCH = "InvalidParameterValue.InstanceMismatch"
+//  INVALIDPARAMETERVALUE_INTERNALRESERVEDFIELDS = "InvalidParameterValue.InternalReservedFields"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  INVALIDPARAMETERVALUE_SPECIALCHARACTERS = "InvalidParameterValue.SpecialCharacters"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNSUPPORTEDOPERATION_DEFAULTFORWARDINGPOLICYOPERATE = "UnsupportedOperation.DefaultForwardingPolicyOperate"
 //  UNSUPPORTEDOPERATION_DEFAULTFORWARDINGRULEOPERATE = "UnsupportedOperation.DefaultForwardingRuleOperate"
 //  UNSUPPORTEDOPERATION_FORWARDGROUPFORWARDINGRULEUNSUPPORTEDDEFAULTENDPOINTGROUP = "UnsupportedOperation.ForwardGroupForwardingRuleUnsupportedDefaultEndpointGroup"
 //  UNSUPPORTEDOPERATION_INSTANCENOTRUNNING = "UnsupportedOperation.InstanceNotRunning"
@@ -2286,14 +2358,18 @@ func (c *Client) ModifyForwardingRule(request *ModifyForwardingRuleRequest) (res
 // 修改七层转发规则
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_INPUTREPEAT = "InvalidParameter.InputRepeat"
 //  INVALIDPARAMETERVALUE_ASCIICHARACTERS = "InvalidParameterValue.AsciiCharacters"
+//  INVALIDPARAMETERVALUE_EMPTY = "InvalidParameterValue.Empty"
 //  INVALIDPARAMETERVALUE_FORWARDINGRULEPATHCONFLICT = "InvalidParameterValue.ForwardingRulePathConflict"
 //  INVALIDPARAMETERVALUE_INSTANCEMISMATCH = "InvalidParameterValue.InstanceMismatch"
+//  INVALIDPARAMETERVALUE_INTERNALRESERVEDFIELDS = "InvalidParameterValue.InternalReservedFields"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  INVALIDPARAMETERVALUE_SPECIALCHARACTERS = "InvalidParameterValue.SpecialCharacters"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNSUPPORTEDOPERATION_DEFAULTFORWARDINGPOLICYOPERATE = "UnsupportedOperation.DefaultForwardingPolicyOperate"
 //  UNSUPPORTEDOPERATION_DEFAULTFORWARDINGRULEOPERATE = "UnsupportedOperation.DefaultForwardingRuleOperate"
 //  UNSUPPORTEDOPERATION_FORWARDGROUPFORWARDINGRULEUNSUPPORTEDDEFAULTENDPOINTGROUP = "UnsupportedOperation.ForwardGroupForwardingRuleUnsupportedDefaultEndpointGroup"
 //  UNSUPPORTEDOPERATION_INSTANCENOTRUNNING = "UnsupportedOperation.InstanceNotRunning"
@@ -2339,10 +2415,16 @@ func NewModifyGlobalAcceleratorResponse() (response *ModifyGlobalAcceleratorResp
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_INPUTMUSTEXISTONE = "InvalidParameter.InputMustExistOne"
+//  INVALIDPARAMETERVALUE_INSTANCENAME = "InvalidParameterValue.InstanceName"
+//  INVALIDPARAMETERVALUE_LENGTHRANGE = "InvalidParameterValue.LengthRange"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  MISSINGPARAMETER = "MissingParameter"
 //  UNSUPPORTEDOPERATION_ALREADYENABLECROSSBORDER = "UnsupportedOperation.AlreadyEnableCrossBorder"
 //  UNSUPPORTEDOPERATION_CROSSBORDERPROMISENOTSIGNED = "UnsupportedOperation.CrossBorderPromiseNotSigned"
+//  UNSUPPORTEDOPERATION_CURRENTACCOUNTNOTALLOWED = "UnsupportedOperation.CurrentAccountNotAllowed"
 //  UNSUPPORTEDOPERATION_ENABLECROSSBORDER = "UnsupportedOperation.EnableCrossBorder"
 //  UNSUPPORTEDOPERATION_INSTANCESTATENOTALLOWEDOPERATE = "UnsupportedOperation.InstanceStateNotAllowedOperate"
+//  UNSUPPORTEDOPERATION_UNABLECROSSBORDER = "UnsupportedOperation.UnableCrossBorder"
 func (c *Client) ModifyGlobalAccelerator(request *ModifyGlobalAcceleratorRequest) (response *ModifyGlobalAcceleratorResponse, err error) {
     return c.ModifyGlobalAcceleratorWithContext(context.Background(), request)
 }
@@ -2352,10 +2434,16 @@ func (c *Client) ModifyGlobalAccelerator(request *ModifyGlobalAcceleratorRequest
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_INPUTMUSTEXISTONE = "InvalidParameter.InputMustExistOne"
+//  INVALIDPARAMETERVALUE_INSTANCENAME = "InvalidParameterValue.InstanceName"
+//  INVALIDPARAMETERVALUE_LENGTHRANGE = "InvalidParameterValue.LengthRange"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  MISSINGPARAMETER = "MissingParameter"
 //  UNSUPPORTEDOPERATION_ALREADYENABLECROSSBORDER = "UnsupportedOperation.AlreadyEnableCrossBorder"
 //  UNSUPPORTEDOPERATION_CROSSBORDERPROMISENOTSIGNED = "UnsupportedOperation.CrossBorderPromiseNotSigned"
+//  UNSUPPORTEDOPERATION_CURRENTACCOUNTNOTALLOWED = "UnsupportedOperation.CurrentAccountNotAllowed"
 //  UNSUPPORTEDOPERATION_ENABLECROSSBORDER = "UnsupportedOperation.EnableCrossBorder"
 //  UNSUPPORTEDOPERATION_INSTANCESTATENOTALLOWEDOPERATE = "UnsupportedOperation.InstanceStateNotAllowedOperate"
+//  UNSUPPORTEDOPERATION_UNABLECROSSBORDER = "UnsupportedOperation.UnableCrossBorder"
 func (c *Client) ModifyGlobalAcceleratorWithContext(ctx context.Context, request *ModifyGlobalAcceleratorRequest) (response *ModifyGlobalAcceleratorResponse, err error) {
     if request == nil {
         request = NewModifyGlobalAcceleratorRequest()
@@ -2458,6 +2546,7 @@ func NewModifyGlobalAcceleratorAclPolicyResponse() (response *ModifyGlobalAccele
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_INSTANCEMISMATCH = "InvalidParameterValue.InstanceMismatch"
 //  UNSUPPORTEDOPERATION_DUPLICATEINSTANCESTATUS = "UnsupportedOperation.DuplicateInstanceStatus"
+//  UNSUPPORTEDOPERATION_EXISTTHIRDPARTYNODES = "UnsupportedOperation.ExistThirdPartyNodes"
 //  UNSUPPORTEDOPERATION_INSTANCESTATENOTALLOWEDOPERATE = "UnsupportedOperation.InstanceStateNotAllowedOperate"
 func (c *Client) ModifyGlobalAcceleratorAclPolicy(request *ModifyGlobalAcceleratorAclPolicyRequest) (response *ModifyGlobalAcceleratorAclPolicyResponse, err error) {
     return c.ModifyGlobalAcceleratorAclPolicyWithContext(context.Background(), request)
@@ -2469,6 +2558,7 @@ func (c *Client) ModifyGlobalAcceleratorAclPolicy(request *ModifyGlobalAccelerat
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_INSTANCEMISMATCH = "InvalidParameterValue.InstanceMismatch"
 //  UNSUPPORTEDOPERATION_DUPLICATEINSTANCESTATUS = "UnsupportedOperation.DuplicateInstanceStatus"
+//  UNSUPPORTEDOPERATION_EXISTTHIRDPARTYNODES = "UnsupportedOperation.ExistThirdPartyNodes"
 //  UNSUPPORTEDOPERATION_INSTANCESTATENOTALLOWEDOPERATE = "UnsupportedOperation.InstanceStateNotAllowedOperate"
 func (c *Client) ModifyGlobalAcceleratorAclPolicyWithContext(ctx context.Context, request *ModifyGlobalAcceleratorAclPolicyRequest) (response *ModifyGlobalAcceleratorAclPolicyResponse, err error) {
     if request == nil {
@@ -2512,9 +2602,11 @@ func NewModifyGlobalAcceleratorAclRuleResponse() (response *ModifyGlobalAccelera
 // 可能返回的错误码:
 //  INVALIDPARAMETER_INPUTDUPLICATEWITHEXISTINGDATA = "InvalidParameter.InputDuplicateWithExistingData"
 //  INVALIDPARAMETER_INPUTMUSTEXISTONE = "InvalidParameter.InputMustExistOne"
+//  INVALIDPARAMETER_INPUTOUTOFRANGE = "InvalidParameter.InputOutOfRange"
 //  INVALIDPARAMETERVALUE_INSTANCEMISMATCH = "InvalidParameterValue.InstanceMismatch"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  UNSUPPORTEDOPERATION_INSTANCESTATENOTALLOWEDOPERATE = "UnsupportedOperation.InstanceStateNotAllowedOperate"
-//  UNSUPPORTEDOPERATION_REQUESTPARAMETERSERROR = "UnsupportedOperation.RequestParametersError"
 func (c *Client) ModifyGlobalAcceleratorAclRule(request *ModifyGlobalAcceleratorAclRuleRequest) (response *ModifyGlobalAcceleratorAclRuleResponse, err error) {
     return c.ModifyGlobalAcceleratorAclRuleWithContext(context.Background(), request)
 }
@@ -2525,9 +2617,11 @@ func (c *Client) ModifyGlobalAcceleratorAclRule(request *ModifyGlobalAccelerator
 // 可能返回的错误码:
 //  INVALIDPARAMETER_INPUTDUPLICATEWITHEXISTINGDATA = "InvalidParameter.InputDuplicateWithExistingData"
 //  INVALIDPARAMETER_INPUTMUSTEXISTONE = "InvalidParameter.InputMustExistOne"
+//  INVALIDPARAMETER_INPUTOUTOFRANGE = "InvalidParameter.InputOutOfRange"
 //  INVALIDPARAMETERVALUE_INSTANCEMISMATCH = "InvalidParameterValue.InstanceMismatch"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  UNSUPPORTEDOPERATION_INSTANCESTATENOTALLOWEDOPERATE = "UnsupportedOperation.InstanceStateNotAllowedOperate"
-//  UNSUPPORTEDOPERATION_REQUESTPARAMETERSERROR = "UnsupportedOperation.RequestParametersError"
 func (c *Client) ModifyGlobalAcceleratorAclRuleWithContext(ctx context.Context, request *ModifyGlobalAcceleratorAclRuleRequest) (response *ModifyGlobalAcceleratorAclRuleResponse, err error) {
     if request == nil {
         request = NewModifyGlobalAcceleratorAclRuleRequest()
@@ -2569,17 +2663,26 @@ func NewModifyListenerResponse() (response *ModifyListenerResponse) {
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_APPLICATIONLAYERLISTENERCANNOTCARRYPARAMETERS = "InvalidParameter.ApplicationLayerListenerCannotCarryParameters"
-//  INVALIDPARAMETER_CLIENTAFFINITYCLOSE = "InvalidParameter.ClientAffinityCLose"
 //  INVALIDPARAMETER_HTTPLISTENERCANNOTCARRYPARAMETERS = "InvalidParameter.HttpListenerCannotCarryParameters"
+//  INVALIDPARAMETER_HTTPSLISTENERCANCARRYPARAMETERS = "InvalidParameter.HttpsListenerCanCarryParameters"
+//  INVALIDPARAMETER_INPUTMUSTEXISTONE = "InvalidParameter.InputMustExistOne"
+//  INVALIDPARAMETER_TCPLISTENERCARRYPARAMETERS = "InvalidParameter.TcpListenerCarryParameters"
 //  INVALIDPARAMETER_TRANSPORTLAYERLISTENERCANNOTCARRYPARAMETERS = "InvalidParameter.TransportLayerListenerCannotCarryParameters"
 //  INVALIDPARAMETERVALUE_INSTANCEMISMATCH = "InvalidParameterValue.InstanceMismatch"
+//  INVALIDPARAMETERVALUE_INSTANCENAME = "InvalidParameterValue.InstanceName"
+//  INVALIDPARAMETERVALUE_LENGTHRANGE = "InvalidParameterValue.LengthRange"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  MISSINGPARAMETER = "MissingParameter"
-//  UNSUPPORTEDOPERATION_DUPLICATEINSTANCESTATUS = "UnsupportedOperation.DuplicateInstanceStatus"
+//  UNSUPPORTEDOPERATION_CERTIFICATENOTCA = "UnsupportedOperation.CertificateNotCa"
+//  UNSUPPORTEDOPERATION_CURRENTACCOUNTNOTALLOWED = "UnsupportedOperation.CurrentAccountNotAllowed"
 //  UNSUPPORTEDOPERATION_HTTPVERSIONINCONSISTENT = "UnsupportedOperation.HttpVersionInconsistent"
 //  UNSUPPORTEDOPERATION_INSTANCENOTRUNNING = "UnsupportedOperation.InstanceNotRunning"
 //  UNSUPPORTEDOPERATION_ONLYTCPLISTENERSUPPORTTOA = "UnsupportedOperation.OnlyTcpListenerSupportToa"
 //  UNSUPPORTEDOPERATION_TOAFEATURENOTENABLED = "UnsupportedOperation.TOAFeatureNotEnabled"
+//  UNSUPPORTEDOPERATION_UDPLISTENERNOTSUPPORTPROXYPROTOCOL = "UnsupportedOperation.UdpListenerNotSupportProxyProtocol"
+//  UNSUPPORTEDOPERATION_UNLAWFULCERTIFICATE = "UnsupportedOperation.UnlawfulCertificate"
 func (c *Client) ModifyListener(request *ModifyListenerRequest) (response *ModifyListenerResponse, err error) {
     return c.ModifyListenerWithContext(context.Background(), request)
 }
@@ -2589,17 +2692,26 @@ func (c *Client) ModifyListener(request *ModifyListenerRequest) (response *Modif
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_APPLICATIONLAYERLISTENERCANNOTCARRYPARAMETERS = "InvalidParameter.ApplicationLayerListenerCannotCarryParameters"
-//  INVALIDPARAMETER_CLIENTAFFINITYCLOSE = "InvalidParameter.ClientAffinityCLose"
 //  INVALIDPARAMETER_HTTPLISTENERCANNOTCARRYPARAMETERS = "InvalidParameter.HttpListenerCannotCarryParameters"
+//  INVALIDPARAMETER_HTTPSLISTENERCANCARRYPARAMETERS = "InvalidParameter.HttpsListenerCanCarryParameters"
+//  INVALIDPARAMETER_INPUTMUSTEXISTONE = "InvalidParameter.InputMustExistOne"
+//  INVALIDPARAMETER_TCPLISTENERCARRYPARAMETERS = "InvalidParameter.TcpListenerCarryParameters"
 //  INVALIDPARAMETER_TRANSPORTLAYERLISTENERCANNOTCARRYPARAMETERS = "InvalidParameter.TransportLayerListenerCannotCarryParameters"
 //  INVALIDPARAMETERVALUE_INSTANCEMISMATCH = "InvalidParameterValue.InstanceMismatch"
+//  INVALIDPARAMETERVALUE_INSTANCENAME = "InvalidParameterValue.InstanceName"
+//  INVALIDPARAMETERVALUE_LENGTHRANGE = "InvalidParameterValue.LengthRange"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  MISSINGPARAMETER = "MissingParameter"
-//  UNSUPPORTEDOPERATION_DUPLICATEINSTANCESTATUS = "UnsupportedOperation.DuplicateInstanceStatus"
+//  UNSUPPORTEDOPERATION_CERTIFICATENOTCA = "UnsupportedOperation.CertificateNotCa"
+//  UNSUPPORTEDOPERATION_CURRENTACCOUNTNOTALLOWED = "UnsupportedOperation.CurrentAccountNotAllowed"
 //  UNSUPPORTEDOPERATION_HTTPVERSIONINCONSISTENT = "UnsupportedOperation.HttpVersionInconsistent"
 //  UNSUPPORTEDOPERATION_INSTANCENOTRUNNING = "UnsupportedOperation.InstanceNotRunning"
 //  UNSUPPORTEDOPERATION_ONLYTCPLISTENERSUPPORTTOA = "UnsupportedOperation.OnlyTcpListenerSupportToa"
 //  UNSUPPORTEDOPERATION_TOAFEATURENOTENABLED = "UnsupportedOperation.TOAFeatureNotEnabled"
+//  UNSUPPORTEDOPERATION_UDPLISTENERNOTSUPPORTPROXYPROTOCOL = "UnsupportedOperation.UdpListenerNotSupportProxyProtocol"
+//  UNSUPPORTEDOPERATION_UNLAWFULCERTIFICATE = "UnsupportedOperation.UnlawfulCertificate"
 func (c *Client) ModifyListenerWithContext(ctx context.Context, request *ModifyListenerRequest) (response *ModifyListenerResponse, err error) {
     if request == nil {
         request = NewModifyListenerRequest()
@@ -2642,7 +2754,6 @@ func NewReplaceListenerAdditionalCertResponse() (response *ReplaceListenerAdditi
 // 可能返回的错误码:
 //  INVALIDPARAMETER_INPUTREPEAT = "InvalidParameter.InputRepeat"
 //  INVALIDPARAMETERVALUE_CERTIFICATESCONFLICT = "InvalidParameterValue.CertificatesConflict"
-//  UNSUPPORTEDOPERATION_CERTIFICATEINVALIDSTATUS = "UnsupportedOperation.CertificateInvalidStatus"
 //  UNSUPPORTEDOPERATION_DOMAINMISMATCHED = "UnsupportedOperation.DomainMismatched"
 //  UNSUPPORTEDOPERATION_INSTANCENOTRUNNING = "UnsupportedOperation.InstanceNotRunning"
 func (c *Client) ReplaceListenerAdditionalCert(request *ReplaceListenerAdditionalCertRequest) (response *ReplaceListenerAdditionalCertResponse, err error) {
@@ -2655,7 +2766,6 @@ func (c *Client) ReplaceListenerAdditionalCert(request *ReplaceListenerAdditiona
 // 可能返回的错误码:
 //  INVALIDPARAMETER_INPUTREPEAT = "InvalidParameter.InputRepeat"
 //  INVALIDPARAMETERVALUE_CERTIFICATESCONFLICT = "InvalidParameterValue.CertificatesConflict"
-//  UNSUPPORTEDOPERATION_CERTIFICATEINVALIDSTATUS = "UnsupportedOperation.CertificateInvalidStatus"
 //  UNSUPPORTEDOPERATION_DOMAINMISMATCHED = "UnsupportedOperation.DomainMismatched"
 //  UNSUPPORTEDOPERATION_INSTANCENOTRUNNING = "UnsupportedOperation.InstanceNotRunning"
 func (c *Client) ReplaceListenerAdditionalCertWithContext(ctx context.Context, request *ReplaceListenerAdditionalCertRequest) (response *ReplaceListenerAdditionalCertResponse, err error) {

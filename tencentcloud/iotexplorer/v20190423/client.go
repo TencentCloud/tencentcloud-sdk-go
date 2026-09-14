@@ -297,6 +297,70 @@ func (c *Client) BatchCreateTWeSeeSubscriptionWithContext(ctx context.Context, r
     return
 }
 
+func NewBatchDescribeTWeSeeOrdersRequest() (request *BatchDescribeTWeSeeOrdersRequest) {
+    request = &BatchDescribeTWeSeeOrdersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "BatchDescribeTWeSeeOrders")
+    
+    
+    return
+}
+
+func NewBatchDescribeTWeSeeOrdersResponse() (response *BatchDescribeTWeSeeOrdersResponse) {
+    response = &BatchDescribeTWeSeeOrdersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// BatchDescribeTWeSeeOrders
+// 批量查询 TWeSee 订单状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CUSTOMORDERIDNOTEXIST = "FailedOperation.CustomOrderIdNotExist"
+//  FAILEDOPERATION_ORDERIDNOTEXIST = "FailedOperation.OrderIdNotExist"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) BatchDescribeTWeSeeOrders(request *BatchDescribeTWeSeeOrdersRequest) (response *BatchDescribeTWeSeeOrdersResponse, err error) {
+    return c.BatchDescribeTWeSeeOrdersWithContext(context.Background(), request)
+}
+
+// BatchDescribeTWeSeeOrders
+// 批量查询 TWeSee 订单状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CUSTOMORDERIDNOTEXIST = "FailedOperation.CustomOrderIdNotExist"
+//  FAILEDOPERATION_ORDERIDNOTEXIST = "FailedOperation.OrderIdNotExist"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) BatchDescribeTWeSeeOrdersWithContext(ctx context.Context, request *BatchDescribeTWeSeeOrdersRequest) (response *BatchDescribeTWeSeeOrdersResponse, err error) {
+    if request == nil {
+        request = NewBatchDescribeTWeSeeOrdersRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "BatchDescribeTWeSeeOrders")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BatchDescribeTWeSeeOrders require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewBatchDescribeTWeSeeOrdersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewBatchInvokeTWeSeeRecognitionTaskRequest() (request *BatchInvokeTWeSeeRecognitionTaskRequest) {
     request = &BatchInvokeTWeSeeRecognitionTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -14295,6 +14359,62 @@ func (c *Client) ModifyTopicRuleWithContext(ctx context.Context, request *Modify
     request.SetContext(ctx)
     
     response = NewModifyTopicRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewOperateTWeSeeDirectUploadObjectRequest() (request *OperateTWeSeeDirectUploadObjectRequest) {
+    request = &OperateTWeSeeDirectUploadObjectRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "OperateTWeSeeDirectUploadObject")
+    
+    
+    return
+}
+
+func NewOperateTWeSeeDirectUploadObjectResponse() (response *OperateTWeSeeDirectUploadObjectResponse) {
+    response = &OperateTWeSeeDirectUploadObjectResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// OperateTWeSeeDirectUploadObject
+// 查询、删除或列举 TWeSee 直传对象
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) OperateTWeSeeDirectUploadObject(request *OperateTWeSeeDirectUploadObjectRequest) (response *OperateTWeSeeDirectUploadObjectResponse, err error) {
+    return c.OperateTWeSeeDirectUploadObjectWithContext(context.Background(), request)
+}
+
+// OperateTWeSeeDirectUploadObject
+// 查询、删除或列举 TWeSee 直传对象
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) OperateTWeSeeDirectUploadObjectWithContext(ctx context.Context, request *OperateTWeSeeDirectUploadObjectRequest) (response *OperateTWeSeeDirectUploadObjectResponse, err error) {
+    if request == nil {
+        request = NewOperateTWeSeeDirectUploadObjectRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "OperateTWeSeeDirectUploadObject")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("OperateTWeSeeDirectUploadObject require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewOperateTWeSeeDirectUploadObjectResponse()
     err = c.Send(request, response)
     return
 }

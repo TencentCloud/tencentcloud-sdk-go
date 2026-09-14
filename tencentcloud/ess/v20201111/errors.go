@@ -92,7 +92,7 @@ const (
 	// 模板无资源信息。
 	FAILEDOPERATION_TEMPLATEHASNORESOURCE = "FailedOperation.TemplateHasNoResource"
 
-	// 无法撤销，用户已开通自动签。
+	// 无法撤销，用户已开通“授权签”。
 	FAILEDOPERATION_USERAUTOSIGNENABLEALREADY = "FailedOperation.UserAutoSignEnableAlready"
 
 	// 无法撤销，用户未生成开通链接。
@@ -353,7 +353,7 @@ const (
 	// 参数错误。
 	INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 
-	// 个人静默签Tag未设置，请检查后重试。
+	// 个人“授权签”Tag未设置，请检查后重试。
 	INVALIDPARAMETER_PERSONAUTOSIGNTAG = "InvalidParameter.PersonAutoSignTag"
 
 	// 不合法的阅读时长限制，请联系客服了解阅读时长设置规则，修改后重试。
@@ -473,7 +473,7 @@ const (
 	// 缺少资源名称，请检查修改后重试。
 	MISSINGPARAMETER_RESOURCENAME = "MissingParameter.ResourceName"
 
-	// 缺少静默签印章id，请检查修改后重试。
+	// 缺少“授权签”印章id，请检查修改后重试。
 	MISSINGPARAMETER_SERVERSIGNSEALID = "MissingParameter.ServerSignSealId"
 
 	// 缺少签署控件参数。
@@ -566,13 +566,13 @@ const (
 	// 用户未登录,请先登录后再操作。
 	OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
 
-	// 未开通静默签功能，请联系签署方企业开通后重试。
+	// 未开通“授权签”功能，请联系签署方企业开通后重试。
 	OPERATIONDENIED_NOOPENSERVERSIGN = "OperationDenied.NoOpenServerSign"
 
 	// 无权限使用文件资源，请检查资源有效性以及资源归属，并在修改后重试。
 	OPERATIONDENIED_NOPERMISSIONUSERESOURCE = "OperationDenied.NoPermissionUseResource"
 
-	// 无权限使用印章做静默签，请检查印章是否有效，是否有使用权限，并在修改后重试。
+	// 无权限使用印章做“授权签”，请检查印章是否有效，是否有使用权限，并在修改后重试。
 	OPERATIONDENIED_NOPERMISSIONUSESERVERSIGNSEAL = "OperationDenied.NoPermissionUseServerSignSeal"
 
 	// 企业额度不足，请检查企业额度后处理。
@@ -620,10 +620,10 @@ const (
 	// 个人名下没用可使用的签名，请联系个人配置签名后重试。
 	OPERATIONDENIED_PERSONHASNOSIGNATURE = "OperationDenied.PersonHasNoSignature"
 
-	// 该用户已关闭或者未开启自动签服务，请检查后重试。
+	// 该用户已关闭或者未开启“授权签”服务，请检查后重试。
 	OPERATIONDENIED_PERSONNOOPENSERVERSIGN = "OperationDenied.PersonNoOpenServerSign"
 
-	// 拒绝个人静默签，请检查个人静默签签署人，并在修改后重试。
+	// 拒绝个人“授权签”，请检查个人“授权签”签署人，并在修改后重试。
 	OPERATIONDENIED_PERSONSERVERSIGNFORBID = "OperationDenied.PersonServerSignForbid"
 
 	// 出证计费额度不足
@@ -638,10 +638,10 @@ const (
 	// 必填控件未设置填写内容，将检查修改后重试。
 	OPERATIONDENIED_REQUIREDCOMPONENTNOTFILL = "OperationDenied.RequiredComponentNotFill"
 
-	// 静默签署方不允许有填写控件，请修改模板，修改参数后重试。
+	// “授权签”方不允许有填写控件，请修改模板，修改参数后重试。
 	OPERATIONDENIED_SERVERSIGNNOALLOWCOMPONENT = "OperationDenied.ServerSignNoAllowComponent"
 
-	// 静默签署不支持手写签名，请配置印章并使用印章重试。
+	// “授权签”不支持手写签名，请配置印章并使用印章重试。
 	OPERATIONDENIED_SERVERSIGNNOSUPPORTSIGNATURE = "OperationDenied.ServerSignNoSupportSignature"
 
 	// 子企业暂未加入。

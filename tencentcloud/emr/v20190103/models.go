@@ -8238,7 +8238,7 @@ type ExportConfMeta struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceVersion *string `json:"ServiceVersion,omitnil,omitempty" name:"ServiceVersion"`
 
-	// <p>导出配置参数</p>
+	// <p>导出配置参数 base64格式</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Properties *string `json:"Properties,omitnil,omitempty" name:"Properties"`
 }

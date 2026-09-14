@@ -26,11 +26,11 @@ const (
 	// 七层监听器不支持携带参数`%(value)s` 。
 	INVALIDPARAMETER_APPLICATIONLAYERLISTENERCANNOTCARRYPARAMETERS = "InvalidParameter.ApplicationLayerListenerCannotCarryParameters"
 
-	// 会话保持关闭，不支持携带此参数。
-	INVALIDPARAMETER_CLIENTAFFINITYCLOSE = "InvalidParameter.ClientAffinityCLose"
-
 	// 终端节点组配置为关闭健康检查，禁止携带参数 `%(parameter)s`。
 	INVALIDPARAMETER_DISABLEHEALTHCHECKNOTCARRYPARAMETERS = "InvalidParameter.DisableHealthCheckNotCarryParameters"
+
+	// 核心地域 `%(core_region)s` 下边缘带宽总和超出限制（已用=%(used_bandwidth)s + 新增=%(new_bandwidth)s > 核心带宽=%(core_bandwidth)s）。
+	INVALIDPARAMETER_EDGEBANDWIDTHEXCEEDCOREBANDWIDTH = "InvalidParameter.EdgeBandwidthExceedCoreBandwidth"
 
 	// 终端节点组配置为关闭健康检查，禁止携带参数 `%(parameter)s`。
 	INVALIDPARAMETER_ENABLEHEALTHCHECKNOTCARRYPARAMETERS = "InvalidParameter.EnableHealthCheckNotCarryParameters"
@@ -41,8 +41,8 @@ const (
 	// Http监听器不支持携带参数`%(value)s` 。
 	INVALIDPARAMETER_HTTPLISTENERCANNOTCARRYPARAMETERS = "InvalidParameter.HttpListenerCannotCarryParameters"
 
-	// Https监听器不支持携带参数`%(value)s` 。
-	INVALIDPARAMETER_HTTPSLISTENERCANNOTCARRYPARAMETERS = "InvalidParameter.HttpsListenerCannotCarryParameters"
+	// 仅Https监听器支持携带参数`%(value)s` 。
+	INVALIDPARAMETER_HTTPSLISTENERCANCARRYPARAMETERS = "InvalidParameter.HttpsListenerCanCarryParameters"
 
 	// 仅HTTPS回源协议支持携带参数`%(value)s`。
 	INVALIDPARAMETER_HTTPSORIGINSERVERPROTOCOLSUPPORTSPARAMETERS = "InvalidParameter.HttpsOriginServerProtocolSupportsParameters"
@@ -68,8 +68,8 @@ const (
 	// Tcp终端节点组不支持携带参数`%(value)s` 。
 	INVALIDPARAMETER_TCPENDPOINTGROUPCANNOTCARRYPARAMETERS = "InvalidParameter.TcpEndpointGroupCannotCarryParameters"
 
-	// 仅Tcp终端节点组支持携带参数`%(value)s` 。
-	INVALIDPARAMETER_TCPENDPOINTGROUPCARRYPARAMETERS = "InvalidParameter.TcpEndpointGroupCarryParameters"
+	// 仅Tcp监听器支持携带参数`%(value)s` 。
+	INVALIDPARAMETER_TCPLISTENERCARRYPARAMETERS = "InvalidParameter.TcpListenerCarryParameters"
 
 	// 四层终端节点组不支持携带参数`%(value)s` 。
 	INVALIDPARAMETER_TRANSPORTLAYERENDPOINTGROUPCANNOTCARRYPARAMETERS = "InvalidParameter.TransportLayerEndpointGroupCannotCarryParameters"
@@ -107,14 +107,17 @@ const (
 	// 参数值`%(value)s`不能包含特殊字段`%(key)s`。
 	INVALIDPARAMETERVALUE_INTERNALRESERVEDFIELDS = "InvalidParameterValue.InternalReservedFields"
 
+	// 参数 `%(parameter)s` 值 `%(value)s` 超过限制。
+	INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEOFFSET = "InvalidParameterValue.InvalidParameterValueOffset"
+
+	// 参数 `%(parameter)s` 值 `%(value)s` 的长度必须在 `%(value_range)s` 个字符范围内。
+	INVALIDPARAMETERVALUE_LENGTHRANGE = "InvalidParameterValue.LengthRange"
+
 	// 参数 `%(parameter)s` 值 `%(value)s` 数量超过限制。不能大于 `%(limit)s` 个。
 	INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 
 	// 终端节点组监听端口要和终端节点组所属监听器端口保持一致。
 	INVALIDPARAMETERVALUE_LISTENERPORTNOTEQUAL = "InvalidParameterValue.ListenerPortNotEqual"
-
-	// 参数`%(value)s`日志主题所在地域与终端节点地域`%(region)s`未正确对应。
-	INVALIDPARAMETERVALUE_LOGTASKLOCATEDERROR = "InvalidParameterValue.LogTaskLocatedError"
 
 	// 日志集主题`%(value)s`不存在
 	INVALIDPARAMETERVALUE_LOGSETNOTEXIST = "InvalidParameterValue.LogsetNotExist"
@@ -124,6 +127,9 @@ const (
 
 	// 当前不支持一个监听器端口映射到多个回源端口。
 	INVALIDPARAMETERVALUE_NOTMAPPINGMANYPORT = "InvalidParameterValue.NotMappingManyPort"
+
+	// 参数 `%(value)s` 不在腾讯云地域内，不支持当前操作。
+	INVALIDPARAMETERVALUE_NOTTENCENTREGION = "InvalidParameterValue.NotTencentRegion"
 
 	// 参数 `%(value)s` 不在公网网段内。
 	INVALIDPARAMETERVALUE_NOTWITHINPUBLICNETWORK = "InvalidParameterValue.NotWithinPublicNetwork"
@@ -158,6 +164,12 @@ const (
 	// 当前UDP协议系列监听器端口已和存量监听器端口重复。
 	INVALIDPARAMETERVALUE_UDPSERIESLISTENERPORTEQUAL = "InvalidParameterValue.UdpSeriesListenerPortEqual"
 
+	// 参数 `%(parameter)s` 的值`%(value)s`不存在。
+	INVALIDPARAMETERVALUE_VPGHAGROUPNOTFOUND = "InvalidParameterValue.VpgHaGroupNotFound"
+
+	// 参数 `%(key)s` 不属于资源 `%(value)s` ，不支持当前操作。
+	INVALIDPARAMETERVALUE_WRONGATTRIBUTIONRELATIONSHIP = "InvalidParameterValue.WrongAttributionRelationship"
+
 	// 超过配额限制。
 	LIMITEXCEEDED = "LimitExceeded"
 
@@ -173,6 +185,12 @@ const (
 	// 终端节点组配置为开启健康检查，请求缺少必填参数 `%(parameter)s`。
 	MISSINGPARAMETER_ENABLEHEALTHCHECKPARAMETER = "MissingParameter.EnableHealthCheckParameter"
 
+	// 当终端节点为内网回源类型时，参数 `%(parameter)s` 为必填参数。
+	MISSINGPARAMETER_INTERNALNETWORKSOURCE = "MissingParameter.InternalNetworkSource"
+
+	// 当终端节点组为支持三网地域时，参数 `%(parameter)s` 为必填参数。
+	MISSINGPARAMETER_ISPTYPE = "MissingParameter.IspType"
+
 	// 加速地域 `%(value)s` 下存在边缘加速地域，不可删除该加速地域。
 	RESOURCEINUSE_EDGEACCELERATEAREA = "ResourceInUse.EdgeAccelerateArea"
 
@@ -182,17 +200,11 @@ const (
 	// 加速地域`%(value)s` 已经存在。
 	UNSUPPORTEDOPERATION_ACCELERATEREGIONREPEAT = "UnsupportedOperation.AccelerateRegionRepeat"
 
-	// 当前账号不支持配置访问日志。
-	UNSUPPORTEDOPERATION_ACCESSLOG = "UnsupportedOperation.AccessLog"
-
 	// 账户被冻结，不支持当前操作。
 	UNSUPPORTEDOPERATION_ACCOUNTFROZEN = "UnsupportedOperation.AccountFrozen"
 
 	// 已经开启跨境，不支持重复操作。
 	UNSUPPORTEDOPERATION_ALREADYENABLECROSSBORDER = "UnsupportedOperation.AlreadyEnableCrossBorder"
-
-	// 七层默认转发规则不允许删除。
-	UNSUPPORTEDOPERATION_APPLICATIONLAYERENDPOINTGROUPNOTDELETE = "UnsupportedOperation.ApplicationLayerEndpointGroupNotDelete"
 
 	// 抱歉，您的操作暂时无法完成，请稍后重试或联系客服。
 	UNSUPPORTEDOPERATION_BILLINGFAILED = "UnsupportedOperation.BillingFailed"
@@ -200,8 +212,8 @@ const (
 	// CA证书不允许操作。
 	UNSUPPORTEDOPERATION_CACERTIFICATESOPERATE = "UnsupportedOperation.CaCertificatesOperate"
 
-	// 证书状态是 `%(value)s` ，不支持当前操作。
-	UNSUPPORTEDOPERATION_CERTIFICATEINVALIDSTATUS = "UnsupportedOperation.CertificateInvalidStatus"
+	// 需要提供CA证书，不支持其他类型证书。
+	UNSUPPORTEDOPERATION_CERTIFICATENOTCA = "UnsupportedOperation.CertificateNotCa"
 
 	// 跨境承诺书没签约，不支持当前操作。
 	UNSUPPORTEDOPERATION_CROSSBORDERPROMISENOTSIGNED = "UnsupportedOperation.CrossBorderPromiseNotSigned"
@@ -211,9 +223,6 @@ const (
 
 	// 默认证书不允许操作。
 	UNSUPPORTEDOPERATION_DEFAULTCERTIFICATESOPERATE = "UnsupportedOperation.DefaultCertificatesOperate"
-
-	// 默认终端节点组不支持修改。
-	UNSUPPORTEDOPERATION_DEFAULTENDPOINTGROUPMODIFY = "UnsupportedOperation.DefaultEndpointGroupModify"
 
 	// 默认七层转发策略规则不允许操作。
 	UNSUPPORTEDOPERATION_DEFAULTFORWARDINGPOLICYOPERATE = "UnsupportedOperation.DefaultForwardingPolicyOperate"
@@ -242,14 +251,8 @@ const (
 	// 配置了策略为拒绝的访问规则，不支持当前操作。
 	UNSUPPORTEDOPERATION_EXISTDROPACCEPTACLRULE = "UnsupportedOperation.ExistDropAcceptAclRule"
 
-	// 当前实例存在终端节点组，不支持当前操作。
-	UNSUPPORTEDOPERATION_EXISTENDPOINTGROUP = "UnsupportedOperation.ExistEndpointGroup"
-
 	// 存在七层转发规则配置了终端节点组`%(value)s`，不支持当前操作。
 	UNSUPPORTEDOPERATION_EXISTFORWARDINGRULE = "UnsupportedOperation.ExistForwardingRule"
-
-	// 存在访问控制策略，不支持当前操作。
-	UNSUPPORTEDOPERATION_EXISTGLOBALACCELERATORACLPOLICY = "UnsupportedOperation.ExistGlobalAcceleratorAclPolicy"
 
 	// 存在监听器，不支持当前操作。
 	UNSUPPORTEDOPERATION_EXISTLISTENER = "UnsupportedOperation.ExistListener"
@@ -287,6 +290,9 @@ const (
 	// 当前全球加速实例没有设置跨境类型。无法创建跨境加速地域或终端节点组。
 	UNSUPPORTEDOPERATION_NOTSETCROSSBORDERTYPE = "UnsupportedOperation.NotSetCrossBorderType"
 
+	// 仅支持内网CLB，不支持当前当操作。
+	UNSUPPORTEDOPERATION_ONLYINTERNALCLB = "UnsupportedOperation.OnlyInternalClb"
+
 	// 仅TCP监听器，支持通过TOA获取客户端IP。
 	UNSUPPORTEDOPERATION_ONLYTCPLISTENERSUPPORTTOA = "UnsupportedOperation.OnlyTcpListenerSupportToa"
 
@@ -302,6 +308,9 @@ const (
 	// 当前全球加速实例未开通TOA特性，请联系腾讯云客服申请。
 	UNSUPPORTEDOPERATION_TOAFEATURENOTENABLED = "UnsupportedOperation.TOAFeatureNotEnabled"
 
+	// 当前全球加速实例下监听器已经存在监听端口重复，不允许第三方节点加速地域。
+	UNSUPPORTEDOPERATION_THIRDAREAHAVEPORTEQUALLISTENER = "UnsupportedOperation.ThirdAreaHavePortEqualListener"
+
 	// 不支持创建三网类型的加速地域。
 	UNSUPPORTEDOPERATION_THREENETWORKSACCELERATEAREAS = "UnsupportedOperation.ThreeNetworksAccelerateAreas"
 
@@ -311,11 +320,20 @@ const (
 	// 四层监听器不支持创建转发策略。
 	UNSUPPORTEDOPERATION_TRANSPORTLAYERUNSUPPORTEDOPERATEFORWARDINGPOLICY = "UnsupportedOperation.TransportLayerUnsupportedOperateForwardingPolicy"
 
+	// UDP监听器，不支持通过ProxyProtocol获取客户端IP。
+	UNSUPPORTEDOPERATION_UDPLISTENERNOTSUPPORTPROXYPROTOCOL = "UnsupportedOperation.UdpListenerNotSupportProxyProtocol"
+
 	// 不支持创建第三方节点。
 	UNSUPPORTEDOPERATION_UNABLECREATETHIRDPARTYNODES = "UnsupportedOperation.UnableCreateThirdPartyNodes"
 
 	// 当前全球加速实例无法创建跨境加速地域或终端节点组。
 	UNSUPPORTEDOPERATION_UNABLECROSSBORDER = "UnsupportedOperation.UnableCrossBorder"
+
+	// 不支持修改第三方节点带宽。
+	UNSUPPORTEDOPERATION_UNABLEMODIFYTHIRDPARTYNODESBANDWIDTH = "UnsupportedOperation.UnableModifyThirdPartyNodesBandwidth"
+
+	// 非法证书，不支持当前操作。
+	UNSUPPORTEDOPERATION_UNLAWFULCERTIFICATE = "UnsupportedOperation.UnlawfulCertificate"
 
 	// 虚拟终端节点组不支持Tcp和Udp类型终端节点组。
 	UNSUPPORTEDOPERATION_VIRTUALENDPOINTGROUPUNSUPPORTEDTCPANDUDP = "UnsupportedOperation.VirtualEndpointGroupUnsupportedTcpAndUdp"

@@ -85,7 +85,9 @@ func NewCreateLibraryResponse() (response *CreateLibraryResponse) {
 //  INVALIDPARAMETERVALUE_LIBRARYQUOTAREQUIRED = "InvalidParameterValue.LibraryQuotaRequired"
 //  INVALIDPARAMETERVALUE_LIBRARYQUOTAREQUIRESMULTISPACE = "InvalidParameterValue.LibraryQuotaRequiresMultiSpace"
 //  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_PARTNERACCOUNTNOTSUPPORTED = "OperationDenied.PartnerAccountNotSupported"
 //  RESOURCENOTFOUND_PREPAIDINSTANCE = "ResourceNotFound.PrepaidInstance"
+//  UNAUTHORIZEDOPERATION_FINANCETRADENOTAUTHORIZED = "UnauthorizedOperation.FinanceTradeNotAuthorized"
 //  UNAUTHORIZEDOPERATION_PASSROLE = "UnauthorizedOperation.PassRole"
 //  UNAUTHORIZEDOPERATION_SERVICELINKEDROLE = "UnauthorizedOperation.ServiceLinkedRole"
 //  UNSUPPORTEDOPERATION_BALANCELESS = "UnsupportedOperation.BalanceLess"
@@ -114,7 +116,9 @@ func (c *Client) CreateLibrary(request *CreateLibraryRequest) (response *CreateL
 //  INVALIDPARAMETERVALUE_LIBRARYQUOTAREQUIRED = "InvalidParameterValue.LibraryQuotaRequired"
 //  INVALIDPARAMETERVALUE_LIBRARYQUOTAREQUIRESMULTISPACE = "InvalidParameterValue.LibraryQuotaRequiresMultiSpace"
 //  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_PARTNERACCOUNTNOTSUPPORTED = "OperationDenied.PartnerAccountNotSupported"
 //  RESOURCENOTFOUND_PREPAIDINSTANCE = "ResourceNotFound.PrepaidInstance"
+//  UNAUTHORIZEDOPERATION_FINANCETRADENOTAUTHORIZED = "UnauthorizedOperation.FinanceTradeNotAuthorized"
 //  UNAUTHORIZEDOPERATION_PASSROLE = "UnauthorizedOperation.PassRole"
 //  UNAUTHORIZEDOPERATION_SERVICELINKEDROLE = "UnauthorizedOperation.ServiceLinkedRole"
 //  UNSUPPORTEDOPERATION_BALANCELESS = "UnsupportedOperation.BalanceLess"
@@ -162,6 +166,8 @@ func NewDeleteLibraryResponse() (response *DeleteLibraryResponse) {
 //  INTERNALERROR_MODIFYRESOURCESTATUSFAIL = "InternalError.ModifyResourceStatusFail"
 //  RESOURCEINUSE_MULTISPACE = "ResourceInUse.MultiSpace"
 //  RESOURCENOTFOUND_LIBRARY = "ResourceNotFound.Library"
+//  UNAUTHORIZEDOPERATION_INVALIDOPERATEUIN = "UnauthorizedOperation.InvalidOperateUin"
+//  UNAUTHORIZEDOPERATION_POSTPAIDFAIL = "UnauthorizedOperation.PostpaidFail"
 func (c *Client) DeleteLibrary(request *DeleteLibraryRequest) (response *DeleteLibraryResponse, err error) {
     return c.DeleteLibraryWithContext(context.Background(), request)
 }
@@ -174,6 +180,8 @@ func (c *Client) DeleteLibrary(request *DeleteLibraryRequest) (response *DeleteL
 //  INTERNALERROR_MODIFYRESOURCESTATUSFAIL = "InternalError.ModifyResourceStatusFail"
 //  RESOURCEINUSE_MULTISPACE = "ResourceInUse.MultiSpace"
 //  RESOURCENOTFOUND_LIBRARY = "ResourceNotFound.Library"
+//  UNAUTHORIZEDOPERATION_INVALIDOPERATEUIN = "UnauthorizedOperation.InvalidOperateUin"
+//  UNAUTHORIZEDOPERATION_POSTPAIDFAIL = "UnauthorizedOperation.PostpaidFail"
 func (c *Client) DeleteLibraryWithContext(ctx context.Context, request *DeleteLibraryRequest) (response *DeleteLibraryResponse, err error) {
     if request == nil {
         request = NewDeleteLibraryRequest()

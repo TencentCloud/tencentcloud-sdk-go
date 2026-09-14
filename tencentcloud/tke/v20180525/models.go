@@ -1750,32 +1750,32 @@ func (r *CreateBackupStorageLocationResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateCLSLogConfigRequestParams struct {
-	// 日志采集配置的json表达
+	// <p>日志采集配置的json表达</p>
 	LogConfig *string `json:"LogConfig,omitnil,omitempty" name:"LogConfig"`
 
-	// 集群ID
+	// <p>集群ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// CLS日志集ID
+	// <p>CLS日志集ID</p>
 	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
 
-	// 当前集群类型支持tke（标准集群）、eks（serverless集群）
+	// <p>当前集群类型支持tke（标准集群）、eks（serverless集群）</p>
 	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 }
 
 type CreateCLSLogConfigRequest struct {
 	*tchttp.BaseRequest
 	
-	// 日志采集配置的json表达
+	// <p>日志采集配置的json表达</p>
 	LogConfig *string `json:"LogConfig,omitnil,omitempty" name:"LogConfig"`
 
-	// 集群ID
+	// <p>集群ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// CLS日志集ID
+	// <p>CLS日志集ID</p>
 	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
 
-	// 当前集群类型支持tke（标准集群）、eks（serverless集群）
+	// <p>当前集群类型支持tke（标准集群）、eks（serverless集群）</p>
 	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 }
 
@@ -3579,26 +3579,26 @@ func (r *CreateEdgeLogConfigResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateEksLogConfigRequestParams struct {
-	// 集群ID
+	// <p>集群ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 日志采集配置的json表达
+	// <p>日志采集配置的json表达</p>
 	LogConfig *string `json:"LogConfig,omitnil,omitempty" name:"LogConfig"`
 
-	// 日志集ID
+	// <p>日志集ID</p>
 	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
 }
 
 type CreateEksLogConfigRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群ID
+	// <p>集群ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 日志采集配置的json表达
+	// <p>日志采集配置的json表达</p>
 	LogConfig *string `json:"LogConfig,omitnil,omitempty" name:"LogConfig"`
 
-	// 日志集ID
+	// <p>日志集ID</p>
 	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
 }
 
@@ -3625,7 +3625,7 @@ func (r *CreateEksLogConfigRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateEksLogConfigResponseParams struct {
-	// 日志采集topicid
+	// <p>日志采集topicid</p>
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

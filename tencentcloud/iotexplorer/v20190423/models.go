@@ -381,6 +381,97 @@ func (r *BatchCreateTWeSeeSubscriptionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type BatchDescribeTWeSeeOrdersEntry struct {
+	// <p>订单 ID，与 CustomOrderId 二选一</p>
+	OrderId *string `json:"OrderId,omitnil,omitempty" name:"OrderId"`
+
+	// <p>自定义订单 ID，与 OrderId 二选一</p>
+	CustomOrderId *string `json:"CustomOrderId,omitnil,omitempty" name:"CustomOrderId"`
+}
+
+// Predefined struct for user
+type BatchDescribeTWeSeeOrdersRequestParams struct {
+	// 待查询的订单列表，最多 200 条
+	Entries []*BatchDescribeTWeSeeOrdersEntry `json:"Entries,omitnil,omitempty" name:"Entries"`
+}
+
+type BatchDescribeTWeSeeOrdersRequest struct {
+	*tchttp.BaseRequest
+	
+	// 待查询的订单列表，最多 200 条
+	Entries []*BatchDescribeTWeSeeOrdersEntry `json:"Entries,omitnil,omitempty" name:"Entries"`
+}
+
+func (r *BatchDescribeTWeSeeOrdersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchDescribeTWeSeeOrdersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Entries")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchDescribeTWeSeeOrdersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BatchDescribeTWeSeeOrdersResponseParams struct {
+	// 与请求 Entries 顺序一致的订单查询结果
+	Results []*BatchDescribeTWeSeeOrdersResult `json:"Results,omitnil,omitempty" name:"Results"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type BatchDescribeTWeSeeOrdersResponse struct {
+	*tchttp.BaseResponse
+	Response *BatchDescribeTWeSeeOrdersResponseParams `json:"Response"`
+}
+
+func (r *BatchDescribeTWeSeeOrdersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchDescribeTWeSeeOrdersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type BatchDescribeTWeSeeOrdersResult struct {
+	// <p>订单 ID</p>
+	OrderId *string `json:"OrderId,omitnil,omitempty" name:"OrderId"`
+
+	// <p>订单状态。</p><p>枚举值：</p><ul><li>DELIVERED： 已发货</li><li>DELIVERING： 发货中</li><li>DELIVER_FAILED： 发货失败</li><li>NOT_DELIVERED： 未发货</li></ul>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>资源 ID</p>
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// <p>币种</p>
+	Currency *string `json:"Currency,omitnil,omitempty" name:"Currency"`
+
+	// <p>订单价格</p>
+	Price *string `json:"Price,omitnil,omitempty" name:"Price"`
+
+	// <p>自定义订单 ID</p>
+	CustomOrderId *string `json:"CustomOrderId,omitnil,omitempty" name:"CustomOrderId"`
+
+	// <p>单个订单的查询错误码，查询成功时为空</p>
+	ErrorCode *string `json:"ErrorCode,omitnil,omitempty" name:"ErrorCode"`
+
+	// <p>单个订单的查询错误信息，查询成功时为空</p>
+	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
+}
+
 // Predefined struct for user
 type BatchInvokeTWeSeeRecognitionTaskRequestParams struct {
 	// 待执行的 TWeSee 语义理解任务列表
@@ -19801,6 +19892,91 @@ func (r *ModifyTopicRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type OperateTWeSeeDirectUploadObjectRequestParams struct {
+	// TWeSee 直传对象或目录的 COS URI
+	COSURI *string `json:"COSURI,omitnil,omitempty" name:"COSURI"`
+
+	// 操作类型。可选值：
+	// 
+	// - `HeadObject`：查询对象元数据
+	// - `DeleteObject`：删除对象
+	// - `ListBucket`：列举对象
+	Operation *string `json:"Operation,omitnil,omitempty" name:"Operation"`
+
+	// 列举对象时使用的分页和目录选项
+	ListOptions *SeeObjectListOptions `json:"ListOptions,omitnil,omitempty" name:"ListOptions"`
+}
+
+type OperateTWeSeeDirectUploadObjectRequest struct {
+	*tchttp.BaseRequest
+	
+	// TWeSee 直传对象或目录的 COS URI
+	COSURI *string `json:"COSURI,omitnil,omitempty" name:"COSURI"`
+
+	// 操作类型。可选值：
+	// 
+	// - `HeadObject`：查询对象元数据
+	// - `DeleteObject`：删除对象
+	// - `ListBucket`：列举对象
+	Operation *string `json:"Operation,omitnil,omitempty" name:"Operation"`
+
+	// 列举对象时使用的分页和目录选项
+	ListOptions *SeeObjectListOptions `json:"ListOptions,omitnil,omitempty" name:"ListOptions"`
+}
+
+func (r *OperateTWeSeeDirectUploadObjectRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *OperateTWeSeeDirectUploadObjectRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "COSURI")
+	delete(f, "Operation")
+	delete(f, "ListOptions")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "OperateTWeSeeDirectUploadObjectRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type OperateTWeSeeDirectUploadObjectResponseParams struct {
+	// 对象列举结果
+	ListingResponse *SeeObjectListing `json:"ListingResponse,omitnil,omitempty" name:"ListingResponse"`
+
+	// 对象元数据
+	ObjectResponse *SeeObjectMetadata `json:"ObjectResponse,omitnil,omitempty" name:"ObjectResponse"`
+
+	// 操作结果状态码
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type OperateTWeSeeDirectUploadObjectResponse struct {
+	*tchttp.BaseResponse
+	Response *OperateTWeSeeDirectUploadObjectResponseParams `json:"Response"`
+}
+
+func (r *OperateTWeSeeDirectUploadObjectResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *OperateTWeSeeDirectUploadObjectResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type OtaModuleInfo struct {
 	// 模块创建时间
 	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
@@ -21706,6 +21882,91 @@ type SeeFaceInfo struct {
 type SeeFaceRecognitionResult struct {
 	// 识别到的人员列表
 	Persons []*SeeTaskPersonInfo `json:"Persons,omitnil,omitempty" name:"Persons"`
+}
+
+type SeeObjectListOptions struct {
+	// 目录分隔符
+	Delimiter *string `json:"Delimiter,omitnil,omitempty" name:"Delimiter"`
+
+	// 分页标记
+	Marker *string `json:"Marker,omitnil,omitempty" name:"Marker"`
+
+	// 单页返回的最大对象数量
+	MaxKeys *int64 `json:"MaxKeys,omitnil,omitempty" name:"MaxKeys"`
+}
+
+type SeeObjectListing struct {
+	// <p>对象列表</p>
+	Contents []*SeeObjectSummary `json:"Contents,omitnil,omitempty" name:"Contents"`
+
+	// <p>子目录路径列表</p>
+	CommonPrefixes []*string `json:"CommonPrefixes,omitnil,omitempty" name:"CommonPrefixes"`
+
+	// <p>本次列举使用的目录分隔符</p>
+	Delimiter *string `json:"Delimiter,omitnil,omitempty" name:"Delimiter"`
+
+	// <p>是否还有后续分页数据</p>
+	IsTruncated *bool `json:"IsTruncated,omitnil,omitempty" name:"IsTruncated"`
+
+	// <p>本次列举使用的分页标记</p>
+	Marker *string `json:"Marker,omitnil,omitempty" name:"Marker"`
+
+	// <p>本次列举的最大对象数量</p>
+	MaxKeys *int64 `json:"MaxKeys,omitnil,omitempty" name:"MaxKeys"`
+
+	// <p>下一页的分页标记</p>
+	NextMarker *string `json:"NextMarker,omitnil,omitempty" name:"NextMarker"`
+
+	// <p>本次列举的对象路径前缀</p>
+	Prefix *string `json:"Prefix,omitnil,omitempty" name:"Prefix"`
+}
+
+type SeeObjectMetadata struct {
+	// <p>对象 Key</p>
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// <p>对象的 COS URI</p>
+	COSURI *string `json:"COSURI,omitnil,omitempty" name:"COSURI"`
+
+	// <p>对象的 MIME 类型</p>
+	ContentType *string `json:"ContentType,omitnil,omitempty" name:"ContentType"`
+
+	// <p>对象大小，单位：字节</p>
+	Size *int64 `json:"Size,omitnil,omitempty" name:"Size"`
+
+	// <p>对象的 ETag</p>
+	ETag *string `json:"ETag,omitnil,omitempty" name:"ETag"`
+
+	// <p>对象最后修改时间，秒级 UNIX 时间戳</p>
+	LastModified *int64 `json:"LastModified,omitnil,omitempty" name:"LastModified"`
+
+	// <p>对象的自定义元数据列表</p>
+	Metadata []*SeeObjectMetadataEntry `json:"Metadata,omitnil,omitempty" name:"Metadata"`
+}
+
+type SeeObjectMetadataEntry struct {
+	// 元数据名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 元数据值
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type SeeObjectSummary struct {
+	// <p>对象 Key</p>
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// <p>TWeSee 直传对象或目录的 COS URI</p>
+	COSURI *string `json:"COSURI,omitnil,omitempty" name:"COSURI"`
+
+	// <p>对象大小，单位：字节</p>
+	Size *int64 `json:"Size,omitnil,omitempty" name:"Size"`
+
+	// <p>对象的 ETag</p>
+	ETag *string `json:"ETag,omitnil,omitempty" name:"ETag"`
+
+	// <p>对象最后修改时间，秒级 UNIX 时间戳</p>
+	LastModified *int64 `json:"LastModified,omitnil,omitempty" name:"LastModified"`
 }
 
 type SeePersonInfo struct {

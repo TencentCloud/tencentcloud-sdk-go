@@ -45,25 +45,25 @@ type AcceleratorAreas struct {
 }
 
 type AcceleratorRegionSet struct {
-	// <p>地域中文名称。</p>
+	// <p>地域名称。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// <p>是否可用；0：不可用，1:可用。</p>
 	IsAvailable *int64 `json:"IsAvailable,omitnil,omitempty" name:"IsAvailable"`
 
-	// <p>地域信息。</p>
+	// <p>地域。</p>
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// <p>地区名称。</p>
 	AreaName *string `json:"AreaName,omitnil,omitempty" name:"AreaName"`
 
-	// <p>是否中国地域。</p>
+	// <p>是否中国地域。1 代表是中国地域，0代表不是中国地域。</p>
 	IsChinaMainland *uint64 `json:"IsChinaMainland,omitnil,omitempty" name:"IsChinaMainland"`
 
 	// <p>支持IspType类型。</p>
 	SupportIspType []*string `json:"SupportIspType,omitnil,omitempty" name:"SupportIspType"`
 
-	// <p>是否腾讯地域。</p>
+	// <p>是否腾讯云地域。1代表是腾讯云地域，0代表不是。</p>
 	IsTencentRegion *uint64 `json:"IsTencentRegion,omitnil,omitempty" name:"IsTencentRegion"`
 }
 
@@ -435,7 +435,7 @@ func (r *CreateForwardingRuleResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateGlobalAcceleratorAccessLogRequestParams struct {
-	// <p>GA示例唯一Id</p>
+	// <p>GA实例唯一Id</p>
 	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
 
 	// <p>监听器Id</p>
@@ -463,7 +463,7 @@ type CreateGlobalAcceleratorAccessLogRequestParams struct {
 type CreateGlobalAcceleratorAccessLogRequest struct {
 	*tchttp.BaseRequest
 	
-	// <p>GA示例唯一Id</p>
+	// <p>GA实例唯一Id</p>
 	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
 
 	// <p>监听器Id</p>
@@ -1795,7 +1795,7 @@ func (r *DescribeAccelerateRegionsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAccelerateRegionsResponseParams struct {
-	// 加速地域信息。
+	// <p>加速地域信息。</p>
 	AcceleratorRegionSet []*AcceleratorRegionSet `json:"AcceleratorRegionSet,omitnil,omitempty" name:"AcceleratorRegionSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1820,12 +1820,15 @@ func (r *DescribeAccelerateRegionsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAccessLogParamRequestParams struct {
-
+	// <p>全球加速实例ID。</p>
+	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
 }
 
 type DescribeAccessLogParamRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>全球加速实例ID。</p>
+	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
 }
 
 func (r *DescribeAccessLogParamRequest) ToJsonString() string {
@@ -1840,7 +1843,7 @@ func (r *DescribeAccessLogParamRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "GlobalAcceleratorId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAccessLogParamRequest has unknown keys!", "")
 	}
@@ -2036,33 +2039,39 @@ func (r *DescribeEndpointGroupsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeForwardingPolicyRequestParams struct {
-	// 全球加速实例ID。
+	// <p>全球加速实例ID。</p>
 	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
 
-	// 监听器ID。
+	// <p>监听器ID。</p>
 	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
 
-	// 偏移量，默认为0。
+	// <p>偏移量，默认为0。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，默认为20，最大值为100。
+	// <p>返回数量，默认为20，最大值为100。</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>过滤条件。<li>forwarding-policy-id - String -（过滤条件）策略ID。</li></p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeForwardingPolicyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 全球加速实例ID。
+	// <p>全球加速实例ID。</p>
 	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
 
-	// 监听器ID。
+	// <p>监听器ID。</p>
 	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
 
-	// 偏移量，默认为0。
+	// <p>偏移量，默认为0。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，默认为20，最大值为100。
+	// <p>返回数量，默认为20，最大值为100。</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>过滤条件。<li>forwarding-policy-id - String -（过滤条件）策略ID。</li></p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 func (r *DescribeForwardingPolicyRequest) ToJsonString() string {
@@ -2081,6 +2090,7 @@ func (r *DescribeForwardingPolicyRequest) FromJsonString(s string) error {
 	delete(f, "ListenerId")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "Filters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeForwardingPolicyRequest has unknown keys!", "")
 	}
@@ -2089,10 +2099,10 @@ func (r *DescribeForwardingPolicyRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeForwardingPolicyResponseParams struct {
-	// 符合条件的策略信息。
+	// <p>符合条件的策略信息。</p>
 	ForwardingPolicySet []*ForwardingPolicySet `json:"ForwardingPolicySet,omitnil,omitempty" name:"ForwardingPolicySet"`
 
-	// 符合条件的实例个数。
+	// <p>符合条件的实例个数。</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2117,39 +2127,45 @@ func (r *DescribeForwardingPolicyResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeForwardingRuleRequestParams struct {
-	// 全球加速实例ID。
+	// <p>全球加速实例ID。</p>
 	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
 
-	// 监听器ID。
+	// <p>监听器ID。</p>
 	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
 
-	// 七层转发规则ID。
+	// <p>七层转发规则ID。</p>
 	ForwardingPolicyId *string `json:"ForwardingPolicyId,omitnil,omitempty" name:"ForwardingPolicyId"`
 
-	// 偏移量，默认为0。
+	// <p>偏移量，默认为0。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，默认为20，最大值为100。
+	// <p>返回数量，默认为20，最大值为100。</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>过滤条件。<li>forwarding-rule-id - String -（过滤条件）规则ID。</li></p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeForwardingRuleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 全球加速实例ID。
+	// <p>全球加速实例ID。</p>
 	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
 
-	// 监听器ID。
+	// <p>监听器ID。</p>
 	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
 
-	// 七层转发规则ID。
+	// <p>七层转发规则ID。</p>
 	ForwardingPolicyId *string `json:"ForwardingPolicyId,omitnil,omitempty" name:"ForwardingPolicyId"`
 
-	// 偏移量，默认为0。
+	// <p>偏移量，默认为0。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，默认为20，最大值为100。
+	// <p>返回数量，默认为20，最大值为100。</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>过滤条件。<li>forwarding-rule-id - String -（过滤条件）规则ID。</li></p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 func (r *DescribeForwardingRuleRequest) ToJsonString() string {
@@ -2169,6 +2185,7 @@ func (r *DescribeForwardingRuleRequest) FromJsonString(s string) error {
 	delete(f, "ForwardingPolicyId")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "Filters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeForwardingRuleRequest has unknown keys!", "")
 	}
@@ -2177,10 +2194,10 @@ func (r *DescribeForwardingRuleRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeForwardingRuleResponseParams struct {
-	// 符合条件的规则信息。
+	// <p>符合条件的规则信息。</p>
 	ForwardingRuleSet []*ForwardingRuleSet `json:"ForwardingRuleSet,omitnil,omitempty" name:"ForwardingRuleSet"`
 
-	// 符合条件的实例个数。
+	// <p>符合条件的实例个数。</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2368,6 +2385,9 @@ type DescribeGlobalAcceleratorAclRulesRequestParams struct {
 
 	// <p>返回数量。</p><p>取值范围：[1, 200]</p><p>默认值：20</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>过滤条件。<li>global-accelerator-acl-rule-id - String -（过滤条件）ACL规则ID。</li></p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeGlobalAcceleratorAclRulesRequest struct {
@@ -2381,6 +2401,9 @@ type DescribeGlobalAcceleratorAclRulesRequest struct {
 
 	// <p>返回数量。</p><p>取值范围：[1, 200]</p><p>默认值：20</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>过滤条件。<li>global-accelerator-acl-rule-id - String -（过滤条件）ACL规则ID。</li></p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 func (r *DescribeGlobalAcceleratorAclRulesRequest) ToJsonString() string {
@@ -2398,6 +2421,7 @@ func (r *DescribeGlobalAcceleratorAclRulesRequest) FromJsonString(s string) erro
 	delete(f, "GlobalAcceleratorAclPolicyId")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "Filters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeGlobalAcceleratorAclRulesRequest has unknown keys!", "")
 	}
@@ -2589,14 +2613,14 @@ func (r *DescribeListenersResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTaskResultRequestParams struct {
-	// 异步任务ID。
+	// <p>异步任务ID。</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
 type DescribeTaskResultRequest struct {
 	*tchttp.BaseRequest
 	
-	// 异步任务ID。
+	// <p>异步任务ID。</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
@@ -2621,7 +2645,7 @@ func (r *DescribeTaskResultRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTaskResultResponseParams struct {
-	// 任务状态。
+	// <p>任务状态。</p><p>枚举值：</p><ul><li>SUCCESS： 任务成功。</li><li>FAILURE： 任务失败。</li><li>RUNNING： 任务运行。</li></ul>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2668,7 +2692,7 @@ type EndpointGroupConfiguration struct {
 	// <p>终端节点配置。</p>
 	EndpointConfigurations []*EndpointConfigurations `json:"EndpointConfigurations,omitnil,omitempty" name:"EndpointConfigurations"`
 
-	// <p>检查协议。支持配置&#39;TCP&#39;, &#39;HTTP&#39;, &#39;PING&#39;, &#39;CUSTOM&#39;。</p><p>枚举值：</p><ul><li>TCP： 当终端节点组所在监听器协议是TCP时，可以选择检查协议为TCP。</li><li>HTTP： 当终端节点组所在监听器协议是HTTP或HTTPS时，可以选择检查协议为HTTP。</li><li>PING： 当终端节点组所在监听器协议是UDP时，可以选择检查协议为PING。</li><li>CUSTOM： 当终端节点组所在监听器协议是UDP或TCP时，可以选择检查协议为CUSTOM。</li></ul><p>当开启健康检查时此字段必传。</p>
+	// <p>检查协议。支持配置&#39;TCP&#39;, &#39;HTTP&#39;, &#39;PING&#39;, &#39;CUSTOM&#39;。</p><p>枚举值：</p><ul><li>TCP： 当终端节点组所在监听器协议是TCP时，可以选择检查协议为TCP。</li><li>HTTP： 当终端节点组所在监听器协议是HTTP或HTTPS时，可以选择检查协议为HTTP。</li><li>PING： 当终端节点组所在监听器协议是UDP时，可以选择检查协议为PING。</li><li>CUSTOM： 当终端节点组所在监听器协议是UDP或TCP时，可以选择检查协议为CUSTOM。</li><li>HTTPS： 当终端节点组所在监听器协议是HTTPS时，可以选择检查协议为HTTPS。</li></ul><p>当开启健康检查时此字段必传。</p>
 	CheckType *string `json:"CheckType,omitnil,omitempty" name:"CheckType"`
 
 	// <p>描述信息。</p><p>默认值：默认值为空，代表不配置描述信息。</p><p>最大长度不能超过100个字节。</p>
@@ -2816,6 +2840,12 @@ type EndpointGroupConfigurationSet struct {
 
 	// <p>仅HTTPS回源协议支持选择[&#39;HTTP/1.1&#39;, &#39;HTTP/2&#39;]</p><p>枚举值：</p><ul><li>HTTP/1.1： 版本HTTP/1.1</li><li>HTTP/2： 版本HTTP/2</li></ul>
 	HttpVersion *string `json:"HttpVersion,omitnil,omitempty" name:"HttpVersion"`
+
+	// <p>出终端节点组内网IP</p>
+	OriginPrivateIps []*string `json:"OriginPrivateIps,omitnil,omitempty" name:"OriginPrivateIps"`
+
+	// <p>出终端节点组公网CIDR</p>
+	OriginPublicCidrs []*string `json:"OriginPublicCidrs,omitnil,omitempty" name:"OriginPublicCidrs"`
 }
 
 type Filter struct {
@@ -2882,7 +2912,35 @@ type ForwardingRuleSet struct {
 }
 
 type GlobalAcceleratorAccessLog struct {
+	// <p>日志唯一Id</p>
+	LogPushTaskId *string `json:"LogPushTaskId,omitnil,omitempty" name:"LogPushTaskId"`
 
+	// <p>GA实例唯一Id</p>
+	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
+
+	// <p>监听器唯一Id</p>
+	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
+
+	// <p>终端节点组唯一Id</p>
+	EndpointGroupId *string `json:"EndpointGroupId,omitnil,omitempty" name:"EndpointGroupId"`
+
+	// <p>日志任务描述</p>
+	FlowLogDescription *string `json:"FlowLogDescription,omitnil,omitempty" name:"FlowLogDescription"`
+
+	// <p>日志所在地域</p>
+	CloudRegion *string `json:"CloudRegion,omitnil,omitempty" name:"CloudRegion"`
+
+	// <p>日志主题Id</p>
+	CloudLogId *string `json:"CloudLogId,omitnil,omitempty" name:"CloudLogId"`
+
+	// <p>日志集Id</p>
+	CloudLogSetId *string `json:"CloudLogSetId,omitnil,omitempty" name:"CloudLogSetId"`
+
+	// <p>选择日志采集字段</p>
+	FieldKeys []*string `json:"FieldKeys,omitnil,omitempty" name:"FieldKeys"`
+
+	// <p>日志任务状态</p><p>枚举值：</p><ul><li>active： 运行中</li><li>stopped： 已暂停</li></ul>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 type GlobalAcceleratorAclPolicies struct {
@@ -2981,67 +3039,67 @@ type IpAddressInfoSet struct {
 }
 
 type ListenerSet struct {
-	// 全球加速实例ID。
+	// <p>全球加速实例ID。</p>
 	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
 
-	// 监听器ID。
+	// <p>监听器ID。</p>
 	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
 
-	// 监听器名称。
+	// <p>监听器名称。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 监听器描述。
+	// <p>监听器描述。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 协议。
+	// <p>协议。</p>
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
-	// 端口范围。
+	// <p>端口范围。</p>
 	PortRanges *PortRanges `json:"PortRanges,omitnil,omitempty" name:"PortRanges"`
 
-	// 是否打开七层获取源IP方式。
+	// <p>是否打开七层获取源IP方式。</p>
 	XForwardedForRealIp *bool `json:"XForwardedForRealIp,omitnil,omitempty" name:"XForwardedForRealIp"`
 
-	// 开启会话保持。
+	// <p>开启会话保持。</p>
 	ClientAffinity *string `json:"ClientAffinity,omitnil,omitempty" name:"ClientAffinity"`
 
-	// 会话保持时间。
+	// <p>会话保持时间。</p>
 	ClientAffinityTime *uint64 `json:"ClientAffinityTime,omitnil,omitempty" name:"ClientAffinityTime"`
 
-	// SSL解析方式。
+	// <p>SSL解析方式。</p>
 	CertificationType *string `json:"CertificationType,omitnil,omitempty" name:"CertificationType"`
 
-	// 服务器证书。
+	// <p>服务器证书。</p>
 	ServerCertificates []*string `json:"ServerCertificates,omitnil,omitempty" name:"ServerCertificates"`
 
-	// 客户端证书。
+	// <p>客户端证书。</p>
 	ClientCaCertificates []*string `json:"ClientCaCertificates,omitnil,omitempty" name:"ClientCaCertificates"`
 
-	// TLS密码套件包。
+	// <p>TLS密码套件包。</p>
 	CipherPolicyId *string `json:"CipherPolicyId,omitnil,omitempty" name:"CipherPolicyId"`
 
-	// HTTP版本。
+	// <p>HTTP版本。</p>
 	HttpVersion *string `json:"HttpVersion,omitnil,omitempty" name:"HttpVersion"`
 
-	// 请求超时时间。
+	// <p>请求超时时间。</p>
 	RequestTimeout *uint64 `json:"RequestTimeout,omitnil,omitempty" name:"RequestTimeout"`
 
-	// 创建时间。
+	// <p>创建时间。</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 监听路由类型。
+	// <p>监听路由类型。</p>
 	ListenerType *string `json:"ListenerType,omitnil,omitempty" name:"ListenerType"`
 
-	// 监听器状态。
+	// <p>监听器状态。</p><p>枚举值：</p><ul><li>ACTIVE： 可用。</li><li>CREATING： 创建中。</li><li>DELETING： 删除中。</li><li>CONFIGURING： 修改配置中。</li></ul>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 所属监听器终端节点组个数。
+	// <p>所属监听器终端节点组个数。</p>
 	EndpointGroupCounts *uint64 `json:"EndpointGroupCounts,omitnil,omitempty" name:"EndpointGroupCounts"`
 
-	// 四层获取源IP方式。
+	// <p>四层获取源IP方式。</p>
 	GetRealIpType *string `json:"GetRealIpType,omitnil,omitempty" name:"GetRealIpType"`
 
-	// 连接超时时间。
+	// <p>连接超时时间。</p>
 	IdleTimeout *uint64 `json:"IdleTimeout,omitnil,omitempty" name:"IdleTimeout"`
 }
 
@@ -3212,7 +3270,7 @@ type ModifyEndpointGroupRequestParams struct {
 	// <p>健康阀值。</p><p>取值范围：[1, 10]</p><p>当开启健康检查时，此字段必传。</p>
 	HealthyThreshold *uint64 `json:"HealthyThreshold,omitnil,omitempty" name:"HealthyThreshold"`
 
-	// <p>检查协议。</p><p>入参限制：支持填写：&#39;TCP&#39;, &#39;HTTP&#39;, &#39;PING&#39;, &#39;CUSTOM&#39;。</p><p>1、当监听器是TCP时，可以选CUSTOM+TCP。<br>2、当监听器是UDP时，可以选PING+CUSTOM。<br>3、当监听器是HTTP或HTTPS时，可以选HTTP。</p>
+	// <p>检查协议。</p><p>入参限制：支持填写：&#39;TCP&#39;, &#39;HTTP&#39;, &#39;PING&#39;, &#39;CUSTOM&#39;,&#39;HTTPS&#39;。</p><p>1、当监听器是TCP时，可以选CUSTOM+TCP。2、当监听器是UDP时，可以选PING+CUSTOM。3、当监听器是HTTP或HTTPS时，可以选HTTP。4、当监听器是HTTS时，可以选HTTPS。</p>
 	CheckType *string `json:"CheckType,omitnil,omitempty" name:"CheckType"`
 
 	// <p>检查端口。</p><p>取值范围：[1, 65535]</p><p>当CheckType是CUSTOM时，此字段必传。</p>
@@ -3288,7 +3346,7 @@ type ModifyEndpointGroupRequest struct {
 	// <p>健康阀值。</p><p>取值范围：[1, 10]</p><p>当开启健康检查时，此字段必传。</p>
 	HealthyThreshold *uint64 `json:"HealthyThreshold,omitnil,omitempty" name:"HealthyThreshold"`
 
-	// <p>检查协议。</p><p>入参限制：支持填写：&#39;TCP&#39;, &#39;HTTP&#39;, &#39;PING&#39;, &#39;CUSTOM&#39;。</p><p>1、当监听器是TCP时，可以选CUSTOM+TCP。<br>2、当监听器是UDP时，可以选PING+CUSTOM。<br>3、当监听器是HTTP或HTTPS时，可以选HTTP。</p>
+	// <p>检查协议。</p><p>入参限制：支持填写：&#39;TCP&#39;, &#39;HTTP&#39;, &#39;PING&#39;, &#39;CUSTOM&#39;,&#39;HTTPS&#39;。</p><p>1、当监听器是TCP时，可以选CUSTOM+TCP。2、当监听器是UDP时，可以选PING+CUSTOM。3、当监听器是HTTP或HTTPS时，可以选HTTP。4、当监听器是HTTS时，可以选HTTPS。</p>
 	CheckType *string `json:"CheckType,omitnil,omitempty" name:"CheckType"`
 
 	// <p>检查端口。</p><p>取值范围：[1, 65535]</p><p>当CheckType是CUSTOM时，此字段必传。</p>
@@ -4001,6 +4059,9 @@ type ModifyListenerRequestParams struct {
 
 	// <p>获取源IP方式。</p><p>入参限制：支持选择&#39;ProxyProtocol&#39;, &#39;Close&#39;, &#39;ProxyProtocolV2&#39;, &#39;TOA&#39;。</p><p>TCP监听器才支持此参数修改。</p>
 	GetRealIpType *string `json:"GetRealIpType,omitnil,omitempty" name:"GetRealIpType"`
+
+	// <p>HTTPS监听器支持选择版本</p><p>枚举值：</p><ul><li>HTTP/1.1： 版本HTTP/1.1</li><li>HTTP/2： 版本HTTP/2</li></ul>
+	HttpVersion *string `json:"HttpVersion,omitnil,omitempty" name:"HttpVersion"`
 }
 
 type ModifyListenerRequest struct {
@@ -4047,6 +4108,9 @@ type ModifyListenerRequest struct {
 
 	// <p>获取源IP方式。</p><p>入参限制：支持选择&#39;ProxyProtocol&#39;, &#39;Close&#39;, &#39;ProxyProtocolV2&#39;, &#39;TOA&#39;。</p><p>TCP监听器才支持此参数修改。</p>
 	GetRealIpType *string `json:"GetRealIpType,omitnil,omitempty" name:"GetRealIpType"`
+
+	// <p>HTTPS监听器支持选择版本</p><p>枚举值：</p><ul><li>HTTP/1.1： 版本HTTP/1.1</li><li>HTTP/2： 版本HTTP/2</li></ul>
+	HttpVersion *string `json:"HttpVersion,omitnil,omitempty" name:"HttpVersion"`
 }
 
 func (r *ModifyListenerRequest) ToJsonString() string {
@@ -4075,6 +4139,7 @@ func (r *ModifyListenerRequest) FromJsonString(s string) error {
 	delete(f, "ServerCertificates")
 	delete(f, "ClientCaCertificates")
 	delete(f, "GetRealIpType")
+	delete(f, "HttpVersion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyListenerRequest has unknown keys!", "")
 	}

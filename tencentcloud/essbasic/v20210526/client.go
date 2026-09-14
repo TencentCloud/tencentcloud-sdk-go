@@ -325,7 +325,7 @@ func NewChannelBatchCancelFlowsResponse() (response *ChannelBatchCancelFlowsResp
 //
 // 1.撤销服务按照合同份额 1:1赠送免费撤销次数。例如购买 100 份合同，赠送 100 次免费撤销额度。
 //
-// 2.仅当没有任何参与方签署过，或仅自动签署完成的合同，撤销后才会使用免费撤销额度。
+// 2.仅当没有任何参与方签署过，或仅授权签署完成的合同，撤销后才会使用免费撤销额度。
 //
 // 3.当赠送的免费撤销额度使用完后，后续仍可撤销合同，但不会返还合同额度。
 //
@@ -379,7 +379,7 @@ func (c *Client) ChannelBatchCancelFlows(request *ChannelBatchCancelFlowsRequest
 //
 // 1.撤销服务按照合同份额 1:1赠送免费撤销次数。例如购买 100 份合同，赠送 100 次免费撤销额度。
 //
-// 2.仅当没有任何参与方签署过，或仅自动签署完成的合同，撤销后才会使用免费撤销额度。
+// 2.仅当没有任何参与方签署过，或仅授权签署完成的合同，撤销后才会使用免费撤销额度。
 //
 // 3.当赠送的免费撤销额度使用完后，后续仍可撤销合同，但不会返还合同额度。
 //
@@ -461,7 +461,7 @@ func NewChannelCancelFlowResponse() (response *ChannelCancelFlowResponse) {
 //
 // 1.撤销服务按照合同份额 1:1赠送免费撤销次数。例如购买 100 份合同，赠送 100 次免费撤销额度。
 //
-// 2.仅当没有任何参与方签署过，或仅自动签署完成的合同，撤销后才会使用免费撤销额度。
+// 2.仅当没有任何参与方签署过，或仅授权签署完成的合同，撤销后才会使用免费撤销额度。
 //
 // 3.当赠送的免费撤销额度使用完后，后续仍可撤销合同，但不会返还合同额度。
 //
@@ -518,7 +518,7 @@ func (c *Client) ChannelCancelFlow(request *ChannelCancelFlowRequest) (response 
 //
 // 1.撤销服务按照合同份额 1:1赠送免费撤销次数。例如购买 100 份合同，赠送 100 次免费撤销额度。
 //
-// 2.仅当没有任何参与方签署过，或仅自动签署完成的合同，撤销后才会使用免费撤销额度。
+// 2.仅当没有任何参与方签署过，或仅授权签署完成的合同，撤销后才会使用免费撤销额度。
 //
 // 3.当赠送的免费撤销额度使用完后，后续仍可撤销合同，但不会返还合同额度。
 //
@@ -657,7 +657,7 @@ func NewChannelCancelUserAutoSignEnableUrlResponse() (response *ChannelCancelUse
 }
 
 // ChannelCancelUserAutoSignEnableUrl
-// 此接口（ChannelCancelUserAutoSignEnableUrl）用来撤销发送给个人用户的自动签开通链接，撤销后对应的个人用户开通链接失效。若个人用户已经完成开通，将无法撤销。（处方单场景专用，使用此接口请与客户经理确认）
+// 此接口（ChannelCancelUserAutoSignEnableUrl）用来撤销发送给个人用户的授权签开通链接，撤销后对应的个人用户开通链接失效。若个人用户已经完成开通，将无法撤销。（处方单场景专用，使用此接口请与客户经理确认）
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_USERAUTOSIGNENABLEALREADY = "FailedOperation.UserAutoSignEnableAlready"
@@ -672,7 +672,7 @@ func (c *Client) ChannelCancelUserAutoSignEnableUrl(request *ChannelCancelUserAu
 }
 
 // ChannelCancelUserAutoSignEnableUrl
-// 此接口（ChannelCancelUserAutoSignEnableUrl）用来撤销发送给个人用户的自动签开通链接，撤销后对应的个人用户开通链接失效。若个人用户已经完成开通，将无法撤销。（处方单场景专用，使用此接口请与客户经理确认）
+// 此接口（ChannelCancelUserAutoSignEnableUrl）用来撤销发送给个人用户的授权签开通链接，撤销后对应的个人用户开通链接失效。若个人用户已经完成开通，将无法撤销。（处方单场景专用，使用此接口请与客户经理确认）
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_USERAUTOSIGNENABLEALREADY = "FailedOperation.UserAutoSignEnableAlready"
@@ -1981,15 +1981,15 @@ func NewChannelCreateFlowGroupByFilesResponse() (response *ChannelCreateFlowGrou
 //
 // - **扣减时机**：合同一旦发起，相关的合同额度就会被扣减，合同组下面的每个合同都要扣减一个合同额度。
 //
-// - **返还条件**：只有在合同被撤销且没有任何签署方签署过，或者只有自动签署的情况下，合同额度才会被返还。
+// - **返还条件**：只有在合同被撤销且没有任何签署方签署过，或者只有授权签署的情况下，合同额度才会被返还。
 //
 // - **不返还的情况**：如果合同已过期、被拒签、签署完成或已解除，合同额度将不会被返还。
 //
 // 
 //
-// ### 6. 静默（自动）签署的限制
+// ### 6. 授权签署的限制
 //
-// - 在使用静默（自动）签署功能时，合同签署方不能有填写控件。<font color="red">此接口静默签(企业自动签)能力为白名单功能</font>，使用前请联系对接的客户经理沟通。
+// - 在使用授权签署功能时，合同签署方不能有填写控件。<font color="red">此接口授权签(企业授权签)能力为白名单功能</font>，使用前请联系对接的客户经理沟通。
 //
 // 
 //
@@ -2174,15 +2174,15 @@ func (c *Client) ChannelCreateFlowGroupByFiles(request *ChannelCreateFlowGroupBy
 //
 // - **扣减时机**：合同一旦发起，相关的合同额度就会被扣减，合同组下面的每个合同都要扣减一个合同额度。
 //
-// - **返还条件**：只有在合同被撤销且没有任何签署方签署过，或者只有自动签署的情况下，合同额度才会被返还。
+// - **返还条件**：只有在合同被撤销且没有任何签署方签署过，或者只有授权签署的情况下，合同额度才会被返还。
 //
 // - **不返还的情况**：如果合同已过期、被拒签、签署完成或已解除，合同额度将不会被返还。
 //
 // 
 //
-// ### 6. 静默（自动）签署的限制
+// ### 6. 授权签署的限制
 //
-// - 在使用静默（自动）签署功能时，合同签署方不能有填写控件。<font color="red">此接口静默签(企业自动签)能力为白名单功能</font>，使用前请联系对接的客户经理沟通。
+// - 在使用授权签署功能时，合同签署方不能有填写控件。<font color="red">此接口授权签(企业授权签)能力为白名单功能</font>，使用前请联系对接的客户经理沟通。
 //
 // 
 //
@@ -2395,15 +2395,15 @@ func NewChannelCreateFlowGroupByTemplatesResponse() (response *ChannelCreateFlow
 //
 // - **扣减时机**：合同一旦发起，相关的合同额度就会被扣减，合同组下面的每个合同都要扣减一个合同额度。
 //
-// - **返还条件**：只有在合同被撤销且没有任何签署方签署过，或者只有自动签署的情况下，合同额度才会被返还。
+// - **返还条件**：只有在合同被撤销且没有任何签署方签署过，或者只有授权签署的情况下，合同额度才会被返还。
 //
 // - **不返还的情况**：如果合同已过期、被拒签、签署完成或已解除，合同额度将不会被返还。
 //
 // 
 //
-// ### 6. 静默（自动）签署的限制
+// ### 6. 授权签署的限制
 //
-// - 在使用静默（自动）签署功能时，合同签署方不能有填写控件。<font color="red">此接口静默签(企业自动签)能力为白名单功能</font>，使用前请联系对接的客户经理沟通。
+// - 在使用授权签署功能时，合同签署方不能有填写控件。<font color="red">此接口授权签(企业授权签)能力为白名单功能</font>，使用前请联系对接的客户经理沟通。
 //
 // 
 //
@@ -2569,15 +2569,15 @@ func (c *Client) ChannelCreateFlowGroupByTemplates(request *ChannelCreateFlowGro
 //
 // - **扣减时机**：合同一旦发起，相关的合同额度就会被扣减，合同组下面的每个合同都要扣减一个合同额度。
 //
-// - **返还条件**：只有在合同被撤销且没有任何签署方签署过，或者只有自动签署的情况下，合同额度才会被返还。
+// - **返还条件**：只有在合同被撤销且没有任何签署方签署过，或者只有授权签署的情况下，合同额度才会被返还。
 //
 // - **不返还的情况**：如果合同已过期、被拒签、签署完成或已解除，合同额度将不会被返还。
 //
 // 
 //
-// ### 6. 静默（自动）签署的限制
+// ### 6. 授权签署的限制
 //
-// - 在使用静默（自动）签署功能时，合同签署方不能有填写控件。<font color="red">此接口静默签(企业自动签)能力为白名单功能</font>，使用前请联系对接的客户经理沟通。
+// - 在使用授权签署功能时，合同签署方不能有填写控件。<font color="red">此接口授权签(企业授权签)能力为白名单功能</font>，使用前请联系对接的客户经理沟通。
 //
 // 
 //
@@ -3967,7 +3967,7 @@ func NewChannelCreateUserAutoSignEnableUrlResponse() (response *ChannelCreateUse
 }
 
 // ChannelCreateUserAutoSignEnableUrl
-// 获取个人用户自动签的开通链接。
+// 获取个人用户授权签的开通链接。
 //
 // 
 //
@@ -3991,7 +3991,7 @@ func (c *Client) ChannelCreateUserAutoSignEnableUrl(request *ChannelCreateUserAu
 }
 
 // ChannelCreateUserAutoSignEnableUrl
-// 获取个人用户自动签的开通链接。
+// 获取个人用户授权签的开通链接。
 //
 // 
 //
@@ -4047,15 +4047,15 @@ func NewChannelCreateUserAutoSignSealUrlResponse() (response *ChannelCreateUserA
 }
 
 // ChannelCreateUserAutoSignSealUrl
-// 获取设置自动签印章小程序链接。
+// 获取设置授权签印章小程序链接。
 //
 // 
 //
 // 注意：
 //
-// <ul><li>需要<code>企业开通自动签</code>后使用。</li>
+// <ul><li>需要<code>企业开通授权签</code>后使用。</li>
 //
-// <li>仅支持<code>已经开通了自动签的个人</code>更换自动签印章。</li>
+// <li>仅支持<code>已经开通了授权签的个人</code>更换授权签印章。</li>
 //
 // <li>链接有效期默认7天，<code>最多30天</code>。</li>
 //
@@ -4077,15 +4077,15 @@ func (c *Client) ChannelCreateUserAutoSignSealUrl(request *ChannelCreateUserAuto
 }
 
 // ChannelCreateUserAutoSignSealUrl
-// 获取设置自动签印章小程序链接。
+// 获取设置授权签印章小程序链接。
 //
 // 
 //
 // 注意：
 //
-// <ul><li>需要<code>企业开通自动签</code>后使用。</li>
+// <ul><li>需要<code>企业开通授权签</code>后使用。</li>
 //
-// <li>仅支持<code>已经开通了自动签的个人</code>更换自动签印章。</li>
+// <li>仅支持<code>已经开通了授权签的个人</code>更换授权签印章。</li>
 //
 // <li>链接有效期默认7天，<code>最多30天</code>。</li>
 //
@@ -5161,7 +5161,7 @@ func NewChannelDescribeUserAutoSignStatusResponse() (response *ChannelDescribeUs
 }
 
 // ChannelDescribeUserAutoSignStatus
-// 通过此接口获取个人用户自动签的开通状态。
+// 通过此接口获取个人用户授权签的开通状态。
 //
 // 
 //
@@ -5182,7 +5182,7 @@ func (c *Client) ChannelDescribeUserAutoSignStatus(request *ChannelDescribeUserA
 }
 
 // ChannelDescribeUserAutoSignStatus
-// 通过此接口获取个人用户自动签的开通状态。
+// 通过此接口获取个人用户授权签的开通状态。
 //
 // 
 //
@@ -5235,7 +5235,7 @@ func NewChannelDisableUserAutoSignResponse() (response *ChannelDisableUserAutoSi
 }
 
 // ChannelDisableUserAutoSign
-// 通过此接口可以关闭个人用户自动签功能。
+// 通过此接口可以关闭个人用户授权签功能。
 //
 // 无需对应的用户刷脸等方式同意即可关闭。
 //
@@ -5247,7 +5247,7 @@ func NewChannelDisableUserAutoSignResponse() (response *ChannelDisableUserAutoSi
 //
 // <ul><li>处方单等特殊场景专用，此接口为白名单功能，使用前请联系对接的客户经理沟通。</li>
 //
-// <li>如果此用户在开通时候绑定过个人自动签账号许可,  关闭此用户的自动签不会归还个人自动签账号许可的额度。</li></ul>
+// <li>如果此用户在开通时候绑定过个人授权签账号许可,  关闭此用户的授权签不会归还个人授权签账号许可的额度。</li></ul>
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -5266,7 +5266,7 @@ func (c *Client) ChannelDisableUserAutoSign(request *ChannelDisableUserAutoSignR
 }
 
 // ChannelDisableUserAutoSign
-// 通过此接口可以关闭个人用户自动签功能。
+// 通过此接口可以关闭个人用户授权签功能。
 //
 // 无需对应的用户刷脸等方式同意即可关闭。
 //
@@ -5278,7 +5278,7 @@ func (c *Client) ChannelDisableUserAutoSign(request *ChannelDisableUserAutoSignR
 //
 // <ul><li>处方单等特殊场景专用，此接口为白名单功能，使用前请联系对接的客户经理沟通。</li>
 //
-// <li>如果此用户在开通时候绑定过个人自动签账号许可,  关闭此用户的自动签不会归还个人自动签账号许可的额度。</li></ul>
+// <li>如果此用户在开通时候绑定过个人授权签账号许可,  关闭此用户的授权签不会归还个人授权签账号许可的额度。</li></ul>
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -7549,7 +7549,7 @@ func NewCreateFlowGroupSignReviewResponse() (response *CreateFlowGroupSignReview
 }
 
 // CreateFlowGroupSignReview
-// 1. 在使用[通过多文件创建合同组签署流程](https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateFlowGroupByFiles)或[通过多模板创建合同组签署流程](https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateFlowGroupByTemplates)创建合同组签署流程时，若指定了参数以下参数为true,则可以调用此接口提交企业内部签署审批结果,即使是自动签署也需要进行审核通过才会进行签署。
+// 1. 在使用[通过多文件创建合同组签署流程](https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateFlowGroupByFiles)或[通过多模板创建合同组签署流程](https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateFlowGroupByTemplates)创建合同组签署流程时，若指定了参数以下参数为true,则可以调用此接口提交企业内部签署审批结果,即使是授权签署也需要进行审核通过才会进行签署。
 //
 //   - [FlowInfo.NeedSignReview](https://qian.tencent.com/developers/partnerApis/dataTypes/#flowinfo)
 //
@@ -7582,7 +7582,7 @@ func (c *Client) CreateFlowGroupSignReview(request *CreateFlowGroupSignReviewReq
 }
 
 // CreateFlowGroupSignReview
-// 1. 在使用[通过多文件创建合同组签署流程](https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateFlowGroupByFiles)或[通过多模板创建合同组签署流程](https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateFlowGroupByTemplates)创建合同组签署流程时，若指定了参数以下参数为true,则可以调用此接口提交企业内部签署审批结果,即使是自动签署也需要进行审核通过才会进行签署。
+// 1. 在使用[通过多文件创建合同组签署流程](https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateFlowGroupByFiles)或[通过多模板创建合同组签署流程](https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateFlowGroupByTemplates)创建合同组签署流程时，若指定了参数以下参数为true,则可以调用此接口提交企业内部签署审批结果,即使是授权签署也需要进行审核通过才会进行签署。
 //
 //   - [FlowInfo.NeedSignReview](https://qian.tencent.com/developers/partnerApis/dataTypes/#flowinfo)
 //
@@ -7719,7 +7719,7 @@ func NewCreateFlowsByTemplatesResponse() (response *CreateFlowsByTemplatesRespon
 //
 // ### 1.4 注意事项
 //
-// -  合同<font color="red">发起后就会扣减合同的额度</font> , 只有撤销没有参与方签署过或只有自动签署签署过的合同，且<font color="red">有撤销合同额度</font>的情形下，才会返还合同额度。（**过期，拒签，签署完成，解除完成等状态不会返还额度**）。具体可以参考 [合同撤销返还额度说明](https://qian.tencent.com/developers/partner/contract_cancel_quota) 。
+// -  合同<font color="red">发起后就会扣减合同的额度</font> , 只有撤销没有参与方签署过或只有【授权签署】签署过的合同，且<font color="red">有撤销合同额度</font>的情形下，才会返还合同额度。（**过期，拒签，签署完成，解除完成等状态不会返还额度**）。具体可以参考 [合同撤销返还额度说明](https://qian.tencent.com/developers/partner/contract_cancel_quota) 。
 //
 // - <font color="red">支持的证件类型</font>可以参考 [支持的证件类型](https://qian.tencent.com/developers/partner/id_card_support) 。
 //
@@ -7729,7 +7729,7 @@ func NewCreateFlowsByTemplatesResponse() (response *CreateFlowsByTemplatesRespon
 //
 // - 关于填写方与签署方的<font color="red">填写、签署先后顺序</font>设置，详见 [填写与签署顺序说明](https://qian.tencent.com/developers/partner/fill_sign_order)。
 //
-// - 关于<font color="red">本企业自动签署与其他企业自动签署</font>的配置与使用，详见 [自动签署](https://qian.tencent.com/developers/partner/autosign_guide)。
+// - 关于<font color="red">本企业授权签署与其他企业授权签署</font>的配置与使用，详见 [授权签署](https://qian.tencent.com/developers/partner/autosign_guide)。
 //
 // - 如若在模板中配置了[动态表格](https://qian.tencent.com/developers/partner/dynamic_table), 如果模板中配有附件控件，上传的附件必须为A4尺寸的PDF。
 //
@@ -7739,7 +7739,7 @@ func NewCreateFlowsByTemplatesResponse() (response *CreateFlowsByTemplatesRespon
 //
 // 
 //
-// 1. <a href="https://dyn.ess.tencent.cn/guide/apivideo/essbasic-CreateTemplates.mp4" target="_blank">创建模板 & 设置成本企业自动签署</a>
+// 1. <a href="https://dyn.ess.tencent.cn/guide/apivideo/essbasic-CreateTemplates.mp4" target="_blank">创建模板 & 设置成本企业授权签署</a>
 //
 // 2. <a href="https://dyn.ess.tencent.cn/guide/apivideo/essbasic-CreateFlowsByTemplates.mp4" target="_blank">【用模板创建签署流程】编写示例视频教程</a>
 //
@@ -7850,7 +7850,7 @@ func (c *Client) CreateFlowsByTemplates(request *CreateFlowsByTemplatesRequest) 
 //
 // ### 1.4 注意事项
 //
-// -  合同<font color="red">发起后就会扣减合同的额度</font> , 只有撤销没有参与方签署过或只有自动签署签署过的合同，且<font color="red">有撤销合同额度</font>的情形下，才会返还合同额度。（**过期，拒签，签署完成，解除完成等状态不会返还额度**）。具体可以参考 [合同撤销返还额度说明](https://qian.tencent.com/developers/partner/contract_cancel_quota) 。
+// -  合同<font color="red">发起后就会扣减合同的额度</font> , 只有撤销没有参与方签署过或只有【授权签署】签署过的合同，且<font color="red">有撤销合同额度</font>的情形下，才会返还合同额度。（**过期，拒签，签署完成，解除完成等状态不会返还额度**）。具体可以参考 [合同撤销返还额度说明](https://qian.tencent.com/developers/partner/contract_cancel_quota) 。
 //
 // - <font color="red">支持的证件类型</font>可以参考 [支持的证件类型](https://qian.tencent.com/developers/partner/id_card_support) 。
 //
@@ -7860,7 +7860,7 @@ func (c *Client) CreateFlowsByTemplates(request *CreateFlowsByTemplatesRequest) 
 //
 // - 关于填写方与签署方的<font color="red">填写、签署先后顺序</font>设置，详见 [填写与签署顺序说明](https://qian.tencent.com/developers/partner/fill_sign_order)。
 //
-// - 关于<font color="red">本企业自动签署与其他企业自动签署</font>的配置与使用，详见 [自动签署](https://qian.tencent.com/developers/partner/autosign_guide)。
+// - 关于<font color="red">本企业授权签署与其他企业授权签署</font>的配置与使用，详见 [授权签署](https://qian.tencent.com/developers/partner/autosign_guide)。
 //
 // - 如若在模板中配置了[动态表格](https://qian.tencent.com/developers/partner/dynamic_table), 如果模板中配有附件控件，上传的附件必须为A4尺寸的PDF。
 //
@@ -7870,7 +7870,7 @@ func (c *Client) CreateFlowsByTemplates(request *CreateFlowsByTemplatesRequest) 
 //
 // 
 //
-// 1. <a href="https://dyn.ess.tencent.cn/guide/apivideo/essbasic-CreateTemplates.mp4" target="_blank">创建模板 & 设置成本企业自动签署</a>
+// 1. <a href="https://dyn.ess.tencent.cn/guide/apivideo/essbasic-CreateTemplates.mp4" target="_blank">创建模板 & 设置成本企业授权签署</a>
 //
 // 2. <a href="https://dyn.ess.tencent.cn/guide/apivideo/essbasic-CreateFlowsByTemplates.mp4" target="_blank">【用模板创建签署流程】编写示例视频教程</a>
 //
@@ -8379,7 +8379,7 @@ func NewCreatePersonAuthCertificateImageResponse() (response *CreatePersonAuthCe
 //
 // <li>只能获取个人用户证明图片, 企业员工的暂不支持</li>
 //
-// <li>专为电子处方单（医疗自动签）特定场景使用。在使用前，请务必与您的客户经理联系以确认已经开通电子处方单功能 </li>
+// <li>专为电子处方单（医疗授权签）特定场景使用。在使用前，请务必与您的客户经理联系以确认已经开通电子处方单功能 </li>
 //
 // </ul>
 //
@@ -8410,7 +8410,7 @@ func (c *Client) CreatePersonAuthCertificateImage(request *CreatePersonAuthCerti
 //
 // <li>只能获取个人用户证明图片, 企业员工的暂不支持</li>
 //
-// <li>专为电子处方单（医疗自动签）特定场景使用。在使用前，请务必与您的客户经理联系以确认已经开通电子处方单功能 </li>
+// <li>专为电子处方单（医疗授权签）特定场景使用。在使用前，请务必与您的客户经理联系以确认已经开通电子处方单功能 </li>
 //
 // </ul>
 //
@@ -9829,7 +9829,7 @@ func NewDescribeExtendedServiceAuthDetailResponse() (response *DescribeExtendedS
 //
 // 
 //
-// 1. **企业自动签**
+// 1. **企业授权签**
 //
 // 2. **批量签署**
 //
@@ -9857,7 +9857,7 @@ func (c *Client) DescribeExtendedServiceAuthDetail(request *DescribeExtendedServ
 //
 // 
 //
-// 1. **企业自动签**
+// 1. **企业授权签**
 //
 // 2. **批量签署**
 //
@@ -9917,7 +9917,7 @@ func NewDescribeExtendedServiceAuthInfoResponse() (response *DescribeExtendedSer
 //
 // 
 //
-// 1. **企业自动签**
+// 1. **企业授权签**
 //
 // 2. **企业与港澳台居民签署合同**
 //
@@ -9960,7 +9960,7 @@ func (c *Client) DescribeExtendedServiceAuthInfo(request *DescribeExtendedServic
 //
 // 
 //
-// 1. **企业自动签**
+// 1. **企业授权签**
 //
 // 2. **企业与港澳台居民签署合同**
 //
@@ -10495,7 +10495,7 @@ func NewDescribeTemplatesResponse() (response *DescribeTemplatesResponse) {
 //
 // <font color="red">相关视频指引</font> <br>
 //
-// 1. <a href="https://dyn.ess.tencent.cn/guide/apivideo/essbasic-CreateTemplates.mp4" target="_blank">创建模板&设置成本企业自动签署</a><br>
+// 1. <a href="https://dyn.ess.tencent.cn/guide/apivideo/essbasic-CreateTemplates.mp4" target="_blank">创建模板&设置成本企业授权签署</a><br>
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -10587,7 +10587,7 @@ func (c *Client) DescribeTemplates(request *DescribeTemplatesRequest) (response 
 //
 // <font color="red">相关视频指引</font> <br>
 //
-// 1. <a href="https://dyn.ess.tencent.cn/guide/apivideo/essbasic-CreateTemplates.mp4" target="_blank">创建模板&设置成本企业自动签署</a><br>
+// 1. <a href="https://dyn.ess.tencent.cn/guide/apivideo/essbasic-CreateTemplates.mp4" target="_blank">创建模板&设置成本企业授权签署</a><br>
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -10961,7 +10961,7 @@ func NewModifyExtendedServiceResponse() (response *ModifyExtendedServiceResponse
 //
 // - **需要法人或者超管签署开通协议的情形：** 当需要开通以下企业拓展服务时， 系统将返回一个操作链接。贵方需要主动联系并通知企业的超级管理员（超管）或法人。由他们点击该链接，完成服务的开通操作。
 //
-//   - **AUTO_SIGN（企业自动签）**
+//   - **AUTO_SIGN（企业授权签）**
 //
 //   - **DOWNLOAD_FLOW（授权渠道下载合同）**
 //
@@ -11001,7 +11001,7 @@ func (c *Client) ModifyExtendedService(request *ModifyExtendedServiceRequest) (r
 //
 // - **需要法人或者超管签署开通协议的情形：** 当需要开通以下企业拓展服务时， 系统将返回一个操作链接。贵方需要主动联系并通知企业的超级管理员（超管）或法人。由他们点击该链接，完成服务的开通操作。
 //
-//   - **AUTO_SIGN（企业自动签）**
+//   - **AUTO_SIGN（企业授权签）**
 //
 //   - **DOWNLOAD_FLOW（授权渠道下载合同）**
 //

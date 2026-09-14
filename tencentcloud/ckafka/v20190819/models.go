@@ -8103,6 +8103,9 @@ type EsParam struct {
 
 	// <p>集群版 ES 连接协议，默认http协议</p><p>枚举值：</p><ul><li>http： http协议</li><li>https： https协议</li></ul>
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
+
+	// <p>用户选择数据订阅任务的数据（如DTS）时，源数据的格式</p><p>枚举值：</p><ul><li>Debezium： Debezium格式json</li><li>Canal： Canal格式json</li></ul>
+	SourceDataFormat *string `json:"SourceDataFormat,omitnil,omitempty" name:"SourceDataFormat"`
 }
 
 type EsRecordMapping struct {

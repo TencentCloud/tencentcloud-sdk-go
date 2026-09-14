@@ -45,6 +45,50 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewCheckLabelRequest() (request *CheckLabelRequest) {
+    request = &CheckLabelRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "CheckLabel")
+    
+    
+    return
+}
+
+func NewCheckLabelResponse() (response *CheckLabelResponse) {
+    response = &CheckLabelResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CheckLabel
+// 校验标签下的标准词是否已存在
+func (c *Client) CheckLabel(request *CheckLabelRequest) (response *CheckLabelResponse, err error) {
+    return c.CheckLabelWithContext(context.Background(), request)
+}
+
+// CheckLabel
+// 校验标签下的标准词是否已存在
+func (c *Client) CheckLabelWithContext(ctx context.Context, request *CheckLabelRequest) (response *CheckLabelResponse, err error) {
+    if request == nil {
+        request = NewCheckLabelRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "CheckLabel")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CheckLabel require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCheckLabelResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCopyAgentFromAppRequest() (request *CopyAgentFromAppRequest) {
     request = &CopyAgentFromAppRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -265,6 +309,50 @@ func (c *Client) CreateAppTriggerWithContext(ctx context.Context, request *Creat
     return
 }
 
+func NewCreateCategoryRequest() (request *CreateCategoryRequest) {
+    request = &CreateCategoryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "CreateCategory")
+    
+    
+    return
+}
+
+func NewCreateCategoryResponse() (response *CreateCategoryResponse) {
+    response = &CreateCategoryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateCategory
+// 创建分类
+func (c *Client) CreateCategory(request *CreateCategoryRequest) (response *CreateCategoryResponse, err error) {
+    return c.CreateCategoryWithContext(context.Background(), request)
+}
+
+// CreateCategory
+// 创建分类
+func (c *Client) CreateCategoryWithContext(ctx context.Context, request *CreateCategoryRequest) (response *CreateCategoryResponse, err error) {
+    if request == nil {
+        request = NewCreateCategoryRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "CreateCategory")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCategory require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateCategoryResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateChannelRequest() (request *CreateChannelRequest) {
     request = &CreateChannelRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -349,6 +437,94 @@ func (c *Client) CreateConversationWithContext(ctx context.Context, request *Cre
     request.SetContext(ctx)
     
     response = NewCreateConversationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateKBRequest() (request *CreateKBRequest) {
+    request = &CreateKBRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "CreateKB")
+    
+    
+    return
+}
+
+func NewCreateKBResponse() (response *CreateKBResponse) {
+    response = &CreateKBResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateKB
+// 创建知识库
+func (c *Client) CreateKB(request *CreateKBRequest) (response *CreateKBResponse, err error) {
+    return c.CreateKBWithContext(context.Background(), request)
+}
+
+// CreateKB
+// 创建知识库
+func (c *Client) CreateKBWithContext(ctx context.Context, request *CreateKBRequest) (response *CreateKBResponse, err error) {
+    if request == nil {
+        request = NewCreateKBRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "CreateKB")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateKB require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateKBResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateLabelRequest() (request *CreateLabelRequest) {
+    request = &CreateLabelRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "CreateLabel")
+    
+    
+    return
+}
+
+func NewCreateLabelResponse() (response *CreateLabelResponse) {
+    response = &CreateLabelResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateLabel
+// 创建标签
+func (c *Client) CreateLabel(request *CreateLabelRequest) (response *CreateLabelResponse, err error) {
+    return c.CreateLabelWithContext(context.Background(), request)
+}
+
+// CreateLabel
+// 创建标签
+func (c *Client) CreateLabelWithContext(ctx context.Context, request *CreateLabelRequest) (response *CreateLabelResponse, err error) {
+    if request == nil {
+        request = NewCreateLabelRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "CreateLabel")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateLabel require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateLabelResponse()
     err = c.Send(request, response)
     return
 }
@@ -457,6 +633,110 @@ func (c *Client) CreatePluginWithContext(ctx context.Context, request *CreatePlu
     return
 }
 
+func NewCreateQAGenerationTaskRequest() (request *CreateQAGenerationTaskRequest) {
+    request = &CreateQAGenerationTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "CreateQAGenerationTask")
+    
+    
+    return
+}
+
+func NewCreateQAGenerationTaskResponse() (response *CreateQAGenerationTaskResponse) {
+    response = &CreateQAGenerationTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateQAGenerationTask
+// 创建 QA 生成任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateQAGenerationTask(request *CreateQAGenerationTaskRequest) (response *CreateQAGenerationTaskResponse, err error) {
+    return c.CreateQAGenerationTaskWithContext(context.Background(), request)
+}
+
+// CreateQAGenerationTask
+// 创建 QA 生成任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateQAGenerationTaskWithContext(ctx context.Context, request *CreateQAGenerationTaskRequest) (response *CreateQAGenerationTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateQAGenerationTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "CreateQAGenerationTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateQAGenerationTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateQAGenerationTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateQAListRequest() (request *CreateQAListRequest) {
+    request = &CreateQAListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "CreateQAList")
+    
+    
+    return
+}
+
+func NewCreateQAListResponse() (response *CreateQAListResponse) {
+    response = &CreateQAListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateQAList
+// 批量创建 QA
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateQAList(request *CreateQAListRequest) (response *CreateQAListResponse, err error) {
+    return c.CreateQAListWithContext(context.Background(), request)
+}
+
+// CreateQAList
+// 批量创建 QA
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateQAListWithContext(ctx context.Context, request *CreateQAListRequest) (response *CreateQAListResponse, err error) {
+    if request == nil {
+        request = NewCreateQAListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "CreateQAList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateQAList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateQAListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateReleaseRequest() (request *CreateReleaseRequest) {
     request = &CreateReleaseRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -505,6 +785,58 @@ func (c *Client) CreateReleaseWithContext(ctx context.Context, request *CreateRe
     request.SetContext(ctx)
     
     response = NewCreateReleaseResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateSimilarQuestionRequest() (request *CreateSimilarQuestionRequest) {
+    request = &CreateSimilarQuestionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "CreateSimilarQuestion")
+    
+    
+    return
+}
+
+func NewCreateSimilarQuestionResponse() (response *CreateSimilarQuestionResponse) {
+    response = &CreateSimilarQuestionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateSimilarQuestion
+// 创建相似问生成任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateSimilarQuestion(request *CreateSimilarQuestionRequest) (response *CreateSimilarQuestionResponse, err error) {
+    return c.CreateSimilarQuestionWithContext(context.Background(), request)
+}
+
+// CreateSimilarQuestion
+// 创建相似问生成任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateSimilarQuestionWithContext(ctx context.Context, request *CreateSimilarQuestionRequest) (response *CreateSimilarQuestionResponse, err error) {
+    if request == nil {
+        request = NewCreateSimilarQuestionRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "CreateSimilarQuestion")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateSimilarQuestion require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateSimilarQuestionResponse()
     err = c.Send(request, response)
     return
 }
@@ -963,6 +1295,56 @@ func (c *Client) DeleteAppTriggerWithContext(ctx context.Context, request *Delet
     return
 }
 
+func NewDeleteCategoryRequest() (request *DeleteCategoryRequest) {
+    request = &DeleteCategoryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "DeleteCategory")
+    
+    
+    return
+}
+
+func NewDeleteCategoryResponse() (response *DeleteCategoryResponse) {
+    response = &DeleteCategoryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteCategory
+// 删除分类
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DeleteCategory(request *DeleteCategoryRequest) (response *DeleteCategoryResponse, err error) {
+    return c.DeleteCategoryWithContext(context.Background(), request)
+}
+
+// DeleteCategory
+// 删除分类
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DeleteCategoryWithContext(ctx context.Context, request *DeleteCategoryRequest) (response *DeleteCategoryResponse, err error) {
+    if request == nil {
+        request = NewDeleteCategoryRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "DeleteCategory")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteCategory require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteCategoryResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteChannelRequest() (request *DeleteChannelRequest) {
     request = &DeleteChannelRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1059,6 +1441,156 @@ func (c *Client) DeleteConversationWithContext(ctx context.Context, request *Del
     request.SetContext(ctx)
     
     response = NewDeleteConversationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteDocListRequest() (request *DeleteDocListRequest) {
+    request = &DeleteDocListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "DeleteDocList")
+    
+    
+    return
+}
+
+func NewDeleteDocListResponse() (response *DeleteDocListResponse) {
+    response = &DeleteDocListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteDocList
+// 批量删除文档
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DeleteDocList(request *DeleteDocListRequest) (response *DeleteDocListResponse, err error) {
+    return c.DeleteDocListWithContext(context.Background(), request)
+}
+
+// DeleteDocList
+// 批量删除文档
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DeleteDocListWithContext(ctx context.Context, request *DeleteDocListRequest) (response *DeleteDocListResponse, err error) {
+    if request == nil {
+        request = NewDeleteDocListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "DeleteDocList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteDocList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteDocListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteKBRequest() (request *DeleteKBRequest) {
+    request = &DeleteKBRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "DeleteKB")
+    
+    
+    return
+}
+
+func NewDeleteKBResponse() (response *DeleteKBResponse) {
+    response = &DeleteKBResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteKB
+// 删除知识库
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DeleteKB(request *DeleteKBRequest) (response *DeleteKBResponse, err error) {
+    return c.DeleteKBWithContext(context.Background(), request)
+}
+
+// DeleteKB
+// 删除知识库
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DeleteKBWithContext(ctx context.Context, request *DeleteKBRequest) (response *DeleteKBResponse, err error) {
+    if request == nil {
+        request = NewDeleteKBRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "DeleteKB")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteKB require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteKBResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteLabelListRequest() (request *DeleteLabelListRequest) {
+    request = &DeleteLabelListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "DeleteLabelList")
+    
+    
+    return
+}
+
+func NewDeleteLabelListResponse() (response *DeleteLabelListResponse) {
+    response = &DeleteLabelListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteLabelList
+// 批量删除标签
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DeleteLabelList(request *DeleteLabelListRequest) (response *DeleteLabelListResponse, err error) {
+    return c.DeleteLabelListWithContext(context.Background(), request)
+}
+
+// DeleteLabelList
+// 批量删除标签
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DeleteLabelListWithContext(ctx context.Context, request *DeleteLabelListRequest) (response *DeleteLabelListResponse, err error) {
+    if request == nil {
+        request = NewDeleteLabelListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "DeleteLabelList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteLabelList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteLabelListResponse()
     err = c.Send(request, response)
     return
 }
@@ -1167,6 +1699,60 @@ func (c *Client) DeletePluginWithContext(ctx context.Context, request *DeletePlu
     request.SetContext(ctx)
     
     response = NewDeletePluginResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteQAListRequest() (request *DeleteQAListRequest) {
+    request = &DeleteQAListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "DeleteQAList")
+    
+    
+    return
+}
+
+func NewDeleteQAListResponse() (response *DeleteQAListResponse) {
+    response = &DeleteQAListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteQAList
+// 批量删除 QA
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteQAList(request *DeleteQAListRequest) (response *DeleteQAListResponse, err error) {
+    return c.DeleteQAListWithContext(context.Background(), request)
+}
+
+// DeleteQAList
+// 批量删除 QA
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteQAListWithContext(ctx context.Context, request *DeleteQAListRequest) (response *DeleteQAListResponse, err error) {
+    if request == nil {
+        request = NewDeleteQAListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "DeleteQAList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteQAList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteQAListResponse()
     err = c.Send(request, response)
     return
 }
@@ -2011,6 +2597,56 @@ func (c *Client) DescribeAuditLogMetaWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeCategoryListRequest() (request *DescribeCategoryListRequest) {
+    request = &DescribeCategoryListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "DescribeCategoryList")
+    
+    
+    return
+}
+
+func NewDescribeCategoryListResponse() (response *DescribeCategoryListResponse) {
+    response = &DescribeCategoryListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCategoryList
+// 查询分类列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeCategoryList(request *DescribeCategoryListRequest) (response *DescribeCategoryListResponse, err error) {
+    return c.DescribeCategoryListWithContext(context.Background(), request)
+}
+
+// DescribeCategoryList
+// 查询分类列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeCategoryListWithContext(ctx context.Context, request *DescribeCategoryListRequest) (response *DescribeCategoryListResponse, err error) {
+    if request == nil {
+        request = NewDescribeCategoryListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "DescribeCategoryList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCategoryList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCategoryListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeChannelRequest() (request *DescribeChannelRequest) {
     request = &DescribeChannelRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2159,6 +2795,110 @@ func (c *Client) DescribeConcurrencyLimitDetailListWithContext(ctx context.Conte
     request.SetContext(ctx)
     
     response = NewDescribeConcurrencyLimitDetailListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeConflictQARequest() (request *DescribeConflictQARequest) {
+    request = &DescribeConflictQARequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "DescribeConflictQA")
+    
+    
+    return
+}
+
+func NewDescribeConflictQAResponse() (response *DescribeConflictQAResponse) {
+    response = &DescribeConflictQAResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeConflictQA
+// 查询冲突问详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeConflictQA(request *DescribeConflictQARequest) (response *DescribeConflictQAResponse, err error) {
+    return c.DescribeConflictQAWithContext(context.Background(), request)
+}
+
+// DescribeConflictQA
+// 查询冲突问详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeConflictQAWithContext(ctx context.Context, request *DescribeConflictQARequest) (response *DescribeConflictQAResponse, err error) {
+    if request == nil {
+        request = NewDescribeConflictQARequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "DescribeConflictQA")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeConflictQA require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeConflictQAResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeConflictQASummaryListRequest() (request *DescribeConflictQASummaryListRequest) {
+    request = &DescribeConflictQASummaryListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "DescribeConflictQASummaryList")
+    
+    
+    return
+}
+
+func NewDescribeConflictQASummaryListResponse() (response *DescribeConflictQASummaryListResponse) {
+    response = &DescribeConflictQASummaryListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeConflictQASummaryList
+// 查询冲突问列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeConflictQASummaryList(request *DescribeConflictQASummaryListRequest) (response *DescribeConflictQASummaryListResponse, err error) {
+    return c.DescribeConflictQASummaryListWithContext(context.Background(), request)
+}
+
+// DescribeConflictQASummaryList
+// 查询冲突问列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeConflictQASummaryListWithContext(ctx context.Context, request *DescribeConflictQASummaryListRequest) (response *DescribeConflictQASummaryListResponse, err error) {
+    if request == nil {
+        request = NewDescribeConflictQASummaryListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "DescribeConflictQASummaryList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeConflictQASummaryList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeConflictQASummaryListResponse()
     err = c.Send(request, response)
     return
 }
@@ -2367,6 +3107,318 @@ func (c *Client) DescribeConversationMessageListWithContext(ctx context.Context,
     request.SetContext(ctx)
     
     response = NewDescribeConversationMessageListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDocRequest() (request *DescribeDocRequest) {
+    request = &DescribeDocRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "DescribeDoc")
+    
+    
+    return
+}
+
+func NewDescribeDocResponse() (response *DescribeDocResponse) {
+    response = &DescribeDocResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDoc
+// 查询文档详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeDoc(request *DescribeDocRequest) (response *DescribeDocResponse, err error) {
+    return c.DescribeDocWithContext(context.Background(), request)
+}
+
+// DescribeDoc
+// 查询文档详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeDocWithContext(ctx context.Context, request *DescribeDocRequest) (response *DescribeDocResponse, err error) {
+    if request == nil {
+        request = NewDescribeDocRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "DescribeDoc")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDoc require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDocResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDocSummaryListRequest() (request *DescribeDocSummaryListRequest) {
+    request = &DescribeDocSummaryListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "DescribeDocSummaryList")
+    
+    
+    return
+}
+
+func NewDescribeDocSummaryListResponse() (response *DescribeDocSummaryListResponse) {
+    response = &DescribeDocSummaryListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDocSummaryList
+// 查询文档摘要列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeDocSummaryList(request *DescribeDocSummaryListRequest) (response *DescribeDocSummaryListResponse, err error) {
+    return c.DescribeDocSummaryListWithContext(context.Background(), request)
+}
+
+// DescribeDocSummaryList
+// 查询文档摘要列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeDocSummaryListWithContext(ctx context.Context, request *DescribeDocSummaryListRequest) (response *DescribeDocSummaryListResponse, err error) {
+    if request == nil {
+        request = NewDescribeDocSummaryListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "DescribeDocSummaryList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDocSummaryList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDocSummaryListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeKBRequest() (request *DescribeKBRequest) {
+    request = &DescribeKBRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "DescribeKB")
+    
+    
+    return
+}
+
+func NewDescribeKBResponse() (response *DescribeKBResponse) {
+    response = &DescribeKBResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeKB
+// 查询知识库详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeKB(request *DescribeKBRequest) (response *DescribeKBResponse, err error) {
+    return c.DescribeKBWithContext(context.Background(), request)
+}
+
+// DescribeKB
+// 查询知识库详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeKBWithContext(ctx context.Context, request *DescribeKBRequest) (response *DescribeKBResponse, err error) {
+    if request == nil {
+        request = NewDescribeKBRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "DescribeKB")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeKB require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeKBResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeKBSummaryListRequest() (request *DescribeKBSummaryListRequest) {
+    request = &DescribeKBSummaryListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "DescribeKBSummaryList")
+    
+    
+    return
+}
+
+func NewDescribeKBSummaryListResponse() (response *DescribeKBSummaryListResponse) {
+    response = &DescribeKBSummaryListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeKBSummaryList
+// 查询知识库列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeKBSummaryList(request *DescribeKBSummaryListRequest) (response *DescribeKBSummaryListResponse, err error) {
+    return c.DescribeKBSummaryListWithContext(context.Background(), request)
+}
+
+// DescribeKBSummaryList
+// 查询知识库列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeKBSummaryListWithContext(ctx context.Context, request *DescribeKBSummaryListRequest) (response *DescribeKBSummaryListResponse, err error) {
+    if request == nil {
+        request = NewDescribeKBSummaryListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "DescribeKBSummaryList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeKBSummaryList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeKBSummaryListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeLabelRequest() (request *DescribeLabelRequest) {
+    request = &DescribeLabelRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "DescribeLabel")
+    
+    
+    return
+}
+
+func NewDescribeLabelResponse() (response *DescribeLabelResponse) {
+    response = &DescribeLabelResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeLabel
+// 查询标签详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeLabel(request *DescribeLabelRequest) (response *DescribeLabelResponse, err error) {
+    return c.DescribeLabelWithContext(context.Background(), request)
+}
+
+// DescribeLabel
+// 查询标签详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeLabelWithContext(ctx context.Context, request *DescribeLabelRequest) (response *DescribeLabelResponse, err error) {
+    if request == nil {
+        request = NewDescribeLabelRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "DescribeLabel")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLabel require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLabelResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeLabelSummaryListRequest() (request *DescribeLabelSummaryListRequest) {
+    request = &DescribeLabelSummaryListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "DescribeLabelSummaryList")
+    
+    
+    return
+}
+
+func NewDescribeLabelSummaryListResponse() (response *DescribeLabelSummaryListResponse) {
+    response = &DescribeLabelSummaryListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeLabelSummaryList
+// 查询标签列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeLabelSummaryList(request *DescribeLabelSummaryListRequest) (response *DescribeLabelSummaryListResponse, err error) {
+    return c.DescribeLabelSummaryListWithContext(context.Background(), request)
+}
+
+// DescribeLabelSummaryList
+// 查询标签列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeLabelSummaryListWithContext(ctx context.Context, request *DescribeLabelSummaryListRequest) (response *DescribeLabelSummaryListResponse, err error) {
+    if request == nil {
+        request = NewDescribeLabelSummaryListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "DescribeLabelSummaryList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLabelSummaryList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLabelSummaryListResponse()
     err = c.Send(request, response)
     return
 }
@@ -2731,6 +3783,110 @@ func (c *Client) DescribePluginSummaryListWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewDescribePluginSummaryListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeQARequest() (request *DescribeQARequest) {
+    request = &DescribeQARequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "DescribeQA")
+    
+    
+    return
+}
+
+func NewDescribeQAResponse() (response *DescribeQAResponse) {
+    response = &DescribeQAResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeQA
+// 查询 QA 详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeQA(request *DescribeQARequest) (response *DescribeQAResponse, err error) {
+    return c.DescribeQAWithContext(context.Background(), request)
+}
+
+// DescribeQA
+// 查询 QA 详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeQAWithContext(ctx context.Context, request *DescribeQARequest) (response *DescribeQAResponse, err error) {
+    if request == nil {
+        request = NewDescribeQARequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "DescribeQA")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeQA require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeQAResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeQASummaryListRequest() (request *DescribeQASummaryListRequest) {
+    request = &DescribeQASummaryListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "DescribeQASummaryList")
+    
+    
+    return
+}
+
+func NewDescribeQASummaryListResponse() (response *DescribeQASummaryListResponse) {
+    response = &DescribeQASummaryListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeQASummaryList
+// 查询 QA 列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeQASummaryList(request *DescribeQASummaryListRequest) (response *DescribeQASummaryListResponse, err error) {
+    return c.DescribeQASummaryListWithContext(context.Background(), request)
+}
+
+// DescribeQASummaryList
+// 查询 QA 列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeQASummaryListWithContext(ctx context.Context, request *DescribeQASummaryListRequest) (response *DescribeQASummaryListResponse, err error) {
+    if request == nil {
+        request = NewDescribeQASummaryListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "DescribeQASummaryList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeQASummaryList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeQASummaryListResponse()
     err = c.Send(request, response)
     return
 }
@@ -3355,6 +4511,58 @@ func (c *Client) DescribeVariableListWithContext(ctx context.Context, request *D
     return
 }
 
+func NewExportQARequest() (request *ExportQARequest) {
+    request = &ExportQARequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "ExportQA")
+    
+    
+    return
+}
+
+func NewExportQAResponse() (response *ExportQAResponse) {
+    response = &ExportQAResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ExportQA
+// 异步导出 QA
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ExportQA(request *ExportQARequest) (response *ExportQAResponse, err error) {
+    return c.ExportQAWithContext(context.Background(), request)
+}
+
+// ExportQA
+// 异步导出 QA
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ExportQAWithContext(ctx context.Context, request *ExportQARequest) (response *ExportQAResponse, err error) {
+    if request == nil {
+        request = NewExportQARequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "ExportQA")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ExportQA require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewExportQAResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewFavoritePluginRequest() (request *FavoritePluginRequest) {
     request = &FavoritePluginRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3455,6 +4663,58 @@ func (c *Client) FavoriteSkillWithContext(ctx context.Context, request *Favorite
     request.SetContext(ctx)
     
     response = NewFavoriteSkillResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewImportDocListRequest() (request *ImportDocListRequest) {
+    request = &ImportDocListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "ImportDocList")
+    
+    
+    return
+}
+
+func NewImportDocListResponse() (response *ImportDocListResponse) {
+    response = &ImportDocListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ImportDocList
+// 批量导入文档
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ImportDocList(request *ImportDocListRequest) (response *ImportDocListResponse, err error) {
+    return c.ImportDocListWithContext(context.Background(), request)
+}
+
+// ImportDocList
+// 批量导入文档
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ImportDocListWithContext(ctx context.Context, request *ImportDocListRequest) (response *ImportDocListResponse, err error) {
+    if request == nil {
+        request = NewImportDocListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "ImportDocList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ImportDocList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewImportDocListResponse()
     err = c.Send(request, response)
     return
 }
@@ -3615,6 +4875,58 @@ func (c *Client) ModifyAppTriggerWithContext(ctx context.Context, request *Modif
     return
 }
 
+func NewModifyCategoryRequest() (request *ModifyCategoryRequest) {
+    request = &ModifyCategoryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "ModifyCategory")
+    
+    
+    return
+}
+
+func NewModifyCategoryResponse() (response *ModifyCategoryResponse) {
+    response = &ModifyCategoryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyCategory
+// 修改分类
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyCategory(request *ModifyCategoryRequest) (response *ModifyCategoryResponse, err error) {
+    return c.ModifyCategoryWithContext(context.Background(), request)
+}
+
+// ModifyCategory
+// 修改分类
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyCategoryWithContext(ctx context.Context, request *ModifyCategoryRequest) (response *ModifyCategoryResponse, err error) {
+    if request == nil {
+        request = NewModifyCategoryRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "ModifyCategory")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyCategory require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyCategoryResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyChannelRequest() (request *ModifyChannelRequest) {
     request = &ModifyChannelRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3667,6 +4979,58 @@ func (c *Client) ModifyChannelWithContext(ctx context.Context, request *ModifyCh
     return
 }
 
+func NewModifyConflictQARequest() (request *ModifyConflictQARequest) {
+    request = &ModifyConflictQARequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "ModifyConflictQA")
+    
+    
+    return
+}
+
+func NewModifyConflictQAResponse() (response *ModifyConflictQAResponse) {
+    response = &ModifyConflictQAResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyConflictQA
+// 修改冲突问
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyConflictQA(request *ModifyConflictQARequest) (response *ModifyConflictQAResponse, err error) {
+    return c.ModifyConflictQAWithContext(context.Background(), request)
+}
+
+// ModifyConflictQA
+// 修改冲突问
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyConflictQAWithContext(ctx context.Context, request *ModifyConflictQARequest) (response *ModifyConflictQAResponse, err error) {
+    if request == nil {
+        request = NewModifyConflictQARequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "ModifyConflictQA")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyConflictQA require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyConflictQAResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyConversationRequest() (request *ModifyConversationRequest) {
     request = &ModifyConversationRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3715,6 +5079,214 @@ func (c *Client) ModifyConversationWithContext(ctx context.Context, request *Mod
     request.SetContext(ctx)
     
     response = NewModifyConversationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDocRequest() (request *ModifyDocRequest) {
+    request = &ModifyDocRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "ModifyDoc")
+    
+    
+    return
+}
+
+func NewModifyDocResponse() (response *ModifyDocResponse) {
+    response = &ModifyDocResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyDoc
+// 修改单个文档
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyDoc(request *ModifyDocRequest) (response *ModifyDocResponse, err error) {
+    return c.ModifyDocWithContext(context.Background(), request)
+}
+
+// ModifyDoc
+// 修改单个文档
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyDocWithContext(ctx context.Context, request *ModifyDocRequest) (response *ModifyDocResponse, err error) {
+    if request == nil {
+        request = NewModifyDocRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "ModifyDoc")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDoc require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDocResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDocListRequest() (request *ModifyDocListRequest) {
+    request = &ModifyDocListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "ModifyDocList")
+    
+    
+    return
+}
+
+func NewModifyDocListResponse() (response *ModifyDocListResponse) {
+    response = &ModifyDocListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyDocList
+// 批量修改文档
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyDocList(request *ModifyDocListRequest) (response *ModifyDocListResponse, err error) {
+    return c.ModifyDocListWithContext(context.Background(), request)
+}
+
+// ModifyDocList
+// 批量修改文档
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyDocListWithContext(ctx context.Context, request *ModifyDocListRequest) (response *ModifyDocListResponse, err error) {
+    if request == nil {
+        request = NewModifyDocListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "ModifyDocList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDocList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDocListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyKBRequest() (request *ModifyKBRequest) {
+    request = &ModifyKBRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "ModifyKB")
+    
+    
+    return
+}
+
+func NewModifyKBResponse() (response *ModifyKBResponse) {
+    response = &ModifyKBResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyKB
+// 修改知识库
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyKB(request *ModifyKBRequest) (response *ModifyKBResponse, err error) {
+    return c.ModifyKBWithContext(context.Background(), request)
+}
+
+// ModifyKB
+// 修改知识库
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyKBWithContext(ctx context.Context, request *ModifyKBRequest) (response *ModifyKBResponse, err error) {
+    if request == nil {
+        request = NewModifyKBRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "ModifyKB")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyKB require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyKBResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyLabelRequest() (request *ModifyLabelRequest) {
+    request = &ModifyLabelRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "ModifyLabel")
+    
+    
+    return
+}
+
+func NewModifyLabelResponse() (response *ModifyLabelResponse) {
+    response = &ModifyLabelResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyLabel
+// 修改标签
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyLabel(request *ModifyLabelRequest) (response *ModifyLabelResponse, err error) {
+    return c.ModifyLabelWithContext(context.Background(), request)
+}
+
+// ModifyLabel
+// 修改标签
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyLabelWithContext(ctx context.Context, request *ModifyLabelRequest) (response *ModifyLabelResponse, err error) {
+    if request == nil {
+        request = NewModifyLabelRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "ModifyLabel")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyLabel require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyLabelResponse()
     err = c.Send(request, response)
     return
 }
@@ -3823,6 +5395,114 @@ func (c *Client) ModifyPluginWithContext(ctx context.Context, request *ModifyPlu
     request.SetContext(ctx)
     
     response = NewModifyPluginResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyQARequest() (request *ModifyQARequest) {
+    request = &ModifyQARequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "ModifyQA")
+    
+    
+    return
+}
+
+func NewModifyQAResponse() (response *ModifyQAResponse) {
+    response = &ModifyQAResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyQA
+// 修改单个 QA
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyQA(request *ModifyQARequest) (response *ModifyQAResponse, err error) {
+    return c.ModifyQAWithContext(context.Background(), request)
+}
+
+// ModifyQA
+// 修改单个 QA
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyQAWithContext(ctx context.Context, request *ModifyQARequest) (response *ModifyQAResponse, err error) {
+    if request == nil {
+        request = NewModifyQARequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "ModifyQA")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyQA require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyQAResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyQAListRequest() (request *ModifyQAListRequest) {
+    request = &ModifyQAListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "ModifyQAList")
+    
+    
+    return
+}
+
+func NewModifyQAListResponse() (response *ModifyQAListResponse) {
+    response = &ModifyQAListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyQAList
+// 批量修改 QA
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyQAList(request *ModifyQAListRequest) (response *ModifyQAListResponse, err error) {
+    return c.ModifyQAListWithContext(context.Background(), request)
+}
+
+// ModifyQAList
+// 批量修改 QA
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyQAListWithContext(ctx context.Context, request *ModifyQAListRequest) (response *ModifyQAListResponse, err error) {
+    if request == nil {
+        request = NewModifyQAListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "ModifyQAList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyQAList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyQAListResponse()
     err = c.Send(request, response)
     return
 }
@@ -4331,6 +6011,56 @@ func (c *Client) RunAppTriggerNowWithContext(ctx context.Context, request *RunAp
     request.SetContext(ctx)
     
     response = NewRunAppTriggerNowResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSearchKnowledgeRequest() (request *SearchKnowledgeRequest) {
+    request = &SearchKnowledgeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "SearchKnowledge")
+    
+    
+    return
+}
+
+func NewSearchKnowledgeResponse() (response *SearchKnowledgeResponse) {
+    response = &SearchKnowledgeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SearchKnowledge
+// 知识检索
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) SearchKnowledge(request *SearchKnowledgeRequest) (response *SearchKnowledgeResponse, err error) {
+    return c.SearchKnowledgeWithContext(context.Background(), request)
+}
+
+// SearchKnowledge
+// 知识检索
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) SearchKnowledgeWithContext(ctx context.Context, request *SearchKnowledgeRequest) (response *SearchKnowledgeResponse, err error) {
+    if request == nil {
+        request = NewSearchKnowledgeRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "SearchKnowledge")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SearchKnowledge require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSearchKnowledgeResponse()
     err = c.Send(request, response)
     return
 }

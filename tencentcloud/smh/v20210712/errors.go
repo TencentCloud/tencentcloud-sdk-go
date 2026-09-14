@@ -92,6 +92,9 @@ const (
 	// 缺少参数错误。
 	MISSINGPARAMETER = "MissingParameter"
 
+	// 合作伙伴专用账号无法进行消费
+	OPERATIONDENIED_PARTNERACCOUNTNOTSUPPORTED = "OperationDenied.PartnerAccountNotSupported"
+
 	// 发送至指定手机号码的短信验证码已达到频率限制。
 	REQUESTLIMITEXCEEDED_SENDSMS = "RequestLimitExceeded.SendSms"
 
@@ -107,8 +110,17 @@ const (
 	// 同 (LibraryId, AccountUserId) 下不存在非销毁状态的预付费实例（可能从未购买，或已被退订销毁）
 	RESOURCENOTFOUND_PREPAIDINSTANCE = "ResourceNotFound.PrepaidInstance"
 
+	// 账号缺少财务交易权限（finance:trade），请授权后重试
+	UNAUTHORIZEDOPERATION_FINANCETRADENOTAUTHORIZED = "UnauthorizedOperation.FinanceTradeNotAuthorized"
+
+	// 操作账号无效：仅支持主账号、子账号、协作者或角色操作该资源
+	UNAUTHORIZEDOPERATION_INVALIDOPERATEUIN = "UnauthorizedOperation.InvalidOperateUin"
+
 	// 未授予 cam:PassRole 权限。
 	UNAUTHORIZEDOPERATION_PASSROLE = "UnauthorizedOperation.PassRole"
+
+	// 后付费下单被计费拒绝
+	UNAUTHORIZEDOPERATION_POSTPAIDFAIL = "UnauthorizedOperation.PostpaidFail"
 
 	// 未授予 SMH 服务相关角色。
 	UNAUTHORIZEDOPERATION_SERVICELINKEDROLE = "UnauthorizedOperation.ServiceLinkedRole"
