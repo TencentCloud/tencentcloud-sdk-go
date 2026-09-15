@@ -7,6 +7,8 @@ import (
 	"strings"
 	"sync"
 	"time"
+
+	tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
 )
 
 const (
@@ -15,6 +17,10 @@ const (
 	defaultMaxFailPercentage = 75
 	defaultWindowLength      = 1 * 60 * time.Second
 	defaultTimeout           = 60 * time.Second
+	// defaultMaxRequests is the number of consecutive successful probe
+	// requests required in StateHalfOpen before the breaker transitions
+	// back to StateClosed.
+	defaultMaxRequests = 5
 )
 
 var (
@@ -22,8 +28,8 @@ var (
 	errOpenState = errors.New("circuit breaker is open")
 )
 
-// counter use atomic operations to ensure consistency
-// Atomic operations perform better than mutex
+// counter is not safe for concurrent use on its own; callers must
+// synchronize access via the enclosing circuitBreaker's mutex.
 type counter struct {
 	failures             int
 	all                  int
@@ -50,13 +56,14 @@ func (c *counter) onFailure() {
 	c.all++
 	c.failures++
 	c.consecutiveSuccesses = 0
-	c.consecutiveSuccesses = 0
+	c.consecutiveFailures++
 }
 
 func (c *counter) clear() {
 	c.all = 0
 	c.failures = 0
 	c.consecutiveSuccesses = 0
+	c.consecutiveFailures = 0
 }
 
 // State is a type that represents a state of CircuitBreaker.
@@ -80,7 +87,7 @@ type breakerSetting struct {
 	// the default is 75/100
 	maxFailPercentage int
 	// windowInterval decides when to reset counter if the state is StateClosed
-	// the default is 5minutes
+	// the default is 1 minute
 	windowInterval time.Duration
 	// timeout decides when to turn StateOpen to StateHalfOpen
 	// the default is 60s
@@ -120,6 +127,7 @@ func defaultRegionBreaker() *circuitBreaker {
 		maxFailPercentage: defaultMaxFailPercentage,
 		windowInterval:    defaultWindowLength,
 		timeout:           defaultTimeout,
+		maxRequests:       defaultMaxRequests,
 	}
 	return newRegionBreaker(defaultSet)
 }
@@ -214,7 +222,7 @@ func (s *circuitBreaker) onSuccess(state state, now time.Time) {
 func (s *circuitBreaker) readyToOpen(c counter) bool {
 	failPre := float64(c.failures) / float64(c.all)
 	return (c.failures >= s.maxFailNum && failPre >= float64(s.maxFailPercentage)/100.0) ||
-		c.consecutiveFailures > 5
+		c.consecutiveFailures >= s.maxFailNum
 }
 
 func (s *circuitBreaker) onFailure(state state, now time.Time) {
@@ -256,4 +264,38 @@ func renewUrl(oldDomain, region string) string {
 	}
 	newDomain := strings.Join(ss, ".")
 	return newDomain
+}
+
+// isBreakerSuccess decides whether a sendWithSignature result counts as a
+// success for the regional circuit breaker.
+//
+// The breaker tracks region health, not per-call business outcome. So:
+//   - nil err: the request round-tripped and parsed cleanly → region healthy.
+//   - *TencentCloudSDKError with a RequestId: the region answered with a
+//     structured error (e.g. AuthFailure). The user's call failed but the
+//     region is up → success for breaker accounting. The single exception is
+//     "InternalError", which the API uses to signal a region-side fault.
+//   - Anything else (transport errors, locally-fabricated errors with no
+//     RequestId): the region did not answer → failure.
+//
+// This helper exists because the previous inline logic in sendWithRegionBreaker
+// only set isSuccess=true inside the `err.(*TencentCloudSDKError)` branch,
+// silently classifying every nil-error (i.e. genuinely successful) call as a
+// failure. After 5 successes the breaker would open and route traffic to the
+// backup endpoint.
+func isBreakerSuccess(err error) bool {
+	if err == nil {
+		return true
+	}
+	e, ok := err.(*tcerr.TencentCloudSDKError)
+	if !ok {
+		return false
+	}
+	if e.GetRequestId() == "" {
+		return false
+	}
+	if e.GetCode() == "InternalError" {
+		return false
+	}
+	return true
 }
