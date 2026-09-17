@@ -1351,6 +1351,58 @@ func (c *Client) CreateMySQLWithContext(ctx context.Context, request *CreateMySQ
     return
 }
 
+func NewCreatePlatformEnvRequest() (request *CreatePlatformEnvRequest) {
+    request = &CreatePlatformEnvRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "CreatePlatformEnv")
+    
+    
+    return
+}
+
+func NewCreatePlatformEnvResponse() (response *CreatePlatformEnvResponse) {
+    response = &CreatePlatformEnvResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreatePlatformEnv
+// 用户在购买平台版套餐后，可调用此接口创建平台版套餐环境，将产生一个平台版套餐环境。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYS_ERR = "InternalError.SYS_ERR"
+//  INVALIDPARAMETER_INVALID_PARAM = "InvalidParameter.INVALID_PARAM"
+func (c *Client) CreatePlatformEnv(request *CreatePlatformEnvRequest) (response *CreatePlatformEnvResponse, err error) {
+    return c.CreatePlatformEnvWithContext(context.Background(), request)
+}
+
+// CreatePlatformEnv
+// 用户在购买平台版套餐后，可调用此接口创建平台版套餐环境，将产生一个平台版套餐环境。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYS_ERR = "InternalError.SYS_ERR"
+//  INVALIDPARAMETER_INVALID_PARAM = "InvalidParameter.INVALID_PARAM"
+func (c *Client) CreatePlatformEnvWithContext(ctx context.Context, request *CreatePlatformEnvRequest) (response *CreatePlatformEnvResponse, err error) {
+    if request == nil {
+        request = NewCreatePlatformEnvRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "CreatePlatformEnv")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreatePlatformEnv require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreatePlatformEnvResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateStaticStoreRequest() (request *CreateStaticStoreRequest) {
     request = &CreateStaticStoreRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4209,6 +4261,404 @@ func (c *Client) DescribePGUserMigrationWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribePlatformAccountCircleRequest() (request *DescribePlatformAccountCircleRequest) {
+    request = &DescribePlatformAccountCircleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribePlatformAccountCircle")
+    
+    
+    return
+}
+
+func NewDescribePlatformAccountCircleResponse() (response *DescribePlatformAccountCircleResponse) {
+    response = &DescribePlatformAccountCircleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribePlatformAccountCircle
+// 查询平台版资源计费周期。
+//
+// 云开发平台版资源点都是按月结算的，每个月都有一定的抵扣额度。
+//
+// 
+//
+// 例如：
+//
+//   某个平台版在 2026-01-05 购买了3个月(到期时间: 2026-04-05)，则他可以在以下3个周期内，分别享有40000资源点的额度：
+//
+//   1. 2026-01-05 ~ 2026-02-05 23:59:59
+//
+//   2. 2026-02-06 ~ 2026-03-05 23:59:59
+//
+//   3. 2026-03-06 ~ 2026-04-05 23:59:59
+//
+// 
+//
+// 本接口，用于获取平台版当前属于哪个计费周期内。
+//
+// 
+//
+// 影响范围：只读查询，不影响平台版资源
+//
+// 使用场景：控制台资源用量页面/API 主动查询当前计费周期等
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
+//  RESOURCEUNAVAILABLE_RESOURCEEXPIRED = "ResourceUnavailable.ResourceExpired"
+func (c *Client) DescribePlatformAccountCircle(request *DescribePlatformAccountCircleRequest) (response *DescribePlatformAccountCircleResponse, err error) {
+    return c.DescribePlatformAccountCircleWithContext(context.Background(), request)
+}
+
+// DescribePlatformAccountCircle
+// 查询平台版资源计费周期。
+//
+// 云开发平台版资源点都是按月结算的，每个月都有一定的抵扣额度。
+//
+// 
+//
+// 例如：
+//
+//   某个平台版在 2026-01-05 购买了3个月(到期时间: 2026-04-05)，则他可以在以下3个周期内，分别享有40000资源点的额度：
+//
+//   1. 2026-01-05 ~ 2026-02-05 23:59:59
+//
+//   2. 2026-02-06 ~ 2026-03-05 23:59:59
+//
+//   3. 2026-03-06 ~ 2026-04-05 23:59:59
+//
+// 
+//
+// 本接口，用于获取平台版当前属于哪个计费周期内。
+//
+// 
+//
+// 影响范围：只读查询，不影响平台版资源
+//
+// 使用场景：控制台资源用量页面/API 主动查询当前计费周期等
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
+//  RESOURCEUNAVAILABLE_RESOURCEEXPIRED = "ResourceUnavailable.ResourceExpired"
+func (c *Client) DescribePlatformAccountCircleWithContext(ctx context.Context, request *DescribePlatformAccountCircleRequest) (response *DescribePlatformAccountCircleResponse, err error) {
+    if request == nil {
+        request = NewDescribePlatformAccountCircleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribePlatformAccountCircle")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePlatformAccountCircle require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePlatformAccountCircleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePlatformCreditsUsageRequest() (request *DescribePlatformCreditsUsageRequest) {
+    request = &DescribePlatformCreditsUsageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribePlatformCreditsUsage")
+    
+    
+    return
+}
+
+func NewDescribePlatformCreditsUsageResponse() (response *DescribePlatformCreditsUsageResponse) {
+    response = &DescribePlatformCreditsUsageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribePlatformCreditsUsage
+// 查询平台版本资源点模式下的资源点用量
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
+//  RESOURCEUNAVAILABLE_RESOURCEEXPIRED = "ResourceUnavailable.ResourceExpired"
+func (c *Client) DescribePlatformCreditsUsage(request *DescribePlatformCreditsUsageRequest) (response *DescribePlatformCreditsUsageResponse, err error) {
+    return c.DescribePlatformCreditsUsageWithContext(context.Background(), request)
+}
+
+// DescribePlatformCreditsUsage
+// 查询平台版本资源点模式下的资源点用量
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
+//  RESOURCEUNAVAILABLE_RESOURCEEXPIRED = "ResourceUnavailable.ResourceExpired"
+func (c *Client) DescribePlatformCreditsUsageWithContext(ctx context.Context, request *DescribePlatformCreditsUsageRequest) (response *DescribePlatformCreditsUsageResponse, err error) {
+    if request == nil {
+        request = NewDescribePlatformCreditsUsageRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribePlatformCreditsUsage")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePlatformCreditsUsage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePlatformCreditsUsageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePlatformCreditsUsageDetailRequest() (request *DescribePlatformCreditsUsageDetailRequest) {
+    request = &DescribePlatformCreditsUsageDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribePlatformCreditsUsageDetail")
+    
+    
+    return
+}
+
+func NewDescribePlatformCreditsUsageDetailResponse() (response *DescribePlatformCreditsUsageDetailResponse) {
+    response = &DescribePlatformCreditsUsageDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribePlatformCreditsUsageDetail
+// 查询平台版资源点模式下的资源点用量及原始用量明细
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
+//  RESOURCEUNAVAILABLE_RESOURCEEXPIRED = "ResourceUnavailable.ResourceExpired"
+func (c *Client) DescribePlatformCreditsUsageDetail(request *DescribePlatformCreditsUsageDetailRequest) (response *DescribePlatformCreditsUsageDetailResponse, err error) {
+    return c.DescribePlatformCreditsUsageDetailWithContext(context.Background(), request)
+}
+
+// DescribePlatformCreditsUsageDetail
+// 查询平台版资源点模式下的资源点用量及原始用量明细
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
+//  RESOURCEUNAVAILABLE_RESOURCEEXPIRED = "ResourceUnavailable.ResourceExpired"
+func (c *Client) DescribePlatformCreditsUsageDetailWithContext(ctx context.Context, request *DescribePlatformCreditsUsageDetailRequest) (response *DescribePlatformCreditsUsageDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribePlatformCreditsUsageDetailRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribePlatformCreditsUsageDetail")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePlatformCreditsUsageDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePlatformCreditsUsageDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePlatformEnvUsageRequest() (request *DescribePlatformEnvUsageRequest) {
+    request = &DescribePlatformEnvUsageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribePlatformEnvUsage")
+    
+    
+    return
+}
+
+func NewDescribePlatformEnvUsageResponse() (response *DescribePlatformEnvUsageResponse) {
+    response = &DescribePlatformEnvUsageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribePlatformEnvUsage
+// 查询平台版环境资源用量
+//
+// 
+//
+// 指定查询范围，按资源类型返回各资源指标的用量及用量明细(按天)
+//
+// 用量信息包含资源点用量，原始用量值（如流量、调用次数、容量等），原始用量单位等
+//
+// 
+//
+// 影响范围：只读查询、不改变资源
+//
+// 使用场景：控制台用量页/API 查询平台版环境用量
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
+//  RESOURCEUNAVAILABLE_RESOURCEEXPIRED = "ResourceUnavailable.ResourceExpired"
+func (c *Client) DescribePlatformEnvUsage(request *DescribePlatformEnvUsageRequest) (response *DescribePlatformEnvUsageResponse, err error) {
+    return c.DescribePlatformEnvUsageWithContext(context.Background(), request)
+}
+
+// DescribePlatformEnvUsage
+// 查询平台版环境资源用量
+//
+// 
+//
+// 指定查询范围，按资源类型返回各资源指标的用量及用量明细(按天)
+//
+// 用量信息包含资源点用量，原始用量值（如流量、调用次数、容量等），原始用量单位等
+//
+// 
+//
+// 影响范围：只读查询、不改变资源
+//
+// 使用场景：控制台用量页/API 查询平台版环境用量
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
+//  RESOURCEUNAVAILABLE_RESOURCEEXPIRED = "ResourceUnavailable.ResourceExpired"
+func (c *Client) DescribePlatformEnvUsageWithContext(ctx context.Context, request *DescribePlatformEnvUsageRequest) (response *DescribePlatformEnvUsageResponse, err error) {
+    if request == nil {
+        request = NewDescribePlatformEnvUsageRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribePlatformEnvUsage")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePlatformEnvUsage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePlatformEnvUsageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePlatformsRequest() (request *DescribePlatformsRequest) {
+    request = &DescribePlatformsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribePlatforms")
+    
+    
+    return
+}
+
+func NewDescribePlatformsResponse() (response *DescribePlatformsResponse) {
+    response = &DescribePlatformsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribePlatforms
+// 查询平台版资源信息列表，返回信息包括
+//
+// 
+//
+// 1.平台版基础信息如资源id，所属地域等;
+//
+// 2.计费相关信息如：购买/过期时间，资源规格，计费状态等; 
+//
+// 3.底层资源信息如：存储，日志，静态托管等资源信息等;
+//
+// 
+//
+// 入参支持platformIds，可查询指定平台版套餐信息
+//
+// 
+//
+// 影响范围：查询接口，返回当前用户账号下平台版资源信息
+//
+// 使用场景：控制台展示平台版套餐信息/查平台版资源详情/资源状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
+//  RESOURCEUNAVAILABLE_RESOURCEEXPIRED = "ResourceUnavailable.ResourceExpired"
+func (c *Client) DescribePlatforms(request *DescribePlatformsRequest) (response *DescribePlatformsResponse, err error) {
+    return c.DescribePlatformsWithContext(context.Background(), request)
+}
+
+// DescribePlatforms
+// 查询平台版资源信息列表，返回信息包括
+//
+// 
+//
+// 1.平台版基础信息如资源id，所属地域等;
+//
+// 2.计费相关信息如：购买/过期时间，资源规格，计费状态等; 
+//
+// 3.底层资源信息如：存储，日志，静态托管等资源信息等;
+//
+// 
+//
+// 入参支持platformIds，可查询指定平台版套餐信息
+//
+// 
+//
+// 影响范围：查询接口，返回当前用户账号下平台版资源信息
+//
+// 使用场景：控制台展示平台版套餐信息/查平台版资源详情/资源状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
+//  RESOURCEUNAVAILABLE_RESOURCEEXPIRED = "ResourceUnavailable.ResourceExpired"
+func (c *Client) DescribePlatformsWithContext(ctx context.Context, request *DescribePlatformsRequest) (response *DescribePlatformsResponse, err error) {
+    if request == nil {
+        request = NewDescribePlatformsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribePlatforms")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePlatforms require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePlatformsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeQuotaDataRequest() (request *DescribeQuotaDataRequest) {
     request = &DescribeQuotaDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4831,6 +5281,56 @@ func (c *Client) DestroyMySQLWithContext(ctx context.Context, request *DestroyMy
     return
 }
 
+func NewDestroyPlatformEnvRequest() (request *DestroyPlatformEnvRequest) {
+    request = &DestroyPlatformEnvRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "DestroyPlatformEnv")
+    
+    
+    return
+}
+
+func NewDestroyPlatformEnvResponse() (response *DestroyPlatformEnvResponse) {
+    response = &DestroyPlatformEnvResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DestroyPlatformEnv
+// 用户可以调用本接口，删除平台版套餐下的指定平台版环境。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATASOURCENOTEXIST = "FailedOperation.DataSourceNotExist"
+func (c *Client) DestroyPlatformEnv(request *DestroyPlatformEnvRequest) (response *DestroyPlatformEnvResponse, err error) {
+    return c.DestroyPlatformEnvWithContext(context.Background(), request)
+}
+
+// DestroyPlatformEnv
+// 用户可以调用本接口，删除平台版套餐下的指定平台版环境。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATASOURCENOTEXIST = "FailedOperation.DataSourceNotExist"
+func (c *Client) DestroyPlatformEnvWithContext(ctx context.Context, request *DestroyPlatformEnvRequest) (response *DestroyPlatformEnvResponse, err error) {
+    if request == nil {
+        request = NewDestroyPlatformEnvRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DestroyPlatformEnv")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DestroyPlatformEnv require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDestroyPlatformEnvResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDestroyStaticStoreRequest() (request *DestroyStaticStoreRequest) {
     request = &DestroyStaticStoreRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4959,6 +5459,7 @@ func NewExecutePGSqlResponse() (response *ExecutePGSqlResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_INSTANCESTATUSCONFLICT = "FailedOperation.InstanceStatusConflict"
+//  FAILEDOPERATION_OPERATIONTIMEOUT = "FailedOperation.OperationTimeout"
 //  FAILEDOPERATION_PGCONNECTERROR = "FailedOperation.PGConnectError"
 //  FAILEDOPERATION_PGEXECUTESQLERROR = "FailedOperation.PGExecuteSqlError"
 //  FAILEDOPERATION_PGRESULTTOOLARGE = "FailedOperation.PGResultTooLarge"
@@ -4974,6 +5475,7 @@ func (c *Client) ExecutePGSql(request *ExecutePGSqlRequest) (response *ExecutePG
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_INSTANCESTATUSCONFLICT = "FailedOperation.InstanceStatusConflict"
+//  FAILEDOPERATION_OPERATIONTIMEOUT = "FailedOperation.OperationTimeout"
 //  FAILEDOPERATION_PGCONNECTERROR = "FailedOperation.PGConnectError"
 //  FAILEDOPERATION_PGEXECUTESQLERROR = "FailedOperation.PGExecuteSqlError"
 //  FAILEDOPERATION_PGRESULTTOOLARGE = "FailedOperation.PGResultTooLarge"
@@ -5875,6 +6377,56 @@ func (c *Client) ModifyPGInstanceSpecWithContext(ctx context.Context, request *M
     request.SetContext(ctx)
     
     response = NewModifyPGInstanceSpecResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyPlatformEnvRequest() (request *ModifyPlatformEnvRequest) {
+    request = &ModifyPlatformEnvRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "ModifyPlatformEnv")
+    
+    
+    return
+}
+
+func NewModifyPlatformEnvResponse() (response *ModifyPlatformEnvResponse) {
+    response = &ModifyPlatformEnvResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyPlatformEnv
+// 修改平台版环境信息
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyPlatformEnv(request *ModifyPlatformEnvRequest) (response *ModifyPlatformEnvResponse, err error) {
+    return c.ModifyPlatformEnvWithContext(context.Background(), request)
+}
+
+// ModifyPlatformEnv
+// 修改平台版环境信息
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyPlatformEnvWithContext(ctx context.Context, request *ModifyPlatformEnvRequest) (response *ModifyPlatformEnvResponse, err error) {
+    if request == nil {
+        request = NewModifyPlatformEnvRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "ModifyPlatformEnv")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyPlatformEnv require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyPlatformEnvResponse()
     err = c.Send(request, response)
     return
 }

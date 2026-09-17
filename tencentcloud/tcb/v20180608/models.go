@@ -2222,6 +2222,77 @@ type CreateMySQLResult struct {
 }
 
 // Predefined struct for user
+type CreatePlatformEnvRequestParams struct {
+	// <p>环境别名</p>
+	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
+
+	// <p>套餐池标识</p>
+	PlatformId *string `json:"PlatformId,omitnil,omitempty" name:"PlatformId"`
+
+	// <p>幂等键</p>
+	ReqKey *string `json:"ReqKey,omitnil,omitempty" name:"ReqKey"`
+}
+
+type CreatePlatformEnvRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>环境别名</p>
+	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
+
+	// <p>套餐池标识</p>
+	PlatformId *string `json:"PlatformId,omitnil,omitempty" name:"PlatformId"`
+
+	// <p>幂等键</p>
+	ReqKey *string `json:"ReqKey,omitnil,omitempty" name:"ReqKey"`
+}
+
+func (r *CreatePlatformEnvRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePlatformEnvRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Alias")
+	delete(f, "PlatformId")
+	delete(f, "ReqKey")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePlatformEnvRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreatePlatformEnvResponseParams struct {
+	// <p>环境id</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreatePlatformEnvResponse struct {
+	*tchttp.BaseResponse
+	Response *CreatePlatformEnvResponseParams `json:"Response"`
+}
+
+func (r *CreatePlatformEnvResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePlatformEnvResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateStaticStoreRequestParams struct {
 	// 环境ID
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
@@ -2524,6 +2595,17 @@ type CustomLogConfig struct {
 
 	// cls topicId
 	LogTopicId *string `json:"LogTopicId,omitnil,omitempty" name:"LogTopicId"`
+}
+
+type DailyUsageList struct {
+	// <p>资源点用量</p>
+	Credits *uint64 `json:"Credits,omitnil,omitempty" name:"Credits"`
+
+	// <p>资源点用量日期</p><p>参数格式：YYYY-MM-DD</p>
+	Date *string `json:"Date,omitnil,omitempty" name:"Date"`
+
+	// <p>原始资源用量</p>
+	UsageValue *uint64 `json:"UsageValue,omitnil,omitempty" name:"UsageValue"`
 }
 
 type DatabasesInfo struct {
@@ -5988,6 +6070,393 @@ func (r *DescribePGUserMigrationResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribePlatformAccountCircleRequestParams struct {
+
+}
+
+type DescribePlatformAccountCircleRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribePlatformAccountCircleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePlatformAccountCircleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePlatformAccountCircleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePlatformAccountCircleResponseParams struct {
+	// <p>套餐计费周期开始时间</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>套餐计费周期结束时间</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribePlatformAccountCircleResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePlatformAccountCircleResponseParams `json:"Response"`
+}
+
+func (r *DescribePlatformAccountCircleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePlatformAccountCircleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePlatformCreditsUsageDetailRequestParams struct {
+	// <p>模块列表</p><p>枚举值：</p><ul><li>FLEXDB： 文档数据库</li><li>TDSQL： MYSQL数据库</li><li>SCF： 云函数</li><li>AI： 大模型</li><li>EKS： 云托管</li><li>COS： 云存储</li><li>HOSTING： 静态托管</li><li>Auth： 用户权限</li><li>APIInvocation： API调用</li><li>HTTPInvocation： HTTP调用</li><li>VM： 主机</li><li>Workflow： 工作流</li><li>Other： 其他</li><li>PostgreSQL： PostgreSQL</li><li>Token： Token</li></ul>
+	Modules []*string `json:"Modules,omitnil,omitempty" name:"Modules"`
+
+	// <p>开始日期</p><p>参数格式：YYYY-MM-DD</p>
+	StartDate *string `json:"StartDate,omitnil,omitempty" name:"StartDate"`
+
+	// <p>结束日期</p><p>参数格式：YYYY-MM-DD</p>
+	EndDate *string `json:"EndDate,omitnil,omitempty" name:"EndDate"`
+
+	// <p>是否需要每日用量明细</p>
+	NeedUsageDetails *bool `json:"NeedUsageDetails,omitnil,omitempty" name:"NeedUsageDetails"`
+
+	// <p>平台版套餐id</p>
+	PlatformId *string `json:"PlatformId,omitnil,omitempty" name:"PlatformId"`
+}
+
+type DescribePlatformCreditsUsageDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>模块列表</p><p>枚举值：</p><ul><li>FLEXDB： 文档数据库</li><li>TDSQL： MYSQL数据库</li><li>SCF： 云函数</li><li>AI： 大模型</li><li>EKS： 云托管</li><li>COS： 云存储</li><li>HOSTING： 静态托管</li><li>Auth： 用户权限</li><li>APIInvocation： API调用</li><li>HTTPInvocation： HTTP调用</li><li>VM： 主机</li><li>Workflow： 工作流</li><li>Other： 其他</li><li>PostgreSQL： PostgreSQL</li><li>Token： Token</li></ul>
+	Modules []*string `json:"Modules,omitnil,omitempty" name:"Modules"`
+
+	// <p>开始日期</p><p>参数格式：YYYY-MM-DD</p>
+	StartDate *string `json:"StartDate,omitnil,omitempty" name:"StartDate"`
+
+	// <p>结束日期</p><p>参数格式：YYYY-MM-DD</p>
+	EndDate *string `json:"EndDate,omitnil,omitempty" name:"EndDate"`
+
+	// <p>是否需要每日用量明细</p>
+	NeedUsageDetails *bool `json:"NeedUsageDetails,omitnil,omitempty" name:"NeedUsageDetails"`
+
+	// <p>平台版套餐id</p>
+	PlatformId *string `json:"PlatformId,omitnil,omitempty" name:"PlatformId"`
+}
+
+func (r *DescribePlatformCreditsUsageDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePlatformCreditsUsageDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Modules")
+	delete(f, "StartDate")
+	delete(f, "EndDate")
+	delete(f, "NeedUsageDetails")
+	delete(f, "PlatformId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePlatformCreditsUsageDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePlatformCreditsUsageDetailResponseParams struct {
+	// <p>用量数据</p>
+	Usages []*PlatformPkgCreditsUsage `json:"Usages,omitnil,omitempty" name:"Usages"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribePlatformCreditsUsageDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePlatformCreditsUsageDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribePlatformCreditsUsageDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePlatformCreditsUsageDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePlatformCreditsUsageRequestParams struct {
+	// <p>开始日期</p><p>参数格式：2025-09-22</p>
+	StartDate *string `json:"StartDate,omitnil,omitempty" name:"StartDate"`
+
+	// <p>结束日期</p><p>参数格式：2025-09-22</p>
+	EndDate *string `json:"EndDate,omitnil,omitempty" name:"EndDate"`
+
+	// <p>平台版套餐id</p>
+	PlatformId *string `json:"PlatformId,omitnil,omitempty" name:"PlatformId"`
+}
+
+type DescribePlatformCreditsUsageRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>开始日期</p><p>参数格式：2025-09-22</p>
+	StartDate *string `json:"StartDate,omitnil,omitempty" name:"StartDate"`
+
+	// <p>结束日期</p><p>参数格式：2025-09-22</p>
+	EndDate *string `json:"EndDate,omitnil,omitempty" name:"EndDate"`
+
+	// <p>平台版套餐id</p>
+	PlatformId *string `json:"PlatformId,omitnil,omitempty" name:"PlatformId"`
+}
+
+func (r *DescribePlatformCreditsUsageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePlatformCreditsUsageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartDate")
+	delete(f, "EndDate")
+	delete(f, "PlatformId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePlatformCreditsUsageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePlatformCreditsUsageResponseParams struct {
+	// <p>资源点套餐内用量总和</p>
+	DeductValueCount *float64 `json:"DeductValueCount,omitnil,omitempty" name:"DeductValueCount"`
+
+	// <p>资源点资源包用量总和</p>
+	PackageDeductValueCount *float64 `json:"PackageDeductValueCount,omitnil,omitempty" name:"PackageDeductValueCount"`
+
+	// <p>资源点按量用量总和</p>
+	ReportValueCount *float64 `json:"ReportValueCount,omitnil,omitempty" name:"ReportValueCount"`
+
+	// <p>每日消耗具体数据</p>
+	DailyList []*PlatformCreditsUsageDaily `json:"DailyList,omitnil,omitempty" name:"DailyList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribePlatformCreditsUsageResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePlatformCreditsUsageResponseParams `json:"Response"`
+}
+
+func (r *DescribePlatformCreditsUsageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePlatformCreditsUsageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePlatformEnvUsageRequestParams struct {
+	// <p>环境Id</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// <p>查询用量起始时间</p><p>参数格式：YYYY-MM-DD</p>
+	StartDate *string `json:"StartDate,omitnil,omitempty" name:"StartDate"`
+
+	// <p>查询用量结束时间</p><p>参数格式：YYYY-MM-DD</p>
+	EndDate *string `json:"EndDate,omitnil,omitempty" name:"EndDate"`
+
+	// <p>资源类型</p><p>枚举值：</p><ul><li>Storage： 云存储</li><li>Function： 云函数</li><li>Database： 数据库</li></ul>
+	ResourceTypes []*string `json:"ResourceTypes,omitnil,omitempty" name:"ResourceTypes"`
+
+	// <p>是否展示用量明细</p>
+	NeedUsageDetails *bool `json:"NeedUsageDetails,omitnil,omitempty" name:"NeedUsageDetails"`
+}
+
+type DescribePlatformEnvUsageRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>环境Id</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// <p>查询用量起始时间</p><p>参数格式：YYYY-MM-DD</p>
+	StartDate *string `json:"StartDate,omitnil,omitempty" name:"StartDate"`
+
+	// <p>查询用量结束时间</p><p>参数格式：YYYY-MM-DD</p>
+	EndDate *string `json:"EndDate,omitnil,omitempty" name:"EndDate"`
+
+	// <p>资源类型</p><p>枚举值：</p><ul><li>Storage： 云存储</li><li>Function： 云函数</li><li>Database： 数据库</li></ul>
+	ResourceTypes []*string `json:"ResourceTypes,omitnil,omitempty" name:"ResourceTypes"`
+
+	// <p>是否展示用量明细</p>
+	NeedUsageDetails *bool `json:"NeedUsageDetails,omitnil,omitempty" name:"NeedUsageDetails"`
+}
+
+func (r *DescribePlatformEnvUsageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePlatformEnvUsageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "StartDate")
+	delete(f, "EndDate")
+	delete(f, "ResourceTypes")
+	delete(f, "NeedUsageDetails")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePlatformEnvUsageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePlatformEnvUsageResponseParams struct {
+	// <p>资源用量信息</p>
+	Resources []*PlatformResUsageItem `json:"Resources,omitnil,omitempty" name:"Resources"`
+
+	// <p>资源点</p>
+	TotalCredits *uint64 `json:"TotalCredits,omitnil,omitempty" name:"TotalCredits"`
+
+	// <p>资源点取整倍数</p>
+	CreditsScale *uint64 `json:"CreditsScale,omitnil,omitempty" name:"CreditsScale"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribePlatformEnvUsageResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePlatformEnvUsageResponseParams `json:"Response"`
+}
+
+func (r *DescribePlatformEnvUsageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePlatformEnvUsageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePlatformsRequestParams struct {
+	// <p>平台版套餐id列表</p><p>默认值：若不指定，则分页返回当前账号下所有平台版资源</p>
+	PlatformIds []*string `json:"PlatformIds,omitnil,omitempty" name:"PlatformIds"`
+
+	// <p>分页限制</p><p>取值范围：[10, 100]</p><p>默认值：10</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>分页偏移量</p><p>默认值：0</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+type DescribePlatformsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>平台版套餐id列表</p><p>默认值：若不指定，则分页返回当前账号下所有平台版资源</p>
+	PlatformIds []*string `json:"PlatformIds,omitnil,omitempty" name:"PlatformIds"`
+
+	// <p>分页限制</p><p>取值范围：[10, 100]</p><p>默认值：10</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>分页偏移量</p><p>默认值：0</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+func (r *DescribePlatformsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePlatformsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PlatformIds")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePlatformsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePlatformsResponseParams struct {
+	// <p>平台版资源列表</p>
+	PlatformList []*PlatformInfo `json:"PlatformList,omitnil,omitempty" name:"PlatformList"`
+
+	// <p>总数</p>
+	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribePlatformsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePlatformsResponseParams `json:"Response"`
+}
+
+func (r *DescribePlatformsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePlatformsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeQuotaDataRequestParams struct {
 	// 环境ID
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
@@ -6769,6 +7238,60 @@ type DestroyMySQLResult struct {
 
 	// 任务名
 	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+}
+
+// Predefined struct for user
+type DestroyPlatformEnvRequestParams struct {
+	// <p>环境id</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+}
+
+type DestroyPlatformEnvRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>环境id</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+}
+
+func (r *DestroyPlatformEnvRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DestroyPlatformEnvRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DestroyPlatformEnvRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DestroyPlatformEnvResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DestroyPlatformEnvResponse struct {
+	*tchttp.BaseResponse
+	Response *DestroyPlatformEnvResponseParams `json:"Response"`
+}
+
+func (r *DestroyPlatformEnvResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DestroyPlatformEnvResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -7648,7 +8171,7 @@ type HTTPServiceCacheKeyParams struct {
 	// <p>QueryStringSwitch=on 时必填</p><p>枚举值：</p><ul><li>includeCustom： 白名单</li><li>excludeCustom： 黑名单</li></ul>
 	QueryStringAction *string `json:"QueryStringAction,omitnil,omitempty" name:"QueryStringAction"`
 
-	// <p>参数名列表</p><p>入参限制：最多 100 项，单项 1~128 字节</p>
+	// <p>参数名列表</p><p>入参限制：最多 30 项，单项 1~128 字节</p>
 	QueryStringValues []*string `json:"QueryStringValues,omitnil,omitempty" name:"QueryStringValues"`
 }
 
@@ -7721,7 +8244,7 @@ type HTTPServiceDomain struct {
 	// <p>域名类型。 HTTPSERVICE: HTTP访问服务，CBR: 云托管服务，ANYSERVICE: 任意服务，AI_AGENT: AI agent，VM: 主机，INTEGRATION_CALLBACK: 集成回调</p>
 	DomainType *string `json:"DomainType,omitnil,omitempty" name:"DomainType"`
 
-	// <p>绑定类型。默认DIRECT。DIRECT: 直连到HTTP访问服务， CDN: 接入云开发CDN，CUSTOM: 自定义接入类型（其他CDN或者WAF）</p>
+	// <p>绑定类型。默认DIRECT。DIRECT: 直连到HTTP访问服务， CDN: 接入云开发CDN，CUSTOM: 自定义接入类型（其他CDN或者WAF）</p><p>枚举值：</p><ul><li>DIRECT： 直连到HTTP访问服务</li><li>CDN： 接入云开发CDN（即将下线）</li><li>EO： 接入云开发EdgeOne</li><li>CUSTOM： 自定义接入类型（其他CDN或者WAF）</li><li>NONE： 不接入，当使用泛域名接入时，可通过NONE来接入子域名，子域名证书及协议继承泛域名</li></ul><p>默认值：DIRECT</p>
 	AccessType *string `json:"AccessType,omitnil,omitempty" name:"AccessType"`
 
 	// <p>证书ID。当前账户下SSL平台的证书ID</p>
@@ -7765,7 +8288,7 @@ type HTTPServiceDomainParam struct {
 	// <p>域名。全局唯一。如果域名在其他环境下占用或者腾讯云CDN占用，可能会导致创建失败</p>
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// <p>绑定类型</p><p>枚举值：</p><ul><li>DIRECT： 直连到HTTP访问服务</li><li>CDN： 接入云开发CDN（即将下线）</li><li>CUSTOM： 自定义接入类型（CDN、EO、WAF等接入）</li><li>EO： 接入云开发EdgeOne</li></ul><p>默认值：DIRECT</p>
+	// <p>绑定类型</p><p>枚举值：</p><ul><li>DIRECT： 直连到HTTP访问服务</li><li>CDN： 接入云开发CDN（即将下线）</li><li>EO： 接入云开发EdgeOne</li><li>NONE： 不接入，当使用泛域名接入时，可通过NONE来接入子域名，子域名证书及协议继承泛域名</li></ul><p>默认值：DIRECT</p>
 	AccessType *string `json:"AccessType,omitnil,omitempty" name:"AccessType"`
 
 	// <p>证书ID。当前账户下SSL平台的证书ID，无证书无法使用https访问</p>
@@ -7791,7 +8314,7 @@ type HTTPServiceExtension struct {
 	// <p>添加请求头列表</p>
 	HeadersHandler *HTTPServiceHeadersHandler `json:"HeadersHandler,omitnil,omitempty" name:"HeadersHandler"`
 
-	// <p>HTTPService 缓存配置，包含Cache 节点缓存 / MaxAge 浏览器缓存 / CacheKey 自定义缓存键</p>
+	// <p>HTTPService 缓存配置，仅限自定义域名配置。包含Cache 节点缓存 / MaxAge 浏览器缓存 / CacheKey 自定义缓存键</p>
 	Cache *HTTPServiceCacheSet `json:"Cache,omitnil,omitempty" name:"Cache"`
 }
 
@@ -7918,7 +8441,7 @@ type HTTPServiceRuleCondition struct {
 	// <p>MatchType 字符串匹配类型</p><p>枚举值：</p><ul><li>prefix：  前缀匹配</li><li>suffix： 后缀匹配</li><li>contains： 包含匹配</li><li>exact： 精确匹配</li></ul>
 	MatchType *string `json:"MatchType,omitnil,omitempty" name:"MatchType"`
 
-	// <p>Values 匹配值集合，Values 内任一命中即认为条件成立（OR 语义）</p><p>入参限制：单项 1~1024 字节，最多 100 条</p>
+	// <p>Values 匹配值集合，Values 内任一命中即认为条件成立（OR 语义）</p><p>入参限制：单项 1~1024 字节，最多 30 条</p>
 	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
 }
 
@@ -9277,6 +9800,67 @@ func (r *ModifyPGInstanceSpecResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyPlatformEnvRequestParams struct {
+	// <p>环境ID</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// <p>环境状态</p><p>枚举值：</p><ul><li>ENABLE： 启用环境</li><li>DISABLE： 禁用环境</li></ul>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+type ModifyPlatformEnvRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>环境ID</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// <p>环境状态</p><p>枚举值：</p><ul><li>ENABLE： 启用环境</li><li>DISABLE： 禁用环境</li></ul>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+func (r *ModifyPlatformEnvRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyPlatformEnvRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "Status")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyPlatformEnvRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyPlatformEnvResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyPlatformEnvResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyPlatformEnvResponseParams `json:"Response"`
+}
+
+func (r *ModifyPlatformEnvResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyPlatformEnvResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyProviderRequestParams struct {
 	// 云开发环境 ID，用于唯一标识当前操作所属的云开发环境。
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
@@ -10027,6 +10611,135 @@ type PlanInfo struct {
 
 	// <p>json格式化用户资源限制</p>
 	ResourceLimit *string `json:"ResourceLimit,omitnil,omitempty" name:"ResourceLimit"`
+}
+
+type PlatFormResourceInfo struct {
+	// <p>资源类系</p><p>枚举值：</p><ul><li>log： 日志</li><li>storage： 云存储</li><li>hosting： 静态托管</li></ul>
+	ResType *string `json:"ResType,omitnil,omitempty" name:"ResType"`
+
+	// <p>资源唯一标识</p>
+	ResName *string `json:"ResName,omitnil,omitempty" name:"ResName"`
+
+	// <p>资源详细信息</p>
+	Detail *string `json:"Detail,omitnil,omitempty" name:"Detail"`
+
+	// <p>资源状态</p><p>枚举值：</p><ul><li>0： 正常</li><li>5： 初始化中</li></ul>
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>资源id</p>
+	PlatformId *uint64 `json:"PlatformId,omitnil,omitempty" name:"PlatformId"`
+
+	// <p>对用平台资源id</p>
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+}
+
+type PlatformCreditsUsageDaily struct {
+	// <p>数据日期</p><p>参数格式：YYYY-MM-DD</p>
+	Date *string `json:"Date,omitnil,omitempty" name:"Date"`
+
+	// <p>资源点套餐内用量</p>
+	DeductValue *float64 `json:"DeductValue,omitnil,omitempty" name:"DeductValue"`
+
+	// <p>资源点资源包用量</p>
+	PackageDeductValue *float64 `json:"PackageDeductValue,omitnil,omitempty" name:"PackageDeductValue"`
+
+	// <p>资源点按量用量</p>
+	ReportValue *float64 `json:"ReportValue,omitnil,omitempty" name:"ReportValue"`
+
+	// <p>资源点原价消耗</p>
+	OriginCredits *float64 `json:"OriginCredits,omitnil,omitempty" name:"OriginCredits"`
+}
+
+type PlatformInfo struct {
+	// <p>平台版套餐id</p>
+	PlatformId *string `json:"PlatformId,omitnil,omitempty" name:"PlatformId"`
+
+	// <p>套餐别名</p>
+	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
+
+	// <p>套餐id</p>
+	PackageId *string `json:"PackageId,omitnil,omitempty" name:"PackageId"`
+
+	// <p>计费状态</p><p>枚举值：</p><ul><li>normal： 正常</li><li>isolated： 已隔离</li><li>destroyed： 已销毁</li></ul>
+	BillStatus *string `json:"BillStatus,omitnil,omitempty" name:"BillStatus"`
+
+	// <p>套餐资源状态</p><p>枚举值：</p><ul><li>0： 可用</li><li>5： 发货中</li></ul>
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>资源配置</p>
+	Spec *string `json:"Spec,omitnil,omitempty" name:"Spec"`
+
+	// <p>购买时间</p><p>参数格式：YYYY-MM-DD hh:mm:ss</p>
+	BillTime *string `json:"BillTime,omitnil,omitempty" name:"BillTime"`
+
+	// <p>套餐过期时间</p><p>参数格式：YYYY-MM-DD hh:mm:ss</p>
+	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// <p>是否自动续费</p><p>枚举值：</p><ul><li>0： 未设置</li><li>1： 自动续费</li><li>2： 设置为到期不续费</li></ul>
+	IsAutoRenew *uint64 `json:"IsAutoRenew,omitnil,omitempty" name:"IsAutoRenew"`
+
+	// <p>资源信息列表</p>
+	Resources []*PlatFormResourceInfo `json:"Resources,omitnil,omitempty" name:"Resources"`
+
+	// <p>所属地域</p><p>枚举值：</p><ul><li>ap-shanghai： 上海</li><li>ap-singapore： 新加坡</li></ul>
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+}
+
+type PlatformMetricUsageItem struct {
+	// <p>指标名称</p>
+	MetricName *string `json:"MetricName,omitnil,omitempty" name:"MetricName"`
+
+	// <p>原始资源类型</p><p>枚举值：</p><ul><li>COS： 对象存储</li></ul>
+	OriginalResourceType *string `json:"OriginalResourceType,omitnil,omitempty" name:"OriginalResourceType"`
+
+	// <p>原始指标</p>
+	OriginalMetricName *string `json:"OriginalMetricName,omitnil,omitempty" name:"OriginalMetricName"`
+
+	// <p>资源用量</p>
+	UsageValue *uint64 `json:"UsageValue,omitnil,omitempty" name:"UsageValue"`
+
+	// <p>资源用量单位</p>
+	UsageUnit *string `json:"UsageUnit,omitnil,omitempty" name:"UsageUnit"`
+
+	// <p>资源点</p>
+	Credits *uint64 `json:"Credits,omitnil,omitempty" name:"Credits"`
+
+	// <p>用量按日明细列表</p>
+	DailyUsageList []*DailyUsageList `json:"DailyUsageList,omitnil,omitempty" name:"DailyUsageList"`
+}
+
+type PlatformPkgCreditsUsage struct {
+	// <p>平台版套餐id</p>
+	PlatformId *string `json:"PlatformId,omitnil,omitempty" name:"PlatformId"`
+
+	// <p>模块</p>
+	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
+
+	// <p>module总资源点用量</p>
+	CreditsValue *float64 `json:"CreditsValue,omitnil,omitempty" name:"CreditsValue"`
+
+	// <p>指标用量明细</p>
+	MetricUsageDetail []*MetricUsage `json:"MetricUsageDetail,omitnil,omitempty" name:"MetricUsageDetail"`
+
+	// <p>资源点套餐内用量</p>
+	DeductValue *float64 `json:"DeductValue,omitnil,omitempty" name:"DeductValue"`
+
+	// <p>资源点资源包用量</p>
+	PackageDeductValue *float64 `json:"PackageDeductValue,omitnil,omitempty" name:"PackageDeductValue"`
+
+	// <p>资源点按量用量</p>
+	ReportValue *float64 `json:"ReportValue,omitnil,omitempty" name:"ReportValue"`
+}
+
+type PlatformResUsageItem struct {
+	// <p>资源类型</p><p>枚举值：</p><ul><li>Storage： 云存储</li><li>Function： 云函数</li></ul>
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// <p>资源点</p>
+	TotalCredits *uint64 `json:"TotalCredits,omitnil,omitempty" name:"TotalCredits"`
+
+	// <p>指标用量信息</p>
+	Metrics []*PlatformMetricUsageItem `json:"Metrics,omitnil,omitempty" name:"Metrics"`
 }
 
 type PostgreSQLInfo struct {

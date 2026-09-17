@@ -137,7 +137,7 @@ type AcquireSandboxInstanceTokenResponseParams struct {
 	// <p>过期时间</p>
 	ExpiresAt *string `json:"ExpiresAt,omitnil,omitempty" name:"ExpiresAt"`
 
-	// <p>非管控面（envd）的访问Token</p>
+	// <p>除管控面envd端口(49983)以外端口的访问Token</p>
 	TrafficToken *string `json:"TrafficToken,omitnil,omitempty" name:"TrafficToken"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

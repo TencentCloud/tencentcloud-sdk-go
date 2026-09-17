@@ -1594,6 +1594,7 @@ func NewDeleteDataRetrievalResponse() (response *DeleteDataRetrievalResponse) {
 // 删除指定的数据检索配置，不允许在存在关联任务时删除。调用接口后，若通过 DescribeDataRetrieval 接口查询不到对应的数据检索，则表示删除成功。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DATARETRIEVALTASKRUNNING = "FailedOperation.DataRetrievalTaskRunning"
 //  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
 //  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
@@ -1614,6 +1615,7 @@ func (c *Client) DeleteDataRetrieval(request *DeleteDataRetrievalRequest) (respo
 // 删除指定的数据检索配置，不允许在存在关联任务时删除。调用接口后，若通过 DescribeDataRetrieval 接口查询不到对应的数据检索，则表示删除成功。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DATARETRIEVALTASKRUNNING = "FailedOperation.DataRetrievalTaskRunning"
 //  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
 //  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
@@ -1662,6 +1664,7 @@ func NewDeleteLifecyclePolicyResponse() (response *DeleteLifecyclePolicyResponse
 // 删除生命周期管理策略
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DATARETRIEVALTASKRUNNING = "FailedOperation.DataRetrievalTaskRunning"
 //  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
 //  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
@@ -1678,6 +1681,7 @@ func (c *Client) DeleteLifecyclePolicy(request *DeleteLifecyclePolicyRequest) (r
 // 删除生命周期管理策略
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DATARETRIEVALTASKRUNNING = "FailedOperation.DataRetrievalTaskRunning"
 //  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
 //  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
@@ -2088,6 +2092,7 @@ func NewDescribeCfsFileSystemsResponse() (response *DescribeCfsFileSystemsRespon
 // 本接口（DescribeCfsFileSystems）用于查询文件系统
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_GETACCOUNTSTATUSFAILED = "InternalError.GetAccountStatusFailed"
@@ -2109,6 +2114,7 @@ func (c *Client) DescribeCfsFileSystems(request *DescribeCfsFileSystemsRequest) 
 // 本接口（DescribeCfsFileSystems）用于查询文件系统
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_GETACCOUNTSTATUSFAILED = "InternalError.GetAccountStatusFailed"

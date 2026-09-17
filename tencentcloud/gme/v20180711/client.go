@@ -269,6 +269,60 @@ func (c *Client) CreateAppWithContext(ctx context.Context, request *CreateAppReq
     return
 }
 
+func NewCreateAudioModerationSyncRequest() (request *CreateAudioModerationSyncRequest) {
+    request = &CreateAudioModerationSyncRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("gme", APIVersion, "CreateAudioModerationSync")
+    
+    
+    return
+}
+
+func NewCreateAudioModerationSyncResponse() (response *CreateAudioModerationSyncResponse) {
+    response = &CreateAudioModerationSyncResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateAudioModerationSync
+// 短音频内容理解同步接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED_ACCOUNTINARREARS = "OperationDenied.AccountInArrears"
+func (c *Client) CreateAudioModerationSync(request *CreateAudioModerationSyncRequest) (response *CreateAudioModerationSyncResponse, err error) {
+    return c.CreateAudioModerationSyncWithContext(context.Background(), request)
+}
+
+// CreateAudioModerationSync
+// 短音频内容理解同步接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED_ACCOUNTINARREARS = "OperationDenied.AccountInArrears"
+func (c *Client) CreateAudioModerationSyncWithContext(ctx context.Context, request *CreateAudioModerationSyncRequest) (response *CreateAudioModerationSyncResponse, err error) {
+    if request == nil {
+        request = NewCreateAudioModerationSyncRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "gme", APIVersion, "CreateAudioModerationSync")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAudioModerationSync require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateAudioModerationSyncResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateCustomizationRequest() (request *CreateCustomizationRequest) {
     request = &CreateCustomizationRequest{
         BaseRequest: &tchttp.BaseRequest{},

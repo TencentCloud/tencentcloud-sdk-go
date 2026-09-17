@@ -3482,6 +3482,255 @@ func (r *CreateAccessExportResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateAndUpdateBatchCCRuleRequestParams struct {
+	// 名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 规则ID，新增时填0	
+	RuleId *int64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// 状态
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 高级模式（是否使用Session检测），0表示不启用，1表示启用
+	Advance *string `json:"Advance,omitnil,omitempty" name:"Advance"`
+
+	// CC检测阈值	
+	Limit *string `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// CC检测周期	
+	Interval *string `json:"Interval,omitnil,omitempty" name:"Interval"`
+
+	// 动作，20表示观察，21表示人机识别，22表示拦截，23表示精准拦截，26表示精准人机识别，27表示JS校验
+	ActionType *string `json:"ActionType,omitnil,omitempty" name:"ActionType"`
+
+	// 优先级	
+	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
+
+	// 动作有效时间	
+	ValidTime *int64 `json:"ValidTime,omitnil,omitempty" name:"ValidTime"`
+
+	// 检测Url	
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// url长度	
+	Length *int64 `json:"Length,omitnil,omitempty" name:"Length"`
+
+	// 匹配方法，0表示等于，1表示前缀匹配，2表示包含，3表示不等于，6表示后缀匹配，7表示不包含
+	MatchFunc *int64 `json:"MatchFunc,omitnil,omitempty" name:"MatchFunc"`
+
+	// CC的匹配条件JSON序列化的字符串，示例：[{"key":"Method","args":["=R0VU"],"match":"0","encodeflag":true}] Key可选值为 Method、Post、Referer、Cookie、User-Agent、CustomHeader、CaptchaRisk、CaptchaDeviceRisk、CaptchaScore match可选值为，当Key为Method的时候可选值为0（等于）、3（不等于）。 Key为Post的时候可选值为0（等于）、3（不等于），Key为Cookie的时候可选值为0（等于）、2（包含），3（不等于）、7（不包含）、 当Key为Referer的时候可选值为0（等于）、3（不等于）、1（前缀匹配）、6（后缀匹配）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）， 当Key为Cookie的时候可选值为0（等于）、3（不等于）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）， 当Key为User-Agent的时候可选值为0（等于）、3（不等于）、1（前缀匹配）、6（后缀匹配）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）， 当Key为CustomHeader的时候可选值为0（等于）、3（不等于）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）。 Key为IPLocation时，可选值为13（属于）、14（不属于）。 Key为CaptchaRisk时，可选值为0（等于）、3（不等于）、13（属于）、14（不属于）、12（存在）、5（不存在）。 Key为CaptchaDeviceRisk时，可选值为0（等于）、3（不等于）、13（属于）、14（不属于）、12（存在）、5（不存在）。 Key为CaptchaScore时，可选值为15（数值等于）、16（数值不等于）、17（数值大于）、18（数值小于）、19（数值大于等于）、20（数值小于等于）、12（存在）、5（不存在）。args用来表示匹配内容，需要设置encodeflag为true，当Key为Post、Cookie、CustomHeader时，用等号=来分别串接Key和Value，并分别用Base64编码，类似YWJj=YWJj。当Key为Referer、User-Agent时，用等号=来串接Value，类似=YWJj。
+	OptionsArr *string `json:"OptionsArr,omitnil,omitempty" name:"OptionsArr"`
+
+	// waf版本，sparta-waf或者clb-waf	
+	Edition *string `json:"Edition,omitnil,omitempty" name:"Edition"`
+
+	// 操作类型	
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 添加规则的来源事件id
+	EventId *string `json:"EventId,omitnil,omitempty" name:"EventId"`
+
+	// 规则需要启用的SessionID
+	SessionApplied []*int64 `json:"SessionApplied,omitnil,omitempty" name:"SessionApplied"`
+
+	// 限频方式	
+	LimitMethod *string `json:"LimitMethod,omitnil,omitempty" name:"LimitMethod"`
+
+	// 配置方式的逻辑操作符，and或者or
+	LogicalOp *string `json:"LogicalOp,omitnil,omitempty" name:"LogicalOp"`
+
+	// cel表达式
+	CelRule *string `json:"CelRule,omitnil,omitempty" name:"CelRule"`
+
+	// 动作灰度比例，默认值100
+	ActionRatio *int64 `json:"ActionRatio,omitnil,omitempty" name:"ActionRatio"`
+
+	// 页面ID
+	PageId *string `json:"PageId,omitnil,omitempty" name:"PageId"`
+
+	// 批量规则配置的域名
+	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
+
+	// 批量规则配置的防护组
+	GroupIds []*uint64 `json:"GroupIds,omitnil,omitempty" name:"GroupIds"`
+
+	// 定时生效类型
+	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
+
+	// 定时生效配置
+	JobDateTime *JobDateTime `json:"JobDateTime,omitnil,omitempty" name:"JobDateTime"`
+
+	// 定时生效类型：month or week
+	CronType *string `json:"CronType,omitnil,omitempty" name:"CronType"`
+
+	// 过期时间
+	ExpireTime *uint64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+}
+
+type CreateAndUpdateBatchCCRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 规则ID，新增时填0	
+	RuleId *int64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// 状态
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 高级模式（是否使用Session检测），0表示不启用，1表示启用
+	Advance *string `json:"Advance,omitnil,omitempty" name:"Advance"`
+
+	// CC检测阈值	
+	Limit *string `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// CC检测周期	
+	Interval *string `json:"Interval,omitnil,omitempty" name:"Interval"`
+
+	// 动作，20表示观察，21表示人机识别，22表示拦截，23表示精准拦截，26表示精准人机识别，27表示JS校验
+	ActionType *string `json:"ActionType,omitnil,omitempty" name:"ActionType"`
+
+	// 优先级	
+	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
+
+	// 动作有效时间	
+	ValidTime *int64 `json:"ValidTime,omitnil,omitempty" name:"ValidTime"`
+
+	// 检测Url	
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// url长度	
+	Length *int64 `json:"Length,omitnil,omitempty" name:"Length"`
+
+	// 匹配方法，0表示等于，1表示前缀匹配，2表示包含，3表示不等于，6表示后缀匹配，7表示不包含
+	MatchFunc *int64 `json:"MatchFunc,omitnil,omitempty" name:"MatchFunc"`
+
+	// CC的匹配条件JSON序列化的字符串，示例：[{"key":"Method","args":["=R0VU"],"match":"0","encodeflag":true}] Key可选值为 Method、Post、Referer、Cookie、User-Agent、CustomHeader、CaptchaRisk、CaptchaDeviceRisk、CaptchaScore match可选值为，当Key为Method的时候可选值为0（等于）、3（不等于）。 Key为Post的时候可选值为0（等于）、3（不等于），Key为Cookie的时候可选值为0（等于）、2（包含），3（不等于）、7（不包含）、 当Key为Referer的时候可选值为0（等于）、3（不等于）、1（前缀匹配）、6（后缀匹配）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）， 当Key为Cookie的时候可选值为0（等于）、3（不等于）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）， 当Key为User-Agent的时候可选值为0（等于）、3（不等于）、1（前缀匹配）、6（后缀匹配）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）， 当Key为CustomHeader的时候可选值为0（等于）、3（不等于）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）。 Key为IPLocation时，可选值为13（属于）、14（不属于）。 Key为CaptchaRisk时，可选值为0（等于）、3（不等于）、13（属于）、14（不属于）、12（存在）、5（不存在）。 Key为CaptchaDeviceRisk时，可选值为0（等于）、3（不等于）、13（属于）、14（不属于）、12（存在）、5（不存在）。 Key为CaptchaScore时，可选值为15（数值等于）、16（数值不等于）、17（数值大于）、18（数值小于）、19（数值大于等于）、20（数值小于等于）、12（存在）、5（不存在）。args用来表示匹配内容，需要设置encodeflag为true，当Key为Post、Cookie、CustomHeader时，用等号=来分别串接Key和Value，并分别用Base64编码，类似YWJj=YWJj。当Key为Referer、User-Agent时，用等号=来串接Value，类似=YWJj。
+	OptionsArr *string `json:"OptionsArr,omitnil,omitempty" name:"OptionsArr"`
+
+	// waf版本，sparta-waf或者clb-waf	
+	Edition *string `json:"Edition,omitnil,omitempty" name:"Edition"`
+
+	// 操作类型	
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 添加规则的来源事件id
+	EventId *string `json:"EventId,omitnil,omitempty" name:"EventId"`
+
+	// 规则需要启用的SessionID
+	SessionApplied []*int64 `json:"SessionApplied,omitnil,omitempty" name:"SessionApplied"`
+
+	// 限频方式	
+	LimitMethod *string `json:"LimitMethod,omitnil,omitempty" name:"LimitMethod"`
+
+	// 配置方式的逻辑操作符，and或者or
+	LogicalOp *string `json:"LogicalOp,omitnil,omitempty" name:"LogicalOp"`
+
+	// cel表达式
+	CelRule *string `json:"CelRule,omitnil,omitempty" name:"CelRule"`
+
+	// 动作灰度比例，默认值100
+	ActionRatio *int64 `json:"ActionRatio,omitnil,omitempty" name:"ActionRatio"`
+
+	// 页面ID
+	PageId *string `json:"PageId,omitnil,omitempty" name:"PageId"`
+
+	// 批量规则配置的域名
+	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
+
+	// 批量规则配置的防护组
+	GroupIds []*uint64 `json:"GroupIds,omitnil,omitempty" name:"GroupIds"`
+
+	// 定时生效类型
+	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
+
+	// 定时生效配置
+	JobDateTime *JobDateTime `json:"JobDateTime,omitnil,omitempty" name:"JobDateTime"`
+
+	// 定时生效类型：month or week
+	CronType *string `json:"CronType,omitnil,omitempty" name:"CronType"`
+
+	// 过期时间
+	ExpireTime *uint64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+}
+
+func (r *CreateAndUpdateBatchCCRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAndUpdateBatchCCRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "RuleId")
+	delete(f, "Status")
+	delete(f, "Advance")
+	delete(f, "Limit")
+	delete(f, "Interval")
+	delete(f, "ActionType")
+	delete(f, "Priority")
+	delete(f, "ValidTime")
+	delete(f, "Url")
+	delete(f, "Length")
+	delete(f, "MatchFunc")
+	delete(f, "OptionsArr")
+	delete(f, "Edition")
+	delete(f, "Type")
+	delete(f, "EventId")
+	delete(f, "SessionApplied")
+	delete(f, "LimitMethod")
+	delete(f, "LogicalOp")
+	delete(f, "CelRule")
+	delete(f, "ActionRatio")
+	delete(f, "PageId")
+	delete(f, "Domains")
+	delete(f, "GroupIds")
+	delete(f, "JobType")
+	delete(f, "JobDateTime")
+	delete(f, "CronType")
+	delete(f, "ExpireTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAndUpdateBatchCCRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAndUpdateBatchCCRuleResponseParams struct {
+	// cc规则id
+	RuleId *int64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// 响应数据
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateAndUpdateBatchCCRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateAndUpdateBatchCCRuleResponseParams `json:"Response"`
+}
+
+func (r *CreateAndUpdateBatchCCRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAndUpdateBatchCCRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateAreaBanRuleRequestParams struct {
 	// 需要修改的域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
@@ -23968,20 +24217,20 @@ type Strategy struct {
 	// 		<tr>
 	// 			<td>CAPTCHA_RISK（验证码风险）</td>
 	// 			<td>不支持参数</td>
-	// 			<td>eq（等于）<br />neq（不等于）<br />belong_to（属于）<br />not_belong_to（不属于）<br />null（不存在）<br />nnull（存在）</td>
-	// 			<td>请输入风险等级值,支持数值范围0-255</td>
+	// 			<td>numeq（数值等于）<br />numneq（数值不等于）<br />belong_to（属于）<br />not_belong_to（不属于）<br />null（不存在）<br />nnull（存在）</td>
+	// 			<td>numeq/numneq：Content 为 0-255 的整数字符串，例如 "10"；belong_to/not_belong_to：Content 为 JSON 字符串数组的序列化字符串，例如 ["1","2"]，最多50个元素，每个值为0-255整数；null/nnull：Content 必须为空字符串。集合格式不能使用普通逗号分隔字符串。</td>
 	// 		</tr>
 	// 		<tr>
 	// 			<td>CAPTCHA_DEVICE_RISK（验证码设备风险）</td>
 	// 			<td>不支持参数</td>
-	// 			<td>eq（等于）<br />neq（不等于）<br />belong_to（属于）<br />not_belong_to（不属于）<br />null（不存在）<br />nnull（存在）</td>
-	// 			<td>请输入设备风险代码,支持取值：101、201、301、401、501、601、701</td>
+	// 			<td>numeq（数值等于）<br />numneq（数值不等于）<br />belong_to（属于）<br />not_belong_to（不属于）<br />null（不存在）<br />nnull（存在）</td>
+	// 			<td>numeq/numneq：Content 为单个设备风险代码字符串；belong_to/not_belong_to：Content 为 JSON 字符串数组的序列化字符串，例如 ["101","201"]，最多7个元素；支持取值：101、201、301、401、501、601、701；null/nnull：Content 必须为空字符串。</td>
 	// 		</tr>
 	// 		<tr>
 	// 			<td>CAPTCHAR_SCORE（验证码风险评估分）</td>
 	// 			<td>不支持参数</td>
 	// 			<td>numeq（数值等于）<br />numneq（数值不等于）<br />numgt（数值大于）<br />numlt（数值小于）<br />numle（数值小于等于）<br />numge（数值大于等于）<br />null（不存在）<br />nnull（存在）</td>
-	// 			<td>请输入评估分数,支持数值范围0-100</td>
+	// 			<td>数值比较时 Content 为 0-100 的整数字符串；null/nnull 时 Content 必须为空字符串。</td>
 	// 		</tr>
 	// 	</tbody>
 	// </table>
@@ -24020,10 +24269,7 @@ type Strategy struct {
 	//     各匹配字段对应的逻辑符号不同，详见上述匹配字段表格
 	CompareFunc *string `json:"CompareFunc,omitnil,omitempty" name:"CompareFunc"`
 
-	// 匹配内容
-	// 
-	//     目前 当匹配字段为COOKIE（Cookie）时，不需要输入 匹配内容
-	// 其他都需要
+	// 匹配内容。请根据 Field 和 CompareFunc 按匹配字段表填写。CAPTCHA_RISK、CAPTCHA_DEVICE_RISK 和 CAPTCHAR_SCORE 使用 null/nnull 时必须传空字符串；数值比较传单个整数字符串；CAPTCHA_RISK、CAPTCHA_DEVICE_RISK 使用 belong_to/not_belong_to 时传 JSON 字符串数组的序列化字符串，数组元素范围和数量限制详见 Field。
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 
 	// 匹配参数

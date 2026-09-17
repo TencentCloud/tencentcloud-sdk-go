@@ -1002,26 +1002,26 @@ func (r *DescribeAddressPoolDetailResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAddressPoolListRequestParams struct {
-	// 告警过滤条件：PoolName：地址池名称；MonitorId：监控器id
+	// <p>告警过滤条件：PoolName：地址池名称；MonitorId：监控器id</p>
 	Filters []*ResourceFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 页数
+	// <p>页数</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 每页数
+	// <p>每页数</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeAddressPoolListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 告警过滤条件：PoolName：地址池名称；MonitorId：监控器id
+	// <p>告警过滤条件：PoolName：地址池名称；MonitorId：监控器id</p>
 	Filters []*ResourceFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 页数
+	// <p>页数</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 每页数
+	// <p>每页数</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
@@ -1048,10 +1048,10 @@ func (r *DescribeAddressPoolListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAddressPoolListResponseParams struct {
-	// 资源组列表
+	// <p>资源组列表</p>
 	AddressPoolSet []*AddressPool `json:"AddressPoolSet,omitnil,omitempty" name:"AddressPoolSet"`
 
-	// 总数
+	// <p>总数</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1291,14 +1291,14 @@ func (r *DescribeDetectorsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDnsLineListRequestParams struct {
-	// 实例id
+	// <p>实例id</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type DescribeDnsLineListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例id
+	// <p>实例id</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
@@ -1323,7 +1323,7 @@ func (r *DescribeDnsLineListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDnsLineListResponseParams struct {
-	// 地址池列表
+	// <p>地址池列表</p>
 	DnsLineSet []*GroupLine `json:"DnsLineSet,omitnil,omitempty" name:"DnsLineSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1563,14 +1563,14 @@ func (r *DescribeInstancePackageListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeMonitorDetailRequestParams struct {
-	// 监控器id
+	// <p>监控器id</p>
 	MonitorId *uint64 `json:"MonitorId,omitnil,omitempty" name:"MonitorId"`
 }
 
 type DescribeMonitorDetailRequest struct {
 	*tchttp.BaseRequest
 	
-	// 监控器id
+	// <p>监控器id</p>
 	MonitorId *uint64 `json:"MonitorId,omitnil,omitempty" name:"MonitorId"`
 }
 
@@ -1595,7 +1595,7 @@ func (r *DescribeMonitorDetailRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeMonitorDetailResponseParams struct {
-	// 探测规则
+	// <p>探测规则</p>
 	MonitorDetail *MonitorDetail `json:"MonitorDetail,omitnil,omitempty" name:"MonitorDetail"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1822,32 +1822,32 @@ func (r *DescribeStrategyDetailResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeStrategyListRequestParams struct {
-	// 实例 id
+	// <p>实例 id</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 偏移量
+	// <p>偏移量</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 每页条数
+	// <p>每页条数</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 策略过滤条件：StrategyName：策略名称
+	// <p>策略过滤条件：StrategyName：策略名称</p>
 	Filters []*ResourceFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeStrategyListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 id
+	// <p>实例 id</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 偏移量
+	// <p>偏移量</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 每页条数
+	// <p>每页条数</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 策略过滤条件：StrategyName：策略名称
+	// <p>策略过滤条件：StrategyName：策略名称</p>
 	Filters []*ResourceFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -1875,10 +1875,10 @@ func (r *DescribeStrategyListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeStrategyListResponseParams struct {
-	// 策略列表
+	// <p>策略列表</p>
 	StrategySet []*Strategy `json:"StrategySet,omitnil,omitempty" name:"StrategySet"`
 
-	// 总数
+	// <p>总数</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2856,8 +2856,8 @@ type Quota struct {
 
 type ResourceFilter struct {
 	// 过滤字段名，支持的列表如下：
-	// - type：主资源类型，CDN。
-	// - instanceId：IGTM实例ID。此为必传参数，未传将导致接口查询失败。
+	// - MonitorName：监控器名称。
+	// - MonitorId：监控器名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 过滤字段值。

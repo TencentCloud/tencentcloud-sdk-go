@@ -20,6 +20,36 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
+type AIAnalysis struct {
+	// <p>是否开启告警AI诊断</p><p>默认值：false</p>
+	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
+
+	// <p>是否显示诊断过程</p><p>默认值：false</p>
+	HideProcess *bool `json:"HideProcess,omitnil,omitempty" name:"HideProcess"`
+
+	// <p>AI诊断告警时给AI的提示词</p><p>参数格式：请详细诊断根因</p>
+	UserPrompt *string `json:"UserPrompt,omitnil,omitempty" name:"UserPrompt"`
+
+	// <p>AI 分析的数据范围</p>
+	AnalysisDataScope []*AIAnalysisDataScope `json:"AnalysisDataScope,omitnil,omitempty" name:"AnalysisDataScope"`
+}
+
+type AIAnalysisDataScope struct {
+	// <p>告警AI诊断时查询的数据范围（查询哪些日志主题）</p>
+	DataScopeEntry []*AIAnalysisDataScopeEntry `json:"DataScopeEntry,omitnil,omitempty" name:"DataScopeEntry"`
+
+	// <p>告警AI诊断的数据范围类型</p><p>枚举值：</p><ul><li>CLSLogTopic： 日志主题</li></ul><p>默认值：CLSLogTopic</p>
+	DataScopeType *string `json:"DataScopeType,omitnil,omitempty" name:"DataScopeType"`
+}
+
+type AIAnalysisDataScopeEntry struct {
+	// <p>值类型</p><p>枚举值：</p><ul><li>TopicId： 日志主题ID</li><li>Region： 地域</li></ul>
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// <p>Key如果设置为TopicId，Value是对应日志主题topic_id 在https://cloud.tencent.com/document/product/614/56454 查询，Key如果设置为Region，Value是地域的英文名，在https://cloud.tencent.com/document/product/614/18940查询。</p>
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
 type AccessControlRule struct {
 	// <p>网段或IP，支持IPv4或IPv6。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -185,73 +215,78 @@ type AlarmClassification struct {
 }
 
 type AlarmInfo struct {
-	// 告警策略名称。
+	// <p>告警策略名称。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 监控对象列表。
+	// <p>监控对象列表。</p>
 	AlarmTargets []*AlarmTargetInfo `json:"AlarmTargets,omitnil,omitempty" name:"AlarmTargets"`
 
-	// 监控任务运行时间点。
+	// <p>监控任务运行时间点。</p>
 	MonitorTime *MonitorTime `json:"MonitorTime,omitnil,omitempty" name:"MonitorTime"`
 
-	// 是否触发告警的单触发条件。与MultiConditions参数互斥。
+	// <p>是否触发告警的单触发条件。与MultiConditions参数互斥。</p>
 	Condition *string `json:"Condition,omitnil,omitempty" name:"Condition"`
 
-	// 持续周期。持续满足触发条件TriggerCount个周期后，再进行告警；最小值为1，最大值为10。
+	// <p>持续周期。持续满足触发条件TriggerCount个周期后，再进行告警；最小值为1，最大值为10。</p>
 	TriggerCount *int64 `json:"TriggerCount,omitnil,omitempty" name:"TriggerCount"`
 
-	// 告警重复的周期。单位是min。取值范围是0~1440。
+	// <p>告警重复的周期。单位是min。取值范围是0~1440。</p>
 	AlarmPeriod *int64 `json:"AlarmPeriod,omitnil,omitempty" name:"AlarmPeriod"`
 
-	// 关联的告警通知渠道组列表。-通过[获取通知渠道组列表](https://cloud.tencent.com/document/product/614/56462)获取关联的告警通知渠道组列表，和MonitorNotice互斥
+	// <p>关联的告警通知渠道组列表。-通过<a href="https://cloud.tencent.com/document/product/614/56462">获取通知渠道组列表</a>获取关联的告警通知渠道组列表，和MonitorNotice互斥</p>
 	AlarmNoticeIds []*string `json:"AlarmNoticeIds,omitnil,omitempty" name:"AlarmNoticeIds"`
 
-	// 开启状态。
+	// <p>开启状态。</p>
 	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 告警策略ID。
+	// <p>告警策略ID。</p>
 	AlarmId *string `json:"AlarmId,omitnil,omitempty" name:"AlarmId"`
 
-	// 创建时间。格式： YYYY-MM-DD HH:MM:SS
+	// <p>创建时间。格式： YYYY-MM-DD HH:MM:SS</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 最近更新时间。格式： YYYY-MM-DD HH:MM:SS
+	// <p>最近更新时间。格式： YYYY-MM-DD HH:MM:SS</p>
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 自定义通知模板
+	// <p>自定义通知模板</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MessageTemplate *string `json:"MessageTemplate,omitnil,omitempty" name:"MessageTemplate"`
 
-	// 自定义回调模板
+	// <p>自定义回调模板</p>
 	CallBack *CallBackInfo `json:"CallBack,omitnil,omitempty" name:"CallBack"`
 
-	// 多维分析设置
+	// <p>多维分析设置</p>
 	Analysis []*AnalysisDimensional `json:"Analysis,omitnil,omitempty" name:"Analysis"`
 
-	// 分组触发状态。true：开启，false：关闭（默认）
+	// <p>分组触发状态。true：开启，false：关闭（默认）</p>
 	GroupTriggerStatus *bool `json:"GroupTriggerStatus,omitnil,omitempty" name:"GroupTriggerStatus"`
 
-	// 分组触发条件。
+	// <p>分组触发条件。</p>
 	GroupTriggerCondition []*string `json:"GroupTriggerCondition,omitnil,omitempty" name:"GroupTriggerCondition"`
 
-	// 告警策略绑定的标签信息。
+	// <p>告警策略绑定的标签信息。</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 监控对象类型。0:执行语句共用监控对象;1:每个执行语句单独选择监控对象。 
+	// <p>监控对象类型。0:执行语句共用监控对象;1:每个执行语句单独选择监控对象。</p>
 	MonitorObjectType *uint64 `json:"MonitorObjectType,omitnil,omitempty" name:"MonitorObjectType"`
 
-	// 告警级别。0:警告(Warn);1:提醒(Info);2:紧急 (Critical)。
+	// <p>告警级别。0:警告(Warn);1:提醒(Info);2:紧急 (Critical)。</p>
 	AlarmLevel *uint64 `json:"AlarmLevel,omitnil,omitempty" name:"AlarmLevel"`
 
-	// 告警附加分类字段。
+	// <p>告警附加分类字段。</p>
 	Classifications []*AlarmClassification `json:"Classifications,omitnil,omitempty" name:"Classifications"`
 
-	// 多触发条件。与
-	// Condition互斥。
+	// <p>多触发条件。与<br>Condition互斥。</p>
 	MultiConditions []*MultiCondition `json:"MultiConditions,omitnil,omitempty" name:"MultiConditions"`
 
-	// 腾讯云可观测平台通知渠道相关信息，和AlarmNoticeIds互斥
+	// <p>腾讯云可观测平台通知渠道相关信息，和AlarmNoticeIds互斥</p>
 	MonitorNotice *MonitorNotice `json:"MonitorNotice,omitnil,omitempty" name:"MonitorNotice"`
+
+	// <p>AI分析内容</p>
+	AIAnalysis *AIAnalysis `json:"AIAnalysis,omitnil,omitempty" name:"AIAnalysis"`
+
+	// <p>最后修改人的uin信息</p>
+	SubUin *uint64 `json:"SubUin,omitnil,omitempty" name:"SubUin"`
 }
 
 type AlarmNotice struct {
@@ -667,6 +702,47 @@ type BaseMetricCollectConfig struct {
 	// 基础监控采集配置信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Configs []*MetricCollectConfig `json:"Configs,omitnil,omitempty" name:"Configs"`
+}
+
+type CLSDeliverTaskInfo struct {
+	// <p>任务id</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>任务名称</p>
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// <p>主账号id</p>
+	Uin *uint64 `json:"Uin,omitnil,omitempty" name:"Uin"`
+
+	// <p>源主题信息</p>
+	SourceTopicConfig *SourceTopicConfig `json:"SourceTopicConfig,omitnil,omitempty" name:"SourceTopicConfig"`
+
+	// <p>目标主题信息</p>
+	TargetTopicConfig *TargetTopicConfig `json:"TargetTopicConfig,omitnil,omitempty" name:"TargetTopicConfig"`
+
+	// <p>投递规则</p>
+	DeliverRule *DeliverRule `json:"DeliverRule,omitnil,omitempty" name:"DeliverRule"`
+
+	// <p>合规承诺</p>
+	Compliance *uint64 `json:"Compliance,omitnil,omitempty" name:"Compliance"`
+
+	// <p>任务状态。</p><p>枚举值：</p><ul><li>0： 运行中</li><li>1： 已暂停</li><li>2： 已完成</li><li>3： 异常</li></ul>
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>状态 </p><p>枚举值：</p><ul><li>0： 运行</li><li>1： 暂停</li></ul>
+	Enable *uint64 `json:"Enable,omitnil,omitempty" name:"Enable"`
+
+	// <p>任务进度百分比</p>
+	Progress *uint64 `json:"Progress,omitnil,omitempty" name:"Progress"`
+
+	// <p>是否开启投递服务日志。</p><p>枚举值：</p><ul><li>1： 关闭</li><li>2： 开启</li></ul>
+	HasServicesLog *uint64 `json:"HasServicesLog,omitnil,omitempty" name:"HasServicesLog"`
+
+	// <p>创建时间。</p><p>单位：秒级时间戳</p>
+	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>更新时间</p><p>单位：秒级时间戳</p>
+	UpdateTime *uint64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
 type CallBackInfo struct {
@@ -2386,6 +2462,98 @@ func (r *CreateAlarmShieldResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateAlarmShieldResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateCLSDeliverTaskRequestParams struct {
+	// <p>任务名称</p><p>参数格式：<code>^[a-zA-Z0-9_-]{1,64}$</code></p>
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// <p>源主题信息</p>
+	SourceTopicConfig *SourceTopicConfig `json:"SourceTopicConfig,omitnil,omitempty" name:"SourceTopicConfig"`
+
+	// <p>目标主题信息</p>
+	TargetTopicConfig *TargetTopicConfig `json:"TargetTopicConfig,omitnil,omitempty" name:"TargetTopicConfig"`
+
+	// <p>投递规则</p>
+	DeliverRule *DeliverRule `json:"DeliverRule,omitnil,omitempty" name:"DeliverRule"`
+
+	// <p>合规承诺。</p><p>枚举值：</p><ul><li>1： 同意数据跨域传输条款</li></ul>
+	Compliance *uint64 `json:"Compliance,omitnil,omitempty" name:"Compliance"`
+
+	// <p>是否开启投递服务日志。</p><p>枚举值：</p><ul><li>1： 关闭</li><li>2： 开启</li></ul><p>默认值：2</p>
+	HasServicesLog *uint64 `json:"HasServicesLog,omitnil,omitempty" name:"HasServicesLog"`
+}
+
+type CreateCLSDeliverTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>任务名称</p><p>参数格式：<code>^[a-zA-Z0-9_-]{1,64}$</code></p>
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// <p>源主题信息</p>
+	SourceTopicConfig *SourceTopicConfig `json:"SourceTopicConfig,omitnil,omitempty" name:"SourceTopicConfig"`
+
+	// <p>目标主题信息</p>
+	TargetTopicConfig *TargetTopicConfig `json:"TargetTopicConfig,omitnil,omitempty" name:"TargetTopicConfig"`
+
+	// <p>投递规则</p>
+	DeliverRule *DeliverRule `json:"DeliverRule,omitnil,omitempty" name:"DeliverRule"`
+
+	// <p>合规承诺。</p><p>枚举值：</p><ul><li>1： 同意数据跨域传输条款</li></ul>
+	Compliance *uint64 `json:"Compliance,omitnil,omitempty" name:"Compliance"`
+
+	// <p>是否开启投递服务日志。</p><p>枚举值：</p><ul><li>1： 关闭</li><li>2： 开启</li></ul><p>默认值：2</p>
+	HasServicesLog *uint64 `json:"HasServicesLog,omitnil,omitempty" name:"HasServicesLog"`
+}
+
+func (r *CreateCLSDeliverTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCLSDeliverTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskName")
+	delete(f, "SourceTopicConfig")
+	delete(f, "TargetTopicConfig")
+	delete(f, "DeliverRule")
+	delete(f, "Compliance")
+	delete(f, "HasServicesLog")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCLSDeliverTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateCLSDeliverTaskResponseParams struct {
+	// <p>任务id</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateCLSDeliverTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateCLSDeliverTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateCLSDeliverTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCLSDeliverTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -7411,6 +7579,60 @@ func (r *DeleteAlarmShieldResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteCLSDeliverTaskRequestParams struct {
+	// <p>任务id</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type DeleteCLSDeliverTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>任务id</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *DeleteCLSDeliverTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCLSDeliverTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCLSDeliverTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteCLSDeliverTaskResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteCLSDeliverTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteCLSDeliverTaskResponseParams `json:"Response"`
+}
+
+func (r *DeleteCLSDeliverTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCLSDeliverTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteCloudProductLogCollectionRequestParams struct {
 	// <p>实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -9721,6 +9943,11 @@ type DeliverConfig struct {
 	Scope *uint64 `json:"Scope,omitnil,omitempty" name:"Scope"`
 }
 
+type DeliverRule struct {
+	// <p>数据投递范围。</p><p>枚举值：</p><ul><li>1： 历史+新增数据</li><li>2： 自定义时间范围</li><li>3： 仅新增</li></ul><p>本次仅支持3新增数据。后续支持： 2自定义时间范围和1历史+新增数据</p>
+	DataScope *uint64 `json:"DataScope,omitnil,omitempty" name:"DataScope"`
+}
+
 type Delta struct {
 	// <p>角色</p><p>枚举值：</p><ul><li>user： 用户</li><li>assistant： AI助手</li></ul>
 	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
@@ -10351,6 +10578,80 @@ func (r *DescribeAlertRecordHistoryResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAlertRecordHistoryResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCLSDeliverTasksRequestParams struct {
+	// <ul><li>taskId 按照【任务id】进行过滤。 类型：String 必选：否  </li><li>taskName 按照【任务名称】进行过滤。 类型：String 必选：否  </li><li>sourceLogsetId 按照【源日志集】进行过滤。 类型：String 必选：否  </li><li>targetLogsetId 按照【目标日志集】进行过滤。 类型：String 必选：否<br>每次请求的Filters的上限为10，Filter.Values的上限为10。</li></ul>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>分页的偏移量，默认值为0。</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>分页单页限制数目，默认值为20，最大值100。</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeCLSDeliverTasksRequest struct {
+	*tchttp.BaseRequest
+	
+	// <ul><li>taskId 按照【任务id】进行过滤。 类型：String 必选：否  </li><li>taskName 按照【任务名称】进行过滤。 类型：String 必选：否  </li><li>sourceLogsetId 按照【源日志集】进行过滤。 类型：String 必选：否  </li><li>targetLogsetId 按照【目标日志集】进行过滤。 类型：String 必选：否<br>每次请求的Filters的上限为10，Filter.Values的上限为10。</li></ul>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>分页的偏移量，默认值为0。</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>分页单页限制数目，默认值为20，最大值100。</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeCLSDeliverTasksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCLSDeliverTasksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCLSDeliverTasksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCLSDeliverTasksResponseParams struct {
+	// <p>投递任务信息列表</p>
+	Infos []*CLSDeliverTaskInfo `json:"Infos,omitnil,omitempty" name:"Infos"`
+
+	// <p>符合条件的任务总数。</p>
+	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeCLSDeliverTasksResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCLSDeliverTasksResponseParams `json:"Response"`
+}
+
+func (r *DescribeCLSDeliverTasksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCLSDeliverTasksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -18538,6 +18839,102 @@ func (r *ModifyAlarmShieldResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyCLSDeliverTaskRequestParams struct {
+	// <p>任务id</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>任务名称</p><p>参数格式：<code>^[a-zA-Z0-9_-]{1,64}$</code></p>
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// <p>源主题信息</p>
+	SourceTopicConfig *SourceTopicConfig `json:"SourceTopicConfig,omitnil,omitempty" name:"SourceTopicConfig"`
+
+	// <p>目标主题信息</p>
+	TargetTopicConfig *TargetTopicConfig `json:"TargetTopicConfig,omitnil,omitempty" name:"TargetTopicConfig"`
+
+	// <p>投递规则</p>
+	DeliverRule *DeliverRule `json:"DeliverRule,omitnil,omitempty" name:"DeliverRule"`
+
+	// <p>状态</p><p>枚举值：</p><ul><li>0： 运行</li><li>1： 暂停</li></ul>
+	Enable *uint64 `json:"Enable,omitnil,omitempty" name:"Enable"`
+
+	// <p>是否开启投递服务日志。</p><p>枚举值：</p><ul><li>1： 关闭</li><li>2： 开启</li></ul>
+	HasServicesLog *uint64 `json:"HasServicesLog,omitnil,omitempty" name:"HasServicesLog"`
+}
+
+type ModifyCLSDeliverTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>任务id</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>任务名称</p><p>参数格式：<code>^[a-zA-Z0-9_-]{1,64}$</code></p>
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// <p>源主题信息</p>
+	SourceTopicConfig *SourceTopicConfig `json:"SourceTopicConfig,omitnil,omitempty" name:"SourceTopicConfig"`
+
+	// <p>目标主题信息</p>
+	TargetTopicConfig *TargetTopicConfig `json:"TargetTopicConfig,omitnil,omitempty" name:"TargetTopicConfig"`
+
+	// <p>投递规则</p>
+	DeliverRule *DeliverRule `json:"DeliverRule,omitnil,omitempty" name:"DeliverRule"`
+
+	// <p>状态</p><p>枚举值：</p><ul><li>0： 运行</li><li>1： 暂停</li></ul>
+	Enable *uint64 `json:"Enable,omitnil,omitempty" name:"Enable"`
+
+	// <p>是否开启投递服务日志。</p><p>枚举值：</p><ul><li>1： 关闭</li><li>2： 开启</li></ul>
+	HasServicesLog *uint64 `json:"HasServicesLog,omitnil,omitempty" name:"HasServicesLog"`
+}
+
+func (r *ModifyCLSDeliverTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCLSDeliverTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "TaskName")
+	delete(f, "SourceTopicConfig")
+	delete(f, "TargetTopicConfig")
+	delete(f, "DeliverRule")
+	delete(f, "Enable")
+	delete(f, "HasServicesLog")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCLSDeliverTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyCLSDeliverTaskResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyCLSDeliverTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyCLSDeliverTaskResponseParams `json:"Response"`
+}
+
+func (r *ModifyCLSDeliverTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCLSDeliverTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyCloudProductLogCollectionRequestParams struct {
 	// <p>实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -25357,6 +25754,22 @@ type ShipperTaskInfo struct {
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 }
 
+type SourceTopicConfig struct {
+	// <p>日志主题筛选方式。</p><p>枚举值：</p><ul><li>1： 静态选择</li></ul>
+	TopicFilterType *uint64 `json:"TopicFilterType,omitnil,omitempty" name:"TopicFilterType"`
+
+	// <p>源日志集id</p>
+	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
+
+	// <p>源日志主题列表</p><p>TopicFilterType=1时必填</p>
+	Topics []*SourceTopicInfo `json:"Topics,omitnil,omitempty" name:"Topics"`
+}
+
+type SourceTopicInfo struct {
+	// <p>日志主题id</p>
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+}
+
 // Predefined struct for user
 type SplitPartitionRequestParams struct {
 	// 日志主题Id
@@ -25501,6 +25914,26 @@ type Tag struct {
 
 	// 标签值
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type TargetTopicConfig struct {
+	// <p>目标账号类型。</p><p>枚举值：</p><ul><li>1： 当前主账号</li><li>2： 其他主账号</li></ul>
+	AccountType *uint64 `json:"AccountType,omitnil,omitempty" name:"AccountType"`
+
+	// <p>目标地域</p><p>参数格式：ap-guangzhou</p>
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// <p>目标日志集id</p>
+	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
+
+	// <p>目标日志主题id</p>
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// <p>角色ARN</p><p>AccountType=2时必填</p>
+	RoleArn *string `json:"RoleArn,omitnil,omitempty" name:"RoleArn"`
+
+	// <p>外部ID</p><p>AccountType=2时必填</p>
+	ExternalId *string `json:"ExternalId,omitnil,omitempty" name:"ExternalId"`
 }
 
 type ToolCall struct {

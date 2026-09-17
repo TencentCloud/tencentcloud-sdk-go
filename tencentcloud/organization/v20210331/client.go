@@ -1322,6 +1322,7 @@ func NewCreateOrganizationResponse() (response *CreateOrganizationResponse) {
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_CREATEMEMBERNOTALLOWCREATEORGANIZATION = "UnsupportedOperation.CreateMemberNotAllowCreateOrganization"
 //  UNSUPPORTEDOPERATION_OPERATIONFORBIDDEN = "UnsupportedOperation.OperationForbidden"
+//  UNSUPPORTEDOPERATION_SUBCLIENTHASVOUCHERNOTALLOWCREATEORGANIZATION = "UnsupportedOperation.SubClientHasVoucherNotAllowCreateOrganization"
 func (c *Client) CreateOrganization(request *CreateOrganizationRequest) (response *CreateOrganizationResponse, err error) {
     return c.CreateOrganizationWithContext(context.Background(), request)
 }
@@ -1338,6 +1339,7 @@ func (c *Client) CreateOrganization(request *CreateOrganizationRequest) (respons
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_CREATEMEMBERNOTALLOWCREATEORGANIZATION = "UnsupportedOperation.CreateMemberNotAllowCreateOrganization"
 //  UNSUPPORTEDOPERATION_OPERATIONFORBIDDEN = "UnsupportedOperation.OperationForbidden"
+//  UNSUPPORTEDOPERATION_SUBCLIENTHASVOUCHERNOTALLOWCREATEORGANIZATION = "UnsupportedOperation.SubClientHasVoucherNotAllowCreateOrganization"
 func (c *Client) CreateOrganizationWithContext(ctx context.Context, request *CreateOrganizationRequest) (response *CreateOrganizationResponse, err error) {
     if request == nil {
         request = NewCreateOrganizationRequest()
@@ -2134,7 +2136,10 @@ func NewCreateUserSyncProvisioningResponse() (response *CreateUserSyncProvisioni
 // 创建子用户同步任务
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DELEGATEDADMINCANNOTOPERATEORGMANAGER = "FailedOperation.DelegatedAdminCannotOperateOrgManager"
 //  FAILEDOPERATION_ORGANIZATIONMEMBERNOTEXIST = "FailedOperation.OrganizationMemberNotExist"
+//  FAILEDOPERATION_REMOTECALLERROR = "FailedOperation.RemoteCallError"
+//  FAILEDOPERATION_TAKEOVERUNSUPPORTEDUSERTYPE = "FailedOperation.TakeOverUnsupportedUserType"
 //  FAILEDOPERATION_USERPROVISIONINGALREADYEXISTS = "FailedOperation.UserProvisioningAlreadyExists"
 //  FAILEDOPERATION_USERPROVISIONINGOVERLIMIT = "FailedOperation.UserProvisioningOverLimit"
 //  INVALIDPARAMETER_GROUPNOTEXIST = "InvalidParameter.GroupNotExist"
@@ -2148,7 +2153,10 @@ func (c *Client) CreateUserSyncProvisioning(request *CreateUserSyncProvisioningR
 // 创建子用户同步任务
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DELEGATEDADMINCANNOTOPERATEORGMANAGER = "FailedOperation.DelegatedAdminCannotOperateOrgManager"
 //  FAILEDOPERATION_ORGANIZATIONMEMBERNOTEXIST = "FailedOperation.OrganizationMemberNotExist"
+//  FAILEDOPERATION_REMOTECALLERROR = "FailedOperation.RemoteCallError"
+//  FAILEDOPERATION_TAKEOVERUNSUPPORTEDUSERTYPE = "FailedOperation.TakeOverUnsupportedUserType"
 //  FAILEDOPERATION_USERPROVISIONINGALREADYEXISTS = "FailedOperation.UserProvisioningAlreadyExists"
 //  FAILEDOPERATION_USERPROVISIONINGOVERLIMIT = "FailedOperation.UserProvisioningOverLimit"
 //  INVALIDPARAMETER_GROUPNOTEXIST = "InvalidParameter.GroupNotExist"
@@ -3368,7 +3376,10 @@ func NewDeleteUserSyncProvisioningResponse() (response *DeleteUserSyncProvisioni
 // 删除子用户同步任务
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DELEGATEDADMINCANNOTOPERATEORGMANAGER = "FailedOperation.DelegatedAdminCannotOperateOrgManager"
 //  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_REMOTECALLERROR = "FailedOperation.RemoteCallError"
+//  FAILEDOPERATION_SYNCUSERHASACCESSKEY = "FailedOperation.SyncUserHasAccessKey"
 //  FAILEDOPERATION_USERPROVISIONINGFAILED = "FailedOperation.UserProvisioningFailed"
 //  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
 //  RESOURCENOTFOUND_USERPROVISIONINGNOTFOUND = "ResourceNotFound.UserProvisioningNotFound"
@@ -3380,7 +3391,10 @@ func (c *Client) DeleteUserSyncProvisioning(request *DeleteUserSyncProvisioningR
 // 删除子用户同步任务
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DELEGATEDADMINCANNOTOPERATEORGMANAGER = "FailedOperation.DelegatedAdminCannotOperateOrgManager"
 //  FAILEDOPERATION_IDENTITYCENTERNOTOPEN = "FailedOperation.IdentityCenterNotOpen"
+//  FAILEDOPERATION_REMOTECALLERROR = "FailedOperation.RemoteCallError"
+//  FAILEDOPERATION_SYNCUSERHASACCESSKEY = "FailedOperation.SyncUserHasAccessKey"
 //  FAILEDOPERATION_USERPROVISIONINGFAILED = "FailedOperation.UserProvisioningFailed"
 //  FAILEDOPERATION_ZONEIDNOTEXIST = "FailedOperation.ZoneIdNotExist"
 //  RESOURCENOTFOUND_USERPROVISIONINGNOTFOUND = "ResourceNotFound.UserProvisioningNotFound"

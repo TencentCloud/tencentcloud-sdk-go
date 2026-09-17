@@ -23,6 +23,9 @@ const (
 	// 获取CFS服务角色错误
 	AUTHFAILURE_GETROLEFAILED = "AuthFailure.GetRoleFailed"
 
+	// 鉴权token超时
+	AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+
 	// 请求未CAM授权。
 	AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 
@@ -40,6 +43,9 @@ const (
 
 	// 操作失败：目标 COS Bucket 未开启多版本，`IsSyncDelete` 或 `IsOverwrite` 无法生效，请前往对象存储控制台开启多版本后重试
 	FAILEDOPERATION_COSMULTIVERSIONDISABLED = "FailedOperation.CosMultiVersionDisabled"
+
+	// 检索任务正在运行中
+	FAILEDOPERATION_DATARETRIEVALTASKRUNNING = "FailedOperation.DataRetrievalTaskRunning"
 
 	// 文件系统存在挂载点。
 	FAILEDOPERATION_MOUNTTARGETEXISTS = "FailedOperation.MountTargetExists"

@@ -266,80 +266,80 @@ func (r *CreateReportPdfResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateTimerReportRequestParams struct {
-	// 任务名称 不变更为""
+	// <p>任务名称 不变更为&quot;&quot;</p>
 	TplName *string `json:"TplName,omitnil,omitempty" name:"TplName"`
 
-	// 执行日期 重复周期为天：无意义周：星期几1-7月每月几号 1-31
+	// <p>执行日期 重复周期为天：无意义周：星期几1-7月每月几号 1-31</p>
 	CntTime *int64 `json:"CntTime,omitnil,omitempty" name:"CntTime"`
 
-	// 重复周期
+	// <p>重复周期</p>
 	CntCycle *int64 `json:"CntCycle,omitnil,omitempty" name:"CntCycle"`
 
-	// 发送目标
+	// <p>发送目标</p>
 	Receivers *string `json:"Receivers,omitnil,omitempty" name:"Receivers"`
 
-	// 时间范围 1:24小时 7:近一周 30:近30天 90:近90天 180:近180天 不变更为0
+	// <p>时间范围 1:24小时 7:近一周 30:近30天 90:近90天 180:近180天 不变更为0</p>
 	CntDay *int64 `json:"CntDay,omitnil,omitempty" name:"CntDay"`
 
-	// 执行时间 格式15:04 到分钟
+	// <p>执行时间 格式15:04 到分钟</p>
 	CntDate *string `json:"CntDate,omitnil,omitempty" name:"CntDate"`
 
-	// 报告说明
+	// <p>报告说明</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 模版Id
+	// <p>模板Id</p>
 	TemplateId *int64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
-	// 报表类型
+	// <p>报表类型</p>
 	ReportType *int64 `json:"ReportType,omitnil,omitempty" name:"ReportType"`
 
-	// 关联的资产数组
+	// <p>关联的资产数组</p>
 	AssetsId []*int64 `json:"AssetsId,omitnil,omitempty" name:"AssetsId"`
 
-	// 报表通知 1关闭 2开启 不变更为0
+	// <p>报表通知 1关闭 2开启 不变更为0</p>
 	Notification *int64 `json:"Notification,omitnil,omitempty" name:"Notification"`
 
-	// 任务起停 1:关闭 2:开启 单次报表默认为2
+	// <p>任务起停 1:关闭 2:开启 单次报表默认为2</p>
 	MissionStart *int64 `json:"MissionStart,omitnil,omitempty" name:"MissionStart"`
 }
 
 type CreateTimerReportRequest struct {
 	*tchttp.BaseRequest
 	
-	// 任务名称 不变更为""
+	// <p>任务名称 不变更为&quot;&quot;</p>
 	TplName *string `json:"TplName,omitnil,omitempty" name:"TplName"`
 
-	// 执行日期 重复周期为天：无意义周：星期几1-7月每月几号 1-31
+	// <p>执行日期 重复周期为天：无意义周：星期几1-7月每月几号 1-31</p>
 	CntTime *int64 `json:"CntTime,omitnil,omitempty" name:"CntTime"`
 
-	// 重复周期
+	// <p>重复周期</p>
 	CntCycle *int64 `json:"CntCycle,omitnil,omitempty" name:"CntCycle"`
 
-	// 发送目标
+	// <p>发送目标</p>
 	Receivers *string `json:"Receivers,omitnil,omitempty" name:"Receivers"`
 
-	// 时间范围 1:24小时 7:近一周 30:近30天 90:近90天 180:近180天 不变更为0
+	// <p>时间范围 1:24小时 7:近一周 30:近30天 90:近90天 180:近180天 不变更为0</p>
 	CntDay *int64 `json:"CntDay,omitnil,omitempty" name:"CntDay"`
 
-	// 执行时间 格式15:04 到分钟
+	// <p>执行时间 格式15:04 到分钟</p>
 	CntDate *string `json:"CntDate,omitnil,omitempty" name:"CntDate"`
 
-	// 报告说明
+	// <p>报告说明</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 模版Id
+	// <p>模板Id</p>
 	TemplateId *int64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
-	// 报表类型
+	// <p>报表类型</p>
 	ReportType *int64 `json:"ReportType,omitnil,omitempty" name:"ReportType"`
 
-	// 关联的资产数组
+	// <p>关联的资产数组</p>
 	AssetsId []*int64 `json:"AssetsId,omitnil,omitempty" name:"AssetsId"`
 
-	// 报表通知 1关闭 2开启 不变更为0
+	// <p>报表通知 1关闭 2开启 不变更为0</p>
 	Notification *int64 `json:"Notification,omitnil,omitempty" name:"Notification"`
 
-	// 任务起停 1:关闭 2:开启 单次报表默认为2
+	// <p>任务起停 1:关闭 2:开启 单次报表默认为2</p>
 	MissionStart *int64 `json:"MissionStart,omitnil,omitempty" name:"MissionStart"`
 }
 
@@ -767,74 +767,74 @@ func (r *DescribeDbauditUsedRegionsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeReportListRequestParams struct {
-	// 限制数目
+	// <p>限制数目</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量
+	// <p>偏移量</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 报告名称
+	// <p>报告名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 开始时间
+	// <p>开始时间</p>
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间
+	// <p>结束时间</p>
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 报告类型
+	// <p>报告类型</p>
 	ReportType *int64 `json:"ReportType,omitnil,omitempty" name:"ReportType"`
 
-	// 报告状态
+	// <p>报告状态</p>
 	ReportStatus *int64 `json:"ReportStatus,omitnil,omitempty" name:"ReportStatus"`
 
-	// 报表模版id
+	// <p>报表模板id</p>
 	TemplateId *int64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
-	// 需要排序的字段
+	// <p>需要排序的字段</p>
 	Field *string `json:"Field,omitnil,omitempty" name:"Field"`
 
-	// 排序顺序 asc desc
+	// <p>排序顺序 asc desc</p>
 	Sort *string `json:"Sort,omitnil,omitempty" name:"Sort"`
 
-	// 时间范围 1:24小时 7:近一周 30:近30天 90:近90天 180:近180天 不变更为0
+	// <p>时间范围 1:24小时 7:近一周 30:近30天 90:近90天 180:近180天 不变更为0</p>
 	CntDay *int64 `json:"CntDay,omitnil,omitempty" name:"CntDay"`
 }
 
 type DescribeReportListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 限制数目
+	// <p>限制数目</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量
+	// <p>偏移量</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 报告名称
+	// <p>报告名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 开始时间
+	// <p>开始时间</p>
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间
+	// <p>结束时间</p>
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 报告类型
+	// <p>报告类型</p>
 	ReportType *int64 `json:"ReportType,omitnil,omitempty" name:"ReportType"`
 
-	// 报告状态
+	// <p>报告状态</p>
 	ReportStatus *int64 `json:"ReportStatus,omitnil,omitempty" name:"ReportStatus"`
 
-	// 报表模版id
+	// <p>报表模板id</p>
 	TemplateId *int64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
-	// 需要排序的字段
+	// <p>需要排序的字段</p>
 	Field *string `json:"Field,omitnil,omitempty" name:"Field"`
 
-	// 排序顺序 asc desc
+	// <p>排序顺序 asc desc</p>
 	Sort *string `json:"Sort,omitnil,omitempty" name:"Sort"`
 
-	// 时间范围 1:24小时 7:近一周 30:近30天 90:近90天 180:近180天 不变更为0
+	// <p>时间范围 1:24小时 7:近一周 30:近30天 90:近90天 180:近180天 不变更为0</p>
 	CntDay *int64 `json:"CntDay,omitnil,omitempty" name:"CntDay"`
 }
 
@@ -869,10 +869,10 @@ func (r *DescribeReportListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeReportListResponseParams struct {
-	// 总数目
+	// <p>总数目</p>
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 数据列表
+	// <p>数据列表</p>
 	List []*Reports `json:"List,omitnil,omitempty" name:"List"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

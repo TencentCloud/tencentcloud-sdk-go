@@ -7945,59 +7945,65 @@ func (r *ListSCIMCredentialsResponse) FromJsonString(s string) error {
 }
 
 type ListTargetsForPolicyNode struct {
-	// scp账号uin或节点Id
+	// <p>scp账号uin或节点Id</p>
 	Uin *uint64 `json:"Uin,omitnil,omitempty" name:"Uin"`
 
-	// 关联类型 1-节点关联 2-用户关联
+	// <p>关联类型 1-节点关联 2-用户关联</p>
 	RelatedType *uint64 `json:"RelatedType,omitnil,omitempty" name:"RelatedType"`
 
-	// 账号或者节点名称
+	// <p>账号或者节点名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 绑定时间
+	// <p>绑定时间</p>
 	AddTime *string `json:"AddTime,omitnil,omitempty" name:"AddTime"`
+
+	// <p>目标对象所属的组织层级名称路径</p>
+	NodePath []*string `json:"NodePath,omitnil,omitempty" name:"NodePath"`
+
+	// <p>对应的组织层级 ID 路径</p>
+	NodePathIds []*int64 `json:"NodePathIds,omitnil,omitempty" name:"NodePathIds"`
 }
 
 // Predefined struct for user
 type ListTargetsForPolicyRequestParams struct {
-	// 策略Id。
+	// <p>策略Id。</p>
 	PolicyId *uint64 `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
 
-	// 每页数量。默认值是 20，必须大于 0 且小于或等于 200
+	// <p>每页数量。默认值是 20，必须大于 0 且小于或等于 200</p>
 	Rp *uint64 `json:"Rp,omitnil,omitempty" name:"Rp"`
 
-	// 页码。默认值是 1，从 1开始，不能大于 200
+	// <p>页码。默认值是 1，从 1开始，不能大于 200</p>
 	Page *uint64 `json:"Page,omitnil,omitempty" name:"Page"`
 
-	// 策略类型。取值范围：All-全部、User-用户、Node-节点
+	// <p>策略类型。取值范围：All-全部、User-用户、Node-节点</p>
 	TargetType *string `json:"TargetType,omitnil,omitempty" name:"TargetType"`
 
-	// 策略类型。默认值SERVICE_CONTROL_POLICY，取值范围：SERVICE_CONTROL_POLICY-服务控制策略、TAG_POLICY-标签策略
+	// <p>策略类型。默认值SERVICE_CONTROL_POLICY，取值范围：SERVICE_CONTROL_POLICY-服务控制策略、TAG_POLICY-标签策略</p>
 	PolicyType *string `json:"PolicyType,omitnil,omitempty" name:"PolicyType"`
 
-	// 按照多个策略id搜索，空格隔开。
+	// <p>按照多个策略id搜索，空格隔开。</p>
 	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
 }
 
 type ListTargetsForPolicyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 策略Id。
+	// <p>策略Id。</p>
 	PolicyId *uint64 `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
 
-	// 每页数量。默认值是 20，必须大于 0 且小于或等于 200
+	// <p>每页数量。默认值是 20，必须大于 0 且小于或等于 200</p>
 	Rp *uint64 `json:"Rp,omitnil,omitempty" name:"Rp"`
 
-	// 页码。默认值是 1，从 1开始，不能大于 200
+	// <p>页码。默认值是 1，从 1开始，不能大于 200</p>
 	Page *uint64 `json:"Page,omitnil,omitempty" name:"Page"`
 
-	// 策略类型。取值范围：All-全部、User-用户、Node-节点
+	// <p>策略类型。取值范围：All-全部、User-用户、Node-节点</p>
 	TargetType *string `json:"TargetType,omitnil,omitempty" name:"TargetType"`
 
-	// 策略类型。默认值SERVICE_CONTROL_POLICY，取值范围：SERVICE_CONTROL_POLICY-服务控制策略、TAG_POLICY-标签策略
+	// <p>策略类型。默认值SERVICE_CONTROL_POLICY，取值范围：SERVICE_CONTROL_POLICY-服务控制策略、TAG_POLICY-标签策略</p>
 	PolicyType *string `json:"PolicyType,omitnil,omitempty" name:"PolicyType"`
 
-	// 按照多个策略id搜索，空格隔开。
+	// <p>按照多个策略id搜索，空格隔开。</p>
 	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
 }
 
@@ -8027,10 +8033,10 @@ func (r *ListTargetsForPolicyRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListTargetsForPolicyResponseParams struct {
-	// 总数。
+	// <p>总数。</p>
 	TotalNum *uint64 `json:"TotalNum,omitnil,omitempty" name:"TotalNum"`
 
-	// 指定SCP策略关联目标列表。
+	// <p>指定SCP策略关联目标列表。</p>
 	List []*ListTargetsForPolicyNode `json:"List,omitnil,omitempty" name:"List"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

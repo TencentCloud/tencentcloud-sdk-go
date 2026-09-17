@@ -136,6 +136,7 @@ import (
 	eccv20181213 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ecc/v20181213"
 	ecdnv20191012 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ecdn/v20191012"
 	ecmv20190719 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ecm/v20190719"
+	edgezonev20260401 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/edgezone/v20260401"
 	eiamv20210420 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/eiam/v20210420"
 	eisv20200715 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/eis/v20200715"
 	eisv20210601 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/eis/v20210601"
@@ -1825,6 +1826,19 @@ func TestEcmv20190719Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf("fail to init ecm_v20190719 client: %v", err)
+    }
+}
+
+func TestEdgezonev20260401Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := edgezonev20260401.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf("fail to init edgezone_v20260401 client: %v", err)
     }
 }
 

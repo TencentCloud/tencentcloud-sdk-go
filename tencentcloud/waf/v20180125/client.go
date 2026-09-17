@@ -977,6 +977,60 @@ func (c *Client) CreateAccessExportWithContext(ctx context.Context, request *Cre
     return
 }
 
+func NewCreateAndUpdateBatchCCRuleRequest() (request *CreateAndUpdateBatchCCRuleRequest) {
+    request = &CreateAndUpdateBatchCCRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "CreateAndUpdateBatchCCRule")
+    
+    
+    return
+}
+
+func NewCreateAndUpdateBatchCCRuleResponse() (response *CreateAndUpdateBatchCCRuleResponse) {
+    response = &CreateAndUpdateBatchCCRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateAndUpdateBatchCCRule
+// 批量cc规则配置接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_THENAMEOFTHEBATCHPROTECTIONRULECANNOTBEEMPTY = "FailedOperation.TheNameOfTheBatchProtectionRuleCannotBeEmpty"
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateAndUpdateBatchCCRule(request *CreateAndUpdateBatchCCRuleRequest) (response *CreateAndUpdateBatchCCRuleResponse, err error) {
+    return c.CreateAndUpdateBatchCCRuleWithContext(context.Background(), request)
+}
+
+// CreateAndUpdateBatchCCRule
+// 批量cc规则配置接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_THENAMEOFTHEBATCHPROTECTIONRULECANNOTBEEMPTY = "FailedOperation.TheNameOfTheBatchProtectionRuleCannotBeEmpty"
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateAndUpdateBatchCCRuleWithContext(ctx context.Context, request *CreateAndUpdateBatchCCRuleRequest) (response *CreateAndUpdateBatchCCRuleResponse, err error) {
+    if request == nil {
+        request = NewCreateAndUpdateBatchCCRuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "CreateAndUpdateBatchCCRule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAndUpdateBatchCCRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateAndUpdateBatchCCRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAreaBanRuleRequest() (request *CreateAreaBanRuleRequest) {
     request = &CreateAreaBanRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},

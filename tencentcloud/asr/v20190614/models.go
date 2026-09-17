@@ -2729,7 +2729,7 @@ type VoicePrintEnrollRequestParams struct {
 	// <p>说话人昵称  不超过32字节</p>
 	SpeakerNick *string `json:"SpeakerNick,omitnil,omitempty" name:"SpeakerNick"`
 
-	// <p>分组id, 仅支持大小写字母和下划线的组合，不超过128个字符</p>
+	// <p>分组id, 仅支持大小写字母和下划线的组合，不超过128个字符</p><p><strong>注意：</strong></p><ul><li><p>一个group最多可容纳20个说话人ID</p></li><li><p>group主要用在声纹1：N比对场景</p></li></ul>
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// <p>声纹cos url 注意:仅支持腾讯云cos url 地址</p>
@@ -2751,7 +2751,7 @@ type VoicePrintEnrollRequest struct {
 	// <p>说话人昵称  不超过32字节</p>
 	SpeakerNick *string `json:"SpeakerNick,omitnil,omitempty" name:"SpeakerNick"`
 
-	// <p>分组id, 仅支持大小写字母和下划线的组合，不超过128个字符</p>
+	// <p>分组id, 仅支持大小写字母和下划线的组合，不超过128个字符</p><p><strong>注意：</strong></p><ul><li><p>一个group最多可容纳20个说话人ID</p></li><li><p>group主要用在声纹1：N比对场景</p></li></ul>
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// <p>声纹cos url 注意:仅支持腾讯云cos url 地址</p>

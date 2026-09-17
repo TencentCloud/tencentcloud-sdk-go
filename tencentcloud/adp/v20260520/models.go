@@ -87,6 +87,35 @@ type AccountInfo struct {
 	Avatar *string `json:"Avatar,omitnil,omitempty" name:"Avatar"`
 }
 
+type AddOnPackageInfo struct {
+	// <p>增值包总量</p>
+	AddOnTotal *float64 `json:"AddOnTotal,omitnil,omitempty" name:"AddOnTotal"`
+
+	// <p>增值包用量</p>
+	AddOnUsage *float64 `json:"AddOnUsage,omitnil,omitempty" name:"AddOnUsage"`
+
+	// <p>专属并发总数</p>
+	ExclusiveConcurrency *uint64 `json:"ExclusiveConcurrency,omitnil,omitempty" name:"ExclusiveConcurrency"`
+
+	// <p>资源包状态</p><p>枚举值：</p><ul><li>1： 可使</li><li>2： 已用完</li><li>3： 已过期</li></ul>
+	ResourceStatus *uint64 `json:"ResourceStatus,omitnil,omitempty" name:"ResourceStatus"`
+
+	// <p>专属并发状态</p><p>枚举值：</p><ul><li>1： 可使</li><li>3： 已过期</li></ul>
+	ConcurrencyStatus *uint64 `json:"ConcurrencyStatus,omitnil,omitempty" name:"ConcurrencyStatus"`
+
+	// <p>专属tpm</p>
+	ExclusiveTpm *uint64 `json:"ExclusiveTpm,omitnil,omitempty" name:"ExclusiveTpm"`
+
+	// <p>专属tpm状态</p><p>枚举值：</p><ul><li>1： 可使</li><li>3： 已过期</li></ul>
+	ExclusiveTpmStatus *uint64 `json:"ExclusiveTpmStatus,omitnil,omitempty" name:"ExclusiveTpmStatus"`
+
+	// <p>专属计算单元</p>
+	ExclusiveComputeUnit *uint64 `json:"ExclusiveComputeUnit,omitnil,omitempty" name:"ExclusiveComputeUnit"`
+
+	// <p>专属计算单元状态</p><p>枚举值：</p><ul><li>1： 可使</li><li>3： 已过期</li><li>4： 已销毁</li><li>5： 已隔离</li><li>6： 未生效</li><li>7： 暂不可用（套餐包过期时）</li></ul>
+	ExclusiveComputeUnitStatus *uint64 `json:"ExclusiveComputeUnitStatus,omitnil,omitempty" name:"ExclusiveComputeUnitStatus"`
+}
+
 type AgentAdvancedConfig struct {
 	// <p>最大推理轮数</p>
 	MaxReasoningRound *uint64 `json:"MaxReasoningRound,omitnil,omitempty" name:"MaxReasoningRound"`
@@ -1536,10 +1565,10 @@ func (r *CheckLabelResponse) FromJsonString(s string) error {
 }
 
 type CheckResult struct {
-	// <p>是否通过校验</p>
+	// 是否通过校验
 	Passed *bool `json:"Passed,omitnil,omitempty" name:"Passed"`
 
-	// <p>失败原因（passed=false 时填充）</p>
+	// 失败原因（passed=false 时填充）
 	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
 }
 
@@ -8306,6 +8335,63 @@ func (r *DescribeReleaseSummaryResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeResourceSummaryRequestParams struct {
+
+}
+
+type DescribeResourceSummaryRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeResourceSummaryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeResourceSummaryRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeResourceSummaryRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeResourceSummaryResponseParams struct {
+	// <p>计费套餐包用量信息</p>
+	ResourcePackage *ResourcePackageInfo `json:"ResourcePackage,omitnil,omitempty" name:"ResourcePackage"`
+
+	// <p>计费增值包用量信息</p>
+	AddOnPackage *AddOnPackageInfo `json:"AddOnPackage,omitnil,omitempty" name:"AddOnPackage"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeResourceSummaryResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeResourceSummaryResponseParams `json:"Response"`
+}
+
+func (r *DescribeResourceSummaryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeResourceSummaryResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeSkillCategoryListRequestParams struct {
 
 }
@@ -9700,16 +9786,16 @@ type GraphRAG struct {
 }
 
 type Identity struct {
-	// <p>描述</p>
+	// 描述
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// <p>数字 ID</p>
+	// 数字 ID
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// <p>名称</p>
+	// 名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// <p>字符串 ID</p>
+	// 字符串 ID
 	StrId *string `json:"StrId,omitnil,omitempty" name:"StrId"`
 }
 
@@ -9864,6 +9950,17 @@ type KBModifyExtendFields struct {
 	Action *int64 `json:"Action,omitnil,omitempty" name:"Action"`
 }
 
+type KBPermission struct {
+	// <p>是否可删除</p>
+	CanDelete *bool `json:"CanDelete,omitnil,omitempty" name:"CanDelete"`
+
+	// <p>是否可编辑</p>
+	CanEdit *bool `json:"CanEdit,omitnil,omitempty" name:"CanEdit"`
+
+	// <p>是否可查看</p>
+	CanView *bool `json:"CanView,omitnil,omitempty" name:"CanView"`
+}
+
 type KBRetrievalConfig struct {
 	// <p>数据库检索配置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -9951,6 +10048,10 @@ type KBSummary struct {
 
 	// <p>知识库名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>操作权限</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Permission *KBPermission `json:"Permission,omitnil,omitempty" name:"Permission"`
 
 	// <p>处理中状态列表</p>
 	ProcessingFlagList []*int64 `json:"ProcessingFlagList,omitnil,omitempty" name:"ProcessingFlagList"`
@@ -10110,14 +10211,14 @@ type LabelTerm struct {
 }
 
 type LabelTermCheckResult struct {
-	// <p>校验结果</p>
+	// 校验结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CheckResult *CheckResult `json:"CheckResult,omitnil,omitempty" name:"CheckResult"`
 
-	// <p>待校验的标准词</p>
+	// 待校验的标准词
 	Term *string `json:"Term,omitnil,omitempty" name:"Term"`
 
-	// <p>已存在时返回对应标准词 ID</p>
+	// 已存在时返回对应标准词 ID
 	TermId *string `json:"TermId,omitnil,omitempty" name:"TermId"`
 }
 
@@ -10366,45 +10467,48 @@ type ModelParameter struct {
 }
 
 type ModelParams struct {
-	// 是否开启深度思考
+	// <p>是否开启深度思考</p>
 	DeepThinking *string `json:"DeepThinking,omitnil,omitempty" name:"DeepThinking"`
 
-	// 频率惩罚
+	// <p>频率惩罚</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FrequencyPenalty *float64 `json:"FrequencyPenalty,omitnil,omitempty" name:"FrequencyPenalty"`
 
-	// 最大输出长度
+	// <p>最大输出长度</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxTokens *int64 `json:"MaxTokens,omitnil,omitempty" name:"MaxTokens"`
 
-	// 存在惩罚
+	// <p>存在惩罚</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PresencePenalty *float64 `json:"PresencePenalty,omitnil,omitempty" name:"PresencePenalty"`
 
-	// 深度思考效果
+	// <p>深度思考效果</p>
 	ReasoningEffort *string `json:"ReasoningEffort,omitnil,omitempty" name:"ReasoningEffort"`
 
-	// 重复惩罚
+	// <p>重复惩罚</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RepetitionPenalty *float64 `json:"RepetitionPenalty,omitnil,omitempty" name:"RepetitionPenalty"`
 
-	// 输出格式（text、json_object）
+	// <p>输出格式（text、json_object）</p>
 	ReplyFormat *string `json:"ReplyFormat,omitnil,omitempty" name:"ReplyFormat"`
 
-	// seed 随机种子
+	// <p>seed 随机种子</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Seed *int64 `json:"Seed,omitnil,omitempty" name:"Seed"`
 
-	// 停止序列
+	// <p>停止序列</p>
 	StopSequenceList []*string `json:"StopSequenceList,omitnil,omitempty" name:"StopSequenceList"`
 
-	// 温度
+	// <p>温度</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Temperature *float64 `json:"Temperature,omitnil,omitempty" name:"Temperature"`
 
-	// top_p
+	// <p>top_p</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopP *float64 `json:"TopP,omitnil,omitempty" name:"TopP"`
+
+	// <p>top_k</p>
+	TopK *int64 `json:"TopK,omitnil,omitempty" name:"TopK"`
 }
 
 type ModelProperty struct {
@@ -12180,10 +12284,10 @@ type OperationResult struct {
 }
 
 type Operator struct {
-	// <p>用户 ID</p>
+	// 用户 ID
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
-	// <p>用户姓名</p>
+	// 用户姓名
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 }
 
@@ -12933,6 +13037,26 @@ type ResourceConsumption struct {
 
 	// <p>消耗数值</p>
 	Value *float64 `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type ResourcePackageInfo struct {
+	// <p>套餐类型</p><p>枚举值：</p><ul><li>1： 免费版</li><li>2： 专业版</li><li>3： 企业版</li></ul>
+	PackageType *uint64 `json:"PackageType,omitnil,omitempty" name:"PackageType"`
+
+	// <p>资源包总量</p>
+	ResourceTotal *int64 `json:"ResourceTotal,omitnil,omitempty" name:"ResourceTotal"`
+
+	// <p>资源包用量</p>
+	ResourceUsage *float64 `json:"ResourceUsage,omitnil,omitempty" name:"ResourceUsage"`
+
+	// <p>知识库容量</p>
+	KnowledgeCapacity *float64 `json:"KnowledgeCapacity,omitnil,omitempty" name:"KnowledgeCapacity"`
+
+	// <p>知识库用量</p>
+	KnowledgeUsage *float64 `json:"KnowledgeUsage,omitnil,omitempty" name:"KnowledgeUsage"`
+
+	// <p>资源包状态</p><p>枚举值：</p><ul><li>1： 正常</li><li>3： 已到期</li><li>4： 即将到期</li></ul>
+	ResourceStatus *uint64 `json:"ResourceStatus,omitnil,omitempty" name:"ResourceStatus"`
 }
 
 type ResponseParam struct {
@@ -14215,7 +14339,7 @@ type Variable struct {
 }
 
 type ViewScope struct {
-	// <p>视图类型；枚举值：VIEW_TYPE_CORP(1) 企业视图、VIEW_TYPE_SPACE(2) 空间视图、VIEW_TYPE_APP(3) 应用视图</p><table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>VIEW_TYPE_UNSPECIFIED</td><td>0</td><td>未指定（无效值，请求勿传）</td></tr><tr><td>VIEW_TYPE_CORP</td><td>1</td><td>企业视图</td></tr><tr><td>VIEW_TYPE_SPACE</td><td>2</td><td>空间视图</td></tr><tr><td>VIEW_TYPE_APP</td><td>3</td><td>应用视图</td></tr></tbody></table>
+	// <p>视图类型；枚举值：VIEW_TYPE_CORP(1) 企业视图、VIEW_TYPE_SPACE(2) 空间视图、VIEW_TYPE_APP(3) 应用视图</p><table><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>VIEW_TYPE_UNSPECIFIED</td><td>0</td><td>未指定（无效值，请求勿传）</td></tr><tr><td>VIEW_TYPE_CORP</td><td>1</td><td>企业视图</td></tr><tr><td>VIEW_TYPE_SPACE</td><td>2</td><td>空间视图</td></tr><tr><td>VIEW_TYPE_APP</td><td>3</td><td>应用视图</td></tr></table>
 	ViewType *int64 `json:"ViewType,omitnil,omitempty" name:"ViewType"`
 
 	// <p>视图范围 ID；VIEW_TYPE_CORP 留空；VIEW_TYPE_SPACE 填 space_id；VIEW_TYPE_APP 填 app_id（uint64 雪花 ID 的十进制字符串）</p>

@@ -2994,6 +2994,18 @@ type CheckpointMountInfo struct {
 	SnapshotKey *string `json:"SnapshotKey,omitnil,omitempty" name:"SnapshotKey"`
 }
 
+type CloudTag struct {
+	// <p>标签键</p>
+	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
+
+	// <p>标签值</p>
+	TagValue *string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
+
+	// <p>标签类型：Custom（自定义）/ System（系统）/ All（全部），仅查询接口返回</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Category *string `json:"Category,omitnil,omitempty" name:"Category"`
+}
+
 type ClsTopicItem struct {
 	// <p>日志主题 ID</p>
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
@@ -3272,6 +3284,9 @@ type CopyJobSpecResponseParams struct {
 
 	// <p>默认队列名称</p>
 	Queue *string `json:"Queue,omitnil,omitempty" name:"Queue"`
+
+	// <p>所属队列别名</p>
+	QueueAlias *string `json:"QueueAlias,omitnil,omitempty" name:"QueueAlias"`
 
 	// <p>作业包URL</p>
 	JobPackage *string `json:"JobPackage,omitnil,omitempty" name:"JobPackage"`
@@ -5623,6 +5638,9 @@ type CreateJobSpecResponseParams struct {
 	// <p>默认队列名称</p>
 	Queue *string `json:"Queue,omitnil,omitempty" name:"Queue"`
 
+	// <p>所属队列别名</p>
+	QueueAlias *string `json:"QueueAlias,omitnil,omitempty" name:"QueueAlias"`
+
 	// <p>作业包URL</p>
 	JobPackage *string `json:"JobPackage,omitnil,omitempty" name:"JobPackage"`
 
@@ -6639,14 +6657,17 @@ type CreatePartitionQueueRequestParams struct {
 	// <p>分区编码</p>
 	PartitionCode *string `json:"PartitionCode,omitnil,omitempty" name:"PartitionCode"`
 
-	// <p>队列名称</p>
-	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
-
 	// <p>资源规格列表，定义队列的资源类型及大小范围</p>
 	ResourceUsages []*ResourceUsage `json:"ResourceUsages,omitnil,omitempty" name:"ResourceUsages"`
 
 	// <p>队列类型：1-独占型，2-共享型</p>
 	QueueType *int64 `json:"QueueType,omitnil,omitempty" name:"QueueType"`
+
+	// <p>队列编码（不可变 code）：透传时按 RFC1123 校验并作为队列的固定标识；未透传时系统自动生成（格式 dlc-rg-xxxxxxxx）。落库后不可修改</p>
+	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
+
+	// <p>队列别名（显示名）：用户可见、可修改；未提供时等于最终 QueueName。可与其它队列重复</p>
+	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
 
 	// <p>队列描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
@@ -6658,14 +6679,17 @@ type CreatePartitionQueueRequest struct {
 	// <p>分区编码</p>
 	PartitionCode *string `json:"PartitionCode,omitnil,omitempty" name:"PartitionCode"`
 
-	// <p>队列名称</p>
-	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
-
 	// <p>资源规格列表，定义队列的资源类型及大小范围</p>
 	ResourceUsages []*ResourceUsage `json:"ResourceUsages,omitnil,omitempty" name:"ResourceUsages"`
 
 	// <p>队列类型：1-独占型，2-共享型</p>
 	QueueType *int64 `json:"QueueType,omitnil,omitempty" name:"QueueType"`
+
+	// <p>队列编码（不可变 code）：透传时按 RFC1123 校验并作为队列的固定标识；未透传时系统自动生成（格式 dlc-rg-xxxxxxxx）。落库后不可修改</p>
+	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
+
+	// <p>队列别名（显示名）：用户可见、可修改；未提供时等于最终 QueueName。可与其它队列重复</p>
+	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
 
 	// <p>队列描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
@@ -6684,9 +6708,10 @@ func (r *CreatePartitionQueueRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "PartitionCode")
-	delete(f, "QueueName")
 	delete(f, "ResourceUsages")
 	delete(f, "QueueType")
+	delete(f, "QueueName")
+	delete(f, "Alias")
 	delete(f, "Description")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePartitionQueueRequest has unknown keys!", "")
@@ -6698,6 +6723,12 @@ func (r *CreatePartitionQueueRequest) FromJsonString(s string) error {
 type CreatePartitionQueueResponseParams struct {
 	// <p>新创建的资源队列ID</p>
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>最终生效的队列编码（含系统生成场景），与 DescribePartitionQueues 出参的 QueueName 语义一致</p>
+	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
+
+	// <p>队列别名（显示名）</p>
+	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -6806,7 +6837,12 @@ type CreatePartitionResponseParams struct {
 	DealName *string `json:"DealName,omitnil,omitempty" name:"DealName"`
 
 	// <p>大订单号</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	BigDealId *string `json:"BigDealId,omitnil,omitempty" name:"BigDealId"`
+
+	// <p>冻结流水号（后付费返回；预付费为空）</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BillId *string `json:"BillId,omitnil,omitempty" name:"BillId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -16488,14 +16524,14 @@ func (r *DescribeOtherCHDFSBindingListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribePartitionDetailRequestParams struct {
-	// 分区编码
+	// <p>分区编码</p>
 	PartitionCode *string `json:"PartitionCode,omitnil,omitempty" name:"PartitionCode"`
 }
 
 type DescribePartitionDetailRequest struct {
 	*tchttp.BaseRequest
 	
-	// 分区编码
+	// <p>分区编码</p>
 	PartitionCode *string `json:"PartitionCode,omitnil,omitempty" name:"PartitionCode"`
 }
 
@@ -16520,7 +16556,7 @@ func (r *DescribePartitionDetailRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribePartitionDetailResponseParams struct {
-	// 分区详情
+	// <p>分区详情</p>
 	PartitionDetail *PartitionDetail `json:"PartitionDetail,omitnil,omitempty" name:"PartitionDetail"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -16559,6 +16595,9 @@ type DescribePartitionQueuesRequestParams struct {
 
 	// 每页返回数量
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 是否返回队列实时余量（ResourceQuotas），默认 false 不返回。余量需实时查询 Prometheus，仅在需要时透传 true。Used 为计费 spec 口径（队列内业务容器 Pod limits，经 kube_pod_labels 队列过滤），依赖 kube_pod_labels 指标采集
+	ShowResourceQuotas *bool `json:"ShowResourceQuotas,omitnil,omitempty" name:"ShowResourceQuotas"`
 }
 
 type DescribePartitionQueuesRequest struct {
@@ -16578,6 +16617,9 @@ type DescribePartitionQueuesRequest struct {
 
 	// 每页返回数量
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 是否返回队列实时余量（ResourceQuotas），默认 false 不返回。余量需实时查询 Prometheus，仅在需要时透传 true。Used 为计费 spec 口径（队列内业务容器 Pod limits，经 kube_pod_labels 队列过滤），依赖 kube_pod_labels 指标采集
+	ShowResourceQuotas *bool `json:"ShowResourceQuotas,omitnil,omitempty" name:"ShowResourceQuotas"`
 }
 
 func (r *DescribePartitionQueuesRequest) ToJsonString() string {
@@ -16597,6 +16639,7 @@ func (r *DescribePartitionQueuesRequest) FromJsonString(s string) error {
 	delete(f, "Filters")
 	delete(f, "Page")
 	delete(f, "PageSize")
+	delete(f, "ShowResourceQuotas")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePartitionQueuesRequest has unknown keys!", "")
 	}
@@ -21614,17 +21657,16 @@ type Filter struct {
 }
 
 type FlowActivityDetail struct {
-	// <p>活动编码</p>
+	// <p>活动编码；国际站返回英文编码，国内站返回中文描述</p>
 	ActivityCode *string `json:"ActivityCode,omitnil,omitempty" name:"ActivityCode"`
 
-	// <p>活动状态</p>
+	// <p>活动状态：1-运行中，2-已完成，-2-失败</p>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// <p>创建时间</p>
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// <p>活动创建时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// <p>耗时（秒）</p>
+	// <p>耗时（秒），活动未完成时省略</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Duration *int64 `json:"Duration,omitnil,omitempty" name:"Duration"`
 }
@@ -22373,6 +22415,9 @@ type GetJobSpecResponseParams struct {
 	// <p>默认队列名称</p>
 	Queue *string `json:"Queue,omitnil,omitempty" name:"Queue"`
 
+	// <p>所属队列别名</p>
+	QueueAlias *string `json:"QueueAlias,omitnil,omitempty" name:"QueueAlias"`
+
 	// <p>作业包URL</p>
 	JobPackage *string `json:"JobPackage,omitnil,omitempty" name:"JobPackage"`
 
@@ -22519,6 +22564,9 @@ type GetLabDetailResponseParams struct {
 
 	// <p>所属队列名称</p>
 	Queue *string `json:"Queue,omitnil,omitempty" name:"Queue"`
+
+	// <p>所属队列别名</p>
+	QueueAlias *string `json:"QueueAlias,omitnil,omitempty" name:"QueueAlias"`
 
 	// <p>应用ID</p>
 	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
@@ -23780,6 +23828,9 @@ type GetRayClusterResponseParams struct {
 	// <p>所属队列名称</p>
 	Queue *string `json:"Queue,omitnil,omitempty" name:"Queue"`
 
+	// <p>所属队列别名</p>
+	QueueAlias *string `json:"QueueAlias,omitnil,omitempty" name:"QueueAlias"`
+
 	// <p>应用ID</p>
 	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 
@@ -24334,6 +24385,9 @@ type GetRayJobResponseParams struct {
 
 	// <p>所属队列名称</p>
 	Queue *string `json:"Queue,omitnil,omitempty" name:"Queue"`
+
+	// <p>所属队列别名</p>
+	QueueAlias *string `json:"QueueAlias,omitnil,omitempty" name:"QueueAlias"`
 
 	// <p>任务状态</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
@@ -25516,6 +25570,9 @@ type JobSpec struct {
 	// <p>默认队列名称</p>
 	Queue *string `json:"Queue,omitnil,omitempty" name:"Queue"`
 
+	// <p>所属队列别名</p>
+	QueueAlias *string `json:"QueueAlias,omitnil,omitempty" name:"QueueAlias"`
+
 	// <p>集群组Id</p>
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
@@ -25531,6 +25588,9 @@ type JobSpec struct {
 	// <p>作业包名称</p>
 	JobPackageName *string `json:"JobPackageName,omitnil,omitempty" name:"JobPackageName"`
 
+	// <p>作业包来源类型（Local: 本地上传, Cos: 用户自有 COS 桶地址）；缺时按 Local 处理</p>
+	JobPackageSource *string `json:"JobPackageSource,omitnil,omitempty" name:"JobPackageSource"`
+
 	// <p>优先级</p>
 	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
 
@@ -25542,6 +25602,9 @@ type JobSpec struct {
 
 	// <p>子用户UIN</p>
 	SubAccountUin *string `json:"SubAccountUin,omitnil,omitempty" name:"SubAccountUin"`
+
+	// <p>子用户名称（由聚合层通过 CAM 接口回填）</p>
+	SubAccountName *string `json:"SubAccountName,omitnil,omitempty" name:"SubAccountName"`
 
 	// <p>创建时间</p>
 	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
@@ -25666,6 +25729,9 @@ type LabResponse struct {
 
 	// <p>所属队列名称</p>
 	Queue *string `json:"Queue,omitnil,omitempty" name:"Queue"`
+
+	// <p>所属队列别名</p>
+	QueueAlias *string `json:"QueueAlias,omitnil,omitempty" name:"QueueAlias"`
 
 	// <p>应用ID</p>
 	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
@@ -30080,8 +30146,11 @@ type ModifyPartitionQueueRequestParams struct {
 	// 分区编码
 	PartitionCode *string `json:"PartitionCode,omitnil,omitempty" name:"PartitionCode"`
 
-	// 队列名称
+	// 队列编码（不可变 code）：与 Id 定位记录的一致性校验键，传入值必须与队列当前 QueueName 一致，不参与更新
 	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
+
+	// 队列别名（显示名）：透传时更新，未透传时保持不变。可与其它队列重复
+	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
 
 	// 队列描述
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
@@ -30102,8 +30171,11 @@ type ModifyPartitionQueueRequest struct {
 	// 分区编码
 	PartitionCode *string `json:"PartitionCode,omitnil,omitempty" name:"PartitionCode"`
 
-	// 队列名称
+	// 队列编码（不可变 code）：与 Id 定位记录的一致性校验键，传入值必须与队列当前 QueueName 一致，不参与更新
 	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
+
+	// 队列别名（显示名）：透传时更新，未透传时保持不变。可与其它队列重复
+	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
 
 	// 队列描述
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
@@ -30130,6 +30202,7 @@ func (r *ModifyPartitionQueueRequest) FromJsonString(s string) error {
 	delete(f, "Id")
 	delete(f, "PartitionCode")
 	delete(f, "QueueName")
+	delete(f, "Alias")
 	delete(f, "Description")
 	delete(f, "ResourceUsages")
 	delete(f, "QueueType")
@@ -31659,6 +31732,10 @@ type PartitionDetail struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceQuota []*ResourceQuota `json:"ResourceQuota,omitnil,omitempty" name:"ResourceQuota"`
 
+	// <p>各计费项的单 worker/executor 最大可调度资源量列表，用于约束提交作业时可申请的规格上限；仅包含分区已有的非 GPU 计费项，无可返回项时为空数组</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SchedulableLimitList []*SchedulableLimit `json:"SchedulableLimitList,omitnil,omitempty" name:"SchedulableLimitList"`
+
 	// <p>付费模式</p>
 	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
@@ -31671,6 +31748,22 @@ type PartitionDetail struct {
 
 	// <p>状态</p>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>过期时间</p><p>参数格式：yyyy-MM-dd hh:mm:ss</p>
+	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// <p>过期时间</p><p>参数格式：yyyy-MM-dd hh:mm:ss</p>
+	IsolatedTimestamp *string `json:"IsolatedTimestamp,omitnil,omitempty" name:"IsolatedTimestamp"`
+
+	// <p>资源已绑定的标签列表，由标签平台 GetResources 接口实时查询得到</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*CloudTag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>资源池形态：SYSTEM（系统）/ USER（用户）/ EXTERNAL_TKE（纳管外部 TKE 集群）</p>
+	ResourcePoolKind *string `json:"ResourcePoolKind,omitnil,omitempty" name:"ResourcePoolKind"`
+
+	// <p>纳管外部集群的原始 ID（例如 EMR 实例 ID emr-xxx），仅 EXTERNAL_TKE 等纳管场景有值</p>
+	ExternalClusterId *string `json:"ExternalClusterId,omitnil,omitempty" name:"ExternalClusterId"`
 }
 
 type PartitionInfo struct {
@@ -31694,8 +31787,16 @@ type PartitionInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceQuota []*ResourceQuota `json:"ResourceQuota,omitnil,omitempty" name:"ResourceQuota"`
 
+	// <p>各计费项的单 worker/executor 最大可调度资源量列表，用于约束提交作业时可申请的规格上限；仅包含分区已有的非 GPU 计费项，无可返回项时为空数组</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SchedulableLimitList []*SchedulableLimit `json:"SchedulableLimitList,omitnil,omitempty" name:"SchedulableLimitList"`
+
 	// <p>计费类型：1-包年包月，0-按量计费</p>
 	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
+
+	// <p>续费标志：0-默认，1-自动续费，2-不自动续费（仅预付费有效）；按量计费分区无该字段</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RenewFlag *int64 `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 
 	// <p>创建时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -31708,6 +31809,18 @@ type PartitionInfo struct {
 	// <p>过期时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// <p>资源池形态：SYSTEM（系统）/ USER（用户）/ EXTERNAL_TKE（纳管外部 TKE 集群）</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourcePoolKind *string `json:"ResourcePoolKind,omitnil,omitempty" name:"ResourcePoolKind"`
+
+	// <p>纳管外部集群的原始 ID（例如 EMR 实例 ID emr-xxx），仅 EXTERNAL_TKE 等纳管场景有值</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExternalClusterId *string `json:"ExternalClusterId,omitnil,omitempty" name:"ExternalClusterId"`
+
+	// <p>资源已绑定的标签列表，由标签平台 GetResources 接口实时查询得到；列表场景下仅对当前页分区加载，单分区标签查询失败时降级留空</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*CloudTag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 // Predefined struct for user
@@ -32453,12 +32566,19 @@ type QueueInfo struct {
 	// <p>队列ID</p>
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// <p>队列名称</p>
+	// <p>不可变的Code</p>
 	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
+
+	// <p>队列别名（用户可改显示名）；alias 为空时回落为 QueueName</p>
+	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
 
 	// <p>资源用量列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceUsage []*ResourceUsage `json:"ResourceUsage,omitnil,omitempty" name:"ResourceUsage"`
+
+	// <p>队列各资源类型的实时余量（总量 / 已用量 / 可用量）。由 Kueue Prometheus 指标实时计算；监控关闭或查询失败时为 null，字段省略不返回</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceQuotas []*QueueResourceQuota `json:"ResourceQuotas,omitnil,omitempty" name:"ResourceQuotas"`
 
 	// <p>队列描述</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -32469,6 +32589,23 @@ type QueueInfo struct {
 
 	// <p>队列类型：1-独占型，2-共享型</p>
 	QueueType *int64 `json:"QueueType,omitnil,omitempty" name:"QueueType"`
+}
+
+type QueueResourceQuota struct {
+	// <p>资源类型标识。CPU / HM_CPU 类计费项统一映射为 "CU"；GPU 类计费项取卡型简称（如 "T4"、"H20"）</p>
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// <p>资源单位。CU 类为 "core"；GPU 类为 "card"</p>
+	Unit *string `json:"Unit,omitnil,omitempty" name:"Unit"`
+
+	// <p>配额总量，由 resource_usage 最大值（index 1）× spec 折算得出</p>
+	Total *float64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 当前已使用量，计费 spec 口径：队列内业务容器（ray-head/ray-worker）的 Pod limits 之和，经 kube_pod_labels 按 local queue 过滤。依赖 kube_pod_labels 指标采集，未开启时恒为 0
+	Used *float64 `json:"Used,omitnil,omitempty" name:"Used"`
+
+	// <p>可用量（总量 - 已使用量，截断至 0）。当 used 超出 total 时（例如配额尚未生效或数据短暂不一致），返回 0 而非负数</p>
+	Available *float64 `json:"Available,omitnil,omitempty" name:"Available"`
 }
 
 type RayClusterEntity struct {
@@ -32489,6 +32626,9 @@ type RayClusterEntity struct {
 
 	// <p>所属队列名称</p>
 	Queue *string `json:"Queue,omitnil,omitempty" name:"Queue"`
+
+	// <p>所属队列别名</p>
+	QueueAlias *string `json:"QueueAlias,omitnil,omitempty" name:"QueueAlias"`
 
 	// <p>应用ID</p>
 	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
@@ -32615,6 +32755,9 @@ type RayJobSubmitEntity struct {
 
 	// <p>所属队列名称</p>
 	Queue *string `json:"Queue,omitnil,omitempty" name:"Queue"`
+
+	// <p>所属队列别名</p>
+	QueueAlias *string `json:"QueueAlias,omitnil,omitempty" name:"QueueAlias"`
 
 	// <p>任务状态</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
@@ -33885,6 +34028,14 @@ type SQLTask struct {
 
 	// 任务的配置信息
 	Config []*KVPair `json:"Config,omitnil,omitempty" name:"Config"`
+}
+
+type SchedulableLimit struct {
+	// <p>四层计费项，与 ResourceQuota[].ResourceSpec.BillingItem 同值</p>
+	BillingItem *string `json:"BillingItem,omitnil,omitempty" name:"BillingItem"`
+
+	// <p>该计费项下单 worker/executor 可申请的最大可调度资源量，单位随计费项资源类型：CPU 计费项为 CU 数，GPU 计费项为 GU（卡）数</p>
+	MaxSchedulableUnits *int64 `json:"MaxSchedulableUnits,omitnil,omitempty" name:"MaxSchedulableUnits"`
 }
 
 type ScheduleElasticityConf struct {
@@ -36977,6 +37128,9 @@ type TrainingJobInstance struct {
 	// <p>队列名称</p>
 	Queue *string `json:"Queue,omitnil,omitempty" name:"Queue"`
 
+	// <p>所属队列别名</p>
+	QueueAlias *string `json:"QueueAlias,omitnil,omitempty" name:"QueueAlias"`
+
 	// <p>提交时 runtime_env JSON</p>
 	RuntimeEnv *string `json:"RuntimeEnv,omitnil,omitempty" name:"RuntimeEnv"`
 
@@ -37088,6 +37242,9 @@ type TrainingJobSpec struct {
 	// <p>队列名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Queue *string `json:"Queue,omitnil,omitempty" name:"Queue"`
+
+	// <p>所属队列别名</p>
+	QueueAlias *string `json:"QueueAlias,omitnil,omitempty" name:"QueueAlias"`
 
 	// <p>Checkpoint 挂载摘要</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -38752,6 +38909,9 @@ type UpdateJobSpecResponseParams struct {
 
 	// <p>默认队列名称</p>
 	Queue *string `json:"Queue,omitnil,omitempty" name:"Queue"`
+
+	// <p>所属队列别名</p>
+	QueueAlias *string `json:"QueueAlias,omitnil,omitempty" name:"QueueAlias"`
 
 	// <p>作业包URL</p>
 	JobPackage *string `json:"JobPackage,omitnil,omitempty" name:"JobPackage"`

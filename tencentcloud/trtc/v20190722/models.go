@@ -332,7 +332,7 @@ type AudioFormat struct {
 	// <p>生成的音频格式，注意opus格式是ogg/opus编码</p><ul><li><p>TextToSpeechSSE 流式接口</p><p>支持 pcm,mp3,opus 默认: pcm</p></li><li><p>TextToSpeech 非流式接口</p><p>支持 pcm,wav,mp3,opus  默认: pcm</p></li><li><p>AsyncTextToSpeech<br>支持pcm,mp3,opus 默认: mp3</p></li></ul>
 	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
 
-	// <p>生成的音频采样率，默认24000<br>可选</p><ul><li>16000</li><li>24000</li></ul>
+	// <p>生成的音频采样率，默认24000<br>支持如下采样率</p><ul><li>8000</li><li>16000</li><li>24000</li></ul>
 	SampleRate *uint64 `json:"SampleRate,omitnil,omitempty" name:"SampleRate"`
 
 	// <p>MP3 比特率 (kbps)，仅对 MP3 格式生效, 可以选： <code>64</code>, <code>128</code>, <code>192</code>, <code>256</code> ,  默认： <code>128</code></p>

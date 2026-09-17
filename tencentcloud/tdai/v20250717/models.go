@@ -150,6 +150,20 @@ type AgentInstance struct {
 
 	// <p>商业化资源归属</p>
 	ProductName *string `json:"ProductName,omitnil,omitempty" name:"ProductName"`
+
+	// <p>具备能力</p>
+	Capabilities []*string `json:"Capabilities,omitnil,omitempty" name:"Capabilities"`
+
+	// <p>是否是免部署实例</p>
+	DeploymentFree *bool `json:"DeploymentFree,omitnil,omitempty" name:"DeploymentFree"`
+}
+
+type Attachments struct {
+	// <p>cos key</p>
+	CosKey *string `json:"CosKey,omitnil,omitempty" name:"CosKey"`
+
+	// <p>图片类型</p>
+	MimeType *string `json:"MimeType,omitnil,omitempty" name:"MimeType"`
 }
 
 type ChatBrief struct {
@@ -442,6 +456,9 @@ type CreateChatCompletionRequestParams struct {
 
 	// <p>是否隐藏会话</p>
 	IsChatHidden *bool `json:"IsChatHidden,omitnil,omitempty" name:"IsChatHidden"`
+
+	// <p>传递图片附件</p>
+	Attachments []*Attachments `json:"Attachments,omitnil,omitempty" name:"Attachments"`
 }
 
 type CreateChatCompletionRequest struct {
@@ -461,6 +478,9 @@ type CreateChatCompletionRequest struct {
 
 	// <p>是否隐藏会话</p>
 	IsChatHidden *bool `json:"IsChatHidden,omitnil,omitempty" name:"IsChatHidden"`
+
+	// <p>传递图片附件</p>
+	Attachments []*Attachments `json:"Attachments,omitnil,omitempty" name:"Attachments"`
 }
 
 func (r *CreateChatCompletionRequest) ToJsonString() string {
@@ -480,6 +500,7 @@ func (r *CreateChatCompletionRequest) FromJsonString(s string) error {
 	delete(f, "ChatId")
 	delete(f, "IsHidden")
 	delete(f, "IsChatHidden")
+	delete(f, "Attachments")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateChatCompletionRequest has unknown keys!", "")
 	}

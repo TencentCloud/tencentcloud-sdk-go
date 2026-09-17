@@ -65,13 +65,13 @@ func NewCheckLabelResponse() (response *CheckLabelResponse) {
 }
 
 // CheckLabel
-// 校验标签下的标准词是否已存在
+// 校验标签
 func (c *Client) CheckLabel(request *CheckLabelRequest) (response *CheckLabelResponse, err error) {
     return c.CheckLabelWithContext(context.Background(), request)
 }
 
 // CheckLabel
-// 校验标签下的标准词是否已存在
+// 校验标签
 func (c *Client) CheckLabelWithContext(ctx context.Context, request *CheckLabelRequest) (response *CheckLabelResponse, err error) {
     if request == nil {
         request = NewCheckLabelRequest()
@@ -3991,6 +3991,58 @@ func (c *Client) DescribeReleaseSummaryWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewDescribeReleaseSummaryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeResourceSummaryRequest() (request *DescribeResourceSummaryRequest) {
+    request = &DescribeResourceSummaryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "DescribeResourceSummary")
+    
+    
+    return
+}
+
+func NewDescribeResourceSummaryResponse() (response *DescribeResourceSummaryResponse) {
+    response = &DescribeResourceSummaryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeResourceSummary
+// 获取用户资源套餐和增值包用量信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeResourceSummary(request *DescribeResourceSummaryRequest) (response *DescribeResourceSummaryResponse, err error) {
+    return c.DescribeResourceSummaryWithContext(context.Background(), request)
+}
+
+// DescribeResourceSummary
+// 获取用户资源套餐和增值包用量信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeResourceSummaryWithContext(ctx context.Context, request *DescribeResourceSummaryRequest) (response *DescribeResourceSummaryResponse, err error) {
+    if request == nil {
+        request = NewDescribeResourceSummaryRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "DescribeResourceSummary")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeResourceSummary require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeResourceSummaryResponse()
     err = c.Send(request, response)
     return
 }

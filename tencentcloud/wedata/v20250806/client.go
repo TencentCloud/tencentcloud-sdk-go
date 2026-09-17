@@ -8529,6 +8529,9 @@ func NewRunSQLScriptResponse() (response *RunSQLScriptResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_INVALIDJOBSTATE = "InvalidParameter.InvalidJobState"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_RESULTEXPIRED = "ResourceNotFound.ResultExpired"
 func (c *Client) RunSQLScript(request *RunSQLScriptRequest) (response *RunSQLScriptResponse, err error) {
     return c.RunSQLScriptWithContext(context.Background(), request)
 }
@@ -8538,6 +8541,9 @@ func (c *Client) RunSQLScript(request *RunSQLScriptRequest) (response *RunSQLScr
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_INVALIDJOBSTATE = "InvalidParameter.InvalidJobState"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_RESULTEXPIRED = "ResourceNotFound.ResultExpired"
 func (c *Client) RunSQLScriptWithContext(ctx context.Context, request *RunSQLScriptRequest) (response *RunSQLScriptResponse, err error) {
     if request == nil {
         request = NewRunSQLScriptRequest()
@@ -8579,6 +8585,9 @@ func NewSetSuccessTaskInstancesAsyncResponse() (response *SetSuccessTaskInstance
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_INVALIDJOBSTATE = "InvalidParameter.InvalidJobState"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_RESULTEXPIRED = "ResourceNotFound.ResultExpired"
 func (c *Client) SetSuccessTaskInstancesAsync(request *SetSuccessTaskInstancesAsyncRequest) (response *SetSuccessTaskInstancesAsyncResponse, err error) {
     return c.SetSuccessTaskInstancesAsyncWithContext(context.Background(), request)
 }
@@ -8588,6 +8597,9 @@ func (c *Client) SetSuccessTaskInstancesAsync(request *SetSuccessTaskInstancesAs
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_INVALIDJOBSTATE = "InvalidParameter.InvalidJobState"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_RESULTEXPIRED = "ResourceNotFound.ResultExpired"
 func (c *Client) SetSuccessTaskInstancesAsyncWithContext(ctx context.Context, request *SetSuccessTaskInstancesAsyncRequest) (response *SetSuccessTaskInstancesAsyncResponse, err error) {
     if request == nil {
         request = NewSetSuccessTaskInstancesAsyncRequest()

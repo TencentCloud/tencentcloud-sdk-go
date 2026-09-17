@@ -3625,11 +3625,13 @@ func NewCreatePartitionResponse() (response *CreatePartitionResponse) {
 }
 
 // CreatePartition
-// 新增资源包
+// 新增资源包（预付费 / 后付费）
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_APICALLFAILED = "FailedOperation.ApiCallFailed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_BILLINGITEMSTEP = "InvalidParameterValue.BillingItemStep"
+//  INVALIDPARAMETERVALUE_POSTPAYPARTITIONDESCRIPTION = "InvalidParameterValue.PostpayPartitionDescription"
 //  INVALIDPARAMETERVALUE_POSTPAYPARTITIONNAME = "InvalidParameterValue.PostpayPartitionName"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
@@ -3638,11 +3640,13 @@ func (c *Client) CreatePartition(request *CreatePartitionRequest) (response *Cre
 }
 
 // CreatePartition
-// 新增资源包
+// 新增资源包（预付费 / 后付费）
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_APICALLFAILED = "FailedOperation.ApiCallFailed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_BILLINGITEMSTEP = "InvalidParameterValue.BillingItemStep"
+//  INVALIDPARAMETERVALUE_POSTPAYPARTITIONDESCRIPTION = "InvalidParameterValue.PostpayPartitionDescription"
 //  INVALIDPARAMETERVALUE_POSTPAYPARTITIONNAME = "InvalidParameterValue.PostpayPartitionName"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
@@ -3683,7 +3687,7 @@ func NewCreatePartitionQueueResponse() (response *CreatePartitionQueueResponse) 
 }
 
 // CreatePartitionQueue
-// 新增资源队列：在指定分区下创建一个新的资源队列，支持设置队列名称、描述、资源规格列表和队列类型。
+// 新增资源队列：在指定分区下创建一个新的资源队列，支持设置队列编码、别名、描述、资源规格列表和队列类型。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_QUEUENAME = "InvalidParameterValue.QueueName"
@@ -3696,7 +3700,7 @@ func (c *Client) CreatePartitionQueue(request *CreatePartitionQueueRequest) (res
 }
 
 // CreatePartitionQueue
-// 新增资源队列：在指定分区下创建一个新的资源队列，支持设置队列名称、描述、资源规格列表和队列类型。
+// 新增资源队列：在指定分区下创建一个新的资源队列，支持设置队列编码、别名、描述、资源规格列表和队列类型。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_QUEUENAME = "InvalidParameterValue.QueueName"
@@ -10238,8 +10242,10 @@ func NewDescribePartitionDetailResponse() (response *DescribePartitionDetailResp
 // 获取指定资源分区详情
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
+//  FAILEDOPERATION_APICALLFAILED = "FailedOperation.ApiCallFailed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_PARTITION = "ResourceNotFound.Partition"
+//  UNAUTHORIZEDOPERATION_PARTITIONACCESSDENIED = "UnauthorizedOperation.PartitionAccessDenied"
 func (c *Client) DescribePartitionDetail(request *DescribePartitionDetailRequest) (response *DescribePartitionDetailResponse, err error) {
     return c.DescribePartitionDetailWithContext(context.Background(), request)
 }
@@ -10248,8 +10254,10 @@ func (c *Client) DescribePartitionDetail(request *DescribePartitionDetailRequest
 // 获取指定资源分区详情
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
+//  FAILEDOPERATION_APICALLFAILED = "FailedOperation.ApiCallFailed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_PARTITION = "ResourceNotFound.Partition"
+//  UNAUTHORIZEDOPERATION_PARTITIONACCESSDENIED = "UnauthorizedOperation.PartitionAccessDenied"
 func (c *Client) DescribePartitionDetailWithContext(ctx context.Context, request *DescribePartitionDetailRequest) (response *DescribePartitionDetailResponse, err error) {
     if request == nil {
         request = NewDescribePartitionDetailRequest()
@@ -10290,8 +10298,8 @@ func NewDescribePartitionQueuesResponse() (response *DescribePartitionQueuesResp
 // 查询指定分区的所有队列列表
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_PARTITION = "ResourceNotFound.Partition"
+//  UNAUTHORIZEDOPERATION_PARTITIONACCESSDENIED = "UnauthorizedOperation.PartitionAccessDenied"
 func (c *Client) DescribePartitionQueues(request *DescribePartitionQueuesRequest) (response *DescribePartitionQueuesResponse, err error) {
     return c.DescribePartitionQueuesWithContext(context.Background(), request)
 }
@@ -10300,8 +10308,8 @@ func (c *Client) DescribePartitionQueues(request *DescribePartitionQueuesRequest
 // 查询指定分区的所有队列列表
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_PARTITION = "ResourceNotFound.Partition"
+//  UNAUTHORIZEDOPERATION_PARTITIONACCESSDENIED = "UnauthorizedOperation.PartitionAccessDenied"
 func (c *Client) DescribePartitionQueuesWithContext(ctx context.Context, request *DescribePartitionQueuesRequest) (response *DescribePartitionQueuesResponse, err error) {
     if request == nil {
         request = NewDescribePartitionQueuesRequest()
@@ -10342,8 +10350,10 @@ func NewDescribePartitionsResponse() (response *DescribePartitionsResponse) {
 // 获取分区列表信息
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_APICALLFAILED = "FailedOperation.ApiCallFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_PAYMODE = "InvalidParameterValue.PayMode"
 func (c *Client) DescribePartitions(request *DescribePartitionsRequest) (response *DescribePartitionsResponse, err error) {
     return c.DescribePartitionsWithContext(context.Background(), request)
 }
@@ -10352,8 +10362,10 @@ func (c *Client) DescribePartitions(request *DescribePartitionsRequest) (respons
 // 获取分区列表信息
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_APICALLFAILED = "FailedOperation.ApiCallFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_PAYMODE = "InvalidParameterValue.PayMode"
 func (c *Client) DescribePartitionsWithContext(ctx context.Context, request *DescribePartitionsRequest) (response *DescribePartitionsResponse, err error) {
     if request == nil {
         request = NewDescribePartitionsRequest()
@@ -10394,8 +10406,10 @@ func NewDescribePostTrainingPresetResponse() (response *DescribePostTrainingPres
 // 获取零代码后训练的推荐参数和资源规格配置
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_APICALLFAILED = "FailedOperation.ApiCallFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_PAYMODE = "InvalidParameterValue.PayMode"
 func (c *Client) DescribePostTrainingPreset(request *DescribePostTrainingPresetRequest) (response *DescribePostTrainingPresetResponse, err error) {
     return c.DescribePostTrainingPresetWithContext(context.Background(), request)
 }
@@ -10404,8 +10418,10 @@ func (c *Client) DescribePostTrainingPreset(request *DescribePostTrainingPresetR
 // 获取零代码后训练的推荐参数和资源规格配置
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_APICALLFAILED = "FailedOperation.ApiCallFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_PAYMODE = "InvalidParameterValue.PayMode"
 func (c *Client) DescribePostTrainingPresetWithContext(ctx context.Context, request *DescribePostTrainingPresetRequest) (response *DescribePostTrainingPresetResponse, err error) {
     if request == nil {
         request = NewDescribePostTrainingPresetRequest()
@@ -17627,7 +17643,7 @@ func NewModifyPartitionQueueResponse() (response *ModifyPartitionQueueResponse) 
 }
 
 // ModifyPartitionQueue
-// 编辑资源队列：根据队列ID修改指定资源队列的名称、描述、资源规格列表和队列类型等信息。
+// 编辑资源队列：根据队列ID修改指定资源队列的别名（显示名）、描述、资源规格列表和队列类型等信息。队列编码（QueueName）不可变，仅作为一致性校验键。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_QUEUEIDMISMATCH = "InvalidParameterValue.QueueIdMismatch"
@@ -17640,7 +17656,7 @@ func (c *Client) ModifyPartitionQueue(request *ModifyPartitionQueueRequest) (res
 }
 
 // ModifyPartitionQueue
-// 编辑资源队列：根据队列ID修改指定资源队列的名称、描述、资源规格列表和队列类型等信息。
+// 编辑资源队列：根据队列ID修改指定资源队列的别名（显示名）、描述、资源规格列表和队列类型等信息。队列编码（QueueName）不可变，仅作为一致性校验键。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_QUEUEIDMISMATCH = "InvalidParameterValue.QueueIdMismatch"

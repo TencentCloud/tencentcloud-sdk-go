@@ -15856,41 +15856,44 @@ type PrometheusAlertGroupRuleSet struct {
 }
 
 type PrometheusAlertGroupSet struct {
-	// 告警分组ID，满足正则表达式`alert-[a-z0-9]{8}`
+	// <p>告警分组ID，满足正则表达式<code>alert-[a-z0-9]{8}</code></p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 告警分组名称
+	// <p>告警分组名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
-	// 腾讯云可观测平台告警模板ID ，返回告警模板转换后的notice ID。
+	// <p>腾讯云可观测平台告警模板ID ，返回告警模板转换后的notice ID。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AMPReceivers []*string `json:"AMPReceivers,omitnil,omitempty" name:"AMPReceivers"`
 
-	// 自定义告警模板
+	// <p>自定义告警模板</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CustomReceiver *PrometheusAlertCustomReceiver `json:"CustomReceiver,omitnil,omitempty" name:"CustomReceiver"`
 
-	// 告警通知间隔
+	// <p>告警通知间隔</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RepeatInterval *string `json:"RepeatInterval,omitnil,omitempty" name:"RepeatInterval"`
 
-	// 若告警分组通过模板创建，则返回模板ID
+	// <p>若告警分组通过模板创建，则返回模板ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
-	// 分组内告警规则详情
+	// <p>分组内告警规则详情</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Rules []*PrometheusAlertGroupRuleSet `json:"Rules,omitnil,omitempty" name:"Rules"`
 
-	// 分组创建时间
+	// <p>分组创建时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
 
-	// 分组更新时间
+	// <p>分组更新时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdatedAt *string `json:"UpdatedAt,omitnil,omitempty" name:"UpdatedAt"`
+
+	// <p>最后修改人子账号uin</p>
+	LastModifySubAccountUin *string `json:"LastModifySubAccountUin,omitnil,omitempty" name:"LastModifySubAccountUin"`
 }
 
 type PrometheusAlertManagerConfig struct {

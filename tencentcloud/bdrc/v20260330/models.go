@@ -5870,27 +5870,33 @@ func (r *ModifyBackupVaultAttributeResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyCopyPairAttributeRequestParams struct {
-	// 要修改属性的复制对id
+	// <p>要修改属性的复制对id</p>
 	CopyPairId *string `json:"CopyPairId,omitnil,omitempty" name:"CopyPairId"`
 
-	// 要修改的复制对类型，可选值：DISK、INSTANCE、CFS，默认 INSTANCE
+	// <p>要修改的复制对类型，可选值：DISK、INSTANCE、CFS，默认 INSTANCE</p>
 	CopyPairType *string `json:"CopyPairType,omitnil,omitempty" name:"CopyPairType"`
 
-	// 修改复制对名称（长度最大支持 64 个字符）
+	// <p>修改复制对名称（长度最大支持 64 个字符）</p>
 	CopyPairName *string `json:"CopyPairName,omitnil,omitempty" name:"CopyPairName"`
+
+	// <p>容灾端实例类型（仅容灾端CVM未创建时可修改）</p>
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 }
 
 type ModifyCopyPairAttributeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 要修改属性的复制对id
+	// <p>要修改属性的复制对id</p>
 	CopyPairId *string `json:"CopyPairId,omitnil,omitempty" name:"CopyPairId"`
 
-	// 要修改的复制对类型，可选值：DISK、INSTANCE、CFS，默认 INSTANCE
+	// <p>要修改的复制对类型，可选值：DISK、INSTANCE、CFS，默认 INSTANCE</p>
 	CopyPairType *string `json:"CopyPairType,omitnil,omitempty" name:"CopyPairType"`
 
-	// 修改复制对名称（长度最大支持 64 个字符）
+	// <p>修改复制对名称（长度最大支持 64 个字符）</p>
 	CopyPairName *string `json:"CopyPairName,omitnil,omitempty" name:"CopyPairName"`
+
+	// <p>容灾端实例类型（仅容灾端CVM未创建时可修改）</p>
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 }
 
 func (r *ModifyCopyPairAttributeRequest) ToJsonString() string {
@@ -5908,6 +5914,7 @@ func (r *ModifyCopyPairAttributeRequest) FromJsonString(s string) error {
 	delete(f, "CopyPairId")
 	delete(f, "CopyPairType")
 	delete(f, "CopyPairName")
+	delete(f, "InstanceType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCopyPairAttributeRequest has unknown keys!", "")
 	}

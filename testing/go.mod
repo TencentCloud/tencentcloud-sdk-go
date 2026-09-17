@@ -81,7 +81,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cmq v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cms v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cngw v0.0.0
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.3.181
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.3.182
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/config v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/controlcenter v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cpdp v0.0.0
@@ -113,6 +113,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ecc v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ecdn v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ecm v0.0.0
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/edgezone v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/eiam v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/eis v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/emr v0.0.0
@@ -378,6 +379,7 @@ replace (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ecc => ../tencentcloud/ecc
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ecdn => ../tencentcloud/ecdn
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ecm => ../tencentcloud/ecm
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/edgezone => ../tencentcloud/edgezone
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/eiam => ../tencentcloud/eiam
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/eis => ../tencentcloud/eis
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/emr => ../tencentcloud/emr

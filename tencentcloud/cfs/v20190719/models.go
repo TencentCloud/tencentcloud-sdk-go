@@ -2573,45 +2573,57 @@ func (r *DescribeCfsFileSystemClientsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCfsFileSystemsRequestParams struct {
-	// 文件系统 ID
+	// <p>文件系统 ID</p>
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
-	// 私有网络（VPC） ID
+	// <p>私有网络（VPC） ID</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 子网 ID
+	// <p>子网 ID</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// Offset 分页码,默认0
+	// <p>Offset 分页码,默认0</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// Limit 页面大小，默认10
+	// <p>Limit 页面大小，默认10</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 用户自定义名称
+	// <p>用户自定义名称</p>
 	CreationToken *string `json:"CreationToken,omitnil,omitempty" name:"CreationToken"`
+
+	// <p>过滤条件。<br><br><li>Protocol - Array of String - 是否必填：否 -（过滤条件）按协议过滤。(NFS | CIFS | TURBO) </li><br><br><li>StorageType - Array of String - 是否必填：否 -（过滤条件）按存储类型过滤。(SD | HP | TB | TP | THP) </li><br><br><li>LifeCycleState - Array of String - 是否必填：否 -（过滤条件）按生命周期过滤。(creating | create_failed | available | deleting | delete_failed | upgrading | unserviced | expanding) </li><br><br><li>Zone - Array of String - 是否必填：否 -（过滤条件）按可用区过滤。(例如：ap-guangzhou-3) </li><br><br><li>IpAddress - Array of String - 是否必填：否 -（过滤条件）按导出点IP地址过滤。(例如：10.0.0.3) </li><br><br><li>PGroupId - Array of String - 是否必填：否 -（过滤条件）按权限组ID过滤。(例如：pgroup-xxxxxrxt) </li><br><br><li>PGroupName - Array of String - 是否必填：否 -（过滤条件）按权限组名称过滤。(例如：默认权限组) </li><br><br><li>Scenario- Array of String - 是否必填：否 -（过滤条件）按权限组名称过滤。(例如：AgentSandbox) </li></p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>标签</p>
+	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type DescribeCfsFileSystemsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 文件系统 ID
+	// <p>文件系统 ID</p>
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
-	// 私有网络（VPC） ID
+	// <p>私有网络（VPC） ID</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 子网 ID
+	// <p>子网 ID</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// Offset 分页码,默认0
+	// <p>Offset 分页码,默认0</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// Limit 页面大小，默认10
+	// <p>Limit 页面大小，默认10</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 用户自定义名称
+	// <p>用户自定义名称</p>
 	CreationToken *string `json:"CreationToken,omitnil,omitempty" name:"CreationToken"`
+
+	// <p>过滤条件。<br><br><li>Protocol - Array of String - 是否必填：否 -（过滤条件）按协议过滤。(NFS | CIFS | TURBO) </li><br><br><li>StorageType - Array of String - 是否必填：否 -（过滤条件）按存储类型过滤。(SD | HP | TB | TP | THP) </li><br><br><li>LifeCycleState - Array of String - 是否必填：否 -（过滤条件）按生命周期过滤。(creating | create_failed | available | deleting | delete_failed | upgrading | unserviced | expanding) </li><br><br><li>Zone - Array of String - 是否必填：否 -（过滤条件）按可用区过滤。(例如：ap-guangzhou-3) </li><br><br><li>IpAddress - Array of String - 是否必填：否 -（过滤条件）按导出点IP地址过滤。(例如：10.0.0.3) </li><br><br><li>PGroupId - Array of String - 是否必填：否 -（过滤条件）按权限组ID过滤。(例如：pgroup-xxxxxrxt) </li><br><br><li>PGroupName - Array of String - 是否必填：否 -（过滤条件）按权限组名称过滤。(例如：默认权限组) </li><br><br><li>Scenario- Array of String - 是否必填：否 -（过滤条件）按权限组名称过滤。(例如：AgentSandbox) </li></p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>标签</p>
+	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 func (r *DescribeCfsFileSystemsRequest) ToJsonString() string {
@@ -2632,6 +2644,8 @@ func (r *DescribeCfsFileSystemsRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "CreationToken")
+	delete(f, "Filters")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCfsFileSystemsRequest has unknown keys!", "")
 	}
@@ -2640,10 +2654,10 @@ func (r *DescribeCfsFileSystemsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCfsFileSystemsResponseParams struct {
-	// 文件系统信息
+	// <p>文件系统信息</p>
 	FileSystems []*FileSystemInfo `json:"FileSystems,omitnil,omitempty" name:"FileSystems"`
 
-	// 文件系统总数
+	// <p>文件系统总数</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3974,6 +3988,15 @@ type FileSystemInfo struct {
 
 	// <p>业务场景。</p><p>枚举值：</p><ul><li>AgentSandbox： 创建 AgentCFS</li></ul>
 	Scenario *string `json:"Scenario,omitnil,omitempty" name:"Scenario"`
+
+	// <p>过满删除容量占比，0.0 表示关闭</p><p>取值范围：[0.0, 1.0]</p>
+	FullDeleteCapacityUsage *float64 `json:"FullDeleteCapacityUsage,omitnil,omitempty" name:"FullDeleteCapacityUsage"`
+
+	// <p>过满删除最小存活时间，单位秒</p><p>单位：秒</p>
+	FullDeleteMinTtl *uint64 `json:"FullDeleteMinTtl,omitnil,omitempty" name:"FullDeleteMinTtl"`
+
+	// <p>过期删除 TTL，单位秒，0 表示关闭</p><p>单位：秒</p>
+	ExpireDeleteTtl *uint64 `json:"ExpireDeleteTtl,omitnil,omitempty" name:"ExpireDeleteTtl"`
 }
 
 type Filter struct {

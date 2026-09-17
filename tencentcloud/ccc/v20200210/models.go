@@ -5595,6 +5595,9 @@ type DescribeSessionDetailResponseParams struct {
 	// <p>接通后系统挂断原因</p><p><a href="https://cloud.tencent.com/document/product/679/123938">详见</a></p>
 	SysHangupReasonString *string `json:"SysHangupReasonString,omitnil,omitempty" name:"SysHangupReasonString"`
 
+	// <p>通话结束状态V2（灰度中）</p>
+	EndStatusV2 *int64 `json:"EndStatusV2,omitnil,omitempty" name:"EndStatusV2"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -8518,6 +8521,9 @@ type TelCdrInfo struct {
 
 	// <p>接通后系统挂断原因，文字描述信息</p>
 	SysHangupReasonString *string `json:"SysHangupReasonString,omitnil,omitempty" name:"SysHangupReasonString"`
+
+	// <p>通话结束状态V2（灰度中）</p>
+	EndStatusV2 *int64 `json:"EndStatusV2,omitnil,omitempty" name:"EndStatusV2"`
 }
 
 type TimeRange struct {

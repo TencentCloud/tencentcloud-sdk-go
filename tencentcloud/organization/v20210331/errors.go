@@ -86,6 +86,9 @@ const (
 	// 委派管理员不能操作策略（添加、编辑、删除）
 	FAILEDOPERATION_DELEGATEDADMINCANNOTMODIFYPOLICY = "FailedOperation.DelegatedAdminCannotModifyPolicy"
 
+	// 委派管理员不能操作集团管理账号
+	FAILEDOPERATION_DELEGATEDADMINCANNOTOPERATEORGMANAGER = "FailedOperation.DelegatedAdminCannotOperateOrgManager"
+
 	// 用户组还存在用户，不允许删除用户
 	FAILEDOPERATION_DELETEGROUPNOTALLOWEXISTUSER = "FailedOperation.DeleteGroupNotAllowExistUser"
 
@@ -314,6 +317,9 @@ const (
 	// 重复发送邀请。
 	FAILEDOPERATION_RESENTINVITATION = "FailedOperation.ReSentInvitation"
 
+	// 远程调用失败
+	FAILEDOPERATION_REMOTECALLERROR = "FailedOperation.RemoteCallError"
+
 	// 资源超过最大上限。
 	FAILEDOPERATION_RESOURCEOVERLIMIT = "FailedOperation.ResourceOverLimit"
 
@@ -380,6 +386,9 @@ const (
 	// 子账号不存在。
 	FAILEDOPERATION_SUBACCOUNTNOTEXIST = "FailedOperation.SubAccountNotExist"
 
+	// 存在密钥，不允许删除
+	FAILEDOPERATION_SYNCUSERHASACCESSKEY = "FailedOperation.SyncUserHasAccessKey"
+
 	// 同步的用户组不允许添加用户
 	FAILEDOPERATION_SYNCHRONIZEDGROUPNOTADDUSER = "FailedOperation.SynchronizedGroupNotAddUser"
 
@@ -403,6 +412,9 @@ const (
 
 	// 打标签异常。
 	FAILEDOPERATION_TAGRESOURCESERROR = "FailedOperation.TagResourcesError"
+
+	// 特殊子用户不支持覆盖
+	FAILEDOPERATION_TAKEOVERUNSUPPORTEDUSERTYPE = "FailedOperation.TakeOverUnsupportedUserType"
 
 	// 上传数据文件失败。
 	FAILEDOPERATION_UPLOADMETADATAFAILED = "FailedOperation.UploadMetadataFailed"
@@ -964,4 +976,7 @@ const (
 
 	// 不支持共享给其他组织成员。
 	UNSUPPORTEDOPERATION_SHARINGTOOTHERORGANIZATIONMEMBER = "UnsupportedOperation.SharingToOtherOrganizationMember"
+
+	// 具备代金券的经销子客不允许创建集团组织
+	UNSUPPORTEDOPERATION_SUBCLIENTHASVOUCHERNOTALLOWCREATEORGANIZATION = "UnsupportedOperation.SubClientHasVoucherNotAllowCreateOrganization"
 )

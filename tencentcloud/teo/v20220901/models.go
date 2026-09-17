@@ -6634,7 +6634,7 @@ type DeleteCustomErrorPageRequestParams struct {
 	// 站点 ID。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 自定义页面 ID。
+	// 自定义响应页面 ID。
 	PageId *string `json:"PageId,omitnil,omitempty" name:"PageId"`
 }
 
@@ -6644,7 +6644,7 @@ type DeleteCustomErrorPageRequest struct {
 	// 站点 ID。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 自定义页面 ID。
+	// 自定义响应页面 ID。
 	PageId *string `json:"PageId,omitnil,omitempty" name:"PageId"`
 }
 
@@ -9165,40 +9165,32 @@ func (r *DescribeContentQuotaResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCustomErrorPagesRequestParams struct {
-	// 站点 ID。
+	// <p>站点 ID。</p>
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 过滤条件，Filters.Values 的上限为20，详细的过滤条件Name值如下：
-	// <li>page-id： 按照页面 ID 进行过滤；</li>
-	// <li>name： 按照页面名称进行过滤；</li>
-	// <li>description：按照页面描述过滤；</li>
-	// <li>content-type：按照页面类型过滤。</li>
+	// <p>过滤条件，Filters.Values 的上限为 20，详细的过滤条件Name值如下：<li>page-id： 按照页面 ID 进行过滤；</li><li>name： 按照页面名称进行过滤；</li><li>description：按照页面描述过滤；</li><li>content-type：按照页面类型过滤。</li></p>
 	Filters []*AdvancedFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 分页查询偏移量。默认值：0。
+	// <p>分页查询偏移量。默认值：0。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页查询限制数目。默认值：20，最大值：1000。 
+	// <p>分页查询限制数目。默认值：20，最大值：1000。</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeCustomErrorPagesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 站点 ID。
+	// <p>站点 ID。</p>
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 过滤条件，Filters.Values 的上限为20，详细的过滤条件Name值如下：
-	// <li>page-id： 按照页面 ID 进行过滤；</li>
-	// <li>name： 按照页面名称进行过滤；</li>
-	// <li>description：按照页面描述过滤；</li>
-	// <li>content-type：按照页面类型过滤。</li>
+	// <p>过滤条件，Filters.Values 的上限为 20，详细的过滤条件Name值如下：<li>page-id： 按照页面 ID 进行过滤；</li><li>name： 按照页面名称进行过滤；</li><li>description：按照页面描述过滤；</li><li>content-type：按照页面类型过滤。</li></p>
 	Filters []*AdvancedFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 分页查询偏移量。默认值：0。
+	// <p>分页查询偏移量。默认值：0。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页查询限制数目。默认值：20，最大值：1000。 
+	// <p>分页查询限制数目。默认值：20，最大值：1000。</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
@@ -9226,10 +9218,10 @@ func (r *DescribeCustomErrorPagesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCustomErrorPagesResponseParams struct {
-	// 自定义错误页面总数。
+	// <p>自定义响应页面总数。</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 自定义错误页面数据列表。
+	// <p>自定义响应页面数据列表。</p>
 	ErrorPages []*CustomErrorPage `json:"ErrorPages,omitnil,omitempty" name:"ErrorPages"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

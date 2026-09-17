@@ -566,6 +566,32 @@ func (r *AddCloudNativeAPIGatewayConsumerInGroupResponse) FromJsonString(s strin
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type AgentSkill struct {
+	// <p>agentID</p>
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>skill名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>标签</p>
+	Tags []*string `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>样例</p>
+	Examples []*string `json:"Examples,omitnil,omitempty" name:"Examples"`
+
+	// <p>输入模式</p>
+	InputModes []*string `json:"InputModes,omitnil,omitempty" name:"InputModes"`
+
+	// <p>输出模式</p>
+	OutputModes []*string `json:"OutputModes,omitnil,omitempty" name:"OutputModes"`
+
+	// <p>版本</p>
+	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
+}
+
 type ApolloEnvParam struct {
 	// 环境名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
@@ -12704,6 +12730,14 @@ type EnvInfo struct {
 	EnableConfigIntranet *bool `json:"EnableConfigIntranet,omitnil,omitempty" name:"EnableConfigIntranet"`
 }
 
+type ExtendedMetadata struct {
+	// <p>枚举类型</p>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>agent参数</p>
+	AgentSkill *AgentSkill `json:"AgentSkill,omitnil,omitempty" name:"AgentSkill"`
+}
+
 type ExternalRedis struct {
 	// redis ip
 	RedisHost *string `json:"RedisHost,omitnil,omitempty" name:"RedisHost"`
@@ -13187,6 +13221,9 @@ type GovernanceService struct {
 
 	// <p>服务类型</p><p>枚举值：</p><ul><li>0： 微服务（默认）</li><li>1： MCP Server</li><li>2： AI Agent</li></ul>
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>服务元数据</p>
+	ExtendedMetadata []*ExtendedMetadata `json:"ExtendedMetadata,omitnil,omitempty" name:"ExtendedMetadata"`
 }
 
 type GovernanceServiceContract struct {
@@ -13291,6 +13328,9 @@ type GovernanceServiceInput struct {
 
 	// <p>服务类型</p><p>枚举值：</p><ul><li>0： 微服务（默认）</li><li>1： MCP Server</li><li>2： AI Agent</li></ul><p>默认值：0</p>
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>拓展服务元数据</p>
+	ExtendedMetadata []*ExtendedMetadata `json:"ExtendedMetadata,omitnil,omitempty" name:"ExtendedMetadata"`
 }
 
 type InstancePort struct {
@@ -17036,125 +17076,131 @@ type RuleFilter struct {
 }
 
 type SREInstance struct {
-	// 实例ID
+	// <p>实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 名称
+	// <p>名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 版本号
+	// <p>版本号</p>
 	Edition *string `json:"Edition,omitnil,omitempty" name:"Edition"`
 
-	// 状态, 枚举值:creating/create_fail/running/updating/update_fail/restarting/restart_fail/destroying/destroy_fail
+	// <p>状态, 枚举值:creating/create_fail/running/updating/update_fail/restarting/restart_fail/destroying/destroy_fail</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 规格ID
+	// <p>规格ID</p>
 	SpecId *string `json:"SpecId,omitnil,omitempty" name:"SpecId"`
 
-	// 副本数
+	// <p>副本数</p>
 	Replica *int64 `json:"Replica,omitnil,omitempty" name:"Replica"`
 
-	// 类型
+	// <p>类型</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// Vpc iD
+	// <p>Vpc iD</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 子网ID
+	// <p>子网ID</p>
 	SubnetIds []*string `json:"SubnetIds,omitnil,omitempty" name:"SubnetIds"`
 
-	// 是否开启持久化存储
+	// <p>是否开启持久化存储</p>
 	EnableStorage *bool `json:"EnableStorage,omitnil,omitempty" name:"EnableStorage"`
 
-	// 数据存储方式
+	// <p>数据存储方式</p>
 	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
 
-	// 云硬盘容量
+	// <p>云硬盘容量</p>
 	StorageCapacity *int64 `json:"StorageCapacity,omitnil,omitempty" name:"StorageCapacity"`
 
-	// 计费方式
+	// <p>计费方式</p>
 	Paymode *string `json:"Paymode,omitnil,omitempty" name:"Paymode"`
 
-	// EKS集群的ID
+	// <p>EKS集群的ID</p>
 	EKSClusterID *string `json:"EKSClusterID,omitnil,omitempty" name:"EKSClusterID"`
 
-	// 集群创建时间
+	// <p>集群创建时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 环境配置信息列表
+	// <p>环境配置信息列表</p>
 	EnvInfos []*EnvInfo `json:"EnvInfos,omitnil,omitempty" name:"EnvInfos"`
 
-	// 引擎所在的区域
+	// <p>引擎所在的区域</p>
 	EngineRegion *string `json:"EngineRegion,omitnil,omitempty" name:"EngineRegion"`
 
-	// 注册引擎是否开启公网
+	// <p>注册引擎是否开启公网</p>
 	EnableInternet *bool `json:"EnableInternet,omitnil,omitempty" name:"EnableInternet"`
 
-	// 私有网络列表信息
+	// <p>私有网络列表信息</p>
 	VpcInfos []*VpcInfo `json:"VpcInfos,omitnil,omitempty" name:"VpcInfos"`
 
-	// 服务治理相关信息列表
+	// <p>服务治理相关信息列表</p>
 	ServiceGovernanceInfos []*ServiceGovernanceInfo `json:"ServiceGovernanceInfos,omitnil,omitempty" name:"ServiceGovernanceInfos"`
 
-	// 实例的标签信息
+	// <p>实例的标签信息</p>
 	Tags []*KVPair `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 引擎实例是否开启控制台公网访问地址
+	// <p>引擎实例是否开启控制台公网访问地址</p>
 	EnableConsoleInternet *bool `json:"EnableConsoleInternet,omitnil,omitempty" name:"EnableConsoleInternet"`
 
-	// 引擎实例是否开启控制台内网访问地址
+	// <p>引擎实例是否开启控制台内网访问地址</p>
 	EnableConsoleIntranet *bool `json:"EnableConsoleIntranet,omitnil,omitempty" name:"EnableConsoleIntranet"`
 
-	// 引擎实例是否展示参数配置页面
+	// <p>引擎实例是否展示参数配置页面</p>
 	ConfigInfoVisible *bool `json:"ConfigInfoVisible,omitnil,omitempty" name:"ConfigInfoVisible"`
 
-	// 引擎实例控制台默认密码
+	// <p>引擎实例控制台默认密码</p>
 	ConsoleDefaultPwd *string `json:"ConsoleDefaultPwd,omitnil,omitempty" name:"ConsoleDefaultPwd"`
 
-	// 交易付费类型，0后付费/1预付费
+	// <p>交易付费类型，0后付费/1预付费</p>
 	TradeType *int64 `json:"TradeType,omitnil,omitempty" name:"TradeType"`
 
-	// 自动续费标记：0表示默认状态(用户未设置，即初始状态)， 1表示自动续费，2表示明确不自动续费
+	// <p>自动续费标记：0表示默认状态(用户未设置，即初始状态)， 1表示自动续费，2表示明确不自动续费</p>
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 
-	// 预付费到期时间
+	// <p>预付费到期时间</p>
 	CurDeadline *string `json:"CurDeadline,omitnil,omitempty" name:"CurDeadline"`
 
-	// 隔离开始时间
+	// <p>隔离开始时间</p>
 	IsolateTime *string `json:"IsolateTime,omitnil,omitempty" name:"IsolateTime"`
 
-	// 实例地域相关的描述信息
+	// <p>实例地域相关的描述信息</p>
 	RegionInfos []*DescribeInstanceRegionInfo `json:"RegionInfos,omitnil,omitempty" name:"RegionInfos"`
 
-	// 所在EKS环境，分为common和yunti
+	// <p>所在EKS环境，分为common和yunti</p>
 	EKSType *string `json:"EKSType,omitnil,omitempty" name:"EKSType"`
 
-	// 引擎的产品版本
+	// <p>引擎的产品版本</p>
 	FeatureVersion *string `json:"FeatureVersion,omitnil,omitempty" name:"FeatureVersion"`
 
-	// 引擎实例是否开启客户端内网访问地址
+	// <p>引擎实例是否开启客户端内网访问地址</p>
 	EnableClientIntranet *bool `json:"EnableClientIntranet,omitnil,omitempty" name:"EnableClientIntranet"`
 
-	// 存储额外配置选项
+	// <p>存储额外配置选项</p>
 	StorageOption []*StorageOption `json:"StorageOption,omitnil,omitempty" name:"StorageOption"`
 
-	// Zookeeper的额外环境数据信息
+	// <p>Zookeeper的额外环境数据信息</p>
 	ZookeeperRegionInfo *ZookeeperRegionInfo `json:"ZookeeperRegionInfo,omitnil,omitempty" name:"ZookeeperRegionInfo"`
 
-	// 部署架构
+	// <p>部署架构</p>
 	DeployMode *string `json:"DeployMode,omitnil,omitempty" name:"DeployMode"`
 
-	// 全局属性
+	// <p>全局属性</p>
 	GlobalType *string `json:"GlobalType,omitnil,omitempty" name:"GlobalType"`
 
-	// 所属组类型
+	// <p>所属组类型</p>
 	GroupType *string `json:"GroupType,omitnil,omitempty" name:"GroupType"`
 
-	// 组id
+	// <p>组id</p>
 	GroupId []*string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 是否为主地域
+	// <p>是否为主地域</p>
 	IsMainRegion *bool `json:"IsMainRegion,omitnil,omitempty" name:"IsMainRegion"`
+
+	// <p>是否禁止变更</p>
+	MutationEnabled *bool `json:"MutationEnabled,omitnil,omitempty" name:"MutationEnabled"`
+
+	// <p>禁止限流</p>
+	MaxCapacityLimitEnabled *bool `json:"MaxCapacityLimitEnabled,omitnil,omitempty" name:"MaxCapacityLimitEnabled"`
 }
 
 type ServiceGatewaySelector struct {
@@ -17172,35 +17218,41 @@ type ServiceGatewaySelector struct {
 }
 
 type ServiceGovernanceInfo struct {
-	// 引擎所在的地域
+	// <p>引擎所在的地域</p>
 	EngineRegion *string `json:"EngineRegion,omitnil,omitempty" name:"EngineRegion"`
 
-	// 服务治理引擎绑定的kubernetes集群信息
+	// <p>服务治理引擎绑定的kubernetes集群信息</p>
 	BoundK8SInfos []*BoundK8SInfo `json:"BoundK8SInfos,omitnil,omitempty" name:"BoundK8SInfos"`
 
-	// 服务治理引擎绑定的网络信息
+	// <p>服务治理引擎绑定的网络信息</p>
 	VpcInfos []*VpcInfo `json:"VpcInfos,omitnil,omitempty" name:"VpcInfos"`
 
-	// 当前实例鉴权是否开启
+	// <p>当前实例鉴权是否开启</p>
 	AuthOpen *bool `json:"AuthOpen,omitnil,omitempty" name:"AuthOpen"`
 
-	// 该实例支持的功能，鉴权就是 Auth
+	// <p>该实例支持的功能，鉴权就是 Auth</p>
 	Features []*string `json:"Features,omitnil,omitempty" name:"Features"`
 
-	// 主账户名默认为 polaris，该值为主账户的默认密码
+	// <p>主账户名默认为 polaris，该值为主账户的默认密码</p>
 	MainPassword *string `json:"MainPassword,omitnil,omitempty" name:"MainPassword"`
 
-	// 服务治理pushgateway引擎绑定的网络信息
+	// <p>服务治理pushgateway引擎绑定的网络信息</p>
 	PgwVpcInfos []*VpcInfo `json:"PgwVpcInfos,omitnil,omitempty" name:"PgwVpcInfos"`
 
-	// 服务治理限流server引擎绑定的网络信息
+	// <p>服务治理限流server引擎绑定的网络信息</p>
 	LimiterVpcInfos []*VpcInfo `json:"LimiterVpcInfos,omitnil,omitempty" name:"LimiterVpcInfos"`
 
-	// 引擎关联CLS日志主题信息
+	// <p>引擎关联CLS日志主题信息</p>
 	CLSTopics []*PolarisCLSTopicInfo `json:"CLSTopics,omitnil,omitempty" name:"CLSTopics"`
 
-	// 子用户密码
+	// <p>子用户密码</p>
 	SubPassword *string `json:"SubPassword,omitnil,omitempty" name:"SubPassword"`
+
+	// <p>是否允许变更</p>
+	DisableMutation *bool `json:"DisableMutation,omitnil,omitempty" name:"DisableMutation"`
+
+	// <p>是否开启限流</p>
+	MaxCapacityLimitEnabled *bool `json:"MaxCapacityLimitEnabled,omitnil,omitempty" name:"MaxCapacityLimitEnabled"`
 }
 
 type ServiceSelector struct {

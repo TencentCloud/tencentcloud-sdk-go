@@ -1434,6 +1434,12 @@ type CreateCloudInstanceRequestParams struct {
 
 	// <p>是否开启实例保护</p>
 	TerminateProtection *bool `json:"TerminateProtection,omitnil,omitempty" name:"TerminateProtection"`
+
+	// <p>是否启用emr-proxy</p><p>枚举值：</p><ul><li>true： 启用</li><li>false： 关闭</li></ul>
+	EnableEmrProxy *bool `json:"EnableEmrProxy,omitnil,omitempty" name:"EnableEmrProxy"`
+
+	// <p>日志存储服务实例id</p>
+	LogStoreID *string `json:"LogStoreID,omitnil,omitempty" name:"LogStoreID"`
 }
 
 type CreateCloudInstanceRequest struct {
@@ -1507,6 +1513,12 @@ type CreateCloudInstanceRequest struct {
 
 	// <p>是否开启实例保护</p>
 	TerminateProtection *bool `json:"TerminateProtection,omitnil,omitempty" name:"TerminateProtection"`
+
+	// <p>是否启用emr-proxy</p><p>枚举值：</p><ul><li>true： 启用</li><li>false： 关闭</li></ul>
+	EnableEmrProxy *bool `json:"EnableEmrProxy,omitnil,omitempty" name:"EnableEmrProxy"`
+
+	// <p>日志存储服务实例id</p>
+	LogStoreID *string `json:"LogStoreID,omitnil,omitempty" name:"LogStoreID"`
 }
 
 func (r *CreateCloudInstanceRequest) ToJsonString() string {
@@ -1544,6 +1556,8 @@ func (r *CreateCloudInstanceRequest) FromJsonString(s string) error {
 	delete(f, "EnableSparkAppMonitorInfo")
 	delete(f, "ComputeResourceGroupIds")
 	delete(f, "TerminateProtection")
+	delete(f, "EnableEmrProxy")
+	delete(f, "LogStoreID")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCloudInstanceRequest has unknown keys!", "")
 	}

@@ -11042,15 +11042,9 @@ func NewModifyDocToVideoTaskStatusResponse() (response *ModifyDocToVideoTaskStat
 // 包含 confirm（确认当前阶段）和 regenerate（重新生成当前阶段）两种动作含义。
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE_BLOCKCONFIDENCE = "InvalidParameterValue.BlockConfidence"
-//  INVALIDPARAMETERVALUE_COMMENT = "InvalidParameterValue.Comment"
-//  INVALIDPARAMETERVALUE_LABELSET = "InvalidParameterValue.LabelSet"
-//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
-//  INVALIDPARAMETERVALUE_REVIEWCONFIDENCE = "InvalidParameterValue.ReviewConfidence"
-//  INVALIDPARAMETERVALUE_SWITCH = "InvalidParameterValue.Switch"
-//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_TASKNOTFOUND = "ResourceNotFound.TaskNotFound"
 func (c *Client) ModifyDocToVideoTaskStatus(request *ModifyDocToVideoTaskStatusRequest) (response *ModifyDocToVideoTaskStatusResponse, err error) {
     return c.ModifyDocToVideoTaskStatusWithContext(context.Background(), request)
 }
@@ -11063,15 +11057,9 @@ func (c *Client) ModifyDocToVideoTaskStatus(request *ModifyDocToVideoTaskStatusR
 // 包含 confirm（确认当前阶段）和 regenerate（重新生成当前阶段）两种动作含义。
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE_BLOCKCONFIDENCE = "InvalidParameterValue.BlockConfidence"
-//  INVALIDPARAMETERVALUE_COMMENT = "InvalidParameterValue.Comment"
-//  INVALIDPARAMETERVALUE_LABELSET = "InvalidParameterValue.LabelSet"
-//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
-//  INVALIDPARAMETERVALUE_REVIEWCONFIDENCE = "InvalidParameterValue.ReviewConfidence"
-//  INVALIDPARAMETERVALUE_SWITCH = "InvalidParameterValue.Switch"
-//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_TASKNOTFOUND = "ResourceNotFound.TaskNotFound"
 func (c *Client) ModifyDocToVideoTaskStatusWithContext(ctx context.Context, request *ModifyDocToVideoTaskStatusRequest) (response *ModifyDocToVideoTaskStatusResponse, err error) {
     if request == nil {
         request = NewModifyDocToVideoTaskStatusRequest()

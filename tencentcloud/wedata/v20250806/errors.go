@@ -50,6 +50,9 @@ const (
 	// 查询过滤条件参数错误。
 	INVALIDPARAMETER_INVALIDFILTERPARAMETER = "InvalidParameter.InvalidFilterParameter"
 
+	// 任务状态不允许该操作。任务仍处于排队或运行中等非终态时无法获取查询结果。
+	INVALIDPARAMETER_INVALIDJOBSTATE = "InvalidParameter.InvalidJobState"
+
 	// 非法参数
 	INVALIDPARAMETER_INVALIDPARAMSERROR = "InvalidParameter.InvalidParamsError"
 
@@ -100,6 +103,9 @@ const (
 
 	// 资源不存在。
 	RESOURCENOTFOUND = "ResourceNotFound"
+
+	// 任务结果已过期。查询结果与日志默认保留7天，超期后由后台任务清理。
+	RESOURCENOTFOUND_RESULTEXPIRED = "ResourceNotFound.ResultExpired"
 
 	// 未授权操作。
 	UNAUTHORIZEDOPERATION = "UnauthorizedOperation"

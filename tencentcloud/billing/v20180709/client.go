@@ -3553,7 +3553,7 @@ func NewDescribeVoucherInfoResponse() (response *DescribeVoucherInfoResponse) {
 }
 
 // DescribeVoucherInfo
-// 获取代金券相关信息
+// 获取近两年的代金券信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_INVALIDAPPID = "FailedOperation.InvalidAppId"
@@ -3566,7 +3566,7 @@ func (c *Client) DescribeVoucherInfo(request *DescribeVoucherInfoRequest) (respo
 }
 
 // DescribeVoucherInfo
-// 获取代金券相关信息
+// 获取近两年的代金券信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_INVALIDAPPID = "FailedOperation.InvalidAppId"
@@ -3611,7 +3611,7 @@ func NewDescribeVoucherUsageDetailsResponse() (response *DescribeVoucherUsageDet
 }
 
 // DescribeVoucherUsageDetails
-// 获取代金券使用记录
+// 获取代金券近两年的使用记录。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_INVALIDAPPID = "FailedOperation.InvalidAppId"
@@ -3624,7 +3624,7 @@ func (c *Client) DescribeVoucherUsageDetails(request *DescribeVoucherUsageDetail
 }
 
 // DescribeVoucherUsageDetails
-// 获取代金券使用记录
+// 获取代金券近两年的使用记录。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_INVALIDAPPID = "FailedOperation.InvalidAppId"

@@ -20,6 +20,17 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
+type AddFriendEvent struct {
+	// <p>所属服务器ID，允许空串</p>
+	ServerId *string `json:"ServerId,omitnil,omitempty" name:"ServerId"`
+
+	// <p>发送者信息</p>
+	Sender *Sender `json:"Sender,omitnil,omitempty" name:"Sender"`
+
+	// <p>接收者信息</p>
+	Receiver *Receiver `json:"Receiver,omitnil,omitempty" name:"Receiver"`
+}
+
 type AddPromotionEvent struct {
 	// <p>营销活动ID</p>
 	PromotionId *string `json:"PromotionId,omitnil,omitempty" name:"PromotionId"`
@@ -328,7 +339,7 @@ type AssessEnvironmentRiskRsp struct {
 
 // Predefined struct for user
 type AssessRiskRequestParams struct {
-	// <p>事件码。用于指定业务接入的场景节点。</p><p> 账号保护产品下的标准事件包含：</p><ul><li> login： 登录<p></p></li> <li>register： 注册 </li><li>sms： 短信 </li><li>logout： 登出 </li><li>modify_account： 修改账号 </li><li>modify_password： 修改密码 </li><li>security_verification： 安全验证</li></ul><p>交易保护产品下的标准事件包含：</p><ul><li>create_order： 创建订单 </li><li>transaction： 交易支付 </li><li>charge_back： 拒付</li></ul><p>营销保护产品下的标准事件包含：</p><ul><li>add_promotion： 参加营销活动 </li><li>redeem： 兑奖 </li><li>withdraw： 提现 </li><li>cust_event： 自定义事件，cust_xxx </li><li>scan_code： 扫码 </li><li>lucky_draw： 抽奖 </li><li>task： 做任务 </li><li>invitation： 邀请 </li><li>claim_red_packet： 领红包 </li><li>browse： 浏览</li></ul><p>自定义事件可与RCE约定后进行风险评估</p>
+	// <p>事件码。用于指定业务接入的场景节点。</p><p>账号保护产品下的标准事件包含：</p><ul><li>login： 登录</li><li>register： 注册（创建账户）</li><li>sms： 短信</li><li>logout： 登出</li><li>modify_account： 修改账号</li><li>modify_password： 修改密码</li><li>security_verification： 安全验证</li></ul><p>交易保护产品下的标准事件包含：</p><ul><li>create_order： 创建订单</li><li>transaction： 交易支付</li><li>charge_back： 拒付</li></ul><p>营销保护产品下的标准事件包含：</p><ul><li>add_promotion： 参与营销活动</li><li>redeem： 兑奖</li><li>withdraw： 提现</li><li>scan_code： 扫码</li><li>task： 做任务</li><li>claim_red_packet： 领红包</li><li>lucky_draw： 抽奖</li><li>invitation： 邀请</li><li>browse： 浏览</li></ul><p>社群保护产品下的标准事件包含：</p><ul><li>chat： 聊天消息</li><li>modify_role： 编辑角色资料</li><li>add_friend： 添加好友</li><li>modify_guild： 编辑公会资料</li></ul><p>自定义事件以 cust_ 为前缀，可与 RCE 约定后进行风险评估。</p>
 	EventCode *string `json:"EventCode,omitnil,omitempty" name:"EventCode"`
 
 	// <p>事件的发生时间</p><p>参数格式：符合ISO 8601标准的带UTC时区的毫秒级时间</p>
@@ -375,12 +386,15 @@ type AssessRiskRequestParams struct {
 
 	// <p>QQ应用ID，当传入QQ开放账号时，该字段必填，QQ分配给网站或应用的AppId，用来唯一标识网站或应用</p>
 	QQAppId *string `json:"QQAppId,omitnil,omitempty" name:"QQAppId"`
+
+	// <p>业务序列号，您系统中一次业务动作的流水号</p>
+	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 }
 
 type AssessRiskRequest struct {
 	*tchttp.BaseRequest
 	
-	// <p>事件码。用于指定业务接入的场景节点。</p><p> 账号保护产品下的标准事件包含：</p><ul><li> login： 登录<p></p></li> <li>register： 注册 </li><li>sms： 短信 </li><li>logout： 登出 </li><li>modify_account： 修改账号 </li><li>modify_password： 修改密码 </li><li>security_verification： 安全验证</li></ul><p>交易保护产品下的标准事件包含：</p><ul><li>create_order： 创建订单 </li><li>transaction： 交易支付 </li><li>charge_back： 拒付</li></ul><p>营销保护产品下的标准事件包含：</p><ul><li>add_promotion： 参加营销活动 </li><li>redeem： 兑奖 </li><li>withdraw： 提现 </li><li>cust_event： 自定义事件，cust_xxx </li><li>scan_code： 扫码 </li><li>lucky_draw： 抽奖 </li><li>task： 做任务 </li><li>invitation： 邀请 </li><li>claim_red_packet： 领红包 </li><li>browse： 浏览</li></ul><p>自定义事件可与RCE约定后进行风险评估</p>
+	// <p>事件码。用于指定业务接入的场景节点。</p><p>账号保护产品下的标准事件包含：</p><ul><li>login： 登录</li><li>register： 注册（创建账户）</li><li>sms： 短信</li><li>logout： 登出</li><li>modify_account： 修改账号</li><li>modify_password： 修改密码</li><li>security_verification： 安全验证</li></ul><p>交易保护产品下的标准事件包含：</p><ul><li>create_order： 创建订单</li><li>transaction： 交易支付</li><li>charge_back： 拒付</li></ul><p>营销保护产品下的标准事件包含：</p><ul><li>add_promotion： 参与营销活动</li><li>redeem： 兑奖</li><li>withdraw： 提现</li><li>scan_code： 扫码</li><li>task： 做任务</li><li>claim_red_packet： 领红包</li><li>lucky_draw： 抽奖</li><li>invitation： 邀请</li><li>browse： 浏览</li></ul><p>社群保护产品下的标准事件包含：</p><ul><li>chat： 聊天消息</li><li>modify_role： 编辑角色资料</li><li>add_friend： 添加好友</li><li>modify_guild： 编辑公会资料</li></ul><p>自定义事件以 cust_ 为前缀，可与 RCE 约定后进行风险评估。</p>
 	EventCode *string `json:"EventCode,omitnil,omitempty" name:"EventCode"`
 
 	// <p>事件的发生时间</p><p>参数格式：符合ISO 8601标准的带UTC时区的毫秒级时间</p>
@@ -427,6 +441,9 @@ type AssessRiskRequest struct {
 
 	// <p>QQ应用ID，当传入QQ开放账号时，该字段必填，QQ分配给网站或应用的AppId，用来唯一标识网站或应用</p>
 	QQAppId *string `json:"QQAppId,omitnil,omitempty" name:"QQAppId"`
+
+	// <p>业务序列号，您系统中一次业务动作的流水号</p>
+	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 }
 
 func (r *AssessRiskRequest) ToJsonString() string {
@@ -457,6 +474,7 @@ func (r *AssessRiskRequest) FromJsonString(s string) error {
 	delete(f, "WeChatOpenId")
 	delete(f, "QQOpenId")
 	delete(f, "QQAppId")
+	delete(f, "BusinessId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AssessRiskRequest has unknown keys!", "")
 	}
@@ -604,6 +622,37 @@ type ChargeBackEvent struct {
 
 	// <p>与RCE约定的定制化信息，为K:V 格式的对象数组，示例：[{&quot;Key&quot;: &quot;ApproverName&quot;, &quot;Value&quot;: &quot;bob&quot;},{&quot;Key&quot;:&quot;ApproverPhone&quot;,&quot;Value&quot;: &quot;+86131****5678&quot;}]</p>
 	Cust []*Cust `json:"Cust,omitnil,omitempty" name:"Cust"`
+}
+
+type Chat struct {
+	// <p>聊天文本内容，不含HTML、不含昵称，限2000字符</p>
+	ChatText *string `json:"ChatText,omitnil,omitempty" name:"ChatText"`
+
+	// <p>频道类型，枚举值：world-世界 / guild-公会 / single-单聊 / other-其他</p>
+	ChannelType *string `json:"ChannelType,omitnil,omitempty" name:"ChannelType"`
+
+	// <p>群/频道唯一ID（单聊时为空）</p>
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// <p>群/频道名称</p>
+	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
+
+	// <p>群主/管理员ID</p>
+	GroupAdministrator *string `json:"GroupAdministrator,omitnil,omitempty" name:"GroupAdministrator"`
+}
+
+type ChatEvent struct {
+	// <p>聊天信息</p>
+	ChatInfo *Chat `json:"ChatInfo,omitnil,omitempty" name:"ChatInfo"`
+
+	// <p>所属服务器ID，允许空串</p>
+	ServerId *string `json:"ServerId,omitnil,omitempty" name:"ServerId"`
+
+	// <p>发送者信息</p>
+	Sender *Sender `json:"Sender,omitnil,omitempty" name:"Sender"`
+
+	// <p>接收者信息</p>
+	Receiver *Receiver `json:"Receiver,omitnil,omitempty" name:"Receiver"`
 }
 
 type ClaimRedPacketEvent struct {
@@ -899,6 +948,35 @@ type EventDetail struct {
 
 	// <p>浏览</p>
 	Browse *BrowseEvent `json:"Browse,omitnil,omitempty" name:"Browse"`
+
+	// <p>聊天消息</p>
+	Chat *ChatEvent `json:"Chat,omitnil,omitempty" name:"Chat"`
+
+	// <p>编辑角色资料</p>
+	ModifyRole *ModifyRoleEvent `json:"ModifyRole,omitnil,omitempty" name:"ModifyRole"`
+
+	// <p>添加好友</p>
+	AddFriend *AddFriendEvent `json:"AddFriend,omitnil,omitempty" name:"AddFriend"`
+
+	// <p>编辑公会资料</p>
+	ModifyGuild *ModifyGuildEvent `json:"ModifyGuild,omitnil,omitempty" name:"ModifyGuild"`
+}
+
+type Guild struct {
+	// <p>公会唯一ID</p>
+	GuildId *string `json:"GuildId,omitnil,omitempty" name:"GuildId"`
+
+	// <p>公会名称，允许空串</p>
+	GuildName *string `json:"GuildName,omitnil,omitempty" name:"GuildName"`
+
+	// <p>公会签名，允许空串</p>
+	GuildSignature *string `json:"GuildSignature,omitnil,omitempty" name:"GuildSignature"`
+
+	// <p>公会会长账号ID</p>
+	PresidentUserId *string `json:"PresidentUserId,omitnil,omitempty" name:"PresidentUserId"`
+
+	// <p>公会会长角色ID</p>
+	PresidentRoleId *string `json:"PresidentRoleId,omitnil,omitempty" name:"PresidentRoleId"`
 }
 
 type IPLocation struct {
@@ -1173,12 +1251,46 @@ type ModifyAccountEvent struct {
 	Cust []*Cust `json:"Cust,omitnil,omitempty" name:"Cust"`
 }
 
+type ModifyGuildEvent struct {
+	// <p>修改后的公会名，允许空串</p>
+	GuildNameAfter *string `json:"GuildNameAfter,omitnil,omitempty" name:"GuildNameAfter"`
+
+	// <p>修改后的公会签名，允许空串</p>
+	GuildSignatureAfter *string `json:"GuildSignatureAfter,omitnil,omitempty" name:"GuildSignatureAfter"`
+
+	// <p>所属服务器ID，允许空串</p>
+	ServerId *string `json:"ServerId,omitnil,omitempty" name:"ServerId"`
+
+	// <p>编辑者账号信息</p>
+	UserInfo *User `json:"UserInfo,omitnil,omitempty" name:"UserInfo"`
+
+	// <p>公会信息</p>
+	Guild *Guild `json:"Guild,omitnil,omitempty" name:"Guild"`
+}
+
 type ModifyPasswordEvent struct {
 	// <p>修改原因</p><p>枚举值：</p><ul><li>user_modify： 用户主动修改</li><li>forgot_password： 忘记密码</li><li>forced_reset： 系统强制重置</li></ul>
 	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
 
 	// <p>与RCE约定的定制化信息，为K:V 格式的对象数组，示例：[{&quot;Key&quot;: &quot;ApproverName&quot;, &quot;Value&quot;: &quot;bob&quot;},{&quot;Key&quot;:&quot;ApproverPhone&quot;,&quot;Value&quot;: &quot;+86131****5678&quot;}]</p>
 	Cust []*Cust `json:"Cust,omitnil,omitempty" name:"Cust"`
+}
+
+type ModifyRoleEvent struct {
+	// <p>修改后的角色名，允许空串</p>
+	RoleNameAfter *string `json:"RoleNameAfter,omitnil,omitempty" name:"RoleNameAfter"`
+
+	// <p>修改后的签名档，允许空串</p>
+	RoleSignatureAfter *string `json:"RoleSignatureAfter,omitnil,omitempty" name:"RoleSignatureAfter"`
+
+	// <p>所属服务器ID，允许空串</p>
+	ServerId *string `json:"ServerId,omitnil,omitempty" name:"ServerId"`
+
+	// <p>编辑者账号信息</p>
+	UserInfo *User `json:"UserInfo,omitnil,omitempty" name:"UserInfo"`
+
+	// <p>角色信息</p>
+	RoleInfo *Role `json:"RoleInfo,omitnil,omitempty" name:"RoleInfo"`
 }
 
 type Order struct {
@@ -1286,6 +1398,17 @@ type PromotionCode struct {
 	Items []*Item `json:"Items,omitnil,omitempty" name:"Items"`
 }
 
+type Receiver struct {
+	// <p>接收者账号ID</p>
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// <p>接收者账号信息</p>
+	UserInfo *User `json:"UserInfo,omitnil,omitempty" name:"UserInfo"`
+
+	// <p>接收者角色信息</p>
+	RoleInfo *Role `json:"RoleInfo,omitnil,omitempty" name:"RoleInfo"`
+}
+
 type RedeemEvent struct {
 	// <p>营销活动ID</p>
 	PromotionId *string `json:"PromotionId,omitnil,omitempty" name:"PromotionId"`
@@ -1334,7 +1457,7 @@ type RegisterEvent struct {
 
 // Predefined struct for user
 type ReportEventRequestParams struct {
-	// <p>事件码。用于指定业务接入的场景节点。</p><p> 账号保护产品下的标准事件包含：</p><ul><li> login： 登录<p></p></li> <li>register： 注册 </li><li>sms： 短信 </li><li>logout： 登出 </li><li>modify_account： 修改账号 </li><li>modify_password： 修改密码 </li><li>security_verification： 安全验证</li></ul><p>交易保护产品下的标准事件包含：</p><ul><li>create_order： 创建订单 </li><li>transaction： 交易支付 </li><li>charge_back： 拒付</li></ul><p>营销保护产品下的标准事件包含：</p><ul><li>add_promotion： 参加营销活动 </li><li>redeem： 兑奖 </li><li>withdraw： 提现 </li><li>cust_event： 自定义事件，cust_xxx </li><li>scan_code： 扫码 </li><li>lucky_draw： 抽奖 </li><li>task： 做任务 </li><li>invitation： 邀请 </li><li>claim_red_packet： 领红包 </li><li>browse： 浏览</li></ul><p>自定义事件可与RCE约定后进行风险评估</p>
+	// <p>事件码。用于指定业务接入的场景节点。</p><p>账号保护产品下的标准事件包含：</p><ul><li>login： 登录</li><li>register： 注册（创建账户）</li><li>sms： 短信</li><li>logout： 登出</li><li>modify_account： 修改账号</li><li>modify_password： 修改密码</li><li>security_verification： 安全验证</li></ul><p>交易保护产品下的标准事件包含：</p><ul><li>create_order： 创建订单</li><li>transaction： 交易支付</li><li>charge_back： 拒付</li></ul><p>营销保护产品下的标准事件包含：</p><ul><li>add_promotion： 参与营销活动</li><li>redeem： 兑奖</li><li>withdraw： 提现</li><li>scan_code： 扫码</li><li>task： 做任务</li><li>claim_red_packet： 领红包</li><li>lucky_draw： 抽奖</li><li>invitation： 邀请</li><li>browse： 浏览</li></ul><p>社群保护产品下的标准事件包含：</p><ul><li>chat： 聊天消息</li><li>modify_role： 编辑角色资料</li><li>add_friend： 添加好友</li><li>modify_guild： 编辑公会资料</li></ul><p>自定义事件以 cust_ 为前缀，可与 RCE 约定后进行风险评估。</p>
 	EventCode *string `json:"EventCode,omitnil,omitempty" name:"EventCode"`
 
 	// <p>事件的发生时间</p><p>参数格式：符合ISO 8601标准的带UTC时区的毫秒级时间</p>
@@ -1381,12 +1504,15 @@ type ReportEventRequestParams struct {
 
 	// <p>QQ应用ID，当传入QQ开放账号时，该字段必填，QQ分配给网站或应用的AppId，用来唯一标识网站或应用</p>
 	QQAppId *string `json:"QQAppId,omitnil,omitempty" name:"QQAppId"`
+
+	// <p>业务序列号，您系统中一次业务动作的流水号</p>
+	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 }
 
 type ReportEventRequest struct {
 	*tchttp.BaseRequest
 	
-	// <p>事件码。用于指定业务接入的场景节点。</p><p> 账号保护产品下的标准事件包含：</p><ul><li> login： 登录<p></p></li> <li>register： 注册 </li><li>sms： 短信 </li><li>logout： 登出 </li><li>modify_account： 修改账号 </li><li>modify_password： 修改密码 </li><li>security_verification： 安全验证</li></ul><p>交易保护产品下的标准事件包含：</p><ul><li>create_order： 创建订单 </li><li>transaction： 交易支付 </li><li>charge_back： 拒付</li></ul><p>营销保护产品下的标准事件包含：</p><ul><li>add_promotion： 参加营销活动 </li><li>redeem： 兑奖 </li><li>withdraw： 提现 </li><li>cust_event： 自定义事件，cust_xxx </li><li>scan_code： 扫码 </li><li>lucky_draw： 抽奖 </li><li>task： 做任务 </li><li>invitation： 邀请 </li><li>claim_red_packet： 领红包 </li><li>browse： 浏览</li></ul><p>自定义事件可与RCE约定后进行风险评估</p>
+	// <p>事件码。用于指定业务接入的场景节点。</p><p>账号保护产品下的标准事件包含：</p><ul><li>login： 登录</li><li>register： 注册（创建账户）</li><li>sms： 短信</li><li>logout： 登出</li><li>modify_account： 修改账号</li><li>modify_password： 修改密码</li><li>security_verification： 安全验证</li></ul><p>交易保护产品下的标准事件包含：</p><ul><li>create_order： 创建订单</li><li>transaction： 交易支付</li><li>charge_back： 拒付</li></ul><p>营销保护产品下的标准事件包含：</p><ul><li>add_promotion： 参与营销活动</li><li>redeem： 兑奖</li><li>withdraw： 提现</li><li>scan_code： 扫码</li><li>task： 做任务</li><li>claim_red_packet： 领红包</li><li>lucky_draw： 抽奖</li><li>invitation： 邀请</li><li>browse： 浏览</li></ul><p>社群保护产品下的标准事件包含：</p><ul><li>chat： 聊天消息</li><li>modify_role： 编辑角色资料</li><li>add_friend： 添加好友</li><li>modify_guild： 编辑公会资料</li></ul><p>自定义事件以 cust_ 为前缀，可与 RCE 约定后进行风险评估。</p>
 	EventCode *string `json:"EventCode,omitnil,omitempty" name:"EventCode"`
 
 	// <p>事件的发生时间</p><p>参数格式：符合ISO 8601标准的带UTC时区的毫秒级时间</p>
@@ -1433,6 +1559,9 @@ type ReportEventRequest struct {
 
 	// <p>QQ应用ID，当传入QQ开放账号时，该字段必填，QQ分配给网站或应用的AppId，用来唯一标识网站或应用</p>
 	QQAppId *string `json:"QQAppId,omitnil,omitempty" name:"QQAppId"`
+
+	// <p>业务序列号，您系统中一次业务动作的流水号</p>
+	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 }
 
 func (r *ReportEventRequest) ToJsonString() string {
@@ -1463,6 +1592,7 @@ func (r *ReportEventRequest) FromJsonString(s string) error {
 	delete(f, "WeChatOpenId")
 	delete(f, "QQOpenId")
 	delete(f, "QQAppId")
+	delete(f, "BusinessId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ReportEventRequest has unknown keys!", "")
 	}
@@ -1505,6 +1635,26 @@ type RiskLabel struct {
 
 	// <p>风险描述</p>
 	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
+}
+
+type Role struct {
+	// <p>角色ID</p>
+	RoleId *string `json:"RoleId,omitnil,omitempty" name:"RoleId"`
+
+	// <p>角色名称</p>
+	RoleName *string `json:"RoleName,omitnil,omitempty" name:"RoleName"`
+
+	// <p>个性签名</p>
+	RoleSignature *string `json:"RoleSignature,omitnil,omitempty" name:"RoleSignature"`
+
+	// <p>角色等级</p>
+	RoleLevel *string `json:"RoleLevel,omitnil,omitempty" name:"RoleLevel"`
+
+	// <p>角色总战力</p>
+	RoleCe *float64 `json:"RoleCe,omitnil,omitempty" name:"RoleCe"`
+
+	// <p>角色创建时间</p>
+	RoleCreateTime *string `json:"RoleCreateTime,omitnil,omitempty" name:"RoleCreateTime"`
 }
 
 type SMSEvent struct {
@@ -1570,6 +1720,14 @@ type SecurityVerificationEvent struct {
 
 	// <p>与RCE约定的定制化信息，为K:V 格式的对象数组，示例：[{&quot;Key&quot;: &quot;ApproverName&quot;, &quot;Value&quot;: &quot;bob&quot;},{&quot;Key&quot;:&quot;ApproverPhone&quot;,&quot;Value&quot;: &quot;+86131****5678&quot;}]</p>
 	Cust []*Cust `json:"Cust,omitnil,omitempty" name:"Cust"`
+}
+
+type Sender struct {
+	// <p>发送者账号信息</p>
+	UserInfo *User `json:"UserInfo,omitnil,omitempty" name:"UserInfo"`
+
+	// <p>发送者角色信息</p>
+	RoleInfo *Role `json:"RoleInfo,omitnil,omitempty" name:"RoleInfo"`
 }
 
 type TaskEvent struct {
@@ -1657,6 +1815,9 @@ type User struct {
 
 	// <p>用户类型</p>
 	UserType *string `json:"UserType,omitnil,omitempty" name:"UserType"`
+
+	// <p>是否付费账号</p>
+	IsPaid *bool `json:"IsPaid,omitnil,omitempty" name:"IsPaid"`
 }
 
 type Wallet struct {

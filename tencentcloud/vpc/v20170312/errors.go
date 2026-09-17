@@ -962,6 +962,9 @@ const (
 	// 跨账号场景下不支持自驾云账号实例 关联普通账号云联网。
 	UNSUPPORTEDOPERATION_CCNORDINARYACCOUNTREFUSEATTACH = "UnsupportedOperation.CcnOrdinaryAccountRefuseAttach"
 
+	// 云联网策略路由非VPC实例类型不支持配置下一跳资源
+	UNSUPPORTEDOPERATION_CCNROUTEBASEDROUTEINGNOVPCTYPENOTSUPPORTCONFIGNEXTHOPRESOURCE = "UnsupportedOperation.CcnRouteBasedRouteingNoVpcTypeNotSupportConfigNextHopResource"
+
 	// 当前路由与已有路由的CIDR重叠，仅能开启其中一条路由。
 	UNSUPPORTEDOPERATION_CCNROUTECIDROVERLAP = "UnsupportedOperation.CcnRouteCidrOverlap"
 
@@ -1006,6 +1009,9 @@ const (
 
 	// 当前查询地域非跨境。
 	UNSUPPORTEDOPERATION_CURRENTQUERYREGIONISNOTCROSSBORDER = "UnsupportedOperation.CurrentQueryRegionIsNotCrossBorder"
+
+	// 当前操作不支持创建Ivp6类型对端网关。
+	UNSUPPORTEDOPERATION_CUSTOMERGATEWAYIPV6 = "UnsupportedOperation.CustomerGatewayIpv6"
 
 	// 该专线网关存在关联的NAT规则，不允许删除，请先删调所有的NAT规则。
 	UNSUPPORTEDOPERATION_DCGATEWAYNATRULEEXISTS = "UnsupportedOperation.DCGatewayNatRuleExists"
@@ -1100,6 +1106,9 @@ const (
 	// GUA类型的网段不支持分配给CDC子网。
 	UNSUPPORTEDOPERATION_GUANOTSUPPORTALLOCATECDCSUBNET = "UnsupportedOperation.GUANotSupportAllocateCdcSubnet"
 
+	// 非DPDK集群类型的GWLB不支持创建策略路由下一跳
+	UNSUPPORTEDOPERATION_GWLBCLUSTERTYPENOTDPDKNOTSUPPORTCREATE = "UnsupportedOperation.GwlbClusterTypeNotDpdkNotSupportCreate"
+
 	// TGW还没有投放IPv6网段
 	UNSUPPORTEDOPERATION_IPV6CIDRNOTDEPLOYED = "UnsupportedOperation.IPV6CidrNotDeployed"
 
@@ -1168,6 +1177,9 @@ const (
 
 	// 不支持IPV6。
 	UNSUPPORTEDOPERATION_IPV6NOTSUPPORT = "UnsupportedOperation.Ipv6NotSupport"
+
+	// Ipv6不支持Bgp，不支持携带Bgp相关参数。
+	UNSUPPORTEDOPERATION_IPV6NOTSUPPORTBGP = "UnsupportedOperation.Ipv6NotSupportBgp"
 
 	// 关联当前云联网的实例的账号存在不是金融云账号。
 	UNSUPPORTEDOPERATION_ISNOTFINANCEACCOUNT = "UnsupportedOperation.IsNotFinanceAccount"
@@ -1385,6 +1397,9 @@ const (
 	// 当前账号不能在该地域使用产品。
 	UNSUPPORTEDOPERATION_PURCHASELIMIT = "UnsupportedOperation.PurchaseLimit"
 
+	// 查询时间超过限制。
+	UNSUPPORTEDOPERATION_QUERYTIMEEXCEEDEDLIMIT = "UnsupportedOperation.QueryTimeExceededLimit"
+
 	// 记录已存在。
 	UNSUPPORTEDOPERATION_RECORDEXISTS = "UnsupportedOperation.RecordExists"
 
@@ -1591,6 +1606,9 @@ const (
 
 	// VPN不支持BGP
 	UNSUPPORTEDOPERATION_VPNUNSUPPORTEDBGP = "UnsupportedOperation.VpnUnsupportedBgp"
+
+	// 当前账号或地域，VPN不支持BGP。
+	UNSUPPORTEDOPERATION_VPNUNSUPPORTEDBGPACCOUNTORREGION = "UnsupportedOperation.VpnUnsupportedBgpAccountOrRegion"
 
 	// 对端网关BGP ASN和已有的通道对端或云上VPN的BGP ASN相同。
 	UNSUPPORTEDOPERATION_VPNUNSUPPORTEDBGPASNEQUAL = "UnsupportedOperation.VpnUnsupportedBgpAsnEqual"

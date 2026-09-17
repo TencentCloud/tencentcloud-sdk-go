@@ -8660,6 +8660,10 @@ type JobExecutionDto struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResultPreviewFilePath *string `json:"ResultPreviewFilePath,omitnil,omitempty" name:"ResultPreviewFilePath"`
 
+	// 结果集schema信息文件cos路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SchemaInfoFilePath *string `json:"SchemaInfoFilePath,omitnil,omitempty" name:"SchemaInfoFilePath"`
+
 	// 任务执行的结果总行数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResultTotalCount *int64 `json:"ResultTotalCount,omitnil,omitempty" name:"ResultTotalCount"`
@@ -8695,6 +8699,10 @@ type JobExecutionDto struct {
 	// 是否需要截断脚本内容
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScriptContentTruncate *bool `json:"ScriptContentTruncate,omitnil,omitempty" name:"ScriptContentTruncate"`
+
+	// 预览结果集是否收集完成
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CollectedPreviewResult *bool `json:"CollectedPreviewResult,omitnil,omitempty" name:"CollectedPreviewResult"`
 }
 
 type KVMap struct {
@@ -18846,32 +18854,38 @@ type RevokePrivilegesRsp struct {
 
 // Predefined struct for user
 type RunSQLScriptRequestParams struct {
-	// 脚本id
-	ScriptId *string `json:"ScriptId,omitnil,omitempty" name:"ScriptId"`
-
 	// 项目ID
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 脚本内容，不传则默认执行已保存的全量脚本内容；若传递则要用Base64编码
+	// 脚本id。如果不填则需要传入 ScriptConfig、ScriptContent，此时为免脚本临时运行模式，服务端不保存脚本
+	ScriptId *string `json:"ScriptId,omitnil,omitempty" name:"ScriptId"`
+
+	// 脚本配置。免脚本临时运行模式（未传 ScriptId）下必填，其中 DatasourceId 必填、ExecutorGroupId 选填（缺省时使用项目管理-数据分析配置中的执行资源组）；传入 ScriptId 时本字段被忽略，配置取自已保存的脚本
+	ScriptConfig *SQLScriptConfig `json:"ScriptConfig,omitnil,omitempty" name:"ScriptConfig"`
+
+	// 脚本内容，支持传递代码原文或者 Base64 编码，服务端自动识别。传 ScriptId 时不传则执行已保存的全量脚本内容；免脚本临时运行模式下必填。注意：若原文恰好由 Base64 字符集组成且长度为 4 的倍数（如 descTBLS），会被识别为已编码，此类内容请显式 Base64 编码后传入
 	ScriptContent *string `json:"ScriptContent,omitnil,omitempty" name:"ScriptContent"`
 
-	// 高级运行参数，JSON格式base64编码
+	// 高级运行参数，支持传递 JSON 格式原文或者 Base64 编码，服务端自动识别。示例：{"executorNum":1} 或 eyJleGVjdXRvck51bSI6MX0=
 	Params *string `json:"Params,omitnil,omitempty" name:"Params"`
 }
 
 type RunSQLScriptRequest struct {
 	*tchttp.BaseRequest
 	
-	// 脚本id
-	ScriptId *string `json:"ScriptId,omitnil,omitempty" name:"ScriptId"`
-
 	// 项目ID
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 脚本内容，不传则默认执行已保存的全量脚本内容；若传递则要用Base64编码
+	// 脚本id。如果不填则需要传入 ScriptConfig、ScriptContent，此时为免脚本临时运行模式，服务端不保存脚本
+	ScriptId *string `json:"ScriptId,omitnil,omitempty" name:"ScriptId"`
+
+	// 脚本配置。免脚本临时运行模式（未传 ScriptId）下必填，其中 DatasourceId 必填、ExecutorGroupId 选填（缺省时使用项目管理-数据分析配置中的执行资源组）；传入 ScriptId 时本字段被忽略，配置取自已保存的脚本
+	ScriptConfig *SQLScriptConfig `json:"ScriptConfig,omitnil,omitempty" name:"ScriptConfig"`
+
+	// 脚本内容，支持传递代码原文或者 Base64 编码，服务端自动识别。传 ScriptId 时不传则执行已保存的全量脚本内容；免脚本临时运行模式下必填。注意：若原文恰好由 Base64 字符集组成且长度为 4 的倍数（如 descTBLS），会被识别为已编码，此类内容请显式 Base64 编码后传入
 	ScriptContent *string `json:"ScriptContent,omitnil,omitempty" name:"ScriptContent"`
 
-	// 高级运行参数，JSON格式base64编码
+	// 高级运行参数，支持传递 JSON 格式原文或者 Base64 编码，服务端自动识别。示例：{"executorNum":1} 或 eyJleGVjdXRvck51bSI6MX0=
 	Params *string `json:"Params,omitnil,omitempty" name:"Params"`
 }
 
@@ -18887,8 +18901,9 @@ func (r *RunSQLScriptRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "ScriptId")
 	delete(f, "ProjectId")
+	delete(f, "ScriptId")
+	delete(f, "ScriptConfig")
 	delete(f, "ScriptContent")
 	delete(f, "Params")
 	if len(f) > 0 {

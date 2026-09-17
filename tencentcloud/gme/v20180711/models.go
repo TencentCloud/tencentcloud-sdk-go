@@ -215,6 +215,14 @@ type AsrConf struct {
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
+type AudioSegments struct {
+	// <p>该参数用于返回对应语种标签的片段在音频文件内的开始时间，单位为秒。 示例值：0</p>
+	StartTime *float64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>该参数用于返回对应语种标签的片段在音频文件内的结束时间，单位为秒。 示例值：15</p>
+	FinishTime *float64 `json:"FinishTime,omitnil,omitempty" name:"FinishTime"`
+}
+
 type AudioTextStatisticsItem struct {
 	// 统计值，单位：秒
 	Data *float64 `json:"Data,omitnil,omitempty" name:"Data"`
@@ -542,6 +550,138 @@ func (r *CreateAppResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateAppResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAudioModerationSyncRequestParams struct {
+	// <p>sdkappid app账号</p>
+	Sdkappid *int64 `json:"Sdkappid,omitnil,omitempty" name:"Sdkappid"`
+
+	// <p>BizType为策略的具体的编号, GME业务 2_2_3_sdkappid</p>
+	BizType *string `json:"BizType,omitnil,omitempty" name:"BizType"`
+
+	// <p>数据标识，可以由英文字母、数字、下划线、-、@#组成，不超过64个字符</p>
+	DataId *string `json:"DataId,omitnil,omitempty" name:"DataId"`
+
+	// <p>音频格式，当FileUrl为空时，必填。音频文件资源格式，当前支持格式：wav、mp3、m4a，请按照实际文件格式填入。 示例值：mp3</p>
+	FileFormat *string `json:"FileFormat,omitnil,omitempty" name:"FileFormat"`
+
+	// <p>文件名称，可以由英文字母、数字、下划线、-、@#组成，不超过64个字符 示例值：file_name</p>
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
+
+	// <p>数据Base64编码，短音频同步接口仅传入可音频内容； 支持范围：文件大小不能超过5M，时长不可超过60s； 支持格式：wav (PCM编码)、mp3、m4a (采样率：16kHz~48kHz，位深：16bit 小端，声道数：单声道/双声道，建议格式：16kHz/16bit/单声道)。 示例值：1</p>
+	FileContent *string `json:"FileContent,omitnil,omitempty" name:"FileContent"`
+
+	// <p>音频资源访问链接，与FileContent参数必须二选一输入； 支持范围及格式：同FileContent；</p>
+	FileUrl *string `json:"FileUrl,omitnil,omitempty" name:"FileUrl"`
+}
+
+type CreateAudioModerationSyncRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>sdkappid app账号</p>
+	Sdkappid *int64 `json:"Sdkappid,omitnil,omitempty" name:"Sdkappid"`
+
+	// <p>BizType为策略的具体的编号, GME业务 2_2_3_sdkappid</p>
+	BizType *string `json:"BizType,omitnil,omitempty" name:"BizType"`
+
+	// <p>数据标识，可以由英文字母、数字、下划线、-、@#组成，不超过64个字符</p>
+	DataId *string `json:"DataId,omitnil,omitempty" name:"DataId"`
+
+	// <p>音频格式，当FileUrl为空时，必填。音频文件资源格式，当前支持格式：wav、mp3、m4a，请按照实际文件格式填入。 示例值：mp3</p>
+	FileFormat *string `json:"FileFormat,omitnil,omitempty" name:"FileFormat"`
+
+	// <p>文件名称，可以由英文字母、数字、下划线、-、@#组成，不超过64个字符 示例值：file_name</p>
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
+
+	// <p>数据Base64编码，短音频同步接口仅传入可音频内容； 支持范围：文件大小不能超过5M，时长不可超过60s； 支持格式：wav (PCM编码)、mp3、m4a (采样率：16kHz~48kHz，位深：16bit 小端，声道数：单声道/双声道，建议格式：16kHz/16bit/单声道)。 示例值：1</p>
+	FileContent *string `json:"FileContent,omitnil,omitempty" name:"FileContent"`
+
+	// <p>音频资源访问链接，与FileContent参数必须二选一输入； 支持范围及格式：同FileContent；</p>
+	FileUrl *string `json:"FileUrl,omitnil,omitempty" name:"FileUrl"`
+}
+
+func (r *CreateAudioModerationSyncRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAudioModerationSyncRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Sdkappid")
+	delete(f, "BizType")
+	delete(f, "DataId")
+	delete(f, "FileFormat")
+	delete(f, "FileName")
+	delete(f, "FileContent")
+	delete(f, "FileUrl")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAudioModerationSyncRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAudioModerationSyncResponseParams struct {
+	// <p>返回传入的DataId</p>
+	DataId *string `json:"DataId,omitnil,omitempty" name:"DataId"`
+
+	// <p>审核返回的任务id</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>文件名</p>
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
+
+	// <p>1：语音。 2：图片。</p><p>枚举值：</p><ul><li>1： 语音</li><li>2： 图片</li></ul>
+	MediaType *int64 `json:"MediaType,omitnil,omitempty" name:"MediaType"`
+
+	// <p>0：建议通过。 1 ：建议人工重新内容识别。 2：建议屏蔽。</p><p>枚举值：</p><ul><li>0： 建议通过</li><li>1： 建议人工重新内容识别</li><li>2： 建议屏蔽</li></ul>
+	Suggest *int64 `json:"Suggest,omitnil,omitempty" name:"Suggest"`
+
+	// <p>置信度分数，取值范围：0（置信度最低）-100（置信度最高 ），越高代表越有可能属于当前返回的标签。 实例值：100</p>
+	Rate *int64 `json:"Rate,omitnil,omitempty" name:"Rate"`
+
+	// <p>Normal：正常文本  Ad:广告 Porn：色情 Abuse：谩骂 Illegal: 违禁 Polity: 涉政 Terror: 暴恐 Sexy: 性感 Moan: 呻吟/娇喘 QRCode: 二维码 Custom: 自定义</p>
+	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
+
+	// <p>子标签</p>
+	SubLabel *string `json:"SubLabel,omitnil,omitempty" name:"SubLabel"`
+
+	// <p>音频链接地址</p>
+	Audio *string `json:"Audio,omitnil,omitempty" name:"Audio"`
+
+	// <p>审核识别音频文本</p>
+	AudioText *string `json:"AudioText,omitnil,omitempty" name:"AudioText"`
+
+	// <p>审核明细</p>
+	CheckDetail []*ModerationCheckDetail `json:"CheckDetail,omitnil,omitempty" name:"CheckDetail"`
+
+	// <p>音频时长，单位 ms</p>
+	Duration *int64 `json:"Duration,omitnil,omitempty" name:"Duration"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateAudioModerationSyncResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateAudioModerationSyncResponseParams `json:"Response"`
+}
+
+func (r *CreateAudioModerationSyncResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAudioModerationSyncResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2167,6 +2307,14 @@ func (r *GetCustomizationListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ImageLocation struct {
+	// <p>该参数用于返回检测框左上角位置的横坐标（x）所在的像素位置，结合剩余参数可唯一确定检测框的大小和位置。 示例值：51</p>
+	X *float64 `json:"X,omitnil,omitempty" name:"X"`
+
+	// <p>该参数用于返回检测框左上角位置的纵坐标（y）所在的像素位置，结合剩余参数可唯一确定检测框的大小和位置。 示例值：448</p>
+	Y *float64 `json:"Y,omitnil,omitempty" name:"Y"`
+}
+
 type InOutTimeInfo struct {
 	// 进入房间时间
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
@@ -2181,6 +2329,44 @@ type InvokeLLM struct {
 
 	// 是否允许该文本打断机器人说话
 	Interrupt *bool `json:"Interrupt,omitnil,omitempty" name:"Interrupt"`
+}
+
+type ModerationCheckDetail struct {
+	// <p>该字段在内容理解回调事件中可直接忽略，仅在第三方审核时存在，检出违规的模型场景，枚举值：Ad/Porn/Abuse/Illegal/Polity/Terror/Sexy/Moan/Custom</p>
+	Scene *string `json:"Scene,omitnil,omitempty" name:"Scene"`
+
+	// <p>Normal：正常文本  Ad:广告 Porn：色情 Abuse：谩骂 Illegal: 违禁 Polity: 涉政 Terror: 暴恐 Sexy: 性感 Moan: 呻吟/娇喘 QRCode: 二维码 Custom: 自定义</p>
+	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
+
+	// <p>二级标签</p>
+	SubLabel *string `json:"SubLabel,omitnil,omitempty" name:"SubLabel"`
+
+	// <p>处理建议</p>
+	Suggest *int64 `json:"Suggest,omitnil,omitempty" name:"Suggest"`
+
+	// <p>自定义词库名</p>
+	LibName *string `json:"LibName,omitnil,omitempty" name:"LibName"`
+
+	// <p>命中的关键词</p>
+	Keywords []*string `json:"Keywords,omitnil,omitempty" name:"Keywords"`
+
+	// <p>中文二级标签。</p>
+	Desc *string `json:"Desc,omitnil,omitempty" name:"Desc"`
+
+	// <p>置信度分值</p>
+	Score *int64 `json:"Score,omitnil,omitempty" name:"Score"`
+
+	// <p>违规严重程度: 0-不区分 1-轻度 2-严重</p>
+	Severity *int64 `json:"Severity,omitnil,omitempty" name:"Severity"`
+
+	// <p>违规严重程度描述 仅名单内sdkappid返回 负面表达,正面或中性表达,语义模糊</p>
+	SeverityDesc *string `json:"SeverityDesc,omitnil,omitempty" name:"SeverityDesc"`
+
+	// <p>音频切片位置信息</p>
+	AudioSegments *AudioSegments `json:"AudioSegments,omitnil,omitempty" name:"AudioSegments"`
+
+	// <p>图片命中坐标信息。</p>
+	ImageLocation *ImageLocation `json:"ImageLocation,omitnil,omitempty" name:"ImageLocation"`
 }
 
 // Predefined struct for user

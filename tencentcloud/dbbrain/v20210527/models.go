@@ -9393,15 +9393,19 @@ type StatDimension struct {
 
 type StatisticDataInfo struct {
 	// 统计维度的值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 平均时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	TimeAvg *float64 `json:"TimeAvg,omitnil,omitempty" name:"TimeAvg"`
 
 	// 总时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	TimeSum *float64 `json:"TimeSum,omitnil,omitempty" name:"TimeSum"`
 
 	// 数量。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
 }
 

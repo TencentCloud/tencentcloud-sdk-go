@@ -1135,6 +1135,76 @@ func (c *Client) CreateAigcCustomVoiceWithContext(ctx context.Context, request *
     return
 }
 
+func NewCreateAigcHunyuan3DTaskRequest() (request *CreateAigcHunyuan3DTaskRequest) {
+    request = &CreateAigcHunyuan3DTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "CreateAigcHunyuan3DTask")
+    
+    
+    return
+}
+
+func NewCreateAigcHunyuan3DTaskResponse() (response *CreateAigcHunyuan3DTaskResponse) {
+    response = &CreateAigcHunyuan3DTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateAigcHunyuan3DTask
+// 该接口用于创建 AIGC 混元 3D 任务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_FILEID = "InvalidParameterValue.FileId"
+//  INVALIDPARAMETERVALUE_SESSIONCONTEXTTOOLONG = "InvalidParameterValue.SessionContextTooLong"
+//  INVALIDPARAMETERVALUE_SESSIONIDTOOLONG = "InvalidParameterValue.SessionIdTooLong"
+//  INVALIDPARAMETERVALUE_SUBAPPID = "InvalidParameterValue.SubAppId"
+//  LIMITEXCEEDED_QUOTA = "LimitExceeded.Quota"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateAigcHunyuan3DTask(request *CreateAigcHunyuan3DTaskRequest) (response *CreateAigcHunyuan3DTaskResponse, err error) {
+    return c.CreateAigcHunyuan3DTaskWithContext(context.Background(), request)
+}
+
+// CreateAigcHunyuan3DTask
+// 该接口用于创建 AIGC 混元 3D 任务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_FILEID = "InvalidParameterValue.FileId"
+//  INVALIDPARAMETERVALUE_SESSIONCONTEXTTOOLONG = "InvalidParameterValue.SessionContextTooLong"
+//  INVALIDPARAMETERVALUE_SESSIONIDTOOLONG = "InvalidParameterValue.SessionIdTooLong"
+//  INVALIDPARAMETERVALUE_SUBAPPID = "InvalidParameterValue.SubAppId"
+//  LIMITEXCEEDED_QUOTA = "LimitExceeded.Quota"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateAigcHunyuan3DTaskWithContext(ctx context.Context, request *CreateAigcHunyuan3DTaskRequest) (response *CreateAigcHunyuan3DTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateAigcHunyuan3DTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vod", APIVersion, "CreateAigcHunyuan3DTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAigcHunyuan3DTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateAigcHunyuan3DTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAigcImageTaskRequest() (request *CreateAigcImageTaskRequest) {
     request = &CreateAigcImageTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
