@@ -783,58 +783,6 @@ func (c *Client) BatchModifyImageVulWhitelistWithContext(ctx context.Context, re
     return
 }
 
-func NewBindClusterOwnerRequest() (request *BindClusterOwnerRequest) {
-    request = &BindClusterOwnerRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("csip", APIVersion, "BindClusterOwner")
-    
-    
-    return
-}
-
-func NewBindClusterOwnerResponse() (response *BindClusterOwnerResponse) {
-    response = &BindClusterOwnerResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// BindClusterOwner
-// 绑定集群负责人
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-func (c *Client) BindClusterOwner(request *BindClusterOwnerRequest) (response *BindClusterOwnerResponse, err error) {
-    return c.BindClusterOwnerWithContext(context.Background(), request)
-}
-
-// BindClusterOwner
-// 绑定集群负责人
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-func (c *Client) BindClusterOwnerWithContext(ctx context.Context, request *BindClusterOwnerRequest) (response *BindClusterOwnerResponse, err error) {
-    if request == nil {
-        request = NewBindClusterOwnerRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "BindClusterOwner")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("BindClusterOwner require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewBindClusterOwnerResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewCancelEdrAlertIgnoreRequest() (request *CancelEdrAlertIgnoreRequest) {
     request = &CancelEdrAlertIgnoreRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -18607,58 +18555,6 @@ func (c *Client) DescribeClusterInstallCommandWithContext(ctx context.Context, r
     return
 }
 
-func NewDescribeClusterListV2Request() (request *DescribeClusterListV2Request) {
-    request = &DescribeClusterListV2Request{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("csip", APIVersion, "DescribeClusterListV2")
-    
-    
-    return
-}
-
-func NewDescribeClusterListV2Response() (response *DescribeClusterListV2Response) {
-    response = &DescribeClusterListV2Response{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeClusterListV2
-// 查询集群列表
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-func (c *Client) DescribeClusterListV2(request *DescribeClusterListV2Request) (response *DescribeClusterListV2Response, err error) {
-    return c.DescribeClusterListV2WithContext(context.Background(), request)
-}
-
-// DescribeClusterListV2
-// 查询集群列表
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-func (c *Client) DescribeClusterListV2WithContext(ctx context.Context, request *DescribeClusterListV2Request) (response *DescribeClusterListV2Response, err error) {
-    if request == nil {
-        request = NewDescribeClusterListV2Request()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeClusterListV2")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeClusterListV2 require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeClusterListV2Response()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeClusterNamespaceListRequest() (request *DescribeClusterNamespaceListRequest) {
     request = &DescribeClusterNamespaceListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -36289,7 +36185,7 @@ func NewDescribeSkillScanPayInfoResponse() (response *DescribeSkillScanPayInfoRe
 }
 
 // DescribeSkillScanPayInfo
-// 查询 Skill 安全检测计费信息，包括订单状态、总配额、已消耗配额、到期时间、支付模式等。无订单时返回零值（仅含 TimeNow 和 BetaEndTime）。试用订单通过 ModifyTrialStatus(Module=9) 领取，正式订单通过计费系统创建。
+// 查询 Skill 安全检测计费信息，包括订单状态、总配额、已消耗配额、到期时间、支付模式等。无订单时返回零值（仅含 TimeNow 和 BetaEndTime）。试用订单通过 ModifyTrialStatus(Module=9) 领取，正式订单通过计费系统创建。后付费资源信息通过 PostPayStatus、PostPayResourceId、PostPayBeginTime 返回，与预付费订单字段相互独立，二者可同时有效（预付额度耗尽后溢出用量进入后付费）。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -36299,7 +36195,7 @@ func (c *Client) DescribeSkillScanPayInfo(request *DescribeSkillScanPayInfoReque
 }
 
 // DescribeSkillScanPayInfo
-// 查询 Skill 安全检测计费信息，包括订单状态、总配额、已消耗配额、到期时间、支付模式等。无订单时返回零值（仅含 TimeNow 和 BetaEndTime）。试用订单通过 ModifyTrialStatus(Module=9) 领取，正式订单通过计费系统创建。
+// 查询 Skill 安全检测计费信息，包括订单状态、总配额、已消耗配额、到期时间、支付模式等。无订单时返回零值（仅含 TimeNow 和 BetaEndTime）。试用订单通过 ModifyTrialStatus(Module=9) 领取，正式订单通过计费系统创建。后付费资源信息通过 PostPayStatus、PostPayResourceId、PostPayBeginTime 返回，与预付费订单字段相互独立，二者可同时有效（预付额度耗尽后溢出用量进入后付费）。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -36369,6 +36265,58 @@ func (c *Client) DescribeSkillScanResultWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewDescribeSkillScanResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSkillScanTaskListRequest() (request *DescribeSkillScanTaskListRequest) {
+    request = &DescribeSkillScanTaskListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeSkillScanTaskList")
+    
+    
+    return
+}
+
+func NewDescribeSkillScanTaskListResponse() (response *DescribeSkillScanTaskListResponse) {
+    response = &DescribeSkillScanTaskListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSkillScanTaskList
+// 分页查询 Skill 扫描任务列表，返回每个任务的 Skill 名称、消耗次数与上传时间，按上传时间倒序排列。默认查询本月数据，可通过 StartTime / EndTime 指定时间范围。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeSkillScanTaskList(request *DescribeSkillScanTaskListRequest) (response *DescribeSkillScanTaskListResponse, err error) {
+    return c.DescribeSkillScanTaskListWithContext(context.Background(), request)
+}
+
+// DescribeSkillScanTaskList
+// 分页查询 Skill 扫描任务列表，返回每个任务的 Skill 名称、消耗次数与上传时间，按上传时间倒序排列。默认查询本月数据，可通过 StartTime / EndTime 指定时间范围。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeSkillScanTaskListWithContext(ctx context.Context, request *DescribeSkillScanTaskListRequest) (response *DescribeSkillScanTaskListResponse, err error) {
+    if request == nil {
+        request = NewDescribeSkillScanTaskListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeSkillScanTaskList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSkillScanTaskList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSkillScanTaskListResponse()
     err = c.Send(request, response)
     return
 }

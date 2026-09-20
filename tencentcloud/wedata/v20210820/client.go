@@ -16739,6 +16739,62 @@ func (c *Client) TriggerManualTasksWithContext(ctx context.Context, request *Tri
     return
 }
 
+func NewUnbindingResourceRequest() (request *UnbindingResourceRequest) {
+    request = &UnbindingResourceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "UnbindingResource")
+    
+    
+    return
+}
+
+func NewUnbindingResourceResponse() (response *UnbindingResourceResponse) {
+    response = &UnbindingResourceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UnbindingResource
+// 解绑bundle绑定的资源
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) UnbindingResource(request *UnbindingResourceRequest) (response *UnbindingResourceResponse, err error) {
+    return c.UnbindingResourceWithContext(context.Background(), request)
+}
+
+// UnbindingResource
+// 解绑bundle绑定的资源
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) UnbindingResourceWithContext(ctx context.Context, request *UnbindingResourceRequest) (response *UnbindingResourceResponse, err error) {
+    if request == nil {
+        request = NewUnbindingResourceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "wedata", APIVersion, "UnbindingResource")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UnbindingResource require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUnbindingResourceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUnboundProjectExecutorResourceRequest() (request *UnboundProjectExecutorResourceRequest) {
     request = &UnboundProjectExecutorResourceRequest{
         BaseRequest: &tchttp.BaseRequest{},

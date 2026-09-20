@@ -18615,13 +18615,13 @@ func (r *ModifyDBInstanceSecurityGroupsResponse) FromJsonString(s string) error 
 }
 
 type ModifyDbVersionData struct {
-	// 修改前版本
+	// <p>修改前版本</p>
 	OldVersion *string `json:"OldVersion,omitnil,omitempty" name:"OldVersion"`
 
-	// 修改后版本
+	// <p>修改后版本</p>
 	NewVersion *string `json:"NewVersion,omitnil,omitempty" name:"NewVersion"`
 
-	// 升级方式
+	// <p>升级方式</p>
 	UpgradeType *string `json:"UpgradeType,omitnil,omitempty" name:"UpgradeType"`
 }
 
@@ -25244,26 +25244,26 @@ type UpgradeAnalysisInstanceVersionInfo struct {
 
 // Predefined struct for user
 type UpgradeClusterVersionRequestParams struct {
-	// 集群id
+	// <p>集群id</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 内核版本
+	// <p>内核版本</p>
 	CynosVersion *string `json:"CynosVersion,omitnil,omitempty" name:"CynosVersion"`
 
-	// 升级时间类型，可选：upgradeImmediate,upgradeInMaintain
+	// <p>升级时间类型，可选：upgradeImmediate,upgradeInMaintain</p>
 	UpgradeType *string `json:"UpgradeType,omitnil,omitempty" name:"UpgradeType"`
 }
 
 type UpgradeClusterVersionRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群id
+	// <p>集群id</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 内核版本
+	// <p>内核版本</p>
 	CynosVersion *string `json:"CynosVersion,omitnil,omitempty" name:"CynosVersion"`
 
-	// 升级时间类型，可选：upgradeImmediate,upgradeInMaintain
+	// <p>升级时间类型，可选：upgradeImmediate,upgradeInMaintain</p>
 	UpgradeType *string `json:"UpgradeType,omitnil,omitempty" name:"UpgradeType"`
 }
 
@@ -25290,8 +25290,11 @@ func (r *UpgradeClusterVersionRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpgradeClusterVersionResponseParams struct {
-	// 异步任务id
+	// <p>异步任务id</p>
 	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+
+	// <p>任务 ID</p>
+	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

@@ -531,7 +531,7 @@ type AIGWMCPServer struct {
 	// <p>协议类型，取值: StreamableHttp</p>
 	Transport *string `json:"Transport,omitnil,omitempty" name:"Transport"`
 
-	// <p>服务类型：</p><ul><li>Registry  </li><li>HostIP</li></ul>
+	// <p>后端类型</p><p>枚举值：</p><ul><li>MCPRegistry： mcp 注册中心</li><li>Registry： 普通注册中心</li><li>HostIP： 域名或ip</li><li>VirtualMCPServer： 虚拟MCPServer</li><li>DNS： 私有域名</li><li>Kubernetes： Kubernetes服务</li></ul>
 	UpstreamType *string `json:"UpstreamType,omitnil,omitempty" name:"UpstreamType"`
 
 	// <p>展示名字</p>
@@ -584,6 +584,9 @@ type AIGWMCPServer struct {
 
 	// <p>是否开启保留原Host功能</p>
 	PreserveHost *bool `json:"PreserveHost,omitnil,omitempty" name:"PreserveHost"`
+
+	// <p>日志采集配置</p>
+	LogConfig *AIGWLogConfig `json:"LogConfig,omitnil,omitempty" name:"LogConfig"`
 }
 
 type AIGWMCPServerACLResult struct {
@@ -1016,6 +1019,23 @@ type AIGWSensitiveWordRoute struct {
 
 	// <p>路由名称路由配置</p>
 	ModelNameConfig []*CloudNativeAPIGatewayLLMModelServiceRouteModelNameStrategy `json:"ModelNameConfig,omitnil,omitempty" name:"ModelNameConfig"`
+}
+
+type AIGWSimpleSecretKey struct {
+	// <p>密钥ID</p>
+	SecretKeyId *string `json:"SecretKeyId,omitnil,omitempty" name:"SecretKeyId"`
+
+	// <p>密钥名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>启用状态</p><p>枚举值：</p><ul><li>Enable： 启动</li><li>Disable： 禁用</li></ul>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>密钥类型</p><p>枚举值：</p><ul><li>ApiKey： ApiKey类型</li></ul>
+	SecretType *string `json:"SecretType,omitnil,omitempty" name:"SecretType"`
+
+	// <p>创建时间</p><p>参数格式：2026-09-03 14:11:05</p>
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 }
 
 type AIGWTagFilter struct {
@@ -1682,6 +1702,12 @@ type CNAPIGwSecretKey struct {
 
 	// <p>自定义Query参数凭证配置</p>
 	QueryParamCredentialConfig *AIGWQueryParamCredentialConfig `json:"QueryParamCredentialConfig,omitnil,omitempty" name:"QueryParamCredentialConfig"`
+
+	// <p>该消费者密钥绑定的模型密钥列表</p>
+	BoundModelSecretKeys []*AIGWSimpleSecretKey `json:"BoundModelSecretKeys,omitnil,omitempty" name:"BoundModelSecretKeys"`
+
+	// <p>绑定了该模型密钥的消费者密钥列表</p>
+	BoundConsumerSecretKeys []*AIGWSimpleSecretKey `json:"BoundConsumerSecretKeys,omitnil,omitempty" name:"BoundConsumerSecretKeys"`
 }
 
 type CNAPIGwSecretKeyList struct {
@@ -3046,7 +3072,7 @@ type CreateCloudNativeAPIGatewayMCPServerRequestParams struct {
 	// <p>传输协议：StreamableHttp或SSE</p><p>枚举值：</p><ul><li>StreamableHttp： Streamable HTTP</li><li>SSE： Server-Sent Events</li></ul>
 	Transport *string `json:"Transport,omitnil,omitempty" name:"Transport"`
 
-	// <p>后端类型</p><p>枚举值：</p><ul><li>MCPRegistry： mcp 注册中心- Registry</li><li>Registry： 普通注册中心</li><li>HostIP： 域名或ip</li><li>VirtualMCPServer： 虚拟MCPServer</li></ul>
+	// <p>后端类型</p><p>枚举值：</p><ul><li>MCPRegistry： mcp 注册中心</li><li>Registry： 普通注册中心</li><li>HostIP： 域名或ip</li><li>VirtualMCPServer： 虚拟MCPServer</li><li>DNS： 私有域名</li><li>Kubernetes： Kubernetes服务</li></ul>
 	UpstreamType *string `json:"UpstreamType,omitnil,omitempty" name:"UpstreamType"`
 
 	// <p>注册中心来源信息</p>
@@ -3072,6 +3098,9 @@ type CreateCloudNativeAPIGatewayMCPServerRequestParams struct {
 
 	// <p>是否开启保留原Host功能</p>
 	PreserveHost *bool `json:"PreserveHost,omitnil,omitempty" name:"PreserveHost"`
+
+	// <p>日志采集配置</p>
+	LogConfig *AIGWLogConfig `json:"LogConfig,omitnil,omitempty" name:"LogConfig"`
 }
 
 type CreateCloudNativeAPIGatewayMCPServerRequest struct {
@@ -3092,7 +3121,7 @@ type CreateCloudNativeAPIGatewayMCPServerRequest struct {
 	// <p>传输协议：StreamableHttp或SSE</p><p>枚举值：</p><ul><li>StreamableHttp： Streamable HTTP</li><li>SSE： Server-Sent Events</li></ul>
 	Transport *string `json:"Transport,omitnil,omitempty" name:"Transport"`
 
-	// <p>后端类型</p><p>枚举值：</p><ul><li>MCPRegistry： mcp 注册中心- Registry</li><li>Registry： 普通注册中心</li><li>HostIP： 域名或ip</li><li>VirtualMCPServer： 虚拟MCPServer</li></ul>
+	// <p>后端类型</p><p>枚举值：</p><ul><li>MCPRegistry： mcp 注册中心</li><li>Registry： 普通注册中心</li><li>HostIP： 域名或ip</li><li>VirtualMCPServer： 虚拟MCPServer</li><li>DNS： 私有域名</li><li>Kubernetes： Kubernetes服务</li></ul>
 	UpstreamType *string `json:"UpstreamType,omitnil,omitempty" name:"UpstreamType"`
 
 	// <p>注册中心来源信息</p>
@@ -3118,6 +3147,9 @@ type CreateCloudNativeAPIGatewayMCPServerRequest struct {
 
 	// <p>是否开启保留原Host功能</p>
 	PreserveHost *bool `json:"PreserveHost,omitnil,omitempty" name:"PreserveHost"`
+
+	// <p>日志采集配置</p>
+	LogConfig *AIGWLogConfig `json:"LogConfig,omitnil,omitempty" name:"LogConfig"`
 }
 
 func (r *CreateCloudNativeAPIGatewayMCPServerRequest) ToJsonString() string {
@@ -3146,6 +3178,7 @@ func (r *CreateCloudNativeAPIGatewayMCPServerRequest) FromJsonString(s string) e
 	delete(f, "EnableHealthCheck")
 	delete(f, "HealthCheck")
 	delete(f, "PreserveHost")
+	delete(f, "LogConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCloudNativeAPIGatewayMCPServerRequest has unknown keys!", "")
 	}
@@ -4188,6 +4221,9 @@ type DescribeCloudNativeAPIGatewayAIQuotaListRequestParams struct {
 	// <p>每页数量</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
+	// <p>关键字</p>
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+
 	// <p>过滤条件</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
@@ -4206,6 +4242,9 @@ type DescribeCloudNativeAPIGatewayAIQuotaListRequest struct {
 
 	// <p>每页数量</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>关键字</p>
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
 
 	// <p>过滤条件</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
@@ -4229,6 +4268,7 @@ func (r *DescribeCloudNativeAPIGatewayAIQuotaListRequest) FromJsonString(s strin
 	delete(f, "GatewayId")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "Keyword")
 	delete(f, "Filters")
 	delete(f, "AlarmLevels")
 	if len(f) > 0 {
@@ -4328,27 +4368,39 @@ func (r *DescribeCloudNativeAPIGatewayAIQuotaResponse) FromJsonString(s string) 
 
 // Predefined struct for user
 type DescribeCloudNativeAPIGatewayAIServiceSourceListRequestParams struct {
-	// 实例 ID
+	// <p>实例 ID</p>
 	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
 
-	// 分页大小
+	// <p>分页大小</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页偏移
+	// <p>分页偏移</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>搜索关键词</p>
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+
+	// <p>过滤条件</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeCloudNativeAPIGatewayAIServiceSourceListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID
+	// <p>实例 ID</p>
 	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
 
-	// 分页大小
+	// <p>分页大小</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页偏移
+	// <p>分页偏移</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>搜索关键词</p>
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+
+	// <p>过滤条件</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 func (r *DescribeCloudNativeAPIGatewayAIServiceSourceListRequest) ToJsonString() string {
@@ -4366,6 +4418,8 @@ func (r *DescribeCloudNativeAPIGatewayAIServiceSourceListRequest) FromJsonString
 	delete(f, "GatewayId")
 	delete(f, "Limit")
 	delete(f, "Offset")
+	delete(f, "Keyword")
+	delete(f, "Filters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCloudNativeAPIGatewayAIServiceSourceListRequest has unknown keys!", "")
 	}
@@ -4374,7 +4428,7 @@ func (r *DescribeCloudNativeAPIGatewayAIServiceSourceListRequest) FromJsonString
 
 // Predefined struct for user
 type DescribeCloudNativeAPIGatewayAIServiceSourceListResponseParams struct {
-	// MCP Server 列表结果
+	// <p>MCP Server 列表结果</p>
 	Result *CNAPIGwAIServiceSourceList `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5924,8 +5978,20 @@ type DescribeCloudNativeAPIGatewaySecretKeyListRequestParams struct {
 	// <p>起始位置，从 0 开始。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
+	// <p>过滤条件。支持的 Name：Status / GenerateType / SecretType。</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>模糊匹配密钥名称。</p>
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+
+	// <p>对应资源的 ID（消费者 ID 或模型服务 ID）。</p>
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
 	// <p>密钥归属资源类型。UseToBind=true 时必填。</p><p>枚举值：</p><ul><li>Consumer：消费者</li><li>ModelService：模型服务</li></ul>
 	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// <p>是否用于绑定场景。true 时返回可被绑定到指定资源的密钥。</p>
+	UseToBind *bool `json:"UseToBind,omitnil,omitempty" name:"UseToBind"`
 }
 
 type DescribeCloudNativeAPIGatewaySecretKeyListRequest struct {
@@ -5940,8 +6006,20 @@ type DescribeCloudNativeAPIGatewaySecretKeyListRequest struct {
 	// <p>起始位置，从 0 开始。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
+	// <p>过滤条件。支持的 Name：Status / GenerateType / SecretType。</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>模糊匹配密钥名称。</p>
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+
+	// <p>对应资源的 ID（消费者 ID 或模型服务 ID）。</p>
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
 	// <p>密钥归属资源类型。UseToBind=true 时必填。</p><p>枚举值：</p><ul><li>Consumer：消费者</li><li>ModelService：模型服务</li></ul>
 	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// <p>是否用于绑定场景。true 时返回可被绑定到指定资源的密钥。</p>
+	UseToBind *bool `json:"UseToBind,omitnil,omitempty" name:"UseToBind"`
 }
 
 func (r *DescribeCloudNativeAPIGatewaySecretKeyListRequest) ToJsonString() string {
@@ -5959,7 +6037,11 @@ func (r *DescribeCloudNativeAPIGatewaySecretKeyListRequest) FromJsonString(s str
 	delete(f, "GatewayId")
 	delete(f, "Limit")
 	delete(f, "Offset")
+	delete(f, "Filters")
+	delete(f, "Keyword")
+	delete(f, "ResourceId")
 	delete(f, "ResourceType")
+	delete(f, "UseToBind")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCloudNativeAPIGatewaySecretKeyListRequest has unknown keys!", "")
 	}
@@ -6062,6 +6144,9 @@ type DescribeCloudNativeAPIGatewaySecretKeyValueRequestParams struct {
 
 	// 密钥id
 	SecretKeyId *string `json:"SecretKeyId,omitnil,omitempty" name:"SecretKeyId"`
+
+	// 指定从 AKSK 或 CAM 成对凭证中返回哪一半。取值：AccessKey（AKSK 返回 AccessKeyId，CAM 返回 SecretId）、SecretKey（AKSK 返回 SecretAccessKey，CAM 返回 SecretKey）。不传则保持原行为，仅返回 AccessKeyId 或 SecretId。
+	SecretValueType *string `json:"SecretValueType,omitnil,omitempty" name:"SecretValueType"`
 }
 
 type DescribeCloudNativeAPIGatewaySecretKeyValueRequest struct {
@@ -6072,6 +6157,9 @@ type DescribeCloudNativeAPIGatewaySecretKeyValueRequest struct {
 
 	// 密钥id
 	SecretKeyId *string `json:"SecretKeyId,omitnil,omitempty" name:"SecretKeyId"`
+
+	// 指定从 AKSK 或 CAM 成对凭证中返回哪一半。取值：AccessKey（AKSK 返回 AccessKeyId，CAM 返回 SecretId）、SecretKey（AKSK 返回 SecretAccessKey，CAM 返回 SecretKey）。不传则保持原行为，仅返回 AccessKeyId 或 SecretId。
+	SecretValueType *string `json:"SecretValueType,omitnil,omitempty" name:"SecretValueType"`
 }
 
 func (r *DescribeCloudNativeAPIGatewaySecretKeyValueRequest) ToJsonString() string {
@@ -6088,6 +6176,7 @@ func (r *DescribeCloudNativeAPIGatewaySecretKeyValueRequest) FromJsonString(s st
 	}
 	delete(f, "GatewayId")
 	delete(f, "SecretKeyId")
+	delete(f, "SecretValueType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCloudNativeAPIGatewaySecretKeyValueRequest has unknown keys!", "")
 	}
@@ -7417,7 +7506,7 @@ type ModifyCloudNativeAPIGatewayMCPServerRequestParams struct {
 	// <p>服务 id</p>
 	ServerId *string `json:"ServerId,omitnil,omitempty" name:"ServerId"`
 
-	// <p>后端类型</p><p>枚举值：</p><ul><li>HostIP： 域名 ip</li><li>MCPRegistry： MCP 注册中心</li><li>VirtualMCPServer： 虚拟MCP 服务</li></ul>
+	// <p>后端类型</p><p>枚举值：</p><ul><li>MCPRegistry： mcp 注册中心</li><li>Registry： 普通注册中心</li><li>HostIP： 域名或ip</li><li>VirtualMCPServer： 虚拟MCPServer</li><li>DNS： 私有域名</li><li>Kubernetes： Kubernetes服务</li></ul>
 	UpstreamType *string `json:"UpstreamType,omitnil,omitempty" name:"UpstreamType"`
 
 	// <p>超时时间，单位ms，最大60000</p>
@@ -7443,6 +7532,9 @@ type ModifyCloudNativeAPIGatewayMCPServerRequestParams struct {
 
 	// <p>是否开启保留原Host功能</p>
 	PreserveHost *bool `json:"PreserveHost,omitnil,omitempty" name:"PreserveHost"`
+
+	// <p>日志配置</p>
+	LogConfig *AIGWLogConfig `json:"LogConfig,omitnil,omitempty" name:"LogConfig"`
 }
 
 type ModifyCloudNativeAPIGatewayMCPServerRequest struct {
@@ -7457,7 +7549,7 @@ type ModifyCloudNativeAPIGatewayMCPServerRequest struct {
 	// <p>服务 id</p>
 	ServerId *string `json:"ServerId,omitnil,omitempty" name:"ServerId"`
 
-	// <p>后端类型</p><p>枚举值：</p><ul><li>HostIP： 域名 ip</li><li>MCPRegistry： MCP 注册中心</li><li>VirtualMCPServer： 虚拟MCP 服务</li></ul>
+	// <p>后端类型</p><p>枚举值：</p><ul><li>MCPRegistry： mcp 注册中心</li><li>Registry： 普通注册中心</li><li>HostIP： 域名或ip</li><li>VirtualMCPServer： 虚拟MCPServer</li><li>DNS： 私有域名</li><li>Kubernetes： Kubernetes服务</li></ul>
 	UpstreamType *string `json:"UpstreamType,omitnil,omitempty" name:"UpstreamType"`
 
 	// <p>超时时间，单位ms，最大60000</p>
@@ -7483,6 +7575,9 @@ type ModifyCloudNativeAPIGatewayMCPServerRequest struct {
 
 	// <p>是否开启保留原Host功能</p>
 	PreserveHost *bool `json:"PreserveHost,omitnil,omitempty" name:"PreserveHost"`
+
+	// <p>日志配置</p>
+	LogConfig *AIGWLogConfig `json:"LogConfig,omitnil,omitempty" name:"LogConfig"`
 }
 
 func (r *ModifyCloudNativeAPIGatewayMCPServerRequest) ToJsonString() string {
@@ -7509,6 +7604,7 @@ func (r *ModifyCloudNativeAPIGatewayMCPServerRequest) FromJsonString(s string) e
 	delete(f, "EnableHealthCheck")
 	delete(f, "HealthCheck")
 	delete(f, "PreserveHost")
+	delete(f, "LogConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCloudNativeAPIGatewayMCPServerRequest has unknown keys!", "")
 	}

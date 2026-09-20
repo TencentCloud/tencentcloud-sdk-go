@@ -1269,20 +1269,20 @@ func (r *DescribeLiveVipTradeInfosResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeUserInfoRequestParams struct {
-	// 应用名称。
+	// <p>应用名称。</p>
 	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
-	// 用户标识。
+	// <p>用户标识。</p>
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 }
 
 type DescribeUserInfoRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用名称。
+	// <p>应用名称。</p>
 	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
-	// 用户标识。
+	// <p>用户标识。</p>
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 }
 
@@ -1308,7 +1308,7 @@ func (r *DescribeUserInfoRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeUserInfoResponseParams struct {
-	// 用户信息。
+	// <p>用户信息。</p>
 	UserInfo *UserInfo `json:"UserInfo,omitnil,omitempty" name:"UserInfo"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1525,33 +1525,29 @@ type KTVMatchRuleMusicInfo struct {
 }
 
 type KTVMusicBaseInfo struct {
-	// 歌曲Id。
+	// <p>歌曲Id。</p>
 	MusicId *string `json:"MusicId,omitnil,omitempty" name:"MusicId"`
 
-	// 歌曲名称。
+	// <p>歌曲名称。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 歌手名称。
+	// <p>歌手名称。</p>
 	SingerSet []*string `json:"SingerSet,omitnil,omitempty" name:"SingerSet"`
 
-	// 播放时长。
+	// <p>播放时长。</p><p>单位：秒</p>
 	Duration *int64 `json:"Duration,omitnil,omitempty" name:"Duration"`
 
-	// 歌手图片链接。
+	// <p>歌手图片链接。</p>
 	SingerImageUrl *string `json:"SingerImageUrl,omitnil,omitempty" name:"SingerImageUrl"`
 
-	// 专辑信息。
+	// <p>专辑信息。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AlbumInfo *MusicAlbumInfo `json:"AlbumInfo,omitnil,omitempty" name:"AlbumInfo"`
 
-	// 权益列表，取值有：
-	// <li>Play：可播；</li>
-	// <li>Sing：可唱。</li>
+	// <p>权益列表，取值有：</p><li>Play：可播；</li><li>Sing：可唱。</li>
 	RightSet []*string `json:"RightSet,omitnil,omitempty" name:"RightSet"`
 
-	// 推荐类型，取值有：
-	// <li>Featured：精选；</li>
-	// <li>Other：其他。</li>
+	// <p>推荐类型，取值有：</p><li>Featured：精选；</li><li>Other：其他。</li>
 	RecommendType *string `json:"RecommendType,omitnil,omitempty" name:"RecommendType"`
 }
 

@@ -25664,10 +25664,10 @@ type JobStatusHistory struct {
 }
 
 type KVPair struct {
-	// <p>配置的key值</p>
+	// 配置的key值
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
-	// <p>配置的value值</p>
+	// 配置的value值
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 

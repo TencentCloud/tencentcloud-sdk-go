@@ -4093,60 +4093,50 @@ func (r *CreateL7AccRulesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateLoadBalancerRequestParams struct {
-	// 站点 ID。
+	// <p>站点 ID。</p>
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 实例名称，可输入 1-200 个字符，允许字符为 a-z，A-Z，0-9，_，-。
+	// <p>实例名称，可输入 1-200 个字符，允许字符为 a-z，A-Z，0-9，_，-。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 实例类型，取值有：
-	// <li>HTTP：HTTP 专用型，支持添加 HTTP 专用型和通用型源站组，仅支持被站点加速相关服务引用（如域名服务和规则引擎）；</li>
-	// <li>GENERAL：通用型，仅支持添加通用型源站组，能被站点加速服务（如域名服务和规则引擎）和四层代理引用。</li>
+	// <p>实例类型，取值有：</p><li>HTTP_V2：HTTP 专用型（V2），支持添加 HTTP 专用型和通用型源站组，仅支持被站点加速相关服务引用（如域名服务和规则引擎）。该实例类型支持选择发起探测的区域，可显著降低探测请求量但对源站的健康感知灵敏度更低；</li><li>HTTP：HTTP 专用型（V1），支持添加 HTTP 专用型和通用型源站组，仅支持被站点加速相关服务引用（如域名服务和规则引擎）。该实例类型不支持选择发起探测的区域，探测请求量较大但对源站的健康感知灵敏度更高；</li><li>GENERAL：通用型，仅支持添加通用型源站组，能被站点加速服务（如域名服务和规则引擎）和四层代理引用。该实例类型不支持选择发起探测的区域，探测请求量较大但对源站的健康感知灵敏度更高。</li>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 源站组列表及其对应的容灾调度优先级。详情请参考 [快速创建负载均衡实例](https://cloud.tencent.com/document/product/1552/104223) 中的示例场景。
+	// <p>源站组列表及其对应的容灾调度优先级。详情请参考 <a href="https://cloud.tencent.com/document/product/1552/104223">快速创建负载均衡实例</a> 中的示例场景。</p>
 	OriginGroups []*OriginGroupInLoadBalancer `json:"OriginGroups,omitnil,omitempty" name:"OriginGroups"`
 
-	// 健康检查策略。详情请参考 [健康检查策略介绍](https://cloud.tencent.com/document/product/1552/104228)。不填写时，默认为不启用健康检查。
+	// <p>健康检查策略。详情请参考 <a href="https://cloud.tencent.com/document/product/1552/104228">健康检查策略介绍</a>。不填写时，默认为不启用健康检查。</p>
 	HealthChecker *HealthChecker `json:"HealthChecker,omitnil,omitempty" name:"HealthChecker"`
 
-	// 源站组间的流量调度策略，取值有：
-	// <li>Pritory：按优先级顺序进行故障转移。</li>默认值为 Pritory。
+	// <p>源站组间的流量调度策略，取值有：</p><li>Pritory：按优先级顺序进行故障转移。</li>默认值为 Pritory。
 	SteeringPolicy *string `json:"SteeringPolicy,omitnil,omitempty" name:"SteeringPolicy"`
 
-	// 实际访问某源站失败时的请求重试策略，详情请参考 [请求重试策略介绍](https://cloud.tencent.com/document/product/1552/104227)，取值有：
-	// <li>OtherOriginGroup：单次请求失败后，请求优先重试下一优先级源站组；</li>
-	// <li>OtherRecordInOriginGroup：单次请求失败后，请求优先重试同源站组内的其他源站。</li>默认值为 OtherRecordInOriginGroup。
+	// <p>实际访问某源站失败时的请求重试策略，详情请参考 <a href="https://cloud.tencent.com/document/product/1552/104227">请求重试策略介绍</a>，取值有：</p><li>OtherOriginGroup：单次请求失败后，请求优先重试下一优先级源站组；</li><li>OtherRecordInOriginGroup：单次请求失败后，请求优先重试同源站组内的其他源站。</li>默认值为 OtherRecordInOriginGroup。
 	FailoverPolicy *string `json:"FailoverPolicy,omitnil,omitempty" name:"FailoverPolicy"`
 }
 
 type CreateLoadBalancerRequest struct {
 	*tchttp.BaseRequest
 	
-	// 站点 ID。
+	// <p>站点 ID。</p>
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 实例名称，可输入 1-200 个字符，允许字符为 a-z，A-Z，0-9，_，-。
+	// <p>实例名称，可输入 1-200 个字符，允许字符为 a-z，A-Z，0-9，_，-。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 实例类型，取值有：
-	// <li>HTTP：HTTP 专用型，支持添加 HTTP 专用型和通用型源站组，仅支持被站点加速相关服务引用（如域名服务和规则引擎）；</li>
-	// <li>GENERAL：通用型，仅支持添加通用型源站组，能被站点加速服务（如域名服务和规则引擎）和四层代理引用。</li>
+	// <p>实例类型，取值有：</p><li>HTTP_V2：HTTP 专用型（V2），支持添加 HTTP 专用型和通用型源站组，仅支持被站点加速相关服务引用（如域名服务和规则引擎）。该实例类型支持选择发起探测的区域，可显著降低探测请求量但对源站的健康感知灵敏度更低；</li><li>HTTP：HTTP 专用型（V1），支持添加 HTTP 专用型和通用型源站组，仅支持被站点加速相关服务引用（如域名服务和规则引擎）。该实例类型不支持选择发起探测的区域，探测请求量较大但对源站的健康感知灵敏度更高；</li><li>GENERAL：通用型，仅支持添加通用型源站组，能被站点加速服务（如域名服务和规则引擎）和四层代理引用。该实例类型不支持选择发起探测的区域，探测请求量较大但对源站的健康感知灵敏度更高。</li>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 源站组列表及其对应的容灾调度优先级。详情请参考 [快速创建负载均衡实例](https://cloud.tencent.com/document/product/1552/104223) 中的示例场景。
+	// <p>源站组列表及其对应的容灾调度优先级。详情请参考 <a href="https://cloud.tencent.com/document/product/1552/104223">快速创建负载均衡实例</a> 中的示例场景。</p>
 	OriginGroups []*OriginGroupInLoadBalancer `json:"OriginGroups,omitnil,omitempty" name:"OriginGroups"`
 
-	// 健康检查策略。详情请参考 [健康检查策略介绍](https://cloud.tencent.com/document/product/1552/104228)。不填写时，默认为不启用健康检查。
+	// <p>健康检查策略。详情请参考 <a href="https://cloud.tencent.com/document/product/1552/104228">健康检查策略介绍</a>。不填写时，默认为不启用健康检查。</p>
 	HealthChecker *HealthChecker `json:"HealthChecker,omitnil,omitempty" name:"HealthChecker"`
 
-	// 源站组间的流量调度策略，取值有：
-	// <li>Pritory：按优先级顺序进行故障转移。</li>默认值为 Pritory。
+	// <p>源站组间的流量调度策略，取值有：</p><li>Pritory：按优先级顺序进行故障转移。</li>默认值为 Pritory。
 	SteeringPolicy *string `json:"SteeringPolicy,omitnil,omitempty" name:"SteeringPolicy"`
 
-	// 实际访问某源站失败时的请求重试策略，详情请参考 [请求重试策略介绍](https://cloud.tencent.com/document/product/1552/104227)，取值有：
-	// <li>OtherOriginGroup：单次请求失败后，请求优先重试下一优先级源站组；</li>
-	// <li>OtherRecordInOriginGroup：单次请求失败后，请求优先重试同源站组内的其他源站。</li>默认值为 OtherRecordInOriginGroup。
+	// <p>实际访问某源站失败时的请求重试策略，详情请参考 <a href="https://cloud.tencent.com/document/product/1552/104227">请求重试策略介绍</a>，取值有：</p><li>OtherOriginGroup：单次请求失败后，请求优先重试下一优先级源站组；</li><li>OtherRecordInOriginGroup：单次请求失败后，请求优先重试同源站组内的其他源站。</li>默认值为 OtherRecordInOriginGroup。
 	FailoverPolicy *string `json:"FailoverPolicy,omitnil,omitempty" name:"FailoverPolicy"`
 }
 
@@ -4177,7 +4167,7 @@ func (r *CreateLoadBalancerRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateLoadBalancerResponseParams struct {
-	// 负载均衡实例 ID。
+	// <p>负载均衡实例 ID。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8694,6 +8684,87 @@ func (r *DescribeAvailableCustomActionsForRuleEngineResponse) ToJsonString() str
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAvailableCustomActionsForRuleEngineResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAvailableOriginACLFamilyRequestParams struct {
+	// <p>站点ID。</p>
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// <p>过滤条件，Filters.Values 的上限为 20。该参数不填写时，返回当前站点下所有可用版本。源站防护的 IP 段控制域包含标准控制域和精简控制域。标准控制域和精简控制域主要区别在于提供的回源 IP 网段数量差异，后者数量更少,但是使用上有限制，如需使用请联系技术支持。具体取值说明如下：<br>详细的过滤条件如下：<br>OriginACLFamily：按照控制域进行过滤；</p><li>gaz：标准全球可用区控制域；</li><li>mlc：标准中国大陆可用区控制域；</li><li>emc：标准全球(不含中国大陆)可用区控制域；</li><li>plat-gaz：精简全球可用区控制域；</li><li>plat-mlc：精简中国大陆可用区控制域；</li><li>plat-emc：精简全球(不含中国大陆)可用区控制域；</li><li>plat-specific-gaz：定制版控全球可用区制域；</li><li>plat-specific-mlc：定制版控中国大陆可用区控制域；</li><li>plat-specific-emc：定制版控全球（不含中国大陆）可用区控制域。</li>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>分页查询偏移量，默认为 0。</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>分页查询限制数目，默认值：20，最大值：100。</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeAvailableOriginACLFamilyRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>站点ID。</p>
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// <p>过滤条件，Filters.Values 的上限为 20。该参数不填写时，返回当前站点下所有可用版本。源站防护的 IP 段控制域包含标准控制域和精简控制域。标准控制域和精简控制域主要区别在于提供的回源 IP 网段数量差异，后者数量更少,但是使用上有限制，如需使用请联系技术支持。具体取值说明如下：<br>详细的过滤条件如下：<br>OriginACLFamily：按照控制域进行过滤；</p><li>gaz：标准全球可用区控制域；</li><li>mlc：标准中国大陆可用区控制域；</li><li>emc：标准全球(不含中国大陆)可用区控制域；</li><li>plat-gaz：精简全球可用区控制域；</li><li>plat-mlc：精简中国大陆可用区控制域；</li><li>plat-emc：精简全球(不含中国大陆)可用区控制域；</li><li>plat-specific-gaz：定制版控全球可用区制域；</li><li>plat-specific-mlc：定制版控中国大陆可用区控制域；</li><li>plat-specific-emc：定制版控全球（不含中国大陆）可用区控制域。</li>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>分页查询偏移量，默认为 0。</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>分页查询限制数目，默认值：20，最大值：100。</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeAvailableOriginACLFamilyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAvailableOriginACLFamilyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAvailableOriginACLFamilyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAvailableOriginACLFamilyResponseParams struct {
+	// <p>源站防护 IP 段详细信息总数。</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>回源 IP 网段详细信息列表。</p>
+	OriginACLFamilyInfos []*OriginACLFamilyInfo `json:"OriginACLFamilyInfos,omitnil,omitempty" name:"OriginACLFamilyInfos"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAvailableOriginACLFamilyResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAvailableOriginACLFamilyResponseParams `json:"Response"`
+}
+
+func (r *DescribeAvailableOriginACLFamilyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAvailableOriginACLFamilyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -17239,53 +17310,47 @@ type HeaderAction struct {
 }
 
 type HealthChecker struct {
-	// 健康检查策略，取值有：
-	// <li>HTTP；</li>
-	// <li>HTTPS；</li>
-	// <li>TCP；</li>
-	// <li>UDP；</li>
-	// <li>ICMP Ping；</li>
-	// <li>NoCheck。</li>
-	// 注意：NoCheck 表示不启用健康检查策略。
+	// <p>健康检查策略，取值有：</p><li>HTTP；</li><li>HTTPS；</li><li>TCP；</li><li>UDP；</li><li>ICMP Ping；</li><li>NoCheck。</li>注意：NoCheck 表示不启用健康检查策略。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 检查端口。当 Type=HTTP 或 Type=HTTPS 或 Type=TCP 或 Type=UDP 时为必填。
+	// <p>检查端口。当 Type=HTTP 或 Type=HTTPS 或 Type=TCP 或 Type=UDP 时为必填。</p>
 	Port *uint64 `json:"Port,omitnil,omitempty" name:"Port"`
 
-	// 检查频率，表示多久发起一次健康检查任务，单位为秒。可配置 10-600 秒。
+	// <p>检查频率，表示多久发起一次健康检查任务，单位为秒。可配置 10-600 秒。</p>
 	Interval *uint64 `json:"Interval,omitnil,omitempty" name:"Interval"`
 
-	// 每一次健康检查的超时时间，若健康检查消耗时间大于此值，则检查结果判定为“不健康”， 单位为秒，默认值为 5s，取值必须小于 Interval。
+	// <p>每一次健康检查的超时时间，若健康检查消耗时间大于此值，则检查结果判定为“不健康”， 单位为秒，默认值为 5s，取值必须小于 Interval。</p>
 	Timeout *uint64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
 
-	// 健康阈值，表示连续几次健康检查结果为"健康"，则判断源站为"健康"，单位为次，默认 3 次，最小取值 1 次。
+	// <p>健康阈值，表示连续几次健康检查结果为&quot;健康&quot;，则判断源站为&quot;健康&quot;，单位为次，默认 3 次，最小取值 1 次。</p>
 	HealthThreshold *uint64 `json:"HealthThreshold,omitnil,omitempty" name:"HealthThreshold"`
 
-	// 不健康阈值，表示连续几次健康检查结果为"不健康"，则判断源站为"不健康"，单位为次，默认 2 次。
+	// <p>不健康阈值，表示连续几次健康检查结果为&quot;不健康&quot;，则判断源站为&quot;不健康&quot;，单位为次，默认 2 次。</p>
 	CriticalThreshold *uint64 `json:"CriticalThreshold,omitnil,omitempty" name:"CriticalThreshold"`
 
-	// 该参数仅当 Type=HTTP 或 Type=HTTPS 时有效，表示探测路径，需要填写完整的 host/path，不包含协议部分，例如：www.example.com/test。
+	// <p>该参数仅当 Type=HTTP 或 Type=HTTPS 时有效，表示探测路径，需要填写完整的 host/path，不包含协议部分，例如：www.example.com/test。</p>
 	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 
-	// 该参数仅当 Type=HTTP 或 Type=HTTPS 时有效，表示请求方法，取值有：
-	// <li>GET；</li>
-	// <li>HEAD。</li>
+	// <p>该参数仅当 Type=HTTP 或 Type=HTTPS 时有效，表示请求方法，取值有：</p><li>GET；</li><li>HEAD。</li>
 	Method *string `json:"Method,omitnil,omitempty" name:"Method"`
 
-	// 该参数仅当 Type=HTTP 或 Type=HTTPS 时有效，表示探测节点向源站发起健康检查时，响应哪些状态码可用于认定探测结果为健康。
+	// <p>该参数仅当 Type=HTTP 或 Type=HTTPS 时有效，表示探测节点向源站发起健康检查时，响应哪些状态码可用于认定探测结果为健康。</p>
 	ExpectedCodes []*string `json:"ExpectedCodes,omitnil,omitempty" name:"ExpectedCodes"`
 
-	// 该参数仅当 Type=HTTP 或 Type=HTTPS 时有效，表示探测请求携带的自定义  HTTP 请求头，至多可配置 10 个。
+	// <p>该参数仅当 Type=HTTP 或 Type=HTTPS 时有效，表示探测请求携带的自定义  HTTP 请求头，至多可配置 10 个。</p>
 	Headers []*CustomizedHeader `json:"Headers,omitnil,omitempty" name:"Headers"`
 
-	// 该参数仅当 Type=HTTP 或 Type=HTTPS 时有效，表示是否启用遵循 301/302 重定向。启用后，301/302 默认为"健康"的状态码，默认跳转 3 次。
+	// <p>该参数仅当 Type=HTTP 或 Type=HTTPS 时有效，表示是否启用遵循 301/302 重定向。启用后，301/302 默认为&quot;健康&quot;的状态码，默认跳转 3 次。</p>
 	FollowRedirect *string `json:"FollowRedirect,omitnil,omitempty" name:"FollowRedirect"`
 
-	// 该参数仅当 Type=UDP 时有效，表示健康检查发送的内容。只允许 ASCII 可见字符，最大长度限制 500 个字符。
+	// <p>该参数仅当 Type=UDP 时有效，表示健康检查发送的内容。只允许 ASCII 可见字符，最大长度限制 500 个字符。</p>
 	SendContext *string `json:"SendContext,omitnil,omitempty" name:"SendContext"`
 
-	// 该参数仅当 Type=UDP 时有效，表示健康检查期望源站返回结果。只允许 ASCII 可见字符，最大长度限制 500 个字符。
+	// <p>该参数仅当 Type=UDP 时有效，表示健康检查期望源站返回结果。只允许 ASCII 可见字符，最大长度限制 500 个字符。</p>
 	RecvContext *string `json:"RecvContext,omitnil,omitempty" name:"RecvContext"`
+
+	// <p>健康检查探测集群。指定本负载均衡实例发起健康探测的集群区域范围，探测集群地区分布详见<a href="https://cloud.tencent.com/document/product/1552/104228">健康检查策略介绍</a>，仅 HTTP 专用型（V2）版本负载均衡实例支持设置。取值有：<br>global：由全球所有区域的探测集群发起探测，包括中国大陆区域以及非中国大陆区域，各个区域的集群独立维护各自的探测结果；<br>mainland_china：仅由中国大陆区域的探测集群发起探测，当前中国大陆区域共用一个探测集群，探测结果由中国大陆区域的探测集群维护，其他区域跟随中国大陆区域的集群的探测结果；<br>overseas：仅由非中国大陆区域的探测集群发起探测，当前非中国大陆区域包含多个地区的探测集群，探测结果由各个地区的探测集群独立维护，中国大陆区域的探测结果由所有其他地区的探测集群的探测结果汇总生成。<br>默认为 global。</p>
+	ProbeCluster *string `json:"ProbeCluster,omitnil,omitempty" name:"ProbeCluster"`
 }
 
 type HostHeaderParameters struct {
@@ -18502,45 +18567,37 @@ type L7OfflineLog struct {
 }
 
 type LoadBalancer struct {
-	// 实例 ID。
+	// <p>实例 ID。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 实例名称，可输入 1-200 个字符，允许字符为 a-z，A-Z，0-9，_，-。	
+	// <p>实例名称，可输入 1-200 个字符，允许字符为 a-z，A-Z，0-9，_，-。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 实例类型，取值有：
-	// <li>HTTP：HTTP 专用型，支持添加 HTTP 专用型和通用型源站组，仅支持被站点加速相关服务引用（如域名服务和规则引擎）；</li>
-	// <li>GENERAL：通用型，仅支持添加通用型源站组，能被站点加速服务（如域名服务和规则引擎）和四层代理引用。</li>
+	// <p>实例类型，取值有：</p><li>HTTP_V2：HTTP 专用型（V2），支持添加 HTTP 专用型和通用型源站组，仅支持被站点加速相关服务引用（如域名服务和规则引擎）。该实例类型支持选择发起探测的区域，可显著降低探测请求量但对源站的健康感知灵敏度更低；</li><li>HTTP：HTTP 专用型（V1），支持添加 HTTP 专用型和通用型源站组，仅支持被站点加速相关服务引用（如域名服务和规则引擎）。该实例类型不支持选择发起探测的区域，探测请求量较大但对源站的健康感知灵敏度更高；</li><li>GENERAL：通用型，仅支持添加通用型源站组，能被站点加速服务（如域名服务和规则引擎）和四层代理引用。该实例类型不支持选择发起探测的区域，探测请求量较大但对源站的健康感知灵敏度更高。</li>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 健康检查策略。详情请参考 [健康检查策略介绍](https://cloud.tencent.com/document/product/1552/104228)。
+	// <p>健康检查策略。详情请参考 <a href="https://cloud.tencent.com/document/product/1552/104228">健康检查策略介绍</a>。</p>
 	HealthChecker *HealthChecker `json:"HealthChecker,omitnil,omitempty" name:"HealthChecker"`
 
-	// 源站组间的流量调度策略，取值有：
-	// <li>Pritory：按优先级顺序进行故障转移 。</li>
+	// <p>源站组间的流量调度策略，取值有：</p><li>Pritory：按优先级顺序进行故障转移 。</li>
 	SteeringPolicy *string `json:"SteeringPolicy,omitnil,omitempty" name:"SteeringPolicy"`
 
-	// 实际访问某源站失败时的请求重试策略，详情请参考 [请求重试策略介绍](https://cloud.tencent.com/document/product/1552/104227)，取值有：
-	// <li>OtherOriginGroup：单次请求失败后，请求优先重试下一优先级源站组；</li>
-	// <li>OtherRecordInOriginGroup：单次请求失败后，请求优先重试同源站组内的其他源站。</li>
+	// <p>实际访问某源站失败时的请求重试策略，详情请参考 <a href="https://cloud.tencent.com/document/product/1552/104227">请求重试策略介绍</a>，取值有：</p><li>OtherOriginGroup：单次请求失败后，请求优先重试下一优先级源站组；</li><li>OtherRecordInOriginGroup：单次请求失败后，请求优先重试同源站组内的其他源站。</li>
 	FailoverPolicy *string `json:"FailoverPolicy,omitnil,omitempty" name:"FailoverPolicy"`
 
-	// 源站组健康状态。
+	// <p>源站组健康状态。</p>
 	OriginGroupHealthStatus []*OriginGroupHealthStatus `json:"OriginGroupHealthStatus,omitnil,omitempty" name:"OriginGroupHealthStatus"`
 
-	// 负载均衡状态，取值有：
-	// <li>Pending：部署中；</li>
-	// <li>Deleting：删除中；</li>
-	// <li>Running：已生效。</li>
+	// <p>负载均衡状态，取值有：</p><li>Pending：部署中；</li><li>Deleting：删除中；</li><li>Running：已生效。</li>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 该负载均衡实例绑的四层代理实例的列表。
+	// <p>该负载均衡实例绑的四层代理实例的列表。</p>
 	L4UsedList []*string `json:"L4UsedList,omitnil,omitempty" name:"L4UsedList"`
 
-	// 该负载均衡实例绑定的七层域名列表。
+	// <p>该负载均衡实例绑定的七层域名列表。</p>
 	L7UsedList []*string `json:"L7UsedList,omitnil,omitempty" name:"L7UsedList"`
 
-	// 负载均衡被引用实例的列表。
+	// <p>负载均衡被引用实例的列表。</p>
 	References []*OriginGroupReference `json:"References,omitnil,omitempty" name:"References"`
 }
 
@@ -23419,6 +23476,39 @@ type OriginACLEntity struct {
 	// <li>enable：启用；</li>
 	// <li>disable：停用。</li>
 	OperationMode *string `json:"OperationMode,omitnil,omitempty" name:"OperationMode"`
+}
+
+type OriginACLFamilyInfo struct {
+	// 源站防护版本号。
+	// 格式说明：
+	// 标准版本：
+	// <li>gaz-xxxxx：全球；</li>
+	// <li>mlc-xxxxx：中国；</li>
+	// <li>emc-xxxxx：海外(全球不含中国)；</li>
+	// 精简版(平台级版本)：
+	// <li>plat-gaz-xxxxxx：精简全球版；</li>
+	// <li>plat-mlc-xxxxxx：精简中国版；</li>
+	// <li>plat-emc-xxxxxx：精简海外(全球不含中国)版；</li>
+	// 缩写说明：
+	// <li>gaz：Global AZ Availability Zone;</li>
+	// <li>mlc：mainlandChina;</li>
+	// <li>emc：Exclude mainlandChina.</li>
+	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
+
+	// 版本生效时间，时间是北京时间 UTC+8， 遵循 ISO 8601 标准的日期和时间格式。
+	ActiveTime *string `json:"ActiveTime,omitnil,omitempty" name:"ActiveTime"`
+
+	// 回源 IP 网段详情。	
+	EntireAddresses *Addresses `json:"EntireAddresses,omitnil,omitempty" name:"EntireAddresses"`
+
+	// 源站防护回源ACL控制域。取值说明如下：
+	// <li>gaz：标准全球可用区控制域；</li>
+	// <li>mlc：标准中国大陆可用区控制域；</li>
+	// <li>emc：标准全球(不含中国大陆)可用区控制域；</li>
+	// <li>plat-gaz：精简全球可用区控制域；</li>
+	// <li>plat-mlc：精简中国大陆可用区控制域；</li>
+	// <li>plat-emc：精简全球(不含中国大陆)可用区控制域；</li>
+	OriginACLFamily *string `json:"OriginACLFamily,omitnil,omitempty" name:"OriginACLFamily"`
 }
 
 type OriginACLInfo struct {

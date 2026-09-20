@@ -158,7 +158,7 @@ type AgentApplicationInfo struct {
 	// <p>应用名称</p>
 	ApplicationName *string `json:"ApplicationName,omitnil,omitempty" name:"ApplicationName"`
 
-	// <p>接入类型</p><p>枚举值：</p><ul><li>Langfuse：  Langfuse​ 是一款开源的 LLM（大语言模型）工程与可观测性平台（LLMOps Tool）</li></ul>
+	// <p>接入类型</p><p>枚举值：</p><ul><li>Langfuse：  Langfuse 是一款开源的 LLM（大语言模型）工程与可观测性平台（LLMOps Tool）</li></ul>
 	AccessType *string `json:"AccessType,omitnil,omitempty" name:"AccessType"`
 
 	// <p>应用下资源所属地域</p><p>例如：ap-guangzhou</p>
@@ -175,6 +175,21 @@ type AgentApplicationInfo struct {
 
 	// <p>更新时间</p><p>单位：秒</p><p>秒级时间戳</p>
 	UpdateTime *uint64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// <p>日志集id</p>
+	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
+
+	// <p>服务方名称</p>
+	AssumerName *string `json:"AssumerName,omitnil,omitempty" name:"AssumerName"`
+
+	// <p>服务方子名称</p>
+	SubAssumerName *string `json:"SubAssumerName,omitnil,omitempty" name:"SubAssumerName"`
+
+	// <p>服务方Uin</p>
+	AssumerUin *uint64 `json:"AssumerUin,omitnil,omitempty" name:"AssumerUin"`
+
+	// <p>服务方使用的角色</p>
+	RoleName *string `json:"RoleName,omitnil,omitempty" name:"RoleName"`
 }
 
 type AgentTopicInfo struct {
@@ -1019,52 +1034,50 @@ func (r *CheckFunctionResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CheckRechargeKafkaServerRequestParams struct {
-	// 导入Kafka类型，0: 腾讯云CKafka；1: 用户自建Kafka。
+	// <p>导入Kafka类型，0: 腾讯云CKafka；1: 用户自建Kafka。</p>
 	KafkaType *uint64 `json:"KafkaType,omitnil,omitempty" name:"KafkaType"`
 
-	// 腾讯云CKafka实例ID。
-	// KafkaType为0时，KafkaInstance必填
-	// 
-	// - 通过 [获取实例列表信息](https://cloud.tencent.com/document/product/597/40835) 获取实例id。
+	// <p>腾讯云CKafka实例ID。<br>KafkaType为0时，KafkaInstance必填</p><ul><li>通过 <a href="https://cloud.tencent.com/document/product/597/40835">获取实例列表信息</a> 获取实例id。</li></ul>
 	KafkaInstance *string `json:"KafkaInstance,omitnil,omitempty" name:"KafkaInstance"`
 
-	// 服务地址。
-	// KafkaType为1时，ServerAddr必填
+	// <p>服务地址。<br>KafkaType为1时，ServerAddr必填</p>
 	ServerAddr *string `json:"ServerAddr,omitnil,omitempty" name:"ServerAddr"`
 
-	// ServerAddr是否为加密连接，默认值false。当KafkaType为1用户自建kafka时生效。
+	// <p>ServerAddr是否为加密连接，默认值false。当KafkaType为1用户自建kafka时生效。</p>
 	IsEncryptionAddr *bool `json:"IsEncryptionAddr,omitnil,omitempty" name:"IsEncryptionAddr"`
 
-	// 加密访问协议。KafkaType参数为1并且IsEncryptionAddr参数为true时必填。
+	// <p>加密访问协议。KafkaType参数为1并且IsEncryptionAddr参数为true时必填。</p>
 	Protocol *KafkaProtocolInfo `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
-	// 用户kafka拓展信息
+	// <p>网络信息参数</p>
+	NetworkInfo *NetworkInfo `json:"NetworkInfo,omitnil,omitempty" name:"NetworkInfo"`
+
+	// <p>用户kafka拓展信息</p>
 	UserKafkaMeta *UserKafkaMeta `json:"UserKafkaMeta,omitnil,omitempty" name:"UserKafkaMeta"`
 }
 
 type CheckRechargeKafkaServerRequest struct {
 	*tchttp.BaseRequest
 	
-	// 导入Kafka类型，0: 腾讯云CKafka；1: 用户自建Kafka。
+	// <p>导入Kafka类型，0: 腾讯云CKafka；1: 用户自建Kafka。</p>
 	KafkaType *uint64 `json:"KafkaType,omitnil,omitempty" name:"KafkaType"`
 
-	// 腾讯云CKafka实例ID。
-	// KafkaType为0时，KafkaInstance必填
-	// 
-	// - 通过 [获取实例列表信息](https://cloud.tencent.com/document/product/597/40835) 获取实例id。
+	// <p>腾讯云CKafka实例ID。<br>KafkaType为0时，KafkaInstance必填</p><ul><li>通过 <a href="https://cloud.tencent.com/document/product/597/40835">获取实例列表信息</a> 获取实例id。</li></ul>
 	KafkaInstance *string `json:"KafkaInstance,omitnil,omitempty" name:"KafkaInstance"`
 
-	// 服务地址。
-	// KafkaType为1时，ServerAddr必填
+	// <p>服务地址。<br>KafkaType为1时，ServerAddr必填</p>
 	ServerAddr *string `json:"ServerAddr,omitnil,omitempty" name:"ServerAddr"`
 
-	// ServerAddr是否为加密连接，默认值false。当KafkaType为1用户自建kafka时生效。
+	// <p>ServerAddr是否为加密连接，默认值false。当KafkaType为1用户自建kafka时生效。</p>
 	IsEncryptionAddr *bool `json:"IsEncryptionAddr,omitnil,omitempty" name:"IsEncryptionAddr"`
 
-	// 加密访问协议。KafkaType参数为1并且IsEncryptionAddr参数为true时必填。
+	// <p>加密访问协议。KafkaType参数为1并且IsEncryptionAddr参数为true时必填。</p>
 	Protocol *KafkaProtocolInfo `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
-	// 用户kafka拓展信息
+	// <p>网络信息参数</p>
+	NetworkInfo *NetworkInfo `json:"NetworkInfo,omitnil,omitempty" name:"NetworkInfo"`
+
+	// <p>用户kafka拓展信息</p>
 	UserKafkaMeta *UserKafkaMeta `json:"UserKafkaMeta,omitnil,omitempty" name:"UserKafkaMeta"`
 }
 
@@ -1085,6 +1098,7 @@ func (r *CheckRechargeKafkaServerRequest) FromJsonString(s string) error {
 	delete(f, "ServerAddr")
 	delete(f, "IsEncryptionAddr")
 	delete(f, "Protocol")
+	delete(f, "NetworkInfo")
 	delete(f, "UserKafkaMeta")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CheckRechargeKafkaServerRequest has unknown keys!", "")
@@ -1094,20 +1108,7 @@ func (r *CheckRechargeKafkaServerRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CheckRechargeKafkaServerResponseParams struct {
-	// Kafka集群可访问状态。
-	// 
-	// - 0：可正常访问 
-	// - -1：broker 连接失败
-	// - -2：sasl 鉴权失败
-	// - -3：ckafka 角色未授权
-	// - -4：topic 列表不存在
-	// - -5：topic 内暂无数据
-	// - -6：用户没有 ckafka 权限
-	// - -7：消费组已经存在
-	// - -8：kafka 实例不存在或已销毁
-	// - -9：Broker 列表为空
-	// - -10：Broker 地址格式不正确
-	// - -11：Broker 端口非整型
+	// <p>Kafka集群可访问状态。</p><ul><li>0：可正常访问 </li><li>-1：broker 连接失败</li><li>-2：sasl 鉴权失败</li><li>-3：ckafka 角色未授权</li><li>-4：topic 列表不存在</li><li>-5：topic 内暂无数据</li><li>-6：用户没有 ckafka 权限</li><li>-7：消费组已经存在</li><li>-8：kafka 实例不存在或已销毁</li><li>-9：Broker 列表为空</li><li>-10：Broker 地址格式不正确</li><li>-11：Broker 端口非整型</li></ul>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1263,6 +1264,9 @@ type CloudProductLogTaskInfo struct {
 
 	// <p>投递任务关联logset的标签信息</p>
 	LogsetTags []*Tag `json:"LogsetTags,omitnil,omitempty" name:"LogsetTags"`
+
+	// <p>应用id</p>
+	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 }
 
 type CollectConfig struct {
@@ -4646,90 +4650,86 @@ func (r *CreateIndexResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateKafkaRechargeRequestParams struct {
-	// 导入CLS目标TopicId。
-	// - 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
-	// - 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。
+	// <p>导入CLS目标TopicId。</p><ul><li>通过 <a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a> 获取日志主题Id。</li><li>通过 <a href="https://cloud.tencent.com/document/product/614/56456">创建日志主题</a> 获取日志主题Id。</li></ul>
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// Kafka导入配置名称
+	// <p>Kafka导入配置名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 导入Kafka类型，0: 腾讯云CKafka，1: 用户自建Kafka
+	// <p>导入Kafka类型，0: 腾讯云CKafka，1: 用户自建Kafka</p>
 	KafkaType *uint64 `json:"KafkaType,omitnil,omitempty" name:"KafkaType"`
 
-	// 用户需要导入的Kafka相关topic列表，多个topic之间使用半角逗号隔开
+	// <p>用户需要导入的Kafka相关topic列表，多个topic之间使用半角逗号隔开</p>
 	UserKafkaTopics *string `json:"UserKafkaTopics,omitnil,omitempty" name:"UserKafkaTopics"`
 
-	// 导入数据位置，-2:最早（默认），-1：最晚
+	// <p>导入数据位置，-2:最早（默认），-1：最晚</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 日志导入规则。
+	// <p>日志导入规则。</p>
 	LogRechargeRule *LogRechargeRuleInfo `json:"LogRechargeRule,omitnil,omitempty" name:"LogRechargeRule"`
 
-	// 腾讯云CKafka实例ID，KafkaType为0时必填。
-	// - 通过 [获取实例列表信息](https://cloud.tencent.com/document/product/597/40835) 获取实例id。
+	// <p>腾讯云CKafka实例ID，KafkaType为0时必填。</p><ul><li>通过 <a href="https://cloud.tencent.com/document/product/597/40835">获取实例列表信息</a> 获取实例id。</li></ul>
 	KafkaInstance *string `json:"KafkaInstance,omitnil,omitempty" name:"KafkaInstance"`
 
-	// 服务地址，KafkaType为1时必填。
+	// <p>服务地址，KafkaType为1时必填。</p>
 	ServerAddr *string `json:"ServerAddr,omitnil,omitempty" name:"ServerAddr"`
 
-	// ServerAddr是否为加密连接，KafkaType为1时必填。
+	// <p>ServerAddr是否为加密连接，KafkaType为1时必填。</p>
 	IsEncryptionAddr *bool `json:"IsEncryptionAddr,omitnil,omitempty" name:"IsEncryptionAddr"`
 
-	// 加密访问协议。
-	// KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
+	// <p>加密访问协议。<br>KafkaType为1并且IsEncryptionAddr为true时Protocol必填。</p>
 	Protocol *KafkaProtocolInfo `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
-	// 用户Kafka消费组名称。
-	// - 消费组是 Kafka 提供的可扩展且具有容错性的消费者机制，一个消费组中存在多个消费者，组内的所有消费者共同消费订阅 Topic 中的消息。一个消费者可同时消费多个 Partition，但一个 Partition 只能被消费组内的一个消费者消费。
+	// <p>用户Kafka消费组名称。</p><ul><li>消费组是 Kafka 提供的可扩展且具有容错性的消费者机制，一个消费组中存在多个消费者，组内的所有消费者共同消费订阅 Topic 中的消息。一个消费者可同时消费多个 Partition，但一个 Partition 只能被消费组内的一个消费者消费。</li></ul>
 	ConsumerGroupName *string `json:"ConsumerGroupName,omitnil,omitempty" name:"ConsumerGroupName"`
 
-	// 用户kafka拓展信息
+	// <p>网络信息参数</p>
+	NetworkInfo *NetworkInfo `json:"NetworkInfo,omitnil,omitempty" name:"NetworkInfo"`
+
+	// <p>用户kafka拓展信息</p>
 	UserKafkaMeta *UserKafkaMeta `json:"UserKafkaMeta,omitnil,omitempty" name:"UserKafkaMeta"`
 }
 
 type CreateKafkaRechargeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 导入CLS目标TopicId。
-	// - 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
-	// - 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。
+	// <p>导入CLS目标TopicId。</p><ul><li>通过 <a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a> 获取日志主题Id。</li><li>通过 <a href="https://cloud.tencent.com/document/product/614/56456">创建日志主题</a> 获取日志主题Id。</li></ul>
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// Kafka导入配置名称
+	// <p>Kafka导入配置名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 导入Kafka类型，0: 腾讯云CKafka，1: 用户自建Kafka
+	// <p>导入Kafka类型，0: 腾讯云CKafka，1: 用户自建Kafka</p>
 	KafkaType *uint64 `json:"KafkaType,omitnil,omitempty" name:"KafkaType"`
 
-	// 用户需要导入的Kafka相关topic列表，多个topic之间使用半角逗号隔开
+	// <p>用户需要导入的Kafka相关topic列表，多个topic之间使用半角逗号隔开</p>
 	UserKafkaTopics *string `json:"UserKafkaTopics,omitnil,omitempty" name:"UserKafkaTopics"`
 
-	// 导入数据位置，-2:最早（默认），-1：最晚
+	// <p>导入数据位置，-2:最早（默认），-1：最晚</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 日志导入规则。
+	// <p>日志导入规则。</p>
 	LogRechargeRule *LogRechargeRuleInfo `json:"LogRechargeRule,omitnil,omitempty" name:"LogRechargeRule"`
 
-	// 腾讯云CKafka实例ID，KafkaType为0时必填。
-	// - 通过 [获取实例列表信息](https://cloud.tencent.com/document/product/597/40835) 获取实例id。
+	// <p>腾讯云CKafka实例ID，KafkaType为0时必填。</p><ul><li>通过 <a href="https://cloud.tencent.com/document/product/597/40835">获取实例列表信息</a> 获取实例id。</li></ul>
 	KafkaInstance *string `json:"KafkaInstance,omitnil,omitempty" name:"KafkaInstance"`
 
-	// 服务地址，KafkaType为1时必填。
+	// <p>服务地址，KafkaType为1时必填。</p>
 	ServerAddr *string `json:"ServerAddr,omitnil,omitempty" name:"ServerAddr"`
 
-	// ServerAddr是否为加密连接，KafkaType为1时必填。
+	// <p>ServerAddr是否为加密连接，KafkaType为1时必填。</p>
 	IsEncryptionAddr *bool `json:"IsEncryptionAddr,omitnil,omitempty" name:"IsEncryptionAddr"`
 
-	// 加密访问协议。
-	// KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
+	// <p>加密访问协议。<br>KafkaType为1并且IsEncryptionAddr为true时Protocol必填。</p>
 	Protocol *KafkaProtocolInfo `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
-	// 用户Kafka消费组名称。
-	// - 消费组是 Kafka 提供的可扩展且具有容错性的消费者机制，一个消费组中存在多个消费者，组内的所有消费者共同消费订阅 Topic 中的消息。一个消费者可同时消费多个 Partition，但一个 Partition 只能被消费组内的一个消费者消费。
+	// <p>用户Kafka消费组名称。</p><ul><li>消费组是 Kafka 提供的可扩展且具有容错性的消费者机制，一个消费组中存在多个消费者，组内的所有消费者共同消费订阅 Topic 中的消息。一个消费者可同时消费多个 Partition，但一个 Partition 只能被消费组内的一个消费者消费。</li></ul>
 	ConsumerGroupName *string `json:"ConsumerGroupName,omitnil,omitempty" name:"ConsumerGroupName"`
 
-	// 用户kafka拓展信息
+	// <p>网络信息参数</p>
+	NetworkInfo *NetworkInfo `json:"NetworkInfo,omitnil,omitempty" name:"NetworkInfo"`
+
+	// <p>用户kafka拓展信息</p>
 	UserKafkaMeta *UserKafkaMeta `json:"UserKafkaMeta,omitnil,omitempty" name:"UserKafkaMeta"`
 }
 
@@ -4756,6 +4756,7 @@ func (r *CreateKafkaRechargeRequest) FromJsonString(s string) error {
 	delete(f, "IsEncryptionAddr")
 	delete(f, "Protocol")
 	delete(f, "ConsumerGroupName")
+	delete(f, "NetworkInfo")
 	delete(f, "UserKafkaMeta")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateKafkaRechargeRequest has unknown keys!", "")
@@ -4765,7 +4766,7 @@ func (r *CreateKafkaRechargeRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateKafkaRechargeResponseParams struct {
-	// Kafka导入配置ID
+	// <p>Kafka导入配置ID</p>
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -17601,81 +17602,81 @@ type KafkaConsumerContent struct {
 }
 
 type KafkaProtocolInfo struct {
-	// 协议类型，支持的协议类型包括 plaintext、sasl_plaintext 或 sasl_ssl。建议使用 sasl_ssl，此协议会进行连接加密同时需要用户认证。
-	// 
-	// - 当IsEncryptionAddr为true时，Protocol必填。
-	// - 支持的协议类型如下：
-	//     - plaintext：纯文本无加密协议
-	//     - sasl_ssl：SASL 认证 + SSL 加密
-	//     - ssl：纯 SSL/TLS 加密协议
-	//     - sasl_plaintext：SASL 认证 + 非加密通道
+	// <p>协议类型，支持的协议类型包括 plaintext、sasl_plaintext 或 sasl_ssl。建议使用 sasl_ssl，此协议会进行连接加密同时需要用户认证。</p><ul><li>当IsEncryptionAddr为true时，Protocol必填。</li><li>支持的协议类型如下：<ul><li>plaintext：纯文本无加密协议</li><li>sasl_ssl：SASL 认证 + SSL 加密</li><li>ssl：纯 SSL/TLS 加密协议</li><li>sasl_plaintext：SASL 认证 + 非加密通道</li></ul></li></ul>
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
-	// 加密类型，支持 PLAIN、SCRAM-SHA-256 或 SCRAM-SHA-512。
-	// 
-	// - 当Protocol为  `sasl_plaintext` 或 `sasl_ssl` 时 Mechanism 必填。
-	// - 支持加密类型如下
-	//     -  PLAIN：明文认证
-	//     -  SCRAM-SHA-256：基于挑战-响应机制，使用PBKDF2-HMAC-SHA256算法
-	//     -  SCRAM-SHA-512：增强版SCRAM，使用PBKDF2-HMAC-SHA512算法
+	// <p>加密类型，支持 PLAIN、SCRAM-SHA-256 或 SCRAM-SHA-512。</p><ul><li>当Protocol为  <code>sasl_plaintext</code> 或 <code>sasl_ssl</code> 时 Mechanism 必填。</li><li>支持加密类型如下<ul><li>PLAIN：明文认证</li><li>SCRAM-SHA-256：基于挑战-响应机制，使用PBKDF2-HMAC-SHA256算法</li><li>SCRAM-SHA-512：增强版SCRAM，使用PBKDF2-HMAC-SHA512算法</li></ul></li></ul>
 	Mechanism *string `json:"Mechanism,omitnil,omitempty" name:"Mechanism"`
 
-	// 用户名。
-	// 当Protocol为sasl_plaintext或sasl_ssl时必填
+	// <p>用户名。<br>当Protocol为sasl_plaintext或sasl_ssl时必填</p>
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
-	// 用户密码。
-	// 当Protocol为sasl_plaintext或sasl_ssl时必填
+	// <p>用户密码。<br>当Protocol为sasl_plaintext或sasl_ssl时必填</p>
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+
+	// <p>是否开启客户端证书验证</p>
+	EnableClientCertificate *uint64 `json:"EnableClientCertificate,omitnil,omitempty" name:"EnableClientCertificate"`
+
+	// <p>是否开启服务端证书验证</p>
+	EnableServerCertificate *uint64 `json:"EnableServerCertificate,omitnil,omitempty" name:"EnableServerCertificate"`
+
+	// <p>云托管CA证书id</p>
+	CACertificateId *string `json:"CACertificateId,omitnil,omitempty" name:"CACertificateId"`
+
+	// <p>云托管服务端证书id</p>
+	SVRCertificateId *string `json:"SVRCertificateId,omitnil,omitempty" name:"SVRCertificateId"`
 }
 
 type KafkaRechargeInfo struct {
-	// Kafka数据订阅配置的ID。
+	// <p>Kafka数据订阅配置的ID。</p>
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 日志主题ID
+	// <p>日志主题ID</p>
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// Kafka导入任务名称
+	// <p>Kafka导入任务名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 导入Kafka类型，0: 腾讯云CKafka，1: 用户自建Kafka
+	// <p>导入Kafka类型，0: 腾讯云CKafka，1: 用户自建Kafka</p>
 	KafkaType *uint64 `json:"KafkaType,omitnil,omitempty" name:"KafkaType"`
 
-	// 腾讯云CKafka实例ID，KafkaType为0时必填
+	// <p>腾讯云CKafka实例ID，KafkaType为0时必填</p>
 	KafkaInstance *string `json:"KafkaInstance,omitnil,omitempty" name:"KafkaInstance"`
 
-	// 服务地址
+	// <p>服务地址</p>
 	ServerAddr *string `json:"ServerAddr,omitnil,omitempty" name:"ServerAddr"`
 
-	// ServerAddr是否为加密连接	
+	// <p>ServerAddr是否为加密连接</p>
 	IsEncryptionAddr *bool `json:"IsEncryptionAddr,omitnil,omitempty" name:"IsEncryptionAddr"`
 
-	// 加密访问协议，IsEncryptionAddr参数为true时必填
+	// <p>加密访问协议，IsEncryptionAddr参数为true时必填</p>
 	Protocol *KafkaProtocolInfo `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
-	// 用户需要导入的Kafka相关topic列表，多个topic之间使用半角逗号隔开
+	// <p>用户需要导入的Kafka相关topic列表，多个topic之间使用半角逗号隔开</p>
 	UserKafkaTopics *string `json:"UserKafkaTopics,omitnil,omitempty" name:"UserKafkaTopics"`
 
-	// 用户Kafka消费组名称	
+	// <p>用户Kafka消费组名称</p>
 	ConsumerGroupName *string `json:"ConsumerGroupName,omitnil,omitempty" name:"ConsumerGroupName"`
 
-	// 状态 ，1：运行中；2：暂停。
+	// <p>状态 ，1：运行中；2：暂停。</p>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 导入数据位置，-2:最早（默认），-1：最晚
+	// <p>导入数据位置，-2:最早（默认），-1：最晚</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 创建时间。格式`YYYY-MM-DD HH:MM:SS`
+	// <p>创建时间。格式<code>YYYY-MM-DD HH:MM:SS</code></p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 更新时间。格式`YYYY-MM-DD HH:MM:SS`
+	// <p>更新时间。格式<code>YYYY-MM-DD HH:MM:SS</code></p>
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 日志导入规则
+	// <p>日志导入规则</p>
 	LogRechargeRule *LogRechargeRuleInfo `json:"LogRechargeRule,omitnil,omitempty" name:"LogRechargeRule"`
 
-	// 用户kafka拓展信息
+	// <p>私有网络信息</p>
+	NetworkInfo *NetworkInfo `json:"NetworkInfo,omitnil,omitempty" name:"NetworkInfo"`
+
+	// <p>用户kafka拓展信息</p>
 	UserKafkaMeta *UserKafkaMeta `json:"UserKafkaMeta,omitnil,omitempty" name:"UserKafkaMeta"`
 }
 
@@ -17792,41 +17793,44 @@ type LogContextInfo struct {
 }
 
 type LogInfo struct {
-	// 日志时间，单位ms
+	// <p>日志时间，单位ms</p>
 	Time *int64 `json:"Time,omitnil,omitempty" name:"Time"`
 
-	// 日志主题ID
+	// <p>日志主题ID</p>
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// 日志主题名称
+	// <p>日志主题名称</p>
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
-	// 日志来源IP
+	// <p>日志来源IP</p>
 	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 
-	// 日志文件名称
+	// <p>日志文件名称</p>
 	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
 
-	// 日志上报请求包的ID
+	// <p>日志上报请求包的ID</p>
 	PkgId *string `json:"PkgId,omitnil,omitempty" name:"PkgId"`
 
-	// 请求包内日志的ID
+	// <p>请求包内日志的ID</p>
 	PkgLogId *string `json:"PkgLogId,omitnil,omitempty" name:"PkgLogId"`
 
-	// 符合检索条件的关键词，一般用于高亮显示。仅支持键值检索，不支持全文检索	
+	// <p>符合检索条件的关键词，一般用于高亮显示。仅支持键值检索，不支持全文检索</p>
 	HighLights []*HighLightItem `json:"HighLights,omitnil,omitempty" name:"HighLights"`
 
-	// 日志内容的Json序列化字符串
+	// <p>日志内容的Json序列化字符串</p>
 	LogJson *string `json:"LogJson,omitnil,omitempty" name:"LogJson"`
 
-	// 日志来源主机名称
+	// <p>日志来源主机名称</p>
 	HostName *string `json:"HostName,omitnil,omitempty" name:"HostName"`
 
-	// 原始日志(仅在日志创建索引异常时有值)
+	// <p>原始日志(仅在日志创建索引异常时有值)</p>
 	RawLog *string `json:"RawLog,omitnil,omitempty" name:"RawLog"`
 
-	// 日志创建索引异常原因(仅在日志创建索引异常时有值)
+	// <p>日志创建索引异常原因(仅在日志创建索引异常时有值)</p>
 	IndexStatus *string `json:"IndexStatus,omitnil,omitempty" name:"IndexStatus"`
+
+	// <p>日志时间，单位ns</p><p>单位：纳秒</p>
+	TimeNanos *int64 `json:"TimeNanos,omitnil,omitempty" name:"TimeNanos"`
 }
 
 type LogItem struct {
@@ -20852,100 +20856,92 @@ func (r *ModifyKafkaConsumerResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyKafkaRechargeRequestParams struct {
-	// 导入配置Id。
-	// - 通过 [创建Kafka数据订阅任务](https://cloud.tencent.com/document/product/614/94448)获取Kafka导入配置Id。
-	// - 通过 [获取Kafka数据订阅任务列表](https://cloud.tencent.com/document/product/614/94446)获取Kafka导入配置Id。
+	// <p>导入配置Id。</p><ul><li>通过 <a href="https://cloud.tencent.com/document/product/614/94448">创建Kafka数据订阅任务</a>获取Kafka导入配置Id。</li><li>通过 <a href="https://cloud.tencent.com/document/product/614/94446">获取Kafka数据订阅任务列表</a>获取Kafka导入配置Id。</li></ul>
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 导入CLS目标TopicId。
-	// - 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
-	// - 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456)获取日志主题Id。
+	// <p>导入CLS目标TopicId。</p><ul><li>通过 <a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取日志主题Id。</li><li>通过 <a href="https://cloud.tencent.com/document/product/614/56456">创建日志主题</a>获取日志主题Id。</li></ul>
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// Kafka导入配置名称
+	// <p>Kafka导入配置名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 导入Kafka类型，0：腾讯云CKafka：1：用户自建Kafka。
+	// <p>导入Kafka类型，0：腾讯云CKafka：1：用户自建Kafka。</p>
 	KafkaType *uint64 `json:"KafkaType,omitnil,omitempty" name:"KafkaType"`
 
-	// 腾讯云CKafka实例ID，KafkaType为0时必填。
-	// - 通过 [获取实例列表信息](https://cloud.tencent.com/document/product/597/40835) 获取实例id。
+	// <p>腾讯云CKafka实例ID，KafkaType为0时必填。</p><ul><li>通过 <a href="https://cloud.tencent.com/document/product/597/40835">获取实例列表信息</a> 获取实例id。</li></ul>
 	KafkaInstance *string `json:"KafkaInstance,omitnil,omitempty" name:"KafkaInstance"`
 
-	// 服务地址，KafkaType为1时必填。
+	// <p>服务地址，KafkaType为1时必填。</p>
 	ServerAddr *string `json:"ServerAddr,omitnil,omitempty" name:"ServerAddr"`
 
-	// ServerAddr是否为加密连接，KafkaType为1时必填。
+	// <p>ServerAddr是否为加密连接，KafkaType为1时必填。</p>
 	IsEncryptionAddr *bool `json:"IsEncryptionAddr,omitnil,omitempty" name:"IsEncryptionAddr"`
 
-	// 加密访问协议，KafkaType参数为1并且IsEncryptionAddr参数为true时必填。
+	// <p>加密访问协议，KafkaType参数为1并且IsEncryptionAddr参数为true时必填。</p>
 	Protocol *KafkaProtocolInfo `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
-	// 用户需要导入的Kafka相关topic列表，多个topic之间使用半角逗号隔开。
-	// 
-	// - Kafka类型为腾讯云CKafka时：通过 [获取主题列表](https://cloud.tencent.com/document/product/597/40847) 获取TopicName。
+	// <p>用户需要导入的Kafka相关topic列表，多个topic之间使用半角逗号隔开。</p><ul><li>Kafka类型为腾讯云CKafka时：通过 <a href="https://cloud.tencent.com/document/product/597/40847">获取主题列表</a> 获取TopicName。</li></ul>
 	UserKafkaTopics *string `json:"UserKafkaTopics,omitnil,omitempty" name:"UserKafkaTopics"`
 
-	// 用户Kafka消费组名称
+	// <p>用户Kafka消费组名称</p>
 	ConsumerGroupName *string `json:"ConsumerGroupName,omitnil,omitempty" name:"ConsumerGroupName"`
 
-	// 日志导入规则
+	// <p>日志导入规则</p>
 	LogRechargeRule *LogRechargeRuleInfo `json:"LogRechargeRule,omitnil,omitempty" name:"LogRechargeRule"`
 
-	// 导入控制，1：暂停；2：启动。
+	// <p>导入控制，1：暂停；2：启动。</p>
 	StatusControl *uint64 `json:"StatusControl,omitnil,omitempty" name:"StatusControl"`
 
-	// 用户kafka拓展信息
+	// <p>私有网络信息参数</p>
+	NetworkInfo *NetworkInfo `json:"NetworkInfo,omitnil,omitempty" name:"NetworkInfo"`
+
+	// <p>用户kafka拓展信息</p>
 	UserKafkaMeta *UserKafkaMeta `json:"UserKafkaMeta,omitnil,omitempty" name:"UserKafkaMeta"`
 }
 
 type ModifyKafkaRechargeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 导入配置Id。
-	// - 通过 [创建Kafka数据订阅任务](https://cloud.tencent.com/document/product/614/94448)获取Kafka导入配置Id。
-	// - 通过 [获取Kafka数据订阅任务列表](https://cloud.tencent.com/document/product/614/94446)获取Kafka导入配置Id。
+	// <p>导入配置Id。</p><ul><li>通过 <a href="https://cloud.tencent.com/document/product/614/94448">创建Kafka数据订阅任务</a>获取Kafka导入配置Id。</li><li>通过 <a href="https://cloud.tencent.com/document/product/614/94446">获取Kafka数据订阅任务列表</a>获取Kafka导入配置Id。</li></ul>
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 导入CLS目标TopicId。
-	// - 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
-	// - 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456)获取日志主题Id。
+	// <p>导入CLS目标TopicId。</p><ul><li>通过 <a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取日志主题Id。</li><li>通过 <a href="https://cloud.tencent.com/document/product/614/56456">创建日志主题</a>获取日志主题Id。</li></ul>
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// Kafka导入配置名称
+	// <p>Kafka导入配置名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 导入Kafka类型，0：腾讯云CKafka：1：用户自建Kafka。
+	// <p>导入Kafka类型，0：腾讯云CKafka：1：用户自建Kafka。</p>
 	KafkaType *uint64 `json:"KafkaType,omitnil,omitempty" name:"KafkaType"`
 
-	// 腾讯云CKafka实例ID，KafkaType为0时必填。
-	// - 通过 [获取实例列表信息](https://cloud.tencent.com/document/product/597/40835) 获取实例id。
+	// <p>腾讯云CKafka实例ID，KafkaType为0时必填。</p><ul><li>通过 <a href="https://cloud.tencent.com/document/product/597/40835">获取实例列表信息</a> 获取实例id。</li></ul>
 	KafkaInstance *string `json:"KafkaInstance,omitnil,omitempty" name:"KafkaInstance"`
 
-	// 服务地址，KafkaType为1时必填。
+	// <p>服务地址，KafkaType为1时必填。</p>
 	ServerAddr *string `json:"ServerAddr,omitnil,omitempty" name:"ServerAddr"`
 
-	// ServerAddr是否为加密连接，KafkaType为1时必填。
+	// <p>ServerAddr是否为加密连接，KafkaType为1时必填。</p>
 	IsEncryptionAddr *bool `json:"IsEncryptionAddr,omitnil,omitempty" name:"IsEncryptionAddr"`
 
-	// 加密访问协议，KafkaType参数为1并且IsEncryptionAddr参数为true时必填。
+	// <p>加密访问协议，KafkaType参数为1并且IsEncryptionAddr参数为true时必填。</p>
 	Protocol *KafkaProtocolInfo `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
-	// 用户需要导入的Kafka相关topic列表，多个topic之间使用半角逗号隔开。
-	// 
-	// - Kafka类型为腾讯云CKafka时：通过 [获取主题列表](https://cloud.tencent.com/document/product/597/40847) 获取TopicName。
+	// <p>用户需要导入的Kafka相关topic列表，多个topic之间使用半角逗号隔开。</p><ul><li>Kafka类型为腾讯云CKafka时：通过 <a href="https://cloud.tencent.com/document/product/597/40847">获取主题列表</a> 获取TopicName。</li></ul>
 	UserKafkaTopics *string `json:"UserKafkaTopics,omitnil,omitempty" name:"UserKafkaTopics"`
 
-	// 用户Kafka消费组名称
+	// <p>用户Kafka消费组名称</p>
 	ConsumerGroupName *string `json:"ConsumerGroupName,omitnil,omitempty" name:"ConsumerGroupName"`
 
-	// 日志导入规则
+	// <p>日志导入规则</p>
 	LogRechargeRule *LogRechargeRuleInfo `json:"LogRechargeRule,omitnil,omitempty" name:"LogRechargeRule"`
 
-	// 导入控制，1：暂停；2：启动。
+	// <p>导入控制，1：暂停；2：启动。</p>
 	StatusControl *uint64 `json:"StatusControl,omitnil,omitempty" name:"StatusControl"`
 
-	// 用户kafka拓展信息
+	// <p>私有网络信息参数</p>
+	NetworkInfo *NetworkInfo `json:"NetworkInfo,omitnil,omitempty" name:"NetworkInfo"`
+
+	// <p>用户kafka拓展信息</p>
 	UserKafkaMeta *UserKafkaMeta `json:"UserKafkaMeta,omitnil,omitempty" name:"UserKafkaMeta"`
 }
 
@@ -20973,6 +20969,7 @@ func (r *ModifyKafkaRechargeRequest) FromJsonString(s string) error {
 	delete(f, "ConsumerGroupName")
 	delete(f, "LogRechargeRule")
 	delete(f, "StatusControl")
+	delete(f, "NetworkInfo")
 	delete(f, "UserKafkaMeta")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyKafkaRechargeRequest has unknown keys!", "")
@@ -23407,6 +23404,26 @@ type NetworkApplicationInfo struct {
 	UpdateTime *uint64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
+type NetworkInfo struct {
+	// <p>网络类型。 0：公网，1：内网</p>
+	NetworkType *uint64 `json:"NetworkType,omitnil,omitempty" name:"NetworkType"`
+
+	// <p>私有网络id</p>
+	VpcID *string `json:"VpcID,omitnil,omitempty" name:"VpcID"`
+
+	// <p>私有网络所属用户app id</p>
+	AppID *uint64 `json:"AppID,omitnil,omitempty" name:"AppID"`
+
+	// <p>网络服务类型。0：CVM，3：专线网关，11：云联网，1025：CLB</p>
+	VirtualGatewayType *uint64 `json:"VirtualGatewayType,omitnil,omitempty" name:"VirtualGatewayType"`
+
+	// <p>专线网关id或者云联网id</p>
+	VpcGatewayIndex *string `json:"VpcGatewayIndex,omitnil,omitempty" name:"VpcGatewayIndex"`
+
+	// <p>私有域名映射地址</p>
+	PrivateDomainNames []*PrivateDomainNames `json:"PrivateDomainNames,omitnil,omitempty" name:"PrivateDomainNames"`
+}
+
 type NoticeContent struct {
 	// 渠道类型
 	// 
@@ -23875,88 +23892,80 @@ type PartitionOffsetInfo struct {
 
 // Predefined struct for user
 type PreviewKafkaRechargeRequestParams struct {
-	// 预览类型，1：源数据预览；2：导出结果预览。
+	// <p>预览类型，1：源数据预览；2：导出结果预览。</p>
 	PreviewType *uint64 `json:"PreviewType,omitnil,omitempty" name:"PreviewType"`
 
-	// 导入Kafka类型，0：腾讯云CKafka；1：用户自建Kafka。
+	// <p>导入Kafka类型，0：腾讯云CKafka；1：用户自建Kafka。</p>
 	KafkaType *uint64 `json:"KafkaType,omitnil,omitempty" name:"KafkaType"`
 
-	// 用户需要导入的Kafka相关topic列表，多个topic之间使用半角逗号隔开。
-	// 最多支持100个。
+	// <p>用户需要导入的Kafka相关topic列表，多个topic之间使用半角逗号隔开。<br>最多支持100个。</p>
 	UserKafkaTopics *string `json:"UserKafkaTopics,omitnil,omitempty" name:"UserKafkaTopics"`
 
-	// 导入数据位置，-2：最早；-1：最晚。
+	// <p>导入数据位置，-2：最早；-1：最晚。</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 腾讯云CKafka实例ID，当KafkaType为0时参数KafkaInstance有效且必填。
-	// - 通过 [获取实例列表信息](https://cloud.tencent.com/document/product/597/40835) 获取实例id。
+	// <p>腾讯云CKafka实例ID，当KafkaType为0时参数KafkaInstance有效且必填。</p><ul><li>通过 <a href="https://cloud.tencent.com/document/product/597/40835">获取实例列表信息</a> 获取实例id。</li></ul>
 	KafkaInstance *string `json:"KafkaInstance,omitnil,omitempty" name:"KafkaInstance"`
 
-	// 服务地址。
-	// KafkaType为1时ServerAddr必填。
+	// <p>服务地址。<br>KafkaType为1时ServerAddr必填。</p>
 	ServerAddr *string `json:"ServerAddr,omitnil,omitempty" name:"ServerAddr"`
 
-	// ServerAddr是否为加密连接。
-	// KafkaType为1时有效。
+	// <p>ServerAddr是否为加密连接。<br>KafkaType为1时有效。</p>
 	IsEncryptionAddr *bool `json:"IsEncryptionAddr,omitnil,omitempty" name:"IsEncryptionAddr"`
 
-	// 加密访问协议。
-	// KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
+	// <p>加密访问协议。<br>KafkaType为1并且IsEncryptionAddr为true时Protocol必填。</p>
 	Protocol *KafkaProtocolInfo `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
-	// 用户Kafka消费组。
-	// 
-	// - 消费组是 Kafka 提供的可扩展且具有容错性的消费者机制，一个消费组中存在多个消费者，组内的所有消费者共同消费订阅 Topic 中的消息。一个消费者可同时消费多个 Partition，但一个 Partition 只能被消费组内的一个消费者消费。
+	// <p>用户Kafka消费组。</p><ul><li>消费组是 Kafka 提供的可扩展且具有容错性的消费者机制，一个消费组中存在多个消费者，组内的所有消费者共同消费订阅 Topic 中的消息。一个消费者可同时消费多个 Partition，但一个 Partition 只能被消费组内的一个消费者消费。</li></ul>
 	ConsumerGroupName *string `json:"ConsumerGroupName,omitnil,omitempty" name:"ConsumerGroupName"`
 
-	// 日志导入规则
+	// <p>日志导入规则</p>
 	LogRechargeRule *LogRechargeRuleInfo `json:"LogRechargeRule,omitnil,omitempty" name:"LogRechargeRule"`
 
-	// 用户kafka拓展信息
+	// <p>网络连接参数</p>
+	NetworkInfo *NetworkInfo `json:"NetworkInfo,omitnil,omitempty" name:"NetworkInfo"`
+
+	// <p>用户kafka拓展信息</p>
 	UserKafkaMeta *UserKafkaMeta `json:"UserKafkaMeta,omitnil,omitempty" name:"UserKafkaMeta"`
 }
 
 type PreviewKafkaRechargeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 预览类型，1：源数据预览；2：导出结果预览。
+	// <p>预览类型，1：源数据预览；2：导出结果预览。</p>
 	PreviewType *uint64 `json:"PreviewType,omitnil,omitempty" name:"PreviewType"`
 
-	// 导入Kafka类型，0：腾讯云CKafka；1：用户自建Kafka。
+	// <p>导入Kafka类型，0：腾讯云CKafka；1：用户自建Kafka。</p>
 	KafkaType *uint64 `json:"KafkaType,omitnil,omitempty" name:"KafkaType"`
 
-	// 用户需要导入的Kafka相关topic列表，多个topic之间使用半角逗号隔开。
-	// 最多支持100个。
+	// <p>用户需要导入的Kafka相关topic列表，多个topic之间使用半角逗号隔开。<br>最多支持100个。</p>
 	UserKafkaTopics *string `json:"UserKafkaTopics,omitnil,omitempty" name:"UserKafkaTopics"`
 
-	// 导入数据位置，-2：最早；-1：最晚。
+	// <p>导入数据位置，-2：最早；-1：最晚。</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 腾讯云CKafka实例ID，当KafkaType为0时参数KafkaInstance有效且必填。
-	// - 通过 [获取实例列表信息](https://cloud.tencent.com/document/product/597/40835) 获取实例id。
+	// <p>腾讯云CKafka实例ID，当KafkaType为0时参数KafkaInstance有效且必填。</p><ul><li>通过 <a href="https://cloud.tencent.com/document/product/597/40835">获取实例列表信息</a> 获取实例id。</li></ul>
 	KafkaInstance *string `json:"KafkaInstance,omitnil,omitempty" name:"KafkaInstance"`
 
-	// 服务地址。
-	// KafkaType为1时ServerAddr必填。
+	// <p>服务地址。<br>KafkaType为1时ServerAddr必填。</p>
 	ServerAddr *string `json:"ServerAddr,omitnil,omitempty" name:"ServerAddr"`
 
-	// ServerAddr是否为加密连接。
-	// KafkaType为1时有效。
+	// <p>ServerAddr是否为加密连接。<br>KafkaType为1时有效。</p>
 	IsEncryptionAddr *bool `json:"IsEncryptionAddr,omitnil,omitempty" name:"IsEncryptionAddr"`
 
-	// 加密访问协议。
-	// KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
+	// <p>加密访问协议。<br>KafkaType为1并且IsEncryptionAddr为true时Protocol必填。</p>
 	Protocol *KafkaProtocolInfo `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
-	// 用户Kafka消费组。
-	// 
-	// - 消费组是 Kafka 提供的可扩展且具有容错性的消费者机制，一个消费组中存在多个消费者，组内的所有消费者共同消费订阅 Topic 中的消息。一个消费者可同时消费多个 Partition，但一个 Partition 只能被消费组内的一个消费者消费。
+	// <p>用户Kafka消费组。</p><ul><li>消费组是 Kafka 提供的可扩展且具有容错性的消费者机制，一个消费组中存在多个消费者，组内的所有消费者共同消费订阅 Topic 中的消息。一个消费者可同时消费多个 Partition，但一个 Partition 只能被消费组内的一个消费者消费。</li></ul>
 	ConsumerGroupName *string `json:"ConsumerGroupName,omitnil,omitempty" name:"ConsumerGroupName"`
 
-	// 日志导入规则
+	// <p>日志导入规则</p>
 	LogRechargeRule *LogRechargeRuleInfo `json:"LogRechargeRule,omitnil,omitempty" name:"LogRechargeRule"`
 
-	// 用户kafka拓展信息
+	// <p>网络连接参数</p>
+	NetworkInfo *NetworkInfo `json:"NetworkInfo,omitnil,omitempty" name:"NetworkInfo"`
+
+	// <p>用户kafka拓展信息</p>
 	UserKafkaMeta *UserKafkaMeta `json:"UserKafkaMeta,omitnil,omitempty" name:"UserKafkaMeta"`
 }
 
@@ -23982,6 +23991,7 @@ func (r *PreviewKafkaRechargeRequest) FromJsonString(s string) error {
 	delete(f, "Protocol")
 	delete(f, "ConsumerGroupName")
 	delete(f, "LogRechargeRule")
+	delete(f, "NetworkInfo")
 	delete(f, "UserKafkaMeta")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PreviewKafkaRechargeRequest has unknown keys!", "")
@@ -23991,10 +24001,10 @@ func (r *PreviewKafkaRechargeRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type PreviewKafkaRechargeResponseParams struct {
-	// 日志样例，PreviewType为2时返回
+	// <p>日志样例，PreviewType为2时返回</p>
 	LogSample *string `json:"LogSample,omitnil,omitempty" name:"LogSample"`
 
-	// 日志预览结果
+	// <p>日志预览结果</p>
 	LogData *string `json:"LogData,omitnil,omitempty" name:"LogData"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -24042,6 +24052,14 @@ type PreviewLogStatistic struct {
 	//
 	// Deprecated: DstTopicName is deprecated.
 	DstTopicName *string `json:"DstTopicName,omitnil,omitempty" name:"DstTopicName"`
+}
+
+type PrivateDomainNames struct {
+	// 域名地址
+	DomainName *string `json:"DomainName,omitnil,omitempty" name:"DomainName"`
+
+	// ip地址
+	IpAddr *string `json:"IpAddr,omitnil,omitempty" name:"IpAddr"`
 }
 
 type ProductIngestTaskDetail struct {

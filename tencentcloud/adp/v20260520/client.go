@@ -2227,6 +2227,58 @@ func (c *Client) DescribeAppWithContext(ctx context.Context, request *DescribeAp
     return
 }
 
+func NewDescribeAppStatisticsOverviewRequest() (request *DescribeAppStatisticsOverviewRequest) {
+    request = &DescribeAppStatisticsOverviewRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("adp", APIVersion, "DescribeAppStatisticsOverview")
+    
+    
+    return
+}
+
+func NewDescribeAppStatisticsOverviewResponse() (response *DescribeAppStatisticsOverviewResponse) {
+    response = &DescribeAppStatisticsOverviewResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAppStatisticsOverview
+// 查询应用视图下的调用统计总览，包含总调用次数、调用成功率、总tokens平均耗时及首tokens平均耗时；RAG 应用额外返回各回复方式的调用次数及占比，用于绘制饼图
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeAppStatisticsOverview(request *DescribeAppStatisticsOverviewRequest) (response *DescribeAppStatisticsOverviewResponse, err error) {
+    return c.DescribeAppStatisticsOverviewWithContext(context.Background(), request)
+}
+
+// DescribeAppStatisticsOverview
+// 查询应用视图下的调用统计总览，包含总调用次数、调用成功率、总tokens平均耗时及首tokens平均耗时；RAG 应用额外返回各回复方式的调用次数及占比，用于绘制饼图
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeAppStatisticsOverviewWithContext(ctx context.Context, request *DescribeAppStatisticsOverviewRequest) (response *DescribeAppStatisticsOverviewResponse, err error) {
+    if request == nil {
+        request = NewDescribeAppStatisticsOverviewRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "adp", APIVersion, "DescribeAppStatisticsOverview")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAppStatisticsOverview require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAppStatisticsOverviewResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAppSummaryListRequest() (request *DescribeAppSummaryListRequest) {
     request = &DescribeAppSummaryListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2250,7 +2302,6 @@ func NewDescribeAppSummaryListResponse() (response *DescribeAppSummaryListRespon
 // 获取应用摘要列表
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeAppSummaryList(request *DescribeAppSummaryListRequest) (response *DescribeAppSummaryListResponse, err error) {
@@ -2261,7 +2312,6 @@ func (c *Client) DescribeAppSummaryList(request *DescribeAppSummaryListRequest) 
 // 获取应用摘要列表
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeAppSummaryListWithContext(ctx context.Context, request *DescribeAppSummaryListRequest) (response *DescribeAppSummaryListResponse, err error) {
@@ -2304,7 +2354,6 @@ func NewDescribeAppTriggerResponse() (response *DescribeAppTriggerResponse) {
 // DescribeAppTrigger
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeAppTrigger(request *DescribeAppTriggerRequest) (response *DescribeAppTriggerResponse, err error) {
@@ -2315,7 +2364,6 @@ func (c *Client) DescribeAppTrigger(request *DescribeAppTriggerRequest) (respons
 // DescribeAppTrigger
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeAppTriggerWithContext(ctx context.Context, request *DescribeAppTriggerRequest) (response *DescribeAppTriggerResponse, err error) {
@@ -2358,7 +2406,6 @@ func NewDescribeAppTriggerInstanceResponse() (response *DescribeAppTriggerInstan
 // DescribeAppTriggerInstance
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeAppTriggerInstance(request *DescribeAppTriggerInstanceRequest) (response *DescribeAppTriggerInstanceResponse, err error) {
@@ -2369,7 +2416,6 @@ func (c *Client) DescribeAppTriggerInstance(request *DescribeAppTriggerInstanceR
 // DescribeAppTriggerInstance
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeAppTriggerInstanceWithContext(ctx context.Context, request *DescribeAppTriggerInstanceRequest) (response *DescribeAppTriggerInstanceResponse, err error) {
@@ -2412,7 +2458,6 @@ func NewDescribeAppTriggerRunLogListResponse() (response *DescribeAppTriggerRunL
 // DescribeAppTriggerRunLogList
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeAppTriggerRunLogList(request *DescribeAppTriggerRunLogListRequest) (response *DescribeAppTriggerRunLogListResponse, err error) {
@@ -2423,7 +2468,6 @@ func (c *Client) DescribeAppTriggerRunLogList(request *DescribeAppTriggerRunLogL
 // DescribeAppTriggerRunLogList
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeAppTriggerRunLogListWithContext(ctx context.Context, request *DescribeAppTriggerRunLogListRequest) (response *DescribeAppTriggerRunLogListResponse, err error) {
@@ -2466,7 +2510,6 @@ func NewDescribeAppTriggerSummaryListResponse() (response *DescribeAppTriggerSum
 // DescribeAppTriggerSummaryList
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeAppTriggerSummaryList(request *DescribeAppTriggerSummaryListRequest) (response *DescribeAppTriggerSummaryListResponse, err error) {
@@ -2477,7 +2520,6 @@ func (c *Client) DescribeAppTriggerSummaryList(request *DescribeAppTriggerSummar
 // DescribeAppTriggerSummaryList
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeAppTriggerSummaryListWithContext(ctx context.Context, request *DescribeAppTriggerSummaryListRequest) (response *DescribeAppTriggerSummaryListResponse, err error) {

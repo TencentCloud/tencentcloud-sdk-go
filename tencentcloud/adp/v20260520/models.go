@@ -5328,6 +5328,110 @@ func (r *DescribeAppResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeAppStatisticsOverviewRequestParams struct {
+	// <p>应用类型。可选值：APP_TYPE_RAG（RAG）、APP_TYPE_WORKFLOW（Workflow）、APP_TYPE_CLAW（Claw）、APP_TYPE_MULTIAGENT（MultiAgent）；本期仅 APP_TYPE_RAG 生效，其余为预留值，传入将返回 InvalidParameter</p><table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>APP_TYPE_UNSPECIFIED</td><td>0</td><td>未指定（无效值，请求勿传）</td></tr><tr><td>APP_TYPE_RAG</td><td>1</td><td>RAG（本期唯一支持）</td></tr><tr><td>APP_TYPE_WORKFLOW</td><td>2</td><td>Workflow（预留，暂不支持）</td></tr><tr><td>APP_TYPE_CLAW</td><td>3</td><td>Claw（预留，暂不支持）</td></tr><tr><td>APP_TYPE_MULTIAGENT</td><td>4</td><td>MultiAgent（预留，暂不支持）</td></tr></tbody></table>
+	AppType *int64 `json:"AppType,omitnil,omitempty" name:"AppType"`
+
+	// <p>查询时间范围（Unix 秒）</p>
+	TimeRange *TimeRange `json:"TimeRange,omitnil,omitempty" name:"TimeRange"`
+
+	// <p>视图范围：应用视图（VIEW_TYPE_APP），scope_id 填应用 ID（uint64 雪花 ID 的十进制字符串）</p>
+	ViewScope *ViewScope `json:"ViewScope,omitnil,omitempty" name:"ViewScope"`
+
+	// <p>空间 ID</p><p>参数格式：<p>空间 ID</p></p><p>默认值：default_space</p>
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// <p>应用 ID</p><p>参数格式：</p><p>应用 ID</p><p></p><p>参考值：2099767969573745984</p>
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>扩展过滤。Filter 组合规则：多项 AND，同项 value_list OR。支持 Name：space_id（空间 ID）、channel_type（调用方式/渠道类型，取值参考 trpc.adp.common.v2.ChannelType 枚举名）；channel_type 不传时按全部渠道聚合</p>
+	FilterList []*Filter `json:"FilterList,omitnil,omitempty" name:"FilterList"`
+}
+
+type DescribeAppStatisticsOverviewRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>应用类型。可选值：APP_TYPE_RAG（RAG）、APP_TYPE_WORKFLOW（Workflow）、APP_TYPE_CLAW（Claw）、APP_TYPE_MULTIAGENT（MultiAgent）；本期仅 APP_TYPE_RAG 生效，其余为预留值，传入将返回 InvalidParameter</p><table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>APP_TYPE_UNSPECIFIED</td><td>0</td><td>未指定（无效值，请求勿传）</td></tr><tr><td>APP_TYPE_RAG</td><td>1</td><td>RAG（本期唯一支持）</td></tr><tr><td>APP_TYPE_WORKFLOW</td><td>2</td><td>Workflow（预留，暂不支持）</td></tr><tr><td>APP_TYPE_CLAW</td><td>3</td><td>Claw（预留，暂不支持）</td></tr><tr><td>APP_TYPE_MULTIAGENT</td><td>4</td><td>MultiAgent（预留，暂不支持）</td></tr></tbody></table>
+	AppType *int64 `json:"AppType,omitnil,omitempty" name:"AppType"`
+
+	// <p>查询时间范围（Unix 秒）</p>
+	TimeRange *TimeRange `json:"TimeRange,omitnil,omitempty" name:"TimeRange"`
+
+	// <p>视图范围：应用视图（VIEW_TYPE_APP），scope_id 填应用 ID（uint64 雪花 ID 的十进制字符串）</p>
+	ViewScope *ViewScope `json:"ViewScope,omitnil,omitempty" name:"ViewScope"`
+
+	// <p>空间 ID</p><p>参数格式：<p>空间 ID</p></p><p>默认值：default_space</p>
+	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
+
+	// <p>应用 ID</p><p>参数格式：</p><p>应用 ID</p><p></p><p>参考值：2099767969573745984</p>
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>扩展过滤。Filter 组合规则：多项 AND，同项 value_list OR。支持 Name：space_id（空间 ID）、channel_type（调用方式/渠道类型，取值参考 trpc.adp.common.v2.ChannelType 枚举名）；channel_type 不传时按全部渠道聚合</p>
+	FilterList []*Filter `json:"FilterList,omitnil,omitempty" name:"FilterList"`
+}
+
+func (r *DescribeAppStatisticsOverviewRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAppStatisticsOverviewRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AppType")
+	delete(f, "TimeRange")
+	delete(f, "ViewScope")
+	delete(f, "SpaceId")
+	delete(f, "AppId")
+	delete(f, "FilterList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAppStatisticsOverviewRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAppStatisticsOverviewResponseParams struct {
+	// <p>首 tokens 平均耗时（毫秒）</p>
+	AvgFirstTokenTime *string `json:"AvgFirstTokenTime,omitnil,omitempty" name:"AvgFirstTokenTime"`
+
+	// <p>总 tokens 平均耗时（毫秒）</p>
+	AvgTotalTokenTime *string `json:"AvgTotalTokenTime,omitnil,omitempty" name:"AvgTotalTokenTime"`
+
+	// <p>应用调用成功率（百分比，0~100）</p>
+	CallSuccessRate *float64 `json:"CallSuccessRate,omitnil,omitempty" name:"CallSuccessRate"`
+
+	// <p>回复类型分布列表；按 app_type 统计，已补全所有回复方式并按固定顺序返回，无数据的回复方式 call_count 为 0</p>
+	ReplyTypeDistributionList []*Distribution `json:"ReplyTypeDistributionList,omitnil,omitempty" name:"ReplyTypeDistributionList"`
+
+	// <p>总调用次数</p>
+	TotalCallCount *string `json:"TotalCallCount,omitnil,omitempty" name:"TotalCallCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAppStatisticsOverviewResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAppStatisticsOverviewResponseParams `json:"Response"`
+}
+
+func (r *DescribeAppStatisticsOverviewResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAppStatisticsOverviewResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeAppSummaryListRequestParams struct {
 	// 空间ID(必填)
 	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
@@ -9217,6 +9321,17 @@ type DingTalkChannelConfig struct {
 
 	// <p>钉钉机器人ClientSecret（AppSecret）</p>
 	AppSecret *string `json:"AppSecret,omitnil,omitempty" name:"AppSecret"`
+}
+
+type Distribution struct {
+	// <p>该回复方式的调用次数</p>
+	CallCount *string `json:"CallCount,omitnil,omitempty" name:"CallCount"`
+
+	// <p>该回复方式在总调用次数中的占比（百分比，0~100，保留两位小数；无数据时全为 0，有数据时各项之和为 100）</p>
+	Percentage *float64 `json:"Percentage,omitnil,omitempty" name:"Percentage"`
+
+	// <p>回复方式名称（已按请求语言国际化；i18n 缺失时兜底为 reply_method 的枚举名）</p>
+	ReplyName *string `json:"ReplyName,omitnil,omitempty" name:"ReplyName"`
 }
 
 type DocExternalLink struct {

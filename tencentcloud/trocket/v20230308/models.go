@@ -1051,6 +1051,9 @@ type DeleteConsumerRouteConfigRequestParams struct {
 
 	// <p>消费组</p>
 	Group *string `json:"Group,omitnil,omitempty" name:"Group"`
+
+	// <p>消费者标签</p><p>传入 Label 表示只删除该标签路由，不传表示删除完整路由</p>
+	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
 }
 
 type DeleteConsumerRouteConfigRequest struct {
@@ -1064,6 +1067,9 @@ type DeleteConsumerRouteConfigRequest struct {
 
 	// <p>消费组</p>
 	Group *string `json:"Group,omitnil,omitempty" name:"Group"`
+
+	// <p>消费者标签</p><p>传入 Label 表示只删除该标签路由，不传表示删除完整路由</p>
+	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
 }
 
 func (r *DeleteConsumerRouteConfigRequest) ToJsonString() string {
@@ -1081,6 +1087,7 @@ func (r *DeleteConsumerRouteConfigRequest) FromJsonString(s string) error {
 	delete(f, "Topic")
 	delete(f, "InstanceId")
 	delete(f, "Group")
+	delete(f, "Label")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteConsumerRouteConfigRequest has unknown keys!", "")
 	}

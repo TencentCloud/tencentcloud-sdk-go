@@ -101,6 +101,58 @@ func (c *Client) AssignProjectWithContext(ctx context.Context, request *AssignPr
     return
 }
 
+func NewCheckDBInstanceElasticCpuScalableRequest() (request *CheckDBInstanceElasticCpuScalableRequest) {
+    request = &CheckDBInstanceElasticCpuScalableRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mongodb", APIVersion, "CheckDBInstanceElasticCpuScalable")
+    
+    
+    return
+}
+
+func NewCheckDBInstanceElasticCpuScalableResponse() (response *CheckDBInstanceElasticCpuScalableResponse) {
+    response = &CheckDBInstanceElasticCpuScalableResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CheckDBInstanceElasticCpuScalable
+// 查询cpu弹性扩容信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
+func (c *Client) CheckDBInstanceElasticCpuScalable(request *CheckDBInstanceElasticCpuScalableRequest) (response *CheckDBInstanceElasticCpuScalableResponse, err error) {
+    return c.CheckDBInstanceElasticCpuScalableWithContext(context.Background(), request)
+}
+
+// CheckDBInstanceElasticCpuScalable
+// 查询cpu弹性扩容信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
+func (c *Client) CheckDBInstanceElasticCpuScalableWithContext(ctx context.Context, request *CheckDBInstanceElasticCpuScalableRequest) (response *CheckDBInstanceElasticCpuScalableResponse, err error) {
+    if request == nil {
+        request = NewCheckDBInstanceElasticCpuScalableRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mongodb", APIVersion, "CheckDBInstanceElasticCpuScalable")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CheckDBInstanceElasticCpuScalable require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCheckDBInstanceElasticCpuScalableResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCloseAuditServiceRequest() (request *CloseAuditServiceRequest) {
     request = &CloseAuditServiceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1449,6 +1501,7 @@ func NewDescribeAuditLogsResponse() (response *DescribeAuditLogsResponse) {
 //  OPERATIONDENIED_AUDITTASKCONFLICTERROR = "OperationDenied.AuditTaskConflictError"
 //  OPERATIONDENIED_RESOURCENOTFUNDERROR = "OperationDenied.ResourceNotFundError"
 //  OPERATIONDENIED_UNSUPPORTOPENAUDITERROR = "OperationDenied.UnsupportOpenAuditError"
+//  RESOURCENOTFOUND_INSTANCENOTFUNDERROR = "ResourceNotFound.InstanceNotFundError"
 func (c *Client) DescribeAuditLogs(request *DescribeAuditLogsRequest) (response *DescribeAuditLogsResponse, err error) {
     return c.DescribeAuditLogsWithContext(context.Background(), request)
 }
@@ -1480,6 +1533,7 @@ func (c *Client) DescribeAuditLogs(request *DescribeAuditLogsRequest) (response 
 //  OPERATIONDENIED_AUDITTASKCONFLICTERROR = "OperationDenied.AuditTaskConflictError"
 //  OPERATIONDENIED_RESOURCENOTFUNDERROR = "OperationDenied.ResourceNotFundError"
 //  OPERATIONDENIED_UNSUPPORTOPENAUDITERROR = "OperationDenied.UnsupportOpenAuditError"
+//  RESOURCENOTFOUND_INSTANCENOTFUNDERROR = "ResourceNotFound.InstanceNotFundError"
 func (c *Client) DescribeAuditLogsWithContext(ctx context.Context, request *DescribeAuditLogsRequest) (response *DescribeAuditLogsResponse, err error) {
     if request == nil {
         request = NewDescribeAuditLogsRequest()

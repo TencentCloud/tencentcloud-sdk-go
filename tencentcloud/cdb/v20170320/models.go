@@ -11676,6 +11676,9 @@ type InstanceInfo struct {
 	// <p>实例销毁保护状态，on表示开启保护，否则为关闭保护</p>
 	DestroyProtect *string `json:"DestroyProtect,omitnil,omitempty" name:"DestroyProtect"`
 
+	// <p>云盘版实例才使用该值。 on表示磁盘加密，否则为不加密。</p>
+	DiskEncryption *string `json:"DiskEncryption,omitnil,omitempty" name:"DiskEncryption"`
+
 	// <p>TDSQL引擎参数</p>
 	CpuModel *string `json:"CpuModel,omitnil,omitempty" name:"CpuModel"`
 
@@ -15094,26 +15097,26 @@ func (r *OpenAuditServiceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type OpenDBInstanceEncryptionRequestParams struct {
-	// 云数据库实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
+	// <p>云数据库实例 ID。可通过 <a href="https://cloud.tencent.com/document/product/236/15872">DescribeDBInstances</a> 接口获取。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 用户自定义密钥 ID，CMK 唯一标识符。该值为空时，将使用腾讯云自动生成的密钥 KMS-CDB。
+	// <p>用户自定义密钥 ID，CMK 唯一标识符。该值为空时，将使用腾讯云自动生成的密钥 KMS-CDB。</p>
 	KeyId *string `json:"KeyId,omitnil,omitempty" name:"KeyId"`
 
-	// 用户自定义密钥的存储地域。如：ap-guangzhou 。KeyId 不为空时，该参数必填。
+	// <p>用户自定义密钥的存储地域。如：ap-guangzhou 。KeyId 不为空时，该参数必填。</p>
 	KeyRegion *string `json:"KeyRegion,omitnil,omitempty" name:"KeyRegion"`
 }
 
 type OpenDBInstanceEncryptionRequest struct {
 	*tchttp.BaseRequest
 	
-	// 云数据库实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
+	// <p>云数据库实例 ID。可通过 <a href="https://cloud.tencent.com/document/product/236/15872">DescribeDBInstances</a> 接口获取。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 用户自定义密钥 ID，CMK 唯一标识符。该值为空时，将使用腾讯云自动生成的密钥 KMS-CDB。
+	// <p>用户自定义密钥 ID，CMK 唯一标识符。该值为空时，将使用腾讯云自动生成的密钥 KMS-CDB。</p>
 	KeyId *string `json:"KeyId,omitnil,omitempty" name:"KeyId"`
 
-	// 用户自定义密钥的存储地域。如：ap-guangzhou 。KeyId 不为空时，该参数必填。
+	// <p>用户自定义密钥的存储地域。如：ap-guangzhou 。KeyId 不为空时，该参数必填。</p>
 	KeyRegion *string `json:"KeyRegion,omitnil,omitempty" name:"KeyRegion"`
 }
 
@@ -16432,6 +16435,9 @@ type SlaveInfo struct {
 
 	// <p>第二备机信息</p>
 	Second *SlaveInstanceInfo `json:"Second,omitnil,omitempty" name:"Second"`
+
+	// <p>第三备机信息</p>
+	Third *SlaveInstanceInfo `json:"Third,omitnil,omitempty" name:"Third"`
 }
 
 type SlaveInstanceInfo struct {

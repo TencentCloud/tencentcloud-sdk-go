@@ -648,6 +648,85 @@ func (r *AddLiveWatermarkResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type AuditGroupClassInfo struct {
+	// <p>标签组分类中文名。</p>
+	GroupClassName *string `json:"GroupClassName,omitnil,omitempty" name:"GroupClassName"`
+
+	// <p>标签组分类英文名。</p>
+	GroupClassEname *string `json:"GroupClassEname,omitnil,omitempty" name:"GroupClassEname"`
+
+	// <p>标签组列表。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LabelGroupList []*AuditLabelGroupInfo `json:"LabelGroupList,omitnil,omitempty" name:"LabelGroupList"`
+}
+
+type AuditGroupInfo struct {
+	// <p>标签类型。<br>可取值：TagImage，TagText，TagAudio。</p>
+	TagType *string `json:"TagType,omitnil,omitempty" name:"TagType"`
+
+	// <p>标签组分类列表。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupClassList []*AuditGroupClassInfo `json:"GroupClassList,omitnil,omitempty" name:"GroupClassList"`
+}
+
+type AuditImage struct {
+	// <p>提交的图片顺序索引。</p>
+	Index *string `json:"Index,omitnil,omitempty" name:"Index"`
+
+	// <p>图片地址。</p>
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// <p>图片 md5 值。</p>
+	Md5 *string `json:"Md5,omitnil,omitempty" name:"Md5"`
+
+	// <p>图片名称。</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>违规类型。<br>可取值：Normal: 正常 ，Polity: 政治，Porn: 色情，Sexy：性感，Ad: 广告，Illegal: 违法，Abuse: 谩骂，Terror: 暴恐，Spam: 灌水，Moan:呻吟。</p>
+	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
+}
+
+type AuditImageCreateDetail struct {
+	// 图片上传状态，0 表示成功，其他表示失败。
+	// 10101: url 解码失败。
+	// 10102: url 解析失败。
+	// 10103: url 不是 cos 地址。
+	// 10301: label 不合法。
+	// 20101: 数据入库错误。
+	// 30101: cos 下载图片连接错误。
+	// 30102: cos 下载图片响应错误。
+	// 40101: 优图接口调用错误。
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 上传的图片 Id。
+	ImageId *string `json:"ImageId,omitnil,omitempty" name:"ImageId"`
+
+	// 图片上传顺序索引。
+	Index *string `json:"Index,omitnil,omitempty" name:"Index"`
+}
+
+type AuditImageDeleteDetail struct {
+	// <p>图片 Id。</p>
+	ImageId *string `json:"ImageId,omitnil,omitempty" name:"ImageId"`
+
+	// <p>图片名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>删除状态。<br>0：成功。<br>10104：原图不存在。<br>40201:  图库删图失败。<br>20201:  图库记录删除失败。</p>
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>违规类型。<br>可取值：Normal: 正常 ，Polity: 政治，Porn: 色情，Sexy：性感，Ad: 广告，Illegal: 违法，Abuse: 谩骂，Terror: 暴恐，Spam: 灌水，Moan:呻吟。</p>
+	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
+
+	// <p>错误信息。</p>
+	ErrMsg *string `json:"ErrMsg,omitnil,omitempty" name:"ErrMsg"`
+}
+
+type AuditImageInfo struct {
+	// 图片名称。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+}
+
 type AuditKeyword struct {
 	// 关键词内容。
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
@@ -686,6 +765,37 @@ type AuditKeywordInfo struct {
 	// 注意：
 	// 1. 北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+}
+
+type AuditKeywordLibInfo struct {
+	// <p>词库 Id。</p>
+	LibId *string `json:"LibId,omitnil,omitempty" name:"LibId"`
+
+	// <p>自定义词库名称。</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>自定义词库描述。</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>创建时间。UTC 格式，例如：2018-11-29T19:00:00Z。<br>注意：</p><ol><li>北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示。</li></ol>
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>处理建议。<br>可取值：Review 疑似，Block 违规。</p>
+	Suggestion *string `json:"Suggestion,omitnil,omitempty" name:"Suggestion"`
+
+	// <p>匹配模式。<br>可取值：ExactMatch 精确匹配， FuzzyMatch 模糊匹配。</p>
+	MatchType *string `json:"MatchType,omitnil,omitempty" name:"MatchType"`
+}
+
+type AuditLabelGroupInfo struct {
+	// <p>标签组中文名。</p>
+	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
+
+	// <p>标签组英文名。</p>
+	GroupEname *string `json:"GroupEname,omitnil,omitempty" name:"GroupEname"`
+
+	// <p>标签组描述。</p>
+	GroupMsg *string `json:"GroupMsg,omitnil,omitempty" name:"GroupMsg"`
 }
 
 // Predefined struct for user
@@ -2047,6 +2157,63 @@ func (r *CopyLiveAvatarRoomResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateAuditImagesRequestParams struct {
+	// <p>样本图片列表。</p>
+	Images []*AuditImage `json:"Images,omitnil,omitempty" name:"Images"`
+}
+
+type CreateAuditImagesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>样本图片列表。</p>
+	Images []*AuditImage `json:"Images,omitnil,omitempty" name:"Images"`
+}
+
+func (r *CreateAuditImagesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAuditImagesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Images")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAuditImagesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAuditImagesResponseParams struct {
+	// <p>创建图片结果详情。</p>
+	Infos []*AuditImageCreateDetail `json:"Infos,omitnil,omitempty" name:"Infos"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateAuditImagesResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateAuditImagesResponseParams `json:"Response"`
+}
+
+func (r *CreateAuditImagesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAuditImagesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateAuditKeywordLibRequestParams struct {
 	// <p>自定义词库名称。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
@@ -2172,7 +2339,7 @@ type CreateAuditKeywordsResponseParams struct {
 	DupInfos []*AuditKeywordInfo `json:"DupInfos,omitnil,omitempty" name:"DupInfos"`
 
 	// <p>新增成功关键词列表</p>
-	Keywords []*AuditKeywordInfo `json:"Keywords,omitnil,omitempty" name:"Keywords"`
+	Keywords *AuditKeywordInfo `json:"Keywords,omitnil,omitempty" name:"Keywords"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -5850,6 +6017,117 @@ type DelayInfo struct {
 }
 
 // Predefined struct for user
+type DeleteAuditImagesRequestParams struct {
+	// <p>图片 Id 列表。</p>
+	ImageIds []*string `json:"ImageIds,omitnil,omitempty" name:"ImageIds"`
+}
+
+type DeleteAuditImagesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>图片 Id 列表。</p>
+	ImageIds []*string `json:"ImageIds,omitnil,omitempty" name:"ImageIds"`
+}
+
+func (r *DeleteAuditImagesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAuditImagesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAuditImagesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAuditImagesResponseParams struct {
+	// <p>创建图片结果详情。</p>
+	Infos []*AuditImageDeleteDetail `json:"Infos,omitnil,omitempty" name:"Infos"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteAuditImagesResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteAuditImagesResponseParams `json:"Response"`
+}
+
+func (r *DeleteAuditImagesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAuditImagesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAuditKeywordLibRequestParams struct {
+	// <p>词库 Id。</p>
+	LibId *string `json:"LibId,omitnil,omitempty" name:"LibId"`
+}
+
+type DeleteAuditKeywordLibRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>词库 Id。</p>
+	LibId *string `json:"LibId,omitnil,omitempty" name:"LibId"`
+}
+
+func (r *DeleteAuditKeywordLibRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAuditKeywordLibRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LibId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAuditKeywordLibRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAuditKeywordLibResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteAuditKeywordLibResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteAuditKeywordLibResponseParams `json:"Response"`
+}
+
+func (r *DeleteAuditKeywordLibResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAuditKeywordLibResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteAuditKeywordsRequestParams struct {
 	// 要删除的关键词 Id 列表。
 	KeywordIds []*string `json:"KeywordIds,omitnil,omitempty" name:"KeywordIds"`
@@ -7974,6 +8252,211 @@ func (r *DescribeAreaBillBandwidthAndFluxListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAreaBillBandwidthAndFluxListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAuditGroupTagRequestParams struct {
+	// <p>标签类别。<br>Other：全量，TagText：文字，TagImage：图片，TagAudio：音频。</p>
+	TagType *string `json:"TagType,omitnil,omitempty" name:"TagType"`
+}
+
+type DescribeAuditGroupTagRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>标签类别。<br>Other：全量，TagText：文字，TagImage：图片，TagAudio：音频。</p>
+	TagType *string `json:"TagType,omitnil,omitempty" name:"TagType"`
+}
+
+func (r *DescribeAuditGroupTagRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAuditGroupTagRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TagType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAuditGroupTagRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAuditGroupTagResponseParams struct {
+	// <p>标签组分类数据按类型返回。</p>
+	GroupTypeList []*AuditGroupInfo `json:"GroupTypeList,omitnil,omitempty" name:"GroupTypeList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAuditGroupTagResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAuditGroupTagResponseParams `json:"Response"`
+}
+
+func (r *DescribeAuditGroupTagResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAuditGroupTagResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAuditImagesRequestParams struct {
+	// <p>违规类型。<br>可取值：Normal: 正常 ，Polity: 政治，Porn: 色情，Sexy：性感，Ad: 广告，Illegal: 违法，Abuse: 谩骂，Terror: 暴恐，Spam: 灌水，Moan:呻吟。</p>
+	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
+
+	// <p>查询页码。</p>
+	PageIndex *int64 `json:"PageIndex,omitnil,omitempty" name:"PageIndex"`
+
+	// <p>查询条目数。</p>
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+type DescribeAuditImagesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>违规类型。<br>可取值：Normal: 正常 ，Polity: 政治，Porn: 色情，Sexy：性感，Ad: 广告，Illegal: 违法，Abuse: 谩骂，Terror: 暴恐，Spam: 灌水，Moan:呻吟。</p>
+	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
+
+	// <p>查询页码。</p>
+	PageIndex *int64 `json:"PageIndex,omitnil,omitempty" name:"PageIndex"`
+
+	// <p>查询条目数。</p>
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+func (r *DescribeAuditImagesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAuditImagesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Label")
+	delete(f, "PageIndex")
+	delete(f, "PageSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAuditImagesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAuditImagesResponseParams struct {
+	// <p>创建图片结果详情。</p>
+	Infos []*AuditImageInfo `json:"Infos,omitnil,omitempty" name:"Infos"`
+
+	// <p>图片总数。</p>
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAuditImagesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAuditImagesResponseParams `json:"Response"`
+}
+
+func (r *DescribeAuditImagesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAuditImagesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAuditKeywordLibsRequestParams struct {
+	// <p>获取偏移量。</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>获取条数。</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>根据关键词库名进行模糊查询。<br>传递空字符串时，忽略。</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+}
+
+type DescribeAuditKeywordLibsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>获取偏移量。</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>获取条数。</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>根据关键词库名进行模糊查询。<br>传递空字符串时，忽略。</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+}
+
+func (r *DescribeAuditKeywordLibsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAuditKeywordLibsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Name")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAuditKeywordLibsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAuditKeywordLibsResponseParams struct {
+	// <p>满足条件的关键词库数量。</p>
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// <p>关键词库信息列表。</p>
+	Infos []*AuditKeywordLibInfo `json:"Infos,omitnil,omitempty" name:"Infos"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAuditKeywordLibsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAuditKeywordLibsResponseParams `json:"Response"`
+}
+
+func (r *DescribeAuditKeywordLibsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAuditKeywordLibsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -17343,6 +17826,81 @@ type MixPortraitSegmentParams struct {
 	// 白色：0xFFFFFF。
 	// 灰色：0x999999。
 	Color *string `json:"Color,omitnil,omitempty" name:"Color"`
+}
+
+// Predefined struct for user
+type ModifyAuditKeywordLibRequestParams struct {
+	// <p>自定义词库名称。</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>自定义词库描述。</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>处理建议。<br>可取值：Review 疑似，Block 违规。</p>
+	Suggestion *string `json:"Suggestion,omitnil,omitempty" name:"Suggestion"`
+
+	// <p>要更新的词库 Id。</p>
+	LibId *string `json:"LibId,omitnil,omitempty" name:"LibId"`
+}
+
+type ModifyAuditKeywordLibRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>自定义词库名称。</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>自定义词库描述。</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>处理建议。<br>可取值：Review 疑似，Block 违规。</p>
+	Suggestion *string `json:"Suggestion,omitnil,omitempty" name:"Suggestion"`
+
+	// <p>要更新的词库 Id。</p>
+	LibId *string `json:"LibId,omitnil,omitempty" name:"LibId"`
+}
+
+func (r *ModifyAuditKeywordLibRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAuditKeywordLibRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "Description")
+	delete(f, "Suggestion")
+	delete(f, "LibId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAuditKeywordLibRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAuditKeywordLibResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyAuditKeywordLibResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyAuditKeywordLibResponseParams `json:"Response"`
+}
+
+func (r *ModifyAuditKeywordLibResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAuditKeywordLibResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

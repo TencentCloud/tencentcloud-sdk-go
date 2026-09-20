@@ -24223,13 +24223,13 @@ type Strategy struct {
 	// 		<tr>
 	// 			<td>CAPTCHA_DEVICE_RISK（验证码设备风险）</td>
 	// 			<td>不支持参数</td>
-	// 			<td>numeq（数值等于）<br />numneq（数值不等于）<br />belong_to（属于）<br />not_belong_to（不属于）<br />null（不存在）<br />nnull（存在）</td>
-	// 			<td>numeq/numneq：Content 为单个设备风险代码字符串；belong_to/not_belong_to：Content 为 JSON 字符串数组的序列化字符串，例如 ["101","201"]，最多7个元素；支持取值：101、201、301、401、501、601、701；null/nnull：Content 必须为空字符串。</td>
+	// 			<td>belong_to（属于）<br />not_belong_to（不属于）<br />null（不存在）<br />nnull（存在）</td>
+	// 			<td>belong_to/not_belong_to：Content 为 JSON 字符串数组的序列化字符串，例如 ["101","201"]，最多7个元素；支持取值：101、201、301、401、501、601、701；null/nnull：Content 必须为空字符串。</td>
 	// 		</tr>
 	// 		<tr>
 	// 			<td>CAPTCHAR_SCORE（验证码风险评估分）</td>
 	// 			<td>不支持参数</td>
-	// 			<td>numeq（数值等于）<br />numneq（数值不等于）<br />numgt（数值大于）<br />numlt（数值小于）<br />numle（数值小于等于）<br />numge（数值大于等于）<br />null（不存在）<br />nnull（存在）</td>
+	// 			<td>numeq（数值等于）<br />numgt（数值大于）<br />numlt（数值小于）<br />numle（数值小于等于）<br />numge（数值大于等于）<br />null（不存在）<br />nnull（存在）</td>
 	// 			<td>数值比较时 Content 为 0-100 的整数字符串；null/nnull 时 Content 必须为空字符串。</td>
 	// 		</tr>
 	// 	</tbody>
@@ -24269,7 +24269,7 @@ type Strategy struct {
 	//     各匹配字段对应的逻辑符号不同，详见上述匹配字段表格
 	CompareFunc *string `json:"CompareFunc,omitnil,omitempty" name:"CompareFunc"`
 
-	// 匹配内容。请根据 Field 和 CompareFunc 按匹配字段表填写。CAPTCHA_RISK、CAPTCHA_DEVICE_RISK 和 CAPTCHAR_SCORE 使用 null/nnull 时必须传空字符串；数值比较传单个整数字符串；CAPTCHA_RISK、CAPTCHA_DEVICE_RISK 使用 belong_to/not_belong_to 时传 JSON 字符串数组的序列化字符串，数组元素范围和数量限制详见 Field。
+	// 匹配内容。验证码字段按 Field 表列出的控制台开放选项配置：CAPTCHA_RISK 支持 numeq、numneq、belong_to、not_belong_to、null、nnull；CAPTCHA_DEVICE_RISK 支持 belong_to、not_belong_to、null、nnull；CAPTCHAR_SCORE 支持 numeq、numgt、numlt、numge、numle、null、nnull。null/nnull 时 Content 必须为空字符串；数值比较传单个整数字符串；集合比较传 JSON 字符串数组的序列化字符串，元素范围和数量限制详见 Field。
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 
 	// 匹配参数

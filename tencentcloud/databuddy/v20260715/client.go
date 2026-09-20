@@ -45,6 +45,50 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewAddConsoleUsersRequest() (request *AddConsoleUsersRequest) {
+    request = &AddConsoleUsersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("databuddy", APIVersion, "AddConsoleUsers")
+    
+    
+    return
+}
+
+func NewAddConsoleUsersResponse() (response *AddConsoleUsersResponse) {
+    response = &AddConsoleUsersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// AddConsoleUsers
+// 添加控制台用户
+func (c *Client) AddConsoleUsers(request *AddConsoleUsersRequest) (response *AddConsoleUsersResponse, err error) {
+    return c.AddConsoleUsersWithContext(context.Background(), request)
+}
+
+// AddConsoleUsers
+// 添加控制台用户
+func (c *Client) AddConsoleUsersWithContext(ctx context.Context, request *AddConsoleUsersRequest) (response *AddConsoleUsersResponse, err error) {
+    if request == nil {
+        request = NewAddConsoleUsersRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "databuddy", APIVersion, "AddConsoleUsers")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddConsoleUsers require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAddConsoleUsersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateFileRequest() (request *CreateFileRequest) {
     request = &CreateFileRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -817,6 +861,84 @@ func (c *Client) KillWorkflowRunWithContext(ctx context.Context, request *KillWo
     return
 }
 
+func NewListConsoleUsersRequest() (request *ListConsoleUsersRequest) {
+    request = &ListConsoleUsersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("databuddy", APIVersion, "ListConsoleUsers")
+    
+    
+    return
+}
+
+func NewListConsoleUsersResponse() (response *ListConsoleUsersResponse) {
+    response = &ListConsoleUsersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListConsoleUsers
+// 查询控制台用户列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CALLTHIRDPARTAPIERROR = "FailedOperation.CallThirdPartApiError"
+//  FAILEDOPERATION_NOWORKFLOWEXECUTIONNEEDOPERATE = "FailedOperation.NoWorkflowExecutionNeedOperate"
+//  FAILEDOPERATION_WORKFLOWEXECUTIONHASBEDELETE = "FailedOperation.WorkflowExecutionHasBeDelete"
+//  FAILEDOPERATION_WORKFLOWNOPERMISSION = "FailedOperation.WorkflowNoPermission"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_PARAMBLANKERROR = "InvalidParameterValue.ParamBlankError"
+//  INVALIDPARAMETERVALUE_PARAMNULLERROR = "InvalidParameterValue.ParamNullError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION_WORKFLOWEXECUTIONHASREACHEDFINALSTATECANNOTBESTOPPED = "UnsupportedOperation.WorkflowExecutionHasReachedFinalStateCannotBeStopped"
+func (c *Client) ListConsoleUsers(request *ListConsoleUsersRequest) (response *ListConsoleUsersResponse, err error) {
+    return c.ListConsoleUsersWithContext(context.Background(), request)
+}
+
+// ListConsoleUsers
+// 查询控制台用户列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CALLTHIRDPARTAPIERROR = "FailedOperation.CallThirdPartApiError"
+//  FAILEDOPERATION_NOWORKFLOWEXECUTIONNEEDOPERATE = "FailedOperation.NoWorkflowExecutionNeedOperate"
+//  FAILEDOPERATION_WORKFLOWEXECUTIONHASBEDELETE = "FailedOperation.WorkflowExecutionHasBeDelete"
+//  FAILEDOPERATION_WORKFLOWNOPERMISSION = "FailedOperation.WorkflowNoPermission"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_PARAMBLANKERROR = "InvalidParameterValue.ParamBlankError"
+//  INVALIDPARAMETERVALUE_PARAMNULLERROR = "InvalidParameterValue.ParamNullError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION_WORKFLOWEXECUTIONHASREACHEDFINALSTATECANNOTBESTOPPED = "UnsupportedOperation.WorkflowExecutionHasReachedFinalStateCannotBeStopped"
+func (c *Client) ListConsoleUsersWithContext(ctx context.Context, request *ListConsoleUsersRequest) (response *ListConsoleUsersResponse, err error) {
+    if request == nil {
+        request = NewListConsoleUsersRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "databuddy", APIVersion, "ListConsoleUsers")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListConsoleUsers require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListConsoleUsersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewListWorkflowRunsRequest() (request *ListWorkflowRunsRequest) {
     request = &ListWorkflowRunsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1025,6 +1147,72 @@ func (c *Client) ListWorkflowsWithContext(ctx context.Context, request *ListWork
     request.SetContext(ctx)
     
     response = NewListWorkflowsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRemoveConsoleUsersRequest() (request *RemoveConsoleUsersRequest) {
+    request = &RemoveConsoleUsersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("databuddy", APIVersion, "RemoveConsoleUsers")
+    
+    
+    return
+}
+
+func NewRemoveConsoleUsersResponse() (response *RemoveConsoleUsersResponse) {
+    response = &RemoveConsoleUsersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RemoveConsoleUsers
+// <p>批量移除控制台用户（单次最多10个；前置校验任一不满足整体拒绝；执行阶段单个失败不中断后续删除，成败以 SuccessUins/FailItems 为准）</p>
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_WORKFLOWNOPERMISSION = "FailedOperation.WorkflowNoPermission"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LISTWORKFLOWFILTERPARAMERROR = "InvalidParameterValue.ListWorkflowFilterParamError"
+//  INVALIDPARAMETERVALUE_PARAMBLANKERROR = "InvalidParameterValue.ParamBlankError"
+//  INVALIDPARAMETERVALUE_PARAMILLEGALERROR = "InvalidParameterValue.ParamIllegalError"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) RemoveConsoleUsers(request *RemoveConsoleUsersRequest) (response *RemoveConsoleUsersResponse, err error) {
+    return c.RemoveConsoleUsersWithContext(context.Background(), request)
+}
+
+// RemoveConsoleUsers
+// <p>批量移除控制台用户（单次最多10个；前置校验任一不满足整体拒绝；执行阶段单个失败不中断后续删除，成败以 SuccessUins/FailItems 为准）</p>
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_WORKFLOWNOPERMISSION = "FailedOperation.WorkflowNoPermission"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LISTWORKFLOWFILTERPARAMERROR = "InvalidParameterValue.ListWorkflowFilterParamError"
+//  INVALIDPARAMETERVALUE_PARAMBLANKERROR = "InvalidParameterValue.ParamBlankError"
+//  INVALIDPARAMETERVALUE_PARAMILLEGALERROR = "InvalidParameterValue.ParamIllegalError"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) RemoveConsoleUsersWithContext(ctx context.Context, request *RemoveConsoleUsersRequest) (response *RemoveConsoleUsersResponse, err error) {
+    if request == nil {
+        request = NewRemoveConsoleUsersRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "databuddy", APIVersion, "RemoveConsoleUsers")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RemoveConsoleUsers require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRemoveConsoleUsersResponse()
     err = c.Send(request, response)
     return
 }
@@ -1245,6 +1433,74 @@ func (c *Client) UnbindWorkflowBundleWithContext(ctx context.Context, request *U
     request.SetContext(ctx)
     
     response = NewUnbindWorkflowBundleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateConsoleUsersRequest() (request *UpdateConsoleUsersRequest) {
+    request = &UpdateConsoleUsersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("databuddy", APIVersion, "UpdateConsoleUsers")
+    
+    
+    return
+}
+
+func NewUpdateConsoleUsersResponse() (response *UpdateConsoleUsersResponse) {
+    response = &UpdateConsoleUsersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateConsoleUsers
+// 修改控制台用户角色
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_UPDATEWORKFLOWFAILED = "FailedOperation.UpdateWorkflowFailed"
+//  FAILEDOPERATION_WORKFLOWBUNDLENOPERMISSION = "FailedOperation.WorkflowBundleNoPermission"
+//  FAILEDOPERATION_WORKFLOWNOPERMISSION = "FailedOperation.WorkflowNoPermission"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_PARAMBLANKERROR = "InvalidParameterValue.ParamBlankError"
+//  INVALIDPARAMETERVALUE_PARAMILLEGALERROR = "InvalidParameterValue.ParamIllegalError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_WORKFLOWNOTFOUND = "ResourceNotFound.WorkflowNotFound"
+func (c *Client) UpdateConsoleUsers(request *UpdateConsoleUsersRequest) (response *UpdateConsoleUsersResponse, err error) {
+    return c.UpdateConsoleUsersWithContext(context.Background(), request)
+}
+
+// UpdateConsoleUsers
+// 修改控制台用户角色
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_UPDATEWORKFLOWFAILED = "FailedOperation.UpdateWorkflowFailed"
+//  FAILEDOPERATION_WORKFLOWBUNDLENOPERMISSION = "FailedOperation.WorkflowBundleNoPermission"
+//  FAILEDOPERATION_WORKFLOWNOPERMISSION = "FailedOperation.WorkflowNoPermission"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_PARAMBLANKERROR = "InvalidParameterValue.ParamBlankError"
+//  INVALIDPARAMETERVALUE_PARAMILLEGALERROR = "InvalidParameterValue.ParamIllegalError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_WORKFLOWNOTFOUND = "ResourceNotFound.WorkflowNotFound"
+func (c *Client) UpdateConsoleUsersWithContext(ctx context.Context, request *UpdateConsoleUsersRequest) (response *UpdateConsoleUsersResponse, err error) {
+    if request == nil {
+        request = NewUpdateConsoleUsersRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "databuddy", APIVersion, "UpdateConsoleUsers")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateConsoleUsers require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateConsoleUsersResponse()
     err = c.Send(request, response)
     return
 }

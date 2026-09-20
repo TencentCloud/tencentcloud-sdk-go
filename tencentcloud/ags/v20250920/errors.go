@@ -41,6 +41,9 @@ const (
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 
+	// InternalError.InternalError
+	INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+
 	// 网络初始化失败
 	INTERNALERROR_NETWORKSETUPFAILED = "InternalError.NetworkSetupFailed"
 
@@ -56,14 +59,35 @@ const (
 	// InvalidParameter.AffinityConfiguration
 	INVALIDPARAMETER_AFFINITYCONFIGURATION = "InvalidParameter.AffinityConfiguration"
 
+	// InvalidParameter.AgentSource
+	INVALIDPARAMETER_AGENTSOURCE = "InvalidParameter.AgentSource"
+
+	// InvalidParameter.CustomDescriptors
+	INVALIDPARAMETER_CUSTOMDESCRIPTORS = "InvalidParameter.CustomDescriptors"
+
+	// 指定的会话空间为系统默认会话空间，不允许删除。
+	INVALIDPARAMETER_DEFAULTSESSIONSPACEPROTECTED = "InvalidParameter.DefaultSessionSpaceProtected"
+
 	// InvalidParameter.DeploymentId
 	INVALIDPARAMETER_DEPLOYMENTID = "InvalidParameter.DeploymentId"
 
 	// InvalidParameter.DeploymentName
 	INVALIDPARAMETER_DEPLOYMENTNAME = "InvalidParameter.DeploymentName"
 
+	// InvalidParameter.Description
+	INVALIDPARAMETER_DESCRIPTION = "InvalidParameter.Description"
+
+	// InvalidParameter.EndTime
+	INVALIDPARAMETER_ENDTIME = "InvalidParameter.EndTime"
+
+	// InvalidParameter.EventIdDuplicate
+	INVALIDPARAMETER_EVENTIDDUPLICATE = "InvalidParameter.EventIdDuplicate"
+
 	// InvalidParameter.Filters
 	INVALIDPARAMETER_FILTERS = "InvalidParameter.Filters"
+
+	// InvalidParameter.InvalidParameter
+	INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
 
 	// InvalidParameter.LifecycleConfiguration
 	INVALIDPARAMETER_LIFECYCLECONFIGURATION = "InvalidParameter.LifecycleConfiguration"
@@ -71,20 +95,65 @@ const (
 	// InvalidParameter.Limit
 	INVALIDPARAMETER_LIMIT = "InvalidParameter.Limit"
 
+	// InvalidParameter.MCPSource
+	INVALIDPARAMETER_MCPSOURCE = "InvalidParameter.MCPSource"
+
+	// InvalidParameter.Name
+	INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+
 	// InvalidParameter.Offset
 	INVALIDPARAMETER_OFFSET = "InvalidParameter.Offset"
+
+	// InvalidParameter.RecordId
+	INVALIDPARAMETER_RECORDID = "InvalidParameter.RecordId"
+
+	// InvalidParameter.RecordSelector
+	INVALIDPARAMETER_RECORDSELECTOR = "InvalidParameter.RecordSelector"
+
+	// InvalidParameter.RecordSource
+	INVALIDPARAMETER_RECORDSOURCE = "InvalidParameter.RecordSource"
+
+	// InvalidParameter.RegistryId
+	INVALIDPARAMETER_REGISTRYID = "InvalidParameter.RegistryId"
 
 	// InvalidParameter.ScalingConfiguration
 	INVALIDPARAMETER_SCALINGCONFIGURATION = "InvalidParameter.ScalingConfiguration"
 
+	// InvalidParameter.SessionIdDuplicate
+	INVALIDPARAMETER_SESSIONIDDUPLICATE = "InvalidParameter.SessionIdDuplicate"
+
+	// InvalidParameter.SkillSource
+	INVALIDPARAMETER_SKILLSOURCE = "InvalidParameter.SkillSource"
+
+	// InvalidParameter.StartTime
+	INVALIDPARAMETER_STARTTIME = "InvalidParameter.StartTime"
+
+	// InvalidParameter.Tags
+	INVALIDPARAMETER_TAGS = "InvalidParameter.Tags"
+
 	// InvalidParameter.ToolId
 	INVALIDPARAMETER_TOOLID = "InvalidParameter.ToolId"
+
+	// InvalidParameter.VersionId
+	INVALIDPARAMETER_VERSIONID = "InvalidParameter.VersionId"
 
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
 
+	// InvalidParameterValue.AgentSourceType
+	INVALIDPARAMETERVALUE_AGENTSOURCETYPE = "InvalidParameterValue.AgentSourceType"
+
+	// InvalidParameterValue.ApprovalMode
+	INVALIDPARAMETERVALUE_APPROVALMODE = "InvalidParameterValue.ApprovalMode"
+
+	// InvalidParameterValue.DescriptorType
+	INVALIDPARAMETERVALUE_DESCRIPTORTYPE = "InvalidParameterValue.DescriptorType"
+
 	// InstanceIds 参数格式错误或 ID 列表超过最大数量限制
 	INVALIDPARAMETERVALUE_INSTANCEIDS = "InvalidParameterValue.InstanceIds"
+
+	// InvalidParameterValue.MCPSourceType
+	INVALIDPARAMETERVALUE_MCPSOURCETYPE = "InvalidParameterValue.MCPSourceType"
 
 	// MountOption部分参数填写错误
 	INVALIDPARAMETERVALUE_MOUNTOPTION = "InvalidParameterValue.MountOption"
@@ -101,6 +170,9 @@ const (
 	// 安全组ID格式错误
 	INVALIDPARAMETERVALUE_SECURITYGROUPID = "InvalidParameterValue.SecurityGroupId"
 
+	// InvalidParameterValue.SkillSourceType
+	INVALIDPARAMETERVALUE_SKILLSOURCETYPE = "InvalidParameterValue.SkillSourceType"
+
 	// StorageMount部分参数错误
 	INVALIDPARAMETERVALUE_STORAGEMOUNT = "InvalidParameterValue.StorageMount"
 
@@ -116,11 +188,17 @@ const (
 	// 不支持的沙箱工具类型
 	INVALIDPARAMETERVALUE_TOOLTYPE = "InvalidParameterValue.ToolType"
 
+	// 超过配额限制。
+	LIMITEXCEEDED = "LimitExceeded"
+
 	// 账号下 API 密钥数量达到上限
 	LIMITEXCEEDED_APIKEYQUOTA = "LimitExceeded.APIKeyQuota"
 
 	// LimitExceeded.Deployment
 	LIMITEXCEEDED_DEPLOYMENT = "LimitExceeded.Deployment"
+
+	// LimitExceeded.RecordLabelCount
+	LIMITEXCEEDED_RECORDLABELCOUNT = "LimitExceeded.RecordLabelCount"
 
 	// 沙箱实例配额超限
 	LIMITEXCEEDED_SANDBOXINSTANCE = "LimitExceeded.SandboxInstance"
@@ -128,8 +206,26 @@ const (
 	// 缺少参数错误。
 	MISSINGPARAMETER = "MissingParameter"
 
+	// MissingParameter.AgentSourceEndpointURL
+	MISSINGPARAMETER_AGENTSOURCEENDPOINTURL = "MissingParameter.AgentSourceEndpointURL"
+
+	// MissingParameter.MCPSourceDescriptors
+	MISSINGPARAMETER_MCPSOURCEDESCRIPTORS = "MissingParameter.MCPSourceDescriptors"
+
+	// MissingParameter.MissingParameter
+	MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+
+	// MissingParameter.Reason
+	MISSINGPARAMETER_REASON = "MissingParameter.Reason"
+
+	// MissingParameter.RecordSource
+	MISSINGPARAMETER_RECORDSOURCE = "MissingParameter.RecordSource"
+
 	// 缺少角色Arn
 	MISSINGPARAMETER_ROLEARN = "MissingParameter.RoleArn"
+
+	// MissingParameter.SkillSourceSkillMd
+	MISSINGPARAMETER_SKILLSOURCESKILLMD = "MissingParameter.SkillSourceSkillMd"
 
 	// VPC网络模式缺少必需参数
 	MISSINGPARAMETER_VPCPARAMETERS = "MissingParameter.VPCParameters"
@@ -146,11 +242,17 @@ const (
 	// 沙箱工具正在使用中
 	RESOURCEINUSE_SANDBOXTOOL = "ResourceInUse.SandboxTool"
 
+	// 指定的会话空间中仍存在会话、事件或用户状态数据，不能删除。
+	RESOURCEINUSE_SESSIONSPACENOTEMPTY = "ResourceInUse.SessionSpaceNotEmpty"
+
 	// 资源不存在。
 	RESOURCENOTFOUND = "ResourceNotFound"
 
 	// ResourceNotFound.Deployment
 	RESOURCENOTFOUND_DEPLOYMENT = "ResourceNotFound.Deployment"
+
+	// ResourceNotFound.RegistryRecord
+	RESOURCENOTFOUND_REGISTRYRECORD = "ResourceNotFound.RegistryRecord"
 
 	// 沙箱实例不存在
 	RESOURCENOTFOUND_SANDBOXINSTANCE = "ResourceNotFound.SandboxInstance"
@@ -160,6 +262,15 @@ const (
 
 	// 安全组不存在或不属于用户
 	RESOURCENOTFOUND_SECURITYGROUP = "ResourceNotFound.SecurityGroup"
+
+	// ResourceNotFound.Session
+	RESOURCENOTFOUND_SESSION = "ResourceNotFound.Session"
+
+	// Session 不存在，或 UserId 无权限访问该 Session
+	RESOURCENOTFOUND_SESSIONNOTEXIST = "ResourceNotFound.SessionNotExist"
+
+	// 指定的会话空间不存在，或不属于当前应用及地域。
+	RESOURCENOTFOUND_SESSIONSPACENOTEXIST = "ResourceNotFound.SessionSpaceNotExist"
 
 	// 指定的StorageMount不存在
 	RESOURCENOTFOUND_STORAGEMOUNT = "ResourceNotFound.StorageMount"
@@ -178,6 +289,12 @@ const (
 
 	// 未授权操作。
 	UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+
+	// UnauthorizedOperation.UnauthorizedOperation
+	UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+
+	// 未知参数错误。
+	UNKNOWNPARAMETER = "UnknownParameter"
 
 	// 操作不支持。
 	UNSUPPORTEDOPERATION = "UnsupportedOperation"

@@ -1037,6 +1037,78 @@ func (c *Client) CopyLiveAvatarRoomWithContext(ctx context.Context, request *Cop
     return
 }
 
+func NewCreateAuditImagesRequest() (request *CreateAuditImagesRequest) {
+    request = &CreateAuditImagesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "CreateAuditImages")
+    
+    
+    return
+}
+
+func NewCreateAuditImagesResponse() (response *CreateAuditImagesResponse) {
+    response = &CreateAuditImagesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateAuditImages
+// 直播审核图库添加图片，添加到预设库，图库不需要创建。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CASTERNOTFOUND = "FailedOperation.CasterNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateAuditImages(request *CreateAuditImagesRequest) (response *CreateAuditImagesResponse, err error) {
+    return c.CreateAuditImagesWithContext(context.Background(), request)
+}
+
+// CreateAuditImages
+// 直播审核图库添加图片，添加到预设库，图库不需要创建。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CASTERNOTFOUND = "FailedOperation.CasterNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateAuditImagesWithContext(ctx context.Context, request *CreateAuditImagesRequest) (response *CreateAuditImagesResponse, err error) {
+    if request == nil {
+        request = NewCreateAuditImagesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "live", APIVersion, "CreateAuditImages")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAuditImages require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateAuditImagesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAuditKeywordLibRequest() (request *CreateAuditKeywordLibRequest) {
     request = &CreateAuditKeywordLibRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3937,6 +4009,106 @@ func (c *Client) CreateVideoRedrawTaskWithContext(ctx context.Context, request *
     return
 }
 
+func NewDeleteAuditImagesRequest() (request *DeleteAuditImagesRequest) {
+    request = &DeleteAuditImagesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "DeleteAuditImages")
+    
+    
+    return
+}
+
+func NewDeleteAuditImagesResponse() (response *DeleteAuditImagesResponse) {
+    response = &DeleteAuditImagesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteAuditImages
+// 直播审核图库删除图片。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DeleteAuditImages(request *DeleteAuditImagesRequest) (response *DeleteAuditImagesResponse, err error) {
+    return c.DeleteAuditImagesWithContext(context.Background(), request)
+}
+
+// DeleteAuditImages
+// 直播审核图库删除图片。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DeleteAuditImagesWithContext(ctx context.Context, request *DeleteAuditImagesRequest) (response *DeleteAuditImagesResponse, err error) {
+    if request == nil {
+        request = NewDeleteAuditImagesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "live", APIVersion, "DeleteAuditImages")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAuditImages require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteAuditImagesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteAuditKeywordLibRequest() (request *DeleteAuditKeywordLibRequest) {
+    request = &DeleteAuditKeywordLibRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "DeleteAuditKeywordLib")
+    
+    
+    return
+}
+
+func NewDeleteAuditKeywordLibResponse() (response *DeleteAuditKeywordLibResponse) {
+    response = &DeleteAuditKeywordLibResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteAuditKeywordLib
+// 删除关键词库，直播审核功能使用。
+//
+// 可能返回的错误码:
+//  RESOURCEINUSE = "ResourceInUse"
+func (c *Client) DeleteAuditKeywordLib(request *DeleteAuditKeywordLibRequest) (response *DeleteAuditKeywordLibResponse, err error) {
+    return c.DeleteAuditKeywordLibWithContext(context.Background(), request)
+}
+
+// DeleteAuditKeywordLib
+// 删除关键词库，直播审核功能使用。
+//
+// 可能返回的错误码:
+//  RESOURCEINUSE = "ResourceInUse"
+func (c *Client) DeleteAuditKeywordLibWithContext(ctx context.Context, request *DeleteAuditKeywordLibRequest) (response *DeleteAuditKeywordLibResponse, err error) {
+    if request == nil {
+        request = NewDeleteAuditKeywordLibRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "live", APIVersion, "DeleteAuditKeywordLib")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAuditKeywordLib require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteAuditKeywordLibResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteAuditKeywordsRequest() (request *DeleteAuditKeywordsRequest) {
     request = &DeleteAuditKeywordsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6515,6 +6687,180 @@ func (c *Client) DescribeAreaBillBandwidthAndFluxListWithContext(ctx context.Con
     request.SetContext(ctx)
     
     response = NewDescribeAreaBillBandwidthAndFluxListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAuditGroupTagRequest() (request *DescribeAuditGroupTagRequest) {
+    request = &DescribeAuditGroupTagRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "DescribeAuditGroupTag")
+    
+    
+    return
+}
+
+func NewDescribeAuditGroupTagResponse() (response *DescribeAuditGroupTagResponse) {
+    response = &DescribeAuditGroupTagResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAuditGroupTag
+// 获取标签组分类数据，直播审核中。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) DescribeAuditGroupTag(request *DescribeAuditGroupTagRequest) (response *DescribeAuditGroupTagResponse, err error) {
+    return c.DescribeAuditGroupTagWithContext(context.Background(), request)
+}
+
+// DescribeAuditGroupTag
+// 获取标签组分类数据，直播审核中。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) DescribeAuditGroupTagWithContext(ctx context.Context, request *DescribeAuditGroupTagRequest) (response *DescribeAuditGroupTagResponse, err error) {
+    if request == nil {
+        request = NewDescribeAuditGroupTagRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "live", APIVersion, "DescribeAuditGroupTag")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAuditGroupTag require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAuditGroupTagResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAuditImagesRequest() (request *DescribeAuditImagesRequest) {
+    request = &DescribeAuditImagesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "DescribeAuditImages")
+    
+    
+    return
+}
+
+func NewDescribeAuditImagesResponse() (response *DescribeAuditImagesResponse) {
+    response = &DescribeAuditImagesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAuditImages
+// 直播审核图库获取图片。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) DescribeAuditImages(request *DescribeAuditImagesRequest) (response *DescribeAuditImagesResponse, err error) {
+    return c.DescribeAuditImagesWithContext(context.Background(), request)
+}
+
+// DescribeAuditImages
+// 直播审核图库获取图片。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) DescribeAuditImagesWithContext(ctx context.Context, request *DescribeAuditImagesRequest) (response *DescribeAuditImagesResponse, err error) {
+    if request == nil {
+        request = NewDescribeAuditImagesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "live", APIVersion, "DescribeAuditImages")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAuditImages require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAuditImagesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAuditKeywordLibsRequest() (request *DescribeAuditKeywordLibsRequest) {
+    request = &DescribeAuditKeywordLibsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "DescribeAuditKeywordLibs")
+    
+    
+    return
+}
+
+func NewDescribeAuditKeywordLibsResponse() (response *DescribeAuditKeywordLibsResponse) {
+    response = &DescribeAuditKeywordLibsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAuditKeywordLibs
+// 获取关键词库列表，直播审核功能使用。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeAuditKeywordLibs(request *DescribeAuditKeywordLibsRequest) (response *DescribeAuditKeywordLibsResponse, err error) {
+    return c.DescribeAuditKeywordLibsWithContext(context.Background(), request)
+}
+
+// DescribeAuditKeywordLibs
+// 获取关键词库列表，直播审核功能使用。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeAuditKeywordLibsWithContext(ctx context.Context, request *DescribeAuditKeywordLibsRequest) (response *DescribeAuditKeywordLibsResponse, err error) {
+    if request == nil {
+        request = NewDescribeAuditKeywordLibsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "live", APIVersion, "DescribeAuditKeywordLibs")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAuditKeywordLibs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAuditKeywordLibsResponse()
     err = c.Send(request, response)
     return
 }
@@ -14443,6 +14789,64 @@ func (c *Client) InsertTaskTemporaryFilesWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewInsertTaskTemporaryFilesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyAuditKeywordLibRequest() (request *ModifyAuditKeywordLibRequest) {
+    request = &ModifyAuditKeywordLibRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "ModifyAuditKeywordLib")
+    
+    
+    return
+}
+
+func NewModifyAuditKeywordLibResponse() (response *ModifyAuditKeywordLibResponse) {
+    response = &ModifyAuditKeywordLibResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyAuditKeywordLib
+// 更新关键词库信息，直播审核功能使用。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_TASKNOTEXIST = "InvalidParameter.TaskNotExist"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) ModifyAuditKeywordLib(request *ModifyAuditKeywordLibRequest) (response *ModifyAuditKeywordLibResponse, err error) {
+    return c.ModifyAuditKeywordLibWithContext(context.Background(), request)
+}
+
+// ModifyAuditKeywordLib
+// 更新关键词库信息，直播审核功能使用。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_TASKNOTEXIST = "InvalidParameter.TaskNotExist"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) ModifyAuditKeywordLibWithContext(ctx context.Context, request *ModifyAuditKeywordLibRequest) (response *ModifyAuditKeywordLibResponse, err error) {
+    if request == nil {
+        request = NewModifyAuditKeywordLibRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "live", APIVersion, "ModifyAuditKeywordLib")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAuditKeywordLib require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyAuditKeywordLibResponse()
     err = c.Send(request, response)
     return
 }

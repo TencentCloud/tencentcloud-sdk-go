@@ -1765,8 +1765,10 @@ func NewExtractDocMultiResponse() (response *ExtractDocMultiResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_FILEDECODEFAILED = "FailedOperation.FileDecodeFailed"
 //  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
 //  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_PDFPARSEFAILED = "FailedOperation.PDFParseFailed"
 //  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
@@ -1791,8 +1793,10 @@ func (c *Client) ExtractDocMulti(request *ExtractDocMultiRequest) (response *Ext
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_FILEDECODEFAILED = "FailedOperation.FileDecodeFailed"
 //  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
 //  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_PDFPARSEFAILED = "FailedOperation.PDFParseFailed"
 //  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
@@ -3875,7 +3879,7 @@ func NewMultimodalDocParseResponse() (response *MultimodalDocParseResponse) {
 //
 // 
 //
-// 默认接口请求频率限制：5 并发。
+// 默认接口请求频率限制：5 页并发（注：可同时解析5页，且同步和异步接口共享并发资源，支持增购并发）。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
@@ -3900,7 +3904,7 @@ func (c *Client) MultimodalDocParse(request *MultimodalDocParseRequest) (respons
 //
 // 
 //
-// 默认接口请求频率限制：5 并发。
+// 默认接口请求频率限制：5 页并发（注：可同时解析5页，且同步和异步接口共享并发资源，支持增购并发）。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"

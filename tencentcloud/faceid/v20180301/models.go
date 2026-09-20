@@ -562,7 +562,7 @@ type CheckIdCardInformationRequestParams struct {
 	// <p>身份证人像面的 Base64 值。</p><ul><li>支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。</li><li>支持的图片大小：所下载图片经Base64编码后不超过 7M。</li><li>请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。</li><li>ImageBase64、ImageUrl二者必须提供其中之一。若都提供了，则按照ImageUrl&gt;ImageBase64的优先级使用参数。</li></ul>
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
 
-	// <p>身份证人像面的 Url 地址</p><ul><li>支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。</li><li>支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。</li><li>图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。</li><li>非腾讯云存储的 Url 速度和稳定性可能受一定影响。</li></ul>
+	// <p>身份证人像面的 Url 地址</p><ul><li>支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。</li><li>支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。</li><li>图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。</li><li>非腾讯云存储的 Url 速度和稳定性可能受一定影响。</li></ul>
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 
 	// <p>配置。</p><ul><li><p>以下可选字段均为bool 类型，默认false。<br>CopyWarn，复印件告警。<br>BorderCheckWarn，边框和框内遮挡告警。<br>ReshootWarn，翻拍告警。<br>DetectPsWarn，PS检测告警（疑似存在PS痕迹）。<br>TempIdWarn，临时身份证告警。<br>Quality，图片质量告警（评价图片模糊程度）。</p></li><li><p>SDK 设置方式参考：<br>Config = Json.stringify({&quot;CopyWarn&quot;:true,&quot;ReshootWarn&quot;:true})。</p></li><li><p>API 3.0 Explorer 设置方式参考：<br>Config = {&quot;CopyWarn&quot;:true,&quot;ReshootWarn&quot;:true}。</p></li></ul>
@@ -584,7 +584,7 @@ type CheckIdCardInformationRequest struct {
 	// <p>身份证人像面的 Base64 值。</p><ul><li>支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。</li><li>支持的图片大小：所下载图片经Base64编码后不超过 7M。</li><li>请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。</li><li>ImageBase64、ImageUrl二者必须提供其中之一。若都提供了，则按照ImageUrl&gt;ImageBase64的优先级使用参数。</li></ul>
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
 
-	// <p>身份证人像面的 Url 地址</p><ul><li>支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。</li><li>支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。</li><li>图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。</li><li>非腾讯云存储的 Url 速度和稳定性可能受一定影响。</li></ul>
+	// <p>身份证人像面的 Url 地址</p><ul><li>支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。</li><li>支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。</li><li>图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。</li><li>非腾讯云存储的 Url 速度和稳定性可能受一定影响。</li></ul>
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 
 	// <p>配置。</p><ul><li><p>以下可选字段均为bool 类型，默认false。<br>CopyWarn，复印件告警。<br>BorderCheckWarn，边框和框内遮挡告警。<br>ReshootWarn，翻拍告警。<br>DetectPsWarn，PS检测告警（疑似存在PS痕迹）。<br>TempIdWarn，临时身份证告警。<br>Quality，图片质量告警（评价图片模糊程度）。</p></li><li><p>SDK 设置方式参考：<br>Config = Json.stringify({&quot;CopyWarn&quot;:true,&quot;ReshootWarn&quot;:true})。</p></li><li><p>API 3.0 Explorer 设置方式参考：<br>Config = {&quot;CopyWarn&quot;:true,&quot;ReshootWarn&quot;:true}。</p></li></ul>
@@ -3179,7 +3179,7 @@ type ImageRecognitionV2RequestParams struct {
 	// <p>敏感数据加密信息。</p><ul><li>对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。</li></ul>
 	Encryption *Encryption `json:"Encryption,omitnil,omitempty" name:"Encryption"`
 
-	// <p>自定义描述字段。</p><ul><li>用于描述调用业务信息，出参中将返回此描述字段。 </li><li>每个自定义描述字段支持[1,10]个字符。</li></ul>
+	// <p>自定义描述字段。</p><ul><li><p>用于描述调用业务信息，出参中将返回此描述字段。</p></li><li><p>每个自定义描述字段最长支持10 个字符（即 [0,10] 个字符）；不传该参数时，出参中此字段返回空字符串。</p></li></ul>
 	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
 }
 
@@ -3201,7 +3201,7 @@ type ImageRecognitionV2Request struct {
 	// <p>敏感数据加密信息。</p><ul><li>对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。</li></ul>
 	Encryption *Encryption `json:"Encryption,omitnil,omitempty" name:"Encryption"`
 
-	// <p>自定义描述字段。</p><ul><li>用于描述调用业务信息，出参中将返回此描述字段。 </li><li>每个自定义描述字段支持[1,10]个字符。</li></ul>
+	// <p>自定义描述字段。</p><ul><li><p>用于描述调用业务信息，出参中将返回此描述字段。</p></li><li><p>每个自定义描述字段最长支持10 个字符（即 [0,10] 个字符）；不传该参数时，出参中此字段返回空字符串。</p></li></ul>
 	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
 }
 

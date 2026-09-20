@@ -2201,6 +2201,9 @@ type AssetProviderDistributeInfo struct {
 
 	// <p>微软云资产数量</p>
 	AzureAssetCount *uint64 `json:"AzureAssetCount,omitnil,omitempty" name:"AzureAssetCount"`
+
+	// <p>腾讯TCE专有云资产数量</p>
+	TceAssetCount *uint64 `json:"TceAssetCount,omitnil,omitempty" name:"TceAssetCount"`
 }
 
 type AssetRiskContent struct {
@@ -4039,81 +4042,6 @@ type BehaviorSummary struct {
 	// 是否接入
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsAccess *bool `json:"IsAccess,omitnil,omitempty" name:"IsAccess"`
-}
-
-// Predefined struct for user
-type BindClusterOwnerRequestParams struct {
-	// <p>集群资产id</p>
-	ClusterAssetIds []*string `json:"ClusterAssetIds,omitnil,omitempty" name:"ClusterAssetIds"`
-
-	// <p>集团账号的成员id</p>
-	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
-
-	// <p>负责人名称</p>
-	OwnerName *string `json:"OwnerName,omitnil,omitempty" name:"OwnerName"`
-
-	// <p>集群CAMD5值</p>
-	ClusterCaMD5List []*string `json:"ClusterCaMD5List,omitnil,omitempty" name:"ClusterCaMD5List"`
-}
-
-type BindClusterOwnerRequest struct {
-	*tchttp.BaseRequest
-	
-	// <p>集群资产id</p>
-	ClusterAssetIds []*string `json:"ClusterAssetIds,omitnil,omitempty" name:"ClusterAssetIds"`
-
-	// <p>集团账号的成员id</p>
-	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
-
-	// <p>负责人名称</p>
-	OwnerName *string `json:"OwnerName,omitnil,omitempty" name:"OwnerName"`
-
-	// <p>集群CAMD5值</p>
-	ClusterCaMD5List []*string `json:"ClusterCaMD5List,omitnil,omitempty" name:"ClusterCaMD5List"`
-}
-
-func (r *BindClusterOwnerRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *BindClusterOwnerRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "ClusterAssetIds")
-	delete(f, "MemberId")
-	delete(f, "OwnerName")
-	delete(f, "ClusterCaMD5List")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BindClusterOwnerRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type BindClusterOwnerResponseParams struct {
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type BindClusterOwnerResponse struct {
-	*tchttp.BaseResponse
-	Response *BindClusterOwnerResponseParams `json:"Response"`
-}
-
-func (r *BindClusterOwnerResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *BindClusterOwnerResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type BruteAttackRule struct {
@@ -8348,6 +8276,9 @@ type CreateCFGRiskPDFReportExportJobRequestParams struct {
 
 	// <p>排序字段</p>
 	By *string `json:"By,omitnil,omitempty" name:"By"`
+
+	// <p>资产标签ID</p>
+	AssetTagIDs []*uint64 `json:"AssetTagIDs,omitnil,omitempty" name:"AssetTagIDs"`
 }
 
 type CreateCFGRiskPDFReportExportJobRequest struct {
@@ -8373,6 +8304,9 @@ type CreateCFGRiskPDFReportExportJobRequest struct {
 
 	// <p>排序字段</p>
 	By *string `json:"By,omitnil,omitempty" name:"By"`
+
+	// <p>资产标签ID</p>
+	AssetTagIDs []*uint64 `json:"AssetTagIDs,omitnil,omitempty" name:"AssetTagIDs"`
 }
 
 func (r *CreateCFGRiskPDFReportExportJobRequest) ToJsonString() string {
@@ -8394,6 +8328,7 @@ func (r *CreateCFGRiskPDFReportExportJobRequest) FromJsonString(s string) error 
 	delete(f, "Offset")
 	delete(f, "Order")
 	delete(f, "By")
+	delete(f, "AssetTagIDs")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCFGRiskPDFReportExportJobRequest has unknown keys!", "")
 	}
@@ -8447,6 +8382,9 @@ type CreateCFGRisksExportJobRequestParams struct {
 
 	// <p>规范ID</p>
 	StandardIDs []*uint64 `json:"StandardIDs,omitnil,omitempty" name:"StandardIDs"`
+
+	// <p>资产标签ID</p>
+	AssetTagIDs []*uint64 `json:"AssetTagIDs,omitnil,omitempty" name:"AssetTagIDs"`
 }
 
 type CreateCFGRisksExportJobRequest struct {
@@ -8472,6 +8410,9 @@ type CreateCFGRisksExportJobRequest struct {
 
 	// <p>规范ID</p>
 	StandardIDs []*uint64 `json:"StandardIDs,omitnil,omitempty" name:"StandardIDs"`
+
+	// <p>资产标签ID</p>
+	AssetTagIDs []*uint64 `json:"AssetTagIDs,omitnil,omitempty" name:"AssetTagIDs"`
 }
 
 func (r *CreateCFGRisksExportJobRequest) ToJsonString() string {
@@ -8493,6 +8434,7 @@ func (r *CreateCFGRisksExportJobRequest) FromJsonString(s string) error {
 	delete(f, "Order")
 	delete(f, "By")
 	delete(f, "StandardIDs")
+	delete(f, "AssetTagIDs")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCFGRisksExportJobRequest has unknown keys!", "")
 	}
@@ -14998,7 +14940,7 @@ func (r *CreateSandboxLLMAuditRuleResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateScanStatisticExportJobRequestParams struct {
-	// 集团账号的成员id
+	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
 	// 过滤内容
@@ -15023,7 +14965,7 @@ type CreateScanStatisticExportJobRequestParams struct {
 type CreateScanStatisticExportJobRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集团账号的成员id
+	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
 	// 过滤内容
@@ -15938,6 +15880,9 @@ type CustomRiskRuleItem struct {
 
 	// <p>资产类型图标</p>
 	AssetTypeIconURL *string `json:"AssetTypeIconURL,omitnil,omitempty" name:"AssetTypeIconURL"`
+
+	// <p>规则默认开启状态</p>
+	EnableDefault *uint64 `json:"EnableDefault,omitnil,omitempty" name:"EnableDefault"`
 }
 
 type CustomTag struct {
@@ -24422,6 +24367,9 @@ type DescribeCFGRiskReportStatisticsRequestParams struct {
 
 	// <p>规范ID</p>
 	StandardIDs []*uint64 `json:"StandardIDs,omitnil,omitempty" name:"StandardIDs"`
+
+	// <p>资产标签ID</p>
+	AssetTagIDs []*uint64 `json:"AssetTagIDs,omitnil,omitempty" name:"AssetTagIDs"`
 }
 
 type DescribeCFGRiskReportStatisticsRequest struct {
@@ -24432,6 +24380,9 @@ type DescribeCFGRiskReportStatisticsRequest struct {
 
 	// <p>规范ID</p>
 	StandardIDs []*uint64 `json:"StandardIDs,omitnil,omitempty" name:"StandardIDs"`
+
+	// <p>资产标签ID</p>
+	AssetTagIDs []*uint64 `json:"AssetTagIDs,omitnil,omitempty" name:"AssetTagIDs"`
 }
 
 func (r *DescribeCFGRiskReportStatisticsRequest) ToJsonString() string {
@@ -24448,6 +24399,7 @@ func (r *DescribeCFGRiskReportStatisticsRequest) FromJsonString(s string) error 
 	}
 	delete(f, "MemberId")
 	delete(f, "StandardIDs")
+	delete(f, "AssetTagIDs")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCFGRiskReportStatisticsRequest has unknown keys!", "")
 	}
@@ -25696,6 +25648,9 @@ func (r *DescribeCWPExposePathRequest) FromJsonString(s string) error {
 type DescribeCWPExposePathResponseParams struct {
 	// <p>云边界分析路径节点内容</p>
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// <p>互联网节点数量</p>
+	PathCount *uint64 `json:"PathCount,omitnil,omitempty" name:"PathCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -28113,73 +28068,6 @@ func (r *DescribeClusterInstallCommandResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeClusterInstallCommandResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeClusterListV2RequestParams struct {
-	// <p>集团账号的成员id</p>
-	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
-
-	// <p>通用过滤条件列表。支持的过滤字段：<br>ClusterId：集群ID，精确匹配。<br>ClusterName：集群名称，模糊匹配。<br>ClusterType：集群类型，精确匹配。取值：TKE_MANAGED_CLUSTER（腾讯云标准集群）、TKE_INDEPENDENT_CLUSTER（标准集群Master自维护）、TKE_SERVERLESS_CLUSTER（Serverless集群）、TKE_EDGE_CLUSTER（边缘集群）、SELF_BUILT（腾讯云内自建）、SELF_BUILT_OTHER（非腾讯云自建/混合云）。<br>RunStatus：集群运行状态，精确匹配。取值：Running（运行中）、Exception（异常）、Unknown（未知）。<br>AccessedStatus：接入状态，精确匹配。取值：AccessedNone（未接入）、AccessedInstalling（接入中）、AccessedException（接入异常）、AccessedInstalled（已接入）。<br>DefendStatus：防护状态，精确匹配。取值：Enabled（已防护）、Partial（部分防护）、Disabled（未防护）。<br>RiskStatus：风险检查状态，精确匹配。<br>RiskLevel：风险等级，精确匹配。取值：CRITICAL、HIGH、MEDIUM、LOW、NONE（无风险）。<br>HasHighRisk：仅筛选含高危及以上风险的集群，无需填入 value，传入 HasHighRisk 即生效。<br>Region：地域，精确匹配。<br>OwnerName：负责人，模糊匹配。<br>ClusterAssetIds：集群资产ID，精确匹配。<br>ExcludeClusterAssetIds：排除的集群资产ID，精确排除。</p>
-	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
-}
-
-type DescribeClusterListV2Request struct {
-	*tchttp.BaseRequest
-	
-	// <p>集团账号的成员id</p>
-	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
-
-	// <p>通用过滤条件列表。支持的过滤字段：<br>ClusterId：集群ID，精确匹配。<br>ClusterName：集群名称，模糊匹配。<br>ClusterType：集群类型，精确匹配。取值：TKE_MANAGED_CLUSTER（腾讯云标准集群）、TKE_INDEPENDENT_CLUSTER（标准集群Master自维护）、TKE_SERVERLESS_CLUSTER（Serverless集群）、TKE_EDGE_CLUSTER（边缘集群）、SELF_BUILT（腾讯云内自建）、SELF_BUILT_OTHER（非腾讯云自建/混合云）。<br>RunStatus：集群运行状态，精确匹配。取值：Running（运行中）、Exception（异常）、Unknown（未知）。<br>AccessedStatus：接入状态，精确匹配。取值：AccessedNone（未接入）、AccessedInstalling（接入中）、AccessedException（接入异常）、AccessedInstalled（已接入）。<br>DefendStatus：防护状态，精确匹配。取值：Enabled（已防护）、Partial（部分防护）、Disabled（未防护）。<br>RiskStatus：风险检查状态，精确匹配。<br>RiskLevel：风险等级，精确匹配。取值：CRITICAL、HIGH、MEDIUM、LOW、NONE（无风险）。<br>HasHighRisk：仅筛选含高危及以上风险的集群，无需填入 value，传入 HasHighRisk 即生效。<br>Region：地域，精确匹配。<br>OwnerName：负责人，模糊匹配。<br>ClusterAssetIds：集群资产ID，精确匹配。<br>ExcludeClusterAssetIds：排除的集群资产ID，精确排除。</p>
-	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
-}
-
-func (r *DescribeClusterListV2Request) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeClusterListV2Request) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "MemberId")
-	delete(f, "Filter")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeClusterListV2Request has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeClusterListV2ResponseParams struct {
-	// <p>总数</p>
-	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
-
-	// <p>列表</p>
-	List []*ClusterListItem `json:"List,omitnil,omitempty" name:"List"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DescribeClusterListV2Response struct {
-	*tchttp.BaseResponse
-	Response *DescribeClusterListV2ResponseParams `json:"Response"`
-}
-
-func (r *DescribeClusterListV2Response) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeClusterListV2Response) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -33044,39 +32932,45 @@ func (r *DescribeDspmAssetDatabasesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDspmAssetFieldListRequestParams struct {
-	// 资产实例id
+	// <p>资产实例id</p>
 	AssetId *string `json:"AssetId,omitnil,omitempty" name:"AssetId"`
 
-	// 数据库名称
+	// <p>数据库名称</p>
 	DbName *string `json:"DbName,omitnil,omitempty" name:"DbName"`
 
-	// 表名
+	// <p>表名</p>
 	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
 
 	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
-	// 筛选项
+	// <p>筛选项</p>
 	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
+
+	// <p>SchemaName</p>
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
 }
 
 type DescribeDspmAssetFieldListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 资产实例id
+	// <p>资产实例id</p>
 	AssetId *string `json:"AssetId,omitnil,omitempty" name:"AssetId"`
 
-	// 数据库名称
+	// <p>数据库名称</p>
 	DbName *string `json:"DbName,omitnil,omitempty" name:"DbName"`
 
-	// 表名
+	// <p>表名</p>
 	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
 
 	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
-	// 筛选项
+	// <p>筛选项</p>
 	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
+
+	// <p>SchemaName</p>
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
 }
 
 func (r *DescribeDspmAssetFieldListRequest) ToJsonString() string {
@@ -33096,6 +32990,7 @@ func (r *DescribeDspmAssetFieldListRequest) FromJsonString(s string) error {
 	delete(f, "TableName")
 	delete(f, "MemberId")
 	delete(f, "Filter")
+	delete(f, "SchemaName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDspmAssetFieldListRequest has unknown keys!", "")
 	}
@@ -33104,10 +32999,10 @@ func (r *DescribeDspmAssetFieldListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDspmAssetFieldListResponseParams struct {
-	// 总数
+	// <p>总数</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 结果集
+	// <p>结果集</p>
 	DataSet []*DspmAssetFieldInfo `json:"DataSet,omitnil,omitempty" name:"DataSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -33578,32 +33473,38 @@ func (r *DescribeDspmAssetSupportedPrivilegesResponse) FromJsonString(s string) 
 
 // Predefined struct for user
 type DescribeDspmAssetTableListRequestParams struct {
-	// 资产实例id
+	// <p>资产实例id</p>
 	AssetId *string `json:"AssetId,omitnil,omitempty" name:"AssetId"`
 
-	// 数据库名称
+	// <p>数据库名称</p>
 	DbName *string `json:"DbName,omitnil,omitempty" name:"DbName"`
+
+	// <p>Schema名称</p>
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
 
 	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
-	// 筛选项
+	// <p>筛选项</p>
 	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
 }
 
 type DescribeDspmAssetTableListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 资产实例id
+	// <p>资产实例id</p>
 	AssetId *string `json:"AssetId,omitnil,omitempty" name:"AssetId"`
 
-	// 数据库名称
+	// <p>数据库名称</p>
 	DbName *string `json:"DbName,omitnil,omitempty" name:"DbName"`
+
+	// <p>Schema名称</p>
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
 
 	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
-	// 筛选项
+	// <p>筛选项</p>
 	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
 }
 
@@ -33621,6 +33522,7 @@ func (r *DescribeDspmAssetTableListRequest) FromJsonString(s string) error {
 	}
 	delete(f, "AssetId")
 	delete(f, "DbName")
+	delete(f, "SchemaName")
 	delete(f, "MemberId")
 	delete(f, "Filter")
 	if len(f) > 0 {
@@ -33631,10 +33533,10 @@ func (r *DescribeDspmAssetTableListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDspmAssetTableListResponseParams struct {
-	// 总数
+	// <p>总数</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 结果集
+	// <p>结果集</p>
 	DataSet []*DspmAssetTableInfo `json:"DataSet,omitnil,omitempty" name:"DataSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -36465,7 +36367,7 @@ type DescribeDspmSessionListRequestParams struct {
 	// <p>偏移量</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// <p>登陆状态(0 全部 1 成功 2 失败)</p>
+	// <p>登录状态</p><p>枚举值：</p><ul><li>0： 全部</li><li>1： 成功</li><li>2： 失败</li></ul>
 	LoginType *int64 `json:"LoginType,omitnil,omitempty" name:"LoginType"`
 
 	// <p>数据库端口</p>
@@ -36514,7 +36416,7 @@ type DescribeDspmSessionListRequest struct {
 	// <p>偏移量</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// <p>登陆状态(0 全部 1 成功 2 失败)</p>
+	// <p>登录状态</p><p>枚举值：</p><ul><li>0： 全部</li><li>1： 成功</li><li>2： 失败</li></ul>
 	LoginType *int64 `json:"LoginType,omitnil,omitempty" name:"LoginType"`
 
 	// <p>数据库端口</p>
@@ -37620,7 +37522,7 @@ type DescribeEdrAlertListRequestParams struct {
 	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
-	// <p>PolicyType - int - 是否必填：否 - 策略类型PolicyName - string - 是否必填：否 - 策略名称Domain - string - 是否必填：否 - 域名(先对域名做urlencode,再base64)PolicyAction- int - 是否必填：否 - 策略动作IsEnabled - int - 是否必填：否 - 是否生效</p>
+	// <p>过滤条件，支持的 Name 如下：<br/>【资源属性过滤】（前缀模糊，后端自动反查资产后按实例过滤）<br/>InstanceName - string - 是否必填：否 - 资产名称（前缀匹配）<br/>InstanceID - string - 是否必填：否 - 实例ID（前缀匹配）<br/>IP - string - 是否必填：否 - IP地址，支持内网/外网IP（前缀匹配）<br/>Tags - string - 是否必填：否 - 腾讯云标签，格式 tagKey$tagValue（仅单账号场景生效）<br/>CSIPTag - string - 是否必填：否 - 安全中心标签名称（前缀匹配，按语言环境匹配中/英文字段）<br/>AssetTagIds - string - 是否必填：否 - 安全中心资产标签ID（精确匹配，多个标签ID之间为或关系；标签ID可通过资产中心标签树接口 DescribeAssetTagTree 获取）<br/>【容器维度过滤】（前缀模糊，命中后仅返回容器告警）<br/>ClusterName - string - 是否必填：否 - 集群名称（前缀匹配）<br/>ContainerName - string - 是否必填：否 - 容器名称（前缀匹配）<br/>【告警字段过滤】（精确匹配，支持多值）<br/>Status - int - 是否必填：否 - 处理状态<br/>Level - int - 是否必填：否 - 威胁等级<br/>AlertCategory - string - 是否必填：否 - 告警大类<br/>AlertSubType - string - 是否必填：否 - 告警子类型<br/>AttackStage - string - 是否必填：否 - 攻击阶段<br/>DetectMode - string - 是否必填：否 - 检测模式<br/>AlertSource - string - 是否必填：否 - 告警来源（HOST/CONTAINER）<br/>AlertId - string - 是否必填：否 - 告警ID<br/>InstanceId - string - 是否必填：否 - 实例ID（精确匹配）<br/>ContainerId - string - 是否必填：否 - 容器ID（精确匹配）<br/>ClusterId - string - 是否必填：否 - 集群ID（精确匹配）<br/>【时间范围】<br/>StartTime - string - 是否必填：否 - 开始时间，格式 2006-01-02 15:04:05（默认近180天）<br/>EndTime - string - 是否必填：否 - 结束时间，格式 2006-01-02 15:04:05（默认当前时间）</p>
 	Filters []*EDRFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// <p>限制条数,默认10,最大100</p>
@@ -37642,7 +37544,7 @@ type DescribeEdrAlertListRequest struct {
 	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
-	// <p>PolicyType - int - 是否必填：否 - 策略类型PolicyName - string - 是否必填：否 - 策略名称Domain - string - 是否必填：否 - 域名(先对域名做urlencode,再base64)PolicyAction- int - 是否必填：否 - 策略动作IsEnabled - int - 是否必填：否 - 是否生效</p>
+	// <p>过滤条件，支持的 Name 如下：<br/>【资源属性过滤】（前缀模糊，后端自动反查资产后按实例过滤）<br/>InstanceName - string - 是否必填：否 - 资产名称（前缀匹配）<br/>InstanceID - string - 是否必填：否 - 实例ID（前缀匹配）<br/>IP - string - 是否必填：否 - IP地址，支持内网/外网IP（前缀匹配）<br/>Tags - string - 是否必填：否 - 腾讯云标签，格式 tagKey$tagValue（仅单账号场景生效）<br/>CSIPTag - string - 是否必填：否 - 安全中心标签名称（前缀匹配，按语言环境匹配中/英文字段）<br/>AssetTagIds - string - 是否必填：否 - 安全中心资产标签ID（精确匹配，多个标签ID之间为或关系；标签ID可通过资产中心标签树接口 DescribeAssetTagTree 获取）<br/>【容器维度过滤】（前缀模糊，命中后仅返回容器告警）<br/>ClusterName - string - 是否必填：否 - 集群名称（前缀匹配）<br/>ContainerName - string - 是否必填：否 - 容器名称（前缀匹配）<br/>【告警字段过滤】（精确匹配，支持多值）<br/>Status - int - 是否必填：否 - 处理状态<br/>Level - int - 是否必填：否 - 威胁等级<br/>AlertCategory - string - 是否必填：否 - 告警大类<br/>AlertSubType - string - 是否必填：否 - 告警子类型<br/>AttackStage - string - 是否必填：否 - 攻击阶段<br/>DetectMode - string - 是否必填：否 - 检测模式<br/>AlertSource - string - 是否必填：否 - 告警来源（HOST/CONTAINER）<br/>AlertId - string - 是否必填：否 - 告警ID<br/>InstanceId - string - 是否必填：否 - 实例ID（精确匹配）<br/>ContainerId - string - 是否必填：否 - 容器ID（精确匹配）<br/>ClusterId - string - 是否必填：否 - 集群ID（精确匹配）<br/>【时间范围】<br/>StartTime - string - 是否必填：否 - 开始时间，格式 2006-01-02 15:04:05（默认近180天）<br/>EndTime - string - 是否必填：否 - 结束时间，格式 2006-01-02 15:04:05（默认当前时间）</p>
 	Filters []*EDRFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// <p>限制条数,默认10,最大100</p>
@@ -38431,16 +38333,16 @@ type DescribeExposePathRequestParams struct {
 	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
-	// 资产ID
+	// <p>资产ID</p>
 	AssetId *string `json:"AssetId,omitnil,omitempty" name:"AssetId"`
 
-	// 资产IP
+	// <p>资产IP</p>
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
-	// 资产域名
+	// <p>资产域名</p>
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 端口或端口范围
+	// <p>端口或端口范围</p>
 	Port *string `json:"Port,omitnil,omitempty" name:"Port"`
 }
 
@@ -38450,16 +38352,16 @@ type DescribeExposePathRequest struct {
 	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
-	// 资产ID
+	// <p>资产ID</p>
 	AssetId *string `json:"AssetId,omitnil,omitempty" name:"AssetId"`
 
-	// 资产IP
+	// <p>资产IP</p>
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
-	// 资产域名
+	// <p>资产域名</p>
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 端口或端口范围
+	// <p>端口或端口范围</p>
 	Port *string `json:"Port,omitnil,omitempty" name:"Port"`
 }
 
@@ -38488,8 +38390,11 @@ func (r *DescribeExposePathRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeExposePathResponseParams struct {
-	// 云边界分析路径节点内容
+	// <p>云边界分析路径节点内容</p>
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// <p>互联网节点数量</p>
+	PathCount *uint64 `json:"PathCount,omitnil,omitempty" name:"PathCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -47998,7 +47903,7 @@ func (r *DescribeScanReportListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeScanStatisticRequestParams struct {
-	// 集团账号的成员id
+	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
 	// 体检任务id
@@ -48008,7 +47913,7 @@ type DescribeScanStatisticRequestParams struct {
 type DescribeScanStatisticRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集团账号的成员id
+	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
 	// 体检任务id
@@ -49021,6 +48926,15 @@ type DescribeSkillScanPayInfoResponseParams struct {
 	// <p>租户昵称</p>
 	NickName *string `json:"NickName,omitnil,omitempty" name:"NickName"`
 
+	// <p>后付费资源状态<br>枚举值：<br>0：未开通<br>1：正常<br>2：隔离</p>
+	PostPayStatus *int64 `json:"PostPayStatus,omitnil,omitempty" name:"PostPayStatus"`
+
+	// <p>后付费资源ID，未开通后付费时为空</p>
+	PostPayResourceId *string `json:"PostPayResourceId,omitnil,omitempty" name:"PostPayResourceId"`
+
+	// <p>后付费资源开通时间，未开通后付费时为空。格式 YYYY-MM-DD HH:mm:ss</p>
+	PostPayBeginTime *string `json:"PostPayBeginTime,omitnil,omitempty" name:"PostPayBeginTime"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -49127,6 +49041,127 @@ func (r *DescribeSkillScanResultResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeSkillScanResultResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSkillScanTaskListRequestParams struct {
+	// 偏移量，默认 0
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 每页数量，默认 10，上限 200
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 开始时间，筛选上传时间不早于该时刻的任务
+	// 参数格式：YYYY-MM-DD HH:mm:ss
+	// 最大长度：128 字符
+	// 使用约束：StartTime 与 EndTime 要么同时传入，要么都不传；都不传时默认查询本月数据
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间，筛选上传时间不晚于该时刻的任务
+	// 参数格式：YYYY-MM-DD HH:mm:ss
+	// 最大长度：128 字符
+	// 建议与 StartTime 同时传入；未传入时默认使用当前时间作为结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 排序方式
+	// 最大长度：128 字符
+	// 枚举值：
+	// ASC：升序
+	// DESC：降序（默认）
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 排序字段
+	// 最大长度：128 字符
+	// 枚举值：
+	// InsertTime：上传时间（默认）
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+}
+
+type DescribeSkillScanTaskListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 偏移量，默认 0
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 每页数量，默认 10，上限 200
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 开始时间，筛选上传时间不早于该时刻的任务
+	// 参数格式：YYYY-MM-DD HH:mm:ss
+	// 最大长度：128 字符
+	// 使用约束：StartTime 与 EndTime 要么同时传入，要么都不传；都不传时默认查询本月数据
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间，筛选上传时间不晚于该时刻的任务
+	// 参数格式：YYYY-MM-DD HH:mm:ss
+	// 最大长度：128 字符
+	// 建议与 StartTime 同时传入；未传入时默认使用当前时间作为结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 排序方式
+	// 最大长度：128 字符
+	// 枚举值：
+	// ASC：升序
+	// DESC：降序（默认）
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 排序字段
+	// 最大长度：128 字符
+	// 枚举值：
+	// InsertTime：上传时间（默认）
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+}
+
+func (r *DescribeSkillScanTaskListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSkillScanTaskListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Order")
+	delete(f, "By")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSkillScanTaskListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSkillScanTaskListResponseParams struct {
+	// 总数量
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 扫描任务列表，按上传时间倒序排列
+	TaskList []*SkillScanTaskItem `json:"TaskList,omitnil,omitempty" name:"TaskList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeSkillScanTaskListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSkillScanTaskListResponseParams `json:"Response"`
+}
+
+func (r *DescribeSkillScanTaskListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSkillScanTaskListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -57186,6 +57221,9 @@ type ImageRegistryInfo struct {
 
 	// <p>镜像仓库用户名</p>
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// <p>连接状态</p><p>枚举值：</p><ul><li>status_connected： 连接成功</li><li>status_connecting： 连接中</li><li>status_connect_failed： 连接失败</li><li>status_partial_failed： 部分连接失败</li></ul>
+	ConnStatus *string `json:"ConnStatus,omitnil,omitempty" name:"ConnStatus"`
 }
 
 type ImageRegistryNamespaceInfo struct {
@@ -62280,31 +62318,31 @@ func (r *ModifyDspmBackupSettingResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyDspmCkafkaSaveRequestParams struct {
-	// 接入类型，当前支持 1和7, 类型vip网络类型（1:外网TGW 2:基础网络 3:VPC网络 4:支撑网络(idc 环境) 5:SSL外网访问方式访问 6:黑石环境vpc 7:支撑网络(cvm 环境）
+	// <p>接入类型，当前支持 1和7</p><p>枚举值：</p><ul><li>1： 外网TGW</li><li>2： 基础网络</li><li>3： VPC网络</li><li>4： idc环境-支撑网络</li><li>5： SSL外网访问方式访问</li><li>6： 黑石环境vpc</li><li>7： cvm环境-支撑网络</li></ul>
 	VipType *int64 `json:"VipType,omitnil,omitempty" name:"VipType"`
 
-	// 实例的地域
+	// <p>实例的地域</p>
 	RegionId *string `json:"RegionId,omitnil,omitempty" name:"RegionId"`
 
-	// 实例的id
+	// <p>实例的id</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 实例名称
+	// <p>实例名称</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 实例的接入信息
+	// <p>实例的接入信息</p>
 	RouteInfo *RouteInfo `json:"RouteInfo,omitnil,omitempty" name:"RouteInfo"`
 
-	// 接入为域名的时候，有效
+	// <p>接入为域名的时候，有效</p>
 	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
 
-	// 接入为域名的时候，有效
+	// <p>接入为域名的时候，有效</p>
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
-	// 日志投递的主题配置
+	// <p>日志投递的主题配置</p>
 	LogDeliveryInfo []*LogDeliveryInfo `json:"LogDeliveryInfo,omitnil,omitempty" name:"LogDeliveryInfo"`
 
-	// 已存在配置时是否覆盖，默认 false（不覆盖，保持兼容）
+	// <p>已存在配置时是否覆盖，默认 false（不覆盖，保持兼容）</p>
 	IsOverwrite *bool `json:"IsOverwrite,omitnil,omitempty" name:"IsOverwrite"`
 
 	// <p>集团账号的成员id</p>
@@ -62314,31 +62352,31 @@ type ModifyDspmCkafkaSaveRequestParams struct {
 type ModifyDspmCkafkaSaveRequest struct {
 	*tchttp.BaseRequest
 	
-	// 接入类型，当前支持 1和7, 类型vip网络类型（1:外网TGW 2:基础网络 3:VPC网络 4:支撑网络(idc 环境) 5:SSL外网访问方式访问 6:黑石环境vpc 7:支撑网络(cvm 环境）
+	// <p>接入类型，当前支持 1和7</p><p>枚举值：</p><ul><li>1： 外网TGW</li><li>2： 基础网络</li><li>3： VPC网络</li><li>4： idc环境-支撑网络</li><li>5： SSL外网访问方式访问</li><li>6： 黑石环境vpc</li><li>7： cvm环境-支撑网络</li></ul>
 	VipType *int64 `json:"VipType,omitnil,omitempty" name:"VipType"`
 
-	// 实例的地域
+	// <p>实例的地域</p>
 	RegionId *string `json:"RegionId,omitnil,omitempty" name:"RegionId"`
 
-	// 实例的id
+	// <p>实例的id</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 实例名称
+	// <p>实例名称</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 实例的接入信息
+	// <p>实例的接入信息</p>
 	RouteInfo *RouteInfo `json:"RouteInfo,omitnil,omitempty" name:"RouteInfo"`
 
-	// 接入为域名的时候，有效
+	// <p>接入为域名的时候，有效</p>
 	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
 
-	// 接入为域名的时候，有效
+	// <p>接入为域名的时候，有效</p>
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
-	// 日志投递的主题配置
+	// <p>日志投递的主题配置</p>
 	LogDeliveryInfo []*LogDeliveryInfo `json:"LogDeliveryInfo,omitnil,omitempty" name:"LogDeliveryInfo"`
 
-	// 已存在配置时是否覆盖，默认 false（不覆盖，保持兼容）
+	// <p>已存在配置时是否覆盖，默认 false（不覆盖，保持兼容）</p>
 	IsOverwrite *bool `json:"IsOverwrite,omitnil,omitempty" name:"IsOverwrite"`
 
 	// <p>集团账号的成员id</p>
@@ -72483,6 +72521,18 @@ type SkillScanRuleHit struct {
 
 	// 风险发现描述
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+type SkillScanTaskItem struct {
+	// 上传时间
+	// 参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）
+	InsertTime *string `json:"InsertTime,omitnil,omitempty" name:"InsertTime"`
+
+	// Skill 名称
+	SkillName *string `json:"SkillName,omitnil,omitempty" name:"SkillName"`
+
+	// 消耗次数（总消耗次数）
+	DeductCount *int64 `json:"DeductCount,omitnil,omitempty" name:"DeductCount"`
 }
 
 type SkillState struct {

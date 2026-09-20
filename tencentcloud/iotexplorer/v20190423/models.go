@@ -7586,6 +7586,101 @@ func (r *DescribeCloudStorageDateResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeCloudStorageEventsByTWeSeePersonRequestParams struct {
+	// <p>产品 ID</p>
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// <p>设备名称</p>
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// <p>人员 ID</p>
+	PersonId *string `json:"PersonId,omitnil,omitempty" name:"PersonId"`
+
+	// <p>分页拉取数量，取值范围为 1-100</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>分页拉取偏移</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>通道 ID，非 NVR 设备不填，NVR 设备必填</p>
+	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+}
+
+type DescribeCloudStorageEventsByTWeSeePersonRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>产品 ID</p>
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// <p>设备名称</p>
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// <p>人员 ID</p>
+	PersonId *string `json:"PersonId,omitnil,omitempty" name:"PersonId"`
+
+	// <p>分页拉取数量，取值范围为 1-100</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>分页拉取偏移</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>通道 ID，非 NVR 设备不填，NVR 设备必填</p>
+	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+}
+
+func (r *DescribeCloudStorageEventsByTWeSeePersonRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCloudStorageEventsByTWeSeePersonRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	delete(f, "PersonId")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "ChannelId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCloudStorageEventsByTWeSeePersonRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCloudStorageEventsByTWeSeePersonResponseParams struct {
+	// <p>人员关联的云存事件列表</p>
+	Events []*CloudStorageEventWithAITasks `json:"Events,omitnil,omitempty" name:"Events"`
+
+	// <p>人员关联的云存事件总数</p>
+	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeCloudStorageEventsByTWeSeePersonResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCloudStorageEventsByTWeSeePersonResponseParams `json:"Response"`
+}
+
+func (r *DescribeCloudStorageEventsByTWeSeePersonResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCloudStorageEventsByTWeSeePersonResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeCloudStorageEventsRequestParams struct {
 	// 产品ID
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
@@ -11356,6 +11451,107 @@ func (r *DescribeTWeSeeConfigResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeTWeSeeDirectUploadInfoRequestParams struct {
+	// <p>产品 ID</p>
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// <p>设备名称</p>
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// <p>服务类型。</p><p>枚举值：</p><ul><li>VID_COMP： 视频理解</li><li>IMG_COMP： 图片理解</li></ul>
+	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
+
+	// <p>上传方式。</p><p>枚举值：</p><ul><li>single： 单文件上传</li><li>manifest： 上传源文件与 Manifest（先上传多个源文件，然后上传 Manifest JSON 触发分析）</li></ul><p>默认值：single</p>
+	UploadMethod *string `json:"UploadMethod,omitnil,omitempty" name:"UploadMethod"`
+
+	// <p>上传目标，固定取值为 <code>stream</code>，不填时默认为 <code>stream</code></p><p>枚举值：</p><ul><li>stream： 上传到指定设备（加载对应设备的 ComprehensionConfig 等配置）</li></ul><p>默认值：stream</p>
+	UploadTarget *string `json:"UploadTarget,omitnil,omitempty" name:"UploadTarget"`
+
+	// <p>通道 ID，非 NVR 设备不填，NVR 设备必填</p>
+	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+}
+
+type DescribeTWeSeeDirectUploadInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>产品 ID</p>
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// <p>设备名称</p>
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// <p>服务类型。</p><p>枚举值：</p><ul><li>VID_COMP： 视频理解</li><li>IMG_COMP： 图片理解</li></ul>
+	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
+
+	// <p>上传方式。</p><p>枚举值：</p><ul><li>single： 单文件上传</li><li>manifest： 上传源文件与 Manifest（先上传多个源文件，然后上传 Manifest JSON 触发分析）</li></ul><p>默认值：single</p>
+	UploadMethod *string `json:"UploadMethod,omitnil,omitempty" name:"UploadMethod"`
+
+	// <p>上传目标，固定取值为 <code>stream</code>，不填时默认为 <code>stream</code></p><p>枚举值：</p><ul><li>stream： 上传到指定设备（加载对应设备的 ComprehensionConfig 等配置）</li></ul><p>默认值：stream</p>
+	UploadTarget *string `json:"UploadTarget,omitnil,omitempty" name:"UploadTarget"`
+
+	// <p>通道 ID，非 NVR 设备不填，NVR 设备必填</p>
+	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+}
+
+func (r *DescribeTWeSeeDirectUploadInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTWeSeeDirectUploadInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	delete(f, "ServiceType")
+	delete(f, "UploadMethod")
+	delete(f, "UploadTarget")
+	delete(f, "ChannelId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTWeSeeDirectUploadInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTWeSeeDirectUploadInfoResponseParams struct {
+	// <p>TWeSee 直传目录的 COS URI</p>
+	COSURI *string `json:"COSURI,omitnil,omitempty" name:"COSURI"`
+
+	// <p>TWeSee 直传存储桶</p>
+	StorageBucket *string `json:"StorageBucket,omitnil,omitempty" name:"StorageBucket"`
+
+	// <p>TWeSee 直传目录路径</p>
+	StoragePath *string `json:"StoragePath,omitnil,omitempty" name:"StoragePath"`
+
+	// <p>TWeSee 直传存储地域</p>
+	StorageRegion *string `json:"StorageRegion,omitnil,omitempty" name:"StorageRegion"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeTWeSeeDirectUploadInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTWeSeeDirectUploadInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeTWeSeeDirectUploadInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTWeSeeDirectUploadInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeTWeSeeFaceRequestParams struct {
 	// 产品 ID
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
@@ -12650,6 +12846,91 @@ func (r *DescribeVideoLicenseResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeVideoLicenseResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVodCloudStorageDateRequestParams struct {
+	// <p>产品id</p>
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// <p>设备名</p>
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// <p>通道id</p>
+	ChannelId *string `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// <p>用户id</p>
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// <p>时区</p>
+	TimeZone *string `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
+}
+
+type DescribeVodCloudStorageDateRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>产品id</p>
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// <p>设备名</p>
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// <p>通道id</p>
+	ChannelId *string `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// <p>用户id</p>
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// <p>时区</p>
+	TimeZone *string `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
+}
+
+func (r *DescribeVodCloudStorageDateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVodCloudStorageDateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	delete(f, "ChannelId")
+	delete(f, "UserId")
+	delete(f, "TimeZone")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVodCloudStorageDateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVodCloudStorageDateResponseParams struct {
+	// <p>日期数据</p>
+	Data []*string `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeVodCloudStorageDateResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeVodCloudStorageDateResponseParams `json:"Response"`
+}
+
+func (r *DescribeVodCloudStorageDateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVodCloudStorageDateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -15175,6 +15456,281 @@ func (r *GetTopicRuleListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *GetTopicRuleListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetVodCloudStorageEventListRequestParams struct {
+	// <p>产品id</p>
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// <p>设备名</p>
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// <p>日期</p><p>参数格式：格式 yyyy-MM-dd</p>
+	Date *string `json:"Date,omitnil,omitempty" name:"Date"`
+
+	// <p>分页游标，首页为空。</p>
+	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
+
+	// <p>分页大小</p><p>取值范围：[10, 100]</p><p>默认值：10</p>
+	Size *uint64 `json:"Size,omitnil,omitempty" name:"Size"`
+
+	// <p>通道id</p>
+	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// <p>用户id</p>
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// <p>时区</p>
+	TimeZone *string `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
+
+	// <p>非加密 URL 签名有效期</p><p>单位：秒</p>
+	ExpireSec *uint64 `json:"ExpireSec,omitnil,omitempty" name:"ExpireSec"`
+
+	// <p>请求平台：0 Android，1 小程序，2 iOS，3 鸿蒙</p>
+	Platform *uint64 `json:"Platform,omitnil,omitempty" name:"Platform"`
+}
+
+type GetVodCloudStorageEventListRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>产品id</p>
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// <p>设备名</p>
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// <p>日期</p><p>参数格式：格式 yyyy-MM-dd</p>
+	Date *string `json:"Date,omitnil,omitempty" name:"Date"`
+
+	// <p>分页游标，首页为空。</p>
+	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
+
+	// <p>分页大小</p><p>取值范围：[10, 100]</p><p>默认值：10</p>
+	Size *uint64 `json:"Size,omitnil,omitempty" name:"Size"`
+
+	// <p>通道id</p>
+	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// <p>用户id</p>
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// <p>时区</p>
+	TimeZone *string `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
+
+	// <p>非加密 URL 签名有效期</p><p>单位：秒</p>
+	ExpireSec *uint64 `json:"ExpireSec,omitnil,omitempty" name:"ExpireSec"`
+
+	// <p>请求平台：0 Android，1 小程序，2 iOS，3 鸿蒙</p>
+	Platform *uint64 `json:"Platform,omitnil,omitempty" name:"Platform"`
+}
+
+func (r *GetVodCloudStorageEventListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetVodCloudStorageEventListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	delete(f, "Date")
+	delete(f, "Context")
+	delete(f, "Size")
+	delete(f, "ChannelId")
+	delete(f, "UserId")
+	delete(f, "TimeZone")
+	delete(f, "ExpireSec")
+	delete(f, "Platform")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetVodCloudStorageEventListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetVodCloudStorageEventListResponseParams struct {
+	// <p>事件列表</p>
+	Events []*VodCloudStorageEvent `json:"Events,omitnil,omitempty" name:"Events"`
+
+	// <p>数据是否已完整</p>
+	Listover *bool `json:"Listover,omitnil,omitempty" name:"Listover"`
+
+	// <p>下一页游标</p>
+	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
+
+	// <p>总数</p>
+	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// <p>加密播放器使用的 VOD 子应用 ID</p>
+	VodAppId *string `json:"VodAppId,omitnil,omitempty" name:"VodAppId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetVodCloudStorageEventListResponse struct {
+	*tchttp.BaseResponse
+	Response *GetVodCloudStorageEventListResponseParams `json:"Response"`
+}
+
+func (r *GetVodCloudStorageEventListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetVodCloudStorageEventListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetVodCloudStorageVideoListRequestParams struct {
+	// <p>产品id</p>
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// <p>设备名称</p>
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// <p>日期</p><p>参数格式：格式 yyyy-MM-dd</p>
+	Date *string `json:"Date,omitnil,omitempty" name:"Date"`
+
+	// <p>通道id</p>
+	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// <p>开始时间；与 EndTime 必须同时填或同时省略</p><p>单位：秒</p>
+	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>结束时间</p><p>单位：秒</p>
+	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>用户id</p>
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// <p>时区</p>
+	TimeZone *string `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
+
+	// <p>非加密文件的防盗链 URL 有效期</p><p>单位：秒</p>
+	ExpireSec *uint64 `json:"ExpireSec,omitnil,omitempty" name:"ExpireSec"`
+
+	// <p>0 Android，1 小程序，2 iOS，3 鸿蒙</p>
+	Platform *uint64 `json:"Platform,omitnil,omitempty" name:"Platform"`
+
+	// <p>分页游标；首页传空，之后原样回填上一页响应的 Context</p>
+	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
+
+	// <p>每页视频条数；&lt;=0 或不填默认 10，&gt;100 按 100 计</p>
+	Size *uint64 `json:"Size,omitnil,omitempty" name:"Size"`
+}
+
+type GetVodCloudStorageVideoListRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>产品id</p>
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// <p>设备名称</p>
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// <p>日期</p><p>参数格式：格式 yyyy-MM-dd</p>
+	Date *string `json:"Date,omitnil,omitempty" name:"Date"`
+
+	// <p>通道id</p>
+	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// <p>开始时间；与 EndTime 必须同时填或同时省略</p><p>单位：秒</p>
+	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>结束时间</p><p>单位：秒</p>
+	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>用户id</p>
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// <p>时区</p>
+	TimeZone *string `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
+
+	// <p>非加密文件的防盗链 URL 有效期</p><p>单位：秒</p>
+	ExpireSec *uint64 `json:"ExpireSec,omitnil,omitempty" name:"ExpireSec"`
+
+	// <p>0 Android，1 小程序，2 iOS，3 鸿蒙</p>
+	Platform *uint64 `json:"Platform,omitnil,omitempty" name:"Platform"`
+
+	// <p>分页游标；首页传空，之后原样回填上一页响应的 Context</p>
+	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
+
+	// <p>每页视频条数；&lt;=0 或不填默认 10，&gt;100 按 100 计</p>
+	Size *uint64 `json:"Size,omitnil,omitempty" name:"Size"`
+}
+
+func (r *GetVodCloudStorageVideoListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetVodCloudStorageVideoListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	delete(f, "Date")
+	delete(f, "ChannelId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "UserId")
+	delete(f, "TimeZone")
+	delete(f, "ExpireSec")
+	delete(f, "Platform")
+	delete(f, "Context")
+	delete(f, "Size")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetVodCloudStorageVideoListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetVodCloudStorageVideoListResponseParams struct {
+	// <p>播放器使用的 VOD 子应用 ID</p>
+	VodAppId *string `json:"VodAppId,omitnil,omitempty" name:"VodAppId"`
+
+	// <p>视频列表</p>
+	VideoList []*VideoList `json:"VideoList,omitnil,omitempty" name:"VideoList"`
+
+	// <p>是否已拉完</p>
+	Listover *bool `json:"Listover,omitnil,omitempty" name:"Listover"`
+
+	// <p>下一页游标</p>
+	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetVodCloudStorageVideoListResponse struct {
+	*tchttp.BaseResponse
+	Response *GetVodCloudStorageVideoListResponseParams `json:"Response"`
+}
+
+func (r *GetVodCloudStorageVideoListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetVodCloudStorageVideoListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -24134,6 +24690,26 @@ type VideoLicenseEntity struct {
 	ExpiresSoonCount *int64 `json:"ExpiresSoonCount,omitnil,omitempty" name:"ExpiresSoonCount"`
 }
 
+type VideoList struct {
+	// <p>用于播放加密视频</p>
+	Psign *string `json:"Psign,omitnil,omitempty" name:"Psign"`
+
+	// <p>开始时间</p>
+	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>结束时间</p>
+	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>播放url</p>
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// <p>视频类型</p>
+	StreamType *string `json:"StreamType,omitnil,omitempty" name:"StreamType"`
+
+	// <p>点播文件id</p>
+	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
+}
+
 type VisionCustomDetectQuery struct {
 	// 自定义标签的标识符
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
@@ -24271,6 +24847,26 @@ type VisionSummaryConfig struct {
 
 	// <p>自定义摘要提示词</p>
 	SummaryPrompt *string `json:"SummaryPrompt,omitnil,omitempty" name:"SummaryPrompt"`
+}
+
+type VodCloudStorageEvent struct {
+	// <p>事件id</p>
+	EventId *string `json:"EventId,omitnil,omitempty" name:"EventId"`
+
+	// <p>缩略图url</p>
+	ThumbnailUrl *string `json:"ThumbnailUrl,omitnil,omitempty" name:"ThumbnailUrl"`
+
+	// <p>事件开始时间</p>
+	EventStartTime *uint64 `json:"EventStartTime,omitnil,omitempty" name:"EventStartTime"`
+
+	// <p>事件结束时间</p>
+	EventEndTime *uint64 `json:"EventEndTime,omitnil,omitempty" name:"EventEndTime"`
+
+	// <p>视频相关信息</p>
+	VideoList []*VideoList `json:"VideoList,omitnil,omitempty" name:"VideoList"`
+
+	// <p>是否为图片事件</p><p>枚举值：</p><ul><li>true： 图片事件</li><li>false： 视频事件</li></ul>
+	IsStaticEvent *bool `json:"IsStaticEvent,omitnil,omitempty" name:"IsStaticEvent"`
 }
 
 type WXDeviceInfo struct {

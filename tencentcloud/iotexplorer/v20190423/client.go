@@ -5823,6 +5823,72 @@ func (c *Client) DescribeCloudStorageEventsWithContext(ctx context.Context, requ
     return
 }
 
+func NewDescribeCloudStorageEventsByTWeSeePersonRequest() (request *DescribeCloudStorageEventsByTWeSeePersonRequest) {
+    request = &DescribeCloudStorageEventsByTWeSeePersonRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeCloudStorageEventsByTWeSeePerson")
+    
+    
+    return
+}
+
+func NewDescribeCloudStorageEventsByTWeSeePersonResponse() (response *DescribeCloudStorageEventsByTWeSeePersonResponse) {
+    response = &DescribeCloudStorageEventsByTWeSeePersonResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCloudStorageEventsByTWeSeePerson
+// 查询 TWeSee 人员关联的云存事件及 AI 任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_DEVICECHANNELNOTEXIST = "ResourceNotFound.DeviceChannelNotExist"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_SEEPERSONNOTEXIST = "ResourceNotFound.SeePersonNotExist"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCloudStorageEventsByTWeSeePerson(request *DescribeCloudStorageEventsByTWeSeePersonRequest) (response *DescribeCloudStorageEventsByTWeSeePersonResponse, err error) {
+    return c.DescribeCloudStorageEventsByTWeSeePersonWithContext(context.Background(), request)
+}
+
+// DescribeCloudStorageEventsByTWeSeePerson
+// 查询 TWeSee 人员关联的云存事件及 AI 任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_DEVICECHANNELNOTEXIST = "ResourceNotFound.DeviceChannelNotExist"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_SEEPERSONNOTEXIST = "ResourceNotFound.SeePersonNotExist"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCloudStorageEventsByTWeSeePersonWithContext(ctx context.Context, request *DescribeCloudStorageEventsByTWeSeePersonRequest) (response *DescribeCloudStorageEventsByTWeSeePersonResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudStorageEventsByTWeSeePersonRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "DescribeCloudStorageEventsByTWeSeePerson")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCloudStorageEventsByTWeSeePerson require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCloudStorageEventsByTWeSeePersonResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCloudStorageEventsWithAITasksRequest() (request *DescribeCloudStorageEventsWithAITasksRequest) {
     request = &DescribeCloudStorageEventsWithAITasksRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -8607,6 +8673,70 @@ func (c *Client) DescribeTWeSeeConfigWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeTWeSeeDirectUploadInfoRequest() (request *DescribeTWeSeeDirectUploadInfoRequest) {
+    request = &DescribeTWeSeeDirectUploadInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeTWeSeeDirectUploadInfo")
+    
+    
+    return
+}
+
+func NewDescribeTWeSeeDirectUploadInfoResponse() (response *DescribeTWeSeeDirectUploadInfoResponse) {
+    response = &DescribeTWeSeeDirectUploadInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTWeSeeDirectUploadInfo
+// 查询 TWeSee 直传信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_PRODUCTIOTVIDEOSERVICENOTENABLED = "FailedOperation.ProductIotVideoServiceNotEnabled"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_DEVICECHANNELNOTEXIST = "ResourceNotFound.DeviceChannelNotExist"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+func (c *Client) DescribeTWeSeeDirectUploadInfo(request *DescribeTWeSeeDirectUploadInfoRequest) (response *DescribeTWeSeeDirectUploadInfoResponse, err error) {
+    return c.DescribeTWeSeeDirectUploadInfoWithContext(context.Background(), request)
+}
+
+// DescribeTWeSeeDirectUploadInfo
+// 查询 TWeSee 直传信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_PRODUCTIOTVIDEOSERVICENOTENABLED = "FailedOperation.ProductIotVideoServiceNotEnabled"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_DEVICECHANNELNOTEXIST = "ResourceNotFound.DeviceChannelNotExist"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+func (c *Client) DescribeTWeSeeDirectUploadInfoWithContext(ctx context.Context, request *DescribeTWeSeeDirectUploadInfoRequest) (response *DescribeTWeSeeDirectUploadInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeTWeSeeDirectUploadInfoRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "DescribeTWeSeeDirectUploadInfo")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTWeSeeDirectUploadInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTWeSeeDirectUploadInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTWeSeeFaceRequest() (request *DescribeTWeSeeFaceRequest) {
     request = &DescribeTWeSeeFaceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -9655,6 +9785,70 @@ func (c *Client) DescribeVideoLicenseWithContext(ctx context.Context, request *D
     request.SetContext(ctx)
     
     response = NewDescribeVideoLicenseResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeVodCloudStorageDateRequest() (request *DescribeVodCloudStorageDateRequest) {
+    request = &DescribeVodCloudStorageDateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeVodCloudStorageDate")
+    
+    
+    return
+}
+
+func NewDescribeVodCloudStorageDateResponse() (response *DescribeVodCloudStorageDateResponse) {
+    response = &DescribeVodCloudStorageDateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeVodCloudStorageDate
+// 拉取云存日期
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+func (c *Client) DescribeVodCloudStorageDate(request *DescribeVodCloudStorageDateRequest) (response *DescribeVodCloudStorageDateResponse, err error) {
+    return c.DescribeVodCloudStorageDateWithContext(context.Background(), request)
+}
+
+// DescribeVodCloudStorageDate
+// 拉取云存日期
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+func (c *Client) DescribeVodCloudStorageDateWithContext(ctx context.Context, request *DescribeVodCloudStorageDateRequest) (response *DescribeVodCloudStorageDateResponse, err error) {
+    if request == nil {
+        request = NewDescribeVodCloudStorageDateRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "DescribeVodCloudStorageDate")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVodCloudStorageDate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeVodCloudStorageDateResponse()
     err = c.Send(request, response)
     return
 }
@@ -11329,6 +11523,122 @@ func (c *Client) GetTopicRuleListWithContext(ctx context.Context, request *GetTo
     request.SetContext(ctx)
     
     response = NewGetTopicRuleListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetVodCloudStorageEventListRequest() (request *GetVodCloudStorageEventListRequest) {
+    request = &GetVodCloudStorageEventListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "GetVodCloudStorageEventList")
+    
+    
+    return
+}
+
+func NewGetVodCloudStorageEventListResponse() (response *GetVodCloudStorageEventListResponse) {
+    response = &GetVodCloudStorageEventListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetVodCloudStorageEventList
+// 获取云存事件列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_TOPICRULENOTEXIST = "ResourceNotFound.TopicRuleNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) GetVodCloudStorageEventList(request *GetVodCloudStorageEventListRequest) (response *GetVodCloudStorageEventListResponse, err error) {
+    return c.GetVodCloudStorageEventListWithContext(context.Background(), request)
+}
+
+// GetVodCloudStorageEventList
+// 获取云存事件列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_TOPICRULENOTEXIST = "ResourceNotFound.TopicRuleNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) GetVodCloudStorageEventListWithContext(ctx context.Context, request *GetVodCloudStorageEventListRequest) (response *GetVodCloudStorageEventListResponse, err error) {
+    if request == nil {
+        request = NewGetVodCloudStorageEventListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "GetVodCloudStorageEventList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetVodCloudStorageEventList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetVodCloudStorageEventListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetVodCloudStorageVideoListRequest() (request *GetVodCloudStorageVideoListRequest) {
+    request = &GetVodCloudStorageVideoListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "GetVodCloudStorageVideoList")
+    
+    
+    return
+}
+
+func NewGetVodCloudStorageVideoListResponse() (response *GetVodCloudStorageVideoListResponse) {
+    response = &GetVodCloudStorageVideoListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetVodCloudStorageVideoList
+// 获取云存时间轴视频列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_TOPICRULENOTEXIST = "ResourceNotFound.TopicRuleNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) GetVodCloudStorageVideoList(request *GetVodCloudStorageVideoListRequest) (response *GetVodCloudStorageVideoListResponse, err error) {
+    return c.GetVodCloudStorageVideoListWithContext(context.Background(), request)
+}
+
+// GetVodCloudStorageVideoList
+// 获取云存时间轴视频列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_TOPICRULENOTEXIST = "ResourceNotFound.TopicRuleNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) GetVodCloudStorageVideoListWithContext(ctx context.Context, request *GetVodCloudStorageVideoListRequest) (response *GetVodCloudStorageVideoListResponse, err error) {
+    if request == nil {
+        request = NewGetVodCloudStorageVideoListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "GetVodCloudStorageVideoList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetVodCloudStorageVideoList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetVodCloudStorageVideoListResponse()
     err = c.Send(request, response)
     return
 }

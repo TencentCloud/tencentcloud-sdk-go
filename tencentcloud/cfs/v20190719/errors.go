@@ -164,6 +164,9 @@ const (
 	// 扩容策略参数无效
 	INVALIDPARAMETERVALUE_INVALIDAUTOSCALEUPPARAMS = "InvalidParameterValue.InvalidAutoScaleUpParams"
 
+	// 传入的cfsversion 值不正确
+	INVALIDPARAMETERVALUE_INVALIDCFSVERSIONVALUE = "InvalidParameterValue.InvalidCfsVersionValue"
+
 	// 用于保证请求幂等性的字符串错误。
 	INVALIDPARAMETERVALUE_INVALIDCLIENTTOKEN = "InvalidParameterValue.InvalidClientToken"
 

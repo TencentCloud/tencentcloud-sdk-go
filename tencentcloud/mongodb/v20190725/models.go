@@ -375,6 +375,84 @@ type BackupTotalSize struct {
 	FreeQuota *int64 `json:"FreeQuota,omitnil,omitempty" name:"FreeQuota"`
 }
 
+// Predefined struct for user
+type CheckDBInstanceElasticCpuScalableRequestParams struct {
+	// <p>实例ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+type CheckDBInstanceElasticCpuScalableRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>实例ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+func (r *CheckDBInstanceElasticCpuScalableRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CheckDBInstanceElasticCpuScalableRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CheckDBInstanceElasticCpuScalableRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CheckDBInstanceElasticCpuScalableResponseParams struct {
+	// <p>是否可以进行弹性CPU扩容</p>
+	Scalable *bool `json:"Scalable,omitnil,omitempty" name:"Scalable"`
+
+	// <p>当前是否处于扩容状态</p>
+	IsScaled *bool `json:"IsScaled,omitnil,omitempty" name:"IsScaled"`
+
+	// <p>实例是否被锁定（有流程在执行）</p>
+	IsLocked *bool `json:"IsLocked,omitnil,omitempty" name:"IsLocked"`
+
+	// <p>不可扩容的原因</p>
+	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
+
+	// <p>最大可扩容的CPU核数，MIN(最小分片CPU核数, 24)</p>
+	MaxExtraCpu *int64 `json:"MaxExtraCpu,omitnil,omitempty" name:"MaxExtraCpu"`
+
+	// <p>当前扩容的CPU核数（如果处于扩容状态）</p>
+	ExtraCpu *int64 `json:"ExtraCpu,omitnil,omitempty" name:"ExtraCpu"`
+
+	// <p>扩容触发类型: 1-手动, 2-周期, 3-一次性时间段, 4-监控</p>
+	TriggerType *int64 `json:"TriggerType,omitnil,omitempty" name:"TriggerType"`
+
+	// <p>扩容时间</p>
+	ScaleUpTime *string `json:"ScaleUpTime,omitnil,omitempty" name:"ScaleUpTime"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CheckDBInstanceElasticCpuScalableResponse struct {
+	*tchttp.BaseResponse
+	Response *CheckDBInstanceElasticCpuScalableResponseParams `json:"Response"`
+}
+
+func (r *CheckDBInstanceElasticCpuScalableResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CheckDBInstanceElasticCpuScalableResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ClientConnection struct {
 	// 连接的客户端 IP。
 	IP *string `json:"IP,omitnil,omitempty" name:"IP"`

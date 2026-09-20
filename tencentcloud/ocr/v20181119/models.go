@@ -4222,34 +4222,34 @@ type GroupInfo struct {
 
 // Predefined struct for user
 type HKIDCardOCRRequestParams struct {
-	// 是否返回人像照片。
+	// <p>是否返回人像照片。</p>
 	ReturnHeadImage *bool `json:"ReturnHeadImage,omitnil,omitempty" name:"ReturnHeadImage"`
 
-	// 是否鉴伪。
+	// <p>是否鉴伪。</p>
 	//
 	// Deprecated: DetectFake is deprecated.
 	DetectFake *bool `json:"DetectFake,omitnil,omitempty" name:"DetectFake"`
 
-	// 图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。
+	// <p>图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。</p>
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
 
-	// 图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	// <p>图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。</p>
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 }
 
 type HKIDCardOCRRequest struct {
 	*tchttp.BaseRequest
 	
-	// 是否返回人像照片。
+	// <p>是否返回人像照片。</p>
 	ReturnHeadImage *bool `json:"ReturnHeadImage,omitnil,omitempty" name:"ReturnHeadImage"`
 
-	// 是否鉴伪。
+	// <p>是否鉴伪。</p>
 	DetectFake *bool `json:"DetectFake,omitnil,omitempty" name:"DetectFake"`
 
-	// 图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。
+	// <p>图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。</p>
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
 
-	// 图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	// <p>图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。</p>
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 }
 
@@ -4277,65 +4277,59 @@ func (r *HKIDCardOCRRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type HKIDCardOCRResponseParams struct {
-	// 中文姓名
+	// <p>中文姓名</p>
 	CnName *string `json:"CnName,omitnil,omitempty" name:"CnName"`
 
-	// 英文姓名
+	// <p>英文姓名</p>
 	EnName *string `json:"EnName,omitnil,omitempty" name:"EnName"`
 
-	// 中文姓名对应电码
+	// <p>中文姓名对应电码</p>
 	TelexCode *string `json:"TelexCode,omitnil,omitempty" name:"TelexCode"`
 
-	// 性别 ：“男M”或“女F”
+	// <p>性别 ：“男M”或“女F”</p>
 	Sex *string `json:"Sex,omitnil,omitempty" name:"Sex"`
 
-	// 出生日期
+	// <p>出生日期</p>
 	Birthday *string `json:"Birthday,omitnil,omitempty" name:"Birthday"`
 
-	// 永久性居民身份证。
-	// 0：非永久；
-	// 1：永久；
-	// -1：未知。
+	// <p>永久性居民身份证。<br>0：非永久；<br>1：永久；<br>-1：未知。</p>
 	Permanent *int64 `json:"Permanent,omitnil,omitempty" name:"Permanent"`
 
-	// 身份证号码
+	// <p>身份证号码</p>
 	IdNum *string `json:"IdNum,omitnil,omitempty" name:"IdNum"`
 
-	// 证件符号，出生日期下的符号，例如"***AZ"
+	// <p>证件符号，出生日期下的符号，例如&quot;***AZ&quot;</p>
 	Symbol *string `json:"Symbol,omitnil,omitempty" name:"Symbol"`
 
-	// 首次签发日期
+	// <p>首次签发日期</p>
 	FirstIssueDate *string `json:"FirstIssueDate,omitnil,omitempty" name:"FirstIssueDate"`
 
-	// 最近领用日期
+	// <p>最近领用日期</p>
 	CurrentIssueDate *string `json:"CurrentIssueDate,omitnil,omitempty" name:"CurrentIssueDate"`
 
-	// 真假判断。
-	// 0：无法判断（图像模糊、不完整、反光、过暗等导致无法判断）；
-	// 1：假；
-	// 2：真。
+	// <p>真假判断。<br>0：无法判断（图像模糊、不完整、反光、过暗等导致无法判断）；<br>1：假；<br>2：真。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	//
 	// Deprecated: FakeDetectResult is deprecated.
 	FakeDetectResult *int64 `json:"FakeDetectResult,omitnil,omitempty" name:"FakeDetectResult"`
 
-	// Base64编码的证件左侧人像大图
+	// <p>Base64编码的证件左侧人像大图</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HeadImage *string `json:"HeadImage,omitnil,omitempty" name:"HeadImage"`
 
-	// Base64编码的证件右侧人像小图
+	// <p>Base64编码的证件右侧人像小图</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SmallHeadImage *string `json:"SmallHeadImage,omitnil,omitempty" name:"SmallHeadImage"`
 
-	// 该字段已废弃， 将固定返回空数组，不建议使用。
+	// <p>该字段已废弃， 将固定返回空数组，不建议使用。</p>
 	//
 	// Deprecated: WarningCode is deprecated.
 	WarningCode []*int64 `json:"WarningCode,omitnil,omitempty" name:"WarningCode"`
 
-	// 该字段仅对国际站请求起作用，国内站该字段将固定返回空数组。国际站告警码如下：    告警码-9101 证件边框不完整告警-9102 证件复印件告警-9103 证件翻拍告警-9104 证件PS告警-9107 证件反光告警-9108 证件模糊告警-9109 告警能力未开通
+	// <p>该字段仅对国际站请求起作用，国内站该字段将固定返回空数组。国际站告警码如下：    告警码-9101 证件边框不完整告警-9102 证件复印件告警-9103 证件翻拍告警-9104 证件PS告警-9107 证件反光告警-9108 证件模糊告警-9109 告警能力未开通</p>
 	WarnCardInfos []*int64 `json:"WarnCardInfos,omitnil,omitempty" name:"WarnCardInfos"`
 
-	// 证件透明视窗内的文本信息
+	// <p>证件透明视窗内的文本信息</p>
 	WindowEmbeddedText *string `json:"WindowEmbeddedText,omitnil,omitempty" name:"WindowEmbeddedText"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

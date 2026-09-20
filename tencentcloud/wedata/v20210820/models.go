@@ -2888,6 +2888,42 @@ type BizParams struct {
 	BizStandCode *string `json:"BizStandCode,omitnil,omitempty" name:"BizStandCode"`
 }
 
+type BooleanResponse struct {
+	// 是否成功
+	Success *bool `json:"Success,omitnil,omitempty" name:"Success"`
+
+	// 失败返回提示信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 基线Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BaselineId *int64 `json:"BaselineId,omitnil,omitempty" name:"BaselineId"`
+
+	// 错误码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Code *string `json:"Code,omitnil,omitempty" name:"Code"`
+}
+
+type BundleResource struct {
+	// <p>资源类型，取值范围：</p>
+	// <ul>
+	// <li>WORKFLOW 工作流</li>
+	// <li>TASK 任务</li>
+	// <li>CODE_TEMPLATE 代码模版</li>
+	// <li>RESOURCE 资源信息</li>
+	// <li>EVENT 事件</li>
+	// <li>PROJECT_PARAM 项目参数</li>
+	// </ul>
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// 资源id
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// 资源名称
+	ResourceName *string `json:"ResourceName,omitnil,omitempty" name:"ResourceName"`
+}
+
 type BytesSpeed struct {
 	// 节点类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -44127,6 +44163,71 @@ func (r *TriggerManualTasksResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *TriggerManualTasksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UnbindingResourceRequestParams struct {
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 资源列表
+	ResourceList []*BundleResource `json:"ResourceList,omitnil,omitempty" name:"ResourceList"`
+}
+
+type UnbindingResourceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 资源列表
+	ResourceList []*BundleResource `json:"ResourceList,omitnil,omitempty" name:"ResourceList"`
+}
+
+func (r *UnbindingResourceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UnbindingResourceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "ResourceList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UnbindingResourceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UnbindingResourceResponseParams struct {
+	// 操作结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data []*BooleanResponse `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UnbindingResourceResponse struct {
+	*tchttp.BaseResponse
+	Response *UnbindingResourceResponseParams `json:"Response"`
+}
+
+func (r *UnbindingResourceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UnbindingResourceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

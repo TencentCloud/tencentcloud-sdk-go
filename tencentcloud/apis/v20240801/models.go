@@ -874,6 +874,12 @@ type CreateModelRequestParams struct {
 	// <p>目标服务器</p>
 	TargetHosts []*TargetHostDTO `json:"TargetHosts,omitnil,omitempty" name:"TargetHosts"`
 
+	// <p>模型提供商</p><p>枚举值：</p><ul><li>tencentTokenHub： 腾讯云TokenHub</li><li>tiONE： TI-ONE应用</li><li>default： 其他</li></ul>
+	Provider *string `json:"Provider,omitnil,omitempty" name:"Provider"`
+
+	// <p>Provider=tencentTokenHub时对应的密钥</p>
+	ApiKeys []*string `json:"ApiKeys,omitnil,omitempty" name:"ApiKeys"`
+
 	// <p>凭据ID</p>
 	CredentialID *string `json:"CredentialID,omitnil,omitempty" name:"CredentialID"`
 
@@ -908,6 +914,12 @@ type CreateModelRequest struct {
 	// <p>目标服务器</p>
 	TargetHosts []*TargetHostDTO `json:"TargetHosts,omitnil,omitempty" name:"TargetHosts"`
 
+	// <p>模型提供商</p><p>枚举值：</p><ul><li>tencentTokenHub： 腾讯云TokenHub</li><li>tiONE： TI-ONE应用</li><li>default： 其他</li></ul>
+	Provider *string `json:"Provider,omitnil,omitempty" name:"Provider"`
+
+	// <p>Provider=tencentTokenHub时对应的密钥</p>
+	ApiKeys []*string `json:"ApiKeys,omitnil,omitempty" name:"ApiKeys"`
+
 	// <p>凭据ID</p>
 	CredentialID *string `json:"CredentialID,omitnil,omitempty" name:"CredentialID"`
 
@@ -941,6 +953,8 @@ func (r *CreateModelRequest) FromJsonString(s string) error {
 	delete(f, "HttpProtocolType")
 	delete(f, "TargetPath")
 	delete(f, "TargetHosts")
+	delete(f, "Provider")
+	delete(f, "ApiKeys")
 	delete(f, "CredentialID")
 	delete(f, "CheckTargetCertsError")
 	delete(f, "HttpProtocolVersion")
@@ -3034,6 +3048,9 @@ type DescribeModelResponseVO struct {
 
 	// <p>模型ID</p>
 	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// <p>模型提供商</p>
+	Provider *string `json:"Provider,omitnil,omitempty" name:"Provider"`
 
 	// <p>模型名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`

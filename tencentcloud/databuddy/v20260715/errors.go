@@ -176,7 +176,7 @@ const (
 	// ResourceNotFound.WorkflowTaskNotExist
 	RESOURCENOTFOUND_WORKFLOWTASKNOTEXIST = "ResourceNotFound.WorkflowTaskNotExist"
 
-	// ResourceNotFound.WorkflowTriggerNotFound
+	// 工作流的调度配置未找到
 	RESOURCENOTFOUND_WORKFLOWTRIGGERNOTFOUND = "ResourceNotFound.WorkflowTriggerNotFound"
 
 	// 未知参数错误。

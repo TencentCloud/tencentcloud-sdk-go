@@ -881,7 +881,7 @@ type CreateListenerRequestParams struct {
 	// <p>是否打开七层获取源IP方式。</p>
 	XForwardedForRealIp *bool `json:"XForwardedForRealIp,omitnil,omitempty" name:"XForwardedForRealIp"`
 
-	// <p>解析方式。</p><p>枚举值：</p><ul><li>UNIDIRECTIONAL： 双向。</li><li>U： 单向。</li></ul><p>HTTPS监听器，此字段必传。</p>
+	// <p>解析方式。</p><p>枚举值：</p><ul><li>UNIDIRECTIONAL： 单向。</li><li>MUTUAL： 双向。</li></ul><p>HTTPS监听器，此字段必传。</p>
 	CertificationType *string `json:"CertificationType,omitnil,omitempty" name:"CertificationType"`
 
 	// <p>加密算法套件。支持配置&#39;tls_policy_1.0-2&#39;, &#39;tls_policy_1.1-2&#39;, &#39;tls_policy_1.2&#39;, &#39;tls_policy_1.2_strict&#39;, &#39;tls_policy_1.2_strict-1.3&#39;。</p>
@@ -933,7 +933,7 @@ type CreateListenerRequest struct {
 	// <p>是否打开七层获取源IP方式。</p>
 	XForwardedForRealIp *bool `json:"XForwardedForRealIp,omitnil,omitempty" name:"XForwardedForRealIp"`
 
-	// <p>解析方式。</p><p>枚举值：</p><ul><li>UNIDIRECTIONAL： 双向。</li><li>U： 单向。</li></ul><p>HTTPS监听器，此字段必传。</p>
+	// <p>解析方式。</p><p>枚举值：</p><ul><li>UNIDIRECTIONAL： 单向。</li><li>MUTUAL： 双向。</li></ul><p>HTTPS监听器，此字段必传。</p>
 	CertificationType *string `json:"CertificationType,omitnil,omitempty" name:"CertificationType"`
 
 	// <p>加密算法套件。支持配置&#39;tls_policy_1.0-2&#39;, &#39;tls_policy_1.1-2&#39;, &#39;tls_policy_1.2&#39;, &#39;tls_policy_1.2_strict&#39;, &#39;tls_policy_1.2_strict-1.3&#39;。</p>
@@ -4060,7 +4060,7 @@ type ModifyListenerRequestParams struct {
 	// <p>获取源IP方式。</p><p>入参限制：支持选择&#39;ProxyProtocol&#39;, &#39;Close&#39;, &#39;ProxyProtocolV2&#39;, &#39;TOA&#39;。</p><p>TCP监听器才支持此参数修改。</p>
 	GetRealIpType *string `json:"GetRealIpType,omitnil,omitempty" name:"GetRealIpType"`
 
-	// <p>HTTPS监听器支持选择版本</p><p>枚举值：</p><ul><li>HTTP/1.1： 版本HTTP/1.1</li><li>HTTP/2： 版本HTTP/2</li></ul>
+	// <p>HTTPS监听器支持选择版本</p><p>枚举值：</p><ul><li>HTTP/1.1： 版本HTTP/1.1</li><li>HTTP/2： 版本HTTP/2</li></ul><p>当前还支持修改。</p>
 	HttpVersion *string `json:"HttpVersion,omitnil,omitempty" name:"HttpVersion"`
 }
 
@@ -4109,7 +4109,7 @@ type ModifyListenerRequest struct {
 	// <p>获取源IP方式。</p><p>入参限制：支持选择&#39;ProxyProtocol&#39;, &#39;Close&#39;, &#39;ProxyProtocolV2&#39;, &#39;TOA&#39;。</p><p>TCP监听器才支持此参数修改。</p>
 	GetRealIpType *string `json:"GetRealIpType,omitnil,omitempty" name:"GetRealIpType"`
 
-	// <p>HTTPS监听器支持选择版本</p><p>枚举值：</p><ul><li>HTTP/1.1： 版本HTTP/1.1</li><li>HTTP/2： 版本HTTP/2</li></ul>
+	// <p>HTTPS监听器支持选择版本</p><p>枚举值：</p><ul><li>HTTP/1.1： 版本HTTP/1.1</li><li>HTTP/2： 版本HTTP/2</li></ul><p>当前还支持修改。</p>
 	HttpVersion *string `json:"HttpVersion,omitnil,omitempty" name:"HttpVersion"`
 }
 

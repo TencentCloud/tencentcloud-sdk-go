@@ -6491,6 +6491,120 @@ func (c *Client) DescribeAvailableCustomActionsForRuleEngineWithContext(ctx cont
     return
 }
 
+func NewDescribeAvailableOriginACLFamilyRequest() (request *DescribeAvailableOriginACLFamilyRequest) {
+    request = &DescribeAvailableOriginACLFamilyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeAvailableOriginACLFamily")
+    
+    
+    return
+}
+
+func NewDescribeAvailableOriginACLFamilyResponse() (response *DescribeAvailableOriginACLFamilyResponse) {
+    response = &DescribeAvailableOriginACLFamilyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAvailableOriginACLFamily
+// 查询源站防护 IP 段控制域详细信息，包含版本号和具体IP网段信息等。
+//
+// 标准控制域和精简控制域主要区别在于提供的 IP 段数量差异，后者数量更少,但是使用上有些限制，具体限制请咨询产品。具体格式说明如下：
+//
+// 标准控制域：
+//
+// <li>gaz：标准全球控制域；</li>
+//
+// <li>mlc：标准中国控制域；</li>
+//
+// <li>emc：标准海外(全球不含中国)控制域；</li>
+//
+// 精简控制域控制域：
+//
+// <li>plat-gaz：精简全球控制域；</li>
+//
+// <li>plat-mlc：精简中国控制域；</li>
+//
+// <li>plat-emc：精简海外(全球不含中国)控制域；</li>
+//
+// <li>plat-specific-gaz：定制版控全球可用区制域；</li>
+//
+// <li>plat-specific-mlc：定制版控中国大陆可用区控制域；</li>
+//
+// <li>plat-specific-emc：定制版控全球（不含中国大陆）可用区控制域；</li>
+//
+// 缩写说明：
+//
+// <li>gaz：Global AZ Availability Zone;</li>
+//
+// <li>mlc：mainlandChina;</li>
+//
+// <li>emc：Exclude mainlandChina.</li>
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_ZONENOTFOUND = "InvalidParameterValue.ZoneNotFound"
+func (c *Client) DescribeAvailableOriginACLFamily(request *DescribeAvailableOriginACLFamilyRequest) (response *DescribeAvailableOriginACLFamilyResponse, err error) {
+    return c.DescribeAvailableOriginACLFamilyWithContext(context.Background(), request)
+}
+
+// DescribeAvailableOriginACLFamily
+// 查询源站防护 IP 段控制域详细信息，包含版本号和具体IP网段信息等。
+//
+// 标准控制域和精简控制域主要区别在于提供的 IP 段数量差异，后者数量更少,但是使用上有些限制，具体限制请咨询产品。具体格式说明如下：
+//
+// 标准控制域：
+//
+// <li>gaz：标准全球控制域；</li>
+//
+// <li>mlc：标准中国控制域；</li>
+//
+// <li>emc：标准海外(全球不含中国)控制域；</li>
+//
+// 精简控制域控制域：
+//
+// <li>plat-gaz：精简全球控制域；</li>
+//
+// <li>plat-mlc：精简中国控制域；</li>
+//
+// <li>plat-emc：精简海外(全球不含中国)控制域；</li>
+//
+// <li>plat-specific-gaz：定制版控全球可用区制域；</li>
+//
+// <li>plat-specific-mlc：定制版控中国大陆可用区控制域；</li>
+//
+// <li>plat-specific-emc：定制版控全球（不含中国大陆）可用区控制域；</li>
+//
+// 缩写说明：
+//
+// <li>gaz：Global AZ Availability Zone;</li>
+//
+// <li>mlc：mainlandChina;</li>
+//
+// <li>emc：Exclude mainlandChina.</li>
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_ZONENOTFOUND = "InvalidParameterValue.ZoneNotFound"
+func (c *Client) DescribeAvailableOriginACLFamilyWithContext(ctx context.Context, request *DescribeAvailableOriginACLFamilyRequest) (response *DescribeAvailableOriginACLFamilyResponse, err error) {
+    if request == nil {
+        request = NewDescribeAvailableOriginACLFamilyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeAvailableOriginACLFamily")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAvailableOriginACLFamily require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAvailableOriginACLFamilyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAvailablePlansRequest() (request *DescribeAvailablePlansRequest) {
     request = &DescribeAvailablePlansRequest{
         BaseRequest: &tchttp.BaseRequest{},

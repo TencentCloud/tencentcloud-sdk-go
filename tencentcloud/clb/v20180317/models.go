@@ -16425,6 +16425,12 @@ type TestServiceProviderConnectionRequestParams struct {
 
 	// <p>端点路径</p>
 	EndpointPath *string `json:"EndpointPath,omitnil,omitempty" name:"EndpointPath"`
+
+	// <p>健康检查方式</p><p>枚举值：</p><ul><li>Service： 探测服务可用性</li><li>Model： 探测模型可用性</li></ul>
+	HealthCheckMethod *string `json:"HealthCheckMethod,omitnil,omitempty" name:"HealthCheckMethod"`
+
+	// <p>健康检查路径。仅HealthCheckMethod为Service时生效。</p>
+	HealthCheckPath *string `json:"HealthCheckPath,omitnil,omitempty" name:"HealthCheckPath"`
 }
 
 type TestServiceProviderConnectionRequest struct {
@@ -16471,6 +16477,12 @@ type TestServiceProviderConnectionRequest struct {
 
 	// <p>端点路径</p>
 	EndpointPath *string `json:"EndpointPath,omitnil,omitempty" name:"EndpointPath"`
+
+	// <p>健康检查方式</p><p>枚举值：</p><ul><li>Service： 探测服务可用性</li><li>Model： 探测模型可用性</li></ul>
+	HealthCheckMethod *string `json:"HealthCheckMethod,omitnil,omitempty" name:"HealthCheckMethod"`
+
+	// <p>健康检查路径。仅HealthCheckMethod为Service时生效。</p>
+	HealthCheckPath *string `json:"HealthCheckPath,omitnil,omitempty" name:"HealthCheckPath"`
 }
 
 func (r *TestServiceProviderConnectionRequest) ToJsonString() string {
@@ -16499,6 +16511,8 @@ func (r *TestServiceProviderConnectionRequest) FromJsonString(s string) error {
 	delete(f, "CMRPrivateNetworkTunnelId")
 	delete(f, "Capability")
 	delete(f, "EndpointPath")
+	delete(f, "HealthCheckMethod")
+	delete(f, "HealthCheckPath")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TestServiceProviderConnectionRequest has unknown keys!", "")
 	}
